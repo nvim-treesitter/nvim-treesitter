@@ -10,18 +10,14 @@ local M = {
   locals={}
 }
 
-function M.is_supported(lang)
-  return queries.get_query(lang, "locals") ~= nil
-end
-
 function M.collect_locals(bufnr)
   local ft = api.nvim_buf_get_option(bufnr, "ft")
-
   if not ft then return end
 
   local query = queries.get_query(ft, 'locals')
-  local parser = parsers.get_parser(bufnr, ft)
+  if not query then return end
 
+  local parser = parsers.get_parser(bufnr, ft)
   if not parser then return end
 
   local root = parser:parse():root()
@@ -36,12 +32,18 @@ function M.collect_locals(bufnr)
   return locals
 end
 
-function M.on_lines(_, buf, _, firstline, lastline, new_lastline)
-  M.locals[buf] = M.collect_locals(buf)
+local function update_cached_locals(bufnr, changed_tick)
+  M.locals[bufnr] = {tick=changed_tick, cache=( M.collect_locals(bufnr) or {} )}
 end
 
 function M.get_locals(bufnr)
-  return M.locals[bufnr or api.nvim_get_current_buf()] or {}
+  local bufnr = bufnr or api.nvim_get_current_buf()
+  local cached_local = M.locals[bufnr]
+  if not cached_local or api.nvim_buf_get_changedtick(bufnr) < cached_local.tick then
+    update_cached_locals(bufnr,api.nvim_buf_get_changedtick(bufnr))
+  end
+
+  return M.locals[bufnr].cache
 end
 
 function M.get_definitions(bufnr)
