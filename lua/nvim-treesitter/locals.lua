@@ -17,23 +17,23 @@ end
 function M.collect_locals(bufnr)
   local ft = api.nvim_buf_get_option(bufnr, "ft")
 
-  if ft then
-    local query = queries.get_query(ft, 'locals')
-    local parser = parsers.get_parser(bufnr)
+  if not ft then return end
 
-    if parser then
-      local root = parser:parse():root()
-      local start_row, _, end_row, _ = root:range()
+  local query = queries.get_query(ft, 'locals')
+  local parser = parsers.get_parser(bufnr)
 
-      local locals = {}
+  if not parser then return end
 
-      for prepared_match in queries.iter_prepared_matches(query, root, bufnr, start_row, end_row) do
-        table.insert(locals, prepared_match)
-      end
+  local root = parser:parse():root()
+  local start_row, _, end_row, _ = root:range()
 
-      return locals
-    end
+  local locals = {}
+
+  for prepared_match in queries.iter_prepared_matches(query, root, bufnr, start_row, end_row) do
+    table.insert(locals, prepared_match)
   end
+
+  return locals
 end
 
 function M.on_lines(_, buf, _, firstline, lastline, new_lastline)
