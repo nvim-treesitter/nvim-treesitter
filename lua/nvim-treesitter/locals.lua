@@ -20,7 +20,7 @@ function M.collect_locals(bufnr)
   if not ft then return end
 
   local query = queries.get_query(ft, 'locals')
-  local parser = parsers.get_parser(bufnr)
+  local parser = parsers.get_parser(bufnr, ft)
 
   if not parser then return end
 
