@@ -54,7 +54,7 @@ function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
         local name = query.captures[id] -- name of the capture in the query
         if name ~= nil then
           local path = split(name)
-          insert_to_path(prepared_match, path, node)
+          insert_to_path(prepared_match, path, { node=node })
         end
       end
 
