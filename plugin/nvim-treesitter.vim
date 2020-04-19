@@ -5,3 +5,6 @@ if exists('g:loaded_nvim_treesitter')
 endif
 
 let g:loaded_nvim_treesitter = 1
+
+augroup NvimTreesitter
+augroup END
