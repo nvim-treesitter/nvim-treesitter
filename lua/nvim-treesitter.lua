@@ -1,6 +1,7 @@
 local api = vim.api
 local parsers = require'nvim-treesitter.parsers'
 local install = require'nvim-treesitter.install'
+local locals = require'nvim-treesitter.locals'
 
 local M = {}
 
