@@ -10,9 +10,12 @@ local M = {
   locals={}
 }
 
+function M.is_supported(lang)
+  return queries.get_query(lang, "locals") ~= nil
+end
+
 function M.collect_locals(bufnr)
   local ft = api.nvim_buf_get_option(bufnr, "ft")
-  local query = queries.get_query(ft, "locals")
 
   if ft then
     local query = queries.get_query(ft, 'locals')
@@ -33,12 +36,16 @@ function M.collect_locals(bufnr)
   end
 end
 
-function M.on_lines(_, buf, _, firstline, lastline, new_lastline, _)
+function M.on_lines(_, buf, _, firstline, lastline, new_lastline)
   M.locals[buf] = M.collect_locals(buf)
 end
 
+function M.get_locals(bufnr)
+  return M.locals[bufnr or api.nvim_get_current_buf()] or {}
+end
+
 function M.get_definitions(bufnr)
-  local locals = M.locals[bufnr]
+  local locals = M.get_locals(bufnr)
 
   local defs = {}
 
@@ -52,7 +59,7 @@ function M.get_definitions(bufnr)
 end
 
 function M.get_scopes(bufnr)
-  local locals = M.locals[bufnr]
+  local locals = M.get_locals(bufnr)
 
   local scopes = {}
 
@@ -66,7 +73,7 @@ function M.get_scopes(bufnr)
 end
 
 function M.get_references(bufnr)
-  local locals = M.locals[bufnr or api.nvim_get_current_buf()]
+  local locals = M.get_locals(bufnr)
 
   local refs = {}
 
