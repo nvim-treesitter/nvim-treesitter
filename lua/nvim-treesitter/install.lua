@@ -3,7 +3,7 @@ local fn = vim.fn
 local luv = vim.loop
 
 local M = {}
-local repositories = {
+M.repositories = {
   javascript = {
     url = "https://github.com/tree-sitter/tree-sitter-javascript",
     files = { "src/parser.c", "src/scanner.c" },
@@ -196,6 +196,30 @@ function M.install_parser(ft)
   if err then return api.nvim_err_writeln(err) end
 
   run_install(cache_folder, package_path, ft, repository)
+end
+
+function M.checkhealth()
+  local health_ok = vim.fn['health#report_ok']
+  local health_info = vim.fn['health#report_info']
+  local health_warn = vim.fn['health#report_warn']
+  local health_error = vim.fn['health#report_error']
+
+  if fn.executable('git') == 0 then
+    health_error('`git` executable not found.', {
+      'Install it with your package manager.',
+      'Check that your `$PATH` is set correctly.'})
+  else
+    health_ok('`git` executable found.')
+  end
+
+  if fn.executable('cc') == 0 then
+    health_error('`cc` executable not found.', {
+      'Install `gcc` with your package manager.',
+      'Install `clang` with your package manager.',
+      'Check that your `$PATH` is set correctly.'})
+  else
+    health_ok('`cc` executable found.')
+  end
 end
 
 return M
