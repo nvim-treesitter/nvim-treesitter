@@ -12,10 +12,71 @@ local repositories = {
     url = "https://github.com/tree-sitter/tree-sitter-c",
     files = { "src/parser.c" }
   },
+  cpp = {
+    url = "https://github.com/tree-sitter/tree-sitter-cpp",
+    files = { "src/parser.c", "src/scanner.cc" }
+  },
   rust = {
     url = "https://github.com/tree-sitter/tree-sitter-rust",
     files = { "src/parser.c", "src/scanner.c" },
-  }
+  },
+  lua = {
+    url = "https://github.com/nvim-treesitter/tree-sitter-lua",
+    files = { "src/parser.c", "src/scanner.cc" }
+  },
+  python = {
+    url = "https://github.com/tree-sitter/tree-sitter-python",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  go = {
+    url = "https://github.com/tree-sitter/tree-sitter-go",
+    files = { "src/parser.c" },
+  },
+  ruby = {
+    url = "https://github.com/tree-sitter/tree-sitter-ruby",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  bash = {
+    url = "https://github.com/tree-sitter/tree-sitter-bash",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  php = {
+    url = "https://github.com/tree-sitter/tree-sitter-php",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  java = {
+    url = "https://github.com/tree-sitter/tree-sitter-java",
+    files = { "src/parser.c" },
+  },
+  html = {
+    url = "https://github.com/tree-sitter/tree-sitter-html",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  julia = {
+    url = "https://github.com/tree-sitter/tree-sitter-julia",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  json = {
+    url = "https://github.com/tree-sitter/tree-sitter-json",
+    files = { "src/parser.c" },
+  },
+  css = {
+    url = "https://github.com/tree-sitter/tree-sitter-css",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  ocaml = {
+    url = "https://github.com/tree-sitter/tree-sitter-ocaml",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  swift = {
+    url = "https://github.com/tree-sitter/tree-sitter-swift",
+    files = { "src/parser.c" },
+  },
+  -- TODO: find a way to install c-sharp and typescript properly
+  -- csharp = {
+  --   url = "https://github.com/tree-sitter/tree-sitter-c-sharp",
+  --   files = { "src/parser.c", "src/scanner.c" },
+  -- },
 }
 
 local function get_package_path()
@@ -47,8 +108,10 @@ end
 
 local function iter_cmd(cmd_list, i, ft)
   if i == #cmd_list then return print('Treesitter parser for '..ft..' has been installed') end
+
   local attr = cmd_list[i + 1]
-  print(attr.info)
+  if attr.info then print(attr.info) end
+
   handle = luv.spawn(attr.cmd, attr.opts, vim.schedule_wrap(function(code)
     handle:close()
     if code ~= 0 then return api.nvim_err_writeln(attr.err) end 
@@ -56,7 +119,7 @@ local function iter_cmd(cmd_list, i, ft)
   end))
 end
 
-local function run_install(cache_folder, package_path, ft, files, url)
+local function run_install(cache_folder, package_path, ft, repo)
   local project_repo = cache_folder..'/tree-sitter-'..ft
   local parser_lib_name = package_path.."/parser/"..ft..".so"
   local command_list = {
@@ -71,7 +134,7 @@ local function run_install(cache_folder, package_path, ft, files, url)
       info = 'Downloading...',
       err = 'Error during download, please verify your internet connection',
       opts = {
-        args = { 'clone', url },
+        args = { 'clone', repo.url },
         cwd = cache_folder,
       },
     },
@@ -80,7 +143,7 @@ local function run_install(cache_folder, package_path, ft, files, url)
       info = 'Compiling...',
       err = 'Error during compilation',
       opts = {
-        args = { '-o', 'parser.so', '-shared', '-lstdc++', unpack(files), '-Os', '-I./src' },
+        args = { '-o', 'parser.so', '-shared', '-lstdc++', unpack(repo.files), '-Os', '-I./src' },
         cwd = project_repo
       }
     },
@@ -132,7 +195,7 @@ function M.install_parser(ft)
   local cache_folder, err = get_cache_dir()
   if err then return api.nvim_err_writeln(err) end
 
-  run_install(cache_folder, package_path, ft, repository.files, repository.url)
+  run_install(cache_folder, package_path, ft, repository)
 end
 
 return M
