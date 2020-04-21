@@ -180,7 +180,7 @@ function M.install_parser(ft)
     if not string.match(yesno, '^y.*') then return end
   end
 
-  local repository = repositories[ft]
+  local repository = M.repositories[ft]
   if not repository then
     return api.nvim_err_writeln('Parser not available for language '..ft)
   end
