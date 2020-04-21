@@ -72,11 +72,11 @@ M.repositories = {
     url = "https://github.com/tree-sitter/tree-sitter-swift",
     files = { "src/parser.c" },
   },
-  -- TODO: find a way to install c-sharp and typescript properly
-  -- csharp = {
-  --   url = "https://github.com/tree-sitter/tree-sitter-c-sharp",
-  --   files = { "src/parser.c", "src/scanner.c" },
-  -- },
+  csharp = {
+    url = "https://github.com/tree-sitter/tree-sitter-c-sharp",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  -- TODO: find a way to install typescript properly
 }
 
 local function get_package_path()
@@ -120,7 +120,8 @@ local function iter_cmd(cmd_list, i, ft)
 end
 
 local function run_install(cache_folder, package_path, ft, repo)
-  local project_repo = cache_folder..'/tree-sitter-'..ft
+  local project_name = 'tree-sitter-'..ft
+  local project_repo = cache_folder..'/'..project_name
   local parser_lib_name = package_path.."/parser/"..ft..".so"
   local command_list = {
     {
@@ -134,7 +135,7 @@ local function run_install(cache_folder, package_path, ft, repo)
       info = 'Downloading...',
       err = 'Error during download, please verify your internet connection',
       opts = {
-        args = { 'clone', repo.url },
+        args = { 'clone', '--single-branch', '--branch', 'master', '--depth', '1', repo.url, project_name },
         cwd = cache_folder,
       },
     },
