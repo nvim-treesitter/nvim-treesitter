@@ -76,7 +76,16 @@ M.repositories = {
     url = "https://github.com/tree-sitter/tree-sitter-c-sharp",
     files = { "src/parser.c", "src/scanner.c" },
   },
-  -- TODO: find a way to install typescript properly
+  typescript = {
+    url = "https://github.com/tree-sitter/tree-sitter-typescript",
+    files = { "src/parser.c", "src/scanner.c" },
+    location = "tree-sitter-typescript/typescript"
+  },
+  tsx = {
+    url = "https://github.com/tree-sitter/tree-sitter-typescript",
+    files = { "src/parser.c", "src/scanner.c" },
+    location = "tree-sitter-tsx/tsx"
+  }
 }
 
 local function get_package_path()
@@ -122,6 +131,8 @@ end
 local function run_install(cache_folder, package_path, ft, repo)
   local project_name = 'tree-sitter-'..ft
   local project_repo = cache_folder..'/'..project_name
+  -- compile_location only needed for typescript installs.
+  local compile_location = cache_folder..'/'..(repo.location or project_name)
   local parser_lib_name = package_path.."/parser/"..ft..".so"
   local command_list = {
     {
@@ -145,13 +156,13 @@ local function run_install(cache_folder, package_path, ft, repo)
       err = 'Error during compilation',
       opts = {
         args = { '-o', 'parser.so', '-shared', '-lstdc++', unpack(repo.files), '-Os', '-I./src' },
-        cwd = project_repo
+        cwd = compile_location
       }
     },
     {
       cmd = 'mv',
       opts = {
-        args = { project_repo..'/parser.so', parser_lib_name }
+        args = { compile_location..'/parser.so', parser_lib_name }
       }
     },
     {
@@ -207,17 +218,19 @@ function M.checkhealth()
 
   if fn.executable('git') == 0 then
     health_error('`git` executable not found.', {
-      'Install it with your package manager.',
-      'Check that your `$PATH` is set correctly.'})
+        'Install it with your package manager.',
+        'Check that your `$PATH` is set correctly.'
+      })
   else
     health_ok('`git` executable found.')
   end
 
   if fn.executable('cc') == 0 then
     health_error('`cc` executable not found.', {
-      'Install `gcc` with your package manager.',
-      'Install `clang` with your package manager.',
-      'Check that your `$PATH` is set correctly.'})
+        'Install `gcc` with your package manager.',
+        'Install `clang` with your package manager.',
+        'Check that your `$PATH` is set correctly.'
+      })
   else
     health_ok('`cc` executable found.')
   end
