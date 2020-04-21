@@ -15,5 +15,6 @@ end
 -- To install, run `:lua require'nvim-treesitter'.install_parser('language')`
 -- we should add a vim layer over the lua function
 M.install_parser = install.install_parser
+M.list_parsers = install.list_parsers
 
 return M

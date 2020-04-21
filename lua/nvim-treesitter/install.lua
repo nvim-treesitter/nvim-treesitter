@@ -236,4 +236,21 @@ function M.checkhealth()
   end
 end
 
+function M.list_parsers()
+    local max_len = 0
+    for parser_name, _ in pairs(repositories) do
+        if #parser_name > max_len then max_len = #parser_name end
+    end
+
+    for parser_name, _ in pairs(repositories) do
+       local is_installed = #api.nvim_get_runtime_file('parser/'..parser_name..'.so', false) > 0
+       api.nvim_out_write(parser_name..string.rep(' ', max_len - #parser_name + 1))
+       if is_installed then
+           api.nvim_out_write("[✓] installed\n")
+       else
+           api.nvim_out_write("[✗] not installed\n")
+       end
+    end
+end
+
 return M
