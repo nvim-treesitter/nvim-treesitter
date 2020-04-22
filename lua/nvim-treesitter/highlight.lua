@@ -2,7 +2,9 @@ local api = vim.api
 local queries = require'nvim-treesitter.query'
 local ts = vim.treesitter
 
-local M = {}
+local M = {
+  highlighters={}
+}
 
 function M.setup(bufnr, ft)
   local buf = bufnr or api.nvim_get_current_buf()
@@ -11,7 +13,7 @@ function M.setup(bufnr, ft)
   local query = queries.get_query(ft, "highlights")
   if not query then return end
 
-  ts.TSHighlighter.new(query, buf, ft)
+  M.highlighters[buf] = ts.TSHighlighter.new(query, buf, ft)
 end
 
 return M
