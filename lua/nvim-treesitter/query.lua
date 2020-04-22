@@ -62,7 +62,7 @@ function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
       local preds = query.info.patterns[pattern]
       if preds then
         for _, pred in pairs(preds) do
-          if pred[1] == "set!" and pred[2] ~= nil then
+          if pred[1] == "set!" and type(pred[2]) == "string" then
             insert_to_path(prepared_match, split(pred[2]), pred[3])
           end
         end
