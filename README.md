@@ -54,7 +54,7 @@ Compiling...
 Treesitter parser for python has been installed
 ```
 
-Cool, let's see which parser is installed:
+Cool, lets see which parsers are installed:
 ```vim
 :TSInstallInfo
 csharp     [✗] not installed
@@ -102,4 +102,3 @@ If you do, it's highly possible that this is the cause of the problem.
 If everything is okay, then it might be an actual error.
 
 In both cases, feel free to open an issue here.
-
