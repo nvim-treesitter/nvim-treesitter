@@ -36,7 +36,7 @@ provides two command to tackle this issue:
   - `TSInstall` to install a given parser.
   - `TSInstallInfo` to know which parser is installed.
 
-Let's say you need a parser for `lua`, `c`, and `python`, this is how you do with these commands:
+Let's say you need parsers for `lua`, `c`, and `python`, this is how you do with these commands:
 ```vim
 :TSInstall c
 Downloading...
@@ -102,5 +102,4 @@ If you do, it's highly possible that this is the cause of the problem.
 If everything is okay, then it might be an actual error.
 
 In both cases, feel free to open an issue here.
-
 
