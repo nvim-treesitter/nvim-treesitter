@@ -1,92 +1,9 @@
 local api = vim.api
 local fn = vim.fn
 local luv = vim.loop
+local repositories = require'nvim-treesitter/configs'.repositories
 
 local M = {}
-M.repositories = {
-  javascript = {
-    url = "https://github.com/tree-sitter/tree-sitter-javascript",
-    files = { "src/parser.c", "src/scanner.c" },
-  },
-  c = {
-    url = "https://github.com/tree-sitter/tree-sitter-c",
-    files = { "src/parser.c" }
-  },
-  cpp = {
-    url = "https://github.com/tree-sitter/tree-sitter-cpp",
-    files = { "src/parser.c", "src/scanner.cc" }
-  },
-  rust = {
-    url = "https://github.com/tree-sitter/tree-sitter-rust",
-    files = { "src/parser.c", "src/scanner.c" },
-  },
-  lua = {
-    url = "https://github.com/nvim-treesitter/tree-sitter-lua",
-    files = { "src/parser.c", "src/scanner.cc" }
-  },
-  python = {
-    url = "https://github.com/tree-sitter/tree-sitter-python",
-    files = { "src/parser.c", "src/scanner.cc" },
-  },
-  go = {
-    url = "https://github.com/tree-sitter/tree-sitter-go",
-    files = { "src/parser.c" },
-  },
-  ruby = {
-    url = "https://github.com/tree-sitter/tree-sitter-ruby",
-    files = { "src/parser.c", "src/scanner.cc" },
-  },
-  bash = {
-    url = "https://github.com/tree-sitter/tree-sitter-bash",
-    files = { "src/parser.c", "src/scanner.cc" },
-  },
-  php = {
-    url = "https://github.com/tree-sitter/tree-sitter-php",
-    files = { "src/parser.c", "src/scanner.cc" },
-  },
-  java = {
-    url = "https://github.com/tree-sitter/tree-sitter-java",
-    files = { "src/parser.c" },
-  },
-  html = {
-    url = "https://github.com/tree-sitter/tree-sitter-html",
-    files = { "src/parser.c", "src/scanner.cc" },
-  },
-  julia = {
-    url = "https://github.com/tree-sitter/tree-sitter-julia",
-    files = { "src/parser.c", "src/scanner.c" },
-  },
-  json = {
-    url = "https://github.com/tree-sitter/tree-sitter-json",
-    files = { "src/parser.c" },
-  },
-  css = {
-    url = "https://github.com/tree-sitter/tree-sitter-css",
-    files = { "src/parser.c", "src/scanner.c" },
-  },
-  ocaml = {
-    url = "https://github.com/tree-sitter/tree-sitter-ocaml",
-    files = { "src/parser.c", "src/scanner.cc" },
-  },
-  swift = {
-    url = "https://github.com/tree-sitter/tree-sitter-swift",
-    files = { "src/parser.c" },
-  },
-  csharp = {
-    url = "https://github.com/tree-sitter/tree-sitter-c-sharp",
-    files = { "src/parser.c", "src/scanner.c" },
-  },
-  typescript = {
-    url = "https://github.com/tree-sitter/tree-sitter-typescript",
-    files = { "src/parser.c", "src/scanner.c" },
-    location = "tree-sitter-typescript/typescript"
-  },
-  tsx = {
-    url = "https://github.com/tree-sitter/tree-sitter-typescript",
-    files = { "src/parser.c", "src/scanner.c" },
-    location = "tree-sitter-tsx/tsx"
-  }
-}
 
 local function get_package_path()
   for _, path in pairs(api.nvim_list_runtime_paths()) do
@@ -185,7 +102,7 @@ local function run_install(cache_folder, package_path, ft, repo)
 end
 
 -- TODO(kyazdani): this should work on windows too
-function M.install_parser(ft)
+local function install(ft)
   if fn.has('win32') == 1 then
     return api.nvim_err_writeln('This command is not available on windows at the moment.')
   end
@@ -200,10 +117,15 @@ function M.install_parser(ft)
     if not string.match(yesno, '^y.*') then return end
   end
 
-  local repository = M.repositories[ft]
+  local repository = repositories[ft]
   if not repository then
     return api.nvim_err_writeln('Parser not available for language '..ft)
   end
+
+  vim.validate {
+    url={ repository.url, 'string' },
+    files={ repository.files, 'table' }
+  }
 
   if fn.executable('git') == 0 then
     return api.nvim_err_writeln('Git is required on your system to run this command')
@@ -218,33 +140,7 @@ function M.install_parser(ft)
   run_install(cache_folder, package_path, ft, repository)
 end
 
-function M.checkhealth()
-  local health_ok = vim.fn['health#report_ok']
-  local health_info = vim.fn['health#report_info']
-  local health_warn = vim.fn['health#report_warn']
-  local health_error = vim.fn['health#report_error']
-
-  if fn.executable('git') == 0 then
-    health_error('`git` executable not found.', {
-        'Install it with your package manager.',
-        'Check that your `$PATH` is set correctly.'
-      })
-  else
-    health_ok('`git` executable found.')
-  end
-
-  if fn.executable('cc') == 0 then
-    health_error('`cc` executable not found.', {
-        'Install `gcc` with your package manager.',
-        'Install `clang` with your package manager.',
-        'Check that your `$PATH` is set correctly.'
-      })
-  else
-    health_ok('`cc` executable found.')
-  end
-end
-
-function M.list_parsers()
+local function install_info()
   local max_len = 0
   for parser_name, _ in pairs(repositories) do
     if #parser_name > max_len then max_len = #parser_name end
@@ -258,6 +154,35 @@ function M.list_parsers()
     else
       api.nvim_out_write("[✗] not installed\n")
     end
+  end
+end
+
+M.commands = {
+  TSInstall = {
+    run = install,
+    args = {
+      "-nargs=1",
+      "-complete=custom,v:lua.ts_installable_parsers"
+    },
+    description = '`:TSInstall {ft}` installs a parser under nvim-treesitter/parser/{name}.so'
+  },
+  TSInstallInfo = {
+    run = install_info,
+    args = { "-nargs=0" },
+    description = '`:TSInstallInfo` print installation state for every filetype'
+  }
+}
+
+function M.setup()
+  for command_name, def in pairs(M.commands) do
+    local call_fn = string.format("lua require'nvim-treesitter.install'.commands.%s.run(<f-args>)", command_name)
+    local parts = vim.tbl_flatten({
+        "command!",
+        def.args,
+        command_name,
+        call_fn,
+      })
+    api.nvim_command(table.concat(parts, " "))
   end
 end
 
