@@ -5,13 +5,13 @@ Treesitter configurations and abstraction layer for Neovim.
 # Quickstart
 
 ## Requirements
-  - Neovim nightly ([more](https://github.com/neovim/neovim#install-from-source))
-  - `git` in you path.
-  - A C compiler in you path.
+  - Neovim [nightly](https://github.com/neovim/neovim#install-from-source)
+  - `git` in your path.
+  - A C compiler in your path.
 
 ## Installation
 
-You can install `nvim-treesitter` with you favorite package manager, or even using the default `pack` feature of neovim !
+You can install `nvim-treesitter` with your favorite package manager, or using the default `pack` feature of neovim !
 
 ### Using a package manager
 
@@ -22,7 +22,7 @@ Plug 'nvim-treesitter/nvim-treesitter'
 
 ### Using neovim `pack` feature
 
-As this is a bit more advanced, we highly recommend reading `:h packages`, but you can also follow these steps:
+We highly recommend reading `:h packages` to learn more about this feature, but you can still follow these steps:
 ```sh
 $ mkdir -p ~/.local/share/nvim/site/pack/nvim-treesitter/start
 $ cd ~/.local/share/nvim/site/pack/nvim-treesitter/start
@@ -31,12 +31,12 @@ $ git clone https://github.com/nvim-treesitter/nvim-treesitter.git
 
 ## Adding parsers
 
-Treesitter is based on a _parser_ for each language. Installing them can be quite a pain, but fortunately `nvim-treesitter` provides two
-command to tackle this for you :
+Treesitter is using a different _parser_ for every language. It can be quite a pain to install, but fortunately `nvim-treesitter` 
+provides two command to tackle this issue:
   - `TSInstall` to install a given parser.
   - `TSInstallInfo` to know which parser is installed.
 
-Let's say you want to have a parser for `lua`, `c`, and `python`, here is how to use the commands :
+Let's say you need a parser for `lua`, `c`, and `python`, this is how you do with these commands:
 ```vim
 :TSInstall c
 Downloading...
@@ -54,7 +54,7 @@ Compiling...
 Treesitter parser for python has been installed
 ```
 
-Cool, let's check which parser is installed now:
+Cool, let's see which parser is installed:
 ```vim
 :TSInstallInfo
 csharp     [✗] not installed
@@ -83,23 +83,22 @@ And now you should be able to use every functionnality `nvim-treesitter` provide
 
 ## Features and Roadmap
 
-The goal of `nvim-treesitter` is both to provide a simple and easy to use interface to treesitter in neovim, and to add some
-functionnalities to use it out of the box.
+The goal of `nvim-treesitter` is both to provide a simple and easy way to use the interface for treesitter in neovim,
+but also to add some functionnalities to it:
 Some of these features are :
   - [ ] Incremental selection
   - [ ] Syntax based code folding
   - [ ] Consistent syntax highlighting
 
-You can find the roadmap [here](https://github.com/nvim-treesitter/nvim-treesitter/projects/1). This roadmap and all features
-of this plugin are everything but definitively determined, and any suggestion will be highly apreciated !
+You can find the roadmap [here](https://github.com/nvim-treesitter/nvim-treesitter/projects/1).
+The roadmap and all features of this plugin are open to change, and any suggestion will be highly apreciated !
 
 ## Troubleshooting
-Before doing anything run `:checkhealth nvim_treesitter`. This will give a better overview of which part of the plugin is the
-source of the bug.
+Before doing anything run `:checkhealth nvim_treesitter`. This will help you find where the bug might come from.
 
 ### Feature `X` does not work for language `Y`...
-First, check in the `## Y parser healthcheck` section of `:checkhealth` if you have any warning.
-If you do, it is highly possible that this is the cause of the problem.
+First, check the `## Y parser healthcheck` section of `:checkhealth` if you have any warning.
+If you do, it's highly possible that this is the cause of the problem.
 If everything is okay, then it might be an actual error.
 
 In both cases, feel free to open an issue here.
