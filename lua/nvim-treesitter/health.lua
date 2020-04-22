@@ -13,7 +13,7 @@ local health_error = vim.fn['health#report_error']
 
 local M = {}
 
-local function configs_health()
+local function install_health()
   if fn.executable('git') == 0 then
     health_error('`git` executable not found.', {
         'Install it with your package manager.',
@@ -38,11 +38,11 @@ end
 function M.checkhealth()
   -- Installation dependency checks
   health_start('Installation')
-  configs_health()
+  install_health()
 
   local missing_parsers = {}
   -- Parser installation checks
-  for parser_name in pairs(configs.repositories) do
+  for _, parser_name in pairs(configs.available_parsers()) do
     local installed = #api.nvim_get_runtime_file('parser/'..parser_name..'.so', false)
 
     -- Only print informations about installed parsers
