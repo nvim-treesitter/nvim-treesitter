@@ -68,8 +68,8 @@ function M.get_definitions(bufnr)
   local defs = {}
 
   for _, loc in ipairs(locals) do
-    if loc.definition then
-      table.insert(defs, {definition=loc.definition, kind=loc.kind})
+    if loc.definition and loc.definition.node then
+      table.insert(defs, {node=loc.definition.node, kind=loc.kind})
     end
   end
 
@@ -82,8 +82,8 @@ function M.get_scopes(bufnr)
   local scopes = {}
 
   for _, loc in ipairs(locals) do
-    if loc.scope then
-      table.insert(scopes, loc.scope)
+    if loc.scope and loc.scope.node then
+      table.insert(scopes, loc.scope.node)
     end
   end
 
@@ -96,8 +96,8 @@ function M.get_references(bufnr)
   local refs = {}
 
   for _, loc in ipairs(locals) do
-    if loc.reference then
-      table.insert(refs, loc.reference)
+    if loc.reference and loc.reference.node then
+      table.insert(refs, loc.reference.node)
     end
   end
 
