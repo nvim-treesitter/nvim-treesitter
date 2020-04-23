@@ -50,6 +50,7 @@
 
 ;; Nodes
 (function "function" @function "end" @function)
+(local_function "function" @function "end" @function)
 (table "{" @operator "}" @operator)
 (comment) @comment
 (string) @string

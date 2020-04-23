@@ -17,13 +17,19 @@
    (parameters (identifier) @definition))
   (set! definition.kind "v"))
 
+;; Loops
+((loop_expression
+   (identifier) @definition)
+  (set! definition.kind "v"))
+
 ;; Function definitions
 ;; Functions definitions creates both a definition and a new scope
 ((function
-   (function_name_field
-     object: (identifier) @definition.associated
-     (property_identifier) @definition)) @scope
-  (set! definition.kind "m"))
+   (function_name
+     (function_name_field
+       (identifier) @definition.associated
+       (property_identifier) @definition))) @scope
+ (set! definition.kind "m"))
 
 ((function
    (function_name (identifier) @definition)) @scope
@@ -36,10 +42,7 @@
 ((if_statement) @scope)
 ((for_in_statement) @scope)
 ((repeat_statement) @scope)
-;; Loops
-((loop_expression
-   (identifier) @definition)
-  (set! definition.kind "v"))
+((while_statement) @scope)
 
 ;;; REFERENCES
 ((identifier) @reference)
