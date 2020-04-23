@@ -75,6 +75,8 @@ function M.setup_commands(mod, commands)
       })
     api.nvim_command(table.concat(parts, " "))
   end
+end
+
 --- Gets the smallest scope which contains @param node
 function M.smallest_containing_scope(node, bufnr)
   local bufnr = bufnr or api.nvim_get_current_buf()
