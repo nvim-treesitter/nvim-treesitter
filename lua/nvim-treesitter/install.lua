@@ -77,6 +77,7 @@ local function run_install(cache_folder, package_path, ft, repo)
             'parser.so',
             '-shared',
             '-lstdc++',
+            '-fPIC',
             '-Os',
             '-I./src',
             repo.files
