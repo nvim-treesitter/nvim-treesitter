@@ -11,6 +11,6 @@ function! nvim_treesitter#select_node_incr()
   call s:visual_node(luaeval('require"nvim-treesitter.textobj".node_incremental()'))
 endfunction
 
-function! nvim_treesitter#select_context_incr()
-  call s:visual_node(luaeval('require"nvim-treesitter.textobj".context_incremental()'))
+function! nvim_treesitter#select_scope_incr()
+  call s:visual_node(luaeval('require"nvim-treesitter.textobj".scope_incremental()'))
 endfunction
