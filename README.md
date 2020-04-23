@@ -11,7 +11,7 @@ Treesitter configurations and abstraction layer for Neovim.
 
 ## Installation
 
-You can install `nvim-treesitter` with your favorite package manager, or using the default `pack` feature of neovim !
+You can install `nvim-treesitter` with your favorite package manager, or using the default `pack` feature of Neovim!
 
 ### Using a package manager
 
@@ -79,19 +79,19 @@ bash       [✗] not installed
 tsx        [✗] not installed
 ```
 
-And now you should be able to use every functionnality `nvim-treesitter` provides !
+And now you should be able to use every functionality `nvim-treesitter` provides!
 
 ## Features and Roadmap
 
-The goal of `nvim-treesitter` is both to provide a simple and easy way to use the interface for treesitter in neovim,
-but also to add some functionnalities to it:
+The goal of `nvim-treesitter` is both to provide a simple and easy way to use the interface for Treesitter in Neovim,
+but also to add some functionalities to it:
 Some of these features are :
   - [ ] Incremental selection
   - [ ] Syntax based code folding
   - [ ] Consistent syntax highlighting
 
 You can find the roadmap [here](https://github.com/nvim-treesitter/nvim-treesitter/projects/1).
-The roadmap and all features of this plugin are open to change, and any suggestion will be highly apreciated !
+The roadmap and all features of this plugin are open to change, and any suggestion will be highly appreciated!
 
 ## Troubleshooting
 Before doing anything run `:checkhealth nvim_treesitter`. This will help you find where the bug might come from.
