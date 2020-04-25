@@ -56,30 +56,22 @@ end)
 function M.attach(bufnr)
   local buf = bufnr or api.nvim_get_current_buf()
 
-  local function textobj_create(mapping, funcname)
+  local config = require'nvim-treesitter.configs'.get_config().textobj
+  for funcname, mapping in pairs(config.keymaps) do
     api.nvim_buf_set_keymap(buf, 'v', mapping,
       string.format(":lua require'nvim-treesitter.textobj'.%s()<CR>", funcname), { silent = true })
     api.nvim_buf_set_keymap(buf, 'o', mapping,
       string.format(":normal v%s<CR>", mapping), { silent = true })
-  end
-
-  local config = require'nvim-treesitter.configs'.get_config().textobj
-  for funcname, mapping in pairs(config.keymaps) do
-    textobj_create(mapping, funcname)
   end
 end
 
 function M.detach(bufnr)
   local buf = bufnr or api.nvim_get_current_buf()
 
-  local function textobj_delete(mapping)
-    api.nvim_buf_del_keymap(buf, 'v', default_mapping)
-    api.nvim_buf_del_keymap(buf, 'o', default_mapping)
-  end
-
   local config = require'nvim-treesitter.configs'.get_config().textobj
   for _, mapping in pairs(config.keymaps) do
-    textobj_delete(mapping)
+    api.nvim_buf_del_keymap(buf, 'v', mapping)
+    api.nvim_buf_del_keymap(buf, 'o', mapping)
   end
 end
 
