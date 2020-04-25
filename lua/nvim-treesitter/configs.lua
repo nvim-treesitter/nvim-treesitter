@@ -206,7 +206,9 @@ local function enable_all(mod, ft)
     end
   end
   if ft then
-    enable_mod_conf_autocmd(mod, ft)
+    if parser_utils.has_parser(ft) then
+      enable_mod_conf_autocmd(mod, ft)
+    end
   else
     for _, ft in pairs(M.available_parsers()) do
       if parser_utils.has_parser(ft) then
@@ -245,9 +247,7 @@ local function disable_all(mod, ft)
     disable_mod_conf_autocmd(mod, ft)
   else
     for _, ft in pairs(M.available_parsers()) do
-      if parser_utils.has_parser(ft) then
-        disable_mod_conf_autocmd(mod, ft)
-      end
+      disable_mod_conf_autocmd(mod, ft)
     end
     config[mod].enable = false
   end
@@ -291,7 +291,9 @@ M.commands = {
 -- @param mod: module (string)
 -- @param ft: filetype (string)
 function M.is_enabled(mod, ft)
-  if not M.get_parser_configs()[ft] then return false end
+  if not M.get_parser_configs()[ft] or not parser_utils.has_parser(ft) then
+    return false
+  end
 
   local module_config = M.get_config()[mod]
   if not module_config then return false end
