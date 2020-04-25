@@ -1,30 +1,28 @@
 local api = vim.api
 local parsers = require'nvim-treesitter.parsers'
-local configs = require 'nvim-treesitter.configs'
 local install = require'nvim-treesitter.install'
 local locals = require'nvim-treesitter.locals'
-local highlight = require'nvim-treesitter.highlight'
+local utils = require'nvim-treesitter.utils'
+local info = require'nvim-treesitter.info'
+local configs = require'nvim-treesitter.configs'
 
 local M = {}
-
-function M.available_parsers()
-  return vim.tbl_keys(configs.repositories)
-end
 
 -- This function sets up everythin needed for a given language
 -- this is the main interface through the plugin
 function M.setup(lang)
-  if parsers.has_parser(lang) then
-    local autocmd = "autocmd NvimTreesitter FileType %s lua require'nvim-treesitter.highlight'.setup()"
-    api.nvim_command(string.format(autocmd, lang))
-  end
-end
+  utils.setup_commands('install', install.commands)
+  utils.setup_commands('info', info.commands)
+  utils.setup_commands('configs', configs.commands)
 
--- This function initialize the plugin
--- it is run at startup
-M._root = {}
-function M._root.setup()
-  install.setup()
+  for _, ft in pairs(configs.available_parsers()) do
+    for _, mod in pairs(configs.available_modules()) do
+      if parsers.has_parser(ft) and configs.is_enabled(mod, ft) then
+        local cmd = string.format("lua require'nvim-treesitter.%s'.attach()", mod)
+        api.nvim_command(string.format("autocmd FileType %s %s", ft, cmd))
+      end
+    end
+  end
 end
 
 return M
