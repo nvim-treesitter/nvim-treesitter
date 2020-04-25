@@ -1,4 +1,4 @@
-" Last Change: 2020 avril 19
+" Last Change: 2020 avril 25
 
 if exists('g:loaded_nvim_treesitter')
   finish

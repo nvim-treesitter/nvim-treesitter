@@ -1,6 +1,7 @@
 -- Utils collection for nvim-treesitter
 local api = vim.api
 local parsers = require'nvim-treesitter.parsers'
+local locals = require'nvim-treesitter.locals'
 
 local M = {}
 
@@ -74,6 +75,22 @@ function M.setup_commands(mod, commands)
       })
     api.nvim_command(table.concat(parts, " "))
   end
+end
+
+--- Gets the smallest scope which contains @param node
+function M.smallest_containing_scope(node, bufnr)
+  local bufnr = bufnr or api.nvim_get_current_buf()
+
+  local root = parsers.get_parser(bufnr):parse():root()
+  if not node then return root end
+
+  local scopes = locals.get_scopes(bufnr)
+  local current = node
+  while current ~= nil and not vim.tbl_contains(scopes, current) do
+    current = current:parent()
+  end
+
+  return current or root
 end
 
 return M

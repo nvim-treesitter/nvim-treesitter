@@ -157,12 +157,15 @@ local config = {
       return queries.get_query(ft, 'highlights') ~= nil
     end
   },
-  -- selection = {
-  --   enable = false,
-  --   disable = {},
-  --   keymaps = {},
-  --   is_supported = function() return false end
-  -- },
+  textobj = {
+    enable = false,
+    disable = {},
+    keymaps = {
+      node_incremental="grn",
+      scope_incremental="grc"
+    },
+    is_supported = function() return true end
+  },
   -- folding = {
   --   enable = false,
   --   disable = {},
