@@ -1,8 +1,8 @@
 local api = vim.api
 local fn = vim.fn
 local luv = vim.loop
-local configs = require'nvim-treesitter/configs'
-local parsers = configs.get_parser_configs()
+local configs = require'nvim-treesitter.configs'
+local parsers = configs.get_configs()
 
 local M = {}
 
@@ -143,6 +143,22 @@ local function install(ft)
   run_install(cache_folder, package_path, ft, install_info)
 end
 
+local function install_info()
+  local max_len = 0
+  for ft in pairs(parsers) do
+    if #ft > max_len then max_len = #ft end
+  end
+
+  for ft in pairs(parsers) do
+    api.nvim_out_write(ft..string.rep(' ', max_len - #ft + 1))
+    if utils.has_parser(ft) then
+      api.nvim_out_write("[✓] installed\n")
+    else
+      api.nvim_out_write("[✗] not installed\n")
+    end
+  end
+end
+
 M.commands = {
   TSInstall = {
     run = install,
@@ -151,6 +167,13 @@ M.commands = {
       "-complete=custom,v:lua.ts_installable_parsers"
     },
     description = '`:TSInstall {ft}` installs a parser under nvim-treesitter/parser/{name}.so'
+  },
+  TSInstallInfo = {
+    run = install_info,
+    args = {
+      "-nargs=0",
+    },
+    description = '`:TSInstallInfo` print installation state for every filetype'
   }
 }
 

@@ -1,5 +1,3 @@
--- Treesitter utils
-
 local api = vim.api
 local ts = vim.treesitter
 
