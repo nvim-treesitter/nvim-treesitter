@@ -10,22 +10,6 @@ local M = {
   locals={}
 }
 
-function M.checkhealth(lang)
-  local health_start = vim.fn["health#report_start"]
-  local health_ok = vim.fn['health#report_ok']
-  local health_info = vim.fn['health#report_info']
-  local health_warn = vim.fn['health#report_warn']
-  local health_error = vim.fn['health#report_error']
-
-  if not queries.get_query(lang, "locals") then
-    health_warn("No `locals.scm` query found for " .. lang, {
-      "Open an issue at https://github.com/nvim-treesitter/nvim-treesitter"
-    })
-  else
-    health_ok("`locals.scm` found.")
-  end
-end
-
 function M.collect_locals(bufnr)
   local ft = api.nvim_buf_get_option(bufnr, "ft")
   if not ft then return end
