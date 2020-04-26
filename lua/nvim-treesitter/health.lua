@@ -35,6 +35,27 @@ local function install_health()
   end
 end
 
+local function highlight_health(lang)
+  if not queries.get_query(lang, "highlights") then
+    health_warn("No `highlights.scm` query found for " .. lang, {
+      "Open an issue at https://github.com/nvim-treesitter/nvim-treesitter"
+    })
+  else
+    health_ok("`highlights.scm` found.")
+  end
+end
+
+function locals_health(lang)
+  if not queries.get_query(lang, "locals") then
+    health_warn("No `locals.scm` query found for " .. lang, {
+      "Open an issue at https://github.com/nvim-treesitter/nvim-treesitter"
+    })
+  else
+    health_ok("`locals.scm` found.")
+  end
+end
+
+
 -- TODO(vigoux): Maybe we should move each check to be perform in its own module
 function M.checkhealth()
   -- Installation dependency checks
@@ -51,8 +72,8 @@ function M.checkhealth()
       health_start(parser_name .. " parser healthcheck")
       health_ok(parser_name .. " parser found.")
 
-      locals.checkhealth(parser_name)
-      highlight.checkhealth(parser_name)
+      locals_health(parser_name)
+      highlight_health(parser_name)
     elseif installed > 1 then
       health_warn(string.format("Multiple parsers found for %s, only %s will be used.", parser_name, installed[1]))
     else
