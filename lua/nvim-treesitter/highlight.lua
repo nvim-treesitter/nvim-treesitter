@@ -25,4 +25,20 @@ function M.detach(bufnr)
   api.nvim_buf_set_option(buf, 'syntax', 'on')
 end
 
+function M.checkhealth(lang)
+  local health_start = vim.fn["health#report_start"]
+  local health_ok = vim.fn['health#report_ok']
+  local health_info = vim.fn['health#report_info']
+  local health_warn = vim.fn['health#report_warn']
+  local health_error = vim.fn['health#report_error']
+
+  if not queries.get_query(lang, "highlights") then
+    health_warn("No `highlights.scm` query found for " .. lang, {
+      "Open an issue at https://github.com/nvim-treesitter/nvim-treesitter"
+    })
+  else
+    health_ok("`highlights.scm` found.")
+  end
+end
+
 return M

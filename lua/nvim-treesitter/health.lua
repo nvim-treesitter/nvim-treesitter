@@ -3,6 +3,7 @@ local fn = vim.fn
 
 local queries = require'nvim-treesitter.query'
 local locals = require'nvim-treesitter.locals'
+local highlight = require'nvim-treesitter.highlight'
 local configs = require'nvim-treesitter.configs'
 
 local health_start = vim.fn["health#report_start"]
@@ -51,6 +52,7 @@ function M.checkhealth()
       health_ok(parser_name .. " parser found.")
 
       locals.checkhealth(parser_name)
+      highlight.checkhealth(parser_name)
     elseif installed > 1 then
       health_warn(string.format("Multiple parsers found for %s, only %s will be used.", parser_name, installed[1]))
     else
