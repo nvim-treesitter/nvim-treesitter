@@ -34,9 +34,9 @@ local function get_cache_dir()
 end
 
 local function iter_cmd(cmd_list, i, ft)
-  if i == #cmd_list then return print('Treesitter parser for '..ft..' has been installed') end
+  if i == #cmd_list + 1 then return print('Treesitter parser for '..ft..' has been installed') end
 
-  local attr = cmd_list[i + 1]
+  local attr = cmd_list[i]
   if attr.info then print(attr.info) end
 
   handle = luv.spawn(attr.cmd, attr.opts, vim.schedule_wrap(function(code)
@@ -76,12 +76,12 @@ local function run_install(cache_folder, package_path, ft, repo)
         args = vim.tbl_flatten({
             '-o',
             'parser.so',
+            '-I./src',
+            repo.files,
             '-shared',
+            '-Os',
             '-lstdc++',
             '-fPIC',
-            '-Os',
-            '-I./src',
-            repo.files
           }),
         cwd = compile_location
       }
@@ -100,7 +100,7 @@ local function run_install(cache_folder, package_path, ft, repo)
     }
   }
 
-  iter_cmd(command_list, 0, ft)
+  iter_cmd(command_list, 1, ft)
 end
 
 -- TODO(kyazdani): this should work on windows too
