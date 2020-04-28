@@ -81,17 +81,79 @@ tsx        [✗] not installed
 
 And now you should be able to use every functionality `nvim-treesitter` provides!
 
+## Setup
+
+in your `init.vim`:
+
+```lua
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    highlight = {
+        enable = true,                 -- false will disable the whole extension
+        disable = { 'c', 'rust' },     -- list of language that will be disabled
+    },
+    textobj = {                        -- this enables incremental selection
+        enable = true,
+        disable = { 'cpp', 'lua' },
+        keymaps = {                       -- mappings for incremental selection (visual mappings)
+          node_incremental = "<leader>e",  -- "grn" by default,
+          scope_incremental = "<leader>f" -- "grc" by default
+        }
+    }
+}
+EOF
+```
+
+## Commands
+
+Each feature can be enabled or disabled by different means:
+```vim
+:TSBufEnable {module} " enable module on current buffer
+:TSBufDisable {module} " disable module on current buffer
+:TSEnableAll {module} [{ft}] " enable module on every buffer. If filetype is specified, enable only for this filetype.
+:TSDisableAll {module} [{ft}] " disable module on every buffer. If filetype is specified, disable only for this filetype.
+:TSModuleInfo [{module}] " list information about modules state for each filetype
+```
+
 ## Features and Roadmap
 
 The goal of `nvim-treesitter` is both to provide a simple and easy way to use the interface for Treesitter in Neovim,
 but also to add some functionalities to it:
 Some of these features are :
-  - [ ] Incremental selection
+  - [x] Incremental selection
   - [ ] Syntax based code folding
-  - [ ] Consistent syntax highlighting
+  - [x] Consistent syntax highlighting (the api is not quite stable yet)
 
 You can find the roadmap [here](https://github.com/nvim-treesitter/nvim-treesitter/projects/1).
 The roadmap and all features of this plugin are open to change, and any suggestion will be highly appreciated!
+
+## Supported Languages
+
+For treesitter to work, we need to use query files such as those you can find in `queries/{lang}/{locals,highlights}.scm`
+
+We are looking for maintainers to write query files for their languages.
+
+List of currently supported languages:
+- [x] lua  (maintained by @vigoux)
+- [x] ruby (maintained by @TravonteD)
+- [ ] c
+- [ ] go
+- [ ] cpp
+- [ ] rust
+- [ ] python
+- [ ] javascript
+- [ ] typescript
+- [ ] tsx
+- [ ] json
+- [ ] html
+- [ ] csharp
+- [ ] swift
+- [ ] java
+- [ ] ocaml
+- [ ] css
+- [ ] julia
+- [ ] php
+- [ ] bash
 
 ## Troubleshooting
 Before doing anything run `:checkhealth nvim_treesitter`. This will help you find where the bug might come from.
