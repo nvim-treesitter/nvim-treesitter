@@ -2,10 +2,10 @@
 
 Minimum version of neovim: nightly
 
-Authors: Yazdani Kiyan <yazdani.kiyan@protonmail.com>, Vigouroux Thomas <@EMAIL?>
+Authors: Yazdani Kiyan <yazdani.kiyan@protonmail.com>, Vigouroux Thomas <tomvig38@gmail.com>
 
 ==============================================================================
-INTRODUCTION                                       *nvim-treesitter*
+INTRODUCTION                                       *nvim-treesitter-intro*
 
 nvim-treesitter wraps the neovim treesitter api to provide functionnalities such
 as highlighting and incremental selection, and a command to easily install parsers.
@@ -14,41 +14,41 @@ as highlighting and incremental selection, and a command to easily install parse
 QUICK START                                        *nvim-treesitter-quickstart*
 
 Install the parser for your language
+
 >
-:TSInstall {language}
+  :TSInstall {language}
 <
 
 To get a list of supported languages
+
 >
-:TSInstallInfo
+  :TSInstallInfo
 <
 
 By default, everything is disabled. To enable support for features, in your `init.vim`:
 
 >
-
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-    highlight = {
-        enable = true,             -- false will disable the whole extension
-        disable = { 'c', 'rust' }, -- list of language that will be disabled
-    },
-    textobj = {                        -- this enables incremental selection
-        enable = true,
-        disable = { 'cpp', 'lua' },
-        keymaps = {                       -- mappings for visual selection
-          node_incremental = "<leader>e"  -- "grn" by default,
-          scope_incremental = "<leader>f" -- "grc" by default
-        }
-    }
-}
-
+  lua <<EOF
+  require'nvim-treesitter.configs'.setup {
+      highlight = {
+          enable = true,             -- false will disable the whole extension
+          disable = { 'c', 'rust' }, -- list of language that will be disabled
+      },
+      textobj = {                        -- this enables incremental selection
+          enable = true,
+          disable = { 'cpp', 'lua' },
+          keymaps = {                       -- mappings for visual selection
+            node_incremental = "<leader>e",  -- "grn" by default,
+            scope_incremental = "<leader>f" -- "grc" by default
+          }
+      }
+  }
 <
 
 ==============================================================================
-COMMANDS                                           *nvim-treesitter-commands*
+COMMANDS                                          *nvim-treesitter-commands*
 
-|:TSInstall| {language} 	                       *:TSInstall*
+|:TSInstall| {language}                            *:TSInstall*
 
 Download, compile and install a parser for {language}
 
@@ -74,7 +74,7 @@ particular language.
 A list of modules can be found at |:TSModuleInfo|
 A list of languages can be found at |:TSInstallInfo|
 
-|:TSBufDisableAll| {module} [{language}]           *:TSBufDisableAll*
+|:TSBufDisableAll| {module} [{language}]            *:TSBufDisableAll*
 
 Disable {module} for the session
 if {language} is specified, disable module for the session only for this
@@ -82,7 +82,7 @@ particular language.
 A list of modules can be found at |:TSModuleInfo|
 A list of languages can be found at |:TSInstallInfo|
 
-|:TSModuleInfo| [{module}]                         *:TSModuleInfo*
+|:TSModuleInfo| [{module}]                          *:TSModuleInfo*
 
 List modules state for the current session.
 
