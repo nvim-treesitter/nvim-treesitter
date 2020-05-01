@@ -145,6 +145,62 @@ parsers.tsx = {
   }
 }
 
+parsers.scala = {
+  install_info = {
+    url = "https://github.com/tree-sitter/tree-sitter-scala",
+    files = { "src/parser.c", "src/scanner.c" },
+  }
+}
+
+parsers.haskell = {
+  install_info = {
+    url = "https://github.com/tree-sitter/tree-sitter-haskell",
+    files = { "src/parser.c", "src/scanner.cc" },
+  }
+}
+
+parsers.markdown = {
+  install_info = {
+    url = "https://github.com/ikatyang/tree-sitter-markdown",
+    files = { "src/parser.c", "src/scanner.cc" },
+  }
+}
+
+parsers.toml = {
+  install_info = {
+    url = "https://github.com/ikatyang/tree-sitter-toml",
+    files = { "src/parser.c", "src/scanner.c" },
+  }
+}
+
+parsers.vue = {
+  install_info = {
+    url = "https://github.com/ikatyang/tree-sitter-vue",
+    files = { "src/parser.c", "src/scanner.cc" },
+  }
+}
+
+parsers.elm = {
+  install_info = {
+    url = "https://github.com//razzeee/tree-sitter-elm",
+    files = { "src/parser.c", "src/scanner.cc" },
+  }
+}
+
+parsers.yaml = {
+  install_info = {
+    url = "https://github.com/ikatyang/tree-sitter-yaml",
+    files = { "src/parser.c", "src/scanner.cc" },
+  }
+}
+
+parsers.nix = {
+  install_info = {
+    url = "https://github.com/cstrahan/tree-sitter-nix",
+    files = { "src/parser.c", "src/scanner.cc" },
+  }
+}
+
 -- @enable can be true or false
 -- @disable is a list of languages, only relevant if enable is true
 -- @keymaps list of user mappings for a given module if relevant
