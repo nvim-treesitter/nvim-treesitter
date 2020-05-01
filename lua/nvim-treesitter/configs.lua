@@ -223,6 +223,17 @@ local config = {
       },
       is_supported = function() return true end
     },
+    node_movement = {                        -- this enables incremental selection
+      enable = false,
+      disable = {},
+      is_supported = function() return true end,
+      keymaps = {
+        move_up = "<a-k>",
+        move_down = "<a-j>",
+        move_left = "<a-h>",
+        move_right = "<a-l>",
+      },
+    },
     -- folding = {
     --   enable = false,
     --   disable = {},
