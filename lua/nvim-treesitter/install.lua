@@ -40,9 +40,11 @@ local function iter_cmd(cmd_list, i, ft)
   local attr = cmd_list[i]
   if attr.info then print(attr.info) end
 
+  local handle
+
   handle = luv.spawn(attr.cmd, attr.opts, vim.schedule_wrap(function(code)
     handle:close()
-    if code ~= 0 then return api.nvim_err_writeln(attr.err) end 
+    if code ~= 0 then return api.nvim_err_writeln(attr.err) end
     iter_cmd(cmd_list, i + 1, ft)
   end))
 end
