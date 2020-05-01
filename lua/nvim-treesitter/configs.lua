@@ -325,6 +325,9 @@ function M.setup(user_data)
       if config[mod].keymaps and type(data.keymaps) == 'table' then
         config[mod].keymaps = data.keymaps
       end
+      if mod == 'ensure_installed' then
+        require'nvim-treesitter/install'.ensure_installed(data)
+      end
     end
   end
 end
