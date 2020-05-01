@@ -3,6 +3,7 @@ local fn = vim.fn
 local luv = vim.loop
 local configs = require'nvim-treesitter/configs'
 local parsers = configs.get_parser_configs()
+local has_parser = require'nvim-treesitter/parsers'.has_parser
 
 local M = {}
 
@@ -39,9 +40,11 @@ local function iter_cmd(cmd_list, i, ft)
   local attr = cmd_list[i]
   if attr.info then print(attr.info) end
 
+  local handle
+
   handle = luv.spawn(attr.cmd, attr.opts, vim.schedule_wrap(function(code)
     handle:close()
-    if code ~= 0 then return api.nvim_err_writeln(attr.err) end 
+    if code ~= 0 then return api.nvim_err_writeln(attr.err) end
     iter_cmd(cmd_list, i + 1, ft)
   end))
 end
@@ -142,6 +145,24 @@ local function install(ft)
 
   run_install(cache_folder, package_path, ft, install_info)
 end
+
+
+M.ensure_installed = function(languages)
+  if type(languages) == 'string' then
+    if languages == 'all' then
+      languages = configs.available_parsers()
+    else
+      languages = {languages}
+    end
+  end
+
+  for _, ft in ipairs(languages) do
+    if not has_parser(ft) then
+      install(ft)
+    end
+  end
+end
+
 
 M.commands = {
   TSInstall = {
