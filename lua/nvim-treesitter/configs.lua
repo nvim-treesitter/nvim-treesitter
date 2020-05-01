@@ -150,28 +150,31 @@ parsers.tsx = {
 -- @keymaps list of user mappings for a given module if relevant
 -- @is_supported function which, given a ft, will return true if the ft works on the module
 local config = {
-  highlight = {
-    enable = false,
-    disable = {},
-    is_supported = function(ft)
-      return queries.get_query(ft, 'highlights') ~= nil
-    end
-  },
-  textobj = {
-    enable = false,
-    disable = {},
-    keymaps = {
-      node_incremental="grn",
-      scope_incremental="grc"
+  modules = {
+    highlight = {
+      enable = false,
+      disable = {},
+      is_supported = function(ft)
+        return queries.get_query(ft, 'highlights') ~= nil
+      end
     },
-    is_supported = function() return true end
+    textobj = {
+      enable = false,
+      disable = {},
+      keymaps = {
+        node_incremental="grn",
+        scope_incremental="grc"
+      },
+      is_supported = function() return true end
+    },
+    -- folding = {
+    --   enable = false,
+    --   disable = {},
+    --   keymaps = {},
+    --   is_supported = function() return false end
+    -- }
   },
-  -- folding = {
-  --   enable = false,
-  --   disable = {},
-  --   keymaps = {},
-  --   is_supported = function() return false end
-  -- }
+  ensure_installed = nil
 }
 
 local M = {}
@@ -179,7 +182,7 @@ local M = {}
 local function enable_module(mod, bufnr, ft)
   local bufnr = bufnr or api.nvim_get_current_buf()
   local ft = ft or api.nvim_buf_get_option(bufnr, 'ft')
-  if not parsers[ft] or not config[mod] then
+  if not parsers[ft] or not config.modules[mod] then
     return
   end
 
@@ -188,20 +191,20 @@ local function enable_module(mod, bufnr, ft)
 end
 
 local function enable_mod_conf_autocmd(mod, ft)
-  if not config[mod] or M.is_enabled(mod, ft) then return end
+  if not config.modules[mod] or M.is_enabled(mod, ft) then return end
 
   local cmd = string.format("lua require'nvim-treesitter.%s'.attach()", mod)
   api.nvim_command(string.format("autocmd FileType %s %s", ft, cmd))
-  for i, parser in pairs(config[mod].disable) do
+  for i, parser in pairs(config.modules[mod].disable) do
     if parser == ft then
-      table.remove(config[mod].disable, i)
+      table.remove(config.modules[mod].disable, i)
       break
     end
   end
 end
 
 local function enable_all(mod, ft)
-  if not config[mod] then return end
+  if not config.modules[mod] then return end
 
   for _, bufnr in pairs(api.nvim_list_bufs()) do
     if not ft or api.nvim_buf_get_option(bufnr, 'ft') == ft then
@@ -219,13 +222,13 @@ local function enable_all(mod, ft)
       end
     end
   end
-  config[mod].enable = true
+  config.modules[mod].enable = true
 end
 
 local function disable_module(mod, bufnr, ft)
   local bufnr = bufnr or api.nvim_get_current_buf()
   local ft = ft or api.nvim_buf_get_option(bufnr, 'ft')
-  if not parsers[ft] or not config[mod] then
+  if not parsers[ft] or not config.modules[mod] then
     return
   end
 
@@ -234,10 +237,10 @@ local function disable_module(mod, bufnr, ft)
 end
 
 local function disable_mod_conf_autocmd(mod, ft)
-  if not config[mod] or not M.is_enabled(mod, ft) then return end
+  if not config.modules[mod] or not M.is_enabled(mod, ft) then return end
 
   api.nvim_command(string.format("autocmd! FileType %s", ft))
-  table.insert(config[mod].disable, ft)
+  table.insert(config.modules[mod].disable, ft)
 end
 
 local function disable_all(mod, ft)
@@ -252,7 +255,7 @@ local function disable_all(mod, ft)
     for _, ft in pairs(M.available_parsers()) do
       disable_mod_conf_autocmd(mod, ft)
     end
-    config[mod].enable = false
+    config.modules[mod].enable = false
   end
 end
 
@@ -298,7 +301,7 @@ function M.is_enabled(mod, ft)
     return false
   end
 
-  local module_config = M.get_config()[mod]
+  local module_config = config.modules[mod]
   if not module_config then return false end
 
   if not module_config.enable or not module_config.is_supported(ft) then
@@ -315,25 +318,21 @@ function M.setup(user_data)
   if not user_data then return end
 
   for mod, data in pairs(user_data) do
-    if config[mod] then
+    if config.modules[mod] then
       if type(data.enable) == 'boolean' then
-        config[mod].enable = data.enable
+        config.modules[mod].enable = data.enable
       end
       if type(data.disable) == 'table' then
-        config[mod].disable = data.disable
+        config.modules[mod].disable = data.disable
       end
-      if config[mod].keymaps and type(data.keymaps) == 'table' then
-        config[mod].keymaps = data.keymaps
+      if config.modules[mod].keymaps and type(data.keymaps) == 'table' then
+        config.modules[mod].keymaps = data.keymaps
       end
-      if mod == 'ensure_installed' then
-        require'nvim-treesitter/install'.ensure_installed(data)
-      end
+    elseif mod == 'ensure_installed' then
+      config.ensure_installed = data
+      require'nvim-treesitter/install'.ensure_installed(data)
     end
   end
-end
-
-function M.get_config()
-  return config
 end
 
 function M.get_parser_configs()
@@ -345,7 +344,7 @@ function M.available_parsers()
 end
 
 function M.available_modules()
-  return vim.tbl_keys(config)
+  return vim.tbl_keys(config.modules)
 end
 
 return M

@@ -96,10 +96,11 @@ require'nvim-treesitter.configs'.setup {
         enable = true,
         disable = { 'cpp', 'lua' },
         keymaps = {                       -- mappings for incremental selection (visual mappings)
-          node_incremental = "<leader>e",  -- "grn" by default,
+          node_incremental = "<leader>e", -- "grn" by default,
           scope_incremental = "<leader>f" -- "grc" by default
         }
-    }
+    },
+    ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
 }
 EOF
 ```
