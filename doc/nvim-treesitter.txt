@@ -30,18 +30,20 @@ By default, everything is disabled. To enable support for features, in your `ini
 >
   lua <<EOF
   require'nvim-treesitter.configs'.setup {
-      highlight = {
-          enable = true,             -- false will disable the whole extension
-          disable = { 'c', 'rust' }, -- list of language that will be disabled
-      },
-      textobj = {                        -- this enables incremental selection
-          enable = true,
-          disable = { 'cpp', 'lua' },
-          keymaps = {                       -- mappings for visual selection
-            node_incremental = "<leader>e",  -- "grn" by default,
-            scope_incremental = "<leader>f" -- "grc" by default
-          }
-      },
+      modules = {
+          highlight = {
+              enable = true,             -- false will disable the whole extension
+              disable = { 'c', 'rust' }, -- list of language that will be disabled
+          },
+          textobj = {                        -- this enables incremental selection
+              enable = true,
+              disable = { 'cpp', 'lua' },
+              keymaps = {                       -- mappings for visual selection
+                node_incremental = "<leader>e",  -- "grn" by default,
+                scope_incremental = "<leader>f" -- "grc" by default
+              }
+          },
+      }
       ensure_installed = 'all'  -- can be one of 'all', 'language' or {'language1', 'language2' ... }
   }
 <

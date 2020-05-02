@@ -88,18 +88,20 @@ in your `init.vim`:
 ```lua
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-    highlight = {
-        enable = true,                 -- false will disable the whole extension
-        disable = { 'c', 'rust' },     -- list of language that will be disabled
-    },
-    textobj = {                        -- this enables incremental selection
-        enable = true,
-        disable = { 'cpp', 'lua' },
-        keymaps = {                       -- mappings for incremental selection (visual mappings)
-          node_incremental = "<leader>e", -- "grn" by default,
-          scope_incremental = "<leader>f" -- "grc" by default
-        }
-    },
+    modules = {
+        highlight = {
+            enable = true,                 -- false will disable the whole extension
+            disable = { 'c', 'rust' },     -- list of language that will be disabled
+        },
+        textobj = {                        -- this enables incremental selection
+            enable = true,
+            disable = { 'cpp', 'lua' },
+            keymaps = {                       -- mappings for incremental selection (visual mappings)
+              node_incremental = "<leader>e", -- "grn" by default,
+              scope_incremental = "<leader>f" -- "grc" by default
+            }
+        },
+    }
     ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
 }
 EOF
