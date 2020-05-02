@@ -214,7 +214,7 @@ local config = {
         return queries.get_query(ft, 'highlights') ~= nil
       end
     },
-    textobj = {
+    incremental_selection = {
       enable = false,
       disable = {},
       keymaps = {
@@ -401,6 +401,10 @@ end
 
 function M.available_modules()
   return vim.tbl_keys(config.modules)
+end
+
+function M.get_module(mod)
+  return config.modules[mod]
 end
 
 return M

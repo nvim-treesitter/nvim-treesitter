@@ -56,10 +56,10 @@ end)
 function M.attach(bufnr)
   local buf = bufnr or api.nvim_get_current_buf()
 
-  local config = require'nvim-treesitter.configs'.get_config().textobj
+  local config = require'nvim-treesitter.configs'.get_module('incremental_selection')
   for funcname, mapping in pairs(config.keymaps) do
     api.nvim_buf_set_keymap(buf, 'v', mapping,
-      string.format(":lua require'nvim-treesitter.textobj'.%s()<CR>", funcname), { silent = true })
+      string.format(":lua require'nvim-treesitter.incremental_selection'.%s()<CR>", funcname), { silent = true })
     api.nvim_buf_set_keymap(buf, 'o', mapping,
       string.format(":normal v%s<CR>", mapping), { silent = true })
   end
@@ -68,7 +68,7 @@ end
 function M.detach(bufnr)
   local buf = bufnr or api.nvim_get_current_buf()
 
-  local config = require'nvim-treesitter.configs'.get_config().textobj
+  local config = require'nvim-treesitter.configs'.get_module('incremental_selection')
   for _, mapping in pairs(config.keymaps) do
     api.nvim_buf_del_keymap(buf, 'v', mapping)
     api.nvim_buf_del_keymap(buf, 'o', mapping)
