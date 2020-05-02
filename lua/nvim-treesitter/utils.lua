@@ -64,6 +64,95 @@ function M.is_parent(dest, source)
   return false
 end
 
+function M.string_to_lines(str)
+  local t={}
+  local line_breaks = 0
+  for line in str:gmatch("(.-[\n(\r\n)\r])") do
+    table.insert(t, line)
+    line_breaks = line_breaks + 1
+  end
+  if #t == 0 then
+    return {str}, 0
+  --for line in str:gmatch("[^\n(\r\n)\r]+$") do
+    --table.insert(t, line)
+  end
+
+  return t, line_breaks
+end
+
+function M.replace_node(buf, source, destination)
+  local replacement_lines = M.get_node_text(source)
+  return M.replace_node_text(buf, destination, replacement_lines)
+end
+
+function M.replace_node_text(buf, node_or_range, replacement_lines)
+  local start_row, start_col, end_row, end_col
+  if type(node_or_range) == 'table' then
+    start_row, start_col, end_row, end_col = unpack(node_or_range)
+  else
+    start_row, start_col, end_row, end_col = node_or_range:range()
+  end
+
+  local original_lines = api.nvim_buf_get_lines(buf, start_row, end_row + 1, false)
+  -- original_lines[1]..'' <- Empty string is necessary! Bug in vim string to lua string conversion??
+  local new_text = string.sub(original_lines[1]..'', 1, start_col)..table.concat(replacement_lines, '')..string.sub(original_lines[#original_lines], end_col + 1)
+
+  local new_lines, line_count = M.string_to_lines(new_text)
+
+  api.nvim_buf_set_lines(buf, start_row, end_row + 1, false, new_lines)
+
+  return {start_row,
+         start_col,
+         start_row + line_count,
+         (line_count == 0 and start_col or 0) + #replacement_lines[#replacement_lines]}
+end
+
+function M.node_lenght(node)
+  local start_row, _, end_row, end_col = node:range()
+  return end_row - start_row, end_col
+end
+
+function M.range_difference(node1, node2)
+  local rows1, cols1 = M.node_lenght(node1)
+  local rows2, cols2 = M.node_lenght(node2)
+
+  return rows1 - rows2, (node2:end_() == node1:end_() and cols1 - cols2 or 0)
+end
+
+function M.swap_nodes(buf, source, destination)
+    local dst_start_row, dst_start_col, dst_start = destination:start()
+    local dst_end_row, dst_end_col, dst_end = destination:end_()
+    local src_start_row, src_start_col, src_start = source:start()
+    local src_end_row, src_end_col, src_end = source:end_()
+
+    if dst_start <= src_start and dst_end >= src_end then
+        local src_range = M.replace_node(buf, source, destination)
+        return src_range, nil
+    end
+
+    local source_text = M.get_node_text(source)
+    local destination_text = M.get_node_text(destination)
+
+    if dst_end < src_start then
+       local diff_rows, diff_cols = M.range_difference(source, destination)
+       local dst_range = M.replace_node(buf, source, destination)
+       --local src_range = M.replace_node_text(buf, {src_start_row + diff_rows,
+                                                   --src_start_col + (source:start() == destination:end_() and diff_cols or 0),
+                                                   --src_end_row + diff_rows,
+                                                   --(source:end_() == destination:end_() and diff_cols or 0)}, destination_text)
+       return src_range, dst_range
+    elseif src_end < dst_start then
+       local diff_rows, diff_cols = M.range_difference(destination, source)
+       local src_range = M.replace_node(buf, destination, source)
+       --local dst_range = M.replace_node_text(buf, {dst_start_row + diff_rows,
+                                                   --dst_start_col + (destination:start() == source:end_() and diff_cols or 0),
+                                                   --dst_end_row + diff_rows,
+                                                   --(destination:end_() == source:end_() and diff_cols or 0)}, source_text)
+       return src_range, dst_range
+    end
+
+end
+
 function M.setup_commands(mod, commands)
   for command_name, def in pairs(commands) do
     local call_fn = string.format("lua require'nvim-treesitter.%s'.commands.%s.run(<f-args>)", mod, command_name)
@@ -98,7 +187,7 @@ end
 -- @param allow_switch_parents allow switching parents if last node
 -- @param allow_next_parent    allow next parent if last node and next parent without children
 function M.get_next_node(node, allow_switch_parents, allow_next_parent)
- local destination_node
+  local destination_node
   local parent = node:parent()
 
   if parent then
