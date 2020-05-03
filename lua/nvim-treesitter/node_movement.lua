@@ -21,17 +21,30 @@ local function node_start_to_vim(node)
   api.nvim_exec(exec_command, false)
 end
 
-M.do_node_movement = function(kind)
-  local buf, line, col = unpack(vim.fn.getpos("."))
+function M.get_current_node(buf,line,col)
+  if not buf then
+     buf, line, col = unpack(vim.fn.getpos("."))
+  end
 
   local current_node = M.current_node[buf]
-
   if current_node then
     local node_line, node_col = current_node:start()
     if line-1 ~= node_line or  col-1 ~= node_col then
       current_node = nil
     end
   end
+  if not current_node then
+    local root = parsers.get_parser():parse():root()
+    current_node = root:named_descendant_for_range(line-1, col-1, line-1, col)
+  end
+  return current_node
+end
+
+M.do_node_movement = function(kind)
+  local buf, line, col = unpack(vim.fn.getpos("."))
+
+  local current_node = M.get_current_node(buf, line, col)
+
   local destination_node
 
   if parsers.has_parser() then
@@ -71,17 +84,7 @@ M.move_right = function() M.do_node_movement(M.NodeMovementKind.right) end
 
 M.select_current_node = function()
   local buf, line, col = unpack(vim.fn.getpos("."))
-  local current_node = M.current_node[buf]
-  if current_node then
-    local node_line, node_col = current_node:start()
-    if line-1 ~= node_line or  col-1 ~= node_col then
-      current_node = nil
-    end
-  end
-  if not current_node then
-    local root = parsers.get_parser():parse():root()
-    current_node = root:named_descendant_for_range(line-1, col-1, line-1, col)
-  end
+  local current_node = M.get_current_node(buf, line, col)
   utils.node_range_to_vim(current_node)
 end
 
