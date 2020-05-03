@@ -69,6 +69,22 @@ M.move_down = function() M.do_node_movement(M.NodeMovementKind.down) end
 M.move_left = function() M.do_node_movement(M.NodeMovementKind.left) end
 M.move_right = function() M.do_node_movement(M.NodeMovementKind.right) end
 
+M.select_current_node = function()
+  local buf, line, col = unpack(vim.fn.getpos("."))
+  local current_node = M.current_node[buf]
+  if current_node then
+    local node_line, node_col = current_node:start()
+    if line-1 ~= node_line or  col-1 ~= node_col then
+      current_node = nil
+    end
+  end
+  if not current_node then
+    local root = parsers.get_parser():parse():root()
+    current_node = root:named_descendant_for_range(line-1, col-1, line-1, col)
+  end
+  utils.node_range_to_vim(current_node)
+end
+
 function M.attach(bufnr)
   local buf = bufnr or api.nvim_get_current_buf()
 

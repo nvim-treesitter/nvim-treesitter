@@ -3,23 +3,6 @@ local utils = require'nvim-treesitter.utils'
 local parsers = require'nvim-treesitter.parsers'
 local M = {}
 
-local function node_range_to_vim(node)
-  if not node then return end
-
-  local start_row, start_col, end_row, end_col = node:range()
-
-  local select_range = [[
-  call cursor(%d, %d)
-  normal v
-  call cursor(%d, %d)
-  ]]
-  local exec_command = string.format(select_range,
-    start_row+1, start_col+1,
-    end_row+1, end_col+1)
-
-  api.nvim_exec(exec_command, false)
-end
-
 local function select_incremental(increment_func)
   return function()
     local buf, sel_start_line, sel_start_col, _ = unpack(vim.fn.getpos("'<"))
@@ -37,7 +20,7 @@ local function select_incremental(increment_func)
       end
     end
 
-    return node_range_to_vim(node)
+    return utils.node_range_to_vim(node)
   end
 end
 

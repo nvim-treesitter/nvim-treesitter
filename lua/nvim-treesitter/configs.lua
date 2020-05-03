@@ -232,6 +232,7 @@ local config = {
         move_down = "<a-j>",
         move_left = "<a-h>",
         move_right = "<a-l>",
+        select_current_node = "grn",
       },
     },
     -- folding = {

@@ -152,4 +152,21 @@ function M.get_previous_node(node, allow_switch_parents, allow_previous_parent)
   return destination_node
 end
 
+function M.node_range_to_vim(node)
+  if not node then return end
+
+  local start_row, start_col, end_row, end_col = node:range()
+
+  local select_range = [[
+  call cursor(%d, %d)
+  normal v
+  call cursor(%d, %d)
+  ]]
+  local exec_command = string.format(select_range,
+    start_row+1, start_col+1,
+    end_row+1, end_col+1)
+
+  api.nvim_exec(exec_command, false)
+end
+
 return M
