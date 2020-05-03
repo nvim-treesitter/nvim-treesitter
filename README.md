@@ -92,12 +92,22 @@ require'nvim-treesitter.configs'.setup {
         enable = true,                 -- false will disable the whole extension
         disable = { 'c', 'rust' },     -- list of language that will be disabled
     },
-    textobj = {                        -- this enables incremental selection
+    incremental_selection = {             -- this enables incremental selection
         enable = true,
         disable = { 'cpp', 'lua' },
         keymaps = {                       -- mappings for incremental selection (visual mappings)
           node_incremental = "<leader>e", -- "grn" by default,
           scope_incremental = "<leader>f" -- "grc" by default
+        }
+    },
+    node_movement = {                           -- this cursor movement in node hierachy
+        enable = true,
+        disable = { 'cpp', 'rust' },
+        keymaps = {                       -- mappings for node movement (normal mappings)
+          move_up = "<a-k>",              -- default is to move with alt key hold
+          move_down = "<a-j>",
+          move_left = "<a-h>",
+          move_right = "<a-l>",
         }
     },
     ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
@@ -124,6 +134,7 @@ Some of these features are :
   - [x] Incremental selection
   - [ ] Syntax based code folding
   - [x] Consistent syntax highlighting (the api is not quite stable yet)
+  - [x] Cursor movement in node hierachy
 
 You can find the roadmap [here](https://github.com/nvim-treesitter/nvim-treesitter/projects/1).
 The roadmap and all features of this plugin are open to change, and any suggestion will be highly appreciated!
