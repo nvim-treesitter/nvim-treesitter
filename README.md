@@ -108,6 +108,8 @@ require'nvim-treesitter.configs'.setup {
           move_down = "<a-j>",
           move_left = "<a-h>",
           move_right = "<a-l>",
+          select_current_node = "<leader>e",-- select current node
+                                            -- ideally same as incremental_selection.node_incremental
         }
     },
     ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
