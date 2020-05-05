@@ -24,4 +24,35 @@ function M.setup(lang)
   end
 end
 
+function M.statusline(indicator_size)
+  local indicator_size = indicator_size or 1000
+  local expr = require"nvim-treesitter.utils".expression_at_point()
+  local current_node =
+    require'nvim-treesitter.node_movement'.current_node[api.nvim_get_current_buf()]
+
+  local indicator = ""
+  while expr and (#indicator + #(expr:type()) + 5) < indicator_size do
+
+    local prefix = ""
+    if expr:parent() then
+      prefix = "->"
+    end
+
+
+    if expr == current_node then
+      indicator = string.format("%s[%s]%s", prefix, expr:type(), indicator)
+    else
+      indicator = prefix .. expr:type() .. indicator
+    end
+
+    expr = expr:parent()
+  end
+
+  if expr then
+    return "..." .. indicator
+  else
+    return indicator
+  end
+end
+
 return M
