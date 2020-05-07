@@ -97,5 +97,16 @@ A list of languages can be found at |:TSInstallInfo|
 
 List modules state for the current session.
 
- vim:tw=78:ts=8:noet:ft=help:norl:
+==============================================================================
+FUNCTIONS~
+						   *nvim-treesitter-functions*
 
+|nvim_treesitter#statusline(size)|
+						*nvim_treesitter#statusline()*
+
+Returns a string describing the current position in the syntax tree. This
+could be used as a statusline indicator.
+Note: The `size` argument is optionnal. When specified, the string will not be
+      longer than `size`.
+
+ vim:tw=78:ts=8:noet:ft=help:norl:

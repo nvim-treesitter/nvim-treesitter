@@ -135,6 +135,7 @@ Some of these features are :
   - [ ] Syntax based code folding
   - [x] Consistent syntax highlighting (the api is not quite stable yet)
   - [x] Cursor movement in node hierachy
+  - [x] Statusline indicator (`require'nvim-treesitter'.statusline(size)`)
 
 You can find the roadmap [here](https://github.com/nvim-treesitter/nvim-treesitter/projects/1).
 The roadmap and all features of this plugin are open to change, and any suggestion will be highly appreciated!
@@ -166,6 +167,13 @@ List of currently supported languages:
 - [ ] julia
 - [ ] php
 - [ ] bash
+- [ ] scala
+- [ ] haskell
+- [ ] toml
+- [ ] vue
+- [ ] elm
+- [ ] yaml
+- [ ] nix
 
 ## Troubleshooting
 Before doing anything run `:checkhealth nvim_treesitter`. This will help you find where the bug might come from.
