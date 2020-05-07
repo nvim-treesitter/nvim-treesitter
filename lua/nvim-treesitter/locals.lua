@@ -52,8 +52,8 @@ function M.get_definitions(bufnr)
   local defs = {}
 
   for _, loc in ipairs(locals) do
-    if loc.definition and loc.definition.node then
-      table.insert(defs, {node=loc.definition.node, kind=loc.kind})
+    if loc.definition then
+      table.insert(defs, loc.definition)
     end
   end
 

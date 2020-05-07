@@ -3,16 +3,16 @@
 ;;; Builtins
 ;; Keywords
 "local" @keyword
-"if" @keyword
-"then" @keyword
-"else" @keyword
-"elseif" @keyword
+"if" @conditional
+"then" @conditional
+"else" @conditional
+"elseif" @conditional
 "end" @keyword
 "return" @keyword
-"do" @keyword
-"while" @keyword
-"repeat" @keyword
-"for" @keyword
+"do" @repeat
+"while" @repeat
+"repeat" @repeat
+"for" @repeat
 (break_statement) @keyword
 "goto" @keyword
 
@@ -43,15 +43,16 @@
 "#" @operator
 
 ;; Constants
-(false) @constant
-(true) @constant
-(nil) @constant
+(false) @boolean
+(true) @boolean
+(nil) @constant.builtin
 (spread) @constant ;; "..."
 
 ;; Nodes
 (function "function" @function "end" @function)
+(function_definition "function" @function "end" @function)
 (local_function "function" @function "end" @function)
-(table "{" @operator "}" @operator)
+(table "{" @constructor "}" @constructor)
 (comment) @comment
 (string) @string
 (number) @number
