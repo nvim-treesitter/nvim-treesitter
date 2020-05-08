@@ -57,10 +57,10 @@ M.do_node_movement = function(kind, move_node)
       end
     -- LEFT
     elseif kind == M.NodeMovementKind.left then
-      destination_node = utils.get_previous_node(current_node, true, true)
+      destination_node = utils.get_previous_node(current_node, not move_node, not move_node)
     -- RIGHT
     elseif kind == M.NodeMovementKind.right then
-      destination_node = utils.get_next_node(current_node, true, true)
+      destination_node = utils.get_next_node(current_node, not move_node, not move_node)
     end
     M.current_node[buf] = destination_node or current_node
   end
@@ -68,6 +68,7 @@ M.do_node_movement = function(kind, move_node)
   if destination_node then
     node_start_to_vim(destination_node)
     if move_node then
+      node_start_to_vim(destination_node)
       if kind ~= M.NodeMovementKind.down then
         local dst_range
         if kind ~= M.NodeMovementKind.up then
@@ -85,7 +86,8 @@ M.do_node_movement = function(kind, move_node)
         local root = parsers.get_parser():parse():root()
         if dst_range then
           local new_destination_node = utils.node_from_lsp_range(root, dst_range)
-          M.current_node[buf] = new_destination_node or current_node
+          M.current_node[buf] = new_destination_node
+          node_start_to_vim(M.current_node[buf])
         end
       end
     end

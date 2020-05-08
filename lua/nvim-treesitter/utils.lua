@@ -126,7 +126,8 @@ function M.replace_range_text(buf, lsp_range, replacement_lines)
   end
 
   range['end'] = { line = range.start.line + #replacement_lines - 1,
-                   character =  end_char }
+                   character = end_char }
+  return range
 end
 
 --- Replace node text and return new range (LSP range)
@@ -159,12 +160,36 @@ function M.swap_nodes(buf, source, destination)
     local src_range, dst_range
 
     if dst_end <= src_start then
-       src_range = M.replace_node_text(buf, source, destination_text)
+       src_range = M.node_to_lsp_range(source)
+       local new_src_range = M.replace_node_text(buf, source, destination_text)
        dst_range = M.replace_node_text(buf, destination, source_text)
-       return
+
+       -- Correct range of first change
+       src_range.start.line = src_range['end'].line - (#destination_text - 1) -- Total end stays the same
+       src_range.start.character = new_src_range.start.character
+       src_range.start.character = new_src_range.start.character
+       if dst_range['end'].line == src_range.start.line then
+          src_range.start.character = src_range.start.character + #(source_text[#source_text]) - #(destination_text[#destination_text])
+       else
+       end
+       if dst_range['end'].line == dst_range['end'].line then
+          src_range['end'].character = src_range['end'].character + #(source_text[#source_text]) - #(destination_text[#destination_text])
+      end
     elseif src_end <= dst_start then
-       dst_range = M.replace_node_text(buf, destination, source_text)
+       dst_range = M.node_to_lsp_range(destination)
+       local new_dst_range = M.replace_node_text(buf, destination, source_text)
        src_range = M.replace_node_text(buf, source, destination_text)
+
+       -- Correct range of first change
+       dst_range.start.line = dst_range['end'].line - (#source_text - 1) -- Total end stays the same
+       dst_range.start.character = new_dst_range.start.character
+       dst_range.start.character = new_dst_range.start.character
+       if src_range['end'].line == dst_range.start.line then
+          dst_range.start.character = new_dst_range.start.character + #(destination_text[#destination_text]) - #(source_text[#source_text])
+      end
+       if src_range['end'].line == dst_range['end'].line then
+          dst_range['end'].character = new_dst_range['end'].character + #(destination_text[#destination_text]) - #(source_text[#source_text])
+      end
     end
     return src_range, dst_range
 end
