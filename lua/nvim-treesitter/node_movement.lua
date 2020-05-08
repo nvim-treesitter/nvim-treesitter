@@ -16,41 +16,15 @@ M.current_node = {}
 local function node_start_to_vim(node)
   if not node then return end
 
+
   local row, col = node:start()
-
-  local mode = api.nvim_get_mode().mode
-  print(vim.inspect(mode))
-  --if mode == 'v' then
-    --local _, current_line, current_col, _ = unpack(vim.fn.getpos("."))
-    --local _, sel_start_line, sel_start_col, _ = unpack(vim.fn.getpos("'<"))
-    --local _, sel_end_line, sel_end_col, _ = unpack(vim.fn.getpos("'>"))
-
-    --if current_line == sel_start_line and current_col == sel_start_col then
-      --sel_start_line = row + 1
-      --sel_start_col = col + 1
-      --vim.fn.setpos("'<", {row + 1, col + 1})
-    --end
-    --if current_line == sel_end_line and current_col == sel_end_col then
-      --row, col = node:end_()
-      --sel_end_line = row + 1
-      --sel_end_col = col
-      --vim.fn.setpos("'>", {row + 1, col + 1})
-    --end
-    --local exec_command = string.format(select_range,
-      --sel_start_line, sel_start_col,
-      --sel_end_line, sel_end_col)
-
-  --api.nvim_exec(exec_command, false)
-  --else
-    api.nvim_exec('normal gv', false)
-    api.nvim_exec('normal o', false)
-    api.nvim_win_set_cursor(0, {row + 1, col})
-  --end
+  local exec_command = string.format('call cursor(%d, %d)', row+1, col+1)
+  api.nvim_exec(exec_command, false)
 end
 
 M.do_node_movement = function(kind, move_node)
-  local line, col = unpack(api.nvim_win_get_cursor(0))
-  local buf = api.nvim_win_get_buf(0)
+  local _, line, col = unpack(vim.fn.getpos("."))
+  local buf = api.nvim_get_current_buf()
 
   local current_node = M.current_node[buf]
 
@@ -95,14 +69,10 @@ M.do_node_movement = function(kind, move_node)
     node_start_to_vim(destination_node)
     if move_node then
       if kind ~= M.NodeMovementKind.down then
-        local _, new_destination_range = utils.swap_nodes(buf, current_node, destination_node)
-
+        local new_destination_range = utils.swap_nodes(buf, current_node, destination_node)
         local root = parsers.get_parser():parse():root()
         if new_destination_range then
-          local new_destination_node = root:named_descendant_for_range(new_destination_range[0],
-                                                                       new_destination_range[1],
-                                                                       new_destination_range[2],
-                                                                       new_destination_range[3])
+          local new_destination_node = utils.node_from_lsp_range(root, new_destination_range)
           M.current_node[buf] = new_destination_node or current_node
         end
       end

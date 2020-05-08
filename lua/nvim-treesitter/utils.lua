@@ -80,77 +80,96 @@ function M.string_to_lines(str)
   return t, line_breaks
 end
 
+function M.node_to_lsp_range(node)
+  local start_line, start_col, end_line, end_col = node:range()
+  local rtn = {}
+  rtn.start = { line = start_line, character = start_col }
+  rtn['end'] = { line = end_line, character = end_col }
+  return rtn
+end
+
+function M.node_to_start_pos(node)
+  local line, col = unpack(node:start())
+  return { line = line, character = col }
+end
+
+function M.node_to_end_pos(node)
+  local line, col = unpack(node:end_())
+  return { line = line, character = col }
+end
+
 function M.replace_node(buf, source, destination)
   local replacement_lines = M.get_node_text(source)
   return M.replace_node_text(buf, destination, replacement_lines)
 end
 
-function M.replace_node_text(buf, node_or_range, replacement_lines)
-  local start_row, start_col, end_row, end_col
-  if type(node_or_range) == 'table' then
-    start_row, start_col, end_row, end_col = unpack(node_or_range)
-  else
-    start_row, start_col, end_row, end_col = node_or_range:range()
+function M.range_lines(lsp_range)
+  return lsp_range['end'].line - lsp_range['start'].line
+end
+
+--- Replace node text and return new range (LSP range)
+-- @param buf         buffer number
+-- @param node        node to replace
+-- @param new lines   new lines to use
+function M.replace_node_text(buf, node, replacement_lines)
+  -- apply_text_edits splits at '\n'
+  local new_text = table.concat(replacement_lines, '\n')
+
+  local text_edit = { range = M.node_to_lsp_range(node), newText = new_text }
+  vim.lsp.util.apply_text_edits({text_edit}, buf)
+
+  local range = text_edit.range
+
+  local end_char = #replacement_lines[#replacement_lines]
+  if #replacement_lines == 1 then
+    end_char = end_char + range.start.character
   end
 
-  local original_lines = api.nvim_buf_get_lines(buf, start_row, end_row + 1, false)
-  -- original_lines[1]..'' <- Empty string is necessary! Bug in vim string to lua string conversion??
-  local new_text = string.sub(original_lines[1]..'', 1, start_col)..table.concat(replacement_lines, '')..string.sub(original_lines[#original_lines], end_col + 1)
-
-  local new_lines, line_count = M.string_to_lines(new_text)
-
-  api.nvim_buf_set_lines(buf, start_row, end_row + 1, false, new_lines)
-
-  return {start_row,
-         start_col,
-         start_row + line_count,
-         (line_count == 0 and start_col or 0) + #replacement_lines[#replacement_lines]}
+  range['end'] = { line = range.start.line + #replacement_lines - 1,
+                   character =  end_char }
 end
 
-function M.node_lenght(node)
-  local start_row, _, end_row, end_col = node:range()
-  return end_row - start_row, end_col
-end
 
-function M.range_difference(node1, node2)
-  local rows1, cols1 = M.node_lenght(node1)
-  local rows2, cols2 = M.node_lenght(node2)
-
-  return rows1 - rows2, (node2:end_() == node1:end_() and cols1 - cols2 or 0)
-end
-
+--- Swaps the contents of two nodes returning new range of destination (LSP range)
+-- @param buf           buffer number
+-- @param source        first node
+-- @param destination   second node
 function M.swap_nodes(buf, source, destination)
-    local dst_start_row, dst_start_col, dst_start = destination:start()
-    local dst_end_row, dst_end_col, dst_end = destination:end_()
-    local src_start_row, src_start_col, src_start = source:start()
-    local src_end_row, src_end_col, src_end = source:end_()
+    local _, _, dst_start = destination:start()
+    local _, _, dst_end = destination:end_()
+    local _, _, src_start = source:start()
+    local _, _, src_end = source:end_()
 
     if dst_start <= src_start and dst_end >= src_end then
         local src_range = M.replace_node(buf, source, destination)
-        return src_range, nil
+        return src_range
     end
 
     local source_text = M.get_node_text(source)
     local destination_text = M.get_node_text(destination)
 
-    if dst_end < src_start then
-       local diff_rows, diff_cols = M.range_difference(source, destination)
-       local dst_range = M.replace_node(buf, source, destination)
-       --local src_range = M.replace_node_text(buf, {src_start_row + diff_rows,
-                                                   --src_start_col + (source:start() == destination:end_() and diff_cols or 0),
-                                                   --src_end_row + diff_rows,
-                                                   --(source:end_() == destination:end_() and diff_cols or 0)}, destination_text)
-       return src_range, dst_range
-    elseif src_end < dst_start then
-       local diff_rows, diff_cols = M.range_difference(destination, source)
-       local src_range = M.replace_node(buf, destination, source)
-       --local dst_range = M.replace_node_text(buf, {dst_start_row + diff_rows,
-                                                   --dst_start_col + (destination:start() == source:end_() and diff_cols or 0),
-                                                   --dst_end_row + diff_rows,
-                                                   --(destination:end_() == source:end_() and diff_cols or 0)}, source_text)
-       return src_range, dst_range
-    end
+    local dst_range
 
+    if dst_end <= src_start then
+       M.replace_node_text(buf, source, destination_text)
+       dst_range = M.replace_node_text(buf, destination, source_text)
+       return 
+    elseif src_end <= dst_start then
+       dst_range = M.replace_node_text(buf, destination, source_text)
+       M.replace_node_text(buf, source, destination_text)
+    end
+    return dst_range
+end
+
+
+--- Get tree sitter node in LSP range
+-- root Root of parsed tree
+-- lsp_range A LSP range
+function M.node_from_lsp_range(root, lsp_range)
+  return root:named_descendant_for_range(lsp_range.start.line,
+                                         lsp_range.start.character,
+                                         lsp_range['end'].line,
+                                         lsp_range['end'].character)
 end
 
 function M.setup_commands(mod, commands)
