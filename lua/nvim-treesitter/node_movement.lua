@@ -69,10 +69,10 @@ M.do_node_movement = function(kind, move_node)
     node_start_to_vim(destination_node)
     if move_node then
       if kind ~= M.NodeMovementKind.down then
-        local new_destination_range = utils.swap_nodes(buf, current_node, destination_node)
+        local _, dst_range = utils.swap_nodes(buf, current_node, destination_node)
         local root = parsers.get_parser():parse():root()
-        if new_destination_range then
-          local new_destination_node = utils.node_from_lsp_range(root, new_destination_range)
+        if dst_range then
+          local new_destination_node = utils.node_from_lsp_range(root, dst_range)
           M.current_node[buf] = new_destination_node or current_node
         end
       end

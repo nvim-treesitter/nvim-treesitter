@@ -130,7 +130,7 @@ function M.replace_node_text(buf, node, replacement_lines)
 end
 
 
---- Swaps the contents of two nodes returning new range of destination (LSP range)
+--- Swaps the contents of two nodes returning new ranges (LSP ranges)
 -- @param buf           buffer number
 -- @param source        first node
 -- @param destination   second node
@@ -148,17 +148,17 @@ function M.swap_nodes(buf, source, destination)
     local source_text = M.get_node_text(source)
     local destination_text = M.get_node_text(destination)
 
-    local dst_range
+    local src_range, dst_range
 
     if dst_end <= src_start then
-       M.replace_node_text(buf, source, destination_text)
+       src_range = M.replace_node_text(buf, source, destination_text)
        dst_range = M.replace_node_text(buf, destination, source_text)
-       return 
+       return
     elseif src_end <= dst_start then
        dst_range = M.replace_node_text(buf, destination, source_text)
-       M.replace_node_text(buf, source, destination_text)
+       src_range = M.replace_node_text(buf, source, destination_text)
     end
-    return dst_range
+    return src_range, dst_range
 end
 
 
