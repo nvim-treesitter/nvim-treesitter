@@ -100,7 +100,7 @@ require'nvim-treesitter.configs'.setup {
           scope_incremental = "<leader>f" -- "grc" by default
         }
     },
-    node_movement = {                           -- this cursor movement in node hierachy
+    node_movement = {                     -- this enables cursor movement in node hierarchy
         enable = true,
         disable = { 'cpp', 'rust' },
         keymaps = {                       -- mappings for node movement (normal mappings)
