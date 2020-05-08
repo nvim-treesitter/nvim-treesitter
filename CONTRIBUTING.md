@@ -43,7 +43,7 @@ effect on highlighting. We will work on improving highlighting in the near futur
 `@punctuation.bracket` for `()` or `{}`
 
 Some captures are related to language injection (like markdown code blocks). As this is not supported by neovim yet, these
-are optionnal and will not have any effect for now.
+are optional and will not have any effect for now.
 `@embedded`
 `@injection`
   `language`
