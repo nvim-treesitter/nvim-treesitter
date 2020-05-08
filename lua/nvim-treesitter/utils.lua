@@ -107,20 +107,20 @@ function M.range_lines(lsp_range)
   return lsp_range['end'].line - lsp_range['start'].line
 end
 
---- Replace node text and return new range (LSP range)
+--- Replace text at range and return new range (LSP range)
 -- @param buf         buffer number
 -- @param node        node to replace
 -- @param new lines   new lines to use
-function M.replace_node_text(buf, node, replacement_lines)
+function M.replace_range_text(buf, lsp_range, replacement_lines)
   -- apply_text_edits splits at '\n'
   local new_text = table.concat(replacement_lines, '\n')
 
-  local text_edit = { range = M.node_to_lsp_range(node), newText = new_text }
+  local text_edit = { range = lsp_range, newText = new_text }
   vim.lsp.util.apply_text_edits({text_edit}, buf)
 
   local range = text_edit.range
 
-  local end_char = #replacement_lines[#replacement_lines]
+  local end_char = #(replacement_lines[#replacement_lines])
   if #replacement_lines == 1 then
     end_char = end_char + range.start.character
   end
@@ -129,11 +129,19 @@ function M.replace_node_text(buf, node, replacement_lines)
                    character =  end_char }
 end
 
+--- Replace node text and return new range (LSP range)
+-- @param buf         buffer number
+-- @param node        node to replace
+-- @param new lines   new lines to use
+function M.replace_node_text(buf, node, replacement_lines)
+  return M.replace_range_text(buf, M.node_to_lsp_range(node), replacement_lines)
+end
+
 
 --- Swaps the contents of two nodes returning new ranges (LSP ranges)
--- @param buf           buffer number
--- @param source        first node
--- @param destination   second node
+-- @param buf                       buffer number
+-- @param source                    first node
+-- @param destination               second node
 function M.swap_nodes(buf, source, destination)
     local _, _, dst_start = destination:start()
     local _, _, dst_end = destination:end_()
@@ -161,6 +169,52 @@ function M.swap_nodes(buf, source, destination)
     return src_range, dst_range
 end
 
+--- Move node before or after another one
+-- @param buf         buffer number
+-- @param source      first node
+-- @param destination other node
+function M.move_node_before_or_after_other(buf, source, destination, after)
+    local dst_start_line, dst_start_col, dst_start = destination:start()
+    local dst_end_line, dst_end_col, dst_end = destination:end_()
+    local _, _, src_start = source:start()
+    local _, _, src_end = source:end_()
+
+    if dst_start <= src_start and dst_end >= src_end then
+        local src_range = M.replace_node(buf, source, destination)
+        return src_range
+    end
+
+    local source_text = M.get_node_text(source)
+
+    local src_range, dst_range
+
+    local destination_range = {}
+    if after then
+      destination_range.start = { line = dst_end_line, character = dst_end_col }
+      destination_range['end'] = { line = dst_start_line, character = dst_start_col + 1 }
+    else
+      destination_range.start = { line = dst_start_line, character = dst_start_col }
+      destination_range['end'] = { line = dst_start_line, character = dst_start_col + 1 }
+    end
+
+    if dst_end <= src_start then
+       src_range = M.replace_node_text(buf, source, '')
+       dst_range = M.replace_range_text(buf, destination_range, source_text)
+       return
+    elseif src_end <= dst_start then
+       dst_range = M.replace_range_text(buf, destination_range, source_text)
+       src_range = M.replace_node_text(buf, source, '')
+    end
+    return src_range, dst_range
+end
+
+function M.move_node_after_other(buf, source, destination)
+  M.move_node_before_or_after_other(buf, source, destination, true)
+end
+
+function M.move_node_before_other(buf, source, destination)
+  M.move_node_before_or_after_other(buf, source, destination, false)
+end
 
 --- Get tree sitter node in LSP range
 -- root Root of parsed tree
