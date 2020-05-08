@@ -1,88 +1,69 @@
 local api = vim.api
-local parsers = require'nvim-treesitter.parsers'
-local utils = require'nvim-treesitter.utils'
+
+local configs = require'nvim-treesitter.configs'
+local state = require'nvim-treesitter.state'
+local ts_utils = require'nvim-treesitter.ts_utils'
+
 local M = {}
 
-
-M.NodeMovementKind = {
-  up = 'up',
-  down = 'down',
-  left = 'left',
-  right = 'right',
+local NodeMovementKind = {
+  parent_scope = 'parent',
+  child_scope = 'child',
+  next_scope = 'next',
+  previous_scope = 'previous',
 }
 
-M.current_node = {}
-
-local function node_start_to_vim(node)
-  if not node then return end
-
-  local row, col = node:start()
-  local exec_command = string.format('call cursor(%d, %d)', row+1, col+1)
-  api.nvim_exec(exec_command, false)
-end
+local get_node_fn = {
+  [NodeMovementKind.parent_scope] = function(node, curpos)
+    return ts_utils.parent_scope(node, curpos)
+  end,
+  [NodeMovementKind.child_scope] = function(node, curpos)
+    return ts_utils.nested_scope(node, curpos)
+  end,
+  [NodeMovementKind.next_scope] = function(node)
+    return ts_utils.next_scope(node)
+  end,
+  [NodeMovementKind.previous_scope] = function(node)
+    return ts_utils.previous_scope(node)
+  end,
+}
 
 M.do_node_movement = function(kind)
-  local buf, line, col = unpack(vim.fn.getpos("."))
+  local buf = api.nvim_get_current_buf()
 
-  local current_node = M.current_node[buf]
+  local buf_state = state.get_buf_state(buf)
+  if not buf_state then return end
 
-  if current_node then
-    local node_line, node_col = current_node:start()
-    if line-1 ~= node_line or  col-1 ~= node_col then
-      current_node = nil
-    end
-  end
-  local destination_node
+  local current_node = buf_state.current_node
+  if not current_node then return end
 
-  if parsers.has_parser() then
-    local root = parsers.get_parser():parse():root()
-    if not current_node then
-      current_node = root:named_descendant_for_range(line-1, col-1, line-1, col)
-    end
-
-    if kind == M.NodeMovementKind.up then
-       destination_node = current_node:parent()
-    elseif kind == M.NodeMovementKind.down then
-      if current_node:named_child_count() > 0 then
-        destination_node = current_node:named_child(0)
-      else
-        local next_node = utils.get_next_node(current_node)
-        if next_node and next_node:named_child_count() > 0 then
-          destination_node = next_node:named_child(0)
-        end
-      end
-    elseif kind == M.NodeMovementKind.left then
-      destination_node = utils.get_previous_node(current_node, true, true)
-    elseif kind == M.NodeMovementKind.right then
-      destination_node = utils.get_next_node(current_node, true, true)
-    end
-    M.current_node[buf] = destination_node or current_node
-  end
+  local destination_node = get_node_fn[kind](current_node, buf_state.cursor_pos)
 
   if destination_node then
-    node_start_to_vim(destination_node)
+    local row, col = destination_node:start()
+    vim.fn.setpos(".", { buf, row+1, col+1, 0 })
   end
 end
 
-M.move_up = function() M.do_node_movement(M.NodeMovementKind.up) end
-M.move_down = function() M.do_node_movement(M.NodeMovementKind.down) end
-M.move_left = function() M.do_node_movement(M.NodeMovementKind.left) end
-M.move_right = function() M.do_node_movement(M.NodeMovementKind.right) end
+function M.parent_scope() M.do_node_movement(NodeMovementKind.parent_scope) end
+function M.child_scope() M.do_node_movement(NodeMovementKind.child_scope) end
+function M.next_scope() M.do_node_movement(NodeMovementKind.next_scope) end
+function M.previous_scope() M.do_node_movement(NodeMovementKind.previous_scope) end
 
 function M.attach(bufnr)
-  local buf = bufnr or api.nvim_get_current_buf()
+  local bufnr = bufnr or api.nvim_get_current_buf()
 
-  local config = require'nvim-treesitter.configs'.get_module('node_movement')
+  local config = configs.get_module('node_movement')
   for funcname, mapping in pairs(config.keymaps) do
-    api.nvim_buf_set_keymap(buf, 'n', mapping,
-      string.format(":lua require'nvim-treesitter.node_movement'.%s()<CR>", funcname), { silent = true })
+    local cmd = string.format(":lua require'nvim-treesitter.node_movement'.%s()<CR>", funcname)
+    api.nvim_buf_set_keymap(bufnr, 'n', mapping, cmd, { silent = true })
   end
 end
 
 function M.detach(bufnr)
   local buf = bufnr or api.nvim_get_current_buf()
 
-  local config = require'nvim-treesitter.configs'.get_module('node_movement')
+  local config = configs.get_module('node_movement')
   for _, mapping in pairs(config.keymaps) do
     api.nvim_buf_del_keymap(buf, 'n', mapping)
   end

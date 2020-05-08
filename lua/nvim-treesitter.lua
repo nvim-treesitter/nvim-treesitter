@@ -1,15 +1,14 @@
 local api = vim.api
+
 local install = require'nvim-treesitter.install'
-local locals = require'nvim-treesitter.locals'
 local utils = require'nvim-treesitter.utils'
 local info = require'nvim-treesitter.info'
 local configs = require'nvim-treesitter.configs'
+local state = require'nvim-treesitter.state'
 
 local M = {}
 
--- This function sets up everythin needed for a given language
--- this is the main interface through the plugin
-function M.setup(lang)
+function M.setup()
   utils.setup_commands('install', install.commands)
   utils.setup_commands('info', info.commands)
   utils.setup_commands('configs', configs.commands)
@@ -18,33 +17,34 @@ function M.setup(lang)
     for _, mod in pairs(configs.available_modules()) do
       if configs.is_enabled(mod, ft) then
         local cmd = string.format("lua require'nvim-treesitter.%s'.attach()", mod)
-        api.nvim_command(string.format("autocmd FileType %s %s", ft, cmd))
+        api.nvim_command(string.format("autocmd NvimTreesitter FileType %s %s", ft, cmd))
       end
     end
+    local cmd = string.format("lua require'nvim-treesitter.state'.attach_to_buffer(%s)", ft)
+    api.nvim_command(string.format('autocmd NvimTreesitter FileType %s %s', ft, cmd))
   end
+
+  state.run_update()
 end
 
 function M.statusline(indicator_size)
-  local indicator_size = indicator_size or 1000
-  local expr = require"nvim-treesitter.utils".expression_at_point()
-  local current_node =
-    require'nvim-treesitter.node_movement'.current_node[api.nvim_get_current_buf()]
+  local indicator_size = indicator_size or 100
+  local bufnr = api.nvim_get_current_buf()
+  local buf_state = state.get_buf_state(bufnr)
+  if not buf_state then return "" end
 
-  local indicator = ""
+  local current_node = buf_state.current_node
+  if not current_node then return "" end
+
+  local expr = current_node:parent()
+  local prefix = ""
+  if expr then
+    prefix = "->"
+  end
+
+  local indicator = current_node:type()
   while expr and (#indicator + #(expr:type()) + 5) < indicator_size do
-
-    local prefix = ""
-    if expr:parent() then
-      prefix = "->"
-    end
-
-
-    if expr == current_node then
-      indicator = string.format("%s[%s]%s", prefix, expr:type(), indicator)
-    else
-      indicator = prefix .. expr:type() .. indicator
-    end
-
+    indicator = expr:type() .. prefix .. indicator
     expr = expr:parent()
   end
 

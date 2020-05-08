@@ -1,6 +1,8 @@
 local api = vim.api
+
 local queries = require'nvim-treesitter.query'
-local parser_utils = require'nvim-treesitter.parsers'
+local utils = require'nvim-treesitter.utils'
+
 local parsers = {}
 
 parsers.javascript = {
@@ -218,28 +220,28 @@ local config = {
       enable = false,
       disable = {},
       keymaps = {
+        init_selection="gnn",
         node_incremental="grn",
-        scope_incremental="grc"
+        scope_incremental="grc",
+        node_decremental="grm"
       },
-      is_supported = function() return true end
+      is_supported = function(ft)
+        return queries.get_query(ft, 'locals')
+      end
     },
     node_movement = {
       enable = false,
       disable = {},
-      is_supported = function() return true end,
+      is_supported = function(ft)
+        return queries.get_query(ft, 'locals')
+      end,
       keymaps = {
-        move_up = "<a-k>",
-        move_down = "<a-j>",
-        move_left = "<a-h>",
-        move_right = "<a-l>",
+        parent_scope = "<a-k>",
+        child_scope = "<a-j>",
+        next_scope = "<a-l>",
+        previous_scope = "<a-h>",
       },
-    },
-    -- folding = {
-    --   enable = false,
-    --   disable = {},
-    --   keymaps = {},
-    --   is_supported = function() return false end
-    -- }
+    }
   },
   ensure_installed = nil
 }
@@ -279,12 +281,12 @@ local function enable_all(mod, ft)
     end
   end
   if ft then
-    if parser_utils.has_parser(ft) then
+    if utils.has_parser(ft) then
       enable_mod_conf_autocmd(mod, ft)
     end
   else
     for _, ft in pairs(M.available_parsers()) do
-      if parser_utils.has_parser(ft) then
+      if utils.has_parser(ft) then
         enable_mod_conf_autocmd(mod, ft)
       end
     end
@@ -364,7 +366,7 @@ M.commands = {
 -- @param mod: module (string)
 -- @param ft: filetype (string)
 function M.is_enabled(mod, ft)
-  if not M.get_parser_configs()[ft] or not parser_utils.has_parser(ft) then
+  if not M.get_parser_configs()[ft] or not utils.has_parser(ft) then
     return false
   end
 
@@ -378,6 +380,7 @@ function M.is_enabled(mod, ft)
   for _, parser in pairs(module_config.disable) do
     if ft == parser then return false end
   end
+
   return true
 end
 
@@ -393,11 +396,15 @@ function M.setup(user_data)
         config.modules[mod].disable = data.disable
       end
       if config.modules[mod].keymaps and type(data.keymaps) == 'table' then
-        config.modules[mod].keymaps = data.keymaps
+        for f, map in pairs(data.keymaps) do
+          if config.modules[mod].keymaps[f] then
+            config.modules[mod].keymaps[f] = map
+          end
+        end
       end
     elseif mod == 'ensure_installed' then
       config.ensure_installed = data
-      require'nvim-treesitter/install'.ensure_installed(data)
+      require'nvim-treesitter.install'.ensure_installed(data)
     end
   end
 end

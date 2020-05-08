@@ -1,38 +1,11 @@
 local api = vim.api
 local fn = vim.fn
 local luv = vim.loop
-local configs = require'nvim-treesitter/configs'
-local parsers = configs.get_parser_configs()
-local has_parser = require'nvim-treesitter/parsers'.has_parser
+
+local configs = require'nvim-treesitter.configs'
+local utils = require'nvim-treesitter.utils'
 
 local M = {}
-
-local function get_package_path()
-  for _, path in pairs(api.nvim_list_runtime_paths()) do
-    if string.match(path, '.*/nvim%-treesitter') then
-      return path
-    end
-  end
-
-  return nil, 'Plugin runtime path not found.'
-end
-
-local function get_cache_dir()
-  local home = fn.get(fn.environ(), 'HOME')
-  local xdg_cache = fn.get(fn.environ(), 'XDG_CACHE_HOME')
-
-  if xdg_cache == 0 then
-    xdg_cache = home .. '/.cache'
-  end
-
-  if luv.fs_access(xdg_cache, 'RW') then
-    return xdg_cache
-  elseif luv.fs_access('/tmp', 'RW') then
-    return '/tmp'
-  end
-
-  return nil, 'Invalid cache rights, $XDG_CACHE_HOME or /tmp should be read/write'
-end
 
 local function iter_cmd(cmd_list, i, ft)
   if i == #cmd_list + 1 then return print('Treesitter parser for '..ft..' has been installed') end
@@ -122,7 +95,7 @@ local function install(ft)
     if not string.match(yesno, '^y.*') then return end
   end
 
-  local parser_config = parsers[ft]
+  local parser_config = configs.get_parser_configs()[ft]
   if not parser_config then
     return api.nvim_err_writeln('Parser not available for language '..ft)
   end
@@ -137,10 +110,10 @@ local function install(ft)
     return api.nvim_err_writeln('Git is required on your system to run this command')
   end
 
-  local package_path, err = get_package_path()
+  local package_path, err = utils.get_package_path()
   if err then return api.nvim_err_writeln(err) end
 
-  local cache_folder, err = get_cache_dir()
+  local cache_folder, err = utils.get_cache_dir()
   if err then return api.nvim_err_writeln(err) end
 
   run_install(cache_folder, package_path, ft, install_info)
@@ -157,7 +130,7 @@ M.ensure_installed = function(languages)
   end
 
   for _, ft in ipairs(languages) do
-    if not has_parser(ft) then
+    if not utils.has_parser(ft) then
       install(ft)
     end
   end

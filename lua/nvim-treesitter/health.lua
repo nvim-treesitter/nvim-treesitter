@@ -55,8 +55,6 @@ function locals_health(lang)
   end
 end
 
-
--- TODO(vigoux): Maybe we should move each check to be perform in its own module
 function M.checkhealth()
   -- Installation dependency checks
   health_start('Installation')
