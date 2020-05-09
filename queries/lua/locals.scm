@@ -35,6 +35,7 @@
 ((for_in_statement) @scope)
 ((repeat_statement) @scope)
 ((while_statement) @scope)
+((program) @scope)
 
 ;;; REFERENCES
 ((identifier) @reference)

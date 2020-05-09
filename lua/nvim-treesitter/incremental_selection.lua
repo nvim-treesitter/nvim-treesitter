@@ -8,6 +8,11 @@ local function node_range_to_vim(node)
 
   local start_row, start_col, end_row, end_col = node:range()
 
+  if end_row + 1 > vim.fn.line('$') then
+    end_row = vim.fn.line('$') - 1
+    end_col = #vim.fn.getline('$') - 1
+  end
+
   local select_range = [[
   call cursor(%d, %d)
   normal v
