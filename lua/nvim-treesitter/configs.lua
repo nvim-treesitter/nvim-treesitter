@@ -245,6 +245,7 @@ local config = {
 }
 
 local M = {}
+M.parsers = parsers
 
 local function enable_module(mod, bufnr, ft)
   local bufnr = bufnr or api.nvim_get_current_buf()
