@@ -2,25 +2,20 @@
 
 ;; Variable and field declarations
 ((variable_declarator
-   (identifier) @definition)
-  (set! definition.kind "v"))
+   (identifier) @definition.var))
 
 ((variable_declarator
-   (field_expression object:(*) @definition.associated (property_identifier) @definition))
-  (set! difinition.kind "v"))
+   (field_expression object:(*) @definition.associated (property_identifier) @definition.var)))
 
 ;; Parameters
 ((local_function
-   (parameters (identifier) @definition))
-  (set! definition.kind "v"))
+   (parameters (identifier) @definition.var)))
 ((function
-   (parameters (identifier) @definition))
-  (set! definition.kind "v"))
+   (parameters (identifier) @definition.var)))
 
 ;; Loops
 ((loop_expression
-   (identifier) @definition)
-  (set! definition.kind "v"))
+   (identifier) @definition.var))
 
 ;; Function definitions
 ;; Functions definitions creates both a definition and a new scope
@@ -28,16 +23,13 @@
    (function_name
      (function_name_field
        (identifier) @definition.associated
-       (property_identifier) @definition))) @scope
- (set! definition.kind "m"))
+       (property_identifier) @definition.method))) @scope)
 
 ((function
-   (function_name (identifier) @definition)) @scope
-  (set! definition.kind "f"))
+   (function_name (identifier) @definition.function)) @scope)
 
 ((local_function
-   (identifier) @definition) @scope
-  (set! definition.kind "f"))
+   (identifier) @definition.function) @scope)
 
 ((if_statement) @scope)
 ((for_in_statement) @scope)

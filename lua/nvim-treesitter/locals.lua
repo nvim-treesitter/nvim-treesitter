@@ -10,22 +10,6 @@ local M = {
   locals={}
 }
 
-function M.checkhealth(lang)
-  local health_start = vim.fn["health#report_start"]
-  local health_ok = vim.fn['health#report_ok']
-  local health_info = vim.fn['health#report_info']
-  local health_warn = vim.fn['health#report_warn']
-  local health_error = vim.fn['health#report_error']
-
-  if not queries.get_query(lang, "locals") then
-    health_warn("No `locals.scm` query found for " .. lang, {
-      "Open an issue at https://github.com/nvim-treesitter/nvim-treesitter"
-    })
-  else
-    health_ok("`locals.scm` found.")
-  end
-end
-
 function M.collect_locals(bufnr)
   local ft = api.nvim_buf_get_option(bufnr, "ft")
   if not ft then return end
@@ -69,7 +53,7 @@ function M.get_definitions(bufnr)
 
   for _, loc in ipairs(locals) do
     if loc.definition then
-      table.insert(defs, {definition=loc.definition, kind=loc.kind})
+      table.insert(defs, loc.definition)
     end
   end
 
@@ -82,8 +66,8 @@ function M.get_scopes(bufnr)
   local scopes = {}
 
   for _, loc in ipairs(locals) do
-    if loc.scope then
-      table.insert(scopes, loc.scope)
+    if loc.scope and loc.scope.node then
+      table.insert(scopes, loc.scope.node)
     end
   end
 
@@ -96,8 +80,8 @@ function M.get_references(bufnr)
   local refs = {}
 
   for _, loc in ipairs(locals) do
-    if loc.reference then
-      table.insert(refs, loc.reference)
+    if loc.reference and loc.reference.node then
+      table.insert(refs, loc.reference.node)
     end
   end
 

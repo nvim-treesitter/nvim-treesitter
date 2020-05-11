@@ -1,0 +1,13 @@
+:TSBufDisable	nvim-treesitter.txt	/*:TSBufDisable*
+:TSBufDisableAll	nvim-treesitter.txt	/*:TSBufDisableAll*
+:TSBufEnable	nvim-treesitter.txt	/*:TSBufEnable*
+:TSBufEnableAll	nvim-treesitter.txt	/*:TSBufEnableAll*
+:TSInstall	nvim-treesitter.txt	/*:TSInstall*
+:TSInstallInfo	nvim-treesitter.txt	/*:TSInstallInfo*
+:TSModuleInfo	nvim-treesitter.txt	/*:TSModuleInfo*
+nvim-treesitter	nvim-treesitter.txt	/*nvim-treesitter*
+nvim-treesitter-commands	nvim-treesitter.txt	/*nvim-treesitter-commands*
+nvim-treesitter-functions	nvim-treesitter.txt	/*nvim-treesitter-functions*
+nvim-treesitter-intro	nvim-treesitter.txt	/*nvim-treesitter-intro*
+nvim-treesitter-quickstart	nvim-treesitter.txt	/*nvim-treesitter-quickstart*
+nvim_treesitter#statusline()	nvim-treesitter.txt	/*nvim_treesitter#statusline()*

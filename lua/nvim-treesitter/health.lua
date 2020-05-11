@@ -3,6 +3,7 @@ local fn = vim.fn
 
 local queries = require'nvim-treesitter.query'
 local locals = require'nvim-treesitter.locals'
+local highlight = require'nvim-treesitter.highlight'
 local configs = require'nvim-treesitter.configs'
 
 local health_start = vim.fn["health#report_start"]
@@ -13,7 +14,7 @@ local health_error = vim.fn['health#report_error']
 
 local M = {}
 
-local function configs_health()
+local function install_health()
   if fn.executable('git') == 0 then
     health_error('`git` executable not found.', {
         'Install it with your package manager.',
@@ -34,15 +35,36 @@ local function configs_health()
   end
 end
 
+local function highlight_health(lang)
+  if not queries.get_query(lang, "highlights") then
+    health_warn("No `highlights.scm` query found for " .. lang, {
+      "Open an issue at https://github.com/nvim-treesitter/nvim-treesitter"
+    })
+  else
+    health_ok("`highlights.scm` found.")
+  end
+end
+
+function locals_health(lang)
+  if not queries.get_query(lang, "locals") then
+    health_warn("No `locals.scm` query found for " .. lang, {
+      "Open an issue at https://github.com/nvim-treesitter/nvim-treesitter"
+    })
+  else
+    health_ok("`locals.scm` found.")
+  end
+end
+
+
 -- TODO(vigoux): Maybe we should move each check to be perform in its own module
 function M.checkhealth()
   -- Installation dependency checks
   health_start('Installation')
-  configs_health()
+  install_health()
 
   local missing_parsers = {}
   -- Parser installation checks
-  for parser_name in pairs(configs.repositories) do
+  for _, parser_name in pairs(configs.available_parsers()) do
     local installed = #api.nvim_get_runtime_file('parser/'..parser_name..'.so', false)
 
     -- Only print informations about installed parsers
@@ -50,7 +72,8 @@ function M.checkhealth()
       health_start(parser_name .. " parser healthcheck")
       health_ok(parser_name .. " parser found.")
 
-      locals.checkhealth(parser_name)
+      locals_health(parser_name)
+      highlight_health(parser_name)
     elseif installed > 1 then
       health_warn(string.format("Multiple parsers found for %s, only %s will be used.", parser_name, installed[1]))
     else

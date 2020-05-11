@@ -1,0 +1,112 @@
+*nvim-treesitter* 
+
+Minimum version of neovim: nightly
+
+Authors: Yazdani Kiyan <yazdani.kiyan@protonmail.com>, Vigouroux Thomas <tomvig38@gmail.com>
+
+==============================================================================
+INTRODUCTION                                       *nvim-treesitter-intro*
+
+nvim-treesitter wraps the neovim treesitter api to provide functionnalities such
+as highlighting and incremental selection, and a command to easily install parsers.
+
+==============================================================================
+QUICK START                                        *nvim-treesitter-quickstart*
+
+Install the parser for your language
+
+>
+  :TSInstall {language}
+<
+
+To get a list of supported languages
+
+>
+  :TSInstallInfo
+<
+
+By default, everything is disabled. To enable support for features, in your `init.vim`:
+
+>
+  lua <<EOF
+  require'nvim-treesitter.configs'.setup {
+    highlight = {
+        enable = true,                 -- false will disable the whole extension
+        disable = { 'c', 'rust' },     -- list of language that will be disabled
+    },
+    incremental_selection = {             -- this enables incremental selection
+        enable = true,
+        disable = { 'cpp', 'lua' },
+        keymaps = {                       -- mappings for incremental selection (visual mappings)
+          node_incremental = "<leader>e", -- "grn" by default,
+          scope_incremental = "<leader>f" -- "grc" by default
+        }
+    },
+    node_movement = {                           -- this cursor movement in node hierachy
+        enable = true,
+        disable = { 'cpp', 'rust' },
+        keymaps = {                       -- mappings for node movement (normal mappings)
+          move_up = "<a-k>",              -- default is to move with alt key hold
+          move_down = "<a-j>",
+          move_left = "<a-h>",
+          move_right = "<a-l>",
+        }
+    },
+    ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
+  }
+<
+
+==============================================================================
+COMMANDS                                          *nvim-treesitter-commands*
+
+|:TSInstall| {language}                            *:TSInstall*
+
+Download, compile and install a parser for {language}
+
+|:TSInstallInfo|                                   *:TSInstallInfo*
+
+List informations about currently installed parsers
+
+|:TSBufEnable| {module}                            *:TSBufEnable*
+
+Enable {module} on the current buffer.
+A list of modules can be found at |:TSModuleInfo|
+
+|:TSBufDisable| {module}                           *:TSBufDisable*
+
+Disable {module} on the current buffer
+A list of modules can be found at |:TSModuleInfo|
+
+|:TSBufEnableAll| {module} [{language}]            *:TSBufEnableAll*
+
+Enable {module} for the session
+if {language} is specified, enable module for the session only for this
+particular language.
+A list of modules can be found at |:TSModuleInfo|
+A list of languages can be found at |:TSInstallInfo|
+
+|:TSBufDisableAll| {module} [{language}]            *:TSBufDisableAll*
+
+Disable {module} for the session
+if {language} is specified, disable module for the session only for this
+particular language.
+A list of modules can be found at |:TSModuleInfo|
+A list of languages can be found at |:TSInstallInfo|
+
+|:TSModuleInfo| [{module}]                          *:TSModuleInfo*
+
+List modules state for the current session.
+
+==============================================================================
+FUNCTIONS~
+						   *nvim-treesitter-functions*
+
+|nvim_treesitter#statusline(size)|
+						*nvim_treesitter#statusline()*
+
+Returns a string describing the current position in the syntax tree. This
+could be used as a statusline indicator.
+Note: The `size` argument is optionnal. When specified, the string will not be
+      longer than `size`.
+
+ vim:tw=78:ts=8:noet:ft=help:norl:

@@ -1,7 +1,9 @@
 local api = vim.api
 local fn = vim.fn
 local luv = vim.loop
-local repositories = require'nvim-treesitter/configs'.repositories
+local configs = require'nvim-treesitter/configs'
+local parsers = configs.get_parser_configs()
+local has_parser = require'nvim-treesitter/parsers'.has_parser
 
 local M = {}
 
@@ -33,14 +35,16 @@ local function get_cache_dir()
 end
 
 local function iter_cmd(cmd_list, i, ft)
-  if i == #cmd_list then return print('Treesitter parser for '..ft..' has been installed') end
+  if i == #cmd_list + 1 then return print('Treesitter parser for '..ft..' has been installed') end
 
-  local attr = cmd_list[i + 1]
+  local attr = cmd_list[i]
   if attr.info then print(attr.info) end
+
+  local handle
 
   handle = luv.spawn(attr.cmd, attr.opts, vim.schedule_wrap(function(code)
     handle:close()
-    if code ~= 0 then return api.nvim_err_writeln(attr.err) end 
+    if code ~= 0 then return api.nvim_err_writeln(attr.err) end
     iter_cmd(cmd_list, i + 1, ft)
   end))
 end
@@ -75,12 +79,12 @@ local function run_install(cache_folder, package_path, ft, repo)
         args = vim.tbl_flatten({
             '-o',
             'parser.so',
+            '-I./src',
+            repo.files,
             '-shared',
+            '-Os',
             '-lstdc++',
             '-fPIC',
-            '-Os',
-            '-I./src',
-            repo.files
           }),
         cwd = compile_location
       }
@@ -99,7 +103,7 @@ local function run_install(cache_folder, package_path, ft, repo)
     }
   }
 
-  iter_cmd(command_list, 0, ft)
+  iter_cmd(command_list, 1, ft)
 end
 
 -- TODO(kyazdani): this should work on windows too
@@ -118,14 +122,15 @@ local function install(ft)
     if not string.match(yesno, '^y.*') then return end
   end
 
-  local repository = repositories[ft]
-  if not repository then
+  local parser_config = parsers[ft]
+  if not parser_config then
     return api.nvim_err_writeln('Parser not available for language '..ft)
   end
 
+  local install_info = parser_config.install_info
   vim.validate {
-    url={ repository.url, 'string' },
-    files={ repository.files, 'table' }
+    url={ install_info.url, 'string' },
+    files={ install_info.files, 'table' }
   }
 
   if fn.executable('git') == 0 then
@@ -138,25 +143,26 @@ local function install(ft)
   local cache_folder, err = get_cache_dir()
   if err then return api.nvim_err_writeln(err) end
 
-  run_install(cache_folder, package_path, ft, repository)
+  run_install(cache_folder, package_path, ft, install_info)
 end
 
-local function install_info()
-  local max_len = 0
-  for parser_name, _ in pairs(repositories) do
-    if #parser_name > max_len then max_len = #parser_name end
+
+M.ensure_installed = function(languages)
+  if type(languages) == 'string' then
+    if languages == 'all' then
+      languages = configs.available_parsers()
+    else
+      languages = {languages}
+    end
   end
 
-  for parser_name, _ in pairs(repositories) do
-    local is_installed = #api.nvim_get_runtime_file('parser/'..parser_name..'.so', false) > 0
-    api.nvim_out_write(parser_name..string.rep(' ', max_len - #parser_name + 1))
-    if is_installed then
-      api.nvim_out_write("[✓] installed\n")
-    else
-      api.nvim_out_write("[✗] not installed\n")
+  for _, ft in ipairs(languages) do
+    if not has_parser(ft) then
+      install(ft)
     end
   end
 end
+
 
 M.commands = {
   TSInstall = {
@@ -166,25 +172,7 @@ M.commands = {
       "-complete=custom,v:lua.ts_installable_parsers"
     },
     description = '`:TSInstall {ft}` installs a parser under nvim-treesitter/parser/{name}.so'
-  },
-  TSInstallInfo = {
-    run = install_info,
-    args = { "-nargs=0" },
-    description = '`:TSInstallInfo` print installation state for every filetype'
   }
 }
-
-function M.setup()
-  for command_name, def in pairs(M.commands) do
-    local call_fn = string.format("lua require'nvim-treesitter.install'.commands.%s.run(<f-args>)", command_name)
-    local parts = vim.tbl_flatten({
-        "command!",
-        def.args,
-        command_name,
-        call_fn,
-      })
-    api.nvim_command(table.concat(parts, " "))
-  end
-end
 
 return M
