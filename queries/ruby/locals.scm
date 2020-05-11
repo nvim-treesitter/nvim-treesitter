@@ -27,19 +27,19 @@
 (block) @scope
 (do_block) @scope
 
-(method_parameters (identifier) @definition)
-(lambda_parameters (identifier) @definition)
-(block_parameters (identifier) @definition)
-(splat_parameter name: (identifier) @definition)
-(hash_splat_parameter name: (identifier) @definition)
-(optional_parameter name: (identifier) @definition)
-(destructured_parameter name: (identifier) @definition)
-(block_parameter name: (identifier) @definition)
-(keyword_parameter name: (identifier) @definition)
+(method_parameters (identifier) @definition.function)
+(lambda_parameters (identifier) @definition.function)
+(block_parameters (identifier) @definition.var)
+(splat_parameter name: (identifier) @definition.var)
+(hash_splat_parameter name: (identifier) @definition.var)
+(optional_parameter name: (identifier) @definition.var)
+(destructured_parameter name: (identifier) @definition.var)
+(block_parameter name: (identifier) @definition.var)
+(keyword_parameter name: (identifier) @definition.var)
 
 (identifier) @reference
 
-(assignment left:(identifier) @definition)
-(left_assignment_list (identifier) @definition)
-(rest_assignment (identifier) @definition)
-(destructured_left_assignment (identifier) @definition)
+(assignment left:(identifier) @definition.var)
+(left_assignment_list (identifier) @definition.var)
+(rest_assignment (identifier) @definition.var)
+(destructured_left_assignment (identifier) @definition.var)

@@ -4,16 +4,16 @@
 "and" @keyword
 "begin" @keyword
 "break" @keyword
-"case" @keyword
+"case" @conditional
 "class" @keyword
 "def" @keyword
 "do" @keyword
-"else" @keyword
-"elsif" @keyword
+"else" @conditional
+"elsif" @conditional
 "end" @keyword
 "ensure" @keyword
-"for" @keyword
-"if" @keyword
+"for" @repeat
+"if" @conditional
 "in" @keyword
 "module" @keyword
 "next" @keyword
@@ -22,10 +22,10 @@
 "retry" @keyword
 "return" @keyword
 "then" @keyword
-"unless" @keyword
-"until" @keyword
-"when" @keyword
-"while" @keyword
+"unless" @conditional
+"until" @repeat
+"when" @conditional
+"while" @repeat
 "yield" @keyword
 
 ((identifier) @keyword
@@ -63,29 +63,29 @@
 
 ; Identifiers
 
-(class_variable) @Identifier
-(instance_variable) @Identifier
+(class_variable) @label
+(instance_variable) @label
 
-((identifier) @constant
- (match? @constant "^__(FILE|LINE|ENCODING)__$"))
+((identifier) @constant.builtin
+ (match? @constant.builtin "^__(FILE|LINE|ENCODING)__$"))
 
-((constant) @constant
- (match? @constant "^[A-Z\\d_]+$"))
+((constant) @constant.macro
+ (match? @constant.macro "^[A-Z\\d_]+$"))
 
 (constant) @constant
 
-(self) @constant
-(super) @Identifier
+(self) @constant.builtin
+(super) @constant.builtin
 
-(method_parameters (identifier) @Type)
-(lambda_parameters (identifier) @Type)
-(block_parameters (identifier) @Type)
-(splat_parameter (identifier) @Type)
-(hash_splat_parameter (identifier) @Type)
-(optional_parameter (identifier) @Type)
-(destructured_parameter (identifier) @Type)
-(block_parameter (identifier) @Type)
-(keyword_parameter (identifier) @Type)
+(method_parameters (identifier) @parameter)
+(lambda_parameters (identifier) @parameter)
+(block_parameters (identifier) @parameter)
+(splat_parameter (identifier) @parameter)
+(hash_splat_parameter (identifier) @parameter)
+(optional_parameter (identifier) @parameter)
+(destructured_parameter (identifier) @parameter)
+(block_parameter (identifier) @parameter)
+(keyword_parameter (identifier) @parameter)
 
 ((identifier) @function
  (is-not? local))
@@ -96,23 +96,22 @@
 (bare_string) @string
 (bare_symbol) @constant
 (subshell) @string
-(heredoc_beginning) @Delimiter
+(heredoc_beginning) @constant
 (heredoc_body) @string
-(heredoc_end) @Delimiter
+(heredoc_end) @constant
 (symbol) @constant
-(regex) @string
-(escape_sequence) @Special
+(regex) @string.regex
+(escape_sequence) @string.escape
 (integer) @number
-(float) @number
+(float) @float
 
-(nil) @Identifier
-(true) @Identifier
-(false) @Identifier
+(nil) @boolean
+(true) @boolean
+(false) @boolean
 
 (interpolation
-  "#{" @Delimiter
-  (identifier) @Identifier
-  "}" @Delimiter) @embedded
+  "#{" @punctuation.bracket
+  "}" @punctuation.bracket) @embedded
 
 (comment) @comment
 
@@ -126,15 +125,17 @@
 "*" @operator
 "/" @operator
 
-"," @Normal
-";" @Normal
-"." @Normal
+"," @punctuation.delimiter
+";" @punctuation.delimiter
+"." @punctuation.delimiter
 
-"(" @Normal
-")" @Normal
-"[" @Normal
-"]" @Normal
-"{" @Normal
-"}" @Normal
-"%w(" @Normal
-"%i(" @Normal
+"(" @punctuation.bracket
+")" @punctuation.bracket
+"[" @punctuation.bracket
+"]" @punctuation.bracket
+"{" @punctuation.bracket
+"}" @punctuation.bracket
+"%w(" @punctuation.bracket
+"%i(" @punctuation.bracket
+
+(ERROR) @error
