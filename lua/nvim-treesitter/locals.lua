@@ -3,11 +3,12 @@
 -- its the way nvim-treesitter uses to "understand" the code
 local api = vim.api
 local ts = vim.treesitter
+
 local queries = require'nvim-treesitter.query'
-local parsers = require'nvim-treesitter.parsers'
+local utils = require'nvim-treesitter.utils'
 
 local M = {
-  locals={}
+  locals = {}
 }
 
 function M.collect_locals(bufnr)
@@ -17,7 +18,7 @@ function M.collect_locals(bufnr)
   local query = queries.get_query(ft, 'locals')
   if not query then return end
 
-  local parser = parsers.get_parser(bufnr, ft)
+  local parser = utils.get_parser(bufnr, ft)
   if not parser then return end
 
   local root = parser:parse():root()
