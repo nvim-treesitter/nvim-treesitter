@@ -111,4 +111,12 @@ function M.get_buf_state(bufnr)
   return buffers[bufnr]
 end
 
+function M.exposed_state(bufnr)
+  local buf_state = buffers[bufnr]
+  return {
+    cursor_pos = buf_state.cursor_pos,
+    current_node = buf_state.current_node
+  }
+end
+
 return M

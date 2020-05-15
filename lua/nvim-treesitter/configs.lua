@@ -228,19 +228,6 @@ local config = {
       is_supported = function(ft)
         return queries.get_query(ft, 'locals')
       end
-    },
-    node_movement = {
-      enable = false,
-      disable = {},
-      is_supported = function(ft)
-        return queries.get_query(ft, 'locals')
-      end,
-      keymaps = {
-        parent_scope = "<a-k>",
-        child_scope = "<a-j>",
-        next_scope = "<a-l>",
-        previous_scope = "<a-h>",
-      },
     }
   },
   ensure_installed = nil

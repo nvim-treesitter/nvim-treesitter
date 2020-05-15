@@ -5,6 +5,7 @@ local utils = require'nvim-treesitter.utils'
 local info = require'nvim-treesitter.info'
 local configs = require'nvim-treesitter.configs'
 local state = require'nvim-treesitter.state'
+local ts_utils = require'nvim-treesitter.ts_utils'
 
 local M = {}
 
@@ -53,6 +54,15 @@ function M.statusline(indicator_size)
   else
     return indicator
   end
+end
+
+function M.get_buf_state()
+  local bufnr = api.nvim_get_current_buf()
+  return state.exposed_state(bufnr)
+end
+
+function M.get_node_api()
+  return ts_utils
 end
 
 return M
