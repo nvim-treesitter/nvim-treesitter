@@ -80,31 +80,10 @@ local function run_install(cache_folder, package_path, ft, repo)
 end
 
 -- TODO(kyazdani): this should work on windows too
-local function install(ft)
+local function install(...)
   if fn.has('win32') == 1 then
     return api.nvim_err_writeln('This command is not available on windows at the moment.')
   end
-
-  if not ft then
-    return api.nvim_err_writeln("Usage: install_parser('language')")
-  end
-
-  if #api.nvim_get_runtime_file('parser/'..ft..'.so', false) > 0 then
-    local yesno = fn.input('Parser already available: would you like to reinstall ? y/n: ')
-    print('\n ') -- mandatory to avoid messing up command line
-    if not string.match(yesno, '^y.*') then return end
-  end
-
-  local parser_config = configs.get_parser_configs()[ft]
-  if not parser_config then
-    return api.nvim_err_writeln('Parser not available for language '..ft)
-  end
-
-  local install_info = parser_config.install_info
-  vim.validate {
-    url={ install_info.url, 'string' },
-    files={ install_info.files, 'table' }
-  }
 
   if fn.executable('git') == 0 then
     return api.nvim_err_writeln('Git is required on your system to run this command')
@@ -116,7 +95,26 @@ local function install(ft)
   local cache_folder, err = utils.get_cache_dir()
   if err then return api.nvim_err_writeln(err) end
 
-  run_install(cache_folder, package_path, ft, install_info)
+  for _, ft in ipairs({ ... }) do
+    if #api.nvim_get_runtime_file('parser/'..ft..'.so', false) > 0 then
+      local yesno = fn.input(ft .. ' parser already available: would you like to reinstall ? y/n: ')
+      print('\n ') -- mandatory to avoid messing up command line
+      if not string.match(yesno, '^y.*') then return end
+    end
+
+    local parser_config = configs.get_parser_configs()[ft]
+    if not parser_config then
+      return api.nvim_err_writeln('Parser not available for language '..ft)
+    end
+
+    local install_info = parser_config.install_info
+    vim.validate {
+      url={ install_info.url, 'string' },
+      files={ install_info.files, 'table' }
+    }
+
+    run_install(cache_folder, package_path, ft, install_info)
+  end
 end
 
 
@@ -141,7 +139,7 @@ M.commands = {
   TSInstall = {
     run = install,
     args = {
-      "-nargs=1",
+      "-nargs=+",
       "-complete=custom,v:lua.ts_installable_parsers"
     },
     description = '`:TSInstall {ft}` installs a parser under nvim-treesitter/parser/{name}.so'
