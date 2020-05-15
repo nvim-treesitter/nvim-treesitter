@@ -158,7 +158,7 @@ List of currently supported languages:
 - [ ] go
 - [ ] cpp
 - [ ] rust
-- [ ] python
+- [x] python (maintained by @theHamsta)
 - [ ] javascript
 - [ ] typescript
 - [ ] tsx
