@@ -102,16 +102,6 @@ require'nvim-treesitter.configs'.setup {
           scope_decremental = "grm",      -- decrement to the previous scope
         }
     },
-    node_movement = {                     -- allows cursor movement in node hierarchy
-        enable = true,
-        disable = { 'cpp', 'rust' },
-        keymaps = {                       -- mappings for scope movement (normal mappings)
-          parent_scope = "<a-k>",         -- default is to move with alt key hold
-          child_scope = "<a-j>",
-          next_scope = "<a-h>",
-          previous_scope = "<a-l>",
-        }
-    },
     ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
 }
 EOF
@@ -136,11 +126,24 @@ Some of these features are :
   - [x] Incremental selection
   - [ ] Syntax based code folding
   - [x] Consistent syntax highlighting (the api is not quite stable yet)
-  - [x] Cursor movement in scope hierachy
   - [x] Statusline indicator (`require'nvim-treesitter'.statusline(size)`)
 
 You can find the roadmap [here](https://github.com/nvim-treesitter/nvim-treesitter/projects/1).
 The roadmap and all features of this plugin are open to change, and any suggestion will be highly appreciated!
+
+## Api
+
+Nvim-treesitter exposes an api to extend node capabilites. You can retrieve the api like this:
+```lua
+local ts_node_api = require 'nvim-treesitter'.get_node_api()
+```
+
+You can also retrieve the current state of the current buffer with:
+```lua
+local buf_state = require'nvim-treesitter'.get_buf_state()
+```
+
+More information is available in neovim documentation (`:help nvim-treesitter-api`).
 
 ## Supported Languages
 

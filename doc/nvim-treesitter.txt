@@ -44,16 +44,6 @@ By default, everything is disabled. To enable support for features, in your `ini
           scope_decremental = "grm",      -- decrement to the previous scope
         }
     },
-    node_movement = {                           -- this cursor movement in node hierachy
-        enable = true,
-        disable = { 'cpp', 'rust' },
-        keymaps = {                       -- mappings for scope movement
-          parent_scope = "<a-k>",         -- default is to move with alt key hold
-          child_scope = "<a-j>",
-          next_scope = "<a-h>",
-          previous_scope = "<a-l>",
-        }
-    },
     ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
   }
 <
@@ -100,8 +90,71 @@ A list of languages can be found at |:TSInstallInfo|
 List modules state for the current session.
 
 ==============================================================================
-FUNCTIONS~
-						   *nvim-treesitter-functions*
+API                                               *nvim-treesitter-api*
+
+Nvim treesitter exposes extended functions to use on nodes and scopes.
+you can retrieve the api with:
+>
+    local ts_node_api = require 'nvim-treesitter'.get_node_api()
+<
+Methods
+
+get_node_text(node, bufnr)                        *ts_api.get_node_text*
+    return the text content of a node
+
+is_parent(dest, source)                           *ts_api.is_parent*
+    determines wether `dest` is a parent of `source` 
+    return a boolean
+
+get_named_children(node)                          *ts_api.get_named_children*
+    return a table of named children of `node`
+
+get_next_node(node, allow_switch_parent, allow_next_parent) *ts_api.get_next_node*
+    return the next node within the same parent.
+    if no node is found, returns `nil`.
+    if `allow_switch_parent` is true, it will allow switching parent
+    when the node is the last node
+    if `allow_next_parent` is true, it will allow next parent if 
+    the node is the last node and the next parent doesn't have children.
+
+get_previous_node(node, allow_switch_parents, allow_prev_parent) *ts_api.get_previous_node*
+    return the previous node within the same parent.
+    `allow_switch_parent` and `allow_prev_parent` follow the same rule
+    as |ts_api.get_next_node| but if the node is the first node.
+
+containing_scope(node)                           *ts_api.containing_scope*
+    return the smallest scope containing the node
+
+parent_scope(node, cursor_pos)                   *ts_api.parent_scope*
+    return the parent scope of the current scope that contains the node.
+    `cursor_pos` should be `{ row = number, col = number }`
+    you can retrieve the cursor_pos with the buffer state
+
+nested_scope(node, cursor_pos)                   *ts_api.nested_scope*
+    return the first scope within current scope that contains the node.
+    `cursor_pos` should be `{ row = number, col = number }`
+    you can retrieve the cursor_pos with the buffer state
+
+next_scope(node)                                 *ts_api.next_scope*
+    return the neighbour scope of the current node
+
+previous_scope(node)                             *ts_api.previous_scope*
+    return the previous neighbour scope of the current node
+
+Nvim-treesitter also provides access to the state of the current buffer:
+>
+    local cur_buf_state = require'nvim-treesitter'.get_buf_state()
+    print(vim.inspect(cur_buf_state))
+    --[[
+	{
+	    cursor_pos = { row = number, col = number }, (current cursor pos in the buffer)
+	    current_node = tsnode                        (smallest node the cursor is on)
+	}
+    ]]--
+<
+
+==============================================================================
+FUNCTIONS                                         *nvim-treesitter-functions*
 
 |nvim_treesitter#statusline(size)|
 						*nvim_treesitter#statusline()*
