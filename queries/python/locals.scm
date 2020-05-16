@@ -18,6 +18,12 @@
 (function_definition
   name: (identifier) @definition.function) @scope
 
+;; Should be extended to when syntax supported
+;(function_definition
+  ;name: (identifier) @definition.function
+  ;body: (block (expression_statement (string) @definition.function.doc)?)) @scope
+
+
 (class_definition
   name: (identifier) @definition.type) @scope
 
