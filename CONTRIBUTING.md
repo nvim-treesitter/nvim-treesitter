@@ -92,6 +92,7 @@ are optional and will not have any effect for now.
   `var`
   `macro`
   `type`
+  `field`
 
 `@scope`
 

@@ -154,7 +154,7 @@ We are looking for maintainers to write query files for their languages.
 List of currently supported languages:
 - [x] lua  (maintained by @vigoux)
 - [x] ruby (maintained by @TravonteD)
-- [ ] c
+- [x] c (maintained by @vigoux)
 - [ ] go
 - [ ] cpp
 - [ ] rust
@@ -179,6 +179,7 @@ List of currently supported languages:
 - [ ] elm
 - [ ] yaml
 - [ ] nix
+- [ ] markdown
 
 ## Troubleshooting
 Before doing anything run `:checkhealth nvim_treesitter`. This will help you find where the bug might come from.
