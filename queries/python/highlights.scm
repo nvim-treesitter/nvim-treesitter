@@ -103,7 +103,7 @@
 
 ; Keywords
 
-"as" @keyword
+"as" @include
 "assert" @keyword
 "async" @keyword
 "await" @keyword
@@ -118,10 +118,10 @@
 "exec" @keyword
 "finally" @keyword
 "for" @repeat
-"from" @keyword
+"from" @include
 "global" @keyword
 "if" @conditional
-"import" @keyword
+"import" @include
 "lambda" @keyword
 "nonlocal" @keyword
 "pass" @keyword

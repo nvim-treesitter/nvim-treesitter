@@ -79,6 +79,7 @@ are optional and will not have any effect for now.
 `@operator`
 `@keyword`
 `@exception`
+`@include` keywords for including modules (e.g. import/from in Python)
 
 `@type`
         `builtin`
