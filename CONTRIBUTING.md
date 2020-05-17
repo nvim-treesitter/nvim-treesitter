@@ -94,6 +94,8 @@ are optional and will not have any effect for now.
   `type`
   `field`
 
+If you can extract documentation adjacent to a definition use `@definition.*.doc` (e.g. `@definition.function.doc`).
+
 `@scope`
 
 `@reference`
