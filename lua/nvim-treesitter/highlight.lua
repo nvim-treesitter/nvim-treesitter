@@ -34,7 +34,7 @@ hlmap["parameter"] = "Identifier"
 hlmap["method"] = "Function"
 hlmap["field"] = "Identifier"
 hlmap["property"] = "Identifier"
-hlmap["constructor"] = "Special"
+hlmap["constructor"] = "Constant"
 
 -- Keywords
 hlmap["conditional"] = "Conditional"
