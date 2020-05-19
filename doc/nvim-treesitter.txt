@@ -46,6 +46,7 @@ By default, everything is disabled. To enable support for features, in your `ini
     },
     ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
   }
+  EOF
 <
 
 ==============================================================================
