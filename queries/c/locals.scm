@@ -1,25 +1,25 @@
 ;; Functions definitions
 (function_declarator
-  declarator: (identifier) @definition.function) @scope
+  declarator: (identifier) @definition.function)
 (preproc_function_def
   name: (identifier) @definition.macro) @scope
 
 (preproc_def
   name: (identifier) @definition.macro)
 (pointer_declarator
-  declarator: (identifier) @definition.variable)
+  declarator: (identifier) @definition.var)
 (parameter_declaration
-  declarator: (identifier) @definition.variable)
+  declarator: (identifier) @definition.var)
 (init_declarator
-  declarator: (identifier) @definition.variable)
+  declarator: (identifier) @definition.var)
 (array_declarator
-  declarator: (identifier) @definition.variable)
+  declarator: (identifier) @definition.var)
 (declaration
-  declarator: (identifier) @definition.variable)
+  declarator: (identifier) @definition.var)
 (enum_specifier
   name: (*) @definition.type
   (enumerator_list
-    (enumerator name: (identifier) @definition.variable)))
+    (enumerator name: (identifier) @definition.var)))
 
 ;; Type / Struct / Enum
 (field_declaration
@@ -34,3 +34,5 @@
 (for_statement) @scope
 (if_statement) @scope
 (while_statement) @scope
+(translation_unit) @scope
+(function_definition) @scope
