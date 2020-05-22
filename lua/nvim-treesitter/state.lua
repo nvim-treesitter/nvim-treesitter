@@ -28,8 +28,8 @@ function M.update()
   local row = cursor[1]
   local col = cursor[2]
   if row == buf_config.cursor_pos.row
-    and col == buf_config.cursor_pos.col 
-    and mode == g_mode 
+    and col == buf_config.cursor_pos.col
+    and mode == g_mode
     then
     return
   end
