@@ -45,7 +45,7 @@ local function highlight_health(lang)
   end
 end
 
-function locals_health(lang)
+local function locals_health(lang)
   if not queries.get_query(lang, "locals") then
     health_warn("No `locals.scm` query found for " .. lang, {
       "Open an issue at https://github.com/nvim-treesitter/nvim-treesitter"

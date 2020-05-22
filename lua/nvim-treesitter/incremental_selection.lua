@@ -27,7 +27,7 @@ local function select_incremental(get_parent)
     -- initialize incremental selection with current range
     if #buf_state.selection.nodes == 0 then
       local cur_range = buf_state.selection.range
-      if not cur_range then 
+      if not cur_range then
         local _, cursor_row, cursor_col, _ = unpack(vim.fn.getpos("."))
         cur_range = { cursor_row, cursor_col, cursor_row, cursor_col + 1 }
       end
@@ -35,9 +35,9 @@ local function select_incremental(get_parent)
       local root = buf_state.parser.tree:root()
       if not root then return end
 
-      node = root:named_descendant_for_range(cur_range[1]-1, cur_range[2]-1, cur_range[3]-1, cur_range[4]-1) 
+      node = root:named_descendant_for_range(cur_range[1]-1, cur_range[2]-1, cur_range[3]-1, cur_range[4]-1)
     else
-      node = get_parent(buf_state.selection.nodes[#buf_state.selection.nodes]) 
+      node = get_parent(buf_state.selection.nodes[#buf_state.selection.nodes])
     end
 
     if not node then return end
