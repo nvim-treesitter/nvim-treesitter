@@ -61,7 +61,11 @@
  (match? @constructor "^[A-Z]"))
 
 (auto) @keyword
-(class_specifier)
+
+;; Parameters
+; normals
+(parameter_list
+  (parameter_declaration) @parameter)
 
 ; Constants
 
@@ -77,14 +81,14 @@
 "catch" @exception
 "class" @keyword
 "constexpr" @keyword
-"delete" @operator
+"delete" @keyword
 "explicit" @keyword
 "final" @exception
 "friend" @keyword
 "mutable" @keyword
 "namespace" @keyword
 "noexcept" @keyword
-"new" @operator
+"new" @keyword
 "override" @keyword
 "private" @keyword
 "protected" @keyword
@@ -95,3 +99,4 @@
 "typename" @keyword
 "using" @keyword
 "virtual" @keyword
+"::" @operator
