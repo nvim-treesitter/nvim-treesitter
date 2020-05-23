@@ -51,8 +51,17 @@
 "!" @operator
 "||" @operator
 
-"." @delimiter
-";" @delimiter
+"." @punctuation.delimiter
+";" @punctuation.delimiter
+":" @punctuation.delimiter
+"," @punctuation.delimiter
+
+"(" @punctuation.bracket
+")" @punctuation.bracket
+"[" @punctuation.bracket
+"]" @punctuation.bracket
+"{" @punctuation.bracket
+"}" @punctuation.bracket
 
 (string_literal) @string
 (system_lib_string) @string
