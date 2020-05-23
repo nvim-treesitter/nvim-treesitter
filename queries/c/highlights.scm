@@ -78,3 +78,5 @@
  (match? @constant "^[A-Z][A-Z\\d_]+$"))
 
 (comment) @comment
+
+(ERROR) @error
