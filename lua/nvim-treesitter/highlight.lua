@@ -47,6 +47,7 @@ hlmap["exception"] = "Exception"
 hlmap["type"] = "Type"
 hlmap["type.builtin"] = "Type"
 hlmap["structure"] = "Structure"
+hlmap["include"] = "Include"
 
 function M.attach(bufnr, ft)
   local buf = bufnr or api.nvim_get_current_buf()
