@@ -71,6 +71,9 @@
 (primitive_type) @type
 (sized_type_specifier) @type
 
+((identifier) @type
+ (match? @type "^[A-Z]"))
+
 ((identifier) @constant
  (match? @constant "^[A-Z][A-Z\\d_]+$"))
 
