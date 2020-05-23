@@ -36,3 +36,4 @@
 (while_statement) @scope
 (translation_unit) @scope
 (function_definition) @scope
+(compound_statement) @scope ; a block in curly braces
