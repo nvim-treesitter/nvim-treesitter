@@ -62,11 +62,6 @@
 
 (auto) @keyword
 
-;; Parameters
-; normals
-(parameter_list
-  (parameter_declaration) @parameter)
-
 ; Constants
 
 ;(this) @constant.builtin

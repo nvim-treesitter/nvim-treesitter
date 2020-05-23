@@ -35,14 +35,20 @@
 "->" @operator
 "!=" @operator
 "*" @operator
+"/" @operator
 "&" @operator
 "&&" @operator
 "+" @operator
 "++" @operator
 "+=" @operator
 "<" @operator
+"<=" @operator
 "==" @operator
+"=" @operator
+"~" @operator
 ">" @operator
+">=" @operator
+"!" @operator
 "||" @operator
 
 "." @delimiter
@@ -78,5 +84,9 @@
  (match? @constant "^[A-Z][A-Z\\d_]+$"))
 
 (comment) @comment
+
+;; Parameters
+(parameter_list
+  (parameter_declaration) @parameter)
 
 (ERROR) @error
