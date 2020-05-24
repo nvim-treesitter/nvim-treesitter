@@ -84,6 +84,8 @@
   declarator: (identifier) @function)
 (preproc_function_def
   name: (identifier) @function.macro)
+(preproc_arg)  @function.macro
+; TODO (preproc_arg)  @embedded
 
 (field_identifier) @property
 (statement_identifier) @label
@@ -102,5 +104,8 @@
 ;; Parameters
 (parameter_list
   (parameter_declaration) @parameter)
+
+(preproc_params
+  (identifier)) @parameter
 
 (ERROR) @error
