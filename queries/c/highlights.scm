@@ -31,7 +31,6 @@
 
 "--" @operator
 "-" @operator
-"-=" @operator
 "->" @operator
 "!=" @operator
 "*" @operator
@@ -40,7 +39,6 @@
 "&&" @operator
 "+" @operator
 "++" @operator
-"+=" @operator
 "<" @operator
 "<=" @operator
 "==" @operator
@@ -50,6 +48,13 @@
 ">=" @operator
 "!" @operator
 "||" @operator
+
+"-=" @operator
+"+=" @operator
+"*=" @operator
+"/=" @operator
+"|=" @operator
+"&=" @operator
 
 "." @punctuation.delimiter
 ";" @punctuation.delimiter
