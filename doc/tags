@@ -11,6 +11,7 @@ nvim-treesitter-commands	nvim-treesitter.txt	/*nvim-treesitter-commands*
 nvim-treesitter-functions	nvim-treesitter.txt	/*nvim-treesitter-functions*
 nvim-treesitter-intro	nvim-treesitter.txt	/*nvim-treesitter-intro*
 nvim-treesitter-quickstart	nvim-treesitter.txt	/*nvim-treesitter-quickstart*
+nvim_treesitter#foldexpr()	nvim-treesitter.txt	/*nvim_treesitter#foldexpr()*
 nvim_treesitter#statusline()	nvim-treesitter.txt	/*nvim_treesitter#statusline()*
 ts_api.containing_scope	nvim-treesitter.txt	/*ts_api.containing_scope*
 ts_api.get_named_children	nvim-treesitter.txt	/*ts_api.get_named_children*

@@ -124,7 +124,7 @@ The goal of `nvim-treesitter` is both to provide a simple and easy way to use th
 but also to add some functionalities to it:
 Some of these features are :
   - [x] Incremental selection
-  - [ ] Syntax based code folding
+  - [x] Syntax based code folding (`set foldmethod=expr foldexpr=nvim_treesitter#foldexr()`)
   - [x] Consistent syntax highlighting (the api is not quite stable yet)
   - [x] Statusline indicator (`require'nvim-treesitter'.statusline(size)`)
 
