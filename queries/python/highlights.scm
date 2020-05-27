@@ -9,6 +9,9 @@
            (identifier)) @type)
  (match? @type "^[A-Z]"))
 
+((identifier) @type
+ (match? @type "^[A-Z]"))
+
 ((identifier) @constant
  (match? @constant "^[A-Z][A-Z_]*$"))
 
@@ -43,8 +46,30 @@
 (identifier) @variable
 (attribute attribute: (identifier) @property)
 (type (identifier) @type)
+((call 
+  function: (identifier) @isinstance
+  arguments: (argument_list
+    (*)
+    (identifier) @type))
+ (eq? @isinstance "isinstance"))
+
+; Normal parameters
 (parameters
   (identifier) @parameter) 
+; Default parameters
+(keyword_argument
+  name: (identifier) @parameter)
+; Naming parameters on call-site
+(default_parameter
+  name: (identifier) @parameter)
+; Variadic parameters *args, **kwargs
+(parameters
+  (list_splat ; *args
+    (identifier) @parameter)) 
+(parameters
+  (dictionary_splat ; **kwargs
+    (identifier) @parameter)) 
+
 
 ; Literals
 
@@ -68,6 +93,7 @@
 ; Tokens
 
 "-" @operator
+"->" @operator
 "-=" @operator
 "!=" @operator
 "*" @operator
@@ -145,6 +171,9 @@
 
 (class_definition
   name: (identifier) @type)
+(class_definition
+  superclasses: (argument_list 
+    (identifier) @type))
 
 (attribute
     attribute: (identifier) @field)
@@ -155,6 +184,10 @@
 
 ((attribute
     attribute: (identifier) @type)
+    (match? @type "^[A-Z][a-z_]+"))
+
+((attribute
+    object: (identifier) @type)
     (match? @type "^[A-Z][a-z_]+"))
 
 (class_definition
