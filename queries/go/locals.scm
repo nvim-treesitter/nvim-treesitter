@@ -32,6 +32,23 @@
 (type_identifier) @reference
 (field_identifier) @reference
 
+;; Call references
+(call_expression
+    function: (identifier) @reference.call) @call
+
+(call_expression
+    function: (selector_expression
+        field: (field_identifier) @reference.call)) @call
+
+(call_expression
+    function: (parenthesized_expression
+        (identifier) @reference.call)) @call
+
+(call_expression
+    function: (parenthesized_expression
+        (selector_expression
+            field: (field_identifier) @reference.call))) @call
+
 ;; Scopes
 
 (source_file) @scope
