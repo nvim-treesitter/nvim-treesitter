@@ -155,7 +155,7 @@ List of currently supported languages:
 - [x] lua  (maintained by @vigoux)
 - [x] ruby (maintained by @TravonteD)
 - [x] c (maintained by @vigoux)
-- [ ] go
+- [x] go (maintained by @theHamsta)
 - [ ] cpp
 - [ ] rust
 - [x] python (maintained by @theHamsta)
