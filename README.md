@@ -180,6 +180,7 @@ List of currently supported languages:
 - [ ] yaml
 - [ ] nix
 - [ ] markdown
+- [x] regex (maintained by @theHamsta)
 
 ## Troubleshooting
 Before doing anything run `:checkhealth nvim_treesitter`. This will help you find where the bug might come from.
