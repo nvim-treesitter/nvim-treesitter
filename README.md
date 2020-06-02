@@ -163,7 +163,7 @@ List of currently supported languages:
 - [ ] typescript
 - [ ] tsx
 - [ ] json
-- [ ] html
+- [x] html (maintained by @TravonteD)
 - [ ] csharp
 - [ ] swift
 - [ ] java
