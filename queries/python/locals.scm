@@ -14,6 +14,20 @@
   parameters: (parameters
                 (identifier) @definition.var))
 
+; *args parameter
+(function_definition
+  name: (identifier)
+  parameters: (parameters
+                (list_splat
+                  (identifier) @definition.var)))
+
+; **kwargs parameter
+(function_definition
+  name: (identifier)
+  parameters: (parameters
+                (dictionary_splat
+                  (identifier) @definition.var)))
+
 ; Function defines function and scope
 (function_definition
   name: (identifier) @definition.function) @scope
