@@ -168,7 +168,7 @@ List of currently supported languages:
 - [ ] swift
 - [ ] java
 - [ ] ocaml
-- [ ] css
+- [x] css (maintained by @TravonteD)
 - [ ] julia
 - [ ] php
 - [ ] bash
