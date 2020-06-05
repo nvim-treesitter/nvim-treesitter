@@ -3,6 +3,7 @@
 (doctype) @constant
 (attribute_name) @property
 (attribute_value) @string
+(quoted_attribute_value) @string
 (comment) @comment
 
 "=" @operator
