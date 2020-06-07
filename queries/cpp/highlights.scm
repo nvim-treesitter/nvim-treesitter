@@ -1,11 +1,11 @@
 ((identifier) @field
- (match? @field "^_"))
+ (#match? @field "^_"))
 
 ((identifier) @field
- (match? @field "^m_"))
+ (#match? @field "^m_"))
 
 ((identifier) @field
- (match? @field "_$"))
+ (#match? @field "_$"))
 
 ;(field_expression) @parameter ;; How to highlight this?
 (template_function
@@ -21,12 +21,12 @@
 (namespace_identifier) @constant
 
 ((namespace_identifier) @type
-                        (match? @type "^[A-Z]"))
+                        (#match? @type "^[A-Z]"))
 ((namespace_identifier) @constant
-                        (match? @constant "^[A-Z][A-Z_1-9]*$"))
+                        (#match? @constant "^[A-Z][A-Z_1-9]*$"))
 
 (destructor_name
-  name: (*) @function)
+  name: (_) @function)
 
 (function_declarator
       declarator: (scoped_identifier
@@ -34,7 +34,7 @@
 ((function_declarator
       declarator: (scoped_identifier
         name: (identifier) @constructor))
- (match? @constructor "^[A-Z]"))
+ (#match? @constructor "^[A-Z]"))
 
 (call_expression
   function: (scoped_identifier 
@@ -47,18 +47,18 @@
 ((call_expression
   function: (scoped_identifier 
               name: (identifier) @constructor))
-(match? @constructor "^[A-Z]"))
+(#match? @constructor "^[A-Z]"))
 
 ((call_expression
   function: (field_expression 
-              field: (field_identifier) @function))
-(match? @function "^[A-Z]"))
+              field: (field_identifier) @constructor))
+(#match? @function "^[A-Z]"))
 
 ;; constructing a type in a intizializer list: Constructor ():  **SuperType (1)**
 ((field_initializer
   (field_identifier) @constructor
   (argument_list))
- (match? @constructor "^[A-Z]"))
+ (#match? @constructor "^[A-Z]"))
 
 (auto) @keyword
 

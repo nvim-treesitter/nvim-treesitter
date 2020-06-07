@@ -94,10 +94,10 @@
 (sized_type_specifier) @type
 
 ((identifier) @type
- (match? @type "^[A-Z]"))
+ (#match? @type "^[A-Z]"))
 
 ((identifier) @constant
- (match? @constant "^[A-Z][A-Z\\d_]+$"))
+ (#match? @constant "^[A-Z][A-Z\\d_]+$"))
 
 (comment) @comment
 
@@ -109,3 +109,4 @@
   (identifier)) @parameter
 
 (ERROR) @error
+

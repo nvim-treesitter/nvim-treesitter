@@ -41,9 +41,9 @@
 
 ;; Control structures
 (try_statement
-  body: (*) @scope)
+  body: (_) @scope)
 
 (catch_clause) @scope
 
 (destructor_name
-  name: (*) @constructor)
+  name: (_) @constructor)
