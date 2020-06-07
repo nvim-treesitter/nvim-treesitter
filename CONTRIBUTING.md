@@ -94,6 +94,13 @@ are optional and will not have any effect for now.
   `macro`
   `type`
   `field`
+  `doc` for documentation adjecent to a definition. E.g.
+
+```scheme
+  (comment)* @definition.doc
+    (method_declaration
+        name: (field_identifier) @definition.method)
+```
 
 `@scope`
 
