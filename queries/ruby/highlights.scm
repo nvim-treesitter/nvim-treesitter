@@ -29,12 +29,12 @@
 "yield" @keyword
 
 ((identifier) @keyword
- (match? @keyword "^(private|protected|public)$"))
+ (#match? @keyword "^(private|protected|public)$"))
 
 ; Function calls
 
 ((identifier) @function
- (eq? @function "require"))
+ (#eq? @function "require"))
 
 "defined?" @function
 
@@ -67,10 +67,10 @@
 (instance_variable) @label
 
 ((identifier) @constant.builtin
- (match? @constant.builtin "^__(FILE|LINE|ENCODING)__$"))
+ (#match? @constant.builtin "^__(FILE|LINE|ENCODING)__$"))
 
 ((constant) @constant.macro
- (match? @constant.macro "^[A-Z\\d_]+$"))
+ (#match? @constant.macro "^[A-Z\\d_]+$"))
 
 (constant) @constant
 
@@ -87,8 +87,9 @@
 (block_parameter (identifier) @parameter)
 (keyword_parameter (identifier) @parameter)
 
-((identifier) @function
- (is-not? local))
+; TODO: Re-enable this once it is supported
+; ((identifier) @function
+;  (#is-not? local))
 
 ; Literals
 
