@@ -48,9 +48,9 @@
 
 
 ((property_name) @type
- (match? @type "^--"))
+ (#match? @type "^--"))
 ((plain_value) @type
- (match? @type "^--"))
+ (#match? @type "^--"))
 
 (string_value) @string
 (color_value) @string
