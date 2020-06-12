@@ -3,14 +3,21 @@ local ts = vim.treesitter
 
 local M = {}
 
-local function read_query_file(fname)
-  return table.concat(vim.fn.readfile(fname), '\n')
+local function read_query_files(filenames)
+  local contents = {}
+
+  for _,filename in ipairs(filenames) do
+    vim.list_extend(contents, vim.fn.readfile(filename))
+  end
+
+  return table.concat(contents, '\n')
 end
 
 function M.get_query(ft, query_name)
-  local query_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', ft, query_name), false)
+  local query_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', ft, query_name), true)
+
   if #query_files > 0 then
-    return ts.parse_query(ft, read_query_file(query_files[1]))
+    return ts.parse_query(ft, read_query_files(query_files))
   end
 end
 
