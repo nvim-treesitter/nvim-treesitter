@@ -23,7 +23,7 @@
 ((namespace_identifier) @type
                         (#match? @type "^[A-Z]"))
 ((namespace_identifier) @constant
-                        (#match? @constant "^[A-Z][A-Z_1-9]*$"))
+                        (#match? @constant "^[A-Z][A-Z_0-9]*$"))
 
 (destructor_name
   name: (_) @function)
