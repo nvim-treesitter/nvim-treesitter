@@ -203,6 +203,13 @@ parsers.nix = {
   }
 }
 
+parsers.regex = {
+    install_info = {
+        url = "https://github.com/tree-sitter/tree-sitter-regex",
+        files = { "src/parser.c" }
+    }
+}
+
 -- @enable can be true or false
 -- @disable is a list of languages, only relevant if enable is true
 -- @keymaps list of user mappings for a given module if relevant
