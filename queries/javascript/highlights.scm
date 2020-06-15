@@ -87,8 +87,8 @@
 (this) @variable.builtin
 (super) @variable.builtin
 
-(true) @constant.builtin
-(false) @constant.builtin
+(true) @boolean
+(false) @boolean
 (null) @constant.builtin
 (comment) @comment
 (string) @string
