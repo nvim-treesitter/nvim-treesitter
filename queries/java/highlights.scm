@@ -81,9 +81,9 @@
 (hex_integer_literal) @number
 (decimal_integer_literal) @number
 (octal_integer_literal) @number
-(decimal_floating_point_literal) @number
-(hex_floating_point_literal) @number
-(character_literal) @string
+(decimal_floating_point_literal) @float
+(hex_floating_point_literal) @float
+(character_literal) @character
 (string_literal) @string
 (null_literal) @constant.builtin
 
