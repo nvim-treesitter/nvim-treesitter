@@ -182,6 +182,13 @@ List of currently supported languages:
 - [ ] markdown
 - [x] regex (maintained by @theHamsta)
 
+## User Query Extensions
+
+You can add your own query files by placing a query file in vim's runtime path after `nvim-treesitter` is sourced.
+If the language has a built in query file, that file will be appended to or it will be used (useful for languages not yet supported).
+For example, you can add files to `<vim-config-dir>/after/queries/lua/highlights.scm` to add more queries to lua highlights.
+You can also manually add query paths to the runtime path by adding this to your vim config `set rtp+='path/to/queries'`.
+
 ## Troubleshooting
 Before doing anything run `:checkhealth nvim_treesitter`. This will help you find where the bug might come from.
 
