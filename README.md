@@ -156,7 +156,7 @@ List of currently supported languages:
 - [x] ruby (maintained by @TravonteD)
 - [x] c (maintained by @vigoux)
 - [x] go (maintained by @theHamsta)
-- [ ] cpp
+- [x] cpp (maintained by @theHamsta, extends C queries)
 - [ ] rust
 - [x] python (maintained by @theHamsta)
 - [ ] javascript
