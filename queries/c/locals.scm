@@ -17,7 +17,7 @@
 (declaration
   declarator: (identifier) @definition.var)
 (enum_specifier
-  name: (*) @definition.type
+  name: (_) @definition.type
   (enumerator_list
     (enumerator name: (identifier) @definition.var)))
 
@@ -36,3 +36,4 @@
 (while_statement) @scope
 (translation_unit) @scope
 (function_definition) @scope
+(compound_statement) @scope ; a block in curly braces

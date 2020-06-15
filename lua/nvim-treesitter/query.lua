@@ -3,14 +3,41 @@ local ts = vim.treesitter
 
 local M = {}
 
-local function read_query_file(fname)
-  return table.concat(vim.fn.readfile(fname), '\n')
+local function read_query_files(filenames)
+  local contents = {}
+
+  for _,filename in ipairs(filenames) do
+    vim.list_extend(contents, vim.fn.readfile(filename))
+  end
+
+  return table.concat(contents, '\n')
 end
 
+-- Some treesitter grammars extend others.
+-- We can use that to import the queries of the base language
+M.base_language_map = {
+  cpp = {'c'},
+  typescript = {'javascript'},
+  tsx = {'typescript', 'javascript'},
+}
+
 function M.get_query(ft, query_name)
-  local query_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', ft, query_name), false)
+  local query_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', ft, query_name), true)
+  local query_string = ''
+
   if #query_files > 0 then
-    return ts.parse_query(ft, read_query_file(query_files[1]))
+    query_string = read_query_files(query_files)..query_string
+  end
+
+  for _, base_lang in ipairs(M.base_language_map[ft] or {}) do
+    local base_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', base_lang, query_name), false)
+    if base_files and #base_files > 0 then
+        query_string = read_query_files(base_files)..query_string
+    end
+  end
+
+  if #query_string > 0 then
+    return ts.parse_query(ft, query_string)
   end
 end
 
