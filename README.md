@@ -162,7 +162,7 @@ List of currently supported languages:
 - [x] javascript (maintained by @steelsojka)
 - [x] typescript (maintained by @steelsojka)
 - [ ] tsx
-- [ ] json
+- [x] json (maintained by @steelsojka)
 - [x] html (maintained by @TravonteD)
 - [ ] csharp
 - [ ] swift
