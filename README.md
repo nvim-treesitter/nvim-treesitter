@@ -166,7 +166,7 @@ List of currently supported languages:
 - [x] html (maintained by @TravonteD)
 - [ ] csharp
 - [ ] swift
-- [ ] java
+- [x] java
 - [ ] ocaml
 - [x] css (maintained by @TravonteD)
 - [ ] julia
