@@ -159,8 +159,8 @@ List of currently supported languages:
 - [x] cpp (maintained by @theHamsta, extends C queries)
 - [ ] rust
 - [x] python (maintained by @theHamsta)
-- [ ] javascript
-- [ ] typescript
+- [x] javascript (maintained by @steelsojka)
+- [x] typescript (maintained by @steelsojka)
 - [ ] tsx
 - [ ] json
 - [x] html (maintained by @TravonteD)
