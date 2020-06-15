@@ -1,9 +1,9 @@
 ; Methods
 
 (method_declaration
-  name: (identifier) @function.method)
+  name: (identifier) @method)
 (method_invocation
-  name: (identifier) @function.method)
+  name: (identifier) @method)
 (super) @function.builtin
 
 ; Annotations
