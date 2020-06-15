@@ -13,7 +13,33 @@
 (marker_annotation
   name: (identifier) @attribute)
 
-"@" @operator
+; Operators
+[
+"@"
+"+"
+"++"
+"-"
+"--"
+"&"
+"&&"
+"|"
+"||"
+"!="
+"=="
+"*"
+"/"
+"%"
+"<"
+"<="
+">"
+">="
+"="
+"-="
+"+="
+"*="
+"/="
+"%="
+] @operator
 
 ; Types
 
