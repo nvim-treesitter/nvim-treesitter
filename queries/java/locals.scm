@@ -1,3 +1,5 @@
+; CREDITS @maxbrunsfeld (maxbrunsfeld@gmail.com)
+
 (class_declaration
   name: (identifier) @name) @class
 
