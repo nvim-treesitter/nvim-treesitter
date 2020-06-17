@@ -1,3 +1,5 @@
+; CREDITS @maxbrunsfeld (maxbrunsfeld@gmail.com)
+
 ; Methods
 
 (method_declaration
