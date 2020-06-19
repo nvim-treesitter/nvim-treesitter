@@ -61,9 +61,9 @@ parserlist.ruby = {
   }
 }
 
-parserlist.bash = {
+parserlist.sh = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-bash",
+    url = "https://github.com/nvim-treesitter/tree-sitter-bash",
     files = { "src/parser.c", "src/scanner.cc" },
   }
 }
@@ -124,9 +124,9 @@ parserlist.swift = {
   }
 }
 
-parserlist.csharp = {
+parserlist.cs = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-c-sharp",
+    url = "https://github.com/nvim-treesitter/tree-sitter-c-sharp",
     files = { "src/parser.c", "src/scanner.c" },
   }
 }
@@ -139,9 +139,9 @@ parserlist.typescript = {
   }
 }
 
-parserlist.tsx = {
+parserlist.typescriptreact = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-typescript",
+    url = "https://github.com/nvim-treesitter/tree-sitter-typescript",
     files = { "src/parser.c", "src/scanner.c" },
     location = "tree-sitter-tsx/tsx"
   }
