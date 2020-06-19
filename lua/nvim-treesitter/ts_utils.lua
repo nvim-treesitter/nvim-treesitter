@@ -1,6 +1,7 @@
 local api = vim.api
 
 local locals = require'nvim-treesitter.locals'
+local parsers = require'nvim-treesitter.parsers'
 
 local M = {}
 
@@ -203,6 +204,12 @@ function M.previous_scope(node)
       return children[i]
     end
   end
+end
+
+function M.get_node_at_cursor()
+  local cursor = api.nvim_win_get_cursor(0)
+  local root = parsers.get_parser().tree:root()
+  return root:named_descendant_for_range(cursor[1]-1,cursor[2],cursor[1]-1,cursor[2])
 end
 
 return M
