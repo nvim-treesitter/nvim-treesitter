@@ -8,8 +8,9 @@
 
 "=" @operator
 
-"<" @punctuation.bracket
-">" @punctuation.bracket
-"</" @punctuation.bracket
-"/>" @punctuation.bracket
-
+[
+ "<"
+ ">"
+ "</"
+ "/>"
+ ] @punctuation.bracket
