@@ -5,7 +5,7 @@ local api = vim.api
 local ts = vim.treesitter
 
 local queries = require'nvim-treesitter.query'
-local utils = require'nvim-treesitter.utils'
+local parsers = require'nvim-treesitter.parsers'
 
 local M = {
   locals = {}
@@ -18,7 +18,7 @@ function M.collect_locals(bufnr)
   local query = queries.get_query(ft, 'locals')
   if not query then return end
 
-  local parser = utils.get_parser(bufnr, ft)
+  local parser = parsers.get_parser(bufnr, ft)
   if not parser then return end
 
   local root = parser:parse():root()

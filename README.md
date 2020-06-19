@@ -131,19 +131,13 @@ Some of these features are :
 You can find the roadmap [here](https://github.com/nvim-treesitter/nvim-treesitter/projects/1).
 The roadmap and all features of this plugin are open to change, and any suggestion will be highly appreciated!
 
-## Api
+## Utils
 
-Nvim-treesitter exposes an api to extend node capabilites. You can retrieve the api like this:
+you can get some utility functions with
 ```lua
-local ts_node_api = require 'nvim-treesitter'.get_node_api()
+local ts_utils = require 'nvim-treesitter.ts_utils'
 ```
-
-You can also retrieve the current state of the current buffer with:
-```lua
-local buf_state = require'nvim-treesitter'.get_buf_state()
-```
-
-More information is available in neovim documentation (`:help nvim-treesitter-api`).
+More information is available in the help file (`:help nvim-treesitter-utils`).
 
 ## Supported Languages
 

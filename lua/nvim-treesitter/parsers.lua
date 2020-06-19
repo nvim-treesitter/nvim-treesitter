@@ -10,9 +10,10 @@ function M.has_parser(lang)
 end
 
 function M.get_parser(bufnr, lang)
+  local buf = bufnr or api.nvim_get_current_buf()
+  local lang = lang or api.nvim_buf_get_option(buf, 'ft')
+
   if M.has_parser(lang) then
-    local buf = bufnr or api.nvim_get_current_buf()
-    local lang = lang or api.nvim_buf_get_option(buf, 'ft')
     if not M[buf] then
       M[buf] = {}
     end

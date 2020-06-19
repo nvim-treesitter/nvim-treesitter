@@ -1,10 +1,12 @@
 local api = vim.api
 
-local state = require'nvim-treesitter.state'
 local configs = require'nvim-treesitter.configs'
 local ts_utils = require'nvim-treesitter.ts_utils'
+local parsers = require'nvim-treesitter.parsers'
 
 local M = {}
+
+local selections = {}
 
 local function update_selection(buf, node)
   local start_row, start_col, end_row, end_col = node:range()
@@ -18,32 +20,49 @@ local function update_selection(buf, node)
   vim.fn.setpos(".", { buf, end_row+1, end_col+1, 0 })
 end
 
+function M.init_selection()
+  local buf = api.nvim_get_current_buf()
+  local node = ts_utils.get_node_at_cursor()
+  selections[buf] = { [1] = node }
+  update_selection(buf, node)
+end
+
+local function visual_selection_range()
+  local _, csrow, cscol, _ = unpack(vim.fn.getpos("'<"))
+  local _, cerow, cecol, _ = unpack(vim.fn.getpos("'>"))
+  if csrow < cerow then
+    return csrow-1, cscol-1, cerow-1, cecol-1
+  else
+    return cerow-1, cecol-1, csrow-1, cscol-1
+  end
+end
+
+local function range_matches(node)
+  local csrow, cscol, cerow, cecol = visual_selection_range()
+  local srow, scol, erow, ecol = node:range()
+  return srow == csrow and scol == cscol and erow == cerow and ecol == cecol
+end
+
 local function select_incremental(get_parent)
   return function()
     local buf = api.nvim_get_current_buf()
-    local buf_state = state.get_buf_state(buf)
+    local nodes = selections[buf]
 
-    local node
-    -- initialize incremental selection with current range
-    if #buf_state.selection.nodes == 0 then
-      local cur_range = buf_state.selection.range
-      if not cur_range then
-        local _, cursor_row, cursor_col, _ = unpack(vim.fn.getpos("."))
-        cur_range = { cursor_row, cursor_col, cursor_row, cursor_col + 1 }
-      end
-
-      local root = buf_state.parser.tree:root()
-      if not root then return end
-
-      node = root:named_descendant_for_range(cur_range[1]-1, cur_range[2]-1, cur_range[3]-1, cur_range[4]-1)
-    else
-      node = get_parent(buf_state.selection.nodes[#buf_state.selection.nodes])
+    -- initialize incremental selection with current selection
+    if not nodes or #nodes == 0 or not range_matches(nodes[#nodes]) then
+      local csrow, cscol, cerow, cecol = visual_selection_range()
+      local root = parsers.get_parser().tree:root()
+      local node = root:named_descendant_for_range(csrow, cscol, cerow, cecol)
+      update_selection(buf, node)
+      selections[buf] = { [1] = node }
+      return
     end
 
+    node = get_parent(nodes[#nodes])
     if not node then return end
 
-    if node ~= buf_state.selection.nodes[#buf_state.selection.nodes] then
-      state.insert_selection_node(buf, node)
+    if node ~= nodes[#nodes] then
+      table.insert(nodes, node)
     end
 
     update_selection(buf, node)
@@ -60,13 +79,10 @@ end)
 
 function M.node_decremental()
   local buf = api.nvim_get_current_buf()
-  local buf_state = state.get_buf_state(buf)
+  local nodes = selections[buf]
+  if not nodes or #nodes < 2 then return end
 
-  local nodes = buf_state.selection.nodes
-  if #nodes < 2 then return end
-
-  state.pop_selection_node(buf)
-
+  table.remove(selections[buf])
   local node = nodes[#nodes]
   update_selection(buf, node)
 end
@@ -76,14 +92,14 @@ function M.attach(bufnr)
 
   local config = configs.get_module('incremental_selection')
   for funcname, mapping in pairs(config.keymaps) do
-
+    local mode
     if funcname == "init_selection" then
-      local cmd = ":lua require'nvim-treesitter.incremental_selection'.node_incremental()<CR>"
-      api.nvim_buf_set_keymap(buf, 'n', mapping, cmd, { silent = true })
+      mode = 'n'
     else
-      local cmd = string.format(":lua require'nvim-treesitter.incremental_selection'.%s()<CR>", funcname)
-      api.nvim_buf_set_keymap(buf, 'v', mapping, cmd, { silent = true })
+      mode = 'v'
     end
+    local cmd = string.format(":lua require'nvim-treesitter.incremental_selection'.%s()<CR>", funcname)
+    api.nvim_buf_set_keymap(buf, mode, mapping, cmd, { silent = true })
   end
 end
 

@@ -91,26 +91,29 @@ A list of languages can be found at |:TSInstallInfo|
 List modules state for the current session.
 
 ==============================================================================
-API                                               *nvim-treesitter-api*
+UTILS                                               *nvim-treesitter-utils*
 
-Nvim treesitter exposes extended functions to use on nodes and scopes.
-you can retrieve the api with:
+Nvim treesitter has some wrapper functions that you can retrieve with:
 >
-    local ts_node_api = require 'nvim-treesitter'.get_node_api()
+    local ts_utils = require 'nvim-treesitter.ts_utils'
 <
 Methods
 
-get_node_text(node, bufnr)                        *ts_api.get_node_text*
+get_node_at_cursor(winnr)                         *ts_utils.get_node_at_cursor*
+    winnr will be 0 if nil
+    returns the node under the cursor
+
+get_node_text(node, bufnr)                        *ts_utils.get_node_text*
     return the text content of a node
 
-is_parent(dest, source)                           *ts_api.is_parent*
+is_parent(dest, source)                           *ts_utils.is_parent*
     determines wether `dest` is a parent of `source` 
     return a boolean
 
-get_named_children(node)                          *ts_api.get_named_children*
+get_named_children(node)                          *ts_utils.get_named_children*
     return a table of named children of `node`
 
-get_next_node(node, allow_switch_parent, allow_next_parent) *ts_api.get_next_node*
+get_next_node(node, allow_switch_parent, allow_next_parent) *ts_utils.get_next_node*
     return the next node within the same parent.
     if no node is found, returns `nil`.
     if `allow_switch_parent` is true, it will allow switching parent
@@ -118,41 +121,27 @@ get_next_node(node, allow_switch_parent, allow_next_parent) *ts_api.get_next_nod
     if `allow_next_parent` is true, it will allow next parent if 
     the node is the last node and the next parent doesn't have children.
 
-get_previous_node(node, allow_switch_parents, allow_prev_parent) *ts_api.get_previous_node*
+get_previous_node(node, allow_switch_parents, allow_prev_parent) *ts_utils.get_previous_node*
     return the previous node within the same parent.
     `allow_switch_parent` and `allow_prev_parent` follow the same rule
-    as |ts_api.get_next_node| but if the node is the first node.
+    as |ts_utils.get_next_node| but if the node is the first node.
 
-containing_scope(node)                           *ts_api.containing_scope*
+containing_scope(node)                           *ts_utils.containing_scope*
     return the smallest scope containing the node
 
-parent_scope(node, cursor_pos)                   *ts_api.parent_scope*
+parent_scope(node, cursor_pos)                   *ts_utils.parent_scope*
     return the parent scope of the current scope that contains the node.
     `cursor_pos` should be `{ row = number, col = number }`
-    you can retrieve the cursor_pos with the buffer state
 
-nested_scope(node, cursor_pos)                   *ts_api.nested_scope*
+nested_scope(node, cursor_pos)                   *ts_utils.nested_scope*
     return the first scope within current scope that contains the node.
     `cursor_pos` should be `{ row = number, col = number }`
-    you can retrieve the cursor_pos with the buffer state
 
-next_scope(node)                                 *ts_api.next_scope*
+next_scope(node)                                 *ts_utils.next_scope*
     return the neighbour scope of the current node
 
-previous_scope(node)                             *ts_api.previous_scope*
+previous_scope(node)                             *ts_utils.previous_scope*
     return the previous neighbour scope of the current node
-
-Nvim-treesitter also provides access to the state of the current buffer:
->
-    local cur_buf_state = require'nvim-treesitter'.get_buf_state()
-    print(vim.inspect(cur_buf_state))
-    --[[
-	{
-	    cursor_pos = { row = number, col = number }, (current cursor pos in the buffer)
-	    current_node = tsnode                        (smallest node the cursor is on)
-	}
-    ]]--
-<
 
 ==============================================================================
 FUNCTIONS                                         *nvim-treesitter-functions*

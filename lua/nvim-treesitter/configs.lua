@@ -1,137 +1,137 @@
 local api = vim.api
 
 local queries = require'nvim-treesitter.query'
-local utils = require'nvim-treesitter.utils'
+local parsers = require'nvim-treesitter.parsers'
 
-local parsers = {}
+local parserlist = {}
 
-parsers.javascript = {
+parserlist.javascript = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-javascript",
     files = { "src/parser.c", "src/scanner.c" },
   }
 }
 
-parsers.c = {
+parserlist.c = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-c",
     files = { "src/parser.c" }
   }
 }
 
-parsers.cpp = {
+parserlist.cpp = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-cpp",
     files = { "src/parser.c", "src/scanner.cc" }
   }
 }
 
-parsers.rust = {
+parserlist.rust = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-rust",
     files = { "src/parser.c", "src/scanner.c" },
   }
 }
 
-parsers.lua = {
+parserlist.lua = {
   install_info = {
     url = "https://github.com/nvim-treesitter/tree-sitter-lua",
     files = { "src/parser.c", "src/scanner.cc" }
   }
 }
 
-parsers.python = {
+parserlist.python = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-python",
     files = { "src/parser.c", "src/scanner.cc" },
   }
 }
 
-parsers.go = {
+parserlist.go = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-go",
     files = { "src/parser.c" },
   }
 }
 
-parsers.ruby = {
+parserlist.ruby = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ruby",
     files = { "src/parser.c", "src/scanner.cc" },
   }
 }
 
-parsers.bash = {
+parserlist.bash = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-bash",
     files = { "src/parser.c", "src/scanner.cc" },
   }
 }
 
-parsers.php = {
+parserlist.php = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-php",
     files = { "src/parser.c", "src/scanner.cc" },
   }
 }
 
-parsers.java = {
+parserlist.java = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-java",
     files = { "src/parser.c" },
   }
 }
 
-parsers.html = {
+parserlist.html = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-html",
     files = { "src/parser.c", "src/scanner.cc" },
   }
 }
 
-parsers.julia = {
+parserlist.julia = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-julia",
     files = { "src/parser.c", "src/scanner.c" },
   }
 }
 
-parsers.json = {
+parserlist.json = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-json",
     files = { "src/parser.c" },
   }
 }
 
-parsers.css = {
+parserlist.css = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-css",
     files = { "src/parser.c", "src/scanner.c" },
   }
 }
 
-parsers.ocaml = {
+parserlist.ocaml = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ocaml",
     files = { "src/parser.c", "src/scanner.cc" },
   }
 }
 
-parsers.swift = {
+parserlist.swift = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-swift",
     files = { "src/parser.c" },
   }
 }
 
-parsers.csharp = {
+parserlist.csharp = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-c-sharp",
     files = { "src/parser.c", "src/scanner.c" },
   }
 }
 
-parsers.typescript = {
+parserlist.typescript = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-typescript",
     files = { "src/parser.c", "src/scanner.c" },
@@ -139,7 +139,7 @@ parsers.typescript = {
   }
 }
 
-parsers.tsx = {
+parserlist.tsx = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-typescript",
     files = { "src/parser.c", "src/scanner.c" },
@@ -147,63 +147,63 @@ parsers.tsx = {
   }
 }
 
-parsers.scala = {
+parserlist.scala = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-scala",
     files = { "src/parser.c", "src/scanner.c" },
   }
 }
 
-parsers.haskell = {
+parserlist.haskell = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-haskell",
     files = { "src/parser.c", "src/scanner.cc" },
   }
 }
 
-parsers.markdown = {
+parserlist.markdown = {
   install_info = {
     url = "https://github.com/ikatyang/tree-sitter-markdown",
     files = { "src/parser.c", "src/scanner.cc" },
   }
 }
 
-parsers.toml = {
+parserlist.toml = {
   install_info = {
     url = "https://github.com/ikatyang/tree-sitter-toml",
     files = { "src/parser.c", "src/scanner.c" },
   }
 }
 
-parsers.vue = {
+parserlist.vue = {
   install_info = {
     url = "https://github.com/ikatyang/tree-sitter-vue",
     files = { "src/parser.c", "src/scanner.cc" },
   }
 }
 
-parsers.elm = {
+parserlist.elm = {
   install_info = {
     url = "https://github.com//razzeee/tree-sitter-elm",
     files = { "src/parser.c", "src/scanner.cc" },
   }
 }
 
-parsers.yaml = {
+parserlist.yaml = {
   install_info = {
     url = "https://github.com/ikatyang/tree-sitter-yaml",
     files = { "src/parser.c", "src/scanner.cc" },
   }
 }
 
-parsers.nix = {
+parserlist.nix = {
   install_info = {
     url = "https://github.com/cstrahan/tree-sitter-nix",
     files = { "src/parser.c", "src/scanner.cc" },
   }
 }
 
-parsers.regex = {
+parserlist.regex = {
     install_info = {
         url = "https://github.com/tree-sitter/tree-sitter-regex",
         files = { "src/parser.c" }
@@ -245,7 +245,7 @@ local M = {}
 local function enable_module(mod, bufnr, ft)
   local bufnr = bufnr or api.nvim_get_current_buf()
   local ft = ft or api.nvim_buf_get_option(bufnr, 'ft')
-  if not parsers[ft] or not config.modules[mod] then
+  if not parserlist[ft] or not config.modules[mod] then
     return
   end
 
@@ -275,12 +275,12 @@ local function enable_all(mod, ft)
     end
   end
   if ft then
-    if utils.has_parser(ft) then
+    if parsers.has_parser(ft) then
       enable_mod_conf_autocmd(mod, ft)
     end
   else
     for _, ft in pairs(M.available_parsers()) do
-      if utils.has_parser(ft) then
+      if parsers.has_parser(ft) then
         enable_mod_conf_autocmd(mod, ft)
       end
     end
@@ -291,7 +291,7 @@ end
 local function disable_module(mod, bufnr, ft)
   local bufnr = bufnr or api.nvim_get_current_buf()
   local ft = ft or api.nvim_buf_get_option(bufnr, 'ft')
-  if not parsers[ft] or not config.modules[mod] then
+  if not parserlist[ft] or not config.modules[mod] then
     return
   end
 
@@ -360,7 +360,7 @@ M.commands = {
 -- @param mod: module (string)
 -- @param ft: filetype (string)
 function M.is_enabled(mod, ft)
-  if not M.get_parser_configs()[ft] or not utils.has_parser(ft) then
+  if not M.get_parser_configs()[ft] or not parsers.has_parser(ft) then
     return false
   end
 
@@ -404,11 +404,11 @@ function M.setup(user_data)
 end
 
 function M.get_parser_configs()
-  return parsers
+  return parserlist
 end
 
 function M.available_parsers()
-  return vim.tbl_keys(parsers)
+  return vim.tbl_keys(parserlist)
 end
 
 function M.available_modules()

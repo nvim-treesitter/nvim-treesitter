@@ -4,6 +4,7 @@ local luv = vim.loop
 
 local configs = require'nvim-treesitter.configs'
 local utils = require'nvim-treesitter.utils'
+local parsers = require'nvim-treesitter.parsers'
 
 local M = {}
 
@@ -128,7 +129,7 @@ M.ensure_installed = function(languages)
   end
 
   for _, ft in ipairs(languages) do
-    if not utils.has_parser(ft) then
+    if not parsers.has_parser(ft) then
       install(ft)
     end
   end
