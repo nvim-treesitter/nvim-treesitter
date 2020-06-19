@@ -30,6 +30,12 @@ local function run_install(cache_folder, package_path, ft, repo)
   local parser_lib_name = package_path.."/parser/"..ft..".so"
   local command_list = {
     {
+      cmd = 'mkdir',
+      opts = {
+        args = { '-p', package_path.."/parser" }
+      }
+    },
+    {
       cmd = 'rm',
       opts = {
         args = { '-rf', project_repo },
