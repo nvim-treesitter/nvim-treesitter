@@ -99,7 +99,8 @@ Nvim treesitter has some wrapper functions that you can retrieve with:
 <
 Methods
 
-get_node_at_cursor()                              *ts_utils.get_node_at_cursor*
+get_node_at_cursor(winnr)                         *ts_utils.get_node_at_cursor*
+    winnr will be 0 if nil
     returns the node under the cursor
 
 get_node_text(node, bufnr)                        *ts_utils.get_node_text*

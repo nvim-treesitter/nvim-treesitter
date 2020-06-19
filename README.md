@@ -137,7 +137,7 @@ you can get some utility functions with
 ```lua
 local ts_utils = require 'nvim-treesitter.ts_utils'
 ```
-More information is available in neovim documentation (`:help nvim-treesitter-utils`).
+More information is available in the help file (`:help nvim-treesitter-utils`).
 
 ## Supported Languages
 

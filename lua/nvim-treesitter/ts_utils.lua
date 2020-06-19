@@ -206,8 +206,8 @@ function M.previous_scope(node)
   end
 end
 
-function M.get_node_at_cursor()
-  local cursor = api.nvim_win_get_cursor(0)
+function M.get_node_at_cursor(winnr)
+  local cursor = api.nvim_win_get_cursor(winnr or 0)
   local root = parsers.get_parser().tree:root()
   return root:named_descendant_for_range(cursor[1]-1,cursor[2],cursor[1]-1,cursor[2])
 end
