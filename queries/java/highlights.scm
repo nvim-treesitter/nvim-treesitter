@@ -4,6 +4,8 @@
 
 (method_declaration
   name: (identifier) @method)
+(method_declaration
+  parameters: (formal_parameter) @parameter)
 (method_invocation
   name: (identifier) @method)
 (super) @function.builtin
