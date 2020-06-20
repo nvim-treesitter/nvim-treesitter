@@ -3,18 +3,17 @@
 ; Methods
 
 [
- (method_declaration
-  name: (identifier))
-
- (method_invocation
-  name: (identifier))
+(method_declaration
+ name: (identifier))
+(method_invocation
+ name: (identifier))
 ] @method
 
 [
- (method_declaration
-  parameters: (formal_parameter))
- (method_declaration
-  parameters: (formal_parameter))
+(method_declaration
+ parameters: (formal_parameter))
+(method_declaration
+ parameters: (formal_parameter))
 ] @parameter
 
 (super) @function.builtin
@@ -22,10 +21,10 @@
 ; Annotations
 
 [
- (annotation
-  name: (identifier))
- (marker_annotation
-  name: (identifier))
+(annotation
+ name: (identifier))
+(marker_annotation
+ name: (identifier))
 ] @attribute
 
 ; Operators
@@ -60,15 +59,15 @@
 ; Types
 
 [
- (interface_declaration
-  name: (identifier))
- (class_declaration
-  name: (identifier))
- (enum_declaration
-  name: (identifier)
- (constructor_declaration
-  name: (identifier))
- (type_identifier)
+(interface_declaration
+ name: (identifier))
+(class_declaration
+ name: (identifier))
+(enum_declaration
+ name: (identifier)
+(constructor_declaration
+ name: (identifier))
+(type_identifier)
 ] @type
 
 
@@ -98,14 +97,14 @@
 ; Literals
 
 [
- (hex_integer_literal)
- (decimal_integer_literal)
- (octal_integer_literal)
+(hex_integer_literal)
+(decimal_integer_literal)
+(octal_integer_literal)
 ] @number
 
 [
- (decimal_floating_point_literal)
- (hex_floating_point_literal)
+(decimal_floating_point_literal)
+(hex_floating_point_literal)
 ] @float
 
 (character_literal) @character
@@ -187,9 +186,9 @@
 ; Punctuation
 
 [
- ";"
- "."
- ","
+";"
+"."
+","
 ] @punctuation.delimiter
 
 [
@@ -198,4 +197,5 @@
 "{"
 "}"
 "("
-")"] @punctuation.bracket
+")"
+] @punctuation.bracket
