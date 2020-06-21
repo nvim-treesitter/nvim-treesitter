@@ -9,18 +9,8 @@
  name: (identifier))
 ] @method
 
-[
-(method_declaration
- parameters:
-   (formal_parameters
-    (formal_parameter
-     name: (identifier) @parameter)))
-(method_invocation
- parameters:
-   (formal_parameters
-    (formal_parameter
-     name: (identifier) @parameter)))
-] @parameter
+(formal_parameter
+ name: (identifier) @parameter))) 
 
 (super) @function.builtin
 
