@@ -11,9 +11,15 @@
 
 [
 (method_declaration
- parameters: (formal_parameter))
-(method_declaration
- parameters: (formal_parameter))
+ parameters:
+   (formal_parameters
+    (formal_parameter
+     name: (identifier) @parameter)))
+(method_invocation
+ parameters:
+   (formal_parameters
+    (formal_parameter
+     name: (identifier) @parameter)))
 ] @parameter
 
 (super) @function.builtin
