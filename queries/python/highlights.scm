@@ -3,31 +3,32 @@
 
 ; Identifier naming conventions
 
-
-((import_from_statement
-   name: (dotted_name
-           (identifier)) @type)
- (match? @type "^[A-Z]"))
-
+(identifier) @Normal
 ((identifier) @type
  (match? @type "^[A-Z]"))
-
 ((identifier) @constant
- (match? @constant "^[A-Z][A-Z_]*$"))
+ (match? @constant "^[A-Z][A-Z_0-9]*$"))
 
 ; Function calls
 
 (decorator) @function
+((decorator (dotted_name (identifier) @function))
+ (match? @function "^([A-Z])@!.*$"))
+
+(call
+  function: (identifier) @function)
 
 (call
   function: (attribute
               attribute: (identifier) @method))
 
-(call
-  function: (identifier) @function)
+((call
+   function: (identifier) @constructor)
+ (match? @constructor "^[A-Z]"))
 
 ((call
-   (identifier) @constructor)
+  function: (attribute
+              attribute: (identifier) @constructor))
  (match? @constructor "^[A-Z]"))
 
 ;; Builtin functions
@@ -43,10 +44,9 @@
 (function_definition
   name: (identifier) @function)
 
-(identifier) @variable
-(attribute attribute: (identifier) @property)
 (type (identifier) @type)
-((call 
+
+((call
   function: (identifier) @isinstance
   arguments: (argument_list
     (*)
@@ -55,7 +55,7 @@
 
 ; Normal parameters
 (parameters
-  (identifier) @parameter) 
+  (identifier) @parameter)
 ; Default parameters
 (keyword_argument
   name: (identifier) @parameter)
@@ -65,10 +65,10 @@
 ; Variadic parameters *args, **kwargs
 (parameters
   (list_splat ; *args
-    (identifier) @parameter)) 
+    (identifier) @parameter))
 (parameters
   (dictionary_splat ; **kwargs
-    (identifier) @parameter)) 
+    (identifier) @parameter))
 
 
 ; Literals
@@ -84,11 +84,7 @@
 
 (comment) @comment
 (string) @string
-(escape_sequence) @escape
-
-(interpolation
-  "{" @punctuation.special
-  "}" @punctuation.special) @embedded
+(escape_sequence) @string.escape
 
 ; Tokens
 
@@ -164,46 +160,36 @@
 ")" @punctuation.bracket
 "[" @punctuation.bracket
 "]" @punctuation.bracket
+"{" @punctuation.bracket
+"}" @punctuation.bracket
+
+(interpolation
+  "{" @punctuation.special
+  "}" @punctuation.special) @embedded
 
 "," @punctuation.delimiter
 "." @punctuation.delimiter
 ":" @punctuation.delimiter
 
+; Class definitions
+
 (class_definition
   name: (identifier) @type)
 (class_definition
-  superclasses: (argument_list 
+  superclasses: (argument_list
     (identifier) @type))
 
-(attribute
+((attribute
     attribute: (identifier) @field)
-
-((attribute
-    attribute: (identifier) @constant)
-    (match? @constant "^[A-Z][A-Z_]*$"))
-
-((attribute
-    attribute: (identifier) @type)
-    (match? @type "^[A-Z][a-z_]+"))
-
-((attribute
-    object: (identifier) @type)
-    (match? @type "^[A-Z][a-z_]+"))
-
-(class_definition
-  body: (block
-          (expression_statement
-            (assignment
-              left: (expression_list
-                      (identifier) @field)))))
+ (match? @field "^([A-Z])@!.*$"))
 
 ((class_definition
   body: (block
           (expression_statement
             (assignment
               left: (expression_list
-                      (identifier) @constant)))))
-  (match? @constant "^[A-Z][A-Z_]*$"))
+                      (identifier) @field)))))
+ (match? @field "^([A-Z])@!.*$"))
 
 ;; Error
 (ERROR) @error

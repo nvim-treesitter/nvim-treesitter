@@ -13,6 +13,7 @@ local hlmap = vim.treesitter.TSHighlighter.hl_map
 hlmap.error = "Error"
 hlmap["punctuation.delimiter"] = "Delimiter"
 hlmap["punctuation.bracket"] = "Delimiter"
+hlmap["punctuation.special"] = "Delimiter"
 
 -- Constants
 hlmap["constant"] = "Constant"
