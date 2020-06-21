@@ -35,6 +35,7 @@ M.query_extensions = {
 }
 
 M.has_locals = get_query_guard('locals')
+M.has_textobjects = get_query_guard('textobjects')
 M.has_highlights = get_query_guard('highlights')
 
 function M.get_query(lang, query_name)

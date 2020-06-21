@@ -28,7 +28,7 @@ function M.get_node_text(node, bufnr)
   end
 end
 
---- Determines wether a node is the parent of another
+--- Determines whether a node is the parent of another
 -- @param dest the possible parent
 -- @param source the possible child node
 function M.is_parent(dest, source)
@@ -321,6 +321,59 @@ end
 function M.highlight_range(range, buf, hl_namespace, hl_group)
   local start_row, start_col, end_row, end_col = unpack(range)
   vim.highlight.range(buf, hl_namespace, hl_group, {start_row, start_col}, {end_row, end_col})
+end
+
+-- Set visual selection to node
+function M.update_selection(buf, node)
+  local start_row, start_col, end_row, end_col = node:range()
+
+  if end_row == vim.fn.line('$') then
+    end_col = #vim.fn.getline('$')
+  end
+
+  -- Convert to 1-based indices
+  start_row = start_row + 1
+  start_col = start_col + 1
+  end_row = end_row + 1
+  end_col = end_col + 1
+
+  vim.fn.setpos(".", { buf, start_row, start_col, 0 })
+  vim.fn.nvim_exec("normal v", false)
+
+  -- Convert exclusive end position to inclusive
+  if end_col == 1 then
+    vim.fn.setpos(".", { buf, end_row - 1, -1, 0 })
+  else
+    vim.fn.setpos(".", { buf, end_row, end_col - 1, 0 })
+  end
+end
+
+-- Byte length of node range
+function M.node_length(node)
+  local _, _, start_byte = node:start()
+  local _, _, end_byte = node:end_()
+  return end_byte - start_byte
+end
+
+--- Determines whether (line, col) position is in node range
+-- @param node Node defining the range
+-- @param line A line (0-based)
+-- @param col A column (0-based)
+function M.is_in_node_range(node, line, col)
+  local start_line, start_col, end_line, end_col = node:range()
+  if line >= start_line and line <= end_line then
+    if line == start_line and line == end_line then
+      return col >= start_col and col < end_col
+    elseif line == start_line then
+      return col >= start_col
+    elseif line == end_line then
+      return col < end_col
+    else
+      return true
+    end
+  else
+    return false
+  end
 end
 
 return M

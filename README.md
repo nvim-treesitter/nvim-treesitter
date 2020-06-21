@@ -217,7 +217,8 @@ More information is available in the help file (`:help nvim-treesitter-utils`).
 
 ## Supported Languages
 
-For treesitter to work, we need to use query files such as those you can find in `queries/{lang}/{locals,highlights}.scm`
+For treesitter to work, we need to use query files such as those you can find in
+`queries/{lang}/{locals,highlights,textobjects}.scm`
 
 We are looking for maintainers to write query files for their languages.
 
