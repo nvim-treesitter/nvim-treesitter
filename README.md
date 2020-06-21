@@ -2,6 +2,9 @@
 # nvim-treesitter
 Treesitter configurations and abstraction layer for Neovim.
 
+**Warning: Treesitter and Treesitter highlighting are an experimental feature of nightly versions of Neovim.
+Please consider the experience with this plug-in as experimental until Neovim 0.5 is released!**
+
 # Quickstart
 
 ## Requirements
