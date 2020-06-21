@@ -10,7 +10,7 @@ local M = {
 local hlmap = vim.treesitter.TSHighlighter.hl_map
 
 -- Misc
-hlmap.error = "Error"
+hlmap.error = nil -- = "Error" activates highlighting of syntax errors
 hlmap["punctuation.delimiter"] = "Delimiter"
 hlmap["punctuation.bracket"] = "Delimiter"
 hlmap["punctuation.special"] = "Delimiter"
