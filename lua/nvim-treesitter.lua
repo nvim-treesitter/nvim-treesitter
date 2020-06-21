@@ -26,6 +26,7 @@ function M.setup()
 end
 
 function M.statusline(indicator_size)
+  if not parsers.has_parser() then return end
   local indicator_size = indicator_size or 100
 
   local current_node = ts_utils.get_node_at_cursor()
