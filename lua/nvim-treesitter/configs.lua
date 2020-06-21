@@ -4,6 +4,19 @@ local queries = require'nvim-treesitter.query'
 local parsers = require'nvim-treesitter.parsers'
 local utils = require'nvim-treesitter.utils'
 
+local M = {}
+
+local function has_some_textobject_mapping(lang)
+  for _, v in pairs(M.get_module('textobjects').keymaps) do
+    if type(v) == 'table' then
+      if v[lang] then
+        return true
+      end
+    end
+  end
+  return false
+end
+
 local config = {
   modules = {},
   ensure_installed = nil
@@ -65,12 +78,21 @@ local builtin_modules = {
         list_definitions = "gnD"
       }
     }
+  },
+  textobjects = {
+    module_path = 'nvim-treesitter.textobjects',
+    enable = false,
+    disable = {},
+    is_supported = function(lang)
+      return has_some_textobject_mapping(lang) or queries.has_textobjects(lang)
+    end,
+    keymaps = {
+      inverse_mappings = true
+    }
   }
 }
 
 local special_config_keys = {'enable', 'disable', 'keymaps'}
-
-local M = {}
 
 -- Resolves a module by requiring the `module_path` or using the module definition.
 local function resolve_module(mod_name)
@@ -279,12 +301,17 @@ function M.setup_module(mod, data, mod_name)
       mod.disable = data.disable
     end
     if mod.keymaps and type(data.keymaps) == 'table' then
-      for f, map in pairs(data.keymaps) do
-        if mod.keymaps[f] then
-          mod.keymaps[f] = map
+      if mod.keymaps.inverse_mappings then
+        mod.keymaps = data.keymaps
+      else
+        for f, map in pairs(data.keymaps) do
+          if mod.keymaps[f] then
+            mod.keymaps[f] = map
+          end
         end
       end
     end
+
     for k, v in pairs(data) do
       -- Just copy all non-special configuration keys
       if not vim.tbl_contains(special_config_keys, k) then

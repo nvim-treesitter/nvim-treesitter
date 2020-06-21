@@ -46,7 +46,7 @@ end
 
 -- Gets a property at path
 -- @param tbl the table to access
--- @param path the '.' seperated path
+-- @param path the '.' separated path
 -- @returns the value at path or nil
 function M.get_at_path(tbl, path)
   local segments = vim.split(path, '.', true)

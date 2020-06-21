@@ -8,32 +8,32 @@ local M = {}
 
 local selections = {}
 
-local function update_selection(buf, node)
-  local start_row, start_col, end_row, end_col = node:range()
-
-  if end_row == vim.fn.line('$') then
-    end_col = #vim.fn.getline('$')
-  end
-
-  vim.fn.setpos(".", { buf, start_row+1, start_col+1, 0 })
-  vim.fn.nvim_exec("normal v", false)
-  vim.fn.setpos(".", { buf, end_row+1, end_col+1, 0 })
-end
-
 function M.init_selection()
   local buf = api.nvim_get_current_buf()
   local node = ts_utils.get_node_at_cursor()
   selections[buf] = { [1] = node }
-  update_selection(buf, node)
+  ts_utils.update_selection(buf, node)
+end
+
+-- moves 0-based node position by one character
+local function inclusive_pos_to_exclusive(row, col)
+  local line = vim.fn.getline(row + 1)
+
+  -- move by one character changes row?
+  if #line == col + 1  then
+    return row + 1, 0
+  else
+    return row, col + 1
+  end
 end
 
 local function visual_selection_range()
   local _, csrow, cscol, _ = unpack(vim.fn.getpos("'<"))
   local _, cerow, cecol, _ = unpack(vim.fn.getpos("'>"))
-  if csrow < cerow then
-    return csrow-1, cscol-1, cerow-1, cecol-1
+  if csrow < cerow or (csrow == cerow  and cscol <= cecol) then
+    return csrow-1, cscol-1, inclusive_pos_to_exclusive(cerow-1, cecol-1)
   else
-    return cerow-1, cecol-1, csrow-1, cscol-1
+    return cerow-1, cecol-1, inclusive_pos_to_exclusive(csrow-1, cscol-1)
   end
 end
 
@@ -53,7 +53,7 @@ local function select_incremental(get_parent)
       local csrow, cscol, cerow, cecol = visual_selection_range()
       local root = parsers.get_parser().tree:root()
       local node = root:named_descendant_for_range(csrow, cscol, cerow, cecol)
-      update_selection(buf, node)
+      ts_utils.update_selection(buf, node)
       selections[buf] = { [1] = node }
       return
     end
@@ -65,7 +65,7 @@ local function select_incremental(get_parent)
       table.insert(nodes, node)
     end
 
-    update_selection(buf, node)
+    ts_utils.update_selection(buf, node)
   end
 end
 
@@ -84,7 +84,7 @@ function M.node_decremental()
 
   table.remove(selections[buf])
   local node = nodes[#nodes]
-  update_selection(buf, node)
+  ts_utils.update_selection(buf, node)
 end
 
 function M.attach(bufnr)
