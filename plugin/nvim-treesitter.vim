@@ -1,4 +1,4 @@
-" Last Change: 2020 avril 25
+" Last Change: 2020 juin 21
 
 if exists('g:loaded_nvim_treesitter')
   finish
@@ -18,3 +18,42 @@ ts_available_modules = function()
 end
 require'nvim-treesitter'.setup()
 EOF
+
+highlight link TSError Error
+
+highlight link TSPunctDelimiter Delimiter
+highlight link TSPunctBracket Delimiter
+highlight link TSPunctSpecial Delimiter
+
+highlight link TSConstant Constant
+highlight link TSConstBuiltin Special
+highlight link TSConstMacro Define
+highlight link TSString String
+highlight link TSStringRegex String
+highlight link TSStringEscape SpecialChar
+highlight link TSCharacter Character
+highlight link TSNumber Number
+highlight link TSBoolean Boolean
+highlight link TSFloat TSFloat
+
+highlight link TSFunction Function
+highlight link TSFuncBuiltin Special
+highlight link TSFuncMacro Macro
+highlight link TSParameter Identifier
+highlight link TSMethod Function
+highlight link TSField Identifier
+highlight link TSProperty Identifier
+highlight link TSConstructor Special
+
+highlight link TSConditional Conditional
+highlight link TSRepeat Repeat
+highlight link TSLabel Label
+highlight link TSOperator Operator
+highlight link TSKeyword Keyword
+highlight link TSException Exception
+
+highlight link TSType Type
+highlight link TSTypeBuiltin Type
+highlight link TSStructure Structure
+highlight link TSInclude Include
+
