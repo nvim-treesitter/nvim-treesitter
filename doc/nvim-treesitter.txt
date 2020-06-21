@@ -166,4 +166,135 @@ Note: This is highly experimental, and folding can break on some types of
       edits. If you encounter such breakage, hiting `zx` should fix folding.
       In any case, feel free to open an issue with the reproducing steps.
 
+==============================================================================
+HIGHLIGHTS                                        *nvim-treesitter-highlights*
+
+TSError
+
+`TSPunctDelimiter`
+							 *hl-TSPunctDelimiter*
+For delimiters ie: `.`
+
+`TSPunctBracket`
+							   *hl-TSPunctBracket*
+For brackets and parens.
+
+`TSPunctSpecial`
+							   *hl-TSPunctSpecial*
+For special punctutation that does not fall in the catagories before.
+
+`TSConstant`
+							       *hl-TSConstant*
+For constants
+
+`TSConstBuiltin`
+							   *hl-TSConstBuiltin*
+For constant that are built in the language: `nil` in Lua.
+
+`TSConstMacro`
+							     *hl-TSConstMacro*
+For constants that are defined by macros: `NULL` in C.
+
+`TSString`
+								 *hl-TSString*
+For strings.
+
+`TSStringRegex`
+							    *hl-TSStringRegex*
+For regexes.
+
+`TSStringEscape`
+							   *hl-TSStringEscape*
+For escape characters within a string.
+
+`TSCharacter`
+							      *hl-TSCharacter*
+For characters.
+
+`TSNumber`
+								 *hl-TSNumber*
+For integers.
+
+`TSBoolean`
+								*hl-TSBoolean*
+For booleans.
+
+`TSFloat`
+								  *hl-TSFloat*
+For floats.
+
+`TSFunction`
+							       *hl-TSFunction*
+For function (calls and definitions).
+
+`TSFuncBuiltin`
+							    *hl-TSFuncBuiltin*
+For builtin functions: `table.insert` in Lua.
+
+`TSFuncMacro`
+							      *hl-TSFuncMacro*
+For macro defined fuctions (calls and definitions): each `macro_rules` in
+Rust.
+
+`TSParameter`
+							      *hl-TSParameter*
+For parameters of a function.
+
+`TSMethod`
+								 *hl-TSMethod*
+For method calls and definitions.
+
+`TSField`
+								  *hl-TSField*
+For fields.
+
+`TSProperty`
+							       *hl-TSProperty*
+Same as `TSField`.
+
+`TSConstructor`
+							    *hl-TSConstructor*
+For constructor calls and definitions: `{}` in Lua, and Java constructors.
+
+`TSConditional`
+							    *hl-TSConditional*
+For keywords related to conditionnals.
+
+`TSRepeat`
+								 *hl-TSRepeat*
+For keywords related to loops.
+
+`TSLabel`
+								  *hl-TSLabel*
+For labels: `labe:` in C and `:label:` in Lua.
+
+`TSOperator`
+							       *hl-TSOperator*
+For any operator: `+`, but also `->` and `*` in C.
+
+`TSKeyword`
+								*hl-TSKeyword*
+For keywords that don't fall in previous categories.
+
+`TSException`
+							      *hl-TSException*
+For exception related keywords.
+
+`TSType`
+								   *hl-TSType*
+For types.
+
+`TSTypeBuiltin`
+							    *hl-TSTypeBuiltin*
+For builtin types (you guessed it, right ?).
+
+`TSStructure`
+							      *hl-TSStructure*
+This is left as an exercise for the reader.
+
+`TSInclude`
+								*hl-TSInclude*
+For includes: `#include` in C, `use` or `extern crate` in Rust, or `require`
+in Lua
+
  vim:tw=78:ts=8:noet:ft=help:norl:
