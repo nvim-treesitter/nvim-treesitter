@@ -1,15 +1,16 @@
 local api = vim.api
 local configs = require'nvim-treesitter.configs'
+local parsers = require'nvim-treesitter.parsers'
 
 local M = {}
 
 local function install_info()
   local max_len = 0
-  for _, ft in pairs(configs.available_parsers()) do
+  for _, ft in pairs(parsers.available_parsers()) do
     if #ft > max_len then max_len = #ft end
   end
 
-  for _, ft in pairs(configs.available_parsers()) do
+  for _, ft in pairs(parsers.available_parsers()) do
     local is_installed = #api.nvim_get_runtime_file('parser/'..ft..'.so', false) > 0
     api.nvim_out_write(ft..string.rep(' ', max_len - #ft + 1))
     if is_installed then
@@ -66,7 +67,7 @@ end
 local function module_info(mod)
   if mod and not configs.get_config()[mod] then return end
 
-  local ft_by_len = configs.available_parsers()
+  local ft_by_len = parsers.available_parsers()
   table.sort(ft_by_len, function(a, b) return #a > #b end)
   if mod then
     print_info_module(ft_by_len, mod)

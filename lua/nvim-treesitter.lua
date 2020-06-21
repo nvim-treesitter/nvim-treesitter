@@ -5,6 +5,7 @@ local utils = require'nvim-treesitter.utils'
 local ts_utils = require'nvim-treesitter.ts_utils'
 local info = require'nvim-treesitter.info'
 local configs = require'nvim-treesitter.configs'
+local parsers = require'nvim-treesitter.parsers'
 
 local M = {}
 
@@ -13,9 +14,10 @@ function M.setup()
   utils.setup_commands('info', info.commands)
   utils.setup_commands('configs', configs.commands)
 
-  for _, ft in pairs(configs.available_parsers()) do
+  for _, lang in pairs(parsers.available_parsers()) do
     for _, mod in pairs(configs.available_modules()) do
-      if configs.is_enabled(mod, ft) then
+      if configs.is_enabled(mod, lang) then
+        local ft = parsers.lang_to_ft(lang)
         local cmd = string.format("lua require'nvim-treesitter.%s'.attach()", mod)
         api.nvim_command(string.format("autocmd NvimTreesitter FileType %s %s", ft, cmd))
       end

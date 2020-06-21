@@ -21,15 +21,15 @@ M.base_language_map = {
   tsx = {'typescript', 'javascript'},
 }
 
-function M.get_query(ft, query_name)
-  local query_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', ft, query_name), true)
+function M.get_query(lang, query_name)
+  local query_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', lang, query_name), true)
   local query_string = ''
 
   if #query_files > 0 then
     query_string = read_query_files(query_files)..query_string
   end
 
-  for _, base_lang in ipairs(M.base_language_map[ft] or {}) do
+  for _, base_lang in ipairs(M.base_language_map[lang] or {}) do
     local base_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', base_lang, query_name), true)
     if base_files and #base_files > 0 then
         query_string = read_query_files(base_files)..query_string
@@ -37,7 +37,7 @@ function M.get_query(ft, query_name)
   end
 
   if #query_string > 0 then
-    return ts.parse_query(ft, query_string)
+    return ts.parse_query(lang, query_string)
   end
 end
 

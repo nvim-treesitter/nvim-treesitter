@@ -3,213 +3,6 @@ local api = vim.api
 local queries = require'nvim-treesitter.query'
 local parsers = require'nvim-treesitter.parsers'
 
-local parserlist = {}
-
-parserlist.javascript = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-javascript",
-    files = { "src/parser.c", "src/scanner.c" },
-  }
-}
-
-parserlist.c = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-c",
-    files = { "src/parser.c" }
-  }
-}
-
-parserlist.cpp = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-cpp",
-    files = { "src/parser.c", "src/scanner.cc" }
-  }
-}
-
-parserlist.rust = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-rust",
-    files = { "src/parser.c", "src/scanner.c" },
-  }
-}
-
-parserlist.lua = {
-  install_info = {
-    url = "https://github.com/nvim-treesitter/tree-sitter-lua",
-    files = { "src/parser.c", "src/scanner.cc" }
-  }
-}
-
-parserlist.python = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-python",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parserlist.go = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-go",
-    files = { "src/parser.c" },
-  }
-}
-
-parserlist.ruby = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-ruby",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parserlist.bash = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-bash",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parserlist.php = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-php",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parserlist.java = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-java",
-    files = { "src/parser.c" },
-  }
-}
-
-parserlist.html = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-html",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parserlist.julia = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-julia",
-    files = { "src/parser.c", "src/scanner.c" },
-  }
-}
-
-parserlist.json = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-json",
-    files = { "src/parser.c" },
-  }
-}
-
-parserlist.css = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-css",
-    files = { "src/parser.c", "src/scanner.c" },
-  }
-}
-
-parserlist.ocaml = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-ocaml",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parserlist.swift = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-swift",
-    files = { "src/parser.c" },
-  }
-}
-
-parserlist.csharp = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-c-sharp",
-    files = { "src/parser.c", "src/scanner.c" },
-  }
-}
-
-parserlist.typescript = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-typescript",
-    files = { "src/parser.c", "src/scanner.c" },
-    location = "tree-sitter-typescript/typescript"
-  }
-}
-
-parserlist.tsx = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-typescript",
-    files = { "src/parser.c", "src/scanner.c" },
-    location = "tree-sitter-tsx/tsx"
-  }
-}
-
-parserlist.scala = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-scala",
-    files = { "src/parser.c", "src/scanner.c" },
-  }
-}
-
-parserlist.haskell = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-haskell",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parserlist.markdown = {
-  install_info = {
-    url = "https://github.com/ikatyang/tree-sitter-markdown",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parserlist.toml = {
-  install_info = {
-    url = "https://github.com/ikatyang/tree-sitter-toml",
-    files = { "src/parser.c", "src/scanner.c" },
-  }
-}
-
-parserlist.vue = {
-  install_info = {
-    url = "https://github.com/ikatyang/tree-sitter-vue",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parserlist.elm = {
-  install_info = {
-    url = "https://github.com//razzeee/tree-sitter-elm",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parserlist.yaml = {
-  install_info = {
-    url = "https://github.com/ikatyang/tree-sitter-yaml",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parserlist.nix = {
-  install_info = {
-    url = "https://github.com/cstrahan/tree-sitter-nix",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parserlist.regex = {
-    install_info = {
-        url = "https://github.com/tree-sitter/tree-sitter-regex",
-        files = { "src/parser.c" }
-    }
-}
-
 -- @enable can be true or false
 -- @disable is a list of languages, only relevant if enable is true
 -- @keymaps list of user mappings for a given module if relevant
@@ -219,8 +12,8 @@ local config = {
     highlight = {
       enable = false,
       disable = {},
-      is_supported = function(ft)
-        return queries.get_query(ft, 'highlights') ~= nil
+      is_supported = function(lang)
+        return queries.get_query(lang, 'highlights') ~= nil
       end
     },
     incremental_selection = {
@@ -232,8 +25,8 @@ local config = {
         scope_incremental="grc",
         node_decremental="grm"
       },
-      is_supported = function(ft)
-        return queries.get_query(ft, 'locals')
+      is_supported = function(lang)
+        return queries.get_query(lang, 'locals')
       end
     }
   },
@@ -242,56 +35,62 @@ local config = {
 
 local M = {}
 
-local function enable_module(mod, bufnr, ft)
+local function enable_module(mod, bufnr, lang)
   local bufnr = bufnr or api.nvim_get_current_buf()
-  local ft = ft or api.nvim_buf_get_option(bufnr, 'ft')
-  if not parserlist[ft] or not config.modules[mod] then
+  local lang = lang or parsers.ft_to_lang(api.nvim_buf_get_option(bufnr, 'ft'))
+  if not parsers.list[lang] or not config.modules[mod] then
     return
   end
 
   local loaded_mod = require(string.format("nvim-treesitter.%s", mod))
-  loaded_mod.attach(bufnr, ft)
+  loaded_mod.attach(bufnr, lang)
 end
 
-local function enable_mod_conf_autocmd(mod, ft)
-  if not config.modules[mod] or M.is_enabled(mod, ft) then return end
+local function enable_mod_conf_autocmd(mod, lang)
+  if not config.modules[mod] or M.is_enabled(mod, lang) then return end
 
+  local ft = parsers.lang_to_ft(lang)
   local cmd = string.format("lua require'nvim-treesitter.%s'.attach()", mod)
   api.nvim_command(string.format("autocmd FileType %s %s", ft, cmd))
   for i, parser in pairs(config.modules[mod].disable) do
-    if parser == ft then
+    if parser == lang then
       table.remove(config.modules[mod].disable, i)
       break
     end
   end
 end
 
-local function enable_all(mod, ft)
+local function enable_all(mod, lang)
   if not config.modules[mod] then return end
 
   for _, bufnr in pairs(api.nvim_list_bufs()) do
-    if not ft or api.nvim_buf_get_option(bufnr, 'ft') == ft then
-      enable_module(mod, bufnr, ft)
+    local ft = api.nvim_buf_get_option(bufnr, 'ft')
+    if not lang or ft == parsers.lang_to_ft(lang) then
+      enable_module(mod, bufnr, lang)
     end
   end
-  if ft then
-    if parsers.has_parser(ft) then
-      enable_mod_conf_autocmd(mod, ft)
+  if lang then
+    if parsers.has_parser(lang) then
+      enable_mod_conf_autocmd(mod, lang)
     end
   else
-    for _, ft in pairs(M.available_parsers()) do
-      if parsers.has_parser(ft) then
-        enable_mod_conf_autocmd(mod, ft)
+    for _, lang in pairs(parsers.available_parsers()) do
+      if parsers.has_parser(lang) then
+        enable_mod_conf_autocmd(mod, lang)
       end
     end
   end
   config.modules[mod].enable = true
 end
 
-local function disable_module(mod, bufnr, ft)
+local function disable_module(mod, bufnr, lang)
   local bufnr = bufnr or api.nvim_get_current_buf()
-  local ft = ft or api.nvim_buf_get_option(bufnr, 'ft')
-  if not parserlist[ft] or not config.modules[mod] then
+  local lang = lang or parsers.ft_to_lang(api.nvim_buf_get_option(bufnr, 'ft'))
+  if not lang then
+    return
+  end
+
+  if not parsers.list[lang] or not config.modules[mod] then
     return
   end
 
@@ -299,24 +98,26 @@ local function disable_module(mod, bufnr, ft)
   loaded_mod.detach(bufnr, ft)
 end
 
-local function disable_mod_conf_autocmd(mod, ft)
-  if not config.modules[mod] or not M.is_enabled(mod, ft) then return end
+local function disable_mod_conf_autocmd(mod, lang)
+  if not config.modules[mod] or not M.is_enabled(mod, lang) then return end
 
+  local ft = parsers.lang_to_ft(lang)
   api.nvim_command(string.format("autocmd! FileType %s", ft))
-  table.insert(config.modules[mod].disable, ft)
+  table.insert(config.modules[mod].disable, lang)
 end
 
-local function disable_all(mod, ft)
+local function disable_all(mod, lang)
   for _, bufnr in pairs(api.nvim_list_bufs()) do
-    if not ft or api.nvim_buf_get_option(bufnr, 'ft') == ft then
-      disable_module(mod, bufnr, ft)
+    local ft = api.nvim_buf_get_option(bufnr, 'ft')
+    if not lang or ft == parsers.lang_to_ft(lang) then
+      disable_module(mod, bufnr, lang)
     end
   end
-  if ft then
-    disable_mod_conf_autocmd(mod, ft)
+  if lang then
+    disable_mod_conf_autocmd(mod, lang)
   else
-    for _, ft in pairs(M.available_parsers()) do
-      disable_mod_conf_autocmd(mod, ft)
+    for _, lang in pairs(parsers.available_parsers()) do
+      disable_mod_conf_autocmd(mod, lang)
     end
     config.modules[mod].enable = false
   end
@@ -359,15 +160,15 @@ M.commands = {
 
 -- @param mod: module (string)
 -- @param ft: filetype (string)
-function M.is_enabled(mod, ft)
-  if not M.get_parser_configs()[ft] or not parsers.has_parser(ft) then
+function M.is_enabled(mod, lang)
+  if not parsers.list[lang] or not parsers.has_parser(lang) then
     return false
   end
 
   local module_config = config.modules[mod]
   if not module_config then return false end
 
-  if not module_config.enable or not module_config.is_supported(ft) then
+  if not module_config.enable or not module_config.is_supported(lang) then
     return false
   end
 
@@ -401,14 +202,6 @@ function M.setup(user_data)
       require'nvim-treesitter.install'.ensure_installed(data)
     end
   end
-end
-
-function M.get_parser_configs()
-  return parserlist
-end
-
-function M.available_parsers()
-  return vim.tbl_keys(parserlist)
 end
 
 function M.available_modules()

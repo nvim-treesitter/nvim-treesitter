@@ -2,7 +2,6 @@ local api = vim.api
 local fn = vim.fn
 local luv = vim.loop
 
-local configs = require'nvim-treesitter.configs'
 local utils = require'nvim-treesitter.utils'
 local parsers = require'nvim-treesitter.parsers'
 
@@ -103,7 +102,7 @@ local function install(...)
       if not string.match(yesno, '^y.*') then return end
     end
 
-    local parser_config = configs.get_parser_configs()[ft]
+    local parser_config = parsers.get_parser_configs()[ft]
     if not parser_config then
       return api.nvim_err_writeln('Parser not available for language '..ft)
     end
@@ -122,15 +121,15 @@ end
 M.ensure_installed = function(languages)
   if type(languages) == 'string' then
     if languages == 'all' then
-      languages = configs.available_parsers()
+      languages = parsers.available_parsers()
     else
       languages = {languages}
     end
   end
 
-  for _, ft in ipairs(languages) do
-    if not parsers.has_parser(ft) then
-      install(ft)
+  for _, lang in ipairs(languages) do
+    if not parsers.has_parser(lang) then
+      install(lang)
     end
   end
 end
