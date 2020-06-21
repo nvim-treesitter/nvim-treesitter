@@ -74,8 +74,7 @@
 ; Literals
 
 (none) @constant.builtin
-(true) @boolean
-(false) @boolean
+[(true) (false)] @boolean
 ((identifier) @constant.builtin
               (match? @constant.builtin "self"))
 
@@ -88,88 +87,78 @@
 
 ; Tokens
 
-"-" @operator
-"->" @operator
-"-=" @operator
-"!=" @operator
-"*" @operator
-"**" @operator
-"**=" @operator
-"*=" @operator
-"/" @operator
-"//" @operator
-"//=" @operator
-"/=" @operator
-"&" @operator
-"%" @operator
-"%=" @operator
-"^" @operator
-"+" @operator
-"+=" @operator
-"<" @operator
-"<<" @operator
-"<=" @operator
-"<>" @operator
-"=" @operator
-"==" @operator
-">" @operator
-">=" @operator
-">>" @operator
-"|" @operator
-"~" @operator
-"and" @operator
-"in" @operator
-"is" @operator
-"not" @operator
-"or" @operator
+[
+  "-"
+  "-="
+  "!="
+  "*"
+  "**"
+  "**="
+  "*="
+  "/"
+  "//"
+  "//="
+  "/="
+  "&"
+  "%"
+  "%="
+  "^"
+  "+"
+  "+="
+  "<"
+  "<<"
+  "<="
+  "<>"
+  "="
+  "=="
+  ">"
+  ">="
+  ">>"
+  "|"
+  "~"
+  "and"
+  "in"
+  "is"
+  "not"
+  "or"
+] @operator
 
 ; Keywords
 
-"as" @include
-"assert" @keyword
-"async" @keyword
-"await" @keyword
-"break" @repeat
-"class" @keyword
-"continue" @repeat
-"def" @keyword
-"del" @keyword
-"elif" @conditional
-"else" @conditional
-"except" @keyword
-"exec" @keyword
-"finally" @keyword
-"for" @repeat
-"from" @include
-"global" @keyword
-"if" @conditional
-"import" @include
-"lambda" @keyword
-"nonlocal" @keyword
-"pass" @keyword
-"print" @keyword
-"raise" @keyword
-"return" @keyword
-"try" @keyword
-"while" @repeat
-"with" @keyword
-"yield" @keyword
+[
+  "assert"
+  "await"
+  "class"
+  "def"
+  "del"
+  "except"
+  "exec"
+  "finally"
+  "global"
+  "lambda"
+  "nonlocal"
+  "pass"
+  "print"
+  "raise"
+  "return"
+  "try"
+  "with"
+  "yield"
+] @keyword
 
-; Additions for nvim-treesitter
-"(" @punctuation.bracket
-")" @punctuation.bracket
-"[" @punctuation.bracket
-"]" @punctuation.bracket
-"{" @punctuation.bracket
-"}" @punctuation.bracket
+[ "as" "from" "import"] @include
+
+[ "if" "elif" "else" ] @conditional
+
+[ "for" "while" "break" "continue" ] @repeat
+
+[ "(" ")" "[" "]" "{" "}"] @punctuation.bracket
 
 (interpolation
   "{" @punctuation.special
   "}" @punctuation.special) @embedded
 
-"," @punctuation.delimiter
-"." @punctuation.delimiter
-":" @punctuation.delimiter
+[ "," "." ":" ] @punctuation.delimiter
 
 ; Class definitions
 
