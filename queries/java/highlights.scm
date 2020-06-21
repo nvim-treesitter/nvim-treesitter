@@ -10,7 +10,7 @@
 ] @method
 
 (formal_parameter
- name: (identifier) @parameter))) 
+ name: (identifier) @parameter)
 
 (super) @function.builtin
 
