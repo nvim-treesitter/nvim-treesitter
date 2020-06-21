@@ -29,12 +29,14 @@ Here are some global advices :
   - If not, you should consider installing the [tree-sitter cli](https://github.com/tree-sitter/tree-sitter/tree/master/cli),
     you should then be able to open a local playground using `tree-sitter build-wasm && tree-sitter web-ui` within the
     parsers repo.
+  - An Example of somewhat complex highlight queries can be found in queries/ruby/highlights.scm (Maintained by @TravonteD)
 
 ### Highlights
 
 As languages differ quite a lot, here is a set of captures available to you when building a `highlights.scm` query.
 One important thing to note is that many of these capture groups are not supported by `neovim` for now, and will not have any
 effect on highlighting. We will work on improving highlighting in the near future though.
+
 
 #### Misc
 `@comment`
