@@ -9,6 +9,9 @@
 ((identifier) @constant
  (match? @constant "^[A-Z][A-Z_0-9]*$"))
 
+((identifier) @constant.builtin
+ (match? @constant.builtin "^__[a-zA-Z0-9_]*__$"))
+
 ; Function calls
 
 (decorator) @function
