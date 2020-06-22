@@ -95,7 +95,7 @@ local function disable_module(mod, bufnr, lang)
   end
 
   local loaded_mod = require(string.format("nvim-treesitter.%s", mod))
-  loaded_mod.detach(bufnr, ft)
+  loaded_mod.detach(bufnr)
 end
 
 local function disable_mod_conf_autocmd(mod, lang)
@@ -173,7 +173,7 @@ function M.is_enabled(mod, lang)
   end
 
   for _, parser in pairs(module_config.disable) do
-    if ft == parser then return false end
+    if lang == parser then return false end
   end
 
   return true
