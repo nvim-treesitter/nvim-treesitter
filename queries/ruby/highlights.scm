@@ -131,6 +131,7 @@
  (symbol)
  ] @constant
 
+(pair key: (symbol) ":" @constant)
 (regex) @string.regex
 (escape_sequence) @string.escape
 (integer) @number
