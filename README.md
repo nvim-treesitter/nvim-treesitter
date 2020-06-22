@@ -168,7 +168,7 @@ List of currently supported languages:
 - [x] css (maintained by @TravonteD)
 - [ ] julia
 - [ ] php
-- [ ] bash
+- [x] bash (maintained by @TravonteD)
 - [ ] scala
 - [ ] haskell
 - [ ] toml
