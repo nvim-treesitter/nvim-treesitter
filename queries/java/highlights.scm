@@ -2,12 +2,12 @@
 
 ; Methods
 
-[
+
 (method_declaration
- name: (identifier))
+ name: (identifier) @method)
 (method_invocation
- name: (identifier))
-] @method
+ name: (identifier) @method)
+
 
 (formal_parameter
  name: (identifier) @parameter)
@@ -16,12 +16,12 @@
 
 ; Annotations
 
-[
+
 (annotation
- name: (identifier))
+ name: (identifier) @attribute)
 (marker_annotation
- name: (identifier))
-] @attribute
+ name: (identifier) @attribute)
+
 
 ; Operators
 
@@ -54,17 +54,16 @@
 
 ; Types
 
-[
 (interface_declaration
- name: (identifier))
+ name: (identifier) @type)
 (class_declaration
- name: (identifier))
+ name: (identifier) @type)
 (enum_declaration
  name: (identifier)
 (constructor_declaration
- name: (identifier))
-(type_identifier)
-] @type
+ name: (identifier) @type)
+(type_identifier @type)
+
 
 
 ((field_access
