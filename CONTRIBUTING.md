@@ -39,64 +39,73 @@ effect on highlighting. We will work on improving highlighting in the near futur
 
 
 #### Misc
-`@comment`
-`@error` for error `(ERROR)` nodes.
-`@punctuation.delimiter` for `;` `.` `,`
-`@punctuation.bracket` for `()` or `{}`
+```
+@comment
+@error for error (ERROR` nodes.
+@punctuation.delimiter for `;` `.` `,`
+@punctuation.bracket for `()` or `{}`
+```
 
 Some captures are related to language injection (like markdown code blocks). As this is not supported by neovim yet, these
 are optional and will not have any effect for now.
-`@embedded`
-`@injection`
-  `language`
-  `content`
-
+```
+@embedded
+@injection
+  language
+  content
+```
 #### Constants
-`@constant`
-  `builtin`
-  `macro`
-`@string`
-  `regex`
-  `escape`
-`@character`
-`@number`
-`@boolean`
-`@float`
+```
+@constant
+  builtin
+  macro
+@string
+  regex
+  escape
+@character
+@number
+@boolean
+@float
+```
 
 #### Functions
-`@function`
-  `builtin`
-  `macro`
-`@parameter`
+```
+@function
+  builtin
+  macro
+@parameter
 
-`@method`
-`@field` or `@property`
+@method
+@field or @property
 
-`@constructor`
+@constructor
+```
 
 #### Keywords
-`@conditional`
-`@repeat`
-`@label` for C/Lua-like labels
-`@operator`
-`@keyword`
-`@exception`
-`@include` keywords for including modules (e.g. import/from in Python)
+```
+@conditional
+@repeat
+@label for C/Lua-like labels
+@operator
+@keyword
+@exception
+@include keywords for including modules (e.g. import/from in Python)
 
-`@type`
-        `builtin`
-`@structure`
-
+@type
+    builtin
+@structure
+```
 ### Locals
-
-`@definition` for various definitions
-  `function`
-  `method`
-  `var`
-  `macro`
-  `type`
-  `field`
-  `doc` for documentation adjecent to a definition. E.g.
+```
+@definition for various definitions
+  function
+  method
+  var
+  macro
+  type
+  field
+  doc for documentation adjecent to a definition. E.g.
+```
 
 ```scheme
   (comment)* @definition.doc
@@ -104,7 +113,8 @@ are optional and will not have any effect for now.
         name: (field_identifier) @definition.method)
 ```
 
-`@scope`
-
-`@reference`
+```
+@scope
+@reference
+```
 
