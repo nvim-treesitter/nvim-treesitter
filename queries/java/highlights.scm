@@ -4,15 +4,15 @@
 
 
 (method_declaration
- name: (identifier) @method)
+  name: (identifier) @method)
 (method_invocation
- name: (identifier) @method)
+  name: (identifier) @method)
 
 (super) @function.builtin
 
 ; Parameters
 (formal_parameter
- name: (identifier) @parameter)
+  name: (identifier) @parameter)
 
 (inferred_parameters (identifier) @parameter)
 
@@ -21,9 +21,9 @@
 
 
 (annotation
- name: (identifier) @attribute)
+  name: (identifier) @attribute)
 (marker_annotation
- name: (identifier) @attribute)
+  name: (identifier) @attribute)
 
 
 ; Operators
@@ -59,23 +59,23 @@
 ; Types
 
 (interface_declaration
- name: (identifier) @type)
+  name: (identifier) @type)
 (class_declaration
- name: (identifier) @type)
+  name: (identifier) @type)
 (enum_declaration
- name: (identifier) @type)
+  name: (identifier) @type)
 (constructor_declaration
- name: (identifier) @type)
+  name: (identifier) @type)
 (type_identifier) @type
 
 
 
 ((field_access
   object: (identifier) @type)
- (#match? @type "^[A-Z]"))
+  (#match? @type "^[A-Z]"))
 ((scoped_identifier
   scope: (identifier) @type)
- (#match? @type "^[A-Z]"))
+  (#match? @type "^[A-Z]"))
 
 [
 (boolean_type)
@@ -85,7 +85,7 @@
 ; Variables
 
 ((identifier) @constant
- (#match? @constant "^_*[A-Z][A-Z\d_]+"))
+  (#match? @constant "^_*[A-Z][A-Z\d_]+"))
 
 (identifier) @variable
 (this) @variable.builtin
