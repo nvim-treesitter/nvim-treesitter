@@ -8,11 +8,14 @@
 (method_invocation
  name: (identifier) @method)
 
+(super) @function.builtin
 
+; Parameters
 (formal_parameter
  name: (identifier) @parameter)
 
-(super) @function.builtin
+(inferred_parameters (identifier) @parameter)
+
 
 ; Annotations
 
