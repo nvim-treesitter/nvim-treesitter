@@ -59,10 +59,10 @@
 (class_declaration
  name: (identifier) @type)
 (enum_declaration
- name: (identifier)
+ name: (identifier) @type)
 (constructor_declaration
  name: (identifier) @type)
-(type_identifier @type)
+(type_identifier) @type
 
 
 
