@@ -1,9 +1,10 @@
 ;; From tree-sitter-python licensed under MIT License
 ; Copyright (c) 2016 Max Brunsfeld
 
-; Identifier naming conventions
+; Reset highlighing in f-string interpolations
+(interpolation) @Normal
 
-(identifier) @Normal
+; Identifier naming conventions
 ((identifier) @type
  (match? @type "^[A-Z]"))
 ((identifier) @constant
