@@ -40,7 +40,7 @@ end
 function M.get_locals(bufnr)
   local bufnr = bufnr or api.nvim_get_current_buf()
   local cached_local = M.locals[bufnr]
-  if not cached_local or api.nvim_buf_get_changedtick(bufnr) < cached_local.tick then
+  if not cached_local or api.nvim_buf_get_changedtick(bufnr) > cached_local.tick then
     update_cached_locals(bufnr,api.nvim_buf_get_changedtick(bufnr))
   end
 
