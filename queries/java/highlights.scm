@@ -88,7 +88,8 @@
   (#match? @constant "^_*[A-Z][A-Z\d_]+"))
 
 (identifier) @variable
-(this) @variable.builtin
+;TODO
+;(this) @variable.builtin
 
 ; Literals
 
@@ -124,7 +125,6 @@
 "class"
 "continue"
 "default"
-"do"
 "enum"
 "exports"
 "extends"
@@ -173,11 +173,13 @@
 [
 "for"
 "while"
+"do"
 ] @repeat
 
 ; Includes
 
 "import" @include
+"package" @include
 
 ; Punctuation
 
