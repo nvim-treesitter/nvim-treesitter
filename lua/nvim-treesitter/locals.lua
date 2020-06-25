@@ -11,7 +11,7 @@ local M = {
   locals = {}
 }
 
-function M.collect_locals(bufnr)
+function M.collect_locals(bufnr, root)
   local lang = parsers.ft_to_lang(api.nvim_buf_get_option(bufnr, "ft"))
   if not lang then return end
 
@@ -21,7 +21,7 @@ function M.collect_locals(bufnr)
   local parser = parsers.get_parser(bufnr, lang)
   if not parser then return end
 
-  local root = parser:parse():root()
+  local root = root or parser:parse():root()
   local start_row, _, end_row, _ = root:range()
 
   local locals = {}

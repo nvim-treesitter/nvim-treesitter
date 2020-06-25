@@ -2,6 +2,7 @@ local api = vim.api
 
 local queries = require'nvim-treesitter.query'
 local parsers = require'nvim-treesitter.parsers'
+local utils = require'nvim-treesitter.utils'
 
 -- @enable can be true or false
 -- @disable is a list of languages, only relevant if enable is true
@@ -12,9 +13,7 @@ local config = {
     highlight = {
       enable = false,
       disable = {},
-      is_supported = function(lang)
-        return queries.get_query(lang, 'highlights') ~= nil
-      end
+      is_supported = queries.has_highlights
     },
     incremental_selection = {
       enable = false,
@@ -25,9 +24,14 @@ local config = {
         scope_incremental="grc",
         node_decremental="grm"
       },
-      is_supported = function(lang)
-        return queries.get_query(lang, 'locals')
-      end
+      is_supported = queries.has_locals
+    },
+    refactor = {
+      highlight_definitions = {
+        enable = false,
+        disable = {},
+        is_supported = queries.has_locals
+      }
     }
   },
   ensure_installed = nil
@@ -38,7 +42,8 @@ local M = {}
 local function enable_module(mod, bufnr, lang)
   local bufnr = bufnr or api.nvim_get_current_buf()
   local lang = lang or parsers.ft_to_lang(api.nvim_buf_get_option(bufnr, 'ft'))
-  if not parsers.list[lang] or not config.modules[mod] then
+
+  if not parsers.list[lang] or not M.get_module(mod) then
     return
   end
 
@@ -47,22 +52,26 @@ local function enable_module(mod, bufnr, lang)
 end
 
 local function enable_mod_conf_autocmd(mod, lang)
-  if not config.modules[mod] or M.is_enabled(mod, lang) then return end
+  local config_mod = M.get_module(mod)
+
+  if not config_mod or M.is_enabled(mod, lang) then return end
 
   local cmd = string.format("lua require'nvim-treesitter.%s'.attach()", mod)
   for _, ft in pairs(parsers.lang_to_ft(lang)) do
     api.nvim_command(string.format("autocmd NvimTreesitter FileType %s %s", ft, cmd))
   end
-  for i, parser in pairs(config.modules[mod].disable) do
+  for i, parser in pairs(config_mod.disable) do
     if parser == lang then
-      table.remove(config.modules[mod].disable, i)
+      table.remove(config_mod.disable, i)
       break
     end
   end
 end
 
 local function enable_all(mod, lang)
-  if not config.modules[mod] then return end
+  local config_mod = M.get_module(mod)
+
+  if not config_mod then return end
 
   for _, bufnr in pairs(api.nvim_list_bufs()) do
     local ft = api.nvim_buf_get_option(bufnr, 'ft')
@@ -81,7 +90,7 @@ local function enable_all(mod, lang)
       end
     end
   end
-  config.modules[mod].enable = true
+  config_mod.enable = true
 end
 
 local function disable_module(mod, bufnr, lang)
@@ -91,7 +100,7 @@ local function disable_module(mod, bufnr, lang)
     return
   end
 
-  if not parsers.list[lang] or not config.modules[mod] then
+  if not parsers.list[lang] or not M.get_module(mod) then
     return
   end
 
@@ -100,14 +109,16 @@ local function disable_module(mod, bufnr, lang)
 end
 
 local function disable_mod_conf_autocmd(mod, lang)
-  if not config.modules[mod] or not M.is_enabled(mod, lang) then return end
+  local config_mod = M.get_module(mod)
+
+  if not config_mod or not M.is_enabled(mod, lang) then return end
 
   local cmd = string.format("lua require'nvim-treesitter.%s'.attach()", mod)
   -- TODO(kyazdani): detach the correct autocmd... doesn't work when using %s, cmd
   for _, ft in pairs(parsers.lang_to_ft(lang)) do
     api.nvim_command(string.format("autocmd! NvimTreesitter FileType %s", ft))
   end
-  table.insert(config.modules[mod].disable, lang)
+  table.insert(config_mod.disable, lang)
 end
 
 local function disable_all(mod, lang)
@@ -123,7 +134,30 @@ local function disable_all(mod, lang)
     for _, lang in pairs(parsers.available_parsers()) do
       disable_mod_conf_autocmd(mod, lang)
     end
-    config.modules[mod].enable = false
+
+    local config_mod = M.get_module(mod)
+
+    if config_mod then
+      config_mod.enable = false
+    end
+  end
+end
+
+-- Recurses trough all modules including submodules
+-- @param accumulator function called for each module
+-- @param root root configuration table to start at
+-- @param path prefix path
+local function recurse_modules(accumulator, root, path)
+  local root = root or config.modules
+
+  for name, module in pairs(root) do
+    local new_path = path and (path..'.'..name) or name
+
+    if M.is_module(module) then
+      accumulator(name, module, new_path)
+    elseif type(module) == 'table' then
+      recurse_modules(accumulator, module, new_path)
+    end
   end
 end
 
@@ -169,7 +203,7 @@ function M.is_enabled(mod, lang)
     return false
   end
 
-  local module_config = config.modules[mod]
+  local module_config = M.get_module(mod)
   if not module_config then return false end
 
   if not module_config.enable or not module_config.is_supported(lang) then
@@ -188,19 +222,7 @@ function M.setup(user_data)
 
   for mod, data in pairs(user_data) do
     if config.modules[mod] then
-      if type(data.enable) == 'boolean' then
-        config.modules[mod].enable = data.enable
-      end
-      if type(data.disable) == 'table' then
-        config.modules[mod].disable = data.disable
-      end
-      if config.modules[mod].keymaps and type(data.keymaps) == 'table' then
-        for f, map in pairs(data.keymaps) do
-          if config.modules[mod].keymaps[f] then
-            config.modules[mod].keymaps[f] = map
-          end
-        end
-      end
+      M.setup_module(config.modules[mod], data)
     elseif mod == 'ensure_installed' then
       config.ensure_installed = data
       require'nvim-treesitter.install'.ensure_installed(data)
@@ -208,12 +230,55 @@ function M.setup(user_data)
   end
 end
 
-function M.available_modules()
-  return vim.tbl_keys(config.modules)
+--- Sets up a single module or all submodules of a group
+-- @param mod the module or group of modules
+-- @param data user defined configuration for the module
+function M.setup_module(mod, data)
+  if M.is_module(mod) then
+    if type(data.enable) == 'boolean' then
+      mod.enable = data.enable
+    end
+    if type(data.disable) == 'table' then
+      mod.disable = data.disable
+    end
+    if mod.keymaps and type(data.keymaps) == 'table' then
+      for f, map in pairs(data.keymaps) do
+        if mod.keymaps[f] then
+          mod.keymaps[f] = map
+        end
+      end
+    end
+  elseif type(data) == 'table' and type(mod) == 'table' then
+    for key, value in pairs(data) do 
+      M.setup_module(mod[key], value)
+    end
+  end
 end
 
-function M.get_module(mod)
-  return config.modules[mod]
+function M.available_modules()
+  local modules = {}
+
+  recurse_modules(function(_, _, path)
+    table.insert(modules, path)
+  end)
+
+  return modules
+end
+
+-- Gets a module config by path
+-- @param mod_path path to the module
+-- @returns the module or nil
+function M.get_module(mod_path)
+  local mod = utils.get_at_path(config.modules, mod_path)
+
+  return M.is_module(mod) and mod or nil
+end
+
+-- Determines whether the provided table is a module.
+-- A module should contain an 'is_supported' function.
+-- @param mod the module table
+function M.is_module(mod)
+  return type(mod) == 'table' and type(mod.is_supported) == 'function' 
 end
 
 return M

@@ -13,6 +13,12 @@ local function read_query_files(filenames)
   return table.concat(contents, '\n')
 end
 
+local function get_query_gaurd(query)
+  return function(lang)
+    return M.get_query(lang, query) ~= nil
+  end
+end
+
 -- Some treesitter grammars extend others.
 -- We can use that to import the queries of the base language
 M.base_language_map = {
@@ -20,6 +26,9 @@ M.base_language_map = {
   typescript = {'javascript'},
   tsx = {'typescript', 'javascript'},
 }
+
+M.has_locals = get_query_gaurd('locals')
+M.has_highlights = get_query_gaurd('highlights')
 
 function M.get_query(lang, query_name)
   local query_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', lang, query_name), true)

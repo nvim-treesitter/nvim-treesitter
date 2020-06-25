@@ -65,7 +65,7 @@ local function print_info_modules(sorted_languages)
 end
 
 local function module_info(mod)
-  if mod and not configs.get_config()[mod] then return end
+  if mod and not configs.get_module(mod) then return end
 
   local parserlist = parsers.available_parsers()
   table.sort(parserlist, function(a, b) return #a > #b end)
