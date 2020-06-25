@@ -212,4 +212,55 @@ function M.get_node_at_cursor(winnr)
   return root:named_descendant_for_range(cursor[1]-1,cursor[2],cursor[1]-1,cursor[2])
 end
 
+-- Finds the definition node and it's scope node of a node
+-- @param node starting node
+-- @param bufnr buffer
+-- @returns the definition node and the definition nodes scope node
+function M.find_definition(node, bufnr)
+  local bufnr = bufnr or api.nvim_get_current_buf()  
+  local node_text = M.get_node_text(node)[1]
+  local current_scope = M.containing_scope(node)
+  local _, _, node_start = node:start()
+
+  -- If a scope wasn't found then use the root node
+  if current_scope == node then
+    current_scope = parsers.get_parser(bufnr).tree:root()
+  end
+  
+  while current_scope ~= nil and current_scope ~= node do
+    for _, def in ipairs(locals.collect_locals(bufnr, current_scope)) do
+      if def.definition then
+        for _, def_node in ipairs(M.get_local_nodes(def.definition)) do
+          local _, _, def_start = def_node:start()
+
+          if M.get_node_text(def_node)[1] == node_text and def_start < node_start then
+            return def_node, current_scope
+          end
+        end
+      end
+    end
+
+    current_scope = M.containing_scope(current_scope:parent())
+  end
+
+  return nil, nil
+end
+
+-- Gets all nodes from a local list result.
+-- @param local_def the local list result
+-- @returns a list of nodes
+function M.get_local_nodes(local_def)
+  if local_def.node then
+    return { local_def.node }
+  else
+    local result = {}
+
+    for _, def in pairs(local_def) do
+      vim.list_extend(result, M.get_local_nodes(def))
+    end
+
+    return result
+  end
+end
+
 return M

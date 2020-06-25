@@ -45,4 +45,21 @@ function M.get_cache_dir()
   return nil, 'Invalid cache rights, $XDG_CACHE_HOME or /tmp should be read/write'
 end
 
+--- Gets a property at path
+-- @param tbl the table to access
+-- @param path the '.' seperated path
+-- @returns the value at path or nil
+function M.get_at_path(tbl, path)
+  local segments = vim.split(path, '.', true)
+  local result = tbl
+
+  for _, segment in ipairs(segments) do
+    if type(result) == 'table' then
+      result = result[segment]
+    end
+  end
+
+  return result
+end
+
 return M
