@@ -95,11 +95,20 @@ local function install(...)
   local cache_folder, err = utils.get_cache_dir()
   if err then return api.nvim_err_writeln(err) end
 
-  for _, lang in ipairs({ ... }) do
-    if #api.nvim_get_runtime_file('parser/'..lang..'.so', false) > 0 then
-      local yesno = fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
-      print('\n ') -- mandatory to avoid messing up command line
-      if not string.match(yesno, '^y.*') then return end
+  local languages = { ... }
+  local check_installed = true
+  if ... == 'all' then
+    languages = parsers.available_parsers()
+    check_installed = false
+  end
+
+  for _, lang in ipairs(languages) do
+    if check_installed then
+      if #api.nvim_get_runtime_file('parser/'..lang..'.so', false) > 0 then
+        local yesno = fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
+        print('\n ') -- mandatory to avoid messing up command line
+        if not string.match(yesno, '^y.*') then return end
+      end
     end
 
     local parser_config = parsers.get_parser_configs()[lang]
@@ -143,13 +152,6 @@ M.commands = {
       "-complete=custom,v:lua.ts_installable_parsers"
     },
     description = '`:TSInstall {lang}` installs a parser under nvim-treesitter/parser/{lang}.so'
-  },
-  TSInstallAll = {
-    run = function()
-      for _, lang in pairs(parsers.available_parsers()) do
-        install(lang)
-      end
-    end
   }
 }
 
