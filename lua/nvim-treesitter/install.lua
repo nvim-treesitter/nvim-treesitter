@@ -107,7 +107,7 @@ local function install(...)
       if #api.nvim_get_runtime_file('parser/'..lang..'.so', false) > 0 then
         local yesno = fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
         print('\n ') -- mandatory to avoid messing up command line
-        if not string.match(yesno, '^y.*') then return end
+        if not string.match(yesno, '^y.*') then goto continue end
       end
     end
 
@@ -123,6 +123,7 @@ local function install(...)
     }
 
     run_install(cache_folder, package_path, lang, install_info)
+    ::continue::
   end
 end
 
