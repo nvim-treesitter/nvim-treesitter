@@ -143,6 +143,13 @@ M.commands = {
       "-complete=custom,v:lua.ts_installable_parsers"
     },
     description = '`:TSInstall {lang}` installs a parser under nvim-treesitter/parser/{lang}.so'
+  },
+  TSInstallAll = {
+    run = function()
+      for _, lang in pairs(parsers.available_parsers()) do
+        install(lang)
+      end
+    end
   }
 }
 
