@@ -13,7 +13,9 @@ local function read_query_files(filenames)
   return table.concat(contents, '\n')
 end
 
-local function get_query_gaurd(query)
+-- Creates a function that checks whether a certain query exists
+-- for a specific language.
+local function get_query_guard(query)
   return function(lang)
     return M.get_query(lang, query) ~= nil
   end
@@ -27,8 +29,8 @@ M.base_language_map = {
   tsx = {'typescript', 'javascript'},
 }
 
-M.has_locals = get_query_gaurd('locals')
-M.has_highlights = get_query_gaurd('highlights')
+M.has_locals = get_query_guard('locals')
+M.has_highlights = get_query_guard('highlights')
 
 function M.get_query(lang, query_name)
   local query_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', lang, query_name), true)
