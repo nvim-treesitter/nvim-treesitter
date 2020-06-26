@@ -39,6 +39,15 @@ local config = {
         keymaps = {
           smart_rename = "grr"
         }
+      },
+      navigation = {
+        enable = false,
+        disable = {},
+        is_supported = queries.has_locals,
+        keymaps = {
+          goto_definition = "gnd",
+          list_definitions = "gnD"
+        }
       }
     }
   },
