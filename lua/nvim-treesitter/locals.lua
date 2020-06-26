@@ -89,4 +89,14 @@ function M.get_references(bufnr)
   return refs
 end
 
+function M.is(node, deftype, bufnr)
+  for def in M.get_definitions(bufnr) do
+    if def[deftype] and def[deftype].node == node then
+      return true
+    end
+  end
+
+  return false
+end
+
 return M

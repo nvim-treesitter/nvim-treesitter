@@ -1,5 +1,6 @@
 local api = vim.api
 local ts = vim.treesitter
+-- local locals = require'nvim-treesitter.locals'
 
 local M = {}
 
@@ -99,7 +100,7 @@ function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
 
   local matches = query:iter_matches(qnode, bufnr, start_row, end_row)
 
-  return function()
+  local function iter()
     local pattern, match = matches()
     if pattern ~= nil then
       local prepared_match = {}
@@ -120,12 +121,19 @@ function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
           if pred[1] == "set!" and type(pred[2]) == "string" then
             insert_to_path(prepared_match, split(pred[2]), pred[3])
           end
+          if pred[1] == "is?" and type(pred[3]) == "string" then
+            if not locals.is(pred[2], pred[3], bufnr) then
+              return iter() -- We should ignore this one, tail call
+            end
+          end
         end
       end
 
       return prepared_match
     end
   end
+
+  return iter
 end
 
 return M
