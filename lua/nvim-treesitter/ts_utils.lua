@@ -252,16 +252,36 @@ end
 -- @param local_def the local list result
 -- @returns a list of nodes
 function M.get_local_nodes(local_def)
+  local result = {}
+
+  M.recurse_local_nodes(local_def, function(_, node) 
+    table.insert(result, node)
+  end)
+
+  return result
+end
+
+-- Recurse locals results until a node is found.
+-- The accumulator function is given
+-- * The table of the node
+-- * The node
+-- * The full definition match `@definition.var.something` -> 'var.something'
+-- * The last definition match `@definition.var.something` -> 'something'
+-- @param The locals result
+-- @param The accumulator function
+-- @param The full match path to append to
+-- @param The last match
+function M.recurse_local_nodes(local_def, accumulator, full_match, last_match)
   if local_def.node then
-    return { local_def.node }
+    accumulator(local_def, local_def.node, full_match, last_match)
   else
-    local result = {}
-
-    for _, def in pairs(local_def) do
-      vim.list_extend(result, M.get_local_nodes(def))
+    for match_key, def in pairs(local_def) do
+      M.recurse_local_nodes(
+        def, 
+        accumulator, 
+        full_match and (full_match..'.'..match_key) or match_key, 
+        match_key)
     end
-
-    return result
   end
 end
 
