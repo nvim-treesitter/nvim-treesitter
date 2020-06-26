@@ -11,24 +11,6 @@ local M = {}
 
 local usage_namespace = api.nvim_create_namespace('nvim-treesitter-usages')
 
-local function find_usages(node, scope_node)
-  local usages = {}
-  local node_text = ts_utils.get_node_text(node)[1]
-
-  if not node_text or #node_text < 1 then return end
-
-  for _, def in ipairs(locals.collect_locals(bufnr, scope_node)) do
-    if def.reference 
-      and def.reference.node 
-      and ts_utils.get_node_text(def.reference.node)[1] == node_text then
-      
-      table.insert(usages, def.reference.node)
-    end
-  end
-
-  return usages
-end
-
 function M.highlight_usages(bufnr)
   M.clear_usage_highlights(bufnr)
 
@@ -37,7 +19,7 @@ function M.highlight_usages(bufnr)
   if not node_at_point then return end
 
   local def_node, scope = ts_utils.find_definition(node_at_point, bufnr)
-  local usages = find_usages(node_at_point, scope)
+  local usages = ts_utils.find_usages(node_at_point, scope)
 
   for _, usage_node in ipairs(usages) do
     local start_row, start_col, _, end_col = usage_node:range()

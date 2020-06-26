@@ -15,14 +15,16 @@ function M.get_node_text(node, bufnr)
 
   -- We have to remember that end_col is end-exclusive
   local start_row, start_col, end_row, end_col = node:range()
+
   if start_row ~= end_row then
     local lines = api.nvim_buf_get_lines(bufnr, start_row, end_row+1, false)
     lines[1] = string.sub(lines[1], start_col+1)
     lines[#lines] = string.sub(lines[#lines], 1, end_col)
     return lines
   else
-    local line = api.nvim_buf_get_lines(bufnr, start_row, start_row+1, true)[1]
-    return { string.sub(line, start_col+1, end_col) }
+    local line = api.nvim_buf_get_lines(bufnr, start_row, start_row+1, false)[1]
+    -- If line is nil then the line is empty
+    return line and { string.sub(line, start_col+1, end_col) } or {}
   end
 end
 
@@ -261,6 +263,28 @@ function M.get_local_nodes(local_def)
 
     return result
   end
+end
+
+-- Finds usages of a node in a particula scope
+-- @param node the node to find usages for
+-- @param scope_node the node to look within
+-- @returns a list of nodes
+function M.find_usages(node, scope_node)
+  local usages = {}
+  local node_text = M.get_node_text(node)[1]
+
+  if not node_text or #node_text < 1 then return {} end
+
+  for _, def in ipairs(locals.collect_locals(bufnr, scope_node)) do
+    if def.reference 
+      and def.reference.node 
+      and M.get_node_text(def.reference.node)[1] == node_text then
+      
+      table.insert(usages, def.reference.node)
+    end
+  end
+
+  return usages
 end
 
 return M

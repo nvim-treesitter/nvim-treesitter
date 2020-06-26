@@ -31,6 +31,14 @@ local config = {
         enable = false,
         disable = {},
         is_supported = queries.has_locals
+      },
+      smart_rename = {
+        enable = false,
+        disable = {},
+        is_supported = queries.has_locals,
+        keymaps = {
+          smart_rename = "grr"
+        }
       }
     }
   },
