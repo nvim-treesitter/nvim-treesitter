@@ -52,7 +52,7 @@
 ((call_expression
   function: (field_expression 
               field: (field_identifier) @constructor))
-(#match? @function "^[A-Z]"))
+(#match? @constructor "^[A-Z]"))
 
 ;; constructing a type in a intizializer list: Constructor ():  **SuperType (1)**
 ((field_initializer
@@ -64,8 +64,7 @@
 
 ; Constants
 
-;(this) @constant.builtin
-(this) @keyword
+(this) @constant.builtin
 (nullptr) @constant
 
 (true) @boolean
