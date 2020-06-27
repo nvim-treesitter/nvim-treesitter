@@ -21,13 +21,16 @@
 "while" @repeat
 
 "#define" @constant.macro
-"#else" @keyword
-"#endif" @keyword
-"#if" @keyword
-"#ifdef" @keyword
-"#ifndef" @keyword
-"#include" @keyword
-(preproc_directive) @keyword
+[
+  "#if"
+  "#ifdef"
+  "#ifndef"
+  "#else"
+  "#elif"
+  "#endif"
+  "#include"
+  (preproc_directive)
+] @keyword
 
 "--" @operator
 "-" @operator
