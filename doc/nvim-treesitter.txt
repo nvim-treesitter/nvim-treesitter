@@ -267,7 +267,7 @@ For keywords related to loops.
 
 `TSLabel`
 								  *hl-TSLabel*
-For labels: `labe:` in C and `:label:` in Lua.
+For labels: `label:` in C and `:label:` in Lua.
 
 `TSOperator`
 							       *hl-TSOperator*
