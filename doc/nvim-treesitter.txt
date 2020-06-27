@@ -52,9 +52,10 @@ By default, everything is disabled. To enable support for features, in your `ini
 ==============================================================================
 COMMANDS                                          *nvim-treesitter-commands*
 
-|:TSInstall| {language}                            *:TSInstall*
+|:TSInstall| {language} ...                        *:TSInstall*
 
-Download, compile and install a parser for {language}
+Install one or more treesitter parsers.
+You can use |:TSInstall| `all` to install all parsers.
 
 |:TSInstallInfo|                                   *:TSInstallInfo*
 

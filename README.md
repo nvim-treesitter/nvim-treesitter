@@ -36,7 +36,7 @@ $ git clone https://github.com/nvim-treesitter/nvim-treesitter.git
 
 Treesitter is using a different _parser_ for every language. It can be quite a pain to install, but fortunately `nvim-treesitter` 
 provides two command to tackle this issue:
-  - `TSInstall` to install a given parser.
+  - `TSInstall` to install one or more parser. You can use `TSInstall all` to download all parsers.
   - `TSInstallInfo` to know which parser is installed.
 
 Let's say you need parsers for `lua`, `c`, and `python`, this is how you do with these commands:
