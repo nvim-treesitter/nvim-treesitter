@@ -26,13 +26,13 @@ function M.get_query(lang, query_name)
   local query_string = ''
 
   if #query_files > 0 then
-    query_string = read_query_files(query_files)..query_string
+    query_string = read_query_files(query_files) .. "\n" .. query_string
   end
 
   for _, base_lang in ipairs(M.base_language_map[lang] or {}) do
     local base_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', base_lang, query_name), true)
     if base_files and #base_files > 0 then
-        query_string = read_query_files(base_files)..query_string
+        query_string = read_query_files(base_files) .. "\n" .. query_string
     end
   end
 
