@@ -170,7 +170,13 @@ Note: This is highly experimental, and folding can break on some types of
 ==============================================================================
 HIGHLIGHTS                                        *nvim-treesitter-highlights*
 
-TSError
+`TSError`
+							          *hl-TSError*
+For syntax/parser errors.
+
+You can deactivate highlighting of syntax errors by adding this to your
+init.vim: >
+  highlight link TSError Normal
 
 `TSPunctDelimiter`
 							 *hl-TSPunctDelimiter*
