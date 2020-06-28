@@ -98,9 +98,7 @@
 ((identifier) @constant
   (#match? @constant "^_*[A-Z][A-Z\d_]+"))
 
-(identifier) @variable
-;TODO
-;(this) @variable.builtin
+
 
 ; Literals
 
