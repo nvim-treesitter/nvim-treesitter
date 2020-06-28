@@ -5,6 +5,7 @@ local queries = require'nvim-treesitter.query'
 local locals = require'nvim-treesitter.locals'
 local highlight = require'nvim-treesitter.highlight'
 local parsers = require'nvim-treesitter.parsers'
+local qutils = require'nvim-treesitter.utils.query'
 
 local health_start = vim.fn["health#report_start"]
 local health_ok = vim.fn['health#report_ok']
@@ -36,7 +37,7 @@ local function install_health()
 end
 
 local function highlight_health(lang)
-  if not queries.get_query(lang, "highlights") then
+  if not qutils.get_query(lang, "highlights") then
     health_warn("No `highlights.scm` query found for " .. lang, {
       "Open an issue at https://github.com/nvim-treesitter/nvim-treesitter"
     })
@@ -46,7 +47,7 @@ local function highlight_health(lang)
 end
 
 local function locals_health(lang)
-  if not queries.get_query(lang, "locals") then
+  if not qutils.get_query(lang, "locals") then
     health_warn("No `locals.scm` query found for " .. lang, {
       "Open an issue at https://github.com/nvim-treesitter/nvim-treesitter"
     })

@@ -1,6 +1,5 @@
 local api = vim.api
 
-local locals = require'nvim-treesitter.locals'
 local parsers = require'nvim-treesitter.parsers'
 
 local M = {}
@@ -105,107 +104,12 @@ function M.get_previous_node(node, allow_switch_parents, allow_previous_parent)
   return destination_node
 end
 
-function M.parent_scope(node, cursor_pos)
-  local bufnr = api.nvim_get_current_buf()
-
-  local scopes = locals.get_scopes(bufnr)
-  if not node or not scopes then return end
-
-  local row = cursor_pos.row
-  local col = cursor_pos.col
-  local iter_node = node
-
-  while iter_node ~= nil do
-    local row_, col_ = iter_node:start()
-    if vim.tbl_contains(scopes, iter_node) and (row_+1 ~= row or col_ ~= col) then
-      return iter_node
-    end
-    iter_node = iter_node:parent()
-  end
-end
-
-function M.containing_scope(node)
-  local bufnr = api.nvim_get_current_buf()
-
-  local scopes = locals.get_scopes(bufnr)
-  if not node or not scopes then return end
-
-  local iter_node = node
-
-  while iter_node ~= nil and not vim.tbl_contains(scopes, iter_node) do
-    iter_node = iter_node:parent()
-  end
-
-  return iter_node or node
-end
-
 function M.get_named_children(node)
   local nodes = {}
   for i=0,node:named_child_count() - 1,1 do
     nodes[i+1] = node:named_child(i)
   end
   return nodes
-end
-
-function M.nested_scope(node, cursor_pos)
-  local bufnr = api.nvim_get_current_buf()
-
-  local scopes = locals.get_scopes(bufnr)
-  if not node or not scopes then return end
-
-  local row = cursor_pos.row
-  local col = cursor_pos.col
-  local scope = M.containing_scope(node)
-
-  for _, child in ipairs(M.get_named_children(scope)) do
-    local row_, col_ = child:start()
-    if vim.tbl_contains(scopes, child) and ((row_+1 == row and col_ > col) or row_+1 > row) then
-      return child
-    end
-  end
-end
-
-function M.next_scope(node)
-  local bufnr = api.nvim_get_current_buf()
-
-  local scopes = locals.get_scopes(bufnr)
-  if not node or not scopes then return end
-
-  local scope = M.containing_scope(node)
-
-  local parent = scope:parent()
-  if not parent then return end
-
-  local is_prev = true
-  for _, child in ipairs(M.get_named_children(parent)) do
-    if child == scope then
-      is_prev = false
-    elseif not is_prev and vim.tbl_contains(scopes, child) then
-      return child
-    end
-  end
-end
-
-function M.previous_scope(node)
-  local bufnr = api.nvim_get_current_buf()
-
-  local scopes = locals.get_scopes(bufnr)
-  if not node or not scopes then return end
-
-  local scope = M.containing_scope(node)
-
-  local parent = scope:parent()
-  if not parent then return end
-
-  local is_prev = true
-  local children = M.get_named_children(parent)
-  for i=#children,1,-1 do
-    if children[i] == scope then
-      is_prev = false
-    elseif not is_prev and vim.tbl_contains(scopes, children[i]) then
-      return children[i]
-    end
-  end
 end
 
 function M.get_node_at_cursor(winnr)

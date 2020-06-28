@@ -1,7 +1,7 @@
 local api = vim.api
 local ts = vim.treesitter
 
-local queries = require'nvim-treesitter.query'
+local queries = require'nvim-treesitter.utils.query'
 local parsers = require'nvim-treesitter.parsers'
 
 local M = {
