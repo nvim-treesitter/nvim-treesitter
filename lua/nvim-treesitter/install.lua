@@ -120,6 +120,29 @@ local function run_install(cache_folder, package_path, lang, repo, with_sync)
   end
 end
 
+local function install_lang(lang, ask_reinstall, cache_folder, package_path, with_sync)
+  if #api.nvim_get_runtime_file('parser/'..lang..'.so', false) > 0 then
+    if not ask_reinstall then return end
+
+    local yesno = fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
+    print('\n ') -- mandatory to avoid messing up command line
+    if not string.match(yesno, '^y.*') then return end
+  end
+
+  local parser_config = parsers.get_parser_configs()[lang]
+  if not parser_config then
+    return api.nvim_err_writeln('Parser not available for language '..lang)
+  end
+
+  local install_info = parser_config.install_info
+  vim.validate {
+    url={ install_info.url, 'string' },
+    files={ install_info.files, 'table' }
+  }
+
+  run_install(cache_folder, package_path, lang, install_info, with_sync)
+end
+
 -- TODO(kyazdani): this should work on windows too
 local function install(with_sync)
   return function (...)
@@ -145,27 +168,7 @@ local function install(with_sync)
     end
 
     for _, lang in ipairs(languages) do
-      if #api.nvim_get_runtime_file('parser/'..lang..'.so', false) > 0 then
-        if not ask_reinstall then goto continue end
-
-        local yesno = fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
-        print('\n ') -- mandatory to avoid messing up command line
-        if not string.match(yesno, '^y.*') then goto continue end
-      end
-
-      local parser_config = parsers.get_parser_configs()[lang]
-      if not parser_config then
-        return api.nvim_err_writeln('Parser not available for language '..lang)
-      end
-
-      local install_info = parser_config.install_info
-      vim.validate {
-        url={ install_info.url, 'string' },
-        files={ install_info.files, 'table' }
-      }
-
-      run_install(cache_folder, package_path, lang, install_info, with_sync)
-      ::continue::
+      install_lang(lang, ask_reinstall, cache_folder, package_path, with_sync)
     end
   end
 end
