@@ -160,11 +160,14 @@ local function install(with_sync)
     local cache_folder, err = utils.get_cache_dir()
     if err then return api.nvim_err_writeln(err) end
 
-    local languages = vim.tbl_flatten({...})
-    local ask_reinstall = true
+    local languages
+    local ask_reinstall
     if ... == 'all' then
       languages = parsers.available_parsers()
       ask_reinstall = false
+    else
+      languages = vim.tbl_flatten({...})
+      ask_reinstall = true
     end
 
     for _, lang in ipairs(languages) do
