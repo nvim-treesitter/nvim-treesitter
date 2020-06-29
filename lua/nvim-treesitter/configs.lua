@@ -129,32 +129,28 @@ M.commands = {
     args = {
       "-nargs=1",
       "-complete=custom,v:lua.ts_available_modules"
-    },
-    description = '`:TSBufEnable module_name` enable a specified module on the current buffer'
+    }
   },
   TSBufDisable = {
     run = disable_module,
     args = {
       "-nargs=1",
       "-complete=custom,v:lua.ts_available_modules"
-    },
-    description = '`:TSBufDisable module_name` disable a specified module on the current buffer'
+    }
   },
   TSEnableAll = {
     run = enable_all,
     args = {
       "-nargs=+",
       "-complete=custom,v:lua.ts_available_modules"
-    },
-    description = '`:TSEnableAll module_name (filetype)` enables a specified module on all buffers. If filetype is specified, enable only for specified filetype'
+    }
   },
   TSDisableAll = {
     run = disable_all,
     args = {
       "-nargs=+",
       "-complete=custom,v:lua.ts_available_modules"
-    },
-    description = '`:TSDisableAll module_name (filetype)` disables a specified module on all buffers. If filetype is specified, disable only for specified filetype'
+    }
   },
 }
 
