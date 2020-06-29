@@ -26,12 +26,6 @@ function M.goto_definition(bufnr)
   if not node_at_point then return end
 
   local definition, _ = ts_utils.find_definition(node_at_point, bufnr)
-
-  if not definition then
-    print('No definition found')
-    return
-  end
-
   local start_row, start_col, _ = definition:start()
 
   api.nvim_win_set_cursor(0, { start_row + 1, start_col })

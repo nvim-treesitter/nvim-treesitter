@@ -15,8 +15,11 @@ function M.highlight_usages(bufnr)
   M.clear_usage_highlights(bufnr)
 
   local node_at_point = ts_utils.get_node_at_cursor()
+  local references = locals.get_references(bufnr)
 
-  if not node_at_point then return end
+  if not node_at_point or not vim.tbl_contains(references, node_at_point) then 
+    return
+  end
 
   local def_node, scope = ts_utils.find_definition(node_at_point, bufnr)
   local usages = ts_utils.find_usages(node_at_point, scope)
@@ -28,25 +31,23 @@ function M.highlight_usages(bufnr)
       api.nvim_buf_add_highlight(
         bufnr, 
         usage_namespace, 
-        'Visual', 
+        'TSDefinitionUsage', 
         start_row,
         start_col,
         end_col)
     end
   end
 
-  if def_node then
+  if def_node ~= node_at_point then
     local start_row, start_col, _, end_col = def_node:range()
 
-    if def_node ~= node_at_point then
-      api.nvim_buf_add_highlight(
-        bufnr, 
-        usage_namespace, 
-        'Search', 
-        start_row,
-        start_col,
-        end_col)
-    end
+    api.nvim_buf_add_highlight(
+      bufnr, 
+      usage_namespace, 
+      'TSDefinition', 
+      start_row,
+      start_col,
+      end_col)
   end
 end
 

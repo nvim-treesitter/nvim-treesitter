@@ -28,9 +28,6 @@
 (variable_declarator
   name: (identifier) @definition)
 
-(import_specifier
-  (identifier) @definition)
-
 ; References
 ;------------
 

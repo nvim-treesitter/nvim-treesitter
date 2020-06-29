@@ -45,7 +45,7 @@ function M.get_cache_dir()
   return nil, 'Invalid cache rights, $XDG_CACHE_HOME or /tmp should be read/write'
 end
 
---- Gets a property at path
+-- Gets a property at path
 -- @param tbl the table to access
 -- @param path the '.' seperated path
 -- @returns the value at path or nil
@@ -60,6 +60,12 @@ function M.get_at_path(tbl, path)
   end
 
   return result
+end
+
+-- Prints a warning message
+-- @param text the text message
+function M.print_warning(text)
+  api.nvim_command(string.format([[echohl WarningMsg | echo "%s" | echohl None]], text))
 end
 
 return M
