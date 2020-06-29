@@ -64,6 +64,7 @@ list.bash = {
     url = "https://github.com/tree-sitter/tree-sitter-bash",
     files = { "src/parser.c", "src/scanner.cc" },
   },
+  used_by = { "zsh" },
   filetype = 'sh'
 }
 
@@ -205,10 +206,10 @@ list.nix = {
 }
 
 list.regex = {
-    install_info = {
-        url = "https://github.com/tree-sitter/tree-sitter-regex",
-        files = { "src/parser.c" }
-    }
+  install_info = {
+    url = "https://github.com/tree-sitter/tree-sitter-regex",
+    files = { "src/parser.c" }
+  }
 }
 
 local M = {
@@ -216,12 +217,14 @@ local M = {
 }
 
 local ft_to_parsername = {}
+
 for name, obj in pairs(M.list) do
-  if obj.filetype then
-    ft_to_parsername[obj.filetype] = name
-  else
-    ft_to_parsername[name] = name
+  if type(obj.used_by) == 'table' then
+    for _, ft in pairs(obj.used_by) do
+      ft_to_parsername[ft] = name
+    end
   end
+  ft_to_parsername[obj.filetype or name] = name
 end
 
 function M.ft_to_lang(ft)
@@ -229,7 +232,17 @@ function M.ft_to_lang(ft)
 end
 
 function M.lang_to_ft(lang)
-  return M.list[lang].filetype or lang
+  local obj = M.list[lang]
+  return vim.tbl_flatten({{obj.filetype or lang}, obj.used_by or {}})
+end
+
+function M.lang_match_ft(lang, ft)
+  for _, f in pairs(M.lang_to_ft(lang)) do
+    if ft == f then
+      return true
+    end
+  end
+  return false
 end
 
 function M.available_parsers()

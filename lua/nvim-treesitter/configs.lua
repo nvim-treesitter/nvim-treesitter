@@ -49,9 +49,10 @@ end
 local function enable_mod_conf_autocmd(mod, lang)
   if not config.modules[mod] or M.is_enabled(mod, lang) then return end
 
-  local ft = parsers.lang_to_ft(lang)
   local cmd = string.format("lua require'nvim-treesitter.%s'.attach()", mod)
-  api.nvim_command(string.format("autocmd FileType %s %s", ft, cmd))
+  for _, ft in pairs(parsers.lang_to_ft(lang)) do
+    api.nvim_command(string.format("autocmd NvimTreesitter FileType %s %s", ft, cmd))
+  end
   for i, parser in pairs(config.modules[mod].disable) do
     if parser == lang then
       table.remove(config.modules[mod].disable, i)
@@ -65,7 +66,7 @@ local function enable_all(mod, lang)
 
   for _, bufnr in pairs(api.nvim_list_bufs()) do
     local ft = api.nvim_buf_get_option(bufnr, 'ft')
-    if not lang or ft == parsers.lang_to_ft(lang) then
+    if not lang or parsers.lang_match_ft(lang, ft) then
       enable_module(mod, bufnr, lang)
     end
   end
@@ -101,15 +102,18 @@ end
 local function disable_mod_conf_autocmd(mod, lang)
   if not config.modules[mod] or not M.is_enabled(mod, lang) then return end
 
-  local ft = parsers.lang_to_ft(lang)
-  api.nvim_command(string.format("autocmd! FileType %s", ft))
+  local cmd = string.format("lua require'nvim-treesitter.%s'.attach()", mod)
+  -- TODO(kyazdani): detach the correct autocmd... doesn't work when using %s, cmd
+  for _, ft in pairs(parsers.lang_to_ft(lang)) do
+    api.nvim_command(string.format("autocmd! NvimTreesitter FileType %s", ft))
+  end
   table.insert(config.modules[mod].disable, lang)
 end
 
 local function disable_all(mod, lang)
   for _, bufnr in pairs(api.nvim_list_bufs()) do
     local ft = api.nvim_buf_get_option(bufnr, 'ft')
-    if not lang or ft == parsers.lang_to_ft(lang) then
+    if not lang or parsers.lang_match_ft(lang, ft) then
       disable_module(mod, bufnr, lang)
     end
   end
