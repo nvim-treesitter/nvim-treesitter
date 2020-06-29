@@ -24,8 +24,10 @@
 ((method) @scope
  (set! scope-inherits false))
 
-(block) @scope
-(do_block) @scope
+[
+ (block)
+ (do_block) 
+ ] @scope
 
 (method_parameters (identifier) @definition.function)
 (lambda_parameters (identifier) @definition.function)

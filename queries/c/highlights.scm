@@ -21,32 +21,55 @@
 "while" @repeat
 
 "#define" @constant.macro
-"#else" @keyword
-"#endif" @keyword
-"#if" @keyword
-"#ifdef" @keyword
-"#ifndef" @keyword
-"#include" @keyword
-(preproc_directive) @keyword
+[
+  "#if"
+  "#ifdef"
+  "#ifndef"
+  "#else"
+  "#elif"
+  "#endif"
+  "#include"
+  (preproc_directive)
+] @keyword
 
 "--" @operator
 "-" @operator
-"-=" @operator
 "->" @operator
 "!=" @operator
 "*" @operator
+"/" @operator
 "&" @operator
 "&&" @operator
 "+" @operator
 "++" @operator
-"+=" @operator
 "<" @operator
+"<=" @operator
 "==" @operator
+"=" @operator
+"~" @operator
 ">" @operator
+">=" @operator
+"!" @operator
 "||" @operator
 
-"." @delimiter
-";" @delimiter
+"-=" @operator
+"+=" @operator
+"*=" @operator
+"/=" @operator
+"|=" @operator
+"&=" @operator
+
+"." @punctuation.delimiter
+";" @punctuation.delimiter
+":" @punctuation.delimiter
+"," @punctuation.delimiter
+
+"(" @punctuation.bracket
+")" @punctuation.bracket
+"[" @punctuation.bracket
+"]" @punctuation.bracket
+"{" @punctuation.bracket
+"}" @punctuation.bracket
 
 (string_literal) @string
 (system_lib_string) @string
@@ -64,6 +87,8 @@
   declarator: (identifier) @function)
 (preproc_function_def
   name: (identifier) @function.macro)
+(preproc_arg)  @function.macro
+; TODO (preproc_arg)  @embedded
 
 (field_identifier) @property
 (statement_identifier) @label
@@ -71,7 +96,20 @@
 (primitive_type) @type
 (sized_type_specifier) @type
 
+((identifier) @type
+ (#match? @type "^[A-Z]"))
+
 ((identifier) @constant
- (match? @constant "^[A-Z][A-Z\\d_]+$"))
+ (#match? @constant "^[A-Z][A-Z0-9_]+$"))
 
 (comment) @comment
+
+;; Parameters
+(parameter_list
+  (parameter_declaration) @parameter)
+
+(preproc_params
+  (identifier)) @parameter
+
+(ERROR) @error
+

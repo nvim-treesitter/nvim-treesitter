@@ -5,20 +5,20 @@ local api = vim.api
 local ts = vim.treesitter
 
 local queries = require'nvim-treesitter.query'
-local utils = require'nvim-treesitter.utils'
+local parsers = require'nvim-treesitter.parsers'
 
 local M = {
   locals = {}
 }
 
 function M.collect_locals(bufnr)
-  local ft = api.nvim_buf_get_option(bufnr, "ft")
-  if not ft then return end
+  local lang = parsers.ft_to_lang(api.nvim_buf_get_option(bufnr, "ft"))
+  if not lang then return end
 
-  local query = queries.get_query(ft, 'locals')
+  local query = queries.get_query(lang, 'locals')
   if not query then return end
 
-  local parser = utils.get_parser(bufnr, ft)
+  local parser = parsers.get_parser(bufnr, lang)
   if not parser then return end
 
   local root = parser:parse():root()
@@ -40,7 +40,7 @@ end
 function M.get_locals(bufnr)
   local bufnr = bufnr or api.nvim_get_current_buf()
   local cached_local = M.locals[bufnr]
-  if not cached_local or api.nvim_buf_get_changedtick(bufnr) < cached_local.tick then
+  if not cached_local or api.nvim_buf_get_changedtick(bufnr) > cached_local.tick then
     update_cached_locals(bufnr,api.nvim_buf_get_changedtick(bufnr))
   end
 
