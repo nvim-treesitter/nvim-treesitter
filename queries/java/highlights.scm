@@ -2,20 +2,32 @@
 
 ; Methods
 
+
 (method_declaration
   name: (identifier) @method)
 (method_invocation
   name: (identifier) @method)
+
 (super) @function.builtin
 
+; Parameters
+(formal_parameter
+  name: (identifier) @parameter)
+
+(inferred_parameters (identifier) @parameter)
+
+
 ; Annotations
+
 
 (annotation
   name: (identifier) @attribute)
 (marker_annotation
   name: (identifier) @attribute)
 
+
 ; Operators
+
 [
 "@"
 "+"
@@ -41,6 +53,15 @@
 "*="
 "/="
 "%="
+"->"
+"^"
+"^="
+"&="
+"|="
+"~"
+">>"
+">>>"
+"<<"
 ] @operator
 
 ; Types
@@ -51,40 +72,46 @@
   name: (identifier) @type)
 (enum_declaration
   name: (identifier) @type)
+(constructor_declaration
+  name: (identifier) @type)
+(type_identifier) @type
+
+
 
 ((field_access
   object: (identifier) @type)
- (#match? @type "^[A-Z]"))
+  (#match? @type "^[A-Z]"))
 ((scoped_identifier
   scope: (identifier) @type)
- (#match? @type "^[A-Z]"))
+  (#match? @type "^[A-Z]"))
 
-(constructor_declaration
-  name: (identifier) @type)
-
-(type_identifier) @type
-(boolean_type) @type.builtin
-(integral_type) @type.builtin
-(floating_point_type) @type.builtin
-(floating_point_type) @type.builtin
-(void_type) @type.builtin
+[
+(boolean_type)
+(integral_type)
+(floating_point_type)
+(void_type)
+] @type.builtin
 
 ; Variables
 
 ((identifier) @constant
- (#match? @constant "^_*[A-Z][A-Z\d_]+"))
+  (#match? @constant "^_*[A-Z][A-Z\d_]+"))
 
-(identifier) @variable
 
-(this) @variable.builtin
 
 ; Literals
 
-(hex_integer_literal) @number
-(decimal_integer_literal) @number
-(octal_integer_literal) @number
-(decimal_floating_point_literal) @float
-(hex_floating_point_literal) @float
+[
+(hex_integer_literal)
+(decimal_integer_literal)
+(octal_integer_literal)
+] @number
+
+[
+(decimal_floating_point_literal)
+(hex_floating_point_literal)
+] @float
+
 (character_literal) @character
 (string_literal) @string
 (null_literal) @constant.builtin
@@ -106,7 +133,6 @@
 "class"
 "continue"
 "default"
-"do"
 "enum"
 "exports"
 "extends"
@@ -150,25 +176,32 @@
 "case"
 ] @conditional
 
-; 
+;
 
 [
 "for"
 "while"
+"do"
 ] @repeat
 
-;
+; Includes
 
 "import" @include
+"package" @include
 
 ; Punctuation
 
-";" @punctuation.delimiter
-"." @punctuation.delimiter
-"," @punctuation.delimiter
-"[" @punctuation.bracket
-"]" @punctuation.bracket
-"{" @punctuation.bracket
-"}" @punctuation.bracket
-"(" @punctuation.bracket
-")" @punctuation.bracket
+[
+";"
+"."
+","
+] @punctuation.delimiter
+
+[
+"["
+"]"
+"{"
+"}"
+"("
+")"
+] @punctuation.bracket
