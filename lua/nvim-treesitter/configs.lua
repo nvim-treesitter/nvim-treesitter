@@ -237,21 +237,19 @@ end
 function M.setup(user_data)
   if not user_data then return end
 
-  for mod, data in pairs(user_data) do
-    if config.modules[mod] then
-      M.setup_module(config.modules[mod], data)
-    elseif mod == 'ensure_installed' then
-      config.ensure_installed = data
-      require'nvim-treesitter.install'.ensure_installed(data)
-    end
-  end
+  M.setup_module(config.modules, user_data)
 end
 
---- Sets up a single module or all submodules of a group
+-- Sets up a single module or all submodules of a group.
+-- Note, this method is recursive.
 -- @param mod the module or group of modules
 -- @param data user defined configuration for the module
-function M.setup_module(mod, data)
-  if M.is_module(mod) then
+-- @param mod_name name of the module if it exists
+function M.setup_module(mod, data, mod_name)
+  if mod_name == 'ensure_installed' then
+    config.ensure_installed = data
+    require'nvim-treesitter.install'.ensure_installed(data)
+  elseif M.is_module(mod) then
     if type(data.enable) == 'boolean' then
       mod.enable = data.enable
     end
@@ -267,7 +265,7 @@ function M.setup_module(mod, data)
     end
   elseif type(data) == 'table' and type(mod) == 'table' then
     for key, value in pairs(data) do 
-      M.setup_module(mod[key], value)
+      M.setup_module(mod[key], value, key)
     end
   end
 end

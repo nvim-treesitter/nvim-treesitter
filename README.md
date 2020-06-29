@@ -102,8 +102,22 @@ require'nvim-treesitter.configs'.setup {
           init_selection = 'gnn',         -- maps in normal mode to init the node/scope selection
           node_incremental = "grn",       -- increment to the upper named parent
           scope_incremental = "grc",      -- increment to the upper scope (as defined in locals.scm)
-          node_decremental = "grm",      -- decrement to the previous node
+          node_decremental = "grm",       -- decrement to the previous node
         }
+    },
+    refactor = {
+      highlight_defintions = {
+        enable = true
+      },
+      smart_rename = {
+        enable = true,
+        smart_rename = "grr"              -- mapping to rename reference under cursor
+      },
+      navigation = {
+        enable = true,
+        goto_definition = "gnd",          -- mapping to go to definition of symbol under cursor
+        list_definitions = "gnD"          -- mapping to list all definitions in current file
+      }
     },
     ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
 }
@@ -133,6 +147,16 @@ Some of these features are :
 
 You can find the roadmap [here](https://github.com/nvim-treesitter/nvim-treesitter/projects/1).
 The roadmap and all features of this plugin are open to change, and any suggestion will be highly appreciated!
+
+## Available Modules
+
+- `highlight`: Consistent syntax highlighting.
+- `incremental_selection`: Syntax based selection.
+- `refactor.highlight_definitions`: Syntax based definition and usage highlighting.
+- `refactor.smart_rename`: Syntax based definition and usage renaming.
+- `refactor.navigation`: Syntax based definition listing and navigation.
+  * List all definitions
+  * Go to definition
 
 ## Utils
 
