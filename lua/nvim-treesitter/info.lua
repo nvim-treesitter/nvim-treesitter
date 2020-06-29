@@ -81,16 +81,14 @@ M.commands = {
     run = install_info,
     args = {
       "-nargs=0",
-    },
-    description = '`:TSInstallInfo` print installation state for every filetype'
+    }
   },
   TSModuleInfo = {
     run = module_info,
     args = {
       "-nargs=?",
       "-complete=custom,v:lua.ts_available_modules"
-    },
-    description = '`:TSModuleInfo` print module state for every filetype, if module is specified, only for current module'
+    }
   }
 }
 

@@ -22,7 +22,42 @@ local function iter_cmd(cmd_list, i, lang)
   end))
 end
 
-local function run_install(cache_folder, package_path, lang, repo)
+local function get_command(cmd)
+  local ret = ''
+  if cmd.opts and cmd.opts.cwd then
+    ret = string.format('cd %s;\n', cmd.opts.cwd)
+  end
+
+  ret = string.format('%s%s ', ret, cmd.cmd)
+
+  local options = ""
+  if cmd.opts and cmd.opts.args then
+    for _, opt in ipairs(cmd.opts.args) do
+      options = string.format("%s %s", options, opt)
+    end
+  end
+
+  return string.format('%s%s', ret, options)
+end
+
+local function iter_cmd_sync(cmd_list)
+  for _, cmd in ipairs(cmd_list) do
+    if cmd.info then
+      print(cmd.info)
+    end
+
+    vim.fn.system(get_command(cmd))
+    if vim.v.shell_error ~= 0 then
+      api.nvim_err_writeln(cmd.err)
+      return false
+    end
+
+  end
+
+  return true
+end
+
+local function run_install(cache_folder, package_path, lang, repo, with_sync)
   local project_name = 'tree-sitter-'..lang
   local project_repo = cache_folder..'/'..project_name
   -- compile_location only needed for typescript installs.
@@ -33,7 +68,7 @@ local function run_install(cache_folder, package_path, lang, repo)
       cmd = 'rm',
       opts = {
         args = { '-rf', project_repo },
-      }
+      },
     },
     {
       cmd = 'git',
@@ -76,83 +111,81 @@ local function run_install(cache_folder, package_path, lang, repo)
     }
   }
 
-  iter_cmd(command_list, 1, lang)
+  if with_sync then
+    if iter_cmd_sync(command_list, lang) == true then
+      print('Treesitter parser for '..lang..' has been installed')
+    end
+  else
+    iter_cmd(command_list, 1, lang)
+  end
 end
 
 -- TODO(kyazdani): this should work on windows too
-local function install(...)
-  if fn.has('win32') == 1 then
-    return api.nvim_err_writeln('This command is not available on windows at the moment.')
-  end
+local function install(with_sync)
+  return function (...)
+    if fn.has('win32') == 1 then
+      return api.nvim_err_writeln('This command is not available on windows at the moment.')
+    end
 
-  if fn.executable('git') == 0 then
-    return api.nvim_err_writeln('Git is required on your system to run this command')
-  end
+    if fn.executable('git') == 0 then
+      return api.nvim_err_writeln('Git is required on your system to run this command')
+    end
 
-  local package_path, err = utils.get_package_path()
-  if err then return api.nvim_err_writeln(err) end
+    local package_path, err = utils.get_package_path()
+    if err then return api.nvim_err_writeln(err) end
 
-  local cache_folder, err = utils.get_cache_dir()
-  if err then return api.nvim_err_writeln(err) end
+    local cache_folder, err = utils.get_cache_dir()
+    if err then return api.nvim_err_writeln(err) end
 
-  local languages = { ... }
-  local check_installed = true
-  if ... == 'all' then
-    languages = parsers.available_parsers()
-    check_installed = false
-  end
+    local languages = vim.tbl_flatten({...})
+    local ask_reinstall = true
+    if ... == 'all' then
+      languages = parsers.available_parsers()
+      ask_reinstall = false
+    end
 
-  for _, lang in ipairs(languages) do
-    if check_installed then
+    for _, lang in ipairs(languages) do
       if #api.nvim_get_runtime_file('parser/'..lang..'.so', false) > 0 then
+        if not ask_reinstall then goto continue end
+
         local yesno = fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
         print('\n ') -- mandatory to avoid messing up command line
         if not string.match(yesno, '^y.*') then goto continue end
       end
-    end
 
-    local parser_config = parsers.get_parser_configs()[lang]
-    if not parser_config then
-      return api.nvim_err_writeln('Parser not available for language '..lang)
-    end
+      local parser_config = parsers.get_parser_configs()[lang]
+      if not parser_config then
+        return api.nvim_err_writeln('Parser not available for language '..lang)
+      end
 
-    local install_info = parser_config.install_info
-    vim.validate {
-      url={ install_info.url, 'string' },
-      files={ install_info.files, 'table' }
-    }
+      local install_info = parser_config.install_info
+      vim.validate {
+        url={ install_info.url, 'string' },
+        files={ install_info.files, 'table' }
+      }
 
-    run_install(cache_folder, package_path, lang, install_info)
-    ::continue::
-  end
-end
-
-
-M.ensure_installed = function(languages)
-  if type(languages) == 'string' then
-    if languages == 'all' then
-      languages = parsers.available_parsers()
-    else
-      languages = {languages}
-    end
-  end
-
-  for _, lang in ipairs(languages) do
-    if not parsers.has_parser(lang) then
-      install(lang)
+      run_install(cache_folder, package_path, lang, install_info, with_sync)
+      ::continue::
     end
   end
 end
 
+M.ensure_installed = install(false)
 
 M.commands = {
   TSInstall = {
-    run = install,
+    run = install(false),
     args = {
       "-nargs=+",
       "-complete=custom,v:lua.ts_installable_parsers"
-    },
-    description = '`:TSInstall {lang}` installs a parser under nvim-treesitter/parser/{lang}.so'
+    }
+  },
+  TSInstallSync = {
+    run = install(true),
+    args = {
+      "-nargs=+",
+      "-complete=custom,v:lua.ts_installable_parsers"
+    }
   }
 }
 
