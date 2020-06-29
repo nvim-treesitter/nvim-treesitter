@@ -29,6 +29,11 @@ M.base_language_map = {
   tsx = {'typescript', 'javascript'},
 }
 
+M.query_extensions = {
+  javascript = { 'jsx' },
+  tsx = {'javascript.jsx'}
+}
+
 M.has_locals = get_query_guard('locals')
 M.has_highlights = get_query_guard('highlights')
 
@@ -44,6 +49,20 @@ function M.get_query(lang, query_name)
     local base_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', base_lang, query_name), true)
     if base_files and #base_files > 0 then
         query_string = read_query_files(base_files) .. "\n" .. query_string
+    end
+  end
+
+  local extensions = M.query_extensions[lang]
+  for _, ext in ipairs(extensions or {}) do
+    local l = lang
+    local e = ext
+    if e:match('%.') ~= nil then
+       l = e:match('.*%.'):sub(0, -2)
+       e = e:match('%..*'):sub(2, -1)
+    end
+    local ext_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', l, e), true)
+    if ext_files and #ext_files > 0 then
+      query_string = read_query_files(ext_files) .. "\n" .. query_string
     end
   end
 
