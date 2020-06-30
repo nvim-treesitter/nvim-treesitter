@@ -144,7 +144,7 @@ local function install_lang(lang, ask_reinstall, cache_folder, package_path, wit
 end
 
 -- TODO(kyazdani): this should work on windows too
-local function install(with_sync)
+local function install(with_sync, ask_reinstall)
   return function (...)
     if fn.has('win32') == 1 then
       return api.nvim_err_writeln('This command is not available on windows at the moment.')
@@ -161,33 +161,33 @@ local function install(with_sync)
     if err then return api.nvim_err_writeln(err) end
 
     local languages
-    local ask_reinstall
+    local ask
     if ... == 'all' then
       languages = parsers.available_parsers()
-      ask_reinstall = false
+      ask = false
     else
       languages = vim.tbl_flatten({...})
-      ask_reinstall = true
+      ask = ask_reinstall
     end
 
     for _, lang in ipairs(languages) do
-      install_lang(lang, ask_reinstall, cache_folder, package_path, with_sync)
+      install_lang(lang, ask, cache_folder, package_path, with_sync)
     end
   end
 end
 
-M.ensure_installed = install(false)
+M.ensure_installed = install(false, false)
 
 M.commands = {
   TSInstall = {
-    run = install(false),
+    run = install(false, true),
     args = {
       "-nargs=+",
       "-complete=custom,v:lua.ts_installable_parsers"
     }
   },
   TSInstallSync = {
-    run = install(true),
+    run = install(true, true),
     args = {
       "-nargs=+",
       "-complete=custom,v:lua.ts_installable_parsers"
