@@ -14,7 +14,10 @@
 (formal_parameter
   name: (identifier) @parameter)
 
-(inferred_parameters (identifier) @parameter)
+;; Lambda parameter
+(inferred_parameters (identifier) @parameter) ; (x,y) -> ...
+(lambda_expression
+    parameters: (identifier) @parameter) ; x -> ...
 
 
 ; Annotations
