@@ -51,7 +51,7 @@
 ">=" @operator
 "!" @operator
 "||" @operator
-"?" @operator
+(conditional_expression [ "?" ":" ] @conditional)
 
 "-=" @operator
 "+=" @operator
@@ -113,4 +113,3 @@
   (identifier)) @parameter
 
 (ERROR) @error
-
