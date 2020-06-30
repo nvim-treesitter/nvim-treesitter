@@ -12,6 +12,7 @@ hl-TSConstBuiltin	nvim-treesitter.txt	/*hl-TSConstBuiltin*
 hl-TSConstMacro	nvim-treesitter.txt	/*hl-TSConstMacro*
 hl-TSConstant	nvim-treesitter.txt	/*hl-TSConstant*
 hl-TSConstructor	nvim-treesitter.txt	/*hl-TSConstructor*
+hl-TSError	nvim-treesitter.txt	/*hl-TSError*
 hl-TSException	nvim-treesitter.txt	/*hl-TSException*
 hl-TSField	nvim-treesitter.txt	/*hl-TSField*
 hl-TSFloat	nvim-treesitter.txt	/*hl-TSFloat*
