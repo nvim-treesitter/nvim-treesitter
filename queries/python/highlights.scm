@@ -132,6 +132,7 @@
 
 [
   "assert"
+  "async"
   "await"
   "class"
   "def"
