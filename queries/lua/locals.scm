@@ -12,6 +12,8 @@
    (parameters (identifier) @definition.var)))
 ((function
    (parameters (identifier) @definition.var)))
+((function_definition
+   (parameters (identifier) @definition.var)))
 
 ;; Loops
 ((loop_expression
