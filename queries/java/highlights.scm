@@ -111,6 +111,7 @@
 (hex_integer_literal)
 (decimal_integer_literal)
 (octal_integer_literal)
+(binary_integer_literal)
 ] @number
 
 [
