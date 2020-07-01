@@ -34,7 +34,7 @@ highlight default link TSStringEscape SpecialChar
 highlight default link TSCharacter Character
 highlight default link TSNumber Number
 highlight default link TSBoolean Boolean
-highlight default link TSFloat TSFloat
+highlight default link TSFloat Float
 
 highlight default link TSFunction Function
 highlight default link TSFuncBuiltin Special
