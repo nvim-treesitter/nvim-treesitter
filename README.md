@@ -35,7 +35,7 @@ $ git clone https://github.com/nvim-treesitter/nvim-treesitter.git
 
 ## Adding parsers
 
-Treesitter is using a different _parser_ for every language. It can be quite a pain to install, but fortunately `nvim-treesitter` 
+Treesitter is using a different _parser_ for every language. It can be quite a pain to install, but fortunately `nvim-treesitter`
 provides two command to tackle this issue:
   - `TSInstall` to install one or more parser. You can use `TSInstall all` to download all parsers.
   - `TSInstallInfo` to know which parser is installed.
@@ -158,6 +158,41 @@ The roadmap and all features of this plugin are open to change, and any suggesti
 - `refactor.navigation`: Syntax based definition listing and navigation.
   * List all definitions
   * Go to definition
+
+## Defining Modules
+
+Users and plugin authors can take advantage of modules by creating their own. Modules provide:
+
+- Treesitter language detection support
+- Attach and detach to buffers
+- Works with all nvim-treesitter commands
+
+You can use the `define_modules` function to define one or more modules or module groups.
+
+```lua
+require 'nvim-treesitter'.define_modules {
+  my_cool_plugin = {
+    attach = function(bufnr, lang)
+      -- Do cool stuff here
+    end,
+    detach = function(bufnr)
+      -- Undo cool stuff here
+    end,
+    is_supported = function(lang)
+      -- Check if the language is supported
+    end
+  }
+}
+```
+
+Modules can consist of the following properties:
+
+- `module_path`: A require path (string) that exports a module with an `attach` and `detach` function. This is not required if the functions are on this definition.
+- `enable`: Determines if the module is enabled by default. This is usually overridden by the user.
+- `disable`: A list of languages that this module is disabled for. This is usually overridden by the user.
+- `is_supported`: A function that takes a language and determines if this module supports that language.
+- `attach`: A function that attachs to a buffer. This is required if `module_path` is not provided.
+- `detach`: A function that detaches from a buffer. This is required if `module_path` is not provided.
 
 ## Utils
 
