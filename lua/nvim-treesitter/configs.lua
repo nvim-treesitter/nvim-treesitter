@@ -4,76 +4,95 @@ local queries = require'nvim-treesitter.query'
 local parsers = require'nvim-treesitter.parsers'
 local utils = require'nvim-treesitter.utils'
 
--- @enable can be true or false
--- @disable is a list of languages, only relevant if enable is true
--- @keymaps list of user mappings for a given module if relevant
--- @is_supported function which, given a ft, will return true if the ft works on the module
 local config = {
-  modules = {
-    highlight = {
-      enable = false,
-      disable = {},
-      is_supported = queries.has_highlights
+  modules = {},
+  ensure_installed = nil
+}
+local user_setup_data = nil
+-- List of modules that need to be setup on initialization.
+local queued_modules_defs = {}
+-- Whether we've initialized the plugin yet.
+local is_initialized = false
+local builtin_modules = {
+  highlight = {
+    module_path = 'nvim-treesitter.highlight',
+    enable = false,
+    disable = {},
+    is_supported = queries.has_highlights
+  },
+  incremental_selection = {
+    module_path = 'nvim-treesitter.incremental_selection',
+    enable = false,
+    disable = {},
+    keymaps = {
+      init_selection="gnn",
+      node_incremental="grn",
+      scope_incremental="grc",
+      node_decremental="grm"
     },
-    incremental_selection = {
+    is_supported = queries.has_locals
+  },
+  refactor = {
+    highlight_definitions = {
+      module_path = 'nvim-treesitter.refactor.highlight_definitions',
       enable = false,
       disable = {},
-      keymaps = {
-        init_selection="gnn",
-        node_incremental="grn",
-        scope_incremental="grc",
-        node_decremental="grm"
-      },
       is_supported = queries.has_locals
     },
-    refactor = {
-      highlight_definitions = {
-        enable = false,
-        disable = {},
-        is_supported = queries.has_locals
-      },
-      smart_rename = {
-        enable = false,
-        disable = {},
-        is_supported = queries.has_locals,
-        keymaps = {
-          smart_rename = "grr"
-        }
-      },
-      navigation = {
-        enable = false,
-        disable = {},
-        is_supported = queries.has_locals,
-        keymaps = {
-          goto_definition = "gnd",
-          list_definitions = "gnD"
-        }
+    smart_rename = {
+      module_path = 'nvim-treesitter.refactor.smart_rename',
+      enable = false,
+      disable = {},
+      is_supported = queries.has_locals,
+      keymaps = {
+        smart_rename = "grr"
+      }
+    },
+    navigation = {
+      module_path = 'nvim-treesitter.refactor.navigation',
+      enable = false,
+      disable = {},
+      is_supported = queries.has_locals,
+      keymaps = {
+        goto_definition = "gnd",
+        list_definitions = "gnD"
       }
     }
-  },
-  ensure_installed = nil
+  }
 }
 
 local M = {}
+
+-- Resolves a module by requiring the `module_path` or using the module definition.
+local function resolve_module(mod_name)
+  local config_mod = M.get_module(mod_name)
+
+  if not config_mod then return end
+
+  if type(config_mod.attach) == 'function' and type(config_mod.detach) == 'function' then
+    return config_mod
+  elseif type(config_mod.module_path) == 'string' then
+    return require(config_mod.module_path)
+  end
+end
 
 local function enable_module(mod, bufnr, lang)
   local bufnr = bufnr or api.nvim_get_current_buf()
   local lang = lang or parsers.ft_to_lang(api.nvim_buf_get_option(bufnr, 'ft'))
 
-  if not parsers.list[lang] or not M.get_module(mod) then
+  if not parsers.list[lang] then
     return
   end
 
-  local loaded_mod = require(string.format("nvim-treesitter.%s", mod))
-  loaded_mod.attach(bufnr, lang)
+  M.attach_module(mod, bufnr, lang)
 end
 
 local function enable_mod_conf_autocmd(mod, lang)
   local config_mod = M.get_module(mod)
 
-  if not config_mod or M.is_enabled(mod, lang) then return end
+  if not config_mod or not M.is_enabled(mod, lang) then return end
 
-  local cmd = string.format("lua require'nvim-treesitter.%s'.attach()", mod)
+  local cmd = string.format("lua require'nvim-treesitter.configs'.attach_module('%s')", mod)
   for _, ft in pairs(parsers.lang_to_ft(lang)) do
     api.nvim_command(string.format("autocmd NvimTreesitter FileType %s %s", ft, cmd))
   end
@@ -117,12 +136,11 @@ local function disable_module(mod, bufnr, lang)
     return
   end
 
-  if not parsers.list[lang] or not M.get_module(mod) then
+  if not parsers.list[lang] then
     return
   end
 
-  local loaded_mod = require(string.format("nvim-treesitter.%s", mod))
-  loaded_mod.detach(bufnr)
+  M.detach_module(mod, bufnr)
 end
 
 local function disable_mod_conf_autocmd(mod, lang)
@@ -130,7 +148,6 @@ local function disable_mod_conf_autocmd(mod, lang)
 
   if not config_mod or not M.is_enabled(mod, lang) then return end
 
-  --local cmd = string.format("lua require'nvim-treesitter.%s'.attach()", mod)
   -- TODO(kyazdani): detach the correct autocmd... doesn't work when using %s, cmd
   for _, ft in pairs(parsers.lang_to_ft(lang)) do
     api.nvim_command(string.format("autocmd! NvimTreesitter FileType %s", ft))
@@ -160,7 +177,7 @@ local function disable_all(mod, lang)
   end
 end
 
--- Recurses trough all modules including submodules
+-- Recurses through all modules including submodules
 -- @param accumulator function called for each module
 -- @param root root configuration table to start at
 -- @param path prefix path
@@ -171,7 +188,7 @@ local function recurse_modules(accumulator, root, path)
     local new_path = path and (path..'.'..name) or name
 
     if M.is_module(module) then
-      accumulator(name, module, new_path)
+      accumulator(name, module, new_path, root)
     elseif type(module) == 'table' then
       recurse_modules(accumulator, module, new_path)
     end
@@ -230,10 +247,10 @@ function M.is_enabled(mod, lang)
   return true
 end
 
+-- Setup call for users to override module configurations.
+-- @param user_data module overrides
 function M.setup(user_data)
-  if not user_data then return end
-
-  M.setup_module(config.modules, user_data)
+  user_setup_data = user_data or {}
 end
 
 -- Sets up a single module or all submodules of a group.
@@ -245,7 +262,7 @@ function M.setup_module(mod, data, mod_name)
   if mod_name == 'ensure_installed' then
     config.ensure_installed = data
     require'nvim-treesitter.install'.ensure_installed(data)
-  elseif M.is_module(mod) then
+  elseif M.is_module(mod) and type(data) == 'table' then
     if type(data.enable) == 'boolean' then
       mod.enable = data.enable
     end
@@ -260,18 +277,93 @@ function M.setup_module(mod, data, mod_name)
       end
     end
   elseif type(data) == 'table' and type(mod) == 'table' then
-    for key, value in pairs(data) do
-      M.setup_module(mod[key], value, key)
+    for key, value in pairs(mod) do
+      M.setup_module(value, data[key], key)
     end
   end
 end
 
-function M.available_modules()
+-- Defines a table of modules that can be attached/detached to buffers
+-- based on language support. A module consist of the following properties:
+-- * @enable Whether the modules is enabled. Can be true or false.
+-- * @disable A list of languages to disable the module for. Only relevant if enable is true.
+-- * @keymaps A list of user mappings for a given module if relevant.
+-- * @is_supported A function which, given a ft, will return true if the ft works on the module.
+-- * @module_path A string path to a module file using `require`. The exported module must contain
+--                an `attach` and `detach` function. This path is not required if `attach` and `detach`
+--                functions are provided directly on the module definition.
+-- * @attach An attach function that is called for each buffer that the module is enabled for. This is required
+--           if a `module_path` is not specified.
+-- * @detach A detach function that is called for each buffer that the module is enabled for. This is required
+--           if a `module_path` is not specified.
+-- Modules are not setup until `init` is invoked by the plugin. This allows modules to be defined in any order
+-- and can be loaded lazily.
+-- @example
+-- require"nvim-treesitter".define_modules {
+--   my_cool_module = {
+--     attach = function()
+--       do_some_cool_setup()
+--     end,
+--     detach = function()
+--       do_some_cool_teardown()
+--     end
+--   }
+-- }
+function M.define_modules(mod_defs)
+  if not is_initialized then
+    table.insert(queued_modules_defs, mod_defs)
+    return
+  end
+
+  recurse_modules(function(key, mod, _, group)
+    group[key] = vim.tbl_extend("keep", mod, {
+      enable = false,
+      disable = {},
+      is_supported = function() return true end
+    })
+  end, mod_defs)
+
+  M.setup_module(mod_defs, user_setup_data)
+  config.modules = vim.tbl_extend("keep", config.modules, mod_defs)
+
+  for _, lang in pairs(parsers.available_parsers()) do
+    for _, mod in ipairs(M.available_modules(mod_defs)) do
+      enable_mod_conf_autocmd(mod, lang)
+    end
+  end
+end
+
+-- Attaches a module to a buffer
+-- @param mod_name the module name
+-- @param bufnr the bufnr
+-- @param lang the language of the buffer
+function M.attach_module(mod_name, bufnr, lang)
+  local resolved_mod = resolve_module(mod_name)
+
+  if resolved_mod then
+    resolved_mod.attach(bufnr, lang)
+  end
+end
+
+-- Detaches a module to a buffer
+-- @param mod_name the module name
+-- @param bufnr the bufnr
+function M.detach_module(mod_name, bufnr)
+  local resolved_mod = resolve_module(mod_name)
+
+  if resolved_mod then
+    resolved_mod.detach(bufnr)
+  end
+end
+
+-- Gets available modules
+-- @param root root table to find modules
+function M.available_modules(root)
   local modules = {}
 
   recurse_modules(function(_, _, path)
     table.insert(modules, path)
-  end)
+  end, root)
 
   return modules
 end
@@ -286,10 +378,23 @@ function M.get_module(mod_path)
 end
 
 -- Determines whether the provided table is a module.
--- A module should contain an 'is_supported' function.
+-- A module should contain an attach and detach function.
 -- @param mod the module table
 function M.is_module(mod)
-  return type(mod) == 'table' and type(mod.is_supported) == 'function'
+  return type(mod) == 'table'
+    and ((type(mod.attach) == 'function' and type(mod.detach) == 'function')
+      or type(mod.module_path) == 'string')
+end
+
+-- Initializes built-in modules and any queued modules
+-- registered by plugins or the user.
+function M.init()
+  is_initialized = true
+  M.define_modules(builtin_modules)
+
+  for _, mod_def in ipairs(queued_modules_defs) do
+    M.define_modules(mod_def)
+  end
 end
 
 return M
