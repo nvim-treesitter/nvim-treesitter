@@ -9,14 +9,14 @@
 
 (struct_specifier
   name: (scoped_type_identifier
-          name: (type_identifier) @definition.type) ) 
+          name: (type_identifier) @definition.type))
 
 (class_specifier
   name: (type_identifier) @definition.type) 
 
 (class_specifier
   name: (scoped_type_identifier
-          name: (type_identifier) @definition.type) ) 
+          name: (type_identifier) @definition.type))
 
 ;; Function defintions
 (template_function
