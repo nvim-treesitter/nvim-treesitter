@@ -3,6 +3,8 @@
 (class_specifier) @scope
 (struct_specifier) @scope
 
+(reference_declarator
+  (identifier) @definition.var)
 
 (struct_specifier
   name: (type_identifier) @definition.type) 
