@@ -27,7 +27,6 @@ function M.select_textobject(query_string)
     local root = parser:parse():root()
     local start_row, _, end_row, _ = root:range()
 
-    local nested = {}
     local query = ts.parse_query(lang, query_string)
     for m in queries.iter_prepared_matches(query, root, bufnr, start_row, end_row) do
       for _, n in pairs(m) do
