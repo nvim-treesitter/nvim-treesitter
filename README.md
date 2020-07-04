@@ -133,6 +133,34 @@ require'nvim-treesitter.configs'.setup {
         }
       }
     },
+    textobjects = { -- syntax-aware textobjects
+	enable = true,
+	disable = {},
+	keymaps = {
+	    ["iL"] = { -- you can define your own textobjects directly here
+		python = "(function_definition) @function",
+		cpp = "(function_definition) @function",
+		c = "(function_definition) @function",
+		java = "(method_declaration) @function"
+	    },
+	    -- or you use the queries from supported languages with textobjects.scm
+	    ["af"] = "@function.outer",
+	    ["if"] = "@function.inner",
+	    ["aC"] = "@class.outer",
+	    ["iC"] = "@class.inner",
+	    ["ac"] = "@conditional.outer",
+	    ["ic"] = "@conditional.inner",
+	    ["ae"] = "@block.outer",
+	    ["ie"] = "@block.inner",
+	    ["al"] = "@loop.outer",
+	    ["il"] = "@loop.inner",
+	    ["is"] = "@statement.inner",
+	    ["as"] = "@statement.outer",
+	    ["ad"] = "@comment.outer",
+	    ["am"] = "@call.outer",
+	    ["im"] = "@call.inner"
+	}
+    },
     ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
 }
 EOF
@@ -171,6 +199,7 @@ The roadmap and all features of this plugin are open to change, and any suggesti
 - `refactor.navigation`: Syntax based definition listing and navigation.
   * List all definitions
   * Go to definition
+- `textobjects`: Vim textobjects defined by treesitter queries
 
 ## Defining Modules
 
@@ -217,7 +246,7 @@ More information is available in the help file (`:help nvim-treesitter-utils`).
 
 ## Supported Languages
 
-For treesitter to work, we need to use query files such as those you can find in
+For `nvim-treesitter` to work, we need to use query files such as those you can find in
 `queries/{lang}/{locals,highlights,textobjects}.scm`
 
 We are looking for maintainers to write query files for their languages.
