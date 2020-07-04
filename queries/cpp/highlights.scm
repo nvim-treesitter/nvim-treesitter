@@ -60,7 +60,6 @@
   (argument_list))
  (#match? @constructor "^[A-Z]"))
 
-(auto) @keyword
 
 ; Constants
 
@@ -72,25 +71,33 @@
 
 ; Keywords
 
-"catch" @exception
-"class" @keyword
-"constexpr" @keyword
-"delete" @keyword
-"explicit" @keyword
-"final" @exception
-"friend" @keyword
-"mutable" @keyword
-"namespace" @keyword
-"noexcept" @keyword
-"new" @keyword
-"override" @keyword
-"private" @keyword
-"protected" @keyword
-"public" @keyword
-"template" @keyword
-"throw" @keyword
-"try" @exception
-"typename" @keyword
-"using" @keyword
-"virtual" @keyword
+[
+ "try"
+ "catch"
+ "noexcept"
+ "throw"
+] @exception
+ 
+
+[
+ "class"
+ "constexpr"
+ "delete"
+ "explicit"
+ "final"
+ "friend"
+ "mutable"
+ "namespace"
+ "new"
+ "override"
+ "private"
+ "protected"
+ "public"
+ "template"
+ "typename"
+ "using"
+ "virtual"
+ (auto)
+] @keyword
+
 "::" @operator

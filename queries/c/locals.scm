@@ -31,9 +31,11 @@
 (identifier) @reference
 
 ;; Scope
-(for_statement) @scope
-(if_statement) @scope
-(while_statement) @scope
-(translation_unit) @scope
-(function_definition) @scope
-(compound_statement) @scope ; a block in curly braces
+[
+ (for_statement)
+ (if_statement)
+ (while_statement)
+ (translation_unit)
+ (function_definition)
+ (compound_statement) ; a block in curly braces
+] @scope

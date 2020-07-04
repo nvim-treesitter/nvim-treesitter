@@ -1,24 +1,34 @@
-"break" @keyword
-"case" @conditional
-"const" @keyword
-"continue" @repeat
-"default" @keyword
-"do" @repeat
-"else" @conditional
-"enum" @keyword
-"extern" @keyword
-"for" @repeat
-"if" @conditional
-"inline" @keyword
-"return" @keyword
-"sizeof" @keyword
-"static" @keyword
-"struct" @keyword
-"switch" @keyword
-"typedef" @keyword
-"union" @keyword
-"volatile" @keyword
-"while" @repeat
+[ 
+  "const"
+  "default"
+  "enum"
+  "extern"
+  "inline"
+  "return"
+  "sizeof"
+  "static"
+  "struct"
+  "typedef"
+  "union"
+  "volatile"
+] @keyword
+
+[ 
+  "while"
+  "for"
+  "do"
+  "continue"
+  "break"
+] @repeat
+
+[
+ "if"
+ "else"
+ "case"
+ "switch" 
+] @conditional
+
+(conditional_expression [ "?" ":" ] @conditional)
 
 "#define" @constant.macro
 [
@@ -32,45 +42,38 @@
   (preproc_directive)
 ] @keyword
 
-"--" @operator
-"-" @operator
-"->" @operator
-"!=" @operator
-"*" @operator
-"/" @operator
-"&" @operator
-"&&" @operator
-"+" @operator
-"++" @operator
-"<" @operator
-"<=" @operator
-"==" @operator
-"=" @operator
-"~" @operator
-">" @operator
-">=" @operator
-"!" @operator
-"||" @operator
-(conditional_expression [ "?" ":" ] @conditional)
+[
+  "--"
+  "-"
+  "->"
+  "!="
+  "*"
+  "/"
+  "&"
+  "&&"
+  "+"
+  "++"
+  "<"
+  "<="
+  "=="
+  "="
+  "~"
+  ">"
+  ">="
+  "!"
+  "||"
 
-"-=" @operator
-"+=" @operator
-"*=" @operator
-"/=" @operator
-"|=" @operator
-"&=" @operator
+  "-="
+  "+="
+  "*="
+  "/="
+  "|="
+  "&="
+] @operator
 
-"." @punctuation.delimiter
-";" @punctuation.delimiter
-":" @punctuation.delimiter
-"," @punctuation.delimiter
+[ "." ";" ":" "," ] @punctuation.delimiter
 
-"(" @punctuation.bracket
-")" @punctuation.bracket
-"[" @punctuation.bracket
-"]" @punctuation.bracket
-"{" @punctuation.bracket
-"}" @punctuation.bracket
+[ "(" ")" "[" "]" "{" "}"] @punctuation.bracket
 
 (string_literal) @string
 (system_lib_string) @string
