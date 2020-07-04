@@ -35,7 +35,7 @@ function M.smart_rename(bufnr)
   end
 
   for _, node in ipairs(nodes_to_rename) do
-    local start_row, start_col, end_row, end_col = node:range() 
+    local start_row, start_col, _, end_col = node:range()
     local line = api.nvim_buf_get_lines(bufnr, start_row, start_row + 1, false)[1]
 
     if line then
@@ -56,10 +56,9 @@ function M.attach(bufnr)
 end
 
 function M.detach(bufnr)
-  local buf = bufnr or api.nvim_get_current_buf()
   local config = configs.get_module('refactor.smart_rename')
 
-  for fn_name, mapping in pairs(config.keymaps) do
+  for _, mapping in pairs(config.keymaps) do
     api.nvim_buf_del_keymap(bufnr, 'n', mapping)
   end
 end

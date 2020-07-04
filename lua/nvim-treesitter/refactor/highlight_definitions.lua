@@ -1,7 +1,6 @@
 -- This module highlights reference usages and the corresponding
 -- definition on cursor hold.
 
-local parsers = require'nvim-treesitter.parsers'
 local ts_utils = require'nvim-treesitter.ts_utils'
 local locals = require'nvim-treesitter.locals'
 local api = vim.api
@@ -17,7 +16,7 @@ function M.highlight_usages(bufnr)
   local node_at_point = ts_utils.get_node_at_cursor()
   local references = locals.get_references(bufnr)
 
-  if not node_at_point or not vim.tbl_contains(references, node_at_point) then 
+  if not node_at_point or not vim.tbl_contains(references, node_at_point) then
     return
   end
 
@@ -29,9 +28,9 @@ function M.highlight_usages(bufnr)
 
     if usage_node ~= node_at_point then
       api.nvim_buf_add_highlight(
-        bufnr, 
-        usage_namespace, 
-        'TSDefinitionUsage', 
+        bufnr,
+        usage_namespace,
+        'TSDefinitionUsage',
         start_row,
         start_col,
         end_col)
@@ -42,9 +41,9 @@ function M.highlight_usages(bufnr)
     local start_row, start_col, _, end_col = def_node:range()
 
     api.nvim_buf_add_highlight(
-      bufnr, 
-      usage_namespace, 
-      'TSDefinition', 
+      bufnr,
+      usage_namespace,
+      'TSDefinition',
       start_row,
       start_col,
       end_col)
@@ -60,9 +59,11 @@ function M.attach(bufnr)
 
   cmd(string.format('augroup NvimTreesitterUsages_%d', bufnr))
   cmd 'au!'
+  -- luacheck: push ignore 631
   cmd(string.format([[autocmd CursorHold <buffer=%d> lua require'nvim-treesitter.refactor.highlight_definitions'.highlight_usages(%d)]], bufnr, bufnr))
   cmd(string.format([[autocmd CursorMoved <buffer=%d> lua require'nvim-treesitter.refactor.highlight_definitions'.clear_usage_highlights(%d)]], bufnr, bufnr))
   cmd(string.format([[autocmd InsertEnter <buffer=%d> lua require'nvim-treesitter.refactor.highlight_definitions'.clear_usage_highlights(%d)]], bufnr, bufnr))
+  -- luacheck: pop
   cmd 'augroup END'
 end
 

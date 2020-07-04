@@ -130,7 +130,7 @@ local function disable_mod_conf_autocmd(mod, lang)
 
   if not config_mod or not M.is_enabled(mod, lang) then return end
 
-  local cmd = string.format("lua require'nvim-treesitter.%s'.attach()", mod)
+  --local cmd = string.format("lua require'nvim-treesitter.%s'.attach()", mod)
   -- TODO(kyazdani): detach the correct autocmd... doesn't work when using %s, cmd
   for _, ft in pairs(parsers.lang_to_ft(lang)) do
     api.nvim_command(string.format("autocmd! NvimTreesitter FileType %s", ft))
@@ -260,7 +260,7 @@ function M.setup_module(mod, data, mod_name)
       end
     end
   elseif type(data) == 'table' and type(mod) == 'table' then
-    for key, value in pairs(data) do 
+    for key, value in pairs(data) do
       M.setup_module(mod[key], value, key)
     end
   end
@@ -289,7 +289,7 @@ end
 -- A module should contain an 'is_supported' function.
 -- @param mod the module table
 function M.is_module(mod)
-  return type(mod) == 'table' and type(mod.is_supported) == 'function' 
+  return type(mod) == 'table' and type(mod.is_supported) == 'function'
 end
 
 return M
