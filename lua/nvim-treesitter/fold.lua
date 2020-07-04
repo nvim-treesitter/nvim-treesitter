@@ -1,4 +1,3 @@
-local api = vim.api
 local parsers = require'nvim-treesitter.parsers'
 
 local M = {}
@@ -21,7 +20,7 @@ function M.get_fold_indic(lnum)
 
   local parser = parsers.get_parser()
 
-  local multiline_here, level = smallest_multiline_containing(parser:parse():root(), 0)
+  local _, level = smallest_multiline_containing(parser:parse():root(), 0)
 
   return tostring(level)
 end

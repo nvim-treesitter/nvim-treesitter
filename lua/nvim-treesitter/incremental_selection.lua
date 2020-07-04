@@ -58,7 +58,7 @@ local function select_incremental(get_parent)
       return
     end
 
-    node = get_parent(nodes[#nodes])
+    local node = get_parent(nodes[#nodes])
     if not node then return end
 
     if node ~= nodes[#nodes] then

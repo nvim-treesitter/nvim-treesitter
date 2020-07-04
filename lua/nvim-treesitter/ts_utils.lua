@@ -219,10 +219,9 @@ end
 -- @param bufnr buffer
 -- @returns the definition node and the definition nodes scope node
 function M.find_definition(node, bufnr)
-  local bufnr = bufnr or api.nvim_get_current_buf()  
+  local bufnr = bufnr or api.nvim_get_current_buf()
   local node_text = M.get_node_text(node)[1]
   local current_scope = M.containing_scope(node)
-  local _, _, node_start = node:start()
   local matching_def_nodes = {}
 
   -- If a scope wasn't found then use the root node
@@ -234,7 +233,7 @@ function M.find_definition(node, bufnr)
   for _, def in ipairs(locals.get_definitions(bufnr)) do
     for _, def_node in ipairs(M.get_local_nodes(def)) do
       if M.get_node_text(def_node)[1] == node_text then
-        table.insert(matching_def_nodes, def_node)       
+        table.insert(matching_def_nodes, def_node)
       end
     end
   end
@@ -258,7 +257,7 @@ end
 function M.get_local_nodes(local_def)
   local result = {}
 
-  M.recurse_local_nodes(local_def, function(_, node) 
+  M.recurse_local_nodes(local_def, function(_, node)
     table.insert(result, node)
   end)
 
@@ -281,9 +280,9 @@ function M.recurse_local_nodes(local_def, accumulator, full_match, last_match)
   else
     for match_key, def in pairs(local_def) do
       M.recurse_local_nodes(
-        def, 
-        accumulator, 
-        full_match and (full_match..'.'..match_key) or match_key, 
+        def,
+        accumulator,
+        full_match and (full_match..'.'..match_key) or match_key,
         match_key)
     end
   end

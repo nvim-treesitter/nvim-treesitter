@@ -2,7 +2,6 @@
 -- Locals are a generalization of definition and scopes
 -- its the way nvim-treesitter uses to "understand" the code
 local api = vim.api
-local ts = vim.treesitter
 
 local queries = require'nvim-treesitter.query'
 local parsers = require'nvim-treesitter.parsers'

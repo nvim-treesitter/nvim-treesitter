@@ -7,18 +7,6 @@ local api = vim.api
 
 local M = {}
 
-local function node_to_qf(node, kind)
-  local lnum, col, _ = def.node:start()
-
-  return {
-    bufnr = bufnr,
-    lnum = lnum + 1,
-    col = col + 1,
-    text = ts_utils.get_node_text(def.node)[1] or '',
-    kind = kind
-  }
-end
-
 function M.goto_definition(bufnr)
   local bufnr = bufnr or api.nvim_get_current_buf()
   local node_at_point = ts_utils.get_node_at_cursor()
@@ -70,10 +58,9 @@ function M.attach(bufnr)
 end
 
 function M.detach(bufnr)
-  local buf = bufnr or api.nvim_get_current_buf()
   local config = configs.get_module('refactor.navigation')
 
-  for fn_name, mapping in pairs(config.keymaps) do
+  for _, mapping in pairs(config.keymaps) do
     api.nvim_buf_del_keymap(bufnr, 'n', mapping)
   end
 end
