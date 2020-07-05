@@ -1,4 +1,5 @@
 [![Gitter](https://badges.gitter.im/nvim-treesitter/community.svg)](https://gitter.im/nvim-treesitter/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Build Status](https://travis-ci.com/nvim-treesitter/nvim-treesitter.svg?branch=master)](https://travis-ci.com/nvim-treesitter/nvim-treesitter)
 # nvim-treesitter
 Treesitter configurations and abstraction layer for Neovim.
 
