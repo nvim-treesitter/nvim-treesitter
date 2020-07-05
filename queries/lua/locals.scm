@@ -8,12 +8,7 @@
    (field_expression object:(*) @definition.associated (property_identifier) @definition.var)))
 
 ;; Parameters
-((local_function
-   (parameters (identifier) @definition.var)))
-((function
-   (parameters (identifier) @definition.var)))
-((function_definition
-   (parameters (identifier) @definition.var)))
+(parameters (identifier) @definition.var)
 
 ;; Loops
 ((loop_expression
@@ -32,6 +27,7 @@
 
 ((local_function
    (identifier) @definition.function) @scope)
+(function_definition) @scope
 
 ((if_statement) @scope)
 ((for_in_statement) @scope)
