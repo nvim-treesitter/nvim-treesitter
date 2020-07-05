@@ -2,25 +2,31 @@
 
 ;;; Builtins
 ;; Keywords
+(
+  [
+  "if"
+  "then"
+  "else"
+  "elseif"
+   ] @conditional
+  "end" @confitional
+)
+
+
+(
+  [
+  "do"
+  "while"
+  "repeat"
+  "for"
+  ] @repeat
+
+  "end" @repeat
+)
 
 [
-"if"
-"then"
-"else"
-"elseif"
- ] @conditional
-
-[
-"do"
-"while"
-"repeat"
-"for"
 "in"
-] @repeat
-
-[
 "local"
-"end"
 "return"
 (break_statement)
 "goto"
@@ -63,7 +69,7 @@
 (spread) @constant ;; "..."
 
 ;; Nodes
-(_ "function" @function "end" @function) ;; Any node that has both funtion and end in it
+("function" @function "end" @function) ;; Any node that has both funtion and end in it
 
 (table ["{" "}"] @constructor)
 (comment) @comment
