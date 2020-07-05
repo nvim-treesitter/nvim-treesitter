@@ -8,4 +8,4 @@ before_install:
   - sudo luarocks install luacheck
 
 script:
-  - luacheck **/**/*.lua --codes
+  - ./scripts/style-check.sh
