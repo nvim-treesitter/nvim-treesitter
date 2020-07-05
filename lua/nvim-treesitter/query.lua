@@ -81,10 +81,24 @@ local function check_magic(str)
   return '\\v'..str
 end
 
+local function compile_regex(regex)
+  if not M._regex_cache then
+    M._regex_cache = {}
+  end
+  if not M._regex_cache[regex] then
+    local re = vim.regex(check_magic(regex))
+    M._regex_cache[regex] = re
+    return re
+  else
+    return M._regex_cache[regex]
+  end
+end
+
 local function strip_beginning(lines, regex)
   local current_col = 0
   local current_line = 0
-  local re = vim.regex(check_magic('^('..regex..')'))
+
+  local re = compile_regex('^('..regex..')')
   for linenr, line in ipairs(lines) do
     current_line = linenr
     local match_start, match_end = re:match_str(line)
@@ -104,7 +118,7 @@ end
 local function strip_end(lines, regex)
   local current_col = 0
   local line_diff = 0
-  local re = vim.regex(check_magic('('..regex..')$'))
+  local re = compile_regex('('..regex..')$')
   for linenr=#lines, 1, -1 do
     local line = lines[linenr]
     line_diff = #lines - linenr
@@ -172,37 +186,41 @@ function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
             insert_to_path(prepared_match, split(pred[2]), pred[3])
           end
           if pred[1] == "strip!" and #pred == 3 then
-            local query_name = query.captures[pred[2]]
+            local capture_name = query.captures[pred[2]]
             local regex = pred[3]
 
-            local node = utils.get_at_path(prepared_match, query_name..'.node')
-            local ts_utils = require 'nvim-treesitter.ts_utils'
-            local node_lines = ts_utils.get_node_text(node, bufnr)
-            local start_line, start_col, end_line, end_col = node:range()
+            local function process_range()
+              local node = utils.get_at_path(prepared_match, capture_name..'.node')
+              local ts_utils = require 'nvim-treesitter.ts_utils'
+              local node_lines = ts_utils.get_node_text(node, bufnr)
+              local start_line, start_col, end_line, _ = node:range()
 
-            local strip_line, strip_col = strip_beginning(node_lines, regex)
-            start_line = start_line + strip_line
-            if strip_line == 0 then
-              start_col = start_col + strip_col
-            else
-              start_col =strip_col
-            end
-            local strip_line, strip_col = strip_end(node_lines, regex)
-            end_line = end_line - strip_line
-            if strip_line == 0 then
-              end_col = end_col - strip_col
-            else
-              end_col = strip_col
-            end
+              local strip_line, strip_col = strip_beginning(node_lines, regex)
+              start_line = start_line + strip_line
+              if strip_line == 0 then
+                start_col = start_col + strip_col
+              else
+                start_col = strip_col
+              end
+              local strip_line, strip_col = strip_end(node_lines, regex)
+              end_line = end_line - strip_line
+              local end_col
+              if strip_line == 0 then
+                end_col = strip_col
+              else
+                end_col = strip_col + (end_line == start_line and start_col or 0)
+              end
 
-            end_line = math.max(end_line, start_line)
-            if end_line == start_line then
-              end_col = math.max(end_col, start_col)
+              end_line = math.max(end_line, start_line)
+              if end_line == start_line then
+                end_col = math.max(end_col, start_col)
+              end
+              return {start_line, start_col, end_line, end_col}
             end
 
             insert_to_path(prepared_match,
-                           split(query_name..'.processed_range'),
-                           {start_line, start_col, end_line, end_col})
+                           split(capture_name..'.process_range'),
+                           process_range)
           end
         end
       end
