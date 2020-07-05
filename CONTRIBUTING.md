@@ -11,6 +11,18 @@ As you know, `nvim-treesitter` is roughly splitted in two parts :
 
 Depending on which part of the plugin you want to contribute to, please read the appropriate section.
 
+## Style Checks and Tests
+
+We haven't implemented any functionality tests yet. Feel free to contribute.
+However, we check code style with `luacheck`!
+Please install luacheck and activate our `pre-push` hook to automatically check style before
+every push:
+
+```bash
+luarocks install luacheck
+ln -s ../../scripts/pre-push .git/hooks/pre-push
+```
+
 ## Parser configurations
 
 Contributing to parser configurations is basically modifying one of the `queries/*/*.scm`.
