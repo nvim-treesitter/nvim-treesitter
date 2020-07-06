@@ -13,7 +13,7 @@
   "volatile"
 ] @keyword
 
-[ 
+[
   "while"
   "for"
   "do"
@@ -25,10 +25,8 @@
  "if"
  "else"
  "case"
- "switch" 
+ "switch"
 ] @conditional
-
-(conditional_expression [ "?" ":" ] @conditional)
 
 "#define" @constant.macro
 [
@@ -43,24 +41,30 @@
 ] @keyword
 
 [
-  "--"
+  "="
+
   "-"
-  "->"
-  "!="
   "*"
   "/"
-  "&"
-  "&&"
   "+"
-  "++"
+
+  "~"
+  "|"
+  "&"
+  "<<"
+  ">>"
+
+  "->"
+
   "<"
   "<="
-  "=="
-  "="
-  "~"
-  ">"
   ">="
+  ">"
+  "=="
+  "!="
+
   "!"
+  "&&"
   "||"
 
   "-="
@@ -69,9 +73,19 @@
   "/="
   "|="
   "&="
+  "--"
+  "++"
 ] @operator
 
+[
+ (true)
+ (false)
+] @boolean
+
 [ "." ";" ":" "," ] @punctuation.delimiter
+
+(conditional_expression [ "?" ":" ] @conditional)
+
 
 [ "(" ")" "[" "]" "{" "}"] @punctuation.bracket
 
@@ -96,12 +110,17 @@
 
 (field_identifier) @property
 (statement_identifier) @label
-(type_identifier) @type
-(primitive_type) @type
-(sized_type_specifier) @type
 
-((identifier) @type
- (#match? @type "^[A-Z]"))
+[
+(type_identifier)
+(primitive_type)
+(sized_type_specifier)
+(type_descriptor)
+ ] @type
+
+(declaration type: [(identifier) (type_identifier)] @type)
+(cast_expression type: [(identifier) (type_identifier)] @type)
+(sizeof_expression value: (parenthesized_expression (identifier) @type))
 
 ((identifier) @constant
  (#match? @constant "^[A-Z][A-Z0-9_]+$"))
