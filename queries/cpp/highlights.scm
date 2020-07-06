@@ -20,6 +20,8 @@
 
 (namespace_identifier) @constant
 
+((identifier) @type (#match? @type "^[A-Z]"))
+
 ((namespace_identifier) @type
                         (#match? @type "^[A-Z]"))
 ((namespace_identifier) @constant
@@ -77,7 +79,7 @@
  "noexcept"
  "throw"
 ] @exception
- 
+
 
 [
  "class"
