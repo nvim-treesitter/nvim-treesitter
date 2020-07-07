@@ -1,0 +1,11 @@
+
+language: c
+dist: bionic
+before_install:
+  - sudo apt-get update
+  - sudo add-apt-repository universe
+  - sudo apt install luarocks -y
+  - sudo luarocks install luacheck
+
+script:
+  - ./scripts/style-check.sh

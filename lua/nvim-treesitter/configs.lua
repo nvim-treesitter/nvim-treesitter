@@ -1,214 +1,8 @@
 local api = vim.api
 
 local queries = require'nvim-treesitter.query'
+local parsers = require'nvim-treesitter.parsers'
 local utils = require'nvim-treesitter.utils'
-
-local parsers = {}
-
-parsers.javascript = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-javascript",
-    files = { "src/parser.c", "src/scanner.c" },
-  }
-}
-
-parsers.c = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-c",
-    files = { "src/parser.c" }
-  }
-}
-
-parsers.cpp = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-cpp",
-    files = { "src/parser.c", "src/scanner.cc" }
-  }
-}
-
-parsers.rust = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-rust",
-    files = { "src/parser.c", "src/scanner.c" },
-  }
-}
-
-parsers.lua = {
-  install_info = {
-    url = "https://github.com/nvim-treesitter/tree-sitter-lua",
-    files = { "src/parser.c", "src/scanner.cc" }
-  }
-}
-
-parsers.python = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-python",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parsers.go = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-go",
-    files = { "src/parser.c" },
-  }
-}
-
-parsers.ruby = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-ruby",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parsers.bash = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-bash",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parsers.php = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-php",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parsers.java = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-java",
-    files = { "src/parser.c" },
-  }
-}
-
-parsers.html = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-html",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parsers.julia = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-julia",
-    files = { "src/parser.c", "src/scanner.c" },
-  }
-}
-
-parsers.json = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-json",
-    files = { "src/parser.c" },
-  }
-}
-
-parsers.css = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-css",
-    files = { "src/parser.c", "src/scanner.c" },
-  }
-}
-
-parsers.ocaml = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-ocaml",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parsers.swift = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-swift",
-    files = { "src/parser.c" },
-  }
-}
-
-parsers.csharp = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-c-sharp",
-    files = { "src/parser.c", "src/scanner.c" },
-  }
-}
-
-parsers.typescript = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-typescript",
-    files = { "src/parser.c", "src/scanner.c" },
-    location = "tree-sitter-typescript/typescript"
-  }
-}
-
-parsers.tsx = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-typescript",
-    files = { "src/parser.c", "src/scanner.c" },
-    location = "tree-sitter-tsx/tsx"
-  }
-}
-
-parsers.scala = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-scala",
-    files = { "src/parser.c", "src/scanner.c" },
-  }
-}
-
-parsers.haskell = {
-  install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-haskell",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parsers.markdown = {
-  install_info = {
-    url = "https://github.com/ikatyang/tree-sitter-markdown",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parsers.toml = {
-  install_info = {
-    url = "https://github.com/ikatyang/tree-sitter-toml",
-    files = { "src/parser.c", "src/scanner.c" },
-  }
-}
-
-parsers.vue = {
-  install_info = {
-    url = "https://github.com/ikatyang/tree-sitter-vue",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parsers.elm = {
-  install_info = {
-    url = "https://github.com//razzeee/tree-sitter-elm",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parsers.yaml = {
-  install_info = {
-    url = "https://github.com/ikatyang/tree-sitter-yaml",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parsers.nix = {
-  install_info = {
-    url = "https://github.com/cstrahan/tree-sitter-nix",
-    files = { "src/parser.c", "src/scanner.cc" },
-  }
-}
-
-parsers.regex = {
-    install_info = {
-        url = "https://github.com/tree-sitter/tree-sitter-regex",
-        files = { "src/parser.c" }
-    }
-}
 
 -- @enable can be true or false
 -- @disable is a list of languages, only relevant if enable is true
@@ -219,9 +13,7 @@ local config = {
     highlight = {
       enable = false,
       disable = {},
-      is_supported = function(ft)
-        return queries.get_query(ft, 'highlights') ~= nil
-      end
+      is_supported = queries.has_highlights
     },
     incremental_selection = {
       enable = false,
@@ -232,9 +24,31 @@ local config = {
         scope_incremental="grc",
         node_decremental="grm"
       },
-      is_supported = function(ft)
-        return queries.get_query(ft, 'locals')
-      end
+      is_supported = queries.has_locals
+    },
+    refactor = {
+      highlight_definitions = {
+        enable = false,
+        disable = {},
+        is_supported = queries.has_locals
+      },
+      smart_rename = {
+        enable = false,
+        disable = {},
+        is_supported = queries.has_locals,
+        keymaps = {
+          smart_rename = "grr"
+        }
+      },
+      navigation = {
+        enable = false,
+        disable = {},
+        is_supported = queries.has_locals,
+        keymaps = {
+          goto_definition = "gnd",
+          list_definitions = "gnD"
+        }
+      }
     }
   },
   ensure_installed = nil
@@ -242,83 +56,125 @@ local config = {
 
 local M = {}
 
-local function enable_module(mod, bufnr, ft)
+local function enable_module(mod, bufnr, lang)
   local bufnr = bufnr or api.nvim_get_current_buf()
-  local ft = ft or api.nvim_buf_get_option(bufnr, 'ft')
-  if not parsers[ft] or not config.modules[mod] then
+  local lang = lang or parsers.ft_to_lang(api.nvim_buf_get_option(bufnr, 'ft'))
+
+  if not parsers.list[lang] or not M.get_module(mod) then
     return
   end
 
   local loaded_mod = require(string.format("nvim-treesitter.%s", mod))
-  loaded_mod.attach(bufnr, ft)
+  loaded_mod.attach(bufnr, lang)
 end
 
-local function enable_mod_conf_autocmd(mod, ft)
-  if not config.modules[mod] or M.is_enabled(mod, ft) then return end
+local function enable_mod_conf_autocmd(mod, lang)
+  local config_mod = M.get_module(mod)
+
+  if not config_mod or M.is_enabled(mod, lang) then return end
 
   local cmd = string.format("lua require'nvim-treesitter.%s'.attach()", mod)
-  api.nvim_command(string.format("autocmd FileType %s %s", ft, cmd))
-  for i, parser in pairs(config.modules[mod].disable) do
-    if parser == ft then
-      table.remove(config.modules[mod].disable, i)
+  for _, ft in pairs(parsers.lang_to_ft(lang)) do
+    api.nvim_command(string.format("autocmd NvimTreesitter FileType %s %s", ft, cmd))
+  end
+  for i, parser in pairs(config_mod.disable) do
+    if parser == lang then
+      table.remove(config_mod.disable, i)
       break
     end
   end
 end
 
-local function enable_all(mod, ft)
-  if not config.modules[mod] then return end
+local function enable_all(mod, lang)
+  local config_mod = M.get_module(mod)
+
+  if not config_mod then return end
 
   for _, bufnr in pairs(api.nvim_list_bufs()) do
-    if not ft or api.nvim_buf_get_option(bufnr, 'ft') == ft then
-      enable_module(mod, bufnr, ft)
+    local ft = api.nvim_buf_get_option(bufnr, 'ft')
+    if not lang or parsers.lang_match_ft(lang, ft) then
+      enable_module(mod, bufnr, lang)
     end
   end
-  if ft then
-    if utils.has_parser(ft) then
-      enable_mod_conf_autocmd(mod, ft)
+  if lang then
+    if parsers.has_parser(lang) then
+      enable_mod_conf_autocmd(mod, lang)
     end
   else
-    for _, ft in pairs(M.available_parsers()) do
-      if utils.has_parser(ft) then
-        enable_mod_conf_autocmd(mod, ft)
+    for _, lang in pairs(parsers.available_parsers()) do
+      if parsers.has_parser(lang) then
+        enable_mod_conf_autocmd(mod, lang)
       end
     end
   end
-  config.modules[mod].enable = true
+  config_mod.enable = true
 end
 
-local function disable_module(mod, bufnr, ft)
+local function disable_module(mod, bufnr, lang)
   local bufnr = bufnr or api.nvim_get_current_buf()
-  local ft = ft or api.nvim_buf_get_option(bufnr, 'ft')
-  if not parsers[ft] or not config.modules[mod] then
+  local lang = lang or parsers.ft_to_lang(api.nvim_buf_get_option(bufnr, 'ft'))
+  if not lang then
+    return
+  end
+
+  if not parsers.list[lang] or not M.get_module(mod) then
     return
   end
 
   local loaded_mod = require(string.format("nvim-treesitter.%s", mod))
-  loaded_mod.detach(bufnr, ft)
+  loaded_mod.detach(bufnr)
 end
 
-local function disable_mod_conf_autocmd(mod, ft)
-  if not config.modules[mod] or not M.is_enabled(mod, ft) then return end
+local function disable_mod_conf_autocmd(mod, lang)
+  local config_mod = M.get_module(mod)
 
-  api.nvim_command(string.format("autocmd! FileType %s", ft))
-  table.insert(config.modules[mod].disable, ft)
+  if not config_mod or not M.is_enabled(mod, lang) then return end
+
+  --local cmd = string.format("lua require'nvim-treesitter.%s'.attach()", mod)
+  -- TODO(kyazdani): detach the correct autocmd... doesn't work when using %s, cmd
+  for _, ft in pairs(parsers.lang_to_ft(lang)) do
+    api.nvim_command(string.format("autocmd! NvimTreesitter FileType %s", ft))
+  end
+  table.insert(config_mod.disable, lang)
 end
 
-local function disable_all(mod, ft)
+local function disable_all(mod, lang)
   for _, bufnr in pairs(api.nvim_list_bufs()) do
-    if not ft or api.nvim_buf_get_option(bufnr, 'ft') == ft then
-      disable_module(mod, bufnr, ft)
+    local ft = api.nvim_buf_get_option(bufnr, 'ft')
+    if not lang or parsers.lang_match_ft(lang, ft) then
+      disable_module(mod, bufnr, lang)
     end
   end
-  if ft then
-    disable_mod_conf_autocmd(mod, ft)
+  if lang then
+    disable_mod_conf_autocmd(mod, lang)
   else
-    for _, ft in pairs(M.available_parsers()) do
-      disable_mod_conf_autocmd(mod, ft)
+    for _, lang in pairs(parsers.available_parsers()) do
+      disable_mod_conf_autocmd(mod, lang)
     end
-    config.modules[mod].enable = false
+
+    local config_mod = M.get_module(mod)
+
+    if config_mod then
+      config_mod.enable = false
+    end
+  end
+end
+
+-- Recurses trough all modules including submodules
+-- @param accumulator function called for each module
+-- @param root root configuration table to start at
+-- @param path prefix path
+local function recurse_modules(accumulator, root, path)
+  local root = root or config.modules
+
+  for name, module in pairs(root) do
+    local new_path = path and (path..'.'..name) or name
+
+    if M.is_module(module) then
+      accumulator(name, module, new_path)
+    elseif type(module) == 'table' then
+      recurse_modules(accumulator, module, new_path)
+    end
   end
 end
 
@@ -328,51 +184,47 @@ M.commands = {
     args = {
       "-nargs=1",
       "-complete=custom,v:lua.ts_available_modules"
-    },
-    description = '`:TSBufEnable module_name` enable a specified module on the current buffer'
+    }
   },
   TSBufDisable = {
     run = disable_module,
     args = {
       "-nargs=1",
       "-complete=custom,v:lua.ts_available_modules"
-    },
-    description = '`:TSBufDisable module_name` disable a specified module on the current buffer'
+    }
   },
   TSEnableAll = {
     run = enable_all,
     args = {
       "-nargs=+",
       "-complete=custom,v:lua.ts_available_modules"
-    },
-    description = '`:TSEnableAll module_name (filetype)` enables a specified module on all buffers. If filetype is specified, enable only for specified filetype'
+    }
   },
   TSDisableAll = {
     run = disable_all,
     args = {
       "-nargs=+",
       "-complete=custom,v:lua.ts_available_modules"
-    },
-    description = '`:TSDisableAll module_name (filetype)` disables a specified module on all buffers. If filetype is specified, disable only for specified filetype'
+    }
   },
 }
 
 -- @param mod: module (string)
 -- @param ft: filetype (string)
-function M.is_enabled(mod, ft)
-  if not M.get_parser_configs()[ft] or not utils.has_parser(ft) then
+function M.is_enabled(mod, lang)
+  if not parsers.list[lang] or not parsers.has_parser(lang) then
     return false
   end
 
-  local module_config = config.modules[mod]
+  local module_config = M.get_module(mod)
   if not module_config then return false end
 
-  if not module_config.enable or not module_config.is_supported(ft) then
+  if not module_config.enable or not module_config.is_supported(lang) then
     return false
   end
 
   for _, parser in pairs(module_config.disable) do
-    if ft == parser then return false end
+    if lang == parser then return false end
   end
 
   return true
@@ -381,42 +233,63 @@ end
 function M.setup(user_data)
   if not user_data then return end
 
-  for mod, data in pairs(user_data) do
-    if config.modules[mod] then
-      if type(data.enable) == 'boolean' then
-        config.modules[mod].enable = data.enable
-      end
-      if type(data.disable) == 'table' then
-        config.modules[mod].disable = data.disable
-      end
-      if config.modules[mod].keymaps and type(data.keymaps) == 'table' then
-        for f, map in pairs(data.keymaps) do
-          if config.modules[mod].keymaps[f] then
-            config.modules[mod].keymaps[f] = map
-          end
+  M.setup_module(config.modules, user_data)
+end
+
+-- Sets up a single module or all submodules of a group.
+-- Note, this method is recursive.
+-- @param mod the module or group of modules
+-- @param data user defined configuration for the module
+-- @param mod_name name of the module if it exists
+function M.setup_module(mod, data, mod_name)
+  if mod_name == 'ensure_installed' then
+    config.ensure_installed = data
+    require'nvim-treesitter.install'.ensure_installed(data)
+  elseif M.is_module(mod) then
+    if type(data.enable) == 'boolean' then
+      mod.enable = data.enable
+    end
+    if type(data.disable) == 'table' then
+      mod.disable = data.disable
+    end
+    if mod.keymaps and type(data.keymaps) == 'table' then
+      for f, map in pairs(data.keymaps) do
+        if mod.keymaps[f] then
+          mod.keymaps[f] = map
         end
       end
-    elseif mod == 'ensure_installed' then
-      config.ensure_installed = data
-      require'nvim-treesitter.install'.ensure_installed(data)
+    end
+  elseif type(data) == 'table' and type(mod) == 'table' then
+    for key, value in pairs(data) do
+      M.setup_module(mod[key], value, key)
     end
   end
 end
 
-function M.get_parser_configs()
-  return parsers
-end
-
-function M.available_parsers()
-  return vim.tbl_keys(parsers)
-end
-
 function M.available_modules()
-  return vim.tbl_keys(config.modules)
+  local modules = {}
+
+  recurse_modules(function(_, _, path)
+    table.insert(modules, path)
+  end)
+
+  return modules
 end
 
-function M.get_module(mod)
-  return config.modules[mod]
+-- Gets a module config by path
+-- @param mod_path path to the module
+-- @returns the module or nil
+function M.get_module(mod_path)
+  local mod = utils.get_at_path(config.modules, mod_path)
+
+  return M.is_module(mod) and mod or nil
+end
+
+-- Determines whether the provided table is a module.
+-- A module should contain an 'is_supported' function.
+-- @param mod the module table
+function M.is_module(mod)
+  return type(mod) == 'table' and type(mod.is_supported) == 'function'
 end
 
 return M

@@ -20,10 +20,15 @@ Steps to reproduce the behavior:
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Output of `:checkhealth nvim_treesitter` ***
-```
+**Output of `:checkhealth nvim_treesitter`**
+
+<details>
+<code>
+
 Paste the output here
-```
+
+</code>
+</details>
 
 **Output of `nvim --version`**
 ```

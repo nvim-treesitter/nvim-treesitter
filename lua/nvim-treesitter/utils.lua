@@ -1,7 +1,6 @@
 local api = vim.api
 local fn = vim.fn
 local luv = vim.loop
-local ts = vim.treesitter
 
 local M = {}
 
@@ -45,23 +44,27 @@ function M.get_cache_dir()
   return nil, 'Invalid cache rights, $XDG_CACHE_HOME or /tmp should be read/write'
 end
 
-function M.has_parser(lang)
-  local lang = lang or api.nvim_buf_get_option(0, 'filetype')
-  return #api.nvim_get_runtime_file('parser/' .. lang .. '.so', false) > 0
+-- Gets a property at path
+-- @param tbl the table to access
+-- @param path the '.' seperated path
+-- @returns the value at path or nil
+function M.get_at_path(tbl, path)
+  local segments = vim.split(path, '.', true)
+  local result = tbl
+
+  for _, segment in ipairs(segments) do
+    if type(result) == 'table' then
+      result = result[segment]
+    end
+  end
+
+  return result
 end
 
-function M.get_parser(bufnr, lang)
-  if M.has_parser() then
-    local buf = bufnr or api.nvim_get_current_buf()
-    local lang = lang or api.nvim_buf_get_option(buf, 'ft')
-    if not M[buf] then
-      M[buf] = {}
-    end
-    if not M[buf][lang] then
-      M[buf][lang] = ts.get_parser(buf, lang)
-    end
-    return M[buf][lang]
-  end
+-- Prints a warning message
+-- @param text the text message
+function M.print_warning(text)
+  api.nvim_command(string.format([[echohl WarningMsg | echo "%s" | echohl None]], text))
 end
 
 return M

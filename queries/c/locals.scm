@@ -17,7 +17,7 @@
 (declaration
   declarator: (identifier) @definition.var)
 (enum_specifier
-  name: (*) @definition.type
+  name: (_) @definition.type
   (enumerator_list
     (enumerator name: (identifier) @definition.var)))
 
@@ -31,8 +31,11 @@
 (identifier) @reference
 
 ;; Scope
-(for_statement) @scope
-(if_statement) @scope
-(while_statement) @scope
-(translation_unit) @scope
-(function_definition) @scope
+[
+ (for_statement)
+ (if_statement)
+ (while_statement)
+ (translation_unit)
+ (function_definition)
+ (compound_statement) ; a block in curly braces
+] @scope

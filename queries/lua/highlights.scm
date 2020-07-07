@@ -2,57 +2,70 @@
 
 ;;; Builtins
 ;; Keywords
-"local" @keyword
-"if" @conditional
-"then" @conditional
-"else" @conditional
-"elseif" @conditional
-"end" @keyword
-"return" @keyword
-"do" @repeat
-"while" @repeat
-"repeat" @repeat
-"for" @repeat
-(break_statement) @keyword
-"goto" @keyword
+
+[
+"if"
+"then"
+"else"
+"elseif"
+ ] @conditional
+
+[
+"do"
+"while"
+"repeat"
+"for"
+"in"
+] @repeat
+
+[
+"local"
+"end"
+"return"
+(break_statement)
+"goto"
+] @keyword
 
 ;; Operators
-"~=" @operator
-"==" @operator
-"<=" @operator
-">=" @operator
-"not" @operator
-"and" @operator
-"or" @operator
-"<" @operator
-">" @operator
+[
+"~="
+"=="
+"<="
+">="
+"not"
+"and"
+"or"
+"<"
+">"
+"+"
+"-"
+"%"
+"/"
+"//"
+"*"
+"^"
+"&"
+"~"
+"|"
+">>"
+"<<"
+".."
+"#"
+ ] @operator
 
-"+" @operator
-"-" @operator
-"%" @operator
-"/" @operator
-"//" @operator
-"*" @operator
-"^" @operator
-"&" @operator
-"~" @operator
-"|" @operator
-">>" @operator
-"<<" @operator
-".." @operator
-"#" @operator
 
 ;; Constants
-(false) @boolean
-(true) @boolean
+[
+(false)
+(true)
+] @boolean
 (nil) @constant.builtin
 (spread) @constant ;; "..."
 
 ;; Nodes
-(function "function" @function "end" @function)
-(function_definition "function" @function "end" @function)
-(local_function "function" @function "end" @function)
-(table "{" @constructor "}" @constructor)
+(_ "function" @function "end" @function) ;; Any node that has both funtion and end in it
+
+(table ["{" "}"] @constructor)
 (comment) @comment
 (string) @string
 (number) @number

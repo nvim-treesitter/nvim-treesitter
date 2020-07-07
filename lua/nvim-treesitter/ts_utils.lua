@@ -1,6 +1,7 @@
 local api = vim.api
 
 local locals = require'nvim-treesitter.locals'
+local parsers = require'nvim-treesitter.parsers'
 
 local M = {}
 
@@ -14,14 +15,16 @@ function M.get_node_text(node, bufnr)
 
   -- We have to remember that end_col is end-exclusive
   local start_row, start_col, end_row, end_col = node:range()
+
   if start_row ~= end_row then
     local lines = api.nvim_buf_get_lines(bufnr, start_row, end_row+1, false)
     lines[1] = string.sub(lines[1], start_col+1)
     lines[#lines] = string.sub(lines[#lines], 1, end_col)
     return lines
   else
-    local line = api.nvim_buf_get_lines(bufnr, start_row, start_row+1, true)[1]
-    return { string.sub(line, start_col+1, end_col) }
+    local line = api.nvim_buf_get_lines(bufnr, start_row, start_row+1, false)[1]
+    -- If line is nil then the line is empty
+    return line and { string.sub(line, start_col+1, end_col) } or {}
   end
 end
 
@@ -202,6 +205,123 @@ function M.previous_scope(node)
     elseif not is_prev and vim.tbl_contains(scopes, children[i]) then
       return children[i]
     end
+  end
+end
+
+function M.get_node_at_cursor(winnr)
+  local cursor = api.nvim_win_get_cursor(winnr or 0)
+  local root = parsers.get_parser().tree:root()
+  return root:named_descendant_for_range(cursor[1]-1,cursor[2],cursor[1]-1,cursor[2])
+end
+
+-- Finds the definition node and it's scope node of a node
+-- @param node starting node
+-- @param bufnr buffer
+-- @returns the definition node and the definition nodes scope node
+function M.find_definition(node, bufnr)
+  local bufnr = bufnr or api.nvim_get_current_buf()
+  local node_text = M.get_node_text(node)[1]
+  local current_scope = M.containing_scope(node)
+  local matching_def_nodes = {}
+
+  -- If a scope wasn't found then use the root node
+  if current_scope == node then
+    current_scope = parsers.get_parser(bufnr).tree:root()
+  end
+
+  -- Get all definitions that match the node text
+  for _, def in ipairs(locals.get_definitions(bufnr)) do
+    for _, def_node in ipairs(M.get_local_nodes(def)) do
+      if M.get_node_text(def_node)[1] == node_text then
+        table.insert(matching_def_nodes, def_node)
+      end
+    end
+  end
+
+  -- Continue up each scope until we find the scope that contains the definition
+  while current_scope do
+    for _, def_node in ipairs(matching_def_nodes) do
+      if M.is_parent(current_scope, def_node) then
+        return def_node, current_scope
+      end
+    end
+    current_scope = M.containing_scope(current_scope:parent())
+  end
+
+  return node, parsers.get_parser(bufnr).tree:root()
+end
+
+-- Gets all nodes from a local list result.
+-- @param local_def the local list result
+-- @returns a list of nodes
+function M.get_local_nodes(local_def)
+  local result = {}
+
+  M.recurse_local_nodes(local_def, function(_, node)
+    table.insert(result, node)
+  end)
+
+  return result
+end
+
+-- Recurse locals results until a node is found.
+-- The accumulator function is given
+-- * The table of the node
+-- * The node
+-- * The full definition match `@definition.var.something` -> 'var.something'
+-- * The last definition match `@definition.var.something` -> 'something'
+-- @param The locals result
+-- @param The accumulator function
+-- @param The full match path to append to
+-- @param The last match
+function M.recurse_local_nodes(local_def, accumulator, full_match, last_match)
+  if local_def.node then
+    accumulator(local_def, local_def.node, full_match, last_match)
+  else
+    for match_key, def in pairs(local_def) do
+      M.recurse_local_nodes(
+        def,
+        accumulator,
+        full_match and (full_match..'.'..match_key) or match_key,
+        match_key)
+    end
+  end
+end
+
+-- Finds usages of a node in a given scope
+-- @param node the node to find usages for
+-- @param scope_node the node to look within
+-- @returns a list of nodes
+function M.find_usages(node, scope_node, bufnr)
+  local bufnr = bufnr or api.nvim_get_current_buf()
+  local node_text = M.get_node_text(node)[1]
+
+  if not node_text or #node_text < 1 then return {} end
+
+  local scope_node = scope_node or parsers.get_parser(bufnr).tree:root()
+  local references = locals.get_references(bufnr)
+  local usages = {}
+
+  M.recurse_tree(scope_node, function(iter_node, _, next)
+    if vim.tbl_contains(references, iter_node) and M.get_node_text(iter_node)[1] == node_text then
+      table.insert(usages, iter_node)
+    end
+    next()
+  end)
+
+  return usages
+end
+
+-- Recurses all child nodes of a tree.
+-- The callback is provided the child node, parent_node, and a callback to recurse into
+-- the child node. This allows for the ability to short circuit the recursion
+-- if we found what we are looking for, we can then stop the recursion or skip a node
+-- if need be.
+-- @param tree the node root
+-- @param cb the callback for each node
+function M.recurse_tree(tree, cb)
+  for _, child in ipairs(M.get_named_children(tree)) do
+    cb(child, tree, function(next_node) M.recurse_tree(next_node or child, cb) end)
   end
 end
 

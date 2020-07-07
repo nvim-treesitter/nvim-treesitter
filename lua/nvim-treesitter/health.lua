@@ -2,13 +2,10 @@ local api = vim.api
 local fn = vim.fn
 
 local queries = require'nvim-treesitter.query'
-local locals = require'nvim-treesitter.locals'
-local highlight = require'nvim-treesitter.highlight'
-local configs = require'nvim-treesitter.configs'
+local parsers = require'nvim-treesitter.parsers'
 
 local health_start = vim.fn["health#report_start"]
 local health_ok = vim.fn['health#report_ok']
-local health_info = vim.fn['health#report_info']
 local health_warn = vim.fn['health#report_warn']
 local health_error = vim.fn['health#report_error']
 
@@ -62,7 +59,7 @@ function M.checkhealth()
 
   local missing_parsers = {}
   -- Parser installation checks
-  for _, parser_name in pairs(configs.available_parsers()) do
+  for _, parser_name in pairs(parsers.available_parsers()) do
     local installed = #api.nvim_get_runtime_file('parser/'..parser_name..'.so', false)
 
     -- Only print informations about installed parsers
