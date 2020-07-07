@@ -23,6 +23,24 @@ setmetatable(query_cache, default_dict)
 local M = {}
 
 function M.collect_locals(bufnr, query_kind)
+  local locals = {}
+
+  for prepared_match in M.iter_locals(bufnr, nil, query_kind) do
+    table.insert(locals, prepared_match)
+  end
+
+  return locals
+end
+
+local function update_cached_locals(bufnr, changed_tick, query_kind)
+  query_cache[query_kind][bufnr] = {tick=changed_tick, cache=( M.collect_locals(bufnr, query_kind) or {} )}
+end
+
+-- Iterates matches from a locals query file.
+-- @param bufnr the buffer
+-- @param root the root node
+-- @param query_kind the query file to use
+function M.iter_locals(bufnr, root, query_kind)
   query_kind = query_kind or 'locals'
 
   local lang = parsers.ft_to_lang(api.nvim_buf_get_option(bufnr, "ft"))
@@ -34,20 +52,10 @@ function M.collect_locals(bufnr, query_kind)
   local parser = parsers.get_parser(bufnr, lang)
   if not parser then return end
 
-  local root = parser:parse():root()
+  local root = root or parser:parse():root()
   local start_row, _, end_row, _ = root:range()
 
-  local locals = {}
-
-  for prepared_match in queries.iter_prepared_matches(query, root, bufnr, start_row, end_row) do
-    table.insert(locals, prepared_match)
-  end
-
-  return locals
-end
-
-local function update_cached_locals(bufnr, changed_tick, query_kind)
-  query_cache[query_kind][bufnr] = {tick=changed_tick, cache=( M.collect_locals(bufnr, query_kind) or {} )}
+  return queries.iter_prepared_matches(query, root, bufnr, start_row, end_row)
 end
 
 function M.get_locals(bufnr, query_kind)
