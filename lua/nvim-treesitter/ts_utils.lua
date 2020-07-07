@@ -299,30 +299,18 @@ function M.find_usages(node, scope_node, bufnr)
   if not node_text or #node_text < 1 then return {} end
 
   local scope_node = scope_node or parsers.get_parser(bufnr).tree:root()
-  local references = locals.get_references(bufnr)
   local usages = {}
 
-  M.recurse_tree(scope_node, function(iter_node, _, next)
-    if vim.tbl_contains(references, iter_node) and M.get_node_text(iter_node)[1] == node_text then
-      table.insert(usages, iter_node)
+  for match in locals.iter_locals(bufnr, scope_node) do
+    if match.reference
+      and match.reference.node
+      and M.get_node_text(match.reference.node)[1] == node_text
+    then
+      table.insert(usages, match.reference.node)
     end
-    next()
-  end)
+  end
 
   return usages
-end
-
--- Recurses all child nodes of a tree.
--- The callback is provided the child node, parent_node, and a callback to recurse into
--- the child node. This allows for the ability to short circuit the recursion
--- if we found what we are looking for, we can then stop the recursion or skip a node
--- if need be.
--- @param tree the node root
--- @param cb the callback for each node
-function M.recurse_tree(tree, cb)
-  for _, child in ipairs(M.get_named_children(tree)) do
-    cb(child, tree, function(next_node) M.recurse_tree(next_node or child, cb) end)
-  end
 end
 
 return M
