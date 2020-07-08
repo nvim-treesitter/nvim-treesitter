@@ -13,7 +13,7 @@ Depending on which part of the plugin you want to contribute to, please read the
 
 ## Style Checks and Tests
 
-We haven't implemented any functionality tests yet. Feel free to contribute.
+We haven't implemented any functional tests yet. Feel free to contribute.
 However, we check code style with `luacheck`!
 Please install luacheck and activate our `pre-push` hook to automatically check style before
 every push:
@@ -22,6 +22,21 @@ every push:
 luarocks install luacheck
 ln -s ../../scripts/pre-push .git/hooks/pre-push
 ```
+
+## Adding new modules
+
+If you want to see a new functionality added to `nvim-treesitter` feel free to first open an issue
+to that we can track our solution !
+Thus far, there is basically two types of modules:
+  - Little modules (like `incremental selection`) that are built in `nvim-treesitter`, we call them
+    `builtin modules`.
+  - Bigger modules (like `completion-treesitter`, or `nvim-tree-docs`), or modules that integrate
+    with other plugins, that we call `remote modules`.
+
+In any case, you can build your own module ! To help you started in the process, we have a template
+repository designed to build new modules [here](https://github.com/nvim-treesitter/module-template).
+Feel free to use it, and contact us over on our
+[gitter](https://gitter.im/nvim-treesitter/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link).
 
 ## Parser configurations
 
