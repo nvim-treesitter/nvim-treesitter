@@ -66,6 +66,10 @@
 ; Naming parameters on call-site
 (default_parameter
   name: (identifier) @parameter)
+(typed_parameter
+  (identifier) @parameter)
+(typed_default_parameter
+  (identifier) @parameter)
 ; Variadic parameters *args, **kwargs
 (parameters
   (list_splat ; *args
