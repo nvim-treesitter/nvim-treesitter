@@ -8,6 +8,14 @@
               left: (expression_list
                       (identifier) @definition.associated))))) @scope
 
+; Imports
+(aliased_import
+	alias: (identifier) @definition.import)
+(import_statement
+	name: (dotted_name ((identifier) @definition.import)))
+(import_from_statement
+	name: (dotted_name ((identifier) @definition.import)))
+
 ; Function with parameters, defines parameters
 (function_definition
   name: (identifier)

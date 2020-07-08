@@ -131,7 +131,8 @@ are optional and will not have any effect for now.
   macro
   type
   field
-  doc for documentation adjecent to a definition. E.g.
+  import for imported names
+  doc for documentation adjacent to a definition. E.g.
 ```
 
 ```scheme
