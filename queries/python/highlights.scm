@@ -49,6 +49,8 @@
   name: (identifier) @function)
 
 (type (identifier) @type)
+(subscript
+  (identifier) @type) ; type subscript: Tuple[int]
 
 ((call
   function: (identifier) @isinstance
