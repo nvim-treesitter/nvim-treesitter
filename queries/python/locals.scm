@@ -9,24 +9,27 @@
                       (identifier) @definition.associated))))) @scope
 
 ; Function with parameters, defines parameters
-(function_definition
-  name: (identifier)
-  parameters: (parameters
-                (identifier) @definition.var))
+(parameters
+  (identifier) @definition.var)
+
+(default_parameter
+  (identifier) @definition.var)
+
+(typed_parameter
+  (identifier) @definition.var)
+
+(typed_default_parameter
+  (identifier) @definition.var)
 
 ; *args parameter
-(function_definition
-  name: (identifier)
-  parameters: (parameters
-                (list_splat
-                  (identifier) @definition.var)))
+(parameters
+  (list_splat
+    (identifier) @definition.var))
 
 ; **kwargs parameter
-(function_definition
-  name: (identifier)
-  parameters: (parameters
-                (dictionary_splat
-                  (identifier) @definition.var)))
+(parameters
+  (dictionary_splat
+    (identifier) @definition.var))
 
 ; Function defines function and scope
 (function_definition
