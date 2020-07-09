@@ -29,6 +29,10 @@
 (typed_default_parameter
   (identifier) @definition.var)
 
+(with_statement
+  (with_item
+    alias: (identifier) @definition.var))
+
 ; *args parameter
 (parameters
   (list_splat
