@@ -217,7 +217,7 @@ List of currently supported languages:
 - [x] c (maintained by @vigoux)
 - [x] go (maintained by @theHamsta)
 - [x] cpp (maintained by @theHamsta, extends C queries)
-- [ ] rust
+- [x] rust (partial support, maintained by @vigoux)
 - [x] python (maintained by @theHamsta)
 - [x] javascript (maintained by @steelsojka)
 - [x] typescript (maintained by @steelsojka)
