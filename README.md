@@ -2,7 +2,6 @@
 Traditionnal highlighting (left) vs Treesitter-based highlighting (right).
 
 [![Gitter](https://badges.gitter.im/nvim-treesitter/community.svg)](https://gitter.im/nvim-treesitter/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-![Build Status](https://github.com/nvim-treesitter/nvim-treesitter/workflows/.github/workflows/lint.yml/badge.svg?branch=master)
 # nvim-treesitter
 Treesitter configurations and abstraction layer for Neovim.
 
