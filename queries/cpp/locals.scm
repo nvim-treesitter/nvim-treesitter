@@ -23,6 +23,13 @@
 (alias_declaration
   name: (type_identifier) @definition.type)
 
+;; Namespaces
+(namespace_definition 
+  name: (identifier) @definition.namespace
+  body (_) @scope)
+
+(namespace_identifier) @reference.namespace
+
 ;; Function defintions
 (template_function
   name: (identifier) @definition.function) @scope
