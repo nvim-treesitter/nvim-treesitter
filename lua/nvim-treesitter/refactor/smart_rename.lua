@@ -2,6 +2,7 @@
 -- Can be used directly using the `smart_rename` function.
 
 local ts_utils = require'nvim-treesitter.ts_utils'
+local locals = require'nvim-treesitter.locals'
 local configs = require'nvim-treesitter.configs'
 local utils = require'nvim-treesitter.utils'
 local api = vim.api
@@ -23,8 +24,8 @@ function M.smart_rename(bufnr)
   -- Empty name cancels the interaction or ESC
   if not new_name or #new_name < 1 then return end
 
-  local definition, scope = ts_utils.find_definition(node_at_point, bufnr)
-  local nodes_to_rename = ts_utils.find_usages(node_at_point, scope)
+  local definition, scope = locals.find_definition(node_at_point, bufnr)
+  local nodes_to_rename = locals.find_usages(node_at_point, scope)
 
   if not vim.tbl_contains(nodes_to_rename, node_at_point) then
     table.insert(nodes_to_rename, node_at_point)

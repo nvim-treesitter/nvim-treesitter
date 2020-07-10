@@ -4,7 +4,6 @@ local ts = vim.treesitter
 local configs = require "nvim-treesitter.configs"
 local parsers = require "nvim-treesitter.parsers"
 local queries = require'nvim-treesitter.query'
-local locals = require'nvim-treesitter.locals'
 local ts_utils = require'nvim-treesitter.ts_utils'
 
 local M = {}
@@ -20,10 +19,11 @@ function M.select_textobject(query_string)
   local matches = {}
 
   if string.match(query_string, '^@.*') then
-    matches = locals.get_capture_matches(bufnr, query_string, 'textobjects')
+    matches = queries.get_capture_matches(bufnr, query_string, 'textobjects')
   else
     local parser = parsers.get_parser(bufnr, lang)
     local root = parser:parse():root()
+
     local start_row, _, end_row, _ = root:range()
 
     local query = ts.parse_query(lang, query_string)
@@ -41,7 +41,7 @@ function M.select_textobject(query_string)
   local earliest_start
 
   for _, m in pairs(matches) do
-    if ts_utils.is_in_node_range(m.node, row, col) then
+    if m.node and ts_utils.is_in_node_range(m.node, row, col) then
       local length = ts_utils.node_length(m.node)
       if not match_length or length < match_length then
         smallest_range = m

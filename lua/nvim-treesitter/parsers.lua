@@ -257,7 +257,7 @@ end
 
 function M.has_parser(lang)
   local buf = api.nvim_get_current_buf()
-  local lang = M.get_buf_lang(buf) or lang
+  local lang = lang or M.get_buf_lang(buf)
   if not lang or #lang == 0 then return false end
   return #api.nvim_get_runtime_file('parser/' .. lang .. '.*', false) > 0
 end

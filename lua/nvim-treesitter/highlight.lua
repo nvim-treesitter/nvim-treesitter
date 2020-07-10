@@ -54,7 +54,7 @@ hlmap["include"] = "TSInclude"
 
 function M.attach(bufnr, lang)
   local bufnr = bufnr or api.nvim_get_current_buf()
-  local lang = parsers.get_buf_lang(bufnr, lang)
+  local lang = lang or parsers.get_buf_lang(bufnr)
   local config = configs.get_module('highlight')
 
   for k, v in pairs(config.custom_captures) do

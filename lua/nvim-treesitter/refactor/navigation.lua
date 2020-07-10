@@ -16,7 +16,7 @@ function M.goto_definition(bufnr)
 
   if not node_at_point then return end
 
-  local definition, _ = ts_utils.find_definition(node_at_point, bufnr)
+  local definition, _ = locals.find_definition(node_at_point, bufnr)
   local start_row, start_col, _ = definition:start()
 
   api.nvim_win_set_cursor(0, { start_row + 1, start_col })
@@ -31,7 +31,7 @@ function M.list_definitions(bufnr)
   local qf_list = {}
 
   for _, def in ipairs(definitions) do
-    ts_utils.recurse_local_nodes(def, function(_, node, _, match)
+    locals.recurse_local_nodes(def, function(_, node, _, match)
       local lnum, col, _ = node:start()
 
       table.insert(qf_list, {

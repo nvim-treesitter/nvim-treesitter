@@ -2,6 +2,7 @@ local api = vim.api
 
 local configs = require'nvim-treesitter.configs'
 local ts_utils = require'nvim-treesitter.ts_utils'
+local locals = require'nvim-treesitter.locals'
 local parsers = require'nvim-treesitter.parsers'
 
 local M = {}
@@ -74,7 +75,7 @@ M.node_incremental = select_incremental(function(node)
 end)
 
 M.scope_incremental = select_incremental(function(node)
-  return ts_utils.containing_scope(node:parent() or node)
+  return locals.containing_scope(node:parent() or node)
 end)
 
 function M.node_decremental()
