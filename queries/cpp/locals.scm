@@ -20,6 +20,9 @@
   name: (scoped_type_identifier
           name: (type_identifier) @definition.type))
 
+(alias_declaration
+  name: (type_identifier) @definition.type)
+
 ;; Function defintions
 (template_function
   name: (identifier) @definition.function) @scope

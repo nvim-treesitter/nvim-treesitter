@@ -26,9 +26,12 @@
   declarator: (field_identifier) @definition.field)
 (type_definition
   declarator: (type_identifier) @definition.type)
+(struct_specifier
+  name: (type_identifier) @definition.type)
 
 ;; References
 (identifier) @reference
+(type_identifier) @reference
 
 ;; Scope
 [
