@@ -256,14 +256,14 @@ end
 
 function M.has_parser(lang)
   local buf = api.nvim_get_current_buf()
-  local lang = lang or M.ft_to_lang(api.nvim_buf_get_option(buf, 'ft'))
+  local lang = M.get_buf_lang(buf) or lang
   if not lang or #lang == 0 then return false end
   return #api.nvim_get_runtime_file('parser/' .. lang .. '.*', false) > 0
 end
 
 function M.get_parser(bufnr, lang)
   local buf = bufnr or api.nvim_get_current_buf()
-  local lang = lang or M.ft_to_lang(api.nvim_buf_get_option(buf, 'ft'))
+  local lang = lang or M.get_buf_lang(buf)
 
   if M.has_parser(lang) then
     if not M[buf] then
@@ -274,6 +274,14 @@ function M.get_parser(bufnr, lang)
     end
     return M[buf][lang]
   end
+end
+
+-- get language of given buffer
+-- @param optional buffer number or current buffer
+-- @returns language string of buffer
+function M.get_buf_lang(bufnr)
+  bufnr = bufnr or api.nvim_get_current_buf()
+  return M.ft_to_lang(api.nvim_buf_get_option(bufnr, "ft"))
 end
 
 return M

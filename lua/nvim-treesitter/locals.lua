@@ -43,7 +43,7 @@ end
 function M.iter_locals(bufnr, root, query_kind)
   query_kind = query_kind or 'locals'
 
-  local lang = parsers.ft_to_lang(api.nvim_buf_get_option(bufnr, "ft"))
+  local lang = parsers.get_buf_lang(bufnr)
   if not lang then return end
 
   local query = queries.get_query(lang, query_kind)
