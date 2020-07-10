@@ -20,8 +20,8 @@ function M.highlight_usages(bufnr)
     return
   end
 
-  local def_node, scope = ts_utils.find_definition(node_at_point, bufnr)
-  local usages = ts_utils.find_usages(node_at_point, scope)
+  local def_node, scope = locals.find_definition(node_at_point, bufnr)
+  local usages = locals.find_usages(node_at_point, scope)
 
   for _, usage_node in ipairs(usages) do
     if usage_node ~= node_at_point then

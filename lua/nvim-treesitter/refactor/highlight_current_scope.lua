@@ -1,6 +1,7 @@
 -- This module highlights the current scope of at the cursor position
 
 local ts_utils = require'nvim-treesitter.ts_utils'
+local locals = require'nvim-treesitter.locals'
 local api = vim.api
 local cmd = api.nvim_command
 
@@ -12,7 +13,7 @@ function M.highlight_current_scope(bufnr)
   M.clear_highlights(bufnr)
 
   local node_at_point = ts_utils.get_node_at_cursor()
-  local current_scope = ts_utils.containing_scope(node_at_point, bufnr)
+  local current_scope = locals.containing_scope(node_at_point, bufnr)
 
   local start_line = current_scope:start()
 
