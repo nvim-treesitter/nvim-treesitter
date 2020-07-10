@@ -131,6 +131,7 @@ are optional and will not have any effect for now.
   macro
   type
   field
+  namespace for modules or C++ namespaces
   import for imported names
   doc for documentation adjacent to a definition. E.g.
 ```

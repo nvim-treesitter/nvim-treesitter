@@ -31,7 +31,7 @@
 
 ;; References
 (identifier) @reference
-(type_identifier) @reference
+(type_identifier) @reference.type
 
 ;; Scope
 [
