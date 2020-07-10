@@ -11,9 +11,8 @@ local M = {}
 
 function M.select_textobject(query_string)
   local bufnr = vim.api.nvim_get_current_buf()
-  local ft = api.nvim_buf_get_option(bufnr, "ft")
-  if not ft then return end
-  local lang = parsers.ft_to_lang(ft)
+  local lang = parsers.get_buf_lang(bufnr)
+  if not lang then return end
 
   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
   row = row - 1
@@ -77,7 +76,7 @@ end
 function M.attach(bufnr, lang)
   local buf = bufnr or api.nvim_get_current_buf()
   local config = configs.get_module("textobjects")
-  local lang = lang or parsers.ft_to_lang(api.nvim_buf_get_option(bufnr, "ft"))
+  local lang = lang or parsers.get_buf_lang(buf)
 
   for mapping, query in pairs(config.keymaps) do
     if type(query) == 'table' then
@@ -96,7 +95,7 @@ end
 function M.detach(bufnr)
   local buf = bufnr or api.nvim_get_current_buf()
   local config = configs.get_module("textobjects")
-  local lang = parsers.ft_to_lang(api.nvim_buf_get_option(bufnr, "ft"))
+  local lang = parsers.get_buf_lang(bufnr)
 
   for mapping, query in pairs(config.keymaps) do
     if type(query) == 'table' then
