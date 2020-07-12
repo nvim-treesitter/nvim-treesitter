@@ -33,6 +33,9 @@ By default, everything is disabled. To enable support for features, in your `ini
     highlight = {
         enable = true,                    -- false will disable the whole extension
         disable = { 'c', 'rust' },        -- list of language that will be disabled
+        custom_captures = {               -- mapping of user defined captures to highlight groups
+          -- ["foo.bar"] = "Identifier"   -- highlight own capture @foo.bar with highlight group "Identifier", see :h nvim-treesitter-query-extensions
+        },            
     },
     incremental_selection = {
         enable = true,
@@ -48,6 +51,18 @@ By default, everything is disabled. To enable support for features, in your `ini
   }
   EOF
 <
+==============================================================================
+USER QUERY EXTENSIONS                        *nvim-treesitter-query-extensions*
+
+You can add your own query files by placing a query file in vim's runtime path
+after `nvim-treesitter` is sourced.  If the language has a built in query file,
+that file will be appended to or it will be used (useful for languages not yet
+supported).
+
+For example, you can add files to `<vim-config-dir>/after/queries/lua/highlights.scm`
+to add more queries to lua highlights.  You can also manually add query paths
+to the runtime path by adding this to your vim config `set rtp+='path/to/queries'`.
+
 
 ==============================================================================
 COMMANDS                                          *nvim-treesitter-commands*

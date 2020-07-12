@@ -18,6 +18,7 @@ local builtin_modules = {
     module_path = 'nvim-treesitter.highlight',
     enable = false,
     disable = {},
+    custom_captures = {},
     is_supported = queries.has_highlights
   },
   incremental_selection = {
@@ -60,6 +61,8 @@ local builtin_modules = {
     }
   }
 }
+
+local special_config_keys = {'enable', 'disable', 'keymaps'}
 
 local M = {}
 
@@ -274,6 +277,12 @@ function M.setup_module(mod, data, mod_name)
         if mod.keymaps[f] then
           mod.keymaps[f] = map
         end
+      end
+    end
+    for k, v in pairs(data) do
+      -- Just copy all non-special configuration keys
+      if not vim.tbl_contains(special_config_keys, k) then
+        mod[k] = v
       end
     end
   elseif type(data) == 'table' and type(mod) == 'table' then
