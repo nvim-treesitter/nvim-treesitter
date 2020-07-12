@@ -39,6 +39,12 @@ local builtin_modules = {
       disable = {},
       is_supported = queries.has_locals
     },
+    highlight_current_scope = {
+      module_path = 'nvim-treesitter.refactor.highlight_current_scope',
+      enable = false,
+      disable = {},
+      is_supported = queries.has_locals,
+    },
     smart_rename = {
       module_path = 'nvim-treesitter.refactor.smart_rename',
       enable = false,
