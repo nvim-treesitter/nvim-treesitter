@@ -60,3 +60,4 @@ highlight default link TSInclude Include
 highlight default link TSDefinitionUsage Visual
 highlight default link TSDefinition Search
 
+highlight default link TSCurrentScope CursorLine
