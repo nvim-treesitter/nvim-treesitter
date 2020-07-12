@@ -3,6 +3,7 @@ local ts = vim.treesitter
 
 local queries = require'nvim-treesitter.query'
 local parsers = require'nvim-treesitter.parsers'
+local configs = require'nvim-treesitter.configs'
 
 local M = {
   highlighters = {}
@@ -54,6 +55,11 @@ hlmap["include"] = "TSInclude"
 function M.attach(bufnr, lang)
   local bufnr = bufnr or api.nvim_get_current_buf()
   local lang = lang or parsers.ft_to_lang(api.nvim_buf_get_option(bufnr, 'ft'))
+  local config = configs.get_module('highlight')
+
+  for k, v in pairs(config.custom_captures) do
+    hlmap[k] = v
+  end
 
   local query = queries.get_query(lang, "highlights")
   if not query then return end
