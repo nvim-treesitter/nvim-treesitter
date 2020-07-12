@@ -24,29 +24,13 @@ function M.highlight_usages(bufnr)
   local usages = ts_utils.find_usages(node_at_point, scope)
 
   for _, usage_node in ipairs(usages) do
-    local start_row, start_col, _, end_col = usage_node:range()
-
     if usage_node ~= node_at_point then
-      api.nvim_buf_add_highlight(
-        bufnr,
-        usage_namespace,
-        'TSDefinitionUsage',
-        start_row,
-        start_col,
-        end_col)
+      ts_utils.highlight_node(node_at_point, bufnr, usage_namespace, 'TSDefinitionUsage')
     end
   end
 
   if def_node ~= node_at_point then
-    local start_row, start_col, _, end_col = def_node:range()
-
-    api.nvim_buf_add_highlight(
-      bufnr,
-      usage_namespace,
-      'TSDefinition',
-      start_row,
-      start_col,
-      end_col)
+    ts_utils.highlight_node(def_node, bufnr, usage_namespace, 'TSDefinition')
   end
 end
 
