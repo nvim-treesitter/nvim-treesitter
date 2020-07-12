@@ -124,8 +124,8 @@ function M.parent_scope(node, cursor_pos)
   end
 end
 
-function M.containing_scope(node)
-  local bufnr = api.nvim_get_current_buf()
+function M.containing_scope(node, bufnr)
+  local bufnr = bufnr or api.nvim_get_current_buf()
 
   local scopes = locals.get_scopes(bufnr)
   if not node or not scopes then return end
@@ -311,6 +311,16 @@ function M.find_usages(node, scope_node, bufnr)
   end
 
   return usages
+end
+
+function M.highlight_node(node, buf, hl_namespace, hl_group)
+  if not node then return end
+  M.highlight_range({node:range()}, buf, hl_namespace, hl_group)
+end
+
+function M.highlight_range(range, buf, hl_namespace, hl_group)
+  local start_row, start_col, end_row, end_col = unpack(range)
+  vim.highlight.range(buf, hl_namespace, hl_group, {start_row, start_col}, {end_row, end_col})
 end
 
 return M
