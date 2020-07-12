@@ -112,7 +112,7 @@ local function run_install(cache_folder, package_path, lang, repo, with_sync)
   }
 
   if with_sync then
-    if iter_cmd_sync(command_list, lang) == true then
+    if iter_cmd_sync(command_list) == true then
       print('Treesitter parser for '..lang..' has been installed')
     end
   else
