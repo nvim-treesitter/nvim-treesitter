@@ -26,7 +26,7 @@
 ;; Namespaces
 (namespace_definition 
   name: (identifier) @definition.namespace
-  body (_) @scope)
+  body: (_) @scope)
 
 (namespace_identifier) @reference.namespace
 
