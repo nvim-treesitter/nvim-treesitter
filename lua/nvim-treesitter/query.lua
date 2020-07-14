@@ -34,9 +34,11 @@ M.query_extensions = {
   tsx = {'javascript.jsx'}
 }
 
-M.has_locals = get_query_guard('locals')
-M.has_textobjects = get_query_guard('textobjects')
-M.has_highlights = get_query_guard('highlights')
+M.built_in_query_groups = {'highlights', 'locals', 'textobjects'}
+
+for _, query in ipairs(M.built_in_query_groups) do
+  M["has_" .. query] = get_query_guard(query)
+end
 
 function M.get_query(lang, query_name)
   local query_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', lang, query_name), true)
