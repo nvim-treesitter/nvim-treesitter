@@ -25,7 +25,7 @@ function M.highlight_usages(bufnr)
 
   for _, usage_node in ipairs(usages) do
     if usage_node ~= node_at_point then
-      ts_utils.highlight_node(node_at_point, bufnr, usage_namespace, 'TSDefinitionUsage')
+      ts_utils.highlight_node(usage_node, bufnr, usage_namespace, 'TSDefinitionUsage')
     end
   end
 
