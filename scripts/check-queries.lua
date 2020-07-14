@@ -2,7 +2,7 @@
 local function do_check()
   local parsers = require 'nvim-treesitter.parsers'.available_parsers()
   local queries = require 'nvim-treesitter.query'
-  local query_types = {'highlights', 'locals', 'textobjects'}
+  local query_types = queries.built_in_query_groups
 
   for _, lang in pairs(parsers) do
     for _, query_type in pairs(query_types) do

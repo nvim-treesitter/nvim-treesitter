@@ -32,23 +32,13 @@ local function install_health()
   end
 end
 
-local function highlight_health(lang)
-  if not queries.get_query(lang, "highlights") then
-    health_warn("No `highlights.scm` query found for " .. lang, {
+local function query_health(lang, query_group)
+  if not queries.get_query(lang, query_group) then
+    health_warn("No `"..query_group..".scm` query found for " .. lang, {
       "Open an issue at https://github.com/nvim-treesitter/nvim-treesitter"
     })
   else
-    health_ok("`highlights.scm` found.")
-  end
-end
-
-local function locals_health(lang)
-  if not queries.get_query(lang, "locals") then
-    health_warn("No `locals.scm` query found for " .. lang, {
-      "Open an issue at https://github.com/nvim-treesitter/nvim-treesitter"
-    })
-  else
-    health_ok("`locals.scm` found.")
+    health_ok("`"..query_group..".scm` found.")
   end
 end
 
@@ -67,8 +57,10 @@ function M.checkhealth()
       health_start(parser_name .. " parser healthcheck")
       health_ok(parser_name .. " parser found.")
 
-      locals_health(parser_name)
-      highlight_health(parser_name)
+      for _, query_group in pairs(queries.built_in_query_groups) do
+        query_health(parser_name, query_group)
+      end
+
     elseif installed > 1 then
       health_warn(string.format("Multiple parsers found for %s, only %s will be used.", parser_name, installed[1]))
     else
