@@ -19,9 +19,8 @@ end
 
 local config = {
   modules = {},
-  ensure_installed = nil
+  ensure_installed = {}
 }
-local user_setup_data = nil
 -- List of modules that need to be setup on initialization.
 local queued_modules_defs = {}
 -- Whether we've initialized the plugin yet.
@@ -86,9 +85,7 @@ local builtin_modules = {
     is_supported = function(lang)
       return has_some_textobject_mapping(lang) or queries.has_textobjects(lang)
     end,
-    keymaps = {
-      inverse_mappings = true
-    }
+    keymaps = {}
   }
 }
 
@@ -281,7 +278,11 @@ end
 -- Setup call for users to override module configurations.
 -- @param user_data module overrides
 function M.setup(user_data)
-  user_setup_data = user_data or {}
+  for name, data in pairs(user_data) do
+    local mod = config.modules[name] or {}
+    M.setup_module(mod, data, name)
+    config.modules[name] = mod
+  end
 end
 
 -- Sets up a single module or all submodules of a group.
@@ -301,15 +302,7 @@ function M.setup_module(mod, data, mod_name)
       mod.disable = data.disable
     end
     if mod.keymaps and type(data.keymaps) == 'table' then
-      if mod.keymaps.inverse_mappings then
-        mod.keymaps = data.keymaps
-      else
-        for f, map in pairs(data.keymaps) do
-          if mod.keymaps[f] then
-            mod.keymaps[f] = map
-          end
-        end
-      end
+      mod.keymaps = vim.tbl_extend("force", mod.keymaps, data.keymaps)
     end
 
     for k, v in pairs(data) do
@@ -365,8 +358,7 @@ function M.define_modules(mod_defs)
     })
   end, mod_defs)
 
-  M.setup_module(mod_defs, user_setup_data)
-  config.modules = vim.tbl_extend("keep", config.modules, mod_defs)
+  config.modules = vim.tbl_deep_extend("keep", config.modules, mod_defs)
 
   for _, lang in pairs(parsers.available_parsers()) do
     for _, mod in ipairs(M.available_modules(mod_defs)) do
