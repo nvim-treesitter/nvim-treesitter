@@ -299,3 +299,12 @@ If you do, it's highly possible that this is the cause of the problem.
 If everything is okay, then it might be an actual error.
 
 In both cases, feel free to open an issue here.
+
+### I am expreiencing weird highlighting issues as in [#78[(https://github.com/nvim-treesitter/nvim-treesitter/issues/78)
+
+This is a weell known issue, that is caused by the tree and the buffer getting out of sync.
+As this issue comes form upstream, we don't have any definitive fix. One thing you can do to force reparsing the whole buffer is to run :
+```vim
+:write | edit | TSBufEnable highlight
+```
+ This will save, restore and enable highlighting for the current buffer, fixing the issue.
