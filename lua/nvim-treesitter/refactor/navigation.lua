@@ -11,6 +11,9 @@ function M.goto_definition(bufnr)
   local bufnr = bufnr or api.nvim_get_current_buf()
   local node_at_point = ts_utils.get_node_at_cursor()
 
+  -- Set the item in jump list
+  vim.cmd "normal! m'"
+
   if not node_at_point then return end
 
   local definition, _ = ts_utils.find_definition(node_at_point, bufnr)
