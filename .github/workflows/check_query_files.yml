@@ -5,7 +5,10 @@ on: [push, pull_request]
 jobs:
   luacheck:
     name: Check Query Files
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [unbuntu-latest, macos-latest]
     steps:
       - uses: actions/checkout@v1
 
@@ -26,5 +29,5 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: parsers
+          name: parsers-${{ matrix.os }}
           path: parser/*
