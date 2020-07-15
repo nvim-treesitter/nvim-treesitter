@@ -147,6 +147,7 @@ list.tsx = {
     files = { "src/parser.c", "src/scanner.c" },
     location = "tree-sitter-tsx/tsx"
   },
+  used_by = { "typescript.tsx" },
   filetype = 'typescriptreact'
 }
 
