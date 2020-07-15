@@ -126,7 +126,7 @@ function M.get_capture_matches(bufnr, capture_string, query_kind)
 
     local matches = {}
     for _, match in pairs(M.get_locals(bufnr, query_kind)) do
-      local insert = utils.get_at_path(match, capture_string..'.node')
+      local insert = utils.get_at_path(match, capture_string)
 
       if insert then
         table.insert(matches, insert)
