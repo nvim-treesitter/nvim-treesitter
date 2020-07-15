@@ -31,7 +31,7 @@ function M.select_textobject(query_string)
     for m in queries.iter_prepared_matches(query, root, bufnr, start_row, end_row) do
       for _, n in pairs(m) do
         if n.node then
-          table.insert(matches, n.node)
+          table.insert(matches, n)
         end
       end
     end
@@ -39,19 +39,38 @@ function M.select_textobject(query_string)
 
   local match_length
   local smallest_range
+  local earliest_start
 
   for _, m in pairs(matches) do
-    if ts_utils.is_in_node_range(m, row, col) then
-      local length = ts_utils.node_length(m)
+    if ts_utils.is_in_node_range(m.node, row, col) then
+      local length = ts_utils.node_length(m.node)
       if not match_length or length < match_length then
         smallest_range = m
         match_length = length
+      end
+      -- for nodes with same length take the one with earliest start
+      if match_length and length == smallest_range then
+        local start = m.start
+        if start then
+          local _, _, start_byte = m.start.node:start()
+          if not earliest_start or start_byte < earliest_start then
+            smallest_range = m
+            match_length = length
+            earliest_start = start_byte
+          end
+        end
       end
     end
   end
 
   if smallest_range then
-    ts_utils.update_selection(bufnr, smallest_range)
+    if smallest_range.start then
+      local start_range = {smallest_range.start.node:range()}
+      local node_range = {smallest_range.node:range()}
+      ts_utils.update_selection(bufnr, {start_range[1], start_range[2], node_range[3], node_range[4]})
+    else
+      ts_utils.update_selection(bufnr, smallest_range.node)
+    end
   end
 end
 

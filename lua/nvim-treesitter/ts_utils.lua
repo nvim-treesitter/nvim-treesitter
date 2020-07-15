@@ -325,7 +325,12 @@ end
 
 -- Set visual selection to node
 function M.update_selection(buf, node)
-  local start_row, start_col, end_row, end_col = node:range()
+  local start_row, start_col, end_row, end_col
+  if type(node) == 'table' then
+    start_row, start_col, end_row, end_col = unpack(node)
+  else
+    start_row, start_col, end_row, end_col = node:range()
+  end
 
   if end_row == vim.fn.line('$') then
     end_col = #vim.fn.getline('$')
