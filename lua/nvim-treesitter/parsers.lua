@@ -21,7 +21,8 @@ list.cpp = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-cpp",
     files = { "src/parser.c", "src/scanner.cc" }
-  }
+  },
+  used_by = { "cuda" },
 }
 
 list.rust = {
