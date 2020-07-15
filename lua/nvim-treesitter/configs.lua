@@ -89,8 +89,6 @@ local builtin_modules = {
   }
 }
 
-local special_config_keys = {'enable', 'disable', 'keymaps'}
-
 -- Resolves a module by requiring the `module_path` or using the module definition.
 local function resolve_module(mod_name)
   local config_mod = M.get_module(mod_name)
@@ -279,41 +277,11 @@ end
 -- @param user_data module overrides
 function M.setup(user_data)
   for name, data in pairs(user_data) do
-    local mod = config.modules[name] or {}
-    M.setup_module(mod, data, name)
-    config.modules[name] = mod
-  end
-end
-
--- Sets up a single module or all submodules of a group.
--- Note, this method is recursive.
--- @param mod the module or group of modules
--- @param data user defined configuration for the module
--- @param mod_name name of the module if it exists
-function M.setup_module(mod, data, mod_name)
-  if mod_name == 'ensure_installed' then
-    config.ensure_installed = data
-    require'nvim-treesitter.install'.ensure_installed(data)
-  elseif M.is_module(mod) and type(data) == 'table' then
-    if type(data.enable) == 'boolean' then
-      mod.enable = data.enable
-    end
-    if type(data.disable) == 'table' then
-      mod.disable = data.disable
-    end
-    if mod.keymaps and type(data.keymaps) == 'table' then
-      mod.keymaps = vim.tbl_extend("force", mod.keymaps, data.keymaps)
-    end
-
-    for k, v in pairs(data) do
-      -- Just copy all non-special configuration keys
-      if not vim.tbl_contains(special_config_keys, k) then
-        mod[k] = v
-      end
-    end
-  elseif type(data) == 'table' and type(mod) == 'table' then
-    for key, value in pairs(mod) do
-      M.setup_module(value, data[key], key)
+    if name == 'ensure_installed' then
+      config.ensure_installed = data
+      require'nvim-treesitter.install'.ensure_installed(data)
+    else
+      config.modules[name] = vim.tbl_deep_extend('force', config.modules[name] or {}, data)
     end
   end
 end
