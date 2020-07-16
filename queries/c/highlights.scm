@@ -11,6 +11,7 @@
   "typedef"
   "union"
   "volatile"
+  "goto"
 ] @keyword
 
 [

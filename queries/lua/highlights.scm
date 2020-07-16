@@ -3,14 +3,14 @@
 ;;; Builtins
 ;; Keywords
 (
-  [
-  "if"
-  "then"
+  "if" @conditional
+  "end" @conditional
+)
+[
   "else"
   "elseif"
-   ] @conditional
-  "end" @confitional
-)
+  "then"
+] @conditional
 
 
 (
