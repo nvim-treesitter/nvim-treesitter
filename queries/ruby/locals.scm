@@ -20,17 +20,26 @@
 ; OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ; SOFTWARE.
 
-;;; DESCLARATIONS AND SCOPES
+;;; DECLARATIONS AND SCOPES
 ((method) @scope
  (set! scope-inherits false))
+(class) @scope
 
 [
  (block)
  (do_block) 
  ] @scope
 
-(method_parameters (identifier) @definition.function)
-(lambda_parameters (identifier) @definition.function)
+(identifier) @reference
+(constant) @reference
+(instance_variable) @reference
+
+(module name: (constant) @definition.namespace)
+(class name: (constant) @definition.type)
+(method name: (identifier) @definition.function)
+
+(method_parameters (identifier) @definition.var)
+(lambda_parameters (identifier) @definition.var)
 (block_parameters (identifier) @definition.var)
 (splat_parameter name: (identifier) @definition.var)
 (hash_splat_parameter name: (identifier) @definition.var)
@@ -39,9 +48,12 @@
 (block_parameter name: (identifier) @definition.var)
 (keyword_parameter name: (identifier) @definition.var)
 
-(identifier) @reference
+(assignment left: [
+                   (identifier)
+                   (instance_variable)
+                   (constant)
+                   ] @definition.var)
 
-(assignment left:(identifier) @definition.var)
 (left_assignment_list (identifier) @definition.var)
 (rest_assignment (identifier) @definition.var)
 (destructured_left_assignment (identifier) @definition.var)
