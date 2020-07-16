@@ -282,6 +282,7 @@ List of currently supported languages:
 - [ ] nix
 - [ ] markdown
 - [x] regex (maintained by @theHamsta)
+- [ ] jsdoc
 
 ## User Query Extensions
 

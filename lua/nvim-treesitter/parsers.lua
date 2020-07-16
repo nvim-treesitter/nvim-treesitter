@@ -207,9 +207,17 @@ list.nix = {
   }
 }
 
+-- Parsers for injections
 list.regex = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-regex",
+    files = { "src/parser.c" }
+  }
+}
+
+list.jsdoc = {
+  install_info = {
+    url = "https://github.com/tree-sitter/tree-sitter-jsdoc",
     files = { "src/parser.c" }
   }
 }
