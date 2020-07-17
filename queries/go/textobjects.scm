@@ -2,6 +2,10 @@
 (function_declaration
   body: (block)? @function.inner) @function.outer
 
+;; function literals
+(func_literal
+	(_)? @function.inner) @function.outer
+
 ;; method as function textobject
 (method_declaration
   body: (block)? @function.inner) @function.outer
@@ -14,8 +18,8 @@
   (type_spec (type_identifier) (interface_type (method_spec_list (_)?) @class.inner))) @class.outer
 
 ;; struct literals as class textobject
-(composite_literal 
-  (type_identifier)? 
+(composite_literal
+  (type_identifier)?
   (struct_type (_))?
   (literal_value (_)) @class.inner) @class.outer
 
@@ -29,9 +33,18 @@
 (if_statement
   condition: (_) @conditional.inner)
 
+;; loops
+(for_statement
+  body: (block)? @loop.inner) @loop.outer
+
 ;; blocks
 (_ (block) @block.inner) @block.outer
+
 ;; statements
 (block (_) @statement.outer)
+
 ;; comments
 (comment) @comment.outer
+
+;; calls
+(call_expression (_)? @call.inner) @call.outer
