@@ -48,6 +48,19 @@
 (function_definition
   name: (identifier) @function)
 
+((function_definition
+   name: (identifier) @method
+   parameters: (parameters
+                 (identifier) @self) )
+ (eq? @self "self"))
+
+((function_definition
+   name: (identifier) @constructor
+   parameters: (parameters
+                 (identifier) @self) )
+ (eq? @self "self")
+ (match? @constructor "(__new__|__init__)"))
+
 (type (identifier) @type)
 (type
   (subscript
