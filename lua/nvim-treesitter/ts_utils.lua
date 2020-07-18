@@ -148,7 +148,7 @@ function M.update_selection(buf, node)
   end_col = end_col + 1
 
   vim.fn.setpos(".", { buf, start_row, start_col, 0 })
-  vim.fn.nvim_exec("normal v", false)
+  vim.fn.nvim_exec("normal! v", false)
 
   -- Convert exclusive end position to inclusive
   if end_col == 1 then
