@@ -23,12 +23,17 @@
 (alias_declaration
   name: (type_identifier) @definition.type)
 
+;template <typename T>
+(type_parameter_declaration
+  (type_identifier) @definition.type)
+     
 ;; Namespaces
 (namespace_definition 
   name: (identifier) @definition.namespace
   body: (_) @scope)
 
-(namespace_identifier) @reference.namespace
+((namespace_identifier) @reference
+                        (set! reference.kind "namespace"))
 
 ;; Function defintions
 (template_function
