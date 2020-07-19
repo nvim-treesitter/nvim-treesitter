@@ -21,10 +21,8 @@
   (parameter
    name: (identifier) @parameter))
 
-[
- (integer_literal)
- (real_literal)
-] @number
+(integer_literal) @number
+(real_literal) @float
 
 (null_literal) @constant.builtin
 (character_literal) @character
