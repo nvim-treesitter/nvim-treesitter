@@ -2,12 +2,14 @@
 (method_declaration
   name: (identifier) @method)
 
-(invocation_expression
-    (member_access_expression
-           name: (identifier) @method))
+; This would be nice but fails in some cases
+; https://github.com/nvim-treesitter/nvim-treesitter/pull/203
+; (invocation_expression
+;     (member_access_expression
+;            name: (identifier) @method))
 
-(invocation_expression
-     (identifier) @method)
+; (invocation_expression
+;      (identifier) @method)
 
 ((identifier) @field
  (#match? @field "^_"))
