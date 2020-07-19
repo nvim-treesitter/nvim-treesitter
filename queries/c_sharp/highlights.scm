@@ -2,6 +2,9 @@
 (method_declaration
   name: (identifier) @method)
 
+(method_declaration
+  type: (identifier) @type)
+
 ; This would be nice but fails in some cases
 ; https://github.com/nvim-treesitter/nvim-treesitter/pull/203
 ; (invocation_expression
@@ -20,6 +23,10 @@
 (parameter_list
   (parameter
    name: (identifier) @parameter))
+
+(parameter_list
+  (parameter
+   type: (identifier) @type))
 
 (integer_literal) @number
 (real_literal) @float
@@ -49,6 +56,9 @@
   (identifier) @type)
 (property_declaration
   name: (identifier) @property)
+
+(catch_declaration
+  type: (identifier) @type)
 
 (interface_declaration
   name: (identifier) @type)
@@ -201,5 +211,7 @@
  "interface"
  "namespace"
  "struct"
+ "get"
+ "set"
 ] @keyword
 
