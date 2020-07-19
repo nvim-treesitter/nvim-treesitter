@@ -12,6 +12,7 @@
 ; SCOPES
 (class_declaration) @scope
 (method_declaration) @scope
+(block) @scope
 ; 3 captures for `if` - if+else, if only, else only
 (if_statement) @scope 
 (if_statement
