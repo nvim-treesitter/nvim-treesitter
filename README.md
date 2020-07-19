@@ -265,7 +265,7 @@ List of currently supported languages:
 - [ ] tsx
 - [x] json (maintained by @steelsojka)
 - [x] html (maintained by @TravonteD)
-- [ ] csharp
+- [x] csharp (maintained by @svermeulen)
 - [ ] swift
 - [x] java
 - [ ] ocaml
