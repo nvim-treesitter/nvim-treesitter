@@ -2,6 +2,13 @@
 (method_declaration
   name: (identifier) @method)
 
+(invocation_expression
+    (member_access_expression
+           name: (identifier) @method))
+
+(invocation_expression
+     (identifier) @method)
+
 ((identifier) @field
  (#match? @field "^_"))
 
@@ -74,6 +81,7 @@
  "if"
  "else"
  "switch"
+ "break"
  "case"
 ] @conditional
 
@@ -82,7 +90,6 @@
  "for"
  "do"
  "continue"
- "break"
  "in"
  "goto"
  "foreach"
