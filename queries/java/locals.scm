@@ -1,7 +1,7 @@
 ; CREDITS @maxbrunsfeld (maxbrunsfeld@gmail.com)
 
 ;(class_declaration
-;  name: (identifier) @name) @class
+;  name: (identifier) @name) @definticlass
 ;
 ;(method_declaration
 ;  name: (identifier) @name) @method
@@ -10,7 +10,8 @@
 ;  name: (identifier) @name) @call
 
 ; SCOPES
-(class_declaration) @scope
+(class_declaration
+   body: (_)) @scope
 (method_declaration) @scope
 (block) @scope
 ; 3 captures for `if` - if+else, if only, else only
@@ -31,6 +32,6 @@
 
 ; DEFINITIONS
 (class_declaration
-  name: (identifier) @definition.type)
+  name: (identifier) @definition.class)
 (method_declaration
   name: (identifier) @definition.method)
