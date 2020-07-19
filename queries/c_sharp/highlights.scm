@@ -2,6 +2,12 @@
 (method_declaration
   name: (identifier) @method)
 
+((identifier) @field
+ (#match? @field "^_"))
+
+((identifier) @field
+ (#match? @field "^m_"))
+
 (parameter_list
   (parameter
    name: (identifier) @parameter))
@@ -36,6 +42,9 @@
   (qualified_name
     (identifier) @type))
 
+(property_declaration
+  name: (identifier) @property)
+
 (interface_declaration
   name: (identifier) @type)
 (class_declaration
@@ -43,12 +52,20 @@
 (enum_declaration
   name: (identifier) @type)
 (constructor_declaration
-  name: (identifier) @type)
+  name: (identifier) @constructor)
+
 (variable_declaration
   (identifier) @type)
-
 (object_creation_expression
   (identifier) @type)
+
+(variable_declaration
+  (generic_name
+   (identifier) @type))
+(object_creation_expression
+  (generic_name
+   (identifier) @type))
+
 
 (attribute
  name: (identifier) @attribute)
@@ -66,6 +83,7 @@
  "do"
  "continue"
  "break"
+ "in"
  "goto"
  "foreach"
 ] @repeat
@@ -76,6 +94,45 @@
  "throw"
  "finally"
 ] @exception
+
+[
+ "+"
+ "?"
+ ":"
+ "++"
+ "-"
+ "--"
+ "&"
+ "&&"
+ "|"
+ "||"
+ "!"
+ "!="
+ "=="
+ "*"
+ "/"
+ "%"
+ "<"
+ "<="
+ ">"
+ ">="
+ "="
+ "-="
+ "+="
+ "*="
+ "/="
+ "%="
+ "^"
+ "^="
+ "&="
+ "|="
+ "~"
+ ">>"
+ "<<"
+ "<<="
+ ">>="
+ "=>"
+] @operator
 
 [
  ";"
@@ -91,10 +148,20 @@
  "}"
  "("
  ")"
+ "<"
+ ">"
 ] @punctuation.bracket
 
 [
+ (this_expression)
+ (base_expression)
+] @variable.builtin
+
+[
  "using"
+] @include
+
+[
  "lock"
  "params"
  "ref"
