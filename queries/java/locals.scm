@@ -35,3 +35,6 @@
   name: (identifier) @definition.class)
 (method_declaration
   name: (identifier) @definition.method)
+(local_variable_declaration) @definition.var
+(field_declaration) @definition.field
+(import_declaration) @definition.import
