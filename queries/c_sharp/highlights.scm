@@ -45,10 +45,8 @@
 (using_directive
   (identifier) @type)
 
-(using_directive
-  (qualified_name
-    (identifier) @type))
-
+(qualified_name
+  (identifier) @type)
 (property_declaration
   name: (identifier) @property)
 
@@ -66,13 +64,14 @@
 (object_creation_expression
   (identifier) @type)
 
-(variable_declaration
-  (generic_name
-   (identifier) @type))
-(object_creation_expression
-  (generic_name
-   (identifier) @type))
+(generic_name
+  (identifier) @type)
 
+(base_list
+  (identifier) @type)
+
+(type_argument_list
+ (identifier) @type)
 
 (attribute
  name: (identifier) @attribute)
