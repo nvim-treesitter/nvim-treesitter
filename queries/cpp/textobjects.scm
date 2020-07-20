@@ -13,3 +13,6 @@
 
 (template_declaration
   (class_specifier) @class.outer) @class.outer.start
+
+(parameter_list
+  (optional_parameter_declaration) @parameter.inner)

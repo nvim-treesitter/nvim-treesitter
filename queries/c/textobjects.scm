@@ -53,3 +53,6 @@
 
 (preproc_else
   (_) @statement.outer)
+
+(parameter_list
+  (parameter_declaration) @parameter.inner)

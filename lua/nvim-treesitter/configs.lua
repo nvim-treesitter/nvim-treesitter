@@ -85,7 +85,9 @@ local builtin_modules = {
     is_supported = function(lang)
       return has_some_textobject_mapping(lang) or queries.has_textobjects(lang)
     end,
-    keymaps = {}
+    keymaps = {},
+    swap_next_keymaps = {},
+    swap_previous_keymaps = {}
   }
 }
 

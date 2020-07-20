@@ -13,7 +13,7 @@ function M.get_node_text(node, bufnr)
   if not node then return {} end
 
   -- We have to remember that end_col is end-exclusive
-  local start_row, start_col, end_row, end_col = node:range()
+  local start_row, start_col, end_row, end_col = M.get_node_range(node)
 
   if start_row ~= end_row then
     local lines = api.nvim_buf_get_lines(bufnr, start_row, end_row+1, false)
@@ -131,12 +131,7 @@ end
 
 -- Set visual selection to node
 function M.update_selection(buf, node)
-  local start_row, start_col, end_row, end_col
-  if type(node) == 'table' then
-    start_row, start_col, end_row, end_col = unpack(node)
-  else
-    start_row, start_col, end_row, end_col = node:range()
-  end
+  local start_row, start_col, end_row, end_col = M.get_node_range(node)
 
   if end_row == vim.fn.line('$') then
     end_col = #vim.fn.getline('$')
@@ -187,8 +182,16 @@ function M.is_in_node_range(node, line, col)
   end
 end
 
+function M.get_node_range(node_or_range)
+  if type(node_or_range) == 'table' then
+    return unpack(node_or_range)
+  else
+    return node_or_range:range()
+  end
+end
+
 function M.node_to_lsp_range(node)
-  local start_line, start_col, end_line, end_col = node:range()
+  local start_line, start_col, end_line, end_col = M.get_node_range(node)
   local rtn = {}
   rtn.start = { line = start_line, character = start_col }
   rtn['end'] = { line = end_line, character = end_col }
@@ -222,6 +225,54 @@ function M.memoize_by_buf_tick(fn, bufnr_fn)
     cache[bufnr].result = fn(...)
 
     return cache[bufnr].result
+  end
+end
+
+function M.swap_nodes(node_or_range1, node_or_range2, bufnr, cursor_to_second)
+  if not node_or_range1 or not node_or_range2 then return end
+  local range1 = M.node_to_lsp_range(node_or_range1)
+  local range2 = M.node_to_lsp_range(node_or_range2)
+
+  local text1 = M.get_node_text(node_or_range1)
+  local text2 = M.get_node_text(node_or_range2)
+
+  local edit1 = { range = range1, newText = table.concat(text2, '\n') }
+  local edit2 = { range = range2, newText = table.concat(text1, '\n') }
+  vim.lsp.util.apply_text_edits({edit1, edit2}, bufnr)
+
+  if cursor_to_second then
+    -- Set the item in jump list
+    vim.cmd "normal! m'"
+
+    local char_delta = 0
+    local line_delta = 0
+    if range1["end"].line < range2.start.line
+       or (range1["end"].line == range2.start.line and range1["end"].character < range2.start.character) then
+      line_delta = #text2 - #text1
+    end
+
+    if range1["end"].line == range2.start.line and range1["end"].character < range2.start.character then
+      if line_delta ~= 0 then
+        --- why?
+        --correction_after_line_change =  -range2.start.character
+        --text_now_before_range2 = #(text2[#text2])
+        --space_between_ranges = range2.start.character - range1["end"].character
+        --char_delta = correction_after_line_change + text_now_before_range2 + space_between_ranges
+        --- Equivalent to:
+        char_delta = #(text2[#text2]) - range1["end"].character
+
+        -- add range1.start.character if last line of range1 (now text2) does not start at 0
+        if range1.start.line == range2.start.line + line_delta then
+            char_delta = char_delta + range1.start.character
+        end
+      else
+        char_delta = #(text2[#text2]) - #(text1[#text1])
+      end
+    end
+
+    api.nvim_win_set_cursor(api.nvim_get_current_win(),
+                            {range2.start.line + 1 + line_delta,
+                             range2.start.character + char_delta})
   end
 end
 
