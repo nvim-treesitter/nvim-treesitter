@@ -1,6 +1,6 @@
 ; SCOPES
 (class_declaration
-   body: (_)) @scope
+   body: (_) @scope)
 (method_declaration) @scope
 (block) @scope
 ; 3 captures for `if` - if+else, if only, else only
