@@ -86,6 +86,7 @@
 
 [
  "class"
+ "decltype"
  "constexpr"
  "delete"
  "explicit"
