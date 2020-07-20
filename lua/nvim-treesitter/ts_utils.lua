@@ -186,4 +186,12 @@ function M.is_in_node_range(node, line, col)
   end
 end
 
+function M.node_to_lsp_range(node)
+  local start_line, start_col, end_line, end_col = node:range()
+  local rtn = {}
+  rtn.start = { line = start_line, character = start_col }
+  rtn['end'] = { line = end_line, character = end_col }
+  return rtn
+end
+
 return M

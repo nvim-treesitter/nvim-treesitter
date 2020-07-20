@@ -35,15 +35,14 @@ function M.smart_rename(bufnr)
     table.insert(nodes_to_rename, definition)
   end
 
-  for _, node in ipairs(nodes_to_rename) do
-    local start_row, start_col, _, end_col = node:range()
-    local line = api.nvim_buf_get_lines(bufnr, start_row, start_row + 1, false)[1]
+  local edits = {}
 
-    if line then
-      local new_line = line:sub(1, start_col) .. new_name .. line:sub(end_col + 1, -1)
-      api.nvim_buf_set_lines(bufnr, start_row, start_row + 1, false, { new_line })
-    end
+  for _, node in ipairs(nodes_to_rename) do
+    local lsp_range = ts_utils.node_to_lsp_range(node)
+    local text_edit = { range = lsp_range, newText = new_name }
+    table.insert(edits, text_edit)
   end
+  vim.lsp.util.apply_text_edits(edits, bufnr)
 end
 
 function M.attach(bufnr)
