@@ -6,6 +6,9 @@
 (reference_declarator
   (identifier) @definition.var)
 
+(variadic_declarator
+  (identifier) @definition.var)
+
 (struct_specifier
   name: (type_identifier) @definition.type) 
 
