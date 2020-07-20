@@ -7,6 +7,9 @@
 ((identifier) @field
  (#match? @field "_$"))
 
+; function(Foo ...foo)
+(variadic_parameter_declaration) @parameter
+
 ;(field_expression) @parameter ;; How to highlight this?
 (template_function
   name: (identifier) @function)
@@ -103,3 +106,4 @@
 ] @keyword
 
 "::" @operator
+"..." @operator
