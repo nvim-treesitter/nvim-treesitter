@@ -4,7 +4,7 @@
 (method_declaration) @scope
 (block) @scope
 ; 3 captures for `if` - if+else, if only, else only
-(if_statement) @scope 
+(if_statement) @scope
 (if_statement
   body: (_)) @scope
 (if_statement
@@ -24,10 +24,14 @@
   name: (identifier) @definition.class)
 (method_declaration
   name: (identifier) @definition.method)
-(local_variable_declaration) @definition.var
-(field_declaration) @definition.field
+(local_variable_declaration
+  declarator: (variable_declarator
+                name: (identifier) @definition.var))
+(field_declaration
+  declarator: (variable_declarator
+                name: (identifier) @definition.field))
 (import_declaration) @definition.import
 
-;; REFERENCE
+; REFERENCES
 (identifier) @reference
 (type_identifier) @reference
