@@ -8,7 +8,7 @@
 (if_statement
   body: (_) @scope)
 (if_statement
-  alternative: (_)) @scope
+  alternative: (_) @scope)
 ; 3 captures for`try` - try+catch, try only, catch only
 (try_statement) @scope
 (try_statement
