@@ -1,14 +1,3 @@
-; CREDITS @maxbrunsfeld (maxbrunsfeld@gmail.com)
-
-;(class_declaration
-;  name: (identifier) @name) @definticlass
-;
-;(method_declaration
-;  name: (identifier) @name) @method
-;
-;(method_invocation
-;  name: (identifier) @name) @call
-
 ; SCOPES
 (class_declaration
    body: (_)) @scope
@@ -38,3 +27,8 @@
 (local_variable_declaration) @definition.var
 (field_declaration) @definition.field
 (import_declaration) @definition.import
+
+;; REFERENCE
+(identifier) @reference
+(type_identifier) @reference
+;(field_identifier) @reference
