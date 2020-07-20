@@ -6,7 +6,7 @@
 ; 3 captures for `if` - if+else, if only, else only
 (if_statement) @scope
 (if_statement
-  body: (_)) @scope
+  body: (_) @scope)
 (if_statement
   alternative: (_)) @scope
 ; 3 captures for`try` - try+catch, try only, catch only
