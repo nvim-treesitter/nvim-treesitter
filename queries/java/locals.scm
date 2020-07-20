@@ -1,27 +1,32 @@
 ; SCOPES
 (class_declaration
    body: (_) @scope)
+(enum_declaration
+   body: (_) @scope)
 (method_declaration) @scope
 (block) @scope
-; 3 captures for `if` - if+else, if only, else only
 (if_statement) @scope
 (if_statement
-  body: (_) @scope)
+  consequence: (_) @scope)
 (if_statement
   alternative: (_) @scope)
-; 3 captures for`try` - try+catch, try only, catch only
 (try_statement) @scope
-(try_statement
-  body: (_) @scope)
 (catch_clause) @scope
-
-(for_statement) @scope
 (do_statement) @scope
+(do_statement
+  body: (_) @scope)
 (while_statement) @scope
+(while_statement
+  body: (_) @scope)
+(for_statement) @scope
+(for_statement
+  body: (_) @scope)
 
 ; DEFINITIONS
 (class_declaration
   name: (identifier) @definition.class)
+(enum_declaration
+  name: (identifier) @definition.enum)
 (method_declaration
   name: (identifier) @definition.method)
 (local_variable_declaration
