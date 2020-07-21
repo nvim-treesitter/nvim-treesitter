@@ -11,22 +11,26 @@
 ;------------
 
 (formal_parameters
-  (identifier) @definition)
+  (identifier) @definition.var)
 
 (formal_parameters
   (object_pattern
-    (identifier) @definition))
+    (identifier) @definition.var))
 
 (formal_parameters
   (object_pattern
-    (shorthand_property_identifier) @definition))
+    (shorthand_property_identifier) @definition.var))
 
 (formal_parameters
   (array_pattern
-    (identifier) @definition))
+    (identifier) @definition.var))
+
+(formal_parameters
+  (rest_parameter
+    (identifier) @definition.var))
 
 (variable_declarator
-  name: (identifier) @definition)
+  name: (identifier) @definition.var)
 
 (import_specifier
   (identifier) @definition.import)
