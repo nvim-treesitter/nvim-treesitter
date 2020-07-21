@@ -301,10 +301,10 @@ If everything is okay, then it might be an actual error.
 
 In both cases, feel free to open an issue here.
 
-### I am expreiencing weird highlighting issues as in [#78[(https://github.com/nvim-treesitter/nvim-treesitter/issues/78)
+### I experience weird highlighting issues similar to [#78](https://github.com/nvim-treesitter/nvim-treesitter/issues/78)
 
-This is a weell known issue, that is caused by the tree and the buffer getting out of sync.
-As this issue comes form upstream, we don't have any definitive fix. One thing you can do to force reparsing the whole buffer is to run :
+This is a well known issue, which arise when the tree and the buffer are getting out of sync. \
+As this issue comes from upstream, we don't have any finite fix. To get around this, you can force reparsing the buffer with this command:
 ```vim
 :write | edit | TSBufEnable highlight
 ```
