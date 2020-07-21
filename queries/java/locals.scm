@@ -4,7 +4,7 @@
   body: (_) @scope)
 (enum_declaration
   body: (_) @scope)
-(method_declaration) @scope ; whole method_declaration because args
+(method_declaration) @scope ; whole method_declaration because arguments
 
 ; block
 (block) @scope
@@ -20,7 +20,7 @@
 (try_statement) @scope ; covers try+catch, individual try and catch are covered by (block)
 
 ; loops
-(for_statement) @scope ; whole for_statement because loop variable
+(for_statement) @scope ; whole for_statement because loop iterator variable
 (for_statement         ; "for" body in case there are no braces
   body: (_) @scope)
 (do_statement
