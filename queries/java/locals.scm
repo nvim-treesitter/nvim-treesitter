@@ -18,6 +18,7 @@
 
 ; try/catch
 (try_statement) @scope ; covers try+catch, individual try and catch are covered by (block)
+(catch_clause) @scope ; needed because `Exception` variable
 
 ; loops
 (for_statement) @scope ; whole for_statement because loop iterator variable
