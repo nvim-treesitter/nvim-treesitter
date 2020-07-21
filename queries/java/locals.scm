@@ -1,26 +1,34 @@
 ; SCOPES
+; declarations
 (class_declaration
-   body: (_) @scope)
+  body: (_) @scope)
 (enum_declaration
-   body: (_) @scope)
-(method_declaration) @scope
+  body: (_) @scope)
+(method_declaration) @scope ; whole method_declaration because args
+
+; block
 (block) @scope
-(if_statement) @scope
+
+; if/else
+(if_statement) @scope ; if+else
 (if_statement
-  consequence: (_) @scope)
+  consequence: (_) @scope) ; if body in case there are no braces
 (if_statement
-  alternative: (_) @scope)
-(try_statement) @scope
-(catch_clause) @scope
-(do_statement) @scope
+  alternative: (_) @scope) ; else body in case there are no braces
+
+; try/catch
+(try_statement) @scope ; covers try+catch, individual try and catch are covered by (block)
+
+; loops
+(for_statement) @scope ; whole for_statement because loop variable
+(for_statement         ; "for" body in case there are no braces
+  body: (_) @scope)
 (do_statement
   body: (_) @scope)
-(while_statement) @scope
 (while_statement
   body: (_) @scope)
-(for_statement) @scope
-(for_statement
-  body: (_) @scope)
+
+
 
 ; DEFINITIONS
 (class_declaration
@@ -36,6 +44,8 @@
   declarator: (variable_declarator
                 name: (identifier) @definition.field))
 (import_declaration) @definition.import
+
+
 
 ; REFERENCES
 (identifier) @reference
