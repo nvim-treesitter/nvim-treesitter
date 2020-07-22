@@ -2,6 +2,21 @@
 ;; Copyright (c) 2014 Max Brunsfeld (The MIT License)
 
 ;;
+; Identifiers
+
+(type_identifier) @type
+(field_identifier) @property
+(identifier) @variable
+
+(parameter_declaration (identifier) @parameter)
+(variadic_parameter_declaration (identifier) @parameter)
+
+((identifier) @constant
+ (#eq? @constant "_")) 
+
+((identifier) @constant
+ (#match? @constant "^[A-Z][A-Z\\d_]+$"))
+
 ; Function calls
 
 (call_expression
@@ -18,21 +33,6 @@
 
 (method_declaration
   name: (field_identifier) @method)
-
-; Identifiers
-
-(type_identifier) @type
-(field_identifier) @property
-(identifier) @variable
-
-(parameter_declaration (identifier) @parameter)
-(variadic_parameter_declaration (identifier) @parameter)
-
-((identifier) @constant
- (#eq? @constant "_")) 
-
-((identifier) @constant
- (#match? @constant "^[A-Z][A-Z\\d_]+$"))
 
 ; Operators
 
