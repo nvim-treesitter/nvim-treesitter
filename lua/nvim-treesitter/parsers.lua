@@ -207,6 +207,13 @@ list.nix = {
   }
 }
 
+list.dart = {
+  install_info = {
+    url = "https://github.com/UserNobody14/tree-sitter-dart",
+    files = { "src/parser.c", "src/scanner.c" },
+  }
+}
+
 -- Parsers for injections
 list.regex = {
   install_info = {
