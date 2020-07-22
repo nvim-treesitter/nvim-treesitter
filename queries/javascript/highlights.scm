@@ -72,7 +72,11 @@
 ; Variables
 ;----------
 
-(formal_parameters (identifier) @variable.parameter)
+(formal_parameters (identifier) @parameter)
+
+(formal_parameters
+  (rest_parameter
+    (identifier) @parameter))
 
 (identifier) @variable
 
