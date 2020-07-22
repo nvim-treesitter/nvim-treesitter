@@ -13,12 +13,42 @@
 (marker_annotation
   name: (identifier) @attribute)
 
-; TODO: operators
+; Operators
+
 [
- "@" 
+ "@"
+ "=>"
+ ".."
+ "??"
+ "=="
+ "?"
+ ":"
+ "&&"
+ "%"
+ "<"
+ ">"
+ ">="
+ "<="
+ "||"
+ (is_operator)
+ (prefix_operator)
+ (equality_operator)
  (additive_operator)
 ] @operator
-; TODO: delimiers/punctuation
+
+; Delimiters
+
+"." @punctuation.delimiter
+"," @punctuation.delimiter
+";" @punctuation.delimiter
+
+"(" @punctuation.bracket
+")" @punctuation.bracket
+"{" @punctuation.bracket
+"}" @punctuation.bracket
+"[" @punctuation.bracket
+"]" @punctuation.bracket
+
 
 ; Types
 
@@ -48,8 +78,8 @@
 
 ; Variables
 
-((identifier) @constant
- (#match? @constant "^_*[A-Z][A-Z\d_]+"))
+((identifier) @type
+ (#match? @type "^[A-Z]"))
 
 (this) @constant.builtin
 
@@ -86,13 +116,18 @@
  "extends"
  "final"
  "implements"
- "is"
  "as"
  "mixin"
  "external"
  "new"
  "return"
  "static"
+ "required"
+ "var"
+ "const"
+ "async"
+ "await"
+ ; "rethrow"
  ] @keyword
 ;TODO: var, async, await
 ; "rethrow" @keyword
