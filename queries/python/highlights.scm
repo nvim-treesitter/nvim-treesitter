@@ -13,6 +13,10 @@
 ((identifier) @constant.builtin
  (match? @constant.builtin "^__[a-zA-Z0-9_]*__$"))
 
+((attribute
+    attribute: (identifier) @field)
+ (match? @field "^([A-Z])@!.*$"))
+
 ; Function calls
 
 (decorator) @function
@@ -199,10 +203,6 @@
 (class_definition
   superclasses: (argument_list
     (identifier) @type))
-
-((attribute
-    attribute: (identifier) @field)
- (match? @field "^([A-Z])@!.*$"))
 
 ((class_definition
   body: (block
