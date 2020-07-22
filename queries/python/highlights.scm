@@ -76,6 +76,12 @@
 ; Normal parameters
 (parameters
   (identifier) @parameter)
+; Lambda parameters
+(lambda_parameters
+  (identifier) @parameter)
+(lambda_parameters
+  (tuple
+    (identifier) @parameter ))
 ; Default parameters
 (keyword_argument
   name: (identifier) @parameter)
