@@ -13,6 +13,8 @@
 ; Parameters
 (formal_parameter
   name: (identifier) @parameter)
+(catch_formal_parameter
+  name: (identifier) @parameter)
 
 ;; Lambda parameter
 (inferred_parameters (identifier) @parameter) ; (x,y) -> ...
