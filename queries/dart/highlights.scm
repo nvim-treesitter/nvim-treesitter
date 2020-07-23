@@ -62,6 +62,12 @@
   scope: (identifier) @type)
 (function_signature
   name: (identifier) @method)
+; using method_signature does not work
+; so specifically use getter and setter signatures
+(getter_signature
+  (identifier) @method)
+(setter_signature
+  name: (identifier) @method)
 (enum_declaration
   name: (identifier) @type)
 (enum_constant
@@ -127,9 +133,8 @@
  "const"
  "async"
  "await"
- ; "rethrow"
  ] @keyword
-;TODO: var, async, await
+;TODO:
 ; "rethrow" @keyword
 
 ["if" "else" "switch" "case"] @conditional
