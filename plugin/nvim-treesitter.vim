@@ -44,7 +44,7 @@ highlight default link TSMethod Function
 highlight default link TSField Identifier
 highlight default link TSProperty Identifier
 highlight default link TSConstructor Special
-highlight default link TSAttribute Identifier
+highlight default link TSAnnotation PreProc
 
 highlight default link TSConditional Conditional
 highlight default link TSRepeat Repeat
