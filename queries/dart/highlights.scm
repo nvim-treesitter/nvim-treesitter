@@ -8,9 +8,9 @@
 
 ; Annotations
 (annotation
-  name: (identifier) @attribute)
+  name: (identifier) @annotation)
 (marker_annotation
-  name: (identifier) @attribute)
+  name: (identifier) @annotation)
 
 ; Operators
 
