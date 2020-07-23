@@ -28,6 +28,7 @@ hlmap["character"] = "TSCharacter"
 hlmap["number"] = "TSNumber"
 hlmap["boolean"] = "TSBoolean"
 hlmap["float"] = "TSFloat"
+hlmap["attribute"] = "TSAttribute"
 
 -- Functions
 hlmap["function"] = "TSFunction"
