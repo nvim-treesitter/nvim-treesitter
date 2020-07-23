@@ -283,7 +283,7 @@ List of currently supported languages:
 - [ ] markdown
 - [x] regex (maintained by @theHamsta)
 - [ ] jsdoc
-- [ ] dart
+- [x] dart (maintained by @Akin909)
 
 ## User Query Extensions
 
