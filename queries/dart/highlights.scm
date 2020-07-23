@@ -7,7 +7,6 @@
 (super) @function
 
 ; Annotations
-; TODO: highlight??
 (annotation
   name: (identifier) @attribute)
 (marker_annotation
