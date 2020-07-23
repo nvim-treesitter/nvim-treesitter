@@ -23,6 +23,11 @@
 (parameter_declaration (identifier) @definition.var)
 (variadic_parameter_declaration (identifier) @definition.var)
 
+(for_statement
+ (range_clause
+   left: (expression_list
+           (identifier) @definition.var)))
+
 (type_declaration 
   (type_spec
     name: (type_identifier) @definition.type))
