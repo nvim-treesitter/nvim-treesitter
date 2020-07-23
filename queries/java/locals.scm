@@ -52,6 +52,8 @@
                 name: (identifier) @definition.var))
 (formal_parameter
   name: (identifier) @definition.var)
+(catch_formal_parameter
+  name: (identifier) @definition.var)
 (inferred_parameters (identifier) @definition.var) ; (x,y) -> ...
 (lambda_expression
     parameters: (identifier) @definition.var) ; x -> ...
