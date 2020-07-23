@@ -103,7 +103,7 @@
 ((identifier) @constant
   (#match? @constant "^_*[A-Z][A-Z\d_]+"))
 
-
+(this) @constant.builtin
 
 ; Literals
 
