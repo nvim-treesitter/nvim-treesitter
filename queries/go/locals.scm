@@ -12,7 +12,6 @@
     (#strip! @definition.doc "^//\\s*") ; <- does nothing at the moment
 )
 
-
 (short_var_declaration 
   left: (expression_list
           (identifier) @definition.var)) 
@@ -36,6 +35,8 @@
 (identifier) @reference
 (type_identifier) @reference
 (field_identifier) @reference
+((package_identifier) @reference
+  (set! reference.kind "namespace"))
 
 (package_clause
    (package_identifier) @definition.namespace)
@@ -64,6 +65,7 @@
 
 ;; Scopes
 
+(func_literal) @scope
 (source_file) @scope
 (function_declaration) @scope
 (if_statement) @scope
