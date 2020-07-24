@@ -37,22 +37,30 @@
 (type_identifier) @reference
 (field_identifier) @reference
 
+(package_clause
+   (package_identifier) @definition.namespace)
+
 ;; Call references
-(call_expression
-    function: (identifier) @reference.call) @call
+((call_expression
+   function: (identifier) @reference) @call
+ (set! reference.kind "call" ))
 
-(call_expression
+((call_expression
     function: (selector_expression
-        field: (field_identifier) @reference.call)) @call
+                field: (field_identifier) @reference)) @call
+ (set! reference.kind "call" ))
 
-(call_expression
-    function: (parenthesized_expression
-        (identifier) @reference.call)) @call
 
-(call_expression
+((call_expression
     function: (parenthesized_expression
-        (selector_expression
-            field: (field_identifier) @reference.call))) @call
+                (identifier) @reference)) @call
+ (set! reference.kind "call" ))
+
+((call_expression
+   function: (parenthesized_expression
+               (selector_expression
+                 field: (field_identifier) @reference))) @call
+ (set! reference.kind "call" ))
 
 ;; Scopes
 
