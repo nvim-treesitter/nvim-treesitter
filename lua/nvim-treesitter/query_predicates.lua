@@ -12,8 +12,13 @@ local function get_node(query, match, pred_item)
   return utils.get_at_path(match, query.captures[pred_item]..'.node')
 end
 
+local function unlispify(name)
+  if not name then return '' end
+  return string.gsub(string.gsub(name, "%?$", '') or '', '-', '_')
+end
+
 function M.check_predicate(query, match, pred)
-  local check_function = M[string.gsub('check_'..pred[1], "%?$", '')]
+  local check_function = M[unlispify(pred[1])]
   if check_function then
     return check_function(query, match, pred)
   else
@@ -22,7 +27,7 @@ function M.check_predicate(query, match, pred)
 end
 
 function M.check_negated_predicate(query, match, pred)
-  local check_function = M[string.gsub('check_'..string.sub(pred[1], #"not-" + 1), "%?$", '')]
+  local check_function = M[unlispify(string.sub(pred[1], #"not-" + 1))]
   if check_function then
     return not check_function(query, match, pred)
   else
@@ -30,7 +35,7 @@ function M.check_negated_predicate(query, match, pred)
   end
 end
 
-function M.check_first(query, match, pred)
+function M.first(query, match, pred)
   if #pred ~= 2 then error("first? must have exactly one argument!") end
   local node = get_node(query, match, pred[2])
   if node and node:parent() then
@@ -38,7 +43,7 @@ function M.check_first(query, match, pred)
   end
 end
 
-function M.check_last(query, match, pred)
+function M.last(query, match, pred)
   if #pred ~= 2 then error("first? must have exactly one argument!") end
   local node = get_node(query, match, pred[2])
   if node and node:parent() then
@@ -47,12 +52,28 @@ function M.check_last(query, match, pred)
   end
 end
 
-function M.check_nth(query, match, pred)
+function M.nth(query, match, pred)
   if #pred ~= 3 then error("nth? must have exactly two arguments!") end
   local node = get_node(query, match, pred[2])
   if node and node:parent() then
     return get_nth_child(node:parent(), pred[3] - 1) == node
   end
+end
+
+function M.has_ancestor(query, match, pred)
+  if #pred ~= 3 then error("has-ancestor? must have exactly two arguments!") end
+  local node = get_node(query, match, pred[2])
+  local ancestor_type = pred[3]
+  if not node then return true end
+
+  node = node:parent()
+  while node do
+    if node:type() == ancestor_type then
+      return true
+    end
+    node = node:parent()
+  end
+  return false
 end
 
 return M
