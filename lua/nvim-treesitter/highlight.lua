@@ -19,7 +19,6 @@ hlmap["punctuation.special"] = "TSPunctSpecial"
 
 -- Variable
 hlmap["variable"] = "TSConstant"
-hlmap["variable.builtin"] = "TSConstBuiltin"
 
 -- Constants
 hlmap["constant"] = "TSConstant"
