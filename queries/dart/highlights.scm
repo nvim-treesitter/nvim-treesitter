@@ -104,6 +104,7 @@
 (false) @boolean
 (null_literal) @constant.builtin
 
+(documentation_comment) @comment
 (comment) @comment
 
 ; Keywords
