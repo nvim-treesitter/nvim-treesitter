@@ -112,14 +112,14 @@
 
 [
  "abstract"
- "assert"
- "break"
+ ;"assert"
+ ;"break"
  "on"
  "class"
  "default"
  "enum"
  "extends"
- "final"
+ ;"final"
  "implements"
  "as"
  "mixin"
@@ -129,14 +129,15 @@
  "static"
  "required"
  "var"
- "const"
+ ;"const"
  "async"
  "await"
  ] @keyword
 ;TODO:
 ; "rethrow" @keyword
 
-["if" "else" "switch" "case"] @conditional
+["if" "else" "switch" "default"] @conditional
+; TODO: case
 
 ["try" "throw" "catch" "finally"] @exception
 
