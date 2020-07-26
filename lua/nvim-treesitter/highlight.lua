@@ -17,6 +17,10 @@ hlmap["punctuation.delimiter"] = "TSPunctDelimiter"
 hlmap["punctuation.bracket"] = "TSPunctBracket"
 hlmap["punctuation.special"] = "TSPunctSpecial"
 
+-- Variable
+hlmap["variable"] = "TSIdentifier"
+hlmap["variable.builtin"] = "TSConstBuiltin"
+
 -- Constants
 hlmap["constant"] = "TSConstant"
 hlmap["constant.builtin"] = "TSConstBuiltin"
