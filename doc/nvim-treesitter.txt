@@ -1,4 +1,4 @@
-*nvim-treesitter* 
+*nvim-treesitter*
 
 Minimum version of neovim: nightly
 
@@ -35,7 +35,7 @@ By default, everything is disabled. To enable support for features, in your `ini
         disable = { 'c', 'rust' },        -- list of language that will be disabled
         custom_captures = {               -- mapping of user defined captures to highlight groups
           -- ["foo.bar"] = "Identifier"   -- highlight own capture @foo.bar with highlight group "Identifier", see :h nvim-treesitter-query-extensions
-        },            
+        },
     },
     incremental_selection = {
         enable = true,
@@ -165,7 +165,7 @@ get_node_text(node, bufnr)                        *ts_utils.get_node_text*
     return the text content of a node
 
 is_parent(dest, source)                           *ts_utils.is_parent*
-    determines wether `dest` is a parent of `source` 
+    determines wether `dest` is a parent of `source`
     return a boolean
 
 get_named_children(node)                          *ts_utils.get_named_children*
@@ -176,7 +176,7 @@ get_next_node(node, allow_switch_parent, allow_next_parent) *ts_utils.get_next_n
     if no node is found, returns `nil`.
     if `allow_switch_parent` is true, it will allow switching parent
     when the node is the last node
-    if `allow_next_parent` is true, it will allow next parent if 
+    if `allow_next_parent` is true, it will allow next parent if
     the node is the last node and the next parent doesn't have children.
 
 get_previous_node(node, allow_switch_parents, allow_prev_parent) *ts_utils.get_previous_node*
@@ -360,5 +360,33 @@ This is left as an exercise for the reader.
 								*hl-TSInclude*
 For includes: `#include` in C, `use` or `extern crate` in Rust, or `require`
 in Lua
+
+`TSText`
+								   *hl-TSText*
+For strings considered text in a markup language.
+
+`TSStrong`
+								 *hl-TSStrong*
+For text to be represented with strong.
+
+`TSEmphasis`
+							       *hl-TSEmphasis*
+For text to be represented with emphasis.
+
+`TSUnderline`
+							       *hl-TSUnderline*
+For text to be represented with an underline.
+
+`TSTitle`
+
+Text that is part of a title.
+
+`TSLiteral`
+								*hl-TSLiteral*
+Literal text.
+
+`TSURI`
+								    *hl-TSURI*
+Any URI like a link or email.
 
  vim:tw=78:ts=8:noet:ft=help:norl:

@@ -53,6 +53,15 @@ hlmap["type.builtin"] = "TSTypeBuiltin"
 hlmap["structure"] = "TSStructure"
 hlmap["include"] = "TSInclude"
 
+-- Text
+hlmap["text"] = "TSText"
+hlmap["text.strong"] = "TSStrong"
+hlmap["text.emphasis"] = "TSEmphasis"
+hlmap["text.underline"] = "TSUnderline"
+hlmap["text.title"] = "TSTitle"
+hlmap["text.literal"] = "TSLiteral"
+hlmap["text.uri"] = "TSURI"
+
 function M.attach(bufnr, lang)
   local bufnr = bufnr or api.nvim_get_current_buf()
   local lang = lang or parsers.get_buf_lang(bufnr)

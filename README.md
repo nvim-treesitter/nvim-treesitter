@@ -284,6 +284,7 @@ List of currently supported languages:
 - [x] regex (maintained by @theHamsta)
 - [ ] jsdoc
 - [x] dart (maintained by @Akin909)
+- [x] rst (maintained by @stsewd)
 
 ## User Query Extensions
 
