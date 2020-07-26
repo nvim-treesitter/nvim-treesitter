@@ -214,6 +214,13 @@ list.dart = {
   }
 }
 
+list.rst = {
+  install_info = {
+    url = "https://github.com/stsewd/tree-sitter-rst",
+    files = { "src/parser.c", "src/scanner.c" },
+  }
+}
+
 -- Parsers for injections
 list.regex = {
   install_info = {

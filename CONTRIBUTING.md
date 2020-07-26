@@ -122,6 +122,21 @@ are optional and will not have any effect for now.
     builtin
 @structure
 ```
+
+#### Text
+
+Mainly for markup languages.
+
+```
+@text
+@text.strong
+@text.emphasis
+@text.underline
+@text.title
+@text.literal
+@text.uri
+```
+
 ### Locals
 ```
 @definition for various definitions
