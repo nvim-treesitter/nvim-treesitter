@@ -5,13 +5,13 @@ Minimum version of neovim: nightly
 Authors: Yazdani Kiyan <yazdani.kiyan@protonmail.com>, Vigouroux Thomas <tomvig38@gmail.com>
 
 ==============================================================================
-INTRODUCTION                                       *nvim-treesitter-intro*
+INTRODUCTION					       *nvim-treesitter-intro*
 
 nvim-treesitter wraps the neovim treesitter api to provide functionnalities such
 as highlighting and incremental selection, and a command to easily install parsers.
 
 ==============================================================================
-QUICK START                                        *nvim-treesitter-quickstart*
+QUICK START					  *nvim-treesitter-quickstart*
 
 Install the parser for your language
 
@@ -30,71 +30,79 @@ By default, everything is disabled. To enable support for features, in your `ini
 >
   lua <<EOF
   require'nvim-treesitter.configs'.setup {
-    highlight = {
-        enable = true,                    -- false will disable the whole extension
-        disable = { 'c', 'rust' },        -- list of language that will be disabled
-        custom_captures = {               -- mapping of user defined captures to highlight groups
-          -- ["foo.bar"] = "Identifier"   -- highlight own capture @foo.bar with highlight group "Identifier", see :h nvim-treesitter-query-extensions
-        },
-    },
-    incremental_selection = {
-        enable = true,
-        disable = { 'cpp', 'lua' },
-        keymaps = {                       -- mappings for incremental selection (visual mappings)
-          init_selection = 'gnn',         -- maps in normal mode to init the node/scope selection
-          node_incremental = "grn",       -- increment to the upper named parent
-          scope_incremental = "grc",      -- increment to the upper scope (as defined in locals.scm)
-          node_decremental = "grm",      -- decrement to the previous node
-        }
-    },
-    refactor = {
-      highlight_defintions = {
-        enable = true
+      highlight = {
+	enable = true,                    -- false will disable the whole extension
+	disable = { 'c', 'rust' },        -- list of language that will be disabled
+	custom_captures = {               -- mapping of user defined captures to highlight groups
+	  -- ["foo.bar"] = "Identifier"   -- highlight own capture @foo.bar with highlight group "Identifier", see :h nvim-treesitter-query-extensions
+	},
       },
-      smart_rename = {
-        enable = true,
-        smart_rename = "grr"              -- mapping to rename reference under cursor
-      },
-      navigation = {
-        enable = true,
-        goto_definition = "gnd",          -- mapping to go to definition of symbol under cursor
-        list_definitions = "gnD"          -- mapping to list all definitions in current file
-      }
-    },
-    textobjects = { -- syntax-aware textobjects
+      incremental_selection = {
 	enable = true,
-	disable = {},
-	keymaps = {
-	    ["iL"] = { -- you can define your own textobjects directly here
-		python = "(function_definition) @function",
-		cpp = "(function_definition) @function",
-		c = "(function_definition) @function",
-		java = "(method_declaration) @function"
-	    },
-	    -- or you use the queries from supported languages with textobjects.scm
-	    ["af"] = "@function.outer",
-	    ["if"] = "@function.inner",
-	    ["aC"] = "@class.outer",
-	    ["iC"] = "@class.inner",
-	    ["ac"] = "@conditional.outer",
-	    ["ic"] = "@conditional.inner",
-	    ["ae"] = "@block.outer",
-	    ["ie"] = "@block.inner",
-	    ["al"] = "@loop.outer",
-	    ["il"] = "@loop.inner",
-	    ["is"] = "@statement.inner",
-	    ["as"] = "@statement.outer",
-	    ["ad"] = "@comment.outer",
-	    ["am"] = "@call.outer",
-	    ["im"] = "@call.inner"
+	disable = { 'cpp', 'lua' },
+	keymaps = {                       -- mappings for incremental selection (visual mappings)
+	  init_selection = 'gnn',         -- maps in normal mode to init the node/scope selection
+	  node_incremental = "grn",       -- increment to the upper named parent
+	  scope_incremental = "grc",      -- increment to the upper scope (as defined in locals.scm)
+	  node_decremental = "grm",       -- decrement to the previous node
 	}
-    },
-    ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
+      },
+      refactor = {
+	highlight_definitions = {
+	  enable = true
+	},
+	highlight_current_scope = {
+	  enable = true
+	},
+	smart_rename = {
+	  enable = true,
+	  keymaps = {
+	    smart_rename = "grr"          -- mapping to rename reference under cursor
+	  }
+	},
+	navigation = {
+	  enable = true,
+	  keymaps = {
+	    goto_definition = "gnd",      -- mapping to go to definition of symbol under cursor
+	    list_definitions = "gnD"      -- mapping to list all definitions in current file
+	  }
+	}
+      },
+      textobjects = { -- syntax-aware textobjects
+      enable = true,
+      disable = {},
+      keymaps = {
+	  ["iL"] = { -- you can define your own textobjects directly here
+	  python = "(function_definition) @function",
+	  cpp = "(function_definition) @function",
+	  c = "(function_definition) @function",
+	  java = "(method_declaration) @function"
+	  },
+	  -- or you use the queries from supported languages with textobjects.scm
+	  ["af"] = "@function.outer",
+	  ["if"] = "@function.inner",
+	  ["aC"] = "@class.outer",
+	  ["iC"] = "@class.inner",
+	  ["ac"] = "@conditional.outer",
+	  ["ic"] = "@conditional.inner",
+	  ["ae"] = "@block.outer",
+	  ["ie"] = "@block.inner",
+	  ["al"] = "@loop.outer",
+	  ["il"] = "@loop.inner",
+	  ["is"] = "@statement.inner",
+	  ["as"] = "@statement.outer",
+	  ["ad"] = "@comment.outer",
+	  ["am"] = "@call.outer",
+	  ["im"] = "@call.inner"
+	}
+      },
+      ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
   }
   EOF
 <
+
 ==============================================================================
-USER QUERY EXTENSIONS                        *nvim-treesitter-query-extensions*
+USER QUERY EXTENSIONS			    *nvim-treesitter-query-extensions*
 
 You can add your own query files by placing a query file in vim's runtime path
 after `nvim-treesitter` is sourced.  If the language has a built in query file,
@@ -107,28 +115,33 @@ to the runtime path by adding this to your vim config `set rtp+='path/to/queries
 
 
 ==============================================================================
-COMMANDS                                          *nvim-treesitter-commands*
+COMMANDS					    *nvim-treesitter-commands*
 
-|:TSInstall| {language} ...                        *:TSInstall*
+								  *:TSInstall*
+:TSInstall| {language} ...~
 
 Install one or more treesitter parsers.
 You can use |:TSInstall| `all` to install all parsers.
 
-|:TSInstallInfo|                                   *:TSInstallInfo*
+							      *:TSInstallInfo*
+:TSInstallInfo~
 
 List informations about currently installed parsers
 
-|:TSBufEnable| {module}                            *:TSBufEnable*
+								*:TSBufEnable*
+:TSBufEnable {module}~
 
 Enable {module} on the current buffer.
 A list of modules can be found at |:TSModuleInfo|
 
-|:TSBufDisable| {module}                           *:TSBufDisable*
+							       *:TSBufDisable*
+:TSBufDisable {module}~
 
 Disable {module} on the current buffer
 A list of modules can be found at |:TSModuleInfo|
 
-|:TSBufEnableAll| {module} [{language}]            *:TSBufEnableAll*
+							     *:TSBufEnableAll*
+:TSBufEnableAll {module} [{language}]~
 
 Enable {module} for the session
 if {language} is specified, enable module for the session only for this
@@ -136,7 +149,8 @@ particular language.
 A list of modules can be found at |:TSModuleInfo|
 A list of languages can be found at |:TSInstallInfo|
 
-|:TSBufDisableAll| {module} [{language}]            *:TSBufDisableAll*
+							    *:TSBufDisableAll*
+:TSBufDisableAll {module} [{language}]~
 
 Disable {module} for the session
 if {language} is specified, disable module for the session only for this
@@ -144,76 +158,98 @@ particular language.
 A list of modules can be found at |:TSModuleInfo|
 A list of languages can be found at |:TSInstallInfo|
 
-|:TSModuleInfo| [{module}]                          *:TSModuleInfo*
+							       *:TSModuleInfo*
+:TSModuleInfo [{module}]~
 
 List modules state for the current session.
 
 ==============================================================================
-UTILS                                               *nvim-treesitter-utils*
+UTILS						        *nvim-treesitter-utils*
 
 Nvim treesitter has some wrapper functions that you can retrieve with:
 >
     local ts_utils = require 'nvim-treesitter.ts_utils'
 <
 Methods
+						 *ts_utils.get_node_at_cursor*
+get_node_at_cursor(winnr)~
 
-get_node_at_cursor(winnr)                         *ts_utils.get_node_at_cursor*
-    winnr will be 0 if nil
-    returns the node under the cursor
+`winnr` will be 0 if nil.
+Returns the node under the cursor.
 
-get_node_text(node, bufnr)                        *ts_utils.get_node_text*
-    return the text content of a node
+						      *ts_utils.get_node_text*
+get_node_text(node, bufnr)~
 
-is_parent(dest, source)                           *ts_utils.is_parent*
-    determines wether `dest` is a parent of `source`
-    return a boolean
+Returns the text content of a `node`.
 
-get_named_children(node)                          *ts_utils.get_named_children*
-    return a table of named children of `node`
+							  *ts_utils.is_parent*
+is_parent(dest, source)~
 
-get_next_node(node, allow_switch_parent, allow_next_parent) *ts_utils.get_next_node*
-    return the next node within the same parent.
-    if no node is found, returns `nil`.
-    if `allow_switch_parent` is true, it will allow switching parent
-    when the node is the last node
-    if `allow_next_parent` is true, it will allow next parent if
-    the node is the last node and the next parent doesn't have children.
+Determines whether `dest` is a parent of `source`.
+Returns a boolean.
 
-get_previous_node(node, allow_switch_parents, allow_prev_parent) *ts_utils.get_previous_node*
-    return the previous node within the same parent.
-    `allow_switch_parent` and `allow_prev_parent` follow the same rule
-    as |ts_utils.get_next_node| but if the node is the first node.
+						 *ts_utils.get_named_children*
+get_named_children(node)~
 
-containing_scope(node)                           *ts_utils.containing_scope*
-    return the smallest scope containing the node
+Returns a table of named children of `node`.
 
-parent_scope(node, cursor_pos)                   *ts_utils.parent_scope*
-    return the parent scope of the current scope that contains the node.
-    `cursor_pos` should be `{ row = number, col = number }`
+						      *ts_utilsiget_next_node*
+get_next_node(node, allow_switch_parent, allow_next_parent)~
 
-nested_scope(node, cursor_pos)                   *ts_utils.nested_scope*
-    return the first scope within current scope that contains the node.
-    `cursor_pos` should be `{ row = number, col = number }`
+Returns the next node within the same parent.
+If no node is found, returns `nil`.
+If `allow_switch_parent` is true, it will allow switching parent
+when the node is the last node.
+If `allow_next_parent` is true, it will allow next parent if
+the node is the last node and the next parent doesn't have children.
 
-next_scope(node)                                 *ts_utils.next_scope*
-    return the neighbour scope of the current node
+						  *ts_utils.get_previous_node*
+get_previous_node(node, allow_switch_parents, allow_prev_parent)~
 
-previous_scope(node)                             *ts_utils.previous_scope*
-    return the previous neighbour scope of the current node
+Returns the previous node within the same parent.
+`allow_switch_parent` and `allow_prev_parent` follow the same rule
+as |ts_utils.get_next_node| but if the node is the first node.
+
+						   *ts_utils.containing_scope*
+containing_scope(node)~
+
+Returns the smallest scope containing the node.
+
+						       *ts_utils.parent_scope*
+parent_scope(node, cursor_pos)~
+
+Returns the parent scope of the current scope that contains the node.
+`cursor_pos` should be `{ row = number, col = number }`
+
+						       *ts_utils.nested_scope*
+nested_scope(node, cursor_pos)~
+
+Returns the first scope within current scope that contains the node.
+`cursor_pos` should be `{ row = number, col = number }`
+
+							 *ts_utils.next_scope*
+next_scope(node)~
+
+Returns the neighbour scope of the current node.
+
+						     *ts_utils.previous_scope*
+previous_scope(node)~
+
+Returns the previous neighbour scope of the current node.
 
 ==============================================================================
-FUNCTIONS                                         *nvim-treesitter-functions*
+FUNCTIONS                                          *nvim-treesitter-functions*
 
-|nvim_treesitter#statusline(size)|
 						*nvim_treesitter#statusline()*
+nvim_treesitter#statusline(size)~
 
 Returns a string describing the current position in the syntax tree. This
 could be used as a statusline indicator.
 Note: The `size` argument is optionnal. When specified, the string will not be
       longer than `size`.
 
-|nvim_treesitter#foldexpr()|
 						  *nvim_treesitter#foldexpr()*
+nvim_treesitter#foldexpr()~
 
 Functions to be used to determine the fold level at a given line number.
 To use it: >
@@ -228,7 +264,7 @@ Note: This is highly experimental, and folding can break on some types of
 HIGHLIGHTS                                        *nvim-treesitter-highlights*
 
 `TSError`
-							          *hl-TSError*
+								  *hl-TSError*
 For syntax/parser errors.
 
 You can deactivate highlighting of syntax errors by adding this to your
@@ -389,4 +425,4 @@ Literal text.
 								    *hl-TSURI*
 Any URI like a link or email.
 
- vim:tw=78:ts=8:noet:ft=help:norl:
+vim:tw=78:ts=8:noet:ft=help:norl:
