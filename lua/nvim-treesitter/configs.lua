@@ -106,10 +106,6 @@ local function enable_module(mod, bufnr, lang)
   local bufnr = bufnr or api.nvim_get_current_buf()
   local lang = lang or parsers.get_buf_lang(bufnr)
 
-  if not parsers.list[lang] then
-    return
-  end
-
   M.attach_module(mod, bufnr, lang)
 end
 
@@ -342,7 +338,7 @@ end
 function M.attach_module(mod_name, bufnr, lang)
   local resolved_mod = resolve_module(mod_name)
 
-  if resolved_mod then
+  if resolved_mod and parsers.has_parser(lang) then
     resolved_mod.attach(bufnr, lang)
   end
 end

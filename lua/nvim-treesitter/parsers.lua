@@ -252,7 +252,7 @@ for name, obj in pairs(M.list) do
 end
 
 function M.ft_to_lang(ft)
-  return ft_to_parsername[ft]
+  return ft_to_parsername[ft] or ft
 end
 
 function M.lang_to_ft(lang)
