@@ -12,13 +12,8 @@ local function get_node(query, match, pred_item)
   return utils.get_at_path(match, query.captures[pred_item]..'.node')
 end
 
-local function unlispify(name)
-  if not name then return '' end
-  return string.gsub(string.gsub(name, "%?$", '') or '', '-', '_')
-end
-
 function M.check_predicate(query, match, pred)
-  local check_function = M[unlispify(pred[1])]
+  local check_function = M[pred[1]]
   if check_function then
     return check_function(query, match, pred)
   else
@@ -27,7 +22,7 @@ function M.check_predicate(query, match, pred)
 end
 
 function M.check_negated_predicate(query, match, pred)
-  local check_function = M[unlispify(string.sub(pred[1], #"not-" + 1))]
+  local check_function = M[string.sub(pred[1], #"not-" + 1)]
   if check_function then
     return not check_function(query, match, pred)
   else
@@ -35,7 +30,7 @@ function M.check_negated_predicate(query, match, pred)
   end
 end
 
-function M.first(query, match, pred)
+M['first?'] = function (query, match, pred)
   if #pred ~= 2 then error("first? must have exactly one argument!") end
   local node = get_node(query, match, pred[2])
   if node and node:parent() then
@@ -43,7 +38,7 @@ function M.first(query, match, pred)
   end
 end
 
-function M.last(query, match, pred)
+M['last?'] = function (query, match, pred)
   if #pred ~= 2 then error("first? must have exactly one argument!") end
   local node = get_node(query, match, pred[2])
   if node and node:parent() then
@@ -52,7 +47,7 @@ function M.last(query, match, pred)
   end
 end
 
-function M.nth(query, match, pred)
+ M['nth?'] = function(query, match, pred)
   if #pred ~= 3 then error("nth? must have exactly two arguments!") end
   local node = get_node(query, match, pred[2])
   if node and node:parent() then
@@ -60,7 +55,7 @@ function M.nth(query, match, pred)
   end
 end
 
-function M.has_ancestor(query, match, pred)
+M['has_ancestor?'] = function(query, match, pred)
   if #pred ~= 3 then error("has-ancestor? must have exactly two arguments!") end
   local node = get_node(query, match, pred[2])
   local ancestor_type = pred[3]
