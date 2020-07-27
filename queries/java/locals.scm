@@ -58,15 +58,9 @@
 (lambda_expression
     parameters: (identifier) @definition.var) ; x -> ...
 
-; we need submatch!
-; TODO: capture nested imports
-;(import_declaration
- ;(scoped_identifier
-   ;((identifier) @definition.import)))
-;(import_declaration
-  ;(scoped_identifier
-    ;(scoped_identifier
-      ;((identifier) @definition.import))))
+((scoped_identifier
+  (identifier) @definition.import)
+ (has-ancestor? @definition.import import_declaration))
 
 (field_declaration
   declarator: (variable_declarator
