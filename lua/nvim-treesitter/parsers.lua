@@ -5,21 +5,21 @@ local list = {}
 
 list.javascript = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-javascript",
+    url = "https://github.com/tree-sitter/tree-sitter-javascript/tree/0711e93eb265f729c88c5555989d60bee3011873",
     files = { "src/parser.c", "src/scanner.c" },
   }
 }
 
 list.c = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-c",
+    url = "https://github.com/tree-sitter/tree-sitter-c/tree/99151b1e9293c9e025498fee7e6691e1a52e1d03",
     files = { "src/parser.c" }
   }
 }
 
 list.cpp = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-cpp",
+    url = "https://github.com/tree-sitter/tree-sitter-cpp/tree/5e7476bd014445abdae879661e9caf299215478a",
     files = { "src/parser.c", "src/scanner.cc" }
   },
   used_by = { "cuda" },
@@ -27,42 +27,42 @@ list.cpp = {
 
 list.rust = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-rust",
+    url = "https://github.com/tree-sitter/tree-sitter-rust/tree/40620bf4097cbc9cea79504d7e877865df43a19e",
     files = { "src/parser.c", "src/scanner.c" },
   }
 }
 
 list.lua = {
   install_info = {
-    url = "https://github.com/nvim-treesitter/tree-sitter-lua",
+    url = "https://github.com/nvim-treesitter/tree-sitter-lua/tree/d835774e14fd7073567358cdb8900c6012ea5eef",
     files = { "src/parser.c", "src/scanner.cc" }
   }
 }
 
 list.python = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-python",
+    url = "https://github.com/tree-sitter/tree-sitter-python/tree/d00b1d4016bdaf74e24a1fbddcfd07e08deebcd0",
     files = { "src/parser.c", "src/scanner.cc" },
   }
 }
 
 list.go = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-go",
+    url = "https://github.com/tree-sitter/tree-sitter-go/tree/3f957c40c16b3f4d1af95bd8d1f02aef9a005387",
     files = { "src/parser.c" },
   }
 }
 
 list.ruby = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-ruby",
+    url = "https://github.com/tree-sitter/tree-sitter-ruby/tree/80d73e15994f10fab9743316bfc7cbc8d3966939",
     files = { "src/parser.c", "src/scanner.cc" },
   }
 }
 
 list.bash = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-bash",
+    url = "https://github.com/tree-sitter/tree-sitter-bash/tree/8ece09ca4c0b5e59b124cd19fa92c76b1a9e9dd4",
     files = { "src/parser.c", "src/scanner.cc" },
   },
   used_by = { "zsh" },
@@ -71,21 +71,21 @@ list.bash = {
 
 list.php = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-php",
+    url = "https://github.com/tree-sitter/tree-sitter-php/tree/59d697e94418f4a22876e2f873025c989842874f",
     files = { "src/parser.c", "src/scanner.cc" },
   }
 }
 
 list.java = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-java",
+    url = "https://github.com/tree-sitter/tree-sitter-java/tree/334bf631a1f0c0d87251f0ef0c5d00130fa57d78",
     files = { "src/parser.c" },
   }
 }
 
 list.html = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-html",
+    url = "https://github.com/tree-sitter/tree-sitter-html/tree/7f442e1c6163d450c69c75c7a621badc3a0ea98f",
     files = { "src/parser.c", "src/scanner.cc" },
   }
 }
@@ -99,14 +99,14 @@ list.julia = {
 
 list.json = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-json",
+    url = "https://github.com/tree-sitter/tree-sitter-json/tree/d3976b27df8622ed17bef6dd5e358b398e73c676",
     files = { "src/parser.c" },
   }
 }
 
 list.css = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-css",
+    url = "https://github.com/tree-sitter/tree-sitter-css/tree/23f2cb97d47860c517f67f03e1f4b621d5bd2085",
     files = { "src/parser.c", "src/scanner.c" },
   }
 }
@@ -135,7 +135,7 @@ list.c_sharp = {
 
 list.typescript = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-typescript",
+    url = "https://github.com/tree-sitter/tree-sitter-typescript/tree/f289f293f092bf76fd6d052bce606b65633c9187",
     files = { "src/parser.c", "src/scanner.c" },
     location = "tree-sitter-typescript/typescript"
   }
@@ -209,7 +209,7 @@ list.nix = {
 
 list.dart = {
   install_info = {
-    url = "https://github.com/UserNobody14/tree-sitter-dart",
+    url = "https://github.com/UserNobody14/tree-sitter-dart/tree/fc8f57142f2a0b7db7b24559a11e35b534a0ee9b",
     files = { "src/parser.c", "src/scanner.c" },
   }
 }
