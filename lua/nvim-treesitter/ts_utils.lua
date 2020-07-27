@@ -113,6 +113,7 @@ function M.get_named_children(node)
 end
 
 function M.get_node_at_cursor(winnr)
+  if not parsers.has_parser() then return end
   local cursor = api.nvim_win_get_cursor(winnr or 0)
   local root = parsers.get_parser():parse():root()
   return root:named_descendant_for_range(cursor[1]-1,cursor[2],cursor[1]-1,cursor[2])
