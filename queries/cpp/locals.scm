@@ -29,7 +29,8 @@
 ;template <typename T>
 (type_parameter_declaration
   (type_identifier) @definition.type)
-     
+(template_declaration) @scope
+
 ;; Namespaces
 (namespace_definition 
   name: (identifier) @definition.namespace
