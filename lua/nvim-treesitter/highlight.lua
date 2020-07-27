@@ -9,7 +9,9 @@ local M = {
   highlighters = {}
 }
 
-local hlmap = vim.treesitter.TSHighlighter.hl_map
+local TSHighlighter = vim.treesitter.TSHighlighter
+
+local hlmap = TSHighlighter.hl_map
 
 -- Misc
 hlmap.error = "TSError"
@@ -52,6 +54,13 @@ hlmap["type.builtin"] = "TSTypeBuiltin"
 hlmap["structure"] = "TSStructure"
 hlmap["include"] = "TSInclude"
 
+function M.create_highlighter(bufnr, lang)
+  local query = queries.get_query(lang, "highlights")
+  if not query then return end
+
+  M.highlighters[bufnr] = ts.TSHighlighter.new(query, bufnr, lang)
+end
+
 function M.attach(bufnr, lang)
   local bufnr = bufnr or api.nvim_get_current_buf()
   local lang = lang or parsers.get_buf_lang(bufnr)
@@ -61,10 +70,7 @@ function M.attach(bufnr, lang)
     hlmap[k] = v
   end
 
-  local query = queries.get_query(lang, "highlights")
-  if not query then return end
-
-  M.highlighters[bufnr] = ts.TSHighlighter.new(query, bufnr, lang)
+  create_highlighter(bufnr, lang)
 end
 
 function M.detach(bufnr)
