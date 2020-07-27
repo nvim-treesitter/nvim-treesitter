@@ -31,6 +31,8 @@
 
 ;; References
 (identifier) @reference
+((field_identifier) @reference
+                   (set! reference.kind "field"))
 ((type_identifier) @reference
                    (set! reference.kind "type"))
 
