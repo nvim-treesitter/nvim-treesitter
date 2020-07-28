@@ -236,9 +236,9 @@ list.jsdoc = {
   }
 }
 
-list.scheme = {
+list.query = {
   install_info = {
-    url = "https://github.com/nvim-treesitter/tree-sitter-scheme",
+    url = "https://github.com/nvim-treesitter/tree-sitter-query",
     files = { "src/parser.c" }
   }
 }
