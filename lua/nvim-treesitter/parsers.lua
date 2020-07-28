@@ -236,6 +236,13 @@ list.jsdoc = {
   }
 }
 
+list.scheme = {
+  install_info = {
+    url = "https://github.com/nvim-treesitter/tree-sitter-scheme",
+    files = { "src/parser.c" }
+  }
+}
+
 local M = {
   list = list
 }
