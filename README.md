@@ -296,6 +296,7 @@ List of currently supported languages:
 - [ ] jsdoc
 - [x] dart (maintained by @Akin909)
 - [x] rst (maintained by @stsewd)
+- [x] tree-sitter query language (maintained by @steelsojka)
 
 ## User Query Extensions
 
