@@ -59,6 +59,15 @@
 "#"
  ] @operator
 
+;; Brackets
+[
+ "("
+ ")"
+ "["
+ "]"
+ "{"
+ "}"
+] @punctuation.bracket
 
 ;; Constants
 [
