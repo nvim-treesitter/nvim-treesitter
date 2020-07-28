@@ -1,6 +1,3 @@
-![Nvim-treesitter](nvim-treesitter.png)
-Traditionnal highlighting (left) vs Treesitter-based highlighting (right).
-
 [![Gitter](https://badges.gitter.im/nvim-treesitter/community.svg)](https://gitter.im/nvim-treesitter/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 ![Linting and style checking](https://github.com/nvim-treesitter/nvim-treesitter/workflows/Linting%20and%20style%20checking/badge.svg?branch=master)
 ![Check loading of syntax files](https://github.com/nvim-treesitter/nvim-treesitter/workflows/Check%20loading%20of%20syntax%20files/badge.svg)
@@ -8,6 +5,10 @@ Traditionnal highlighting (left) vs Treesitter-based highlighting (right).
 # nvim-treesitter
 
 Treesitter configurations and abstraction layer for Neovim.
+
+![Nvim-treesitter](nvim-treesitter.png)
+
+Traditional highlighting (left) vs Treesitter-based highlighting (right).
 
 **Warning: Treesitter and Treesitter highlighting are an experimental feature of nightly versions of Neovim.
 Please consider the experience with this plug-in as experimental until Neovim 0.5 is released!**
@@ -32,7 +33,7 @@ Simply add these lines to your `init.vim` :
 Plug 'nvim-treesitter/nvim-treesitter'
 ```
 
-### Using neovim `pack` feature
+### Using Neovim `pack` feature
 
 We highly recommend reading `:h packages` to learn more about this feature, but you can still follow these steps:
 
@@ -44,77 +45,55 @@ $ git clone https://github.com/nvim-treesitter/nvim-treesitter.git
 
 ## Adding parsers
 
-Treesitter is using a different _parser_ for every language. It can be quite a pain to install, but fortunately `nvim-treesitter`
+Treesitter uses a different _parser_ for every language. It can be quite a pain to install, but fortunately `nvim-treesitter`
 provides two command to tackle this issue:
-  - `TSInstall` to install one or more parser. You can use `TSInstall all` to download all parsers.
-  - `TSInstallInfo` to know which parser is installed.
 
-Let's say you need parsers for `lua`, `c`, and `python`, this is how you do with these commands:
+- `TSInstall {language}` to install one or more parsers.
+  `TSInstall <tab>` will give you a list of supported languages, or select `all` to install them all.
+- `TSInstallInfo` to know which parser is installed.
+
+Let's say you need parsers for `lua`, this is how you do with these commands:
 
 ```vim
-:TSInstall c
-Downloading...
-Compiling...
-Treesitter parser for c has been installed
-
 :TSInstall lua
 Downloading...
 Compiling...
 Treesitter parser for lua has been installed
-
-:TSInstall python
-Downloading...
-Compiling...
-Treesitter parser for python has been installed
 ```
 
 Cool, lets see which parsers are installed:
 
 ```vim
 :TSInstallInfo
-csharp     [✗] not installed
+lua        [✓] installed
+c          [✗] installed
 html       [✗] not installed
 typescript [✗] not installed
-c          [✓] installed
-swift      [✗] not installed
-java       [✗] not installed
-python     [✓] installed
-cpp        [✗] not installed
-lua        [✓] installed
-ruby       [✗] not installed
-ocaml      [✗] not installed
-go         [✗] not installed
-rust       [✗] not installed
-json       [✗] not installed
-javascript [✗] not installed
-css        [✗] not installed
-julia      [✗] not installed
-php        [✗] not installed
-bash       [✗] not installed
-tsx        [✗] not installed
+...
 ```
 
-And now you should be able to use every functionality `nvim-treesitter` provides!
+And now you should be ready to use every functionality `nvim-treesitter` provides!
 
 ## Setup
 
-In your `init.vim`:
+All modules are disabled by default,
+so you'll need to activate them by putting this in your `init.vim`:
 
 ```lua
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
     highlight = {
       enable = true,                    -- false will disable the whole extension
-      disable = { 'c', 'rust' },        -- list of language that will be disabled
+      disable = { "c", "rust" },        -- list of language that will be disabled
       custom_captures = {               -- mapping of user defined captures to highlight groups
         -- ["foo.bar"] = "Identifier"   -- highlight own capture @foo.bar with highlight group "Identifier", see :h nvim-treesitter-query-extensions
       },
     },
     incremental_selection = {
       enable = true,
-      disable = { 'cpp', 'lua' },
+      disable = { "cpp", "lua" },
       keymaps = {                       -- mappings for incremental selection (visual mappings)
-        init_selection = 'gnn',         -- maps in normal mode to init the node/scope selection
+        init_selection = "gnn",         -- maps in normal mode to init the node/scope selection
         node_incremental = "grn",       -- increment to the upper named parent
         scope_incremental = "grc",      -- increment to the upper scope (as defined in locals.scm)
         node_decremental = "grm",       -- decrement to the previous node
@@ -146,10 +125,10 @@ require'nvim-treesitter.configs'.setup {
     disable = {},
     keymaps = {
         ["iL"] = { -- you can define your own textobjects directly here
-        python = "(function_definition) @function",
-        cpp = "(function_definition) @function",
-        c = "(function_definition) @function",
-        java = "(method_declaration) @function"
+          python = "(function_definition) @function",
+          cpp = "(function_definition) @function",
+          c = "(function_definition) @function",
+          java = "(method_declaration) @function"
         },
         -- or you use the queries from supported languages with textobjects.scm
         ["af"] = "@function.outer",
@@ -169,7 +148,7 @@ require'nvim-treesitter.configs'.setup {
         ["im"] = "@call.inner"
       }
     },
-    ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
+    ensure_installed = "all" -- one of "all", "language", or a list of languages
 }
 EOF
 ```
@@ -191,7 +170,7 @@ Each feature can be enabled or disabled by different means:
 The goal of `nvim-treesitter` is both to provide a simple and easy way to use the interface for Treesitter in Neovim,
 but also to add some functionalities to it:
 
-Some of these features are :
+Some of these features are:
 
 - [x] Incremental selection
 - [x] Syntax based code folding (`set foldmethod=expr foldexpr=nvim_treesitter#foldexpr()`)
@@ -249,7 +228,7 @@ Modules can consist of the following properties:
 
 ## Utils
 
-you can get some utility functions with
+You can get some utility functions with
 
 ```lua
 local ts_utils = require 'nvim-treesitter.ts_utils'
@@ -264,39 +243,40 @@ For `nvim-treesitter` to work, we need to use query files such as those you can 
 We are looking for maintainers to write query files for their languages.
 
 List of currently supported languages:
-- [x] lua  (maintained by @vigoux)
-- [x] ruby (maintained by @TravonteD)
-- [x] c (maintained by @vigoux)
-- [x] go (maintained by @theHamsta, @WinWisely268)
-- [x] cpp (maintained by @theHamsta, extends C queries)
-- [x] rust (partial support, maintained by @vigoux)
-- [x] python (maintained by @theHamsta)
-- [x] javascript (maintained by @steelsojka)
-- [x] typescript (maintained by @steelsojka)
-- [ ] tsx
-- [x] json (maintained by @steelsojka)
-- [x] html (maintained by @TravonteD)
-- [x] csharp (maintained by @svermeulen)
-- [ ] swift
-- [x] java
-- [ ] ocaml
-- [x] css (maintained by @TravonteD)
-- [ ] julia
-- [ ] php
+
 - [x] bash (maintained by @TravonteD)
-- [ ] scala
-- [ ] haskell
-- [ ] toml
-- [ ] vue
-- [ ] elm
-- [ ] yaml
-- [ ] nix
-- [ ] markdown
-- [x] regex (maintained by @theHamsta)
-- [ ] jsdoc
+- [x] c (maintained by @vigoux)
+- [x] cpp (maintained by @theHamsta, extends C queries)
+- [x] csharp (maintained by @svermeulen)
+- [x] css (maintained by @TravonteD)
 - [x] dart (maintained by @Akin909)
+- [ ] elm
+- [x] go (maintained by @theHamsta, @WinWisely268)
+- [ ] haskell
+- [x] html (maintained by @TravonteD)
+- [x] java
+- [x] javascript (maintained by @steelsojka)
+- [ ] jsdoc
+- [x] json (maintained by @steelsojka)
+- [ ] julia
+- [x] lua  (maintained by @vigoux)
+- [ ] markdown
+- [ ] nix
+- [ ] ocaml
+- [ ] php
+- [x] python (maintained by @theHamsta)
+- [x] regex (maintained by @theHamsta)
 - [x] rst (maintained by @stsewd)
+- [x] ruby (maintained by @TravonteD)
+- [x] rust (partial support, maintained by @vigoux)
+- [ ] scala
+- [ ] swift
+- [ ] toml
 - [x] tree-sitter query language (maintained by @steelsojka)
+- [ ] tsx
+- [x] typescript (maintained by @steelsojka)
+- [ ] vue
+- [ ] yaml
 
 ## User Query Extensions
 
@@ -309,17 +289,17 @@ You can also manually add query paths to the runtime path by adding this to your
 
 Before doing anything run `:checkhealth nvim_treesitter`. This will help you find where the bug might come from.
 
-### Feature `X` does not work for language `Y`...
+### Feature `X` does not work for `{language}`...
 
-First, check the `## Y parser healthcheck` section of `:checkhealth` if you have any warning.
+First, check the `## {language} parser healthcheck` section of `:checkhealth` if you have any warning.
 If you do, it's highly possible that this is the cause of the problem.
 If everything is okay, then it might be an actual error.
 
-In both cases, feel free to open an issue here.
+In both cases, feel free to [open an issue here](https://github.com/nvim-treesitter/nvim-treesitter/issues/new/choose).
 
 ### I experience weird highlighting issues similar to [#78](https://github.com/nvim-treesitter/nvim-treesitter/issues/78)
 
-This is a well known issue, which arise when the tree and the buffer are getting out of sync. \
+This is a well known issue, which arise when the tree and the buffer are getting out of sync.
 As this issue comes from upstream, we don't have any finite fix. To get around this, you can force reparsing the buffer with this command:
 
 ```vim
