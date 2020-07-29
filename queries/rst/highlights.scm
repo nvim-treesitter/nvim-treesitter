@@ -50,6 +50,14 @@
 
 (standalone_hyperlink) @text.uri
 
+(role) @function
+
+((role) @function.builtin
+ (#match?
+  @function.builtin
+  ; https://docutils.sourceforge.io/docs/ref/rst/roles.html
+  "^:(emphasis|literal|code|math|pep-reference|rfc-reference|strong|subscript|superscript|title-reference|raw):$"))
+
 [
   (interpreted_text)
   (literal)
