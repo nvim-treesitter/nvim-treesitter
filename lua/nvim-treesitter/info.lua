@@ -76,6 +76,16 @@ local function module_info(mod)
   end
 end
 
+function M.installed_parsers()
+  local installed = {}
+  for _, p in pairs(parsers.available_parsers()) do
+    if parsers.has_parser(p) then
+      table.insert(installed, p)
+    end
+  end
+  return installed
+end
+
 M.commands = {
   TSInstallInfo = {
     run = install_info,

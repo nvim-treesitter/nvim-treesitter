@@ -4,6 +4,7 @@ local luv = vim.loop
 
 local utils = require'nvim-treesitter.utils'
 local parsers = require'nvim-treesitter.parsers'
+local info = require'nvim-treesitter.info'
 
 local M = {}
 
@@ -122,11 +123,13 @@ end
 
 local function install_lang(lang, ask_reinstall, cache_folder, package_path, with_sync)
   if #api.nvim_get_runtime_file('parser/'..lang..'.so', false) > 0 then
-    if not ask_reinstall then return end
+    if ask_reinstall ~= 'force' then
+      if not ask_reinstall then return end
 
-    local yesno = fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
-    print('\n ') -- mandatory to avoid messing up command line
-    if not string.match(yesno, '^y.*') then return end
+      local yesno = fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
+      print('\n ') -- mandatory to avoid messing up command line
+      if not string.match(yesno, '^y.*') then return end
+    end
   end
 
   local parser_config = parsers.get_parser_configs()[lang]
@@ -176,6 +179,17 @@ local function install(with_sync, ask_reinstall)
   end
 end
 
+function M.update(lang)
+  if lang then
+    install(false, 'force')(lang)
+  else
+    local installed = info.installed_parsers()
+    for _, lang in pairs(installed) do
+      install(false, 'force')(lang)
+    end
+  end
+end
+
 M.ensure_installed = install(false, false)
 
 M.commands = {
@@ -191,6 +205,13 @@ M.commands = {
     args = {
       "-nargs=+",
       "-complete=custom,v:lua.ts_installable_parsers"
+    }
+  },
+  TSUpdate = {
+    run = M.update,
+    args = {
+      "-nargs=*",
+      "-complete=custom,v:lua.ts_installed_parsers"
     }
   }
 }
