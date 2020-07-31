@@ -1,4 +1,4 @@
-; Marks
+;; Marks
 
 [
   ".."
@@ -11,7 +11,7 @@
   (transition)
 ] @punctuation.special
 
-; Directives
+;; Directives
 
 (directive
   name: (type) @function)
@@ -20,7 +20,14 @@
   name: (type) @include)
  (#match? @include "^include::$"))
 
-; Blocks
+((directive
+   name: (type) @function.builtin)
+ (#match?
+  @function.builtin
+  ; https://docutils.sourceforge.io/docs/ref/rst/directives.html
+  "^(attention|caution|danger|error|hint|important|note|tip|warning|admonition)|(image|figure)|(topic|sidebar|line-block|parsed-literal|code|math|rubric|epigraph|highlights|pull-quote|compound|container)|(table|csv-table|list-table)|(contents|sectnum|section-numbering|header|footer)|(target-notes)|(meta)|(replace|unicode|date)|(raw|class|role|default-role|title|restructuredtext-test-directive)::$"))
+
+;; Blocks
 
 [
   (literal_block)
@@ -42,7 +49,7 @@
   name: (reference)? @constant
   link: (_) @text.literal)
 
-; Inline markup
+;; Inline markup
 
 (emphasis) @text.emphasis
 
@@ -56,10 +63,32 @@
  (#match?
   @function.builtin
   ; https://docutils.sourceforge.io/docs/ref/rst/roles.html
-  "^:(emphasis|literal|code|math|pep-reference|rfc-reference|strong|subscript|superscript|title-reference|raw):$"))
+  "^:(emphasis|literal|code|math|pep-reference|PEP|rfc-reference|RFC|strong|subscript|sub|superscript|sup|title-reference|title|t|raw):$"))
+
+; Prefix role
+((interpreted_text
+  (role) @_role
+  "interpreted_text" @text.emphasis)
+ (#eq? @_role ":emphasis:"))
+
+((interpreted_text
+  (role) @_role
+  "interpreted_text" @text.strong)
+ (#eq? @_role ":strong:"))
+
+; Sufix role
+((interpreted_text
+  "interpreted_text" @text.emphasis
+  (role) @_role)
+ (#eq? @_role ":emphasis:"))
+
+((interpreted_text
+  "interpreted_text" @text.strong
+  (role) @_role)
+ (#eq? @_role ":strong:"))
 
 [
-  (interpreted_text)
+ "interpreted_text"
   (literal)
 ] @text.literal
 
@@ -71,13 +100,13 @@
   (reference)
 ] @constant
 
-; Embedded
+;; Embedded
 
-(doctest_block) @embed
+(doctest_block) @embedded
 (directive
-  body: (body) @embed)
+  body: (body) @embedded)
 
-; Others
+;; Others
 
 (title) @text.title
 
