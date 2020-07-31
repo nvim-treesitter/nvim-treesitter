@@ -6,6 +6,9 @@
 (arrow_function) @scope
 (function_declaration) @scope
 (method_definition) @scope
+(for_statement) @scope
+(for_in_statement) @scope
+(catch_clause) @scope
 
 ; Definitions
 ;------------
