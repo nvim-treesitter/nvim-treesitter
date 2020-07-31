@@ -263,7 +263,7 @@ List of currently supported languages:
 - [ ] markdown
 - [ ] nix
 - [ ] ocaml
-- [ ] php
+- [x] php (maintained by @tk-shirasaka)
 - [x] python (maintained by @theHamsta)
 - [x] regex (maintained by @theHamsta)
 - [x] rst (maintained by @stsewd)
@@ -271,7 +271,7 @@ List of currently supported languages:
 - [x] rust (partial support, maintained by @vigoux)
 - [ ] scala
 - [ ] swift
-- [ ] toml
+- [x] toml (maintained by @tk-shirasaka)
 - [x] tree-sitter query language (maintained by @steelsojka)
 - [ ] tsx
 - [x] typescript (maintained by @steelsojka)
