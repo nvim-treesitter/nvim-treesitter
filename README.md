@@ -287,7 +287,8 @@ You can also manually add query paths to the runtime path by adding this to your
 
 ## Troubleshooting
 
-Before doing anything run `:checkhealth nvim_treesitter`. This will help you find where the bug might come from.
+Before doing anything make sure you have the latest version of this plugin and run `:checkhealth nvim_treesitter`.
+This will help you find where the bug might come from.
 
 ### Feature `X` does not work for `{language}`...
 
@@ -296,6 +297,13 @@ If you do, it's highly possible that this is the cause of the problem.
 If everything is okay, then it might be an actual error.
 
 In both cases, feel free to [open an issue here](https://github.com/nvim-treesitter/nvim-treesitter/issues/new/choose).
+
+### I get `Error detected while processing .../plugin/nvim-treesitter.vim` everytime I open Neovim
+
+This is probably due to a change in a parser's grammar or its queries.
+Try updating the parser that you suspect has changed (`:TSUpdate {language}`) or all of them (`:TSUpdate`).
+If the error persists after updating all parsers,
+please [open an issue](https://github.com/nvim-treesitter/nvim-treesitter/issues/new/choose).
 
 ### I experience weird highlighting issues similar to [#78](https://github.com/nvim-treesitter/nvim-treesitter/issues/78)
 
