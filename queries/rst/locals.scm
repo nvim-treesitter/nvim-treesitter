@@ -21,6 +21,12 @@
 ; Inline targets
 (target) @definition
 
+; The role directive can define a new role
+((directive
+  name: (type) @_type
+  body: (body) @definition)
+ (#match? @_type "role::"))
+
 ;; References
 
 [
@@ -28,4 +34,5 @@
  (footnote_reference)
  (citation_reference)
  (reference)
+ (role)
 ] @reference
