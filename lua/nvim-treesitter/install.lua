@@ -8,8 +8,8 @@ local info = require'nvim-treesitter.info'
 
 local M = {}
 
-local function iter_cmd(cmd_list, i, lang)
-  if i == #cmd_list + 1 then return print('Treesitter parser for '..lang..' has been installed') end
+local function iter_cmd(cmd_list, i, lang, success_message)
+  if i == #cmd_list + 1 then return print(success_message) end
 
   local attr = cmd_list[i]
   if attr.info then print(attr.info) end
@@ -19,7 +19,7 @@ local function iter_cmd(cmd_list, i, lang)
   handle = luv.spawn(attr.cmd, attr.opts, vim.schedule_wrap(function(code)
     handle:close()
     if code ~= 0 then return api.nvim_err_writeln(attr.err) end
-    iter_cmd(cmd_list, i + 1, lang)
+    iter_cmd(cmd_list, i + 1, lang, success_message)
   end))
 end
 
@@ -117,7 +117,7 @@ local function run_install(cache_folder, package_path, lang, repo, with_sync)
       print('Treesitter parser for '..lang..' has been installed')
     end
   else
-    iter_cmd(command_list, 1, lang)
+    iter_cmd(command_list, 1, lang, 'Treesitter parser for '..lang..' has been installed')
   end
 end
 
@@ -190,6 +190,34 @@ function M.update(lang)
   end
 end
 
+function M.uninstall(lang)
+  if lang == 'all' then
+    local installed = info.installed_parsers()
+    for _, lang in pairs(installed) do
+      M.uninstall(lang)
+    end
+  elseif lang then
+    local package_path, err = utils.get_package_path()
+    if err then
+      print(err)
+      return
+    end
+    local parser_lib = package_path.."/parser/"..lang..".so"
+
+    local command_list = {
+        {
+          cmd = 'rm',
+          opts = {
+            args = { parser_lib },
+          },
+          info = "Uninstalling parser for "..lang,
+          err = "Could not delete "..parser_lib,
+        },
+      }
+      iter_cmd(command_list, 1, lang, 'Treesitter parser for '..lang..' has been uninstalled')
+  end
+end
+
 M.ensure_installed = install(false, false)
 
 M.commands = {
@@ -211,6 +239,13 @@ M.commands = {
     run = M.update,
     args = {
       "-nargs=*",
+      "-complete=custom,v:lua.ts_installed_parsers"
+    }
+  },
+  TSUninstall = {
+    run = M.uninstall,
+    args = {
+      "-nargs=+",
       "-complete=custom,v:lua.ts_installed_parsers"
     }
   }
