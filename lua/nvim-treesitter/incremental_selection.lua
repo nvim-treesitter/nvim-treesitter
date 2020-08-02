@@ -55,13 +55,18 @@ local function select_incremental(get_parent)
       local root = parsers.get_parser().tree:root()
       local node = root:named_descendant_for_range(csrow, cscol, cerow, cecol)
       ts_utils.update_selection(buf, node)
-      selections[buf] = { [1] = node }
+      if nodes and #nodes > 0 then
+        table.insert(selections[buf], node)
+      else
+        selections[buf] = { [1] = node }
+      end
       return
     end
 
     local node = get_parent(nodes[#nodes])
     if not node then return end
 
+    table.insert(selections[buf], node)
     if node ~= nodes[#nodes] then
       table.insert(nodes, node)
     end
