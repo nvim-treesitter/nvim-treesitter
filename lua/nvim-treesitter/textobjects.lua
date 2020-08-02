@@ -8,7 +8,7 @@ local ts_utils = require'nvim-treesitter.ts_utils'
 
 local M = {}
 
-local function get_textobject_at_point(query_string)
+local function textobject_at_point(query_string)
   local bufnr = vim.api.nvim_get_current_buf()
   local lang = parsers.get_buf_lang(bufnr)
   if not lang then return end
@@ -74,59 +74,69 @@ local function get_textobject_at_point(query_string)
 end
 
 function M.select_textobject(query_string)
-  local bufnr, textobject = get_textobject_at_point(query_string)
+  local bufnr, textobject = textobject_at_point(query_string)
   if textobject then
     ts_utils.update_selection(bufnr, textobject)
   end
 end
 
 local function swap_textobject(query_string, direction)
-  local bufnr, textobject_range, node = get_textobject_at_point(query_string)
+  local bufnr, textobject_range, node = textobject_at_point(query_string)
   local step = direction > 0 and 1 or -1
   if not node then return end
   for _ = 1, math.abs(direction), step do
       if direction > 0 then
-        ts_utils.swap_nodes(textobject_range, M.next_textobject(node, query_string, true, bufnr), bufnr, "yes, set cursor!")
+        ts_utils.swap_nodes(textobject_range,
+                            M.next_textobject(node, query_string, true, bufnr),
+                            bufnr,
+                            "yes, set cursor!")
       else
-        ts_utils.swap_nodes(textobject_range, M.previous_textobject(node, query_string, true, bufnr), bufnr, "yes, set cursor!")
+        ts_utils.swap_nodes(textobject_range,
+                            M.previous_textobject(node, query_string, true, bufnr),
+                            bufnr,
+                            "yes, set cursor!")
       end
   end
 end
 
-function M.swap_textobject_next(query_string)
+function M.swap_next(query_string)
   swap_textobject(query_string, 1)
 end
 
-function M.swap_textobject_previous(query_string)
+function M.swap_previous(query_string)
   swap_textobject(query_string, -1)
 end
 
-function M.goto_adjacent_textobejct(query_string, forward, start, same_parent)
-  local bufnr, _, node = get_textobject_at_point(query_string)
-  local ajacent_textobject
+function M.goto_adjacent(query_string, forward, start, same_parent)
+  local bufnr, _, node = textobject_at_point(query_string)
+  local adjacent_textobject
   if forward then
-    ajacent_textobject = M.next_textobject(node,  query_string, same_parent, bufnr)
+    adjacent_textobject = M.next_textobject(node,  query_string, same_parent, bufnr)
   else
-    ajacent_textobject = M.previous_textobject(node,  query_string, same_parent, bufnr)
+    adjacent_textobject = M.previous_textobject(node,  query_string, same_parent, bufnr)
   end
 
-  if ajacent_textobject then
-    local adjacent_textobject_range = {ajacent_textobject:range()}
+  if adjacent_textobject then
+    local adjacent_textobject_range = {adjacent_textobject:range()}
     if start then
-      api.nvim_win_set_cursor(api.nvim_get_current_win(), { adjacent_textobject_range[1] + 1, adjacent_textobject_range[2] })
+      api.nvim_win_set_cursor(api.nvim_get_current_win(),
+                              { adjacent_textobject_range[1] + 1, adjacent_textobject_range[2] })
     else
-      api.nvim_win_set_cursor(api.nvim_get_current_win(), { adjacent_textobject_range[3] + 1, adjacent_textobject_range[4] })
+      api.nvim_win_set_cursor(api.nvim_get_current_win(),
+                              { adjacent_textobject_range[3] + 1, adjacent_textobject_range[4] })
     end
   end
 end
 
-M.goto_next_textobject_start = function(query_string) M.goto_adjacent_textobejct(query_string, 'forward', 'start', false) end
-M.goto_next_textobject_end = function(query_string) M.goto_adjacent_textobejct(query_string, 'forward', false, false) end
-M.goto_previous_textobject_start = function(query_string) M.goto_adjacent_textobejct(query_string, false, 'start', false) end
-M.goto_previous_textobject_end = function(query_string) M.goto_adjacent_textobejct(query_string, false, false, false) end
+-- luacheck: push ignore 631
+M.goto_next_start = function(query_string) M.goto_adjacent(query_string, 'forward', 'start', false) end
+M.goto_next_end = function(query_string) M.goto_adjacent(query_string, 'forward', false, false) end
+M.goto_previous_start = function(query_string) M.goto_adjacent(query_string, false, 'start', false) end
+M.goto_previous_end = function(query_string) M.goto_adjacent(query_string, false, false, false) end
+-- luacheck: pop
 
-function M.goto_next_textobject_end(query_string)
-  local bufnr, _, node = get_textobject_at_point(query_string)
+function M.goto_next_end(query_string)
+  local bufnr, _, node = textobject_at_point(query_string)
   if not node then return end
   local next_textobject = M.next_textobject(node,  query_string, false, bufnr)
   local next_textobject_range = next_textobject:range()
@@ -189,6 +199,13 @@ function M.previous_textobject(node, query_string, same_parent, bufnr)
   return previous_node and previous_node.node
 end
 
+local normal_mode_functions = { "swap_next",
+                                "swap_previous",
+                                "goto_next_start",
+                                "goto_next_end",
+                                "goto_previous_start",
+                                "goto_previous_end"}
+
 function M.attach(bufnr, lang)
   local buf = bufnr or api.nvim_get_current_buf()
   local config = configs.get_module("textobjects")
@@ -206,26 +223,17 @@ function M.attach(bufnr, lang)
       api.nvim_buf_set_keymap(buf, "v", mapping, cmd, {silent = true, noremap = true })
     end
   end
-  for mapping, query in pairs(config.swap_next_keymaps) do
-    if type(query) == 'table' then
-      query = query[lang]
-    elseif not queries.get_query(lang, 'textobjects') then
-      query = nil
-    end
-    if query then
-      local cmd = ":lua require'nvim-treesitter.textobjects'.swap_textobject_next('"..query.."')<CR>"
-      api.nvim_buf_set_keymap(buf, "n", mapping, cmd, {silent = true})
-    end
-  end
-  for mapping, query in pairs(config.swap_previous_keymaps) do
-    if type(query) == 'table' then
-      query = query[lang]
-    elseif not queries.get_query(lang, 'textobjects') then
-      query = nil
-    end
-    if query then
-      local cmd = ":lua require'nvim-treesitter.textobjects'.swap_textobject_previous('"..query.."')<CR>"
-      api.nvim_buf_set_keymap(buf, "n", mapping, cmd, {silent = true})
+  for _, function_call in pairs(normal_mode_functions) do
+    for mapping, query in pairs(config[function_call] or {}) do
+      if type(query) == 'table' then
+        query = query[lang]
+      elseif not queries.get_query(lang, 'textobjects') then
+        query = nil
+      end
+      if query then
+        local cmd = ":lua require'nvim-treesitter.textobjects'."..function_call.."('"..query.."')<CR>"
+        api.nvim_buf_set_keymap(buf, "n", mapping, cmd, {silent = true, noremap = true })
+      end
     end
   end
 end
@@ -246,14 +254,16 @@ function M.detach(bufnr)
       api.nvim_buf_del_keymap(buf, "v", mapping)
     end
   end
-  for mapping, query in pairs(config.swap_next_keymaps) or pairs(config.swap_previous_keymaps) do
-    if type(query) == 'table' then
-      query = query[lang]
-    elseif not queries.get_query(lang, 'textobjects') then
-      query = nil
-    end
-    if query then
-      api.nvim_buf_del_keymap(buf, "n", mapping)
+  for _, function_call in pairs(normal_mode_functions) do
+    for mapping, query in pairs(config[function_call] or {}) do
+      if type(query) == 'table' then
+        query = query[lang]
+      elseif not queries.get_query(lang, 'textobjects') then
+        query = nil
+      end
+      if query then
+        api.nvim_buf_del_keymap(buf, "n", mapping)
+      end
     end
   end
 end

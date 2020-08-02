@@ -86,8 +86,12 @@ local builtin_modules = {
       return has_some_textobject_mapping(lang) or queries.has_textobjects(lang)
     end,
     keymaps = {},
-    swap_next_keymaps = {},
-    swap_previous_keymaps = {}
+    swap_next = {},
+    swap_previous = {},
+    goto_next_start = {},
+    goto_next_end = {},
+    goto_previous_start = {},
+    goto_previous_end = {}
   }
 }
 
