@@ -212,6 +212,36 @@ function M.get_capture_matches(bufnr, capture_string, query_group)
     return matches
 end
 
+function M.find_best_match(bufnr, capture_string, query_group, filter_predicate, scoring_function)
+    if not string.sub(capture_string, 1,2) == '@' then
+      api.nvim_err_writeln('capture_string must start with "@"')
+      return
+    end
+
+    --remove leading "@"
+    capture_string = string.sub(capture_string, 2)
+
+    local best
+    local best_score
+
+    for maybe_match in M.iter_group_results(bufnr, query_group) do
+      local match = utils.get_at_path(maybe_match, capture_string)
+
+      if match and filter_predicate(match) then
+        local current_score = scoring_function(match)
+        if not best then
+          best = match
+          best_score = current_score
+        end
+        if current_score > best_score then
+          best = match
+          best_score = current_score
+        end
+      end
+    end
+    return best
+end
+
 -- Iterates matches from a query file.
 -- @param bufnr the buffer
 -- @param query_group the query file to use
