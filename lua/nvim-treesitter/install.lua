@@ -8,7 +8,7 @@ local info = require'nvim-treesitter.info'
 
 local M = {}
 
-local function iter_cmd(cmd_list, i, lang, success_message)
+function M.iter_cmd(cmd_list, i, lang, success_message)
   if i == #cmd_list + 1 then return print(success_message) end
 
   local attr = cmd_list[i]
@@ -19,7 +19,7 @@ local function iter_cmd(cmd_list, i, lang, success_message)
   handle = luv.spawn(attr.cmd, attr.opts, vim.schedule_wrap(function(code)
     handle:close()
     if code ~= 0 then return api.nvim_err_writeln(attr.err) end
-    iter_cmd(cmd_list, i + 1, lang, success_message)
+    M.iter_cmd(cmd_list, i + 1, lang, success_message)
   end))
 end
 
@@ -117,7 +117,7 @@ local function run_install(cache_folder, package_path, lang, repo, with_sync)
       print('Treesitter parser for '..lang..' has been installed')
     end
   else
-    iter_cmd(command_list, 1, lang, 'Treesitter parser for '..lang..' has been installed')
+    M.iter_cmd(command_list, 1, lang, 'Treesitter parser for '..lang..' has been installed')
   end
 end
 
@@ -214,7 +214,7 @@ function M.uninstall(lang)
           err = "Could not delete "..parser_lib,
         },
       }
-      iter_cmd(command_list, 1, lang, 'Treesitter parser for '..lang..' has been uninstalled')
+      M.iter_cmd(command_list, 1, lang, 'Treesitter parser for '..lang..' has been uninstalled')
   end
 end
 
