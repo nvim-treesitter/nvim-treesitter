@@ -1,4 +1,3 @@
-
 (function_definition
   body: (block)? @function.inner) @function.outer
 
@@ -33,3 +32,25 @@
 
 (call) @call.outer
 (call (_) @call.inner)
+
+;; Parameters
+(parameters
+  [(identifier)
+   (tuple)
+   (typed_parameter)
+   (default_parameter)
+   (typed_default_parameter)
+   (list_splat)
+   (dictionary_splat)] @parameter.inner)
+
+(lambda_parameters
+  [(identifier)
+   (tuple)
+   (typed_parameter)
+   (default_parameter)
+   (typed_default_parameter)
+   (list_splat)
+   (dictionary_splat)] @parameter.inner)
+
+; TODO: exclude comments using the future negate syntax from tree-sitter
+(argument_list (_) @parameter.inner)
