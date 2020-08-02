@@ -101,7 +101,40 @@ function M.swap_textobject_previous(query_string)
   swap_textobject(query_string, -1)
 end
 
+function M.goto_adjacent_textobejct(query_string, forward, start, same_parent)
+  local bufnr, _, node = get_textobject_at_point(query_string)
+  local ajacent_textobject
+  if forward then
+    ajacent_textobject = M.next_textobject(node,  query_string, same_parent, bufnr)
+  else
+    ajacent_textobject = M.previous_textobject(node,  query_string, same_parent, bufnr)
+  end
+
+  if ajacent_textobject then
+    local adjacent_textobject_range = {ajacent_textobject:range()}
+    if start then
+      api.nvim_win_set_cursor(api.nvim_get_current_win(), { adjacent_textobject_range[1] + 1, adjacent_textobject_range[2] })
+    else
+      api.nvim_win_set_cursor(api.nvim_get_current_win(), { adjacent_textobject_range[3] + 1, adjacent_textobject_range[4] })
+    end
+  end
+end
+
+M.goto_next_textobject_start = function(query_string) M.goto_adjacent_textobejct(query_string, 'forward', 'start', false) end
+M.goto_next_textobject_end = function(query_string) M.goto_adjacent_textobejct(query_string, 'forward', false, false) end
+M.goto_previous_textobject_start = function(query_string) M.goto_adjacent_textobejct(query_string, false, 'start', false) end
+M.goto_previous_textobject_end = function(query_string) M.goto_adjacent_textobejct(query_string, false, false, false) end
+
+function M.goto_next_textobject_end(query_string)
+  local bufnr, _, node = get_textobject_at_point(query_string)
+  if not node then return end
+  local next_textobject = M.next_textobject(node,  query_string, false, bufnr)
+  local next_textobject_range = next_textobject:range()
+  api.nvim_win_set_cursor(api.nvim_get_current_win(), { next_textobject_range[3] + 1, next_textobject_range[4] + 1 })
+end
+
 function M.next_textobject(node, query_string, same_parent, bufnr)
+  local node = node or ts_utils.get_node_at_cursor()
   local bufnr = bufnr or api.nvim_get_current_buf()
 
   local matches = queries.get_capture_matches(bufnr, query_string, 'textobjects')
@@ -129,6 +162,7 @@ function M.next_textobject(node, query_string, same_parent, bufnr)
 end
 
 function M.previous_textobject(node, query_string, same_parent, bufnr)
+  local node = node or ts_utils.get_node_at_cursor()
   local bufnr = bufnr or api.nvim_get_current_buf()
 
   local matches = queries.get_capture_matches(bufnr, query_string, 'textobjects')
