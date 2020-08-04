@@ -84,15 +84,17 @@ local function swap_textobject(query_string, direction)
   local bufnr, textobject_range, node = textobject_at_point(query_string)
   local step = direction > 0 and 1 or -1
   if not node then return end
+  local overlapping_range_ok = false
+  local same_parent = true
   for _ = 1, math.abs(direction), step do
       if direction > 0 then
         ts_utils.swap_nodes(textobject_range,
-                            M.next_textobject(node, query_string, true, bufnr),
+                            M.next_textobject(node, query_string, same_parent, overlapping_range_ok, bufnr),
                             bufnr,
                             "yes, set cursor!")
       else
         ts_utils.swap_nodes(textobject_range,
-                            M.previous_textobject(node, query_string, true, bufnr),
+                            M.previous_textobject(node, query_string, same_parent, overlapping_range_ok, bufnr),
                             bufnr,
                             "yes, set cursor!")
       end
@@ -107,13 +109,13 @@ function M.swap_previous(query_string)
   swap_textobject(query_string, -1)
 end
 
-function M.goto_adjacent(query_string, forward, start, same_parent)
+function M.goto_adjacent(query_string, forward, start, same_parent, overlapping_range_ok)
   local bufnr, _, node = textobject_at_point(query_string)
   local adjacent_textobject
   if forward then
-    adjacent_textobject = M.next_textobject(node,  query_string, same_parent, bufnr)
+    adjacent_textobject = M.next_textobject(node,  query_string, same_parent, overlapping_range_ok, bufnr)
   else
-    adjacent_textobject = M.previous_textobject(node,  query_string, same_parent, bufnr)
+    adjacent_textobject = M.previous_textobject(node,  query_string, same_parent, overlapping_range_ok, bufnr)
   end
 
   if adjacent_textobject then
@@ -129,33 +131,35 @@ function M.goto_adjacent(query_string, forward, start, same_parent)
 end
 
 -- luacheck: push ignore 631
-M.goto_next_start = function(query_string) M.goto_adjacent(query_string, 'forward', 'start', false) end
-M.goto_next_end = function(query_string) M.goto_adjacent(query_string, 'forward', false, false) end
-M.goto_previous_start = function(query_string) M.goto_adjacent(query_string, false, 'start', false) end
-M.goto_previous_end = function(query_string) M.goto_adjacent(query_string, false, false, false) end
+M.goto_next_start = function(query_string) M.goto_adjacent(query_string, 'forward', 'start', not 'same_parent', 'overlap ok') end
+M.goto_next_end = function(query_string) M.goto_adjacent(query_string, 'forward', not 'start', not 'same_parent', 'overlap ok') end
+M.goto_previous_start = function(query_string) M.goto_adjacent(query_string, not 'forward', 'start', not 'same_parent', 'overlap ok') end
+M.goto_previous_end = function(query_string) M.goto_adjacent(query_string, not 'forward', not 'start', not 'same_parent', 'overlap ok') end
 -- luacheck: pop
 
-function M.goto_next_end(query_string)
-  local bufnr, _, node = textobject_at_point(query_string)
-  if not node then return end
-  local next_textobject = M.next_textobject(node,  query_string, false, bufnr)
-  local next_textobject_range = next_textobject:range()
-  api.nvim_win_set_cursor(api.nvim_get_current_win(), { next_textobject_range[3] + 1, next_textobject_range[4] + 1 })
-end
-
-function M.next_textobject(node, query_string, same_parent, bufnr)
+function M.next_textobject(node, query_string, same_parent, overlapping_range_ok, bufnr)
   local node = node or ts_utils.get_node_at_cursor()
-  if not node then return end
-  local _, _, node_end = node:end_()
   local bufnr = bufnr or api.nvim_get_current_buf()
+  if not node then return end
+
+  local _, _, node_end = node:end_()
+  local search_start, _
+  if overlapping_range_ok then
+    _, _, search_start = node:start()
+    search_start = search_start - 1
+  else
+    _, _, search_start = node:end_()
+  end
 
   local next_node = queries.find_best_match(bufnr,
                                             query_string,
                                             'textobjects',
                                             function(match)
+                                              if match.node == node then return end
                                               if not same_parent or node:parent() == match.node:parent() then
                                                 local _, _, start = match.node:start()
-                                                return start > node_end
+                                                local _, _, end_ = match.node:end_()
+                                                return start > search_start and end_ > node_end
                                               end
                                             end,
                                             function(match)
@@ -166,19 +170,27 @@ function M.next_textobject(node, query_string, same_parent, bufnr)
   return next_node and next_node.node
 end
 
-function M.previous_textobject(node, query_string, same_parent, bufnr)
+function M.previous_textobject(node, query_string, same_parent, overlapping_range_ok, bufnr)
   local node = node or ts_utils.get_node_at_cursor()
-  if not node then return end
-  local _, _, node_start = node:start()
   local bufnr = bufnr or api.nvim_get_current_buf()
+  if not node then return end
 
+  local _, _, node_start = node:start()
+  local search_end, _
+  if overlapping_range_ok then
+    _, _, search_end = node:end_()
+    search_end = search_end + 1
+  else
+    _, _, search_end = node:start()
+  end
   local previous_node = queries.find_best_match(bufnr,
                                                 query_string,
                                                 'textobjects',
                                                 function(match)
                                                   if not same_parent or node:parent() == match.node:parent() then
                                                     local _, _, end_ = match.node:end_()
-                                                    return end_ < node_start
+                                                    local _, _, start = match.node:start()
+                                                    return end_ < search_end and start < node_start
                                                   end
                                                 end,
                                                 function(match)
