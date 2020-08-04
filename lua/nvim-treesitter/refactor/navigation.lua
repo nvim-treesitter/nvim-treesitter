@@ -17,6 +17,9 @@ function M.goto_definition(bufnr)
   if not node_at_point then return end
 
   local definition, _ = locals.find_definition(node_at_point, bufnr)
+  -- Don't move the cursor if we are already there
+  if definition == node_at_point then return end
+
   local start_row, start_col, _ = definition:start()
 
   api.nvim_win_set_cursor(0, { start_row + 1, start_col })
