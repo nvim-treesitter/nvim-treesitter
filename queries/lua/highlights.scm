@@ -87,4 +87,4 @@
 (label_statement) @label
 
 ;; Error
-(ERROR) @Error
+(ERROR) @error
