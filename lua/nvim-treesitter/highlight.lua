@@ -46,6 +46,7 @@ hlmap["repeat"] = "TSRepeat"
 hlmap["label"] = "TSLabel"
 hlmap["operator"] = "TSOperator"
 hlmap["keyword"] = "TSKeyword"
+hlmap["keyword.function"] = "TSKeywordFunction"
 hlmap["exception"] = "TSException"
 
 hlmap["type"] = "TSType"

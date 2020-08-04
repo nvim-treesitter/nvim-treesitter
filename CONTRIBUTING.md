@@ -124,6 +124,7 @@ are optional and will not have any effect for now.
 @label for C/Lua-like labels
 @operator
 @keyword
+  function
 @exception
 @include keywords for including modules (e.g. import/from in Python)
 

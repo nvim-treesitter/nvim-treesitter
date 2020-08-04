@@ -388,6 +388,10 @@ For any operator: `+`, but also `->` and `*` in C.
 								*hl-TSKeyword*
 For keywords that don't fall in previous categories.
 
+`TSKeywordFunction`
+                                                        *hl-TSKeywordFunction*
+For keywords used to define a fuction.
+
 `TSException`
 							      *hl-TSException*
 For exception related keywords.

@@ -25,11 +25,11 @@
 )
 
 [
-"in"
-"local"
-"return"
-(break_statement)
-"goto"
+ "in"
+ "local"
+ "return"
+ (break_statement)
+ "goto"
 ] @keyword
 
 ;; Operators
@@ -77,9 +77,12 @@
 (nil) @constant.builtin
 (spread) @constant ;; "..."
 
-;; Nodes
-("function" @function "end" @function) ;; Any node that has both funtion and end in it
+;; Functions
+("function" @keyword.function
+ [(function_name) (identifier)] @function
+ "end" @keyword.function)
 
+;; Nodes
 (table ["{" "}"] @constructor)
 (comment) @comment
 (string) @string
