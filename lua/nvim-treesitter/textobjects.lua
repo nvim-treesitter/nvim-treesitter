@@ -87,17 +87,17 @@ local function swap_textobject(query_string, direction)
   local overlapping_range_ok = false
   local same_parent = true
   for _ = 1, math.abs(direction), step do
-      if direction > 0 then
-        ts_utils.swap_nodes(textobject_range,
-                            M.next_textobject(node, query_string, same_parent, overlapping_range_ok, bufnr),
-                            bufnr,
-                            "yes, set cursor!")
-      else
-        ts_utils.swap_nodes(textobject_range,
-                            M.previous_textobject(node, query_string, same_parent, overlapping_range_ok, bufnr),
-                            bufnr,
-                            "yes, set cursor!")
-      end
+    if direction > 0 then
+      ts_utils.swap_nodes(textobject_range,
+                          M.next_textobject(node, query_string, same_parent, overlapping_range_ok, bufnr),
+                          bufnr,
+                          "yes, set cursor!")
+    else
+      ts_utils.swap_nodes(textobject_range,
+                          M.previous_textobject(node, query_string, same_parent, overlapping_range_ok, bufnr),
+                          bufnr,
+                          "yes, set cursor!")
+    end
   end
 end
 
@@ -146,7 +146,6 @@ function M.next_textobject(node, query_string, same_parent, overlapping_range_ok
   local search_start, _
   if overlapping_range_ok then
     _, _, search_start = node:start()
-    search_start = search_start - 1
   else
     _, _, search_start = node:end_()
   end
@@ -159,7 +158,7 @@ function M.next_textobject(node, query_string, same_parent, overlapping_range_ok
                                               if not same_parent or node:parent() == match.node:parent() then
                                                 local _, _, start = match.node:start()
                                                 local _, _, end_ = match.node:end_()
-                                                return start > search_start and end_ > node_end
+                                                return start > search_start and end_ >= node_end
                                               end
                                             end,
                                             function(match)
