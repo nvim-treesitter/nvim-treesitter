@@ -86,8 +86,8 @@ function M.attach(bufnr, lang)
     end
     if query then
       local cmd = ":lua require'nvim-treesitter.textobjects'.select_textobject('"..query.."')<CR>"
-      api.nvim_buf_set_keymap(buf, "o", mapping, cmd, {silent = true})
-      api.nvim_buf_set_keymap(buf, "v", mapping, cmd, {silent = true})
+      api.nvim_buf_set_keymap(buf, "o", mapping, cmd, {silent = true, noremap = true })
+      api.nvim_buf_set_keymap(buf, "v", mapping, cmd, {silent = true, noremap = true })
     end
   end
 end
