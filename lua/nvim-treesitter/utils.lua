@@ -67,4 +67,8 @@ function M.print_warning(text)
   api.nvim_command(string.format([[echohl WarningMsg | echo "%s" | echohl None]], text))
 end
 
+function M.set_jump()
+  vim.cmd "normal! m'"
+end
+
 return M

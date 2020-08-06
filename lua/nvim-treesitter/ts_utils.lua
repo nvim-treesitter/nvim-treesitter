@@ -1,6 +1,7 @@
 local api = vim.api
 
 local parsers = require'nvim-treesitter.parsers'
+local utils = require'nvim-treesitter.utils'
 
 local M = {}
 
@@ -241,8 +242,7 @@ function M.swap_nodes(node_or_range1, node_or_range2, bufnr, cursor_to_second)
   vim.lsp.util.apply_text_edits({edit1, edit2}, bufnr)
 
   if cursor_to_second then
-    -- Set the item in jump list
-    vim.cmd "normal! m'"
+    utils.set_jump()
 
     local char_delta = 0
     local line_delta = 0

@@ -1,6 +1,7 @@
 -- Definition based navigation module
 
 local ts_utils = require'nvim-treesitter.ts_utils'
+local utils = require'nvim-treesitter.utils'
 local locals = require'nvim-treesitter.locals'
 local configs = require'nvim-treesitter.configs'
 local api = vim.api
@@ -11,8 +12,7 @@ function M.goto_definition(bufnr)
   local bufnr = bufnr or api.nvim_get_current_buf()
   local node_at_point = ts_utils.get_node_at_cursor()
 
-  -- Set the item in jump list
-  vim.cmd "normal! m'"
+  utils.set_jump()
 
   if not node_at_point then return end
 
