@@ -12,7 +12,12 @@
 (marker_annotation
   name: (identifier) @annotation)
 
-; Operators
+; Operators and Tokens
+
+; FIXME: currently this errors
+; (template_substitution
+;   "${" @punctuation.special
+;   "}" @punctuation.special) @embedded
 
 [
  "@"
@@ -26,6 +31,7 @@
  "%"
  "<"
  ">"
+ "="
  ">="
  "<="
  "||"
@@ -35,18 +41,22 @@
  (additive_operator)
 ] @operator
 
+[
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+]  @punctuation.bracket
+
 ; Delimiters
 
-"." @punctuation.delimiter
-"," @punctuation.delimiter
-";" @punctuation.delimiter
-
-"(" @punctuation.bracket
-")" @punctuation.bracket
-"{" @punctuation.bracket
-"}" @punctuation.bracket
-"[" @punctuation.bracket
-"]" @punctuation.bracket
+[
+  ";"
+  "."
+  ","
+] @punctuation.delimiter
 
 
 ; Types
@@ -61,8 +71,6 @@
   scope: (identifier) @type)
 (function_signature
   name: (identifier) @method)
-; using method_signature does not work
-; so specifically use getter and setter signatures
 (getter_signature
   (identifier) @method)
 (setter_signature
@@ -83,22 +91,45 @@
 
 ; Variables
 
+; var keyword
+(inferred_type) @keyword
+
+(const_builtin) @constant.builtin
+(final_builtin) @constant.builtin
+
 ((identifier) @type
  (#match? @type "^[A-Z]"))
 
-(this) @constant.builtin
+(identifier) @variable
 
-;; Parameters
+(this) @variable.builtin
+
+(unconditional_assignable_selector (identifier) @identifier)
+(assignable_selector (identifier) @identifier)
+(assignment_expression
+  left: (assignable_expression) @identifier)
+
+; Parameters
 
 (formal_parameter
     name: (identifier) @parameter)
 
-;; Literals
+; Named arguments
 
-(hex_integer_literal) @number
-(decimal_integer_literal) @number
-(decimal_floating_point_literal) @float
+(named_argument (label (identifier) @label))
 
+; Literals
+
+[
+    (hex_integer_literal)
+    (decimal_integer_literal)
+    (decimal_floating_point_literal)
+    ; TODO: inaccessbile nodes
+    ; (octal_integer_literal)
+    ; (hex_floating_point_literal)
+] @number
+
+(symbol_literal) @string.special.symbol
 (string_literal) @string
 (true) @boolean
 (false) @boolean
@@ -111,35 +142,57 @@
 
 ["import" "library" "export"] @include
 
+; TODO: "rethrow" @keyword
+
+; Reserved words (cannot be used as identifiers)
 [
- "abstract"
- ;"assert"
- ;"break"
- "on"
- "class"
- "default"
- "enum"
- "extends"
- ;"final"
- "implements"
- "as"
- "mixin"
- "external"
- "new"
- "return"
- "static"
- "required"
- "var"
- ;"const"
- "async"
- "await"
- ] @keyword
-;TODO:
-; "rethrow" @keyword
+    ; "assert"
+    ; "break"
+    "class"
+    "enum"
+    "extends"
+    "in"
+    "is"
+    "new"
+    "return"
+    "super"
+    "var"
+    "with"
+    ; "void"
+] @keyword
+
+[
+    "abstract"
+    "as"
+    "async"
+    "await"
+    "covariant"
+    "deferred"
+    "dynamic"
+    "external"
+    "factory"
+    "Function"
+    "get"
+    "implements"
+    "interface"
+    "library"
+    "operator"
+    "mixin"
+    "part"
+    "set"
+    "static"
+    "typedef"
+] @keyword
 
 ["if" "else" "switch" "default"] @conditional
-; TODO: case
 
 ["try" "throw" "catch" "finally"] @exception
 
 ["do" "while" "continue" "for"] @repeat
+
+((identifier) @variable.builtin
+ (#match? @variable.builtin "^(abstract|as|covariant|deferred|dynamic|export|external|factory|Function|get|implements|import|interface|library|operator|mixin|part|set|static|typedef)$")
+ (#is-not? local))
+
+; Error
+(ERROR) @error
