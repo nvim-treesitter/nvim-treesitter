@@ -43,6 +43,9 @@
     name: (identifier) @type)
  (#match? @type "^[A-Z]"))
 
+(use_list (identifier) @type (#match? @type "^[A-Z]"))
+(use_as_clause alias: (identifier) @type (#match? @type "^[A-Z]"))
+
 ;; Correct enum constructors
 (call_expression
   function: (scoped_identifier
