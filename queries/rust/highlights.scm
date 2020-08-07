@@ -119,6 +119,8 @@
 "type"
 "union"
 "unsafe"
+"async"
+"await"
 "use"
 "where"
 (mutable_specifier)
