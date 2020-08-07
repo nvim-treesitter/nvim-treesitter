@@ -100,12 +100,11 @@
 ((identifier) @type
  (#match? @type "^[A-Z]"))
 
-(identifier) @variable
-
-(this) @variable.builtin
-
-(unconditional_assignable_selector (identifier) @identifier)
-(assignable_selector (identifier) @identifier)
+; TODO: currently not working
+(unconditional_assignable_selector
+  (identifier) @identifier)
+(assignable_selector
+  (identifier) @identifier)
 (assignment_expression
   left: (assignable_expression) @identifier)
 
@@ -139,6 +138,8 @@
 (comment) @comment
 
 ; Keywords
+
+(this) @keyword
 
 ["import" "library" "export"] @include
 
