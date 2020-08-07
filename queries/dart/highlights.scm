@@ -35,6 +35,7 @@
  ">="
  "<="
  "||"
+ (increment_operator)
  (is_operator)
  (prefix_operator)
  (equality_operator)
@@ -57,7 +58,6 @@
   "."
   ","
 ] @punctuation.delimiter
-
 
 ; Types
 
@@ -115,7 +115,8 @@
 
 ; Named arguments
 
-(named_argument (label (identifier) @label))
+(named_argument
+  (label (identifier) @label))
 
 ; Literals
 
@@ -159,7 +160,6 @@
     "super"
     "var"
     "with"
-    ; "void"
 ] @keyword
 
 [
@@ -187,7 +187,13 @@
 
 ["if" "else" "switch" "default"] @conditional
 
-["try" "throw" "catch" "finally"] @exception
+[
+  "try"
+  "throw"
+  "catch"
+  "finally"
+  (break_statement)
+] @exception
 
 ["do" "while" "continue" "for"] @repeat
 
