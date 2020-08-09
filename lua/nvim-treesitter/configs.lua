@@ -278,6 +278,16 @@ function M.setup(user_data)
       require'nvim-treesitter.install'.ensure_installed(data)
     else
       config.modules[name] = vim.tbl_deep_extend('force', config.modules[name] or {}, data)
+
+      recurse_modules(function(mod_name)
+        if data.enable then
+          enable_all(mod_name)
+        end
+
+        for _, lang in ipairs(data.disable or {}) do
+          disable_mod_conf_autocmd(mod_name, lang)
+        end
+      end, config.modules)
     end
   end
 end
