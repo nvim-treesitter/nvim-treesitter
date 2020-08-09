@@ -133,6 +133,12 @@ are optional and will not have any effect for now.
 @structure
 ```
 
+#### Variables
+```
+@variable
+  builtin
+```
+
 #### Text
 
 Mainly for markup languages.
