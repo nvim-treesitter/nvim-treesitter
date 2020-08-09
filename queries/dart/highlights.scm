@@ -14,10 +14,13 @@
 
 ; Operators and Tokens
 
-; FIXME: currently this errors
+; FIXME: nodes not accessible and ranges
+; currently incorrect
 ; (template_substitution
 ;   "${" @punctuation.special
 ;   "}" @punctuation.special) @embedded
+
+(template_substitution (identifier) @embedded)
 
 [
  "@"
@@ -100,23 +103,27 @@
 ((identifier) @type
  (#match? @type "^[A-Z]"))
 
-; TODO: currently not working
+; properties
+; TODO: add method/call_expression to grammar and
+; distinguish method call from variable access
 (unconditional_assignable_selector
-  (identifier) @identifier)
+  (identifier) @property)
 (assignable_selector
-  (identifier) @identifier)
+  (identifier) @property)
+
+; assignments
 (assignment_expression
-  left: (assignable_expression) @identifier)
+  left: (assignable_expression) @variable)
+
+(this) @variable.builtin
 
 ; Parameters
 
 (formal_parameter
     name: (identifier) @parameter)
 
-; Named arguments
-
 (named_argument
-  (label (identifier) @label))
+  (label (identifier) @variable.parameter))
 
 ; Literals
 
@@ -140,16 +147,13 @@
 
 ; Keywords
 
-(this) @keyword
-
 ["import" "library" "export"] @include
 
+; Reserved words (cannot be used as identifiers)
 ; TODO: "rethrow" @keyword
 
-; Reserved words (cannot be used as identifiers)
 [
     ; "assert"
-    ; "break"
     "class"
     "enum"
     "extends"
@@ -158,7 +162,6 @@
     "new"
     "return"
     "super"
-    "var"
     "with"
 ] @keyword
 
@@ -181,6 +184,7 @@
     "mixin"
     "part"
     "set"
+    "show"
     "static"
     "typedef"
 ] @keyword
@@ -198,8 +202,7 @@
 ["do" "while" "continue" "for"] @repeat
 
 ((identifier) @variable.builtin
- (#match? @variable.builtin "^(abstract|as|covariant|deferred|dynamic|export|external|factory|Function|get|implements|import|interface|library|operator|mixin|part|set|static|typedef)$")
- (#is-not? local))
+ (#match? @variable.builtin "^(abstract|as|covariant|deferred|dynamic|export|external|factory|Function|get|implements|import|interface|library|operator|mixin|part|set|static|typedef)$"))
 
 ; Error
 (ERROR) @error
