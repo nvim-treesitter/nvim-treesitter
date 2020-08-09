@@ -5,6 +5,7 @@
   "|"
   "--"
   "__"
+  ":"
   "::"
   "bullet"
   "adornment"
@@ -32,9 +33,11 @@
 [
   (literal_block)
   (line_block)
-  (block_quote)
   (doctest_block)
 ] @text.literal
+
+(block_quote
+  (attribution)? @text.emphasis) @text.literal
 
 (substitution_definition
   name: (substitution) @constant)
@@ -48,6 +51,16 @@
 (target
   name: (reference)? @constant
   link: (_) @text.literal)
+
+;; Lists
+
+; Definition lists
+(list_item
+  (term) @text.strong
+  (classifier)? @text.emphasis)
+
+; Field lists
+(field (field_name) @constant)
 
 ;; Inline markup
 
@@ -109,8 +122,6 @@
 ;; Others
 
 (title) @text.title
-
-(attribution) @text.emphasis
 
 (comment) @comment
 (comment "..") @comment
