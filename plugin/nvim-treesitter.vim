@@ -62,6 +62,9 @@ highlight default link TSTypeBuiltin Type
 highlight default link TSStructure Structure
 highlight default link TSInclude Include
 
+highlight default link TSVariable Identifier
+highlight default link TSVariableBuiltin Special
+
 highlight default link TSDefinitionUsage Visual
 highlight default link TSDefinition Search
 

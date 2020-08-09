@@ -54,6 +54,10 @@ hlmap["type.builtin"] = "TSTypeBuiltin"
 hlmap["structure"] = "TSStructure"
 hlmap["include"] = "TSInclude"
 
+-- variable
+hlmap["variable"] = "TSVariable"
+hlmap["variable.builtin"] = "TSVariableBuiltin"
+
 -- Text
 hlmap["text"] = "TSText"
 hlmap["text.strong"] = "TSStrong"
