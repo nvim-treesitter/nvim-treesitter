@@ -1,7 +1,6 @@
-![Linting and style checking](https://github.com/nvim-treesitter/nvim-treesitter/workflows/Linting%20and%20style%20checking/badge.svg?branch=master)
-![Check loading of syntax files](https://github.com/nvim-treesitter/nvim-treesitter/workflows/Check%20loading%20of%20syntax%20files/badge.svg)
-
-[Join us on Zulip !](https://nvim-treesitter.zulipchat.com/join/1twnvjqumn0t97p65eragu5o/)
+[![Zulip chat](https://img.shields.io/badge/zulip-join_chat-brightgreen.svg)](https://nvim-treesitter.zulipchat.com/)
+[![Linting and style](https://github.com/nvim-treesitter/nvim-treesitter/workflows/Linting%20and%20style%20checking/badge.svg?branch=master)](https://github.com/nvim-treesitter/nvim-treesitter/actions?query=workflow%3A%22Linting+and+style+checking%22+branch%3Amaster)
+[![Syntax files](https://github.com/nvim-treesitter/nvim-treesitter/workflows/Check%20loading%20of%20syntax%20files/badge.svg)](https://github.com/nvim-treesitter/nvim-treesitter/actions?query=workflow%3A%22Check+loading+of+syntax+files%22+branch%3Amaster)
 
 # nvim-treesitter
 
@@ -28,7 +27,7 @@ You can install `nvim-treesitter` with your favorite package manager, or using t
 
 ### Using a package manager
 
-Simply add these lines to your `init.vim` :
+If you are using [vim-plug](https://github.com/junegunn/vim-plug), put this in your `init.vim` file:
 
 ```vim
 Plug 'nvim-treesitter/nvim-treesitter'
@@ -53,7 +52,7 @@ provides two command to tackle this issue:
   `TSInstall <tab>` will give you a list of supported languages, or select `all` to install them all.
 - `TSInstallInfo` to know which parser is installed.
 
-Let's say you need parsers for `lua`, this is how you do with these commands:
+Let's say you need parsers for `lua`, this is how you install it:
 
 ```vim
 :TSInstall lua
@@ -78,92 +77,198 @@ And now you should be ready to use every functionality `nvim-treesitter` provide
 ## Setup
 
 All modules are disabled by default,
-so you'll need to activate them by putting this in your `init.vim`:
+so you'll need to activate them by putting this in your `init.vim` file:
 
 ```lua
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-    highlight = {
-      enable = true,                    -- false will disable the whole extension
-      disable = { "c", "rust" },        -- list of language that will be disabled
-      custom_captures = {               -- mapping of user defined captures to highlight groups
-        -- ["foo.bar"] = "Identifier"   -- highlight own capture @foo.bar with highlight group "Identifier", see :h nvim-treesitter-query-extensions
-      },
-    },
-    incremental_selection = {
-      enable = true,
-      disable = { "cpp", "lua" },
-      keymaps = {                       -- mappings for incremental selection (visual mappings)
-        init_selection = "gnn",         -- maps in normal mode to init the node/scope selection
-        node_incremental = "grn",       -- increment to the upper named parent
-        scope_incremental = "grc",      -- increment to the upper scope (as defined in locals.scm)
-        node_decremental = "grm",       -- decrement to the previous node
-      }
-    },
-    refactor = {
-      highlight_definitions = {
-        enable = true
-      },
-      highlight_current_scope = {
-        enable = true
-      },
-      smart_rename = {
-        enable = true,
-        keymaps = {
-          smart_rename = "grr"          -- mapping to rename reference under cursor
-        }
-      },
-      navigation = {
-        enable = true,
-        keymaps = {
-          goto_definition = "gnd",      -- mapping to go to definition of symbol under cursor
-          list_definitions = "gnD"      -- mapping to list all definitions in current file
-        }
-      }
-    },
-    textobjects = { -- syntax-aware textobjects
+  ensure_installed = "all"      -- one of "all", "language", or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "c", "rust" },  -- list of language that will be disabled
+  },
+}
+EOF
+```
+
+Check [`:h nvim-treesitter-modules`](doc/nvim-treesitter.txt)
+for a list of available modules and its options.
+
+# Available Modules
+
+## Highlight
+
+Consistent syntax highlighting.
+
+```lua
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
     enable = true,
-    disable = {},
+    custom_captures = {
+      -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
+      ["foo.bar"] = "Identifier",
+    },
+  },
+}
+EOF
+```
+
+## Incremental selection
+
+Incremental selection based on the named nodes from the grammar.
+
+```lua
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  incremental_selection = {
+    enable = true,
     keymaps = {
-        ["iL"] = { -- you can define your own textobjects directly here
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+}
+EOF
+```
+
+## Refactor: highlight definitions
+
+Highlights definition and usages of the current symbol under the cursor.
+
+```lua
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  refactor = {
+    highlight_definitions = { enable = true },
+  },
+}
+EOF
+```
+
+## Refactor: highlight current scope
+
+Highlights the block from the current scope where the cursor is.
+
+```lua
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  refactor = {
+    highlight_current_scope = { enable = true },
+  },
+}
+EOF
+```
+
+## Refactor: smart rename
+
+Renames the symbol under the cursor within the current scope (and current file).
+
+```lua
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  refactor = {
+    smart_rename = {
+      enable = true,
+      keymaps = {
+        smart_rename = "grr",
+      },
+    },
+  },
+}
+EOF
+```
+
+## Refactor: navigation
+
+Provides "go to definition" for the symbol under the cursor,
+and lists the definitions from the current file.
+
+```lua
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  refactor = {
+    navigation = {
+      enable = true,
+      keymaps = {
+        goto_definition = "gnd",
+        list_definitions = "gnD",
+      },
+    },
+  },
+}
+EOF
+```
+
+## Text objects: select
+
+Define your own text objects mappings
+similar to `ip` (inner paragraph) and `ap` (a paragraph).
+
+```lua
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  textobjects = {
+    select = {
+      enable = true,
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+
+        -- Or you can define your own textobjects like this
+        ["iF"] = {
           python = "(function_definition) @function",
           cpp = "(function_definition) @function",
           c = "(function_definition) @function",
-          java = "(method_declaration) @function"
+          java = "(method_declaration) @function",
         },
-        -- or you use the queries from supported languages with textobjects.scm
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["aC"] = "@class.outer",
-        ["iC"] = "@class.inner",
-        ["ac"] = "@conditional.outer",
-        ["ic"] = "@conditional.inner",
-        ["ae"] = "@block.outer",
-        ["ie"] = "@block.inner",
-        ["al"] = "@loop.outer",
-        ["il"] = "@loop.inner",
-        ["is"] = "@statement.inner",
-        ["as"] = "@statement.outer",
-        ["ad"] = "@comment.outer",
-        ["am"] = "@call.outer",
-        ["im"] = "@call.inner"
       },
-      -- swap parameters (keymap -> textobject query)
+    },
+  },
+}
+EOF
+```
+
+## Text objects: swap
+
+Define your own mappings to swap the node under the cursor with the next or previous one,
+like function parameters or arguments.
+
+```lua
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  textobjects = {
+    swap = {
+      enable = true,
       swap_next = {
-        ["<a-p>"] = "@parameter.inner",
+        ["<leader>a"] = "@parameter.inner",
       },
       swap_previous = {
-        ["<a-P>"] = "@parameter.inner",
+        ["<leader>A"] = "@parameter.inner",
       },
-      -- set mappings to go to start/end of adjacent textobjects (keymap -> textobject query)
-      goto_previous_start = {
-        ["[m"] = "@function.outer",
-        ["[["] = "@class.outer",
-      },
-      goto_previous_end = {
-        ["[M"] = "@function.outer",
-        ["[]"] = "@class.outer",
-      },
+    },
+  },
+}
+EOF
+```
+
+## Text objects: move
+
+Define your own mappings to jump to the next or previous text object.
+This is similar to `]m`, `[m`, `]M`, `[M` Neovim's mappings to jump to the next
+or previous function.
+
+```lua
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  textobjects = {
+    move {
+      enable = true,
       goto_next_start = {
         ["]m"] = "@function.outer",
         ["]]"] = "@class.outer",
@@ -172,13 +277,37 @@ require'nvim-treesitter.configs'.setup {
         ["]M"] = "@function.outer",
         ["]["] = "@class.outer",
       },
+      goto_previous_start = {
+        ["[m"] = "@function.outer",
+        ["[["] = "@class.outer",
+      },
+      goto_previous_end = {
+        ["[M"] = "@function.outer",
+        ["[]"] = "@class.outer",
+      },
     },
-    ensure_installed = "all" -- one of "all", "language", or a list of languages
+  },
 }
 EOF
 ```
 
-## Commands
+# Extra features
+
+- Syntax based code folding
+
+```vim
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+```
+
+- Statusline indicator
+
+```vim
+echo nvim_treesitter#statusline(90)  " 90 can be any length
+module->expression_statement->call->identifier
+```
+
+# Commands
 
 Each feature can be enabled or disabled by different means:
 
@@ -190,77 +319,9 @@ Each feature can be enabled or disabled by different means:
 :TSModuleInfo [{module}] " list information about modules state for each filetype
 ```
 
-## Features and Roadmap
+Check [`:h nvim-treesitter-commands`](doc/nvim-treesitter.txt) for a list of all available commands.
 
-The goal of `nvim-treesitter` is both to provide a simple and easy way to use the interface for Treesitter in Neovim,
-but also to add some functionalities to it:
-
-Some of these features are:
-
-- [x] Incremental selection
-- [x] Syntax based code folding (`set foldmethod=expr foldexpr=nvim_treesitter#foldexpr()`)
-- [x] Consistent syntax highlighting (the api is not quite stable yet)
-- [x] Statusline indicator (`require'nvim-treesitter'.statusline(size)`)
-
-You can find the roadmap [here](https://github.com/nvim-treesitter/nvim-treesitter/projects/1).
-The roadmap and all features of this plugin are open to change, and any suggestion will be highly appreciated!
-
-## Available Modules
-
-- `highlight`: Consistent syntax highlighting.
-- `incremental_selection`: Syntax based selection.
-- `refactor.highlight_definitions`: Syntax based definition and usage highlighting.
-- `refactor.smart_rename`: Syntax based definition and usage renaming.
-- `refactor.navigation`: Syntax based definition listing and navigation.
-  * List all definitions
-  * Go to definition
-- `textobjects`: Vim textobjects defined by treesitter queries
-
-## Defining Modules
-
-Users and plugin authors can take advantage of modules by creating their own. Modules provide:
-
-- Treesitter language detection support
-- Attach and detach to buffers
-- Works with all nvim-treesitter commands
-
-You can use the `define_modules` function to define one or more modules or module groups.
-
-```lua
-require 'nvim-treesitter'.define_modules {
-  my_cool_plugin = {
-    attach = function(bufnr, lang)
-      -- Do cool stuff here
-    end,
-    detach = function(bufnr)
-      -- Undo cool stuff here
-    end,
-    is_supported = function(lang)
-      -- Check if the language is supported
-    end
-  }
-}
-```
-
-Modules can consist of the following properties:
-
-- `module_path`: A require path (string) that exports a module with an `attach` and `detach` function. This is not required if the functions are on this definition.
-- `enable`: Determines if the module is enabled by default. This is usually overridden by the user.
-- `disable`: A list of languages that this module is disabled for. This is usually overridden by the user.
-- `is_supported`: A function that takes a language and determines if this module supports that language.
-- `attach`: A function that attaches to a buffer. This is required if `module_path` is not provided.
-- `detach`: A function that detaches from a buffer. This is required if `module_path` is not provided.
-
-## Utils
-
-You can get some utility functions with
-
-```lua
-local ts_utils = require 'nvim-treesitter.ts_utils'
-```
-More information is available in the help file (`:help nvim-treesitter-utils`).
-
-## Supported Languages
+# Supported Languages
 
 For `nvim-treesitter` to work, we need to use query files such as those you can find in
 `queries/{lang}/{locals,highlights,textobjects}.scm`
@@ -304,7 +365,60 @@ List of currently supported languages:
 - [ ] vue
 - [ ] yaml
 
-## User Query Extensions
+# Roadmap
+
+The goal of `nvim-treesitter` is both to provide a simple and easy way to use the interface for Treesitter in Neovim,
+but also to add some functionalities to it.
+
+You can find the roadmap [here](https://github.com/nvim-treesitter/nvim-treesitter/projects/1).
+The roadmap and all features of this plugin are open to change, and any suggestion will be highly appreciated!
+
+# Defining Modules
+
+Users and plugin authors can take advantage of modules by creating their own. Modules provide:
+
+- Treesitter language detection support
+- Attach and detach to buffers
+- Works with all nvim-treesitter commands
+
+You can use the `define_modules` function to define one or more modules or module groups.
+
+```lua
+require'nvim-treesitter'.define_modules {
+  my_cool_plugin = {
+    attach = function(bufnr, lang)
+      -- Do cool stuff here
+    end,
+    detach = function(bufnr)
+      -- Undo cool stuff here
+    end,
+    is_supported = function(lang)
+      -- Check if the language is supported
+    end
+  }
+}
+```
+
+Modules can consist of the following properties:
+
+- `module_path`: A require path (string) that exports a module with an `attach` and `detach` function. This is not required if the functions are on this definition.
+- `enable`: Determines if the module is enabled by default. This is usually overridden by the user.
+- `disable`: A list of languages that this module is disabled for. This is usually overridden by the user.
+- `is_supported`: A function that takes a language and determines if this module supports that language.
+- `attach`: A function that attaches to a buffer. This is required if `module_path` is not provided.
+- `detach`: A function that detaches from a buffer. This is required if `module_path` is not provided.
+
+# Utils
+
+You can get some utility functions with
+
+```lua
+local ts_utils = require 'nvim-treesitter.ts_utils'
+```
+
+Check [`:h nvim-treesitter-utils`](doc/nvim-treesitter.txt) for more information.
+
+# User Query Extensions
 
 Queries are what `nvim-treesitter` uses to extract informations from the syntax tree, and they are
 located in the `queries/{lang}/*` runtime directories (like the `queries` folder of this plugin).
@@ -322,12 +436,12 @@ use is :
 - If you want to override a part of a query (only one match for example), use the `after/queries`
   directory.
 
-## Troubleshooting
+# Troubleshooting
 
 Before doing anything make sure you have the latest version of this plugin and run `:checkhealth nvim_treesitter`.
 This will help you find where the bug might come from.
 
-### Feature `X` does not work for `{language}`...
+## Feature `X` does not work for `{language}`...
 
 First, check the `## {language} parser healthcheck` section of `:checkhealth` if you have any warning.
 If you do, it's highly possible that this is the cause of the problem.
@@ -335,14 +449,22 @@ If everything is okay, then it might be an actual error.
 
 In both cases, feel free to [open an issue here](https://github.com/nvim-treesitter/nvim-treesitter/issues/new/choose).
 
-### I get `Error detected while processing .../plugin/nvim-treesitter.vim` everytime I open Neovim
+### While typing my code is marked as red
+
+You can deactivate highlighting of syntax errors by adding this to your `init.vim` file:
+
+```vim
+highlight link TSError Normal
+```
+
+## I get `Error detected while processing .../plugin/nvim-treesitter.vim` every time I open Neovim
 
 This is probably due to a change in a parser's grammar or its queries.
 Try updating the parser that you suspect has changed (`:TSUpdate {language}`) or all of them (`:TSUpdate`).
 If the error persists after updating all parsers,
 please [open an issue](https://github.com/nvim-treesitter/nvim-treesitter/issues/new/choose).
 
-### I experience weird highlighting issues similar to [#78](https://github.com/nvim-treesitter/nvim-treesitter/issues/78)
+## I experience weird highlighting issues similar to [#78](https://github.com/nvim-treesitter/nvim-treesitter/issues/78)
 
 This is a well known issue, which arise when the tree and the buffer are getting out of sync.
 As this issue comes from upstream, we don't have any finite fix. To get around this, you can force reparsing the buffer with this command:
