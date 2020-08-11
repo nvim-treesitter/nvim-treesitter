@@ -37,7 +37,7 @@ M.built_in_query_groups = {'highlights', 'locals', 'textobjects'}
 -- for a specific language.
 local function get_query_guard(query)
   return function(lang)
-    return M.get_query(lang, query) ~= nil
+    return M.has_query_files(lang, query)
   end
 end
 
@@ -69,34 +69,40 @@ function M.get_matches(bufnr, query_group)
   return query_cache[query_group][bufnr].cache
 end
 
-function M.get_query(lang, query_name)
-  local query_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', lang, query_name), true)
-  local query_string = ''
+function M.get_query_files(lang, query_name)
+  local query_files = {}
+  local extensions = M.query_extensions[lang] or {}
 
-  if #query_files > 0 then
-    query_string = read_query_files(query_files) .. "\n" .. query_string
-  end
-
-  for _, base_lang in ipairs(M.base_language_map[lang] or {}) do
-    local base_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', base_lang, query_name), true)
-    if base_files and #base_files > 0 then
-        query_string = read_query_files(base_files) .. "\n" .. query_string
-    end
-  end
-
-  local extensions = M.query_extensions[lang]
-  for _, ext in ipairs(extensions or {}) do
+  for _, ext in ipairs(extensions) do
     local l = lang
     local e = ext
     if e:match('%.') ~= nil then
        l = e:match('.*%.'):sub(0, -2)
        e = e:match('%..*'):sub(2, -1)
     end
-    local ext_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', l, e), true)
-    if ext_files and #ext_files > 0 then
-      query_string = read_query_files(ext_files) .. "\n" .. query_string
-    end
+    local ext_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', l, e), true) or {}
+    vim.list_extend(query_files, ext_files)
   end
+
+  for _, base_lang in ipairs(M.base_language_map[lang] or {}) do
+    local base_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', base_lang, query_name), true) or {}
+    vim.list_extend(query_files, base_files)
+  end
+
+  local lang_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', lang, query_name), true) or {}
+
+  return vim.list_extend(query_files, lang_files)
+end
+
+function M.has_query_files(lang, query_name)
+  local query_files = M.get_query_files(lang, query_name)
+
+  return #query_files > 0
+end
+
+function M.get_query(lang, query_name)
+  local query_files = M.get_query_files(lang, query_name)
+  local query_string = read_query_files(query_files)
 
   if #query_string > 0 then
     return ts.parse_query(lang, query_string)
