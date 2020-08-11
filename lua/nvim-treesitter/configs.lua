@@ -279,13 +279,13 @@ function M.setup(user_data)
     else
       config.modules[name] = vim.tbl_deep_extend('force', config.modules[name] or {}, data)
 
-      recurse_modules(function(mod_name)
+      recurse_modules(function(_, _, new_path)
         if data.enable then
-          enable_all(mod_name)
+          enable_all(new_path)
         end
 
         for _, lang in ipairs(data.disable or {}) do
-          disable_mod_conf_autocmd(mod_name, lang)
+          disable_mod_conf_autocmd(new_path, lang)
         end
       end, config.modules)
     end
