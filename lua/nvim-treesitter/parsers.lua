@@ -284,11 +284,25 @@ function M.get_parser_configs()
   return M.list
 end
 
+local parser_files
+
+function M.reset_cache()
+  parser_files = setmetatable({}, {
+    __index = function(tbl, key)
+      rawset(tbl, key, api.nvim_get_runtime_file('parser/' .. key .. '.*', false))
+      return rawget(tbl, key)
+    end
+  })
+end
+
+M.reset_cache()
+
 function M.has_parser(lang)
   local buf = api.nvim_get_current_buf()
   local lang = lang or M.get_buf_lang(buf)
+
   if not lang or #lang == 0 then return false end
-  return #api.nvim_get_runtime_file('parser/' .. lang .. '.*', false) > 0
+  return #parser_files[lang] > 0
 end
 
 function M.get_parser(bufnr, lang)
