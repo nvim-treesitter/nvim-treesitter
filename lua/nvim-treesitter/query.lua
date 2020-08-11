@@ -2,7 +2,6 @@ local api = vim.api
 local ts = vim.treesitter
 local utils = require'nvim-treesitter.utils'
 local parsers = require'nvim-treesitter.parsers'
-local predicates = require'nvim-treesitter.query_predicates'
 
 local M = {}
 
@@ -157,14 +156,6 @@ function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
           -- functions
           if pred[1] == "set!" and type(pred[2]) == "string" then
             insert_to_path(prepared_match, split(pred[2]), pred[3])
-          end
-
-          -- predicates
-          if type(pred[1]) == 'string' then
-            if not predicates.check_predicate(query, prepared_match, pred) or
-               not predicates.check_negated_predicate(query, prepared_match, pred) then
-              return iterator()
-            end
           end
         end
       end
