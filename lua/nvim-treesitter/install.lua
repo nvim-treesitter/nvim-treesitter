@@ -59,6 +59,8 @@ local function iter_cmd_sync(cmd_list)
 end
 
 local function run_install(cache_folder, package_path, lang, repo, with_sync)
+  parsers.reset_cache()
+
   local project_name = 'tree-sitter-'..lang
   local project_repo = cache_folder..'/'..project_name
   -- compile_location only needed for typescript installs.
