@@ -69,6 +69,29 @@ function M.get_matches(bufnr, query_group)
   return query_cache[query_group][bufnr].cache
 end
 
+local function filter_files(file_list)
+  local main = {}
+  local after = {}
+
+  for _, fname in ipairs(file_list) do
+    -- Only get the name of the directory containing the queries directory
+    if vim.fn.fnamemodify(fname, ":p:h:h:t") == "after" then
+      table.insert(after, fname)
+    -- The first one is the one with most priority
+    elseif #main == 0 then
+      main = { fname }
+    end
+  end
+
+  vim.list_extend(main, after)
+
+  return main
+end
+
+local function filtered_runtime_queries(lang, query_name)
+  return filter_files(api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', lang, query_name), true) or {})
+end
+
 function M.get_query_files(lang, query_name)
   local query_files = {}
   local extensions = M.query_extensions[lang] or {}
@@ -80,16 +103,16 @@ function M.get_query_files(lang, query_name)
        l = e:match('.*%.'):sub(0, -2)
        e = e:match('%..*'):sub(2, -1)
     end
-    local ext_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', l, e), true) or {}
+    local ext_files = filtered_runtime_queries(l, e)
     vim.list_extend(query_files, ext_files)
   end
 
   for _, base_lang in ipairs(M.base_language_map[lang] or {}) do
-    local base_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', base_lang, query_name), true) or {}
+    local base_files = filtered_runtime_queries(base_lang, query_name)
     vim.list_extend(query_files, base_files)
   end
 
-  local lang_files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', lang, query_name), true) or {}
+  local lang_files = filtered_runtime_queries(lang, query_name)
 
   return vim.list_extend(query_files, lang_files)
 end
