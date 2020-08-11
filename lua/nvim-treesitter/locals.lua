@@ -66,51 +66,69 @@ function M.get_references(bufnr)
   return refs
 end
 
+--- Gets a table with all the scopes containing a node
+-- The order is from most specific to least (bottom up)
+function M.get_scope_tree(node, bufnr)
+  local current_scope = M.containing_scope(node, bufnr, false) or parsers.get_tree_root(bufnr)
+  local scopes = {}
+
+  while current_scope do
+    table.insert(scopes, current_scope)
+    current_scope = current_scope:parent()
+      and (M.containing_scope(current_scope:parent(), bufnr, false) or parsers.get_tree_root(bufnr))
+      or nil
+  end
+
+  return scopes
+end
+
 -- Finds the definition node and it's scope node of a node
 -- @param node starting node
 -- @param bufnr buffer
 -- @returns the definition node and the definition nodes scope node
 function M.find_definition(node, bufnr)
   local bufnr = bufnr or api.nvim_get_current_buf()
-  local node_text = ts_utils.get_node_text(node)[1]
-  local current_scope = M.containing_scope(node)
-  local matching_def_nodes = {}
+  local node_text = ts_utils.get_node_text(node, bufnr)[1]
+  local scope_tree = M.get_scope_tree(node, bufnr)
+  local match
+  local last_scope_index
 
-  -- If a scope wasn't found then use the root node
-  if current_scope == node then
-    current_scope = parsers.get_parser(bufnr).tree:root()
-  end
+  -- Loop over every definition
+  for _, definition in ipairs(M.get_definitions(bufnr)) do
+    for _, node_entry in ipairs(M.get_local_nodes(definition)) do
+      local def_scope = M.containing_scope(node_entry.node, bufnr, false) or parsers.get_tree_root(bufnr)
 
-  -- Get all definitions that match the node text
-  for _, def in ipairs(M.get_definitions(bufnr)) do
-    for _, def_node in ipairs(M.get_local_nodes(def)) do
-      if ts_utils.get_node_text(def_node)[1] == node_text then
-        table.insert(matching_def_nodes, def_node)
+      -- Only match definitions that match the text of the node
+      -- Look for the most specific definition in the tree
+      -- The lower the index, the more specific the definition is
+      if ts_utils.get_node_text(node_entry.node, bufnr)[1] == node_text then
+	for i, scope_node in ipairs(scope_tree) do
+	  -- If we already found a close definition in scope, just skip checking
+	  if last_scope_index and i >= last_scope_index then break end
+	  if scope_node == def_scope then
+	    last_scope_index = i
+	    match = node_entry
+	  end
+	end
       end
     end
   end
 
-  -- Continue up each scope until we find the scope that contains the definition
-  while current_scope do
-    for _, def_node in ipairs(matching_def_nodes) do
-      if ts_utils.is_parent(current_scope, def_node) then
-        return def_node, current_scope
-      end
-    end
-    current_scope = M.containing_scope(current_scope:parent())
+  if match and last_scope_index then
+    return match.node, scope_tree[last_scope_index], match.kind
   end
 
-  return node, parsers.get_parser(bufnr).tree:root()
+  return node, parsers.get_parser(bufnr).tree:root(), nil
 end
 
--- Gets all nodes from a local list result.
+-- Gets a table of all nodes and their 'kinds' from a locals list
 -- @param local_def the local list result
--- @returns a list of nodes
+-- @returns a list of node entries
 function M.get_local_nodes(local_def)
   local result = {}
 
-  M.recurse_local_nodes(local_def, function(_, node)
-    table.insert(result, node)
+  M.recurse_local_nodes(local_def, function(_, node, kind)
+    table.insert(result, { node = node, kind = kind })
   end)
 
   return result
@@ -146,7 +164,7 @@ end
 -- @returns a list of nodes
 function M.find_usages(node, scope_node, bufnr)
   local bufnr = bufnr or api.nvim_get_current_buf()
-  local node_text = ts_utils.get_node_text(node)[1]
+  local node_text = ts_utils.get_node_text(node, bufnr)[1]
 
   if not node_text or #node_text < 1 then return {} end
 
@@ -156,7 +174,7 @@ function M.find_usages(node, scope_node, bufnr)
   for match in M.iter_locals(bufnr, scope_node) do
     if match.reference
       and match.reference.node
-      and ts_utils.get_node_text(match.reference.node)[1] == node_text
+      and ts_utils.get_node_text(match.reference.node, bufnr)[1] == node_text
     then
       table.insert(usages, match.reference.node)
     end
@@ -165,8 +183,9 @@ function M.find_usages(node, scope_node, bufnr)
   return usages
 end
 
-function M.containing_scope(node, bufnr)
+function M.containing_scope(node, bufnr, allow_scope)
   local bufnr = bufnr or api.nvim_get_current_buf()
+  local allow_scope = allow_scope == nil or allow_scope == true
 
   local scopes = M.get_scopes(bufnr)
   if not node or not scopes then return end
@@ -177,7 +196,7 @@ function M.containing_scope(node, bufnr)
     iter_node = iter_node:parent()
   end
 
-  return iter_node or node
+  return iter_node or (allow_scope and node or nil)
 end
 
 function M.nested_scope(node, cursor_pos)
