@@ -34,6 +34,7 @@
 
 ;; Operators
 [
+"="
 "~="
 "=="
 "<="
@@ -58,6 +59,9 @@
 ".."
 "#"
  ] @operator
+
+;; Punctuation
+[ "," "." ] @punctuation.delimiter
 
 ;; Brackets
 [
