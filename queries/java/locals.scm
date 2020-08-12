@@ -6,6 +6,8 @@
 (enum_declaration
   body: (_) @scope)
 (method_declaration) @scope ; whole method_declaration because arguments
+(lambda_expression) @scope
+(enhanced_for_statement) @scope
 
 ; block
 (block) @scope
@@ -38,8 +40,8 @@
 
 
 ; DEFINITIONS
- (package_declaration
-    (identifier) @definition.namespace) 
+(package_declaration
+  (identifier) @definition.namespace)
 (class_declaration
   name: (identifier) @definition.class)
 (enum_declaration
@@ -57,6 +59,8 @@
 (inferred_parameters (identifier) @definition.var) ; (x,y) -> ...
 (lambda_expression
     parameters: (identifier) @definition.var) ; x -> ...
+(enhanced_for_statement ; for (var item : items) {
+  name: (identifier) @definition.var)
 
 ((scoped_identifier
   (identifier) @definition.import)
