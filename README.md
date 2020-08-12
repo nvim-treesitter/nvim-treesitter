@@ -281,10 +281,21 @@ List of currently supported languages:
 
 ## User Query Extensions
 
-You can add your own query files by placing a query file in vim's runtime path after `nvim-treesitter` is sourced.
-If the language has a built in query file, that file will be appended to or it will be used (useful for languages not yet supported).
-For example, you can add files to `<vim-config-dir>/after/queries/lua/highlights.scm` to add more queries to lua highlights.
-You can also manually add query paths to the runtime path by adding this to your vim config `set rtp+='path/to/queries'`.
+Queries are what `nvim-treesitter` uses to extract informations from the syntax tree, and they are
+located in the `queries/{lang}/*` runtime directories (like the `queries` folder of this plugin).
+
+`nvim-treesitter` considers queries as any runtime file (see `:h rtp`), that is :
+
+- if the file is in any `after/queries/` folder, then it will be used to extend the already defined
+  queries.
+- Otherwise, it will be used as a base to define the query, the first query found (with the highest
+  priority) will be the only one to be used.
+
+This hybrid approach is the most standard way, and according to that, here is some ideas on how to
+use is :
+- If you want to rewrite (or write) a query, don't use `after/queries`.
+- If you want to override a part of a query (only one match for example), use the `after/queries`
+  directory.
 
 ## Troubleshooting
 
