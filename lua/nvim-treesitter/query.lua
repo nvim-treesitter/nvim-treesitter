@@ -203,7 +203,6 @@ end
 -- @param query_group the query file to use
 -- @param root the root node
 function M.iter_group_results(bufnr, query_group, root)
-
   local lang = parsers.get_buf_lang(bufnr)
   if not lang then return end
 
@@ -216,7 +215,8 @@ function M.iter_group_results(bufnr, query_group, root)
   local root = root or parser:parse():root()
   local start_row, _, end_row, _ = root:range()
 
-  return M.iter_prepared_matches(query, root, bufnr, start_row, end_row)
+  -- The end row is exclusive so we need to add 1 to it.
+  return M.iter_prepared_matches(query, root, bufnr, start_row, end_row + 1)
 end
 
 function M.collect_group_results(bufnr, query_group, root)

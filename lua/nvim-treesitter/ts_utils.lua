@@ -195,4 +195,34 @@ function M.node_to_lsp_range(node)
   return rtn
 end
 
+--- Memoizes a function based on the buffer tick of the provided bufnr.
+-- The cache entry is cleared when the buffer is detached to avoid memory leaks.
+-- @param fn: the fn to memoize
+-- @param bufnr_fn: a function that receives all arguments passed to the function
+--                  and returns the bufnr from the arguments
+-- @returns a memoized function
+function M.memoize_by_buf_tick(fn, bufnr_fn)
+  local bufnr_fn = bufnr_fn or function(a) return a end
+  local cache = {}
+
+  return function(...)
+    local bufnr = bufnr_fn(...)
+    local tick = api.nvim_buf_get_changedtick(bufnr)
+
+    if cache[bufnr] then
+      if cache[bufnr].last_tick == tick then
+        return cache[bufnr].result
+      end
+    else
+      cache[bufnr] = {}
+      api.nvim_buf_attach(bufnr, false, { on_detach = function() cache[bufnr] = nil end })
+    end
+
+    cache[bufnr].last_tick = tick
+    cache[bufnr].result = fn(...)
+
+    return cache[bufnr].result
+  end
+end
+
 return M
