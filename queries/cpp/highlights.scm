@@ -74,6 +74,10 @@
 (true) @boolean
 (false) @boolean
 
+; Literals
+
+(raw_string_literal)  @string
+
 ; Keywords
 
 [
