@@ -1,4 +1,4 @@
-" Last Change: 2020 Jun 29
+" Last Change: 2020 Aug 13
 
 if exists('g:loaded_nvim_treesitter')
   finish
@@ -62,7 +62,7 @@ highlight default link TSTypeBuiltin Type
 highlight default link TSStructure Structure
 highlight default link TSInclude Include
 
-highlight default link TSVariable Identifier
+highlight default link TSVariable Normal
 highlight default link TSVariableBuiltin Special
 
 highlight default link TSDefinitionUsage Visual
