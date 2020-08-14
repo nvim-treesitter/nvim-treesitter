@@ -156,6 +156,7 @@
   "is"
   "not"
   "or"
+  "->"
 ] @operator
 
 ; Keywords
@@ -194,7 +195,7 @@
   "{" @punctuation.special
   "}" @punctuation.special) @embedded
 
-[ "," "." ":" ] @punctuation.delimiter
+[ "," "." ":" (ellipsis) ] @punctuation.delimiter
 
 ; Class definitions
 
