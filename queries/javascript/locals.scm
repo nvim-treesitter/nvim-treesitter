@@ -20,6 +20,11 @@
   (object_pattern
     (identifier) @definition.var))
 
+; function(arg = []) {
+(formal_parameters
+  (assignment_pattern
+    (shorthand_property_identifier) @definition.var))
+
 (formal_parameters
   (object_pattern
     (shorthand_property_identifier) @definition.var))
@@ -42,4 +47,4 @@
 ;------------
 
 (identifier) @reference
-
+(shorthand_property_identifier) @reference
