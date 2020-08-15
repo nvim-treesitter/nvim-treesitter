@@ -131,8 +131,10 @@
 (comment) @comment
 
 ;; Parameters
-(parameter_list
-  (parameter_declaration) @parameter)
+(parameter_declaration
+  declarator: (identifier) @parameter)
+((identifier) @parameter
+              (is? @parameter parameter))
 
 (preproc_params
   (identifier)) @parameter

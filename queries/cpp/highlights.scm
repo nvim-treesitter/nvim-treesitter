@@ -8,7 +8,12 @@
  (#match? @field "_$"))
 
 ; function(Foo ...foo)
-(variadic_parameter_declaration) @parameter
+(variadic_parameter_declaration
+  declarator: (variadic_declarator
+                (identifier) @parameter))
+; int foo = 0
+(optional_parameter_declaration
+    declarator: (identifier) @parameter)
 
 ;(field_expression) @parameter ;; How to highlight this?
 (template_function

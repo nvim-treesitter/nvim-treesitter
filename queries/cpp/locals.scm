@@ -1,3 +1,9 @@
+;; Parameters
+(variadic_parameter_declaration
+  declarator: (variadic_declarator
+                (identifier) @definition.parameter))
+(optional_parameter_declaration
+  declarator: (identifier) @definition.parameter)
 
 ;; Class / struct defintions
 (class_specifier) @scope
@@ -39,7 +45,7 @@
 ((namespace_identifier) @reference
                         (set! reference.kind "namespace"))
 
-;; Function defintions
+;; Function definitions
 (template_function
   name: (identifier) @definition.function) @scope
 
