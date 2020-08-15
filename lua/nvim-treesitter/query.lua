@@ -74,7 +74,7 @@ local function filter_files(file_list)
 
   for _, fname in ipairs(file_list) do
     -- Only get the name of the directory containing the queries directory
-    if vim.fn.fnamemodify(fname, ":p:h:h:t") == "after" then
+    if vim.fn.fnamemodify(fname, ":p:h:h:h:t") == "after" then
       table.insert(after, fname)
     -- The first one is the one with most priority
     elseif #main == 0 then
