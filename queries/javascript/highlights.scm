@@ -1,8 +1,16 @@
 ; Types
 
 ; Javascript
+
+; Properties
+;-----------
+
+(property_identifier) @property
+
 ; Special identifiers
 ;--------------------
+
+(identifier) @variable
 
 ((identifier) @constant
  (#match? @constant "^[A-Z_][A-Z\\d_]+$"))
@@ -14,10 +22,16 @@
  (#match? @constructor "^[A-Z]"))
 
 ((identifier) @variable.builtin
+ (#not-is? @variable.builtin import var parameter)
  (#match? @variable.builtin "^(arguments|module|console|window|document)$"))
 
 ((identifier) @function.builtin
+ (#not-is? @function.builtin import var parameter)
  (#eq? @function.builtin "require"))
+
+((identifier) @parameter.reference
+ (#is? @parameter.reference parameter))
+
 
 ; Function and method definitions
 ;--------------------------------
@@ -77,13 +91,6 @@
 (formal_parameters
   (rest_parameter
     (identifier) @parameter))
-
-(identifier) @variable
-
-; Properties
-;-----------
-
-(property_identifier) @property
 
 ; Literals
 ;---------

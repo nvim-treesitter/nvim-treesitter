@@ -358,6 +358,10 @@ Rust.
 							      *hl-TSParameter*
 For parameters of a function.
 
+`TSParameterReference`
+						     *hl-TSParameterReference*
+For references to parameters of a function.
+
 `TSMethod`
 								 *hl-TSMethod*
 For method calls and definitions.

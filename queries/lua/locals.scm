@@ -8,7 +8,7 @@
    (field_expression object:(*) @definition.associated (property_identifier) @definition.var)))
 
 ;; Parameters
-(parameters (identifier) @definition.var)
+(parameters (identifier) @definition.parameter)
 
 ;; Loops
 ((loop_expression

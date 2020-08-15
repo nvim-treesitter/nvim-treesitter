@@ -43,6 +43,7 @@ highlight default link TSFunction Function
 highlight default link TSFuncBuiltin Special
 highlight default link TSFuncMacro Macro
 highlight default link TSParameter Identifier
+highlight default link TSParameterReference TSParameter
 highlight default link TSMethod Function
 highlight default link TSField Identifier
 highlight default link TSProperty Identifier

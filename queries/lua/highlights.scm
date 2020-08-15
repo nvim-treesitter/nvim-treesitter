@@ -93,5 +93,8 @@
 (number) @number
 (label_statement) @label
 
+((identifier) @parameter.reference
+ (#is? @parameter.reference parameter))
+
 ;; Error
 (ERROR) @error
