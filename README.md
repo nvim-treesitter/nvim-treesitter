@@ -330,40 +330,43 @@ We are looking for maintainers to write query files for their languages.
 
 List of currently supported languages:
 
-- [x] bash (maintained by @TravonteD)
-- [x] c (maintained by @vigoux)
-- [x] cpp (maintained by @theHamsta, extends C queries)
-- [x] csharp (maintained by @svermeulen)
-- [x] css (maintained by @TravonteD)
-- [x] dart (maintained by @Akin909)
-- [ ] elm
-- [x] fennel (maintained by @TravonteD)
-- [x] go (maintained by @theHamsta, @WinWisely268)
-- [ ] haskell
-- [x] html (maintained by @TravonteD)
-- [x] java
-- [x] javascript (maintained by @steelsojka)
-- [ ] jsdoc
-- [x] json (maintained by @steelsojka)
-- [ ] julia
-- [x] lua  (maintained by @vigoux)
-- [ ] markdown
-- [ ] nix
-- [ ] ocaml
-- [x] php (maintained by @tk-shirasaka)
-- [x] python (maintained by @theHamsta)
-- [x] regex (maintained by @theHamsta)
-- [x] rst (maintained by @stsewd)
-- [x] ruby (maintained by @TravonteD)
-- [x] rust (partial support, maintained by @vigoux)
-- [ ] scala
-- [ ] swift
-- [x] toml (maintained by @tk-shirasaka)
-- [x] tree-sitter query language (maintained by @steelsojka)
-- [ ] tsx
-- [x] typescript (maintained by @steelsojka)
-- [ ] vue
-- [ ] yaml
+<!--Update this section by running `nvim --headless -c "luafile ./scripts/update-readme.lua"`-->
+<!--parserinfo-->
+- [x] [bash](https://github.com/tree-sitter/tree-sitter-bash) (maintained by @TravonteD)
+- [x] [c](https://github.com/tree-sitter/tree-sitter-c) (maintained by @vigoux)
+- [x] [c_sharp](https://github.com/tree-sitter/tree-sitter-c-sharp) (maintained by @svermeulen)
+- [x] [cpp](https://github.com/tree-sitter/tree-sitter-cpp) (maintained by @theHamsta)
+- [x] [css](https://github.com/tree-sitter/tree-sitter-css) (maintained by @TravonteD)
+- [x] [dart](https://github.com/UserNobody14/tree-sitter-dart) (maintained by @Akin909)
+- [ ] [elm](https://github.com/razzeee/tree-sitter-elm)
+- [x] [fennel](https://github.com/travonted/tree-sitter-fennel) (maintained by @TravonteD)
+- [x] [go](https://github.com/tree-sitter/tree-sitter-go) (maintained by @theHamsta, @WinWisely268)
+- [ ] [haskell](https://github.com/tree-sitter/tree-sitter-haskell)
+- [x] [html](https://github.com/tree-sitter/tree-sitter-html) (maintained by @TravonteD)
+- [x] [java](https://github.com/tree-sitter/tree-sitter-java) (maintained by @p00f)
+- [x] [javascript](https://github.com/tree-sitter/tree-sitter-javascript) (maintained by @steelsojka)
+- [x] [jsdoc](https://github.com/tree-sitter/tree-sitter-jsdoc) (maintained by @steelsojka)
+- [x] [json](https://github.com/tree-sitter/tree-sitter-json) (maintained by @steelsojka)
+- [ ] [julia](https://github.com/tree-sitter/tree-sitter-julia)
+- [x] [lua](https://github.com/nvim-treesitter/tree-sitter-lua) (maintained by @vigoux)
+- [ ] [markdown](https://github.com/ikatyang/tree-sitter-markdown)
+- [ ] [nix](https://github.com/cstrahan/tree-sitter-nix)
+- [x] [ocaml](https://github.com/tree-sitter/tree-sitter-ocaml) (maintained by @undu)
+- [x] [php](https://github.com/tree-sitter/tree-sitter-php) (maintained by @tk-shirasaka)
+- [x] [python](https://github.com/tree-sitter/tree-sitter-python) (maintained by @stsewd, @theHamsta)
+- [x] [Tree-sitter query language](https://github.com/nvim-treesitter/tree-sitter-query) (maintained by @steelsojka)
+- [x] [regex](https://github.com/tree-sitter/tree-sitter-regex) (maintained by @theHamsta)
+- [x] [rst](https://github.com/stsewd/tree-sitter-rst) (maintained by @stsewd)
+- [x] [ruby](https://github.com/tree-sitter/tree-sitter-ruby) (maintained by @TravonteD)
+- [x] [rust](https://github.com/tree-sitter/tree-sitter-rust) (maintained by @vigoux)
+- [ ] [scala](https://github.com/tree-sitter/tree-sitter-scala)
+- [ ] [swift](https://github.com/tree-sitter/tree-sitter-swift)
+- [x] [toml](https://github.com/ikatyang/tree-sitter-toml) (maintained by @tk-shirasaka)
+- [ ] [tsx](https://github.com/tree-sitter/tree-sitter-typescript)
+- [x] [typescript](https://github.com/tree-sitter/tree-sitter-typescript) (maintained by @steelsojka)
+- [ ] [vue](https://github.com/ikatyang/tree-sitter-vue)
+- [ ] [yaml](https://github.com/ikatyang/tree-sitter-yaml)
+<!--parserinfo-->
 
 # Roadmap
 
