@@ -14,28 +14,28 @@
 ;------------
 
 (formal_parameters
-  (identifier) @definition.var)
+  (identifier) @definition.parameter)
 
 (formal_parameters
   (object_pattern
-    (identifier) @definition.var))
+    (identifier) @definition.parameter))
 
 ; function(arg = []) {
 (formal_parameters
   (assignment_pattern
-    (shorthand_property_identifier) @definition.var))
+    (shorthand_property_identifier) @definition.parameter))
 
 (formal_parameters
   (object_pattern
-    (shorthand_property_identifier) @definition.var))
+    (shorthand_property_identifier) @definition.parameter))
 
 (formal_parameters
   (array_pattern
-    (identifier) @definition.var))
+    (identifier) @definition.parameter))
 
 (formal_parameters
   (rest_parameter
-    (identifier) @definition.var))
+    (identifier) @definition.parameter))
 
 (variable_declarator
   name: (identifier) @definition.var)

@@ -35,3 +35,18 @@ query.add_predicate('has-ancestor?', function(match, pattern, bufnr, pred)
   end
   return false
 end)
+
+query.add_predicate('is?', function(match, pattern, bufnr, pred)
+  if #pred < 3 then error("is? must have at least two arguments!") return end
+
+  -- Avoid circular dependencies
+  local locals = require"nvim-treesitter.locals"
+  local node = match[pred[2]]
+  local types = {unpack(pred, 3)}
+
+  if not node then return true end
+
+  local _, _, kind = locals.find_definition(node, bufnr)
+
+  return vim.tbl_contains(types, kind)
+end)
