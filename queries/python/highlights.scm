@@ -80,6 +80,8 @@
 ; Normal parameters
 (parameters
   (identifier) @parameter)
+((identifier) @parameter
+              (is? @parameter parameter))
 ; Lambda parameters
 (lambda_parameters
   (identifier) @parameter)

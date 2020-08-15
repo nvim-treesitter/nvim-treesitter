@@ -18,16 +18,16 @@
 
 ; Function with parameters, defines parameters
 (parameters
-  (identifier) @definition.var)
+  (identifier) @definition.parameter)
 
 (default_parameter
-  (identifier) @definition.var)
+  (identifier) @definition.parameter)
 
 (typed_parameter
-  (identifier) @definition.var)
+  (identifier) @definition.parameter)
 
 (typed_default_parameter
-  (identifier) @definition.var)
+  (identifier) @definition.parameter)
 
 (with_statement
   (with_item
@@ -36,12 +36,12 @@
 ; *args parameter
 (parameters
   (list_splat
-    (identifier) @definition.var))
+    (identifier) @definition.parameter))
 
 ; **kwargs parameter
 (parameters
   (dictionary_splat
-    (identifier) @definition.var))
+    (identifier) @definition.parameter))
 
 ; Function defines function and scope
 (function_definition
