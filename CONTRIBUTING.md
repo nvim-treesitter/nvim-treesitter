@@ -177,3 +177,30 @@ Mainly for markup languages.
 @scope
 @reference
 ```
+
+#### Definition Scope
+
+You can set the scope of a definition by setting the `scope` property on the definition.
+
+For example, a javascript function declaration creates a scope. The function name is captured as the definition.
+This means that the function definition would only be available WITHIN the scope of the function, which is not the case.
+The definition can be used in the scope the function was defined in.
+
+```javascript
+function doSomething() {}
+
+doSomething(); // Should point to the declaration as the definition
+```
+
+```scheme
+(function_declaration
+  ((identifier) @definition.var)
+   (set! "definition.var.scope" "parent"))
+```
+
+Possible scope values are:
+
+- `parent`: The definition is valid in the containing scope and one more scope above that scope
+- `global`: The definition is valid in the root scope
+- `local`: The definition is valid in the containing scope. This is the default behavior
+

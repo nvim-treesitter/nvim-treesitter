@@ -43,6 +43,10 @@
 (import_specifier
   (identifier) @definition.import)
 
+(function_declaration
+  ((identifier) @definition.var)
+   (#set! definition.var.scope parent))
+
 ; References
 ;------------
 
