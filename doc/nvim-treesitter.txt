@@ -421,7 +421,12 @@ This is left as an exercise for the reader.
 `TSInclude`
 								*hl-TSInclude*
 For includes: `#include` in C, `use` or `extern crate` in Rust, or `require`
-in Lua
+in Lua.
+
+`TSAnnotation`
+                                                             *hl-TSAnnotation*
+For C++/Dart attributes, annotations that can be attached to the code to
+denote some kind of meta information.
 
 `TSText`
 								   *hl-TSText*
@@ -436,10 +441,11 @@ For text to be represented with strong.
 For text to be represented with emphasis.
 
 `TSUnderline`
-							       *hl-TSUnderline*
+							      *hl-TSUnderline*
 For text to be represented with an underline.
 
 `TSTitle`
+							          *hl-TSTitle*
 
 Text that is part of a title.
 
@@ -450,5 +456,26 @@ Literal text.
 `TSURI`
 								    *hl-TSURI*
 Any URI like a link or email.
+
+==============================================================================
+MODULE-HIGHLIGHTS                          *nvim-treesitter-module-highlights*
+
+Apart from the general purpose highlights in *nvim-treesitter-highlights* ,
+some submodules use their own highlight groups to visualize additional
+information.
+
+`TSDefinition`
+                                                              *hl-TSDefinition*
+Used by refactor.highlight_definitions to highlight the definition of the
+symbol under the cursor.
+
+`TSDefinitionUsage`
+                                                         *hl-TSDefinitionUsage*
+Used by refactor.highlight_definitions to highlight usages of the symbol under
+the cursor.
+
+`TSCurrentScope`
+                                                            *hl-TSCurrentScope*
+Used by refactor.highlight_current_scope to highlight the current scope.
 
 vim:tw=78:ts=8:noet:ft=help:norl:
