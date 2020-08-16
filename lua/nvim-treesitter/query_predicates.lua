@@ -4,11 +4,24 @@ local function error(str)
   vim.api.nvim_err_writeln(str)
 end
 
-query.add_predicate("nth?", function(match, pattern, bufnr, pred)
-  if #pred ~= 3 then
-    error("nth? must hav exactly two arguments")
-    return
+local function valid_args(name, pred, count, strict_count)
+  local arg_count = #pred - 1
+
+  if strict_count then
+    if arg_count ~= count then
+      error(string.format("%s must have exactly %d arguments", name, count))
+      return false
+    end
+  elseif arg_count < count then
+    error(string.format("%s must have at least %d arguments", name, count))
+    return false
   end
+
+  return true
+end
+
+query.add_predicate("nth?", function(match, pattern, bufnr, pred)
+  if not valid_args("nth?", pred, 2, true) then return end
 
   local node = match[pred[2]]
   local n = pred[3] - 1
@@ -20,7 +33,7 @@ query.add_predicate("nth?", function(match, pattern, bufnr, pred)
 end)
 
 query.add_predicate('has-ancestor?', function(match, pattern, bufnr, pred)
-  if #pred ~= 3 then error("has-ancestor? must have exactly two arguments!") return end
+  if not valid_args("has-ancestor?", pred, 2, true) then return end
 
   local node = match[pred[2]]
   local ancestor_type = pred[3]
@@ -34,4 +47,19 @@ query.add_predicate('has-ancestor?', function(match, pattern, bufnr, pred)
     node = node:parent()
   end
   return false
+end)
+
+query.add_predicate('is?', function(match, pattern, bufnr, pred)
+  if not valid_args("is?", pred, 2) then return end
+
+  -- Avoid circular dependencies
+  local locals = require"nvim-treesitter.locals"
+  local node = match[pred[2]]
+  local types = {unpack(pred, 3)}
+
+  if not node then return true end
+
+  local _, _, kind = locals.find_definition(node, bufnr)
+
+  return vim.tbl_contains(types, kind)
 end)

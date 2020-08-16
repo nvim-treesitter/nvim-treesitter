@@ -9,7 +9,7 @@
 (pointer_declarator
   declarator: (identifier) @definition.var)
 (parameter_declaration
-  declarator: (identifier) @definition.var)
+  declarator: (identifier) @definition.parameter)
 (init_declarator
   declarator: (identifier) @definition.var)
 (array_declarator

@@ -109,6 +109,7 @@ are optional and will not have any effect for now.
   builtin
   macro
 @parameter
+  reference references to parameters
 
 @method
 @field or @property
