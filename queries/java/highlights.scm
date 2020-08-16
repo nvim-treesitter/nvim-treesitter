@@ -214,3 +214,7 @@
 "("
 ")"
 ] @punctuation.bracket
+
+; Labels
+(labeled_statement
+  (identifier) @label)
