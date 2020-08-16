@@ -103,7 +103,8 @@
 (null) @constant.builtin
 (comment) @comment
 (string) @string
-(regex) @string.special
+(regex) @punctuation.delimiter
+(regex_pattern) @string.regex
 (template_string) @string
 (number) @number
 
