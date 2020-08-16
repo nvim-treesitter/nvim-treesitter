@@ -38,7 +38,7 @@
 
 
 ((identifier) @keyword
- (#match? @keyword "^(private|protected|public)$"))
+ (#vim-match? @keyword "^(private|protected|public)$"))
 
 ; Function calls
 
@@ -85,14 +85,14 @@
 ; Identifiers
 [
  (class_variable)
- (instance_variable) 
+ (instance_variable)
  ] @label
 
 ((identifier) @constant.builtin
- (#match? @constant.builtin "^__(FILE|LINE|ENCODING)__$"))
+ (#vim-match? @constant.builtin "^__(FILE|LINE|ENCODING)__$"))
 
 ((constant) @constant.macro
- (#match? @constant.macro "^[A-Z\\d_]+$"))
+ (#vim-match? @constant.macro "^[A-Z\\d_]+$"))
 
 (constant) @constant
 
@@ -175,7 +175,7 @@
  "{"
  "}"
  "%w("
- "%i(" 
+ "%i("
  ] @punctuation.bracket
 
 (ERROR) @error

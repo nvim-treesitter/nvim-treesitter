@@ -6,7 +6,7 @@
 
 ; Assume all-caps names are constants
 ((identifier) @constant
- (#match? @constant "^[A-Z][A-Z\\d_]+$'"))
+ (#vim-match? @constant "^[A-Z][A-Z\\d_]+$'"))
 
 ; Other identifiers
 

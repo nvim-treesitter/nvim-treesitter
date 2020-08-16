@@ -13,17 +13,17 @@
 (identifier) @variable
 
 ((identifier) @constant
- (#match? @constant "^[A-Z_][A-Z\\d_]+$"))
+ (#vim-match? @constant "^[A-Z_][A-Z\\d_]+$"))
 
 ((shorthand_property_identifier) @constant
- (#match? @constant "^[A-Z_][A-Z\\d_]+$"))
+ (#vim-match? @constant "^[A-Z_][A-Z\\d_]+$"))
 
 ((identifier) @constructor
  (#match? @constructor "^[A-Z]"))
 
 ((identifier) @variable.builtin
  (#not-is? @variable.builtin import var parameter)
- (#match? @variable.builtin "^(arguments|module|console|window|document)$"))
+ (#vim-match? @variable.builtin "^(arguments|module|console|window|document)$"))
 
 ((identifier) @function.builtin
  (#not-is? @function.builtin import var parameter)
