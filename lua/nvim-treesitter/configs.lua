@@ -7,7 +7,7 @@ local utils = require'nvim-treesitter.utils'
 local M = {}
 
 local function has_some_textobject_mapping(lang)
-  for _, v in pairs(M.get_module('textobjects').keymaps) do
+  for _, v in pairs(M.get_module('textobjects.select').keymaps) do
     if type(v) == 'table' then
       if v[lang] then
         return true
@@ -79,19 +79,33 @@ local builtin_modules = {
     }
   },
   textobjects = {
-    module_path = 'nvim-treesitter.textobjects',
-    enable = false,
-    disable = {},
-    is_supported = function(lang)
-      return has_some_textobject_mapping(lang) or queries.has_textobjects(lang)
-    end,
-    keymaps = {},
-    swap_next = {},
-    swap_previous = {},
-    goto_next_start = {},
-    goto_next_end = {},
-    goto_previous_start = {},
-    goto_previous_end = {}
+    select = {
+      module_path = 'nvim-treesitter.textobjects.select',
+      enable = false,
+      disable = {},
+      is_supported = function(lang)
+        return has_some_textobject_mapping(lang) or queries.has_textobjects(lang)
+      end,
+      keymaps = {},
+    },
+    move = {
+      module_path = 'nvim-treesitter.textobjects.move',
+      enable = false,
+      disable = {},
+      is_supported = queries.has_textobjects,
+      goto_next_start = {},
+      goto_next_end = {},
+      goto_previous_start = {},
+      goto_previous_end = {},
+    },
+    swap = {
+      module_path = 'nvim-treesitter.textobjects.swap',
+      enable = false,
+      disable = {},
+      is_supported = queries.has_textobjects,
+      swap_next = {},
+      swap_previous = {},
+    },
   }
 }
 
