@@ -7,7 +7,8 @@ list.javascript = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-javascript",
     files = { "src/parser.c", "src/scanner.c" },
-  }
+  },
+  used_by = { 'javascriptreact' }
 }
 
 list.c = {

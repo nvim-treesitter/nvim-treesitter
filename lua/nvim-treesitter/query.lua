@@ -26,7 +26,7 @@ M.base_language_map = {
 }
 
 M.query_extensions = {
-  javascript = { 'jsx' },
+  javascript = { 'javascript.jsx' },
   tsx = {'javascript.jsx'}
 }
 
@@ -95,6 +95,9 @@ function M.get_query_files(lang, query_name)
   local query_files = {}
   local extensions = M.query_extensions[lang] or {}
 
+  local lang_files = filtered_runtime_queries(lang, query_name)
+  vim.list_extend(query_files, lang_files)
+
   for _, ext in ipairs(extensions) do
     local l = lang
     local e = ext
@@ -111,9 +114,7 @@ function M.get_query_files(lang, query_name)
     vim.list_extend(query_files, base_files)
   end
 
-  local lang_files = filtered_runtime_queries(lang, query_name)
-
-  return vim.list_extend(query_files, lang_files)
+  return query_files
 end
 
 function M.has_query_files(lang, query_name)

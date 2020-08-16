@@ -228,33 +228,6 @@ Returns the previous node within the same parent.
 `allow_switch_parent` and `allow_prev_parent` follow the same rule
 as |ts_utils.get_next_node| but if the node is the first node.
 
-						   *ts_utils.containing_scope*
-containing_scope(node)~
-
-Returns the smallest scope containing the node.
-
-						       *ts_utils.parent_scope*
-parent_scope(node, cursor_pos)~
-
-Returns the parent scope of the current scope that contains the node.
-`cursor_pos` should be `{ row = number, col = number }`
-
-						       *ts_utils.nested_scope*
-nested_scope(node, cursor_pos)~
-
-Returns the first scope within current scope that contains the node.
-`cursor_pos` should be `{ row = number, col = number }`
-
-							 *ts_utils.next_scope*
-next_scope(node)~
-
-Returns the neighbour scope of the current node.
-
-						     *ts_utils.previous_scope*
-previous_scope(node)~
-
-Returns the previous neighbour scope of the current node.
-
 ==============================================================================
 FUNCTIONS                                          *nvim-treesitter-functions*
 
