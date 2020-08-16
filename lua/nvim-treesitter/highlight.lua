@@ -9,7 +9,7 @@ local M = {
   highlighters = {}
 }
 
-local hlmap = vim.treesitter.highlighter.hl_map
+local hlmap = vim.treesitter.TSHighlighter.hl_map
 
 -- Misc
 hlmap.error = "TSError"
@@ -80,7 +80,7 @@ function M.attach(bufnr, lang)
   local query = queries.get_query(lang, "highlights")
   if not query then return end
 
-  M.highlighters[bufnr] = ts.highlighter.new(query, bufnr, lang)
+  M.highlighters[bufnr] = ts.TSHighlighter.new(query, bufnr, lang)
 end
 
 function M.detach(bufnr)
