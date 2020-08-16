@@ -10,11 +10,11 @@
 
 ; Imports
 (aliased_import
-	alias: (identifier) @definition.import)
+  alias: (identifier) @definition.import)
 (import_statement
-	name: (dotted_name ((identifier) @definition.import)))
+  name: (dotted_name ((identifier) @definition.import)))
 (import_from_statement
-	name: (dotted_name ((identifier) @definition.import)))
+  name: (dotted_name ((identifier) @definition.import)))
 
 ; Function with parameters, defines parameters
 (parameters
@@ -44,13 +44,15 @@
     (identifier) @definition.parameter))
 
 ; Function defines function and scope
-(function_definition
+((function_definition
   name: (identifier) @definition.function
   body: (block (expression_statement (string) @definition.doc)?)) @scope
+ (#set! definition.function.scope "parent"))
 
 
-(class_definition
+((class_definition
   name: (identifier) @definition.type) @scope
+ (#set! definition.type.scope "parent"))
 
 (class_definition
   body: (block
@@ -61,7 +63,7 @@
 ; not a scope!
 (for_statement
   left: (variables
-    (identifier) @definition.var))
+          (identifier) @definition.var))
 
 ; not a scope!
 ;(while_statement) @scope
@@ -79,7 +81,7 @@
 
 (assignment
   left: (expression_list
-     (identifier) @definition.var))
+          (identifier) @definition.var))
 
 (assignment
   left: (expression_list
