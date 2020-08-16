@@ -26,7 +26,7 @@
  ] @operator
 
 [
- (string) 
+ (string)
  (raw_string)
  (heredoc_body)
 ] @string
@@ -58,18 +58,18 @@
  ] @keyword
 
 [
- (special_variable_name) 
+ (special_variable_name)
  ("$" (special_variable_name))
  ] @constant
 
 ((word) @constant
-  (#match? @constant "SIG(INT|TERM|QUIT|TIN|TOU|STP|HUP)"))
+  (#vim-match? @constant "SIG(INT|TERM|QUIT|TIN|TOU|STP|HUP)"))
 
 ((word) @boolean
-  (#match? @boolean "true|false"))
+  (#vim-match? @boolean "true|false"))
 
 ((word) @number
-  (#match? @number "^\d*$"))
+  (#vim-match? @number "^\d*$"))
 
 (comment) @comment
 (test_operator) @string.
@@ -83,11 +83,11 @@
 
 (command_name (word)) @function
 
-(command 
+(command
   argument: [
              (word) @parameter
              ((word) @number
-              (#match? @number "^\d*$"))
+              (#vim-match? @number "^\d*$"))
              (concatenation (word) @parameter)
              ])
 
@@ -98,12 +98,12 @@
 
 ("$" (variable_name)) @identifier
 
-(expansion 
+(expansion
   [ "${" "}" ] @punctuation.bracket)
 
 (variable_name) @identifier
 
-(case_item 
+(case_item
   value: (word) @parameter)
 
 (concatenation (word) @parameter)
