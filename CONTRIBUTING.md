@@ -75,6 +75,7 @@ effect on highlighting. We will work on improving highlighting in the near futur
 @error for error (ERROR` nodes.
 @punctuation.delimiter for `;` `.` `,`
 @punctuation.bracket for `()` or `{}`
+@punctuation.special for symbols with special meaning like `{}` in string interpolation.
 ```
 
 Some captures are related to language injection (like markdown code blocks). As this is not supported by neovim yet, these
