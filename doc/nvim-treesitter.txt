@@ -94,7 +94,31 @@ By default, everything is disabled. To enable support for features, in your `ini
 	  ["ad"] = "@comment.outer",
 	  ["am"] = "@call.outer",
 	  ["im"] = "@call.inner"
-	}
+	},
+        -- swap parameters (keymap -> textobject query)
+	swap_next = {
+	  ["<a-p>"] = "@parameter.inner",
+	},
+	swap_previous = {
+	  ["<a-P>"] = "@parameter.inner",
+	},
+        -- set mappings to go to start/end of adjacent textobjects (keymap -> textobject query)
+	goto_previous_start = {
+	  ["[m"] = "@function.outer",
+	  ["[["] = "@class.outer",
+	},
+	goto_previous_end = {
+	  ["[M"] = "@function.outer",
+	  ["[]"] = "@class.outer",
+	},
+	goto_next_start = {
+	  ["]m"] = "@function.outer",
+	  ["]]"] = "@class.outer",
+	},
+	goto_next_end = {
+	  ["]M"] = "@function.outer",
+	  ["]["] = "@class.outer",
+	},
       },
       ensure_installed = "all" -- one of "all", "language", or a list of languages
   }
