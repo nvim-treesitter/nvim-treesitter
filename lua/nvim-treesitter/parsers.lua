@@ -221,6 +221,13 @@ list.rst = {
   }
 }
 
+list.fennel = {
+  install_info = {
+    url = "https://github.com/travonted/tree-sitter-fennel",
+    files = { "src/parser.c" },
+  }
+}
+
 -- Parsers for injections
 list.regex = {
   install_info = {

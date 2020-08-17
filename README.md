@@ -252,6 +252,7 @@ List of currently supported languages:
 - [x] css (maintained by @TravonteD)
 - [x] dart (maintained by @Akin909)
 - [ ] elm
+- [x] fennel (maintained by @TravonteD)
 - [x] go (maintained by @theHamsta, @WinWisely268)
 - [ ] haskell
 - [x] html (maintained by @TravonteD)
