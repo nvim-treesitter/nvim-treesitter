@@ -5,6 +5,9 @@ local info = require'nvim-treesitter.info'
 local configs = require'nvim-treesitter.configs'
 local parsers = require'nvim-treesitter.parsers'
 
+-- Registers all query predicates
+require"nvim-treesitter.query_predicates"
+
 local M = {}
 
 function M.setup()

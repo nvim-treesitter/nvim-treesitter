@@ -1,3 +1,9 @@
+;; Parameters
+(variadic_parameter_declaration
+  declarator: (variadic_declarator
+                (identifier) @definition.parameter))
+(optional_parameter_declaration
+  declarator: (identifier) @definition.parameter)
 
 ;; Class / struct defintions
 (class_specifier) @scope
@@ -10,14 +16,14 @@
   (identifier) @definition.var)
 
 (struct_specifier
-  name: (type_identifier) @definition.type) 
+  name: (type_identifier) @definition.type)
 
 (struct_specifier
   name: (scoped_type_identifier
           name: (type_identifier) @definition.type))
 
 (class_specifier
-  name: (type_identifier) @definition.type) 
+  name: (type_identifier) @definition.type)
 
 (class_specifier
   name: (scoped_type_identifier
@@ -32,7 +38,7 @@
 (template_declaration) @scope
 
 ;; Namespaces
-(namespace_definition 
+(namespace_definition
   name: (identifier) @definition.namespace
   body: (_) @scope)
 

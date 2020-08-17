@@ -10,24 +10,24 @@
 
 ; Imports
 (aliased_import
-	alias: (identifier) @definition.import)
+  alias: (identifier) @definition.import)
 (import_statement
-	name: (dotted_name ((identifier) @definition.import)))
+  name: (dotted_name ((identifier) @definition.import)))
 (import_from_statement
-	name: (dotted_name ((identifier) @definition.import)))
+  name: (dotted_name ((identifier) @definition.import)))
 
 ; Function with parameters, defines parameters
 (parameters
-  (identifier) @definition.var)
+  (identifier) @definition.parameter)
 
 (default_parameter
-  (identifier) @definition.var)
+  (identifier) @definition.parameter)
 
 (typed_parameter
-  (identifier) @definition.var)
+  (identifier) @definition.parameter)
 
 (typed_default_parameter
-  (identifier) @definition.var)
+  (identifier) @definition.parameter)
 
 (with_statement
   (with_item
@@ -36,32 +36,34 @@
 ; *args parameter
 (parameters
   (list_splat
-    (identifier) @definition.var))
+    (identifier) @definition.parameter))
 
 ; **kwargs parameter
 (parameters
   (dictionary_splat
-    (identifier) @definition.var))
+    (identifier) @definition.parameter))
 
 ; Function defines function and scope
-(function_definition
+((function_definition
   name: (identifier) @definition.function
   body: (block (expression_statement (string) @definition.doc)?)) @scope
+ (#set! definition.function.scope "parent"))
 
+
+((class_definition
+  name: (identifier) @definition.type) @scope
+ (#set! definition.type.scope "parent"))
 
 (class_definition
-  name: (identifier) @definition.type) @scope
-
-(class_definition 
   body: (block
           (function_definition
-            name: (identifier) @definition.method))) 
+            name: (identifier) @definition.method)))
 
 ;;; Loops
 ; not a scope!
 (for_statement
   left: (variables
-    (identifier) @definition.var))
+          (identifier) @definition.var))
 
 ; not a scope!
 ;(while_statement) @scope
@@ -79,7 +81,7 @@
 
 (assignment
   left: (expression_list
-     (identifier) @definition.var))
+          (identifier) @definition.var))
 
 (assignment
   left: (expression_list

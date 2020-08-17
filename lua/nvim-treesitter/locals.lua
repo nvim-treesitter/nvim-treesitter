@@ -111,8 +111,8 @@ end
 function M.get_local_nodes(local_def)
   local result = {}
 
-  M.recurse_local_nodes(local_def, function(_, node, kind)
-    table.insert(result, { node = node, kind = kind })
+  M.recurse_local_nodes(local_def, function(def, node, kind)
+    table.insert(result, vim.tbl_extend("keep", { kind = kind }, def))
   end)
 
   return result
@@ -161,7 +161,9 @@ M.get_definitions_lookup_table = ts_utils.memoize_by_buf_tick(function(bufnr)
 
   for _, definition in ipairs(definitions) do
     for _, node_entry in ipairs(M.get_local_nodes(definition)) do
-      local scope = M.containing_scope(node_entry.node, bufnr, false) or parsers.get_tree_root(bufnr)
+      local scopes = M.get_definition_scopes(node_entry.node, bufnr, node_entry.scope)
+      -- Always use the highest valid scope
+      local scope = scopes[#scopes]
       local node_text = ts_utils.get_node_text(node_entry.node, bufnr)[1]
       local id = M.get_definition_id(scope, node_text)
 
@@ -171,6 +173,40 @@ M.get_definitions_lookup_table = ts_utils.memoize_by_buf_tick(function(bufnr)
 
   return result
 end)
+
+--- Gets all the scopes of a definition based on the scope type
+-- Scope types can be
+--
+-- "parent": Uses the parent of the containing scope, basically, skipping a scope
+-- "global": Uses the top most scope
+-- "local": Uses the containg scope of the definition. This is the default
+--
+-- @param node: the definition node
+-- @param bufnr: the buffer
+-- @param scope_type: the scope type
+function M.get_definition_scopes(node, bufnr, scope_type)
+  local scopes = {}
+  local scope_count = 1
+
+  -- Definition is valid for the containing scope
+  -- and the containing scope of that scope
+  if scope_type == 'parent' then
+    scope_count = 2
+  -- Definition is valid in all parent scopes
+  elseif scope_type == 'global' then
+    scope_count = nil
+  end
+
+  local i = 0
+  for scope in M.iter_scope_tree(node, bufnr) do
+    table.insert(scopes, scope)
+    i = i + 1
+
+    if scope_count and i >= scope_count then break end
+  end
+
+  return scopes
+end
 
 function M.find_definition(node, bufnr)
   local def_lookup = M.get_definitions_lookup_table(bufnr)

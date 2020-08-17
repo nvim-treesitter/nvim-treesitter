@@ -1,4 +1,4 @@
-;; Forked from tree-sitter-go 
+;; Forked from tree-sitter-go
 ;; Copyright (c) 2014 Max Brunsfeld (The MIT License)
 
 ;;
@@ -12,10 +12,10 @@
 (variadic_parameter_declaration (identifier) @parameter)
 
 ((identifier) @constant
- (#eq? @constant "_")) 
+ (#eq? @constant "_"))
 
 ((identifier) @constant
- (#match? @constant "^[A-Z][A-Z\\d_]+$"))
+ (#vim-match? @constant "^[A-Z][A-Z\\d_]+$"))
 
 ; Function calls
 
