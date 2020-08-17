@@ -433,7 +433,7 @@ Any URI like a link or email.
 ==============================================================================
 MODULE-HIGHLIGHTS                          *nvim-treesitter-module-highlights*
 
-Apart from the general purpose highlights in *nvim-treesitter-highlights* ,
+Apart from the general purpose highlights in |nvim-treesitter-highlights|,
 some submodules use their own highlight groups to visualize additional
 information.
 
