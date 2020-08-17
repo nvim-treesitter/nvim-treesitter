@@ -31,47 +31,6 @@
   name: (identifier) @attribute)
 
 
-; Operators
-
-[
-"@"
-"+"
-"?"
-":"
-"++"
-"-"
-"--"
-"&"
-"&&"
-"|"
-"||"
-"!="
-"=="
-"*"
-"/"
-"%"
-"<"
-"<="
-">"
-">="
-"="
-"-="
-"+="
-"*="
-"/="
-"%="
-"->"
-"^"
-"^="
-"&="
-"|="
-"~"
-">>"
-">>>"
-"<<"
-"::"
-] @operator
-
 ; Types
 
 (interface_declaration
@@ -205,6 +164,9 @@
 "."
 ","
 ] @punctuation.delimiter
+(labeled_statement
+  (identifier)
+  (":") @punctuation.delimiter)
 
 [
 "["
@@ -216,5 +178,47 @@
 ] @punctuation.bracket
 
 ; Labels
+
 (labeled_statement
   (identifier) @label)
+
+; Operators
+
+[
+"@"
+"+"
+"?"
+":"
+"++"
+"-"
+"--"
+"&"
+"&&"
+"|"
+"||"
+"!="
+"=="
+"*"
+"/"
+"%"
+"<"
+"<="
+">"
+">="
+"="
+"-="
+"+="
+"*="
+"/="
+"%="
+"->"
+"^"
+"^="
+"&="
+"|="
+"~"
+">>"
+">>>"
+"<<"
+"::"
+] @operator
