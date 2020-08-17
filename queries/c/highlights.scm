@@ -133,8 +133,6 @@
 ;; Parameters
 (parameter_declaration
   declarator: (identifier) @parameter)
-((identifier) @parameter.reference
- (#is? @parameter.reference parameter))
 
 (preproc_params
   (identifier)) @parameter
