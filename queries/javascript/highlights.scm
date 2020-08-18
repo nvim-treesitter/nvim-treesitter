@@ -35,22 +35,22 @@
 (function_declaration
   name: (identifier) @function)
 (method_definition
-  name: (property_identifier) @function.method)
+  name: (property_identifier) @method)
 
 (pair
-  key: (property_identifier) @function.method
+  key: (property_identifier) @method
   value: (function))
 (pair
-  key: (property_identifier) @function.method
+  key: (property_identifier) @method
   value: (arrow_function))
 
 (assignment_expression
   left: (member_expression
-    property: (property_identifier) @function.method)
+    property: (property_identifier) @method)
   right: (arrow_function))
 (assignment_expression
   left: (member_expression
-    property: (property_identifier) @function.method)
+    property: (property_identifier) @method)
   right: (function))
 
 (variable_declarator
@@ -75,7 +75,7 @@
 
 (call_expression
   function: (member_expression
-    property: (property_identifier) @function.method))
+    property: (property_identifier) @method))
 
 ; Variables
 ;----------
