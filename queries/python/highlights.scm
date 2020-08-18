@@ -20,7 +20,7 @@
 
 ((attribute
     attribute: (identifier) @field)
- (#match? @field "^([A-Z])@!.*$"))
+ (#vim-match? @field "^([A-Z])@!.*$"))
 
 ((identifier) @type.builtin
  (#vim-match? @type.builtin
@@ -31,7 +31,7 @@
 
 (decorator) @function
 ((decorator (dotted_name (identifier) @function))
- (#match? @function "^([A-Z])@!.*$"))
+ (#vim-match? @function "^([A-Z])@!.*$"))
 
 (call
   function: (identifier) @function)
@@ -213,7 +213,7 @@
             (assignment
               left: (expression_list
                       (identifier) @field)))))
- (#match? @field "^([A-Z])@!.*$"))
+ (#vim-match? @field "^([A-Z])@!.*$"))
 
 ((class_definition
   (block
