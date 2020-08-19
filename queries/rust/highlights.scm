@@ -97,7 +97,7 @@
 
 (lifetime (identifier) @label)
 
-(self) @variable.builtin
+(self) @keyword
 
 [
 "break"
@@ -165,8 +165,42 @@
 [
 "as"
 "*"
-"&"
 "'"
- ] @operator
+"->"
+"=>"
+"<="
+"="
+"=="
+"!"
+"!="
+"%"
+"%="
+"&"
+"&="
+"&&"
+"|"
+"|="
+"||"
+"^"
+"^="
+"*"
+"*="
+"-"
+"-="
+"+"
+"+="
+"/"
+"/="
+">"
+"<"
+">="
+"<="
+">>"
+"<<"
+">>="
+"@"
+".."
+"..="
+] @operator
 
 (closure_parameters "|" @operator "|" @operator)
