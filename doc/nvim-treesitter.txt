@@ -362,7 +362,7 @@ Supported options:
   lua <<EOF
   require'nvim-treesitter.configs'.setup {
     textobjects = {
-      move {
+      move = {
         enable = true,
         goto_next_start = {
           ["]m"] = "@function.outer",

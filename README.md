@@ -211,7 +211,6 @@ similar to `ip` (inner paragraph) and `ap` (a paragraph).
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   textobjects = {
-    enable = true,
     select = {
       enable = true,
       keymaps = {
@@ -244,7 +243,6 @@ like function parameters or arguments.
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   textobjects = {
-    enable = true, 
     swap = {
       enable = true,
       swap_next = {
@@ -269,7 +267,6 @@ or previous function.
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   textobjects = {
-    enable = true,
     move = {
       enable = true,
       goto_next_start = {
