@@ -97,7 +97,7 @@
 
 (lifetime (identifier) @label)
 
-(self) @keyword
+(self) @variable.builtin
 
 [
 "break"
