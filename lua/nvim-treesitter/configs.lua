@@ -3,6 +3,7 @@ local api = vim.api
 local queries = require'nvim-treesitter.query'
 local parsers = require'nvim-treesitter.parsers'
 local utils = require'nvim-treesitter.utils'
+local caching = require'nvim-treesitter.caching'
 
 local M = {}
 
@@ -108,6 +109,8 @@ local builtin_modules = {
     },
   }
 }
+
+local attached_buffers_by_module = caching.create_buffer_cache()
 
 -- Resolves a module by requiring the `module_path` or using the module definition.
 local function resolve_module(mod_name)
@@ -367,8 +370,13 @@ end
 -- @param lang the language of the buffer
 function M.attach_module(mod_name, bufnr, lang)
   local resolved_mod = resolve_module(mod_name)
+  local bufnr = bufnr or api.nvim_get_current_buf()
 
-  if resolved_mod and parsers.has_parser(lang) then
+  if resolved_mod
+    and parsers.has_parser(lang)
+    and not attached_buffers_by_module.has(mod_name, bufnr)
+  then
+    attached_buffers_by_module.set(mod_name, bufnr, true)
     resolved_mod.attach(bufnr, lang)
   end
 end
@@ -378,8 +386,10 @@ end
 -- @param bufnr the bufnr
 function M.detach_module(mod_name, bufnr)
   local resolved_mod = resolve_module(mod_name)
+  local bufnr = bufnr or api.nvim_get_current_buf()
 
   if resolved_mod then
+    attached_buffers_by_module.remove(mod_name, bufnr)
     resolved_mod.detach(bufnr)
   end
 end

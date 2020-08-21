@@ -69,7 +69,6 @@ hlmap["text.literal"] = "TSLiteral"
 hlmap["text.uri"] = "TSURI"
 
 function M.attach(bufnr, lang)
-  local bufnr = bufnr or api.nvim_get_current_buf()
   local lang = lang or parsers.get_buf_lang(bufnr)
   local config = configs.get_module('highlight')
 
@@ -84,12 +83,11 @@ function M.attach(bufnr, lang)
 end
 
 function M.detach(bufnr)
-  local buf = bufnr or api.nvim_get_current_buf()
-  if M.highlighters[buf] then
-    M.highlighters[buf]:set_query("")
-    M.highlighters[buf] = nil
+  if M.highlighters[bufnr] then
+    M.highlighters[bufnr]:set_query("")
+    M.highlighters[bufnr] = nil
   end
-  api.nvim_buf_set_option(buf, 'syntax', 'on')
+  api.nvim_buf_set_option(bufnr, 'syntax', 'on')
 end
 
 return M

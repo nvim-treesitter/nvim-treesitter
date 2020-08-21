@@ -94,8 +94,6 @@ function M.node_decremental()
 end
 
 function M.attach(bufnr)
-  local buf = bufnr or api.nvim_get_current_buf()
-
   local config = configs.get_module('incremental_selection')
   for funcname, mapping in pairs(config.keymaps) do
     local mode
@@ -105,19 +103,17 @@ function M.attach(bufnr)
       mode = 'v'
     end
     local cmd = string.format(":lua require'nvim-treesitter.incremental_selection'.%s()<CR>", funcname)
-    api.nvim_buf_set_keymap(buf, mode, mapping, cmd, { silent = true, noremap = true })
+    api.nvim_buf_set_keymap(bufnr, mode, mapping, cmd, { silent = true, noremap = true })
   end
 end
 
 function M.detach(bufnr)
-  local buf = bufnr or api.nvim_get_current_buf()
-
   local config = configs.get_module('incremental_selection')
   for f, mapping in pairs(config.keymaps) do
     if f == "init_selection" then
-      api.nvim_buf_del_keymap(buf, 'n', mapping)
+      api.nvim_buf_del_keymap(bufnr, 'n', mapping)
     else
-      api.nvim_buf_del_keymap(buf, 'v', mapping)
+      api.nvim_buf_del_keymap(bufnr, 'v', mapping)
     end
   end
 end

@@ -27,8 +27,6 @@ function M.clear_highlights(bufnr)
 end
 
 function M.attach(bufnr)
-  local bufnr = bufnr or api.nvim_get_current_buf()
-
   cmd(string.format('augroup NvimTreesitterCurrentScope_%d', bufnr))
   cmd 'au!'
   -- luacheck: push ignore 631

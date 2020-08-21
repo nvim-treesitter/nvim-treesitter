@@ -2,20 +2,11 @@ local api = vim.api
 local ts = vim.treesitter
 local utils = require'nvim-treesitter.utils'
 local parsers = require'nvim-treesitter.parsers'
+local caching = require'nvim-treesitter.caching'
 
 local M = {}
 
-local default_dict = {
-  __index = function(table, key)
-    local exists = rawget(table, key)
-    if not exists then
-      table[key] = {}
-    end
-    return rawget(table, key)
-  end
-}
-
-local query_cache = setmetatable({}, default_dict)
+local query_cache = caching.create_buffer_cache()
 
 -- Some treesitter grammars extend others.
 -- We can use that to import the queries of the base language
@@ -55,17 +46,17 @@ local function read_query_files(filenames)
 end
 
 local function update_cached_matches(bufnr, changed_tick, query_group)
-  query_cache[query_group][bufnr] = {tick=changed_tick, cache=( M.collect_group_results(bufnr, query_group) or {} )}
+  query_cache.set(query_group, bufnr, {tick=changed_tick, cache=( M.collect_group_results(bufnr, query_group) or {} )})
 end
 
 function M.get_matches(bufnr, query_group)
   local bufnr = bufnr or api.nvim_get_current_buf()
-  local cached_local = query_cache[query_group][bufnr]
+  local cached_local = query_cache.get(query_group, bufnr)
   if not cached_local or api.nvim_buf_get_changedtick(bufnr) > cached_local.tick then
     update_cached_matches(bufnr,api.nvim_buf_get_changedtick(bufnr), query_group)
   end
 
-  return query_cache[query_group][bufnr].cache
+  return query_cache.get(query_group, bufnr).cache
 end
 
 local function filter_files(file_list)

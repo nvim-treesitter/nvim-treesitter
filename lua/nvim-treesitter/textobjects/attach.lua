@@ -6,9 +6,8 @@ local M = {}
 
 function M.make_attach(normal_mode_functions, submodule)
   return function(bufnr, lang)
-    local buf = bufnr or api.nvim_get_current_buf()
     local config = configs.get_module("textobjects."..submodule)
-    local lang = lang or parsers.get_buf_lang(buf)
+    local lang = lang or parsers.get_buf_lang(bufnr)
 
     for _, function_call in pairs(normal_mode_functions) do
       for mapping, query in pairs(config[function_call] or {}) do
@@ -19,7 +18,7 @@ function M.make_attach(normal_mode_functions, submodule)
         end
         if query then
           local cmd = ":lua require'nvim-treesitter.textobjects."..submodule.."'."..function_call.."('"..query.."')<CR>"
-          api.nvim_buf_set_keymap(buf, "n", mapping, cmd, {silent = true, noremap = true })
+          api.nvim_buf_set_keymap(bufnr, "n", mapping, cmd, {silent = true, noremap = true })
         end
       end
     end
@@ -28,7 +27,6 @@ end
 
 function M.make_detach(normal_mode_functions, submodule)
   return function(bufnr)
-    local buf = bufnr or api.nvim_get_current_buf()
     local config = configs.get_module("textobjects."..submodule)
     local lang = parsers.get_buf_lang(bufnr)
 
@@ -39,8 +37,8 @@ function M.make_detach(normal_mode_functions, submodule)
         query = nil
       end
       if query then
-        api.nvim_buf_del_keymap(buf, "o", mapping)
-        api.nvim_buf_del_keymap(buf, "v", mapping)
+        api.nvim_buf_del_keymap(bufnr, "o", mapping)
+        api.nvim_buf_del_keymap(bufnr, "v", mapping)
       end
     end
     for _, function_call in pairs(normal_mode_functions) do
@@ -51,7 +49,7 @@ function M.make_detach(normal_mode_functions, submodule)
           query = nil
         end
         if query then
-          api.nvim_buf_del_keymap(buf, "n", mapping)
+          api.nvim_buf_del_keymap(bufnr, "n", mapping)
         end
       end
     end
