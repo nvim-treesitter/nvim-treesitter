@@ -75,7 +75,9 @@ local builtin_modules = {
       is_supported = queries.has_locals,
       keymaps = {
         goto_definition = "gnd",
-        list_definitions = "gnD"
+        list_definitions = "gnD",
+        goto_next_usage = "<a-*>",
+        goto_previous_usage = "<a-#>",
       }
     }
   },

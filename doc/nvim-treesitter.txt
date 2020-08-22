@@ -246,6 +246,10 @@ Supported options:
     Defaults to `gnd`.
   - list_definitions: list all definitions from the current file.
     Defaults to `gnD`.
+  - goto_next_usage: go to next usage of identifier under the cursor.
+    Defaults to `<a-*>`.
+  - goto_previous_usage: go to previous usage of identifier.
+    Defaults to `<a-#>`.
 
 >
   lua <<EOF
@@ -256,6 +260,8 @@ Supported options:
         keymaps = {
           goto_definition = "gnd",
           list_definitions = "gnD",
+          goto_next_usage = "<a-*>",
+          goto_previous_usage = "<a-#>",
         },
       },
     },
@@ -512,6 +518,14 @@ get_previous_node(node, allow_switch_parents, allow_prev_parent)~
 Returns the previous node within the same parent.
 `allow_switch_parent` and `allow_prev_parent` follow the same rule
 as |ts_utils.get_next_node| but if the node is the first node.
+
+                                                         *ts_utils.goto_node*
+goto_node(node, goto_end, avoid_set_jump)~
+
+Sets cursor to the position of `node` in the current windows.
+If `goto_end` is truthy, the cursor is set to the end the node range.
+Setting `avoid_set_jump` to `true`, avoids setting the current cursor position
+to the jump list.
 
 ==============================================================================
 FUNCTIONS                                          *nvim-treesitter-functions*

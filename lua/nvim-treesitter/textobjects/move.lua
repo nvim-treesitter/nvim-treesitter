@@ -1,7 +1,6 @@
-local utils = require'nvim-treesitter.utils'
+local ts_utils = require'nvim-treesitter.ts_utils'
 local shared = require'nvim-treesitter.textobjects.shared'
 local attach = require'nvim-treesitter.textobjects.attach'
-local api = vim.api
 
 local M = {}
 
@@ -9,18 +8,7 @@ function M.goto_adjacent(query_string, forward, start, same_parent, overlapping_
   local bufnr, _, node = shared.textobject_at_point(query_string)
   local adjacent = shared.get_adjacent(forward, node,  query_string, same_parent, overlapping_range_ok, bufnr)
 
-  if adjacent then
-    utils.set_jump()
-
-    local adjacent_textobject_range = {adjacent:range()}
-    local position
-    if start then
-      position = { adjacent_textobject_range[1] + 1, adjacent_textobject_range[2] }
-    else
-      position = { adjacent_textobject_range[3] + 1, adjacent_textobject_range[4] }
-    end
-    api.nvim_win_set_cursor(api.nvim_get_current_win(), position)
-  end
+  ts_utils.goto_node(adjacent, not start)
 end
 
 -- luacheck: push ignore 631
