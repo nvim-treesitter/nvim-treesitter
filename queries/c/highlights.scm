@@ -134,6 +134,9 @@
 (parameter_declaration
   declarator: (identifier) @parameter)
 
+(parameter_declaration
+  declarator: (pointer_declarator) @parameter)
+
 (preproc_params
   (identifier)) @parameter
 
