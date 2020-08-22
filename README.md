@@ -83,6 +83,7 @@ so you'll need to activate them by putting this in your `init.vim` file:
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "all"      -- one of "all", "language", or a list of languages
+  disable = {"markdown"},       -- a list of languages to disable for all modules (only enable manually)
   highlight = {
     enable = true,              -- false will disable the whole extension
     disable = { "c", "rust" },  -- list of language that will be disabled
