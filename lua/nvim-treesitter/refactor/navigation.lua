@@ -12,14 +12,10 @@ function M.goto_definition(bufnr)
   local bufnr = bufnr or api.nvim_get_current_buf()
   local node_at_point = ts_utils.get_node_at_cursor()
 
-  utils.set_jump()
-
   if not node_at_point then return end
 
   local definition, _ = locals.find_definition(node_at_point, bufnr)
-  local start_row, start_col, _ = definition:start()
-
-  api.nvim_win_set_cursor(0, { start_row + 1, start_col })
+  ts_utils.goto_node(definition)
 end
 
 function M.list_definitions(bufnr)
@@ -47,6 +43,25 @@ function M.list_definitions(bufnr)
   vim.fn.setqflist(qf_list, 'r')
   api.nvim_command('copen')
 end
+
+function M.goto_adjacent_usage(bufnr, delta)
+  local bufnr = bufnr or api.nvim_get_current_buf()
+  local node_at_point = ts_utils.get_node_at_cursor()
+  if not node_at_point then return end
+
+  local def_node, scope = locals.find_definition(node_at_point, bufnr)
+  local usages = locals.find_usages(def_node, scope, bufnr)
+
+  local index = utils.index_of(usages, node_at_point)
+  if not index then return end
+
+  local target_index = (index + delta + #usages - 1) % #usages + 1
+  ts_utils.goto_node(usages[target_index])
+  return usages[target_index]
+end
+
+function M.goto_next_usage(bufnr) return M.goto_adjacent_usage(bufnr, 1) end
+function M.goto_previous_usage(bufnr) return M.goto_adjacent_usage(bufnr, -1) end
 
 function M.attach(bufnr)
   local config = configs.get_module('refactor.navigation')

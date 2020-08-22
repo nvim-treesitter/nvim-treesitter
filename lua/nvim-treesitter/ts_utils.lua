@@ -276,4 +276,24 @@ function M.swap_nodes(node_or_range1, node_or_range2, bufnr, cursor_to_second)
   end
 end
 
+function M.goto_node(node, goto_end, avoid_set_jump)
+  if not node then return end
+  if not avoid_set_jump then
+    utils.set_jump()
+  end
+  local range = {node:range()}
+  local position
+  if not goto_end then
+    position = { range[1], range[2] }
+  else
+    -- ranges are exclusive: -1 character!
+    if range[4] == 0 then
+      position = { range[3] - 1, -1 }
+    else
+      position = { range[3], range[4] - 1 }
+    end
+  end
+  api.nvim_win_set_cursor(0, { position[1] + 1, position[2] })
+end
+
 return M

@@ -185,6 +185,9 @@ EOF
 
 Provides "go to definition" for the symbol under the cursor,
 and lists the definitions from the current file.
+goto_next_usage/goto_previous_usage go to the next usage of the
+identifier under the cursor.
+
 
 ```lua
 lua <<EOF
@@ -195,6 +198,8 @@ require'nvim-treesitter.configs'.setup {
       keymaps = {
         goto_definition = "gnd",
         list_definitions = "gnD",
+        goto_next_usage = "<a-*>",
+        goto_previous_usage = "<a-#>",
       },
     },
   },

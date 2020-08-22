@@ -67,4 +67,12 @@ function M.set_jump()
   vim.cmd "normal! m'"
 end
 
+function M.index_of(tbl, obj)
+  for i, o in ipairs(tbl) do
+    if o == obj then
+      return i
+    end
+  end
+end
+
 return M
