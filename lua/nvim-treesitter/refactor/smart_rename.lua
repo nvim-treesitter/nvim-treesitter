@@ -46,7 +46,6 @@ function M.smart_rename(bufnr)
 end
 
 function M.attach(bufnr)
-  local bufnr = bufnr or api.nvim_get_current_buf()
   local config = configs.get_module('refactor.smart_rename')
 
   for fn_name, mapping in pairs(config.keymaps) do

@@ -49,8 +49,6 @@ function M.list_definitions(bufnr)
 end
 
 function M.attach(bufnr)
-  local bufnr = bufnr or api.nvim_get_current_buf()
-
   local config = configs.get_module('refactor.navigation')
 
   for fn_name, mapping in pairs(config.keymaps) do
