@@ -89,6 +89,11 @@ function M.get_query_files(lang, query_name)
   local lang_files = filtered_runtime_queries(lang, query_name)
   vim.list_extend(query_files, lang_files)
 
+  for _, base_lang in ipairs(M.base_language_map[lang] or {}) do
+    local base_files = filtered_runtime_queries(base_lang, query_name)
+    vim.list_extend(query_files, base_files)
+  end
+
   for _, ext in ipairs(extensions) do
     local l = lang
     local e = ext
@@ -98,11 +103,6 @@ function M.get_query_files(lang, query_name)
     end
     local ext_files = filtered_runtime_queries(l, e)
     vim.list_extend(query_files, ext_files)
-  end
-
-  for _, base_lang in ipairs(M.base_language_map[lang] or {}) do
-    local base_files = filtered_runtime_queries(base_lang, query_name)
-    vim.list_extend(query_files, base_files)
   end
 
   return query_files
