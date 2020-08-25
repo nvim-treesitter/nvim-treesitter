@@ -32,7 +32,13 @@ local new_readme_text = string.gsub(readme_text, "<!%-%-parserinfo%-%->.*<!%-%-p
 vim.fn.writefile(vim.fn.split(new_readme_text, '\n'), "README.md")
 
 if string.find(readme_text, generated_text, 1, 'plain') then
+  print("README.md is up-to-date!")
   vim.cmd('q')
 else
+  print("New README.md was written. Please commit that change! Old text was: ")
+  print(string.sub(readme_text, string.find(readme_text, "<!%-%-parserinfo%-%->.*<!%-%-parserinfo%-%->")))
+  print("\n")
+  print('If you see this on CI, please run `nvim --headless -c "luafile ./scripts/update-readme.lua"` '
+      ..'locally and commit the changes!')
   vim.cmd('cq')
 end
