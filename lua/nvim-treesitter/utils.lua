@@ -19,7 +19,9 @@ end
 
 function M.get_package_path()
   for _, path in pairs(api.nvim_list_runtime_paths()) do
-    if string.match(path, '.*/nvim%-treesitter') then
+    local last_segment = vim.fn.fnamemodify(path, ":t")
+    local penultimate_segment = vim.fn.fnamemodify(path, ":t:t")
+    if last_segment == "nvim-treesitter" or (last_segment == "" and penultimate_segment == "nvim-treesitter") then
       return path
     end
   end
@@ -29,14 +31,14 @@ end
 
 function M.get_cache_dir()
   local home = fn.get(fn.environ(), 'HOME')
-  local xdg_cache = fn.get(fn.environ(), 'XDG_CACHE_HOME')
+  local cache_dir = fn.stdpath('data')
 
-  if xdg_cache == 0 then
-    xdg_cache = home .. '/.cache'
+  if cache_dir == 0 then
+    cache_dir = home .. '/.cache'
   end
 
-  if luv.fs_access(xdg_cache, 'RW') then
-    return xdg_cache
+  if luv.fs_access(cache_dir, 'RW') then
+    return cache_dir
   elseif luv.fs_access('/tmp', 'RW') then
     return '/tmp'
   end
