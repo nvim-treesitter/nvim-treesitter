@@ -19,7 +19,7 @@ end
 
 function M.get_package_path()
   for _, path in pairs(api.nvim_list_runtime_paths()) do
-    if string.match(path, '.*/nvim%-treesitter') then
+    if string.match(path, '.*/nvim%-treesitter') or string.match(path, '.*\\nvim%-treesitter') then
       return path
     end
   end
@@ -29,7 +29,14 @@ end
 
 function M.get_cache_dir()
   local home = fn.get(fn.environ(), 'HOME')
-  local xdg_cache = fn.get(fn.environ(), 'XDG_CACHE_HOME')
+
+  local xdg_cache
+  if fn.has("win32") then
+    xdg_cache = fn.get(fn.environ(), 'LOCALAPPDATA')
+  else
+    xdg_cache = fn.get(fn.environ(), 'XDG_CACHE_HOME')
+  end
+
 
   if xdg_cache == 0 then
     xdg_cache = home .. '/.cache'

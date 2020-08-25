@@ -58,6 +58,10 @@ local function iter_cmd_sync(cmd_list)
   return true
 end
 
+local function select_executable(executables)
+  return vim.tbl_filter(function(c) return fn.executable(c) == 1 end, executables)[1]
+end
+
 local function run_install(cache_folder, package_path, lang, repo, with_sync)
   parsers.reset_cache()
 
@@ -66,6 +70,10 @@ local function run_install(cache_folder, package_path, lang, repo, with_sync)
   -- compile_location only needed for typescript installs.
   local compile_location = cache_folder..'/'..(repo.location or project_name)
   local parser_lib_name = package_path.."/parser/"..lang..".so"
+
+  local cc = select_executable({ "cc", "gcc" })
+  local win32 = fn.has('win32') == 1
+
   local command_list = {
     {
       cmd = 'rm',
@@ -83,7 +91,7 @@ local function run_install(cache_folder, package_path, lang, repo, with_sync)
       },
     },
     {
-      cmd = 'cc',
+      cmd = cc,
       info = 'Compiling...',
       err = 'Error during compilation',
       opts = {
@@ -152,7 +160,7 @@ end
 local function install(with_sync, ask_reinstall)
   return function (...)
     if fn.has('win32') == 1 then
-      return api.nvim_err_writeln('This command is not available on windows at the moment.')
+      --return api.nvim_err_writeln('This command is not available on windows at the moment.')
     end
 
     if fn.executable('git') == 0 then
