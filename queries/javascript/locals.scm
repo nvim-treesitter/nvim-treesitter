@@ -43,6 +43,9 @@
 (import_specifier
   (identifier) @definition.import)
 
+(namespace_import
+  (identifier) @definition.import)
+
 (function_declaration
   ((identifier) @definition.var)
    (#set! definition.var.scope parent))
