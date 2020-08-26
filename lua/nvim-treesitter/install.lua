@@ -71,7 +71,7 @@ local function run_install(cache_folder, package_path, lang, repo, with_sync)
   local compile_location = cache_folder..'/'..(repo.location or project_name)
   local parser_lib_name = package_path.."/parser/"..lang..".so"
 
-  local compilers = { "cc", "gcc" }
+  local compilers = { "cc", "gcc", "cl" }
   local cc = select_executable(compilers)
   if not cc then
     api.nvim_err_writeln('No C compiler found! "'..table.concat(compilers, '", "')..'" are not executable.')
@@ -99,7 +99,16 @@ local function run_install(cache_folder, package_path, lang, repo, with_sync)
       info = 'Compiling...',
       err = 'Error during compilation',
       opts = {
-        args = vim.tbl_flatten({
+        args = (string.match(cc, 'cl$') or string.match(cc, 'cl.exe$'))
+        and vim.tbl_flatten({
+            '/Fe:',
+            'parser.so',
+            '/Isrc',
+            repo.files,
+            '-Os',
+            '/LD',
+        })
+        or vim.tbl_flatten({
             '-o',
             'parser.so',
             '-I./src',
@@ -108,7 +117,7 @@ local function run_install(cache_folder, package_path, lang, repo, with_sync)
             '-Os',
             '-lstdc++',
             '-fPIC',
-          }),
+        }),
         cwd = compile_location
       }
     },
