@@ -5,8 +5,10 @@ local luv = vim.loop
 local utils = require'nvim-treesitter.utils'
 local parsers = require'nvim-treesitter.parsers'
 local info = require'nvim-treesitter.info'
+local configs = require'nvim-treesitter.configs'
 
 local M = {}
+local lockfile = {}
 
 function M.iter_cmd(cmd_list, i, lang, success_message)
   if i == #cmd_list + 1 then return print(success_message) end
@@ -58,6 +60,13 @@ local function iter_cmd_sync(cmd_list)
   return true
 end
 
+local function get_revision(lang)
+  if #lockfile == 0 then
+    lockfile = vim.fn.json_decode(vim.fn.readfile(utils.get_package_path()..'/lockfile.json'))
+  end
+  return (lockfile[lang] and lockfile[lang].revision) or 'master'
+end
+
 local function run_install(cache_folder, package_path, lang, repo, with_sync)
   parsers.reset_cache()
 
@@ -66,6 +75,8 @@ local function run_install(cache_folder, package_path, lang, repo, with_sync)
   -- compile_location only needed for typescript installs.
   local compile_location = cache_folder..'/'..(repo.location or project_name)
   local parser_lib_name = package_path.."/parser/"..lang..".so"
+  local revision = configs.get_update_strategy() == 'lockfile' and get_revision(lang) or 'master'
+
   local command_list = {
     {
       cmd = 'rm',
@@ -78,7 +89,7 @@ local function run_install(cache_folder, package_path, lang, repo, with_sync)
       info = 'Downloading...',
       err = 'Error during download, please verify your internet connection',
       opts = {
-        args = { 'clone', '--single-branch', '--branch', 'master', '--depth', '1', repo.url, project_name },
+        args = { 'clone', '--single-branch', '--branch', revision, '--depth', '1', repo.url, project_name },
         cwd = cache_folder,
       },
     },
@@ -218,6 +229,30 @@ function M.uninstall(lang)
       }
       M.iter_cmd(command_list, 1, lang, 'Treesitter parser for '..lang..' has been uninstalled')
   end
+end
+
+function M.write_lockfile(verbose)
+  local sorted_parsers = {}
+
+  for k, v in pairs(parsers.get_parser_configs()) do
+    table.insert(sorted_parsers, {name = k, parser = v})
+  end
+
+  table.sort(sorted_parsers, function(a, b) return a.name < b.name end)
+
+  for _, v in ipairs(sorted_parsers) do
+    -- I'm sure this can be done in aync way with iter_cmd
+    local sha = vim.split(vim.fn.systemlist('git ls-remote '..v.parser.install_info.url)[1], '\t')[1]
+    lockfile[v.name] = { revision = sha }
+    if verbose then
+      print(v.name..': '..sha)
+    end
+  end
+
+  if verbose then
+    print(vim.inspect(lockfile))
+  end
+  vim.fn.writefile(vim.fn.split(vim.fn.json_encode(lockfile), '\n'), utils.get_package_path().."/lockfile.json")
 end
 
 M.ensure_installed = install(false, false)

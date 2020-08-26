@@ -20,7 +20,8 @@ end
 
 local config = {
   modules = {},
-  ensure_installed = {}
+  ensure_installed = {},
+  update_strategy = 'lockfile',
 }
 -- List of modules that need to be setup on initialization.
 local queued_modules_defs = {}
@@ -299,6 +300,8 @@ function M.setup(user_data)
     if name == 'ensure_installed' then
       config.ensure_installed = data
       require'nvim-treesitter.install'.ensure_installed(data)
+    elseif name == 'update_strategy' then
+      config.update_strategy = data
     else
       config.modules[name] = vim.tbl_deep_extend('force', config.modules[name] or {}, data)
 
@@ -433,6 +436,10 @@ function M.init()
   for _, mod_def in ipairs(queued_modules_defs) do
     M.define_modules(mod_def)
   end
+end
+
+function M.get_update_strategy()
+  return config.update_strategy
 end
 
 return M
