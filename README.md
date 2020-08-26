@@ -19,7 +19,7 @@ Please consider the experience with this plug-in as experimental until Neovim 0.
 
 - Neovim [nightly](https://github.com/neovim/neovim#install-from-source)
 - `git` in your path.
-- A C compiler in your path.
+- A C compiler in your path ([Windows users please read this!](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support)).
 
 ## Installation
 
