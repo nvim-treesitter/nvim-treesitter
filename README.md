@@ -82,7 +82,7 @@ so you'll need to activate them by putting this in your `init.vim` file:
 ```lua
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all"      -- one of "all", "language", or a list of languages
+  ensure_installed = "all",     -- one of "all", "language", or a list of languages
   highlight = {
     enable = true,              -- false will disable the whole extension
     disable = { "c", "rust" },  -- list of language that will be disabled
