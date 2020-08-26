@@ -20,7 +20,8 @@ end
 
 local config = {
   modules = {},
-  ensure_installed = {}
+  ensure_installed = {},
+  update_strategy = 'lockfile',
 }
 -- List of modules that need to be setup on initialization.
 local queued_modules_defs = {}
@@ -413,6 +414,10 @@ function M.init()
   for _, mod_def in ipairs(queued_modules_defs) do
     M.define_modules(mod_def)
   end
+end
+
+function M.get_update_strategy()
+  return config.update_strategy
 end
 
 return M

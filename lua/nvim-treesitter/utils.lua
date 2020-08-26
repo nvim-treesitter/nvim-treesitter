@@ -21,6 +21,11 @@ function M.get_path_sep()
   return fn.has('win32') == 1 and '\\' or '/'
 end
 
+function M.join_paths(...)
+  local sep = M.get_path_sep()
+  return table.concat({...}, sep)
+end
+
 -- Returns a function that joins the given arguments with separator. Arguments
 -- can't be nil. Example:
 --[[

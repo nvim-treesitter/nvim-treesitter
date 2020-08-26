@@ -5,10 +5,41 @@ local luv = vim.loop
 local utils = require'nvim-treesitter.utils'
 local parsers = require'nvim-treesitter.parsers'
 local info = require'nvim-treesitter.info'
+local configs = require'nvim-treesitter.configs'
 
 local M = {}
+local lockfile = {}
 
 M.compilers = { vim.fn.getenv('CC'), "cc", "gcc", "clang" }
+
+local function get_revision(lang)
+  if #lockfile == 0 then
+    lockfile = vim.fn.json_decode(vim.fn.readfile(utils.join_paths(utils.get_package_path(), 'lockfile.json')))
+  end
+  return (lockfile[lang] and lockfile[lang].revision)
+end
+
+local function select_rm_file_cmd(file, info_msg)
+  if fn.has('win32') == 1 then
+    return {
+      cmd = 'cmd',
+      opts = {
+        args = { '/C', 'if', 'exist', file, 'del', file },
+      },
+      info = info_msg,
+      err = "Could not delete "..file,
+    }
+  else
+    return {
+      cmd = 'rm',
+      opts = {
+        args = { file },
+      },
+      info = info_msg,
+      err = "Could not delete "..file,
+    }
+  end
+end
 
 function M.iter_cmd(cmd_list, i, lang, success_message)
   if i == #cmd_list + 1 then return print(success_message) end
@@ -104,20 +135,83 @@ local function select_install_rm_cmd(cache_folder, project_name)
   end
 end
 
-local function select_mv_cmd(compile_location, parser_lib_name)
+local function select_mv_cmd(from, to, cwd)
   if fn.has('win32') == 1 then
     return {
       cmd = 'cmd',
       opts = {
-        args = { '/C', 'move', '/Y', compile_location..'\\parser.so', parser_lib_name },
+        args = { '/C', 'move', '/Y', from, to },
+        cwd = cwd,
       }
     }
   else
     return {
       cmd = 'mv',
       opts = {
-        args = { compile_location..'/parser.so', parser_lib_name }
-      }
+        args = { from, to },
+        cwd = cwd,
+      },
+    }
+  end
+end
+
+local function select_download_commands(repo, project_name, cache_folder, revision)
+  if vim.fn.executable('unzip') == 1 and vim.fn.executable('curl') == 1 and repo.url:find("github.com", 1, true) then
+
+    revision = revision or repo.branch or "master"
+    local path_sep = utils.get_path_sep()
+    return {
+      select_install_rm_cmd(cache_folder, project_name..'-tmp'),
+      {
+        cmd = 'curl',
+        info = 'Downloading...',
+        err = 'Error during download, please verify your internet connection',
+        opts = {
+          args = {
+            '-L', -- follow redirects
+            repo.url.."/archive/"..revision..".zip",
+            '--output',
+            project_name..".zip"
+          },
+          cwd = cache_folder,
+        },
+      },
+      {
+        cmd = 'unzip',
+        info = 'Extracting...',
+        err = 'Error during unzipping',
+        opts = {
+          args = {
+            '-o',
+            project_name..".zip",
+            '-d',
+            project_name..'-tmp',
+          },
+          cwd = cache_folder,
+        },
+      },
+      select_rm_file_cmd(cache_folder..path_sep..project_name..".zip"),
+      select_mv_cmd(utils.join_paths(project_name..'-tmp', repo.url:match('[^/]-$')..'-'..revision),
+                    project_name,
+                    cache_folder),
+      select_install_rm_cmd(cache_folder, project_name..'-tmp')
+    }
+  else
+    return {
+      cmd = 'git',
+      info = 'Downloading...',
+      err = 'Error during download, please verify your internet connection',
+      opts = {
+        args = {
+          'clone',
+          '--single-branch',
+          '--branch', repo.branch or 'master',
+          '--depth', '1',
+          repo.url,
+          project_name
+        },
+        cwd = cache_folder,
+      },
     }
   end
 end
@@ -139,25 +233,12 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync)
                        ..'" are not executable.')
     return
   end
+  local revision = configs.get_update_strategy() == 'lockfile' and get_revision(lang)
 
-  local command_list = {
-    select_install_rm_cmd(cache_folder, project_name),
-    {
-      cmd = 'git',
-      info = 'Downloading...',
-      err = 'Error during download, please verify your internet connection',
-      opts = {
-        args = {
-          'clone',
-          '--single-branch',
-          '--branch', repo.branch or 'master',
-          '--depth', '1',
-          repo.url,
-          project_name
-        },
-        cwd = cache_folder,
-      },
-    },
+  local command_list = {}
+  vim.list_extend(command_list, { select_install_rm_cmd(cache_folder, project_name) })
+  vim.list_extend(command_list, select_download_commands(repo, project_name, cache_folder, revision))
+  vim.list_extend(command_list, {
     {
       cmd = cc,
       info = 'Compiling...',
@@ -167,9 +248,9 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync)
         cwd = compile_location
       }
     },
-    select_mv_cmd(compile_location, parser_lib_name),
+    select_mv_cmd('parser.so', parser_lib_name, compile_location),
     select_install_rm_cmd(cache_folder, project_name)
-  }
+  })
 
   if with_sync then
     if iter_cmd_sync(command_list) == true then
@@ -245,28 +326,6 @@ function M.update(lang)
   end
 end
 
-local function select_uninstall_rm_cmd(lang, parser_lib)
-  if fn.has('win32') == 1 then
-    return {
-      cmd = 'cmd',
-      opts = {
-        args = { '/C', 'if', 'exist', parser_lib, 'del', parser_lib },
-      },
-      info = "Uninstalling parser for "..lang,
-      err = "Could not delete "..parser_lib,
-    }
-  else
-    return {
-      cmd = 'rm',
-      opts = {
-        args = { parser_lib },
-      },
-      info = "Uninstalling parser for "..lang,
-      err = "Could not delete "..parser_lib,
-    }
-  end
-end
-
 function M.uninstall(lang)
   local path_sep = '/'
   if fn.has('win32') == 1 then
@@ -285,10 +344,34 @@ function M.uninstall(lang)
     local parser_lib = install_dir..path_sep..lang..".so"
 
     local command_list = {
-      select_uninstall_rm_cmd(lang, parser_lib)
+      select_rm_file_cmd(parser_lib, "Uninstalling parser for "..lang)
     }
     M.iter_cmd(command_list, 1, lang, 'Treesitter parser for '..lang..' has been uninstalled')
   end
+end
+
+function M.write_lockfile(verbose)
+  local sorted_parsers = {}
+
+  for k, v in pairs(parsers.get_parser_configs()) do
+    table.insert(sorted_parsers, {name = k, parser = v})
+  end
+
+  table.sort(sorted_parsers, function(a, b) return a.name < b.name end)
+
+  for _, v in ipairs(sorted_parsers) do
+    -- I'm sure this can be done in aync way with iter_cmd
+    local sha = vim.split(vim.fn.systemlist('git ls-remote '..v.parser.install_info.url)[1], '\t')[1]
+    lockfile[v.name] = { revision = sha }
+    if verbose then
+      print(v.name..': '..sha)
+    end
+  end
+
+  if verbose then
+    print(vim.inspect(lockfile))
+  end
+  vim.fn.writefile(vim.fn.split(vim.fn.json_encode(lockfile), '\n'), utils.get_package_path().."/lockfile.json")
 end
 
 M.ensure_installed = install(false, false)
