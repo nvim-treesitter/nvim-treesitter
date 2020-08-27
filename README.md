@@ -477,3 +477,8 @@ As this issue comes from upstream, we don't have any finite fix. To get around t
 ```
 
 This will save, restore and enable highlighting for the current buffer, fixing the issue.
+
+## I experience bugs when using `nvim-treesitter`'s `foldexpr` similar to [#194](https://github.com/nvim-treesitter/nvim-treesitter/issues/194)
+
+This might happen, and is known to happen with `vim-clap`, to avoid those kind of errors, please use
+`setlocal` instead of `set` for the appropriate filetypes.
