@@ -39,8 +39,15 @@ local folds_levels = utils.memoize_by_buf_tick(function(bufnr)
   local current_level = 0
 
   for lnum=0,api.nvim_buf_line_count(bufnr) do
-    current_level = current_level + (levels_tmp[lnum] or 0)
-    levels[lnum + 1] = current_level
+    local prefix= ''
+    local shift = levels_tmp[lnum] or 0
+
+    if levels_tmp[lnum] and shift >= 0 then
+      prefix = '>'
+    end
+
+    current_level = current_level + shift
+    levels[lnum + 1] = prefix .. tostring(current_level)
   end
 
   return levels
@@ -53,8 +60,7 @@ function M.get_fold_indic(lnum)
 
   local levels = folds_levels(buf) or {}
 
-  return tostring(levels[lnum] or 0)
-
+  return levels[lnum] or '0'
 end
 
 return M
