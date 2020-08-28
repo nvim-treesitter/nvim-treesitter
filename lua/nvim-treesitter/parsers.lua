@@ -285,6 +285,14 @@ list.ql = {
   maintainers = {'@pwntester'},
 }
 
+list.verilog = {
+  install_info = {
+    url = "https://github.com/tree-sitter/tree-sitter-verilog",
+    files = { "src/parser.c" },
+  },
+  used_by = { "systemverilog" },
+  maintainers = { "@zegervdv" },
+}
 -- Parsers for injections
 list.regex = {
   install_info = {
