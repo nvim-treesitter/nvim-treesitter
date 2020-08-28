@@ -5,6 +5,8 @@ local parsers = require'nvim-treesitter.parsers'
 
 local M = {}
 
+-- This is cached on buf tick to avoid computing that multiple times
+-- Especially not for every line in the file when `zx` is hit
 local folds_levels = utils.memoize_by_buf_tick(function(bufnr)
   local lang = parsers.get_buf_lang(bufnr)
 
@@ -38,10 +40,12 @@ local folds_levels = utils.memoize_by_buf_tick(function(bufnr)
   local levels = {}
   local current_level = 0
 
+  -- We now have the list of fold opening and closing, fill the gaps and mark where fold start
   for lnum=0,api.nvim_buf_line_count(bufnr) do
     local prefix= ''
     local shift = levels_tmp[lnum] or 0
 
+    -- Determine if it's the start of a fold
     if levels_tmp[lnum] and shift >= 0 then
       prefix = '>'
     end

@@ -206,3 +206,9 @@ Possible scope values are:
 - `global`: The definition is valid in the root scope
 - `local`: The definition is valid in the containing scope. This is the default behavior
 
+### Folds
+
+You can define folds for a given language by adding a `fold.scm` query.
+The `@fold` capture is used to fold a node.
+If the `fold.scm` query is not present, this will fallback to the `@scope` captures in the `locals`
+query.
