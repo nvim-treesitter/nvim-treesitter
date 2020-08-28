@@ -4,5 +4,4 @@
  (while_statement)
  (translation_unit)
  (function_definition)
- (compound_statement)
 ] @fold
