@@ -244,6 +244,11 @@ Supported options:
 - keymaps:
   - goto_definition: go to the definition of the symbol under the cursor.
     Defaults to `gnd`.
+  - goto_definition_lsp_fallback: go to the definition of the symbol under
+    the cursor or use vim.lsp.buf.definition if the symbol can not be
+    resolved. You can use your own fallback function if create a mapping for
+    `lua require'nvim-treesitter.refactor.navigation(nil, fallback_function)<cr>` .
+    No default mapping
   - list_definitions: list all definitions from the current file.
     Defaults to `gnD`.
   - goto_next_usage: go to next usage of identifier under the cursor.
