@@ -184,9 +184,10 @@ EOF
 ## Refactor: navigation
 
 Provides "go to definition" for the symbol under the cursor,
-and lists the definitions from the current file.
-goto_next_usage/goto_previous_usage go to the next usage of the
-identifier under the cursor.
+and lists the definitions from the current file. If you use
+`goto_definition_lsp_fallback` instead of `goto_definition` in the config below 
+`vim.lsp.buf.definition` is used if nvim-treesitter can not resolve the variable.
+`goto_next_usage`/`goto_previous_usage` go to the next usage of the identifier under the cursor.
 
 
 ```lua

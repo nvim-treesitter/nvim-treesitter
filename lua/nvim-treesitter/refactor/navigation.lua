@@ -8,15 +8,22 @@ local api = vim.api
 
 local M = {}
 
-function M.goto_definition(bufnr)
+function M.goto_definition(bufnr, fallback_function)
   local bufnr = bufnr or api.nvim_get_current_buf()
   local node_at_point = ts_utils.get_node_at_cursor()
 
   if not node_at_point then return end
 
-  local definition, _ = locals.find_definition(node_at_point, bufnr)
-  ts_utils.goto_node(definition)
+  local definition = locals.find_definition(node_at_point, bufnr)
+
+  if fallback_function and definition.id == node_at_point.id then
+    fallback_function()
+  else
+    ts_utils.goto_node(definition)
+  end
 end
+
+function M.goto_definition_lsp_fallback(bufnr) M.goto_definition(bufnr, vim.lsp.buf.definition) end
 
 function M.list_definitions(bufnr)
   local bufnr = bufnr or api.nvim_get_current_buf()
@@ -57,7 +64,6 @@ function M.goto_adjacent_usage(bufnr, delta)
 
   local target_index = (index + delta + #usages - 1) % #usages + 1
   ts_utils.goto_node(usages[target_index])
-  return usages[target_index]
 end
 
 function M.goto_next_usage(bufnr) return M.goto_adjacent_usage(bufnr, 1) end
