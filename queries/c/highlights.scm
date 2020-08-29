@@ -110,7 +110,10 @@
   declarator: (identifier) @function)
 (preproc_function_def
   name: (identifier) @function.macro)
-(preproc_arg)  @function.macro
+[
+ (preproc_arg)
+ (preproc_defined)
+]  @function.macro
 ; TODO (preproc_arg)  @embedded
 
 (field_identifier) @property
