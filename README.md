@@ -330,7 +330,7 @@ We are looking for maintainers to write query files for their languages.
 
 List of currently supported languages:
 
-<!--Update this section by running `nvim --headless -c "luafile ./scripts/update-readme.lua"`-->
+<!--This section of the README is automatically updated by a CI job-->
 <!--parserinfo-->
 - [x] [bash](https://github.com/tree-sitter/tree-sitter-bash) (maintained by @TravonteD)
 - [x] [c](https://github.com/tree-sitter/tree-sitter-c) (maintained by @vigoux)

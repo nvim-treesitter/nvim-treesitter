@@ -37,8 +37,5 @@ if string.find(readme_text, generated_text, 1, 'plain') then
 else
   print("New README.md was written. Please commit that change! Old text was: ")
   print(string.sub(readme_text, string.find(readme_text, "<!%-%-parserinfo%-%->.*<!%-%-parserinfo%-%->")))
-  print("\n")
-  print('If you see this on CI, please run `nvim --headless -c "luafile ./scripts/update-readme.lua"` '
-      ..'locally and commit the changes!')
   vim.cmd('cq')
 end
