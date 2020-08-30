@@ -149,7 +149,9 @@ local function enable_mod_conf_autocmd(mod, lang)
   end
 end
 
-local function enable_all(mod, lang)
+local function enable_all(mod, lang, blocklist)
+  blocklist = blocklist or {}
+
   local config_mod = M.get_module(mod)
 
   if not config_mod then return end
@@ -157,7 +159,9 @@ local function enable_all(mod, lang)
   for _, bufnr in pairs(api.nvim_list_bufs()) do
     local ft = api.nvim_buf_get_option(bufnr, 'ft')
     if not lang or parsers.lang_match_ft(lang, ft) then
-      enable_module(mod, bufnr, lang)
+      if not vim.tbl_contains(blocklist, lang) then
+        enable_module(mod, bufnr, lang)
+      end
     end
   end
   if lang then
@@ -166,7 +170,7 @@ local function enable_all(mod, lang)
     end
   else
     for _, lang in pairs(parsers.available_parsers()) do
-      if parsers.has_parser(lang) then
+      if parsers.has_parser(lang) and not vim.tbl_contains(blocklist, lang) then
         enable_mod_conf_autocmd(mod, lang)
       end
     end
@@ -304,12 +308,9 @@ function M.setup(user_data)
 
       recurse_modules(function(_, _, new_path)
         if data.enable then
-          enable_all(new_path)
+          enable_all(new_path, nil, data.disable)
         end
 
-        for _, lang in ipairs(data.disable or {}) do
-          disable_mod_conf_autocmd(new_path, lang)
-        end
       end, config.modules)
     end
   end
