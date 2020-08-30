@@ -20,8 +20,7 @@ end
 function M.get_package_path()
   for _, path in pairs(api.nvim_list_runtime_paths()) do
     local last_segment = vim.fn.fnamemodify(path, ":p:h:t")
-    local penultimate_segment = vim.fn.fnamemodify(path, ":p:h:t:t")
-    if last_segment == "nvim-treesitter" or (last_segment == "" and penultimate_segment == "nvim-treesitter") then
+    if last_segment == "nvim-treesitter" then
       return path
     end
   end
