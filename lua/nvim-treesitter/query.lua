@@ -21,7 +21,7 @@ M.query_extensions = {
   tsx = {'javascript.jsx'}
 }
 
-M.built_in_query_groups = {'highlights', 'locals', 'textobjects'}
+M.built_in_query_groups = {'highlights', 'locals', 'textobjects', 'fold'}
 
 -- Creates a function that checks whether a certain query exists
 -- for a specific language.
