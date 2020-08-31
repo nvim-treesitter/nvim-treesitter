@@ -37,8 +37,8 @@ function M.attach(bufnr)
 end
 
 function M.detach(bufnr)
-  M.clear_usage_highlights(bufnr)
-  cmd(string.format('autocmd! NvimTreesitterCurrentScope_%d CursorHold', bufnr))
+  M.clear_highlights(bufnr)
+  cmd(string.format('autocmd! NvimTreesitterCurrentScope_%d CursorMoved', bufnr))
   cmd(string.format('autocmd! NvimTreesitterCurrentScope_%d BufLeave', bufnr))
 end
 
