@@ -43,6 +43,7 @@ function M.smart_rename(bufnr)
     table.insert(edits, text_edit)
   end
   vim.lsp.util.apply_text_edits(edits, bufnr)
+  ts_utils.goto_node(node_at_point, false, true)
 end
 
 function M.attach(bufnr)
