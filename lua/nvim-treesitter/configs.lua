@@ -159,7 +159,7 @@ local function enable_all(mod, lang, blocklist)
   for _, bufnr in pairs(api.nvim_list_bufs()) do
     local ft = api.nvim_buf_get_option(bufnr, 'ft')
     if not lang or parsers.lang_match_ft(lang, ft) then
-      if not vim.tbl_contains(blocklist, lang) then
+      if not vim.tbl_contains(blocklist, lang or parsers.ft_to_lang(ft)) then
         enable_module(mod, bufnr, lang)
       end
     end
@@ -299,21 +299,17 @@ end
 -- Setup call for users to override module configurations.
 -- @param user_data module overrides
 function M.setup(user_data)
-  for name, data in pairs(user_data) do
-    if name == 'ensure_installed' then
-      config.ensure_installed = data
-      require'nvim-treesitter.install'.ensure_installed(data)
-    else
-      config.modules[name] = vim.tbl_deep_extend('force', config.modules[name] or {}, data)
+  config.modules = vim.tbl_deep_extend('force', config.modules, user_data)
 
-      recurse_modules(function(_, _, new_path)
-        if data.enable then
-          enable_all(new_path, nil, data.disable)
-        end
+  require'nvim-treesitter.install'.ensure_installed(user_data.ensure_installed)
+  config.modules.ensure_installed = nil
 
-      end, config.modules)
+  recurse_modules(function(_, _, new_path)
+    local data = utils.get_at_path(config.modules, new_path)
+    if data.enable then
+      enable_all(new_path, nil, data.disable)
     end
-  end
+  end, config.modules)
 end
 
 -- Defines a table of modules that can be attached/detached to buffers
