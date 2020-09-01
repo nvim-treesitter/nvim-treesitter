@@ -63,3 +63,6 @@ query.add_predicate('is?', function(match, pattern, bufnr, pred)
 
   return vim.tbl_contains(types, kind)
 end)
+
+-- Just avoid some anoying warnings for this predicate
+query.add_predicate('set!', function() return true end)
