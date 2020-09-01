@@ -113,7 +113,7 @@ function M.detach(bufnr)
     if f == "init_selection" then
       api.nvim_buf_del_keymap(bufnr, 'n', mapping)
     else
-      api.nvim_buf_del_keymap(bufnr, 'v', mapping)
+      api.nvim_buf_del_keymap(bufnr, 'x', mapping)
     end
   end
 end
