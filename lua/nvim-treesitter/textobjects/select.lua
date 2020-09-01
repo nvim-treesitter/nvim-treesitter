@@ -29,7 +29,7 @@ function M.attach(bufnr, lang)
     if query then
       local cmd = ":lua require'nvim-treesitter.textobjects.select'.select_textobject('"..query.."')<CR>"
       api.nvim_buf_set_keymap(buf, "o", mapping, cmd, {silent = true, noremap = true })
-      api.nvim_buf_set_keymap(buf, "v", mapping, cmd, {silent = true, noremap = true })
+      api.nvim_buf_set_keymap(buf, "x", mapping, cmd, {silent = true, noremap = true })
     end
   end
 end
@@ -47,7 +47,7 @@ function M.detach(bufnr)
     end
     if query then
       api.nvim_buf_del_keymap(buf, "o", mapping)
-      api.nvim_buf_del_keymap(buf, "v", mapping)
+      api.nvim_buf_del_keymap(buf, "x", mapping)
     end
   end
 end

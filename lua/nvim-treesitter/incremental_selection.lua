@@ -100,7 +100,7 @@ function M.attach(bufnr)
     if funcname == "init_selection" then
       mode = 'n'
     else
-      mode = 'v'
+      mode = 'x'
     end
     local cmd = string.format(":lua require'nvim-treesitter.incremental_selection'.%s()<CR>", funcname)
     api.nvim_buf_set_keymap(bufnr, mode, mapping, cmd, { silent = true, noremap = true })
