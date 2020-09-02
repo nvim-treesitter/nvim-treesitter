@@ -25,6 +25,10 @@
   (assignment_pattern
     (shorthand_property_identifier) @definition.parameter))
 
+; x => x
+(arrow_function
+  parameter: (identifier) @definition.parameter)
+
 (formal_parameters
   (object_pattern
     (shorthand_property_identifier) @definition.parameter))
