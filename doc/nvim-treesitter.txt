@@ -755,11 +755,12 @@ the cursor.
                                                             *hl-TSCurrentScope*
 Used by refactor.highlight_current_scope to highlight the current scope.
 
-vim:tw=78:ts=8:expandtab:noet:ft=help:norl:
-
 ==============================================================================
 PERFORMANCE                                      *nvim-treesitter-performance*
 
 `nvim-treesitter` checks the 'runtimepath' on startup in order to discover
-available parsers and install them. As a consequence, a very long
+available parsers and queries and install them. As a consequence, a very long
 'runtimepath' might result in delayed startup times.
+
+
+vim:tw=78:ts=8:expandtab:noet:ft=help:norl:
