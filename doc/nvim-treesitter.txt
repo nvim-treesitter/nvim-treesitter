@@ -759,7 +759,7 @@ Used by refactor.highlight_current_scope to highlight the current scope.
 PERFORMANCE                                      *nvim-treesitter-performance*
 
 `nvim-treesitter` checks the 'runtimepath' on startup in order to discover
-available parsers and queries and install them. As a consequence, a very long
+available parsers and queries and index them. As a consequence, a very long
 'runtimepath' might result in delayed startup times.
 
 
