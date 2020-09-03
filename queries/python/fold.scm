@@ -10,6 +10,7 @@
 [
   (import_from_statement)
   (parameters)
+  (argument_list)
 
   (parenthesized_expression)
   (generator_expression)
