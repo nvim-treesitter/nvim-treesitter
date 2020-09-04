@@ -562,10 +562,6 @@ HIGHLIGHTS                                        *nvim-treesitter-highlights*
                                                                   *hl-TSError*
 For syntax/parser errors.
 
-You can deactivate highlighting of syntax errors by adding this to your
-init.vim: >
-  highlight link TSError Normal
-
 `TSPunctDelimiter`
                                                          *hl-TSPunctDelimiter*
 For delimiters ie: `.`

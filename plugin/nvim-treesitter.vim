@@ -22,7 +22,7 @@ end
 require'nvim-treesitter'.setup()
 EOF
 
-highlight default link TSError Error
+highlight default link TSError Normal
 
 highlight default link TSPunctDelimiter Delimiter
 highlight default link TSPunctBracket Delimiter
