@@ -1,7 +1,8 @@
-(identifier) @reference
-
+(program) @scope
 (program (named_node) @scope)
 (program (anonymous_node) @scope)
+
+(identifier) @reference
 
 (named_node
   (capture) @definition.var)
