@@ -91,15 +91,15 @@ M.commands = {
     run = install_info,
     args = {
       "-nargs=0",
-    }
+    },
   },
   TSModuleInfo = {
     run = module_info,
     args = {
       "-nargs=?",
-      "-complete=custom,v:lua.ts_available_modules"
-    }
-  }
+      "-complete=customlist,nvim_treesitter#available_modules",
+    },
+  },
 }
 
 return M
