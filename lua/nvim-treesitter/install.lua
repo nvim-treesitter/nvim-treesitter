@@ -235,30 +235,30 @@ M.commands = {
     run = install(false, true),
     args = {
       "-nargs=+",
-      "-complete=custom,v:lua.ts_installable_parsers"
-    }
+      "-complete=customlist,nvim_treesitter#installable_parsers",
+    },
   },
   TSInstallSync = {
     run = install(true, true),
     args = {
       "-nargs=+",
-      "-complete=custom,v:lua.ts_installable_parsers"
-    }
+      "-complete=customlist,nvim_treesitter#installable_parsers",
+    },
   },
   TSUpdate = {
     run = M.update,
     args = {
       "-nargs=*",
-      "-complete=custom,v:lua.ts_installed_parsers"
-    }
+      "-complete=customlist,nvim_treesitter#installed_parsers",
+    },
   },
   TSUninstall = {
     run = M.uninstall,
     args = {
       "-nargs=+",
-      "-complete=custom,v:lua.ts_installed_parsers"
-    }
-  }
+      "-complete=customlist,nvim_treesitter#installed_parsers",
+    },
+  },
 }
 
 return M
