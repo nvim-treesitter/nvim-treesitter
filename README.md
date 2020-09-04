@@ -458,14 +458,6 @@ If everything is okay, then it might be an actual error.
 
 In both cases, feel free to [open an issue here](https://github.com/nvim-treesitter/nvim-treesitter/issues/new/choose).
 
-### While typing my code is marked as red
-
-You can deactivate highlighting of syntax errors by adding this to your `init.vim` file:
-
-```vim
-highlight link TSError Normal
-```
-
 ## I get `Error detected while processing .../plugin/nvim-treesitter.vim` every time I open Neovim
 
 This is probably due to a change in a parser's grammar or its queries.

@@ -11,7 +11,7 @@ let g:loaded_nvim_treesitter = 1
 
 lua require'nvim-treesitter'.setup()
 
-highlight default link TSError Error
+highlight default link TSError Normal
 
 highlight default link TSPunctDelimiter Delimiter
 highlight default link TSPunctBracket Delimiter
