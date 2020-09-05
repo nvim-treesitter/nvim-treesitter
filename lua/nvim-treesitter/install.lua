@@ -73,7 +73,7 @@ local function select_args(repo)
         '-lstdc++',
   }
   if fn.has('win32') == 0 then
-    table.insert('-fPIC')
+    table.insert(args, '-fPIC')
   end
   return args
 end
