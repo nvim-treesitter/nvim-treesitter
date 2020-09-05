@@ -72,14 +72,14 @@ local function select_args(repo)
         '-Os',
         '-lstdc++',
   }
-  if not fn.has('win32') then
+  if fn.has('win32') == 0 then
     table.insert('-fPIC')
   end
   return args
 end
 
 local function select_install_rm_cmd(cache_folder, project_name)
-  if fn.has('win32') then
+  if fn.has('win32') == 1 then
     local dir = cache_folder ..'\\'.. project_name
     return {
       cmd = 'cmd',
@@ -98,7 +98,7 @@ local function select_install_rm_cmd(cache_folder, project_name)
 end
 
 local function select_mv_cmd(compile_location, parser_lib_name)
-  if fn.has('win32') then
+  if fn.has('win32') == 1 then
     return {
       cmd = 'cmd',
       opts = {
@@ -119,7 +119,7 @@ local function run_install(cache_folder, package_path, lang, repo, with_sync)
   parsers.reset_cache()
 
   local path_sep = '/'
-  if fn.has('win32') then
+  if fn.has('win32') == 1 then
     path_sep = '\\'
   end
 
@@ -234,7 +234,7 @@ function M.update(lang)
 end
 
 local function select_uninstall_rm_cmd(lang, parser_lib)
-  if fn.has('win32') then
+  if fn.has('win32') == 1 then
     return {
       cmd = 'cmd',
       opts = {
@@ -257,7 +257,7 @@ end
 
 function M.uninstall(lang)
   local path_sep = '/'
-  if fn.has('win32') then
+  if fn.has('win32') == 1 then
     path_sep = '\\'
   end
 
