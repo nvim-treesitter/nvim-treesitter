@@ -100,7 +100,7 @@ local function select_install_rm_cmd(cache_folder, project_name)
     return {
       cmd = 'rm',
       opts = {
-        args = { 'rf', cache_folder..'/'..project_name },
+        args = { '-rf', cache_folder..'/'..project_name },
       }
     }
   end
@@ -134,7 +134,6 @@ local function run_install(cache_folder, package_path, lang, repo, with_sync)
   end
 
   local project_name = 'tree-sitter-'..lang
-  local project_repo = cache_folder..path_sep..project_name
   -- compile_location only needed for typescript installs.
   local compile_location = cache_folder..path_sep..(repo.location or project_name)
   local parser_lib_name = package_path..path_sep.."parser"..path_sep..lang..".so"
