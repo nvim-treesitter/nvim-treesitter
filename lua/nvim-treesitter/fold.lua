@@ -25,13 +25,23 @@ local folds_levels = utils.memoize_by_buf_tick(function(bufnr)
   for _, node in ipairs(matches) do
     local start, _, stop, stop_col = node.node:range()
 
+    -- Don't hide the first or last line
+    if node.show == 'start' then
+      start = start + 1
+    elseif node.show == 'end' then
+      stop = stop - 1
+    elseif node.show == 'both' then
+      start = start + 1
+      stop = stop - 1
+    end
+
     if stop_col > 0 then
       stop = stop + 1
     end
 
     -- This can be folded
     -- Fold only multiline nodes that are not exactly the same as previously met folds
-    if start ~= stop and not (levels_tmp[start] and levels_tmp[stop]) then
+    if start < stop and not (levels_tmp[start] and levels_tmp[stop]) then
       levels_tmp[start] = (levels_tmp[start] or 0) + 1
       levels_tmp[stop] = (levels_tmp[stop] or 0) - 1
     end
