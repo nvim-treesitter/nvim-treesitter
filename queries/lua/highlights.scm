@@ -79,7 +79,7 @@
  ] @operator
 
 ;; Punctuation
-[ "," "." ] @punctuation.delimiter
+[ "," "." ":"] @punctuation.delimiter
 
 ;; Brackets
 [
@@ -103,6 +103,12 @@
 ("function" @keyword.function
  [(function_name) (identifier)] @function
  "end" @keyword.function)
+
+(property_identifier) @property
+(method) @method
+
+(function_call (identifier) @function . (arguments))
+(function_call (field_expression (property_identifier) @function) . (arguments))
 
 ;; Nodes
 (table ["{" "}"] @constructor)
