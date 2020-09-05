@@ -265,14 +265,14 @@ M.commands = {
     run = enable_all,
     args = {
       "-nargs=+",
-      "-complete=customlist,v:lua.ts_available_modules",
+      "-complete=customlist,nvim_treesitter#available_modules",
     },
   },
   TSDisableAll = {
     run = disable_all,
     args = {
       "-nargs=+",
-      "-complete=customlist,v:lua.ts_available_modules",
+      "-complete=customlist,nvim_treesitter#available_modules",
     },
   },
 }
