@@ -63,28 +63,19 @@ local function select_executable(executables)
 end
 
 local function select_args(repo)
-  if fn.has('win32') then
-    return {
-      '-o',
-      'parser.so',
-      '-I./src',
-      repo.files,
-      '-shared',
-      '-Os',
-      '-lstdc++',
-    }
-  else
-    return {
-      '-o',
-      'parser.so',
-      '-I./src',
-      repo.files,
-      '-shared',
-      '-Os',
-      '-lstdc++',
-      '-fPIC'
-    }
+  local args = {
+        '-o',
+        'parser.so',
+        '-I./src',
+        repo.files,
+        '-shared',
+        '-Os',
+        '-lstdc++',
+  }
+  if not fn.has('win32') then
+    table.insert('-fPIC')
   end
+  return args
 end
 
 local function select_install_rm_cmd(cache_folder, project_name)
@@ -122,7 +113,6 @@ local function select_mv_cmd(compile_location, parser_lib_name)
       }
     }
   end
-
 end
 
 local function run_install(cache_folder, package_path, lang, repo, with_sync)
