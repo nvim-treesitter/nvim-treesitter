@@ -7,13 +7,13 @@ function! nvim_treesitter#foldexpr() abort
 endfunction
 
 function! nvim_treesitter#installable_parsers(arglead, cmdline, cursorpos) abort
-  return luaeval("require'nvim-treesitter.parsers'.available_parsers()") + ['all']
+  return join(luaeval("require'nvim-treesitter.parsers'.available_parsers()") + ['all'], "\n")
 endfunction
 
 function! nvim_treesitter#installed_parsers(arglead, cmdline, cursorpos) abort
-  return luaeval("require'nvim-treesitter.info'.installed_parsers()") + ['all']
+  return join(luaeval("require'nvim-treesitter.info'.installed_parsers()") + ['all'], "\n")
 endfunction
 
 function! nvim_treesitter#available_modules(arglead, cmdline, cursorpos) abort
-  return luaeval("require'nvim-treesitter.configs'.available_modules()")
+  return join(luaeval("require'nvim-treesitter.configs'.available_modules()"), "\n")
 endfunction

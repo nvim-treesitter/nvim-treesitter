@@ -251,28 +251,28 @@ M.commands = {
     run = enable_module,
     args = {
       "-nargs=1",
-      "-complete=customlist,nvim_treesitter#available_modules",
+      "-complete=custom,nvim_treesitter#available_modules",
     },
   },
   TSBufDisable = {
     run = disable_module,
     args = {
       "-nargs=1",
-      "-complete=customlist,nvim_treesitter#available_modules",
+      "-complete=custom,nvim_treesitter#available_modules",
     },
   },
   TSEnableAll = {
     run = enable_all,
     args = {
       "-nargs=+",
-      "-complete=customlist,nvim_treesitter#available_modules",
+      "-complete=custom,nvim_treesitter#available_modules",
     },
   },
   TSDisableAll = {
     run = disable_all,
     args = {
       "-nargs=+",
-      "-complete=customlist,nvim_treesitter#available_modules",
+      "-complete=custom,nvim_treesitter#available_modules",
     },
   },
 }
