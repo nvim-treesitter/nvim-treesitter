@@ -23,6 +23,8 @@ local folds_levels = utils.memoize_by_buf_tick(function(bufnr)
 
   for _, node in ipairs(matches) do
     local start, _, stop, stop_col = node.node:range()
+    -- Don't hide the first line
+    start = start + 1
 
     if stop_col > 0 then
       stop = stop + 1
