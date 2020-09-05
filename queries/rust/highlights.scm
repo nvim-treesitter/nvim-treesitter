@@ -55,9 +55,9 @@
 
 ;; Assume that all `#[derive]` arguments are types
 (meta_item
-  (identifier) @meta
+  (identifier) @type
   arguments: (meta_arguments (meta_item (identifier) @type))
-  (#eq? @meta "derive"))
+  (#eq? @type "derive"))
 
 (macro_invocation
   macro: (identifier) @function.macro
