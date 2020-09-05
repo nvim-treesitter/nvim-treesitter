@@ -97,7 +97,7 @@ M.commands = {
     run = module_info,
     args = {
       "-nargs=?",
-      "-complete=customlist,nvim_treesitter#available_modules",
+      "-complete=custom,nvim_treesitter#available_modules",
     },
   },
 }

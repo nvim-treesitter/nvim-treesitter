@@ -235,28 +235,28 @@ M.commands = {
     run = install(false, true),
     args = {
       "-nargs=+",
-      "-complete=customlist,nvim_treesitter#installable_parsers",
+      "-complete=custom,nvim_treesitter#installable_parsers",
     },
   },
   TSInstallSync = {
     run = install(true, true),
     args = {
       "-nargs=+",
-      "-complete=customlist,nvim_treesitter#installable_parsers",
+      "-complete=custom,nvim_treesitter#installable_parsers",
     },
   },
   TSUpdate = {
     run = M.update,
     args = {
       "-nargs=*",
-      "-complete=customlist,nvim_treesitter#installed_parsers",
+      "-complete=custom,nvim_treesitter#installed_parsers",
     },
   },
   TSUninstall = {
     run = M.uninstall,
     args = {
       "-nargs=+",
-      "-complete=customlist,nvim_treesitter#installed_parsers",
+      "-complete=custom,nvim_treesitter#installed_parsers",
     },
   },
 }
