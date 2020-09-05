@@ -89,7 +89,7 @@ end
 
 local function select_install_rm_cmd(cache_folder, project_name)
   if fn.has('win32') then
-    dir = cache_folder ..'\\'.. project_name
+    local dir = cache_folder ..'\\'.. project_name
     return {
       cmd = 'cmd',
       opts = {
