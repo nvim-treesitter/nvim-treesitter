@@ -62,14 +62,82 @@ local function select_executable(executables)
   return vim.tbl_filter(function(c) return fn.executable(c) == 1 end, executables)[1]
 end
 
+local function select_args(repo)
+  if fn.has('win32') then
+    return {
+      '-o',
+      'parser.so',
+      '-I./src',
+      repo.files,
+      '-shared',
+      '-Os',
+      '-lstdc++',
+    }
+  else
+    return {
+      '-o',
+      'parser.so',
+      '-I./src',
+      repo.files,
+      '-shared',
+      '-Os',
+      '-lstdc++',
+      '-fPIC'
+    }
+  end
+end
+
+local function select_install_rm_cmd(cache_folder, project_name)
+  if fn.has('win32') then
+    dir = cache_folder ..'\\'.. project_name
+    return {
+      cmd = 'cmd',
+      opts = {
+        args = { '/C', 'if', 'exist', dir, 'rmdir', '/s', '/q', dir },
+      }
+    }
+  else
+    return {
+      cmd = 'rm',
+      opts = {
+        args = { 'rf', cache_folder..'/'..project_name },
+      }
+    }
+  end
+end
+
+local function select_mv_cmd(compile_location, parser_lib_name)
+  if fn.has('win32') then
+    return {
+      cmd = 'cmd',
+      opts = {
+        args = { '/C', 'move', compile_location..'\\parser.so', parser_lib_name },
+      }
+    }
+  else
+    return {
+      cmd = 'mv',
+      opts = {
+        args = { compile_location..'/parser.so', parser_lib_name }
+      }
+    }
+  end
+
+end
+
 local function run_install(cache_folder, package_path, lang, repo, with_sync)
   parsers.reset_cache()
 
+  local path_sep = '/'
+  if fn.has('win32') then
+    path_sep = '\\'
+  end
+
   local project_name = 'tree-sitter-'..lang
-  local project_repo = cache_folder..'/'..project_name
+  local project_repo = cache_folder..path_sep..project_name
   -- compile_location only needed for typescript installs.
-  local compile_location = cache_folder..'/'..(repo.location or project_name)
-  local parser_lib_name = package_path.."/parser/"..lang..".so"
+  local compile_location = cache_folder..path_sep..(repo.location or project_name)
+  local parser_lib_name = package_path..path_sep.."parser"..path_sep..lang..".so"
 
   local compilers = { "cc", "gcc", "clang" }
   local cc = select_executable(compilers)
@@ -79,12 +147,7 @@ local function run_install(cache_folder, package_path, lang, repo, with_sync)
   end
 
   local command_list = {
-    {
-      cmd = 'rm',
-      opts = {
-        args = { '-rf', project_repo },
-      },
-    },
+    select_install_rm_cmd(cache_folder, project_name),
     {
       cmd = 'git',
       info = 'Downloading...',
@@ -99,31 +162,12 @@ local function run_install(cache_folder, package_path, lang, repo, with_sync)
       info = 'Compiling...',
       err = 'Error during compilation',
       opts = {
-        args = vim.tbl_flatten({
-            '-o',
-            'parser.so',
-            '-I./src',
-            repo.files,
-            '-shared',
-            '-Os',
-            '-lstdc++',
-            '-fPIC',
-          }),
+        args = vim.tbl_flatten(select_args(repo)),
         cwd = compile_location
       }
     },
-    {
-      cmd = 'mv',
-      opts = {
-        args = { compile_location..'/parser.so', parser_lib_name }
-      }
-    },
-    {
-      cmd = 'rm',
-      opts = {
-        args = { '-rf', project_repo }
-      }
-    }
+    select_mv_cmd(compile_location, parser_lib_name),
+    select_install_rm_cmd(cache_folder, project_name)
   }
 
   if with_sync then
@@ -200,7 +244,34 @@ function M.update(lang)
   end
 end
 
+local function select_uninstall_rm_cmd(lang, parser_lib)
+  if fn.has('win32') then
+    return {
+      cmd = 'cmd',
+      opts = {
+        args = { '/C', 'if', 'exist', parser_lib, 'del', parser_lib },
+      },
+      info = "Uninstalling parser for "..lang,
+      err = "Could not delete "..parser_lib,
+    }
+  else
+    return {
+      cmd = 'rm',
+      opts = {
+        args = { parser_lib },
+      },
+      info = "Uninstalling parser for "..lang,
+      err = "Could not delete "..parser_lib,
+    }
+  end
+end
+
 function M.uninstall(lang)
+  local path_sep = '/'
+  if fn.has('win32') then
+    path_sep = '\\'
+  end
+
   if lang == 'all' then
     local installed = info.installed_parsers()
     for _, lang in pairs(installed) do
@@ -212,19 +283,12 @@ function M.uninstall(lang)
       print(err)
       return
     end
-    local parser_lib = package_path.."/parser/"..lang..".so"
+    local parser_lib = package_path..path_sep.."parser"..path_sep..lang..".so"
 
     local command_list = {
-        {
-          cmd = 'rm',
-          opts = {
-            args = { parser_lib },
-          },
-          info = "Uninstalling parser for "..lang,
-          err = "Could not delete "..parser_lib,
-        },
-      }
-      M.iter_cmd(command_list, 1, lang, 'Treesitter parser for '..lang..' has been uninstalled')
+      select_uninstall_rm_cmd(lang, parser_lib)
+    }
+    M.iter_cmd(command_list, 1, lang, 'Treesitter parser for '..lang..' has been uninstalled')
   end
 end
 
