@@ -9,6 +9,7 @@ local M = {}
 -- Especially not for every line in the file when `zx` is hit
 local folds_levels = utils.memoize_by_buf_tick(function(bufnr)
   local lang = parsers.get_buf_lang(bufnr)
+  local max_fold_level = api.nvim_win_get_option(0, 'foldnestmax')
 
   local matches
   if query.has_fold(lang) then
@@ -29,7 +30,7 @@ local folds_levels = utils.memoize_by_buf_tick(function(bufnr)
     end
 
     -- This can be folded
-    -- Fold only multiline nodes that are not exactly the same as prevsiously met folds
+    -- Fold only multiline nodes that are not exactly the same as previously met folds
     if start ~= stop and not (levels_tmp[start] and levels_tmp[stop]) then
       levels_tmp[start] = (levels_tmp[start] or 0) + 1
       levels_tmp[stop] = (levels_tmp[stop] or 0) - 1
@@ -41,8 +42,8 @@ local folds_levels = utils.memoize_by_buf_tick(function(bufnr)
   local current_level = 0
 
   -- We now have the list of fold opening and closing, fill the gaps and mark where fold start
-  for lnum=0,api.nvim_buf_line_count(bufnr) do
-    local prefix= ''
+  for lnum=0, api.nvim_buf_line_count(bufnr) do
+    local prefix = ''
     local shift = levels_tmp[lnum] or 0
 
     -- Determine if it's the start of a fold
@@ -51,7 +52,13 @@ local folds_levels = utils.memoize_by_buf_tick(function(bufnr)
     end
 
     current_level = current_level + shift
-    levels[lnum + 1] = prefix .. tostring(current_level)
+
+    -- Ignore folds greater than max_fold_level
+    if current_level > max_fold_level then
+      levels[lnum + 1] = max_fold_level
+    else
+      levels[lnum + 1] = prefix .. tostring(current_level)
+    end
   end
 
   return levels
