@@ -2,27 +2,45 @@
 
 ;;; Builtins
 ;; Keywords
-(
-  "if" @conditional
-  "end" @conditional
-)
+
+(if_statement
+[
+  "if" 
+  "then"
+  "end"
+] @conditional)
+
 [
   "else"
   "elseif"
-  "then"
-] @conditional
+] @contional
 
-
-(
-  [
-  "do"
-  "while"
-  "repeat"
+(for_statement
+[
   "for"
-  ] @repeat
+  "do"
+  "end"
+] @repeat)
 
-  "end" @repeat
-)
+(for_in_statement
+[
+  "for"
+  "do"
+  "end"
+] @repeat)
+
+(while_statement
+[
+  "while"
+  "do"
+  "end"
+] @repeat)
+
+(repeat_statement
+[
+  "repeat"
+  "until"
+] @repeat)
 
 [
  "in"
