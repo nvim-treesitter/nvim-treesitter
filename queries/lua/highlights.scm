@@ -13,7 +13,7 @@
 [
   "else"
   "elseif"
-] @contional
+] @conditional
 
 (for_statement
 [
