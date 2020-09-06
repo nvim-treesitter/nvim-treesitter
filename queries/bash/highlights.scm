@@ -14,6 +14,10 @@
  ] @punctuation.delimiter
 
 [
+ "$"
+] @punctuation.special
+
+[
  ">"
  "<"
  "&"
@@ -30,6 +34,8 @@
  (raw_string)
  (heredoc_body)
 ] @string
+
+(variable_assignment (word) @string)
 
 [
  "if"
@@ -95,9 +101,6 @@
   descriptor: (file_descriptor) @operator
   destination: (word) @parameter)
 
-
-("$" (variable_name)) @variable
-
 (expansion
   [ "${" "}" ] @punctuation.bracket)
 
@@ -107,4 +110,3 @@
   value: (word) @parameter)
 
 (concatenation (word) @parameter)
-
