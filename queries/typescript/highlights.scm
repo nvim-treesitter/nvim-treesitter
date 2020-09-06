@@ -23,5 +23,5 @@
 
 ; Variables
 
-(required_parameter (identifier) @variable.parameter)
-(optional_parameter (identifier) @variable.parameter)
+(required_parameter (identifier) @parameter)
+(optional_parameter (identifier) @parameter)
