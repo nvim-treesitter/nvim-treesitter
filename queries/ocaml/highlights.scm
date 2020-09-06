@@ -69,9 +69,8 @@
 
 (comment) @comment
 
-[(string) (quoted_string)] @string
+[(string) (quoted_string) (conversion_specification)] @string
 (escape_sequence) @string.escape
-(conversion_specification) @string.special
 
 (infix_operator) @operator
 
