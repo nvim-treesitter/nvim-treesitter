@@ -2,14 +2,12 @@
     (comment)* @definition.doc
     (function_declaration
         name: (identifier) @definition.function) ;@function 
-    (#strip! @definition.doc "^//\\s*") ; <- does nothing at the moment
 )
 
 (
     (comment)* @definition.doc
     (method_declaration
         name: (field_identifier) @definition.method); @method
-    (#strip! @definition.doc "^//\\s*") ; <- does nothing at the moment
 )
 
 (short_var_declaration 
