@@ -72,7 +72,7 @@
   (#vim-match? @number "^\d*$"))
 
 (comment) @comment
-(test_operator) @string.
+(test_operator) @string
 
 (command_substitution
   [ "$(" ")" ] @punctuation.bracket)
