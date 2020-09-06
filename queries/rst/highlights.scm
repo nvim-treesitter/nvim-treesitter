@@ -113,12 +113,6 @@
   (reference)
 ] @constant
 
-;; Embedded
-
-(doctest_block) @embedded
-(directive
-  body: (body) @embedded)
-
 ;; Others
 
 (title) @text.title
