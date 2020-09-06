@@ -16,25 +16,16 @@ function M.init_selection()
   ts_utils.update_selection(buf, node)
 end
 
--- moves 0-based node position by one character
-local function inclusive_pos_to_exclusive(row, col)
-  local line = vim.fn.getline(row + 1)
-
-  -- move by one character changes row?
-  if #line == col + 1  then
-    return row + 1, 0
-  else
-    return row, col + 1
-  end
-end
-
+--- Get a ts compatible range of the current visual selection.
+--
+-- The range of ts nodes start with 0 and the ending range is exclusive.
 local function visual_selection_range()
   local _, csrow, cscol, _ = unpack(vim.fn.getpos("'<"))
   local _, cerow, cecol, _ = unpack(vim.fn.getpos("'>"))
-  if csrow < cerow or (csrow == cerow  and cscol <= cecol) then
-    return csrow-1, cscol-1, inclusive_pos_to_exclusive(cerow-1, cecol-1)
+  if csrow < cerow or (csrow == cerow and cscol <= cecol) then
+    return csrow - 1, cscol - 1, cerow - 1, cecol
   else
-    return cerow-1, cecol-1, inclusive_pos_to_exclusive(csrow-1, cscol-1)
+    return cerow - 1, cecol - 1, csrow - 1, cscol
   end
 end
 
@@ -49,9 +40,9 @@ local function select_incremental(get_parent)
     local buf = api.nvim_get_current_buf()
     local nodes = selections[buf]
 
-    -- initialize incremental selection with current selection
+    local csrow, cscol, cerow, cecol = visual_selection_range()
+    -- Initialize incremental selection with current selection
     if not nodes or #nodes == 0 or not range_matches(nodes[#nodes]) then
-      local csrow, cscol, cerow, cecol = visual_selection_range()
       local root = parsers.get_parser().tree:root()
       local node = root:named_descendant_for_range(csrow, cscol, cerow, cecol)
       ts_utils.update_selection(buf, node)
@@ -63,15 +54,27 @@ local function select_incremental(get_parent)
       return
     end
 
-    local node = get_parent(nodes[#nodes])
-    if not node then return end
-
-    table.insert(selections[buf], node)
-    if node ~= nodes[#nodes] then
-      table.insert(nodes, node)
+    -- Find a node that changes the current selection.
+    local node = nodes[#nodes]
+    while true do
+      node = get_parent(node)
+      if not node then return end
+      local srow, scol, erow, ecol = node:range()
+      local same_range = (
+        srow == csrow
+        and scol == cscol
+        and erow == cerow
+        and ecol == cecol
+      )
+      if not same_range then
+        table.insert(selections[buf], node)
+        if node ~= nodes[#nodes] then
+          table.insert(nodes, node)
+        end
+        ts_utils.update_selection(buf, node)
+        return
+      end
     end
-
-    ts_utils.update_selection(buf, node)
   end
 end
 
