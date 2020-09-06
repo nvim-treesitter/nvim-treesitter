@@ -87,7 +87,7 @@ local builtin_modules = {
       enable = false,
       disable = {},
       is_supported = function(lang)
-        return has_some_textobject_mapping(lang) or queries.has_textobjects(lang)
+        return queries.has_textobjects(lang) or has_some_textobject_mapping(lang)
       end,
       keymaps = {},
     },
