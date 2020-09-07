@@ -551,6 +551,9 @@ To use it: >
   set foldmethod=expr
   set foldexpr=nvim_treesitter#foldexr()
 <
+
+This will respect your 'foldnestmax' setting.
+
 Note: This is highly experimental, and folding can break on some types of
       edits. If you encounter such breakage, hiting `zx` should fix folding.
       In any case, feel free to open an issue with the reproducing steps.
