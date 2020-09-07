@@ -24,6 +24,6 @@
  (end_assertion)
  (boundary_assertion)
  (non_boundary_assertion)
-] @escape
+] @string.escape
 
 [ "*" "+" "|" "=" "<=" "!" "<!" ] @operator

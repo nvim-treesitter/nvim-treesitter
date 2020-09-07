@@ -96,12 +96,12 @@
   destination: (word) @parameter)
 
 
-("$" (variable_name)) @identifier
+("$" (variable_name)) @variable
 
 (expansion
   [ "${" "}" ] @punctuation.bracket)
 
-(variable_name) @identifier
+(variable_name) @variable
 
 (case_item
   value: (word) @parameter)

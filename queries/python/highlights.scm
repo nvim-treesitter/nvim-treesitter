@@ -67,11 +67,11 @@
     (identifier) @type)) ; type subscript: Tuple[int]
 
 ((call
-  function: (identifier) @isinstance
+  function: (identifier) @_isinstance
   arguments: (argument_list
     (_)
     (identifier) @type))
- (#eq? @isinstance "isinstance"))
+ (#eq? @_isinstance "isinstance"))
 
 ; Normal parameters
 (parameters
