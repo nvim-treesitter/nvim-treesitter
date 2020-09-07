@@ -84,19 +84,20 @@ are optional and will not have any effect for now.
 ```
 @embedded
 @injection
-  language
-  content
+@injection.language
+@injection.content
 ```
 
 #### Constants
 
 ```
 @constant
-  builtin
-  macro
+@constant.builtin
+@constant.macro
 @string
-  regex
-  escape
+@string.regex
+@string.escape
+@string.special
 @character
 @number
 @boolean
@@ -107,13 +108,13 @@ are optional and will not have any effect for now.
 
 ```
 @function
-  builtin
-  macro
+@function.builtin
+@function.macro
 @parameter
-  reference references to parameters
 
 @method
-@field or @property
+@field
+@property
 
 @constructor
 ```
@@ -126,19 +127,20 @@ are optional and will not have any effect for now.
 @label for C/Lua-like labels
 @operator
 @keyword
-  function
+@keyword.function
 @exception
 @include keywords for including modules (e.g. import/from in Python)
 
 @type
-    builtin
+@type.builtin
 @structure
+@attribute for e.g. Python decorators
 ```
 
 #### Variables
 ```
 @variable
-  builtin
+@variable.builtin
 ```
 
 #### Text
@@ -158,15 +160,19 @@ Mainly for markup languages.
 ### Locals
 ```
 @definition for various definitions
-  function
-  method
-  var
-  macro
-  type
-  field
-  namespace for modules or C++ namespaces
-  import for imported names
-  doc for documentation adjacent to a definition. E.g.
+@definition.function
+@definition.method
+@definition.var
+@definition.parameter
+@definition.macro
+@definition.type
+@definition.field
+@definition.enum
+@definition.namespace for modules or C++ namespaces
+@definition.import for imported names
+
+@definition.associated to determine the type of a variable
+@definition.doc for documentation adjacent to a definition. E.g.
 ```
 
 ```scheme
@@ -178,6 +184,7 @@ Mainly for markup languages.
 ```
 @scope
 @reference
+@constructor
 ```
 
 #### Definition Scope
@@ -208,7 +215,11 @@ Possible scope values are:
 
 ### Folds
 
-You can define folds for a given language by adding a `fold.scm` query.
-The `@fold` capture is used to fold a node.
+You can define folds for a given language by adding a `fold.scm` query :
+
+```
+@fold
+```
+
 If the `fold.scm` query is not present, this will fallback to the `@scope` captures in the `locals`
 query.
