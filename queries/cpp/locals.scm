@@ -7,16 +7,12 @@
 
 ;; Class / struct defintions
 (class_specifier) @scope
-(struct_specifier) @scope
 
 (reference_declarator
   (identifier) @definition.var)
 
 (variadic_declarator
   (identifier) @definition.var)
-
-(struct_specifier
-  name: (type_identifier) @definition.type)
 
 (struct_specifier
   name: (scoped_type_identifier

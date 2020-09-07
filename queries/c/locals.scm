@@ -44,4 +44,5 @@
  (translation_unit)
  (function_definition)
  (compound_statement) ; a block in curly braces
+ (struct_specifier)
 ] @scope
