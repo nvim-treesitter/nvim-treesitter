@@ -299,14 +299,16 @@ EOF
 
 # Extra features
 
-- Syntax based code folding
+## Syntax based code folding
 
 ```vim
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 ```
 
-- Statusline indicator
+This will respect your `foldnestmax` setting.
+
+## Statusline indicator
 
 ```vim
 echo nvim_treesitter#statusline(90)  " 90 can be any length
