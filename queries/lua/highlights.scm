@@ -7,8 +7,8 @@
 [
   "if" 
   "then"
-  "end"
 ] @conditional)
+(if_statement (end_keyword) @conditional)
 
 [
   "else"
@@ -19,35 +19,36 @@
 [
   "for"
   "do"
-  "end"
 ] @repeat)
+(for_statement (end_keyword) @repeat)
 
 (for_in_statement
 [
   "for"
   "do"
-  "end"
 ] @repeat)
+(for_in_statement (end_keyword) @repeat)
 
 (while_statement
 [
   "while"
   "do"
-  "end"
 ] @repeat)
+(while_statement (end_keyword) @repeat)
 
 (repeat_statement
 [
   "repeat"
   "until"
 ] @repeat)
+(repeat_statement (end_keyword) @repeat)
 
 [
  "in"
- "local"
  "return"
- (break_statement)
  "goto"
+ (local_keyword)
+ (break_statement)
 ] @keyword
 
 ;; Operators
@@ -99,10 +100,16 @@
 (nil) @constant.builtin
 (spread) @constant ;; "..."
 
+; (function_keyword) @keyword.function
+
 ;; Functions
-("function" @keyword.function
- [(function_name) (identifier)] @function
- "end" @keyword.function)
+(function [(function_keyword) (end_keyword)] @keyword.function)
+(function [(function_name) (identifier)] @function)
+
+(local_function [(function_keyword) (end_keyword)] @keyword.function)
+(local_function [(function_name) (identifier)] @function)
+
+(function_definition [(function_keyword) (end_keyword)] @keyword.function)
 
 (property_identifier) @property
 (method) @method
