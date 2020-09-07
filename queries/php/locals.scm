@@ -32,10 +32,10 @@
 
 (namespace_use_clause
   (qualified_name
-    (name) @definition.class))
+    (name) @definition.type))
 
 (class_declaration
-  name: (name) @definition.class)
+  name: (name) @definition.type)
 
 ; References
 ;------------

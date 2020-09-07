@@ -124,6 +124,6 @@
 
 ; Annotations (not fully supported by parser)
 
-((ERROR) @annotation 
-         (vim-match? @annotation  "\[?\[.*\]\]?.*$"))
-(attribute) @annotation
+((ERROR) @attribute
+         (vim-match? @attribute  "\[?\[.*\]\]?.*$"))
+(attribute) @attribute

@@ -35,15 +35,14 @@
 ; Functions
 
 (constructor_declaration) @scope
-(method_declaration
-  name: (identifier) @definition.scope) @scope
+(method_declaration) @scope
 
 
 ; DEFINITIONS
 (package_declaration
   (identifier) @definition.namespace)
 (class_declaration
-  name: (identifier) @definition.class)
+  name: (identifier) @definition.type)
 (enum_declaration
   name: (identifier) @definition.enum)
 (method_declaration

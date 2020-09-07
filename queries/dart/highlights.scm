@@ -8,9 +8,9 @@
 
 ; Annotations
 (annotation
-  name: (identifier) @annotation)
+  name: (identifier) @attribute)
 (marker_annotation
-  name: (identifier) @annotation)
+  name: (identifier) @attribute)
 
 ; Operators and Tokens
 
@@ -123,7 +123,7 @@
     name: (identifier) @parameter)
 
 (named_argument
-  (label (identifier) @variable.parameter))
+  (label (identifier) @parameter))
 
 ; Literals
 
@@ -136,7 +136,7 @@
     ; (hex_floating_point_literal)
 ] @number
 
-(symbol_literal) @string.special.symbol
+(symbol_literal) @string.special
 (string_literal) @string
 (true) @boolean
 (false) @boolean
