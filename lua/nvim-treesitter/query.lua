@@ -78,6 +78,11 @@ local function filtered_runtime_queries(lang, query_name)
   return filter_files(api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', lang, query_name), true) or {})
 end
 
+local function runtime_query_exists(lang, query_name)
+  local files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', lang, query_name), false)
+  return files and #files > 0
+end
+
 local function get_query_files(lang, query_name)
   local query_files = {}
 
@@ -93,9 +98,16 @@ local function get_query_files(lang, query_name)
 end
 
 function M.has_query_files(lang, query_name)
-  local query_files = get_query_files(lang, query_name)
+  local langs = {lang}
+  vim.list_extend(langs, M.base_language_map[lang] or {})
 
-  return #query_files > 0
+  for _, lang in ipairs(langs) do
+    if runtime_query_exists(lang, query_name) then
+      return true
+    end
+  end
+
+  return false
 end
 
 function M.get_query(lang, query_name)
