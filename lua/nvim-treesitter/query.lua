@@ -17,8 +17,8 @@ M.base_language_map = {
 }
 
 M.query_extensions = {
-  javascript = { 'javascript.jsx' },
-  tsx = {'javascript.jsx'}
+  javascript = { 'jsx' },
+  tsx = {'jsx'}
 }
 
 M.built_in_query_groups = {'highlights', 'locals', 'textobjects', 'fold'}
@@ -82,21 +82,15 @@ local function filtered_runtime_queries(lang, query_name)
   return filter_files(api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', lang, query_name), true) or {})
 end
 
-function M.get_query_files(lang, query_name)
+local function get_query_files(lang, query_name)
   local query_files = {}
   local extensions = M.query_extensions[lang] or {}
 
   local lang_files = filtered_runtime_queries(lang, query_name)
   vim.list_extend(query_files, lang_files)
 
-  for _, ext in ipairs(extensions) do
-    local l = lang
-    local e = ext
-    if e:match('%.') ~= nil then
-       l = e:match('.*%.'):sub(0, -2)
-       e = e:match('%..*'):sub(2, -1)
-    end
-    local ext_files = filtered_runtime_queries(l, e)
+  for _, ext_lang in ipairs(extensions) do
+    local ext_files = filtered_runtime_queries(ext_lang, query_name)
     vim.list_extend(query_files, ext_files)
   end
 
@@ -109,13 +103,13 @@ function M.get_query_files(lang, query_name)
 end
 
 function M.has_query_files(lang, query_name)
-  local query_files = M.get_query_files(lang, query_name)
+  local query_files = get_query_files(lang, query_name)
 
   return #query_files > 0
 end
 
 function M.get_query(lang, query_name)
-  local query_files = M.get_query_files(lang, query_name)
+  local query_files = get_query_files(lang, query_name)
   local query_string = read_query_files(query_files)
 
   if #query_string > 0 then
