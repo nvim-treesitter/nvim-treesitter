@@ -48,6 +48,8 @@
         name: (identifier) @constructor))
  (#match? @constructor "^[A-Z]"))
 
+(operator_name) @function
+
 (call_expression
   function: (scoped_identifier
               name: (identifier) @function))
