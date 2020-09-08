@@ -113,23 +113,36 @@
 "." @punctuation.delimiter
 "," @punctuation.delimiter
 
-"--" @operator
-"-" @operator
-"-=" @operator
-"&&" @operator
-"+" @operator
-"++" @operator
-"+=" @operator
-"<" @operator
-"<<" @operator
-"=" @operator
-"==" @operator
-"===" @operator
-"=>" @operator
-">" @operator
-">>" @operator
-"||" @operator
-"??" @operator
+[
+  "--"
+  "-"
+  "-="
+  "&&"
+  "+"
+  "++"
+  "+="
+  "&="
+  "/="
+  "**="
+  "<<="
+  "<"
+  "<="
+  "<<"
+  "="
+  "=="
+  "==="
+  "!="
+  "!=="
+  "=>"
+  ">"
+  ">="
+  ">>"
+  "||"
+  "%"
+  "%="
+] @operator
+
+(ternary_expression ["?" ":"] @operator)
 
 "(" @punctuation.bracket
 ")" @punctuation.bracket
