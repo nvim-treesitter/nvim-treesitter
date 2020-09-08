@@ -13,12 +13,8 @@ local query_cache = caching.create_buffer_cache()
 M.base_language_map = {
   cpp = {'c'},
   typescript = {'javascript'},
-  tsx = {'typescript', 'javascript'},
-}
-
-M.query_extensions = {
-  javascript = { 'jsx' },
-  tsx = {'jsx'}
+  javascript = {'jsx'},
+  tsx = {'typescript', 'javascript', 'jsx'},
 }
 
 M.built_in_query_groups = {'highlights', 'locals', 'textobjects', 'fold'}
@@ -84,15 +80,9 @@ end
 
 local function get_query_files(lang, query_name)
   local query_files = {}
-  local extensions = M.query_extensions[lang] or {}
 
   local lang_files = filtered_runtime_queries(lang, query_name)
   vim.list_extend(query_files, lang_files)
-
-  for _, ext_lang in ipairs(extensions) do
-    local ext_files = filtered_runtime_queries(ext_lang, query_name)
-    vim.list_extend(query_files, ext_files)
-  end
 
   for _, base_lang in ipairs(M.base_language_map[lang] or {}) do
     local base_files = filtered_runtime_queries(base_lang, query_name)
