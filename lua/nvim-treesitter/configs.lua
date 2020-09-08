@@ -303,7 +303,11 @@ end
 function M.setup(user_data)
   config.modules = vim.tbl_deep_extend('force', config.modules, user_data)
 
-  require'nvim-treesitter.install'.ensure_installed(user_data.ensure_installed)
+  local ensure_installed = user_data.ensure_installed or {}
+  if #ensure_installed > 0 then
+    require'nvim-treesitter.install'.ensure_installed(ensure_installed)
+  end
+
   config.modules.ensure_installed = nil
 
   recurse_modules(function(_, _, new_path)
