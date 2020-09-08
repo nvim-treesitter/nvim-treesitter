@@ -7,8 +7,8 @@
 [
   "if" 
   "then"
+  (_end_keyword)
 ] @conditional)
-(if_statement (end_keyword) @conditional)
 
 [
   "else"
@@ -19,35 +19,35 @@
 [
   "for"
   "do"
+  (_end_keyword)
 ] @repeat)
-(for_statement (end_keyword) @repeat)
 
 (for_in_statement
 [
   "for"
   "do"
+  (_end_keyword)
 ] @repeat)
-(for_in_statement (end_keyword) @repeat)
 
 (while_statement
 [
   "while"
   "do"
+  (_end_keyword)
 ] @repeat)
-(while_statement (end_keyword) @repeat)
 
 (repeat_statement
 [
   "repeat"
   "until"
+  (_end_keyword)
 ] @repeat)
-(repeat_statement (end_keyword) @repeat)
 
 [
  "in"
  "return"
  "goto"
- (local_keyword)
+ (_local_keyword)
  (break_statement)
 ] @keyword
 
@@ -100,16 +100,16 @@
 (nil) @constant.builtin
 (spread) @constant ;; "..."
 
-; (function_keyword) @keyword.function
+; (_function_keyword) @keyword.function
 
 ;; Functions
-(function [(function_keyword) (end_keyword)] @keyword.function)
+(function [(_function_keyword) (_end_keyword)] @keyword.function)
 (function [(function_name) (identifier)] @function)
 
-(local_function [(function_keyword) (end_keyword)] @keyword.function)
+(local_function [(_function_keyword) (_end_keyword)] @keyword.function)
 (local_function [(function_name) (identifier)] @function)
 
-(function_definition [(function_keyword) (end_keyword)] @keyword.function)
+(function_definition [(_function_keyword) (_end_keyword)] @keyword.function)
 
 (property_identifier) @property
 (method) @method
