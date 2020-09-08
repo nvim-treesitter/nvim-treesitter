@@ -236,13 +236,13 @@ end
 -- @param root the root node
 function M.iter_group_results(bufnr, query_group, root)
   local lang = parsers.get_buf_lang(bufnr)
-  if not lang then return end
+  if not lang then return function() end end
 
   local query = M.get_query(lang, query_group)
-  if not query then return end
+  if not query then return function() end end
 
   local parser = parsers.get_parser(bufnr, lang)
-  if not parser then return end
+  if not parser then return function() end end
 
   local root = root or parser:parse():root()
   local start_row, _, end_row, _ = root:range()
