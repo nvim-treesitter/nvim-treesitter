@@ -74,7 +74,7 @@ list.bash = {
     url = "https://github.com/tree-sitter/tree-sitter-bash",
     files = { "src/parser.c", "src/scanner.cc" },
   },
-  used_by = { "zsh" },
+  used_by = { "zsh", "PKGBUILD" },
   filetype = 'sh',
   maintainers = {"@TravonteD"},
 }
