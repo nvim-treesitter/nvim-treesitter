@@ -100,9 +100,13 @@
 (spread) @constant ;; "..."
 
 ;; Functions
-("function" @keyword.function
- [(function_name) (identifier)] @function
- "end" @keyword.function)
+(function [(function_name) (identifier)] @function)
+(function ["function" "end"] @function)
+
+(local_function [(function_name) (identifier)] @function)
+(local_function ["function" "end"] @function)
+
+(function_definition ["function" "end"] @function)
 
 (property_identifier) @property
 (method) @method
