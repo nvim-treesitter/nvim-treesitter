@@ -129,7 +129,7 @@ list.css = {
 list.ocaml = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ocaml",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "ocaml/src/parser.c", "ocaml/src/scanner.cc" },
   },
   maintainers = {'@undu'},
 }
