@@ -15,6 +15,7 @@ M.base_language_map = {
   typescript = {'javascript'},
   javascript = {'jsx'},
   tsx = {'typescript', 'javascript', 'jsx'},
+  ocaml_interface = {'ocaml'},
 }
 
 M.built_in_query_groups = {'highlights', 'locals', 'textobjects', 'folds'}
