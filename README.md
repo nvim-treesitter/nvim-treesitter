@@ -1,12 +1,35 @@
-[![Zulip chat](https://img.shields.io/badge/zulip-join_chat-brightgreen.svg)](https://nvim-treesitter.zulipchat.com/)
-[![Linting and style](https://github.com/nvim-treesitter/nvim-treesitter/workflows/Linting%20and%20style%20checking/badge.svg?branch=master)](https://github.com/nvim-treesitter/nvim-treesitter/actions?query=workflow%3A%22Linting+and+style+checking%22+branch%3Amaster)
-[![Syntax files](https://github.com/nvim-treesitter/nvim-treesitter/workflows/Check%20loading%20of%20syntax%20files/badge.svg)](https://github.com/nvim-treesitter/nvim-treesitter/actions?query=workflow%3A%22Check+loading+of+syntax+files%22+branch%3Amaster)
+<div align="center">
+  <h1>nvim-treesitter</h1>
+  <p>
+    <a href="https://nvim-treesitter.zulipchat.com/">
+      <img alt="Zulip Chat" src="https://img.shields.io/badge/zulip-join_chat-brightgreen.svg" />
+    </a>
+    <a href="https://github.com/nvim-treesitter/nvim-treesitter/actions?query=workflow%3A%22Linting+and+style+checking%22+branch%3Amaster">
+      <img alt="Linting and Style" src="https://github.com/nvim-treesitter/nvim-treesitter/workflows/Linting%20and%20style%20checking/badge.svg" />
+    </a>
+    <a href="https://github.com/nvim-treesitter/nvim-treesitter/actions?query=workflow%3A%22Check+loading+of+syntax+files%22+branch%3Amaster">
+      <img alt="Syntax files" src="https://github.com/nvim-treesitter/nvim-treesitter/workflows/Check%20loading%20of%20syntax%20files/badge.svg" />
+    </a>
+  </p>
+</div>
 
-# nvim-treesitter
+<div align="center">
+  <p>
+    <img src="assets/logo.png" align="center" alt="Logo" />
+  </p>
+  <p>
+    <a href="https://github.com/tree-sitter/tree-sitter">Treesitter</a>
+    configurations and abstraction layer for
+    <a href="https://github.com/neovim/neovim/">Neovim</a>.
+  </p>
+  <p>
+    <i>
+      Logo by <a href="https://github.com/steelsojka">@steelsojka</a>
+    </i>
+  </p>
+</div>
 
-Treesitter configurations and abstraction layer for Neovim.
-
-![Nvim-treesitter](nvim-treesitter.png)
+![cpp example](assets/example-cpp.png)
 
 Traditional highlighting (left) vs Treesitter-based highlighting (right).
 
