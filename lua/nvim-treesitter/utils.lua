@@ -18,14 +18,11 @@ function M.setup_commands(mod, commands)
 end
 
 function M.get_package_path()
-  for _, path in pairs(api.nvim_list_runtime_paths()) do
-    local last_segment = vim.fn.fnamemodify(path, ":p:h:t")
-    if last_segment == "nvim-treesitter" then
-      return path
-    end
-  end
+  -- Path to this source file, removing the leading '@'
+  local source = string.sub(debug.getinfo(1, 'S').source, 2)
 
-  return nil, 'Plugin runtime path not found.'
+  -- Path to the package root
+  return fn.fnamemodify(source, ":p:h:h:h")
 end
 
 function M.get_cache_dir()

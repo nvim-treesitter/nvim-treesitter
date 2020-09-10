@@ -200,9 +200,7 @@ local function install(with_sync, ask_reinstall)
       return api.nvim_err_writeln('Git is required on your system to run this command')
     end
 
-    local package_path, err = utils.get_package_path()
-    if err then return api.nvim_err_writeln(err) end
-
+    local package_path = utils.get_package_path()
     local cache_folder, err = utils.get_cache_dir()
     if err then return api.nvim_err_writeln(err) end
 
@@ -267,11 +265,7 @@ function M.uninstall(lang)
       M.uninstall(lang)
     end
   elseif lang then
-    local package_path, err = utils.get_package_path()
-    if err then
-      print(err)
-      return
-    end
+    local package_path = utils.get_package_path()
     local parser_lib = package_path..path_sep.."parser"..path_sep..lang..".so"
 
     local command_list = {
