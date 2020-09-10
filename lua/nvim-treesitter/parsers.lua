@@ -130,6 +130,7 @@ list.ocaml = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ocaml",
     files = { "src/parser.c", "src/scanner.cc" },
+    location = "tree-sitter-ocaml/ocaml"
   },
   maintainers = {'@undu'},
 }
