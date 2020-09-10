@@ -135,6 +135,16 @@ list.ocaml = {
   maintainers = {'@undu'},
 }
 
+list.ocaml_interface = {
+  install_info = {
+    url = "https://github.com/tree-sitter/tree-sitter-ocaml",
+    files = { "src/parser.c", "src/scanner.cc" },
+    location = "tree-sitter-ocaml_interface/interface"
+  },
+  maintainers = {'@undu'},
+  filetype = 'ocamlinterface'
+}
+
 list.swift = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-swift",
