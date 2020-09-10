@@ -127,105 +127,81 @@ local function resolve_module(mod_name)
   end
 end
 
+-- Enables and attaches the module to a buffer for lang.
+-- @param mod path to module
+-- @param bufnr buffer number, defaults to current buffer
+-- @param lang language, defaults to current language
 local function enable_module(mod, bufnr, lang)
   local bufnr = bufnr or api.nvim_get_current_buf()
   local lang = lang or parsers.get_buf_lang(bufnr)
-
   M.attach_module(mod, bufnr, lang)
 end
 
-local function enable_mod_conf_autocmd(mod, lang)
+-- Enables autocomands for the module.
+-- After the module is loaded `loaded` will be set to true for the module.
+-- @param mod path to module
+local function enable_mod_conf_autocmd(mod)
   local config_mod = M.get_module(mod)
-
-  if not config_mod or not M.is_enabled(mod, lang) then return end
+  if not config_mod or config_mod.loaded then
+    return
+  end
 
   local cmd = string.format("lua require'nvim-treesitter.configs'.attach_module('%s')", mod)
-  for _, ft in pairs(parsers.lang_to_ft(lang)) do
-    api.nvim_command(string.format("autocmd NvimTreesitter FileType %s %s", ft, cmd))
-  end
-  for i, parser in pairs(config_mod.disable) do
-    if parser == lang then
-      table.remove(config_mod.disable, i)
-      break
-    end
-  end
+  api.nvim_command(string.format("autocmd NvimTreesitter FileType * %s", cmd))
+
+  config_mod.loaded = true
 end
 
-local function enable_all(mod, lang, blocklist)
-  blocklist = blocklist or {}
-
+-- Enables the module globally and for all current buffers.
+-- After enabled, `enable` will be set to true for the module.
+-- @param mod path to module
+local function enable_all(mod)
   local config_mod = M.get_module(mod)
-
-  if not config_mod then return end
+  if not config_mod or config_mod.enable then return end
 
   for _, bufnr in pairs(api.nvim_list_bufs()) do
-    local ft = api.nvim_buf_get_option(bufnr, 'ft')
-    if not lang or parsers.lang_match_ft(lang, ft) then
-      if not vim.tbl_contains(blocklist, lang or parsers.ft_to_lang(ft)) then
-        enable_module(mod, bufnr, lang)
-      end
-    end
+    enable_module(mod, bufnr)
   end
-  if lang then
-    if parsers.has_parser(lang) then
-      enable_mod_conf_autocmd(mod, lang)
-    end
-  else
-    for _, lang in pairs(parsers.available_parsers()) do
-      if parsers.has_parser(lang) and not vim.tbl_contains(blocklist, lang) then
-        enable_mod_conf_autocmd(mod, lang)
-      end
-    end
-  end
+
+  enable_mod_conf_autocmd(mod)
   config_mod.enable = true
 end
 
-local function disable_module(mod, bufnr, lang)
+-- Disables and detaches the module for a buffer.
+-- @param mod path to module
+-- @param bufnr buffer number, defaults to current buffer
+local function disable_module(mod, bufnr)
   local bufnr = bufnr or api.nvim_get_current_buf()
-  local lang = lang or parsers.get_buf_lang(bufnr)
-  if not lang then
-    return
-  end
-
-  if not parsers.list[lang] then
-    return
-  end
-
   M.detach_module(mod, bufnr)
 end
 
-local function disable_mod_conf_autocmd(mod, lang)
+-- Disables autocomands for the module.
+-- After the module is unloaded `loaded` will be set to false for the module.
+-- @param mod path to module
+local function disable_mod_conf_autocmd(mod)
   local config_mod = M.get_module(mod)
-
-  if not config_mod or not M.is_enabled(mod, lang) then return end
-
-  -- TODO(kyazdani): detach the correct autocmd... doesn't work when using %s, cmd
-  for _, ft in pairs(parsers.lang_to_ft(lang)) do
-    api.nvim_command(string.format("autocmd! NvimTreesitter FileType %s", ft))
+  if not config_mod or not config_mod.loaded then
+    return
   end
-  table.insert(config_mod.disable, lang)
+  -- TODO(kyazdani): detach the correct autocmd... doesn't work when using %s, cmd.
+  -- This will remove all autocomands!
+  api.nvim_command("autocmd! NvimTreesitter FileType *")
+  config_mod.loaded = false
 end
 
-local function disable_all(mod, lang)
+-- Disables the module globally and for all current buffers.
+-- After disabled, `enable` will be set to false for the module.
+-- @param mod path to module
+local function disable_all(mod)
+  local config_mod = M.get_module(mod)
+  if not config_mod or not config_mod.enable then return end
+
   for _, bufnr in pairs(api.nvim_list_bufs()) do
-    local ft = api.nvim_buf_get_option(bufnr, 'ft')
-    if not lang or parsers.lang_match_ft(lang, ft) then
-      disable_module(mod, bufnr, lang)
-    end
+    disable_module(mod, bufnr)
   end
-  if lang then
-    disable_mod_conf_autocmd(mod, lang)
-  else
-    for _, lang in pairs(parsers.available_parsers()) do
-      disable_mod_conf_autocmd(mod, lang)
-    end
 
-    local config_mod = M.get_module(mod)
-
-    if config_mod then
-      config_mod.enable = false
-    end
-  end
+  disable_mod_conf_autocmd(mod)
+  config_mod.enable = false
 end
 
 -- Recurses through all modules including submodules
@@ -313,7 +289,7 @@ function M.setup(user_data)
   recurse_modules(function(_, _, new_path)
     local data = utils.get_at_path(config.modules, new_path)
     if data.enable then
-      enable_all(new_path, nil, data.disable)
+      enable_all(new_path)
     end
   end, config.modules)
 end
@@ -360,9 +336,10 @@ function M.define_modules(mod_defs)
 
   config.modules = vim.tbl_deep_extend("keep", config.modules, mod_defs)
 
-  for _, lang in pairs(parsers.available_parsers()) do
-    for _, mod in ipairs(M.available_modules(mod_defs)) do
-      enable_mod_conf_autocmd(mod, lang)
+  for _, mod in ipairs(M.available_modules(mod_defs)) do
+    local module_config = M.get_module(mod)
+    if module_config and module_config.enable then
+      enable_mod_conf_autocmd(mod)
     end
   end
 end
@@ -372,13 +349,13 @@ end
 -- @param bufnr the bufnr
 -- @param lang the language of the buffer
 function M.attach_module(mod_name, bufnr, lang)
-  local resolved_mod = resolve_module(mod_name)
   local bufnr = bufnr or api.nvim_get_current_buf()
+  local lang = lang or parsers.get_buf_lang(bufnr)
+  local resolved_mod = resolve_module(mod_name)
 
   if resolved_mod
-    and parsers.has_parser(lang)
-    and not attached_buffers_by_module.has(mod_name, bufnr)
-  then
+      and not attached_buffers_by_module.has(mod_name, bufnr)
+      and M.is_enabled(mod_name, lang) then
     attached_buffers_by_module.set(mod_name, bufnr, true)
     resolved_mod.attach(bufnr, lang)
   end
@@ -391,7 +368,7 @@ function M.detach_module(mod_name, bufnr)
   local resolved_mod = resolve_module(mod_name)
   local bufnr = bufnr or api.nvim_get_current_buf()
 
-  if resolved_mod then
+  if resolved_mod and attached_buffers_by_module.has(mod_name, bufnr) then
     attached_buffers_by_module.remove(mod_name, bufnr)
     resolved_mod.detach(bufnr)
   end
