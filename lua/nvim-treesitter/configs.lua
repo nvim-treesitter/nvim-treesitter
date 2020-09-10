@@ -157,7 +157,7 @@ end
 -- @param mod path to module
 local function enable_all(mod)
   local config_mod = M.get_module(mod)
-  if not config_mod or config_mod.enable then return end
+  if not config_mod then return end
 
   for _, bufnr in pairs(api.nvim_list_bufs()) do
     enable_module(mod, bufnr)
