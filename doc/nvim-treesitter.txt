@@ -183,6 +183,9 @@ Supported options:
   EOF
 <
 
+Note: this makes use of the |CursorHold| event, so the highlight is
+triggered after 'updatetime'.
+
                               *nvim-treesitter-highlight-current-scope-submod*
 Highlight current scope~
 
