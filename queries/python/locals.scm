@@ -84,10 +84,13 @@
           (identifier) @definition.var))
 
 (assignment
+  left: (expression_list (attribute) @definition))
+
+(assignment
   left: (expression_list
           (attribute
-            (identifier)
-            (identifier) @definition.field)))
+            object: (identifier)
+            attribute: (identifier) @definition.field)))
 
 ; Walrus operator  x := 1
 (named_expression
@@ -96,3 +99,4 @@
 
 ;;; REFERENCES
 (identifier) @reference
+(attribute) @reference
