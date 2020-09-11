@@ -18,7 +18,9 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
 
   handle = luv.spawn(attr.cmd, attr.opts, vim.schedule_wrap(function(code)
     handle:close()
-    if code ~= 0 then return api.nvim_err_writeln(attr.err) end
+    if code ~= 0 then
+      return api.nvim_err_writeln(attr.err or ("Failed to execute the following command:\n"..vim.inspect(attr)))
+    end
     M.iter_cmd(cmd_list, i + 1, lang, success_message)
   end))
 end
@@ -49,7 +51,7 @@ local function iter_cmd_sync(cmd_list)
 
     vim.fn.system(get_command(cmd))
     if vim.v.shell_error ~= 0 then
-      api.nvim_err_writeln(cmd.err)
+      api.nvim_err_writeln(cmd.err or ("Failed to execute the following command:\n"..vim.inspect(cmd)))
       return false
     end
 
