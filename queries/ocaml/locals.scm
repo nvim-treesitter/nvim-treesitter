@@ -1,26 +1,22 @@
 ; Scopes
 ;-------
 
-(let_binding) @local.scope
-
-(class_binding) @local.scope
-
-(class_function) @local.scope
-
-(method_definition) @local.scope
-
-(fun_expression) @local.scope
-
-(match_case) @local.scope
-
-(for_expression) @local.scope
+[
+  (let_binding)
+  (class_binding)
+  (class_function)
+  (method_definition)
+  (fun_expression)
+  (match_case)
+  (for_expression)
+] @scope
 
 ; Definitions
 ;------------
 
-(value_pattern) @local.definition
+(value_pattern) @definition
 
 ; References
 ;------------
 
-(value_name) @local.reference
+(value_name) @reference

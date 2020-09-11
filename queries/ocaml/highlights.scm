@@ -1,19 +1,19 @@
 ; Modules
 ;--------
 
-[(module_name) (module_type_name)] @constructor
+[(module_name) (module_type_name)] @structure
 
 ; Types
 ;------
 
 (
   (type_constructor) @type.builtin
-  (#match? @type.builtin "^(int|char|bytes|string|float|bool|unit|exn|array|list|option|int32|int64|nativeint|format6|lazy_t)$")
+  (#contains? @type.builtin "int" "char" "bytes" "string" "float" "bool" "unit" "exn" "array" "list" "option" "int32" "int64" "nativeint" "format6" "lazy_t")
 )
 
 [(class_name) (class_type_name) (type_constructor)] @type
 
-[(constructor_name) (tag)] @tag
+[(constructor_name) (tag)] @constructor
 
 ; Functions
 ;----------
@@ -30,7 +30,7 @@
 
 (external (value_pattern) @function)
 
-(method_name) @function.method
+(method_name) @method
 
 ; Variables
 ;----------
@@ -39,7 +39,7 @@
 
 (let_binding pattern: (value_pattern) @variable)
 
-(value_pattern) @variable.parameter
+(value_pattern) @parameter
 
 ; Application
 ;------------
@@ -78,9 +78,9 @@
 
 (quoted_string "{" @string "}" @string) @string
 
-(escape_sequence) @escape
+(escape_sequence) @string.escape
 
-(conversion_specification) @string.special
+(conversion_specification) @punctuation.special
 
 ; Operators
 ;----------
@@ -108,13 +108,20 @@
 ;---------
 
 [
-  "and" "as" "assert" "begin" "class" "constraint" "do" "done" "downto" "else"
-  "end" "exception" "external" "for" "fun" "function" "functor" "if" "in"
-  "include" "inherit" "initializer" "lazy" "let" "match" "method" "module"
-  "mutable" "new" "nonrec" "object" "of" "open" "private" "rec" "sig" "struct"
-  "then" "to" "try" "type" "val" "virtual" "when" "while" "with"
+  "and" "as" "assert" "begin" "class" "constraint"
+  "end" "external" "fun" "function" "functor" "in"
+  "inherit" "initializer" "lazy" "let" "match" "method" "module"
+  "mutable" "new" "nonrec" "object" "of" "private" "rec" "sig" "struct"
+  "type" "val" "virtual" "when" "with"
 ] @keyword
 
+["if" "then" "else"] @conditional
+
+["exception" "try"] @exception
+
+["include" "open"] @include
+
+["for" "to" "downto" "while" "do" "done"] @repeat
 ; Punctuation
 ;------------
 
@@ -140,9 +147,11 @@
 ; Attributes
 ;-----------
 
-(attribute_id) @attribute
+(attribute_id) @property
 
 ; Comments
 ;---------
 
 [(comment) (line_number_directive) (directive) (shebang)] @comment
+
+(ERROR) @error
