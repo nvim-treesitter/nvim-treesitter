@@ -89,7 +89,7 @@ function M.next_textobject(node, query_string, same_parent, overlapping_range_ok
   else
     _, _, search_start = node:end_()
   end
-  local function scoring_function(match)
+  local function filter_function(match)
     if match.node == node then return end
     if not same_parent or node:parent() == match.node:parent() then
       local _, _, start = match.node:start()
@@ -97,12 +97,12 @@ function M.next_textobject(node, query_string, same_parent, overlapping_range_ok
       return start > search_start and end_ >= node_end
     end
   end
-  local function filter_function(match)
+  local function scoring_function(match)
     local _, _, node_start = match.node:start()
     return -node_start
   end
 
-  local next_node = queries.find_best_match(bufnr, query_string, 'textobjects', scoring_function, filter_function)
+  local next_node = queries.find_best_match(bufnr, query_string, 'textobjects', filter_function, scoring_function)
 
   return next_node and next_node.node
 end
@@ -121,7 +121,7 @@ function M.previous_textobject(node, query_string, same_parent, overlapping_rang
     _, _, search_end = node:start()
   end
 
-  local function scoring_function(match)
+  local function filter_function(match)
     if not same_parent or node:parent() == match.node:parent() then
       local _, _, end_ = match.node:end_()
       local _, _, start = match.node:start()
@@ -129,12 +129,12 @@ function M.previous_textobject(node, query_string, same_parent, overlapping_rang
     end
   end
 
-  local function filter_function(match)
+  local function scoring_function(match)
     local _, _, node_end = match.node:end_()
     return node_end
   end
 
-  local previous_node = queries.find_best_match(bufnr, query_string, 'textobjects', scoring_function, filter_function)
+  local previous_node = queries.find_best_match(bufnr, query_string, 'textobjects', filter_function, scoring_function)
 
   return previous_node and previous_node.node
 end
