@@ -2,6 +2,10 @@
 
 ; Javascript
 
+; Variables
+;-----------
+(identifier) @variable
+
 ; Properties
 ;-----------
 

@@ -1,3 +1,5 @@
+(identifier) @variable
+
 [
   "const"
   "default"

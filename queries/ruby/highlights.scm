@@ -1,3 +1,6 @@
+; Variables
+(identifier) @variable
+
 ; Keywords
 
 [
@@ -100,7 +103,7 @@
 [
  (self)
  (super)
- ] @constant.builtin
+ ] @variable.builtin
 
 (method_parameters (identifier) @parameter)
 (lambda_parameters (identifier) @parameter)

@@ -77,7 +77,7 @@
 
 ; Constants
 
-(this) @constant.builtin
+(this) @variable.builtin
 (nullptr) @constant
 
 (true) @boolean

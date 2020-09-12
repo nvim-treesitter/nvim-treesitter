@@ -1,6 +1,9 @@
 ;; From tree-sitter-python licensed under MIT License
 ; Copyright (c) 2016 Max Brunsfeld
 
+; Variables
+(identifier) @variable
+
 ; Reset highlighing in f-string interpolations
 (interpolation) @Normal
 
@@ -105,8 +108,8 @@
 
 (none) @constant.builtin
 [(true) (false)] @boolean
-((identifier) @constant.builtin
- (#match? @constant.builtin "self"))
+((identifier) @variable.builtin
+ (#match? @variable.builtin "self"))
 
 (integer) @number
 (float) @float
@@ -232,8 +235,8 @@
 ((class_definition
   body: (block
           (function_definition
-            parameters: (parameters . (identifier) @constant.builtin))))
- (#vim-match? @constant.builtin "^(self|obj|cls)$"))
+            parameters: (parameters . (identifier) @variable.builtin))))
+ (#vim-match? @variable.builtin "^(self|obj|cls)$"))
 
 ;; Error
 (ERROR) @error
