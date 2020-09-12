@@ -37,9 +37,10 @@
   "#else"
   "#elif"
   "#endif"
-  "#include"
   (preproc_directive)
 ] @keyword
+
+"#include" @include
 
 [
   "="
