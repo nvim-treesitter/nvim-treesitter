@@ -119,7 +119,9 @@
 ]  @function.macro
 ; TODO (preproc_arg)  @embedded
 
-(field_identifier) @property
+(((field_expression
+     (field_identifier) @property)) @_parent
+ (not-has-parent? @_parent template_method function_declarator call_expression))
 (statement_identifier) @label
 
 [

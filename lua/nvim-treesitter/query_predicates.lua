@@ -54,6 +54,7 @@ local function has_ancestor(match, pattern, bufnr, pred)
   end
   return false
 end
+
 query.add_predicate('has-ancestor?', has_ancestor)
 
 query.add_predicate('has-parent?', has_ancestor)
