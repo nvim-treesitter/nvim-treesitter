@@ -80,7 +80,8 @@
                          (constant) @constant
                          ])
 
-(class name: (constant) @constant)
+(class name: (constant) @type)
+(module name: (constant) @type)
 
 ; Identifiers
 [
@@ -144,8 +145,8 @@
  ] @boolean
 
 (interpolation
-  "#{" @punctuation.bracket
-  "}" @punctuation.bracket) @embedded
+  "#{" @punctuation.special
+  "}" @punctuation.special) @embedded
 
 (comment) @comment
 
