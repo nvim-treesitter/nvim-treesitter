@@ -91,6 +91,9 @@
  "}"
 ] @punctuation.bracket
 
+;; Variables
+(identifier) @variable
+
 ;; Constants
 [
 (false)

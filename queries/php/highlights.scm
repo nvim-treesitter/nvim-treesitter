@@ -1,3 +1,7 @@
+; Variables
+
+(variable_name) @variable
+
 ; Types
 
 [

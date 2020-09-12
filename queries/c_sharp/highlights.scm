@@ -1,3 +1,4 @@
+(identifier) @variable
 
 (method_declaration
   name: (identifier) @method)

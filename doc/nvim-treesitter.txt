@@ -736,6 +736,14 @@ Literal text.
                                                                     *hl-TSURI*
 Any URI like a link or email.
 
+`TSVariable`
+                                                               *hl-TSVariable*
+Any variable name that does not have another highlight.
+
+`TSVariableBuiltin`
+                                                        *hl-TSVariableBuiltin*
+Variable names that are defined by the languages, like `this` or `self`.
+
 ==============================================================================
 MODULE-HIGHLIGHTS                          *nvim-treesitter-module-highlights*
 

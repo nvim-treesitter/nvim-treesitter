@@ -1,7 +1,10 @@
 ; CREDITS @maxbrunsfeld (maxbrunsfeld@gmail.com)
 
-; Methods
+; Variables
 
+(identifier) @variable
+
+; Methods
 
 (method_declaration
   name: (identifier) @method)
@@ -105,7 +108,7 @@
 ((identifier) @constant
   (#vim-match? @constant "^_*[A-Z][A-Z\d_]+"))
 
-(this) @constant.builtin
+(this) @variable.builtin
 
 ; Literals
 
