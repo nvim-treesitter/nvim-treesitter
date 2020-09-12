@@ -32,22 +32,31 @@ query.add_predicate("nth?", function(match, pattern, bufnr, pred)
   return false
 end)
 
-query.add_predicate('has-ancestor?', function(match, pattern, bufnr, pred)
-  if not valid_args("has-ancestor?", pred, 2, true) then return end
+local function has_ancestor(match, pattern, bufnr, pred)
+  if not valid_args(pred[1], pred, 2) then return end
 
   local node = match[pred[2]]
-  local ancestor_type = pred[3]
+  local ancestor_types = {unpack(pred, 3)}
   if not node then return true end
+
+  local just_direct_parent = pred[1]:find('has-parent', 1, true)
 
   node = node:parent()
   while node do
-    if node:type() == ancestor_type then
+    if vim.tbl_contains(ancestor_types, node:type()) then
       return true
     end
-    node = node:parent()
+    if just_direct_parent then
+      node = nil
+    else
+      node = node:parent()
+    end
   end
   return false
-end)
+end
+query.add_predicate('has-ancestor?', has_ancestor)
+
+query.add_predicate('has-parent?', has_ancestor)
 
 query.add_predicate('is?', function(match, pattern, bufnr, pred)
   if not valid_args("is?", pred, 2) then return end
@@ -62,6 +71,17 @@ query.add_predicate('is?', function(match, pattern, bufnr, pred)
   local _, _, kind = locals.find_definition(node, bufnr)
 
   return vim.tbl_contains(types, kind)
+end)
+
+query.add_predicate('has-type?', function(match, pattern, bufnr, pred)
+  if not valid_args(pred[1], pred, 2) then return end
+
+  local node = match[pred[2]]
+  local types = {unpack(pred, 3)}
+
+  if not node then return true end
+
+  return vim.tbl_contains(types, node:type())
 end)
 
 -- Just avoid some anoying warnings for this predicate
