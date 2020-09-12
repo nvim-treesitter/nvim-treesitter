@@ -1,15 +1,22 @@
 ; Scopes
 ;-------
 
-(class_declaration) @scope
-(while_statement) @scope
-(foreach_statement) @scope
-(if_statement) @scope
-(try_statement) @scope
-(method_declaration
+((class_declaration
+  name: (name) @definition.type) @scope
+    (set! definition.type.scope "parent"))
+
+((method_declaration
   name: (name) @definition.method) @scope
-(function_definition
+    (set! definition.method.scope "parent"))
+
+((function_definition
   name: (name) @definition.function) @scope
+    (set! definition.function.scope "parent"))
+
+(anonymous_function_creation_expression
+  (anonymous_function_use_clause
+    (variable_name
+      (name) @definition.var))) @scope
 
 ; Definitions
 ;------------
@@ -18,26 +25,54 @@
   (variable_name
     (name) @definition.var))
 
-(anonymous_function_use_clause
+(foreach_statement
+  (pair
+    (variable_name
+      (name) @definition.var))
   (variable_name
-    (name) @definition.var))
-
-(assignment_expression
-  left: (variable_name
     (name) @definition.var))
 
 (property_declaration
-  (variable_name
-    (name) @definition.field))
+  (property_element
+    (variable_name
+      (name) @definition.field)))
 
 (namespace_use_clause
   (qualified_name
     (name) @definition.type))
 
-(class_declaration
-  name: (name) @definition.type)
-
 ; References
 ;------------
 
-(name) @reference
+(type_name
+  (name) @reference
+    (set! reference.kind "type"))
+
+(variable_name
+  (name) @reference
+    (set! reference.kind "var"))
+
+(member_access_expression
+  name: (name) @reference
+    (set! reference.kind "field"))
+
+(member_call_expression
+  name: (name) @reference
+    (set! reference.kind "method"))
+
+(function_call_expression
+  function: (qualified_name
+    (name) @reference
+      (set! reference.kind "function")))
+
+(object_creation_expression
+  (qualified_name
+    (name) @reference
+      (set! reference.kind "type")))
+
+(scoped_call_expression
+  scope: (qualified_name
+    (name) @reference
+      (set! reference.kind "type"))
+  name: (name) @reference
+    (set! reference.kind "method"))
