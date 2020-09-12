@@ -38,8 +38,12 @@
 [(value_name) (type_variable)] @variable
 
 (let_binding pattern: (value_pattern) @variable)
+(let_binding pattern: (tuple_pattern (value_pattern) @variable))
 
-(value_pattern) @parameter
+(let_binding (parameter (label_name) @parameter))
+(let_binding (parameter (value_pattern) @parameter))
+(let_binding (parameter (typed_pattern (value_pattern) @parameter)))
+(function_type (typed_label (label_name) @parameter))
 
 ; Application
 ;------------
@@ -55,7 +59,7 @@
   (#eq? @operator "|>"))
 
 (application_expression
-  function: (value_path (value_name)) @function)
+  function: (value_path (value_name) @function))
 
 (
   (value_name) @function.builtin
@@ -140,7 +144,7 @@
 (object_type ["<" ">"] @punctuation.bracket)
 
 [
-  "," "." ";" ":" "=" "|" "~" "?" "+" "-" "!" ">" "&"
+  "," "." ";" ":" "=" "|" "~" "?" "!" ">" "&"
   "->" ";;" ":>" "+=" ":=" ".."
 ] @punctuation.delimiter
 
