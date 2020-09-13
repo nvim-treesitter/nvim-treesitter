@@ -17,7 +17,7 @@ M.base_language_map = {
   tsx = {'typescript', 'javascript', 'jsx'},
 }
 
-M.built_in_query_groups = {'highlights', 'locals', 'textobjects', 'fold'}
+M.built_in_query_groups = {'highlights', 'locals', 'textobjects', 'folds'}
 
 -- Creates a function that checks whether a certain query exists
 -- for a specific language.
