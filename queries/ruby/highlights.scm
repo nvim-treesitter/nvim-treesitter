@@ -5,7 +5,6 @@
 
 [
  "alias"
- "and"
  "begin"
  "break"
  "class"
@@ -13,16 +12,20 @@
  "do"
  "end"
  "ensure"
- "in"
  "module"
  "next"
- "or"
  "rescue"
  "retry"
  "return"
  "then"
  "yield"
  ] @keyword
+
+[
+ "and"
+ "or"
+ "in"
+] @keyword.operator
 
 [
  "case"

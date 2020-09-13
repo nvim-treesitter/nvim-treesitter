@@ -131,9 +131,10 @@ are optional and will not have any effect for now.
 @conditional
 @repeat
 @label for C/Lua-like labels
-@operator
 @keyword
 @keyword.function
+@keyword.operator (for operators that are English words, e.g. `and`, `or`)
+@operator (for symbolic operators, e.g. `+`, `*`)
 @exception
 @include keywords for including modules (e.g. import/from in Python)
 

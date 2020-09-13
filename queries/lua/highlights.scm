@@ -51,15 +51,19 @@
 ] @keyword
 
 ;; Operators
+
+[
+ "not"
+ "and"
+ "or"
+] @keyword.operator
+
 [
 "="
 "~="
 "=="
 "<="
 ">="
-"not"
-"and"
-"or"
 "<"
 ">"
 "+"

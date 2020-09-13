@@ -101,13 +101,11 @@
  "class"
  "decltype"
  "constexpr"
- "delete"
  "explicit"
  "final"
  "friend"
  "mutable"
  "namespace"
- "new"
  "override"
  "private"
  "protected"
@@ -118,6 +116,26 @@
  "virtual"
  (auto)
 ] @keyword
+
+[
+ "new"
+ "delete"
+
+ ;; these keywords are not supported by the parser
+ ;"eq"
+ ;"not_eq"
+ ;
+ ;"compl"
+ ;"and"
+ ;"or"
+ ;
+ ;"bitand"
+ ;"bitand_eq"
+ ;"bitor"
+ ;"bitor_eq"
+ ;"xor"
+ ;"xor_eq"
+] @keyword.operator
 
 "::" @operator
 "..." @operator
