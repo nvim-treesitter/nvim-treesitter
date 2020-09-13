@@ -154,15 +154,19 @@
   "|"
   "|="
   "~"
+  "->"
+] @operator
+
+; Keywords
+[
   "and"
   "in"
   "is"
   "not"
   "or"
-  "->"
-] @operator
 
-; Keywords
+  "del"
+] @keyword.operator
 
 [
   "assert"
@@ -170,7 +174,6 @@
   "await"
   "class"
   "def"
-  "del"
   "except"
   "exec"
   "finally"

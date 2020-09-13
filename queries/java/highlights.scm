@@ -138,7 +138,6 @@
 "abstract"
 "assert"
 "break"
-"catch"
 "class"
 "continue"
 "default"
@@ -146,13 +145,11 @@
 "exports"
 "extends"
 "final"
-"finally"
 "implements"
 "instanceof"
 "interface"
 "module"
 "native"
-"new"
 "open"
 "opens"
 "package"
@@ -165,16 +162,17 @@
 "static"
 "strictfp"
 "synchronized"
-"throw"
-"throws"
 "to"
 "transient"
 "transitive"
-"try"
 "uses"
 "volatile"
 "with"
 ] @keyword
+
+[
+ "new"
+] @keyword.operator
 
 ; Conditionals
 
@@ -214,6 +212,16 @@
 "("
 ")"
 ] @punctuation.bracket
+
+; Exceptions
+
+[
+"throw"
+"throws"
+"finally"
+"try"
+"catch"
+] @exception
 
 ; Labels
 (labeled_statement

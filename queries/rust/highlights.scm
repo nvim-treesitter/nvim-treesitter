@@ -163,7 +163,10 @@
 (escape_sequence) @string.escape
 
 [
-"as"
+  "as"
+] @keyword.operator
+
+[
 "*"
 "'"
 "->"
