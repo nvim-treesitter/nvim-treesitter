@@ -13,7 +13,7 @@ local folds_levels = utils.memoize_by_buf_tick(function(bufnr)
 
   local matches
   if query.has_fold(lang) then
-    matches = query.get_capture_matches(bufnr, "@fold", "fold")
+    matches = query.get_capture_matches(bufnr, "@fold", "folds")
   elseif query.has_locals(lang) then
     matches = query.get_capture_matches(bufnr, "@scope", "locals")
   else

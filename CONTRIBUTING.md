@@ -215,7 +215,7 @@ Possible scope values are:
 
 ### Folds
 
-You can define folds for a given language by adding a `fold.scm` query :
+You can define folds for a given language by adding a `folds.scm` query :
 
 ```
 @fold
