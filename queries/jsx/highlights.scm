@@ -8,3 +8,5 @@
 (jsx_closing_element name: (identifier) @variable.builtin)
 (jsx_opening_element name: (identifier) @variable.builtin)
 (jsx_self_closing_element name: (identifier) @variable.builtin)
+
+(jsx_text) @none

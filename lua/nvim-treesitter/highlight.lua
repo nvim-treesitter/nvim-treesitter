@@ -68,6 +68,8 @@ hlmap["text.title"] = "TSTitle"
 hlmap["text.literal"] = "TSLiteral"
 hlmap["text.uri"] = "TSURI"
 
+hlmap["none"] = "TSNone"
+
 function M.attach(bufnr, lang)
   local lang = lang or parsers.get_buf_lang(bufnr)
   local config = configs.get_module('highlight')

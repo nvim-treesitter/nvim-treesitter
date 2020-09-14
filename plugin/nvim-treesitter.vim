@@ -67,3 +67,5 @@ highlight default TSUnderline term=underline cterm=underline gui=underline
 highlight default link TSTitle Title
 highlight default link TSLiteral String
 highlight default link TSURI Underlined
+
+highlight default TSNone term=none cterm=none gui=none guifg=none guibg=none
