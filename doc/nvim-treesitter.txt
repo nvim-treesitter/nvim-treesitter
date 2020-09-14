@@ -552,7 +552,7 @@ nvim_treesitter#foldexpr()~
 Functions to be used to determine the fold level at a given line number.
 To use it: >
   set foldmethod=expr
-  set foldexpr=nvim_treesitter#foldexr()
+  set foldexpr=nvim_treesitter#foldexpr()
 <
 
 This will respect your 'foldnestmax' setting.
