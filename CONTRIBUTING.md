@@ -72,7 +72,8 @@ effect on highlighting. We will work on improving highlighting in the near futur
 
 ```
 @comment
-@error for error (ERROR` nodes.
+@error for error `ERROR` nodes.
+@none to disable completely the highlight
 @punctuation.delimiter for `;` `.` `,`
 @punctuation.bracket for `()` or `{}`
 @punctuation.special for symbols with special meaning like `{}` in string interpolation.
