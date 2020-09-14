@@ -2,7 +2,7 @@
 ; Copyright (c) 2016 Max Brunsfeld
 
 ; Reset highlighing in f-string interpolations
-(interpolation) @Normal
+(interpolation) @none
 
 ;; Identifier naming conventions
 ((identifier) @type
