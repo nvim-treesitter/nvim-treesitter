@@ -40,9 +40,8 @@
 (let_binding pattern: (value_pattern) @variable)
 (let_binding pattern: (tuple_pattern (value_pattern) @variable))
 
-(let_binding (parameter (label_name) @parameter))
-(let_binding (parameter (value_pattern) @parameter))
-(let_binding (parameter (typed_pattern (value_pattern) @parameter)))
+(value_pattern) @parameter
+(parameter (label_name) @parameter)
 (function_type (typed_label (label_name) @parameter))
 
 ; Application
@@ -76,7 +75,7 @@
 
 (boolean) @constant
 
-(number) @number
+[(number) (signed_number)] @number
 
 [(string) (character)] @string
 
@@ -106,6 +105,8 @@
 
 (infix_operator ["&" "+" "-" "=" ">" "|" "%"] @operator)
 
+(signed_number ["+" "-"] @operator)
+
 ["*" "#" "::" "<-"] @operator
 
 ; Keywords
@@ -126,6 +127,7 @@
 ["include" "open"] @include
 
 ["for" "to" "downto" "while" "do" "done"] @repeat
+
 ; Punctuation
 ;------------
 
@@ -144,7 +146,7 @@
 (object_type ["<" ">"] @punctuation.bracket)
 
 [
-  "," "." ";" ":" "=" "|" "~" "?" "!" ">" "&"
+  "," "." ";" ":" "=" "|" "~" "?" "+" "-" "!" ">" "&"
   "->" ";;" ":>" "+=" ":=" ".."
 ] @punctuation.delimiter
 
