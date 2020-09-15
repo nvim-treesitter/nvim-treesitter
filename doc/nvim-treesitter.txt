@@ -254,6 +254,9 @@ Supported options:
     No default mapping
   - list_definitions: list all definitions from the current file.
     Defaults to `gnD`.
+  - list_definitions_toc: list all definitions from the current file like a
+    table of contents (similar to the one you see when pressing |gO| in help files).
+    Defaults to `gO`.
   - goto_next_usage: go to next usage of identifier under the cursor.
     Defaults to `<a-*>`.
   - goto_previous_usage: go to previous usage of identifier.
@@ -268,6 +271,7 @@ Supported options:
         keymaps = {
           goto_definition = "gnd",
           list_definitions = "gnD",
+	  list_definitions_toc = "gO",
           goto_next_usage = "<a-*>",
           goto_previous_usage = "<a-#>",
         },

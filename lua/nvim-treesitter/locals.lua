@@ -34,18 +34,32 @@ function M.get_definition_id(scope, node_text)
   return table.concat({ 'k', node_text or '', scope:range() }, '_')
 end
 
+--- Get definitions of bufnr (unique and sorted by order of appearance).
 function M.get_definitions(bufnr)
   local locals = M.get_locals(bufnr)
 
-  local defs = {}
-
+  -- Make sure the nodes are unique.
+  local nodes_set = {}
   for _, loc in ipairs(locals) do
     if loc.definition then
-      table.insert(defs, loc.definition)
+      M.recurse_local_nodes(loc.definition, function(_, node, _, match)
+        -- lua doesn't compare tables by value,
+        -- use the value from byte count instead.
+        local _, _, start = node:start()
+        nodes_set[start] = {node = node, type = match or ""}
+      end)
     end
   end
 
-  return defs
+  -- Sort by order of appearance.
+  local definition_nodes = vim.tbl_values(nodes_set)
+  table.sort(definition_nodes, function (a, b)
+    local _, _, start_a = a.node:start()
+    local _, _, start_b = b.node:start()
+    return start_a < start_b
+  end)
+
+  return definition_nodes
 end
 
 function M.get_scopes(bufnr)
