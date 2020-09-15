@@ -6,6 +6,8 @@
 
 ;; Definitions
 
+(title) @definition
+
 (substitution_definition
   name: (substitution) @definition)
 
