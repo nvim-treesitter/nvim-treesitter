@@ -68,6 +68,10 @@ hlmap["text.title"] = "TSTitle"
 hlmap["text.literal"] = "TSLiteral"
 hlmap["text.uri"] = "TSURI"
 
+-- Tags
+hlmap["tag"] = "TSTag"
+hlmap["tag.delimiter"] = "TSTagDelimiter"
+
 hlmap["none"] = "TSNone"
 
 function M.attach(bufnr, lang)

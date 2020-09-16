@@ -164,6 +164,15 @@ Mainly for markup languages.
 @text.uri
 ```
 
+#### Tags
+
+Used for xml-like tags
+
+```
+@tag
+@tag.delimiter
+```
+
 ### Locals
 
 ```
