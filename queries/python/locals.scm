@@ -45,8 +45,7 @@
 
 ; Function defines function and scope
 ((function_definition
-  name: (identifier) @definition.function
-  body: (block (expression_statement (string) @definition.doc)?)) @scope
+  name: (identifier) @definition.function) @scope
  (#set! definition.function.scope "parent"))
 
 
