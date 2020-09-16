@@ -1,4 +1,4 @@
-(tag_name) @type
+(tag_name) @tag
 (erroneous_end_tag_name) @error
 (doctype) @constant
 (attribute_name) @property
@@ -13,4 +13,4 @@
  ">"
  "</"
  "/>"
- ] @punctuation.bracket
+ ] @tag.delimiter
