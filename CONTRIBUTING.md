@@ -159,6 +159,7 @@ Mainly for markup languages.
 ```
 
 ### Locals
+
 ```
 @definition for various definitions
 @definition.function
@@ -174,15 +175,7 @@ Mainly for markup languages.
 
 @definition.associated to determine the type of a variable
 @definition.doc for documentation adjacent to a definition. E.g.
-```
 
-```scheme
-  (comment)* @definition.doc
-    (method_declaration
-        name: (field_identifier) @definition.method)
-```
-
-```
 @scope
 @reference
 @constructor

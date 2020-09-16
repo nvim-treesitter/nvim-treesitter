@@ -1,11 +1,9 @@
 (
-    (comment)* @definition.doc
     (function_declaration
         name: (identifier) @definition.function) ;@function 
 )
 
 (
-    (comment)* @definition.doc
     (method_declaration
         name: (field_identifier) @definition.method); @method
 )
