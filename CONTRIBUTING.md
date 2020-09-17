@@ -49,18 +49,23 @@ Before going any further, we highly suggest that you [read more about tree-sitte
 Each query has an appropriate name, which is then used by modules to extract data from the syntax tree.
 For now two types of queries are used by `nvim-treesitter`:
 
-- `highlights.scm` : used for syntax highlighting, using the `highlight` module.
-- `locals.scm` : used to extract keyword definitions, scopes, references, etc, using the `locals` module.
+- `highlights.scm`: used for syntax highlighting, using the `highlight` module.
+- `locals.scm`: used to extract keyword definitions, scopes, references, etc, using the `locals` module.
+- `textobjects.scm`: used to define text objects.
+- `folds.scm`: used to define folds.
 
-For both of these types there is a *norm* you will have to follow so that features work fine.
+For these types there is a *norm* you will have to follow so that features work fine.
 Here are some global advices :
 
+- If your language is listed [here](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages),
+  you can install the [playground plugin](https://github.com/nvim-treesitter/playground).
 - If your language is listed [here](https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries),
   you can debug and experiment with your queries there.
 - If not, you should consider installing the [tree-sitter cli](https://github.com/tree-sitter/tree-sitter/tree/master/cli),
   you should then be able to open a local playground using `tree-sitter build-wasm && tree-sitter web-ui` within the
   parsers repo.
-- An Example of somewhat complex highlight queries can be found in queries/ruby/highlights.scm (Maintained by @TravonteD)
+- Examples of queries can be found in [queries/](queries/)
+- Queries in the bottom will override queries that are above of them.
 
 ### Highlights
 
@@ -139,6 +144,7 @@ are optional and will not have any effect for now.
 ```
 
 #### Variables
+
 ```
 @variable
 @variable.builtin
@@ -213,6 +219,34 @@ Possible scope values are:
 - `parent`: The definition is valid in the containing scope and one more scope above that scope
 - `global`: The definition is valid in the root scope
 - `local`: The definition is valid in the containing scope. This is the default behavior
+
+### Text objects
+
+You can define text objects based on nodes of the grammar by adding queries in `textobjects.scm`.
+Each capture group can be declared as `inner` or `outer`.
+
+```
+@function.inner
+@function.outer
+@class.inner
+@class.outer
+@conditional.inner
+@conditional.outer
+@loop.inner
+@loop.outer
+@call.inner
+@call.outer
+@block.inner
+@block.outer
+```
+
+Some nodes only have one type:
+
+```
+@comment.outer
+@parameter.inner
+@statement.outer
+```
 
 ### Folds
 
