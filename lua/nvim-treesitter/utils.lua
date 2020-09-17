@@ -70,10 +70,11 @@ end
 -- with Nix, since the "/nix/store" is read-only.
 function M.get_parser_install_dir()
   local package_path = M.get_package_path()
+  local package_path_parser_dir = M.join_path(package_path, "parser")
 
   -- If package_path is read/write, use that
-  if luv.fs_access(package_path, 'RW') then
-    return package_path
+  if luv.fs_access(package_path_parser_dir, 'RW') then
+    return package_path_parser_dir
   end
 
   local site_dir = M.get_site_dir()
