@@ -65,7 +65,7 @@ Here are some global advices :
   you should then be able to open a local playground using `tree-sitter build-wasm && tree-sitter web-ui` within the
   parsers repo.
 - Examples of queries can be found in [queries/](queries/)
-- Queries in the bottom will override queries that are above of them.
+- Matches in the bottom will override queries that are above of them.
 
 ### Highlights
 
