@@ -45,8 +45,8 @@
 
 ; Function calls
 
-((identifier) @include
- (#vim-match? @include "^(require|require_relative|load)$"))
+((identifier) @function
+ (#eq? @function "require"))
 
 "defined?" @function
 
