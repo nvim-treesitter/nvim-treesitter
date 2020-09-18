@@ -11,7 +11,9 @@ let g:loaded_nvim_treesitter = 1
 
 lua require'nvim-treesitter'.setup()
 
-highlight default link TSError Normal
+highlight default TSNone term=none cterm=none gui=none guifg=none guibg=none
+
+highlight default link TSError TSNone
 
 highlight default link TSPunctDelimiter Delimiter
 highlight default link TSPunctBracket Delimiter
@@ -52,7 +54,7 @@ highlight default link TSTypeBuiltin Type
 highlight default link TSStructure Structure
 highlight default link TSInclude Include
 
-highlight default link TSVariable Normal
+highlight default link TSVariable TSNone
 highlight default link TSVariableBuiltin Special
 
 highlight default link TSDefinitionUsage Visual
@@ -60,7 +62,7 @@ highlight default link TSDefinition Search
 
 highlight default link TSCurrentScope CursorLine
 
-highlight default link TSText Normal
+highlight default link TSText TSNone
 highlight default TSStrong term=bold cterm=bold gui=bold
 highlight default TSEmphasis term=italic cterm=italic gui=italic
 highlight default TSUnderline term=underline cterm=underline gui=underline
@@ -70,5 +72,3 @@ highlight default link TSURI Underlined
 
 highlight default link TSTag Label
 highlight default link TSTagDelimiter Delimiter
-
-highlight default TSNone term=none cterm=none gui=none guifg=none guibg=none
