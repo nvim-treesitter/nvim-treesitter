@@ -8,14 +8,13 @@
 
 ; Annotations
 (annotation
-  name: (identifier) @attribute)
+  name: (identifier) @annotation)
 (marker_annotation
-  name: (identifier) @attribute)
+  name: (identifier) @annotation)
 
 ; Operators and Tokens
 
-; FIXME: nodes not accessible and ranges
-; currently incorrect
+; FIXME: nodes not accessible and ranges currently incorrect
 ; (template_substitution
 ;   "${" @punctuation.special
 ;   "}" @punctuation.special) @embedded
@@ -103,6 +102,8 @@
 ((identifier) @type
  (#match? @type "^[A-Z]"))
 
+("Function" @type)
+
 ; properties
 ; TODO: add method/call_expression to grammar and
 ; distinguish method call from variable access
@@ -151,9 +152,9 @@
 
 ; Reserved words (cannot be used as identifiers)
 ; TODO: "rethrow" @keyword
-
 [
     ; "assert"
+    (case_builtin)
     "class"
     "enum"
     "extends"
@@ -178,7 +179,6 @@
     "dynamic"
     "external"
     "factory"
-    "Function"
     "get"
     "implements"
     "interface"
