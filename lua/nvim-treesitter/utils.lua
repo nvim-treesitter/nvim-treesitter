@@ -33,9 +33,9 @@ function M.generate_join(separator)
   end
 end
 
-M.join_path = M.generate_join(M.get_path_sep())
+local join_path = M.generate_join(M.get_path_sep())
 
-M.join_space = M.generate_join(" ")
+local join_space = M.generate_join(" ")
 
 function M.get_package_path()
   -- Path to this source file, removing the leading '@'
@@ -54,14 +54,14 @@ function M.get_cache_dir()
     return '/tmp'
   end
 
-  return nil, M.join_space('Invalid cache rights,', fn.stdpath('data'), 'or /tmp should be read/write')
+  return nil, join_space('Invalid cache rights,', fn.stdpath('data'), 'or /tmp should be read/write')
 end
 
 -- Returns $XDG_DATA_HOME/nvim/site, but could use any directory that is in
 -- runtimepath
 function M.get_site_dir()
   local path_sep = M.get_path_sep()
-  return M.join_path(fn.stdpath('data'), path_sep, 'site')
+  return join_path(fn.stdpath('data'), path_sep, 'site')
 end
 
 -- Try the package dir of the nvim-treesitter plugin first, followed by the
@@ -70,7 +70,7 @@ end
 -- with Nix, since the "/nix/store" is read-only.
 function M.get_parser_install_dir()
   local package_path = M.get_package_path()
-  local package_path_parser_dir = M.join_path(package_path, "parser")
+  local package_path_parser_dir = join_path(package_path, "parser")
 
   -- If package_path is read/write, use that
   if luv.fs_access(package_path_parser_dir, 'RW') then
@@ -79,13 +79,13 @@ function M.get_parser_install_dir()
 
   local site_dir = M.get_site_dir()
   local path_sep = M.get_path_sep()
-  local parser_dir = M.join_path(site_dir, path_sep, 'parser')
+  local parser_dir = join_path(site_dir, path_sep, 'parser')
 
   -- Try creating and using parser_dir if it doesn't exist
   if not luv.fs_stat(parser_dir) then
     local ok, error = pcall(vim.fn.mkdir, parser_dir, "p", "0755")
     if not ok then
-      return nil, M.join_space('Couldn\'t create parser dir', parser_dir, ':', error)
+      return nil, join_space('Couldn\'t create parser dir', parser_dir, ':', error)
     end
 
     return parser_dir
@@ -98,7 +98,7 @@ function M.get_parser_install_dir()
 
   -- package_path isn't read/write, parser_dir exists but isn't read/write
   -- either, give up
-  return nil, M.join_space('Invalid cache rights,', package_path, 'or', parser_dir, 'should be read/write')
+  return nil, join_space('Invalid cache rights,', package_path, 'or', parser_dir, 'should be read/write')
 end
 
 -- Gets a property at path
