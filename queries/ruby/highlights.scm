@@ -39,6 +39,7 @@
  "while"
  ] @repeat
 
+(constant) @constant
 
 ((identifier) @keyword
  (#vim-match? @keyword "^(private|protected|public)$"))
@@ -52,7 +53,7 @@
 
 (call
   [
-   receiver: (constant) @constant
+   receiver: (constant) @type
    method: [
             (identifier)
             (constant)
@@ -61,7 +62,7 @@
 
 (method_call
   [
-   receiver: (constant) @constant
+   receiver: (constant) @type
    method: [
             (identifier)
             (constant)
@@ -85,6 +86,7 @@
 
 (class name: (constant) @type)
 (module name: (constant) @type)
+(superclass (constant) @type)
 
 ; Identifiers
 [
@@ -97,8 +99,6 @@
 
 ((constant) @constant.macro
  (#vim-match? @constant.macro "^[A-Z\\d_]+$"))
-
-(constant) @constant
 
 [
  (self)
