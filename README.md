@@ -483,6 +483,10 @@ If everything is okay, then it might be an actual error.
 
 In both cases, feel free to [open an issue here](https://github.com/nvim-treesitter/nvim-treesitter/issues/new/choose).
 
+## I get `module 'vim.treesitter.query' not found`
+
+Make sure you have the latest nightly version of Neovim.
+
 ## I get `Error detected while processing .../plugin/nvim-treesitter.vim` every time I open Neovim
 
 This is probably due to a change in a parser's grammar or its queries.
