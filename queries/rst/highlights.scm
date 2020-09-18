@@ -49,7 +49,7 @@
   name: (label) @constant)
 
 (target
-  name: (reference)? @constant
+  name: (name)? @constant
   link: (_) @text.literal)
 
 ;; Lists
@@ -106,7 +106,7 @@
 ] @text.literal
 
 [
-  (target)
+  (inline_target)
   (substitution_reference)
   (footnote_reference)
   (citation_reference)
