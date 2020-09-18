@@ -104,7 +104,7 @@ local function select_mv_cmd(compile_location, parser_lib_name)
     return {
       cmd = 'cmd',
       opts = {
-        args = { '/C', 'move', compile_location..'\\parser.so', parser_lib_name },
+        args = { '/C', 'move', '/Y', compile_location..'\\parser.so', parser_lib_name },
       }
     }
   else
