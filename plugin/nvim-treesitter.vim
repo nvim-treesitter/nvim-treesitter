@@ -68,4 +68,7 @@ highlight default link TSTitle Title
 highlight default link TSLiteral String
 highlight default link TSURI Underlined
 
+highlight default link TSTag Label
+highlight default link TSTagDelimiter Delimiter
+
 highlight default TSNone term=none cterm=none gui=none guifg=none guibg=none
