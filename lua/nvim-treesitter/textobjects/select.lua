@@ -9,7 +9,7 @@ local ts_utils = require'nvim-treesitter.ts_utils'
 local M = {}
 
 function M.select_textobject(query_string)
-  local bufnr, textobject = shared.textobject_at_point(query_string)
+  local bufnr, textobject = shared.textobject_at_point(query_string, 'trynext')
   if textobject then
     ts_utils.update_selection(bufnr, textobject)
   end

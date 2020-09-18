@@ -7,7 +7,10 @@ local ts_utils = require'nvim-treesitter.ts_utils'
 
 local M = {}
 
-function M.textobject_at_point(query_string)
+--- Get textobject at current location of the cursor.
+-- @param trynext if true, try to select the next textobject
+-- if there isn't one at the current position.
+function M.textobject_at_point(query_string, trynext)
   local bufnr = vim.api.nvim_get_current_buf()
   local lang = parsers.get_buf_lang(bufnr)
   if not lang then return end
@@ -35,11 +38,28 @@ function M.textobject_at_point(query_string)
     end
   end
 
+  if trynext then
+    -- Sort by order of appearance
+    table.sort(matches, function (a, b)
+      local _, _, start_a = a.node:start()
+      local _, _, start_b = b.node:start()
+      return start_a < start_b
+    end)
+  end
+
   local match_length
   local smallest_range
   local earliest_start
+  local first_seen
 
-  for _, m in pairs(matches) do
+  for _, m in ipairs(matches) do
+    local rs, cs, _ = m.node:start()
+    if trynext and not first_seen and rs >= row and cs >= col then
+      -- Mark the the first seem text object that follows
+      -- to the current position of the cursor.
+      first_seen = m
+    end
+
     if m.node and ts_utils.is_in_node_range(m.node, row, col) then
       local length = ts_utils.node_length(m.node)
       if not match_length or length < match_length then
@@ -61,13 +81,14 @@ function M.textobject_at_point(query_string)
     end
   end
 
-  if smallest_range then
-    if smallest_range.start then
-      local start_range = {smallest_range.start.node:range()}
-      local node_range = {smallest_range.node:range()}
-      return bufnr, {start_range[1], start_range[2], node_range[3], node_range[4]}, smallest_range.node
+  local range = smallest_range or first_seen
+  if range then
+    if range.start then
+      local start_range = {range.start.node:range()}
+      local node_range = {range.node:range()}
+      return bufnr, {start_range[1], start_range[2], node_range[3], node_range[4]}, range.node
     else
-      return bufnr, {smallest_range.node:range()}, smallest_range.node
+      return bufnr, {range.node:range()}, range.node
     end
   end
 end
