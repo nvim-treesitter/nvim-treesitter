@@ -5,7 +5,6 @@
   body: (_) @scope)
 (enum_declaration
   body: (_) @scope)
-(method_declaration) @scope ; whole method_declaration because arguments
 (lambda_expression) @scope
 (enhanced_for_statement) @scope
 
