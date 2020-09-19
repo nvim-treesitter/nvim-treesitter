@@ -23,4 +23,7 @@
 (jsx_self_closing_element ((identifier) @type
  (#match? @type "^[A-Z]")))
 
+(variable_declarator ((identifier) @type
+ (#match? @type "^[A-Z]")))
+
 (jsx_text) @none
