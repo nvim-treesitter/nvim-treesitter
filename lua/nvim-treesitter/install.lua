@@ -8,6 +8,8 @@ local info = require'nvim-treesitter.info'
 
 local M = {}
 
+M.compilers = { vim.fn.getenv('CC'), "cc", "gcc", "clang" }
+
 function M.iter_cmd(cmd_list, i, lang, success_message)
   if i == #cmd_list + 1 then return print(success_message) end
 
@@ -130,10 +132,11 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync)
   local compile_location = cache_folder..path_sep..(repo.location or project_name)
   local parser_lib_name = install_folder..path_sep..lang..".so"
 
-  local compilers = { "cc", "gcc", "clang" }
-  local cc = select_executable(compilers)
+  local cc = select_executable(M.compilers)
   if not cc then
-    api.nvim_err_writeln('No C compiler found! "'..table.concat(compilers, '", "')..'" are not executable.')
+    api.nvim_err_writeln('No C compiler found! "'
+                       ..table.concat(vim.tbl_filter(function(c) return type(c) == 'string' end, M.compilers), '", "')
+                       ..'" are not executable.')
     return
   end
 
