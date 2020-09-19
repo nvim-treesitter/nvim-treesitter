@@ -52,7 +52,9 @@ local function iter_cmd_sync(cmd_list)
     local ret = vim.fn.system(get_command(cmd))
     if vim.v.shell_error ~= 0 then
       print(ret)
-      api.nvim_err_writeln((cmd.err..'\n' or '').."Failed to execute the following command:\n"..vim.inspect(cmd))
+      api.nvim_err_writeln((cmd.err and cmd.err..'\n' or '')
+                          .."Failed to execute the following command:\n"
+                          ..vim.inspect(cmd))
       return false
     end
 
