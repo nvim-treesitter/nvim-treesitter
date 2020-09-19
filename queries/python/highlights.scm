@@ -5,7 +5,7 @@
 (identifier) @variable
 
 ; Reset highlighing in f-string interpolations
-(interpolation) @none
+(interpolation) @Normal
 
 ;; Identifier naming conventions
 ((identifier) @type
