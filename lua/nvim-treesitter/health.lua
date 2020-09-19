@@ -34,7 +34,13 @@ local function install_health()
 end
 
 local function query_health(lang, query_group)
-  if not queries.get_query(lang, query_group) then
+  local ok, found_query = pcall(queries.get_query, lang, query_group)
+  if not ok then
+    health_error("Error in `"..query_group..".scm` query found for "..lang..'\n'..found_query, {
+      "Try `:TSUpdate "..lang.."` (queries might have been adapted for a upstream parser change)",
+      "Try to find the syntax error/invalid node type in above file."
+    })
+  elseif not found_query then
     health_warn("No `"..query_group..".scm` query found for " .. lang, {
       "Open an issue at https://github.com/nvim-treesitter/nvim-treesitter"
     })
