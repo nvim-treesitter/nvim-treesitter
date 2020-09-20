@@ -7,17 +7,6 @@ local caching = require'nvim-treesitter.caching'
 
 local M = {}
 
-local function has_some_textobject_mapping(lang)
-  for _, v in pairs(M.get_module('textobjects.select').keymaps) do
-    if type(v) == 'table' then
-      if v[lang] then
-        return true
-      end
-    end
-  end
-  return false
-end
-
 local config = {
   modules = {},
   ensure_installed = {},
@@ -47,35 +36,6 @@ local builtin_modules = {
     },
     is_supported = queries.has_locals
   },
-  textobjects = {
-    select = {
-      module_path = 'nvim-treesitter.textobjects.select',
-      enable = false,
-      disable = {},
-      is_supported = function(lang)
-        return queries.has_textobjects(lang) or has_some_textobject_mapping(lang)
-      end,
-      keymaps = {},
-    },
-    move = {
-      module_path = 'nvim-treesitter.textobjects.move',
-      enable = false,
-      disable = {},
-      is_supported = queries.has_textobjects,
-      goto_next_start = {},
-      goto_next_end = {},
-      goto_previous_start = {},
-      goto_previous_end = {},
-    },
-    swap = {
-      module_path = 'nvim-treesitter.textobjects.swap',
-      enable = false,
-      disable = {},
-      is_supported = queries.has_textobjects,
-      swap_next = {},
-      swap_previous = {},
-    },
-  }
 }
 
 local attached_buffers_by_module = caching.create_buffer_cache()
