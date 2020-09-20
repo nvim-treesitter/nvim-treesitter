@@ -49,9 +49,6 @@
 
 ; Function calls
 
-((identifier) @include
- (#vim-match? @include "^(require|require_relative|load)$"))
-
 "defined?" @function
 
 (call
@@ -71,6 +68,11 @@
             (constant)
             ] @function
    ])
+
+(program
+ (method_call
+  (identifier) @include)
+ (#vim-match? @include "^(require|require_relative|load)$"))
 
 ; Function definitions
 
