@@ -8,7 +8,7 @@
 
 (
   (type_constructor) @type.builtin
-  (#contains? @type.builtin "int" "char" "bytes" "string" "float" "bool" "unit" "exn" "array" "list" "option" "int32" "int64" "nativeint" "format6" "lazy_t")
+  (#match? @type.builtin "^(int|char|bytes|string|float|bool|unit|exn|array|list|option|int32|int64|nativeint|format6|lazy_t)$")
 )
 
 [(class_name) (class_type_name) (type_constructor)] @type
@@ -38,8 +38,6 @@
 [(value_name) (type_variable)] @variable
 
 (value_pattern) @parameter
-(parameter (label_name) @parameter)
-(function_type (typed_label (label_name) @parameter))
 
 ; Application
 ;------------
