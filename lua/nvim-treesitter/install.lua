@@ -147,7 +147,14 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync)
       info = 'Downloading...',
       err = 'Error during download, please verify your internet connection',
       opts = {
-        args = { 'clone', '--single-branch', '--branch', 'master', '--depth', '1', repo.url, project_name },
+        args = {
+          'clone',
+          '--single-branch',
+          '--branch', repo.branch or 'master',
+          '--depth', '1',
+          repo.url,
+          project_name
+        },
         cwd = cache_folder,
       },
     },
