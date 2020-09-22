@@ -13,11 +13,15 @@
 (type_identifier) @type
 (primitive_type) @type.builtin
 (field_identifier) @field
-
+(mod_item
+ name: (identifier) @namespace)
 
 ; Function calls
 (call_expression
   function: (identifier) @function)
+(call_expression
+  function: (scoped_identifier 
+              (identifier) @function .))
 (call_expression
   function: (field_expression
     field: (field_identifier) @function))
@@ -36,6 +40,16 @@
  (#match? @constant "^[A-Z]"))
 
 ; Assume that uppercase names in paths are types
+(scoped_identifier
+  path: (identifier) @namespace)
+(scoped_identifier
+ (scoped_identifier
+  name: (identifier) @namespace))
+(scoped_type_identifier
+  path: (identifier) @namespace)
+(scoped_type_identifier
+ (scoped_identifier
+  name: (identifier) @namespace))
 ((scoped_identifier
   path: (identifier) @type)
  (#match? @type "^[A-Z]"))
@@ -43,6 +57,13 @@
     name: (identifier) @type)
  (#match? @type "^[A-Z]"))
 
+(crate) @namespace
+(scoped_use_list
+  path: (identifier) @namespace)
+(scoped_use_list
+  path: (scoped_identifier
+            (identifier) @namespace))
+(use_list (scoped_identifier (identifier) @namespace . (_)))
 (use_list (identifier) @type (#match? @type "^[A-Z]"))
 (use_as_clause alias: (identifier) @type (#match? @type "^[A-Z]"))
 
@@ -60,8 +81,10 @@
   (#eq? @type "derive"))
 
 (macro_invocation
-  macro: (identifier) @function.macro
-  "!" @function.macro)
+  macro: (identifier) @function.macro)
+(macro_invocation
+  macro: (scoped_identifier
+           (identifier) @function.macro .))
 
 ; Function definitions
 
@@ -100,6 +123,11 @@
 (self) @variable.builtin
 
 [
+ "use"
+ "mod"
+] @include
+
+[
 "break"
 "const"
 "default"
@@ -111,7 +139,6 @@
 "let"
 "macro_rules!"
 "match"
-"mod"
 "move"
 "pub"
 "ref"
@@ -124,7 +151,6 @@
 "unsafe"
 "async"
 "await"
-"use"
 "where"
 (mutable_specifier)
 (super)

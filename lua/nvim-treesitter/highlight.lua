@@ -30,6 +30,7 @@ hlmap["boolean"] = "TSBoolean"
 hlmap["float"] = "TSFloat"
 hlmap["annotation"] = "TSAnnotation"
 hlmap["attribute"] = "TSAttribute"
+hlmap["namespace"] = "TSNamespace"
 
 -- Functions
 hlmap["function"] = "TSFunction"
