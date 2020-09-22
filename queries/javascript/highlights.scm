@@ -90,6 +90,11 @@
   (rest_parameter
     (identifier) @parameter))
 
+; Variables
+;----------
+(namespace_import
+  (identifier) @namespace)
+
 ; Literals
 ;---------
 

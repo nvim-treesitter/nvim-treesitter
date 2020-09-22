@@ -28,14 +28,16 @@
   name: (scoped_identifier
     name: (identifier) @function))
 
-(namespace_identifier) @constant
 
 ((identifier) @type (#match? @type "^[A-Z]"))
 
+(namespace_identifier) @namespace
 ((namespace_identifier) @type
                         (#match? @type "^[A-Z]"))
 ((namespace_identifier) @constant
                         (#match? @constant "^[A-Z][A-Z_0-9]*$"))
+(namespace_definition
+  name: (identifier) @namespace)
 
 (destructor_name
   name: (_) @function)

@@ -140,7 +140,7 @@ are optional and will not have any effect for now.
 
 @type
 @type.builtin
-@structure
+@namespace for identifiers referring to namespaces
 @attribute for e.g. Python decorators
 ```
 

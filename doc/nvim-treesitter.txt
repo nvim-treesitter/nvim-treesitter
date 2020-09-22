@@ -570,9 +570,9 @@ For types.
                                                             *hl-TSTypeBuiltin*
 For builtin types (you guessed it, right ?).
 
-`TSStructure`
-                                                              *hl-TSStructure*
-This is left as an exercise for the reader.
+`TSNamespace`
+                                                              *hl-TSNamespace*
+For identifiers referring to modules and namespaces.
 
 `TSInclude`
                                                                 *hl-TSInclude*

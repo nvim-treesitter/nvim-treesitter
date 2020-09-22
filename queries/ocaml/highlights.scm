@@ -1,7 +1,7 @@
 ; Modules
 ;--------
 
-[(module_name) (module_type_name)] @structure
+[(module_name) (module_type_name)] @namespace
 
 ; Types
 ;------

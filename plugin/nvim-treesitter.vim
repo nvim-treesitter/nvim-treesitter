@@ -41,6 +41,7 @@ highlight default link TSProperty Identifier
 highlight default link TSConstructor Special
 highlight default link TSAnnotation PreProc
 highlight default link TSAttribute PreProc
+highlight default link TSNamespace Include
 
 highlight default link TSConditional Conditional
 highlight default link TSRepeat Repeat
@@ -53,7 +54,6 @@ highlight default link TSException Exception
 
 highlight default link TSType Type
 highlight default link TSTypeBuiltin Type
-highlight default link TSStructure Structure
 highlight default link TSInclude Include
 
 highlight default link TSVariable TSNone
