@@ -1,25 +1,25 @@
 (dotted_identifier_list) @string
 
 ; Methods
-
+; --------------------
 (function_type
   name: (identifier) @method)
 (super) @function
 
 ; Annotations
+; --------------------
 (annotation
   name: (identifier) @attribute)
 (marker_annotation
   name: (identifier) @attribute)
 
 ; Operators and Tokens
-
-; FIXME: nodes not accessible and ranges currently incorrect
-; (template_substitution
-;   "${" @punctuation.special
-;   "}" @punctuation.special) @embedded
-
-(template_substitution (identifier) @embedded)
+; --------------------
+(template_substitution
+  "$" @punctuation.special
+  "{" @punctuation.special
+  "}" @punctuation.special
+) @embedded
 
 [
  "@"
@@ -54,7 +54,7 @@
 ]  @punctuation.bracket
 
 ; Delimiters
-
+; --------------------
 [
   ";"
   "."
@@ -62,7 +62,7 @@
 ] @punctuation.delimiter
 
 ; Types
-
+; --------------------
 (class_definition
   name: (identifier) @type)
 (constructor_signature
@@ -92,7 +92,7 @@
 (type_identifier) @type
 
 ; Variables
-
+; --------------------
 ; var keyword
 (inferred_type) @keyword
 
@@ -100,7 +100,7 @@
 (final_builtin) @constant.builtin
 
 ((identifier) @type
- (#match? @type "^[A-Z]"))
+ (#match? @type "^_?[A-Z]"))
 
 ("Function" @type)
 
@@ -119,7 +119,7 @@
 (this) @variable.builtin
 
 ; Parameters
-
+; --------------------
 (formal_parameter
     name: (identifier) @parameter)
 
@@ -127,7 +127,7 @@
   (label (identifier) @parameter))
 
 ; Literals
-
+; --------------------
 [
     (hex_integer_literal)
     (decimal_integer_literal)
@@ -147,7 +147,7 @@
 (comment) @comment
 
 ; Keywords
-
+; --------------------
 ["import" "library" "export"] @include
 
 ; Reserved words (cannot be used as identifiers)
