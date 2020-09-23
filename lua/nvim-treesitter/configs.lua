@@ -223,6 +223,18 @@ local function recurse_modules(accumulator, root, path)
   end
 end
 
+-- Shows current configuration of all nvim-treesitter modules
+-- @param process_function function used as the `process` parameter
+--        for vim.inspect (https://github.com/kikito/inspect.lua#optionsprocess)
+local function config_info(process_function)
+  process_function = process_function or function(item, path)
+     if path[#path] == vim.inspect.METATABLE then return end
+     if path[#path] == "is_supported" then return end
+     return item
+  end
+  print(vim.inspect(config, {process = process_function}))
+end
+
 M.commands = {
   TSBufEnable = {
     run = enable_module,
@@ -250,6 +262,12 @@ M.commands = {
     args = {
       "-nargs=+",
       "-complete=custom,nvim_treesitter#available_modules",
+    },
+  },
+  TSConfigInfo = {
+    run = config_info,
+    args = {
+      "-nargs=0",
     },
   },
 }
