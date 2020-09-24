@@ -231,6 +231,7 @@ local function install(with_sync, ask_reinstall)
     for _, lang in ipairs(languages) do
       install_lang(lang, ask, cache_folder, install_folder, with_sync)
     end
+    print('Treesitter installation complete')
   end
 end
 
