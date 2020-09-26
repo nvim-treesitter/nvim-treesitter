@@ -12,6 +12,24 @@ local lockfile = {}
 
 M.compilers = { vim.fn.getenv('CC'), "cc", "gcc", "clang" }
 
+local started_commands = 0
+local finished_commands = 0
+local failed_commands = 0
+
+local function reset_progress_counter()
+  if started_commands ~= finished_commands then
+    return
+  end
+  started_commands = 0
+  finished_commands = 0
+  failed_commands = 0
+end
+
+local function get_job_status()
+  return "["..finished_commands.."/"..started_commands
+            ..(failed_commands > 0 and ", failed: "..failed_commands or "").."]"
+end
+
 local function get_revision(lang)
   if #lockfile == 0 then
     lockfile = vim.fn.json_decode(vim.fn.readfile(utils.join_paths(utils.get_package_path(), 'lockfile.json')))
@@ -42,16 +60,24 @@ local function select_rm_file_cmd(file, info_msg)
 end
 
 function M.iter_cmd(cmd_list, i, lang, success_message)
-  if i == #cmd_list + 1 then return print(success_message) end
+  if i == 1 then
+    started_commands = started_commands + 1
+  end
+  if i == #cmd_list + 1 then
+    finished_commands = finished_commands + 1
+    return print(get_job_status().." "..success_message)
+  end
 
   local attr = cmd_list[i]
-  if attr.info then print(attr.info) end
+  if attr.info then print(get_job_status().." "..attr.info) end
 
   local handle
 
   handle = luv.spawn(attr.cmd, attr.opts, vim.schedule_wrap(function(code)
     handle:close()
     if code ~= 0 then
+      failed_commands = failed_commands + 1
+      finished_commands = finished_commands + 1
       return api.nvim_err_writeln(attr.err or ("Failed to execute the following command:\n"..vim.inspect(attr)))
     end
     M.iter_cmd(cmd_list, i + 1, lang, success_message)
@@ -288,7 +314,6 @@ end
 
 local function install(with_sync, ask_reinstall)
   return function (...)
-
     if fn.executable('git') == 0 then
       return api.nvim_err_writeln('Git is required on your system to run this command')
     end
@@ -309,6 +334,10 @@ local function install(with_sync, ask_reinstall)
       ask = ask_reinstall
     end
 
+    if #languages > 1 then
+      reset_progress_counter()
+    end
+
     for _, lang in ipairs(languages) do
       install_lang(lang, ask, cache_folder, install_folder, with_sync)
     end
@@ -316,6 +345,7 @@ local function install(with_sync, ask_reinstall)
 end
 
 function M.update(lang)
+  reset_progress_counter()
   if lang then
     install(false, 'force')(lang)
   else
@@ -333,6 +363,7 @@ function M.uninstall(lang)
   end
 
   if lang == 'all' then
+    reset_progress_counter()
     local installed = info.installed_parsers()
     for _, lang in pairs(installed) do
       M.uninstall(lang)
@@ -371,7 +402,8 @@ function M.write_lockfile(verbose)
   if verbose then
     print(vim.inspect(lockfile))
   end
-  vim.fn.writefile(vim.fn.split(vim.fn.json_encode(lockfile), '\n'), utils.get_package_path().."/lockfile.json")
+  vim.fn.writefile(vim.fn.split(vim.fn.json_encode(lockfile), '\n'),
+                   utils.join_paths(utils.get_package_path(), "lockfile.json"))
 end
 
 M.ensure_installed = install(false, false)
