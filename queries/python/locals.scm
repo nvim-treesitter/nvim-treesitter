@@ -61,7 +61,7 @@
 ;;; Loops
 ; not a scope!
 (for_statement
-  left: (variables
+  left: (left_hand_side
           (identifier) @definition.var))
 
 ; not a scope!
@@ -69,7 +69,7 @@
 
 ; for in list comprehension
 (for_in_clause
-  left: (variables
+  left: (left_hand_side
           (identifier) @definition.var))
 
 (dictionary_comprehension) @scope
