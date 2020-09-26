@@ -155,6 +155,8 @@
 [
     ; "assert"
     (case_builtin)
+    "extension"
+    "on"
     "class"
     "enum"
     "extends"
