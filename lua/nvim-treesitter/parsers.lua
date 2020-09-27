@@ -357,6 +357,10 @@ function M.available_parsers()
   return vim.tbl_keys(M.list)
 end
 
+function M.maintained_parsers()
+  return vim.tbl_filter(function(lang) return M.list[lang].maintainers end, M.available_parsers())
+end
+
 function M.get_parser_configs()
   return M.list
 end
