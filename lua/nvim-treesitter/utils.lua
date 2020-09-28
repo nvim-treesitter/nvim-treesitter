@@ -21,11 +21,6 @@ function M.get_path_sep()
   return fn.has('win32') == 1 and '\\' or '/'
 end
 
-function M.join_paths(...)
-  local sep = M.get_path_sep()
-  return table.concat({...}, sep)
-end
-
 -- Returns a function that joins the given arguments with separator. Arguments
 -- can't be nil. Example:
 --[[
@@ -38,7 +33,7 @@ function M.generate_join(separator)
   end
 end
 
-local join_path = M.generate_join(M.get_path_sep())
+M.join_path = M.generate_join(M.get_path_sep())
 
 local join_space = M.generate_join(" ")
 
@@ -66,7 +61,7 @@ end
 -- runtimepath
 function M.get_site_dir()
   local path_sep = M.get_path_sep()
-  return join_path(fn.stdpath('data'), path_sep, 'site')
+  return M.join_path(fn.stdpath('data'), path_sep, 'site')
 end
 
 -- Try the package dir of the nvim-treesitter plugin first, followed by the
@@ -75,7 +70,7 @@ end
 -- with Nix, since the "/nix/store" is read-only.
 function M.get_parser_install_dir()
   local package_path = M.get_package_path()
-  local package_path_parser_dir = join_path(package_path, "parser")
+  local package_path_parser_dir = M.join_path(package_path, "parser")
 
   -- If package_path is read/write, use that
   if luv.fs_access(package_path_parser_dir, 'RW') then
@@ -84,7 +79,7 @@ function M.get_parser_install_dir()
 
   local site_dir = M.get_site_dir()
   local path_sep = M.get_path_sep()
-  local parser_dir = join_path(site_dir, path_sep, 'parser')
+  local parser_dir = M.join_path(site_dir, path_sep, 'parser')
 
   -- Try creating and using parser_dir if it doesn't exist
   if not luv.fs_stat(parser_dir) then
