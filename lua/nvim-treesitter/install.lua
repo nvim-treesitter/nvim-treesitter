@@ -32,7 +32,7 @@ end
 
 local function get_revision(lang)
   if #lockfile == 0 then
-    lockfile = vim.fn.json_decode(vim.fn.readfile(utils.join_paths(utils.get_package_path(), 'lockfile.json')))
+    lockfile = vim.fn.json_decode(vim.fn.readfile(utils.join_path(utils.get_package_path(), 'lockfile.json')))
   end
   return (lockfile[lang] and lockfile[lang].revision)
 end
@@ -217,7 +217,7 @@ local function select_download_commands(repo, project_name, cache_folder, revisi
         },
       },
       select_rm_file_cmd(cache_folder..path_sep..project_name..".zip"),
-      select_mv_cmd(utils.join_paths(project_name..'-tmp', repo.url:match('[^/]-$')..'-'..revision),
+      select_mv_cmd(utils.join_path(project_name..'-tmp', repo.url:match('[^/]-$')..'-'..revision),
                     project_name,
                     cache_folder),
       select_install_rm_cmd(cache_folder, project_name..'-tmp')
@@ -403,7 +403,7 @@ function M.write_lockfile(verbose)
     print(vim.inspect(lockfile))
   end
   vim.fn.writefile(vim.fn.split(vim.fn.json_encode(lockfile), '\n'),
-                   utils.join_paths(utils.get_package_path(), "lockfile.json"))
+                   utils.join_path(utils.get_package_path(), "lockfile.json"))
 end
 
 M.ensure_installed = install(false, false)
