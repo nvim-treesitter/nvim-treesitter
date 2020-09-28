@@ -145,6 +145,14 @@ list.ocaml_interface = {
   filetype = 'ocamlinterface'
 }
 
+list.ocamllex = {
+  install_info = {
+    url = "https://github.com/atom-ocaml/tree-sitter-ocamllex",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  maintainers = {'@undu'},
+}
+
 list.swift = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-swift",
