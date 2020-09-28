@@ -45,16 +45,27 @@ function M.get_package_path()
   return fn.fnamemodify(source, ":p:h:h:h")
 end
 
+local function select_writable_directory(directories)
+  return vim.tbl_filter(function(d) return d ~= vim.NIL and luv.fs_access(d, 'RW') end, directories)[1]
+end
+
 function M.get_cache_dir()
-  local cache_dir = fn.stdpath('data')
+  local stdcache = vim.fn.stdpath('cache')
+  local cache_dir = select_writable_directory({stdcache})
+  if cache_dir then return cache_dir end
 
-  if luv.fs_access(cache_dir, 'RW') then
+  pcall(vim.fn.mkdir, stdcache, "p", "0755")
+  cache_dir = select_writable_directory({stdcache,
+                                         vim.fn.getenv('TMPDIR'),
+                                         vim.fn.getenv('TMP'),
+                                         '/tmp',
+                                         vim.fn.stdpath('data')})
+
+  if cache_dir then
     return cache_dir
-  elseif luv.fs_access('/tmp', 'RW') then
-    return '/tmp'
+  else
+    return nil, join_space('Invalid cache rights,', stdcache, 'or /tmp should be read/write')
   end
-
-  return nil, join_space('Invalid cache rights,', fn.stdpath('data'), 'or /tmp should be read/write')
 end
 
 -- Returns $XDG_DATA_HOME/nvim/site, but could use any directory that is in
