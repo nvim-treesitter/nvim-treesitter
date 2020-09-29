@@ -287,6 +287,15 @@ list.query = {
   maintainers = {"@steelsojka"},
 }
 
+list.codeql = {
+  install_info = {
+    url = "https://github.com/tree-sitter/tree-sitter-ql",
+    files = { "src/parser.c" }
+  },
+  readme_name = "Tree-sitter CodeQL",
+  maintainers = {"@pwntester"},
+}
+
 local M = {
   list = list
 }
