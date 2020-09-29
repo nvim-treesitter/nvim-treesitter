@@ -78,7 +78,7 @@ hlmap["tag.delimiter"] = "TSTagDelimiter"
 hlmap["none"] = "TSNone"
 
 function M.attach(bufnr, lang)
-  local lang = lang or parsers.get_buf_lang(bufnr)
+  local parser = parsers.get_parser(bufnr, lang)
   local config = configs.get_module('highlight')
 
   for k, v in pairs(config.custom_captures) do
@@ -88,7 +88,7 @@ function M.attach(bufnr, lang)
   local query = queries.get_query(lang, "highlights")
   if not query then return end
 
-  M.highlighters[bufnr] = ts.highlighter.new(bufnr, lang, query)
+  M.highlighters[bufnr] = ts.highlighter.new(parser, query)
 end
 
 function M.detach(bufnr)
