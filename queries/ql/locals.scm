@@ -1,26 +1,26 @@
-(classlessPredicate
-  name: (predicateName) @name) @definition.function
+((classlessPredicate
+  name: (predicateName)) @definition.function)
 
-(memberPredicate
-  name: (predicateName) @name) @definition.method
+((memberPredicate
+  name: (predicateName)) @definition.method)
 
-(aritylessPredicateExpr
-  name: (literalId) @name) @reference.call
+((aritylessPredicateExpr
+  name: (literalId)) @reference.call)
 
-(module
-  name: (moduleName) @name) @definition.module
+((module
+  name: (moduleName)) @definition.module)
 
-(dataclass
-  name: (className) @name) @definition.class
+((dataclass
+  name: (className)) @definition.class)
 
-(datatype
-  name: (className) @name) @definition.class
+((datatype
+  name: (className)) @definition.class)
 
-(datatypeBranch
-  name: (className) @name) @definition.class
+((datatypeBranch
+  name: (className)) @definition.class)
 
-(qualifiedRhs
-  name: (predicateName) @name) @reference.call
+((qualifiedRhs
+  name: (predicateName)) @reference.call)
 
-(typeExpr
-  name: (className) @name) @reference.type
+((typeExpr
+  name: (className)) @reference.type)
