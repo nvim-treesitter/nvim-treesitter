@@ -261,6 +261,14 @@ list.fennel = {
   maintainers = {'@TravonteD'},
 }
 
+list.ql = {
+  install_info = {
+    url = "https://github.com/tree-sitter/tree-sitter-ql",
+    files = { "src/parser.c" },
+  },
+  maintainers = {'@pwntester'},
+}
+
 -- Parsers for injections
 list.regex = {
   install_info = {
