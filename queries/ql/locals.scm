@@ -11,7 +11,7 @@
 ; DEFINITIONS
 
 ; module
-(module name: (moduleName) @definition.module)
+(module name: (moduleName) @definition.namespace)
 
 ; classes
 (dataclass name: (className) @definition.class)
