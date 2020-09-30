@@ -1,49 +1,67 @@
 [
-  "and"
-  "any"
   "as"
   "asc"
-  "avg"
   "by"
   "class"
-  "concat"
-  "count"
   "desc"
-  "else"
-  "exists"
   "extends"
   "forall"
   "forex"
   "from"
-  "if"
   "implies"
-  "import"
   "in"
-  "instanceof"
-  "max"
-  "min"
   "module"
   "newtype"
-  "not"
-  "or"
   "order"
-  "rank"
   "select"
-  "strictconcat"
-  "strictcount"
-  "strictsum"
-  "sum"
-  "then"
   "where"
 
-  (false)
   (predicate)
   (result)
   (specialId)
-  (super)
-  (this)
-  (true)
 ] @keyword
+
+[
+  "and"
+  "not"
+  "or"
+] @keyword.operator
+
+[
+  "avg"
+  "any"
+  "count"
+  "concat"
+  "exists"
+  "max"
+  "min"
+  "instanceof"
+  "rank"
+  "sum"
+  "strictconcat"
+  "strictcount"
+  "strictsum"
+] @function.builtin
+
+[
+  "import"
+] @include 
+
+[
+  "if"
+  "then"
+  "else"
+] @conditional
+
+[
+  (true)
+  (false)
+] @boolean
+
+[
+  (this)
+  (super)
+] @variable.builtin
 
 [
   "boolean"
@@ -89,7 +107,7 @@
 (varName) @variable
 
 (integer) @number
-(float) @number
+(float) @float
 
 (string) @string
 
