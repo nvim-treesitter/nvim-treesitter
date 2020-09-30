@@ -14,7 +14,7 @@
 (module name: (moduleName) @definition.namespace)
 
 ; classes
-(dataclass name: (className) @definition.class)
+(dataclass name: (className) @definition.type)
 (datatype name: (className) @definition.type)
 
 ; predicates
