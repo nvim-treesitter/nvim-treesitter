@@ -104,7 +104,6 @@ All modules are disabled by default,
 so you'll need to activate them by putting this in your `init.vim` file:
 
 ```lua
-lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "all",     -- one of "all", "language", or a list of languages
   highlight = {
@@ -112,7 +111,6 @@ require'nvim-treesitter.configs'.setup {
     disable = { "c", "rust" },  -- list of language that will be disabled
   },
 }
-EOF
 ```
 
 Check [`:h nvim-treesitter-modules`](doc/nvim-treesitter.txt)
@@ -125,7 +123,6 @@ for a list of available modules and its options.
 Consistent syntax highlighting.
 
 ```lua
-lua <<EOF
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
@@ -135,7 +132,6 @@ require'nvim-treesitter.configs'.setup {
     },
   },
 }
-EOF
 ```
 
 ## Incremental selection
@@ -143,7 +139,6 @@ EOF
 Incremental selection based on the named nodes from the grammar.
 
 ```lua
-lua <<EOF
 require'nvim-treesitter.configs'.setup {
   incremental_selection = {
     enable = true,
@@ -155,7 +150,6 @@ require'nvim-treesitter.configs'.setup {
     },
   },
 }
-EOF
 ```
 
 # External modules
