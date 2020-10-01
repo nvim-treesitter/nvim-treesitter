@@ -81,14 +81,19 @@ function M.attach(bufnr, lang)
   local parser = parsers.get_parser(bufnr, lang)
   local config = configs.get_module('highlight')
 
-  for k, v in pairs(config.custom_captures) do
-    hlmap[k] = v
+  if config.use_languagetree then
+    local ltree = require'nvim-treesitter.languagetree'
+    ltree.new(bufnr, lang)
+  else
+    for k, v in pairs(config.custom_captures) do
+      hlmap[k] = v
+    end
+
+    local query = queries.get_query(lang, "highlights")
+    if not query then return end
+
+    M.highlighters[bufnr] = ts.highlighter.new(parser, query)
   end
-
-  local query = queries.get_query(lang, "highlights")
-  if not query then return end
-
-  M.highlighters[bufnr] = ts.highlighter.new(parser, query)
 end
 
 function M.detach(bufnr)
