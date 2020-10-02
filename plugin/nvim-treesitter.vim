@@ -11,7 +11,7 @@ let g:loaded_nvim_treesitter = 1
 
 lua require'nvim-treesitter'.setup()
 
-highlight default TSNone term=none cterm=none gui=none guifg=none guibg=none
+highlight default TSNone term=NONE cterm=NONE gui=NONE
 
 highlight default link TSError TSNone
 

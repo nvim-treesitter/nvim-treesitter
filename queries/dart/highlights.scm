@@ -19,7 +19,7 @@
   "$" @punctuation.special
   "{" @punctuation.special
   "}" @punctuation.special
-) @embedded
+) @none
 
 [
  "@"
