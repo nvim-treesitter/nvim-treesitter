@@ -162,7 +162,8 @@ EOF
 
 Other modules can be installed as plugins.
 
-- [refactor](https://github.com/nvim-treesitter/refactor) - Refactoring and definition modules
+- [refactor](https://github.com/nvim-treesitter/nvim-treesitter-refactor) - Refactoring and definition modules
+- [textobjects](https://github.com/nvim-treesitter/nvim-treesitter-refactor) - Textobjects defined by tree-sitter queries
 - [playground](https://github.com/nvim-treesitter/playground) - Treesitter integrated playground
 
 # Extra features
