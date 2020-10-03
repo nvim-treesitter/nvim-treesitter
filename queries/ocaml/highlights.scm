@@ -72,7 +72,9 @@
 
 [(number) (signed_number)] @number
 
-[(string) (character)] @string
+(character) @character
+
+(string) @string
 
 (quoted_string "{" @string "}" @string) @string
 
