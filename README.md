@@ -118,7 +118,7 @@ EOF
 Check [`:h nvim-treesitter-modules`](doc/nvim-treesitter.txt)
 for a list of available modules and its options.
 
-# Available Modules
+# Available modules
 
 ## Highlight
 
@@ -152,80 +152,6 @@ require'nvim-treesitter.configs'.setup {
       node_incremental = "grn",
       scope_incremental = "grc",
       node_decremental = "grm",
-    },
-  },
-}
-EOF
-```
-
-## Refactor: highlight definitions
-
-Highlights definition and usages of the current symbol under the cursor.
-
-```lua
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  refactor = {
-    highlight_definitions = { enable = true },
-  },
-}
-EOF
-```
-
-## Refactor: highlight current scope
-
-Highlights the block from the current scope where the cursor is.
-
-```lua
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  refactor = {
-    highlight_current_scope = { enable = true },
-  },
-}
-EOF
-```
-
-## Refactor: smart rename
-
-Renames the symbol under the cursor within the current scope (and current file).
-
-```lua
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  refactor = {
-    smart_rename = {
-      enable = true,
-      keymaps = {
-        smart_rename = "grr",
-      },
-    },
-  },
-}
-EOF
-```
-
-## Refactor: navigation
-
-Provides "go to definition" for the symbol under the cursor,
-and lists the definitions from the current file. If you use
-`goto_definition_lsp_fallback` instead of `goto_definition` in the config below 
-`vim.lsp.buf.definition` is used if nvim-treesitter can not resolve the variable.
-`goto_next_usage`/`goto_previous_usage` go to the next usage of the identifier under the cursor.
-
-
-```lua
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  refactor = {
-    navigation = {
-      enable = true,
-      keymaps = {
-        goto_definition = "gnd",
-        list_definitions = "gnD",
-        goto_next_usage = "<a-*>",
-        goto_previous_usage = "<a-#>",
-      },
     },
   },
 }
@@ -320,6 +246,13 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 ```
+
+# External modules
+
+Other modules can be installed as plugins.
+
+- [refactor](https://github.com/nvim-treesitter/refactor) - Refactoring and definition modules
+- [playground](https://github.com/nvim-treesitter/playground) - Treesitter integrated playground
 
 # Extra features
 

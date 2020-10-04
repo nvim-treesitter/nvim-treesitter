@@ -59,11 +59,6 @@ highlight default link TSInclude Include
 highlight default link TSVariable TSNone
 highlight default link TSVariableBuiltin Special
 
-highlight default link TSDefinitionUsage Visual
-highlight default link TSDefinition Search
-
-highlight default link TSCurrentScope CursorLine
-
 highlight default link TSText TSNone
 highlight default TSStrong term=bold cterm=bold gui=bold
 highlight default TSEmphasis term=italic cterm=italic gui=italic
