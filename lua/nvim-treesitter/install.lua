@@ -224,20 +224,22 @@ local function select_download_commands(repo, project_name, cache_folder, revisi
     }
   else
     return {
-      cmd = 'git',
-      info = 'Downloading...',
-      err = 'Error during download, please verify your internet connection',
-      opts = {
-        args = {
-          'clone',
-          '--single-branch',
-          '--branch', repo.branch or 'master',
-          '--depth', '1',
-          repo.url,
-          project_name
+      {
+        cmd = 'git',
+        info = 'Downloading...',
+        err = 'Error during download, please verify your internet connection',
+        opts = {
+          args = {
+            'clone',
+            '--single-branch',
+            '--branch', repo.branch or 'master',
+            '--depth', '1',
+            repo.url,
+            project_name
+          },
+          cwd = cache_folder,
         },
-        cwd = cache_folder,
-      },
+      }
     }
   end
 end
