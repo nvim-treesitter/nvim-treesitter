@@ -8,7 +8,9 @@
 (arg_name) @definition.parameter
 
 (functiondef) @scope
-(function_statement (function_name) @definition.function) @scope
+((function_statement
+  (function_name) @definition.function) @scope
+  (#set! definition.function.scope "parent"))
 
 (program) @scope
 (if_statement) @scope
