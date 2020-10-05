@@ -6,7 +6,7 @@ local utils = require'nvim-treesitter.utils'
 local parsers = require'nvim-treesitter.parsers'
 local info = require'nvim-treesitter.info'
 local configs = require'nvim-treesitter.configs'
-local shell_command_selectors = require'nvim-treesitter.shell_command_selectors'
+local shell = require'nvim-treesitter.shell_command_selectors'
 
 local M = {}
 local lockfile = {}
@@ -111,7 +111,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync)
   local compile_location = cache_folder..path_sep..(repo.location or project_name)
   local parser_lib_name = install_folder..path_sep..lang..".so"
 
-  local cc = shell_command_selectors.select_executable(M.compilers)
+  local cc = shell.select_executable(M.compilers)
   if not cc then
     api.nvim_err_writeln('No C compiler found! "'
                        ..table.concat(vim.tbl_filter(function(c) return type(c) == 'string' end, M.compilers), '", "')
@@ -121,21 +121,20 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync)
   local revision = configs.get_update_strategy() == 'lockfile' and get_revision(lang)
 
   local command_list = {}
-  vim.list_extend(command_list, { shell_command_selectors.select_install_rm_cmd(cache_folder, project_name) })
-  vim.list_extend(command_list,
-    shell_command_selectors.select_download_commands(repo, project_name, cache_folder, revision))
+  vim.list_extend(command_list, { shell.select_install_rm_cmd(cache_folder, project_name) })
+  vim.list_extend(command_list, shell.select_download_commands(repo, project_name, cache_folder, revision))
   vim.list_extend(command_list, {
     {
       cmd = cc,
       info = 'Compiling...',
       err = 'Error during compilation',
       opts = {
-        args = vim.tbl_flatten(shell_command_selectors.select_compiler_args(repo)),
+        args = vim.tbl_flatten(shell.select_compiler_args(repo)),
         cwd = compile_location
       }
     },
-    shell_command_selectors.select_mv_cmd('parser.so', parser_lib_name, compile_location),
-    shell_command_selectors.select_install_rm_cmd(cache_folder, project_name)
+    shell.select_mv_cmd('parser.so', parser_lib_name, compile_location),
+    shell.select_install_rm_cmd(cache_folder, project_name)
   })
 
   if with_sync then
@@ -235,7 +234,7 @@ function M.uninstall(lang)
     local parser_lib = install_dir..path_sep..lang..".so"
 
     local command_list = {
-      shell_command_selectors.select_rm_file_cmd(parser_lib, "Uninstalling parser for "..lang)
+      shell.select_rm_file_cmd(parser_lib, "Uninstalling parser for "..lang)
     }
     M.iter_cmd(command_list, 1, lang, 'Treesitter parser for '..lang..' has been uninstalled')
   end
