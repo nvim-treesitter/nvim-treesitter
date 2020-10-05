@@ -33,7 +33,7 @@
 [ "," "." ":"] @punctuation.delimiter
 [ "(" ")" "[" "]" "{" "}" ] @punctuation.bracket
 ("<" @punctuation.bracket
-. (typearg)+ .
+. (typearg) . ("," (typearg))* .
 ">" @punctuation.bracket)
 
 (identifier) @variable
