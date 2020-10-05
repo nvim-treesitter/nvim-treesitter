@@ -44,7 +44,7 @@
 ; function stuffs
 (functiondef ["function" "end"] @keyword.function)
 
-(function_statement [(function_name) (function_name (*))] @function)
+(function_statement [(function_name) (function_name (_))] @function)
 (function_statement ["function" "end"] @keyword.function)
 
 (function_call
@@ -68,4 +68,3 @@
 ; TODO (label_statement) @label
 
 (ERROR) @error
-
