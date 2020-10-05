@@ -269,6 +269,14 @@ list.fennel = {
   maintainers = {'@TravonteD'},
 }
 
+list.teal = {
+  install_info = {
+    url = "https://github.com/euclidianAce/tree-sitter-teal",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = {'@euclidianAce'},
+}
+
 list.ql = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ql",
