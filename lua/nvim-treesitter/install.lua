@@ -6,6 +6,7 @@ local utils = require'nvim-treesitter.utils'
 local parsers = require'nvim-treesitter.parsers'
 local info = require'nvim-treesitter.info'
 local configs = require'nvim-treesitter.configs'
+local shell_command_selectors = require'nvim-treesitter.shell_command_selectors'
 
 local M = {}
 local lockfile = {}
@@ -35,52 +36,6 @@ local function get_revision(lang)
     lockfile = vim.fn.json_decode(vim.fn.readfile(utils.join_path(utils.get_package_path(), 'lockfile.json')))
   end
   return (lockfile[lang] and lockfile[lang].revision)
-end
-
-local function select_mkdir_cmd(directory, cwd, info_msg)
-  if fn.has('win32') == 1 then
-    return {
-      cmd = 'cmd',
-      opts = {
-        args = { '/C', 'mkdir', directory},
-	cwd = cwd,
-      },
-      info = info_msg,
-      err = "Could not create "..directory,
-    }
-  else
-    return {
-      cmd = 'mkdir',
-      opts = {
-        args = { directory },
-	cwd = cwd,
-      },
-      info = info_msg,
-      err = "Could not create "..directory,
-    }
-  end
-end
-
-local function select_rm_file_cmd(file, info_msg)
-  if fn.has('win32') == 1 then
-    return {
-      cmd = 'cmd',
-      opts = {
-        args = { '/C', 'if', 'exist', file, 'del', file },
-      },
-      info = info_msg,
-      err = "Could not delete "..file,
-    }
-  else
-    return {
-      cmd = 'rm',
-      opts = {
-        args = { file },
-      },
-      info = info_msg,
-      err = "Could not delete "..file,
-    }
-  end
 end
 
 function M.iter_cmd(cmd_list, i, lang, success_message)
@@ -146,129 +101,6 @@ local function iter_cmd_sync(cmd_list)
   return true
 end
 
-local function select_executable(executables)
-  return vim.tbl_filter(function(c) return fn.executable(c) == 1 end, executables)[1]
-end
-
-local function select_args(repo)
-  local args = {
-        '-o',
-        'parser.so',
-        '-I./src',
-        repo.files,
-        '-shared',
-        '-Os',
-        '-lstdc++',
-  }
-  if fn.has('win32') == 0 then
-    table.insert(args, '-fPIC')
-  end
-  return args
-end
-
-local function select_install_rm_cmd(cache_folder, project_name)
-  if fn.has('win32') == 1 then
-    local dir = cache_folder ..'\\'.. project_name
-    return {
-      cmd = 'cmd',
-      opts = {
-        args = { '/C', 'if', 'exist', dir, 'rmdir', '/s', '/q', dir },
-      }
-    }
-  else
-    return {
-      cmd = 'rm',
-      opts = {
-        args = { '-rf', cache_folder..'/'..project_name },
-      }
-    }
-  end
-end
-
-local function select_mv_cmd(from, to, cwd)
-  if fn.has('win32') == 1 then
-    return {
-      cmd = 'cmd',
-      opts = {
-        args = { '/C', 'move', '/Y', from, to },
-        cwd = cwd,
-      }
-    }
-  else
-    return {
-      cmd = 'mv',
-      opts = {
-        args = { from, to },
-        cwd = cwd,
-      },
-    }
-  end
-end
-
-local function select_download_commands(repo, project_name, cache_folder, revision)
-  if vim.fn.executable('tar') == 1 and vim.fn.executable('curl') == 1 and repo.url:find("github.com", 1, true) then
-
-    revision = revision or repo.branch or "master"
-    local path_sep = utils.get_path_sep()
-    return {
-      select_install_rm_cmd(cache_folder, project_name..'-tmp'),
-      {
-        cmd = 'curl',
-        info = 'Downloading...',
-        err = 'Error during download, please verify your internet connection',
-        opts = {
-          args = {
-            '-L', -- follow redirects
-            repo.url.."/archive/"..revision..".tar.gz",
-            '--output',
-            project_name..".tar.gz"
-          },
-          cwd = cache_folder,
-        },
-      },
-      select_mkdir_cmd(project_name..'-tmp', cache_folder, 'Creating temporary directory'),
-      {
-        cmd = 'tar',
-        info = 'Extracting...',
-        err = 'Error during tarball extraction.',
-        opts = {
-          args = {
-            '-xvf',
-            project_name..".tar.gz",
-            '-C',
-            project_name..'-tmp',
-          },
-          cwd = cache_folder,
-        },
-      },
-      select_rm_file_cmd(cache_folder..path_sep..project_name..".tar.gz"),
-      select_mv_cmd(utils.join_path(project_name..'-tmp', repo.url:match('[^/]-$')..'-'..revision),
-                    project_name,
-                    cache_folder),
-      select_install_rm_cmd(cache_folder, project_name..'-tmp')
-    }
-  else
-    return {
-      {
-        cmd = 'git',
-        info = 'Downloading...',
-        err = 'Error during download, please verify your internet connection',
-        opts = {
-          args = {
-            'clone',
-            '--single-branch',
-            '--branch', repo.branch or 'master',
-            '--depth', '1',
-            repo.url,
-            project_name
-          },
-          cwd = cache_folder,
-        },
-      }
-    }
-  end
-end
-
 local function run_install(cache_folder, install_folder, lang, repo, with_sync)
   parsers.reset_cache()
 
@@ -279,7 +111,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync)
   local compile_location = cache_folder..path_sep..(repo.location or project_name)
   local parser_lib_name = install_folder..path_sep..lang..".so"
 
-  local cc = select_executable(M.compilers)
+  local cc = shell_command_selectors.select_executable(M.compilers)
   if not cc then
     api.nvim_err_writeln('No C compiler found! "'
                        ..table.concat(vim.tbl_filter(function(c) return type(c) == 'string' end, M.compilers), '", "')
@@ -289,20 +121,21 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync)
   local revision = configs.get_update_strategy() == 'lockfile' and get_revision(lang)
 
   local command_list = {}
-  vim.list_extend(command_list, { select_install_rm_cmd(cache_folder, project_name) })
-  vim.list_extend(command_list, select_download_commands(repo, project_name, cache_folder, revision))
+  vim.list_extend(command_list, { shell_command_selectors.select_install_rm_cmd(cache_folder, project_name) })
+  vim.list_extend(command_list,
+    shell_command_selectors.select_download_commands(repo, project_name, cache_folder, revision))
   vim.list_extend(command_list, {
     {
       cmd = cc,
       info = 'Compiling...',
       err = 'Error during compilation',
       opts = {
-        args = vim.tbl_flatten(select_args(repo)),
+        args = vim.tbl_flatten(shell_command_selectors.select_compiler_args(repo)),
         cwd = compile_location
       }
     },
-    select_mv_cmd('parser.so', parser_lib_name, compile_location),
-    select_install_rm_cmd(cache_folder, project_name)
+    shell_command_selectors.select_mv_cmd('parser.so', parser_lib_name, compile_location),
+    shell_command_selectors.select_install_rm_cmd(cache_folder, project_name)
   })
 
   if with_sync then
@@ -402,7 +235,7 @@ function M.uninstall(lang)
     local parser_lib = install_dir..path_sep..lang..".so"
 
     local command_list = {
-      select_rm_file_cmd(parser_lib, "Uninstalling parser for "..lang)
+      shell_command_selectors.select_rm_file_cmd(parser_lib, "Uninstalling parser for "..lang)
     }
     M.iter_cmd(command_list, 1, lang, 'Treesitter parser for '..lang..' has been uninstalled')
   end
