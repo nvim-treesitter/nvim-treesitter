@@ -1,3 +1,4 @@
+; inherits: (jsx)
 [
   (for_in_statement)
   (for_statement)

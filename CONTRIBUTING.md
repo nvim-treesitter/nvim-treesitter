@@ -67,6 +67,18 @@ Here are some global advices :
 - Examples of queries can be found in [queries/](queries/)
 - Matches in the bottom will override queries that are above of them.
 
+If your language is an extension of a language (TypeScript is an extension of JavaScript for
+example), you can include the queries from your base language by adding the following _as the first
+line of your file_.
+
+```scheme
+; inherits: lang1,(optionallang)
+```
+
+If you want to include a language for a given query, but don't want for the queries including the
+query you qre writing to include it too, you can mark the language as optional (by putting it
+between parenthesis).
+
 ### Highlights
 
 As languages differ quite a lot, here is a set of captures available to you when building a `highlights.scm` query.

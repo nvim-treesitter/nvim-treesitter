@@ -1,3 +1,5 @@
+; inherits: c
+
 ;; Parameters
 (variadic_parameter_declaration
   declarator: (variadic_declarator

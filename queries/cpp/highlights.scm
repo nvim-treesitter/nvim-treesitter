@@ -1,3 +1,5 @@
+; inherits: c
+
 ((identifier) @field
  (#match? @field "^_"))
 

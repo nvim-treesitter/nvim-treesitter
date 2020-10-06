@@ -1,3 +1,4 @@
+; inherits: javascript
 [
 "abstract"
 "declare"

@@ -1,3 +1,5 @@
+; inherits: (jsx)
+
 ; Scopes
 ;-------
 
