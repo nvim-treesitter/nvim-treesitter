@@ -8,19 +8,9 @@ local M = {}
 
 local query_cache = caching.create_buffer_cache()
 
--- Some treesitter grammars extend others.
--- We can use that to import the queries of the base language
-M.base_language_map = {
-  cpp = {'c'},
-  typescript = {'javascript'},
-  javascript = {'jsx'},
-  tsx = {'typescript', 'javascript', 'jsx'},
-  ocaml_interface = {'ocaml'},
-}
-
 M.built_in_query_groups = {'highlights', 'locals', 'textobjects', 'folds'}
 
--- Creates a function that checks whether a certain query exists
+-- Creates a function that checks whether a given query exists
 -- for a specific language.
 local function get_query_guard(query)
   return function(lang)
@@ -79,19 +69,45 @@ local function filtered_runtime_queries(lang, query_name)
   return filter_files(api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', lang, query_name), true) or {})
 end
 
-local function runtime_query_exists(lang, query_name)
-  local files = api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', lang, query_name), false)
-  return files and #files > 0
-end
-
-local function get_query_files(lang, query_name)
-  local query_files = {}
-
+local function get_query_files(lang, query_name, is_included)
   local lang_files = filtered_runtime_queries(lang, query_name)
-  vim.list_extend(query_files, lang_files)
+  local query_files = lang_files
 
-  for _, base_lang in ipairs(M.base_language_map[lang] or {}) do
-    local base_files = filtered_runtime_queries(base_lang, query_name)
+  if #query_files == 0 then return {} end
+
+  local base_langs = {}
+
+  -- Now get the base languages by looking at the first line of every file
+  -- The syntax is the folowing :
+  -- ;+ inherits: ({language},)*{language}
+  --
+  -- {language} ::= {lang} | ({lang})
+  local MODELINE_FORMAT = "^;+%s*inherits%s*:?%s*([a-z_,()]+)%s*$"
+
+  for _, file in ipairs(query_files) do
+    local modeline = vim.fn.readfile(file, "", 1)
+
+    if #modeline == 1 then
+      local langlist = modeline[1]:match(MODELINE_FORMAT)
+
+      if langlist then
+        for _, lang in ipairs(vim.split(langlist, ',', true)) do
+          local is_optional = lang:match("%(.*%)")
+
+          if is_optional then
+            if not is_included then
+              table.insert(base_langs, lang:sub(2, #lang - 1))
+            end
+          else
+            table.insert(base_langs, lang)
+          end
+        end
+      end
+    end
+  end
+
+  for _, base_lang in ipairs(base_langs) do
+    local base_files = get_query_files(base_lang, query_name, true)
     vim.list_extend(query_files, base_files)
   end
 
@@ -99,16 +115,8 @@ local function get_query_files(lang, query_name)
 end
 
 function M.has_query_files(lang, query_name)
-  local langs = {lang}
-  vim.list_extend(langs, M.base_language_map[lang] or {})
-
-  for _, lang in ipairs(langs) do
-    if runtime_query_exists(lang, query_name) then
-      return true
-    end
-  end
-
-  return false
+  local files = get_query_files(lang, query_name)
+  return files and #files > 0
 end
 
 function M.get_query(lang, query_name)

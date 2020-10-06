@@ -1,3 +1,5 @@
+; inherits: javascript
+
 [
   (interface_declaration)
   (internal_module)

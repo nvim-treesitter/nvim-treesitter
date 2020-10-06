@@ -1,3 +1,4 @@
+; inherits: (jsx)
 ; Types
 
 ; Javascript
