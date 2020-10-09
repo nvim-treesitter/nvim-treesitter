@@ -27,32 +27,6 @@ function M.define_modules(...)
   configs.define_modules(...)
 end
 
-function M.statusline(indicator_size)
-  if not parsers.has_parser() then return end
-  local indicator_size = indicator_size or 100
-
-  local current_node = ts_utils.get_node_at_cursor()
-  if not current_node then return "" end
-
-  local expr = current_node:parent()
-  local prefix = ""
-  if expr then
-    prefix = "->"
-  end
-
-  local indicator = current_node:type()
-  while expr and (#indicator + #(expr:type()) + 5) < indicator_size do
-    indicator = expr:type() .. prefix .. indicator
-    expr = expr:parent()
-  end
-
-  if expr then
-    return "..." .. indicator
-  else
-    return indicator
-  end
-end
-
 local get_line_for_node = function(node, type_patterns, transform_fn)
   local node_type = node:type()
   local is_valid = false
@@ -74,9 +48,12 @@ local transform_line = function(line)
   return line:gsub('[%[%(%{]*%s*$', '')
 end
 
-function M.named_statusline(opts)
+function M.statusline(opts)
   if not parsers.has_parser() then return end
   local options = opts or {}
+  if type(opts) == 'number' then
+    options = {indicator_size = opts}
+  end
   local indicator_size = options.indicator_size or 100
   local type_patterns = options.type_patterns or {'class', 'function', 'method'}
   local transform_fn = options.transform_fn or transform_line
