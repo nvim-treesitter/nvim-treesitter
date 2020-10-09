@@ -37,15 +37,14 @@ local get_line_for_node = function(node, type_patterns, transform_fn)
     end
   end
   if not is_valid then return '' end
-  local range = {node:range()}
-  local line = transform_fn(vim.trim(vim.fn.getline(range[1] + 1)))
+  local line = transform_fn(vim.trim(ts_utils.get_node_text(node)[1] or ''))
   -- Escape % to avoid statusline to evaluate content as expression
   return line:gsub('%%', '%%%%')
 end
 
 -- Trim spaces and opening brackets from end
 local transform_line = function(line)
-  return line:gsub('[%[%(%{]*%s*$', '')
+  return line:gsub('%s*[%[%(%{]*%s*$', '')
 end
 
 function M.statusline(opts)
