@@ -415,16 +415,8 @@ to the jump list.
 ==============================================================================
 FUNCTIONS                                          *nvim-treesitter-functions*
 
-                                                *nvim_treesitter#statusline()*
-nvim_treesitter#statusline(size)~
-
-Returns a string describing the current position in the syntax tree. This
-could be used as a statusline indicator.
-Note: The `size` argument is optional. When specified, the string will not be
-      longer than `size`.
-
-                                          *nvim_treesitter#named_statusline()*
-nvim_treesitter#named_statusline(opts)~
+                                          *nvim_treesitter#statusline()*
+nvim_treesitter#statusline(opts)~
 
 Returns a string describing the current position in the file. This
 could be used as a statusline indicator.
