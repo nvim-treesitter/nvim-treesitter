@@ -423,6 +423,27 @@ could be used as a statusline indicator.
 Note: The `size` argument is optional. When specified, the string will not be
       longer than `size`.
 
+                                          *nvim_treesitter#named_statusline()*
+nvim_treesitter#named_statusline(opts)~
+
+Returns a string describing the current position in the file. This
+could be used as a statusline indicator.
+Default options (lua syntax):
+>
+  {
+    indicator_size = 100,
+    type_patterns = {'class', 'function', 'method'},
+    transform_fn = function(line) return line:gsub('[%[%(%{]*%s*$', '') end,
+    separator = ' -> '
+  }
+<
+- `indicator_size` - How long should the string be. If longer, it is cut from
+  the beginning.
+- `type_patterns` - Which node type patterns to match.
+- `transform_fn` - Function used to transform the single item in line. By
+  default removes opening brackets and spaces from end.
+- `separator` - Separator between nodes.
+
                                                   *nvim_treesitter#foldexpr()*
 nvim_treesitter#foldexpr()~
 

@@ -2,6 +2,10 @@ function! nvim_treesitter#statusline(len) abort
   return luaeval("require'nvim-treesitter'.statusline(_A)", a:len)
 endfunction
 
+function! nvim_treesitter#named_statusline(...) abort
+  return luaeval("require'nvim-treesitter'.named_statusline(_A)", get(a:, 1, {}))
+endfunction
+
 function! nvim_treesitter#foldexpr() abort
 	return luaeval(printf('require"nvim-treesitter.fold".get_fold_indic(%d)', v:lnum))
 endfunction
