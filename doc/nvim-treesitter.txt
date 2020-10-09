@@ -425,7 +425,7 @@ Default options (lua syntax):
   {
     indicator_size = 100,
     type_patterns = {'class', 'function', 'method'},
-    transform_fn = function(line) return line:gsub('[%[%(%{]*%s*$', '') end,
+    transform_fn = function(line) return line:gsub('%s*[%[%(%{]*%s*$', '') end,
     separator = ' -> '
   }
 <
