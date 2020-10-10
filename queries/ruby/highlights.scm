@@ -1,5 +1,8 @@
 ; Variables
 (identifier) @variable
+(interpolation
+  "#{" @punctuation.special
+  "}" @punctuation.special) @none
 
 ; Keywords
 
