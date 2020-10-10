@@ -241,6 +241,7 @@ List of currently supported languages:
 - [x] [rust](https://github.com/tree-sitter/tree-sitter-rust) (maintained by @vigoux)
 - [ ] [scala](https://github.com/tree-sitter/tree-sitter-scala)
 - [ ] [swift](https://github.com/tree-sitter/tree-sitter-swift)
+- [x] [teal](https://github.com/euclidianAce/tree-sitter-teal) (maintained by @euclidianAce)
 - [x] [toml](https://github.com/ikatyang/tree-sitter-toml) (maintained by @tk-shirasaka)
 - [ ] [tsx](https://github.com/tree-sitter/tree-sitter-typescript)
 - [x] [typescript](https://github.com/tree-sitter/tree-sitter-typescript) (maintained by @steelsojka)
