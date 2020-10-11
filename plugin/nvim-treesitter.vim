@@ -11,17 +11,18 @@ let g:loaded_nvim_treesitter = 1
 
 lua require'nvim-treesitter'.setup()
 
-function s:has_attr(attr)
-  return strlen(synIDattr(hlID('Normal'), a:attr)) > 0
+function s:has_attr(attr, mode)
+  let norm_color = synIDattr(hlID('Normal'), a:attr, a:mode)
+  return strlen(norm_color) > 0
 endfunction
 
 " if the ctermfg or guifg is not known by nvim then using the
 " fg or foreground highlighting value will cause an E419 error
-if s:has_attr('fg')
-  highlight default TSNone term=NONE cterm=NONE gui=NONE guifg=foreground ctermfg=fg
-else
-  highlight default TSNone term=NONE cterm=NONE gui=NONE
-endif
+" so we check to see if either highlight has been set if not default to NONE
+let cterm_normal = s:has_attr('fg', 'cterm') ? 'fg' : 'NONE'
+let gui_normal = s:has_attr('fg', 'gui') ? 'foreground' : 'NONE'
+
+execute 'highlight default TSNone term=NONE cterm=NONE gui=NONE guifg='.gui_normal.' ctermfg='.cterm_normal
 
 highlight default link TSError TSNone
 
