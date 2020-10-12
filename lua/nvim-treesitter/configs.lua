@@ -36,6 +36,12 @@ local builtin_modules = {
     },
     is_supported = queries.has_locals
   },
+  indent = {
+    module_path = 'nvim-treesitter.indent',
+    enable = false,
+    disable = {},
+    is_supported = queries.has_locals
+  }
 }
 
 local attached_buffers_by_module = caching.create_buffer_cache()
