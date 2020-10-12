@@ -17,3 +17,7 @@ endfunction
 function! nvim_treesitter#available_modules(arglead, cmdline, cursorpos) abort
   return join(luaeval("require'nvim-treesitter.configs'.available_modules()"), "\n")
 endfunction
+
+function! nvim_treesitter#indent() abort
+	return luaeval(printf('require"nvim-treesitter.indent".get_indent(%d)', v:lnum))
+endfunction
