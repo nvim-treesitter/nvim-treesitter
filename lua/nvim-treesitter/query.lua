@@ -1,5 +1,5 @@
 local api = vim.api
-local ts = vim.treesitter
+local tsq = require'vim.treesitter.query'
 local utils = require'nvim-treesitter.utils'
 local parsers = require'nvim-treesitter.parsers'
 local caching = require'nvim-treesitter.caching'
@@ -22,16 +22,6 @@ for _, query in ipairs(M.built_in_query_groups) do
   M["has_" .. query] = get_query_guard(query)
 end
 
-local function read_query_files(filenames)
-  local contents = {}
-
-  for _,filename in ipairs(filenames) do
-    vim.list_extend(contents, vim.fn.readfile(filename))
-  end
-
-  return table.concat(contents, '\n')
-end
-
 local function update_cached_matches(bufnr, changed_tick, query_group)
   query_cache.set(query_group, bufnr, {tick=changed_tick, cache=( M.collect_group_results(bufnr, query_group) or {} )})
 end
@@ -46,86 +36,17 @@ function M.get_matches(bufnr, query_group)
   return query_cache.get(query_group, bufnr).cache
 end
 
-local function filter_files(file_list)
-  local main = {}
-  local after = {}
-
-  for _, fname in ipairs(file_list) do
-    -- Only get the name of the directory containing the queries directory
-    if vim.fn.fnamemodify(fname, ":p:h:h:h:t") == "after" then
-      table.insert(after, fname)
-    -- The first one is the one with most priority
-    elseif #main == 0 then
-      main = { fname }
-    end
-  end
-
-  vim.list_extend(main, after)
-
-  return main
-end
-
-local function filtered_runtime_queries(lang, query_name)
-  return filter_files(api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', lang, query_name), true) or {})
-end
-
-local function get_query_files(lang, query_name, is_included)
-  local lang_files = filtered_runtime_queries(lang, query_name)
-  local query_files = lang_files
-
-  if #query_files == 0 then return {} end
-
-  local base_langs = {}
-
-  -- Now get the base languages by looking at the first line of every file
-  -- The syntax is the folowing :
-  -- ;+ inherits: ({language},)*{language}
-  --
-  -- {language} ::= {lang} | ({lang})
-  local MODELINE_FORMAT = "^;+%s*inherits%s*:?%s*([a-z_,()]+)%s*$"
-
-  for _, file in ipairs(query_files) do
-    local modeline = vim.fn.readfile(file, "", 1)
-
-    if #modeline == 1 then
-      local langlist = modeline[1]:match(MODELINE_FORMAT)
-
-      if langlist then
-        for _, lang in ipairs(vim.split(langlist, ',', true)) do
-          local is_optional = lang:match("%(.*%)")
-
-          if is_optional then
-            if not is_included then
-              table.insert(base_langs, lang:sub(2, #lang - 1))
-            end
-          else
-            table.insert(base_langs, lang)
-          end
-        end
-      end
-    end
-  end
-
-  for _, base_lang in ipairs(base_langs) do
-    local base_files = get_query_files(base_lang, query_name, true)
-    vim.list_extend(query_files, base_files)
-  end
-
-  return query_files
+local function runtime_queries(lang, query_name)
+  return api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', lang, query_name), true) or {}
 end
 
 function M.has_query_files(lang, query_name)
-  local files = get_query_files(lang, query_name)
+  local files = runtime_queries(lang, query_name)
   return files and #files > 0
 end
 
 function M.get_query(lang, query_name)
-  local query_files = get_query_files(lang, query_name)
-  local query_string = read_query_files(query_files)
-
-  if #query_string > 0 then
-    return ts.parse_query(lang, query_string)
-  end
+  return tsq.get_query(lang, query_name)
 end
 
 function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
