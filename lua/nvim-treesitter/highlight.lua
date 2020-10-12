@@ -88,7 +88,7 @@ function M.attach(bufnr, lang)
   local query = queries.get_query(lang, "highlights")
   if not query then return end
 
-  M.highlighters[bufnr] = ts.highlighter.new(query, bufnr, lang)
+  M.highlighters[bufnr] = ts.highlighter.new(bufnr, lang, query)
 end
 
 function M.detach(bufnr)
