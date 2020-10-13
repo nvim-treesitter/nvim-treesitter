@@ -201,31 +201,26 @@ end
 
 --- Memoizes a function based on the buffer tick of the provided bufnr.
 -- The cache entry is cleared when the buffer is detached to avoid memory leaks.
--- @param fn: the fn to memoize
--- @param bufnr_fn: a function that receives all arguments passed to the function
---                  and returns the bufnr from the arguments
+-- @param fn: the fn to memoize, taking the bufnr as first argument
 -- @returns a memoized function
-function M.memoize_by_buf_tick(fn, bufnr_fn)
-  local bufnr_fn = bufnr_fn or function(a) return a end
+function M.memoize_by_buf_tick(fn)
   local cache = {}
 
-  return function(...)
-    local bufnr = bufnr_fn(...)
-    local tick = api.nvim_buf_get_changedtick(bufnr)
-
+  return function(bufnr)
     if cache[bufnr] then
-      if cache[bufnr].last_tick == tick then
-        return cache[bufnr].result
-      end
+      return cache[bufnr]
     else
       cache[bufnr] = {}
-      api.nvim_buf_attach(bufnr, false, { on_detach = function() cache[bufnr] = nil end })
+      api.nvim_buf_attach(bufnr, false,
+        {
+          on_changedtick = function() cache[bufnr] = fn(bufnr) end,
+          on_detach = function() cache[bufnr] = nil end
+        }
+      )
     end
 
-    cache[bufnr].last_tick = tick
-    cache[bufnr].result = fn(...)
-
-    return cache[bufnr].result
+    cache[bufnr] = fn(bufnr)
+    return cache[bufnr]
   end
 end
 
