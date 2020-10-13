@@ -1,58 +1,64 @@
--- TODO: logic not working properly
--- need to find a better way to get the indent from a line
--- it almosts works though
-local api = vim.api
-local utils = require'nvim-treesitter.ts_utils'
-local query = require'nvim-treesitter.query'
 local parsers = require'nvim-treesitter.parsers'
+local queries = require'nvim-treesitter.query'
 local utils = require'nvim-treesitter.ts_utils'
-local locals = require'nvim-treesitter.locals'
 
 local M = {}
 
-local function get_node_at_line(lnum)
-  local node = utils.get_node_at_cursor()
-  local srow = node:range()
+local function get_node_at_line(root, lnum)
+  for node in root:iter_children() do
+    local srow, _, erow = node:range()
+    if srow == lnum then return node end
 
-  if srow+1 < lnum then
-    for n in node:iter_children() do
-      local row = n:range()
-      if row+1 == lnum then
-        node = n
-        break
-      end
+    if node:child_count() > 0 and srow < lnum and lnum <= erow then
+      return get_node_at_line(node, lnum)
     end
   end
 
-  return node
+  local wrapper = root:descendant_for_range(lnum, 0, lnum, -1)
+  local child = wrapper:child(0)
+  return child or wrapper
 end
 
+local get_indents = utils.memoize_by_buf_tick(function(bufnr)
+  local indents = queries.get_capture_matches(bufnr, '@indent.node', 'indents') or {}
+  local branches = queries.get_capture_matches(bufnr, '@branch.node', 'indents') or {}
+
+  local indents_map = {}
+  for _, node in ipairs(indents) do
+    indents_map[tostring(node)] = true
+  end
+
+  local branches_map = {}
+  for _, node in ipairs(branches) do
+    branches_map[tostring(node)] = true
+  end
+
+  return { indents = indents_map, branches = branches_map }
+end)
+
 function M.get_indent(lnum)
-  if not parsers.has_parser() or not lnum then return -1 end
+  local parser = parsers.get_parser()
+  if not parser or not lnum then return -1 end
 
-  local node = get_node_at_line(lnum)
-  local srow, scol, erow, ecol = node:range()
+  local node = get_node_at_line(parser:parse():root(), lnum-1)
+  local indent_queries = get_indents(vim.api.nvim_get_current_buf())
+  local indents = indent_queries.indents
+  local branches = indent_queries.branches
+  if not indents then return 0 end
 
-  local parent = locals.containing_scope(node:parent() or node)
-  local parent_row, pscol, perow, pecol = parent:range()
-  local parent_indent = vim.fn.indent(parent_row+1)
+  while node and branches[tostring(node)] do
+    node = node:parent()
+  end
 
-  if (parent_row == srow and pscol == scol) or (perow == erow and pecol == ecol) then
-    node = parent
-    srow = node:range()
-    node_indent = vim.fn.indent(srow+1)
-
-    parent = locals.containing_scope(parent:parent() or parent) 
-    parent_row = parent:range()
-    parent_indent = vim.fn.indent(parent_row+1)
-
-    if node_indent == 0 and parent_indent == 0 then
-      return 0
+  local ind = 0
+  while node do
+    node = node:parent()
+    if indents[tostring(node)] then
+      ind = ind + vim.bo.tabstop
     end
   end
 
-  local tabstop = vim.bo.tabstop
-  return parent_indent + tabstop
+  return ind
 end
 
 local indent_funcs = {}

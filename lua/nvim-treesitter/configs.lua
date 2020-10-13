@@ -40,7 +40,7 @@ local builtin_modules = {
     module_path = 'nvim-treesitter.indent',
     enable = false,
     disable = {},
-    is_supported = queries.has_locals
+    is_supported = queries.has_indents
   }
 }
 
