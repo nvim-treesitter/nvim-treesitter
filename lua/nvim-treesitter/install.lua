@@ -101,16 +101,31 @@ local function iter_cmd_sync(cmd_list)
   return true
 end
 
-local function run_install(cache_folder, install_folder, lang, repo, with_sync)
+local function run_install(cache_folder, install_folder, lang, repo, with_sync, generate_from_grammar)
   parsers.reset_cache()
 
   local path_sep = utils.get_path_sep()
 
   local project_name = 'tree-sitter-'..lang
+  local maybe_local_path = vim.fn.expand(repo.url)
+  local from_local_path = vim.fn.isdirectory(maybe_local_path) == 1
+  if from_local_path then
+    repo.url = maybe_local_path
+  end
+
   -- compile_location only needed for typescript installs.
-  local compile_location = cache_folder..path_sep..(repo.location or project_name)
+  local compile_location
+  if from_local_path then
+    compile_location = repo.url
+  else
+    compile_location = cache_folder..path_sep..(repo.location or project_name)
+  end
   local parser_lib_name = install_folder..path_sep..lang..".so"
 
+  if generate_from_grammar and vim.fn.executable('tree-sitter') ~= 1 then
+    api.nvim_err_writeln('tree-sitter CLI not found: `tree-sitter` is not executable!')
+    return
+  end
   local cc = shell.select_executable(M.compilers)
   if not cc then
     api.nvim_err_writeln('No C compiler found! "'
@@ -121,8 +136,23 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync)
   local revision = configs.get_update_strategy() == 'lockfile' and get_revision(lang)
 
   local command_list = {}
-  vim.list_extend(command_list, { shell.select_install_rm_cmd(cache_folder, project_name) })
-  vim.list_extend(command_list, shell.select_download_commands(repo, project_name, cache_folder, revision))
+  if not from_local_path then
+    vim.list_extend(command_list, { shell.select_install_rm_cmd(cache_folder, project_name) })
+    vim.list_extend(command_list, shell.select_download_commands(repo, project_name, cache_folder, revision))
+  end
+  if generate_from_grammar then
+    vim.list_extend(command_list, {
+      {
+        cmd = 'tree-sitter',
+        info = 'Generating source files from grammar.js...',
+        err = 'Error during "tree-sitter generate"',
+        opts = {
+          args = {'generate'},
+          cwd = compile_location
+        }
+      }
+    })
+  end
   vim.list_extend(command_list, {
     {
       cmd = cc,
@@ -134,8 +164,10 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync)
       }
     },
     shell.select_mv_cmd('parser.so', parser_lib_name, compile_location),
-    shell.select_install_rm_cmd(cache_folder, project_name)
   })
+  if not from_local_path then
+    vim.list_extend(command_list, {shell.select_install_rm_cmd(cache_folder, project_name)})
+  end
 
   if with_sync then
     if iter_cmd_sync(command_list) == true then
@@ -146,7 +178,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync)
   end
 end
 
-local function install_lang(lang, ask_reinstall, cache_folder, install_folder, with_sync)
+local function install_lang(lang, ask_reinstall, cache_folder, install_folder, with_sync, generate_from_grammar)
   if #api.nvim_get_runtime_file('parser/'..lang..'.so', false) > 0 then
     if ask_reinstall ~= 'force' then
       if not ask_reinstall then return end
@@ -168,10 +200,10 @@ local function install_lang(lang, ask_reinstall, cache_folder, install_folder, w
     files={ install_info.files, 'table' }
   }
 
-  run_install(cache_folder, install_folder, lang, install_info, with_sync)
+  run_install(cache_folder, install_folder, lang, install_info, with_sync, generate_from_grammar)
 end
 
-local function install(with_sync, ask_reinstall)
+local function install(with_sync, ask_reinstall, generate_from_grammar)
   return function (...)
     if fn.executable('git') == 0 then
       return api.nvim_err_writeln('Git is required on your system to run this command')
@@ -198,7 +230,7 @@ local function install(with_sync, ask_reinstall)
     end
 
     for _, lang in ipairs(languages) do
-      install_lang(lang, ask, cache_folder, install_folder, with_sync)
+      install_lang(lang, ask, cache_folder, install_folder, with_sync, generate_from_grammar)
     end
   end
 end
@@ -270,6 +302,13 @@ M.ensure_installed = install(false, false)
 M.commands = {
   TSInstall = {
     run = install(false, true),
+    args = {
+      "-nargs=+",
+      "-complete=custom,nvim_treesitter#installable_parsers",
+    },
+  },
+  TSInstallFromGrammar = {
+    run = install(false, true, true),
     args = {
       "-nargs=+",
       "-complete=custom,nvim_treesitter#installable_parsers",
