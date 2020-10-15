@@ -42,8 +42,8 @@ Please consider the experience with this plug-in as experimental until Neovim 0.
 ## Requirements
 
 - Neovim [nightly](https://github.com/neovim/neovim#install-from-source)
-- `git` in your path.
-- A C compiler in your path ([Windows users please read this!](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support)).
+- `tar` and `curl` in your path (or alternativly `git`)
+- A C compiler in your path and libstdc++ installed ([Windows users please read this!](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support)).
 
 ## Installation
 
