@@ -95,10 +95,6 @@
     value: (arrow_function                                                                                                                                                                                    
       parameter: (identifier) @parameter))
 
-(formal_parameters                                                                                                                                                                                          
-    (object_pattern                                                                                                                                                                                           
-      (shorthand_property_identifier) @parameter))
-
 ; Variables
 ;----------
 (namespace_import
