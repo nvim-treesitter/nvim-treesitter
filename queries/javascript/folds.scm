@@ -15,5 +15,6 @@
   (import_statement)
   (if_statement)
   (try_statement)
+  (catch_clause)
   (object)
 ] @fold
