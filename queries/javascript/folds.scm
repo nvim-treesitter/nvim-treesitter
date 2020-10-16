@@ -13,4 +13,7 @@
   (switch_statement)
   (switch_case)
   (import_statement)
+  (if_statement)
+  (try_statement)
+  (object)
 ] @fold
