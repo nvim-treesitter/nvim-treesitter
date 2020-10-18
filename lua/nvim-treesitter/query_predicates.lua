@@ -66,3 +66,4 @@ end)
 
 -- Just avoid some anoying warnings for this predicate
 query.add_predicate('set!', function() return true end)
+query.add_predicate('make-range!', function() return true end)
