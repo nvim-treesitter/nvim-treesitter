@@ -110,6 +110,7 @@ Supported options:
   require'nvim-treesitter.configs'.setup {
     highlight = {
       enable = true,
+      use_languagetree = false, -- Use this to enable language injection
       custom_captures = {
         -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
         ["foo.bar"] = "Identifier",
