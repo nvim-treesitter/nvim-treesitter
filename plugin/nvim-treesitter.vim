@@ -24,8 +24,6 @@ let gui_normal = s:has_attr('fg', 'gui') ? 'foreground' : 'NONE'
 
 execute 'highlight default TSNone term=NONE cterm=NONE gui=NONE guifg='.gui_normal.' ctermfg='.cterm_normal
 
-highlight default link TSError TSNone
-
 highlight default link TSPunctDelimiter Delimiter
 highlight default link TSPunctBracket Delimiter
 highlight default link TSPunctSpecial Delimiter
@@ -67,7 +65,6 @@ highlight default link TSType Type
 highlight default link TSTypeBuiltin Type
 highlight default link TSInclude Include
 
-highlight default link TSVariable TSNone
 highlight default link TSVariableBuiltin Special
 
 highlight default link TSText TSNone
