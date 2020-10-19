@@ -155,129 +155,25 @@ Supported options:
   }
   EOF
 <
+
 ------------------------------------------------------------------------------
-TEXT OBJECTS                                 *nvim-treesitter-textobjects-mod*
+INDENTATION                                  *nvim-treesitter-indentation-mod*
 
-Syntax aware |text-objects|.
+Indentation based on treesitter for the |=| operator
 
-                                  *nvim-treesitter-text-objects-select-submod*
-Text object selection~
-
-Define your own text objects mappings
-similar to `ip` (inner paragraph) and `ap` (a paragraph).
-
-Query files: `textobjects.scm`.
+Query files: `indents.scm`.
 Supported options:
 - enable: `true` or `false`.
 - disable: list of languages.
-- keymaps: map of keymaps to a tree-sitter query
-  (`(function_definition) @function`) or capture group (`@function.inner`).
-
 >
   lua <<EOF
   require'nvim-treesitter.configs'.setup {
-    textobjects = {
-      select = {
-        enable = true,
-        keymaps = {
-          -- You can use the capture groups defined in textobjects.scm
-          ["af"] = "@function.outer",
-          ["if"] = "@function.inner",
-          ["ac"] = "@class.outer",
-          ["ic"] = "@class.inner",
-
-          -- Or you can define your own textobjects like this
-          ["iF"] = {
-            python = "(function_definition) @function",
-            cpp = "(function_definition) @function",
-            c = "(function_definition) @function",
-            java = "(method_declaration) @function",
-          },
-        },
-      },
+    indent = {
+      enable = true
     },
   }
   EOF
 <
-
-                                    *nvim-treesitter-text-objects-swap-submod*
-Swap text objects~
-
-Define your own mappings to swap the node under the cursor with the next or previous one,
-like function parameters or arguments.
-
-Query files: `textobjects.scm`.
-Supported options:
-- enable: `true` or `false`.
-- disable: list of languages.
-- swap_next: map of keymaps to a tree-sitter capture group (`@parameter.inner`).
-- swap_previous: same as swap_next.
-
->
-  lua <<EOF
-  require'nvim-treesitter.configs'.setup {
-    textobjects = {
-      swap = {
-        enable = true,
-        swap_next = {
-          ["<leader>a"] = "@parameter.inner",
-        },
-        swap_previous = {
-          ["<leader>A"] = "@parameter.inner",
-        },
-      },
-    },
-  }
-  EOF
-<
-
-                                    *nvim-treesitter-text-objects-move-submod*
-Go to next/previous text object~
-
-Define your own mappings to jump to the next or previous text object.
-This is similar to |]m|, |[m|, |]M|, |[M| Neovim's mappings to jump to the next
-or previous function.
-
-Query files: `textobjects.scm`.
-Supported options:
-- enable: `true` or `false`.
-- disable: list of languages.
-- goto_next_start: map of keymaps to a tree-sitter capture group (`@function.outer`).
-- goto_next_end: same as goto_next_start, but it jumps to the start of
-  the text object.
-- goto_previous_start: same as goto_next_start, but it jumps to the previous
-  text object.
-- goto_previous_end: same as goto_next_end, but it jumps to the previous
-  text object.
-
->
-  lua <<EOF
-  require'nvim-treesitter.configs'.setup {
-    textobjects = {
-      move = {
-        enable = true,
-        goto_next_start = {
-          ["]m"] = "@function.outer",
-          ["]]"] = "@class.outer",
-        },
-        goto_next_end = {
-          ["]M"] = "@function.outer",
-          ["]["] = "@class.outer",
-        },
-        goto_previous_start = {
-          ["[m"] = "@function.outer",
-          ["[["] = "@class.outer",
-        },
-        goto_previous_end = {
-          ["[M"] = "@function.outer",
-          ["[]"] = "@class.outer",
-        },
-      },
-    },
-  }
-  EOF
-<
-
 ==============================================================================
 USER QUERY EXTENSIONS                        *nvim-treesitter-query-extensions*
 
@@ -412,6 +308,52 @@ Sets cursor to the position of `node` in the current windows.
 If `goto_end` is truthy, the cursor is set to the end the node range.
 Setting `avoid_set_jump` to `true`, avoids setting the current cursor position
 to the jump list.
+
+						  *ts_utils.swap_nodes*
+swap_nodes(node_or_range1, node_or_range2, bufnr, cursor_to_second)~
+
+Swaps the nodes or ranges.
+set `cursor_to_second`  to true to move the cursor to the second node
+
+						  *ts_utils.memoize_by_buf_tick*
+memoize_by_buf_tick(fn)~
+
+Cache values by bufnr tick change
+
+		`fn`: a function that takes a bufnr as argument
+		and returns a value to store.
+		`returns`: a function to call with bufnr as argument to
+		retrieve the value from the cache
+
+						    *ts_utils.node_to_lsp_range*
+node_to_lsp_range(node)~
+
+Get an lsp formatted range from a node range
+
+						    *ts_utils.get_node_range*
+get_node_range(node_or_range)~
+
+Get the range from either a node or a range
+
+						    *ts_utils.node_length*
+node_length(node)~
+
+Get the byte length of node range
+
+						    *ts_utils.update_selection*
+update_selection(buf, node)~
+
+Set the selection to the node range
+
+						    *ts_utils.highlight_range*
+highlight_range(range, buf, hl_namespace, hl_group)~
+
+Set a highlight that spans the given range
+
+						    *ts_utils.highlight_node*
+highlight_node(node, buf, hl_namespace, hl_group)~
+
+Set a highlight that spans the given node's range
 
 ==============================================================================
 FUNCTIONS                                          *nvim-treesitter-functions*

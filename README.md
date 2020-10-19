@@ -75,6 +75,7 @@ provides two command to tackle this issue:
 - `TSInstall {language}` to install one or more parsers.
   `TSInstall <tab>` will give you a list of supported languages, or select `all` to install them all.
 - `TSInstallInfo` to know which parser is installed.
+- `TSUpdate` to update already installed parsers
 
 Let's say you need parsers for `lua`, this is how you install it:
 
@@ -150,6 +151,18 @@ require'nvim-treesitter.configs'.setup {
       node_decremental = "grm",
     },
   },
+}
+```
+
+## Indentation
+
+Treesitter based indentation (`=` vim behavior)
+
+```lua
+require'nvim-treesitter.config'.setup {
+  indent = {
+    enable = true
+  }
 }
 ```
 
