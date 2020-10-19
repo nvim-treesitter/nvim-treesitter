@@ -8,7 +8,7 @@ local M = {}
 
 local query_cache = caching.create_buffer_cache()
 
-M.built_in_query_groups = {'highlights', 'locals', 'textobjects', 'folds', 'indents'}
+M.built_in_query_groups = {'highlights', 'locals', 'folds', 'indents'}
 
 -- Creates a function that checks whether a given query exists
 -- for a specific language.
