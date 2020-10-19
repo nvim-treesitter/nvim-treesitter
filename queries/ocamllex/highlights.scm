@@ -3,10 +3,12 @@
 
 (lexer_entry_name) @function
 
-["as" "let" "parse" "rule"] @keyword
+["as" "let" "and" "parse" "rule"] @keyword
 
 [(eof) (character)] @character
 (string) @string
+
+(ocaml) @none
 
 (character_range "-" @operator)
 (character_set "^" @operator)
@@ -16,7 +18,7 @@
 (regexp_repetition ["*"] @operator)
 (regexp_strict_repetition ["+"] @operator)
 
-(action ["{" "}"] @punctuation.special) @embedded
+(action ["{" "}"] @punctuation.special)
 (character_set ["[" "]"] @punctuation.bracket)
 (parenthesized_regexp ["(" ")"] @punctuation.bracket)
 
