@@ -165,6 +165,8 @@ Other modules can be installed as plugins.
 - [refactor](https://github.com/nvim-treesitter/nvim-treesitter-refactor) - Refactoring and definition modules
 - [textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) - Textobjects defined by tree-sitter queries
 - [playground](https://github.com/nvim-treesitter/playground) - Treesitter integrated playground
+- [context](https://github.com/romgrk/nvim-treesitter-context) - Show parent code context in a popover
+
 
 # Extra features
 
