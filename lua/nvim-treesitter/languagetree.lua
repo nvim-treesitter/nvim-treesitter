@@ -116,15 +116,22 @@ function LanguageTree:update()
   local seen = {}
 
   -- Update each child accordingly
+  -- TODO(vigoux): for now avoid languages that include themselves, will
+  -- be fixed when managing our own parsers
   for lang, ranges in pairs(injections) do
-    if not self.children[lang] then
-      self.children[lang] = LanguageTree.new(self.parser.bufnr, lang, true)
-    end
 
-    if self.children[lang] then
-      self.children[lang].parser:set_included_ranges(ranges)
-      self.children[lang]:update()
-      seen[lang] = true
+    if lang ~= self.parser.lang then
+
+      if not self.children[lang] then
+        vim.api.nvim_err_writeln("Creating node for language " .. lang)
+        self.children[lang] = LanguageTree.new(self.parser.bufnr, lang, true)
+      end
+
+      if self.children[lang] then
+        self.children[lang].parser:set_included_ranges(ranges)
+        self.children[lang]:update()
+        seen[lang] = true
+      end
     end
   end
 
