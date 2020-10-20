@@ -255,6 +255,7 @@ List of currently supported languages:
 - [x] [toml](https://github.com/ikatyang/tree-sitter-toml) (maintained by @tk-shirasaka)
 - [ ] [tsx](https://github.com/tree-sitter/tree-sitter-typescript)
 - [x] [typescript](https://github.com/tree-sitter/tree-sitter-typescript) (maintained by @steelsojka)
+- [x] [verilog](https://github.com/tree-sitter/tree-sitter-verilog) (maintained by @zegervdv)
 - [ ] [vue](https://github.com/ikatyang/tree-sitter-vue)
 - [ ] [yaml](https://github.com/ikatyang/tree-sitter-yaml)
 <!--parserinfo-->
