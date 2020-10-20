@@ -122,7 +122,8 @@
 (function_call (field_expression (property_identifier) @function) . (arguments))
 
 ;; Parameters
-(function [(parameters) (identifier)] @parameter)
+(function [(parameters (identifier))] @parameter)
+
 ;; Nodes
 (table ["{" "}"] @constructor)
 (comment) @comment
