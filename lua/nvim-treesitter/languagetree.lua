@@ -123,7 +123,6 @@ function LanguageTree:update()
     if lang ~= self.parser.lang then
 
       if not self.children[lang] then
-        vim.api.nvim_err_writeln("Creating node for language " .. lang)
         self.children[lang] = LanguageTree.new(self.parser.bufnr, lang, true)
       end
 
