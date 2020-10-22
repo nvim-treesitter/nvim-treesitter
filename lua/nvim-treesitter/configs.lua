@@ -20,7 +20,7 @@ local builtin_modules = {
   highlight = {
     module_path = 'nvim-treesitter.highlight',
     enable = false,
-    disable = {},
+    disable = {'markdown'}, -- FIXME(vigoux): markdown highlighting breaks everything for now
     custom_captures = {},
     is_supported = queries.has_highlights
   },
