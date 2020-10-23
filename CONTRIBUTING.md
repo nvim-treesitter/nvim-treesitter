@@ -235,34 +235,6 @@ Possible scope values are:
 - `global`: The definition is valid in the root scope
 - `local`: The definition is valid in the containing scope. This is the default behavior
 
-### Text objects
-
-You can define text objects based on nodes of the grammar by adding queries in `textobjects.scm`.
-Each capture group can be declared as `inner` or `outer`.
-
-```
-@function.inner
-@function.outer
-@class.inner
-@class.outer
-@conditional.inner
-@conditional.outer
-@loop.inner
-@loop.outer
-@call.inner
-@call.outer
-@block.inner
-@block.outer
-```
-
-Some nodes only have one type:
-
-```
-@comment.outer
-@parameter.inner
-@statement.outer
-```
-
 ### Folds
 
 You can define folds for a given language by adding a `folds.scm` query :
