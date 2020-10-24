@@ -27,7 +27,7 @@ local function reset_progress_counter()
 end
 
 local function get_job_status()
-  return "["..finished_commands.."/"..started_commands
+  return "[nvim-treesitter] ["..finished_commands.."/"..started_commands
             ..(failed_commands > 0 and ", failed: "..failed_commands or "").."]"
 end
 
