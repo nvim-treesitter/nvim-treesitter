@@ -91,6 +91,23 @@
   (rest_parameter
     (identifier) @parameter))
 
+; ({ a }) => null
+(formal_parameters
+  (object_pattern
+    (shorthand_property_identifier) @parameter))
+
+; ({ a: b }) => null
+(formal_parameters
+  (object_pattern
+    (pair
+      value: (identifier) @parameter)))
+
+; ([ a ]) => null
+(formal_parameters
+  (array_pattern
+    (identifier) @parameter))
+
+; ( a ) => null
 (variable_declarator                                                                                                                                                                                        
     value: (arrow_function                                                                                                                                                                                    
       parameter: (identifier) @parameter))
