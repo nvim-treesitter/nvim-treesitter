@@ -228,6 +228,7 @@ List of currently supported languages:
 - [ ] [elm](https://github.com/razzeee/tree-sitter-elm)
 - [x] [fennel](https://github.com/travonted/tree-sitter-fennel) (maintained by @TravonteD)
 - [x] [go](https://github.com/tree-sitter/tree-sitter-go) (maintained by @theHamsta, @WinWisely268)
+- [x] [graphql](https://github.com/dralletje/tree-sitter-graphql) (maintained by @kyazdani42)
 - [ ] [haskell](https://github.com/tree-sitter/tree-sitter-haskell)
 - [x] [html](https://github.com/tree-sitter/tree-sitter-html) (maintained by @TravonteD)
 - [x] [java](https://github.com/tree-sitter/tree-sitter-java) (maintained by @p00f)
