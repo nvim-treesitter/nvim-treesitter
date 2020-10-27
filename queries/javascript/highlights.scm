@@ -107,7 +107,7 @@
   (array_pattern
     (identifier) @parameter))
 
-; ( a ) => null
+; a => null
 (variable_declarator                                                                                                                                                                                        
     value: (arrow_function                                                                                                                                                                                    
       parameter: (identifier) @parameter))
