@@ -320,6 +320,14 @@ list.query = {
   maintainers = {"@steelsojka"},
 }
 
+list.graphql = {
+  install_info = {
+    url = "https://github.com/dralletje/tree-sitter-graphql",
+    files = { "src/parser.c"}
+  },
+  maintainers = {"@kyazdani42"},
+}
+
 local M = {
   list = list
 }
