@@ -208,7 +208,7 @@ end
 
 function M.update(lang)
   reset_progress_counter()
-  if lang then
+  if lang and lang ~= 'all' then
     install(false, 'force')(lang)
   else
     local installed = info.installed_parsers()
