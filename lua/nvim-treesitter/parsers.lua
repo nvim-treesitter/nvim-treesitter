@@ -20,6 +20,14 @@ list.c = {
   maintainers = {"@vigoux"},
 }
 
+list.clojure = {
+  install_info = {
+    url = "https://github.com/sogaiu/tree-sitter-clojure",
+    files = { "src/parser.c" }
+  },
+  maintainers = {"@sogaiu"},
+}
+
 list.cpp = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-cpp",
