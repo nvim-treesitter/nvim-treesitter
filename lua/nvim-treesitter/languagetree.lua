@@ -61,10 +61,26 @@ function LanguageTree:node_for_range(range)
       return child:node_for_range(range)
     end
   end
+end
 
-  if self:contains(range) then
-    return self
+function LanguageTree:nodes_for_line(range, result)
+  result = result or {}
+
+  if self:contains(range, true) then
+    table.insert(result, self)
   end
+
+  for _, child in pairs(self.children) do
+    if child:contains(range, true) then
+      child:nodes_for_line(range, result)
+    end
+  end
+
+  return result
+end
+
+local function range_contains_line(source, dest)
+  return source[1] <= dest[1] and source[3] >= dest[3]
 end
 
 local function range_contains(source, dest)
@@ -74,9 +90,11 @@ local function range_contains(source, dest)
   return start_fits and end_fits
 end
 
-function LanguageTree:contains(range)
+function LanguageTree:contains(range, line_only)
   for _, source in pairs(self.parser:included_ranges()) do
-    if range_contains(source, range) then
+    local contains_fn = line_only and range_contains_line or range_contains
+
+    if contains_fn(source, range) then
       return true
     end
   end
@@ -148,9 +166,12 @@ function LanguageTree._on_line(_, _win, buf, line)
 
   local line_len = #(vim.api.nvim_buf_get_lines(buf, line, line + 1, false)[1])
 
-  local matching = tree:node_for_range { line, 0, line, line_len } -- TODO proper search here
+  local matches = tree:nodes_for_line { line, 0, line, line_len } -- TODO proper search here
 
-  TSHighlighter._on_line("line", _win, buf, line, matching.highlighter)
+  -- Matches are from least specific to most specific range (parent -> child)
+  for _, match in ipairs(matches) do
+    TSHighlighter._on_line("line", _win, buf, line, match.highlighter)
+  end
 end
 
 vim.api.nvim_set_decoration_provider(ns, {
