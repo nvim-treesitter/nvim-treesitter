@@ -65,7 +65,6 @@
 
 (method_call
   [
-   receiver: (constant) @type
    method: [
             (identifier)
             (constant)
