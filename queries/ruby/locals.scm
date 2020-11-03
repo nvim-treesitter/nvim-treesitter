@@ -41,18 +41,14 @@
 (method_parameters (identifier) @definition.var)
 (lambda_parameters (identifier) @definition.var)
 (block_parameters (identifier) @definition.var)
-(splat_parameter name: (identifier) @definition.var)
-(hash_splat_parameter name: (identifier) @definition.var)
+(splat_parameter (identifier) @definition.var)
+(hash_splat_parameter (identifier) @definition.var)
 (optional_parameter name: (identifier) @definition.var)
-(destructured_parameter name: (identifier) @definition.var)
+(destructured_parameter (identifier) @definition.var)
 (block_parameter name: (identifier) @definition.var)
 (keyword_parameter name: (identifier) @definition.var)
 
-(assignment left: [
-                   (identifier)
-                   (instance_variable)
-                   (constant)
-                   ] @definition.var)
+(assignment left: (_lhs) @definition.var)
 
 (left_assignment_list (identifier) @definition.var)
 (rest_assignment (identifier) @definition.var)
