@@ -5,7 +5,7 @@
   body: (block
           (expression_statement
             (assignment
-              left: (expression_list
+              left: (left_hand_side
                       (identifier) @definition.associated))))) @scope
 
 ; Imports
@@ -35,12 +35,12 @@
 
 ; *args parameter
 (parameters
-  (list_splat
+  (list_splat_pattern
     (identifier) @definition.parameter))
 
 ; **kwargs parameter
 (parameters
-  (dictionary_splat
+  (dictionary_splat_pattern
     (identifier) @definition.parameter))
 
 ; Function defines function and scope
@@ -61,7 +61,7 @@
 ;;; Loops
 ; not a scope!
 (for_statement
-  left: (variables
+  left: (left_hand_side
           (identifier) @definition.var))
 
 ; not a scope!
@@ -69,7 +69,7 @@
 
 ; for in list comprehension
 (for_in_clause
-  left: (variables
+  left: (left_hand_side
           (identifier) @definition.var))
 
 (dictionary_comprehension) @scope
