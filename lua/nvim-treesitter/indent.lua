@@ -65,6 +65,7 @@ local indent_funcs = {}
 
 function M.attach(bufnr)
   indent_funcs[bufnr] = vim.bo.indentexpr
+  vim.b.did_indent = 1
   vim.bo.indentexpr = 'nvim_treesitter#indent()'
 end
 
