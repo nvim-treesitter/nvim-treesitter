@@ -397,7 +397,7 @@ end
 function M.get_tree_root(bufnr)
   local bufnr = bufnr or api.nvim_get_current_buf()
 
-  return M.get_parser(bufnr).tree:root()
+  return M.get_parser(bufnr):parse():root()
 end
 
 -- get language of given buffer

@@ -235,7 +235,7 @@ function M.find_usages(node, scope_node, bufnr)
 
   if not node_text or #node_text < 1 then return {} end
 
-  local scope_node = scope_node or parsers.get_parser(bufnr).tree:root()
+  local scope_node = scope_node or parsers.get_parser(bufnr):parse():root()
   local usages = {}
 
   for match in M.iter_locals(bufnr, scope_node) do
