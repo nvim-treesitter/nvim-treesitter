@@ -112,6 +112,11 @@
     value: (arrow_function                                                                                                                                                                                    
       parameter: (identifier) @parameter))
 
+; optional parameters
+(formal_parameters
+  (assignment_pattern
+    (shorthand_property_identifier) @parameter))
+
 ; Variables
 ;----------
 (namespace_import
