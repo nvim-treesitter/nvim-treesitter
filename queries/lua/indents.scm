@@ -6,6 +6,7 @@
   (for_statement)
   (for_in_statement)
   (repeat_statement)
+  (return_statement)
   (while_statement)
   (table)
   (arguments)
