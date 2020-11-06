@@ -102,7 +102,8 @@
   "|"
 ] @punctuation.delimiter
 
-(className) @type
+(dataclass name: (className) @type)
+(datatype name: (className) @type)
 
 (varName) @variable
 
@@ -111,6 +112,7 @@
 
 (string) @string
 
+(charpred (className) @function)
 (aritylessPredicateExpr (literalId) @function)
 (predicateName) @function
 
