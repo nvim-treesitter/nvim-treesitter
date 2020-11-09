@@ -1,0 +1,20 @@
+name: Linting and style checking
+
+on: [push, pull_request]
+
+jobs:
+  luacheck:
+    name: Luacheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Prepare
+        run: |
+          sudo apt-get update
+          sudo add-apt-repository universe
+          sudo apt install luarocks -y
+          sudo luarocks install luacheck
+
+      - name: Run Luacheck
+        run: sudo ./scripts/style-check.sh

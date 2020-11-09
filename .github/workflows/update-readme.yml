@@ -1,0 +1,35 @@
+name: Check README parser info
+
+on: push
+
+jobs:
+  update-readme:
+    name: Check README parser info
+    runs-on: ubuntu-latest
+    if: github.ref != 'master'
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Prepare
+        run: |
+          sudo apt-get update
+          sudo add-apt-repository universe
+          wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+          chmod u+x nvim.appimage
+          mkdir -p ~/.local/share/nvim/site/pack/nvim-treesitter/start
+          ln -s $(pwd) ~/.local/share/nvim/site/pack/nvim-treesitter/start
+
+      # inspired by nvim-lspconfigs
+      - name: Check README
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_MSG: |
+            [docgen] Update README.md
+            skip-checks: true
+        run: |
+          git config user.email "actions@github"
+          git config user.name "Github Actions"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          ./nvim.appimage --headless -c "luafile ./scripts/update-readme.lua" -c "q" || git add README.md
+          # Only commit and push if we have changes
+          git diff --quiet && git diff --staged --quiet || (git commit -m "${COMMIT_MSG}"; git push origin HEAD:${GITHUB_REF})

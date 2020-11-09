@@ -1,0 +1,588 @@
+*nvim-treesitter*
+
+Minimum version of neovim: nightly
+
+Authors: Yazdani Kiyan <yazdani.kiyan@protonmail.com>
+         Vigouroux Thomas <tomvig38@gmail.com>
+         https://github.com/nvim-treesitter/nvim-treesitter/graphs/contributors
+
+                                       Type |gO| to see the table of contents.
+
+==============================================================================
+INTRODUCTION                                           *nvim-treesitter-intro*
+
+nvim-treesitter wraps the Neovim treesitter API to provide functionnalities
+such as highlighting and incremental selection, and a command to easily
+install parsers.
+
+==============================================================================
+QUICK START                                       *nvim-treesitter-quickstart*
+
+Install the parser for your language
+
+>
+  :TSInstall {language}
+<
+
+To get a list of supported languages
+
+>
+  :TSInstallInfo
+<
+
+By default, everything is disabled.
+To enable supported features, put this in your `init.vim` file:
+
+>
+  lua <<EOF
+  require'nvim-treesitter.configs'.setup {
+    ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    highlight = {
+      enable = true,              -- false will disable the whole extension
+      disable = { "c", "rust" },  -- list of language that will be disabled
+    },
+  }
+  EOF
+<
+
+See |nvim-treesitter-modules| for a list of all available modules and its options.
+
+==============================================================================
+MODULES                                              *nvim-treesitter-modules*
+
+|nvim-treesitter| provides several functionalities via modules (and submodules),
+each module makes use of the query files defined for each language,
+you can add your own queries too, see |nvim-treesitter-query-extensions|.
+
+All modules are disabled by default, and some provide default keymaps.
+Each module corresponds to an entry in the dictionary passed to the
+`nvim-treesitter.configs.setup` function, this should be in your `init.vim` file.
+
+>
+  lua <<EOF
+  require'nvim-treesitter.configs'.setup {
+    -- Modules and its options go here
+    highlight = { enable = true },
+    incremental_selection = { enable = true },
+    textobjects = { enable = true },
+  }
+  EOF
+<
+
+All modules share some common options, like `enable` and `disable`.
+When `enable` is `true` this will enable the module for all supported languages,
+if you want to disable the module for some languages you can pass a list to the `disable` option.
+
+>
+  lua <<EOF
+  require'nvim-treesitter.configs'.setup {
+    highlight = {
+      enable = true,
+      disable = { "cpp", "lua" },
+    },
+  }
+  EOF
+<
+
+Options that define or accept a keymap use the same format you use to define
+keymaps in Neovim, so you can write keymaps as  `gd`, `<space>a`, `<leader>a`
+`<C-a>` (control + a), `<A-n>` (alt + n), `<CR>` (enter), etc.
+
+External plugins can provide their own modules with their own options,
+those can also be configured using the `nvim-treesitter.configs.setup`
+function.
+
+------------------------------------------------------------------------------
+HIGHLIGHT                                      *nvim-treesitter-highlight-mod*
+
+Consistent syntax highlighting.
+
+Query files: `highlights.scm`.
+Supported options:
+
+- enable: `true` or `false`.
+- disable: list of languages.
+- custom_captures: A map of user defined capture groups to highlight groups.
+  See |nvim-treesitter-query-extensions|.
+
+>
+  lua <<EOF
+  require'nvim-treesitter.configs'.setup {
+    highlight = {
+      enable = true,
+      use_languagetree = false, -- Use this to enable language injection
+      custom_captures = {
+        -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
+        ["foo.bar"] = "Identifier",
+      },
+    },
+  }
+  EOF
+<
+Note: The api is not stable yet.
+
+------------------------------------------------------------------------------
+INCREMENTAL SELECTION              *nvim-treesitter-incremental-selection-mod*
+
+Incremental selection based on the named nodes from the grammar.
+
+Query files: `locals.scm`.
+Supported options:
+- enable: `true` or `false`.
+- disable: list of languages.
+- keymaps:
+  - init_selection: in normal mode, start incremental selection.
+    Defaults to `gnn`.
+  - node_incremental: in visual mode, increment to the upper named parent.
+    Defaults to `grn`.
+  - scope_incremental: in visual mode, increment to the upper scope
+    (as defined in `locals.scm`). Defaults to `grc`.
+  - node_decremental: in visual mode, decrement to the previous named node.
+    Defaults to `grm`.
+
+>
+  lua <<EOF
+  require'nvim-treesitter.configs'.setup {
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = "gnn",
+        node_incremental = "grn",
+        scope_incremental = "grc",
+        node_decremental = "grm",
+      },
+    },
+  }
+  EOF
+<
+
+------------------------------------------------------------------------------
+INDENTATION                                  *nvim-treesitter-indentation-mod*
+
+Indentation based on treesitter for the |=| operator
+
+Query files: `indents.scm`.
+Supported options:
+- enable: `true` or `false`.
+- disable: list of languages.
+>
+  lua <<EOF
+  require'nvim-treesitter.configs'.setup {
+    indent = {
+      enable = true
+    },
+  }
+  EOF
+<
+==============================================================================
+USER QUERY EXTENSIONS                        *nvim-treesitter-query-extensions*
+
+Queries are what `nvim-treesitter` uses to extract informations from the syntax tree, and they are
+located in the `queries/{lang}/*` runtime directories (like the `queries` folder of this plugin).
+
+`nvim-treesitter` considers queries as any runtime file (see `:h rtp`), that is :
+
+- if the file is in any `after/queries/` folder, then it will be used to extend the already defined
+  queries.
+- Otherwise, it will be used as a base to define the query, the first query found (with the highest
+  priority) will be the only one to be used.
+
+This hybrid approach is the most standard way, and according to that, here is some ideas on how to
+use is :
+- If you want to rewrite (or write) a query, don't use `after/queries`.
+- If you want to override a part of a query (only one match for example), use the `after/queries`
+  directory.
+
+==============================================================================
+COMMANDS                                            *nvim-treesitter-commands*
+
+                                                                  *:TSInstall*
+:TSInstall| {language} ...~
+
+Install one or more treesitter parsers.
+You can use |:TSInstall| `all` to install all parsers.
+
+                                                              *:TSInstallInfo*
+:TSInstallInfo~
+
+List informations about currently installed parsers
+
+                                                                   *:TSUpdate*
+:TSUpdate {language}~
+
+Update the installed parser of {language} or all installed parsers
+if {language} is omitted.
+
+                                                                *:TSUninstall*
+:TSUninstall {language}~
+
+Deletes the parser for corresponding {language}. You can use 'all' for
+language to uninstall all parsers.
+
+                                                                *:TSBufEnable*
+:TSBufEnable {module}~
+
+Enable {module} on the current buffer.
+A list of modules can be found at |:TSModuleInfo|
+
+                                                               *:TSBufDisable*
+:TSBufDisable {module}~
+
+Disable {module} on the current buffer
+A list of modules can be found at |:TSModuleInfo|
+
+                                                             *:TSBufEnableAll*
+:TSBufEnableAll {module} [{language}]~
+
+Enable {module} for the session
+if {language} is specified, enable module for the session only for this
+particular language.
+A list of modules can be found at |:TSModuleInfo|
+A list of languages can be found at |:TSInstallInfo|
+
+                                                            *:TSBufDisableAll*
+:TSBufDisableAll {module} [{language}]~
+
+Disable {module} for the session
+if {language} is specified, disable module for the session only for this
+particular language.
+A list of modules can be found at |:TSModuleInfo|
+A list of languages can be found at |:TSInstallInfo|
+
+                                                               *:TSModuleInfo*
+:TSModuleInfo [{module}]~
+
+List modules state for the current session.
+
+==============================================================================
+UTILS                                                  *nvim-treesitter-utils*
+
+Nvim treesitter has some wrapper functions that you can retrieve with:
+>
+    local ts_utils = require 'nvim-treesitter.ts_utils'
+<
+Methods
+                                                 *ts_utils.get_node_at_cursor*
+get_node_at_cursor(winnr)~
+
+`winnr` will be 0 if nil.
+Returns the node under the cursor.
+
+                                                      *ts_utils.get_node_text*
+get_node_text(node, bufnr)~
+
+Returns the text content of a `node`.
+
+                                                          *ts_utils.is_parent*
+is_parent(dest, source)~
+
+Determines whether `dest` is a parent of `source`.
+Returns a boolean.
+
+                                                 *ts_utils.get_named_children*
+get_named_children(node)~
+
+Returns a table of named children of `node`.
+
+                                                      *ts_utilsiget_next_node*
+get_next_node(node, allow_switch_parent, allow_next_parent)~
+
+Returns the next node within the same parent.
+If no node is found, returns `nil`.
+If `allow_switch_parent` is true, it will allow switching parent
+when the node is the last node.
+If `allow_next_parent` is true, it will allow next parent if
+the node is the last node and the next parent doesn't have children.
+
+                                                  *ts_utils.get_previous_node*
+get_previous_node(node, allow_switch_parents, allow_prev_parent)~
+
+Returns the previous node within the same parent.
+`allow_switch_parent` and `allow_prev_parent` follow the same rule
+as |ts_utils.get_next_node| but if the node is the first node.
+
+                                                         *ts_utils.goto_node*
+goto_node(node, goto_end, avoid_set_jump)~
+
+Sets cursor to the position of `node` in the current windows.
+If `goto_end` is truthy, the cursor is set to the end the node range.
+Setting `avoid_set_jump` to `true`, avoids setting the current cursor position
+to the jump list.
+
+						  *ts_utils.swap_nodes*
+swap_nodes(node_or_range1, node_or_range2, bufnr, cursor_to_second)~
+
+Swaps the nodes or ranges.
+set `cursor_to_second`  to true to move the cursor to the second node
+
+						  *ts_utils.memoize_by_buf_tick*
+memoize_by_buf_tick(fn)~
+
+Cache values by bufnr tick change
+
+		`fn`: a function that takes a bufnr as argument
+		and returns a value to store.
+		`returns`: a function to call with bufnr as argument to
+		retrieve the value from the cache
+
+						    *ts_utils.node_to_lsp_range*
+node_to_lsp_range(node)~
+
+Get an lsp formatted range from a node range
+
+						    *ts_utils.get_node_range*
+get_node_range(node_or_range)~
+
+Get the range from either a node or a range
+
+						    *ts_utils.node_length*
+node_length(node)~
+
+Get the byte length of node range
+
+						    *ts_utils.update_selection*
+update_selection(buf, node)~
+
+Set the selection to the node range
+
+						    *ts_utils.highlight_range*
+highlight_range(range, buf, hl_namespace, hl_group)~
+
+Set a highlight that spans the given range
+
+						    *ts_utils.highlight_node*
+highlight_node(node, buf, hl_namespace, hl_group)~
+
+Set a highlight that spans the given node's range
+
+==============================================================================
+FUNCTIONS                                          *nvim-treesitter-functions*
+
+                                          *nvim_treesitter#statusline()*
+nvim_treesitter#statusline(opts)~
+
+Returns a string describing the current position in the file. This
+could be used as a statusline indicator.
+Default options (lua syntax):
+>
+  {
+    indicator_size = 100,
+    type_patterns = {'class', 'function', 'method'},
+    transform_fn = function(line) return line:gsub('%s*[%[%(%{]*%s*$', '') end,
+    separator = ' -> '
+  }
+<
+- `indicator_size` - How long should the string be. If longer, it is cut from
+  the beginning.
+- `type_patterns` - Which node type patterns to match.
+- `transform_fn` - Function used to transform the single item in line. By
+  default removes opening brackets and spaces from end.
+- `separator` - Separator between nodes.
+
+                                                  *nvim_treesitter#foldexpr()*
+nvim_treesitter#foldexpr()~
+
+Functions to be used to determine the fold level at a given line number.
+To use it: >
+  set foldmethod=expr
+  set foldexpr=nvim_treesitter#foldexpr()
+<
+
+This will respect your 'foldnestmax' setting.
+
+Note: This is highly experimental, and folding can break on some types of
+      edits. If you encounter such breakage, hiting `zx` should fix folding.
+      In any case, feel free to open an issue with the reproducing steps.
+
+==============================================================================
+HIGHLIGHTS                                        *nvim-treesitter-highlights*
+
+`TSError`
+                                                                  *hl-TSError*
+For syntax/parser errors.
+
+`TSPunctDelimiter`
+                                                         *hl-TSPunctDelimiter*
+For delimiters ie: `.`
+
+`TSPunctBracket`
+                                                           *hl-TSPunctBracket*
+For brackets and parens.
+
+`TSPunctSpecial`
+                                                           *hl-TSPunctSpecial*
+For special punctutation that does not fall in the catagories before.
+
+`TSConstant`
+                                                               *hl-TSConstant*
+For constants
+
+`TSConstBuiltin`
+                                                           *hl-TSConstBuiltin*
+For constant that are built in the language: `nil` in Lua.
+
+`TSConstMacro`
+                                                             *hl-TSConstMacro*
+For constants that are defined by macros: `NULL` in C.
+
+`TSString`
+                                                                 *hl-TSString*
+For strings.
+
+`TSStringRegex`
+                                                            *hl-TSStringRegex*
+For regexes.
+
+`TSStringEscape`
+                                                           *hl-TSStringEscape*
+For escape characters within a string.
+
+`TSCharacter`
+                                                              *hl-TSCharacter*
+For characters.
+
+`TSNumber`
+                                                                 *hl-TSNumber*
+For integers.
+
+`TSBoolean`
+                                                                *hl-TSBoolean*
+For booleans.
+
+`TSFloat`
+                                                                  *hl-TSFloat*
+For floats.
+
+`TSFunction`
+                                                               *hl-TSFunction*
+For function (calls and definitions).
+
+`TSFuncBuiltin`
+                                                            *hl-TSFuncBuiltin*
+For builtin functions: `table.insert` in Lua.
+
+`TSFuncMacro`
+                                                              *hl-TSFuncMacro*
+For macro defined fuctions (calls and definitions): each `macro_rules` in
+Rust.
+
+`TSParameter`
+                                                              *hl-TSParameter*
+For parameters of a function.
+
+`TSParameterReference`
+                                                     *hl-TSParameterReference*
+For references to parameters of a function.
+
+`TSMethod`
+                                                                 *hl-TSMethod*
+For method calls and definitions.
+
+`TSField`
+                                                                  *hl-TSField*
+For fields.
+
+`TSProperty`
+                                                               *hl-TSProperty*
+Same as `TSField`.
+
+`TSConstructor`
+                                                            *hl-TSConstructor*
+For constructor calls and definitions: `{}` in Lua, and Java constructors.
+
+`TSConditional`
+                                                            *hl-TSConditional*
+For keywords related to conditionnals.
+
+`TSRepeat`
+                                                                 *hl-TSRepeat*
+For keywords related to loops.
+
+`TSLabel`
+                                                                  *hl-TSLabel*
+For labels: `label:` in C and `:label:` in Lua.
+
+`TSOperator`
+                                                               *hl-TSOperator*
+For any operator: `+`, but also `->` and `*` in C.
+
+`TSKeyword`
+                                                                *hl-TSKeyword*
+For keywords that don't fall in previous categories.
+
+`TSKeywordFunction`
+                                                        *hl-TSKeywordFunction*
+For keywords used to define a fuction.
+
+`TSException`
+                                                              *hl-TSException*
+For exception related keywords.
+
+`TSType`
+                                                                   *hl-TSType*
+For types.
+
+`TSTypeBuiltin`
+                                                            *hl-TSTypeBuiltin*
+For builtin types (you guessed it, right ?).
+
+`TSNamespace`
+                                                              *hl-TSNamespace*
+For identifiers referring to modules and namespaces.
+
+`TSInclude`
+                                                                *hl-TSInclude*
+For includes: `#include` in C, `use` or `extern crate` in Rust, or `require`
+in Lua.
+
+`TSAnnotation`
+                                                             *hl-TSAnnotation*
+For C++/Dart attributes, annotations that can be attached to the code to
+denote some kind of meta information.
+
+`TSText`
+                                                                   *hl-TSText*
+For strings considered text in a markup language.
+
+`TSStrong`
+                                                                 *hl-TSStrong*
+For text to be represented with strong.
+
+`TSEmphasis`
+                                                               *hl-TSEmphasis*
+For text to be represented with emphasis.
+
+`TSUnderline`
+                                                               *hl-TSUnderline*
+For text to be represented with an underline.
+
+`TSTitle`
+                                                                  *hl-TSTitle*
+
+Text that is part of a title.
+
+`TSLiteral`
+                                                                *hl-TSLiteral*
+Literal text.
+
+`TSURI`
+                                                                    *hl-TSURI*
+Any URI like a link or email.
+
+`TSVariable`
+                                                               *hl-TSVariable*
+Any variable name that does not have another highlight.
+
+`TSVariableBuiltin`
+                                                        *hl-TSVariableBuiltin*
+Variable names that are defined by the languages, like `this` or `self`.
+
+==============================================================================
+PERFORMANCE                                      *nvim-treesitter-performance*
+
+`nvim-treesitter` checks the 'runtimepath' on startup in order to discover
+available parsers and queries and index them. As a consequence, a very long
+'runtimepath' might result in delayed startup times.
+
+
+vim:tw=78:ts=8:expandtab:noet:ft=help:norl:
