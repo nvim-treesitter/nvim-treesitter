@@ -71,3 +71,5 @@
 
 ;; syntax quote
 (syn_quoting_lit) @string.escape
+
+["{" "}" "[" "]" "(" ")"] @punctuation.bracket
