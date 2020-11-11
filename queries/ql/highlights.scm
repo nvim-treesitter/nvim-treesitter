@@ -102,6 +102,9 @@
   "|"
 ] @punctuation.delimiter
 
+(moduleExpr (simpleId) @namespace)
+(module name: (moduleName) @namespace)
+
 (dataclass name: (className) @type)
 (datatype name: (className) @type)
 (typeExpr name: (className) @type)
