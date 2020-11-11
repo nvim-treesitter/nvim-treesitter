@@ -105,6 +105,7 @@ All modules are disabled by default,
 so you'll need to activate them by putting this in your `init.vim` file:
 
 ```lua
+lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
@@ -112,6 +113,7 @@ require'nvim-treesitter.configs'.setup {
     disable = { "c", "rust" },  -- list of language that will be disabled
   },
 }
+EOF
 ```
 
 Check [`:h nvim-treesitter-modules`](doc/nvim-treesitter.txt)
@@ -175,7 +177,6 @@ Other modules can be installed as plugins.
 - [playground](https://github.com/nvim-treesitter/playground) - Treesitter integrated playground
 - [context](https://github.com/romgrk/nvim-treesitter-context) - Show parent code context in a popover
 
-
 # Extra features
 
 ## Syntax based code folding
@@ -219,6 +220,7 @@ List of currently supported languages:
 
 <!--This section of the README is automatically updated by a CI job-->
 <!--parserinfo-->
+
 - [x] [bash](https://github.com/tree-sitter/tree-sitter-bash) (maintained by @TravonteD)
 - [x] [c](https://github.com/tree-sitter/tree-sitter-c) (maintained by @vigoux)
 - [x] [c_sharp](https://github.com/tree-sitter/tree-sitter-c-sharp) (maintained by @svermeulen)
@@ -327,6 +329,7 @@ located in the `queries/{lang}/*` runtime directories (like the `queries` folder
 
 This hybrid approach is the most standard way, and according to that, here is some ideas on how to
 use is :
+
 - If you want to rewrite (or write) a query, don't use `after/queries`.
 - If you want to override a part of a query (only one match for example), use the `after/queries`
   directory.
