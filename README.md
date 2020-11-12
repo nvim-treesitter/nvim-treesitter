@@ -104,7 +104,7 @@ And now you should be ready to use every functionality `nvim-treesitter` provide
 All modules are disabled by default,
 so you'll need to activate them by putting this in your `init.vim` file:
 
-```lua
+```vim
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -125,7 +125,8 @@ for a list of available modules and its options.
 
 Consistent syntax highlighting.
 
-```lua
+```vim
+lua <<EOF
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
@@ -136,13 +137,15 @@ require'nvim-treesitter.configs'.setup {
     },
   },
 }
+EOF
 ```
 
 ## Incremental selection
 
 Incremental selection based on the named nodes from the grammar.
 
-```lua
+```vim
+lua <<EOF
 require'nvim-treesitter.configs'.setup {
   incremental_selection = {
     enable = true,
@@ -154,18 +157,21 @@ require'nvim-treesitter.configs'.setup {
     },
   },
 }
+EOF
 ```
 
 ## Indentation
 
 Treesitter based indentation (`=` vim behavior)
 
-```lua
+```vim
+lua <<EOF
 require'nvim-treesitter.config'.setup {
   indent = {
     enable = true
   }
 }
+EOF
 ```
 
 # External modules
@@ -280,7 +286,8 @@ Users and plugin authors can take advantage of modules by creating their own. Mo
 
 You can use the `define_modules` function to define one or more modules or module groups.
 
-```lua
+```vim
+lua <<EOF
 require'nvim-treesitter'.define_modules {
   my_cool_plugin = {
     attach = function(bufnr, lang)
@@ -294,6 +301,7 @@ require'nvim-treesitter'.define_modules {
     end
   }
 }
+EOF
 ```
 
 Modules can consist of the following properties:
