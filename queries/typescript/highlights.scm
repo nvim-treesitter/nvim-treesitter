@@ -15,14 +15,30 @@
 ] @keyword
 
 (readonly) @keyword
+
+; types
+
 (type_identifier) @type
 (predefined_type) @type.builtin
+
+; punctuation
 
 (type_arguments
   "<" @punctuation.bracket
   ">" @punctuation.bracket)
 
+(type_annotation
+  ":" @punctuation.delimiter)
+
+(pair
+  ":" @punctuation.delimiter)
+
+(unary_expression) @punctuation.special
+
 ; Variables
+
+(shorthand_property_identifier) @variable
+(undefined) @variable.builtin
 
 (required_parameter (identifier) @parameter)
 (optional_parameter (identifier) @parameter)
