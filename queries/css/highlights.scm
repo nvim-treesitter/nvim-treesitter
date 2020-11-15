@@ -49,11 +49,13 @@
  (class_name)
  (id_name)
  (namespace_name)
- (property_name)
- (feature_name)
  (attribute_name)
  ] @property
 
+[
+ (property_name)
+ (feature_name)
+ ] @field
 
 ((property_name) @type
                  (#match? @type "^--"))
