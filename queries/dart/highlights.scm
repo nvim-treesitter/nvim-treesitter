@@ -26,6 +26,8 @@
   (identifier_dollar_escaped) @variable
 ) @none
 
+(escape_sequence) @string.escape
+
 [
  "@"
  "=>"
