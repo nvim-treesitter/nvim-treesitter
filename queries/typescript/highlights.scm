@@ -27,6 +27,12 @@
   "<" @punctuation.bracket
   ">" @punctuation.bracket)
 
+(union_type 
+  "|" @punctuation.delimiter)
+
+(intersection_type 
+  "&" @punctuation.delimiter)
+
 (type_annotation
   ":" @punctuation.delimiter)
 
@@ -34,6 +40,9 @@
   ":" @punctuation.delimiter)
 
 (unary_expression) @punctuation.special
+
+(property_signature 
+  "?" @punctuation.special)
 
 ; Variables
 
