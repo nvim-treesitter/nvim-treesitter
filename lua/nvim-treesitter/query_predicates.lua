@@ -24,9 +24,9 @@ query.add_predicate("nth?", function(match, pattern, bufnr, pred)
   if not valid_args("nth?", pred, 2, true) then return end
 
   local node = match[pred[2]]
-  local n = pred[3] - 1
-  if node and node:parent() and node:named_child_count() > n then
-    return node:named_child(n) == node
+  local n = pred[3]
+  if node and node:parent() and node:parent():named_child_count() > n then
+    return node:parent():named_child(n) == node
   end
 
   return false
