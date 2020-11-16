@@ -26,8 +26,8 @@ end
 
 function TSRange.from_nodes(buf, start_node, end_node)
   TSRange.__index = TSRange
-  local start_pos = {start_node:start()}
-  local end_pos = {end_node:end_()}
+  local start_pos = start_node and {start_node:start()} or {end_node:start()}
+  local end_pos = end_node and {end_node:end_()} or {start_node:end_()}
   return setmetatable(
     {
       start_pos = {start_pos[1], start_pos[2], start_pos[3]},
