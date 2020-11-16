@@ -89,12 +89,15 @@
   ">>"
   "<<"
   "|="
+  (inc_or_dec_operator)
 ] @operator
 
 (cast
  ["'" "(" ")"] @operator)
 
 (edge_identifier) @attribute
+
+";" @punctuation.delimiter
 
 (port_direction) @label
 (port_identifier
@@ -200,6 +203,7 @@
 [
   (integer_atom_type)
   (non_integer_type)
+  "genvar"
 ] @type.builtin
 
 (struct_union_member
@@ -217,3 +221,5 @@
 
 (type_declaration
  (simple_identifier) @type)
+
+(generate_block_identifier) @comment
