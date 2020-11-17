@@ -389,6 +389,15 @@ list.sparql = {
   maintainers = { "@bonabeavis" },
 }
 
+list.gdscript = {
+  install_info = {
+    url = "https://github.com/PrestonKnopp/tree-sitter-gdscript",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  readme_name = "Godot (gdscript)",
+  maintainers = {"not @tjdevries"},
+}
+
 local M = {
   list = list
 }
