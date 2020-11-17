@@ -14,6 +14,7 @@
   "class"
   "endclass"
   "return"
+  "default"
 ] @keyword
 
 [
@@ -29,6 +30,8 @@
 [
   "if"
   "else"
+  "case"
+  "endcase"
 ] @conditional
 
 [
@@ -45,6 +48,7 @@
 (include_compiler_directive) @constant.macro
 (package_import_declaration
  "import" @include)
+
 (package_import_declaration
  (package_import_item
   (package_identifier
@@ -56,6 +60,10 @@
 (package_scope
  (package_identifier
   (simple_identifier) @constant))
+
+(module_ansi_header
+ (parameter_port_list
+  "#" @constructor))
 
 [
   "="
@@ -97,8 +105,6 @@
 
 (edge_identifier) @attribute
 
-";" @punctuation.delimiter
-
 (port_direction) @label
 (port_identifier
  (simple_identifier) @variable)
@@ -120,6 +126,16 @@
 (method_call_body
   (method_identifier) @field)
 
+(interface_identifier
+ (simple_identifier) @type)
+
+(modport_identifier
+ (modport_identifier
+  (simple_identifier) @field))
+
+(net_port_type1
+ (simple_identifier) @type)
+
 (double_quoted_string) @string
 
 [
@@ -128,12 +144,18 @@
   (timescale_compiler_directive)
 ] @constant.macro
 
+; begin/end label
 (seq_block
  (simple_identifier) @comment)
 
 [
-  "::"
+ ";"
+ "::"
+ ","
+ "."
 ] @punctuation.delimiter
+
+
 (default_nettype_compiler_directive
  (default_nettype_value) @string)
 
@@ -189,12 +211,17 @@
   (system_tf_call
    (system_tf_identifier) @function.builtin)))
 
+(task_identifier
+ (task_identifier
+  (simple_identifier) @method))
+
 (assignment_pattern_expression
  (assignment_pattern
   (parameter_identifier) @field))
 
 (type_declaration
-  (data_type) @label)
+  (data_type ["packed"] @label))
+
 (struct_union) @type
 
 (type_declaration
@@ -223,3 +250,12 @@
  (simple_identifier) @type)
 
 (generate_block_identifier) @comment
+
+[
+  "["
+  "]"
+  "("
+  ")"
+] @punctuation.bracket
+
+(ERROR) @error
