@@ -251,7 +251,8 @@ list.nix = {
   install_info = {
     url = "https://github.com/cstrahan/tree-sitter-nix",
     files = { "src/parser.c", "src/scanner.cc" },
-  }
+  },
+  maintainers = {"@leo60228"},
 }
 
 list.dart = {
