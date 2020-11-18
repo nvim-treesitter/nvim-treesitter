@@ -15,6 +15,10 @@
   "endclass"
   "return"
   "default"
+  "break"
+  "interface"
+  "endinterface"
+  "modport"
 ] @keyword
 
 [
