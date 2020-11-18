@@ -226,7 +226,6 @@ List of currently supported languages:
 
 <!--This section of the README is automatically updated by a CI job-->
 <!--parserinfo-->
-
 - [x] [bash](https://github.com/tree-sitter/tree-sitter-bash) (maintained by @TravonteD)
 - [x] [c](https://github.com/tree-sitter/tree-sitter-c) (maintained by @vigoux)
 - [x] [c_sharp](https://github.com/tree-sitter/tree-sitter-c-sharp) (maintained by @svermeulen)
@@ -245,7 +244,7 @@ List of currently supported languages:
 - [x] [json](https://github.com/tree-sitter/tree-sitter-json) (maintained by @steelsojka)
 - [ ] [julia](https://github.com/tree-sitter/tree-sitter-julia)
 - [x] [lua](https://github.com/nvim-treesitter/tree-sitter-lua) (maintained by @vigoux)
-- [ ] [nix](https://github.com/cstrahan/tree-sitter-nix)
+- [x] [nix](https://github.com/cstrahan/tree-sitter-nix) (maintained by @leo60228)
 - [x] [ocaml](https://github.com/tree-sitter/tree-sitter-ocaml) (maintained by @undu)
 - [x] [ocaml_interface](https://github.com/tree-sitter/tree-sitter-ocaml) (maintained by @undu)
 - [x] [ocamllex](https://github.com/atom-ocaml/tree-sitter-ocamllex) (maintained by @undu)
