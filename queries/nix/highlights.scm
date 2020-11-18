@@ -75,6 +75,10 @@
 ; string interpolation (this was very annoying to get working properly)
 (interpolation "${" @punctuation.special (_) "}" @punctuation.special) @none
 
+; fields (the `.` in `a.b = c;` isn't included)
+(attrset (bind . (attrpath (identifier) @field)))
+(rec_attrset (bind . (attrpath (identifier) @field)))
+
 ; integers, also highlight a unary -
 [
   (unary "-" (integer))
