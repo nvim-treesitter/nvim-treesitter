@@ -61,7 +61,7 @@
 ;;; Loops
 ; not a scope!
 (for_statement
-  left: (left_hand_side
+  left: (variables
           (identifier) @definition.var))
 
 ; not a scope!
@@ -69,7 +69,7 @@
 
 ; for in list comprehension
 (for_in_clause
-  left: (left_hand_side
+  left: (variables
           (identifier) @definition.var))
 
 (dictionary_comprehension) @scope
@@ -78,13 +78,15 @@
 
 ;;; Assignments
 
-(left_hand_side
- (identifier) @definition.var)
+(assignment
+ left: (expression_list
+   (identifier) @definition.var))
 
-(left_hand_side
- (attribute
-  (identifier)
-  (identifier) @definition.field))
+(assignment
+ left: (expression_list
+   (attribute
+    (identifier)
+    (identifier) @definition.field)))
 
 ; Walrus operator  x := 1
 (named_expression
