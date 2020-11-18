@@ -78,13 +78,15 @@
 
 ;;; Assignments
 
-(left_hand_side
- (identifier) @definition.var)
+(assignment
+ left: (expression_list
+   (identifier) @definition.var))
 
-(left_hand_side
- (attribute
-  (identifier)
-  (identifier) @definition.field))
+(assignment
+ left: (expression_list
+   (attribute
+    (identifier)
+    (identifier) @definition.field)))
 
 ; Walrus operator  x := 1
 (named_expression
