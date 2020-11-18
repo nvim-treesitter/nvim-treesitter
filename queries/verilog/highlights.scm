@@ -19,7 +19,19 @@
   "interface"
   "endinterface"
   "modport"
+  "package"
+  "endpackage"
+  "fork"
+  "join"
+  "join_none"
+  "join_any"
+  "assert"
 ] @keyword
+
+[
+  "begin"
+  "end"
+] @label
 
 [
   (always_keyword)
@@ -28,6 +40,7 @@
   "foreach"
   "repeat"
   "forever"
+  "initial"
   "while"
 ] @repeat
 
@@ -37,15 +50,6 @@
   "case"
   "endcase"
 ] @conditional
-
-[
-  "begin"
-  "end"
-  "fork"
-  "join"
-  "join_none"
-  "join_any"
-] @label
 
 (comment) @comment
 
@@ -65,9 +69,12 @@
  (package_identifier
   (simple_identifier) @constant))
 
-(module_ansi_header
- (parameter_port_list
-  "#" @constructor))
+(package_declaration
+ (package_identifier
+  (simple_identifier) @constant))
+
+(parameter_port_list
+ "#" @constructor)
 
 [
   "="
@@ -140,7 +147,10 @@
 (net_port_type1
  (simple_identifier) @type)
 
-(double_quoted_string) @string
+[
+  (double_quoted_string)
+  (string_literal)
+] @string
 
 [
   (include_compiler_directive)
@@ -227,6 +237,14 @@
   (data_type ["packed"] @label))
 
 (struct_union) @type
+
+[
+  "enum"
+] @type
+
+(enum_name_declaration
+ (enum_identifier
+  (simple_identifier) @constant))
 
 (type_declaration
  (simple_identifier) @type)
