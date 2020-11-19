@@ -12,7 +12,7 @@ local M = {
 local hlmap = vim.treesitter.highlighter.hl_map
 
 -- nvim-treesitter Highlight Group Mappings
--- Note: Some ighlight groups may not be applied upstream, some may be experimental
+-- Note: Some highlight groups may not be applied upstream, some may be experimental
 
 hlmap["annotation"] = "TSAnnotation"
 
