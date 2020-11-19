@@ -79,18 +79,6 @@
 (attrset (bind . (attrpath (identifier) @field)))
 (rec_attrset (bind . (attrpath (identifier) @field)))
 
-; integers, also highlight a unary -
-[
-  (unary "-" (integer))
-  (integer)
-] @number
-
-; floats, also highlight a unary -
-[
-  (unary "-" (float))
-  (float)
-] @float
-
 ; unary operators
 (unary "-" @operator)
 (unary "!" @operator)
@@ -112,3 +100,15 @@
 (binary "&&" @operator)
 (binary "||" @operator)
 (binary "->" @operator)
+
+; integers, also highlight a unary -
+[
+  (unary "-" (integer))
+  (integer)
+] @number
+
+; floats, also highlight a unary -
+[
+  (unary "-" (float))
+  (float)
+] @float
