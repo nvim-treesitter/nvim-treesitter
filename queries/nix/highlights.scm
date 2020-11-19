@@ -66,6 +66,9 @@
 ; import
 ((identifier) @_i (#eq? @_i "import")) @include
 
+; null
+((identifier) @_i (#eq? @_i "import")) @constant.builtin
+
 ; these are technically functions but they act more like keywords (abort and throw are control flow, derivation is a core language construct)
 ((identifier) @_i (#match? @_i "^(abort|derivation|throw)$")) @keyword
 
