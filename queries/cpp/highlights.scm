@@ -27,6 +27,12 @@
      (field_identifier) @method)) @_parent
  (#has-parent? @_parent template_method function_declarator call_expression))
 
+(field_initializer
+ (field_identifier) @property)
+
+(function_declarator
+  declarator: (field_identifier) @method)
+
 (template_function
   name: (scoped_identifier
     name: (identifier) @function))
