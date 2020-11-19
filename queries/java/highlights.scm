@@ -39,7 +39,6 @@
 [
 "@"
 "+"
-"?"
 ":"
 "++"
 "-"
@@ -185,6 +184,8 @@
 "switch"
 "case"
 ] @conditional
+
+(ternary_expression ["?" ":"] @conditional)
 
 ;
 
