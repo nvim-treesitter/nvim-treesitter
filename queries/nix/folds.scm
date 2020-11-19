@@ -7,5 +7,5 @@
   (attrset)
   (rec_attrset)
   (list)
-  (indented_str)
+  (indented_string)
 ] @fold
