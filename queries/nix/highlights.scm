@@ -27,6 +27,9 @@
 ; paths and URLs
 [ (path) (spath) (uri) ] @string.special
 
+; escape sequences
+(escape_sequence) @string.escape
+
 ; delimiters
 [
   "."
