@@ -414,6 +414,10 @@ For booleans.
                                                               *hl-TSCharacter*
 For characters.
 
+`TSComment`
+                                                                *hl-TSComment*
+For comment blocks.
+
 `TSConstructor`
                                                             *hl-TSConstructor*
 For constructor calls and definitions: `{}` in Lua, and Java constructors.
