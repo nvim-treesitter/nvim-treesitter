@@ -397,21 +397,30 @@ Note: This is highly experimental, and folding can break on some types of
 ==============================================================================
 HIGHLIGHTS                                        *nvim-treesitter-highlights*
 
-`TSError`
-                                                                  *hl-TSError*
-For syntax/parser errors.
+`TSAnnotation`
+                                                             *hl-TSAnnotation*
+For C++/Dart attributes, annotations that can be attached to the code to
+denote some kind of meta information.
 
-`TSPunctDelimiter`
-                                                         *hl-TSPunctDelimiter*
-For delimiters ie: `.`
+`TSAttribute`
+                                                               hl-TSAttribute
+(unstable) TODO: docs
 
-`TSPunctBracket`
-                                                           *hl-TSPunctBracket*
-For brackets and parens.
+`TSBoolean`
+                                                                *hl-TSBoolean*
+For booleans.
 
-`TSPunctSpecial`
-                                                           *hl-TSPunctSpecial*
-For special punctutation that does not fall in the catagories before.
+`TSCharacter`
+                                                              *hl-TSCharacter*
+For characters.
+
+`TSConstructor`
+                                                            *hl-TSConstructor*
+For constructor calls and definitions: `{}` in Lua, and Java constructors.
+
+`TSConditional`
+                                                            *hl-TSConditional*
+For keywords related to conditionnals.
 
 `TSConstant`
                                                                *hl-TSConstant*
@@ -425,29 +434,17 @@ For constant that are built in the language: `nil` in Lua.
                                                              *hl-TSConstMacro*
 For constants that are defined by macros: `NULL` in C.
 
-`TSString`
-                                                                 *hl-TSString*
-For strings.
+`TSError`
+                                                                  *hl-TSError*
+For syntax/parser errors.
 
-`TSStringRegex`
-                                                            *hl-TSStringRegex*
-For regexes.
+`TSException`
+                                                              *hl-TSException*
+For exception related keywords.
 
-`TSStringEscape`
-                                                           *hl-TSStringEscape*
-For escape characters within a string.
-
-`TSCharacter`
-                                                              *hl-TSCharacter*
-For characters.
-
-`TSNumber`
-                                                                 *hl-TSNumber*
-For integers.
-
-`TSBoolean`
-                                                                *hl-TSBoolean*
-For booleans.
+`TSField`
+                                                                  *hl-TSField*
+For fields.
 
 `TSFloat`
                                                                   *hl-TSFloat*
@@ -466,45 +463,10 @@ For builtin functions: `table.insert` in Lua.
 For macro defined fuctions (calls and definitions): each `macro_rules` in
 Rust.
 
-`TSParameter`
-                                                              *hl-TSParameter*
-For parameters of a function.
-
-`TSParameterReference`
-                                                     *hl-TSParameterReference*
-For references to parameters of a function.
-
-`TSMethod`
-                                                                 *hl-TSMethod*
-For method calls and definitions.
-
-`TSField`
-                                                                  *hl-TSField*
-For fields.
-
-`TSProperty`
-                                                               *hl-TSProperty*
-Same as `TSField`.
-
-`TSConstructor`
-                                                            *hl-TSConstructor*
-For constructor calls and definitions: `{}` in Lua, and Java constructors.
-
-`TSConditional`
-                                                            *hl-TSConditional*
-For keywords related to conditionnals.
-
-`TSRepeat`
-                                                                 *hl-TSRepeat*
-For keywords related to loops.
-
-`TSLabel`
-                                                                  *hl-TSLabel*
-For labels: `label:` in C and `:label:` in Lua.
-
-`TSOperator`
-                                                               *hl-TSOperator*
-For any operator: `+`, but also `->` and `*` in C.
+`TSInclude`
+                                                                *hl-TSInclude*
+For includes: `#include` in C, `use` or `extern crate` in Rust, or `require`
+in Lua.
 
 `TSKeyword`
                                                                 *hl-TSKeyword*
@@ -514,39 +476,85 @@ For keywords that don't fall in previous categories.
                                                         *hl-TSKeywordFunction*
 For keywords used to define a fuction.
 
-`TSException`
-                                                              *hl-TSException*
-For exception related keywords.
+`TSLabel`
+                                                                  *hl-TSLabel*
+For labels: `label:` in C and `:label:` in Lua.
 
-`TSType`
-                                                                   *hl-TSType*
-For types.
-
-`TSTypeBuiltin`
-                                                            *hl-TSTypeBuiltin*
-For builtin types (you guessed it, right ?).
+`TSMethod`
+                                                                 *hl-TSMethod*
+For method calls and definitions.
 
 `TSNamespace`
                                                               *hl-TSNamespace*
 For identifiers referring to modules and namespaces.
 
-`TSInclude`
-                                                                *hl-TSInclude*
-For includes: `#include` in C, `use` or `extern crate` in Rust, or `require`
-in Lua.
+`TSNone`
+                                                                     *hl-None*
+TODO: docs
 
-`TSAnnotation`
-                                                             *hl-TSAnnotation*
-For C++/Dart attributes, annotations that can be attached to the code to
-denote some kind of meta information.
+`TSNumber`
+                                                                 *hl-TSNumber*
+For all numbers 
+
+`TSOperator`
+                                                               *hl-TSOperator*
+For any operator: `+`, but also `->` and `*` in C.
+
+`TSParameter`
+                                                              *hl-TSParameter*
+For parameters of a function.
+
+`TSParameterReference`
+                                                     *hl-TSParameterReference*
+For references to parameters of a function.
+
+`TSProperty`
+                                                               *hl-TSProperty*
+Same as `TSField`.
+
+`TSPunctDelimiter`
+                                                         *hl-TSPunctDelimiter*
+For delimiters ie: `.`
+
+`TSPunctBracket`
+                                                           *hl-TSPunctBracket*
+For brackets and parens.
+
+`TSPunctSpecial`
+                                                           *hl-TSPunctSpecial*
+For special punctutation that does not fall in the catagories before.
+
+`TSRepeat`
+                                                                 *hl-TSRepeat*
+For keywords related to loops.
+
+`TSString`
+                                                                 *hl-TSString*
+For strings.
+
+`TSStringRegex`
+                                                            *hl-TSStringRegex*
+For regexes.
+
+`TSStringEscape`
+                                                           *hl-TSStringEscape*
+For escape characters within a string.
+
+`TSStructure`
+                                                              *hl-TSStructure*
+TODO: docs
+
+`TSTag`
+                                                                   *hl-TSTag*
+Tags like html tag names.
+
+`TSTagDelimiter`
+                                                           *hl-TSTagDelimiter*
+Tag delimiter like `<` `>` `/`
 
 `TSText`
                                                                    *hl-TSText*
 For strings considered text in a markup language.
-
-`TSStrong`
-                                                                 *hl-TSStrong*
-For text to be represented with strong.
 
 `TSEmphasis`
                                                                *hl-TSEmphasis*
@@ -558,7 +566,6 @@ For text to be represented with an underline.
 
 `TSTitle`
                                                                   *hl-TSTitle*
-
 Text that is part of a title.
 
 `TSLiteral`
@@ -568,6 +575,14 @@ Literal text.
 `TSURI`
                                                                     *hl-TSURI*
 Any URI like a link or email.
+
+`TSType`
+                                                                   *hl-TSType*
+For types.
+
+`TSTypeBuiltin`
+                                                            *hl-TSTypeBuiltin*
+For builtin types.
 
 `TSVariable`
                                                                *hl-TSVariable*
