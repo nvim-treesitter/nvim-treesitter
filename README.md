@@ -75,11 +75,10 @@ provides commands to automate this process:
 - `TSInstallInfo` to know which parsers are available and installed.
 - `TSInstall {language}` to install one or more parsers from a generated `c` file. (This requires a `C` compiler in your path.)
 - `TSInstallFromGrammar {language}` to install one or more parsers from the original `grammar.js`. (In addition to a `C` compiler, this requires the `tree-sitter-cli` executable in your path; see https://tree-sitter.github.io/tree-sitter/creating-parsers#installation for installation instructions.)
-- `TSUpdate` to update already installed parsers
 
-`TSInstall <tab>`, `TSInstallFromGrammar <tab>`, and `TSUpdate <tab>` will give you a list of supported languages, or select `all` to install/update them all.
+`TSInstall <tab>` and `TSInstallFromGrammar <tab>` will give you a list of supported languages; you can also use `TSInstall all` to install every parser on the list.
 
-If your language is not yet included in the supported list, you can add it locally as follows:
+If your language is not yet included in this list, you can add it locally as follows:
 
 1. Clone the repository or [create a new project](https://tree-sitter.github.io/tree-sitter/creating-parsers#project-setup) in, say, `~/projects/tree-sitter-zimbu`.
 2. Run `tree-sitter generate` in this directory (followed by `tree-sitter test`, for good measure).
@@ -101,6 +100,8 @@ parser_config.zimbu = {
 4. Start `nvim` and run `TSInstall zimbu` (or `TSInstallFromGrammar zimbu` if you skipped step 2).
 
 Note that this only installs the parser itself; using it for, e.g., highlighting also requires corresponding queries that need to be written and placed in the appropriate directory (e.g., as `queries/zimbu/highlights.scm`).
+
+Once a parser is installed, you can update it via `TSUpdate {language}`. If the parser is supported, this will checkout and install the revision specified in `nvim-treesitter`'s `lockfile.json`; otherwise it will use the latest revision of the repo or directory given in the `url` field above. Like `TSInstall`, you can get a list of possible arguments with `TSUpdate <tab>` or update every installed parser with `TSUpdate all` (or just `TSUpdate` for short).
 
 ## Setup
 
