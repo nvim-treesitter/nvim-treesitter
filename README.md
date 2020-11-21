@@ -72,11 +72,10 @@ $ git clone https://github.com/nvim-treesitter/nvim-treesitter.git
 Treesitter uses a different _parser_ for every language, which needs to be generated via `tree-sitter-cli` from a `grammar.js` file, then compiled to a `.so` library that needs to be placed in neovim's `runtimepath` (typically under `parser/{lang}.so`). To simplify this, `nvim-treesitter`
 provides commands to automate this process:
 
-- `TSInstallInfo` to know which parsers are available and installed.
 - `TSInstall {language}` to install one or more parsers from a generated `c` file. (This requires a `C` compiler in your path.)
 - `TSInstallFromGrammar {language}` to install one or more parsers from the original `grammar.js`. (In addition to a `C` compiler, this requires the `tree-sitter-cli` executable in your path; see https://tree-sitter.github.io/tree-sitter/creating-parsers#installation for installation instructions.)
 
-`TSInstall <tab>` and `TSInstallFromGrammar <tab>` will give you a list of supported languages; you can also use `TSInstall all` to install every parser on the list.
+`TSInstall <tab>` and `TSInstallFromGrammar <tab>` will give you a list of supported languages; you can also use `TSInstall all` to install every parser on the list. To show which languages are available together with their installation status, use `TSInstallInfo`.
 
 If your language is not yet included in this list, you can add it locally as follows:
 
