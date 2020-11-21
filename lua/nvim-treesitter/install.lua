@@ -28,7 +28,7 @@ end
 
 local function get_job_status()
   return "[nvim-treesitter] ["..finished_commands.."/"..started_commands
-            ..(failed_commands > 0 and ", failed: "..failed_commands or "").."]"
+                              ..(failed_commands > 0 and ", failed: "..failed_commands or "").."]"
 end
 
 local function get_revision(lang)
@@ -36,6 +36,24 @@ local function get_revision(lang)
     lockfile = vim.fn.json_decode(vim.fn.readfile(utils.join_path(utils.get_package_path(), 'lockfile.json')))
   end
   return (lockfile[lang] and lockfile[lang].revision)
+end
+
+local function get_installed_revision(lang)
+  local lang_file = utils.join_path(utils.get_parser_info_dir(), lang..'.revision')
+  if vim.fn.filereadable(lang_file) == 1 then
+    return vim.fn.readfile(lang_file)[1]
+  end
+end
+
+local function needs_update(lang)
+  return not get_revision(lang) or get_revision(lang) ~= get_installed_revision(lang)
+end
+
+local function outdated_parsers()
+  return vim.tbl_filter(function(lang)
+    return needs_update(lang)
+  end,
+  info.installed_parsers())
 end
 
 function M.iter_cmd(cmd_list, i, lang, success_message)
@@ -50,17 +68,28 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
   local attr = cmd_list[i]
   if attr.info then print(get_job_status().." "..attr.info) end
 
-  local handle
-
-  handle = luv.spawn(attr.cmd, attr.opts, vim.schedule_wrap(function(code)
-    handle:close()
-    if code ~= 0 then
+  if type(attr.cmd) == 'function' then
+    local ok, err = pcall(attr.cmd)
+    if ok then
+      M.iter_cmd(cmd_list, i + 1, lang, success_message)
+    else
       failed_commands = failed_commands + 1
       finished_commands = finished_commands + 1
-      return api.nvim_err_writeln(attr.err or ("Failed to execute the following command:\n"..vim.inspect(attr)))
+      return api.nvim_err_writeln((attr.err or ("Failed to execute the following command:\n"..vim.inspect(attr)))
+                                   ..'\n'..vim.inspect(err))
     end
-    M.iter_cmd(cmd_list, i + 1, lang, success_message)
-  end))
+  else
+    local handle
+    handle = luv.spawn(attr.cmd, attr.opts, vim.schedule_wrap(function(code)
+      handle:close()
+      if code ~= 0 then
+        failed_commands = failed_commands + 1
+        finished_commands = finished_commands + 1
+        return api.nvim_err_writeln(attr.err or ("Failed to execute the following command:\n"..vim.inspect(attr)))
+      end
+      M.iter_cmd(cmd_list, i + 1, lang, success_message)
+    end))
+  end
 end
 
 local function get_command(cmd)
@@ -87,13 +116,17 @@ local function iter_cmd_sync(cmd_list)
       print(cmd.info)
     end
 
-    local ret = vim.fn.system(get_command(cmd))
-    if vim.v.shell_error ~= 0 then
-      print(ret)
-      api.nvim_err_writeln((cmd.err and cmd.err..'\n' or '')
-                          .."Failed to execute the following command:\n"
-                          ..vim.inspect(cmd))
-      return false
+    if type(cmd.cmd) == 'function' then
+      cmd.cmd()
+    else
+      local ret = vim.fn.system(get_command(cmd))
+      if vim.v.shell_error ~= 0 then
+        print(ret)
+        api.nvim_err_writeln((cmd.err and cmd.err..'\n' or '')
+                            .."Failed to execute the following command:\n"
+                            ..vim.inspect(cmd))
+        return false
+      end
     end
 
   end
@@ -164,6 +197,11 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
       }
     },
     shell.select_mv_cmd('parser.so', parser_lib_name, compile_location),
+    {
+      cmd = function()
+        vim.fn.writefile({revision or ''}, utils.join_path(utils.get_parser_info_dir(), lang..'.revision'))
+      end
+    }
   })
   if not from_local_path then
     vim.list_extend(command_list, {shell.select_install_rm_cmd(cache_folder, project_name)})
@@ -239,11 +277,14 @@ local function install(with_sync, ask_reinstall, generate_from_grammar)
 end
 
 function M.update(lang)
+  M.lockfile = {}
   reset_progress_counter()
   if lang and lang ~= 'all' then
     install(false, 'force')(lang)
   else
-    local installed = info.installed_parsers()
+    local installed = configs.get_update_strategy() == 'lockfile'
+                      and outdated_parsers()
+                      or info.installed_parsers()
     for _, lang in pairs(installed) do
       install(false, 'force')(lang)
     end

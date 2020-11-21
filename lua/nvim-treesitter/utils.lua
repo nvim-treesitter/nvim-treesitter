@@ -68,9 +68,10 @@ end
 -- "site" dir from "runtimepath". "site" dir will be created if it doesn't
 -- exist. Using only the package dir won't work when the plugin is installed
 -- with Nix, since the "/nix/store" is read-only.
-function M.get_parser_install_dir()
+function M.get_parser_install_dir(folder_name)
+  folder_name = folder_name or "parser"
   local package_path = M.get_package_path()
-  local package_path_parser_dir = M.join_path(package_path, "parser")
+  local package_path_parser_dir = M.join_path(package_path, folder_name)
 
   -- If package_path is read/write, use that
   if luv.fs_access(package_path_parser_dir, 'RW') then
@@ -79,7 +80,7 @@ function M.get_parser_install_dir()
 
   local site_dir = M.get_site_dir()
   local path_sep = M.get_path_sep()
-  local parser_dir = M.join_path(site_dir, path_sep, 'parser')
+  local parser_dir = M.join_path(site_dir, path_sep, folder_name)
 
   -- Try creating and using parser_dir if it doesn't exist
   if not luv.fs_stat(parser_dir) then
@@ -99,6 +100,10 @@ function M.get_parser_install_dir()
   -- package_path isn't read/write, parser_dir exists but isn't read/write
   -- either, give up
   return nil, join_space('Invalid cache rights,', package_path, 'or', parser_dir, 'should be read/write')
+end
+
+function M.get_parser_info_dir()
+  return M.get_parser_install_dir('parser-info')
 end
 
 -- Gets a property at path
