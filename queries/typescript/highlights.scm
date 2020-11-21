@@ -41,8 +41,8 @@
 
 (unary_expression) @punctuation.special
 
-(property_signature 
-  "?" @punctuation.special)
+(property_signature "?" @punctuation.special)
+(optional_parameter "?" @punctuation.special)
 
 ; Variables
 
