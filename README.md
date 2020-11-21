@@ -74,37 +74,9 @@ provides commands to automate this process. If the language is already [supporte
 ```vim
 :TSInstall {language}
 ```
-This command supports tab expansion. You can also get a list of all available languages and their installation status with `:TSInstallInfo`.
+This command supports tab expansion. You can also get a list of all available languages and their installation status with `:TSInstallInfo`. Parsers not on this list can be added manually by following the steps described under ["Adding unsupported parsers"](#unsupported) below.
 
 If you update `nvim-treesitter` and want to make sure the parser is at the latest compatible version (as specified in `nvim-treesitter`'s `lockfile.json`), use `:TSUpdate {language}`. To update all parsers unconditionally, use `:TSUpdate all` or just `:TSUpdate`.
-
-### Adding unsupported parsers
-
-If you have a parser that is not on the list (either from a repository on Github or a local directory), you can add it manually for use by `nvim-treesitter` as follows:
-
-1. Clone the repository or [create a new project](https://tree-sitter.github.io/tree-sitter/creating-parsers#project-setup) in, say, `~/projects/tree-sitter-zimbu`. Make sure that the `tree-sitter-cli` executable is installed and in your path; see https://tree-sitter.github.io/tree-sitter/creating-parsers#installation for installation instructions.
-2. Run `tree-sitter generate` in this directory (followed by `tree-sitter test` for good measure).
-3. Add the following snippet to your `init.vim`:
-
-```vim
-lua <<EOF
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.zimbu = {
-  install_info = {
-    url = "~/projects/tree-sitter-zimbu", -- local path or git repo
-    files = {"src/parser.c"}
-  },
-  filetype = "zu", -- if filetype does not agrees with parser name
-  used_by = {"bar", "baz"} -- additional filetypes that use this parser
-}
-EOF
-```
-
-4. Start `nvim` and `:TSInstall zimbu`.
-
-You can also skip step 2 and use `:TSInstallFromGrammar zimbu` to install straight from `grammar.js`. Once the parser is installed, you can update it (from the latest revision of the `main` branch if `url` is a Github repository) with `:TSUpdate zimbu`.
-
-Note that this only installs the parser itself; using it for, e.g., highlighting also requires corresponding queries that need to be written and placed in the appropriate directory (e.g., as `queries/zimbu/highlights.scm`).
 
 ## Setup
 
@@ -272,6 +244,34 @@ List of currently supported languages:
 - [ ] [vue](https://github.com/ikatyang/tree-sitter-vue)
 - [ ] [yaml](https://github.com/ikatyang/tree-sitter-yaml)
 <!--parserinfo-->
+
+## <a name="unsupported"></a> Parsers for other languages
+
+If you have a parser that is not on this list (either from a repository on Github or a local directory), you can add it manually for use by `nvim-treesitter` as follows:
+
+1. Clone the repository or [create a new project](https://tree-sitter.github.io/tree-sitter/creating-parsers#project-setup) in, say, `~/projects/tree-sitter-zimbu`. Make sure that the `tree-sitter-cli` executable is installed and in your path; see https://tree-sitter.github.io/tree-sitter/creating-parsers#installation for installation instructions.
+2. Run `tree-sitter generate` in this directory (followed by `tree-sitter test` for good measure).
+3. Add the following snippet to your `init.vim`:
+
+```vim
+lua <<EOF
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.zimbu = {
+  install_info = {
+    url = "~/projects/tree-sitter-zimbu", -- local path or git repo
+    files = {"src/parser.c"}
+  },
+  filetype = "zu", -- if filetype does not agrees with parser name
+  used_by = {"bar", "baz"} -- additional filetypes that use this parser
+}
+EOF
+```
+
+4. Start `nvim` and `:TSInstall zimbu`.
+
+You can also skip step 2 and use `:TSInstallFromGrammar zimbu` to install straight from `grammar.js`. Once the parser is installed, you can update it (from the latest revision of the `main` branch if `url` is a Github repository) with `:TSUpdate zimbu`.
+
+Note that this only installs the parser itself; using it for, e.g., highlighting also requires corresponding queries that need to be written and placed in the appropriate directory (e.g., as `queries/zimbu/highlights.scm`).
 
 # Roadmap
 
