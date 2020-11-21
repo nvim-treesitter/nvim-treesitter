@@ -70,22 +70,25 @@ $ git clone https://github.com/nvim-treesitter/nvim-treesitter.git
 ## Adding parsers
 
 Treesitter uses a different _parser_ for every language, which needs to be generated via `tree-sitter-cli` from a `grammar.js` file, then compiled to a `.so` library that needs to be placed in neovim's `runtimepath` (typically under `parser/{lang}.so`). To simplify this, `nvim-treesitter`
-provides commands to automate this process:
+provides commands to automate this process. If the language is already [supported by `nvim-treesitter`](#supported), you can install it with
+```vim
+:TSInstall {language}
+```
+This command supports tab expansion. You can also get a list of all available languages and their installation status with `:TSInstallInfo`.
 
-- `TSInstall {language}` to install one or more parsers from a generated `c` file. (This requires a `C` compiler in your path.)
-- `TSInstallFromGrammar {language}` to install one or more parsers from the original `grammar.js`. (In addition to a `C` compiler, this requires the `tree-sitter-cli` executable in your path; see https://tree-sitter.github.io/tree-sitter/creating-parsers#installation for installation instructions.)
+If you update `nvim-treesitter` and want to make sure the parser is at the latest compatible version (as specified in `nvim-treesitter`'s `lockfile.json`), use `:TSUpdate {language}`. To update all parsers unconditionally, use `:TSUpdate all` or just `:TSUpdate`.
 
-`TSInstall <tab>` and `TSInstallFromGrammar <tab>` will give you a list of supported languages; you can also use `TSInstall all` to install every parser on the list. To show which languages are available together with their installation status, use `TSInstallInfo`.
+### Adding unsupported parsers
 
-If your language is not yet included in this list, you can add it locally as follows:
+If you have a parser that is not on the list (either from a repository on Github or a local directory), you can add it manually for use by `nvim-treesitter` as follows:
 
-1. Clone the repository or [create a new project](https://tree-sitter.github.io/tree-sitter/creating-parsers#project-setup) in, say, `~/projects/tree-sitter-zimbu`.
-2. Run `tree-sitter generate` in this directory (followed by `tree-sitter test`, for good measure).
+1. Clone the repository or [create a new project](https://tree-sitter.github.io/tree-sitter/creating-parsers#project-setup) in, say, `~/projects/tree-sitter-zimbu`. Make sure that the `tree-sitter-cli` executable is installed and in your path; see https://tree-sitter.github.io/tree-sitter/creating-parsers#installation for installation instructions.
+2. Run `tree-sitter generate` in this directory (followed by `tree-sitter test` for good measure).
 3. Add the following snippet to your `init.vim`:
 
 ```vim
 lua <<EOF
-local parser_config =  require "nvim-treesitter.parsers".get_parser_configs()
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.zimbu = {
   install_info = {
     url = "~/projects/tree-sitter-zimbu", -- local path or git repo
@@ -94,13 +97,14 @@ parser_config.zimbu = {
   filetype = "zu", -- if filetype does not agrees with parser name
   used_by = {"bar", "baz"} -- additional filetypes that use this parser
 }
+EOF
 ```
 
-4. Start `nvim` and run `TSInstall zimbu` (or `TSInstallFromGrammar zimbu` if you skipped step 2).
+4. Start `nvim` and `:TSInstall zimbu`.
+
+You can also skip step 2 and use `:TSInstallFromGrammar zimbu` to install straight from `grammar.js`. Once the parser is installed, you can update it (from the latest revision of the `main` branch if `url` is a Github repository) with `:TSUpdate zimbu`.
 
 Note that this only installs the parser itself; using it for, e.g., highlighting also requires corresponding queries that need to be written and placed in the appropriate directory (e.g., as `queries/zimbu/highlights.scm`).
-
-Once a parser is installed, you can update it via `TSUpdate {language}`. If the parser is supported, this will checkout and install the revision specified in `nvim-treesitter`'s `lockfile.json`; otherwise it will use the latest revision of the repo or directory given in the `url` field above. Like `TSInstall`, you can get a list of possible arguments with `TSUpdate <tab>` or update every installed parser with `TSUpdate all` (or just `TSUpdate` for short).
 
 ## Setup
 
@@ -217,7 +221,7 @@ Each feature can be enabled or disabled by different means:
 
 Check [`:h nvim-treesitter-commands`](doc/nvim-treesitter.txt) for a list of all available commands.
 
-# Supported Languages
+# <a name="supported"></a>Supported Languages
 
 For `nvim-treesitter` to work, we need to use query files such as those you can find in
 `queries/{lang}/{locals,highlights,textobjects}.scm`
