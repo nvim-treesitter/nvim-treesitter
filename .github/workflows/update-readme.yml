@@ -30,6 +30,7 @@ jobs:
           git config user.email "actions@github"
           git config user.name "Github Actions"
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          ./nvim.appimage --headless -c "luafile ./scripts/update-readme.lua" -c "q" || git add README.md
+          ./nvim.appimage --headless -c "luafile ./scripts/update-readme.lua" -c "q" || echo "Needs update"
+          git add README.md
           # Only commit and push if we have changes
           git diff --quiet && git diff --staged --quiet || (git commit -m "${COMMIT_MSG}"; git push origin HEAD:${GITHUB_REF})

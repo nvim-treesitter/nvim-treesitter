@@ -226,7 +226,6 @@ List of currently supported languages:
 
 <!--This section of the README is automatically updated by a CI job-->
 <!--parserinfo-->
-
 - [x] [bash](https://github.com/tree-sitter/tree-sitter-bash) (maintained by @TravonteD)
 - [x] [c](https://github.com/tree-sitter/tree-sitter-c) (maintained by @vigoux)
 - [x] [c_sharp](https://github.com/tree-sitter/tree-sitter-c-sharp) (maintained by @svermeulen)
