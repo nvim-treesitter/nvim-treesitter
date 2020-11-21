@@ -69,35 +69,38 @@ $ git clone https://github.com/nvim-treesitter/nvim-treesitter.git
 
 ## Adding parsers
 
-Treesitter uses a different _parser_ for every language. It can be quite a pain to install, but fortunately `nvim-treesitter`
-provides two command to tackle this issue:
+Treesitter uses a different _parser_ for every language, which needs to be generated via `tree-sitter-cli` from a `grammar.js` file, then compiled to a `.so` library that needs to be placed in neovim's `runtimepath` (typically under `parser/{lang}.so`). To simplify this, `nvim-treesitter`
+provides commands to automate this process:
 
-- `TSInstall {language}` to install one or more parsers.
-  `TSInstall <tab>` will give you a list of supported languages, or select `all` to install them all.
-- `TSInstallInfo` to know which parser is installed.
+- `TSInstallInfo` to know which parsers are available and installed.
+- `TSInstall {language}` to install one or more parsers from a generated `c` file. (This requires a `C` compiler in your path.)
+- `TSInstallFromGrammar {language}` to install one or more parsers from the original `grammar.js`. (In addition to a `C` compiler, this requires the `tree-sitter-cli` executable in your path; see https://tree-sitter.github.io/tree-sitter/creating-parsers#installation for installation instructions.)
 - `TSUpdate` to update already installed parsers
 
-Let's say you need parsers for `lua`, this is how you install it:
+`TSInstall <tab>`, `TSInstallFromGrammar <tab>`, and `TSUpdate <tab>` will give you a list of supported languages, or select `all` to install/update them all.
+
+If your language is not yet included in the supported list, you can add it locally as follows:
+
+1. Clone the repository or [create a new project](https://tree-sitter.github.io/tree-sitter/creating-parsers#project-setup) in, say, `~/projects/tree-sitter-zimbu`.
+2. Run `tree-sitter generate` in this directory (followed by `tree-sitter test`, for good measure).
+3. Add the following snippet to your `init.vim`:
 
 ```vim
-:TSInstall lua
-Downloading...
-Compiling...
-Treesitter parser for lua has been installed
+lua <<EOF
+local parser_config =  require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.zimbu = {
+  install_info = {
+    url = "~/projects/tree-sitter-zimbu", -- local path or git repo
+    files = {"src/parser.c"}
+  },
+  filetype = "zu", -- if filetype does not agrees with parser name
+  used_by = {"bar", "baz"} -- additional filetypes that use this parser
+}
 ```
 
-Cool, lets see which parsers are installed:
+4. Start `nvim` and run `TSInstall zimbu` (or `TSInstallFromGrammar zimbu` if you skipped step 2).
 
-```vim
-:TSInstallInfo
-lua        [✓] installed
-c          [✗] installed
-html       [✗] not installed
-typescript [✗] not installed
-...
-```
-
-And now you should be ready to use every functionality `nvim-treesitter` provides!
+Note that this only installs the parser itself; using it for, e.g., highlighting also requires corresponding queries that need to be written and placed in the appropriate directory (e.g., as `queries/zimbu/highlights.scm`).
 
 ## Setup
 
