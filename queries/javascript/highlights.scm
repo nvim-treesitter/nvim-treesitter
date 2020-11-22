@@ -49,6 +49,8 @@
   key: (property_identifier) @method
   value: (arrow_function))
 
+(pair ":" @punctuation.delimiter)
+
 (assignment_expression
   left: (member_expression
     property: (property_identifier) @method)
