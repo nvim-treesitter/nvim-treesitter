@@ -69,6 +69,14 @@ list.go = {
   maintainers = {"@theHamsta", "@WinWisely268"},
 }
 
+list.graphql = {
+  install_info = {
+    url = "https://github.com/bkegley/tree-sitter-graphql",
+    files = { "src/parser.c" },
+  },
+  maintainers = {"@bkegley"},
+}
+
 list.ruby = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ruby",
