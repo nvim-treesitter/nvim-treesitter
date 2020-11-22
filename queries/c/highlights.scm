@@ -143,6 +143,15 @@
 ((identifier) @constant
  (#match? @constant "^[A-Z][A-Z0-9_]+$"))
 
+;; Preproc def / undef
+(preproc_def
+  name: (_) @constant)
+(preproc_call
+  directive: (preproc_directive) @_u
+  argument: (_) @constant
+  (#eq? @_u "#undef"))
+
+
 (comment) @comment
 
 ;; Parameters
