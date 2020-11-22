@@ -49,7 +49,7 @@
   key: (property_identifier) @method
   value: (arrow_function))
 
-(pair ":" @punctuation.delimiter)
+(pair ":" @operator)
 
 (assignment_expression
   left: (member_expression
