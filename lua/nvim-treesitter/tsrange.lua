@@ -57,7 +57,7 @@ end
 
 function TSRange:parent(range)
   local parser = parsers.get_parser(self.buf, parsers.get_buf_lang(range))
-  local root = parser:parse():root()
+  local root = parser:parse()[1]:root()
   return root:named_descendant_for_range(self.start_pos[1], self.start_pos[2], self.end_pos[1], self.end_pos[2])
 end
 

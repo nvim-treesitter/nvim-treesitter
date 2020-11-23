@@ -179,7 +179,7 @@ function M.iter_group_results(bufnr, query_group, root)
   local parser = parsers.get_parser(bufnr, lang)
   if not parser then return function() end end
 
-  local root = root or parser:parse():root()
+  local root = root or parser:parse()[1]:root()
   local start_row, _, end_row, _ = root:range()
 
   -- The end row is exclusive so we need to add 1 to it.

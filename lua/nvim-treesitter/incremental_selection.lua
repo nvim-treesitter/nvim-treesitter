@@ -43,7 +43,7 @@ local function select_incremental(get_parent)
     local csrow, cscol, cerow, cecol = visual_selection_range()
     -- Initialize incremental selection with current selection
     if not nodes or #nodes == 0 or not range_matches(nodes[#nodes]) then
-      local root = parsers.get_parser():parse():root()
+      local root = parsers.get_parser():parse()[1]:root()
       local node = root:named_descendant_for_range(csrow, cscol, cerow, cecol)
       ts_utils.update_selection(buf, node)
       if nodes and #nodes > 0 then
