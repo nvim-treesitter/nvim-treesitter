@@ -1,2 +1,1 @@
-((ocaml) @injection
- (#set! "lang" "ocaml"))
+((ocaml) @ocaml)
