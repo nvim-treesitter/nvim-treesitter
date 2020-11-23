@@ -6,7 +6,7 @@
           (expression_statement
             (assignment
               left: (left_hand_side
-                      (identifier) @definition.associated))))) @scope
+                      (identifier) @definition.field))))) @scope
 
 ; Imports
 (aliased_import
