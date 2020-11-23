@@ -5,14 +5,14 @@
 
 (if_statement
 [
-  "if" 
-  "then"
+  "if"
   "end"
 ] @conditional)
 
 [
   "else"
   "elseif"
+  "then"
 ] @conditional
 
 (for_statement
