@@ -1,6 +1,5 @@
---TODO(theHamsta): remove once stabilized!
 if not pcall(require,"vim.treesitter.languagetree")
-  and vim.fn.getenv('CI') == 0 then -- TODO(vigoux): remove once new nightlies are built
+  and vim.fn.getenv('CI') == vim.NIL then -- TODO(vigoux): remove once new nightlies are built
   error("nvim-treesitter requires a more recent Neovim nightly version!")
 end
 
