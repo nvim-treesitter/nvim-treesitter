@@ -9,8 +9,6 @@
 ((identifier) @field
  (#match? @field "_$"))
 
-(parameter_declaration
-  declarator: (reference_declarator) @parameter)
 ; function(Foo ...foo)
 (variadic_parameter_declaration
   declarator: (variadic_declarator

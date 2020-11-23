@@ -157,11 +157,8 @@
 (comment) @comment
 
 ;; Parameters
-(parameter_declaration
-  declarator: (identifier) @parameter)
-
-(parameter_declaration
-  declarator: (pointer_declarator) @parameter)
+((identifier) @parameter
+  (#has-ancestor? @parameter "parameter_declaration"))
 
 (preproc_params
   (identifier)) @parameter
