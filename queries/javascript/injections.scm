@@ -1,2 +1,1 @@
-((comment) @injection
- (#set! "lang" "jsdoc"))
+((comment) @jsdoc)

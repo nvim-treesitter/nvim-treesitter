@@ -1,6 +1,5 @@
 (fenced_code_block
-  (info_string) @lang
-  (code_fence_content) @injection)
+  (info_string) @language
+  (code_fence_content) @content)
 
-((html_block) @injection
-  (#set! "lang" "html"))
+((html_block) @html)
