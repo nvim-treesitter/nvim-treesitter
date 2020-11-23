@@ -151,6 +151,8 @@
 "." @punctuation.delimiter
 "," @punctuation.delimiter
 
+(pair ":" @punctuation.delimiter)
+
 [
   "--"
   "-"
