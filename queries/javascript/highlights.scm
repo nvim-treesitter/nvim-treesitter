@@ -182,6 +182,7 @@
   "%="
 ] @operator
 
+(binary_expression "/" @operator)
 (ternary_expression ["?" ":"] @operator)
 
 "(" @punctuation.bracket
