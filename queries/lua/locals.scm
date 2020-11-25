@@ -5,7 +5,7 @@
    (identifier) @definition.var))
 
 ((variable_declarator
-   (field_expression object:(*) @definition.associated (property_identifier) @definition.var)))
+   (field_expression . (_) @definition.associated (property_identifier) @definition.var)))
 
 ;; Parameters
 (parameters (identifier) @definition.parameter)
