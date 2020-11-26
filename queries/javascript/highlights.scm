@@ -181,6 +181,7 @@
 ] @operator
 
 (ternary_expression ["?" ":"] @operator)
+(unary_expression) @punctuation.special
 
 "(" @punctuation.bracket
 ")" @punctuation.bracket
