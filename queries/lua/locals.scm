@@ -29,6 +29,11 @@
    (identifier) @definition.function) @scope)
 (function_definition) @scope
 
+(local_variable_declaration
+  (variable_declarator
+    (identifier) @definition.function)
+  (function_definition) @scope)
+
 (program) @scope
 ((if_statement) @scope)
 ((for_in_statement) @scope)
