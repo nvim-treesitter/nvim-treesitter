@@ -11,6 +11,7 @@
 ;-----------
 
 (property_identifier) @property
+(shorthand_property_identifier) @variable
 
 ; Special identifiers
 ;--------------------
