@@ -46,7 +46,6 @@
 
 ; Variables
 
-(shorthand_property_identifier) @variable
 (undefined) @variable.builtin
 
 (required_parameter (identifier) @parameter)
