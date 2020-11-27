@@ -98,6 +98,8 @@
 
 (description) @comment
 
+(comment) @comment
+
 (directive_location
   (executable_directive_location) @type.builtin)
 
