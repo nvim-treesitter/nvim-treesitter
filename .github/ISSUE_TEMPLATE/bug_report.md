@@ -7,6 +7,14 @@ assignees: ''
 
 ---
 
+<!--
+Before reporting please do :
+
+Update your neovim version to latest _master_.
+Update your plugin to latest version.
+Run `TSUpdate`.
+//-->
+
 **Describe the bug**
 A clear and concise description of what the bug is.
 
