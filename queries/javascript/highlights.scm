@@ -184,7 +184,7 @@
 
 (binary_expression "/" @operator)
 (ternary_expression ["?" ":"] @operator)
-(unary_expression) @punctuation.special
+(unary_expression) @operator
 
 "(" @punctuation.bracket
 ")" @punctuation.bracket
