@@ -224,8 +224,14 @@
   body: (block
           (expression_statement
             (assignment
-              left: (left_hand_side
-                      (identifier) @field)))))
+              left: (identifier) @field))))
+ (#vim-match? @field "^([A-Z])@!.*$"))
+((class_definition
+  body: (block
+          (expression_statement
+            (assignment
+              left: (_ 
+                     (identifier) @field)))))
  (#vim-match? @field "^([A-Z])@!.*$"))
 
 ((class_definition
