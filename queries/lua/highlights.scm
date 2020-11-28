@@ -132,7 +132,6 @@
 (string) @string
 (number) @number
 (label_statement) @label
-(shebang) @comment
 
 ;; Error
 (ERROR) @error
