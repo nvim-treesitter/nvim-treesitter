@@ -32,25 +32,23 @@
 
 [ "," "." ":"] @punctuation.delimiter
 [ "(" ")" "[" "]" "{" "}" ] @punctuation.bracket
-("<" @punctuation.bracket
-. (typearg) . ("," (typearg))* .
-">" @punctuation.bracket)
+(typeargs ["<" ">"] @punctuation.bracket)
 
 (identifier) @variable
 (boolean) @boolean
 (nil) @constant.builtin
 (varargs) @constant
 
-; function stuffs
-(functiondef ["function" "end"] @keyword.function)
+;; function stuffs;
 
-(function_statement [(function_name) (function_name (_))] @function)
+(function_statement (function_name) @function)
 (function_statement ["function" "end"] @keyword.function)
 
 (function_call
    (identifier) @function . (arguments))
 
-(arg_name) @parameter
+(arg
+  name: (identifier) @parameter)
 
 ; type stuffs
 (type_declaration "type" @keyword)
@@ -59,12 +57,12 @@
 (function_type "function" @type)
 (record_name) @type
 (enum_name) @type
-(typearg) @parameter
+(typeargs (identifier) @parameter)
 
 (table_constructor ["{" "}"] @constructor)
 (comment) @comment
 (string) @string
 (number) @number
-; TODO (label_statement) @label
+;; TODO (label_statement) @label
 
 (ERROR) @error
