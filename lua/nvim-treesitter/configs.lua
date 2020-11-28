@@ -11,6 +11,7 @@ local config = {
   modules = {},
   ensure_installed = {},
   update_strategy = 'lockfile',
+  auto_sync_lockfile = true,
 }
 -- List of modules that need to be setup on initialization.
 local queued_modules_defs = {}
@@ -232,6 +233,14 @@ function M.setup(user_data)
   local ensure_installed = user_data.ensure_installed or {}
   if #ensure_installed > 0 then
     require'nvim-treesitter.install'.ensure_installed(ensure_installed)
+  end
+
+  for _, setting in pairs({'auto_sync_lockfile', 'update_strategy'}) do
+    config[setting] = user_data[setting] ~= nil and user_data[setting] or config[setting]
+  end
+
+  if config.auto_sync_lockfile and config.update_strategy == 'lockfile' then
+    require'nvim-treesitter.install'.sync_lockfile()
   end
 
   config.modules.ensure_installed = nil

@@ -45,13 +45,17 @@ local function get_installed_revision(lang)
   end
 end
 
-local function needs_update(lang)
-  return not get_revision(lang) or get_revision(lang) ~= get_installed_revision(lang)
+local function needs_update(lang, pinned_only)
+  if pinned_only then
+    return get_revision(lang) and get_revision(lang) ~= get_installed_revision(lang)
+  else
+    return not get_revision(lang) or get_revision(lang) ~= get_installed_revision(lang)
+  end
 end
 
-local function outdated_parsers()
+local function outdated_parsers(pinned_only)
   return vim.tbl_filter(function(lang)
-    return needs_update(lang)
+    return needs_update(lang, pinned_only)
   end,
   info.installed_parsers())
 end
@@ -291,6 +295,15 @@ function M.update(lang)
     for _, lang in pairs(parsers_to_update) do
       install(false, 'force')(lang)
     end
+  end
+end
+
+function M.sync_lockfile()
+  M.lockfile = {}
+  reset_progress_counter()
+  local parsers_to_update = outdated_parsers('pinned only')
+  for _, lang in pairs(parsers_to_update) do
+    install(false, 'force')(lang)
   end
 end
 
