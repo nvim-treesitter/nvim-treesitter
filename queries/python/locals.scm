@@ -5,8 +5,13 @@
   body: (block
           (expression_statement
             (assignment
-              left: (left_hand_side
-                      (identifier) @definition.field))))) @scope
+              left: (identifier) @definition.field)))) @scope
+(class_definition
+  body: (block
+          (expression_statement
+            (assignment
+              left: (_ 
+                     (identifier) @definition.field))))) @scope
 
 ; Imports
 (aliased_import
@@ -61,15 +66,25 @@
 ;;; Loops
 ; not a scope!
 (for_statement
-  left: (left_hand_side
+  left: (pattern_list
           (identifier) @definition.var))
+(for_statement
+  left: (tuple_pattern
+          (identifier) @definition.var))
+(for_statement
+  left: (identifier) @definition.var)
 
 ; not a scope!
 ;(while_statement) @scope
 
 ; for in list comprehension
 (for_in_clause
-  left: (left_hand_side
+  left: (identifier) @definition.var)
+(for_in_clause
+  left: (tuple_pattern
+          (identifier) @definition.var))
+(for_in_clause
+  left: (pattern_list
           (identifier) @definition.var))
 
 (dictionary_comprehension) @scope
@@ -78,13 +93,20 @@
 
 ;;; Assignments
 
-(left_hand_side
- (identifier) @definition.var)
+(assignment
+ left: (identifier) @definition.var)
 
-(left_hand_side
- (attribute
-  (identifier)
-  (identifier) @definition.field))
+(assignment
+ left: (pattern_list
+   (identifier) @definition.var))
+(assignment
+ left: (tuple_pattern
+   (identifier) @definition.var))
+
+(assignment
+ left: (attribute
+   (identifier)
+   (identifier) @definition.field))
 
 ; Walrus operator  x := 1
 (named_expression
