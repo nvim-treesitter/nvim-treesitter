@@ -282,10 +282,13 @@ function M.update(lang)
   if lang and lang ~= 'all' then
     install(false, 'force')(lang)
   else
-    local installed = configs.get_update_strategy() == 'lockfile'
-                      and outdated_parsers()
-                      or info.installed_parsers()
-    for _, lang in pairs(installed) do
+    local parsers_to_update = configs.get_update_strategy() == 'lockfile'
+                              and outdated_parsers()
+                              or info.installed_parsers()
+    if #parsers_to_update == 0 then
+      print('All parsers are up-to-date!')
+    end
+    for _, lang in pairs(parsers_to_update) do
       install(false, 'force')(lang)
     end
   end
