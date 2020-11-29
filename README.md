@@ -73,7 +73,7 @@ You can install `nvim-treesitter` with your favorite package manager (or using t
 E.g., if you are using [vim-plug](https://github.com/junegunn/vim-plug), put this in your `init.vim` file:
 
 ```vim
-Plug 'nvim-treesitter/nvim-treesitter', {'do', ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 ```
 
 ## Language parsers
