@@ -12,13 +12,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          ref: master
 
       - name: Prepare
         run: |
           sudo apt-get update
           sudo add-apt-repository universe
-          sudo apt-get install -y jq
+          wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
+          mv ./jq-linux64 /tmp/jq
+          chmod +x /tmp/jq
           wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
           chmod u+x nvim.appimage
           mkdir -p ~/.local/share/nvim/site/pack/nvim-treesitter/start
@@ -29,7 +31,7 @@ jobs:
           ./nvim.appimage --headless -c "luafile ./scripts/write-lockfile.lua" -c "q"
           # Pretty print
           cp lockfile.json /tmp/lockfile.json
-          cat /tmp/lockfile.json | jq --sort-keys > lockfile.json
+          cat /tmp/lockfile.json | /tmp/jq --sort-keys > lockfile.json
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
@@ -37,3 +39,4 @@ jobs:
           commit-message: Update lockfile.json
           title: Update lockfile.json
           branch: update-lockfile-pr
+          base: ${{ github.head_ref }}
