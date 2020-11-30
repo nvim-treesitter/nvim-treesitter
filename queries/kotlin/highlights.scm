@@ -129,13 +129,17 @@
 [
 "["
 "]"
-"$"
-"${"
 "{"
 "}"
 "("
 ")"
 ] @punctuation.bracket
+
+[
+"$"
+"${"
+"}"
+] @punctuation.special
 
 ;; Comments
 (comment) @comment
