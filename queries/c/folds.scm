@@ -10,4 +10,6 @@
  (preproc_elif)
  (preproc_else)
  (preproc_ifdef)
+ (initializer_list)
 ] @fold
+
