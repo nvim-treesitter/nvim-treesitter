@@ -111,6 +111,13 @@ list.java = {
   maintainers = {"@p00f"},
 }
 
+list.kotlin = {
+  install_info = {
+    url = "https://github.com/QthCN/tree-sitter-kotlin",
+    files = { "src/parser.c" },
+  },
+}
+
 list.html = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-html",
