@@ -1,7 +1,33 @@
 local api = vim.api
 local ts = vim.treesitter
 
-local list = {}
+local ft_to_parsername = {}
+
+local function update_ft_to_parsername(name, parser)
+  if type(parser.used_by) == 'table' then
+    for _, ft in pairs(parser.used_by) do
+      ft_to_parsername[ft] = name
+    end
+  end
+  ft_to_parsername[parser.filetype or name] = name
+end
+
+local list = setmetatable({}, {
+  __newindex = function(table, parsername, parserconfig)
+
+    rawset(table, parsername, setmetatable(parserconfig, {
+      __newindex = function(parserconfigtable, key, value)
+        if key == "used_by" then
+          ft_to_parsername[value] = parsername
+        else
+          rawset(parserconfigtable, key, value)
+        end
+      end
+    }))
+
+    update_ft_to_parsername(parsername, parserconfig)
+   end
+})
 
 list.javascript = {
   install_info = {
@@ -340,17 +366,6 @@ list.query = {
 local M = {
   list = list
 }
-
-local ft_to_parsername = {}
-
-for name, obj in pairs(M.list) do
-  if type(obj.used_by) == 'table' then
-    for _, ft in pairs(obj.used_by) do
-      ft_to_parsername[ft] = name
-    end
-  end
-  ft_to_parsername[obj.filetype or name] = name
-end
 
 function M.ft_to_lang(ft)
   return ft_to_parsername[ft] or ft
