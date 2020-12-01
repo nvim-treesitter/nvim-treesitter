@@ -275,6 +275,19 @@ EOF
 You can also skip step 2 and use `:TSInstallFromGrammar zimbu` to install directly from a `grammar.js` in the top-level directory specified by `url`.
 Once the parser is installed, you can update it (from the latest revision of the `main` branch if `url` is a Github repository) with `:TSUpdate zimbu`.
 
+## Update parsers used_by
+
+Sometimes needs to use some parser for different filetype.
+
+Add the following snippet to your `init.vim`:
+
+```vim
+lua <<EOF
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.typescript.used_by = "javascriptflow"
+EOF
+```
+
 ## Adding queries
 
 Queries are what `nvim-treesitter` uses to extract informations from the syntax tree; they are
