@@ -1,0 +1,9 @@
+[
+  (block)
+  (declaration)
+] @indent
+
+[
+  "}"
+] @branch
+
