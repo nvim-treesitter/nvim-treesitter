@@ -116,6 +116,7 @@ list.kotlin = {
     url = "https://github.com/QthCN/tree-sitter-kotlin",
     files = { "src/parser.c" },
   },
+  maintainers = {"@tormodatt"},
 }
 
 list.html = {
