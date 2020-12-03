@@ -21,7 +21,7 @@
 (function_statement "global" @keyword)
 
 
-; Ops
+;; Ops
 [ "not" "and" "or" "as" "is" ] @keyword.operator
 
 [ "=" "~=" "==" "<=" ">=" "<" ">"
@@ -50,13 +50,15 @@
 (arg
   name: (identifier) @parameter)
 
-; type stuffs
+;; type stuffs
 (type_declaration "type" @keyword)
 (type_declaration (type_name) @type)
 (simple_type) @type
 (function_type "function" @type)
-(record_name) @type
-(enum_name) @type
+(record_declaration
+    name: (identifier) @type)
+(enum_declaration
+    name: (identifier) @type)
 (typeargs (identifier) @parameter)
 
 (table_constructor ["{" "}"] @constructor)
