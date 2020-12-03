@@ -21,7 +21,7 @@
     "revision": "9432021ba6e96124ff1b6bd91f79c0a2e3c87cf4"
   },
   "elm": {
-    "revision": "ec4a845d668e7a6623d9709ef289c342ed8169a5"
+    "revision": "2212d2ed4efae34350fe36cca1fbba36922e0d8b"
   },
   "fennel": {
     "revision": "5aad9d1f490b7fc8a847a5b260f23396c56024f5"
@@ -87,7 +87,7 @@
     "revision": "aa61d0e2930de134089326973686ac547cca9e03"
   },
   "ruby": {
-    "revision": "76c4bf243e718137ebdb2d8cdcc7b7b8b66132f1"
+    "revision": "e8d04ec8b64ba8895203135ade908eda413f0f2a"
   },
   "rust": {
     "revision": "8746bd4b584b8063ee8e445bf31015e887417d33"
