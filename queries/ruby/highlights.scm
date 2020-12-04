@@ -50,6 +50,14 @@
 ((identifier) @keyword
  (#vim-match? @keyword "^(private|protected|public)$"))
 
+[
+ "rescue"
+ "ensure"
+ ] @exception
+
+((identifier) @exception
+ (#vim-match? @exception "^(fail|raise)$"))
+
 ; Function calls
 
 "defined?" @function
