@@ -25,7 +25,7 @@
 
 ;; Variables/fields
 ; attribute in data classes etc.
-(class_parameter (simple_identifier) @attribute)
+(class_parameter (simple_identifier) @field)
 ; variable in normal classes
 (property_declaration (variable_declaration (simple_identifier) @variable))
 ; accessed field in blocks. `logger` in `logger.info("")`
@@ -54,7 +54,7 @@
 (boolean_literal) @boolean
 
 ;; Annotations
-(annotation (single_annotation) @annotation)
+(annotation (single_annotation) @attribute)
 
 ;; Types
 ; TODO more type definitions
