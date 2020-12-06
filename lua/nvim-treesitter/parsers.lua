@@ -407,6 +407,8 @@ function M.has_parser(lang)
   local lang = lang or M.get_buf_lang(api.nvim_get_current_buf())
 
   if not lang or #lang == 0 then return false end
+  -- HACK: nvim internal API
+  if vim._ts_has_language(lang) then return true end
   return #parser_files[lang] > 0
 end
 
