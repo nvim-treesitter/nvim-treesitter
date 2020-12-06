@@ -53,6 +53,9 @@
   "julia": {
     "revision": "6a0863f1ce3fcf6f99dc0addb7886dcbd27c5a48"
   },
+  "kotlin": {
+    "revision": "b72933c0c0ff25f2de35bb3acabfe6979333187e"
+  },
   "lua": {
     "revision": "97b757ad3546d68dc1131e6ffb9b1d2a750eea29"
   },
