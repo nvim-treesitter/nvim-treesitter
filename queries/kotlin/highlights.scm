@@ -1,26 +1,27 @@
 ;;; Kotlin
 
+(simple_identifier) @variable
+; Reset some
+(navigation_suffix (simple_identifier) @none)
+(import_header (identifier (simple_identifier) @none))
+(package_header (identifier (simple_identifier) @none))
+
+
 ;; Strings
 (line_string_literal) @string
 (multi_line_string_literal) @string
 ; Interpolated
-(interpolated_identifier) @none
+(interpolated_identifier) @variable
 (interpolated_expression) @none
 
 
 ;; Suffixes
-;; Issues:
-;; - `doors` in `c = car.doors` not reconized
-(navigation_expression (navigation_suffix) @property ) ; TODO to method and resetable italics
-(assignment (navigation_expression (navigation_suffix) @none ))
-(call_expression (navigation_expression (navigation_suffix) @none ))
-(navigation_expression (navigation_expression (navigation_suffix) @none ))
-(parenthesized_expression (navigation_expression (navigation_suffix) @property))
+(navigation_expression (navigation_suffix (simple_identifier) @property ))
+; Reset some
+(assignment (navigation_expression (navigation_suffix (simple_identifier) @none )))
+(call_expression (navigation_expression (navigation_suffix (simple_identifier) @none )))
+(navigation_expression (navigation_expression (navigation_suffix (simple_identifier) @none )))
 
-;; Constants
-; Assume all-caps names are constants
-((simple_identifier) @constant
- (#vim-match? @constant "^[A-Z][A-Z_]+"))
 
 
 ;; Variables/fields
@@ -36,15 +37,27 @@
 ; `variable` in `variable = car.doors`
 (directly_assignable_expression (simple_identifier) @variable)
 
+
+;; Constants
+; Assume all-caps names are constants
+((simple_identifier) @constant
+ (#match? @constant "^[A-Z][A-Z_]+"))
+((interpolated_identifier) @constant
+ (#vim-match? @constant "^[A-Z][A-Z_]+"))
+
+
 (lambda_parameters) @parameter
 
 
 ;; Builtin functions
 ((simple_identifier) @function.macro
- (#vim-match? @function.macro "(^commonPrefixWith$|^commonSuffixWith$|^endsWith$|^findAnyOf$|^findLastAnyOf$|^hasSurrogatePairAt$|^ifBlank$|^ifEmpty$|^indexOf$|^indexOfAny$|^isEmpty$|^isNotBlank$|^isNotEmpty$|^isNullOrBlank$|^isNullOrEmpty$|^lastIndexOf$|^lastIndexOfAny$|^lineSequence$|^lines$|^orEmpty$|^padEnd$|^padStart$|^removePrefix$|^removeRange$|^removeSuffix$|^removeSurrounding$|^replace$|^replaceAfter$|^replaceAfterLast$|^replaceBefore$|^replaceBeforeLast$|^replaceFirst$|^replaceRange$|^split$|^splitToSequence$|^startsWith$|^subSequence$|^substring$|^substringAfter$|^substringAfterLast$|^substringBefore$|^substringBeforeLast$|^trim$|^trimEnd$|^trimStart$|^containsKey$|^containsValue$|^filter$|^filterKeys$|^filterNot$|^filterNotTo$|^filterTo$|^filterValues$|^getOrElse$|^getOrPut$|^getValue$|^ifEmpty$|^isNotEmpty$|^isNullOrEmpty$|^mapKeys$|^mapKeysTo$|^mapValues$|^mapValuesTo$|^orEmpty$|^putAll$|^remove$|^toMap$|^toMutableMap$|^toPair$|^also$|^apply$|^let$|^run$|^takeIf$|^takeUnless$|^prependIndent$|^replaceIndent$|^replaceIndentByMargin$|^trimIndent$|^trimMargin$|^all$|^any$|^asIterable$|^asSequence$|^associate$|^associateBy$|^associateByTo$|^associateTo$|^associateWith$|^associateWithTo$|^chunked$|^chunkedSequence$|^count$|^drop$|^dropLast$|^dropLastWhile$|^dropWhile$|^elementAtOrElse$|^elementAtOrNull$|^filter$|^filterIndexed$|^filterIndexedTo$|^filterNot$|^filterNotTo$|^filterTo$|^find$|^findLast$|^first$|^firstOrNull$|^flatMap$|^flatMapIndexed$|^flatMapIndexedTo$|^flatMapTo$|^fold$|^foldIndexed$|^foldRight$|^foldRightIndexed$|^forEach$|^forEachIndexed$|^getOrElse$|^getOrNull$|^groupBy$|^groupByTo$|^groupingBy$|^indexOfFirst$|^indexOfLast$|^last$|^lastOrNull$|^map$|^mapIndexed$|^mapIndexedNotNull$|^mapIndexedNotNullTo$|^mapIndexedTo$|^mapNotNull$|^mapNotNullTo$|^mapTo$|^max$|^maxBy$|^maxByOrNull$|^maxOf$|^maxOfOrNull$|^maxOfWith$|^maxOfWithOrNull$|^maxOrNull$|^maxWith$|^maxWithOrNull$|^min$|^minBy$|^minByOrNull$|^minOf$|^minOfOrNull$|^minOfWith$|^minOfWithOrNull$|^minOrNull$|^minWith$|^minWithOrNull$|^none$|^onEach$|^onEachIndexed$|^partition$|^random$|^randomOrNull$|^reduce$|^reduceIndexed$|^reduceIndexedOrNull$|^reduceOrNull$|^reduceRight$|^reduceRightIndexed$|^reduceRightIndexedOrNull$|^reduceRightOrNull$|^reversed$|^runningFold$|^runningFoldIndexed$|^runningReduce$|^runningReduceIndexed$|^scan$|^scanIndexed$|^scanReduce$|^scanReduceIndexed$|^single$|^singleOrNull$|^slice$|^sumBy$|^sumByDouble$|^sumOf$|^take$|^takeLast$|^takeLastWhile$|^takeWhile$|^toCollection$|^toHashSet$|^toList$|^toMutableList$|^toSet$|^windowed$|^windowedSequence$|^withIndex$|^zip$|^zipWithNext$)"))
+ (#vim-match? @function.macro "^(commonPrefixWith|commonSuffixWith|endsWith|findAnyOf|findLastAnyOf|hasSurrogatePairAt|ifBlank|ifEmpty|indexOf|indexOfAny|isEmpty|isNotBlank|isNotEmpty|isNullOrBlank|isNullOrEmpty|lastIndexOf|lastIndexOfAny|lineSequence|lines|orEmpty|padEnd|padStart|removePrefix|removeRange|removeSuffix|removeSurrounding|replace|replaceAfter|replaceAfterLast|replaceBefore|replaceBeforeLast|replaceFirst|replaceRange|split|splitToSequence|startsWith|subSequence|substring|substringAfter|substringAfterLast|substringBefore|substringBeforeLast|trim|trimEnd|trimStart|containsKey|containsValue|filter|filterKeys|filterNot|filterNotTo|filterTo|filterValues|getOrElse|getOrPut|getValue|ifEmpty|isNotEmpty|isNullOrEmpty|mapKeys|mapKeysTo|mapValues|mapValuesTo|orEmpty|putAll|remove|toMap|toMutableMap|toPair|also|apply|let|run|takeIf|takeUnless|prependIndent|replaceIndent|replaceIndentByMargin|trimIndent|trimMargin|all|any|asIterable|asSequence|associate|associateBy|associateByTo|associateTo|associateWith|associateWithTo|chunked|chunkedSequence|count|drop|dropLast|dropLastWhile|dropWhile|elementAtOrElse|elementAtOrNull|filter|filterIndexed|filterIndexedTo|filterNot|filterNotTo|filterTo|find|findLast|first|firstOrNull|flatMap|flatMapIndexed|flatMapIndexedTo|flatMapTo|fold|foldIndexed|foldRight|foldRightIndexed|forEach|forEachIndexed|getOrElse|getOrNull|groupBy|groupByTo|groupingBy|indexOfFirst|indexOfLast|last|lastOrNull|map|mapIndexed|mapIndexedNotNull|mapIndexedNotNullTo|mapIndexedTo|mapNotNull|mapNotNullTo|mapTo|max|maxBy|maxByOrNull|maxOf|maxOfOrNull|maxOfWith|maxOfWithOrNull|maxOrNull|maxWith|maxWithOrNull|min|minBy|minByOrNull|minOf|minOfOrNull|minOfWith|minOfWithOrNull|minOrNull|minWith|minWithOrNull|none|onEach|onEachIndexed|partition|random|randomOrNull|reduce|reduceIndexed|reduceIndexedOrNull|reduceOrNull|reduceRight|reduceRightIndexed|reduceRightIndexedOrNull|reduceRightOrNull|reversed|runningFold|runningFoldIndexed|runningReduce|runningReduceIndexed|scan|scanIndexed|scanReduce|scanReduceIndexed|single|singleOrNull|slice|sumBy|sumByDouble|sumOf|take|takeLast|takeLastWhile|takeWhile|toCollection|toHashSet|toList|toMutableList|toSet|windowed|windowedSequence|withIndex|zip|zipWithNext)$"))
+
+(call_expression
+   (simple_identifier) @function)
 
 ((simple_identifier) @function.builtin
- (#vim-match? @function.builtin "(^print$|^println$|^buildMap$|^emptyMap$|^hashMapOf$|^linkedMapOf$|^mapOf$|^mutableMapOf$|^buildSet$|^emptySet$|^hashSetOf$|^linkedSetOf$|^mutableSetOf$|^setOf$|^setOfNotNull$|^TODO$|^repeat$|^run$|^with$)"))
+ (#vim-match? @function.builtin "^(print|println|buildMap|emptyMap|hashMapOf|linkedMapOf|mapOf|mutableMapOf|buildSet|emptySet|hashSetOf|linkedSetOf|mutableSetOf|setOf|setOfNotNull|TODO|repeat|run|with)$"))
 
 
 ;; Numbers
@@ -53,13 +66,13 @@
 ;; Booleans
 (boolean_literal) @boolean
 
+;; Types
+(type_identifier) @type
+
 ;; Annotations
 (annotation (single_annotation) @attribute)
-
-;; Types
-; TODO more type definitions
-(variable_declaration (user_type (type_identifier) @type))
-(callable_reference (type_identifier) @type)
+(single_annotation (user_type (type_identifier) @attribute))
+(single_annotation (constructor_invocation (user_type (type_identifier) @attribute)))
 
 
 ;; it
@@ -106,7 +119,9 @@
  "constructor"
  "throw"
 ] @keyword
-; const does not work
+
+; const etc.
+(property_modifier) @keyword
 
 
 ;; Conditionals
@@ -165,6 +180,7 @@
 ; Functions
 (function_declaration (simple_identifier) @function)
 
-; TODO parameter
 
 (ERROR) @error
+
+; TODO parameter
