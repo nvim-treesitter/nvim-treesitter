@@ -150,6 +150,14 @@ list.css = {
   maintainers = {"@TravonteD"},
 }
 
+list.erlang = {
+  install_info = {
+    url = "https://github.com/AbstractMachinesLab/tree-sitter-erlang",
+    files = { "src/parser.c" }
+  },
+  maintainers = { '@ostera' },
+}
+
 list.ocaml = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ocaml",
