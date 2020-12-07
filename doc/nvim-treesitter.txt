@@ -506,6 +506,10 @@ For labels: `label:` in C and `:label:` in Lua.
                                                                *hl-TSOperator*
 For any operator: `+`, but also `->` and `*` in C.
 
+`TSKeywordOperator`
+                                                               *hl-TSKeywordOperator*
+Same as the |hl-TSOperator|
+
 `TSKeyword`
                                                                 *hl-TSKeyword*
 For keywords that don't fall in previous categories.
@@ -539,6 +543,10 @@ in Lua.
                                                              *hl-TSAnnotation*
 For C++/Dart attributes, annotations that can be attached to the code to
 denote some kind of meta information.
+
+`TSAttribute`
+                                                             *hl-TSAttribute*
+TODO: Add missing description.
 
 `TSText`
                                                                    *hl-TSText*
@@ -576,6 +584,14 @@ Any variable name that does not have another highlight.
 `TSVariableBuiltin`
                                                         *hl-TSVariableBuiltin*
 Variable names that are defined by the languages, like `this` or `self`.
+
+`TSTag`
+                                                               *hl-TSTag*
+TODO: Add missing description.
+
+`TSTagDelimiter`
+                                                        *hl-TSTagDelimiter*
+TODO: Add missing description.
 
 ==============================================================================
 PERFORMANCE                                      *nvim-treesitter-performance*
