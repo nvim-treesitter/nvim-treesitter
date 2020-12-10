@@ -179,7 +179,8 @@ list.css = {
 list.erlang = {
   install_info = {
     url = "https://github.com/AbstractMachinesLab/tree-sitter-erlang",
-    files = { "src/parser.c" }
+    files = { "src/parser.c" },
+    branch = "main"
   },
   maintainers = { '@ostera' },
 }
