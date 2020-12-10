@@ -32,7 +32,7 @@ local function get_job_status()
 end
 
 local function get_revision(lang)
-  if #lockfile == 0 then
+  if lockfile.cpp == nil then -- check if lockfile was loaded, we know cpp is in the table
     lockfile = vim.fn.json_decode(vim.fn.readfile(utils.join_path(utils.get_package_path(), 'lockfile.json')))
   end
   return (lockfile[lang] and lockfile[lang].revision)
@@ -167,6 +167,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
     return
   end
   local revision = configs.get_update_strategy() == 'lockfile' and get_revision(lang)
+  print('revision: '..revision)
 
   local command_list = {}
   if not from_local_path then
@@ -277,7 +278,7 @@ local function install(with_sync, ask_reinstall, generate_from_grammar)
 end
 
 function M.update(lang)
-  M.lockfile = {}
+  lockfile = {}
   reset_progress_counter()
   if lang and lang ~= 'all' then
     install(false, 'force')(lang)
@@ -323,11 +324,10 @@ function M.uninstall(lang)
   end
 end
 
-function M.write_lockfile(verbose, skip_langs)
+function M.write_lockfile(verbose, check_queries)
   local sorted_parsers = {}
   -- Load previous lockfile
   get_revision()
-  skip_langs = skip_langs or {}
 
   for k, v in pairs(parsers.get_parser_configs()) do
     table.insert(sorted_parsers, {name = k, parser = v})
@@ -337,15 +337,31 @@ function M.write_lockfile(verbose, skip_langs)
 
   for _, v in ipairs(sorted_parsers) do
 
-    if not vim.tbl_contains(skip_langs, v.name) then
-      -- I'm sure this can be done in aync way with iter_cmd
-      local sha = vim.split(vim.fn.systemlist('git ls-remote '..v.parser.install_info.url)[1], '\t')[1]
-      lockfile[v.name] = { revision = sha }
-      if verbose then
-        print(v.name..': '..sha)
+    -- I'm sure this can be done in aync way with iter_cmd
+    local sha = vim.split(vim.fn.systemlist('git ls-remote '..v.parser.install_info.url)[1], '\t')[1]
+    local previous_revision = lockfile[v.name].revision
+    lockfile[v.name].revision = sha
+    if verbose then
+      if previous_revision == sha then
+        print(v.name..': '..previous_revision..' (up-to-date)')
+      else
+        print(v.name..': '..previous_revision..' -> '..sha)
       end
-    else
-      print('Skipping '..v.name)
+    end
+
+    if check_queries and previous_revision ~= sha then
+      print(lockfile[v.name].revision)
+      print(vim.inspect(lockfile))
+
+      install(true, 'force')(v.name)
+      local ok, text = pcall(vim.fn.system,'nvim --headless -c "luafile ./scripts/check-queries.lua"')
+      print(text)
+      if ok and not text:find('failed', 1, true) then
+        print('Passed query test!')
+      else
+        print('Skipping update of '..v.name..'. It would break stuff.')
+        lockfile[v.name].revision = previous_revision
+      end
     end
   end
 
