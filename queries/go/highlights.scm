@@ -7,6 +7,7 @@
 (type_identifier) @type
 (field_identifier) @property
 (identifier) @variable
+(package_identifier) @variable
 
 (parameter_declaration (identifier) @parameter)
 (variadic_parameter_declaration (identifier) @parameter)
