@@ -323,8 +323,11 @@ function M.uninstall(lang)
   end
 end
 
-function M.write_lockfile(verbose)
+function M.write_lockfile(verbose, skip_langs)
   local sorted_parsers = {}
+  -- Load previous lockfile
+  get_revision()
+  skip_langs = skip_langs or {}
 
   for k, v in pairs(parsers.get_parser_configs()) do
     table.insert(sorted_parsers, {name = k, parser = v})
@@ -333,11 +336,16 @@ function M.write_lockfile(verbose)
   table.sort(sorted_parsers, function(a, b) return a.name < b.name end)
 
   for _, v in ipairs(sorted_parsers) do
-    -- I'm sure this can be done in aync way with iter_cmd
-    local sha = vim.split(vim.fn.systemlist('git ls-remote '..v.parser.install_info.url)[1], '\t')[1]
-    lockfile[v.name] = { revision = sha }
-    if verbose then
-      print(v.name..': '..sha)
+
+    if not vim.tbl_contains(skip_langs, v.name) then
+      -- I'm sure this can be done in aync way with iter_cmd
+      local sha = vim.split(vim.fn.systemlist('git ls-remote '..v.parser.install_info.url)[1], '\t')[1]
+      lockfile[v.name] = { revision = sha }
+      if verbose then
+        print(v.name..': '..sha)
+      end
+    else
+      print('Skipping '..v.name)
     end
   end
 
