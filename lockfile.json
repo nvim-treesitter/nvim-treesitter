@@ -121,5 +121,8 @@
   },
   "yaml": {
     "revision": "258751d666d31888f97ca6188a686f36fadf6c43"
+  },
+  "erlang": {
+    "revision": "53725641da5624a5066c4d01cdb27d7b05cb2810"
   }
 }
