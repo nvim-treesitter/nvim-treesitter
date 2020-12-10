@@ -180,7 +180,7 @@ list.erlang = {
   install_info = {
     url = "https://github.com/AbstractMachinesLab/tree-sitter-erlang",
     files = { "src/parser.c" },
-    branch = "main"
+    branch = "main",
   },
   maintainers = { '@ostera' },
 }
