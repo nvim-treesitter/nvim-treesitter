@@ -24,7 +24,7 @@
     "revision": "cbec3e4afbf4376bd3a1c0aa9c21009de6013752"
   },
   "erlang": {
-    "revision": "1648ac4095a410570c9d91aa9d99a202c5a1c5bf"
+    "revision": "97e4f3d3790f19a7fe3cfe09737c5ea5b12d2d11"
   },
   "fennel": {
     "revision": "5aad9d1f490b7fc8a847a5b260f23396c56024f5"
@@ -105,10 +105,10 @@
     "revision": "a22fa5e19bae50098e2252ea96cba3aba43f4c58"
   },
   "teal": {
-    "revision": "59f90be8d211f9abd63ee68ca1ff65096d7d0b2a"
+    "revision": "b6b6363e7ee82150f2cf7c1242423f7b6f74a4c5"
   },
   "toml": {
-    "revision": "02e774c911d123ea3fbe5273cf9d987fa88dd3fb"
+    "revision": "084da152d85cb8c4bbbe0ab5f3f1f9e5bfb77d3c"
   },
   "tsx": {
     "revision": "73afadbd117a8e8551758af9c3a522ef46452119"
@@ -123,6 +123,6 @@
     "revision": "ac0829b5f7aa4234c149c23fc12d09a7c3477d4a"
   },
   "yaml": {
-    "revision": "258751d666d31888f97ca6188a686f36fadf6c43"
+    "revision": "da23114377ac32e844eb82e96bdcf830e874c451"
   }
 }
