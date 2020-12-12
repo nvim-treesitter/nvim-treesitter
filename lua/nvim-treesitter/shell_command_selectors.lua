@@ -50,7 +50,7 @@ function M.select_rm_file_cmd(file, info_msg)
 end
 
 function M.select_executable(executables)
-  return vim.tbl_filter(function(c) return fn.executable(c) == 1 end, executables)[1]
+  return vim.tbl_filter(function(c) return c ~= vim.NIL and fn.executable(c) == 1 end, executables)[1]
 end
 
 function M.select_compiler_args(repo)
