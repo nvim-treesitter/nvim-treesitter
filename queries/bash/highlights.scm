@@ -1,3 +1,7 @@
+(simple_expansion) @none
+(expansion
+  "${" @punctuation.special
+  "}" @punctuation.special) @none
 [
  "("
  ")"
