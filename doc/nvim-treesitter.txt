@@ -284,7 +284,7 @@ get_named_children(node)~
 
 Returns a table of named children of `node`.
 
-                                                      *ts_utilsiget_next_node*
+                                                      *ts_utils.get_next_node*
 get_next_node(node, allow_switch_parent, allow_next_parent)~
 
 Returns the next node within the same parent.
