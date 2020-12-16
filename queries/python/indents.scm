@@ -11,4 +11,6 @@
 [
   "elif"
   "else"
+  "finally"
+  "except"
 ] @branch
