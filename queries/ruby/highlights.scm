@@ -63,24 +63,15 @@
 "defined?" @function
 
 (call
-  [
-   receiver: (constant) @type
+   receiver: (constant)? @type
    method: [
             (identifier)
             (constant)
             ] @function
-   ])
-
-(method_call
-  [
-   method: [
-            (identifier)
-            (constant)
-            ] @function
-   ])
+   )
 
 (program
- (method_call
+ (call
   (identifier) @include)
  (#vim-match? @include "^(require|require_relative|load)$"))
 
