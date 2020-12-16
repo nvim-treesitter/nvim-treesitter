@@ -78,7 +78,7 @@
     "revision": "b0c0367d4b7058921fdc4ba11e257441a64ab809"
   },
   "python": {
-    "revision": "c4282ba411d990d313c5f8e7850bcaaf46fbf7da"
+    "revision": "65b486b42fe0188e4be344092151042bf1bc6d9a"
   },
   "ql": {
     "revision": "a0d688d62dcb9cbc7c53f0d98343c458b3776b3d"
@@ -93,7 +93,7 @@
     "revision": "aa61d0e2930de134089326973686ac547cca9e03"
   },
   "ruby": {
-    "revision": "694f81cbc552d2c2e928d909652544e0a2d60613"
+    "revision": "49c5f6e9cc9ea1a3b9fb5414ba0c2d697acb2448"
   },
   "rust": {
     "revision": "8746bd4b584b8063ee8e445bf31015e887417d33"
