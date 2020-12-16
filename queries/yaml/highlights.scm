@@ -4,8 +4,7 @@
 (null_scalar) @constant.builtin
 (double_quote_scalar) @string
 (single_quote_scalar) @string
-(double_quote_scalar (escape_sequence)) @string.escape
-(single_quote_scalar (escape_sequence)) @string.escape
+(escape_sequence) @string.escape
 (integer_scalar) @number
 (float_scalar) @number
 (comment) @comment
