@@ -7,6 +7,9 @@
 (function_statement)
 (record_declaration)
 (enum_declaration)
-;(functiondef)
+(anon_function)
 (table_constructor)
 ] @fold
+
+(record_declaration
+  (anon_record) @fold)
