@@ -1,5 +1,5 @@
-(block_mapping_pair key: (flow_node) @field)
-(flow_pair key: (flow_node) @field) ; This one doesn't seem to work, no idea what's wrong with it.
+(block_mapping_pair key: (_) @field)
+(flow_mapping (_ key: (_) @field))
 (boolean_scalar) @boolean
 (null_scalar) @constant.builtin
 (double_quote_scalar) @string
