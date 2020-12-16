@@ -3,13 +3,11 @@
    (var (identifier)) @definition.var)
 
 (var_assignment
-   (var (identifier)) @definition.var)
+   (var (identifier) @definition.var) @definition.associated)
 
-(arg
-  name: (identifier) @definition.parameter)
-(typeargs (identifier) @definition.type)
+(arg name: (identifier) @definition.parameter)
 
-;(functiondef) @scope
+(anon_function) @scope
 ((function_statement
   (function_name) @definition.function) @scope
   (#set! definition.function.scope "parent"))
@@ -22,3 +20,4 @@
 (do_statement) @scope
 
 (identifier) @reference
+
