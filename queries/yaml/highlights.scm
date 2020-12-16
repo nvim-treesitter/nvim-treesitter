@@ -15,7 +15,6 @@
 (yaml_directive) @keyword
 (ERROR) @error
 [
-; "+" ; including this causes "invalid node type" errors?!?
 ","
 "-"
 ":"
