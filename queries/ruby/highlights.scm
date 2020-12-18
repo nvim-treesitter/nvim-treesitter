@@ -45,7 +45,7 @@
  "while"
  ] @repeat
 
-(constant) @constant
+(constant) @type
 
 ((identifier) @keyword
  (#vim-match? @keyword "^(private|protected|public)$"))
@@ -82,12 +82,12 @@
 
 (method name: [
                (identifier) @function
-               (constant) @constant
+               (constant) @type
                ])
 
 (singleton_method name: [
                          (identifier) @function
-                         (constant) @constant
+                         (constant) @type
                          ])
 
 (class name: (constant) @type)
@@ -103,8 +103,8 @@
 ((identifier) @constant.builtin
  (#vim-match? @constant.builtin "^__(callee|dir|id|method|send|ENCODING|FILE|LINE)__$"))
 
-((constant) @constant.macro
- (#vim-match? @constant.macro "^[A-Z\\d_]+$"))
+((constant) @type
+ (#vim-match? @type "^[A-Z\\d_]+$"))
 
 [
  (self)
