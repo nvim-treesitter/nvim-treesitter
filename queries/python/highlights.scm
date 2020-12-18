@@ -109,7 +109,7 @@
 (none) @constant.builtin
 [(true) (false)] @boolean
 ((identifier) @variable.builtin
- (#match? @variable.builtin "self"))
+ (#match? @variable.builtin "^self$"))
 
 (integer) @number
 (float) @float
