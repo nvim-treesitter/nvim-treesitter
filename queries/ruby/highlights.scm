@@ -72,8 +72,12 @@
 
 (program
  (call
-  (identifier) @include)
- (#vim-match? @include "^(require|require_relative|load)$"))
+   (identifier) @include)
+   (#vim-match? @include "^(require|require_relative|load)$"))
+
+ (call
+   (identifier) @include
+   (#vim-match? @include "^(include|extend|prepend)$"))
 
 ; Function definitions
 
