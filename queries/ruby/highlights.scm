@@ -101,7 +101,7 @@
  ] @label
 
 ((identifier) @constant.builtin
- (#vim-match? @constant.builtin "^__(FILE|LINE|ENCODING)__$"))
+ (#vim-match? @constant.builtin "^__(callee|dir|id|method|send|ENCODING|FILE|LINE)__$"))
 
 ((constant) @constant.macro
  (#vim-match? @constant.macro "^[A-Z\\d_]+$"))
