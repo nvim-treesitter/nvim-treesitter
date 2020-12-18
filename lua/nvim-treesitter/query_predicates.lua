@@ -85,6 +85,5 @@ query.add_predicate('has-type?', function(match, pattern, bufnr, pred)
   return vim.tbl_contains(types, node:type())
 end)
 
--- Just avoid some anoying warnings for this predicate
-query.add_predicate('set!', function() return true end)
-query.add_predicate('make-range!', function() return true end)
+-- Just avoid some anoying warnings for this directive
+query.add_directive('make-range!', function() end)
