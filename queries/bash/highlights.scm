@@ -29,6 +29,7 @@
  "|"
  "||"
  "="
+ "=~"
  "=="
  "!="
  ] @operator
@@ -117,3 +118,5 @@
 
 (case_item
   value: (word) @parameter)
+
+(regex) @string.regex
