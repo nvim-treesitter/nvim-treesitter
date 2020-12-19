@@ -70,13 +70,13 @@
 (special_variable_name) @constant
 
 ((word) @constant.builtin
- (#vim-match? @constant.builtin "SIG(INT|TERM|QUIT|TIN|TOU|STP|HUP)"))
+ (#match? @constant.builtin "^SIG(INT|TERM|QUIT|TIN|TOU|STP|HUP)$"))
 
 ((word) @boolean
-  (#vim-match? @boolean "true|false"))
+  (#match? @boolean "^(true|false)$"))
 
 ((word) @number
-  (#vim-match? @number "^\d*$"))
+  (#match? @number "^[0-9]+$"))
 
 (comment) @comment
 (test_operator) @string
@@ -96,10 +96,12 @@
 (command
   argument: [
              (word) @parameter
-             ((word) @number
-              (#vim-match? @number "^\d*$"))
              (concatenation (word) @parameter)
              ])
+
+(command
+  argument: ((word) @number
+             (#match? @number "^[0-9]+$")))
 
 (file_redirect
   descriptor: (file_descriptor) @operator
@@ -115,5 +117,3 @@
 
 (case_item
   value: (word) @parameter)
-
-(concatenation (word) @parameter)
