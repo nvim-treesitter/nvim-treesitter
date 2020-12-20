@@ -41,9 +41,9 @@
 ;; Constants
 ; Assume all-caps names are constants
 ((simple_identifier) @constant
- (#match? @constant "^[A-Z][A-Z_]+"))
+ (#match? @constant "^[A-Z][A-Z_0-9]+$"))
 ((interpolated_identifier) @constant
- (#vim-match? @constant "^[A-Z][A-Z_]+"))
+ (#vim-match? @constant "^[A-Z][A-Z_0-9]+$"))
 
 
 (lambda_parameters) @parameter
