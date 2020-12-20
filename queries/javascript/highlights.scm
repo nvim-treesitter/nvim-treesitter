@@ -151,6 +151,7 @@
 ";" @punctuation.delimiter
 "." @punctuation.delimiter
 "," @punctuation.delimiter
+"?." @punctuation.delimiter
 
 (pair ":" @punctuation.delimiter)
 
@@ -181,6 +182,21 @@
   "||"
   "%"
   "%="
+  "*"
+  "**"
+  ">>>"
+  "&"
+  "|"
+  "^"
+  "??"
+  "*="
+  ">>="
+  ">>>="
+  "^="
+  "|="
+  "&&="
+  "||="
+  "??="
 ] @operator
 
 (binary_expression "/" @operator)
