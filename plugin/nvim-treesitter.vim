@@ -60,11 +60,14 @@ highlight default link TSKeyword Keyword
 highlight default link TSKeywordFunction Keyword
 highlight default link TSKeywordOperator TSOperator
 highlight default link TSException Exception
+highlight default link TSError Error
+highlight default link TSStructure Structure
 
 highlight default link TSType Type
 highlight default link TSTypeBuiltin Type
 highlight default link TSInclude Include
 
+highlight default link TSVariable Identifier
 highlight default link TSVariableBuiltin Special
 
 highlight default link TSText TSNone
