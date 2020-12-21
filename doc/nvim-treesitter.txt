@@ -544,10 +544,6 @@ For regexes.
                                                            *hl-TSStringEscape*
 For escape characters within a string.
 
-`TSStructure`
-                                                              *hl-TSStructure*
-TODO: docs
-
 `TSTag`
                                                                    *hl-TSTag*
 Tags like html tag names.
