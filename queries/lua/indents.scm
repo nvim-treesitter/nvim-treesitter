@@ -1,5 +1,8 @@
 [
   (function_definition)
+  (variable_declaration)
+  (local_variable_declaration)
+  (field)
   (local_function)
   (function)
   (if_statement)
@@ -14,6 +17,7 @@
 
 [
   "end"
+  "until"
   "{"
   "}"
   "("
