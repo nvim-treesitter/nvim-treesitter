@@ -76,9 +76,6 @@
 ((word) @boolean
   (#match? @boolean "^(true|false)$"))
 
-((word) @number
-  (#match? @number "^[0-9]+$"))
-
 (comment) @comment
 (test_operator) @string
 
@@ -100,9 +97,8 @@
              (concatenation (word) @parameter)
              ])
 
-(command
-  argument: ((word) @number
-             (#match? @number "^[0-9]+$")))
+((word) @number
+  (#match? @number "^[0-9]+$"))
 
 (file_redirect
   descriptor: (file_descriptor) @operator
