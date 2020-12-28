@@ -15,6 +15,10 @@
 
 (group_name) @property
 
+;; These are escaped special characters that lost their special meaning
+;; -> no special highlighting
+; (identity_escape)
+
 [
  (identity_escape)
  (control_letter_escape)
