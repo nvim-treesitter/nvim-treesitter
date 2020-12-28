@@ -157,7 +157,8 @@ list.julia = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-julia",
     files = { "src/parser.c", "src/scanner.c" },
-  }
+  },
+  maintainers = {"@mroavi", "@theHamsta"},
 }
 
 list.json = {
