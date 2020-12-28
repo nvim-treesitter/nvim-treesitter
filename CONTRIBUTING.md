@@ -114,7 +114,6 @@ are optional and will not have any effect for now.
 @constant.macro
 @string
 @string.regex
-@string.regex-classchar
 @string.escape
 @string.special
 @character
