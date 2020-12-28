@@ -380,6 +380,15 @@ list.query = {
   maintainers = {"@steelsojka"},
 }
 
+list.sparql = {
+  install_info = {
+    url = "https://github.com/BonaBeavis/tree-sitter-sparql",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  maintainers = { "@bonabeavis" },
+}
+
 local M = {
   list = list
 }
