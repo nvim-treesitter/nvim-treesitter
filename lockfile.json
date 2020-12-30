@@ -101,6 +101,9 @@
   "scala": {
     "revision": "211bb726bb5857f872247b600c7c1808e641a8d4"
   },
+  "sparql": {
+    "revision": "d477183c6c589bcb1f0b5769816640f2a7a7db91"
+  },
   "swift": {
     "revision": "a22fa5e19bae50098e2252ea96cba3aba43f4c58"
   },
