@@ -151,7 +151,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [javascript](https://github.com/tree-sitter/tree-sitter-javascript) (maintained by @steelsojka)
 - [x] [jsdoc](https://github.com/tree-sitter/tree-sitter-jsdoc) (maintained by @steelsojka)
 - [x] [json](https://github.com/tree-sitter/tree-sitter-json) (maintained by @steelsojka)
-- [ ] [julia](https://github.com/tree-sitter/tree-sitter-julia)
+- [x] [julia](https://github.com/tree-sitter/tree-sitter-julia) (maintained by @mroavi, @theHamsta)
 - [x] [kotlin](https://github.com/QthCN/tree-sitter-kotlin) (maintained by @tormodatt)
 - [x] [lua](https://github.com/nvim-treesitter/tree-sitter-lua) (maintained by @vigoux)
 - [x] [nix](https://github.com/cstrahan/tree-sitter-nix) (maintained by @leo60228)
