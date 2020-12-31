@@ -27,7 +27,7 @@
 ((directive
   name: (type) @_type
   body: (body) @definition)
- (#match? @_type "role::"))
+ (#eq? @_type "role"))
 
 ;; References
 
