@@ -29,6 +29,9 @@
   "fennel": {
     "revision": "5aad9d1f490b7fc8a847a5b260f23396c56024f5"
   },
+  "gdscript": {
+    "revision": "bc4074ed0aa195d11b8c78da0e1f4a5509566844"
+  },
   "go": {
     "revision": "dadfd9c9aab2630632e61cfce645c13c35aa092f"
   },
