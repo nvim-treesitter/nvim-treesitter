@@ -1,35 +1,48 @@
 (doctest_block) @python
 
-;; Directives with nested content
-
+;; Directives with nested content without arguments nor options
 ((directive
    name: (type) @_type
    body: (body) @rst)
  (#match?
   @_type
-  "^(attention|caution|danger|error|hint|important|note|tip|warning|admonition)|(image|figure)|(topic|sidebar|line-block|parsed-literal|rubric|epigraph|highlights|pull-quote|compound|container)|(table|list-table)|(contents|sectnum|section-numbering|header|footer)|(target-notes)|(meta)|(replace|unicode|date)|(include|class|role|default-role|title|restructuredtext-test-directive)$"))
+  "^(attention|caution|danger|error|hint|important|note|tip|warning|admonition)|(line-block|parsed-literal|epigraph|highlights|pull-quote|compound)|(header|footer)|(meta)|(replace)$"))
+
+;; Directives with nested content without arguments, but with options
+((directive
+   name: (type) @_type
+   body: (body (options) (content) @rst))
+ (#match?
+  @_type
+  "^(attention|caution|danger|error|hint|important|note|tip|warning|admonition)|(line-block|parsed-literal|compound)$"))
+
+;; Directives with nested content with arguments and options
+((directive
+   name: (type) @_type
+   body: (body (content) @rst))
+ (#match?
+  @_type
+  "^(figure)|(topic|sidebar|container)|(table|list-table)|(class|role|restructuredtext-test-directive)$"))
 
 ;; Special directives
-
-;; TODO: using @language and @content on the same capture raises an error.
-;; ((directive
-;;    name: (type) @_type
-;;    body: (body) @language @content)
-;;  (#eq? @_type "code"))
-
-;; ((directive
-;;    name: (type) @_type
-;;    body: (body) @language @content)
-;;  (#eq? @_type "raw"))
+((directive
+   name: (type) @_type
+   body: (body (arguments) @language (content) @content))
+ (#eq? @_type "code"))
 
 ((directive
    name: (type) @_type
-   body: (body) @latex)
+   body: (body (arguments) @language (content) @content))
+ (#eq? @_type "raw"))
+
+((directive
+   name: (type) @_type
+   body: (body (content) @latex))
  (#eq? @_type "math"))
 
 ((directive
    name: (type) @_type
-   body: (body) @csv)
+   body: (body (content) @csv))
  (#eq? @_type "csv-table"))
 
 ;; Special roles - prefix

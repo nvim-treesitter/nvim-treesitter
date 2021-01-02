@@ -17,6 +17,9 @@
 (directive
   name: (type) @function)
 
+(directive
+  body: (body (arguments) @parameter))
+
 ((directive
   name: (type) @include)
  (#eq? @include "include"))
