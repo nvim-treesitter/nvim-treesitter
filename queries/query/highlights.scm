@@ -1,4 +1,5 @@
 (string) @string
+(escape_sequence) @string.escape
 (capture) @type
 (anonymous_node) @string
 (predicate) @function
