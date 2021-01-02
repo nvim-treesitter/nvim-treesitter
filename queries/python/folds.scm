@@ -22,4 +22,6 @@
   (list)
   (set)
   (dictionary)
+
+  (string)
 ] @fold
