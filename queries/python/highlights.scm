@@ -119,7 +119,18 @@
 
 (comment) @comment
 (string) @string
+"\"" @string
+
 (escape_sequence) @string.escape
+
+; Docstrings
+(class_definition
+  body: (block . (expression_statement (string) @docs)))
+
+(function_definition
+  body: (block . (expression_statement (string) @docs)))
+
+((expression_statement (assignment)) . (expression_statement (string) @docs))
 
 ; Tokens
 
@@ -233,7 +244,7 @@
   body: (block
           (expression_statement
             (assignment
-              left: (_ 
+              left: (_
                      (identifier) @field)))))
  (#vim-match? @field "^([A-Z])@!.*$"))
 

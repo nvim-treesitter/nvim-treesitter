@@ -67,6 +67,7 @@ hlmap["punctuation.special"] = "TSPunctSpecial"
 
 hlmap["repeat"] = "TSRepeat"
 
+hlmap["docs"] = "TSDocs"
 hlmap["string"] = "TSString"
 hlmap["string.regex"] = "TSStringRegex"
 hlmap["string.escape"] = "TSStringEscape"

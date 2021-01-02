@@ -89,6 +89,7 @@ effect on highlighting. We will work on improving highlighting in the near futur
 
 ```
 @comment
+@docs
 @error for error `ERROR` nodes.
 @none to disable completely the highlight
 @punctuation.delimiter for `;` `.` `,`
