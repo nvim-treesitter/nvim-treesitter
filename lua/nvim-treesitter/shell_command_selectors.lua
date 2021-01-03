@@ -123,8 +123,9 @@ function M.select_download_commands(repo, project_name, cache_folder, revision)
 
   local is_github = repo.url:find("github.com", 1, true)
   local is_gitlab = repo.url:find("gitlab.com", 1, true)
+  local is_windows = fn.hs('win32')
 
-  if vim.fn.executable('tar') == 1 and vim.fn.executable('curl') == 1 and (is_github or is_gitlab) then
+  if vim.fn.executable('tar') == 1 and vim.fn.executable('curl') == 1 and (is_github or is_gitlab) and not is_windows then
 
     revision = revision or repo.branch or "master"
     local path_sep = utils.get_path_sep()
