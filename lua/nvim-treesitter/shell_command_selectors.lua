@@ -109,7 +109,7 @@ function M.select_mv_cmd(from, to, cwd)
 end
 
 function M.select_download_commands(repo, project_name, cache_folder, revision)
-  local has_tar = vim.fn.executable('tar') == 1 and not fn.hs('win32')
+  local has_tar = vim.fn.executable('tar') == 1 and fn.hs('win32') ~= 1
   if has_tar and vim.fn.executable('curl') == 1 and repo.url:find("github.com", 1, true) then
 
     revision = revision or repo.branch or "master"
