@@ -120,7 +120,6 @@ function M.select_mv_cmd(from, to, cwd)
 end
 
 function M.select_download_commands(repo, project_name, cache_folder, revision)
-<<<<<<< HEAD
 
   local has_tar = vim.fn.executable('tar') == 1
   local has_curl = vim.fn.executable('curl') == 1
@@ -128,11 +127,7 @@ function M.select_download_commands(repo, project_name, cache_folder, revision)
   local is_gitlab = repo.url:find("gitlab.com", 1, true)
   local is_windows = fn.hs('win32')
 
-  if has_tar andhas_curl and (is_github or is_gitlab) and not is_windows then
-=======
-  local has_tar = vim.fn.executable('tar') == 1 and not fn.hs('win32')
-  if has_tar and vim.fn.executable('curl') == 1 and repo.url:find("github.com", 1, true) then
->>>>>>> 99a672f (style)
+  if has_tar and has_curl and (is_github or is_gitlab) and not is_windows then
 
     revision = revision or repo.branch or "master"
     local path_sep = utils.get_path_sep()
