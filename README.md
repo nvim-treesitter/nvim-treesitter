@@ -406,3 +406,8 @@ This will save, restore and enable highlighting for the current buffer.
 
 This might happen, and is known to happen, with `vim-clap`.
 To avoid these kind of errors, please use `setlocal` instead of `set` for the respective filetypes.
+
+#### I run into errors like `module 'nvim-treesitter.configs' not found` at startup
+
+This is because of `rtp` management in `nvim`, adding `packadd
+nvim-treesitter` should fix the issue.
