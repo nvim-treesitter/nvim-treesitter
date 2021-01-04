@@ -109,10 +109,13 @@ function M.select_mv_cmd(from, to, cwd)
 end
 
 function M.select_download_commands(repo, project_name, cache_folder, revision)
-  local has_tar = vim.fn.executable('tar') == 1 and fn.hs('win32') ~= 1
+  local is_windows = fn.has('win32') == 1
+
+  revision = revision or repo.branch or "master"
+
+  local has_tar = vim.fn.executable('tar') == 1 and not is_windows
   if has_tar and vim.fn.executable('curl') == 1 and repo.url:find("github.com", 1, true) then
 
-    revision = revision or repo.branch or "master"
     local path_sep = utils.get_path_sep()
     return {
       M.select_install_rm_cmd(cache_folder, project_name..'-tmp'),
@@ -152,22 +155,46 @@ function M.select_download_commands(repo, project_name, cache_folder, revision)
       M.select_install_rm_cmd(cache_folder, project_name..'-tmp')
     }
   else
+    local git_folder
+    if is_windows then
+      git_folder = cache_folder ..'\\'.. project_name
+    else
+      git_folder = cache_folder ..'/'.. project_name
+    end
+
+    local clone_error = 'Error during download, please verify your internet connection'
+    if is_windows then
+      clone_error = clone_error .. ". If on Windows you may need to enable Developer mode"
+    end
+
     return {
       {
         cmd = 'git',
         info = 'Downloading...',
-        err = 'Error during download, please verify your internet connection',
+        err = clone_error,
         opts = {
           args = {
             'clone',
+            '-c', 'core.symlinks=true',
             '--single-branch',
             '--branch', repo.branch or 'master',
-            '--depth', '1',
             repo.url,
             project_name
           },
           cwd = cache_folder,
         },
+      },
+      {
+        cmd = 'git',
+        info = 'Checking out locked revision',
+        err = 'Error while checking out revision',
+        opts = {
+          args = {
+            '-c', 'core.symlinks=true',
+            'checkout', revision
+          },
+          cwd = git_folder
+        }
       }
     }
   end
