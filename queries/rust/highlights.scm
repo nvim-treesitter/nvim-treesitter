@@ -20,7 +20,7 @@
 (call_expression
   function: (identifier) @function)
 (call_expression
-  function: (scoped_identifier 
+  function: (scoped_identifier
               (identifier) @function .))
 (call_expression
   function: (field_expression
@@ -97,11 +97,13 @@
  ] @comment
 
 [
-"("
-")"
-"["
-"]"
- ] @punctuation.bracket
+ "("
+ ")"
+ "["
+ "]"
+ "{"
+ "}"
+] @punctuation.bracket
 
 (type_arguments
   "<" @punctuation.bracket
