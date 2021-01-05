@@ -78,7 +78,7 @@ local function enable_mod_conf_autocmd(mod)
     return
   end
 
-  local cmd = string.format("lua require'nvim-treesitter.configs'.attach_module('%s')", mod)
+  local cmd = string.format("lua require'nvim-treesitter.configs'.attach_module_async('%s')", mod)
   api.nvim_command(string.format("autocmd NvimTreesitter FileType * %s", cmd))
 
   config_mod.loaded = true
@@ -310,6 +310,8 @@ function M.attach_module(mod_name, bufnr, lang)
     resolved_mod.attach(bufnr, lang)
   end
 end
+
+M.attach_module_async = utils.async(M.attach_module)
 
 -- Detaches a module to a buffer
 -- @param mod_name the module name
