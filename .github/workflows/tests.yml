@@ -9,8 +9,6 @@ jobs:
       matrix:
         os: ['ubuntu-latest', 'windows-latest']
         include:
-        - os: macos-latest
-          nvim: nvim
         - os: ubuntu-latest
           nvim: nvim
         - os: windows-latest
