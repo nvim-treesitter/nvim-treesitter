@@ -141,4 +141,15 @@ function M.index_of(tbl, obj)
   end
 end
 
+function M.async(f)
+  return function(...)
+    local handle
+    handle = vim.loop.new_async(vim.schedule_wrap(function(...)
+      f(...)
+      handle:close()
+    end))
+    handle:send(...)
+  end
+end
+
 return M
