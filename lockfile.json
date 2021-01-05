@@ -9,7 +9,7 @@
     "revision": "b8bff2a389ecc098dbb7e8abee492816a5eb42db"
   },
   "clojure": {
-    "revision": "f8006afc91296b0cdb09bfa04e08a6b3347e5962"
+    "revision": "f09652f095be878df8a87a57dcbfa07094316253"
   },
   "cpp": {
     "revision": "a35a275df92e7583df38f2de2562361f2b69987e"
@@ -96,7 +96,7 @@
     "revision": "e142b03e906b0c111a3734277d40cf2334c20387"
   },
   "ruby": {
-    "revision": "bb572f60e9538bd11fbde95a54f97522073f1e06"
+    "revision": "5021a6a6eda24e10f954dcfec00e7a7adafba8ba"
   },
   "rust": {
     "revision": "8746bd4b584b8063ee8e445bf31015e887417d33"
@@ -111,13 +111,16 @@
     "revision": "a22fa5e19bae50098e2252ea96cba3aba43f4c58"
   },
   "teal": {
-    "revision": "6142154f8d78dbf00b9c0e70bf2f994d97e76582" 
+    "revision": "6142154f8d78dbf00b9c0e70bf2f994d97e76582"
   },
   "toml": {
     "revision": "084da152d85cb8c4bbbe0ab5f3f1f9e5bfb77d3c"
   },
   "tsx": {
     "revision": "73afadbd117a8e8551758af9c3a522ef46452119"
+  },
+  "turtle": {
+    "revision": "33e6462fcc84e2028a75d5081c83f03100979af4"
   },
   "typescript": {
     "revision": "73afadbd117a8e8551758af9c3a522ef46452119"
