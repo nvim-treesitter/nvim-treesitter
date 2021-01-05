@@ -399,6 +399,15 @@ list.gdscript = {
   maintainers = {"not @tjdevries"},
 }
 
+list.turtle = {
+  install_info = {
+    url = "https://github.com/BonaBeavis/tree-sitter-turtle",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  maintainers = { "@bonabeavis" },
+}
+
 local M = {
   list = list
 }

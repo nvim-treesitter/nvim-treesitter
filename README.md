@@ -172,6 +172,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [teal](https://github.com/euclidianAce/tree-sitter-teal) (maintained by @euclidianAce)
 - [x] [toml](https://github.com/ikatyang/tree-sitter-toml) (maintained by @tk-shirasaka)
 - [ ] [tsx](https://github.com/tree-sitter/tree-sitter-typescript)
+- [x] [turtle](https://github.com/BonaBeavis/tree-sitter-turtle) (maintained by @bonabeavis)
 - [x] [typescript](https://github.com/tree-sitter/tree-sitter-typescript) (maintained by @steelsojka)
 - [x] [verilog](https://github.com/tree-sitter/tree-sitter-verilog) (maintained by @zegervdv)
 - [ ] [vue](https://github.com/ikatyang/tree-sitter-vue)
