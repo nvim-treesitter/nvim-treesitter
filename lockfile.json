@@ -125,6 +125,9 @@
   "verilog": {
     "revision": "ad551aae2649da56582bc0557478a7dc979c0be3"
   },
+  "vhdl": {
+    "revision": "eee38ca80c5b9e31155f2ce03118f117c668e308"
+  },
   "vue": {
     "revision": "ac0829b5f7aa4234c149c23fc12d09a7c3477d4a"
   },

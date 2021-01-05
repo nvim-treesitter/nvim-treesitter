@@ -355,6 +355,16 @@ list.verilog = {
   used_by = { "systemverilog" },
   maintainers = { "@zegervdv" },
 }
+
+list.vhdl = {
+  install_info = {
+    url = "https://github.com/alemuller/tree-sitter-vhdl",
+    files = { "src/parser.c" },
+  },
+  used_by = { "vhdl" },
+  maintainers = { "@alemuller" },
+}
+
 -- Parsers for injections
 list.regex = {
   install_info = {
