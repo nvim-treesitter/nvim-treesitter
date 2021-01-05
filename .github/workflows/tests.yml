@@ -1,0 +1,38 @@
+name: Parser compilation and tests (TODO)
+
+on: [push, pull_request]
+
+jobs:
+  tests:
+    name: Compile parsers and run tests
+    strategy:
+      matrix:
+        os: ['ubuntu-latest', 'windows-latest']
+        include:
+        - os: macos-latest
+          nvim: nvim
+        - os: ubuntu-latest
+          nvim: nvim
+        - os: windows-latest
+          nvim: C:\\tools\\neovim\\Neovim\\bin\\nvim.exe
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Prepare
+        run: |
+          bash ./scripts/ci-install-${{ matrix.os }}.sh
+
+      - name: Compile parsers
+        if: matrix.os != 'windows-latest'
+        run: ${{ matrix.nvim }} --headless -c "TSInstallSync all" -c "q"
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: parsers-${{ matrix.os }}-x86_64
+          path: parser/*
+
+#MacOS not working right now... (brew install)
+#E970: Failed to initialize lua interpreter 15: /usr/local/Cellar/neovim/HEAD-2ea3127/share/nvim/runtime/plugin/rplugin.vim
+#Vim: Finished.
