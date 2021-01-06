@@ -100,5 +100,6 @@
  (struct_item)
  (enum_item)
  (impl_item)
+ (const_block)
 ] @scope
 
