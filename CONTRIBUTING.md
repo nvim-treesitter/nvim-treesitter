@@ -96,16 +96,6 @@ effect on highlighting. We will work on improving highlighting in the near futur
 @punctuation.special for symbols with special meaning like `{}` in string interpolation.
 ```
 
-Some captures are related to language injection (like markdown code blocks). As this is not supported by neovim yet, these
-are optional and will not have any effect for now.
-
-```
-@embedded
-@injection
-@injection.language
-@injection.content
-```
-
 #### Constants
 
 ```
@@ -245,3 +235,18 @@ You can define folds for a given language by adding a `folds.scm` query :
 
 If the `fold.scm` query is not present, this will fallback to the `@scope` captures in the `locals`
 query.
+
+### Injections
+
+Some captures are related to language injection (like markdown code blocks). They are used in `injections.scm`.
+You can directly use the name of the language that you want to inject (e.g. `@html` to inject html).
+
+If you want to dynamically detect the language (e.g. for Markdown blocks) use the `@language` to capture
+the node describing the language and `@content` to describe the injection region.
+
+```
+@{language} ; e.g. @html to describe a html region
+
+@language ; dynamic detection of the injection language (i.e. the text of the captured node describes the language)
+@content ; region for the dynamically detected language
+```

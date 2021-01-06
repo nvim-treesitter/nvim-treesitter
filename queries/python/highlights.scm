@@ -204,7 +204,7 @@
 
 (interpolation
   "{" @punctuation.special
-  "}" @punctuation.special) @embedded
+  "}" @punctuation.special)
 
 ["," "." ":" (ellipsis)] @punctuation.delimiter
 
