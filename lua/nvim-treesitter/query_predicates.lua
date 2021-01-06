@@ -4,10 +4,6 @@ local function error(str)
   vim.api.nvim_err_writeln(str)
 end
 
-local function noop(arg)
-    return arg
-end
-
 local function valid_args(name, pred, count, strict_count)
   local arg_count = #pred - 1
 
@@ -105,12 +101,13 @@ local function str_match(match, pattern, bufnr, pred)
   local node = match[pred[2]]
   local node_text = fun(ts_utils.get_node_text(node, bufnr)[1])
 
-  local dict = {}
   for i=3,#pred do
-      dict[fun(pred[i])] = true
+      if node_text == fun(pred[i]) then
+          return true;
+      end
   end
 
-  return dict[node_text] == true and dict[node_text] ~= nil
+  return false
 end
 
 query.add_predicate('str-match?', str_match)
