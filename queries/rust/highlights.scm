@@ -86,6 +86,10 @@
   macro: (scoped_identifier
            (identifier) @function.macro .))
 
+(metavariable) @function.macro
+
+"$" @function.macro
+
 ; Function definitions
 
 (function_item (identifier) @function)
