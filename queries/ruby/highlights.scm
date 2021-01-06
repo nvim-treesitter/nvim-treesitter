@@ -153,10 +153,6 @@
  (false)
  ] @boolean
 
-(interpolation
-  "#{" @punctuation.special
-  "}" @punctuation.special) @embedded
-
 (comment) @comment
 
 ; Operators
