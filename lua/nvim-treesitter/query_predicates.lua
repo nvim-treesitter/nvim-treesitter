@@ -4,6 +4,10 @@ local function error(str)
   vim.api.nvim_err_writeln(str)
 end
 
+local function noop(arg)
+    return arg
+end
+
 local function valid_args(name, pred, count, strict_count)
   local arg_count = #pred - 1
 
