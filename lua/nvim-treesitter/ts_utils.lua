@@ -213,7 +213,7 @@ function M.memoize_by_buf_tick(fn)
       cache[bufnr] = {}
       api.nvim_buf_attach(bufnr, false,
         {
-          on_changedtick = utils.async(function() cache[bufnr] = fn(bufnr) end),
+          on_changedtick = function() cache[bufnr] = fn(bufnr) end,
           on_detach = function() cache[bufnr] = nil end
         }
       )
