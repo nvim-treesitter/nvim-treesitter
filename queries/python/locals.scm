@@ -35,8 +35,9 @@
   (identifier) @definition.parameter)
 
 (with_statement
+ (with_clause
   (with_item
-    alias: (identifier) @definition.var))
+   alias: (identifier) @definition.var)))
 
 ; *args parameter
 (parameters
