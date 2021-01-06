@@ -4,6 +4,10 @@ local function error(str)
   vim.api.nvim_err_writeln(str)
 end
 
+local function noop(arg)
+    return arg
+end
+
 local function valid_args(name, pred, count, strict_count)
   local arg_count = #pred - 1
 
@@ -84,6 +88,33 @@ query.add_predicate('has-type?', function(match, pattern, bufnr, pred)
 
   return vim.tbl_contains(types, node:type())
 end)
+
+local function str_match(match, pattern, bufnr, pred)
+  if not valid_args(pred[1], pred, 2) then return end
+
+  local case_insensitive = pred[1]:find('case-insensitive', 1, true)
+
+  local fun
+  if case_insensitive then
+      fun = string.lower
+  else
+      fun = noop
+  end
+
+  local ts_utils = require'nvim-treesitter.ts_utils'
+  local node = match[pred[2]]
+  local node_text = fun(ts_utils.get_node_text(node, bufnr)[1])
+
+  local dict = {}
+  for i=3,#pred do
+      dict[fun(pred[i])] = true
+  end
+
+  return dict[node_text] == true and dict[node_text] ~= nil
+end
+
+query.add_predicate('str-match?', str_match)
+query.add_predicate('case-insensitive-str-match?', str_match)
 
 -- Just avoid some anoying warnings for this directive
 query.add_directive('make-range!', function() end)
