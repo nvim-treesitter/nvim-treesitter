@@ -35,6 +35,7 @@ local get_indents = utils.memoize_by_buf_tick(function(bufnr)
     indents = get_map('@indent.node'),
     branches = get_map('@branch.node'),
     returns = get_map('@return.node'),
+    ignores = get_map('@ignore.node'),
   }
 end)
 
@@ -85,15 +86,24 @@ function M.get_indent(lnum)
     node = node:parent()
   end
 
+  local first = true
   local prev_row = node:start()
 
   while node do
-    node = node:parent()
-    local row = node and node:start() or prev_row
-    if q.indents[node_fmt(node)] and prev_row ~= row then
+    -- do not indent if we are inside an @ignore block
+    if q.ignores[node_fmt(node)] and node:start() < lnum-1 and node:end_() > lnum-1 then
+      return -1
+    end
+
+    -- do not indent the starting node, do not add multiple indent levels on single line
+    local row = node:start()
+    if not first and q.indents[node_fmt(node)] and prev_row ~= row then
       indent = indent + indent_size
       prev_row = row
     end
+
+    node = node:parent()
+    first = false
   end
 
   return indent
