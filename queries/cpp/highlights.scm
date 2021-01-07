@@ -51,7 +51,7 @@
   name: (identifier) @namespace)
 
 (destructor_name
-  name: (_) @function)
+  (identifier) @method)
 
 (function_declarator
       declarator: (scoped_identifier
