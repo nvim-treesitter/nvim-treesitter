@@ -36,3 +36,9 @@
   (except_clause)
   (finally_clause)
 ] @branch
+
+[
+  (return_statement)
+  (pass_statement)
+  (raise_statement)
+] @return
