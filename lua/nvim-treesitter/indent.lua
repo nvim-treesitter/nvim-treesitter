@@ -55,10 +55,23 @@ function M.get_indent(lnum)
   local indent = 0
   local indent_size = get_indent_size()
 
-  -- if we are on a new line (for instance by typing `o` or `O`)
-  -- we should get the node that wraps the line our cursor sits in
-  -- and if the node is an indent node, we should set the indent level as the indent_size
-  -- and we set the node as the first child of this wrapper node or the wrapper itself
+  -- to get corret indetation when we land on an empty line (for instance by typing `o`), we try
+  -- to use indentation of previous nonblank line, this solves the issue also for languages that
+  -- do not use @branch after blocks (e.g. Python)
+  if not node then
+    local prevnonblank = vim.fn.prevnonblank(lnum)
+    if prevnonblank ~= lnum then
+      local prev_node = get_node_at_line(root, prevnonblank-1)
+      -- we take that node only if ends before lnum, or else we would get incorrect indent
+      -- on <cr> in positions like e.g. `{|}` in C (| denotes cursor position)
+      if prev_node and (prev_node:end_() < lnum-1) then
+        node = prev_node
+      end
+    end
+  end
+
+  -- if the prevnonblank fails (prev_node wraps our line) we need to fall back to taking
+  -- the first child of the node that wraps the current line, or the wrapper itself
   if not node then
     local wrapper = root:descendant_for_range(lnum-1, 0, lnum-1, -1)
     node = wrapper:child(0) or wrapper
