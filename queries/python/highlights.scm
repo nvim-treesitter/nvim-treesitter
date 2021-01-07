@@ -33,7 +33,10 @@
 ; Function calls
 
 (decorator) @function
-((decorator (dotted_name (identifier) @function))
+((decorator (attribute (identifier) @function))
+ (#vim-match? @function "^([A-Z])@!.*$"))
+(decorator) @function
+((decorator (identifier) @function)
  (#vim-match? @function "^([A-Z])@!.*$"))
 
 (call
