@@ -60,7 +60,7 @@ function M.get_indent(lnum)
   -- and if the node is an indent node, we should set the indent level as the indent_size
   -- and we set the node as the first child of this wrapper node or the wrapper itself
   if not node then
-    local wrapper = root:descendant_for_range(lnum, 0, lnum, -1)
+    local wrapper = root:descendant_for_range(lnum-1, 0, lnum-1, -1)
     node = wrapper:child(0) or wrapper
     if indents[node_fmt(wrapper)] ~= nil and wrapper ~= root then
       indent = indent_size
