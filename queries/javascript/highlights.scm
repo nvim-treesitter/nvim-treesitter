@@ -144,7 +144,7 @@
 
 (template_substitution
   "${" @punctuation.special
-  "}" @punctuation.special) @embedded
+  "}" @punctuation.special) @none
 
 "..." @punctuation.special
 

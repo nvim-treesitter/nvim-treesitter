@@ -81,6 +81,8 @@
   "|="
   "&="
   "^="
+  ">>="
+  "<<="
   "--"
   "++"
 ] @operator
@@ -117,7 +119,6 @@
  (preproc_arg)
  (preproc_defined)
 ]  @function.macro
-; TODO (preproc_arg)  @embedded
 
 (((field_expression
      (field_identifier) @property)) @_parent
