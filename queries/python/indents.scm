@@ -42,3 +42,7 @@
   (pass_statement)
   (raise_statement)
 ] @return
+
+[
+  (string)
+] @ignore
