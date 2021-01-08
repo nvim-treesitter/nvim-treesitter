@@ -1,5 +1,7 @@
-; inherits: (jsx)
 [
+  ; Javascript
+  ; ----------
+
   (for_in_statement)
   (for_statement)
   (while_statement)
@@ -17,4 +19,9 @@
   (try_statement)
   (catch_clause)
   (object)
+  
+  ; JSX
+  ; ---
+
+  (jsx_element)
 ] @fold
