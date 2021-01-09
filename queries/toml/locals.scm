@@ -1,2 +1,4 @@
-(table) @scope
-(table_array_element) @scope
+[
+  (table)
+  (table_array_element)
+] @scope
