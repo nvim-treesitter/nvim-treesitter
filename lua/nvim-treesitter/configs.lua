@@ -78,7 +78,7 @@ local function enable_mod_conf_autocmd(mod)
     return
   end
 
-  local cmd = string.format("lua require'nvim-treesitter.configs'.attach_module_async('%s')", mod)
+  local cmd = string.format("lua require'nvim-treesitter.configs'.attach_module('%s')", mod)
   api.nvim_command(string.format("autocmd NvimTreesitter FileType * %s", cmd))
 
   config_mod.loaded = true
@@ -299,8 +299,8 @@ end
 -- @param bufnr the bufnr
 -- @param lang the language of the buffer
 function M.attach_module(mod_name, bufnr, lang)
-  bufnr = bufnr or api.nvim_get_current_buf()
-  lang = lang or parsers.get_buf_lang(bufnr)
+  local bufnr = bufnr or api.nvim_get_current_buf()
+  local lang = lang or parsers.get_buf_lang(bufnr)
   local resolved_mod = resolve_module(mod_name)
 
   if resolved_mod
@@ -309,17 +309,6 @@ function M.attach_module(mod_name, bufnr, lang)
     attached_buffers_by_module.set(mod_name, bufnr, true)
     resolved_mod.attach(bufnr, lang)
   end
-end
-
--- must have custom async function or bufnr will be wrong
-function M.attach_module_async(mod_name, bufnr)
-  bufnr = bufnr or api.nvim_get_current_buf() -- get bufnr before doing async, or bufnr will be wrong
-
-  local handle
-  handle = vim.loop.new_async(vim.schedule_wrap(function(...)
-    M.attach_module(...)
-  end))
-  handle:send(mod_name, bufnr, nil)
 end
 
 -- Detaches a module to a buffer
