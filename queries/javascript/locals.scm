@@ -18,10 +18,6 @@
 (formal_parameters
   (identifier) @definition.parameter)
 
-(formal_parameters
-  (object_pattern
-    (identifier) @definition.parameter))
-
 ; function(arg = []) {
 (formal_parameters
   (assignment_pattern
@@ -30,6 +26,11 @@
 ; x => x
 (arrow_function
   parameter: (identifier) @definition.parameter)
+
+(formal_parameters
+  (object_pattern
+    (pair
+      value: (identifier) @definition.parameter)))
 
 (formal_parameters
   (object_pattern

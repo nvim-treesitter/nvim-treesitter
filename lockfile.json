@@ -48,7 +48,7 @@
     "revision": "f7b62ac33d63bea56ce202ace107aaa4285e50af"
   },
   "javascript": {
-    "revision": "852f11b394804ac2a8986f8bcaafe77753635667"
+    "revision": "3f8b62f9befd3cb3b4cb0de22f6595a0aadf76ca"
   },
   "jsdoc": {
     "revision": "77e7785739ad3e90c3de8ed5a55418a5fd2b8225"
@@ -117,13 +117,13 @@
     "revision": "084da152d85cb8c4bbbe0ab5f3f1f9e5bfb77d3c"
   },
   "tsx": {
-    "revision": "73afadbd117a8e8551758af9c3a522ef46452119"
+    "revision": "ada1521cecdb81a9430f2dd73d662f6cee4efc5f"
   },
   "turtle": {
     "revision": "33e6462fcc84e2028a75d5081c83f03100979af4"
   },
   "typescript": {
-    "revision": "73afadbd117a8e8551758af9c3a522ef46452119"
+    "revision": "ada1521cecdb81a9430f2dd73d662f6cee4efc5f"
   },
   "verilog": {
     "revision": "ad551aae2649da56582bc0557478a7dc979c0be3"
