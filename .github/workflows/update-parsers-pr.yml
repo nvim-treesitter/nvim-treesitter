@@ -35,6 +35,11 @@ jobs:
           cp lockfile.json /tmp/lockfile.json
           cat /tmp/lockfile.json | /tmp/jq --sort-keys > lockfile.json
 
+      - name: Commit changes
+        run: |
+          git add lockfile.json
+          git commit -m "Update lockfile.json"
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
