@@ -1,7 +1,6 @@
 local api = vim.api
 local ts = vim.treesitter
 
-local queries = require'nvim-treesitter.query'
 local parsers = require'nvim-treesitter.parsers'
 local configs = require'nvim-treesitter.configs'
 
@@ -98,10 +97,7 @@ function M.attach(bufnr, lang)
     hlmap[k] = v
   end
 
-  local query = queries.get_query(lang, "highlights")
-  if not query then return end
-
-  M.highlighters[bufnr] = ts.highlighter.new(parser, query)
+  M.highlighters[bufnr] = ts.highlighter.new(parser, {})
 end
 
 function M.detach(bufnr)
