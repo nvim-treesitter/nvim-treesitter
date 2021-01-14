@@ -21,7 +21,7 @@
     "revision": "9432021ba6e96124ff1b6bd91f79c0a2e3c87cf4"
   },
   "elm": {
-    "revision": "06a8ff7c13d625bcddeb642a1ca59a3ded6b4286"
+    "revision": "b447b80609286448dcca2c2b59502a13160ede42"
   },
   "erlang": {
     "revision": "946cef2a530bc56dbfef225d16c43c179e22f4dd"
@@ -105,7 +105,7 @@
     "revision": "211bb726bb5857f872247b600c7c1808e641a8d4"
   },
   "sparql": {
-    "revision": "d477183c6c589bcb1f0b5769816640f2a7a7db91"
+    "revision": "8862fc9942fc0ad60c8a8cb004138bfd69fc5c95"
   },
   "swift": {
     "revision": "a22fa5e19bae50098e2252ea96cba3aba43f4c58"
