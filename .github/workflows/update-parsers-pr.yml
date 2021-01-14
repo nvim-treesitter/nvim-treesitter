@@ -37,8 +37,11 @@ jobs:
 
       - name: Commit changes
         run: |
+          git config user.name "GitHub"
+          git config user.email "noreply@github.com"
           git add lockfile.json
           git commit -m "Update lockfile.json"
+          git clean -xf
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
