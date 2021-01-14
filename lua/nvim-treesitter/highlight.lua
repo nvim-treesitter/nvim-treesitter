@@ -5,7 +5,6 @@ local parsers = require'nvim-treesitter.parsers'
 local configs = require'nvim-treesitter.configs'
 
 local M = {
-  highlighters = {}
 }
 
 local hlmap = vim.treesitter.highlighter.hl_map
@@ -97,15 +96,14 @@ function M.attach(bufnr, lang)
     hlmap[k] = v
   end
 
-  M.highlighters[bufnr] = ts.highlighter.new(parser, {})
+  ts.highlighter.new(parser, {})
 end
 
 function M.detach(bufnr)
-  if M.highlighters[bufnr] then
-    M.highlighters[bufnr]:set_query("")
-    M.highlighters[bufnr] = nil
+  if ts.highlighter.active[bufnr] then
+    ts.highlighter.active[bufnr]:destroy()
   end
-  api.nvim_buf_set_option(bufnr, 'syntax', 'on')
+  api.nvim_buf_set_option(bufnr, 'syntax', 'ON')
 end
 
 return M
