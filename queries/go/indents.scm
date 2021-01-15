@@ -6,6 +6,10 @@
   (type_declaration)
   (composite_literal)
   (func_literal)
+  (literal_value)
+  (expression_case)
+  (argument_list)
+  (default_case)
   (block)
 ] @indent
 
