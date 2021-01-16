@@ -140,7 +140,6 @@
 "dyn"
 "enum"
 "extern"
-"fn"
 "impl"
 "let"
 "macro_rules!"
@@ -164,6 +163,8 @@
 (attribute_item)
 (inner_attribute_item)
  ] @keyword
+
+"fn" @keyword.function
 
 (use_list (self) @keyword)
 (scoped_use_list (self) @keyword)
