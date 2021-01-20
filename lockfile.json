@@ -96,7 +96,7 @@
     "revision": "e142b03e906b0c111a3734277d40cf2334c20387"
   },
   "ruby": {
-    "revision": "8a059c83d11b4083c8c17a6aad8e2898c94f3ef9"
+    "revision": "454f90628d1d14d0953b3be78bdb9a09f7a5bfd7"
   },
   "rust": {
     "revision": "2beedf23bedbd7b02b416518693e8eed3944d4a0"
@@ -111,7 +111,7 @@
     "revision": "a22fa5e19bae50098e2252ea96cba3aba43f4c58"
   },
   "teal": {
-    "revision": "6142154f8d78dbf00b9c0e70bf2f994d97e76582"
+    "revision": "cec82d45e630005346d8e9df2414afedd212362f"
   },
   "toml": {
     "revision": "084da152d85cb8c4bbbe0ab5f3f1f9e5bfb77d3c"
