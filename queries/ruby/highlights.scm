@@ -138,10 +138,12 @@
  (bare_symbol)
  (heredoc_beginning)
  (heredoc_end)
- (symbol)
+ (simple_symbol)
+ (delimited_symbol)
+ (hash_key_symbol)
  ] @constant
 
-(pair key: (symbol) ":" @constant)
+(pair key: (hash_key_symbol) ":" @constant)
 (regex) @string.regex
 (escape_sequence) @string.escape
 (integer) @number
