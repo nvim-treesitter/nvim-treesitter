@@ -40,7 +40,7 @@ jobs:
           git config user.name "GitHub"
           git config user.email "noreply@github.com"
           git add lockfile.json
-          git commit -m "Update lockfile.json"
+          git commit -m "Update lockfile.json" || echo 'No commit necessary!'
           git clean -xf
 
       - name: Create Pull Request
