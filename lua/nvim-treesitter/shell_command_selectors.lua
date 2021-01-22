@@ -155,13 +155,7 @@ function M.select_download_commands(repo, project_name, cache_folder, revision)
       M.select_install_rm_cmd(cache_folder, project_name..'-tmp')
     }
   else
-    local git_folder
-    if is_windows then
-      git_folder = cache_folder ..'\\'.. project_name
-    else
-      git_folder = cache_folder ..'/'.. project_name
-    end
-
+    local git_folder = utils.join_path(cache_folder, project_name)
     local clone_error = 'Error during download, please verify your internet connection'
     if is_windows then
       clone_error = clone_error .. ". If on Windows you may need to enable Developer mode"
