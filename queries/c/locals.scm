@@ -29,12 +29,17 @@
 (struct_specifier
   name: (type_identifier) @definition.type)
 
+;; goto
+(labeled_statement (statement_identifier) @definition)
+
 ;; References
 (identifier) @reference
 ((field_identifier) @reference
                    (set! reference.kind "field"))
 ((type_identifier) @reference
                    (set! reference.kind "type"))
+
+(goto_statement (statement_identifier) @reference)
 
 ;; Scope
 [
