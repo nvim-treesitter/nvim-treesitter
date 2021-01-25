@@ -138,10 +138,13 @@
  (bare_symbol)
  (heredoc_beginning)
  (heredoc_end)
+ ] @constant
+
+[
  (simple_symbol)
  (delimited_symbol)
  (hash_key_symbol)
- ] @constant
+ ] @property
 
 (pair key: (hash_key_symbol) ":" @constant)
 (regex) @string.regex
