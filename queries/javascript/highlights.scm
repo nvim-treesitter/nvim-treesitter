@@ -11,12 +11,10 @@
 ;-----------
 
 (property_identifier) @property
-(shorthand_property_identifier) @variable
+(shorthand_property_identifier) @property
 
 ; Special identifiers
 ;--------------------
-
-(identifier) @variable
 
 ((identifier) @constructor
  (#match? @constructor "^[A-Z]"))
@@ -109,8 +107,8 @@
     (identifier) @parameter))
 
 ; a => null
-(variable_declarator                                                                                                                                                                                        
-    value: (arrow_function                                                                                                                                                                                    
+(variable_declarator
+    value: (arrow_function
       parameter: (identifier) @parameter))
 
 ; optional parameters
