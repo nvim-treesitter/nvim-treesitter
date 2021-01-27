@@ -55,10 +55,28 @@ do
     end
 
     if cache[lang][query_name] == nil then
-      cache[lang][query_name] = tsq.get_query(lang, query_name)
+      M.reload_file_cache(lang, query_name)
     end
 
     return cache[lang][query_name]
+  end
+
+  function M.reload_file_cache(lang, query_name)
+    if lang and query_name then
+      cache[lang][query_name] = tsq.get_query(lang, query_name)
+    elseif lang and not query_name then
+      for query_name, _ in pairs(cache[lang]) do
+        M.reload_file_cache(lang, query_name)
+      end
+    elseif not lang and not query_name then
+      for lang, _ in pairs(cache) do
+        for query_name in pairs(cache[lang]) do
+          M.reload_file_cache(lang, query_name)
+        end
+      end
+    else
+      error("Must have cannot have query_name by itself!")
+    end
   end
 end
 
