@@ -43,6 +43,12 @@
   "until"
 ] @repeat)
 
+(do_statement
+[
+  "do"
+  "end"
+] @keyword)
+
 [
  "in"
  "local"
