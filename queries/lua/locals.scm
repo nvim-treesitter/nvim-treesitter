@@ -35,13 +35,17 @@
 (function_definition) @scope
 ]
 
-
-(program) @scope
-((if_statement) @scope)
-((for_in_statement) @scope)
-((repeat_statement) @scope)
-((while_statement) @scope)
+[
+  (program)
+  (if_statement)
+  (for_in_statement)
+  (repeat_statement)
+  (while_statement)
+  (do_statement)
+] @scope
 
 ;;; REFERENCES
-((identifier) @reference)
-((property_identifier) @reference)
+[
+  (identifier)
+  (property_identifier)
+] @reference
