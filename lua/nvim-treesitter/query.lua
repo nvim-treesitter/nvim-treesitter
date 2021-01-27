@@ -49,6 +49,7 @@ end
 do
   local cache = {}
 
+  --- Same as vim.treesitter.query except will return cached values
   function M.get_query(lang, query_name)
     if cache[lang] == nil then
       cache[lang] = {}
@@ -61,9 +62,22 @@ do
     return cache[lang][query_name]
   end
 
+  --- reloads the query file cache
   function M.reload_file_cache(lang, query_name)
+    if lang then
+      if cache[lang] == nil then
+        cache[lang] = {}
+      end
+    end
+
+    -- nil means query is not cached yet. "invalid" means that query was cached and was not a valid one
     if lang and query_name then
-      cache[lang][query_name] = tsq.get_query(lang, query_name)
+      local got = tsq.get_query(lang, query_name)
+      if got == nil then
+        cache[lang][query_name] = "invalid"
+      else
+        cache[lang][query_name] = got
+      end
     elseif lang and not query_name then
       for query_name, _ in pairs(cache[lang]) do
         M.reload_file_cache(lang, query_name)
@@ -78,6 +92,12 @@ do
       error("Cannot have query_name by itself!")
     end
   end
+end
+
+--- This function is meant for an autocommand and not to be used. Only use if file is a query file.
+function M.reload_file_cache_on_write()
+  print('reloading cache')
+  M.reload_file_cache(vim.fn.expand('%:p:h:t'), vim.fn.expand('%:t:r'))
 end
 
 function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)

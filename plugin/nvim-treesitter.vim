@@ -5,6 +5,9 @@ if exists('g:loaded_nvim_treesitter')
 endif
 
 augroup NvimTreesitter
+  " on every query file write we want to set and autocommand that will reload the cache
+  autocmd FileType query
+      \ autocmd! NvimTreesitter BufWritePost <buffer> lua require'nvim-treesitter.query'.reload_file_cache_on_write()
 augroup END
 
 let g:loaded_nvim_treesitter = 1
