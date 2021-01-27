@@ -75,7 +75,7 @@ do
         end
       end
     else
-      error("Must have cannot have query_name by itself!")
+      error("Cannot have query_name by itself!")
     end
   end
 end
