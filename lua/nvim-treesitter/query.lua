@@ -46,8 +46,20 @@ function M.has_query_files(lang, query_name)
   return files and #files > 0
 end
 
-function M.get_query(lang, query_name)
-  return tsq.get_query(lang, query_name)
+do
+  local cache = {}
+
+  function M.get_query(lang, query_name)
+    if cache[lang] == nil then
+      cache[lang] = {}
+    end
+
+    if cache[lang][query_name] == nil then
+      cache[lang][query_name] = tsq.get_query(lang, query_name)
+    end
+
+    return cache[lang][query_name]
+  end
 end
 
 function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
