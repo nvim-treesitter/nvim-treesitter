@@ -72,7 +72,6 @@ do
   --- If only lang is present, will reload all query_names for that lang
   --- If none are present, will reload everything
   function M.reload_file_cache(lang, query_name)
-    -- nil means query is not cached yet. "invalid" means that query was cached and was not a valid one
     if lang and query_name then
       cache[lang][query_name] = tsq.get_query(lang, query_name)
     elseif lang and not query_name then
