@@ -71,6 +71,14 @@ list.rust = {
   maintainers = {"@vigoux"},
 }
 
+list.ledger = {
+  install_info = {
+    url = "https://github.com/cbarrete/tree-sitter-ledger",
+    files = { "src/parser.c" }
+  },
+  maintainers = {"@cbarrete"},
+}
+
 list.lua = {
   install_info = {
     url = "https://github.com/nvim-treesitter/tree-sitter-lua",
