@@ -25,7 +25,10 @@ do
   local query_cache = caching.create_buffer_cache()
 
   local function update_cached_matches(bufnr, changed_tick, query_group)
-    query_cache.set(query_group, bufnr, {tick=changed_tick, cache=( M.collect_group_results(bufnr, query_group) or {} )})
+    query_cache.set(query_group, bufnr, {
+        tick = changed_tick,
+        cache= M.collect_group_results(bufnr, query_group) or {}
+    })
   end
 
   function M.get_matches(bufnr, query_group)
