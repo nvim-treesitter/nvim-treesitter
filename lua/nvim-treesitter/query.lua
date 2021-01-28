@@ -55,7 +55,7 @@ do
     return rawget(tbl, key)
   end
 
-  -- cache will have will auto set the table for each lang if it is nil
+  -- cache will auto set the table for each lang if it is nil
   local cache = setmetatable({}, mt)
 
   --- Same as `vim.treesitter.query` except will return cached values
