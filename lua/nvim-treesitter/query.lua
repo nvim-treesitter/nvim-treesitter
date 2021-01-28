@@ -7,8 +7,6 @@ local caching = require'nvim-treesitter.caching'
 
 local M = {}
 
-local query_cache = caching.create_buffer_cache()
-
 M.built_in_query_groups = {'highlights', 'locals', 'folds', 'indents'}
 
 -- Creates a function that checks whether a given query exists
@@ -23,18 +21,25 @@ for _, query in ipairs(M.built_in_query_groups) do
   M["has_" .. query] = get_query_guard(query)
 end
 
-local function update_cached_matches(bufnr, changed_tick, query_group)
-  query_cache.set(query_group, bufnr, {tick=changed_tick, cache=( M.collect_group_results(bufnr, query_group) or {} )})
-end
+do
+  local query_cache = caching.create_buffer_cache()
 
-function M.get_matches(bufnr, query_group)
-  local bufnr = bufnr or api.nvim_get_current_buf()
-  local cached_local = query_cache.get(query_group, bufnr)
-  if not cached_local or api.nvim_buf_get_changedtick(bufnr) > cached_local.tick then
-    update_cached_matches(bufnr,api.nvim_buf_get_changedtick(bufnr), query_group)
+  local function update_cached_matches(bufnr, changed_tick, query_group)
+    query_cache.set(query_group, bufnr, {
+        tick = changed_tick,
+        cache= M.collect_group_results(bufnr, query_group) or {}
+    })
   end
 
-  return query_cache.get(query_group, bufnr).cache
+  function M.get_matches(bufnr, query_group)
+    bufnr = bufnr or api.nvim_get_current_buf()
+    local cached_local = query_cache.get(query_group, bufnr)
+    if not cached_local or api.nvim_buf_get_changedtick(bufnr) > cached_local.tick then
+      update_cached_matches(bufnr,api.nvim_buf_get_changedtick(bufnr), query_group)
+    end
+
+    return query_cache.get(query_group, bufnr).cache
+  end
 end
 
 local function runtime_queries(lang, query_name)
@@ -46,8 +51,55 @@ function M.has_query_files(lang, query_name)
   return files and #files > 0
 end
 
-function M.get_query(lang, query_name)
-  return tsq.get_query(lang, query_name)
+do
+  local mt = {}
+  mt.__index = function(tbl, key)
+    if rawget(tbl, key) == nil then
+      rawset(tbl, key, {})
+    end
+    return rawget(tbl, key)
+  end
+
+  -- cache will auto set the table for each lang if it is nil
+  local cache = setmetatable({}, mt)
+
+  --- Same as `vim.treesitter.query` except will return cached values
+  function M.get_query(lang, query_name)
+    if cache[lang][query_name] == nil then
+      M.reload_file_cache(lang, query_name)
+    end
+
+    return cache[lang][query_name]
+  end
+
+  --- Reloads the query file cache.
+  --- If lang and query_name is both present, will reload for only the lang and query_name.
+  --- If only lang is present, will reload all query_names for that lang
+  --- If none are present, will reload everything
+  function M.reload_file_cache(lang, query_name)
+    if lang and query_name then
+      cache[lang][query_name] = tsq.get_query(lang, query_name)
+    elseif lang and not query_name then
+      for query_name, _ in pairs(cache[lang]) do
+        M.reload_file_cache(lang, query_name)
+      end
+    elseif not lang and not query_name then
+      for lang, _ in pairs(cache) do
+        for query_name, _ in pairs(cache[lang]) do
+          M.reload_file_cache(lang, query_name)
+        end
+      end
+    else
+      error("Cannot have query_name by itself!")
+    end
+  end
+end
+
+--- This function is meant for an autocommand and not to be used. Only use if file is a query file.
+function M.reload_file_cache_on_write(fname)
+  local fnamemodify = vim.fn.fnamemodify
+  print('reloading cache')
+  M.reload_file_cache(fnamemodify(fname, ':p:h:t'), fnamemodify(fname, ':t:r'))
 end
 
 function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
