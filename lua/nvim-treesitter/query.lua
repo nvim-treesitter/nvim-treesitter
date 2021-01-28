@@ -7,8 +7,6 @@ local caching = require'nvim-treesitter.caching'
 
 local M = {}
 
-local query_cache = caching.create_buffer_cache()
-
 M.built_in_query_groups = {'highlights', 'locals', 'folds', 'indents'}
 
 -- Creates a function that checks whether a given query exists
@@ -23,18 +21,22 @@ for _, query in ipairs(M.built_in_query_groups) do
   M["has_" .. query] = get_query_guard(query)
 end
 
-local function update_cached_matches(bufnr, changed_tick, query_group)
-  query_cache.set(query_group, bufnr, {tick=changed_tick, cache=( M.collect_group_results(bufnr, query_group) or {} )})
-end
+do
+  local query_cache = caching.create_buffer_cache()
 
-function M.get_matches(bufnr, query_group)
-  local bufnr = bufnr or api.nvim_get_current_buf()
-  local cached_local = query_cache.get(query_group, bufnr)
-  if not cached_local or api.nvim_buf_get_changedtick(bufnr) > cached_local.tick then
-    update_cached_matches(bufnr,api.nvim_buf_get_changedtick(bufnr), query_group)
+  local function update_cached_matches(bufnr, changed_tick, query_group)
+    query_cache.set(query_group, bufnr, {tick=changed_tick, cache=( M.collect_group_results(bufnr, query_group) or {} )})
   end
 
-  return query_cache.get(query_group, bufnr).cache
+  function M.get_matches(bufnr, query_group)
+    bufnr = bufnr or api.nvim_get_current_buf()
+    local cached_local = query_cache.get(query_group, bufnr)
+    if not cached_local or api.nvim_buf_get_changedtick(bufnr) > cached_local.tick then
+      update_cached_matches(bufnr,api.nvim_buf_get_changedtick(bufnr), query_group)
+    end
+
+    return query_cache.get(query_group, bufnr).cache
+  end
 end
 
 local function runtime_queries(lang, query_name)
