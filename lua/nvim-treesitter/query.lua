@@ -47,14 +47,19 @@ function M.has_query_files(lang, query_name)
 end
 
 do
-  local cache = {}
+  local mt = {}
+  mt.__index = function(tbl, key)
+    if rawget(tbl, key) == nil then
+      rawset(tbl, key, {})
+    end
+    return rawget(tbl, key)
+  end
+
+  -- cache will have will auto set the table for each lang if it is nil
+  local cache = setmetatable({}, mt)
 
   --- Same as `vim.treesitter.query` except will return cached values
   function M.get_query(lang, query_name)
-    if cache[lang] == nil then
-      cache[lang] = {}
-    end
-
     if cache[lang][query_name] == nil then
       M.reload_file_cache(lang, query_name)
     end
@@ -62,14 +67,11 @@ do
     return cache[lang][query_name]
   end
 
-  --- reloads the query file cache
+  --- Reloads the query file cache.
+  --- If lang and query_name is both present, will reload for only the lang and query_name.
+  --- If only lang is present, will reload all query_names for that lang
+  --- If none are present, will reload everything
   function M.reload_file_cache(lang, query_name)
-    if lang then
-      if cache[lang] == nil then
-        cache[lang] = {}
-      end
-    end
-
     -- nil means query is not cached yet. "invalid" means that query was cached and was not a valid one
     if lang and query_name then
       cache[lang][query_name] = tsq.get_query(lang, query_name)
