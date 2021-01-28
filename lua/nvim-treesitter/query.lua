@@ -81,7 +81,7 @@ do
       end
     elseif not lang and not query_name then
       for lang, _ in pairs(cache) do
-        for query_name in pairs(cache[lang]) do
+        for query_name, _ in pairs(cache[lang]) do
           M.reload_file_cache(lang, query_name)
         end
       end
