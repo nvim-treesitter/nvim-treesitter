@@ -231,7 +231,7 @@ Tree-sitter based indentation.
 
 ```vim
 lua <<EOF
-require'nvim-treesitter.config'.setup {
+require'nvim-treesitter.configs'.setup {
   indent = {
     enable = true
   }
