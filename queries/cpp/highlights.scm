@@ -72,6 +72,9 @@
               field: (field_identifier) @function))
 
 ((call_expression
+  function: (identifier) @constructor)
+(#match? @constructor "^[A-Z]"))
+((call_expression
   function: (scoped_identifier
               name: (identifier) @constructor))
 (#match? @constructor "^[A-Z]"))
