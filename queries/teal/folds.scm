@@ -10,6 +10,3 @@
 (anon_function)
 (table_constructor)
 ] @fold
-
-(record_declaration
-  (anon_record) @fold)
