@@ -416,6 +416,15 @@ list.turtle = {
   maintainers = { "@bonabeavis" },
 }
 
+list.devicetree = {
+  install_info = {
+    url = "https://github.com/joelspadin/tree-sitter-devicetree",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  filetype = 'dts',
+}
+
 local M = {
   list = list
 }
