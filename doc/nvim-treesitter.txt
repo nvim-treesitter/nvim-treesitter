@@ -231,6 +231,13 @@ A list of modules can be found at |:TSModuleInfo|
 Disable {module} on the current buffer
 A list of modules can be found at |:TSModuleInfo|
 
+                                                                *:TSBufToggle*
+:TSBufToggle {module}~
+
+Toggle (enable if disabled, disable if enabled) {module} on the current
+buffer.
+A list of modules can be found at |:TSModuleInfo|
+
                                                              *:TSBufEnableAll*
 :TSBufEnableAll {module} [{language}]~
 
