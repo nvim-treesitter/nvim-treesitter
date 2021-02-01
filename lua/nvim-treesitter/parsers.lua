@@ -295,7 +295,7 @@ list.vue = {
 
 list.elm = {
   install_info = {
-    url = "https://github.com/razzeee/tree-sitter-elm",
+    url = "https://github.com/elm-tooling/tree-sitter-elm",
     files = { "src/parser.c", "src/scanner.cc" },
   }
 }
