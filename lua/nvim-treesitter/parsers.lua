@@ -263,6 +263,15 @@ list.scala = {
   }
 }
 
+list.supercollider = {
+	install_info = {
+		url = "https://github.com/madskjeldgaard/tree-sitter-supercollider",
+		files = {"src/parser.c", "src/scanner.c"},
+	},
+	maintainers = {"@madskjeldgaard"},
+	filetype = "supercollider",
+}
+
 list.haskell = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-haskell",
@@ -396,6 +405,15 @@ list.sparql = {
     branch = "main",
   },
   maintainers = { "@bonabeavis" },
+}
+
+list.supercollider = {
+	install_info = {
+		url = "https://github.com/madskjeldgaard/tree-sitter-supercollider",
+		files = {"src/parser.c", "src/scanner.c"},
+		maintainers = {"@madskjeldgaard"},
+	},
+	filetype = "supercollider",
 }
 
 list.gdscript = {
