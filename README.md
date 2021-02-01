@@ -139,7 +139,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [cpp](https://github.com/tree-sitter/tree-sitter-cpp) (maintained by @theHamsta)
 - [x] [css](https://github.com/tree-sitter/tree-sitter-css) (maintained by @TravonteD)
 - [x] [dart](https://github.com/UserNobody14/tree-sitter-dart) (maintained by @Akin909)
-- [ ] [elm](https://github.com/razzeee/tree-sitter-elm)
+- [ ] [elm](https://github.com/elm-tooling/tree-sitter-elm)
 - [x] [erlang](https://github.com/AbstractMachinesLab/tree-sitter-erlang) (maintained by @ostera)
 - [x] [fennel](https://github.com/travonted/tree-sitter-fennel) (maintained by @TravonteD)
 - [x] [Godot (gdscript)](https://github.com/PrestonKnopp/tree-sitter-gdscript) (maintained by not @tjdevries)
