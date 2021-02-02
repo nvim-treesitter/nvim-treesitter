@@ -98,7 +98,7 @@
 ; control structure
 (control_structure) @conditional
 
-(escape_sequence) @escape
+(escape_sequence) @string.special
 
 ; SinOsc.ar()!2
 (duplicated_statement) @repeat
