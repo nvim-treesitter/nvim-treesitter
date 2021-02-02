@@ -75,7 +75,7 @@
 ; "super"
 ; "this"
 "var"
-] @type.builtin
+] @keyword
 
 ; Brackets
 [
