@@ -408,15 +408,6 @@ list.sparql = {
   maintainers = { "@bonabeavis" },
 }
 
-list.supercollider = {
-	install_info = {
-		url = "https://github.com/madskjeldgaard/tree-sitter-supercollider",
-		files = {"src/parser.c", "src/scanner.c"},
-		maintainers = {"@madskjeldgaard"},
-	},
-	filetype = "supercollider",
-}
-
 list.gdscript = {
   install_info = {
     url = "https://github.com/PrestonKnopp/tree-sitter-gdscript",
