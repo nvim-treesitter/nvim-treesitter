@@ -267,6 +267,7 @@ list.supercollider = {
 	install_info = {
 		url = "https://github.com/madskjeldgaard/tree-sitter-supercollider",
 		files = {"src/parser.c", "src/scanner.c"},
+		branch = "main",
 	},
 	maintainers = {"@madskjeldgaard"},
 	filetype = "supercollider",
