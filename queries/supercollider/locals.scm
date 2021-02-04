@@ -30,7 +30,5 @@
 (function_definition name: (variable) @definition.var
 	 (set! "definition.var.scope" "parent")
 )
-;(variable_definition name: (variable (local_var(identifier))) @local.definition) 
-;(variable) @local.definition
 
 (identifier) @reference
