@@ -8,3 +8,5 @@
 
   (#eq? @_cdef_identifier "cdef")
 )
+
+(comment) @comment

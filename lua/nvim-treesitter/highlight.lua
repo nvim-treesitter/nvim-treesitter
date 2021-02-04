@@ -85,6 +85,10 @@ hlmap["text.title"] = "TSTitle"
 hlmap["text.literal"] = "TSLiteral"
 hlmap["text.uri"] = "TSURI"
 
+hlmap["text.note"] = "TSNote"
+hlmap["text.warning"] = "TSWarning"
+hlmap["text.danger"] = "TSDanger"
+
 hlmap["type"] = "TSType"
 hlmap["type.builtin"] = "TSTypeBuiltin"
 

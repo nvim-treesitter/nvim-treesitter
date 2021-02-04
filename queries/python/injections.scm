@@ -22,3 +22,5 @@
 ; Attribute docstring
 (((expression_statement (assignment)) . (expression_statement (string) @rst))
  (#offset! @rst 0 3 0 -3))
+
+(comment) @comment

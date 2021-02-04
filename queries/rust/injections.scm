@@ -5,3 +5,5 @@
   (macro_rule
     left: (token_tree_pattern) @rust
     right: (token_tree) @rust))
+
+(comment) @comment

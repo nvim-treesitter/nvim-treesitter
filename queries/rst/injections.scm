@@ -58,3 +58,5 @@
   "interpreted_text" @latex
   (role) @_role)
  (#eq? @_role ":math:"))
+
+(comment) @comment
