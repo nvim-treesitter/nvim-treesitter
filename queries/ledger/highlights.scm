@@ -3,7 +3,7 @@
 ((date) @number)
 ((account) @variable)
 ((note) @comment)
-((amount_expr) @keyword)
+((amount) @keyword)
 ((quantity) @number)
 ((commodity) @string)
 
