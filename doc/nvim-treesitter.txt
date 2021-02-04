@@ -228,23 +228,39 @@ A list of modules can be found at |:TSModuleInfo|
                                                                *:TSBufDisable*
 :TSBufDisable {module}~
 
-Disable {module} on the current buffer
+Disable {module} on the current buffer.
 A list of modules can be found at |:TSModuleInfo|
 
-                                                             *:TSBufEnableAll*
-:TSBufEnableAll {module} [{language}]~
+                                                                *:TSBufToggle*
+:TSBufToggle {module}~
 
-Enable {module} for the session
-if {language} is specified, enable module for the session only for this
+Toggle (enable if disabled, disable if enabled) {module} on the current
+buffer.
+A list of modules can be found at |:TSModuleInfo|
+
+                                                                *:TSEnableAll*
+:TSEnableAll {module} [{language}]~
+
+Enable {module} for the session.
+If {language} is specified, enable module for the session only for this
 particular language.
 A list of modules can be found at |:TSModuleInfo|
 A list of languages can be found at |:TSInstallInfo|
 
-                                                            *:TSBufDisableAll*
-:TSBufDisableAll {module} [{language}]~
+                                                               *:TSDisableAll*
+:TSDisableAll {module} [{language}]~
 
-Disable {module} for the session
-if {language} is specified, disable module for the session only for this
+Disable {module} for the session.
+If {language} is specified, disable module for the session only for this
+particular language.
+A list of modules can be found at |:TSModuleInfo|
+A list of languages can be found at |:TSInstallInfo|
+
+								*:TSToggleAll*
+:TSToggleAll {module} [{language}]~
+
+Toggle (enable if disabled, disable if enabled) {module} for the session.
+If {language} is specified, toggle module for the session only for this
 particular language.
 A list of modules can be found at |:TSModuleInfo|
 A list of languages can be found at |:TSInstallInfo|

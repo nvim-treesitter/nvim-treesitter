@@ -136,6 +136,34 @@ local function disable_all(mod)
   config_mod.enable = false
 end
 
+-- Toggles a module for a buffer
+-- @param mod path to module
+-- @param bufnr buffer number, defaults to current buffer
+-- @param lang language, defaults to current language
+local function toggle_module(mod, bufnr, lang)
+  local bufnr = bufnr or api.nvim_get_current_buf()
+  local lang = lang or parsers.get_buf_lang(bufnr)
+
+  if attached_buffers_by_module.has(mod, bufnr) then
+    disable_module(mod, bufnr)
+  else
+    enable_module(mod, bufnr, lang)
+  end
+end
+
+-- Toggles the module globally and for all current buffers.
+-- @param mod path to module
+local function toggle_all(mod)
+  local config_mod = M.get_module(mod)
+  if not config_mod then return end
+
+  if config_mod.enable then
+    disable_all(mod)
+  else
+    enable_all(mod)
+  end
+end
+
 -- Recurses through all modules including submodules
 -- @param accumulator function called for each module
 -- @param root root configuration table to start at
@@ -181,6 +209,13 @@ M.commands = {
       "-complete=custom,nvim_treesitter#available_modules",
     },
   },
+  TSBufToggle = {
+    run = toggle_module,
+    args = {
+      "-nargs=1",
+      "-complete=custom,nvim_treesitter#available_modules",
+    },
+  },
   TSEnableAll = {
     run = enable_all,
     args = {
@@ -190,6 +225,13 @@ M.commands = {
   },
   TSDisableAll = {
     run = disable_all,
+    args = {
+      "-nargs=+",
+      "-complete=custom,nvim_treesitter#available_modules",
+    },
+  },
+  TSToggleAll = {
+    run = toggle_all,
     args = {
       "-nargs=+",
       "-complete=custom,nvim_treesitter#available_modules",
