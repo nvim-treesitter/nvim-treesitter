@@ -6,8 +6,6 @@
 (block_comment) @comment
 
 ; Argument definition
-
-; Fixme: Should be attribute but nvim-treesitter doesn't supprt it at the moment
 (argument name: (identifier) @parameter) 
 
 ; Variables
@@ -101,8 +99,3 @@
 
 ; SinOsc.ar()!2
 (duplicated_statement) @repeat
-
-; Builtins
-; ((identifier) @variable.builtin
-;  (#match? @variable.builtin "^(inf|nil|thisFunction|thisFunctionDef|thisMethod|thisProcess|thisThread|currentEnvironment|topEnvironment)$")
-;  (#is-not? local))
