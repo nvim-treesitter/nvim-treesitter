@@ -9,7 +9,6 @@
 
 ; Fixme: Should be attribute but nvim-treesitter doesn't supprt it at the moment
 (argument name: (identifier) @parameter) 
-;(argument name: (identifier) @parameter)  
 
 ; Variables
 (local_var name: (identifier) @variable)
