@@ -47,7 +47,7 @@ Each of these `scheme` files contains a *tree-sitter query* for a given purpose.
 Before going any further, we highly suggest that you [read more about tree-sitter queries](https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries).
 
 Each query has an appropriate name, which is then used by modules to extract data from the syntax tree.
-For now the following types of queries are used by `nvim-treesitter`:
+For now two types of queries are used by `nvim-treesitter`:
 
 - `highlights.scm`: used for syntax highlighting, using the `highlight` module.
 - `locals.scm`: used to extract keyword definitions, scopes, references, etc, using the `locals` module.
