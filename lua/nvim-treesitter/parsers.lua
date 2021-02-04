@@ -423,6 +423,7 @@ list.devicetree = {
     branch = "main",
   },
   filetype = 'dts',
+  maintainers = { "@jedrzejboczar" },
 }
 
 local M = {
