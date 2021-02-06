@@ -162,6 +162,7 @@ Mainly for markup languages.
 @text.strong
 @text.emphasis
 @text.underline
+@text.strike
 @text.title
 @text.literal
 @text.uri

@@ -580,6 +580,10 @@ For text to be represented with emphasis.
                                                                *hl-TSUnderline*
 For text to be represented with an underline.
 
+`TSStrike`
+								 *hl-TSStrike*
+For strikethrough text.
+
 `TSTitle`
                                                                   *hl-TSTitle*
 Text that is part of a title.
