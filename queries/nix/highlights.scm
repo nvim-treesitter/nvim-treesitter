@@ -64,7 +64,7 @@
 ((identifier) @_i (#match? @_i "^(builtins|baseNameOf|dirOf|fetchTarball|map|removeAttrs|toString)$")) @variable.builtin
 
 ; display entire builtins path as builtin (ex. `builtins.filter` is highlighted as one long builtin)
-(select ((identifier) @_i (#eq? @_i "builtins")) (attrpath (identifier) @variable.builtin)) @variable.builtin
+(select ((identifier) @_i (#eq? @_i "builtins")) (attrpath (attr_identifier) @variable.builtin)) @variable.builtin
 
 ; import
 ((identifier) @_i (#eq? @_i "import")) @include
@@ -82,8 +82,8 @@
 (interpolation "${" @punctuation.special (_) "}" @punctuation.special) @none
 
 ; fields (the `.` in `a.b = c;` isn't included)
-(attrset (bind . (attrpath (identifier) @field)))
-(rec_attrset (bind . (attrpath (identifier) @field)))
+(attrset (bind . (attrpath (attr_identifier) @field)))
+(rec_attrset (bind . (attrpath (attr_identifier) @field)))
 
 ; unary operators
 (unary "-" @operator)
