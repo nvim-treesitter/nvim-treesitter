@@ -98,7 +98,6 @@ end
 --- This function is meant for an autocommand and not to be used. Only use if file is a query file.
 function M.reload_file_cache_on_write(fname)
   local fnamemodify = vim.fn.fnamemodify
-  print('reloading cache')
   M.reload_file_cache(fnamemodify(fname, ':p:h:t'), fnamemodify(fname, ':t:r'))
 end
 
