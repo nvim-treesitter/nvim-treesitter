@@ -320,7 +320,7 @@ list.yaml = {
 list.nix = {
   install_info = {
     url = "https://github.com/cstrahan/tree-sitter-nix",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = {"@leo60228"},
 }
