@@ -263,6 +263,16 @@ list.scala = {
   }
 }
 
+list.supercollider = {
+	install_info = {
+		url = "https://github.com/madskjeldgaard/tree-sitter-supercollider",
+		files = {"src/parser.c", "src/scanner.c"},
+		branch = "main",
+	},
+	maintainers = {"@madskjeldgaard"},
+	filetype = "supercollider",
+}
+
 list.haskell = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-haskell",
@@ -414,6 +424,16 @@ list.turtle = {
     branch = "main",
   },
   maintainers = { "@bonabeavis" },
+}
+
+list.devicetree = {
+  install_info = {
+    url = "https://github.com/joelspadin/tree-sitter-devicetree",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  filetype = 'dts',
+  maintainers = { "@jedrzejboczar" },
 }
 
 local M = {

@@ -138,6 +138,7 @@
 (string) @string
 (number) @number
 (label_statement) @label
+(field (identifier) @field)
 (shebang) @comment
 
 ;; Error

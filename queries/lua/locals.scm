@@ -15,28 +15,28 @@
    (identifier) @definition.var))
 
 ;; Function definitions
-;; Functions definitions creates both a definition and a new scope
 ((function
    (function_name
      (function_name_field
-       (identifier) @definition.associated
-       (property_identifier) @definition.method))) @scope)
+       (identifier) @definition.associated . (property_identifier) @definition.method)))
+ (#set! definition.method.scope "parent"))
 
 ((function
-   (function_name (identifier) @definition.function)) @scope)
+   (function_name (identifier) @definition.function))
+ (#set! definition.function.scope "parent"))
 
-((local_function
-   (identifier) @definition.function) @scope)
-[
+((local_function (identifier) @definition.function)
+ (#set! definition.function.scope "parent"))
+
 (local_variable_declaration
-  (variable_declarator
-    (identifier) @definition.function)
-  (function_definition) @scope)
-(function_definition) @scope
-]
+  (variable_declarator (identifier) @definition.function) . (function_definition))
 
+;; Scopes
 [
   (program)
+  (function)
+  (local_function)
+  (function_definition)
   (if_statement)
   (for_in_statement)
   (repeat_statement)

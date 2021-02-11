@@ -6,6 +6,7 @@
   (for_expression)
   (struct_expression)
   (match_expression)
+  (tuple_expression)
   (match_arm)
   (if_let_expression)
   (call_expression)
@@ -13,6 +14,7 @@
   (arguments)
   (block)
   (where_clause)
+  (use_list)
 ] @indent
 
 [
