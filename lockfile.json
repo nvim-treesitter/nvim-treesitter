@@ -3,10 +3,10 @@
     "revision": "8ece09ca4c0b5e59b124cd19fa92c76b1a9e9dd4"
   },
   "c": {
-    "revision": "80b6b748e612d5831a3d5fe296c5a39b95ecb7bb"
+    "revision": "8d4631b673f8a9d968d1d93393c0a965194abac0"
   },
   "c_sharp": {
-    "revision": "aae8ab2b681082ce7a35d8d5fdf75ffcf7f994e5"
+    "revision": "1077f9939320aa57d692c48b810630a0207c4012"
   },
   "clojure": {
     "revision": "f09652f095be878df8a87a57dcbfa07094316253"
@@ -20,11 +20,14 @@
   "dart": {
     "revision": "9432021ba6e96124ff1b6bd91f79c0a2e3c87cf4"
   },
+  "devicetree": {
+    "revision": "14055bd46b383d18ebc9db219f8f6b048455ae04"
+  },
   "elm": {
     "revision": "117dcf4cdc6145aa453b45e9e53319e79675ee4e"
   },
   "erlang": {
-    "revision": "946cef2a530bc56dbfef225d16c43c179e22f4dd"
+    "revision": "7b436e1ca50f0002f6765a9a2a00f6156b2cc881"
   },
   "fennel": {
     "revision": "5aad9d1f490b7fc8a847a5b260f23396c56024f5"
@@ -45,7 +48,7 @@
     "revision": "7f442e1c6163d450c69c75c7a621badc3a0ea98f"
   },
   "java": {
-    "revision": "f7b62ac33d63bea56ce202ace107aaa4285e50af"
+    "revision": "16c07a726c34c9925b3e28716b2d6d60e3643252"
   },
   "javascript": {
     "revision": "852f11b394804ac2a8986f8bcaafe77753635667"
@@ -69,7 +72,7 @@
     "revision": "97b757ad3546d68dc1131e6ffb9b1d2a750eea29"
   },
   "nix": {
-    "revision": "791b5ff0e4f0da358cbb941788b78d436a2ca621"
+    "revision": "a6bae0619126d70c756c11e404d8f4ad5108242f"
   },
   "ocaml": {
     "revision": "4ec9ee414dadc2b6e7325a9f8124d02f6cd8c250"
@@ -110,11 +113,14 @@
   "sparql": {
     "revision": "8862fc9942fc0ad60c8a8cb004138bfd69fc5c95"
   },
+  "supercollider": {
+    "revision": "45d356487799dab0ebc58cc8922aa145264063f8"
+  },
   "swift": {
     "revision": "a22fa5e19bae50098e2252ea96cba3aba43f4c58"
   },
   "teal": {
-    "revision": "26b55359979effb6941557aacc0cd4174516fda5"
+    "revision": "766162e3dab71843de7f50819ecc97bacd60d289"
   },
   "toml": {
     "revision": "084da152d85cb8c4bbbe0ab5f3f1f9e5bfb77d3c"
