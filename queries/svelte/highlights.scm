@@ -17,18 +17,18 @@
  (#match? @_tag "^(s|del)$"))
 
 ((element (start_tag (tag_name) @_tag) (text) @text.underline)
- (#match? @_tag "^u$"))
+ (#eq? @_tag "u"))
 
 ((element (start_tag (tag_name) @_tag) (text) @text.literal)
  (#match? @_tag "^(code|kbd)$"))
 
 ((element (start_tag (tag_name) @_tag) (text) @text.uri)
- (#match? @_tag "^a$"))
+ (#eq? @_tag "a"))
 
 ((attribute
    (attribute_name) @_attr
    (quoted_attribute_value (attribute_value) @text.uri))
- (#match? @_attr "^href$"))
+ (#eq? @_attr "href"))
 
 [
   (special_block_keyword)
