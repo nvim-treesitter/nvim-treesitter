@@ -18,3 +18,6 @@
   "("
   ")"
 ] @punctuation.bracket
+
+((program . (comment) @include)
+ (#match? @include "^;\ +inherits\ *:"))
