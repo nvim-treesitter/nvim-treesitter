@@ -1,4 +1,5 @@
 [
+  (pair)
   (object)
   (array)
 ] @fold
