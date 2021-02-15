@@ -303,6 +303,13 @@ list.vue = {
   }
 }
 
+list.jsonc = {
+  install_info = {
+    url = "https://gitlab.com/WhyNotHugo/tree-sitter-jsonc.git",
+    files = { "src/parser.c" },
+  }
+}
+
 list.elm = {
   install_info = {
     url = "https://github.com/elm-tooling/tree-sitter-elm",
