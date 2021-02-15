@@ -12,6 +12,10 @@
   (transition)
 ] @punctuation.special
 
+;; Resets for injection
+
+(doctest_block) @none
+
 ;; Directives
 
 (directive
