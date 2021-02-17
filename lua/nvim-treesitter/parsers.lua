@@ -309,6 +309,7 @@ list.jsonc = {
     files = { "src/parser.c" },
   },
   readme_name = "JSON with comments",
+  maintainers = {"@WhyNotHugo"},
 }
 
 list.elm = {
