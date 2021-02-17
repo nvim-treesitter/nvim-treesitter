@@ -300,7 +300,8 @@ list.vue = {
   install_info = {
     url = "https://github.com/ikatyang/tree-sitter-vue",
     files = { "src/parser.c", "src/scanner.cc" },
-  }
+  },
+  maintainers = {"@WhyNotHugo"},
 }
 
 list.jsonc = {
