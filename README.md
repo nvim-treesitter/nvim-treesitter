@@ -65,6 +65,7 @@ For more detailed information on setting these up, see ["Advanced setup"](#advan
 - Neovim [nightly](https://github.com/neovim/neovim#install-from-source)
 - `tar` and `curl` in your path (or alternativly `git`)
 - A C compiler in your path and libstdc++ installed ([Windows users please read this!](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support)).
+- For Fedora/CentOS users, install `gcc-c++`, [more info](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Linux-Support#961-error-during-compilation)
 
 ## Installation
 
