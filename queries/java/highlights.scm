@@ -105,7 +105,7 @@
 ; Variables
 
 ((identifier) @constant
-  (#vim-match? @constant "^_*[A-Z][A-Z\d_]+"))
+  (#vim-match? @constant "^[A-Z_][A-Z\d_]+$"))
 
 (this) @variable.builtin
 
