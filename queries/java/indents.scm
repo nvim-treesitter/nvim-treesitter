@@ -7,6 +7,7 @@
   (switch_block)
   (array_initializer)
   (argument_list)
+  (formal_parameters)
 ] @indent
 
 [
