@@ -19,6 +19,9 @@
 (catch_formal_parameter
   name: (identifier) @parameter)
 
+(spread_parameter
+ (variable_declarator) @parameter) ; int... foo
+
 ;; Lambda parameter
 (inferred_parameters (identifier) @parameter) ; (x,y) -> ...
 (lambda_expression
@@ -105,7 +108,7 @@
 ; Variables
 
 ((identifier) @constant
-  (#vim-match? @constant "^_*[A-Z][A-Z\d_]+"))
+  (#match? @constant "^[A-Z_][A-Z\d_]+$"))
 
 (this) @variable.builtin
 
@@ -205,6 +208,7 @@
 [
 ";"
 "."
+"..."
 ","
 ] @punctuation.delimiter
 
