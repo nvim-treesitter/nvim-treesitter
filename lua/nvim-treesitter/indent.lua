@@ -40,7 +40,7 @@ local get_indents = utils.memoize_by_buf_tick(function(bufnr)
 end)
 
 local function get_indent_size()
-  return vim.bo.softtabstop < 0 and vim.bo.shiftwidth or vim.bo.tabstop
+  return vim.bo.softtabstop > 0 and vim.bo.shiftwidth or vim.bo.tabstop
 end
 
 function M.get_indent(lnum)
