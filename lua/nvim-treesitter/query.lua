@@ -26,8 +26,8 @@ do
 
   local function update_cached_matches(bufnr, changed_tick, query_group)
     query_cache.set(query_group, bufnr, {
-        tick = changed_tick,
-        cache= M.collect_group_results(bufnr, query_group) or {}
+      tick = changed_tick,
+      cache= M.collect_group_results(bufnr, query_group) or {}
     })
   end
 
@@ -152,7 +152,7 @@ function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
           end
           if pred[1] == "make-range!" and type(pred[2]) == "string" and #pred == 4 then
             insert_to_path(prepared_match, split(pred[2]..'.node'),
-                           tsrange.TSRange.from_nodes(bufnr, match[pred[3]], match[pred[4]]))
+              tsrange.TSRange.from_nodes(bufnr, match[pred[3]], match[pred[4]]))
           end
         end
       end
@@ -167,53 +167,53 @@ end
 -- Works like M.get_references or M.get_scopes except you can choose the capture
 -- Can also be a nested capture like @definition.function to get all nodes defining a function
 function M.get_capture_matches(bufnr, capture_string, query_group)
-    if not string.sub(capture_string, 1,2) == '@' then
-      print('capture_string must start with "@"')
-      return
+  if not string.sub(capture_string, 1,2) == '@' then
+    print('capture_string must start with "@"')
+    return
+  end
+
+  --remove leading "@"
+  capture_string = string.sub(capture_string, 2)
+
+  local matches = {}
+  for match in M.iter_group_results(bufnr, query_group) do
+    local insert = utils.get_at_path(match, capture_string)
+
+    if insert then
+      table.insert(matches, insert)
     end
-
-    --remove leading "@"
-    capture_string = string.sub(capture_string, 2)
-
-    local matches = {}
-    for match in M.iter_group_results(bufnr, query_group) do
-      local insert = utils.get_at_path(match, capture_string)
-
-      if insert then
-        table.insert(matches, insert)
-      end
-    end
-    return matches
+  end
+  return matches
 end
 
 function M.find_best_match(bufnr, capture_string, query_group, filter_predicate, scoring_function)
-    if not string.sub(capture_string, 1,2) == '@' then
-      api.nvim_err_writeln('capture_string must start with "@"')
-      return
-    end
+  if not string.sub(capture_string, 1,2) == '@' then
+    api.nvim_err_writeln('capture_string must start with "@"')
+    return
+  end
 
-    --remove leading "@"
-    capture_string = string.sub(capture_string, 2)
+  --remove leading "@"
+  capture_string = string.sub(capture_string, 2)
 
-    local best
-    local best_score
+  local best
+  local best_score
 
-    for maybe_match in M.iter_group_results(bufnr, query_group) do
-      local match = utils.get_at_path(maybe_match, capture_string)
+  for maybe_match in M.iter_group_results(bufnr, query_group) do
+    local match = utils.get_at_path(maybe_match, capture_string)
 
-      if match and filter_predicate(match) then
-        local current_score = scoring_function(match)
-        if not best then
-          best = match
-          best_score = current_score
-        end
-        if current_score > best_score then
-          best = match
-          best_score = current_score
-        end
+    if match and filter_predicate(match) then
+      local current_score = scoring_function(match)
+      if not best then
+        best = match
+        best_score = current_score
+      end
+      if current_score > best_score then
+        best = match
+        best_score = current_score
       end
     end
-    return best
+  end
+  return best
 end
 
 -- Iterates matches from a query file.

@@ -187,9 +187,9 @@ end
 --        for vim.inspect (https://github.com/kikito/inspect.lua#optionsprocess)
 local function config_info(process_function)
   process_function = process_function or function(item, path)
-     if path[#path] == vim.inspect.METATABLE then return end
-     if path[#path] == "is_supported" then return end
-     return item
+    if path[#path] == vim.inspect.METATABLE then return end
+    if path[#path] == "is_supported" then return end
+    return item
   end
   print(vim.inspect(config, {process = process_function}))
 end
@@ -346,8 +346,8 @@ function M.attach_module(mod_name, bufnr, lang)
   local resolved_mod = resolve_module(mod_name)
 
   if resolved_mod
-      and not attached_buffers_by_module.has(mod_name, bufnr)
-      and M.is_enabled(mod_name, lang) then
+    and not attached_buffers_by_module.has(mod_name, bufnr)
+    and M.is_enabled(mod_name, lang) then
     attached_buffers_by_module.set(mod_name, bufnr, true)
     resolved_mod.attach(bufnr, lang)
   end
@@ -393,7 +393,7 @@ end
 function M.is_module(mod)
   return type(mod) == 'table'
     and ((type(mod.attach) == 'function' and type(mod.detach) == 'function')
-      or type(mod.module_path) == 'string')
+    or type(mod.module_path) == 'string')
 end
 
 -- Initializes built-in modules and any queued modules

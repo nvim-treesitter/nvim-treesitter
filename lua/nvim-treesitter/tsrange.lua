@@ -7,7 +7,7 @@ local parsers = require'nvim-treesitter.parsers'
 
 local function get_byte_offset(buf, row, col)
   return api.nvim_buf_get_offset(buf, row)
-         + vim.fn.byteidx(api.nvim_buf_get_lines(buf, row, row + 1, false), col)
+    + vim.fn.byteidx(api.nvim_buf_get_lines(buf, row, row + 1, false), col)
 end
 
 function TSRange.new(buf, start_row, start_col, end_row, end_col)
