@@ -60,7 +60,8 @@ function M.checkhealth()
     end
   end
   print([[ Legend: H[ighlight], L[ocals], F[olds], I[ndents]
-         *) multiple parsers found, only one will be used]])
+         *) multiple parsers found, only one will be used
+         x) errors found in the query, try to run :TSUpdate {lang}]])
 end
 
 return M
