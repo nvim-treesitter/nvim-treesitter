@@ -17,16 +17,12 @@ local list = setmetatable({}, {
 
     rawset(table, parsername, setmetatable(parserconfig, {
       __newindex = function(parserconfigtable, key, value)
-        if key == "used_by" then
-          ft_to_parsername[value] = parsername
-        else
-          rawset(parserconfigtable, key, value)
-        end
+        rawset(parserconfigtable, key, value)
       end
     }))
 
     update_ft_to_parsername(parsername, parserconfig)
-   end
+  end
 })
 
 list.javascript = {
@@ -264,13 +260,13 @@ list.scala = {
 }
 
 list.supercollider = {
-	install_info = {
-		url = "https://github.com/madskjeldgaard/tree-sitter-supercollider",
-		files = {"src/parser.c", "src/scanner.c"},
-		branch = "main",
-	},
-	maintainers = {"@madskjeldgaard"},
-	filetype = "supercollider",
+  install_info = {
+    url = "https://github.com/madskjeldgaard/tree-sitter-supercollider",
+    files = {"src/parser.c", "src/scanner.c"},
+    branch = "main",
+  },
+  maintainers = {"@madskjeldgaard"},
+  filetype = "supercollider",
 }
 
 list.haskell = {
@@ -461,20 +457,6 @@ local M = {
 
 function M.ft_to_lang(ft)
   return ft_to_parsername[ft] or ft
-end
-
-function M.lang_to_ft(lang)
-  local obj = M.list[lang]
-  return vim.tbl_flatten({{obj.filetype or lang}, obj.used_by or {}})
-end
-
-function M.lang_match_ft(lang, ft)
-  for _, f in pairs(M.lang_to_ft(lang)) do
-    if ft == f then
-      return true
-    end
-  end
-  return false
 end
 
 function M.available_parsers()

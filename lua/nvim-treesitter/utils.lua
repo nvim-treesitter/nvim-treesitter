@@ -8,11 +8,11 @@ function M.setup_commands(mod, commands)
   for command_name, def in pairs(commands) do
     local call_fn = string.format("lua require'nvim-treesitter.%s'.commands.%s.run(<f-args>)", mod, command_name)
     local parts = vim.tbl_flatten({
-        "command!",
-        def.args,
-        command_name,
-        call_fn,
-      })
+      "command!",
+      def.args,
+      command_name,
+      call_fn,
+    })
     api.nvim_command(table.concat(parts, " "))
   end
 end

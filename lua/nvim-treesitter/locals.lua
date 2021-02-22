@@ -192,7 +192,7 @@ function M.get_definition_scopes(node, bufnr, scope_type)
   -- and the containing scope of that scope
   if scope_type == 'parent' then
     scope_count = 2
-  -- Definition is valid in all parent scopes
+    -- Definition is valid in all parent scopes
   elseif scope_type == 'global' then
     scope_count = nil
   end

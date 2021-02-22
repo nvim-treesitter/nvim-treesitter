@@ -9,7 +9,7 @@ function M.select_mkdir_cmd(directory, cwd, info_msg)
       cmd = 'cmd',
       opts = {
         args = { '/C', 'mkdir', directory},
-	cwd = cwd,
+        cwd = cwd,
       },
       info = info_msg,
       err = "Could not create "..directory,
@@ -19,7 +19,7 @@ function M.select_mkdir_cmd(directory, cwd, info_msg)
       cmd = 'mkdir',
       opts = {
         args = { directory },
-	cwd = cwd,
+        cwd = cwd,
       },
       info = info_msg,
       err = "Could not create "..directory,
@@ -55,13 +55,13 @@ end
 
 function M.select_compiler_args(repo)
   local args = {
-        '-o',
-        'parser.so',
-        '-I./src',
-        repo.files,
-        '-shared',
-        '-Os',
-        '-lstdc++',
+    '-o',
+    'parser.so',
+    '-I./src',
+    repo.files,
+    '-shared',
+    '-Os',
+    '-lstdc++',
   }
   if fn.has('win32') == 0 then
     table.insert(args, '-fPIC')
@@ -146,8 +146,8 @@ function M.select_download_commands(repo, project_name, cache_folder, revision)
       },
       M.select_rm_file_cmd(cache_folder..path_sep..project_name..".tar.gz"),
       M.select_mv_cmd(utils.join_path(project_name..'-tmp', repo.url:match('[^/]-$')..'-'..revision),
-                    project_name,
-                    cache_folder),
+        project_name,
+        cache_folder),
       M.select_install_rm_cmd(cache_folder, project_name..'-tmp')
     }
   else

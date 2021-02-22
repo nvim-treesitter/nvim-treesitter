@@ -28,7 +28,7 @@ end
 
 local function get_job_status()
   return "[nvim-treesitter] ["..finished_commands.."/"..started_commands
-                              ..(failed_commands > 0 and ", failed: "..failed_commands or "").."]"
+    ..(failed_commands > 0 and ", failed: "..failed_commands or "").."]"
 end
 
 local function get_revision(lang)
@@ -53,7 +53,7 @@ local function outdated_parsers()
   return vim.tbl_filter(function(lang)
     return needs_update(lang)
   end,
-  info.installed_parsers())
+    info.installed_parsers())
 end
 
 function M.iter_cmd(cmd_list, i, lang, success_message)
@@ -76,7 +76,7 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
       failed_commands = failed_commands + 1
       finished_commands = finished_commands + 1
       return api.nvim_err_writeln((attr.err or ("Failed to execute the following command:\n"..vim.inspect(attr)))
-                                   ..'\n'..vim.inspect(err))
+        ..'\n'..vim.inspect(err))
     end
   else
     local handle
@@ -123,8 +123,8 @@ local function iter_cmd_sync(cmd_list)
       if vim.v.shell_error ~= 0 then
         print(ret)
         api.nvim_err_writeln((cmd.err and cmd.err..'\n' or '')
-                            .."Failed to execute the following command:\n"
-                            ..vim.inspect(cmd))
+          .."Failed to execute the following command:\n"
+          ..vim.inspect(cmd))
         return false
       end
     end
@@ -162,8 +162,8 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   local cc = shell.select_executable(M.compilers)
   if not cc then
     api.nvim_err_writeln('No C compiler found! "'
-                       ..table.concat(vim.tbl_filter(function(c) return type(c) == 'string' end, M.compilers), '", "')
-                       ..'" are not executable.')
+      ..table.concat(vim.tbl_filter(function(c) return type(c) == 'string' end, M.compilers), '", "')
+      ..'" are not executable.')
     return
   end
   local revision = configs.get_update_strategy() == 'lockfile' and get_revision(lang)
@@ -283,8 +283,8 @@ function M.update(lang)
     install(false, 'force')(lang)
   else
     local parsers_to_update = configs.get_update_strategy() == 'lockfile'
-                              and outdated_parsers()
-                              or info.installed_parsers()
+      and outdated_parsers()
+      or info.installed_parsers()
     if #parsers_to_update == 0 then
       print('All parsers are up-to-date!')
     end
@@ -353,7 +353,7 @@ function M.write_lockfile(verbose, skip_langs)
     print(vim.inspect(lockfile))
   end
   vim.fn.writefile(vim.fn.split(vim.fn.json_encode(lockfile), '\n'),
-                   utils.join_path(utils.get_package_path(), "lockfile.json"))
+    utils.join_path(utils.get_package_path(), "lockfile.json"))
 end
 
 M.ensure_installed = install(false, false)

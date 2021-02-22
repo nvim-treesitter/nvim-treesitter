@@ -253,7 +253,7 @@ function M.swap_nodes(node_or_range1, node_or_range2, bufnr, cursor_to_second)
     local char_delta = 0
     local line_delta = 0
     if range1["end"].line < range2.start.line
-       or (range1["end"].line == range2.start.line and range1["end"].character < range2.start.character) then
+      or (range1["end"].line == range2.start.line and range1["end"].character < range2.start.character) then
       line_delta = #text2 - #text1
     end
 
@@ -269,7 +269,7 @@ function M.swap_nodes(node_or_range1, node_or_range2, bufnr, cursor_to_second)
 
         -- add range1.start.character if last line of range1 (now text2) does not start at 0
         if range1.start.line == range2.start.line + line_delta then
-            char_delta = char_delta + range1.start.character
+          char_delta = char_delta + range1.start.character
         end
       else
         char_delta = #(text2[#text2]) - #(text1[#text1])
@@ -277,8 +277,8 @@ function M.swap_nodes(node_or_range1, node_or_range2, bufnr, cursor_to_second)
     end
 
     api.nvim_win_set_cursor(api.nvim_get_current_win(),
-                            {range2.start.line + 1 + line_delta,
-                             range2.start.character + char_delta})
+      {range2.start.line + 1 + line_delta,
+        range2.start.character + char_delta})
   end
 end
 

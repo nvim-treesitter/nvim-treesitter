@@ -14,9 +14,9 @@ local function install_health()
   health_start('Installation')
   if fn.executable('git') == 0 then
     health_error('`git` executable not found.', {
-        'Install it with your package manager.',
-        'Check that your `$PATH` is set correctly.'
-      })
+      'Install it with your package manager.',
+      'Check that your `$PATH` is set correctly.'
+    })
   else
     health_ok('`git` executable found.')
   end
@@ -24,7 +24,7 @@ local function install_health()
   if fn.executable('cc') == 0 then
     health_error('`cc` executable not found.', {
       'Check that either gcc or clang is in your $PATH'
-      })
+    })
   else
     health_ok('`cc` executable found.')
   end
