@@ -13,6 +13,7 @@
   (while_statement)
   (table)
   (arguments)
+  (do_statement)
 ] @indent
 
 [

@@ -6,7 +6,6 @@ local info = require'nvim-treesitter.info'
 
 local health_start = vim.fn["health#report_start"]
 local health_ok = vim.fn['health#report_ok']
-local health_warn = vim.fn['health#report_warn']
 local health_error = vim.fn['health#report_error']
 
 local M = {}
@@ -24,51 +23,45 @@ local function install_health()
 
   if fn.executable('cc') == 0 then
     health_error('`cc` executable not found.', {
-        'Install `gcc` with your package manager.',
-        'Install `clang` with your package manager.',
-        'Check that your `$PATH` is set correctly.'
+      'Check that either gcc or clang is in your $PATH'
       })
   else
     health_ok('`cc` executable found.')
   end
 end
 
-local function query_health(lang, query_group)
+local function query_status(lang, query_group)
   local ok, found_query = pcall(queries.get_query, lang, query_group)
   if not ok then
-    health_error("Error in `"..query_group..".scm` query found for "..lang..'\n'..found_query, {
-      "Try `:TSUpdate "..lang.."` (queries might have been adapted for a upstream parser change)",
-      "Try to find the syntax error/invalid node type in above file."
-    })
+    return "x"
   elseif not found_query then
-    health_warn("No `"..query_group..".scm` query found for " .. lang, {
-      "Open an issue at https://github.com/nvim-treesitter/nvim-treesitter"
-    })
+    return "."
   else
-    health_ok("`"..query_group..".scm` found.")
+    return "✓"
   end
 end
 
 function M.checkhealth()
   -- Installation dependency checks
   install_health()
+  health_start("Parser/Features H L F I")
   -- Parser installation checks
   for _, parser_name in pairs(info.installed_parsers()) do
     local installed = #api.nvim_get_runtime_file('parser/'..parser_name..'.so', false)
 
     -- Only print informations about installed parsers
     if installed >= 1 then
-      if installed > 1 then
-        health_warn(string.format("Multiple parsers found for %s, only %s will be used.", parser_name, installed[1]))
-      end
-      health_start(parser_name .. " parser healthcheck")
-      health_ok(parser_name .. " parser found.")
-
+      local multiple_parsers = installed > 1 and "*" or ""
+      local out = "  - "..parser_name..multiple_parsers..string.rep(" ", 15 - (#parser_name + #multiple_parsers))
       for _, query_group in pairs(queries.built_in_query_groups) do
-        query_health(parser_name, query_group)
+        out = out..query_status(parser_name, query_group).." "
       end
+      print(out)
     end
   end
+  print([[ Legend: H[ighlight], L[ocals], F[olds], I[ndents]
+         *) multiple parsers found, only one will be used
+         x) errors found in the query, try to run :TSUpdate {lang}]])
 end
 
 return M
