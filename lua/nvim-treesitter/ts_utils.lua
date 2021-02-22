@@ -131,7 +131,10 @@ function M.highlight_range(range, buf, hl_namespace, hl_group)
 end
 
 -- Set visual selection to node
-function M.update_selection(buf, node)
+-- @param selection_mode One of "charwise" (default) or "v", "linewise" or "V",
+--   "blockwise" or "<C-v>" (as a string with 5 characters or a single character)
+function M.update_selection(buf, node, selection_mode)
+  selection_mode = selection_mode or "charwise"
   local start_row, start_col, end_row, end_col = M.get_node_range(node)
 
   if end_row == vim.fn.line('$') then
@@ -145,7 +148,15 @@ function M.update_selection(buf, node)
   end_col = end_col + 1
 
   vim.fn.setpos(".", { buf, start_row, start_col, 0 })
-  vim.fn.nvim_exec("normal! v", false)
+
+  -- Start visual selection in appropriate mode
+  local v_table = {charwise = "v", linewise = "V", blockwise = "<C-v>"}
+  ---- Call to `nvim_replace_termcodes()` is needed for sending appropriate
+  ---- command to enter blockwise mode
+  local mode_string = vim.api.nvim_replace_termcodes(
+    v_table[selection_mode] or selection_mode, true, true, true
+  )
+  vim.cmd("normal! " .. mode_string)
 
   -- Convert exclusive end position to inclusive
   if end_col == 1 then
