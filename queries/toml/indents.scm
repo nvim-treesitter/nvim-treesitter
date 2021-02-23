@@ -1,8 +1,11 @@
 [
   (array)
-  (table_array_element)
+  (inline_table)
 ] @indent
 
 [
+  "["
   "]"
+  "{"
+  "}"
 ] @branch
