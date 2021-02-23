@@ -11,6 +11,22 @@
 
 [
     "account"
-    "end"
+    "alias"
+    "assert"
+    "check"
+    "commodity"
     "def"
+    "default"
+    "end"
+    "eval"
+    "format"
+    "nomarket"
+    "note"
+    "payee"
+    "A"
+    "Y"
+    "N"
+    "D"
+    "C"
+    "P"
 ] @keyword
