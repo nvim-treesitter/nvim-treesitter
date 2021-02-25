@@ -17,3 +17,5 @@
   (strong_emphasis)
 ] @text.emphasis
 (link_destination) @text.uri
+
+(html_comment) @comment
