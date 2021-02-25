@@ -607,7 +607,7 @@ Any URI like a link or email.
 
 `TSNote`
                                                                    *hl-TSNote*
-Text representation of a note.
+Text representation of an informational note.
 
 `TSWarning`
                                                                    *TSWarning*

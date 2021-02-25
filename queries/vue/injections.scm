@@ -17,3 +17,5 @@
 
 ((interpolation
   (raw_text) @javascript))
+
+(comment) @comment
