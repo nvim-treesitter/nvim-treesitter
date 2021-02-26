@@ -53,20 +53,31 @@ function M.select_executable(executables)
   return vim.tbl_filter(function(c) return c ~= vim.NIL and fn.executable(c) == 1 end, executables)[1]
 end
 
-function M.select_compiler_args(repo)
-  local args = {
-    '-o',
-    'parser.so',
-    '-I./src',
-    repo.files,
-    '-shared',
-    '-Os',
-    '-lstdc++',
-  }
-  if fn.has('win32') == 0 then
-    table.insert(args, '-fPIC')
+function M.select_compiler_args(repo, compiler)
+  if (string.match(compiler, 'cl$') or string.match(compiler, 'cl.exe$')) then
+    return {
+      '/Fe:',
+      'parser.so',
+      '/Isrc',
+      repo.files,
+      '-Os',
+      '/LD',
+    }
+  else
+    local args = {
+      '-o',
+      'parser.so',
+      '-I./src',
+      repo.files,
+      '-shared',
+      '-Os',
+      '-lstdc++',
+    }
+    if fn.has('win32') == 0 then
+     table.insert(args, '-fPIC')
+    end
+    return args
   end
-  return args
 end
 
 function M.select_install_rm_cmd(cache_folder, project_name)
@@ -176,6 +187,14 @@ function M.select_download_commands(repo, project_name, cache_folder, revision)
         },
       }
     }
+  end
+end
+
+function M.make_directory_change_for_command(dir, command)
+  if fn.has('win32') == 1 then
+    return string.format("pushd %s & %s & popd", dir, command)
+  else
+    return string.format("cd %s;\n %s", dir, command)
   end
 end
 
