@@ -30,7 +30,7 @@
 ((attribute
    (attribute_name) @_attr
    (quoted_attribute_value (attribute_value) @text.uri))
- (#eq? @_attr "href"))
+ (#match? @_attr "^(href|src)$"))
 
 "=" @operator
 
