@@ -11,7 +11,7 @@ local shell = require'nvim-treesitter.shell_command_selectors'
 local M = {}
 local lockfile = {}
 
-M.compilers = { vim.fn.getenv('CC'), "cc", "gcc", "clang" }
+M.compilers = { vim.fn.getenv('CC'), "cc", "gcc", "clang", "cl" }
 
 local started_commands = 0
 local finished_commands = 0
@@ -93,13 +93,6 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
 end
 
 local function get_command(cmd)
-  local ret = ''
-  if cmd.opts and cmd.opts.cwd then
-    ret = string.format('cd %s;\n', cmd.opts.cwd)
-  end
-
-  ret = string.format('%s%s ', ret, cmd.cmd)
-
   local options = ""
   if cmd.opts and cmd.opts.args then
     for _, opt in ipairs(cmd.opts.args) do
@@ -107,7 +100,11 @@ local function get_command(cmd)
     end
   end
 
-  return string.format('%s%s', ret, options)
+  local final = string.format('%s %s', cmd.cmd, options)
+  if cmd.opts and cmd.opts.cwd then
+    final = shell.make_directory_change_for_command(cmd.opts.cwd, final)
+  end
+  return final
 end
 
 local function iter_cmd_sync(cmd_list)
@@ -151,7 +148,8 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   if from_local_path then
     compile_location = repo.url
   else
-    compile_location = cache_folder..path_sep..(repo.location or project_name)
+    local repo_location = string.gsub(repo.location or project_name, '/', path_sep)
+    compile_location = cache_folder..path_sep..repo_location
   end
   local parser_lib_name = install_folder..path_sep..lang..".so"
 
@@ -192,7 +190,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
       info = 'Compiling...',
       err = 'Error during compilation',
       opts = {
-        args = vim.tbl_flatten(shell.select_compiler_args(repo)),
+        args = vim.tbl_flatten(shell.select_compiler_args(repo, cc)),
         cwd = compile_location
       }
     },
