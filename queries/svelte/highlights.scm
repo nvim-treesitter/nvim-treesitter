@@ -1,11 +1,3 @@
-(tag_name) @tag
-(erroneous_end_tag_name) @error
-(doctype) @constant
-(attribute_name) @property
-(attribute_value) @string
-(quoted_attribute_value) @string
-(comment) @comment
-
 ((element (start_tag (tag_name) @_tag) (text) @text.title)
  (#match? @_tag "^(h[0-9]|title)$"))
 
@@ -30,14 +22,43 @@
 ((attribute
    (attribute_name) @_attr
    (quoted_attribute_value (attribute_value) @text.uri))
- (#match? @_attr "^(href|src)$"))
+ (#eq? @_attr "href"))
+
+(tag_name) @tag
+(attribute_name) @property
+(errorneous_end_tag_name) @error
+(comment) @comment
+
+[
+  (attribute_value)
+  (quoted_attribute_value)
+] @string
+
+[
+  (text)
+  (raw_text_expr)
+] @none
+
+[
+  (special_block_keyword)
+  (then)
+  (as)
+] @keyword
+
+[
+  "{"
+  "}"
+] @punctuation.bracket
 
 "=" @operator
 
 [
- "<"
- "<!"
- ">"
- "</"
- "/>"
+  "<"
+  ">"
+  "</"
+  "/>"
+  "#"
+  ":"
+  "/"
+  "@"
 ] @tag.delimiter

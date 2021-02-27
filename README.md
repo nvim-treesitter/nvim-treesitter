@@ -172,6 +172,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [ ] [scala](https://github.com/tree-sitter/tree-sitter-scala)
 - [x] [sparql](https://github.com/BonaBeavis/tree-sitter-sparql) (maintained by @bonabeavis)
 - [x] [supercollider](https://github.com/madskjeldgaard/tree-sitter-supercollider) (maintained by @madskjeldgaard)
+- [x] [svelte](https://github.com/Himujjal/tree-sitter-svelte) (maintained by @elianiva)
 - [ ] [swift](https://github.com/tree-sitter/tree-sitter-swift)
 - [x] [teal](https://github.com/euclidianAce/tree-sitter-teal) (maintained by @euclidianAce)
 - [x] [toml](https://github.com/ikatyang/tree-sitter-toml) (maintained by @tk-shirasaka)
