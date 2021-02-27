@@ -68,7 +68,7 @@
 ; Constants
 ;----------
 
-(boolean) @constant
+[(boolean) (unit)] @constant
 
 [(number) (signed_number)] @number
 
@@ -80,7 +80,10 @@
 
 (escape_sequence) @string.escape
 
-(conversion_specification) @punctuation.special
+[
+  (conversion_specification)
+  (pretty_printing_indication)
+] @punctuation.special
 
 ; Operators
 ;----------
