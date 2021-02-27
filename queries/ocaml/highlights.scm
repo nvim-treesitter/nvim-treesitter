@@ -85,30 +85,6 @@
   (pretty_printing_indication)
 ] @punctuation.special
 
-; Operators
-;----------
-
-(match_expression (match_operator) @keyword)
-
-(value_definition [(let_operator) (and_operator)] @keyword)
-
-[
-  (prefix_operator)
-  (infix_operator)
-  (indexing_operator)
-  (let_operator)
-  (and_operator)
-  (match_operator)
-] @operator
-
-(prefix_operator "!" @operator)
-
-(infix_operator ["&" "+" "-" "=" ">" "|" "%"] @operator)
-
-(signed_number ["+" "-"] @operator)
-
-["*" "#" "::" "<-"] @operator
-
 ; Keywords
 ;---------
 
@@ -149,6 +125,30 @@
   "," "." ";" ":" "=" "|" "~" "?" "+" "-" "!" ">" "&"
   "->" ";;" ":>" "+=" ":=" ".."
 ] @punctuation.delimiter
+
+; Operators
+;----------
+
+[
+  (prefix_operator)
+  (infix_operator)
+  (indexing_operator)
+  (let_operator)
+  (and_operator)
+  (match_operator)
+] @operator
+
+(match_expression (match_operator) @keyword)
+
+(value_definition [(let_operator) (and_operator)] @keyword)
+
+(prefix_operator "!" @operator)
+
+(infix_operator ["&" "+" "-" "=" ">" "|" "%"] @operator)
+
+(signed_number ["+" "-"] @operator)
+
+["*" "#" "::" "<-"] @operator
 
 ; Attributes
 ;-----------
