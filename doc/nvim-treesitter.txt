@@ -560,6 +560,10 @@ For regexes.
                                                            *hl-TSStringEscape*
 For escape characters within a string.
 
+`TSSymbol`
+                                                                 *hl-TSSymbol*
+For identifiers referring to symbols or atoms.
+
 `TSTag`
                                                                    *hl-TSTag*
 Tags like html tag names.

@@ -54,6 +54,7 @@ highlight default link TSConstructor Special
 highlight default link TSAnnotation PreProc
 highlight default link TSAttribute PreProc
 highlight default link TSNamespace Include
+highlight default link TSSymbol Identifier
 
 highlight default link TSConditional Conditional
 highlight default link TSRepeat Repeat

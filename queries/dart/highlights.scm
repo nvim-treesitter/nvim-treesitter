@@ -144,7 +144,7 @@
     ; (hex_floating_point_literal)
 ] @number
 
-(symbol_literal) @string.special
+(symbol_literal) @symbol
 (string_literal) @string
 (true) @boolean
 (false) @boolean
