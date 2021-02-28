@@ -292,6 +292,16 @@ list.toml = {
   maintainers = {"@tk-shirasaka"},
 }
 
+list.glimmer = {
+  install_info = {
+    url = "https://github.com/alexlafroscia/tree-sitter-glimmer",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  readme_name = "Glimmer and Ember",
+  maintainers = { "@alexlafroscia" },
+  filetype = "handlebars"
+}
+
 list.vue = {
   install_info = {
     url = "https://github.com/ikatyang/tree-sitter-vue",
