@@ -143,6 +143,7 @@ effect on highlighting. We will work on improving highlighting in the near futur
 @type
 @type.builtin
 @namespace for identifiers referring to namespaces
+@symbol for identifiers referring to symbols
 @attribute for e.g. Python decorators
 ```
 

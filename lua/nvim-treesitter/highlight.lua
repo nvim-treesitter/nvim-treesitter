@@ -71,6 +71,8 @@ hlmap["string"] = "TSString"
 hlmap["string.regex"] = "TSStringRegex"
 hlmap["string.escape"] = "TSStringEscape"
 
+hlmap["symbol"] = "TSSymbol"
+
 hlmap["tag"] = "TSTag"
 hlmap["tag.delimiter"] = "TSTagDelimiter"
 

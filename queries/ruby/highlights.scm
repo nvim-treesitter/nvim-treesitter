@@ -144,7 +144,7 @@
  (simple_symbol)
  (delimited_symbol)
  (hash_key_symbol)
- ] @property
+ ] @symbol
 
 (pair key: (hash_key_symbol) ":" @constant)
 (regex) @string.regex
