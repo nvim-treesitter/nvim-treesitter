@@ -1,3 +1,7 @@
+;; By @alexlafroscia (https://github.com/alexlafroscia/tree-sitter-glimmer)
+;; Licensed under MIT
+;; Modified for nvim-treesitter
+
 ; Tags that start with a lower case letter are HTML tags
 ((tag_name) @tag
   (#match? @tag "^[a-z]"))
