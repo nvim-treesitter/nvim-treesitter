@@ -14,7 +14,7 @@
 ; == Mustache Statements ===
 
 ; Hightlight the whole statement, to color brackets and separators
-(mustache_statement) @tag
+(mustache_statement) @tag.delimiter
 
 ; Generic identifiers are variables
 (identifier) @variable
@@ -33,4 +33,4 @@
   ">"
   "</"
   "/>"
-] @tag
+] @tag.delimiter
