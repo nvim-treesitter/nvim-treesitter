@@ -25,3 +25,8 @@
   "["
   "]"
 ] @branch
+
+[
+  (comment)
+  (template_string)
+] @ignore

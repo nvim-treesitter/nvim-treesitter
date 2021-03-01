@@ -14,3 +14,5 @@
   ">"
   "/>"
 ] @branch
+
+(comment) @ignore

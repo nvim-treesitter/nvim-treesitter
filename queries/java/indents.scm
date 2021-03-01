@@ -18,3 +18,5 @@
   "["
   "]"
 ] @branch
+
+(comment) @ignore

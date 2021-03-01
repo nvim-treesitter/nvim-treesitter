@@ -14,3 +14,8 @@
   "{"
   "}"
 ] @branch
+
+[
+  (comment)
+  (preproc_function_def)
+] @ignore

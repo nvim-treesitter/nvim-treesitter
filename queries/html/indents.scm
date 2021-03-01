@@ -7,3 +7,5 @@
   ">"
   "/>"
 ] @branch
+
+(comment) @ignore
