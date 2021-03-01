@@ -14,6 +14,7 @@
   "union"
   "volatile"
   "goto"
+  "register"
 ] @keyword
 
 [
