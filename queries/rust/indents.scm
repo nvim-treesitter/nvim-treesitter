@@ -26,3 +26,8 @@
   "{"
   "}"
 ] @branch
+
+[
+  (line_comment)
+  (raw_string_literal)
+] @ignore

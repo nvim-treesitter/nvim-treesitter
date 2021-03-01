@@ -20,3 +20,5 @@
   "{"
   "}"
 ] @branch
+
+(comment) @ignore

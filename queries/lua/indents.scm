@@ -27,3 +27,5 @@
   (else)
   (elseif)
 ] @branch
+
+(comment) @ignore

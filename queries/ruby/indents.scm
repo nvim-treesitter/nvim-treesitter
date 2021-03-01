@@ -10,3 +10,5 @@
   (elsif)
   "end"
 ] @branch
+
+(comment) @ignore
