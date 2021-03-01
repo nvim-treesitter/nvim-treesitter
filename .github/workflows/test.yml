@@ -1,0 +1,53 @@
+name: Parser compilation and tests
+
+on: [push, pull_request]
+
+jobs:
+  check_compilation_unix_like:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        cc: [ gcc, clang ]
+        exclude:
+          - os: macos-latest
+            cc: gcc
+
+        include:
+          - os: windows-latest
+            cc: cl
+
+          - os: macos-latest
+            cc: gcc-10
+
+    name: Parser compilation
+    runs-on: ${{ matrix.os }}
+    env:
+      CC: ${{ matrix.cc }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ilammy/msvc-dev-cmd@v1.5.0
+
+      - name: Install and prepare Neovim
+        run: |
+          bash ./scripts/ci-install-${{ matrix.os }}.sh
+
+      - name: Compile parsers Unix like
+        if: matrix.os != 'windows-latest'
+        run: |
+          nvim --headless -c "TSInstallSync all" -c "q"
+
+      - name: Compile parsers Windows
+        if: matrix.os == 'windows-latest'
+        run: |
+          C:\\tools\\neovim\\Neovim\\bin\\nvim.exe --headless -c "TSInstallSync all" -c "q"
+
+      - name: Post compile Windows
+        if: matrix.os == 'windows-latest'
+        run: cp -r ~/AppData/Local/nvim/pack/nvim-treesitter/start/nvim-treesitter/parser/* parser
+        shell: bash
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: parsers-${{ matrix.os }}-${{ matrix.cc }}-x86_64
+          path: parser/*
+
