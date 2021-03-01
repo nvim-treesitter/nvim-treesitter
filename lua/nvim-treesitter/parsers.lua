@@ -17,7 +17,11 @@ local list = setmetatable({}, {
 
     rawset(table, parsername, setmetatable(parserconfig, {
       __newindex = function(parserconfigtable, key, value)
-        rawset(parserconfigtable, key, value)
+        if key == "used_by" then
+          ft_to_parsername[value] = parsername
+        else
+          rawset(parserconfigtable, key, value)
+        end
       end
     }))
 
