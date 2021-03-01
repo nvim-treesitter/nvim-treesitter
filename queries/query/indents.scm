@@ -3,10 +3,6 @@
 ] @indent
 
 [
-  (list)
-]
-
-[
   "["
   "]"
 ] @branch
