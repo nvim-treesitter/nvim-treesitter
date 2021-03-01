@@ -109,10 +109,15 @@ function M.select_mv_cmd(from, to, cwd)
 end
 
 function M.select_download_commands(repo, project_name, cache_folder, revision)
-  if vim.fn.executable('tar') == 1 and vim.fn.executable('curl') == 1 and repo.url:find("github.com", 1, true) then
+
+  local is_github = repo.url:find("github.com", 1, true)
+  local is_gitlab = repo.url:find("gitlab.com", 1, true)
+
+  if vim.fn.executable('tar') == 1 and vim.fn.executable('curl') == 1 and (is_github or is_gitlab) then
 
     revision = revision or repo.branch or "master"
     local path_sep = utils.get_path_sep()
+
     return {
       M.select_install_rm_cmd(cache_folder, project_name..'-tmp'),
       {
@@ -122,7 +127,8 @@ function M.select_download_commands(repo, project_name, cache_folder, revision)
         opts = {
           args = {
             '-L', -- follow redirects
-            repo.url.."/archive/"..revision..".tar.gz",
+            is_github and repo.url.."/archive/"..revision..".tar.gz"
+                      or repo.url.."/-/archive/"..revision.."/"..project_name.."-"..revision..".tar.gz",
             '--output',
             project_name..".tar.gz"
           },
