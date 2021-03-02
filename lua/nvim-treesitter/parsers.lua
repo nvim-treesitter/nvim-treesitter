@@ -317,7 +317,7 @@ list.vue = {
 
 list.jsonc = {
   install_info = {
-    url = "https://gitlab.com/WhyNotHugo/tree-sitter-jsonc",
+    url = "https://gitlab.com/WhyNotHugo/tree-sitter-jsonc.git",
     files = { "src/parser.c" },
   },
   readme_name = "JSON with comments",

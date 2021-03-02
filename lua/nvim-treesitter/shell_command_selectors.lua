@@ -117,6 +117,7 @@ function M.select_download_commands(repo, project_name, cache_folder, revision)
 
     revision = revision or repo.branch or "master"
     local path_sep = utils.get_path_sep()
+    local url = repo.url:gsub('.git$', '')
 
     return {
       M.select_install_rm_cmd(cache_folder, project_name..'-tmp'),
@@ -127,8 +128,8 @@ function M.select_download_commands(repo, project_name, cache_folder, revision)
         opts = {
           args = {
             '-L', -- follow redirects
-            is_github and repo.url.."/archive/"..revision..".tar.gz"
-                      or repo.url.."/-/archive/"..revision.."/"..project_name.."-"..revision..".tar.gz",
+            is_github and url.."/archive/"..revision..".tar.gz"
+                      or url.."/-/archive/"..revision.."/"..project_name.."-"..revision..".tar.gz",
             '--output',
             project_name..".tar.gz"
           },
@@ -151,7 +152,7 @@ function M.select_download_commands(repo, project_name, cache_folder, revision)
         },
       },
       M.select_rm_file_cmd(cache_folder..path_sep..project_name..".tar.gz"),
-      M.select_mv_cmd(utils.join_path(project_name..'-tmp', repo.url:match('[^/]-$')..'-'..revision),
+      M.select_mv_cmd(utils.join_path(project_name..'-tmp', url:match('[^/]-$')..'-'..revision),
         project_name,
         cache_folder),
       M.select_install_rm_cmd(cache_folder, project_name..'-tmp')
