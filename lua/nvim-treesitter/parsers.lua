@@ -510,10 +510,29 @@ end
 
 function M.get_parser(bufnr, lang)
   local buf = bufnr or api.nvim_get_current_buf()
-  local lang = lang or M.get_buf_lang(buf)
+  lang = lang or M.get_buf_lang(buf)
 
   if M.has_parser(lang) then
-    return ts.get_parser(bufnr, lang)
+    -- Has to be here to prevent circular references.
+    --    This is how you can send configuration to the parser from your setup.
+    local parser_configs = require'nvim-treesitter.configs'.get_parsers_config()
+
+    -- Grab all of the injection parser configuration and set it to the queries.
+    --  You might think: Why do this for all the langs?
+    --  Well, language tree can have multiple languages inside of it.
+    --  So you better hope that you've got the right language set up for all of them
+    --  even if youre parent is the only one you're configuring right now.
+    --
+    --  The reason I have them as `injections` for the key in the configuration is that
+    --  its super confusing that `injections` are just `queries` for LanguageTree.
+    --
+    --  So I'm being more specific :)
+    local opts = { queries = {} }
+    for parser_name, config in pairs(parser_configs) do
+      opts.queries[parser_name] = config.injections
+    end
+
+    return ts.get_parser(bufnr, lang, opts)
   end
 end
 

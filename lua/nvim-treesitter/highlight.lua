@@ -97,11 +97,13 @@ function M.attach(bufnr, lang)
     hlmap[k] = v
   end
 
-  local opts = {}
+  local opts = nil
   if config.queries then
     if config.queries[lang] then
-      opts.queries = {
-        [lang] = config.queries[lang]
+      opts = {
+        queries = {
+          [lang] = config.queries[lang]
+        }
       }
     end
   end

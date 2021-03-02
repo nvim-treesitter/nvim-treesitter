@@ -270,6 +270,7 @@ end
 -- @param user_data module overrides
 function M.setup(user_data)
   config.modules = vim.tbl_deep_extend('force', config.modules, user_data)
+  config.parsers = user_data.parsers or {}
 
   local ensure_installed = user_data.ensure_installed or {}
   if #ensure_installed > 0 then
@@ -409,6 +410,10 @@ end
 
 function M.get_update_strategy()
   return config.update_strategy
+end
+
+function M.get_parsers_config()
+  return config.parsers
 end
 
 return M
