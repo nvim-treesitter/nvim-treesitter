@@ -97,7 +97,16 @@ function M.attach(bufnr, lang)
     hlmap[k] = v
   end
 
-  ts.highlighter.new(parser, {})
+  local opts = {}
+  if config.queries then
+    if config.queries[lang] then
+      opts.queries = {
+        [lang] = config.queries[lang]
+      }
+    end
+  end
+
+  ts.highlighter.new(parser, opts)
 end
 
 function M.detach(bufnr)
