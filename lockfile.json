@@ -134,9 +134,6 @@
   "teal": {
     "revision": "fc73205515276be4ff95dfc5daa0fc67e18bfbde"
   },
-  "test": {
-    "revision": "b76dd0d07f66dac5abf4641cab7a1d6067039b7f"
-  },
   "toml": {
     "revision": "084da152d85cb8c4bbbe0ab5f3f1f9e5bfb77d3c"
   },
