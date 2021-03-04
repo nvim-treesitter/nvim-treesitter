@@ -3,10 +3,10 @@
     "revision": "8ece09ca4c0b5e59b124cd19fa92c76b1a9e9dd4"
   },
   "c": {
-    "revision": "fa408bc9e77f4b770bd1db984ca00c901ddf95fc"
+    "revision": "5aa0bbbfc41868a3727b7a89a90e9f52e0964b2b"
   },
   "c_sharp": {
-    "revision": "21ec3c3deb4365085aa353fadbc6a616d7769f9f"
+    "revision": "70fd2cba742506903589b5e046c32e0e3e06404a"
   },
   "clojure": {
     "revision": "f09652f095be878df8a87a57dcbfa07094316253"
@@ -27,7 +27,7 @@
     "revision": "14055bd46b383d18ebc9db219f8f6b048455ae04"
   },
   "elm": {
-    "revision": "b748941d615e1c4b84a0f8a1f3f3c07bc478c540"
+    "revision": "9c4987845ec240bb3b7fe72db05b42189b060802"
   },
   "erlang": {
     "revision": "7b436e1ca50f0002f6765a9a2a00f6156b2cc881"
@@ -39,22 +39,22 @@
     "revision": "bc4074ed0aa195d11b8c78da0e1f4a5509566844"
   },
   "glimmer": {
-    "revision": "9896184870d61511bbcb8b3203b4377a2149a0bc"
+    "revision": "423389c260ba7b29edf7e65b863e3e18ca9b822a"
   },
   "go": {
-    "revision": "dadfd9c9aab2630632e61cfce645c13c35aa092f"
+    "revision": "e41dd569d91eb58725baa7089c34fc3d785b2978"
   },
   "graphql": {
     "revision": "c5cd49b95c5c121340f46a7b1a65ad44bc8576e6"
   },
   "haskell": {
-    "revision": "2a0aa1cb5f1b787a4056a29fa0791e87846e33fb"
+    "revision": "79f8250c61ca4fbf8dec8117a096795618e261d5"
   },
   "html": {
     "revision": "7f442e1c6163d450c69c75c7a621badc3a0ea98f"
   },
   "java": {
-    "revision": "16c07a726c34c9925b3e28716b2d6d60e3643252"
+    "revision": "e9cf7d286c428aceda92a551b7d326599d38ba4c"
   },
   "javascript": {
     "revision": "852f11b394804ac2a8986f8bcaafe77753635667"
@@ -72,7 +72,7 @@
     "revision": "6a0863f1ce3fcf6f99dc0addb7886dcbd27c5a48"
   },
   "kotlin": {
-    "revision": "b72933c0c0ff25f2de35bb3acabfe6979333187e"
+    "revision": "bfb1e2776b48139caa3125e2791c27340bfa34c2"
   },
   "ledger": {
     "revision": "efdbcd8c117024325aa60e7e12e418acbca8c673"
@@ -93,16 +93,16 @@
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
   },
   "php": {
-    "revision": "b0c0367d4b7058921fdc4ba11e257441a64ab809"
+    "revision": "ba231f9844e5a1bf60e1cb72c34c0a431239585a"
   },
   "python": {
-    "revision": "3196e288650992bca2399dda15ac703c342a22bb"
+    "revision": "3466c34c6aa5dd8d9328479db9c6b4f3320f42e2"
   },
   "ql": {
     "revision": "f3738c138ba753eed5da386c7321cb139d185d39"
   },
   "query": {
-    "revision": "8145600682f96bd1a574565bae97d660e5eac08a"
+    "revision": "29b3391285c89c8e3c51264d61c0b21813f41501"
   },
   "regex": {
     "revision": "be2e415b5716615530234d179dc27c32b7a1d86b"
@@ -111,7 +111,7 @@
     "revision": "63b8e3381d1105fc54c40ef54f8b7c95e27f2bc8"
   },
   "ruby": {
-    "revision": "32cd5a04adb4accb0c121f037ab59df3c3488228"
+    "revision": "fd087c78c7c7899704164fd0d0cbec9f8b28acd6"
   },
   "rust": {
     "revision": "1be73c282bb6d9fd2fbb55945b313f9527cad060"
@@ -126,7 +126,7 @@
     "revision": "45d356487799dab0ebc58cc8922aa145264063f8"
   },
   "svelte": {
-    "revision": "5d27580b15d778fd329c59bf6bca900bb736c17c"
+    "revision": "a5f16a5995b0c1ab2e3d09ff074e02bcc8c8e5d1"
   },
   "swift": {
     "revision": "a22fa5e19bae50098e2252ea96cba3aba43f4c58"
