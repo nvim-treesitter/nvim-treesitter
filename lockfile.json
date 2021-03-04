@@ -39,7 +39,7 @@
     "revision": "bc4074ed0aa195d11b8c78da0e1f4a5509566844"
   },
   "glimmer": {
-    "revision": "423389c260ba7b29edf7e65b863e3e18ca9b822a"
+    "revision": "e4f9f42e205b212e8a9b7e7d102211595ea63bfa"
   },
   "go": {
     "revision": "e41dd569d91eb58725baa7089c34fc3d785b2978"
@@ -48,7 +48,7 @@
     "revision": "c5cd49b95c5c121340f46a7b1a65ad44bc8576e6"
   },
   "haskell": {
-    "revision": "79f8250c61ca4fbf8dec8117a096795618e261d5"
+    "revision": "98444460c4281c503c714ee4dcd424bda668d317"
   },
   "html": {
     "revision": "7f442e1c6163d450c69c75c7a621badc3a0ea98f"
@@ -57,7 +57,7 @@
     "revision": "e9cf7d286c428aceda92a551b7d326599d38ba4c"
   },
   "javascript": {
-    "revision": "852f11b394804ac2a8986f8bcaafe77753635667"
+    "revision": "efd8cc9ee8eb919c2ca0f0eebaeb8f39557d8a8a"
   },
   "jsdoc": {
     "revision": "77e7785739ad3e90c3de8ed5a55418a5fd2b8225"
@@ -134,17 +134,20 @@
   "teal": {
     "revision": "fc73205515276be4ff95dfc5daa0fc67e18bfbde"
   },
+  "test": {
+    "revision": "b76dd0d07f66dac5abf4641cab7a1d6067039b7f"
+  },
   "toml": {
     "revision": "084da152d85cb8c4bbbe0ab5f3f1f9e5bfb77d3c"
   },
   "tsx": {
-    "revision": "73afadbd117a8e8551758af9c3a522ef46452119"
+    "revision": "6231a793ef596c4e8162cf569291a28f2169223d"
   },
   "turtle": {
     "revision": "d51424b75ef670643c6e11a57d0748c411447e18"
   },
   "typescript": {
-    "revision": "73afadbd117a8e8551758af9c3a522ef46452119"
+    "revision": "6231a793ef596c4e8162cf569291a28f2169223d"
   },
   "verilog": {
     "revision": "ad551aae2649da56582bc0557478a7dc979c0be3"
