@@ -63,9 +63,8 @@
     (parameterized_identifier) @type))
 
 ;; Symbol expressions (:my-wanna-be-lisp-keyword)
-;; Same highlight as in clojure
 (quote_expression
- (identifier)) @type
+ (identifier)) @symbol
 
 ;; Parsing error! foo (::Type) get's parsed as two quote expressions
 (argument_list 
