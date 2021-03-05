@@ -12,6 +12,16 @@ local M = {}
 
 local function install_health()
   health_start('Installation')
+  if fn.executable('tree-sitter') == 0 then
+    health_error('`tree-sitter` executable not found')
+  else
+    local handle = io.popen('tree-sitter  -V')
+    local result = handle:read("*a")
+    handle:close()
+    local version = vim.split(result,'\n')[1]:match('[^tree%psitter].*')
+    health_ok('`tree-sitter` version '..version)
+  end
+
   if fn.executable('git') == 0 then
     health_error('`git` executable not found.', {
       'Install it with your package manager.',
