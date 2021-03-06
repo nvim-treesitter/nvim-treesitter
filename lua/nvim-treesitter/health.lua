@@ -19,7 +19,7 @@ local function install_health()
     local result = handle:read("*a")
     handle:close()
     local version = vim.split(result,'\n')[1]:match('[^tree%psitter].*')
-    health_ok('`tree-sitter` version '..version)
+    health_ok('`tree-sitter` found '..version .. '(parser generator, used for :TSInstallFromGrammar)')
   end
 
   if fn.executable('git') == 0 then
