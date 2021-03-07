@@ -174,6 +174,19 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
     vim.list_extend(command_list, shell.select_download_commands(repo, project_name, cache_folder, revision))
   end
   if generate_from_grammar then
+    if repo.generate_requires_npm then
+      vim.list_extend(command_list, {
+        {
+          cmd = 'npm',
+          info = 'Installing NPM dependencies of '..lang..' parser',
+          err = 'Error during `npm install` (required for parser generation of '..lang..' with npm dependencies)',
+          opts = {
+            args = {'install'},
+            cwd = compile_location
+          }
+        }
+      })
+    end
     vim.list_extend(command_list, {
       {
         cmd = 'tree-sitter',
