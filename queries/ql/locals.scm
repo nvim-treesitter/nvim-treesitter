@@ -2,7 +2,8 @@
 (module) @scope
 (dataclass) @scope
 (datatype) @scope
-(classMember (body)  @scope)
+;; TODO does not work
+;(classMember (body)  @scope)
 (memberPredicate (body)  @scope)
 (classlessPredicate (body)  @scope)
 (quantified (conjunction) @scope)
