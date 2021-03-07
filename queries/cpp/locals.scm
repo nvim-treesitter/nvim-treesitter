@@ -53,10 +53,9 @@
   name: (scoped_identifier
     name: (identifier) @definition.function)) @scope
 
-;; TODO!!
-;(function_declarator
-  ;declarator: (scoped_identifier
-                ;name: (type_identifier) @definition.function)) @scope
+(function_declarator
+  declarator: (scoped_identifier
+                name: (identifier) @definition.function)) @scope
 
 (field_declaration
         declarator: (function_declarator
@@ -69,6 +68,3 @@
   body: (_) @scope)
 
 (catch_clause) @scope
-
-;(destructor_name
-  ;name: (_) @constructor)
