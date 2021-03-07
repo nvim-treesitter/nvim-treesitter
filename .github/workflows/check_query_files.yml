@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
   luacheck:
     name: Check Query Files
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
 
@@ -13,12 +13,6 @@ jobs:
         run: |
           sudo apt-get update
           sudo add-apt-repository universe
-          sudo apt-get install -y npm
-          mkdir ~/.npm-global
-          npm config set prefix '~/.npm-global'
-          export PATH=~/.npm-global/bin:$PATH
-          npm i -g tree-sitter
-          sudo cp ~/.npm-global/bin/tree-sitter /usr/bin/
           wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
           chmod u+x nvim.appimage
           mkdir -p ~/.local/share/nvim/site/pack/nvim-treesitter/start
