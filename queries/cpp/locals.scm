@@ -6,7 +6,6 @@
                 (identifier) @definition.parameter))
 (optional_parameter_declaration
   declarator: (identifier) @definition.parameter)
-
 ;; Class / struct defintions
 (class_specifier) @scope
 
