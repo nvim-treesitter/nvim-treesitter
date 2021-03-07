@@ -75,7 +75,8 @@ list.rust = {
 list.ledger = {
   install_info = {
     url = "https://github.com/cbarrete/tree-sitter-ledger",
-    files = { "src/parser.c" }
+    files = { "src/parser.c" },
+    requires_generate_from_grammar  = true,
   },
   maintainers = {"@cbarrete"},
 }
@@ -108,6 +109,7 @@ list.graphql = {
   install_info = {
     url = "https://github.com/bkegley/tree-sitter-graphql",
     files = { "src/parser.c" },
+    requires_generate_from_grammar  = true,
   },
   maintainers = {"@bkegley"},
 }
@@ -150,6 +152,7 @@ list.kotlin = {
   install_info = {
     url = "https://github.com/QthCN/tree-sitter-kotlin",
     files = { "src/parser.c" },
+    requires_generate_from_grammar  = true,
   },
   maintainers = {"@tormodatt"},
 }
@@ -191,6 +194,7 @@ list.erlang = {
     url = "https://github.com/AbstractMachinesLab/tree-sitter-erlang",
     files = { "src/parser.c" },
     branch = "main",
+    requires_generate_from_grammar  = true,
   },
   maintainers = { '@ostera' },
 }
@@ -199,7 +203,8 @@ list.ocaml = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ocaml",
     files = { "src/parser.c", "src/scanner.cc" },
-    location = "tree-sitter-ocaml/ocaml"
+    location = "tree-sitter-ocaml/ocaml",
+    requires_generate_from_grammar  = true,
   },
   maintainers = {'@undu'},
 }
@@ -208,7 +213,8 @@ list.ocaml_interface = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ocaml",
     files = { "src/parser.c", "src/scanner.cc" },
-    location = "tree-sitter-ocaml_interface/interface"
+    location = "tree-sitter-ocaml_interface/interface",
+    requires_generate_from_grammar  = true,
   },
   maintainers = {'@undu'},
   filetype = 'ocamlinterface'
@@ -226,6 +232,7 @@ list.swift = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-swift",
     files = { "src/parser.c" },
+    requires_generate_from_grammar  = true,
   }
 }
 
@@ -269,6 +276,7 @@ list.supercollider = {
     url = "https://github.com/madskjeldgaard/tree-sitter-supercollider",
     files = {"src/parser.c", "src/scanner.c"},
     branch = "main",
+    requires_generate_from_grammar  = true,
   },
   maintainers = {"@madskjeldgaard"},
   filetype = "supercollider",
@@ -293,6 +301,7 @@ list.toml = {
   install_info = {
     url = "https://github.com/ikatyang/tree-sitter-toml",
     files = { "src/parser.c", "src/scanner.c" },
+    requires_generate_from_grammar  = true,
   },
   maintainers = {"@tk-shirasaka"},
 }
@@ -302,6 +311,7 @@ list.glimmer = {
     url = "https://github.com/alexlafroscia/tree-sitter-glimmer",
     files = { "src/parser.c", "src/scanner.c" },
     branch = 'main',
+    requires_generate_from_grammar  = true,
   },
   readme_name = "Glimmer and Ember",
   maintainers = { "@alexlafroscia" },
@@ -312,6 +322,7 @@ list.vue = {
   install_info = {
     url = "https://github.com/ikatyang/tree-sitter-vue",
     files = { "src/parser.c", "src/scanner.cc" },
+    requires_generate_from_grammar  = true,
   },
   maintainers = {"@WhyNotHugo"},
 }
@@ -320,6 +331,7 @@ list.jsonc = {
   install_info = {
     url = "https://gitlab.com/WhyNotHugo/tree-sitter-jsonc.git",
     files = { "src/parser.c" },
+    requires_generate_from_grammar  = true,
   },
   readme_name = "JSON with comments",
   maintainers = {"@WhyNotHugo"},
@@ -336,6 +348,7 @@ list.yaml = {
   install_info = {
     url = "https://github.com/ikatyang/tree-sitter-yaml",
     files = { "src/parser.c", "src/scanner.cc" },
+    requires_generate_from_grammar  = true,
   }
 }
 
@@ -343,6 +356,7 @@ list.nix = {
   install_info = {
     url = "https://github.com/cstrahan/tree-sitter-nix",
     files = { "src/parser.c", "src/scanner.c" },
+    requires_generate_from_grammar  = true,
   },
   maintainers = {"@leo60228"},
 }
@@ -351,6 +365,7 @@ list.dart = {
   install_info = {
     url = "https://github.com/UserNobody14/tree-sitter-dart",
     files = { "src/parser.c", "src/scanner.c" },
+    requires_generate_from_grammar  = true,
   },
   maintainers = {"@Akin909"},
 }
@@ -367,6 +382,7 @@ list.fennel = {
   install_info = {
     url = "https://github.com/travonted/tree-sitter-fennel",
     files = { "src/parser.c", "src/scanner.c" },
+    requires_generate_from_grammar  = true,
   },
   maintainers = {'@TravonteD'},
 }
@@ -375,6 +391,7 @@ list.teal = {
   install_info = {
     url = "https://github.com/euclidianAce/tree-sitter-teal",
     files = { "src/parser.c", "src/scanner.c" },
+    requires_generate_from_grammar  = true,
   },
   maintainers = {'@euclidianAce'},
 }
@@ -415,7 +432,8 @@ list.comment = {
 list.jsdoc = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-jsdoc",
-    files = { "src/parser.c" }
+    files = { "src/parser.c" },
+    requires_generate_from_grammar  = true,
   },
   maintainers = {"@steelsojka"},
 }
@@ -434,6 +452,7 @@ list.sparql = {
     url = "https://github.com/BonaBeavis/tree-sitter-sparql",
     files = { "src/parser.c" },
     branch = "main",
+    requires_generate_from_grammar  = true,
   },
   maintainers = { "@bonabeavis" },
 }
@@ -442,6 +461,7 @@ list.gdscript = {
   install_info = {
     url = "https://github.com/PrestonKnopp/tree-sitter-gdscript",
     files = { "src/parser.c", "src/scanner.cc" },
+    requires_generate_from_grammar  = true,
   },
   readme_name = "Godot (gdscript)",
   maintainers = {"not @tjdevries"},
@@ -452,6 +472,7 @@ list.turtle = {
     url = "https://github.com/BonaBeavis/tree-sitter-turtle",
     files = { "src/parser.c" },
     branch = "main",
+    requires_generate_from_grammar  = true,
   },
   maintainers = { "@bonabeavis" },
 }
@@ -461,6 +482,7 @@ list.devicetree = {
     url = "https://github.com/joelspadin/tree-sitter-devicetree",
     files = { "src/parser.c" },
     branch = "main",
+    requires_generate_from_grammar  = true,
   },
   filetype = 'dts',
   maintainers = { "@jedrzejboczar" },
