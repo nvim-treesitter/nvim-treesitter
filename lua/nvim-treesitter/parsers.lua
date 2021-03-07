@@ -317,7 +317,6 @@ list.glimmer = {
     url = "https://github.com/alexlafroscia/tree-sitter-glimmer",
     files = { "src/parser.c", "src/scanner.c" },
     branch = 'main',
-    requires_generate_from_grammar  = true,
   },
   readme_name = "Glimmer and Ember",
   maintainers = { "@alexlafroscia" },
