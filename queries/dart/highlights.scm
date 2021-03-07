@@ -2,8 +2,9 @@
 
 ; Methods
 ; --------------------
-(function_type
-  name: (identifier) @method)
+;; TODO: does not work
+;(function_type
+  ;name: (identifier) @method)
 (super) @function
 
 ; Annotations
