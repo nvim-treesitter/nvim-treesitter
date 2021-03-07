@@ -12,9 +12,8 @@
 "protected"
 "public"
 "type"
+"readonly"
 ] @keyword
-
-(readonly) @keyword
 
 ; types
 
