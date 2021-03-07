@@ -58,7 +58,8 @@ list.clojure = {
 list.cpp = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-cpp",
-    files = { "src/parser.c", "src/scanner.cc" }
+    files = { "src/parser.c", "src/scanner.cc" },
+    generate_requires_npm = true,
   },
   used_by = { "cuda" },
   maintainers = {"@theHamsta"},
@@ -148,14 +149,16 @@ list.java = {
   maintainers = {"@p00f"},
 }
 
-list.kotlin = {
-  install_info = {
-    url = "https://github.com/QthCN/tree-sitter-kotlin",
-    files = { "src/parser.c" },
-    requires_generate_from_grammar  = true,
-  },
-  maintainers = {"@tormodatt"},
-}
+---Parser generation from source does not terminate in reasonable time
+--list.kotlin = {
+  --install_info = {
+    --url = "https://github.com/QthCN/tree-sitter-kotlin",
+    --files = { "src/parser.c" },
+    --requires_generate_from_grammar  = true,
+    --generate_requires_npm = true,
+  --},
+  --maintainers = {"@tormodatt"},
+--}
 
 list.html = {
   install_info = {
@@ -249,7 +252,8 @@ list.typescript = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-typescript",
     files = { "src/parser.c", "src/scanner.c" },
-    location = "tree-sitter-typescript/typescript"
+    location = "tree-sitter-typescript/typescript",
+    generate_requires_npm = true,
   },
   maintainers = {"@steelsojka"},
 }
@@ -258,7 +262,8 @@ list.tsx = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-typescript",
     files = { "src/parser.c", "src/scanner.c" },
-    location = "tree-sitter-tsx/tsx"
+    location = "tree-sitter-tsx/tsx",
+    generate_requires_npm = true,
   },
   used_by = { "typescript.tsx" },
   filetype = 'typescriptreact'
@@ -302,6 +307,7 @@ list.toml = {
     url = "https://github.com/ikatyang/tree-sitter-toml",
     files = { "src/parser.c", "src/scanner.c" },
     requires_generate_from_grammar  = true,
+    generate_requires_npm = true,
   },
   maintainers = {"@tk-shirasaka"},
 }
@@ -332,6 +338,7 @@ list.jsonc = {
     url = "https://gitlab.com/WhyNotHugo/tree-sitter-jsonc.git",
     files = { "src/parser.c" },
     requires_generate_from_grammar  = true,
+    generate_requires_npm = true,
   },
   readme_name = "JSON with comments",
   maintainers = {"@WhyNotHugo"},
@@ -404,14 +411,18 @@ list.ql = {
   maintainers = {'@pwntester'},
 }
 
+---Parser generation from source takes a looong time!
 list.verilog = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-verilog",
     files = { "src/parser.c" },
+    requires_generate_from_grammar  = true,
+    generate_requires_npm = true,
   },
   used_by = { "systemverilog" },
   maintainers = { "@zegervdv" },
 }
+
 -- Parsers for injections
 list.regex = {
   install_info = {
@@ -491,8 +502,9 @@ list.devicetree = {
 list.svelte = {
   install_info = {
     url = "https://github.com/Himujjal/tree-sitter-svelte",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
     branch = "master",
+    requires_generate_from_grammar  = true,
   },
   maintainers = { "@elianiva" },
 }
