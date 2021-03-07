@@ -337,7 +337,6 @@ list.jsonc = {
   install_info = {
     url = "https://gitlab.com/WhyNotHugo/tree-sitter-jsonc.git",
     files = { "src/parser.c" },
-    requires_generate_from_grammar  = true,
     generate_requires_npm = true,
   },
   readme_name = "JSON with comments",
