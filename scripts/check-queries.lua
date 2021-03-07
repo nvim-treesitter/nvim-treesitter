@@ -50,6 +50,8 @@ local function do_check()
     end
   end
   if last_error then
+    print()
+    print("Last error: ")
     error(last_error)
   end
 end

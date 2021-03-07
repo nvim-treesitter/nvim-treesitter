@@ -23,7 +23,8 @@
 ; Generic identifiers are variables
 (identifier) @variable
 ; Helpers are functions
-(helper_identifier) @function
+;TODO: does not exist
+;;(helper_identifier) @function
 
 (comment_statement) @comment
 

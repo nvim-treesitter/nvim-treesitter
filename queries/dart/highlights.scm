@@ -74,8 +74,9 @@
   name: (identifier) @type)
 (constructor_signature
   name: (identifier) @type)
-(type_identifier
-  (identifier) @type)
+;; TODO: does not work
+;(type_identifier
+  ;(identifier) @type)
 (scoped_identifier
   scope: (identifier) @type)
 (function_signature
