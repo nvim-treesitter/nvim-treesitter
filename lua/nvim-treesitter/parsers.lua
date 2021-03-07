@@ -49,7 +49,8 @@ list.c = {
 list.clojure = {
   install_info = {
     url = "https://github.com/sogaiu/tree-sitter-clojure",
-    files = { "src/parser.c" }
+    files = { "src/parser.c" },
+    branch = "upgrade-to-ts-0.19.x"
   },
   maintainers = {"@sogaiu"},
 }
