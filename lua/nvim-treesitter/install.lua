@@ -153,6 +153,8 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   end
   local parser_lib_name = install_folder..path_sep..lang..".so"
 
+  generate_from_grammar = repo.requires_generate_from_grammar or generate_from_grammar
+
   if generate_from_grammar and vim.fn.executable('tree-sitter') ~= 1 then
     api.nvim_err_writeln('tree-sitter CLI not found: `tree-sitter` is not executable!')
     return
