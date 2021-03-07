@@ -29,24 +29,28 @@ local function do_check()
   local last_error
 
   for _, lang in pairs(parsers) do
-    for _, query_type in pairs(query_types) do
-      print('Checking '..lang..' '..query_type)
-      local ok, query = pcall(queries.get_query,lang, query_type)
-      if not ok then
-        vim.api.nvim_err_writeln(query)
-        last_error = query
-      else
-        if query then
-          for _, capture in ipairs(query.captures) do
-            if not vim.startswith(capture, "_") -- We ignore things like _helper
-              and captures[query_type]
-              and not capture:find("^[A-Z]") -- Highlight groups
-              and not vim.tbl_contains(captures[query_type], capture) then
-              error(string.format("Invalid capture @%s in %s for %s.", capture, query_type, lang))
+    if parsers.has_parser(lang) then
+      for _, query_type in pairs(query_types) do
+        print('Checking '..lang..' '..query_type)
+        local ok, query = pcall(queries.get_query,lang, query_type)
+        if not ok then
+          vim.api.nvim_err_writeln(query)
+          last_error = query
+        else
+          if query then
+            for _, capture in ipairs(query.captures) do
+              if not vim.startswith(capture, "_") -- We ignore things like _helper
+                and captures[query_type]
+                and not capture:find("^[A-Z]") -- Highlight groups
+                and not vim.tbl_contains(captures[query_type], capture) then
+                error(string.format("Invalid capture @%s in %s for %s.", capture, query_type, lang))
+              end
             end
           end
         end
       end
+    else
+      print("No parser for "..lang.." installed! Skipping...")
     end
   end
   if last_error then
