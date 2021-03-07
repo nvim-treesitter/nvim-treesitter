@@ -13,6 +13,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo add-apt-repository universe
+          sudo apt-get install -y npm
+          npm i -g tree-sitter
           wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
           chmod u+x nvim.appimage
           mkdir -p ~/.local/share/nvim/site/pack/nvim-treesitter/start
