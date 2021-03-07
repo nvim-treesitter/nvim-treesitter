@@ -116,8 +116,9 @@
    "." @punctuation.delimiter
    (identifier) @function)
 
-(field_expression
-   (identifier)
-   (field) @function)
+;; TODO: fix me
+;(field_expression
+   ;(identifier)
+   ;(field) @function)
 
 (parameters (identifier) @parameter)
