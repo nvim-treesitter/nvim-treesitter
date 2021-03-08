@@ -162,6 +162,10 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
 
   if generate_from_grammar and vim.fn.executable('tree-sitter') ~= 1 then
     api.nvim_err_writeln('tree-sitter CLI not found: `tree-sitter` is not executable!')
+    if repo.requires_generate_from_grammar then
+      api.nvim_err_writeln('tree-sitter CLI is needed because `'..lang..'` is marked that it needs '
+                         ..'to be generated from the grammar definitions to be compatible with nvim!')
+    end
     return
   end
   local cc = shell.select_executable(M.compilers)
