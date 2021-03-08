@@ -19,6 +19,5 @@
   ")"
 ] @punctuation.bracket
 
-;; TODO: fix this query
-;((program . (comment) @include)
- ;(#match? @include "^;\ +inherits\ *:"))
+((program . (comment) @include)
+ (#match? @include "^;\ +inherits\ *:"))
