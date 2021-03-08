@@ -370,7 +370,6 @@ list.dart = {
   install_info = {
     url = "https://github.com/UserNobody14/tree-sitter-dart",
     files = { "src/parser.c", "src/scanner.c" },
-    requires_generate_from_grammar  = true,
   },
   maintainers = {"@Akin909"},
 }
@@ -502,7 +501,6 @@ list.svelte = {
     url = "https://github.com/Himujjal/tree-sitter-svelte",
     files = { "src/parser.c", "src/scanner.c" },
     branch = "master",
-    requires_generate_from_grammar  = true,
   },
   maintainers = { "@elianiva" },
 }

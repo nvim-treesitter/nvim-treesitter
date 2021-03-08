@@ -21,7 +21,7 @@
     "revision": "94e10230939e702b4fa3fa2cb5c3bc7173b95d07"
   },
   "dart": {
-    "revision": "9432021ba6e96124ff1b6bd91f79c0a2e3c87cf4"
+    "revision": "de611da5127523380b2d20cbecb3e0379fe450a9"
   },
   "devicetree": {
     "revision": "14055bd46b383d18ebc9db219f8f6b048455ae04"
@@ -126,7 +126,7 @@
     "revision": "45d356487799dab0ebc58cc8922aa145264063f8"
   },
   "svelte": {
-    "revision": "43817cfe3e936859959a897fce411e3982fd2273"
+    "revision": "88ae5f3d3629261095d62aa647d69cae35680e28"
   },
   "swift": {
     "revision": "a22fa5e19bae50098e2252ea96cba3aba43f4c58"
