@@ -1,4 +1,4 @@
-name: Parser compilation and tests
+name: Parser compilation and query file check
 
 on: [push, pull_request]
 
@@ -51,8 +51,8 @@ jobs:
         shell: bash
 
       - name: Check query files (Windows)
-        if: matrix.os != 'windows-latest'
-        run: ./nvim.appimage --headless -c "luafile ./scripts/check-queries.lua" -c "q"
+        if: matrix.os == 'windows-latest'
+        run: C:\\tools\\neovim\\Neovim\\bin\\nvim.exe --headless -c "luafile ./scripts/check-queries.lua" -c "q"
 
       - uses: actions/upload-artifact@v2
         with:
