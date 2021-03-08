@@ -107,8 +107,7 @@
 ; Punctuation
 ;------------
 
-;; TODO: this makes nvim segfault: https://github.com/tree-sitter/tree-sitter/issues/968
-;(attribute ["[@" "]"] @punctuation.special)
+(attribute ["[@" "]"] @punctuation.special)
 (item_attribute ["[@@" "]"] @punctuation.special)
 (floating_attribute ["[@@@" "]"] @punctuation.special)
 (extension ["[%" "]"] @punctuation.special)
