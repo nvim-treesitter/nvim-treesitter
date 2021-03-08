@@ -36,6 +36,10 @@ jobs:
         run: |
           nvim --headless -c "TSInstallSync all" -c "q"
 
+      - name: Check query files (Unix)
+        if: matrix.os != 'windows-latest'
+        run: ./nvim.appimage --headless -c "luafile ./scripts/check-queries.lua" -c "q"
+
       - name: Compile parsers Windows
         if: matrix.os == 'windows-latest'
         run: |
@@ -45,6 +49,10 @@ jobs:
         if: matrix.os == 'windows-latest'
         run: cp -r ~/AppData/Local/nvim/pack/nvim-treesitter/start/nvim-treesitter/parser/* parser
         shell: bash
+
+      - name: Check query files (Windows)
+        if: matrix.os != 'windows-latest'
+        run: ./nvim.appimage --headless -c "luafile ./scripts/check-queries.lua" -c "q"
 
       - uses: actions/upload-artifact@v2
         with:
