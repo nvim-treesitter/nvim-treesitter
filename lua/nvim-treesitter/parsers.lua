@@ -466,6 +466,14 @@ list.svelte = {
   maintainers = { "@elianiva" },
 }
 
+list.r = {
+  install_info = {
+    url = "https://github.com/r-lib/tree-sitter-r",
+    files = { "src/parser.c" }
+  },
+  maintainers = { "@jimhester" },
+}
+
 local M = {
   list = list
 }
