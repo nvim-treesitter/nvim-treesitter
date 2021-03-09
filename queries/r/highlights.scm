@@ -1,8 +1,8 @@
 ; highlights.scm
 
 (call function: (identifier) @function)
-(namespace_get function: (identifier) @function.method)
-(namespace_get_internal function: (identifier) @function.method)
+(namespace_get function: (identifier) @method)
+(namespace_get_internal function: (identifier) @method)
 
 ; Literals
 
@@ -16,7 +16,7 @@
 
 (comment) @comment
 
-(formal_parameters (identifier) @variable.parameter)
+(formal_parameters (identifier) @parameter)
 
 (identifier) @variable
 
