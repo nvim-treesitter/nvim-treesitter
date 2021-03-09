@@ -386,7 +386,6 @@ list.fennel = {
   install_info = {
     url = "https://github.com/travonted/tree-sitter-fennel",
     files = { "src/parser.c", "src/scanner.c" },
-    requires_generate_from_grammar  = true,
   },
   maintainers = {'@TravonteD'},
 }
