@@ -1,4 +1,4 @@
-; inherits: javascript
+; inherits: ecma
 [
 "abstract"
 "declare"
