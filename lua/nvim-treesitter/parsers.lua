@@ -460,7 +460,7 @@ list.devicetree = {
 list.svelte = {
   install_info = {
     url = "https://github.com/Himujjal/tree-sitter-svelte",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
     branch = "master",
   },
   maintainers = { "@elianiva" },
