@@ -407,17 +407,15 @@ list.ql = {
   maintainers = {'@pwntester'},
 }
 
----Parser generation from source takes a looong time and causes conflicts with 0.19.2
---list.verilog = {
-  --install_info = {
-    --url = "https://github.com/tree-sitter/tree-sitter-verilog",
-    --files = { "src/parser.c" },
-    --requires_generate_from_grammar  = true,
-    --generate_requires_npm = true,
-  --},
-  --used_by = { "systemverilog" },
-  --maintainers = { "@zegervdv" },
---}
+list.verilog = {
+  install_info = {
+    url = "https://github.com/tree-sitter/tree-sitter-verilog",
+    files = { "src/parser.c" },
+    generate_requires_npm = true,
+  },
+  used_by = { "systemverilog" },
+  maintainers = { "@zegervdv" },
+}
 
 -- Parsers for injections
 list.regex = {

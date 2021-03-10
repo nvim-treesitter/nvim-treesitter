@@ -42,9 +42,10 @@
    (parameter_identifier
     (simple_identifier) @definition.parameter))))
 
-(function_declaration
- (function_identifier
-  (simple_identifier) @definition.function))
+;; TODO: fixme
+;(function_declaration
+ ;(function_identifier
+  ;(simple_identifier) @definition.function))
 
 (function_declaration
  (function_body_declaration
