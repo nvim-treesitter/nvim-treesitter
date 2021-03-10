@@ -104,6 +104,9 @@
   "query": {
     "revision": "f895b8eee4e14c5e81ea277d866e5f1625167369"
   },
+  "r": {
+    "revision": "9a7f8d6429a48116f4c757ec0abbe42ac87c1f8e"
+  },
   "regex": {
     "revision": "3041aa3472d16fd94c6a9e15b741dbfecd9b714e"
   },
