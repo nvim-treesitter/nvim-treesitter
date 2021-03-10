@@ -148,16 +148,13 @@ list.java = {
   maintainers = {"@p00f"},
 }
 
----Parser generation from source does not terminate in reasonable time
---list.kotlin = {
-  --install_info = {
-    --url = "https://github.com/QthCN/tree-sitter-kotlin",
-    --files = { "src/parser.c" },
-    --requires_generate_from_grammar  = true,
-    --generate_requires_npm = true,
-  --},
-  --maintainers = {"@tormodatt"},
---}
+list.kotlin = {
+  install_info = {
+    url = "https://github.com/tormodatt/tree-sitter-kotlin",
+    files = { "src/parser.c" },
+  },
+  maintainers = {"@tormodatt"},
+}
 
 list.html = {
   install_info = {
