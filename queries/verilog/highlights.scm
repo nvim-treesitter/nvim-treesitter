@@ -229,9 +229,10 @@
  (task_identifier
   (simple_identifier) @method))
 
-(assignment_pattern_expression
- (assignment_pattern
-  (parameter_identifier) @field))
+;;TODO: fixme
+;(assignment_pattern_expression
+ ;(assignment_pattern
+  ;(parameter_identifier) @field))
 
 (type_declaration
   (data_type ["packed"] @label))
