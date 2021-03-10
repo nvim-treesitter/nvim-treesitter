@@ -181,6 +181,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [ ] [tsx](https://github.com/tree-sitter/tree-sitter-typescript)
 - [x] [turtle](https://github.com/BonaBeavis/tree-sitter-turtle) (maintained by @bonabeavis)
 - [x] [typescript](https://github.com/tree-sitter/tree-sitter-typescript) (maintained by @steelsojka)
+- [x] [verilog](https://github.com/tree-sitter/tree-sitter-verilog) (maintained by @zegervdv)
 - [x] [vue](https://github.com/ikatyang/tree-sitter-vue) (maintained by @WhyNotHugo)
 - [ ] [yaml](https://github.com/ikatyang/tree-sitter-yaml)
 <!--parserinfo-->
