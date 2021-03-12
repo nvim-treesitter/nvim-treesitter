@@ -59,20 +59,31 @@ function M.get_indent(lnum)
   local indent = 0
   local indent_size = vim.fn.shiftwidth()
 
-  -- to get corret indetation when we land on an empty line (for instance by typing `o`), we try
+  -- to get correct indentation when we land on an empty line (for instance by typing `o`), we try
   -- to use indentation of previous nonblank line, this solves the issue also for languages that
   -- do not use @branch after blocks (e.g. Python)
   if not node then
     local prevnonblank = vim.fn.prevnonblank(lnum)
     if prevnonblank ~= lnum then
       local prev_node = get_node_at_line(root, prevnonblank-1)
-      -- we take that node only if ends before lnum, or else we would get incorrect indent
-      -- on <cr> in positions like e.g. `{|}` in C (| denotes cursor position)
-      local use_prev = prev_node and (prev_node:end_() < lnum-1)
+      -- get previous node in any case to avoid erroring
+      while not prev_node do
+        prevnonblank = vim.fn.prevnonblank(prevnonblank-1)
+        prev_node = get_node_at_line(root, prevnonblank-1)
+      end
+
       -- nodes can be marked @return to prevent using them
-      use_prev = use_prev and not q.returns[node_fmt(prev_node)]
-      if use_prev then
-        node = prev_node
+      if not q.returns[node_fmt(prev_node)] then
+        local row = prev_node:start()
+        local end_row = prev_node:end_()
+
+        -- if the previous node is being constructed (like function() `o` in lua), or line is inside the node
+        -- we indent one more from the start of node, else we indent default
+        -- NOTE: this doesn't work for python which behave strangely
+        if prev_node:has_error() or lnum <= end_row then
+          return vim.fn.indent(row + 1) + indent_size
+        end
+        return vim.fn.indent(row + 1)
       end
     end
   end
