@@ -19,3 +19,5 @@
     (raw_text) @typescript)
   (#match? @_lang "(ts|typescript)")
 )
+
+(comment) @comment

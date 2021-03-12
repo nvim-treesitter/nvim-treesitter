@@ -11,6 +11,9 @@
   "clojure": {
     "revision": "f09652f095be878df8a87a57dcbfa07094316253"
   },
+  "comment": {
+    "revision": "6b0dbd56284023617c3ea755624e55d0254f813a"
+  },
   "cpp": {
     "revision": "3bfe046f3967fef92ebb33f8cd58c3ff373d5e56"
   },

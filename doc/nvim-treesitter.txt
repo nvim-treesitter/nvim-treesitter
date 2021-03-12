@@ -514,7 +514,7 @@ TODO: docs
 
 `TSNumber`
                                                                  *hl-TSNumber*
-For all numbers 
+For all numbers
 
 `TSOperator`
                                                                *hl-TSOperator*
@@ -576,6 +576,11 @@ Tag delimiter like `<` `>` `/`
                                                                    *hl-TSText*
 For strings considered text in a markup language.
 
+`TSStrong`
+                                                                 *hl-TSSTrong*
+
+For text to be represented in bold.
+
 `TSEmphasis`
                                                                *hl-TSEmphasis*
 For text to be represented with emphasis.
@@ -599,6 +604,18 @@ Literal text.
 `TSURI`
                                                                     *hl-TSURI*
 Any URI like a link or email.
+
+`TSNote`
+                                                                   *hl-TSNote*
+Text representation of an informational note.
+
+`TSWarning`
+                                                                   *TSWarning*
+Text representation of a warning note.
+
+`TSDanger`
+                                                                    *TSDanger*
+Text representation of a danger note.
 
 `TSType`
                                                                    *hl-TSType*

@@ -167,6 +167,10 @@ Mainly for markup languages.
 @text.title
 @text.literal
 @text.uri
+
+@text.note
+@text.warning
+@text.danger
 ```
 
 #### Tags

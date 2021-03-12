@@ -403,6 +403,14 @@ list.regex = {
   maintainers = {"@theHamsta"},
 }
 
+list.comment = {
+  install_info = {
+    url = "https://github.com/stsewd/tree-sitter-comment",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = {"@stsewd"},
+}
+
 list.jsdoc = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-jsdoc",
