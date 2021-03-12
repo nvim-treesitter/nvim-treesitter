@@ -4,6 +4,8 @@
   (jsx_self_closing_element)
 ] @indent
 
+(parenthesized_expression) @indent
+
 [
   (jsx_closing_element)
   ">"
