@@ -110,6 +110,10 @@
     value: (arrow_function
       parameter: (identifier) @parameter))
 
+; (a => null)
+(arrow_function
+    parameter: (identifier) @parameter)
+
 ; optional parameters
 (formal_parameters
   (assignment_pattern
