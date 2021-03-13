@@ -67,7 +67,7 @@ function M.get_indent(lnum)
     if prevnonblank ~= lnum then
       local prev_node = get_node_at_line(root, prevnonblank-1)
       -- get previous node in any case to avoid erroring
-      while not prev_node do
+      while not prev_node and prevnonblank-1 > 0 do
         prevnonblank = vim.fn.prevnonblank(prevnonblank-1)
         prev_node = get_node_at_line(root, prevnonblank-1)
       end
