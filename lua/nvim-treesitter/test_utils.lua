@@ -1,5 +1,7 @@
 local M = {}
 
+local assert = require('luassert')
+
 function M.set_buf_indent_opts(opts)
     local optnames = {'tabstop', 'shiftwidth', 'softtabstop', 'expandtab'}
     for _, opt in ipairs(optnames) do
