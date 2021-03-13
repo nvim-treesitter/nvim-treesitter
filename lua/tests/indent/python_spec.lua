@@ -14,6 +14,13 @@ describe('indent python', function()
     'strings.py',
   }
   for _, file in ipairs(files) do
-    it(file, function() whole_file('lua/tests/indent/python/' .. file) end)
+    it(file, function()
+      whole_file('lua/tests/indent/python/' .. file, {
+        tabstop = 4,
+        shiftwidth = 4,
+        softtabstop = 0,
+        expandtab = true,
+      })
+    end)
   end
 end)
