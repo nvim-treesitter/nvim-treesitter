@@ -7,19 +7,21 @@ local info = require'nvim-treesitter.info'
 local health_start = vim.fn["health#report_start"]
 local health_ok = vim.fn['health#report_ok']
 local health_error = vim.fn['health#report_error']
+local health_warn = vim.fn['health#report_warn']
 
 local M = {}
 
 local function install_health()
   health_start('Installation')
   if fn.executable('tree-sitter') == 0 then
-    health_error('`tree-sitter` executable not found')
+    health_warn('`tree-sitter` executable not found (parser generator, only needed for :TSInstallFromGrammar,'..
+                ' not required for :TSInstall)')
   else
     local handle = io.popen('tree-sitter  -V')
     local result = handle:read("*a")
     handle:close()
     local version = vim.split(result,'\n')[1]:match('[^tree%psitter].*')
-    health_ok('`tree-sitter` found '..version .. '(parser generator, used for :TSInstallFromGrammar)')
+    health_ok('`tree-sitter` found '..version..' (parser generator, only needed for :TSInstallFromGrammar)')
   end
 
   if fn.executable('git') == 0 then
