@@ -221,6 +221,7 @@ list.ocamllex = {
   install_info = {
     url = "https://github.com/atom-ocaml/tree-sitter-ocamllex",
     files = { "src/parser.c", "src/scanner.cc" },
+    requires_generate_from_grammar  = true,
   },
   maintainers = {'@undu'},
 }
