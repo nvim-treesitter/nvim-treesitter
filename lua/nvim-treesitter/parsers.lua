@@ -762,6 +762,14 @@ list.sparql = {
   maintainers = { "@bonabeavis" },
 }
 
+list.sql = {
+  install_info = {
+    url = "https://github.com/derekstride/tree-sitter-sql",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@derekstride" },
+}
+
 list.gdscript = {
   install_info = {
     url = "https://github.com/PrestonKnopp/tree-sitter-gdscript",
