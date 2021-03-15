@@ -5,6 +5,7 @@ on: [push, pull_request]
 jobs:
   check_compilation_unix_like:
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         cc: [ gcc, clang ]
