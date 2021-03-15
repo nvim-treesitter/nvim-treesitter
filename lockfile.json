@@ -158,6 +158,9 @@
   "sparql": {
     "revision": "abc8d7c4f837bfe927086580e461f9ee980d1244"
   },
+  "sql": {
+    "revision": "7b19968fc06f793b806508c0026d615bb3aa6d86"
+  },
   "supercollider": {
     "revision": "67ecede8fc5f2e342a7f0516b87d0476b36035ac"
   },
