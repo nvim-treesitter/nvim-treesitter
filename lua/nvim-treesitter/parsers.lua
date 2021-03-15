@@ -203,7 +203,6 @@ list.ocaml = {
     url = "https://github.com/tree-sitter/tree-sitter-ocaml",
     files = { "src/parser.c", "src/scanner.cc" },
     location = "tree-sitter-ocaml/ocaml",
-    requires_generate_from_grammar  = true,
   },
   maintainers = {'@undu'},
 }
@@ -213,7 +212,6 @@ list.ocaml_interface = {
     url = "https://github.com/tree-sitter/tree-sitter-ocaml",
     files = { "src/parser.c", "src/scanner.cc" },
     location = "tree-sitter-ocaml_interface/interface",
-    requires_generate_from_grammar  = true,
   },
   maintainers = {'@undu'},
   filetype = 'ocamlinterface'
@@ -223,7 +221,6 @@ list.ocamllex = {
   install_info = {
     url = "https://github.com/atom-ocaml/tree-sitter-ocamllex",
     files = { "src/parser.c", "src/scanner.cc" },
-    requires_generate_from_grammar  = true,
   },
   maintainers = {'@undu'},
 }
