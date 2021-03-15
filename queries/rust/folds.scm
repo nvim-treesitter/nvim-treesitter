@@ -1,4 +1,5 @@
-[(function_item)
+[(mod_item)
+ (function_item)
  (struct_item)
  (enum_item)
  (impl_item)
@@ -20,5 +21,4 @@
  (macro_invocation)
 
  (attribute_item)
-]
-@fold
+] @fold
