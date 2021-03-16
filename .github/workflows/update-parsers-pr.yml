@@ -27,6 +27,8 @@ jobs:
           ln -s $(pwd) ~/.local/share/nvim/site/pack/nvim-treesitter/start
 
       - name: Update parsers
+        env:
+          SKIP_LOCKFILE_UPDATE_FOR_LANGS: [kotlin, clojure]
         run: |
           ./nvim.appimage --headless -c "luafile ./scripts/write-lockfile.lua" -c "q"
           # Pretty print
