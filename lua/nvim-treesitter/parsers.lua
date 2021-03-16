@@ -301,7 +301,6 @@ list.toml = {
   install_info = {
     url = "https://github.com/ikatyang/tree-sitter-toml",
     files = { "src/parser.c", "src/scanner.c" },
-    requires_generate_from_grammar  = true,
     generate_requires_npm = true,
   },
   maintainers = {"@tk-shirasaka"},
@@ -322,7 +321,6 @@ list.vue = {
   install_info = {
     url = "https://github.com/ikatyang/tree-sitter-vue",
     files = { "src/parser.c", "src/scanner.cc" },
-    requires_generate_from_grammar  = true,
   },
   maintainers = {"@WhyNotHugo"},
 }
@@ -348,7 +346,6 @@ list.yaml = {
   install_info = {
     url = "https://github.com/ikatyang/tree-sitter-yaml",
     files = { "src/parser.c", "src/scanner.cc" },
-    requires_generate_from_grammar  = true,
   }
 }
 
