@@ -28,7 +28,7 @@ jobs:
 
       - name: Update parsers
         env:
-          SKIP_LOCKFILE_UPDATE_FOR_LANGS: [kotlin, clojure]
+          SKIP_LOCKFILE_UPDATE_FOR_LANGS: clojure
         run: |
           ./nvim.appimage --headless -c "luafile ./scripts/write-lockfile.lua" -c "q"
           # Pretty print

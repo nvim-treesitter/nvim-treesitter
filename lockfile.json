@@ -27,7 +27,7 @@
     "revision": "14055bd46b383d18ebc9db219f8f6b048455ae04"
   },
   "elm": {
-    "revision": "4feec3f4487365d7a9641e8bf93af9319768dbed"
+    "revision": "16d09d988ba4b995e87e556853bbe63d9fd1f73c"
   },
   "erlang": {
     "revision": "7b436e1ca50f0002f6765a9a2a00f6156b2cc881"
@@ -42,28 +42,28 @@
     "revision": "d354d79a052883f053b4cb42c750da7f6bc9a998"
   },
   "go": {
-    "revision": "e41dd569d91eb58725baa7089c34fc3d785b2978"
+    "revision": "2a83dfdd759a632651f852aa4dc0af2525fae5cd"
   },
   "graphql": {
     "revision": "c5cd49b95c5c121340f46a7b1a65ad44bc8576e6"
   },
   "haskell": {
-    "revision": "24cf84ff618e96528882c67c8740fadcd6c4a921"
+    "revision": "26d3daa53be335782062027695183e2da401011c"
   },
   "html": {
     "revision": "d93af487cc75120c89257195e6be46c999c6ba18"
   },
   "java": {
-    "revision": "7ad106e81963b4d5c0aff99b93d16dc577fa3bc8"
+    "revision": "bd6186c24d5eb13b4623efac9d944dcc095c0dad"
   },
   "javascript": {
-    "revision": "f18cb4d16524316acad42acef073ea7e77beb061"
+    "revision": "afab377857b76a2ca96f617b80ebcd3ed53dcdeb"
   },
   "jsdoc": {
     "revision": "189a6a4829beb9cdbe837260653b4a3dfb0cc3db"
   },
   "json": {
-    "revision": "89607925e8989f2638cc935b8de7e44ac3c91907"
+    "revision": "65bceef69c3b0f24c0b19ce67d79f57c96e90fcb"
   },
   "jsonc": {
     "revision": "02b01653c8a1c198ae7287d566efa86a135b30d5"
@@ -72,7 +72,7 @@
     "revision": "0ba7a24b062b671263ae08e707e9e94383b25bb7"
   },
   "kotlin": {
-    "revision": "5f4c8b4a9af6c246b5a181fc73f10cce2e9df700"
+    "revision": "4f404a3355ee2447d3a52cb4bd72a6ae1fb32175"
   },
   "ledger": {
     "revision": "609d5e5ab5955823b3faeaec8d2afc91860c639a"
@@ -93,10 +93,10 @@
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
   },
   "php": {
-    "revision": "ba231f9844e5a1bf60e1cb72c34c0a431239585a"
+    "revision": "c649e33f174b07abd4b71a2ec2dcb4219cc3684a"
   },
   "python": {
-    "revision": "dd98afca32aaceff9025f9e85031ac50bee8b08b"
+    "revision": "20729b3e2fe70d13c1dd9f400382871a5fe95255"
   },
   "ql": {
     "revision": "965948cce9a94a710b1339851e0919471ad5ee2c"
@@ -111,16 +111,16 @@
     "revision": "3041aa3472d16fd94c6a9e15b741dbfecd9b714e"
   },
   "rst": {
-    "revision": "7f51b9949aaf7e52cc6768ecdd023ce7ff462bad"
+    "revision": "ecb6e365bb3de966db4ae057f14d274eacb97c3f"
   },
   "ruby": {
-    "revision": "fd087c78c7c7899704164fd0d0cbec9f8b28acd6"
+    "revision": "a58928e2d70e4c9e83c48bae356f9bb6809c50a7"
   },
   "rust": {
-    "revision": "20f064bd758f94b8f47ce5a21e4383c7349ca182"
+    "revision": "a3e6768b67a0811d5cc08351bf7039a769d9120d"
   },
   "scala": {
-    "revision": "262797b1dfe0303818c2418c0a88f6be65f37245"
+    "revision": "f7721fd339c0dc0c396cf81c4ae319e6562121d9"
   },
   "sparql": {
     "revision": "8862fc9942fc0ad60c8a8cb004138bfd69fc5c95"
@@ -129,7 +129,7 @@
     "revision": "45d356487799dab0ebc58cc8922aa145264063f8"
   },
   "svelte": {
-    "revision": "88ae5f3d3629261095d62aa647d69cae35680e28"
+    "revision": "a96899bd1ab6a18e3837f232fd688af69e3a8071"
   },
   "swift": {
     "revision": "a22fa5e19bae50098e2252ea96cba3aba43f4c58"
@@ -138,24 +138,24 @@
     "revision": "fc73205515276be4ff95dfc5daa0fc67e18bfbde"
   },
   "toml": {
-    "revision": "084da152d85cb8c4bbbe0ab5f3f1f9e5bfb77d3c"
+    "revision": "b3c2993eeaa6402ea16e73a453338c9eb01d6d9b"
   },
   "tsx": {
-    "revision": "be5e1aa39a920fdb1005778f0279696707ad75c8"
+    "revision": "3e897ea5925f037cfae2e551f8e6b12eec2a201a"
   },
   "turtle": {
     "revision": "d51424b75ef670643c6e11a57d0748c411447e18"
   },
   "typescript": {
-    "revision": "be5e1aa39a920fdb1005778f0279696707ad75c8"
+    "revision": "3e897ea5925f037cfae2e551f8e6b12eec2a201a"
   },
   "verilog": {
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
   },
   "vue": {
-    "revision": "ac0829b5f7aa4234c149c23fc12d09a7c3477d4a"
+    "revision": "461d767494c1e7fbce11a7ac4eab3651d21ebd49"
   },
   "yaml": {
-    "revision": "ab0ce67ce98f8d9cc0224ebab49c64d01fedc1a1"
+    "revision": "74d3e003f79807b238bd62dc6ac16f846bca5a44"
   }
 }
