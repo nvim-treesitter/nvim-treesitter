@@ -109,7 +109,6 @@ list.graphql = {
   install_info = {
     url = "https://github.com/bkegley/tree-sitter-graphql",
     files = { "src/parser.c" },
-    requires_generate_from_grammar  = true,
   },
   maintainers = {"@bkegley"},
 }
