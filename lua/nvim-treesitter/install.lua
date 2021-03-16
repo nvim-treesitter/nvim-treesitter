@@ -184,7 +184,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   end
   if generate_from_grammar then
     if repo.generate_requires_npm then
-      if not vim.fn.executable('npm') ~= 1 then
+      if vim.fn.executable('npm') ~= 1 then
         api.nvim_err_writeln('`'..lang..'` requires NPM to be installed from grammar.js')
         return
       end
