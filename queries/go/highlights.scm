@@ -102,6 +102,13 @@
 "type" @keyword
 "var" @keyword
 
+
+;; Builtin functions
+
+((identifier) @function.builtin
+ (#match? @function.builtin "^(append|cap|close|complex|copy|delete|imag|len|make|new|panic|print|println|real|recover)$"))
+
+
 ; Delimiters
 
 "." @punctuation.delimiter
