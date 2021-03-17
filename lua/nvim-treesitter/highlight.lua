@@ -104,6 +104,9 @@ function M.attach(bufnr, lang)
   end
 
   ts.highlighter.new(parser, {})
+  if config.additional_vim_regex_highlighting then
+    api.nvim_buf_set_option(bufnr, 'syntax', 'ON')
+  end
 end
 
 function M.detach(bufnr)

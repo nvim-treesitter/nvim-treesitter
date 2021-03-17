@@ -22,7 +22,8 @@ local builtin_modules = {
     enable = false,
     disable = {'markdown'}, -- FIXME(vigoux): markdown highlighting breaks everything for now
     custom_captures = {},
-    is_supported = queries.has_highlights
+    is_supported = queries.has_highlights,
+    additional_vim_regex_highlighting = false,
   },
   incremental_selection = {
     module_path = 'nvim-treesitter.incremental_selection',
