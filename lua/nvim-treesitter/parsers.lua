@@ -447,7 +447,6 @@ list.sparql = {
     url = "https://github.com/BonaBeavis/tree-sitter-sparql",
     files = { "src/parser.c" },
     branch = "main",
-    requires_generate_from_grammar  = true,
   },
   maintainers = { "@bonabeavis" },
 }
@@ -467,7 +466,6 @@ list.turtle = {
     url = "https://github.com/BonaBeavis/tree-sitter-turtle",
     files = { "src/parser.c" },
     branch = "main",
-    requires_generate_from_grammar  = true,
   },
   maintainers = { "@bonabeavis" },
 }
