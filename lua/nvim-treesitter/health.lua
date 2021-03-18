@@ -61,7 +61,7 @@ function M.checkhealth()
 
     -- Only print informations about installed parsers
     if installed >= 1 then
-      local multiple_parsers = installed > 1 and "*" or ""
+      local multiple_parsers = installed > 1 and "+" or ""
       local out = "  - "..parser_name..multiple_parsers..string.rep(" ", 15 - (#parser_name + #multiple_parsers))
       for _, query_group in pairs(queries.built_in_query_groups) do
         out = out..query_status(parser_name, query_group).." "
@@ -72,7 +72,7 @@ function M.checkhealth()
   print([[
 
  Legend: H[ighlight], L[ocals], F[olds], I[ndents]
-         *) multiple parsers found, only one will be used
+         +) multiple parsers found, only one will be used
          x) errors found in the query, try to run :TSUpdate {lang}]])
 end
 
