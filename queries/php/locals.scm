@@ -25,13 +25,17 @@
   (variable_name
     (name) @definition.var))
 
-;;TODO
-;(foreach_statement
-  ;(pair
-    ;(variable_name
-      ;(name) @definition.var))
-  ;(variable_name
-    ;(name) @definition.var))
+(foreach_statement
+  (pair
+    (variable_name
+      (name) @definition.var)))
+
+(foreach_statement
+  (variable_name
+    (name) @reference
+      (set! reference.kind "var"))
+  (variable_name
+    (name) @definition.var))
 
 (property_declaration
   (property_element
