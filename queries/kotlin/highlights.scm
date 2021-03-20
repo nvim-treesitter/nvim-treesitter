@@ -70,10 +70,9 @@
 (type_identifier) @type
 
 ;; Annotations
-;; TODO:
-;(annotation (single_annotation) @attribute)
-;(single_annotation (user_type (type_identifier) @attribute))
-;(single_annotation (constructor_invocation (user_type (type_identifier) @attribute)))
+(annotation (single_annotation) @annotation)
+(single_annotation (user_type (type_identifier) @annotation))
+(single_annotation (constructor_invocation (user_type (type_identifier) @annotation)))
 
 
 ;; it
@@ -103,6 +102,8 @@
 
 ;; Keywords
 [
+ "this"
+ "override"
  "enum"
  "as"
  "class"
@@ -120,6 +121,8 @@
  "constructor"
  "throw"
 ] @keyword
+
+(null_literal) @keyword
 
 ; const etc.
 (property_modifier) @keyword
