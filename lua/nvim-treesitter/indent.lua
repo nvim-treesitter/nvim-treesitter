@@ -39,10 +39,6 @@ local get_indents = utils.memoize_by_buf_tick(function(bufnr)
   }
 end)
 
-local function get_indent_size()
-  return vim.bo.softtabstop > 0 and vim.bo.shiftwidth or vim.bo.tabstop
-end
-
 function M.get_indent(lnum)
   local parser = parsers.get_parser()
   if not parser or not lnum then return -1 end
@@ -52,7 +48,7 @@ function M.get_indent(lnum)
   local node = get_node_at_line(root, lnum-1)
 
   local indent = 0
-  local indent_size = get_indent_size()
+  local indent_size = vim.fn.shiftwidth()
 
   -- to get corret indetation when we land on an empty line (for instance by typing `o`), we try
   -- to use indentation of previous nonblank line, this solves the issue also for languages that
