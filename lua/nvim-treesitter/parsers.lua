@@ -499,12 +499,29 @@ list.r = {
 }
 
 list.beancount = {
-    install_info = {
-        url = "https://github.com/polarmutex/tree-sitter-beancount",
-        files = { "src/parser.c" },
-        branch = "master",
-    },
-    maintainers = { "@polarmutex" }
+  install_info = {
+    url = "https://github.com/polarmutex/tree-sitter-beancount",
+    files = { "src/parser.c" },
+    branch = "master",
+  },
+  maintainers = { "@polarmutex" },
+}
+
+list.latex = {
+  install_info = {
+    url = "https://github.com/latex-lsp/tree-sitter-latex",
+    files = { "src/parser.c" },
+  },
+  filetype = 'tex',
+  used_by = {'cls', 'sty'}
+}
+
+list.bibtex = {
+  install_info = {
+    url = "https://github.com/latex-lsp/tree-sitter-bibtex",
+    files = { "src/parser.c" },
+  },
+  filetype = 'bib',
 }
 
 local M = {
