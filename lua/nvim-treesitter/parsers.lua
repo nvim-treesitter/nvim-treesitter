@@ -385,7 +385,6 @@ list.teal = {
   install_info = {
     url = "https://github.com/euclidianAce/tree-sitter-teal",
     files = { "src/parser.c", "src/scanner.c" },
-    requires_generate_from_grammar  = true,
   },
   maintainers = {'@euclidianAce'},
 }

@@ -13,12 +13,9 @@
 (enum_declaration "global" @keyword)
 
 ;; Ops
-[ "not" "and" "or" "as" "is" ] @keyword.operator
+[ "as" ] @keyword.operator
 
-[ "=" "~=" "==" "<=" ">=" "<" ">"
-"+" "-" "%" "/" "//" "*" "^"
-"&" "~" "|" ">>" "<<"
-".." "#" ] @operator
+[ "=" (bin_op) "<" ">" "%" "|" ] @operator
 
 ;; Functions
 (function_statement
