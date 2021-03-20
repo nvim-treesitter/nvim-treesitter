@@ -39,7 +39,7 @@
     "revision": "bc4074ed0aa195d11b8c78da0e1f4a5509566844"
   },
   "glimmer": {
-    "revision": "8a9d7d003a3668d55f3381615cff4ec1c41f2a24"
+    "revision": "71fb8ee24193e578072adb108160e4effd73343c"
   },
   "go": {
     "revision": "2a83dfdd759a632651f852aa4dc0af2525fae5cd"
@@ -135,7 +135,7 @@
     "revision": "a22fa5e19bae50098e2252ea96cba3aba43f4c58"
   },
   "teal": {
-    "revision": "fc73205515276be4ff95dfc5daa0fc67e18bfbde"
+    "revision": "1f9562185ef09863a3eee5f5f1ed2858b94c8cda"
   },
   "toml": {
     "revision": "b3c2993eeaa6402ea16e73a453338c9eb01d6d9b"
