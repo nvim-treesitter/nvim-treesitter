@@ -121,6 +121,7 @@
 "::"
 "."
 ";"
+","
  ] @punctuation.delimiter
 
 (parameter (identifier) @parameter)
