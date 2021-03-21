@@ -498,6 +498,15 @@ list.r = {
   maintainers = { "@jimhester" },
 }
 
+list.beancout = {
+    install_info = {
+        url = "https://github.com/polarmutex/tree-sitter-beancount",
+        files = { "src/parser.c" },
+        branch = "master",
+    },
+    maintainers = { "@polarmutex" }
+}
+
 local M = {
   list = list
 }
