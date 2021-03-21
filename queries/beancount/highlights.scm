@@ -1,6 +1,6 @@
 
 (date) @field
-(txn) @annotation
+(txn) @attribute
 
 (account) @type
 
