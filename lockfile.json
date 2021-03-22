@@ -5,6 +5,9 @@
   "beancount": {
     "revision": "1d0964911b7b7a12031681b9a58de1d342367097"
   },
+  "bibtex": {
+    "revision": "b0d52a55fa205f32e22384e5430d16fb40324b28"
+  },
   "c": {
     "revision": "5aa0bbbfc41868a3727b7a89a90e9f52e0964b2b"
   },
@@ -42,7 +45,7 @@
     "revision": "bc4074ed0aa195d11b8c78da0e1f4a5509566844"
   },
   "glimmer": {
-    "revision": "71fb8ee24193e578072adb108160e4effd73343c"
+    "revision": "34b9afaf55991d56ea7261e4b8af24bf5f73bf26"
   },
   "go": {
     "revision": "2a83dfdd759a632651f852aa4dc0af2525fae5cd"
@@ -76,6 +79,9 @@
   },
   "kotlin": {
     "revision": "48bfb38abd93f8d617877d7bb7f92a6bb1166285"
+  },
+  "latex": {
+    "revision": "e87bc36487bba70f492cf5810f44a5484f883c32"
   },
   "ledger": {
     "revision": "609d5e5ab5955823b3faeaec8d2afc91860c639a"
