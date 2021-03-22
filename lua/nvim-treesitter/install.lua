@@ -267,7 +267,13 @@ local function install_lang(lang, ask_reinstall, cache_folder, install_folder, w
   run_install(cache_folder, install_folder, lang, install_info, with_sync, generate_from_grammar)
 end
 
-local function install(with_sync, ask_reinstall, generate_from_grammar)
+local function install(options)
+  options = options or {}
+  local with_sync = options.with_sync
+  local ask_reinstall = options.ask_reinstall
+  local generate_from_grammar = options.generate_from_grammar
+  local exclude_configured_parsers = options.exclude_configured_parsers
+
   return function (...)
     if fn.executable('git') == 0 then
       return api.nvim_err_writeln('Git is required on your system to run this command')
@@ -292,6 +298,10 @@ local function install(with_sync, ask_reinstall, generate_from_grammar)
       ask = ask_reinstall
     end
 
+    if exclude_configured_parsers then
+      languages = utils.difference(languages, configs.get_ignored_parser_installs())
+    end
+
     if #languages > 1 then
       reset_progress_counter()
     end
@@ -306,7 +316,7 @@ function M.update(lang)
   M.lockfile = {}
   reset_progress_counter()
   if lang and lang ~= 'all' then
-    install(false, 'force')(lang)
+    install({ ask_reinstall = 'force' })(lang)
   else
     local parsers_to_update = configs.get_update_strategy() == 'lockfile'
       and outdated_parsers()
@@ -315,7 +325,10 @@ function M.update(lang)
       print('All parsers are up-to-date!')
     end
     for _, lang in pairs(parsers_to_update) do
-      install(false, 'force')(lang)
+      install({
+        ask_reinstall = 'force',
+        exclude_configured_parsers = true
+      })(lang)
     end
   end
 end
@@ -382,25 +395,25 @@ function M.write_lockfile(verbose, skip_langs)
     utils.join_path(utils.get_package_path(), "lockfile.json"))
 end
 
-M.ensure_installed = install(false, false)
+M.ensure_installed = install({ exclude_configured_parsers = true })
 
 M.commands = {
   TSInstall = {
-    run = install(false, true),
+    run = install({ ask_reinstall = true }),
     args = {
       "-nargs=+",
       "-complete=custom,nvim_treesitter#installable_parsers",
     },
   },
   TSInstallFromGrammar = {
-    run = install(false, true, true),
+    run = install({ ask_reinstall = true, generate_from_grammar = true }),
     args = {
       "-nargs=+",
       "-complete=custom,nvim_treesitter#installable_parsers",
     },
   },
   TSInstallSync = {
-    run = install(true, true),
+    run = install({ with_sync = true, ask_reinstall = true }),
     args = {
       "-nargs=+",
       "-complete=custom,nvim_treesitter#installable_parsers",
