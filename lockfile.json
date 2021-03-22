@@ -2,11 +2,14 @@
   "bash": {
     "revision": "a8eb5cb57c66f74c63ab950de081207cccf52017"
   },
+  "beancount": {
+    "revision": "1d0964911b7b7a12031681b9a58de1d342367097"
+  },
   "c": {
     "revision": "5aa0bbbfc41868a3727b7a89a90e9f52e0964b2b"
   },
   "c_sharp": {
-    "revision": "70fd2cba742506903589b5e046c32e0e3e06404a"
+    "revision": "a804dd8ccd5d16c3fca8d9782722fa8dff3e20ec"
   },
   "clojure": {
     "revision": "95c7959c461406381b42113dcf4591008c663d21"
@@ -138,7 +141,7 @@
     "revision": "1f9562185ef09863a3eee5f5f1ed2858b94c8cda"
   },
   "toml": {
-    "revision": "b3c2993eeaa6402ea16e73a453338c9eb01d6d9b"
+    "revision": "474fbbec27e27d76b45aeaf9191e8acb13a699e2"
   },
   "tsx": {
     "revision": "3e897ea5925f037cfae2e551f8e6b12eec2a201a"
@@ -153,9 +156,9 @@
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
   },
   "vue": {
-    "revision": "461d767494c1e7fbce11a7ac4eab3651d21ebd49"
+    "revision": "efd20240618d5c1b03ad0d5eac341202196f282d"
   },
   "yaml": {
-    "revision": "74d3e003f79807b238bd62dc6ac16f846bca5a44"
+    "revision": "59bf31b8a2138408de3f06d2f89fe86b8cfc302b"
   }
 }
