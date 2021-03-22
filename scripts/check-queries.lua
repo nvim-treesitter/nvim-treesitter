@@ -58,6 +58,19 @@ end
 
 
 local ok, err = pcall(do_check)
+
+for k, v in pairs(require 'nvim-treesitter.parsers'.get_parser_configs()) do
+  if not require 'nvim-treesitter.parsers'.has_parser(k) then
+    -- On CI all parsers that can be installed from C files should be installed
+    if vim.env.CI and not v.install_info.requires_generate_from_grammar then
+      print('Error: parser for '..k..' is not installed')
+      vim.cmd('cq')
+    else
+      print('Warning: parser for '..k..' is not installed')
+    end
+  end
+end
+
 if ok then
   print('Check successful!\n')
   vim.cmd('q')
