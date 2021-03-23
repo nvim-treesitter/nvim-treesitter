@@ -138,7 +138,7 @@
     "revision": "45d356487799dab0ebc58cc8922aa145264063f8"
   },
   "svelte": {
-    "revision": "c696a13a587b0595baf7998f1fb9e95c42750263"
+    "revision": "dce55dd38e28bbd5cb965b22410d7f75b9ef1fb7"
   },
   "swift": {
     "revision": "a22fa5e19bae50098e2252ea96cba3aba43f4c58"
@@ -168,6 +168,6 @@
     "revision": "59bf31b8a2138408de3f06d2f89fe86b8cfc302b"
   },
   "zig": {
-    "revision": "da6d85db0e66f3b76d70ff5c2b119803ae206d02"
+    "revision": "ef6595f5000bc319a8de2ea2764a9b2be147e74c"
   }
 }
