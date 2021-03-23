@@ -10,3 +10,7 @@
 (anon_function)
 (table_constructor)
 ] @fold
+
+(record_body
+  (record_entry
+    value: (record_body)) @fold)
