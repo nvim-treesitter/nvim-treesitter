@@ -125,7 +125,7 @@
  ] @punctuation.delimiter
 
 (parameter (identifier) @parameter)
-(closure_parameters (identifier) @parameter)
+(closure_parameters (_) @parameter)
 
 (lifetime (identifier) @label)
 
