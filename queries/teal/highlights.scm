@@ -1,4 +1,21 @@
 
+;; Primitives
+(boolean) @boolean
+(comment) @comment
+(shebang_comment) @comment
+(identifier) @variable
+((identifier) @variable.builtin
+  (#eq? @variable.builtin "self"))
+(nil) @constant.builtin
+(number) @number
+(string) @string
+(table_constructor ["{" "}"] @constructor)
+(varargs "..." @constant.builtin)
+[ "," "." ":" ";" ] @punctuation.delimiter
+
+(escape_sequence) @string.escape
+(format_specifier) @string.escape
+
 ;; Basic statements/Keywords
 [ "if" "then" "elseif" "else" ] @conditional
 [ "for" "while" "repeat" "until" ] @repeat
@@ -13,12 +30,9 @@
 (enum_declaration "global" @keyword)
 
 ;; Ops
-[ "not" "and" "or" "as" "is" ] @keyword.operator
-
-[ "=" "~=" "==" "<=" ">=" "<" ">"
-"+" "-" "%" "/" "//" "*" "^"
-"&" "~" "|" ">>" "<<"
-".." "#" ] @operator
+(bin_op (op) @operator)
+(unary_op (op) @operator)
+[ "=" "as" ] @operator
 
 ;; Functions
 (function_statement
@@ -86,17 +100,25 @@
     . attribute: (attribute) @attribute
     . ">" @punctuation.bracket))
 [ "(" ")" "[" "]" "{" "}" ] @punctuation.bracket
-(boolean) @boolean
-(comment) @comment
-(shebang_comment) @comment
-(identifier) @variable
-((identifier) @variable.builtin
-  (#eq? @variable.builtin "self"))
-(nil) @constant.builtin
-(number) @number
-(string) @string
-(table_constructor ["{" "}"] @constructor)
-(varargs "..." @constant.builtin)
-[ "," "." ":" ";" ] @punctuation.delimiter
+
+;; Only highlight format specifiers in calls to string.format
+;; string.format('...')
+;(function_call
+;  called_object: (index
+;    (identifier) @base
+;    key: (identifier) @entry)
+;  arguments: (arguments .
+;    (string (format_specifier) @string.escape))
+;
+;  (#eq? @base "string")
+;  (#eq? @entry "format"))
+
+;; ('...'):format()
+;(function_call
+;  called_object: (method_index
+;    (string (format_specifier) @string.escape)
+;    key: (identifier) @func-name)
+;    (#eq? @func-name "format"))
+
 
 (ERROR) @error
