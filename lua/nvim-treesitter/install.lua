@@ -33,7 +33,8 @@ end
 
 local function get_revision(lang)
   if #lockfile == 0 then
-    lockfile = vim.fn.json_decode(vim.fn.readfile(utils.join_path(utils.get_package_path(), 'lockfile.json')))
+    local filename = utils.join_path(utils.get_package_path(), 'lockfile.json')
+    lockfile = vim.fn.filereadable(filename) == 1 and vim.fn.json_decode(vim.fn.readfile(filename)) or {}
   end
   return (lockfile[lang] and lockfile[lang].revision)
 end
