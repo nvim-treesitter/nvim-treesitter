@@ -166,5 +166,8 @@
   },
   "yaml": {
     "revision": "59bf31b8a2138408de3f06d2f89fe86b8cfc302b"
+  },
+  "zig": {
+    "revision": "da6d85db0e66f3b76d70ff5c2b119803ae206d02"
   }
 }

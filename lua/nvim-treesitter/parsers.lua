@@ -524,6 +524,15 @@ list.bibtex = {
   filetype = 'bib',
 }
 
+list.zig = {
+  install_info = {
+    url = "https://github.com/Himujjal/tree-sitter-zig",
+    files = { "src/parser.c" }
+  },
+  filetype = "zig",
+  maintainers = { "@Himujjal" }
+}
+
 local M = {
   list = list
 }
