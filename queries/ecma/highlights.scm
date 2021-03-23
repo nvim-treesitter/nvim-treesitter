@@ -37,6 +37,10 @@
   name: (identifier) @function)
 (function_declaration
   name: (identifier) @function)
+(generator_function
+  name: (identifier) @function)
+(generator_function_declaration
+  name: (identifier) @function)
 (method_definition
   name: (property_identifier) @method)
 

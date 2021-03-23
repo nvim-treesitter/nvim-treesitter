@@ -16,4 +16,6 @@
   (try_statement)
   (catch_clause)
   (object)
+  (generator_function)
+  (generator_function_declaration)
 ] @fold
