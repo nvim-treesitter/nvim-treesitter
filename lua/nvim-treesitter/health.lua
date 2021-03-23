@@ -43,10 +43,10 @@ local function install_health()
 end
 
 local function query_status(lang, query_group)
-  local ok, found_query = pcall(queries.get_query, lang, query_group)
+  local ok, err = pcall(queries.get_query, lang, query_group)
   if not ok then
-    return "x"
-  elseif not found_query then
+    return "x", err
+  elseif not err then
     return "."
   else
     return "✓"
@@ -54,8 +54,10 @@ local function query_status(lang, query_group)
 end
 
 function M.checkhealth()
+  local error_collection = {}
   -- Installation dependency checks
   install_health()
+  queries.invalidate_query_cache()
   health_start("Parser/Features H L F I")
   -- Parser installation checks
   for _, parser_name in pairs(info.installed_parsers()) do
@@ -66,7 +68,11 @@ function M.checkhealth()
       local multiple_parsers = installed > 1 and "+" or ""
       local out = "  - "..parser_name..multiple_parsers..string.rep(" ", 15 - (#parser_name + #multiple_parsers))
       for _, query_group in pairs(queries.built_in_query_groups) do
-        out = out..query_status(parser_name, query_group).." "
+        local status, err = query_status(parser_name, query_group)
+        out = out..status.." "
+        if err then
+          table.insert(error_collection, {parser_name, query_group, err})
+        end
       end
       print(out)
     end
@@ -76,6 +82,13 @@ function M.checkhealth()
  Legend: H[ighlight], L[ocals], F[olds], I[ndents]
          +) multiple parsers found, only one will be used
          x) errors found in the query, try to run :TSUpdate {lang}]])
+  if #error_collection > 0 then
+    print('\nThe following errors have been detected:')
+    for _, p in ipairs(error_collection) do
+      local lang, type, err = unpack(p)
+      health_error(lang..'('..type..'): '..err)
+    end
+  end
 end
 
 return M

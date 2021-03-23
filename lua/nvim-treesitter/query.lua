@@ -66,27 +66,27 @@ do
   --- Same as `vim.treesitter.query` except will return cached values
   function M.get_query(lang, query_name)
     if cache[lang][query_name] == nil then
-      M.reload_file_cache(lang, query_name)
+      cache[lang][query_name] = tsq.get_query(lang, query_name)
     end
 
     return cache[lang][query_name]
   end
 
-  --- Reloads the query file cache.
+  --- Invalidates the query file cache.
   --- If lang and query_name is both present, will reload for only the lang and query_name.
   --- If only lang is present, will reload all query_names for that lang
   --- If none are present, will reload everything
-  function M.reload_file_cache(lang, query_name)
+  function M.invalidate_query_cache(lang, query_name)
     if lang and query_name then
-      cache[lang][query_name] = tsq.get_query(lang, query_name)
+      cache[lang][query_name] = nil
     elseif lang and not query_name then
       for query_name, _ in pairs(cache[lang]) do
-        M.reload_file_cache(lang, query_name)
+        M.invalidate_query_cache(lang, query_name)
       end
     elseif not lang and not query_name then
       for lang, _ in pairs(cache) do
         for query_name, _ in pairs(cache[lang]) do
-          M.reload_file_cache(lang, query_name)
+          M.invalidate_query_cache(lang, query_name)
         end
       end
     else
@@ -96,9 +96,9 @@ do
 end
 
 --- This function is meant for an autocommand and not to be used. Only use if file is a query file.
-function M.reload_file_cache_on_write(fname)
+function M.invalidate_query_file(fname)
   local fnamemodify = vim.fn.fnamemodify
-  M.reload_file_cache(fnamemodify(fname, ':p:h:t'), fnamemodify(fname, ':t:r'))
+  M.invalidate_query_cache(fnamemodify(fname, ':p:h:t'), fnamemodify(fname, ':t:r'))
 end
 
 function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
