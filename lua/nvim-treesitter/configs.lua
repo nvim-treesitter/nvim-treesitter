@@ -10,6 +10,7 @@ local M = {}
 local config = {
   modules = {},
   ensure_installed = {},
+  ignore_install = {},
   update_strategy = 'lockfile',
 }
 -- List of modules that need to be setup on initialization.
@@ -271,6 +272,7 @@ end
 -- @param user_data module overrides
 function M.setup(user_data)
   config.modules = vim.tbl_deep_extend('force', config.modules, user_data)
+  config.ignore_install = user_data.ignore_install or {}
 
   local ensure_installed = user_data.ensure_installed or {}
   if #ensure_installed > 0 then
@@ -410,6 +412,10 @@ end
 
 function M.get_update_strategy()
   return config.update_strategy
+end
+
+function M.get_ignored_parser_installs()
+  return config.ignore_install or {}
 end
 
 return M

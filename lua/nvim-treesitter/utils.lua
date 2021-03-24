@@ -141,4 +141,29 @@ function M.index_of(tbl, obj)
   end
 end
 
+-- Filters a list based on the given predicate
+-- @param tbl The list to filter
+-- @param predicate The predicate to filter with
+function M.filter(tbl, predicate)
+  local result = {}
+
+  for i, v in ipairs(tbl) do
+    if predicate(v, i) then
+      table.insert(result, v)
+    end
+  end
+
+  return result
+end
+
+-- Returns a list of all values from the first list
+-- that are not present in the second list.
+-- @params tbl1 The first table
+-- @params tbl2 The second table
+function M.difference(tbl1, tbl2)
+  return M.filter(tbl1, function(v)
+    return not vim.tbl_contains(tbl2, v)
+  end)
+end
+
 return M
