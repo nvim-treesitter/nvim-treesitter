@@ -260,7 +260,8 @@ list.tsx = {
     generate_requires_npm = true,
   },
   used_by = { "typescript.tsx" },
-  filetype = 'typescriptreact'
+  filetype = 'typescriptreact',
+  maintainers = {'@steelsojka'}
 }
 
 list.scala = {
