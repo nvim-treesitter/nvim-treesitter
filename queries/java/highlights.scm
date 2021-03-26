@@ -98,6 +98,14 @@
   scope: (identifier) @type)
   (#match? @type "^[A-Z]"))
 
+; Fields
+
+(field_declaration
+  declarator: (variable_declarator) @field)
+
+(field_access
+  field: (identifier) @field)
+
 [
 (boolean_type)
 (integral_type)
