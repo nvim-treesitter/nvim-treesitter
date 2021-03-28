@@ -84,6 +84,7 @@ hlmap["text.strike"] = "TSStrike"
 hlmap["text.title"] = "TSTitle"
 hlmap["text.literal"] = "TSLiteral"
 hlmap["text.uri"] = "TSURI"
+hlmap["text.math"] = "TSMath"
 
 hlmap["text.note"] = "TSNote"
 hlmap["text.warning"] = "TSWarning"
