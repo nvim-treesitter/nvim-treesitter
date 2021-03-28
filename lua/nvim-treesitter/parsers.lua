@@ -513,7 +513,8 @@ list.latex = {
     files = { "src/parser.c" },
   },
   filetype = 'tex',
-  used_by = {'cls', 'sty'}
+  used_by = {'cls', 'sty'},
+  maintainers = { "@theHamsta by asking @clason" },
 }
 
 list.bibtex = {
@@ -522,6 +523,7 @@ list.bibtex = {
     files = { "src/parser.c" },
   },
   filetype = 'bib',
+  maintainers = { "@theHamsta by asking @clason" },
 }
 
 list.zig = {

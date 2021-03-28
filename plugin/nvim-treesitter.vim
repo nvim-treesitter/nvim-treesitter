@@ -79,7 +79,7 @@ highlight default TSStrike term=strikethrough cterm=strikethrough gui=strikethro
 highlight default link TSMath Special
 highlight default link TSTextReference Constant
 highlight default link TSEnviroment Macro
-highlight default link TSEnviromentName Normal
+highlight default link TSEnviromentName Type
 highlight default link TSTitle Title
 highlight default link TSLiteral String
 highlight default link TSURI Underlined
