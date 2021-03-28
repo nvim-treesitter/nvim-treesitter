@@ -8,7 +8,7 @@
 ((environment
   (begin
    name: (word) @_env)) @text.math
-   (#match? @_env "^(displaymath|eqn|eqnarray|align)[*]?$"))
+   (#match? @_env "^(displaymath|equation|multline|eqnarray|align|array|split)[*]?$"))
 
 ;; This at the begining of the file would be the alternative to highlight
 ;; only the interior of the environment
@@ -20,12 +20,29 @@
 
 [
   (generic_command_name)
-  "\\begin"
-  "\\end"
   "\\newcommand"
   "\\renewcommand"
   "\\DeclareRobustCommand"
+  "\\DeclareMathOperator"
+  "\\newglossaryentry"
   "\\caption"
+  "\\cite"
+  "\\label"
+  "\\newlabel"
+  "\\label"
+  "\\ref"
+  "\\cref"
+  "\\eqref"
+  "\\color"
+  "\\colorbox"
+  "\\textcolor"
+  "\\pagecolor"
+  "\\definecolor"
+  "\\definecolorset"
+  "\\newtheorem"
+  "\\declaretheorem"
+  "\\newacronym"
+  "\\newglossaryentry"
 ] @function.macro
 
 (comment) @comment
@@ -38,6 +55,7 @@
   "\\usepackage"
   "\\documentclass"
   "\\input"
+  "\\include"
   "\\subfile"
   "\\subfileinclude"
   "\\subfileinclude"
@@ -51,6 +69,7 @@
 ] @include
 
 [
+  "\\part"
   "\\chapter"
   "\\section"
   "\\subsection"
@@ -64,20 +83,32 @@
 ((word) @punctuation.delimiter
 (#eq? @punctuation.delimiter "&"))
 
-[
-  (label_definition)
-  (label_reference)
-  (equation_label_reference)
-  (label_number)
-] @label
+["$" "\\[" "\\]" "\\(" "\\)"] @punctuation.delimiter
+
+(label_definition
+ name: (_) @text.reference)
+(label_reference
+ label: (_) @text.reference)
+(equation_label_reference
+ label: (_) @text.reference)
+(label_reference
+ label: (_) @text.reference)
+(label_number
+ label: (_) @text.reference)
+
+(citation
+ key: (word) @text.reference)
 
 (key_val_pair
   key: (_) @parameter
   value: (_))
 
-["(" ")" "[" "]" "{" "}"] @punctuation.bracket
+["[" "]" "{" "}"] @punctuation.bracket ;"(" ")" is has no special meaning in LaTeX
 
 (chapter
+  text: (brace_group) @text.title)
+
+(part
   text: (brace_group) @text.title)
 
 (section
@@ -128,8 +159,19 @@
 ((generic_command
   name:(generic_command_name) @_name
   .
-  arg: (_) @text.url)
+  arg: (_) @text.uri)
  (#match? @_name "^(\\url|\\href)$"))
 
 (ERROR) @error
 
+[
+  "\\begin"
+  "\\end"
+] @text.environment
+
+(begin
+ name: (_) @text.environment.name
+ (#not-match? @text.environment.name "^(displaymath|equation|multline|eqnarray|align|array|split)[*]?$"))
+(end
+ name: (_) @text.environment.name
+ (#not-match? @text.environment.name "^(displaymath|equation|multline|eqnarray|align|array|split)[*]?$"))
