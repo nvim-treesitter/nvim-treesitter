@@ -77,6 +77,9 @@ highlight default TSEmphasis term=italic cterm=italic gui=italic
 highlight default TSUnderline term=underline cterm=underline gui=underline
 highlight default TSStrike term=strikethrough cterm=strikethrough gui=strikethrough
 highlight default link TSMath Special
+highlight default link TSTextReference Constant
+highlight default link TSEnviroment Macro
+highlight default link TSEnviromentName Normal
 highlight default link TSTitle Title
 highlight default link TSLiteral String
 highlight default link TSURI Underlined

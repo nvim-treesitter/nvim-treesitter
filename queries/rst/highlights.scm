@@ -127,7 +127,7 @@
   (footnote_reference)
   (citation_reference)
   (reference)
-] @constant
+] @text.reference
 
 ;; Others
 

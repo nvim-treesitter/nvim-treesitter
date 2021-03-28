@@ -1,5 +1,6 @@
 [
   (chapter)
+  (part)
   (section)
   (subsection)
   (subsubsection)
@@ -7,4 +8,5 @@
   (subparagraph)
 
   (environment)
+  (displayed_equation)
 ] @fold
