@@ -1,3 +1,23 @@
+;; Math
+[
+ (displayed_equation)
+ (inline_formula)
+] @text.math
+
+;; This highlights the whole environment like vimtex does
+((environment
+  (begin
+   name: (word) @_env)) @text.math
+   (#match? @_env "^(displaymath|eqn|eqnarray|align)[*]?$"))
+
+;; This at the begining of the file would be the alternative to highlight
+;; only the interior of the environment
+;((environment
+  ;(begin
+   ;name: (word) @_env) @none
+   ;(end) @none) @text.math
+   ;(#match? @_env "^(displaymath|eqn|eqnarray)[*]?$"))
+
 [
   (generic_command_name)
   "\\begin"
@@ -5,6 +25,7 @@
   "\\newcommand"
   "\\renewcommand"
   "\\DeclareRobustCommand"
+  "\\caption"
 ] @function.macro
 
 (comment) @comment
@@ -37,6 +58,11 @@
   "\\paragraph"
   "\\subparagraph"
 ] @type
+
+"\\item" @punctuation.special
+
+((word) @punctuation.delimiter
+(#eq? @punctuation.delimiter "&"))
 
 [
   (label_definition)
@@ -99,12 +125,11 @@
   arg: (_) @text.strong)
  (#match? @_name "^(\\textbf|\\mathbf)$"))
 
+((generic_command
+  name:(generic_command_name) @_name
+  .
+  arg: (_) @text.url)
+ (#match? @_name "^(\\url|\\href)$"))
+
 (ERROR) @error
 
-;; Controversial
-; Add @text.bullet?
-"\\item" @punctuation.special
-
-;; Math (TODO)
-;(displayed_equation)
-;(inline_formula)

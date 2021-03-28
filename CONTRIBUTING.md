@@ -167,6 +167,7 @@ Mainly for markup languages.
 @text.title
 @text.literal
 @text.uri
+@text.math (e.g. for LaTeX math enviroments)
 
 @text.note
 @text.warning
