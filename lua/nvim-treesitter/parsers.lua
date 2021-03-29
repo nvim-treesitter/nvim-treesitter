@@ -584,6 +584,8 @@ function M.get_parser(bufnr, lang)
   end
 end
 
+-- @deprecated This is only kept for legacy purposes.
+--             All root nodes should be accounted for.
 function M.get_tree_root(bufnr)
   local bufnr = bufnr or api.nvim_get_current_buf()
 

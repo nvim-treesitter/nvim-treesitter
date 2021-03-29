@@ -333,12 +333,16 @@ Swaps the nodes or ranges.
 set `cursor_to_second`  to true to move the cursor to the second node
 
 						  *ts_utils.memoize_by_buf_tick*
-memoize_by_buf_tick(fn)~
+memoize_by_buf_tick(fn, options)~
 
-Cache values by bufnr tick change
+Caches the return value for a function and returns the cache value if the tick
+of the buffer has not changed from the previous.
 
-		`fn`: a function that takes a bufnr as argument
+		`fn`: a function that takes any arguments
 		and returns a value to store.
+		`options?`: <table>
+                 - `bufnr`: a function/value that extracts the bufnr from the given arguments.
+                 - `key`: a function/value that extracts the cache key from the given arguments.
 		`returns`: a function to call with bufnr as argument to
 		retrieve the value from the cache
 

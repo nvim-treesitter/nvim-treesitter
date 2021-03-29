@@ -3,7 +3,6 @@
 -- its the way nvim-treesitter uses to "understand" the code
 
 local queries = require'nvim-treesitter.query'
-local parsers = require'nvim-treesitter.parsers'
 local ts_utils = require'nvim-treesitter.ts_utils'
 local api = vim.api
 
@@ -91,13 +90,12 @@ end
 --- Iterates over a nodes scopes moving from the bottom up
 function M.iter_scope_tree(node, bufnr)
   local last_node = node
-
   return function()
     if not last_node then
       return
     end
 
-    local scope = M.containing_scope(last_node, bufnr, false) or parsers.get_tree_root(bufnr)
+    local scope = M.containing_scope(last_node, bufnr, false) or ts_utils.get_root_for_node(node)
 
     last_node = scope:parent()
 
@@ -222,7 +220,7 @@ function M.find_definition(node, bufnr)
     end
   end
 
-  return node, parsers.get_tree_root(bufnr), nil
+  return node, ts_utils.get_root_for_node(node), nil
 end
 
 -- Finds usages of a node in a given scope.
@@ -235,7 +233,7 @@ function M.find_usages(node, scope_node, bufnr)
 
   if not node_text or #node_text < 1 then return {} end
 
-  local scope_node = scope_node or parsers.get_parser(bufnr):parse()[1]:root()
+  local scope_node = scope_node or ts_utils.get_root_for_node(node)
   local usages = {}
 
   for match in M.iter_locals(bufnr, scope_node) do

@@ -1,6 +1,6 @@
 local parsers = require'nvim-treesitter.parsers'
 local queries = require'nvim-treesitter.query'
-local utils = require'nvim-treesitter.ts_utils'
+local tsutils = require'nvim-treesitter.ts_utils'
 
 local M = {}
 
@@ -21,9 +21,9 @@ local function node_fmt(node)
   return tostring(node)
 end
 
-local get_indents = utils.memoize_by_buf_tick(function(bufnr)
+local get_indents = tsutils.memoize_by_buf_tick(function(bufnr, root, lang)
   local get_map = function(capture)
-    local matches = queries.get_capture_matches(bufnr, capture, 'indents') or {}
+    local matches = queries.get_capture_matches(bufnr, capture, 'indents', root, lang) or {}
     local map = {}
     for _, node in ipairs(matches) do
       map[tostring(node)] = true
@@ -37,14 +37,23 @@ local get_indents = utils.memoize_by_buf_tick(function(bufnr)
     returns = get_map('@return.node'),
     ignores = get_map('@ignore.node'),
   }
-end)
+end, {
+  -- Memoize by bufnr and lang together.
+  key = function(bufnr, _, lang)
+    return tostring(bufnr) .. '_' .. lang
+  end
+})
 
 function M.get_indent(lnum)
   local parser = parsers.get_parser()
   if not parser or not lnum then return -1 end
 
-  local q = get_indents(vim.api.nvim_get_current_buf())
-  local root = parser:parse()[1]:root()
+  local root, _, lang_tree = tsutils.get_root_for_position(lnum, 0, parser)
+
+  -- Not likely, but just in case...
+  if not root then return 0 end
+
+  local q = get_indents(vim.api.nvim_get_current_buf(), root, lang_tree:lang())
   local node = get_node_at_line(root, lnum-1)
 
   local indent = 0
