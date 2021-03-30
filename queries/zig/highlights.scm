@@ -1,6 +1,10 @@
-;; Assume all-caps names are constants
+; Types
 
-; (identifier) @variable
+; Zig
+
+; Variables
+; --------------
+(identifier) @variable
 
 (parameter (identifier) @variable)
 
@@ -15,11 +19,12 @@
 (function_declaration (identifier) @function)
 
 ; Function calls
-(call_expression
-  function: (identifier) @function)
+; (call_expression
+;   function: (identifier)) @function
 
 (build_in_call_expr
-  function: (identifier) @attribute)
+  function: (identifier) @function.builtin
+)
 
 ;; other identifiers
 (type_identifier) @type
@@ -37,12 +42,18 @@
 (undefined_literal) @constant.builtin
 (null_literal) @constant.builtin
 
+(ERROR) @error
+
 (string_literal) @string
-(multiline_string_literal) @string
+(multiline_string_literal "\\\\" @string.special) 
 
 (escape_sequence) @constant.builtin
 
+(label_identifier) @label
 
+(call_modifier) @keyword ; async
+
+(binary_operator) @keyword.operator
 
 [
   "align"
@@ -51,7 +62,6 @@
   ; "anyframe"
   ; "anytype"
   ;"asm"
-  ; "async"
   "await"
   "break"
   ; "callconv"
@@ -67,7 +77,6 @@
   "export"
   "extern"
   "false"
-  ; "fn"
   "for"
   "if"
   "inline"
@@ -116,6 +125,7 @@
 (assignment_modifier) @attribute
 
 [
+  ".{"
   "("
   ")"
   "["
@@ -148,7 +158,7 @@
   ;"<"
   ;"<<"
   "<<="
-  ;"<="
+  ; "<="
   "-"
   "-="
   "-%"
@@ -164,7 +174,6 @@
   "+="
   ;"+%"
   "+%="
-  "c\""
   "?"
   ;">"
   ;">>"
