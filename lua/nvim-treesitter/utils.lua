@@ -166,4 +166,16 @@ function M.difference(tbl1, tbl2)
   end)
 end
 
+function M.identity(a)
+  return a
+end
+
+function M.constant(a)
+  return function() return a end
+end
+
+function M.to_func(a)
+  return type(a) == 'function' and a or M.constant(a)
+end
+
 return M

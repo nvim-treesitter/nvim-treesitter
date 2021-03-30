@@ -1,5 +1,5 @@
 local api = vim.api
-local utils = require'nvim-treesitter.ts_utils'
+local tsutils = require'nvim-treesitter.ts_utils'
 local query = require'nvim-treesitter.query'
 local parsers = require'nvim-treesitter.parsers'
 
@@ -7,18 +7,19 @@ local M = {}
 
 -- This is cached on buf tick to avoid computing that multiple times
 -- Especially not for every line in the file when `zx` is hit
-local folds_levels = utils.memoize_by_buf_tick(function(bufnr)
-  local lang = parsers.get_buf_lang(bufnr)
+local folds_levels = tsutils.memoize_by_buf_tick(function(bufnr)
   local max_fold_level = api.nvim_win_get_option(0, 'foldnestmax')
+  local parser = parsers.get_parser(bufnr)
 
-  local matches
-  if query.has_folds(lang) then
-    matches = query.get_capture_matches(bufnr, "@fold", "folds")
-  elseif query.has_locals(lang) then
-    matches = query.get_capture_matches(bufnr, "@scope", "locals")
-  else
-    return {}
-  end
+  if not parser then return {} end
+
+  local matches = query.get_capture_matches_recursively(bufnr, function(lang)
+    if query.has_folds(lang) then
+      return "@fold", "folds"
+    elseif query.has_locals(lang) then
+      return "@scope", "locals"
+    end
+  end)
 
   local levels_tmp = {}
 
@@ -35,7 +36,6 @@ local folds_levels = utils.memoize_by_buf_tick(function(bufnr)
       levels_tmp[start] = (levels_tmp[start] or 0) + 1
       levels_tmp[stop] = (levels_tmp[stop] or 0) - 1
     end
-
   end
 
   local levels = {}
