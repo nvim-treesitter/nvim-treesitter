@@ -19,8 +19,8 @@
 (comment) @comment
 
 [
-    (BALANCE) (OPEN) (CLOSE) (COMMODITY) (PAD)
-    (EVENT) (PRICE) (NOTE) (DOCUMENT) (QUERY)
-    (CUSTOM) (PUSHTAG) (POPTAG) (PUSHMETA)
-    (POPMETA) (OPTION) (INCLUDE) (PLUGIN)
+    (balance) (open) (close) (commodity) (pad)
+    (event) (price) (note) (document) (query)
+    (custom) (pushtag) (poptag) (pushmeta)
+    (popmeta) (option) (include) (plugin)
 ] @keyword
