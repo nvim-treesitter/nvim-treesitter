@@ -103,6 +103,10 @@
 ;; Normal parameters
 (parameters
   (identifier) @parameter)
+
+((identifier) @parameter
+(#is-fast? @parameter "definition.parameter"))
+
 ;; Lambda parameters
 (lambda_parameters
   (identifier) @parameter)

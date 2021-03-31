@@ -84,6 +84,21 @@ query.add_predicate("is?", function(match, pattern, bufnr, pred)
   return vim.tbl_contains(types, kind)
 end)
 
+query.add_predicate('is-fast?', function(match, pattern, bufnr, pred)
+  if not valid_args("is-fast?", pred, 2) then return end
+
+  -- Avoid circular dependencies
+  local locals = require"nvim-treesitter.locals"
+  local node = match[pred[2]]
+  local type =pred[3]
+
+  if not node then return true end
+
+  local found = locals.find_definition_fast(bufnr, node)
+
+  return found and found.type and type == found.type
+end)
+
 query.add_predicate("has-type?", function(match, pattern, bufnr, pred)
   if not valid_args(pred[1], pred, 2) then
     return

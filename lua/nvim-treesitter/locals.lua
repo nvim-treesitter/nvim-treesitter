@@ -5,9 +5,93 @@
 local queries = require "nvim-treesitter.query"
 local ts_utils = require "nvim-treesitter.ts_utils"
 local ts_query = vim.treesitter.query
+local parsers = require'nvim-treesitter.parsers'
 local api = vim.api
+local caching = require'nvim-treesitter.caching'
+local queries = require'nvim-treesitter.query'
 
 local M = {}
+
+local scope_tree = caching.create_buffer_cache()
+
+local function update_scope_tree(cache, buf, parse_node, start_row, end_row)
+  local parser = parsers.get_parser(buf)
+
+  --TODO: do that in a refining manner only updating a specific region?
+  cache.scopes = {}
+  parser:parse()
+  parser:for_each_tree(function(tree, lang_tree)
+    local lang = lang_tree:lang()
+
+    local query = queries.get_query(lang, 'locals')
+
+    local definitions = {}
+    local range = tree:root() and {tree:root():range()}
+    local matches = query
+       and query:iter_matches(parse_node or tree:root(), buf, start_row or range[1], end_row or (range[3] + 1))
+       or function() end
+    for _, match in matches do
+      for id, node in pairs(match) do
+        local name = query.captures[id]
+        if name == "scope" then
+          local found = cache.scopes[node:id()]
+          if found then
+            found.node = node
+          else
+            cache.scopes[node:id()] = { node = node, definitions = {} }
+          end
+        elseif name:find("^definition") then
+          local text = ts_utils.get_node_text(node, buf)[1]
+          table.insert(definitions, {node = node, type = name, text = text})
+        end
+      end
+    end
+
+    for _, d in ipairs(definitions) do
+      local parent = d.node:parent()
+      local found
+      while not found and parent do
+        found = cache.scopes[parent:id()]
+        parent = parent:parent()
+      end
+      if found then
+        found.definitions[d.text] = d
+      end
+    end
+  end)
+end
+
+function M.get_scope_tree_fast(buf)
+  local buf = buf or api.nvim_get_current_buf()
+  local cache = scope_tree.get('scopes', buf)
+  local new_tick = api.nvim_buf_get_changedtick(buf)
+
+  if not cache then
+    cache = {}
+    cache.scopes = {}
+  end
+  if not cache.tick or new_tick > cache.tick then
+    update_scope_tree(cache, buf)
+    cache.tick = new_tick
+    scope_tree.set('scopes', buf, cache)
+  end
+  return cache.scopes
+end
+
+function M.find_definition_fast(buf, node)
+  local scopes = M.get_scope_tree_fast(buf)
+  local search = ts_utils.get_node_text(node, buf)[1]
+  local parent = node:parent()
+  local found, found_scope
+  while not found and parent do
+    found_scope = scopes[parent:id()]
+    if found_scope then
+      found = found_scope.definitions[search]
+    end
+    parent = parent:parent()
+  end
+  return found, found_scope
+end
 
 function M.collect_locals(bufnr)
   return queries.collect_group_results(bufnr, "locals")
