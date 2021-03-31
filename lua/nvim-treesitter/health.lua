@@ -13,6 +13,7 @@ local M = {}
 
 local function install_health()
   health_start('Installation')
+
   if fn.executable('tree-sitter') == 0 then
     health_warn('`tree-sitter` executable not found (parser generator, only needed for :TSInstallFromGrammar,'..
                 ' not required for :TSInstall)')
@@ -39,6 +40,9 @@ local function install_health()
     })
   else
     health_ok('`cc` executable found.')
+  end
+  if vim.treesitter.language_version then
+    print('\nNeovim was compiled with tree-sitter runtime ABI version '..vim.treesitter.language_version..'.')
   end
 end
 
