@@ -54,7 +54,7 @@
     "revision": "ed8723cd660451c0b192af79183e29b5ce9916d2"
   },
   "haskell": {
-    "revision": "1b00b9fbf93a2c8a22db3a5be748527d1d428922"
+    "revision": "381dca04f20381ecb3f4306d727474755ad19cc4"
   },
   "html": {
     "revision": "d93af487cc75120c89257195e6be46c999c6ba18"
@@ -102,7 +102,7 @@
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
   },
   "php": {
-    "revision": "b2f35ae49322c0513c4ac0c7e3e94e7f183ab57e"
+    "revision": "c0e8713a8d87ed810adea20f9aef4b95c9df6b13"
   },
   "python": {
     "revision": "d6210ceab11e8d812d4ab59c07c81458ec6e5184"
@@ -147,7 +147,7 @@
     "revision": "1f9562185ef09863a3eee5f5f1ed2858b94c8cda"
   },
   "toml": {
-    "revision": "474fbbec27e27d76b45aeaf9191e8acb13a699e2"
+    "revision": "7cff70bbcbbc62001b465603ca1ea88edd668704"
   },
   "tsx": {
     "revision": "3e897ea5925f037cfae2e551f8e6b12eec2a201a"
@@ -165,7 +165,7 @@
     "revision": "efd20240618d5c1b03ad0d5eac341202196f282d"
   },
   "yaml": {
-    "revision": "59bf31b8a2138408de3f06d2f89fe86b8cfc302b"
+    "revision": "2240ccd0538c8f41394b9cd2202a175b1660b8d6"
   },
   "zig": {
     "revision": "f445ec51b1e1503e44c562bb669eeff8db5e4ea7"
