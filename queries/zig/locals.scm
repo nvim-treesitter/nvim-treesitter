@@ -1,3 +1,4 @@
+
 (function_declaration
   name: (identifier) @definition.function
 )
@@ -22,4 +23,5 @@
   (while_expression)
   (for_expression)
   (test_expression)
+  (anonymous_array_expr)
 ] @scope

@@ -10,6 +10,7 @@
   (test_expression)
   (struct_expression)
   (anonymous_struct_enum)
+  (anonymous_array_expr)
   (union_expression)
   (enum_expression)
 ] @fold

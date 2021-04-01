@@ -1,0 +1,1 @@
+(line_comment) @comment
