@@ -45,7 +45,7 @@
     "revision": "bc4074ed0aa195d11b8c78da0e1f4a5509566844"
   },
   "glimmer": {
-    "revision": "91a09b685fafbbc2f3c776acd2026d4f2affa60d"
+    "revision": "f2b3d62c44befed0d25a54d878964affb5d0d0a2"
   },
   "go": {
     "revision": "2a83dfdd759a632651f852aa4dc0af2525fae5cd"
@@ -84,7 +84,7 @@
     "revision": "ea43db6830632fd3531b9cbc34a93502b0d4339a"
   },
   "ledger": {
-    "revision": "d4a37df03a51e6949256773f43091cb8388eb6b2"
+    "revision": "1fd894ad637ff004e68ddad2c56667d290c3b1a9"
   },
   "lua": {
     "revision": "b6d4e9e10ccb7b3afb45018fbc391b4439306b23"
@@ -129,7 +129,7 @@
     "revision": "a360da0a29a19c281d08295a35ecd0544d2da211"
   },
   "scala": {
-    "revision": "f7721fd339c0dc0c396cf81c4ae319e6562121d9"
+    "revision": "fb23ed9a99da012d86b7a5059b9d8928607cce29"
   },
   "sparql": {
     "revision": "cf57a922b6a48664131617a5c7fe06e401e700f7"
