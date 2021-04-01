@@ -76,7 +76,6 @@ list.ledger = {
   install_info = {
     url = "https://github.com/cbarrete/tree-sitter-ledger",
     files = { "src/parser.c" },
-    requires_generate_from_grammar  = true,
   },
   maintainers = {"@cbarrete"},
 }
