@@ -3,6 +3,7 @@
   (struct_item)
   (enum_item)
   (impl_item)
+  (declaration_list)
   (for_expression)
   (struct_expression)
   (match_expression)
