@@ -544,11 +544,20 @@ function M.ft_to_lang(ft)
 end
 
 function M.available_parsers()
-  return vim.tbl_keys(M.list)
+  if vim.fn.executable('tree-sitter') == 1 then
+    return vim.tbl_keys(M.list)
+  else
+    return vim.tbl_filter(function(p) return not M.list[p].install_info.requires_generate_from_grammar end,
+                          vim.tbl_keys(M.list))
+  end
 end
 
 function M.maintained_parsers()
-  return vim.tbl_filter(function(lang) return M.list[lang].maintainers end, M.available_parsers())
+  local has_tree_sitter_cli = vim.fn.executable('tree-sitter') == 1
+  return vim.tbl_filter(function(lang)
+    return M.list[lang].maintainers
+           and (has_tree_sitter_cli or not M.list[lang].install_info.requires_generate_from_grammar) end,
+    M.available_parsers())
 end
 
 function M.get_parser_configs()
