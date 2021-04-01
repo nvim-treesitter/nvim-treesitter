@@ -94,7 +94,7 @@ query.add_predicate('is-fast?', function(match, pattern, bufnr, pred)
 
   if not node then return true end
 
-  local found = locals.find_definition_fast(bufnr, node)
+  local found = locals.find_definition_fast(node, bufnr)
 
   return found and found.type and type == found.type
 end)
