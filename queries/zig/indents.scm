@@ -11,6 +11,7 @@
   (struct_expression)
   (struct_construction)
   (anonymous_struct_enum)
+  (anonymous_array_expr)
   (enum_expression)
   (union_expression)
 ] @indent
