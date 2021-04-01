@@ -25,6 +25,17 @@ local function install_health()
     health_ok('`tree-sitter` found '..version..' (parser generator, only needed for :TSInstallFromGrammar)')
   end
 
+  if fn.executable('node') == 0 then
+    health_warn('`node` executable not found (only needed for :TSInstallFromGrammar,'..
+                ' not required for :TSInstall)')
+  else
+    local handle = io.popen('node --version')
+    local result = handle:read("*a")
+    handle:close()
+    local version = vim.split(result,'\n')[1]
+    health_ok('`node` found '..version..' (only needed for :TSInstallFromGrammar)')
+  end
+
   if fn.executable('git') == 0 then
     health_error('`git` executable not found.', {
       'Install it with your package manager.',

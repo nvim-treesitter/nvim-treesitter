@@ -169,6 +169,9 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
     end
     return
   end
+  if generate_from_grammar and vim.fn.executable('node') ~= 1 then
+    api.nvim_err_writeln('node JS not found: `node` is not executable!')
+  end
   local cc = shell.select_executable(M.compilers)
   if not cc then
     api.nvim_err_writeln('No C compiler found! "'
