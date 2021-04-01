@@ -10,3 +10,5 @@
   (jsx_closing_element)
   ">"
 ] @branch
+
+(jsx_text) @ignore_end

@@ -36,6 +36,7 @@ local get_indents = tsutils.memoize_by_buf_tick(function(bufnr, root, lang)
     branches = get_map('@branch.node'),
     returns = get_map('@return.node'),
     ignores = get_map('@ignore.node'),
+    ignores_end = get_map('@ignore_end.node'),
   }
 end, {
   -- Memoize by bufnr and lang together.
@@ -43,6 +44,22 @@ end, {
     return tostring(bufnr) .. '_' .. lang
   end
 })
+
+local function get_last_node_same_line(node, ignores)
+  local srow = node:start()
+  local next_node = tsutils.get_next_node(node, true, true)
+  if not next_node or ignores[node_fmt(next_node)] then return node end
+
+  local next_srow = next_node:start()
+  while srow == next_srow do
+    node = next_node
+    next_node = tsutils.get_next_node(node, true, true)
+    if not next_node or ignores[node_fmt(next_node)] then return node end
+    next_srow = next_node:start()
+  end
+
+  return node
+end
 
 function M.get_indent(lnum)
   local parser = parsers.get_parser()
@@ -71,6 +88,7 @@ function M.get_indent(lnum)
         prevnonblank = vim.fn.prevnonblank(prevnonblank-1)
         prev_node = get_node_at_line(root, prevnonblank-1)
       end
+      prev_node = get_last_node_same_line(prev_node, q.ignores_end)
 
       -- nodes can be marked @return to prevent using them
       if not q.returns[node_fmt(prev_node)] then
