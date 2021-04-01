@@ -11,6 +11,8 @@ local health_warn = vim.fn['health#report_warn']
 
 local M = {}
 
+local NVIM_TREESITTER_MINIMUM_ABI = 13
+
 local function install_health()
   health_start('Installation')
 
@@ -53,7 +55,15 @@ local function install_health()
     health_ok('`cc` executable found.')
   end
   if vim.treesitter.language_version then
-    print('\nNeovim was compiled with tree-sitter runtime ABI version '..vim.treesitter.language_version..'.')
+    if vim.treesitter.language_version >= NVIM_TREESITTER_MINIMUM_ABI then
+      health_ok('Neovim was compiled with tree-sitter runtime ABI version '..vim.treesitter.language_version
+                 ..' (required >='..NVIM_TREESITTER_MINIMUM_ABI..'). Parsers must be compatible with runtime ABI.')
+    else
+      health_error('Neovim was compiled with tree-sitter runtime ABI version '..vim.treesitter.language_version..'.\n'
+                    ..'nvim-treesitter expects at least ABI version '..NVIM_TREESITTER_MINIMUM_ABI..'\n'
+                    ..'Please make sure that Neovim is linked against are recent tree-sitter runtime when building'
+                    ..' or raise an issue at your Neovim packager. Parsers must be compatible with runtime ABI.')
+    end
   end
 end
 
