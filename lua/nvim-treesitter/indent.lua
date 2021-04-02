@@ -73,7 +73,7 @@ function M.get_indent(lnum)
       end
 
       -- nodes can be marked @return to prevent using them
-      if not q.returns[node_fmt(prev_node)] then
+      if prev_node and not q.returns[node_fmt(prev_node)] then
         local row = prev_node:start()
         local end_row = prev_node:end_()
 
