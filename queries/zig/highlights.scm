@@ -22,7 +22,7 @@
   function: (identifier) @function)
 
 (build_in_call_expr
-  function: (identifier) @function
+  function: (identifier) @function.builtin
 )
 
 ;; other identifiers
