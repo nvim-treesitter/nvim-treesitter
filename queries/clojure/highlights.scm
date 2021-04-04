@@ -18,13 +18,13 @@
 (meta_lit
  marker: "^" @punctuation.special)
 
+;;; parameter-related
+((sym_lit) @parameter
+(#match? @parameter "^[&]"))
+
 ;; dynamic variables
 ((sym_lit) @variable.builtin
- (#match? @variable.builtin "^\\*.+\\*$"))
-
-;; parameter-related
-((sym_lit) @parameter
- (#match? @parameter "^&.*$"))
+ (#match? @variable.builtin "^[*].+[*]$"))
 
 ;; gensym
 ((sym_lit) @variable
@@ -44,8 +44,8 @@
  (sym_lit) @function.macro
  (#match? @function.macro "^(\\.|\\.\\.|\\->|\\->>|amap|and|areduce|as\\->|assert|binding|bound\\-fn|case|catch|comment|cond|cond\\->|cond\\->>|condp|delay|do|doseq|dosync|dotimes|doto|extend-protocol|extend-type|finally|fn|fn\\*|for|future|gen-class|gen-interface|if|if\\-let|if\\-not|if\\-some|import|io!|lazy\\-cat|lazy\\-seq|let|letfn|locking|loop|memfn|monitor\\-enter|monitor\\-exit|or|proxy|proxy-super|pvalues|quote|recur|refer\\-clojure|reify|set!|some\\->|some\\->>|sync|throw|time|try|unquote|unquote\\-splicing|var|vswap!|when|when\\-first|when\\-let|when\\-not|when\\-some|while|with\\-bindings|with\\-in\\-str|with\\-loading\\-context|with\\-local\\-vars|with\\-open|with\\-out\\-str|with\\-precision|with\\-redefs)$"))
 
-;; clojure.core=> (cp/pprint (sort (keep (fn [[s v]] (when-not (:macro (meta v)) s)) (ns-publics *ns*))))
-;; ...and then some manual filtering...
+;;; clojure.core=> (cp/pprint (sort (keep (fn [[s v]] (when-not (:macro (meta v)) s)) (ns-publics *ns*))))
+;;; ...and then some manual filtering...
 (list_lit
  .
  (sym_lit) @function.builtin
