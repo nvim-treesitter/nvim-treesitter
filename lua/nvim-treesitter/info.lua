@@ -37,15 +37,20 @@ local function print_info_module(sorted_languages, mod)
   end
 end
 
-local function print_info_modules(sorted_languages)
-  local max_str_len = #sorted_languages[1]
+local function print_info_modules(parserlist)
+  table.sort(parserlist, function(a, b) return #a > #b end)
+  local max_str_len = #parserlist[1]
+
   local header = string.rep(' ', max_str_len + 2)
-  for _, mod in pairs(configs.available_modules()) do
+  local mods = configs.available_modules()
+  table.sort(mods)
+  for _, mod in pairs(mods) do
     header = string.format('%s%s ', header, mod)
   end
   api.nvim_out_write(header..'\n')
 
-  for _, lang in pairs(sorted_languages) do
+  table.sort(parserlist)
+  for _, lang in pairs(parserlist) do
     local padding = string.rep(' ', max_str_len - #lang)
     api.nvim_out_write(lang..":"..padding)
 
@@ -68,7 +73,6 @@ local function module_info(mod)
   if mod and not configs.get_module(mod) then return end
 
   local parserlist = parsers.available_parsers()
-  table.sort(parserlist, function(a, b) return #a > #b end)
   if mod then
     print_info_module(parserlist, mod)
   else
