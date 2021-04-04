@@ -54,6 +54,15 @@ list.clojure = {
   maintainers = {"@sogaiu"},
 }
 
+list.commonlisp = {
+  install_info = {
+    url = "~/projects/tree-sitter-commonlisp",
+    files = { "src/parser.c" },
+  },
+  filetype = 'lisp',
+  maintainers = {"@theHamsta"},
+}
+
 list.cpp = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-cpp",
