@@ -41,29 +41,26 @@ local function print_info_modules(parserlist)
   table.sort(parserlist, function(a, b) return #a > #b end)
   local max_str_len = #parserlist[1]
 
-  local header = string.rep(' ', max_str_len + 2)
+  local header = string.rep(' ', max_str_len + 1)
   local mods = configs.available_modules()
   table.sort(mods)
   for _, mod in pairs(mods) do
-    header = string.format('%s%s ', header, mod)
+    header = string.format('%s %s ', header, mod)
   end
-  api.nvim_out_write(header..'\n')
+  api.nvim_out_write(header .. '\n')
 
   table.sort(parserlist)
   for _, lang in pairs(parserlist) do
-    local padding = string.rep(' ', max_str_len - #lang)
-    api.nvim_out_write(lang..":"..padding)
+    local padding = string.rep(' ', max_str_len - #lang + 1)
+    api.nvim_out_write(lang .. ":" .. padding)
 
-    for _, mod in pairs(configs.available_modules()) do
-      local pad_len = #mod / 2 + 1
-      api.nvim_out_write(string.rep(' ', pad_len))
-
+    for _, mod in pairs(mods) do
       if configs.is_enabled(mod, lang) then
         api.nvim_out_write('✓')
       else
         api.nvim_out_write('✗')
       end
-      api.nvim_out_write(string.rep(' ', pad_len - 1))
+      api.nvim_out_write(string.rep(' ', #mod + 1))
     end
     api.nvim_out_write('\n')
   end
