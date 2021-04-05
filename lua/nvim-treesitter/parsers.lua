@@ -56,7 +56,7 @@ list.clojure = {
 
 list.commonlisp = {
   install_info = {
-    url = "~/projects/tree-sitter-commonlisp",
+    url = "https://github.com/theHamsta/tree-sitter-commonlisp",
     files = { "src/parser.c" },
   },
   filetype = 'lisp',

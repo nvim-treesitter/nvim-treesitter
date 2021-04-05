@@ -46,3 +46,27 @@
  (sym_lit) @_let (#match? @_let "(cl:|alexandria)?(with-gensyms|dotimes|with-foreign-object)")
  .
  (list_lit . (sym_lit) @definition.var)) @scope
+
+(list_lit
+ .
+ (kwd_lit) @_import_from (#eq? @_import_from ":import-from")
+ .
+ (_)
+ (kwd_lit (kwd_symbol) @definition.import))
+
+(list_lit
+ .
+ (kwd_lit) @_import_from (#eq? @_import_from ":import-from")
+ .
+ (_)
+ (sym_lit) @definition.import)
+
+(list_lit
+ .
+ (kwd_lit) @_use (#eq? @_use ":use")
+ (kwd_lit (kwd_symbol) @definition.import))
+
+(list_lit
+ .
+ (kwd_lit) @_use (#eq? @_use ":use")
+ (sym_lit) @definition.import)
