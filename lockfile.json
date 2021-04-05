@@ -45,7 +45,7 @@
     "revision": "bc4074ed0aa195d11b8c78da0e1f4a5509566844"
   },
   "glimmer": {
-    "revision": "f2b3d62c44befed0d25a54d878964affb5d0d0a2"
+    "revision": "ca8d1533c91107039e7a3f84019378eefe357582"
   },
   "go": {
     "revision": "2a83dfdd759a632651f852aa4dc0af2525fae5cd"
@@ -162,7 +162,7 @@
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
   },
   "vue": {
-    "revision": "efd20240618d5c1b03ad0d5eac341202196f282d"
+    "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
   },
   "yaml": {
     "revision": "2240ccd0538c8f41394b9cd2202a175b1660b8d6"
