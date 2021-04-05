@@ -269,8 +269,17 @@ A list of languages can be found at |:TSInstallInfo|
                                                                *:TSModuleInfo*
 :TSModuleInfo [{module}]~
 
-List modules state for the current session.
+List the state for the given module or all modules for the current session in
+a new buffer.
 
+These highlight groups are used by default:
+>
+    highlight default TSModuleInfoGood guifg=LightGreen gui=bold
+    highlight default TSModuleInfoBad  guifg=Crimson
+    highlight default link TSModuleInfoHeader    Type
+    highlight default link TSModuleInfoNamespace Statement
+    highlight default link TSModuleInfoParser    Identifier
+<
 ==============================================================================
 UTILS                                                  *nvim-treesitter-utils*
 
