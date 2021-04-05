@@ -254,7 +254,7 @@ EOF
 
 #### Folding
 
-Tree-sitter based folding.
+Tree-sitter based folding. *(Technically not a module because it's per windows and not per buffer.)*
 
 ```vim
 set foldmethod=expr
