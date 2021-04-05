@@ -189,13 +189,10 @@ function M.get_capture_matches(bufnr, capture_string, query_group, root, lang)
 end
 
 function M.find_best_match(bufnr, capture_string, query_group, filter_predicate, scoring_function, root)
-  if not string.sub(capture_string, 1,2) == '@' then
-    api.nvim_err_writeln('capture_string must start with "@"')
-    return
+  if string.sub(capture_string, 1,2) == '@' then
+    --remove leading "@"
+    capture_string = string.sub(capture_string, 2)
   end
-
-  --remove leading "@"
-  capture_string = string.sub(capture_string, 2)
 
   local best
   local best_score

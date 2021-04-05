@@ -111,6 +111,7 @@ end
 -- @param path the '.' separated path
 -- @returns the value at path or nil
 function M.get_at_path(tbl, path)
+  if path == '' then return tbl end
   local segments = vim.split(path, '.', true)
   local result = tbl
 
