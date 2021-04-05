@@ -1,3 +1,8 @@
+(sym_lit) @variable
+
+;; A highlighting for functions/macros in th cl namespace is available in theHamsta/nvim-treesitter-commonlisp
+;(list_lit . (sym_lit) @function.builtin (#cl-standard-symbol? @function.builtin))
+
 (dis_expr) @comment
 
 (defun_keyword) @function.macro
@@ -10,9 +15,14 @@
   lambda_list: (list_lit (list_lit . (sym_lit) . (sym_lit) @type)))
 (defun_header
   lambda_list: (list_lit (list_lit . (sym_lit) @parameter . (_))))
+(defun_header
+  specifier: (sym_lit) @type)
+
+[":" "."] @punctuation.special
 
 [
   (accumulation_verb)
+  (for_clause_word)
   "for"
   "and"
   "finally"
@@ -21,59 +31,51 @@
   "when"
   "if"
   "unless"
+  "else"
   "do"
   "loop"
   "below"
   "in"
   "from"
   "across"
+  "repeat"
   "being"
   "into"
   "with"
   "as"
   "while"
+  "until"
+  "return"
+  "initially"
 ] @function.macro
 "=" @operator
 
 (include_reader_macro) @type
-"#C" @number
+["#C" "#c"] @number
 
-(kwd_lit) @type
+[(kwd_lit) (self_referential_reader_macro)] @type
+
+(package_lit
+  package: (_) @namespace)
+"cl" @namespace
 
 (str_lit) @string
 
 (num_lit) @number
 
-((sym_lit)  @boolean (#eq? @boolean "t"))
+((sym_lit)  @boolean (#match? @boolean "^(t|T)$"))
 
 (nil_lit) @constant.builtin
 
 (comment) @comment
 
-;; metadata experiment
-(meta_lit
- marker: "^" @punctuation.special)
-
 ;; dynamic variables
 ((sym_lit) @variable.builtin
  (#match? @variable.builtin "^[*].+[*]$"))
 
-;; gensym
-((sym_lit) @variable
- (#match? @variable "^.*#$"))
-
-;; interop-ish
-(list_lit
- .
- (sym_lit) @method
- (#match? @method "^\\."))
-
-;; other symbols with dots
-((sym_lit) @variable
- (#match? @variable "\\."))
-
 ;; quote
 "'" @string.escape
+(format_specifier) @string.escape
 (quoting_lit) @string.escape
 
 ;; syntax quote
@@ -89,6 +91,12 @@
 
 (block_comment) @comment
 
+
+(with_clause
+  type: (_) @type)
+(for_clause
+  type: (_) @type)
+
 ;; defun-like things
 (list_lit
  .
@@ -97,11 +105,12 @@
  (sym_lit) @function
  (#eq? @function.macro "deftest"))
 
-;; Macros
+;;; Macros and Special Operators
 (list_lit
  .
  (sym_lit) @function.macro
- (#match? @function.macro "^(let|progn|prog1|values|error|or|and|defvar|defparameter|loop|in-package|defpackage|[e]?(type)?case|defclass|if|if-let|when-let|when|unless|cond|switch|declaim|optimize)[*]?$"))
+ ;; For a complete and more efficient version install theHamsta/nvim-treesitter-commonlisp
+ (#match? @function.macro "^(let|function|the|unwind-protect|labels|flet|tagbody|go|(symbol-)?macrolet|progn|prog1|error|or|and|defvar|defparameter|in-package|defpackage|[e]?(type)?case|defstruct|defclass|if|if-let|when-let|when|unless|cond|switch|declaim|optimize)[*]?$"))
 
 ;; constant
 ((sym_lit) @constant
@@ -111,15 +120,13 @@
   marker: "#'" @type
   value: (_) @type)
 
-"#" @type
+["#" "#p" "#P"] @type
 
-
-;;; clojure.core=> (cp/pprint (sort (keep (fn [[s v]] (when-not (:macro (meta v)) s)) (ns-publics *ns*))))
-;;; ...and then some manual filtering...
 (list_lit
  .
  (sym_lit) @function.builtin
- (#match? @function.builtin "^(mapcar|reduce|remove-if-not|cons|car|last|nth|equal[p]?|cdr|first|rest|decf|incf|format)$"))
+ ;; For a complete and more efficient version install theHamsta/nvim-treesitter-commonlisp
+ (#match? @function.builtin "^(mapcar|reduce|remove-if-not|cons|car|last|nth|equal[p]?|cdr|first|rest|format)$"))
 
 (list_lit
  .
@@ -130,4 +137,6 @@
 ((sym_lit) @type
 (#match? @type "^[&]"))
 
-[(array_dimension) "#0A"] @number
+[(array_dimension) "#0A" "#0a"] @number
+
+(char_lit) @number
