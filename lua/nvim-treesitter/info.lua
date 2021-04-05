@@ -21,28 +21,12 @@ local function install_info()
   end
 end
 
-local function print_info_module(sorted_languages, mod)
-  local max_str_len = #sorted_languages[1]
-  local header = string.format('%s%s', string.rep(' ', max_str_len + 2), mod)
-  api.nvim_out_write(header..'\n')
-  for _, lang in pairs(sorted_languages) do
-    local padding = string.rep(' ', max_str_len - #lang + #mod / 2 + 1)
-    api.nvim_out_write(lang..":"..padding)
-    if configs.is_enabled(mod, lang) then
-      api.nvim_out_write('✓')
-    else
-      api.nvim_out_write('✗')
-    end
-    api.nvim_out_write('\n')
-  end
-end
-
 -- Sort a list of modules into namespaces.
 -- {'mod1', 'mod2.sub1', 'mod2.sub2', 'mod3'}
 -- ->
 -- { default = {'mod1', 'mod3'}, mod2 = {'sub1', 'sub2'}}
 local function namespace_modules(modulelist)
-  local modules = { default = {} }
+  local modules = {}
   for _, module in ipairs(modulelist) do
     if module:find('%.') then
       local namespace, submodule = module:match('^(.*)%.(.*)$')
@@ -51,6 +35,9 @@ local function namespace_modules(modulelist)
       end
       table.insert(modules[namespace], submodule)
     else
+      if not modules.default then
+        modules.default = {}
+      end
       table.insert(modules.default, module)
     end
   end
@@ -99,17 +86,22 @@ local function append_module_table(curbuf, parserlist, namespace, modulelist)
   api.nvim_buf_set_lines(curbuf, -1, -1, true, {''})
 end
 
-local function print_info_modules(parserlist)
+local function print_info_modules(parserlist, module)
   api.nvim_command('enew')
   local curbuf = api.nvim_get_current_buf()
 
-  local modules = namespace_modules(configs.available_modules())
-  table.sort(parserlist)
+  local modules
+  if module then
+    modules = namespace_modules({module})
+  else
+    modules = namespace_modules(configs.available_modules())
+  end
 
   local namespaces = {}
   for k, _ in pairs(modules) do table.insert(namespaces, k) end
   table.sort(namespaces)
 
+  table.sort(parserlist)
   for _, namespace in ipairs(namespaces) do
     append_module_table(curbuf, parserlist, namespace, modules[namespace])
   end
@@ -130,12 +122,12 @@ local function print_info_modules(parserlist)
   ]], false)
 end
 
-local function module_info(mod)
-  if mod and not configs.get_module(mod) then return end
+local function module_info(module)
+  if module and not configs.get_module(module) then return end
 
   local parserlist = parsers.available_parsers()
-  if mod then
-    print_info_module(parserlist, mod)
+  if module then
+    print_info_modules(parserlist, module)
   else
     print_info_modules(parserlist)
   end
