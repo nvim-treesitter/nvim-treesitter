@@ -239,6 +239,7 @@
 "@"
 ".."
 "..="
+"?"
 ] @operator
 
 (closure_parameters "|" @operator "|" @operator)
