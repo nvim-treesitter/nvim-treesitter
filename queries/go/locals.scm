@@ -23,6 +23,10 @@
    left: (expression_list
            (identifier) @definition.var)))
 
+(const_declaration
+ (const_spec
+  name: (identifier) @definition.var))
+
 (type_declaration 
   (type_spec
     name: (type_identifier) @definition.type))

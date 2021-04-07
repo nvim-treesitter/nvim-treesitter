@@ -18,6 +18,9 @@
 ((identifier) @constant
  (#vim-match? @constant "^[A-Z][A-Z\\d_]+$"))
 
+(const_spec
+  name: (identifier) @constant)
+
 ; Function calls
 
 (call_expression
