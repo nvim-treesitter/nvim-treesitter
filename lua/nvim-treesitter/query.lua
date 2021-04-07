@@ -23,6 +23,19 @@ for _, query in ipairs(M.built_in_query_groups) do
   M["has_" .. query] = get_query_guard(query)
 end
 
+function M.available_query_groups()
+  local query_files = api.nvim_get_runtime_file('queries/*/*.scm', true)
+  local groups = {}
+  for _, f in ipairs(query_files) do
+    groups[vim.fn.fnamemodify(f, ':t:r')] = true
+  end
+  local list = {}
+  for k, _ in pairs(groups) do
+    table.insert(list, k)
+  end
+  return list
+end
+
 do
   local query_cache = caching.create_buffer_cache()
 
