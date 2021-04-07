@@ -136,6 +136,9 @@ local function disable_all(mod)
   end
 
   disable_mod_conf_autocmd(mod)
+  if type(config_mod.enable) == 'table' then
+    config_mod.enabled_langs = config_mod.enable
+  end
   config_mod.enable = false
 end
 
@@ -317,8 +320,13 @@ function M.is_enabled(mod, lang)
     return false
   end
 
-  for _, parser in pairs(module_config.disable) do
-    if lang == parser then return false end
+  if vim.tbl_contains(module_config.disable, lang) then return false end
+
+  if type(module_config.enable) == 'table' then
+    module_config.enabled_langs = module_config.enable
+  end
+  if module_config.enabled_langs then
+    return vim.tbl_contains(module_config.enabled_langs, lang)
   end
 
   return true
@@ -336,13 +344,6 @@ function M.setup(user_data)
   end
 
   config.modules.ensure_installed = nil
-
-  recurse_modules(function(_, _, new_path)
-    local data = utils.get_at_path(config.modules, new_path)
-    if data.enable then
-      enable_all(new_path)
-    end
-  end, config.modules)
 end
 
 -- Defines a table of modules that can be attached/detached to buffers
