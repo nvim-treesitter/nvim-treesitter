@@ -23,10 +23,8 @@
 (block_statement_end) @tag.delimiter
 
 ; Highlight `if`/`each`/`let`
-((block_statement_start path: (identifier) @conditional)
-  (#match? @conditional "^(if|each|let)$"))
-((block_statement_end path: (identifier) @conditional)
-  (#match? @conditional "^(if|each|let)$"))
+(block_statement_start path: (identifier) @conditional)
+(block_statement_end path: (identifier) @conditional)
 ((mustache_statement (identifier) @conditional)
  (#match? @conditional "else"))
 
@@ -49,15 +47,13 @@
 ; As is an identifier in a block param
 (block_params (identifier) @variable)
 ; As are helper arguments
-(helper_invocation argument: [
+((helper_invocation argument: [
   (path_expression (identifier) @variable)
   (identifier) @variable
   ])
+  (#not-match? @variable "this"))
 ; `this` should be highlighted as a built-in variable
-((mustache_statement [
-  (path_expression (identifier) @variable.builtin)
-  (identifier) @variable.builtin
-  ])
+((identifier) @variable.builtin
   (#match? @variable.builtin "this"))
 
 ; If the identifier is just "yield" or "outlet", it's a keyword
