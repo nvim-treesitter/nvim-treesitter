@@ -290,6 +290,13 @@ If no such file exists, a buffer for a new file in the user's config directory
 is created.  If {lang} is not specified, the language of the current buffer
 is used.
 
+						       *:TSEditQueryUserAfter*
+:TSEditQueryUserAfter {query-group} [{lang}]~
+
+Same as |:TSEditQuery| but edits a file in the `after` directory of the
+user's config directory. Useful to add custom extensions for the queries
+provided by a plugin.
+
 ==============================================================================
 UTILS                                                  *nvim-treesitter-utils*
 
