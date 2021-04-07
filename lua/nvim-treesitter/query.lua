@@ -169,7 +169,7 @@ end
 -- Works like M.get_references or M.get_scopes except you can choose the capture
 -- Can also be a nested capture like @definition.function to get all nodes defining a function
 function M.get_capture_matches(bufnr, capture_string, query_group, root, lang)
-  if not string.sub(capture_string, 1,2) == '@' then
+  if not string.sub(capture_string, 1, 1) == '@' then
     print('capture_string must start with "@"')
     return
   end
@@ -189,7 +189,7 @@ function M.get_capture_matches(bufnr, capture_string, query_group, root, lang)
 end
 
 function M.find_best_match(bufnr, capture_string, query_group, filter_predicate, scoring_function, root)
-  if string.sub(capture_string, 1,2) == '@' then
+  if string.sub(capture_string, 1, 1) == '@' then
     --remove leading "@"
     capture_string = string.sub(capture_string, 2)
   end
