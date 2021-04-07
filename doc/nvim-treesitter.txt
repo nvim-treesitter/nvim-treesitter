@@ -280,6 +280,16 @@ These highlight groups are used by default:
     highlight default link TSModuleInfoNamespace Statement
     highlight default link TSModuleInfoParser    Identifier
 <
+
+                                                                *:TSEditQuery*
+:TSEditQuery {query-group} [{lang}]~
+
+Edit the query file for a {query-group} (e.g. highlights, locals) for given
+{lang}.  If there are multiple the user is prompted to select one of them.
+If no such file exists, a buffer for a new file in the user's config directory
+is created.  If {lang} is not specified, the language of the current buffer
+is used.
+
 ==============================================================================
 UTILS                                                  *nvim-treesitter-utils*
 
