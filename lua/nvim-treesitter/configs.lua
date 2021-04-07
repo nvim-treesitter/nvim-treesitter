@@ -1,6 +1,7 @@
 local api = vim.api
 
 local queries = require'nvim-treesitter.query'
+local nvim_query = require'vim.treesitter.query'
 local parsers = require'nvim-treesitter.parsers'
 local utils = require'nvim-treesitter.utils'
 local caching = require'nvim-treesitter.caching'
@@ -196,6 +197,25 @@ local function config_info(process_function)
   print(vim.inspect(config, {process = process_function}))
 end
 
+function M.edit_query_file(query_group, lang)
+  lang = lang or parsers.get_buf_lang()
+  local files = nvim_query.get_query_files(lang, query_group, true)
+  if #files == 0 then
+    local folder = utils.join_path(vim.fn.stdpath('config'), 'after', 'queries', lang)
+    local file = utils.join_path(folder, query_group..'.scm')
+    pcall(vim.fn.mkdir, folder, "p", "0755")
+    vim.cmd(':edit '..file)
+  elseif #files == 1 then
+    vim.cmd(':edit '..files[1])
+  else
+    local counter = 0
+    local choice = vim.fn.inputlist(vim.tbl_map(function(f) counter = counter + 1;return counter..'. '..f end, files))
+    if choice > 0 then
+      vim.cmd(':edit '..files[choice])
+    end
+  end
+end
+
 M.commands = {
   TSBufEnable = {
     run = enable_module,
@@ -243,6 +263,13 @@ M.commands = {
     run = config_info,
     args = {
       "-nargs=0",
+    },
+  },
+  TSEditQuery = {
+    run = M.edit_query_file,
+    args = {
+      "-nargs=+",
+      "-complete=custom,nvim_treesitter#available_query_groups",
     },
   },
 }
