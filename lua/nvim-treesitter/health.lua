@@ -3,6 +3,8 @@ local fn = vim.fn
 
 local queries = require'nvim-treesitter.query'
 local info = require'nvim-treesitter.info'
+local shell = require'nvim-treesitter.shell_command_selectors'
+local install = require'nvim-treesitter.install'
 
 local health_start = vim.fn["health#report_start"]
 local health_ok = vim.fn['health#report_ok']
@@ -47,12 +49,14 @@ local function install_health()
     health_ok('`git` executable found.')
   end
 
-  if fn.executable('cc') == 0 then
+  local cc = shell.select_executable(install.compilers)
+  if not cc then
     health_error('`cc` executable not found.', {
-      'Check that either gcc or clang is in your $PATH'
+      'Check that any of '..vim.inspect(install.compilers)..' is in your $PATH'
+      ..' or set the environment variable CC or `require"nvim-treesitter.install".compilers` explicitly!'
     })
   else
-    health_ok('`cc` executable found.')
+    health_ok('`'..cc..'` executable found. Selected from '..vim.inspect(install.compilers))
   end
   if vim.treesitter.language_version then
     if vim.treesitter.language_version >= NVIM_TREESITTER_MINIMUM_ABI then
