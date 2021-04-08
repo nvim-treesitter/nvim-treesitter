@@ -189,9 +189,8 @@ list.css = {
 
 list.scss = {
   install_info = {
-    url = "https://github.com/serenadeai/tree-sitter-scss",
-    files = { "src/parser.c", "src/scanner.c" },
-    requires_generate_from_grammar  = true,
+    url = "https://github.com/elianiva/tree-sitter-scss",
+    files = { "src/parser.c", "src/scanner.c" }
   },
 }
 
