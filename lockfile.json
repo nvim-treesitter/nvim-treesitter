@@ -131,6 +131,9 @@
   "scala": {
     "revision": "fb23ed9a99da012d86b7a5059b9d8928607cce29"
   },
+  "scss": {
+    "revision": "b2407613f3804d0db15ae6f9f49cf2e759f06dba"
+  },
   "sparql": {
     "revision": "cf57a922b6a48664131617a5c7fe06e401e700f7"
   },
