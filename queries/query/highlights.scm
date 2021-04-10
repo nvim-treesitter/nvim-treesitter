@@ -12,12 +12,16 @@
 (quantifier) @operator
 (predicate_type) @punctuation.special
 
+"." @operator
+
 [
   "["
   "]"
   "("
   ")"
 ] @punctuation.bracket
+
+":" @punctuation.delimiter
 
 ((program . (comment) @include)
  (#match? @include "^;\ +inherits\ *:"))
