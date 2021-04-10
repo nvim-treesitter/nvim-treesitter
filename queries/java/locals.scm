@@ -3,6 +3,8 @@
 (program) @scope
 (class_declaration
   body: (_) @scope)
+(record_declaration
+  body: (_) @scope)
 (enum_declaration
   body: (_) @scope)
 (lambda_expression) @scope
@@ -41,6 +43,8 @@
 (package_declaration
   (identifier) @definition.namespace)
 (class_declaration
+  name: (identifier) @definition.type)
+(record_declaration
   name: (identifier) @definition.type)
 (enum_declaration
   name: (identifier) @definition.enum)

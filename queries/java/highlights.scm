@@ -83,6 +83,8 @@
   name: (identifier) @type)
 (class_declaration
   name: (identifier) @type)
+(record_declaration
+  name: (identifier) @type)
 (enum_declaration
   name: (identifier) @type)
 (constructor_declaration
@@ -152,6 +154,7 @@
 "assert"
 "break"
 "class"
+"record"
 "continue"
 "default"
 "enum"
