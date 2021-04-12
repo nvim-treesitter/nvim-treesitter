@@ -41,6 +41,10 @@
 (package_clause
    (package_identifier) @definition.namespace)
 
+(import_spec_list
+  (import_spec
+    name: (package_identifier) @definition.namespace))
+
 ;; Call references
 ((call_expression
    function: (identifier) @reference)
