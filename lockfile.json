@@ -12,10 +12,10 @@
     "revision": "f05e279aedde06a25801c3f2b2cc8ac17fac52ae"
   },
   "c_sharp": {
-    "revision": "530320c271f323a2cf872cc3dcf0702129a4762c"
+    "revision": "09749b7b5428e770cc2ebdf2e90029c0f4a2d411"
   },
   "clojure": {
-    "revision": "95c7959c461406381b42113dcf4591008c663d21"
+    "revision": "f7d100c4fbaa8aad537e80c7974c470c7fb6aeda"
   },
   "comment": {
     "revision": "814bf323edb504caee2331872b854c9f19eb5d2b"
@@ -111,7 +111,7 @@
     "revision": "965948cce9a94a710b1339851e0919471ad5ee2c"
   },
   "query": {
-    "revision": "d558801c7f11d9a4d9ed119480f8a5d2a49d61d6"
+    "revision": "bc753fa4d8349bd6280f634f57bd6e7be9a3ed17"
   },
   "r": {
     "revision": "9a7f8d6429a48116f4c757ec0abbe42ac87c1f8e"
@@ -153,13 +153,13 @@
     "revision": "7cff70bbcbbc62001b465603ca1ea88edd668704"
   },
   "tsx": {
-    "revision": "89e720e354f02976cc63f3c8c3e55773fceed3d2"
+    "revision": "6d6480c42c9a8d11df35098df8ebb9b13b86d652"
   },
   "turtle": {
     "revision": "05b2419c35ca64ad7a51dc5620426d5c9bf9c357"
   },
   "typescript": {
-    "revision": "89e720e354f02976cc63f3c8c3e55773fceed3d2"
+    "revision": "6d6480c42c9a8d11df35098df8ebb9b13b86d652"
   },
   "verilog": {
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
