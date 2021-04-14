@@ -187,7 +187,6 @@ function M.select_download_commands(repo, project_name, cache_folder, revision)
         opts = {
           args = {
             'clone',
-            '-c', 'core.symlinks=true',
             '--single-branch',
             '--branch', repo.branch or 'master',
             repo.url,
@@ -202,7 +201,6 @@ function M.select_download_commands(repo, project_name, cache_folder, revision)
         err = 'Error while checking out revision',
         opts = {
           args = {
-            '-c', 'core.symlinks=true',
             'checkout', revision
           },
           cwd = git_folder
