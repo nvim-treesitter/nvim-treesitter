@@ -84,7 +84,7 @@
     "revision": "ea43db6830632fd3531b9cbc34a93502b0d4339a"
   },
   "ledger": {
-    "revision": "1fd894ad637ff004e68ddad2c56667d290c3b1a9"
+    "revision": "322a1051ae9f9bcbb67f465304912bd3e85fb01c"
   },
   "lua": {
     "revision": "b6d4e9e10ccb7b3afb45018fbc391b4439306b23"
@@ -102,7 +102,7 @@
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
   },
   "php": {
-    "revision": "20c6cd790ac5b9334739b5fc4cf2f6b9e8694b7f"
+    "revision": "42c8c16f49b9dc19fb10d69707babc10f839c4d5"
   },
   "python": {
     "revision": "d6210ceab11e8d812d4ab59c07c81458ec6e5184"
@@ -153,13 +153,13 @@
     "revision": "7cff70bbcbbc62001b465603ca1ea88edd668704"
   },
   "tsx": {
-    "revision": "6d6480c42c9a8d11df35098df8ebb9b13b86d652"
+    "revision": "47416ef090db4e1a7bb9584c035a7fe3a4615471"
   },
   "turtle": {
     "revision": "05b2419c35ca64ad7a51dc5620426d5c9bf9c357"
   },
   "typescript": {
-    "revision": "6d6480c42c9a8d11df35098df8ebb9b13b86d652"
+    "revision": "47416ef090db4e1a7bb9584c035a7fe3a4615471"
   },
   "verilog": {
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
