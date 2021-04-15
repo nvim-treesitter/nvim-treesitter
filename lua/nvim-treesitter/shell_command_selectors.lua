@@ -175,9 +175,6 @@ function M.select_download_commands(repo, project_name, cache_folder, revision)
   else
     local git_folder = utils.join_path(cache_folder, project_name)
     local clone_error = 'Error during download, please verify your internet connection'
-    if is_windows then
-      clone_error = clone_error .. ". If on Windows you may need to enable Developer mode"
-    end
 
     return {
       {
