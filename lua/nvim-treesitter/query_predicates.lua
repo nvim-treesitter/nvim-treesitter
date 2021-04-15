@@ -87,3 +87,30 @@ end)
 
 -- Just avoid some anoying warnings for this directive
 query.add_directive('make-range!', function() end)
+
+query.add_directive('downcase!', function(match, _, bufnr, pred, metadata)
+  local text, key, value
+
+  if #pred == 3 then
+    -- (#downcase! @capture "key")
+    key = pred[3]
+    value = metadata[pred[2]][key]
+  else
+    -- (#downcase! "key")
+    key = pred[2]
+    value = metadata[key]
+  end
+
+  if type(value) == "string" then
+    text = value
+  else
+    local node = match[value]
+    text = query.get_node_text(node, bufnr)
+  end
+
+  if #pred == 3 then
+    metadata[pred[2]][key] = string.lower(text)
+  else
+    metadata[key] = string.lower(text)
+  end
+end)
