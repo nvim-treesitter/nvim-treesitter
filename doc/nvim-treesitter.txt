@@ -1,10 +1,16 @@
 *nvim-treesitter*
 
+Treesitter configurations and abstraction layer for Neovim.
+
 Minimum version of neovim: nightly
 
-Authors: Yazdani Kiyan <yazdani.kiyan@protonmail.com>
-         Vigouroux Thomas <tomvig38@gmail.com>
-         https://github.com/nvim-treesitter/nvim-treesitter/graphs/contributors
+Authors: 
+  Kiyan Yazdani <yazdani.kiyan@protonmail.com>
+  Thomas Vigouroux <tomvig38@gmail.com>
+  Stephan Seitz <stephan.seitz@fau.de>
+  Steven Sojka <Steven.Sojka@tdameritrade.com>
+  Santos Gallegos <stsewd@protonmail.com>
+  https://github.com/nvim-treesitter/nvim-treesitter/graphs/contributors
 
                                        Type |gO| to see the table of contents.
 
@@ -111,7 +117,6 @@ Supported options:
   require'nvim-treesitter.configs'.setup {
     highlight = {
       enable = true,
-      use_languagetree = false, -- Use this to enable language injection
       custom_captures = {
         -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
         ["foo.bar"] = "Identifier",
@@ -176,70 +181,51 @@ Supported options:
   EOF
 <
 ==============================================================================
-USER QUERY EXTENSIONS                        *nvim-treesitter-query-extensions*
-
-Queries are what `nvim-treesitter` uses to extract informations from the syntax tree, and they are
-located in the `queries/{lang}/*` runtime directories (like the `queries` folder of this plugin).
-
-`nvim-treesitter` considers queries as any runtime file (see `:h rtp`), that is :
-
-- if the file is in any `after/queries/` folder, then it will be used to extend the already defined
-  queries.
-- Otherwise, it will be used as a base to define the query, the first query found (with the highest
-  priority) will be the only one to be used.
-
-This hybrid approach is the most standard way, and according to that, here is some ideas on how to
-use is :
-- If you want to rewrite (or write) a query, don't use `after/queries`.
-- If you want to override a part of a query (only one match for example), use the `after/queries`
-  directory.
-
-==============================================================================
 COMMANDS                                            *nvim-treesitter-commands*
 
-                                                                  *:TSInstall*
+								  *:TSInstall*
 :TSInstall| {language} ...~
 
 Install one or more treesitter parsers.
 You can use |:TSInstall| `all` to install all parsers.
 
-                                                              *:TSInstallInfo*
+							      *:TSInstallInfo*
 :TSInstallInfo~
 
 List informations about currently installed parsers
 
-                                                                   *:TSUpdate*
+								   *:TSUpdate*
 :TSUpdate {language}~
 
 Update the installed parser of {language} or all installed parsers
 if {language} is omitted.
 
-                                                                *:TSUninstall*
+								*:TSUninstall*
 :TSUninstall {language}~
 
 Deletes the parser for corresponding {language}. You can use 'all' for
 language to uninstall all parsers.
 
-                                                                *:TSBufEnable*
+								*:TSBufEnable*
 :TSBufEnable {module}~
 
 Enable {module} on the current buffer.
 A list of modules can be found at |:TSModuleInfo|
 
-                                                               *:TSBufDisable*
+							       *:TSBufDisable*
 :TSBufDisable {module}~
 
 Disable {module} on the current buffer.
 A list of modules can be found at |:TSModuleInfo|
 
-                                                                *:TSBufToggle*
+								*:TSBufToggle*
 :TSBufToggle {module}~
 
 Toggle (enable if disabled, disable if enabled) {module} on the current
 buffer.
 A list of modules can be found at |:TSModuleInfo|
 
-                                                                *:TSEnableAll*
+								*:TSEnableAll*
 :TSEnableAll {module} [{language}]~
 
 Enable {module} for the session.
@@ -248,7 +234,7 @@ particular language.
 A list of modules can be found at |:TSModuleInfo|
 A list of languages can be found at |:TSInstallInfo|
 
-                                                               *:TSDisableAll*
+							       *:TSDisableAll*
 :TSDisableAll {module} [{language}]~
 
 Disable {module} for the session.
@@ -266,7 +252,7 @@ particular language.
 A list of modules can be found at |:TSModuleInfo|
 A list of languages can be found at |:TSInstallInfo|
 
-                                                               *:TSModuleInfo*
+							       *:TSModuleInfo*
 :TSModuleInfo [{module}]~
 
 List the state for the given module or all modules for the current session in
@@ -281,7 +267,7 @@ These highlight groups are used by default:
     highlight default link TSModuleInfoParser    Identifier
 <
 
-                                                                *:TSEditQuery*
+								*:TSEditQuery*
 :TSEditQuery {query-group} [{lang}]~
 
 Edit the query file for a {query-group} (e.g. highlights, locals) for given
@@ -305,29 +291,29 @@ Nvim treesitter has some wrapper functions that you can retrieve with:
     local ts_utils = require 'nvim-treesitter.ts_utils'
 <
 Methods
-                                                 *ts_utils.get_node_at_cursor*
+						 *ts_utils.get_node_at_cursor*
 get_node_at_cursor(winnr)~
 
 `winnr` will be 0 if nil.
 Returns the node under the cursor.
 
-                                                      *ts_utils.get_node_text*
+						      *ts_utils.get_node_text*
 get_node_text(node, bufnr)~
 
 Returns the text content of a `node`.
 
-                                                          *ts_utils.is_parent*
+							  *ts_utils.is_parent*
 is_parent(dest, source)~
 
 Determines whether `dest` is a parent of `source`.
 Returns a boolean.
 
-                                                 *ts_utils.get_named_children*
+						 *ts_utils.get_named_children*
 get_named_children(node)~
 
 Returns a table of named children of `node`.
 
-                                                      *ts_utils.get_next_node*
+						      *ts_utils.get_next_node*
 get_next_node(node, allow_switch_parent, allow_next_parent)~
 
 Returns the next node within the same parent.
@@ -337,14 +323,14 @@ when the node is the last node.
 If `allow_next_parent` is true, it will allow next parent if
 the node is the last node and the next parent doesn't have children.
 
-                                                  *ts_utils.get_previous_node*
+						  *ts_utils.get_previous_node*
 get_previous_node(node, allow_switch_parents, allow_prev_parent)~
 
 Returns the previous node within the same parent.
 `allow_switch_parent` and `allow_prev_parent` follow the same rule
 as |ts_utils.get_next_node| but if the node is the first node.
 
-                                                         *ts_utils.goto_node*
+							  *ts_utils.goto_node*
 goto_node(node, goto_end, avoid_set_jump)~
 
 Sets cursor to the position of `node` in the current windows.
@@ -352,13 +338,13 @@ If `goto_end` is truthy, the cursor is set to the end the node range.
 Setting `avoid_set_jump` to `true`, avoids setting the current cursor position
 to the jump list.
 
-						  *ts_utils.swap_nodes*
+							 *ts_utils.swap_nodes*
 swap_nodes(node_or_range1, node_or_range2, bufnr, cursor_to_second)~
 
 Swaps the nodes or ranges.
 set `cursor_to_second`  to true to move the cursor to the second node
 
-						  *ts_utils.memoize_by_buf_tick*
+						*ts_utils.memoize_by_buf_tick*
 memoize_by_buf_tick(fn, options)~
 
 Caches the return value for a function and returns the cache value if the tick
@@ -372,22 +358,22 @@ of the buffer has not changed from the previous.
 		`returns`: a function to call with bufnr as argument to
 		retrieve the value from the cache
 
-						    *ts_utils.node_to_lsp_range*
+						  *ts_utils.node_to_lsp_range*
 node_to_lsp_range(node)~
 
 Get an lsp formatted range from a node range
 
-						    *ts_utils.get_node_range*
+						     *ts_utils.get_node_range*
 get_node_range(node_or_range)~
 
 Get the range from either a node or a range
 
-						    *ts_utils.node_length*
+							*ts_utils.node_length*
 node_length(node)~
 
 Get the byte length of node range
 
-						    *ts_utils.update_selection*
+						   *ts_utils.update_selection*
 update_selection(buf, node)~
 
 Set the selection to the node range
@@ -397,7 +383,7 @@ highlight_range(range, buf, hl_namespace, hl_group)~
 
 Set a highlight that spans the given range
 
-						    *ts_utils.highlight_node*
+						     *ts_utils.highlight_node*
 highlight_node(node, buf, hl_namespace, hl_group)~
 
 Set a highlight that spans the given node's range
@@ -405,7 +391,7 @@ Set a highlight that spans the given node's range
 ==============================================================================
 FUNCTIONS                                          *nvim-treesitter-functions*
 
-                                          *nvim_treesitter#statusline()*
+						*nvim_treesitter#statusline()*
 nvim_treesitter#statusline(opts)~
 
 Returns a string describing the current position in the file. This
@@ -426,7 +412,7 @@ Default options (lua syntax):
   default removes opening brackets and spaces from end.
 - `separator` - Separator between nodes.
 
-                                                  *nvim_treesitter#foldexpr()*
+						  *nvim_treesitter#foldexpr()*
 nvim_treesitter#foldexpr()~
 
 Functions to be used to determine the fold level at a given line number.
@@ -444,224 +430,223 @@ Note: This is highly experimental, and folding can break on some types of
 ==============================================================================
 HIGHLIGHTS                                        *nvim-treesitter-highlights*
 
+							     *hl-TSAnnotation*
 `TSAnnotation`
-                                                             *hl-TSAnnotation*
 For C++/Dart attributes, annotations that can be attached to the code to
 denote some kind of meta information.
 
+							      *hl-TSAttribute*
 `TSAttribute`
-                                                               hl-TSAttribute
 (unstable) TODO: docs
 
+								*hl-TSBoolean*
 `TSBoolean`
-                                                                *hl-TSBoolean*
 For booleans.
 
+							      *hl-TSCharacter*
 `TSCharacter`
-                                                              *hl-TSCharacter*
 For characters.
 
+								*hl-TSComment*
 `TSComment`
-                                                                *hl-TSComment*
 For comment blocks.
 
+							    *hl-TSConstructor*
 `TSConstructor`
-                                                            *hl-TSConstructor*
 For constructor calls and definitions: `{}` in Lua, and Java constructors.
 
+							    *hl-TSConditional*
 `TSConditional`
-                                                            *hl-TSConditional*
 For keywords related to conditionnals.
 
+							       *hl-TSConstant*
 `TSConstant`
-                                                               *hl-TSConstant*
 For constants
 
+							   *hl-TSConstBuiltin*
 `TSConstBuiltin`
-                                                           *hl-TSConstBuiltin*
 For constant that are built in the language: `nil` in Lua.
 
+							     *hl-TSConstMacro*
 `TSConstMacro`
-                                                             *hl-TSConstMacro*
 For constants that are defined by macros: `NULL` in C.
 
+								  *hl-TSError*
 `TSError`
-                                                                  *hl-TSError*
 For syntax/parser errors.
 
+							      *hl-TSException*
 `TSException`
-                                                              *hl-TSException*
 For exception related keywords.
 
+								  *hl-TSField*
 `TSField`
-                                                                  *hl-TSField*
 For fields.
 
+								  *hl-TSFloat*
 `TSFloat`
-                                                                  *hl-TSFloat*
 For floats.
 
+							       *hl-TSFunction*
 `TSFunction`
-                                                               *hl-TSFunction*
 For function (calls and definitions).
 
+							    *hl-TSFuncBuiltin*
 `TSFuncBuiltin`
-                                                            *hl-TSFuncBuiltin*
 For builtin functions: `table.insert` in Lua.
 
+							      *hl-TSFuncMacro*
 `TSFuncMacro`
-                                                              *hl-TSFuncMacro*
 For macro defined fuctions (calls and definitions): each `macro_rules` in
 Rust.
 
+								*hl-TSInclude*
 `TSInclude`
-                                                                *hl-TSInclude*
 For includes: `#include` in C, `use` or `extern crate` in Rust, or `require`
 in Lua.
 
+								*hl-TSKeyword*
 `TSKeyword`
-                                                                *hl-TSKeyword*
 For keywords that don't fall in previous categories.
 
+							*hl-TSKeywordFunction*
 `TSKeywordFunction`
-                                                        *hl-TSKeywordFunction*
 For keywords used to define a fuction.
 
+								  *hl-TSLabel*
 `TSLabel`
-                                                                  *hl-TSLabel*
 For labels: `label:` in C and `:label:` in Lua.
 
+								 *hl-TSMethod*
 `TSMethod`
-                                                                 *hl-TSMethod*
 For method calls and definitions.
 
+							      *hl-TSNamespace*
 `TSNamespace`
-                                                              *hl-TSNamespace*
 For identifiers referring to modules and namespaces.
 
+								     *hl-None*
 `TSNone`
-                                                                     *hl-None*
 TODO: docs
 
+								 *hl-TSNumber*
 `TSNumber`
-                                                                 *hl-TSNumber*
 For all numbers
 
+							       *hl-TSOperator*
 `TSOperator`
-                                                               *hl-TSOperator*
 For any operator: `+`, but also `->` and `*` in C.
 
+							      *hl-TSParameter*
 `TSParameter`
-                                                              *hl-TSParameter*
 For parameters of a function.
 
+						     *hl-TSParameterReference*
 `TSParameterReference`
-                                                     *hl-TSParameterReference*
 For references to parameters of a function.
 
+							       *hl-TSProperty*
 `TSProperty`
-                                                               *hl-TSProperty*
 Same as `TSField`.
 
+							 *hl-TSPunctDelimiter*
 `TSPunctDelimiter`
-                                                         *hl-TSPunctDelimiter*
 For delimiters ie: `.`
 
+							   *hl-TSPunctBracket*
 `TSPunctBracket`
-                                                           *hl-TSPunctBracket*
 For brackets and parens.
 
+							   *hl-TSPunctSpecial*
 `TSPunctSpecial`
-                                                           *hl-TSPunctSpecial*
 For special punctutation that does not fall in the catagories before.
 
+								 *hl-TSRepeat*
 `TSRepeat`
-                                                                 *hl-TSRepeat*
 For keywords related to loops.
 
+								 *hl-TSString*
 `TSString`
-                                                                 *hl-TSString*
 For strings.
 
+							    *hl-TSStringRegex*
 `TSStringRegex`
-                                                            *hl-TSStringRegex*
 For regexes.
 
+							   *hl-TSStringEscape*
 `TSStringEscape`
-                                                           *hl-TSStringEscape*
 For escape characters within a string.
 
+								 *hl-TSSymbol*
 `TSSymbol`
-                                                                 *hl-TSSymbol*
 For identifiers referring to symbols or atoms.
 
+								    *hl-TSTag*
 `TSTag`
-                                                                   *hl-TSTag*
 Tags like html tag names.
 
+							   *hl-TSTagDelimiter*
 `TSTagDelimiter`
-                                                           *hl-TSTagDelimiter*
 Tag delimiter like `<` `>` `/`
 
+								   *hl-TSText*
 `TSText`
-                                                                   *hl-TSText*
 For strings considered text in a markup language.
 
+								 *hl-TSSTrong*
 `TSStrong`
-                                                                 *hl-TSSTrong*
-
 For text to be represented in bold.
 
+							       *hl-TSEmphasis*
 `TSEmphasis`
-                                                               *hl-TSEmphasis*
 For text to be represented with emphasis.
 
+							      *hl-TSUnderline*
 `TSUnderline`
-                                                               *hl-TSUnderline*
 For text to be represented with an underline.
 
-`TSStrike`
 								 *hl-TSStrike*
+`TSStrike`
 For strikethrough text.
 
+								  *hl-TSTitle*
 `TSTitle`
-                                                                  *hl-TSTitle*
 Text that is part of a title.
 
+								*hl-TSLiteral*
 `TSLiteral`
-                                                                *hl-TSLiteral*
 Literal text.
 
+								    *hl-TSURI*
 `TSURI`
-                                                                    *hl-TSURI*
 Any URI like a link or email.
 
+								   *hl-TSNote*
 `TSNote`
-                                                                   *hl-TSNote*
 Text representation of an informational note.
 
+								   *TSWarning*
 `TSWarning`
-                                                                   *TSWarning*
 Text representation of a warning note.
 
+								    *TSDanger*
 `TSDanger`
-                                                                    *TSDanger*
 Text representation of a danger note.
 
+								   *hl-TSType*
 `TSType`
-                                                                   *hl-TSType*
 For types.
 
+							    *hl-TSTypeBuiltin*
 `TSTypeBuiltin`
-                                                            *hl-TSTypeBuiltin*
 For builtin types.
 
+							       *hl-TSVariable*
 `TSVariable`
-                                                               *hl-TSVariable*
 Any variable name that does not have another highlight.
 
+							*hl-TSVariableBuiltin*
 `TSVariableBuiltin`
-                                                        *hl-TSVariableBuiltin*
 Variable names that are defined by the languages, like `this` or `self`.
 
 ==============================================================================
