@@ -122,12 +122,14 @@ end
 function M.select_download_commands(repo, project_name, cache_folder, revision)
 
   local can_use_tar = vim.fn.executable('tar') == 1 and vim.fn.executable('curl') == 1
-  local is_github_or_gitlab = repo.url:find("github.com", 1, true) or repo.url:find("gitlab.com", 1, true)
+  local is_github = repo.url:find("github.com", 1, true)
+  local is_gitlab = repo.url:find("gitlab.com", 1, true)
+
   local is_windows = fn.has('win32') == 1
 
   revision = revision or repo.branch or "master"
 
-  if can_use_tar and is_github_or_gitlab and not is_windows then
+  if can_use_tar and (is_github or is_gitlab) and not is_windows then
 
     local path_sep = utils.get_path_sep()
     local url = repo.url:gsub('.git$', '')
@@ -141,7 +143,7 @@ function M.select_download_commands(repo, project_name, cache_folder, revision)
         opts = {
           args = {
             '-L', -- follow redirects
-            is_github_or_gitlab and url.."/archive/"..revision..".tar.gz"
+            is_github and url.."/archive/"..revision..".tar.gz"
                       or url.."/-/archive/"..revision.."/"..project_name.."-"..revision..".tar.gz",
             '--output',
             project_name..".tar.gz"
