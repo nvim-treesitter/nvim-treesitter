@@ -1,7 +1,7 @@
 ((comment) @comment)
 
 ((date) @number)
-((account) @variable)
+((account) @field)
 ((note) @comment)
 ((amount) @keyword)
 ((quantity) @number)
