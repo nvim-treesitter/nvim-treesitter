@@ -141,7 +141,7 @@ function M.select_download_commands(repo, project_name, cache_folder, revision)
         opts = {
           args = {
             '-L', -- follow redirects
-            is_github and url.."/archive/"..revision..".tar.gz"
+            is_github_or_gitlab and url.."/archive/"..revision..".tar.gz"
                       or url.."/-/archive/"..revision.."/"..project_name.."-"..revision..".tar.gz",
             '--output',
             project_name..".tar.gz"
