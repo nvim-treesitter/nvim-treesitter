@@ -207,9 +207,18 @@ function M.edit_query_file(query_group, lang)
     vim.cmd(':edit '..files[1])
   else
     local counter = 0
-    local choice = vim.fn.inputlist(vim.tbl_map(function(f) counter = counter + 1;return counter..'. '..f end, files))
-    if choice > 0 then
-      vim.cmd(':edit '..files[choice + 1])
+    local choices = {
+      'Select a file:',
+      table.unpack(vim.tbl_map(function(f)
+          counter = counter + 1
+          return counter..'. '..f
+        end,
+        files
+      ))
+    }
+    local choice = vim.fn.inputlist(choices)
+    if choice > 0 and choice <= #files then
+      vim.cmd(':edit '..files[choice])
     end
   end
 end
