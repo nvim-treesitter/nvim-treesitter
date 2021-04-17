@@ -175,6 +175,7 @@
 "public"
 "requires"
 "return"
+"yield"
 "static"
 "strictfp"
 "synchronized"
