@@ -44,4 +44,27 @@ function M.indent_whole_file(file, opts)
   assert.are.same(before, after)
 end
 
+-- Open a file, use `normal o` to insert a new line and compare results
+-- @param file path to the initial file
+-- @param spec a table with keys:
+--   on_line: line on which `normal o` is executed
+--   text: text inserted in the new line
+--   indent: expected indent before the inserted text (string or int)
+-- @param opts buffer options passed to M.set_buf_indent_opts
+function M.indent_new_line(file, spec, opts)
+  local before, after = M.run_indent_test(file, function()
+    -- move to the line and input the new one
+    vim.cmd(string.format('normal! %dG', spec.on_line))
+    vim.cmd(string.format('normal! o%s', spec.text))
+  end, opts)
+
+  local indent = type(spec.indent) == 'string' and spec.indent or string.rep(' ', spec.indent)
+
+  -- print('# before:\n', table.concat(before, '\n'))
+  -- print('# after:\n', table.concat(after, '\n'))
+
+  table.insert(before, spec.on_line + 1, indent .. spec.text)
+  assert.are.same(before, after)
+end
+
 return M
