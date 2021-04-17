@@ -60,7 +60,7 @@
     "revision": "d93af487cc75120c89257195e6be46c999c6ba18"
   },
   "java": {
-    "revision": "3bf41f68f3af63664050e21b2e808114fe2452c6"
+    "revision": "9b67e9af1c753f6966e64985069d903074dda081"
   },
   "javascript": {
     "revision": "4a95461c4761c624f2263725aca79eeaefd36cad"
@@ -153,13 +153,13 @@
     "revision": "7cff70bbcbbc62001b465603ca1ea88edd668704"
   },
   "tsx": {
-    "revision": "47416ef090db4e1a7bb9584c035a7fe3a4615471"
+    "revision": "1e4aee4ef8b414aee8d047a6822456d1a758a6b4"
   },
   "turtle": {
     "revision": "05b2419c35ca64ad7a51dc5620426d5c9bf9c357"
   },
   "typescript": {
-    "revision": "47416ef090db4e1a7bb9584c035a7fe3a4615471"
+    "revision": "1e4aee4ef8b414aee8d047a6822456d1a758a6b4"
   },
   "verilog": {
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
