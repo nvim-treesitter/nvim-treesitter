@@ -1,5 +1,6 @@
 [
   (class)
+  (singleton_class)
   (method)
   (singleton_method)
   (module)
