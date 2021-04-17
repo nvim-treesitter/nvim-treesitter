@@ -1,17 +1,18 @@
 local whole_file = require('nvim-treesitter.test_utils').indent_whole_file
+local scan_dir = require('plenary.scandir').scan_dir
 
-describe('indent rust', function()
-  local files = {
-    'basic.rs',
-  }
-  for _, file in ipairs(files) do
-    it(file, function()
-      whole_file('lua/tests/indent/rust/' .. file, {
-        tabstop = 4,
-        shiftwidth = 4,
-        softtabstop = 0,
-        expandtab = true,
-      })
-    end)
-  end
+describe('indent Rust:', function()
+  describe('whole file:', function()
+    local files = scan_dir('lua/tests/indent/rust');
+    for _, file in ipairs(files) do
+      it(vim.fn.fnamemodify(file, ':t'), function()
+        whole_file(file, {
+          tabstop = 4,
+          shiftwidth = 4,
+          softtabstop = 0,
+          expandtab = true,
+        })
+      end)
+    end
+  end)
 end)
