@@ -3,4 +3,10 @@ int foo(int x) {
         return 10;
     else
         return x;
+
+    while (1)
+        x++;
+
+    for (int i = 0; i < 3; ++i)
+        x--;
 }
