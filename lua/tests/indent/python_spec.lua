@@ -1,26 +1,18 @@
 local whole_file = require('nvim-treesitter.test_utils').indent_whole_file
+local scan_dir = require('plenary.scandir').scan_dir
 
-describe('indent python', function()
-  local files = {
-    'aligned_indent.py',
-    'basic_blocks.py',
-    'basic_collections.py',
-    'branches.py',
-    'comprehensions.py',
-    'control_flow.py',
-    'hanging_indent.py',
-    'join_lines.py',
-    'nested_collections.py',
-    'strings.py',
-  }
-  for _, file in ipairs(files) do
-    it(file, function()
-      whole_file('lua/tests/indent/python/' .. file, {
-        tabstop = 4,
-        shiftwidth = 4,
-        softtabstop = 0,
-        expandtab = true,
-      })
-    end)
-  end
+describe('indent Python:', function()
+  describe('whole file:', function()
+    local files = scan_dir('lua/tests/indent/python');
+    for _, file in ipairs(files) do
+      it(vim.fn.fnamemodify(file, ':t'), function()
+        whole_file(file, {
+          tabstop = 4,
+          shiftwidth = 4,
+          softtabstop = 0,
+          expandtab = true,
+        })
+      end)
+    end
+  end)
 end)
