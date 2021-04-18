@@ -30,7 +30,8 @@
   (#match? @type "^[A-Z]"))
 ((identifier) @constant
   (#match? @constant "^[A-Z][A-Z_0-9]*$"))
-((identifier) @type . ".")
+((identifier) @type
+  (#match? @type "^[A-Z][A-Z_0-9]*$") . (_))
 
 ((attribute
     (identifier) @field)
