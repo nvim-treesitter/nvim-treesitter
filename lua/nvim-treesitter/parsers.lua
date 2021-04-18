@@ -542,6 +542,15 @@ list.zig = {
   maintainers = { "@Himujjal" }
 }
 
+list.vim = {
+  install_info = {
+    url = "https://github.com/vigoux/tree-sitter-viml",
+    files = {"src/parser.c", "src/scanner.c"}
+  },
+  filetype = "vim",
+  maintainers = { "@vigoux" },
+}
+
 local M = {
   list = list
 }
