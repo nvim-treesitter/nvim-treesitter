@@ -79,10 +79,7 @@ function M.run_indent_test(file, runner, opts)
   vim.cmd(string.format('edit %s', file))
   local before = vim.api.nvim_buf_get_lines(0, 0, -1, true)
 
-  -- FIXME: why this is not set automatically?
-  vim.bo.indentexpr = 'nvim_treesitter#indent()'
   assert.are.same('nvim_treesitter#indent()', vim.bo.indentexpr)
-
   M.set_buf_indent_opts(opts)
 
   -- perform the test
