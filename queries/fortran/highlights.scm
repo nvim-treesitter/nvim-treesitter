@@ -1,4 +1,4 @@
-;; by @oponkork
+;; by @oponkork with extensions by @theHamsta
 
 (identifier) @variable
 (string_literal) @string
@@ -24,39 +24,48 @@
 ] @type
 
 [
+  "module"
+  "endmodule"
+  "contains"
+  "public"
+  "private"
+] @include
+
+[
+"implicit"
+(none)
+] @annotation
+
+[
+  "function"
+  "endfunction"
+  "endprogram"
+  "subroutine"
+  "endsubroutine"
+] @keyword.function
+
+[
   "bind"
   "call"
-  "contains"
   "continue"
   "cycle"
-  "endfunction"
-  "endmodule"
-  "endprogram"
-  "endsubroutine"
   "enumerator"
   "equivalence"
   "exit"
   "format"
-  "function"
   "goto"
   "include"
   "interface"
-  "module"
   "parameter"
   "print"
   "program"
   "read"
   "return"
   "stop"
-  "subroutine"
   "use"
   "write"
-  "implicit"
-  (none)
   (default)
   (procedure_qualifier)
-  (private_statement)
-  (public_statement)
 ] @keyword
 
 [
@@ -75,18 +84,53 @@
 ] @repeat
 
 [
+  "*"
+  "+"
+  "-"
+  "/"
+  "="
   "<"
   ">"
   "<="
   ">="
   "=="
   "/="
+] @operator
+
+[
+  "\\.and\\."
+  "\\.or\\."
+  "\\.lt\\."
+  "\\.gt\\."
+  "\\.ge\\."
+  "\\.le\\."
+  "\\.eq\\."
+  "\\.eqv\\."
+  "\\.neqv\\."
 ] @keyword.operator
 
-; ;; Brackets
-; [
-;  "("
-;  ")"
-;  "["
-;  "]"
-; ] @punctuation.bracket
+ ;; Brackets
+ [
+  "("
+  ")"
+  "["
+  "]"
+ ] @punctuation.bracket
+
+ ;; Delimiter
+ [
+  "::"
+  ","
+ ] @punctuation.bracket
+
+(parameters
+  (identifier) @parameter)
+
+(subroutine_statement
+  (name) @function)
+
+(subroutine_call
+	(name) @function)
+
+(module_statement
+  (name) @namespace)
