@@ -352,7 +352,8 @@ list.yaml = {
   install_info = {
     url = "https://github.com/ikatyang/tree-sitter-yaml",
     files = { "src/parser.c", "src/scanner.cc" },
-  }
+  },
+  maintainers = {"@stsewd"},
 }
 
 list.nix = {

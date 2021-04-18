@@ -8,11 +8,12 @@
 (integer_scalar) @number
 (float_scalar) @number
 (comment) @comment
-(anchor) @type
-(alias) @type
+(anchor_name) @type
+(alias_name) @type
 (tag) @type
 (yaml_directive) @keyword
 (ERROR) @error
+
 [
 ","
 "-"
@@ -21,9 +22,12 @@
 "?"
 "|"
 ] @punctuation.delimiter
+
 [
 "["
 "]"
 "{"
 "}"
 ] @punctuation.bracket
+
+["*" "&"] @punctuation.special
