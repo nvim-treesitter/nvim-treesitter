@@ -305,13 +305,12 @@ list.haskell = {
   }
 }
 
--- FIXME(vigoux): markdown is broken for now
--- list.markdown = {
---   install_info = {
---     url = "https://github.com/ikatyang/tree-sitter-markdown",
---     files = { "src/parser.c", "src/scanner.cc" },
---   }
--- }
+ list.markdown = {
+   install_info = {
+     url = "https://github.com/ikatyang/tree-sitter-markdown",
+     files = { "src/parser.c", "src/scanner.cc", "-DTREE_SITTER_MARKDOWN_AVOID_CRASH=1" },
+   }
+ }
 
 list.toml = {
   install_info = {
