@@ -1,5 +1,3 @@
-a, b, c, = 1, 2, 3
-
 if a == a:
     x = 1
 elif b:
