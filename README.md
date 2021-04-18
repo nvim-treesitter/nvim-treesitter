@@ -147,7 +147,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [ ] [elm](https://github.com/elm-tooling/tree-sitter-elm)
 - [x] [erlang](https://github.com/AbstractMachinesLab/tree-sitter-erlang) (maintained by @ostera)
 - [x] [fennel](https://github.com/travonted/tree-sitter-fennel) (maintained by @TravonteD)
-- [x] [Godot (gdscript)](https://github.com/PrestonKnopp/tree-sitter-gdscript) (maintained by not @tjdevries)
+- [x] [Godot (gdscript)](https://github.com/PrestonKnopp/tree-sitter-gdscript) (maintained by @Shatur95)
 - [x] [Glimmer and Ember](https://github.com/alexlafroscia/tree-sitter-glimmer) (maintained by @alexlafroscia)
 - [x] [go](https://github.com/tree-sitter/tree-sitter-go) (maintained by @theHamsta, @WinWisely268)
 - [x] [graphql](https://github.com/bkegley/tree-sitter-graphql) (maintained by @bkegley)
@@ -189,7 +189,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [typescript](https://github.com/tree-sitter/tree-sitter-typescript) (maintained by @steelsojka)
 - [x] [verilog](https://github.com/tree-sitter/tree-sitter-verilog) (maintained by @zegervdv)
 - [x] [vue](https://github.com/ikatyang/tree-sitter-vue) (maintained by @WhyNotHugo)
-- [ ] [yaml](https://github.com/ikatyang/tree-sitter-yaml)
+- [x] [yaml](https://github.com/ikatyang/tree-sitter-yaml) (maintained by @stsewd)
 - [x] [zig](https://github.com/Himujjal/tree-sitter-zig) (maintained by @Himujjal)
 <!--parserinfo-->
 

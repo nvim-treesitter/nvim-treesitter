@@ -1,4 +1,4 @@
 (document) @scope
 
-(anchor) @definition
-(alias) @reference
+(anchor_name) @definition
+(alias_name) @reference
