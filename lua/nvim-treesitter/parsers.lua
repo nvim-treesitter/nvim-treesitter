@@ -464,7 +464,7 @@ list.gdscript = {
     requires_generate_from_grammar  = true,
   },
   readme_name = "Godot (gdscript)",
-  maintainers = {"not @tjdevries"},
+  maintainers = {"@Shatur95"},
 }
 
 list.turtle = {
