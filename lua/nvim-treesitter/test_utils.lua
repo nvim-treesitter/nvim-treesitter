@@ -8,39 +8,51 @@ local function same_indent(state, arguments)
   local after = arguments[2]
 
   local ok = true
-  errors = { before = {}, after = {} }
+  local errors = { before = {}, after = {} }
   for line = 1,#before do
     if before[line] ~= after[line] then
+      -- store the actual indentation length for each line
       errors.before[line] = #string.match(before[line], '^%s*')
       errors.after[line] = #string.match(after[line], '^%s*')
       ok = false
     end
   end
 
-  -- swap arguments to be consistent with all the assertions in plenary.luassert
-  table.insert(arguments, 1, table.remove(arguments, 2))
-  arguments.fmtargs = {}
-  arguments.fmtargs[1] = { errors = errors.after }
-  arguments.fmtargs[2] = { errors = errors.before }
+  -- we will always use only a single argument, passing the other one in fmtargs
+  arguments.fmtargs = { { errors = errors, other = after } }
+  arguments.fmtargs[2] = { errors = errors, other = after }
 
   return ok
 end
 
 local function format_indent(arg, fmtargs)
-  local output = {}
+  -- find minimal width if any line is longer
+  local width = 40
+  for _, line in ipairs(fmtargs.other) do
+    width = #line > width and #line or width
+  end
+
+  width = width + 3
+  local header_fmt = '%8s %2s%-' .. tostring(width + 1) .. 's %s'
+  local fmt = '%8s %2s |%-' .. tostring(width) .. 's |%s'
+
+  local output = {header_fmt:format('', '', 'Found:', 'Expected:')}
+
   for i, line in ipairs(arg) do
-    if fmtargs.errors[i] then
-      table.insert(output, string.format('%2d => |%s', fmtargs.errors[i], line))
+    if fmtargs.errors.before[i] then
+      local indents = string.format('%d vs %d', fmtargs.errors.after[i], fmtargs.errors.before[i])
+      table.insert(output, fmt:format(indents, '=>', fmtargs.other[i], line))
     else
-      table.insert(output, string.format('      |%s', line))
+      table.insert(output, fmt:format('', '', fmtargs.other[i], line))
     end
   end
+
   return table.concat(output, '\n')
 end
 
 say:set_namespace('en')
-say:set('assertion.same_indent.positive', 'Expected indentation to be the same.\nFound:\n%s\nExpected:\n%s')
-say:set('assertion.same_indent.negative', 'Expected indentation to be different.\nFound:\n%s\nExpected:\n%s')
+say:set('assertion.same_indent.positive', 'Incorrect indentation\n%s')
+say:set('assertion.same_indent.negative', 'Incorrect indentation\n%s')
 assert:register('assertion', 'same_indent', same_indent,
   'assertion.same_indent.positive', 'assert.same_indent.negative')
 
