@@ -209,7 +209,7 @@ function M.edit_query_file(query_group, lang)
     local counter = 0
     local choices = {
       'Select a file:',
-      table.unpack(vim.tbl_map(function(f)
+      unpack(vim.tbl_map(function(f)
           counter = counter + 1
           return counter..'. '..f
         end,
