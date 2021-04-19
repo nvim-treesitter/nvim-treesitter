@@ -43,7 +43,7 @@
 
 (list_lit
  .
- (sym_lit) @_let (#match? @_let "(cl:|alexandria)?(with-gensyms|dotimes|with-foreign-object)")
+ (sym_lit) @_let (#match? @_let "(cl:|alexandria:)?(with-gensyms|dotimes|with-foreign-object)")
  .
  (list_lit . (sym_lit) @definition.var)) @scope
 

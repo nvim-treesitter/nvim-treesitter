@@ -1,7 +1,8 @@
 (sym_lit) @variable
 
 ;; A highlighting for functions/macros in th cl namespace is available in theHamsta/nvim-treesitter-commonlisp
-;(list_lit . (sym_lit) @function.builtin (#cl-standard-symbol? @function.builtin))
+;(list_lit . (sym_lit) @function.builtin (#cl-standard-function? @function.builtin))
+;(list_lit . (sym_lit) @function.builtin (#cl-standard-macro? @function.macro))
 
 (dis_expr) @comment
 
@@ -12,13 +13,13 @@
   lambda_list: (list_lit (sym_lit) @parameter))
 (defun_header
   keyword: (defun_keyword "defmethod")
-  lambda_list: (list_lit (list_lit . (sym_lit) . (sym_lit) @type)))
+  lambda_list: (list_lit (list_lit . (sym_lit) . (sym_lit) @symbol)))
 (defun_header
   lambda_list: (list_lit (list_lit . (sym_lit) @parameter . (_))))
 (defun_header
-  specifier: (sym_lit) @type)
+  specifier: (sym_lit) @symbol)
 
-[":" "."] @punctuation.special
+[":" "::" "."] @punctuation.special
 
 [
   (accumulation_verb)
@@ -50,10 +51,10 @@
 ] @function.macro
 "=" @operator
 
-(include_reader_macro) @type
+(include_reader_macro) @symbol
 ["#C" "#c"] @number
 
-[(kwd_lit) (self_referential_reader_macro)] @type
+[(kwd_lit) (self_referential_reader_macro)] @symbol
 
 (package_lit
   package: (_) @namespace)
@@ -117,10 +118,10 @@
  (#match? @constant "^[+].+[+]$"))
 
 (var_quoting_lit
-  marker: "#'" @type
-  value: (_) @type)
+  marker: "#'" @symbol
+  value: (_) @symbol)
 
-["#" "#p" "#P"] @type
+["#" "#p" "#P"] @symbol
 
 (list_lit
  .
@@ -134,8 +135,8 @@
  (#match? @operator "^([+*-+=<>]|<=|>=|/=)$"))
 
 
-((sym_lit) @type
-(#match? @type "^[&]"))
+((sym_lit) @symbol
+(#match? @symbol "^[&]"))
 
 [(array_dimension) "#0A" "#0a"] @number
 
