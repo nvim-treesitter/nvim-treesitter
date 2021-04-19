@@ -1,6 +1,6 @@
 (dis_expr) @comment
 
-(kwd_lit) @type
+(kwd_lit) @symbol
 
 (str_lit) @string
 
