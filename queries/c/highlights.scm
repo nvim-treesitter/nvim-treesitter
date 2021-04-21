@@ -105,7 +105,7 @@
 
 (null) @constant.builtin
 (number_literal) @number
-(char_literal) @number
+(char_literal) @character
 
 (call_expression
   function: (identifier) @function)
