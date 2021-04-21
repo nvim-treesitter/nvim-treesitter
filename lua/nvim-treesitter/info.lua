@@ -10,7 +10,9 @@ local function install_info()
     if #ft > max_len then max_len = #ft end
   end
 
-  for _, ft in pairs(parsers.available_parsers()) do
+  local parser_list = parsers.available_parsers()
+  table.sort(parser_list)
+  for _, ft in pairs(parser_list) do
     local is_installed = #api.nvim_get_runtime_file('parser/'..ft..'.so', false) > 0
     api.nvim_out_write(ft..string.rep(' ', max_len - #ft + 1))
     if is_installed then
