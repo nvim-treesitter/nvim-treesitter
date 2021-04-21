@@ -140,4 +140,4 @@
 
 [(array_dimension) "#0A" "#0a"] @number
 
-(char_lit) @number
+(char_lit) @character
