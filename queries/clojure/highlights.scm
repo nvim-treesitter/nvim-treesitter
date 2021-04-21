@@ -6,6 +6,8 @@
 
 (num_lit) @number
 
+(char_lit) @character
+
 (bool_lit) @boolean
 
 (nil_lit) @constant.builtin
