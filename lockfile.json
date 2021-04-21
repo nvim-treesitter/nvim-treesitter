@@ -60,10 +60,10 @@
     "revision": "d93af487cc75120c89257195e6be46c999c6ba18"
   },
   "java": {
-    "revision": "9b67e9af1c753f6966e64985069d903074dda081"
+    "revision": "ee8e358637e05188f9f65d8d1ad88a4412c975ce"
   },
   "javascript": {
-    "revision": "4a95461c4761c624f2263725aca79eeaefd36cad"
+    "revision": "a263a8f53266f8f0e47e21598e488f0ef365a085"
   },
   "jsdoc": {
     "revision": "189a6a4829beb9cdbe837260653b4a3dfb0cc3db"
@@ -102,7 +102,7 @@
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
   },
   "php": {
-    "revision": "42c8c16f49b9dc19fb10d69707babc10f839c4d5"
+    "revision": "4dcc061668fbc68b79421c72eb8a8baeeb0f3693"
   },
   "python": {
     "revision": "d6210ceab11e8d812d4ab59c07c81458ec6e5184"
@@ -141,7 +141,7 @@
     "revision": "45d356487799dab0ebc58cc8922aa145264063f8"
   },
   "svelte": {
-    "revision": "6e9ff3a5b127b12d750cc5f0049d9a6c7508bc1e"
+    "revision": "c00bd51739d0de6602607e9f1e46e942bdb1f261"
   },
   "swift": {
     "revision": "a22fa5e19bae50098e2252ea96cba3aba43f4c58"
@@ -153,13 +153,13 @@
     "revision": "7cff70bbcbbc62001b465603ca1ea88edd668704"
   },
   "tsx": {
-    "revision": "1e4aee4ef8b414aee8d047a6822456d1a758a6b4"
+    "revision": "82916165120f840164f11119f268a4de819ea90b"
   },
   "turtle": {
     "revision": "05b2419c35ca64ad7a51dc5620426d5c9bf9c357"
   },
   "typescript": {
-    "revision": "1e4aee4ef8b414aee8d047a6822456d1a758a6b4"
+    "revision": "82916165120f840164f11119f268a4de819ea90b"
   },
   "verilog": {
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
