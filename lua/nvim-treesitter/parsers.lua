@@ -360,7 +360,6 @@ list.nix = {
   install_info = {
     url = "https://github.com/cstrahan/tree-sitter-nix",
     files = { "src/parser.c", "src/scanner.c" },
-    requires_generate_from_grammar  = true,
   },
   maintainers = {"@leo60228"},
 }
