@@ -5,7 +5,7 @@ cd $HERE/..
 
 run() {
     nvim --headless --noplugin -u scripts/minimal_init.lua \
-        -c "PlenaryBustedDirectory lua/tests/indent/ { minimal_init = './scripts/minimal_init.lua' }"
+        -c "PlenaryBustedDirectory tests/indent/ { minimal_init = './scripts/minimal_init.lua' }"
 }
 
 if [[ $1 = '--summary' ]]; then
