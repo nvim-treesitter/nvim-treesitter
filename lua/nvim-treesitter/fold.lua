@@ -30,9 +30,11 @@ local folds_levels = tsutils.memoize_by_buf_tick(function(bufnr)
       stop = stop + 1
     end
 
+    local should_fold = start + 1 > stop -- Only fold for 2+ lines
+
     -- This can be folded
     -- Fold only multiline nodes that are not exactly the same as previously met folds
-    if start ~= stop and not (levels_tmp[start] and levels_tmp[stop]) then
+    if should_fold and not (levels_tmp[start] and levels_tmp[stop]) then
       levels_tmp[start] = (levels_tmp[start] or 0) + 1
       levels_tmp[stop] = (levels_tmp[stop] or 0) - 1
     end
