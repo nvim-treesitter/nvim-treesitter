@@ -138,7 +138,8 @@
 (string) @string
 (number) @number
 (label_statement) @label
-(field (identifier) @field)
+; A bit of a tricky one, this will only match field names
+(field . (identifier) @field (_))
 (shebang) @comment
 
 ;; Error
