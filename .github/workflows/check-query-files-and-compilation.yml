@@ -39,6 +39,8 @@ jobs:
 
       - name: Check query files (Unix)
         if: matrix.os != 'windows-latest'
+        env:
+          ALLOWED_INSTALLATION_FAILURES: haskell
         run: nvim --headless -c "luafile ./scripts/check-queries.lua" -c "q"
 
       - name: Compile parsers Windows
@@ -53,6 +55,8 @@ jobs:
 
       - name: Check query files (Windows)
         if: matrix.os == 'windows-latest'
+        env:
+          ALLOWED_INSTALLATION_FAILURES: haskell
         run: C:\\tools\\neovim\\Neovim\\bin\\nvim.exe --headless -c "luafile ./scripts/check-queries.lua" -c "q"
 
       - uses: actions/upload-artifact@v2
