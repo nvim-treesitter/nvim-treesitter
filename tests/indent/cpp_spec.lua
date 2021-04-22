@@ -1,5 +1,5 @@
-local whole_file = require('nvim-treesitter.test_utils').indent_whole_file
-local new_line = require('nvim-treesitter.test_utils').indent_new_line
+local whole_file = require('tests.indent.common').indent_whole_file
+local new_line = require('tests.indent.common').indent_new_line
 local scan_dir = require('plenary.scandir').scan_dir
 local Path = require('plenary.path')
 
