@@ -205,7 +205,7 @@
 ] @operator
 
 (binary_expression "/" @operator)
-(ternary_expression ["?" ":"] @operator)
+(ternary_expression ["?" ":"] @conditional)
 (unary_expression ["!" "~" "-" "+" "delete" "void" "typeof"]  @operator)
 
 "(" @punctuation.bracket

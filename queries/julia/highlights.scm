@@ -119,7 +119,7 @@
 (else_clause
   ["else"] @conditional)
 (ternary_expression
-  ["?" ":"] @operator)
+  ["?" ":"] @conditional)
 
 (function_definition ["function" "end"] @keyword.function)
 
