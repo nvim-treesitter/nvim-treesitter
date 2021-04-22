@@ -15,10 +15,18 @@ local get_name = function(file)
   return Path:new(file):make_relative('tests/indent')
 end
 
+local run = function(file, spec, title)
+  title = title and title or tostring(spec.on_line)
+  it(string.format('%s[%s]', get_name(file), title), function()
+    new_line(file, spec, opts)
+  end)
+end
+
 describe('indent C++:', function()
   describe('whole file:', function()
-    local files = scan_dir('tests/indent/c');
-    vim.list_extend(files, scan_dir('tests/indent/cpp'))
+    local files = vim.tbl_flatten(vim.tbl_map(scan_dir, {
+      'tests/indent/c', 'tests/indent/cpp',
+    }))
 
     for _, file in ipairs(files) do
       it(get_name(file), function()
@@ -28,13 +36,6 @@ describe('indent C++:', function()
   end)
 
   describe('new line:', function()
-    local run = function(file, spec, title)
-      title = title and title or tostring(spec.on_line)
-      it(string.format('%s[%s]', get_name(file), title), function()
-        new_line(file, spec, opts)
-      end)
-    end
-
     run('tests/indent/cpp/access.cpp', { on_line = 3, text = 'protected:', indent = 0 })
     run('tests/indent/cpp/class.cpp', { on_line = 2, text = 'using T = int;', indent = 4 })
     run('tests/indent/cpp/stream.cpp', { on_line = 5, text = '<< x + 3', indent = 8 })

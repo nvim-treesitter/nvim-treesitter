@@ -9,6 +9,13 @@ local opts = {
   expandtab = true,
 }
 
+local run = function(file, spec, title)
+  title = title and title or tostring(spec.on_line)
+  it(string.format('%s[%s]', file, title), function()
+    new_line('tests/indent/rust/' .. file, spec, opts)
+  end)
+end
+
 describe('indent Rust:', function()
   describe('whole file:', function()
     local files = scan_dir('tests/indent/rust');
@@ -20,13 +27,6 @@ describe('indent Rust:', function()
   end)
 
   describe('new line:', function()
-    local run = function(file, spec, title)
-      title = title and title or tostring(spec.on_line)
-      it(string.format('%s[%s]', file, title), function()
-        new_line('tests/indent/rust/' .. file, spec, opts)
-      end)
-    end
-
     run('array.rs', { on_line = 2, text = '0,', indent = 4 })
     run('array.rs', { on_line = 8, text = '0,', indent = 8 })
     run('comment.rs', { on_line = 3, text = 'a', indent = '/// ' })
