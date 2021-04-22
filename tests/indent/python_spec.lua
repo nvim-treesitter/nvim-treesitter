@@ -11,7 +11,7 @@ local opts = {
 
 describe('indent Python:', function()
   describe('whole file:', function()
-    local files = scan_dir('lua/tests/indent/python');
+    local files = scan_dir('tests/indent/python');
     for _, file in ipairs(files) do
       it(vim.fn.fnamemodify(file, ':t'), function()
         whole_file(file, opts)
@@ -23,7 +23,7 @@ describe('indent Python:', function()
     local run = function(file, spec, title)
       title = title and title or tostring(spec.on_line)
       it(string.format('%s[%s]', file, title), function()
-        new_line('lua/tests/indent/python/' .. file, spec, opts)
+        new_line('tests/indent/python/' .. file, spec, opts)
       end)
     end
 
