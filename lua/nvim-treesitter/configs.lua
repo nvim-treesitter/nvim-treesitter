@@ -37,7 +37,7 @@ local builtin_modules = {
       scope_incremental="grc",
       node_decremental="grm"
     },
-    is_supported = queries.has_locals
+    is_supported = function() return true end
   },
   indent = {
     module_path = 'nvim-treesitter.indent',

@@ -4,6 +4,7 @@ local configs = require'nvim-treesitter.configs'
 local ts_utils = require'nvim-treesitter.ts_utils'
 local locals = require'nvim-treesitter.locals'
 local parsers = require'nvim-treesitter.parsers'
+local queries = require'nvim-treesitter.query'
 
 local M = {}
 
@@ -114,7 +115,12 @@ M.node_incremental = select_incremental(function(node)
 end)
 
 M.scope_incremental = select_incremental(function(node)
-  return locals.containing_scope(node:parent() or node)
+  local lang = parsers.get_buf_lang()
+  if queries.has_locals(lang) then
+    return locals.containing_scope(node:parent() or node)
+  else
+    return node
+  end
 end)
 
 function M.node_decremental()
