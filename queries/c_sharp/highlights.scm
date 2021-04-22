@@ -179,18 +179,22 @@
 ] @include
 
 [
- "lock"
- "params"
- "ref"
+ "with"
+ "new"
+ "typeof"
  "sizeof"
- "operator"
+ "ref"
  "is"
  "as"
- "new"
+] @keyword.operator
+
+[
+ "lock"
+ "params"
+ "operator"
  "default"
  "yield"
  "return"
- "typeof"
  "abstract"
  "const"
  "extern"
