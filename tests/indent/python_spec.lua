@@ -9,6 +9,13 @@ local opts = {
   expandtab = true,
 }
 
+local run = function(file, spec, title)
+  title = title and title or tostring(spec.on_line)
+  it(string.format('%s[%s]', file, title), function()
+    new_line('tests/indent/python/' .. file, spec, opts)
+  end)
+end
+
 describe('indent Python:', function()
   describe('whole file:', function()
     local files = scan_dir('tests/indent/python');
@@ -20,13 +27,6 @@ describe('indent Python:', function()
   end)
 
   describe('new line:', function()
-    local run = function(file, spec, title)
-      title = title and title or tostring(spec.on_line)
-      it(string.format('%s[%s]', file, title), function()
-        new_line('tests/indent/python/' .. file, spec, opts)
-      end)
-    end
-
     run('aligned_indent.py', { on_line = 1, text = 'arg3,', indent = 19 })
     run('basic_blocks.py', { on_line = 1, text = 'wait,', indent = 4 })
     run('basic_blocks.py', { on_line = 6, text = 'x += 1', indent = 4 })

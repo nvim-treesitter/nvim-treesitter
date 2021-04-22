@@ -9,6 +9,13 @@ local opts = {
   expandtab = true,
 }
 
+local run = function(file, spec, title)
+  title = title and title or tostring(spec.on_line)
+  it(string.format('%s[%s]', file, title), function()
+    new_line('tests/indent/lua/' .. file, spec, opts)
+  end)
+end
+
 describe('indent Lua:', function()
   describe('whole file:', function()
     local files = scan_dir('tests/indent/lua');
@@ -20,13 +27,6 @@ describe('indent Lua:', function()
   end)
 
   describe('new line:', function()
-    local run = function(file, spec, title)
-      title = title and title or tostring(spec.on_line)
-      it(string.format('%s[%s]', file, title), function()
-        new_line('tests/indent/lua/' .. file, spec, opts)
-      end)
-    end
-
     run('comment.lua', { on_line = 1, text = 'line', indent = '-- ' })
     run('comment.lua', { on_line = 5, text = 'multiline', indent = '  ' })
     run('func.lua', { on_line = 1, text = 'x = x + 1', indent = 2 })
