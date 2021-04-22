@@ -63,7 +63,7 @@ local function compare_indent(before, after)
   assert:remove_formatter(format_indent)
 end
 
-function M.set_buf_indent_opts(opts)
+local function set_buf_indent_opts(opts)
   local optnames = {'tabstop', 'shiftwidth', 'softtabstop', 'expandtab', 'filetype'}
   for _, opt in ipairs(optnames) do
     if opts[opt] ~= nil then
@@ -80,7 +80,7 @@ function M.run_indent_test(file, runner, opts)
   local before = vim.api.nvim_buf_get_lines(0, 0, -1, true)
 
   assert.are.same('nvim_treesitter#indent()', vim.bo.indentexpr)
-  M.set_buf_indent_opts(opts)
+  set_buf_indent_opts(opts)
 
   -- perform the test
   runner()
@@ -108,7 +108,7 @@ end
 --   on_line: line on which `normal o` is executed
 --   text: text inserted in the new line
 --   indent: expected indent before the inserted text (string or int)
--- @param opts buffer options passed to M.set_buf_indent_opts
+-- @param opts buffer options passed to set_buf_indent_opts
 function M.indent_new_line(file, spec, opts)
   local before, after = M.run_indent_test(file, function()
     -- move to the line and input the new one
