@@ -2,6 +2,8 @@ local M = {}
 
 local assert = require('luassert')
 local say = require('say')
+local scan_dir = require('plenary.scandir').scan_dir
+local Path = require('plenary.path')
 
 local function same_indent(state, arguments)
   local before = arguments[1]
@@ -73,7 +75,7 @@ local function set_buf_indent_opts(opts)
 end
 
 function M.run_indent_test(file, runner, opts)
-  assert.are.same(1, vim.fn.filereadable(file))
+  assert.are.same(1, vim.fn.filereadable(file), string.format('File "%s" not readable', file))
 
   -- load reference file
   vim.cmd(string.format('edit %s', file))
@@ -121,5 +123,46 @@ function M.indent_new_line(file, spec, opts)
 
   compare_indent(before, after)
 end
+
+local Runner = {}
+Runner.__index = Runner
+
+-- Helper to avoid boilerplate when defining tests
+-- @param it  the "it" function that busted defines globally in spec files
+-- @param base_dir  all other paths will be resolved relative to this directory
+-- @param buf_opts  buffer options passed to set_buf_indent_opts
+function Runner:new(it, base_dir, buf_opts)
+  local runner = {}
+  runner.it = it
+  runner.base_dir = Path:new(base_dir)
+  runner.buf_opts = buf_opts
+  return setmetatable(runner, self)
+end
+
+function Runner:whole_file(dirs)
+  dirs = type(dirs) == "table" and dirs or {dirs}
+  dirs = vim.tbl_map(function(dir)
+    dir = self.base_dir / Path:new(dir)
+    assert.is.same(1, vim.fn.isdirectory(dir.filename))
+    return dir.filename
+  end, dirs)
+  local files = vim.tbl_flatten(vim.tbl_map(scan_dir, dirs))
+  for _, file in ipairs(files) do
+    local relpath = Path:new(file):make_relative(self.base_dir.filename)
+    self.it(relpath, function()
+      M.indent_whole_file(file, self.buf_opts)
+    end)
+  end
+end
+
+function Runner:new_line(file, spec, title)
+  title = title and title or tostring(spec.on_line)
+  self.it(string.format('%s[%s]', file, title), function()
+    local path = self.base_dir / file
+    M.indent_new_line(path.filename, spec, self.buf_opts)
+  end)
+end
+
+M.Runner = Runner
 
 return M
