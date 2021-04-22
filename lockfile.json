@@ -12,7 +12,7 @@
     "revision": "f05e279aedde06a25801c3f2b2cc8ac17fac52ae"
   },
   "c_sharp": {
-    "revision": "09749b7b5428e770cc2ebdf2e90029c0f4a2d411"
+    "revision": "851ac4735f66ec9c479096cc21bf58519da49faa"
   },
   "clojure": {
     "revision": "f7d100c4fbaa8aad537e80c7974c470c7fb6aeda"
@@ -90,7 +90,7 @@
     "revision": "b6d4e9e10ccb7b3afb45018fbc391b4439306b23"
   },
   "nix": {
-    "revision": "a6bae0619126d70c756c11e404d8f4ad5108242f"
+    "revision": "d5287aac195ab06da4fe64ccf93a76ce7c918445"
   },
   "ocaml": {
     "revision": "2f962cf4eb0bee87bba755347a79ee501cd58313"
