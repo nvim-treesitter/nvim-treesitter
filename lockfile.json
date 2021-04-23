@@ -41,6 +41,9 @@
   "fennel": {
     "revision": "bc689e2ef264e2cba499cfdcd16194e8f5fe87d2"
   },
+  "fortran": {
+    "revision": "81a8ad412f3c468223bce97a2bae11ffa4ff2f68"
+  },
   "gdscript": {
     "revision": "bc4074ed0aa195d11b8c78da0e1f4a5509566844"
   },
