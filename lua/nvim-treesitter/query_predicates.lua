@@ -1,4 +1,6 @@
 local query = require"vim.treesitter.query"
+local parsers = require"nvim-treesitter.parsers"
+local configs = require"nvim-treesitter.configs"
 
 local function error(str)
   vim.api.nvim_err_writeln(str)
@@ -84,6 +86,23 @@ query.add_predicate('has-type?', function(match, pattern, bufnr, pred)
 
   return vim.tbl_contains(types, node:type())
 end)
+
+
+-- Inject a language based on the value from `highlight.injections.{language}.{value}`.
+-- Usage: (#inject-from! {value} [{default}])
+query.add_directive("inject-from!", function(match, pattern, bufnr, pred, metadata)
+  local key = pred[2]
+  local default = pred[3] or ""
+
+  local injection = default
+  local language = parsers.get_buf_lang(bufnr)
+  local config = configs.get_module("highlight").injections
+  if config and config[language] and config[language][key] then
+    injection = config[key]
+  end
+  metadata.language = injection
+end)
+
 
 -- Just avoid some anoying warnings for this directive
 query.add_directive('make-range!', function() end)
