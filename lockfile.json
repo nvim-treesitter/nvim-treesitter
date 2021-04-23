@@ -48,7 +48,7 @@
     "revision": "ca8d1533c91107039e7a3f84019378eefe357582"
   },
   "go": {
-    "revision": "2a83dfdd759a632651f852aa4dc0af2525fae5cd"
+    "revision": "2a2fbf271ad6b864202f97101a2809009957535e"
   },
   "graphql": {
     "revision": "ed8723cd660451c0b192af79183e29b5ce9916d2"
@@ -123,7 +123,7 @@
     "revision": "107b50a893ad500312708710a771ecd10a9eb42d"
   },
   "ruby": {
-    "revision": "dfff673b41df7fadcbb609c6338f38da3cdd018e"
+    "revision": "963b7b8b20c6cf30a4a12a5d2a58b5fe0a482558"
   },
   "rust": {
     "revision": "a360da0a29a19c281d08295a35ecd0544d2da211"
@@ -153,13 +153,13 @@
     "revision": "7cff70bbcbbc62001b465603ca1ea88edd668704"
   },
   "tsx": {
-    "revision": "82916165120f840164f11119f268a4de819ea90b"
+    "revision": "d0c785782a4384034d4a6460b908141a88ad7229"
   },
   "turtle": {
     "revision": "05b2419c35ca64ad7a51dc5620426d5c9bf9c357"
   },
   "typescript": {
-    "revision": "82916165120f840164f11119f268a4de819ea90b"
+    "revision": "d0c785782a4384034d4a6460b908141a88ad7229"
   },
   "verilog": {
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
