@@ -105,9 +105,9 @@
 (moduleExpr (simpleId) @namespace)
 (module name: (moduleName) @namespace)
 
-(dataclass name: (className) @class)
-(datatype name: (className) @class)
-(typeExpr name: (className) @class)
+(dataclass name: (className) @type)
+(datatype name: (className) @type)
+(typeExpr name: (className) @type)
 
 (importModuleExpr name: (simpleId) @variable)
 (qualModuleExpr name: (simpleId) @variable)
