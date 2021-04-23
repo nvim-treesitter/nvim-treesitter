@@ -357,4 +357,8 @@ function M.goto_node(node, goto_end, avoid_set_jump)
   api.nvim_win_set_cursor(0, { position[1] + 1, position[2] })
 end
 
+function M.is_valid_range(range)
+  return range[1] < range[3] or (range[1] == range[3] and range[2] <= range[4])
+end
+
 return M
