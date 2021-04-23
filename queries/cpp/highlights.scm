@@ -1,13 +1,7 @@
 ; inherits: c
 
 ((identifier) @field
- (#match? @field "^_"))
-
-((identifier) @field
- (#match? @field "^m_"))
-
-((identifier) @field
- (#match? @field "_$"))
+ (#match? @field "(^_|^m_|_$)"))
 
 (parameter_declaration
   declarator: (reference_declarator) @parameter)
@@ -39,12 +33,12 @@
 
 
 ((identifier) @type
- (#match? @type "^[A-Z][a-z]")
+ (#match? @type "^[A-Z].*[a-z]")
  (#not-has-parent? @type function_declarator))
 
 (namespace_identifier) @namespace
 ((namespace_identifier) @type
-                        (#match? @type "^[A-Z].*[a-z]"))
+                        (#match? @type "^[A-Z]"))
 ((namespace_identifier) @constant
                         (#match? @constant "^[A-Z][A-Z_0-9]*$"))
 (namespace_definition
