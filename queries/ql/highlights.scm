@@ -105,9 +105,9 @@
 (moduleExpr (simpleId) @namespace)
 (module name: (moduleName) @namespace)
 
-(dataclass name: (className) @type)
-(datatype name: (className) @type)
-(typeExpr name: (className) @type)
+(dataclass name: (className) @class)
+(datatype name: (className) @class)
+(typeExpr name: (className) @class)
 
 (importModuleExpr name: (simpleId) @variable)
 (qualModuleExpr name: (simpleId) @variable)
@@ -118,9 +118,10 @@
 
 (string) @string
 
-(charpred (className) @function)
 (aritylessPredicateExpr (literalId) @function)
-(predicateName) @function
+(memberPredicate name: (predicateName) @function)
+(classlessPredicate name: (predicateName) @function)
+(charpred (className) @function)
 
 [
   (line_comment)
