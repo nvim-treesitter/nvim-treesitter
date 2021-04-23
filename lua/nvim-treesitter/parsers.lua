@@ -34,6 +34,9 @@ list.javascript = {
     url = "https://github.com/tree-sitter/tree-sitter-javascript",
     files = { "src/parser.c", "src/scanner.c" },
   },
+  injections = {
+    pattern = '\\c^js$'
+  },
   used_by = { 'javascriptreact' },
   maintainers = {"@steelsojka"},
 }
@@ -93,6 +96,9 @@ list.python = {
     url = "https://github.com/tree-sitter/tree-sitter-python",
     files = { "src/parser.c", "src/scanner.cc" },
   },
+  injections = {
+    pattern = '\\c^py(2|3)?$',
+  },
   maintainers = {'@stsewd', "@theHamsta"},
 }
 
@@ -116,6 +122,9 @@ list.ruby = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ruby",
     files = { "src/parser.c", "src/scanner.cc" },
+  },
+  injections = {
+    pattern = '^rb$',
   },
   maintainers = {'@TravonteD'},
 }
@@ -158,6 +167,9 @@ list.html = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-html",
     files = { "src/parser.c", "src/scanner.cc" },
+  },
+  injections = {
+    pattern = '\\c^html?$',
   },
   maintainers = {"@TravonteD"},
 }
@@ -376,6 +388,9 @@ list.rst = {
   install_info = {
     url = "https://github.com/stsewd/tree-sitter-rst",
     files = { "src/parser.c", "src/scanner.c" },
+  },
+  injections = {
+    pattern = '\\c^(rst|restructuredtext)^',
   },
   maintainers = {"@stsewd"},
 }

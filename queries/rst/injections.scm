@@ -28,7 +28,8 @@
 ((directive
    name: (type) @_type
    body: (body (arguments) @language (content) @content))
- (#eq? @_type "code"))
+ (#eq? @_type "code")
+ (#inject! @language))
 
 ((directive
    name: (type) @_type
