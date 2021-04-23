@@ -39,12 +39,12 @@
 
 
 ((identifier) @type
- (#match? @type "^[A-Z]")
+ (#match? @type "^[A-Z][a-z]")
  (#not-has-parent? @type function_declarator))
 
 (namespace_identifier) @namespace
 ((namespace_identifier) @type
-                        (#match? @type "^[A-Z]"))
+                        (#match? @type "^[A-Z].*[a-z]"))
 ((namespace_identifier) @constant
                         (#match? @constant "^[A-Z][A-Z_0-9]*$"))
 (namespace_definition
