@@ -174,3 +174,5 @@
 (((identifier) @boolean) (eq? @boolean "true"))
 (((identifier) @boolean) (eq? @boolean "false"))
 
+["::" ":" "." "," "..." "!"] @punctuation.delimiter
+["[" "]" "(" ")" "{" "}"] @punctuation.bracket
