@@ -130,6 +130,8 @@
   "return"
   "macro"
   "struct"
+  "primitive"
+  "type"
 ] @keyword
 
 ((identifier) @keyword (#match? @keyword "^(global|local)$"))
