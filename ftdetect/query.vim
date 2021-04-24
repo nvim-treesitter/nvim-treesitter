@@ -8,4 +8,4 @@ function! s:shouldFt(path)
   endif
 endfunction
 
-autocmd BufEnter,BufNewFile *.scm call s:shouldFt(expand("%"))
+autocmd BufNewFile,BufRead *.scm call s:shouldFt(expand("%"))
