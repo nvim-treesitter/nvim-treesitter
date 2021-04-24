@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-luacheck `find -name  "*.lua"` --codes
+# ignore indent test files
+luacheck `find -name  "*.lua" -not -path "./tests/indent/lua/*"` --codes
