@@ -20,6 +20,8 @@ hlmap["boolean"] = "TSBoolean"
 
 hlmap["character"] = "TSCharacter"
 
+hlmap["comment"] = "TSComment"
+
 hlmap["conditional"] = "TSConditional"
 
 hlmap["constant"] = "TSConstant"
@@ -28,7 +30,7 @@ hlmap["constant.macro"] = "TSConstMacro"
 
 hlmap["constructor"] = "TSConstructor"
 
-hlmap.error = "TSError"
+hlmap["error"] = "TSError"
 hlmap["exception"] = "TSException"
 
 hlmap["field"] = "TSField"
