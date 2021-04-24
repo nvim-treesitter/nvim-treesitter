@@ -1,26 +1,12 @@
 ((style_element
-  (raw_text) @css))
-
-(
-  (style_element
-    (start_tag
-      (attribute
-        (quoted_attribute_value (attribute_value) @_lang)))
-    (raw_text) @scss)
-  (#match? @_lang "(scss|postcss|less)")
-)
+  (start_tag (attribute (quoted_attribute_value (attribute_value) @_lang))?)
+  (raw_text) @content)
+ (#inject! @_lang "css"))
 
 ((script_element
-  (raw_text) @javascript))
-
-(
-  (script_element
-    (start_tag
-      (attribute
-        (quoted_attribute_value (attribute_value) @_lang)))
-    (raw_text) @typescript)
-  (#match? @_lang "(ts|typescript)")
-)
+  (start_tag (attribute (quoted_attribute_value (attribute_value) @_lang))?)
+  (raw_text) @content)
+ (#inject! @_lang "javascript"))
 
 ((interpolation
   (raw_text) @javascript))

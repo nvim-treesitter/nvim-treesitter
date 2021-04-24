@@ -228,6 +228,9 @@ list.scss = {
     url = "https://github.com/elianiva/tree-sitter-scss",
     files = { "src/parser.c", "src/scanner.c" }
   },
+  injections = {
+    aliases = {'postcss', 'less'},
+  },
 }
 
 list.erlang = {
