@@ -2,14 +2,24 @@ local api = vim.api
 local ts = vim.treesitter
 
 local ft_to_parsername = {}
+local injections_aliases = {}
 
-local function update_ft_to_parsername(name, parser)
+local function update_parser(name, parser)
+  -- Update filetype to parser table.
   if type(parser.used_by) == 'table' then
     for _, ft in pairs(parser.used_by) do
       ft_to_parsername[ft] = name
     end
   end
   ft_to_parsername[parser.filetype or name] = name
+
+  -- Update injection aliases to parser table.
+  if parser.injections and parser.injections.aliases then
+    for _, alias in pairs(parser.injections.aliases) do
+      injections_aliases[alias] = name
+    end
+  end
+  injections_aliases[name] = name
 end
 
 local list = setmetatable({}, {
@@ -25,7 +35,7 @@ local list = setmetatable({}, {
       end
     }))
 
-    update_ft_to_parsername(parsername, parserconfig)
+    update_parser(parsername, parserconfig)
   end
 })
 
@@ -35,7 +45,7 @@ list.javascript = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   injections = {
-    pattern = '\\c^js$'
+    aliases = {'js'},
   },
   used_by = { 'javascriptreact' },
   maintainers = {"@steelsojka"},
@@ -97,7 +107,7 @@ list.python = {
     files = { "src/parser.c", "src/scanner.cc" },
   },
   injections = {
-    pattern = '\\c^py(2|3)?$',
+    aliases = {'py', 'py2', 'py3'},
   },
   maintainers = {'@stsewd', "@theHamsta"},
 }
@@ -124,7 +134,7 @@ list.ruby = {
     files = { "src/parser.c", "src/scanner.cc" },
   },
   injections = {
-    pattern = '^rb$',
+    aliases = {'rb'},
   },
   maintainers = {'@TravonteD'},
 }
@@ -169,7 +179,7 @@ list.html = {
     files = { "src/parser.c", "src/scanner.cc" },
   },
   injections = {
-    pattern = '\\c^html?$',
+    aliases = {'htm'},
   },
   maintainers = {"@TravonteD"},
 }
@@ -390,7 +400,7 @@ list.rst = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   injections = {
-    pattern = '\\c^(rst|restructuredtext)^',
+    aliases = {'restructuredtext'},
   },
   maintainers = {"@stsewd"},
 }
@@ -570,6 +580,10 @@ local M = {
 
 function M.ft_to_lang(ft)
   return ft_to_parsername[ft] or ft
+end
+
+function M.alias_to_lang(alias)
+  return injections_aliases[alias]
 end
 
 function M.available_parsers()

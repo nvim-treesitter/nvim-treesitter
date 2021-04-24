@@ -66,7 +66,7 @@
   (classifier)? @text.emphasis)
 
 ; Field lists
-(field (field_name) @constant)
+(field (field_name) @field)
 
 ;; Inline markup
 

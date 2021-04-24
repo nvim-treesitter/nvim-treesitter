@@ -87,31 +87,14 @@ query.add_predicate('has-type?', function(match, pattern, bufnr, pred)
 end)
 
 
--- Inject a language based on the pattern from `config.injections.pattern`.
+-- Inject a language based on the aliases from `config.injections.aliases`.
 -- Usage: (#inject! @language [default])
-query.add_directive('inject!', function(match, pattern, bufnr, pred, metadata)
+query.add_directive("inject!", function(match, pattern, bufnr, pred, metadata)
   local match_id = pred[2]
-  local default = pred[3] or ''
   local node = match[match_id]
-  local text = query.get_node_text(node, bufnr)
-  local configs = parsers.get_parser_configs()
-  local language = default
-  for lang in pairs(configs) do
-    if text == lang then
-      language = lang
-      break
-    end
-
-    local injections = configs[lang].injections
-    local injection_pattern = injections and injections.pattern
-    if injection_pattern then
-      local regex = vim.regex('\\v' .. injection_pattern)
-      if regex:match_str(text) then
-        language = lang
-        break
-      end
-    end
-  end
+  local text = string.lower(query.get_node_text(node, bufnr))
+  local default = pred[3] or text
+  local language = parsers.alias_to_lang(text) or default
   metadata.language = language
 end)
 
