@@ -92,8 +92,13 @@ end)
 query.add_directive("inject!", function(match, pattern, bufnr, pred, metadata)
   local match_id = pred[2]
   local node = match[match_id]
-  local text = string.lower(query.get_node_text(node, bufnr))
-  local default = pred[3] or text
+  local default = pred[3] or ""
+  local text
+  if node then
+    text = string.lower(query.get_node_text(node, bufnr))
+  else
+    text = default
+  end
   local language = parsers.alias_to_lang(text) or default
   metadata.language = language
 end)
