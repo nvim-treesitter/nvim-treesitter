@@ -92,9 +92,7 @@ end)
 -- Usage: (#inject-from! {value} [{default}])
 query.add_directive("inject-from!", function(match, pattern, bufnr, pred, metadata)
   local key = pred[2]
-  local default = pred[3] or ""
-
-  local injection = default
+  local injection = pred[3] or ""
   local language = parsers.get_buf_lang(bufnr)
   local config = configs.get_module("highlight").injections
   if config and config[language] and config[language][key] then
