@@ -73,6 +73,9 @@ list.cpp = {
     files = { "src/parser.c", "src/scanner.cc" },
     generate_requires_npm = true,
   },
+  injections = {
+    aliases = {'c++'},
+  },
   used_by = { "cuda" },
   maintainers = {"@theHamsta"},
 }
@@ -81,6 +84,9 @@ list.rust = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-rust",
     files = { "src/parser.c", "src/scanner.c" },
+  },
+  injections = {
+    aliases = {'rs'},
   },
   maintainers = {"@vigoux"},
 }
@@ -117,6 +123,9 @@ list.go = {
     url = "https://github.com/tree-sitter/tree-sitter-go",
     files = { "src/parser.c" },
   },
+  injections = {
+    aliases = {'golang'},
+  },
   maintainers = {"@theHamsta", "@WinWisely268"},
 }
 
@@ -124,6 +133,9 @@ list.graphql = {
   install_info = {
     url = "https://github.com/bkegley/tree-sitter-graphql",
     files = { "src/parser.c" },
+  },
+  injections = {
+    aliases = {'gql'},
   },
   maintainers = {"@bkegley"},
 }
@@ -143,6 +155,9 @@ list.bash = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-bash",
     files = { "src/parser.c", "src/scanner.cc" },
+  },
+  injections = {
+    aliases = {'sh'},
   },
   used_by = { "zsh", "PKGBUILD" },
   filetype = 'sh',
@@ -266,6 +281,9 @@ list.c_sharp = {
     url = "https://github.com/tree-sitter/tree-sitter-c-sharp",
     files = { "src/parser.c", "src/scanner.c" },
   },
+  injections = {
+    aliases = {'c#'},
+  },
   filetype = 'cs',
   maintainers = {'@svermeulen'},
 }
@@ -276,6 +294,9 @@ list.typescript = {
     files = { "src/parser.c", "src/scanner.c" },
     location = "tree-sitter-typescript/typescript",
     generate_requires_npm = true,
+  },
+  injections = {
+    aliases = {'ts'},
   },
   maintainers = {"@steelsojka"},
 }
@@ -339,6 +360,9 @@ list.glimmer = {
     url = "https://github.com/alexlafroscia/tree-sitter-glimmer",
     files = { "src/parser.c", "src/scanner.c" },
     branch = 'main',
+  },
+  injections = {
+    aliases = {'hbs'},
   },
   readme_name = "Glimmer and Ember",
   maintainers = { "@alexlafroscia" },
@@ -542,6 +566,9 @@ list.latex = {
   install_info = {
     url = "https://github.com/latex-lsp/tree-sitter-latex",
     files = { "src/parser.c" },
+  },
+  injections = {
+    aliases = {'tex'},
   },
   filetype = 'tex',
   used_by = {'cls', 'sty'},
