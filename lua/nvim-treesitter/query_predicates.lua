@@ -88,7 +88,7 @@ end)
 
 
 -- Inject a language based on the aliases from `config.injections.aliases`.
--- Usage: (#inject! @language [default])
+-- Usage: (#inject! @_language [default])
 query.add_directive("inject!", function(match, pattern, bufnr, pred, metadata)
   local match_id = pred[2]
   local node = match[match_id]
