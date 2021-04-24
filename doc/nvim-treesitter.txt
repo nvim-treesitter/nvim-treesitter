@@ -451,10 +451,6 @@ For characters.
 `TSComment`
 For comment blocks.
 
-							    *hl-TSConstructor*
-`TSConstructor`
-For constructor calls and definitions: `{}` in Lua, and Java constructors.
-
 							    *hl-TSConditional*
 `TSConditional`
 For keywords related to conditionnals.
@@ -470,6 +466,10 @@ For constant that are built in the language: `nil` in Lua.
 							     *hl-TSConstMacro*
 `TSConstMacro`
 For constants that are defined by macros: `NULL` in C.
+
+							    *hl-TSConstructor*
+`TSConstructor`
+For constructor calls and definitions: `{}` in Lua, and Java constructors.
 
 								  *hl-TSError*
 `TSError`
@@ -513,6 +513,10 @@ For keywords that don't fall in previous categories.
 `TSKeywordFunction`
 For keywords used to define a fuction.
 
+							*hl-TSKeywordOperator*
+`TSKeywordOperator`
+for operators that are English words, e.g. `and`, `as`, `or`.
+
 								  *hl-TSLabel*
 `TSLabel`
 For labels: `label:` in C and `:label:` in Lua.
@@ -527,7 +531,7 @@ For identifiers referring to modules and namespaces.
 
 								     *hl-None*
 `TSNone`
-TODO: docs
+For no highlighting.
 
 								 *hl-TSNumber*
 `TSNumber`
@@ -620,6 +624,22 @@ Literal text.
 								    *hl-TSURI*
 `TSURI`
 Any URI like a link or email.
+
+								   *hl-TSMath*
+`TSMath`
+For LaTex-like math environments.
+
+							  *hl-TSTextReference*
+`TSTextReference`
+For footnotes, text references, citations.
+
+							     *hl-TSEnviroment*
+`TSEnviroment`
+For text environments of markup languages.
+
+							 *hl-TSEnviromentName*
+`TSEnviromentName`
+For the name/the string indicating the type of text environment.
 
 								   *hl-TSNote*
 `TSNote`
