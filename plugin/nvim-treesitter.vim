@@ -84,6 +84,7 @@ highlight default link TSTitle Title
 highlight default link TSLiteral String
 highlight default link TSURI Underlined
 
+highlight default link TSComment Comment
 highlight default link TSNote SpecialComment
 highlight default link TSWarning Todo
 highlight default link TSDanger WarningMsg
