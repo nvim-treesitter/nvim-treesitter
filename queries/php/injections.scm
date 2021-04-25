@@ -1,3 +1,3 @@
 (text) @html
 
-(comment) @comment
+(comment) @comment @combined

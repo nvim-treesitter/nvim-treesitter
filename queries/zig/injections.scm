@@ -1,1 +1,1 @@
-(line_comment) @comment
+(line_comment) @comment @combined

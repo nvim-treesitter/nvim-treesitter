@@ -59,4 +59,4 @@
   (role) @_role)
  (#eq? @_role ":math:"))
 
-(comment) @comment
+(comment) @comment @combined
