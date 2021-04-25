@@ -44,6 +44,8 @@
 (namespace_definition
   name: (identifier) @namespace)
 
+(using_declaration . "using" . "namespace" . [(scoped_identifier) (identifier)] @namespace)
+
 (destructor_name
   (identifier) @method)
 
