@@ -1,4 +1,4 @@
-(comment) @jsdoc
+(comment) @jsdoc @combined
 (comment) @comment @combined
 
 ((regex_pattern) @regex)
