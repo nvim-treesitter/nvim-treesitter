@@ -45,8 +45,7 @@ local function do_check()
         if query then
           for _, capture in ipairs(query.captures) do
             local is_valid = (
-              capture:find("^[A-Z]") and query_type == 'highlights'  -- Highlight groups.
-              or vim.startswith(capture, "_")  -- Helpers.
+              vim.startswith(capture, "_")  -- Helpers.
               or not captures[query_type]  -- Skip undocumented query types.
               or vim.tbl_contains(captures[query_type], capture)
             )
