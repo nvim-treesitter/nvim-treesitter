@@ -31,10 +31,10 @@
   "private"
 ] @include
 
-[
-"implicit"
-(none)
-] @annotation
+; [
+; "implicit"
+; (none)
+; ] @annotation
 
 [
   "function"

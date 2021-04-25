@@ -257,6 +257,7 @@ the node describing the language and `@content` to describe the injection region
 ```
 @{language} ; e.g. @html to describe a html region
 
-@language ; dynamic detection of the injection language (i.e. the text of the captured node describes the language)
-@content ; region for the dynamically detected language
+@language ; dynamic detection of the injection language (i.e. the text of the captured node describes the language).
+@content ; region for the dynamically detected language.
+@combined ; This will combine all matches of a pattern as one single block of content.
 ```
