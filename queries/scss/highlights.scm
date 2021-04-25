@@ -37,3 +37,5 @@
 ] @punctuation.bracket
 
 (include_statement (identifier) @function)
+
+(single_line_comment) @comment
