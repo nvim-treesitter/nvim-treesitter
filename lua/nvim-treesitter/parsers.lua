@@ -104,6 +104,16 @@ list.go = {
   maintainers = {"@theHamsta", "@WinWisely268"},
 }
 
+list.gomod = {
+  install_info = {
+    url = "https://github.com/camdencheek/tree-sitter-go-mod",
+	branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = {"@camdencheek"},
+  filetype = "gomod",
+}
+
 list.graphql = {
   install_info = {
     url = "https://github.com/bkegley/tree-sitter-graphql",
