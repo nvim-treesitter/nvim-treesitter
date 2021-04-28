@@ -107,7 +107,7 @@ list.go = {
 list.gomod = {
   install_info = {
     url = "https://github.com/camdencheek/tree-sitter-go-mod",
-	branch = "main",
+    branch = "main",
     files = { "src/parser.c" },
   },
   maintainers = {"@camdencheek"},
