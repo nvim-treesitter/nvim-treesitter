@@ -16,17 +16,12 @@ local function get_node_at_line(root, lnum)
   end
 end
 
-local function node_fmt(node)
-  if not node then return nil end
-  return tostring(node)
-end
-
 local get_indents = tsutils.memoize_by_buf_tick(function(bufnr, root, lang)
   local get_map = function(capture)
     local matches = queries.get_capture_matches(bufnr, capture, 'indents', root, lang) or {}
     local map = {}
     for _, node in ipairs(matches) do
-      map[tostring(node)] = true
+      map[node:id()] = true
     end
     return map
   end
@@ -73,7 +68,7 @@ function M.get_indent(lnum)
       end
 
       -- nodes can be marked @return to prevent using them
-      if prev_node and not q.returns[node_fmt(prev_node)] then
+      if prev_node and not q.returns[prev_node:id()] then
         local row = prev_node:start()
         local end_row = prev_node:end_()
 
@@ -93,12 +88,12 @@ function M.get_indent(lnum)
   if not node then
     local wrapper = root:descendant_for_range(lnum-1, 0, lnum-1, -1)
     node = wrapper:child(0) or wrapper
-    if q.indents[node_fmt(wrapper)] ~= nil and wrapper ~= root then
+    if q.indents[wrapper:id()] ~= nil and wrapper:id() ~= root:id() then
       indent = indent_size
     end
   end
 
-  while node and q.branches[node_fmt(node)] do
+  while node and q.branches[node:id()] do
     node = node:parent()
   end
 
@@ -107,13 +102,13 @@ function M.get_indent(lnum)
 
   while node do
     -- do not indent if we are inside an @ignore block
-    if q.ignores[node_fmt(node)] and node:start() < lnum-1 and node:end_() > lnum-1 then
+    if q.ignores[node:id()] and node:start() < lnum-1 and node:end_() > lnum-1 then
       return -1
     end
 
     -- do not indent the starting node, do not add multiple indent levels on single line
     local row = node:start()
-    if not first and q.indents[node_fmt(node)] and prev_row ~= row then
+    if not first and q.indents[node:id()] and prev_row ~= row then
       indent = indent + indent_size
       prev_row = row
     end
