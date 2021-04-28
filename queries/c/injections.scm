@@ -1,3 +1,3 @@
 (preproc_arg) @c
 
-(comment) @comment
+(comment) @comment @combined
