@@ -16,6 +16,8 @@ M.compilers = { vim.fn.getenv('CC'), "cc", "gcc", "clang", "cl" }
 local started_commands = 0
 local finished_commands = 0
 local failed_commands = 0
+local complete_std_output = {}
+local complete_error_output = {}
 
 local function reset_progress_counter()
   if started_commands ~= finished_commands then
@@ -24,6 +26,8 @@ local function reset_progress_counter()
   started_commands = 0
   finished_commands = 0
   failed_commands = 0
+  complete_std_output = {}
+  complete_error_output = {}
 end
 
 local function get_job_status()
@@ -57,6 +61,18 @@ local function outdated_parsers()
     info.installed_parsers())
 end
 
+local function onread(handle, is_stderr)
+  return function(err, data)
+    if data then
+      if is_stderr then
+        complete_error_output[handle] = (complete_error_output[handle] or '')..data
+      else
+        complete_std_output[handle] = (complete_std_output[handle] or '')..data
+      end
+    end
+  end
+end
+
 function M.iter_cmd(cmd_list, i, lang, success_message)
   if i == 1 then
     started_commands = started_commands + 1
@@ -81,15 +97,36 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
     end
   else
     local handle
+    local stdout = luv.new_pipe(false)
+    local stderr = luv.new_pipe(false)
+    attr.opts.stdio = {nil, stdout, stderr}
     handle = luv.spawn(attr.cmd, attr.opts, vim.schedule_wrap(function(code)
+      if code ~= 0 then
+        stdout:read_stop()
+        stderr:read_stop()
+      end
+      stdout:close()
+      stderr:close()
       handle:close()
       if code ~= 0 then
         failed_commands = failed_commands + 1
         finished_commands = finished_commands + 1
-        return api.nvim_err_writeln(attr.err or ("Failed to execute the following command:\n"..vim.inspect(attr)))
+        if complete_std_output[handle] and complete_std_output[handle] ~= '' then
+          print(complete_std_output[handle])
+        end
+
+        local err_msg = complete_error_output[handle] or ''
+        api.nvim_err_writeln(
+          'nvim-treesitter['..lang..']: '
+          ..(attr.err or ("Failed to execute the following command:\n"..vim.inspect(attr)))
+          ..'\n'
+          ..err_msg)
+        return
       end
       M.iter_cmd(cmd_list, i + 1, lang, success_message)
     end))
+    luv.read_start(stdout, onread(handle, false))
+    luv.read_start(stderr, onread(handle, true))
   end
 end
 
