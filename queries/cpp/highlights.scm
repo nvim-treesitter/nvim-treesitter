@@ -150,7 +150,6 @@
 ] @keyword.operator
 
 "::" @operator
-"..." @operator
 
 ; Annotations (not fully supported by parser)
 
