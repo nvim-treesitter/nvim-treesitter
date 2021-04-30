@@ -1,1 +1,1 @@
-(comment) @comment @combined
+(comment) @comment
