@@ -95,6 +95,8 @@
 
 [ "." ";" ":" "," ] @punctuation.delimiter
 
+"..." @punctuation.special
+
 (conditional_expression [ "?" ":" ] @conditional)
 
 
