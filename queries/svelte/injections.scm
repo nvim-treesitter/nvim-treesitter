@@ -29,4 +29,4 @@
   (#match? @_lang "(ts|typescript)")
 )
 
-(comment) @comment @combined
+(comment) @comment
