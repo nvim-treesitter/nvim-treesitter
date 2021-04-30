@@ -1,3 +1,3 @@
 (preproc_arg) @cpp
 
-(comment) @comment @combined
+(comment) @comment

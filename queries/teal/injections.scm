@@ -9,4 +9,4 @@
   (#eq? @_cdef_identifier "cdef")
 )
 
-(comment) @comment @combined
+(comment) @comment

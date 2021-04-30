@@ -29,4 +29,4 @@
     (quoted_attribute_value 
       (attribute_value) @javascript)))
 
-(comment) @comment @combined
+(comment) @comment
