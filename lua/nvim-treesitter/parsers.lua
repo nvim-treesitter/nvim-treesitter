@@ -140,6 +140,13 @@ list.bash = {
   maintainers = {"@TravonteD"},
 }
 
+list.fish = {
+  install_info = {
+    url = "https://github.com/krnik/tree-sitter-fish",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+}
+
 list.php = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-php",
