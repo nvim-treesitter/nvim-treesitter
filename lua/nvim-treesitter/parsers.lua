@@ -145,6 +145,7 @@ list.fish = {
     url = "https://github.com/krnik/tree-sitter-fish",
     files = { "src/parser.c", "src/scanner.c" },
   },
+  maintainers = {"@krnik", "@ram02z"},
 }
 
 list.php = {
