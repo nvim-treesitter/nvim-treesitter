@@ -1,5 +1,4 @@
-((style_element
-  (raw_text) @css))
+; inherits: html_tags
 
 (
   (style_element
@@ -15,10 +14,7 @@
    (quoted_attribute_value (attribute_value) @css))
  (#eq? @_attr "style"))
 
-((script_element
-  (raw_text) @javascript))
-
-((raw_text_expr) @javascript)
+(raw_text_expr) @javascript
 
 (
   (script_element
