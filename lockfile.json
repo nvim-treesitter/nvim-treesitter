@@ -36,10 +36,13 @@
     "revision": "e98186f14e2dc64153c4a21e342d15fa38ee16db"
   },
   "erlang": {
-    "revision": "7b436e1ca50f0002f6765a9a2a00f6156b2cc881"
+    "revision": "fea0141fb1e6d3af45c3d8f45441766793ed6e30"
   },
   "fennel": {
     "revision": "bc689e2ef264e2cba499cfdcd16194e8f5fe87d2"
+  },
+  "fish": {
+    "revision": "8039f25e06c74a7f700c0c8de3778169a05a6f11"
   },
   "fortran": {
     "revision": "81a8ad412f3c468223bce97a2bae11ffa4ff2f68"
@@ -51,7 +54,7 @@
     "revision": "ca8d1533c91107039e7a3f84019378eefe357582"
   },
   "go": {
-    "revision": "2a2fbf271ad6b864202f97101a2809009957535e"
+    "revision": "eb306e6e60f393df346cfc8cbfaf52667a37128a"
   },
   "gomod": {
     "revision": "04bc2e93a3863e299c50e16d9323fe15db721b6f"
@@ -66,10 +69,10 @@
     "revision": "d93af487cc75120c89257195e6be46c999c6ba18"
   },
   "java": {
-    "revision": "ee8e358637e05188f9f65d8d1ad88a4412c975ce"
+    "revision": "2efe37f92d2e6aeb25186e9da07455bb4a30163c"
   },
   "javascript": {
-    "revision": "a263a8f53266f8f0e47e21598e488f0ef365a085"
+    "revision": "e6407af44c387d81d0ef83cb35239c4a568ce9a3"
   },
   "jsdoc": {
     "revision": "189a6a4829beb9cdbe837260653b4a3dfb0cc3db"
@@ -81,7 +84,7 @@
     "revision": "02b01653c8a1c198ae7287d566efa86a135b30d5"
   },
   "julia": {
-    "revision": "0ba7a24b062b671263ae08e707e9e94383b25bb7"
+    "revision": "12ea597262125fc22fd2e91aa953ac69b19c26ca"
   },
   "kotlin": {
     "revision": "48bfb38abd93f8d617877d7bb7f92a6bb1166285"
@@ -108,7 +111,7 @@
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
   },
   "php": {
-    "revision": "d9f7c81ef398bc2da38aedc59da5ce96a6bb84f9"
+    "revision": "3ff333bfd8d0644829e9c3a6f826cdbd69b1c179"
   },
   "python": {
     "revision": "d6210ceab11e8d812d4ab59c07c81458ec6e5184"
@@ -129,7 +132,7 @@
     "revision": "107b50a893ad500312708710a771ecd10a9eb42d"
   },
   "ruby": {
-    "revision": "963b7b8b20c6cf30a4a12a5d2a58b5fe0a482558"
+    "revision": "391269d74d20154bbd0ac9be20b35eced6920290"
   },
   "rust": {
     "revision": "a360da0a29a19c281d08295a35ecd0544d2da211"
@@ -147,7 +150,7 @@
     "revision": "45d356487799dab0ebc58cc8922aa145264063f8"
   },
   "svelte": {
-    "revision": "c00bd51739d0de6602607e9f1e46e942bdb1f261"
+    "revision": "10c113001acf9852817150acb3031a5e68d2b4cf"
   },
   "swift": {
     "revision": "a22fa5e19bae50098e2252ea96cba3aba43f4c58"
@@ -159,13 +162,13 @@
     "revision": "7cff70bbcbbc62001b465603ca1ea88edd668704"
   },
   "tsx": {
-    "revision": "4c20b54771e4b390ee058af2930feb2cd55f2bf8"
+    "revision": "28e757a2f498486931b3cb13a100a1bcc9261456"
   },
   "turtle": {
     "revision": "05b2419c35ca64ad7a51dc5620426d5c9bf9c357"
   },
   "typescript": {
-    "revision": "4c20b54771e4b390ee058af2930feb2cd55f2bf8"
+    "revision": "28e757a2f498486931b3cb13a100a1bcc9261456"
   },
   "verilog": {
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
