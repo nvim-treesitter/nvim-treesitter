@@ -102,10 +102,10 @@
     "revision": "50f38ceab667f9d482640edfee803d74f4edeba5"
   },
   "ocaml": {
-    "revision": "2f962cf4eb0bee87bba755347a79ee501cd58313"
+    "revision": "0348562f385bc2bd67ecf181425e1afd6d454192"
   },
   "ocaml_interface": {
-    "revision": "2f962cf4eb0bee87bba755347a79ee501cd58313"
+    "revision": "0348562f385bc2bd67ecf181425e1afd6d454192"
   },
   "ocamllex": {
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
