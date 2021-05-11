@@ -64,6 +64,15 @@ list.cpp = {
   maintainers = {"@theHamsta"},
 }
 
+list.dockerfile = {
+  install_info = {
+    url = "https://github.com/camdencheek/tree-sitter-dockerfile",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = {"@camdencheek"},
+}
+
 list.rust = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-rust",
