@@ -67,7 +67,7 @@ list.cpp = {
 list.dockerfile = {
   install_info = {
     url = "https://github.com/camdencheek/tree-sitter-dockerfile",
-	branch = "main",
+    branch = "main",
     files = { "src/parser.c" },
   },
   maintainers = {"@camdencheek"},
