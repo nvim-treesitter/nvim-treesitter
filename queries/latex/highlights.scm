@@ -10,7 +10,7 @@
    name: (word) @_env)) @text.math
    (#match? @_env "^(displaymath|equation|multline|eqnarray|align|array|split)[*]?$"))
 
-;; This at the begining of the file would be the alternative to highlight
+;; This at the beginning of the file would be the alternative to highlight
 ;; only the interior of the environment
 ;((environment
   ;(begin
@@ -149,18 +149,18 @@
 ((generic_command
   name:(generic_command_name) @_name
   arg: (_) @text.emphasis)
- (#match? @_name "^(\\textit|\\mathit)$"))
+ (#match? @_name "^(\\\\textit|\\\\mathit)$"))
 
 ((generic_command
   name:(generic_command_name) @_name
   arg: (_) @text.strong)
- (#match? @_name "^(\\textbf|\\mathbf)$"))
+ (#match? @_name "^(\\\\textbf|\\\\mathbf)$"))
 
 ((generic_command
   name:(generic_command_name) @_name
   .
   arg: (_) @text.uri)
- (#match? @_name "^(\\url|\\href)$"))
+ (#match? @_name "^(\\\\url|\\\\href)$"))
 
 (ERROR) @error
 
