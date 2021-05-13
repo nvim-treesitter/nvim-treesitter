@@ -8,15 +8,7 @@
 ((environment
   (begin
    name: (word) @_env)) @text.math
-   (#match? @_env "^(displaymath|equation|multline|eqnarray|align|array|split)[*]?$"))
-
-;; This at the beginning of the file would be the alternative to highlight
-;; only the interior of the environment
-;((environment
-  ;(begin
-   ;name: (word) @_env) @none
-   ;(end) @none) @text.math
-   ;(#match? @_env "^(displaymath|eqn|eqnarray)[*]?$"))
+   (#match? @_env "^(displaymath|equation|multline|eqnarray|align|array|split|alignat|gather|flalign)[*]?$"))
 
 [
   (generic_command_name)
@@ -380,7 +372,7 @@
 
 (begin
  name: (_) @text.environment.name
- (#not-match? @text.environment.name "^(displaymath|equation|multline|eqnarray|align|array|split)[*]?$"))
+  (#not-match? @text.environment.name "^(displaymath|equation|multline|eqnarray|align|array|split|alignat|gather|flalign)[*]?$"))
 (end
  name: (_) @text.environment.name
- (#not-match? @text.environment.name "^(displaymath|equation|multline|eqnarray|align|array|split)[*]?$"))
+  (#not-match? @text.environment.name "^(displaymath|equation|multline|eqnarray|align|array|split|alignat|gather|flalign)[*]?$"))
