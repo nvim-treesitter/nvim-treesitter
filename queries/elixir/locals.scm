@@ -17,7 +17,7 @@
  function: (function_identifier) @_call-name
  (call
   function: (function_identifier) @definition.function)
- (#lua-match? @_call-name "^defp?$"))
+ (#any-of? @_call-name "def" "defp"))
 
 (call
  function: (function_identifier) @_call-name
@@ -39,7 +39,7 @@
      left: (identifier) @definition.parameter
      operator: "\\\\")]
    (#lua-match? @definition.parameter "^[^_]")))
- (#lua-match? @_call-name "^defp?$"))
+ (#any-of? @_call-name "def" "defp"))
 
 (call
  function: (function_identifier) @_call-name
@@ -60,7 +60,7 @@
              (identifier) @definition.parameter))]
           (#lua-match? @definition.parameter "^[^_]")))
   operator: "when")
- (#lua-match? @_call-name "^defp?$"))
+ (#any-of? @_call-name "def" "defp"))
 
 (binary_op
  left:
