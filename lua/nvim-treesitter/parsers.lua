@@ -233,6 +233,7 @@ list.elixir = {
   install_info = {
     url = "https://github.com/ananthakumaran/tree-sitter-elixir",
     files =  { "src/parser.c", "src/scanner.cc" },
+    requires_generate_from_grammar  = true,
   },
   maintainers = { '@nifoc' },
 }
