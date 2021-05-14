@@ -238,6 +238,14 @@ list.erlang = {
   maintainers = { '@ostera' },
 }
 
+list.elixir = {
+  install_info = {
+    url = "https://github.com/ananthakumaran/tree-sitter-elixir",
+    files =  { "src/parser.c", "src/scanner.cc" },
+  },
+  maintainers = { '@nifoc' },
+}
+
 list.ocaml = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ocaml",
