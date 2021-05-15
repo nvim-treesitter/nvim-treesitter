@@ -8,7 +8,17 @@
 ((environment
   (begin
    name: (word) @_env)) @text.math
-   (#match? @_env "^(displaymath|equation|multline|eqnarray|align|array|split|alignat|gather|flalign)[*]?$"))
+   (#any-of? @_env
+      "displaymath" "displaymath*"
+      "equation" "equation*"
+      "multline" "multline*"
+      "eqnarray" "eqnarray*"
+      "align" "align*"
+      "array" "array*"
+      "split" "split*"
+      "alignat" "alignat*"
+      "gather" "gather*"
+      "flalign" "flalign*"))
 
 [
   (generic_command_name)
@@ -245,7 +255,8 @@
   "\\Glsentryshortpl"
   "\\glsentryfullpl"
   "\\Glsentryfullpl"
-]
+] @function.macro
+
 (comment) @comment
 
 (bracket_group) @parameter
@@ -372,7 +383,28 @@
 
 (begin
  name: (_) @text.environment.name
-  (#not-match? @text.environment.name "^(displaymath|equation|multline|eqnarray|align|array|split|alignat|gather|flalign)[*]?$"))
+  (#not-any-of? @text.environment.name
+      "displaymath" "displaymath*"
+      "equation" "equation*"
+      "multline" "multline*"
+      "eqnarray" "eqnarray*"
+      "align" "align*"
+      "array" "array*"
+      "split" "split*"
+      "alignat" "alignat*"
+      "gather" "gather*"
+      "flalign" "flalign*"))
+
 (end
  name: (_) @text.environment.name
-  (#not-match? @text.environment.name "^(displaymath|equation|multline|eqnarray|align|array|split|alignat|gather|flalign)[*]?$"))
+  (#not-any-of? @text.environment.name
+      "displaymath" "displaymath*"
+      "equation" "equation*"
+      "multline" "multline*"
+      "eqnarray" "eqnarray*"
+      "align" "align*"
+      "array" "array*"
+      "split" "split*"
+      "alignat" "alignat*"
+      "gather" "gather*"
+      "flalign" "flalign*"))
