@@ -17,18 +17,34 @@
  (#match? @constant.builtin "^__[a-zA-Z0-9_]*__$"))
 
 ((identifier) @constant.builtin
- (#vim-match? @constant.builtin
-              ;; https://docs.python.org/3/library/constants.html
-              "^(NotImplemented|Ellipsis|quit|exit|copyright|credits|license)$"))
+ (#any-of? @constant.builtin
+           ;; https://docs.python.org/3/library/constants.html
+           "NotImplemented"
+           "Ellipsis"
+           "quit"
+           "exit"
+           "copyright"
+           "credits"
+           "license"))
 
 ((attribute
     attribute: (identifier) @field)
  (#vim-match? @field "^([A-Z])@!.*$"))
 
 ((identifier) @type.builtin
- (#vim-match? @type.builtin
+ (#any-of? @type.builtin
               ;; https://docs.python.org/3/library/exceptions.html
-              "^(BaseException|Exception|ArithmeticError|BufferError|LookupError|AssertionError|AttributeError|EOFError|FloatingPointError|GeneratorExit|ImportError|ModuleNotFoundError|IndexError|KeyError|KeyboardInterrupt|MemoryError|NameError|NotImplementedError|OSError|OverflowError|RecursionError|ReferenceError|RuntimeError|StopIteration|StopAsyncIteration|SyntaxError|IndentationError|TabError|SystemError|SystemExit|TypeError|UnboundLocalError|UnicodeError|UnicodeEncodeError|UnicodeDecodeError|UnicodeTranslateError|ValueError|ZeroDivisionError|EnvironmentError|IOError|WindowsError|BlockingIOError|ChildProcessError|ConnectionError|BrokenPipeError|ConnectionAbortedError|ConnectionRefusedError|ConnectionResetError|FileExistsError|FileNotFoundError|InterruptedError|IsADirectoryError|NotADirectoryError|PermissionError|ProcessLookupError|TimeoutError|Warning|UserWarning|DeprecationWarning|PendingDeprecationWarning|SyntaxWarning|RuntimeWarning|FutureWarning|ImportWarning|UnicodeWarning|BytesWarning|ResourceWarning)$"))
+              "BaseException" "Exception" "ArithmeticError" "BufferError" "LookupError" "AssertionError" "AttributeError"
+              "EOFError" "FloatingPointError" "GeneratorExit" "ImportError" "ModuleNotFoundError" "IndexError" "KeyError"
+              "KeyboardInterrupt" "MemoryError" "NameError" "NotImplementedError" "OSError" "OverflowError" "RecursionError"
+              "ReferenceError" "RuntimeError" "StopIteration" "StopAsyncIteration" "SyntaxError" "IndentationError" "TabError"
+              "SystemError" "SystemExit" "TypeError" "UnboundLocalError" "UnicodeError" "UnicodeEncodeError" "UnicodeDecodeError"
+              "UnicodeTranslateError" "ValueError" "ZeroDivisionError" "EnvironmentError" "IOError" "WindowsError"
+              "BlockingIOError" "ChildProcessError" "ConnectionError" "BrokenPipeError" "ConnectionAbortedError"
+              "ConnectionRefusedError" "ConnectionResetError" "FileExistsError" "FileNotFoundError" "InterruptedError"
+              "IsADirectoryError" "NotADirectoryError" "PermissionError" "ProcessLookupError" "TimeoutError" "Warning"
+              "UserWarning" "DeprecationWarning" "PendingDeprecationWarning" "SyntaxWarning" "RuntimeWarning"
+              "FutureWarning" "ImportWarning" "UnicodeWarning" "BytesWarning" "ResourceWarning"))
 
 ; Function calls
 
@@ -59,8 +75,13 @@
 
 ((call
   function: (identifier) @function.builtin)
- (vim-match? @function.builtin
-             "^(abs|all|any|ascii|bin|bool|breakpoint|bytearray|bytes|callable|chr|classmethod|compile|complex|delattr|dict|dir|divmod|enumerate|eval|exec|filter|float|format|frozenset|getattr|globals|hasattr|hash|help|hex|id|input|int|isinstance|issubclass|iter|len|list|locals|map|max|memoryview|min|next|object|oct|open|ord|pow|print|property|range|repr|reversed|round|set|setattr|slice|sorted|staticmethod|str|sum|super|tuple|type|vars|zip|__import__)$"))
+ (any-of? @function.builtin
+          "abs" "all" "any" "ascii" "bin" "bool" "breakpoint" "bytearray" "bytes" "callable" "chr" "classmethod"
+          "compile" "complex" "delattr" "dict" "dir" "divmod" "enumerate" "eval" "exec" "filter" "float" "format"
+          "frozenset" "getattr" "globals" "hasattr" "hash" "help" "hex" "id" "input" "int" "isinstance" "issubclass"
+          "iter" "len" "list" "locals" "map" "max" "memoryview" "min" "next" "object" "oct" "open" "ord" "pow"
+          "print" "property" "range" "repr" "reversed" "round" "set" "setattr" "slice" "sorted" "staticmethod" "str"
+          "sum" "super" "tuple" "type" "vars" "zip" "__import__"))
 
 ;; Function definitions
 
@@ -241,14 +262,14 @@
   (block
     (function_definition
       name: (identifier) @constructor)))
- (#vim-match? @constructor "^(__new__|__init__)$"))
+ (#any-of? @constructor "__new__" "__init__"))
 
 ; First parameter of a method is self or cls.
 ((class_definition
   body: (block
           (function_definition
             parameters: (parameters . (identifier) @variable.builtin))))
- (#vim-match? @variable.builtin "^(self|obj|cls)$"))
+ (#any-of? @variable.builtin "self" "obj" "class"))
 
 ;; Error
 (ERROR) @error
