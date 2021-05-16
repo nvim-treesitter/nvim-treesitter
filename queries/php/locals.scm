@@ -49,8 +49,12 @@
 ; References
 ;------------
 
-(type_name
+(named_type
   (name) @reference
+    (set! reference.kind "type"))
+
+(named_type
+  (qualified_name) @reference
     (set! reference.kind "type"))
 
 (variable_name
