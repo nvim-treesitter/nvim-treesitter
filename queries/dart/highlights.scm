@@ -184,6 +184,9 @@
     "abstract"
     "as"
     "async"
+    "async*"
+    "yield"
+    "sync*"
     "await"
     "covariant"
     "deferred"
@@ -205,7 +208,7 @@
 
 ; when used as an identifier:
 ((identifier) @variable.builtin
- (#vim-match? @variable.builtin "^(abstract|as|covariant|deferred|dynamic|export|external|factory|Function|get|implements|import|interface|library|operator|mixin|part|set|static|typedef)$"))
+ (#match? @variable.builtin "^(abstract|as|covariant|deferred|dynamic|export|external|factory|Function|get|implements|import|interface|library|operator|mixin|part|set|static|typedef)$"))
 
 ["if" "else" "switch" "default"] @conditional
 
