@@ -111,7 +111,39 @@
  .
  (sym_lit) @function.macro
  ;; For a complete and more efficient version install theHamsta/nvim-treesitter-commonlisp
- (#match? @function.macro "^(let|function|the|unwind-protect|labels|flet|tagbody|go|(symbol-)?macrolet|progn|prog1|error|or|and|defvar|defparameter|in-package|defpackage|[e]?(type)?case|defstruct|defclass|if|if-let|when-let|when|unless|cond|switch|declaim|optimize)[*]?$"))
+ (#match? @function.macro
+          "let"
+          "function"
+          "the"
+          "unwind-protect"
+          "labels"
+          "flet"
+          "tagbody"
+          "go"
+          "symbol-macrolet"
+          "symbol-macrolet"
+          "progn"
+          "prog1"
+          "error"
+          "or"
+          "and"
+          "defvar"
+          "defparameter"
+          "in-package"
+          "defpackage"
+          "case"
+          "ecase"
+          "typecase"
+          "etypecase"
+          "defstruct"
+          "defclass"
+          "if"
+          "when"
+          "unless"
+          "cond"
+          "switch"
+          "declaim"
+          "optimize"))
 
 ;; constant
 ((sym_lit) @constant
@@ -127,7 +159,19 @@
  .
  (sym_lit) @function.builtin
  ;; For a complete and more efficient version install theHamsta/nvim-treesitter-commonlisp
- (#match? @function.builtin "^(mapcar|reduce|remove-if-not|cons|car|last|nth|equal[p]?|cdr|first|rest|format)$"))
+ (#any-of? @function.builtin
+           "mapcar"
+           "reduce"
+           "remove-if-not"
+           "cons"
+           "car"
+           "last"
+           "nth"
+           "equal"
+           "cdr"
+           "first"
+           "rest"
+           "format"))
 
 (list_lit
  .
