@@ -8,7 +8,8 @@
  (primitive_type)
  (cast_type)
  ] @type.builtin
-(type_name (name) @type)
+(named_type (name) @type) @type
+(named_type (qualified_name) @type) @type
 
 ; Functions
 
