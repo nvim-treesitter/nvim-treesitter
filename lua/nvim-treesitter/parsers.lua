@@ -580,7 +580,6 @@ list.fortran = {
   install_info = {
     url = "https://github.com/stadelmanma/tree-sitter-fortran",
     files = { "src/parser.c", "src/scanner.cc", },
-    requires_generate_from_grammar = true,
   },
 }
 
