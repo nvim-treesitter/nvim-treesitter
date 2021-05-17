@@ -1,4 +1,5 @@
 local query = require"vim.treesitter.query"
+local parsers = require'nvim-treesitter.parsers'
 
 local function error(str)
   vim.api.nvim_err_writeln(str)
@@ -83,6 +84,23 @@ query.add_predicate('has-type?', function(match, pattern, bufnr, pred)
   if not node then return true end
 
   return vim.tbl_contains(types, node:type())
+end)
+
+
+-- Inject a language based on the aliases from `config.injections.aliases`.
+-- Usage: (#inject! @_language [default])
+query.add_directive("inject!", function(match, pattern, bufnr, pred, metadata)
+  local match_id = pred[2]
+  local node = match[match_id]
+  local default = pred[3] or ""
+  local text
+  if node then
+    text = string.lower(query.get_node_text(node, bufnr))
+  else
+    text = default
+  end
+  local language = parsers.alias_to_lang(text) or default
+  metadata.language = language
 end)
 
 -- Just avoid some anoying warnings for this directive

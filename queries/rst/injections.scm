@@ -27,8 +27,9 @@
 ;; Special directives
 ((directive
    name: (type) @_type
-   body: (body (arguments) @language (content) @content))
- (#eq? @_type "code"))
+   body: (body (arguments) @_lang (content) @content))
+ (#eq? @_type "code")
+ (#inject! @_lang))
 
 ((directive
    name: (type) @_type

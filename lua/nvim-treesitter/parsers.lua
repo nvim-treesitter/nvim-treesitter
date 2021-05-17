@@ -2,14 +2,24 @@ local api = vim.api
 local ts = vim.treesitter
 
 local ft_to_parsername = {}
+local injections_aliases = {}
 
-local function update_ft_to_parsername(name, parser)
+local function update_parser(name, parser)
+  -- Update filetype to parser table.
   if type(parser.used_by) == 'table' then
     for _, ft in pairs(parser.used_by) do
       ft_to_parsername[ft] = name
     end
   end
   ft_to_parsername[parser.filetype or name] = name
+
+  -- Update injection aliases to parser table.
+  if parser.injections and parser.injections.aliases then
+    for _, alias in pairs(parser.injections.aliases) do
+      injections_aliases[alias] = name
+    end
+  end
+  injections_aliases[name] = name
 end
 
 local list = setmetatable({}, {
@@ -25,7 +35,7 @@ local list = setmetatable({}, {
       end
     }))
 
-    update_ft_to_parsername(parsername, parserconfig)
+    update_parser(parsername, parserconfig)
   end
 })
 
@@ -33,6 +43,9 @@ list.javascript = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-javascript",
     files = { "src/parser.c", "src/scanner.c" },
+  },
+  injections = {
+    aliases = {'js'},
   },
   used_by = { 'javascriptreact' },
   maintainers = {"@steelsojka"},
@@ -60,6 +73,9 @@ list.cpp = {
     files = { "src/parser.c", "src/scanner.cc" },
     generate_requires_npm = true,
   },
+  injections = {
+    aliases = {'c++'},
+  },
   used_by = { "cuda" },
   maintainers = {"@theHamsta"},
 }
@@ -77,6 +93,9 @@ list.rust = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-rust",
     files = { "src/parser.c", "src/scanner.c" },
+  },
+  injections = {
+    aliases = {'rs'},
   },
   maintainers = {"@vigoux"},
 }
@@ -102,6 +121,9 @@ list.python = {
     url = "https://github.com/tree-sitter/tree-sitter-python",
     files = { "src/parser.c", "src/scanner.cc" },
   },
+  injections = {
+    aliases = {'py', 'py2', 'py3'},
+  },
   maintainers = {'@stsewd', "@theHamsta"},
 }
 
@@ -109,6 +131,9 @@ list.go = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-go",
     files = { "src/parser.c" },
+  },
+  injections = {
+    aliases = {'golang'},
   },
   maintainers = {"@theHamsta", "@WinWisely268"},
 }
@@ -128,6 +153,9 @@ list.graphql = {
     url = "https://github.com/bkegley/tree-sitter-graphql",
     files = { "src/parser.c" },
   },
+  injections = {
+    aliases = {'gql'},
+  },
   maintainers = {"@bkegley"},
 }
 
@@ -136,6 +164,9 @@ list.ruby = {
     url = "https://github.com/tree-sitter/tree-sitter-ruby",
     files = { "src/parser.c", "src/scanner.cc" },
   },
+  injections = {
+    aliases = {'rb'},
+  },
   maintainers = {'@TravonteD'},
 }
 
@@ -143,6 +174,9 @@ list.bash = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-bash",
     files = { "src/parser.c", "src/scanner.cc" },
+  },
+  injections = {
+    aliases = {'sh'},
   },
   used_by = { "zsh", "PKGBUILD" },
   filetype = 'sh',
@@ -186,6 +220,9 @@ list.html = {
     url = "https://github.com/tree-sitter/tree-sitter-html",
     files = { "src/parser.c", "src/scanner.cc" },
   },
+  injections = {
+    aliases = {'htm'},
+  },
   maintainers = {"@TravonteD"},
 }
 
@@ -217,6 +254,9 @@ list.scss = {
   install_info = {
     url = "https://github.com/elianiva/tree-sitter-scss",
     files = { "src/parser.c", "src/scanner.c" }
+  },
+  injections = {
+    aliases = {'postcss', 'less'},
   },
 }
 
@@ -270,6 +310,9 @@ list.c_sharp = {
     url = "https://github.com/tree-sitter/tree-sitter-c-sharp",
     files = { "src/parser.c", "src/scanner.c" },
   },
+  injections = {
+    aliases = {'c#'},
+  },
   filetype = 'cs',
   maintainers = {'@svermeulen'},
 }
@@ -280,6 +323,9 @@ list.typescript = {
     files = { "src/parser.c", "src/scanner.c" },
     location = "tree-sitter-typescript/typescript",
     generate_requires_npm = true,
+  },
+  injections = {
+    aliases = {'ts'},
   },
   maintainers = {"@steelsojka"},
 }
@@ -344,6 +390,9 @@ list.glimmer = {
     files = { "src/parser.c", "src/scanner.c" },
     branch = 'main',
   },
+  injections = {
+    aliases = {'hbs'},
+  },
   readme_name = "Glimmer and Ember",
   maintainers = { "@alexlafroscia" },
   filetype = "handlebars"
@@ -402,6 +451,9 @@ list.rst = {
   install_info = {
     url = "https://github.com/stsewd/tree-sitter-rst",
     files = { "src/parser.c", "src/scanner.c" },
+  },
+  injections = {
+    aliases = {'restructuredtext'},
   },
   maintainers = {"@stsewd"},
 }
@@ -544,6 +596,9 @@ list.latex = {
     url = "https://github.com/latex-lsp/tree-sitter-latex",
     files = { "src/parser.c" },
   },
+  injections = {
+    aliases = {'tex'},
+  },
   filetype = 'tex',
   used_by = {'cls', 'sty'},
   maintainers = { "@theHamsta by asking @clason" },
@@ -581,6 +636,10 @@ local M = {
 
 function M.ft_to_lang(ft)
   return ft_to_parsername[ft] or ft
+end
+
+function M.alias_to_lang(alias)
+  return injections_aliases[alias]
 end
 
 function M.available_parsers()
