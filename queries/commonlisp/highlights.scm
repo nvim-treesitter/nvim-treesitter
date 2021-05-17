@@ -111,7 +111,7 @@
  .
  (sym_lit) @function.macro
  ;; For a complete and more efficient version install theHamsta/nvim-treesitter-commonlisp
- (#match? @function.macro
+ (#any-of? @function.macro
           "let"
           "function"
           "the"
