@@ -13,6 +13,7 @@
  "!"
  (direction)
  (stream_redirect)
+ (test_option)
 ] @operator
 
 [
