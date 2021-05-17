@@ -1,8 +1,60 @@
 (identifier) @variable
 
+; _unused variables
+(unused_identifier) @comment
+
+; __MODULE__ and friends
+(special_identifier) @constant.builtin
+
+(module) @type
+
+[(atom) (keyword)] @symbol
+
+(integer) @number
+(float) @float
+
+[(true) (false)] @boolean
+
+(nil) @constant.builtin
+
+(comment) @comment
+
+[
+  ","
+  "."
+] @punctuation.delimiter
+
+[
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+  "<<"
+  ">>"
+] @punctuation.bracket
+
 (interpolation
  "#{" @punctuation.special
  "}" @punctuation.special) @none
+
+[
+  (heredoc_content)
+  (sigil_content)
+  (string_content)
+  (string_end)
+  (string_start)
+] @string
+
+[
+  (heredoc_end)
+  (heredoc_start)
+  (sigil_end)
+  (sigil_start)
+] @string.special
+
+(escape_sequence) @string.escape
 
 [
   "after"
@@ -18,33 +70,17 @@
   "or"
 ] @keyword.operator
 
+; Call to a local function
 (call (function_identifier) @method)
 
-(call (function_identifier) @keyword
- (#any-of? @keyword
-  "quote"
-  "receive"
-  "self"
-  "super"
-  "unquote"
-  "unquote_splicing"
-  "with"
-  "assert"
-  "assert_in_delta"
-  "assert_raise"
-  "assert_receive"
-  "assert_received"
-  "catch_error"
-  "catch_exit"
-  "catch_throw"
-  "flunk"
-  "refute"
-  "refute_in_delta"
-  "refute_receive"
-  "refute_received"))
+; Call to a remote (or external) function
+(dot_call
+ remote: [(atom) (module)] @type
+ function: (function_identifier) @method)
 
 "fn" @keyword.function
 
+; def, defp, defguard, ... everything that starts with def
 (call (function_identifier) @keyword.function
  (#lua-match? @keyword.function "^def%a*$"))
 
@@ -70,40 +106,12 @@
 (call (function_identifier) @exception
  (#any-of? @exception "raise" "try"))
 
-[
-  (heredoc_content)
-  (sigil_content)
-  (string_content)
-  (string_end)
-  (string_start)
-] @string
-
-[
-  (heredoc_end)
-  (heredoc_start)
-  (sigil_end)
-  (sigil_start)
-] @string.special
-
+; Regex sigil
 (sigil
  (sigil_start) @_sigil-type
  [(sigil_content) (escape_sequence)] @string.regex
  (sigil_end)
  (#lua-match? @_sigil-type "^~r"))
-
-(module) @type
-
-[(atom) (keyword)] @symbol
-
-(escape_sequence) @string.escape
-(integer) @number
-(float) @float
-
-[(true) (false)] @boolean
-
-(nil) @constant.builtin
-
-(comment) @comment
 
 "->" @operator
 
@@ -135,56 +143,47 @@
         left: (identifier) @method))
  (#eq? @attribute "spec"))
 
-[
-  ","
-  "."
-] @punctuation.delimiter
-
-[
-  "("
-  ")"
-  "["
-  "]"
-  "{"
-  "}"
-  "<<"
-  ">>"
-] @punctuation.bracket
-
-(dot_call
- remote: [(atom) (module)] @type
- function: (function_identifier) @method)
-
+; Definition without arguments
 (call (function_identifier) @keyword.function
-      [(call
-        (function_identifier) @function)
-       (call
-        function: (function_identifier) @function
-        (arguments
-         [(identifier) @parameter
-          (binary_op
-           left: (identifier) @parameter)]))
-       (identifier) @function
-       (binary_op
-        left:
-        [(call
-          function: (function_identifier) @function
-          (arguments
-           [(identifier) @parameter
-            (binary_op
-             left: (identifier) @parameter)]))
-         (identifier) @function]
-        operator: "when")
-       (binary_op
-        left: (identifier)
-        operator: _ @function
-        right: (identifier))]
-      (#lua-match? @keyword.function "^def%a*$"))
+ (identifier) @function 
+ (#lua-match? @keyword.function "^def%a*$"))
 
-((identifier) @comment
- (#lua-match? @comment "^_[%a%d_]*$"))
+; Definition with (some) arguments and (optional) defaults
+(call (function_identifier) @keyword.function
+ (call
+  function: (function_identifier) @function
+  (arguments
+   [(identifier) @parameter
+    (tuple (identifier) @parameter)
+    (list (identifier) @parameter)
+    (_
+     (keyword_list (identifier) @parameter))
+    (binary_op
+     left: (identifier) @parameter
+     operator: "\\\\")]))
+ (#lua-match? @keyword.function "^def%a*$"))
 
-((identifier) @constant.builtin
- (#lua-match? @constant.builtin "^__[%a%d_]+__$"))
+; Definition with (some) arguments and guard(s)
+(call (function_identifier) @keyword.function
+ (binary_op
+  left:
+   (call
+    function: (function_identifier) @function
+    (arguments
+     [(identifier) @parameter
+      (tuple (identifier) @parameter)
+      (list (identifier) @parameter)
+      (_
+       (keyword_list (identifier) @parameter))]))
+  operator: "when")
+ (#lua-match? @keyword.function "^def%a*$"))
+
+; Definition of custom binary operator(s)
+(call (function_identifier) @keyword.function
+ (binary_op
+  left: (identifier) @parameter
+  operator: _ @function
+  right: (identifier) @parameter)
+ (#any-of? @keyword.function "def" "defp"))
 
 (ERROR) @error
