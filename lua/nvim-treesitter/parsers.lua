@@ -317,7 +317,6 @@ list.supercollider = {
     url = "https://github.com/madskjeldgaard/tree-sitter-supercollider",
     files = {"src/parser.c", "src/scanner.c"},
     branch = "main",
-    requires_generate_from_grammar  = true,
   },
   maintainers = {"@madskjeldgaard"},
   filetype = "supercollider",
