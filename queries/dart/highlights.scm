@@ -204,7 +204,27 @@
 
 ; when used as an identifier:
 ((identifier) @variable.builtin
- (#match? @variable.builtin "^(abstract|as|covariant|deferred|dynamic|export|external|factory|Function|get|implements|import|interface|library|operator|mixin|part|set|static|typedef)$"))
+ (#any-of? @variable.builtin
+          "abstract"
+          "as"
+          "covariant"
+          "deferred"
+          "dynamic"
+          "export"
+          "external"
+          "factory"
+          "Function"
+          "get"
+          "implements"
+          "import"
+          "interface"
+          "library"
+          "operator"
+          "mixin"
+          "part"
+          "set"
+          "static"
+          "typedef"))
 
 ["if" "else" "switch" "default"] @conditional
 
