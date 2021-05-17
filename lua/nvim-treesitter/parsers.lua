@@ -58,6 +58,7 @@ list.commonlisp = {
   install_info = {
     url = "https://github.com/theHamsta/tree-sitter-commonlisp",
     files = { "src/parser.c" },
+    generate_requires_npm = true,
   },
   filetype = 'lisp',
   maintainers = {"@theHamsta"},
