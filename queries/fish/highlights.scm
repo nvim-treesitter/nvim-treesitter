@@ -109,10 +109,11 @@
 (command
   name: [
         (word) @function.builtin
-        (#match? @function.builtin "^(.|:|_|alias|argparse|bg|bind|block|breakpoint|builtin|cd|command|commandline|complete|contains|count|disown|echo|emit|eval|exec|exit|fg|functions|history|isatty|jobs|math|printf|pwd|random|read|realpath|set|set_color|source|status|string|test|time|type|ulimit|wait)$")
+        (#match? @function.builtin "^(.|:|_|alias|argparse|bg|bind|block|breakpoint|builtin|cd|command|commandline|complete|contains|count|disown|echo|emit|eval|exec|exit|fg|functions|history|isatty|jobs|math|printf|pwd|random|read|realpath|set|set_color|source|status|string|time|type|ulimit|wait)$")
         ]
 )
 
+(test_command) @function.builtin
 
 ;; Functions
 
