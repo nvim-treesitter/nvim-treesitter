@@ -20,6 +20,9 @@
   "comment": {
     "revision": "894b61d68a31d93c33ed48dcc7f427174b440abe"
   },
+  "commonlisp": {
+    "revision": "48189d1627bdf9795b4c4d970169ec1d143ac6b9"
+  },
   "cpp": {
     "revision": "c61212414a3e95b5f7507f98e83de1d638044adc"
   },
@@ -150,7 +153,7 @@
     "revision": "cf57a922b6a48664131617a5c7fe06e401e700f7"
   },
   "supercollider": {
-    "revision": "e8d106943afc69b6e83fac77dbd810e3d9cd034b"
+    "revision": "2b0f70f8aadf6fe7eeccc65c7c7ecd009d6b3c9d"
   },
   "svelte": {
     "revision": "10c113001acf9852817150acb3031a5e68d2b4cf"
