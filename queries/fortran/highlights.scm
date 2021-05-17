@@ -34,7 +34,7 @@
 [
 "implicit"
 (none)
-] @annotation
+] @attribute
 
 [
   "function"
