@@ -154,11 +154,6 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   end
   local parser_lib_name = install_folder..path_sep..lang..".so"
 
-  if repo.requires_generate_from_grammar and vim.env.CI then
-    print("Skipping language "..lang.." on CI (requires npm)!")
-    return
-  end
-
   generate_from_grammar = repo.requires_generate_from_grammar or generate_from_grammar
 
   if generate_from_grammar and vim.fn.executable('tree-sitter') ~= 1 then
