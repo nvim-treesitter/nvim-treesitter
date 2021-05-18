@@ -38,6 +38,9 @@
   "dockerfile": {
     "revision": "b25f86c3b2ec4192d040432a1a279861df390762"
   },
+  "elixir": {
+    "revision": "cb7c3cbfe5d5747bc305be02d4d4f6d9a8fd57db"
+  },
   "elm": {
     "revision": "e98186f14e2dc64153c4a21e342d15fa38ee16db"
   },
@@ -153,7 +156,7 @@
     "revision": "cf57a922b6a48664131617a5c7fe06e401e700f7"
   },
   "supercollider": {
-    "revision": "b0e3cb5dcf712f3291013c90dd33731f470b83fe"
+    "revision": "eb6b537432c6577fcbcf6bd4da322e7c25164483"
   },
   "svelte": {
     "revision": "10c113001acf9852817150acb3031a5e68d2b4cf"
