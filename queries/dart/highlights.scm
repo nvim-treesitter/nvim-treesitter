@@ -2,10 +2,10 @@
 
 ; Methods
 ; --------------------
-;; TODO: does not work
-;(function_type
-  ;name: (identifier) @method)
 (super) @function
+; TODO: add method/call_expression to grammar and
+; distinguish method call from variable access
+(function_expression_body (identifier) @function)
 
 ; Annotations
 ; --------------------
@@ -105,13 +105,11 @@
 (final_builtin) @constant.builtin
 
 ((identifier) @type
- (#match? @type "^_?[A-Z]"))
+ (#match? @type "^_?[A-Z].*[a-z]")) ; catch Classes or IClasses not CLASSES
 
 ("Function" @type)
 
 ; properties
-; TODO: add method/call_expression to grammar and
-; distinguish method call from variable access
 (unconditional_assignable_selector
   (identifier) @property)
 (assignable_selector
@@ -156,9 +154,14 @@
 ["import" "library" "export"] @include
 
 ; Reserved words (cannot be used as identifiers)
-; TODO: "rethrow" @keyword
 [
-    ; "assert"
+    ; TODO:
+    ; "rethrow" cannot be targeted at all and seems to be an invisible node
+    ; TODO:
+    ; the assert keyword cannot be specifically targeted
+    ; because the grammar selects the whole node or the content
+    ; of the assertion not just the keyword
+    ; assert
     (case_builtin)
     "extension"
     "on"
