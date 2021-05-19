@@ -163,6 +163,8 @@
     ; of the assertion not just the keyword
     ; assert
     (case_builtin)
+    "late"
+    "required"
     "extension"
     "on"
     "class"
