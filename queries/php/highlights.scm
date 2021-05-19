@@ -22,6 +22,9 @@
 (function_call_expression
   function: (qualified_name (name)) @function)
 
+(function_call_expression
+  (name) @function)
+
 (scoped_call_expression
   name: (name) @function)
 
