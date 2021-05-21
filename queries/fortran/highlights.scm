@@ -1,5 +1,3 @@
-;; by @oponkork with extensions by @theHamsta
-
 (identifier) @variable
 (string_literal) @string
 (number_literal) @number
@@ -8,7 +6,6 @@
 
 [
   (intrinsic_type)
-  ; (primitive_type_qualifier)
   "dimension"
   "intent"
   "in"
@@ -21,11 +18,10 @@
   "device"
   "host"
   "grid_global"
+  "pointer"
 ] @type
 
 [
-  "module"
-  "endmodule"
   "contains"
   "public"
   "private"
@@ -45,8 +41,11 @@
 ] @keyword.function
 
 [
+  "module"
+  "endmodule"
   "bind"
   "call"
+  "class"
   "continue"
   "cycle"
   "enumerator"
@@ -56,14 +55,20 @@
   "goto"
   "include"
   "interface"
+  "endinterface"
+  "only"
   "parameter"
+  "procedure"
   "print"
   "program"
+  "endprogram"
   "read"
   "return"
   "stop"
   "use"
   "write"
+  "enum"
+  "endenum"
   (default)
   (procedure_qualifier)
 ] @keyword
@@ -74,6 +79,8 @@
   "else"
   "elseif"
   "endif"
+  "where"
+  "endwhere"
 ] @conditional
 
 [
@@ -121,16 +128,41 @@
  [
   "::"
   ","
- ] @punctuation.bracket
+  "%"
+ ] @punctuation.delimiter
 
 (parameters
   (identifier) @parameter)
 
+(program_statement
+  (name) @namespace)
+
+(module_statement
+  (name) @namespace)
+
+(function_statement
+  (name) @function)
+
 (subroutine_statement
+  (name) @function)
+
+(end_program_statement
+  (name) @namespace)
+
+(end_module_statement
+  (name) @namespace)
+
+(end_function_statement
+  (name) @function)
+
+(end_subroutine_statement
   (name) @function)
 
 (subroutine_call
 	(name) @function)
 
-(module_statement
-  (name) @namespace)
+(keyword_argument
+  name: (identifier) @keyword)
+
+(derived_type_member_expression
+  (type_member) @property)
