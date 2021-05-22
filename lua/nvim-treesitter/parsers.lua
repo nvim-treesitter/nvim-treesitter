@@ -54,6 +54,16 @@ list.clojure = {
   maintainers = {"@sogaiu"},
 }
 
+list.commonlisp = {
+  install_info = {
+    url = "https://github.com/theHamsta/tree-sitter-commonlisp",
+    files = { "src/parser.c" },
+    generate_requires_npm = true,
+  },
+  filetype = 'lisp',
+  maintainers = {"@theHamsta"},
+}
+
 list.cpp = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-cpp",
@@ -62,6 +72,15 @@ list.cpp = {
   },
   used_by = { "cuda" },
   maintainers = {"@theHamsta"},
+}
+
+list.dockerfile = {
+  install_info = {
+    url = "https://github.com/camdencheek/tree-sitter-dockerfile",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = {"@camdencheek"},
 }
 
 list.rust = {
@@ -104,6 +123,16 @@ list.go = {
   maintainers = {"@theHamsta", "@WinWisely268"},
 }
 
+list.gomod = {
+  install_info = {
+    url = "https://github.com/camdencheek/tree-sitter-go-mod",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = {"@camdencheek"},
+  filetype = "gomod",
+}
+
 list.graphql = {
   install_info = {
     url = "https://github.com/bkegley/tree-sitter-graphql",
@@ -128,6 +157,14 @@ list.bash = {
   used_by = { "zsh", "PKGBUILD" },
   filetype = 'sh',
   maintainers = {"@TravonteD"},
+}
+
+list.fish = {
+  install_info = {
+    url = "https://github.com/krnik/tree-sitter-fish",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = {"@krnik", "@ram02z"},
 }
 
 list.php = {
@@ -198,9 +235,17 @@ list.erlang = {
     url = "https://github.com/AbstractMachinesLab/tree-sitter-erlang",
     files = { "src/parser.c" },
     branch = "main",
-    requires_generate_from_grammar  = true,
   },
   maintainers = { '@ostera' },
+}
+
+list.elixir = {
+  install_info = {
+    url = "https://github.com/ananthakumaran/tree-sitter-elixir",
+    files =  { "src/parser.c", "src/scanner.cc" },
+    requires_generate_from_grammar  = true,
+  },
+  maintainers = { '@nifoc' },
 }
 
 list.ocaml = {
@@ -282,7 +327,6 @@ list.supercollider = {
     url = "https://github.com/madskjeldgaard/tree-sitter-supercollider",
     files = {"src/parser.c", "src/scanner.c"},
     branch = "main",
-    requires_generate_from_grammar  = true,
   },
   maintainers = {"@madskjeldgaard"},
   filetype = "supercollider",
@@ -545,7 +589,6 @@ list.fortran = {
   install_info = {
     url = "https://github.com/stadelmanma/tree-sitter-fortran",
     files = { "src/parser.c", "src/scanner.cc", },
-    requires_generate_from_grammar = true,
   },
 }
 

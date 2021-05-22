@@ -2,10 +2,10 @@
 
 ; Methods
 ; --------------------
-;; TODO: does not work
-;(function_type
-  ;name: (identifier) @method)
 (super) @function
+; TODO: add method/call_expression to grammar and
+; distinguish method call from variable access
+(function_expression_body (identifier) @function)
 
 ; Annotations
 ; --------------------
@@ -75,9 +75,6 @@
   name: (identifier) @type)
 (constructor_signature
   name: (identifier) @type)
-;; TODO: does not work
-;(type_identifier
-  ;(identifier) @type)
 (scoped_identifier
   scope: (identifier) @type)
 (function_signature
@@ -90,7 +87,6 @@
   name: (identifier) @type)
 (enum_constant
   name: (identifier) @type)
-(type_identifier) @type
 (void_type) @type
 
 ((scoped_identifier
@@ -109,13 +105,11 @@
 (final_builtin) @constant.builtin
 
 ((identifier) @type
- (#match? @type "^_?[A-Z]"))
+ (#match? @type "^_?[A-Z].*[a-z]")) ; catch Classes or IClasses not CLASSES
 
 ("Function" @type)
 
 ; properties
-; TODO: add method/call_expression to grammar and
-; distinguish method call from variable access
 (unconditional_assignable_selector
   (identifier) @property)
 (assignable_selector
@@ -160,10 +154,17 @@
 ["import" "library" "export"] @include
 
 ; Reserved words (cannot be used as identifiers)
-; TODO: "rethrow" @keyword
 [
-    ; "assert"
+    ; TODO:
+    ; "rethrow" cannot be targeted at all and seems to be an invisible node
+    ; TODO:
+    ; the assert keyword cannot be specifically targeted
+    ; because the grammar selects the whole node or the content
+    ; of the assertion not just the keyword
+    ; assert
     (case_builtin)
+    "late"
+    "required"
     "extension"
     "on"
     "class"
@@ -184,6 +185,9 @@
     "abstract"
     "as"
     "async"
+    "async*"
+    "yield"
+    "sync*"
     "await"
     "covariant"
     "deferred"
@@ -205,7 +209,27 @@
 
 ; when used as an identifier:
 ((identifier) @variable.builtin
- (#vim-match? @variable.builtin "^(abstract|as|covariant|deferred|dynamic|export|external|factory|Function|get|implements|import|interface|library|operator|mixin|part|set|static|typedef)$"))
+ (#any-of? @variable.builtin
+          "abstract"
+          "as"
+          "covariant"
+          "deferred"
+          "dynamic"
+          "export"
+          "external"
+          "factory"
+          "Function"
+          "get"
+          "implements"
+          "import"
+          "interface"
+          "library"
+          "operator"
+          "mixin"
+          "part"
+          "set"
+          "static"
+          "typedef"))
 
 ["if" "else" "switch" "default"] @conditional
 

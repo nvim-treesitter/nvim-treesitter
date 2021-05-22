@@ -8,7 +8,8 @@
  (primitive_type)
  (cast_type)
  ] @type.builtin
-(type_name (name) @type)
+(named_type (name)) @type
+(named_type (qualified_name)) @type
 
 ; Functions
 
@@ -20,6 +21,9 @@
 
 (function_call_expression
   function: (qualified_name (name)) @function)
+
+(function_call_expression
+  (name) @function)
 
 (scoped_call_expression
   name: (name) @function)

@@ -1,10 +1,12 @@
 (dis_expr) @comment
 
-(kwd_lit) @type
+(kwd_lit) @symbol
 
 (str_lit) @string
 
 (num_lit) @number
+
+(char_lit) @character
 
 (bool_lit) @boolean
 
@@ -18,13 +20,13 @@
 (meta_lit
  marker: "^" @punctuation.special)
 
+;;; parameter-related
+((sym_lit) @parameter
+(#match? @parameter "^[&]"))
+
 ;; dynamic variables
 ((sym_lit) @variable.builtin
- (#match? @variable.builtin "^\\*.+\\*$"))
-
-;; parameter-related
-((sym_lit) @parameter
- (#match? @parameter "^&.*$"))
+ (#match? @variable.builtin "^[*].+[*]$"))
 
 ;; gensym
 ((sym_lit) @variable

@@ -210,7 +210,6 @@
 "debugger"
 "export"
 "extends"
-"function"
 "get"
 "in"
 "instanceof"
@@ -226,6 +225,10 @@
 "with"
 "yield"
 ] @keyword
+
+[
+ "function"
+] @keyword.function
 
 [
  "new"
