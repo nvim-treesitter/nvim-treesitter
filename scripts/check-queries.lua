@@ -46,7 +46,6 @@ local function do_check()
           for _, capture in ipairs(query.captures) do
             local is_valid = (
               vim.startswith(capture, "_")  -- Helpers.
-              or not captures[query_type]  -- Skip undocumented query types.
               or vim.tbl_contains(captures[query_type], capture)
             )
             if not is_valid then

@@ -261,3 +261,12 @@ the node describing the language and `@content` to describe the injection region
 @content ; region for the dynamically detected language.
 @combined ; This will combine all matches of a pattern as one single block of content.
 ```
+
+### Indents
+
+```
+@indent ; Indent when finding this node
+@branch ; Dedent when finding this node
+@return ; Dedent when finding this node
+@ignore ; Skip this node when calculating the indentation level
+```
