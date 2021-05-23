@@ -12,7 +12,7 @@
     "revision": "f05e279aedde06a25801c3f2b2cc8ac17fac52ae"
   },
   "c_sharp": {
-    "revision": "851ac4735f66ec9c479096cc21bf58519da49faa"
+    "revision": "5b6bfbdcdbdda7da4839d7163ce579ed98410282"
   },
   "clojure": {
     "revision": "f7d100c4fbaa8aad537e80c7974c470c7fb6aeda"
@@ -42,7 +42,7 @@
     "revision": "cb7c3cbfe5d5747bc305be02d4d4f6d9a8fd57db"
   },
   "elm": {
-    "revision": "e98186f14e2dc64153c4a21e342d15fa38ee16db"
+    "revision": "94eaa3418bb3fc8a28ef1d34711282f5bf9d1b17"
   },
   "erlang": {
     "revision": "fea0141fb1e6d3af45c3d8f45441766793ed6e30"
@@ -54,7 +54,7 @@
     "revision": "1c25205cd7a68434bd1e576972193b3994404307"
   },
   "fortran": {
-    "revision": "bc9603324208e76154ce960b74049166bc89dcf8"
+    "revision": "6d69c865d5c0a8a583a4e82a5ef75f8f5faab85b"
   },
   "gdscript": {
     "revision": "59e7e41e186d3759592e9938291f69055200783f"
@@ -102,7 +102,7 @@
     "revision": "7f720661de5316c0f8fee956526d4002fa1086d8"
   },
   "ledger": {
-    "revision": "9fe00717f38c5e8765f28a05b0e9e7de7849e23e"
+    "revision": "28f79fd3ff79e69be18f46e468e8459e44fa901d"
   },
   "lua": {
     "revision": "b6d4e9e10ccb7b3afb45018fbc391b4439306b23"
@@ -156,7 +156,7 @@
     "revision": "cf57a922b6a48664131617a5c7fe06e401e700f7"
   },
   "supercollider": {
-    "revision": "53682170fc30f8f30282d2b84267e6f47c6c7fcb"
+    "revision": "56b78e3e0b3f29833ef3de1250d03b171ab766a3"
   },
   "svelte": {
     "revision": "10c113001acf9852817150acb3031a5e68d2b4cf"
