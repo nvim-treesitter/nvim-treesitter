@@ -16,6 +16,8 @@
 (type_identifier) @type
 (primitive_type) @type.builtin
 (field_identifier) @field
+(shorthand_field_initializer
+  (identifier) @field)
 (mod_item
  name: (identifier) @namespace)
 
