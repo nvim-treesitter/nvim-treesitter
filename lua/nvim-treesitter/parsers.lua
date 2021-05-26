@@ -225,9 +225,10 @@ list.css = {
 
 list.scss = {
   install_info = {
-    url = "https://github.com/elianiva/tree-sitter-scss",
+    url = "https://github.com/serenadeai/tree-sitter-scss",
     files = { "src/parser.c", "src/scanner.c" }
   },
+  maintainers = {"@elianiva"},
 }
 
 list.erlang = {
