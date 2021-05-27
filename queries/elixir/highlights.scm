@@ -90,7 +90,7 @@
 "else" @conditional
 
 (call (function_identifier) @conditional
- (#any-of? @conditional "case" "cond" "if" "unless"))
+ (#any-of? @conditional "case" "cond" "if" "unless" "with"))
 
 (call (function_identifier) @repeat
  (#eq? @repeat "for"))
