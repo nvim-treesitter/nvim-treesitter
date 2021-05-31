@@ -8,8 +8,12 @@
 
 (interpolation) @none
 
-; (invocation_expression
-;      (identifier) @method)
+(invocation_expression
+     (member_access_expression
+            name: (identifier) @method))
+
+(invocation_expression
+      (identifier) @method)
 
 ((identifier) @field
  (#match? @field "^_"))
