@@ -6,11 +6,7 @@
 (method_declaration
   type: (identifier) @type)
 
-; This would be nice but fails in some cases
-; https://github.com/nvim-treesitter/nvim-treesitter/pull/203
-; (invocation_expression
-;     (member_access_expression
-;            name: (identifier) @method))
+(interpolation) @none
 
 ; (invocation_expression
 ;      (identifier) @method)
@@ -37,7 +33,7 @@
 
 [
  (string_literal)
- (interpolated_string_text)
+ (interpolated_string_expression)
 ] @string
 
 (boolean_literal) @boolean
