@@ -12,7 +12,7 @@
     "revision": "008008e30a81849fca0c79291e2b480855e0e02c"
   },
   "c_sharp": {
-    "revision": "5b6bfbdcdbdda7da4839d7163ce579ed98410282"
+    "revision": "d5b3e64752426c9f15b4a407790ca362b7c86bc3"
   },
   "clojure": {
     "revision": "f7d100c4fbaa8aad537e80c7974c470c7fb6aeda"
@@ -39,10 +39,10 @@
     "revision": "b25f86c3b2ec4192d040432a1a279861df390762"
   },
   "elixir": {
-    "revision": "803bf47ea664817aa5ef2459560dd3cb7ce68fb5"
+    "revision": "74024384dd09a34908d534de320d0bc30f26ae8f"
   },
   "elm": {
-    "revision": "94eaa3418bb3fc8a28ef1d34711282f5bf9d1b17"
+    "revision": "764876b93ab9d57532b6c550883b027a986a14db"
   },
   "erlang": {
     "revision": "fea0141fb1e6d3af45c3d8f45441766793ed6e30"
