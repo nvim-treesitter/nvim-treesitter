@@ -9,7 +9,7 @@ local M = {}
 
 local EMPTY_ITER = function() end
 
-M.built_in_query_groups = {'highlights', 'locals', 'folds', 'indents'}
+M.built_in_query_groups = {'highlights', 'locals', 'folds', 'indents', 'injections'}
 
 -- Creates a function that checks whether a given query exists
 -- for a specific language.
