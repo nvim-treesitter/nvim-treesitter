@@ -17,6 +17,12 @@ local function extract_captures()
     end
   end
 
+  -- Complete captures for injections.
+  local parsers = require 'nvim-treesitter.info'.installed_parsers()
+  for _, lang in pairs(parsers) do
+    table.insert(captures['injections'], lang)
+  end
+
   return captures
 end
 
@@ -31,18 +37,21 @@ local function do_check()
   for _, lang in pairs(parsers) do
     for _, query_type in pairs(query_types) do
       print('Checking '..lang..' '..query_type)
-      local ok, query = pcall(queries.get_query,lang, query_type)
+      local ok, query = pcall(queries.get_query, lang, query_type)
       if not ok then
         vim.api.nvim_err_writeln(query)
         last_error = query
       else
         if query then
           for _, capture in ipairs(query.captures) do
-            if not vim.startswith(capture, "_") -- We ignore things like _helper
-              and captures[query_type]
-              and not capture:find("^[A-Z]") -- Highlight groups
-              and not vim.tbl_contains(captures[query_type], capture) then
-              error(string.format("Invalid capture @%s in %s for %s.", capture, query_type, lang))
+            local is_valid = (
+              vim.startswith(capture, "_")  -- Helpers.
+              or vim.tbl_contains(captures[query_type], capture)
+            )
+            if not is_valid then
+              local error = string.format("(x) Invalid capture @%s in %s for %s.", capture, query_type, lang)
+              print(error)
+              last_error = error
             end
           end
         end
