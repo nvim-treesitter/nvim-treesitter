@@ -12,6 +12,10 @@
      (member_access_expression
             name: (identifier) @method))
 
+(member_access_expression
+  (identifier) @type (#match? @type "^[A-Z].*[a-z]")
+  (_) .)
+
 (invocation_expression
       (identifier) @method)
 
