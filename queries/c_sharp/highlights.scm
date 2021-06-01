@@ -12,9 +12,16 @@
      (member_access_expression
             name: (identifier) @method))
 
-(member_access_expression
-  (identifier) @type (#match? @type "^[A-Z].*[a-z]")
+(namespace_declaration
+  name: [(qualified_name) (identifier)] @namespace)
+
+((member_access_expression
+  (identifier) @type
   (_) .)
+  (#match? @type "^[A-Z].*[a-z]"))
+
+(qualified_name
+  (identifier) @type)
 
 (invocation_expression
       (identifier) @method)
@@ -58,8 +65,6 @@
 (using_directive
   (identifier) @type)
 
-(qualified_name
-  (identifier) @type)
 (property_declaration
   name: (identifier) @property)
 
