@@ -9,16 +9,16 @@
 (interpolation) @none
 
 (invocation_expression
-     (member_access_expression
-            name: (identifier) @method))
+  (member_access_expression
+    name: (identifier) @method))
+
+(invocation_expression
+  function: (conditional_access_expression
+    (member_binding_expression
+      name: (identifier) @method)))
 
 (namespace_declaration
   name: [(qualified_name) (identifier)] @namespace)
-
-((member_access_expression
-  (identifier) @type
-  (_) .)
-  (#match? @type "^[A-Z].*[a-z]"))
 
 (qualified_name
   (identifier) @type)
@@ -26,11 +26,14 @@
 (invocation_expression
       (identifier) @method)
 
-((identifier) @field
- (#match? @field "^_"))
+(field_declaration
+  (variable_declaration
+    (variable_declarator
+      (identifier) @field)))
 
-((identifier) @field
- (#match? @field "^m_"))
+(initializer_expression
+  (assignment_expression
+    left: (identifier) @field))
 
 (parameter_list
   (parameter
@@ -56,9 +59,10 @@
 
 [
  (predefined_type)
- (implicit_type)
  (void_keyword)
 ] @type.builtin
+
+(implicit_type) @keyword
 
 (comment) @comment
 
@@ -67,6 +71,12 @@
 
 (property_declaration
   name: (identifier) @property)
+
+(property_declaration
+  type: (identifier) @type)
+
+(nullable_type
+  (identifier) @type)
 
 (catch_declaration
   type: (identifier) @type)
@@ -88,14 +98,28 @@
 (generic_name
   (identifier) @type)
 
+(invocation_expression
+  (member_access_expression
+    (generic_name
+      (identifier) @method)))
+
 (base_list
   (identifier) @type)
 
 (type_argument_list
  (identifier) @type)
 
+(type_parameter_list
+  (type_parameter) @type)
+
+(type_parameter_constraints_clause
+  target: (identifier) @type)
+
 (attribute
  name: (identifier) @attribute)
+
+(for_each_statement
+  type: (identifier) @type)
 
 [
  "if"
@@ -228,5 +252,6 @@
  "struct"
  "get"
  "set"
+ "where"
 ] @keyword
 
