@@ -26,7 +26,10 @@ local function install_health()
     local result = handle:read("*a")
     handle:close()
     local version = vim.split(result,'\n')[1]:match('[^tree%psitter].*')
-    health_ok('`tree-sitter` found '..version..' (parser generator, only needed for :TSInstallFromGrammar)')
+    health_ok(
+      "`tree-sitter` found " ..
+        (version or "(unknown version)") .. " (parser generator, only needed for :TSInstallFromGrammar)"
+    )
   end
 
   if fn.executable('node') == 0 then
