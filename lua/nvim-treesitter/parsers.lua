@@ -291,7 +291,7 @@ list.c_sharp = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   filetype = 'cs',
-  maintainers = {'@svermeulen'},
+  maintainers = {'@Luxed'},
 }
 
 list.typescript = {
