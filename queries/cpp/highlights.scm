@@ -32,10 +32,6 @@
     name: (identifier) @function))
 
 
-((identifier) @type
- (#match? @type "^[A-Z].*[a-z]")
- (#not-has-parent? @type function_declarator))
-
 (namespace_identifier) @namespace
 ((namespace_identifier) @type
                         (#match? @type "^[A-Z]"))
