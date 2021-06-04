@@ -1,3 +1,5 @@
+;; >> Litterals
+
 (dis_expr) @comment
 
 (kwd_lit) @symbol
@@ -15,6 +17,24 @@
 (comment) @comment
 
 (regex_lit) @string.regex
+
+(quoting_lit
+ marker: "'" @string.escape)
+
+(syn_quoting_lit
+ marker: "`" @string.escape)
+
+(set_lit
+ marker: "#" @punctuation.special)
+
+(anon_fn_lit
+ marker: "#" @punctuation.special)
+
+["{" "}" "[" "]" "(" ")"] @punctuation.bracket
+
+
+
+;; >> Symbols
 
 ;; metadata experiment
 (meta_lit
@@ -72,10 +92,5 @@
 ((sym_lit) @variable
  (#match? @variable "\\."))
 
-;; quote
-(quoting_lit) @string.escape
 
-;; syntax quote
-(syn_quoting_lit) @string.escape
 
-["{" "}" "[" "]" "(" ")"] @punctuation.bracket
