@@ -121,13 +121,46 @@
 (for_each_statement
   type: (identifier) @type)
 
+(warning_directive) @text.warning
+(error_directive) @exception
+
+(define_directive
+  (identifier) @constant) @constant.macro
+(undef_directive
+  (identifier) @constant) @constant.macro
+
+(line_directive) @constant.macro
+(line_directive
+  (preproc_integer_literal) @constant
+  (preproc_string_literal)? @string)
+
+(pragma_directive
+  (identifier) @constant) @constant.macro
+(pragma_directive
+  (preproc_string_literal) @string) @constant.macro
+
+[
+ (nullable_directive)
+ (region_directive)
+ (endregion_directive)
+] @constant.macro
+
 [
  "if"
  "else"
  "switch"
  "break"
  "case"
+ (if_directive)
+ (elif_directive)
+ (else_directive)
+ (endif_directive)
 ] @conditional
+
+(if_directive
+  (identifier) @constant)
+(elif_directive
+  (identifier) @constant)
 
 [
  "while"
