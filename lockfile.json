@@ -30,7 +30,7 @@
     "revision": "94e10230939e702b4fa3fa2cb5c3bc7173b95d07"
   },
   "dart": {
-    "revision": "6f332a211afa19920c851456d587d6c65f243832"
+    "revision": "6a25376685d1d47968c2cef06d4db8d84a70025e"
   },
   "devicetree": {
     "revision": "fa70098cd70393f84785f85cdc6a45299b59cd5b"
@@ -51,7 +51,7 @@
     "revision": "bc689e2ef264e2cba499cfdcd16194e8f5fe87d2"
   },
   "fish": {
-    "revision": "1c25205cd7a68434bd1e576972193b3994404307"
+    "revision": "ff49d86927ed9d4eba18ac4dea6ddc5cecd6a014"
   },
   "fortran": {
     "revision": "6d69c865d5c0a8a583a4e82a5ef75f8f5faab85b"
@@ -81,7 +81,7 @@
     "revision": "2efe37f92d2e6aeb25186e9da07455bb4a30163c"
   },
   "javascript": {
-    "revision": "6c8cfae935f67dd9e3a33982e5e06be0ece6399a"
+    "revision": "d8df25843c209d26681c0628e678ac3660f67523"
   },
   "jsdoc": {
     "revision": "189a6a4829beb9cdbe837260653b4a3dfb0cc3db"
@@ -132,7 +132,7 @@
     "revision": "bc753fa4d8349bd6280f634f57bd6e7be9a3ed17"
   },
   "r": {
-    "revision": "9a7f8d6429a48116f4c757ec0abbe42ac87c1f8e"
+    "revision": "bcf381c61f2471137df59fe6661478b71e4a4887"
   },
   "regex": {
     "revision": "3041aa3472d16fd94c6a9e15b741dbfecd9b714e"
