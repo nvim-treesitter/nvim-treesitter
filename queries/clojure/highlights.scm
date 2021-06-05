@@ -23,6 +23,10 @@
 
 (syn_quoting_lit
  marker: "`" @string.escape)
+(unquoting_lit
+ marker: "~" @punctuation.special)
+(unquote_splicing_lit
+ marker: "~@" @punctuation.special)
 
 (set_lit
  marker: "#" @punctuation.special)
