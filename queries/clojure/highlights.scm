@@ -47,8 +47,6 @@
 (meta_lit
  marker: "^" @punctuation.special)
 
-;; TODO: Highlight code in comments?
-
 ;; parameter-related
 ((sym_lit) @parameter
  (#match? @parameter "^[&]"))
@@ -57,6 +55,7 @@
  (#match? @variable.builtin "^[%]"))
 
 ;; TODO: General symbol highlighting
+;; use @variable?
 ;((sym_lit) @symbol
 ; (#eq? @symbol @variable))
 
@@ -90,7 +89,7 @@
   (sym_lit) @parameter)?)
  
 
-;; def-like things
+;; namespaces
 ;; TODO
 ;(list_lit
 ; .
@@ -99,11 +98,19 @@
 ; .
 ; (sym_lit) @function)
 
+;; TODO: symbols with `.`, mark them as namespaces?
+
 ;; operators
 ((sym_lit) @operator
  (#any-of? @operator
   "*" "*'" "+" "+'" "-" "-'" "/"
   "<" "<=" ">" ">=" "=" "==" "not" "not="))
+
+;; Ordinary calls
+;; TODO
+;; Do this by having a big scope with all symbols in it and
+;; use `#not-eq? @myvar @parameter`
+;; NOTE: That's a big hack
 
 ;; Ordinary calls
 ;; TODO
@@ -252,8 +259,3 @@
   "vector" "vector-of" "vector?" "volatile!" "volatile?"
   "vreset!" "with-bindings*" "with-meta" "with-redefs-fn" "xml-seq"
   "zero?" "zipmap"))
-
-
-;; other symbols with dots
-;((sym_lit) @variable
-; (#match? @variable "\\."))
