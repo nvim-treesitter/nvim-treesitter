@@ -1,39 +1,18 @@
 ;; >> Litterals
 
 (dis_expr) @comment
-
 (kwd_lit) @symbol
-
 (str_lit) @string
-
 (num_lit) @number
-
 (char_lit) @character
-
 (bool_lit) @boolean
-
 (nil_lit) @constant.builtin
-
 (comment) @comment
-
 (regex_lit) @string.regex
 
-;; TODO: Quote whole quoted symbol?
-(quoting_lit
- marker: "'" @string.escape)
+["'" "`"] @string.escape
 
-(syn_quoting_lit
- marker: "`" @string.escape)
-(unquoting_lit
- marker: "~" @punctuation.special)
-(unquote_splicing_lit
- marker: "~@" @punctuation.special)
-
-(set_lit
- marker: "#" @punctuation.special)
-
-(anon_fn_lit
- marker: "#" @punctuation.special)
+["~" "~@" "#" "^"] @punctuation.special
 
 ["{" "}" "[" "]" "(" ")"] @punctuation.bracket
 
@@ -41,13 +20,7 @@
 
 ;; >> Symbols
 
-;; metadata
-;; TODO: Mark whole meta tag?
-;; TODO: If not, handle java classes?
-(meta_lit
- marker: "^" @punctuation.special)
-
-;; parameter-related
+; parameter-related
 ((sym_lit) @parameter
  (#match? @parameter "^[&]"))
 
@@ -57,7 +30,7 @@
 ;; TODO: General symbol highlighting
 ;; use @variable?
 ;((sym_lit) @symbol
-; (#eq? @symbol @variable))
+; (#not-eq? @symbol @variable))
 
 ;; dynamic variables
 ((sym_lit) @variable.builtin
@@ -82,11 +55,15 @@
  .
  (sym_lit)? @function
  .
+ ;; This marks strings twice, should probably fix 🤔
  (str_lit)? @text
  .
- ; TODO: Get this working?
- (vec_lit
-  (sym_lit) @parameter)?)
+ ;; TODO: Get working
+ [(vec_lit
+   (sym_lit) @parameter)
+  (list_lit
+   (vec_lit
+    (sym_lit) @parameter))+]?)
  
 
 ;; namespaces
@@ -109,13 +86,13 @@
 ;; Ordinary calls
 ;; TODO
 ;; Do this by having a big scope with all symbols in it and
-;; use `#not-eq? @myvar @parameter`
+;; use `#not-eq? @myvar @parameter etc`
 ;; NOTE: That's a big hack
 
 ;; Ordinary calls
 ;; TODO
 ;; Do this by having a big scope with all symbols in it and
-;; use `#not-eq? @myvar @parameter`
+;; use `#not-eq? @myvar @parameter etc`
 
 ;; Interop
 (list_lit
