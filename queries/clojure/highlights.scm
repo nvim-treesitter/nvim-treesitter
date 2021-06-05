@@ -73,14 +73,22 @@
 ;; >> Functions
 ;; TODO: Enforce function-like things are the first thing in a list?
 
-;; def-like things
-;; TODO
-;(list_lit
-; .
-; (sym_lit) @keyword.function
-; (#match? @keyword.function "^(declare|def.*|ns)$")
-; .
-; (sym_lit) @function)
+;; def & fn
+; TODO: fix it so that meta isn't marked as @function
+; e.g (fn ^:meta name [a] a) marks `^:meta` as @function
+(list_lit
+ .
+ (sym_lit) @keyword.function
+ (#match? @keyword.function "^(fn|fn[*]|def.*)$")
+ .
+ (sym_lit)? @function
+ .
+ (str_lit)? @text
+ .
+ ; TODO: Get this working?
+ (vec_lit
+  (sym_lit) @parameter)?)
+ 
 
 ;; def-like things
 ;; TODO
@@ -114,7 +122,7 @@
   "." ".." "->" "->>" "amap" "and" "areduce" "as->" "assert"
   "binding" "bound-fn" "case" "catch" "comment" "cond" "cond->"
   "cond->>" "condp" "delay" "do" "doseq" "dosync" "dotimes"
-  "doto" "extend-protocol" "extend-type" "finally" "fn" "fn*"
+  "doto" "extend-protocol" "extend-type" "finally"
   "for" "future" "gen-class" "gen-interface" "if" "if-let"
   "if-not" "if-some" "import" "io!" "lazy-cat" "lazy-seq" "let"
   "letfn" "locking" "loop" "memfn" "monitor-enter" "monitor-exit"
