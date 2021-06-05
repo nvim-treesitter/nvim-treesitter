@@ -92,7 +92,7 @@
 ((sym_lit) @operator
  (#any-of? @operator
   "*" "*'" "+" "+'" "-" "-'" "/"
-  "<" "<=" ">" ">=" "=" "=="))
+  "<" "<=" ">" ">=" "=" "==" "not" "not="))
 
 ;; Ordinary calls
 ;; TODO
@@ -187,7 +187,7 @@
   "method-sig" "methods" "min" "min-key" "mix-collection-hash"
   "mod" "munge" "name" "namespace" "namespace-munge" "nat-int?"
   "neg-int?" "neg?" "newline" "next" "nfirst" "nil?" "nnext"
-  "not" "not-any?" "not-empty" "not-every?" "not=" "ns-aliases"
+  "not-any?" "not-empty" "not-every?" "ns-aliases"
   "ns-imports" "ns-interns" "ns-map" "ns-name" "ns-publics"
   "ns-refers" "ns-resolve" "ns-unalias" "ns-unmap" "nth"
   "nthnext" "nthrest" "num" "number?" "numerator" "object-array"
