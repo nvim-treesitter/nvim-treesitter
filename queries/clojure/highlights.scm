@@ -18,6 +18,7 @@
 
 (regex_lit) @string.regex
 
+;; TODO: Quote whole quoted symbol?
 (quoting_lit
  marker: "'" @string.escape)
 
@@ -40,7 +41,9 @@
 
 ;; >> Symbols
 
-;; metadata experiment
+;; metadata
+;; TODO: Mark whole meta tag?
+;; TODO: If not, handle java classes?
 (meta_lit
  marker: "^" @punctuation.special)
 
@@ -65,6 +68,7 @@
 
 
 ;; >> Functions
+;; TODO: Enforce function-like things are the first thing in a list?
 
 ;; def-like things
 ;; TODO
@@ -121,7 +125,6 @@
 
 ((sym_lit) @function.macro
  (#match? @function.macro "^with\\-.*$"))
-
 
 ;; clojure.core=> (cp/pprint (sort (keep (fn [[s v]] (when-not (:macro (meta v)) s)) (ns-publics *ns*))))
 ;; ...and then some manual filtering...
