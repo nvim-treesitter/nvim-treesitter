@@ -53,6 +53,9 @@
 ((sym_lit) @parameter
  (#match? @parameter "^[&]"))
 
+((sym_lit) @variable.builtin
+ (#match? @variable.builtin "^[%]"))
+
 ;; TODO: General symbol highlighting
 ;((sym_lit) @symbol
 ; (#eq? @symbol @variable))
