@@ -1,3 +1,6 @@
+;; TODO: Make comparison screenshot
+;; TODO: Try out for a while
+;; TODO: Tweak
 ;; >> Litterals
 
 (dis_expr) @comment
