@@ -12,7 +12,7 @@
 
 ["'" "`"] @string.escape
 
-["~" "~@" "#" "^"] @punctuation.special
+["~" "~@" "#"] @punctuation.special
 
 ["{" "}" "[" "]" "(" ")"] @punctuation.bracket
 
@@ -236,3 +236,10 @@
   "vector" "vector-of" "vector?" "volatile!" "volatile?"
   "vreset!" "with-bindings*" "with-meta" "with-redefs-fn" "xml-seq"
   "zero?" "zipmap"))
+
+; Meta punctuation
+;; NOTE: When the above `Function definitions` query captures the
+;;       the @function it also captures the child meta_lit
+;;       We capture the meta_lit symbol (^) after so that the later
+;;       highlighting overrides the former
+"^" @punctuation.special
