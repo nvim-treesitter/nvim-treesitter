@@ -137,7 +137,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [beancount](https://github.com/polarmutex/tree-sitter-beancount) (maintained by @polarmutex)
 - [x] [bibtex](https://github.com/latex-lsp/tree-sitter-bibtex) (maintained by @theHamsta by asking @clason)
 - [x] [c](https://github.com/tree-sitter/tree-sitter-c) (maintained by @vigoux)
-- [x] [c_sharp](https://github.com/tree-sitter/tree-sitter-c-sharp) (maintained by @svermeulen)
+- [x] [c_sharp](https://github.com/tree-sitter/tree-sitter-c-sharp) (maintained by @Luxed)
 - [x] [clojure](https://github.com/sogaiu/tree-sitter-clojure) (maintained by @sogaiu)
 - [x] [comment](https://github.com/stsewd/tree-sitter-comment) (maintained by @stsewd)
 - [x] [commonlisp](https://github.com/theHamsta/tree-sitter-commonlisp) (maintained by @theHamsta)
