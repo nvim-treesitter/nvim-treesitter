@@ -260,9 +260,63 @@
   "vreset!" "with-bindings*" "with-meta" "with-redefs-fn" "xml-seq"
   "zero?" "zipmap"))
 
+
+
+;; >> Context based highlighting
+
+; def-likes
+; Correctly highlight docstrings
+(list_lit
+ .
+ (sym_lit) @a
+ (#match? @a "^def.*")
+ .
+ (sym_lit)
+ .
+ (str_lit)? @text
+ .
+ (_))
+
+; Funciton definitions
+(list_lit
+ .
+ (sym_lit) @a
+ (#any-of? @a "fn" "fn*" "defn" "defn-")
+ .
+ (sym_lit)? @function
+ .
+ (str_lit)? @text)
+;; TODO: Fix parameter highlighting
+;;       I think there's a bug here in nvim-treesitter
+;; TODO: Reproduce bug and file ticket
+ ;.
+ ;[(vec_lit
+ ;  (sym_lit)* @parameter)
+ ; (list_lit
+ ;  (vec_lit
+ ;   (sym_lit)* @parameter))])
+  
+;[((list_lit
+;   (vec_lit
+;    (sym_lit) @parameter)
+;   (_)
+;  +
+; ((vec_lit
+;   (sym_lit) @parameter)
+;  (_)))
+   
+
 ; Meta punctuation
 ;; NOTE: When the above `Function definitions` query captures the
 ;;       the @function it also captures the child meta_lit
 ;;       We capture the meta_lit symbol (^) after so that the later
 ;;       highlighting overrides the former
 "^" @punctuation.special
+
+;; namespaces
+(list_lit
+ .
+ (sym_lit) @a
+ (#eq? @a "ns")
+ .
+ (sym_lit) @namespace)
