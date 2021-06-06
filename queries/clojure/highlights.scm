@@ -20,109 +20,133 @@
 
 ;; >> Symbols
 
-; parameter-related
+; General symbol highlighting
+(sym_lit) @variable
+
+; General function calls
+(list_lit
+ .
+ (sym_lit) @function)
+
+; Quoted symbols
+(quoting_lit
+ (sym_lit) @symbol)
+(syn_quoting_lit
+ (sym_lit) @symbol)
+
+; Used in destructure pattern
 ((sym_lit) @parameter
  (#match? @parameter "^[&]"))
 
+; Inline function variables
 ((sym_lit) @variable.builtin
  (#match? @variable.builtin "^[%]"))
 
-;; TODO: General symbol highlighting
-;; use @variable?
-;((sym_lit) @symbol
-; (#not-eq? @symbol @variable))
+; Constants
+;; TODO: Improve?
+;; - Mark all symbols as constants?
+;; - Remove, just use @variable?
+((sym_lit) @constant
+ (#match? @constant "^[A-Z_-]+$"))
 
-;; dynamic variables
+; Constructor
+((sym_lit) @constructor
+ (#match? @constructor "^-\\>[^\\>].*"))
+
+; Dynamic variables
 ((sym_lit) @variable.builtin
  (#match? @variable.builtin "^[*].+[*]$"))
 
-;; gensym
+; Gensym
+;; TODO: is this needed?
 ((sym_lit) @variable
  (#match? @variable "^.*#$"))
 
+; Types
+;; TODO: improve?
+;; - symbols with `.` but not `/`?
+((sym_lit) @type
+ (#match? @type "^[A-Z][^/]*$"))
 
-
-;; >> Functions
-;; TODO: Enforce function-like things are the first thing in a list?
-
-;; def & fn
-; TODO: fix it so that meta isn't marked as @function
-; e.g (fn ^:meta name [a] a) marks `^:meta` as @function
-(list_lit
- .
- (sym_lit) @keyword.function
- (#match? @keyword.function "^(fn|fn[*]|def.*)$")
- .
- (sym_lit)? @function
- .
- ;; This marks strings twice, should probably fix 🤔
- (str_lit)? @text
- .
- ;; TODO: Get working
- [(vec_lit
-   (sym_lit) @parameter)
-  (list_lit
-   (vec_lit
-    (sym_lit) @parameter))+]?)
- 
-
-;; namespaces
-;; TODO
-;(list_lit
-; .
-; (sym_lit) @keyword.function
-; (#match? @keyword.function "^(declare|def.*|ns)$")
-; .
-; (sym_lit) @function)
-
-;; TODO: symbols with `.`, mark them as namespaces?
-
-;; operators
-((sym_lit) @operator
- (#any-of? @operator
-  "*" "*'" "+" "+'" "-" "-'" "/"
-  "<" "<=" ">" ">=" "=" "==" "not" "not="))
-
-;; Ordinary calls
-;; TODO
-;; Do this by having a big scope with all symbols in it and
-;; use `#not-eq? @myvar @parameter etc`
-;; NOTE: That's a big hack
-
-;; Ordinary calls
-;; TODO
-;; Do this by having a big scope with all symbols in it and
-;; use `#not-eq? @myvar @parameter etc`
-
-;; Interop
+; Interop
+((sym_lit) @method
+ (#match? @method "^\\.[^-]"))
+((sym_lit) @field
+ (#match? @field "^\\.-"))
+((sym_lit) @field
+ (#match? @field "^[A-Z].*/.+"))
 (list_lit
  .
  (sym_lit) @method
- (#match? @method "^\\."))
+ (#match? @method "^[A-Z].*/.+"))
+;; TODO: Special casing for the `.` macro
 
-;; other macros
+; Operators
+((sym_lit) @operator
+ (#any-of? @operator
+  "*" "*'" "+" "+'" "-" "-'" "/"
+  "<" "<=" ">" ">=" "=" "=="))
+((sym_lit) @keyword.operator
+ (#any-of? @keyword.operator
+  "not" "not=" "and" "or"))
+
+; Definition functions
+((sym_lit) @keyword
+ (#match? @keyword "^def.*$"))
+((sym_lit) @keyword
+ (#eq? @keyword "declare"))
+((sym_lit) @keyword.function
+ (#match? @keyword.function "^(defn|defn-|fn|fn[*])$"))
+
+; Comment
+((sym_lit) @comment
+ (#any-of? @comment "comment" "quote"))
+
+; Conditionals
+((sym_lit) @conditional
+ (#any-of? @conditional
+  "case" "cond" "cond->" "cond->>" "condp"))
+((sym_lit) @conditional
+ (#match? @conditional "^if(\\-.*)?$"))
+((sym_lit) @conditional
+ (#match? @conditional "^when(\\-.*)?$"))
+
+; Repeats
+((sym_lit) @repeat
+ (#any-of? @repeat
+  "doseq" "dotimes" "for" "loop" "recur" "while"))
+
+; Exception
+((sym_lit) @exception
+ (#any-of? @exception
+  "throw" "try" "catch" "finally" "ex-info"))
+
+; Includes
+((sym_lit) @include
+ (#any-of? @include "ns" "import" "require" "use"))
+
+; Builtin macros
+;; TODO: Do all these items belong here?
 ((sym_lit) @function.macro
  (#any-of? @function.macro
-  "." ".." "->" "->>" "amap" "and" "areduce" "as->" "assert"
-  "binding" "bound-fn" "case" "catch" "comment" "cond" "cond->"
-  "cond->>" "condp" "delay" "do" "doseq" "dosync" "dotimes"
-  "doto" "extend-protocol" "extend-type" "finally"
-  "for" "future" "gen-class" "gen-interface" "if" "if-let"
-  "if-not" "if-some" "import" "io!" "lazy-cat" "lazy-seq" "let"
-  "letfn" "locking" "loop" "memfn" "monitor-enter" "monitor-exit"
-  "or" "proxy" "proxy-super" "pvalues" "quote" "recur"
+  "." ".." "->" "->>" "amap" "areduce" "as->" "assert"
+  "binding" "bound-fn" "delay" "do" "dosync"
+  "doto" "extend-protocol" "extend-type" "future"
+  "gen-class" "gen-interface" "io!" "lazy-cat"
+  "lazy-seq" "let" "letfn" "locking" "memfn" "monitor-enter"
+  "monitor-exit" "proxy" "proxy-super" "pvalues"
   "refer-clojure" "reify" "set!" "some->" "some->>" "sync"
-  "throw" "time" "try" "unquote" "unquote-splicing" "var"
-  "vswap!" "while"))
-
-((sym_lit) @function.macro
- (#match? @function.macro "^when(\\-.+)$"))
-
+  "time" "unquote" "unquote-splicing" "var" "vswap!"
+  "ex-cause" "ex-data" "ex-message")) 
 ((sym_lit) @function.macro
  (#match? @function.macro "^with\\-.*$"))
 
-;; clojure.core=> (cp/pprint (sort (keep (fn [[s v]] (when-not (:macro (meta v)) s)) (ns-publics *ns*))))
-;; ...and then some manual filtering...
+; All builtin functions
+; (->> (ns-publics *ns*)
+;      (keep (fn [[s v]] (when-not (:macro (meta v)) s)))
+;      sort
+;      cp/print))
+;; ...and then lots of manual filtering...
 ((sym_lit) @function.builtin
  (#any-of? @function.builtin
   "->ArrayChunk" "->Eduction" "->Vec" "->VecNode" "->VecSeq"
@@ -156,8 +180,7 @@
   "dissoc!" "distinct" "distinct?" "doall" "dorun" "double"
   "double-array" "eduction" "empty" "empty?" "ensure" "ensure-reduced"
   "enumeration-seq" "error-handler" "error-mode" "eval"
-  "even?" "every-pred" "every?" "ex-cause" "ex-data"
-  "ex-info" "ex-message" "extend" "extenders" "extends?"
+  "even?" "every-pred" "every?" "extend" "extenders" "extends?"
   "false?" "ffirst" "file-seq" "filter" "filterv" "find"
   "find-keyword" "find-ns" "find-protocol-impl"
   "find-protocol-method" "find-var" "first" "flatten"
@@ -203,7 +226,7 @@
   "ref-max-history" "ref-min-history" "ref-set" "refer"
   "release-pending-sends" "rem" "remove" "remove-all-methods"
   "remove-method" "remove-ns" "remove-tap" "remove-watch"
-  "repeat" "repeatedly" "replace" "replicate" "require"
+  "repeat" "repeatedly" "replace" "replicate"
   "requiring-resolve" "reset!" "reset-meta!" "reset-vals!"
   "resolve" "rest" "restart-agent" "resultset-seq" "reverse"
   "reversible?" "rseq" "rsubseq" "run!" "satisfies?"
@@ -231,7 +254,7 @@
   "unchecked-remainder-int" "unchecked-short" "unchecked-subtract"
   "unchecked-subtract-int" "underive" "unquote"
   "unquote-splicing" "unreduced" "unsigned-bit-shift-right"
-  "update" "update-in" "update-proxy" "uri?" "use" "uuid?"
+  "update" "update-in" "update-proxy" "uri?" "uuid?"
   "val" "vals" "var-get" "var-set" "var?" "vary-meta" "vec"
   "vector" "vector-of" "vector?" "volatile!" "volatile?"
   "vreset!" "with-bindings*" "with-meta" "with-redefs-fn" "xml-seq"
