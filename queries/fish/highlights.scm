@@ -148,7 +148,8 @@
 (comment) @comment
 (test_option) @string
 
-[(true) (false)] @boolean
+((word) @boolean
+(#any-of? @boolean "true" "false"))
 
 ;; Error
 
