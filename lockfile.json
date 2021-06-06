@@ -72,7 +72,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "haskell": {
-    "revision": "004f2709c460d95fbfd1061f8efc98f36e33c03c"
+    "revision": "237f4eb4417c28f643a29d795ed227246afb66f9"
   },
   "html": {
     "revision": "d93af487cc75120c89257195e6be46c999c6ba18"
@@ -153,7 +153,7 @@
     "revision": "9da7c979c010c350c28ad2235893103db4622c10"
   },
   "sparql": {
-    "revision": "cf57a922b6a48664131617a5c7fe06e401e700f7"
+    "revision": "abc8d7c4f837bfe927086580e461f9ee980d1244"
   },
   "supercollider": {
     "revision": "67ecede8fc5f2e342a7f0516b87d0476b36035ac"
@@ -174,7 +174,7 @@
     "revision": "28e757a2f498486931b3cb13a100a1bcc9261456"
   },
   "turtle": {
-    "revision": "05b2419c35ca64ad7a51dc5620426d5c9bf9c357"
+    "revision": "ae634171e8ea4fd88fe3199bc27d03abf2d4c7e4"
   },
   "typescript": {
     "revision": "28e757a2f498486931b3cb13a100a1bcc9261456"
