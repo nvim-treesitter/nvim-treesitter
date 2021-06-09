@@ -70,7 +70,14 @@ list.cpp = {
     files = { "src/parser.c", "src/scanner.cc" },
     generate_requires_npm = true,
   },
-  used_by = { "cuda" },
+  maintainers = {"@theHamsta"},
+}
+
+list.cuda = {
+  install_info = {
+    url = "https://github.com/theHamsta/tree-sitter-cuda",
+    files = {"src/parser.c", "src/scanner.cc"},
+  },
   maintainers = {"@theHamsta"},
 }
 
