@@ -25,6 +25,11 @@
   function: (identifier) @function.builtin
 )
 
+(build_in_call_expr
+  function: ((identifier) @include
+             (#eq? @include "@import"))
+)
+
 ;; other identifiers
 (type_identifier) @type
 (primitive_type) @type.builtin
@@ -33,7 +38,7 @@
 (line_comment) @comment
 (doc_comment) @comment
 
-(char_literal) @number
+(char_literal) @character
 (integer_literal) @number
 (float_literal) @number
 
@@ -47,6 +52,7 @@
 (multiline_string_literal) @string 
 
 (escape_sequence) @constant.builtin
+(char_literal (escape_sequence) @character)
 
 (label_identifier) @label
 
