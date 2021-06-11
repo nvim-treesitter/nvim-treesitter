@@ -99,6 +99,8 @@
 
 (function_item (identifier) @function)
 (function_signature_item (identifier) @function)
+((impl_item (declaration_list (function_item (identifier) @constructor)))
+ (#eq? @constructor "new"))
 
 [
 (line_comment)
