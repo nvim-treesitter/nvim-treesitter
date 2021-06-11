@@ -37,7 +37,7 @@ Traditional highlighting (left) vs Treesitter-based highlighting (right).
 More examples can be found in [our gallery](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Gallery).
 
 **Warning: Treesitter and nvim-treesitter highlighting are an experimental feature of nightly versions of Neovim.
-Please consider the experience with this plug-in as experimental until Neovim 0.5 is released!
+Please consider the experience with this plug-in as experimental until Neovim 0.6 is released!
 You can find the current roadmap [here](https://github.com/nvim-treesitter/nvim-treesitter/projects/1).
 The roadmap and all features of this plugin are open to change, and any suggestion will be highly appreciated!**
 
