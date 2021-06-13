@@ -73,9 +73,11 @@
 
 ; Types
 ;; TODO: improve?
-;; - symbols with `.` but not `/`?
 ((sym_lit) @type
  (#match? @type "^[A-Z][^/]*$"))
+;; Symbols with `.` but not `/`
+((sym_lit) @type
+ (#match? @type "^[^/]+[.][^/]*$"))
 
 ; Interop
 ((sym_lit) @method
