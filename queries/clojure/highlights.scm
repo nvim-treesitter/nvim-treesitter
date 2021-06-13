@@ -1,6 +1,16 @@
-;; TODO: Make comparison screenshot
-;; TODO: Try out for a while
-;; TODO: Tweak
+;; >> Explanation
+;; Parsers for lisps are a bit weird in that they just return the raw forms.
+;; This means we have to do a bit of extra work in the queries to get things
+;; highlighted as they should be.
+;;
+;; For the most part this means that some things have to be assigned multiple
+;; groups.
+;; By doing this we can add a basic capture and then later refine it with more
+;; specialied captures.
+;; This can mean that sometimes things are highlighted weirdly because they
+;; have multiple highlight groups applied to them.
+
+
 ;; >> Litterals
 
 (dis_expr) @comment
