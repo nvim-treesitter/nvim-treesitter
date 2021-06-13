@@ -67,7 +67,7 @@
  (#match? @variable.builtin "^[*].+[*]$"))
 
 ; Gensym
-;; TODO: is this needed?
+;; Might not be needed
 ((sym_lit) @variable
  (#match? @variable "^.*#$"))
 
@@ -279,7 +279,7 @@
 ; Correctly highlight docstrings
 (list_lit
  .
- (sym_lit) @a
+ (sym_lit) @a ; Don't really want to highlight twice
  (#match? @a "^def.*")
  .
  (sym_lit)
