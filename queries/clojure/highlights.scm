@@ -40,6 +40,9 @@
 (list_lit
  .
  (sym_lit) @function)
+(anon_fn_lit
+ .
+ (sym_lit) @function)
 
 ; Quoted symbols
 (quoting_lit
