@@ -58,13 +58,6 @@
 ((sym_lit) @variable.builtin
  (#match? @variable.builtin "^[%]"))
 
-; Constants
-;; TODO: Improve?
-;; - Mark all symbols as constants?
-;; - Remove, just use @variable?
-((sym_lit) @constant
- (#match? @constant "^[A-Z_-]+$"))
-
 ; Constructor
 ((sym_lit) @constructor
  (#match? @constructor "^-\\>[^\\>].*"))
