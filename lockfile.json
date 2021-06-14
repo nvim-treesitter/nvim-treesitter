@@ -29,6 +29,9 @@
   "css": {
     "revision": "94e10230939e702b4fa3fa2cb5c3bc7173b95d07"
   },
+  "cuda": {
+    "revision": "b603763f080dc6f7baeb6e2f13d4421b4a093e72"
+  },
   "dart": {
     "revision": "6a25376685d1d47968c2cef06d4db8d84a70025e"
   },
@@ -54,7 +57,7 @@
     "revision": "ff49d86927ed9d4eba18ac4dea6ddc5cecd6a014"
   },
   "fortran": {
-    "revision": "6d69c865d5c0a8a583a4e82a5ef75f8f5faab85b"
+    "revision": "0aab09259daafc6089eb0e68a5238ccc3bdf83fc"
   },
   "gdscript": {
     "revision": "59e7e41e186d3759592e9938291f69055200783f"
@@ -102,7 +105,7 @@
     "revision": "7f720661de5316c0f8fee956526d4002fa1086d8"
   },
   "ledger": {
-    "revision": "7a2fc94100c5b4185cbf5a412b404a9047c30640"
+    "revision": "4bba045c7a9006f57ed650ef3a03edfe165b7c98"
   },
   "lua": {
     "revision": "b6d4e9e10ccb7b3afb45018fbc391b4439306b23"
