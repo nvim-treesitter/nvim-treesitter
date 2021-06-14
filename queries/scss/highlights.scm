@@ -8,6 +8,7 @@
   "@include"
 ] @keyword
 
+(single_line_comment) @comment
 (function_name) @function
 
 
