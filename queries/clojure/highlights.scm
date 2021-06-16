@@ -329,7 +329,7 @@
 ;; namespaces
 (list_lit
  .
- (sym_lit) @a
- (#eq? @a "ns")
+ (sym_lit) @_include
+ (#eq? @_include "ns")
  .
  (sym_lit) @namespace)
