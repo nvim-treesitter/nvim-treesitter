@@ -284,7 +284,8 @@
  .
  (sym_lit)
  .
- (str_lit)? @text
+ ;; TODO: Add @comment highlight
+ (str_lit)?
  .
  (_))
 
@@ -296,7 +297,8 @@
  .
  (sym_lit)? @function
  .
- (str_lit)? @text)
+ ;; TODO: Add @comment highlight
+ (str_lit)?)
 ;; TODO: Fix parameter highlighting
 ;;       I think there's a bug here in nvim-treesitter
 ;; TODO: Reproduce bug and file ticket
