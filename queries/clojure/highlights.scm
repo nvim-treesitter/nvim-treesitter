@@ -279,8 +279,8 @@
 ; Correctly highlight docstrings
 (list_lit
  .
- (sym_lit) @a ; Don't really want to highlight twice
- (#match? @a "^def.*")
+ (sym_lit) @_keyword ; Don't really want to highlight twice
+ (#match? @_keyword "^def.*")
  .
  (sym_lit)
  .
@@ -291,8 +291,8 @@
 ; Funciton definitions
 (list_lit
  .
- (sym_lit) @a
- (#any-of? @a "fn" "fn*" "defn" "defn-")
+ (sym_lit) @_keyword.function
+ (#any-of? @_keyword.function "fn" "fn*" "defn" "defn-")
  .
  (sym_lit)? @function
  .
