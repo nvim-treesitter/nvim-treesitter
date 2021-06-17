@@ -1,6 +1,8 @@
 ;;; Highlighting for lua
 
 ;;; Builtins
+(self) @variable.builtin
+
 ;; Keywords
 
 (if_statement
