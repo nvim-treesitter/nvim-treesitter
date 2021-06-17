@@ -21,7 +21,7 @@
     "revision": "894b61d68a31d93c33ed48dcc7f427174b440abe"
   },
   "commonlisp": {
-    "revision": "48189d1627bdf9795b4c4d970169ec1d143ac6b9"
+    "revision": "02e6ecbe05633bc9a82c2a56a86a1c2fcb3c4725"
   },
   "cpp": {
     "revision": "c61212414a3e95b5f7507f98e83de1d638044adc"
@@ -30,7 +30,7 @@
     "revision": "94e10230939e702b4fa3fa2cb5c3bc7173b95d07"
   },
   "cuda": {
-    "revision": "b603763f080dc6f7baeb6e2f13d4421b4a093e72"
+    "revision": "ff35bee0faeb26dc3d17740c5f8436a72104dd4d"
   },
   "dart": {
     "revision": "6a25376685d1d47968c2cef06d4db8d84a70025e"
@@ -75,7 +75,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "haskell": {
-    "revision": "237f4eb4417c28f643a29d795ed227246afb66f9"
+    "revision": "5d9b8c39b9cbec651e4a9f6a14b08e3921cb0123"
   },
   "html": {
     "revision": "d93af487cc75120c89257195e6be46c999c6ba18"
