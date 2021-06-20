@@ -611,6 +611,13 @@ list.fortran = {
   },
 }
 
+list.cmake = {
+  install_info = {
+    url = "https://github.com/uyha/tree-sitter-cmake",
+    files = { "src/parser.c"},
+  },
+}
+
 local M = {
   list = list
 }
