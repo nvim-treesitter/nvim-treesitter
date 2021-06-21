@@ -40,89 +40,128 @@
 
 ; Operators
 
-"--" @operator
-"-" @operator
-"-=" @operator
-":=" @operator
-"!" @operator
-"!=" @operator
-"..." @operator
-"*" @operator
-"*" @operator
-"*=" @operator
-"/" @operator
-"/=" @operator
-"&" @operator
-"&&" @operator
-"&=" @operator
-"%" @operator
-"%=" @operator
-"^" @operator
-"^=" @operator
-"+" @operator
-"++" @operator
-"+=" @operator
-"<-" @operator
-"<" @operator
-"<<" @operator
-"<<=" @operator
-"<=" @operator
-"=" @operator
-"==" @operator
-">" @operator
-">=" @operator
-">>" @operator
-">>=" @operator
-"|" @operator
-"|=" @operator
-"||" @operator
+[
+  "--"
+  "-"
+  "-="
+  ":="
+  "!"
+  "!="
+  "..."
+  "*"
+  "*"
+  "*="
+  "/"
+  "/="
+  "&"
+  "&&"
+  "&="
+  "%"
+  "%="
+  "^"
+  "^="
+  "+"
+  "++"
+  "+="
+  "<-"
+  "<"
+  "<<"
+  "<<="
+  "<="
+  "="
+  "=="
+  ">"
+  ">="
+  ">>"
+  ">>="
+  "|"
+  "|="
+  "||"
+] @operator
 
 ; Keywords
 
-"break" @keyword
-"case" @conditional
-"chan" @keyword
-"const" @keyword
-"continue" @keyword
-"default" @keyword
-"defer" @keyword
-"else" @conditional
-"fallthrough" @keyword
+[
+  "break"
+  "chan"
+  "const"
+  "continue"
+  "default"
+  "defer"
+  "func"
+  "go"
+  "goto"
+  "interface"
+  "map"
+  "range"
+  "return"
+  "select"
+  "struct"
+  "type"
+  "var"
+  "fallthrough"
+] @keyword
+
 "for" @repeat
-"func" @keyword
-"go" @keyword
-"goto" @keyword
-"if" @conditional
-"import" @include
-"interface" @keyword
-"map" @keyword
-"package" @include
-"range" @keyword
-"return" @keyword
-"select" @keyword
-"struct" @keyword
-"switch" @conditional
-"type" @keyword
-"var" @keyword
+
+[
+  "import"
+  "package"
+] @include
+
+[
+  "else"
+  "case"
+  "switch"
+  "if"
+ ] @conditional
 
 
 ;; Builtin types
 
 ((type_identifier) @type.builtin
  (#any-of? @type.builtin
-    "bool" "byte" "complex128" "complex64" "error"
-    "float32" "float64" "int" "int16" "int32" "int64"
-    "int8" "rune" "string" "uint" "uint16" "uint32"
-    "uint64" "uint8" "uintptr"))
+           "bool"
+           "byte"
+           "complex128"
+           "complex64"
+           "error"
+           "float32"
+           "float64"
+           "int"
+           "int16"
+           "int32"
+           "int64"
+           "int8"
+           "rune"
+           "string"
+           "uint"
+           "uint16"
+           "uint32"
+           "uint64"
+           "uint8"
+           "uintptr"))
 
 
 ;; Builtin functions
 
 ((identifier) @function.builtin
  (#any-of? @function.builtin
-    "append" "cap" "close" "complex" "copy"
-    "delete" "imag" "len" "make" "new" "panic"
-    "print" "println" "real" "recover"))
+           "append"
+           "cap"
+           "close"
+           "complex"
+           "copy"
+           "delete"
+           "imag"
+           "len"
+           "make"
+           "new"
+           "panic"
+           "print"
+           "println"
+           "real"
+           "recover"))
 
 
 ; Delimiters
