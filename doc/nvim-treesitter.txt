@@ -633,12 +633,12 @@ For LaTex-like math environments.
 `TSTextReference`
 For footnotes, text references, citations.
 
-							     *hl-TSEnviroment*
-`TSEnviroment`
+							     *hl-TSEnvironment*
+`TSEnvironment`
 For text environments of markup languages.
 
-							 *hl-TSEnviromentName*
-`TSEnviromentName`
+							 *hl-TSEnvironmentName*
+`TSEnvironmentName`
 For the name/the string indicating the type of text environment.
 
 								   *hl-TSNote*
