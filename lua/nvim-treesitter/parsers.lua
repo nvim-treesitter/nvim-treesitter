@@ -606,6 +606,7 @@ list.cmake = {
     url = "https://github.com/uyha/tree-sitter-cmake",
     files = { "src/parser.c"},
   },
+  maintainers = { "@uyha" },
 }
 
 local M = {
