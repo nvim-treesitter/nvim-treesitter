@@ -12,7 +12,7 @@
     "revision": "008008e30a81849fca0c79291e2b480855e0e02c"
   },
   "c_sharp": {
-    "revision": "aa429589525bb849189a0c5ddb52267ce578f988"
+    "revision": "3953034ee61e8639100b063092d4280e047ca9e9"
   },
   "clojure": {
     "revision": "f7d100c4fbaa8aad537e80c7974c470c7fb6aeda"
@@ -39,7 +39,7 @@
     "revision": "fa70098cd70393f84785f85cdc6a45299b59cd5b"
   },
   "dockerfile": {
-    "revision": "b25f86c3b2ec4192d040432a1a279861df390762"
+    "revision": "d4f9099f9a45a55dc7e8a2bbfdc251201431f23a"
   },
   "elixir": {
     "revision": "74024384dd09a34908d534de320d0bc30f26ae8f"
@@ -75,7 +75,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "haskell": {
-    "revision": "5d9b8c39b9cbec651e4a9f6a14b08e3921cb0123"
+    "revision": "a0c1adb59e390f7d839a146c57fdb33d36ed97e6"
   },
   "html": {
     "revision": "d93af487cc75120c89257195e6be46c999c6ba18"
@@ -105,7 +105,7 @@
     "revision": "7f720661de5316c0f8fee956526d4002fa1086d8"
   },
   "ledger": {
-    "revision": "4bba045c7a9006f57ed650ef3a03edfe165b7c98"
+    "revision": "d286f7120579ae8e853c8454e08079df4a57ea76"
   },
   "lua": {
     "revision": "b6d4e9e10ccb7b3afb45018fbc391b4439306b23"
@@ -123,7 +123,7 @@
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
   },
   "php": {
-    "revision": "ab11d08e4cfae9f32f5eae548fa724e42ed5dfe5"
+    "revision": "612bea72dfd5742b62a82b2c8ca92a5f58c112d6"
   },
   "python": {
     "revision": "d6210ceab11e8d812d4ab59c07c81458ec6e5184"
