@@ -332,7 +332,7 @@ function M.setup(user_data)
 
   local ensure_installed = user_data.ensure_installed or {}
   if #ensure_installed > 0 then
-    require'nvim-treesitter.install'.ensure_installed(ensure_installed)
+    require'nvim-treesitter.install'.ensure_installed('',ensure_installed)
   end
 
   config.modules.ensure_installed = nil
