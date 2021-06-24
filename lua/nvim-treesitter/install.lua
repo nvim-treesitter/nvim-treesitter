@@ -279,15 +279,9 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   end
 end
 
-local function install_lang(lang, ask_reinstall, cache_folder, install_folder, with_sync, generate_from_grammar)
+local function install_lang(bang, lang, cache_folder, install_folder, with_sync, generate_from_grammar)
   if #api.nvim_get_runtime_file('parser/'..lang..'.so', false) > 0 then
-    if ask_reinstall ~= 'force' then
-      if not ask_reinstall then return end
-
-      local yesno = fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
-      print('\n ') -- mandatory to avoid messing up command line
-      if not string.match(yesno, '^y.*') then return end
-    end
+      if bang ~= '!' then return 1 end
   end
 
   local parser_config = parsers.get_parser_configs()[lang]
@@ -302,16 +296,16 @@ local function install_lang(lang, ask_reinstall, cache_folder, install_folder, w
   }
 
   run_install(cache_folder, install_folder, lang, install_info, with_sync, generate_from_grammar)
+  return 0
 end
 
 local function install(options)
   options = options or {}
   local with_sync = options.with_sync
-  local ask_reinstall = options.ask_reinstall
   local generate_from_grammar = options.generate_from_grammar
   local exclude_configured_parsers = options.exclude_configured_parsers
 
-  return function (...)
+  return function (bang, ...)
     if fn.executable('git') == 0 then
       return api.nvim_err_writeln('Git is required on your system to run this command')
     end
@@ -323,16 +317,12 @@ local function install(options)
     if err then return api.nvim_err_writeln(err) end
 
     local languages
-    local ask
     if ... == 'all' then
       languages = parsers.available_parsers()
-      ask = false
     elseif ... == 'maintained' then
       languages = parsers.maintained_parsers()
-      ask = false
     else
       languages = vim.tbl_flatten({...})
-      ask = ask_reinstall
     end
 
     if exclude_configured_parsers then
@@ -343,17 +333,21 @@ local function install(options)
       reset_progress_counter()
     end
 
+    local skipped = 0
     for _, lang in ipairs(languages) do
-      install_lang(lang, ask, cache_folder, install_folder, with_sync, generate_from_grammar)
+      skipped = skipped + install_lang(bang, lang, cache_folder, install_folder, with_sync, generate_from_grammar)
+    end
+    if skipped > 0 then
+      print('Parsers already installed. Use :TSInstall! to force reinstallation.')
     end
   end
 end
 
-function M.update(lang)
+function M.update(bang, lang)
   M.lockfile = {}
   reset_progress_counter()
   if lang and lang ~= 'all' then
-    install({ ask_reinstall = 'force' })(lang)
+    install({})('!', lang)
   else
     local parsers_to_update = configs.get_update_strategy() == 'lockfile'
       and outdated_parsers()
@@ -363,14 +357,13 @@ function M.update(lang)
     end
     for _, lang in pairs(parsers_to_update) do
       install({
-        ask_reinstall = 'force',
         exclude_configured_parsers = true
-      })(lang)
+      })('!', lang)
     end
   end
 end
 
-function M.uninstall(lang)
+function M.uninstall(bang,lang)
   local path_sep = '/'
   if fn.has('win32') == 1 then
     path_sep = '\\'
@@ -436,23 +429,26 @@ M.ensure_installed = install({ exclude_configured_parsers = true })
 
 M.commands = {
   TSInstall = {
-    run = install({ ask_reinstall = true }),
+    run = install({ }),
     args = {
       "-nargs=+",
+      "-bang",
       "-complete=custom,nvim_treesitter#installable_parsers",
     },
   },
   TSInstallFromGrammar = {
-    run = install({ ask_reinstall = true, generate_from_grammar = true }),
+    run = install({ generate_from_grammar = true }),
     args = {
       "-nargs=+",
+      "-bang",
       "-complete=custom,nvim_treesitter#installable_parsers",
     },
   },
   TSInstallSync = {
-    run = install({ with_sync = true, ask_reinstall = true }),
+    run = install({ with_sync = true }),
     args = {
       "-nargs=+",
+      "-bang",
       "-complete=custom,nvim_treesitter#installable_parsers",
     },
   },
@@ -460,6 +456,7 @@ M.commands = {
     run = M.update,
     args = {
       "-nargs=*",
+      "-bang",
       "-complete=custom,nvim_treesitter#installed_parsers",
     },
   },
@@ -467,6 +464,7 @@ M.commands = {
     run = M.uninstall,
     args = {
       "-nargs=+",
+      "-bang",
       "-complete=custom,nvim_treesitter#installed_parsers",
     },
   },
