@@ -134,7 +134,7 @@
   "type"
 ] @keyword
 
-((identifier) @keyword (#match? @keyword "^(global|local)$"))
+((identifier) @keyword (#any-of? @keyword "global" "local"))
 
 (compound_expression
   ["begin" "end"] @keyword)

@@ -90,7 +90,9 @@
 (command_name (word) @function)
 
 ((command_name (word) @function.builtin)
- (#match? @function.builtin "^(cd|echo|eval|exit|getopts|pushd|popd|return|set|shift)$"))
+ (#any-of? @function.builtin
+    "cd" "echo" "eval" "exit" "getopts"
+    "pushd" "popd" "return" "set" "shift"))
 
 (command
   argument: [

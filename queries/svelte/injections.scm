@@ -6,7 +6,7 @@
       (attribute
         (quoted_attribute_value (attribute_value) @_lang)))
     (raw_text) @scss)
-  (#match? @_lang "(scss|postcss|less)")
+  (#any-of? @_lang "scss" "postcss" "less")
 )
 
 ((attribute
@@ -22,7 +22,7 @@
       (attribute
         (quoted_attribute_value (attribute_value) @_lang)))
     (raw_text) @typescript)
-  (#match? @_lang "(ts|typescript)")
+  (#any-of? @_lang "ts" "typescript")
 )
 
 (comment) @comment
