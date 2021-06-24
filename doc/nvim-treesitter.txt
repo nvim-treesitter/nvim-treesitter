@@ -184,10 +184,15 @@ Supported options:
 COMMANDS                                            *nvim-treesitter-commands*
 
 								  *:TSInstall*
-:TSInstall| {language} ...~
+:TSInstall {language} ...~
 
 Install one or more treesitter parsers.
-You can use |:TSInstall| `all` to install all parsers.
+You can use |:TSInstall| `all` to install all parsers. Use |:TSInstall!| to
+force the reinstallation of already installed parsers.
+							      *:TSInstallSync*
+:TSInstallSync {language} ...~
+
+Perform the |:TSInstall| operation synchronously.
 
 							      *:TSInstallInfo*
 :TSInstallInfo~
@@ -195,10 +200,16 @@ You can use |:TSInstall| `all` to install all parsers.
 List informations about currently installed parsers
 
 								   *:TSUpdate*
-:TSUpdate {language}~
+:TSUpdate {language} ...~
 
-Update the installed parser of {language} or all installed parsers
-if {language} is omitted.
+Update the installed parser for one more {language} or all installed parsers
+if {language} is omitted. The specified parser is installed if it is not already
+installed.
+
+							       *:TSUpdateSync*
+:TSUpdateSync {language} ...~
+
+Perform the |:TSUpdate| operation synchronously.
 
 								*:TSUninstall*
 :TSUninstall {language}~
