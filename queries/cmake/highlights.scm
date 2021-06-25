@@ -1,8 +1,7 @@
 [
+ (quoted_argument)
  (bracket_content)
- (quoted_element)
- (unquoted_argument)
-] @parameter
+] @string
 
 (variable) @variable
 
