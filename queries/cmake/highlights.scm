@@ -3,7 +3,7 @@
  (bracket_content)
 ] @string
 
-(variable) @variable
+(variable_ref) @variable
 
 [
  "$ENV"
