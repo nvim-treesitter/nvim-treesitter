@@ -11,27 +11,27 @@
  "$CACHE"
 ] @variable.builtin
 
+(normal_command (identifier) @function)
 [
- (normal_command)
- (function_command)
- (endfunction_command)
- (macro_command)
- (endmacro_command)
- (message_command)
+ (function)
+ (endfunction)
+ (macro)
+ (endmacro)
+ (message)
 ] @function
 
 [
- (if_command)
- (elseif_command)
- (else_command)
- (endif_command)
+ (if)
+ (elseif)
+ (else)
+ (endif)
 ] @conditional
 
 [
- (foreach_command)
- (endforeach_command)
- (while_command)
- (endwhile_command)
+ (foreach)
+ (endforeach)
+ (while)
+ (endwhile)
 ] @repeat
 
 [
