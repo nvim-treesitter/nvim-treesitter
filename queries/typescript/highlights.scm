@@ -20,6 +20,12 @@
 (type_identifier) @type
 (predefined_type) @type.builtin
 
+(import_statement "type"
+  (import_clause
+    (named_imports
+      ((import_specifier
+          name: (identifier) @type)))))
+
 ; punctuation
 
 (type_arguments
