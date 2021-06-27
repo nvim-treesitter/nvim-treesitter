@@ -30,7 +30,7 @@
 ; HTML: Text.Hamlet
 (quasiquote 
  (quoter) @_name
- (#any-of? @_name "shamlet" "xshamlet")
+ (#any-of? @_name "shamlet" "xshamlet" "hamlet" "xhamlet" "ihamlet")
  ((quasiquote_body) @content)
  (#set! language "html")
 )
@@ -38,7 +38,7 @@
 ; JS: Text.Julius
 (quasiquote 
  (quoter) @_name
- (#eq? @_name "julius")
+ (#any-of? @_name "js" "julius")
  ((quasiquote_body) @content)
  (#set! language "javascript")
 )
@@ -46,7 +46,7 @@
 ; TS: Text.TypeScript
 (quasiquote 
  (quoter) @_name
- (#eq? @_name "tsc" "tscJSX")
+ (#any-of? @_name "tsc" "tscJSX")
  ((quasiquote_body) @content)
  (#set! language "typescript")
 )
