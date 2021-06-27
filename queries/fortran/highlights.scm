@@ -41,6 +41,7 @@
   "endprogram"
   "endsubroutine"
   "function"
+  "procedure"
   "subroutine"
 ] @keyword.function
 
@@ -67,7 +68,6 @@
   "only"
   "parameter"
   "print"
-  "procedure"
   "program"
   "read"
   "return"
