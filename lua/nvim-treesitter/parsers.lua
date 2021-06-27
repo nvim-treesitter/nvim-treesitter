@@ -604,7 +604,7 @@ list.fortran = {
 list.cmake = {
   install_info = {
     url = "https://github.com/uyha/tree-sitter-cmake",
-    files = { "src/parser.c"},
+    files = { "src/parser.c", "src/scanner.cc"},
   },
   maintainers = { "@uyha" },
 }
