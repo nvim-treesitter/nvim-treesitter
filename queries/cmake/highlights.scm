@@ -1,9 +1,14 @@
 [
  (quoted_argument)
- (bracket_content)
+ (bracket_argument)
 ] @string
 
 (variable_ref) @variable
+
+[
+ (bracket_comment)
+ (line_comment)
+] @comment
 
 [
  "$ENV"
@@ -11,12 +16,12 @@
 ] @variable.builtin
 
 (normal_command (identifier) @function)
+
 [
  (function)
  (endfunction)
  (macro)
  (endmacro)
- (message)
 ] @function
 
 [
