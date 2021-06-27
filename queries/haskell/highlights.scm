@@ -127,5 +127,5 @@
 ;; ----------------------------------------------------------------------------
 ;; Quasi-quotes
 
-(quoter) @function.special
+(quoter) @function
 ; Highlighting of quasiquote_body is handled by injections.scm
