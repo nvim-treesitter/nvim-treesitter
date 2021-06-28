@@ -348,6 +348,16 @@ list.haskell = {
   }
 }
 
+list.hcl = {
+  install_info = {
+    url = "https://github.com/MichaHoffmann/tree-sitter-hcl",
+    files = {"src/parser.c", "src/scanner.cc"},
+    branch = "main"
+  },
+  filetype = "hcl",
+  used_by = {"tf", "tfvars"}
+}
+
 -- FIXME(vigoux): markdown is broken for now
 -- list.markdown = {
 --   install_info = {
