@@ -24,21 +24,21 @@
   "]"
   "("
   ")"
-  "[*]"
-  ".*"
-] @specialChar
+] @punctuation.bracket
 
 [
   "."
+  ".*"
   ","
-] @specialChar
+  "[*]"
+] @punctuation.delimiter
 
 [
   (ellipsis)
   "\?"
   ":"
   "=>"
-] @special
+] @punctuation.special
 
 [
   "for"
@@ -55,18 +55,19 @@
   (heredoc_template)
 ] @string
 
+(template_interpolation) @string.escape
+
 (heredoc_identifier) @namespace
 (heredoc_start) @namespace
-(template_interpolation) @statement
 (numeric_lit) @number
 (bool_lit) @boolean
 (null_lit) @constant
 (comment) @comment
-(identifier) @identifier
+(identifier) @variable
 
 (block (identifier) @namespace)
 (function_call (identifier) @function)
 (function_call (function_arguments) @parameter)
-(attribute (identifier) @symbol)
+(attribute (identifier) @definition.var)
 
 (ERROR) @error
