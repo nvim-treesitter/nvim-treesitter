@@ -68,6 +68,6 @@
 (block (identifier) @namespace)
 (function_call (identifier) @function)
 (function_call (function_arguments) @parameter)
-(attribute (identifier) @definition.var)
+(attribute (identifier) @symbol)
 
 (ERROR) @error
