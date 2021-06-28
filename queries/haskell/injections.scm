@@ -1,18 +1,18 @@
-;; ----------------------------------------------------------------------------- 
+;; -----------------------------------------------------------------------------
 ;; General language injection
 
-(quasiquote 
+(quasiquote
  ((quoter) @language)
  ((quasiquote_body) @content)
 )
 
 
-;; ----------------------------------------------------------------------------- 
+;; -----------------------------------------------------------------------------
 ;; shakespeare library
 ;; NOTE: doesn't support templating
 
 ; CoffeeScript: Text.Coffee
-(quasiquote 
+(quasiquote
  (quoter) @_name
  (#eq? @_name "coffee")
  ((quasiquote_body) @content)
@@ -20,7 +20,7 @@
 )
 
 ; CSS: Text.Cassius, Text.Lucius
-(quasiquote 
+(quasiquote
  (quoter) @_name
  (#any-of? @_name "cassius" "lucius")
  ((quasiquote_body) @content)
@@ -28,7 +28,7 @@
 )
 
 ; HTML: Text.Hamlet
-(quasiquote 
+(quasiquote
  (quoter) @_name
  (#any-of? @_name "shamlet" "xshamlet" "hamlet" "xhamlet" "ihamlet")
  ((quasiquote_body) @content)
@@ -36,7 +36,7 @@
 )
 
 ; JS: Text.Julius
-(quasiquote 
+(quasiquote
  (quoter) @_name
  (#any-of? @_name "js" "julius")
  ((quasiquote_body) @content)
@@ -44,7 +44,7 @@
 )
 
 ; TS: Text.TypeScript
-(quasiquote 
+(quasiquote
  (quoter) @_name
  (#any-of? @_name "tsc" "tscJSX")
  ((quasiquote_body) @content)
@@ -52,10 +52,10 @@
 )
 
 
-;; ----------------------------------------------------------------------------- 
+;; -----------------------------------------------------------------------------
 ;; HSX
 
-(quasiquote 
+(quasiquote
  (quoter) @_name
  (#eq? @_name "hsx")
  ((quasiquote_body) @content)
