@@ -15,40 +15,35 @@
 (quasiquote
  (quoter) @_name
  (#eq? @_name "coffee")
- ((quasiquote_body) @content)
- (#set! language "coffeescript")
+ ((quasiquote_body) @coffeescript)
 )
 
 ; CSS: Text.Cassius, Text.Lucius
 (quasiquote
  (quoter) @_name
  (#any-of? @_name "cassius" "lucius")
- ((quasiquote_body) @content)
- (#set! language "css")
+ ((quasiquote_body) @css)
 )
 
 ; HTML: Text.Hamlet
 (quasiquote
  (quoter) @_name
  (#any-of? @_name "shamlet" "xshamlet" "hamlet" "xhamlet" "ihamlet")
- ((quasiquote_body) @content)
- (#set! language "html")
+ ((quasiquote_body) @html)
 )
 
 ; JS: Text.Julius
 (quasiquote
  (quoter) @_name
  (#any-of? @_name "js" "julius")
- ((quasiquote_body) @content)
- (#set! language "javascript")
+ ((quasiquote_body) @javascript)
 )
 
 ; TS: Text.TypeScript
 (quasiquote
  (quoter) @_name
  (#any-of? @_name "tsc" "tscJSX")
- ((quasiquote_body) @content)
- (#set! language "typescript")
+ ((quasiquote_body) @typescript)
 )
 
 
@@ -58,6 +53,5 @@
 (quasiquote
  (quoter) @_name
  (#eq? @_name "hsx")
- ((quasiquote_body) @content)
- (#set! language "html")
+ ((quasiquote_body) @html)
 )
