@@ -76,9 +76,17 @@
 ; Keywords
 
 [
+ "as"
+] @keyword.operator
+
+[
+ "fn"
+ "function"
+] @keyword.function
+
+[
  "$"
  "abstract"
- "as"
  "break"
  "class"
  "const"
@@ -89,7 +97,6 @@
  "enddeclare"
  "extends"
  "final"
- "function"
  "global"
  "implements"
  "insteadof"
