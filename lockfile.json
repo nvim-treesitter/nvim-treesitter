@@ -77,6 +77,9 @@
   "haskell": {
     "revision": "a0c1adb59e390f7d839a146c57fdb33d36ed97e6"
   },
+  "hcl": {
+    "revision": "7d8ecd053a11274a15b0aa1d1e82f37e64edeb42"
+  },
   "html": {
     "revision": "d93af487cc75120c89257195e6be46c999c6ba18"
   },
