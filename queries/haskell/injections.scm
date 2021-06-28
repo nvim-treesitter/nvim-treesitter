@@ -9,14 +9,7 @@
 
 ;; -----------------------------------------------------------------------------
 ;; shakespeare library
-;; NOTE: doesn't support templating
-
-; CoffeeScript: Text.Coffee
-(quasiquote
- (quoter) @_name
- (#eq? @_name "coffee")
- ((quasiquote_body) @coffeescript)
-)
+;; NOTE: excludes CoffeeScript (Text.Coffee) and doesn't support templating
 
 ; CSS: Text.Cassius, Text.Lucius
 (quasiquote
