@@ -63,7 +63,7 @@
 (bool_lit) @boolean
 (null_lit) @constant
 (comment) @comment
-(identifier) @variable
+(identifier) @symbol
 
 (block (identifier) @namespace)
 (function_call (identifier) @function)
