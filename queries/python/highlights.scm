@@ -9,7 +9,7 @@
 
 ;; Identifier naming conventions
 ((identifier) @type
- (#match? @type "^[A-Z]"))
+ (#match? @type "^[A-Z].*[a-z]"))
 ((identifier) @constant
  (#match? @constant "^[A-Z][A-Z_0-9]*$"))
 
