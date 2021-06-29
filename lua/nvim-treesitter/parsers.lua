@@ -355,7 +355,6 @@ list.hcl = {
     branch = "main"
   },
   filetype = "hcl",
-  used_by = {"tf", "tfvars"}
 }
 
 -- FIXME(vigoux): markdown is broken for now
