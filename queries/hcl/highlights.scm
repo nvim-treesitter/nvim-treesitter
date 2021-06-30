@@ -36,9 +36,13 @@
 [
   (ellipsis)
   "\?"
-  ":"
   "=>"
 ] @punctuation.special
+
+[
+  ":"
+  "="
+] @none
 
 [
   "for"
@@ -55,19 +59,22 @@
   (heredoc_template)
 ] @string
 
+
+[
+  (heredoc_identifier) @punctuation.delimiter
+  (heredoc_start) @punctuation.delimiter
+]
+
 (template_interpolation) @string.escape
 
-(heredoc_identifier) @namespace
-(heredoc_start) @namespace
 (numeric_lit) @number
 (bool_lit) @boolean
 (null_lit) @constant
 (comment) @comment
 (identifier) @symbol
 
-(block (identifier) @namespace)
+(block (identifier) @type)
 (function_call (identifier) @function)
-(function_call (function_arguments) @parameter)
-(attribute (identifier) @symbol)
+(attribute (identifier) @keyword)
 
 (ERROR) @error
