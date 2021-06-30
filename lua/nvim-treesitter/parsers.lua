@@ -355,6 +355,7 @@ list.hcl = {
     branch = "main"
   },
   filetype = "hcl",
+  used_by = { "terraform", "packer", "nomad" },
 }
 
 -- FIXME(vigoux): markdown is broken for now
