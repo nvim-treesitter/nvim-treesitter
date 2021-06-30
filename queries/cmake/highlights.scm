@@ -3,19 +3,18 @@
  (bracket_argument)
 ] @string
 
-(variable_ref) @variable
+(variable_ref) @none
 
 [
  (bracket_comment)
  (line_comment)
 ] @comment
 
-[
- "$ENV"
- "$CACHE"
-] @variable.builtin
-
 (normal_command (identifier) @function)
+
+["ENV" "CACHE"] @symbol
+["$" "{" "}"] @punctuation.special
+["(" ")"] @punctuation.bracket
 
 [
  (function)
