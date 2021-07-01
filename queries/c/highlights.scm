@@ -3,13 +3,11 @@
 [
   "const"
   "default"
-  "enum"
   "extern"
   "inline"
   "return"
   "sizeof"
   "static"
-  "struct"
   "typedef"
   "union"
   "volatile"
@@ -139,7 +137,12 @@
 (primitive_type)
 (sized_type_specifier)
 (type_descriptor)
- ] @type
+] @type
+
+[
+  "struct"
+  "enum"
+] @type
 
 (declaration (type_qualifier) @type)
 (cast_expression type: (type_descriptor) @type)
