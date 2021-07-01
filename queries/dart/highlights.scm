@@ -6,6 +6,7 @@
 ; TODO: add method/call_expression to grammar and
 ; distinguish method call from variable access
 (function_expression_body (identifier) @function)
+; ((identifier)(selector (argument_part)) @function)
 
 ; Annotations
 ; --------------------
