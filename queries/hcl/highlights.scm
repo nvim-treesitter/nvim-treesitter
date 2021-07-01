@@ -61,9 +61,9 @@
 
 
 [
-  (heredoc_identifier) @punctuation.delimiter
-  (heredoc_start) @punctuation.delimiter
-]
+  (heredoc_identifier)
+  (heredoc_start)
+] @punctuation.delimiter
 
 (template_interpolation) @string.escape
 
