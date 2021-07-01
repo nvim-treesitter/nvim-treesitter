@@ -19,9 +19,12 @@
 [
  (function)
  (endfunction)
+] @function
+
+[
  (macro)
  (endmacro)
-] @function
+] @function.macro
 
 [
  (if)
