@@ -45,6 +45,7 @@
  ">="
  "<="
  "||"
+ (multiplicative_operator)
  (increment_operator)
  (is_operator)
  (prefix_operator)
@@ -111,6 +112,9 @@
 
 ; properties
 (unconditional_assignable_selector
+  (identifier) @property)
+
+(conditional_assignable_selector
   (identifier) @property)
 
 ; assignments
