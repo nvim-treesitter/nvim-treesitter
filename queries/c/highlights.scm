@@ -143,7 +143,6 @@
 
 (declaration (type_qualifier) @type)
 (cast_expression type: (type_descriptor) @type)
-(sizeof_expression value: (parenthesized_expression (identifier) @type))
 
 ((identifier) @constant
  (#match? @constant "^[A-Z][A-Z0-9_]+$"))
