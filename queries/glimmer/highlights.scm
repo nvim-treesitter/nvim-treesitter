@@ -58,7 +58,7 @@
 
 ; If the identifier is just "yield" or "outlet", it's a keyword
 ((mustache_statement (identifier) @keyword)
-  (#match? @keyword "yield|outlet"))
+  (#any-of? @keyword "yield" "outlet"))
 
 ; Helpers are functions
 ((helper_invocation helper: [

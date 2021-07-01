@@ -61,9 +61,16 @@ local function runtime_queries(lang, query_name)
   return api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', lang, query_name), true) or {}
 end
 
+local query_files_cache = {}
 function M.has_query_files(lang, query_name)
-  local files = runtime_queries(lang, query_name)
-  return files and #files > 0
+  if not query_files_cache[lang] then
+    query_files_cache[lang] = {}
+  end
+	if query_files_cache[lang][query_name] == nil then
+		local files = runtime_queries(lang, query_name)
+		query_files_cache[lang][query_name] = files and #files > 0
+	end
+	return query_files_cache[lang][query_name]
 end
 
 do
@@ -94,11 +101,16 @@ do
   function M.invalidate_query_cache(lang, query_name)
     if lang and query_name then
       cache[lang][query_name] = nil
+      if query_files_cache[lang] then
+        query_files_cache[lang][query_name] = nil
+      end
     elseif lang and not query_name then
+      query_files_cache[lang] = nil
       for query_name, _ in pairs(cache[lang]) do
         M.invalidate_query_cache(lang, query_name)
       end
     elseif not lang and not query_name then
+      query_files_cache = {}
       for lang, _ in pairs(cache) do
         for query_name, _ in pairs(cache[lang]) do
           M.invalidate_query_cache(lang, query_name)
