@@ -71,10 +71,10 @@
 (bool_lit) @boolean
 (null_lit) @constant
 (comment) @comment
-(identifier) @symbol
+(identifier) @variable
 
 (block (identifier) @type)
 (function_call (identifier) @function)
-(attribute (identifier) @keyword)
+(attribute (identifier) @field)
 
 (ERROR) @error
