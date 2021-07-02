@@ -113,7 +113,7 @@
         ]
 )
 
-(test_command) @function.builtin
+(test_command "test" @function.builtin)
 
 ;; Functions
 
