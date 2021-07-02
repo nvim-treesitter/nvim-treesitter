@@ -212,10 +212,10 @@ installed.
 Perform the |:TSUpdate| operation synchronously.
 
 								*:TSUninstall*
-:TSUninstall {language}~
+:TSUninstall {language} ...~
 
-Deletes the parser for corresponding {language}. You can use 'all' for
-language to uninstall all parsers.
+Deletes the parser for one or more {language}. You can use 'all' for language
+to uninstall all parsers.
 
 								*:TSBufEnable*
 :TSBufEnable {module}~
