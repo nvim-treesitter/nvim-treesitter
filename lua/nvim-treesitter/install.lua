@@ -283,7 +283,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   end
 end
 
-local function install_lang(ask_reinstall, lang, cache_folder, install_folder, with_sync, generate_from_grammar)
+local function install_lang(lang, ask_reinstall, cache_folder, install_folder, with_sync, generate_from_grammar)
 
   if is_installed(lang) and ask_reinstall ~= 'force' then
     if not ask_reinstall then return end
@@ -305,7 +305,6 @@ local function install_lang(ask_reinstall, lang, cache_folder, install_folder, w
   }
 
   run_install(cache_folder, install_folder, lang, install_info, with_sync, generate_from_grammar)
-  return 0
 end
 
 local function install(options)
@@ -348,7 +347,7 @@ local function install(options)
     end
 
     for _, lang in ipairs(languages) do
-      install_lang(ask, lang, cache_folder, install_folder, with_sync, generate_from_grammar)
+      install_lang(lang, ask, cache_folder, install_folder, with_sync, generate_from_grammar)
     end
   end
 end
