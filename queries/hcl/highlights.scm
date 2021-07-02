@@ -54,18 +54,20 @@
 ] @conditional
 
 [
-  (string_lit)
-  (quoted_template)
-  (heredoc_template)
+  (quoted_template_start) ; "
+  (quoted_template_end); "
+  (template_literal) ; non-interpolation/directive content
 ] @string
 
-
 [
-  (heredoc_identifier)
-  (heredoc_start)
+  (heredoc_identifier) ; <<END
+  (heredoc_start) ; END
 ] @punctuation.delimiter
 
-(template_interpolation) @string.escape
+[
+  (template_interpolation_start) ; ${
+  (template_interpolation_end) ; }
+] @string.escape
 
 (numeric_lit) @number
 (bool_lit) @boolean
@@ -76,5 +78,10 @@
 (block (identifier) @type)
 (function_call (identifier) @function)
 (attribute (identifier) @field)
+
+; { key: val }
+;
+; highlight identifier keys as though they were block attributes
+(object_elem key: (expression (variable_expr (identifier) @field)))
 
 (ERROR) @error
