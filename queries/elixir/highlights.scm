@@ -156,10 +156,11 @@
    [(identifier) @parameter
     (tuple (identifier) @parameter)
     (list (identifier) @parameter)
-    (unused_identifier) @comment
-    (map) @comment
     (_
      (keyword_list (identifier) @parameter))
+    (unused_identifier) @comment
+    (map) @parameter
+    (binary_op operator: "=") @parameter
     (binary_op
      left: (identifier) @parameter
      operator: "\\\\")]))
@@ -175,8 +176,12 @@
      [(identifier) @parameter
       (tuple (identifier) @parameter)
       (list (identifier) @parameter)
-      (_
-       (keyword_list (identifier) @parameter))]))
+      (unused_identifier) @comment
+      (map) @parameter
+      (binary_op operator: "=") @parameter
+      (binary_op
+       left: (identifier) @parameter
+       operator: "\\\\")]))
   operator: "when")
  (#lua-match? @keyword.function "^def%a*$"))
 
