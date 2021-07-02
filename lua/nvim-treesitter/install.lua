@@ -284,7 +284,15 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
 end
 
 local function install_lang(bang, lang, cache_folder, install_folder, with_sync, generate_from_grammar)
-  if is_installed(lang) and bang ~= '!' then return 1 end
+  if is_installed(lang) and not bang then return 1 end
+
+  -- if ask_reinstall ~= 'force' then
+  --   if not ask_reinstall then return end
+  --
+  --   local yesno = fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
+  --   print('\n ') -- mandatory to avoid messing up command line
+  --   if not string.match(yesno, '^y.*') then return end
+  -- end
 
   local parser_config = parsers.get_parser_configs()[lang]
   if not parser_config then
@@ -301,116 +309,111 @@ local function install_lang(bang, lang, cache_folder, install_folder, with_sync,
   return 0
 end
 
-local function install(options)
+local function install(bang, options)
   options = options or {}
   local with_sync = options.with_sync
+  -- local ask_reinstall = options.ask_reinstall
   local generate_from_grammar = options.generate_from_grammar
   local exclude_configured_parsers = options.exclude_configured_parsers
 
-  return function (bang)
-    return function (...)
-      if fn.executable('git') == 0 then
-        return api.nvim_err_writeln('Git is required on your system to run this command')
-      end
+  return function (...)
+    if fn.executable('git') == 0 then
+      return api.nvim_err_writeln('Git is required on your system to run this command')
+    end
 
-      local cache_folder, err = utils.get_cache_dir()
-      if err then return api.nvim_err_writeln(err) end
+    local cache_folder, err = utils.get_cache_dir()
+    if err then return api.nvim_err_writeln(err) end
 
-      local install_folder, err = utils.get_parser_install_dir()
-      if err then return api.nvim_err_writeln(err) end
+    local install_folder, err = utils.get_parser_install_dir()
+    if err then return api.nvim_err_writeln(err) end
 
-      local languages
-      if ... == 'all' then
-        languages = parsers.available_parsers()
-      elseif ... == 'maintained' then
-        languages = parsers.maintained_parsers()
-      else
-        languages = vim.tbl_flatten({...})
-      end
+    local languages
+    if ... == 'all' then
+      languages = parsers.available_parsers()
+    elseif ... == 'maintained' then
+      languages = parsers.maintained_parsers()
+    else
+      languages = vim.tbl_flatten({...})
+    end
 
-      if exclude_configured_parsers then
-        languages = utils.difference(languages, configs.get_ignored_parser_installs())
-      end
+    if exclude_configured_parsers then
+      languages = utils.difference(languages, configs.get_ignored_parser_installs())
+    end
 
-      if #languages > 1 then
-        reset_progress_counter()
-      end
+    if #languages > 1 then
+      reset_progress_counter()
+    end
 
-      local skipped = 0
-      for _, lang in ipairs(languages) do
-        skipped = skipped + install_lang(bang, lang, cache_folder, install_folder, with_sync, generate_from_grammar)
-      end
-      if skipped > 0 then
-        print('Parsers already installed. Use :TSInstall! to force reinstallation.')
-      end
+    local skipped = 0
+    for _, lang in ipairs(languages) do
+      skipped = skipped + install_lang(bang, lang, cache_folder, install_folder, with_sync, generate_from_grammar)
+    end
+    if skipped > 0 then
+      print('Parsers already installed. Use :TSInstall! to force reinstallation.')
     end
   end
 end
 
 function M.update(options)
   options = options or {}
-  return function(bang)
-    return function (...)
-      M.lockfile = {}
-      reset_progress_counter()
-      if ... and ... ~= 'all' then
-        local languages = vim.tbl_flatten({...})
-        local installed = 0
-        for _, lang in ipairs(languages) do
-            if (not is_installed(lang)) or (needs_update(lang)) then
-              installed = installed + 1
-              install({ with_sync = options.with_sync })('!')(lang)
-            end
-        end
-        if installed == 0 then
-          print('Parsers are up-to-date!')
-        end
-      else
-        local parsers_to_update = configs.get_update_strategy() == 'lockfile'
-          and outdated_parsers()
-          or info.installed_parsers()
-        if #parsers_to_update == 0 then
-          print('All parsers are up-to-date!')
-        end
-        for _, lang in pairs(parsers_to_update) do
-          install({
-            exclude_configured_parsers = true,
-            with_sync = options.with_sync
-          })('!')(lang)
-        end
+  return function (...)
+    M.lockfile = {}
+    reset_progress_counter()
+    if ... and ... ~= 'all' then
+      local languages = vim.tbl_flatten({...})
+      local installed = 0
+      for _, lang in ipairs(languages) do
+          if (not is_installed(lang)) or (needs_update(lang)) then
+            installed = installed + 1
+            install({ with_sync = options.with_sync })(true, lang)
+          end
+      end
+      if installed == 0 then
+        print('Parsers are up-to-date!')
+      end
+    else
+      local parsers_to_update = configs.get_update_strategy() == 'lockfile'
+        and outdated_parsers()
+        or info.installed_parsers()
+      if #parsers_to_update == 0 then
+        print('All parsers are up-to-date!')
+      end
+      for _, lang in pairs(parsers_to_update) do
+        install({
+          exclude_configured_parsers = true,
+          with_sync = options.with_sync
+        })(true, lang)
       end
     end
   end
 end
 
-function M.uninstall(bang)
-  return function (lang)
-    local path_sep = '/'
-    if fn.has('win32') == 1 then
-      path_sep = '\\'
+function M.uninstall()
+  local path_sep = '/'
+  if fn.has('win32') == 1 then
+    path_sep = '\\'
+  end
+
+  if vim.tbl_contains({'all', 'maintained'}, lang) then
+    reset_progress_counter()
+    local installed = info.installed_parsers()
+    if lang == "maintained" then
+      local maintained = parsers.maintained_parsers()
+      installed = vim.tbl_filter(function(l) return vim.tbl_contains(maintained, l) end, installed)
     end
-
-    if vim.tbl_contains({'all', 'maintained'}, lang) then
-      reset_progress_counter()
-      local installed = info.installed_parsers()
-      if lang == "maintained" then
-        local maintained = parsers.maintained_parsers()
-        installed = vim.tbl_filter(function(l) return vim.tbl_contains(maintained, l) end, installed)
-      end
-      for _, langitem in pairs(installed) do
-        M.uninstall(langitem)
-      end
-    elseif lang then
-      local install_dir, err = utils.get_parser_install_dir()
-      if err then return api.nvim_err_writeln(err) end
-
-      local parser_lib = install_dir..path_sep..lang..".so"
-
-      local command_list = {
-        shell.select_rm_file_cmd(parser_lib, "Uninstalling parser for "..lang)
-      }
-      M.iter_cmd(command_list, 1, lang, 'Treesitter parser for '..lang..' has been uninstalled')
+    for _, langitem in pairs(installed) do
+      M.uninstall(langitem)
     end
+  elseif lang then
+    local install_dir, err = utils.get_parser_install_dir()
+    if err then return api.nvim_err_writeln(err) end
+
+    local parser_lib = install_dir..path_sep..lang..".so"
+
+    local command_list = {
+      shell.select_rm_file_cmd(parser_lib, "Uninstalling parser for "..lang)
+    }
+    M.iter_cmd(command_list, 1, lang, 'Treesitter parser for '..lang..' has been uninstalled')
   end
 end
 
@@ -451,7 +454,8 @@ M.ensure_installed = install({ exclude_configured_parsers = true })
 
 M.commands = {
   TSInstall = {
-    run = install({ }),
+    run = install(false, { }),
+    ['run!'] = install(true, { }),
     args = {
       "-nargs=+",
       "-bang",
@@ -459,7 +463,8 @@ M.commands = {
     },
   },
   TSInstallFromGrammar = {
-    run = install({ generate_from_grammar = true }),
+    run = install(false, { generate_from_grammar = true }),
+    ['run!'] = install(true, { generate_from_grammar = true }),
     args = {
       "-nargs=+",
       "-bang",
@@ -467,7 +472,8 @@ M.commands = {
     },
   },
   TSInstallSync = {
-    run = install({ with_sync = true }),
+    run = install(false, { with_sync = true }),
+    ['run!'] = install(true, { with_sync = true }),
     args = {
       "-nargs=+",
       "-bang",
