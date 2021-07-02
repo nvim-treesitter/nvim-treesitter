@@ -354,6 +354,7 @@ list.hcl = {
     files = {"src/parser.c", "src/scanner.cc"},
     branch = "main"
   },
+  maintainers = {"@MichaHoffmann"},
   filetype = "hcl",
   used_by = { "terraform", "packer", "nomad" },
 }
