@@ -7,6 +7,7 @@
  (case_statement)
  (function_definition)
  (struct_specifier)
+ (enum_specifier)
  (comment)
  (preproc_if)
  (preproc_elif)
