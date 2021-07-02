@@ -64,10 +64,12 @@
   (heredoc_start) ; END
 ] @punctuation.delimiter
 
-[
-  (template_interpolation_start) ; ${
-  (template_interpolation_end) ; }
-] @string.escape
+( template_interpolation
+  [
+    (template_interpolation_start) ; ${
+    (template_interpolation_end) ; }
+  ] @punctuation.bracket
+)
 
 (numeric_lit) @number
 (bool_lit) @boolean
