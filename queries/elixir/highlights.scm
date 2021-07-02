@@ -157,6 +157,7 @@
     (tuple (identifier) @parameter)
     (list (identifier) @parameter)
     (unused_identifier) @comment
+    (map) @comment
     (_
      (keyword_list (identifier) @parameter))
     (binary_op
