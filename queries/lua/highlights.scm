@@ -58,9 +58,7 @@
  "goto"
 ] @keyword
 
-[
- "return"
-] @keyword.return
+"return" @keyword.return
 
 ;; Operators
 

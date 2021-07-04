@@ -16,9 +16,7 @@
   "register"
 ] @keyword
 
-[
-  "return"
-] @keyword.return
+"return" @keyword.return
 
 [
   "while"

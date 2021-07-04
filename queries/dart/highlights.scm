@@ -188,6 +188,7 @@
 
 [
   "return"
+  "yield"
 ] @keyword.return
 
 
@@ -217,10 +218,6 @@
     "static"
     "typedef"
 ] @keyword
-
-[
-  "yield"
-] @keyword.yield
 
 ; when used as an identifier:
 ((identifier) @variable.builtin

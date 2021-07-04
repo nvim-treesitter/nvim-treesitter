@@ -110,9 +110,7 @@
  "trait"
  ] @keyword
 
-[
- "return"
-] @keyword.return
+"return" @keyword.return
 
 [
  "case"
