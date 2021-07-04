@@ -17,7 +17,7 @@ jobs:
           sudo luarocks install luacheck
 
       - name: Run Luacheck
-        run: sudo ./scripts/style-check.sh
+        run: luacheck .
 
   stylua:
     name: StyLua
