@@ -108,7 +108,6 @@
 
 [
   "pass"
-  "return"
   "class"
   "class_name"
   "extends"
@@ -126,3 +125,7 @@
   "mastersync"
   "puppetsync"
 ] @keyword
+
+[
+  "return"
+] @keyword.return

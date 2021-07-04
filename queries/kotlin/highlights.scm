@@ -117,10 +117,13 @@
  "by"
  "fun"
  "companion"
- "return"
  "constructor"
  "throw"
 ] @keyword
+
+[
+  "return"
+] @keyword.return
 
 (null_literal) @keyword
 
