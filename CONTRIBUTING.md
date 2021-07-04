@@ -15,12 +15,13 @@ Depending on which part of the plugin you want to contribute to, please read the
 ## Style Checks and Tests
 
 We haven't implemented any functional tests yet. Feel free to contribute.
-However, we check code style with `luacheck`!
+However, we check code style with `luacheck` and `stylua`!
 Please install luacheck and activate our `pre-push` hook to automatically check style before
 every push:
 
 ```bash
 luarocks install luacheck
+cargo install stylua
 ln -s ../../scripts/pre-push .git/hooks/pre-push
 ```
 

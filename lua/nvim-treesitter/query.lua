@@ -1,15 +1,15 @@
 local api = vim.api
-local tsq = require'vim.treesitter.query'
-local tsrange = require'nvim-treesitter.tsrange'
-local utils = require'nvim-treesitter.utils'
-local parsers = require'nvim-treesitter.parsers'
-local caching = require'nvim-treesitter.caching'
+local tsq = require "vim.treesitter.query"
+local tsrange = require "nvim-treesitter.tsrange"
+local utils = require "nvim-treesitter.utils"
+local parsers = require "nvim-treesitter.parsers"
+local caching = require "nvim-treesitter.caching"
 
 local M = {}
 
 local EMPTY_ITER = function() end
 
-M.built_in_query_groups = {'highlights', 'locals', 'folds', 'indents', 'injections'}
+M.built_in_query_groups = { "highlights", "locals", "folds", "indents", "injections" }
 
 -- Creates a function that checks whether a given query exists
 -- for a specific language.
@@ -24,10 +24,10 @@ for _, query in ipairs(M.built_in_query_groups) do
 end
 
 function M.available_query_groups()
-  local query_files = api.nvim_get_runtime_file('queries/*/*.scm', true)
+  local query_files = api.nvim_get_runtime_file("queries/*/*.scm", true)
   local groups = {}
   for _, f in ipairs(query_files) do
-    groups[vim.fn.fnamemodify(f, ':t:r')] = true
+    groups[vim.fn.fnamemodify(f, ":t:r")] = true
   end
   local list = {}
   for k, _ in pairs(groups) do
@@ -42,7 +42,7 @@ do
   local function update_cached_matches(bufnr, changed_tick, query_group)
     query_cache.set(query_group, bufnr, {
       tick = changed_tick,
-      cache= M.collect_group_results(bufnr, query_group) or {}
+      cache = M.collect_group_results(bufnr, query_group) or {},
     })
   end
 
@@ -50,7 +50,7 @@ do
     bufnr = bufnr or api.nvim_get_current_buf()
     local cached_local = query_cache.get(query_group, bufnr)
     if not cached_local or api.nvim_buf_get_changedtick(bufnr) > cached_local.tick then
-      update_cached_matches(bufnr,api.nvim_buf_get_changedtick(bufnr), query_group)
+      update_cached_matches(bufnr, api.nvim_buf_get_changedtick(bufnr), query_group)
     end
 
     return query_cache.get(query_group, bufnr).cache
@@ -58,7 +58,7 @@ do
 end
 
 local function runtime_queries(lang, query_name)
-  return api.nvim_get_runtime_file(string.format('queries/%s/%s.scm', lang, query_name), true) or {}
+  return api.nvim_get_runtime_file(string.format("queries/%s/%s.scm", lang, query_name), true) or {}
 end
 
 local query_files_cache = {}
@@ -66,11 +66,11 @@ function M.has_query_files(lang, query_name)
   if not query_files_cache[lang] then
     query_files_cache[lang] = {}
   end
-	if query_files_cache[lang][query_name] == nil then
-		local files = runtime_queries(lang, query_name)
-		query_files_cache[lang][query_name] = files and #files > 0
-	end
-	return query_files_cache[lang][query_name]
+  if query_files_cache[lang][query_name] == nil then
+    local files = runtime_queries(lang, query_name)
+    query_files_cache[lang][query_name] = files and #files > 0
+  end
+  return query_files_cache[lang][query_name]
 end
 
 do
@@ -117,7 +117,7 @@ do
         end
       end
     else
-      error("Cannot have query_name by itself!")
+      error "Cannot have query_name by itself!"
     end
   end
 end
@@ -125,7 +125,7 @@ end
 --- This function is meant for an autocommand and not to be used. Only use if file is a query file.
 function M.invalidate_query_file(fname)
   local fnamemodify = vim.fn.fnamemodify
-  M.invalidate_query_cache(fnamemodify(fname, ':p:h:t'), fnamemodify(fname, ':t:r'))
+  M.invalidate_query_cache(fnamemodify(fname, ":p:h:t"), fnamemodify(fname, ":t:r"))
 end
 
 function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
@@ -142,7 +142,7 @@ function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
   local function insert_to_path(object, path, value)
     local curr_obj = object
 
-    for index=1,(#path -1) do
+    for index = 1, (#path - 1) do
       if curr_obj[path[index]] == nil then
         curr_obj[path[index]] = {}
       end
@@ -164,7 +164,7 @@ function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
       for id, node in pairs(match) do
         local name = query.captures[id] -- name of the capture in the query
         if name ~= nil then
-          local path = split(name..'.node')
+          local path = split(name .. ".node")
           insert_to_path(prepared_match, path, node)
         end
       end
@@ -178,8 +178,11 @@ function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
             insert_to_path(prepared_match, split(pred[2]), pred[3])
           end
           if pred[1] == "make-range!" and type(pred[2]) == "string" and #pred == 4 then
-            insert_to_path(prepared_match, split(pred[2]..'.node'),
-              tsrange.TSRange.from_nodes(bufnr, match[pred[3]], match[pred[4]]))
+            insert_to_path(
+              prepared_match,
+              split(pred[2] .. ".node"),
+              tsrange.TSRange.from_nodes(bufnr, match[pred[3]], match[pred[4]])
+            )
           end
         end
       end
@@ -194,8 +197,8 @@ end
 -- Works like M.get_references or M.get_scopes except you can choose the capture
 -- Can also be a nested capture like @definition.function to get all nodes defining a function
 function M.get_capture_matches(bufnr, capture_string, query_group, root, lang)
-  if not string.sub(capture_string, 1, 1) == '@' then
-    print('capture_string must start with "@"')
+  if not string.sub(capture_string, 1, 1) == "@" then
+    print 'capture_string must start with "@"'
     return
   end
 
@@ -214,7 +217,7 @@ function M.get_capture_matches(bufnr, capture_string, query_group, root, lang)
 end
 
 function M.find_best_match(bufnr, capture_string, query_group, filter_predicate, scoring_function, root)
-  if string.sub(capture_string, 1, 1) == '@' then
+  if string.sub(capture_string, 1, 1) == "@" then
     --remove leading "@"
     capture_string = string.sub(capture_string, 2)
   end
@@ -248,10 +251,14 @@ end
 function M.iter_group_results(bufnr, query_group, root, root_lang)
   local buf_lang = parsers.get_buf_lang(bufnr)
 
-  if not buf_lang then return EMPTY_ITER end
+  if not buf_lang then
+    return EMPTY_ITER
+  end
 
   local parser = parsers.get_parser(bufnr, buf_lang)
-  if not parser then return EMPTY_ITER end
+  if not parser then
+    return EMPTY_ITER
+  end
 
   if not root then
     local first_tree = parser:trees()[1]
@@ -261,9 +268,11 @@ function M.iter_group_results(bufnr, query_group, root, root_lang)
     end
   end
 
-  if not root then return EMPTY_ITER end
+  if not root then
+    return EMPTY_ITER
+  end
 
-  local range = {root:range()}
+  local range = { root:range() }
 
   if not root_lang then
     local lang_tree = parser:language_for_range(range)
@@ -273,10 +282,14 @@ function M.iter_group_results(bufnr, query_group, root, root_lang)
     end
   end
 
-  if not root_lang then return EMPTY_ITER end
+  if not root_lang then
+    return EMPTY_ITER
+  end
 
   local query = M.get_query(root_lang, query_group)
-  if not query then return EMPTY_ITER end
+  if not query then
+    return EMPTY_ITER
+  end
 
   -- The end row is exclusive so we need to add 1 to it.
   return M.iter_prepared_matches(query, root, bufnr, range[1], range[3] + 1)
@@ -300,8 +313,7 @@ end
 -- @param query_type The query to get the capture from. This is ignore if a function is provided
 --                   for the captuer argument.
 function M.get_capture_matches_recursively(bufnr, capture_or_fn, query_type)
-  local type_fn = type(capture_or_fn) == 'function'
-    and capture_or_fn
+  local type_fn = type(capture_or_fn) == "function" and capture_or_fn
     or function()
       return capture_or_fn, query_type
     end
