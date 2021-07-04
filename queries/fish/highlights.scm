@@ -80,9 +80,7 @@
  (continue)
 ] @keyword
 
-[
- "return"
-] @keyword.return
+"return" @keyword.return
 
 ;; Punctuation
 

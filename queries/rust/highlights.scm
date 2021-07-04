@@ -173,9 +173,7 @@
 (super)
 ] @keyword
 
-[
-"return"
-] @keyword.return
+"return" @keyword.return
 
 "fn" @keyword.function
 

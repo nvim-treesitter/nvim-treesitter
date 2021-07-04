@@ -77,9 +77,7 @@
   (procedure_qualifier)
 ] @keyword
 
-[
-  "return"
-] @keyword.return
+"return" @keyword.return
 
 [
   "else"

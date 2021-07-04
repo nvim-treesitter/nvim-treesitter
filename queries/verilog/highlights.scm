@@ -27,9 +27,7 @@
   "assert"
 ] @keyword
 
-[
-  "return"
-] @keyword.return
+"return" @keyword.return
 
 [
   "begin"
