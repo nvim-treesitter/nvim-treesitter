@@ -2,11 +2,102 @@
 -- Locals are a generalization of definition and scopes
 -- its the way nvim-treesitter uses to "understand" the code
 
-local queries = require'nvim-treesitter.query'
 local ts_utils = require'nvim-treesitter.ts_utils'
+local parsers = require'nvim-treesitter.parsers'
 local api = vim.api
+local caching = require'nvim-treesitter.caching'
+local queries = require'nvim-treesitter.query'
 
 local M = {}
+
+local scope_tree = caching.create_buffer_cache()
+
+local function update_scope_tree(cache, buf, parse_node, start_row, end_row)
+  local parser = parsers.get_parser(buf)
+
+  --TODO: do that in a refining manner only updating a specific region?
+  cache.scopes = {}
+  cache.references = {}
+  parser:parse()
+  parser:for_each_tree(function(tree, lang_tree)
+    local lang = lang_tree:lang()
+
+    local query = queries.get_query(lang, 'locals')
+
+    local definitions = {}
+    local root = tree:root()
+    local root_id = root:id()
+    cache.references[root_id] = {}
+    local range = root and {root:range()}
+    local matches = query
+       and query:iter_matches(parse_node or tree:root(), buf, start_row or range[1], end_row or (range[3] + 1))
+       or function() end
+    for _, match in matches do
+      for id, node in pairs(match) do
+        local name = query.captures[id]
+        if name == "scope" then
+          local found = cache.scopes[node:id()]
+          if found then
+            found.node = node
+          else
+            cache.scopes[node:id()] = { node = node, definitions = {} }
+          end
+        elseif name:find("^definition") then
+          local text = ts_utils.get_node_text(node, buf)[1]
+          table.insert(definitions, {node = node, type = name, text = text})
+        elseif name:find("^reference") then
+          table.insert(cache.references[root_id], node)
+        end
+      end
+    end
+
+    for _, d in ipairs(definitions) do
+      local parent = d.node:parent()
+      local found
+      while not found and parent do
+        found = cache.scopes[parent:id()]
+        parent = parent:parent()
+      end
+      if found then
+        found.definitions[d.text] = d
+      end
+    end
+  end)
+end
+
+function M.get_scope_tree_fast(buf)
+  local buf = buf or api.nvim_get_current_buf()
+  local cache = scope_tree.get('scopes', buf)
+  local new_tick = api.nvim_buf_get_changedtick(buf)
+
+  if not cache then
+    cache = {}
+    cache.scopes = {}
+    cache.references = {}
+  end
+  if not cache.tick or new_tick > cache.tick then
+    update_scope_tree(cache, buf)
+    cache.tick = new_tick
+    scope_tree.set('scopes', buf, cache)
+  end
+  return cache.scopes, cache.references
+end
+
+function M.find_definition_fast(node, buf)
+  assert(type(node)=='userdata')
+  local scopes = M.get_scope_tree_fast(buf)
+  local search = ts_utils.get_node_text(node, buf)[1]
+  local parent = node:parent()
+  local found, found_scope
+  while not found and parent do
+    found_scope = scopes[parent:id()]
+    if found_scope then
+      found = found_scope.definitions[search]
+    end
+    parent = parent:parent()
+  end
+  return found, found_scope
+end
 
 function M.collect_locals(bufnr)
   return queries.collect_group_results(bufnr, 'locals')
@@ -245,6 +336,40 @@ function M.find_usages(node, scope_node, bufnr)
 
       if kind == nil or def_node == node then
         table.insert(usages, match.reference.node)
+      end
+    end
+  end
+
+  return usages
+end
+
+-- Finds usages of a node in a given scope.
+-- @param node the node to find usages for
+-- @param scope_node the node to look within
+-- @returns a list of nodes
+function M.find_usages_fast(node, scope_node, bufnr)
+  if not node then return end
+  local bufnr = bufnr or api.nvim_get_current_buf()
+  local node_text = ts_utils.get_node_text(node, bufnr)[1]
+
+  if not node_text or #node_text < 1 then return {} end
+
+  local usages = {}
+
+  local _, references = M.get_scope_tree_fast(bufnr)
+  local root = ts_utils.get_root_for_node(node)
+
+  -- TODO: probably better to just run "(identifier) @reference" on scope_node
+  for _, r in ipairs(references[root:id()] or {}) do
+    if ts_utils.get_node_text(r, bufnr)[1] == node_text
+    then
+      local ref_range = {r:range()}
+      if ts_utils.is_in_node_range(scope_node, ref_range[1], ref_range[3]) then
+        local def = M.find_definition_fast(r, bufnr)
+
+        if def and def.node == node then
+          table.insert(usages, r)
+        end
       end
     end
   end
