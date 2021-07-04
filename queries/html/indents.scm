@@ -9,3 +9,5 @@
 ] @branch
 
 (comment) @ignore
+
+(text) @ignore_end
