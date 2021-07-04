@@ -291,7 +291,8 @@ local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.zimbu = {
   install_info = {
     url = "~/projects/tree-sitter-zimbu", -- local path or git repo
-    files = {"src/parser.c"}
+    files = {"src/parser.c"}, -- some parsers also need scanner.c/.cc
+    branch = "main", -- in cases your using a different branch name than master
   },
   filetype = "zu", -- if filetype does not agrees with parser name
   used_by = {"bar", "baz"} -- additional filetypes that use this parser
