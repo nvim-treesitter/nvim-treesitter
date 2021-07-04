@@ -44,6 +44,7 @@
 
 (boolean_literal) @boolean
 (undefined_literal) @constant.builtin
+(unreachable_expression) @constant.builtin
 (null_literal) @constant.builtin
 
 ; (ERROR) @error
