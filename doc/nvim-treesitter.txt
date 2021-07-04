@@ -528,6 +528,14 @@ For keywords used to define a fuction.
 `TSKeywordOperator`
 for operators that are English words, e.g. `and`, `as`, `or`.
 
+							  *hl-TSKeywordReturn*
+`TSKeywordReturn`
+for the `return` keyword.
+
+							   *hl-TSKeywordYield*
+`TSKeywordYield`
+for the `yield` keyword.
+
 								  *hl-TSLabel*
 `TSLabel`
 For labels: `label:` in C and `:label:` in Lua.

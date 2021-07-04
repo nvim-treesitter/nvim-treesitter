@@ -182,10 +182,13 @@
     "in"
     "is"
     "new"
-    "return"
     "super"
     "with"
 ] @keyword
+
+[
+  "return"
+] @keyword.return
 
 
 ; Built in identifiers:
@@ -195,7 +198,6 @@
     "as"
     "async"
     "async*"
-    "yield"
     "sync*"
     "await"
     "covariant"
@@ -215,6 +217,10 @@
     "static"
     "typedef"
 ] @keyword
+
+[
+  "yield"
+] @keyword.yield
 
 ; when used as an identifier:
 ((identifier) @variable.builtin

@@ -13,7 +13,6 @@
   "typedef"
   "class"
   "endclass"
-  "return"
   "default"
   "break"
   "interface"
@@ -27,6 +26,10 @@
   "join_any"
   "assert"
 ] @keyword
+
+[
+  "return"
+] @keyword.return
 
 [
   "begin"

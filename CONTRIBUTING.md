@@ -136,6 +136,8 @@ effect on highlighting. We will work on improving highlighting in the near futur
 @keyword
 @keyword.function
 @keyword.operator (for operators that are English words, e.g. `and`, `or`)
+@keyword.return
+@keyword.yield
 @operator (for symbolic operators, e.g. `+`, `*`)
 @exception
 @include keywords for including modules (e.g. import/from in Python)

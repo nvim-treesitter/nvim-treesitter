@@ -76,10 +76,13 @@
 
 [
  "in"
- "return"
  (break)
  (continue)
 ] @keyword
+
+[
+ "return"
+] @keyword.return
 
 ;; Punctuation
 
