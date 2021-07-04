@@ -1,5 +1,10 @@
 -- Rerun tests only if their modification time changed.
 cache = true
+codes = true
+
+exclude_files = {
+  "tests/indent/lua/"
+}
 
 -- Glorious list of warnings: https://luacheck.readthedocs.io/en/stable/warnings.html
 ignore = {
