@@ -119,6 +119,7 @@
  "endswitch"
  "if"
  "switch"
+ "match"
  ] @conditional
 
 [
