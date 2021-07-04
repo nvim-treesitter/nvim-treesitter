@@ -6,7 +6,8 @@ local M = {}
 
 function M.setup_commands(mod, commands)
   for command_name, def in pairs(commands) do
-    local call_fn = string.format("lua require'nvim-treesitter.%s'.commands.%s['run<bang>'](<f-args>)", mod, command_name)
+    local call_fn = string.format("lua require'nvim-treesitter.%s'.commands.%s['run<bang>'](<f-args>)",
+      mod, command_name)
     local parts = vim.tbl_flatten({
       "command!",
       def.args,
