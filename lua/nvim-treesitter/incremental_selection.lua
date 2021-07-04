@@ -1,10 +1,10 @@
 local api = vim.api
 
-local configs = require'nvim-treesitter.configs'
-local ts_utils = require'nvim-treesitter.ts_utils'
-local locals = require'nvim-treesitter.locals'
-local parsers = require'nvim-treesitter.parsers'
-local queries = require'nvim-treesitter.query'
+local configs = require "nvim-treesitter.configs"
+local ts_utils = require "nvim-treesitter.ts_utils"
+local locals = require "nvim-treesitter.locals"
+local parsers = require "nvim-treesitter.parsers"
+local queries = require "nvim-treesitter.query"
 
 local M = {}
 
@@ -21,8 +21,8 @@ end
 --
 -- The range of ts nodes start with 0 and the ending range is exclusive.
 local function visual_selection_range()
-  local _, csrow, cscol, _ = unpack(vim.fn.getpos("'<"))
-  local _, cerow, cecol, _ = unpack(vim.fn.getpos("'>"))
+  local _, csrow, cscol, _ = unpack(vim.fn.getpos "'<")
+  local _, cerow, cecol, _ = unpack(vim.fn.getpos "'>")
 
   local start_row, start_col, end_row, end_col
 
@@ -39,8 +39,8 @@ local function visual_selection_range()
   end
 
   -- The last char in ts is equivalent to the EOF in another line.
-  local last_row = vim.fn.line("$")
-  local last_col = vim.fn.col({last_row, "$"})
+  local last_row = vim.fn.line "$"
+  local last_col = vim.fn.col { last_row, "$" }
   last_row = last_row - 1
   last_col = last_col - 1
   if end_row == last_row and end_col == last_col then
@@ -92,12 +92,7 @@ local function select_incremental(get_parent)
       end
       node = parent
       local srow, scol, erow, ecol = node:range()
-      local same_range = (
-        srow == csrow
-        and scol == cscol
-        and erow == cerow
-        and ecol == cecol
-      )
+      local same_range = (srow == csrow and scol == cscol and erow == cerow and ecol == cecol)
       if not same_range then
         table.insert(selections[buf], node)
         if node ~= nodes[#nodes] then
@@ -126,7 +121,9 @@ end)
 function M.node_decremental()
   local buf = api.nvim_get_current_buf()
   local nodes = selections[buf]
-  if not nodes or #nodes < 2 then return end
+  if not nodes or #nodes < 2 then
+    return
+  end
 
   table.remove(selections[buf])
   local node = nodes[#nodes]
@@ -134,13 +131,13 @@ function M.node_decremental()
 end
 
 function M.attach(bufnr)
-  local config = configs.get_module('incremental_selection')
+  local config = configs.get_module "incremental_selection"
   for funcname, mapping in pairs(config.keymaps) do
     local mode
     if funcname == "init_selection" then
-      mode = 'n'
+      mode = "n"
     else
-      mode = 'x'
+      mode = "x"
     end
     local cmd = string.format(":lua require'nvim-treesitter.incremental_selection'.%s()<CR>", funcname)
     api.nvim_buf_set_keymap(bufnr, mode, mapping, cmd, { silent = true, noremap = true })
@@ -148,12 +145,12 @@ function M.attach(bufnr)
 end
 
 function M.detach(bufnr)
-  local config = configs.get_module('incremental_selection')
+  local config = configs.get_module "incremental_selection"
   for f, mapping in pairs(config.keymaps) do
     if f == "init_selection" then
-      api.nvim_buf_del_keymap(bufnr, 'n', mapping)
+      api.nvim_buf_del_keymap(bufnr, "n", mapping)
     else
-      api.nvim_buf_del_keymap(bufnr, 'x', mapping)
+      api.nvim_buf_del_keymap(bufnr, "x", mapping)
     end
   end
 end
