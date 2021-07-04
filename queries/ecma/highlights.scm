@@ -226,11 +226,8 @@
 
 [
 "return"
-] @keyword.return
-
-[
 "yield"
-] @keyword.yield
+] @keyword.return
 
 [
  "function"

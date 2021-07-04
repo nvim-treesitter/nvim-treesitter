@@ -20,7 +20,7 @@
 [ "if" "then" "elseif" "else" ] @conditional
 [ "for" "while" "repeat" "until" ] @repeat
 [ "in" "local" (break) (goto) "do" "end" ] @keyword
-[ "return" ] @keyword.return
+"return" @keyword.return
 (label) @label
 
 ;; Global isn't a real keyword, but it gets special treatment in these places

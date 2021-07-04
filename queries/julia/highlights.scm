@@ -133,9 +133,7 @@
   "type"
 ] @keyword
 
-[
-  "return"
-] @keyword.return
+"return" @keyword.return
 
 ((identifier) @keyword (#any-of? @keyword "global" "local"))
 

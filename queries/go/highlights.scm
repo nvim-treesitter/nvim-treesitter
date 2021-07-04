@@ -101,9 +101,7 @@
   "fallthrough"
 ] @keyword
 
-[
-  "return"
-] @keyword.return
+"return" @keyword.return
 
 "for" @repeat
 

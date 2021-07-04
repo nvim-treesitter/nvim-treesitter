@@ -121,9 +121,7 @@
  "throw"
 ] @keyword
 
-[
-  "return"
-] @keyword.return
+"return" @keyword.return
 
 (null_literal) @keyword
 

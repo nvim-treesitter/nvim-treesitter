@@ -217,11 +217,8 @@
 
 [
   "return"
-] @keyword.return
-
-[
   "yield"
-] @keyword.yield
+] @keyword.return
 
 ["from" "import"] @include
 (aliased_import "as" @include)
