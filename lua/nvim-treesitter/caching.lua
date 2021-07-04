@@ -12,7 +12,7 @@ function M.create_buffer_cache()
     __index = function(tbl, key)
       rawset(tbl, key, {})
       return rawget(tbl, key)
-    end
+    end,
   })
 
   function cache.set(type_name, bufnr, value)
@@ -23,7 +23,7 @@ function M.create_buffer_cache()
         on_detach = function()
           cache.remove(type_name, bufnr)
           return true
-        end
+        end,
       })
     end
 
