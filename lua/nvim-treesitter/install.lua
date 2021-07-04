@@ -398,7 +398,7 @@ function M.uninstall(...)
   if vim.tbl_contains({'all', 'maintained'}, ...) then
     reset_progress_counter()
     local installed = info.installed_parsers()
-    if lang == "maintained" then
+    if ... == "maintained" then
       local maintained = parsers.maintained_parsers()
       installed = vim.tbl_filter(function(l) return vim.tbl_contains(maintained, l) end, installed)
     end
