@@ -1,5 +1,13 @@
 ;; Scopes
-(function_definition) @scope
+[
+  (command)
+  (function_definition)
+  (if_statement)
+  (for_statement)
+  (begin_statement)
+  (while_statement)
+  (switch_statement)
+] @scope
 
 ;; Definitions
 (function_definition
