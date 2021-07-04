@@ -46,6 +46,8 @@ hlmap["include"] = "TSInclude"
 hlmap["keyword"] = "TSKeyword"
 hlmap["keyword.function"] = "TSKeywordFunction"
 hlmap["keyword.operator"] = "TSKeywordOperator"
+hlmap["keyword.return"] = "TSKeywordReturn"
+hlmap["keyword.yield"] = "TSKeywordYield"
 
 hlmap["label"] = "TSLabel"
 

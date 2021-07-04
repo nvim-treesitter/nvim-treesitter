@@ -94,13 +94,16 @@
   "interface"
   "map"
   "range"
-  "return"
   "select"
   "struct"
   "type"
   "var"
   "fallthrough"
 ] @keyword
+
+[
+  "return"
+] @keyword.return
 
 "for" @repeat
 

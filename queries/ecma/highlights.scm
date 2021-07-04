@@ -214,7 +214,6 @@
 "in"
 "instanceof"
 "let"
-"return"
 "set"
 "static"
 "switch"
@@ -223,8 +222,15 @@
 "var"
 "void"
 "with"
-"yield"
 ] @keyword
+
+[
+"return"
+] @keyword.return
+
+[
+"yield"
+] @keyword.yield
 
 [
  "function"

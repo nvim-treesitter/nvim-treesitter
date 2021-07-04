@@ -95,7 +95,6 @@
   ; "packed"
   "pub"
   "resume"
-  "return"
   ; "linksection"
   "struct"
   "suspend"
@@ -112,6 +111,10 @@
   "volatile"
   "while"
 ] @keyword
+
+[
+  "return"
+] @keyword.return
 
 "fn" @keyword.function
 

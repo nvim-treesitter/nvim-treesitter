@@ -63,6 +63,8 @@ highlight default link TSOperator Operator
 highlight default link TSKeyword Keyword
 highlight default link TSKeywordFunction Keyword
 highlight default link TSKeywordOperator TSOperator
+highlight default link TSKeywordReturn TSKeyword
+highlight default link TSKeywordYield TSKeyword
 highlight default link TSException Exception
 
 highlight default link TSType Type

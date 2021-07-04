@@ -210,12 +210,18 @@
   "pass"
   "print"
   "raise"
-  "return"
   "try"
   "with"
-  "yield"
   "as"
 ] @keyword
+
+[
+  "return"
+] @keyword.return
+
+[
+  "yield"
+] @keyword.yield
 
 ["from" "import"] @include
 (aliased_import "as" @include)
