@@ -4,7 +4,7 @@ Treesitter configurations and abstraction layer for Neovim.
 
 Minimum version of neovim: nightly
 
-Authors: 
+Authors:
   Kiyan Yazdani <yazdani.kiyan@protonmail.com>
   Thomas Vigouroux <tomvig38@gmail.com>
   Stephan Seitz <stephan.seitz@fau.de>
@@ -111,6 +111,11 @@ Supported options:
 - disable: list of languages.
 - custom_captures: A map of user defined capture groups to highlight groups.
   See |nvim-treesitter-query-extensions|.
+- additional_vim_regex_highlighting: `true` or `false`, or a dictionary of languages.
+  Set this to `true` if you depend on 'syntax' being enabled
+  (like for indentation). Using this option may slow down your editor,
+  and you may see some duplicate highlights.
+  Defaults to `false`.
 
 >
   lua <<EOF
