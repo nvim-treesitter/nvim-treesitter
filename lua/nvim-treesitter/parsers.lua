@@ -37,7 +37,7 @@ list.javascript = {
     url = "https://github.com/tree-sitter/tree-sitter-javascript",
     files = { "src/parser.c", "src/scanner.c" },
   },
-  used_by = { "javascriptreact" },
+  used_by = { "javascriptreact", "ecma" },
   maintainers = { "@steelsojka" },
 }
 
@@ -207,6 +207,7 @@ list.html = {
     url = "https://github.com/tree-sitter/tree-sitter-html",
     files = { "src/parser.c", "src/scanner.cc" },
   },
+  used_by = { "html_tags" },
   maintainers = { "@TravonteD" },
 }
 
