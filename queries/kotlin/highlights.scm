@@ -115,12 +115,12 @@
  "var"
  "break"
  "by"
- "fun"
  "companion"
  "constructor"
  "throw"
 ] @keyword
 
+"fun" @keyword.function
 "return" @keyword.return
 
 (null_literal) @keyword

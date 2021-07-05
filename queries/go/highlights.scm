@@ -88,7 +88,6 @@
   "continue"
   "default"
   "defer"
-  "func"
   "go"
   "goto"
   "interface"
@@ -101,6 +100,7 @@
   "fallthrough"
 ] @keyword
 
+"func" @keyword.function
 "return" @keyword.return
 
 "for" @repeat

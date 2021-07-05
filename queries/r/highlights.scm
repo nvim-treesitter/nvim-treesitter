@@ -70,7 +70,6 @@
  "while"
  "if"
  "else"
- "function"
  "repeat"
  "for"
  "in"
@@ -84,3 +83,6 @@
  (na)
  (null)
 ] @keyword
+
+
+"function" @keyword.function
