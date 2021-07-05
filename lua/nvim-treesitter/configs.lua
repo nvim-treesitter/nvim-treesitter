@@ -85,7 +85,7 @@ local function enable_mod_conf_autocmd(mod)
     return
   end
 
-  local cmd = string.format("lua require'nvim-treesitter.configs'.attach_module('%s')", mod)
+  local cmd = string.format("lua require'nvim-treesitter.configs'.reattach_module('%s')", mod)
   api.nvim_command(string.format("autocmd NvimTreesitter FileType * %s", cmd))
 
   config_mod.loaded = true
@@ -440,6 +440,15 @@ function M.detach_module(mod_name, bufnr)
     attached_buffers_by_module.remove(mod_name, bufnr)
     resolved_mod.detach(bufnr)
   end
+end
+
+-- Same as attach_module, but if the module is already attached, detach it first.
+-- @param mod_name the module name
+-- @param bufnr the bufnr
+-- @param lang the language of the buffer
+function M.reattach_module(mod_name, bufnr, lang)
+  M.detach_module(mod_name, bufnr)
+  M.attach_module(mod_name, bufnr, lang)
 end
 
 -- Gets available modules
