@@ -165,7 +165,8 @@ Supported options:
 ------------------------------------------------------------------------------
 INDENTATION                                  *nvim-treesitter-indentation-mod*
 
-Indentation based on treesitter for the |=| operator
+Indentation based on treesitter for the |=| operator.
+NOTE: this is an experimental feature.
 
 Query files: `indents.scm`.
 Supported options:
