@@ -3,7 +3,6 @@
 [
   "module"
   "endmodule"
-  "function"
   "endfunction"
   "task"
   "endtask"
@@ -27,6 +26,7 @@
   "assert"
 ] @keyword
 
+"function" @keyword.function
 "return" @keyword.return
 
 [
