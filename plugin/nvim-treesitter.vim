@@ -63,6 +63,7 @@ highlight default link TSOperator Operator
 highlight default link TSKeyword Keyword
 highlight default link TSKeywordFunction Keyword
 highlight default link TSKeywordOperator TSOperator
+highlight default link TSKeywordReturn TSKeyword
 highlight default link TSException Exception
 
 highlight default link TSType Type
@@ -78,8 +79,8 @@ highlight default TSUnderline term=underline cterm=underline gui=underline
 highlight default TSStrike term=strikethrough cterm=strikethrough gui=strikethrough
 highlight default link TSMath Special
 highlight default link TSTextReference Constant
-highlight default link TSEnviroment Macro
-highlight default link TSEnviromentName Type
+highlight default link TSEnvironment Macro
+highlight default link TSEnvironmentName Type
 highlight default link TSTitle Title
 highlight default link TSLiteral String
 highlight default link TSURI Underlined

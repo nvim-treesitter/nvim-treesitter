@@ -1,17 +1,19 @@
 local api = vim.api
-local tsutils = require'nvim-treesitter.ts_utils'
-local query = require'nvim-treesitter.query'
-local parsers = require'nvim-treesitter.parsers'
+local tsutils = require "nvim-treesitter.ts_utils"
+local query = require "nvim-treesitter.query"
+local parsers = require "nvim-treesitter.parsers"
 
 local M = {}
 
 -- This is cached on buf tick to avoid computing that multiple times
 -- Especially not for every line in the file when `zx` is hit
 local folds_levels = tsutils.memoize_by_buf_tick(function(bufnr)
-  local max_fold_level = api.nvim_win_get_option(0, 'foldnestmax')
+  local max_fold_level = api.nvim_win_get_option(0, "foldnestmax")
   local parser = parsers.get_parser(bufnr)
 
-  if not parser then return {} end
+  if not parser then
+    return {}
+  end
 
   local matches = query.get_capture_matches_recursively(bufnr, function(lang)
     if query.has_folds(lang) then
@@ -44,13 +46,13 @@ local folds_levels = tsutils.memoize_by_buf_tick(function(bufnr)
   local current_level = 0
 
   -- We now have the list of fold opening and closing, fill the gaps and mark where fold start
-  for lnum=0, api.nvim_buf_line_count(bufnr) do
-    local prefix = ''
+  for lnum = 0, api.nvim_buf_line_count(bufnr) do
+    local prefix = ""
     local shift = levels_tmp[lnum] or 0
 
     -- Determine if it's the start of a fold
     if levels_tmp[lnum] and shift >= 0 then
-      prefix = '>'
+      prefix = ">"
     end
 
     current_level = current_level + shift
@@ -67,13 +69,15 @@ local folds_levels = tsutils.memoize_by_buf_tick(function(bufnr)
 end)
 
 function M.get_fold_indic(lnum)
-  if not parsers.has_parser() or not lnum then return '0' end
+  if not parsers.has_parser() or not lnum then
+    return "0"
+  end
 
   local buf = api.nvim_get_current_buf()
 
   local levels = folds_levels(buf) or {}
 
-  return levels[lnum] or '0'
+  return levels[lnum] or "0"
 end
 
 return M

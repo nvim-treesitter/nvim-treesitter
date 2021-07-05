@@ -3,5 +3,8 @@
 # Can be used as a pre-push hook
 # Just symlink this file to .git/hooks/pre-push
 
-echo "Running style check..."
-./scripts/style-check.sh
+echo "Running linter..."
+luacheck .
+
+echo "Checking formatting..."
+stylua --check .

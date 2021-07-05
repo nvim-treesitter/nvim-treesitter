@@ -1,6 +1,8 @@
 ;;; Highlighting for lua
 
 ;;; Builtins
+(self) @variable.builtin
+
 ;; Keywords
 
 (if_statement
@@ -52,10 +54,11 @@
 [
  "in"
  "local"
- "return"
  (break_statement)
  "goto"
 ] @keyword
+
+"return" @keyword.return
 
 ;; Operators
 

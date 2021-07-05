@@ -6,7 +6,6 @@
   "enum"
   "extern"
   "inline"
-  "return"
   "sizeof"
   "static"
   "struct"
@@ -16,6 +15,8 @@
   "goto"
   "register"
 ] @keyword
+
+"return" @keyword.return
 
 [
   "while"

@@ -160,7 +160,6 @@
 "move"
 "pub"
 "ref"
-"return"
 "static"
 "struct"
 "trait"
@@ -173,6 +172,8 @@
 (mutable_specifier)
 (super)
 ] @keyword
+
+"return" @keyword.return
 
 "fn" @keyword.function
 

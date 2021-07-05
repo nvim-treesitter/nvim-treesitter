@@ -76,10 +76,11 @@
 
 [
  "in"
- "return"
  (break)
  (continue)
 ] @keyword
+
+"return" @keyword.return
 
 ;; Punctuation
 
@@ -113,7 +114,7 @@
         ]
 )
 
-(test_command) @function.builtin
+(test_command "test" @function.builtin)
 
 ;; Functions
 

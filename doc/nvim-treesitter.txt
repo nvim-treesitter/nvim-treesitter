@@ -4,7 +4,7 @@ Treesitter configurations and abstraction layer for Neovim.
 
 Minimum version of neovim: nightly
 
-Authors: 
+Authors:
   Kiyan Yazdani <yazdani.kiyan@protonmail.com>
   Thomas Vigouroux <tomvig38@gmail.com>
   Stephan Seitz <stephan.seitz@fau.de>
@@ -111,6 +111,11 @@ Supported options:
 - disable: list of languages.
 - custom_captures: A map of user defined capture groups to highlight groups.
   See |nvim-treesitter-query-extensions|.
+- additional_vim_regex_highlighting: `true` or `false`, or a dictionary of languages.
+  Set this to `true` if you depend on 'syntax' being enabled
+  (like for indentation). Using this option may slow down your editor,
+  and you may see some duplicate highlights.
+  Defaults to `false`.
 
 >
   lua <<EOF
@@ -165,7 +170,8 @@ Supported options:
 ------------------------------------------------------------------------------
 INDENTATION                                  *nvim-treesitter-indentation-mod*
 
-Indentation based on treesitter for the |=| operator
+Indentation based on treesitter for the |=| operator.
+NOTE: this is an experimental feature.
 
 Query files: `indents.scm`.
 Supported options:
@@ -184,10 +190,15 @@ Supported options:
 COMMANDS                                            *nvim-treesitter-commands*
 
 								  *:TSInstall*
-:TSInstall| {language} ...~
+:TSInstall {language} ...~
 
 Install one or more treesitter parsers.
-You can use |:TSInstall| `all` to install all parsers.
+You can use |:TSInstall| `all` to install all parsers. Use |:TSInstall!| to
+force the reinstallation of already installed parsers.
+							      *:TSInstallSync*
+:TSInstallSync {language} ...~
+
+Perform the |:TSInstall| operation synchronously.
 
 							      *:TSInstallInfo*
 :TSInstallInfo~
@@ -195,16 +206,22 @@ You can use |:TSInstall| `all` to install all parsers.
 List informations about currently installed parsers
 
 								   *:TSUpdate*
-:TSUpdate {language}~
+:TSUpdate {language} ...~
 
-Update the installed parser of {language} or all installed parsers
-if {language} is omitted.
+Update the installed parser for one more {language} or all installed parsers
+if {language} is omitted. The specified parser is installed if it is not already
+installed.
+
+							       *:TSUpdateSync*
+:TSUpdateSync {language} ...~
+
+Perform the |:TSUpdate| operation synchronously.
 
 								*:TSUninstall*
-:TSUninstall {language}~
+:TSUninstall {language} ...~
 
-Deletes the parser for corresponding {language}. You can use 'all' for
-language to uninstall all parsers.
+Deletes the parser for one or more {language}. You can use 'all' for language
+to uninstall all parsers.
 
 								*:TSBufEnable*
 :TSBufEnable {module}~
@@ -517,6 +534,10 @@ For keywords used to define a fuction.
 `TSKeywordOperator`
 for operators that are English words, e.g. `and`, `as`, `or`.
 
+							  *hl-TSKeywordReturn*
+`TSKeywordReturn`
+for the `return` and `yield` keywords.
+
 								  *hl-TSLabel*
 `TSLabel`
 For labels: `label:` in C and `:label:` in Lua.
@@ -633,12 +654,12 @@ For LaTex-like math environments.
 `TSTextReference`
 For footnotes, text references, citations.
 
-							     *hl-TSEnviroment*
-`TSEnviroment`
+							     *hl-TSEnvironment*
+`TSEnvironment`
 For text environments of markup languages.
 
-							 *hl-TSEnviromentName*
-`TSEnviromentName`
+							 *hl-TSEnvironmentName*
+`TSEnvironmentName`
 For the name/the string indicating the type of text environment.
 
 								   *hl-TSNote*

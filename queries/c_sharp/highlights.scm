@@ -260,8 +260,6 @@
  "params"
  "operator"
  "default"
- "yield"
- "return"
  "abstract"
  "const"
  "extern"
@@ -287,4 +285,9 @@
  "set"
  "where"
 ] @keyword
+
+[
+  "return"
+  "yield"
+] @keyword.return
 

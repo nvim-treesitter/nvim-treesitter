@@ -1,11 +1,10 @@
 local api = vim.api
 local ts = vim.treesitter
 
-local parsers = require'nvim-treesitter.parsers'
-local configs = require'nvim-treesitter.configs'
+local parsers = require "nvim-treesitter.parsers"
+local configs = require "nvim-treesitter.configs"
 
-local M = {
-}
+local M = {}
 
 local hlmap = vim.treesitter.highlighter.hl_map
 
@@ -46,6 +45,7 @@ hlmap["include"] = "TSInclude"
 hlmap["keyword"] = "TSKeyword"
 hlmap["keyword.function"] = "TSKeywordFunction"
 hlmap["keyword.operator"] = "TSKeywordOperator"
+hlmap["keyword.return"] = "TSKeywordReturn"
 
 hlmap["label"] = "TSLabel"
 
@@ -88,8 +88,8 @@ hlmap["text.literal"] = "TSLiteral"
 hlmap["text.uri"] = "TSURI"
 hlmap["text.math"] = "TSMath"
 hlmap["text.reference"] = "TSTextReference"
-hlmap["text.environment"] = "TSEnviroment"
-hlmap["text.environment.name"] = "TSEnviromentName"
+hlmap["text.environment"] = "TSEnvironment"
+hlmap["text.environment.name"] = "TSEnvironmentName"
 
 hlmap["text.note"] = "TSNote"
 hlmap["text.warning"] = "TSWarning"
@@ -103,7 +103,7 @@ hlmap["variable.builtin"] = "TSVariableBuiltin"
 
 function M.attach(bufnr, lang)
   local parser = parsers.get_parser(bufnr, lang)
-  local config = configs.get_module('highlight')
+  local config = configs.get_module "highlight"
 
   for k, v in pairs(config.custom_captures) do
     hlmap[k] = v
@@ -111,9 +111,9 @@ function M.attach(bufnr, lang)
 
   ts.highlighter.new(parser, {})
 
-  local is_table = type(config.additional_vim_regex_highlighting) == 'table'
+  local is_table = type(config.additional_vim_regex_highlighting) == "table"
   if config.additional_vim_regex_highlighting and (not is_table or config.additional_vim_regex_highlighting[lang]) then
-    api.nvim_buf_set_option(bufnr, 'syntax', 'ON')
+    api.nvim_buf_set_option(bufnr, "syntax", "ON")
   end
 end
 
@@ -121,7 +121,7 @@ function M.detach(bufnr)
   if ts.highlighter.active[bufnr] then
     ts.highlighter.active[bufnr]:destroy()
   end
-  api.nvim_buf_set_option(bufnr, 'syntax', 'ON')
+  api.nvim_buf_set_option(bufnr, "syntax", "ON")
 end
 
 return M

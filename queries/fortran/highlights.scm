@@ -6,48 +6,56 @@
 
 [
   (intrinsic_type)
-  "dimension"
-  "intent"
-  "in"
-  "out"
-  "inout"
-  "type"
-  "endtype"
+  "allocatable"
   "attributes"
-  "global"
   "device"
-  "host"
+  "dimension"
+  "endtype"
+  "global"
   "grid_global"
+  "host"
+  "import"
+  "in"
+  "inout"
+  "intent"
+  "optional"
+  "out"
   "pointer"
+  "type"
+  "value"
 ] @type
 
 [
   "contains"
-  "public"
   "private"
+  "public"
 ] @include
 
 [
-"implicit"
-(none)
+  (none)
+  "implicit"
 ] @attribute
 
 [
-  "function"
   "endfunction"
   "endprogram"
-  "subroutine"
   "endsubroutine"
+  "function"
+  "procedure"
+  "subroutine"
 ] @keyword.function
 
 [
-  "module"
-  "endmodule"
   "bind"
   "call"
   "class"
   "continue"
   "cycle"
+  "endenum"
+  "endinterface"
+  "endmodule"
+  "endprogram"
+  "enum"
   "enumerator"
   "equivalence"
   "exit"
@@ -55,39 +63,37 @@
   "goto"
   "include"
   "interface"
-  "endinterface"
+  "module"
+  "namelist"
   "only"
   "parameter"
-  "procedure"
   "print"
   "program"
-  "endprogram"
   "read"
-  "return"
   "stop"
   "use"
   "write"
-  "enum"
-  "endenum"
   (default)
   (procedure_qualifier)
 ] @keyword
 
+"return" @keyword.return
+
 [
-  "if" 
-  "then"
   "else"
   "elseif"
   "endif"
-  "where"
   "endwhere"
+  "if"
+  "then"
+  "where"
 ] @conditional
 
 [
   "do"
   "enddo"
-  "while"
   "forall"
+  "while"
 ] @repeat
 
 [
@@ -122,6 +128,8 @@
   ")"
   "["
   "]"
+  "<<<"
+  ">>>"
  ] @punctuation.bracket
 
  ;; Delimiter

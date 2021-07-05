@@ -174,8 +174,6 @@
 "provides"
 "public"
 "requires"
-"return"
-"yield"
 "static"
 "strictfp"
 "synchronized"
@@ -186,6 +184,11 @@
 "volatile"
 "with"
 ] @keyword
+
+[
+"return"
+"yield"
+] @keyword.return
 
 [
  "new"

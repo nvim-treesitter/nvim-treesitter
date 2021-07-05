@@ -19,10 +19,13 @@
  "next"
  "rescue"
  "retry"
- "return"
  "then"
- "yield"
  ] @keyword
+
+[
+ "return"
+ "yield"
+] @keyword.return
 
 [
  "and"
