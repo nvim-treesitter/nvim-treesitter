@@ -252,7 +252,8 @@ EOF
 
 #### Indentation
 
-Tree-sitter based indentation.
+Indentation based on treesitter for the `=` operator.
+**NOTE: This is an experimental feature**.
 
 ```vim
 lua <<EOF
