@@ -107,7 +107,7 @@ function M.checkhealth()
   -- Installation dependency checks
   install_health()
   queries.invalidate_query_cache()
-  health_start "Parser/Features H L F I"
+  health_start "Parser/Features H L F I J"
   -- Parser installation checks
   for _, parser_name in pairs(info.installed_parsers()) do
     local installed = #api.nvim_get_runtime_file("parser/" .. parser_name .. ".so", false)
@@ -128,7 +128,7 @@ function M.checkhealth()
   end
   print [[
 
- Legend: H[ighlight], L[ocals], F[olds], I[ndents]
+ Legend: H[ighlight], L[ocals], F[olds], I[ndents], In[j]ections
          +) multiple parsers found, only one will be used
          x) errors found in the query, try to run :TSUpdate {lang}]]
   if #error_collection > 0 then
