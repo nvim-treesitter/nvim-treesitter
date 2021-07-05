@@ -66,8 +66,9 @@
  "local"
  "readonly"
  "unset"
- "function"
  ] @keyword
+
+"function" @keyword.function
 
 (special_variable_name) @constant
 

@@ -93,11 +93,13 @@
 
 [
   "and" "as" "assert" "begin" "class" "constraint"
-  "end" "external" "fun" "function" "functor" "in"
+  "end" "external" "in"
   "inherit" "initializer" "lazy" "let" "match" "method" "module"
   "mutable" "new" "nonrec" "object" "of" "private" "rec" "sig" "struct"
   "type" "val" "virtual" "when" "with"
 ] @keyword
+
+["fun" "function" "functor"] @keyword.function
 
 ["if" "then" "else"] @conditional
 
