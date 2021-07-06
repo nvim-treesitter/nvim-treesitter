@@ -13,7 +13,7 @@
 (normal_command (identifier) @function)
 
 ["ENV" "CACHE"] @symbol
-["$" "{" "}"] @punctuation.special
+["$" "{" "}" "<" ">"] @punctuation.special
 ["(" ")"] @punctuation.bracket
 
 [
