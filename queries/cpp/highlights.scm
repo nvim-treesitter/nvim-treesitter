@@ -54,6 +54,7 @@
  (#match? @constructor "^[A-Z]"))
 
 (operator_name) @function
+"static_assert" @function.builtin
 
 (call_expression
   function: (scoped_identifier
