@@ -108,10 +108,6 @@
 ; Punctuation
 ;------------
 
-(template_substitution
-  "${" @punctuation.special
-  "}" @punctuation.special) @none
-
 "..." @punctuation.special
 
 ";" @punctuation.delimiter
@@ -175,6 +171,10 @@
 "]" @punctuation.bracket
 "{" @punctuation.bracket
 "}" @punctuation.bracket
+
+(template_substitution
+  "${" @punctuation.special
+  "}" @punctuation.special) @none
 
 ; Keywords
 ;----------
