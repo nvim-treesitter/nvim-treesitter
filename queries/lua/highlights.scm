@@ -136,7 +136,6 @@
   (identifier) @parameter)
 
 ;; Nodes
-(table ["{" "}"] @constructor)
 (comment) @comment
 (string) @string
 (number) @number
