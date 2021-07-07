@@ -19,12 +19,12 @@
 [
  (function)
  (endfunction)
-] @function
+] @function.builtin
 
 [
  (macro)
  (endmacro)
-] @function.macro
+] @function.builtin
 
 [
  (if)
