@@ -360,7 +360,7 @@ list.hcl = {
   },
   maintainers = { "@MichaHoffmann" },
   filetype = "hcl",
-  used_by = { "terraform", "packer", "nomad" },
+  used_by = { "terraform" },
 }
 
 -- FIXME(vigoux): markdown is broken for now
