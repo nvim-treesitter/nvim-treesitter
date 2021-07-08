@@ -82,7 +82,6 @@
   "error"
   "export"
   "extern"
-  "false"
   "for"
   "if"
   "inline"
@@ -102,7 +101,6 @@
   "switch"
   "test"
   ; "threadlocal"
-  "true"
   "try"
   ; "undefined"
   "union"
@@ -112,6 +110,11 @@
   "volatile"
   "while"
 ] @keyword
+
+[
+  "true"
+  "false"
+] @boolean
 
 "return" @keyword.return
 
