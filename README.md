@@ -304,6 +304,11 @@ EOF
 
 You can also skip step 2 and use `:TSInstallFromGrammar zimbu` to install directly from a `grammar.js` in the top-level directory specified by `url`.
 Once the parser is installed, you can update it (from the latest revision of the `main` branch if `url` is a Github repository) with `:TSUpdate zimbu`.
+Note that neither `:TSInstall` nor `:TSInstallFromGrammar` copy query files from the grammar repository.
+If you want your installed grammar to be useful, you must manually [add query files](#adding-queries) to your local nvim-treesitter installation.
+Note also that nvim-treesitter modules are only triggered if your language's filetype is correctly identified.
+If neovim does not detect your language's filetype by default, you can add a short Vimscript file to nvim-treesitter's `ftdetect` runtime directory.
+See [Neovim's documentation](https://neovim.io/doc/user/filetype.html#new-filetype) on how to use Vimscript to detect a filetype.
 
 ## Update parsers used_by
 
