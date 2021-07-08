@@ -68,7 +68,7 @@
   [
     (template_interpolation_start) ; ${
     (template_interpolation_end) ; }
-  ] @punctuation.bracket
+  ] @punctuation.special
 )
 
 (numeric_lit) @number
@@ -85,5 +85,13 @@
 ;
 ; highlight identifier keys as though they were block attributes
 (object_elem key: (expression (variable_expr (identifier) @field)))
+
+(variable_expr (identifier) @variable.builtin (#any-of? @variable.builtin "var" "local"))
+((identifier) @keyword (#any-of? @keyword "module" "resource" "variable" "data" "locals" "terraform" "provider" "output"))
+((identifier) @type.builtin (#any-of? @type.builtin "bool" "string" "number" "object" "tuple" "list" "map" "set" "any"))
+
+(object_elem val: (expression
+  (variable_expr
+    (identifier) @type.builtin (#any-of? @type.builtin "bool" "string" "number" "object" "tuple" "list" "map" "set" "any"))))
 
 (ERROR) @error
