@@ -274,7 +274,7 @@ set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 ```
 
-This will respect your `foldnestmax` setting.
+This will respect your `foldminlines` and `foldnestmax` settings.
 
 # Advanced setup
 

@@ -37,6 +37,8 @@ local folds_levels = tsutils.memoize_by_buf_tick(function(bufnr)
   local prev_start = -1
   local prev_stop = -1
 
+  local min_fold_lines = api.nvim_win_get_option(0, "foldminlines")
+
   for _, node in ipairs(matches) do
     local start, _, stop, stop_col = node.node:range()
 
@@ -45,7 +47,7 @@ local folds_levels = tsutils.memoize_by_buf_tick(function(bufnr)
     end
 
     local fold_length = stop - start + 1
-    local should_fold = fold_length >= 2
+    local should_fold = fold_length > min_fold_lines
 
     -- Fold only multiline nodes that are not exactly the same as previously met folds
     -- Checking against just the previously found fold is sufficient if nodes
