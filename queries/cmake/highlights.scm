@@ -19,7 +19,7 @@
 [
  (function)
  (endfunction)
-] @function.builtin
+] @keyword.function
 
 (function_command
   (function)
@@ -31,7 +31,7 @@
 [
  (macro)
  (endmacro)
-] @function.builtin
+] @keyword.function
 
 (macro_command
   (macro)
