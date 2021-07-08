@@ -307,8 +307,8 @@ Once the parser is installed, you can update it (from the latest revision of the
 
 Note that neither `:TSInstall` nor `:TSInstallFromGrammar` copy query files from the grammar repository.
 If you want your installed grammar to be useful, you must manually [add query files](#adding-queries) to your local nvim-treesitter installation.
-Note also that nvim-treesitter modules are only triggered if your language's filetype is correctly identified.
-If neovim does not detect your language's filetype by default, you can add a short Vimscript file to nvim-treesitter's `ftdetect` runtime directory.
+Note also that module functionality is only triggered if your language's filetype is correctly identified.
+If Neovim does not detect your language's filetype by default, you can add a short Vimscript file to nvim-treesitter's `ftdetect` runtime directory.
 See [Neovim's documentation](https://neovim.io/doc/user/filetype.html#new-filetype) on how to use Vimscript to detect a filetype.
 
 ## Update parsers used_by
@@ -406,10 +406,17 @@ It can also help to update the parsers via `:TSUpdate`.
 
 #### Feature `X` does not work for `{language}`...
 
-First, check the `## {language} parser healthcheck` section of `:checkhealth` for any warning.
+First, check the `health#nvim_treesitter#check` and the `health#treesitter#check` sections of `:checkhealth` for any warning.
 If there is one, it's highly likely that this is the cause of the problem.
-If everything is okay, then it might be an actual error.
 
+Next check the `## Parser/Features` subsection of the `health#nvim_treesitter#check` section of `:checkhealth` to ensure the desired module is enabled for your language.
+If not, you might be missing query files; see [Adding queries](#adding-queries).
+
+Finally, ensure Neovim is correctly identifying your language's filetype using the `:echo &filetype` command while one of your language's files is open in Neovim.
+If not, add a short Vimscript file to nvim-treesitter's `ftdetect` runtime directory following [Neovim's documentation](https://neovim.io/doc/user/filetype.html#new-filetype) on filetype detection.
+You can also quickly & temporarily set the filetype for a single buffer with the `:set filetype=langname` command to test whether it fixes the problem.
+
+If everything is okay, then it might be an actual error.
 In that case, feel free to [open an issue here](https://github.com/nvim-treesitter/nvim-treesitter/issues/new/choose).
 
 #### I get `module 'vim.treesitter.query' not found`
