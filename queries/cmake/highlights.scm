@@ -21,10 +21,24 @@
  (endfunction)
 ] @function.builtin
 
+(function_command
+  (function)
+  .
+  (argument) @function
+  (argument)* @parameter
+)
+
 [
  (macro)
  (endmacro)
 ] @function.builtin
+
+(macro_command
+  (macro)
+  .
+  (argument) @function.macro
+  (argument)* @parameter
+)
 
 [
  (if)
