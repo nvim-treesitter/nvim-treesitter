@@ -134,10 +134,10 @@ function M.recurse_local_nodes(local_def, accumulator, full_match, last_match)
 	else
 		for match_key, def in pairs(local_def) do
 			M.recurse_local_nodes(
-			def,
-			accumulator,
-			full_match and (full_match..'.'..match_key) or match_key,
-			match_key)
+				def,
+				accumulator,
+				full_match and (full_match..'.'..match_key) or match_key,
+				match_key)
 		end
 	end
 
