@@ -391,6 +391,16 @@ list.glimmer = {
   filetype = "handlebars",
 }
 
+list.pug = {
+  install_info = {
+    url = "https://github.com/zealot128/tree-sitter-pug",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  maintainers = { "@zealot128" },
+  filetype = "pug",
+  used_by = {"vue"}
+}
+
 list.vue = {
   install_info = {
     url = "https://github.com/ikatyang/tree-sitter-vue",

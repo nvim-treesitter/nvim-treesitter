@@ -25,4 +25,13 @@
     (quoted_attribute_value
       (attribute_value) @javascript)))
 
+(
+  (template_element
+    (start_tag
+      (attribute
+        (quoted_attribute_value (attribute_value) @_lang)))
+    (raw_text) @pug)
+  (#match? @_lang "pug")
+)
+
 (comment) @comment
