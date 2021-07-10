@@ -1,13 +1,7 @@
 ; inherits: c
 
 ((identifier) @field
- (#match? @field "^_"))
-
-((identifier) @field
- (#match? @field "^m_"))
-
-((identifier) @field
- (#match? @field "_$"))
+ (#match? @field "(^_|^m_|_$)"))
 
 (parameter_declaration
   declarator: (reference_declarator) @parameter)
@@ -38,10 +32,6 @@
     name: (identifier) @function))
 
 
-((identifier) @type
- (#match? @type "^[A-Z]")
- (#not-has-parent? @type function_declarator))
-
 (namespace_identifier) @namespace
 ((namespace_identifier) @type
                         (#match? @type "^[A-Z]"))
@@ -49,6 +39,8 @@
                         (#match? @constant "^[A-Z][A-Z_0-9]*$"))
 (namespace_definition
   name: (identifier) @namespace)
+
+(using_declaration . "using" . "namespace" . [(scoped_identifier) (identifier)] @namespace)
 
 (destructor_name
   (identifier) @method)
@@ -62,6 +54,7 @@
  (#match? @constructor "^[A-Z]"))
 
 (operator_name) @function
+"static_assert" @function.builtin
 
 (call_expression
   function: (scoped_identifier
@@ -154,7 +147,6 @@
 ] @keyword.operator
 
 "::" @operator
-"..." @operator
 
 ; Annotations (not fully supported by parser)
 

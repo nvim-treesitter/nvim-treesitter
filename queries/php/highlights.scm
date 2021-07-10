@@ -8,7 +8,8 @@
  (primitive_type)
  (cast_type)
  ] @type.builtin
-(type_name (name) @type)
+(named_type (name)) @type
+(named_type (qualified_name)) @type
 
 ; Functions
 
@@ -20,6 +21,9 @@
 
 (function_call_expression
   function: (qualified_name (name)) @function)
+
+(function_call_expression
+  (name) @function)
 
 (scoped_call_expression
   name: (name) @function)
@@ -72,9 +76,17 @@
 ; Keywords
 
 [
+ "as"
+] @keyword.operator
+
+[
+ "fn"
+ "function"
+] @keyword.function
+
+[
  "$"
  "abstract"
- "as"
  "break"
  "class"
  "const"
@@ -85,7 +97,6 @@
  "enddeclare"
  "extends"
  "final"
- "function"
  "global"
  "implements"
  "insteadof"
@@ -95,10 +106,11 @@
  "private"
  "protected"
  "public"
- "return"
  "static"
  "trait"
  ] @keyword
+
+"return" @keyword.return
 
 [
  "case"
@@ -108,6 +120,7 @@
  "endswitch"
  "if"
  "switch"
+ "match"
  ] @conditional
 
 [

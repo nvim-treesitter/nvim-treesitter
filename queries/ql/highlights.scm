@@ -118,9 +118,10 @@
 
 (string) @string
 
-(charpred (className) @function)
 (aritylessPredicateExpr (literalId) @function)
-(predicateName) @function
+(memberPredicate name: (predicateName) @function)
+(classlessPredicate name: (predicateName) @function)
+(charpred (className) @function)
 
 [
   (line_comment)

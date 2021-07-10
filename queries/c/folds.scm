@@ -3,6 +3,8 @@
  (if_statement)
  (while_statement)
  (translation_unit)
+ (switch_statement)
+ (case_statement)
  (function_definition)
  (struct_specifier)
  (comment)

@@ -6,7 +6,6 @@
   "enum"
   "extern"
   "inline"
-  "return"
   "sizeof"
   "static"
   "struct"
@@ -16,6 +15,8 @@
   "goto"
   "register"
 ] @keyword
+
+"return" @keyword.return
 
 [
   "while"
@@ -95,6 +96,8 @@
 
 [ "." ";" ":" "," ] @punctuation.delimiter
 
+"..." @punctuation.special
+
 (conditional_expression [ "?" ":" ] @conditional)
 
 
@@ -102,10 +105,11 @@
 
 (string_literal) @string
 (system_lib_string) @string
+(escape_sequence) @string.escape
 
 (null) @constant.builtin
 (number_literal) @number
-(char_literal) @number
+(char_literal) @character
 
 (call_expression
   function: (identifier) @function)

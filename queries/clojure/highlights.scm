@@ -1,10 +1,12 @@
 (dis_expr) @comment
 
-(kwd_lit) @type
+(kwd_lit) @symbol
 
 (str_lit) @string
 
 (num_lit) @number
+
+(char_lit) @character
 
 (bool_lit) @boolean
 
@@ -18,13 +20,13 @@
 (meta_lit
  marker: "^" @punctuation.special)
 
+;;; parameter-related
+((sym_lit) @parameter
+(#match? @parameter "^[&]"))
+
 ;; dynamic variables
 ((sym_lit) @variable.builtin
- (#match? @variable.builtin "^\\*.+\\*$"))
-
-;; parameter-related
-((sym_lit) @parameter
- (#match? @parameter "^&.*$"))
+ (#match? @variable.builtin "^[*].+[*]$"))
 
 ;; gensym
 ((sym_lit) @variable
@@ -36,7 +38,11 @@
  (sym_lit) @function.macro
  .
  (sym_lit) @function
- (#match? @function.macro "^(declare|def|definline|definterface|defmacro|defmethod|defmulti|defn|defn-|defonce|defprotocol|defstruct|deftype|ns)$"))
+ (#any-of? @function.macro
+    "declare" "def" "definline" "definterface"
+    "defmacro" "defmethod" "defmulti" "defn"
+    "defn-" "defonce" "defprotocol" "defstruct"
+    "deftype" "ns"))
 
 ;; other macros
 (list_lit

@@ -119,7 +119,7 @@
 (else_clause
   ["else"] @conditional)
 (ternary_expression
-  ["?" ":"] @operator)
+  ["?" ":"] @conditional)
 
 (function_definition ["function" "end"] @keyword.function)
 
@@ -127,12 +127,15 @@
 
 [
   "const"
-  "return"
   "macro"
   "struct"
+  "primitive"
+  "type"
 ] @keyword
 
-((identifier) @keyword (#match? @keyword "^(global|local)$"))
+"return" @keyword.return
+
+((identifier) @keyword (#any-of? @keyword "global" "local"))
 
 (compound_expression
   ["begin" "end"] @keyword)
@@ -174,3 +177,5 @@
 (((identifier) @boolean) (eq? @boolean "true"))
 (((identifier) @boolean) (eq? @boolean "false"))
 
+["::" ":" "." "," "..." "!"] @punctuation.delimiter
+["[" "]" "(" ")" "{" "}"] @punctuation.bracket

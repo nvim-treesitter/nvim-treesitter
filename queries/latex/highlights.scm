@@ -8,15 +8,17 @@
 ((environment
   (begin
    name: (word) @_env)) @text.math
-   (#match? @_env "^(displaymath|equation|multline|eqnarray|align|array|split)[*]?$"))
-
-;; This at the begining of the file would be the alternative to highlight
-;; only the interior of the environment
-;((environment
-  ;(begin
-   ;name: (word) @_env) @none
-   ;(end) @none) @text.math
-   ;(#match? @_env "^(displaymath|eqn|eqnarray)[*]?$"))
+   (#any-of? @_env
+      "displaymath" "displaymath*"
+      "equation" "equation*"
+      "multline" "multline*"
+      "eqnarray" "eqnarray*"
+      "align" "align*"
+      "array" "array*"
+      "split" "split*"
+      "alignat" "alignat*"
+      "gather" "gather*"
+      "flalign" "flalign*"))
 
 [
   (generic_command_name)
@@ -26,13 +28,8 @@
   "\\DeclareMathOperator"
   "\\newglossaryentry"
   "\\caption"
-  "\\cite"
   "\\label"
   "\\newlabel"
-  "\\label"
-  "\\ref"
-  "\\cref"
-  "\\eqref"
   "\\color"
   "\\colorbox"
   "\\textcolor"
@@ -42,7 +39,222 @@
   "\\newtheorem"
   "\\declaretheorem"
   "\\newacronym"
-  "\\newglossaryentry"
+] @function.macro
+
+[
+    "\\ref"
+    "\\vref"
+    "\\Vref"
+    "\\autoref"
+    "\\pageref"
+    "\\cref"
+    "\\Cref"
+    "\\cref*"
+    "\\Cref*"
+    "\\namecref"
+    "\\nameCref"
+    "\\lcnamecref"
+    "\\namecrefs"
+    "\\nameCrefs"
+    "\\lcnamecrefs"
+    "\\labelcref"
+    "\\labelcpageref"
+    "\\crefrange"
+    "\\crefrange"
+    "\\Crefrange"
+    "\\Crefrange"
+    "\\crefrange*"
+    "\\crefrange*"
+    "\\Crefrange*"
+    "\\Crefrange*"
+] @function.macro
+
+[
+    "\\cite"
+    "\\cite*"
+    "\\Cite"
+    "\\nocite"
+    "\\citet"
+    "\\citep"
+    "\\citet*"
+    "\\citep*"
+    "\\citeauthor"
+    "\\citeauthor*"
+    "\\Citeauthor"
+    "\\Citeauthor*"
+    "\\citetitle"
+    "\\citetitle*"
+    "\\citeyear"
+    "\\citeyear*"
+    "\\citedate"
+    "\\citedate*"
+    "\\citeurl"
+    "\\fullcite"
+    "\\citeyearpar"
+    "\\citealt"
+    "\\citealp"
+    "\\citetext"
+    "\\parencite"
+    "\\parencite*"
+    "\\Parencite"
+    "\\footcite"
+    "\\footfullcite"
+    "\\footcitetext"
+    "\\textcite"
+    "\\Textcite"
+    "\\smartcite"
+    "\\Smartcite"
+    "\\supercite"
+    "\\autocite"
+    "\\Autocite"
+    "\\autocite*"
+    "\\Autocite*"
+    "\\volcite"
+    "\\Volcite"
+    "\\pvolcite"
+    "\\Pvolcite"
+    "\\fvolcite"
+    "\\ftvolcite"
+    "\\svolcite"
+    "\\Svolcite"
+    "\\tvolcite"
+    "\\Tvolcite"
+    "\\avolcite"
+    "\\Avolcite"
+    "\\notecite"
+    "\\notecite"
+    "\\pnotecite"
+    "\\Pnotecite"
+    "\\fnotecite"
+] @function.macro
+
+[
+    "\\ref"
+    "\\vref"
+    "\\Vref"
+    "\\autoref"
+    "\\pageref"
+    "\\cref"
+    "\\Cref"
+    "\\cref*"
+    "\\Cref*"
+    "\\namecref"
+    "\\nameCref"
+    "\\lcnamecref"
+    "\\namecrefs"
+    "\\nameCrefs"
+    "\\lcnamecrefs"
+    "\\labelcref"
+    "\\labelcpageref"
+] @function.macro
+
+
+[
+    "\\crefrange"
+    "\\crefrange"
+    "\\Crefrange"
+    "\\Crefrange"
+    "\\crefrange*"
+    "\\crefrange*"
+    "\\Crefrange*"
+    "\\Crefrange*"
+] @function.macro
+
+
+[
+  "\\gls"
+  "\\Gls"
+  "\\GLS"
+  "\\glspl"
+  "\\Glspl"
+  "\\GLSpl"
+  "\\glsdisp"
+  "\\glslink"
+  "\\glstext"
+  "\\Glstext"
+  "\\GLStext"
+  "\\glsfirst"
+  "\\Glsfirst"
+  "\\GLSfirst"
+  "\\glsplural"
+  "\\Glsplural"
+  "\\GLSplural"
+  "\\glsfirstplural"
+  "\\Glsfirstplural"
+  "\\GLSfirstplural"
+  "\\glsname"
+  "\\Glsname"
+  "\\GLSname"
+  "\\glssymbol"
+  "\\Glssymbol"
+  "\\glsdesc"
+  "\\Glsdesc"
+  "\\GLSdesc"
+  "\\glsuseri"
+  "\\Glsuseri"
+  "\\GLSuseri"
+  "\\glsuserii"
+  "\\Glsuserii"
+  "\\GLSuserii"
+  "\\glsuseriii"
+  "\\Glsuseriii"
+  "\\GLSuseriii"
+  "\\glsuseriv"
+  "\\Glsuseriv"
+  "\\GLSuseriv"
+  "\\glsuserv"
+  "\\Glsuserv"
+  "\\GLSuserv"
+  "\\glsuservi"
+  "\\Glsuservi"
+  "\\GLSuservi"
+] @function.macro
+
+
+[
+  "\\acrshort"
+  "\\Acrshort"
+  "\\ACRshort"
+  "\\acrshortpl"
+  "\\Acrshortpl"
+  "\\ACRshortpl"
+  "\\acrlong"
+  "\\Acrlong"
+  "\\ACRlong"
+  "\\acrlongpl"
+  "\\Acrlongpl"
+  "\\ACRlongpl"
+  "\\acrfull"
+  "\\Acrfull"
+  "\\ACRfull"
+  "\\acrfullpl"
+  "\\Acrfullpl"
+  "\\ACRfullpl"
+  "\\acs"
+  "\\Acs"
+  "\\acsp"
+  "\\Acsp"
+  "\\acl"
+  "\\Acl"
+  "\\aclp"
+  "\\Aclp"
+  "\\acf"
+  "\\Acf"
+  "\\acfp"
+  "\\Acfp"
+  "\\ac"
+  "\\Ac"
+  "\\acp"
+  "\\glsentrylong"
+  "\\Glsentrylong"
+  "\\glsentrylongpl"
+  "\\Glsentrylongpl"
+  "\\glsentryshort"
+  "\\Glsentryshort"
+  "\\glsentryshortpl"
+  "\\Glsentryshortpl"
+  "\\glsentryfullpl"
+  "\\Glsentryfullpl"
 ] @function.macro
 
 (comment) @comment
@@ -76,6 +288,14 @@
   "\\subsubsection"
   "\\paragraph"
   "\\subparagraph"
+
+  "\\part*"
+  "\\chapter*"
+  "\\section*"
+  "\\subsection*"
+  "\\subsubsection*"
+  "\\paragraph*"
+  "\\subparagraph*"
 ] @type
 
 "\\item" @punctuation.special
@@ -149,18 +369,18 @@
 ((generic_command
   name:(generic_command_name) @_name
   arg: (_) @text.emphasis)
- (#match? @_name "^(\\textit|\\mathit)$"))
+ (#match? @_name "^(\\\\textit|\\\\mathit)$"))
 
 ((generic_command
   name:(generic_command_name) @_name
   arg: (_) @text.strong)
- (#match? @_name "^(\\textbf|\\mathbf)$"))
+ (#match? @_name "^(\\\\textbf|\\\\mathbf)$"))
 
 ((generic_command
   name:(generic_command_name) @_name
   .
   arg: (_) @text.uri)
- (#match? @_name "^(\\url|\\href)$"))
+ (#match? @_name "^(\\\\url|\\\\href)$"))
 
 (ERROR) @error
 
@@ -171,7 +391,28 @@
 
 (begin
  name: (_) @text.environment.name
- (#not-match? @text.environment.name "^(displaymath|equation|multline|eqnarray|align|array|split)[*]?$"))
+  (#not-any-of? @text.environment.name
+      "displaymath" "displaymath*"
+      "equation" "equation*"
+      "multline" "multline*"
+      "eqnarray" "eqnarray*"
+      "align" "align*"
+      "array" "array*"
+      "split" "split*"
+      "alignat" "alignat*"
+      "gather" "gather*"
+      "flalign" "flalign*"))
+
 (end
  name: (_) @text.environment.name
- (#not-match? @text.environment.name "^(displaymath|equation|multline|eqnarray|align|array|split)[*]?$"))
+  (#not-any-of? @text.environment.name
+      "displaymath" "displaymath*"
+      "equation" "equation*"
+      "multline" "multline*"
+      "eqnarray" "eqnarray*"
+      "align" "align*"
+      "array" "array*"
+      "split" "split*"
+      "alignat" "alignat*"
+      "gather" "gather*"
+      "flalign" "flalign*"))

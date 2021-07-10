@@ -1,11 +1,16 @@
-((comment) @comment)
+[
+    (comment)
+    (note)
+] @comment
 
-((date) @number)
+[
+    (date)
+    (interval)
+    (quantity)
+] @number
+
 ((account) @field)
-((note) @comment)
-((amount) @keyword)
-((quantity) @number)
-((commodity) @string)
+((commodity) @text.literal)
 
 "include" @include
 
@@ -23,6 +28,7 @@
     "nomarket"
     "note"
     "payee"
+    "check"
     "A"
     "Y"
     "N"

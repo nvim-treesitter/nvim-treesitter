@@ -86,45 +86,6 @@
 
 ; Variables
 ;----------
-
-;(formal_parameters (identifier) @parameter)
-
-;(formal_parameters
-  ;(rest_parameter
-    ;(identifier) @parameter))
-
-;; ({ a }) => null
-;(formal_parameters
-  ;(object_pattern
-    ;(shorthand_property_identifier) @parameter))
-
-;; ({ a: b }) => null
-;(formal_parameters
-  ;(object_pattern
-    ;(pair
-      ;value: (identifier) @parameter)))
-
-;; ([ a ]) => null
-;(formal_parameters
-  ;(array_pattern
-    ;(identifier) @parameter))
-
-;; a => null
-;(variable_declarator
-    ;value: (arrow_function
-      ;parameter: (identifier) @parameter))
-
-;; optional parameters
-;(formal_parameters
-  ;(assignment_pattern
-    ;(shorthand_property_identifier) @parameter))
-
-;; (a => null)
-;(arrow_function
-    ;parameter: (identifier) @parameter)
-
-; Variables
-;----------
 (namespace_import
   (identifier) @namespace)
 
@@ -146,10 +107,6 @@
 
 ; Punctuation
 ;------------
-
-(template_substitution
-  "${" @punctuation.special
-  "}" @punctuation.special) @none
 
 "..." @punctuation.special
 
@@ -205,7 +162,7 @@
 ] @operator
 
 (binary_expression "/" @operator)
-(ternary_expression ["?" ":"] @operator)
+(ternary_expression ["?" ":"] @conditional)
 (unary_expression ["!" "~" "-" "+" "delete" "void" "typeof"]  @operator)
 
 "(" @punctuation.bracket
@@ -214,6 +171,10 @@
 "]" @punctuation.bracket
 "{" @punctuation.bracket
 "}" @punctuation.bracket
+
+(template_substitution
+  "${" @punctuation.special
+  "}" @punctuation.special) @none
 
 ; Keywords
 ;----------
@@ -249,12 +210,10 @@
 "debugger"
 "export"
 "extends"
-"function"
 "get"
 "in"
 "instanceof"
 "let"
-"return"
 "set"
 "static"
 "switch"
@@ -263,8 +222,16 @@
 "var"
 "void"
 "with"
-"yield"
 ] @keyword
+
+[
+"return"
+"yield"
+] @keyword.return
+
+[
+ "function"
+] @keyword.function
 
 [
  "new"

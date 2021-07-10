@@ -4,6 +4,7 @@
  (while_statement)
  (repeat_statement)
  (if_statement)
+ (do_statement)
  (function_definition)
  (local_function)
  (function)
