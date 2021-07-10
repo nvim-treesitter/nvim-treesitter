@@ -114,6 +114,9 @@ function M.attach(bufnr, lang)
   local is_table = type(config.additional_vim_regex_highlighting) == "table"
   if config.additional_vim_regex_highlighting and (not is_table or config.additional_vim_regex_highlighting[lang]) then
     api.nvim_buf_set_option(bufnr, "syntax", "ON")
+  else
+    -- Prevent re-activating syntax when the file type is set/changed.
+    api.nvim_command(string.format("autocmd NvimTreesitter Syntax <buffer=%d> set syntax=", bufnr))
   end
 end
 
@@ -121,6 +124,7 @@ function M.detach(bufnr)
   if ts.highlighter.active[bufnr] then
     ts.highlighter.active[bufnr]:destroy()
   end
+  api.nvim_command(string.format("autocmd! NvimTreesitter Syntax <buffer=%d>", bufnr))
   api.nvim_buf_set_option(bufnr, "syntax", "ON")
 end
 
