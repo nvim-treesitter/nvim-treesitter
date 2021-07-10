@@ -29,7 +29,7 @@
 
 ((attribute
     attribute: (identifier) @field)
- (#vim-match? @field "^([A-Z])@!.*$"))
+ (#match? @field "^([A-Z])@!.*$"))
 
 ((identifier) @type.builtin
  (#any-of? @type.builtin
@@ -50,10 +50,10 @@
 
 (decorator) @function
 ((decorator (attribute (identifier) @function))
- (#vim-match? @function "^([A-Z])@!.*$"))
+ (#match? @function "^([A-Z])@!.*$"))
 (decorator) @function
 ((decorator (identifier) @function)
- (#vim-match? @function "^([A-Z])@!.*$"))
+ (#match? @function "^([A-Z])@!.*$"))
 
 (call
   function: (identifier) @function)
@@ -240,8 +240,9 @@
 
 ;; Class definitions
 
+(class_definition name: (identifier) @type)
+
 (class_definition
-  name: (identifier) @type
   body: (block
           (function_definition
             name: (identifier) @method)))
@@ -255,14 +256,14 @@
           (expression_statement
             (assignment
               left: (identifier) @field))))
- (#vim-match? @field "^([A-Z])@!.*$"))
+ (#match? @field "^([A-Z])@!.*$"))
 ((class_definition
   body: (block
           (expression_statement
             (assignment
               left: (_ 
                      (identifier) @field)))))
- (#vim-match? @field "^([A-Z])@!.*$"))
+ (#match? @field "^([A-Z])@!.*$"))
 
 ((class_definition
   (block
