@@ -37,6 +37,7 @@ highlight default link TSConstMacro Define
 highlight default link TSString String
 highlight default link TSStringRegex String
 highlight default link TSStringEscape SpecialChar
+highlight default link TSStringSpecial SpecialChar
 highlight default link TSCharacter Character
 highlight default link TSNumber Number
 highlight default link TSBoolean Boolean
