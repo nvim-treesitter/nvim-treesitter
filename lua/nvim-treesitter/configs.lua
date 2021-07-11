@@ -467,9 +467,8 @@ end
 -- A module should contain an attach and detach function.
 -- @param mod the module table
 function M.is_module(mod)
-  return type(mod) == "table" and ((type(mod.attach) == "function" and type(mod.detach) == "function") or type(
-    mod.module_path
-  ) == "string")
+  return type(mod) == "table"
+    and ((type(mod.attach) == "function" and type(mod.detach) == "function") or type(mod.module_path) == "string")
 end
 
 -- Initializes built-in modules and any queued modules
