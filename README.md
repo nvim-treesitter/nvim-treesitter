@@ -62,7 +62,7 @@ For more detailed information on setting these up, see ["Advanced setup"](#advan
 
 ## Requirements
 
-- Neovim [nightly](https://github.com/neovim/neovim#install-from-source)
+- Neovim 0.5 or [nightly](https://github.com/neovim/neovim#install-from-source)
 - `tar` and `curl` in your path (or alternatively `git`)
 - A C compiler in your path and libstdc++ installed ([Windows users please read this!](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support)).
 
@@ -292,7 +292,8 @@ local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.zimbu = {
   install_info = {
     url = "~/projects/tree-sitter-zimbu", -- local path or git repo
-    files = {"src/parser.c"}
+    files = {"src/parser.c"}, -- some parsers also need scanner.c/.cc
+    branch = "main", -- in cases your using a different branch name than master
   },
   filetype = "zu", -- if filetype does not agrees with parser name
   used_by = {"bar", "baz"} -- additional filetypes that use this parser

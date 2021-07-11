@@ -1,5 +1,5 @@
-if not pcall(require, "vim.treesitter.languagetree") then
-  error "nvim-treesitter requires a more recent Neovim nightly version!"
+if vim.fn.has("nvim-0.5.0") ~= 1 then
+  error "nvim-treesitter requires at least Neovim 0.5!"
 end
 
 local install = require "nvim-treesitter.install"
