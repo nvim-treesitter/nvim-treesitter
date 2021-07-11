@@ -51,12 +51,9 @@ end
 function TSRange:parent()
   local root = ts_utils.get_root_for_position(self[1], self[2])
 
-  return root and root:named_descendant_for_range(
-    self.start_pos[1],
-    self.start_pos[2],
-    self.end_pos[1],
-    self.end_pos[2]
-  ) or nil
+  return root
+      and root:named_descendant_for_range(self.start_pos[1], self.start_pos[2], self.end_pos[1], self.end_pos[2])
+    or nil
 end
 
 function TSRange:field() end
