@@ -6,30 +6,27 @@
 (jsx_fragment [">" "<" "/"] @tag.delimiter)
 
 (jsx_opening_element
-  name: (identifier) @tag)
+ name: [
+  ; <Component>
+  (identifier) @tag
+  ; <Component.Foo>
+  (nested_identifier (identifier) @tag (identifier) @tag)
+])
 
 (jsx_closing_element
-  name: (identifier) @tag)
+ name: [
+  ; </Component>
+  (identifier) @tag
+  ; </Component.Foo>
+  (nested_identifier (identifier) @tag (identifier) @tag)
+])
 
 (jsx_self_closing_element
-  name: (identifier) @tag)
-
-(jsx_opening_element ((identifier) @constructor
- (#match? @constructor "^[A-Z]")))
-
-; Handle the dot operator effectively - <My.Component>
-(jsx_opening_element ((nested_identifier (identifier) @tag (identifier) @constructor)))
-
-(jsx_closing_element ((identifier) @constructor
- (#match? @constructor "^[A-Z]")))
-
-; Handle the dot operator effectively - </My.Component>
-(jsx_closing_element ((nested_identifier (identifier) @tag (identifier) @constructor)))
-
-(jsx_self_closing_element ((identifier) @constructor
- (#match? @constructor "^[A-Z]")))
-
-; Handle the dot operator effectively - <My.Component />
-(jsx_self_closing_element ((nested_identifier (identifier) @tag (identifier) @constructor)))
+ name: [
+  ; <Component />
+  (identifier) @tag
+  ; <Component.Foo />
+  (nested_identifier (identifier) @tag (identifier) @tag)
+])
 
 (jsx_text) @none
