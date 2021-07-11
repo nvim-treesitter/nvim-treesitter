@@ -602,6 +602,10 @@ For regexes.
 `TSStringEscape`
 For escape characters within a string.
 
+							  *hl-TSStringSpecial*
+`TSStringSpecial`
+For strings with special meaning that don't fit into the above categories.
+
 								 *hl-TSSymbol*
 `TSSymbol`
 For identifiers referring to symbols or atoms.
