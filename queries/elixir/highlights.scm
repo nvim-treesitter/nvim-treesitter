@@ -133,7 +133,7 @@
        (heredoc
         [(heredoc_start)
          (heredoc_content)
-         (heredoc_end)] @string))
+         (heredoc_end)] @comment))
  (#any-of? @attribute "doc" "moduledoc"))
 
 (unary_op
