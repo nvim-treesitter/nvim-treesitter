@@ -78,6 +78,7 @@ local function select_incremental(get_parent)
 
     -- Find a node that changes the current selection.
     local node = nodes[#nodes]
+    local eof_row = api.nvim_buf_line_count(buf)
     while true do
       local parent = get_parent(node)
       if not parent or parent == node then
@@ -92,12 +93,14 @@ local function select_incremental(get_parent)
       end
       node = parent
       local srow, scol, erow, ecol = node:range()
+      local is_complete = (srow == 0 and scol == 0 and erow == eof_row and ecol == 0)
+      if is_complete then
+        ts_utils.update_selection(buf, node)
+        return
+      end
       local same_range = (srow == csrow and scol == cscol and erow == cerow and ecol == cecol)
       if not same_range then
         table.insert(selections[buf], node)
-        if node ~= nodes[#nodes] then
-          table.insert(nodes, node)
-        end
         ts_utils.update_selection(buf, node)
         return
       end
