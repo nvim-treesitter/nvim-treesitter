@@ -15,9 +15,6 @@
 ; Special identifiers
 ;--------------------
 
-((identifier) @constructor
- (#match? @constructor "^[A-Z]"))
-
 ((identifier) @constant
  (#vim-match? @constant "^[A-Z_][A-Z\\d_]+$"))
 
