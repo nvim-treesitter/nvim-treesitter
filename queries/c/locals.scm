@@ -8,8 +8,12 @@
   name: (identifier) @definition.macro)
 (pointer_declarator
   declarator: (identifier) @definition.var)
-(parameter_declaration
-  declarator: (identifier) @definition.parameter)
+; (parameter_declaration
+;   declarator: (identifier) @definition.parameter)
+
+((identifier) @definition.parameter
+  (#has-ancestor? @definition.parameter "parameter_declaration"))
+
 (init_declarator
   declarator: (identifier) @definition.var)
 (array_declarator
