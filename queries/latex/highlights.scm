@@ -326,25 +326,25 @@
 ["[" "]" "{" "}"] @punctuation.bracket ;"(" ")" is has no special meaning in LaTeX
 
 (chapter
-  text: (brace_group) @text.title)
+  text: (brace_group child: (text) @text.title))
 
 (part
-  text: (brace_group) @text.title)
+  text: (brace_group child: (text) @text.title))
 
 (section
-  text: (brace_group) @text.title)
+  text: (brace_group child: (text) @text.title))
 
 (subsection
-  text: (brace_group) @text.title)
+  text: (brace_group child: (text) @text.title))
 
 (subsubsection
-  text: (brace_group) @text.title)
+  text: (brace_group child: (text) @text.title))
 
 (paragraph
-  text: (brace_group) @text.title)
+  text: (brace_group child: (text) @text.title))
 
 (subparagraph
-  text: (brace_group) @text.title)
+  text: (brace_group child: (text) @text.title))
 
 ((environment
   (begin
@@ -356,30 +356,30 @@
 ((generic_command
   name:(generic_command_name) @_name
   arg: (brace_group
-          (text) @text.title))
+          child: (text) @text.title))
  (#eq? @_name "\\frametitle"))
 
 ;; Formatting
 
 ((generic_command
   name:(generic_command_name) @_name
-  arg: (_) @text.emphasis)
+  arg: (brace_group (text) @text.emphasis))
  (#eq? @_name "\\emph"))
 
 ((generic_command
   name:(generic_command_name) @_name
-  arg: (_) @text.emphasis)
+  arg: (brace_group (text) @text.emphasis))
  (#match? @_name "^(\\\\textit|\\\\mathit)$"))
 
 ((generic_command
   name:(generic_command_name) @_name
-  arg: (_) @text.strong)
+  arg: (brace_group (text) @text.strong))
  (#match? @_name "^(\\\\textbf|\\\\mathbf)$"))
 
 ((generic_command
   name:(generic_command_name) @_name
   .
-  arg: (_) @text.uri)
+  arg: (brace_group (text) @text.uri))
  (#match? @_name "^(\\\\url|\\\\href)$"))
 
 (ERROR) @error
