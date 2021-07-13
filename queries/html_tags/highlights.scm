@@ -1,7 +1,7 @@
 (tag_name) @tag
 (erroneous_end_tag_name) @error
 (comment) @comment
-(attribute_name) @property
+(attribute_name) @tag.attribute
 (attribute_value) @string
 (quoted_attribute_value) @string
 (text) @none
