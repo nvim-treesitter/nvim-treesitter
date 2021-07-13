@@ -152,15 +152,7 @@
 (call (function_identifier) @keyword.function
  (call
   function: (function_identifier) @function
-  (arguments
-   [(identifier) @parameter
-    (tuple (identifier) @parameter)
-    (list (identifier) @parameter)
-    (_
-     (keyword_list (identifier) @parameter))
-    (binary_op
-     left: (identifier) @parameter
-     operator: "\\\\")]))
+    (arguments))
  (#lua-match? @keyword.function "^def%a*$"))
 
 ; Definition with (some) arguments and guard(s)
@@ -169,12 +161,7 @@
   left:
    (call
     function: (function_identifier) @function
-    (arguments
-     [(identifier) @parameter
-      (tuple (identifier) @parameter)
-      (list (identifier) @parameter)
-      (_
-       (keyword_list (identifier) @parameter))]))
+    (arguments))
   operator: "when")
  (#lua-match? @keyword.function "^def%a*$"))
 
