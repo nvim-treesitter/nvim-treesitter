@@ -84,7 +84,11 @@ local folds_levels = tsutils.memoize_by_buf_tick(function(bufnr)
     if trimmed_level - last_trimmed_level > 0 then
       prefix = ">"
     elseif trimmed_level - next_trimmed_level > 0 then
-      prefix = "<"
+      -- Ending marks tend to confuse vim more than it helps, particularly when
+      -- the fold level changes by at least 2; we can uncomment this if
+      -- vim's behavior gets fixed.
+      -- prefix = "<"
+      prefix = ""
     end
 
     levels[lnum + 1] = prefix .. tostring(trimmed_level)
