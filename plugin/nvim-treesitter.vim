@@ -93,3 +93,4 @@ highlight default link TSDanger WarningMsg
 
 highlight default link TSTag Label
 highlight default link TSTagDelimiter Delimiter
+highlight default link TSTagAttribute TSProperty
