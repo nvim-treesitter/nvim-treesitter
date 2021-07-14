@@ -185,6 +185,7 @@ Used for xml-like tags
 
 ```
 @tag
+@tag.attribute
 @tag.delimiter
 ```
 

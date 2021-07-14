@@ -616,6 +616,10 @@ For identifiers referring to symbols or atoms.
 `TSTag`
 Tags like html tag names.
 
+							   *hl-TSTagAttribute*
+`TSTagAttribute`
+For html tag attributes.
+
 							   *hl-TSTagDelimiter*
 `TSTagDelimiter`
 Tag delimiter like `<` `>` `/`

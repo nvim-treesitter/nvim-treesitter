@@ -77,6 +77,7 @@ hlmap["string.special"] = "TSStringSpecial"
 hlmap["symbol"] = "TSSymbol"
 
 hlmap["tag"] = "TSTag"
+hlmap["tag.attribute"] = "TSTagAttribute"
 hlmap["tag.delimiter"] = "TSTagDelimiter"
 
 hlmap["text"] = "TSText"
