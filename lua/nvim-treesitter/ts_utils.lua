@@ -156,6 +156,38 @@ function M.get_root_for_position(line, col, root_lang_tree)
   return nil, nil, lang_tree
 end
 
+local function box_intersect(row, col, sRow, sCol, eRow, eCol)
+  if sRow > row or eRow < row then
+    return false
+  end
+
+  if sRow == row and sCol > col then
+    return false
+  end
+
+  if eRow == row and eCol < col then
+    return false
+  end
+
+  return true
+end
+
+-- Filters node list based on intersection with row and column
+--
+-- @param nodes the list of treesitter nodes
+-- @param row intersecting y column
+-- @param col intersecting x column
+function M.intersect_nodes(nodes, row, col)
+  local found = {}
+  for _, node in ipairs(nodes) do
+    local sRow, sCol, eRow, eCol = node:range()
+    if box_intersect(row, col, sRow + 1, sCol + 1, eRow + 1, eCol + 1) then
+      table.insert(found, node)
+    end
+  end
+  return found
+end
+
 function M.get_root_for_node(node)
   local parent = node
   local result = node
