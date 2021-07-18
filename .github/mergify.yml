@@ -1,3 +1,8 @@
+queue_rules:
+  - name: default
+    conditions:
+        - "#check-failure=0"
+
 pull_request_rules:
   - name: Automatic merge on approval
     conditions:
@@ -8,3 +13,4 @@ pull_request_rules:
     actions:
       queue:
         method: rebase
+        name: default
