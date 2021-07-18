@@ -12,7 +12,7 @@ pull_request_rules:
     conditions:
       - and:
         - "-draft"
-        - "#approved-reviews-by>=1"
+        - "#approved-reviews-by>=2"
         - "#review-requested=0"
     actions:
       merge:
