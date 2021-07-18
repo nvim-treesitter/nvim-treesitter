@@ -1,16 +1,13 @@
-queue_rules:
-  - name: default
-    conditions:
-        - "#check-failure=0"
-
 pull_request_rules:
   - name: Merge lockfile updates
     conditions:
       - "title=Update lockfile.json"
     actions:
+      review:
+        type: APPROVE
+        message: Automatically approving lockfile updates
       merge:
         method: merge
-        
   - name: Merge on approval
     conditions:
       - and:
@@ -18,6 +15,5 @@ pull_request_rules:
         - "#check-failure=0"
         - "#approved-reviews-by>=1"
     actions:
-      queue:
+      merge:
         method: rebase
-        name: default
