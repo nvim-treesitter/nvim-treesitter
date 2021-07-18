@@ -1,6 +1,7 @@
 [(mod_item)
  (function_item)
  (struct_item)
+ (trait_item)
  (enum_item)
  (impl_item)
  (type_item)
