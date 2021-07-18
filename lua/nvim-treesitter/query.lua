@@ -156,21 +156,25 @@ function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
   local matches = query:iter_matches(qnode, bufnr, start_row, end_row)
 
   local function iterator()
-    local pattern, match = matches()
+    local pattern, match, metadata = matches()
     if pattern ~= nil then
       local prepared_match = {}
+      local preds = query.info.patterns[pattern]
 
       -- Extract capture names from each match
       for id, node in pairs(match) do
         local name = query.captures[id] -- name of the capture in the query
         if name ~= nil then
           local path = split(name .. ".node")
-          insert_to_path(prepared_match, path, node)
+          if preds and preds[1][1] == "offset!" and preds[1][2] == id and metadata.content then
+            insert_to_path(prepared_match, path, tsrange.TSRange.from_table(bufnr, metadata.content[1]))
+          else
+            insert_to_path(prepared_match, path, node)
+          end
         end
       end
 
       -- Add some predicates for testing
-      local preds = query.info.patterns[pattern]
       if preds then
         for _, pred in pairs(preds) do
           -- functions
