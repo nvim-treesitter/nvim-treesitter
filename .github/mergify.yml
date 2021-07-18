@@ -4,7 +4,14 @@ queue_rules:
         - "#check-failure=0"
 
 pull_request_rules:
-  - name: Automatic merge on approval
+  - name: Merge lockfile updates
+    conditions:
+      - author~=^github-actions$
+    actions:
+      merge:
+        method: merge
+        
+  - name: Merge on approval
     conditions:
       - and:
         - "-draft"
