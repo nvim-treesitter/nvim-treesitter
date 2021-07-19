@@ -424,6 +424,15 @@ list.yaml = {
   maintainers = { "@stsewd" },
 }
 
+list.yang = {
+  install_info = {
+    url = "https://github.com/Hubro/tree-sitter-yang",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@Hubro" },
+  filetype = "yang",
+}
+
 list.nix = {
   install_info = {
     url = "https://github.com/cstrahan/tree-sitter-nix",
