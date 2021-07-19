@@ -88,7 +88,7 @@ Treesitter uses a different _parser_ for every language, which needs to be gener
 To simplify this, `nvim-treesitter` provides commands to automate this process.
 If the language is already [supported by `nvim-treesitter`](#supported-languages), you can install it with
 ```vim
-:TSInstall language
+:TSInstall <language_to_install>
 ```
 This command supports tab expansion.
 You can also get a list of all available languages and their installation status with `:TSInstallInfo`.
