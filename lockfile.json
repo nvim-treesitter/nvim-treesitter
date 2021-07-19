@@ -33,7 +33,7 @@
     "revision": "94e10230939e702b4fa3fa2cb5c3bc7173b95d07"
   },
   "cuda": {
-    "revision": "b384cf39bd5ec9cf0230fc824733b346354070af"
+    "revision": "3dd911b605168f8c577e287ac8f77dddd638e24a"
   },
   "dart": {
     "revision": "6a25376685d1d47968c2cef06d4db8d84a70025e"
@@ -156,7 +156,7 @@
     "revision": "a360da0a29a19c281d08295a35ecd0544d2da211"
   },
   "scala": {
-    "revision": "bfa2a81388019d47f6a0a6a6e9c96910dec830b4"
+    "revision": "f80daaa2126c949bf46ffe4df0b61a1899418f9d"
   },
   "scss": {
     "revision": "9da7c979c010c350c28ad2235893103db4622c10"
