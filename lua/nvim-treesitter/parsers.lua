@@ -172,10 +172,10 @@ list.bash = {
 
 list.fish = {
   install_info = {
-    url = "https://github.com/krnik/tree-sitter-fish",
+    url = "https://github.com/ram02z/tree-sitter-fish",
     files = { "src/parser.c", "src/scanner.c" },
   },
-  maintainers = { "@krnik", "@ram02z" },
+  maintainers = { "@ram02z" },
 }
 
 list.php = {
