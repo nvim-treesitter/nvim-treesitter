@@ -10,4 +10,5 @@
   "__device__"
   "__forceinline__"
   "__restrict__"
+  "__launch_bounds__"
 ] @keyword
