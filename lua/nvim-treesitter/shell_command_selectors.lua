@@ -158,7 +158,7 @@ function M.select_download_commands(repo, project_name, cache_folder, revision)
         err = "Error during tarball extraction.",
         opts = {
           args = {
-            "-xvfz",
+            "-xvzf",
             project_name .. ".tar.gz",
             "-C",
             project_name .. "-tmp",
