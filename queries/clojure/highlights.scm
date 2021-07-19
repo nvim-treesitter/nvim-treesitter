@@ -111,7 +111,7 @@
 
 ; Comment
 ((sym_lit) @comment
- (#any-of? @comment "comment" "quote"))
+ (#any-of? @comment "comment"))
 
 ; Conditionals
 ((sym_lit) @conditional
