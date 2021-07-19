@@ -33,7 +33,7 @@
     "revision": "94e10230939e702b4fa3fa2cb5c3bc7173b95d07"
   },
   "cuda": {
-    "revision": "43bbb01312804ae7a5f90290a0a612a5c7d99f24"
+    "revision": "b384cf39bd5ec9cf0230fc824733b346354070af"
   },
   "dart": {
     "revision": "6a25376685d1d47968c2cef06d4db8d84a70025e"
@@ -108,7 +108,7 @@
     "revision": "48bfb38abd93f8d617877d7bb7f92a6bb1166285"
   },
   "latex": {
-    "revision": "5413eabe2ae7ff073f9b8b2b29e9aed363c9afe1"
+    "revision": "2c0d03a36ee979bc697f6a9dd119174cf0ef15e0"
   },
   "ledger": {
     "revision": "72319504776f14193472a6ad14abec0af0225cbe"
@@ -196,6 +196,9 @@
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
+  },
+  "yang": {
+    "revision": "887204bbaff4e95bb13543d2544ebec609249d32"
   },
   "zig": {
     "revision": "05d6f44e5ae8fe986a7ca09ce2a301aa5148a20f"
