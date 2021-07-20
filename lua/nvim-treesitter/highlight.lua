@@ -114,7 +114,10 @@ function M.attach(bufnr, lang)
   ts.highlighter.new(parser, {})
 
   local is_table = type(config.additional_vim_regex_highlighting) == "table"
-  if config.additional_vim_regex_highlighting and (not is_table or config.additional_vim_regex_highlighting[lang]) then
+  if
+    config.additional_vim_regex_highlighting
+    and (not is_table or vim.tbl_contains(config.additional_vim_regex_highlighting, lang))
+  then
     api.nvim_buf_set_option(bufnr, "syntax", "ON")
   end
 end
