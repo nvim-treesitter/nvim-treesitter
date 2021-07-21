@@ -5,6 +5,57 @@ local utils = require "nvim-treesitter.utils"
 
 local M = {}
 
+-- determines if a contains node b.
+-- @param a the containing node
+-- @param b the node to be contained
+function M.node_contains(a, b)
+  if a == nil or b == nil then
+    return false
+  end
+
+  local start_row, start_col, end_row, end_col = b:range()
+  return M.is_in_node_range(a, start_row, start_col) and
+    M.is_in_node_range(a, end_row, end_col)
+end
+
+-- determines if a node exists within a range.  Imagine a range selection
+-- across '<,'> and an identifier.  Does the identifier exist within the
+-- selection?
+--
+-- @param a the containing node
+-- @param b the node to be contained
+M.range_contains_node = function(node, start_row, start_col, end_row, end_col)
+  local node_start_row, node_start_col, node_end_row, node_end_col = node:range()
+
+  -- There are five possible conditions
+  -- 1. node start/end row are contained exclusively within the range.
+  -- 2. The range is a single line range
+  --   - the node start/end row must equal start_row and cols have to exist
+  --     within range, inclusive
+  -- 3. The node exists solely within the first line
+  --   - node_start_col has to be inclusive with start_col, end col doesn't
+  --     matter.
+  -- 4. The node exists solely within the last line
+  --   - node_start_col doesn't matter whereas node_end_col has to be
+  --     inclusive with end_col
+  -- 5. The node starts / ends on the same rows and has to have each column
+  --    considered
+  if start_row < node_start_row and end_row > node_end_row then
+    return true
+  elseif start_row == end_row then
+    return node_start_row == start_row and node_end_row == end_row and
+    start_col <= node_start_col and end_col >= node_end_col
+  elseif start_row == node_start_row and start_row == node_end_row then
+    return start_col <= node_start_col
+  elseif end_row == node_start_row and end_row == node_end_row then
+    return end_col >= node_end_col
+  elseif start_row <= node_start_row and end_row >= node_end_row then
+    return start_col <= node_start_col and end_col >= node_end_col
+  end
+
+  return false
+end
+
 --- Gets the actual text content of a node
 -- @param node the node to get the text from
 -- @param bufnr the buffer containing the node
