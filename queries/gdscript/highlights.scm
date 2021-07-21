@@ -33,10 +33,6 @@
 ((identifier) @type
   (#match? @type "^[A-Z][A-Z_0-9]*$") . (_))
 
-((attribute
-    (identifier) @field)
- (#vim-match? @field "^([A-Z])@!.*$"))
-
 ;; Functions
 (constructor_definition) @constructor
 
