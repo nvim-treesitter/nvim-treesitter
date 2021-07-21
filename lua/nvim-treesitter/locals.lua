@@ -127,6 +127,10 @@ end
 -- @param The full match path to append to
 -- @param The last match
 function M.recurse_local_nodes(local_def, accumulator, full_match, last_match)
+  if type(local_def) ~= "table" then
+    return
+  end
+
   if local_def.node then
     accumulator(local_def, local_def.node, full_match, last_match)
   else
