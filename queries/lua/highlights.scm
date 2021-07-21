@@ -132,9 +132,12 @@
 
 (property_identifier) @property
 
-(function_call (identifier) @function . (arguments))
-(function_call [(identifier) @variable (_)] (method) @method . (arguments))
-(function_call (field_expression (property_identifier) @function) . (arguments))
+(function_call
+  [((identifier) @variable (method) @method)
+   ((_) (method) @method)
+   (identifier) @function
+   (field_expression (property_identifier) @function)]
+  . (arguments))
 
 ;; Parameters
 (parameters
