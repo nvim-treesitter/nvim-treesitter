@@ -8,7 +8,10 @@
 
 (
   (type_constructor) @type.builtin
-  (#match? @type.builtin "^(int|char|bytes|string|float|bool|unit|exn|array|list|option|int32|int64|nativeint|format6|lazy_t)$")
+  (#any-of? @type.builtin
+    "int" "char" "bytes" "string" "float"
+    "bool" "unit" "exn" "array" "list" "option"
+    "int32" "int64" "nativeint" "format6" "lazy_t")
 )
 
 [(class_name) (class_type_name) (type_constructor)] @type
@@ -90,11 +93,13 @@
 
 [
   "and" "as" "assert" "begin" "class" "constraint"
-  "end" "external" "fun" "function" "functor" "in"
+  "end" "external" "in"
   "inherit" "initializer" "lazy" "let" "match" "method" "module"
   "mutable" "new" "nonrec" "object" "of" "private" "rec" "sig" "struct"
   "type" "val" "virtual" "when" "with"
 ] @keyword
+
+["fun" "function" "functor"] @keyword.function
 
 ["if" "then" "else"] @conditional
 

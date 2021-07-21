@@ -108,10 +108,6 @@
 ; Punctuation
 ;------------
 
-(template_substitution
-  "${" @punctuation.special
-  "}" @punctuation.special) @none
-
 "..." @punctuation.special
 
 ";" @punctuation.delimiter
@@ -176,6 +172,10 @@
 "{" @punctuation.bracket
 "}" @punctuation.bracket
 
+(template_substitution
+  "${" @punctuation.special
+  "}" @punctuation.special) @none
+
 ; Keywords
 ;----------
 
@@ -214,7 +214,6 @@
 "in"
 "instanceof"
 "let"
-"return"
 "set"
 "static"
 "switch"
@@ -223,8 +222,12 @@
 "var"
 "void"
 "with"
-"yield"
 ] @keyword
+
+[
+"return"
+"yield"
+] @keyword.return
 
 [
  "function"

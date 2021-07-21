@@ -25,6 +25,11 @@
   function: (identifier) @function.builtin
 )
 
+(build_in_call_expr
+  function: ((identifier) @include
+             (#eq? @include "@import"))
+)
+
 ;; other identifiers
 (type_identifier) @type
 (primitive_type) @type.builtin
@@ -33,12 +38,13 @@
 (line_comment) @comment
 (doc_comment) @comment
 
-(char_literal) @number
+(char_literal) @character
 (integer_literal) @number
 (float_literal) @number
 
 (boolean_literal) @boolean
 (undefined_literal) @constant.builtin
+(unreachable_expression) @constant.builtin
 (null_literal) @constant.builtin
 
 ; (ERROR) @error
@@ -46,7 +52,8 @@
 (string_literal) @string
 (multiline_string_literal) @string 
 
-(escape_sequence) @constant.builtin
+(escape_sequence) @string.escape
+(char_literal (escape_sequence) @character)
 
 (label_identifier) @label
 
@@ -75,7 +82,6 @@
   "error"
   "export"
   "extern"
-  "false"
   "for"
   "if"
   "inline"
@@ -89,14 +95,12 @@
   ; "packed"
   "pub"
   "resume"
-  "return"
   ; "linksection"
   "struct"
   "suspend"
   "switch"
   "test"
   ; "threadlocal"
-  "true"
   "try"
   ; "undefined"
   "union"
@@ -106,6 +110,13 @@
   "volatile"
   "while"
 ] @keyword
+
+[
+  "true"
+  "false"
+] @boolean
+
+"return" @keyword.return
 
 "fn" @keyword.function
 

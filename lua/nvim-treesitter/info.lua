@@ -1,24 +1,26 @@
 local api = vim.api
-local configs = require'nvim-treesitter.configs'
-local parsers = require'nvim-treesitter.parsers'
+local configs = require "nvim-treesitter.configs"
+local parsers = require "nvim-treesitter.parsers"
 
 local M = {}
 
 local function install_info()
   local max_len = 0
   for _, ft in pairs(parsers.available_parsers()) do
-    if #ft > max_len then max_len = #ft end
+    if #ft > max_len then
+      max_len = #ft
+    end
   end
 
   local parser_list = parsers.available_parsers()
   table.sort(parser_list)
   for _, ft in pairs(parser_list) do
-    local is_installed = #api.nvim_get_runtime_file('parser/'..ft..'.so', false) > 0
-    api.nvim_out_write(ft..string.rep(' ', max_len - #ft + 1))
+    local is_installed = #api.nvim_get_runtime_file("parser/" .. ft .. ".so", false) > 0
+    api.nvim_out_write(ft .. string.rep(" ", max_len - #ft + 1))
     if is_installed then
-      api.nvim_out_write("[✓] installed\n")
+      api.nvim_out_write "[✓] installed\n"
     else
-      api.nvim_out_write("[✗] not installed\n")
+      api.nvim_out_write "[✗] not installed\n"
     end
   end
 end
@@ -30,8 +32,8 @@ end
 local function namespace_modules(modulelist)
   local modules = {}
   for _, module in ipairs(modulelist) do
-    if module:find('%.') then
-      local namespace, submodule = module:match('^(.*)%.(.*)$')
+    if module:find "%." then
+      local namespace, submodule = module:match "^(.*)%.(.*)$"
       if not modules[namespace] then
         modules[namespace] = {}
       end
@@ -61,46 +63,48 @@ local function append_module_table(curbuf, parserlist, namespace, modulelist)
   table.sort(modulelist)
 
   -- header
-  local header = '>> ' .. namespace .. string.rep(' ', maxlen_parser - #namespace - 1)
+  local header = ">> " .. namespace .. string.rep(" ", maxlen_parser - #namespace - 1)
   for _, module in pairs(modulelist) do
-    header = header .. module .. '  '
+    header = header .. module .. "  "
   end
-  api.nvim_buf_set_lines(curbuf, -1, -1, true, {header})
+  api.nvim_buf_set_lines(curbuf, -1, -1, true, { header })
 
   -- actual table
   for _, parser in ipairs(parserlist) do
-    local padding = string.rep(' ', maxlen_parser - #parser + 2)
-    local line = parser ..  padding
-    local namespace_prefix = (namespace == 'default') and '' or namespace .. '.'
+    local padding = string.rep(" ", maxlen_parser - #parser + 2)
+    local line = parser .. padding
+    local namespace_prefix = (namespace == "default") and "" or namespace .. "."
     for _, module in pairs(modulelist) do
       local modlen = #module
       module = namespace_prefix .. module
       if configs.is_enabled(module, parser) then
-        line = line .. '✓'
+        line = line .. "✓"
       else
-        line = line .. '✗'
+        line = line .. "✗"
       end
-      line = line .. string.rep(' ', modlen + 1)
+      line = line .. string.rep(" ", modlen + 1)
     end
-    api.nvim_buf_set_lines(curbuf, -1, -1, true, {line})
+    api.nvim_buf_set_lines(curbuf, -1, -1, true, { line })
   end
 
-  api.nvim_buf_set_lines(curbuf, -1, -1, true, {''})
+  api.nvim_buf_set_lines(curbuf, -1, -1, true, { "" })
 end
 
 local function print_info_modules(parserlist, module)
-  api.nvim_command('enew')
+  api.nvim_command "enew"
   local curbuf = api.nvim_get_current_buf()
 
   local modules
   if module then
-    modules = namespace_modules({module})
+    modules = namespace_modules { module }
   else
     modules = namespace_modules(configs.available_modules())
   end
 
   local namespaces = {}
-  for k, _ in pairs(modules) do table.insert(namespaces, k) end
+  for k, _ in pairs(modules) do
+    table.insert(namespaces, k)
+  end
   table.sort(namespaces)
 
   table.sort(parserlist)
@@ -108,9 +112,10 @@ local function print_info_modules(parserlist, module)
     append_module_table(curbuf, parserlist, namespace, modules[namespace])
   end
 
-  api.nvim_buf_set_option(curbuf, 'modified', false)
-  api.nvim_buf_set_option(curbuf, 'buftype', 'nofile')
-  api.nvim_exec([[
+  api.nvim_buf_set_option(curbuf, "modified", false)
+  api.nvim_buf_set_option(curbuf, "buftype", "nofile")
+  api.nvim_exec(
+    [[
     syntax match TSModuleInfoGood      /✓/
     syntax match TSModuleInfoBad       /✗/
     syntax match TSModuleInfoHeader    /^>>.*$/ contains=TSModuleInfoNamespace
@@ -121,11 +126,15 @@ local function print_info_modules(parserlist, module)
     highlight default link TSModuleInfoHeader    Type
     highlight default link TSModuleInfoNamespace Statement
     highlight default link TSModuleInfoParser    Identifier
-  ]], false)
+  ]],
+    false
+  )
 end
 
 local function module_info(module)
-  if module and not configs.get_module(module) then return end
+  if module and not configs.get_module(module) then
+    return
+  end
 
   local parserlist = parsers.available_parsers()
   if module then

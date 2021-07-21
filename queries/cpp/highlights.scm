@@ -32,10 +32,6 @@
     name: (identifier) @function))
 
 
-((identifier) @type
- (#match? @type "^[A-Z].*[a-z]")
- (#not-has-parent? @type function_declarator))
-
 (namespace_identifier) @namespace
 ((namespace_identifier) @type
                         (#match? @type "^[A-Z]"))
@@ -58,6 +54,7 @@
  (#match? @constructor "^[A-Z]"))
 
 (operator_name) @function
+"static_assert" @function.builtin
 
 (call_expression
   function: (scoped_identifier
@@ -150,7 +147,6 @@
 ] @keyword.operator
 
 "::" @operator
-"..." @operator
 
 ; Annotations (not fully supported by parser)
 

@@ -288,6 +288,14 @@
   "\\subsubsection"
   "\\paragraph"
   "\\subparagraph"
+
+  "\\part*"
+  "\\chapter*"
+  "\\section*"
+  "\\subsection*"
+  "\\subsubsection*"
+  "\\paragraph*"
+  "\\subparagraph*"
 ] @type
 
 "\\item" @punctuation.special

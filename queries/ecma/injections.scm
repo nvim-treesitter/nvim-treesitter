@@ -1,8 +1,6 @@
 (comment) @jsdoc
 (comment) @comment
 
-((regex_pattern) @regex)
-
 (call_expression
   function: ((identifier) @language)
   arguments: ((template_string) @content

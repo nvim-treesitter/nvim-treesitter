@@ -6,7 +6,6 @@
   "enum"
   "extern"
   "inline"
-  "return"
   "sizeof"
   "static"
   "struct"
@@ -16,6 +15,8 @@
   "goto"
   "register"
 ] @keyword
+
+"return" @keyword.return
 
 [
   "while"
@@ -95,6 +96,8 @@
 
 [ "." ";" ":" "," ] @punctuation.delimiter
 
+"..." @punctuation.special
+
 (conditional_expression [ "?" ":" ] @conditional)
 
 
@@ -108,15 +111,6 @@
 (number_literal) @number
 (char_literal) @character
 
-(call_expression
-  function: (identifier) @function)
-(call_expression
-  function: (field_expression
-    field: (field_identifier) @function))
-(function_declarator
-  declarator: (identifier) @function)
-(preproc_function_def
-  name: (identifier) @function.macro)
 [
  (preproc_arg)
  (preproc_defined)
@@ -154,6 +148,15 @@
   argument: (_) @constant
   (#eq? @_u "#undef"))
 
+(call_expression
+  function: (identifier) @function)
+(call_expression
+  function: (field_expression
+    field: (field_identifier) @function))
+(function_declarator
+  declarator: (identifier) @function)
+(preproc_function_def
+  name: (identifier) @function.macro)
 
 (comment) @comment
 

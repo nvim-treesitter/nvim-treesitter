@@ -24,10 +24,8 @@
   name: (identifier) @property) 
 
 ; Methods
-(instance_method_call 
-        name: (method_name) @function)
-(class_method_call 
-        name: (class_method_name) @method)
+(method_call 
+        name: (method_name) @method)
 
 ; Classes
 (class) @type
@@ -95,7 +93,7 @@
 ; control structure
 (control_structure) @conditional
 
-(escape_sequence) @string.special
+(escape_sequence) @string.escape
 
 ; SinOsc.ar()!2
 (duplicated_statement) @repeat

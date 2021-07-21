@@ -9,7 +9,7 @@
 
 ;; Identifier naming conventions
 ((identifier) @type
- (#match? @type "^[A-Z]"))
+ (#match? @type "^[A-Z].*[a-z]"))
 ((identifier) @constant
  (#match? @constant "^[A-Z][A-Z_0-9]*$"))
 
@@ -29,7 +29,7 @@
 
 ((attribute
     attribute: (identifier) @field)
- (#vim-match? @field "^([A-Z])@!.*$"))
+ (#match? @field "^([A-Z])@!.*$"))
 
 ((identifier) @type.builtin
  (#any-of? @type.builtin
@@ -50,10 +50,10 @@
 
 (decorator) @function
 ((decorator (attribute (identifier) @function))
- (#vim-match? @function "^([A-Z])@!.*$"))
+ (#match? @function "^([A-Z])@!.*$"))
 (decorator) @function
 ((decorator (identifier) @function)
- (#vim-match? @function "^([A-Z])@!.*$"))
+ (#match? @function "^([A-Z])@!.*$"))
 
 (call
   function: (identifier) @function)
@@ -196,26 +196,32 @@
 ] @keyword.operator
 
 [
+  "def"
+  "lambda"
+] @keyword.function
+
+[
   "assert"
   "async"
   "await"
   "class"
-  "def"
   "except"
   "exec"
   "finally"
   "global"
-  "lambda"
   "nonlocal"
   "pass"
   "print"
   "raise"
-  "return"
   "try"
   "with"
-  "yield"
   "as"
 ] @keyword
+
+[
+  "return"
+  "yield"
+] @keyword.return
 
 ["from" "import"] @include
 (aliased_import "as" @include)
@@ -234,8 +240,9 @@
 
 ;; Class definitions
 
+(class_definition name: (identifier) @type)
+
 (class_definition
-  name: (identifier) @type
   body: (block
           (function_definition
             name: (identifier) @method)))
@@ -249,14 +256,14 @@
           (expression_statement
             (assignment
               left: (identifier) @field))))
- (#vim-match? @field "^([A-Z])@!.*$"))
+ (#match? @field "^([A-Z])@!.*$"))
 ((class_definition
   body: (block
           (expression_statement
             (assignment
               left: (_ 
                      (identifier) @field)))))
- (#vim-match? @field "^([A-Z])@!.*$"))
+ (#match? @field "^([A-Z])@!.*$"))
 
 ((class_definition
   (block

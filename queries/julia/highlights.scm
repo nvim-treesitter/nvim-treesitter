@@ -127,14 +127,15 @@
 
 [
   "const"
-  "return"
   "macro"
   "struct"
   "primitive"
   "type"
 ] @keyword
 
-((identifier) @keyword (#match? @keyword "^(global|local)$"))
+"return" @keyword.return
+
+((identifier) @keyword (#any-of? @keyword "global" "local"))
 
 (compound_expression
   ["begin" "end"] @keyword)
