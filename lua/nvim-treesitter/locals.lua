@@ -127,20 +127,17 @@ end
 -- @param The full match path to append to
 -- @param The last match
 function M.recurse_local_nodes(local_def, accumulator, full_match, last_match)
-	if(type(local_def) ~= "table") then return end
+  if type(local_def) ~= "table" then
+    return
+  end
 
-	if local_def.node then
-		accumulator(local_def, local_def.node, full_match, last_match)
-	else
-		for match_key, def in pairs(local_def) do
-			M.recurse_local_nodes(
-				def,
-				accumulator,
-				full_match and (full_match..'.'..match_key) or match_key,
-				match_key)
-		end
-	end
-
+  if local_def.node then
+    accumulator(local_def, local_def.node, full_match, last_match)
+  else
+    for match_key, def in pairs(local_def) do
+      M.recurse_local_nodes(def, accumulator, full_match and (full_match .. "." .. match_key) or match_key, match_key)
+    end
+  end
 end
 
 --- Get a single dimension table to look definition nodes.
