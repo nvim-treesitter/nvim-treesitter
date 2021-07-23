@@ -6,24 +6,35 @@
 
 ; Keywords
 (statement_keyword) @keyword
-(extension_keyword) @string.escape
+(statement_keyword "import") @include
+(extension_keyword) @function
 
 ; Arguments
 (built_in_type) @type.builtin
-(integer) @number
+(number) @number
 (boolean) @boolean
 (date) @number
-(range) @string.escape
-(unquoted_range) @string.escape
-(yang_version) @string.escape
+(range (_ ".." @punctuation.special))
+(range (_ "|" @punctuation.special))
+(quoted_range "\"" @string.special)
+(quoted_range "'" @string.special)
+(yang_version) @constant.builtin
 (identifier) @variable
 (node_identifier) @variable
-(glob) @string
 (string) @string
+(string (escape_sequence) @string.escape)
 (unquoted_string) @string
-(keypath) @string.escape
+(keypath) @string.special
+
+; Always highlight the value of an enum statement as a string
+(enum_value) @string
+
+; Highlight xpath and pattern strings differently from plain strings
+(statement
+  (statement_keyword ["pattern" "must"])
+  (argument (string) @string.special))
 
 ; Punctuation
-(plus_symbol) @punctuation.delimiter
+(plus_symbol) @operator
 ["{" "}"] @punctuation.bracket
 [";"] @punctuation.delimiter
