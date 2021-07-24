@@ -13,7 +13,10 @@
 
 ;; >> Litterals
 
-(dis_expr) @comment
+(
+ (dis_expr) @comment
+ (#set! "priority" 105) ; Higher priority to mark the whole sexpr as a comment
+)
 (kwd_lit) @symbol
 (str_lit) @string
 (num_lit) @number
