@@ -19,8 +19,8 @@
 ;; Basic statements/Keywords
 [ "if" "then" "elseif" "else" ] @conditional
 [ "for" "while" "repeat" "until" ] @repeat
-[ "in" "local" (break) (goto) "do" "end" ] @keyword
 "return" @keyword.return
+[ "in" "local" (break) (goto) "do" "end" ] @keyword
 (label) @label
 
 ;; Global isn't a real keyword, but it gets special treatment in these places
@@ -69,13 +69,17 @@
   name: (identifier) @type)
 (anon_record . "record" @keyword)
 (record_body
-  (record_entry
-    . [ "record" "enum" ] @keyword
-    . key: (identifier) @type))
+  (record_declaration
+    . [ "record" ] @keyword
+    . name: (identifier) @type))
 (record_body
-  (record_entry
+  (enum_declaration
+    . [ "enum" ] @keyword
+    . name: (identifier) @type))
+(record_body
+  (typedef
     . "type" @keyword
-    . key: (identifier) @type . "="))
+    . name: (identifier) @type . "="))
 (record_body
   (metamethod "metamethod" @keyword))
 (record_body
@@ -86,7 +90,7 @@
   name: (identifier) @type)
 
 (type_declaration "type" @keyword)
-(type_declaration (type_name) @type)
+(type_declaration (identifier) @type)
 (simple_type) @type
 (type_index) @type
 (type_union "|" @operator)
@@ -94,12 +98,14 @@
 
 ;; The rest of it
 (var_declaration
-  (var name: (identifier) @variable))
+  declarators: (var_declarators
+      (var name: (identifier) @variable)))
 (var_declaration
-  (var
-    "<" @punctuation.bracket
-    . attribute: (attribute) @attribute
-    . ">" @punctuation.bracket))
+  declarators: (var_declarators
+    (var
+      "<" @punctuation.bracket
+      . attribute: (attribute) @attribute
+      . ">" @punctuation.bracket)))
 [ "(" ")" "[" "]" "{" "}" ] @punctuation.bracket
 
 ;; Only highlight format specifiers in calls to string.format
