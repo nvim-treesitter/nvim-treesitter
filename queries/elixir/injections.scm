@@ -11,5 +11,4 @@
 
 ((sigil
    (sigil_start) @_start
-   (sigil_content) @surface)
- (#match? @_start "~F"))
+   (sigil_content) @surface))
