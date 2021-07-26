@@ -1,26 +1,22 @@
 ((call
   function: (attribute
-	  object: (identifier) @_re)
-  arguments: (argument_list (string) @regex))
- (#eq? @_re "re")
- (#match? @regex "^r.*"))
+    object: (identifier) @_module)
+  arguments: (argument_list (string "\"" @_start "string_content" @regex)))
+ (#eq? @_module "re")
+ (#match? @_start "^r"))
 
 ; Module docstring
-((module . (expression_statement (string) @rst))
- (#offset! @rst 0 3 0 -3))
+(module . (expression_statement (string "string_content" @rst)))
 
 ; Class docstring
-((class_definition
-  body: (block . (expression_statement (string) @rst)))
- (#offset! @rst 0 3 0 -3))
+(class_definition
+  body: (block . (expression_statement (string "string_content" @rst))))
 
 ; Function/method docstring
-((function_definition
-  body: (block . (expression_statement (string) @rst)))
- (#offset! @rst 0 3 0 -3))
+(function_definition
+  body: (block . (expression_statement (string "string_content" @rst))))
 
 ; Attribute docstring
-(((expression_statement (assignment)) . (expression_statement (string) @rst))
- (#offset! @rst 0 3 0 -3))
+((expression_statement (assignment)) . (expression_statement (string "string_content" @rst)))
 
 (comment) @comment
