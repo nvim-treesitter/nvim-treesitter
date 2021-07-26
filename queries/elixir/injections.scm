@@ -1,9 +1,3 @@
-(comment) @comment
-
-; TODO: re-add when markdown is added
-; (heredoc
-;   (heredoc_content) @markdown)
-
 ((sigil
    (sigil_start) @_start
    (sigil_content) @regex)
@@ -11,4 +5,5 @@
 
 ((sigil
    (sigil_start) @_start
-   (sigil_content) @surface))
+   (sigil_content) @surface)
+ (#eq? @_start "~F\"\"\""))
