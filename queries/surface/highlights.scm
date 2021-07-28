@@ -1,7 +1,6 @@
 ; Surface has two types of comments, both are highlighted as such
 [
-  (private_comment) 
-  (public_comment)
+  (comment) 
 ] @comment
 
 ; Disable highlighting for injection sites and plain text
