@@ -261,6 +261,16 @@ list.elixir = {
   maintainers = { "@nifoc" },
 }
 
+list.surface = {
+  install_info = {
+    url = "https://github.com/connorlay/tree-sitter-surface",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  filetype = "sface",
+  maintainers = { "@connorlay" },
+}
+
 list.ocaml = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ocaml",
