@@ -18,6 +18,7 @@
 [
   (start_block) 
   (end_block)
+  (subblock)
 ] @keyword
 
 ; Surface supports HTML tags and are highlighted as such
