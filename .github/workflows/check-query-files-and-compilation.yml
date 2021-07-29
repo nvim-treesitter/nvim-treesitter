@@ -7,17 +7,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, windows-latest, macos-11]
         cc: [ gcc, clang ]
         exclude:
-          - os: macos-latest
+          - os: macos-11
             cc: gcc
 
         include:
           - os: windows-latest
             cc: cl
 
-          - os: macos-latest
+          - os: macos-11
             cc: gcc-10
 
     name: Parser compilation
@@ -39,8 +39,6 @@ jobs:
 
       - name: Check query files (Unix)
         if: matrix.os != 'windows-latest'
-        env:
-          ALLOWED_INSTALLATION_FAILURES: haskell
         run: nvim --headless -c "luafile ./scripts/check-queries.lua" -c "q"
 
       - name: Compile parsers Windows
@@ -55,8 +53,6 @@ jobs:
 
       - name: Check query files (Windows)
         if: matrix.os == 'windows-latest'
-        env:
-          ALLOWED_INSTALLATION_FAILURES: haskell
         run: C:\\tools\\neovim\\Neovim\\bin\\nvim.exe --headless -c "luafile ./scripts/check-queries.lua" -c "q"
 
       - uses: actions/upload-artifact@v2
