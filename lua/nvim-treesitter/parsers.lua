@@ -551,7 +551,8 @@ list.godotResource = {
     files = { "src/parser.c", "src/scanner.c" },
     requires_generate_from_grammar = true,
   },
-  readme_name = "Godot Resources (godotResource)",
+  filetype = "gdresource",
+  readme_name = "Godot Resources (gdresource)",
   maintainers = { "@pierpo" },
 }
 
