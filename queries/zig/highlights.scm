@@ -27,13 +27,19 @@
 
 (build_in_call_expr
   function: ((identifier) @include
-             (#eq? @include "@import"))
+             (#any-of? @include "@import" "@cImport"))
 )
-
+(struct_construction
+  (type_identifier) @constructor
+)
 ;; other identifiers
 (type_identifier) @type
+(custom_number_type) @type.builtin
 (primitive_type) @type.builtin
 (field_identifier) @field
+(enum_identifier) @constant
+(union_identifier) @field
+(error_identifier) @field
 
 (line_comment) @comment
 (doc_comment) @comment
@@ -121,6 +127,7 @@
 "fn" @keyword.function
 
 [
+  (else_switch)
   "continue"
   "else"
   "if"
