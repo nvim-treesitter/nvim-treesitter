@@ -1,18 +1,14 @@
-; Surface has two types of comments, both are highlighted as such
-[
-  (comment) 
-] @comment
+; Surface text is highlighted as such
+(text) @text
 
-; Disable highlighting for injection sites and plain text
-[
-  (text) 
-  (expression)
-] @none
+; Surface has two types of comments, both are highlighted as such
+(comment) @comment
+
+; Surface attributes are highlighted as HTML attributes
+(attribute_name) @tag.attribute
 
 ; Attributes are highlighted as strings
-[
-  (attribute_value)
-] @string
+(attribute_value) @string
 
 ; Surface blocks are highlighted as keywords
 [
@@ -26,18 +22,25 @@
   (start_tag)
   (end_tag)
   (self_closing_tag)
+  (start_component)
+  (end_component)
+  (self_closing_component)
 ] @tag.delimiter
 
+; Expressions are similar to string interpolation, and are highloghted as such
+(expression) @punctuation.special
 
-; Surface components are highlighted as Elixir modules
-((tag_name) @tag)
-((tag_name) @type (#match? @type "^[A-Z#]+.*"))
+; Expressions should be highlighted as Elixir, fallback to special strings
+(expression_value) @string.special
 
-; Surface directives are highligted as keywords
-((attribute_name) @tag.attribute)
-((attribute_name) @keyword (#match? @keyword "^[:]+.*"))
+; Surface tags are highlighted as HTML
+(tag_name) @tag
+
+; Surface components are highlighted as types (Elixir modules)
+(component_name) @type
+
+; Surface directives are highlighted as keywords
+(directive_name) @keyword
 
 ; Surface operators
-[
-  "="
-] @operator
+["="] @operator
