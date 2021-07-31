@@ -14,6 +14,7 @@ describe("indent C:", function()
 
   describe("new line:", function()
     runner:new_line("array.c", { on_line = 2, text = "0,", indent = 4 })
+    runner:new_line("compound_lit.c", { on_line = 7, text = ".z = 5,", indent = 8 })
     runner:new_line("cond.c", { on_line = 3, text = "x++;", indent = 8 })
     runner:new_line("cond.c", { on_line = 8, text = "x++;", indent = 8 })
     runner:new_line("expr.c", { on_line = 10, text = "2 *", indent = 8 })
