@@ -78,6 +78,10 @@
  remote: [(atom) (module)] @type
  function: (function_identifier) @method)
 
+(dot_call
+ remote: (identifier) @variable
+ function: (function_identifier) @method)
+
 "fn" @keyword.function
 
 ; def, defp, defguard, ... everything that starts with def
