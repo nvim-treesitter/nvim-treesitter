@@ -625,6 +625,14 @@ list.cmake = {
   maintainers = { "@uyha" },
 }
 
+list.hjson = {
+  install_info = {
+    url = "https://github.com/winston0410/tree-sitter-hjson",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@winston0410" },
+}
+
 local M = {
   list = list,
 }
