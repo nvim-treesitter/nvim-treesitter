@@ -15,13 +15,13 @@
     "revision": "3953034ee61e8639100b063092d4280e047ca9e9"
   },
   "clojure": {
-    "revision": "f7d100c4fbaa8aad537e80c7974c470c7fb6aeda"
+    "revision": "c00293fb0cd5ce3a7005c0601e9b546c1ea73094"
   },
   "cmake": {
     "revision": "d5a0b0b99249e313a01707ad5ebd793c9b70d189"
   },
   "comment": {
-    "revision": "894b61d68a31d93c33ed48dcc7f427174b440abe"
+    "revision": "9e6a10c4596949a780102d98a27835baa2dffeb4"
   },
   "commonlisp": {
     "revision": "02e6ecbe05633bc9a82c2a56a86a1c2fcb3c4725"
@@ -48,7 +48,7 @@
     "revision": "454f35f5eedcbe6155676f092d634ea54e2f3720"
   },
   "elm": {
-    "revision": "78d16b1836abb241912ab0fdd5b5196e93ed265a"
+    "revision": "d32d4436e5882a7527c78bc5c978b550dc87b7b9"
   },
   "erlang": {
     "revision": "fea0141fb1e6d3af45c3d8f45441766793ed6e30"
@@ -66,10 +66,13 @@
     "revision": "59e7e41e186d3759592e9938291f69055200783f"
   },
   "glimmer": {
-    "revision": "b049f0d7f9884d09bead4c7623884bfaa3e9c92c"
+    "revision": "4d34550a346784a73754766a8b1772e4ffff51bf"
   },
   "go": {
     "revision": "eb306e6e60f393df346cfc8cbfaf52667a37128a"
+  },
+  "godotResource": {
+    "revision": "c611dd49e838efe25567dece14cf6353710f6d98"
   },
   "gomod": {
     "revision": "2dfd6b7d3a4cfedc52e5eaa3cc497f419e628ebb"
@@ -114,7 +117,7 @@
     "revision": "72319504776f14193472a6ad14abec0af0225cbe"
   },
   "lua": {
-    "revision": "b6d4e9e10ccb7b3afb45018fbc391b4439306b23"
+    "revision": "6f5d40190ec8a0aa8c8410699353d820f4f7d7a6"
   },
   "nix": {
     "revision": "83ee5993560bf15854c69b77d92e34456f8fb655"
@@ -129,7 +132,7 @@
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
   },
   "php": {
-    "revision": "f5714826ccb300a7d71ef359a278d53c267a83c1"
+    "revision": "9f2586b1be335449181547ca51badb44c97c38b4"
   },
   "python": {
     "revision": "d6210ceab11e8d812d4ab59c07c81458ec6e5184"
@@ -147,7 +150,7 @@
     "revision": "3041aa3472d16fd94c6a9e15b741dbfecd9b714e"
   },
   "rst": {
-    "revision": "5aee336764698c848160e495277bd47184d94339"
+    "revision": "d1bdeb7aab72071d3e97f008630af64c7af9c655"
   },
   "ruby": {
     "revision": "391269d74d20154bbd0ac9be20b35eced6920290"
@@ -166,6 +169,9 @@
   },
   "supercollider": {
     "revision": "67ecede8fc5f2e342a7f0516b87d0476b36035ac"
+  },
+  "surface": {
+    "revision": "54082c44547e63e8a7e0f8b90ac855a6c3c4c1e3"
   },
   "svelte": {
     "revision": "349a5984513b4a4a9e143a6e746120c6ff6cf6ed"
@@ -198,7 +204,7 @@
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
   },
   "yang": {
-    "revision": "eb4ace1fdc4954d7e4f0687c687219f78a6ce64e"
+    "revision": "8e9d175982afcefa3dac8ca20d40d1643accd2bd"
   },
   "zig": {
     "revision": "05d6f44e5ae8fe986a7ca09ce2a301aa5148a20f"
