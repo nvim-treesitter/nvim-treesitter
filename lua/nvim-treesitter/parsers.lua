@@ -629,6 +629,7 @@ list.hjson = {
   install_info = {
     url = "https://github.com/winston0410/tree-sitter-hjson",
     files = { "src/parser.c" },
+    generate_requires_npm = true,
   },
   maintainers = { "@winston0410" },
 }
