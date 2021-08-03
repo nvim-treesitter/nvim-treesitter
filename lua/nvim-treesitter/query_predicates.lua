@@ -26,7 +26,7 @@ query.add_predicate("nth?", function(match, pattern, bufnr, pred)
   end
 
   local node = match[pred[2]]
-  local n = pred[3]
+  local n = tonumber(pred[3])
   if node and node:parent() and node:parent():named_child_count() > n then
     return node:parent():named_child(n) == node
   end
