@@ -39,11 +39,36 @@ local function get_job_status()
     .. "]"
 end
 
+local function get_parser_install_info(lang, validate)
+  local parser_config = parsers.get_parser_configs()[lang]
+
+  if not parser_config then
+    return error("Parser not available for language " .. lang)
+  end
+
+  local install_info = parser_config.install_info
+
+  if validate then
+    vim.validate {
+      url = { install_info.url, "string" },
+      files = { install_info.files, "table" },
+    }
+  end
+
+  return install_info
+end
+
 local function get_revision(lang)
   if #lockfile == 0 then
     local filename = utils.join_path(utils.get_package_path(), "lockfile.json")
     lockfile = vim.fn.filereadable(filename) == 1 and vim.fn.json_decode(vim.fn.readfile(filename)) or {}
   end
+
+  local install_info = get_parser_install_info(lang)
+  if install_info.revision then
+    return install_info.revision
+  end
+
   return (lockfile[lang] and lockfile[lang].revision)
 end
 
@@ -59,7 +84,8 @@ local function is_installed(lang)
 end
 
 local function needs_update(lang)
-  return not get_revision(lang) or get_revision(lang) ~= get_installed_revision(lang)
+  local revision = get_revision(lang)
+  return not revision or revision ~= get_installed_revision(lang)
 end
 
 local function outdated_parsers()
@@ -315,16 +341,7 @@ local function install_lang(lang, ask_reinstall, cache_folder, install_folder, w
     end
   end
 
-  local parser_config = parsers.get_parser_configs()[lang]
-  if not parser_config then
-    return api.nvim_err_writeln("Parser not available for language " .. lang)
-  end
-
-  local install_info = parser_config.install_info
-  vim.validate {
-    url = { install_info.url, "string" },
-    files = { install_info.files, "table" },
-  }
+  local install_info = get_parser_install_info(lang, true)
 
   run_install(cache_folder, install_folder, lang, install_info, with_sync, generate_from_grammar)
 end
