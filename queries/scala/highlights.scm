@@ -31,7 +31,6 @@
   "type"
   "val"
   "var"
-  "while"
   "with"
   "yield"
 ] @keyword
@@ -43,7 +42,10 @@
   "if"
 ] @conditional
 
-"for" @repeat
+[
+  "for" 
+  "while"
+] @repeat
 
 "import" @includes
 
