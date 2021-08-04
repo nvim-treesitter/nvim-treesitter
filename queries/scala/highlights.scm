@@ -1,3 +1,5 @@
+;; keywords
+
 [
   "abstract"
   "case"
@@ -5,15 +7,11 @@
   "class"
   "def"
   "do"
-  "else"
   "extends"
   "final"
   "finally"
-  "for"
   "forSome"
-  "if"
   "implicit"
-  "import"
   "lazy"
   "macro"
   "match"
@@ -24,7 +22,6 @@
   "package"
   "private"
   "protected"
-  "return"
   "sealed"
   "super"
   "this"
@@ -38,3 +35,16 @@
   "with"
   "yield"
 ] @keyword
+
+;; special keywords
+
+[
+  "else"
+  "if"
+] @conditional
+
+"for" @repeat
+
+"import" @includes
+
+"return" @keyword.return
