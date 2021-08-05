@@ -36,7 +36,8 @@
 
 (module name: (constant) @definition.namespace)
 (class name: (constant) @definition.type)
-(method name: (identifier) @definition.function)
+(method name: [(identifier) (constant)] @definition.function)
+(singleton_method name: [(identifier) (constant)] @definition.function)
 
 (method_parameters (identifier) @definition.var)
 (lambda_parameters (identifier) @definition.var)
