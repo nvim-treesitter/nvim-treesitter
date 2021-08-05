@@ -131,8 +131,8 @@ effect on highlighting. We will work on improving highlighting in the near futur
 #### Keywords
 
 ```
-@conditional (e.g. if, else)
-@repeat (e.g. for, while)
+@conditional (e.g. `if`, `else`)
+@repeat (e.g. `for`, `while`)
 @label for C/Lua-like labels
 @keyword
 @keyword.function (keyword to define a function, e.g. `func` in Go, `def` in Python)
