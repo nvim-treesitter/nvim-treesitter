@@ -15,7 +15,8 @@
   name: (identifier) @function)
 
 (function_declaration
-  name: (identifier) @function)
+  name: (identifier) @function
+  return: (identifier) @type)
 
 ; Function calls
 (call_expression
@@ -27,13 +28,31 @@
 
 (build_in_call_expr
   function: ((identifier) @include
-             (#eq? @include "@import"))
+             (#any-of? @include "@import" "@cImport"))
+)
+
+(struct_construction
+  (type_identifier) @constructor
 )
 
 ;; other identifiers
 (type_identifier) @type
+(custom_number_type) @type.builtin
 (primitive_type) @type.builtin
 (field_identifier) @field
+(enum_identifier) @constant
+(union_identifier) @field
+(error_identifier) @field
+
+(assignment_statement
+  name: (identifier) @type
+  expression: [
+    (enum_expression)
+    (union_expression)
+    (error_expression)
+    (struct_expression)
+  ]
+)
 
 (line_comment) @comment
 (doc_comment) @comment
@@ -121,6 +140,7 @@
 "fn" @keyword.function
 
 [
+  (else_switch)
   "continue"
   "else"
   "if"
