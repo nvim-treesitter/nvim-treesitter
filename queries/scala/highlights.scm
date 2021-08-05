@@ -3,9 +3,7 @@
 [
   "abstract"
   "case"
-  "catch"
   "class"
-  "def"
   "do"
   "extends"
   "final"
@@ -14,7 +12,6 @@
   "implicit"
   "lazy"
   "macro"
-  "match"
   "new"
   "null"
   "object"
@@ -25,9 +22,7 @@
   "sealed"
   "super"
   "this"
-  "throw"
   "trait"
-  "try"
   "type"
   "val"
   "var"
@@ -40,6 +35,7 @@
 [
   "else"
   "if"
+  "match"
 ] @conditional
 
 [
@@ -47,6 +43,20 @@
   "while"
 ] @repeat
 
-"import" @includes
+"def" @keyword.function
+
+"import" @include
+
+[
+  "try"
+  "catch"
+  "throw"
+] @exception
 
 "return" @keyword.return
+
+;; `case` is a conditional keyword in case_block
+
+(case_block
+  (case_clause ("case") @conditional)
+)
