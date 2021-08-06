@@ -4,7 +4,6 @@
   "abstract"
   "case"
   "class"
-  "do"
   "extends"
   "final"
   "finally"
@@ -13,7 +12,6 @@
   "lazy"
   "macro"
   "new"
-  "null"
   "object"
   "override"
   "package"
@@ -27,8 +25,9 @@
   "val"
   "var"
   "with"
-  "yield"
 ] @keyword
+
+(null_literal) @keyword
 
 ;; special keywords
 
@@ -39,8 +38,10 @@
 ] @conditional
 
 [
-  "for" 
+  "do"
+  "for"
   "while"
+  "yield"
 ] @repeat
 
 "def" @keyword.function
