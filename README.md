@@ -328,6 +328,9 @@ Note also that module functionality is only triggered if your language's filetyp
 If Neovim does not detect your language's filetype by default, you can add a short Vimscript file to nvim-treesitter's `ftdetect` runtime directory.
 See [Neovim's documentation](https://neovim.io/doc/user/filetype.html#new-filetype) on how to use Vimscript to detect a filetype.
 
+If you use a git repository for your parser and want to use a specific version, you can set the `revision` key
+in the `install_info` table for you parser config.
+
 ## Update parsers used_by
 
 Sometimes needs to use some parser for different filetype.
