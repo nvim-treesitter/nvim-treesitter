@@ -1,147 +1,158 @@
+[
+  (container_doc_comment)
+  (doc_comment)
+  (line_comment)
+] @comment
 
-; Zig
+(IDENTIFIER) @variable
 
-; Variables
-; --------------
-(identifier) @variable
-
-(parameter (identifier) @variable)
-
-; ((identifier) @constant
-;  (#vim-match? @constant "^[A-Z][A-Z\\d_]+$'"))
-
-; function definition
-(function_signature
-  name: (identifier) @function)
-
-(function_declaration
-  name: (identifier) @function
-  return: (identifier) @type)
-
-; Function calls
-(call_expression
-  function: (identifier) @function)
-
-(build_in_call_expr
-  function: (identifier) @function.builtin
+;field in top level decl, and in struct, union...
+(ContainerField
+  (IDENTIFIER) @field
+  (SuffixExpr (IDENTIFIER) @type)?
 )
 
-(build_in_call_expr
-  function: ((identifier) @include
-             (#any-of? @include "@import" "@cImport"))
+; INFO: field become a function if type is a function?
+; const u = union { this_is_function: fn () void };
+(ContainerField
+  (IDENTIFIER) @function
+  (SuffixExpr (FnProto))
 )
 
-(struct_construction
-  (type_identifier) @constructor
+;enum and tag union field is constant
+(
+  [
+    ; union(Tag){}
+    (ContainerDeclType (SuffixExpr (IDENTIFIER) @type))
+
+    ; enum{}
+    (ContainerDeclType "enum")
+  ]
+  (ContainerField (IDENTIFIER) @constant)?
 )
 
-;; other identifiers
-(type_identifier) @type
-(custom_number_type) @type.builtin
-(primitive_type) @type.builtin
-(field_identifier) @field
-(enum_identifier) @constant
-(union_identifier) @field
-(error_identifier) @field
+; INFO: .IDENTIFIER is a field?
+(SuffixExpr 
+  "."
+  (IDENTIFIER) @field
+)
 
-(assignment_statement
-  name: (identifier) @type
-  expression: [
-    (enum_expression)
-    (union_expression)
-    (error_expression)
-    (struct_expression)
+; error.OutOfMemory;
+(SuffixExpr 
+  "error"
+  "."
+  (IDENTIFIER) @constant
+)
+
+(VarDecl
+  (IDENTIFIER) @type
+  [
+    ; const IDENTIFIER = struct/enum/union...
+    (SuffixExpr (ContainerDecl))
+
+    ; const A = u8;
+    (SuffixExpr (BuildinTypeExpr))
   ]
 )
 
-(line_comment) @comment
-(doc_comment) @comment
+; const fn_no_comma = fn (i32, i32) void;
+(VarDecl
+  (IDENTIFIER) @function
+  (SuffixExpr (FnProto))
+)
 
-(char_literal) @character
-(integer_literal) @number
-(float_literal) @number
+; var x: IDENTIFIER
+type: (SuffixExpr (IDENTIFIER) @type)
 
-(boolean_literal) @boolean
-(undefined_literal) @constant.builtin
-(unreachable_expression) @constant.builtin
-(null_literal) @constant.builtin
+; IDENTIFIER{}
+constructor: (SuffixExpr (IDENTIFIER) @constructor)
 
-; (ERROR) @error
+;{.IDENTIFIER = 1}
+(FieldInit (IDENTIFIER) @field)
 
-(string_literal) @string
-(multiline_string_literal) @string 
+; var.field
+(SuffixOp (IDENTIFIER) @field)
 
-(escape_sequence) @string.escape
-(char_literal (escape_sequence) @character)
+; var.func().func().field
+( 
+  (SuffixOp
+    (IDENTIFIER) @function
+  )
+  .
+  (FnCallArguments)
+)
+; func()
+( 
+  (
+    (IDENTIFIER) @function
+  )
+  .
+  (FnCallArguments)
+)
 
-(label_identifier) @label
+; functionn decl
+(FnProto
+  (IDENTIFIER) @function
+  (SuffixExpr (IDENTIFIER) @type)?
+  ("!")? @exception
+)
 
-(call_modifier) @keyword ; async
 
-(binary_operator) @keyword.operator
+(ParamDecl 
+  (ParamType (SuffixExpr (IDENTIFIER) @parameter))
+)
+
+(ParamDecl 
+  (IDENTIFIER) @parameter
+  ":"
+  [
+    (ParamType (SuffixExpr (IDENTIFIER) @type))
+    (ParamType)
+  ]
+)
+
+(BUILTINIDENTIFIER) @function.builtin
+
+((BUILTINIDENTIFIER) @include
+  (#any-of? @include "@import" "@cImport"))
+
+
+(INTEGER) @number
+
+(FLOAT) @float
 
 [
-  "align"
+  (STRINGLITERAL)
+  (STRINGLITERALSINGLE)
+] @string
+
+(CHAR_LITERAL) @character
+
+[
   "allowzero"
-  ; "and"
-  ; "anyframe"
-  ; "anytype"
-  ;"asm"
-  "await"
-  "break"
-  ; "callconv"
-  ; "catch"
-  "comptime"
-  "const"
-  "continue"
-  "defer"
-  "else"
-  "enum"
-  "errdefer"
-  "error"
-  "export"
-  "extern"
-  "for"
-  "if"
-  "inline"
-  ; "noalias"
-  ; "nosuspend"
-  ; "noinline"
-  "null"
-  ; "opaque"
-  ; "or"
-  ; "orelse"
-  ; "packed"
-  "pub"
-  "resume"
-  ; "linksection"
-  "struct"
-  "suspend"
-  "switch"
-  "test"
-  ; "threadlocal"
-  "try"
-  ; "undefined"
-  "union"
-  ;"unreachable"
-  "usingnamespace"
-  "var"
   "volatile"
-  "while"
-] @keyword
+  "anytype"
+  "anyframe"
+  (BuildinTypeExpr)
+] @type.builtin
+
+[
+  (BreakLabel)
+  (BlockLabel)
+] @label
 
 [
   "true"
   "false"
 ] @boolean
 
-"return" @keyword.return
-
-"fn" @keyword.function
+[
+  "undefined"
+  "unreachable"
+  "null"
+] @constant.builtin
 
 [
-  (else_switch)
-  "continue"
   "else"
   "if"
   "switch"
@@ -152,71 +163,97 @@
   "while"
 ] @repeat
 
-(assignment_modifier) @attribute
+[
+  "or"
+  "and"
+  (BitwiseOp "orelse")
+] @keyword.operator
 
 [
-  ".{"
-  "("
-  ")"
-  "["
-  "]"
-  "{"
-  "}"
-] @punctuation.bracket
+  "struct"
+  "enum"
+  "union"
+  "error"
+  "packed"
+  "opaque"
+] @keyword
 
 [
-  "&"
-  "&="
-  "*"
-  "*="
-  ;"*%"
-  "*%="
-  ;"^"
-  "^="
-  ":"
-  ","
-  "."
-  ".."
-  "..."
-  ".*"
-  ".?"
-  "="
-  ;"=="
-  "=>"
-  "!"
-  ;"!="
-  ;"<"
-  ;"<<"
-  "<<="
-  ; "<="
-  "-"
-  "-="
-  "-%"
-  "-%="
-  ;"->"
-  ;"%"
-  "%="
-  "|"
-  ;"||"
-  "|="
-  ;"+"
-  ;"++"
-  "+="
-  ;"+%"
-  "+%="
-  "?"
-  ;">"
-  ;">>"
-  ">>="
-  ;">="
-  ;"/"
-  "/="
-  "~"
+  "try"
+  "error"
+  "catch"
+] @exception
+
+; VarDecl
+[
+  "const"
+  "var"
+  "comptime"
+  "threadlocal"
+  "fn"
+] @keyword.function
+
+[
+  "test"
+  "pub"
+  "usingnamespace"
+] @keyword
+
+[
+  "return"
+  "break"
+  "continue"
+] @keyword.return
+
+; Macro
+[
+  "defer"
+  "errdefer"
+  "async"
+  "nosuspend"
+  "await"
+  "suspend"
+  "resume"
+  "export"
+  "extern"
+] @function.macro
+
+; PrecProc
+[
+  (BitwiseOp "orelse")
+  "inline"
+  "noinline"
+  "asm"
+  "callconv"
+  "noalias"
+] @attribute
+
+[
+  "linksection"
+  "align" 
+] @function.builtin
+
+[
+  (CompareOp)
+  (BitwiseOp)
+  (BitShiftOp)
+  (AdditionOp)
+  (MultiplyOp)
+  (PrefixOp)
 ] @operator
 
 [
   ";"
   "."
   ","
+  ":"
 ] @punctuation.delimiter
 
+[
+  "["
+  "]"
+  "("
+  ")"
+  "{"
+  "}"
+] @punctuation.bracket
