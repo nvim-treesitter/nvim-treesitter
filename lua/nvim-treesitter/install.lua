@@ -286,10 +286,11 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
         },
       })
     end
+    local treesitter_cmd = vim.fn.exepath "tree-sitter"
     vim.list_extend(command_list, {
       {
-        cmd = vim.fn.exepath "tree-sitter",
-        info = "Generating source files from grammar.js...",
+        cmd = treesitter_cmd,
+        info = "Generating source files from grammar.js using " .. treesitter_cmd ..  "...",
         err = 'Error during "tree-sitter generate"',
         opts = {
           args = { "generate" },
