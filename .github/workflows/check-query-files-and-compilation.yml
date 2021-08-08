@@ -29,7 +29,13 @@ jobs:
       - uses: ilammy/msvc-dev-cmd@v1.9.0
       - uses: actions/setup-node@v2
 
-      - name: Install and prepare Neovim
+      - name: Install and prepare Neovim (unix)
+        if: matrix.os != 'windows-latest'
+        run: |
+          ./scripts/ci-install-${{ matrix.os }}.sh
+
+      - name: Install and prepare Neovim (windows)
+        if: matrix.os == 'windows-latest'
         run: |
           scripts\\ci-install-${{ matrix.os }}.cmd
 
@@ -60,7 +66,7 @@ jobs:
 
       - name: Copy generated parsers to artifacts dir
         if: matrix.os == 'windows-latest'
-        run: copy /y %homedrive%%homepath%\\AppData\\Local\\nvim\\pack\\nvim-treesitter\\start\\nvim-treesitter\\parser\\* parser
+        run: xcopy %homedrive%%homepath%\\AppData\\Local\\nvim\\pack\\nvim-treesitter\\start\\nvim-treesitter\\parser\\* parser /E/H
 
       - uses: actions/upload-artifact@v2
         with:
