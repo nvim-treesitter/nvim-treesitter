@@ -28,7 +28,7 @@
 ((directive
    name: (type) @_type
    body: (body (arguments) @language (content) @content))
- (#eq? @_type "code"))
+ (#any-of? @_type "code" "code-block"))
 
 ((directive
    name: (type) @_type
