@@ -58,10 +58,14 @@ local function get_parser_install_info(lang, validate)
   return install_info
 end
 
+local function load_lockfile()
+  local filename = utils.join_path(utils.get_package_path(), "lockfile.json")
+  lockfile = vim.fn.filereadable(filename) == 1 and vim.fn.json_decode(vim.fn.readfile(filename)) or {}
+end
+
 local function get_revision(lang)
   if #lockfile == 0 then
-    local filename = utils.join_path(utils.get_package_path(), "lockfile.json")
-    lockfile = vim.fn.filereadable(filename) == 1 and vim.fn.json_decode(vim.fn.readfile(filename)) or {}
+    load_lockfile()
   end
 
   local install_info = get_parser_install_info(lang)
@@ -471,7 +475,7 @@ end
 function M.write_lockfile(verbose, skip_langs)
   local sorted_parsers = {}
   -- Load previous lockfile
-  get_revision()
+  load_lockfile()
   skip_langs = skip_langs or {}
 
   for k, v in pairs(parsers.get_parser_configs()) do
