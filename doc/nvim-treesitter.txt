@@ -624,6 +624,10 @@ For html tag attributes.
 `TSTagDelimiter`
 Tag delimiter like `<` `>` `/`
 
+							      *hl-TSTagCustom*
+`TSTagCustom`
+Custom tags like `Component`
+
 								   *hl-TSText*
 `TSText`
 For strings considered text in a markup language.
