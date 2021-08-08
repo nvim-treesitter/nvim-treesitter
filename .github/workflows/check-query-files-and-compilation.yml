@@ -60,8 +60,7 @@ jobs:
 
       - name: Copy generated parsers to artifacts dir
         if: matrix.os == 'windows-latest'
-        run: cp -r ~/AppData/Local/nvim/pack/nvim-treesitter/start/nvim-treesitter/parser/* parser
-        shell: bash
+        run: copy /y %homedrive%%homepath%\\AppData\\Local\\nvim\\pack\\nvim-treesitter\\start\\nvim-treesitter\\parser\\* parser
 
       - uses: actions/upload-artifact@v2
         with:
