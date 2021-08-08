@@ -31,7 +31,7 @@ jobs:
 
       - name: Install and prepare Neovim
         run: |
-          bash ./scripts/ci-install-${{ matrix.os }}.sh
+          scripts\\ci-install-${{ matrix.os }}.cmd
 
       - name: Install tree-sitter-cli
         run: npm install -g tree-sitter-cli
