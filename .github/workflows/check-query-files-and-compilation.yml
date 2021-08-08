@@ -26,7 +26,7 @@ jobs:
       CC: ${{ matrix.cc }}
     steps:
       - uses: actions/checkout@v2
-      - uses: ilammy/msvc-dev-cmd@v1.5.0
+      - uses: ilammy/msvc-dev-cmd@v1.9.0
       - uses: actions/setup-node@v2
 
       - name: Install and prepare Neovim
@@ -34,7 +34,7 @@ jobs:
           bash ./scripts/ci-install-${{ matrix.os }}.sh
 
       - name: Install tree-sitter-cli
-        run: npm install -g tree-sitter-cli@0.19.5
+        run: npm install -g tree-sitter-cli
 
       - name: Compile parsers Unix like
         if: matrix.os != 'windows-latest'
@@ -52,19 +52,18 @@ jobs:
         run: |
           C:\\tools\\neovim\\Neovim\\bin\\nvim.exe --headless -c "TSInstallSync all" -c "q"
 
-      - name: Post compile Windows
-        if: matrix.os == 'windows-latest'
-        run: cp -r ~/AppData/Local/nvim/pack/nvim-treesitter/start/nvim-treesitter/parser/* parser
-        shell: bash
-
       - name: Check query files (Windows)
         if: matrix.os == 'windows-latest'
         env:
           ALLOWED_INSTALLATION_FAILURES: haskell
         run: C:\\tools\\neovim\\Neovim\\bin\\nvim.exe --headless -c "luafile ./scripts/check-queries.lua" -c "q"
 
+      - name: Copy generated parsers to artifacts dir
+        if: matrix.os == 'windows-latest'
+        run: cp -r ~/AppData/Local/nvim/pack/nvim-treesitter/start/nvim-treesitter/parser/* parser
+        shell: bash
+
       - uses: actions/upload-artifact@v2
         with:
           name: parsers-${{ matrix.os }}-${{ matrix.cc }}-x86_64
           path: parser/*
-
