@@ -81,7 +81,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "haskell": {
-    "revision": "bc85d7470f8bb08cdb433ba11b125c0ebcb6efbc"
+    "revision": "30eea3c1339e573cda5dcffd8f9b06003ec31789"
   },
   "hcl": {
     "revision": "7a12dfe711c3d74e97ce01126cf4ccb4ebf60f07"
@@ -150,7 +150,7 @@
     "revision": "3041aa3472d16fd94c6a9e15b741dbfecd9b714e"
   },
   "rst": {
-    "revision": "d1bdeb7aab72071d3e97f008630af64c7af9c655"
+    "revision": "41a15b8d530cc7262ff56a3a3ecdfe3f4ddec120"
   },
   "ruby": {
     "revision": "391269d74d20154bbd0ac9be20b35eced6920290"
