@@ -633,11 +633,12 @@ list.bibtex = {
 
 list.zig = {
   install_info = {
-    url = "https://github.com/Himujjal/tree-sitter-zig",
+    url = "https://github.com/maxxnino/tree-sitter-zig",
     files = { "src/parser.c" },
+    branch = "main",
   },
   filetype = "zig",
-  maintainers = { "@Himujjal" },
+  maintainers = { "@maxxnino" },
 }
 
 list.fortran = {
