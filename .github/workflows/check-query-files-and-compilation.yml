@@ -56,6 +56,7 @@ jobs:
       - name: Compile parsers Windows
         if: matrix.os == 'windows-latest'
         run: |
+          C:\\tools\\neovim\\Neovim\\bin\\nvim.exe --headless -c 'echo $MYVIMRC' -c "q"
           C:\\tools\\neovim\\Neovim\\bin\\nvim.exe --headless -c "TSInstallSync all" -c "q"
 
       - name: Check query files (Windows)
