@@ -34,7 +34,7 @@ jobs:
           bash ./scripts/ci-install-${{ matrix.os }}.sh
 
       - name: Install tree-sitter-cli
-        run: npm install -g tree-sitter-cli
+        run: npm install -g tree-sitter-cli@0.19.5
 
       - name: Compile parsers Unix like
         if: matrix.os != 'windows-latest'
