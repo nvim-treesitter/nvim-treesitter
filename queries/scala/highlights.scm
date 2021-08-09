@@ -1,5 +1,8 @@
 ;; keywords
 
+;; `forSome` existential types not implemented yet
+;; `macro` not implemented yet
+
 [
   "abstract"
   "case"
@@ -7,10 +10,8 @@
   "extends"
   "final"
   "finally"
-  "forSome"
   "implicit"
   "lazy"
-  "macro"
   "new"
   "object"
   "override"
