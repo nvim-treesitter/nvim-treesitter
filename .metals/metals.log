@@ -1,0 +1,17 @@
+[0m2021.08.08 22:51:13 INFO  Started: Metals version 0.10.6-M1 in workspace '/Users/smashaal/me/code/nvim-treesitter' for client Neovim 0.6.0.[0m
+[0m2021.08.08 22:51:14 INFO  time: initialize in 0.39s[0m
+[0m2021.08.08 22:51:14 WARN  Build server is not auto-connectable.[0m
+[0m2021.08.08 22:51:14 WARN  no build tool detected in workspace '/Users/smashaal/me/code/nvim-treesitter'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.08.08 22:51:14 WARN  no build target for: /Users/smashaal/me/code/nvim-treesitter/dank.scala[0m
+[0m2021.08.08 22:51:16 INFO  no build target: using presentation compiler with only scala-library: 2.12.14[0m
+[0m2021.08.08 22:52:18 WARN  no build target for: /Users/smashaal/me/code/nvim-treesitter/dank.scala[0m
+[0m2021.08.08 22:52:46 WARN  no build target for: /Users/smashaal/me/code/nvim-treesitter/dank.scala[0m
+[0m2021.08.08 22:53:23 INFO  shutting down Metals[0m
+[0m2021.08.08 22:53:25 INFO  Started: Metals version 0.10.6-M1 in workspace '/Users/smashaal/me/code/nvim-treesitter' for client Neovim 0.6.0.[0m
+[0m2021.08.08 22:53:26 INFO  time: initialize in 0.35s[0m
+[0m2021.08.08 22:53:26 WARN  Build server is not auto-connectable.[0m
+[0m2021.08.08 22:53:26 WARN  no build tool detected in workspace '/Users/smashaal/me/code/nvim-treesitter'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.08.08 22:53:26 WARN  no build target for: /Users/smashaal/me/code/nvim-treesitter/dank.scala[0m
+[0m2021.08.08 22:53:27 INFO  no build target: using presentation compiler with only scala-library: 2.12.14[0m
+[0m2021.08.08 22:53:29 INFO  time: code lens generation in 2.73s[0m
+[0m2021.08.08 22:54:09 INFO  shutting down Metals[0m

@@ -1,8 +1,5 @@
 ;; keywords
 
-;; `forSome` existential types not implemented yet
-;; `macro` not implemented yet
-
 [
   "abstract"
   "case"
@@ -10,8 +7,10 @@
   "extends"
   "final"
   "finally"
+;; `forSome` existential types not implemented yet
   "implicit"
   "lazy"
+;; `macro` not implemented yet
   "new"
   "object"
   "override"
@@ -19,8 +18,6 @@
   "private"
   "protected"
   "sealed"
-  "super"
-  "this"
   "trait"
   "type"
   "val"
@@ -29,6 +26,16 @@
 ] @keyword
 
 (null_literal) @keyword
+
+(
+  (identifier) @super_keyword
+  (#match? @super_keyword "^super$")
+) @keyword
+
+(
+  (identifier) @this_keyword
+  (#match? @this_keyword "^this$")
+) @keyword
 
 ;; special keywords
 
