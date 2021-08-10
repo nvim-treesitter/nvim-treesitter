@@ -1,180 +1,223 @@
-(identifier) @variable
+; Parser errors
+(ERROR) @error
 
-; _unused variables
-(unused_identifier) @comment
-
-; __MODULE__ and friends
-(special_identifier) @constant.builtin
-
-(module) @type
-
-[(atom) (keyword)] @symbol
-
-(integer) @number
-(float) @float
-
-[(true) (false)] @boolean
-
-(nil) @constant.builtin
-
-(comment) @comment
-
-[
-  ","
-  "."
-] @punctuation.delimiter
-
+; Punctuation
 [
   "("
   ")"
+  "<<"
+  ">>"
   "["
   "]"
   "{"
   "}"
-  "<<"
-  ">>"
 ] @punctuation.bracket
 
-(interpolation
- "#{" @punctuation.special
- "}" @punctuation.special) @none
+[
+  ","
+  "->"
+  "."
+] @punctuation.delimiter
 
+[
+  (sigil_start)
+  (sigil_end)
+  (heredoc_start)
+  (heredoc_end)
+] @punctuation.special
+
+; String interpolation
+(interpolation "#{" @punctuation.special "}" @punctuation.special)
+
+; Literal keywords
+[
+  "after"
+  "and" 
+  "catch"
+  "do"
+  "else"
+  "end"
+  "fn"
+  "in"
+  "not in"
+  "not"
+  "or"
+  "rescue"
+  "when" 
+] @keyword
+
+; Comments and unused identifiers
+[
+  (comment) 
+  (unused_identifier)
+] @comment
+
+; Strings and heredocs
 [
   (heredoc_content)
   (sigil_content)
-  (string_content)
-  (string_end)
-  (string_start)
+  (string)
 ] @string
 
+; __MODULE__ and friends
+(special_identifier) @constant.builtin
+
+; Maps
+(map "%{" @constructor "}" @constructor)
+
+; Structs
+(struct "%" @constructor "{" @constructor "}" @constructor)
+
+; Binary operators
+(binary_op operator: _ @operator)
+
+; Unary operators
+(unary_op operator: _ @operator)
+
+; Atoms and Keywords
+(atom) @symbol
+
+(keyword) @parameter
+
+; Booleans
 [
-  (heredoc_end)
-  (heredoc_start)
-  (sigil_end)
-  (sigil_start)
-] @string.special
+  (true) 
+  (false)
+] @boolean
 
-(escape_sequence) @string.escape
+(nil) @constant.builtin
 
-[
-  "after"
-  "do"
-  "end"
-] @keyword
+(sigil) @string.special
 
-[
-  "and"
-  "in"
-  "not"
-  "not in"
-  "or"
-] @keyword.operator
+(identifier) @variable
 
-; Call to a local function
-(call (function_identifier) @method)
+(module) @type
 
-; Call to a remote (or external) function
-(dot_call
- remote: [(atom) (module)] @type
- function: (function_identifier) @method)
+(function_identifier) @function
 
-(dot_call
- remote: (identifier) @variable
- function: (function_identifier) @method)
+(integer) @number
 
-"fn" @keyword.function
+(float) @float
 
-; def, defp, defguard, ... everything that starts with def
-(call (function_identifier) @keyword.function
- (#lua-match? @keyword.function "^def%a*$"))
+[(sigil_start) (sigil_end)] @string.special
 
-(call (function_identifier) @keyword.function
- (#any-of? @keyword.function "describe" "doctest" "on_exit" "setup" "setup_all" "test"))
-
-"else" @conditional
-
-(call (function_identifier) @conditional
- (#any-of? @conditional "case" "cond" "if" "unless" "with"))
-
-(call (function_identifier) @repeat
- (#eq? @repeat "for"))
-
-(call (function_identifier) @include
- (#any-of? @include "alias" "import" "require" "use"))
-
-[
-  "catch"
-  "rescue"
-] @exception
-
-(call (function_identifier) @exception
- (#any-of? @exception "raise" "try"))
-
-; Regex sigil
-(sigil
- (sigil_start) @_sigil-type
- [(sigil_content) (escape_sequence)] @string.regex
- (sigil_end)
- (#lua-match? @_sigil-type "^~r"))
-
-"->" @operator
-
-(unary_op
- operator: _ @operator)
-
-(binary_op
- operator: _ @operator)
-
+; Module attributes as "attributes"
 (unary_op
  operator: "@" @attribute
  [(call
    function: (function_identifier) @attribute)
   (identifier) @attribute])
 
-(unary_op
- operator: "@"
- (call (function_identifier) @attribute
-       (heredoc
-        [(heredoc_start)
-         (heredoc_content)
-         (heredoc_end)] @string))
- (#any-of? @attribute "doc" "moduledoc"))
+; Erlang modules are highlighted as Elixir modules
+(dot_call remote: (atom) @type)
 
-(unary_op
- operator: "@"
- (call (function_identifier) @attribute
-       (binary_op
-        left: (identifier) @method))
- (#eq? @attribute "spec"))
+; Kernel Functions, Guards, & Special Forms
+((function_identifier) @keyword.function
+(#any-of? @keyword.function 
+  "alias!"
+  "apply"
+  "binding"
+  "case"
+  "cond"
+  "def"
+  "defdelegate"
+  "defexception"
+  "defguard"
+  "defguardp"
+  "defimpl"
+  "defmacro"
+  "defmacrop"
+  "defmodule"
+  "defoverridable"
+  "defp"
+  "defprotocol"
+  "defstruct"
+  "destructure"
+  "exit"
+  "fn"
+  "for"
+  "function_exported?"
+  "get_and_update_in"
+  "get_in"
+  "if"
+  "inspect"
+  "macro_exported?"
+  "make_ref"
+  "match?"
+  "max"
+  "min"
+  "pop_in"
+  "put_elem"
+  "put_in"
+  "quote"
+  "raise"
+  "receive"
+  "reraise"
+  "send"
+  "spawn"
+  "spawn_link"
+  "spawn_monitor"
+  "struct!"
+  "struct"
+  "super"
+  "tap"
+  "then"
+  "throw"
+  "to_charlist"
+  "to_string"
+  "try"
+  "unless"
+  "unquote"
+  "unquote_splicing"
+  "update_in"
+  "var!"
+  "with"
+  "abs"
+  "and"
+  "binary_part"
+  "bit_size"
+  "byte_size"
+  "ceil"
+  "div"
+  "elem"
+  "floor"
+  "hd"
+  "in"
+  "is_atom"
+  "is_binary"
+  "is_bitstring"
+  "is_boolean"
+  "is_exception"
+  "is_float"
+  "is_function"
+  "is_integer"
+  "is_list"
+  "is_map"
+  "is_map_key"
+  "is_nil"
+  "is_number"
+  "is_pid"
+  "is_port"
+  "is_reference"
+  "is_struct"
+  "is_tuple"
+  "length"
+  "map_size"
+  "node"
+  "not"
+  "or"
+  "rem"
+  "round"
+  "self"
+  "tl"
+  "trunc"
+  "tuple_size"
+))
 
-; Definition without arguments
-(call (function_identifier) @keyword.function
- (identifier) @function 
- (#lua-match? @keyword.function "^def%a*$"))
-
-; Definition with (some) arguments and (optional) defaults
-(call (function_identifier) @keyword.function
- (call
-  function: (function_identifier) @function
-    (arguments))
- (#lua-match? @keyword.function "^def%a*$"))
-
-; Definition with (some) arguments and guard(s)
-(call (function_identifier) @keyword.function
- (binary_op
-  left:
-   (call
-    function: (function_identifier) @function
-    (arguments))
-  operator: "when")
- (#lua-match? @keyword.function "^def%a*$"))
-
-; Definition of custom binary operator(s)
-(call (function_identifier) @keyword.function
- (binary_op
-  left: (identifier) @parameter
-  operator: _ @function
-  right: (identifier) @parameter)
- (#any-of? @keyword.function "def" "defp"))
-
-(ERROR) @error
+((function_identifier) @include
+(#any-of? @include 
+  "alias" 
+  "import" 
+  "require" 
+  "use"
+))
