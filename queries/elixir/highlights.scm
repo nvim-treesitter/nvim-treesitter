@@ -111,14 +111,9 @@
 ; Erlang modules are highlighted as Elixir modules
 (dot_call remote: (atom) @type)
 
-; Kernel Functions, Guards, & Special Forms
+; def and friends
 ((function_identifier) @keyword.function
 (#any-of? @keyword.function 
-  "alias!"
-  "apply"
-  "binding"
-  "case"
-  "cond"
   "def"
   "defdelegate"
   "defexception"
@@ -132,86 +127,6 @@
   "defp"
   "defprotocol"
   "defstruct"
-  "destructure"
-  "exit"
-  "fn"
-  "for"
-  "function_exported?"
-  "get_and_update_in"
-  "get_in"
-  "if"
-  "inspect"
-  "macro_exported?"
-  "make_ref"
-  "match?"
-  "max"
-  "min"
-  "pop_in"
-  "put_elem"
-  "put_in"
-  "quote"
-  "raise"
-  "receive"
-  "reraise"
-  "send"
-  "spawn"
-  "spawn_link"
-  "spawn_monitor"
-  "struct!"
-  "struct"
-  "super"
-  "tap"
-  "then"
-  "throw"
-  "to_charlist"
-  "to_string"
-  "try"
-  "unless"
-  "unquote"
-  "unquote_splicing"
-  "update_in"
-  "var!"
-  "with"
-  "abs"
-  "and"
-  "binary_part"
-  "bit_size"
-  "byte_size"
-  "ceil"
-  "div"
-  "elem"
-  "floor"
-  "hd"
-  "in"
-  "is_atom"
-  "is_binary"
-  "is_bitstring"
-  "is_boolean"
-  "is_exception"
-  "is_float"
-  "is_function"
-  "is_integer"
-  "is_list"
-  "is_map"
-  "is_map_key"
-  "is_nil"
-  "is_number"
-  "is_pid"
-  "is_port"
-  "is_reference"
-  "is_struct"
-  "is_tuple"
-  "length"
-  "map_size"
-  "node"
-  "not"
-  "or"
-  "rem"
-  "round"
-  "self"
-  "tl"
-  "trunc"
-  "tuple_size"
 ))
 
 ((function_identifier) @include
@@ -221,3 +136,37 @@
   "require" 
   "use"
 ))
+
+((function_identifier) @conditional
+(#any-of? @conditional 
+  "case"
+  "cond"
+  "else"
+  "if"
+  "unless"
+  "with"
+  "receive"
+))
+
+((function_identifier) @exception
+(#any-of? @exception 
+  "raise"
+  "reraise"
+  "throw"
+  "try"
+))
+
+((function_identifier) @repeat
+(#any-of? @repeat 
+  "for"
+))
+
+; ExUnit
+;((function_identifier) @keyword.function
+;(#any-of? @keyword.function 
+;  "describe"
+;  "setup"
+;  "setup_all"
+;  "test"
+;  "using"
+;))
