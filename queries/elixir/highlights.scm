@@ -162,11 +162,11 @@
 ))
 
 ; ExUnit
-;((function_identifier) @keyword.function
-;(#any-of? @keyword.function 
-;  "describe"
-;  "setup"
-;  "setup_all"
-;  "test"
-;  "using"
-;))
+((function_identifier) @keyword.function
+(#any-of? @keyword.function 
+  "describe"
+  "setup"
+  "setup_all"
+  "test"
+  "using"
+))
