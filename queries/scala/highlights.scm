@@ -1,8 +1,37 @@
+; CREDITS @stumash (stuart.mashaal@gmail.com)
+
+;; variables
+
+(
+  (identifier) @variable.builtin
+  (#match? @variable.builtin "^this$")
+)
+
 ;; method calls
 
+; method definition
+(class_definition
+  body: (template_body
+    (function_definition
+      name: (identifier) @method)))
+(object_definition
+  body: (template_body
+    (function_definition
+      name: (identifier) @method)))
+(trait_definition
+  body: (template_body
+    (function_definition
+      name: (identifier) @method)))
+
+; method invocation
 (call_expression
   function: (field_expression
     field: (identifier) @method))
+
+(
+  (identifier) @function.builtin
+  (#match? @function.builtin "^super$")
+)
 
 ;; keywords
 
@@ -17,7 +46,6 @@
   "implicit"
   "lazy"
 ;; `macro` not implemented yet
-  "new"
   "object"
   "override"
   "package"
@@ -33,17 +61,9 @@
 
 (null_literal) @keyword
 
-(
-  (identifier) @super_keyword
-  (#match? @super_keyword "^super$")
-) @keyword
-
-(
-  (identifier) @this_keyword
-  (#match? @this_keyword "^this$")
-) @keyword
-
 ;; special keywords
+
+"new" @keyword.operator
 
 [
   "else"
