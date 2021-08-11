@@ -1,3 +1,9 @@
+;; method calls
+
+(call_expression
+  function: (field_expression
+    field: (identifier) @method))
+
 ;; keywords
 
 [
@@ -67,5 +73,4 @@
 ;; `case` is a conditional keyword in case_block
 
 (case_block
-  (case_clause ("case") @conditional)
-)
+  (case_clause ("case") @conditional))
