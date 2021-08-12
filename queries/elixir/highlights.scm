@@ -24,7 +24,7 @@
   (heredoc_end)
 ] @punctuation.special
 
-(interpolation "#{" @punctuation.special "}" @punctuation.special)
+(interpolation ["#{" "}"] @punctuation.special)
 
 [
   "after"
@@ -56,9 +56,9 @@
 ; __MODULE__ and friends
 (special_identifier) @constant.builtin
 
-(map "%{" @constructor "}" @constructor)
+(map ["%{" "}"] @constructor)
 
-(struct "%" @constructor "{" @constructor "}" @constructor)
+(struct ["%" "{" "}"] @constructor)
 
 (binary_op operator: _ @operator)
 
