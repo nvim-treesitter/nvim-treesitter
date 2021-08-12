@@ -98,7 +98,10 @@
 (true) @boolean
 (false) @boolean
 (null) @constant.builtin
-(comment) @comment
+[
+(comment)
+(hash_bang_line)
+] @comment
 (string) @string
 (regex) @punctuation.delimiter
 (regex_pattern) @string.regex
