@@ -1,7 +1,5 @@
-; Parser errors
 (ERROR) @error
 
-; Punctuation
 [
   "("
   ")"
@@ -26,10 +24,8 @@
   (heredoc_end)
 ] @punctuation.special
 
-; String interpolation
 (interpolation "#{" @punctuation.special "}" @punctuation.special)
 
-; Literal keywords
 [
   "after"
   "and" 
@@ -46,13 +42,11 @@
   "when" 
 ] @keyword
 
-; Comments and unused identifiers
 [
   (comment) 
   (unused_identifier)
 ] @comment
 
-; Strings and heredocs
 [
   (heredoc_content)
   (sigil_content)
@@ -62,24 +56,18 @@
 ; __MODULE__ and friends
 (special_identifier) @constant.builtin
 
-; Maps
 (map "%{" @constructor "}" @constructor)
 
-; Structs
 (struct "%" @constructor "{" @constructor "}" @constructor)
 
-; Binary operators
 (binary_op operator: _ @operator)
 
-; Unary operators
 (unary_op operator: _ @operator)
 
-; Atoms and Keywords
 (atom) @symbol
 
 (keyword) @parameter
 
-; Booleans
 [
   (true) 
   (false)
@@ -99,21 +87,21 @@
 
 (float) @float
 
-[(sigil_start) (sigil_end)] @string.special
+[
+  (sigil_start) 
+  (sigil_end)
+] @string.special
 
 ; Module attributes as "attributes"
-(unary_op
- operator: "@" @attribute
- [(call
-   function: (function_identifier) @attribute)
-  (identifier) @attribute])
+(unary_op operator: "@" @attribute [
+  (call function: (function_identifier) @attribute) 
+  (identifier) @attribute
+])
 
-; Erlang modules are highlighted as Elixir modules
+; Erlang modules (when they are the remote of a function call) are highlighted as Elixir modules
 (dot_call remote: (atom) @type)
 
-; def and friends
-((function_identifier) @keyword.function
-(#any-of? @keyword.function 
+(call (function_identifier) @keyword.function (#any-of? @keyword.function 
   "def"
   "defdelegate"
   "defexception"
@@ -127,18 +115,16 @@
   "defp"
   "defprotocol"
   "defstruct"
-))
+) [(identifier) @function (_)]) ; 0-arity function def without parens
 
-((function_identifier) @include
-(#any-of? @include 
+(call (function_identifier) @include (#any-of? @include 
   "alias" 
   "import" 
   "require" 
   "use"
 ))
 
-((function_identifier) @conditional
-(#any-of? @conditional 
+(call (function_identifier) @conditional (#any-of? @conditional 
   "case"
   "cond"
   "else"
@@ -148,22 +134,18 @@
   "receive"
 ))
 
-((function_identifier) @exception
-(#any-of? @exception 
+(call (function_identifier) @exception (#any-of? @exception 
   "raise"
   "reraise"
   "throw"
   "try"
 ))
 
-((function_identifier) @repeat
-(#any-of? @repeat 
+(call (function_identifier) @repeat (#any-of? @repeat 
   "for"
 ))
 
-; ExUnit
-((function_identifier) @keyword.function
-(#any-of? @keyword.function 
+(call (function_identifier) @keyword.function (#any-of? @keyword.function 
   "describe"
   "setup"
   "setup_all"
