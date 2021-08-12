@@ -132,7 +132,7 @@
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
   },
   "php": {
-    "revision": "9f2586b1be335449181547ca51badb44c97c38b4"
+    "revision": "63cebc37ebed42887f14cdd0baec961d5a1e16c1"
   },
   "python": {
     "revision": "d6210ceab11e8d812d4ab59c07c81458ec6e5184"
@@ -207,6 +207,6 @@
     "revision": "8e9d175982afcefa3dac8ca20d40d1643accd2bd"
   },
   "zig": {
-    "revision": "05d6f44e5ae8fe986a7ca09ce2a301aa5148a20f"
+    "revision": "b2058a2b9d0d1c2973a26c51d27d1752258a6baf"
   }
 }
