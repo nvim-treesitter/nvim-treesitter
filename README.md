@@ -213,7 +213,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [vue](https://github.com/ikatyang/tree-sitter-vue) (maintained by @WhyNotHugo)
 - [x] [yaml](https://github.com/ikatyang/tree-sitter-yaml) (maintained by @stsewd)
 - [x] [yang](https://github.com/Hubro/tree-sitter-yang) (maintained by @Hubro)
-- [x] [zig](https://github.com/Himujjal/tree-sitter-zig) (maintained by @Himujjal)
+- [x] [zig](https://github.com/maxxnino/tree-sitter-zig) (maintained by @maxxnino)
 <!--parserinfo-->
 
 
@@ -327,6 +327,9 @@ If you want your installed grammar to be useful, you must manually [add query fi
 Note also that module functionality is only triggered if your language's filetype is correctly identified.
 If Neovim does not detect your language's filetype by default, you can add a short Vimscript file to nvim-treesitter's `ftdetect` runtime directory.
 See [Neovim's documentation](https://neovim.io/doc/user/filetype.html#new-filetype) on how to use Vimscript to detect a filetype.
+
+If you use a git repository for your parser and want to use a specific version, you can set the `revision` key
+in the `install_info` table for you parser config.
 
 ## Update parsers used_by
 
