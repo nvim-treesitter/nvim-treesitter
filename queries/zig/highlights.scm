@@ -97,7 +97,6 @@ constructor: (SuffixExpr (IDENTIFIER) @constructor)
   ("!")? @exception
 )
 
-
 (ParamDecl 
   (ParamType (SuffixExpr (IDENTIFIER) @parameter))
 )
@@ -111,11 +110,18 @@ constructor: (SuffixExpr (IDENTIFIER) @constructor)
   ]
 )
 
+(SwitchItem 
+  (SuffixExpr
+    "."
+    .
+    (IDENTIFIER) @constant
+  )
+)
+
 (BUILTINIDENTIFIER) @function.builtin
 
 ((BUILTINIDENTIFIER) @include
   (#any-of? @include "@import" "@cImport"))
-
 
 (INTEGER) @number
 
@@ -136,10 +142,8 @@ constructor: (SuffixExpr (IDENTIFIER) @constructor)
   (BuildinTypeExpr)
 ] @type.builtin
 
-[
-  (BreakLabel)
-  (BlockLabel)
-] @label
+(BreakLabel (IDENTIFIER) @label)
+(BlockLabel (IDENTIFIER) @label)
 
 [
   "true"
@@ -166,7 +170,7 @@ constructor: (SuffixExpr (IDENTIFIER) @constructor)
 [
   "or"
   "and"
-  (BitwiseOp "orelse")
+  "orelse"
 ] @keyword.operator
 
 [
@@ -220,7 +224,6 @@ constructor: (SuffixExpr (IDENTIFIER) @constructor)
 
 ; PrecProc
 [
-  (BitwiseOp "orelse")
   "inline"
   "noinline"
   "asm"
@@ -240,6 +243,13 @@ constructor: (SuffixExpr (IDENTIFIER) @constructor)
   (AdditionOp)
   (MultiplyOp)
   (PrefixOp)
+  "*"
+  "**"
+  "->"
+  "=>"
+  ".?"
+  ".*"
+  "="
 ] @operator
 
 [
@@ -250,10 +260,18 @@ constructor: (SuffixExpr (IDENTIFIER) @constructor)
 ] @punctuation.delimiter
 
 [
+  ".."
+  "..."
+] @punctuation.special
+
+[
   "["
   "]"
   "("
   ")"
   "{"
   "}"
+  (Payload "|")
+  (PtrPayload "|")
+  (PtrIndexPayload "|")
 ] @punctuation.bracket
