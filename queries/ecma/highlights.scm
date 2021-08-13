@@ -179,9 +179,9 @@
 "{" @punctuation.bracket
 "}" @punctuation.bracket
 
-(template_substitution
-  "${" @punctuation.special
-  "}" @punctuation.special) @none
+((template_substitution ["${" "}"] @punctuation.special) @none
+ ; Substitutions should have a higher priority than injections.
+ (#set! "priority" 105))
 
 ; Keywords
 ;----------
