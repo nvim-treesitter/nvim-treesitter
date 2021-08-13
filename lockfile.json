@@ -15,7 +15,7 @@
     "revision": "3953034ee61e8639100b063092d4280e047ca9e9"
   },
   "clojure": {
-    "revision": "3b801404270f70433381cce1f3024c76b2056ffc"
+    "revision": "a8710b87e6cc1f20d1fe0cc60c87d84510f48314"
   },
   "cmake": {
     "revision": "d5a0b0b99249e313a01707ad5ebd793c9b70d189"
@@ -207,6 +207,6 @@
     "revision": "8e9d175982afcefa3dac8ca20d40d1643accd2bd"
   },
   "zig": {
-    "revision": "b2058a2b9d0d1c2973a26c51d27d1752258a6baf"
+    "revision": "3b512a7ea90ad56d841fd89c06866d01c5184b93"
   }
 }
