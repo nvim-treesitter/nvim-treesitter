@@ -23,5 +23,8 @@
 "@" @punctuation.special
 "_" @constant
 
+((parameters (identifier) @number)
+ (#match? @number "^[-+]?[0-9]+(.[0-9]+)?$"))
+
 ((program . (comment) @include)
  (#match? @include "^;\ +inherits\ *:"))
