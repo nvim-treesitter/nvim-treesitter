@@ -6,6 +6,7 @@
  ((quasiquote_body) @content)
 )
 
+(comment) @comment
 
 ;; -----------------------------------------------------------------------------
 ;; shakespeare library
