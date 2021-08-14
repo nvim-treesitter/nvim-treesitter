@@ -21,19 +21,19 @@
     "revision": "d5a0b0b99249e313a01707ad5ebd793c9b70d189"
   },
   "comment": {
-    "revision": "374529d5e93ac8cda0537b8ad0db99f25db4e954"
+    "revision": "8d480c0a86e3b95812252d29292b2686eb92418d"
   },
   "commonlisp": {
     "revision": "02e6ecbe05633bc9a82c2a56a86a1c2fcb3c4725"
   },
   "cpp": {
-    "revision": "c61212414a3e95b5f7507f98e83de1d638044adc"
+    "revision": "53afc568b70e4b71ee799501f34c876ad511f56e"
   },
   "css": {
     "revision": "94e10230939e702b4fa3fa2cb5c3bc7173b95d07"
   },
   "cuda": {
-    "revision": "3dd911b605168f8c577e287ac8f77dddd638e24a"
+    "revision": "c363dde34b133696958c2d98ed34ca7da5e18465"
   },
   "dart": {
     "revision": "6a25376685d1d47968c2cef06d4db8d84a70025e"
@@ -93,7 +93,7 @@
     "revision": "2efe37f92d2e6aeb25186e9da07455bb4a30163c"
   },
   "javascript": {
-    "revision": "2c5b138ea488259dbf11a34595042eb261965259"
+    "revision": "bc2eb3994fd7cc605d27a32f9fcbee80bbb57f6d"
   },
   "jsdoc": {
     "revision": "189a6a4829beb9cdbe837260653b4a3dfb0cc3db"
@@ -150,7 +150,7 @@
     "revision": "3041aa3472d16fd94c6a9e15b741dbfecd9b714e"
   },
   "rst": {
-    "revision": "41a15b8d530cc7262ff56a3a3ecdfe3f4ddec120"
+    "revision": "d3325f849b38636810cee74bc4caf05687d5605b"
   },
   "ruby": {
     "revision": "391269d74d20154bbd0ac9be20b35eced6920290"
@@ -207,6 +207,6 @@
     "revision": "8e9d175982afcefa3dac8ca20d40d1643accd2bd"
   },
   "zig": {
-    "revision": "3b512a7ea90ad56d841fd89c06866d01c5184b93"
+    "revision": "19ddcebe36509bbaeb41c69f4ec21b745be5e611"
   }
 }
