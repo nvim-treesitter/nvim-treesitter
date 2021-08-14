@@ -1,6 +1,7 @@
 (program) @scope
 (program (named_node) @scope)
 (program (anonymous_node) @scope)
+(program (grouping) @scope)
 
 (identifier) @reference
 
