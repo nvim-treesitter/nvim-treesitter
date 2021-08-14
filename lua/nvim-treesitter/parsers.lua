@@ -37,7 +37,7 @@ list.javascript = {
     url = "https://github.com/tree-sitter/tree-sitter-javascript",
     files = { "src/parser.c", "src/scanner.c" },
   },
-  used_by = { "javascriptreact", "ecma" },
+  used_by = { "javascriptreact", "ecma", "jsx" },
   maintainers = { "@steelsojka" },
 }
 
