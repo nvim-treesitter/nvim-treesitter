@@ -8,7 +8,7 @@
 (attribute_name) @tag.attribute
 
 ; Attributes are highlighted as strings
-(attribute_value) @string
+(quoted_attribute_value) @string
 
 ; Surface blocks are highlighted as keywords
 [
@@ -25,13 +25,11 @@
   "/>"
   "{"
   "}"
+  "<!--"
+  "-->"
+  "{!--"
+  "--}"
 ] @tag.delimiter
-
-; Expressions are similar to string interpolation, and are highloghted as such
-(expression) @punctuation.special
-
-; Expressions should be highlighted as Elixir, fallback to special strings
-(expression_value) @string.special
 
 ; Surface tags are highlighted as HTML
 (tag_name) @tag
