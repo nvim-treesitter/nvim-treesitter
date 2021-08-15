@@ -19,12 +19,12 @@
 
 ; Surface supports HTML tags and are highlighted as such
 [
-  (start_tag)
-  (end_tag)
-  (self_closing_tag)
-  (start_component)
-  (end_component)
-  (self_closing_component)
+  "<"
+  ">"
+  "</"
+  "/>"
+  "{"
+  "}"
 ] @tag.delimiter
 
 ; Expressions are similar to string interpolation, and are highloghted as such
