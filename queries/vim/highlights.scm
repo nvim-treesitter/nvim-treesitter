@@ -103,3 +103,17 @@
 ; Some characters have different meanings based on the context
 (unary_operation "!" @operator)
 (binary_operation "." @operator)
+
+;; Punctuation
+
+[
+  "("
+  ")"
+  "{"
+  "}"
+  "["
+  "]"
+] @punctuation.bracket
+
+(field_expression "." @punctuation.delimiter)
+"," @punctuation.delimiter
