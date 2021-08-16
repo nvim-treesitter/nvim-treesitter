@@ -93,7 +93,7 @@
  ] @operator
 
 ;; Punctuation
-[ "," "." ":"] @punctuation.delimiter
+["," "." ":" ";"] @punctuation.delimiter
 
 ;; Brackets
 [
