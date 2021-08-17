@@ -1,5 +1,9 @@
 (identifier) @variable
 
+((identifier) @keyword @_p
+  (#eq? @_p "value")
+  (#has-ancestor? @_p accessor_declaration))
+
 (method_declaration
   name: (identifier) @method)
 
@@ -90,6 +94,8 @@
 (interface_declaration
   name: (identifier) @type)
 (class_declaration
+  name: (identifier) @type)
+(record_declaration
   name: (identifier) @type)
 (enum_declaration
   name: (identifier) @type)
@@ -299,16 +305,24 @@ type: (generic_name
  "using"
 ] @include
 
+(alias_qualified_name
+  (identifier "global") @include)
+
 [
  "with"
  "new"
  "typeof"
  "nameof"
  "sizeof"
- "ref"
  "is"
  "as"
+ "and"
+ "or"
+ "not"
+ "stackalloc"
+ "in"
  "out"
+ "ref"
 ] @keyword.operator
 
 [
@@ -319,11 +333,14 @@ type: (generic_name
  "abstract"
  "const"
  "extern"
+ "implicit"
+ "explicit"
  "internal"
  "override"
  "private"
  "protected"
  "public"
+ "internal"
  "partial"
  "readonly"
  "sealed"
@@ -340,8 +357,15 @@ type: (generic_name
  "struct"
  "get"
  "set"
+ "init"
  "where"
- "in"
+ "record"
+ "event"
+ "add"
+ "remove"
+ "checked"
+ "unchecked"
+ "fixed"
 ] @keyword
 
 (parameter_modifier "this" @keyword)
@@ -355,6 +379,8 @@ type: (generic_name
     "by"
     "ascending"
     "descending"
+    "equals"
+    "let"
   ] @keyword))
 
 [
