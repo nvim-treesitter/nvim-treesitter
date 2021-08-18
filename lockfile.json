@@ -27,10 +27,10 @@
     "revision": "02e6ecbe05633bc9a82c2a56a86a1c2fcb3c4725"
   },
   "cpp": {
-    "revision": "53afc568b70e4b71ee799501f34c876ad511f56e"
+    "revision": "5bb411db33c86b108c891fb2c1473ddc9fad9701"
   },
   "css": {
-    "revision": "94e10230939e702b4fa3fa2cb5c3bc7173b95d07"
+    "revision": "7c390622166517b01445e0bb08f72831731d3088"
   },
   "cuda": {
     "revision": "c363dde34b133696958c2d98ed34ca7da5e18465"
@@ -86,8 +86,11 @@
   "hcl": {
     "revision": "7a12dfe711c3d74e97ce01126cf4ccb4ebf60f07"
   },
+  "heex": {
+    "revision": "1dfda4f3c86ea39bcd9e89b5ed21a44d0c94a5a5"
+  },
   "html": {
-    "revision": "af9339f3deb131ab99acfac906713b81dbcc41c9"
+    "revision": "161a92474a7bb2e9e830e48e76426f38299d99d1"
   },
   "java": {
     "revision": "2efe37f92d2e6aeb25186e9da07455bb4a30163c"
@@ -147,7 +150,7 @@
     "revision": "bcf381c61f2471137df59fe6661478b71e4a4887"
   },
   "regex": {
-    "revision": "3041aa3472d16fd94c6a9e15b741dbfecd9b714e"
+    "revision": "7b97502cfc3ffa7110f6b68bb39fb259c9a0500c"
   },
   "rst": {
     "revision": "d3325f849b38636810cee74bc4caf05687d5605b"
@@ -156,7 +159,7 @@
     "revision": "391269d74d20154bbd0ac9be20b35eced6920290"
   },
   "rust": {
-    "revision": "a360da0a29a19c281d08295a35ecd0544d2da211"
+    "revision": "cc7bdd3e6d14677e8aa77da64f6a3f57b6f8b00a"
   },
   "scala": {
     "revision": "ec38674996753f9631615fa558d4f1fa3bf90633"
@@ -186,19 +189,19 @@
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
   },
   "tsx": {
-    "revision": "d598c96714a2dc9e346589c63369aff6719a51e6"
+    "revision": "83816f563c8d9d2f1b9c921206a7944d0c5904ad"
   },
   "turtle": {
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
   },
   "typescript": {
-    "revision": "d598c96714a2dc9e346589c63369aff6719a51e6"
+    "revision": "83816f563c8d9d2f1b9c921206a7944d0c5904ad"
   },
   "verilog": {
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
   },
   "vim": {
-    "revision": "7e050c4e03d426c7e11b3453696c3daa0a5ec9b1"
+    "revision": "3c6b549ed97262edfa8059d884773f157d9efa38"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
