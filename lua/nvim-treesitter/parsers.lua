@@ -397,7 +397,7 @@ list.tlaplus = {
     files = { "src/parser.c", "src/scanner.cc" }
   },
   maintainers = { "@ahelwer" },
-  filetype = "tlaplus"
+  filetype = "tla"
 }
 
 list.toml = {
