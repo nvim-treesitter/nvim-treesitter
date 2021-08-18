@@ -394,10 +394,10 @@ list.hcl = {
 list.tlaplus = {
   install_info = {
     url = "https://github.com/tlaplus-community/tree-sitter-tlaplus",
-    files = { "src/parser.c", "src/scanner.cc" }
+    files = { "src/parser.c", "src/scanner.cc" },
   },
   maintainers = { "@ahelwer" },
-  filetype = "tla"
+  filetype = "tla",
 }
 
 list.toml = {
