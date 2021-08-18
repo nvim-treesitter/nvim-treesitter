@@ -391,6 +391,15 @@ list.hcl = {
 --   }
 -- }
 
+list.tlaplus = {
+  install_info = {
+    url = "https://github.com/tlaplus-community/tree-sitter-tlaplus",
+    files = { "src/parser.c", "src/scanner.cc" }
+  },
+  maintainers = { "@ahelwer" },
+  filetype = "tlaplus"
+}
+
 list.toml = {
   install_info = {
     url = "https://github.com/ikatyang/tree-sitter-toml",
