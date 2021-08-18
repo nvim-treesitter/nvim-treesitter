@@ -1,8 +1,8 @@
 (identifier) @variable
 
-((identifier) @keyword @_p
-  (#eq? @_p "value")
-  (#has-ancestor? @_p accessor_declaration))
+((identifier) @keyword
+  (#eq? @keyword "value")
+  (#has-ancestor? @keyword accessor_declaration))
 
 (method_declaration
   name: (identifier) @method)
