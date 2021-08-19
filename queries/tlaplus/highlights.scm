@@ -57,20 +57,20 @@
   "WF_"
   "WITH"
   "WITNESS"
-] @keyword
-[
   (forall)
   (exists)
   (temporal_forall)
   (temporal_exists)
   (set_in)
-  (def_eq)
   (gets)
-  (maps_to)
-  (all_map_to)
   (case_box)
   (case_arrow)
   (label_as)
+] @keyword
+[
+  (def_eq)
+  (maps_to)
+  (all_map_to)
 ] @keyword.function
 
 ; Literals
