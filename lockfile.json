@@ -12,7 +12,7 @@
     "revision": "d09ab34013de8a30d97a1912fc30811f1172515f"
   },
   "c_sharp": {
-    "revision": "d42b153ebbdcc5cf834e257f1859b2200d2f722c"
+    "revision": "b450b5e382b4e0e4f4a9c2849678fed3850be9c8"
   },
   "clojure": {
     "revision": "39bf0977d223879436c1425fe6bfeb3bcfd86f92"
@@ -48,13 +48,13 @@
     "revision": "454f35f5eedcbe6155676f092d634ea54e2f3720"
   },
   "elm": {
-    "revision": "d32d4436e5882a7527c78bc5c978b550dc87b7b9"
+    "revision": "aad6673ff2553d50d223b053577c20acff104e7e"
   },
   "erlang": {
     "revision": "9d5fd0c329280a156bf7614a49dc5e8c58cc037c"
   },
   "fennel": {
-    "revision": "96087b263b72b75552755a40f1f26c9510bc8f17"
+    "revision": "e10b04389094d9b96aa8489121c1f285562d701d"
   },
   "fish": {
     "revision": "04e54ab6585dfd4fee6ddfe5849af56f101b6d4f"
@@ -96,7 +96,7 @@
     "revision": "2efe37f92d2e6aeb25186e9da07455bb4a30163c"
   },
   "javascript": {
-    "revision": "8dfe22e8e590a53ee855374153333f71cd7bd509"
+    "revision": "1ddbf1588c353edab37791cdcc9f17e56fb4ea73"
   },
   "jsdoc": {
     "revision": "189a6a4829beb9cdbe837260653b4a3dfb0cc3db"
@@ -204,7 +204,7 @@
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
   },
   "vim": {
-    "revision": "034d89e66c9fcc319848b7aca5e8260f38ed7000"
+    "revision": "b92a9dd193533ea7fcf7aa5df0eb39be53a3920c"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
@@ -216,6 +216,6 @@
     "revision": "8e9d175982afcefa3dac8ca20d40d1643accd2bd"
   },
   "zig": {
-    "revision": "fef3c6f5c0047de147c45540fc93dc1ebf664da4"
+    "revision": "33764aedfbd11294450e31f11e1a8416cde96317"
   }
 }
