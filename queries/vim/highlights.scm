@@ -1,3 +1,7 @@
+(identifier) @variable
+((identifier) @constant
+ (#match? @constant "^[A-Z][A-Z_0-9]*$"))
+
 ;; Keywords
 
 [
@@ -31,13 +35,16 @@
 ;; Function related
 (function_declaration name: (_) @function)
 (call_expression function: (identifier) @function)
+(function_declaration parameters: (parameters (identifier) @parameter))
 
 [ (bang) (spread) ] @punctuation.special
 
 [ (no_option) (inv_option) (default_option) (option_name) ] @variable.builtin
-[ (scope) "a:" ] @namespace
-
-(ternary_expression ["?" ":"] @conditional)
+[
+  (scope)
+  "a:"
+  "$"
+] @namespace
 
 ;; Commands and user defined commands
 
@@ -83,12 +90,17 @@
 (float_literal) @float
 (comment) @comment
 (pattern) @string.special
+((scoped_identifier
+  (scope) @_scope . (identifier) @boolean)
+ (#eq? @_scope "v:")
+ (#any-of? @boolean "true" "false"))
 
 ;; Operators
 
 [
   "||"
   "&&"
+  "&"
   "+"
   "-"
   "*"
@@ -130,4 +142,14 @@
 ] @punctuation.bracket
 
 (field_expression "." @punctuation.delimiter)
-"," @punctuation.delimiter
+
+[
+  ","
+  ":"
+] @punctuation.delimiter
+
+(ternary_expression ["?" ":"] @conditional)
+
+; Options
+((set_value) @number
+ (#match? @number "^[0-9]+(\.[0-9]+)?$"))
