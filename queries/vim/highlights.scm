@@ -51,6 +51,7 @@
   "silent"
   "echo"
   "autocmd"
+  "augroup"
   "return"
   "lua"
   "ruby"
@@ -69,7 +70,10 @@
   "<unique>"
 ] @constant.builtin
 
-(au_event) @constant
+[
+  (augroup_name)
+  (au_event)
+] @constant
 (normal_statement (commands) @constant)
 
 ;; Literals
