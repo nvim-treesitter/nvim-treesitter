@@ -57,7 +57,17 @@
   "perl"
   "python"
 ] @keyword
+(map_statement cmd: _ @keyword)
 (command_name) @function.macro
+
+[
+  "<buffer>"
+  "<nowait>"
+  "<silent>"
+  "<script>"
+  "<expr>"
+  "<unique>"
+] @constant.builtin
 
 (au_event) @constant
 (normal_statement (commands) @constant)
