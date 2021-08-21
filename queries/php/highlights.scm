@@ -100,6 +100,7 @@
  "global"
  "implements"
  "insteadof"
+ "instanceof"
  "interface"
  "namespace"
  "new"
