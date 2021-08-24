@@ -107,6 +107,9 @@
   "jsonc": {
     "revision": "02b01653c8a1c198ae7287d566efa86a135b30d5"
   },
+  "json5": {
+    "revision": "5dd5cdc418d9659682556b6adca2dd9ace0ac6d2"
+  },
   "julia": {
     "revision": "12ea597262125fc22fd2e91aa953ac69b19c26ca"
   },
