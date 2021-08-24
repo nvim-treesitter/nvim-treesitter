@@ -142,7 +142,7 @@ function M.select_download_commands(repo, project_name, cache_folder, revision)
         err = "Error during download, please verify your internet connection",
         opts = {
           args = {
-            "--no-progress-meter",
+            "--silent",
             "-L", -- follow redirects
             is_github and url .. "/archive/" .. revision .. ".tar.gz"
               or url .. "/-/archive/" .. revision .. "/" .. project_name .. "-" .. revision .. ".tar.gz",
