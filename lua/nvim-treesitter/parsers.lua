@@ -684,6 +684,15 @@ list.vim = {
   maintainers = { "@vigoux" },
 }
 
+list.json5 = {
+  install_info = {
+    url = "https://github.com/Joakker/tree-sitter-json5",
+    files = { "src/parser.c" },
+  },
+  filetype = "json5",
+  maintainers = { "@Joakker" },
+}
+
 local M = {
   list = list,
 }
