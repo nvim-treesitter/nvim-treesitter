@@ -527,18 +527,22 @@ in Lua.
 								*hl-TSKeyword*
 `TSKeyword`
 For keywords that don't fall in previous categories.
+`keyword`
 
 							*hl-TSKeywordFunction*
 `TSKeywordFunction`
 For keywords used to define a fuction.
+`keyword.function`
 
 							*hl-TSKeywordOperator*
 `TSKeywordOperator`
 for operators that are English words, e.g. `and`, `as`, `or`.
+`keyword.operator`
 
 							  *hl-TSKeywordReturn*
 `TSKeywordReturn`
 for the `return` and `yield` keywords.
+`keyword.return`
 
 								  *hl-TSLabel*
 `TSLabel`
