@@ -23,7 +23,7 @@ parameter: (IDENTIFIER) @parameter
     field_access: (IDENTIFIER)
     parameter: (IDENTIFIER)
   ] @type
-  (#match? @type "^[A-Z]")
+  (#match? @type "^[A-Z]([a-z0-9]+[A-Za-z0-9]*)*$")
 )
 ;; assume camelCase is a function
 (
@@ -33,6 +33,15 @@ parameter: (IDENTIFIER) @parameter
     parameter: (IDENTIFIER)
   ] @function
   (#match? @function "^[a-z]+([A-Z][a-z0-9]*)+$")
+)
+
+;; assume all CAPS_1 is a constant
+(
+  [
+    variable_type_function: (IDENTIFIER)
+    field_access: (IDENTIFIER)
+  ] @constant
+  (#match? @constant "^[A-Z][A-Z_0-9]+$")
 )
 
 [
