@@ -64,6 +64,7 @@
   "ruby"
   "perl"
   "python"
+  "highlight"
 ] @keyword
 (map_statement cmd: _ @keyword)
 (command_name) @function.macro
@@ -77,10 +78,14 @@
   "<unique>"
 ] @constant.builtin
 
-[
-  (augroup_name)
-  (au_event)
-] @constant
+(hl_attribute
+  key: _ @property
+  val: _ @constant)
+
+(hl_group) @variable
+(augroup_name) @namespace
+
+(au_event) @constant
 (normal_statement (commands) @constant)
 
 ;; Literals
