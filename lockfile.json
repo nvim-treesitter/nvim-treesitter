@@ -104,11 +104,11 @@
   "json": {
     "revision": "203e239408d642be83edde8988d6e7b20a19f0e8"
   },
-  "jsonc": {
-    "revision": "02b01653c8a1c198ae7287d566efa86a135b30d5"
-  },
   "json5": {
     "revision": "5dd5cdc418d9659682556b6adca2dd9ace0ac6d2"
+  },
+  "jsonc": {
+    "revision": "02b01653c8a1c198ae7287d566efa86a135b30d5"
   },
   "julia": {
     "revision": "12ea597262125fc22fd2e91aa953ac69b19c26ca"
@@ -207,7 +207,7 @@
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
   },
   "vim": {
-    "revision": "4ac838e468a38455dc14158c25350830e70ddf9a"
+    "revision": "342cd0c05813024f98020bd499d87742dd400cbb"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
