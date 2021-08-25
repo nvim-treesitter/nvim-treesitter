@@ -11,6 +11,10 @@ charset = utf-8
 [*.lua]
 tab_width = 2
 
+[*.py]
+indent_size = 4
+tab_width = 4
+
 [{Makefile,**/Makefile,runtime/doc/*.txt}]
 indent_style = tab
 indent_size = 8
