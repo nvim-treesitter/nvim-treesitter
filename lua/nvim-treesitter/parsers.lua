@@ -160,6 +160,15 @@ list.ruby = {
   maintainers = { "@TravonteD" },
 }
 
+list.perl = {
+  install_info = {
+    url = "https://github.com/lcrownover/tree-sitter-perl",
+    files = { "src/parser.c", "src/scanner.cc" },
+    generate_requires_npm = true,
+  },
+  maintainers = { "@ganezdragon" },
+}
+
 list.bash = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-bash",
