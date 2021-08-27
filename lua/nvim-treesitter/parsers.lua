@@ -180,7 +180,7 @@ list.ruby = {
 
 list.perl = {
   install_info = {
-    url = "https://github.com/lcrownover/tree-sitter-perl",
+    url = "https://github.com/ganezdragon/tree-sitter-perl",
     files = { "src/parser.c", "src/scanner.cc" },
     generate_requires_npm = true,
   },
