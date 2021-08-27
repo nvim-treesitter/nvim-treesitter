@@ -5,13 +5,13 @@
 
 "null" @constant
 
-(member
-    name: (_) @keyword)
-
 (string) @string
 
 (number) @number
 
 (comment) @comment
+
+(member
+    name: (_) @keyword)
 
 (ERROR) @error
