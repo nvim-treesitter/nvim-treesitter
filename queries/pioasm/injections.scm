@@ -5,7 +5,6 @@
   (code_block_body) @c)
  (#eq? @_language "c-sdk"))
 
-((code_block
+(code_block
   (code_block_language) @language
   (code_block_body) @content)
- (#eq? @language "python"))
