@@ -738,6 +738,15 @@ list.hjson = {
   maintainers = { "@winston0410" },
 }
 
+list.norg = {
+  install_info = {
+    url = "https://github.com/vhyrro/tree-sitter-norg",
+    branch = "main",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  maintainers = { "@JoeyGrajciar", "@vhyrro" },
+}
+
 local M = {
   list = list,
 }
