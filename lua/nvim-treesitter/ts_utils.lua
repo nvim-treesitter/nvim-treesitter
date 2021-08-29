@@ -227,7 +227,19 @@ end
 -- @param col A column (0-based)
 function M.is_in_node_range(node, line, col)
   local start_line, start_col, end_line, end_col = node:range()
-  return line >= start_line and line <= end_line and col >= start_col and col <= end_col
+  if line >= start_line and line <= end_line then
+    if line == start_line and line == end_line then
+      return col >= start_col and col < end_col
+    elseif line == start_line then
+      return col >= start_col
+    elseif line == end_line then
+      return col < end_col
+    else
+      return true
+    end
+  else
+    return false
+  end
 end
 
 function M.get_node_range(node_or_range)
