@@ -6,7 +6,6 @@
   "enum"
   "extern"
   "inline"
-  "sizeof"
   "static"
   "struct"
   "typedef"
@@ -16,6 +15,7 @@
   "register"
 ] @keyword
 
+"sizeof" @keyword.operator
 "return" @keyword.return
 
 [
