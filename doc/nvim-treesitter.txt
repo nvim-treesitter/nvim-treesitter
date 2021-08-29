@@ -449,128 +449,133 @@ Note: This is highly experimental, and folding can break on some types of
 ==============================================================================
 HIGHLIGHTS                                        *nvim-treesitter-highlights*
 
-							     *hl-TSAnnotation*
-`TSAnnotation`
-For C++/Dart attributes, annotations that can be attached to the code to
-denote some kind of meta information.
+The following is a list of highlights groups, the syntactic elements they
+apply to, and some examples.
 
 							      *hl-TSAttribute*
 `TSAttribute`
-(unstable) TODO: docs
+Annotations that can be attached to the code to denote some kind of meta
+information. e.g. C++/Dart attributes.
 
 								*hl-TSBoolean*
 `TSBoolean`
-For booleans.
+Boolean literals: `True` and `False` in Python.
 
 							      *hl-TSCharacter*
 `TSCharacter`
-For characters.
+Character literals: `'a'` in C.
 
 								*hl-TSComment*
 `TSComment`
-For comment blocks.
+Line comments and block comments.
 
 							    *hl-TSConditional*
 `TSConditional`
-For keywords related to conditionnals.
+Keywords related to conditionals: `if`, `when`, `cond`, etc.
 
 							       *hl-TSConstant*
 `TSConstant`
-For constants
+Constants identifiers. These might not be semantically constant.
+E.g. uppercase variables in Python.
 
 							   *hl-TSConstBuiltin*
 `TSConstBuiltin`
-For constant that are built in the language: `nil` in Lua.
+Built-in constant values: `nil` in Lua.
 
 							     *hl-TSConstMacro*
 `TSConstMacro`
-For constants that are defined by macros: `NULL` in C.
+Constants defined by macros: `NULL` in C.
 
 							    *hl-TSConstructor*
 `TSConstructor`
-For constructor calls and definitions: `{}` in Lua, and Java constructors.
+Constructor calls and definitions: `{}` in Lua, and Java constructors.
 
 								  *hl-TSError*
 `TSError`
-For syntax/parser errors.
+Syntax/parser errors. This might highlight large sections of code while the
+user is typing still incomplete code, use a sensible highlight.
 
 							      *hl-TSException*
 `TSException`
-For exception related keywords.
+Exception related keywords: `try`, `except`, `finally` in Python.
 
 								  *hl-TSField*
 `TSField`
-For fields.
+Object and struct fields.
 
 								  *hl-TSFloat*
 `TSFloat`
-For floats.
+Floating-point number literals.
 
 							       *hl-TSFunction*
 `TSFunction`
-For function (calls and definitions).
+Function calls and definitions.
 
 							    *hl-TSFuncBuiltin*
 `TSFuncBuiltin`
-For builtin functions: `table.insert` in Lua.
+Built-in functions: `print` in Lua.
 
 							      *hl-TSFuncMacro*
 `TSFuncMacro`
-For macro defined fuctions (calls and definitions): each `macro_rules` in
+Macro defined functions (calls and definitions): each `macro_rules` in
 Rust.
 
 								*hl-TSInclude*
 `TSInclude`
-For includes: `#include` in C, `use` or `extern crate` in Rust, or `require`
-in Lua.
+File or module inclusion keywords: `#include` in C, `use` or `extern crate` in
+Rust.
 
 								*hl-TSKeyword*
 `TSKeyword`
-For keywords that don't fall in previous categories.
+Keywords that don't fit into other categories.
 
 							*hl-TSKeywordFunction*
 `TSKeywordFunction`
-For keywords used to define a fuction.
+Keywords used to define a function: `function` in Lua, `def` and `lambda` in
+Python.
 
 							*hl-TSKeywordOperator*
 `TSKeywordOperator`
-for operators that are English words, e.g. `and`, `as`, `or`.
+Unary and binary operators that are English words: `and`, `or` in Python;
+`sizeof` in C.
 
 							  *hl-TSKeywordReturn*
 `TSKeywordReturn`
-for the `return` and `yield` keywords.
+Keywords like `return` and `yield`.
 
 								  *hl-TSLabel*
 `TSLabel`
-For labels: `label:` in C and `:label:` in Lua.
+GOTO labels: `label:` in C, and `::label::` in Lua.
 
 								 *hl-TSMethod*
 `TSMethod`
-For method calls and definitions.
+Method calls and definitions.
 
 							      *hl-TSNamespace*
 `TSNamespace`
-For identifiers referring to modules and namespaces.
+Identifiers referring to modules and namespaces.
 
 								     *hl-None*
 `TSNone`
-For no highlighting.
+No highlighting (sets all highlight arguments to `NONE`). this group is used
+to clear certain ranges, for example, string interpolations. Don't change the
+values of this highlight group.
 
 								 *hl-TSNumber*
 `TSNumber`
-For all numbers
+Numeric literals that don't fit into other categories.
 
 							       *hl-TSOperator*
 `TSOperator`
-For any operator: `+`, but also `->` and `*` in C.
+Binary or unary operators: `+`, and also `->` and `*` in C.
 
 							      *hl-TSParameter*
 `TSParameter`
-For parameters of a function.
+Parameters of a function.
 
 						     *hl-TSParameterReference*
 `TSParameterReference`
-For references to parameters of a function.
+References to parameters of a function.
 
 							       *hl-TSProperty*
 `TSProperty`
@@ -578,71 +583,71 @@ Same as `TSField`.
 
 							 *hl-TSPunctDelimiter*
 `TSPunctDelimiter`
-For delimiters ie: `.`
+Punctuation delimiters: Periods, commas, semicolons, etc.
 
 							   *hl-TSPunctBracket*
 `TSPunctBracket`
-For brackets and parens.
+Brackets, braces, parentheses, etc.
 
 							   *hl-TSPunctSpecial*
 `TSPunctSpecial`
-For special punctutation that does not fall in the catagories before.
+Special punctuation that doesn't fit into the previous categories.
 
 								 *hl-TSRepeat*
 `TSRepeat`
-For keywords related to loops.
+Keywords related to loops: `for`, `while`, etc.
 
 								 *hl-TSString*
 `TSString`
-For strings.
+String literals.
 
 							    *hl-TSStringRegex*
 `TSStringRegex`
-For regexes.
+Regular expression literals.
 
 							   *hl-TSStringEscape*
 `TSStringEscape`
-For escape characters within a string.
+Escape characters within a string: `\n`, `\t`, etc.
 
 							  *hl-TSStringSpecial*
 `TSStringSpecial`
-For strings with special meaning that don't fit into the above categories.
+Strings with special meaning that don't fit into the previous categories.
 
 								 *hl-TSSymbol*
 `TSSymbol`
-For identifiers referring to symbols or atoms.
+Identifiers referring to symbols or atoms.
 
 								    *hl-TSTag*
 `TSTag`
-Tags like html tag names.
+Tags like HTML tag names.
 
 							   *hl-TSTagAttribute*
 `TSTagAttribute`
-For html tag attributes.
+HTML tag attributes.
 
 							   *hl-TSTagDelimiter*
 `TSTagDelimiter`
-Tag delimiter like `<` `>` `/`
+Tag delimiters like `<` `>` `/`.
 
 								   *hl-TSText*
 `TSText`
-For strings considered text in a markup language.
+Non-structured text. Like text in a markup language.
 
 								 *hl-TSSTrong*
 `TSStrong`
-For text to be represented in bold.
+Text to be represented in bold.
 
 							       *hl-TSEmphasis*
 `TSEmphasis`
-For text to be represented with emphasis.
+Text to be represented with emphasis.
 
 							      *hl-TSUnderline*
 `TSUnderline`
-For text to be represented with an underline.
+Text to be represented with an underline.
 
 								 *hl-TSStrike*
 `TSStrike`
-For strikethrough text.
+Strikethrough text.
 
 								  *hl-TSTitle*
 `TSTitle`
@@ -650,27 +655,28 @@ Text that is part of a title.
 
 								*hl-TSLiteral*
 `TSLiteral`
-Literal text.
+Literal or verbatim text.
 
 								    *hl-TSURI*
 `TSURI`
-Any URI like a link or email.
+URIs like hyperlinks or email addresses.
 
 								   *hl-TSMath*
 `TSMath`
-For LaTex-like math environments.
+Math environments like LaTeX's `$ ... $`
 
 							  *hl-TSTextReference*
 `TSTextReference`
-For footnotes, text references, citations.
+Footnotes, text references, citations, etc.
 
 							     *hl-TSEnvironment*
 `TSEnvironment`
-For text environments of markup languages.
+Text environments of markup languages.
 
 							 *hl-TSEnvironmentName*
 `TSEnvironmentName`
-For the name/the string indicating the type of text environment.
+Text/string indicating the type of text environment. Like the name of a
+`\begin` block in LaTeX.
 
 								   *hl-TSNote*
 `TSNote`
@@ -686,19 +692,19 @@ Text representation of a danger note.
 
 								   *hl-TSType*
 `TSType`
-For types.
+Type (and class) definitions and annotations.
 
 							    *hl-TSTypeBuiltin*
 `TSTypeBuiltin`
-For builtin types.
+Built-in types: `i32` in Rust.
 
 							       *hl-TSVariable*
 `TSVariable`
-Any variable name that does not have another highlight.
+Variable names that don't fit into other categories.
 
 							*hl-TSVariableBuiltin*
 `TSVariableBuiltin`
-Variable names that are defined by the languages, like `this` or `self`.
+Variable names defined by the language: `this` or `self` in Javascript.
 
 ==============================================================================
 PERFORMANCE                                      *nvim-treesitter-performance*
