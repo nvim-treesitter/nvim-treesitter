@@ -33,7 +33,7 @@
     "revision": "7c390622166517b01445e0bb08f72831731d3088"
   },
   "cuda": {
-    "revision": "c363dde34b133696958c2d98ed34ca7da5e18465"
+    "revision": "73e30e28a5222ab00bbf8ebeeac05a7320307a1b"
   },
   "dart": {
     "revision": "6a25376685d1d47968c2cef06d4db8d84a70025e"
@@ -66,7 +66,7 @@
     "revision": "59e7e41e186d3759592e9938291f69055200783f"
   },
   "glimmer": {
-    "revision": "f06e31c945892e01fb45e791f16d70d86293a4de"
+    "revision": "3241521b21a824d164e2915eede08abc7a67f9ef"
   },
   "go": {
     "revision": "42b1e657c3a394c01df51dd3eadc8b214274a73c"
@@ -81,7 +81,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "haskell": {
-    "revision": "30eea3c1339e573cda5dcffd8f9b06003ec31789"
+    "revision": "acafd11d9e45b1c28b49ff798022022b29d8b450"
   },
   "hcl": {
     "revision": "7a12dfe711c3d74e97ce01126cf4ccb4ebf60f07"
@@ -129,16 +129,19 @@
     "revision": "83ee5993560bf15854c69b77d92e34456f8fb655"
   },
   "ocaml": {
-    "revision": "0348562f385bc2bd67ecf181425e1afd6d454192"
+    "revision": "23d419ba45789c5a47d31448061557716b02750a"
   },
   "ocaml_interface": {
-    "revision": "0348562f385bc2bd67ecf181425e1afd6d454192"
+    "revision": "23d419ba45789c5a47d31448061557716b02750a"
   },
   "ocamllex": {
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
   },
   "php": {
-    "revision": "63cebc37ebed42887f14cdd0baec961d5a1e16c1"
+    "revision": "44c5828fe4fb61984d767c7acc0dc9630990cb02"
+  },
+  "pioasm": {
+    "revision": "924aadaf5dea2a6074d72027b064f939acf32e20"
   },
   "python": {
     "revision": "d6210ceab11e8d812d4ab59c07c81458ec6e5184"
@@ -189,7 +192,7 @@
     "revision": "fcc5f6f4d194dede4e676834ff28a506e39e17b4"
   },
   "tlaplus": {
-    "revision": "63ab99903cce883e8db392888c526fe2ffd00b1a"
+    "revision": "6130577a46342c1f9dfb6f27f543313fce7bb091"
   },
   "toml": {
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
@@ -207,7 +210,7 @@
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
   },
   "vim": {
-    "revision": "78721f95c8302eeb31c0f8a64006e0aeafb9779c"
+    "revision": "4a361a3412ea9af87865a2f5239a39b1ad476833"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
