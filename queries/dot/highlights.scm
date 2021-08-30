@@ -1,4 +1,4 @@
-(identifier) @identifier
+(identifier) @variable
 (keyword) @keyword
 (string_literal) @string
 (number_literal) @number
