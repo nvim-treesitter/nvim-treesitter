@@ -66,7 +66,7 @@
   (case_box)
   (case_arrow)
   (label_as)
-] @number
+] @keyword
 [
   (def_eq)
   (maps_to)
