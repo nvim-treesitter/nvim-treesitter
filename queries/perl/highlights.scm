@@ -13,7 +13,9 @@
 
 [
 (package_name)
-(special_variable)
+(special_scalar_variable)
+(special_array_variable)
+(special_hash_variable)
 (special_literal)
 (super)
 ] @constant
