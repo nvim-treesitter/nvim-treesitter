@@ -707,6 +707,7 @@ local M = {
 }
 
 function M.ft_to_lang(ft)
+  ft = vim.split(ft, '.', true)[1]
   return ft_to_parsername[ft] or ft
 end
 
