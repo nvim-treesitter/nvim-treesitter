@@ -517,7 +517,7 @@ For builtin functions: `table.insert` in Lua.
 
 							      *hl-TSFuncMacro*
 `TSFuncMacro`
-For macro defined fuctions (calls and definitions): each `macro_rules` in
+For macro defined functions (calls and definitions): each `macro_rules` in
 Rust.
 
 								*hl-TSInclude*
@@ -532,7 +532,7 @@ Capture: `keyword`
 
 							*hl-TSKeywordFunction*
 `TSKeywordFunction`
-For keywords used to define a fuction.
+For keywords used to define a function.
 Capture: `keyword.function`
 
 							*hl-TSKeywordOperator*
