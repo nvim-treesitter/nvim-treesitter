@@ -129,11 +129,14 @@
 (string_double_quoted)
 (string_qq_quoted)
 (bareword)
+(transliteration_tr_or_y)
+] @string
+
+[
 (regex_pattern_qr) 
 (patter_matcher_m)
 (substitution_pattern_s)
-(transliteration_tr_or_y)
-] @string
+] @string.regex
 
 (escape_sequence) @string.escape
 
