@@ -469,6 +469,7 @@ For characters.
 								*hl-TSComment*
 `TSComment`
 For comment blocks.
+Capture: `comment`
 
 							    *hl-TSConditional*
 `TSConditional`
@@ -527,22 +528,22 @@ in Lua.
 								*hl-TSKeyword*
 `TSKeyword`
 For keywords that don't fall in previous categories.
-`keyword`
+Capture: `keyword`
 
 							*hl-TSKeywordFunction*
 `TSKeywordFunction`
 For keywords used to define a fuction.
-`keyword.function`
+Capture: `keyword.function`
 
 							*hl-TSKeywordOperator*
 `TSKeywordOperator`
 for operators that are English words, e.g. `and`, `as`, `or`.
-`keyword.operator`
+Capture: `keyword.operator`
 
 							  *hl-TSKeywordReturn*
 `TSKeywordReturn`
 for the `return` and `yield` keywords.
-`keyword.return`
+Capture: `keyword.return`
 
 								  *hl-TSLabel*
 `TSLabel`
