@@ -1,6 +1,6 @@
 local tsutils = require "nvim-treesitter.ts_utils"
 
-describe("is_in_node_range", function()
+describe("is_in_node_range returns", function()
   local function test_is_in_node_range(line, col)
     local node = {
       range = function()
