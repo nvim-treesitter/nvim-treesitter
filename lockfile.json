@@ -96,7 +96,7 @@
     "revision": "2efe37f92d2e6aeb25186e9da07455bb4a30163c"
   },
   "javascript": {
-    "revision": "1ddbf1588c353edab37791cdcc9f17e56fb4ea73"
+    "revision": "2cc5803225a307308005930b3bedb939b1543722"
   },
   "jsdoc": {
     "revision": "189a6a4829beb9cdbe837260653b4a3dfb0cc3db"
@@ -168,7 +168,7 @@
     "revision": "cc7bdd3e6d14677e8aa77da64f6a3f57b6f8b00a"
   },
   "scala": {
-    "revision": "ec38674996753f9631615fa558d4f1fa3bf90633"
+    "revision": "60c3afcdeafd58907a9f53c3ded569a9ca629699"
   },
   "scss": {
     "revision": "9da7c979c010c350c28ad2235893103db4622c10"
@@ -192,7 +192,7 @@
     "revision": "fcc5f6f4d194dede4e676834ff28a506e39e17b4"
   },
   "tlaplus": {
-    "revision": "6130577a46342c1f9dfb6f27f543313fce7bb091"
+    "revision": "f8c5197fa95c2aaaa93ee95dfe7a065e17485b25"
   },
   "toml": {
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
