@@ -1,34 +1,43 @@
 local tsutils = require "nvim-treesitter.ts_utils"
 
-describe("Test is_in_node_range", function()
+describe("is_in_node_range", function()
 
-  function is_in_node_range(range, line, col, expected)
+  function test_is_in_node_range(line, col, expected)
     local node = {
       range = function ()
-        return unpack(range)
+        return unpack({0, 3, 2, 5})
       end
     }
-    local actual = tsutils.is_in_node_range(node, line, col)
-    assert.are.same(actual, expected)
+    return tsutils.is_in_node_range(node, line, col)
   end
 
-  function table_repr(t)
-    return string.format("{%s, %s, %s, %s}", unpack(t))
-  end
+  it("false before node start", function ()
+    assert.is_false(test_is_in_node_range(0, 0))
+    assert.is_false(test_is_in_node_range(0, 1))
+    assert.is_false(test_is_in_node_range(0, 2))
+  end)
 
-  local params = {
-    {{0, 0, 1, 0}, 0, 5, true},
-    {{0, 0, 1, 0}, 1, 0, false},
-    {{0, 0, 2, 0}, 2, 0, false},
-    {{0, 0, 3, 0}, 2, 0, true},
-    {{0, 3, 0, 5}, 0, 1, false},
-    {{0, 3, 0, 5}, 0, 3, true},
-    {{0, 3, 0, 5}, 0, 5, false},
-  }
-  for _, param in ipairs(params) do
-    local r, line, col, expected = unpack(param)
-    it(string.format("%s, %s, %s -> %s", table_repr(r), line, col, expected), function ()
-      is_in_node_range(unpack(param))
-    end)
-  end
+  it("true at node start", function ()
+    assert.is_true(test_is_in_node_range(0, 3))
+  end)
+
+  it("true on first line of the node", function ()
+    assert.is_true(test_is_in_node_range(0, 4))
+  end)
+
+  it("true between node lines", function ()
+    assert.is_true(test_is_in_node_range(1, 2))
+    assert.is_true(test_is_in_node_range(1, 20))
+  end)
+
+  it("false on node end", function ()
+    -- Ranges are end-exclusive
+    assert.is_false(test_is_in_node_range(2, 5))
+  end)
+
+  it("false after node end", function ()
+    assert.is_false(test_is_in_node_range(2, 6))
+    assert.is_false(test_is_in_node_range(3, 0))
+  end)
+
 end)
