@@ -34,6 +34,9 @@
 (function_definition
   name: (name) @function)
 
+(nullsafe_member_call_expression
+    name: (name) @method)
+
 ; Member
 
 (property_element
