@@ -461,6 +461,7 @@ denote some kind of meta information.
 								*hl-TSBoolean*
 `TSBoolean`
 For booleans.
+Captures: `true`, `false`
 
 							      *hl-TSCharacter*
 `TSCharacter`
@@ -469,6 +470,7 @@ For characters.
 								*hl-TSComment*
 `TSComment`
 For comment blocks.
+Capture: `comment`
 
 							    *hl-TSConditional*
 `TSConditional`
@@ -493,6 +495,7 @@ For constructor calls and definitions: `{}` in Lua, and Java constructors.
 								  *hl-TSError*
 `TSError`
 For syntax/parser errors.
+Capture: `ERROR`
 
 							      *hl-TSException*
 `TSException`
@@ -505,6 +508,7 @@ For fields.
 								  *hl-TSFloat*
 `TSFloat`
 For floats.
+Capture: `float`
 
 							       *hl-TSFunction*
 `TSFunction`
@@ -516,7 +520,7 @@ For builtin functions: `table.insert` in Lua.
 
 							      *hl-TSFuncMacro*
 `TSFuncMacro`
-For macro defined fuctions (calls and definitions): each `macro_rules` in
+For macro defined functions (calls and definitions): each `macro_rules` in
 Rust.
 
 								*hl-TSInclude*
@@ -527,18 +531,22 @@ in Lua.
 								*hl-TSKeyword*
 `TSKeyword`
 For keywords that don't fall in previous categories.
+Capture: `keyword`
 
 							*hl-TSKeywordFunction*
 `TSKeywordFunction`
-For keywords used to define a fuction.
+For keywords used to define a function.
+Capture: `keyword.function`
 
 							*hl-TSKeywordOperator*
 `TSKeywordOperator`
 for operators that are English words, e.g. `and`, `as`, `or`.
+Capture: `keyword.operator`
 
 							  *hl-TSKeywordReturn*
 `TSKeywordReturn`
 for the `return` and `yield` keywords.
+Capture: `keyword.return`
 
 								  *hl-TSLabel*
 `TSLabel`
@@ -559,6 +567,7 @@ For no highlighting.
 								 *hl-TSNumber*
 `TSNumber`
 For all numbers
+Capture: `number`
 
 							       *hl-TSOperator*
 `TSOperator`
@@ -595,6 +604,7 @@ For keywords related to loops.
 								 *hl-TSString*
 `TSString`
 For strings.
+Capture: `string`
 
 							    *hl-TSStringRegex*
 `TSStringRegex`
