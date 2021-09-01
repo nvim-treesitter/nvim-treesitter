@@ -1,4 +1,4 @@
-(identifier) @variable
+(identifier) @type
 (keyword) @keyword
 (string_literal) @string
 (number_literal) @number
@@ -18,11 +18,18 @@
   "}"
   "["
   "]"
+  "<"
+  ">"
 ] @punctuation.bracket
+
+(subgraph
+  id: (id
+    (identifier) @namespace)
+)
 
 (attribute
   name: (id
-    (identifier) @type)
+    (identifier) @field)
 )
 
 (attribute
