@@ -2,7 +2,6 @@
 (keyword) @keyword
 (string_literal) @string
 (number_literal) @number
-(html_string) @tag
 
 [
   (edgeop)
