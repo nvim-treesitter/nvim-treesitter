@@ -44,6 +44,9 @@
   "dockerfile": {
     "revision": "e10833bfee4a4f348a48c3f735bb3a2b04f6da0f"
   },
+  "dot": {
+    "revision": "e6f55c43b87b81cc982e38d414f0147fefa2515c"
+  },
   "elixir": {
     "revision": "454f35f5eedcbe6155676f092d634ea54e2f3720"
   },
