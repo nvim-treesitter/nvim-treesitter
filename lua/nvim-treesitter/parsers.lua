@@ -94,6 +94,15 @@ list.dockerfile = {
   maintainers = { "@camdencheek" },
 }
 
+list.dot = {
+  install_info = {
+    url = "https://github.com/rydesun/tree-sitter-dot",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@rydesun" },
+}
+
 list.rust = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-rust",
