@@ -14,7 +14,7 @@
 
 (variable_declarator
   name: (object_pattern
-    (shorthand_property_identifier_pattern))) @property
+    (shorthand_property_identifier_pattern))) @variable
 
 ; Special identifiers
 ;--------------------
