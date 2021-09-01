@@ -7,6 +7,15 @@
 ((identifier) @variable.builtin
  (#match? @variable.builtin "^this$"))
 
+; Assume other uppercase names constants.
+; NOTE: In order to distinguish constants we highlight
+; all the identifiers that are uppercased. But this solution
+; is not suitable for all occurences e.g. it will highlight
+; an uppercased method as a constant if used with no params.
+; Introducing highlighting for those specifi cases, is probably
+; best way to resolve the issue.
+((identifier) @constant (#match? @constant "^[A-Z]"))
+
 ;; types
 
 (type_identifier) @type
@@ -38,7 +47,20 @@
     (function_definition
       name: (identifier) @method)))
 
+; imports
+
+(import_declaration
+  path: (identifier) @namespace)
+((stable_identifier (identifier) @namespace))
+
+((import_declaration
+  path: (identifier) @type) (#match? @type "^[A-Z]"))
+((stable_identifier (identifier) @type) (#match? @type "^[A-Z]"))
+
+((import_selectors (identifier) @type) (#match? @type "^[A-Z]"))
+
 ; method invocation
+
 
 (call_expression
   function: (identifier) @function)
@@ -46,6 +68,10 @@
 (call_expression
   function: (field_expression
     field: (identifier) @method))
+
+((call_expression
+   function: (identifier) @constructor)
+ (#match? @constructor "^[A-Z]"))
 
 (generic_function
   function: (identifier) @function)
@@ -65,7 +91,10 @@
 
 ; expressions
 
+
 (field_expression field: (identifier) @property)
+(field_expression value: (identifier) @type
+ (#match? @type "^[A-Z]"))
 
 (infix_expression operator: (identifier) @operator)
 (infix_expression operator: (operator_identifier) @operator)
@@ -77,13 +106,16 @@
 (boolean_literal) @boolean
 (integer_literal) @number
 (floating_point_literal) @float
-(string) @string
 
 [
 (symbol_literal)
 (string)
 (character_literal)
+(interpolated_string_expression)
 ] @string
+
+(interpolation "$" @punctuation.special)
+(interpolation (identifier) @variable)
 
 ;; keywords
 
@@ -112,6 +144,7 @@
 ] @keyword
 
 (null_literal) @keyword
+(wildcard) @keyword
 
 ;; special keywords
 
@@ -149,6 +182,7 @@
 [
  "=>"
  "<-"
+ "@"
 ] @operator
 
 "import" @include
