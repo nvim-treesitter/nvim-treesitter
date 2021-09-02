@@ -7,12 +7,14 @@
 ((identifier) @variable.builtin
  (#match? @variable.builtin "^this$"))
 
+(interpolation) @none
+
 ; Assume other uppercase names constants.
 ; NOTE: In order to distinguish constants we highlight
 ; all the identifiers that are uppercased. But this solution
 ; is not suitable for all occurences e.g. it will highlight
 ; an uppercased method as a constant if used with no params.
-; Introducing highlighting for those specifi cases, is probably
+; Introducing highlightning for those specific cases, is probably
 ; best way to resolve the issue.
 ((identifier) @constant (#match? @constant "^[A-Z]"))
 
@@ -115,7 +117,6 @@
 ] @string
 
 (interpolation "$" @punctuation.special)
-(interpolation (identifier) @variable)
 
 ;; keywords
 
