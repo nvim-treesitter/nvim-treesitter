@@ -185,6 +185,11 @@ function M.get_node_at_cursor(winnr, ignore_injected_langs)
   return root:named_descendant_for_range(cursor_range[1], cursor_range[2], cursor_range[1], cursor_range[2])
 end
 
+--- Retrieves root for position
+-- @param line number
+-- @param col number
+-- @param root_lang_tree LanguageTree
+-- @returns {TSNode?, TSTree?, LanguageTree}
 function M.get_root_for_position(line, col, root_lang_tree)
   if not root_lang_tree then
     if not parsers.has_parser() then
@@ -199,7 +204,7 @@ function M.get_root_for_position(line, col, root_lang_tree)
   for _, tree in ipairs(lang_tree:trees()) do
     local root = tree:root()
 
-    if root and M.is_in_node_range(root, line, col) then
+    if M.is_in_node_range(root, line, col) then
       return root, tree, lang_tree
     end
   end
@@ -281,24 +286,16 @@ function M.node_length(node)
 end
 
 --- Determines whether (line, col) position is in node range
--- @param node Node defining the range
+-- @param node TSNode defining the range
 -- @param line A line (0-based)
 -- @param col A column (0-based)
 function M.is_in_node_range(node, line, col)
-  local start_line, start_col, end_line, end_col = node:range()
-  if line >= start_line and line <= end_line then
-    if line == start_line and line == end_line then
-      return col >= start_col and col < end_col
-    elseif line == start_line then
-      return col >= start_col
-    elseif line == end_line then
-      return col < end_col
-    else
-      return true
-    end
-  else
-    return false
-  end
+  local range = { line, col, line, col }
+  local start_row, start_col, end_row, end_col = node:range()
+  local start_fits = start_row < range[1] or (start_row == range[1] and start_col <= range[2])
+  local end_fits = end_row > range[3] or (end_row == range[3] and end_col >= range[4])
+
+  return start_fits and end_fits
 end
 
 function M.get_node_range(node_or_range)
