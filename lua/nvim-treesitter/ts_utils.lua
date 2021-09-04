@@ -287,13 +287,16 @@ end
 
 --- Determines whether (line, col) position is in node range
 -- @param node TSNode defining the range
--- @param line A line (0-based)
+-- @param row A row (0-based)
 -- @param col A column (0-based)
-function M.is_in_node_range(node, line, col)
-  local range = { line, col, line, col }
+function M.is_in_node_range(node, row, col)
   local start_row, start_col, end_row, end_col = node:range()
-  local start_fits = start_row < range[1] or (start_row == range[1] and start_col <= range[2])
-  local end_fits = end_row > range[3] or (end_row == range[3] and end_col >= range[4])
+  local is_first_row = start_row == row
+  local is_last_row = end_row == row
+  local is_root_node_end = is_last_row and end_col == 0 and col == 0
+
+  local start_fits = start_row < row or (is_first_row and start_col <= col)
+  local end_fits = end_row > row or (is_last_row and end_col > col) or is_root_node_end
 
   return start_fits and end_fits
 end

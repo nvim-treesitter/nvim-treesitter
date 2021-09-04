@@ -1,4 +1,5 @@
 local tsutils = require "nvim-treesitter.ts_utils"
+local is_in_node_range = tsutils.is_in_node_range
 
 describe("is_in_node_range", function()
   local node = {
@@ -6,36 +7,43 @@ describe("is_in_node_range", function()
       return unpack { 0, 3, 2, 5 }
     end,
   }
-  local function test_is_in_node_range(line, col)
-    return tsutils.is_in_node_range(node, line, col)
-  end
+  local root_node = {
+    range = function()
+      return unpack { 0, 0, 2, 0 }
+    end,
+  }
 
   it("returns false before node start", function()
-    assert.is_false(test_is_in_node_range(0, 0))
-    assert.is_false(test_is_in_node_range(0, 1))
-    assert.is_false(test_is_in_node_range(0, 2))
+    assert.is_false(is_in_node_range(node, 0, 0))
+    assert.is_false(is_in_node_range(node, 0, 1))
+    assert.is_false(is_in_node_range(node, 0, 2))
   end)
 
   it("returns true at node start", function()
-    assert.is_true(test_is_in_node_range(0, 3))
+    assert.is_true(is_in_node_range(node, 0, 3))
   end)
 
   it("returns true on first line of the node", function()
-    assert.is_true(test_is_in_node_range(0, 4))
+    assert.is_true(is_in_node_range(node, 0, 4))
   end)
 
   it("returns true between node lines", function()
-    assert.is_true(test_is_in_node_range(1, 2))
-    assert.is_true(test_is_in_node_range(1, 20))
+    assert.is_true(is_in_node_range(node, 1, 2))
+    assert.is_true(is_in_node_range(node, 1, 20))
   end)
 
-  it("returns true at node end", function()
-    assert.is_true(test_is_in_node_range(2, 5))
+  it("returns false at node end for normal nodes", function()
+    assert.is_false(is_in_node_range(node, 2, 5))
+  end)
+
+  it("returns true at node end for root node", function()
+    assert.is_true(is_in_node_range(root_node, 2, 0))
   end)
 
   it("returns false after node end", function()
-    assert.is_false(test_is_in_node_range(2, 6))
-    assert.is_false(test_is_in_node_range(3, 0))
+    assert.is_false(is_in_node_range(node, 2, 6))
+    assert.is_false(is_in_node_range(node, 3, 0))
+    assert.is_false(is_in_node_range(root_node, 3, 0))
   end)
 end)
 
