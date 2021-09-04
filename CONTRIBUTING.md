@@ -76,9 +76,8 @@ line of your file_.
 ; inherits: lang1,(optionallang)
 ```
 
-If you want to include a language for a given query, but don't want for the queries including the
-query you qre writing to include it too, you can mark the language as optional (by putting it
-between parenthesis).
+If you want to inherit a language, but don't want the languages inheriting from yours to inherit it,
+you can mark the language as optional (by putting it between parenthesis).
 
 ### Highlights
 
