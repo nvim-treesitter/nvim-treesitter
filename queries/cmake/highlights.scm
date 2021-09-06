@@ -19,12 +19,9 @@
 [
  (function)
  (endfunction)
-] @function
-
-[
  (macro)
  (endmacro)
-] @function.macro
+] @keyword.function
 
 [
  (if)
