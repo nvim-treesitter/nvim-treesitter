@@ -3,7 +3,7 @@
  (bracket_argument)
 ] @string
 
-(variable_ref) @none
+(variable_ref) @variable
 
 [
  (bracket_comment)
