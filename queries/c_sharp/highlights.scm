@@ -366,6 +366,7 @@ type: (generic_name
  "checked"
  "unchecked"
  "fixed"
+ "global"
 ] @keyword
 
 (parameter_modifier "this" @keyword)
