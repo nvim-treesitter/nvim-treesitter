@@ -3,7 +3,7 @@
     "revision": "7776f24dfa35826fd3038c54a9c311b9e263c22c"
   },
   "beancount": {
-    "revision": "518d02dcdae9425872147f596014f30b38d3fff5"
+    "revision": "79ae7c1f2654a2a6936b0f37bf754e5ff59c9186"
   },
   "bibtex": {
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
@@ -12,7 +12,7 @@
     "revision": "d09ab34013de8a30d97a1912fc30811f1172515f"
   },
   "c_sharp": {
-    "revision": "b450b5e382b4e0e4f4a9c2849678fed3850be9c8"
+    "revision": "227147ed2039095105608d753c99ad36ec739b3f"
   },
   "clojure": {
     "revision": "39bf0977d223879436c1425fe6bfeb3bcfd86f92"
@@ -48,7 +48,7 @@
     "revision": "e6f55c43b87b81cc982e38d414f0147fefa2515c"
   },
   "elixir": {
-    "revision": "454f35f5eedcbe6155676f092d634ea54e2f3720"
+    "revision": "9cf8676eb6f1c3656d4393c8c457ec0b426f9d28"
   },
   "elm": {
     "revision": "aad6673ff2553d50d223b053577c20acff104e7e"
@@ -63,7 +63,7 @@
     "revision": "04e54ab6585dfd4fee6ddfe5849af56f101b6d4f"
   },
   "fortran": {
-    "revision": "0aab09259daafc6089eb0e68a5238ccc3bdf83fc"
+    "revision": "f0f2f100952a353e64e26b0fa710b4c296d7af13"
   },
   "gdscript": {
     "revision": "59e7e41e186d3759592e9938291f69055200783f"
@@ -123,7 +123,7 @@
     "revision": "2c0d03a36ee979bc697f6a9dd119174cf0ef15e0"
   },
   "ledger": {
-    "revision": "72319504776f14193472a6ad14abec0af0225cbe"
+    "revision": "0cdeb0e51411a3ba5493662952c3039de08939ca"
   },
   "lua": {
     "revision": "6f5d40190ec8a0aa8c8410699353d820f4f7d7a6"
@@ -141,7 +141,7 @@
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
   },
   "php": {
-    "revision": "50c6951130d6de7f8e17dd4f60b66f29d482dde1"
+    "revision": "77d98f3ce47ea52ff39137be29bc6376951c2286"
   },
   "pioasm": {
     "revision": "924aadaf5dea2a6074d72027b064f939acf32e20"
@@ -195,7 +195,7 @@
     "revision": "fcc5f6f4d194dede4e676834ff28a506e39e17b4"
   },
   "tlaplus": {
-    "revision": "f8c5197fa95c2aaaa93ee95dfe7a065e17485b25"
+    "revision": "5a6f78fc3b0319b4640a5a535ab214a1eeeb1545"
   },
   "toml": {
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
@@ -225,6 +225,6 @@
     "revision": "8e9d175982afcefa3dac8ca20d40d1643accd2bd"
   },
   "zig": {
-    "revision": "59ad2b1472a1e3879273ca5425c8350d19fa8bc1"
+    "revision": "5ca53bb7bd649069a6af48f4dfd32f3187491db1"
   }
 }
