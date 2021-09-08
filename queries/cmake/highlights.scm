@@ -38,3 +38,15 @@
  (endwhile)
 ] @repeat
 
+(function_command
+  (function)
+  . (argument) @function
+  (argument)* @parameter
+)
+
+(macro_command
+  (macro)
+  . (argument) @function.macro
+  (argument)* @parameter
+)
+
