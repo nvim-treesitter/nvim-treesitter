@@ -50,3 +50,17 @@
   (argument)* @parameter
 )
 
+(normal_command
+ (identifier) @function.builtin
+ . (argument) @variable
+ (#match? @function.builtin "\\c^(set)$"))
+
+(normal_command
+ (identifier) @function.builtin
+ . (argument)
+ . (argument)
+ (argument) @constant
+ (#any-of? @constant "PARENT_SCOPE" "CACHE" "FORCE")
+ (#match? @function.builtin "\\c^(set)$")
+)
+
