@@ -42,7 +42,7 @@
     "revision": "fa70098cd70393f84785f85cdc6a45299b59cd5b"
   },
   "dockerfile": {
-    "revision": "e10833bfee4a4f348a48c3f735bb3a2b04f6da0f"
+    "revision": "f0b8e6748238ac0a6ba10e360db5b712039db895"
   },
   "dot": {
     "revision": "e6f55c43b87b81cc982e38d414f0147fefa2515c"
@@ -57,7 +57,7 @@
     "revision": "9d5fd0c329280a156bf7614a49dc5e8c58cc037c"
   },
   "fennel": {
-    "revision": "e10b04389094d9b96aa8489121c1f285562d701d"
+    "revision": "42823442a18dd2aa7b0b22dc719abb54abb3fe2e"
   },
   "fish": {
     "revision": "04e54ab6585dfd4fee6ddfe5849af56f101b6d4f"
@@ -69,7 +69,7 @@
     "revision": "59e7e41e186d3759592e9938291f69055200783f"
   },
   "glimmer": {
-    "revision": "3241521b21a824d164e2915eede08abc7a67f9ef"
+    "revision": "5e1d8ca26bf013b58fc3cfff5cd9d76f9e3e529b"
   },
   "go": {
     "revision": "42b1e657c3a394c01df51dd3eadc8b214274a73c"
@@ -84,7 +84,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "haskell": {
-    "revision": "acafd11d9e45b1c28b49ff798022022b29d8b450"
+    "revision": "bf7d643b494b7c7eed909ed7fbd8447231152cb0"
   },
   "hcl": {
     "revision": "b1ef087f58ecebf647455d4d2d02893ebc7d83f9"
@@ -99,7 +99,7 @@
     "revision": "2efe37f92d2e6aeb25186e9da07455bb4a30163c"
   },
   "javascript": {
-    "revision": "2cc5803225a307308005930b3bedb939b1543722"
+    "revision": "e3a5149f8bc3a3bf2fe931f05851428a1197e0e6"
   },
   "jsdoc": {
     "revision": "189a6a4829beb9cdbe837260653b4a3dfb0cc3db"
