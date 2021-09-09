@@ -94,7 +94,7 @@ function M.select_compiler_args(repo, compiler)
 end
 
 function M.select_compile_command(repo, cc, compile_location)
-  if string.match(cc, "cl$") or string.match(cc, "cl.exe$") or not repo.use_makefile then
+  if string.match(cc, "cl$") or string.match(cc, "cl.exe$") or not repo.use_makefile or fn.has "win32" == 1 then
     return {
       cmd = cc,
       info = "Compiling...",
@@ -110,7 +110,11 @@ function M.select_compile_command(repo, cc, compile_location)
       info = "Compiling...",
       err = "Error during compilation",
       opts = {
-        args = { "--makefile=" .. utils.join_path(utils.get_package_path(), "scripts", "compile_parsers.makefile"), "CC=" .. cc },
+        args = {
+          "--makefile=" .. utils.join_path(utils.get_package_path(), "scripts", "compile_parsers.makefile"),
+          "CC=" .. cc,
+          "CXX_STANDARD=" .. repo.cxx_standard,
+        },
         cwd = compile_location,
       },
     }

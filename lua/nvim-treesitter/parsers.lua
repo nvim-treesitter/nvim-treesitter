@@ -893,12 +893,13 @@ list.hack = {
 
 list.norg = {
   install_info = {
-    url = "https://github.com/vhyrro/tree-sitter-norg",
+    url = "https://github.com/nvim-neorg/tree-sitter-norg",
     branch = "main",
     files = { "src/parser.c", "src/scanner.cc" },
     use_makefile = true,
+    cxx_standard = "c++14",
   },
-  maintainers = { "@JoeyGrajciar", "@vhyrro" },
+  maintainers = { "@JoeyGrajciar", "@vhyrro", "@mrossinek" },
 }
 
 local M = {
