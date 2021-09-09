@@ -896,6 +896,7 @@ list.norg = {
     url = "https://github.com/vhyrro/tree-sitter-norg",
     branch = "main",
     files = { "src/parser.c", "src/scanner.cc" },
+    use_makefile = true,
   },
   maintainers = { "@JoeyGrajciar", "@vhyrro" },
 }

@@ -325,15 +325,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
     })
   end
   vim.list_extend(command_list, {
-    {
-      cmd = cc,
-      info = "Compiling...",
-      err = "Error during compilation",
-      opts = {
-        args = vim.tbl_flatten(shell.select_compiler_args(repo, cc)),
-        cwd = compile_location,
-      },
-    },
+    shell.select_compile_command(repo, cc, compile_location),
     shell.select_mv_cmd("parser.so", parser_lib_name, compile_location),
     {
       cmd = function()
