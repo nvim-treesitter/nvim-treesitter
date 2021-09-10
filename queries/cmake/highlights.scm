@@ -64,6 +64,10 @@
  (#match? @function.builtin "\\c^(set)$")
 )
 
+((argument) @boolean
+  (#match? @boolean "\\c^(1|on|yes|true|y|0|off|no|false|n|ignore|notfound|.*-notfound)$")
+)
+
 (if_command
   (if)
   (argument) @keyword.operator
