@@ -1,45 +1,36 @@
-; Scope
 [
  (program)
- (function_definition)
- (lambda_definition)
- (let_definition)
+ (fn)
+ (lambda)
+ (let)
+ (each)
+ (for)
+ (match)
 ] @scope
 
-; Functions
-(function_definition
-  name: (identifier) @definition.function)
-(lambda_definition
-  name: (identifier) @definition.function)
+((symbol) @scope
+ (#any-of? @scope
+  "while" "if" "when" "do"))
 
-; Variable Definitions
-(local_definition 
-  (assignment
-    (identifier) @definition.var))
-(var_definition 
-  (assignment
-    (identifier) @definition.var))
-(global_definition
-  (assignment
-    (identifier) @definition.var))
-(assignment
-  (identifier) @definition.var)
-(multi_value_assignment
-  (value_list
-    (identifier) @definition.var))
+(fn name: (symbol) @definition.function)
+(lambda name: (symbol) @definition.function)
+
 (parameters
-    ((identifier) @definition.var))
-; iterators/loops
-((each 
-  (each_clause
-    (identifier) @definition.var)) @scope)
-((for 
-  (for_clause
-    (identifier) @definition.var)) @scope)
+ (symbol) @definition.var)
 
-; references
-(set 
-  (assignment (identifier) @reference))
-(function_call 
-  name: (identifier) @reference)
-(identifier) @reference
+(for_clause . (symbol) @definition.var)
+
+; FIXME: how to distinguish between symbols-as-bindings and
+; symbols-as-expressions
+; (each_clause (symbol) @definition.var)
+; (let_clause ((symbol) @definition.var (_))*)
+
+(global . (symbol) @definition.var)
+(local . (symbol) @definition.var)
+(var . (symbol) @definition.var)
+
+(multi_value_binding (symbol) @definition.var)
+(sequential_table_binding (symbol) @definition.var)
+(table_binding ([(_) ":"] (symbol) @definition.var)*)
+
+(symbol) @reference
