@@ -64,3 +64,15 @@
  (#match? @function.builtin "\\c^(set)$")
 )
 
+(if_command
+  (if)
+  (argument) @keyword.operator
+  (#any-of? @keyword.operator "NOT" "AND" "OR"
+                              "COMMAND" "POLICY" "TARGET" "TEST" "DEFINED" "IN_LIST"
+                              "EXISTS" "IS_NEWER_THAN" "IS_DIRECTORY" "IS_SYMLINK" "IS_ABSOLUTE"
+                              "MATCHES"
+                              "LESS" "GREATER" "EQUAL" "LESS_EQUAL" "GREATER_EQUAL"
+                              "STRLESS" "STRGREATER" "STREQUAL" "STRLESS_EQUAL" "STRGREATER_EQUAL"
+                              "VERSION_LESS" "VERSION_GREATER" "VERSION_EQUAL" "VERSION_LESS_EQUAL" "VERSION_GREATER_EQUAL"
+  )
+)
