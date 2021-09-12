@@ -29,6 +29,9 @@ jobs:
       - uses: ilammy/msvc-dev-cmd@v1.5.0
       - uses: actions/setup-node@v2
 
+      - name: Install tree-sitter CLI
+        run: npm i -g tree-sitter
+
       - name: Install and prepare Neovim
         run: |
           bash ./scripts/ci-install-${{ matrix.os }}.sh
