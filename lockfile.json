@@ -33,7 +33,7 @@
     "revision": "7c390622166517b01445e0bb08f72831731d3088"
   },
   "cuda": {
-    "revision": "73e30e28a5222ab00bbf8ebeeac05a7320307a1b"
+    "revision": "695549cfa1966eea3f9da94b23076c93e6f6f9cb"
   },
   "dart": {
     "revision": "6a25376685d1d47968c2cef06d4db8d84a70025e"
@@ -99,7 +99,7 @@
     "revision": "2efe37f92d2e6aeb25186e9da07455bb4a30163c"
   },
   "javascript": {
-    "revision": "e3a5149f8bc3a3bf2fe931f05851428a1197e0e6"
+    "revision": "435db852fbeff8fe298e25ad967c634d9698eec0"
   },
   "jsdoc": {
     "revision": "189a6a4829beb9cdbe837260653b4a3dfb0cc3db"
@@ -195,7 +195,7 @@
     "revision": "fcc5f6f4d194dede4e676834ff28a506e39e17b4"
   },
   "tlaplus": {
-    "revision": "5a6f78fc3b0319b4640a5a535ab214a1eeeb1545"
+    "revision": "58d37dc806736dbca53fc494706379e74bebf1f5"
   },
   "toml": {
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
