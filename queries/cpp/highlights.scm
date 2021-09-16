@@ -123,6 +123,9 @@
  "typename"
  "using"
  "virtual"
+ "co_await"
+ "co_yield"
+ "co_return"
  (auto)
 ] @keyword
 
