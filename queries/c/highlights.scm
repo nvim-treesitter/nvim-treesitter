@@ -170,4 +170,6 @@
 (preproc_params
   (identifier)) @parameter
 
+(attribute_declaration) @attribute
+
 (ERROR) @error
