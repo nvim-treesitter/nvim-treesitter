@@ -255,4 +255,5 @@
 
 (attribute_item "#" @punctuation.special)
 (inner_attribute_item ["#" "!"] @punctuation.special)
+(macro_invocation "!" @function.macro) ; don't highlight `!` as an operator here
 
