@@ -124,10 +124,13 @@
  "using"
  "virtual"
  "co_await"
- "co_yield"
- "co_return"
  (auto)
 ] @keyword
+
+[
+ "co_yield"
+ "co_return"
+] @keyword.return
 
 [
  "new"
@@ -150,9 +153,3 @@
 ] @keyword.operator
 
 "::" @operator
-
-; Annotations (not fully supported by parser)
-
-((ERROR) @attribute
-         (#vim-match? @attribute  "\[?\[.*\]\]?.*$"))
-(attribute) @attribute
