@@ -9,7 +9,7 @@
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
   },
   "c": {
-    "revision": "d09ab34013de8a30d97a1912fc30811f1172515f"
+    "revision": "a584fc98ca1bbbb9788d55026f8b483bd725a60a"
   },
   "c_sharp": {
     "revision": "c9e1952d311cf87762a42a79cb801c7bef1af815"
@@ -27,13 +27,13 @@
     "revision": "02e6ecbe05633bc9a82c2a56a86a1c2fcb3c4725"
   },
   "cpp": {
-    "revision": "f53c3c013a1c223f7ca4614895bef4fe05928101"
+    "revision": "99e287a435788e364b3fbb3959673544dd932a23"
   },
   "css": {
-    "revision": "7c390622166517b01445e0bb08f72831731d3088"
+    "revision": "a03f1d2d1dfbf6f8e0fdca5f9ff030228241eb57"
   },
   "cuda": {
-    "revision": "695549cfa1966eea3f9da94b23076c93e6f6f9cb"
+    "revision": "98bcec43524319966aade3e1a065e7932fb39ed7"
   },
   "dart": {
     "revision": "6a25376685d1d47968c2cef06d4db8d84a70025e"
@@ -69,7 +69,7 @@
     "revision": "59e7e41e186d3759592e9938291f69055200783f"
   },
   "glimmer": {
-    "revision": "5e1d8ca26bf013b58fc3cfff5cd9d76f9e3e529b"
+    "revision": "499d997c7189616a95e74c30b5c4d01ec0075ae8"
   },
   "go": {
     "revision": "42b1e657c3a394c01df51dd3eadc8b214274a73c"
@@ -87,7 +87,7 @@
     "revision": "bf7d643b494b7c7eed909ed7fbd8447231152cb0"
   },
   "hcl": {
-    "revision": "b1ef087f58ecebf647455d4d2d02893ebc7d83f9"
+    "revision": "67a5c19755fdb997ff21c8a10fab6302cb45c89a"
   },
   "heex": {
     "revision": "1dfda4f3c86ea39bcd9e89b5ed21a44d0c94a5a5"
@@ -117,7 +117,7 @@
     "revision": "12ea597262125fc22fd2e91aa953ac69b19c26ca"
   },
   "kotlin": {
-    "revision": "5da07d30e1ed0eec75c453fe24b8dee0f6e7575e"
+    "revision": "e14f86fba2a64630ac7cd49293ef8c50d012b809"
   },
   "latex": {
     "revision": "2c0d03a36ee979bc697f6a9dd119174cf0ef15e0"
@@ -147,7 +147,7 @@
     "revision": "924aadaf5dea2a6074d72027b064f939acf32e20"
   },
   "python": {
-    "revision": "d6210ceab11e8d812d4ab59c07c81458ec6e5184"
+    "revision": "9b84b7fd9da1aa74c8a8afae58b7dcc4c109cda4"
   },
   "ql": {
     "revision": "8e7fd7e638d4a0ec7a792ee16b19dbc6407aa810"
@@ -201,13 +201,13 @@
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
   },
   "tsx": {
-    "revision": "d08f57f2689f9006c8a362454a6070d578aa8017"
+    "revision": "74a2748896434c13cac7697c4d182b43ec170d30"
   },
   "turtle": {
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
   },
   "typescript": {
-    "revision": "d08f57f2689f9006c8a362454a6070d578aa8017"
+    "revision": "74a2748896434c13cac7697c4d182b43ec170d30"
   },
   "verilog": {
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
