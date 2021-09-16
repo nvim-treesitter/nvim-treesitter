@@ -112,32 +112,6 @@
 (block_comment)
  ] @comment
 
-[
- "("
- ")"
- "["
- "]"
- "{"
- "}"
-] @punctuation.bracket
-
-(type_arguments
-  "<" @punctuation.bracket
-  ">" @punctuation.bracket)
-(type_parameters
-  "<" @punctuation.bracket
-  ">" @punctuation.bracket)
-
-[
-"::"
-"."
-";"
-","
-] @punctuation.delimiter
-
-(attribute_item "#" @punctuation.special)
-(inner_attribute_item ["#" "!"] @punctuation.special)
-
 (parameter (identifier) @parameter)
 (closure_parameters (_) @parameter)
 
@@ -254,4 +228,31 @@
 "?"
 ] @operator
 
-(closure_parameters "|" @operator "|" @operator)
+[
+ "("
+ ")"
+ "["
+ "]"
+ "{"
+ "}"
+] @punctuation.bracket
+
+(closure_parameters "|" @punctuation.bracket)
+
+(type_arguments
+  "<" @punctuation.bracket
+  ">" @punctuation.bracket)
+(type_parameters
+  "<" @punctuation.bracket
+  ">" @punctuation.bracket)
+
+[
+"::"
+"."
+";"
+","
+] @punctuation.delimiter
+
+(attribute_item "#" @punctuation.special)
+(inner_attribute_item ["#" "!"] @punctuation.special)
+
