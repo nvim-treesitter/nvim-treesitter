@@ -31,6 +31,11 @@
 
 "return" @keyword.return
 
+(package_stmt
+    "package" @include)
+(package_path
+    (identifier) @namespace)
+
 (return_expr
     "return@" @keyword.return
     label: (identifier) @label)
