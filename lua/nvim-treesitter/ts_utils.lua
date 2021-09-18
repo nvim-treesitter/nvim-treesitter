@@ -208,7 +208,8 @@ function M.update_selection(buf, node, selection_mode)
 
   -- Convert exclusive end position to inclusive
   if end_col == 1 then
-    vim.fn.setpos(".", { buf, end_row - 1, -1, 0 })
+    local previous_col = vim.fn.col { end_row - 1, "$" } - 1
+    vim.fn.setpos(".", { buf, end_row - 1, previous_col, 0 })
   else
     vim.fn.setpos(".", { buf, end_row, end_col - 1, 0 })
   end
