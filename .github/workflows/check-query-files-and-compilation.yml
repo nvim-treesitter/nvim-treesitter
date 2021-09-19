@@ -36,7 +36,7 @@ jobs:
       - name: Compile parsers Unix like
         if: matrix.os != 'windows-latest'
         run: |
-          nvim --headless -c "TSInstallSync all" -c "q"
+          nvim --headless -c "TSInstallSync! all" -c "q"
 
       - name: Check query files (Unix)
         if: matrix.os != 'windows-latest'
