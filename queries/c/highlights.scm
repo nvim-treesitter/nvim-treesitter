@@ -170,5 +170,9 @@
 (preproc_params
   (identifier)) @parameter
 
-"__attribute__" @attribute
+[
+ (attribute_declaration)
+ "__attribute__"
+] @attribute
+
 (ERROR) @error

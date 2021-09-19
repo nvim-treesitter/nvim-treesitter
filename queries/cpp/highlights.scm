@@ -153,5 +153,3 @@
 ] @keyword.operator
 
 "::" @operator
-
-(attribute_declaration) @attribute
