@@ -9,7 +9,7 @@
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
   },
   "c": {
-    "revision": "0aeed5578ad5a50daeb70ca5243da5f3f3d4b23b"
+    "revision": "f71e80b9f20c3968c131518ae8d272a3cf81a60b"
   },
   "c_sharp": {
     "revision": "c9e1952d311cf87762a42a79cb801c7bef1af815"
@@ -27,13 +27,13 @@
     "revision": "02e6ecbe05633bc9a82c2a56a86a1c2fcb3c4725"
   },
   "cpp": {
-    "revision": "9a3f2509fe5ba5a0310b5ec5aa1a7f0b595520a9"
+    "revision": "8b112a131b910ec009853fc9dd1c27eae267a7a6"
   },
   "css": {
     "revision": "a03f1d2d1dfbf6f8e0fdca5f9ff030228241eb57"
   },
   "cuda": {
-    "revision": "e31b6d55d7ffa55a1fb9a4623006486d2cd7bcb3"
+    "revision": "a2a1e903755a91208a5bc7d221b814a732832349"
   },
   "dart": {
     "revision": "6a25376685d1d47968c2cef06d4db8d84a70025e"
@@ -72,7 +72,7 @@
     "revision": "499d997c7189616a95e74c30b5c4d01ec0075ae8"
   },
   "glsl": {
-    "revision": "9434a88ccf10e23cfc894f6ba45641e9e64eb641"
+    "revision": "c5c42c238696444565b44f70ac9ffc2a61378e62"
   },
   "go": {
     "revision": "42b1e657c3a394c01df51dd3eadc8b214274a73c"
@@ -90,10 +90,13 @@
     "revision": "bf7d643b494b7c7eed909ed7fbd8447231152cb0"
   },
   "hcl": {
-    "revision": "67a5c19755fdb997ff21c8a10fab6302cb45c89a"
+    "revision": "b048a42c6d907ff04e1a82e8dadcd9e8957024a1"
   },
   "heex": {
     "revision": "1dfda4f3c86ea39bcd9e89b5ed21a44d0c94a5a5"
+  },
+  "hjson": {
+    "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "html": {
     "revision": "161a92474a7bb2e9e830e48e76426f38299d99d1"
@@ -165,7 +168,7 @@
     "revision": "7b97502cfc3ffa7110f6b68bb39fb259c9a0500c"
   },
   "rst": {
-    "revision": "d3325f849b38636810cee74bc4caf05687d5605b"
+    "revision": "a9281c2250e0d32750de159413cdd87120407389"
   },
   "ruby": {
     "revision": "391269d74d20154bbd0ac9be20b35eced6920290"
