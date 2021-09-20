@@ -146,6 +146,9 @@
   "ocamllex": {
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
   },
+  "perl": {
+    "revision": "c03173485f9a2b0337947d35181f58e8367483e6"
+  },
   "php": {
     "revision": "d1bdb1e535d39d4f93f7373f406e1837c8a7bb25"
   },
