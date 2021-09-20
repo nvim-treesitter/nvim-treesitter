@@ -33,7 +33,7 @@
     "revision": "a03f1d2d1dfbf6f8e0fdca5f9ff030228241eb57"
   },
   "cuda": {
-    "revision": "a2a1e903755a91208a5bc7d221b814a732832349"
+    "revision": "b778edf16571b9c4f5555884b9c74ef526095148"
   },
   "dart": {
     "revision": "6a25376685d1d47968c2cef06d4db8d84a70025e"
@@ -72,7 +72,7 @@
     "revision": "499d997c7189616a95e74c30b5c4d01ec0075ae8"
   },
   "glsl": {
-    "revision": "c5c42c238696444565b44f70ac9ffc2a61378e62"
+    "revision": "7fce34a89e8e3cfca11506d0777f75c2cd798384"
   },
   "go": {
     "revision": "42b1e657c3a394c01df51dd3eadc8b214274a73c"
