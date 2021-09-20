@@ -23,7 +23,7 @@ parameter: (IDENTIFIER) @parameter
     field_access: (IDENTIFIER)
     parameter: (IDENTIFIER)
   ] @type
-  (#match? @type "^[A-Z]([a-z0-9]+[A-Za-z0-9]*)*$")
+  (#match? @type "^[A-Z]([a-z]+[A-Za-z0-9]*)*$")
 )
 ;; assume camelCase is a function
 (
@@ -52,15 +52,20 @@ parameter: (IDENTIFIER) @parameter
 exception: "!" @exception
 
 (
+  (IDENTIFIER) @variable.builtin
+  (#eq? @variable.builtin "_")
+)
+
+(PtrTypeStart "c" @variable.builtin)
+
+(
   (ContainerDeclType
     [
       (ErrorUnionExpr)
       "enum"
     ]
   )
-  (ContainerMembers
-    (ContainerField (IDENTIFIER) @constant)
-  )
+  (ContainerField (IDENTIFIER) @constant)
 )
 
 field_constant: (IDENTIFIER) @constant
@@ -199,6 +204,7 @@ field_constant: (IDENTIFIER) @constant
   ".?"
   ".*"
   "="
+  "?"
 ] @operator
 
 [
