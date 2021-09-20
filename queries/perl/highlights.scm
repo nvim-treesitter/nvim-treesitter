@@ -26,7 +26,7 @@
   (super)
   ]
   .
-  ("::" @constant)
+  ("::" @operator)
 )
 
 (comments) @comment
