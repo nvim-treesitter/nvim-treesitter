@@ -46,11 +46,14 @@
 
 [
   "for"
+  "endfor"
   "in"
 ] @repeat
 
 [ 
   "if"
+  "else"
+  "endif"
 ] @conditional
 
 [
@@ -64,12 +67,13 @@
   (heredoc_start) ; END
 ] @punctuation.delimiter
 
-( template_interpolation
-  [
-    (template_interpolation_start) ; ${
-    (template_interpolation_end) ; }
-  ] @punctuation.special
-)
+[
+  (template_interpolation_start) ; ${
+  (template_interpolation_end) ; }
+  (template_directive_start) ; %{
+  (template_directive_end) ; }
+  (strip_marker) ; ~
+] @punctuation.special
 
 (numeric_lit) @number
 (bool_lit) @boolean
