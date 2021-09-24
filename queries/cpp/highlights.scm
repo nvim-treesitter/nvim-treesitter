@@ -27,10 +27,6 @@
 (function_declarator
   declarator: (field_identifier) @method)
 
-(template_function
-  name: (scoped_identifier
-    name: (identifier) @function))
-
 
 (namespace_identifier) @namespace
 ((namespace_identifier) @type
@@ -40,16 +36,16 @@
 (namespace_definition
   name: (identifier) @namespace)
 
-(using_declaration . "using" . "namespace" . [(scoped_identifier) (identifier)] @namespace)
+(using_declaration . "using" . "namespace" . [(qualified_identifier) (identifier)] @namespace)
 
 (destructor_name
   (identifier) @method)
 
 (function_declarator
-      declarator: (scoped_identifier
+      declarator: (qualified_identifier
         name: (identifier) @function))
 ((function_declarator
-      declarator: (scoped_identifier
+      declarator: (qualified_identifier
         name: (identifier) @constructor))
  (#match? @constructor "^[A-Z]"))
 
@@ -57,7 +53,7 @@
 "static_assert" @function.builtin
 
 (call_expression
-  function: (scoped_identifier
+  function: (qualified_identifier
               name: (identifier) @function))
 
 (call_expression
@@ -68,7 +64,7 @@
   function: (identifier) @constructor)
 (#match? @constructor "^[A-Z]"))
 ((call_expression
-  function: (scoped_identifier
+  function: (qualified_identifier
               name: (identifier) @constructor))
 (#match? @constructor "^[A-Z]"))
 
@@ -77,7 +73,7 @@
               field: (field_identifier) @constructor))
 (#match? @constructor "^[A-Z]"))
 
-;; constructing a type in a intizializer list: Constructor ():  **SuperType (1)**
+;; constructing a type in an initializer list: Constructor ():  **SuperType (1)**
 ((field_initializer
   (field_identifier) @constructor
   (argument_list))
