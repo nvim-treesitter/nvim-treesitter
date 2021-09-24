@@ -175,6 +175,29 @@ function M.highlight_node(node, buf, hl_namespace, hl_group)
   M.highlight_range({ node:range() }, buf, hl_namespace, hl_group)
 end
 
+--- Get a compatible vim range (1 index based) from a TS node range.
+--
+-- TS nodes start with 0 and the end col is ending exclusive.
+-- They also treat a EOF/EOL char as a char ending in the first
+-- col of the next row.
+function M.get_vim_range(range, buf)
+  local srow, scol, erow, ecol = unpack(range)
+  srow = srow + 1
+  scol = scol + 1
+  erow = erow + 1
+
+  if ecol == 0 then
+    -- Use the value of the last col of the previous row instead.
+    erow = erow - 1
+    if not buf or buf == 0 then
+      ecol = vim.fn.col { erow, "$" } - 1
+    else
+      ecol = #api.nvim_buf_get_lines(buf, erow - 1, erow, false)[1]
+    end
+  end
+  return srow, scol, erow, ecol
+end
+
 function M.highlight_range(range, buf, hl_namespace, hl_group)
   local start_row, start_col, end_row, end_col = unpack(range)
   vim.highlight.range(buf, hl_namespace, hl_group, { start_row, start_col }, { end_row, end_col })
@@ -185,17 +208,7 @@ end
 --   "blockwise" or "<C-v>" (as a string with 5 characters or a single character)
 function M.update_selection(buf, node, selection_mode)
   selection_mode = selection_mode or "charwise"
-  local start_row, start_col, end_row, end_col = M.get_node_range(node)
-
-  if end_row == vim.fn.line "$" then
-    end_col = #vim.fn.getline "$"
-  end
-
-  -- Convert to 1-based indices
-  start_row = start_row + 1
-  start_col = start_col + 1
-  end_row = end_row + 1
-  end_col = end_col + 1
+  local start_row, start_col, end_row, end_col = M.get_vim_range({ M.get_node_range(node) }, buf)
 
   vim.fn.setpos(".", { buf, start_row, start_col, 0 })
 
@@ -205,14 +218,7 @@ function M.update_selection(buf, node, selection_mode)
   ---- command to enter blockwise mode
   local mode_string = vim.api.nvim_replace_termcodes(v_table[selection_mode] or selection_mode, true, true, true)
   vim.cmd("normal! " .. mode_string)
-
-  -- Convert exclusive end position to inclusive
-  if end_col == 1 then
-    local previous_col = vim.fn.col { end_row - 1, "$" } - 1
-    vim.fn.setpos(".", { buf, end_row - 1, previous_col, 0 })
-  else
-    vim.fn.setpos(".", { buf, end_row, end_col - 1, 0 })
-  end
+  vim.fn.setpos(".", { buf, end_row, end_col, 0 })
 end
 
 -- Byte length of node range

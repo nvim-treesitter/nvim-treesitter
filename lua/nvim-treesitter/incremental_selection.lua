@@ -17,9 +17,9 @@ function M.init_selection()
   ts_utils.update_selection(buf, node)
 end
 
---- Get a ts compatible range of the current visual selection.
+--- Get the range of the current visual selection.
 --
--- The range of ts nodes start with 0 and the ending range is exclusive.
+-- The range start with 1 and the ending is inclusive.
 local function visual_selection_range()
   local _, csrow, cscol, _ = unpack(vim.fn.getpos "'<")
   local _, cerow, cecol, _ = unpack(vim.fn.getpos "'>")
@@ -27,25 +27,15 @@ local function visual_selection_range()
   local start_row, start_col, end_row, end_col
 
   if csrow < cerow or (csrow == cerow and cscol <= cecol) then
-    start_row = csrow - 1
-    start_col = cscol - 1
-    end_row = cerow - 1
+    start_row = csrow
+    start_col = cscol
+    end_row = cerow
     end_col = cecol
   else
-    start_row = cerow - 1
-    start_col = cecol - 1
-    end_row = csrow - 1
+    start_row = cerow
+    start_col = cecol
+    end_row = csrow
     end_col = cscol
-  end
-
-  -- The last char in ts is equivalent to the EOF in another line.
-  local last_row = vim.fn.line "$"
-  local last_col = vim.fn.col { last_row, "$" }
-  last_row = last_row - 1
-  last_col = last_col - 1
-  if end_row == last_row and end_col == last_col then
-    end_row = end_row + 1
-    end_col = 0
   end
 
   return start_row, start_col, end_row, end_col
@@ -53,7 +43,7 @@ end
 
 local function range_matches(node)
   local csrow, cscol, cerow, cecol = visual_selection_range()
-  local srow, scol, erow, ecol = node:range()
+  local srow, scol, erow, ecol = ts_utils.get_vim_range { node:range() }
   return srow == csrow and scol == cscol and erow == cerow and ecol == cecol
 end
 
@@ -66,7 +56,7 @@ local function select_incremental(get_parent)
     -- Initialize incremental selection with current selection
     if not nodes or #nodes == 0 or not range_matches(nodes[#nodes]) then
       local root = parsers.get_parser():parse()[1]:root()
-      local node = root:named_descendant_for_range(csrow, cscol, cerow, cecol)
+      local node = root:named_descendant_for_range(csrow - 1, cscol - 1, cerow - 1, cecol)
       ts_utils.update_selection(buf, node)
       if nodes and #nodes > 0 then
         table.insert(selections[buf], node)
@@ -84,14 +74,14 @@ local function select_incremental(get_parent)
         -- Keep searching in the main tree
         -- TODO: we should search on the parent tree of the current node.
         local root = parsers.get_parser():parse()[1]:root()
-        parent = root:named_descendant_for_range(csrow, cscol, cerow, cecol)
-        if not parent or parent == node then
+        parent = root:named_descendant_for_range(csrow - 1, cscol - 1, cerow - 1, cecol)
+        if not parent or root == node or parent == node then
           ts_utils.update_selection(buf, node)
           return
         end
       end
       node = parent
-      local srow, scol, erow, ecol = node:range()
+      local srow, scol, erow, ecol = ts_utils.get_vim_range { node:range() }
       local same_range = (srow == csrow and scol == cscol and erow == cerow and ecol == cecol)
       if not same_range then
         table.insert(selections[buf], node)
