@@ -16,14 +16,14 @@
   (identifier) @definition.var)
 
 (struct_specifier
-  name: (scoped_type_identifier
+  name: (qualified_identifier
           name: (type_identifier) @definition.type))
 
 (class_specifier
   name: (type_identifier) @definition.type)
 
 (class_specifier
-  name: (scoped_type_identifier
+  name: (qualified_identifier
           name: (type_identifier) @definition.type))
 
 (alias_declaration
@@ -49,12 +49,8 @@
 (template_method
   name: (field_identifier) @definition.method) @scope
 
-(template_function
-  name: (scoped_identifier
-    name: (identifier) @definition.function)) @scope
-
 (function_declarator
-  declarator: (scoped_identifier
+  declarator: (qualified_identifier
                 name: (identifier) @definition.function)) @scope
 
 (field_declaration
