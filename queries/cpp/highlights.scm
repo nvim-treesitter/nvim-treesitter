@@ -17,6 +17,9 @@
 (template_function
   name: (identifier) @function)
 
+(template_method
+  name: (field_identifier) @method)
+
 (((field_expression
      (field_identifier) @method)) @_parent
  (#has-parent? @_parent template_method function_declarator call_expression))
