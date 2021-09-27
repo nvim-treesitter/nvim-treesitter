@@ -150,7 +150,7 @@
     "revision": "c03173485f9a2b0337947d35181f58e8367483e6"
   },
   "php": {
-    "revision": "d1bdb1e535d39d4f93f7373f406e1837c8a7bb25"
+    "revision": "31550c1506b2033c5631cd18886edd600b67861e"
   },
   "pioasm": {
     "revision": "924aadaf5dea2a6074d72027b064f939acf32e20"
@@ -222,7 +222,7 @@
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
   },
   "vim": {
-    "revision": "59595443fb486449f42db839934117221358a85f"
+    "revision": "fd7bc35927ab44670e02d5ad035e0363f4ffde2b"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
