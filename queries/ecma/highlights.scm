@@ -172,16 +172,16 @@
 (ternary_expression ["?" ":"] @conditional)
 (unary_expression ["!" "~" "-" "+" "delete" "void" "typeof"]  @operator)
 
-"(" @punctuation.bracket
-")" @punctuation.bracket
-"[" @punctuation.bracket
-"]" @punctuation.bracket
-"{" @punctuation.bracket
-"}" @punctuation.bracket
+[
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+] @punctuation.bracket
 
-((template_substitution ["${" "}"] @punctuation.special) @none
- ; Substitutions should have a higher priority than injections.
- (#set! "priority" 105))
+((template_substitution ["${" "}"] @punctuation.special) @none)
 
 ; Keywords
 ;----------
