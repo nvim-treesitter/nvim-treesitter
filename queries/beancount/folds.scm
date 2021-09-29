@@ -1,3 +1,4 @@
 [
     (transaction)
+    (header)
 ] @fold
