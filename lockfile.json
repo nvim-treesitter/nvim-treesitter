@@ -156,7 +156,7 @@
     "revision": "924aadaf5dea2a6074d72027b064f939acf32e20"
   },
   "python": {
-    "revision": "9b84b7fd9da1aa74c8a8afae58b7dcc4c109cda4"
+    "revision": "60023625a136a340fa52542261e225e814e268fd"
   },
   "ql": {
     "revision": "8e7fd7e638d4a0ec7a792ee16b19dbc6407aa810"
@@ -174,7 +174,7 @@
     "revision": "a9281c2250e0d32750de159413cdd87120407389"
   },
   "ruby": {
-    "revision": "fcb189661c2b6d374592fab3dbcea11ddf951f34"
+    "revision": "0c1e470822e157207374ccf59eaddacee748a216"
   },
   "rust": {
     "revision": "cc7bdd3e6d14677e8aa77da64f6a3f57b6f8b00a"
@@ -204,7 +204,7 @@
     "revision": "fcc5f6f4d194dede4e676834ff28a506e39e17b4"
   },
   "tlaplus": {
-    "revision": "58d37dc806736dbca53fc494706379e74bebf1f5"
+    "revision": "d7d8c73035028edeb07cd3d9a50bcc635a186877"
   },
   "toml": {
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
