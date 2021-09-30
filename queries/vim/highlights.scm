@@ -55,6 +55,7 @@
   "execute"
   "normal"
   "set"
+  "setlocal"
   "silent"
   "echo"
   "autocmd"
