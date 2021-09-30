@@ -9,6 +9,14 @@
   "]"
 ] @punctuation.bracket
 
+[
+  ":"
+  ":until"
+  "&"
+  "&as"
+  "?"
+] @punctuation.special
+
 (nil) @constant.builtin
 (vararg) @punctuation.special
 
@@ -34,8 +42,7 @@
 ((symbol) @variable.builtin
  (#match? @variable.builtin "^[$]"))
 
-(sequential_table_binding (symbol) @symbol)
-(table_binding ([(_) ":" @punctuation.special] (symbol) @symbol)*)
+(binding) @symbol
 
 [
   "fn"
@@ -54,8 +61,6 @@
  (multi_symbol (symbol) @function .)
 ])
 
-(parameters (symbol) @parameter)
-
 [
   "for"
   "each"
@@ -71,20 +76,22 @@
  (#any-of? @conditional
   "if" "when"))
 
-((symbol) @include
- (#any-of? @include
-  "require" "require-macros" "import-macros" "include"))
-
 [
   "global"
   "local"
   "let"
   "set"
   "var"
+  "where"
+  "or"
 ] @keyword
 ((symbol) @keyword
  (#any-of? @keyword
   "comment" "do" "doc" "eval-compiler" "lua" "macros" "quote" "tset" "values"))
+
+((symbol) @include
+ (#any-of? @include
+  "require" "require-macros" "import-macros" "include"))
 
 ((symbol) @function.macro
  (#any-of? @function.macro
