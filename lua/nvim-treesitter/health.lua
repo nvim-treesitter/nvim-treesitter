@@ -65,7 +65,14 @@ local function install_health()
         .. ' or set the environment variable CC or `require"nvim-treesitter.install".compilers` explicitly!',
     })
   else
-    health_ok("`" .. cc .. "` executable found. Selected from " .. vim.inspect(install.compilers))
+    local version = vim.fn.systemlist(cc .. (cc == "cl" and "" or " --version"))[1]
+    health_ok(
+      "`"
+        .. cc
+        .. "` executable found. Selected from "
+        .. vim.inspect(install.compilers)
+        .. (version and ("\nVersion: " .. version) or "")
+    )
   end
   if vim.treesitter.language_version then
     if vim.treesitter.language_version >= NVIM_TREESITTER_MINIMUM_ABI then
