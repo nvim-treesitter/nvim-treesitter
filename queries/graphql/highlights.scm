@@ -109,7 +109,8 @@
 ; Literals
 ;---------
 
-(description) @comment
+(description
+  (string_value) @comment)
 
 (comment) @comment
 
