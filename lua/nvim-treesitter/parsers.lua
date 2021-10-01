@@ -85,6 +85,17 @@ list.cuda = {
   maintainers = { "@theHamsta" },
 }
 
+list.d = {
+  install_info = {
+    url = "https://github.com/CyberShadow/tree-sitter-d",
+    files = { "src/parser.c", "src/scanner.cc" },
+    requires_generate_from_grammar = true,
+  },
+  maintainers = { "@nawordar" },
+  -- Generating grammar takes ~60s
+  experimental = true,
+}
+
 list.glsl = {
   install_info = {
     url = "https://github.com/theHamsta/tree-sitter-glsl",
