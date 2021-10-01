@@ -480,3 +480,25 @@ To avoid these kind of errors, please use `setlocal` instead of `set` for the re
 
 This is because of `rtp` management in `nvim`, adding `packadd
 nvim-treesitter` should fix the issue.
+
+#### I want to use Git instead of curl for downloading the parsers
+
+In your Lua config:
+
+```lua
+require("nvim-treesitter.install").prefer_git = true
+```
+
+#### I want to use a HTTP proxy for downloading the parsers
+
+You can either configure curl to use additional CLI arguments in your Lua config:
+```lua
+require("nvim-treesitter.install").command_extra_args = {
+    curl = { "--proxy", "<proxy url>" },
+}
+```
+or you configure git via `.gitconfig` and use git instead of curl
+
+```lua
+require("nvim-treesitter.install").prefer_git = true
+```
