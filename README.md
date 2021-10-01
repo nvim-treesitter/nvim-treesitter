@@ -497,7 +497,7 @@ require("nvim-treesitter.install").command_extra_args = {
     curl = { "--proxy", "<proxy url>" },
 }
 ```
-or you configure git via `.gitconfig` and use git instead of curl
+or you can configure git via `.gitconfig` and use git instead of curl
 
 ```lua
 require("nvim-treesitter.install").prefer_git = true
