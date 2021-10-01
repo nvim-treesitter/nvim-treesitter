@@ -140,7 +140,11 @@
 
 (comment) @comment
 (string) @string
-(escape_sequence) @string.escape
+[
+  (escape_sequence)
+  "{{"
+  "}}"
+] @string.escape
 
 ; Tokens
 
