@@ -116,6 +116,7 @@
 (closure_parameters (_) @parameter)
 
 (lifetime (identifier) @label)
+(loop_label (identifier) @label)
 
 (self) @variable.builtin
 
