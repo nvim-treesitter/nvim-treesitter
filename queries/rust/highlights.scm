@@ -9,7 +9,7 @@
   name: (identifier) @constant)
 ; Assume all-caps names are constants
 ((identifier) @constant
- (#match? @constant "^[A-Z][A-Z\\d_]+$'"))
+ (#match? @constant "^[A-Z][A-Z\\d_]*$"))
 
 ; Other identifiers
 
@@ -41,8 +41,11 @@
     field: (field_identifier) @function))
 
 ; Assume other uppercase names are enum constructors
-([(identifier) (field_identifier)] @constant
+((field_identifier) @constant
  (#match? @constant "^[A-Z]"))
+
+(enum_variant
+  name: (identifier) @constant)
 
 ; Assume that uppercase names in paths are types
 (scoped_identifier
@@ -84,7 +87,7 @@
 (metavariable) @function.macro
 
 ;; Attribute macros
-(meta_item (identifier) @function.macro)
+(attribute_item (meta_item (identifier) @function.macro))
 (meta_item (scoped_identifier (identifier) @function.macro .))
 
 ;; Derive macros (assume all arguments are types)
