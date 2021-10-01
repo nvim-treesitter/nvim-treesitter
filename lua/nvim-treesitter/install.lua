@@ -12,6 +12,8 @@ local M = {}
 local lockfile = {}
 
 M.compilers = { vim.fn.getenv "CC", "cc", "gcc", "clang", "cl" }
+M.prefer_git = fn.has "win32" == 1
+M.command_extra_args = {}
 
 local started_commands = 0
 local finished_commands = 0
@@ -124,6 +126,10 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
     print(get_job_status() .. " " .. attr.info)
   end
 
+  if attr.opts and attr.opts.args and M.command_extra_args[attr.cmd] then
+    vim.list_extend(attr.opts.args, M.command_extra_args[attr.cmd])
+  end
+
   if type(attr.cmd) == "function" then
     local ok, err = pcall(attr.cmd)
     if ok then
@@ -180,6 +186,9 @@ end
 local function get_command(cmd)
   local options = ""
   if cmd.opts and cmd.opts.args then
+    if M.command_extra_args[cmd.cmd] then
+      vim.list_extend(cmd.opts.args, M.command_extra_args[cmd.cmd])
+    end
     for _, opt in ipairs(cmd.opts.args) do
       options = string.format("%s %s", options, opt)
     end
@@ -270,7 +279,10 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   local command_list = {}
   if not from_local_path then
     vim.list_extend(command_list, { shell.select_install_rm_cmd(cache_folder, project_name) })
-    vim.list_extend(command_list, shell.select_download_commands(repo, project_name, cache_folder, revision))
+    vim.list_extend(
+      command_list,
+      shell.select_download_commands(repo, project_name, cache_folder, revision, M.prefer_git)
+    )
   end
   if generate_from_grammar then
     if repo.generate_requires_npm then
