@@ -212,6 +212,29 @@ local function config_info(process_function)
   print(vim.inspect(config, { process = process_function }))
 end
 
+if not vim.ui then
+  vim.ui = {
+    select = function(items, opts, on_choice)
+      vim.validate {
+        items = { items, "table", false },
+        on_choice = { on_choice, "function", false },
+      }
+      opts = opts or {}
+      local choices = { opts.prompt or "Select one of:" }
+      local format_item = opts.format_item or tostring
+      for i, item in pairs(items) do
+        table.insert(choices, string.format("%d: %s", i, format_item(item)))
+      end
+      local choice = vim.fn.inputlist(choices)
+      if choice < 1 or choice > #items then
+        on_choice(nil, nil)
+      else
+        on_choice(items[choice], choice)
+      end
+    end,
+  }
+end
+
 function M.edit_query_file(query_group, lang)
   lang = lang or parsers.get_buf_lang()
   local files = ts_query.get_query_files(lang, query_group, true)
@@ -221,18 +244,11 @@ function M.edit_query_file(query_group, lang)
   elseif #files == 1 then
     vim.cmd(":edit " .. files[1])
   else
-    local counter = 0
-    local choices = {
-      "Select a file:",
-      unpack(vim.tbl_map(function(f)
-        counter = counter + 1
-        return counter .. ". " .. f
-      end, files)),
-    }
-    local choice = vim.fn.inputlist(choices)
-    if choice > 0 and choice <= #files then
-      vim.cmd(":edit " .. files[choice])
-    end
+    vim.ui.select(files, { prompt = "Select a file:" }, function(file)
+      if file then
+        vim.cmd(":edit " .. file)
+      end
+    end)
   end
 end
 
@@ -241,14 +257,15 @@ function M.edit_query_file_user_after(query_group, lang)
   local folder = utils.join_path(vim.fn.stdpath "config", "after", "queries", lang)
   local file = utils.join_path(folder, query_group .. ".scm")
   if vim.fn.isdirectory(folder) ~= 1 then
-    local choice = vim.fn.inputlist { '"' .. folder .. " does not exist. Create it?", "1. Yes", "2. No" }
-    if choice == 1 then
-      vim.fn.mkdir(folder, "p", "0755")
-    else
-      return
-    end
+    vim.ui.select({ "Yes", "No" }, { prompt = '"' .. folder .. '" does not exist. Create it?' }, function(choice)
+      if choice == "Yes" then
+        vim.fn.mkdir(folder, "p", "0755")
+        vim.cmd(":edit " .. file)
+      end
+    end)
+  else
+    vim.cmd(":edit " .. file)
   end
-  vim.cmd(":edit " .. file)
 end
 
 M.commands = {
