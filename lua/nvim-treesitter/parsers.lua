@@ -738,6 +738,14 @@ list.hjson = {
   maintainers = { "@winston0410" },
 }
 
+list.llvm = {
+  install_info = {
+    url = "https://github.com/benwilliamgraham/tree-sitter-llvm",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@benwilliamgraham" },
+}
+
 local M = {
   list = list,
 }
