@@ -5,8 +5,10 @@
 (string) @string
 (label) @label
 (keyword) @keyword
+"ret" @keyword.return
 (boolean) @boolean
-(float) @number
+(float) @float
 (constant) @identifier
 (identifier) @constant
-(punctuation) @punctuation
+(symbol) @punctuation.delimiter
+(bracket) @punctuation.bracket
