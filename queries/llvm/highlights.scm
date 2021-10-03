@@ -1,5 +1,5 @@
 (type) @type
-(statement) @statement
+(statement) @keyword.operator
 (number) @number
 (comment) @comment
 (string) @string
@@ -8,7 +8,7 @@
 "ret" @keyword.return
 (boolean) @boolean
 (float) @float
-(constant) @identifier
-(identifier) @constant
+(constant) @constant
+(identifier) @variable
 (symbol) @punctuation.delimiter
 (bracket) @punctuation.bracket
