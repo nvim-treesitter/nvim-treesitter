@@ -546,6 +546,8 @@ list.verilog = {
   },
   used_by = { "systemverilog" },
   maintainers = { "@zegervdv" },
+  -- The parser still uses API version 12, because it does not compile with 13
+  experimental = true,
 }
 
 -- Parsers for injections
@@ -763,6 +765,7 @@ function M.maintained_parsers()
   local has_tree_sitter_cli = vim.fn.executable "tree-sitter" == 1 and vim.fn.executable "node" == 1
   return vim.tbl_filter(function(lang)
     return M.list[lang].maintainers
+      and not M.list[lang].experimental
       and (has_tree_sitter_cli or not M.list[lang].install_info.requires_generate_from_grammar)
   end, M.available_parsers())
 end

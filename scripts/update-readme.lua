@@ -19,7 +19,9 @@ for _, v in ipairs(sorted_parsers) do
     generated_text = generated_text
       .. "- [x] "
       .. link
-      .. " (maintained by "
+      .. " ("
+      .. (v.parser.experimental and "experimental, " or "")
+      .. "maintained by "
       .. table.concat(v.parser.maintainers, ", ")
       .. ")\n"
   else
