@@ -1,28 +1,18 @@
 [
   (arguments)
-  (call)
   (do_block)
   (list)
   (map)
-  (stab_expression)
+  (tuple)
 ] @indent
 
-(stab_expression
- right: (_) @indent)
-
 [
-  "("
   ")"
-  "{"
-  "}"
-  "["
   "]"
+  "end"
+  "}"
   (after_block)
-  (catch_block)
   (else_block)
   (rescue_block)
-  "do"
-  "end"
+  (catch_block)
 ] @branch
-
-(comment) @ignore

@@ -118,6 +118,7 @@
 (call target: ((identifier) @keyword (#any-of? @keyword
   "alias"
   "case"
+  "catch"
   "cond"
   "else"
   "for"
