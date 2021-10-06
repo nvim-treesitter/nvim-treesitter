@@ -109,17 +109,17 @@ local function query_status(lang, query_group)
   end
 end
 
-function M.checkhealth()
+function M.check()
   local error_collection = {}
   -- Installation dependency checks
   install_health()
   queries.invalidate_query_cache()
-  health_start "Parser/Features H L F I J"
   -- Parser installation checks
+  local parser_installation = { "Parser/Features H L F I J" }
   for _, parser_name in pairs(info.installed_parsers()) do
     local installed = #api.nvim_get_runtime_file("parser/" .. parser_name .. ".so", false)
 
-    -- Only print informations about installed parsers
+    -- Only append information about installed parsers
     if installed >= 1 then
       local multiple_parsers = installed > 1 and "+" or ""
       local out = "  - " .. parser_name .. multiple_parsers .. string.rep(" ", 15 - (#parser_name + #multiple_parsers))
@@ -130,16 +130,19 @@ function M.checkhealth()
           table.insert(error_collection, { parser_name, query_group, err })
         end
       end
-      print(out)
+      table.insert(parser_installation, out)
     end
   end
-  print [[
+  local legend = [[
 
- Legend: H[ighlight], L[ocals], F[olds], I[ndents], In[j]ections
+  Legend: H[ighlight], L[ocals], F[olds], I[ndents], In[j]ections
          +) multiple parsers found, only one will be used
          x) errors found in the query, try to run :TSUpdate {lang}]]
+  table.insert(parser_installation, legend)
+  -- Finally call the report function
+  health_start(table.concat(parser_installation, "\n"))
   if #error_collection > 0 then
-    print "\nThe following errors have been detected:"
+    health_start "The following errors have been detected:"
     for _, p in ipairs(error_collection) do
       local lang, type, err = unpack(p)
       health_error(lang .. "(" .. type .. "): " .. err)
