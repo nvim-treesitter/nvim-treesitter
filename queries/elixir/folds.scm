@@ -1,9 +1,9 @@
 [
-  (do_block)
   (anonymous_function)
-  (map)
-  (struct)
+  (arguments)
+  (block)
+  (do_block)
   (list)
-  (keyword_list)
-  (heredoc)
+  (map)
+  (tuple)
 ] @fold
