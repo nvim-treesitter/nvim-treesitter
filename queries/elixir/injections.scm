@@ -1,20 +1,14 @@
-(comment) @comment
+(sigil 
+  (sigil_name) @_sigil_name 
+  (quoted_content) @surface 
+(#eq? @_sigil_name "F"))
 
-; TODO: re-add when markdown is added
-; (heredoc
-;   (heredoc_content) @markdown)
+(sigil 
+  (sigil_name) @_sigil_name 
+  (quoted_content) @heex 
+(#eq? @_sigil_name "H"))
 
-((sigil
-   (sigil_start) @_start
-   (sigil_content) @regex)
- (#match? @_start "~(r|R)[/</\\\"[({|]"))
-
-((sigil
-   (sigil_start) @_start
-   (sigil_content) @surface)
- (#eq? @_start "~F\"\"\""))
-
-((sigil
-   (sigil_start) @_start
-   (sigil_content) @heex)
- (#eq? @_start "~H\"\"\""))
+(sigil 
+  (sigil_name) @_sigil_name 
+  (quoted_content) @zig 
+(#eq? @_sigil_name "Z"))
