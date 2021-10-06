@@ -1,5 +1,10 @@
-(ERROR) @error
+; Punctuation delimiters
+[
+  "%"
+  ","
+] @punctuation.delimiter
 
+; Punctuation brackets
 [
   "("
   ")"
@@ -11,144 +16,184 @@
   "}"
 ] @punctuation.bracket
 
+; Operators
 [
-  ","
-  "->"
+  "!"
+  "!="
+  "!=="
+  "&"
+  "&&"
+  "&&&"
+  "*"
+  "**"
+  "+"
+  "++"
+  "+++"
+  "-"
+  "--"
+  "---"
   "."
-] @punctuation.delimiter
-
-[
-  (sigil_start)
-  (sigil_end)
-  (heredoc_start)
-  (heredoc_end)
-] @punctuation.special
-
-(interpolation ["#{" "}"] @punctuation.special)
-
-[
-  "after"
-  "and" 
-  "catch"
-  "do"
-  "else"
-  "end"
-  "fn"
+  ".."
+  "/"
+  "//"
+  "::"
+  "<"
+  "<-"
+  "<<<"
+  "<<~"
+  "<="
+  "<>"
+  "<|>"
+  "<~"
+  "<~>"
+  "="
+  "=="
+  "==="
+  "=>"
+  "=~"
+  ">"
+  ">="
+  ">>>"
+  "@"
+  "^"
+  "and"
   "in"
-  "not in"
   "not"
   "or"
-  "rescue"
-  "when" 
+  "when"
+  "|"
+  "|>"
+  "||"
+  "|||"
+  "~>"
+  "~>>"
+  "~~~"
+  "~"
+] @operator
+
+; Do/Fn blocks
+[
+  "do"
+  "end"
+  "fn"
 ] @keyword
 
+; Exception blocks
 [
-  (comment) 
-  (unused_identifier)
-] @comment
+  "catch"
+  "rescue" 
+] @exception
 
+; Conditional blocks
+[ 
+  "else" 
+] @conditional
+
+; Comments
+(comment) @comment
+
+; Parser errors
+(ERROR) @error
+
+; Sigils
+(sigil (sigil_name) @operator quoted_start: _ @operator quoted_end: _ @operator)
+
+; Modules
+(alias) @type
+
+; Atoms
 [
-  (heredoc_content)
-  (sigil_content)
-  (string)
-] @string
+  (atom)
+  (quoted_atom) 
+] @symbol
 
-; __MODULE__ and friends
-(special_identifier) @constant.builtin
+; Keywords
+(keyword) @symbol
 
-(map ["%{" "}"] @constructor)
+; Strings
+(string) @string
 
-(struct ["%" "{" "}"] @constructor)
+; Interpolation
+(interpolation "#{" @string.escape (_)? "}" @string.escape)
 
-(binary_op operator: _ @operator)
+; Escape sequences
+(escape_sequence) @string.escape
 
-(unary_op operator: _ @operator)
-
-(atom) @symbol
-
-(keyword) @parameter
-
-[
-  (true) 
-  (false)
-] @boolean
-
-(nil) @constant.builtin
-
-(sigil) @string.special
-
-(identifier) @variable
-
-(module) @type
-
-(function_identifier) @function
-
+; Integers
 (integer) @number
 
+; Floats
 (float) @float
 
+; Characters
 [
-  (sigil_start) 
-  (sigil_end)
-] @string.special
+  (char)
+  (charlist)
+] @character
 
-; Module attributes as "attributes"
-(unary_op operator: "@" @attribute [
-  (call function: (function_identifier) @attribute) 
-  (identifier) @attribute
+; Booleans
+(boolean) @boolean
+
+; Nil
+(nil) @constant.builtin
+
+; Calling a local function
+(call target: (identifier) @function) 
+
+; Calling a remote function
+(call target: (dot left: [
+  (atom) @type 
+  (_)
+] right: (identifier) @function) (arguments))
+
+; Module attributes
+(unary_operator operator: "@" @constant operand: [
+  (identifier) @constant
+  (call target: (identifier) @constant)
 ])
 
-; Erlang modules (when they are the remote of a function call) are highlighted as Elixir modules
-(dot_call remote: (atom) @type)
-
-(call (function_identifier) @keyword.function (#any-of? @keyword.function 
-  "def"
-  "defdelegate"
-  "defexception"
-  "defguard"
-  "defguardp"
-  "defimpl"
-  "defmacro"
-  "defmacrop"
-  "defmodule"
-  "defoverridable"
-  "defp"
-  "defprotocol"
-  "defstruct"
-) [(identifier) @function (_)]) ; 0-arity function def without parens
-
-(call (function_identifier) @include (#any-of? @include 
-  "alias" 
-  "import" 
-  "require" 
-  "use"
+; Unused identifiers
+((identifier) @comment (#match? @comment 
+  "^_([^_].*)?$"
 ))
+ 
+; Calling a local def function
+(call target: ((identifier) @keyword.function (#match? @keyword.function
+  "^def(.*)?$"
+)) (arguments (identifier) @function)?)
 
-(call (function_identifier) @conditional (#any-of? @conditional 
+; Conditionals
+(call target: (identifier) @conditional (#any-of? @conditional
   "case"
   "cond"
-  "else"
   "if"
+  "receive"
   "unless"
   "with"
-  "receive"
 ))
 
-(call (function_identifier) @exception (#any-of? @exception 
+; Comprehensions
+(call target: (identifier) @repeat (#any-of? @repeat
+  "for"
+))
+
+; Exceptions
+(call target: (identifier) @exception (#any-of? @exception
+  "after"
+  "catch"
+  "else"
   "raise"
   "reraise"
+  "rescue"
   "throw"
   "try"
 ))
 
-(call (function_identifier) @repeat (#any-of? @repeat 
-  "for"
-))
-
-(call (function_identifier) @keyword.function (#any-of? @keyword.function 
-  "describe"
-  "setup"
-  "setup_all"
-  "test"
-  "using"
+; Special constants
+((identifier) @constant.builtin (#any-of? @constant.builtin
+  "__CALLER__"
+  "__DIR__"
+  "__ENV__"
+  "__MODULE__"
+  "__STACKTRACE__"
 ))
