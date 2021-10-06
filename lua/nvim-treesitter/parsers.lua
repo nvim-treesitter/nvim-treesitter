@@ -292,11 +292,11 @@ list.erlang = {
 
 list.elixir = {
   install_info = {
-    url = "https://github.com/ananthakumaran/tree-sitter-elixir",
+    url = "https://github.com/elixir-lang/tree-sitter-elixir",
     files = { "src/parser.c", "src/scanner.cc" },
-    requires_generate_from_grammar = true,
+    branch = "main",
   },
-  maintainers = { "@nifoc" },
+  maintainers = { "@jonatanklosko" },
 }
 
 list.surface = {
