@@ -19,6 +19,9 @@
   "%"
 ] @punctuation.special
 
+; Parser errors
+(ERROR) @error
+
 ; Identifiers
 (identifier) @variable
 
@@ -201,7 +204,7 @@
           quoted_end: _ @comment) @comment
         (boolean) @comment
       ]))
-  (#any-of? @_identifier "moduledoc" "typedoc" "doc"))
+  (#any-of? @_identifier "moduledoc" "typedoc" "shortdoc" "doc"))
 
 ; Sigils
 (sigil 
@@ -220,5 +223,3 @@
   ((sigil_modifiers) @string)?
   (#any-of? @_sigil_name "s" "S")) @string
 
-; Parser errors
-(ERROR) @error

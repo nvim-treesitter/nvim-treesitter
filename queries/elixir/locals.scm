@@ -1,80 +1,70 @@
-[
-  (after_block)
-  (catch_block)
-  (do_block)
-  (stab_expression)
-  (rescue_block)
-] @scope
+; Scopes
+(call (do_block)) @scope
+(stab_clause) @scope
 
+; References
 (identifier) @reference
+(alias) @reference
 
+; Module Definitions
 (call
- function: (function_identifier) @_call-name
- (module) @definition.type
- (#eq? @_call-name "defmodule"))
+  target: ((identifier) @_identifier (#eq? @_identifier "defmodule"))
+  (arguments (alias) @definition.type))
 
-; Function definition without arguments
-(call (function_identifier) @_call-name
- (identifier) @definition.function
- (#any-of? @_call-name "def" "defp" "defguard" "defguardp"))
+; Local Function Definitions
+; TODO: add support for test blocks
+; test "foo", %{conn: conn} do
+(call
+  target: ((identifier) @_identifier (#any-of? @_identifier "def" "defp" "defmacro" "defmacrop" "defguard" "defguardp" "defn" "defnp" "for"))
+  (arguments [
+    (identifier) @definition.function
+    (binary_operator left: (identifier) @definition.function)
+    (call target: (identifier) @definition.function (arguments [
+      (identifier) @definition.parameter
+      (_ (identifier) @definition.parameter)
+      (_ (_ (identifier) @definition.parameter))
+      (_ (_ (_ (identifier) @definition.parameter)))
+      (_ (_ (_ (_ (identifier) @definition.parameter))))
+      (_ (_ (_ (_ (_ (identifier) @definition.parameter)))))
+      (_ (_ (_ (_ (_ (_ (identifier) @definition.parameter))))))
+      (_ (_ (_ (_ (_ (_ (_ (identifier) @definition.parameter)))))))
+    ]))
+  ]?) (#set! definition.function.scope parent))
 
-; Function definition with arguments
-(call (function_identifier) @_call-name
- (call
-  function: (function_identifier) @definition.function
-  (arguments
-   [(identifier) @definition.parameter
-    (tuple (identifier) @definition.parameter)
-    (list (identifier) @definition.parameter)
-    (_
-     (keyword_list (identifier) @definition.parameter))
-    (binary_op
-     left: (identifier) @definition.parameter
-     operator: "\\\\")]))
- (#any-of? @_call-name "def" "defp"))
+; Pattern Match Definitions
+(binary_operator left: [
+  (identifier) @definition.var
+  (_ (identifier) @definition.var)
+  (_ (_ (identifier) @definition.var))
+  (_ (_ (_ (identifier) @definition.var)))
+  (_ (_ (_ (_ (identifier) @definition.var))))
+  (_ (_ (_ (_ (_ (identifier) @definition.var)))))
+  (_ (_ (_ (_ (_ (_ (identifier) @definition.var))))))
+  (_ (_ (_ (_ (_ (_ (_ (identifier) @definition.var)))))))
+] operator: "=")
 
-; Function definition with (some) arguments and guard(s)
-(call (function_identifier) @_call-name
- (binary_op
-  left:
-   (call
-    function: (function_identifier) @definition.function
-    (arguments
-     [(identifier) @definition.parameter
-      (tuple (identifier) @definition.parameter)
-      (list (identifier) @definition.parameter)
-      (_
-       (keyword_list (identifier) @definition.parameter))]))
-  operator: "when")
- (#any-of? @_call-name "def" "defp" "defguard" "defguardp"))
+; Stab Clause Definitions
+(stab_clause left: [
+  (_ (identifier) @definition.var)
+  (_ (_ (identifier) @definition.var))
+  (_ (_ (_ (identifier) @definition.var)))
+  (_ (_ (_ (_ (identifier) @definition.var))))
+  (_ (_ (_ (_ (_ (identifier) @definition.var)))))
+  (_ (_ (_ (_ (_ (_ (identifier) @definition.var))))))
+  (_ (_ (_ (_ (_ (_ (_ (identifier) @definition.var)))))))
+])
 
-; Variable assignment and simple pattern matching
-(binary_op
- left:
- [(identifier) @definition.var
-  (tuple (identifier) @definition.var)
-  (list (identifier) @definition.var)
-  (_
-   (keyword_list (identifier) @definition.var))]
- operator: "=")
-
-; Simple stab expression (ex. case pattern matching) without guard(s)
-(stab_expression
- left:
- (bare_arguments
-  [(identifier) @definition.var
-   (tuple (identifier) @definition.var)
-   (list (identifier) @definition.var)
-   (_
-    (keyword_list (identifier) @definition.var))]))
-
-; Simple stab expression (ex. case pattern matching) with guard(s)
-(stab_expression
- left:
- (bare_arguments
-  (binary_op
-   left: [(identifier) @definition.var
-          (tuple (identifier) @definition.var)
-          (list (identifier) @definition.var)
-          (_
-           (keyword_list (identifier) @definition.var))])))
+; Aliases
+(call
+  target: ((identifier) @_identifier (#any-of? @_identifier "require" "alias" "use" "import"))
+  (arguments [
+    (alias) @definition.import
+    (_ (alias) @definition.import)
+    (_ (_ (alias) @definition.import))
+    (_ (_ (_ (alias) @definition.import)))
+    (_ (_ (_ (_ (alias) @definition.import))))
+    (_ (_ (_ (_ (_ (alias) @definition.import)))))
+    (_ (_ (_ (_ (_ (_ (alias) @definition.import))))))
+    (_ (_ (_ (_ (_ (_ (_ (alias) @definition.import)))))))
+  ]
+))
