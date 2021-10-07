@@ -111,32 +111,9 @@
   (identifier) @type)
 
 ; Generic Types.
-(type_of_expression
-  (generic_name
-    (identifier) @type))
-
-(type_argument_list
-  (generic_name
-    (identifier) @type))
-
-(base_list
-  (generic_name
-    (identifier) @type))
-
-(type_constraint
-  (generic_name
-    (identifier) @type))
-
-(object_creation_expression
-  (generic_name
-   (identifier) @type))
-
-(property_declaration
-  (generic_name
-    (identifier) @type))
-
-type: (generic_name
-  (identifier) @type)
+(generic_name
+  . (identifier) @type)
+(_ type: (_) @type)
 
 ; Generic Method invocation with generic type
 (invocation_expression
@@ -368,7 +345,7 @@ type: (generic_name
  "fixed"
 ] @keyword
 
-(parameter_modifier "this" @keyword)
+(parameter_modifier) @operator
 
 (query_expression
   (_ [
