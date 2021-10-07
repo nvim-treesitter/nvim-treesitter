@@ -391,6 +391,7 @@ list.scala = {
     url = "https://github.com/tree-sitter/tree-sitter-scala",
     files = { "src/parser.c", "src/scanner.c" },
   },
+  maintainers = { "@stevanmilic" },
 }
 
 list.supercollider = {

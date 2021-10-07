@@ -4,6 +4,7 @@
  (trait_definition)
  (object_definition)
  (function_definition)
+ (val_definition)
  (import_declaration)
 
  (while_expression)
