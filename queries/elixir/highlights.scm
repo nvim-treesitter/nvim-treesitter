@@ -86,16 +86,16 @@
 (stab_clause
   operator: _ @operator)
 
-; Calling a local function
+; Local Function Calls
 (call target: (identifier) @function) 
 
-; Calling a remote function
+; Remove Function Calls
 (call target: (dot left: [
   (atom) @type 
   (_)
 ] right: (identifier) @function) (arguments))
 
-; Calling a local def function
+; Definition Function Calls
 (call target: ((identifier) @keyword.function (#any-of? @keyword.function
   "def"
   "defdelegate"
@@ -142,7 +142,7 @@
   "with"
 )))
 
-; Special constants
+; Special Constants
 ((identifier) @constant.builtin (#any-of? @constant.builtin
   "__CALLER__"
   "__DIR__"
@@ -181,6 +181,11 @@
       right: (integer) @operator
     )
 ])
+
+; Pipe Operator
+(binary_operator
+  operator: "|>"
+  right: (identifier) @function)
 
 ; Module attributes
 (unary_operator 
