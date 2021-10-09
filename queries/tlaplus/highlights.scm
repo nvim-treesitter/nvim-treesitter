@@ -85,7 +85,11 @@
 (string) @string
 (escape_char) @string.escape
 (boolean) @boolean
-(primitive_value_set) @type
+(string_set) @type
+(boolean_set) @type
+(nat_number_set) @type
+(int_number_set) @type
+(real_number_set) @type
 
 ; Comments
 (comment) @comment

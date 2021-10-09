@@ -140,6 +140,10 @@ For `nvim-treesitter` to support a specific feature for a specific language requ
 
 The following is a list of languages for which a parser can be installed through `:TSInstall`; a checked box means that `nvim-treesitter` also contains queries at least for the `highlight` module.
 
+Experimental parsers are parsers that are maintained, but not stable enough for
+daily use yet. They are excluded from automatic installation when
+`ensure_installed` is set to `"maintained"`.
+
 We are looking for maintainers to add more parsers and to write query files for their languages.
 
 <!--This section of the README is automatically updated by a CI job-->
