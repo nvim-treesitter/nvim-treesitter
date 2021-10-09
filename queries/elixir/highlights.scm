@@ -19,16 +19,14 @@
   "%"
 ] @punctuation.special
 
-; Parser errors
+; Parser Errors
 (ERROR) @error
 
 ; Identifiers
 (identifier) @variable
 
-; Unused identifiers
-((identifier) @comment (#match? @comment 
-  "^_"
-))
+; Unused Identifiers
+((identifier) @comment (#match? @comment "^_"))
 
 ; Comments
 (comment) @comment
@@ -74,22 +72,21 @@
 ; Operators
 (operator_identifier) @operator
 
-(unary_operator
-  operator: _ @operator)
+(unary_operator operator: _ @operator)
 
-(binary_operator
-  operator: _ @operator)
+(binary_operator operator: _ @operator)
 
-(dot
-  operator: _ @operator)
+; Pipe Operator
+(binary_operator operator: "|>" right: (identifier) @function)
 
-(stab_clause
-  operator: _ @operator)
+(dot operator: _ @operator)
+
+(stab_clause operator: _ @operator)
 
 ; Local Function Calls
 (call target: (identifier) @function) 
 
-; Remove Function Calls
+; Remote Function Calls
 (call target: (dot left: [
   (atom) @type 
   (_)
@@ -114,8 +111,7 @@
   "defstruct"
 )) (arguments [
   (identifier) @function
-  (binary_operator left: (identifier) @function operator: "when")
-])?)
+  (binary_operator left: (identifier) @function operator: "when")])?)
 
 ; Kernel Keywords & Special Forms
 (call target: ((identifier) @keyword (#any-of? @keyword
@@ -176,40 +172,15 @@
       left: [
         (call target: (dot left: (_) right: (identifier) @function))
         (identifier) @function
-      ]
-      operator: "/"
-      right: (integer) @operator
-    )
-])
-
-; Pipe Operator
-(binary_operator
-  operator: "|>"
-  right: (identifier) @function)
+      ] operator: "/" right: (integer) @operator)
+  ])
 
 ; Module attributes
 (unary_operator 
   operator: "@" @constant 
   operand: [
     (identifier) @constant
-    (call target: (identifier) @constant)
-])
-
-; Documentation
-(unary_operator
-  operator: "@" @comment
-  operand: (call
-    target: ((identifier) @comment) @_identifier
-    (arguments
-      [
-        (string) @comment
-        (charlist) @comment
-        (sigil
-          quoted_start: _ @comment
-          quoted_end: _ @comment) @comment
-        (boolean) @comment
-      ]))
-  (#any-of? @_identifier "moduledoc" "typedoc" "shortdoc" "doc"))
+    (call target: (identifier) @constant)])
 
 ; Sigils
 (sigil 
@@ -224,7 +195,26 @@
   "~" @string
   ((sigil_name) @string) @_sigil_name
   quoted_start: _ @string 
+  (quoted_content) @string
   quoted_end: _ @string
   ((sigil_modifiers) @string)?
-  (#any-of? @_sigil_name "s" "S")) @string
+  (#any-of? @_sigil_name "s" "S"))
 
+; Documentation
+(unary_operator 
+  operator: "@" @comment 
+  operand: (call 
+    target: (((identifier) @comment) @_identifier 
+      (#any-of? @_identifier "moduledoc" "typedoc" "shortdoc" "doc"))
+    (arguments [
+        (string) @comment
+        (charlist) @comment
+        (sigil
+          "~" @comment
+          (sigil_name) @comment
+          quoted_start: _ @comment
+          (quoted_content) @comment
+          quoted_end: _ @comment
+          ((sigil_modifiers) @comment)?)
+        (boolean) @comment
+    ])))
