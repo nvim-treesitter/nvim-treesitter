@@ -30,6 +30,9 @@ jobs:
       - uses: actions/setup-node@v2
 
       - name: Install and prepare Neovim
+        env:
+          NVIM_TAG: v0.5.1
+          TREE_SITTER_CLI_TAG: v0.20.0
         run: |
           bash ./scripts/ci-install-${{ matrix.os }}.sh
 
@@ -38,16 +41,10 @@ jobs:
         run: |
           nvim --headless -c "TSInstallSync all" -c "q"
 
-      - name: Check query files (Unix)
-        if: matrix.os != 'windows-latest'
-        env:
-          ALLOWED_INSTALLATION_FAILURES: haskell
-        run: nvim --headless -c "luafile ./scripts/check-queries.lua" -c "q"
-
       - name: Compile parsers Windows
         if: matrix.os == 'windows-latest'
         run: |
-          C:\\tools\\neovim\\Neovim\\bin\\nvim.exe --headless -c "TSInstallSync all" -c "q"
+          Neovim\\bin\\nvim.exe --headless -c "TSInstallSync all" -c "q"
 
       - name: Post compile Windows
         if: matrix.os == 'windows-latest'
@@ -59,9 +56,14 @@ jobs:
           name: parsers-${{ matrix.os }}-${{ matrix.cc }}-x86_64
           path: parser/*
 
+      - name: Check query files (Unix)
+        if: matrix.os != 'windows-latest'
+        env:
+          ALLOWED_INSTALLATION_FAILURES: haskell
+        run: nvim --headless -c "luafile ./scripts/check-queries.lua" -c "q"
+
       - name: Check query files (Windows)
         if: matrix.os == 'windows-latest'
         env:
           ALLOWED_INSTALLATION_FAILURES: haskell
-        run: C:\\tools\\neovim\\Neovim\\bin\\nvim.exe --headless -c "luafile ./scripts/check-queries.lua" -c "q"
-
+        run: Neovim\\bin\\nvim.exe --headless -c "luafile ./scripts/check-queries.lua" -c "q"

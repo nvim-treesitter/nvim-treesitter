@@ -11,10 +11,12 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Prepare
+        env:
+          NVIM_TAG: v0.5.1
         run: |
           sudo apt-get update
           sudo add-apt-repository universe
-          wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+          wget https://github.com/neovim/neovim/releases/download/${NVIM_TAG}/nvim.appimage
           chmod u+x nvim.appimage
           mkdir -p ~/.local/share/nvim/site/pack/nvim-treesitter/start
           ln -s $(pwd) ~/.local/share/nvim/site/pack/nvim-treesitter/start
