@@ -54,14 +54,14 @@ jobs:
         run: cp -r ~/AppData/Local/nvim/pack/nvim-treesitter/start/nvim-treesitter/parser/* parser
         shell: bash
 
+      - uses: actions/upload-artifact@v2
+        with:
+          name: parsers-${{ matrix.os }}-${{ matrix.cc }}-x86_64
+          path: parser/*
+
       - name: Check query files (Windows)
         if: matrix.os == 'windows-latest'
         env:
           ALLOWED_INSTALLATION_FAILURES: haskell
         run: C:\\tools\\neovim\\Neovim\\bin\\nvim.exe --headless -c "luafile ./scripts/check-queries.lua" -c "q"
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: parsers-${{ matrix.os }}-${{ matrix.cc }}-x86_64
-          path: parser/*
 
