@@ -41,7 +41,7 @@ body:
 
   - type: textarea
     attributes:
-      label: Output of `:checkhealth nvim_treesitter`
+      label: Output of `:checkhealth nvim-treesitter`
       render: markdown
     validations:
       required: true
