@@ -150,18 +150,22 @@
 ; Reserved Keywords
 [
   "after"
-  "and"
   "catch"
   "do"
   "end"
   "fn"
-  "in"
-  "not"
-  "or"
   "rescue" 
   "when"
   "else"
 ] @keyword
+
+; Operator Keywords
+[
+  "and"
+  "in"
+  "not"
+  "or"
+] @keyword.operator
 
 ; Capture Operator
 (unary_operator
