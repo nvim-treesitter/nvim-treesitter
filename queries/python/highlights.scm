@@ -89,6 +89,8 @@
   name: (identifier) @function)
 
 (type (identifier) @type)
+((subscript (identifier) @type) @_child
+ (#has-ancestor? @_child type))
 (type
   (subscript
     (identifier) @type)) ; type subscript: Tuple[int]
