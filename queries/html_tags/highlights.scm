@@ -4,7 +4,7 @@
 (attribute_name) @tag.attribute
 (attribute_value) @string
 (quoted_attribute_value) @string
-(text) @none
+(text) @text
 
 ((element (start_tag (tag_name) @_tag) (text) @text.title)
  (#match? @_tag "^(h[0-9]|title)$"))
