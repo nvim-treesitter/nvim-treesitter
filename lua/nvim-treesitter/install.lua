@@ -429,13 +429,13 @@ function M.update(options)
         end
       end
       if installed == 0 then
-        print "Parsers are up-to-date!"
+        vim.notify "Parsers are up-to-date!"
       end
     else
       local parsers_to_update = configs.get_update_strategy() == "lockfile" and outdated_parsers()
         or info.installed_parsers()
       if #parsers_to_update == 0 then
-        print "All parsers are up-to-date!"
+        vim.notify "All parsers are up-to-date!"
       end
       for _, lang in pairs(parsers_to_update) do
         install {
