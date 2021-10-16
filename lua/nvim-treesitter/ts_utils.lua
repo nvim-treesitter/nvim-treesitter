@@ -185,6 +185,16 @@ function M.get_node_at_cursor(winnr, ignore_injected_langs)
   return root:named_descendant_for_range(cursor_range[1], cursor_range[2], cursor_range[1], cursor_range[2])
 end
 
+--- Determines whether (line, col) position is root node end
+-- @param node TSNode defining the range
+-- @param row A row (0-based)
+-- @param col A column (0-based)
+local function is_root_node_end(node, row, col)
+  local _, _, end_row, end_col = node:range()
+  local is_last_row = end_row == row
+  return is_last_row and end_col == 0 and col == 0
+end
+
 --- Retrieves root for position
 -- @param line number
 -- @param col number
@@ -204,7 +214,7 @@ function M.get_root_for_position(line, col, root_lang_tree)
   for _, tree in ipairs(lang_tree:trees()) do
     local root = tree:root()
 
-    if M.is_in_node_range(root, line, col) then
+    if M.is_in_node_range(root, line, col) or is_root_node_end(root, line, col) then
       return root, tree, lang_tree
     end
   end

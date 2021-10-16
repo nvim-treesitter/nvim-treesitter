@@ -36,7 +36,7 @@ describe("is_in_node_range", function()
     assert.is_false(is_in_node_range(node, 2, 5))
   end)
 
-  it("returns true at node end for root node", function()
+  it("returns false at node end for root node", function()
     assert.is_true(is_in_node_range(root_node, 2, 0))
   end)
 
