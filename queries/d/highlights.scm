@@ -34,10 +34,14 @@
   "__PRETTY_FUNCTION__"
 ] @constant.macro
 
-(string_literals) @string
-
-; Don't highlight token strings as strings
-(token_string_tokens) @none
+[
+  (wysiwyg_string)
+  (alternate_wysiwyg_string)
+  (double_quoted_string)
+  (hex_string)
+  (delimited_string)
+  (token_string)
+] @string
 
 (character_literal) @character
 
