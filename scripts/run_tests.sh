@@ -11,8 +11,10 @@ run() {
 if [[ $1 = '--summary' ]]; then
     # really simple results summary by filtering plenary busted output
     run tests/indent/ 2> /dev/null | grep -E '^\S*(Success|Fail(ed)?|Errors?)'
+    run tests/highlight/ 2> /dev/null | grep -E '^\S*(Success|Fail(ed)?|Errors?)'
 elif [[ $1 = '--unit' ]]; then
     run tests/unit
 else
     run tests/indent/
+    run tests/highlight/
 fi
