@@ -163,6 +163,7 @@
 [
   "and"
   "in"
+  "not in"
   "not"
   "or"
 ] @keyword.operator
@@ -208,17 +209,10 @@
 (unary_operator 
   operator: "@" @comment 
   operand: (call 
-    target: (((identifier) @comment) @_identifier 
-      (#any-of? @_identifier "moduledoc" "typedoc" "shortdoc" "doc"))
+    target: (((identifier) @comment) @_identifier)
     (arguments [
-        (string) @comment
-        (charlist) @comment
-        (sigil
-          "~" @comment
-          (sigil_name) @comment
-          quoted_start: _ @comment
-          (quoted_content) @comment
-          quoted_end: _ @comment
-          ((sigil_modifiers) @comment)?)
-        (boolean) @comment
-    ])))
+      (string) @comment
+      (charlist) @comment
+      (boolean) @comment
+    ]))
+  (#any-of? @_identifier "moduledoc" "typedoc" "shortdoc" "doc"))
