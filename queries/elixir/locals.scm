@@ -130,5 +130,35 @@
   (do_block)?
 ) @scope
 
+; ExUnit Test Definitions & Scopes
+(call
+  target: ((identifier) @_identifier (#eq? @_identifier "test"))
+  (arguments [
+    (string)
+    ((string) . "," . [
+      (identifier) @definition.parameter
+      (_ (identifier) @definition.parameter)
+      (_ (_ (identifier) @definition.parameter))
+      (_ (_ (_ (identifier) @definition.parameter)))
+      (_ (_ (_ (_ (identifier) @definition.parameter))))
+      (_ (_ (_ (_ (_ (identifier) @definition.parameter)))))
+      (_ (_ (_ (_ (_ (_ (identifier) @definition.parameter))))))
+      (_ (_ (_ (_ (_ (_ (_ (identifier) @definition.parameter)))))))
+      (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @definition.parameter))))))))
+      (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @definition.parameter)))))))))
+      (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @definition.parameter))))))))))
+      (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @definition.parameter)))))))))))
+      (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @definition.parameter))))))))))))
+      (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @definition.parameter)))))))))))))
+      (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @definition.parameter))))))))))))))
+      (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @definition.parameter)))))))))))))))
+      (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @definition.parameter))))))))))))))))
+      (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @definition.parameter)))))))))))))))))
+      (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @definition.parameter))))))))))))))))))
+      (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @definition.parameter)))))))))))))))))))
+      (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @definition.parameter))))))))))))))))))))
+  ])
+]) (do_block)?) @scope
+
 ; Stab Clause Scopes
 (stab_clause) @scope
