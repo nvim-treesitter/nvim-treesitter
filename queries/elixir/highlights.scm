@@ -40,7 +40,7 @@
 ; Atoms & Keywords
 [
   (atom)
-  (quoted_atom) 
+  (quoted_atom)
   (keyword)
   (quoted_keyword)
 ] @symbol
@@ -84,11 +84,11 @@
 (stab_clause operator: _ @operator)
 
 ; Local Function Calls
-(call target: (identifier) @function) 
+(call target: (identifier) @function)
 
 ; Remote Function Calls
 (call target: (dot left: [
-  (atom) @type 
+  (atom) @type
   (_)
 ] right: (identifier) @function) (arguments))
 
@@ -154,7 +154,7 @@
   "do"
   "end"
   "fn"
-  "rescue" 
+  "rescue"
   "when"
   "else"
 ] @keyword
@@ -181,38 +181,34 @@
   ])
 
 ; Module attributes
-(unary_operator 
-  operator: "@" @constant 
+(unary_operator
+  operator: "@" @constant
   operand: [
     (identifier) @constant
     (call target: (identifier) @constant)])
 
 ; Sigils
-(sigil 
+(sigil
   "~" @string.special
   ((sigil_name) @string.special) @_sigil_name
-  quoted_start: _ @string.special 
+  quoted_start: _ @string.special
   quoted_end: _ @string.special
   ((sigil_modifiers) @string.special)?
   (#not-any-of? @_sigil_name "s" "S"))
 
-(sigil 
+(sigil
   "~" @string
   ((sigil_name) @string) @_sigil_name
-  quoted_start: _ @string 
+  quoted_start: _ @string
   (quoted_content) @string
   quoted_end: _ @string
   ((sigil_modifiers) @string)?
   (#any-of? @_sigil_name "s" "S"))
 
 ; Documentation
-(unary_operator 
-  operator: "@" @comment 
-  operand: (call 
-    target: (((identifier) @comment) @_identifier)
-    (arguments [
-      (string) @comment
-      (charlist) @comment
-      (boolean) @comment
-    ]))
+(unary_operator
+  operator: "@" @comment
+  operand: (call
+    target: ((identifier) @_identifier)
+    _) @comment
   (#any-of? @_identifier "moduledoc" "typedoc" "shortdoc" "doc"))
