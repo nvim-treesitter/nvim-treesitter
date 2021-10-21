@@ -195,6 +195,7 @@ field_constant: (IDENTIFIER) @constant
   (BitwiseOp)
   (BitShiftOp)
   (AdditionOp)
+  (AssignOp)
   (MultiplyOp)
   (PrefixOp)
   "*"
@@ -203,7 +204,6 @@ field_constant: (IDENTIFIER) @constant
   "=>"
   ".?"
   ".*"
-  "="
   "?"
 ] @operator
 
