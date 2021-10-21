@@ -65,6 +65,17 @@ function M.select_compiler_args(repo, compiler)
       "-Os",
       "/LD",
     }
+  elseif string.match(compiler, "zig$") or string.match(compiler, "zig.exe$") then
+    return {
+      "c++",
+      "-o",
+      "parser.so",
+      repo.files,
+      "-lc",
+      "-Isrc",
+      "-shared",
+      "-Os",
+    }
   else
     local args = {
       "-o",

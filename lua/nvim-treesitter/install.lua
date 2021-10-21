@@ -11,7 +11,7 @@ local shell = require "nvim-treesitter.shell_command_selectors"
 local M = {}
 local lockfile = {}
 
-M.compilers = { vim.fn.getenv "CC", "cc", "gcc", "clang", "cl" }
+M.compilers = { vim.fn.getenv "CC", "cc", "gcc", "clang", "cl", "zig" }
 M.prefer_git = fn.has "win32" == 1
 M.command_extra_args = {}
 
