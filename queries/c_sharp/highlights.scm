@@ -111,13 +111,37 @@
   (identifier) @type)
 
 ; Generic Types.
-(generic_name
-  . (identifier) @type)
-(_ type: (_) @type)
+(type_of_expression
+  (generic_name
+    (identifier) @type))
 
+(type_argument_list
+  (generic_name
+    (identifier) @type))
+
+(base_list
+  (generic_name
+    (identifier) @type))
+
+(type_constraint
+  (generic_name
+    (identifier) @type))
+
+(object_creation_expression
+  (generic_name
+   (identifier) @type))
+
+(property_declaration
+  (generic_name
+    (identifier) @type))
+
+(_
+  type: (generic_name
+   (identifier) @type))
 ; Generic Method invocation with generic type
 (invocation_expression
-  function: (generic_name) @method)
+  function: (generic_name
+              . (identifier) @method))
 
 (invocation_expression
   (member_access_expression
