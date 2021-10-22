@@ -5,6 +5,8 @@
 ; Identifier conventions
 
 (identifier) @variable
+((identifier) @type
+ (#match? @type "^[A-Z]"))
 (const_item
   name: (identifier) @constant)
 ; Assume all-caps names are constants
@@ -81,6 +83,16 @@
     "::"
     name: (identifier) @constant)
   (#match? @constant "^[A-Z]"))
+
+; Assume uppercase names in a match arm are constants.
+((match_arm
+   pattern: (match_pattern (identifier) @constant))
+ (#match? @constant "^[A-Z]"))
+((match_arm
+   pattern: (match_pattern
+     (scoped_identifier
+       name: (identifier) @constant)))
+ (#match? @constant "^[A-Z]"))
 
 ;; Macro definitions
 "$" @function.macro
