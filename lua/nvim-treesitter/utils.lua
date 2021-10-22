@@ -4,6 +4,12 @@ local luv = vim.loop
 
 local M = {}
 
+-- Wrapper around vim.notify with common options set.
+function M.notify(msg, log_level, opts)
+  local default_opts = { title = "nvim-treesitter" }
+  vim.notify(msg, log_level, vim.tbl_extend("force", default_opts, opts or {}))
+end
+
 function M.setup_commands(mod, commands)
   for command_name, def in pairs(commands) do
     local call_fn = string.format(

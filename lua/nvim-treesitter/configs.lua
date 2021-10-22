@@ -239,7 +239,7 @@ function M.edit_query_file(query_group, lang)
   lang = lang or parsers.get_buf_lang()
   local files = ts_query.get_query_files(lang, query_group, true)
   if #files == 0 then
-    vim.notify "No query file found! Creating a new one!"
+    utils.notify "No query file found! Creating a new one!"
     M.edit_query_file_user_after(query_group, lang)
   elseif #files == 1 then
     vim.cmd(":edit " .. files[1])
