@@ -135,12 +135,13 @@
   (generic_name
     (identifier) @type))
 
-type: (generic_name
-  (identifier) @type)
-
+(_
+  type: (generic_name
+   (identifier) @type))
 ; Generic Method invocation with generic type
 (invocation_expression
-  function: (generic_name) @method)
+  function: (generic_name
+              . (identifier) @method))
 
 (invocation_expression
   (member_access_expression
@@ -368,7 +369,7 @@ type: (generic_name
  "fixed"
 ] @keyword
 
-(parameter_modifier "this" @keyword)
+(parameter_modifier) @operator
 
 (query_expression
   (_ [
