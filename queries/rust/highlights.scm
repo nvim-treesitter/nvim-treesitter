@@ -94,6 +94,9 @@
        name: (identifier) @constant)))
  (#match? @constant "^[A-Z]"))
 
+((identifier) @constant.builtin
+ (#any-of? @constant.builtin "Some" "None" "Ok" "Err"))
+
 ;; Macro definitions
 "$" @function.macro
 (metavariable) @function.macro
