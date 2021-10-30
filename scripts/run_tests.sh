@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 HERE="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
-cd $HERE/..
+cd "$HERE/.." || exit 1
 
 run() {
     nvim --headless --noplugin -u scripts/minimal_init.lua \
