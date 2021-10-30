@@ -250,10 +250,8 @@
 
 (fundamental_type) @type.builtin
 
-[
-  (module_name)
-  (module_fully_qualified_name)
-] @namespace
+(module_fully_qualified_name (packages (package_name) @namespace))
+(module_name) @namespace
 
 (at_attribute) @attribute
 
