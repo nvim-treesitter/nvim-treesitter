@@ -83,7 +83,7 @@
   "|"
 ] @punctuation.bracket
 
-; Delimeters
+; Delimiters
 [
   ";"
   "."

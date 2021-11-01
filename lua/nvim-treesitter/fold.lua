@@ -79,7 +79,7 @@ local folds_levels = tsutils.memoize_by_buf_tick(function(bufnr)
     --  ( \n ( \n )) \n (( \n ) \n )
     -- versus
     --  ( \n ( \n ) \n ( \n ) \n )
-    -- If it did have such a mechansim, (trimmed_level - last_trimmed_level)
+    -- If it did have such a mechanism, (trimmed_level - last_trimmed_level)
     -- would be the correct number of starts to pass on.
     if trimmed_level - last_trimmed_level > 0 then
       prefix = ">"

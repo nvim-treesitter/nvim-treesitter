@@ -17,7 +17,7 @@ Authors:
 ==============================================================================
 INTRODUCTION                                           *nvim-treesitter-intro*
 
-nvim-treesitter wraps the Neovim treesitter API to provide functionnalities
+nvim-treesitter wraps the Neovim treesitter API to provide functionalities
 such as highlighting and incremental selection, and a command to easily
 install parsers.
 
@@ -205,7 +205,7 @@ Perform the |:TSInstall| operation synchronously.
 							      *:TSInstallInfo*
 :TSInstallInfo~
 
-List informations about currently installed parsers
+List information about currently installed parsers
 
 								   *:TSUpdate*
 :TSUpdate {language} ...~

@@ -1,4 +1,4 @@
-;;; Programm structure
+;;; Program structure
 (module) @scope
 
 (class_definition

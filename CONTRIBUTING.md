@@ -5,7 +5,7 @@ First of all, thank you very much for contributing to `nvim-treesitter`.
 If you haven't already, you should really come and reach out to us on our [gitter](https://gitter.im/nvim-treesitter/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 room, so we can help you with any question you might have!
 
-As you know, `nvim-treesitter` is roughly splitted in two parts :
+As you know, `nvim-treesitter` is roughly split in two parts :
 
 - Parser configurations : for various things like `locals`, `highlights`
 - What we like to call *modules* : tiny lua modules that provide a given feature, based on parser configurations
