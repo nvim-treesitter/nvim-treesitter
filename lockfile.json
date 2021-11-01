@@ -27,7 +27,7 @@
     "revision": "02e6ecbe05633bc9a82c2a56a86a1c2fcb3c4725"
   },
   "cpp": {
-    "revision": "a7652fce5943c9d5d9c49dd8e3256a699aa33bf5"
+    "revision": "e8dcc9d2b404c542fd236ea5f7208f90be8a6e89"
   },
   "css": {
     "revision": "a03f1d2d1dfbf6f8e0fdca5f9ff030228241eb57"
@@ -72,7 +72,7 @@
     "revision": "59e7e41e186d3759592e9938291f69055200783f"
   },
   "glimmer": {
-    "revision": "78bc70bb3093355d46920e18729e0e70da8a000e"
+    "revision": "dd39c2ef457baa79ced8e99fd2508d15de301e86"
   },
   "glsl": {
     "revision": "88408ffc5e27abcffced7010fc77396ae3636d7e"
@@ -201,7 +201,7 @@
     "revision": "21b7676859c1187645a27ff301f76738af5dfd44"
   },
   "svelte": {
-    "revision": "349a5984513b4a4a9e143a6e746120c6ff6cf6ed"
+    "revision": "98274d94ec33e994e8354d9ddfdef58cca471294"
   },
   "swift": {
     "revision": "a22fa5e19bae50098e2252ea96cba3aba43f4c58"
@@ -216,13 +216,13 @@
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
   },
   "tsx": {
-    "revision": "11f8f151327e99361c1ff6764599daeef8633615"
+    "revision": "cc745b774e3986aa3a7dfd6b7a0fc01ddc853bf8"
   },
   "turtle": {
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
   },
   "typescript": {
-    "revision": "11f8f151327e99361c1ff6764599daeef8633615"
+    "revision": "cc745b774e3986aa3a7dfd6b7a0fc01ddc853bf8"
   },
   "verilog": {
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
