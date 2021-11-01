@@ -265,7 +265,7 @@
   body: (block
           (expression_statement
             (assignment
-              left: (_ 
+              left: (_
                      (identifier) @field)))))
  (#match? @field "^([A-Z])@!.*$"))
 
