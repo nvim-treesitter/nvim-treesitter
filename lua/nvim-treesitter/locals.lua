@@ -29,7 +29,7 @@ end
 -- @param node_text: the node text to use
 -- @returns a string id
 function M.get_definition_id(scope, node_text)
-  -- Add a vaild starting character in case node text doesn't start with a valid one.
+  -- Add a valid starting character in case node text doesn't start with a valid one.
   return table.concat({ "k", node_text or "", scope:range() }, "_")
 end
 
