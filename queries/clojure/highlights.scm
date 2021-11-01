@@ -11,7 +11,7 @@
 ;; have multiple highlight groups applied to them.
 
 
-;; >> Litterals
+;; >> Literals
 
 (
  (dis_expr) @comment
@@ -292,7 +292,7 @@
  .
  (_))
 
-; Funciton definitions
+; Function definitions
 (list_lit
  .
  (sym_lit) @_keyword.function

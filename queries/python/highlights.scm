@@ -4,7 +4,7 @@
 ; Variables
 (identifier) @variable
 
-; Reset highlighing in f-string interpolations
+; Reset highlighting in f-string interpolations
 (interpolation) @none
 
 ;; Identifier naming conventions

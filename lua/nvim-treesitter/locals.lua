@@ -177,7 +177,7 @@ end)
 --
 -- "parent": Uses the parent of the containing scope, basically, skipping a scope
 -- "global": Uses the top most scope
--- "local": Uses the containg scope of the definition. This is the default
+-- "local": Uses the containing scope of the definition. This is the default
 --
 -- @param node: the definition node
 -- @param bufnr: the buffer

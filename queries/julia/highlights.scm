@@ -66,7 +66,7 @@
 (quote_expression
  (identifier)) @symbol
 
-;; Parsing error! foo (::Type) get's parsed as two quote expressions
+;; Parsing error! foo (::Type) gets parsed as two quote expressions
 (argument_list 
   (quote_expression
     (quote_expression

@@ -99,7 +99,7 @@ query.add_predicate("has-type?", function(match, pattern, bufnr, pred)
   return vim.tbl_contains(types, node:type())
 end)
 
--- Just avoid some anoying warnings for this directive
+-- Just avoid some annoying warnings for this directive
 query.add_directive("make-range!", function() end)
 
 query.add_directive("downcase!", function(match, _, bufnr, pred, metadata)

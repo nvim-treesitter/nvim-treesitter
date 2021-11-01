@@ -6,7 +6,7 @@
                 (identifier) @definition.parameter))
 (optional_parameter_declaration
   declarator: (identifier) @definition.parameter)
-;; Class / struct defintions
+;; Class / struct definitions
 (class_specifier) @scope
 
 (reference_declarator
@@ -42,7 +42,7 @@
 ((namespace_identifier) @reference
                         (set! reference.kind "namespace"))
 
-;; Function defintions
+;; Function definitions
 (template_function
   name: (identifier) @definition.function) @scope
 
