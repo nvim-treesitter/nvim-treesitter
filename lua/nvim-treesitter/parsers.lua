@@ -457,6 +457,7 @@ list.glimmer = {
   readme_name = "Glimmer and Ember",
   maintainers = { "@alexlafroscia" },
   filetype = "handlebars",
+  used_by = { "html.handlebars" },
 }
 
 list.vue = {
