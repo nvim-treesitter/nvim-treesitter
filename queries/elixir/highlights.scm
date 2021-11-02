@@ -209,7 +209,7 @@
 (unary_operator
   operator: "@"
   operand: (call
-    target: ((identifier) @_identifier (#match? @_identifier "doc$")) @comment
+    target: ((identifier) @_identifier (#any-of? @_identifier "moduledoc" "typedoc" "shortdoc" "doc")) @comment
     (arguments [
       (string)
       (boolean)
