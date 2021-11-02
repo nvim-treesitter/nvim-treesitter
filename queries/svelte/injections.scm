@@ -14,7 +14,10 @@
    (quoted_attribute_value (attribute_value) @css))
  (#eq? @_attr "style"))
 
-(raw_text_expr) @javascript
+[
+  (raw_text_expr)
+  (raw_text_each)
+] @javascript
 
 (
   (script_element
