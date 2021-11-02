@@ -180,13 +180,6 @@
       ] operator: "/" right: (integer) @operator)
   ])
 
-; Module attributes
-(unary_operator
-  operator: "@" @constant
-  operand: [
-    (identifier) @constant
-    (call target: (identifier) @constant)])
-
 ; Sigils
 (sigil
   "~" @string.special
@@ -205,10 +198,20 @@
   ((sigil_modifiers) @string)?
   (#any-of? @_sigil_name "s" "S"))
 
+; Module attributes
+(unary_operator
+  operator: "@"
+  operand: [
+    (identifier)
+    (call target: (identifier) @constant)]) @constant
+
 ; Documentation
 (unary_operator
-  operator: "@" @comment
+  operator: "@"
   operand: (call
-    target: ((identifier) @_identifier)
-    _) @comment
-  (#any-of? @_identifier "moduledoc" "typedoc" "shortdoc" "doc"))
+    target: ((identifier) @_identifier (#match? @_identifier "doc$")) @comment
+    (arguments [
+      (string)
+      (boolean)
+      (charlist)
+    ] @comment))) @comment
