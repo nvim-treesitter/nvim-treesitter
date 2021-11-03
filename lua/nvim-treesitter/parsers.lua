@@ -767,8 +767,13 @@ local M = {
 }
 
 function M.ft_to_lang(ft)
-  ft = vim.split(ft, ".", true)[1]
-  return ft_to_parsername[ft] or ft
+  local result = ft_to_parsername[ft]
+  if result then
+    return result
+  else
+    ft = vim.split(ft, ".", true)[1]
+    return ft_to_parsername[ft] or ft
+  end
 end
 
 function M.available_parsers()
