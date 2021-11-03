@@ -91,8 +91,8 @@
 
 (type_declaration "type" @keyword)
 (type_declaration (identifier) @type)
-(simple_type) @type
-(type_index) @type
+(simple_type name: (identifier) @type)
+(type_index (identifier) @type)
 (type_union "|" @operator)
 (function_type "function" @type)
 
