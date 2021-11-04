@@ -767,6 +767,7 @@ list.http = {
     url = "https://github.com/NTBBloodbath/tree-sitter-http",
     branch = "main",
     files = { "src/parser.c" },
+    generate_requires_npm = true,
   },
   maintainers = { "@NTBBloodbath" },
 }

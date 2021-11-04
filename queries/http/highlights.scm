@@ -1,3 +1,5 @@
+; inherits: json
+
 ; Display errors
 (ERROR) @error
 
@@ -11,22 +13,6 @@
 (header
   name: (name) @constant
   value: (value))
-
-; JSON
-(json_pair
-  key: (_) @keyword)
-
-(json_string) @string
-
-(json_number) @number
-
-(json_boolean) @boolean
-
-(json_null) @constant
-
-(json_escape_sequence) @string.escape
-
-(json_body) @keyword
 
 ; rest.nvim Neovim plugin specific features
 (external_body
