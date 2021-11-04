@@ -761,6 +761,15 @@ list.llvm = {
   maintainers = { "@benwilliamgraham" },
 }
 
+list.http = {
+  install_info = {
+    url = "https://github.com/NTBBloodbath/tree-sitter-http",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@NTBBloodbath" },
+}
+
 local M = {
   list = list,
 }
