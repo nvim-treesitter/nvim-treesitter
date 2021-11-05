@@ -133,8 +133,8 @@
 (parameter (identifier) @parameter)
 (closure_parameters (_) @parameter)
 
-(lifetime (identifier) @label)
-(loop_label (identifier) @label)
+(lifetime   ["'" (identifier)] @label)
+(loop_label ["'" (identifier)] @label)
 
 (self) @variable.builtin
 
@@ -203,76 +203,56 @@
 
 (escape_sequence) @string.escape
 
-[
-  "as"
-] @keyword.operator
+(type_cast_expression "as" @keyword.operator)
+(use_as_clause "as" @include) ; path aliasing
 
 [
-"*"
-"'"
-"->"
-"=>"
-"<="
-"="
-"=="
-"!"
-"!="
-"%"
-"%="
-"&"
-"&="
-"&&"
-"|"
-"|="
-"||"
-"^"
-"^="
-"*"
-"*="
-"-"
-"-="
-"+"
-"+="
-"/"
-"/="
-">"
-"<"
-">="
-">>"
-"<<"
-">>="
-"@"
-".."
-"..="
-"?"
+  "!"
+  "!="
+  "%"
+  "%="
+  "&"
+  "&&"
+  "&="
+  "*"
+  "*="
+  "+"
+  "+="
+  "-"
+  "-="
+  "->"
+  ".."
+  "..="
+  "/"
+  "/="
+  "<"
+  "<<"
+  "<<="
+  "<="
+  "="
+  "=="
+  "=>"
+  ">"
+  ">="
+  ">>"
+  ">>="
+  "?"
+  "@"
+  "^"
+  "^="
+  "|"
+  "|="
+  "||"
 ] @operator
 
-[
- "("
- ")"
- "["
- "]"
- "{"
- "}"
-] @punctuation.bracket
+["(" ")" "[" "]" "{" "}"]  @punctuation.bracket
+(closure_parameters "|"    @punctuation.bracket)
+(type_arguments  ["<" ">"] @punctuation.bracket)
+(type_parameters ["<" ">"] @punctuation.bracket)
 
-(closure_parameters "|" @punctuation.bracket)
-
-(type_arguments
-  "<" @punctuation.bracket
-  ">" @punctuation.bracket)
-(type_parameters
-  "<" @punctuation.bracket
-  ">" @punctuation.bracket)
-
-[
-":"
-"::"
-"."
-";"
-","
-] @punctuation.delimiter
+["," "." ":" "::" ";"] @punctuation.delimiter
 
 (attribute_item "#" @punctuation.special)
-(inner_attribute_item ["#" "!"] @punctuation.special)
-(macro_invocation "!" @function.macro) ; don't highlight `!` as an operator here
+(inner_attribute_item ["!" "#"] @punctuation.special)
+(macro_invocation "!" @function.macro)
+(empty_type "!" @type.builtin)
