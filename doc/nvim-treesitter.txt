@@ -1,6 +1,4 @@
-*nvim-treesitter*
-
-Treesitter configurations and abstraction layer for Neovim.
+*nvim-treesitter*  Treesitter configurations and abstraction layer for Neovim.
 
 Minimum version of neovim: nightly
 
