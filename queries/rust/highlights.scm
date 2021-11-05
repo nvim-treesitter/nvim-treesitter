@@ -23,6 +23,20 @@
 (mod_item
  name: (identifier) @namespace)
 
+(self) @variable.builtin
+
+(lifetime   ["'" (identifier)] @label)
+(loop_label ["'" (identifier)] @label)
+
+
+; Function definitions
+
+(function_item (identifier) @function)
+(function_signature_item (identifier) @function)
+
+(parameter (identifier) @parameter)
+(closure_parameters (_) @parameter)
+
 ; Function calls
 (call_expression
   function: (identifier) @function)
@@ -67,7 +81,11 @@
     name: (identifier) @type)
  (#lua-match? @type "^[A-Z]"))
 
-(crate) @namespace
+[
+  (crate)
+  (super)
+] @namespace
+
 (scoped_use_list
   path: (identifier) @namespace)
 (scoped_use_list
@@ -100,6 +118,7 @@
 ;; Macro definitions
 "$" @function.macro
 (metavariable) @function.macro
+(macro_definition "macro_rules!" @function.macro)
 
 ;; Attribute macros
 (attribute_item (meta_item (identifier) @function.macro))
@@ -120,91 +139,83 @@
 
 
 
-; Function definitions
-
-(function_item (identifier) @function)
-(function_signature_item (identifier) @function)
+;;; Literals
 
 [
-(line_comment)
-(block_comment)
- ] @comment
+  (line_comment)
+  (block_comment)
+] @comment
 
-(parameter (identifier) @parameter)
-(closure_parameters (_) @parameter)
-
-(lifetime   ["'" (identifier)] @label)
-(loop_label ["'" (identifier)] @label)
-
-(self) @variable.builtin
+(boolean_literal) @boolean
+(integer_literal) @number
+(float_literal) @float
 
 [
- "use"
- "mod"
+  (char_literal)
+  (raw_string_literal)
+  (string_literal)
+] @string
+(escape_sequence) @string.escape
+
+
+;;; Keywords
+
+[
+  "use"
+  "mod"
 ] @include
+(use_as_clause "as" @include)
 
 [
-"break"
-"const"
-"default"
-"dyn"
-"enum"
-"extern"
-"impl"
-"let"
-"macro_rules!"
-"match"
-"move"
-"pub"
-"ref"
-"static"
-"struct"
-"trait"
-"type"
-"union"
-"unsafe"
-"async"
-"await"
-"where"
-(mutable_specifier)
-(super)
+  "async"
+  "await"
+  "const"
+  "default"
+  "dyn"
+  "enum"
+  "extern"
+  "impl"
+  "let"
+  "match"
+  "move"
+  "pub"
+  "ref"
+  "static"
+  "struct"
+  "trait"
+  "type"
+  "union"
+  "unsafe"
+  "where"
+  (mutable_specifier)
 ] @keyword
 
+"fn" @keyword.function
 "return" @keyword.return
 
-"fn" @keyword.function
+(type_cast_expression "as" @keyword.operator)
 
 (use_list (self) @keyword)
 (scoped_use_list (self) @keyword)
 (scoped_identifier (self) @keyword)
 
 [
-"continue"
-"else"
-"if"
+  "else"
+  "if"
 ] @conditional
 
 [
-"for"
-"in"
-"loop"
-"while"
+  "break"
+  "continue"
+  "for"
+  "in"
+  "loop"
+  "while"
 ] @repeat
 
-[
-(char_literal)
-(string_literal)
-(raw_string_literal)
-] @string
 
-(boolean_literal) @boolean
-(integer_literal) @number
-(float_literal) @float
 
-(escape_sequence) @string.escape
-
-(type_cast_expression "as" @keyword.operator)
-(use_as_clause "as" @include) ; path aliasing
+;;; Operators & Punctuation
 
 [
   "!"
