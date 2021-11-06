@@ -521,7 +521,7 @@ function M.write_lockfile(verbose, skip_langs)
 end
 
 M.ensure_installed = install { exclude_configured_parsers = true }
-M.ensure_sync_installed = install { with_sync = true, exclude_configured_parsers = true }
+M.ensure_installed_sync = install { with_sync = true, exclude_configured_parsers = true }
 
 M.commands = {
   TSInstall = {
