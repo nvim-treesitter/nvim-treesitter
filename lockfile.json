@@ -72,7 +72,7 @@
     "revision": "59e7e41e186d3759592e9938291f69055200783f"
   },
   "glimmer": {
-    "revision": "dd39c2ef457baa79ced8e99fd2508d15de301e86"
+    "revision": "ac8b168bfded1fa2fb9f5f7ad3acdbd1118736ad"
   },
   "glsl": {
     "revision": "88408ffc5e27abcffced7010fc77396ae3636d7e"
@@ -90,7 +90,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "haskell": {
-    "revision": "bf7d643b494b7c7eed909ed7fbd8447231152cb0"
+    "revision": "6668085e7d3dc6205a3ef27e6293988cf4a10419"
   },
   "hcl": {
     "revision": "3cb7fc28247efbcb2973b97e71c78838ad98a583"
@@ -177,7 +177,7 @@
     "revision": "7b97502cfc3ffa7110f6b68bb39fb259c9a0500c"
   },
   "rst": {
-    "revision": "632596b1fe5816315cafa90cdf8f8000e30c93e4"
+    "revision": "a5514617ae3644effa80d4696be428e4a371c01a"
   },
   "ruby": {
     "revision": "1fedb2a117f89b7df05550255a022f6e25bb7975"
