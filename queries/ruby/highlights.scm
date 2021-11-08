@@ -1,8 +1,5 @@
 ; Variables
 (identifier) @variable
-(interpolation
-  "#{" @punctuation.special
-  "}" @punctuation.special) @none
 
 ; Keywords
 
@@ -31,6 +28,7 @@
  "and"
  "or"
  "in"
+ "not"
 ] @keyword.operator
 
 [
@@ -166,13 +164,44 @@
 ; Operators
 
 [
+ "!"
  "="
+ "=="
+ "==="
+ "<=>"
  "=>"
  "->"
- "+"
- "-"
+ ">>"
+ "<<"
+ ">"
+ "<"
+ ">="
+ "<="
+ "**"
  "*"
  "/"
+ "%"
+ "+"
+ "-"
+ "&"
+ "|"
+ "^"
+ "&&"
+ "||"
+ "||="
+ "&&="
+ "!="
+ "%="
+ "+="
+ "-="
+ "*="
+ "/="
+ "=~"
+ "!~"
+ "?"
+ ":"
+ ".."
+ "..."
  ] @operator
 
 [
@@ -191,5 +220,9 @@
  "%w("
  "%i("
  ] @punctuation.bracket
+
+(interpolation
+  "#{" @punctuation.special
+  "}" @punctuation.special) @none
 
 (ERROR) @error
