@@ -58,7 +58,7 @@ local function longest_string_length(list)
   return length
 end
 
-local function append_module_table(curbuf, parserlist, namespace, modulelist)
+local function append_module_table(curbuf, origbuf, parserlist, namespace, modulelist)
   local maxlen_parser = longest_string_length(parserlist)
   table.sort(modulelist)
 
@@ -77,7 +77,7 @@ local function append_module_table(curbuf, parserlist, namespace, modulelist)
     for _, module in pairs(modulelist) do
       local modlen = #module
       module = namespace_prefix .. module
-      if configs.is_enabled(module, parser) then
+      if configs.is_enabled(module, parser, origbuf) then
         line = line .. "✓"
       else
         line = line .. "✗"
@@ -91,6 +91,7 @@ local function append_module_table(curbuf, parserlist, namespace, modulelist)
 end
 
 local function print_info_modules(parserlist, module)
+  local origbuf = api.nvim_get_current_buf()
   api.nvim_command "enew"
   local curbuf = api.nvim_get_current_buf()
 
@@ -109,7 +110,7 @@ local function print_info_modules(parserlist, module)
 
   table.sort(parserlist)
   for _, namespace in ipairs(namespaces) do
-    append_module_table(curbuf, parserlist, namespace, modules[namespace])
+    append_module_table(curbuf, origbuf, parserlist, namespace, modules[namespace])
   end
 
   api.nvim_buf_set_option(curbuf, "modified", false)
