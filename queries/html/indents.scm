@@ -1,11 +1,1 @@
-[
-  (element)
-] @indent
-
-[
-  (end_tag)
-  ">"
-  "/>"
-] @branch
-
-(comment) @ignore
+; inherits: html_tags
