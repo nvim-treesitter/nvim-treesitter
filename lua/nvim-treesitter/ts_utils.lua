@@ -124,7 +124,13 @@ end
 function M.get_node_at_cursor(winnr)
   local cursor = api.nvim_win_get_cursor(winnr or 0)
   local cursor_range = { cursor[1] - 1, cursor[2] }
-  local root = M.get_root_for_position(unpack(cursor_range))
+
+  local buf = vim.api.nvim_win_get_buf(winnr)
+  local root_lang_tree = parsers.get_parser(buf)
+  if not root_lang_tree then
+    return
+  end
+  local root = M.get_root_for_position(cursor_range[1], cursor_range[2], root_lang_tree)
 
   if not root then
     return
