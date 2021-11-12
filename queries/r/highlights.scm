@@ -3,6 +3,8 @@
 (call function: (identifier) @function)
 (namespace_get function: (identifier) @method)
 (namespace_get_internal function: (identifier) @method)
+(namespace_get namespace: (identifier) @namespace )
+(namespace_get_internal namespace: (identifier) @namespace )
 
 ; Literals
 
