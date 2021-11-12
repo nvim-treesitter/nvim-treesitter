@@ -240,7 +240,7 @@
   "{" @punctuation.special
   "}" @punctuation.special)
 
-["," "." ":" (ellipsis)] @punctuation.delimiter
+["," "." ":" ";" (ellipsis)] @punctuation.delimiter
 
 ;; Class definitions
 
