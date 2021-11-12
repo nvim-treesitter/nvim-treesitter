@@ -104,6 +104,9 @@
   "html": {
     "revision": "161a92474a7bb2e9e830e48e76426f38299d99d1"
   },
+  "http": {
+    "revision": "bfddd16b1cf78e0042fd1f6846a179f76a254e20"
+  },
   "java": {
     "revision": "ed3a87f750b1d1d533f15ab93fef3e1f5a46e234"
   },
