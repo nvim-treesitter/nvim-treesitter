@@ -3,7 +3,7 @@
     "revision": "4094e3a0405aabb1314c0c41f29e38e70af86fa5"
   },
   "beancount": {
-    "revision": "79ae7c1f2654a2a6936b0f37bf754e5ff59c9186"
+    "revision": "78b8ddca3ab774573a4e3bf64eabd79e9452cea9"
   },
   "bibtex": {
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
@@ -171,7 +171,7 @@
     "revision": "9a2ccff9f672f1f3d320cf925b8e5acc89b27055"
   },
   "r": {
-    "revision": "007f7fc125ef7a07716c5162738ed2d5f92aa2a7"
+    "revision": "f4e821799b8205a3ed49db0bb550ddea5bae2448"
   },
   "regex": {
     "revision": "7b97502cfc3ffa7110f6b68bb39fb259c9a0500c"
@@ -189,7 +189,7 @@
     "revision": "0a3dd53a7fc4b352a538397d054380aaa28be54c"
   },
   "scss": {
-    "revision": "9da7c979c010c350c28ad2235893103db4622c10"
+    "revision": "f3174d3d131eb776f86dfa3d90fe6f7325c0ad9a"
   },
   "sparql": {
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
@@ -216,13 +216,13 @@
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
   },
   "tsx": {
-    "revision": "cc745b774e3986aa3a7dfd6b7a0fc01ddc853bf8"
+    "revision": "111b07762e86efab9a918b7c721f720c37e76b0a"
   },
   "turtle": {
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
   },
   "typescript": {
-    "revision": "cc745b774e3986aa3a7dfd6b7a0fc01ddc853bf8"
+    "revision": "111b07762e86efab9a918b7c721f720c37e76b0a"
   },
   "verilog": {
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
