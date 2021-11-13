@@ -74,9 +74,13 @@ Each module corresponds to an entry in the dictionary passed to the
   EOF
 <
 
-All modules share some common options, like `enable` and `disable`.
+All modules share some common options, like `enable`, `disable`, and `cond`.
 When `enable` is `true` this will enable the module for all supported languages,
 if you want to disable the module for some languages you can pass a list to the `disable` option.
+For more fine-grained control, `cond` takes a function and whenever it returns
+`false` the module is disabled for that buffer.
+The `cond` function is called once when a module starts in a buffer and
+received the language and the buffer number as arguments.
 
 >
   lua <<EOF
@@ -84,6 +88,9 @@ if you want to disable the module for some languages you can pass a list to the 
     highlight = {
       enable = true,
       disable = { "cpp", "lua" },
+      cond = function(lang, bufnr) -- Disable in large C++ buffers
+        return not (lang == "cpp" and api.nvim_buf_line_count(bufnr) > 50000)
+      end,
     },
   }
   EOF
