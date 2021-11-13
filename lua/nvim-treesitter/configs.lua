@@ -351,7 +351,7 @@ function M.is_enabled(mod, lang, bufnr)
     return false
   end
 
-  if module_config.cond and not module_config.cond(lang, bufnr) then
+  if module_config.condition and not module_config.condition(lang, bufnr) then
     return false
   end
 
