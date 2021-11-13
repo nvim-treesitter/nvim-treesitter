@@ -362,22 +362,29 @@ EOF
 
 ## Adding queries
 
-Queries are what `nvim-treesitter` uses to extract information from the syntax tree; they are
-located in the `queries/{language}/*` runtime directories (like the `queries` folder of this plugin), e.g., `queries/{language}/{locals,highlights,textobjects}.scm`.
+Queries are what `nvim-treesitter` uses to extract information from the syntax tree;
+they are located in the `queries/{language}/*` runtime directories (see `:h rtp`),
+like the `queries` folder of this plugin, e.g. `queries/{language}/{locals,highlights,textobjects}.scm`.
 Other modules may require additional queries such as `folding.scm`.
 
-`nvim-treesitter` considers queries as any runtime file (see `:h rtp`), i.e.,
+All queries found in the runtime directories will be combined.
+By convention, if you want to write a query, use the `queries/` directory,
+but if you want to extend a query use the `after/queries/` directory.
 
-- if the file is in any `after/queries/` folder, then it will be used to extend the already defined
-  queries.
-- Otherwise, it will be used as a base to define the query, the first query found (with the highest
-  priority) will be the only one to be used.
+If you want to completely override a query, you can use `:h set_query()`.
+For example, to override the `injections` queries from `c` with your own:
 
-This hybrid approach is the most standard way; in this case
+```lua
+-- On your init.lua
+require("vim.treesitter.query").set_query("c", "injections", "(comment) @comment")
+```
 
-- if you want to rewrite (or write) a query, don't use `after/queries`;
-- if you want to override a part of a query (only one match for example), use the `after/queries`
-  directory.
+```vim
+" Or in your init.vim
+call v:lua.require("vim.treesitter.query").set_query("c", "injections", "(comment) @comment")
+```
+
+Note: when using `set_query`, all queries in the runtime directories will be ignored.
 
 ## Adding modules
 
