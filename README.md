@@ -375,14 +375,10 @@ but if you want to extend a query use the `after/queries/` directory.
 If you want to completely override a query, you can use `:h set_query()`.
 For example, to override the `injections` queries from `c` with your own:
 
-```lua
--- On your init.lua
-require("vim.treesitter.query").set_query("c", "injections", "(comment) @comment")
-```
-
 ```vim
-" Or in your init.vim
-call v:lua.require("vim.treesitter.query").set_query("c", "injections", "(comment) @comment")
+lua <<EOF
+require("vim.treesitter.query").set_query("c", "injections", "(comment) @comment")
+EOF
 ```
 
 Note: when using `set_query`, all queries in the runtime directories will be ignored.
