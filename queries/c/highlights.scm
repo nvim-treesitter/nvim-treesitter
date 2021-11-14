@@ -168,7 +168,7 @@
   declarator: (pointer_declarator) @parameter)
 
 (preproc_params
-  (identifier)) @parameter
+  (identifier)) @c
 
 [
   "__attribute__"
