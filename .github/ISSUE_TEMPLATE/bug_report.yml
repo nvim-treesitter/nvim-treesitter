@@ -14,6 +14,8 @@ body:
           required: true
         - label: I have run `:TSUpdate`
           required: true
+        - label: I have read the [troubleshooting section](https://github.com/nvim-treesitter/nvim-treesitter#troubleshooting)
+          required: true
 
   - type: textarea
     attributes:
@@ -57,4 +59,3 @@ body:
     attributes:
       label: Additional context
       description: Add any context about the problem here.
-
