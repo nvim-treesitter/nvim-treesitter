@@ -792,9 +792,7 @@ function M.available_parsers()
   else
     return vim.tbl_filter(function(p)
       return not M.list[p].install_info.requires_generate_from_grammar
-    end, vim.tbl_keys(
-      M.list
-    ))
+    end, vim.tbl_keys(M.list))
   end
 end
 
