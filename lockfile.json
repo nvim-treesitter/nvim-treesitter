@@ -90,7 +90,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "haskell": {
-    "revision": "6668085e7d3dc6205a3ef27e6293988cf4a10419"
+    "revision": "d72f2e42c0d5ccf8e8b1c39e3642428317e8fe02"
   },
   "hcl": {
     "revision": "3cb7fc28247efbcb2973b97e71c78838ad98a583"
@@ -174,7 +174,7 @@
     "revision": "9a2ccff9f672f1f3d320cf925b8e5acc89b27055"
   },
   "r": {
-    "revision": "ed9d2ecbd2ef8e7a9ff4fad927934621a8eeb1df"
+    "revision": "82c8d71542629812b7fc1f5b15a1aefadb98eff5"
   },
   "regex": {
     "revision": "7b97502cfc3ffa7110f6b68bb39fb259c9a0500c"
@@ -183,7 +183,7 @@
     "revision": "a5514617ae3644effa80d4696be428e4a371c01a"
   },
   "ruby": {
-    "revision": "1fedb2a117f89b7df05550255a022f6e25bb7975"
+    "revision": "f1ff02772248786ed2ed08d827de2555912e777e"
   },
   "rust": {
     "revision": "cc7bdd3e6d14677e8aa77da64f6a3f57b6f8b00a"
@@ -198,7 +198,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "supercollider": {
-    "revision": "67ecede8fc5f2e342a7f0516b87d0476b36035ac"
+    "revision": "7621ddfef7df294e696584e8908a3444621f9fc7"
   },
   "surface": {
     "revision": "21b7676859c1187645a27ff301f76738af5dfd44"
