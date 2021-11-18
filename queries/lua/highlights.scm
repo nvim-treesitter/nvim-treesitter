@@ -116,7 +116,7 @@
 (nil) @constant.builtin
 (spread) @constant ;; "..."
 ((identifier) @constant
- (#match? @constant "^[A-Z][A-Z_0-9]*$"))
+ (#lua-match? @constant "^[A-Z][A-Z_0-9]*$"))
 
 ;; Functions
 (function [(function_name) (identifier)] @function)

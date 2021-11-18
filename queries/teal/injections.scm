@@ -7,7 +7,7 @@
   )
 
   (#eq? @_cdef_identifier "cdef")
-  (#match? @c "^[\"']")
+  (#lua-match? @c "^[\"']")
   (#offset! @c 0 1 0 -1)
 )
 
@@ -20,7 +20,7 @@
   )
 
   (#eq? @_cdef_identifier "cdef")
-  (#match? @c "^\\[\\[")
+  (#lua-match? @c "^%[%[")
   (#offset! @c 0 2 0 -2)
 )
 

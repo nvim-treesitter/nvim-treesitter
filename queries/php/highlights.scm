@@ -56,7 +56,7 @@
  (#vim-match? @constant "^_?[A-Z][A-Z\d_]+$"))
 
 ((name) @constructor
- (#match? @constructor "^[A-Z]"))
+ (#lua-match? @constructor "^[A-Z]"))
 
 ((name) @variable.builtin
  (#eq? @variable.builtin "this"))

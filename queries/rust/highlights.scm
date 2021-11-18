@@ -6,12 +6,12 @@
 
 (identifier) @variable
 ((identifier) @type
- (#match? @type "^[A-Z]"))
+ (#lua-match? @type "^[A-Z]"))
 (const_item
   name: (identifier) @constant)
 ; Assume all-caps names are constants
 ((identifier) @constant
- (#match? @constant "^[A-Z][A-Z\\d_]*$"))
+ (#lua-match? @constant "^[A-Z][A-Z%d_]*$"))
 
 ; Other identifiers
 
@@ -44,7 +44,7 @@
 
 ; Assume other uppercase names are enum constructors
 ((field_identifier) @constant
- (#match? @constant "^[A-Z]"))
+ (#lua-match? @constant "^[A-Z]"))
 
 (enum_variant
   name: (identifier) @constant)
@@ -62,10 +62,10 @@
   name: (identifier) @namespace))
 ((scoped_identifier
   path: (identifier) @type)
- (#match? @type "^[A-Z]"))
+ (#lua-match? @type "^[A-Z]"))
 ((scoped_identifier
     name: (identifier) @type)
- (#match? @type "^[A-Z]"))
+ (#lua-match? @type "^[A-Z]"))
 
 (crate) @namespace
 (scoped_use_list
@@ -74,25 +74,25 @@
   path: (scoped_identifier
             (identifier) @namespace))
 (use_list (scoped_identifier (identifier) @namespace . (_)))
-(use_list (identifier) @type (#match? @type "^[A-Z]"))
-(use_as_clause alias: (identifier) @type (#match? @type "^[A-Z]"))
+(use_list (identifier) @type (#lua-match? @type "^[A-Z]"))
+(use_as_clause alias: (identifier) @type (#lua-match? @type "^[A-Z]"))
 
 ;; Correct enum constructors
 (call_expression
   function: (scoped_identifier
     "::"
     name: (identifier) @constant)
-  (#match? @constant "^[A-Z]"))
+  (#lua-match? @constant "^[A-Z]"))
 
 ; Assume uppercase names in a match arm are constants.
 ((match_arm
    pattern: (match_pattern (identifier) @constant))
- (#match? @constant "^[A-Z]"))
+ (#lua-match? @constant "^[A-Z]"))
 ((match_arm
    pattern: (match_pattern
      (scoped_identifier
        name: (identifier) @constant)))
- (#match? @constant "^[A-Z]"))
+ (#lua-match? @constant "^[A-Z]"))
 
 ((identifier) @constant.builtin
  (#any-of? @constant.builtin "Some" "None" "Ok" "Err"))

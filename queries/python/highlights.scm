@@ -9,12 +9,12 @@
 
 ;; Identifier naming conventions
 ((identifier) @type
- (#match? @type "^[A-Z].*[a-z]"))
+ (#lua-match? @type "^[A-Z].*[a-z]"))
 ((identifier) @constant
- (#match? @constant "^[A-Z][A-Z_0-9]*$"))
+ (#lua-match? @constant "^[A-Z][A-Z_0-9]*$"))
 
 ((identifier) @constant.builtin
- (#match? @constant.builtin "^__[a-zA-Z0-9_]*__$"))
+ (#lua-match? @constant.builtin "^__[a-zA-Z0-9_]*__$"))
 
 ((identifier) @constant.builtin
  (#any-of? @constant.builtin
@@ -64,12 +64,12 @@
 
 ((call
    function: (identifier) @constructor)
- (#match? @constructor "^[A-Z]"))
+ (#lua-match? @constructor "^[A-Z]"))
 
 ((call
   function: (attribute
               attribute: (identifier) @constructor))
- (#match? @constructor "^[A-Z]"))
+ (#lua-match? @constructor "^[A-Z]"))
 
 ;; Builtin functions
 
@@ -133,7 +133,7 @@
 (none) @constant.builtin
 [(true) (false)] @boolean
 ((identifier) @variable.builtin
- (#match? @variable.builtin "^self$"))
+ (#lua-match? @variable.builtin "^self$"))
 
 (integer) @number
 (float) @float

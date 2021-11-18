@@ -27,11 +27,11 @@
 
 ;; Identifier naming conventions
 ((identifier) @type
-  (#match? @type "^[A-Z]"))
+  (#lua-match? @type "^[A-Z]"))
 ((identifier) @constant
-  (#match? @constant "^[A-Z][A-Z_0-9]*$"))
+  (#lua-match? @constant "^[A-Z][A-Z_0-9]*$"))
 ((identifier) @type
-  (#match? @type "^[A-Z][A-Z_0-9]*$") . (_))
+  (#lua-match? @type "^[A-Z][A-Z_0-9]*$") . (_))
 
 ;; Functions
 (constructor_definition) @constructor

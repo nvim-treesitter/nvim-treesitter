@@ -95,10 +95,10 @@
 
 ((field_access
   object: (identifier) @type)
-  (#match? @type "^[A-Z]"))
+  (#lua-match? @type "^[A-Z]"))
 ((scoped_identifier
   scope: (identifier) @type)
-  (#match? @type "^[A-Z]"))
+  (#lua-match? @type "^[A-Z]"))
 
 ; Fields
 
@@ -118,7 +118,7 @@
 ; Variables
 
 ((identifier) @constant
-  (#match? @constant "^[A-Z_][A-Z\d_]+$"))
+  (#lua-match? @constant "^[A-Z_][A-Z%d_]+$"))
 
 (this) @variable.builtin
 
