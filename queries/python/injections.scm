@@ -3,7 +3,7 @@
 	  object: (identifier) @_re)
   arguments: (argument_list (string) @regex))
  (#eq? @_re "re")
- (#match? @regex "^r.*"))
+ (#lua-match? @regex "^r.*"))
 
 ; Module docstring
 ((module . (expression_statement (string) @rst))

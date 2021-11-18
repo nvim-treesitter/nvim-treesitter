@@ -20,6 +20,6 @@
  (#any-of? @text.danger "FIXME" "XXX" "BUG"))
 
 ; Issue number (#123)
-("text" @number (#match? @number "^#[0-9]+$"))
+("text" @number (#lua-match? @number "^#[0-9]+$"))
 ; User mention (@user)
-("text" @constant (#match? @constant "^[@][a-zA-Z0-9_-]+$"))
+("text" @constant (#lua-match? @constant "^[@][a-zA-Z0-9_-]+$"))

@@ -8,7 +8,7 @@
   )
 
   (#eq? @_cdef_identifier "cdef")
-  (#match? @c "^[\"']")
+  (#lua-match? @c "^[\"']")
   (#offset! @c 0 1 0 -1)
 )
 
@@ -21,7 +21,7 @@
   )
 
   (#eq? @_cdef_identifier "cdef")
-  (#match? @c "^\\[\\[")
+  (#lua-match? @c "^%[%[")
   (#offset! @c 0 2 0 -2)
 )
 
@@ -34,7 +34,7 @@
   )
 
   (#any-of? @_vimcmd_identifier "vim.cmd" "vim.api.nvim_command" "vim.api.nvim_exec")
-  (#match? @vim "^[\"']")
+  (#lua-match? @vim "^[\"']")
   (#offset! @vim 0 1 0 -1)
 )
 
@@ -46,7 +46,7 @@
   )
 
   (#any-of? @_vimcmd_identifier "vim.cmd" "vim.api.nvim_command" "vim.api.nvim_exec")
-  (#match? @vim "^\\[\\[")
+  (#lua-match? @vim "^%[%[")
   (#offset! @vim 0 2 0 -2)
 )
 

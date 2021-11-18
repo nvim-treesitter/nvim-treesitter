@@ -1,6 +1,6 @@
 (identifier) @variable
 ((identifier) @constant
- (#match? @constant "^[A-Z][A-Z_0-9]*$"))
+ (#lua-match? @constant "^[A-Z][A-Z_0-9]*$"))
 
 ;; Keywords
 

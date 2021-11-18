@@ -102,7 +102,7 @@
              ])
 
 ((word) @number
-  (#match? @number "^[0-9]+$"))
+  (#lua-match? @number "^[0-9]+$"))
 
 (file_redirect
   descriptor: (file_descriptor) @operator
@@ -114,7 +114,7 @@
 (variable_name) @variable
 
 ((variable_name) @constant
- (#match? @constant "^[A-Z][A-Z_0-9]*$"))
+ (#lua-match? @constant "^[A-Z][A-Z_0-9]*$"))
 
 (case_item
   value: (word) @parameter)
