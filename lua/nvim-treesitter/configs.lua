@@ -23,15 +23,16 @@ local builtin_modules = {
   highlight = {
     module_path = "nvim-treesitter.highlight",
     enable = false,
-    disable = { "markdown" }, -- FIXME(vigoux): markdown highlighting breaks everything for now
     custom_captures = {},
-    is_supported = queries.has_highlights,
+    is_supported = function(lang)
+      -- FIXME(vigoux): markdown highlighting breaks everything for now
+      return lang ~= "markdown" and queries.has_highlights(lang)
+    end,
     additional_vim_regex_highlighting = false,
   },
   incremental_selection = {
     module_path = "nvim-treesitter.incremental_selection",
     enable = false,
-    disable = {},
     keymaps = {
       init_selection = "gnn",
       node_incremental = "grn",
@@ -45,7 +46,6 @@ local builtin_modules = {
   indent = {
     module_path = "nvim-treesitter.indent",
     enable = false,
-    disable = {},
     is_supported = queries.has_indents,
   },
 }
@@ -351,15 +351,20 @@ function M.is_enabled(mod, lang, bufnr)
     return false
   end
 
-  if module_config.condition and not module_config.condition(lang, bufnr) then
-    return false
-  end
-
-  for _, parser in pairs(module_config.disable) do
-    if lang == parser then
+  local disable = module_config.disable
+  if type(disable) == 'function' then
+    if disable(lang, bufnr) then
       return false
     end
+  elseif type(disable) == 'table' then
+    -- Otherwise it's a list of languages
+    for _, parser in pairs(disable) do
+      if lang == parser then
+        return false
+      end
+    end
   end
+
 
   return true
 end
