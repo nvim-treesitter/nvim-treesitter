@@ -84,9 +84,6 @@ if you want to disable the module for some languages you can pass a list to the 
     highlight = {
       enable = true,
       disable = { "cpp", "lua" },
-      condition = function(lang, bufnr) -- Disable in large C++ buffers
-        return not (lang == "cpp" and api.nvim_buf_line_count(bufnr) > 50000)
-      end,
     },
   }
   EOF
