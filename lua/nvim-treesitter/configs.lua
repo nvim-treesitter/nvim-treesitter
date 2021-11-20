@@ -352,11 +352,11 @@ function M.is_enabled(mod, lang, bufnr)
   end
 
   local disable = module_config.disable
-  if type(disable) == 'function' then
+  if type(disable) == "function" then
     if disable(lang, bufnr) then
       return false
     end
-  elseif type(disable) == 'table' then
+  elseif type(disable) == "table" then
     -- Otherwise it's a list of languages
     for _, parser in pairs(disable) do
       if lang == parser then
@@ -364,7 +364,6 @@ function M.is_enabled(mod, lang, bufnr)
       end
     end
   end
-
 
   return true
 end

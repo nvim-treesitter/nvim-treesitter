@@ -89,7 +89,7 @@ if you want to disable the module for some languages you can pass a list to the 
   EOF
 <
 
-For more fine-grained control, `disabled` can also take a function and
+For more fine-grained control, `disable` can also take a function and
 whenever it returns `true`, the module is disabled for that buffer.
 The function is called once when a module starts in a buffer and receives the
 language and buffer number as arguments:
