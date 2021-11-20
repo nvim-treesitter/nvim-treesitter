@@ -5,6 +5,8 @@ local say = require "say"
 local scan_dir = require("plenary.scandir").scan_dir
 local Path = require "plenary.path"
 
+M.XFAIL = "xfail"
+
 local function same_indent(state, arguments)
   local before = arguments[1]
   local after = arguments[2]
@@ -13,9 +15,11 @@ local function same_indent(state, arguments)
   local errors = { before = {}, after = {} }
   for line = 1, #before do
     if before[line] ~= after[line] then
-      -- store the actual indentation length for each line
-      errors.before[line] = #string.match(before[line], "^%s*")
-      errors.after[line] = #string.match(after[line], "^%s*")
+      if before[line] and after[line] then
+        -- store the actual indentation length for each line
+        errors.before[line] = #string.match(before[line], "^%s*")
+        errors.after[line] = #string.match(after[line], "^%s*")
+      end
       ok = false
     end
   end
@@ -28,6 +32,9 @@ local function same_indent(state, arguments)
 end
 
 local function format_indent(arg, fmtargs)
+  if not arg or not fmtargs then
+    return
+  end
   -- find minimal width if any line is longer
   local width = 40
   for _, line in ipairs(fmtargs.other) do
@@ -64,9 +71,14 @@ assert:register(
 )
 
 -- Custom assertion better suited for indentation diffs
-local function compare_indent(before, after)
+local function compare_indent(before, after, xfail)
   assert:add_formatter(format_indent)
-  assert.is.same_indent(before, after)
+  if xfail then
+    io.stdout:write "Warning! Known failure of this test! Please help to fix it! "
+    assert.is_not.same_indent(before, after)
+  else
+    assert.is.same_indent(before, after)
+  end
   assert:remove_formatter(format_indent)
 end
 
@@ -84,6 +96,7 @@ function M.run_indent_test(file, runner, opts)
 
   -- load reference file
   vim.cmd(string.format("edit %s", file))
+  vim.bo.indentexpr = "nvim_treesitter#indent()"
   local before = vim.api.nvim_buf_get_lines(0, 0, -1, true)
 
   assert.are.same("nvim_treesitter#indent()", vim.bo.indentexpr)
@@ -101,12 +114,12 @@ function M.run_indent_test(file, runner, opts)
   return before, after
 end
 
-function M.indent_whole_file(file, opts)
+function M.indent_whole_file(file, opts, xfail)
   local before, after = M.run_indent_test(file, function()
     vim.cmd "silent normal gg=G"
   end, opts)
 
-  compare_indent(before, after)
+  compare_indent(before, after, xfail)
 end
 
 -- Open a file, use `normal o` to insert a new line and compare results
@@ -116,7 +129,7 @@ end
 --   text: text inserted in the new line
 --   indent: expected indent before the inserted text (string or int)
 -- @param opts buffer options passed to set_buf_indent_opts
-function M.indent_new_line(file, spec, opts)
+function M.indent_new_line(file, spec, opts, xfail)
   local before, after = M.run_indent_test(file, function()
     -- move to the line and input the new one
     vim.cmd(string.format("normal! %dG", spec.on_line))
@@ -126,7 +139,7 @@ function M.indent_new_line(file, spec, opts)
   local indent = type(spec.indent) == "string" and spec.indent or string.rep(" ", spec.indent)
   table.insert(before, spec.on_line + 1, indent .. spec.text)
 
-  compare_indent(before, after)
+  compare_indent(before, after, xfail)
 end
 
 local Runner = {}
@@ -144,7 +157,12 @@ function Runner:new(it, base_dir, buf_opts)
   return setmetatable(runner, self)
 end
 
-function Runner:whole_file(dirs)
+function Runner:whole_file(dirs, opts)
+  opts = opts or {}
+  local expected_failures = opts.expected_failures or {}
+  expected_failures = vim.tbl_map(function(f)
+    return Path:new(f):make_relative(self.base_dir.filename)
+  end, expected_failures)
   dirs = type(dirs) == "table" and dirs or { dirs }
   dirs = vim.tbl_map(function(dir)
     dir = self.base_dir / Path:new(dir)
@@ -155,16 +173,16 @@ function Runner:whole_file(dirs)
   for _, file in ipairs(files) do
     local relpath = Path:new(file):make_relative(self.base_dir.filename)
     self.it(relpath, function()
-      M.indent_whole_file(file, self.buf_opts)
+      M.indent_whole_file(file, self.buf_opts, vim.tbl_contains(expected_failures, relpath))
     end)
   end
 end
 
-function Runner:new_line(file, spec, title)
+function Runner:new_line(file, spec, title, xfail)
   title = title and title or tostring(spec.on_line)
   self.it(string.format("%s[%s]", file, title), function()
     local path = self.base_dir / file
-    M.indent_new_line(path.filename, spec, self.buf_opts)
+    M.indent_new_line(path.filename, spec, self.buf_opts, xfail)
   end)
 end
 

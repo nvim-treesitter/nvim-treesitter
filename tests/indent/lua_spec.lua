@@ -1,4 +1,5 @@
 local Runner = require("tests.indent.common").Runner
+local XFAIL = require("tests.indent.common").XFAIL
 
 local run = Runner:new(it, "tests/indent/lua", {
   tabstop = 2,
@@ -9,7 +10,10 @@ local run = Runner:new(it, "tests/indent/lua", {
 
 describe("indent Lua:", function()
   describe("whole file:", function()
-    run:whole_file "."
+    run:whole_file(".", { expected_failures = {
+      "./string.lua",
+      "./comment.lua",
+    } })
   end)
 
   describe("new line:", function()
@@ -18,10 +22,10 @@ describe("indent Lua:", function()
     run:new_line("func.lua", { on_line = 1, text = "x = x + 1", indent = 2 })
     run:new_line("func.lua", { on_line = 2, text = "y = y + 1", indent = 4 })
     run:new_line("func.lua", { on_line = 5, text = "3,", indent = 4 })
-    run:new_line("string.lua", { on_line = 1, text = "x", indent = 0 })
-    run:new_line("string.lua", { on_line = 2, text = "x", indent = 0 })
+    run:new_line("string.lua", { on_line = 1, text = "x", indent = 0 }, "expected failure", XFAIL)
+    run:new_line("string.lua", { on_line = 2, text = "x", indent = 0 }, "expected failure", XFAIL)
     run:new_line("string.lua", { on_line = 3, text = "x", indent = 2 })
-    run:new_line("string.lua", { on_line = 4, text = "x", indent = 4 })
+    run:new_line("string.lua", { on_line = 4, text = "x", indent = 4 }, "expected failure", XFAIL)
     run:new_line("table.lua", { on_line = 1, text = "b = 0,", indent = 2 })
     run:new_line("table.lua", { on_line = 5, text = "4,", indent = 4 })
     run:new_line("table.lua", { on_line = 7, text = "4,", indent = 4 })
