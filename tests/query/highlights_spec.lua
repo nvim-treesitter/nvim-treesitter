@@ -8,6 +8,12 @@ local function check_assertions(file)
   local buf = vim.fn.bufadd(file)
   vim.fn.bufload(file)
   local lang = parsers.get_buf_lang(buf)
+  assert.same(
+    1,
+    vim.fn.executable "highlight-assertions",
+    '"highlight-assertions" not executable!'
+      .. ' Get it via "cargo install --git https://github.com/theHamsta/highlight-assertions"'
+  )
   local assertions = vim.fn.json_decode(
     vim.fn.system(
       "highlight-assertions -p '" .. utils.get_parser_install_dir() .. "/" .. lang .. ".so'" .. " -s '" .. file .. "'"
