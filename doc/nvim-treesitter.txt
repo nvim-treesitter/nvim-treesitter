@@ -74,14 +74,9 @@ Each module corresponds to an entry in the dictionary passed to the
   EOF
 <
 
-All modules share some common options, like `enable`, `disable`, and
-`condition`.
+All modules share some common options, like `enable` and `disable`.
 When `enable` is `true` this will enable the module for all supported languages,
 if you want to disable the module for some languages you can pass a list to the `disable` option.
-For more fine-grained control, `condition` takes a function and whenever it returns
-`false` the module is disabled for that buffer.
-The `condition` function is called once when a module starts in a buffer and
-received the language and the buffer number as arguments.
 
 >
   lua <<EOF
@@ -91,6 +86,24 @@ received the language and the buffer number as arguments.
       disable = { "cpp", "lua" },
       condition = function(lang, bufnr) -- Disable in large C++ buffers
         return not (lang == "cpp" and api.nvim_buf_line_count(bufnr) > 50000)
+      end,
+    },
+  }
+  EOF
+<
+
+For more fine-grained control, `disabled` can also take a function and
+whenever it returns `true`, the module is disabled for that buffer.
+The function is called once when a module starts in a buffer and receives the
+language and buffer number as arguments:
+
+>
+  lua <<EOF
+  require'nvim-treesitter.configs'.setup {
+    highlight = {
+      enable = true,
+      disable = function(lang, bufnr) -- Disable in large C++ buffers
+        return lang == "cpp" and api.nvim_buf_line_count(bufnr) > 50000
       end,
     },
   }
