@@ -4,6 +4,10 @@
   (line_comment)
 ] @comment
 
+((line_comment) @text.note
+  (#match? @text.note "^// *zig fmt: (on|off) *$")
+)
+
 [
   variable: (IDENTIFIER)
   variable_type_function: (IDENTIFIER)
@@ -23,7 +27,7 @@ parameter: (IDENTIFIER) @parameter
     field_access: (IDENTIFIER)
     parameter: (IDENTIFIER)
   ] @type
-  (#match? @type "^[A-Z]([a-z]+[A-Za-z0-9]*)*$")
+  (#match? @type "^[A-Z]")
 )
 ;; assume camelCase is a function
 (
@@ -32,7 +36,7 @@ parameter: (IDENTIFIER) @parameter
     field_access: (IDENTIFIER)
     parameter: (IDENTIFIER)
   ] @function
-  (#match? @function "^[a-z]+([A-Z][a-z0-9]*)+$")
+  (#match? @function "^[a-z]+[A-Z]+")
 )
 
 ;; assume all CAPS_1 is a constant
