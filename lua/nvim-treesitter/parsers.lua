@@ -871,6 +871,14 @@ list.foam = {
   experimental = true,
 }
 
+list.hack = {
+  install_info = {
+    url = "https://github.com/slackhq/tree-sitter-hack",
+    branch = "main",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+}
+
 local M = {
   list = list,
 }
