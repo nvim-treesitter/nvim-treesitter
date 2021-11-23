@@ -33,7 +33,7 @@
     "revision": "a03f1d2d1dfbf6f8e0fdca5f9ff030228241eb57"
   },
   "cuda": {
-    "revision": "274640841387e70c90ce2ff0f1b0d010d2aa8957"
+    "revision": "1c2dc8b66df5fc9a19c56bd7f1bb5d2364e475a5"
   },
   "d": {
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
@@ -69,19 +69,19 @@
     "revision": "f0f2f100952a353e64e26b0fa710b4c296d7af13"
   },
   "gdscript": {
-    "revision": "59e7e41e186d3759592e9938291f69055200783f"
+    "revision": "27254af00006703a333e9b347e38aff8012d050a"
   },
   "glimmer": {
-    "revision": "ac8b168bfded1fa2fb9f5f7ad3acdbd1118736ad"
+    "revision": "2623e2a0d32a748e196d8f7693dfcc87061b0947"
   },
   "glsl": {
-    "revision": "88408ffc5e27abcffced7010fc77396ae3636d7e"
+    "revision": "26ba31a3f5a85ebed5d71e49eef11a003bed782b"
   },
   "go": {
     "revision": "7f6bfd0161b2fe97f03564edad3287ebea0494a3"
   },
   "godotResource": {
-    "revision": "c611dd49e838efe25567dece14cf6353710f6d98"
+    "revision": "d21e57f736da8407c5a93e78b05fc7b2a80e63f3"
   },
   "gomod": {
     "revision": "2dfd6b7d3a4cfedc52e5eaa3cc497f419e628ebb"
@@ -183,7 +183,7 @@
     "revision": "a5514617ae3644effa80d4696be428e4a371c01a"
   },
   "ruby": {
-    "revision": "f1ff02772248786ed2ed08d827de2555912e777e"
+    "revision": "951799c6780deaabb0666b846cb7ad4eab627bbb"
   },
   "rust": {
     "revision": "cc7bdd3e6d14677e8aa77da64f6a3f57b6f8b00a"
