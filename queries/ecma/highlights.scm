@@ -11,6 +11,7 @@
 
 (property_identifier) @property
 (shorthand_property_identifier) @property
+(private_property_identifier) @property
 
 (variable_declarator
   name: (object_pattern
@@ -46,7 +47,7 @@
 (generator_function_declaration
   name: (identifier) @function)
 (method_definition
-  name: (property_identifier) @method)
+  name: [(property_identifier) (private_property_identifier)] @method)
 
 (pair
   key: (property_identifier) @method
@@ -86,7 +87,7 @@
 
 (call_expression
   function: (member_expression
-    property: (property_identifier) @method))
+    property: [(property_identifier) (private_property_identifier)] @method))
 
 ; Variables
 ;----------
