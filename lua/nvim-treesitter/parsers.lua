@@ -203,7 +203,7 @@ list.bash = {
     url = "https://github.com/tree-sitter/tree-sitter-bash",
     files = { "src/parser.c", "src/scanner.cc" },
   },
-  used_by = { "zsh", "PKGBUILD" },
+  used_by = { "PKGBUILD" },
   filetype = "sh",
   maintainers = { "@TravonteD" },
 }
