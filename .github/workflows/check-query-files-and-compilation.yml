@@ -9,16 +9,24 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-2022, macos-latest]
         cc: [ gcc, clang ]
+        nvim_tag: [ v0.5.1 ]
         exclude:
           - os: macos-latest
             cc: gcc
+            nvim_tag: v0.5.1
 
         include:
           - os: windows-2022
             cc: cl
+            nvim_tag: v0.5.1
 
           - os: macos-latest
             cc: gcc-10
+            nvim_tag: v0.5.1
+
+          - os: ubuntu-latest
+            cc: gcc
+            nvim_tag: nightly
 
     name: Parser compilation
     runs-on: ${{ matrix.os }}
@@ -31,8 +39,8 @@ jobs:
 
       - name: Install and prepare Neovim
         env:
-          NVIM_TAG: v0.5.1
-          TREE_SITTER_CLI_TAG: v0.20.0
+          NVIM_TAG: ${{ matrix.nvim_tag }}
+          TREE_SITTER_CLI_TAG: v0.20.1
         run: |
           bash ./scripts/ci-install-${{ matrix.os }}.sh
 
