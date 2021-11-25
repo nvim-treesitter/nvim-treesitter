@@ -24,7 +24,7 @@
     "revision": "5dd3c62f1bbe378b220fe16b317b85247898639e"
   },
   "commonlisp": {
-    "revision": "02e6ecbe05633bc9a82c2a56a86a1c2fcb3c4725"
+    "revision": "0e6fb49af1b14b5d37e960ac8756c7214a6fcf8f"
   },
   "cpp": {
     "revision": "e8dcc9d2b404c542fd236ea5f7208f90be8a6e89"
@@ -80,7 +80,7 @@
   "go": {
     "revision": "7f6bfd0161b2fe97f03564edad3287ebea0494a3"
   },
-  "godotResource": {
+  "godot_resource": {
     "revision": "4745121d91f262e0302638b007ca0524386f27ff"
   },
   "gomod": {
