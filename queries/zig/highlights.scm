@@ -60,17 +60,15 @@ exception: "!" @exception
   (#eq? @variable.builtin "_")
 )
 
-(PtrTypeStart "c" @variable.builtin)
+; (PtrTypeStart "c" @variable.builtin)
 
-(
-  (ContainerDeclType
-    [
-      (ErrorUnionExpr)
-      "enum"
-    ]
-  )
-  (ContainerField (IDENTIFIER) @constant)
-)
+; (
+;   (ContainerDeclType
+;       (ErrorUnionExpr)
+;       ; "enum"
+;   )
+;   (ContainerField (IDENTIFIER) @constant)
+; )
 
 field_constant: (IDENTIFIER) @constant
 
