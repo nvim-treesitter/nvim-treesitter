@@ -616,7 +616,7 @@ list.gdscript = {
   maintainers = { "@Shatur95" },
 }
 
-list.godotResource = {
+list.godot_resource = {
   install_info = {
     url = "https://github.com/PrestonKnopp/tree-sitter-godot-resource",
     files = { "src/parser.c", "src/scanner.c" },
