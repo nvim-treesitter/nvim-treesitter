@@ -133,7 +133,7 @@ list.rust = {
 
 list.fusion = {
   install_info = {
-    url = "https://gitlab.com/jirgn/tree-sitter-fusion",
+    url = "https://gitlab.com/jirgn/tree-sitter-fusion.git",
     files = { "src/parser.c" },
     branch = "main",
   },
