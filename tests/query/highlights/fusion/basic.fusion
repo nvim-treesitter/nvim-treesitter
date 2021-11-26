@@ -1,6 +1,6 @@
 include: SomeFile.fusion
 //<- include
-//     ^punctation.delimiter
+//     ^punctuation.delimiter
 //       ^uri
 
 namespace ns = Neos.Fusion.Space
@@ -11,9 +11,9 @@ namespace ns = Neos.Fusion.Space
 
 prototype(MyType) < prototype(ns:SuperType) {
 //<-keyword
-//       ^punctation.bracket
+//       ^punctuation.bracket
 //        ^type
-//              ^punctation.bracket
+//              ^punctuation.bracket
 //                ^operator
 //                            ^namespace
 //                                ^type
