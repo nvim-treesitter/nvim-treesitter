@@ -25,7 +25,7 @@
 )
 (include_statement
   "include" @include
-  ":" @punctation.delimiter
+  ":" @punctuation.delimiter
   (source_file) @uri
 )
 
@@ -67,7 +67,7 @@
 (null) @constant.builtin
 
 
-; punctation
+; punctuation
 ; ----------
 
 [
@@ -77,11 +77,11 @@
  "}"
  "["
  "]"
-] @punctation.bracket
+] @punctuation.bracket
 
 [
  ":"
  "."
  "?"
-] @punctation.delimiter
+] @punctuation.delimiter
 

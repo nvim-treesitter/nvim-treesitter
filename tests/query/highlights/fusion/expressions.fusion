@@ -24,18 +24,18 @@ propertyPath = ${property.path}
 //                        ^variable
 
 array = ${[]}
-//        ^punctation.bracket
+//        ^punctuation.bracket
 
 array = ${[true, 'string', 1, [true]]}
-//        ^punctation.bracket
+//        ^punctuation.bracket
 //         ^boolean
 //                ^string
 //                         ^number
-//                            ^punctation.bracket
+//                            ^punctuation.bracket
 //                             ^boolean
 
 object = ${{}}
-//         ^punctation.bracket
+//         ^punctuation.bracket
 
 object = ${{first: 'value', second: true, third: [], fourth: object.path }}
 //          ^property
@@ -43,7 +43,7 @@ object = ${{first: 'value', second: true, third: [], fourth: object.path }}
 //                          ^property
 //                                  ^boolean
 //                                        ^property
-//                                               ^punctation.bracket
+//                                               ^punctuation.bracket
 //                                                   ^property
 //                                                                  ^variable
 
@@ -68,7 +68,7 @@ logic = ${!foo && !(bar || baz) and not 'string'}
 //                              ^operator
 
 ternary = ${ check ? true : false}
-//                 ^punctation.delimiter
-//                        ^punctation.delimiter
+//                 ^punctuation.delimiter
+//                        ^punctuation.delimiter
 
 
