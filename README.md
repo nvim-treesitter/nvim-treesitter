@@ -172,7 +172,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [fennel](https://github.com/travonted/tree-sitter-fennel) (maintained by @TravonteD)
 - [x] [fish](https://github.com/ram02z/tree-sitter-fish) (maintained by @ram02z)
 - [ ] [fortran](https://github.com/stadelmanma/tree-sitter-fortran)
-- [ ] [fusion](~/Code/tree-sitter/tree-sitter-fusion)
+- [ ] [fusion](https://gitlab.com/jirgn/tree-sitter-fusion)(experimental, maintained by @jirgn)
 - [x] [Godot (gdscript)](https://github.com/PrestonKnopp/tree-sitter-gdscript) (maintained by @Shatur95)
 - [x] [Glimmer and Ember](https://github.com/alexlafroscia/tree-sitter-glimmer) (maintained by @alexlafroscia)
 - [x] [glsl](https://github.com/theHamsta/tree-sitter-glsl) (maintained by @theHamsta)
