@@ -135,6 +135,7 @@ list.fusion = {
   install_info = {
     url = "https://gitlab.com/jirgn/tree-sitter-fusion",
     files = { "src/parser.c" },
+    branch = "main",
   },
   maintainers = { "@jirgn" },
   experimental = true,
