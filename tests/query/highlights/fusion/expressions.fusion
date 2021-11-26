@@ -1,0 +1,74 @@
+string = ${'foo'}
+//          ^string
+
+string = ${'foo \'bar\' baz'}
+//                ^string
+
+string = ${"foo"}
+//          ^string
+
+string = ${"foo ${test}"}
+//               ^string
+
+boolean = ${true}
+//          ^boolean
+
+number = ${1}
+//         ^number
+
+number = ${1.2}
+//         ^number
+
+propertyPath = ${property.path}
+//               ^variable
+//                        ^variable
+
+array = ${[]}
+//        ^punctation.bracket
+
+array = ${[true, 'string', 1, [true]]}
+//        ^punctation.bracket
+//         ^boolean
+//                ^string
+//                         ^number
+//                            ^punctation.bracket
+//                             ^boolean
+
+object = ${{}}
+//         ^punctation.bracket
+
+object = ${{first: 'value', second: true, third: [], fourth: object.path }}
+//          ^property
+//                  ^string
+//                          ^property
+//                                  ^boolean
+//                                        ^property
+//                                               ^punctation.bracket
+//                                                   ^property
+//                                                                  ^variable
+
+result = ${methodCall()}
+//         ^function
+
+result = ${Some.methodCall(param, param)}
+//              ^function
+//                         ^variable
+//                                ^variable
+
+arrowFunction =  ${map(foo, (bar, buz) => bar * buz)}
+//                 ^function
+//                           ^variable
+//                                ^variable
+
+logic = ${!foo && !(bar || baz) and not 'string'}
+//        ^operator
+//             ^operator
+//                ^operator
+//                      ^operator
+//                              ^operator
+
+ternary = ${ check ? true : false}
+//                 ^punctation.delimiter
+//                        ^punctation.delimiter
+
+
