@@ -11,7 +11,6 @@
 (eel_method_name) @function
 
 (eel_parameter) @variable
-
 
 
 ; identifiers fusion
@@ -25,7 +24,7 @@
 )
 (include_statement
   "include" @include
-  ":" @punctation.delimiter
+  ":" @punctuation.delimiter
   (source_file) @text.uri
 )
 
@@ -84,4 +83,3 @@
  "."
  "?"
 ] @punctuation.delimiter
-
