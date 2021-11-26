@@ -1,3 +1,3 @@
-(eel_arrow_function) @local.scope
+(eel_arrow_function) @scope
 
-(eel_parameter) @local.definition
+(eel_parameter) @definition.parameter

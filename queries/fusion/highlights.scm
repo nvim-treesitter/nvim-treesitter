@@ -25,8 +25,8 @@
 )
 (include_statement
   "include" @include
-  ":" @punctuation.delimiter
-  (source_file) @uri
+  ":" @punctation.delimiter
+  (source_file) @text.uri
 )
 
 (namespace_declaration

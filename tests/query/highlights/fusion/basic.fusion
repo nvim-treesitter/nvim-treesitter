@@ -1,7 +1,7 @@
 include: SomeFile.fusion
 //<- include
 //     ^punctuation.delimiter
-//       ^uri
+//       ^text.uri
 
 namespace ns = Neos.Fusion.Space
 //<- keyword
