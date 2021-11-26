@@ -5,22 +5,32 @@
  "model"
 ] @keyword
 
-(comment) @comment
-(developer_comment) @comment
+[
+  (comment)
+  (developer_comment)
+] @comment
+
+[
+  (attribute)
+  (call_expression)
+] @function
 
 (arguments) @property
-(attribute) @function
-(call_expression) @function
 (column_type) @type
 (enumeral) @constant
 (identifier) @variable
 (string) @string
 
-"(" @punctuation.bracket
-")" @punctuation.bracket
-"[" @punctuation.bracket
-"]" @punctuation.bracket
-"{" @punctuation.bracket
-"}" @punctuation.bracket
-"=" @operator
-"@" @operator
+[
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+] @punctuation.bracket
+
+[
+  "="
+  "@"
+] @operator
