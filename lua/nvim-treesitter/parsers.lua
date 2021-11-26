@@ -134,9 +134,10 @@ list.rust = {
 list.fusion = {
   install_info = {
     url = "https://gitlab.com/jirgn/tree-sitter-fusion",
-    files = { "src/parser.c"},
+    files = { "src/parser.c" },
   },
   maintainers = { "@jirgn" },
+  experimental = true,
 }
 
 list.ledger = {
