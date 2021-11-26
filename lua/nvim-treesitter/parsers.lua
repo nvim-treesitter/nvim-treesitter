@@ -131,6 +131,14 @@ list.rust = {
   maintainers = { "@vigoux" },
 }
 
+list.fusion = {
+  install_info = {
+    url = "https://gitlab.com/jirgn/tree-sitter-fusion",
+    files = { "src/parser.c"},
+  },
+  maintainers = { "@jirgn" },
+}
+
 list.ledger = {
   install_info = {
     url = "https://github.com/cbarrete/tree-sitter-ledger",
