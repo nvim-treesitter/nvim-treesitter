@@ -18,7 +18,7 @@
 (arguments) @property
 (column_type) @type
 (enumeral) @constant
-(identifier) @variable
+(column_declaration (identifier) @variable)
 (string) @string
 
 [
