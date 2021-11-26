@@ -69,13 +69,13 @@
     "revision": "f0f2f100952a353e64e26b0fa710b4c296d7af13"
   },
   "fusion": {
-    "revision": "b65d8c28c286aacb5e23ed8ccd4b03c9dd805039"
+    "revision": "warning: redirecting to https://gitlab.com/jirgn/tree-sitter-fusion.git/"
   },
   "gdscript": {
     "revision": "27254af00006703a333e9b347e38aff8012d050a"
   },
   "glimmer": {
-    "revision": "2623e2a0d32a748e196d8f7693dfcc87061b0947"
+    "revision": "fd8fb1dbde54ed2767a17e22bcf7203961e4a0c8"
   },
   "glsl": {
     "revision": "26ba31a3f5a85ebed5d71e49eef11a003bed782b"
