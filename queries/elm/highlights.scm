@@ -1,15 +1,17 @@
+[(line_comment) (block_comment)] @comment
+
 ; Keywords
 [
     "if"
     "then"
     "else"
-    "let"
-    "in"
     (case)
     (of)
 ] @conditional
 
 [
+  "let"
+  "in"
   (as)
   (port)
   (exposing)
