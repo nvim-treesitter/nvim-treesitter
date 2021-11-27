@@ -22,6 +22,7 @@ local function check_assertions(file)
   local parser = parsers.get_parser(buf, lang)
 
   local self = highlighter.new(parser, {})
+  local top_level_root = parser:parse()[1]:root()
 
   for _, assertion in ipairs(assertions) do
     local row = assertion.position.row
@@ -34,7 +35,11 @@ local function check_assertions(file)
       end
 
       local root = tstree:root()
-      if ts_utils.is_in_node_range(root, row, col) and assertion.expected_capture_name == tree:lang() then
+      if
+        ts_utils.is_in_node_range(root, row, col)
+        and assertion.expected_capture_name == tree:lang()
+        and root ~= top_level_root
+      then
         found = true
       end
     end, true)
