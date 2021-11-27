@@ -54,7 +54,8 @@ function M.get_indent(lnum)
     return -1
   end
 
-  local root, _, lang_tree = tsutils.get_root_for_position(lnum, 0, parser)
+  -- get_root_for_position is 0-based.
+  local root, _, lang_tree = tsutils.get_root_for_position(lnum - 1, 0, parser)
 
   -- Not likely, but just in case...
   if not root then
@@ -114,8 +115,10 @@ function M.get_indent(lnum)
   local prev_row = node:start()
 
   while node do
-    -- do not indent if we are inside an @ignore block
-    if q.ignores[node_fmt(node)] and node:start() < lnum - 1 and node:end_() > lnum - 1 then
+    -- Do not indent if we are inside an @ignore block.
+    -- If a node spans from L1,C1 to L2,C2, we know that lines where L1 < line <= L2 would
+    -- have their indentations contained by the node.
+    if q.ignores[node_fmt(node)] and node:start() < lnum - 1 and lnum - 1 <= node:end_() then
       return -1
     end
 

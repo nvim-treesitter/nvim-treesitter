@@ -13,14 +13,10 @@ describe("indent Python:", function()
     run:whole_file(".", {
       expected_failures = {
         "./aligned_indent.py",
-        "./basic_blocks.py",
         "./branches.py",
-        "./control_flow.py",
         "./hanging_indent.py",
         "./join_lines.py",
         "./nested_collections.py",
-        "./strings.py",
-        "./control_flow.py",
       },
     })
   end)
