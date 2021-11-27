@@ -1,3 +1,5 @@
+(variable) @variable
+
 [
  "datasource"
  "enum"
