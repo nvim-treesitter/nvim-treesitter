@@ -24,7 +24,7 @@
     "revision": "5dd3c62f1bbe378b220fe16b317b85247898639e"
   },
   "commonlisp": {
-    "revision": "0e6fb49af1b14b5d37e960ac8756c7214a6fcf8f"
+    "revision": "01c17ac04f65143d3ae5e93354d808db4c9eb0a2"
   },
   "cpp": {
     "revision": "e8dcc9d2b404c542fd236ea5f7208f90be8a6e89"
@@ -72,7 +72,7 @@
     "revision": "bee23e8728845a651a1d70211310c1247134b801"
   },
   "gdscript": {
-    "revision": "27254af00006703a333e9b347e38aff8012d050a"
+    "revision": "eed1595d830407b49775aa33b871a9400e5a44e6"
   },
   "glimmer": {
     "revision": "fd8fb1dbde54ed2767a17e22bcf7203961e4a0c8"
@@ -84,7 +84,7 @@
     "revision": "7f6bfd0161b2fe97f03564edad3287ebea0494a3"
   },
   "godot_resource": {
-    "revision": "4745121d91f262e0302638b007ca0524386f27ff"
+    "revision": "4ad1b796fb375c8e0fbf5b3cad57050b4372114f"
   },
   "gomod": {
     "revision": "2dfd6b7d3a4cfedc52e5eaa3cc497f419e628ebb"
@@ -167,6 +167,9 @@
   "pioasm": {
     "revision": "924aadaf5dea2a6074d72027b064f939acf32e20"
   },
+  "prisma": {
+    "revision": "74a721e8eed1a4a25cf495d45974ba24f315f81a"
+  },
   "python": {
     "revision": "24b530ca158d2782ea9046e756057a412e16b52f"
   },
@@ -201,7 +204,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "supercollider": {
-    "revision": "7621ddfef7df294e696584e8908a3444621f9fc7"
+    "revision": "d5e9ab2dc42285f15fc9699edbbea32e38c45c91"
   },
   "surface": {
     "revision": "21b7676859c1187645a27ff301f76738af5dfd44"
