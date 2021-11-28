@@ -30,6 +30,8 @@
 (function_declarator
   declarator: (field_identifier) @method)
 
+(concept_definition
+  name: (identifier) @type)
 
 (namespace_identifier) @namespace
 ((namespace_identifier) @type
@@ -123,6 +125,8 @@
  "using"
  "virtual"
  "co_await"
+ "concept"
+ "requires"
  (auto)
 ] @keyword
 
