@@ -22,6 +22,9 @@
 (class_specifier
   name: (type_identifier) @definition.type)
 
+(concept_definition
+  name: (identifier) @definition.type)
+
 (class_specifier
   name: (qualified_identifier
           name: (type_identifier) @definition.type))
@@ -64,3 +67,5 @@
   body: (_) @scope)
 
 (catch_clause) @scope
+
+(requires_expression) @scope
