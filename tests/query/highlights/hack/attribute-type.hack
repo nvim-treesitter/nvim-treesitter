@@ -9,7 +9,7 @@ newtype T1 = ?shape(
 //       ^ attribute
 type T2 = (function(T1): string);
 //    ^ type
-//          ^ function (cannot capture keyword "function" as keyword.function)
+//          TODO: keyword.function (currently not in AST)
 
 <<A4(1), A5, A6(1,3,4)>>
 newtype T3 as int = int;
