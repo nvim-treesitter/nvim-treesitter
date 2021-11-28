@@ -8,6 +8,7 @@ class Box<T> {
   public function __construct(T $data) {
   //                          ^ type
   //                             ^ parameter
+  //        ^ keyword.function
   // ^ keyword
   //                    ^ method
     $this->data = $data;

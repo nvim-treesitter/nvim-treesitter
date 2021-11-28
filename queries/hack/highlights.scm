@@ -21,6 +21,7 @@
  "await"
  "type"
  "interface"
+ "implements"
  "class"
  "protected"
  "private"
@@ -32,7 +33,7 @@
  (xhp_modifier)
  (final_modifier)
  "extends"
-  "insteadof"
+ "insteadof"
 ] @keyword
 
 "use" @include
@@ -61,11 +62,19 @@
   "arraykey"
   "void"
   "nonnull"
-  (null)
   "mixed"
   "dynamic"
   "noreturn"
 ] @type.builtin
+
+[
+  (null)
+] @constant.builtin
+
+[
+  (true)
+  (false)
+] @boolean
 
 (type_specifier) @type
 (new_expression
@@ -83,7 +92,6 @@
   (qualified_identifier
     (identifier) @type .))
 
-(function_type_specifier) @function
 (attribute_modifier) @attribute
 [
  "@required"
