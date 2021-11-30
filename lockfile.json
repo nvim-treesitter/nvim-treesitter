@@ -170,6 +170,9 @@
   "prisma": {
     "revision": "74a721e8eed1a4a25cf495d45974ba24f315f81a"
   },
+  "pug": {
+    "revision": "5875f9a7d94836708119b0a1102bb5792e8bf673"
+  },
   "python": {
     "revision": "24b530ca158d2782ea9046e756057a412e16b52f"
   },
