@@ -25,3 +25,6 @@
   (#match? @keyword "^(:|v-bind|v-|\\@)")
 ) @keyword
 
+[
+  ":"
+] @punctuation.delimiter
