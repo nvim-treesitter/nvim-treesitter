@@ -24,7 +24,7 @@
     "revision": "5dd3c62f1bbe378b220fe16b317b85247898639e"
   },
   "commonlisp": {
-    "revision": "e43ea50e8701bbe319e2a42922caab393267ee1c"
+    "revision": "496ef999f57e2c3aeb00f889710a8016abd9b2d2"
   },
   "cpp": {
     "revision": "e8dcc9d2b404c542fd236ea5f7208f90be8a6e89"
@@ -75,7 +75,7 @@
     "revision": "eed1595d830407b49775aa33b871a9400e5a44e6"
   },
   "glimmer": {
-    "revision": "fd8fb1dbde54ed2767a17e22bcf7203961e4a0c8"
+    "revision": "86d82d16530a46b901e8ef55f63367cd904bd79f"
   },
   "glsl": {
     "revision": "26ba31a3f5a85ebed5d71e49eef11a003bed782b"
@@ -147,7 +147,7 @@
     "revision": "6f5d40190ec8a0aa8c8410699353d820f4f7d7a6"
   },
   "nix": {
-    "revision": "83ee5993560bf15854c69b77d92e34456f8fb655"
+    "revision": "6d6aaa50793b8265b6a8b6628577a0083d3b923d"
   },
   "ocaml": {
     "revision": "23d419ba45789c5a47d31448061557716b02750a"
@@ -180,7 +180,7 @@
     "revision": "9a2ccff9f672f1f3d320cf925b8e5acc89b27055"
   },
   "r": {
-    "revision": "82c8d71542629812b7fc1f5b15a1aefadb98eff5"
+    "revision": "016051ef9ec6f31a42043767316eaae98f8e8f2c"
   },
   "regex": {
     "revision": "7b97502cfc3ffa7110f6b68bb39fb259c9a0500c"
