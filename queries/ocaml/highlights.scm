@@ -71,7 +71,9 @@
 ; Constants
 ;----------
 
-[(boolean) (unit)] @constant
+(unit) @constant.builtin
+
+(boolean) @boolean
 
 [(number) (signed_number)] @number
 
