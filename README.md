@@ -37,13 +37,10 @@ Traditional highlighting (left) vs Treesitter-based highlighting (right).
 More examples can be found in [our gallery](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Gallery).
 
 **Warning: Treesitter and nvim-treesitter highlighting are an experimental feature of nightly versions of Neovim.
-Please consider the experience with this plug-in as experimental until Neovim 0.6 is released!
+Please consider the experience with this plug-in as experimental until Tree-Sitter support in Neovim is stable!
+We recommend using the nightly builds of Neovim or the latest stable version.
 You can find the current roadmap [here](https://github.com/nvim-treesitter/nvim-treesitter/projects/1).
 The roadmap and all features of this plugin are open to change, and any suggestion will be highly appreciated!**
-
-*If you want to use this plugin with Neovim 0.5, please use the
-0.5-compat branch. Be aware though that most improvements will require
-neovim nightly.*
 
 Nvim-treesitter is based on three interlocking features: [**language parsers**](#language-parsers), [**queries**](#adding-queries), and [**modules**](#available-modules), where *modules* provide features – e.g., highlighting – based on *queries* for syntax objects extracted from a given buffer by *language parsers*.
 Users will generally only need to interact with parsers and modules as explained in the next section.
