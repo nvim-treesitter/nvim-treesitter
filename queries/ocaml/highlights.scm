@@ -88,7 +88,7 @@
 [
   (conversion_specification)
   (pretty_printing_indication)
-] @punctuation.special
+] @string.special
 
 ; Keywords
 ;---------
