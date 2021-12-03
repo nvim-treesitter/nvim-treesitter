@@ -230,7 +230,7 @@
 ["from" "import"] @include
 (aliased_import "as" @include)
 
-["if" "elif" "else"] @conditional
+["if" "elif" "else" "match" "case"] @conditional
 
 ["for" "while" "break" "continue"] @repeat
 
