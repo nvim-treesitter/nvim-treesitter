@@ -112,12 +112,15 @@ local function onread(handle, is_stderr)
   end
 end
 
-function M.iter_cmd(cmd_list, i, lang, success_message)
+function M.iter_cmd(cmd_list, i, message_scope, success_message, post_work_cmds)
   if i == 1 then
     started_commands = started_commands + 1
   end
   if i == #cmd_list + 1 then
     finished_commands = finished_commands + 1
+    if finished_commands == started_commands and post_work_cmds then
+      M.iter_cmd(post_work_cmds, 1, "post installation", "Finished installation!")
+    end
     return print(get_job_status() .. " " .. success_message)
   end
 
@@ -133,7 +136,7 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
   if type(attr.cmd) == "function" then
     local ok, err = pcall(attr.cmd)
     if ok then
-      M.iter_cmd(cmd_list, i + 1, lang, success_message)
+      M.iter_cmd(cmd_list, i + 1, message_scope, success_message, post_work_cmds)
     else
       failed_commands = failed_commands + 1
       finished_commands = finished_commands + 1
@@ -167,7 +170,7 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
           local err_msg = complete_error_output[handle] or ""
           api.nvim_err_writeln(
             "nvim-treesitter["
-              .. lang
+              .. message_scope
               .. "]: "
               .. (attr.err or ("Failed to execute the following command:\n" .. vim.inspect(attr)))
               .. "\n"
@@ -175,7 +178,7 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
           )
           return
         end
-        M.iter_cmd(cmd_list, i + 1, lang, success_message)
+        M.iter_cmd(cmd_list, i + 1, message_scope, success_message, post_work_cmds)
       end)
     )
     luv.read_start(stdout, onread(handle, false))
@@ -202,7 +205,7 @@ local function get_command(cmd)
 end
 
 local function iter_cmd_sync(cmd_list)
-  for _, cmd in ipairs(cmd_list) do
+  for _, cmd in ipairs(cmd_list or {}) do
     if cmd.info then
       print(cmd.info)
     end
@@ -224,7 +227,7 @@ local function iter_cmd_sync(cmd_list)
   return true
 end
 
-local function run_install(cache_folder, install_folder, lang, repo, with_sync, generate_from_grammar)
+local function run_install(cache_folder, install_folder, lang, repo, options)
   parsers.reset_cache()
 
   local path_sep = utils.get_path_sep()
@@ -246,7 +249,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   end
   local parser_lib_name = install_folder .. path_sep .. lang .. ".so"
 
-  generate_from_grammar = repo.requires_generate_from_grammar or generate_from_grammar
+  local generate_from_grammar = repo.requires_generate_from_grammar or options.generate_from_grammar
 
   if generate_from_grammar and vim.fn.executable "tree-sitter" ~= 1 then
     api.nvim_err_writeln "tree-sitter CLI not found: `tree-sitter` is not executable!"
@@ -346,18 +349,25 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
     vim.list_extend(command_list, { shell.select_install_rm_cmd(cache_folder, project_name) })
   end
 
-  if with_sync then
+  if options.with_sync then
     if iter_cmd_sync(command_list) == true then
       print("Treesitter parser for " .. lang .. " has been installed")
+      iter_cmd_sync(options.post_install_cmds)
     end
   else
-    M.iter_cmd(command_list, 1, lang, "Treesitter parser for " .. lang .. " has been installed")
+    M.iter_cmd(
+      command_list,
+      1,
+      lang,
+      "Treesitter parser for " .. lang .. " has been installed",
+      options.post_install_cmds
+    )
   end
 end
 
-local function install_lang(lang, ask_reinstall, cache_folder, install_folder, with_sync, generate_from_grammar)
-  if is_installed(lang) and ask_reinstall ~= "force" then
-    if not ask_reinstall then
+local function install_lang(lang, cache_folder, install_folder, options)
+  if is_installed(lang) and options.ask_reinstall ~= "force" then
+    if not options.ask_reinstall then
       return
     end
 
@@ -370,14 +380,12 @@ local function install_lang(lang, ask_reinstall, cache_folder, install_folder, w
 
   local install_info = get_parser_install_info(lang, true)
 
-  run_install(cache_folder, install_folder, lang, install_info, with_sync, generate_from_grammar)
+  run_install(cache_folder, install_folder, lang, install_info, options)
 end
 
 local function install(options)
   options = options or {}
-  local with_sync = options.with_sync
   local ask_reinstall = options.ask_reinstall
-  local generate_from_grammar = options.generate_from_grammar
   local exclude_configured_parsers = options.exclude_configured_parsers
 
   return function(...)
@@ -415,9 +423,10 @@ local function install(options)
     if #languages > 1 then
       reset_progress_counter()
     end
+    options.ask_reinstall = ask
 
     for _, lang in ipairs(languages) do
-      install_lang(lang, ask, cache_folder, install_folder, with_sync, generate_from_grammar)
+      install_lang(lang, cache_folder, install_folder, options)
     end
   end
 end
@@ -538,6 +547,29 @@ M.commands = {
   TSInstall = {
     run = install { ask_reinstall = true },
     ["run!"] = install { ask_reinstall = "force" },
+    args = {
+      "-nargs=+",
+      "-bang",
+      "-complete=custom,nvim_treesitter#installable_parsers",
+    },
+  },
+  TSInstallAndQuit = {
+    run = install {
+      ask_reinstall = true,
+      post_install_cmds = { {
+        cmd = function()
+          vim.cmd [[qa!]]
+        end,
+      } },
+    },
+    ["run!"] = install {
+      ask_reinstall = "force",
+      post_install_cmds = { {
+        cmd = function()
+          vim.cmd [[qa!]]
+        end,
+      } },
+    },
     args = {
       "-nargs=+",
       "-bang",
