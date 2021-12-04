@@ -59,6 +59,9 @@
   "elm": {
     "revision": "5128296ba8542853d59e6b7c8dfe3d1fb9a637ea"
   },
+  "embdedded_template": {
+    "revision": "d21df11b0ecc6fd211dbe11278e92ef67bd17e97"
+  },
   "erlang": {
     "revision": "9d5fd0c329280a156bf7614a49dc5e8c58cc037c"
   },
