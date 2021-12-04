@@ -151,11 +151,11 @@
 (float_literal) @float
 
 [
-  (char_literal)
   (raw_string_literal)
   (string_literal)
 ] @string
 (escape_sequence) @string.escape
+(char_literal) @character
 
 
 ;;; Keywords
