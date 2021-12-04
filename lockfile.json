@@ -68,6 +68,9 @@
   "elvish": {
     "revision": "e50787cadd3bc54f6d9c0704493a79078bb8a4e5"
   },
+  "embdedded_template": {
+    "revision": "d21df11b0ecc6fd211dbe11278e92ef67bd17e97"
+  },
   "erlang": {
     "revision": "fab680273af1a8f5cc0c3a0c62cbf5b1bea71f39"
   },

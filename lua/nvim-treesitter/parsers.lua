@@ -77,6 +77,14 @@ list.c = {
   maintainers = { "@vigoux" },
 }
 
+list.embedded_template = {
+  install_info = {
+    url = "https://github.com/tree-sitter/tree-sitter-embedded-template",
+    files = { "src/parser.c" },
+  },
+  filetype = "eruby",
+}
+
 list.clojure = {
   install_info = {
     url = "https://github.com/sogaiu/tree-sitter-clojure",
