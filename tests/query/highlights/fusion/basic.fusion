@@ -3,11 +3,11 @@ include: SomeFile.fusion
 //     ^punctuation.delimiter
 //       ^text.uri
 
-namespace ns = Neos.Fusion.Space
+namespace: ns = Neos.Fusion.Space
 //<- keyword
-//        ^namespace
-//           ^operator
-//             ^namespace
+//         ^namespace
+//            ^operator
+//              ^namespace
 
 prototype(MyType) < prototype(ns:SuperType) {
 //<-keyword

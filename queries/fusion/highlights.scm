@@ -23,8 +23,9 @@
 
 )
 (include_statement
-  "include" @include
-  ":" @punctuation.delimiter
+  [
+   "include"
+  ] @include
   (source_file) @text.uri
 )
 
@@ -32,14 +33,14 @@
   "namespace" @keyword
   (alias_namespace) @namespace)
 
-(identifier_type
+(type
   name: (type_name) @type)
 
 ; tokens
 ; ------
 
 [
-  (identifier_package)
+  (package_name)
   (alias_namespace)
 ] @namespace
 
@@ -83,3 +84,5 @@
  "."
  "?"
 ] @punctuation.delimiter
+
+
