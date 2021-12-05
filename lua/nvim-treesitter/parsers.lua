@@ -73,6 +73,7 @@ list.cpp = {
     files = { "src/parser.c", "src/scanner.cc" },
     generate_requires_npm = true,
   },
+  used_by = { "arduino" },
   maintainers = { "@theHamsta" },
 }
 
