@@ -12,7 +12,7 @@ jobs:
 
       - name: Prepare
         env:
-          NVIM_TAG: v0.5.1
+          NVIM_TAG: v0.6.0
         run: |
           sudo apt-get update
           sudo add-apt-repository universe
