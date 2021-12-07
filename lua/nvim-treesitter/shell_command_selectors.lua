@@ -71,6 +71,8 @@ function M.select_compiler_args(repo, compiler)
       "-o",
       "parser.so",
       repo.files,
+      "-xc++",
+      "-std=c++14",
       "-lc",
       "-Isrc",
       "-shared",
