@@ -111,6 +111,7 @@
 (regex) @punctuation.delimiter
 (regex_pattern) @string.regex
 (template_string) @string
+(escape_sequence) @string.escape
 (number) @number
 
 ; Punctuation
