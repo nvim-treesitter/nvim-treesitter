@@ -12,7 +12,7 @@
     "revision": "e348e8ec5efd3aac020020e4af53d2ff18f393a9"
   },
   "c_sharp": {
-    "revision": "d26b3dfed6dfb1373071e635df342b91f9ee68e2"
+    "revision": "3104df21065af0f3d51e05a96cd0e2ff16a6f982"
   },
   "clojure": {
     "revision": "39bf0977d223879436c1425fe6bfeb3bcfd86f92"
@@ -33,7 +33,7 @@
     "revision": "a03f1d2d1dfbf6f8e0fdca5f9ff030228241eb57"
   },
   "cuda": {
-    "revision": "1c2dc8b66df5fc9a19c56bd7f1bb5d2364e475a5"
+    "revision": "bc20ed7a36031437a69a88ef368af4b9f1ecec70"
   },
   "d": {
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
@@ -54,7 +54,7 @@
     "revision": "de3ec57591aebf451e710fc9c984cf601258baf5"
   },
   "elm": {
-    "revision": "7ef899bf5a3ff5725d05cfeb6b7491cdbcb5399f"
+    "revision": "15d1278332dc2084efa28d3bc30693477dbf3916"
   },
   "erlang": {
     "revision": "9d5fd0c329280a156bf7614a49dc5e8c58cc037c"
@@ -69,7 +69,7 @@
     "revision": "f0f2f100952a353e64e26b0fa710b4c296d7af13"
   },
   "fusion": {
-    "revision": "8191fc40f2dadf3fed29d9a324b8b4f75c0758eb"
+    "revision": "f588d2cba166de2dbf5e2b7f848e7a2e82b803ce"
   },
   "gdscript": {
     "revision": "eed1595d830407b49775aa33b871a9400e5a44e6"
@@ -87,7 +87,7 @@
     "revision": "4ad1b796fb375c8e0fbf5b3cad57050b4372114f"
   },
   "gomod": {
-    "revision": "2dfd6b7d3a4cfedc52e5eaa3cc497f419e628ebb"
+    "revision": "e91c7a67a0ee362a45397dbfe6b68a125a6f5971"
   },
   "graphql": {
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
