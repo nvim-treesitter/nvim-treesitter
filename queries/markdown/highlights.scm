@@ -1,21 +1,35 @@
-(atx_heading) @text.title
-
+;; From MDeiml/tree-sitter-markdown
 [
-  (code_span)
-  (fenced_code_block)
-]@text.literal
+  (atx_heading)
+  (setext_heading)
+] @text.title
 
 (code_fence_content) @none
 
 [
-  (link_text)
-  (image_description)
-] @text.strong
+  (indented_code_block)
+  (fenced_code_block)
+  (code_span)
+] @text.literal
 
-[
-  (emphasis)
-  (strong_emphasis)
-] @text.emphasis
+
+(emphasis) @text.emphasis
+
+(strong_emphasis) @text.strong
+
 (link_destination) @text.uri
 
-(html_comment) @comment
+(link_label) @text.reference
+
+[
+  (list_marker_plus)
+  (list_marker_minus)
+  (list_marker_star)
+  (list_marker_dot)
+  (list_marker_parenthesis)
+] @punctuation.special
+
+[
+  (backslash_escape)
+  (hard_line_break)
+] @string.escape

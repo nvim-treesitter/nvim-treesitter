@@ -25,8 +25,7 @@ local builtin_modules = {
     enable = false,
     custom_captures = {},
     is_supported = function(lang)
-      -- FIXME(vigoux): markdown highlighting breaks everything for now
-      return lang ~= "markdown" and queries.has_highlights(lang)
+      return queries.has_highlights(lang)
     end,
     additional_vim_regex_highlighting = false,
   },
