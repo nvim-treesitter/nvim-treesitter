@@ -150,6 +150,9 @@
     "rawequal" "rawget" "rawset" "require" "select" "setfenv" "setmetatable"
     "tonumber" "tostring" "type" "unpack" "xpcall"))
 
+;; built-in next function
+(next) @function.builtin
+
 ;; Parameters
 (parameters
   (identifier) @parameter)
