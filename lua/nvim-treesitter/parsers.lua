@@ -433,13 +433,14 @@ list.hcl = {
   used_by = { "terraform" },
 }
 
--- FIXME(vigoux): markdown is broken for now
--- list.markdown = {
---   install_info = {
---     url = "https://github.com/ikatyang/tree-sitter-markdown",
---     files = { "src/parser.c", "src/scanner.cc" },
---   }
--- }
+list.markdown = {
+  install_info = {
+    url = "https://github.com/MDeiml/tree-sitter-markdown",
+    files = { "src/parser.c", "src/scanner.cc" },
+    branch = "main",
+  },
+  experimental = true,
+}
 
 list.tlaplus = {
   install_info = {
