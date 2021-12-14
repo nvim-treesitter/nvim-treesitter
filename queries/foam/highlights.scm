@@ -56,6 +56,6 @@
 ] @punctuation
 
 ;; Special identifiers
-([(identifier) "on" "off" "true" "false" "yes" "no"] @attribute
-(#match? @attribute "^(uniform|non-uniform|and|or|on|off|true|false|yes|no)$")
+([(identifier) "on" "off" "true" "false" "yes" "no"] @constant.builtin
+(#match? @constant.builtin "^(uniform|non-uniform|and|or|on|off|true|false|yes|no)$")
 )
