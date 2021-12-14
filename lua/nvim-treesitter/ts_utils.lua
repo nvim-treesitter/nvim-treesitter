@@ -5,28 +5,33 @@ local utils = require "nvim-treesitter.utils"
 
 local M = {}
 
---- Gets the actual text content of a node
--- @param node the node to get the text from
--- @param bufnr the buffer containing the node
--- @return list of lines of text of the node
-function M.get_node_text(node, bufnr)
-  local bufnr = bufnr or api.nvim_get_current_buf()
-  if not node then
-    return {}
-  end
+if vim.fn.has "nvim-0.7" then
+  M.get_node_text = vim.treesitter.query.get_node_text
+else
+  --- Gets the actual text content of a node
+  -- @deprecated Use vim.treesitter.query.get_node_text
+  -- @param node the node to get the text from
+  -- @param bufnr the buffer containing the node
+  -- @return list of lines of text of the node
+  function M.get_node_text(node, bufnr)
+    local bufnr = bufnr or api.nvim_get_current_buf()
+    if not node then
+      return {}
+    end
 
-  -- We have to remember that end_col is end-exclusive
-  local start_row, start_col, end_row, end_col = M.get_node_range(node)
+    -- We have to remember that end_col is end-exclusive
+    local start_row, start_col, end_row, end_col = M.get_node_range(node)
 
-  if start_row ~= end_row then
-    local lines = api.nvim_buf_get_lines(bufnr, start_row, end_row + 1, false)
-    lines[1] = string.sub(lines[1], start_col + 1)
-    lines[#lines] = string.sub(lines[#lines], 1, end_col)
-    return lines
-  else
-    local line = api.nvim_buf_get_lines(bufnr, start_row, start_row + 1, false)[1]
-    -- If line is nil then the line is empty
-    return line and { string.sub(line, start_col + 1, end_col) } or {}
+    if start_row ~= end_row then
+      local lines = api.nvim_buf_get_lines(bufnr, start_row, end_row + 1, false)
+      lines[1] = string.sub(lines[1], start_col + 1)
+      lines[#lines] = string.sub(lines[#lines], 1, end_col)
+      return lines
+    else
+      local line = api.nvim_buf_get_lines(bufnr, start_row, start_row + 1, false)[1]
+      -- If line is nil then the line is empty
+      return line and { string.sub(line, start_col + 1, end_col) } or {}
+    end
   end
 end
 
