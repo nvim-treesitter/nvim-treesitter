@@ -791,6 +791,7 @@ list.http = {
   },
   maintainers = { "@NTBBloodbath" },
 }
+
 list.prisma = {
   install_info = {
     url = "https://github.com/victorhqc/tree-sitter-prisma",
@@ -798,6 +799,15 @@ list.prisma = {
     files = { "src/parser.c" },
   },
   maintainers = { "@elianiva" },
+}
+
+list.make = {
+  install_info = {
+    url = "https://github.com/alemuller/tree-sitter-make",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@lewis6991" },
 }
 
 local M = {
