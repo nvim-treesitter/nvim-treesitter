@@ -86,6 +86,9 @@
 (command_substitution
   [ "$(" ")" ] @punctuation.bracket)
 
+(process_substitution
+  [ "<(" ")" ] @punctuation.bracket)
+
 
 (function_definition
   name: (word) @function)
