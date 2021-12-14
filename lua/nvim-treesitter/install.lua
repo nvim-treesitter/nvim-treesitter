@@ -330,6 +330,17 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
         vim.fn.writefile({ revision or "" }, utils.join_path(utils.get_parser_info_dir(), lang .. ".revision"))
       end,
     },
+    { -- auto-attach modules after installation
+      cmd = function()
+        for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+          if parsers.get_buf_lang(buf) == lang then
+            for _, mod in ipairs(require("nvim-treesitter.configs").available_modules()) do
+              require("nvim-treesitter.configs").reattach_module(mod, buf)
+            end
+          end
+        end
+      end,
+    },
   })
   if not from_local_path then
     vim.list_extend(command_list, { shell.select_install_rm_cmd(cache_folder, project_name) })
