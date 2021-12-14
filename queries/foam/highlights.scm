@@ -37,7 +37,7 @@
 ;; Literal numbers and strings
 (number_literal) @float
 (string_literal) @string
-(escape_sequence) @escape
+(escape_sequence) @string.escape
 
 ;; Treat [m^2 s^-2] the same as if it was put in numbers format
 (dimensions dimension: (identifier) @float)
@@ -52,8 +52,11 @@
   "}"
   "#{"
   "#}"
+] @punctuation.bracket
+
+[
   ";"
-] @punctuation
+] @punctuation.delimiter
 
 ;; Special identifiers
 ([(identifier) "on" "off" "true" "false" "yes" "no"] @constant.builtin
