@@ -146,6 +146,12 @@
   "lua": {
     "revision": "6f5d40190ec8a0aa8c8410699353d820f4f7d7a6"
   },
+  "make": {
+    "revision": "716c294283bc3dda263ccbdf55e38ec30aa0edba"
+  },
+  "markdown": {
+    "revision": "ad8c32917a16dfbb387d1da567bf0c3fb6fffde2"
+  },
   "nix": {
     "revision": "6d6aaa50793b8265b6a8b6628577a0083d3b923d"
   },
