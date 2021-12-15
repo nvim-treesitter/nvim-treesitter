@@ -1,6 +1,6 @@
 {
   "bash": {
-    "revision": "4094e3a0405aabb1314c0c41f29e38e70af86fa5"
+    "revision": "275effdfc0edce774acf7d481f9ea195c6c403cd"
   },
   "beancount": {
     "revision": "78b8ddca3ab774573a4e3bf64eabd79e9452cea9"
@@ -150,7 +150,7 @@
     "revision": "716c294283bc3dda263ccbdf55e38ec30aa0edba"
   },
   "markdown": {
-    "revision": "ad8c32917a16dfbb387d1da567bf0c3fb6fffde2"
+    "revision": "110c1bb51db326a1af30591ca74f3b28e2c1a55e"
   },
   "nix": {
     "revision": "6d6aaa50793b8265b6a8b6628577a0083d3b923d"
