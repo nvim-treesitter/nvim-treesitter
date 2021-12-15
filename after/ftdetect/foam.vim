@@ -9,5 +9,5 @@ function! s:foamFile(path)
     endfor
 endfunction
 
-autocmd FileType BufNewFile,BufRead *Dict,*Properties,fvSchemes,fvSolution,*/constant/g,*/0/* call s:foamFile(expand("%"))
+autocmd BufNewFile,BufRead *Dict,*Properties,fvSchemes,fvSolution,*/constant/g,*/0/* call s:foamFile(expand("%"))
 autocmd FileType cpp call s:foamFile(expand("%"))
