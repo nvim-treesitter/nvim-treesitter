@@ -850,12 +850,12 @@ list.foam = {
   install_info = {
     url = "https://github.com/FoamScience/tree-sitter-foam",
     branch = "master",
-    files = {"src/parser.c", "src/scanner.cc"},
+    files = { "src/parser.c", "src/scanner.cc" },
     generate_requires_npm = true,
   },
   maintainers = { "@FoamScience" },
   filetype = "foam",
-  used_by = {"OpenFOAM"},
+  used_by = { "OpenFOAM" },
   -- Queries might change over time on the grammar's side
   -- Otherwise everything runs fine
   experimental = true,
