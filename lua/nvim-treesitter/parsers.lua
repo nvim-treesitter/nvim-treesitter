@@ -184,6 +184,16 @@ list.gomod = {
   filetype = "gomod",
 }
 
+list.gowork = {
+  install_info = {
+    url = "https://github.com/omertuc/tree-sitter-go-work",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@omertuc" },
+  filetype = "gowork",
+}
+
 list.graphql = {
   install_info = {
     url = "https://github.com/bkegley/tree-sitter-graphql",
