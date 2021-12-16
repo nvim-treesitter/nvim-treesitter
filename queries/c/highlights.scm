@@ -137,6 +137,8 @@
 
 ((identifier) @constant
  (#lua-match? @constant "^[A-Z][A-Z0-9_]+$"))
+(enumerator
+  name: (identifier) @constant)
 
 ;; Preproc def / undef
 (preproc_def
