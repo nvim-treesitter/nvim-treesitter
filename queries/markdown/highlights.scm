@@ -20,6 +20,7 @@
 (link_destination) @text.uri
 
 (link_label) @text.reference
+(link_text) @text.reference
 
 [
   (list_marker_plus)
