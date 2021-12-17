@@ -12,11 +12,23 @@
  arguments: ((template_string) @graphql
    (#offset! @graphql 0 1 0 -1)))
 
+; Ember Octane and earlier test and inline templates
+; render(hbs`<SomeComponent />`)
 (call_expression
  function: ((identifier) @_name
    (#eq? @_name "hbs"))
  arguments: ((template_string) @glimmer
    (#offset! @glimmer 0 1 0 -1)))
+
+; Ember Unified <template> syntax
+; <template><Some Component /></template>
+(expression_statement
+  expression: ((call_expression
+    function: ((identifier) @_name
+      (#eq? @_name "template"))
+    arguments: ((template_string) @glimmer
+      (#offset! @glimmer 0 1 0 -1))))
+)
 
 ; styled.div`<css>`
 (call_expression
