@@ -45,13 +45,13 @@
     "revision": "fa70098cd70393f84785f85cdc6a45299b59cd5b"
   },
   "dockerfile": {
-    "revision": "f0b8e6748238ac0a6ba10e360db5b712039db895"
+    "revision": "7af32bc04a66ab196f5b9f92ac471f29372ae2ce"
   },
   "dot": {
     "revision": "92877bac7033e409ccfb3f07fe28ef1dfd359457"
   },
   "elixir": {
-    "revision": "de3ec57591aebf451e710fc9c984cf601258baf5"
+    "revision": "1b3ecf7765979a5602bbb8988b8fc0d9f4c887d6"
   },
   "elm": {
     "revision": "15d1278332dc2084efa28d3bc30693477dbf3916"
@@ -87,7 +87,7 @@
     "revision": "4ad1b796fb375c8e0fbf5b3cad57050b4372114f"
   },
   "gomod": {
-    "revision": "e91c7a67a0ee362a45397dbfe6b68a125a6f5971"
+    "revision": "3cbcb572109ea0bc476a292208722c326c9e6c3a"
   },
   "graphql": {
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
@@ -147,7 +147,7 @@
     "revision": "6f5d40190ec8a0aa8c8410699353d820f4f7d7a6"
   },
   "make": {
-    "revision": "716c294283bc3dda263ccbdf55e38ec30aa0edba"
+    "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
     "revision": "110c1bb51db326a1af30591ca74f3b28e2c1a55e"
@@ -213,7 +213,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "supercollider": {
-    "revision": "d5e9ab2dc42285f15fc9699edbbea32e38c45c91"
+    "revision": "df3b6210bad8f352515cd0c92aadb1e63802283b"
   },
   "surface": {
     "revision": "21b7676859c1187645a27ff301f76738af5dfd44"
