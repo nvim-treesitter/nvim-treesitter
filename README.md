@@ -196,7 +196,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [llvm](https://github.com/benwilliamgraham/tree-sitter-llvm) (maintained by @benwilliamgraham)
 - [x] [lua](https://github.com/nvim-treesitter/tree-sitter-lua) (maintained by @vigoux)
 - [x] [make](https://github.com/alemuller/tree-sitter-make) (maintained by @lewis6991)
-- [ ] [markdown](https://github.com/MDeiml/tree-sitter-markdown)
+- [x] [markdown](https://github.com/MDeiml/tree-sitter-markdown)
 - [x] [nix](https://github.com/cstrahan/tree-sitter-nix) (maintained by @leo60228)
 - [x] [ocaml](https://github.com/tree-sitter/tree-sitter-ocaml) (maintained by @undu)
 - [x] [ocaml_interface](https://github.com/tree-sitter/tree-sitter-ocaml) (maintained by @undu)
