@@ -82,6 +82,8 @@
           "iter" "len" "list" "locals" "map" "max" "memoryview" "min" "next" "object" "oct" "open" "ord" "pow"
           "print" "property" "range" "repr" "reversed" "round" "set" "setattr" "slice" "sorted" "staticmethod" "str"
           "sum" "super" "tuple" "type" "vars" "zip" "__import__"))
+((decorator (identifier) @function.builtin)
+ (#any-of? @function.builtin "classmethod" "staticmethod"))
 
 ;; Function definitions
 
