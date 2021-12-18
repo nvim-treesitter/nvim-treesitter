@@ -46,14 +46,28 @@
               "UserWarning" "DeprecationWarning" "PendingDeprecationWarning" "SyntaxWarning" "RuntimeWarning"
               "FutureWarning" "ImportWarning" "UnicodeWarning" "BytesWarning" "ResourceWarning"))
 
-; Function calls
+;; Decorators
 
-(decorator) @function
-((decorator (attribute (identifier) @function))
- (#match? @function "^([A-Z])@!.*$"))
-(decorator) @function
-((decorator (identifier) @function)
- (#match? @function "^([A-Z])@!.*$"))
+; Ex: @cache
+(decorator
+  (identifier) @annotation)
+
+; Ex: @functools.cache
+((decorator
+   (attribute) @annotation)
+ (#set! "priority" 105))
+
+; Ex: @lru_cache(maxsize=128)
+((decorator
+  (call function: (identifier) @annotation))
+ (#set! "priority" 105))
+
+; Ex: @functools.lru_cache(maxsize=128)
+((decorator
+   (call function: (attribute) @annotation))
+ (#set! "priority" 105))
+
+;; Function calls
 
 (call
   function: (identifier) @function)
