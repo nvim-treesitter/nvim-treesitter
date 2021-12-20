@@ -3,3 +3,4 @@
   (code_fence_content) @content)
 
 ((html_block) @html)
+((html_tag) @html)

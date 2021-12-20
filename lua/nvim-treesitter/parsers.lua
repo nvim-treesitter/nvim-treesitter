@@ -73,6 +73,7 @@ list.cpp = {
     files = { "src/parser.c", "src/scanner.cc" },
     generate_requires_npm = true,
   },
+  used_by = { "arduino" },
   maintainers = { "@theHamsta" },
 }
 
@@ -181,6 +182,16 @@ list.gomod = {
   },
   maintainers = { "@camdencheek" },
   filetype = "gomod",
+}
+
+list.gowork = {
+  install_info = {
+    url = "https://github.com/omertuc/tree-sitter-go-work",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@omertuc" },
+  filetype = "gowork",
 }
 
 list.graphql = {
@@ -432,13 +443,14 @@ list.hcl = {
   used_by = { "terraform" },
 }
 
--- FIXME(vigoux): markdown is broken for now
--- list.markdown = {
---   install_info = {
---     url = "https://github.com/ikatyang/tree-sitter-markdown",
---     files = { "src/parser.c", "src/scanner.cc" },
---   }
--- }
+list.markdown = {
+  install_info = {
+    url = "https://github.com/MDeiml/tree-sitter-markdown",
+    files = { "src/parser.c", "src/scanner.cc" },
+    branch = "main",
+  },
+  experimental = true,
+}
 
 list.tlaplus = {
   install_info = {
@@ -790,6 +802,7 @@ list.http = {
   },
   maintainers = { "@NTBBloodbath" },
 }
+
 list.prisma = {
   install_info = {
     url = "https://github.com/victorhqc/tree-sitter-prisma",
@@ -797,6 +810,15 @@ list.prisma = {
     files = { "src/parser.c" },
   },
   maintainers = { "@elianiva" },
+}
+
+list.make = {
+  install_info = {
+    url = "https://github.com/alemuller/tree-sitter-make",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@lewis6991" },
 }
 
 local M = {

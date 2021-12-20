@@ -133,7 +133,7 @@
 (none) @constant.builtin
 [(true) (false)] @boolean
 ((identifier) @variable.builtin
- (#lua-match? @variable.builtin "^self$"))
+ (#eq? @variable.builtin "self"))
 
 (integer) @number
 (float) @float
@@ -275,12 +275,15 @@
       name: (identifier) @constructor)))
  (#any-of? @constructor "__new__" "__init__"))
 
-; First parameter of a method is self or cls.
+; First parameter of a classmethod is cls.
 ((class_definition
   body: (block
-          (function_definition
-            parameters: (parameters . (identifier) @variable.builtin))))
- (#any-of? @variable.builtin "self" "obj" "class"))
+          (decorated_definition
+            (decorator (identifier) @_decorator)
+            definition: (function_definition
+              parameters: (parameters . (identifier) @variable.builtin)))))
+ (#eq? @variable.builtin "cls")
+ (#eq? @_decorator "classmethod"))
 
 ;; Error
 (ERROR) @error

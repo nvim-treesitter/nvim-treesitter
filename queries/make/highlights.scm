@@ -1,0 +1,105 @@
+(comment) @comment
+
+(conditional
+ (_ [
+  "ifeq"
+  "else"
+  "ifneq"
+  "ifdef"
+  "ifndef"
+ ] @conditional)
+ "endif" @conditional)
+
+(rule (targets
+       (word) @function.builtin
+       (#any-of? @function.builtin
+        ".PHONY"
+        ".SUFFIXES")))
+
+(rule ["&:" ":" "::"] @operator)
+
+(export_directive "export" @keyword)
+(override_directive "override" @keyword)
+(include_directive ["include" "-include"] @include)
+
+(variable_assignment
+ (word) @symbol)
+(variable_assignment [
+ "?="
+ ":="
+ "+="
+ "="
+ ] @operator)
+
+
+(variable_assignment
+ (word) @variable.builtin
+ (#any-of? @variable.builtin
+  ".DEFAULT_GOAL"
+  ".EXTRA_PREREQS"
+  ".FEATURES"
+  ".INCLUDE_DIRS"
+  ".RECIPEPREFIX"
+  ".SHELLFLAGS"
+  ".VARIABLES"
+  "MAKEARGS"
+  "MAKEFILE_LIST"
+  "MAKEFLAGS"
+  "MAKE_RESTARTS"
+  "MAKE_TERMERR"
+  "MAKE_TERMOUT"
+  "SHELL"
+ )
+ )
+
+
+
+; Use string to match bash
+(variable_reference (word) @string ) @operator
+
+
+(shell_function
+ ["$" "(" ")"] @operator
+ "shell" @function.builtin
+ )
+
+(function_call ["$" "(" ")"] @operator)
+
+(function_call [
+ "subst"
+ "patsubst"
+ "strip"
+ "findstring"
+ "filter"
+ "filter-out"
+ "sort"
+ "word"
+ "words"
+ "wordlist"
+ "firstword"
+ "lastword"
+ "dir"
+ "notdir"
+ "suffix"
+ "basename"
+ "addsuffix"
+ "addprefix"
+ "join"
+ "wildcard"
+ "realpath"
+ "abspath"
+ "error"
+ "warning"
+ "info"
+ "origin"
+ "flavor"
+ "foreach"
+ "if"
+ "or"
+ "and"
+ "call"
+ "eval"
+ "file"
+ "value"
+ ] @function.builtin
+)

@@ -48,12 +48,13 @@ Each of these `scheme` files contains a *tree-sitter query* for a given purpose.
 Before going any further, we highly suggest that you [read more about tree-sitter queries](https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries).
 
 Each query has an appropriate name, which is then used by modules to extract data from the syntax tree.
-For now two types of queries are used by `nvim-treesitter`:
+For now these are the types of queries used by `nvim-treesitter`:
 
 - `highlights.scm`: used for syntax highlighting, using the `highlight` module.
 - `locals.scm`: used to extract keyword definitions, scopes, references, etc, using the `locals` module.
 - `textobjects.scm`: used to define text objects.
 - `folds.scm`: used to define folds.
+- `injections.scm`: used to define injections.
 
 For these types there is a *norm* you will have to follow so that features work fine.
 Here are some global advices :
