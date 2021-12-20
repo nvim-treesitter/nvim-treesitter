@@ -37,6 +37,7 @@
   (list_marker_star)
   (list_marker_dot)
   (list_marker_parenthesis)
+  (thematic_break)
 ] @punctuation.special
 
 [
