@@ -69,7 +69,7 @@
     "revision": "f0f2f100952a353e64e26b0fa710b4c296d7af13"
   },
   "fusion": {
-    "revision": "14cc1e5535a7b6469c49c21b4c877d31befa2a29"
+    "revision": "c459f580700b54a39b871228acfa0c5b1ab9ac3e"
   },
   "gdscript": {
     "revision": "eed1595d830407b49775aa33b871a9400e5a44e6"
@@ -157,6 +157,9 @@
   },
   "nix": {
     "revision": "6d6aaa50793b8265b6a8b6628577a0083d3b923d"
+  },
+  "norg": {
+    "revision": "665736e400cfd52ae92ead244ca9f5d44db98151"
   },
   "ocaml": {
     "revision": "23d419ba45789c5a47d31448061557716b02750a"
@@ -246,7 +249,7 @@
     "revision": "111b07762e86efab9a918b7c721f720c37e76b0a"
   },
   "verilog": {
-    "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
+    "revision": "6fae7414fa854b5052bee9111b200e9137797f3d"
   },
   "vim": {
     "revision": "1d23679256edb241ebed8da1247e340bf9e0c0ad"

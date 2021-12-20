@@ -23,6 +23,14 @@ propertyPath = ${property.path}
 //               ^variable
 //                        ^variable
 
+thisorProps = ${this.path}
+//              ^variable.builtin
+//                   ^variable
+
+thisorProps = ${props.path}
+//              ^variable.builtin
+//                    ^variable
+
 array = ${[]}
 //        ^punctuation.bracket
 
