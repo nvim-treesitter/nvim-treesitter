@@ -32,6 +32,7 @@ local builtin_modules = {
   incremental_selection = {
     module_path = "nvim-treesitter.incremental_selection",
     enable = false,
+    auto_expand = false,
     keymaps = {
       init_selection = "gnn",
       node_incremental = "grn",

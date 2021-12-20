@@ -11,10 +11,11 @@ local M = {}
 local selections = {}
 
 function M.init_selection()
+  local config = configs.get_module "incremental_selection"
   local buf = api.nvim_get_current_buf()
   local node = ts_utils.get_node_at_cursor()
   selections[buf] = { [1] = node }
-  ts_utils.update_selection(buf, node)
+  ts_utils.update_selection(buf, node, "charwise", config.auto_expand)
 end
 
 --- Get the range of the current visual selection.
@@ -49,6 +50,7 @@ end
 
 local function select_incremental(get_parent)
   return function()
+    local config = configs.get_module "incremental_selection"
     local buf = api.nvim_get_current_buf()
     local nodes = selections[buf]
 
@@ -57,7 +59,7 @@ local function select_incremental(get_parent)
     if not nodes or #nodes == 0 or not range_matches(nodes[#nodes]) then
       local root = parsers.get_parser():parse()[1]:root()
       local node = root:named_descendant_for_range(csrow - 1, cscol - 1, cerow - 1, cecol)
-      ts_utils.update_selection(buf, node)
+      ts_utils.update_selection(buf, node, "charwise", config.auto_expand)
       if nodes and #nodes > 0 then
         table.insert(selections[buf], node)
       else
@@ -76,7 +78,7 @@ local function select_incremental(get_parent)
         local root = parsers.get_parser():parse()[1]:root()
         parent = root:named_descendant_for_range(csrow - 1, cscol - 1, cerow - 1, cecol)
         if not parent or root == node or parent == node then
-          ts_utils.update_selection(buf, node)
+          ts_utils.update_selection(buf, node, "charwise", config.auto_expand)
           return
         end
       end
@@ -88,7 +90,7 @@ local function select_incremental(get_parent)
         if node ~= nodes[#nodes] then
           table.insert(nodes, node)
         end
-        ts_utils.update_selection(buf, node)
+        ts_utils.update_selection(buf, node, "charwise", config.auto_expand)
         return
       end
     end
@@ -109,6 +111,7 @@ M.scope_incremental = select_incremental(function(node)
 end)
 
 function M.node_decremental()
+  local config = configs.get_module "incremental_selection"
   local buf = api.nvim_get_current_buf()
   local nodes = selections[buf]
   if not nodes or #nodes < 2 then
@@ -117,7 +120,7 @@ function M.node_decremental()
 
   table.remove(selections[buf])
   local node = nodes[#nodes]
-  ts_utils.update_selection(buf, node)
+  ts_utils.update_selection(buf, node, "charwise", config.auto_expand)
 end
 
 function M.attach(bufnr)

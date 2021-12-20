@@ -175,6 +175,9 @@ Query files: `locals.scm`.
 Supported options:
 - enable: `true` or `false`.
 - disable: list of languages.
+- auto_expand: Automatically decide if the selection should start from
+  the start of the line instead of the start of the node.
+  Defaults to `false`.
 - keymaps:
   - init_selection: in normal mode, start incremental selection.
     Defaults to `gnn`.

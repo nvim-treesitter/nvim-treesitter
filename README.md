@@ -293,6 +293,9 @@ lua <<EOF
 require'nvim-treesitter.configs'.setup {
   incremental_selection = {
     enable = true,
+    -- Automatically decide if the selection should start from
+    -- the start of the line instead of the start of the node.
+    auto_expand = false,
     keymaps = {
       init_selection = "gnn",
       node_incremental = "grn",

@@ -215,19 +215,41 @@ end
 
 -- Set visual selection to node
 -- @param selection_mode One of "charwise" (default) or "v", "linewise" or "V",
---   "blockwise" or "<C-v>" (as a string with 5 characters or a single character)
-function M.update_selection(buf, node, selection_mode)
+--   "blockwise" or "<C-v>" (as a string with 5 characters or a single character).
+-- @auto_expand automatically decide if the selection should start from the start
+--   of the line instead of the start of the node.
+function M.update_selection(buf, node, selection_mode, auto_expand)
   selection_mode = selection_mode or "charwise"
+  local v_table = { charwise = "v", linewise = "V", blockwise = "<C-v>" }
+  -- Call to `nvim_replace_termcodes()` is needed for sending appropriate
+  -- command to enter blockwise mode.
+  selection_mode = vim.api.nvim_replace_termcodes(v_table[selection_mode] or selection_mode, true, true, true)
+
   local start_row, start_col, end_row, end_col = M.get_vim_range({ M.get_node_range(node) }, buf)
 
-  vim.fn.setpos(".", { buf, start_row, start_col, 0 })
+  -- Expand only if the there isn't any non-whitespace characters before the start of the node
+  -- and after the end of the node.
+  -- We don't expand if the type of the selection is vertical or linewise selection.
+  local skip = {
+    "V",
+    vim.api.nvim_replace_termcodes("<C-v>", true, true, true),
+  }
+  auto_expand = auto_expand and start_col ~= 0 and not vim.tbl_contains(skip, selection_mode)
+  if auto_expand then
+    local start_line = api.nvim_buf_get_lines(buf, start_row - 1, start_row, false)[1]
+    local end_line = api.nvim_buf_get_lines(buf, end_row - 1, end_row, false)[1]
+    if start_line and end_line then
+      local before_start = string.sub(start_line, 1, start_col - 1)
+      local after_end = string.sub(end_line, end_col + 1)
+      if string.gsub(before_start, "%s", "") == "" and string.gsub(after_end, "%s", "") == "" then
+        start_col = 0
+      end
+    end
+  end
 
-  -- Start visual selection in appropriate mode
-  local v_table = { charwise = "v", linewise = "V", blockwise = "<C-v>" }
-  ---- Call to `nvim_replace_termcodes()` is needed for sending appropriate
-  ---- command to enter blockwise mode
-  local mode_string = vim.api.nvim_replace_termcodes(v_table[selection_mode] or selection_mode, true, true, true)
-  vim.cmd("normal! " .. mode_string)
+  vim.fn.setpos(".", { buf, start_row, start_col, 0 })
+  -- Start selection in appropriate mode.
+  vim.cmd("normal! " .. selection_mode)
   vim.fn.setpos(".", { buf, end_row, end_col, 0 })
 end
 
