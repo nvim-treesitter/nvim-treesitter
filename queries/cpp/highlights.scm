@@ -38,6 +38,8 @@
                         (#lua-match? @type "^[A-Z]"))
 ((namespace_identifier) @constant
                         (#lua-match? @constant "^[A-Z][A-Z_0-9]*$"))
+(case_statement
+  value: (qualified_identifier (identifier) @constant))
 (namespace_definition
   name: (identifier) @namespace)
 
