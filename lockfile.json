@@ -158,9 +158,6 @@
   "nix": {
     "revision": "6d6aaa50793b8265b6a8b6628577a0083d3b923d"
   },
-  "norg": {
-    "revision": "665736e400cfd52ae92ead244ca9f5d44db98151"
-  },
   "ocaml": {
     "revision": "23d419ba45789c5a47d31448061557716b02750a"
   },
@@ -249,7 +246,7 @@
     "revision": "111b07762e86efab9a918b7c721f720c37e76b0a"
   },
   "verilog": {
-    "revision": "6fae7414fa854b5052bee9111b200e9137797f3d"
+    "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
   },
   "vim": {
     "revision": "1d23679256edb241ebed8da1247e340bf9e0c0ad"
