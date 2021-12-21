@@ -12,28 +12,6 @@
 (afx_attribute
   (afx_property_identifier) @attribute)
 
-(afx_opening_element
-  [
-   "<"
-   ">"
-   "/"
-   ] @punctation.bracket
- )
- (afx_closing_element
-  [
-   "<"
-   ">"
-   "/"
-   ] @punctation.bracket
- )
-(afx_element_self_closing
-  [
-   "<"
-   ">"
-   "/"
-   ] @punctation.bracket
- )
-
 ; identifiers eel
 
 (eel_object_path
@@ -76,6 +54,25 @@
 
 ; tokens
 ; ------
+(afx_opening_element
+  [
+   "<"
+   ">"
+   ] @punctuation.bracket)
+
+ (afx_closing_element
+  [
+   "<"
+   ">"
+   "/"
+   ] @punctuation.bracket)
+
+(afx_element_self_closing
+  [
+   "<"
+   ">"
+   "/"
+   ] @punctuation.bracket)
 
 [
   (package_name)
@@ -104,10 +101,6 @@
 (boolean) @boolean
 (null) @constant.builtin
 
-
-; punctuation
-; ----------
-
 [
  "("
  ")"
@@ -122,4 +115,3 @@
  "."
  "?"
 ] @punctuation.delimiter
-

@@ -6,7 +6,7 @@ property = afx`
 <!-- ^@tag -->
 <!--   ^@attribute -->
 <!--              ^@string -->
-<!--                          ^@punctation.bracket -->
+<!--                         ^@punctuation.bracket -->
 <!--                           ^@tag -->
 
   <Namespace:Type {...spread} some={(a) => true} />
