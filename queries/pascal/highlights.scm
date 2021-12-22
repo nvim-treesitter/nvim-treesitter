@@ -154,6 +154,7 @@
 	(procAttribute)
 
 ] @attribute
+
 (procAttribute (kPublic) @attribute)
 
 ; -- Punctuation & operators
@@ -216,7 +217,7 @@
 [
 	(kTrue)
 	(kFalse)
-] @boolean;
+] @boolean
 
 [
 	(kNil)
@@ -229,7 +230,6 @@
 
 ; -- Comments
 (comment)         @comment
-; -- (pp)              @keyword
 (pp)              @function.macro
 
 ; -- Type declaration
@@ -256,11 +256,11 @@
 
 ; -- Function parameters
 
-(declArg name: (identifier) @variable.parameter)
+(declArg name: (identifier) @parameter)
 
 ; -- Template parameters
 
-(genericArg	name: (identifier) @type.parameter)
+(genericArg	name: (identifier) @parameter)
 (genericArg	type: (typeref) @type)
 
 (declProc name: (genericDot lhs: (identifier) @type))
@@ -273,7 +273,7 @@
 (genericTpl entity: (genericDot (identifier) @type))
 
 ; -- Exception parameters
-(exceptionHandler variable: (identifier) @variable.parameter)
+(exceptionHandler variable: (identifier) @parameter)
 
 ; -- Type usage
 
@@ -284,7 +284,7 @@
 [
 	(caseLabel)
 	(label)
-] @constant;
+] @constant
 
 (procAttribute (identifier) @constant)
 (procExternal (identifier) @constant)
@@ -294,7 +294,6 @@
 ; declared in other units, so the results will be inconsistent)
 
 (declVar name: (identifier) @variable)
-;(declField name: (identifier) @variable)
 (declConst name: (identifier) @constant)
 (declEnumValue name: (identifier) @constant)
 
@@ -343,13 +342,13 @@
 ; (Not ideal: ideally, there would be a way to check if these special
 ; identifiers are shadowed by a local variable)
 (statement ((identifier) @keyword.return
- (#match? @keyword.return "^[eE][xX][iI][tT]$")))
+ (#lua-match? @keyword.return "^[eE][xX][iI][tT]$")))
 (statement (exprCall entity: ((identifier) @keyword.return
- (#match? @keyword.return "^[eE][xX][iI][tT]$"))))
+ (#lua-match? @keyword.return "^[eE][xX][iI][tT]$"))))
 (statement ((identifier) @repeat
- (#match? @repeat "^[bB][rR][eE][aA][kK]$")))
+ (#lua-match? @repeat "^[bB][rR][eE][aA][kK]$")))
 (statement ((identifier) @repeat
- (#match? @repeat "^[cC][oO][nN][tT][iI][nN][uU][eE]$")))
+ (#lua-match? @repeat "^[cC][oO][nN][tT][iI][nN][uU][eE]$")))
 
 ; -- Identifier type inferrence
 

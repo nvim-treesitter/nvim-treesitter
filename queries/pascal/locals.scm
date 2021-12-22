@@ -1,25 +1,25 @@
 
-(root)                                   @local.scope
+(root)                                   @scope
 
-(defProc)                                @local.scope
-(lambda)                                 @local.scope
-(interface   (declProc)                  @local.scope)
-(declSection (declProc)                  @local.scope)
-(declClass   (declProc)                  @local.scope)
-(declHelper  (declProc)                  @local.scope)
-(declProcRef)                            @local.scope
+(defProc)                                @scope
+(lambda)                                 @scope
+(interface   (declProc)                  @scope)
+(declSection (declProc)                  @scope)
+(declClass   (declProc)                  @scope)
+(declHelper  (declProc)                  @scope)
+(declProcRef)                            @scope
 
-(exceptionHandler)                       @local.scope
-(exceptionHandler variable: (identifier) @local.definition)
+(exceptionHandler)                       @scope
+(exceptionHandler variable: (identifier) @definition)
 
-(declArg          name: (identifier)     @local.definition)
-(declVar          name: (identifier)     @local.definition)
-(declConst        name: (identifier)     @local.definition)
-(declLabel        name: (identifier)     @local.definition)
-(genericArg       name: (identifier)     @local.definition)
-(declEnumValue    name: (identifier)     @local.definition)
-(declType         name: (identifier)     @local.definition)
-(declType         name: (genericTpl entity: (identifier)     @local.definition))
+(declArg          name: (identifier)     @definition)
+(declVar          name: (identifier)     @definition)
+(declConst        name: (identifier)     @definition)
+(declLabel        name: (identifier)     @definition)
+(genericArg       name: (identifier)     @definition)
+(declEnumValue    name: (identifier)     @definition)
+(declType         name: (identifier)     @definition)
+(declType         name: (genericTpl entity: (identifier)     @definition))
 
-(declProc         name: (identifier)     @local.definition)
-(identifier)                             @local.reference
+(declProc         name: (identifier)     @definition)
+(identifier)                             @reference
