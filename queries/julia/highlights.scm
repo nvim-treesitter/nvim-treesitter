@@ -3,7 +3,7 @@
 ;((identifier) @type ; exception: mark `A_foo` sort of identifiers as variables
   ;(match? @type "^[A-Z][^_]"))
 ((identifier) @constant
-  (match? @constant "^[A-Z][A-Z_]{2}[A-Z_]*$"))
+  (#match? @constant "^[A-Z][A-Z_]{2}[A-Z_]*$"))
 
 [
   (triple_string)
@@ -89,11 +89,11 @@
 (number) @number
 (range_expression
     (identifier) @number
-      (eq? @number "end"))
+      (#eq? @number "end"))
 (range_expression
   (_
     (identifier) @number
-      (eq? @number "end")))
+      (#eq? @number "end")))
 (coefficient_expression
   (number)
   (identifier) @constant.builtin)
@@ -173,9 +173,9 @@
 
 ((identifier) @include (#eq? @include "baremodule"))
 
-(((identifier) @constant.builtin) (match? @constant.builtin "^(nothing|Inf|NaN)$"))
-(((identifier) @boolean) (eq? @boolean "true"))
-(((identifier) @boolean) (eq? @boolean "false"))
+(((identifier) @constant.builtin) (#match? @constant.builtin "^(nothing|Inf|NaN)$"))
+(((identifier) @boolean) (#eq? @boolean "true"))
+(((identifier) @boolean) (#eq? @boolean "false"))
 
 ["::" ":" "." "," "..." "!"] @punctuation.delimiter
 ["[" "]" "(" ")" "{" "}"] @punctuation.bracket

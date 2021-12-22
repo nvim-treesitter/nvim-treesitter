@@ -21,8 +21,7 @@
 ; SOFTWARE.
 
 ;;; DECLARATIONS AND SCOPES
-((method) @scope
- (set! scope-inherits false))
+(method) @scope
 (class) @scope
 
 [
@@ -49,7 +48,7 @@
 (block_parameter name: (identifier) @definition.var)
 (keyword_parameter name: (identifier) @definition.var)
 
-(assignment left: (_lhs) @definition.var)
+(assignment left: (_) @definition.var)
 
 (left_assignment_list (identifier) @definition.var)
 (rest_assignment (identifier) @definition.var)

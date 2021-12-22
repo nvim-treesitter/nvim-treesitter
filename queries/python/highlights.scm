@@ -75,7 +75,7 @@
 
 ((call
   function: (identifier) @function.builtin)
- (any-of? @function.builtin
+ (#any-of? @function.builtin
           "abs" "all" "any" "ascii" "bin" "bool" "breakpoint" "bytearray" "bytes" "callable" "chr" "classmethod"
           "compile" "complex" "delattr" "dict" "dir" "divmod" "enumerate" "eval" "exec" "filter" "float" "format"
           "frozenset" "getattr" "globals" "hasattr" "hash" "help" "hex" "id" "input" "int" "isinstance" "issubclass"

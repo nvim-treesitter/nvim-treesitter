@@ -66,7 +66,7 @@
 
 ((scoped_identifier
   (identifier) @definition.import)
- (has-ancestor? @definition.import import_declaration))
+ (#has-ancestor? @definition.import import_declaration))
 
 (field_declaration
   declarator: (variable_declarator
@@ -74,5 +74,4 @@
 
 ; REFERENCES
 (identifier) @reference
-((type_identifier) @reference
- (set! reference.kind "type"))
+(type_identifier) @reference
