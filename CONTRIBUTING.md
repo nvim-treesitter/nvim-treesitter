@@ -229,7 +229,7 @@ doSomething(); // Should point to the declaration as the definition
 ```scheme
 (function_declaration
   ((identifier) @definition.var)
-   (set! "definition.var.scope" "parent"))
+   (#set! "definition.var.scope" "parent"))
 ```
 
 Possible scope values are:
