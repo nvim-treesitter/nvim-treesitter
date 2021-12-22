@@ -4,7 +4,7 @@ property = afx`
 
   <div attribute="value">text</div>
 <!-- ^@tag -->
-<!--   ^@attribute -->
+<!--   ^@tag.attribute -->
 <!--              ^@string -->
 <!--                         ^@punctuation.bracket -->
 <!--                           ^@tag -->

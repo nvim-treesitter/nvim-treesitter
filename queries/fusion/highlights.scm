@@ -10,7 +10,7 @@
   (afx_identifier) @tag)
 
 (afx_attribute
-  (afx_property_identifier) @attribute)
+  (afx_property_identifier) @tag.attribute)
 
 ; identifiers eel
 
@@ -70,31 +70,25 @@
 (afx_element_self_closing
   [
    "<"
-   ">"
-   "/"
-   ] @punctuation.bracket)
+   "/>"
+  ] @punctuation.bracket)
 
 [
   (package_name)
   (alias_namespace)
 ] @namespace
 
-[
-  "="
-  "<"
-  "&&"
-  "and"
-  "||"
-  "or"
-  "*"
-  "/"
-  "%"
-  "+"
-  "-"
-  "!"
-  "not"
-  (deletion)
-] @operator
+(namespace_declaration "=" @operator)
+(assignment "=" @operator)
+(copy "<" @operator)
+(deletion) @operator
+(eel_binary_expression
+  operator: _ @operator)
+(eel_not_expression
+  [
+   "!"
+   "not"
+  ] @operator)
 
 (string) @string
 (number) @number
