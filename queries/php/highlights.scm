@@ -97,6 +97,7 @@
  "declare"
  "default"
  "echo"
+ "unset"
  "enddeclare"
  "extends"
  "final"
