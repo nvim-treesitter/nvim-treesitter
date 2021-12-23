@@ -5,6 +5,7 @@
 (predicate name: (identifier) @function)
 (named_node name: (identifier) @variable)
 (field_definition name: (identifier) @property)
+(negated_field "!" @operator (identifier) @property)
 (comment) @comment
 
 (quantifier) @operator
@@ -20,7 +21,7 @@
 ] @punctuation.bracket
 
 ":" @punctuation.delimiter
-"@" @punctuation.special
+["@" "#"] @punctuation.special
 "_" @constant
 
 ((parameters (identifier) @number)
