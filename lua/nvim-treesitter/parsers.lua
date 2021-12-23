@@ -202,6 +202,16 @@ list.graphql = {
   maintainers = { "@bkegley" },
 }
 
+list.re2c = {
+  install_info = {
+    url = "https://github.com/alemuller/tree-sitter-re2c",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  maintainers = { "@alemuller" },
+}
+
+
 list.ruby = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ruby",
