@@ -12,6 +12,8 @@
 (afx_attribute
   (afx_property_identifier) @tag.attribute)
 
+(afx_text) @text
+
 ; identifiers eel
 
 (eel_object_path
