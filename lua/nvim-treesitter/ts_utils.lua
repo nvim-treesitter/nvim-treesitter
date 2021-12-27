@@ -374,19 +374,15 @@ function M.goto_node(node, goto_end, avoid_set_jump)
   if not avoid_set_jump then
     utils.set_jump()
   end
-  local range = { node:range() }
+  local range = { M.get_vim_range { node:range() } }
   local position
   if not goto_end then
     position = { range[1], range[2] }
   else
-    -- ranges are exclusive: -1 character!
-    if range[4] == 0 then
-      position = { range[3] - 1, -1 }
-    else
-      position = { range[3], range[4] - 1 }
-    end
+    position = { range[3], range[4] }
   end
-  api.nvim_win_set_cursor(0, { position[1] + 1, position[2] })
+  -- Position is 1, 0 indexed.
+  api.nvim_win_set_cursor(0, { position[1], position[2] - 1 })
 end
 
 return M

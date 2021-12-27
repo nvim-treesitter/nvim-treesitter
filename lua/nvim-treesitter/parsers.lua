@@ -135,7 +135,7 @@ list.rust = {
 list.fusion = {
   install_info = {
     url = "https://gitlab.com/jirgn/tree-sitter-fusion.git",
-    files = { "src/parser.c" },
+    files = { "src/parser.c", "src/scanner.c" },
     branch = "main",
   },
   maintainers = { "@jirgn" },
@@ -182,6 +182,16 @@ list.gomod = {
   },
   maintainers = { "@camdencheek" },
   filetype = "gomod",
+}
+
+list.gowork = {
+  install_info = {
+    url = "https://github.com/omertuc/tree-sitter-go-work",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@omertuc" },
+  filetype = "gowork",
 }
 
 list.graphql = {
@@ -582,6 +592,14 @@ list.verilog = {
   maintainers = { "@zegervdv" },
   -- The parser still uses API version 12, because it does not compile with 13
   experimental = true,
+}
+
+list.pascal = {
+  install_info = {
+    url = "https://github.com/Isopod/tree-sitter-pascal.git",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@isopod" },
 }
 
 -- Parsers for injections
