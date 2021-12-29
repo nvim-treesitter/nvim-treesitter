@@ -228,6 +228,11 @@
 (literalNumber)   @number
 (literalString)   @string
 
+; -- Identifiers
+
+; Unless a more specific rule applies, treat identifiers as variables
+(identifier) @variable
+
 ; -- Comments
 (comment)         @comment
 (pp)              @function.macro
@@ -277,7 +282,7 @@
 
 ; -- Type usage
 
-(typeref) @type
+(typeref (_) @type)
 
 ; -- Constant usage
 
