@@ -139,7 +139,6 @@ list.fusion = {
     branch = "main",
   },
   maintainers = { "@jirgn" },
-  experimental = true,
 }
 
 list.ledger = {
