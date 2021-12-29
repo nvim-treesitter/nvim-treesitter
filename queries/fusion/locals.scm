@@ -18,4 +18,4 @@
 
 (eel_parameter) @definition.parameter
 (eel_object_pair
-  key: (eel_propery_name) @definition.field)
+  key: (eel_property_name) @definition.field)
