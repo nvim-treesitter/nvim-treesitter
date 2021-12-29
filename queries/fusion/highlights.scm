@@ -97,6 +97,10 @@
 (boolean) @boolean
 (null) @constant.builtin
 
+(value_expression
+  start: _ @punctuation.special
+  end: _ @punctuation.special
+)
 [
  "("
  ")"
