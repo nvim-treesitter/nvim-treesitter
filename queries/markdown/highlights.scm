@@ -13,14 +13,14 @@
   (setext_h2_underline)
 ] @punctuation.special
 
-(code_fence_content) @none
+
+(code_span) @text.literal
 
 [
   (indented_code_block)
-  (fenced_code_block)
-  (code_span)
-] @text.literal
-
+  (fenced_code_block) 
+] @punctuation.delimiter
+(code_fence_content) @none
 
 (emphasis) @text.emphasis
 
@@ -44,3 +44,11 @@
   (backslash_escape)
   (hard_line_break)
 ] @string.escape
+
+
+(inline_link "[" @punctuation.delimiter)
+(inline_link "]" @punctuation.delimiter)
+(inline_link "(" @punctuation.delimiter)
+(inline_link ")" @punctuation.delimiter)
+(shortcut_link "[" @punctuation.delimiter)
+(shortcut_link "]" @punctuation.delimiter)

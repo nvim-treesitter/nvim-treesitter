@@ -4,3 +4,5 @@
 
 ((html_block) @html)
 ((html_tag) @html)
+
+((thematic_break) (_) @yaml @combined (thematic_break))
