@@ -604,6 +604,14 @@ list.verilog = {
   experimental = true,
 }
 
+list.pascal = {
+  install_info = {
+    url = "https://github.com/Isopod/tree-sitter-pascal.git",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@isopod" },
+}
+
 -- Parsers for injections
 list.regex = {
   install_info = {

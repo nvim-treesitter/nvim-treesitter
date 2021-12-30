@@ -54,7 +54,7 @@
     "revision": "1b3ecf7765979a5602bbb8988b8fc0d9f4c887d6"
   },
   "elm": {
-    "revision": "15d1278332dc2084efa28d3bc30693477dbf3916"
+    "revision": "cf526b48021d2bcffa0075979d0699acda33bad2"
   },
   "erlang": {
     "revision": "9d5fd0c329280a156bf7614a49dc5e8c58cc037c"
@@ -69,13 +69,13 @@
     "revision": "f0f2f100952a353e64e26b0fa710b4c296d7af13"
   },
   "fusion": {
-    "revision": "016ce4a7695ebad5eeebfbe07525a2ec0639d78d"
+    "revision": "3edfcc45012e37ab370f68009787f9cd18abf7a0"
   },
   "gdscript": {
-    "revision": "eed1595d830407b49775aa33b871a9400e5a44e6"
+    "revision": "2a6abdaa47fcb91397e09a97c7433fd995ea46c6"
   },
   "glimmer": {
-    "revision": "429c946407d39e3a0fe4dd60916ba34109a7df91"
+    "revision": "7b29275a42992edb12b74edd32ed69e5329b3077"
   },
   "glsl": {
     "revision": "26ba31a3f5a85ebed5d71e49eef11a003bed782b"
@@ -84,7 +84,7 @@
     "revision": "1203c11e422c73350e672445c5c32b8c0f79266d"
   },
   "godot_resource": {
-    "revision": "4ad1b796fb375c8e0fbf5b3cad57050b4372114f"
+    "revision": "b6ef0768711086a86b3297056f9ffb5cc1d77b4a"
   },
   "gomod": {
     "revision": "3cbcb572109ea0bc476a292208722c326c9e6c3a"
@@ -167,6 +167,9 @@
   "ocamllex": {
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
   },
+  "pascal": {
+    "revision": "2fd40f477d3e2794af152618ccfac8d92eb72a66"
+  },
   "perl": {
     "revision": "0ac2c6da562c7a2c26ed7e8691d4a590f7e8b90a"
   },
@@ -189,16 +192,16 @@
     "revision": "8e7fd7e638d4a0ec7a792ee16b19dbc6407aa810"
   },
   "query": {
-    "revision": "9a2ccff9f672f1f3d320cf925b8e5acc89b27055"
+    "revision": "5217c6805c09f8fc00ed13d17d5fcb791437aee6"
   },
   "r": {
     "revision": "91f587e5685f46e26f9f6e55f2e06d503f8f0fc0"
   },
   "regex": {
-    "revision": "7b97502cfc3ffa7110f6b68bb39fb259c9a0500c"
+    "revision": "f9562deebe2ec607f35d119a45021bb436937a18"
   },
   "rst": {
-    "revision": "a5514617ae3644effa80d4696be428e4a371c01a"
+    "revision": "5d1fb393538d604adb26d24d0990a141ff2bbc63"
   },
   "ruby": {
     "revision": "888e2e563ed3b43c417f17e57f7e29c39ce9aeea"
