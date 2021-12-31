@@ -211,7 +211,6 @@ list.re2c = {
   maintainers = { "@alemuller" },
 }
 
-
 list.ruby = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ruby",
