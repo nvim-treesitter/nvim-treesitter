@@ -228,12 +228,20 @@
 (literalNumber)   @number
 (literalString)   @string
 
-; -- Identifiers
+; -- Variables
 
-; Unless a more specific rule applies, treat identifiers as variables
-(identifier) @variable
+(exprBinary (identifier) @variable)
+(exprUnary (identifier) @variable)
+(assignment (identifier) @variable)
+(exprBrackets (identifier) @variable)
+(exprParens (identifier) @variable)
+(exprDot (identifier) @variable)
+(exprTpl (identifier) @variable)
+(exprArgs (identifier) @variable)
+(defaultValue (identifier) @variable)
 
 ; -- Comments
+
 (comment)         @comment
 (pp)              @function.macro
 
@@ -278,11 +286,12 @@
 (genericTpl entity: (genericDot (identifier) @type))
 
 ; -- Exception parameters
+
 (exceptionHandler variable: (identifier) @parameter)
 
 ; -- Type usage
 
-(typeref (_) @type)
+(typeref) @type
 
 ; -- Constant usage
 
