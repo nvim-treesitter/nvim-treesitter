@@ -122,7 +122,8 @@ function M.get_named_children(node)
 end
 
 function M.get_node_at_cursor(winnr)
-  local cursor = api.nvim_win_get_cursor(winnr or 0)
+  winnr = winnr or 0
+  local cursor = api.nvim_win_get_cursor(winnr)
   local cursor_range = { cursor[1] - 1, cursor[2] }
 
   local buf = vim.api.nvim_win_get_buf(winnr)
