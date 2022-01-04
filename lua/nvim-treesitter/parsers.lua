@@ -828,6 +828,15 @@ list.make = {
   maintainers = { "@lewis6991" },
 }
 
+list.rasi = {
+  install_info = {
+    url = "https://github.com/Fymyte/tree-sitter-rasi",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@Fymyte" },
+}
+
 local M = {
   list = list,
 }
