@@ -1,7 +1,7 @@
 ;;; Imports
 
 (package_header
-	. (identifier) @definiton.namespace)
+	. (identifier) @definition.namespace)
 
 (import_header
 	(identifier
