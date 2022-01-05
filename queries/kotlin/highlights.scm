@@ -318,24 +318,24 @@
 
 
 (annotation
-	"@" @annotation (use_site_target)? @annotation)
+	"@" @attribute (use_site_target)? @attribute)
 (annotation
 	(user_type
-		(type_identifier) @annotation))
+		(type_identifier) @attribute))
 (annotation
 	(constructor_invocation
 		(user_type
-			(type_identifier) @annotation)))
+			(type_identifier) @attribute)))
 
 (file_annotation
-	"@" @annotation "file" @annotation ":" @annotation)
+	"@" @attribute "file" @attribute ":" @attribute)
 (file_annotation
 	(user_type
-		(type_identifier) @annotation))
+		(type_identifier) @attribute))
 (file_annotation
 	(constructor_invocation
 		(user_type
-			(type_identifier) @annotation)))
+			(type_identifier) @attribute)))
 
 ;;; Operators & Punctuation
 
