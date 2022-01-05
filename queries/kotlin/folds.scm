@@ -1,7 +1,7 @@
 [
 	(import_list)
 
-	(when_structure_body)
+	(when_expression)
 	(control_structure_body)
 
 	(lambda_literal)
