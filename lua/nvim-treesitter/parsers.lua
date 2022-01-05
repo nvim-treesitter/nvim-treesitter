@@ -254,10 +254,11 @@ list.java = {
 
 list.kotlin = {
   install_info = {
-    url = "https://github.com/Joakker/tree-sitter-kotlin",
-    files = { "src/parser.c" },
+    url = "https://github.com/fwcd/tree-sitter-kotlin",
+    branch = "main",
+    files = { "src/parser.c", "src/scanner.c" },
   },
-  maintainers = { "@Joakker" },
+  maintainers = { "@fwcd" },
 }
 
 list.html = {
