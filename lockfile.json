@@ -12,7 +12,7 @@
     "revision": "e348e8ec5efd3aac020020e4af53d2ff18f393a9"
   },
   "c_sharp": {
-    "revision": "3104df21065af0f3d51e05a96cd0e2ff16a6f982"
+    "revision": "352a4630c81a7a5cbd3bc67327743bd8d38f2dd2"
   },
   "clojure": {
     "revision": "39bf0977d223879436c1425fe6bfeb3bcfd86f92"
@@ -51,10 +51,10 @@
     "revision": "92877bac7033e409ccfb3f07fe28ef1dfd359457"
   },
   "elixir": {
-    "revision": "1b3ecf7765979a5602bbb8988b8fc0d9f4c887d6"
+    "revision": "94d6471cc8cdfaf2808f6079036ded44a308db41"
   },
   "elm": {
-    "revision": "cf526b48021d2bcffa0075979d0699acda33bad2"
+    "revision": "bd50ccf66b42c55252ac8efc1086af4ac6bab8cd"
   },
   "erlang": {
     "revision": "9d5fd0c329280a156bf7614a49dc5e8c58cc037c"
@@ -75,13 +75,13 @@
     "revision": "2a6abdaa47fcb91397e09a97c7433fd995ea46c6"
   },
   "glimmer": {
-    "revision": "7b29275a42992edb12b74edd32ed69e5329b3077"
+    "revision": "1286ac83e1caf89e0211bb9a15671b2b3cf093e4"
   },
   "glsl": {
     "revision": "26ba31a3f5a85ebed5d71e49eef11a003bed782b"
   },
   "go": {
-    "revision": "1203c11e422c73350e672445c5c32b8c0f79266d"
+    "revision": "73631725bfe94e06b74b437b242d0ba5b6432ee3"
   },
   "godot_resource": {
     "revision": "b6ef0768711086a86b3297056f9ffb5cc1d77b4a"
@@ -96,7 +96,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "haskell": {
-    "revision": "d72f2e42c0d5ccf8e8b1c39e3642428317e8fe02"
+    "revision": "b6ec26f181dd059eedd506fa5fbeae1b8e5556c8"
   },
   "hcl": {
     "revision": "3cb7fc28247efbcb2973b97e71c78838ad98a583"
@@ -153,7 +153,7 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "7451bb5044c65717352c6074f46b974ed4b8f2c4"
+    "revision": "cb10958c05163cd6dc32aa568a6422f34fb0c178"
   },
   "nix": {
     "revision": "6d6aaa50793b8265b6a8b6628577a0083d3b923d"
@@ -197,8 +197,11 @@
   "r": {
     "revision": "91f587e5685f46e26f9f6e55f2e06d503f8f0fc0"
   },
+  "rasi": {
+    "revision": "279a01177bba20278037f4c7db38cebbac3066c3"
+  },
   "regex": {
-    "revision": "f9562deebe2ec607f35d119a45021bb436937a18"
+    "revision": "e1cfca3c79896ff79842f057ea13e529b66af636"
   },
   "rst": {
     "revision": "5d1fb393538d604adb26d24d0990a141ff2bbc63"
@@ -219,7 +222,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "supercollider": {
-    "revision": "c28a0351961fc1fc13dfe78e24d7e05f05649613"
+    "revision": "ac83e9d5ef3a62d2160d0f1e0a64a949ecda1d8b"
   },
   "surface": {
     "revision": "21b7676859c1187645a27ff301f76738af5dfd44"
@@ -240,13 +243,13 @@
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
   },
   "tsx": {
-    "revision": "111b07762e86efab9a918b7c721f720c37e76b0a"
+    "revision": "54931b39ae7b197e20c7b06680ceaf576b18ec69"
   },
   "turtle": {
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
   },
   "typescript": {
-    "revision": "111b07762e86efab9a918b7c721f720c37e76b0a"
+    "revision": "54931b39ae7b197e20c7b06680ceaf576b18ec69"
   },
   "verilog": {
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
