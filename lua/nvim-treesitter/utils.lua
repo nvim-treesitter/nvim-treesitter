@@ -12,7 +12,7 @@ end
 
 function M.setup_commands(mod, commands)
   for command_name, def in pairs(commands) do
-    local f_args = def.f_args or '<f-args>'
+    local f_args = def.f_args or "<f-args>"
     local call_fn = string.format(
       "lua require'nvim-treesitter.%s'.commands.%s['run<bang>'](%s)",
       mod,
