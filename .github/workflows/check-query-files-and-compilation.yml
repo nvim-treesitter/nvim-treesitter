@@ -66,12 +66,8 @@ jobs:
 
       - name: Check query files (Unix)
         if: matrix.os != 'windows-2022'
-        env:
-          ALLOWED_INSTALLATION_FAILURES: haskell
         run: nvim --headless -c "luafile ./scripts/check-queries.lua" -c "q"
 
       - name: Check query files (Windows)
         if: matrix.os == 'windows-2022'
-        env:
-          ALLOWED_INSTALLATION_FAILURES: haskell
         run: Neovim\\bin\\nvim.exe --headless -c "luafile ./scripts/check-queries.lua" -c "q"
