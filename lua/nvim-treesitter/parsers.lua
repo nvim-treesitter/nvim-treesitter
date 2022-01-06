@@ -258,7 +258,7 @@ list.kotlin = {
     branch = "main",
     files = { "src/parser.c", "src/scanner.c" },
   },
-  maintainers = { "@fwcd" },
+  maintainers = { "@SalBakraa" },
 }
 
 list.html = {
