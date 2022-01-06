@@ -1,1 +1,3 @@
-(rule_set) @fold
+(rule_set) @indent
+
+(block "}" @branch)
