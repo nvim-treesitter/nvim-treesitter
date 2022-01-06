@@ -1,4 +1,4 @@
-(rule_set (id_selector)) @scope
+(rule_set (selectors (id_selector))) @scope
 
 (block (declaration (property_name) @definition.var))
 
