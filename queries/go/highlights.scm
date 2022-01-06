@@ -77,6 +77,7 @@
   "|"
   "|="
   "||"
+  "~"
 ] @operator
 
 ; Keywords
