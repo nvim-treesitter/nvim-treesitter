@@ -13,7 +13,22 @@
 (rule (targets
        (word) @function.builtin
        (#any-of? @function.builtin
+        ".DEFAULT"
+        ".SUFFIXES"
+        ".DEFAULT"
+        ".DELETE_ON_ERROR"
+        ".EXPORT_ALL_VARIABLES"
+        ".IGNORE"
+        ".INTERMEDIATE"
+        ".LOW_RESOLUTION_TIME"
+        ".NOTPARALLEL"
+        ".ONESHELL"
         ".PHONY"
+        ".POSIX"
+        ".PRECIOUS"
+        ".SECONDARY"
+        ".SECONDEXPANSION"
+        ".SILENT"
         ".SUFFIXES")))
 
 (rule ["&:" ":" "::"] @operator)
