@@ -96,17 +96,17 @@
 ; or a type. Classes can appear anywhere in the import path, unlike functions
 (import_header
 	(identifier
-		(simple_identifier) @type @import)
+		(simple_identifier) @type @_import)
 	(import_alias
 		(type_identifier) @type)?
-		(#lua-match? @import "^[A-Z]"))
+		(#lua-match? @_import "^[A-Z]"))
 
 (import_header
 	(identifier
-		(simple_identifier) @function @import .)
+		(simple_identifier) @function @_import .)
 	(import_alias
 		(type_identifier) @function)?
-		(#lua-match? @import "^[a-z]"))
+		(#lua-match? @_import "^[a-z]"))
 
 ; TODO: Seperate labeled returns/breaks/continue/super/this
 ;       Must be implemented in the parser first
