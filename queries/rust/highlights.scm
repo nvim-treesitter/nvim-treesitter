@@ -191,7 +191,10 @@
 ] @keyword
 
 "fn" @keyword.function
-"return" @keyword.return
+[
+  "return"
+  "yield"
+] @keyword.return
 
 (type_cast_expression "as" @keyword.operator)
 
