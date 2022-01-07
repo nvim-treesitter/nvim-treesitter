@@ -49,13 +49,16 @@
 ] @string.escape
 
 
+(image "!" @punctuation.delimiter)
 (image "[" @punctuation.delimiter)
 (image "]" @punctuation.delimiter)
 (image "(" @punctuation.delimiter)
 (image ")" @punctuation.delimiter)
+
 (inline_link "[" @punctuation.delimiter)
 (inline_link "]" @punctuation.delimiter)
 (inline_link "(" @punctuation.delimiter)
 (inline_link ")" @punctuation.delimiter)
+
 (shortcut_link "[" @punctuation.delimiter)
 (shortcut_link "]" @punctuation.delimiter)
