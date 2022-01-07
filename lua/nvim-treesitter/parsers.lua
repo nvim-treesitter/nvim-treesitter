@@ -850,8 +850,7 @@ list.foam = {
   install_info = {
     url = "https://github.com/FoamScience/tree-sitter-foam",
     branch = "master",
-    files = { "src/parser.c", "src/scanner.cc" },
-    generate_requires_npm = true,
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@FoamScience" },
   filetype = "foam",
