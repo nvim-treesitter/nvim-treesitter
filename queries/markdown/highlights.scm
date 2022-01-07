@@ -14,7 +14,10 @@
 ] @punctuation.special
 
 
-(code_span) @text.literal
+[
+  (code_span)
+  (link_title)
+] @text.literal
 
 [
   (indented_code_block)
