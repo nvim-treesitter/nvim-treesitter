@@ -532,6 +532,14 @@ list.yang = {
   filetype = "yang",
 }
 
+list.ninja = {
+  install_info = {
+    url = "https://github.com/alemuller/tree-sitter-ninja",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@alemuller" },
+}
+
 list.nix = {
   install_info = {
     url = "https://github.com/cstrahan/tree-sitter-nix",
