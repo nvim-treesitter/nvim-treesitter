@@ -27,6 +27,7 @@ local function extract_captures()
 end
 
 local function do_check()
+  local timings = {}
   local parsers = require("nvim-treesitter.info").installed_parsers()
   local queries = require "nvim-treesitter.query"
   local query_types = queries.built_in_query_groups
@@ -35,9 +36,14 @@ local function do_check()
   local last_error
 
   for _, lang in pairs(parsers) do
+    timings[lang] = {}
     for _, query_type in pairs(query_types) do
-      print("Checking " .. lang .. " " .. query_type)
+      local before = vim.loop.hrtime()
       local ok, query = pcall(queries.get_query, lang, query_type)
+      local after = vim.loop.hrtime()
+      local duration = after - before
+      table.insert(timings, { duration = duration, lang = lang, query_type = query_type })
+      print("Checking " .. lang .. " " .. query_type .. string.format(" (%.02fms)", duration * 1e-6))
       if not ok then
         vim.api.nvim_err_writeln(query)
         last_error = query
@@ -63,9 +69,10 @@ local function do_check()
     print "Last error: "
     error(last_error)
   end
+  return timings
 end
 
-local ok, err = pcall(do_check)
+local ok, result = pcall(do_check)
 local allowed_to_fail = vim.split(vim.env.ALLOWED_INSTALLATION_FAILURES or "", ",", true)
 
 for k, v in pairs(require("nvim-treesitter.parsers").get_parser_configs()) do
@@ -85,11 +92,21 @@ for k, v in pairs(require("nvim-treesitter.parsers").get_parser_configs()) do
 end
 
 if ok then
+  print(string.rep("-", 100))
+  print "Timings:"
+  print(string.rep("-", 100))
+  table.sort(result, function(a, b)
+    return a.duration < b.duration
+  end)
+  for i, val in ipairs(result) do
+    print(string.format("%i. %.02fms %s %s", #result - i + 1, val.duration * 1e-6, val.lang, val.query_type))
+  end
+  print(string.rep("-", 100))
   print "Check successful!\n"
   vim.cmd "q"
 else
   print "Check failed:"
-  print(err)
+  print(result)
   print "\n"
   vim.cmd "cq"
 end
