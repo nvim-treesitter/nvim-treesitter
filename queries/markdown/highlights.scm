@@ -18,7 +18,7 @@
 
 [
   (indented_code_block)
-  (fenced_code_block) 
+  (fenced_code_block)
 ] @punctuation.delimiter
 (code_fence_content) @none
 
@@ -46,6 +46,10 @@
 ] @string.escape
 
 
+(image "[" @punctuation.delimiter)
+(image "]" @punctuation.delimiter)
+(image "(" @punctuation.delimiter)
+(image ")" @punctuation.delimiter)
 (inline_link "[" @punctuation.delimiter)
 (inline_link "]" @punctuation.delimiter)
 (inline_link "(" @punctuation.delimiter)
