@@ -13,7 +13,6 @@
   (setext_h2_underline)
 ] @punctuation.special
 
-
 [
   (code_span)
   (link_title)
@@ -31,8 +30,11 @@
 
 (link_destination) @text.uri
 
-(link_label) @text.reference
-(link_text) @text.reference
+[
+  (link_label)
+  (link_text)
+  (image_description)
+] @text.reference
 
 [
   (list_marker_plus)
@@ -47,7 +49,6 @@
   (backslash_escape)
   (hard_line_break)
 ] @string.escape
-
 
 (image "!" @punctuation.delimiter)
 (image "[" @punctuation.delimiter)
