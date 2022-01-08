@@ -45,6 +45,8 @@
   (thematic_break)
 ] @punctuation.special
 
+(block_quote_marker) @punctuation.special
+
 [
   (backslash_escape)
   (hard_line_break)
