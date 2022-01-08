@@ -536,6 +536,7 @@ list.ninja = {
   install_info = {
     url = "https://github.com/alemuller/tree-sitter-ninja",
     files = { "src/parser.c" },
+    branch = "main",
   },
   maintainers = { "@alemuller" },
 }
