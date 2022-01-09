@@ -36,9 +36,9 @@ The goal of `nvim-treesitter` is both to provide a simple and easy way to use th
 Traditional highlighting (left) vs Treesitter-based highlighting (right).
 More examples can be found in [our gallery](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Gallery).
 
-**Warning: Treesitter and nvim-treesitter highlighting are an experimental feature of nightly versions of Neovim.
+**Warning: Treesitter and nvim-treesitter highlighting are an experimental feature of Neovim.
 Please consider the experience with this plug-in as experimental until Tree-Sitter support in Neovim is stable!
-We recommend using the nightly builds of Neovim or the latest stable version.
+We recommend using the latest version of Neovim.
 You can find the current roadmap [here](https://github.com/nvim-treesitter/nvim-treesitter/projects/1).
 The roadmap and all features of this plugin are open to change, and any suggestion will be highly appreciated!**
 
@@ -63,7 +63,7 @@ For more detailed information on setting these up, see ["Advanced setup"](#advan
 
 ## Requirements
 
-- Neovim [nightly](https://github.com/neovim/neovim#install-from-source)
+- Neovim 0.5 or above
 - `tar` and `curl` in your path (or alternatively `git`)
 - A C compiler in your path and libstdc++ installed ([Windows users please read this!](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support)).
 
@@ -478,7 +478,7 @@ In that case, feel free to [open an issue here](https://github.com/nvim-treesitt
 
 #### I get `module 'vim.treesitter.query' not found`
 
-Make sure you have the latest nightly version of Neovim.
+Make sure you have the latest version of Neovim.
 
 #### I get `Error detected while processing .../plugin/nvim-treesitter.vim` every time I open Neovim
 
