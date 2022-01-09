@@ -38,7 +38,7 @@ More examples can be found in [our gallery](https://github.com/nvim-treesitter/n
 
 **Warning: Treesitter and nvim-treesitter highlighting are an experimental feature of Neovim.
 Please consider the experience with this plug-in as experimental until Tree-Sitter support in Neovim is stable!
-We recommend using the latest version of Neovim.
+We recommend using the nightly builds of Neovim if possible.
 You can find the current roadmap [here](https://github.com/nvim-treesitter/nvim-treesitter/projects/1).
 The roadmap and all features of this plugin are open to change, and any suggestion will be highly appreciated!**
 
