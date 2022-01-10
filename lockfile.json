@@ -216,7 +216,11 @@
     "revision": "888e2e563ed3b43c417f17e57f7e29c39ce9aeea"
   },
   "rust": {
+<<<<<<< HEAD
     "revision": "eeb0702ebdac504b97196577b1dac43c80913d7b"
+=======
+    "revision": "67d304c81e3b2a6cda7e9f577c1f527c53c8348e"
+>>>>>>> 23bae0b7 (highlights(rust): support `doc_comment`)
   },
   "scala": {
     "revision": "0a3dd53a7fc4b352a538397d054380aaa28be54c"

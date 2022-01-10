@@ -144,6 +144,7 @@
 [
   (line_comment)
   (block_comment)
+  (doc_comment)
 ] @comment
 
 (boolean_literal) @boolean
