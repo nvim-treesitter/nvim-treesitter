@@ -1,6 +1,9 @@
 (macro_invocation
   (token_tree) @rust)
 
+;; Requires trimming of leading //!
+;(doc_comment) @markdown
+
 (macro_definition
   (macro_rule
     left: (token_tree_pattern) @rust
