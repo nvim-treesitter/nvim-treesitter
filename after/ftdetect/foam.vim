@@ -10,14 +10,14 @@ function! s:foamFile(path)
     let l:f = -1
     let l:o = -1
     for line in lines
-        if (match(line, 'FoamFile') >= 0)
+        if (match(line, '\CFoamFile') >= 0)
             let l:f = index(lines, line)
         endif
-        if (match(line, 'object') >= 0)
+        if (match(line, '\Cobject') >= 0)
             let l:o = index(lines, line)
         endif
     endfor
-    if ((l:o >= 0) && (l:f) && (l:o > l:f))
+    if ((l:o >= 0) && (l:f >= 0) && (l:o > l:f))
         set filetype=foam
     endif
 endfunction
