@@ -1,1 +1,1 @@
-autocmd BufNewFile,BufRead *.glsl,*.vert,*.tesc,*.tese,*.geom,*.frag,*.comp,*.vs set filetype=glsl
+autocmd BufNewFile,BufRead *.glsl set filetype=glsl
