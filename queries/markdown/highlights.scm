@@ -16,12 +16,16 @@
 [
   (code_span)
   (link_title)
+  (indented_code_block)
+  (fenced_code_block)
 ] @text.literal
 
 [
-  (indented_code_block)
-  (fenced_code_block)
+  (emphasis_delimiter)
+  (code_span_delimiter)
+  (fenced_code_block_delimiter)
 ] @punctuation.delimiter
+
 (code_fence_content) @none
 
 (emphasis) @text.emphasis
