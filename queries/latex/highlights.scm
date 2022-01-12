@@ -43,6 +43,7 @@
 
 [
     "\\ref"
+    "\\eqref"
     "\\vref"
     "\\Vref"
     "\\autoref"
