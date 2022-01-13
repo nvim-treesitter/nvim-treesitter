@@ -19,4 +19,4 @@
   "]"
 ] @branch
 
-(comment) @ignore
+[(block_comment) (line_comment)] @ignore

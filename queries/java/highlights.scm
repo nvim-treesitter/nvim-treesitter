@@ -140,7 +140,10 @@
 (string_literal) @string
 (null_literal) @constant.builtin
 
-(comment) @comment
+[
+  (line_comment)
+  (block_comment)
+] @comment
 
 [
 (true)
