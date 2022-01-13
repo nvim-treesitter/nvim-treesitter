@@ -105,7 +105,7 @@
     "revision": "3cb7fc28247efbcb2973b97e71c78838ad98a583"
   },
   "heex": {
-    "revision": "960cbc74b5191f2389c54570ef5a1686f78fb11b"
+    "revision": "1a8e285dfa150427edc839eea60a7b9fac332067"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
@@ -117,7 +117,7 @@
     "revision": "bfddd16b1cf78e0042fd1f6846a179f76a254e20"
   },
   "java": {
-    "revision": "727ca4be4ca85915e1a5063034b9fe9f0d99d7f6"
+    "revision": "a24ae7d16de3517bff243a87d087d0b4877a65c5"
   },
   "javascript": {
     "revision": "fdeb68ac8d2bd5a78b943528bb68ceda3aade2eb"
@@ -228,7 +228,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "supercollider": {
-    "revision": "ac83e9d5ef3a62d2160d0f1e0a64a949ecda1d8b"
+    "revision": "ec6f5b407c2ad78405aa82fe16ad6d4efae00dba"
   },
   "surface": {
     "revision": "21b7676859c1187645a27ff301f76738af5dfd44"
