@@ -67,7 +67,7 @@
  (identifier)) @symbol
 
 ;; Parsing error! foo (::Type) gets parsed as two quote expressions
-(argument_list 
+(argument_list
   (quote_expression
     (quote_expression
       (identifier) @type)))
@@ -123,7 +123,10 @@
 
 (function_definition ["function" "end"] @keyword.function)
 
-(comment) @comment
+[
+  (comment)
+  (block_comment)
+] @comment
 
 [
   "const"
