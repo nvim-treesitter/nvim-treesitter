@@ -110,6 +110,9 @@
 (function
   name: (variable) @function
   patterns: (patterns))
+((signature (fun)) . (function (variable) @function))
+((signature (context (fun))) . (function (variable) @function))
+((signature (forall (context (fun)))) . (function (variable) @function))
 
 (exp_infix (variable) @operator)  ; consider infix functions as operators
 
