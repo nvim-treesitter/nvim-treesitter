@@ -78,8 +78,9 @@
 ((name) @constant
  (#vim-match? @constant "^_?[A-Z][A-Z\d_]+$"))
 
-((name) @constructor
- (#lua-match? @constructor "^[A-Z]"))
+(method_declaration
+    name: (name) @constructor
+    (#eq? @constructor "__construct"))
 
 (const_declaration (const_element (name) @constant))
 
