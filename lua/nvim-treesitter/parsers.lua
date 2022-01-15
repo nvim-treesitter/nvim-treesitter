@@ -801,6 +801,15 @@ list.hjson = {
   maintainers = { "@winston0410" },
 }
 
+list.hocon = {
+  install_info = {
+    url = "https://github.com/antosha417/tree-sitter-hocon",
+    files = { "src/parser.c" },
+    generate_requires_npm = true,
+  },
+  maintainers = { "@antosha417" },
+}
+
 list.llvm = {
   install_info = {
     url = "https://github.com/benwilliamgraham/tree-sitter-llvm",
