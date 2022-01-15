@@ -137,8 +137,8 @@
 (cast_expression type: (type_descriptor) @type)
 (sizeof_expression value: (parenthesized_expression (identifier) @type))
 
-((identifier) @constant
- (#lua-match? @constant "^[A-Z][A-Z0-9_]+$"))
+((identifier) @variable
+ (#lua-match? @variable "^[A-Z][A-Z0-9_]+$"))
 
 ;; Preproc def / undef
 (preproc_def
