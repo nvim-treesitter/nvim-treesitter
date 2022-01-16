@@ -1,4 +1,4 @@
-[ "." ";" ":" "," "->" ] @punctuation.delimiter
+[ "." ";" ":" "," ] @punctuation.delimiter
 [ "\\(" "(" ")" "[" "]" "{" "}"] @punctuation.bracket ; TODO: "\\(" ")" in interpolations should be @punctuation.special
 
 ; Identifiers
@@ -130,4 +130,5 @@
  "!="
  "!=="
  "==="
+ "->"
 ] @operator
