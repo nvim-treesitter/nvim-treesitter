@@ -45,7 +45,7 @@
     "revision": "fa70098cd70393f84785f85cdc6a45299b59cd5b"
   },
   "dockerfile": {
-    "revision": "dd2673d44ca327217313be5351855398705e54c7"
+    "revision": "98e201aaf755a0862d4d32158b36da98f0799810"
   },
   "dot": {
     "revision": "92877bac7033e409ccfb3f07fe28ef1dfd359457"
@@ -105,7 +105,7 @@
     "revision": "3cb7fc28247efbcb2973b97e71c78838ad98a583"
   },
   "heex": {
-    "revision": "960cbc74b5191f2389c54570ef5a1686f78fb11b"
+    "revision": "1a8e285dfa150427edc839eea60a7b9fac332067"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
@@ -117,7 +117,7 @@
     "revision": "bfddd16b1cf78e0042fd1f6846a179f76a254e20"
   },
   "java": {
-    "revision": "727ca4be4ca85915e1a5063034b9fe9f0d99d7f6"
+    "revision": "a24ae7d16de3517bff243a87d087d0b4877a65c5"
   },
   "javascript": {
     "revision": "fdeb68ac8d2bd5a78b943528bb68ceda3aade2eb"
@@ -228,7 +228,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "supercollider": {
-    "revision": "ac83e9d5ef3a62d2160d0f1e0a64a949ecda1d8b"
+    "revision": "a7201b61779be59ac0fc0d118746c886dbc3edbd"
   },
   "surface": {
     "revision": "21b7676859c1187645a27ff301f76738af5dfd44"
@@ -237,7 +237,7 @@
     "revision": "98274d94ec33e994e8354d9ddfdef58cca471294"
   },
   "swift": {
-    "revision": "a22fa5e19bae50098e2252ea96cba3aba43f4c58"
+    "revision": "db675450dcc1478ee128c96ecc61c13272431aab"
   },
   "teal": {
     "revision": "fcc5f6f4d194dede4e676834ff28a506e39e17b4"
@@ -261,7 +261,7 @@
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
   },
   "vim": {
-    "revision": "53bdad30314f4bfad508d4ffc9b0f56a783f9974"
+    "revision": "8296f301b19fc5f05820088b5b8b77e3edb5f526"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
