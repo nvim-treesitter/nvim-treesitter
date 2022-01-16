@@ -2,6 +2,8 @@ vim.cmd [[set runtimepath+=.]]
 vim.cmd [[runtime! plugin/plenary.vim]]
 vim.cmd [[runtime! plugin/nvim-treesitter.vim]]
 
+vim.cmd [[au BufRead,BufNewFile *.conf set filetype=hocon]]
+
 vim.o.swapfile = false
 vim.bo.swapfile = false
 
