@@ -8,15 +8,13 @@ body:
       value: |
         # Before reporting
         Please perform the following steps before reporting an issue.
-        - I have updated my neovim version to latest _master_
-        - I have updated my plugin to the latest version
-        - I have run `:TSUpdate`
+        - I have updated my neovim version to latest _master_.
+        - I have updated my plugin to the latest version.
+        - I have run `:TSUpdate`.
         - I have inspected the syntax tree using https://github.com/nvim-treesitter/playground and made sure
           that no `ERROR` nodes are in the syntax tree. nvim-treesitter can not guarantee correct highlighting in the
-          presence or `ERROR`s. Please report the bug directly corresponding parser's repository in case you see
-          `ERROR` in the syntax tree. You can find all repository URLs in our REAMDE.md
-        - I have used `:TSHighlightCapturesUnderCursor` from https://github.com/nvim-treesitter/playground to inspect
-          what highlight groups is nvim-treesitter is using and that no `:h syntax` highlighting is interfering.
+          presence of `ERROR`s -- in this case, please report the bug directly at corresponding parser's repository. (You can find all repository URLs in [README.md](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages).)
+        - I have used `:TSHighlightCapturesUnderCursor` from https://github.com/nvim-treesitter/playground to inspect which highlight groups Neovim is using and that legacy syntax highlighting is interfering (i.e., what you are observing is actual tree-sitter highlighting).
 
   - type: textarea
     attributes:
