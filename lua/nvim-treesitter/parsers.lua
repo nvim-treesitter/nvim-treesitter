@@ -370,9 +370,10 @@ list.ocamllex = {
 
 list.swift = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-swift",
-    files = { "src/parser.c" },
+    url = "https://github.com/alex-pinkus/tree-sitter-swift",
+    files = { "src/parser.c", "src/scanner.c" },
     requires_generate_from_grammar = true,
+    generate_requires_npm = true,
   },
 }
 
