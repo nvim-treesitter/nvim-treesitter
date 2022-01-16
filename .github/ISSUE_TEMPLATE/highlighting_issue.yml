@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         # Before reporting
-        Please do the following steps before reporting an issue.
+        Please perform the following steps before reporting an issue.
         - I have updated my neovim version to latest _master_
         - I have updated my plugin to the latest version
         - I have run `:TSUpdate`
