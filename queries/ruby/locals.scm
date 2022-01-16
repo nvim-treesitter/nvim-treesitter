@@ -21,8 +21,7 @@
 ; SOFTWARE.
 
 ;;; DECLARATIONS AND SCOPES
-((method) @scope
- (set! scope-inherits false))
+(method) @scope
 (class) @scope
 
 [
@@ -36,7 +35,8 @@
 
 (module name: (constant) @definition.namespace)
 (class name: (constant) @definition.type)
-(method name: (identifier) @definition.function)
+(method name: [(identifier) (constant)] @definition.function)
+(singleton_method name: [(identifier) (constant)] @definition.function)
 
 (method_parameters (identifier) @definition.var)
 (lambda_parameters (identifier) @definition.var)
@@ -48,7 +48,7 @@
 (block_parameter name: (identifier) @definition.var)
 (keyword_parameter name: (identifier) @definition.var)
 
-(assignment left: (_lhs) @definition.var)
+(assignment left: (_) @definition.var)
 
 (left_assignment_list (identifier) @definition.var)
 (rest_assignment (identifier) @definition.var)

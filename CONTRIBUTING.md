@@ -5,7 +5,7 @@ First of all, thank you very much for contributing to `nvim-treesitter`.
 If you haven't already, you should really come and reach out to us on our [gitter](https://gitter.im/nvim-treesitter/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 room, so we can help you with any question you might have!
 
-As you know, `nvim-treesitter` is roughly splitted in two parts :
+As you know, `nvim-treesitter` is roughly split in two parts :
 
 - Parser configurations : for various things like `locals`, `highlights`
 - What we like to call *modules* : tiny lua modules that provide a given feature, based on parser configurations
@@ -15,12 +15,13 @@ Depending on which part of the plugin you want to contribute to, please read the
 ## Style Checks and Tests
 
 We haven't implemented any functional tests yet. Feel free to contribute.
-However, we check code style with `luacheck`!
+However, we check code style with `luacheck` and `stylua`!
 Please install luacheck and activate our `pre-push` hook to automatically check style before
 every push:
 
 ```bash
 luarocks install luacheck
+cargo install stylua
 ln -s ../../scripts/pre-push .git/hooks/pre-push
 ```
 
@@ -47,12 +48,13 @@ Each of these `scheme` files contains a *tree-sitter query* for a given purpose.
 Before going any further, we highly suggest that you [read more about tree-sitter queries](https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries).
 
 Each query has an appropriate name, which is then used by modules to extract data from the syntax tree.
-For now two types of queries are used by `nvim-treesitter`:
+For now these are the types of queries used by `nvim-treesitter`:
 
 - `highlights.scm`: used for syntax highlighting, using the `highlight` module.
 - `locals.scm`: used to extract keyword definitions, scopes, references, etc, using the `locals` module.
 - `textobjects.scm`: used to define text objects.
 - `folds.scm`: used to define folds.
+- `injections.scm`: used to define injections.
 
 For these types there is a *norm* you will have to follow so that features work fine.
 Here are some global advices :
@@ -75,9 +77,8 @@ line of your file_.
 ; inherits: lang1,(optionallang)
 ```
 
-If you want to include a language for a given query, but don't want for the queries including the
-query you qre writing to include it too, you can mark the language as optional (by putting it
-between parenthesis).
+If you want to inherit a language, but don't want the languages inheriting from yours to inherit it,
+you can mark the language as optional (by putting it between parenthesis).
 
 ### Highlights
 
@@ -130,14 +131,15 @@ effect on highlighting. We will work on improving highlighting in the near futur
 #### Keywords
 
 ```
-@conditional
-@repeat
+@conditional (e.g. `if`, `else`)
+@repeat (e.g. `for`, `while`)
 @label for C/Lua-like labels
 @keyword
-@keyword.function
+@keyword.function (keyword to define a function, e.g. `func` in Go, `def` in Python)
 @keyword.operator (for operators that are English words, e.g. `and`, `or`)
+@keyword.return
 @operator (for symbolic operators, e.g. `+`, `*`)
-@exception
+@exception (e.g. `throw`, `catch`)
 @include keywords for including modules (e.g. import/from in Python)
 
 @type
@@ -183,6 +185,7 @@ Used for xml-like tags
 
 ```
 @tag
+@tag.attribute
 @tag.delimiter
 ```
 
@@ -226,7 +229,7 @@ doSomething(); // Should point to the declaration as the definition
 ```scheme
 (function_declaration
   ((identifier) @definition.var)
-   (set! "definition.var.scope" "parent"))
+   (#set! "definition.var.scope" "parent"))
 ```
 
 Possible scope values are:
@@ -257,6 +260,16 @@ the node describing the language and `@content` to describe the injection region
 ```
 @{language} ; e.g. @html to describe a html region
 
-@language ; dynamic detection of the injection language (i.e. the text of the captured node describes the language)
-@content ; region for the dynamically detected language
+@language ; dynamic detection of the injection language (i.e. the text of the captured node describes the language).
+@content ; region for the dynamically detected language.
+@combined ; This will combine all matches of a pattern as one single block of content.
+```
+
+### Indents
+
+```
+@indent ; Indent when matching this node
+@branch ; Dedent when matching this node
+@return ; Dedent when matching this node
+@ignore ; Skip this node when calculating the indentation level
 ```

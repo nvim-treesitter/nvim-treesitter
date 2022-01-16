@@ -1,94 +1,4 @@
-(boolean) @boolean
-(nil) @constant.builtin
-(string) @string
-(number) @number
-(field) @constant
 (comment) @comment
-(identifier) @variable
-
-[
- "fn"
- "lambda"
- "hashfn"
- "set"
- "tset"
- "λ"
- "global"
- "var"
- "local"
- "let"
- "do"
- "not"
- "not="
- "_ENV"
- "_G"
- "_VERSION"
- "arg"
- "assert"
- "collectgarbage"
- "coroutine"
- "debug"
- "dofile"
- "doto"
- "error"
- "eval-compiler"
- "gensym"
- "getmetatable"
- "in-scope?"
- "ipairs"
- "list"
- "list?"
- "load"
- "loadfile"
- "loadstring"
- "match"
- "macro"
- "macrodebug"
- "macroexpand"
- "macros"
- "multi-sym?"
- "next"
- "pairs"
- "package"
- "pcall"
- "print"
- "rawequal"
- "rawget"
- "rawlen"
- "rawset"
- "select"
- "sequence?"
- "setmetatable"
- "string"
- "sym"
- "sym?"
- "table"
- "table?"
- "tonumber"
- "tostring"
- "type"
- "unpack"
- "varg?"
- "xpcall"
-] @keyword
-
-[
- "require"
- "require-macros"
- "import-macros"
- "include"
- ] @include
-
-[
-  "each"
-  "for"
-  "while"
-] @repeat
-
-[
-  "if"
-  "when"
-] @conditional
 
 [
   "("
@@ -99,26 +9,107 @@
   "]"
 ] @punctuation.bracket
 
-; hash function
-"#" @function
+[
+  ":"
+  ":until"
+  "&"
+  "&as"
+  "?"
+] @punctuation.special
 
-(function_definition
-  name: (identifier) @function)
+(nil) @constant.builtin
+(vararg) @punctuation.special
 
-(lambda_definition
-  name: (identifier) @function)
+(boolean) @boolean
+(number) @number
 
-(function_call
-  name: (identifier) @function)
+(string) @string
+(escape_sequence) @string.escape
 
-(field_expression
-   (identifier)
+(symbol) @variable
+
+(multi_symbol
    "." @punctuation.delimiter
-   (identifier) @function)
+   (symbol) @field)
 
-;; TODO: fix me
-;(field_expression
-   ;(identifier)
-   ;(field) @function)
+(multi_symbol_method
+   ":" @punctuation.delimiter
+   (symbol) @method .)
 
-(parameters (identifier) @parameter)
+(list . (symbol) @function)
+(list . (multi_symbol (symbol) @function .))
+
+((symbol) @variable.builtin
+ (#match? @variable.builtin "^[$]"))
+
+(binding) @symbol
+
+[
+  "fn"
+  "lambda"
+  "hashfn"
+  "#"
+] @keyword.function
+
+(fn name: [
+ (symbol) @function
+ (multi_symbol (symbol) @function .)
+])
+
+(lambda name: [
+ (symbol) @function
+ (multi_symbol (symbol) @function .)
+])
+
+[
+  "for"
+  "each"
+] @repeat
+((symbol) @repeat
+ (#any-of? @repeat
+  "while"))
+
+[
+  "match"
+] @conditional
+((symbol) @conditional
+ (#any-of? @conditional
+  "if" "when"))
+
+[
+  "global"
+  "local"
+  "let"
+  "set"
+  "var"
+  "where"
+  "or"
+] @keyword
+((symbol) @keyword
+ (#any-of? @keyword
+  "comment" "do" "doc" "eval-compiler" "lua" "macros" "quote" "tset" "values"))
+
+((symbol) @include
+ (#any-of? @include
+  "require" "require-macros" "import-macros" "include"))
+
+((symbol) @function.macro
+ (#any-of? @function.macro
+  "->" "->>" "-?>" "-?>>" "?." "accumulate" "collect" "doto" "icollect"
+  "macro" "macrodebug" "partial" "pick-args" "pick-values" "with-open"))
+
+; Lua builtins
+((symbol) @constant.builtin
+ (#any-of? @constant.builtin
+  "arg" "_ENV" "_G" "_VERSION"))
+
+((symbol) @function.builtin
+ (#any-of? @function.builtin
+  "assert" "collectgarbage" "dofile" "error" "getmetatable" "ipairs"
+  "load" "loadfile" "next" "pairs" "pcall" "print" "rawequal" "rawget"
+  "rawlen" "rawset" "require" "select" "setmetatable" "tonumber" "tostring"
+  "type" "warn" "xpcall"))
+
+((symbol) @function.builtin
+ (#any-of? @function.builtin
+  "loadstring" "module" "setfenv" "unpack"))

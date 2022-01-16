@@ -1,6 +1,7 @@
 [
 (do_statement)
-(for_statement)
+(numeric_for_statement)
+(generic_for_statement)
 (while_statement)
 (repeat_statement)
 (if_statement)
@@ -10,7 +11,3 @@
 (anon_function)
 (table_constructor)
 ] @fold
-
-(record_body
-  (record_entry
-    value: (record_body)) @fold)

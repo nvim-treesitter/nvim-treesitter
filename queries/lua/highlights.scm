@@ -1,6 +1,8 @@
 ;;; Highlighting for lua
 
 ;;; Builtins
+(self) @variable.builtin
+
 ;; Keywords
 
 (if_statement
@@ -52,10 +54,11 @@
 [
  "in"
  "local"
- "return"
  (break_statement)
  "goto"
 ] @keyword
+
+"return" @keyword.return
 
 ;; Operators
 
@@ -90,7 +93,7 @@
  ] @operator
 
 ;; Punctuation
-[ "," "." ":"] @punctuation.delimiter
+["," "." ":" ";"] @punctuation.delimiter
 
 ;; Brackets
 [
@@ -112,6 +115,8 @@
 ] @boolean
 (nil) @constant.builtin
 (spread) @constant ;; "..."
+((identifier) @constant
+ (#lua-match? @constant "^[A-Z][A-Z_0-9]*$"))
 
 ;; Functions
 (function [(function_name) (identifier)] @function)
@@ -120,13 +125,33 @@
 (local_function (identifier) @function)
 (local_function ["function" "end"] @keyword.function)
 
+(variable_declaration
+ (variable_declarator (identifier) @function) (function_definition))
+(local_variable_declaration
+ (variable_declarator (identifier) @function) (function_definition))
+
 (function_definition ["function" "end"] @keyword.function)
 
 (property_identifier) @property
-(method) @method
 
-(function_call (identifier) @function . (arguments))
-(function_call (field_expression (property_identifier) @function) . (arguments))
+(function_call
+  [((identifier) @variable (method) @method)
+   ((_) (method) @method)
+   (identifier) @function
+   (field_expression (property_identifier) @function)]
+  . (arguments))
+
+(function_call
+  (identifier) @function.builtin
+  (#any-of? @function.builtin
+    ;; built-in functions in Lua 5.1
+    "assert" "collectgarbage" "dofile" "error" "getfenv" "getmetatable" "ipairs"
+    "load" "loadfile" "loadstring" "module" "next" "pairs" "pcall" "print"
+    "rawequal" "rawget" "rawset" "require" "select" "setfenv" "setmetatable"
+    "tonumber" "tostring" "type" "unpack" "xpcall"))
+
+;; built-in next function
+(next) @function.builtin
 
 ;; Parameters
 (parameters
@@ -138,7 +163,8 @@
 (string) @string
 (number) @number
 (label_statement) @label
-(field (identifier) @field)
+; A bit of a tricky one, this will only match field names
+(field . (identifier) @field (_))
 (shebang) @comment
 
 ;; Error

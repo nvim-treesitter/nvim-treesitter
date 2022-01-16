@@ -3,7 +3,7 @@
 ;((identifier) @type ; exception: mark `A_foo` sort of identifiers as variables
   ;(match? @type "^[A-Z][^_]"))
 ((identifier) @constant
-  (match? @constant "^[A-Z][A-Z_]{2}[A-Z_]*$"))
+  (#match? @constant "^[A-Z][A-Z_]{2}[A-Z_]*$"))
 
 [
   (triple_string)
@@ -66,8 +66,8 @@
 (quote_expression
  (identifier)) @symbol
 
-;; Parsing error! foo (::Type) get's parsed as two quote expressions
-(argument_list 
+;; Parsing error! foo (::Type) gets parsed as two quote expressions
+(argument_list
   (quote_expression
     (quote_expression
       (identifier) @type)))
@@ -89,11 +89,11 @@
 (number) @number
 (range_expression
     (identifier) @number
-      (eq? @number "end"))
+      (#eq? @number "end"))
 (range_expression
   (_
     (identifier) @number
-      (eq? @number "end")))
+      (#eq? @number "end")))
 (coefficient_expression
   (number)
   (identifier) @constant.builtin)
@@ -119,20 +119,26 @@
 (else_clause
   ["else"] @conditional)
 (ternary_expression
-  ["?" ":"] @operator)
+  ["?" ":"] @conditional)
 
 (function_definition ["function" "end"] @keyword.function)
 
-(comment) @comment
+[
+  (comment)
+  (block_comment)
+] @comment
 
 [
   "const"
-  "return"
   "macro"
   "struct"
+  "primitive"
+  "type"
 ] @keyword
 
-((identifier) @keyword (#match? @keyword "^(global|local)$"))
+"return" @keyword.return
+
+((identifier) @keyword (#any-of? @keyword "global" "local"))
 
 (compound_expression
   ["begin" "end"] @keyword)
@@ -170,7 +176,9 @@
 
 ((identifier) @include (#eq? @include "baremodule"))
 
-(((identifier) @constant.builtin) (match? @constant.builtin "^(nothing|Inf|NaN)$"))
-(((identifier) @boolean) (eq? @boolean "true"))
-(((identifier) @boolean) (eq? @boolean "false"))
+(((identifier) @constant.builtin) (#match? @constant.builtin "^(nothing|Inf|NaN)$"))
+(((identifier) @boolean) (#eq? @boolean "true"))
+(((identifier) @boolean) (#eq? @boolean "false"))
 
+["::" ":" "." "," "..." "!"] @punctuation.delimiter
+["[" "]" "(" ")" "{" "}"] @punctuation.bracket

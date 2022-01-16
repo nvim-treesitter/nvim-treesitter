@@ -1,0 +1,42 @@
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+  check_compilation_unix_like:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        cc: [ gcc ]
+
+    name: Run tests
+    runs-on: ${{ matrix.os }}
+    env:
+      CC: ${{ matrix.cc }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+
+      - name: Test Dependencies
+        run: |
+          mkdir -p ~/.local/share/nvim/site/pack/plenary.nvim/start
+          cd ~/.local/share/nvim/site/pack/plenary.nvim/start
+          git clone https://github.com/nvim-lua/plenary.nvim
+          curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly --profile minimal
+          ~/.cargo/bin/cargo install --git https://github.com/theHamsta/highlight-assertions
+
+      - name: Install and prepare Neovim
+        env:
+          NVIM_TAG: v0.6.0
+          TREE_SITTER_CLI_TAG: v0.20.1
+        run: |
+          bash ./scripts/ci-install-${{ matrix.os }}.sh
+
+      - name: Compile parsers Unix like
+        if: matrix.os != 'windows-latest'
+        run: |
+          nvim --headless -c "TSInstallSync all" -c "q"
+
+      - name: Tests
+        run: PATH=~/.cargo/bin:$PATH ./scripts/run_tests.sh

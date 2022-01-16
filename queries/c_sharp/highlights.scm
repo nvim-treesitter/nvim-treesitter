@@ -1,25 +1,49 @@
 (identifier) @variable
 
+((identifier) @keyword
+  (#eq? @keyword "value")
+  (#has-ancestor? @keyword accessor_declaration))
+
 (method_declaration
+  name: (identifier) @method)
+
+(local_function_statement
   name: (identifier) @method)
 
 (method_declaration
   type: (identifier) @type)
 
-; This would be nice but fails in some cases
-; https://github.com/nvim-treesitter/nvim-treesitter/pull/203
-; (invocation_expression
-;     (member_access_expression
-;            name: (identifier) @method))
+(local_function_statement
+  type: (identifier) @type)
 
-; (invocation_expression
-;      (identifier) @method)
+(interpolation) @none
 
-((identifier) @field
- (#match? @field "^_"))
+(invocation_expression
+  (member_access_expression
+    name: (identifier) @method))
 
-((identifier) @field
- (#match? @field "^m_"))
+(invocation_expression
+  function: (conditional_access_expression
+    (member_binding_expression
+      name: (identifier) @method)))
+
+(namespace_declaration
+  name: [(qualified_name) (identifier)] @namespace)
+
+(qualified_name
+  (identifier) @type)
+
+(invocation_expression
+      (identifier) @method)
+
+(field_declaration
+  (variable_declaration
+    (variable_declarator
+      (identifier) @field)))
+
+(initializer_expression
+  (assignment_expression
+    left: (identifier) @field))
 
 (parameter_list
   (parameter
@@ -37,26 +61,32 @@
 
 [
  (string_literal)
- (interpolated_string_text)
+ (verbatim_string_literal)
+ (interpolated_string_expression)
 ] @string
 
 (boolean_literal) @boolean
 
 [
  (predefined_type)
- (implicit_type)
  (void_keyword)
 ] @type.builtin
+
+(implicit_type) @keyword
 
 (comment) @comment
 
 (using_directive
   (identifier) @type)
 
-(qualified_name
-  (identifier) @type)
 (property_declaration
   name: (identifier) @property)
+
+(property_declaration
+  type: (identifier) @type)
+
+(nullable_type
+  (identifier) @type)
 
 (catch_declaration
   type: (identifier) @type)
@@ -65,18 +95,58 @@
   name: (identifier) @type)
 (class_declaration
   name: (identifier) @type)
+(record_declaration
+  name: (identifier) @type)
 (enum_declaration
   name: (identifier) @type)
 (constructor_declaration
   name: (identifier) @constructor)
+(constructor_initializer [
+  "base" @constructor
+])
 
 (variable_declaration
   (identifier) @type)
 (object_creation_expression
   (identifier) @type)
 
-(generic_name
-  (identifier) @type)
+; Generic Types.
+(type_of_expression
+  (generic_name
+    (identifier) @type))
+
+(type_argument_list
+  (generic_name
+    (identifier) @type))
+
+(base_list
+  (generic_name
+    (identifier) @type))
+
+(type_constraint
+  (generic_name
+    (identifier) @type))
+
+(object_creation_expression
+  (generic_name
+   (identifier) @type))
+
+(property_declaration
+  (generic_name
+    (identifier) @type))
+
+(_
+  type: (generic_name
+   (identifier) @type))
+; Generic Method invocation with generic type
+(invocation_expression
+  function: (generic_name
+              . (identifier) @method))
+
+(invocation_expression
+  (member_access_expression
+    (generic_name
+      (identifier) @method)))
 
 (base_list
   (identifier) @type)
@@ -84,8 +154,58 @@
 (type_argument_list
  (identifier) @type)
 
+(type_parameter_list
+  (type_parameter) @type)
+
+(type_parameter_constraints_clause
+  target: (identifier) @type)
+
 (attribute
  name: (identifier) @attribute)
+
+(for_each_statement
+  type: (identifier) @type)
+
+(tuple_element
+  type: (identifier) @type)
+
+(tuple_expression
+  (argument
+    (declaration_expression
+      type: (identifier) @type)))
+
+(as_expression
+  right: (identifier) @type)
+
+(type_of_expression
+  (identifier) @type)
+
+(name_colon
+  (identifier) @parameter)
+
+(warning_directive) @text.warning
+(error_directive) @exception
+
+(define_directive
+  (identifier) @constant) @constant.macro
+(undef_directive
+  (identifier) @constant) @constant.macro
+
+(line_directive) @constant.macro
+(line_directive
+  (preproc_integer_literal) @constant
+  (preproc_string_literal)? @string)
+
+(pragma_directive
+  (identifier) @constant) @constant.macro
+(pragma_directive
+  (preproc_string_literal) @string) @constant.macro
+
+[
+ (nullable_directive)
+ (region_directive)
+ (endregion_directive)
+] @constant.macro
 
 [
  "if"
@@ -93,14 +213,22 @@
  "switch"
  "break"
  "case"
+ (if_directive)
+ (elif_directive)
+ (else_directive)
+ (endif_directive)
 ] @conditional
+
+(if_directive
+  (identifier) @constant)
+(elif_directive
+  (identifier) @constant)
 
 [
  "while"
  "for"
  "do"
  "continue"
- "in"
  "goto"
  "foreach"
 ] @repeat
@@ -178,27 +306,43 @@
  "using"
 ] @include
 
+(alias_qualified_name
+  (identifier "global") @include)
+
+[
+ "with"
+ "new"
+ "typeof"
+ "nameof"
+ "sizeof"
+ "is"
+ "as"
+ "and"
+ "or"
+ "not"
+ "stackalloc"
+ "in"
+ "out"
+ "ref"
+] @keyword.operator
+
 [
  "lock"
  "params"
- "ref"
- "sizeof"
  "operator"
- "is"
- "as"
- "new"
  "default"
- "yield"
- "return"
- "typeof"
  "abstract"
  "const"
  "extern"
+ "implicit"
+ "explicit"
  "internal"
  "override"
  "private"
  "protected"
  "public"
+ "internal"
+ "partial"
  "readonly"
  "sealed"
  "static"
@@ -214,5 +358,33 @@
  "struct"
  "get"
  "set"
+ "init"
+ "where"
+ "record"
+ "event"
+ "add"
+ "remove"
+ "checked"
+ "unchecked"
+ "fixed"
 ] @keyword
 
+(parameter_modifier) @operator
+
+(query_expression
+  (_ [
+    "from"
+    "orderby"
+    "select"
+    "group"
+    "by"
+    "ascending"
+    "descending"
+    "equals"
+    "let"
+  ] @keyword))
+
+[
+  "return"
+  "yield"
+] @keyword.return

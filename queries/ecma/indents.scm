@@ -12,6 +12,8 @@
   (template_substitution)
   (expression_statement (call_expression))
   (export_clause)
+  (switch_statement)
+  (switch_case)
 ] @indent
 
 [

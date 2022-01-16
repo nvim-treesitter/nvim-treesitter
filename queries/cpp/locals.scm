@@ -6,7 +6,7 @@
                 (identifier) @definition.parameter))
 (optional_parameter_declaration
   declarator: (identifier) @definition.parameter)
-;; Class / struct defintions
+;; Class / struct definitions
 (class_specifier) @scope
 
 (reference_declarator
@@ -16,14 +16,14 @@
   (identifier) @definition.var)
 
 (struct_specifier
-  name: (scoped_type_identifier
+  name: (qualified_identifier
           name: (type_identifier) @definition.type))
 
 (class_specifier
   name: (type_identifier) @definition.type)
 
 (class_specifier
-  name: (scoped_type_identifier
+  name: (qualified_identifier
           name: (type_identifier) @definition.type))
 
 (alias_declaration
@@ -42,19 +42,15 @@
 ((namespace_identifier) @reference
                         (set! reference.kind "namespace"))
 
-;; Function defintions
+;; Function definitions
 (template_function
   name: (identifier) @definition.function) @scope
 
 (template_method
   name: (field_identifier) @definition.method) @scope
 
-(template_function
-  name: (scoped_identifier
-    name: (identifier) @definition.function)) @scope
-
 (function_declarator
-  declarator: (scoped_identifier
+  declarator: (qualified_identifier
                 name: (identifier) @definition.function)) @scope
 
 (field_declaration

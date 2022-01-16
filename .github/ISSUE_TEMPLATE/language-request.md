@@ -7,6 +7,6 @@ assignees: ''
 
 ---
 
-**Language informations**
+**Language information**
 
-Please paste any useful informations here !
+Please paste any useful information here !

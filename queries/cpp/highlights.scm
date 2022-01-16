@@ -1,13 +1,7 @@
 ; inherits: c
 
 ((identifier) @field
- (#match? @field "^_"))
-
-((identifier) @field
- (#match? @field "^m_"))
-
-((identifier) @field
- (#match? @field "_$"))
+ (#match? @field "(^_|^m_|_$)"))
 
 (parameter_declaration
   declarator: (reference_declarator) @parameter)
@@ -23,6 +17,9 @@
 (template_function
   name: (identifier) @function)
 
+(template_method
+  name: (field_identifier) @method)
+
 (((field_expression
      (field_identifier) @method)) @_parent
  (#has-parent? @_parent template_method function_declarator call_expression))
@@ -33,38 +30,33 @@
 (function_declarator
   declarator: (field_identifier) @method)
 
-(template_function
-  name: (scoped_identifier
-    name: (identifier) @function))
-
-
-((identifier) @type
- (#match? @type "^[A-Z]")
- (#not-has-parent? @type function_declarator))
 
 (namespace_identifier) @namespace
 ((namespace_identifier) @type
-                        (#match? @type "^[A-Z]"))
+                        (#lua-match? @type "^[A-Z]"))
 ((namespace_identifier) @constant
-                        (#match? @constant "^[A-Z][A-Z_0-9]*$"))
+                        (#lua-match? @constant "^[A-Z][A-Z_0-9]*$"))
 (namespace_definition
   name: (identifier) @namespace)
+
+(using_declaration . "using" . "namespace" . [(qualified_identifier) (identifier)] @namespace)
 
 (destructor_name
   (identifier) @method)
 
 (function_declarator
-      declarator: (scoped_identifier
+      declarator: (qualified_identifier
         name: (identifier) @function))
 ((function_declarator
-      declarator: (scoped_identifier
+      declarator: (qualified_identifier
         name: (identifier) @constructor))
- (#match? @constructor "^[A-Z]"))
+ (#lua-match? @constructor "^[A-Z]"))
 
 (operator_name) @function
+"static_assert" @function.builtin
 
 (call_expression
-  function: (scoped_identifier
+  function: (qualified_identifier
               name: (identifier) @function))
 
 (call_expression
@@ -73,22 +65,22 @@
 
 ((call_expression
   function: (identifier) @constructor)
-(#match? @constructor "^[A-Z]"))
+(#lua-match? @constructor "^[A-Z]"))
 ((call_expression
-  function: (scoped_identifier
+  function: (qualified_identifier
               name: (identifier) @constructor))
-(#match? @constructor "^[A-Z]"))
+(#lua-match? @constructor "^[A-Z]"))
 
 ((call_expression
   function: (field_expression
               field: (field_identifier) @constructor))
-(#match? @constructor "^[A-Z]"))
+(#lua-match? @constructor "^[A-Z]"))
 
-;; constructing a type in a intizializer list: Constructor ():  **SuperType (1)**
+;; constructing a type in an initializer list: Constructor ():  **SuperType (1)**
 ((field_initializer
   (field_identifier) @constructor
   (argument_list))
- (#match? @constructor "^[A-Z]"))
+ (#lua-match? @constructor "^[A-Z]"))
 
 
 ; Constants
@@ -130,8 +122,14 @@
  "typename"
  "using"
  "virtual"
+ "co_await"
  (auto)
 ] @keyword
+
+[
+ "co_yield"
+ "co_return"
+] @keyword.return
 
 [
  "new"
@@ -154,10 +152,7 @@
 ] @keyword.operator
 
 "::" @operator
-"..." @operator
 
-; Annotations (not fully supported by parser)
+(attribute_declaration) @attribute
 
-((ERROR) @attribute
-         (#vim-match? @attribute  "\[?\[.*\]\]?.*$"))
-(attribute) @attribute
+(literal_suffix) @operator

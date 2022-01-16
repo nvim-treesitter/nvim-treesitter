@@ -1,8 +1,5 @@
 ; Variables
 (identifier) @variable
-(interpolation
-  "#{" @punctuation.special
-  "}" @punctuation.special) @none
 
 ; Keywords
 
@@ -19,15 +16,19 @@
  "next"
  "rescue"
  "retry"
- "return"
  "then"
- "yield"
  ] @keyword
+
+[
+ "return"
+ "yield"
+] @keyword.return
 
 [
  "and"
  "or"
  "in"
+ "not"
 ] @keyword.operator
 
 [
@@ -163,13 +164,44 @@
 ; Operators
 
 [
+ "!"
  "="
+ "=="
+ "==="
+ "<=>"
  "=>"
  "->"
- "+"
- "-"
+ ">>"
+ "<<"
+ ">"
+ "<"
+ ">="
+ "<="
+ "**"
  "*"
  "/"
+ "%"
+ "+"
+ "-"
+ "&"
+ "|"
+ "^"
+ "&&"
+ "||"
+ "||="
+ "&&="
+ "!="
+ "%="
+ "+="
+ "-="
+ "*="
+ "/="
+ "=~"
+ "!~"
+ "?"
+ ":"
+ ".."
+ "..."
  ] @operator
 
 [
@@ -188,5 +220,9 @@
  "%w("
  "%i("
  ] @punctuation.bracket
+
+(interpolation
+  "#{" @punctuation.special
+  "}" @punctuation.special) @none
 
 (ERROR) @error

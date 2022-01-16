@@ -1,190 +1,409 @@
-;;; Kotlin
+;;; Identifiers
 
 (simple_identifier) @variable
-; Reset some
-(navigation_suffix (simple_identifier) @none)
-(import_header (identifier (simple_identifier) @none))
-(package_header (identifier (simple_identifier) @none))
 
+; `it` keyword inside lambdas
+; FIXME: This will highlight the keyword outside of lambdas since tree-sitter
+;        does not allow us to check for arbitrary nestation
+((simple_identifier) @variable.builtin
+(#eq? @variable.builtin "it"))
 
-;; Strings
-(line_string_literal) @string
-(multi_line_string_literal) @string
-; Interpolated
-(interpolated_identifier) @variable
-(interpolated_expression) @none
+; `field` keyword inside property getter/setter
+; FIXME: This will highlight the keyword outside of getters and setters
+;        since tree-sitter does not allow us to check for arbitrary nestation
+((simple_identifier) @variable.builtin
+(#eq? @variable.builtin "field"))
 
+; `this` this keyword inside classes
+(this_expression) @variable.builtin
 
-;; Suffixes
-(navigation_expression (navigation_suffix (simple_identifier) @property ))
-; Reset some
-(assignment (navigation_expression (navigation_suffix (simple_identifier) @none )))
-(call_expression (navigation_expression (navigation_suffix (simple_identifier) @none )))
-(navigation_expression (navigation_expression (navigation_suffix (simple_identifier) @none )))
+; `super` keyword inside classes
+(super_expression) @variable.builtin
 
+(class_parameter
+	(simple_identifier) @property)
 
+(class_body
+	(property_declaration
+		(variable_declaration
+			(simple_identifier) @property)))
 
-;; Variables/fields
-; attribute in data classes etc.
-(class_parameter (simple_identifier) @field)
-; variable in normal classes
-(property_declaration (variable_declaration (simple_identifier) @variable))
-; accessed field in blocks. `logger` in `logger.info("")`
-(statements (call_expression (navigation_expression (simple_identifier) @variable)))
-(indexing_expression (call_expression (navigation_expression (simple_identifier) @variable)))
-; `classProp` in `classProp.lastIndex`
-(statements (navigation_expression (simple_identifier) @variable))
-; `variable` in `variable = car.doors`
-(directly_assignable_expression (simple_identifier) @variable)
+; id_1.id_2.id_3: `id_2` and `id_3` are assumed as object properties
+(_
+	(navigation_suffix
+		(simple_identifier) @property))
 
-
-;; Constants
-; Assume all-caps names are constants
+; SCREAMING CASE identifiers are assumed to be constants
 ((simple_identifier) @constant
- (#match? @constant "^[A-Z][A-Z_0-9]+$"))
-((interpolated_identifier) @constant
- (#vim-match? @constant "^[A-Z][A-Z_0-9]+$"))
+(#lua-match? @constant "^[A-Z][A-Z0-9_]*$"))
 
+(_
+	(navigation_suffix
+		(simple_identifier) @constant
+		(#lua-match? @constant "^[A-Z][A-Z0-9_]*$")))
 
-(lambda_parameters) @parameter
+(enum_entry
+	(simple_identifier) @constant)
 
-
-;; Builtin functions
-((simple_identifier) @function.macro
- (#vim-match? @function.macro "^(commonPrefixWith|commonSuffixWith|endsWith|findAnyOf|findLastAnyOf|hasSurrogatePairAt|ifBlank|ifEmpty|indexOf|indexOfAny|isEmpty|isNotBlank|isNotEmpty|isNullOrBlank|isNullOrEmpty|lastIndexOf|lastIndexOfAny|lineSequence|lines|orEmpty|padEnd|padStart|removePrefix|removeRange|removeSuffix|removeSurrounding|replace|replaceAfter|replaceAfterLast|replaceBefore|replaceBeforeLast|replaceFirst|replaceRange|split|splitToSequence|startsWith|subSequence|substring|substringAfter|substringAfterLast|substringBefore|substringBeforeLast|trim|trimEnd|trimStart|containsKey|containsValue|filter|filterKeys|filterNot|filterNotTo|filterTo|filterValues|getOrElse|getOrPut|getValue|ifEmpty|isNotEmpty|isNullOrEmpty|mapKeys|mapKeysTo|mapValues|mapValuesTo|orEmpty|putAll|remove|toMap|toMutableMap|toPair|also|apply|let|run|takeIf|takeUnless|prependIndent|replaceIndent|replaceIndentByMargin|trimIndent|trimMargin|all|any|asIterable|asSequence|associate|associateBy|associateByTo|associateTo|associateWith|associateWithTo|chunked|chunkedSequence|count|drop|dropLast|dropLastWhile|dropWhile|elementAtOrElse|elementAtOrNull|filter|filterIndexed|filterIndexedTo|filterNot|filterNotTo|filterTo|find|findLast|first|firstOrNull|flatMap|flatMapIndexed|flatMapIndexedTo|flatMapTo|fold|foldIndexed|foldRight|foldRightIndexed|forEach|forEachIndexed|getOrElse|getOrNull|groupBy|groupByTo|groupingBy|indexOfFirst|indexOfLast|last|lastOrNull|map|mapIndexed|mapIndexedNotNull|mapIndexedNotNullTo|mapIndexedTo|mapNotNull|mapNotNullTo|mapTo|max|maxBy|maxByOrNull|maxOf|maxOfOrNull|maxOfWith|maxOfWithOrNull|maxOrNull|maxWith|maxWithOrNull|min|minBy|minByOrNull|minOf|minOfOrNull|minOfWith|minOfWithOrNull|minOrNull|minWith|minWithOrNull|none|onEach|onEachIndexed|partition|random|randomOrNull|reduce|reduceIndexed|reduceIndexedOrNull|reduceOrNull|reduceRight|reduceRightIndexed|reduceRightIndexedOrNull|reduceRightOrNull|reversed|runningFold|runningFoldIndexed|runningReduce|runningReduceIndexed|scan|scanIndexed|scanReduce|scanReduceIndexed|single|singleOrNull|slice|sumBy|sumByDouble|sumOf|take|takeLast|takeLastWhile|takeWhile|toCollection|toHashSet|toList|toMutableList|toSet|windowed|windowedSequence|withIndex|zip|zipWithNext)$"))
-
-(call_expression
-   (simple_identifier) @function)
-
-((simple_identifier) @function.builtin
- (#vim-match? @function.builtin "^(print|println|buildMap|emptyMap|hashMapOf|linkedMapOf|mapOf|mutableMapOf|buildSet|emptySet|hashSetOf|linkedSetOf|mutableSetOf|setOf|setOfNotNull|TODO|repeat|run|with)$"))
-
-
-;; Numbers
-(integer_literal) @number
-
-;; Booleans
-(boolean_literal) @boolean
-
-;; Types
 (type_identifier) @type
 
-;; Annotations
-(annotation (single_annotation) @attribute)
-(single_annotation (user_type (type_identifier) @attribute))
-(single_annotation (constructor_invocation (user_type (type_identifier) @attribute)))
+((type_identifier) @type.builtin
+	(#any-of? @type.builtin
+		"Byte"
+		"Short"
+		"Int"
+		"Long"
+		"UByte"
+		"UShort"
+		"UInt"
+		"ULong"
+		"Float"
+		"Double"
+		"Boolean"
+		"Char"
+		"String"
+		"Array"
+		"ByteArray"
+		"ShortArray"
+		"IntArray"
+		"LongArray"
+		"UByteArray"
+		"UShortArray"
+		"UIntArray"
+		"ULongArray"
+		"FloatArray"
+		"DoubleArray"
+		"BooleanArray"
+		"CharArray"
+		"Map"
+		"Set"
+		"List"
+		"EmptyMap"
+		"EmptySet"
+		"EmptyList"
+		"MutableMap"
+		"MutableSet"
+		"MutableList"
+))
 
+(package_header
+	. (identifier)) @namespace
 
-;; it
-(indexing_expression (simple_identifier) @variable.builtin
-  (#vim-match? @variable.builtin "^it$"))
+(import_header
+	"import" @include)
 
+; The last `simple_identifier` in a `import_header` will always either be a function
+; or a type. Classes can appear anywhere in the import path, unlike functions
+(import_header
+	(identifier
+		(simple_identifier) @type @_import)
+	(import_alias
+		(type_identifier) @type)?
+		(#lua-match? @_import "^[A-Z]"))
 
-;; Operators
+(import_header
+	(identifier
+		(simple_identifier) @function @_import .)
+	(import_alias
+		(type_identifier) @function)?
+		(#lua-match? @_import "^[a-z]"))
+
+; TODO: Seperate labeled returns/breaks/continue/super/this
+;       Must be implemented in the parser first
+(label) @label
+
+;;; Function definitions
+
+(function_declaration
+	. (simple_identifier) @function)
+
+(getter
+	("get") @function.builtin)
+(setter
+	("set") @function.builtin)
+
+(primary_constructor) @constructor
+(secondary_constructor
+	("constructor") @constructor)
+
+(constructor_invocation
+	(user_type
+		(type_identifier) @constructor))
+
+(anonymous_initializer
+	("init") @constructor)
+
+(parameter
+	(simple_identifier) @parameter)
+
+(parameter_with_optional_type
+	(simple_identifier) @parameter)
+
+; lambda parameters
+(lambda_literal
+	(lambda_parameters
+		(variable_declaration
+			(simple_identifier) @parameter)))
+
+;;; Function calls
+
+; function()
+(call_expression
+	. (simple_identifier) @function)
+
+; object.function() or object.property.function()
+(call_expression
+	(navigation_expression
+		(navigation_suffix
+			(simple_identifier) @function) . ))
+
+(call_expression
+	. (simple_identifier) @function.builtin
+    (#any-of? @function.builtin
+		"arrayOf"
+		"arrayOfNulls"
+		"byteArrayOf"
+		"shortArrayOf"
+		"intArrayOf"
+		"longArrayOf"
+		"ubyteArrayOf"
+		"ushortArrayOf"
+		"uintArrayOf"
+		"ulongArrayOf"
+		"floatArrayOf"
+		"doubleArrayOf"
+		"booleanArrayOf"
+		"charArrayOf"
+		"emptyArray"
+		"mapOf"
+		"setOf"
+		"listOf"
+		"emptyMap"
+		"emptySet"
+		"emptyList"
+		"mutableMapOf"
+		"mutableSetOf"
+		"mutableListOf"
+		"print"
+		"println"
+		"error"
+		"TODO"
+		"run"
+		"runCatching"
+		"repeat"
+		"lazy"
+		"lazyOf"
+		"enumValues"
+		"enumValueOf"
+		"assert"
+		"check"
+		"checkNotNull"
+		"require"
+		"requireNotNull"
+		"with"
+		"suspend"
+		"synchronized"
+))
+
+;;; Literals
+
 [
-"="
-"-"
-"->"
-"+"
-"++"
-"--"
-"*"
-] @operator
+	(comment)
+	(shebang_line)
+] @comment
 
-;; Keyword operators
+(real_literal) @float
 [
-"in"
-] @keyword.operator
+	(integer_literal)
+	(long_literal)
+	(hex_literal)
+	(bin_literal)
+	(unsigned_literal)
+] @number
 
-((simple_identifier) @keyword.operator
- (#vim-match? @keyword.operator "^to$"))
-
-
-;; Keywords
 [
- "this"
- "override"
- "enum"
- "as"
- "class"
- "object"
- "data"
- "val"
- "init"
- "private"
- "var"
- "break"
- "by"
- "fun"
- "companion"
- "return"
- "constructor"
- "throw"
+	"null" ; should be highlighted the same as booleans
+	(boolean_literal)
+] @boolean
+
+(character_literal) @character
+
+[
+	(line_string_literal)
+	(multi_line_string_literal)
+] @string
+
+; NOTE: Escapes not allowed in multi-line strings
+(line_string_literal (character_escape_seq) @string.escape)
+
+; There are 3 ways to define a regex
+;    - "[abc]?".toRegex()
+(call_expression
+	(navigation_expression
+		([(line_string_literal) (multi_line_string_literal)] @string.regex)
+		(navigation_suffix
+			((simple_identifier) @_function
+			(#eq? @_function "toRegex")))))
+
+;    - Regex("[abc]?")
+(call_expression
+	((simple_identifier) @_function
+	(#eq? @_function "Regex"))
+	(call_suffix
+		(value_arguments
+			(value_argument
+				[ (line_string_literal) (multi_line_string_literal) ] @string.regex))))
+
+;    - Regex.fromLiteral("[abc]?")
+(call_expression
+	(navigation_expression
+		((simple_identifier) @_class
+		(#eq? @_class "Regex"))
+		(navigation_suffix
+			((simple_identifier) @_function
+			(#eq? @_function "fromLiteral"))))
+	(call_suffix
+		(value_arguments
+			(value_argument
+				[ (line_string_literal) (multi_line_string_literal) ] @string.regex))))
+
+;;; Keywords
+
+(type_alias "typealias" @keyword)
+[
+	(class_modifier)
+	(member_modifier)
+	(function_modifier)
+	(property_modifier)
+	(platform_modifier)
+	(variance_modifier)
+	(parameter_modifier)
+	(visibility_modifier)
+	(reification_modifier)
+	(inheritance_modifier)
+]@keyword
+
+[
+	"val"
+	"var"
+	"enum"
+	"class"
+	"object"
+	"interface"
+;	"typeof" ; NOTE: It is reserved for future use
 ] @keyword
 
-(null_literal) @keyword
+("fun") @keyword.function
 
-; const etc.
-(property_modifier) @keyword
+(jump_expression) @keyword.return
 
-
-;; Conditionals
 [
-"if"
-"is"
-"else"
-"when"
+	"if"
+	"else"
+	"when"
 ] @conditional
 
-
-;; Loops
 [
-"for"
-"while"
+	"for"
+	"do"
+	"while"
 ] @repeat
 
+[
+	"try"
+	"catch"
+	"throw"
+	"finally"
+] @exception
 
-;; Includes
 
-"import" @include
-"package" @include
+(annotation
+	"@" @attribute (use_site_target)? @attribute)
+(annotation
+	(user_type
+		(type_identifier) @attribute))
+(annotation
+	(constructor_invocation
+		(user_type
+			(type_identifier) @attribute)))
 
+(file_annotation
+	"@" @attribute "file" @attribute ":" @attribute)
+(file_annotation
+	(user_type
+		(type_identifier) @attribute))
+(file_annotation
+	(constructor_invocation
+		(user_type
+			(type_identifier) @attribute)))
 
-;; Punctuation
+;;; Operators & Punctuation
 
 [
-"::"
-";"
-"."
-","
-] @punctuation.delimiter
+	"!"
+	"!="
+	"!=="
+	"="
+	"=="
+	"==="
+	">"
+	">="
+	"<"
+	"<="
+	"||"
+	"&&"
+	"+"
+	"++"
+	"+="
+	"-"
+	"--"
+	"-="
+	"*"
+	"*="
+	"/"
+	"/="
+	"%"
+	"%="
+	"?."
+	"?:"
+	"!!"
+	"is"
+	"!is"
+	"in"
+	"!in"
+	"as"
+	"as?"
+	".."
+	"->"
+] @operator
 
 [
-"$"
-"${"
-"}"
-] @none
-
-[
-"["
-"]"
-"{"
-"}"
-"("
-")"
+	"(" ")"
+	"[" "]"
+	"{" "}"
 ] @punctuation.bracket
 
 [
-"$"
-] @punctuation.special
+	"."
+	","
+	";"
+	":"
+	"::"
+] @punctuation.delimiter
 
-;; Comments
-(comment) @comment
+; NOTE: `interpolated_identifier`s can be highlighted in any way
+(line_string_literal
+	"$" @punctuation.special
+	(interpolated_identifier) @none)
+(line_string_literal
+	"${" @punctuation.special
+	(interpolated_expression) @none
+	"}" @punctuation.special)
 
-; Functions
-(function_declaration (simple_identifier) @function)
-
-
-(ERROR) @error
-
-; TODO parameter
+(multi_line_string_literal
+    "$" @punctuation.special
+    (interpolated_identifier) @none)
+(multi_line_string_literal
+	"${" @punctuation.special
+	(interpolated_expression) @none
+	"}" @punctuation.special)
