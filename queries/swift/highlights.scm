@@ -29,7 +29,15 @@
 (inheritance_constraint (identifier (simple_identifier) @parameter))
 (equality_constraint (identifier (simple_identifier) @parameter))
 
-["typealias" "struct" "class" "enum" "protocol" "extension"] @keyword
+[
+  "typealias"
+  "struct"
+  "class"
+  "enum"
+  "protocol"
+  "extension"
+  "indirect"
+] @keyword
 
 (class_body (property_declaration (value_binding_pattern (non_binding_pattern (simple_identifier) @property))))
 (protocol_property_declaration (value_binding_pattern (non_binding_pattern (simple_identifier) @property)))
@@ -69,6 +77,8 @@
 (switch_entry ["fallthrough" @keyword])
 (switch_entry (default_keyword) @keyword)
 "return" @keyword.return
+(ternary_expression
+  ["?" ":"] @conditional)
 
 ["do" (throw_keyword) (catch_keyword)] @keyword
 
@@ -129,6 +139,12 @@
  "%="
  "!="
  "!=="
+ "=="
  "==="
+ "??"
+
  "->"
+
+ "..<"
+ "..."
 ] @operator
