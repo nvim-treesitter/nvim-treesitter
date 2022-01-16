@@ -1,3 +1,6 @@
+[ "." ";" ":" "," "->" ] @punctuation.delimiter
+[ "\\(" "(" ")" "[" "]" "{" "}"] @punctuation.bracket ; TODO: "\\(" ")" in interpolations should be @punctuation.special
+
 ; Identifiers
 (attribute) @variable
 (simple_identifier) @variable
