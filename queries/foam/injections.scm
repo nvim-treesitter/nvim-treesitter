@@ -7,3 +7,6 @@
 ;; Highlight regex syntax inside literal strings
 ((string_literal) @regex)
 
+;; Highlight PyFoam syntax as Python statements
+(pyfoam_variable code_body: (_) @python)
+(pyfoam_expression code_body: (_) @python)
