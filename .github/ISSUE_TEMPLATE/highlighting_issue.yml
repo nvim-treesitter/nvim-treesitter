@@ -26,7 +26,7 @@ body:
   - type: textarea
     attributes:
       label: Example snippet that causes the problem
-      description: Please provide an example snippet in plain text that causes the problem
+      description: Please provide an example snippet in plain text that causes the problem.
     validations:
       required: true
 
