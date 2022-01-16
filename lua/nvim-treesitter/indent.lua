@@ -4,11 +4,35 @@ local tsutils = require "nvim-treesitter.ts_utils"
 
 local M = {}
 
+---@param lnum number (0-indexed)
+local function get_last_node_at_line(root, lnum)
+  local node
+  for i = 0, root:child_count() - 1 do
+    local child = root:child(i)
+    local child_srow = child:start()
+    if child_srow > lnum then
+      break
+    end
+    if child_srow == lnum then
+      node = child
+    end
+  end
+  return node
+end
+
 -- TODO(kiyan): move this in tsutils and document it
+---@param lnum number (0-indexed)
 local function get_node_at_line(root, lnum)
   for node in root:iter_children() do
-    local srow, _, erow = node:range()
+    local srow, scol, erow = node:range()
     if srow == lnum then
+      if node:child_count() > 0 then
+        local child = get_last_node_at_line(node, srow)
+        if child and child:named() and ({ child:start() })[2] == scol then
+          -- last child node is named and start at the same col as parent
+          return child
+        end
+      end
       return node
     end
 
@@ -89,7 +113,7 @@ function M.get_indent(lnum)
         -- if the previous node is being constructed (like function() `o` in lua), or line is inside the node
         -- we indent one more from the start of node, else we indent default
         -- NOTE: this doesn't work for python which behave strangely
-        if prev_node:has_error() or lnum <= end_row then
+        if prev_node:has_error() or lnum - 1 < end_row then
           return vim.fn.indent(row + 1) + indent_size
         end
         return vim.fn.indent(row + 1)
