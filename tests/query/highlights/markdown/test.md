@@ -18,11 +18,11 @@
 <!--                                                          ^ TSLiteral -->
 <!--^ TSPunctDelimiter                                                    -->
 <!-- ^ TSPunctDelimiter                                                   -->
-<!--                                                                        ^ TSPunctDelimiter -->
+<!--                                                                      //TODO: currently disabled TSPunctDelimiter -->
 
 [link_text](#local_reference "link go brr...")
 <!-- ^ TSTextReference                                                    --> 
 <!--                 ^ TSURI                                              -->
 <!--                            ^ TSLiteral                               -->
 <!-- <- TSPunctDelimiter                                                  -->
-<!--                                         ^ TSPunctDelimiter           -->
+<!--                                         //TODO: currently disabled TSPunctDelimiter           -->
