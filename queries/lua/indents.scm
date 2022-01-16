@@ -13,18 +13,21 @@
   (arguments)
 ] @indent
 
- @ignore
-
 [
+  "do"
   "end"
+  "then"
   "until"
   "{"
   "}"
   "("
   ")"
-  "then"
-  (else_statement)
+  "elseif"
   (elseif_statement)
+  "else"
+  (else_statement)
 ] @branch
 
 (comment) @ignore
+
+(string) @ignore
