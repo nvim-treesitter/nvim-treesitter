@@ -127,6 +127,8 @@
  "co_await"
  "concept"
  "requires"
+ "consteval"
+ "constinit"
  (auto)
 ] @keyword
 
@@ -155,7 +157,10 @@
  ;"xor_eq"
 ] @keyword.operator
 
-"::" @operator
+[
+  "<=>"
+  "::"
+] @operator
 
 (attribute_declaration) @attribute
 
