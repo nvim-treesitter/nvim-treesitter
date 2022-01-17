@@ -27,13 +27,13 @@
     "revision": "4fd115d3bb7046cd094f21bfe5766c302dbf64cd"
   },
   "cpp": {
-    "revision": "049c2a4edeb6c19bacefb4d40aa03c6fdc175575"
+    "revision": "8071cdeedddd545d782ab24424bc46e0b290da9d"
   },
   "css": {
     "revision": "a03f1d2d1dfbf6f8e0fdca5f9ff030228241eb57"
   },
   "cuda": {
-    "revision": "61de33bc41231a2e7c1970542c505a42d62c98eb"
+    "revision": "1dba9b114bcb87b1ed9419578e4d5cc4f805247e"
   },
   "d": {
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
@@ -98,6 +98,9 @@
   "graphql": {
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
+  "hack": {
+    "revision": "4770eb21a36307c156cfd2555ddd8e10c304fdc3"
+  },
   "haskell": {
     "revision": "d6ccd2d9c40bdec29fee0027ef04fe5ff1ae4ceb"
   },
@@ -105,7 +108,7 @@
     "revision": "3cb7fc28247efbcb2973b97e71c78838ad98a583"
   },
   "heex": {
-    "revision": "1a8e285dfa150427edc839eea60a7b9fac332067"
+    "revision": "6274024183195ff7edeb4220d59177a5c53decea"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
