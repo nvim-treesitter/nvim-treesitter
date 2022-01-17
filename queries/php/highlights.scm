@@ -28,7 +28,7 @@
   . [(name) (qualified_name)] @type
   (name) @constant)
 
-; Functions
+; Functions, methods, constructors
 
 (array_creation_expression "array" @function.builtin)
 (list_literal "list" @function.builtin)
@@ -54,6 +54,12 @@
 (nullsafe_member_call_expression
     name: (name) @method)
 
+(method_declaration
+    name: (name) @constructor
+    (#eq? @constructor "__construct"))
+(object_creation_expression
+  [(name) (qualified_name)] @constructor)
+
 ; Parameters
 [
   (simple_parameter)
@@ -77,10 +83,6 @@
 
 ((name) @constant
  (#vim-match? @constant "^_?[A-Z][A-Z\d_]+$"))
-
-(method_declaration
-    name: (name) @constructor
-    (#eq? @constructor "__construct"))
 
 (const_declaration (const_element (name) @constant))
 
