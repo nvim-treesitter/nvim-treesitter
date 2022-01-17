@@ -1,16 +1,10 @@
-(text) @text
-(comment) @comment
-(doctype) @constant
-
-; HEEx attributes are highlighted as HTML attributes
-(attribute_name) @tag.attribute
-(quoted_attribute_value) @string
-
 [
   "%>"
+  "--%>"
   "/>"
   "<!"
   "<"
+  "<%!--"
   "<%"
   "<%#"
   "<%%="
@@ -21,13 +15,33 @@
   "}"
 ] @tag.delimiter
 
-[
-  "="
-] @operator
+"=" @operator
 
-; HEEx tags are highlighted as HTML
+; HEEx inherits the DOCTYPE tag from HTML
+(doctype) @constant
+
+; HEEx tags are highlighted as HTML tags
 (tag_name) @tag
 
-; HEEx components are highlighted as types (Elixir modules)
-(component_name) @type
+; HEEx comments are highlighted as such
+(comment) @comment
 
+; HEEx text content is treated as markup
+(text) @text
+
+; Tree-sitter parser errors
+(ERROR) @error
+
+; HEEx attributes are highlighted as HTML attributes
+(attribute_name) @tag.attribute
+[
+  (attribute_value)
+  (quoted_attribute_value)
+] @string
+
+; HEEx components are highlighted as types (Elixir modules)
+(component_name [
+  (module) @type
+  (function) @function
+  "." @punctuation.delimiter
+])

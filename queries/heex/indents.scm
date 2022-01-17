@@ -1,4 +1,4 @@
-; HEEx  indents like HTML
+; HEEx indents like HTML
 [
   (component)
   (tag)
