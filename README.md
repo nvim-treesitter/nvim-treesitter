@@ -152,7 +152,7 @@ Experimental parsers are parsers that are maintained, but not stable enough for
 daily use yet. They are excluded from automatic installation when
 `ensure_installed` is set to `"maintained"`.
 
-We are looking for maintainers to add more parsers and to write query files for their languages.
+We are looking for maintainers to add more parsers and to write query files for their languages. Check our [tracking issue](https://github.com/nvim-treesitter/nvim-treesitter/issues/2282) for open language requests.
 
 <!--This section of the README is automatically updated by a CI job-->
 <!--parserinfo-->
