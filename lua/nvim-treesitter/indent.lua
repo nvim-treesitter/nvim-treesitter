@@ -12,6 +12,19 @@ local function get_last_node_at_line(root, lnum)
   return root:descendant_for_range(lnum - 1, col, lnum - 1, col)
 end
 
+local function get_matching_prev_sibling(anchor, start, matcher)
+  local start_row, start_col = start[1], start[2]
+  local node = anchor:descendant_for_range(start_row, start_col, start_row, start_col)
+  local pos = 1
+  -- TODO: reconsider this 999 limit or do something differently in future.
+  --       if anchor has more than 999 children, this would not work.
+  while pos < 999 and node and not matcher(node) do
+    node = node:prev_sibling()
+    pos = pos + 1
+  end
+  return node, pos
+end
+
 local M = {}
 
 local get_indents = tsutils.memoize_by_buf_tick(function(bufnr, root, lang)
@@ -21,6 +34,7 @@ local get_indents = tsutils.memoize_by_buf_tick(function(bufnr, root, lang)
     dedent = {},
     branch = {},
     ignore = {},
+    aligned_indent = {},
   }
 
   for name, node, metadata in queries.iter_captures(bufnr, "indents", root, lang) do
@@ -99,6 +113,30 @@ function M.get_indent(lnum)
     if not is_processed_by_row[srow] and (q.indent[node:id()] and srow ~= erow and srow ~= lnum - 1) then
       indent = indent + indent_size
       is_processed = true
+    end
+
+    if q.aligned_indent[node:id()] and srow ~= erow then
+      local metadata = q.aligned_indent[node:id()]
+      local opening_delimiter = metadata.delimiter:sub(1, 1)
+      local o_delim_node, pos = get_matching_prev_sibling(node, { srow, #vim.fn.getline(srow + 1) - 1 }, function(n)
+        return n:type() == opening_delimiter
+      end)
+
+      if o_delim_node then
+        if pos == 1 then
+          -- hanging indent (previous line ended with starting delimiter)
+          indent = indent + indent_size * 1
+        else
+          local _, o_scol = o_delim_node:start()
+          local aligned_indent = math.max(indent, 0) + o_scol
+          if indent > 0 then
+            indent = aligned_indent
+          else
+            indent = aligned_indent + 1 -- extra space for starting delimiter
+          end
+          is_processed = true
+        end
+      end
     end
 
     is_processed_by_row[srow] = is_processed_by_row[srow] or is_processed
