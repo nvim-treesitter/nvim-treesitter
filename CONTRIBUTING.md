@@ -2,8 +2,8 @@
 
 First of all, thank you very much for contributing to `nvim-treesitter`.
 
-If you haven't already, you should really come and reach out to us on our [gitter](https://gitter.im/nvim-treesitter/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
-room, so we can help you with any question you might have!
+If you haven't already, you should really come and reach out to us on our [zulip]
+server, so we can help you with any question you might have!
 
 As you know, `nvim-treesitter` is roughly split in two parts :
 
@@ -39,7 +39,7 @@ Thus far, there is basically two types of modules:
 In any case, you can build your own module ! To help you started in the process, we have a template
 repository designed to build new modules [here](https://github.com/nvim-treesitter/module-template).
 Feel free to use it, and contact us over on our
-[gitter](https://gitter.im/nvim-treesitter/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link).
+[zulip].
 
 ## Parser configurations
 
@@ -73,7 +73,7 @@ If your language is an extension of a language (TypeScript is an extension of Ja
 example), you can include the queries from your base language by adding the following _as the first
 line of your file_.
 
-```scheme
+```query
 ; inherits: lang1,(optionallang)
 ```
 
@@ -226,7 +226,7 @@ function doSomething() {}
 doSomething(); // Should point to the declaration as the definition
 ```
 
-```scheme
+```query
 (function_declaration
   ((identifier) @definition.var)
    (#set! "definition.var.scope" "parent"))
@@ -273,3 +273,5 @@ the node describing the language and `@content` to describe the injection region
 @return ; Dedent when matching this node
 @ignore ; Skip this node when calculating the indentation level
 ```
+
+[zulip]: nvim-treesitter.zulipchat.com
