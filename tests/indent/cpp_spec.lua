@@ -16,18 +16,9 @@ describe("indent C++:", function()
       expected_failures = {
         -- C
         "c/ternary.c",
-        "c/string.c",
         "c/preproc_func.c",
-        "c/preproc_cond.c",
-        "c/no_braces.c",
         "c/label.c",
-        "c/func.c",
-        "c/expr.c",
         "c/comment.c",
-        "c/array.c",
-        -- C++
-        "cpp/access.cpp",
-        "cpp/stream.cpp",
       },
     })
   end)
@@ -46,14 +37,14 @@ describe("indent C++:", function()
     run:new_line("c/label.c", { on_line = 3, text = "normal:", indent = 0 }, "expected failure", XFAIL)
     run:new_line("c/loop.c", { on_line = 3, text = "x++;", indent = 8 })
     run:new_line("c/preproc_cond.c", { on_line = 5, text = "x++;", indent = 4 })
-    run:new_line("c/preproc_func.c", { on_line = 3, text = "x++; \\", indent = 8 })
-    run:new_line("c/string.c", { on_line = 1, text = "brave new \\", indent = 0 }, "expected failure", XFAIL)
+    run:new_line("c/preproc_func.c", { on_line = 3, text = "x++; \\", indent = 8 }, "expected failure", XFAIL)
+    run:new_line("c/string.c", { on_line = 1, text = "brave new \\", indent = 0 })
     run:new_line("c/string.c", { on_line = 4, text = '"brave new "', indent = 4 })
     run:new_line("c/struct.c", { on_line = 4, text = "int y;", indent = 8 })
     run:new_line("c/switch.c", { on_line = 3, text = "x++;", indent = 12 })
-    run:new_line("c/ternary.c", { on_line = 4, text = ": (x == 0) : 0", indent = 8 })
+    run:new_line("c/ternary.c", { on_line = 4, text = ": (x == 0) : 0", indent = 8 }, "expected failure", XFAIL)
     -- the line after inserted one will be left with wrong indent but we only care about the inserted one
-    run:new_line("c/no_braces.c", { on_line = 4, text = "x++;", indent = 8 }, "expected failure", XFAIL)
+    run:new_line("c/no_braces.c", { on_line = 4, text = "x++;", indent = 8 })
     run:new_line("c/no_braces.c", { on_line = 7, text = "x++;", indent = 8 })
     run:new_line("c/no_braces.c", { on_line = 10, text = "x++;", indent = 8 })
   end)

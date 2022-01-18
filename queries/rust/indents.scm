@@ -16,19 +16,31 @@
   (block)
   (where_clause)
   (use_list)
+  (array_expression)
+  (ordered_field_declaration_list)
+  (field_declaration_list)
+  (enum_variant_list)
+  (parameters)
+  (token_tree)
+  (macro_definition)
 ] @indent
+(trait_item body: (_) @indent)
+(string_literal (escape_sequence)) @indent
+
+(impl_item (where_clause) @dedent)
 
 [
   "where"
-  "("
   ")"
-  "["
   "]"
-  "{"
   "}"
 ] @branch
+(impl_item (declaration_list) @branch)
 
 [
   (line_comment)
-  (raw_string_literal)
+  (string_literal)
 ] @ignore
+
+
+(raw_string_literal) @auto

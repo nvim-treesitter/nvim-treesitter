@@ -23,8 +23,11 @@
   (parameters)
   (binary_operator)
 
+  (lambda)
   (function_definition)
   (class_definition)
+
+  (concatenated_string)
 ] @indent
 
 [
@@ -37,12 +40,4 @@
   (finally_clause)
 ] @branch
 
-[
-  (return_statement)
-  (pass_statement)
-  (raise_statement)
-] @return
-
-[
-  (string)
-] @ignore
+(string) @auto
