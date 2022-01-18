@@ -1,7 +1,6 @@
 [
   (function_definition)
   (function_declaration)
-  (variable_declaration)
   (field)
   (do_statement)
   (while_statement)
@@ -11,7 +10,12 @@
   (return_statement)
   (table_constructor)
   (arguments)
+  (return_statement)
 ] @indent
+
+(return_statement
+  (expression_list
+    (function_call))) @dedent
 
 [
   "do"
@@ -30,4 +34,4 @@
 
 (comment) @ignore
 
-(string) @ignore
+(string) @auto

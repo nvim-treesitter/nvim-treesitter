@@ -268,10 +268,11 @@ the node describing the language and `@content` to describe the injection region
 ### Indents
 
 ```
-@indent ; Indent when matching this node
-@branch ; Dedent when matching this node
-@return ; Dedent when matching this node
-@ignore ; Skip this node when calculating the indentation level
+@indent ; Indent children when matching this node
+@dedent ; Dedent children when matching this node
+@branch ; Dedent itself when matching this node
+@ignore ; Do not indent in this node
+@auto   ; Behaves like 'autoindent' buffer option
 ```
 
 [zulip]: nvim-treesitter.zulipchat.com
