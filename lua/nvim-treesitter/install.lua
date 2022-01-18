@@ -406,12 +406,29 @@ local function install(options)
       languages = parsers.maintained_parsers()
       ask = false
     else
-      languages = vim.tbl_flatten { ... }
+      languages = ...
+      if type(languages) == "string" then
+        languages = { languages }
+      end
       ask = ask_reinstall
     end
 
+    local tmp = {}
+    for _, desc in ipairs(languages) do
+      local value
+      if type(desc) == "string" then
+        value = { name = desc }
+      elseif type(desc) == "table" then
+        value = desc
+      end
+      table.insert(tmp, value)
+    end
+    languages = tmp
+
     if exclude_configured_parsers then
-      languages = utils.difference(languages, configs.get_ignored_parser_installs())
+      languages = vim.tbl_filter(function(val)
+        return not vim.tbl_contains(configs.get_ignored_parser_installs(), val.name)
+      end, languages)
     end
 
     if #languages > 1 then
@@ -419,7 +436,13 @@ local function install(options)
     end
 
     for _, lang in ipairs(languages) do
-      install_lang(lang, ask, cache_folder, install_folder, with_sync, generate_from_grammar)
+      local from_grammar
+      if lang.generate_from_grammar == nil then
+        from_grammar = generate_from_grammar
+      else
+        from_grammar = lang.generate_from_grammar
+      end
+      install_lang(lang.name, ask, cache_folder, install_folder, with_sync, from_grammar)
     end
   end
 end
