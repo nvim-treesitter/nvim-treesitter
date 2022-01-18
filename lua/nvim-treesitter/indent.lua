@@ -5,24 +5,19 @@ local tsutils = require "nvim-treesitter.ts_utils"
 local M = {}
 
 local get_indents = tsutils.memoize_by_buf_tick(function(bufnr, root, lang)
-  local get_map = function(capture)
-    local matches = queries.get_capture_matches(bufnr, capture, "indents", root, lang) or {}
-    local map = {}
-    for _, node in ipairs(matches) do
-      map[node:id()] = true
-    end
-    return map
+  local map = {
+    auto = {},
+    indent = {},
+    dedent = {},
+    branch = {},
+    ignore = {},
+  }
+
+  for name, node in queries.iter_captures(bufnr, "indents", root, lang) do
+    map[name][node:id()] = true
   end
 
-  return {
-    autos = get_map "@auto.node",
-    indents = get_map "@indent.node",
-    dedents = get_map "@dedent.node",
-    branches = get_map "@branch.node",
-    ignores = get_map "@ignore.node",
-    aligned_indents = get_map "@aligned_indent.node",
-    hanging_indents = get_map "@hanging_indent.node",
-  }
+  return map
 end, {
   -- Memoize by bufnr and lang together.
   key = function(bufnr, root, lang)
@@ -69,14 +64,14 @@ function M.get_indent(lnum)
 
   while node do
     -- do 'autoindent' if not marked as @indent
-    if not q.indents[node:id()] and q.autos[node:id()] and node:start() < lnum - 1 and lnum - 1 <= node:end_() then
+    if not q.indent[node:id()] and q.auto[node:id()] and node:start() < lnum - 1 and lnum - 1 <= node:end_() then
       return -1
     end
 
     -- Do not indent if we are inside an @ignore block.
     -- If a node spans from L1,C1 to L2,C2, we know that lines where L1 < line <= L2 would
     -- have their indentations contained by the node.
-    if not q.indents[node:id()] and q.ignores[node:id()] and node:start() < lnum - 1 and lnum - 1 <= node:end_() then
+    if not q.indent[node:id()] and q.ignore[node:id()] and node:start() < lnum - 1 and lnum - 1 <= node:end_() then
       return 0
     end
 
@@ -86,14 +81,14 @@ function M.get_indent(lnum)
 
     if
       not is_processed_by_row[srow]
-      and ((q.branches[node:id()] and srow == lnum - 1) or (q.dedents[node:id()] and srow ~= lnum - 1))
+      and ((q.branch[node:id()] and srow == lnum - 1) or (q.dedent[node:id()] and srow ~= lnum - 1))
     then
       indent = indent - indent_size
       is_processed = true
     end
 
     -- do not indent for nodes that starts-and-ends on same line and starts on target line (lnum)
-    if not is_processed_by_row[srow] and (q.indents[node:id()] and srow ~= erow and srow ~= lnum - 1) then
+    if not is_processed_by_row[srow] and (q.indent[node:id()] and srow ~= erow and srow ~= lnum - 1) then
       indent = indent + indent_size
       is_processed = true
     end
