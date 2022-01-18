@@ -151,10 +151,11 @@ list.ledger = {
 
 list.lua = {
   install_info = {
-    url = "https://github.com/nvim-treesitter/tree-sitter-lua",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = "https://github.com/MunifTanjim/tree-sitter-lua",
+    branch = "main",
+    files = { "src/parser.c", "src/scanner.c" },
   },
-  maintainers = { "@vigoux" },
+  maintainers = { "@muniftanjim" },
 }
 
 list.python = {
