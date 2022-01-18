@@ -203,7 +203,8 @@
   operator: "@"
   operand: [
     (identifier)
-    (call target: (identifier) @constant)]) @constant
+    (call target: (identifier))
+  ] @constant) @constant
 
 ; Documentation
 (unary_operator
