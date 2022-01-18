@@ -2,6 +2,16 @@ local parsers = require "nvim-treesitter.parsers"
 local queries = require "nvim-treesitter.query"
 local tsutils = require "nvim-treesitter.ts_utils"
 
+local function get_first_node_at_line(root, lnum)
+  local col = vim.fn.indent(lnum)
+  return root:descendant_for_range(lnum - 1, col, lnum - 1, col)
+end
+
+local function get_last_node_at_line(root, lnum)
+  local col = #vim.fn.getline(lnum) - 1
+  return root:descendant_for_range(lnum - 1, col, lnum - 1, col)
+end
+
 local M = {}
 
 local get_indents = tsutils.memoize_by_buf_tick(function(bufnr, root, lang)
@@ -13,8 +23,8 @@ local get_indents = tsutils.memoize_by_buf_tick(function(bufnr, root, lang)
     ignore = {},
   }
 
-  for name, node in queries.iter_captures(bufnr, "indents", root, lang) do
-    map[name][node:id()] = true
+  for name, node, metadata in queries.iter_captures(bufnr, "indents", root, lang) do
+    map[name][node:id()] = metadata or {}
   end
 
   return map
@@ -45,11 +55,9 @@ function M.get_indent(lnum)
   local node
   if is_empty_line then
     local prevlnum = vim.fn.prevnonblank(lnum)
-    local col = #vim.fn.getline(prevlnum) - 1
-    node = root:descendant_for_range(prevlnum - 1, col, prevlnum - 1, col)
+    node = get_last_node_at_line(root, prevlnum)
   else
-    local col = vim.fn.indent(lnum)
-    node = root:descendant_for_range(lnum - 1, col, lnum - 1, col)
+    node = get_first_node_at_line(root, lnum)
   end
 
   local indent_size = vim.fn.shiftwidth()
