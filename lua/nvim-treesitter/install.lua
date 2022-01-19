@@ -312,6 +312,10 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
         },
       })
     end
+    local ts_args = { "generate" }
+    if vim.treesitter.language_version >= 14 then
+      table.insert(ts_args, string.format("--abi=%d", vim.treesitter.language_version))
+    end
     vim.list_extend(command_list, {
       {
         cmd = vim.fn.exepath "tree-sitter",
@@ -363,10 +367,22 @@ local function install_lang(lang, ask_reinstall, cache_folder, install_folder, w
       return
     end
 
-    local yesno = fn.input(lang .. " parser already available: would you like to reinstall ? y/n: ")
-    print "\n "
-    if not string.match(yesno, "^y.*") then
-      return
+    -- Now check if the ABI is not correct
+    local parser = vim.treesitter.language.inspect_language(lang)
+    if parser._abi_version == vim.treesitter.language_version then
+      local yesno = fn.input(lang .. " parser already available: would you like to reinstall ? y/n: ")
+      print "\n "
+      if not string.match(yesno, "^y.*") then
+        return
+      end
+    else
+      -- Force the generation from the grammar
+      local yesno = fn.input(lang .. " has an older ABI version: would you like to reinstall ? y/n: ")
+      print "\n "
+      if not string.match(yesno, "^y.*") then
+        return
+      end
+      generate_from_grammar = true
     end
   end
 
