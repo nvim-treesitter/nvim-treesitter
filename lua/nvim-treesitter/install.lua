@@ -8,6 +8,8 @@ local info = require "nvim-treesitter.info"
 local configs = require "nvim-treesitter.configs"
 local shell = require "nvim-treesitter.shell_command_selectors"
 
+local inspect_lang = vim.treesitter.language.inspect_language
+
 local M = {}
 local lockfile = {}
 
@@ -368,7 +370,7 @@ local function install_lang(lang, ask_reinstall, cache_folder, install_folder, w
     end
 
     -- Now check if the ABI is not correct
-    local parser = vim.treesitter.language.inspect_language(lang)
+    local parser = inspect_lang(lang)
     if parser._abi_version == vim.treesitter.language_version then
       local yesno = fn.input(lang .. " parser already available: would you like to reinstall ? y/n: ")
       print "\n "
@@ -472,11 +474,13 @@ function M.update(options)
       local languages = vim.tbl_flatten { ... }
       local installed = 0
       for _, lang in ipairs(languages) do
-        if (not is_installed(lang)) or (needs_update(lang)) then
+        local correct_abi_version = inspect_lang(lang)._abi_version == vim.treesitter.language_version
+        if (not is_installed(lang)) or (needs_update(lang)) or not correct_abi_version then
           installed = installed + 1
           install {
             ask_reinstall = "force",
             with_sync = options.with_sync,
+            generate_from_grammar = not correct_abi_version,
           }(lang)
         end
       end
