@@ -2,10 +2,11 @@
 
 First of all, thank you very much for contributing to `nvim-treesitter`.
 
-If you haven't already, you should really come and reach out to us on our [zulip]
+If you haven't already, you should really come and reach out to us on our [Zulip]
 server, so we can help you with any question you might have!
+There is also a [Matrix channel] for tree-sitter support in Neovim.
 
-As you know, `nvim-treesitter` is roughly split in two parts :
+As you know, `nvim-treesitter` is roughly split in two parts:
 
 - Parser configurations : for various things like `locals`, `highlights`
 - What we like to call *modules* : tiny lua modules that provide a given feature, based on parser configurations
@@ -39,7 +40,7 @@ Thus far, there is basically two types of modules:
 In any case, you can build your own module ! To help you started in the process, we have a template
 repository designed to build new modules [here](https://github.com/nvim-treesitter/module-template).
 Feel free to use it, and contact us over on our
-[zulip].
+[Zulip] or on the "Neovim tree-sitter" [Matrix channel].
 
 ## Parser configurations
 
@@ -274,4 +275,5 @@ the node describing the language and `@content` to describe the injection region
 @ignore ; Skip this node when calculating the indentation level
 ```
 
-[zulip]: nvim-treesitter.zulipchat.com
+[Zulip]: nvim-treesitter.zulipchat.com
+[Matrix channel]: https://matrix.to/#/#nvim-treesitter:matrix.org
