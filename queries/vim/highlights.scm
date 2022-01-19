@@ -112,6 +112,14 @@
 (au_event) @constant
 (normal_statement (commands) @constant)
 
+;; Highlight command
+
+(highlight_statement [
+  "default"
+  "link"
+  "clear"
+] @keyword)
+
 ;; Literals
 
 (string_literal) @string
