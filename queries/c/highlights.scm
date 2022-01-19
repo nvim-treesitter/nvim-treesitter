@@ -133,8 +133,6 @@
  (type_descriptor)
 ] @type
 
-(declaration (type_qualifier) @type)
-(cast_expression type: (type_descriptor) @type)
 (sizeof_expression value: (parenthesized_expression (identifier) @type))
 
 ((identifier) @constant
