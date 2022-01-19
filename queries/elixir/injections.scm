@@ -1,21 +1,32 @@
+; Surface
 (sigil
   (sigil_name) @_sigil_name
   (quoted_content) @surface
 (#eq? @_sigil_name "F"))
 
+; Phoenix Live View
 (sigil
   (sigil_name) @_sigil_name
   (quoted_content) @heex
 (#eq? @_sigil_name "H"))
 
+; Zigler
 (sigil
   (sigil_name) @_sigil_name
   (quoted_content) @zig
-(#eq? @_sigil_name "Z"))
+(#any-of? @_sigil_name "z" "Z"))
 
+; Regex
 (sigil
   (sigil_name) @_sigil_name
   (quoted_content) @regex
 (#any-of? @_sigil_name "r" "R"))
 
+; Jason
+(sigil
+  (sigil_name) @_sigil_name
+  (quoted_content) @json
+(#any-of? @_sigil_name "j" "J"))
+
+; Comments
 (comment) @comment
