@@ -320,13 +320,13 @@ list.elixir = {
   maintainers = { "@jonatanklosko" },
 }
 
-list.surface = {
+list.eex = {
   install_info = {
-    url = "https://github.com/connorlay/tree-sitter-surface",
+    url = "https://github.com/connorlay/tree-sitter-eex",
     files = { "src/parser.c" },
     branch = "main",
   },
-  filetype = "sface",
+  filetype = "eex",
   maintainers = { "@connorlay" },
 }
 
@@ -337,6 +337,16 @@ list.heex = {
     branch = "main",
   },
   filetype = "heex",
+  maintainers = { "@connorlay" },
+}
+
+list.surface = {
+  install_info = {
+    url = "https://github.com/connorlay/tree-sitter-surface",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  filetype = "sface",
   maintainers = { "@connorlay" },
 }
 

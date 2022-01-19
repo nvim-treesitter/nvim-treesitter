@@ -1,14 +1,20 @@
+; EEx and LEEx
+(sigil
+  (sigil_name) @_sigil_name
+  (quoted_content) @eex
+(#any-of? @_sigil_name "E" "L"))
+
+; HEEx
+(sigil
+  (sigil_name) @_sigil_name
+  (quoted_content) @heex
+(#eq? @_sigil_name "H"))
+
 ; Surface
 (sigil
   (sigil_name) @_sigil_name
   (quoted_content) @surface
 (#eq? @_sigil_name "F"))
-
-; Phoenix Live View
-(sigil
-  (sigil_name) @_sigil_name
-  (quoted_content) @heex
-(#eq? @_sigil_name "H"))
 
 ; Zigler
 (sigil
