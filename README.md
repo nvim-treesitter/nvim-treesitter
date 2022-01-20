@@ -219,6 +219,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [pascal](https://github.com/Isopod/tree-sitter-pascal.git) (maintained by @isopod)
 - [x] [perl](https://github.com/ganezdragon/tree-sitter-perl) (maintained by @ganezdragon)
 - [x] [php](https://github.com/tree-sitter/tree-sitter-php) (maintained by @tk-shirasaka)
+- [x] [phpdoc](https://github.com/claytonrcarter/tree-sitter-phpdoc) (experimental, maintained by @mikehaertl)
 - [x] [pioasm](https://github.com/leo60228/tree-sitter-pioasm) (maintained by @leo60228)
 - [x] [prisma](https://github.com/victorhqc/tree-sitter-prisma) (maintained by @elianiva)
 - [x] [pug](https://github.com/zealot128/tree-sitter-pug) (maintained by @zealot128)
