@@ -558,9 +558,14 @@ function M.write_lockfile(verbose, skip_langs)
     if not vim.tbl_contains(skip_langs, v.name) then
       -- I'm sure this can be done in aync way with iter_cmd
       local sha = vim.split(vim.fn.systemlist("git ls-remote " .. v.parser.install_info.url)[1], "\t")[1]
-      lockfile[v.name] = { revision = sha }
-      if verbose then
-        print(v.name .. ": " .. sha)
+      local available, lang = pcall(vim.treesitter.language.inspect_language, v.name)
+      if available then
+        lockfile[v.name] = { revision = sha, abi = lang._abi_version }
+        if verbose then
+          print(string.format("%s: %s ABI %d", v.name, sha, lang._abi_version))
+        end
+      elseif lockfile[v.name] and lockfile[v.name].abi then
+        print("WARNING: could not check ABI version for", v.name)
       end
     else
       print("Skipping " .. v.name)
