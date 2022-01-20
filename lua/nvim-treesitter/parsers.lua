@@ -253,6 +253,7 @@ list.phpdoc = {
     requires_generate_from_grammar = true,
     generate_requires_npm = true,
   },
+  maintainers = { "@mikehaertl" },
   experimental = true,
 }
 
