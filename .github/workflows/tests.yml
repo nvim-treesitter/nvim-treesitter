@@ -19,12 +19,14 @@ jobs:
       - uses: actions/setup-node@v2
 
       - name: Test Dependencies
+        env:
+          HIGHLIGHT_ASSERTIONS_TAG: v0.1.4
         run: |
           mkdir -p ~/.local/share/nvim/site/pack/plenary.nvim/start
           cd ~/.local/share/nvim/site/pack/plenary.nvim/start
           git clone https://github.com/nvim-lua/plenary.nvim
-          curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly --profile minimal
-          ~/.cargo/bin/cargo install --git https://github.com/theHamsta/highlight-assertions
+          curl -L https://github.com/theHamsta/highlight-assertions/releases/download/${HIGHLIGHT_ASSERTIONS_TAG}/highlight-assertions_${HIGHLIGHT_ASSERTIONS_TAG}_x86_64-unknown-linux-gnu.tar.gz | tar -xz
+          mv highlight-assertions /usr/local/bin
 
       - name: Install and prepare Neovim
         env:
@@ -39,4 +41,4 @@ jobs:
           nvim --headless -c "TSInstallSync all" -c "q"
 
       - name: Tests
-        run: PATH=~/.cargo/bin:$PATH ./scripts/run_tests.sh
+        run: PATH=/usr/local/bin:$PATH ./scripts/run_tests.sh
