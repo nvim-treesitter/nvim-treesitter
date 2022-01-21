@@ -30,13 +30,19 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
 
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: nightly
+
+      - uses: Swatinem/rust-cache@v1
+
       - name: Test Dependencies
         run: |
           mkdir -p ~/.local/share/nvim/site/pack/plenary.nvim/start
           cd ~/.local/share/nvim/site/pack/plenary.nvim/start
           git clone https://github.com/nvim-lua/plenary.nvim
-          curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly --profile minimal
-          ~/.cargo/bin/cargo install --git https://github.com/theHamsta/highlight-assertions
+          ~/.cargo/bin/cargo +nightly install --git https://github.com/theHamsta/highlight-assertions --locked
 
       - name: Install and prepare Neovim
         env:
