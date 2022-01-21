@@ -33,8 +33,14 @@ jobs:
         run: |
           bash ./scripts/ci-install-${{ matrix.os }}.sh
 
+      - name: Setup Parsers Cache
+        id: parsers-cache
+        uses: actions/cache@v2
+        with:
+          path: ./parser/
+          key: ${{ matrix.os }}-parsers-v1-${{ hashFiles('./lockfile.json', './lua/nvim-treesitter/parsers.lua', './lua/nvim-treesitter/install.lua') }}
       - name: Compile parsers Unix like
-        if: matrix.os != 'windows-latest'
+        if: ${{ matrix.os != 'windows-latest' && steps.parsers-cache.outputs.cache-hit != 'true' }}
         run: |
           nvim --headless -c "TSInstallSync all" -c "q"
 
