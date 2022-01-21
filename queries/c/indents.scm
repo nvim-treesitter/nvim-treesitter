@@ -25,6 +25,8 @@
     (binary_expression)
   ] @indent)
 
+(compound_statement "}" @indent_end)
+
 [
   "#define"
   "#ifdef"
