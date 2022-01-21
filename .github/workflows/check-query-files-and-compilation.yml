@@ -23,6 +23,10 @@ jobs:
         cc: [ gcc, clang ]
         nvim_tag: [ v0.6.1 ]
         exclude:
+          - os: ubuntu-latest
+            cc: clang
+            nvim_tag: v0.6.1
+
           - os: macos-latest
             cc: gcc
             nvim_tag: v0.6.1
@@ -30,10 +34,6 @@ jobs:
         include:
           - os: windows-2022
             cc: cl
-            nvim_tag: v0.6.1
-
-          - os: macos-latest
-            cc: gcc-10
             nvim_tag: v0.6.1
 
           - os: ubuntu-latest
