@@ -16,6 +16,9 @@
   (switch_case)
 ] @indent
 
+
+(statement_block "}" @indent_end)
+
 [
   (arguments (object))
   "("
