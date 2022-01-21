@@ -17,8 +17,19 @@ local config = {
   update_strategy = "lockfile",
   parser_install_dir = nil,
 }
+-- List of keys respected in configuration (excluding "modules").
+M.config_keys = {
+  "sync_install",
+  "ensure_installed",
+  "auto_install",
+  "ignore_install",
+  "update_strategy",
+  "parser_install_dir",
+}
 -- List of modules that need to be setup on initialization.
 local queued_modules_defs = {}
+-- List of user setup actions that need to be performed on initialization.
+local queued_user_setups = {}
 -- Whether we've initialized the plugin yet.
 local is_initialized = false
 local builtin_modules = {
@@ -379,36 +390,60 @@ end
 -- Setup call for users to override module configurations.
 -- @param user_data module overrides
 function M.setup(user_data)
-  config.modules = vim.tbl_deep_extend("force", config.modules, user_data)
-  config.ignore_install = user_data.ignore_install or {}
-  config.parser_install_dir = user_data.parser_install_dir or nil
+  -- handle non-module properties
+  local user_config = {}
+  for _, k in ipairs(M.config_keys) do
+    local user_data_v = user_data[k]
+    if user_data_v ~= nil then
+      user_config[k] = user_data_v
+    end
+    user_data[k] = nil
+  end
+
+  M.setup_config(user_config, false)
+  M.setup_modules(user_data, false)
+
+  M.init_config()
+  M.init_modules()
+end
+
+-- Setup call for users to override configuration.
+-- @param user_config configuration overrides
+-- @param allow_queuing whether to also queue `user_config` for `init`-time, default true
+-- Configuration is not setup until `init` is invoked by the plugin. This allows properties to be configured
+-- in any order.
+function M.setup_config(user_config, allow_queuing)
+  if allow_queuing == nil then
+    allow_queuing = true
+  end
+
+  if allow_queuing and not is_initialized then
+    table.insert(queued_user_setups, { "config", user_config })
+    return
+  end
+
+  config = vim.tbl_deep_extend("force", config, user_config)
   if config.parser_install_dir then
     config.parser_install_dir = vim.fn.expand(config.parser_install_dir, ":p")
   end
+end
 
-  config.auto_install = user_data.auto_install or false
-  if config.auto_install then
-    require("nvim-treesitter.install").setup_auto_install()
+-- Setup call for users to override module configurations.
+-- @param user_mod_setups module overrides
+-- @param allow_queuing whether to also queue `user_config` for `init`-time, default true
+-- Modules are not setup until `init` is invoked by the plugin. This allows modules to be configured in any
+-- order and to be loaded lazily.
+function M.setup_modules(user_mod_setups, allow_queuing)
+  if allow_queuing == nil then
+    allow_queuing = true
   end
 
-  local ensure_installed = user_data.ensure_installed or {}
-  if #ensure_installed > 0 then
-    if user_data.sync_install then
-      require("nvim-treesitter.install").ensure_installed_sync(ensure_installed)
-    else
-      require("nvim-treesitter.install").ensure_installed(ensure_installed)
-    end
+  if allow_queuing and not is_initialized then
+    table.insert(queued_user_setups, { "modules", user_mod_setups })
+    return
   end
 
-  config.modules.ensure_installed = nil
-  config.ensure_installed = ensure_installed
-
-  recurse_modules(function(_, _, new_path)
-    local data = utils.get_at_path(config.modules, new_path)
-    if data.enable then
-      enable_all(new_path)
-    end
-  end, config.modules)
+  config.modules = vim.tbl_deep_extend("force", config.modules, user_mod_setups)
 end
 
 -- Defines a table of modules that can be attached/detached to buffers
@@ -425,7 +460,7 @@ end
 -- * @detach A detach function that is called for each buffer that the module is enabled for. This is required
 --           if a `module_path` is not specified.
 -- Modules are not setup until `init` is invoked by the plugin. This allows modules to be defined in any order
--- and can be loaded lazily.
+-- and to be loaded lazily.
 -- @example
 -- require"nvim-treesitter".define_modules {
 --   my_cool_module = {
@@ -529,7 +564,7 @@ function M.is_module(mod)
     and ((type(mod.attach) == "function" and type(mod.detach) == "function") or type(mod.module_path) == "string")
 end
 
--- Initializes built-in modules and any queued modules
+-- Initializes built-in modules, any queued modules, and any queued setups
 -- registered by plugins or the user.
 function M.init()
   is_initialized = true
@@ -538,6 +573,57 @@ function M.init()
   for _, mod_def in ipairs(queued_modules_defs) do
     M.define_modules(mod_def)
   end
+
+  M.init_user()
+end
+
+-- Initializes any queued setups registered by the user.
+function M.init_user()
+  local user_modules_queued = false
+  local user_config_queued = false
+  for _, user_setup in ipairs(queued_user_setups) do
+    local user_setup_type = user_setup[1]
+    if user_setup_type == "config" then
+      user_config_queued = true
+      M.setup_config(user_setup[2])
+    elseif user_setup_type == "modules" then
+      user_modules_queued = true
+      M.setup_modules(user_setup[2])
+    end
+  end
+
+  if user_config_queued then
+    M.init_config()
+  end
+  if user_modules_queued then
+    M.init_modules()
+  end
+end
+
+-- Initializes using non-module configuration.
+function M.init_config()
+  if config.auto_install then
+    require("nvim-treesitter.install").setup_auto_install()
+  end
+
+  local ensure_installed = config.ensure_installed or {}
+  if #ensure_installed > 0 then
+    if config.sync_install then
+      require("nvim-treesitter.install").ensure_installed_sync(ensure_installed)
+    else
+      require("nvim-treesitter.install").ensure_installed(ensure_installed)
+    end
+  end
+end
+
+-- Initializes modules using module configuration.
+function M.init_modules()
+  recurse_modules(function(_, _, new_path)
+    local data = utils.get_at_path(config.modules, new_path)
+    if data.enable then
+      enable_all(new_path)
+    end
+  end, config.modules)
 end
 
 -- If parser_install_dir is not nil is used or created.
