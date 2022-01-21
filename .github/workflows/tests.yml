@@ -28,8 +28,8 @@ jobs:
 
       - name: Install and prepare Neovim
         env:
-          NVIM_TAG: v0.6.0
-          TREE_SITTER_CLI_TAG: v0.20.1
+          NVIM_TAG: v0.6.1
+          TREE_SITTER_CLI_TAG: v0.20.2
         run: |
           bash ./scripts/ci-install-${{ matrix.os }}.sh
 
