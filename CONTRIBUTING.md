@@ -270,6 +270,7 @@ the node describing the language and `@content` to describe the injection region
 
 ```
 @indent         ; Indent children when matching this node
+@indent_end     ; Marks the end of indented block
 @aligned_indent ; Behaves like python aligned/hanging indent
 @dedent         ; Dedent children when matching this node
 @branch         ; Dedent itself when matching this node

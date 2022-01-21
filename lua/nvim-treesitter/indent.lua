@@ -31,6 +31,7 @@ local get_indents = tsutils.memoize_by_buf_tick(function(bufnr, root, lang)
   local map = {
     auto = {},
     indent = {},
+    indent_end = {},
     dedent = {},
     branch = {},
     ignore = {},
@@ -70,6 +71,9 @@ function M.get_indent(lnum)
   if is_empty_line then
     local prevlnum = vim.fn.prevnonblank(lnum)
     node = get_last_node_at_line(root, prevlnum)
+    if q.indent_end[node:id()] then
+      node = get_first_node_at_line(root, lnum)
+    end
   else
     node = get_first_node_at_line(root, lnum)
   end
