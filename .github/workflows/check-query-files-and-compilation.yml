@@ -60,8 +60,10 @@ jobs:
         id: parsers-cache
         uses: actions/cache@v2
         with:
-          path: ./parser/
-          key: ${{ matrix.os }}-parsers-v1-${{ hashFiles('./lockfile.json', './lua/nvim-treesitter/parsers.lua', './lua/nvim-treesitter/install.lua', './lua/nvim-treesitter/shell_selectors.lua') }}
+          path: |
+            ./parser/
+            ~/AppData/Local/nvim/pack/nvim-treesitter/start/nvim-treesitter/parser/
+          key: ${{ matrix.os }}-${{ matrix.cc }}-${{ matrix.nvim_tag }}-parsers-v1-${{ hashFiles('./lockfile.json', './lua/nvim-treesitter/parsers.lua', './lua/nvim-treesitter/install.lua', './lua/nvim-treesitter/shell_selectors.lua') }}
 
       - name: ccache
         if: matrix.os != 'windows-2022'
