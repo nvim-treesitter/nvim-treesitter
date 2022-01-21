@@ -87,11 +87,6 @@ jobs:
         run: cp -r ~/AppData/Local/nvim/pack/nvim-treesitter/start/nvim-treesitter/parser/* parser
         shell: bash
 
-      - uses: actions/upload-artifact@v2
-        with:
-          name: parsers-${{ matrix.os }}-${{ matrix.cc }}-x86_64
-          path: parser/*
-
       - name: Check query files (Unix)
         if: matrix.os != 'windows-2022'
         run: nvim --headless -c "luafile ./scripts/check-queries.lua" -c "q"
