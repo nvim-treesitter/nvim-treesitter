@@ -1,6 +1,7 @@
 local parsers = require "nvim-treesitter.parsers"
 local queries = require "nvim-treesitter.query"
 local tsutils = require "nvim-treesitter.ts_utils"
+local highlighter = require "vim.treesitter.highlighter"
 
 local function get_first_node_at_line(root, lnum)
   local col = vim.fn.indent(lnum)
@@ -38,9 +39,11 @@ local get_indents = tsutils.memoize_by_buf_tick(function(bufnr, root, lang)
     aligned_indent = {},
   }
 
-  for name, node, metadata in queries.iter_captures(bufnr, "indents", root, lang) do
-    map[name][node:id()] = metadata or {}
-  end
+  highlighter.active[bufnr].tree:for_each_tree(function(tstree, tree)
+    for name, node, metadata in queries.iter_captures(bufnr, "indents", tstree:root(), tree:lang()) do
+      map[name][node:id()] = metadata or {}
+    end
+  end)
 
   return map
 end, {
