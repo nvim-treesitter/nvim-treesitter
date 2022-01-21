@@ -21,20 +21,20 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-2022, macos-latest]
         cc: [ gcc, clang ]
-        nvim_tag: [ v0.6.1 ]
+        nvim_tag: [ stable ]
         exclude:
           - os: ubuntu-latest
             cc: clang
-            nvim_tag: v0.6.1
+            nvim_tag: stable
 
           - os: macos-latest
             cc: gcc
-            nvim_tag: v0.6.1
+            nvim_tag: stable
 
         include:
           - os: windows-2022
             cc: cl
-            nvim_tag: v0.6.1
+            nvim_tag: stable
 
           - os: ubuntu-latest
             cc: gcc

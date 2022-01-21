@@ -14,7 +14,7 @@ jobs:
 
       - name: Prepare
         env:
-          NVIM_TAG: v0.6.1
+          NVIM_TAG: stable
         run: |
           sudo apt-get update
           sudo add-apt-repository universe
