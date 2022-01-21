@@ -56,10 +56,18 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ./parser/
-          key: ${{ matrix.os }}-parsers-v1-${{ hashFiles('./lockfile.json', './lua/nvim-treesitter/parsers.lua', './lua/nvim-treesitter/install.lua') }}
+          key: ${{ matrix.os }}-parsers-v1-${{ hashFiles('./lockfile.json', './lua/nvim-treesitter/parsers.lua', './lua/nvim-treesitter/install.lua', './lua/nvim-treesitter/shell_selectors.lua') }}
+
+      - name: ccache
+        if: matrix.os != 'windows-2022'
+        uses: hendrikmuhs/ccache-action@v1
+        with:
+          key: ${{ matrix.os }}-${{ matrix.cc }}
+
       - name: Compile parsers Unix like
         if: ${{ matrix.os != 'windows-latest' && steps.parsers-cache.outputs.cache-hit != 'true' }}
         run: |
+          export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
           nvim --headless -c "TSInstallSync all" -c "q"
 
       - name: Tests
