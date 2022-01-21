@@ -35,7 +35,13 @@ jobs:
           profile: minimal
           toolchain: nightly
 
-      - uses: Swatinem/rust-cache@v1
+      - name: Cache .cargo
+        id: cargo-cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ./.cargo/
+          key: v1.0.4
 
       - name: Test Dependencies
         run: |
