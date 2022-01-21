@@ -12,7 +12,6 @@ describe("indent C:", function()
   describe("whole file:", function()
     runner:whole_file(".", {
       expected_failures = {
-        "./ternary.c",
         "./preproc_func.c",
         "./label.c",
         "./comment.c",
@@ -37,7 +36,7 @@ describe("indent C:", function()
     runner:new_line("string.c", { on_line = 4, text = '"brave new "', indent = 4 })
     runner:new_line("struct.c", { on_line = 4, text = "int y;", indent = 8 })
     runner:new_line("switch.c", { on_line = 3, text = "x++;", indent = 12 })
-    runner:new_line("ternary.c", { on_line = 4, text = ": (x == 0) : 0", indent = 8 }, "expected failure", XFAIL)
+    runner:new_line("ternary.c", { on_line = 4, text = ": (x == 0) : 0", indent = 8 })
     -- the line after inserted one will be left with wrong indent but we only care about the inserted one
     runner:new_line("no_braces.c", { on_line = 4, text = "x++;", indent = 8 })
     runner:new_line("no_braces.c", { on_line = 7, text = "x++;", indent = 8 })
