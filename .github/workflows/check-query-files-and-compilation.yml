@@ -78,7 +78,7 @@ jobs:
       - name: Compile parsers Windows
         if: matrix.os == 'windows-2022'
         run: |
-          Neovim\\bin\\nvim.exe --headless -c "TSInstallSync all" -c "q"
+          Neovim\\bin\\nvim.exe --headless -c "lua require'nvim-treesitter.install'.prefer_git=false" -c "TSInstallSync all" -c "q"
 
       - name: Post compile Windows
         if: matrix.os == 'windows-2022'
