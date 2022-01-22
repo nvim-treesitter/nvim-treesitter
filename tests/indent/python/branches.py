@@ -23,5 +23,9 @@ foo(
     b)
 
 if (a and
-        b):
+    b):
+    pass
+
+if (a
+        and b):
     pass

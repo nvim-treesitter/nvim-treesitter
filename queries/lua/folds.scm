@@ -1,12 +1,10 @@
 [
- (for_in_statement)
- (for_statement)
+ (do_statement)
  (while_statement)
  (repeat_statement)
  (if_statement)
- (do_statement)
+ (for_statement)
+ (function_declaration)
  (function_definition)
- (local_function)
- (function)
- (table)
+ (table_constructor)
 ] @fold

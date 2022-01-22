@@ -2,10 +2,11 @@
 
 First of all, thank you very much for contributing to `nvim-treesitter`.
 
-If you haven't already, you should really come and reach out to us on our [gitter](https://gitter.im/nvim-treesitter/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
-room, so we can help you with any question you might have!
+If you haven't already, you should really come and reach out to us on our [Zulip]
+server, so we can help you with any question you might have!
+There is also a [Matrix channel] for tree-sitter support in Neovim.
 
-As you know, `nvim-treesitter` is roughly split in two parts :
+As you know, `nvim-treesitter` is roughly split in two parts:
 
 - Parser configurations : for various things like `locals`, `highlights`
 - What we like to call *modules* : tiny lua modules that provide a given feature, based on parser configurations
@@ -39,7 +40,7 @@ Thus far, there is basically two types of modules:
 In any case, you can build your own module ! To help you started in the process, we have a template
 repository designed to build new modules [here](https://github.com/nvim-treesitter/module-template).
 Feel free to use it, and contact us over on our
-[gitter](https://gitter.im/nvim-treesitter/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link).
+[Zulip] or on the "Neovim tree-sitter" [Matrix channel].
 
 ## Parser configurations
 
@@ -73,7 +74,7 @@ If your language is an extension of a language (TypeScript is an extension of Ja
 example), you can include the queries from your base language by adding the following _as the first
 line of your file_.
 
-```scheme
+```query
 ; inherits: lang1,(optionallang)
 ```
 
@@ -226,7 +227,7 @@ function doSomething() {}
 doSomething(); // Should point to the declaration as the definition
 ```
 
-```scheme
+```query
 (function_declaration
   ((identifier) @definition.var)
    (#set! "definition.var.scope" "parent"))
@@ -268,8 +269,14 @@ the node describing the language and `@content` to describe the injection region
 ### Indents
 
 ```
-@indent ; Indent when matching this node
-@branch ; Dedent when matching this node
-@return ; Dedent when matching this node
-@ignore ; Skip this node when calculating the indentation level
+@indent         ; Indent children when matching this node
+@indent_end     ; Marks the end of indented block
+@aligned_indent ; Behaves like python aligned/hanging indent
+@dedent         ; Dedent children when matching this node
+@branch         ; Dedent itself when matching this node
+@ignore         ; Do not indent in this node
+@auto           ; Behaves like 'autoindent' buffer option
 ```
+
+[Zulip]: nvim-treesitter.zulipchat.com
+[Matrix channel]: https://matrix.to/#/#nvim-treesitter:matrix.org

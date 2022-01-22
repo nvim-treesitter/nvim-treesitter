@@ -2,52 +2,55 @@ local parsers = require "nvim-treesitter.parsers"
 local queries = require "nvim-treesitter.query"
 local tsutils = require "nvim-treesitter.ts_utils"
 
+local function get_first_node_at_line(root, lnum)
+  local col = vim.fn.indent(lnum)
+  return root:descendant_for_range(lnum - 1, col, lnum - 1, col)
+end
+
+local function get_last_node_at_line(root, lnum)
+  local col = #vim.fn.getline(lnum) - 1
+  return root:descendant_for_range(lnum - 1, col, lnum - 1, col)
+end
+
+local function get_matching_prev_sibling(anchor, start, matcher)
+  local start_row, start_col = start[1], start[2]
+  local node = anchor:descendant_for_range(start_row, start_col, start_row, start_col)
+  local pos = 1
+  -- TODO: reconsider this 999 limit or do something differently in future.
+  --       if anchor has more than 999 children, this would not work.
+  while pos < 999 and node and not matcher(node) do
+    node = node:prev_sibling()
+    pos = pos + 1
+  end
+  return node, pos
+end
+
 local M = {}
 
--- TODO(kiyan): move this in tsutils and document it
-local function get_node_at_line(root, lnum)
-  for node in root:iter_children() do
-    local srow, _, erow = node:range()
-    if srow == lnum then
-      return node
-    end
-
-    if node:child_count() > 0 and srow < lnum and lnum <= erow then
-      return get_node_at_line(node, lnum)
-    end
-  end
-end
-
-local function node_fmt(node)
-  if not node then
-    return nil
-  end
-  return tostring(node)
-end
-
 local get_indents = tsutils.memoize_by_buf_tick(function(bufnr, root, lang)
-  local get_map = function(capture)
-    local matches = queries.get_capture_matches(bufnr, capture, "indents", root, lang) or {}
-    local map = {}
-    for _, node in ipairs(matches) do
-      map[tostring(node)] = true
-    end
-    return map
+  local map = {
+    auto = {},
+    indent = {},
+    indent_end = {},
+    dedent = {},
+    branch = {},
+    ignore = {},
+    aligned_indent = {},
+  }
+
+  for name, node, metadata in queries.iter_captures(bufnr, "indents", root, lang) do
+    map[name][node:id()] = metadata or {}
   end
 
-  return {
-    indents = get_map "@indent.node",
-    branches = get_map "@branch.node",
-    returns = get_map "@return.node",
-    ignores = get_map "@ignore.node",
-  }
+  return map
 end, {
   -- Memoize by bufnr and lang together.
-  key = function(bufnr, _, lang)
-    return tostring(bufnr) .. "_" .. lang
+  key = function(bufnr, root, lang)
+    return tostring(bufnr) .. root:id() .. "_" .. lang
   end,
 })
 
+---@param lnum number (1-indexed)
 function M.get_indent(lnum)
   local parser = parsers.get_parser()
   if not parser or not lnum then
@@ -63,74 +66,86 @@ function M.get_indent(lnum)
   end
 
   local q = get_indents(vim.api.nvim_get_current_buf(), root, lang_tree:lang())
-  local node = get_node_at_line(root, lnum - 1)
+  local is_empty_line = string.match(vim.fn.getline(lnum), "^%s*$") ~= nil
+  local node
+  if is_empty_line then
+    local prevlnum = vim.fn.prevnonblank(lnum)
+    node = get_last_node_at_line(root, prevlnum)
+    if q.indent_end[node:id()] then
+      node = get_first_node_at_line(root, lnum)
+    end
+  else
+    node = get_first_node_at_line(root, lnum)
+  end
 
-  local indent = 0
   local indent_size = vim.fn.shiftwidth()
-
-  -- to get correct indentation when we land on an empty line (for instance by typing `o`), we try
-  -- to use indentation of previous nonblank line, this solves the issue also for languages that
-  -- do not use @branch after blocks (e.g. Python)
-  if not node then
-    local prevnonblank = vim.fn.prevnonblank(lnum)
-    if prevnonblank ~= lnum then
-      local prev_node = get_node_at_line(root, prevnonblank - 1)
-      -- get previous node in any case to avoid erroring
-      while not prev_node and prevnonblank - 1 > 0 do
-        prevnonblank = vim.fn.prevnonblank(prevnonblank - 1)
-        prev_node = get_node_at_line(root, prevnonblank - 1)
-      end
-
-      -- nodes can be marked @return to prevent using them
-      if prev_node and not q.returns[node_fmt(prev_node)] then
-        local row = prev_node:start()
-        local end_row = prev_node:end_()
-
-        -- if the previous node is being constructed (like function() `o` in lua), or line is inside the node
-        -- we indent one more from the start of node, else we indent default
-        -- NOTE: this doesn't work for python which behave strangely
-        if prev_node:has_error() or lnum <= end_row then
-          return vim.fn.indent(row + 1) + indent_size
-        end
-        return vim.fn.indent(row + 1)
-      end
-    end
+  local indent = 0
+  if root:start() ~= 0 then
+    -- injected tree
+    indent = vim.fn.indent(root:start() + 1)
   end
 
-  -- if the prevnonblank fails (prev_node wraps our line) we need to fall back to taking
-  -- the first child of the node that wraps the current line, or the wrapper itself
-  if not node then
-    local wrapper = root:descendant_for_range(lnum - 1, 0, lnum - 1, -1)
-    node = wrapper:child(0) or wrapper
-    if q.indents[node_fmt(wrapper)] ~= nil and wrapper ~= root then
-      indent = indent_size
-    end
-  end
-
-  while node and q.branches[node_fmt(node)] do
-    node = node:parent()
-  end
-
-  local first = true
-  local prev_row = node:start()
+  -- tracks to ensure multiple indent levels are not applied for same line
+  local is_processed_by_row = {}
 
   while node do
-    -- Do not indent if we are inside an @ignore block.
-    -- If a node spans from L1,C1 to L2,C2, we know that lines where L1 < line <= L2 would
-    -- have their indentations contained by the node.
-    if q.ignores[node_fmt(node)] and node:start() < lnum - 1 and lnum - 1 <= node:end_() then
+    -- do 'autoindent' if not marked as @indent
+    if not q.indent[node:id()] and q.auto[node:id()] and node:start() < lnum - 1 and lnum - 1 <= node:end_() then
       return -1
     end
 
-    -- do not indent the starting node, do not add multiple indent levels on single line
-    local row = node:start()
-    if not first and q.indents[node_fmt(node)] and prev_row ~= row then
-      indent = indent + indent_size
-      prev_row = row
+    -- Do not indent if we are inside an @ignore block.
+    -- If a node spans from L1,C1 to L2,C2, we know that lines where L1 < line <= L2 would
+    -- have their indentations contained by the node.
+    if not q.indent[node:id()] and q.ignore[node:id()] and node:start() < lnum - 1 and lnum - 1 <= node:end_() then
+      return 0
     end
 
+    local srow, _, erow = node:range()
+
+    local is_processed = false
+
+    if
+      not is_processed_by_row[srow]
+      and ((q.branch[node:id()] and srow == lnum - 1) or (q.dedent[node:id()] and srow ~= lnum - 1))
+    then
+      indent = indent - indent_size
+      is_processed = true
+    end
+
+    -- do not indent for nodes that starts-and-ends on same line and starts on target line (lnum)
+    if not is_processed_by_row[srow] and (q.indent[node:id()] and srow ~= erow and srow ~= lnum - 1) then
+      indent = indent + indent_size
+      is_processed = true
+    end
+
+    if q.aligned_indent[node:id()] and srow ~= erow then
+      local metadata = q.aligned_indent[node:id()]
+      local opening_delimiter = metadata.delimiter:sub(1, 1)
+      local o_delim_node, pos = get_matching_prev_sibling(node, { srow, #vim.fn.getline(srow + 1) - 1 }, function(n)
+        return n:type() == opening_delimiter
+      end)
+
+      if o_delim_node then
+        if pos == 1 then
+          -- hanging indent (previous line ended with starting delimiter)
+          indent = indent + indent_size * 1
+        else
+          local _, o_scol = o_delim_node:start()
+          local aligned_indent = math.max(indent, 0) + o_scol
+          if indent > 0 then
+            indent = aligned_indent
+          else
+            indent = aligned_indent + 1 -- extra space for starting delimiter
+          end
+          is_processed = true
+        end
+      end
+    end
+
+    is_processed_by_row[srow] = is_processed_by_row[srow] or is_processed
+
     node = node:parent()
-    first = false
   end
 
   return indent

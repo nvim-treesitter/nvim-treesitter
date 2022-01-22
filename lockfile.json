@@ -33,7 +33,7 @@
     "revision": "a03f1d2d1dfbf6f8e0fdca5f9ff030228241eb57"
   },
   "cuda": {
-    "revision": "1dba9b114bcb87b1ed9419578e4d5cc4f805247e"
+    "revision": "d4a8f03ee5909b5b8106bfc9c3134b1bea8173e0"
   },
   "d": {
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
@@ -78,7 +78,7 @@
     "revision": "2a6abdaa47fcb91397e09a97c7433fd995ea46c6"
   },
   "glimmer": {
-    "revision": "2c7a3351489d71365f82e51edf746182bd58d6eb"
+    "revision": "df778b4d741bc4542c3dbdee7e6cd3ddaccf3d11"
   },
   "glsl": {
     "revision": "26ba31a3f5a85ebed5d71e49eef11a003bed782b"
@@ -108,7 +108,7 @@
     "revision": "3cb7fc28247efbcb2973b97e71c78838ad98a583"
   },
   "heex": {
-    "revision": "6274024183195ff7edeb4220d59177a5c53decea"
+    "revision": "a657fcfc524aab19ab0ab5baeb47ec170977e9ee"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
@@ -156,7 +156,7 @@
     "revision": "3b213925b9c4f42c1acfe2e10bfbb438d9c6834d"
   },
   "lua": {
-    "revision": "6f5d40190ec8a0aa8c8410699353d820f4f7d7a6"
+    "revision": "2e372ad0af8c6a68ba39f107a2edc9e3fc19ecf1"
   },
   "make": {
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
@@ -187,6 +187,9 @@
   },
   "php": {
     "revision": "57f855461aeeca73bd4218754fb26b5ac143f98f"
+  },
+  "phpdoc": {
+    "revision": "f54431c26f8625f31c1622425680f6f157061e72"
   },
   "pioasm": {
     "revision": "924aadaf5dea2a6074d72027b064f939acf32e20"
@@ -237,7 +240,7 @@
     "revision": "a7201b61779be59ac0fc0d118746c886dbc3edbd"
   },
   "surface": {
-    "revision": "21b7676859c1187645a27ff301f76738af5dfd44"
+    "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
   },
   "svelte": {
     "revision": "98274d94ec33e994e8354d9ddfdef58cca471294"

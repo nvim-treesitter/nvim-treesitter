@@ -1,6 +1,18 @@
 name: Tests
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches:
+      - 'master'
+
+# Cancel any in-progress CI runs for a PR if it is updated
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
+  cancel-in-progress: true
 
 jobs:
   check_compilation_unix_like:
@@ -18,24 +30,52 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
 
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: nightly
+
+      - name: Cache .cargo
+        id: cargo-cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ./.cargo/
+          key: v1.0.4
+
       - name: Test Dependencies
         run: |
           mkdir -p ~/.local/share/nvim/site/pack/plenary.nvim/start
           cd ~/.local/share/nvim/site/pack/plenary.nvim/start
           git clone https://github.com/nvim-lua/plenary.nvim
-          curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly --profile minimal
-          ~/.cargo/bin/cargo install --git https://github.com/theHamsta/highlight-assertions
+          ~/.cargo/bin/cargo +nightly install --git https://github.com/theHamsta/highlight-assertions --locked
 
       - name: Install and prepare Neovim
         env:
-          NVIM_TAG: v0.6.0
-          TREE_SITTER_CLI_TAG: v0.20.1
+          NVIM_TAG: stable
+          TREE_SITTER_CLI_TAG: v0.20.2
         run: |
           bash ./scripts/ci-install-${{ matrix.os }}.sh
 
+      - name: Setup Parsers Cache
+        id: parsers-cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ./parser/
+            ~/AppData/Local/nvim/pack/nvim-treesitter/start/nvim-treesitter/parser/
+          key: ${{ matrix.os }}-${{ matrix.cc }}-parsers-v1-${{ hashFiles('./lockfile.json', './lua/nvim-treesitter/parsers.lua', './lua/nvim-treesitter/install.lua', './lua/nvim-treesitter/shell_selectors.lua') }}
+
+      - name: ccache
+        if: matrix.os != 'windows-2022'
+        uses: hendrikmuhs/ccache-action@v1
+        with:
+          key: ${{ matrix.os }}-${{ matrix.cc }}
+
       - name: Compile parsers Unix like
-        if: matrix.os != 'windows-latest'
+        if: ${{ matrix.os != 'windows-latest' && steps.parsers-cache.outputs.cache-hit != 'true' }}
         run: |
+          export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
           nvim --headless -c "TSInstallSync all" -c "q"
 
       - name: Tests
