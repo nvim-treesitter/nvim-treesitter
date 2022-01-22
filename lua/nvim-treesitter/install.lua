@@ -14,6 +14,7 @@ local lockfile = {}
 M.compilers = { vim.fn.getenv "CC", "cc", "gcc", "clang", "cl", "zig" }
 M.prefer_git = fn.has "win32" == 1
 M.command_extra_args = {}
+M.ts_generate_args = nil
 
 local started_commands = 0
 local finished_commands = 0
@@ -259,6 +260,15 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
       )
     end
     return
+  else
+    if not M.ts_generate_args then
+      local ts_cli_version = utils.ts_cli_version()
+      if ts_cli_version and vim.split(ts_cli_version, " ")[1] > "0.20.2" then
+        M.ts_generate_args = { "generate", "--abi", vim.treesitter.language_version }
+      else
+        M.ts_generate_args = { "generate" }
+      end
+    end
   end
   if generate_from_grammar and vim.fn.executable "node" ~= 1 then
     api.nvim_err_writeln "Node JS not found: `node` is not executable!"
@@ -308,7 +318,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
         info = "Generating source files from grammar.js...",
         err = 'Error during "tree-sitter generate"',
         opts = {
-          args = { "generate" },
+          args = M.ts_generate_args,
           cwd = compile_location,
         },
       },
