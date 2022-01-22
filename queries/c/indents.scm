@@ -27,15 +27,19 @@
 (compound_statement "}" @indent_end)
 
 [
+  "else"
+  ")"
+  "}"
+  (statement_identifier)
+] @branch
+
+[
   "#define"
   "#ifdef"
   "#if"
   "#else"
-  "else"
   "#endif"
-  ")"
-  "}"
-] @branch
+] @zero_indent
 
 [
   (preproc_arg)
@@ -47,7 +51,7 @@
 ([(argument_list) (parameter_list)] @aligned_indent
   (#set! "delimiter" "()"))
 
-([ (ERROR) (comment) ] @aligned_indent
+((comment) @aligned_indent
  (#lua-match? @aligned_indent "^/\*"))
 ((comment) @ignore
  (#lua-match? @ignore "^//"))

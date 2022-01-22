@@ -35,6 +35,7 @@ local get_indents = tsutils.memoize_by_buf_tick(function(bufnr, root, lang)
     branch = {},
     ignore = {},
     aligned_indent = {},
+    zero_indent = {},
   }
 
   for name, node, metadata in queries.iter_captures(bufnr, "indents", root, lang) do
@@ -87,6 +88,10 @@ function M.get_indent(lnum)
 
   -- tracks to ensure multiple indent levels are not applied for same line
   local is_processed_by_row = {}
+
+  if q.zero_indent[node:id()] then
+    return 0
+  end
 
   while node do
     -- do 'autoindent' if not marked as @indent

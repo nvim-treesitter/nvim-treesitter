@@ -16,7 +16,7 @@ describe("indent C++:", function()
       expected_failures = {
         -- C
         "c/preproc_func.c",
-        "c/label.c",
+        "c/unfinished_comment.c",
       },
     })
   end)
