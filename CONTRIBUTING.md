@@ -277,6 +277,7 @@ the node describing the language and `@content` to describe the injection region
 @branch         ; Dedent itself when matching this node
 @ignore         ; Do not indent in this node
 @auto           ; Behaves like 'autoindent' buffer option
+@zero_indent    ; Sets this node at position 0 (no indent)
 ```
 
 [Zulip]: nvim-treesitter.zulipchat.com
