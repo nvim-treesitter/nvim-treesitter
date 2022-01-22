@@ -36,3 +36,10 @@
 
 ; Comments
 (comment) @comment
+
+; Documentation
+(unary_operator
+  operator: "@"
+  operand: (call
+    target: ((identifier) @_identifier (#any-of? @_identifier "moduledoc" "typedoc" "shortdoc" "doc"))
+    (arguments (string) @markdown)))
