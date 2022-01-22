@@ -36,6 +36,7 @@
   (else_statement)
 ] @branch
 
+(comment) @auto
 (comment) @ignore
 
 (string) @auto

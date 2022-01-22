@@ -1,7 +1,6 @@
 local parsers = require "nvim-treesitter.parsers"
 local queries = require "nvim-treesitter.query"
 local tsutils = require "nvim-treesitter.ts_utils"
-local highlighter = require "vim.treesitter.highlighter"
 
 local function get_first_node_at_line(root, lnum)
   local col = vim.fn.indent(lnum)
@@ -18,7 +17,7 @@ local function find_delimiter(bufnr, node, delimiter)
     if child:type() == delimiter then
       local linenr = child:start()
       local line = vim.api.nvim_buf_get_lines(bufnr, linenr, linenr + 1, false)[1]
-      local end_char = {child:end_()}
+      local end_char = { child:end_() }
       return child, #line == end_char[2]
     end
   end
@@ -56,6 +55,10 @@ function M.get_indent(lnum)
   if not parser or not lnum then
     return -1
   end
+
+  -- Reparse in case we got triggered by ":h indentkeys"
+  parser:parse()
+
   local bufnr = vim.api.nvim_get_current_buf()
 
   -- get_root_for_position is 0-based.
@@ -81,7 +84,8 @@ function M.get_indent(lnum)
 
   local indent_size = vim.fn.shiftwidth()
   local indent = 0
-  if root:start() ~= 0 then
+  local _, _, root_start = root:start()
+  if root_start ~= 0 then
     -- injected tree
     indent = vim.fn.indent(root:start() + 1)
   end
@@ -119,7 +123,13 @@ function M.get_indent(lnum)
     end
 
     -- do not indent for nodes that starts-and-ends on same line and starts on target line (lnum)
-    if not is_processed_by_row[srow] and (q.indent[node:id()] and srow ~= erow and ((srow ~= lnum - 1) or q.indent[node:id()].start_at_same_line)) then
+    if
+      not is_processed_by_row[srow]
+      -- Dear stylua, please don't change the semantics of this statement!
+      -- stylua: ignore start
+      and (q.indent[node:id()] and srow ~= erow and ((srow ~= lnum - 1) or q.indent[node:id()].start_at_same_line))
+      -- stylua: ignore end
+    then
       indent = indent + indent_size
       is_processed = true
     end
