@@ -1,5 +1,5 @@
 local Runner = require("tests.indent.common").Runner
-local XFAIL = require("tests.indent.common").XFAIL
+--local XFAIL = require("tests.indent.common").XFAIL
 
 local run = Runner:new(it, "tests/indent/lua", {
   tabstop = 2,
@@ -19,7 +19,7 @@ describe("indent Lua:", function()
 
   describe("new line:", function()
     run:new_line("comment.lua", { on_line = 1, text = "line", indent = "-- " })
-    run:new_line("comment.lua", { on_line = 5, text = "multiline", indent = "  " }, "expected failure", XFAIL)
+    run:new_line("comment.lua", { on_line = 5, text = "multiline", indent = "  " })
     run:new_line("func.lua", { on_line = 1, text = "x = x + 1", indent = 2 })
     run:new_line("func.lua", { on_line = 2, text = "y = y + 1", indent = 4 })
     run:new_line("func.lua", { on_line = 4, text = "y = y + 1", indent = 2 })
