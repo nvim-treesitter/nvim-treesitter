@@ -117,7 +117,7 @@ function M.get_indent(lnum)
     end
 
     -- do not indent for nodes that starts-and-ends on same line and starts on target line (lnum)
-    if not is_processed_by_row[srow] and (q.indent[node:id()] and srow ~= erow and srow ~= lnum - 1) then
+    if not is_processed_by_row[srow] and (q.indent[node:id()] and srow ~= erow and ((srow ~= lnum - 1) or q.indent[node:id()].start_at_same_line)) then
       indent = indent + indent_size
       is_processed = true
     end
