@@ -13,17 +13,15 @@ local function get_last_node_at_line(root, lnum)
   return root:descendant_for_range(lnum - 1, col, lnum - 1, col)
 end
 
-local function get_matching_prev_sibling(anchor, start, matcher)
-  local start_row, start_col = start[1], start[2]
-  local node = anchor:descendant_for_range(start_row, start_col, start_row, start_col)
-  local pos = 1
-  -- TODO: reconsider this 999 limit or do something differently in future.
-  --       if anchor has more than 999 children, this would not work.
-  while pos < 999 and node and not matcher(node) do
-    node = node:prev_sibling()
-    pos = pos + 1
+local function find_delimiter(bufnr, node, delimiter)
+  for child, _ in node:iter_children() do
+    if child:type() == delimiter then
+      local linenr = child:start()
+      local line = vim.api.nvim_buf_get_lines(bufnr, linenr, linenr + 1, false)[1]
+      local end_char = {child:end_()}
+      return child, #line == end_char[2]
+    end
   end
-  return node, pos
 end
 
 local M = {}
@@ -59,6 +57,7 @@ function M.get_indent(lnum)
   if not parser or not lnum then
     return -1
   end
+  local bufnr = vim.api.nvim_get_current_buf()
 
   -- get_root_for_position is 0-based.
   local root, _, lang_tree = tsutils.get_root_for_position(lnum - 1, 0, parser)
@@ -126,23 +125,16 @@ function M.get_indent(lnum)
     if q.aligned_indent[node:id()] and srow ~= erow and (srow ~= lnum - 1) then
       local metadata = q.aligned_indent[node:id()]
       local opening_delimiter = metadata.delimiter:sub(1, 1)
-      local o_delim_node, pos = get_matching_prev_sibling(node, { srow, #vim.fn.getline(srow + 1) - 1 }, function(n)
-        return n:type() == opening_delimiter
-      end)
+      local o_delim_node, is_last_in_line = find_delimiter(bufnr, node, opening_delimiter)
 
       if o_delim_node then
-        if pos == 1 then
+        if is_last_in_line then
           -- hanging indent (previous line ended with starting delimiter)
           indent = indent + indent_size * 1
         else
-          local _, o_scol = o_delim_node:start()
-          local aligned_indent = math.max(indent, 0) + o_scol
-          if indent > 0 then
-            indent = aligned_indent
-          else
-            indent = aligned_indent + 1 -- extra space for starting delimiter
-          end
-          is_processed = true
+          local _, o_scol = o_delim_node:end_()
+          o_scol = o_scol + (metadata.increment or 0)
+          return math.max(indent, 0) + o_scol
         end
       end
     end
