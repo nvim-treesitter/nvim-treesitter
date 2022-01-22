@@ -1,5 +1,4 @@
 [
-  (init_declarator)
   (compound_statement)
   (preproc_arg)
   (field_declaration_list)
@@ -12,6 +11,7 @@
   (while_statement)
   (for_statement)
   (switch_statement)
+  (expression_statement)
 ] @indent
 (if_statement condition: (_) @indent)
 ((if_statement
@@ -21,6 +21,7 @@
 (init_declarator 
   value: [
     (binary_expression)
+    (conditional_expression)
   ] @indent)
 
 (compound_statement "}" @indent_end)
@@ -41,8 +42,6 @@
   (preproc_arg)
   (string_literal)
 ] @ignore
-
-(binary_expression) @auto
 
 ((ERROR (parameter_declaration)) @aligned_indent
  (#set! "delimiter" "()"))
