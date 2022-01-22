@@ -32,6 +32,8 @@
   condition: (parenthesized_expression) @aligned_indent
   (#set! "delimiter" "()")
 )
+((ERROR "(" . (_)) @aligned_indent
+ (#set! "delimiter" "()"))
 ((argument_list) @aligned_indent
  (#set! "delimiter" "()"))
 ((argument_list) @aligned_indent

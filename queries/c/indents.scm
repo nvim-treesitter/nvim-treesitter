@@ -7,7 +7,6 @@
   (enumerator_list)
   (struct_specifier)
   (compound_literal_expression)
-  (parameter_list)
   (initializer_list)
   (concatenated_string)
   (while_statement)
@@ -44,3 +43,8 @@
 ] @ignore
 
 (binary_expression) @auto
+
+((ERROR (parameter_declaration)) @aligned_indent
+ (#set! "delimiter" "()"))
+([(argument_list) (parameter_list)] @aligned_indent
+  (#set! "delimiter" "()"))
