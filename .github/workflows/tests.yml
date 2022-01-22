@@ -40,15 +40,18 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            ./.cargo/
-          key: v1.0.4
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+          key: ${{ matrix.os }}-rust-cargo-v1
 
       - name: Test Dependencies
         run: |
           mkdir -p ~/.local/share/nvim/site/pack/plenary.nvim/start
           cd ~/.local/share/nvim/site/pack/plenary.nvim/start
           git clone https://github.com/nvim-lua/plenary.nvim
-          ~/.cargo/bin/cargo +nightly install --git https://github.com/theHamsta/highlight-assertions --locked
+          ~/.cargo/bin/cargo +nightly install --force --git https://github.com/theHamsta/highlight-assertions --locked
 
       - name: Install and prepare Neovim
         env:
