@@ -672,7 +672,6 @@ list.gdscript = {
   install_info = {
     url = "https://github.com/PrestonKnopp/tree-sitter-gdscript",
     files = { "src/parser.c", "src/scanner.cc" },
-    requires_generate_from_grammar = true,
   },
   readme_name = "Godot (gdscript)",
   maintainers = { "@Shatur95" },
