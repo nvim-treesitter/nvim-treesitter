@@ -21,7 +21,7 @@ int f4(
 }
 
 int f5(int x,
-    int y)
+       int y)
 {
     return 1;
 }

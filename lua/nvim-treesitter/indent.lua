@@ -122,7 +122,8 @@ function M.get_indent(lnum)
       is_processed = true
     end
 
-    if q.aligned_indent[node:id()] and srow ~= erow then
+    -- do not indent for nodes that starts-and-ends on same line and starts on target line (lnum)
+    if q.aligned_indent[node:id()] and srow ~= erow and (srow ~= lnum - 1) then
       local metadata = q.aligned_indent[node:id()]
       local opening_delimiter = metadata.delimiter:sub(1, 1)
       local o_delim_node, pos = get_matching_prev_sibling(node, { srow, #vim.fn.getline(srow + 1) - 1 }, function(n)
