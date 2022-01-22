@@ -38,7 +38,6 @@
 ] @branch
 
 [
-  (comment)
   (preproc_arg)
   (string_literal)
 ] @ignore
@@ -47,3 +46,8 @@
  (#set! "delimiter" "()"))
 ([(argument_list) (parameter_list)] @aligned_indent
   (#set! "delimiter" "()"))
+
+([ (ERROR) (comment) ] @aligned_indent
+ (#lua-match? @aligned_indent "^/\*"))
+((comment) @ignore
+ (#lua-match? @ignore "^//"))
