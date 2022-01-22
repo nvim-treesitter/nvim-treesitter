@@ -37,11 +37,9 @@ local get_indents = tsutils.memoize_by_buf_tick(function(bufnr, root, lang)
     aligned_indent = {},
   }
 
-  highlighter.active[bufnr].tree:for_each_tree(function(tstree, tree)
-    for name, node, metadata in queries.iter_captures(bufnr, "indents", tstree:root(), tree:lang()) do
-      map[name][node:id()] = metadata or {}
-    end
-  end)
+  for name, node, metadata in queries.iter_captures(bufnr, "indents", root, lang) do
+    map[name][node:id()] = metadata or {}
+  end
 
   return map
 end, {
@@ -124,16 +122,21 @@ function M.get_indent(lnum)
     -- do not indent for nodes that starts-and-ends on same line and starts on target line (lnum)
     if q.aligned_indent[node:id()] and srow ~= erow and (srow ~= lnum - 1) then
       local metadata = q.aligned_indent[node:id()]
-      local opening_delimiter = metadata.delimiter:sub(1, 1)
-      local o_delim_node, is_last_in_line = find_delimiter(bufnr, node, opening_delimiter)
+      local o_delim_node, is_last_in_line
+      if metadata.delimiter then
+        local opening_delimiter = metadata.delimiter and metadata.delimiter:sub(1, 1)
+        o_delim_node, is_last_in_line = find_delimiter(bufnr, node, opening_delimiter)
+      else
+        o_delim_node = node
+      end
 
       if o_delim_node then
         if is_last_in_line then
           -- hanging indent (previous line ended with starting delimiter)
           indent = indent + indent_size * 1
         else
-          local _, o_scol = o_delim_node:end_()
-          o_scol = o_scol + (metadata.increment or 0)
+          local _, o_scol = o_delim_node:start()
+          o_scol = o_scol + (metadata.increment or 1)
           return math.max(indent, 0) + o_scol
         end
       end

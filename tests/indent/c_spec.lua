@@ -14,7 +14,6 @@ describe("indent C:", function()
       expected_failures = {
         "./preproc_func.c",
         "./label.c",
-        "./comment.c",
       },
     })
   end)

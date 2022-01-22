@@ -17,7 +17,6 @@ describe("indent C++:", function()
         -- C
         "c/preproc_func.c",
         "c/label.c",
-        "c/comment.c",
       },
     })
   end)
