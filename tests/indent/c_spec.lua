@@ -13,7 +13,7 @@ describe("indent C:", function()
     runner:whole_file(".", {
       expected_failures = {
         "./preproc_func.c",
-        "./label.c",
+        "./unfinished_comment.c",
       },
     })
   end)
