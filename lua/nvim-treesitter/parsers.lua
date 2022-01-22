@@ -474,6 +474,7 @@ list.markdown = {
     branch = "main",
   },
   experimental = true,
+  used_by = { "livemd" },
 }
 
 list.tlaplus = {
