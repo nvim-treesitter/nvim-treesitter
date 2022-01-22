@@ -37,6 +37,6 @@
 ] @branch
 
 (comment) @auto
-(comment) @ignore
+;(comment) @ignore
 
 (string) @auto
