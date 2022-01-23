@@ -5,6 +5,7 @@ local queries = require "nvim-treesitter.query"
 local info = require "nvim-treesitter.info"
 local shell = require "nvim-treesitter.shell_command_selectors"
 local install = require "nvim-treesitter.install"
+local utils = require "nvim-treesitter.utils"
 
 local health_start = vim.fn["health#report_start"]
 local health_ok = vim.fn["health#report_ok"]
@@ -24,13 +25,9 @@ local function install_health()
         .. " not required for :TSInstall)"
     )
   else
-    local handle = io.popen "tree-sitter  -V"
-    local result = handle:read "*a"
-    handle:close()
-    local version = vim.split(result, "\n")[1]:match "[^tree%psitter].*"
     health_ok(
       "`tree-sitter` found "
-        .. (version or "(unknown version)")
+        .. (utils.ts_cli_version() or "(unknown version)")
         .. " (parser generator, only needed for :TSInstallFromGrammar)"
     )
   end

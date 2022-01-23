@@ -31,6 +31,10 @@ jobs:
             cc: gcc
             nvim_tag: stable
 
+          - os: windows-2022
+            cc: clang
+            nvim_tag: stable
+
         include:
           - os: windows-2022
             cc: cl
@@ -52,7 +56,7 @@ jobs:
       - name: Install and prepare Neovim
         env:
           NVIM_TAG: ${{ matrix.nvim_tag }}
-          TREE_SITTER_CLI_TAG: v0.20.2
+          TREE_SITTER_CLI_TAG: v0.20.4
         run: |
           bash ./scripts/ci-install-${{ matrix.os }}.sh
 
@@ -65,16 +69,9 @@ jobs:
             ~/AppData/Local/nvim/pack/nvim-treesitter/start/nvim-treesitter/parser/
           key: ${{ matrix.os }}-${{ matrix.cc }}-${{ matrix.nvim_tag }}-parsers-v1-${{ hashFiles('./lockfile.json', './lua/nvim-treesitter/parsers.lua', './lua/nvim-treesitter/install.lua', './lua/nvim-treesitter/shell_selectors.lua') }}
 
-      - name: ccache
-        if: matrix.os != 'windows-2022'
-        uses: hendrikmuhs/ccache-action@v1
-        with:
-          key: ${{ matrix.os }}-${{ matrix.cc }}
-
       - name: Compile parsers Unix like
         if: matrix.os != 'windows-2022'
         run: |
-          export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
           nvim --headless -c "TSInstallSync all" -c "q"
 
       - name: Compile parsers Windows

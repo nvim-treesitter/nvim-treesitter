@@ -683,7 +683,6 @@ list.gdscript = {
   install_info = {
     url = "https://github.com/PrestonKnopp/tree-sitter-gdscript",
     files = { "src/parser.c", "src/scanner.cc" },
-    requires_generate_from_grammar = true,
   },
   readme_name = "Godot (gdscript)",
   maintainers = { "@Shatur95" },
@@ -901,6 +900,17 @@ list.hack = {
     branch = "main",
     files = { "src/parser.c", "src/scanner.cc" },
   },
+}
+
+list.norg = {
+  install_info = {
+    url = "https://github.com/nvim-neorg/tree-sitter-norg",
+    branch = "main",
+    files = { "src/parser.c", "src/scanner.cc" },
+    use_makefile = true,
+    cxx_standard = "c++14",
+  },
+  maintainers = { "@JoeyGrajciar", "@vhyrro", "@mrossinek" },
 }
 
 local M = {
