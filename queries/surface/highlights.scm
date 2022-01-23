@@ -19,16 +19,18 @@
 
 ; Surface supports HTML tags and are highlighted as such
 [
-  "<"
-  ">"
-  "</"
-  "/>"
-  "{"
-  "}"
-  "<!--"
   "-->"
-  "{!--"
   "--}"
+  "/>"
+  "<!--"
+  "<"
+  "</"
+  ">"
+  "{!--"
+  "{"
+  "{#"
+  "{/"
+  "}"
 ] @tag.delimiter
 
 ; Surface tags are highlighted as HTML
@@ -38,7 +40,7 @@
 (component_name) @type
 
 ; Surface directives are highlighted as keywords
-(directive_name) @keyword
+( ":" . (directive_name) @keyword ) @keyword
 
 ; Surface operators
 ["="] @operator
