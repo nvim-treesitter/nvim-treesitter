@@ -2,6 +2,13 @@ local parsers = require "nvim-treesitter.parsers"
 local queries = require "nvim-treesitter.query"
 local tsutils = require "nvim-treesitter.ts_utils"
 
+local M = {}
+
+M.avoid_force_reparsing = {
+  python = true,
+  yaml = true,
+}
+
 local function get_first_node_at_line(root, lnum)
   local col = vim.fn.indent(lnum)
   return root:descendant_for_range(lnum - 1, col, lnum - 1, col)
@@ -22,8 +29,6 @@ local function find_delimiter(bufnr, node, delimiter)
     end
   end
 end
-
-local M = {}
 
 local get_indents = tsutils.memoize_by_buf_tick(function(bufnr, root, lang)
   local map = {
@@ -51,15 +56,19 @@ end, {
 
 ---@param lnum number (1-indexed)
 function M.get_indent(lnum)
-  local parser = parsers.get_parser()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local parser = parsers.get_parser(bufnr)
   if not parser or not lnum then
     return -1
   end
 
-  -- Reparse in case we got triggered by ":h indentkeys"
-  parser:parse()
+  local root_lang = parsers.get_buf_lang(bufnr)
 
-  local bufnr = vim.api.nvim_get_current_buf()
+  -- some languages like Python will actually have worse results when re-parsing at opened new line
+  if not M.avoid_force_reparsing[root_lang] then
+    -- Reparse in case we got triggered by ":h indentkeys"
+    parser:parse()
+  end
 
   -- get_root_for_position is 0-based.
   local root, _, lang_tree = tsutils.get_root_for_position(lnum - 1, 0, parser)
