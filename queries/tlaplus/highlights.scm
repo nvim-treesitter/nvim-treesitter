@@ -205,7 +205,7 @@
 
 ; Proofs
 (proof_step_id "<" @punctuation.bracket)
-(proof_step_id (leve) @number)
+(proof_step_id (level) @number)
 (proof_step_id (name) @constant)
 (proof_step_id ">" @punctuation.bracket)
 (proof_step_ref "<" @punctuation.bracket)
