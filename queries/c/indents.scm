@@ -7,7 +7,6 @@
   (struct_specifier)
   (compound_literal_expression)
   (initializer_list)
-  (concatenated_string)
   (while_statement)
   (for_statement)
   (switch_statement)
@@ -18,11 +17,7 @@
   consequence: (_) @_consequence
   (#not-has-type? @_consequence compound_statement)
   ) @indent)
-(init_declarator 
-  value: [
-    (binary_expression)
-    (conditional_expression)
-  ] @indent)
+(init_declarator) @indent
 
 (compound_statement "}" @indent_end)
 
