@@ -1,10 +1,11 @@
-(start_tag ((tag_name) @definition))
-(start_component ((component_name) @definition))
-
-(tag_name) @reference
-(component_name) @reference
-
+; HEEx tags and components are references
 [
-  (tag) 
+  (tag_name)
+  (component_name)
+] @reference
+
+; Create a new scope within each HEEx tag or component
+[
+  (tag)
   (component)
 ] @scope
