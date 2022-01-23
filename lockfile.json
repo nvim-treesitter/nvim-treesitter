@@ -21,7 +21,7 @@
     "revision": "f6616f1e417ee8b62daf251aa1daa5d73781c596"
   },
   "comment": {
-    "revision": "5dd3c62f1bbe378b220fe16b317b85247898639e"
+    "revision": "6975eb268f42df2afc313f96c0693e284685dba7"
   },
   "commonlisp": {
     "revision": "4fd115d3bb7046cd094f21bfe5766c302dbf64cd"
@@ -45,7 +45,7 @@
     "revision": "fa70098cd70393f84785f85cdc6a45299b59cd5b"
   },
   "dockerfile": {
-    "revision": "98e201aaf755a0862d4d32158b36da98f0799810"
+    "revision": "28ac8596bab00b2dac9a76deaa9c4cb2b22642fd"
   },
   "dot": {
     "revision": "92877bac7033e409ccfb3f07fe28ef1dfd359457"
@@ -170,6 +170,9 @@
   "nix": {
     "revision": "6d6aaa50793b8265b6a8b6628577a0083d3b923d"
   },
+  "norg": {
+    "revision": "c4be6addec0a8ada234684ced6c928189fd399af"
+  },
   "ocaml": {
     "revision": "23d419ba45789c5a47d31448061557716b02750a"
   },
@@ -183,13 +186,13 @@
     "revision": "2fd40f477d3e2794af152618ccfac8d92eb72a66"
   },
   "perl": {
-    "revision": "0ac2c6da562c7a2c26ed7e8691d4a590f7e8b90a"
+    "revision": "ab2b39439f2fc82fd5ea0b7e08509760d4cbacd5"
   },
   "php": {
     "revision": "57f855461aeeca73bd4218754fb26b5ac143f98f"
   },
   "phpdoc": {
-    "revision": "f54431c26f8625f31c1622425680f6f157061e72"
+    "revision": "52c0fbf581d0fc2d29696dbbd4fca99a73082210"
   },
   "pioasm": {
     "revision": "924aadaf5dea2a6074d72027b064f939acf32e20"
@@ -213,13 +216,13 @@
     "revision": "d9868735e401e4870a3d4422790b585fea3faec8"
   },
   "rasi": {
-    "revision": "24b013ab9f1d228a0dcd096937775301af46e9f1"
+    "revision": "e2961f02244c068a67549adf896b0779e4a29516"
   },
   "regex": {
     "revision": "e1cfca3c79896ff79842f057ea13e529b66af636"
   },
   "rst": {
-    "revision": "5d1fb393538d604adb26d24d0990a141ff2bbc63"
+    "revision": "b74770c0166f28c1a0ab293513a78712ca1c338b"
   },
   "ruby": {
     "revision": "888e2e563ed3b43c417f17e57f7e29c39ce9aeea"
@@ -246,13 +249,13 @@
     "revision": "98274d94ec33e994e8354d9ddfdef58cca471294"
   },
   "swift": {
-    "revision": "2bd99ae2b4946ebfe19d67c273fc6f17345cac74"
+    "revision": "9ee2d8c29600425b64e7b173b2224033a0f99d0c"
   },
   "teal": {
     "revision": "fcc5f6f4d194dede4e676834ff28a506e39e17b4"
   },
   "tlaplus": {
-    "revision": "26bbaf5d07356cacbf21defa9316988bc732c8b3"
+    "revision": "c8bc17023f03d62bd3d01adcfae2c9ca5820a9fd"
   },
   "toml": {
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"

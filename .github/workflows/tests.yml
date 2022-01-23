@@ -40,20 +40,23 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            ./.cargo/
-          key: v1.0.4
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+          key: ${{ matrix.os }}-rust-cargo-v1
 
       - name: Test Dependencies
         run: |
           mkdir -p ~/.local/share/nvim/site/pack/plenary.nvim/start
           cd ~/.local/share/nvim/site/pack/plenary.nvim/start
           git clone https://github.com/nvim-lua/plenary.nvim
-          ~/.cargo/bin/cargo +nightly install --git https://github.com/theHamsta/highlight-assertions --locked
+          ~/.cargo/bin/cargo +nightly install --force --git https://github.com/theHamsta/highlight-assertions --locked
 
       - name: Install and prepare Neovim
         env:
           NVIM_TAG: stable
-          TREE_SITTER_CLI_TAG: v0.20.2
+          TREE_SITTER_CLI_TAG: v0.20.4
         run: |
           bash ./scripts/ci-install-${{ matrix.os }}.sh
 
@@ -66,16 +69,9 @@ jobs:
             ~/AppData/Local/nvim/pack/nvim-treesitter/start/nvim-treesitter/parser/
           key: ${{ matrix.os }}-${{ matrix.cc }}-parsers-v1-${{ hashFiles('./lockfile.json', './lua/nvim-treesitter/parsers.lua', './lua/nvim-treesitter/install.lua', './lua/nvim-treesitter/shell_selectors.lua') }}
 
-      - name: ccache
-        if: matrix.os != 'windows-2022'
-        uses: hendrikmuhs/ccache-action@v1
-        with:
-          key: ${{ matrix.os }}-${{ matrix.cc }}
-
       - name: Compile parsers Unix like
         if: ${{ matrix.os != 'windows-latest' && steps.parsers-cache.outputs.cache-hit != 'true' }}
         run: |
-          export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
           nvim --headless -c "TSInstallSync all" -c "q"
 
       - name: Tests

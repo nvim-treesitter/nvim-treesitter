@@ -116,7 +116,7 @@ language and buffer number as arguments:
     highlight = {
       enable = true,
       disable = function(lang, bufnr) -- Disable in large C++ buffers
-        return lang == "cpp" and api.nvim_buf_line_count(bufnr) > 50000
+        return lang == "cpp" and vim.api.nvim_buf_line_count(bufnr) > 50000
       end,
     },
   }
