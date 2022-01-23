@@ -782,6 +782,7 @@ list.vim = {
   install_info = {
     url = "https://github.com/vigoux/tree-sitter-viml",
     files = { "src/parser.c", "src/scanner.c" },
+    requires_generate_from_grammar = true,
   },
   filetype = "vim",
   maintainers = { "@vigoux" },
