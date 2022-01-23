@@ -194,6 +194,7 @@ Used for xml-like tags
 
 ```
 @definition for various definitions
+@definition.constant
 @definition.function
 @definition.method
 @definition.var

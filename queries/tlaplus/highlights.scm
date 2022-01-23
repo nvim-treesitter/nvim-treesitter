@@ -225,8 +225,6 @@
 ; Reference highlighting with the same color as declarations.
 ; `constant`, `operator`, and others are custom captures defined in locals.scm
 ((identifier_ref) @constant.builtin (#is? @constant.builtin constant))
-((identifier_ref) @operator (#is? @operator operator))
+((identifier_ref) @operator (#is? @operator function))
 ((identifier_ref) @parameter (#is? @parameter parameter))
-((identifier_ref) @variable.builtin (#is? @variable.builtin builtin_variable))
-((identifier_ref) @variable.builtin (#is? @variable.builtin variable))
-((identifier_ref) @include (#is? @include sequences))
+((identifier_ref) @variable.builtin (#is? @variable.builtin var))
