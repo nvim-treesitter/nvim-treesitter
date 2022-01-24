@@ -105,7 +105,9 @@ end
 
 local function is_lockfile_abi_matching(lang)
   load_lockfile()
-  return (lockfile[lang].abi or 0) <= vim.treesitter.language_version
+  local minimum_version = vim.treesitter.minimum_language_version or 13
+  local locked_version = (lockfile[lang].abi or 0)
+  return locked_version <= vim.treesitter.language_version and locked_version >= minimum_version
 end
 
 local function onread(handle, is_stderr)
