@@ -1,18 +1,50 @@
 #
 # compile_parsers.makefile
-# Stephan Seitz, 2021-09-09 21:36
 #
-CC?=cc
-CXX_STANDARD?=c++14
-C_STANDARD?=c99
 
-all: parser.so
+CFLAGS       ?= -std=c99 -fPIC
+CXXFLAGS     ?= -std=c++14 -fPIC
+LDFLAGS      ?= -Os -shared
+SRC_DIR      ?= ./src
+DEST_DIR     ?= ./dest
 
-parser.o: src/parser.c
-	$(CC) -c src/parser.c -std=$(C_STANDARD) -fPIC -I./src
+ifeq ($(OS),Windows_NT)
+   MKDIR  ?= mkdir
+   RM     ?= cmd /C rmdir /Q /S
+   CP     ?= copy
+   TARGET ?= parser.dll
+else
+   MKDIR  ?= mkdir -p
+   RM     ?= rm -rf
+   CP     ?= cp
+   TARGET ?= parser.so
+endif
 
-scanner.o: src/scanner.cc
-	$(CC) -c src/scanner.cc -std=$(CXX_STANDARD) -fPIC -I./src
+ifneq ($(wildcard src/*.cc),)
+   LDFLAGS += -lstdc++
+endif
 
-parser.so: parser.o scanner.o
-	$(CC) parser.o scanner.o -o parser.so -shared -Os -lstdc++
+OBJECTS   := parser.o scanner.o
+
+all: $(TARGET)
+
+$(TARGET): $(OBJECTS)
+	$(CC) $(OBJECTS) -o $(TARGET) $(LDFLAGS)
+
+%.o: src/%.c
+	$(CC) -c $(CFLAGS) -I$(SRC_DIR) -o $@ $<
+
+%.o: src/%.cc
+	$(CC) -c $(CXXFLAGS) -I$(SRC_DIR) -o $@ $<
+
+clean:
+	$(RM) $(OBJECTS) $(TARGET)
+
+install: $(TARGET)
+	$(MKDIR) $(DEST_DIR)
+	$(CP) $^ $(DEST_DIR)
+
+uninstall:
+	$(RM) $(DEST_DIR)/$(TARGET)
+
+.PHONY: clean uninstall
