@@ -319,10 +319,6 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
         },
       })
     end
-    local ts_args = { "generate" }
-    if vim.treesitter.language_version >= 14 then
-      table.insert(ts_args, string.format("--abi=%d", vim.treesitter.language_version))
-    end
     vim.list_extend(command_list, {
       {
         cmd = vim.fn.exepath "tree-sitter",
@@ -477,7 +473,6 @@ end
 function M.update(options)
   options = options or {}
   return function(...)
-    M.lockfile = {}
     reset_progress_counter()
     if ... and ... ~= "all" then
       local languages = vim.tbl_flatten { ... }
