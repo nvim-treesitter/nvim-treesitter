@@ -1,10 +1,10 @@
-; TODO: once @combined is fixed for all modules, replace this with the two queries below
-(expression_value) @elixir
+; HEEx directives can span multiple interpolated lines of Elixir
+(directive [
+  (expression_value) 
+  (partial_expression_value)
+] @elixir @combined)  
 
-; Directives are combined to support do blocks
-; (directive (expression_value) @elixir @combined)
-
-; Expressions are not combined, as they exist separately from do blocks
-; (expression (expression_value) @elixir)
+; HEEx Elixir expressions are always within a tag or component
+(expression (expression_value) @elixir)
 
 (comment) @comment
