@@ -343,6 +343,16 @@ list.surface = {
   maintainers = { "@connorlay" },
 }
 
+list.eex = {
+  install_info = {
+    url = "https://github.com/connorlay/tree-sitter-eex",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  filetype = "eex",
+  maintainers = { "@connorlay" },
+}
+
 list.heex = {
   install_info = {
     url = "https://github.com/connorlay/tree-sitter-heex",

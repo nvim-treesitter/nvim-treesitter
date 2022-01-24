@@ -10,6 +10,11 @@
 
 (sigil
   (sigil_name) @_sigil_name
+  (quoted_content) @eex
+(#any-of? @_sigil_name "E" "L"))
+
+(sigil
+  (sigil_name) @_sigil_name
   (quoted_content) @zig
 (#eq? @_sigil_name "Z"))
 
