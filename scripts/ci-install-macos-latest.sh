@@ -3,3 +3,4 @@ sudo ln -s $(pwd)/nvim-osx64/bin/nvim /usr/local/bin
 mkdir -p ~/.local/share/nvim/site/pack/nvim-treesitter/start
 ln -s $(pwd) ~/.local/share/nvim/site/pack/nvim-treesitter/start
 
+brew install tree-sitter
