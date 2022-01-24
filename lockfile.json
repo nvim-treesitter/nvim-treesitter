@@ -33,7 +33,7 @@
     "revision": "a03f1d2d1dfbf6f8e0fdca5f9ff030228241eb57"
   },
   "cuda": {
-    "revision": "d4a8f03ee5909b5b8106bfc9c3134b1bea8173e0"
+    "revision": "14cd86e18ba45e327017de5b3e0f8d8f7f8e98ec"
   },
   "d": {
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
@@ -78,10 +78,10 @@
     "revision": "2a6abdaa47fcb91397e09a97c7433fd995ea46c6"
   },
   "glimmer": {
-    "revision": "df778b4d741bc4542c3dbdee7e6cd3ddaccf3d11"
+    "revision": "2644d7db571fe36204fdfcf8eed7bfa97f32c25a"
   },
   "glsl": {
-    "revision": "26ba31a3f5a85ebed5d71e49eef11a003bed782b"
+    "revision": "ffb93961426926554a0ba4a389ea6e9d6fafdea9"
   },
   "go": {
     "revision": "0fa917a7022d1cd2e9b779a6a8fc5dc7fad69c75"
@@ -108,7 +108,7 @@
     "revision": "3cb7fc28247efbcb2973b97e71c78838ad98a583"
   },
   "heex": {
-    "revision": "a657fcfc524aab19ab0ab5baeb47ec170977e9ee"
+    "revision": "d8b5b9f016cd3c7b0ee916cf031d9a2188c0fc44"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
@@ -273,7 +273,7 @@
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
   },
   "vim": {
-    "revision": "8296f301b19fc5f05820088b5b8b77e3edb5f526"
+    "revision": "a39827af4f12dfefe11962b252b188cc3e9dd513"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
