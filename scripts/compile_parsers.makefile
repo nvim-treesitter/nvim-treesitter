@@ -9,15 +9,16 @@ SRC_DIR      ?= ./src
 DEST_DIR     ?= ./dest
 
 ifeq ($(OS),Windows_NT)
-   MKDIR  ?= mkdir
-   RM     ?= cmd /C rmdir /Q /S
-   CP     ?= copy
-   TARGET ?= parser.dll
+   SHELL       := powershell.exe
+   .SHELLFLAGS := -NoProfile
+   RM          := Remove-Item -Force
+   CP          := Copy-Item -Recurse
+   MKDIR       := New-Item -ItemType directory
+   TARGET      := parser.dll
 else
-   MKDIR  ?= mkdir -p
-   RM     ?= rm -rf
-   CP     ?= cp
-   TARGET ?= parser.so
+   RM          := rm -rf
+   CP          := cp
+   TARGET      := parser.so
 endif
 
 ifneq ($(wildcard src/*.cc),)
@@ -38,13 +39,13 @@ $(TARGET): $(OBJECTS)
 	$(CC) -c $(CXXFLAGS) -I$(SRC_DIR) -o $@ $<
 
 clean:
-	$(RM) $(OBJECTS) $(TARGET)
+	$(foreach file, $(OBJECTS), $(RM) $(file))
+	$(RM) $(TARGET)
 
-install: $(TARGET)
-	$(MKDIR) $(DEST_DIR)
+$(DEST_DIR):
+	test -d $(DEST_DIR) || $(MKDIR) $(DEST_DIR)
+
+install: $(TARGET) $(DEST_DIR)
 	$(CP) $^ $(DEST_DIR)
 
-uninstall:
-	$(RM) $(DEST_DIR)/$(TARGET)
-
-.PHONY: clean uninstall
+.PHONY: clean
