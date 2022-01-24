@@ -103,6 +103,11 @@ local function outdated_parsers()
   end, info.installed_parsers())
 end
 
+local function is_lockfile_abi_matching(lang)
+  load_lockfile()
+  return lockfile[lang].abi <= vim.treesitter.language_version
+end
+
 local function onread(handle, is_stderr)
   return function(err, data)
     if data then
@@ -384,8 +389,12 @@ local function install_lang(lang, ask_reinstall, cache_folder, install_folder, w
       if not string.match(yesno, "^y.*") then
         return
       end
-      generate_from_grammar = true
+      generate_from_grammar = not is_lockfile_abi_matching(lang)
     end
+  end
+
+  if not is_lockfile_abi_matching(lang) then
+    generate_from_grammar = true
   end
 
   local install_info = get_parser_install_info(lang, true)
