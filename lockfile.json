@@ -20,7 +20,7 @@
     "revision": "352a4630c81a7a5cbd3bc67327743bd8d38f2dd2"
   },
   "clojure": {
-    "abi": 13,
+    "abi": 14,
     "revision": "39bf0977d223879436c1425fe6bfeb3bcfd86f92"
   },
   "cmake": {
@@ -48,7 +48,7 @@
     "revision": "14cd86e18ba45e327017de5b3e0f8d8f7f8e98ec"
   },
   "d": {
-    "abi": 13,
+    "abi": 14,
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
   },
   "dart": {
@@ -56,11 +56,11 @@
     "revision": "6a25376685d1d47968c2cef06d4db8d84a70025e"
   },
   "devicetree": {
-    "abi": 13,
+    "abi": 14,
     "revision": "fa70098cd70393f84785f85cdc6a45299b59cd5b"
   },
   "dockerfile": {
-    "abi": 13,
+    "abi": 14,
     "revision": "28ac8596bab00b2dac9a76deaa9c4cb2b22642fd"
   },
   "dot": {
@@ -80,7 +80,7 @@
     "revision": "9d5fd0c329280a156bf7614a49dc5e8c58cc037c"
   },
   "fennel": {
-    "abi": 14,
+    "abi": 13,
     "revision": "fce4331731a960077ff5f98939bc675179f1908a"
   },
   "fish": {
@@ -96,7 +96,7 @@
     "revision": "f0f2f100952a353e64e26b0fa710b4c296d7af13"
   },
   "fusion": {
-    "abi": 13,
+    "abi": 14,
     "revision": "19db2f47ba4c3a0f6238d4ae0e2abfca16e61dd6"
   },
   "gdscript": {
@@ -112,23 +112,23 @@
     "revision": "26ba31a3f5a85ebed5d71e49eef11a003bed782b"
   },
   "go": {
-    "abi": 13,
+    "abi": 14,
     "revision": "0fa917a7022d1cd2e9b779a6a8fc5dc7fad69c75"
   },
   "godot_resource": {
-    "abi": 13,
+    "abi": 14,
     "revision": "b6ef0768711086a86b3297056f9ffb5cc1d77b4a"
   },
   "gomod": {
-    "abi": 13,
+    "abi": 14,
     "revision": "3cbcb572109ea0bc476a292208722c326c9e6c3a"
   },
   "gowork": {
-    "abi": 13,
+    "abi": 14,
     "revision": "6dd9dd79fb51e9f2abc829d5e97b15015b6a8ae2"
   },
   "graphql": {
-    "abi": 13,
+    "abi": 14,
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "hack": {
@@ -156,7 +156,7 @@
     "revision": "5b4688cc57c773e69fe7dfc3f6b83c054557f4f1"
   },
   "html": {
-    "abi": 13,
+    "abi": 14,
     "revision": "161a92474a7bb2e9e830e48e76426f38299d99d1"
   },
   "http": {
@@ -168,15 +168,15 @@
     "revision": "a24ae7d16de3517bff243a87d087d0b4877a65c5"
   },
   "javascript": {
-    "abi": 13,
+    "abi": 14,
     "revision": "fdeb68ac8d2bd5a78b943528bb68ceda3aade2eb"
   },
   "jsdoc": {
-    "abi": 13,
+    "abi": 14,
     "revision": "189a6a4829beb9cdbe837260653b4a3dfb0cc3db"
   },
   "json": {
-    "abi": 13,
+    "abi": 14,
     "revision": "203e239408d642be83edde8988d6e7b20a19f0e8"
   },
   "json5": {
@@ -184,7 +184,7 @@
     "revision": "5dd5cdc418d9659682556b6adca2dd9ace0ac6d2"
   },
   "jsonc": {
-    "abi": 13,
+    "abi": 14,
     "revision": "02b01653c8a1c198ae7287d566efa86a135b30d5"
   },
   "julia": {
@@ -200,7 +200,7 @@
     "revision": "6f796b700c69a8af28132e84ed6d0c8f0c17a5e2"
   },
   "ledger": {
-    "abi": 13,
+    "abi": 14,
     "revision": "0cdeb0e51411a3ba5493662952c3039de08939ca"
   },
   "llvm": {
@@ -208,7 +208,7 @@
     "revision": "3b213925b9c4f42c1acfe2e10bfbb438d9c6834d"
   },
   "lua": {
-    "abi": 14,
+    "abi": 13,
     "revision": "2e372ad0af8c6a68ba39f107a2edc9e3fc19ecf1"
   },
   "make": {
@@ -228,6 +228,7 @@
     "revision": "6d6aaa50793b8265b6a8b6628577a0083d3b923d"
   },
   "norg": {
+    "abi": 13,
     "revision": "c4be6addec0a8ada234684ced6c928189fd399af"
   },
   "ocaml": {
@@ -243,7 +244,7 @@
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
   },
   "pascal": {
-    "abi": 13,
+    "abi": 14,
     "revision": "2fd40f477d3e2794af152618ccfac8d92eb72a66"
   },
   "perl": {
@@ -251,7 +252,7 @@
     "revision": "ab2b39439f2fc82fd5ea0b7e08509760d4cbacd5"
   },
   "php": {
-    "abi": 13,
+    "abi": 14,
     "revision": "57f855461aeeca73bd4218754fb26b5ac143f98f"
   },
   "phpdoc": {
@@ -279,7 +280,7 @@
     "revision": "8e7fd7e638d4a0ec7a792ee16b19dbc6407aa810"
   },
   "query": {
-    "abi": 13,
+    "abi": 14,
     "revision": "5217c6805c09f8fc00ed13d17d5fcb791437aee6"
   },
   "r": {
@@ -295,7 +296,7 @@
     "revision": "e1cfca3c79896ff79842f057ea13e529b66af636"
   },
   "rst": {
-    "abi": 13,
+    "abi": 14,
     "revision": "b74770c0166f28c1a0ab293513a78712ca1c338b"
   },
   "ruby": {
@@ -327,15 +328,15 @@
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
   },
   "svelte": {
-    "abi": 13,
+    "abi": 14,
     "revision": "98274d94ec33e994e8354d9ddfdef58cca471294"
   },
   "swift": {
-    "abi": 13,
+    "abi": 14,
     "revision": "9ee2d8c29600425b64e7b173b2224033a0f99d0c"
   },
   "teal": {
-    "abi": 13,
+    "abi": 14,
     "revision": "fcc5f6f4d194dede4e676834ff28a506e39e17b4"
   },
   "tlaplus": {
@@ -351,7 +352,7 @@
     "revision": "e8e8e8dc2745840b036421b4e43286750443cb13"
   },
   "turtle": {
-    "abi": 13,
+    "abi": 14,
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
   },
   "typescript": {
@@ -359,11 +360,11 @@
     "revision": "e8e8e8dc2745840b036421b4e43286750443cb13"
   },
   "verilog": {
-    "abi": 13,
+    "abi": 12,
     "revision": "6fae7414fa854b5052bee9111b200e9137797f3d"
   },
   "vim": {
-    "abi": 13,
+    "abi": 14,
     "revision": "274b004d226a6686546ef83231f0f836b91700ae"
   },
   "vue": {
