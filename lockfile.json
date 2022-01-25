@@ -50,6 +50,9 @@
   "dot": {
     "revision": "92877bac7033e409ccfb3f07fe28ef1dfd359457"
   },
+  "eex": {
+    "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
+  },
   "elixir": {
     "revision": "de20391afe5cb03ef1e8a8e43167e7b58cc52869"
   },
