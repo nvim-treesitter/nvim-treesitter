@@ -34,9 +34,9 @@
   (email_address) @text.uri
 )
 
-[
-  "$"
-  ">"
-  "<"
-  "|"
-]@keyword
+(type_list "|" @keyword)
+(variable_name "$" @keyword)
+(tag
+  (tag_name) @_tag_name
+  ["<" ">"] @keyword
+  (#eq? @_tag_name "@author"))

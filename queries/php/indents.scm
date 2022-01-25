@@ -10,14 +10,13 @@
 ] @indent
 
 [
-  "("
   ")"
-  "{"
   "}"
-  "["
   "]"
 ] @branch
 
 [
   (comment)
 ] @ignore
+
+(compound_statement "}" @indent_end)

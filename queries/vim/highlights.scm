@@ -37,7 +37,7 @@
 (call_expression function: (identifier) @function)
 (function_declaration parameters: (parameters (identifier) @parameter))
 
-[ (bang) (spread) ] @punctuation.special
+[ (bang) (spread) (at) ] @punctuation.special
 
 [ (no_option) (inv_option) (default_option) (option_name) ] @variable.builtin
 [
@@ -67,6 +67,8 @@
   "perl"
   "python"
   "highlight"
+  "delcommand"
+  "comclear"
 ] @keyword
 (map_statement cmd: _ @keyword)
 (command_name) @function.macro
@@ -84,7 +86,12 @@
   "foldlevel"
   "iskeyword"
   "keyword"
+  "match"
+  "cluster"
+  "region"
 ] @keyword)
+
+(syntax_argument name: _ @keyword)
 
 [
   "<buffer>"
@@ -104,6 +111,14 @@
 
 (au_event) @constant
 (normal_statement (commands) @constant)
+
+;; Highlight command
+
+(highlight_statement [
+  "default"
+  "link"
+  "clear"
+] @keyword)
 
 ;; Literals
 

@@ -13,5 +13,6 @@
  (preproc_else)
  (preproc_ifdef)
  (initializer_list)
+ (compound_statement)
 ] @fold
 

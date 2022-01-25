@@ -1,18 +1,51 @@
 #
 # compile_parsers.makefile
-# Stephan Seitz, 2021-09-09 21:36
 #
-CC?=cc
-CXX_STANDARD?=c++14
-C_STANDARD?=c99
 
-all: parser.so
+CFLAGS       ?= -std=c99 -fPIC
+CXXFLAGS     ?= -std=c++14 -fPIC
+LDFLAGS      ?= -Os -shared
+SRC_DIR      ?= ./src
+DEST_DIR     ?= ./dest
 
-parser.o: src/parser.c
-	$(CC) -c src/parser.c -std=$(C_STANDARD) -fPIC -I./src
+ifeq ($(OS),Windows_NT)
+   SHELL       := powershell.exe
+   .SHELLFLAGS := -NoProfile -command
+   CP          := Copy-Item -Recurse -ErrorAction SilentlyContinue
+   MKDIR       := New-Item -ItemType directory -ErrorAction SilentlyContinue
+   TARGET      := parser.dll
+   rmf         = Write-Output $(1) | foreach { if (Test-Path $$_) { Remove-Item -Force } }
+else
+   CP          := cp
+   MKDIR       := mkdir -p
+   TARGET      := parser.so
+   rmf         = rm -rf $(1)
+endif
 
-scanner.o: src/scanner.cc
-	$(CC) -c src/scanner.cc -std=$(CXX_STANDARD) -fPIC -I./src
+ifneq ($(wildcard src/*.cc),)
+   LDFLAGS += -lstdc++
+endif
 
-parser.so: parser.o scanner.o
-	$(CC) parser.o scanner.o -o parser.so -shared -Os -lstdc++
+OBJECTS   := parser.o scanner.o
+
+all: $(TARGET)
+
+$(TARGET): $(OBJECTS)
+	$(CC) $(OBJECTS) -o $(TARGET) $(LDFLAGS)
+
+%.o: src/%.c
+	$(CC) -c $(CFLAGS) -I$(SRC_DIR) -o $@ $<
+
+%.o: src/%.cc
+	$(CC) -c $(CXXFLAGS) -I$(SRC_DIR) -o $@ $<
+
+clean:
+	$(call rmf,$(TARGET) $(OBJECTS))
+
+$(DEST_DIR):
+	@$(MKDIR) $(DEST_DIR)
+
+install: $(TARGET) $(DEST_DIR)
+	$(CP) $(TARGET) $(DEST_DIR)/
+
+.PHONY: clean
