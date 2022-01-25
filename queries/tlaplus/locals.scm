@@ -37,3 +37,6 @@
   ]
   (#vim-match? @definition.var "^(self|pc|stack)$")
 )
+
+; References
+(identifier_ref) @reference
