@@ -1,4 +1,4 @@
 [
   (comment)
-  (block_comment)
+  (block_comment_text)
 ] @comment
