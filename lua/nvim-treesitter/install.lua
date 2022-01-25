@@ -63,7 +63,10 @@ end
 
 local function load_lockfile()
   local filename = utils.join_path(utils.get_package_path(), "lockfile.json")
-  lockfile = vim.fn.filereadable(filename) == 1 and vim.fn.json_decode(vim.fn.readfile(filename)) or {}
+  local fd = assert(io.open(filename, "r"))
+  lockfile = vim.json.decode(fd:read "*all") or {}
+  fd:close()
+  return lockfile
 end
 
 local function get_revision(lang)
@@ -497,42 +500,7 @@ function M.uninstall(...)
   end
 end
 
-function M.write_lockfile(verbose, skip_langs)
-  local sorted_parsers = {}
-  -- Load previous lockfile
-  load_lockfile()
-  skip_langs = skip_langs or {}
-
-  for k, v in pairs(parsers.get_parser_configs()) do
-    table.insert(sorted_parsers, { name = k, parser = v })
-  end
-
-  table.sort(sorted_parsers, function(a, b)
-    return a.name < b.name
-  end)
-
-  for _, v in ipairs(sorted_parsers) do
-    if not vim.tbl_contains(skip_langs, v.name) then
-      -- I'm sure this can be done in aync way with iter_cmd
-      local sha = vim.split(vim.fn.systemlist("git ls-remote " .. v.parser.install_info.url)[1], "\t")[1]
-      lockfile[v.name] = { revision = sha }
-      if verbose then
-        print(v.name .. ": " .. sha)
-      end
-    else
-      print("Skipping " .. v.name)
-    end
-  end
-
-  if verbose then
-    print(vim.inspect(lockfile))
-  end
-  vim.fn.writefile(
-    vim.fn.split(vim.fn.json_encode(lockfile), "\n"),
-    utils.join_path(utils.get_package_path(), "lockfile.json")
-  )
-end
-
+M.load_lockfile = load_lockfile
 M.ensure_installed = install { exclude_configured_parsers = true }
 M.ensure_installed_sync = install { with_sync = true, exclude_configured_parsers = true }
 
