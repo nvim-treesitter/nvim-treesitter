@@ -1,15 +1,14 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 make_ignored() {
   if [ -n "$1" ]
   then
-    jq keys < lockfile.json | tail --line=+2 | head --lines=-1 | tr -d "\" ," | while read lang
-    do
+    while read -r lang; do
       if [ "$lang" != "$1" ]
       then
-        printf "$lang,"
+        printf "%s," "$lang"
       fi
-    done
+    done < <(jq 'keys|@sh' -c lockfile.json)
   fi
 }
 
