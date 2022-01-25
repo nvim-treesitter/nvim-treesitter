@@ -10,15 +10,16 @@ DEST_DIR     ?= ./dest
 
 ifeq ($(OS),Windows_NT)
    SHELL       := powershell.exe
-   .SHELLFLAGS := -NoProfile
-   RM          := Remove-Item -Force
-   CP          := Copy-Item -Recurse
-   MKDIR       := New-Item -ItemType directory
+   .SHELLFLAGS := -NoProfile -command
+   CP          := Copy-Item -Recurse -ErrorAction SilentlyContinue
+   MKDIR       := New-Item -ItemType directory -ErrorAction SilentlyContinue
    TARGET      := parser.dll
+   rmf         = Write-Output $(1) | foreach { if (Test-Path $$_) { Remove-Item -Force } }
 else
-   RM          := rm -rf
    CP          := cp
+   MKDIR       := mkdir -p
    TARGET      := parser.so
+   rmf         = rm -rf $(1)
 endif
 
 ifneq ($(wildcard src/*.cc),)
@@ -39,13 +40,12 @@ $(TARGET): $(OBJECTS)
 	$(CC) -c $(CXXFLAGS) -I$(SRC_DIR) -o $@ $<
 
 clean:
-	$(foreach file, $(OBJECTS), $(RM) $(file))
-	$(RM) $(TARGET)
+	$(call rmf,$(TARGET) $(OBJECTS))
 
 $(DEST_DIR):
-	test -d $(DEST_DIR) || $(MKDIR) $(DEST_DIR)
+	@$(MKDIR) $(DEST_DIR)
 
 install: $(TARGET) $(DEST_DIR)
-	$(CP) $^ $(DEST_DIR)
+	$(CP) $(TARGET) $(DEST_DIR)/
 
 .PHONY: clean
