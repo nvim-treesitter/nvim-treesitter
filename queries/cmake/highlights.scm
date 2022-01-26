@@ -171,3 +171,12 @@
   (#any-of? @constant "VERSION" "SET" "NEW" "OLD" "GET" "PUSH" "POP")
   (#match? @function.builtin "\\c^(cmake_policy)$")
 )
+
+(normal_command
+  (identifier) @function.builtin
+  (argument) @constant
+  (#any-of? @constant "NO_SOURCE_PERMISSIONS" "USE_SOURCE_PERMISSIONS" "FILE_PERMISSIONS"
+                      "COPYONLY" "ESCAPE_QUOTES" "@ONLY"
+                      "NEWLINE_STYLE" "UNIX" "DOS" "WIN32" "LF" "CRLF")
+  (#match? @function.builtin "\\c^(configure_file)$")
+)
