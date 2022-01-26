@@ -136,3 +136,10 @@
   (#any-of? @constant "CALL" "EVAL" "CODE" "DEFER" "CALL")
   (#match? @function.builtin "\\c^(cmake_language)$")
 )
+
+(normal_command
+  (identifier) @function.builtin
+  (argument) @constant
+  (#any-of? @constant "VERSION" "FATAL_ERROR")
+  (#match? @function.builtin "\\c^(cmake_minimum_required)$")
+)
