@@ -143,3 +143,12 @@
   (#any-of? @constant "VERSION" "FATAL_ERROR")
   (#match? @function.builtin "\\c^(cmake_minimum_required)$")
 )
+
+(normal_command
+  (identifier) @function.builtin
+  (argument) @constant
+  (#any-of? @constant "PARSE_ARGV")
+  (#match? @function.builtin "\\c^(cmake_parse_arguments)$")
+)
+
+
