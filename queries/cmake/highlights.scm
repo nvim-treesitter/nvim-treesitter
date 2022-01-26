@@ -129,3 +129,10 @@
   (#any-of? @constant "RESULT" "QUERY")
   (#match? @function.builtin "\\c^(cmake_host_system_information)$")
 )
+
+(normal_command
+  (identifier) @function.builtin
+  (argument) @constant
+  (#any-of? @constant "CALL" "EVAL" "CODE" "DEFER" "CALL")
+  (#match? @function.builtin "\\c^(cmake_language)$")
+)
