@@ -196,3 +196,20 @@
                       "COMMAND_ERROR_IS_FATAL" "ANY" "LAST")
   (#match? @function.builtin "\\c^(execute_process)$")
 )
+
+(normal_command
+  (identifier) @function.builtin
+  (argument) @constant
+  (#any-of? @constant "READ" "STRINGS"
+                      "MD5" "SHA1" "SHA224" "SHA256" "SHA384" "SHA512" "SHA3_224" "SHA3_256" "SHA3_384" "SHA3_512"
+                      "TIMESTAMP" "GET_RUNTIME_DEPENDENCIES"
+                      "WRITE" "APPEND" "TOUCH" "TOUCH_NOCREATE" "GENERATE"  "CONFIGURE"
+                      "GLOB" "GLOB_RECURSE" "MAKE_DIRECTORY" "REMOVE" "REMOVE_RECURSE" "RENAME" "COPY_FILE"
+                      "COPY" "INSTALL" "SIZE" "READ_SYMLINK" "CREATE_LINK" "CHMOD"  "CHMOD_RECURSE"
+                      "REAL_PATH" "RELATIVE_PATH" "TO_CMAKE_PATH" TO_NATIVE_PATH
+                      "DOWNLOAD" "UPLOAD"
+                      "LOCK"
+                      "ARCHIVE_CREATE""ARCHIVE_EXTRACT"
+                      "INPUT" "OUTPUT" "BASE_DIRECTORY" "PATHS" "EXPAND_TILDE" "CONTENT" "DESTINATION" "PERMISSIONS")
+  (#match? @function.builtin "\\c^(file)$")
+)
