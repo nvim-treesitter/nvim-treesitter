@@ -165,4 +165,9 @@
   (#match? @function.builtin "\\c^(cmake_path)$")
 )
 
-
+(normal_command
+  (identifier) @function.builtin
+  (argument) @constant
+  (#any-of? @constant "VERSION" "SET" "NEW" "OLD" "GET" "PUSH" "POP")
+  (#match? @function.builtin "\\c^(cmake_policy)$")
+)
