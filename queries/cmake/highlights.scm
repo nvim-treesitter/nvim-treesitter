@@ -123,3 +123,9 @@
   (#match? @function.builtin "\\c^(add_custom_command)$")
 )
 
+(normal_command
+  (identifier) @function.builtin
+  (argument) @constant
+  (#any-of? @constant "RESULT" "QUERY")
+  (#match? @function.builtin "\\c^(cmake_host_system_information)$")
+)
