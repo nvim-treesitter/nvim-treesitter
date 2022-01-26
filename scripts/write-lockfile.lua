@@ -94,9 +94,8 @@ local function write_lockfile(verbose, skipped_parers)
     local url = v.parser.install_info.url
     local maintainers = v.parser.maintainers or {}
     local filetype = v.parser.filetype or v.name
-    -- local is_github = repo.url:find("github.com", 1, true)
-    -- local is_gitlab = repo.url:find("gitlab.com", 1, true)
-    -- local revision = repo.revision or repo.branch or "master"
+    local abi = v.parser.abi or "NA"
+    local revision = v.parser.revision or v.parser.branch or "master"
 
     local on_done = function(success, result, errors)
       completed = completed + 1
@@ -106,10 +105,11 @@ local function write_lockfile(verbose, skipped_parers)
       end
       local latest_sha = result:gsub("\tHEAD\n", "")
       locked_parsers[v.name] = {
-        revision = latest_sha,
+        revision = latest_sha or revision,
         url = url,
         maintainers = maintainers,
         filetype = filetype,
+        abi = abi,
       }
     end
 

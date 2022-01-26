@@ -1,5 +1,6 @@
 {
   "bash": {
+    "abi": 13,
     "filetype": "sh",
     "maintainers": [
       "@TravonteD"
@@ -8,6 +9,7 @@
     "url": "https://github.com/tree-sitter/tree-sitter-bash"
   },
   "beancount": {
+    "abi": 13,
     "filetype": "beancount",
     "maintainers": [
       "@polarmutex"
@@ -16,6 +18,7 @@
     "url": "https://github.com/polarmutex/tree-sitter-beancount"
   },
   "bibtex": {
+    "abi": 13,
     "filetype": "bib",
     "maintainers": [
       "@theHamsta by asking @clason"
@@ -24,6 +27,7 @@
     "url": "https://github.com/latex-lsp/tree-sitter-bibtex"
   },
   "c": {
+    "abi": 13,
     "filetype": "c",
     "maintainers": [
       "@vigoux"
@@ -32,6 +36,7 @@
     "url": "https://github.com/tree-sitter/tree-sitter-c"
   },
   "c_sharp": {
+    "abi": 13,
     "filetype": "cs",
     "maintainers": [
       "@Luxed"
@@ -40,6 +45,7 @@
     "url": "https://github.com/tree-sitter/tree-sitter-c-sharp"
   },
   "clojure": {
+    "abi": 13,
     "filetype": "clojure",
     "maintainers": [
       "@sogaiu"
@@ -48,14 +54,16 @@
     "url": "https://github.com/sogaiu/tree-sitter-clojure"
   },
   "cmake": {
+    "abi": 13,
     "filetype": "cmake",
     "maintainers": [
       "@uyha"
     ],
-    "revision": "5020572408a386d5d2dfac3516584f5edda7a49b"
+    "revision": "5020572408a386d5d2dfac3516584f5edda7a49b",
     "url": "https://github.com/uyha/tree-sitter-cmake"
   },
   "comment": {
+    "abi": 13,
     "filetype": "comment",
     "maintainers": [
       "@stsewd"
@@ -64,14 +72,16 @@
     "url": "https://github.com/stsewd/tree-sitter-comment"
   },
   "commonlisp": {
+    "abi": 13,
     "filetype": "lisp",
     "maintainers": [
       "@theHamsta"
     ],
-    "revision": "4fd115d3bb7046cd094f21bfe5766c302dbf64cd",
+    "revision": "c7e814975ab0d0d04333d1f32391c41180c58919",
     "url": "https://github.com/theHamsta/tree-sitter-commonlisp"
   },
   "cpp": {
+    "abi": 13,
     "filetype": "cpp",
     "maintainers": [
       "@theHamsta"
@@ -80,6 +90,7 @@
     "url": "https://github.com/tree-sitter/tree-sitter-cpp"
   },
   "css": {
+    "abi": 13,
     "filetype": "css",
     "maintainers": [
       "@TravonteD"
@@ -88,6 +99,7 @@
     "url": "https://github.com/tree-sitter/tree-sitter-css"
   },
   "cuda": {
+    "abi": 13,
     "filetype": "cuda",
     "maintainers": [
       "@theHamsta"
@@ -96,6 +108,7 @@
     "url": "https://github.com/theHamsta/tree-sitter-cuda"
   },
   "d": {
+    "abi": "NA",
     "filetype": "d",
     "maintainers": [
       "@nawordar"
@@ -104,6 +117,7 @@
     "url": "https://github.com/CyberShadow/tree-sitter-d"
   },
   "dart": {
+    "abi": 13,
     "filetype": "dart",
     "maintainers": [
       "@Akin909"
@@ -112,6 +126,7 @@
     "url": "https://github.com/UserNobody14/tree-sitter-dart"
   },
   "devicetree": {
+    "abi": 13,
     "filetype": "dts",
     "maintainers": [
       "@jedrzejboczar"
@@ -120,14 +135,16 @@
     "url": "https://github.com/joelspadin/tree-sitter-devicetree"
   },
   "dockerfile": {
+    "abi": 13,
     "filetype": "dockerfile",
     "maintainers": [
       "@camdencheek"
     ],
-    "revision": "28ac8596bab00b2dac9a76deaa9c4cb2b22642fd",
+    "revision": "d34a0cebd094e830bdd2106a28cb2f1fb22401d8",
     "url": "https://github.com/camdencheek/tree-sitter-dockerfile"
   },
   "dot": {
+    "abi": 13,
     "filetype": "dot",
     "maintainers": [
       "@rydesun"
@@ -136,6 +153,7 @@
     "url": "https://github.com/rydesun/tree-sitter-dot"
   },
   "eex": {
+    "abi": 13,
     "filetype": "eex",
     "maintainers": [
       "@connorlay"
@@ -144,6 +162,7 @@
     "url": "https://github.com/connorlay/tree-sitter-eex"
   },
   "elixir": {
+    "abi": 13,
     "filetype": "elixir",
     "maintainers": [
       "@jonatanklosko"
@@ -152,12 +171,14 @@
     "url": "https://github.com/elixir-lang/tree-sitter-elixir"
   },
   "elm": {
+    "abi": 13,
     "filetype": "elm",
     "maintainers": [],
-    "revision": "bd50ccf66b42c55252ac8efc1086af4ac6bab8cd",
+    "revision": "6575badb926ca1664a7c2a4d9023f9c731316628",
     "url": "https://github.com/elm-tooling/tree-sitter-elm"
   },
   "erlang": {
+    "abi": 13,
     "filetype": "erlang",
     "maintainers": [
       "@ostera"
@@ -166,6 +187,7 @@
     "url": "https://github.com/AbstractMachinesLab/tree-sitter-erlang"
   },
   "fennel": {
+    "abi": 13,
     "filetype": "fennel",
     "maintainers": [
       "@TravonteD"
@@ -174,6 +196,7 @@
     "url": "https://github.com/travonted/tree-sitter-fennel"
   },
   "fish": {
+    "abi": 13,
     "filetype": "fish",
     "maintainers": [
       "@ram02z"
@@ -182,6 +205,7 @@
     "url": "https://github.com/ram02z/tree-sitter-fish"
   },
   "foam": {
+    "abi": 13,
     "filetype": "foam",
     "maintainers": [
       "@FoamScience"
@@ -190,12 +214,14 @@
     "url": "https://github.com/FoamScience/tree-sitter-foam"
   },
   "fortran": {
+    "abi": 13,
     "filetype": "fortran",
     "maintainers": [],
     "revision": "f0f2f100952a353e64e26b0fa710b4c296d7af13",
     "url": "https://github.com/stadelmanma/tree-sitter-fortran"
   },
   "fusion": {
+    "abi": "NA",
     "filetype": "fusion",
     "maintainers": [
       "@jirgn"
@@ -204,6 +230,7 @@
     "url": "https://gitlab.com/jirgn/tree-sitter-fusion.git"
   },
   "gdscript": {
+    "abi": 13,
     "filetype": "gdscript",
     "maintainers": [
       "@Shatur95"
@@ -212,14 +239,16 @@
     "url": "https://github.com/PrestonKnopp/tree-sitter-gdscript"
   },
   "glimmer": {
+    "abi": 13,
     "filetype": "handlebars",
     "maintainers": [
       "@alexlafroscia"
     ],
-    "revision": "2644d7db571fe36204fdfcf8eed7bfa97f32c25a",
+    "revision": "96722abc203a69901e1f416cdc4f82faf468b60d",
     "url": "https://github.com/alexlafroscia/tree-sitter-glimmer"
   },
   "glsl": {
+    "abi": 13,
     "filetype": "glsl",
     "maintainers": [
       "@theHamsta"
@@ -228,6 +257,7 @@
     "url": "https://github.com/theHamsta/tree-sitter-glsl"
   },
   "go": {
+    "abi": 13,
     "filetype": "go",
     "maintainers": [
       "@theHamsta",
@@ -237,6 +267,7 @@
     "url": "https://github.com/tree-sitter/tree-sitter-go"
   },
   "godot_resource": {
+    "abi": 13,
     "filetype": "gdresource",
     "maintainers": [
       "@pierpo"
@@ -245,6 +276,7 @@
     "url": "https://github.com/PrestonKnopp/tree-sitter-godot-resource"
   },
   "gomod": {
+    "abi": 13,
     "filetype": "gomod",
     "maintainers": [
       "@camdencheek"
@@ -253,6 +285,7 @@
     "url": "https://github.com/camdencheek/tree-sitter-go-mod"
   },
   "gowork": {
+    "abi": 13,
     "filetype": "gowork",
     "maintainers": [
       "@omertuc"
@@ -261,6 +294,7 @@
     "url": "https://github.com/omertuc/tree-sitter-go-work"
   },
   "graphql": {
+    "abi": 13,
     "filetype": "graphql",
     "maintainers": [
       "@bkegley"
@@ -269,18 +303,21 @@
     "url": "https://github.com/bkegley/tree-sitter-graphql"
   },
   "hack": {
+    "abi": 13,
     "filetype": "hack",
     "maintainers": [],
     "revision": "4770eb21a36307c156cfd2555ddd8e10c304fdc3",
     "url": "https://github.com/slackhq/tree-sitter-hack"
   },
   "haskell": {
+    "abi": 13,
     "filetype": "haskell",
     "maintainers": [],
     "revision": "d6ccd2d9c40bdec29fee0027ef04fe5ff1ae4ceb",
     "url": "https://github.com/tree-sitter/tree-sitter-haskell"
   },
   "hcl": {
+    "abi": 13,
     "filetype": "hcl",
     "maintainers": [
       "@MichaHoffmann"
@@ -289,6 +326,7 @@
     "url": "https://github.com/MichaHoffmann/tree-sitter-hcl"
   },
   "heex": {
+    "abi": 13,
     "filetype": "heex",
     "maintainers": [
       "@connorlay"
@@ -297,6 +335,7 @@
     "url": "https://github.com/connorlay/tree-sitter-heex"
   },
   "hjson": {
+    "abi": 13,
     "filetype": "hjson",
     "maintainers": [
       "@winston0410"
@@ -305,6 +344,7 @@
     "url": "https://github.com/winston0410/tree-sitter-hjson"
   },
   "hocon": {
+    "abi": 13,
     "filetype": "hocon",
     "maintainers": [
       "@antosha417"
@@ -313,6 +353,7 @@
     "url": "https://github.com/antosha417/tree-sitter-hocon"
   },
   "html": {
+    "abi": 13,
     "filetype": "html",
     "maintainers": [
       "@TravonteD"
@@ -321,6 +362,7 @@
     "url": "https://github.com/tree-sitter/tree-sitter-html"
   },
   "http": {
+    "abi": 13,
     "filetype": "http",
     "maintainers": [
       "@NTBBloodbath"
@@ -329,6 +371,7 @@
     "url": "https://github.com/NTBBloodbath/tree-sitter-http"
   },
   "java": {
+    "abi": 13,
     "filetype": "java",
     "maintainers": [
       "@p00f"
@@ -337,6 +380,7 @@
     "url": "https://github.com/tree-sitter/tree-sitter-java"
   },
   "javascript": {
+    "abi": 13,
     "filetype": "javascript",
     "maintainers": [
       "@steelsojka"
@@ -345,6 +389,7 @@
     "url": "https://github.com/tree-sitter/tree-sitter-javascript"
   },
   "jsdoc": {
+    "abi": 13,
     "filetype": "jsdoc",
     "maintainers": [
       "@steelsojka"
@@ -353,6 +398,7 @@
     "url": "https://github.com/tree-sitter/tree-sitter-jsdoc"
   },
   "json": {
+    "abi": 13,
     "filetype": "json",
     "maintainers": [
       "@steelsojka"
@@ -361,6 +407,7 @@
     "url": "https://github.com/tree-sitter/tree-sitter-json"
   },
   "json5": {
+    "abi": 13,
     "filetype": "json5",
     "maintainers": [
       "@Joakker"
@@ -369,6 +416,7 @@
     "url": "https://github.com/Joakker/tree-sitter-json5"
   },
   "jsonc": {
+    "abi": "NA",
     "filetype": "jsonc",
     "maintainers": [
       "@WhyNotHugo"
@@ -377,6 +425,7 @@
     "url": "https://gitlab.com/WhyNotHugo/tree-sitter-jsonc.git"
   },
   "julia": {
+    "abi": 13,
     "filetype": "julia",
     "maintainers": [
       "@mroavi",
@@ -386,6 +435,7 @@
     "url": "https://github.com/tree-sitter/tree-sitter-julia"
   },
   "kotlin": {
+    "abi": 13,
     "filetype": "kotlin",
     "maintainers": [
       "@SalBakraa"
@@ -394,6 +444,7 @@
     "url": "https://github.com/fwcd/tree-sitter-kotlin"
   },
   "latex": {
+    "abi": 13,
     "filetype": "tex",
     "maintainers": [
       "@theHamsta by asking @clason"
@@ -402,6 +453,7 @@
     "url": "https://github.com/latex-lsp/tree-sitter-latex"
   },
   "ledger": {
+    "abi": 13,
     "filetype": "ledger",
     "maintainers": [
       "@cbarrete"
@@ -410,6 +462,7 @@
     "url": "https://github.com/cbarrete/tree-sitter-ledger"
   },
   "llvm": {
+    "abi": 13,
     "filetype": "llvm",
     "maintainers": [
       "@benwilliamgraham"
@@ -418,14 +471,16 @@
     "url": "https://github.com/benwilliamgraham/tree-sitter-llvm"
   },
   "lua": {
+    "abi": 13,
     "filetype": "lua",
     "maintainers": [
       "@muniftanjim"
     ],
-    "revision": "2e372ad0af8c6a68ba39f107a2edc9e3fc19ecf1",
+    "revision": "547184a6cfcc900fcac4a2a56538fa8bcdb293e6",
     "url": "https://github.com/MunifTanjim/tree-sitter-lua"
   },
   "make": {
+    "abi": 13,
     "filetype": "make",
     "maintainers": [
       "@lewis6991"
@@ -434,12 +489,14 @@
     "url": "https://github.com/alemuller/tree-sitter-make"
   },
   "markdown": {
+    "abi": 13,
     "filetype": "markdown",
     "maintainers": [],
     "revision": "8bee14c30ecadd55c2d65633973b4e81f93525e0",
     "url": "https://github.com/MDeiml/tree-sitter-markdown"
   },
   "ninja": {
+    "abi": 13,
     "filetype": "ninja",
     "maintainers": [
       "@alemuller"
@@ -448,6 +505,7 @@
     "url": "https://github.com/alemuller/tree-sitter-ninja"
   },
   "nix": {
+    "abi": 13,
     "filetype": "nix",
     "maintainers": [
       "@leo60228"
@@ -456,6 +514,7 @@
     "url": "https://github.com/cstrahan/tree-sitter-nix"
   },
   "norg": {
+    "abi": 13,
     "filetype": "norg",
     "maintainers": [
       "@JoeyGrajciar",
@@ -466,6 +525,7 @@
     "url": "https://github.com/nvim-neorg/tree-sitter-norg"
   },
   "ocaml": {
+    "abi": "NA",
     "filetype": "ocaml",
     "maintainers": [
       "@undu"
@@ -474,6 +534,7 @@
     "url": "https://github.com/tree-sitter/tree-sitter-ocaml"
   },
   "ocaml_interface": {
+    "abi": "NA",
     "filetype": "ocamlinterface",
     "maintainers": [
       "@undu"
@@ -482,6 +543,7 @@
     "url": "https://github.com/tree-sitter/tree-sitter-ocaml"
   },
   "ocamllex": {
+    "abi": 11,
     "filetype": "ocamllex",
     "maintainers": [
       "@undu"
@@ -490,6 +552,7 @@
     "url": "https://github.com/atom-ocaml/tree-sitter-ocamllex"
   },
   "pascal": {
+    "abi": "NA",
     "filetype": "pascal",
     "maintainers": [
       "@isopod"
@@ -498,6 +561,7 @@
     "url": "https://github.com/Isopod/tree-sitter-pascal.git"
   },
   "perl": {
+    "abi": 13,
     "filetype": "perl",
     "maintainers": [
       "@ganezdragon"
@@ -506,6 +570,7 @@
     "url": "https://github.com/ganezdragon/tree-sitter-perl"
   },
   "php": {
+    "abi": 13,
     "filetype": "php",
     "maintainers": [
       "@tk-shirasaka"
@@ -514,14 +579,16 @@
     "url": "https://github.com/tree-sitter/tree-sitter-php"
   },
   "phpdoc": {
+    "abi": 12,
     "filetype": "phpdoc",
     "maintainers": [
       "@mikehaertl"
     ],
-    "revision": "52c0fbf581d0fc2d29696dbbd4fca99a73082210",
+    "revision": "4460793c1549da1830a178eba295a0c12c83ac2a",
     "url": "https://github.com/claytonrcarter/tree-sitter-phpdoc"
   },
   "pioasm": {
+    "abi": 13,
     "filetype": "pioasm",
     "maintainers": [
       "@leo60228"
@@ -530,6 +597,7 @@
     "url": "https://github.com/leo60228/tree-sitter-pioasm"
   },
   "prisma": {
+    "abi": 13,
     "filetype": "prisma",
     "maintainers": [
       "@elianiva"
@@ -538,6 +606,7 @@
     "url": "https://github.com/victorhqc/tree-sitter-prisma"
   },
   "pug": {
+    "abi": 13,
     "filetype": "pug",
     "maintainers": [
       "@zealot128"
@@ -546,15 +615,17 @@
     "url": "https://github.com/zealot128/tree-sitter-pug"
   },
   "python": {
+    "abi": 13,
     "filetype": "python",
     "maintainers": [
       "@stsewd",
       "@theHamsta"
     ],
-    "revision": "24b530ca158d2782ea9046e756057a412e16b52f",
+    "revision": "ed0fe62e55dc617ed9dec8817ebf771aa7cf3c42",
     "url": "https://github.com/tree-sitter/tree-sitter-python"
   },
   "ql": {
+    "abi": 13,
     "filetype": "ql",
     "maintainers": [
       "@pwntester"
@@ -563,6 +634,7 @@
     "url": "https://github.com/tree-sitter/tree-sitter-ql"
   },
   "query": {
+    "abi": 13,
     "filetype": "query",
     "maintainers": [
       "@steelsojka"
@@ -571,14 +643,16 @@
     "url": "https://github.com/nvim-treesitter/tree-sitter-query"
   },
   "r": {
+    "abi": 13,
     "filetype": "r",
     "maintainers": [
       "@jimhester"
     ],
-    "revision": "d9868735e401e4870a3d4422790b585fea3faec8",
+    "revision": "c19e54de252d5573cc2a762a030957074526fe99",
     "url": "https://github.com/r-lib/tree-sitter-r"
   },
   "rasi": {
+    "abi": 13,
     "filetype": "rasi",
     "maintainers": [
       "@Fymyte"
@@ -587,6 +661,7 @@
     "url": "https://github.com/Fymyte/tree-sitter-rasi"
   },
   "regex": {
+    "abi": 13,
     "filetype": "regex",
     "maintainers": [
       "@theHamsta"
@@ -595,6 +670,7 @@
     "url": "https://github.com/tree-sitter/tree-sitter-regex"
   },
   "rst": {
+    "abi": 13,
     "filetype": "rst",
     "maintainers": [
       "@stsewd"
@@ -603,14 +679,16 @@
     "url": "https://github.com/stsewd/tree-sitter-rst"
   },
   "ruby": {
+    "abi": 13,
     "filetype": "ruby",
     "maintainers": [
       "@TravonteD"
     ],
-    "revision": "888e2e563ed3b43c417f17e57f7e29c39ce9aeea",
+    "revision": "1ebfdb288842dae5a9233e2509a135949023dd82",
     "url": "https://github.com/tree-sitter/tree-sitter-ruby"
   },
   "rust": {
+    "abi": 13,
     "filetype": "rust",
     "maintainers": [
       "@vigoux"
@@ -619,6 +697,7 @@
     "url": "https://github.com/tree-sitter/tree-sitter-rust"
   },
   "scala": {
+    "abi": 13,
     "filetype": "scala",
     "maintainers": [
       "@stevanmilic"
@@ -627,6 +706,7 @@
     "url": "https://github.com/tree-sitter/tree-sitter-scala"
   },
   "scss": {
+    "abi": 13,
     "filetype": "scss",
     "maintainers": [
       "@elianiva"
@@ -635,6 +715,7 @@
     "url": "https://github.com/serenadeai/tree-sitter-scss"
   },
   "sparql": {
+    "abi": 13,
     "filetype": "sparql",
     "maintainers": [
       "@bonabeavis"
@@ -643,14 +724,16 @@
     "url": "https://github.com/BonaBeavis/tree-sitter-sparql"
   },
   "supercollider": {
+    "abi": 13,
     "filetype": "supercollider",
     "maintainers": [
       "@madskjeldgaard"
     ],
-    "revision": "a7201b61779be59ac0fc0d118746c886dbc3edbd",
+    "revision": "cd5004d456a356e9e4a16d62506729a4f1880a46",
     "url": "https://github.com/madskjeldgaard/tree-sitter-supercollider"
   },
   "surface": {
+    "abi": 13,
     "filetype": "sface",
     "maintainers": [
       "@connorlay"
@@ -659,6 +742,7 @@
     "url": "https://github.com/connorlay/tree-sitter-surface"
   },
   "svelte": {
+    "abi": 13,
     "filetype": "svelte",
     "maintainers": [
       "@elianiva"
@@ -667,12 +751,14 @@
     "url": "https://github.com/Himujjal/tree-sitter-svelte"
   },
   "swift": {
+    "abi": "NA",
     "filetype": "swift",
     "maintainers": [],
     "revision": "9ee2d8c29600425b64e7b173b2224033a0f99d0c",
     "url": "https://github.com/alex-pinkus/tree-sitter-swift"
   },
   "teal": {
+    "abi": "NA",
     "filetype": "teal",
     "maintainers": [
       "@euclidianAce"
@@ -681,14 +767,16 @@
     "url": "https://github.com/euclidianAce/tree-sitter-teal"
   },
   "tlaplus": {
+    "abi": 13,
     "filetype": "tla",
     "maintainers": [
       "@ahelwer"
     ],
-    "revision": "f99f369f4b907108ac35cc49a56b7c8602f8332d",
+    "revision": "258ad755168251d0f633b8db2c8a6214a08f6626",
     "url": "https://github.com/tlaplus-community/tree-sitter-tlaplus"
   },
   "toml": {
+    "abi": 13,
     "filetype": "toml",
     "maintainers": [
       "@tk-shirasaka"
@@ -697,6 +785,7 @@
     "url": "https://github.com/ikatyang/tree-sitter-toml"
   },
   "tsx": {
+    "abi": "NA",
     "filetype": "typescriptreact",
     "maintainers": [
       "@steelsojka"
@@ -705,6 +794,7 @@
     "url": "https://github.com/tree-sitter/tree-sitter-typescript"
   },
   "turtle": {
+    "abi": 13,
     "filetype": "turtle",
     "maintainers": [
       "@bonabeavis"
@@ -713,6 +803,7 @@
     "url": "https://github.com/BonaBeavis/tree-sitter-turtle"
   },
   "typescript": {
+    "abi": "NA",
     "filetype": "typescript",
     "maintainers": [
       "@steelsojka"
@@ -721,6 +812,7 @@
     "url": "https://github.com/tree-sitter/tree-sitter-typescript"
   },
   "verilog": {
+    "abi": 12,
     "filetype": "verilog",
     "maintainers": [
       "@zegervdv"
@@ -729,6 +821,7 @@
     "url": "https://github.com/tree-sitter/tree-sitter-verilog"
   },
   "vim": {
+    "abi": 13,
     "filetype": "vim",
     "maintainers": [
       "@vigoux"
@@ -737,6 +830,7 @@
     "url": "https://github.com/vigoux/tree-sitter-viml"
   },
   "vue": {
+    "abi": 13,
     "filetype": "vue",
     "maintainers": [
       "@WhyNotHugo"
@@ -745,6 +839,7 @@
     "url": "https://github.com/ikatyang/tree-sitter-vue"
   },
   "yaml": {
+    "abi": 13,
     "filetype": "yaml",
     "maintainers": [
       "@stsewd"
@@ -753,6 +848,7 @@
     "url": "https://github.com/ikatyang/tree-sitter-yaml"
   },
   "yang": {
+    "abi": 13,
     "filetype": "yang",
     "maintainers": [
       "@Hubro"
@@ -761,6 +857,7 @@
     "url": "https://github.com/Hubro/tree-sitter-yang"
   },
   "zig": {
+    "abi": 13,
     "filetype": "zig",
     "maintainers": [
       "@maxxnino"
