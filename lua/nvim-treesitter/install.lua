@@ -43,13 +43,11 @@ local function get_job_status()
 end
 
 local function get_parser_install_info(lang, validate)
-  local parser_config = parsers.get_parser_configs()[lang]
+  local install_info = parsers.get_parser_install_info(lang)
 
-  if not parser_config then
+  if not install_info then
     return error("Parser not available for language " .. lang)
   end
-
-  local install_info = parser_config.install_info
 
   if validate then
     vim.validate {

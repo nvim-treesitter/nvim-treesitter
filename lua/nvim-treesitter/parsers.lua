@@ -912,9 +912,7 @@ list.norg = {
   maintainers = { "@JoeyGrajciar", "@vhyrro", "@mrossinek" },
 }
 
-local M = {
-  list = list,
-}
+local M = {}
 
 function M.ft_to_lang(ft)
   local result = ft_to_parsername[ft]
@@ -926,27 +924,38 @@ function M.ft_to_lang(ft)
   end
 end
 
+function M.get_parser_configs()
+  return list
+end
+
+function M.get_parser_config(lang)
+  return list[lang]
+end
+
+function M.get_parser_install_info(lang)
+  return list[lang] and list[lang].install_info
+end
+
+local function parser_requires_grammer(lang)
+  return M.get_parser_install_info(lang).requires_generate_from_grammar
+end
+
 function M.available_parsers()
   if vim.fn.executable "tree-sitter" == 1 and vim.fn.executable "node" == 1 then
-    return vim.tbl_keys(M.list)
+    return vim.tbl_keys(M.get_parser_configs())
   else
     return vim.tbl_filter(function(p)
-      return not M.list[p].install_info.requires_generate_from_grammar
-    end, vim.tbl_keys(M.list))
+      return not parser_requires_grammer(p)
+    end, vim.tbl_keys(M.get_parser_configs()))
   end
 end
 
 function M.maintained_parsers()
   local has_tree_sitter_cli = vim.fn.executable "tree-sitter" == 1 and vim.fn.executable "node" == 1
   return vim.tbl_filter(function(lang)
-    return M.list[lang].maintainers
-      and not M.list[lang].experimental
-      and (has_tree_sitter_cli or not M.list[lang].install_info.requires_generate_from_grammar)
+    local parser = M.get_parser_config(lang)
+    return parser.maintainers and not parser.experimental and (has_tree_sitter_cli or not parser_requires_grammer(lang))
   end, M.available_parsers())
-end
-
-function M.get_parser_configs()
-  return M.list
 end
 
 local parser_files

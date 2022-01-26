@@ -18,7 +18,7 @@ local function extract_captures()
   end
 
   -- Complete captures for injections.
-  local parsers = vim.tbl_keys(require("nvim-treesitter.parsers").list)
+  local parsers = vim.tbl_keys(require("nvim-treesitter.parsers").get_parser_configs())
   for _, lang in pairs(parsers) do
     table.insert(captures["injections"], lang)
   end
