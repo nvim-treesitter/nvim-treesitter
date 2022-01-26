@@ -151,4 +151,18 @@
   (#match? @function.builtin "\\c^(cmake_parse_arguments)$")
 )
 
+(normal_command
+  (identifier) @function.builtin
+  (argument) @constant
+  (#any-of? @constant "GET" "ROOT_NAME" "ROOT_DIRECTORY" "ROOT_PATH" "FILENAME" "EXTENSION" "STEM" "RELATIVE_PART" "PARENT_PATH"
+                      "HAS_ROOT_NAME" "HAS_ROOT_DIRECTORY" "HAS_ROOT_PATH" "HAS_FILENAME" "HAS_EXTENSION" "HAS_STEM" "HAS_RELATIVE_PATH" "HAS_PARENT_PATH"
+                      "IS_ABSOLUTE" "IS_RELATIVE" "IS_PREFIX" "COMPARE"
+                      "SET" "APPEND" "APPEND_STRING" "REMOVE_FILENAME" "REPLACE_FILENAME" "REMOVE_EXTENSION" "REPLACE_EXTENSION"
+                      "NORMAL_PATH" "RELATIVE_PATH" "ABSOLUTE_PATH"
+                      "NATIVE_PATH" "CONVERT" "TO_CMAKE_PATH_LIST" "TO_NATIVE_PATH_LIST"
+                      "HASH"
+                      "NORMALIZE" "OUTPUT_VARIABLE" "LAST_ONLY")
+  (#match? @function.builtin "\\c^(cmake_path)$")
+)
+
 
