@@ -182,3 +182,17 @@
                       "NEWLINE_STYLE" "UNIX" "DOS" "WIN32" "LF" "CRLF")
   (#match? @function.builtin "\\c^(configure_file)$")
 )
+
+(normal_command
+  (identifier) @function.builtin
+  (argument) @constant
+  (#any-of? @constant "COMMAND" "WORKING_DIRECTORY" "TIMEOUT"
+                      "RESULT_VARIABLE" "RESULTS_VARIABLE" "OUTPUT_VARIABLE" "ERROR_VARIABLE"
+                      "INPUT_FILE" "OUTPUT_FILE" "ERROR_FILE"
+                      "OUTPUT_QUIET" "ERROR_QUIET" "COMMAND_ECHO"
+                      "OUTPUT_STRIP_TRAILING_WHITESPACE" "ERROR_STRIP_TRAILING_WHITESPACE"
+                      "ENCODING"
+                      "ECHO_OUTPUT_VARIABLE" "ECHO_ERROR_VARIABLE"
+                      "COMMAND_ERROR_IS_FATAL" "ANY" "LAST")
+  (#match? @function.builtin "\\c^(execute_process)$")
+)
