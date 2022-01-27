@@ -18,7 +18,7 @@
     "revision": "39bf0977d223879436c1425fe6bfeb3bcfd86f92"
   },
   "cmake": {
-    "revision": "f6616f1e417ee8b62daf251aa1daa5d73781c596"
+    "revision": "5020572408a386d5d2dfac3516584f5edda7a49b"
   },
   "comment": {
     "revision": "6975eb268f42df2afc313f96c0693e284685dba7"
@@ -57,7 +57,7 @@
     "revision": "de20391afe5cb03ef1e8a8e43167e7b58cc52869"
   },
   "elm": {
-    "revision": "bd50ccf66b42c55252ac8efc1086af4ac6bab8cd"
+    "revision": "6575badb926ca1664a7c2a4d9023f9c731316628"
   },
   "erlang": {
     "revision": "9d5fd0c329280a156bf7614a49dc5e8c58cc037c"
@@ -81,7 +81,7 @@
     "revision": "2a6abdaa47fcb91397e09a97c7433fd995ea46c6"
   },
   "glimmer": {
-    "revision": "2644d7db571fe36204fdfcf8eed7bfa97f32c25a"
+    "revision": "96722abc203a69901e1f416cdc4f82faf468b60d"
   },
   "glsl": {
     "revision": "ffb93961426926554a0ba4a389ea6e9d6fafdea9"
@@ -195,7 +195,7 @@
     "revision": "57f855461aeeca73bd4218754fb26b5ac143f98f"
   },
   "phpdoc": {
-    "revision": "52c0fbf581d0fc2d29696dbbd4fca99a73082210"
+    "revision": "4460793c1549da1830a178eba295a0c12c83ac2a"
   },
   "pioasm": {
     "revision": "924aadaf5dea2a6074d72027b064f939acf32e20"
@@ -216,7 +216,7 @@
     "revision": "5217c6805c09f8fc00ed13d17d5fcb791437aee6"
   },
   "r": {
-    "revision": "d9868735e401e4870a3d4422790b585fea3faec8"
+    "revision": "c19e54de252d5573cc2a762a030957074526fe99"
   },
   "rasi": {
     "revision": "e2961f02244c068a67549adf896b0779e4a29516"
