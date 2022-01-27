@@ -1,6 +1,8 @@
 name: Make Parser Update PR
 
 on:
+  schedule:
+    - cron: '30 6 * * *'
   push:
     branches:
       - master
