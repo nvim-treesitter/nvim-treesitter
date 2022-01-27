@@ -11,9 +11,9 @@
 
 (comment) @comment
 
-(formal_parameters (identifier) @parameter)
-
 (identifier) @variable
+
+(formal_parameters (identifier) @parameter)
 
 ; Operators
 [
@@ -48,10 +48,12 @@
   "&"
   ":"
   "~"
-  "|>"
 ] @operator)
 
-(special) @operator
+[
+  "|>"
+  (special)
+] @operator
 
 [
  "("
@@ -116,6 +118,8 @@
 
 (namespace_get_internal namespace: (identifier) @namespace
  ":::" @operator)
+
+(string (escape_sequence) @string.escape)
 
 ; Error
 (ERROR) @error
