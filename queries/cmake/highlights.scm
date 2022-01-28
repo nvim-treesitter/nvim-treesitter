@@ -283,3 +283,12 @@
   (#any-of? @constant "BASE_DIR" "PROGRAM" "PROGRAM_ARGS" "CACHE")
   (#match? @function.builtin "\\c^(get_filename_component)$")
 )
+
+(normal_command
+  (identifier) @function.builtin
+  . (argument) @variable
+  (argument) @constant
+  (#any-of? @constant "GLOBAL" "DIRECTORY" "TARGET" "SOURCE" "TARGET_DIRECTORY" "INSTALL" "TEST" "CACHE" "VARIABLE"
+                      "PROPERTY" "SET" "DEFINED" "BRIEF_DOCS" "FULL_DOCS")
+  (#match? @function.builtin "\\c^(get_property)$")
+)
