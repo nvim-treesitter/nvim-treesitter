@@ -216,3 +216,20 @@
                       "INPUT" "OUTPUT" "BASE_DIRECTORY" "PATHS" "EXPAND_TILDE" "CONTENT" "DESTINATION" "PERMISSIONS")
   (#match? @function.builtin "\\c^(file)$")
 )
+
+(normal_command
+  (identifier) @function.builtin
+  . (argument) @variable
+  (argument)
+  (#match? @function.builtin "\\c^(find_file)$")
+)
+(normal_command
+  (identifier) @function.builtin
+  . (argument) @variable
+  (argument) @constant
+  (#any-of? @constant "NAMES" "HINTS" "PATHS" "ENV" "PATH_SUFFIXES" "DOC" "NO_CACHE" "REQUIRED"
+                      "NO_DEFAULT_PATH" "NO_PACKAGE_ROOT_PATH" "NO_CMAKE_PATH" "NO_CMAKE_ENVIRONMENT_PATH" "NO_SYSTEM_ENVIRONMENT_PATH"
+                      "NO_CMAKE_SYSTEM_PATH"
+                      "CMAKE_FIND_ROOT_PATH_BOTH" "ONLY_CMAKE_FIND_ROOT_PATH" "NO_CMAKE_FIND_ROOT_PATH")
+  (#match? @function.builtin "\\c^(find_file)$")
+)
