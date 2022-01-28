@@ -265,18 +265,21 @@
 (normal_command
   (identifier) @function.builtin
   . (argument) @variable
-  (#match? @function.builtin "\\c^(get_cmake_property)$")
+  (#match? @function.builtin "\\c^(get_cmake_property|get_directory_property|get_filename_component)$")
 )
 
-(normal_command
-  (identifier) @function.builtin
-  . (argument) @variable
-  (#match? @function.builtin "\\c^(get_directory_property)$")
-)
 (normal_command
   (identifier) @function.builtin
   . (argument) @variable
   (argument) @constant
   (#any-of? @constant "DIRECTORY" "DEFINITION")
   (#match? @function.builtin "\\c^(get_directory_property)$")
+)
+
+(normal_command
+  (identifier) @function.builtin
+  . (argument) @variable
+  (argument) @constant
+  (#any-of? @constant "BASE_DIR" "PROGRAM" "PROGRAM_ARGS" "CACHE")
+  (#match? @function.builtin "\\c^(get_filename_component)$")
 )
