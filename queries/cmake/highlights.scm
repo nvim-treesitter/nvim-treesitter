@@ -221,7 +221,7 @@
   (identifier) @function.builtin
   . (argument) @variable
   (argument)
-  (#match? @function.builtin "\\c^(find_file)$")
+  (#match? @function.builtin "\\c^(find_file|find_path)$")
 )
 (normal_command
   (identifier) @function.builtin
@@ -231,7 +231,7 @@
                       "NO_DEFAULT_PATH" "NO_PACKAGE_ROOT_PATH" "NO_CMAKE_PATH" "NO_CMAKE_ENVIRONMENT_PATH" "NO_SYSTEM_ENVIRONMENT_PATH"
                       "NO_CMAKE_SYSTEM_PATH"
                       "CMAKE_FIND_ROOT_PATH_BOTH" "ONLY_CMAKE_FIND_ROOT_PATH" "NO_CMAKE_FIND_ROOT_PATH")
-  (#match? @function.builtin "\\c^(find_file)$")
+  (#match? @function.builtin "\\c^(find_file|find_path)$")
 )
 
 (normal_command
