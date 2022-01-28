@@ -912,6 +912,15 @@ list.norg = {
   maintainers = { "@JoeyGrajciar", "@vhyrro", "@mrossinek" },
 }
 
+list.vala = {
+  install_info = {
+    url = "https://github.com/matbme/tree-sitter-vala",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@matbme" },
+}
+
 local M = {
   list = list,
 }
