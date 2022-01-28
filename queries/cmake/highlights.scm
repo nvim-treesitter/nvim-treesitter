@@ -209,7 +209,7 @@
                       "WRITE" "APPEND" "TOUCH" "TOUCH_NOCREATE" "GENERATE"  "CONFIGURE"
                       "GLOB" "GLOB_RECURSE" "MAKE_DIRECTORY" "REMOVE" "REMOVE_RECURSE" "RENAME" "COPY_FILE"
                       "COPY" "INSTALL" "SIZE" "READ_SYMLINK" "CREATE_LINK" "CHMOD"  "CHMOD_RECURSE"
-                      "REAL_PATH" "RELATIVE_PATH" "TO_CMAKE_PATH" TO_NATIVE_PATH
+                      "REAL_PATH" "RELATIVE_PATH" "TO_CMAKE_PATH" "TO_NATIVE_PATH"
                       "DOWNLOAD" "UPLOAD"
                       "LOCK"
                       "ARCHIVE_CREATE""ARCHIVE_EXTRACT"
