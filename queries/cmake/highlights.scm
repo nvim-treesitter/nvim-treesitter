@@ -261,3 +261,9 @@
                       "CMAKE_FIND_ROOT_PATH_BOTH" "ONLY_CMAKE_FIND_ROOT_PATH" "NO_CMAKE_FIND_ROOT_PATH")
   (#match? @function.builtin "\\c^(find_package)$")
 )
+
+(normal_command
+  (identifier) @function.builtin
+  . (argument) @variable
+  (#match? @function.builtin "\\c^(get_cmake_property)$")
+)
