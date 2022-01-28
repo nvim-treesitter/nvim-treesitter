@@ -6,6 +6,8 @@
 (if_statement (block) @fold)
 (with_statement (block) @fold)
 (try_statement (block) @fold)
+(match_statement (case_block) @fold)
+(case_clause (block) @fold)
 
 [
   (import_from_statement)
