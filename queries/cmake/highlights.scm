@@ -267,3 +267,16 @@
   . (argument) @variable
   (#match? @function.builtin "\\c^(get_cmake_property)$")
 )
+
+(normal_command
+  (identifier) @function.builtin
+  . (argument) @variable
+  (#match? @function.builtin "\\c^(get_directory_property)$")
+)
+(normal_command
+  (identifier) @function.builtin
+  . (argument) @variable
+  (argument) @constant
+  (#any-of? @constant "DIRECTORY" "DEFINITION")
+  (#match? @function.builtin "\\c^(get_directory_property)$")
+)
