@@ -250,3 +250,14 @@
                       "CMAKE_FIND_ROOT_PATH_BOTH" "ONLY_CMAKE_FIND_ROOT_PATH" "NO_CMAKE_FIND_ROOT_PATH")
   (#match? @function.builtin "\\c^(find_library)$")
 )
+
+(normal_command
+  (identifier) @function.builtin
+  (argument) @constant
+  (#any-of? @constant "EXACT" "QUIET" "REQUIRED COMPONENTS" "OPTIONAL_COMPONENTS" "CONFIG|NO_MODULE" "NO_POLICY_SCOPE"
+                      "NAMES" "CONFIGS" "HINTS" "PATHS" "PATH_SUFFIXES" "NO_DEFAULT_PATH" "NO_PACKAGE_ROOT_PATH"
+                      "NO_CMAKE_PATH" "NO_CMAKE_ENVIRONMENT_PATH" "NO_SYSTEM_ENVIRONMENT_PATH" "NO_CMAKE_PACKAGE_REGISTRY"
+                      "NO_CMAKE_SYSTEM_PATH" "NO_CMAKE_SYSTEM_PACKAGE_REGISTRY"
+                      "CMAKE_FIND_ROOT_PATH_BOTH" "ONLY_CMAKE_FIND_ROOT_PATH" "NO_CMAKE_FIND_ROOT_PATH"
+  (#match? @function.builtin "\\c^(find_package)$")
+)
