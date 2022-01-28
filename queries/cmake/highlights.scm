@@ -127,8 +127,11 @@
 
 (normal_command
   (identifier) @function.builtin
-  (argument) @constant
+  . (argument) @constant
+  . (argument) @variable
+  . (argument) @constant
   (#any-of? @constant "RESULT" "QUERY")
+  (#nth? @variable 2)
   (#match? @function.builtin "\\c^(cmake_host_system_information)$")
 )
 
