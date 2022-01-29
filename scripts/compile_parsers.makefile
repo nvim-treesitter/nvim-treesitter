@@ -22,21 +22,25 @@ else
    rmf         = rm -rf $(1)
 endif
 
-ifneq ($(wildcard src/*.cc),)
+ifneq ($(wildcard $(SRC_DIR)/*.cc),)
    LDFLAGS += -lstdc++
 endif
 
-OBJECTS   := parser.o scanner.o
+OBJECTS := parser.o
+
+ifneq ($(wildcard $(SRC_DIR)/scanner.*),)
+   OBJECTS += scanner.o
+endif
 
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
 	$(CC) $(OBJECTS) -o $(TARGET) $(LDFLAGS)
 
-%.o: src/%.c
+%.o: $(SRC_DIR)/%.c
 	$(CC) -c $(CFLAGS) -I$(SRC_DIR) -o $@ $<
 
-%.o: src/%.cc
+%.o: $(SRC_DIR)/%.cc
 	$(CC) -c $(CXXFLAGS) -I$(SRC_DIR) -o $@ $<
 
 clean:
