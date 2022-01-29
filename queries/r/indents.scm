@@ -1,7 +1,6 @@
 [
   (call)
   (brace_list)
-  (function_definition (brace_list))
   (paren_list)
   (special)
   "|>"
@@ -25,6 +24,9 @@
 ((special)
   (call) @aligned_indent
   (#set! "delimiter" "()"))
+
+((formal_parameters (identifier)) @aligned_indent
+ (#set! "delimiter" "()"))
 
 [
   ")"
