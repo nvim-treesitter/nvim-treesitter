@@ -24,7 +24,7 @@
     "revision": "6975eb268f42df2afc313f96c0693e284685dba7"
   },
   "commonlisp": {
-    "revision": "4fd115d3bb7046cd094f21bfe5766c302dbf64cd"
+    "revision": "c7e814975ab0d0d04333d1f32391c41180c58919"
   },
   "cpp": {
     "revision": "656d7ea44b2b0daece78791e30281e283f30001e"
@@ -243,7 +243,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "supercollider": {
-    "revision": "a7201b61779be59ac0fc0d118746c886dbc3edbd"
+    "revision": "cd5004d456a356e9e4a16d62506729a4f1880a46"
   },
   "surface": {
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
@@ -258,7 +258,7 @@
     "revision": "fcc5f6f4d194dede4e676834ff28a506e39e17b4"
   },
   "tlaplus": {
-    "revision": "f99f369f4b907108ac35cc49a56b7c8602f8332d"
+    "revision": "258ad755168251d0f633b8db2c8a6214a08f6626"
   },
   "toml": {
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
