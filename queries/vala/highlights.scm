@@ -1,3 +1,18 @@
+; Variable
+
+(uppercased_identifier) @constant
+
+(namespaced_identifier
+  left: [
+    (camel_cased_identifier) @namespace
+    (identifier) @variable
+  ]
+  right: [
+    (identifier) @parameter
+    (camel_cased_identifier) @type
+    (uppercased_identifier) @constant
+  ]
+)
 ; Pointers
 
 (address_of_identifier "&" @symbol)
@@ -30,11 +45,16 @@
   "break"
 ] @keyword.return
 
+
+(null) @constant.builtin
+
 [
-  (null)
-  (modifier)
   "typeof"
   "is"
+] @keyword.operator
+
+[
+  (modifier)
   "var"
   "class"
   "interface"
@@ -115,6 +135,12 @@
     "--"
     "++"
   ] @operator
+)
+
+; Declaration
+
+(declaration
+  type_name: (_) @type
 )
 
 ; Methods
@@ -260,25 +286,3 @@
   name: (camel_cased_identifier) @attribute
   param: (_) @attribute
 ) @attribute
-
-; Constant
-(uppercased_identifier) @constant
-
-; Other
-
-(namespaced_identifier
-  left: [
-    (camel_cased_identifier) @namespace
-    (identifier) @variable
-  ]
-  right: [
-    (identifier) @parameter
-    (camel_cased_identifier) @type
-    (uppercased_identifier) @constant
-  ]
-)
-
-; Variable
-
-(identifier) @variable
-(camel_cased_identifier) @variable
