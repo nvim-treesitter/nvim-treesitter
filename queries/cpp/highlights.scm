@@ -60,6 +60,16 @@
 (call_expression
   function: (qualified_identifier
               name: (identifier) @function))
+(call_expression
+  function: (qualified_identifier
+              name: (qualified_identifier
+                      name: (identifier) @function)))
+(call_expression
+  function: 
+      (qualified_identifier
+        name: (qualified_identifier
+              name: (qualified_identifier
+                      name: (identifier) @function))))
 
 (call_expression
   function: (field_expression
