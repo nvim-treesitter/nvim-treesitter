@@ -142,7 +142,25 @@ function M.check()
     health_start "The following errors have been detected:"
     for _, p in ipairs(error_collection) do
       local lang, type, err = unpack(p)
-      health_error(lang .. "(" .. type .. "): " .. err)
+      local lines = {}
+      table.insert(lines, lang .. "(" .. type .. "): " .. err)
+      local files = vim.treesitter.query.get_query_files(lang, type)
+      if #files > 0 then
+        table.insert(lines, lang .. "(" .. type .. ") is concatenated from the following files:")
+        for _, file in ipairs(files) do
+          local fd = io.open(file, "r")
+          if fd then
+            local ok, file_err = pcall(vim.treesitter.query.parse_query, lang, fd:read "*a")
+            if ok then
+              table.insert(lines, '|    [OK]:"' .. file .. '"')
+            else
+              table.insert(lines, '| [ERROR]:"' .. file .. '", failed to load: ' .. file_err)
+            end
+            fd:close()
+          end
+        end
+      end
+      health_error(table.concat(lines, "\n"))
     end
   end
 end
