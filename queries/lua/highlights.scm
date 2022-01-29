@@ -161,8 +161,6 @@
 
 ;; Functions
 
-(arguments (identifier) @parameter)
-
 (parameters (identifier) @parameter)
 
 (function_call name: (identifier) @function)
