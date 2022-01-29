@@ -28,6 +28,8 @@
   "}"
   "("
   ")"
+  "["
+  "]"
 ] @punctuation.bracket
 
 [
