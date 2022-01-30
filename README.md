@@ -222,7 +222,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [llvm](https://github.com/benwilliamgraham/tree-sitter-llvm) (maintained by @benwilliamgraham)
 - [x] [lua](https://github.com/MunifTanjim/tree-sitter-lua) (maintained by @muniftanjim)
 - [x] [m68k](https://github.com/grahambates/tree-sitter-m68k) (maintained by @grahambates)
-- [x] [make](https://github.com/alemuller/tree-sitter-make) (maintained by @lewis6991)
+- [x] [make](https://github.com/alemuller/tree-sitter-make) (maintained by @alemuller, @lewis6991)
 - [x] [markdown](https://github.com/MDeiml/tree-sitter-markdown) (experimental, maintained by @MDeiml)
 - [x] [markdown_inline](https://github.com/MDeiml/tree-sitter-markdown) (experimental, maintained by @MDeiml)
 - [x] [ninja](https://github.com/alemuller/tree-sitter-ninja) (maintained by @alemuller)
