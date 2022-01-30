@@ -1,6 +1,11 @@
 name: Linting and style checking
 
-on: [push, pull_request]
+on: 
+  push:
+  pull_request:
+  workflow_run:
+    workflows: [Make Parser Update PR]
+    types: [completed]
 
 jobs:
   luacheck:
