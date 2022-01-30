@@ -35,6 +35,8 @@ local function do_check()
   local captures = extract_captures()
   local last_error
 
+  print "::group::Check parsers"
+
   for _, lang in pairs(parsers) do
     timings[lang] = {}
     for _, query_type in pairs(query_types) do
@@ -64,6 +66,9 @@ local function do_check()
       end
     end
   end
+
+  print "::endgroup::"
+
   if last_error then
     print()
     print "Last error: "
@@ -92,16 +97,14 @@ for k, v in pairs(require("nvim-treesitter.parsers").get_parser_configs()) do
 end
 
 if ok then
-  print(string.rep("-", 100))
-  print "Timings:"
-  print(string.rep("-", 100))
+  print "::group::Timings"
   table.sort(result, function(a, b)
     return a.duration < b.duration
   end)
   for i, val in ipairs(result) do
     print(string.format("%i. %.02fms %s %s", #result - i + 1, val.duration * 1e-6, val.lang, val.query_type))
   end
-  print(string.rep("-", 100))
+  print "::endgroup::"
   print "Check successful!\n"
   vim.cmd "q"
 else
