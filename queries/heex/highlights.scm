@@ -1,4 +1,4 @@
-; HEEx tag and component delimiters
+; HEEx delimiters
 [
   "%>"
   "--%>"
@@ -13,19 +13,18 @@
   "<%%="
   "<%="
   "</"
+  "</:"
+  "<:"
   ">"
   "{"
   "}"
 ] @tag.delimiter
 
-; HEEx operators
+; HEEx operators are highlighted as such
 "=" @operator
 
 ; HEEx inherits the DOCTYPE tag from HTML
 (doctype) @constant
-
-; HEEx tags are highlighted as HTML tags
-(tag_name) @tag
 
 ; HEEx comments are highlighted as such
 (comment) @comment
@@ -35,6 +34,12 @@
 
 ; Tree-sitter parser errors
 (ERROR) @error
+
+; HEEx tags and slots are highlighted as HTML
+[
+ (tag_name) 
+ (slot_name) 
+] @tag
 
 ; HEEx attributes are highlighted as HTML attributes
 (attribute_name) @tag.attribute

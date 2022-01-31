@@ -7,4 +7,5 @@
 ; HEEx Elixir expressions are always within a tag or component
 (expression (expression_value) @elixir)
 
+; HEEx comments
 (comment) @comment
