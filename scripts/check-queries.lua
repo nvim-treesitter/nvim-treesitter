@@ -1,5 +1,11 @@
 -- Execute as `nvim --headless -c "luafile ./scripts/check-queries.lua"`
 
+-- Equivalent to print(), but this will ensure consistent output regardless of
+-- operating system.
+local function io_print(text)
+  io.write(text, "\n")
+end
+
 local function extract_captures()
   local lines = vim.fn.readfile "CONTRIBUTING.md"
   local captures = {}
@@ -35,7 +41,7 @@ local function do_check()
   local captures = extract_captures()
   local last_error
 
-  print "::group::Check parsers"
+  io_print "::group::Check parsers"
 
   for _, lang in pairs(parsers) do
     timings[lang] = {}
@@ -45,7 +51,7 @@ local function do_check()
       local after = vim.loop.hrtime()
       local duration = after - before
       table.insert(timings, { duration = duration, lang = lang, query_type = query_type })
-      print("Checking " .. lang .. " " .. query_type .. string.format(" (%.02fms)", duration * 1e-6))
+      io_print("Checking " .. lang .. " " .. query_type .. string.format(" (%.02fms)", duration * 1e-6))
       if not ok then
         vim.api.nvim_err_writeln(query)
         last_error = query
@@ -58,7 +64,7 @@ local function do_check()
               )
             if not is_valid then
               local error = string.format("(x) Invalid capture @%s in %s for %s.", capture, query_type, lang)
-              print(error)
+              io_print(error)
               last_error = error
             end
           end
@@ -67,11 +73,11 @@ local function do_check()
     end
   end
 
-  print "::endgroup::"
+  io_print "::endgroup::"
 
   if last_error then
-    print()
-    print "Last error: "
+    io_print()
+    io_print "Last error: "
     error(last_error)
   end
   return timings
@@ -88,28 +94,28 @@ for k, v in pairs(require("nvim-treesitter.parsers").get_parser_configs()) do
       and not v.install_info.requires_generate_from_grammar
       and not vim.tbl_contains(allowed_to_fail, k)
     then
-      print("Error: parser for " .. k .. " is not installed")
+      io_print("Error: parser for " .. k .. " is not installed")
       vim.cmd "cq"
     else
-      print("Warning: parser for " .. k .. " is not installed")
+      io_print("Warning: parser for " .. k .. " is not installed")
     end
   end
 end
 
 if ok then
-  print "::group::Timings"
+  io_print "::group::Timings"
   table.sort(result, function(a, b)
     return a.duration < b.duration
   end)
   for i, val in ipairs(result) do
-    print(string.format("%i. %.02fms %s %s", #result - i + 1, val.duration * 1e-6, val.lang, val.query_type))
+    io_print(string.format("%i. %.02fms %s %s", #result - i + 1, val.duration * 1e-6, val.lang, val.query_type))
   end
-  print "::endgroup::"
-  print "Check successful!\n"
+  io_print "::endgroup::"
+  io_print "Check successful!"
   vim.cmd "q"
 else
-  print "Check failed:"
-  print(result)
-  print "\n"
+  io_print "Check failed:"
+  io_print(result)
+  io_print "\n"
   vim.cmd "cq"
 end
