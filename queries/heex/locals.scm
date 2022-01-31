@@ -1,11 +1,13 @@
-; HEEx tags and components are references
+; HEEx tags, components, and slots are references
 [
-  (tag_name)
   (component_name)
+  (slot_name)
+  (tag_name)
 ] @reference
 
-; Create a new scope within each HEEx tag or component
+; Create a new scope within each HEEx tag, component, and slot
 [
-  (tag)
   (component)
+  (slot)
+  (tag)
 ] @scope

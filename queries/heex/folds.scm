@@ -1,5 +1,6 @@
-; HEEx folds similar to HTML
+; HEEx tags, components, and slots fold similar to HTML
 [
-  (tag)
   (component)
+  (tag)
+  (slot)
 ] @fold
