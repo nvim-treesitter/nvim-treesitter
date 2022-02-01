@@ -245,18 +245,6 @@ list.php = {
   maintainers = { "@tk-shirasaka" },
 }
 
-list.phpdoc = {
-  install_info = {
-    url = "https://github.com/claytonrcarter/tree-sitter-phpdoc",
-    files = { "src/parser.c" },
-    -- parser.c in the repo still based on TS 0.17 due to other dependencies
-    requires_generate_from_grammar = true,
-    generate_requires_npm = true,
-  },
-  maintainers = { "@mikehaertl" },
-  experimental = true,
-}
-
 list.java = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-java",
@@ -636,6 +624,18 @@ list.pascal = {
 }
 
 -- Parsers for injections
+list.phpdoc = {
+  install_info = {
+    url = "https://github.com/claytonrcarter/tree-sitter-phpdoc",
+    files = { "src/parser.c", "src/scanner.c" },
+    -- parser.c in the repo still based on TS 0.17 due to other dependencies
+    requires_generate_from_grammar = true,
+    generate_requires_npm = true,
+  },
+  maintainers = { "@mikehaertl" },
+  experimental = true,
+}
+
 list.regex = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-regex",
