@@ -39,3 +39,4 @@ jobs:
           title: Update README
           branch: update-readme-pr
           base: ${{ github.head_ref }}
+          draft: true

@@ -54,3 +54,4 @@ jobs:
           title: Update lockfile.json
           branch: update-lockfile-pr
           base: ${{ github.head_ref }}
+          draft: true

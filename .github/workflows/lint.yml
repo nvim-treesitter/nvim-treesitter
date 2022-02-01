@@ -1,6 +1,9 @@
 name: Linting and style checking
 
-on: [push, pull_request]
+on: 
+  push:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
 
 jobs:
   luacheck:
