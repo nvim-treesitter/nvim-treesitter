@@ -22,7 +22,7 @@ function M.get_node_text(node, bufnr)
     local lines = api.nvim_buf_get_lines(bufnr, start_row, end_row + 1, false)
     lines[1] = string.sub(lines[1], start_col + 1)
     -- end_row might be just after the last line. In this case the last line is not truncated.
-    if #lines == end_row - start_row then
+    if #lines == end_row - start_row + 1 then
       lines[#lines] = string.sub(lines[#lines], 1, end_col)
     end
     return lines
