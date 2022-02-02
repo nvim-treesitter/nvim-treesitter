@@ -252,13 +252,13 @@
     "revision": "98274d94ec33e994e8354d9ddfdef58cca471294"
   },
   "swift": {
-    "revision": "d89fc010febc7c775e5cfd2b5059cd11e54c11fc"
+    "revision": "ee86d792f7c88ef0af19444d58215e89da82159a"
   },
   "teal": {
     "revision": "fcc5f6f4d194dede4e676834ff28a506e39e17b4"
   },
   "tlaplus": {
-    "revision": "258ad755168251d0f633b8db2c8a6214a08f6626"
+    "revision": "6cd9e3e24d02d4311cc0bc79da9b415712648a34"
   },
   "toml": {
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
