@@ -36,6 +36,7 @@
 (function_declaration name: (_) @function)
 (call_expression function: (identifier) @function)
 (function_declaration parameters: (parameters (identifier) @parameter))
+(function_declaration parameters: (parameters (default_parameter (identifier) @parameter)))
 
 [ (bang) (spread) (at) ] @punctuation.special
 
