@@ -174,7 +174,7 @@
     "revision": "6d6aaa50793b8265b6a8b6628577a0083d3b923d"
   },
   "norg": {
-    "revision": "6938fb8f16e1434cd412565500b90df6c6593000"
+    "revision": "75d464c88a8d5e0e1ceae186be1d7a61eb663c3a"
   },
   "ocaml": {
     "revision": "23d419ba45789c5a47d31448061557716b02750a"
@@ -237,7 +237,7 @@
     "revision": "0a3dd53a7fc4b352a538397d054380aaa28be54c"
   },
   "scss": {
-    "revision": "f3174d3d131eb776f86dfa3d90fe6f7325c0ad9a"
+    "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
   },
   "sparql": {
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
@@ -252,7 +252,7 @@
     "revision": "98274d94ec33e994e8354d9ddfdef58cca471294"
   },
   "swift": {
-    "revision": "ee86d792f7c88ef0af19444d58215e89da82159a"
+    "revision": "feadde7ad68a62bd2c7e69a340e2d438d3a048a0"
   },
   "teal": {
     "revision": "fcc5f6f4d194dede4e676834ff28a506e39e17b4"
