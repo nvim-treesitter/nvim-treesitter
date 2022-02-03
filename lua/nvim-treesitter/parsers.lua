@@ -469,7 +469,7 @@ list.tlaplus = {
     url = "https://github.com/tlaplus-community/tree-sitter-tlaplus",
     files = { "src/parser.c", "src/scanner.cc" },
   },
-  maintainers = { "@ahelwer" },
+  maintainers = { "@ahelwer", "@susliko" },
   filetype = "tla",
 }
 

@@ -1,7 +1,6 @@
-; ; highlights.scm
-; ; Default capture names for tree-sitter highlight found here:
+; ; Intended for consumption by nvim-treesitter 
+; ; Default capture names for nvim-treesitter found here:
 ; ; https://github.com/nvim-treesitter/nvim-treesitter/blob/e473630fe0872cb0ed97cd7085e724aa58bc1c84/lua/nvim-treesitter/highlight.lua#L14-L104
-
 
 ; Keywords
 [
@@ -78,6 +77,7 @@
 ;  Pluscal keywords
 [
   (pcal_algorithm_start)
+  "algorithm"
   "assert"
   "await"
   "begin"
@@ -133,6 +133,7 @@
 (real_number) @number
 (real_number_set) @type
 (string) @string
+(escape_char) @string.escape
 (string_set) @type
 
 ; Namespaces and includes
@@ -205,12 +206,12 @@
 
 ; Proofs
 (proof_step_id "<" @punctuation.bracket)
-(proof_step_id (level) @number)
-(proof_step_id (name) @constant)
+(proof_step_id (level) @label)
+(proof_step_id (name) @label)
 (proof_step_id ">" @punctuation.bracket)
 (proof_step_ref "<" @punctuation.bracket)
-(proof_step_ref (level) @number)
-(proof_step_ref (name) @constant)
+(proof_step_ref (level) @label)
+(proof_step_ref (name) @label)
 (proof_step_ref ">" @punctuation.bracket)
 
 ; Comments and tags
@@ -219,8 +220,9 @@
 (block_comment_text) @comment
 (comment) @comment
 (single_line) @comment
-(_ label: (identifier) @tag)
-(pcal_goto statement: (identifier) @tag)
+(_ label: (identifier) @label)
+(label name: (_) @label)
+(pcal_goto statement: (identifier) @label)
 
 ; Reference highlighting with the same color as declarations.
 ; `constant`, `operator`, and others are custom captures defined in locals.scm
