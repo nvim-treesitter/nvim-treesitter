@@ -11,4 +11,9 @@ func badIndent(
 	param string, // this is the difference
 ) {
 	fmt.Println("typing o here triggers bad indent")
+	foo(bar,
+		baz,
+		call,
+		stop,
+		please)
 }
