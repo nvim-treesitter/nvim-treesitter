@@ -14,7 +14,7 @@ local function same_indent(state, arguments)
   local ok = true
   local errors = { before = {}, after = {} }
   for line = 1, #before do
-    if before[line] ~= after[line] then
+    if #string.match(before[line], "^%s*") ~= #string.match(after[line], "^%s*") then
       if before[line] and after[line] then
         -- store the actual indentation length for each line
         errors.before[line] = #string.match(before[line], "^%s*")
