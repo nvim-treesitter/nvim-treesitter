@@ -3,6 +3,9 @@
 -- Equivalent to print(), but this will ensure consistent output regardless of
 -- operating system.
 local function io_print(text)
+  if not text then
+    text = ""
+  end
   io.write(text, "\n")
 end
 
