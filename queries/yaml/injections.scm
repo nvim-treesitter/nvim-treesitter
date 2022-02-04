@@ -17,3 +17,11 @@
            (block_sequence
              (block_sequence_item
                (flow_node) @bash))))
+
+(block_mapping_pair
+  key: (flow_node) @_run (#any-of? @_run "script" "before_script" "after_script")
+  value: (block_node
+           (block_sequence
+             (block_sequence_item
+               (block_node
+                  (block_scalar) @bash)))))
