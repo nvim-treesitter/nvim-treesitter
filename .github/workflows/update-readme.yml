@@ -35,7 +35,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          commit-message: Update README
+          commit-message: Update README [skip ci]
           title: Update README
           branch: update-readme-pr
           base: ${{ github.head_ref }}
