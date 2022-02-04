@@ -70,22 +70,22 @@
   (#match? @function.builtin "\\c^(set)$")
   . (argument)
   (
-    (argument) @m_cache @constant
+    (argument) @_cache @constant
     .
-    (argument) @m_type @constant
-    (#any-of? @m_cache "CACHE")
-    (#any-of? @m_type "BOOL" "FILEPATH" "PATH" "STRING" "INTERNAL")
+    (argument) @_type @constant
+    (#any-of? @_cache "CACHE")
+    (#any-of? @_type "BOOL" "FILEPATH" "PATH" "STRING" "INTERNAL")
   )
 )
 (normal_command
   (identifier) @function.builtin
   (#match? @function.builtin "\\c^(set)$")
   . (argument)
-  (argument) @m_cache
-  (#any-of? @m_cache "CACHE")
+  (argument) @_cache
+  (#any-of? @_cache "CACHE")
   (
-    (argument) @m_force @constant
-    (#any-of? @m_force "FORCE")
+    (argument) @_force @constant
+    (#any-of? @_force "FORCE")
   ) .
 )
 
