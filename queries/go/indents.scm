@@ -9,15 +9,15 @@
   (expression_case)
   (default_case)
   (block)
+  (call_expression)
+  (parameter_list)
 ] @indent
 
 [
   "case"
-  ")"
   "}"
 ] @branch
 
-(comment) @ignore
+(parameter_list ")" @branch)
 
-([(parameter_list)] @aligned_indent
- (#set! "delimiter" "()"))
+(comment) @ignore
