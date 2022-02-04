@@ -51,6 +51,10 @@
 (function_declarator
       declarator: (qualified_identifier
         name: (identifier) @function))
+(function_declarator
+      declarator: (qualified_identifier
+        name: (qualified_identifier
+          name: (identifier) @function)))
 ((function_declarator
       declarator: (qualified_identifier
         name: (identifier) @constructor))
