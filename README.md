@@ -158,7 +158,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 <!--parserinfo-->
 - [x] [bash](https://github.com/tree-sitter/tree-sitter-bash) (maintained by @TravonteD)
 - [x] [beancount](https://github.com/polarmutex/tree-sitter-beancount) (maintained by @polarmutex)
-- [x] [bibtex](https://github.com/latex-lsp/tree-sitter-bibtex) (maintained by @theHamsta by asking @clason)
+- [x] [bibtex](https://github.com/latex-lsp/tree-sitter-bibtex) (maintained by @theHamsta, @clason)
 - [x] [c](https://github.com/tree-sitter/tree-sitter-c) (maintained by @vigoux)
 - [x] [c_sharp](https://github.com/tree-sitter/tree-sitter-c-sharp) (maintained by @Luxed)
 - [x] [clojure](https://github.com/sogaiu/tree-sitter-clojure) (maintained by @sogaiu)
@@ -206,7 +206,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [JSON with comments](https://gitlab.com/WhyNotHugo/tree-sitter-jsonc.git) (maintained by @WhyNotHugo)
 - [x] [julia](https://github.com/tree-sitter/tree-sitter-julia) (maintained by @mroavi, @theHamsta)
 - [x] [kotlin](https://github.com/fwcd/tree-sitter-kotlin) (maintained by @SalBakraa)
-- [x] [latex](https://github.com/latex-lsp/tree-sitter-latex) (maintained by @theHamsta by asking @clason)
+- [x] [latex](https://github.com/latex-lsp/tree-sitter-latex) (maintained by @theHamsta, @clason)
 - [x] [ledger](https://github.com/cbarrete/tree-sitter-ledger) (maintained by @cbarrete)
 - [x] [llvm](https://github.com/benwilliamgraham/tree-sitter-llvm) (maintained by @benwilliamgraham)
 - [x] [lua](https://github.com/MunifTanjim/tree-sitter-lua) (maintained by @muniftanjim)
