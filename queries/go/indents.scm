@@ -13,10 +13,11 @@
 
 [
   "case"
-  "("
   ")"
-  "{"
   "}"
 ] @branch
 
 (comment) @ignore
+
+([(parameter_list)] @aligned_indent
+ (#set! "delimiter" "()"))
