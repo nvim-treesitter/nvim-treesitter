@@ -13,6 +13,10 @@
   (return_statement)
 ] @indent
 
+[
+  "end"
+] @indent_end
+
 (return_statement
   (expression_list
     (function_call))) @dedent
