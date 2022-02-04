@@ -18,7 +18,7 @@ describe("indent PHP:", function()
     run:new_line("example.php", { on_line = 11, text = "// new line starts 1 indentation to far", indent = 4 })
     run:new_line(
       "example2.php",
-      { on_line = 5, text = "// indendation with `enter` in insert mode is not correct", indent = 4 }
+      { on_line = 5, text = "indendation with `enter` in insert mode is not correct", indent = 4 }
     )
   end)
 end)
