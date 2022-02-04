@@ -51,17 +51,42 @@
 )
 
 (normal_command
- (identifier) @function.builtin
- . (argument) @variable
- (#match? @function.builtin "\\c^(set)$"))
+  (identifier) @function.builtin
+  . (argument) @variable
+  (#match? @function.builtin "\\c^(set)$")
+)
 
 (normal_command
- (identifier) @function.builtin
- . (argument)
- . (argument)
- (argument) @constant
- (#any-of? @constant "PARENT_SCOPE" "CACHE" "FORCE")
- (#match? @function.builtin "\\c^(set)$")
+  (identifier) @function.builtin
+  (#match? @function.builtin "\\c^(set)$")
+  (
+    (argument) @constant
+    (#any-of? @constant "PARENT_SCOPE")
+  ) .
+)
+
+(normal_command
+  (identifier) @function.builtin
+  (#match? @function.builtin "\\c^(set)$")
+  . (argument)
+  (
+    (argument) @m_cache @constant
+    .
+    (argument) @m_type @constant
+    (#any-of? @m_cache "CACHE")
+    (#any-of? @m_type "BOOL" "FILEPATH" "PATH" "STRING" "INTERNAL")
+  )
+)
+(normal_command
+  (identifier) @function.builtin
+  (#match? @function.builtin "\\c^(set)$")
+  . (argument)
+  (argument) @m_cache
+  (#any-of? @m_cache "CACHE")
+  (
+    (argument) @m_force @constant
+    (#any-of? @m_force "FORCE")
+  ) .
 )
 
 ((argument) @boolean
