@@ -4,10 +4,10 @@
  (inline_formula)
 ] @text.math
 
-;; This highlights the whole environment like vimtex does
-((environment
+((generic_environment
   (begin
-   name: (word) @_env)) @text.math
+   name: (curly_group_text
+           (text) @_env))) @text.math
    (#any-of? @_env
       "displaymath" "displaymath*"
       "equation" "equation*"
@@ -20,8 +20,27 @@
       "gather" "gather*"
       "flalign" "flalign*"))
 
+;; File inclusion commands
 [
-  (generic_command_name)
+  "\\documentclass"
+  "\\usepackage"
+  "\\input"
+  "\\include"
+  "\\subfile"
+  "\\subfileinclude"
+  "\\subfileinclude"
+  "\\includegraphics"
+  "\\addbibresource"
+  "\\bibliography"
+  "\\includesvg"
+  "\\includeinkscape"
+  "\\usepgflibrary"
+  "\\usetikzlibrary"
+] @include
+
+;; Definitions
+[
+  (command_name)
   "\\newcommand"
   "\\renewcommand"
   "\\DeclareRobustCommand"
@@ -41,127 +60,97 @@
   "\\newacronym"
 ] @function.macro
 
+;; References (labels)
 [
-    "\\ref"
-    "\\eqref"
-    "\\vref"
-    "\\Vref"
-    "\\autoref"
-    "\\pageref"
-    "\\cref"
-    "\\Cref"
-    "\\cref*"
-    "\\Cref*"
-    "\\namecref"
-    "\\nameCref"
-    "\\lcnamecref"
-    "\\namecrefs"
-    "\\nameCrefs"
-    "\\lcnamecrefs"
-    "\\labelcref"
-    "\\labelcpageref"
-    "\\crefrange"
-    "\\crefrange"
-    "\\Crefrange"
-    "\\Crefrange"
-    "\\crefrange*"
-    "\\crefrange*"
-    "\\Crefrange*"
-    "\\Crefrange*"
+  "\\ref"
+  "\\eqref"
+  "\\vref"
+  "\\Vref"
+  "\\autoref"
+  "\\pageref"
+  "\\cref"
+  "\\Cref"
+  "\\cref*"
+  "\\Cref*"
+  "\\namecref"
+  "\\nameCref"
+  "\\lcnamecref"
+  "\\namecrefs"
+  "\\nameCrefs"
+  "\\lcnamecrefs"
+  "\\labelcref"
+  "\\labelcpageref"
+  "\\crefrange"
+  "\\crefrange"
+  "\\Crefrange"
+  "\\Crefrange"
+  "\\crefrange*"
+  "\\crefrange*"
+  "\\Crefrange*"
+  "\\Crefrange*"
 ] @function.macro
 
+;; References (bibliography)
 [
-    "\\cite"
-    "\\cite*"
-    "\\Cite"
-    "\\nocite"
-    "\\citet"
-    "\\citep"
-    "\\citet*"
-    "\\citep*"
-    "\\citeauthor"
-    "\\citeauthor*"
-    "\\Citeauthor"
-    "\\Citeauthor*"
-    "\\citetitle"
-    "\\citetitle*"
-    "\\citeyear"
-    "\\citeyear*"
-    "\\citedate"
-    "\\citedate*"
-    "\\citeurl"
-    "\\fullcite"
-    "\\citeyearpar"
-    "\\citealt"
-    "\\citealp"
-    "\\citetext"
-    "\\parencite"
-    "\\parencite*"
-    "\\Parencite"
-    "\\footcite"
-    "\\footfullcite"
-    "\\footcitetext"
-    "\\textcite"
-    "\\Textcite"
-    "\\smartcite"
-    "\\Smartcite"
-    "\\supercite"
-    "\\autocite"
-    "\\Autocite"
-    "\\autocite*"
-    "\\Autocite*"
-    "\\volcite"
-    "\\Volcite"
-    "\\pvolcite"
-    "\\Pvolcite"
-    "\\fvolcite"
-    "\\ftvolcite"
-    "\\svolcite"
-    "\\Svolcite"
-    "\\tvolcite"
-    "\\Tvolcite"
-    "\\avolcite"
-    "\\Avolcite"
-    "\\notecite"
-    "\\notecite"
-    "\\pnotecite"
-    "\\Pnotecite"
-    "\\fnotecite"
+  "\\cite"
+  "\\cite*"
+  "\\Cite"
+  "\\nocite"
+  "\\citet"
+  "\\citep"
+  "\\citet*"
+  "\\citep*"
+  "\\citeauthor"
+  "\\citeauthor*"
+  "\\Citeauthor"
+  "\\Citeauthor*"
+  "\\citetitle"
+  "\\citetitle*"
+  "\\citeyear"
+  "\\citeyear*"
+  "\\citedate"
+  "\\citedate*"
+  "\\citeurl"
+  "\\fullcite"
+  "\\citeyearpar"
+  "\\citealt"
+  "\\citealp"
+  "\\citetext"
+  "\\parencite"
+  "\\parencite*"
+  "\\Parencite"
+  "\\footcite"
+  "\\footfullcite"
+  "\\footcitetext"
+  "\\textcite"
+  "\\Textcite"
+  "\\smartcite"
+  "\\Smartcite"
+  "\\supercite"
+  "\\autocite"
+  "\\Autocite"
+  "\\autocite*"
+  "\\Autocite*"
+  "\\volcite"
+  "\\Volcite"
+  "\\pvolcite"
+  "\\Pvolcite"
+  "\\fvolcite"
+  "\\ftvolcite"
+  "\\svolcite"
+  "\\Svolcite"
+  "\\tvolcite"
+  "\\Tvolcite"
+  "\\avolcite"
+  "\\Avolcite"
+  "\\notecite"
+  "\\notecite"
+  "\\pnotecite"
+  "\\Pnotecite"
+  "\\fnotecite"
 ] @function.macro
 
-[
-    "\\ref"
-    "\\vref"
-    "\\Vref"
-    "\\autoref"
-    "\\pageref"
-    "\\cref"
-    "\\Cref"
-    "\\cref*"
-    "\\Cref*"
-    "\\namecref"
-    "\\nameCref"
-    "\\lcnamecref"
-    "\\namecrefs"
-    "\\nameCrefs"
-    "\\lcnamecrefs"
-    "\\labelcref"
-    "\\labelcpageref"
-] @function.macro
-
-
-[
-    "\\crefrange"
-    "\\crefrange"
-    "\\Crefrange"
-    "\\Crefrange"
-    "\\crefrange*"
-    "\\crefrange*"
-    "\\Crefrange*"
-    "\\Crefrange*"
-] @function.macro
-
-
+;; References (glossary)
 [
   "\\gls"
   "\\Gls"
@@ -211,7 +200,7 @@
   "\\GLSuservi"
 ] @function.macro
 
-
+;; Acronyms
 [
   "\\acrshort"
   "\\Acrshort"
@@ -258,28 +247,45 @@
   "\\Glsentryfullpl"
 ] @function.macro
 
-(comment) @comment
-
-(bracket_group) @parameter
-
-[(math_operator) "="] @operator
-
+;; General syntax
 [
-  "\\usepackage"
-  "\\documentclass"
-  "\\input"
-  "\\include"
-  "\\subfile"
-  "\\subfileinclude"
-  "\\subfileinclude"
-  "\\includegraphics"
-  "\\addbibresource"
-  "\\bibliography"
-  "\\includesvg"
-  "\\includeinkscape"
-  "\\usepgflibrary"
-  "\\usetikzlibrary"
-] @include
+ (line_comment)
+ (block_comment)
+ (comment_environment)
+] @comment
+
+(brack_group) @parameter
+
+[(operator) "="] @operator
+
+"\\item" @punctuation.special
+
+((word) @punctuation.delimiter
+(#eq? @punctuation.delimiter "&"))
+
+["$" "\\[" "\\]" "\\(" "\\)"] @punctuation.delimiter
+
+(label_definition
+ name: (_) @text.reference)
+(label_reference_range
+ from: (_) @text.reference
+ to: (_) @text.reference)
+(label_reference
+ names: (_) @text.reference)
+(label_number
+ name: (_) @text.reference
+ number: (_) @text.reference)
+
+(citation
+ keys: (curly_group_text_list) @text.reference)
+
+(key_value_pair
+  key: (_) @parameter
+  value: (_))
+
+["[" "]" "{" "}"] @punctuation.bracket ; "(" ")" has no syntactical meaning in LaTeX
+
+;; Sectioning
 
 [
   "\\part"
@@ -305,101 +311,74 @@
   "\\addpart*"
   "\\addchap*"
   "\\addsec*"
-] @type
-
-"\\item" @punctuation.special
-
-((word) @punctuation.delimiter
-(#eq? @punctuation.delimiter "&"))
-
-["$" "\\[" "\\]" "\\(" "\\)"] @punctuation.delimiter
-
-(label_definition
- name: (_) @text.reference)
-(label_reference
- label: (_) @text.reference)
-(equation_label_reference
- label: (_) @text.reference)
-(label_reference
- label: (_) @text.reference)
-(label_number
- label: (_) @text.reference)
-
-(citation
- key: (word) @text.reference)
-
-(key_val_pair
-  key: (_) @parameter
-  value: (_))
-
-["[" "]" "{" "}"] @punctuation.bracket ;"(" ")" is has no special meaning in LaTeX
+] @namespace
 
 (chapter
-  text: (brace_group) @text.title)
+  text: (curly_group) @text.title)
 
 (part
-  text: (brace_group) @text.title)
+  text: (curly_group) @text.title)
 
 (section
-  text: (brace_group) @text.title)
+  text: (curly_group) @text.title)
 
 (subsection
-  text: (brace_group) @text.title)
+  text: (curly_group) @text.title)
 
 (subsubsection
-  text: (brace_group) @text.title)
+  text: (curly_group) @text.title)
 
 (paragraph
-  text: (brace_group) @text.title)
+  text: (curly_group) @text.title)
 
 (subparagraph
-  text: (brace_group) @text.title)
+  text: (curly_group) @text.title)
 
-((environment
+(generic_environment
   (begin
-   name: (word) @_frame)
-   (brace_group
-        child: (text) @text.title))
- (#eq? @_frame "frame"))
+    name: (curly_group_text
+            (text) @text.environment.name)
+    (#any-of? @text.environment.name "frame"))
+  .
+  (curly_group (_) @text.title))
 
-((generic_command
-  name:(generic_command_name) @_name
-  arg: (brace_group
+((command
+  command: (command_name) @_name
+  arg: (curly_group
           (text) @text.title))
  (#eq? @_name "\\frametitle"))
 
 ;; Formatting
+((command
+  command: (command_name) @_name
+  arg: (curly_group (_) @text.emphasis))
+  (#eq? @_name "\\emph"))
 
-((generic_command
-  name:(generic_command_name) @_name
-  arg: (_) @text.emphasis)
- (#eq? @_name "\\emph"))
+((command
+  command: (command_name) @_name
+  arg: (curly_group (_) @text.emphasis))
+  (#match? @_name "^(\\\\textit|\\\\mathit)$"))
 
-((generic_command
-  name:(generic_command_name) @_name
-  arg: (_) @text.emphasis)
- (#match? @_name "^(\\\\textit|\\\\mathit)$"))
+((command
+  command: (command_name) @_name
+  arg: (curly_group (_) @text.strong))
+  (#match? @_name "^(\\\\textbf|\\\\mathbf)$"))
 
-((generic_command
-  name:(generic_command_name) @_name
-  arg: (_) @text.strong)
- (#match? @_name "^(\\\\textbf|\\\\mathbf)$"))
-
-((generic_command
-  name:(generic_command_name) @_name
+((command
+  command: (command_name) @_name
   .
-  arg: (_) @text.uri)
+  arg: (curly_group (_) @text.uri))
  (#match? @_name "^(\\\\url|\\\\href)$"))
 
-(ERROR) @error
-
+;; General environments
 [
   "\\begin"
   "\\end"
 ] @text.environment
 
 (begin
- name: (_) @text.environment.name
+ name: (curly_group_text
+         (text) @text.environment.name)
   (#not-any-of? @text.environment.name
       "displaymath" "displaymath*"
       "equation" "equation*"
@@ -413,7 +392,8 @@
       "flalign" "flalign*"))
 
 (end
- name: (_) @text.environment.name
+ name: (curly_group_text
+         (text) @text.environment.name)
   (#not-any-of? @text.environment.name
       "displaymath" "displaymath*"
       "equation" "equation*"
@@ -425,3 +405,5 @@
       "alignat" "alignat*"
       "gather" "gather*"
       "flalign" "flalign*"))
+
+(ERROR) @error

@@ -747,11 +747,11 @@ list.beancount = {
 list.latex = {
   install_info = {
     url = "https://github.com/latex-lsp/tree-sitter-latex",
-    files = { "src/parser.c" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   filetype = "tex",
   used_by = { "cls", "sty" },
-  maintainers = { "@theHamsta by asking @clason" },
+  maintainers = { "@theHamsta, @clason" },
 }
 
 list.bibtex = {
@@ -760,7 +760,7 @@ list.bibtex = {
     files = { "src/parser.c" },
   },
   filetype = "bib",
-  maintainers = { "@theHamsta by asking @clason" },
+  maintainers = { "@theHamsta, @clason" },
 }
 
 list.zig = {

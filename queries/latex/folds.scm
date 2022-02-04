@@ -7,6 +7,7 @@
   (paragraph)
   (subparagraph)
 
-  (environment)
+  (generic_environment)
+  (comment_environment)
   (displayed_equation)
 ] @fold
