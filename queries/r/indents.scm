@@ -1,8 +1,8 @@
 [
-  (call)
   (brace_list)
   (paren_list)
   (special)
+  (pipe)
   "|>"
   "if"
   "else"
@@ -17,12 +17,7 @@
 ] @branch
 
 
-(pipe
-  (call) @aligned_indent
-  (#set! "delimiter" "()"))
-
-((special)
-  (call) @aligned_indent
+((call) @aligned_indent
   (#set! "delimiter" "()"))
 
 ((formal_parameters (identifier)) @aligned_indent
