@@ -1,56 +1,13 @@
-#
-# compile_parsers.makefile
-#
+CC?=cc
+CXX_STANDARD?=c++14
 
-CXX_STANDARD ?= c++14
-CFLAGS       ?= -Os -std=c99 -fPIC
-CXXFLAGS     ?= -Os -std=$(CXX_STANDARD) -fPIC
-LDFLAGS      ?= -shared
-SRC_DIR      ?= ./src
-DEST_DIR     ?= ./dest
+all: parser.so
 
-ifeq ($(OS),Windows_NT)
-   SHELL       := powershell.exe
-   .SHELLFLAGS := -NoProfile -command
-   CP          := Copy-Item -Recurse -ErrorAction SilentlyContinue
-   MKDIR       := New-Item -ItemType directory -ErrorAction SilentlyContinue
-   TARGET      := parser.dll
-   rmf         = Write-Output $(1) | foreach { if (Test-Path $$_) { Remove-Item -Force } }
-else
-   CP          := cp
-   MKDIR       := mkdir -p
-   TARGET      := parser.so
-   rmf         = rm -rf $(1)
-endif
+parser.o: src/parser.c
+	$(CC) -c src/parser.c -std=c99 -Os -fPIC -I./src
 
-ifneq ($(wildcard $(SRC_DIR)/*.cc),)
-   LDFLAGS += -lstdc++
-endif
+scanner.o: src/scanner.cc
+	$(CC) -c src/scanner.cc -std=$(CXX_STANDARD) -Os -fPIC -I./src
 
-OBJECTS := parser.o
-
-ifneq ($(wildcard $(SRC_DIR)/scanner.*),)
-   OBJECTS += scanner.o
-endif
-
-all: $(TARGET)
-
-$(TARGET): $(OBJECTS)
-	$(CC) $(OBJECTS) -o $(TARGET) $(LDFLAGS)
-
-%.o: $(SRC_DIR)/%.c
-	$(CC) -c $(CFLAGS) -I$(SRC_DIR) -o $@ $<
-
-%.o: $(SRC_DIR)/%.cc
-	$(CC) -c $(CXXFLAGS) -I$(SRC_DIR) -o $@ $<
-
-clean:
-	$(call rmf,$(TARGET) $(OBJECTS))
-
-$(DEST_DIR):
-	@$(MKDIR) $(DEST_DIR)
-
-install: $(TARGET) $(DEST_DIR)
-	$(CP) $(TARGET) $(DEST_DIR)/
-
-.PHONY: clean
+parser.so: parser.o scanner.o
+	$(CC) parser.o scanner.o -o parser.so -shared -lstdc++
