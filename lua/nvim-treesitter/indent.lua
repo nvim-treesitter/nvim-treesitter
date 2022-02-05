@@ -160,8 +160,7 @@ function M.get_indent(lnum)
           indent = indent + indent_size * 1
         else
           local _, o_scol = o_delim_node:start()
-          o_scol = o_scol + (metadata.increment or 1)
-          return math.max(indent, 0) + o_scol
+          return math.max(indent, 0) + o_scol + (metadata.increment or 1)
         end
       end
     end

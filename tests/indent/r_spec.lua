@@ -11,8 +11,7 @@ local run = Runner:new(it, "tests/indent/r", {
 describe("indent R:", function()
   describe("whole file:", function()
     run:whole_file(".", {
-      expected_failures = {
-      },
+      expected_failures = {},
     })
   end)
 
