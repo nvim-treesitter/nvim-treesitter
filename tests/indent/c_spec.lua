@@ -37,6 +37,7 @@ describe("indent C:", function()
     runner:new_line("switch.c", { on_line = 3, text = "x++;", indent = 12 })
     runner:new_line("ternary.c", { on_line = 4, text = ": (x == 0) : 0", indent = 8 })
     runner:new_line("issue-1568.c", { on_line = 4, text = "x++;", indent = 8 })
+    runner:new_line("issue-2086.c", { on_line = 3, text = "}", indent = 0 })
     -- the line after inserted one will be left with wrong indent but we only care about the inserted one
     runner:new_line("no_braces.c", { on_line = 4, text = "x++;", indent = 8 })
     runner:new_line("no_braces.c", { on_line = 7, text = "x++;", indent = 8 })
