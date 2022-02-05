@@ -16,8 +16,6 @@ jobs:
         env:
           NVIM_TAG: stable
         run: |
-          sudo apt-get update
-          sudo add-apt-repository universe
           wget https://github.com/neovim/neovim/releases/download/${NVIM_TAG}/nvim.appimage
           chmod u+x nvim.appimage
           mkdir -p ~/.local/share/nvim/site/pack/nvim-treesitter/start
