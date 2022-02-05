@@ -46,7 +46,4 @@
 ([(argument_list) (parameter_list)] @aligned_indent
   (#set! "delimiter" "()"))
 
-((comment) @aligned_indent
- (#lua-match? @aligned_indent "^/\*"))
-((comment) @ignore
- (#lua-match? @ignore "^//"))
+(comment) @auto
