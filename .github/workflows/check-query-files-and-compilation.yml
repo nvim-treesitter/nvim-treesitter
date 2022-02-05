@@ -74,15 +74,8 @@ jobs:
             ~/AppData/Local/nvim/pack/nvim-treesitter/start/nvim-treesitter/parser/
           key: ${{ matrix.os }}-${{ matrix.cc }}-${{ matrix.nvim_tag }}-parsers-v1-${{ hashFiles('./lockfile.json', './lua/nvim-treesitter/parsers.lua', './lua/nvim-treesitter/install.lua', './lua/nvim-treesitter/shell_selectors.lua') }}
 
-      - name: Compile parsers Unix like
-        if: matrix.os != 'windows-2022'
-        run: |
-          $NVIM --headless -c "TSInstallSync all" -c "q"
-
-      - name: Compile parsers Windows
-        if: matrix.os == 'windows-2022'
-        run: |
-          $NVIM --headless -c "lua require'nvim-treesitter.install'.prefer_git=false" -c "TSInstallSync all" -c "q"
+      - name: Compile parsers
+        run: $NVIM --headless -c "lua require'nvim-treesitter.install'.prefer_git=false" -c "TSInstallSync all" -c "q"
 
       - name: Post compile Windows
         if: matrix.os == 'windows-2022'
