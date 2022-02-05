@@ -2,9 +2,10 @@
 # compile_parsers.makefile
 #
 
-CFLAGS       ?= -std=c99 -fPIC
-CXXFLAGS     ?= -std=c++14 -fPIC
-LDFLAGS      ?= -Os -shared
+CXX_STANDARD ?= c++14
+CFLAGS       ?= -Os -std=c99 -fPIC
+CXXFLAGS     ?= -Os -std=$(CXX_STANDARD) -fPIC
+LDFLAGS      ?= -shared
 SRC_DIR      ?= ./src
 DEST_DIR     ?= ./dest
 
