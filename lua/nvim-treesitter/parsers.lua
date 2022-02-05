@@ -326,6 +326,15 @@ list.elixir = {
   maintainers = { "@jonatanklosko" },
 }
 
+list.gleam = {
+  install_info = {
+    url = "https://github.com/J3RN/tree-sitter-gleam",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  maintainers = { "@J3RN" },
+}
+
 list.surface = {
   install_info = {
     url = "https://github.com/connorlay/tree-sitter-surface",
