@@ -9,6 +9,12 @@ M.avoid_force_reparsing = {
   yaml = true,
 }
 
+M.comment_parsers = {
+  comment = true,
+  jsdoc = true,
+  phpdoc = true,
+}
+
 local function get_first_node_at_line(root, lnum)
   local col = vim.fn.indent(lnum)
   return root:descendant_for_range(lnum - 1, col, lnum - 1, col)
@@ -70,8 +76,20 @@ function M.get_indent(lnum)
     parser:parse()
   end
 
-  -- get_root_for_position is 0-based.
-  local root, _, lang_tree = tsutils.get_root_for_position(lnum - 1, 0, parser)
+  -- Get language tree with smallest range around node that's not a comment parser
+  local root, lang_tree
+  parser:for_each_tree(function(tstree, tree)
+    if not tstree or M.comment_parsers[tree:lang()] then
+      return
+    end
+    local local_root = tstree:root()
+    if tsutils.is_in_node_range(local_root, lnum - 1, 0) then
+      if not root or tsutils.node_length(root) >= tsutils.node_length(local_root) then
+        root = local_root
+        lang_tree = tree
+      end
+    end
+  end)
 
   -- Not likely, but just in case...
   if not root then
