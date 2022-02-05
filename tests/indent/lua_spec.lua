@@ -11,9 +11,7 @@ local run = Runner:new(it, "tests/indent/lua", {
 describe("indent Lua:", function()
   describe("whole file:", function()
     run:whole_file(".", {
-      expected_failures = {
-        "./comment.lua",
-      },
+      expected_failures = {},
     })
   end)
 
