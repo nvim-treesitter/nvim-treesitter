@@ -93,12 +93,7 @@ jobs:
       - if: matrix.os == 'ubuntu-latest' && matrix.nvim_tag == 'stable'
         run: echo "SKIP_SWIFT_CHECK=TRUE" >> $GITHUB_ENV
 
-      - name: Check query files (Unix)
+      - name: Check query files
         env:
           SKIP_SWIFT_CHECK: ${{ env.SKIP_SWIFT_CHECK }}
-        if: matrix.os != 'windows-2022'
-        run: $NVIM --headless -c "luafile ./scripts/check-queries.lua" -c "q"
-
-      - name: Check query files (Windows)
-        if: matrix.os == 'windows-2022'
         run: $NVIM --headless -c "luafile ./scripts/check-queries.lua" -c "q"
