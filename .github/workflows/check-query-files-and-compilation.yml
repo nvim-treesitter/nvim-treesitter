@@ -14,6 +14,10 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
   cancel-in-progress: true
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   check_compilation_unix_like:
     strategy:
@@ -48,6 +52,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       CC: ${{ matrix.cc }}
+      NVIM: ${{ matrix.os == 'windows-2022' && 'Neovim\\bin\\nvim.exe' || 'nvim' }}
     steps:
       - uses: actions/checkout@v2
       - uses: ilammy/msvc-dev-cmd@v1
@@ -72,17 +77,16 @@ jobs:
       - name: Compile parsers Unix like
         if: matrix.os != 'windows-2022'
         run: |
-          nvim --headless -c "TSInstallSync all" -c "q"
+          $NVIM --headless -c "TSInstallSync all" -c "q"
 
       - name: Compile parsers Windows
         if: matrix.os == 'windows-2022'
         run: |
-          Neovim\\bin\\nvim.exe --headless -c "lua require'nvim-treesitter.install'.prefer_git=false" -c "TSInstallSync all" -c "q"
+          $NVIM --headless -c "lua require'nvim-treesitter.install'.prefer_git=false" -c "TSInstallSync all" -c "q"
 
       - name: Post compile Windows
         if: matrix.os == 'windows-2022'
         run: cp -r ~/AppData/Local/nvim/pack/nvim-treesitter/start/nvim-treesitter/parser/* parser
-        shell: bash
 
        # NOTE: this is a temporary workaround to skip swift tests on ubuntu
        # stable and should be removed once neovim 0.7 is released.
@@ -93,8 +97,8 @@ jobs:
         env:
           SKIP_SWIFT_CHECK: ${{ env.SKIP_SWIFT_CHECK }}
         if: matrix.os != 'windows-2022'
-        run: nvim --headless -c "luafile ./scripts/check-queries.lua" -c "q"
+        run: $NVIM --headless -c "luafile ./scripts/check-queries.lua" -c "q"
 
       - name: Check query files (Windows)
         if: matrix.os == 'windows-2022'
-        run: Neovim\\bin\\nvim.exe --headless -c "luafile ./scripts/check-queries.lua" -c "q"
+        run: $NVIM --headless -c "luafile ./scripts/check-queries.lua" -c "q"
