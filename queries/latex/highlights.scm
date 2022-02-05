@@ -1,3 +1,120 @@
+;; General syntax
+(ERROR) @error
+
+(command_name) @function
+
+(key_value_pair
+  key: (_) @parameter
+  value: (_))
+
+[
+ (line_comment)
+ (block_comment)
+ (comment_environment)
+] @comment
+
+[
+ (brack_group)
+ (brack_group_argc)
+] @parameter
+
+[(operator) "="] @operator
+
+"\\item" @punctuation.special
+
+((word) @punctuation.delimiter
+(#eq? @punctuation.delimiter "&"))
+
+["[" "]" "{" "}"] @punctuation.bracket ; "(" ")" has no syntactical meaning in LaTeX
+
+;; General environments
+(begin
+ command: _ @text.environment
+ name: (curly_group_text
+         (text) @text.environment.name)
+  (#not-any-of? @text.environment.name
+      "displaymath" "displaymath*"
+      "equation" "equation*"
+      "multline" "multline*"
+      "eqnarray" "eqnarray*"
+      "align" "align*"
+      "array" "array*"
+      "split" "split*"
+      "alignat" "alignat*"
+      "gather" "gather*"
+      "flalign" "flalign*"))
+
+(end
+ command: _ @text.environment
+ name: (curly_group_text
+         (text) @text.environment.name)
+  (#not-any-of? @text.environment.name
+      "displaymath" "displaymath*"
+      "equation" "equation*"
+      "multline" "multline*"
+      "eqnarray" "eqnarray*"
+      "align" "align*"
+      "array" "array*"
+      "split" "split*"
+      "alignat" "alignat*"
+      "gather" "gather*"
+      "flalign" "flalign*"))
+
+;; Definitions and references
+(new_command_definition
+ command: _ @function.macro
+ declaration: (curly_group_command_name (_) @function))
+(old_command_definition
+ command: _ @function.macro
+ declaration: (_) @function)
+(let_command_definition
+ command: _ @function.macro
+ declaration: (_) @function)
+
+(theorem_definition
+  command: _ @function.macro
+  name: (curly_group_text (_) @text.environment.name))
+
+(label_definition
+ command: _ @function.macro
+ name: (_) @text.reference)
+(label_reference_range
+ command: _ @function.macro
+ from: (_) @text.reference
+ to: (_) @text.reference)
+(label_reference
+ command: _ @function.macro
+ names: (_) @text.reference)
+(label_number
+ command: _ @function.macro
+ name: (_) @text.reference
+ number: (_) @text.reference)
+
+(citation
+ command: _ @function.macro
+ keys: (curly_group_text_list) @text.reference)
+
+(glossary_entry_definition
+  command: _ @function.macro
+  name: (_) @text.reference)
+(glossary_entry_reference
+  command: _ @function.macro
+  name: (_) @text.reference)
+
+(acronym_definition
+  command: _ @function.macro
+  name: (_) @text.reference)
+(acronym_reference
+  command: _ @function.macro
+  name: (_) @text.reference)
+
+(color_definition
+  command: _ @function.macro
+  name: (_) @text.reference)
+(color_reference
+  command: _ @function.macro
+  name: (_) @text.reference)
+
 ;; Math
 [
  (displayed_equation)
@@ -6,6 +123,23 @@
 
 ((generic_environment
   (begin
+   command: _ @text.math
+   name: (curly_group_text
+           (text) @_env))) @text.math
+   (#any-of? @_env
+      "displaymath" "displaymath*"
+      "equation" "equation*"
+      "multline" "multline*"
+      "eqnarray" "eqnarray*"
+      "align" "align*"
+      "array" "array*"
+      "split" "split*"
+      "alignat" "alignat*"
+      "gather" "gather*"
+      "flalign" "flalign*"))
+((generic_environment
+  (end
+   command: _ @text.math
    name: (curly_group_text
            (text) @_env))) @text.math
    (#any-of? @_env
@@ -20,320 +154,36 @@
       "gather" "gather*"
       "flalign" "flalign*"))
 
-;; File inclusion commands
-[
-  "\\documentclass"
-  "\\usepackage"
-  "\\input"
-  "\\include"
-  "\\subfile"
-  "\\subfileinclude"
-  "\\subfileinclude"
-  "\\includegraphics"
-  "\\addbibresource"
-  "\\bibliography"
-  "\\includesvg"
-  "\\includeinkscape"
-  "\\usepgflibrary"
-  "\\usetikzlibrary"
-] @include
-
-;; Definitions
-[
-  (command_name)
-  "\\newcommand"
-  "\\renewcommand"
-  "\\DeclareRobustCommand"
-  "\\DeclareMathOperator"
-  "\\newglossaryentry"
-  "\\caption"
-  "\\label"
-  "\\newlabel"
-  "\\color"
-  "\\colorbox"
-  "\\textcolor"
-  "\\pagecolor"
-  "\\definecolor"
-  "\\definecolorset"
-  "\\newtheorem"
-  "\\declaretheorem"
-  "\\newacronym"
-] @function.macro
-
-;; References (labels)
-[
-  "\\ref"
-  "\\eqref"
-  "\\vref"
-  "\\Vref"
-  "\\autoref"
-  "\\pageref"
-  "\\cref"
-  "\\Cref"
-  "\\cref*"
-  "\\Cref*"
-  "\\namecref"
-  "\\nameCref"
-  "\\lcnamecref"
-  "\\namecrefs"
-  "\\nameCrefs"
-  "\\lcnamecrefs"
-  "\\labelcref"
-  "\\labelcpageref"
-  "\\crefrange"
-  "\\crefrange"
-  "\\Crefrange"
-  "\\Crefrange"
-  "\\crefrange*"
-  "\\crefrange*"
-  "\\Crefrange*"
-  "\\Crefrange*"
-] @function.macro
-
-;; References (bibliography)
-[
-  "\\cite"
-  "\\cite*"
-  "\\Cite"
-  "\\nocite"
-  "\\citet"
-  "\\citep"
-  "\\citet*"
-  "\\citep*"
-  "\\citeauthor"
-  "\\citeauthor*"
-  "\\Citeauthor"
-  "\\Citeauthor*"
-  "\\citetitle"
-  "\\citetitle*"
-  "\\citeyear"
-  "\\citeyear*"
-  "\\citedate"
-  "\\citedate*"
-  "\\citeurl"
-  "\\fullcite"
-  "\\citeyearpar"
-  "\\citealt"
-  "\\citealp"
-  "\\citetext"
-  "\\parencite"
-  "\\parencite*"
-  "\\Parencite"
-  "\\footcite"
-  "\\footfullcite"
-  "\\footcitetext"
-  "\\textcite"
-  "\\Textcite"
-  "\\smartcite"
-  "\\Smartcite"
-  "\\supercite"
-  "\\autocite"
-  "\\Autocite"
-  "\\autocite*"
-  "\\Autocite*"
-  "\\volcite"
-  "\\Volcite"
-  "\\pvolcite"
-  "\\Pvolcite"
-  "\\fvolcite"
-  "\\ftvolcite"
-  "\\svolcite"
-  "\\Svolcite"
-  "\\tvolcite"
-  "\\Tvolcite"
-  "\\avolcite"
-  "\\Avolcite"
-  "\\notecite"
-  "\\notecite"
-  "\\pnotecite"
-  "\\Pnotecite"
-  "\\fnotecite"
-] @function.macro
-
-;; References (glossary)
-[
-  "\\gls"
-  "\\Gls"
-  "\\GLS"
-  "\\glspl"
-  "\\Glspl"
-  "\\GLSpl"
-  "\\glsdisp"
-  "\\glslink"
-  "\\glstext"
-  "\\Glstext"
-  "\\GLStext"
-  "\\glsfirst"
-  "\\Glsfirst"
-  "\\GLSfirst"
-  "\\glsplural"
-  "\\Glsplural"
-  "\\GLSplural"
-  "\\glsfirstplural"
-  "\\Glsfirstplural"
-  "\\GLSfirstplural"
-  "\\glsname"
-  "\\Glsname"
-  "\\GLSname"
-  "\\glssymbol"
-  "\\Glssymbol"
-  "\\glsdesc"
-  "\\Glsdesc"
-  "\\GLSdesc"
-  "\\glsuseri"
-  "\\Glsuseri"
-  "\\GLSuseri"
-  "\\glsuserii"
-  "\\Glsuserii"
-  "\\GLSuserii"
-  "\\glsuseriii"
-  "\\Glsuseriii"
-  "\\GLSuseriii"
-  "\\glsuseriv"
-  "\\Glsuseriv"
-  "\\GLSuseriv"
-  "\\glsuserv"
-  "\\Glsuserv"
-  "\\GLSuserv"
-  "\\glsuservi"
-  "\\Glsuservi"
-  "\\GLSuservi"
-] @function.macro
-
-;; Acronyms
-[
-  "\\acrshort"
-  "\\Acrshort"
-  "\\ACRshort"
-  "\\acrshortpl"
-  "\\Acrshortpl"
-  "\\ACRshortpl"
-  "\\acrlong"
-  "\\Acrlong"
-  "\\ACRlong"
-  "\\acrlongpl"
-  "\\Acrlongpl"
-  "\\ACRlongpl"
-  "\\acrfull"
-  "\\Acrfull"
-  "\\ACRfull"
-  "\\acrfullpl"
-  "\\Acrfullpl"
-  "\\ACRfullpl"
-  "\\acs"
-  "\\Acs"
-  "\\acsp"
-  "\\Acsp"
-  "\\acl"
-  "\\Acl"
-  "\\aclp"
-  "\\Aclp"
-  "\\acf"
-  "\\Acf"
-  "\\acfp"
-  "\\Acfp"
-  "\\ac"
-  "\\Ac"
-  "\\acp"
-  "\\glsentrylong"
-  "\\Glsentrylong"
-  "\\glsentrylongpl"
-  "\\Glsentrylongpl"
-  "\\glsentryshort"
-  "\\Glsentryshort"
-  "\\glsentryshortpl"
-  "\\Glsentryshortpl"
-  "\\glsentryfullpl"
-  "\\Glsentryfullpl"
-] @function.macro
-
-;; General syntax
-[
- (line_comment)
- (block_comment)
- (comment_environment)
-] @comment
-
-(brack_group) @parameter
-
-[(operator) "="] @operator
-
-"\\item" @punctuation.special
-
-((word) @punctuation.delimiter
-(#eq? @punctuation.delimiter "&"))
-
-["$" "\\[" "\\]" "\\(" "\\)"] @punctuation.delimiter
-
-(label_definition
- name: (_) @text.reference)
-(label_reference_range
- from: (_) @text.reference
- to: (_) @text.reference)
-(label_reference
- names: (_) @text.reference)
-(label_number
- name: (_) @text.reference
- number: (_) @text.reference)
-
-(citation
- keys: (curly_group_text_list) @text.reference)
-
-(key_value_pair
-  key: (_) @parameter
-  value: (_))
-
-["[" "]" "{" "}"] @punctuation.bracket ; "(" ")" has no syntactical meaning in LaTeX
-
 ;; Sectioning
-
-[
-  "\\part"
-  "\\chapter"
-  "\\section"
-  "\\subsection"
-  "\\subsubsection"
-  "\\paragraph"
-  "\\subparagraph"
-
-  "\\addpart"
-  "\\addchap"
-  "\\addsec"
-
-  "\\part*"
-  "\\chapter*"
-  "\\section*"
-  "\\subsection*"
-  "\\subsubsection*"
-  "\\paragraph*"
-  "\\subparagraph*"
-
-  "\\addpart*"
-  "\\addchap*"
-  "\\addsec*"
-] @namespace
-
 (chapter
+  command: _ @namespace
   text: (curly_group) @text.title)
 
 (part
+  command: _ @namespace
   text: (curly_group) @text.title)
 
 (section
+  command: _ @namespace
   text: (curly_group) @text.title)
 
 (subsection
+  command: _ @namespace
   text: (curly_group) @text.title)
 
 (subsubsection
+  command: _ @namespace
   text: (curly_group) @text.title)
 
 (paragraph
+  command: _ @namespace
   text: (curly_group) @text.title)
 
 (subparagraph
+  command: _ @namespace
   text: (curly_group) @text.title)
 
+;; Beamer frames
 (generic_environment
   (begin
     name: (curly_group_text
@@ -370,40 +220,34 @@
   arg: (curly_group (_) @text.uri))
  (#match? @_name "^(\\\\url|\\\\href)$"))
 
-;; General environments
-[
-  "\\begin"
-  "\\end"
-] @text.environment
+;; File inclusion commands
+(class_include
+  command: _ @include
+  path: (curly_group_path) @string)
 
-(begin
- name: (curly_group_text
-         (text) @text.environment.name)
-  (#not-any-of? @text.environment.name
-      "displaymath" "displaymath*"
-      "equation" "equation*"
-      "multline" "multline*"
-      "eqnarray" "eqnarray*"
-      "align" "align*"
-      "array" "array*"
-      "split" "split*"
-      "alignat" "alignat*"
-      "gather" "gather*"
-      "flalign" "flalign*"))
+(package_include
+  command: _ @include
+  paths: (curly_group_path_list) @string)
 
-(end
- name: (curly_group_text
-         (text) @text.environment.name)
-  (#not-any-of? @text.environment.name
-      "displaymath" "displaymath*"
-      "equation" "equation*"
-      "multline" "multline*"
-      "eqnarray" "eqnarray*"
-      "align" "align*"
-      "array" "array*"
-      "split" "split*"
-      "alignat" "alignat*"
-      "gather" "gather*"
-      "flalign" "flalign*"))
+(latex_include
+  command: _ @include
+  path: (curly_group_path) @string)
+(import_include
+  command: _ @include
+  directory: (curly_group_path) @string
+  file: (curly_group_path) @string)
 
-(ERROR) @error
+(bibtex_include
+  command: _ @include
+  path: (curly_group_path) @string)
+(biblatex_include
+  "\\addbibresource" @include
+  glob: (curly_group_glob_pattern) @string.regex)
+
+(graphics_include
+  command: _ @include
+  path: (curly_group_path) @string)
+(tikz_library_import
+  command: _ @include
+  path: (curly_group_text) @string)
+

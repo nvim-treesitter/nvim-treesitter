@@ -13,3 +13,10 @@
     language: (curly_group_text
                (text) @language))
   (source_code) @content)
+
+((generic_environment
+  (begin
+   name: (curly_group_text
+           (text) @_env))) @c
+   (#any-of? @_env "asy" "asydef"))
+
