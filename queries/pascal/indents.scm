@@ -6,7 +6,7 @@
 	(declProc)
 	(declArgs)
 	(declUses)
-	(declClass)
+	(declType)
 	(exprArgs)
 	(exprSubscript)
 	(exprBrackets)
@@ -14,19 +14,50 @@
 	(recInitializer)
 	(arrInitializer)
 	(defaultValue)
+	(if)
+	(ifElse)
+	(while)
+	(repeat)
+	(for)
+	(foreach)
+	(try)
+	(case)
+	(caseCase)
+	(asm)
+	(block)
 ] @indent
 
-(defProc (block) @indent)
+(block (kEnd) @indent_end)
+(block ";" @indent_end)
+(if ";" @indent_end)
+(ifElse ";" @indent_end)
+(while ";" @indent_end)
+(statement ";" @indent_end)
+(declType ";" @indent_end)
 
 [
+	;(kBegin)
 	(kEnd)
+	(kElse)
 	(kFinally)
 	(kDo)
 	(kUntil)
 	(kExcept)
-	(kElse)
-	(kThen)
 	(declSection)
 	"]"
 	")"
-] @branch
+ ] @branch
+
+(if (block (kBegin) @branch))
+(ifElse (block (kBegin) @branch))
+(for (block (kBegin) @branch))
+(foreach (block (kBegin) @branch))
+(while (block (kBegin) @branch))
+(caseCase (block (kBegin) @branch))
+
+(if (block) @dedent)
+(ifElse (block) @dedent)
+(while (block) @dedent)
+(for (block) @dedent)
+(foreach (block) @dedent)
+(caseCase (block) @dedent)
