@@ -114,10 +114,6 @@ local function enable_syntax(bufnr)
   api.nvim_buf_set_option(bufnr, "syntax", "ON")
 end
 
-function M.get_config()
-  return configs.get_module "highlight"
-end
-
 function M.stop(bufnr)
   if ts.highlighter.active[bufnr] then
     ts.highlighter.active[bufnr]:destroy()
@@ -126,18 +122,13 @@ end
 
 function M.start(bufnr, lang)
   local parser = parsers.get_parser(bufnr, lang)
-  local config = M.get_config()
-
-  for k, v in pairs(config.custom_captures) do
-    hlmap[k] = v
-  end
-
   ts.highlighter.new(parser, {})
 end
 
 function M.attach(bufnr, lang)
+  local config = configs.get_module "highlight"
   M.start(bufnr, lang)
-  if should_enable_vim_regex(M.get_config(), lang) then
+  if should_enable_vim_regex(config, lang) then
     enable_syntax(bufnr)
   end
 end
@@ -145,6 +136,12 @@ end
 function M.detach(bufnr)
   M.stop(bufnr)
   enable_syntax(bufnr)
+end
+
+function M.set_custom_captures(captures)
+  for k, v in pairs(captures) do
+    hlmap[k] = v
+  end
 end
 
 return M

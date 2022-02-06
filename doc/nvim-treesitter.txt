@@ -73,7 +73,6 @@ MODULES                                              *nvim-treesitter-modules*
 
 |nvim-treesitter| provides several functionalities via modules (and submodules),
 each module makes use of the query files defined for each language,
-you can add your own queries too, see |nvim-treesitter-query-extensions|.
 
 All modules are disabled by default, and some provide default keymaps.
 Each module corresponds to an entry in the dictionary passed to the
@@ -141,8 +140,6 @@ Supported options:
 
 - enable: `true` or `false`.
 - disable: list of languages.
-- custom_captures: A map of user defined capture groups to highlight groups.
-  See |nvim-treesitter-query-extensions|.
 - additional_vim_regex_highlighting: `true` or `false`, or a list of languages.
   Set this to `true` if you depend on 'syntax' being enabled
   (like for indentation). Using this option may slow down your editor,
@@ -162,6 +159,16 @@ Supported options:
       additional_vim_regex_highlighting = false,
     },
   }
+  EOF
+<
+
+You can also set custom highlight captures
+>
+  lua <<EOF
+    require"nvim-treesitter.highlight".set_custom_captures {
+      -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
+      ["foo.bar"] = "Identifier",
+    }
   EOF
 <
 Note: The api is not stable yet.
