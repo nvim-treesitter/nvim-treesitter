@@ -22,8 +22,9 @@ local is_initialized = false
 local builtin_modules = {
   highlight = {
     module_path = "nvim-treesitter.highlight",
-    enable = false,
+    -- @deprecated: use `highlight.set_custom_captures` instead
     custom_captures = {},
+    enable = false,
     is_supported = function(lang)
       return queries.has_highlights(lang)
     end,
