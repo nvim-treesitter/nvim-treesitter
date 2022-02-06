@@ -1,7 +1,7 @@
 local Runner = require("tests.indent.common").Runner
 --local XFAIL = require("tests.indent.common").XFAIL
 
-local run = Runner:new(it, "tests/indent/go", {
+local run = Runner:new(it, "go", {
   tabstop = 4,
   shiftwidth = 4,
   softtabstop = 4,
@@ -10,9 +10,9 @@ local run = Runner:new(it, "tests/indent/go", {
 
 describe("indent Go:", function()
   describe("whole file:", function()
-    run:whole_file(".", {
+    run:whole_file {
       expected_failures = {},
-    })
+    }
   end)
 
   describe("new line:", function()

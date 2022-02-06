@@ -1,6 +1,6 @@
 local Runner = require("tests.indent.common").Runner
 
-local run = Runner:new(it, "tests/indent/php", {
+local run = Runner:new(it, "php", {
   tabstop = 4,
   shiftwidth = 4,
   softtabstop = 0,
@@ -9,9 +9,9 @@ local run = Runner:new(it, "tests/indent/php", {
 
 describe("indent PHP:", function()
   describe("whole file:", function()
-    run:whole_file(".", {
+    run:whole_file {
       expected_failures = {},
-    })
+    }
   end)
 
   describe("new line:", function()

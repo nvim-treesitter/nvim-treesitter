@@ -1,7 +1,7 @@
 local Runner = require("tests.indent.common").Runner
 -- local XFAIL = require("tests.indent.common").XFAIL
 
-local run = Runner:new(it, "tests/indent", {
+local ecma = Runner:new(it, "ecma", {
   tabstop = 2,
   shiftwidth = 2,
   softtabstop = 0,
@@ -11,9 +11,9 @@ local run = Runner:new(it, "tests/indent", {
 
 describe("indent JavaScript:", function()
   describe("whole file:", function()
-    run:whole_file({ "ecma/" }, {
+    ecma:whole_file {
       expected_failures = {},
-    })
+    }
   end)
 
   describe("new line:", function()
@@ -24,7 +24,7 @@ describe("indent JavaScript:", function()
         { 3, 4 },
       }
     do
-      run:new_line("ecma/binary_expression.js", { on_line = info[1], text = "//", indent = info[2] }, info[3], info[4])
+      ecma:new_line("binary_expression.js", { on_line = info[1], text = "//", indent = info[2] }, info[3], info[4])
     end
 
     for _, info in
@@ -33,7 +33,7 @@ describe("indent JavaScript:", function()
         { 6, 0 },
       }
     do
-      run:new_line("ecma/callback.js", { on_line = info[1], text = "//", indent = info[2] }, info[3], info[4])
+      ecma:new_line("callback.js", { on_line = info[1], text = "//", indent = info[2] }, info[3], info[4])
     end
 
     for _, info in
@@ -48,7 +48,7 @@ describe("indent JavaScript:", function()
         { 25, 2 },
       }
     do
-      run:new_line("ecma/func.js", { on_line = info[1], text = "//", indent = info[2] }, info[3], info[4])
+      ecma:new_line("func.js", { on_line = info[1], text = "//", indent = info[2] }, info[3], info[4])
     end
 
     for _, info in
@@ -64,7 +64,7 @@ describe("indent JavaScript:", function()
         { 13, 0 },
       }
     do
-      run:new_line("ecma/if_else.js", { on_line = info[1], text = "hello()", indent = info[2] }, info[3], info[4])
+      ecma:new_line("if_else.js", { on_line = info[1], text = "hello()", indent = info[2] }, info[3], info[4])
     end
 
     for _, info in
@@ -73,7 +73,7 @@ describe("indent JavaScript:", function()
         { 5, 0 },
       }
     do
-      run:new_line("ecma/object.js", { on_line = info[1], text = "//", indent = info[2] }, info[3], info[4])
+      ecma:new_line("object.js", { on_line = info[1], text = "//", indent = info[2] }, info[3], info[4])
     end
 
     for _, info in
@@ -82,7 +82,7 @@ describe("indent JavaScript:", function()
         { 4, 6 },
       }
     do
-      run:new_line("ecma/ternary.js", { on_line = info[1], text = "//", indent = info[2] }, info[3], info[4])
+      ecma:new_line("ternary.js", { on_line = info[1], text = "//", indent = info[2] }, info[3], info[4])
     end
 
     for _, info in
@@ -96,7 +96,7 @@ describe("indent JavaScript:", function()
         { 7, 0 },
       }
     do
-      run:new_line("ecma/try_catch.js", { on_line = info[1], text = "hello()", indent = info[2] }, info[3], info[4])
+      ecma:new_line("try_catch.js", { on_line = info[1], text = "hello()", indent = info[2] }, info[3], info[4])
     end
 
     for _, info in
@@ -105,7 +105,7 @@ describe("indent JavaScript:", function()
         { 2, 0 },
       }
     do
-      run:new_line("ecma/variable.js", { on_line = info[1], text = "hello()", indent = info[2] }, info[3], info[4])
+      ecma:new_line("variable.js", { on_line = info[1], text = "hello()", indent = info[2] }, info[3], info[4])
     end
   end)
 end)

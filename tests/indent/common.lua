@@ -158,32 +158,28 @@ Runner.__index = Runner
 
 -- Helper to avoid boilerplate when defining tests
 -- @param it  the "it" function that busted defines globally in spec files
--- @param base_dir  all other paths will be resolved relative to this directory
+-- @param lang  all other paths will be resolved relative to `tests/indent/<lang>/examples` directory
 -- @param buf_opts  buffer options passed to set_buf_indent_opts
-function Runner:new(it, base_dir, buf_opts)
+function Runner:new(it, lang, buf_opts)
   local runner = {}
   runner.it = it
-  runner.base_dir = Path:new(base_dir)
+  runner.lang = lang
+  runner.base_dir = Path:new("tests/indent/" .. lang .. "/examples")
+  assert.is.same(1, vim.fn.isdirectory(runner.base_dir.filename))
   runner.buf_opts = buf_opts
   return setmetatable(runner, self)
 end
 
-function Runner:whole_file(dirs, opts)
+function Runner:whole_file(opts)
   opts = opts or {}
   local expected_failures = opts.expected_failures or {}
   expected_failures = vim.tbl_map(function(f)
     return Path:new(f):make_relative(self.base_dir.filename)
   end, expected_failures)
-  dirs = type(dirs) == "table" and dirs or { dirs }
-  dirs = vim.tbl_map(function(dir)
-    dir = self.base_dir / Path:new(dir)
-    assert.is.same(1, vim.fn.isdirectory(dir.filename))
-    return dir.filename
-  end, dirs)
-  local files = vim.tbl_flatten(vim.tbl_map(scan_dir, dirs))
+  local files = scan_dir(self.base_dir.filename)
   for _, file in ipairs(files) do
     local relpath = Path:new(file):make_relative(self.base_dir.filename)
-    self.it(relpath, function()
+    self.it(string.format("%s:%s", self.lang, relpath), function()
       M.indent_whole_file(file, self.buf_opts, vim.tbl_contains(expected_failures, relpath))
     end)
   end
@@ -191,7 +187,7 @@ end
 
 function Runner:new_line(file, spec, title, xfail)
   title = title and title or tostring(spec.on_line)
-  self.it(string.format("%s[%s]", file, title), function()
+  self.it(string.format("%s:%s[%s]", self.lang, file, title), function()
     local path = self.base_dir / file
     M.indent_new_line(path.filename, spec, self.buf_opts, xfail)
   end)

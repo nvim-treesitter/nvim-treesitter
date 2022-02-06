@@ -1,7 +1,7 @@
 local Runner = require("tests.indent.common").Runner
 local XFAIL = require("tests.indent.common").XFAIL
 
-local runner = Runner:new(it, "tests/indent/c", {
+local runner = Runner:new(it, "c", {
   tabstop = 4,
   shiftwidth = 4,
   softtabstop = 0,
@@ -10,12 +10,12 @@ local runner = Runner:new(it, "tests/indent/c", {
 
 describe("indent C:", function()
   describe("whole file:", function()
-    runner:whole_file(".", {
+    runner:whole_file {
       expected_failures = {
-        "./preproc_func.c",
-        "./unfinished_comment.c",
+        "preproc_func.c",
+        "unfinished_comment.c",
       },
-    })
+    }
   end)
 
   describe("new line:", function()

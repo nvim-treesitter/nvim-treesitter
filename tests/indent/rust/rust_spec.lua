@@ -1,6 +1,6 @@
 local Runner = require("tests.indent.common").Runner
 
-local run = Runner:new(it, "tests/indent/rust", {
+local run = Runner:new(it, "rust", {
   tabstop = 4,
   shiftwidth = 4,
   softtabstop = 0,
@@ -9,7 +9,7 @@ local run = Runner:new(it, "tests/indent/rust", {
 
 describe("indent Rust:", function()
   describe("whole file:", function()
-    run:whole_file "."
+    run:whole_file {}
   end)
 
   describe("new line:", function()
