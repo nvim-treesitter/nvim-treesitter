@@ -5,7 +5,6 @@ local tsutils = require "nvim-treesitter.ts_utils"
 local M = {}
 
 M.avoid_force_reparsing = {
-  python = true,
   yaml = true,
 }
 
