@@ -71,8 +71,8 @@ end
 -- @param bufnr buffer number, defaults to current buffer
 -- @param lang language, defaults to current language
 local function enable_module(mod, bufnr, lang)
-  local bufnr = bufnr or api.nvim_get_current_buf()
-  local lang = lang or parsers.get_buf_lang(bufnr)
+  bufnr = bufnr or api.nvim_get_current_buf()
+  lang = lang or parsers.get_buf_lang(bufnr)
   M.attach_module(mod, bufnr, lang)
 end
 
@@ -112,7 +112,7 @@ end
 -- @param mod path to module
 -- @param bufnr buffer number, defaults to current buffer
 local function disable_module(mod, bufnr)
-  local bufnr = bufnr or api.nvim_get_current_buf()
+  bufnr = bufnr or api.nvim_get_current_buf()
   M.detach_module(mod, bufnr)
 end
 
@@ -152,8 +152,8 @@ end
 -- @param bufnr buffer number, defaults to current buffer
 -- @param lang language, defaults to current language
 local function toggle_module(mod, bufnr, lang)
-  local bufnr = bufnr or api.nvim_get_current_buf()
-  local lang = lang or parsers.get_buf_lang(bufnr)
+  bufnr = bufnr or api.nvim_get_current_buf()
+  lang = lang or parsers.get_buf_lang(bufnr)
 
   if attached_buffers_by_module.has(mod, bufnr) then
     disable_module(mod, bufnr)
@@ -182,7 +182,7 @@ end
 -- @param root root configuration table to start at
 -- @param path prefix path
 local function recurse_modules(accumulator, root, path)
-  local root = root or config.modules
+  root = root or config.modules
 
   for name, module in pairs(root) do
     local new_path = path and (path .. "." .. name) or name
@@ -449,8 +449,8 @@ end
 -- @param bufnr the bufnr
 -- @param lang the language of the buffer
 function M.attach_module(mod_name, bufnr, lang)
-  local bufnr = bufnr or api.nvim_get_current_buf()
-  local lang = lang or parsers.get_buf_lang(bufnr)
+  bufnr = bufnr or api.nvim_get_current_buf()
+  lang = lang or parsers.get_buf_lang(bufnr)
   local resolved_mod = resolve_module(mod_name)
 
   if resolved_mod and not attached_buffers_by_module.has(mod_name, bufnr) and M.is_enabled(mod_name, lang, bufnr) then
@@ -464,7 +464,7 @@ end
 -- @param bufnr the bufnr
 function M.detach_module(mod_name, bufnr)
   local resolved_mod = resolve_module(mod_name)
-  local bufnr = bufnr or api.nvim_get_current_buf()
+  bufnr = bufnr or api.nvim_get_current_buf()
 
   if resolved_mod and attached_buffers_by_module.has(mod_name, bufnr) then
     attached_buffers_by_module.remove(mod_name, bufnr)
