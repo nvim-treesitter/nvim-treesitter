@@ -1,5 +1,3 @@
-sudo apt-get update
-sudo add-apt-repository universe
 wget -O - https://github.com/tree-sitter/tree-sitter/releases/download/${TREE_SITTER_CLI_TAG}/tree-sitter-linux-x64.gz | gunzip -c > tree-sitter
 sudo cp ./tree-sitter /usr/bin/tree-sitter
 sudo chmod uog+rwx /usr/bin/tree-sitter
