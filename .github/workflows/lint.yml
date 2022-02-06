@@ -15,7 +15,7 @@ jobs:
       - name: Prepare
         run: |
           sudo apt-get update
-          sudo apt install luarocks -y
+          sudo apt-get install luarocks -y
           sudo luarocks install luacheck
 
       - name: Run Luacheck
