@@ -552,3 +552,18 @@ or you can configure git via `.gitconfig` and use git instead of curl
 ```lua
 require("nvim-treesitter.install").prefer_git = true
 ```
+
+#### I want to use a mirror instead of "https://github.com/"
+
+In your Lua config:
+
+```lua
+for _, config in pairs(require("nvim-treesitter.parsers").get_parser_configs()) do
+  config.install_info.url = config.install_info.url:gsub("https://github.com/", "something else")
+end
+
+require'nvim-treesitter.configs'.setup {
+    --
+    --
+}
+```
