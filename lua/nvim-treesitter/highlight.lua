@@ -103,30 +103,48 @@ hlmap["type.builtin"] = "TSTypeBuiltin"
 hlmap["variable"] = "TSVariable"
 hlmap["variable.builtin"] = "TSVariableBuiltin"
 
-function M.attach(bufnr, lang)
+local function should_enable_vim_regex(config, lang)
+  local additional_hl = config.additional_vim_regex_highlighting
+  local is_table = type(additional_hl) == "table"
+
+  return additional_hl and (not is_table or vim.tbl_contains(additional_hl, lang))
+end
+
+local function enable_syntax(bufnr)
+  api.nvim_buf_set_option(bufnr, "syntax", "ON")
+end
+
+function M.get_config()
+  return configs.get_module "highlight"
+end
+
+function M.stop(bufnr)
+  if ts.highlighter.active[bufnr] then
+    ts.highlighter.active[bufnr]:destroy()
+  end
+end
+
+function M.start(bufnr, lang)
   local parser = parsers.get_parser(bufnr, lang)
-  local config = configs.get_module "highlight"
+  local config = M.get_config()
 
   for k, v in pairs(config.custom_captures) do
     hlmap[k] = v
   end
 
   ts.highlighter.new(parser, {})
+end
 
-  local is_table = type(config.additional_vim_regex_highlighting) == "table"
-  if
-    config.additional_vim_regex_highlighting
-    and (not is_table or vim.tbl_contains(config.additional_vim_regex_highlighting, lang))
-  then
-    api.nvim_buf_set_option(bufnr, "syntax", "ON")
+function M.attach(bufnr, lang)
+  M.start(bufnr, lang)
+  if should_enable_vim_regex(M.get_config(), lang) then
+    enable_syntax(bufnr)
   end
 end
 
 function M.detach(bufnr)
-  if ts.highlighter.active[bufnr] then
-    ts.highlighter.active[bufnr]:destroy()
-  end
-  api.nvim_buf_set_option(bufnr, "syntax", "ON")
+  M.stop(bufnr)
+  enable_syntax(bufnr)
 end
 
 return M
