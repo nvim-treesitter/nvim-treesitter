@@ -15,6 +15,8 @@
 
 [
   "end"
+  ")"
+  "}"
 ] @indent_end
 
 (return_statement
