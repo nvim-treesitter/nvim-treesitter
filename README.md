@@ -361,10 +361,11 @@ EOF
 ```
 
 If you wish to set a specific parser for a filetype, you should extend the `filetype_to_parsername` table:
+
 ```vim
 lua <<EOF
-local ft_to_parser = require"nvim-treesitter.parser".filetype_to_parsername
-filetype_to_parsername.someft = "python" -- the someft filetype will use the python parser and queries.
+local ft_to_parser = require"nvim-treesitter.parsers".filetype_to_parsername
+ft_to_parser.someft = "python" -- the someft filetype will use the python parser and queries.
 EOF
 ```
 
@@ -381,19 +382,6 @@ See [Neovim's documentation](https://neovim.io/doc/user/filetype.html#new-filety
 
 If you use a git repository for your parser and want to use a specific version, you can set the `revision` key
 in the `install_info` table for you parser config.
-
-## Update parsers used_by
-
-Sometimes needs to use some parser for different filetype.
-
-Add the following snippet to your `init.vim`:
-
-```vim
-lua <<EOF
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.typescript.used_by = "javascriptflow"
-EOF
-```
 
 ## Adding queries
 
