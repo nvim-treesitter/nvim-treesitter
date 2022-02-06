@@ -355,9 +355,16 @@ parser_config.zimbu = {
     generate_requires_npm = false, -- if stand-alone parser without npm dependencies
     requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
   },
-  filetype = "zu", -- if filetype does not agrees with parser name
-  used_by = {"bar", "baz"} -- additional filetypes that use this parser
+  filetype = "zu", -- if filetype does not match the parser name
 }
+EOF
+```
+
+If you wish to set a specific parser for a filetype, you should extend the `filetype_to_parsername` table:
+```vim
+lua <<EOF
+local ft_to_parser = require"nvim-treesitter.parser".filetype_to_parsername
+filetype_to_parsername.someft = "python" -- the someft filetype will use the python parser and queries.
 EOF
 ```
 

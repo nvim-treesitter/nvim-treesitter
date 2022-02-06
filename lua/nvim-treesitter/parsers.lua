@@ -1,16 +1,21 @@
 local api = vim.api
 local ts = vim.treesitter
 
-local ft_to_parsername = {}
-
-local function update_ft_to_parsername(name, parser)
-  if type(parser.used_by) == "table" then
-    for _, ft in pairs(parser.used_by) do
-      ft_to_parsername[ft] = name
-    end
-  end
-  ft_to_parsername[parser.filetype or name] = name
-end
+local filetype_to_parsername = {
+  arduino = "cpp",
+  javascriptreact = "javascript",
+  ecma = "javascript",
+  jsx = "javascript",
+  PKGBUILD = "bash",
+  html_tags = "html",
+  ["typescript.tsx"] = "tsx",
+  terraform = "hcl",
+  ["html.handlebars"] = "glimmer",
+  systemverilog = "verilog",
+  cls = "latex",
+  sty = "latex",
+  OpenFOAM = "foam",
+}
 
 local list = setmetatable({}, {
   __newindex = function(table, parsername, parserconfig)
@@ -20,7 +25,11 @@ local list = setmetatable({}, {
       setmetatable(parserconfig, {
         __newindex = function(parserconfigtable, key, value)
           if key == "used_by" then
-            ft_to_parsername[value] = parsername
+            require("nvim-treesitter.utils").notify(
+              "used_by is deprecated, please use 'filetype_to_parsername'",
+              vim.log.levels.WARN
+            )
+            filetype_to_parsername[value] = parsername
           else
             rawset(parserconfigtable, key, value)
           end
@@ -28,7 +37,7 @@ local list = setmetatable({}, {
       })
     )
 
-    update_ft_to_parsername(parsername, parserconfig)
+    filetype_to_parsername[parserconfig.filetype or parsername] = parsername
   end,
 })
 
@@ -37,7 +46,6 @@ list.javascript = {
     url = "https://github.com/tree-sitter/tree-sitter-javascript",
     files = { "src/parser.c", "src/scanner.c" },
   },
-  used_by = { "javascriptreact", "ecma", "jsx" },
   maintainers = { "@steelsojka" },
 }
 
@@ -73,7 +81,6 @@ list.cpp = {
     files = { "src/parser.c", "src/scanner.cc" },
     generate_requires_npm = true,
   },
-  used_by = { "arduino" },
   maintainers = { "@theHamsta" },
 }
 
@@ -224,7 +231,6 @@ list.bash = {
     url = "https://github.com/tree-sitter/tree-sitter-bash",
     files = { "src/parser.c", "src/scanner.cc" },
   },
-  used_by = { "PKGBUILD" },
   filetype = "sh",
   maintainers = { "@TravonteD" },
 }
@@ -267,7 +273,6 @@ list.html = {
     url = "https://github.com/tree-sitter/tree-sitter-html",
     files = { "src/parser.c", "src/scanner.cc" },
   },
-  used_by = { "html_tags" },
   maintainers = { "@TravonteD" },
 }
 
@@ -414,7 +419,6 @@ list.tsx = {
     location = "tree-sitter-tsx/tsx",
     generate_requires_npm = true,
   },
-  used_by = { "typescript.tsx" },
   filetype = "typescriptreact",
   maintainers = { "@steelsojka" },
 }
@@ -452,7 +456,6 @@ list.hcl = {
   },
   maintainers = { "@MichaHoffmann" },
   filetype = "hcl",
-  used_by = { "terraform" },
 }
 
 list.markdown = {
@@ -491,7 +494,6 @@ list.glimmer = {
   readme_name = "Glimmer and Ember",
   maintainers = { "@alexlafroscia" },
   filetype = "handlebars",
-  used_by = { "html.handlebars" },
 }
 
 list.pug = {
@@ -609,7 +611,6 @@ list.verilog = {
     files = { "src/parser.c" },
     generate_requires_npm = true,
   },
-  used_by = { "systemverilog" },
   maintainers = { "@zegervdv" },
   -- The parser still uses API version 12, because it does not compile with 13
   experimental = true,
@@ -750,7 +751,6 @@ list.latex = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   filetype = "tex",
-  used_by = { "cls", "sty" },
   maintainers = { "@theHamsta, @clason" },
 }
 
@@ -887,7 +887,6 @@ list.foam = {
   },
   maintainers = { "@FoamScience" },
   filetype = "foam",
-  used_by = { "OpenFOAM" },
   -- Queries might change over time on the grammar's side
   -- Otherwise everything runs fine
   experimental = true,
@@ -923,15 +922,16 @@ list.vala = {
 
 local M = {
   list = list,
+  filetype_to_parsername = filetype_to_parsername,
 }
 
 function M.ft_to_lang(ft)
-  local result = ft_to_parsername[ft]
+  local result = filetype_to_parsername[ft]
   if result then
     return result
   else
     ft = vim.split(ft, ".", true)[1]
-    return ft_to_parsername[ft] or ft
+    return filetype_to_parsername[ft] or ft
   end
 end
 
@@ -972,7 +972,7 @@ end
 M.reset_cache()
 
 function M.has_parser(lang)
-  local lang = lang or M.get_buf_lang(api.nvim_get_current_buf())
+  lang = lang or M.get_buf_lang(api.nvim_get_current_buf())
 
   if not lang or #lang == 0 then
     return false
@@ -985,8 +985,8 @@ function M.has_parser(lang)
 end
 
 function M.get_parser(bufnr, lang)
-  local buf = bufnr or api.nvim_get_current_buf()
-  local lang = lang or M.get_buf_lang(buf)
+  bufnr = bufnr or api.nvim_get_current_buf()
+  lang = lang or M.get_buf_lang(bufnr)
 
   if M.has_parser(lang) then
     return ts.get_parser(bufnr, lang)
@@ -996,8 +996,7 @@ end
 -- @deprecated This is only kept for legacy purposes.
 --             All root nodes should be accounted for.
 function M.get_tree_root(bufnr)
-  local bufnr = bufnr or api.nvim_get_current_buf()
-
+  bufnr = bufnr or api.nvim_get_current_buf()
   return M.get_parser(bufnr):parse()[1]:root()
 end
 
