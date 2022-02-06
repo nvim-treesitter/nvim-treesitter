@@ -1,4 +1,4 @@
-name: Make Parser Update PR
+name: Update lockfile
 
 on:
   schedule:
@@ -8,8 +8,8 @@ on:
       - master
 
 jobs:
-  update-parsers:
-    name: Update parsers
+  update-lockfile:
+    name: Update lockfile
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
