@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  check_compilation_unix_like:
+  check_compilation:
     strategy:
       fail-fast: false
       matrix:

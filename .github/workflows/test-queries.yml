@@ -1,4 +1,4 @@
-name: Parser compilation and query file check
+name: Test queries
 
 on:
   push:
@@ -19,7 +19,7 @@ defaults:
     shell: bash
 
 jobs:
-  check_compilation_unix_like:
+  check_compilation:
     strategy:
       fail-fast: false
       matrix:
