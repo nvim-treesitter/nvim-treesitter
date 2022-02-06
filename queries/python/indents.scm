@@ -26,7 +26,6 @@
 
   (concatenated_string)
 ] @indent
-
   
 (if_statement
   condition: (parenthesized_expression) @aligned_indent
