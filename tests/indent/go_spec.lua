@@ -8,7 +8,7 @@ local run = Runner:new(it, "tests/indent/go", {
   expandtab = false,
 })
 
-describe("indent Python:", function()
+describe("indent Go:", function()
   describe("whole file:", function()
     run:whole_file(".", {
       expected_failures = {},

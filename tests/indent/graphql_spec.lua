@@ -8,7 +8,7 @@ local run = Runner:new(it, "tests/indent/graphql", {
   expandtab = true,
 })
 
-describe("indent Lua:", function()
+describe("indent GraphQL:", function()
   describe("whole file:", function()
     run:whole_file(".", {
       expected_failures = {},
