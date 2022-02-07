@@ -9,6 +9,7 @@
   (triple_string)
   (string)
 ] @string
+(command_string) @string.special
 
 (string
   prefix: (identifier) @constant.builtin)
@@ -83,6 +84,8 @@
 (typed_expression
   (parameterized_identifier) @type .)
 
+(abstract_definition
+  name: (identifier) @type)
 (struct_definition
   name: (identifier) @type)
 
@@ -129,10 +132,11 @@
 ] @comment
 
 [
+  "abstract"
   "const"
   "macro"
-  "struct"
   "primitive"
+  "struct"
   "type"
 ] @keyword
 
@@ -168,11 +172,11 @@
 (export_statement
   ["export"] @include)
 
-[
-  "using"
-  "module"
-  "import"
-] @include
+(import_statement
+  ["import" "using"] @include)
+
+(module_definition
+  ["module" "end"] @include)
 
 ((identifier) @include (#eq? @include "baremodule"))
 
@@ -180,5 +184,7 @@
 (((identifier) @boolean) (#eq? @boolean "true"))
 (((identifier) @boolean) (#eq? @boolean "false"))
 
-["::" ":" "." "," "..." "!"] @punctuation.delimiter
+(range_expression ":" @operator)
+(quote_expression ":" @symbol)
+["::" "." "," "..." "!"] @punctuation.delimiter
 ["[" "]" "(" ")" "{" "}"] @punctuation.bracket
