@@ -109,7 +109,7 @@
   (identifier) @definition.var)
 
 (as_pattern 
-  alias: (identifier) @definition.var)
+  alias: (as_pattern_target) @definition.var)
 
 ;;; REFERENCES
 (identifier) @reference
