@@ -58,6 +58,7 @@
   "setlocal"
   "silent"
   "echo"
+  "echomsg"
   "autocmd"
   "augroup"
   "return"
@@ -69,6 +70,12 @@
   "highlight"
   "delcommand"
   "comclear"
+  "colorscheme"
+  "startinsert"
+  "stopinsert"
+  "global"
+  "runtime"
+  "wincmd"
 ] @keyword
 (map_statement cmd: _ @keyword)
 (command_name) @function.macro
@@ -120,13 +127,23 @@
   "clear"
 ] @keyword)
 
+;; Runtime command
+
+(runtime_statement (where) @keyword.operator)
+
+;; Colorscheme command
+
+(colorscheme_statement (name) @string)
+
 ;; Literals
 
 (string_literal) @string
 (integer_literal) @number
 (float_literal) @float
 (comment) @comment
-(pattern) @string.special
+(pattern
+  (pattern_multi) @string.regex) @string.special
+(filename) @string
 ((scoped_identifier
   (scope) @_scope . (identifier) @boolean)
  (#eq? @_scope "v:")
