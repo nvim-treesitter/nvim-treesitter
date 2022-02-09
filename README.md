@@ -100,8 +100,7 @@ Each module provides a distinct tree-sitter-based feature such as [highlighting]
 
 All modules are disabled by default and need to be activated explicitly in your `init.vim`, e.g., via
 
-```vim
-lua <<EOF
+```lua
 require'nvim-treesitter.configs'.setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
   ensure_installed = "maintained",
@@ -126,7 +125,6 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
-EOF
 ```
 
 Each module can also be enabled or disabled interactively through the following commands:
@@ -268,8 +266,7 @@ Additional modules can be provided as [external plugins](https://github.com/nvim
 
 Consistent syntax highlighting.
 
-```vim
-lua <<EOF
+```lua
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
@@ -284,15 +281,13 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
-EOF
 ```
 
 #### Incremental selection
 
 Incremental selection based on the named nodes from the grammar.
 
-```vim
-lua <<EOF
+```lua
 require'nvim-treesitter.configs'.setup {
   incremental_selection = {
     enable = true,
@@ -304,7 +299,6 @@ require'nvim-treesitter.configs'.setup {
     },
   },
 }
-EOF
 ```
 
 #### Indentation
@@ -312,14 +306,12 @@ EOF
 Indentation based on treesitter for the `=` operator.
 **NOTE: This is an experimental feature**.
 
-```vim
-lua <<EOF
+```lua
 require'nvim-treesitter.configs'.setup {
   indent = {
     enable = true
   }
 }
-EOF
 ```
 
 #### Folding
@@ -343,8 +335,7 @@ If you have a parser that is not on the list of supported languages (either as a
 2. Run `tree-sitter generate` in this directory (followed by `tree-sitter test` for good measure).
 3. Add the following snippet to your `init.vim`:
 
-```vim
-lua <<EOF
+```lua
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.zimbu = {
   install_info = {
@@ -357,16 +348,13 @@ parser_config.zimbu = {
   },
   filetype = "zu", -- if filetype does not match the parser name
 }
-EOF
 ```
 
 If you wish to set a specific parser for a filetype, you should extend the `filetype_to_parsername` table:
 
-```vim
-lua <<EOF
+```lua
 local ft_to_parser = require"nvim-treesitter.parsers".filetype_to_parsername
 ft_to_parser.someft = "python" -- the someft filetype will use the python parser and queries.
-EOF
 ```
 
 4. Start `nvim` and `:TSInstall zimbu`.
@@ -398,10 +386,8 @@ but if you want to extend a query use the `after/queries/` directory.
 If you want to completely override a query, you can use `:h set_query()`.
 For example, to override the `injections` queries from `c` with your own:
 
-```vim
-lua <<EOF
+```lua
 require("vim.treesitter.query").set_query("c", "injections", "(comment) @comment")
-EOF
 ```
 
 Note: when using `set_query`, all queries in the runtime directories will be ignored.
@@ -416,8 +402,7 @@ If you wish you write your own module, you need to support
 
 At the top level, you can use the `define_modules` function to define one or more modules or module groups:
 
-```vim
-lua <<EOF
+```lua
 require'nvim-treesitter'.define_modules {
   my_cool_plugin = {
     attach = function(bufnr, lang)
@@ -431,7 +416,6 @@ require'nvim-treesitter'.define_modules {
     end
   }
 }
-EOF
 ```
 
 with the following properties:
