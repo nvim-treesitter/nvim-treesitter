@@ -38,7 +38,6 @@ By default, everything is disabled.
 To enable supported features, put this in your `init.vim` file:
 
 >
-  lua <<EOF
   require'nvim-treesitter.configs'.setup {
     -- One of "all", "maintained" (parsers with maintainers), or a list of languages
     ensure_installed = "maintained",
@@ -63,7 +62,6 @@ To enable supported features, put this in your `init.vim` file:
       additional_vim_regex_highlighting = false,
     },
   }
-  EOF
 <
 
 See |nvim-treesitter-modules| for a list of all available modules and its options.
@@ -80,14 +78,12 @@ Each module corresponds to an entry in the dictionary passed to the
 `nvim-treesitter.configs.setup` function, this should be in your `init.vim` file.
 
 >
-  lua <<EOF
   require'nvim-treesitter.configs'.setup {
     -- Modules and its options go here
     highlight = { enable = true },
     incremental_selection = { enable = true },
     textobjects = { enable = true },
   }
-  EOF
 <
 
 All modules share some common options, like `enable` and `disable`.
@@ -95,14 +91,12 @@ When `enable` is `true` this will enable the module for all supported languages,
 if you want to disable the module for some languages you can pass a list to the `disable` option.
 
 >
-  lua <<EOF
   require'nvim-treesitter.configs'.setup {
     highlight = {
       enable = true,
       disable = { "cpp", "lua" },
     },
   }
-  EOF
 <
 
 For more fine-grained control, `disable` can also take a function and
@@ -111,7 +105,6 @@ The function is called once when a module starts in a buffer and receives the
 language and buffer number as arguments:
 
 >
-  lua <<EOF
   require'nvim-treesitter.configs'.setup {
     highlight = {
       enable = true,
@@ -120,7 +113,6 @@ language and buffer number as arguments:
       end,
     },
   }
-  EOF
 <
 
 Options that define or accept a keymap use the same format you use to define
@@ -150,7 +142,6 @@ Supported options:
   Defaults to `false`.
 
 >
-  lua <<EOF
   require'nvim-treesitter.configs'.setup {
     highlight = {
       enable = true,
@@ -162,7 +153,6 @@ Supported options:
       additional_vim_regex_highlighting = false,
     },
   }
-  EOF
 <
 Note: The api is not stable yet.
 
@@ -186,7 +176,6 @@ Supported options:
     Defaults to `grm`.
 
 >
-  lua <<EOF
   require'nvim-treesitter.configs'.setup {
     incremental_selection = {
       enable = true,
@@ -198,7 +187,6 @@ Supported options:
       },
     },
   }
-  EOF
 <
 
 ------------------------------------------------------------------------------
@@ -212,13 +200,11 @@ Supported options:
 - enable: `true` or `false`.
 - disable: list of languages.
 >
-  lua <<EOF
   require'nvim-treesitter.configs'.setup {
     indent = {
       enable = true
     },
   }
-  EOF
 <
 ==============================================================================
 COMMANDS                                            *nvim-treesitter-commands*
