@@ -98,7 +98,7 @@ To make sure a parser is at the latest compatible version (as specified in `nvim
 
 Each module provides a distinct tree-sitter-based feature such as [highlighting](#highlight), [indentation](#indentation), or [folding](#folding); see [`:h nvim-treesitter-modules`](doc/nvim-treesitter.txt) or ["Available modules"](#available-modules) below for a list of modules and their options.
 
-All modules are disabled by default and need to be activated explicitly in your `init.vim`, e.g., via
+All modules are disabled by default and need to be activated explicitly in your `init.lua`, e.g., via
 
 ```lua
 require'nvim-treesitter.configs'.setup {
@@ -258,7 +258,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 # Available modules
 
 Modules provide the top-level features of `nvim-treesitter`.
-The following is a list of modules included in `nvim-treesitter` and their configuration via `init.vim` (where multiple modules can be combined in a single call to `setup`).
+The following is a list of modules included in `nvim-treesitter` and their configuration via `init.lua` (where multiple modules can be combined in a single call to `setup`).
 Note that not all modules work for all languages (depending on the queries available for them).
 Additional modules can be provided as [external plugins](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Extra-modules-and-plugins).
 
@@ -333,7 +333,7 @@ If you have a parser that is not on the list of supported languages (either as a
 
 1. Clone the repository or [create a new project](https://tree-sitter.github.io/tree-sitter/creating-parsers#project-setup) in, say, `~/projects/tree-sitter-zimbu`. Make sure that the `tree-sitter-cli` executable is installed and in your path; see <https://tree-sitter.github.io/tree-sitter/creating-parsers#installation> for installation instructions.
 2. Run `tree-sitter generate` in this directory (followed by `tree-sitter test` for good measure).
-3. Add the following snippet to your `init.vim`:
+3. Add the following snippet to your `init.lua`:
 
 ```lua
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
