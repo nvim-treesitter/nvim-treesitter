@@ -35,7 +35,7 @@ To get a list of supported languages
 <
 
 By default, everything is disabled.
-To enable supported features, put this in your `init.vim` file:
+To enable supported features, put this in your `init.lua` file:
 
 >
   require'nvim-treesitter.configs'.setup {
@@ -75,7 +75,7 @@ you can add your own queries too, see |nvim-treesitter-query-extensions|.
 
 All modules are disabled by default, and some provide default keymaps.
 Each module corresponds to an entry in the dictionary passed to the
-`nvim-treesitter.configs.setup` function, this should be in your `init.vim` file.
+`nvim-treesitter.configs.setup` function, this should be in your `init.lua` file.
 
 >
   require'nvim-treesitter.configs'.setup {
