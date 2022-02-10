@@ -308,6 +308,14 @@ list.scss = {
   maintainers = { "@elianiva" },
 }
 
+list.sql = {
+  install_info = {
+    url = "https://github.com/m-novikov/tree-sitter-sql",
+    files = { "src/parser.c" }
+  },
+  maintainers = { "@m-novikov" }
+}
+
 list.erlang = {
   install_info = {
     url = "https://github.com/AbstractMachinesLab/tree-sitter-erlang",
