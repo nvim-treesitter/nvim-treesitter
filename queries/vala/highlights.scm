@@ -28,13 +28,10 @@
   "}"
   "("
   ")"
-  "["
-  "]"
 ] @punctuation.bracket
 
 [
   ";"
-  ":"
   "."
   ","
   "->"
@@ -74,6 +71,10 @@
   "owned"
   "throws"
   "delete"
+  "#if"
+  "#elif"
+  (preproc_else)
+  (preproc_endif)
 ] @keyword
 
 "throw" @exception
@@ -128,7 +129,6 @@
     "&="
     "^="
     "??"
-    "="
   ] @operator    
 )
 
@@ -206,7 +206,7 @@
 )
 
 (class_constructor_definition
-  [
+  name: [
     (_)
     (namespaced_identifier (_) @constructor .)
   ] @constructor
@@ -229,6 +229,7 @@
 ; Strings and escape sequences
 
 (string_literal) @string
+(verbatim) @string
 (escape_sequence) @string.escape
 
 (string_template
