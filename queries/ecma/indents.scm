@@ -49,3 +49,5 @@
   (comment)
   (template_string)
 ] @ignore
+
+(ERROR) @auto

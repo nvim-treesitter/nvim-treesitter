@@ -107,5 +107,9 @@ describe("indent JavaScript:", function()
     do
       run:new_line("ecma/variable.js", { on_line = info[1], text = "hello()", indent = info[2] }, info[3], info[4])
     end
+
+    for _, line in ipairs { 2, 6 } do
+      run:new_line("ecma/issue-2515.js", { on_line = line, text = "{}", indent = 4 })
+    end
   end)
 end)
