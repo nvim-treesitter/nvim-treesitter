@@ -98,6 +98,7 @@ To make sure a parser is at the latest compatible version (as specified in `nvim
 
 Each module provides a distinct tree-sitter-based feature such as [highlighting](#highlight), [indentation](#indentation), or [folding](#folding); see [`:h nvim-treesitter-modules`](doc/nvim-treesitter.txt) or ["Available modules"](#available-modules) below for a list of modules and their options.
 
+Following examples assume that you are configuring neovim with lua. If you are using vimscript, see `:help lua-heredoc`.
 All modules are disabled by default and need to be activated explicitly in your `init.lua`, e.g., via
 
 ```lua
