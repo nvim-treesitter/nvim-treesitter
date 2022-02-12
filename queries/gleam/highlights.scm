@@ -97,9 +97,9 @@
 
 ; Modules & Imports
 (module ("/" @namespace)?) @namespace
-(remote_type_identifier module: (identifier) @namespace)
 (import alias: ((identifier) @namespace)?)
-
+(remote_type_identifier module: (identifier) @namespace)
+(unqualified_import name: (identifier) @function)
 
 ; Identifiers
 (identifier) @variable
@@ -107,14 +107,14 @@
 ; Strings
 (string) @string
 
-; TODO Escape Sequences
-
-; TODO: Bit Strings
+; Bit Strings
+(bit_string_segment) @string.special
 
 ; Numbers
 [
   (integer) 
   (float) 
+  (bit_string_segment_option_unit)
 ] @number
 
 ; Function Parameter Labels
@@ -142,16 +142,10 @@
 (tuple_access index: (integer) @operator)
 
 ; Functions
-(public_function name: (identifier) @function)
-
 (function name: (identifier) @function)
-
+(public_function name: (identifier) @function)
 (function_call function: (identifier) @function)
-
 (function_call function: (field_access record: (identifier) @namespace field: (label) @function))
-
-; Unqualified Imports
-(unqualified_import name: (identifier) @function)
 
 ; External Functions
 (public_external_function name: (identifier) @function)
@@ -162,6 +156,3 @@
 
 ; Parser Errors
 (ERROR) @error
-
-; TODO does nvim-treesitter support #is-not? local matches for highlights?
-; see https://github.com/tree-sitter/tree-sitter/pull/448 for documentation
