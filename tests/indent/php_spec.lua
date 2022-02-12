@@ -20,5 +20,6 @@ describe("indent PHP:", function()
       "example2.php",
       { on_line = 5, text = "indendation with `enter` in insert mode is not correct", indent = 4 }
     )
+    run:new_line("issue-2497.php", { on_line = 5, text = "$a =", indent = 4 })
   end)
 end)

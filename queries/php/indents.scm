@@ -4,6 +4,8 @@
   (declaration_list)
   (binary_expression)
   (return_statement)
+  (arguments)
+  (formal_parameters)
 ] @indent
 
 [
@@ -17,8 +19,3 @@
 ] @ignore
 
 (compound_statement "}" @indent_end)
-([
-  (arguments)
-  (formal_parameters)
-] @aligned_indent
-  (#set! "delimiter" "()"))
