@@ -149,6 +149,9 @@
   "kotlin": {
     "revision": "a4f71eb9b8c9b19ded3e0e9470be4b1b77c2b569"
   },
+  "lalrpop": {
+    "revision": "f50b43b5c37eb1029cdcc1d05104aa797ced4c72"
+  },
   "latex": {
     "revision": "323b609de40b7729073482a3c59de76cfba7744f"
   },
@@ -189,7 +192,7 @@
     "revision": "2fd40f477d3e2794af152618ccfac8d92eb72a66"
   },
   "perl": {
-    "revision": "38e982ce5b205d01a6e9f9a22182c3b2a647685b"
+    "revision": "9f483476142e5e136673b7ff887fc1cd85a9bcc5"
   },
   "php": {
     "revision": "0ce134234214427b6aeb2735e93a307881c6cd6f"
