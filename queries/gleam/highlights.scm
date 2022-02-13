@@ -82,6 +82,9 @@
   "||"
 ] @operator
 
+; Identifiers
+(identifier) @variable
+
 ; Comments
 [
   (module_comment)
@@ -100,9 +103,6 @@
 (import alias: ((identifier) @namespace)?)
 (remote_type_identifier module: (identifier) @namespace)
 (unqualified_import name: (identifier) @function)
-
-; Identifiers
-(identifier) @variable
 
 ; Strings
 (string) @string
@@ -125,9 +125,13 @@
 (record arguments: (arguments (argument label: (label) @property ":" @property)?))
 (record_pattern_argument  label: (label) @property ":" @property)
 (record_update_argument label: (label) @property ":" @property)
+(field_access record: (identifier) @variable field: (label) @property)
 
 ; Type Constructors
 (type_constructor_argument label: (label) @property ":" @property)
+
+; Type Parameters
+(type_parameter) @parameter
 
 ; Types
 ((type_identifier) @type (#not-any-of? @type "True" "False"))
@@ -145,10 +149,11 @@
 (function name: (identifier) @function)
 (public_function name: (identifier) @function)
 (function_call function: (identifier) @function)
-(function_call function: (field_access record: (identifier) @namespace field: (label) @function))
+(function_call function: (field_access field: (label) @function))
 
 ; External Functions
 (public_external_function name: (identifier) @function)
+(external_function name: (identifier) @function)
 (external_function_body (string) @namespace . (string) @function)
 
 ; Pipe Operator
