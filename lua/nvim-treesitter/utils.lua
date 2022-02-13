@@ -17,7 +17,7 @@ end
 ---
 ---@param mod string, Name of the module that resides in the heirarchy - nvim-treesitter.module
 ---@param commands table, Command list for the module
----         _ {command_name} Name of the vim user defined command, Keys:
+---         - {command_name} Name of the vim user defined command, Keys:
 ---             - {run}: (function) callback function that needs to be executed
 ---             - {f_args}: (string, default <f-args>)
 ---                 - type of arguments that needs to be passed to the vim command
