@@ -10,6 +10,41 @@ function M.notify(msg, log_level, opts)
   vim.notify(msg, log_level, vim.tbl_extend("force", default_opts, opts or {}))
 end
 
+--- Define user defined vim command which calls nvim-treesitter module function
+---     - If module name is 'mod', it should be defined in hierarchy 'nvim-treesitter.mod'
+---     - A table with name 'commands' should be defined in 'mod' which needs to be passed as
+---       the commands param of this function
+---
+---@param mod string, Name of the module that resides in the heirarchy - nvim-treesitter.module
+---@param commands table, Command list for the module
+---         _ {command_name} Name of the vim user defined command, Keys:
+---             - {run}: (function) callback function that needs to be executed
+---             - {f_args}: (string, default <f-args>)
+---                 - type of arguments that needs to be passed to the vim command
+---             - {args}: (string, optional)
+---                 - vim command attributes
+---
+---Example:
+---  If module is nvim-treesitter.custom_mod
+---  <pre>
+---  M.commands = {
+---      custom_command = {
+---          run = M.module_function,
+---          f_args = "<f-args>",
+---          args = {
+---              "-range"
+---          }
+---      }
+---  }
+---
+---  utils.setup_commands("custom_mod", require("nvim-treesitter.custom_mod").commands)
+---  </pre>
+---
+---  Will generate command :
+---  <pre>
+---  command! -range custom_command \
+---      lua require'nvim-treesitter.custom_mod'.commands.custom_command['run<bang>'](<f-args>)
+---  </pre>
 function M.setup_commands(mod, commands)
   for command_name, def in pairs(commands) do
     local f_args = def.f_args or "<f-args>"
