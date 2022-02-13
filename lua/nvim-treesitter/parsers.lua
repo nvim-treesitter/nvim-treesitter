@@ -920,6 +920,15 @@ list.vala = {
   maintainers = { "@matbme" },
 }
 
+list.lalrpop = {
+  install_info = {
+    url = "https://github.com/traxys/tree-sitter-lalrpop",
+    branch = "master",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@traxys" },
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
