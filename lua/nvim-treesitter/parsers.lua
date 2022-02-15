@@ -323,7 +323,7 @@ list.elixir = {
     files = { "src/parser.c", "src/scanner.cc" },
     branch = "main",
   },
-  maintainers = { "@jonatanklosko" },
+  maintainers = { "@jonatanklosko", "@connorlay" },
 }
 
 list.gleam = {
@@ -332,7 +332,7 @@ list.gleam = {
     files = { "src/parser.c" },
     branch = "main",
   },
-  maintainers = { "@J3RN" },
+  maintainers = { "@connorlay" },
 }
 
 list.surface = {
