@@ -80,6 +80,9 @@
   "gdscript": {
     "revision": "2a6abdaa47fcb91397e09a97c7433fd995ea46c6"
   },
+  "gleam": {
+    "revision": "c4743d7776e419e04bfcd6dcc7633c8540d0a43c"
+  },
   "glimmer": {
     "revision": "ffc91bfd011fd7fac593c3c2f0661c1d21ace3f2"
   },
@@ -126,7 +129,7 @@
     "revision": "bfddd16b1cf78e0042fd1f6846a179f76a254e20"
   },
   "java": {
-    "revision": "a24ae7d16de3517bff243a87d087d0b4877a65c5"
+    "revision": "8a6ab8e8adb119bc35b133040077b60f6cf539ea"
   },
   "javascript": {
     "revision": "fdeb68ac8d2bd5a78b943528bb68ceda3aade2eb"
@@ -153,7 +156,7 @@
     "revision": "7744b56f03ac1e5643fad23c9dd90837fe97291e"
   },
   "latex": {
-    "revision": "323b609de40b7729073482a3c59de76cfba7744f"
+    "revision": "cd75e362a17c22ed90bcbdbaa78c2c7519ceb094"
   },
   "ledger": {
     "revision": "0cdeb0e51411a3ba5493662952c3039de08939ca"
