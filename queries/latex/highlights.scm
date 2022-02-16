@@ -2,6 +2,8 @@
 (ERROR) @error
 
 (command_name) @function
+(caption
+  command: _ @function)
 
 (key_value_pair
   key: (_) @parameter
@@ -72,22 +74,22 @@
  declaration: (_) @function)
 
 (theorem_definition
-  command: _ @function.macro
-  name: (curly_group_text (_) @text.environment.name))
+ command: _ @function.macro
+ name: (curly_group_text (_) @text.environment.name))
 
 (label_definition
  command: _ @function.macro
- name: (_) @text.reference)
+ name: (curly_group_text (_) @text.reference))
 (label_reference_range
  command: _ @function.macro
- from: (_) @text.reference
- to: (_) @text.reference)
+ from: (curly_group_text (_) @text.reference)
+ to: (curly_group_text (_) @text.reference))
 (label_reference
  command: _ @function.macro
- names: (_) @text.reference)
+ names: (curly_group_text_list (_) @text.reference))
 (label_number
  command: _ @function.macro
- name: (_) @text.reference
+ name: (curly_group_text (_) @text.reference)
  number: (_) @text.reference)
 
 (citation
@@ -95,25 +97,25 @@
  keys: (curly_group_text_list) @text.reference)
 
 (glossary_entry_definition
-  command: _ @function.macro
-  name: (_) @text.reference)
+ command: _ @function.macro
+ name: (curly_group_text (_) @text.reference))
 (glossary_entry_reference
-  command: _ @function.macro
-  name: (_) @text.reference)
+ command: _ @function.macro
+ name: (curly_group_text (_) @text.reference))
 
 (acronym_definition
-  command: _ @function.macro
-  name: (_) @text.reference)
+ command: _ @function.macro
+ name: (curly_group_text (_) @text.reference))
 (acronym_reference
-  command: _ @function.macro
-  name: (_) @text.reference)
+ command: _ @function.macro
+ name: (curly_group_text (_) @text.reference))
 
 (color_definition
-  command: _ @function.macro
-  name: (_) @text.reference)
+ command: _ @function.macro
+ name: (curly_group_text (_) @text.reference))
 (color_reference
-  command: _ @function.macro
-  name: (_) @text.reference)
+ command: _ @function.macro
+ name: (curly_group_text (_) @text.reference))
 
 ;; Math
 [
