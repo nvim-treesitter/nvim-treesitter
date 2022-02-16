@@ -142,8 +142,8 @@
 (integer_literal) @number
 (float_literal) @float
 (comment) @comment
-(pattern
-  (pattern_multi) @string.regex) @string.special
+(pattern) @string.special
+(pattern_multi) @string.regex
 (filename) @string
 ((scoped_identifier
   (scope) @_scope . (identifier) @boolean)
