@@ -22,13 +22,7 @@
 
 ; Ember Unified <template> syntax
 ; <template><Some Component /></template>
-(expression_statement
-  expression: ((call_expression
-    function: ((identifier) @_name
-      (#eq? @_name "template"))
-    arguments: ((template_string) @glimmer
-      (#offset! @glimmer 0 1 0 -1))))
-)
+(template_tag @glimmer)
 
 ; styled.div`<css>`
 (call_expression
