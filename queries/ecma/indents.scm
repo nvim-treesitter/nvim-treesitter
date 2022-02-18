@@ -47,9 +47,6 @@
 
 ["}" "]"] @indent_end
 
-[
-  (comment)
-  (template_string)
-] @ignore
-
 (ERROR) @auto
+(template_string) @ignore
+(comment) @auto
