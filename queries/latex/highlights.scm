@@ -249,5 +249,5 @@
   path: (curly_group_path) @string)
 (tikz_library_import
   command: _ @include
-  path: (curly_group_text) @string)
+  paths: (curly_group_path_list) @string)
 
