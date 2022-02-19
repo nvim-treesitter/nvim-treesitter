@@ -29,6 +29,8 @@
   (name) @constant)
 (trait_declaration
   name: (name) @type)
+(use_declaration
+    (name) @type)
 
 ; Functions, methods, constructors
 
