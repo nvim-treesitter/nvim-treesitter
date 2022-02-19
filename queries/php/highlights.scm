@@ -20,6 +20,7 @@
   name: (name) @type)
 (namespace_use_clause
   [(name) (qualified_name)] @type)
+(namespace_aliasing_clause (name)) @type
 (class_interface_clause
   [(name) (qualified_name)] @type)
 (scoped_call_expression
