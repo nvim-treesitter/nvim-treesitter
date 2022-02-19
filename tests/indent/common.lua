@@ -165,7 +165,18 @@ function Runner:new(it, base_dir, buf_opts)
   runner.it = it
   runner.base_dir = Path:new(base_dir)
   runner.buf_opts = buf_opts
+  if runner.buf_opts.filetype and type(runner.buf_opts.filetype) ~= "table" then
+    runner.buf_opts.filetype = { runner.buf_opts.filetype }
+  end
   return setmetatable(runner, self)
+end
+
+local function tbl_clone(tbl)
+  local copy = {}
+  for k, v in pairs(tbl) do
+    copy[k] = v
+  end
+  return copy
 end
 
 function Runner:whole_file(dirs, opts)
@@ -183,18 +194,30 @@ function Runner:whole_file(dirs, opts)
   local files = vim.tbl_flatten(vim.tbl_map(scan_dir, dirs))
   for _, file in ipairs(files) do
     local relpath = Path:new(file):make_relative(self.base_dir.filename)
-    self.it(relpath, function()
-      M.indent_whole_file(file, self.buf_opts, vim.tbl_contains(expected_failures, relpath))
-    end)
+    for _, ft in ipairs(self.buf_opts.filetype or { false }) do
+      local buf_opts = tbl_clone(self.buf_opts)
+      if ft then
+        buf_opts.filetype = ft
+      end
+      self.it(relpath .. (ft and (" as " .. ft) or ""), function()
+        M.indent_whole_file(file, buf_opts, vim.tbl_contains(expected_failures, relpath))
+      end)
+    end
   end
 end
 
 function Runner:new_line(file, spec, title, xfail)
   title = title and title or tostring(spec.on_line)
-  self.it(string.format("%s[%s]", file, title), function()
-    local path = self.base_dir / file
-    M.indent_new_line(path.filename, spec, self.buf_opts, xfail)
-  end)
+  for _, ft in ipairs(self.buf_opts.filetype or {false}) do
+    local buf_opts = tbl_clone(self.buf_opts)
+    if ft then
+      buf_opts.filetype = ft
+    end
+    self.it(string.format("%s[%s]", file, title) .. (ft and (" as " .. ft) or ""), function()
+      local path = self.base_dir / file
+      M.indent_new_line(path.filename, spec, buf_opts, xfail)
+    end)
+  end
 end
 
 M.Runner = Runner

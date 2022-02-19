@@ -6,6 +6,7 @@ local runner = Runner:new(it, "tests/indent/c", {
   shiftwidth = 4,
   softtabstop = 0,
   expandtab = true,
+  filetype = {"c", "cpp"},
 })
 
 describe("indent C:", function()

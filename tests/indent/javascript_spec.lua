@@ -6,7 +6,7 @@ local run = Runner:new(it, "tests/indent", {
   shiftwidth = 2,
   softtabstop = 0,
   expandtab = true,
-  filetype = "javascript",
+  filetype = {"javascript", "typescript", "typescriptreact"},
 })
 
 describe("indent JavaScript:", function()
