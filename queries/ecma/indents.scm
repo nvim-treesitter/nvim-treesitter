@@ -50,3 +50,5 @@
 (ERROR) @auto
 (template_string) @ignore
 (comment) @auto
+;; Probably, also a comment but unfinished
+((ERROR) @auto (#lua-match? @auto "/%*"))

@@ -1,18 +1,20 @@
 local Runner = require("tests.indent.common").Runner
--- local XFAIL = require("tests.indent.common").XFAIL
+local XFAIL = require("tests.indent.common").XFAIL
 
 local run = Runner:new(it, "tests/indent", {
   tabstop = 2,
   shiftwidth = 2,
   softtabstop = 0,
   expandtab = true,
-  filetype = {"javascript", "typescript", "typescriptreact"},
+  filetype = { "javascript", "typescript", "typescriptreact" },
 })
 
 describe("indent JavaScript:", function()
   describe("whole file:", function()
     run:whole_file({ "ecma/" }, {
-      expected_failures = {},
+      expected_failures = {
+        "ecma/unfinished-comment.js",
+      },
     })
   end)
 
@@ -119,13 +121,13 @@ describe("indent JavaScript:", function()
     for _, info in ipairs { { line = 2, indent = 0 } } do
       run:new_line("ecma/array-issue3382.js", { on_line = info.line, text = "foo();", indent = info.indent })
     end
-    for _, info in
-      ipairs {
-        { 1, " " },
-        { 2, " " },
-      }
-    do
+    for _, info in ipairs {
+      { 1, " " },
+      { 2, " " },
+    } do
       run:new_line("ecma/comment.js", { on_line = info[1], text = "hello!", indent = info[2] }, info[3], info[4])
     end
+    run:new_line("ecma/unfinished-comment.js", { on_line = 2, text = "hello!", indent = " " }, "fails", XFAIL)
+    run:new_line("ecma/unfinished-comment.js", { on_line = 3, text = "hello!", indent = " " })
   end)
 end)

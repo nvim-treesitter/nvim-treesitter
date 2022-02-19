@@ -208,7 +208,7 @@ end
 
 function Runner:new_line(file, spec, title, xfail)
   title = title and title or tostring(spec.on_line)
-  for _, ft in ipairs(self.buf_opts.filetype or {false}) do
+  for _, ft in ipairs(self.buf_opts.filetype or { false }) do
     local buf_opts = tbl_clone(self.buf_opts)
     if ft then
       buf_opts.filetype = ft
