@@ -12,6 +12,10 @@
   (array)
   (argument_list)
   (case)
+  (while)
+  (until)
+  (for)
+  (begin)
 ] @indent
 
 [
@@ -30,6 +34,7 @@
   "]"
   (when)
   (elsif)
+  (else)
   "end"
 ] @branch
 
