@@ -20,7 +20,7 @@ local function valid_args(name, pred, count, strict_count)
   return true
 end
 
-query.add_predicate("nth?", function(match, pattern, bufnr, pred)
+query.add_predicate("nth?", function(match, _, _, pred)
   if not valid_args("nth?", pred, 2, true) then
     return
   end
@@ -34,7 +34,7 @@ query.add_predicate("nth?", function(match, pattern, bufnr, pred)
   return false
 end)
 
-local function has_ancestor(match, pattern, bufnr, pred)
+local function has_ancestor(match, _, _, pred)
   if not valid_args(pred[1], pred, 2) then
     return
   end
@@ -65,7 +65,7 @@ query.add_predicate("has-ancestor?", has_ancestor)
 
 query.add_predicate("has-parent?", has_ancestor)
 
-query.add_predicate("is?", function(match, pattern, bufnr, pred)
+query.add_predicate("is?", function(match, _, bufnr, pred)
   if not valid_args("is?", pred, 2) then
     return
   end
@@ -84,7 +84,7 @@ query.add_predicate("is?", function(match, pattern, bufnr, pred)
   return vim.tbl_contains(types, kind)
 end)
 
-query.add_predicate("has-type?", function(match, pattern, bufnr, pred)
+query.add_predicate("has-type?", function(match, _, _, pred)
   if not valid_args(pred[1], pred, 2) then
     return
   end
@@ -97,34 +97,4 @@ query.add_predicate("has-type?", function(match, pattern, bufnr, pred)
   end
 
   return vim.tbl_contains(types, node:type())
-end)
-
--- Just avoid some annoying warnings for this directive
-query.add_directive("make-range!", function() end)
-
-query.add_directive("downcase!", function(match, _, bufnr, pred, metadata)
-  local text, key, value
-
-  if #pred == 3 then
-    -- (#downcase! @capture "key")
-    key = pred[3]
-    value = metadata[pred[2]][key]
-  else
-    -- (#downcase! "key")
-    key = pred[2]
-    value = metadata[key]
-  end
-
-  if type(value) == "string" then
-    text = value
-  else
-    local node = match[value]
-    text = query.get_node_text(node, bufnr) or ""
-  end
-
-  if #pred == 3 then
-    metadata[pred[2]][key] = string.lower(text)
-  else
-    metadata[key] = string.lower(text)
-  end
 end)
