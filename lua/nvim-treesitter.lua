@@ -9,8 +9,9 @@ local info = require "nvim-treesitter.info"
 local configs = require "nvim-treesitter.configs"
 local parsers = require "nvim-treesitter.parsers"
 
--- Registers all query predicates
+-- Registers all query predicates and directives
 require "nvim-treesitter.query_predicates"
+require "nvim-treesitter.query_directives"
 
 local M = {}
 
