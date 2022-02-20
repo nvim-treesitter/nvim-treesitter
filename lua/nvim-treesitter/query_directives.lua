@@ -67,7 +67,7 @@ local function make_subranges_between_children_like(node, predicate)
   return content
 end
 
-query.add_directive("inject_without_children!", function(
+query.add_directive("inject_without_named_children!", function(
   match,
   _, --[[ pattern ]]
   _, --[[ bufnr ]]
@@ -81,7 +81,7 @@ query.add_directive("inject_without_children!", function(
   end)
 end)
 
-query.add_directive("inject_without_any_children!", function(
+query.add_directive("inject_without_children!", function(
   match,
   _, --[[ pattern ]]
   _, --[[ bufnr ]]
