@@ -1070,8 +1070,9 @@ list.proto = {
 
 list.v = {
   install_info = {
-    url = "~/sources/vls/tree_sitter_v",
+    url = "https://github.com/vlang/vls",
     files = { "src/parser.c", "src/scanner.c" },
+    location = "tree-sitter-v/tree_sitter_v",
     generate_requires_npm = false,
     requires_generate_from_grammar = false,
   },
