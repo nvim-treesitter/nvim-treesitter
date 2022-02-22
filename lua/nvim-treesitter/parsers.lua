@@ -1068,6 +1068,17 @@ list.proto = {
   filetype = "proto",
 }
 
+list.v = {
+  install_info = {
+    url = "~/sources/vls/tree_sitter_v",
+    files = { "src/parser.c", "src/scanner.c" },
+    generate_requires_npm = false,
+    requires_generate_from_grammar = false,
+  },
+  filetype = "vlang",
+  maintainers = { "@tami5" },
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,

@@ -402,7 +402,7 @@ in the `install_info` table for you parser config.
 Queries are what `nvim-treesitter` uses to extract information from the syntax tree;
 they are located in the `queries/{language}/*` runtime directories (see `:h rtp`),
 like the `queries` folder of this plugin, e.g. `queries/{language}/{locals,highlights,textobjects}.scm`.
-Other modules may require additional queries such as `folding.scm`. You can find a 
+Other modules may require additional queries such as `folding.scm`. You can find a
 list of all supported capture names in [CONTRIBUTING.md](https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md#parser-configurations).
 
 All queries found in the runtime directories will be combined.
