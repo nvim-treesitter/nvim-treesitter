@@ -15,12 +15,12 @@
 (type_identifier) @reference
 
 ((call_expression function: (identifier) @reference)
- (set! reference.kind "call"))
+ (#set! reference.kind "call"))
 
 ((call_expression
    function: (selector_expression
-                field: (identifier) @function))
- (set! reference.kind "call"))
+                field: (identifier) @definition.function))
+ (#set! reference.kind "call"))
 
 (source_file) @scope
 (function_declaration) @scope
