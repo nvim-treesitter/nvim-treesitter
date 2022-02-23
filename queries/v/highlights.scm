@@ -64,6 +64,7 @@
  "const"
  "defer"
  "else"
+ "$else"
  "enum"
  "$for"
  "go"
