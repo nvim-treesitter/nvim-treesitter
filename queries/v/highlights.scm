@@ -22,7 +22,7 @@
   (#not-has-parent? @_parent call_expression special_call_expression)))
 
 ((identifier) @variable.builtin
- (#match? @variable.builtin "^err$"))
+ (#match? @variable.builtin "^(err|macos|linux|windows)$"))
 
 ;; C: TODO: fixme make `C`.exten highlighted as variable.builtin
 ; ((binded_identifier) @content
