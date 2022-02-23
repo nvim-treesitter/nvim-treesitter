@@ -3,8 +3,17 @@
 
 ;; Identifiers -------------------
 (import_path) @namespace
-[(module_identifier) ] @variable.builtin
-[(identifier)] @variable
+(module_identifier) @variable.builtin
+(identifier) @variable
+(interpreted_string_literal) @string
+(string_interpolation) @none
+
+; TODO: Have differnt highlight to make then standout + highlight }{$ as special
+; ((string_interpolation
+;   (identifier) @constant
+;   "$" @punctuation.special
+;   "${" @punctuation.special
+;   "}" @punctuation.special))
 
 [(type_identifier) (array_type) (pointer_type)] @type
 
@@ -371,8 +380,6 @@
 ;; Literals
 
 (int_literal) @number
-
-(interpreted_string_literal) @string
 
 (rune_literal) @string
 
