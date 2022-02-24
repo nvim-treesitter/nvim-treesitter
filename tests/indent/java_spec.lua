@@ -20,4 +20,3 @@ describe("indent Java:", function()
     run:new_line("issue_2571.java", { on_line = 5, text = "void bar() {}", indent = 2 })
   end)
 end)
-
