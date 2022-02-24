@@ -19,4 +19,9 @@
   "]"
 ] @branch
 
+[
+  "}"
+  ")"
+] @indent_end
+
 [(block_comment) (line_comment)] @ignore
