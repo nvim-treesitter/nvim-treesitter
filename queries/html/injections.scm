@@ -51,6 +51,14 @@
       ((attribute
            (attribute_name) @_attr (#eq? @_attr "type")
            (quoted_attribute_value (attribute_value) @_type))
+    (#eq? @_type "application/json")))
+   (raw_text) @json)
+
+(script_element
+   (start_tag
+      ((attribute
+           (attribute_name) @_attr (#eq? @_attr "type")
+           (quoted_attribute_value (attribute_value) @_type))
     (#eq? @_type "application/graphql")))
    (raw_text) @graphql)
 
