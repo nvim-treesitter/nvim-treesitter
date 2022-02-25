@@ -14,11 +14,26 @@
  arguments: ((template_string) @graphql
    (#offset! @graphql 0 1 0 -1)))
 
+; html`<input value="hello"/>`
+(call_expression
+ function: ((identifier) @_name
+   (#eq? @_name "html"))
+ arguments: ((template_string) @html
+   (#offset! @html 0 1 0 -1)))
+
 (call_expression
  function: ((identifier) @_name
    (#eq? @_name "hbs"))
  arguments: ((template_string) @glimmer
    (#offset! @glimmer 0 1 0 -1)))
+
+; css`:host { display: none; }`
+(call_expression
+ function: (member_expression
+   object: (identifier) @_name
+     (#eq? @_name "css"))
+ arguments: ((template_string) @css
+   (#offset! @css 0 1 0 -1)))
 
 ; styled.div`<css>`
 (call_expression
