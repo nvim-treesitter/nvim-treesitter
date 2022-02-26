@@ -33,6 +33,7 @@
 ((identifier) @variable.builtin
  (#match? @variable.builtin "^(err|macos|linux|windows)$"))
 
+(attribute_declaration) @attribute
 ;; C: TODO: fixme make `C`.exten highlighted as variable.builtin
 ; ((binded_identifier) @content
 ;  (#offset! @content 0 3 0 -1)
@@ -67,37 +68,50 @@
 ;; Keywords
 
 [
+  "import"
+  "module"
+] @include
+
+[
+  "match"
+  "if"
+  "$if"
+  "else"
+  "$else"
+] @conditional
+
+[
+  "for" @repeat
+  "$for"
+] @repeat
+
+[
  "as"
+ "in"
+ "!in"
+ "or"
+ "is"
+ "!is"
+] @keyword.operator
+
+[
  "asm"
  "assert"
  "const"
  "defer"
- "else"
- "$else"
  "enum"
- "$for"
  "go"
  "goto"
- "if"
- "$if"
- "import"
- "in"
- "!in"
  "interface"
- "is"
- "!is"
  "lock"
- "match"
- "module"
  "mut"
- "or"
  "pub"
  "rlock"
- "select"
  "struct"
  "type"
- "unsafe"]
- ;; Either not supported or will be droped
+ "unsafe"
+]
+ ;; Either not supported or will be dropped
  ;"atomic"
  ;"break"
  ; "continue"
@@ -108,11 +122,10 @@
 
 "fn" @keyword.function
 "return" @keyword.return
-"for" @repeat
 
 ; "import" @include ;; note: comment out b/c of import_path @namespace
 
-[ (true) (false)] @boolean
+[ (true) (false) ] @boolean
 
 
 
