@@ -9,6 +9,7 @@
   (named_imports)
   (object)
   (object_pattern)
+  (parenthesized_expression)
   (return_statement)
   (statement_block)
   (switch_case)
