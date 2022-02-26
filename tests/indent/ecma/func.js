@@ -35,3 +35,17 @@ func_call(
     .map()
     .filter()
 )
+
+function prepare_list_fetcher(filter) {
+  return Object.assign(
+    async () =>
+      (
+        await http.get('/list', {
+          params: {
+            filter: filter,
+          },
+        })
+      ).data,
+    { key: ['/list', filter] }
+  )
+}
