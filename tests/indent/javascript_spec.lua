@@ -60,6 +60,12 @@ describe("indent JavaScript:", function()
         { 19, 2 },
         { 20, 2 },
         { 25, 2 },
+        { 42, 8 },
+        { 43, 10 },
+        { 44, 12 },
+        { 48, 4 },
+        { 49, 4 },
+        { 50, 2 },
       }
     do
       run:new_line("ecma/func.js", { on_line = info[1], text = "//", indent = info[2] }, info[3], info[4])
