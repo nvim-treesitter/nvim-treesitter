@@ -5,7 +5,6 @@
   (class_body)
   (export_clause)
   (formal_parameters)
-  (method_definition)
   (named_imports)
   (object)
   (object_pattern)
