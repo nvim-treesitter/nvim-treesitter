@@ -1,7 +1,7 @@
 ;; General syntax
 (ERROR) @error
 
-(command_name) @function
+(generic_command) @function
 (caption
   command: _ @function)
 
@@ -194,29 +194,29 @@
   .
   (curly_group (_) @text.title))
 
-((command
+((generic_command
   command: (command_name) @_name
   arg: (curly_group
           (text) @text.title))
  (#eq? @_name "\\frametitle"))
 
 ;; Formatting
-((command
+((generic_command
   command: (command_name) @_name
   arg: (curly_group (_) @text.emphasis))
   (#eq? @_name "\\emph"))
 
-((command
+((generic_command
   command: (command_name) @_name
   arg: (curly_group (_) @text.emphasis))
   (#match? @_name "^(\\\\textit|\\\\mathit)$"))
 
-((command
+((generic_command
   command: (command_name) @_name
   arg: (curly_group (_) @text.strong))
   (#match? @_name "^(\\\\textbf|\\\\mathbf)$"))
 
-((command
+((generic_command
   command: (command_name) @_name
   .
   arg: (curly_group (_) @text.uri))
