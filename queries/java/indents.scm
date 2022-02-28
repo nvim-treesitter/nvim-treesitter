@@ -25,4 +25,4 @@
   ")"
 ] @indent_end
 
-[(block_comment) (line_comment)] @ignore
+(line_comment) @ignore
