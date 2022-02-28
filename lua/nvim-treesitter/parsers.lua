@@ -411,6 +411,17 @@ list.c_sharp = {
   maintainers = { "@Luxed" },
 }
 
+list.todotxt = {
+  install_info = {
+    url = "https://github.com/arnarg/tree-sitter-todotxt.git",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  filetype = "todotxt",
+  maintainers = { "@arnarg" },
+  experimental = true,
+}
+
 list.typescript = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-typescript",
