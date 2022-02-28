@@ -26,3 +26,5 @@
 ] @indent_end
 
 (line_comment) @ignore
+
+(ERROR) @auto
