@@ -22,7 +22,7 @@ describe("indent Java:", function()
     run:new_line("class_with_annotation.java", { on_line = 2, text = "void foo() {}", indent = 2 })
     run:new_line("enum_with_annotation.java", { on_line = 2, text = "THING;", indent = 2 })
     run:new_line("interface.java", { on_line = 1, text = "void foo();", indent = 2 })
-    run:new_line("javadoc.java", { on_line = 2, text = "* Sample javadoc line", indent = 2 })
+    run:new_line("javadoc.java", { on_line = 2, text = "* Sample javadoc line", indent = 3 })
     --TODO: Fix indentation when adding line *before* the ERROR line.
     run:new_line("issue_2583.java", { on_line = 4, text = "int x = 1;", indent = 4 })
   end)
