@@ -27,4 +27,7 @@
 
 (line_comment) @ignore
 
-(ERROR) @auto
+[
+  (ERROR)
+  (block_comment)
+] @auto
