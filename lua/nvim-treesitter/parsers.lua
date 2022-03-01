@@ -469,6 +469,7 @@ list.slint = {
   },
   maintainers = { "@jrmoulton" },
   filetype = "slint",
+  experimental = true,
 }
 
 list.haskell = {
