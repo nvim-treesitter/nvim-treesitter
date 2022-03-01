@@ -461,6 +461,16 @@ list.supercollider = {
   filetype = "supercollider",
 }
 
+list.slint = {
+  install_info = {
+    url = "https://github.com/jrmoulton/tree-sitter-slint",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  maintainers = { "@jrmoulton" },
+  filetype = "slint",
+}
+
 list.haskell = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-haskell",
