@@ -468,7 +468,6 @@ list.slint = {
     branch = "main",
   },
   maintainers = { "@jrmoulton" },
-  filetype = "slint",
   experimental = true,
 }
 

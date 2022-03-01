@@ -251,6 +251,9 @@
   "supercollider": {
     "revision": "0f0e5b5a96dd3e048a9c3db648ed969c44068bff"
   },
+  "slint": {
+      "revision": "0d4dda94f96623302dfc234e06be62a5717f47da"
+  },
   "surface": {
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
   },
