@@ -18,7 +18,10 @@
 (value) @number
 (string) @string
 
-"for" @repeat
+[
+"in"
+"for"
+] @repeat
 
 "@" @keyword
 
@@ -32,19 +35,20 @@
 "else"
 ] @conditional
 
+[
+"root"
+"parent"
+"this"
+] @variable.builtin
 
 [
 "struct"
 "property"
 "callback"
-"root"
-"parent"
-"this"
 "in"
 "animate"
 "states"
 "when"
-"in"
 "out"
 "transitions"
 "global"
