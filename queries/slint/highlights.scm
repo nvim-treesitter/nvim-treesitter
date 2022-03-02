@@ -18,19 +18,29 @@
 (value) @number
 (string) @string
 
+"for" @repeat
+
+"@" @keyword
+
+[
+"import" 
+"from"
+] @include
+
+[
+"if"
+"else"
+] @conditional
+
+
 [
 "struct"
 "property"
 "callback"
-"import"
-"from"
 "root"
 "parent"
 "this"
-"for"
 "in"
-"if"
-"else"
 "animate"
 "states"
 "when"
@@ -61,15 +71,14 @@
  "false"
  ] @constant.builtin
 
-"@" @keyword
 
-; ; Punctuation
+; Punctuation
 [
-  ","
-  "."
+","
+"."
 ] @punctuation.delimiter
 
-; ; Brackets
+; Brackets
 [
 "("
 ")"
@@ -95,3 +104,4 @@
 "physical_length"
 "string"
 ] @type.builtin
+
