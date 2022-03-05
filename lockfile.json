@@ -54,7 +54,7 @@
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
   "elixir": {
-    "revision": "a11a686303355a518b0a45dea7c77c5eebb5ec22"
+    "revision": "b4027d7cfc96935b50878bdf9faf80bd64ac73cf"
   },
   "elm": {
     "revision": "5128296ba8542853d59e6b7c8dfe3d1fb9a637ea"
@@ -180,7 +180,7 @@
     "revision": "6d6aaa50793b8265b6a8b6628577a0083d3b923d"
   },
   "norg": {
-    "revision": "ed37d4c571104c64e233a319fc366ede75ee56d4"
+    "revision": "0e24d7dd1164f6136baa52000adc5e3ea3e0bea6"
   },
   "ocaml": {
     "revision": "23d419ba45789c5a47d31448061557716b02750a"
