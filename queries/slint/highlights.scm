@@ -11,7 +11,7 @@
 (function_identifier) @function
 
 (reference_identifier) @keyword
-(visibility_modifier) @keyword
+(visibility_modifier) @include
 
 (comment) @comment
 
@@ -40,6 +40,12 @@
 "parent"
 "this"
 ] @variable.builtin
+
+[
+"true"
+"false"
+] @boolean
+
 
 [
 "struct"
@@ -71,8 +77,6 @@
  "red"
  "start"
  "yellow"
- "true"
- "false"
  ] @constant.builtin
 
 
