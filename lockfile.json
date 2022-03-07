@@ -45,7 +45,7 @@
     "revision": "fa70098cd70393f84785f85cdc6a45299b59cd5b"
   },
   "dockerfile": {
-    "revision": "d34a0cebd094e830bdd2106a28cb2f1fb22401d8"
+    "revision": "189b6b1f86822a61a6203c278cbe2a91824b62e6"
   },
   "dot": {
     "revision": "92877bac7033e409ccfb3f07fe28ef1dfd359457"
@@ -245,14 +245,14 @@
   "scss": {
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
   },
+  "slint": {
+    "revision": "0d4dda94f96623302dfc234e06be62a5717f47da"
+  },
   "sparql": {
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "supercollider": {
     "revision": "0f0e5b5a96dd3e048a9c3db648ed969c44068bff"
-  },
-  "slint": {
-      "revision": "0d4dda94f96623302dfc234e06be62a5717f47da"
   },
   "surface": {
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
