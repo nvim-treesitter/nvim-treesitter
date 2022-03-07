@@ -11,7 +11,7 @@
 (function_identifier) @function
 
 (reference_identifier) @keyword
-(visibility_modifier) @include
+(visibility_modifier) @keyword
 
 (comment) @comment
 
