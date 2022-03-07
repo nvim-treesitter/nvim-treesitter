@@ -1,14 +1,23 @@
+; Identifiers
+
+((identifier) @constant (#match? @constant "^[A-Z][A-Z\\d_]+$"))
+
 (namespaced_identifier
   left: [
-    (identifier) @namespace
+    ; Lowercased names in lhs typically are variables, while camel cased are namespaces
+    ; ((identifier) @namespace (#match? @namespace "^[A-Z]+[a-z]+$"))
+    ((identifier) @variable (#match? @variable "^[a-z]"))
     (_)
   ]
   right: [
-    ((identifier) @constructor (#match? @constructor "^[A-Z]*[a-z]+"))
-    ((identifier) @constant (#match? @constant "^[A-Z][A-Z_]*"))
+    ; Lowercased are variables, camel cased are types
+    ; ((identifier) @parameter (#match? @parameter "^[a-z]"))
+    ((identifier) @type (#match? @type "^[A-Z]+[a-z]+$"))
     (_)
   ]
 )
+
+((identifier) @constructor (#match? @constructor "^[A-Z]*[a-z]+"))
 
 ; Pointers
 
@@ -155,9 +164,6 @@
   name: [
   	(identifier) @method
     (generic_identifier (_) @type) 
-    (namespaced_identifier
-        (_) @method .
-    )
   ]
 )
 
@@ -165,9 +171,13 @@
   identifier: [
   	(identifier) @method
     (generic_identifier (_) @type) 
-    (namespaced_identifier
-        (_) @method .
-    )
+  ]
+)
+
+(member_function
+  identifier: [
+  	(identifier) @method
+    (generic_identifier (_) @type)
   ]
 )
 
