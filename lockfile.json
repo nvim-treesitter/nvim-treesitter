@@ -66,7 +66,7 @@
     "revision": "d37fd84a702b78ff0282f223ece83c61ab062a6e"
   },
   "fish": {
-    "revision": "04e54ab6585dfd4fee6ddfe5849af56f101b6d4f"
+    "revision": "4e1f4150e43d2a3b739aa8b6e30222813bd296d0"
   },
   "foam": {
     "revision": "fdb7f14b885abfc4df57728c9b2a2f2ad24d3cb7"
@@ -237,7 +237,7 @@
     "revision": "1ebfdb288842dae5a9233e2509a135949023dd82"
   },
   "rust": {
-    "revision": "a250c4582510ff34767ec3b7dcdd3c24e8c8aa68"
+    "revision": "9cede24ef89daa4f5cf6e07b7a90940e7c802666"
   },
   "scala": {
     "revision": "0a3dd53a7fc4b352a538397d054380aaa28be54c"
@@ -261,7 +261,7 @@
     "revision": "98274d94ec33e994e8354d9ddfdef58cca471294"
   },
   "swift": {
-    "revision": "9191a29d5aa46eeecea27d0dfed2f7bea29e967d"
+    "revision": "5c10525c3c0b8db05b2b46560036a8af282a52c5"
   },
   "teal": {
     "revision": "fcc5f6f4d194dede4e676834ff28a506e39e17b4"
