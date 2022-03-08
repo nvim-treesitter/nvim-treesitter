@@ -105,12 +105,8 @@ function M.select_compile_command(repo, cc, compile_location)
       },
     }
   else
-    local make_path = vim.fn.exepath "make"
-    if vim.fn.executable "gmake" then
-      make_path = vim.fn.exepath "gmake"
-    end
     return {
-      cmd = make_path,
+      cmd = "make",
       info = "Compiling...",
       err = "Error during compilation",
       opts = {
