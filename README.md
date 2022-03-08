@@ -237,6 +237,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [rust](https://github.com/tree-sitter/tree-sitter-rust) (maintained by @vigoux)
 - [x] [scala](https://github.com/tree-sitter/tree-sitter-scala) (maintained by @stevanmilic)
 - [x] [scss](https://github.com/serenadeai/tree-sitter-scss) (maintained by @elianiva)
+- [x] [slint](https://github.com/jrmoulton/tree-sitter-slint) (experimental, maintained by @jrmoulton)
 - [x] [sparql](https://github.com/BonaBeavis/tree-sitter-sparql) (maintained by @bonabeavis)
 - [x] [supercollider](https://github.com/madskjeldgaard/tree-sitter-supercollider) (maintained by @madskjeldgaard)
 - [x] [surface](https://github.com/connorlay/tree-sitter-surface) (maintained by @connorlay)
