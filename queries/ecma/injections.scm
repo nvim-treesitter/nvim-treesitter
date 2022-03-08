@@ -2,38 +2,25 @@
   (#match? @_jsdoc_comment "^/\\*\\*[^\\*].*\\*/")) @jsdoc)
 
 (comment) @comment
+(regex_pattern) @regex
 
 (call_expression
  function: ((identifier) @language)
  arguments: ((template_string) @content
    (#offset! @content 0 1 0 -1)))
 
+; TODO: map tag names to languages
 (call_expression
  function: ((identifier) @_name
    (#eq? @_name "gql"))
  arguments: ((template_string) @graphql
    (#offset! @graphql 0 1 0 -1)))
 
-; html`<input value="hello"/>`
-(call_expression
- function: ((identifier) @_name
-   (#eq? @_name "html"))
- arguments: ((template_string) @html
-   (#offset! @html 0 1 0 -1)))
-
 (call_expression
  function: ((identifier) @_name
    (#eq? @_name "hbs"))
  arguments: ((template_string) @glimmer
    (#offset! @glimmer 0 1 0 -1)))
-
-; css`:host { display: none; }`
-(call_expression
- function: (member_expression
-   object: (identifier) @_name
-     (#eq? @_name "css"))
- arguments: ((template_string) @css
-   (#offset! @css 0 1 0 -1)))
 
 ; styled.div`<css>`
 (call_expression
@@ -61,7 +48,6 @@
  arguments: ((template_string) @css
    (#offset! @css 0 1 0 -1)))
 
-
 ; styled(Component).attrs({ prop: "foo" })`<css>`
 (call_expression
  function: (call_expression
@@ -71,8 +57,6 @@
         (#eq? @_name "styled"))))
  arguments: ((template_string) @css
    (#offset! @css 0 1 0 -1)))
-
-(regex_pattern) @regex
 
 ((comment) @_gql_comment
   (#eq? @_gql_comment "/* GraphQL */")
