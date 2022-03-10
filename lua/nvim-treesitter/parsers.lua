@@ -959,6 +959,15 @@ list.lalrpop = {
   maintainers = { "@traxys" },
 }
 
+list.solidity = {
+  install_info = {
+    url = "https://github.com/YongJieYongJie/tree-sitter-solidity",
+    branch = "with-generated-c-code",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@YongJieYongJie" },
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
