@@ -5,6 +5,10 @@
 pragma solidity >=0.7.0 <0.9.0;
 // ^ keyword
 //     ^ tag
+
+import * as something from "anotherFile";
+// ^     ^            ^ include
+
 /// @title Voting with delegation.
 //  ^ attribute
 contract Ballot {
@@ -168,6 +172,11 @@ contract Ballot {
     {
         winnerName_ = proposals[winningProposal()].name;
     }
+}
+
+contract Another {
+  Ballot b = new Ballot(new bytes32[](1));
+//           ^ keyword.operator
 }
 
 // vim:ft=solidity
