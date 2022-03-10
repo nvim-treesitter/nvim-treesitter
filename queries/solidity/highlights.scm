@@ -27,7 +27,8 @@
 
 
 ; Type
-(type_name) @type
+(type_name (identifier) @type)
+(type_name "mapping" @type)
 (primitive_type) @type
 (contract_declaration name: (identifier) @type)
 (struct_declaration struct_name: (identifier) @type)
@@ -58,7 +59,7 @@
 (modifier_invocation (identifier) @function)
 
 ; Handles expressions like structVariable.g();
-(call_expression . (member_expression (property_identifier) @function.method))
+(call_expression . (member_expression (property_identifier) @method))
 
 ; Handles expressions like g();
 (call_expression . (identifier) @function)
@@ -67,15 +68,15 @@
 (call_expression (identifier) @field . ":")
 
 ; Function parameters
-(event_paramater name: (identifier) @variable.parameter)
+(event_paramater name: (identifier) @parameter)
 (function_definition
-  function_name:  (identifier) @variable.parameter)
+  function_name:  (identifier) @parameter)
 
 ; Yul functions
 (yul_function_call function: (yul_identifier) @function)
 
 ; Yul function parameters
-(yul_function_definition . (yul_identifier) @function (yul_identifier) @variable.parameter)
+(yul_function_definition . (yul_identifier) @function (yul_identifier) @parameter)
 
 (meta_type_expression "type" @keyword)
 
@@ -88,7 +89,6 @@
 ; Keywords
 [
  "pragma"
- "import"
  "contract"
  "interface"
  "library"
@@ -105,9 +105,6 @@
  "continue"
  "if"
  "else"
- "for"
- "while"
- "do"
  "try"
  "catch"
  "return"
@@ -132,8 +129,16 @@
  (yul_leave)
 ] @keyword
 
-(import_directive "as" @keyword)
-(import_directive "from" @keyword)
+[
+ "for"
+ "while"
+ "do"
+] @repeat
+
+"import" @include
+(import_directive "as" @include)
+(import_directive "from" @include)
+
 (event_paramater "indexed" @keyword)
 
 ; Punctuation
@@ -145,7 +150,7 @@
   "]"
   "{"
   "}"
-]  @punctuation.bracket
+] @punctuation.bracket
 
 
 [
@@ -182,11 +187,14 @@
   "~"
   "-"
   "+"
-  "delete"
-  "new"
   "++"
   "--"
 ] @operator
+
+[
+  "delete"
+  "new"
+] @keyword.operator
 
 (identifier) @variable
 (yul_identifier) @variable
