@@ -197,6 +197,7 @@
 ] @keyword.return
 
 (type_cast_expression "as" @keyword.operator)
+(qualified_type "as" @keyword.operator)
 
 (use_list (self) @keyword)
 (scoped_use_list (self) @keyword)
