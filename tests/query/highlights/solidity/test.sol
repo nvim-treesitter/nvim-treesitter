@@ -21,7 +21,7 @@ contract Ballot {
 //         ^ type
         uint weight; // weight is accumulated by delegation
 //      ^ type
-//           ^ variable
+//           ^ field
         bool voted;  // if true, that person already voted
         address delegate; // person delegated to
         uint vote;   // index of the voted proposal
@@ -44,6 +44,9 @@ contract Ballot {
 
     // A dynamically-sized array of `Proposal` structs.
     Proposal[] public proposals;
+
+    enum ActionChoices { GoLeft, GoRight, GoStraight, SitStill }
+//                       ^ constant
 
     /// Create a new ballot to choose one of `proposalNames`.
     constructor(bytes32[] memory proposalNames) {
@@ -69,8 +72,9 @@ contract Ballot {
     // Give `voter` the right to vote on this ballot.
     // May only be called by `chairperson`.
     function giveRightToVote(address voter) external {
-//  ^ keyword
+//  ^ keyword.function
 //           ^ function
+//                                   ^ parameter
         // If the first argument of `require` evaluates
         // to `false`, execution terminates and all
         // changes to the state and to Ether balances
