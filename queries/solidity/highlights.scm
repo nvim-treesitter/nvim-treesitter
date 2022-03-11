@@ -32,7 +32,7 @@
 (primitive_type) @type
 (contract_declaration name: (identifier) @type)
 (struct_declaration struct_name: (identifier) @type)
-; (struct_member name: (identifier) @field) ;; Technically correct, but makes highlight worst
+(struct_member name: (identifier) @field)
 (enum_declaration enum_type_name: (identifier) @type)
 ; Color payable in payable address conversion as type and not as keyword
 (payable_conversion_expression "payable" @type)
@@ -63,14 +63,15 @@
 
 ; Handles expressions like g();
 (call_expression . (identifier) @function)
+(function_definition
+ function_name: (identifier) @function)
 
 ; Handles the field in struct literals like MyStruct({MyField: MyVar * 2})
 (call_expression (identifier) @field . ":")
 
 ; Function parameters
 (event_paramater name: (identifier) @parameter)
-(function_definition
-  function_name:  (identifier) @parameter)
+(parameter name: (identifier) @parameter)
 
 ; Yul functions
 (yul_function_call function: (yul_identifier) @function)
@@ -80,10 +81,10 @@
 
 (meta_type_expression "type" @keyword)
 
-(member_expression (property_identifier) @property)
-(property_identifier) @property
-(struct_expression ((identifier) @property . ":"))
-(enum_value) @property
+(member_expression (property_identifier) @field)
+(property_identifier) @field
+(struct_expression ((identifier) @field . ":"))
+(enum_value) @constant
 
 
 ; Keywords
@@ -98,16 +99,6 @@
  "event"
  "using"
  "assembly"
- "switch"
- "case"
- "default"
- "break"
- "continue"
- "if"
- "else"
- "try"
- "catch"
- "return"
  "emit"
  "public"
  "internal"
@@ -117,11 +108,9 @@
  "view"
  "payable"
  "modifier"
- "returns"
  "memory"
  "storage"
  "calldata"
- "function"
  "var"
  (constant)
  (virtual)
@@ -134,6 +123,28 @@
  "while"
  "do"
 ] @repeat
+
+[
+ "break"
+ "continue"
+ "if"
+ "else"
+ "switch"
+ "case"
+ "default"
+] @conditional
+
+[
+ "try"
+ "catch"
+] @exception
+
+[
+ "return"
+ "returns"
+] @keyword.return
+
+"function" @keyword.function
 
 "import" @include
 (import_directive "as" @include)
