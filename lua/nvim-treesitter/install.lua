@@ -514,7 +514,17 @@ function M.write_lockfile(verbose, skip_langs)
   for _, v in ipairs(sorted_parsers) do
     if not vim.tbl_contains(skip_langs, v.name) then
       -- I'm sure this can be done in aync way with iter_cmd
-      local sha = vim.split(vim.fn.systemlist("git ls-remote " .. v.parser.install_info.url)[1], "\t")[1]
+      local sha
+      if v.parser.install_info.branch then
+        sha = vim.split(
+          vim.fn.systemlist(
+            "git ls-remote " .. v.parser.install_info.url .. " | grep refs/heads/" .. v.parser.install_info.branch
+          )[1],
+          "\t"
+        )[1]
+      else
+        sha = vim.split(vim.fn.systemlist("git ls-remote " .. v.parser.install_info.url)[1], "\t")[1]
+      end
       lockfile[v.name] = { revision = sha }
       if verbose then
         print(v.name .. ": " .. sha)
