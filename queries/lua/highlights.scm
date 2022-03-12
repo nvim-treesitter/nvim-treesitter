@@ -1,15 +1,3 @@
-;;; Builtins
-
-[
-  (false)
-  (true)
-] @boolean
-
-(nil) @constant.builtin
-
-((identifier) @variable.builtin
- (#match? @variable.builtin "self"))
-
 ;; Keywords
 
 "return" @keyword.return
@@ -140,12 +128,22 @@
 
 (identifier) @variable
 
-;; Constants
+((identifier) @variable.builtin
+ (#match? @variable.builtin "self"))
 
-(vararg_expression) @constant
+;; Constants
 
 ((identifier) @constant
  (#lua-match? @constant "^[A-Z][A-Z_0-9]*$"))
+
+(vararg_expression) @constant
+
+(nil) @constant.builtin
+
+[
+  (false)
+  (true)
+] @boolean
 
 ;; Tables
 
