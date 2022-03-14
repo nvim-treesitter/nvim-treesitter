@@ -968,6 +968,15 @@ list.solidity = {
   maintainers = { "@YongJieYongJie" },
 }
 
+list.cooklang = {
+  install_info = {
+    url = "https://github.com/addcninblue/tree-sitter-cooklang",
+    branch = "master",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  maintainers = { "@addcninblue" },
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
