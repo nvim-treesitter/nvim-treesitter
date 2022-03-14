@@ -32,7 +32,10 @@
 
 (strong_emphasis) @text.strong
 
-(link_destination) @text.uri
+[
+  (link_destination)
+  (uri_autolink)
+] @text.uri
 
 [
   (link_label)
