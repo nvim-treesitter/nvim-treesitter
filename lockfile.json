@@ -33,7 +33,7 @@
     "revision": "a03f1d2d1dfbf6f8e0fdca5f9ff030228241eb57"
   },
   "cuda": {
-    "revision": "31e979626b432f00450720c667fbf6b0afb80638"
+    "revision": "5178a7a5b25dc7ee4a69bf72f31bd6d3ff0a0795"
   },
   "d": {
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
@@ -156,7 +156,7 @@
     "revision": "7744b56f03ac1e5643fad23c9dd90837fe97291e"
   },
   "latex": {
-    "revision": "4b11d243bcb0440ef2d28092b103de8b0899d17b"
+    "revision": "b71e4928a63a6d75bc1670004a5b5a98c850a149"
   },
   "ledger": {
     "revision": "0cdeb0e51411a3ba5493662952c3039de08939ca"
@@ -180,7 +180,7 @@
     "revision": "6d6aaa50793b8265b6a8b6628577a0083d3b923d"
   },
   "norg": {
-    "revision": "fe09dbc0f1c9d9c55cec473745ae661998b9be4d"
+    "revision": "17d61df817c1e0a9cdef8d915d4e4c556b7cf68c"
   },
   "ocaml": {
     "revision": "23d419ba45789c5a47d31448061557716b02750a"
