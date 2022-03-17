@@ -71,6 +71,9 @@
   (variadic_parameter)
 ] @parameter
 
+(argument
+    (name) @parameter)
+
 ; Member
 
 (property_element
