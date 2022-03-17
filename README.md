@@ -164,6 +164,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [cmake](https://github.com/uyha/tree-sitter-cmake) (maintained by @uyha)
 - [x] [comment](https://github.com/stsewd/tree-sitter-comment) (maintained by @stsewd)
 - [x] [commonlisp](https://github.com/theHamsta/tree-sitter-commonlisp) (maintained by @theHamsta)
+- [x] [cooklang](https://github.com/addcninblue/tree-sitter-cooklang) (maintained by @addcninblue)
 - [x] [cpp](https://github.com/tree-sitter/tree-sitter-cpp) (maintained by @theHamsta)
 - [x] [css](https://github.com/tree-sitter/tree-sitter-css) (maintained by @TravonteD)
 - [x] [cuda](https://github.com/theHamsta/tree-sitter-cuda) (maintained by @theHamsta)
