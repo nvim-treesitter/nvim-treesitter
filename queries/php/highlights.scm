@@ -65,6 +65,9 @@
 (object_creation_expression
   [(name) (qualified_name)] @constructor)
 
+(argument
+    (name) @parameter)
+
 ; Parameters
 [
   (simple_parameter)
