@@ -128,7 +128,7 @@
 (field_access record: (identifier) @variable field: (label) @property)
 
 ; Type Constructors
-(type_constructor_argument label: (label) @property ":" @property)
+(data_constructor_argument label: (label) @property ":" @property)
 
 ; Type Parameters
 (type_parameter) @parameter

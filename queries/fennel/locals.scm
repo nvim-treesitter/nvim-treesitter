@@ -14,8 +14,10 @@
    "while" "if" "when" "do" "collect" "icollect" "accumulate")
 )
 
-(fn name: (symbol) @definition.function)
-(lambda name: (symbol) @definition.function)
+(fn name: (symbol) @definition.function
+  (#set! definition.function.scope "parent"))
+(lambda name: (symbol) @definition.function
+  (#set! definition.function.scope "parent"))
 
 ; TODO: use @definition.parameter for parameters
 (binding (symbol) @definition.var)

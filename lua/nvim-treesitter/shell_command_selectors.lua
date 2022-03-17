@@ -94,7 +94,14 @@ function M.select_compiler_args(repo, compiler)
 end
 
 function M.select_compile_command(repo, cc, compile_location)
-  if string.match(cc, "cl$") or string.match(cc, "cl.exe$") or not repo.use_makefile or fn.has "win32" == 1 then
+  local make = M.select_executable { "gmake", "make" }
+  if
+    string.match(cc, "cl$")
+    or string.match(cc, "cl.exe$")
+    or not repo.use_makefile
+    or fn.has "win32" == 1
+    or not make
+  then
     return {
       cmd = cc,
       info = "Compiling...",
@@ -106,7 +113,7 @@ function M.select_compile_command(repo, cc, compile_location)
     }
   else
     return {
-      cmd = "make",
+      cmd = make,
       info = "Compiling...",
       err = "Error during compilation",
       opts = {

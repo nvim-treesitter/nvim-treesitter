@@ -411,6 +411,17 @@ list.c_sharp = {
   maintainers = { "@Luxed" },
 }
 
+list.todotxt = {
+  install_info = {
+    url = "https://github.com/arnarg/tree-sitter-todotxt.git",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  filetype = "todotxt",
+  maintainers = { "@arnarg" },
+  experimental = true,
+}
+
 list.typescript = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-typescript",
@@ -448,6 +459,16 @@ list.supercollider = {
   },
   maintainers = { "@madskjeldgaard" },
   filetype = "supercollider",
+}
+
+list.slint = {
+  install_info = {
+    url = "https://github.com/jrmoulton/tree-sitter-slint",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  maintainers = { "@jrmoulton" },
+  experimental = true,
 }
 
 list.haskell = {
@@ -936,6 +957,24 @@ list.lalrpop = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@traxys" },
+}
+
+list.solidity = {
+  install_info = {
+    url = "https://github.com/YongJieYongJie/tree-sitter-solidity",
+    branch = "with-generated-c-code",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@YongJieYongJie" },
+}
+
+list.cooklang = {
+  install_info = {
+    url = "https://github.com/addcninblue/tree-sitter-cooklang",
+    branch = "master",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  maintainers = { "@addcninblue" },
 }
 
 local M = {

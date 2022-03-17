@@ -1,18 +1,24 @@
-; Variable
+; Identifiers
 
-(uppercased_identifier) @constant
+((identifier) @constant (#match? @constant "^[A-Z][A-Z\\d_]+$"))
 
 (namespaced_identifier
   left: [
-    (camel_cased_identifier) @namespace
-    (identifier) @variable
+    ; Lowercased names in lhs typically are variables, while camel cased are namespaces
+    ; ((identifier) @namespace (#match? @namespace "^[A-Z]+[a-z]+$"))
+    ((identifier) @variable (#match? @variable "^[a-z]"))
+    (_)
   ]
   right: [
-    (identifier) @parameter
-    (camel_cased_identifier) @type
-    (uppercased_identifier) @constant
+    ; Lowercased are variables, camel cased are types
+    ; ((identifier) @parameter (#match? @parameter "^[a-z]"))
+    ((identifier) @type (#match? @type "^[A-Z]+[a-z]+$"))
+    (_)
   ]
 )
+
+((identifier) @constructor (#match? @constructor "^[A-Z]*[a-z]+"))
+
 ; Pointers
 
 (address_of_identifier "&" @symbol)
@@ -157,22 +163,21 @@
   type: (_) @type
   name: [
   	(identifier) @method
-    (camel_cased_identifier) @type
     (generic_identifier (_) @type) 
-    (namespaced_identifier
-        (_) @method .
-    )
   ]
 )
 
 (function_call
   identifier: [
   	(identifier) @method
-    (camel_cased_identifier) @type
     (generic_identifier (_) @type) 
-    (namespaced_identifier
-        (_) @method .
-    )
+  ]
+)
+
+(member_function
+  identifier: [
+  	(identifier) @method
+    (generic_identifier (_) @type)
   ]
 )
 
@@ -198,16 +203,14 @@
 
 "global::" @namespace
 
-"using" @include
+(using 
+  "using" @include
+  (_) @namespace
+)
 
 ; Classes
 
-(class_declaration
-    [
-      (camel_cased_identifier) @type
-      (generic_identifier (_) @type )
-    ]
-)
+(class_declaration) @type
 
 (class_constructor_definition
   name: [
@@ -223,12 +226,7 @@
 
 ; Interfaces
 
-(interface_declaration
-    [
-      (camel_cased_identifier) @type
-      (generic_identifier (_) @type )
-    ]
-)
+(interface_declaration) @type
 
 ; Strings and escape sequences
 
@@ -247,12 +245,14 @@
 ; New instance from Object
 
 (new_instance
-  ".new" @keyword
+  "new" @keyword
 )
 
 ; GObject construct
 
-"construct" @constructor
+(gobject_construct 
+  "construct" @keyword
+)
 
 ; Try statement
 
@@ -266,7 +266,7 @@
 ; Enum
 
 (enum_declaration
-    (camel_cased_identifier) @type
+    name: (identifier) @type
 )
 
 ; Loop
@@ -292,6 +292,6 @@
 ; Code attribute
 
 (code_attribute
-  name: (camel_cased_identifier) @attribute
+  name: (identifier) @attribute
   param: (_) @attribute
 ) @attribute

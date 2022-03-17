@@ -61,6 +61,7 @@
  (#lua-match? @constructor "^[A-Z]"))
 
 (operator_name) @function
+"operator" @function
 "static_assert" @function.builtin
 
 (call_expression
@@ -71,7 +72,7 @@
               name: (qualified_identifier
                       name: (identifier) @function)))
 (call_expression
-  function: 
+  function:
       (qualified_identifier
         name: (qualified_identifier
               name: (qualified_identifier

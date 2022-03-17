@@ -103,6 +103,8 @@
             ]
 )
 
+(command_substitution_dollar "$" @punctuation.bracket)
+
 ; non-bultin command names
 (command name: (word) @function)
 

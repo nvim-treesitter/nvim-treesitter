@@ -38,6 +38,20 @@ describe("indent JavaScript:", function()
 
     for _, info in
       ipairs {
+        { 1, 2 },
+        { 2, 4 },
+        { 3, 6 },
+        { 5, 4 },
+        { 8, 2 },
+        { 11, 4 },
+        { 13, 4 },
+      }
+    do
+      run:new_line("ecma/class.js", { on_line = info[1], text = "//", indent = info[2] }, info[3], info[4])
+    end
+
+    for _, info in
+      ipairs {
         { 2, 2 },
         { 5, 2 },
         { 7, 0 },
@@ -46,6 +60,12 @@ describe("indent JavaScript:", function()
         { 19, 2 },
         { 20, 2 },
         { 25, 2 },
+        { 42, 8 },
+        { 43, 10 },
+        { 44, 12 },
+        { 48, 4 },
+        { 49, 4 },
+        { 50, 2 },
       }
     do
       run:new_line("ecma/func.js", { on_line = info[1], text = "//", indent = info[2] }, info[3], info[4])

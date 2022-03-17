@@ -1,6 +1,7 @@
 [
-  (class_declaration)
   (class_body)
+  (enum_body)
+  (interface_body)
   (constructor_declaration)
   (constructor_body)
   (block)
@@ -19,4 +20,14 @@
   "]"
 ] @branch
 
-[(block_comment) (line_comment)] @ignore
+[
+  "}"
+  ")"
+] @indent_end
+
+(line_comment) @ignore
+
+[
+  (ERROR)
+  (block_comment)
+] @auto
