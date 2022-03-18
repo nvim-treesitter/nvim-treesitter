@@ -16,9 +16,9 @@ describe("indent CSS:", function()
   end)
 
   describe("new line:", function()
-    run:new_line("closing.css", { on_line = 1, text = "}", indent = 0 })
+    run:new_line("open_block.css", { on_line = 1, text = "}", indent = 0 })
     run:new_line(
-      "block.css",
+      "open_block.css",
       { on_line = 1, text = "color: green;", indent = 2 },
       "might fail because tree is in a broken state",
       XFAIL
