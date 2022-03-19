@@ -98,6 +98,7 @@ hlmap["text.warning"] = "TSWarning"
 hlmap["text.danger"] = "TSDanger"
 
 hlmap["type"] = "TSType"
+hlmap["primitive_type"] = "TSTypeBuiltin"
 hlmap["type.builtin"] = "TSTypeBuiltin"
 
 hlmap["variable"] = "TSVariable"

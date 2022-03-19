@@ -42,7 +42,7 @@
   "#elif"
   "#endif"
   (preproc_directive)
-] @keyword
+] @constant.macro
 
 "#include" @include
 
@@ -128,10 +128,14 @@
 
 [
  (type_identifier)
- (primitive_type)
  (sized_type_specifier)
  (type_descriptor)
 ] @type
+
+(primitive_type) @type.builtin
+
+(preproc_def
+  name: (identifier) @preproc)
 
 (sizeof_expression value: (parenthesized_expression (identifier) @type))
 
