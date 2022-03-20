@@ -46,6 +46,7 @@ hlmap["keyword"] = "TSKeyword"
 hlmap["keyword.function"] = "TSKeywordFunction"
 hlmap["keyword.operator"] = "TSKeywordOperator"
 hlmap["keyword.return"] = "TSKeywordReturn"
+hlmap["keyword.using"] = "TSUsingDeclaration"
 
 hlmap["label"] = "TSLabel"
 
@@ -57,9 +58,12 @@ hlmap["none"] = "TSNone"
 hlmap["number"] = "TSNumber"
 
 hlmap["operator"] = "TSOperator"
+hlmap["operator.insertion"] = "TSOperatorInsertion"
 
 hlmap["parameter"] = "TSParameter"
 hlmap["parameter.reference"] = "TSParameterReference"
+hlmap["reference.declarator"] = "TSReferenceDeclarator"
+hlmap["pointer.declarator"] = "TSPointerDeclarator"
 
 hlmap["property"] = "TSProperty"
 
@@ -103,6 +107,8 @@ hlmap["type.builtin"] = "TSTypeBuiltin"
 
 hlmap["variable"] = "TSVariable"
 hlmap["variable.builtin"] = "TSVariableBuiltin"
+
+
 
 local function should_enable_vim_regex(config, lang)
   local additional_hl = config.additional_vim_regex_highlighting

@@ -46,20 +46,33 @@
 
 "#include" @include
 
+
+
+
+(pointer_declarator)
+  @pointer.declarator
+
+(parameter_declaration
+  declarator: (pointer_declarator)
+  @pointer.declarator)
+  
+(declaration
+  declarator: (init_declarator
+    declarator: (pointer_declarator)
+  @pointer.declarator))
+
+
 [
   "="
 
   "-"
-  "*"
   "/"
   "+"
   "%"
 
   "~"
   "|"
-  "&"
   "^"
-  "<<"
   ">>"
 
   "->"
@@ -88,6 +101,7 @@
   "--"
   "++"
 ] @operator
+
 
 [
  (true)
@@ -170,8 +184,6 @@
 (parameter_declaration
   declarator: (identifier) @parameter)
 
-(parameter_declaration
-  declarator: (pointer_declarator) @parameter)
 
 (preproc_params (identifier) @parameter)
 

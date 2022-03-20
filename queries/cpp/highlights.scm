@@ -3,8 +3,6 @@
 ((identifier) @field
  (#match? @field "(^_|^m_|_$)"))
 
-(parameter_declaration
-  declarator: (reference_declarator) @parameter)
 ; function(Foo ...foo)
 (variadic_parameter_declaration
   declarator: (variadic_declarator
@@ -42,6 +40,22 @@
   value: (qualified_identifier (identifier) @constant))
 (namespace_definition
   name: (identifier) @namespace)
+
+(parameter_declaration
+  declarator: (reference_declarator)
+  @reference.declarator)
+
+(expression_statement
+  (binary_expression)
+  @operator.insertion)
+
+(declaration
+  declarator: (init_declarator
+    declarator: (reference_declarator)
+  @reference.declarator))
+
+"using"
+(using_declaration) @keyword.using
 
 (using_declaration . "using" . "namespace" . [(qualified_identifier) (identifier)] @namespace)
 
@@ -139,7 +153,6 @@
  "public"
  "template"
  "typename"
- "using"
  "virtual"
  "co_await"
  "concept"
@@ -148,6 +161,7 @@
  "constinit"
  (auto)
 ] @keyword
+
 
 [
  "co_yield"
