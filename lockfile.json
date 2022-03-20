@@ -26,6 +26,9 @@
   "commonlisp": {
     "revision": "c7e814975ab0d0d04333d1f32391c41180c58919"
   },
+  "cooklang": {
+    "revision": "5e113412aadb78955c27010daa4dbe1d202013cf"
+  },
   "cpp": {
     "revision": "a832195eb3685a279856bb480ce19cff19554b6d"
   },
@@ -84,7 +87,7 @@
     "revision": "cfcbca3f8f734773878e00d7bfcedea98eb10be2"
   },
   "glimmer": {
-    "revision": "594c27a0e1fae433b51f3dda0008bb6bbb659b53"
+    "revision": "07669a35c06a1fc8e74d16e9854efa8af134a4e9"
   },
   "glsl": {
     "revision": "ffb93961426926554a0ba4a389ea6e9d6fafdea9"
@@ -108,7 +111,7 @@
     "revision": "4770eb21a36307c156cfd2555ddd8e10c304fdc3"
   },
   "haskell": {
-    "revision": "621fd837538b32880ddc70c20c6fe3dda2b97017"
+    "revision": "ed976b81b00ce7b72b99bca75e7a616cc526220c"
   },
   "hcl": {
     "revision": "3cb7fc28247efbcb2973b97e71c78838ad98a583"
@@ -207,7 +210,7 @@
     "revision": "924aadaf5dea2a6074d72027b064f939acf32e20"
   },
   "prisma": {
-    "revision": "74a721e8eed1a4a25cf495d45974ba24f315f81a"
+    "revision": "bf0833cbedb2c5b39250f5ba900f1239a16c6749"
   },
   "pug": {
     "revision": "5875f9a7d94836708119b0a1102bb5792e8bf673"
