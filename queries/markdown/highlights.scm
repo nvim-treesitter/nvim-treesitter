@@ -80,3 +80,11 @@
   (emphasis_delimiter)
 ] @_conceal
 (#set! conceal ""))
+
+(inline_link 
+  ["]"] @conceal
+  (#set! conceal " "))
+
+(inline_link 
+  "["  @conceal
+  (#set! conceal ""))
