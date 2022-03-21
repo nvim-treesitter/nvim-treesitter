@@ -74,8 +74,9 @@
 (shortcut_link "]" @punctuation.delimiter)
 
 ([
-   (info_string)
-   (fenced_code_block_delimiter)
-   (code_span_delimiter)
- ] @_conceal
- (#set! conceal ""))
+  (info_string)
+  (fenced_code_block_delimiter)
+  (code_span_delimiter)
+  (emphasis_delimiter)
+] @_conceal
+(#set! conceal ""))
