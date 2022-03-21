@@ -12,3 +12,5 @@
 "]" @punctuation.bracket
 "{" @punctuation.bracket
 "}" @punctuation.bracket
+
+(("\"" @conceal) (#set! conceal ""))

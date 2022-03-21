@@ -150,6 +150,8 @@ effect on highlighting. We will work on improving highlighting in the near futur
 @attribute for e.g. Python decorators
 ```
 
+@conceal followed by `(#set! conceal "")` for captures that are not used for highlights but only for concealing.
+
 #### Variables
 
 ```
@@ -190,6 +192,10 @@ Used for xml-like tags
 @tag.delimiter
 ```
 
+#### Conceal
+
+@conceal followed by `(#set! conceal "")` for captures that are not used for highlights but only for concealing.
+
 ### Locals
 
 ```
@@ -213,6 +219,7 @@ Used for xml-like tags
 @reference
 @constructor
 ```
+
 
 #### Definition Scope
 
