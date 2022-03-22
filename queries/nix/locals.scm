@@ -1,11 +1,11 @@
 ; let bindings
-(let (bind . (attrpath) @definition.var)) @scope
+(let_expression (binding_set (binding . (attrpath) @definition.var))) @scope
 
 ; rec attrsets
-(rec_attrset (bind . (attrpath) @definition.field)) @scope
+(rec_attrset_expression (binding_set (binding . (attrpath) @definition.field))) @scope
 
 ; functions and parameters
-(function . [
+(function_expression . [
     (identifier) @definition.parameter
     (formals (formal . (identifier) @definition.parameter))
 ]) @scope
