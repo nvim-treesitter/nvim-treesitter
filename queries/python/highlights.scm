@@ -237,6 +237,17 @@
 
 ["for" "while" "break" "continue"] @repeat
 
+[
+  "try"
+  "except"
+  "raise"
+  "finally"
+] @exception
+
+(try_statement
+  (else_clause
+    "else" @exception))
+
 ["(" ")" "[" "]" "{" "}"] @punctuation.bracket
 
 (interpolation
