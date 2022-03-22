@@ -123,7 +123,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hocon": {
-    "revision": "5b4688cc57c773e69fe7dfc3f6b83c054557f4f1"
+    "revision": "bb412e2633f4a3611a4e16efe58d917093bb4782"
   },
   "html": {
     "revision": "161a92474a7bb2e9e830e48e76426f38299d99d1"
@@ -132,7 +132,7 @@
     "revision": "bfddd16b1cf78e0042fd1f6846a179f76a254e20"
   },
   "java": {
-    "revision": "8a6ab8e8adb119bc35b133040077b60f6cf539ea"
+    "revision": "881b84fe7078651af5077cc4cea4c85f9fddde3b"
   },
   "javascript": {
     "revision": "fdeb68ac8d2bd5a78b943528bb68ceda3aade2eb"
@@ -297,7 +297,7 @@
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
   },
   "vim": {
-    "revision": "78333e4c330baac80e8ee39472a65a25347ef252"
+    "revision": "c9d70082af14988842eb071c6c0b07e8d1d993ac"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
