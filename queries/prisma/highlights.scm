@@ -5,6 +5,7 @@
  "enum"
  "generator"
  "model"
+ "type"
 ] @keyword
 
 [
