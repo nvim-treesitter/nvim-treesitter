@@ -360,6 +360,7 @@ parser_config.zimbu = {
     files = {"src/parser.c"},
     -- optional entries:
     branch = "main", -- default branch in case of git repo if different from master
+    location = "", -- location of the tree-sitter parser in the (larger) repository
     generate_requires_npm = false, -- if stand-alone parser without npm dependencies
     requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
   },
