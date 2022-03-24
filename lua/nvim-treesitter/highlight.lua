@@ -18,6 +18,7 @@ hlmap["attribute"] = "TSAttribute"
 hlmap["boolean"] = "TSBoolean"
 
 hlmap["character"] = "TSCharacter"
+hlmap["character.special"] = "TSCharacterSpecial"
 
 hlmap["comment"] = "TSComment"
 
@@ -28,6 +29,9 @@ hlmap["constant.builtin"] = "TSConstBuiltin"
 hlmap["constant.macro"] = "TSConstMacro"
 
 hlmap["constructor"] = "TSConstructor"
+
+hlmap["debug"] = "TSDebug"
+hlmap["define"] = "TSDefine"
 
 hlmap["error"] = "TSError"
 hlmap["exception"] = "TSException"
@@ -61,6 +65,8 @@ hlmap["operator"] = "TSOperator"
 hlmap["parameter"] = "TSParameter"
 hlmap["parameter.reference"] = "TSParameterReference"
 
+hlmap["preproc"] = "TSPreProc"
+
 hlmap["property"] = "TSProperty"
 
 hlmap["punctuation.delimiter"] = "TSPunctDelimiter"
@@ -68,6 +74,8 @@ hlmap["punctuation.bracket"] = "TSPunctBracket"
 hlmap["punctuation.special"] = "TSPunctSpecial"
 
 hlmap["repeat"] = "TSRepeat"
+
+hlmap["storageclass"] = "TSStorageClass"
 
 hlmap["string"] = "TSString"
 hlmap["string.regex"] = "TSStringRegex"
@@ -97,8 +105,12 @@ hlmap["text.note"] = "TSNote"
 hlmap["text.warning"] = "TSWarning"
 hlmap["text.danger"] = "TSDanger"
 
+hlmap["todo"] = "TSTodo"
+
 hlmap["type"] = "TSType"
 hlmap["type.builtin"] = "TSTypeBuiltin"
+hlmap["type.qualifier"] = "TSTypeQualifier"
+hlmap["type.definition"] = "TSTypeDefinition"
 
 hlmap["variable"] = "TSVariable"
 hlmap["variable.builtin"] = "TSVariableBuiltin"
