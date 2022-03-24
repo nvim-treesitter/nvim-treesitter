@@ -12,7 +12,7 @@
     "revision": "e348e8ec5efd3aac020020e4af53d2ff18f393a9"
   },
   "c_sharp": {
-    "revision": "352a4630c81a7a5cbd3bc67327743bd8d38f2dd2"
+    "revision": "5b6ae1f88e741b9ed738891ad1362fb9f2041671"
   },
   "clojure": {
     "revision": "1b24766fe9feacb8f5006233fe5c2ebd0ba31eff"
@@ -45,7 +45,7 @@
     "revision": "6a25376685d1d47968c2cef06d4db8d84a70025e"
   },
   "devicetree": {
-    "revision": "fa70098cd70393f84785f85cdc6a45299b59cd5b"
+    "revision": "877adbfa0174d25894c40fa75ad52d4515a36368"
   },
   "dockerfile": {
     "revision": "189b6b1f86822a61a6203c278cbe2a91824b62e6"
@@ -93,7 +93,7 @@
     "revision": "ffb93961426926554a0ba4a389ea6e9d6fafdea9"
   },
   "go": {
-    "revision": "0fa917a7022d1cd2e9b779a6a8fc5dc7fad69c75"
+    "revision": "76be132fef9bc397ff2a6df519b2e68c6d54a300"
   },
   "godot_resource": {
     "revision": "b6ef0768711086a86b3297056f9ffb5cc1d77b4a"
@@ -201,7 +201,7 @@
     "revision": "bbf86084d9b7eb4768f3fb9fe094b3e0600057b1"
   },
   "php": {
-    "revision": "0ce134234214427b6aeb2735e93a307881c6cd6f"
+    "revision": "ead3e4cc5f54602a6b54826c5d6881c9a9da15af"
   },
   "phpdoc": {
     "revision": "d9150d4cb5941f6ff10adba89bfa1f11f4b05b37"
@@ -267,7 +267,7 @@
     "revision": "98274d94ec33e994e8354d9ddfdef58cca471294"
   },
   "swift": {
-    "revision": "30ab5e1ac37d027f1d84cfb62d719559e34cf851"
+    "revision": "b5105ae530f50789a4a2ec6801857ecac23678fb"
   },
   "teal": {
     "revision": "fcc5f6f4d194dede4e676834ff28a506e39e17b4"
