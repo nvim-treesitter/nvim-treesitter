@@ -262,7 +262,7 @@ function M.get_capture_matches(bufnr, captures, query_group, root, lang)
   end
   local strip_captures = {}
   for i, capture in ipairs(captures) do
-    if not capture:sub(1, 1) == "@" then
+    if capture:sub(1, 1) ~= "@" then
       error 'Captures must start with "@"'
       return
     end
