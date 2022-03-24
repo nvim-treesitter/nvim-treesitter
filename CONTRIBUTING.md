@@ -91,8 +91,10 @@ effect on highlighting. We will work on improving highlighting in the near futur
 
 ```
 @comment
+@debug
 @error for error `ERROR` nodes.
 @none to disable completely the highlight
+@preproc
 @punctuation.delimiter for `;` `.` `,`
 @punctuation.bracket for `()` or `{}`
 @punctuation.special for symbols with special meaning like `{}` in string interpolation.
@@ -109,6 +111,7 @@ effect on highlighting. We will work on improving highlighting in the near futur
 @string.escape
 @string.special
 @character
+@character.special
 @number
 @boolean
 @float
@@ -142,9 +145,12 @@ effect on highlighting. We will work on improving highlighting in the near futur
 @operator (for symbolic operators, e.g. `+`, `*`)
 @exception (e.g. `throw`, `catch`)
 @include keywords for including modules (e.g. import/from in Python)
+@storageclass
 
 @type
 @type.builtin
+@type.definition
+@type.qualifier
 @namespace for identifiers referring to namespaces
 @symbol for identifiers referring to symbols
 @attribute for e.g. Python decorators
@@ -178,6 +184,8 @@ Mainly for markup languages.
 @text.note
 @text.warning
 @text.danger
+
+@todo
 ```
 
 #### Tags

@@ -490,6 +490,10 @@ Boolean literals: `True` and `False` in Python.
 `TSCharacter`
 Character literals: `'a'` in C.
 
+						       *hl-TSCharacterSpecial*
+`TSCharacterSpecial`
+Special characters.
+
 								*hl-TSComment*
 `TSComment`
 Line comments and block comments.
@@ -514,6 +518,14 @@ Constants defined by macros: `NULL` in C.
 							    *hl-TSConstructor*
 `TSConstructor`
 Constructor calls and definitions: `{}` in Lua, and Java constructors.
+
+								  *hl-TSDebug*
+`TSDebug`
+Debugging statements.
+
+								 *hl-TSDefine*
+`TSDefine`
+Preprocessor #define statements.
 
 								  *hl-TSError*
 `TSError`
@@ -602,6 +614,10 @@ Parameters of a function.
 `TSParameterReference`
 References to parameters of a function.
 
+								*hl-TSPreProc*
+`TSPreProc`
+Preprocessor #if, #else, #endif, etc.
+
 							       *hl-TSProperty*
 `TSProperty`
 Same as `TSField`.
@@ -621,6 +637,11 @@ Special punctuation that doesn't fit into the previous categories.
 								 *hl-TSRepeat*
 `TSRepeat`
 Keywords related to loops: `for`, `while`, etc.
+
+							     *hl-StorageClass*
+`TSStorageClass`
+Keywords that affect how a variable is stored: `static`, `comptime`, `extern`,
+etc.
 
 								 *hl-TSString*
 `TSString`
@@ -715,6 +736,10 @@ Text representation of a warning note.
 `TSDanger`
 Text representation of a danger note.
 
+								   *hl-TSTodo*
+`TSTodo`
+Anything that needs extra attention, such as keywords like TODO or FIXME.
+
 								   *hl-TSType*
 `TSType`
 Type (and class) definitions and annotations.
@@ -722,6 +747,14 @@ Type (and class) definitions and annotations.
 							    *hl-TSTypeBuiltin*
 `TSTypeBuiltin`
 Built-in types: `i32` in Rust.
+
+							  *hl-TSTypeQualifier*
+`TSTypeQualifier`
+Qualifiers on types, e.g. `const` or `volatile` in C or `mut` in Rust.
+
+							 *hl-TSTypeDefinition*
+`TSTypeDefinition`
+Type definitions, e.g. `typedef` in C.
 
 							       *hl-TSVariable*
 `TSVariable`
