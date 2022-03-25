@@ -3,8 +3,7 @@
   (declaration)
 ] @indent
 
-[
-  "}"
-] @branch
+(block ("}") @branch)
+("}") @dedent
 
 (comment) @ignore
