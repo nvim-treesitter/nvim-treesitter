@@ -977,6 +977,15 @@ list.cooklang = {
   maintainers = { "@addcninblue" },
 }
 
+list.elvish = {
+  install_info = {
+    url = "https://github.com/ckafi/tree-sitter-elvish",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@ckafi" },
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
