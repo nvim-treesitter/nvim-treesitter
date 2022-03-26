@@ -827,6 +827,16 @@ list.vim = {
   maintainers = { "@vigoux" },
 }
 
+list.help = {
+  install_info = {
+    url = "https://github.com/vigoux/tree-sitter-vimdoc",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  filetype = "help",
+  maintainers = { "@vigoux" },
+  experimental = true,
+}
+
 list.json5 = {
   install_info = {
     url = "https://github.com/Joakker/tree-sitter-json5",
