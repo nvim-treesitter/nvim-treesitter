@@ -1,23 +1,19 @@
 (comment) @comment
 
-(if "if" @conditional)
-(if (elif "elif" @conditional))
+["if" "elif"] @conditional
 (if (else "else" @conditional))
 
-(while "while" @repeat)
+["while" "for"] @repeat
 (while (else "else" @repeat))
-(for "for" @repeat)
 (for (else "else" @repeat))
 
-(try "try" @exception)
-(try (catch "catch" @exception))
+["try" "catch" "finally"] @exception
 (try (else "else" @exception))
-(try (finally "finally" @exception))
 
-(import "use" @include)
+"use" @include
 (import (bareword) @string.special)
 
-(wildcard ["*" "**" "?"] @string.special)
+["*" "**" "?"] @string.special
 
 (command argument: (bareword) @parameter)
 (command head: (identifier) @function)
@@ -25,14 +21,12 @@
  (#eq? @keyword.return "return"))
 ((command (identifier) @keyword.operator)
  (#any-of? @keyword.operator "and" "or" "coalesce"))
-((command head: _ @function)
- (#any-of? @function
-  "+" "-" "*" "/" "%" "<" "<=""==" "!=" ">"
-  ">=" "<s" "<=s" "==s" "!=s" ">s" ">=s"
-))
+[
+ "+" "-" "*" "/" "%" "<" "<=""==" "!=" ">"
+ ">=" "<s" "<=s" "==s" "!=s" ">s" ">=s"
+] @function
 
-(pipeline "|" @operator)
-(redirection [">" "<" ">>" "<>"] @operator)
+[">" "<" ">>" "<>" "|"] @operator
 
 (io_port) @number
 
@@ -43,20 +37,17 @@
 (parameter_list) @parameter
 (parameter_list "|" @punctuation.bracket)
 
+["var" "set" "tmp" "del"] @keyword
 (variable_declaration
-  "var" @keyword
   (lhs (identifier) @variable))
 
 (variable_assignment
-  "set" @keyword
   (lhs (identifier) @variable))
 
 (temporary_assignment
-  "tmp" @keyword
   (lhs (identifier) @variable))
 
 (variable_deletion
-  "del" @keyword
   (identifier) @variable)
 
 
