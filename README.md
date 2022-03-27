@@ -382,8 +382,7 @@ Once the parser is installed, you can update it (from the latest revision of the
 Note that neither `:TSInstall` nor `:TSInstallFromGrammar` copy query files from the grammar repository.
 If you want your installed grammar to be useful, you must manually [add query files](#adding-queries) to your local nvim-treesitter installation.
 Note also that module functionality is only triggered if your language's filetype is correctly identified.
-If Neovim does not detect your language's filetype by default, you can add a short Vimscript file to nvim-treesitter's `ftdetect` runtime directory.
-See [Neovim's documentation](https://neovim.io/doc/user/filetype.html#new-filetype) on how to use Vimscript to detect a filetype.
+If Neovim does not detect your language's filetype by default, you can use [Neovim's `vim.filetype.add()`](https://neovim.io/doc/user/lua.html#vim.filetype.add()) (0.7.0 and above) to add a custom detection rule.
 
 If you use a git repository for your parser and want to use a specific version, you can set the `revision` key
 in the `install_info` table for you parser config.
