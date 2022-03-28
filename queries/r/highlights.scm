@@ -15,7 +15,9 @@
 (identifier) @variable
 
 (formal_parameters (identifier) @parameter)
-(formal_parameters (default_parameter (identifier) @parameter))
+(formal_parameters
+ (default_parameter name: (identifier) @parameter))
+
 ; Operators
 [
  "="
