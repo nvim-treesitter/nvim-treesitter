@@ -10,3 +10,9 @@ foo <- function(x) {
     )
   )
 }
+
+baz <- function(l) {
+  inner(l, function(x) {
+
+  })
+}
