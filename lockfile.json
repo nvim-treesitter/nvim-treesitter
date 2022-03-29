@@ -21,7 +21,7 @@
     "revision": "5020572408a386d5d2dfac3516584f5edda7a49b"
   },
   "comment": {
-    "revision": "6975eb268f42df2afc313f96c0693e284685dba7"
+    "revision": "a37ca370310ac6f89b6e0ebf2b86b2219780494e"
   },
   "commonlisp": {
     "revision": "c7e814975ab0d0d04333d1f32391c41180c58919"
@@ -57,7 +57,7 @@
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
   "elixir": {
-    "revision": "c8d69759a7aacb198a854f28c56b038c0b44637d"
+    "revision": "60863fc6e27d60cf4b1917499ed2259f92c7800e"
   },
   "elm": {
     "revision": "5128296ba8542853d59e6b7c8dfe3d1fb9a637ea"
@@ -267,7 +267,7 @@
     "revision": "98274d94ec33e994e8354d9ddfdef58cca471294"
   },
   "swift": {
-    "revision": "d5806eff60f55fa72d51a803c4aceb5a7c4383fb"
+    "revision": "0b42fcf9e1d7fdbc5775ddcc233d28b24a75f4b2"
   },
   "teal": {
     "revision": "fcc5f6f4d194dede4e676834ff28a506e39e17b4"
@@ -282,13 +282,13 @@
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
   },
   "tsx": {
-    "revision": "e8e8e8dc2745840b036421b4e43286750443cb13"
+    "revision": "f2e2dd6d52ae266e86b71e0773345e5cb729f6ae"
   },
   "turtle": {
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
   },
   "typescript": {
-    "revision": "e8e8e8dc2745840b036421b4e43286750443cb13"
+    "revision": "f2e2dd6d52ae266e86b71e0773345e5cb729f6ae"
   },
   "vala": {
     "revision": "31a08784cc74b61cb10c5d8314cf8a8aa98aa9a8"
