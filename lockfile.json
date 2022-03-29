@@ -119,6 +119,9 @@
   "heex": {
     "revision": "592e22292a367312c35e13de7fdb888f029981d6"
   },
+  "help": {
+    "revision": "5e4851189b3d005275263cfc7f5a4a6ea2dbdf9b"
+  },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
@@ -201,7 +204,7 @@
     "revision": "bbf86084d9b7eb4768f3fb9fe094b3e0600057b1"
   },
   "php": {
-    "revision": "4b56881bad7b2cc322e7a77a2802b297b5c6e644"
+    "revision": "3c17a28da38afac41332d3ce79bbd8951867f346"
   },
   "phpdoc": {
     "revision": "d9150d4cb5941f6ff10adba89bfa1f11f4b05b37"
@@ -298,9 +301,6 @@
   },
   "vim": {
     "revision": "c9d70082af14988842eb071c6c0b07e8d1d993ac"
-  },
-  "help": {
-    "revision": "5e4851189b3d005275263cfc7f5a4a6ea2dbdf9b"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
