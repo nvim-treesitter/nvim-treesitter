@@ -179,7 +179,7 @@ function M.select_download_commands(repo, project_name, cache_folder, revision, 
     local url = repo.url:gsub(".git$", "")
 
     local folder_rev = revision
-    if is_github and revision:match('^v%d') then
+    if is_github and revision:match "^v%d" then
       folder_rev = revision:sub(2)
     end
 
