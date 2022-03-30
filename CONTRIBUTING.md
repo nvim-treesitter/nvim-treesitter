@@ -287,5 +287,5 @@ the node describing the language and `@content` to describe the injection region
 @zero_indent    ; Sets this node at position 0 (no indent)
 ```
 
-[Zulip]: nvim-treesitter.zulipchat.com
+[Zulip]: https://nvim-treesitter.zulipchat.com
 [Matrix channel]: https://matrix.to/#/#nvim-treesitter:matrix.org
