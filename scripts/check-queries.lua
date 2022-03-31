@@ -65,9 +65,9 @@ local function do_check()
           if query then
             for _, capture in ipairs(query.captures) do
               local is_valid = (
-                  vim.startswith(capture, "_") -- Helpers.
-                  or vim.tbl_contains(captures[query_type], capture)
-                )
+                vim.startswith(capture, "_") -- Helpers.
+                or vim.tbl_contains(captures[query_type], capture)
+              )
               if not is_valid then
                 local error = string.format("(x) Invalid capture @%s in %s for %s.", capture, query_type, lang)
                 io_print(error)
