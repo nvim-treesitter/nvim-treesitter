@@ -226,8 +226,11 @@
   "return"
   "yield"
 ] @keyword.return
+(yield "from" @keyword.return)
 
-["from" "import"] @include
+(import_from_statement "from" @include)
+"import" @include
+
 (aliased_import "as" @include)
 
 ["if" "elif" "else" "match" "case"] @conditional
