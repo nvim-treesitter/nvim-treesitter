@@ -62,6 +62,9 @@
   "elm": {
     "revision": "5128296ba8542853d59e6b7c8dfe3d1fb9a637ea"
   },
+  "elvish": {
+    "revision": "e50787cadd3bc54f6d9c0704493a79078bb8a4e5"
+  },
   "erlang": {
     "revision": "fab680273af1a8f5cc0c3a0c62cbf5b1bea71f39"
   },
