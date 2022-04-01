@@ -49,6 +49,15 @@ list.javascript = {
   maintainers = { "@steelsojka" },
 }
 
+list.rego = {
+  install_info = {
+    url = "https://github.com/FallenAngel97/tree-sitter-rego",
+    files = { "src/parser.c" },
+  },
+  maintainers = { '@FallenAngel97' },
+  filetype = 'rego',
+}
+
 list.c = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-c",
