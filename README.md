@@ -179,6 +179,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [eex](https://github.com/connorlay/tree-sitter-eex) (maintained by @connorlay)
 - [x] [elixir](https://github.com/elixir-lang/tree-sitter-elixir) (maintained by @jonatanklosko, @connorlay)
 - [ ] [elm](https://github.com/elm-tooling/tree-sitter-elm)
+- [x] [elvish](https://github.com/ckafi/tree-sitter-elvish) (maintained by @ckafi)
 - [x] [erlang](https://github.com/AbstractMachinesLab/tree-sitter-erlang) (maintained by @ostera)
 - [x] [fennel](https://github.com/travonted/tree-sitter-fennel) (maintained by @TravonteD)
 - [x] [fish](https://github.com/ram02z/tree-sitter-fish) (maintained by @ram02z)
