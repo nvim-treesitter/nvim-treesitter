@@ -11,6 +11,8 @@
   (formal_parameters)
 ] @indent
 
+(expression_statement (method_invocation) @indent)
+
 [
   "("
   ")"
@@ -22,7 +24,6 @@
 
 [
   "}"
-  ")"
 ] @indent_end
 
 (line_comment) @ignore
