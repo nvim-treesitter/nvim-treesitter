@@ -11,3 +11,5 @@
   (block_end)
   (tuple_end)
 ] @branch
+
+(block_end) @indent_end
