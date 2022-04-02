@@ -12,3 +12,5 @@
 (string_definition) @string
 (number) @number
 (operator) @operator
+(true) @boolean
+(false) @boolean
