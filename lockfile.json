@@ -303,7 +303,7 @@
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
   },
   "vim": {
-    "revision": "c9d70082af14988842eb071c6c0b07e8d1d993ac"
+    "revision": "5b5ac5b18af995e6479450a8d1d12bf5cc2a4394"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
@@ -315,6 +315,6 @@
     "revision": "8e9d175982afcefa3dac8ca20d40d1643accd2bd"
   },
   "zig": {
-    "revision": "42e93d02ca945094699e2dc4de785bbaf8f740ec"
+    "revision": "4cff36421dae9c05388b86cd64d2bab4b9ed6676"
   }
 }
