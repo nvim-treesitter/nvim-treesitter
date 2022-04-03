@@ -54,8 +54,8 @@ list.rego = {
     url = "https://github.com/FallenAngel97/tree-sitter-rego",
     files = { "src/parser.c" },
   },
-  maintainers = { '@FallenAngel97' },
-  filetype = 'rego',
+  maintainers = { "@FallenAngel97" },
+  filetype = "rego",
 }
 
 list.c = {
