@@ -239,6 +239,9 @@
   "regex": {
     "revision": "e1cfca3c79896ff79842f057ea13e529b66af636"
   },
+  "rego": {
+    "revision": "4dbe6681adc9dd3866db7a511b9135663b954f7e"
+  },
   "rst": {
     "revision": "b74770c0166f28c1a0ab293513a78712ca1c338b"
   },
