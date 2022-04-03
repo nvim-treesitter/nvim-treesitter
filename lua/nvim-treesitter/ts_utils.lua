@@ -134,7 +134,19 @@ function M.get_node_at_cursor(winnr, ignore_injected_langs)
   if not root_lang_tree then
     return
   end
-  local root = M.get_root_for_position(cursor_range[1], cursor_range[2], root_lang_tree, ignore_injected_langs)
+
+  local root
+  if ignore_injected_langs then
+    for _, tree in ipairs(root_lang_tree:trees()) do
+      local tree_root = tree:root()
+      if tree_root and M.is_in_node_range(tree_root, cursor_range[1], cursor_range[2]) then
+        root = tree_root
+        break
+      end
+    end
+  else
+    root = M.get_root_for_position(cursor_range[1], cursor_range[2], root_lang_tree)
+  end
 
   if not root then
     return
@@ -143,7 +155,7 @@ function M.get_node_at_cursor(winnr, ignore_injected_langs)
   return root:named_descendant_for_range(cursor_range[1], cursor_range[2], cursor_range[1], cursor_range[2])
 end
 
-function M.get_root_for_position(line, col, root_lang_tree, exclude_child_trees)
+function M.get_root_for_position(line, col, root_lang_tree)
   if not root_lang_tree then
     if not parsers.has_parser() then
       return
@@ -152,12 +164,7 @@ function M.get_root_for_position(line, col, root_lang_tree, exclude_child_trees)
     root_lang_tree = parsers.get_parser()
   end
 
-  local lang_tree
-  if exclude_child_trees then
-    lang_tree = root_lang_tree
-  else
-    lang_tree = root_lang_tree:language_for_range { line, col, line, col }
-  end
+  local lang_tree = root_lang_tree:language_for_range { line, col, line, col }
 
   for _, tree in ipairs(lang_tree:trees()) do
     local root = tree:root()
