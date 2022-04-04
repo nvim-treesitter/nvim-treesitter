@@ -540,6 +540,7 @@ require("nvim-treesitter.install").prefer_git = true
 #### I want to use a HTTP proxy for downloading the parsers
 
 You can either configure curl to use additional CLI arguments in your Lua config:
+
 ```lua
 require("nvim-treesitter.install").command_extra_args = {
     curl = { "--proxy", "<proxy url>" },
@@ -551,13 +552,15 @@ or you can configure git via `.gitconfig` and use git instead of curl
 require("nvim-treesitter.install").prefer_git = true
 ```
 
-#### I want to use a mirror instead of "https://github.com/"
+#### I want to use a mirror instead of "https://github.com/xxx/tree-sitter-xxx"
 
 In your Lua config:
 
+1. Just simply replace the "https://github.com":  
+
 ```lua
 for _, config in pairs(require("nvim-treesitter.parsers").get_parser_configs()) do
-  config.install_info.url = config.install_info.url:gsub("https://github.com/", "something else")
+  config.install_info.url = config.install_info.url:gsub("https://github.com/", "https://gitee.com/")
 end
 
 require'nvim-treesitter.configs'.setup {
@@ -565,3 +568,18 @@ require'nvim-treesitter.configs'.setup {
     --
 }
 ```
+
+2. More granular(replace the name of auther):  
+You could replace "https://github.com/tree-sitter/tree-sitter-typescript" with "https://gitee.com/other-xxx-mirror/tree-sitter-typescript"
+
+```lua
+for _, config in pairs(require("nvim-treesitter.parsers").get_parser_configs()) do
+  config.install_info.url = config.install_info.url:gsub("https://github.com/%a+/", "https://gitee.com/other-xx-mirror/")
+end
+
+require'nvim-treesitter.configs'.setup {
+    --
+    --
+}
+```
+
