@@ -24,13 +24,10 @@
     (function_call))) @dedent
 
 [
-  "do"
   "end"
   "then"
   "until"
-  "{"
   "}"
-  "("
   ")"
   "elseif"
   (elseif_statement)
