@@ -53,7 +53,7 @@
 
 [
   "shape"
-  "tupe"
+  "tuple"
   (array_type)
   "bool"
   "float"
