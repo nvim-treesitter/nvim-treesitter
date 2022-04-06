@@ -11,4 +11,9 @@
   arguments: (arguments (string content: _ @vim)))
   (#any-of? @_vimcmd_identifier "vim.cmd" "vim.api.nvim_command" "vim.api.nvim_exec"))
 
+((function_call
+  name: (_) @_vimcmd_identifier
+  arguments: (arguments (string content: _ @query) .))
+  (#eq? @_vimcmd_identifier "vim.treesitter.query.set_query"))
+
 (comment) @comment
