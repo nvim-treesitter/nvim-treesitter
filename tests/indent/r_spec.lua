@@ -27,6 +27,7 @@ describe("indent R:", function()
     run:new_line("func.R", { on_line = 2, text = "a <- a + 1", indent = 4 })
     run:new_line("func.R", { on_line = 6, text = "0,", indent = 6 })
     run:new_line("func.R", { on_line = 6, text = "0,", indent = 6 })
+    run:new_line("func.R", { on_line = 16, text = "x <- x + 1", indent = 4 })
 
     run:new_line("loop.R", { on_line = 1, text = "x <- x + 1", indent = 0 })
     run:new_line("loop.R", { on_line = 3, text = "x <- x + 1", indent = 2 })

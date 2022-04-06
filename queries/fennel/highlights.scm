@@ -93,10 +93,16 @@
  (#any-of? @include
   "require" "require-macros" "import-macros" "include"))
 
+[
+  "collect"
+  "icollect"
+  "accumulate"
+] @function.macro
+
 ((symbol) @function.macro
  (#any-of? @function.macro
-  "->" "->>" "-?>" "-?>>" "?." "accumulate" "collect" "doto" "icollect"
-  "macro" "macrodebug" "partial" "pick-args" "pick-values" "with-open"))
+  "->" "->>" "-?>" "-?>>" "?." "doto" "macro" "macrodebug" "partial" "pick-args"
+  "pick-values" "with-open"))
 
 ; Lua builtins
 ((symbol) @constant.builtin

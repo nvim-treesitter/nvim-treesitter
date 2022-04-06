@@ -30,5 +30,6 @@ describe("indent Java:", function()
       XFAIL
     )
     run:new_line("issue_2583.java", { on_line = 4, text = "int x = 1;", indent = 4 })
+    run:new_line("method_chaining.java", { on_line = 4, text = '.append("b");', indent = 6 })
   end)
 end)

@@ -3,6 +3,7 @@
   (paren_list)
   (special)
   (pipe)
+  (call)
   "|>"
   "if"
   "else"
@@ -15,10 +16,6 @@
   "}"
   ")"
 ] @branch
-
-
-((call) @aligned_indent
-  (#set! "delimiter" "()"))
 
 ((formal_parameters (identifier)) @aligned_indent
  (#set! "delimiter" "()"))

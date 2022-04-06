@@ -179,6 +179,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [eex](https://github.com/connorlay/tree-sitter-eex) (maintained by @connorlay)
 - [x] [elixir](https://github.com/elixir-lang/tree-sitter-elixir) (maintained by @jonatanklosko, @connorlay)
 - [ ] [elm](https://github.com/elm-tooling/tree-sitter-elm)
+- [x] [elvish](https://github.com/ckafi/tree-sitter-elvish) (maintained by @ckafi)
 - [x] [erlang](https://github.com/AbstractMachinesLab/tree-sitter-erlang) (maintained by @ostera)
 - [x] [fennel](https://github.com/travonted/tree-sitter-fennel) (maintained by @TravonteD)
 - [x] [fish](https://github.com/ram02z/tree-sitter-fish) (maintained by @ram02z)
@@ -198,6 +199,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [ ] [haskell](https://github.com/tree-sitter/tree-sitter-haskell)
 - [x] [hcl](https://github.com/MichaHoffmann/tree-sitter-hcl) (maintained by @MichaHoffmann)
 - [x] [heex](https://github.com/connorlay/tree-sitter-heex) (maintained by @connorlay)
+- [x] [help](https://github.com/vigoux/tree-sitter-vimdoc) (experimental, maintained by @vigoux)
 - [x] [hjson](https://github.com/winston0410/tree-sitter-hjson) (maintained by @winston0410)
 - [x] [hocon](https://github.com/antosha417/tree-sitter-hocon) (maintained by @antosha417)
 - [x] [html](https://github.com/tree-sitter/tree-sitter-html) (maintained by @TravonteD)
@@ -236,6 +238,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [r](https://github.com/r-lib/tree-sitter-r) (maintained by @jimhester)
 - [x] [rasi](https://github.com/Fymyte/tree-sitter-rasi) (maintained by @Fymyte)
 - [x] [regex](https://github.com/tree-sitter/tree-sitter-regex) (maintained by @theHamsta)
+- [x] [rego](https://github.com/FallenAngel97/tree-sitter-rego) (maintained by @FallenAngel97)
 - [x] [rst](https://github.com/stsewd/tree-sitter-rst) (maintained by @stsewd)
 - [x] [ruby](https://github.com/tree-sitter/tree-sitter-ruby) (maintained by @TravonteD)
 - [x] [rust](https://github.com/tree-sitter/tree-sitter-rust) (maintained by @vigoux)
@@ -382,8 +385,7 @@ Once the parser is installed, you can update it (from the latest revision of the
 Note that neither `:TSInstall` nor `:TSInstallFromGrammar` copy query files from the grammar repository.
 If you want your installed grammar to be useful, you must manually [add query files](#adding-queries) to your local nvim-treesitter installation.
 Note also that module functionality is only triggered if your language's filetype is correctly identified.
-If Neovim does not detect your language's filetype by default, you can add a short Vimscript file to nvim-treesitter's `ftdetect` runtime directory.
-See [Neovim's documentation](https://neovim.io/doc/user/filetype.html#new-filetype) on how to use Vimscript to detect a filetype.
+If Neovim does not detect your language's filetype by default, you can use [Neovim's `vim.filetype.add()`](https://neovim.io/doc/user/lua.html#vim.filetype.add()) (0.7.0 and above) to add a custom detection rule.
 
 If you use a git repository for your parser and want to use a specific version, you can set the `revision` key
 in the `install_info` table for you parser config.

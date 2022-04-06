@@ -49,6 +49,15 @@ list.javascript = {
   maintainers = { "@steelsojka" },
 }
 
+list.rego = {
+  install_info = {
+    url = "https://github.com/FallenAngel97/tree-sitter-rego",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@FallenAngel97" },
+  filetype = "rego",
+}
+
 list.c = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-c",
@@ -827,6 +836,16 @@ list.vim = {
   maintainers = { "@vigoux" },
 }
 
+list.help = {
+  install_info = {
+    url = "https://github.com/vigoux/tree-sitter-vimdoc",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  filetype = "help",
+  maintainers = { "@vigoux" },
+  experimental = true,
+}
+
 list.json5 = {
   install_info = {
     url = "https://github.com/Joakker/tree-sitter-json5",
@@ -975,6 +994,15 @@ list.cooklang = {
     files = { "src/parser.c", "src/scanner.cc" },
   },
   maintainers = { "@addcninblue" },
+}
+
+list.elvish = {
+  install_info = {
+    url = "https://github.com/ckafi/tree-sitter-elvish",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@ckafi" },
 }
 
 local M = {
