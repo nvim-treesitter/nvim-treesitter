@@ -43,6 +43,14 @@ local list = setmetatable({}, {
   end,
 })
 
+list.scheme = {
+  install_info = {
+    url = "https://github.com/6cdh/tree-sitter-scheme",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@6cdh" },
+}
+
 list.javascript = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-javascript",
