@@ -1005,6 +1005,15 @@ list.elvish = {
   maintainers = { "@ckafi" },
 }
 
+list.astro = {
+  install_info = {
+    url = "https://github.com/virchau13/tree-sitter-astro",
+    branch = "master",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  maintainers = { "@virchau13" },
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
