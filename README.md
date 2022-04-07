@@ -158,6 +158,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 
 <!--This section of the README is automatically updated by a CI job-->
 <!--parserinfo-->
+- [x] [astro](https://github.com/virchau13/tree-sitter-astro) (maintained by @virchau13)
 - [x] [bash](https://github.com/tree-sitter/tree-sitter-bash) (maintained by @TravonteD)
 - [x] [beancount](https://github.com/polarmutex/tree-sitter-beancount) (maintained by @polarmutex)
 - [x] [bibtex](https://github.com/latex-lsp/tree-sitter-bibtex) (maintained by @theHamsta, @clason)
