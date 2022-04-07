@@ -1,4 +1,7 @@
 {
+  "astro": {
+    "revision": "58ef2b8bec6503fa002a899759b1a821835d3db6"
+  },
   "bash": {
     "revision": "275effdfc0edce774acf7d481f9ea195c6c403cd"
   },
