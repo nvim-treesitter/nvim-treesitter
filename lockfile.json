@@ -1,6 +1,6 @@
 {
   "astro": {
-    "revision": "58ef2b8bec6503fa002a899759b1a821835d3db6"
+    "revision": "df4ef25fefdb0bcecb002ca51404b5562f58c548"
   },
   "bash": {
     "revision": "275effdfc0edce774acf7d481f9ea195c6c403cd"
@@ -63,7 +63,7 @@
     "revision": "c68c4ad72f58014e4c303f1c8f982e503404f481"
   },
   "elm": {
-    "revision": "21eb42c759b3885e40ea0e7719c598dfe398f16e"
+    "revision": "9835f900e4df40277f0701d1bc0b6cee0853f81b"
   },
   "elvish": {
     "revision": "e50787cadd3bc54f6d9c0704493a79078bb8a4e5"
