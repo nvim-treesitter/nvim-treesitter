@@ -269,8 +269,8 @@ Toggle (enable if disabled, disable if enabled) {module} on the current
 buffer.
 A list of modules can be found at |:TSModuleInfo|
 
-								*:TSEnableAll*
-:TSEnableAll {module} [{language}]~
+								*:TSEnable*
+:TSEnable {module} [{language}]~
 
 Enable {module} for the session.
 If {language} is specified, enable module for the session only for this
@@ -278,8 +278,8 @@ particular language.
 A list of modules can be found at |:TSModuleInfo|
 A list of languages can be found at |:TSInstallInfo|
 
-							       *:TSDisableAll*
-:TSDisableAll {module} [{language}]~
+							       *:TSDisable*
+:TSDisable {module} [{language}]~
 
 Disable {module} for the session.
 If {language} is specified, disable module for the session only for this
@@ -287,8 +287,8 @@ particular language.
 A list of modules can be found at |:TSModuleInfo|
 A list of languages can be found at |:TSInstallInfo|
 
-								*:TSToggleAll*
-:TSToggleAll {module} [{language}]~
+								*:TSToggle*
+:TSToggle {module} [{language}]~
 
 Toggle (enable if disabled, disable if enabled) {module} for the session.
 If {language} is specified, toggle module for the session only for this
