@@ -6,7 +6,7 @@
 (character) @character
 (boolean) @boolean
 (string) @string
-[(comment)] @comment
+(comment) @comment
 
 ;; highlight for datum comment
 ;; copied from ../clojure/highlights.scm
@@ -38,20 +38,20 @@
 
 (list
  .
- (symbol) @f
+ (symbol) @_f
  .
  (list
    (symbol) @variable)
- (#eq? @f "lambda"))
+ (#eq? @_f "lambda"))
 
 (list
  .
- (symbol) @f
+ (symbol) @_f
  .
  (list
    (list
      (symbol) @variable))
- (#any-of? @f
+ (#any-of? @_f
   "let" "let*" "let-syntax" "let-values" "let*-values" "letrec" "letrec*" "letrec-syntax"))
 
 ;; operators
@@ -86,8 +86,8 @@
 
 (list
  .
- (symbol) @f
- (#eq? @f "quote")) @symbol
+ (symbol) @_f
+ (#eq? @_f "quote")) @symbol
 
 ;; library
 

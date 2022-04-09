@@ -46,6 +46,7 @@ local list = setmetatable({}, {
 list.scheme = {
   install_info = {
     url = "https://github.com/6cdh/tree-sitter-scheme",
+    branch = "main",
     files = { "src/parser.c" },
   },
   maintainers = { "@6cdh" },
