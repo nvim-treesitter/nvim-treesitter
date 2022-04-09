@@ -103,13 +103,13 @@ All modules are disabled by default and need to be activated explicitly in your 
 
 ```lua
 require'nvim-treesitter.configs'.setup {
-  -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = "maintained",
+  -- A list of parser names, or "all"
+  ensure_installed = { "c", "lua", "rust" },
 
-  -- Install languages synchronously (only applied to `ensure_installed`)
+  -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
 
-  -- List of parsers to ignore installing
+  -- List of parsers to ignore installing (for "all")
   ignore_install = { "javascript" },
 
   highlight = {
@@ -150,9 +150,8 @@ For `nvim-treesitter` to support a specific feature for a specific language requ
 
 The following is a list of languages for which a parser can be installed through `:TSInstall`; a checked box means that `nvim-treesitter` also contains queries at least for the `highlight` module.
 
-Experimental parsers are parsers that are maintained, but not stable enough for
-daily use yet. They are excluded from automatic installation when
-`ensure_installed` is set to `"maintained"`.
+Experimental parsers are parsers that have a maintainer but are not stable enough for
+daily use yet.
 
 We are looking for maintainers to add more parsers and to write query files for their languages. Check our [tracking issue](https://github.com/nvim-treesitter/nvim-treesitter/issues/2282) for open language requests.
 

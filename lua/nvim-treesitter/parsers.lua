@@ -1042,6 +1042,10 @@ function M.available_parsers()
 end
 
 function M.maintained_parsers()
+  require("nvim-treesitter.utils").notify(
+    "ensure_installed='maintained' will be removed April 30, 2022. Specify parsers explicitly or use 'all'.",
+    vim.log.levels.WARN
+  )
   local has_tree_sitter_cli = vim.fn.executable "tree-sitter" == 1 and vim.fn.executable "node" == 1
   return vim.tbl_filter(function(lang)
     return M.list[lang].maintainers
