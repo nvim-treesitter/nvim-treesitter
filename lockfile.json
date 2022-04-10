@@ -257,6 +257,9 @@
   "scala": {
     "revision": "ec6047f531e7d4c13787d4ff208b94a84de34165"
   },
+  "scheme": {
+    "revision": "a1d2233f4e5498bb305858323c93525e1dd165c0"
+  },
   "scss": {
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
   },
