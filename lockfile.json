@@ -18,7 +18,7 @@
     "revision": "5b6ae1f88e741b9ed738891ad1362fb9f2041671"
   },
   "clojure": {
-    "revision": "a9b3ea47e6e4cd07588b61ebeaefc5114691c631"
+    "revision": "879f0e726295807d917d576fcf9e1e432c4c20fc"
   },
   "cmake": {
     "revision": "5020572408a386d5d2dfac3516584f5edda7a49b"
@@ -168,7 +168,7 @@
     "revision": "7744b56f03ac1e5643fad23c9dd90837fe97291e"
   },
   "latex": {
-    "revision": "b71e4928a63a6d75bc1670004a5b5a98c850a149"
+    "revision": "972f88a0e87e171d4a064ae495bc0ff8eb132ffa"
   },
   "ledger": {
     "revision": "1050a25df55a62878102d10e524b5184b316b7ad"
@@ -282,7 +282,7 @@
     "revision": "98274d94ec33e994e8354d9ddfdef58cca471294"
   },
   "swift": {
-    "revision": "154f0368107ffa77eece93cbcb51b7fd49cc1055"
+    "revision": "897df54ad1b2d103dcab3df94f335fceefa230dc"
   },
   "teal": {
     "revision": "fcc5f6f4d194dede4e676834ff28a506e39e17b4"
