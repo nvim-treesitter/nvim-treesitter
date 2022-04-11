@@ -1031,7 +1031,7 @@ list.wgsl = {
     files = { "src/parser.c" },
   },
   maintainers = { "@szebniok" },
-  filetype = "wgsl"
+  filetype = "wgsl",
 }
 
 local M = {
