@@ -12,7 +12,7 @@
     (variable_identifier_declaration (identifier) @parameter))
 
 (struct_declaration
-    (identifier) @structure)
+    (identifier) @type)
 	
 (struct_declaration
 	(struct_member (variable_identifier_declaration (identifier) @field)))
