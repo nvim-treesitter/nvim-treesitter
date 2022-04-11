@@ -1025,6 +1025,15 @@ list.astro = {
   maintainers = { "@virchau13" },
 }
 
+list.wgsl = {
+  install_info = {
+    url = "https://github.com/szebniok/tree-sitter-wgsl",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@szebniok" },
+  filetype = "wgsl"
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
