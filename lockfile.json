@@ -114,7 +114,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "hack": {
-    "revision": "6921eaf90175552ba572d47678969f8cdb12e113"
+    "revision": "d434b4e6c9af0524b163d7a912c8ce79d2b1f778"
   },
   "haskell": {
     "revision": "ed976b81b00ce7b72b99bca75e7a616cc526220c"
@@ -168,7 +168,7 @@
     "revision": "7744b56f03ac1e5643fad23c9dd90837fe97291e"
   },
   "latex": {
-    "revision": "972f88a0e87e171d4a064ae495bc0ff8eb132ffa"
+    "revision": "ab9c1c59de5da1a8d8c629c81d856a6378b6f116"
   },
   "ledger": {
     "revision": "1050a25df55a62878102d10e524b5184b316b7ad"
@@ -297,13 +297,13 @@
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
   },
   "tsx": {
-    "revision": "f2e2dd6d52ae266e86b71e0773345e5cb729f6ae"
+    "revision": "8e9dba7bd7cf089838a036a98be94db53ba2d0a9"
   },
   "turtle": {
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
   },
   "typescript": {
-    "revision": "f2e2dd6d52ae266e86b71e0773345e5cb729f6ae"
+    "revision": "8e9dba7bd7cf089838a036a98be94db53ba2d0a9"
   },
   "vala": {
     "revision": "31a08784cc74b61cb10c5d8314cf8a8aa98aa9a8"
