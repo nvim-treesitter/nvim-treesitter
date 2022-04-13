@@ -114,7 +114,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "hack": {
-    "revision": "330470222a9abbaeaa09d2e7964aeb16b90b7a34"
+    "revision": "6921eaf90175552ba572d47678969f8cdb12e113"
   },
   "haskell": {
     "revision": "ed976b81b00ce7b72b99bca75e7a616cc526220c"
@@ -312,7 +312,7 @@
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
   },
   "vim": {
-    "revision": "5b5ac5b18af995e6479450a8d1d12bf5cc2a4394"
+    "revision": "68f7cacfd9ae4698181511c9fdd6641bc25a260b"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
