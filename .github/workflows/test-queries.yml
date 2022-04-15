@@ -52,7 +52,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       CC: ${{ matrix.cc }}
-      NVIM: ${{ matrix.os == 'windows-2022' && 'Neovim\\bin\\nvim.exe' || 'nvim' }}
+      NVIM: ${{ matrix.os == 'windows-2022' && 'nvim-win64\\bin\\nvim.exe' || 'nvim' }}
     steps:
       - uses: actions/checkout@v2
       - uses: ilammy/msvc-dev-cmd@v1
