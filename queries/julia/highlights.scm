@@ -5,13 +5,14 @@
 ((identifier) @constant
   (#match? @constant "^[A-Z][A-Z_]{2}[A-Z_]*$"))
 
-[
-  (triple_string)
-  (string)
-] @string
-(command_string) @string.special
+(escape_sequence) @character.special
+(character_literal) @character
+(string_literal) @string
+(command_literal) @string.special
 
-(string
+(prefixed_string_literal
+  prefix: (identifier) @constant.builtin)
+(prefixed_command_literal
   prefix: (identifier) @constant.builtin)
 
 (macro_identifier) @function.macro
@@ -89,7 +90,10 @@
 (struct_definition
   name: (identifier) @type)
 
-(number) @number
+[
+  (integer_literal)
+  (float_literal)
+] @number
 (range_expression
     (identifier) @number
       (#eq? @number "end"))
@@ -98,7 +102,7 @@
     (identifier) @number
       (#eq? @number "end")))
 (coefficient_expression
-  (number)
+  [(integer_literal) (float_literal)]
   (identifier) @constant.builtin)
 
 ;; TODO: operators.
@@ -127,7 +131,7 @@
 (function_definition ["function" "end"] @keyword.function)
 
 [
-  (comment)
+  (line_comment)
   (block_comment)
 ] @comment
 
