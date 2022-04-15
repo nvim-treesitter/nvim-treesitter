@@ -2,35 +2,21 @@ local api = vim.api
 
 local parsers = require "nvim-treesitter.parsers"
 local utils = require "nvim-treesitter.utils"
+local ts_query = vim.treesitter.query
 
 local M = {}
 
 --- Gets the actual text content of a node
+-- @deprecated Use vim.treesitter.query.get_node_text
 -- @param node the node to get the text from
 -- @param bufnr the buffer containing the node
 -- @return list of lines of text of the node
 function M.get_node_text(node, bufnr)
-  local bufnr = bufnr or api.nvim_get_current_buf()
-  if not node then
-    return {}
-  end
-
-  -- We have to remember that end_col is end-exclusive
-  local start_row, start_col, end_row, end_col = M.get_node_range(node)
-
-  if start_row ~= end_row then
-    local lines = api.nvim_buf_get_lines(bufnr, start_row, end_row + 1, false)
-    lines[1] = string.sub(lines[1], start_col + 1)
-    -- end_row might be just after the last line. In this case the last line is not truncated.
-    if #lines == end_row - start_row + 1 then
-      lines[#lines] = string.sub(lines[#lines], 1, end_col)
-    end
-    return lines
-  else
-    local line = api.nvim_buf_get_lines(bufnr, start_row, start_row + 1, false)[1]
-    -- If line is nil then the line is empty
-    return line and { string.sub(line, start_col + 1, end_col) } or {}
-  end
+  vim.notify_once(
+    "nvim-treesitter.ts_utils.get_node_text is deprecated: use vim.treesitter.query.get_node_text",
+    vim.log.levels.WARN
+  )
+  vim.treesitter.query.get_node_text(node, bufnr)
 end
 
 --- Determines whether a node is the parent of another
@@ -338,8 +324,8 @@ function M.swap_nodes(node_or_range1, node_or_range2, bufnr, cursor_to_second)
   local range1 = M.node_to_lsp_range(node_or_range1)
   local range2 = M.node_to_lsp_range(node_or_range2)
 
-  local text1 = M.get_node_text(node_or_range1)
-  local text2 = M.get_node_text(node_or_range2)
+  local text1 = ts_query.get_node_text(node_or_range1)
+  local text2 = ts_query.get_node_text(node_or_range2)
 
   local edit1 = { range = range1, newText = table.concat(text2, "\n") }
   local edit2 = { range = range2, newText = table.concat(text1, "\n") }

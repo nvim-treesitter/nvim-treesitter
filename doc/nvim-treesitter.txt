@@ -341,11 +341,6 @@ get_node_at_cursor(winnr)~
 `winnr` will be 0 if nil.
 Returns the node under the cursor.
 
-						      *ts_utils.get_node_text*
-get_node_text(node, bufnr)~
-
-Returns the text content of a `node`.
-
 							  *ts_utils.is_parent*
 is_parent(dest, source)~
 
