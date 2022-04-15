@@ -237,29 +237,6 @@ local function config_info(process_function)
   print(vim.inspect(config, { process = process_function }))
 end
 
-if not vim.ui then
-  vim.ui = {
-    select = function(items, opts, on_choice)
-      vim.validate {
-        items = { items, "table", false },
-        on_choice = { on_choice, "function", false },
-      }
-      opts = opts or {}
-      local choices = { opts.prompt or "Select one of:" }
-      local format_item = opts.format_item or tostring
-      for i, item in pairs(items) do
-        table.insert(choices, string.format("%d: %s", i, format_item(item)))
-      end
-      local choice = vim.fn.inputlist(choices)
-      if choice < 1 or choice > #items then
-        on_choice(nil, nil)
-      else
-        on_choice(items[choice], choice)
-      end
-    end,
-  }
-end
-
 function M.edit_query_file(query_group, lang)
   lang = lang or parsers.get_buf_lang()
   local files = ts_query.get_query_files(lang, query_group, true)
