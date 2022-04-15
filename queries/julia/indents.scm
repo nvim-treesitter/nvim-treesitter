@@ -35,8 +35,7 @@
 ] @branch
 
 [
-  (comment)
+  (line_comment)
   (block_comment)
-  (triple_string)
 ] @ignore
 
