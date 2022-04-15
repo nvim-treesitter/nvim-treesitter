@@ -87,6 +87,4 @@ jobs:
         run: echo "SKIP_SWIFT_CHECK=TRUE" >> $GITHUB_ENV
 
       - name: Check query files
-        env:
-          SKIP_SWIFT_CHECK: ${{ env.SKIP_SWIFT_CHECK }}
         run: $NVIM --headless -c "luafile ./scripts/check-queries.lua" -c "q"
