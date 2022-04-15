@@ -78,7 +78,7 @@
   (fenced_code_block_delimiter)
   (code_span_delimiter)
   (emphasis_delimiter)
-] @_conceal
+] @conceal
 (#set! conceal ""))
 
 (inline_link 
