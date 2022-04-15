@@ -5,16 +5,6 @@
 ((identifier) @constant
   (#match? @constant "^[A-Z][A-Z_]{2}[A-Z_]*$"))
 
-(escape_sequence) @character.special
-(character_literal) @character
-(string_literal) @string
-(command_literal) @string.special
-
-(prefixed_string_literal
-  prefix: (identifier) @constant.builtin)
-(prefixed_command_literal
-  prefix: (identifier) @constant.builtin)
-
 (macro_identifier) @function.macro
 (macro_identifier (identifier) @function.macro) ; for any one using the variable highlight
 (macro_definition
@@ -90,10 +80,6 @@
 (struct_definition
   name: (identifier) @type)
 
-[
-  (integer_literal)
-  (float_literal)
-] @number
 (range_expression
     (identifier) @number
       (#eq? @number "end"))
@@ -101,9 +87,6 @@
   (_
     (identifier) @number
       (#eq? @number "end")))
-(coefficient_expression
-  [(integer_literal) (float_literal)]
-  (identifier) @constant.builtin)
 
 ;; TODO: operators.
 ;; Those are a bit difficult to implement since the respective nodes are hidden right now (_power_operator)
@@ -129,11 +112,6 @@
   ["?" ":"] @conditional)
 
 (function_definition ["function" "end"] @keyword.function)
-
-[
-  (line_comment)
-  (block_comment)
-] @comment
 
 [
   "abstract"
@@ -184,9 +162,39 @@
 
 ((identifier) @include (#eq? @include "baremodule"))
 
-(((identifier) @constant.builtin) (#match? @constant.builtin "^(nothing|Inf|NaN)$"))
-(((identifier) @boolean) (#eq? @boolean "true"))
-(((identifier) @boolean) (#eq? @boolean "false"))
+
+;;; Literals
+
+(integer_literal) @number
+(float_literal) @float
+
+((identifier) @float
+  (#any-of? @float "NaN" "NaN16" "NaN32"
+                   "Inf" "Inf16" "Inf32"))
+
+((identifier) @boolean
+  (#any-of? @boolean "true" "false"))
+
+((identifier) @constant.builtin
+  (#any-of? @constant.builtin "nothing" "missing"))
+
+(character_literal) @character
+(escape_sequence) @string.escape
+
+(string_literal) @string
+(prefixed_string_literal
+  prefix: (identifier) @function.macro) @string
+
+(command_literal) @string.special
+(prefixed_command_literal
+  prefix: (identifier) @function.macro) @string.special
+
+[
+  (line_comment)
+  (block_comment)
+] @comment
+
+;;; Punctuation
 
 (range_expression ":" @operator)
 (quote_expression ":" @symbol)
