@@ -105,13 +105,15 @@
 [
  (displayed_equation)
  (inline_formula)
- (math_set)
 ] @text.math
 
 (math_environment
   (begin
    command: _ @text.math
    name: (curly_group_text (text) @text.math)))
+
+(math_environment
+  (text) @text.math)
 
 (math_environment
   (end
