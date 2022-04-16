@@ -402,9 +402,6 @@ local function install(options)
     if ... == "all" then
       languages = parsers.available_parsers()
       ask = false
-    elseif ... == "maintained" then
-      languages = parsers.maintained_parsers()
-      ask = false
     else
       languages = vim.tbl_flatten { ... }
       ask = ask_reinstall
@@ -467,15 +464,9 @@ function M.uninstall(...)
     path_sep = "\\"
   end
 
-  if vim.tbl_contains({ "all", "maintained" }, ...) then
+  if vim.tbl_contains({ "all" }, ...) then
     reset_progress_counter()
     local installed = info.installed_parsers()
-    if ... == "maintained" then
-      local maintained = parsers.maintained_parsers()
-      installed = vim.tbl_filter(function(l)
-        return vim.tbl_contains(maintained, l)
-      end, installed)
-    end
     for _, langitem in pairs(installed) do
       M.uninstall(langitem)
     end
