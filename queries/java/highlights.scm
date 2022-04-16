@@ -143,7 +143,7 @@
 ] @float
 
 (character_literal) @character
-(string_literal) @string
+[(string_literal) (text_block)] @string
 (null_literal) @constant.builtin
 
 [
