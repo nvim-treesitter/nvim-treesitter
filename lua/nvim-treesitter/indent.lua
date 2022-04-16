@@ -195,7 +195,10 @@ local indent_funcs = {}
 function M.attach(bufnr)
   indent_funcs[bufnr] = vim.bo.indentexpr
   vim.bo.indentexpr = "nvim_treesitter#indent()"
-  vim.api.nvim_command("au Filetype " .. vim.bo.filetype .. " setlocal indentexpr=nvim_treesitter#indent()")
+  vim.api.nvim_create_autocmd("Filetype", {
+    pattern = vim.bo.filetype,
+    command = "setlocal indentexpr=nvim_treesitter#indent()",
+  })
 end
 
 function M.detach(bufnr)
