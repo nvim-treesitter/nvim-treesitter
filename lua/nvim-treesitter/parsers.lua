@@ -1031,11 +1031,11 @@ list.norg = {
 
 list.vala = {
   install_info = {
-    url = "https://github.com/matbme/tree-sitter-vala",
-    branch = "main",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = "https://github.com/vala-lang/tree-sitter-vala",
+    branch = "master",
+    files = { "src/parser.c" },
   },
-  maintainers = { "@matbme" },
+  maintainers = { "@Prince781", "@vala-lang" },
 }
 
 list.lalrpop = {
