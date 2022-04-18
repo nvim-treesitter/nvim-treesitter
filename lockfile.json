@@ -1,332 +1,819 @@
 {
   "astro": {
-    "revision": "6602ccbf9a5f79845dad62f1e118e07f97e3533c"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "6602ccbf9a5f79845dad62f1e118e07f97e3533c",
+    "url": "https://github.com/virchau13/tree-sitter-astro"
   },
   "bash": {
-    "revision": "275effdfc0edce774acf7d481f9ea195c6c403cd"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "275effdfc0edce774acf7d481f9ea195c6c403cd",
+    "url": "https://github.com/tree-sitter/tree-sitter-bash"
   },
   "beancount": {
-    "revision": "78b8ddca3ab774573a4e3bf64eabd79e9452cea9"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "78b8ddca3ab774573a4e3bf64eabd79e9452cea9",
+    "url": "https://github.com/polarmutex/tree-sitter-beancount"
   },
   "bibtex": {
-    "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34",
+    "url": "https://github.com/latex-lsp/tree-sitter-bibtex"
   },
   "c": {
-    "revision": "e348e8ec5efd3aac020020e4af53d2ff18f393a9"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "e348e8ec5efd3aac020020e4af53d2ff18f393a9",
+    "url": "https://github.com/tree-sitter/tree-sitter-c"
   },
   "c_sharp": {
-    "revision": "5b6ae1f88e741b9ed738891ad1362fb9f2041671"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "5b6ae1f88e741b9ed738891ad1362fb9f2041671",
+    "url": "https://github.com/tree-sitter/tree-sitter-c-sharp"
   },
   "clojure": {
-    "revision": "879f0e726295807d917d576fcf9e1e432c4c20fc"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "879f0e726295807d917d576fcf9e1e432c4c20fc",
+    "url": "https://github.com/sogaiu/tree-sitter-clojure"
   },
   "cmake": {
-    "revision": "5020572408a386d5d2dfac3516584f5edda7a49b"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "5020572408a386d5d2dfac3516584f5edda7a49b",
+    "url": "https://github.com/uyha/tree-sitter-cmake"
   },
   "comment": {
-    "revision": "a37ca370310ac6f89b6e0ebf2b86b2219780494e"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "a37ca370310ac6f89b6e0ebf2b86b2219780494e",
+    "url": "https://github.com/stsewd/tree-sitter-comment"
   },
   "commonlisp": {
-    "revision": "c7e814975ab0d0d04333d1f32391c41180c58919"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "c7e814975ab0d0d04333d1f32391c41180c58919",
+    "url": "https://github.com/theHamsta/tree-sitter-commonlisp"
   },
   "cooklang": {
-    "revision": "5e113412aadb78955c27010daa4dbe1d202013cf"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "5e113412aadb78955c27010daa4dbe1d202013cf",
+    "url": "https://github.com/addcninblue/tree-sitter-cooklang"
   },
   "cpp": {
-    "revision": "a832195eb3685a279856bb480ce19cff19554b6d"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "a832195eb3685a279856bb480ce19cff19554b6d",
+    "url": "https://github.com/tree-sitter/tree-sitter-cpp"
   },
   "css": {
-    "revision": "a03f1d2d1dfbf6f8e0fdca5f9ff030228241eb57"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "a03f1d2d1dfbf6f8e0fdca5f9ff030228241eb57",
+    "url": "https://github.com/tree-sitter/tree-sitter-css"
   },
   "cuda": {
-    "revision": "5178a7a5b25dc7ee4a69bf72f31bd6d3ff0a0795"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "5178a7a5b25dc7ee4a69bf72f31bd6d3ff0a0795",
+    "url": "https://github.com/theHamsta/tree-sitter-cuda"
   },
   "d": {
-    "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032",
+    "url": "https://github.com/CyberShadow/tree-sitter-d"
   },
   "dart": {
-    "revision": "6a25376685d1d47968c2cef06d4db8d84a70025e"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "6a25376685d1d47968c2cef06d4db8d84a70025e",
+    "url": "https://github.com/UserNobody14/tree-sitter-dart"
   },
   "devicetree": {
-    "revision": "877adbfa0174d25894c40fa75ad52d4515a36368"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "877adbfa0174d25894c40fa75ad52d4515a36368",
+    "url": "https://github.com/joelspadin/tree-sitter-devicetree"
   },
   "dockerfile": {
-    "revision": "25c71d6a24cdba8f0c74ef40d4d2d93defd7e196"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "25c71d6a24cdba8f0c74ef40d4d2d93defd7e196",
+    "url": "https://github.com/camdencheek/tree-sitter-dockerfile"
   },
   "dot": {
-    "revision": "917230743aa10f45a408fea2ddb54bbbf5fbe7b7"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "917230743aa10f45a408fea2ddb54bbbf5fbe7b7",
+    "url": "https://github.com/rydesun/tree-sitter-dot"
   },
   "eex": {
-    "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1",
+    "url": "https://github.com/connorlay/tree-sitter-eex"
   },
   "elixir": {
-    "revision": "1dabc1c790e07115175057863808085ea60dd08a"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "1dabc1c790e07115175057863808085ea60dd08a",
+    "url": "https://github.com/elixir-lang/tree-sitter-elixir"
   },
   "elm": {
-    "revision": "9835f900e4df40277f0701d1bc0b6cee0853f81b"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "9835f900e4df40277f0701d1bc0b6cee0853f81b",
+    "url": "https://github.com/elm-tooling/tree-sitter-elm"
   },
   "elvish": {
-    "revision": "e50787cadd3bc54f6d9c0704493a79078bb8a4e5"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "e50787cadd3bc54f6d9c0704493a79078bb8a4e5",
+    "url": "https://github.com/ckafi/tree-sitter-elvish"
   },
   "erlang": {
-    "revision": "fab680273af1a8f5cc0c3a0c62cbf5b1bea71f39"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "fab680273af1a8f5cc0c3a0c62cbf5b1bea71f39",
+    "url": "https://github.com/AbstractMachinesLab/tree-sitter-erlang"
   },
   "fennel": {
-    "revision": "d37fd84a702b78ff0282f223ece83c61ab062a6e"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "d37fd84a702b78ff0282f223ece83c61ab062a6e",
+    "url": "https://github.com/travonted/tree-sitter-fennel"
   },
   "fish": {
-    "revision": "d482d70ea8e191c05b2c1b613ed6fdff30a14da0"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "d482d70ea8e191c05b2c1b613ed6fdff30a14da0",
+    "url": "https://github.com/ram02z/tree-sitter-fish"
   },
   "foam": {
-    "revision": "fdb7f14b885abfc4df57728c9b2a2f2ad24d3cb7"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "fdb7f14b885abfc4df57728c9b2a2f2ad24d3cb7",
+    "url": "https://github.com/FoamScience/tree-sitter-foam"
   },
   "fortran": {
-    "revision": "f0f2f100952a353e64e26b0fa710b4c296d7af13"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "f0f2f100952a353e64e26b0fa710b4c296d7af13",
+    "url": "https://github.com/stadelmanma/tree-sitter-fortran"
   },
   "fusion": {
-    "revision": "19db2f47ba4c3a0f6238d4ae0e2abfca16e61dd6"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "19db2f47ba4c3a0f6238d4ae0e2abfca16e61dd6",
+    "url": "https://gitlab.com/jirgn/tree-sitter-fusion.git"
   },
   "gdscript": {
-    "revision": "2a6abdaa47fcb91397e09a97c7433fd995ea46c6"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "2a6abdaa47fcb91397e09a97c7433fd995ea46c6",
+    "url": "https://github.com/PrestonKnopp/tree-sitter-gdscript"
   },
   "gleam": {
     "revision": "cfcbca3f8f734773878e00d7bfcedea98eb10be2"
   },
   "glimmer": {
-    "revision": "7da694aacda35266e96421cf92f595a91669c1e3"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "7da694aacda35266e96421cf92f595a91669c1e3",
+    "url": "https://github.com/alexlafroscia/tree-sitter-glimmer"
   },
   "glsl": {
-    "revision": "ffb93961426926554a0ba4a389ea6e9d6fafdea9"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "ffb93961426926554a0ba4a389ea6e9d6fafdea9",
+    "url": "https://github.com/theHamsta/tree-sitter-glsl"
   },
   "go": {
-    "revision": "c8fed1f0847a65a04a4b8cb7655f5f416e0742ca"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "c8fed1f0847a65a04a4b8cb7655f5f416e0742ca",
+    "url": "https://github.com/tree-sitter/tree-sitter-go"
   },
   "godot_resource": {
-    "revision": "b6ef0768711086a86b3297056f9ffb5cc1d77b4a"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "b6ef0768711086a86b3297056f9ffb5cc1d77b4a",
+    "url": "https://github.com/PrestonKnopp/tree-sitter-godot-resource"
   },
   "gomod": {
-    "revision": "e8f51f8e4363a3d9a427e8f63f4c1bbc5ef5d8d0"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "e8f51f8e4363a3d9a427e8f63f4c1bbc5ef5d8d0",
+    "url": "https://github.com/camdencheek/tree-sitter-go-mod"
   },
   "gowork": {
-    "revision": "6dd9dd79fb51e9f2abc829d5e97b15015b6a8ae2"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "6dd9dd79fb51e9f2abc829d5e97b15015b6a8ae2",
+    "url": "https://github.com/omertuc/tree-sitter-go-work"
   },
   "graphql": {
-    "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe",
+    "url": "https://github.com/bkegley/tree-sitter-graphql"
   },
   "hack": {
-    "revision": "d434b4e6c9af0524b163d7a912c8ce79d2b1f778"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "d434b4e6c9af0524b163d7a912c8ce79d2b1f778",
+    "url": "https://github.com/slackhq/tree-sitter-hack"
   },
   "haskell": {
-    "revision": "ed976b81b00ce7b72b99bca75e7a616cc526220c"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "ed976b81b00ce7b72b99bca75e7a616cc526220c",
+    "url": "https://github.com/tree-sitter/tree-sitter-haskell"
   },
   "hcl": {
-    "revision": "d559c46ba170808b23a73da0cf49f315d221d095"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "d559c46ba170808b23a73da0cf49f315d221d095",
+    "url": "https://github.com/MichaHoffmann/tree-sitter-hcl"
   },
   "heex": {
-    "revision": "57e46b4b002d5fb5c1f2706fe42380e544ecab5f"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "57e46b4b002d5fb5c1f2706fe42380e544ecab5f",
+    "url": "https://github.com/connorlay/tree-sitter-heex"
   },
   "help": {
-    "revision": "41ac50500e68fadc139737bbee2a0618628b822b"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "41ac50500e68fadc139737bbee2a0618628b822b",
+    "url": "https://github.com/vigoux/tree-sitter-vimdoc"
   },
   "hjson": {
-    "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0",
+    "url": "https://github.com/winston0410/tree-sitter-hjson"
   },
   "hocon": {
-    "revision": "bb412e2633f4a3611a4e16efe58d917093bb4782"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "bb412e2633f4a3611a4e16efe58d917093bb4782",
+    "url": "https://github.com/antosha417/tree-sitter-hocon"
   },
   "html": {
-    "revision": "161a92474a7bb2e9e830e48e76426f38299d99d1"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "161a92474a7bb2e9e830e48e76426f38299d99d1",
+    "url": "https://github.com/tree-sitter/tree-sitter-html"
   },
   "http": {
-    "revision": "bfddd16b1cf78e0042fd1f6846a179f76a254e20"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "bfddd16b1cf78e0042fd1f6846a179f76a254e20",
+    "url": "https://github.com/NTBBloodbath/tree-sitter-http"
   },
   "java": {
-    "revision": "e7cb801ef57f74db5c4ebe14df74de852bb451b5"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "e7cb801ef57f74db5c4ebe14df74de852bb451b5",
+    "url": "https://github.com/tree-sitter/tree-sitter-java"
   },
   "javascript": {
-    "revision": "fdeb68ac8d2bd5a78b943528bb68ceda3aade2eb"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "fdeb68ac8d2bd5a78b943528bb68ceda3aade2eb",
+    "url": "https://github.com/tree-sitter/tree-sitter-javascript"
   },
   "jsdoc": {
-    "revision": "189a6a4829beb9cdbe837260653b4a3dfb0cc3db"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "189a6a4829beb9cdbe837260653b4a3dfb0cc3db",
+    "url": "https://github.com/tree-sitter/tree-sitter-jsdoc"
   },
   "json": {
-    "revision": "203e239408d642be83edde8988d6e7b20a19f0e8"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "203e239408d642be83edde8988d6e7b20a19f0e8",
+    "url": "https://github.com/tree-sitter/tree-sitter-json"
   },
   "json5": {
-    "revision": "5dd5cdc418d9659682556b6adca2dd9ace0ac6d2"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "5dd5cdc418d9659682556b6adca2dd9ace0ac6d2",
+    "url": "https://github.com/Joakker/tree-sitter-json5"
   },
   "jsonc": {
-    "revision": "02b01653c8a1c198ae7287d566efa86a135b30d5"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "02b01653c8a1c198ae7287d566efa86a135b30d5",
+    "url": "https://gitlab.com/WhyNotHugo/tree-sitter-jsonc.git"
   },
   "julia": {
-    "revision": "1e8fe0b3988e7cf56530837fd3a870089ddc7684"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "1e8fe0b3988e7cf56530837fd3a870089ddc7684",
+    "url": "https://github.com/tree-sitter/tree-sitter-julia"
   },
   "kotlin": {
-    "revision": "a4f71eb9b8c9b19ded3e0e9470be4b1b77c2b569"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "a4f71eb9b8c9b19ded3e0e9470be4b1b77c2b569",
+    "url": "https://github.com/fwcd/tree-sitter-kotlin"
   },
   "lalrpop": {
-    "revision": "7744b56f03ac1e5643fad23c9dd90837fe97291e"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "7744b56f03ac1e5643fad23c9dd90837fe97291e",
+    "url": "https://github.com/traxys/tree-sitter-lalrpop"
   },
   "latex": {
-    "revision": "e550c23486b166cf93d7f063c96306b568737985"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "e550c23486b166cf93d7f063c96306b568737985",
+    "url": "https://github.com/latex-lsp/tree-sitter-latex"
   },
   "ledger": {
-    "revision": "1050a25df55a62878102d10e524b5184b316b7ad"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "1050a25df55a62878102d10e524b5184b316b7ad",
+    "url": "https://github.com/cbarrete/tree-sitter-ledger"
   },
   "llvm": {
-    "revision": "e9948edc41e9e5869af99dddb2b5ff5cc5581af6"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "e9948edc41e9e5869af99dddb2b5ff5cc5581af6",
+    "url": "https://github.com/benwilliamgraham/tree-sitter-llvm"
   },
   "lua": {
-    "revision": "2b4ffd5a5ffd0c6b4c84f0d9e003050a70db2a37"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "2b4ffd5a5ffd0c6b4c84f0d9e003050a70db2a37",
+    "url": "https://github.com/MunifTanjim/tree-sitter-lua"
   },
   "make": {
-    "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd",
+    "url": "https://github.com/alemuller/tree-sitter-make"
   },
   "markdown": {
-    "revision": "d24196f9b3e5af6fcb2ec2a0b6cbc5c06f58b85e"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "d24196f9b3e5af6fcb2ec2a0b6cbc5c06f58b85e",
+    "url": "https://github.com/MDeiml/tree-sitter-markdown"
   },
   "ninja": {
-    "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267",
+    "url": "https://github.com/alemuller/tree-sitter-ninja"
   },
   "nix": {
     "revision": "6d6aaa50793b8265b6a8b6628577a0083d3b923d"
   },
   "norg": {
-    "revision": "17d61df817c1e0a9cdef8d915d4e4c556b7cf68c"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "17d61df817c1e0a9cdef8d915d4e4c556b7cf68c",
+    "url": "https://github.com/nvim-neorg/tree-sitter-norg"
   },
   "ocaml": {
-    "revision": "23d419ba45789c5a47d31448061557716b02750a"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "23d419ba45789c5a47d31448061557716b02750a",
+    "url": "https://github.com/tree-sitter/tree-sitter-ocaml"
   },
   "ocaml_interface": {
-    "revision": "23d419ba45789c5a47d31448061557716b02750a"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "23d419ba45789c5a47d31448061557716b02750a",
+    "url": "https://github.com/tree-sitter/tree-sitter-ocaml"
   },
   "ocamllex": {
-    "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed",
+    "url": "https://github.com/atom-ocaml/tree-sitter-ocamllex"
   },
   "pascal": {
-    "revision": "2fd40f477d3e2794af152618ccfac8d92eb72a66"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "2fd40f477d3e2794af152618ccfac8d92eb72a66",
+    "url": "https://github.com/Isopod/tree-sitter-pascal.git"
   },
   "perl": {
-    "revision": "bbf86084d9b7eb4768f3fb9fe094b3e0600057b1"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "bbf86084d9b7eb4768f3fb9fe094b3e0600057b1",
+    "url": "https://github.com/ganezdragon/tree-sitter-perl"
   },
   "php": {
-    "revision": "3c17a28da38afac41332d3ce79bbd8951867f346"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "3c17a28da38afac41332d3ce79bbd8951867f346",
+    "url": "https://github.com/tree-sitter/tree-sitter-php"
   },
   "phpdoc": {
-    "revision": "d9150d4cb5941f6ff10adba89bfa1f11f4b05b37"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "d9150d4cb5941f6ff10adba89bfa1f11f4b05b37",
+    "url": "https://github.com/claytonrcarter/tree-sitter-phpdoc"
   },
   "pioasm": {
-    "revision": "924aadaf5dea2a6074d72027b064f939acf32e20"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "924aadaf5dea2a6074d72027b064f939acf32e20",
+    "url": "https://github.com/leo60228/tree-sitter-pioasm"
   },
   "prisma": {
-    "revision": "bf0833cbedb2c5b39250f5ba900f1239a16c6749"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "bf0833cbedb2c5b39250f5ba900f1239a16c6749",
+    "url": "https://github.com/victorhqc/tree-sitter-prisma"
   },
   "pug": {
-    "revision": "5875f9a7d94836708119b0a1102bb5792e8bf673"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "5875f9a7d94836708119b0a1102bb5792e8bf673",
+    "url": "https://github.com/zealot128/tree-sitter-pug"
   },
   "python": {
-    "revision": "78c4e9b6b2f08e1be23b541ffced47b15e2972ad"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "78c4e9b6b2f08e1be23b541ffced47b15e2972ad",
+    "url": "https://github.com/tree-sitter/tree-sitter-python"
   },
   "ql": {
-    "revision": "8e7fd7e638d4a0ec7a792ee16b19dbc6407aa810"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "8e7fd7e638d4a0ec7a792ee16b19dbc6407aa810",
+    "url": "https://github.com/tree-sitter/tree-sitter-ql"
   },
   "query": {
-    "revision": "5217c6805c09f8fc00ed13d17d5fcb791437aee6"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "5217c6805c09f8fc00ed13d17d5fcb791437aee6",
+    "url": "https://github.com/nvim-treesitter/tree-sitter-query"
   },
   "r": {
-    "revision": "cc04302e1bff76fa02e129f332f44636813b0c3c"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "cc04302e1bff76fa02e129f332f44636813b0c3c",
+    "url": "https://github.com/r-lib/tree-sitter-r"
   },
   "rasi": {
-    "revision": "e2961f02244c068a67549adf896b0779e4a29516"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "e2961f02244c068a67549adf896b0779e4a29516",
+    "url": "https://github.com/Fymyte/tree-sitter-rasi"
   },
   "regex": {
-    "revision": "e1cfca3c79896ff79842f057ea13e529b66af636"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "e1cfca3c79896ff79842f057ea13e529b66af636",
+    "url": "https://github.com/tree-sitter/tree-sitter-regex"
   },
   "rego": {
-    "revision": "858ca3013da4d50ea1bdb32162a2bfb43641b422"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "858ca3013da4d50ea1bdb32162a2bfb43641b422",
+    "url": "https://github.com/FallenAngel97/tree-sitter-rego"
   },
   "rst": {
-    "revision": "b74770c0166f28c1a0ab293513a78712ca1c338b"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "b74770c0166f28c1a0ab293513a78712ca1c338b",
+    "url": "https://github.com/stsewd/tree-sitter-rst"
   },
   "ruby": {
-    "revision": "0b107de5415e7470a30ef1a390d9db3306432bdb"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "0b107de5415e7470a30ef1a390d9db3306432bdb",
+    "url": "https://github.com/tree-sitter/tree-sitter-ruby"
   },
   "rust": {
-    "revision": "0509e440ae042db6483984b3a56b3c5f24b5d9b9"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "0509e440ae042db6483984b3a56b3c5f24b5d9b9",
+    "url": "https://github.com/tree-sitter/tree-sitter-rust"
   },
   "scala": {
-    "revision": "ec6047f531e7d4c13787d4ff208b94a84de34165"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "ec6047f531e7d4c13787d4ff208b94a84de34165",
+    "url": "https://github.com/tree-sitter/tree-sitter-scala"
   },
   "scheme": {
-    "revision": "a1d2233f4e5498bb305858323c93525e1dd165c0"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "a1d2233f4e5498bb305858323c93525e1dd165c0",
+    "url": "https://github.com/6cdh/tree-sitter-scheme"
   },
   "scss": {
-    "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "c478c6868648eff49eb04a4df90d703dc45b312a",
+    "url": "https://github.com/serenadeai/tree-sitter-scss"
   },
   "slint": {
-    "revision": "0d4dda94f96623302dfc234e06be62a5717f47da"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "0d4dda94f96623302dfc234e06be62a5717f47da",
+    "url": "https://github.com/jrmoulton/tree-sitter-slint"
   },
   "solidity": {
-    "revision": "52ed0880c0126df2f2c7693f215fe6f38e4a2e0a"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "52ed0880c0126df2f2c7693f215fe6f38e4a2e0a",
+    "url": "https://github.com/YongJieYongJie/tree-sitter-solidity"
   },
   "sparql": {
-    "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "05f949d3c1c15e3261473a244d3ce87777374dec",
+    "url": "https://github.com/BonaBeavis/tree-sitter-sparql"
   },
   "supercollider": {
-    "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0",
+    "url": "https://github.com/madskjeldgaard/tree-sitter-supercollider"
   },
   "surface": {
-    "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032",
+    "url": "https://github.com/connorlay/tree-sitter-surface"
   },
   "svelte": {
-    "revision": "cfa3f0ac82cd680b4efaa090a0f78035ad43a7c6"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "cfa3f0ac82cd680b4efaa090a0f78035ad43a7c6",
+    "url": "https://github.com/Himujjal/tree-sitter-svelte"
   },
   "swift": {
-    "revision": "9607603b9bd7a174b06567367ae3949c7a19f011"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "9607603b9bd7a174b06567367ae3949c7a19f011",
+    "url": "https://github.com/alex-pinkus/tree-sitter-swift"
   },
   "teal": {
-    "revision": "fcc5f6f4d194dede4e676834ff28a506e39e17b4"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "fcc5f6f4d194dede4e676834ff28a506e39e17b4",
+    "url": "https://github.com/euclidianAce/tree-sitter-teal"
   },
   "tlaplus": {
-    "revision": "dde405e5128c3c47ab8aa014d21b6e5296ca450f"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "dde405e5128c3c47ab8aa014d21b6e5296ca450f",
+    "url": "https://github.com/tlaplus-community/tree-sitter-tlaplus"
   },
   "todotxt": {
-    "revision": "0207f6a4ab6aeafc4b091914d31d8235049a2578"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "0207f6a4ab6aeafc4b091914d31d8235049a2578",
+    "url": "https://github.com/arnarg/tree-sitter-todotxt.git"
   },
   "toml": {
-    "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e",
+    "url": "https://github.com/ikatyang/tree-sitter-toml"
   },
   "tsx": {
-    "revision": "8e9dba7bd7cf089838a036a98be94db53ba2d0a9"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "8e9dba7bd7cf089838a036a98be94db53ba2d0a9",
+    "url": "https://github.com/tree-sitter/tree-sitter-typescript"
   },
   "turtle": {
-    "revision": "085437f5cb117703b7f520dd92161140a684f092"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "085437f5cb117703b7f520dd92161140a684f092",
+    "url": "https://github.com/BonaBeavis/tree-sitter-turtle"
   },
   "typescript": {
-    "revision": "8e9dba7bd7cf089838a036a98be94db53ba2d0a9"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "8e9dba7bd7cf089838a036a98be94db53ba2d0a9",
+    "url": "https://github.com/tree-sitter/tree-sitter-typescript"
   },
   "vala": {
-    "revision": "31a08784cc74b61cb10c5d8314cf8a8aa98aa9a8"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "31a08784cc74b61cb10c5d8314cf8a8aa98aa9a8",
+    "url": "https://github.com/matbme/tree-sitter-vala"
   },
   "verilog": {
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
   },
   "vim": {
-    "revision": "5268e0ec901e33ad7142ee31b580269a94fba042"
+    "files": [
+      "src/parser.c",
+      "src/scanner.c"
+    ],
+    "revision": "5268e0ec901e33ad7142ee31b580269a94fba042",
+    "url": "https://github.com/vigoux/tree-sitter-viml"
   },
   "vue": {
-    "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06",
+    "url": "https://github.com/ikatyang/tree-sitter-vue"
   },
   "wgsl": {
-    "revision": "5ca98b174f7dddf69fb7a80c54d49badd1f1f8c4"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "5ca98b174f7dddf69fb7a80c54d49badd1f1f8c4",
+    "url": "https://github.com/szebniok/tree-sitter-wgsl"
   },
   "yaml": {
-    "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
+    "files": [
+      "src/parser.c",
+      "src/scanner.cc"
+    ],
+    "revision": "0e36bed171768908f331ff7dff9d956bae016efb",
+    "url": "https://github.com/ikatyang/tree-sitter-yaml"
   },
   "yang": {
-    "revision": "8e9d175982afcefa3dac8ca20d40d1643accd2bd"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "8e9d175982afcefa3dac8ca20d40d1643accd2bd",
+    "url": "https://github.com/Hubro/tree-sitter-yang"
   },
   "zig": {
-    "revision": "4cff36421dae9c05388b86cd64d2bab4b9ed6676"
+    "files": [
+      "src/parser.c"
+    ],
+    "revision": "4cff36421dae9c05388b86cd64d2bab4b9ed6676",
+    "url": "https://github.com/maxxnino/tree-sitter-zig"
   }
 }
