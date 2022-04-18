@@ -42,14 +42,22 @@ local function get_job_status()
     .. "]"
 end
 
+local function load_lockfile()
+  local filename = utils.join_path(utils.get_package_path(), "lockfile.json")
+  lockfile = vim.fn.filereadable(filename) == 1 and vim.fn.json_decode(vim.fn.readfile(filename)) or {}
+end
+
 local function get_parser_install_info(lang, validate)
+  if #lockfile == 0 then
+    load_lockfile()
+  end
   local parser_config = parsers.get_parser_configs()[lang]
 
   if not parser_config then
     return error("Parser not available for language " .. lang)
   end
 
-  local install_info = parser_config.install_info
+  local install_info = vim.tbl_extend("keep", lockfile[lang] or {}, parser_config.install_info)
 
   if validate then
     vim.validate {
@@ -59,11 +67,6 @@ local function get_parser_install_info(lang, validate)
   end
 
   return install_info
-end
-
-local function load_lockfile()
-  local filename = utils.join_path(utils.get_package_path(), "lockfile.json")
-  lockfile = vim.fn.filereadable(filename) == 1 and vim.fn.json_decode(vim.fn.readfile(filename)) or {}
 end
 
 local function get_revision(lang)
@@ -525,7 +528,7 @@ function M.write_lockfile(verbose, skip_langs)
       else
         sha = vim.split(vim.fn.systemlist("git ls-remote " .. v.parser.install_info.url)[1], "\t")[1]
       end
-      lockfile[v.name] = { revision = sha }
+      lockfile[v.name] = { revision = sha, url = v.parser.install_info.url, files = v.parser.install_info.files }
       if verbose then
         print(v.name .. ": " .. sha)
       end
