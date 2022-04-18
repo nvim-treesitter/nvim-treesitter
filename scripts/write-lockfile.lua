@@ -3,7 +3,7 @@ local skip_langs = vim.fn.getenv "SKIP_LOCKFILE_UPDATE_FOR_LANGS"
 if skip_langs == vim.NIL then
   skip_langs = {}
 else
-  skip_langs = vim.fn.split(skip_langs, ",")
+  skip_langs = vim.fn.split(skip_langs:gsub('"', ""), ",")
 end
 print("Skipping languages: " .. vim.inspect(skip_langs))
 require("nvim-treesitter.install").write_lockfile("verbose", skip_langs)

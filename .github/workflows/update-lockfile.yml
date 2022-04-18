@@ -32,10 +32,7 @@ jobs:
         env:
           SKIP_LOCKFILE_UPDATE_FOR_LANGS: verilog,gleam,nix
         run: |
-          ./nvim.appimage --headless -c "luafile ./scripts/write-lockfile.lua" -c "q"
-          # Pretty print
-          cp lockfile.json /tmp/lockfile.json
-          cat /tmp/lockfile.json | /tmp/jq --sort-keys > lockfile.json
+          ./scripts/update-lockfile.sh
 
       - name: Commit changes
         run: |
