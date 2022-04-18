@@ -1,9 +1,9 @@
 local install = require "nvim-treesitter.install"
 local utils = require "nvim-treesitter.utils"
-local ts_utils = require "nvim-treesitter.ts_utils"
 local info = require "nvim-treesitter.info"
 local configs = require "nvim-treesitter.configs"
 local parsers = require "nvim-treesitter.parsers"
+local ts_query = vim.treesitter.query
 
 -- Registers all query predicates
 require "nvim-treesitter.query_predicates"
@@ -33,7 +33,7 @@ local get_line_for_node = function(node, type_patterns, transform_fn)
   if not is_valid then
     return ""
   end
-  local line = transform_fn(vim.trim(ts_utils.get_node_text(node)[1] or ""))
+  local line = transform_fn(vim.trim(ts_query.get_node_text(node)[1] or ""))
   -- Escape % to avoid statusline to evaluate content as expression
   return line:gsub("%%", "%%%%")
 end
@@ -56,7 +56,7 @@ function M.statusline(opts)
   local transform_fn = options.transform_fn or transform_line
   local separator = options.separator or " -> "
 
-  local current_node = ts_utils.get_node_at_cursor()
+  local current_node = ts_query.get_node_at_cursor()
   if not current_node then
     return ""
   end
