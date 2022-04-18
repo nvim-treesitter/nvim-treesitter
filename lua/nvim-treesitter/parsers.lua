@@ -417,8 +417,7 @@ list.swift = {
   install_info = {
     url = "https://github.com/alex-pinkus/tree-sitter-swift",
     files = { "src/parser.c", "src/scanner.c" },
-    requires_generate_from_grammar = true,
-    generate_requires_npm = true,
+    branch = "with-generated-files",
   },
 }
 
