@@ -18,4 +18,8 @@ describe("indent Go:", function()
   describe("new line:", function()
     run:new_line("issue-2369.go", { on_line = 13, text = "// some comment", indent = 1 })
   end)
+
+  describe("new line after )/}:", function()
+    run:new_line("issue-2369-newline.go", { on_line = 8, text = "// comment", indent = 0 })
+  end)
 end)
