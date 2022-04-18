@@ -16,7 +16,7 @@ function M.get_node_text(node, bufnr)
     "nvim-treesitter.ts_utils.get_node_text is deprecated: use vim.treesitter.query.get_node_text",
     vim.log.levels.WARN
   )
-  vim.treesitter.query.get_node_text(node, bufnr)
+  return vim.treesitter.query.get_node_text(node, bufnr)
 end
 
 --- Determines whether a node is the parent of another
