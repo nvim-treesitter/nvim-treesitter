@@ -211,7 +211,7 @@ end
 
 function M.find_definition(node, bufnr)
   local def_lookup = M.get_definitions_lookup_table(bufnr)
-  local node_text = ts_query.get_node_text(node, bufnr)[1]
+  local node_text = ts_query.get_node_text(node, bufnr)
 
   for scope in M.iter_scope_tree(node, bufnr) do
     local id = M.get_definition_id(scope, node_text)
@@ -232,7 +232,7 @@ end
 -- @returns a list of nodes
 function M.find_usages(node, scope_node, bufnr)
   local bufnr = bufnr or api.nvim_get_current_buf()
-  local node_text = ts_query.get_node_text(node, bufnr)[1]
+  local node_text = ts_query.get_node_text(node, bufnr)
 
   if not node_text or #node_text < 1 then
     return {}
@@ -245,7 +245,7 @@ function M.find_usages(node, scope_node, bufnr)
     if
       match.reference
       and match.reference.node
-      and ts_query.get_node_text(match.reference.node, bufnr)[1] == node_text
+      and ts_query.get_node_text(match.reference.node, bufnr) == node_text
     then
       local def_node, _, kind = M.find_definition(match.reference.node, bufnr)
 

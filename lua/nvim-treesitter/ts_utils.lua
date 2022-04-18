@@ -347,8 +347,8 @@ function M.swap_nodes(node_or_range1, node_or_range2, bufnr, cursor_to_second)
   local text1 = ts_query.get_node_text(node_or_range1)
   local text2 = ts_query.get_node_text(node_or_range2)
 
-  local edit1 = { range = range1, newText = table.concat(text2, "\n") }
-  local edit2 = { range = range2, newText = table.concat(text1, "\n") }
+  local edit1 = { range = range1, newText = text2 }
+  local edit2 = { range = range2, newText = text1 }
   vim.lsp.util.apply_text_edits({ edit1, edit2 }, bufnr, "utf-8")
 
   if cursor_to_second then
