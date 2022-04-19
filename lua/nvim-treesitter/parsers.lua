@@ -413,6 +413,14 @@ list.ocamllex = {
   maintainers = { "@undu" },
 }
 
+list.org = {
+  install_info = {
+    url = "https://github.com/milisims/tree-sitter-org",
+    branch = "main",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+}
+
 list.swift = {
   install_info = {
     url = "https://github.com/alex-pinkus/tree-sitter-swift",
