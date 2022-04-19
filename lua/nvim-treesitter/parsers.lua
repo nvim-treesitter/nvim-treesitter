@@ -812,6 +812,15 @@ list.beancount = {
   maintainers = { "@polarmutex" },
 }
 
+list.rnoweb = {
+  install_info = {
+    url = "https://github.com/bamonroe/tree-sitter-rnoweb",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  filetype = "rnoweb",
+  maintainers = { "@bamonroe" },
+}
+
 list.latex = {
   install_info = {
     url = "https://github.com/latex-lsp/tree-sitter-latex",
