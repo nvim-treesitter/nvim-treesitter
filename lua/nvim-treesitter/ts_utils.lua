@@ -344,12 +344,15 @@ function M.swap_nodes(node_or_range1, node_or_range2, bufnr, cursor_to_second)
   local range1 = M.node_to_lsp_range(node_or_range1)
   local range2 = M.node_to_lsp_range(node_or_range2)
 
-  local text1 = ts_query.get_node_text(node_or_range1)
-  local text2 = ts_query.get_node_text(node_or_range2)
+  local text1 = ts_query.get_node_text(node_or_range1, bufnr)
+  local text2 = ts_query.get_node_text(node_or_range2, bufnr)
 
-  local edit1 = { range = range1, newText = table.concat(text2, "\n") }
-  local edit2 = { range = range2, newText = table.concat(text1, "\n") }
+  local edit1 = { range = range1, newText = text2 }
+  local edit2 = { range = range2, newText = text1 }
   vim.lsp.util.apply_text_edits({ edit1, edit2 }, bufnr, "utf-8")
+
+  local lines1 = vim.split(text1, '\n')
+  local lines2 = vim.split(text2, '\n')
 
   if cursor_to_second then
     utils.set_jump()
@@ -360,7 +363,7 @@ function M.swap_nodes(node_or_range1, node_or_range2, bufnr, cursor_to_second)
       range1["end"].line < range2.start.line
       or (range1["end"].line == range2.start.line and range1["end"].character < range2.start.character)
     then
-      line_delta = #text2 - #text1
+      line_delta = #lines2 - #lines1
     end
 
     if range1["end"].line == range2.start.line and range1["end"].character < range2.start.character then
@@ -371,14 +374,14 @@ function M.swap_nodes(node_or_range1, node_or_range2, bufnr, cursor_to_second)
         --space_between_ranges = range2.start.character - range1["end"].character
         --char_delta = correction_after_line_change + text_now_before_range2 + space_between_ranges
         --- Equivalent to:
-        char_delta = #text2[#text2] - range1["end"].character
+        char_delta = #lines2[#lines2] - range1["end"].character
 
         -- add range1.start.character if last line of range1 (now text2) does not start at 0
         if range1.start.line == range2.start.line + line_delta then
           char_delta = char_delta + range1.start.character
         end
       else
-        char_delta = #text2[#text2] - #text1[#text1]
+        char_delta = #lines2[#lines2] - #lines1[#lines1]
       end
     end
 
