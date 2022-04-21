@@ -93,7 +93,7 @@
     "revision": "cfcbca3f8f734773878e00d7bfcedea98eb10be2"
   },
   "glimmer": {
-    "revision": "7da694aacda35266e96421cf92f595a91669c1e3"
+    "revision": "b2f55e596af5a7d2c3d95076c6af91d8f023617c"
   },
   "glsl": {
     "revision": "ffb93961426926554a0ba4a389ea6e9d6fafdea9"
@@ -114,7 +114,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "hack": {
-    "revision": "d434b4e6c9af0524b163d7a912c8ce79d2b1f778"
+    "revision": "64d2346cf273d4f98d26322fb8ebaeb4c72f530a"
   },
   "haskell": {
     "revision": "ed976b81b00ce7b72b99bca75e7a616cc526220c"
@@ -150,7 +150,7 @@
     "revision": "189a6a4829beb9cdbe837260653b4a3dfb0cc3db"
   },
   "json": {
-    "revision": "5d992d9dd42d533aa25618b3a0588f4375adf9f3"
+    "revision": "137e1ce6a02698fc246cdb9c6b886ed1de9a1ed8"
   },
   "json5": {
     "revision": "5dd5cdc418d9659682556b6adca2dd9ace0ac6d2"
