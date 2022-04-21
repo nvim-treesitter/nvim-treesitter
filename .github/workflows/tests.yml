@@ -1,9 +1,21 @@
 name: Tests
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches:
+      - 'master'
+
+# Cancel any in-progress CI runs for a PR if it is updated
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
+  cancel-in-progress: true
 
 jobs:
-  check_compilation_unix_like:
+  check_compilation:
     strategy:
       fail-fast: false
       matrix:
@@ -23,20 +35,29 @@ jobs:
           mkdir -p ~/.local/share/nvim/site/pack/plenary.nvim/start
           cd ~/.local/share/nvim/site/pack/plenary.nvim/start
           git clone https://github.com/nvim-lua/plenary.nvim
-          curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly --profile minimal
-          ~/.cargo/bin/cargo install --git https://github.com/theHamsta/highlight-assertions
+          curl -L https://github.com/theHamsta/highlight-assertions/releases/download/v0.1.5/highlight-assertions_v0.1.5_x86_64-unknown-linux-gnu.tar.gz | tar -xz
+          cp highlight-assertions /usr/local/bin
 
       - name: Install and prepare Neovim
         env:
-          NVIM_TAG: v0.6.0
-          TREE_SITTER_CLI_TAG: v0.20.1
+          NVIM_TAG: stable
+          TREE_SITTER_CLI_TAG: v0.20.6
         run: |
           bash ./scripts/ci-install-${{ matrix.os }}.sh
 
+      - name: Setup Parsers Cache
+        id: parsers-cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ./parser/
+            ~/AppData/Local/nvim/pack/nvim-treesitter/start/nvim-treesitter/parser/
+          key: ${{ matrix.os }}-${{ matrix.cc }}-parsers-v1-${{ hashFiles('./lockfile.json', './lua/nvim-treesitter/parsers.lua', './lua/nvim-treesitter/install.lua', './lua/nvim-treesitter/shell_selectors.lua') }}
+
       - name: Compile parsers Unix like
-        if: matrix.os != 'windows-latest'
+        if: ${{ matrix.os != 'windows-latest' && steps.parsers-cache.outputs.cache-hit != 'true' }}
         run: |
           nvim --headless -c "TSInstallSync all" -c "q"
 
       - name: Tests
-        run: PATH=~/.cargo/bin:$PATH ./scripts/run_tests.sh
+        run: PATH=/usr/local/bin:$PATH ./scripts/run_tests.sh

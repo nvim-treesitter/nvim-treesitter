@@ -35,9 +35,10 @@
 ;; Function related
 (function_declaration name: (_) @function)
 (call_expression function: (identifier) @function)
-(function_declaration parameters: (parameters (identifier) @parameter))
+(parameters (identifier) @parameter)
+(default_parameter (identifier) @parameter)
 
-[ (bang) (spread) ] @punctuation.special
+[ (bang) (spread) (at) ] @punctuation.special
 
 [ (no_option) (inv_option) (default_option) (option_name) ] @variable.builtin
 [
@@ -58,6 +59,7 @@
   "setlocal"
   "silent"
   "echo"
+  "echomsg"
   "autocmd"
   "augroup"
   "return"
@@ -67,9 +69,20 @@
   "perl"
   "python"
   "highlight"
+  "delcommand"
+  "comclear"
+  "colorscheme"
+  "startinsert"
+  "stopinsert"
+  "global"
+  "runtime"
+  "wincmd"
 ] @keyword
 (map_statement cmd: _ @keyword)
-(command_name) @function.macro
+[ 
+  (command_name)
+  (unknown_command_name)
+]@function.macro
 
 ;; Syntax command
 
@@ -84,7 +97,12 @@
   "foldlevel"
   "iskeyword"
   "keyword"
+  "match"
+  "cluster"
+  "region"
 ] @keyword)
+
+(syntax_argument name: _ @keyword)
 
 [
   "<buffer>"
@@ -105,6 +123,22 @@
 (au_event) @constant
 (normal_statement (commands) @constant)
 
+;; Highlight command
+
+(highlight_statement [
+  "default"
+  "link"
+  "clear"
+] @keyword)
+
+;; Runtime command
+
+(runtime_statement (where) @keyword.operator)
+
+;; Colorscheme command
+
+(colorscheme_statement (name) @string)
+
 ;; Literals
 
 (string_literal) @string
@@ -112,6 +146,8 @@
 (float_literal) @float
 (comment) @comment
 (pattern) @string.special
+(pattern_multi) @string.regex
+(filename) @string
 ((scoped_identifier
   (scope) @_scope . (identifier) @boolean)
  (#eq? @_scope "v:")

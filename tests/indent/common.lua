@@ -14,7 +14,7 @@ local function same_indent(state, arguments)
   local ok = true
   local errors = { before = {}, after = {} }
   for line = 1, #before do
-    if before[line] ~= after[line] then
+    if #string.match(before[line], "^%s*") ~= #string.match(after[line], "^%s*") then
       if before[line] and after[line] then
         -- store the actual indentation length for each line
         errors.before[line] = #string.match(before[line], "^%s*")
@@ -137,6 +137,17 @@ function M.indent_new_line(file, spec, opts, xfail)
   end, opts)
 
   local indent = type(spec.indent) == "string" and spec.indent or string.rep(" ", spec.indent)
+  table.insert(before, spec.on_line + 1, indent .. spec.text)
+
+  compare_indent(before, after, xfail)
+
+  before, after = M.run_indent_test(file, function()
+    -- move to the line and input the new one
+    vim.cmd(string.format("normal! %dG$", spec.on_line))
+    vim.cmd(string.format(vim.api.nvim_replace_termcodes("normal! a<cr>%s", true, true, true), spec.text))
+  end, opts)
+
+  indent = type(spec.indent) == "string" and spec.indent or string.rep(" ", spec.indent)
   table.insert(before, spec.on_line + 1, indent .. spec.text)
 
   compare_indent(before, after, xfail)

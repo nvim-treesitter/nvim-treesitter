@@ -1,32 +1,55 @@
 ; Keywords
 
 [
-  "module"
+  ; block delimeters
+  (module_keyword)
   "endmodule"
-  "endfunction"
-  "task"
-  "endtask"
-  "parameter"
-  "localparam"
-  "assign"
-  "typedef"
+  "program"
+  "endprogram"
   "class"
   "endclass"
-  "default"
-  "break"
   "interface"
   "endinterface"
-  "modport"
   "package"
   "endpackage"
+  "checker"
+  "endchecker"
+  "config"
+  "endconfig"
+
+  "pure"
+  "virtual"
+  "extends"
+  "implements"
+  "super"
+  (class_item_qualifier)
+
+  "parameter"
+  "localparam"
+  "defparam"
+  "assign"
+  "typedef"
+  "modport"
   "fork"
   "join"
   "join_none"
   "join_any"
+  "default"
+  "break"
   "assert"
+  (unique_priority)
+  "tagged"
+  "extern"
 ] @keyword
 
-"function" @keyword.function
+[
+  "function"
+  "endfunction"
+
+  "task"
+  "endtask"
+] @keyword.function
+
 "return" @keyword.return
 
 [
@@ -48,7 +71,7 @@
 [
   "if"
   "else"
-  "case"
+  (case_keyword)
   "endcase"
 ] @conditional
 
@@ -180,6 +203,9 @@
 (module_declaration
  (module_header
   (simple_identifier) @constructor))
+
+(class_constructor_declaration
+ "new" @constructor)
 
 (parameter_identifier
  (simple_identifier) @parameter)

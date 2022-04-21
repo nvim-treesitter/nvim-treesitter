@@ -14,6 +14,7 @@ local lockfile = {}
 M.compilers = { vim.fn.getenv "CC", "cc", "gcc", "clang", "cl", "zig" }
 M.prefer_git = fn.has "win32" == 1
 M.command_extra_args = {}
+M.ts_generate_args = nil
 
 local started_commands = 0
 local finished_commands = 0
@@ -259,6 +260,15 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
       )
     end
     return
+  else
+    if not M.ts_generate_args then
+      local ts_cli_version = utils.ts_cli_version()
+      if ts_cli_version and vim.split(ts_cli_version, " ")[1] > "0.20.2" then
+        M.ts_generate_args = { "generate", "--abi", vim.treesitter.language_version }
+      else
+        M.ts_generate_args = { "generate" }
+      end
+    end
   end
   if generate_from_grammar and vim.fn.executable "node" ~= 1 then
     api.nvim_err_writeln "Node JS not found: `node` is not executable!"
@@ -308,22 +318,14 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
         info = "Generating source files from grammar.js...",
         err = 'Error during "tree-sitter generate"',
         opts = {
-          args = { "generate" },
+          args = M.ts_generate_args,
           cwd = compile_location,
         },
       },
     })
   end
   vim.list_extend(command_list, {
-    {
-      cmd = cc,
-      info = "Compiling...",
-      err = "Error during compilation",
-      opts = {
-        args = vim.tbl_flatten(shell.select_compiler_args(repo, cc)),
-        cwd = compile_location,
-      },
-    },
+    shell.select_compile_command(repo, cc, compile_location),
     shell.select_mv_cmd("parser.so", parser_lib_name, compile_location),
     {
       cmd = function()
@@ -512,7 +514,17 @@ function M.write_lockfile(verbose, skip_langs)
   for _, v in ipairs(sorted_parsers) do
     if not vim.tbl_contains(skip_langs, v.name) then
       -- I'm sure this can be done in aync way with iter_cmd
-      local sha = vim.split(vim.fn.systemlist("git ls-remote " .. v.parser.install_info.url)[1], "\t")[1]
+      local sha
+      if v.parser.install_info.branch then
+        sha = vim.split(
+          vim.fn.systemlist(
+            "git ls-remote " .. v.parser.install_info.url .. " | grep refs/heads/" .. v.parser.install_info.branch
+          )[1],
+          "\t"
+        )[1]
+      else
+        sha = vim.split(vim.fn.systemlist("git ls-remote " .. v.parser.install_info.url)[1], "\t")[1]
+      end
       lockfile[v.name] = { revision = sha }
       if verbose then
         print(v.name .. ": " .. sha)

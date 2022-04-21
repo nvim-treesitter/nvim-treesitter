@@ -2,14 +2,20 @@ local api = vim.api
 
 local parsers = require "nvim-treesitter.parsers"
 local utils = require "nvim-treesitter.utils"
+local ts_query = vim.treesitter.query
 
 local M = {}
 
 --- Gets the actual text content of a node
+-- @deprecated Use vim.treesitter.query.get_node_text
 -- @param node the node to get the text from
 -- @param bufnr the buffer containing the node
 -- @return list of lines of text of the node
 function M.get_node_text(node, bufnr)
+  vim.notify_once(
+    "nvim-treesitter.ts_utils.get_node_text is deprecated: use vim.treesitter.query.get_node_text",
+    vim.log.levels.WARN
+  )
   local bufnr = bufnr or api.nvim_get_current_buf()
   if not node then
     return {}
@@ -21,7 +27,10 @@ function M.get_node_text(node, bufnr)
   if start_row ~= end_row then
     local lines = api.nvim_buf_get_lines(bufnr, start_row, end_row + 1, false)
     lines[1] = string.sub(lines[1], start_col + 1)
-    lines[#lines] = string.sub(lines[#lines], 1, end_col)
+    -- end_row might be just after the last line. In this case the last line is not truncated.
+    if #lines == end_row - start_row + 1 then
+      lines[#lines] = string.sub(lines[#lines], 1, end_col)
+    end
     return lines
   else
     local line = api.nvim_buf_get_lines(bufnr, start_row, start_row + 1, false)[1]
@@ -121,7 +130,7 @@ function M.get_named_children(node)
   return nodes
 end
 
-function M.get_node_at_cursor(winnr)
+function M.get_node_at_cursor(winnr, ignore_injected_langs)
   winnr = winnr or 0
   local cursor = api.nvim_win_get_cursor(winnr)
   local cursor_range = { cursor[1] - 1, cursor[2] }
@@ -131,7 +140,19 @@ function M.get_node_at_cursor(winnr)
   if not root_lang_tree then
     return
   end
-  local root = M.get_root_for_position(cursor_range[1], cursor_range[2], root_lang_tree)
+
+  local root
+  if ignore_injected_langs then
+    for _, tree in ipairs(root_lang_tree:trees()) do
+      local tree_root = tree:root()
+      if tree_root and M.is_in_node_range(tree_root, cursor_range[1], cursor_range[2]) then
+        root = tree_root
+        break
+      end
+    end
+  else
+    root = M.get_root_for_position(cursor_range[1], cursor_range[2], root_lang_tree)
+  end
 
   if not root then
     return
@@ -323,12 +344,12 @@ function M.swap_nodes(node_or_range1, node_or_range2, bufnr, cursor_to_second)
   local range1 = M.node_to_lsp_range(node_or_range1)
   local range2 = M.node_to_lsp_range(node_or_range2)
 
-  local text1 = M.get_node_text(node_or_range1)
-  local text2 = M.get_node_text(node_or_range2)
+  local text1 = ts_query.get_node_text(node_or_range1)
+  local text2 = ts_query.get_node_text(node_or_range2)
 
   local edit1 = { range = range1, newText = table.concat(text2, "\n") }
   local edit2 = { range = range2, newText = table.concat(text1, "\n") }
-  vim.lsp.util.apply_text_edits({ edit1, edit2 }, bufnr)
+  vim.lsp.util.apply_text_edits({ edit1, edit2 }, bufnr, "utf-8")
 
   if cursor_to_second then
     utils.set_jump()

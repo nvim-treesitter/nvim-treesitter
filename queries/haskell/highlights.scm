@@ -11,6 +11,7 @@
 
 (comment) @comment
 
+
 ;; ----------------------------------------------------------------------------
 ;; Punctuation
 
@@ -72,10 +73,7 @@
   "@"
 ] @operator
 
-(qualified_module (module) @constructor)
-(qualified_type (module) @namespace)
-(qualified_variable (module) @namespace)
-(import (module) @namespace)
+(module) @namespace
 
 [
   (where)
@@ -96,27 +94,37 @@
   "do"
   "mdo"
   "rec"
+  "infix"
+  "infixl"
+  "infixr"
 ] @keyword
 
 
 ;; ----------------------------------------------------------------------------
 ;; Functions and variables
 
-(signature name: (variable) @type)
-(function name: (variable) @function)
-
 (variable) @variable
-"_" @punctuation.special
+(pat_wildcard) @variable
+
+(signature name: (variable) @type)
+(function
+  name: (variable) @function
+  patterns: (patterns))
+((signature (fun)) . (function (variable) @function))
+((signature (context (fun))) . (function (variable) @function))
+((signature (forall (context (fun)))) . (function (variable) @function))
 
 (exp_infix (variable) @operator)  ; consider infix functions as operators
 
-("@" @namespace)  ; "as" pattern operator, e.g. x@Constructor
+(exp_apply . (exp_name (variable) @function))
+(exp_apply . (exp_name (qualified_variable (variable) @function)))
 
 
 ;; ----------------------------------------------------------------------------
 ;; Types
 
 (type) @type
+(type_variable) @type
 
 (constructor) @constructor
 

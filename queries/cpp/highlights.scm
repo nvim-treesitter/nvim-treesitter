@@ -30,12 +30,16 @@
 (function_declarator
   declarator: (field_identifier) @method)
 
+(concept_definition
+  name: (identifier) @type)
 
 (namespace_identifier) @namespace
 ((namespace_identifier) @type
                         (#lua-match? @type "^[A-Z]"))
 ((namespace_identifier) @constant
                         (#lua-match? @constant "^[A-Z][A-Z_0-9]*$"))
+(case_statement
+  value: (qualified_identifier (identifier) @constant))
 (namespace_definition
   name: (identifier) @namespace)
 
@@ -47,17 +51,32 @@
 (function_declarator
       declarator: (qualified_identifier
         name: (identifier) @function))
+(function_declarator
+      declarator: (qualified_identifier
+        name: (qualified_identifier
+          name: (identifier) @function)))
 ((function_declarator
       declarator: (qualified_identifier
         name: (identifier) @constructor))
  (#lua-match? @constructor "^[A-Z]"))
 
 (operator_name) @function
+"operator" @function
 "static_assert" @function.builtin
 
 (call_expression
   function: (qualified_identifier
               name: (identifier) @function))
+(call_expression
+  function: (qualified_identifier
+              name: (qualified_identifier
+                      name: (identifier) @function)))
+(call_expression
+  function:
+      (qualified_identifier
+        name: (qualified_identifier
+              name: (qualified_identifier
+                      name: (identifier) @function))))
 
 (call_expression
   function: (field_expression
@@ -123,6 +142,10 @@
  "using"
  "virtual"
  "co_await"
+ "concept"
+ "requires"
+ "consteval"
+ "constinit"
  (auto)
 ] @keyword
 
@@ -151,7 +174,10 @@
  ;"xor_eq"
 ] @keyword.operator
 
-"::" @operator
+[
+  "<=>"
+  "::"
+] @operator
 
 (attribute_declaration) @attribute
 

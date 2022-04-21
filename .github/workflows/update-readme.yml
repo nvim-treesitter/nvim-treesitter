@@ -1,4 +1,4 @@
-name: Check README parser info
+name: Update README
 
 on:
   push:
@@ -7,17 +7,15 @@ on:
 
 jobs:
   update-readme:
-    name: Check README parser info
+    name: Update README
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
       - name: Prepare
         env:
-          NVIM_TAG: v0.6.0
+          NVIM_TAG: stable
         run: |
-          sudo apt-get update
-          sudo add-apt-repository universe
           wget https://github.com/neovim/neovim/releases/download/${NVIM_TAG}/nvim.appimage
           chmod u+x nvim.appimage
           mkdir -p ~/.local/share/nvim/site/pack/nvim-treesitter/start
@@ -39,3 +37,4 @@ jobs:
           title: Update README
           branch: update-readme-pr
           base: ${{ github.head_ref }}
+          draft: true

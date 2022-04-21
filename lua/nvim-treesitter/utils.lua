@@ -10,12 +10,49 @@ function M.notify(msg, log_level, opts)
   vim.notify(msg, log_level, vim.tbl_extend("force", default_opts, opts or {}))
 end
 
+--- Define user defined vim command which calls nvim-treesitter module function
+---     - If module name is 'mod', it should be defined in hierarchy 'nvim-treesitter.mod'
+---     - A table with name 'commands' should be defined in 'mod' which needs to be passed as
+---       the commands param of this function
+---
+---@param mod string, Name of the module that resides in the heirarchy - nvim-treesitter.module
+---@param commands table, Command list for the module
+---         - {command_name} Name of the vim user defined command, Keys:
+---             - {run}: (function) callback function that needs to be executed
+---             - {f_args}: (string, default <f-args>)
+---                 - type of arguments that needs to be passed to the vim command
+---             - {args}: (string, optional)
+---                 - vim command attributes
+---
+---Example:
+---  If module is nvim-treesitter.custom_mod
+---  <pre>
+---  M.commands = {
+---      custom_command = {
+---          run = M.module_function,
+---          f_args = "<f-args>",
+---          args = {
+---              "-range"
+---          }
+---      }
+---  }
+---
+---  utils.setup_commands("custom_mod", require("nvim-treesitter.custom_mod").commands)
+---  </pre>
+---
+---  Will generate command :
+---  <pre>
+---  command! -range custom_command \
+---      lua require'nvim-treesitter.custom_mod'.commands.custom_command['run<bang>'](<f-args>)
+---  </pre>
 function M.setup_commands(mod, commands)
   for command_name, def in pairs(commands) do
+    local f_args = def.f_args or "<f-args>"
     local call_fn = string.format(
-      "lua require'nvim-treesitter.%s'.commands.%s['run<bang>'](<f-args>)",
+      "lua require'nvim-treesitter.%s'.commands.%s['run<bang>'](%s)",
       mod,
-      command_name
+      command_name,
+      f_args
     )
     local parts = vim.tbl_flatten {
       "command!",
@@ -136,12 +173,6 @@ function M.get_at_path(tbl, path)
   return result
 end
 
--- Prints a warning message
--- @param text the text message
-function M.print_warning(text)
-  api.nvim_command(string.format([[echohl WarningMsg | echo "%s" | echohl None]], text))
-end
-
 function M.set_jump()
   vim.cmd "normal! m'"
 end
@@ -191,6 +222,15 @@ end
 
 function M.to_func(a)
   return type(a) == "function" and a or M.constant(a)
+end
+
+function M.ts_cli_version()
+  if fn.executable "tree-sitter" == 1 then
+    local handle = io.popen "tree-sitter  -V"
+    local result = handle:read "*a"
+    handle:close()
+    return vim.split(result, "\n")[1]:match "[^tree%psitter ].*"
+  end
 end
 
 return M

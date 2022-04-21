@@ -1,53 +1,19 @@
-; C Injections
-(
-  (function_call
-    (field_expression
-      (property_identifier) @_cdef_identifier)
-    (arguments
-      (string) @c)
-  )
+((function_call
+  name: [
+    (identifier) @_cdef_identifier
+    (_ _ (identifier) @_cdef_identifier)
+  ]
+  arguments: (arguments (string content: _ @c)))
+  (#eq? @_cdef_identifier "cdef"))
 
-  (#eq? @_cdef_identifier "cdef")
-  (#lua-match? @c "^[\"']")
-  (#offset! @c 0 1 0 -1)
-)
+((function_call
+  name: (_) @_vimcmd_identifier
+  arguments: (arguments (string content: _ @vim)))
+  (#any-of? @_vimcmd_identifier "vim.cmd" "vim.api.nvim_command" "vim.api.nvim_exec"))
 
-(
-  (function_call
-    (field_expression
-      (property_identifier) @_cdef_identifier)
-    (arguments
-      (string) @c)
-  )
-
-  (#eq? @_cdef_identifier "cdef")
-  (#lua-match? @c "^%[%[")
-  (#offset! @c 0 2 0 -2)
-)
-
-; Vimscript Injections
-(
-  (function_call
-    (field_expression) @_vimcmd_identifier
-    (arguments
-      (string) @vim)
-  )
-
-  (#any-of? @_vimcmd_identifier "vim.cmd" "vim.api.nvim_command" "vim.api.nvim_exec")
-  (#lua-match? @vim "^[\"']")
-  (#offset! @vim 0 1 0 -1)
-)
-
-(
-  (function_call
-    (field_expression) @_vimcmd_identifier
-    (arguments
-      (string) @vim)
-  )
-
-  (#any-of? @_vimcmd_identifier "vim.cmd" "vim.api.nvim_command" "vim.api.nvim_exec")
-  (#lua-match? @vim "^%[%[")
-  (#offset! @vim 0 2 0 -2)
-)
+((function_call
+  name: (_) @_vimcmd_identifier
+  arguments: (arguments (string content: _ @query) .))
+  (#eq? @_vimcmd_identifier "vim.treesitter.query.set_query"))
 
 (comment) @comment

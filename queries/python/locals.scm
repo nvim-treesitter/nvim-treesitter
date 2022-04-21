@@ -34,11 +34,6 @@
 (typed_default_parameter
   (identifier) @definition.parameter)
 
-(with_statement
- (with_clause
-  (with_item
-   alias: (identifier) @definition.var)))
-
 ; *args parameter
 (parameters
   (list_splat_pattern
@@ -113,6 +108,8 @@
 (named_expression
   (identifier) @definition.var)
 
+(as_pattern 
+  alias: (as_pattern_target) @definition.var)
 
 ;;; REFERENCES
 (identifier) @reference

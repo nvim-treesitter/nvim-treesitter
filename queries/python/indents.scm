@@ -1,6 +1,5 @@
 [
   (list)
-  (tuple)
   (dictionary)
   (set)
 
@@ -19,13 +18,29 @@
 
   (tuple_pattern)
   (list_pattern)
-  (argument_list)
-  (parameters)
   (binary_operator)
 
+  (lambda)
   (function_definition)
   (class_definition)
+
+  (concatenated_string)
 ] @indent
+  
+(if_statement
+  condition: (parenthesized_expression) @aligned_indent
+  (#set! "delimiter" "()")
+)
+((ERROR "(" . (_)) @aligned_indent
+ (#set! "delimiter" "()"))
+((argument_list) @aligned_indent
+ (#set! "delimiter" "()"))
+((argument_list) @aligned_indent
+ (#set! "delimiter" "()"))
+((parameters) @aligned_indent
+ (#set! "delimiter" "()"))
+((tuple) @aligned_indent
+ (#set! "delimiter" "()"))
 
 [
   ")"
@@ -37,12 +52,4 @@
   (finally_clause)
 ] @branch
 
-[
-  (return_statement)
-  (pass_statement)
-  (raise_statement)
-] @return
-
-[
-  (string)
-] @ignore
+(string) @auto

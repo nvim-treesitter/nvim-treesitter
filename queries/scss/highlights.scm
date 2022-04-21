@@ -3,10 +3,17 @@
 [
   "@mixin"
   "@media"
-  "@while"
-  "@each"
   "@include"
 ] @keyword
+
+[
+  "@while"
+  "@each"
+  "@for"
+  "from"
+  "through"
+  "in"
+] @repeat
 
 (single_line_comment) @comment
 (function_name) @function
@@ -28,6 +35,9 @@
 (each_statement (key) @parameter)
 (each_statement (value) @parameter)
 (each_statement (variable_value) @parameter)
+
+(for_statement (variable) @parameter)
+(for_statement (_ (variable_value) @parameter))
 
 (argument) @parameter
 (arguments (variable_value) @parameter)

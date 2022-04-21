@@ -10,8 +10,30 @@
  ] @type.builtin
 (named_type (name)) @type
 (named_type (qualified_name)) @type
+(class_declaration
+  name: (name) @type)
+(base_clause
+  [(name) (qualified_name)] @type)
+(enum_declaration
+  name: (name) @type)
+(interface_declaration
+  name: (name) @type)
+(namespace_use_clause
+  [(name) (qualified_name)] @type)
+(namespace_aliasing_clause (name)) @type
+(class_interface_clause
+  [(name) (qualified_name)] @type)
+(scoped_call_expression
+  scope: [(name) (qualified_name)] @type)
+(class_constant_access_expression
+  . [(name) (qualified_name)] @type
+  (name) @constant)
+(trait_declaration
+  name: (name) @type)
+(use_declaration
+    (name) @type)
 
-; Functions
+; Functions, methods, constructors
 
 (array_creation_expression "array" @function.builtin)
 (list_literal "list" @function.builtin)
@@ -37,6 +59,21 @@
 (nullsafe_member_call_expression
     name: (name) @method)
 
+(method_declaration
+    name: (name) @constructor
+    (#eq? @constructor "__construct"))
+(object_creation_expression
+  [(name) (qualified_name)] @constructor)
+
+; Parameters
+[
+  (simple_parameter)
+  (variadic_parameter)
+] @parameter
+
+(argument
+    (name) @parameter)
+
 ; Member
 
 (property_element
@@ -53,22 +90,29 @@
 (relative_scope) @variable.builtin
 
 ((name) @constant
- (#vim-match? @constant "^_?[A-Z][A-Z\d_]+$"))
+ (#vim-match? @constant "^_?[A-Z][A-Z\d_]*$"))
+((name) @constant.builtin
+ (#vim-match? @constant.builtin "^__[A-Z][A-Z\d_]+__$"))
 
-((name) @constructor
- (#lua-match? @constructor "^[A-Z]"))
+(const_declaration (const_element (name) @constant))
 
 ((name) @variable.builtin
  (#eq? @variable.builtin "this"))
 
-(variable_name) @variable
+; Namespace
+(namespace_definition
+  name: (namespace_name) @namespace)
 
+; Conditions ( ? : )
+(conditional_expression) @conditional
 ; Basic tokens
 
 [
  (string)
  (heredoc)
+ (shell_command_expression) ; backtick operator: `ls -la`
  ] @string
+(encapsed_string (escape_sequence) @string.escape)
 
 (boolean) @boolean
 (null) @constant.builtin
@@ -76,10 +120,15 @@
 (float) @float
 (comment) @comment
 
+(named_label_statement) @label
 ; Keywords
 
 [
+ "and"
  "as"
+ "instanceof"
+ "or"
+ "xor"
 ] @keyword.operator
 
 [
@@ -92,19 +141,19 @@
  "abstract"
  "break"
  "class"
+ "clone"
  "const"
- "continue"
  "declare"
  "default"
  "echo"
- "unset"
  "enddeclare"
+ "enum"
  "extends"
  "final"
  "global"
+ "goto"
  "implements"
  "insteadof"
- "instanceof"
  "interface"
  "namespace"
  "new"
@@ -113,9 +162,13 @@
  "public"
  "static"
  "trait"
+ "unset"
  ] @keyword
 
-"return" @keyword.return
+[
+  "return"
+  "yield"
+] @keyword.return
 
 [
  "case"
@@ -126,9 +179,11 @@
  "if"
  "switch"
  "match"
+  "??"
  ] @conditional
 
 [
+ "continue"
  "do"
  "endfor"
  "endforeach"
@@ -156,7 +211,6 @@
 [
  ","
  ";"
- "."
  ] @punctuation.delimiter
 
 [
@@ -173,14 +227,17 @@
 [
   "="
 
+  "."
   "-"
   "*"
   "/"
   "+"
   "%"
+  "**"
 
   "~"
   "|"
+  "^"
   "&"
   "<<"
   ">>"
@@ -194,6 +251,7 @@
   "<="
   ">="
   ">"
+  "<>"
   "=="
   "!="
   "==="
@@ -203,15 +261,24 @@
   "&&"
   "||"
 
+  ".="
   "-="
   "+="
   "*="
   "/="
   "%="
-  "|="
+  "**="
   "&="
+  "|="
+  "^="
+  "<<="
+  ">>="
+  "??="
   "--"
   "++"
+
+  "@"
+  "::"
 ] @operator
 
 (ERROR) @error

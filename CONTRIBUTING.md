@@ -2,10 +2,11 @@
 
 First of all, thank you very much for contributing to `nvim-treesitter`.
 
-If you haven't already, you should really come and reach out to us on our [gitter](https://gitter.im/nvim-treesitter/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
-room, so we can help you with any question you might have!
+If you haven't already, you should really come and reach out to us on our [Zulip]
+server, so we can help you with any question you might have!
+There is also a [Matrix channel] for tree-sitter support in Neovim.
 
-As you know, `nvim-treesitter` is roughly split in two parts :
+As you know, `nvim-treesitter` is roughly split in two parts:
 
 - Parser configurations : for various things like `locals`, `highlights`
 - What we like to call *modules* : tiny lua modules that provide a given feature, based on parser configurations
@@ -39,7 +40,7 @@ Thus far, there is basically two types of modules:
 In any case, you can build your own module ! To help you started in the process, we have a template
 repository designed to build new modules [here](https://github.com/nvim-treesitter/module-template).
 Feel free to use it, and contact us over on our
-[gitter](https://gitter.im/nvim-treesitter/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link).
+[Zulip] or on the "Neovim tree-sitter" [Matrix channel].
 
 ## Parser configurations
 
@@ -73,7 +74,7 @@ If your language is an extension of a language (TypeScript is an extension of Ja
 example), you can include the queries from your base language by adding the following _as the first
 line of your file_.
 
-```scheme
+```query
 ; inherits: lang1,(optionallang)
 ```
 
@@ -90,8 +91,10 @@ effect on highlighting. We will work on improving highlighting in the near futur
 
 ```
 @comment
+@debug
 @error for error `ERROR` nodes.
 @none to disable completely the highlight
+@preproc
 @punctuation.delimiter for `;` `.` `,`
 @punctuation.bracket for `()` or `{}`
 @punctuation.special for symbols with special meaning like `{}` in string interpolation.
@@ -108,6 +111,7 @@ effect on highlighting. We will work on improving highlighting in the near futur
 @string.escape
 @string.special
 @character
+@character.special
 @number
 @boolean
 @float
@@ -141,13 +145,18 @@ effect on highlighting. We will work on improving highlighting in the near futur
 @operator (for symbolic operators, e.g. `+`, `*`)
 @exception (e.g. `throw`, `catch`)
 @include keywords for including modules (e.g. import/from in Python)
+@storageclass
 
 @type
 @type.builtin
+@type.definition
+@type.qualifier
 @namespace for identifiers referring to namespaces
 @symbol for identifiers referring to symbols
 @attribute for e.g. Python decorators
 ```
+
+@conceal followed by `(#set! conceal "")` for captures that are not used for highlights but only for concealing.
 
 #### Variables
 
@@ -177,6 +186,8 @@ Mainly for markup languages.
 @text.note
 @text.warning
 @text.danger
+
+@todo
 ```
 
 #### Tags
@@ -189,10 +200,15 @@ Used for xml-like tags
 @tag.delimiter
 ```
 
+#### Conceal
+
+@conceal followed by `(#set! conceal "")` for captures that are not used for highlights but only for concealing.
+
 ### Locals
 
 ```
 @definition for various definitions
+@definition.constant
 @definition.function
 @definition.method
 @definition.var
@@ -212,6 +228,7 @@ Used for xml-like tags
 @constructor
 ```
 
+
 #### Definition Scope
 
 You can set the scope of a definition by setting the `scope` property on the definition.
@@ -226,7 +243,7 @@ function doSomething() {}
 doSomething(); // Should point to the declaration as the definition
 ```
 
-```scheme
+```query
 (function_declaration
   ((identifier) @definition.var)
    (#set! "definition.var.scope" "parent"))
@@ -268,8 +285,15 @@ the node describing the language and `@content` to describe the injection region
 ### Indents
 
 ```
-@indent ; Indent when matching this node
-@branch ; Dedent when matching this node
-@return ; Dedent when matching this node
-@ignore ; Skip this node when calculating the indentation level
+@indent         ; Indent children when matching this node
+@indent_end     ; Marks the end of indented block
+@aligned_indent ; Behaves like python aligned/hanging indent
+@dedent         ; Dedent children when matching this node
+@branch         ; Dedent itself when matching this node
+@ignore         ; Do not indent in this node
+@auto           ; Behaves like 'autoindent' buffer option
+@zero_indent    ; Sets this node at position 0 (no indent)
 ```
+
+[Zulip]: https://nvim-treesitter.zulipchat.com
+[Matrix channel]: https://matrix.to/#/#nvim-treesitter:matrix.org

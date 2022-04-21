@@ -35,18 +35,17 @@ To get a list of supported languages
 <
 
 By default, everything is disabled.
-To enable supported features, put this in your `init.vim` file:
+To enable supported features, put this in your `init.lua` file:
 
 >
-  lua <<EOF
   require'nvim-treesitter.configs'.setup {
-    -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-    ensure_installed = "maintained",
+    -- A list of parser names, or "all"
+    ensure_installed = { "c", "lua", "rust" },
 
-    -- Install languages synchronously (only applied to `ensure_installed`)
+    -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
 
-    -- List of parsers to ignore installing
+    -- List of parsers to ignore installing (for "all")
     ignore_install = { "javascript" },
 
     highlight = {
@@ -63,7 +62,6 @@ To enable supported features, put this in your `init.vim` file:
       additional_vim_regex_highlighting = false,
     },
   }
-  EOF
 <
 
 See |nvim-treesitter-modules| for a list of all available modules and its options.
@@ -73,21 +71,18 @@ MODULES                                              *nvim-treesitter-modules*
 
 |nvim-treesitter| provides several functionalities via modules (and submodules),
 each module makes use of the query files defined for each language,
-you can add your own queries too, see |nvim-treesitter-query-extensions|.
 
 All modules are disabled by default, and some provide default keymaps.
 Each module corresponds to an entry in the dictionary passed to the
-`nvim-treesitter.configs.setup` function, this should be in your `init.vim` file.
+`nvim-treesitter.configs.setup` function, this should be in your `init.lua` file.
 
 >
-  lua <<EOF
   require'nvim-treesitter.configs'.setup {
     -- Modules and its options go here
     highlight = { enable = true },
     incremental_selection = { enable = true },
     textobjects = { enable = true },
   }
-  EOF
 <
 
 All modules share some common options, like `enable` and `disable`.
@@ -95,14 +90,12 @@ When `enable` is `true` this will enable the module for all supported languages,
 if you want to disable the module for some languages you can pass a list to the `disable` option.
 
 >
-  lua <<EOF
   require'nvim-treesitter.configs'.setup {
     highlight = {
       enable = true,
       disable = { "cpp", "lua" },
     },
   }
-  EOF
 <
 
 For more fine-grained control, `disable` can also take a function and
@@ -111,16 +104,14 @@ The function is called once when a module starts in a buffer and receives the
 language and buffer number as arguments:
 
 >
-  lua <<EOF
   require'nvim-treesitter.configs'.setup {
     highlight = {
       enable = true,
       disable = function(lang, bufnr) -- Disable in large C++ buffers
-        return lang == "cpp" and api.nvim_buf_line_count(bufnr) > 50000
+        return lang == "cpp" and vim.api.nvim_buf_line_count(bufnr) > 50000
       end,
     },
   }
-  EOF
 <
 
 Options that define or accept a keymap use the same format you use to define
@@ -141,8 +132,6 @@ Supported options:
 
 - enable: `true` or `false`.
 - disable: list of languages.
-- custom_captures: A map of user defined capture groups to highlight groups.
-  See |nvim-treesitter-query-extensions|.
 - additional_vim_regex_highlighting: `true` or `false`, or a list of languages.
   Set this to `true` if you depend on 'syntax' being enabled
   (like for indentation). Using this option may slow down your editor,
@@ -150,7 +139,6 @@ Supported options:
   Defaults to `false`.
 
 >
-  lua <<EOF
   require'nvim-treesitter.configs'.setup {
     highlight = {
       enable = true,
@@ -162,6 +150,15 @@ Supported options:
       additional_vim_regex_highlighting = false,
     },
   }
+<
+
+You can also set custom highlight captures
+>
+  lua <<EOF
+    require"nvim-treesitter.highlight".set_custom_captures {
+      -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
+      ["foo.bar"] = "Identifier",
+    }
   EOF
 <
 Note: The api is not stable yet.
@@ -186,7 +183,6 @@ Supported options:
     Defaults to `grm`.
 
 >
-  lua <<EOF
   require'nvim-treesitter.configs'.setup {
     incremental_selection = {
       enable = true,
@@ -198,7 +194,6 @@ Supported options:
       },
     },
   }
-  EOF
 <
 
 ------------------------------------------------------------------------------
@@ -212,13 +207,11 @@ Supported options:
 - enable: `true` or `false`.
 - disable: list of languages.
 >
-  lua <<EOF
   require'nvim-treesitter.configs'.setup {
     indent = {
       enable = true
     },
   }
-  EOF
 <
 ==============================================================================
 COMMANDS                                            *nvim-treesitter-commands*
@@ -276,8 +269,8 @@ Toggle (enable if disabled, disable if enabled) {module} on the current
 buffer.
 A list of modules can be found at |:TSModuleInfo|
 
-								*:TSEnableAll*
-:TSEnableAll {module} [{language}]~
+								*:TSEnable*
+:TSEnable {module} [{language}]~
 
 Enable {module} for the session.
 If {language} is specified, enable module for the session only for this
@@ -285,8 +278,8 @@ particular language.
 A list of modules can be found at |:TSModuleInfo|
 A list of languages can be found at |:TSInstallInfo|
 
-							       *:TSDisableAll*
-:TSDisableAll {module} [{language}]~
+							       *:TSDisable*
+:TSDisable {module} [{language}]~
 
 Disable {module} for the session.
 If {language} is specified, disable module for the session only for this
@@ -294,8 +287,8 @@ particular language.
 A list of modules can be found at |:TSModuleInfo|
 A list of languages can be found at |:TSInstallInfo|
 
-								*:TSToggleAll*
-:TSToggleAll {module} [{language}]~
+								*:TSToggle*
+:TSToggle {module} [{language}]~
 
 Toggle (enable if disabled, disable if enabled) {module} for the session.
 If {language} is specified, toggle module for the session only for this
@@ -347,11 +340,6 @@ get_node_at_cursor(winnr)~
 
 `winnr` will be 0 if nil.
 Returns the node under the cursor.
-
-						      *ts_utils.get_node_text*
-get_node_text(node, bufnr)~
-
-Returns the text content of a `node`.
 
 							  *ts_utils.is_parent*
 is_parent(dest, source)~
@@ -497,6 +485,10 @@ Boolean literals: `True` and `False` in Python.
 `TSCharacter`
 Character literals: `'a'` in C.
 
+						       *hl-TSCharacterSpecial*
+`TSCharacterSpecial`
+Special characters.
+
 								*hl-TSComment*
 `TSComment`
 Line comments and block comments.
@@ -521,6 +513,14 @@ Constants defined by macros: `NULL` in C.
 							    *hl-TSConstructor*
 `TSConstructor`
 Constructor calls and definitions: `{}` in Lua, and Java constructors.
+
+								  *hl-TSDebug*
+`TSDebug`
+Debugging statements.
+
+								 *hl-TSDefine*
+`TSDefine`
+Preprocessor #define statements.
 
 								  *hl-TSError*
 `TSError`
@@ -609,6 +609,10 @@ Parameters of a function.
 `TSParameterReference`
 References to parameters of a function.
 
+								*hl-TSPreProc*
+`TSPreProc`
+Preprocessor #if, #else, #endif, etc.
+
 							       *hl-TSProperty*
 `TSProperty`
 Same as `TSField`.
@@ -628,6 +632,11 @@ Special punctuation that doesn't fit into the previous categories.
 								 *hl-TSRepeat*
 `TSRepeat`
 Keywords related to loops: `for`, `while`, etc.
+
+							     *hl-StorageClass*
+`TSStorageClass`
+Keywords that affect how a variable is stored: `static`, `comptime`, `extern`,
+etc.
 
 								 *hl-TSString*
 `TSString`
@@ -722,6 +731,10 @@ Text representation of a warning note.
 `TSDanger`
 Text representation of a danger note.
 
+								   *hl-TSTodo*
+`TSTodo`
+Anything that needs extra attention, such as keywords like TODO or FIXME.
+
 								   *hl-TSType*
 `TSType`
 Type (and class) definitions and annotations.
@@ -729,6 +742,14 @@ Type (and class) definitions and annotations.
 							    *hl-TSTypeBuiltin*
 `TSTypeBuiltin`
 Built-in types: `i32` in Rust.
+
+							  *hl-TSTypeQualifier*
+`TSTypeQualifier`
+Qualifiers on types, e.g. `const` or `volatile` in C or `mut` in Rust.
+
+							 *hl-TSTypeDefinition*
+`TSTypeDefinition`
+Type definitions, e.g. `typedef` in C.
 
 							       *hl-TSVariable*
 `TSVariable`

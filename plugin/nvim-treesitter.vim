@@ -39,6 +39,7 @@ highlight default link TSStringRegex String
 highlight default link TSStringEscape SpecialChar
 highlight default link TSStringSpecial SpecialChar
 highlight default link TSCharacter Character
+highlight default link TSCharacterSpecial SpecialChar
 highlight default link TSNumber Number
 highlight default link TSBoolean Boolean
 highlight default link TSFloat Float
@@ -66,9 +67,18 @@ highlight default link TSKeywordFunction Keyword
 highlight default link TSKeywordOperator TSOperator
 highlight default link TSKeywordReturn TSKeyword
 highlight default link TSException Exception
+highlight default link TSDebug Debug
+highlight default link TSDefine Define
+highlight default link TSPreProc PreProc
+highlight default link TSStorageClass StorageClass
+
+highlight default link TSTodo Todo
 
 highlight default link TSType Type
 highlight default link TSTypeBuiltin Type
+highlight default link TSTypeQualifier Type
+highlight default link TSTypeDefinition Typedef
+
 highlight default link TSInclude Include
 
 highlight default link TSVariableBuiltin Special

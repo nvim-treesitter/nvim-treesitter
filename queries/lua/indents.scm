@@ -1,31 +1,40 @@
 [
   (function_definition)
-  (variable_declaration)
-  (local_variable_declaration)
+  (function_declaration)
   (field)
-  (local_function)
-  (function)
+  (do_statement)
+  (while_statement)
+  (repeat_statement)
   (if_statement)
   (for_statement)
-  (for_in_statement)
-  (repeat_statement)
   (return_statement)
-  (while_statement)
-  (table)
+  (table_constructor)
   (arguments)
-  (do_statement)
+  (return_statement)
 ] @indent
 
 [
   "end"
-  "until"
-  "{"
-  "}"
-  "("
   ")"
+  "}"
+] @indent_end
+
+(return_statement
+  (expression_list
+    (function_call))) @dedent
+
+[
+  "end"
   "then"
-  (else)
-  (elseif)
+  "until"
+  "}"
+  ")"
+  "elseif"
+  (elseif_statement)
+  "else"
+  (else_statement)
 ] @branch
 
-(comment) @ignore
+(comment) @auto
+
+(string) @auto

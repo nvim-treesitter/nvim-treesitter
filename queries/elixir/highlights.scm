@@ -180,7 +180,7 @@
       ] operator: "/" right: (integer) @operator)
   ])
 
-; Sigils
+; Non-String Sigils
 (sigil
   "~" @string.special
   ((sigil_name) @string.special) @_sigil_name
@@ -189,6 +189,7 @@
   ((sigil_modifiers) @string.special)?
   (#not-any-of? @_sigil_name "s" "S"))
 
+; String Sigils
 (sigil
   "~" @string
   ((sigil_name) @string) @_sigil_name
@@ -203,7 +204,8 @@
   operator: "@"
   operand: [
     (identifier)
-    (call target: (identifier) @constant)]) @constant
+    (call target: (identifier))
+  ] @constant) @constant
 
 ; Documentation
 (unary_operator
@@ -214,4 +216,10 @@
       (string)
       (boolean)
       (charlist)
+      (sigil
+        "~" @comment
+        ((sigil_name) @comment)
+        quoted_start: _ @comment
+        (quoted_content) @comment
+        quoted_end: _ @comment)
     ] @comment))) @comment

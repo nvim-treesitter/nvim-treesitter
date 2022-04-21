@@ -93,6 +93,41 @@ function M.select_compiler_args(repo, compiler)
   end
 end
 
+function M.select_compile_command(repo, cc, compile_location)
+  local make = M.select_executable { "gmake", "make" }
+  if
+    string.match(cc, "cl$")
+    or string.match(cc, "cl.exe$")
+    or not repo.use_makefile
+    or fn.has "win32" == 1
+    or not make
+  then
+    return {
+      cmd = cc,
+      info = "Compiling...",
+      err = "Error during compilation",
+      opts = {
+        args = vim.tbl_flatten(M.select_compiler_args(repo, cc)),
+        cwd = compile_location,
+      },
+    }
+  else
+    return {
+      cmd = make,
+      info = "Compiling...",
+      err = "Error during compilation",
+      opts = {
+        args = {
+          "--makefile=" .. utils.join_path(utils.get_package_path(), "scripts", "compile_parsers.makefile"),
+          "CC=" .. cc,
+          "CXX_STANDARD=" .. (repo.cxx_standard or "c++14"),
+        },
+        cwd = compile_location,
+      },
+    }
+  end
+end
+
 function M.select_install_rm_cmd(cache_folder, project_name)
   if fn.has "win32" == 1 then
     local dir = cache_folder .. "\\" .. project_name
@@ -143,6 +178,11 @@ function M.select_download_commands(repo, project_name, cache_folder, revision, 
     local path_sep = utils.get_path_sep()
     local url = repo.url:gsub(".git$", "")
 
+    local folder_rev = revision
+    if is_github and revision:match "^v%d" then
+      folder_rev = revision:sub(2)
+    end
+
     return {
       M.select_install_rm_cmd(cache_folder, project_name .. "-tmp"),
       {
@@ -178,7 +218,7 @@ function M.select_download_commands(repo, project_name, cache_folder, revision, 
       },
       M.select_rm_file_cmd(cache_folder .. path_sep .. project_name .. ".tar.gz"),
       M.select_mv_cmd(
-        utils.join_path(project_name .. "-tmp", url:match "[^/]-$" .. "-" .. revision),
+        utils.join_path(project_name .. "-tmp", url:match "[^/]-$" .. "-" .. folder_rev),
         project_name,
         cache_folder
       ),

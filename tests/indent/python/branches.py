@@ -25,3 +25,7 @@ foo(
 if (a and
         b):
     pass
+
+if (a
+        and b):
+    pass

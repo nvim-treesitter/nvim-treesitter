@@ -1,6 +1,7 @@
 [
-  (class_declaration)
   (class_body)
+  (enum_body)
+  (interface_body)
   (constructor_declaration)
   (constructor_body)
   (block)
@@ -9,6 +10,8 @@
   (argument_list)
   (formal_parameters)
 ] @indent
+
+(expression_statement (method_invocation) @indent)
 
 [
   "("
@@ -19,4 +22,13 @@
   "]"
 ] @branch
 
-(comment) @ignore
+[
+  "}"
+] @indent_end
+
+(line_comment) @ignore
+
+[
+  (ERROR)
+  (block_comment)
+] @auto

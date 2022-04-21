@@ -133,12 +133,14 @@
  (type_descriptor)
 ] @type
 
-(declaration (type_qualifier) @type)
-(cast_expression type: (type_descriptor) @type)
 (sizeof_expression value: (parenthesized_expression (identifier) @type))
 
 ((identifier) @constant
  (#lua-match? @constant "^[A-Z][A-Z0-9_]+$"))
+(enumerator
+  name: (identifier) @constant)
+(case_statement
+  value: (identifier) @constant)
 
 ;; Preproc def / undef
 (preproc_def

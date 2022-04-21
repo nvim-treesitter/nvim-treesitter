@@ -1,8 +1,11 @@
 require "nvim-treesitter.highlight" -- yes, this is necessary to set the hlmap
 local highlighter = require "vim.treesitter.highlighter"
-local utils = require "nvim-treesitter.utils"
 local ts_utils = require "nvim-treesitter.ts_utils"
 local parsers = require "nvim-treesitter.parsers"
+
+local COMMENT_NODES = {
+  markdown = "html_block",
+}
 
 local function check_assertions(file)
   local buf = vim.fn.bufadd(file)
@@ -14,15 +17,22 @@ local function check_assertions(file)
     '"highlight-assertions" not executable!'
       .. ' Get it via "cargo install --git https://github.com/theHamsta/highlight-assertions"'
   )
+  local comment_node = COMMENT_NODES[lang] or "comment"
   local assertions = vim.fn.json_decode(
     vim.fn.system(
-      "highlight-assertions -p '" .. utils.get_parser_install_dir() .. "/" .. lang .. ".so'" .. " -s '" .. file .. "'"
+      "highlight-assertions -p '"
+        .. vim.api.nvim_get_runtime_file("parser/" .. lang .. ".so", false)[1]
+        .. "' -s '"
+        .. file
+        .. "' -c "
+        .. comment_node
     )
   )
   local parser = parsers.get_parser(buf, lang)
 
   local self = highlighter.new(parser, {})
 
+  assert.True(#assertions > 0, "No assertions detected!")
   for _, assertion in ipairs(assertions) do
     local row = assertion.position.row
     local col = assertion.position.column

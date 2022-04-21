@@ -2,8 +2,8 @@
 (erroneous_end_tag_name) @error
 (comment) @comment
 (attribute_name) @tag.attribute
-(attribute_value) @string
-(quoted_attribute_value) @string
+(attribute
+  (quoted_attribute_value) @string)
 (text) @text
 
 ((element (start_tag (tag_name) @_tag) (text) @text.title)

@@ -16,6 +16,7 @@
   ","
   ";"
   "."
+  ":"
 ] @punctuation.delimiter
 
 [

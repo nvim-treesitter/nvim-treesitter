@@ -4,58 +4,91 @@ local tsutils = require "nvim-treesitter.ts_utils"
 
 local M = {}
 
--- TODO(kiyan): move this in tsutils and document it
-local function get_node_at_line(root, lnum)
-  for node in root:iter_children() do
-    local srow, _, erow = node:range()
-    if srow == lnum then
-      return node
-    end
+M.avoid_force_reparsing = {
+  yaml = true,
+}
 
-    if node:child_count() > 0 and srow < lnum and lnum <= erow then
-      return get_node_at_line(node, lnum)
-    end
-  end
+M.comment_parsers = {
+  comment = true,
+  jsdoc = true,
+  phpdoc = true,
+}
+
+local function get_first_node_at_line(root, lnum)
+  local col = vim.fn.indent(lnum)
+  return root:descendant_for_range(lnum - 1, col, lnum - 1, col)
 end
 
-local function node_fmt(node)
-  if not node then
-    return nil
+local function get_last_node_at_line(root, lnum)
+  local col = #vim.fn.getline(lnum) - 1
+  return root:descendant_for_range(lnum - 1, col, lnum - 1, col)
+end
+
+local function find_delimiter(bufnr, node, delimiter)
+  for child, _ in node:iter_children() do
+    if child:type() == delimiter then
+      local linenr = child:start()
+      local line = vim.api.nvim_buf_get_lines(bufnr, linenr, linenr + 1, false)[1]
+      local end_char = { child:end_() }
+      return child, #line == end_char[2]
+    end
   end
-  return tostring(node)
 end
 
 local get_indents = tsutils.memoize_by_buf_tick(function(bufnr, root, lang)
-  local get_map = function(capture)
-    local matches = queries.get_capture_matches(bufnr, capture, "indents", root, lang) or {}
-    local map = {}
-    for _, node in ipairs(matches) do
-      map[tostring(node)] = true
-    end
-    return map
+  local map = {
+    auto = {},
+    indent = {},
+    indent_end = {},
+    dedent = {},
+    branch = {},
+    ignore = {},
+    aligned_indent = {},
+    zero_indent = {},
+  }
+
+  for name, node, metadata in queries.iter_captures(bufnr, "indents", root, lang) do
+    map[name][node:id()] = metadata or {}
   end
 
-  return {
-    indents = get_map "@indent.node",
-    branches = get_map "@branch.node",
-    returns = get_map "@return.node",
-    ignores = get_map "@ignore.node",
-  }
+  return map
 end, {
   -- Memoize by bufnr and lang together.
-  key = function(bufnr, _, lang)
-    return tostring(bufnr) .. "_" .. lang
+  key = function(bufnr, root, lang)
+    return tostring(bufnr) .. root:id() .. "_" .. lang
   end,
 })
 
+---@param lnum number (1-indexed)
 function M.get_indent(lnum)
-  local parser = parsers.get_parser()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local parser = parsers.get_parser(bufnr)
   if not parser or not lnum then
     return -1
   end
 
-  -- get_root_for_position is 0-based.
-  local root, _, lang_tree = tsutils.get_root_for_position(lnum - 1, 0, parser)
+  local root_lang = parsers.get_buf_lang(bufnr)
+
+  -- some languages like Python will actually have worse results when re-parsing at opened new line
+  if not M.avoid_force_reparsing[root_lang] then
+    -- Reparse in case we got triggered by ":h indentkeys"
+    parser:parse()
+  end
+
+  -- Get language tree with smallest range around node that's not a comment parser
+  local root, lang_tree
+  parser:for_each_tree(function(tstree, tree)
+    if not tstree or M.comment_parsers[tree:lang()] then
+      return
+    end
+    local local_root = tstree:root()
+    if tsutils.is_in_node_range(local_root, lnum - 1, 0) then
+      if not root or tsutils.node_length(root) >= tsutils.node_length(local_root) then
+        root = local_root
+        lang_tree = tree
+      end
+    end
+  end)
 
   -- Not likely, but just in case...
   if not root then
@@ -63,74 +96,95 @@ function M.get_indent(lnum)
   end
 
   local q = get_indents(vim.api.nvim_get_current_buf(), root, lang_tree:lang())
-  local node = get_node_at_line(root, lnum - 1)
+  local is_empty_line = string.match(vim.fn.getline(lnum), "^%s*$") ~= nil
+  local node
+  if is_empty_line then
+    local prevlnum = vim.fn.prevnonblank(lnum)
+    node = get_last_node_at_line(root, prevlnum)
+    if q.indent_end[node:id()] then
+      node = get_first_node_at_line(root, lnum)
+    end
+  else
+    node = get_first_node_at_line(root, lnum)
+  end
 
-  local indent = 0
   local indent_size = vim.fn.shiftwidth()
-
-  -- to get correct indentation when we land on an empty line (for instance by typing `o`), we try
-  -- to use indentation of previous nonblank line, this solves the issue also for languages that
-  -- do not use @branch after blocks (e.g. Python)
-  if not node then
-    local prevnonblank = vim.fn.prevnonblank(lnum)
-    if prevnonblank ~= lnum then
-      local prev_node = get_node_at_line(root, prevnonblank - 1)
-      -- get previous node in any case to avoid erroring
-      while not prev_node and prevnonblank - 1 > 0 do
-        prevnonblank = vim.fn.prevnonblank(prevnonblank - 1)
-        prev_node = get_node_at_line(root, prevnonblank - 1)
-      end
-
-      -- nodes can be marked @return to prevent using them
-      if prev_node and not q.returns[node_fmt(prev_node)] then
-        local row = prev_node:start()
-        local end_row = prev_node:end_()
-
-        -- if the previous node is being constructed (like function() `o` in lua), or line is inside the node
-        -- we indent one more from the start of node, else we indent default
-        -- NOTE: this doesn't work for python which behave strangely
-        if prev_node:has_error() or lnum <= end_row then
-          return vim.fn.indent(row + 1) + indent_size
-        end
-        return vim.fn.indent(row + 1)
-      end
-    end
+  local indent = 0
+  local _, _, root_start = root:start()
+  if root_start ~= 0 then
+    -- injected tree
+    indent = vim.fn.indent(root:start() + 1)
   end
 
-  -- if the prevnonblank fails (prev_node wraps our line) we need to fall back to taking
-  -- the first child of the node that wraps the current line, or the wrapper itself
-  if not node then
-    local wrapper = root:descendant_for_range(lnum - 1, 0, lnum - 1, -1)
-    node = wrapper:child(0) or wrapper
-    if q.indents[node_fmt(wrapper)] ~= nil and wrapper ~= root then
-      indent = indent_size
-    end
-  end
+  -- tracks to ensure multiple indent levels are not applied for same line
+  local is_processed_by_row = {}
 
-  while node and q.branches[node_fmt(node)] do
-    node = node:parent()
+  if q.zero_indent[node:id()] then
+    return 0
   end
-
-  local first = true
-  local prev_row = node:start()
 
   while node do
-    -- Do not indent if we are inside an @ignore block.
-    -- If a node spans from L1,C1 to L2,C2, we know that lines where L1 < line <= L2 would
-    -- have their indentations contained by the node.
-    if q.ignores[node_fmt(node)] and node:start() < lnum - 1 and lnum - 1 <= node:end_() then
+    -- do 'autoindent' if not marked as @indent
+    if not q.indent[node:id()] and q.auto[node:id()] and node:start() < lnum - 1 and lnum - 1 <= node:end_() then
       return -1
     end
 
-    -- do not indent the starting node, do not add multiple indent levels on single line
-    local row = node:start()
-    if not first and q.indents[node_fmt(node)] and prev_row ~= row then
-      indent = indent + indent_size
-      prev_row = row
+    -- Do not indent if we are inside an @ignore block.
+    -- If a node spans from L1,C1 to L2,C2, we know that lines where L1 < line <= L2 would
+    -- have their indentations contained by the node.
+    if not q.indent[node:id()] and q.ignore[node:id()] and node:start() < lnum - 1 and lnum - 1 <= node:end_() then
+      return 0
     end
 
+    local srow, _, erow = node:range()
+
+    local is_processed = false
+
+    if
+      not is_processed_by_row[srow]
+      and ((q.branch[node:id()] and srow == lnum - 1) or (q.dedent[node:id()] and srow ~= lnum - 1))
+    then
+      indent = indent - indent_size
+      is_processed = true
+    end
+
+    -- do not indent for nodes that starts-and-ends on same line and starts on target line (lnum)
+    if
+      not is_processed_by_row[srow]
+      -- Dear stylua, please don't change the semantics of this statement!
+      -- stylua: ignore start
+      and (q.indent[node:id()] and srow ~= erow and ((srow ~= lnum - 1) or q.indent[node:id()].start_at_same_line))
+      -- stylua: ignore end
+    then
+      indent = indent + indent_size
+      is_processed = true
+    end
+
+    -- do not indent for nodes that starts-and-ends on same line and starts on target line (lnum)
+    if q.aligned_indent[node:id()] and srow ~= erow and (srow ~= lnum - 1) then
+      local metadata = q.aligned_indent[node:id()]
+      local o_delim_node, is_last_in_line
+      if metadata.delimiter then
+        local opening_delimiter = metadata.delimiter and metadata.delimiter:sub(1, 1)
+        o_delim_node, is_last_in_line = find_delimiter(bufnr, node, opening_delimiter)
+      else
+        o_delim_node = node
+      end
+
+      if o_delim_node then
+        if is_last_in_line then
+          -- hanging indent (previous line ended with starting delimiter)
+          indent = indent + indent_size * 1
+        else
+          local _, o_scol = o_delim_node:start()
+          return math.max(indent, 0) + o_scol + (metadata.increment or 1)
+        end
+      end
+    end
+
+    is_processed_by_row[srow] = is_processed_by_row[srow] or is_processed
+
     node = node:parent()
-    first = false
   end
 
   return indent

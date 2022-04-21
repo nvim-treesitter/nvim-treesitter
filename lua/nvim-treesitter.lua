@@ -1,13 +1,10 @@
-if not pcall(require, "vim.treesitter.languagetree") then
-  error "nvim-treesitter requires a more recent Neovim nightly version!"
-end
-
 local install = require "nvim-treesitter.install"
 local utils = require "nvim-treesitter.utils"
-local ts_utils = require "nvim-treesitter.ts_utils"
 local info = require "nvim-treesitter.info"
 local configs = require "nvim-treesitter.configs"
 local parsers = require "nvim-treesitter.parsers"
+local ts_query = vim.treesitter.query
+local ts_utils = require "nvim-treesitter.ts_utils"
 
 -- Registers all query predicates
 require "nvim-treesitter.query_predicates"
@@ -25,7 +22,7 @@ function M.define_modules(...)
   configs.define_modules(...)
 end
 
-local get_line_for_node = function(node, type_patterns, transform_fn)
+local get_line_for_node = function(node, type_patterns, transform_fn, bufnr)
   local node_type = node:type()
   local is_valid = false
   for _, rgx in ipairs(type_patterns) do
@@ -37,7 +34,7 @@ local get_line_for_node = function(node, type_patterns, transform_fn)
   if not is_valid then
     return ""
   end
-  local line = transform_fn(vim.trim(ts_utils.get_node_text(node)[1] or ""))
+  local line = transform_fn(vim.trim(ts_query.get_node_text(node, bufnr) or ""))
   -- Escape % to avoid statusline to evaluate content as expression
   return line:gsub("%%", "%%%%")
 end
@@ -52,9 +49,10 @@ function M.statusline(opts)
     return
   end
   local options = opts or {}
-  if type(opts) == "number" then
-    options = { indicator_size = opts }
-  end
+  -- if type(opts) == "number" then
+  --   options = { indicator_size = opts }
+  -- end
+  local bufnr = options.bufnr or 0
   local indicator_size = options.indicator_size or 100
   local type_patterns = options.type_patterns or { "class", "function", "method" }
   local transform_fn = options.transform_fn or transform_line
@@ -69,7 +67,7 @@ function M.statusline(opts)
   local expr = current_node
 
   while expr do
-    local line = get_line_for_node(expr, type_patterns, transform_fn)
+    local line = get_line_for_node(expr, type_patterns, transform_fn, bufnr)
     if line ~= "" and not vim.tbl_contains(lines, line) then
       table.insert(lines, 1, line)
     end

@@ -15,3 +15,5 @@
  (initializer_list)
 ] @fold
 
+ (compound_statement
+  (compound_statement) @fold)
