@@ -1,13 +1,22 @@
 [
-  (object)
   (block)
+  (object)
   (tuple)
-  (for_tuple_expr)
-  (for_object_expr)
 ] @indent
 
 [
-  (object_end)
   (block_end)
+  (object_end)
   (tuple_end)
 ] @branch
+
+
+[
+  "]"
+  ")"
+  "}"
+] @indent_end
+
+
+(comment) @auto
+(ERROR) @auto
