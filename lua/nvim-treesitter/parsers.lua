@@ -1050,6 +1050,16 @@ list.m68k = {
   filetype = "asm68k",
 }
 
+list.proto = {
+  install_info = {
+    url = "https://github.com/mitchellh/tree-sitter-proto",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@fsouza" },
+  filetype = "proto",
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
