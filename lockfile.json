@@ -179,6 +179,9 @@
   "lua": {
     "revision": "2b4ffd5a5ffd0c6b4c84f0d9e003050a70db2a37"
   },
+  "m68k": {
+    "revision": "4760f19a60e0d0598032ddd6683999284c3c2bb4"
+  },
   "make": {
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },

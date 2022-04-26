@@ -1041,6 +1041,15 @@ list.wgsl = {
   filetype = "wgsl",
 }
 
+list.m68k = {
+  install_info = {
+    url = "https://github.com/grahambates/tree-sitter-m68k",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@grahambates" },
+  filetype = "asm68k",
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
