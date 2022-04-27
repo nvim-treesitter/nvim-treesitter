@@ -47,8 +47,6 @@
 (repeat (control_mnemonic) @repeat)
 (conditional (control_mnemonic) @conditional)
 
-(interpolated (macro_arg) @embedded) 
-
 (comment) @comment
 
 [
