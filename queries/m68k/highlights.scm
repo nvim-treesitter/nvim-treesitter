@@ -1,6 +1,6 @@
 (symbol) @variable
 
-(label name: (symbol) @constant)
+(label name: (symbol) @label)
 
 [
   (instruction_mnemonic)
