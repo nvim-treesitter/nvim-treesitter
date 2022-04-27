@@ -141,7 +141,7 @@
     "revision": "bfddd16b1cf78e0042fd1f6846a179f76a254e20"
   },
   "java": {
-    "revision": "e7cb801ef57f74db5c4ebe14df74de852bb451b5"
+    "revision": "332fda0b38dc3081679d4874db3276b6527fc30f"
   },
   "javascript": {
     "revision": "fdeb68ac8d2bd5a78b943528bb68ceda3aade2eb"
@@ -180,7 +180,7 @@
     "revision": "2b4ffd5a5ffd0c6b4c84f0d9e003050a70db2a37"
   },
   "m68k": {
-    "revision": "4760f19a60e0d0598032ddd6683999284c3c2bb4"
+    "revision": "f80f78b9c8c097a48d40b11901e3ff50b0d6f971"
   },
   "make": {
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
@@ -227,6 +227,9 @@
   "prisma": {
     "revision": "0ac307e4be0409d4327082ddc737ed432a49dfc3"
   },
+  "proto": {
+    "revision": "42d82fa18f8afe59b5fc0b16c207ee4f84cb185f"
+  },
   "pug": {
     "revision": "5875f9a7d94836708119b0a1102bb5792e8bf673"
   },
@@ -255,7 +258,7 @@
     "revision": "b74770c0166f28c1a0ab293513a78712ca1c338b"
   },
   "ruby": {
-    "revision": "1a3936a3545c0bd9344a0bf983fafc7e17443e39"
+    "revision": "c885e3a75647586c8faee008c22d073e1150fa30"
   },
   "rust": {
     "revision": "0509e440ae042db6483984b3a56b3c5f24b5d9b9"
