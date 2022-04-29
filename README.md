@@ -273,6 +273,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [zig](https://github.com/maxxnino/tree-sitter-zig) (maintained by @maxxnino)
 <!--parserinfo-->
 
+For related information on the supported languages, including related plugins, see [this wiki page](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Supported-Languages-Information).
 
 # Available modules
 
