@@ -71,7 +71,8 @@
 ; Constants
 ;----------
 
-(unit) @constant.builtin
+; Don't let normal parens take priority over this
+((unit) @constant.builtin (#set! "priority" 105))
 
 (boolean) @boolean
 
