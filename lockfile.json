@@ -60,7 +60,7 @@
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
   "elixir": {
-    "revision": "ec1c4cac1b2f0290c53511a72fbab17c47815d2b"
+    "revision": "5d0c1bfcdf8aaad225525acad930a972b319a675"
   },
   "elm": {
     "revision": "9835f900e4df40277f0701d1bc0b6cee0853f81b"
@@ -99,7 +99,7 @@
     "revision": "ffb93961426926554a0ba4a389ea6e9d6fafdea9"
   },
   "go": {
-    "revision": "c8fed1f0847a65a04a4b8cb7655f5f416e0742ca"
+    "revision": "372d3241b099e189406475a9445cbb29dac2e054"
   },
   "godot_resource": {
     "revision": "b6ef0768711086a86b3297056f9ffb5cc1d77b4a"
@@ -141,7 +141,7 @@
     "revision": "bfddd16b1cf78e0042fd1f6846a179f76a254e20"
   },
   "java": {
-    "revision": "332fda0b38dc3081679d4874db3276b6527fc30f"
+    "revision": "39a11c8330d0b2ad75310456c378396785f79a4e"
   },
   "javascript": {
     "revision": "fdeb68ac8d2bd5a78b943528bb68ceda3aade2eb"
@@ -216,7 +216,7 @@
     "revision": "bbf86084d9b7eb4768f3fb9fe094b3e0600057b1"
   },
   "php": {
-    "revision": "3c17a28da38afac41332d3ce79bbd8951867f346"
+    "revision": "2e571e7a5a3459a5fa6a04f54a3d99fa041b6141"
   },
   "phpdoc": {
     "revision": "d9150d4cb5941f6ff10adba89bfa1f11f4b05b37"
