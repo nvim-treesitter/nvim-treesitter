@@ -472,7 +472,7 @@ Check [`:h nvim-treesitter-utils`](doc/nvim-treesitter.txt) for more information
 
 # Troubleshooting
 
-Before doing anything, make sure you have the latest version of this plugin and run `:checkhealth nvim_treesitter`.
+Before doing anything, make sure you have the latest version of this plugin and run `:checkhealth nvim-treesitter`.
 It can also help to update the parsers via `:TSUpdate`.
 
 #### Feature `X` does not work for `{language}`...
