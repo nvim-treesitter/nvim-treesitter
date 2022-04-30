@@ -101,7 +101,7 @@ local function enable_mod_conf_autocmd(mod)
   end
 
   api.nvim_create_autocmd("FileType", {
-    group = "NvimTreesitter",
+    group = api.nvim_create_augroup("NvimTreesitter-" .. mod, {}),
     callback = function()
       require("nvim-treesitter.configs").reattach_module(mod)
     end,
@@ -153,9 +153,7 @@ local function disable_mod_conf_autocmd(mod)
   if not config_mod or not config_mod.loaded then
     return
   end
-  -- TODO(kyazdani): detach the correct autocmd... doesn't work when using %s, cmd.
-  -- This will remove all autocomands!
-  api.nvim_clear_autocmds { event = "FileType", group = "NvimTreesitter" }
+  api.nvim_clear_autocmds { event = "FileType", group = "NvimTreesitter-" .. mod }
   config_mod.loaded = false
 end
 
