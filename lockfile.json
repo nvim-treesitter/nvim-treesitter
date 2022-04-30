@@ -114,7 +114,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "hack": {
-    "revision": "c210da992ac94b35ea4e41868ab153bffb0eac19"
+    "revision": "aca58a769623ec25b856804a9bd8281e4ba77217"
   },
   "haskell": {
     "revision": "ed976b81b00ce7b72b99bca75e7a616cc526220c"
@@ -258,7 +258,7 @@
     "revision": "b74770c0166f28c1a0ab293513a78712ca1c338b"
   },
   "ruby": {
-    "revision": "c885e3a75647586c8faee008c22d073e1150fa30"
+    "revision": "adec59ead711b0100dd2f29f9149a7ecc1bb509c"
   },
   "rust": {
     "revision": "0509e440ae042db6483984b3a56b3c5f24b5d9b9"
