@@ -52,6 +52,7 @@
 [
   "let"
   "unlet"
+  "const"
   "call"
   "execute"
   "normal"
