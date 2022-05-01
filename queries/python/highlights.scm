@@ -240,6 +240,8 @@
   "finally"
 ] @exception
 
+(raise_statement "from" @exception)
+
 (try_statement
   (else_clause
     "else" @exception))
