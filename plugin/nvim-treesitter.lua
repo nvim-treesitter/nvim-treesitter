@@ -116,6 +116,13 @@ local highlights = {
   TSTagAttribute = { link = "TSProperty", default = true },
 }
 
-for k, v in pairs(highlights) do
-  api.nvim_set_hl(0, k, v)
-end
+api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
+  group = augroup,
+  callback = function()
+    for k, v in pairs(highlights) do
+      api.nvim_set_hl(0, k, v)
+    end
+  end,
+  desc = "Define default highlights",
+})
