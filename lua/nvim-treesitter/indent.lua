@@ -192,13 +192,32 @@ end
 
 local indent_funcs = {}
 
+local function autocmd_is_defined(event, pattern, command_str)
+  autocommands = vim.api.nvim_get_autocmds({
+    event = event,
+    pattern = pattern,
+  })
+  for _, autocmd in ipairs(autocommands) do
+    if autocmd.command == command_str then
+      return true
+    end
+  end
+  return false
+end
+
 function M.attach(bufnr)
   indent_funcs[bufnr] = vim.bo.indentexpr
   vim.bo.indentexpr = "nvim_treesitter#indent()"
-  vim.api.nvim_create_autocmd("Filetype", {
-    pattern = vim.bo.filetype,
-    command = "setlocal indentexpr=nvim_treesitter#indent()",
-  })
+
+  local event = "FileType"
+  local pattern = vim.bo.filetype
+  local command = "setlocal indentexpr=nvim_treesitter#indent()"
+  if not autocmd_is_defined(event, pattern, command) then
+    vim.api.nvim_create_autocmd(event, {
+      pattern = pattern,
+      command = command,
+    })
+  end
 end
 
 function M.detach(bufnr)
