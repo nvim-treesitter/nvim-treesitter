@@ -45,7 +45,7 @@
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
   },
   "dart": {
-    "revision": "6a25376685d1d47968c2cef06d4db8d84a70025e"
+    "revision": "f95876f0ed3ef207bbd3c5c41987bc2e9cecfc97"
   },
   "devicetree": {
     "revision": "877adbfa0174d25894c40fa75ad52d4515a36368"
@@ -123,7 +123,7 @@
     "revision": "aca58a769623ec25b856804a9bd8281e4ba77217"
   },
   "haskell": {
-    "revision": "f194fcb08ac8513f9ba7889c94c0dd1c6cff3069"
+    "revision": "ff5c879d9b75f4e6930d7f687d458f707945ad78"
   },
   "hcl": {
     "revision": "8a13647a4d9ef6548320ca9ee4bf67d28960163e"
