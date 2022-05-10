@@ -26,6 +26,10 @@
   ((identifier) @definition.var)
    (#set! definition.var.scope parent))
 
+(method_definition
+  ((property_identifier) @definition.var)
+   (#set! definition.var.scope parent))
+
 ; References
 ;------------
 
