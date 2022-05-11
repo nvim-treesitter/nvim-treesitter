@@ -1,4 +1,7 @@
 (latex) @latex @combined
-(renv
+(rchunk
 	(renv_content) @r @combined
+)
+(rinline
+	(renv_content) @r
 )
