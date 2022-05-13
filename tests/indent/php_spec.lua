@@ -24,6 +24,6 @@ describe("indent PHP:", function()
       { on_line = 5, text = "indendation with `enter` in insert mode is not correct", indent = 4 }
     )
     run:new_line("issue-2497.php", { on_line = 5, text = "$a =", indent = 4 })
-    run:new_line("unfinished-call.php", { on_line = 6, text = "$a =", indent = 4 }, "shouldn't be 0", XFAIL)
+    run:new_line("unfinished-call.php", { on_line = 6, text = "$a =", indent = 4 })
   end)
 end)
