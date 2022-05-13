@@ -6,7 +6,8 @@
 (character) @character
 (boolean) @boolean
 (string) @string
-(comment) @comment
+[(comment)
+ (block_comment)] @comment
 
 ;; highlight for datum comment
 ;; copied from ../clojure/highlights.scm
