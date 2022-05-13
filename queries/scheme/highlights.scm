@@ -43,7 +43,7 @@
  .
  (list
    (symbol) @variable)
- (#eq? @_f "lambda"))
+ (#any-of? @_f "lambda" "λ"))
 
 (list
  .
@@ -65,7 +65,7 @@
 
 ((symbol) @keyword
  (#any-of? @keyword
-  "define" "lambda" "begin" "do" "define-syntax"
+  "define" "lambda" "λ" "begin" "do" "define-syntax"
   "and" "or"
   "if" "cond" "case" "when" "unless" "else" "=>"
   "let" "let*" "let-syntax" "let-values" "let*-values" "letrec" "letrec*" "letrec-syntax"
