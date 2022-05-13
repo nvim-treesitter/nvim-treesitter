@@ -1,5 +1,4 @@
 local Runner = require("tests.indent.common").Runner
-local XFAIL = require("tests.indent.common").XFAIL
 
 local run = Runner:new(it, "tests/indent/php", {
   tabstop = 4,
