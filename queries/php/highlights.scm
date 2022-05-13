@@ -103,6 +103,9 @@
 (namespace_definition
   name: (namespace_name) @namespace)
 
+; Attributes
+(attribute_list) @attribute
+
 ; Conditions ( ? : )
 (conditional_expression) @conditional
 ; Basic tokens
@@ -222,6 +225,7 @@
  "]"
  "{"
  "}"
+ "#["
  ] @punctuation.bracket
 
 [
