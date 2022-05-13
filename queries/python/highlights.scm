@@ -224,7 +224,7 @@
 ] @keyword.return
 (yield "from" @keyword.return)
 
-(future_import_statement "from" @include "__future__" @variable)
+(future_import_statement "from" @include "__future__" @constant.builtin)
 (import_from_statement "from" @include)
 "import" @include
 
