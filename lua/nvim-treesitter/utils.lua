@@ -56,6 +56,7 @@ function M.setup_commands(mod, commands)
     )
     local parts = vim.tbl_flatten {
       "command!",
+      "-bar",
       def.args,
       command_name,
       call_fn,
