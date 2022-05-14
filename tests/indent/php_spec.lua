@@ -10,9 +10,7 @@ local run = Runner:new(it, "tests/indent/php", {
 describe("indent PHP:", function()
   describe("whole file:", function()
     run:whole_file(".", {
-      expected_failures = {
-        "./unfinished-call.php",
-      },
+      expected_failures = {},
     })
   end)
 
