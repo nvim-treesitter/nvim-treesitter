@@ -2,12 +2,13 @@ local api = vim.api
 local tsutils = require "nvim-treesitter.ts_utils"
 local query = require "nvim-treesitter.query"
 local parsers = require "nvim-treesitter.parsers"
+local configs = require "nvim-treesitter.configs"
 
 local M = {}
 
 -- This is cached on buf tick to avoid computing that multiple times
 -- Especially not for every line in the file when `zx` is hit
-local folds_levels = tsutils.memoize_by_buf_tick(function(bufnr)
+local folds_levels = tsutils.memoize_by_buf_tick(function(bufnr, opts)
   local max_fold_level = api.nvim_win_get_option(0, "foldnestmax")
   local trim_level = function(level)
     if level > max_fold_level then
@@ -41,6 +42,9 @@ local folds_levels = tsutils.memoize_by_buf_tick(function(bufnr)
 
   for _, node in ipairs(matches) do
     local start, _, stop, stop_col = node.node:range()
+    if opts.fold_one_line_after then
+      start = math.min(stop, start + 1)
+    end
 
     if stop_col == 0 then
       stop = stop - 1
@@ -104,7 +108,8 @@ function M.get_fold_indic(lnum)
 
   local buf = api.nvim_get_current_buf()
 
-  local levels = folds_levels(buf) or {}
+  local config = configs.get_module "fold"
+  local levels = folds_levels(buf, config) or {}
 
   return levels[lnum] or "0"
 end

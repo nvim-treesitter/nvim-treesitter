@@ -18,6 +18,10 @@ function! nvim_treesitter#available_modules(arglead, cmdline, cursorpos) abort
   return join(luaeval("require'nvim-treesitter.configs'.available_modules()"), "\n")
 endfunction
 
+function! nvim_treesitter#attachable_modules(arglead, cmdline, cursorpos) abort
+  return join(luaeval("require'nvim-treesitter.configs'.attachable_modules()"), "\n")
+endfunction
+
 function! nvim_treesitter#available_query_groups(arglead, cmdline, cursorpos) abort
   return join(luaeval("require'nvim-treesitter.query'.available_query_groups()"), "\n")
 endfunction

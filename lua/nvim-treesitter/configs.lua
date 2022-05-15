@@ -48,6 +48,14 @@ local builtin_modules = {
     enable = false,
     is_supported = queries.has_indents,
   },
+  fold = {
+    module_path = "nvim-treesitter.fold",
+    do_not_attach = true,
+    fold_one_line_after = false,
+    is_supported = function(lang)
+      return queries.has_folds(lang)
+    end,
+  },
 }
 
 local attached_buffers_by_module = caching.create_buffer_cache()
@@ -56,7 +64,7 @@ local attached_buffers_by_module = caching.create_buffer_cache()
 local function resolve_module(mod_name)
   local config_mod = M.get_module(mod_name)
 
-  if not config_mod then
+  if not config_mod or config_mod.do_not_attach then
     return
   end
 
@@ -88,7 +96,9 @@ local function enable_module(mod, bufnr, lang)
     end
   end
 
-  M.attach_module(mod, bufnr, lang)
+  if not mod.do_not_attach then
+    M.attach_module(mod, bufnr, lang)
+  end
 end
 
 -- Enables autocomands for the module.
@@ -142,7 +152,9 @@ local function disable_module(mod, bufnr)
   if module.enabled_buffers then
     module.enabled_buffers[bufnr] = false
   end
-  M.detach_module(mod, bufnr)
+  if not mod.do_not_attach then
+    M.detach_module(mod, bufnr)
+  end
 end
 
 -- Disables autocomands for the module.
@@ -278,42 +290,42 @@ M.commands = {
     run = enable_module,
     args = {
       "-nargs=1",
-      "-complete=custom,nvim_treesitter#available_modules",
+      "-complete=custom,nvim_treesitter#attachable_modules",
     },
   },
   TSBufDisable = {
     run = disable_module,
     args = {
       "-nargs=1",
-      "-complete=custom,nvim_treesitter#available_modules",
+      "-complete=custom,nvim_treesitter#attachable_modules",
     },
   },
   TSBufToggle = {
     run = toggle_module,
     args = {
       "-nargs=1",
-      "-complete=custom,nvim_treesitter#available_modules",
+      "-complete=custom,nvim_treesitter#attachable_modules",
     },
   },
   TSEnable = {
     run = enable_all,
     args = {
       "-nargs=+",
-      "-complete=custom,nvim_treesitter#available_modules",
+      "-complete=custom,nvim_treesitter#attachable_modules",
     },
   },
   TSDisable = {
     run = disable_all,
     args = {
       "-nargs=+",
-      "-complete=custom,nvim_treesitter#available_modules",
+      "-complete=custom,nvim_treesitter#attachable_modules",
     },
   },
   TSToggle = {
     run = toggle_all,
     args = {
       "-nargs=+",
-      "-complete=custom,nvim_treesitter#available_modules",
+      "-complete=custom,nvim_treesitter#attachable_modules",
     },
   },
   TSConfigInfo = {
@@ -498,6 +510,14 @@ function M.available_modules(root)
   end, root)
 
   return modules
+end
+--
+-- Gets modules that can attach to a buffer
+-- @param root root table to find modules
+function M.attachable_modules(root)
+  return vim.tbl_filter(function(path)
+    return not M.get_module(path).do_not_attach
+  end, M.available_modules(root))
 end
 
 -- Gets a module config by path
