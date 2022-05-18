@@ -52,6 +52,7 @@
 [
   "let"
   "unlet"
+  "const"
   "call"
   "execute"
   "normal"
@@ -79,7 +80,10 @@
   "wincmd"
 ] @keyword
 (map_statement cmd: _ @keyword)
-(command_name) @function.macro
+[ 
+  (command_name)
+  (unknown_command_name)
+]@function.macro
 
 ;; Syntax command
 

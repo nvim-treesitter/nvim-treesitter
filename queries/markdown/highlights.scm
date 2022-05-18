@@ -72,3 +72,19 @@
 
 (shortcut_link "[" @punctuation.delimiter)
 (shortcut_link "]" @punctuation.delimiter)
+
+([
+  (info_string)
+  (fenced_code_block_delimiter)
+  (code_span_delimiter)
+  (emphasis_delimiter)
+] @conceal
+(#set! conceal ""))
+
+(inline_link 
+  ["]"] @conceal
+  (#set! conceal " "))
+
+(inline_link 
+  "["  @conceal
+  (#set! conceal ""))

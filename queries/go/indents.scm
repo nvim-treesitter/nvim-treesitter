@@ -18,6 +18,11 @@
   "}"
 ] @branch
 
+[
+ "}"
+ ")"
+] @indent_end
+
 (parameter_list ")" @branch)
 
 (comment) @ignore

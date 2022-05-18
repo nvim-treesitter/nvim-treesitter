@@ -188,10 +188,9 @@
  ;"xor_eq"
 ] @keyword.operator
 
-[
-  "<=>"
-  "::"
-] @operator
+"<=>" @operator
+
+"::" @punctuation.delimiter
 
 (attribute_declaration) @attribute
 

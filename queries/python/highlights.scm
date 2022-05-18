@@ -209,15 +209,11 @@
   "async"
   "await"
   "class"
-  "except"
   "exec"
-  "finally"
   "global"
   "nonlocal"
   "pass"
   "print"
-  "raise"
-  "try"
   "with"
   "as"
 ] @keyword
@@ -228,6 +224,7 @@
 ] @keyword.return
 (yield "from" @keyword.return)
 
+(future_import_statement "from" @include "__future__" @constant.builtin)
 (import_from_statement "from" @include)
 "import" @include
 
@@ -236,6 +233,19 @@
 ["if" "elif" "else" "match" "case"] @conditional
 
 ["for" "while" "break" "continue"] @repeat
+
+[
+  "try"
+  "except"
+  "raise"
+  "finally"
+] @exception
+
+(raise_statement "from" @exception)
+
+(try_statement
+  (else_clause
+    "else" @exception))
 
 ["(" ")" "[" "]" "{" "}"] @punctuation.bracket
 

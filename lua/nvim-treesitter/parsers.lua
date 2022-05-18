@@ -15,6 +15,8 @@ local filetype_to_parsername = {
   cls = "latex",
   sty = "latex",
   OpenFOAM = "foam",
+  pandoc = "markdown",
+  rmd = "markdown",
 }
 
 local list = setmetatable({}, {
@@ -41,6 +43,15 @@ local list = setmetatable({}, {
   end,
 })
 
+list.scheme = {
+  install_info = {
+    url = "https://github.com/6cdh/tree-sitter-scheme",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@6cdh" },
+}
+
 list.javascript = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-javascript",
@@ -64,6 +75,14 @@ list.c = {
     files = { "src/parser.c" },
   },
   maintainers = { "@vigoux" },
+}
+
+list.embedded_template = {
+  install_info = {
+    url = "https://github.com/tree-sitter/tree-sitter-embedded-template",
+    files = { "src/parser.c" },
+  },
+  filetype = "eruby",
 }
 
 list.clojure = {
@@ -402,12 +421,19 @@ list.ocamllex = {
   maintainers = { "@undu" },
 }
 
+list.org = {
+  install_info = {
+    url = "https://github.com/milisims/tree-sitter-org",
+    branch = "main",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+}
+
 list.swift = {
   install_info = {
     url = "https://github.com/alex-pinkus/tree-sitter-swift",
+    branch = "with-generated-files",
     files = { "src/parser.c", "src/scanner.c" },
-    requires_generate_from_grammar = true,
-    generate_requires_npm = true,
   },
 }
 
@@ -1005,6 +1031,43 @@ list.elvish = {
   maintainers = { "@ckafi" },
 }
 
+list.astro = {
+  install_info = {
+    url = "https://github.com/virchau13/tree-sitter-astro",
+    branch = "master",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  maintainers = { "@virchau13" },
+}
+
+list.wgsl = {
+  install_info = {
+    url = "https://github.com/szebniok/tree-sitter-wgsl",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@szebniok" },
+  filetype = "wgsl",
+}
+
+list.m68k = {
+  install_info = {
+    url = "https://github.com/grahambates/tree-sitter-m68k",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@grahambates" },
+  filetype = "asm68k",
+}
+
+list.proto = {
+  install_info = {
+    url = "https://github.com/mitchellh/tree-sitter-proto",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@fsouza" },
+  filetype = "proto",
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
@@ -1028,15 +1091,6 @@ function M.available_parsers()
       return not M.list[p].install_info.requires_generate_from_grammar
     end, vim.tbl_keys(M.list))
   end
-end
-
-function M.maintained_parsers()
-  local has_tree_sitter_cli = vim.fn.executable "tree-sitter" == 1 and vim.fn.executable "node" == 1
-  return vim.tbl_filter(function(lang)
-    return M.list[lang].maintainers
-      and not M.list[lang].experimental
-      and (has_tree_sitter_cli or not M.list[lang].install_info.requires_generate_from_grammar)
-  end, M.available_parsers())
 end
 
 function M.get_parser_configs()

@@ -7,7 +7,7 @@
 (array (string) @string)
 (string_content (escape_sequence) @string.escape)
 (ERROR) @error
-"," @punctuation.delimiter
+["," ":"] @punctuation.delimiter
 "[" @punctuation.bracket
 "]" @punctuation.bracket
 "{" @punctuation.bracket
