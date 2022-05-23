@@ -120,6 +120,7 @@
      (field_identifier) @property)) @_parent
  (#not-has-parent? @_parent template_method function_declarator call_expression))
 
+(field_designator) @property
 (((field_identifier) @property)
  (#has-ancestor? @property field_declaration)
  (#not-has-ancestor? @property function_declarator))
