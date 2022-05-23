@@ -156,7 +156,7 @@
     "revision": "189a6a4829beb9cdbe837260653b4a3dfb0cc3db"
   },
   "json": {
-    "revision": "67d33d619e4fb729432a6d9aff1f7b08bb563728"
+    "revision": "368736a6137770f785e1e7479a6be29417eb13aa"
   },
   "json5": {
     "revision": "5dd5cdc418d9659682556b6adca2dd9ace0ac6d2"
@@ -267,7 +267,7 @@
     "revision": "6334d6ab3d04a5672da695d3b155ca3301511f8d"
   },
   "rust": {
-    "revision": "9a6d980afbb9864405426f1b3905fbcd459871ca"
+    "revision": "afed2747665042e0000cf67213d5a5e8a84c7bcc"
   },
   "scala": {
     "revision": "8599058ef292e82203a1b23d10734dcbaf4d1b5c"
@@ -321,7 +321,7 @@
     "revision": "8e9dba7bd7cf089838a036a98be94db53ba2d0a9"
   },
   "v": {
-    "revision": "df37dbae50860d7f687237038549078332a16697"
+    "revision": "e2f6f92561b891790f87774e15d9a244904c55bc"
   },
   "vala": {
     "revision": "31a08784cc74b61cb10c5d8314cf8a8aa98aa9a8"
