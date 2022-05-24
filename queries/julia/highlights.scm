@@ -1,4 +1,9 @@
 (identifier) @variable
+
+(operator) @operator
+(range_expression ":" @operator)
+(pair_expression "=>" @operator)
+
 ;; In case you want type highlighting based on Julia naming conventions (this might collide with mathematical notation)
 ;((identifier) @type ; exception: mark `A_foo` sort of identifiers as variables
   ;(match? @type "^[A-Z][^_]"))
@@ -80,25 +85,11 @@
 (struct_definition
   name: (identifier) @type)
 
-(range_expression
-    (identifier) @number
-      (#eq? @number "end"))
-(range_expression
-  (_
-    (identifier) @number
-      (#eq? @number "end")))
-
-;; TODO: operators.
-;; Those are a bit difficult to implement since the respective nodes are hidden right now (_power_operator)
-;; and heavily use Unicode chars (support for those are bad in vim/lua regexes)
-;[;
-    ;(power_operator);
-    ;(times_operator);
-    ;(plus_operator);
-    ;(arrow_operator);
-    ;(comparison_operator);
-    ;(assign_operator);
-;] @operator ;
+(subscript_expression
+  (_)
+  (range_expression
+    (identifier) @constant.builtin .)
+  (#eq? @constant.builtin "end"))
 
 "end" @keyword
 
@@ -144,12 +135,12 @@
   ["while" "end"] @repeat)
 (break_statement) @repeat
 (continue_statement) @repeat
-(for_binding
-  "in" @repeat)
 (for_clause
   "for" @repeat)
 (do_clause
   ["do" "end"] @keyword)
+
+"in" @keyword.operator
 
 (export_statement
   ["export"] @include)
@@ -196,7 +187,6 @@
 
 ;;; Punctuation
 
-(range_expression ":" @operator)
 (quote_expression ":" @symbol)
-["::" "." "," "..." "!"] @punctuation.delimiter
+["::" "." "," "..."] @punctuation.delimiter
 ["[" "]" "(" ")" "{" "}"] @punctuation.bracket
