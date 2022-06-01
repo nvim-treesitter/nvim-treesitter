@@ -165,7 +165,7 @@
     "revision": "02b01653c8a1c198ae7287d566efa86a135b30d5"
   },
   "julia": {
-    "revision": "1e8fe0b3988e7cf56530837fd3a870089ddc7684"
+    "revision": "fc60b7cce87da7a1b7f8cb0f9371c3dc8b684500"
   },
   "kotlin": {
     "revision": "a4f71eb9b8c9b19ded3e0e9470be4b1b77c2b569"
@@ -222,7 +222,7 @@
     "revision": "bbf86084d9b7eb4768f3fb9fe094b3e0600057b1"
   },
   "php": {
-    "revision": "6c1edb96fdbce5b44c2ecebe15cf9adfb8fed06a"
+    "revision": "20b20d8d776b031220df6671390ed88560001875"
   },
   "phpdoc": {
     "revision": "d9150d4cb5941f6ff10adba89bfa1f11f4b05b37"
@@ -240,7 +240,7 @@
     "revision": "63e214905970e75f065688b1e8aa90823c3aacdc"
   },
   "python": {
-    "revision": "78c4e9b6b2f08e1be23b541ffced47b15e2972ad"
+    "revision": "dafcef7943229ec9d530b36ed67d758e659f4c6c"
   },
   "ql": {
     "revision": "b2c2364e833cc9f1afa243ac367f1475330fef63"
@@ -321,7 +321,7 @@
     "revision": "8e9dba7bd7cf089838a036a98be94db53ba2d0a9"
   },
   "v": {
-    "revision": "439d6bcb8a4a979cbae48af419b8c6cac5a0d8bf"
+    "revision": "60e8f2d236d7231eb69f51091187d82e77a4ec47"
   },
   "vala": {
     "revision": "31a08784cc74b61cb10c5d8314cf8a8aa98aa9a8"
