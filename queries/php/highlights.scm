@@ -163,6 +163,7 @@
  "private"
  "protected"
  "public"
+ "readonly"
  "static"
  "trait"
  "unset"
