@@ -174,7 +174,7 @@
     "revision": "7744b56f03ac1e5643fad23c9dd90837fe97291e"
   },
   "latex": {
-    "revision": "23463ca6b867e8089d3b680ad720dc8fd26af34e"
+    "revision": "104a5dea952d5f00150afd6a8436e6cad95ef718"
   },
   "ledger": {
     "revision": "1050a25df55a62878102d10e524b5184b316b7ad"
@@ -213,7 +213,7 @@
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
   },
   "org": {
-    "revision": "85c9c71957e6d7ce26da5cf407d19d63c740520b"
+    "revision": "7ab140276cff85bf6dd08914e04188f4da1ff0ab"
   },
   "pascal": {
     "revision": "2fd40f477d3e2794af152618ccfac8d92eb72a66"
@@ -222,7 +222,7 @@
     "revision": "bbf86084d9b7eb4768f3fb9fe094b3e0600057b1"
   },
   "php": {
-    "revision": "20b20d8d776b031220df6671390ed88560001875"
+    "revision": "fdbef3621b62e098d7c9a34669cbe8a8bd807bf2"
   },
   "phpdoc": {
     "revision": "d9150d4cb5941f6ff10adba89bfa1f11f4b05b37"
@@ -321,7 +321,7 @@
     "revision": "8e9dba7bd7cf089838a036a98be94db53ba2d0a9"
   },
   "v": {
-    "revision": "60e8f2d236d7231eb69f51091187d82e77a4ec47"
+    "revision": "1212445daefa3d68d4decc47568ff2cf1460d1c7"
   },
   "vala": {
     "revision": "31a08784cc74b61cb10c5d8314cf8a8aa98aa9a8"
