@@ -7,7 +7,7 @@ local shell = require "nvim-treesitter.shell_command_selectors"
 local install = require "nvim-treesitter.install"
 local utils = require "nvim-treesitter.utils"
 
-local health = require "health"
+local health = vim.health or require "health"
 
 local M = {}
 
