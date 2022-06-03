@@ -126,10 +126,10 @@
     "revision": "1b54c3f39436bbded6593ac9e0103f9115bbbd2e"
   },
   "hcl": {
-    "revision": "8a13647a4d9ef6548320ca9ee4bf67d28960163e"
+    "revision": "4ff21306a71269c4ac814769b90b0ecf3194d21d"
   },
   "heex": {
-    "revision": "57e46b4b002d5fb5c1f2706fe42380e544ecab5f"
+    "revision": "1c79e716566e06ac375f2f34cad6191c655342d3"
   },
   "help": {
     "revision": "41ac50500e68fadc139737bbee2a0618628b822b"
@@ -312,13 +312,13 @@
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
   },
   "tsx": {
-    "revision": "8e9dba7bd7cf089838a036a98be94db53ba2d0a9"
+    "revision": "1b3ba31c7538825b05815f4f5bffcca6394edc63"
   },
   "turtle": {
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
   },
   "typescript": {
-    "revision": "8e9dba7bd7cf089838a036a98be94db53ba2d0a9"
+    "revision": "1b3ba31c7538825b05815f4f5bffcca6394edc63"
   },
   "v": {
     "revision": "1212445daefa3d68d4decc47568ff2cf1460d1c7"
