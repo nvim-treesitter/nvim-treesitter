@@ -1080,6 +1080,15 @@ list.v = {
   maintainers = { "@tami5" },
 }
 
+list.luap = {
+  install_info = {
+    url = "https://github.com/vhyrro/tree-sitter-luap",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@vhyrro", "@max397574" },
+  filetype = "lua",
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
