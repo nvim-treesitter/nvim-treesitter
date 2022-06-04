@@ -18,7 +18,7 @@
     "revision": "9c494a503c8e2044bfffce57f70b480c01a82f03"
   },
   "clojure": {
-    "revision": "879f0e726295807d917d576fcf9e1e432c4c20fc"
+    "revision": "e57c569ae332ca365da623712ae1f50f84daeae2"
   },
   "cmake": {
     "revision": "5020572408a386d5d2dfac3516584f5edda7a49b"
@@ -222,7 +222,7 @@
     "revision": "bbf86084d9b7eb4768f3fb9fe094b3e0600057b1"
   },
   "php": {
-    "revision": "fdbef3621b62e098d7c9a34669cbe8a8bd807bf2"
+    "revision": "b9b719ded9a1c4f3fe29848306cfbd6ed4544282"
   },
   "phpdoc": {
     "revision": "d9150d4cb5941f6ff10adba89bfa1f11f4b05b37"
@@ -321,7 +321,7 @@
     "revision": "1b3ba31c7538825b05815f4f5bffcca6394edc63"
   },
   "v": {
-    "revision": "1212445daefa3d68d4decc47568ff2cf1460d1c7"
+    "revision": "3675028df375c2b17199910a6f743b80a50a8301"
   },
   "vala": {
     "revision": "31a08784cc74b61cb10c5d8314cf8a8aa98aa9a8"
