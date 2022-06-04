@@ -56,3 +56,8 @@
    (#offset! @css 0 1 0 -1)))
 
 (regex_pattern) @regex
+
+(variable_declarator
+  (comment) @gql_comment
+  (#eq? @gql_comment "/* GraphQL */")
+  (template_string) @graphql)
