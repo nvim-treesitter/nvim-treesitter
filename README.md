@@ -245,6 +245,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [qmljs](https://github.com/yuja/tree-sitter-qmljs) (maintained by @yuja)
 - [x] [Tree-sitter query language](https://github.com/nvim-treesitter/tree-sitter-query) (maintained by @steelsojka)
 - [x] [r](https://github.com/r-lib/tree-sitter-r) (maintained by @jimhester)
+- [x] [racket](https://github.com/6cdh/tree-sitter-racket) (maintained by @6cdh)
 - [x] [rasi](https://github.com/Fymyte/tree-sitter-rasi) (maintained by @Fymyte)
 - [x] [regex](https://github.com/tree-sitter/tree-sitter-regex) (maintained by @theHamsta)
 - [x] [rego](https://github.com/FallenAngel97/tree-sitter-rego) (maintained by @FallenAngel97)
