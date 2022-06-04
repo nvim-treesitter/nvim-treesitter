@@ -61,3 +61,8 @@
   (comment) @gql_comment
   (#eq? @gql_comment "/* GraphQL */")
   (template_string) @graphql)
+
+(export_statement
+  (comment) @gql_comment
+  (#eq? @gql_comment "/* GraphQL */")
+  (template_string) @graphql)
