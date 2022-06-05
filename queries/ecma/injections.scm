@@ -57,12 +57,6 @@
 
 (regex_pattern) @regex
 
-(variable_declarator
-  (comment) @comment
-  (#eq? @comment "/* GraphQL */")
-  (template_string) @graphql)
-
-(export_statement
-  (comment) @comment
-  (#eq? @comment "/* GraphQL */")
+((comment) @_gql_comment
+  (#eq? @_gql_comment "/* GraphQL */")
   (template_string) @graphql)
