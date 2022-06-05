@@ -17,6 +17,7 @@ local filetype_to_parsername = {
   OpenFOAM = "foam",
   pandoc = "markdown",
   rmd = "markdown",
+  cs = "c_sharp",
 }
 
 local list = setmetatable({}, {
