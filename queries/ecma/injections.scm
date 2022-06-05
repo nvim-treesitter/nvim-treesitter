@@ -60,3 +60,6 @@
 ((comment) @_gql_comment
   (#eq? @_gql_comment "/* GraphQL */")
   (template_string) @graphql)
+
+(((template_string) @_template_string
+ (#match? @_template_string "^`#graphql")) @graphql)
