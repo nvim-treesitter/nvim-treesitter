@@ -88,3 +88,25 @@
 (inline_link 
   "["  @conceal
   (#set! conceal ""))
+
+;; Conceal @text.uri preceding '('
+([
+  (link_label)
+  (link_text)
+  (image_description)
+] ["("] @conceal
+(#set! conceal ""))
+
+;; Conceal @text.uri text
+([
+  (link_destination)
+  (uri_autolink)
+] @conceal
+(#set! conceal ""))
+
+;; Conceal @text.uri proceding '('
+([
+  (link_destination)
+  (uri_autolink)
+] [")"] @conceal
+(#set! conceal ""))
