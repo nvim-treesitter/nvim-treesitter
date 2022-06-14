@@ -9,27 +9,31 @@
  (for_expression)
  (let_expression)
  (function_declaration)
-] @local.scope
+] @scope
 ; }}}
 
 ; Definitions {{{
 (type_declaration
-  name: (identifier) @local.definition)
+  name: (identifier) @definition.type
+  (#set! "definition.var.scope" "parent"))
 
 (parameters
-  name: (identifier) @local.definition)
+  name: (identifier) @definition.parameter)
 
 (function_declaration
-  name: (identifier) @local.definition)
+  name: (identifier) @definition.function
+  (#set! "definition.var.scope" "parent"))
 (primitive_declaration
-  name: (identifier) @local.definition)
+  name: (identifier) @definition.function
+  (#set! "definition.var.scope" "parent"))
 
 (variable_declaration
-  name: (identifier) @local.definition)
+  name: (identifier) @definition.var
+  (#set! "definition.var.scope" "parent"))
 ; }}}
 
 ; References {{{
-(identifier) @local.reference
+(identifier) @reference
 ; }}}
 
 ; vim: sw=2 foldmethod=marker

@@ -22,8 +22,8 @@ var array := int_array[12] of 27;
 /*           ^ type */
 
 primitive func(a: int, b: string) : array
-/*             ^ variable.parameter */
+/*             ^ parameter */
 /*                ^ type.builtin */
-/*                     ^ variable.parameter */
+/*                     ^ parameter */
 /*                        ^ type.builtin */
 /*                                  ^ type */

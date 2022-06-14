@@ -2,15 +2,21 @@
 ((function_call
   function: (identifier) @function.builtin)
   (#match? @function.builtin "^(chr|concat|exit|flush|getchar|not|ord|print|print_err|print_int|size|strcmp|streq|substring)$")
-  (#is-not? local))
+  ; FIXME: not supported by neovim
+  ; (#is-not? local)
+  )
 
 ((type_identifier) @type.builtin
   (#match? @type.builtin "^(int|string|Object)$")
-  (#is-not? local))
+  ; FIXME: not supported by neovim
+  ; (#is-not? local)
+  )
 
 ((identifier) @variable.builtin
   (#match? @variable.builtin "^self$")
-  (#is-not? local))
+  ; FIXME: not supported by neovim
+  ; (#is-not? local)
+  )
 ; }}}
 
 ; Keywords {{{
@@ -24,15 +30,15 @@
   "for"
   "to"
   "while"
-] @keyword.repeat
+] @repeat
 
 [
  "new"
-] @keyword.constructor
+] @constructor
 
 [
  "method"
-] @keyword.method
+] @method
 
 [
   "array"
@@ -101,12 +107,12 @@
   name: (identifier) @method)
 
 (parameters
-  name: (identifier) @variable.parameter)
+  name: (identifier) @parameter)
 ; }}}
 
 ; Declarations {{{
 (import_declaration
-  file: (string_literal) @string.special.path)
+  file: (string_literal) @string.special)
 ; }}}
 
 ; Literals {{{

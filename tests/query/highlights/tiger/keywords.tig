@@ -28,13 +28,13 @@ in
   /*            ^ keyword */
 
   for i := 12 to 27 do 42;
-  /* <- keyword.repeat */
-  /*          ^ keyword.repeat */
-  /*                ^ keyword.repeat */
+  /* <- repeat */
+  /*          ^ repeat */
+  /*                ^ repeat */
 
   while 12 do break
-  /* <- keyword.repeat */
-  /*       ^ keyword.repeat */
+  /* <- repeat */
+  /*       ^ repeat */
   /*          ^ keyword */
 
 end
