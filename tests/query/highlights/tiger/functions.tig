@@ -1,0 +1,8 @@
+primitive print(s: string)
+/*        ^ function */
+/*              ^ variable.parameter */
+
+function func(a: int) : int = (print("Hello World!"); a)
+/*       ^ function */
+/*            ^ variable.parameter */
+/*                             ^ function */

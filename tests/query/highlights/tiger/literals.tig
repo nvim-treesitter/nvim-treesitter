@@ -1,0 +1,8 @@
+nil
+/* <- constant.builtin */
+42
+/* <- number */
+"Hello World!\n"
+/* <- string
+             ^ string.escape
+*/
