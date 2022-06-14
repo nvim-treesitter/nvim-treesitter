@@ -46,3 +46,4 @@ in
   )
   /* <- punctuation.bracket */
 end
+/* vim: set ft=tiger: */
