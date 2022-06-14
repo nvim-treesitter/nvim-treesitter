@@ -16,9 +16,4 @@
   (method_declaration)
 ] @fold
 
-[
- (comment)
- (string_literal)
-] @ignore
-
 ; vim: sw=2 foldmethod=marker
