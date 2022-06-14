@@ -6,3 +6,4 @@ nil
 /* <- string
              ^ string.escape
 */
+/* vim: set ft=tiger: */

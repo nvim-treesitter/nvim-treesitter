@@ -11,3 +11,4 @@ in
   _exp(42)
   /* <- keyword */
 end
+/* vim: set ft=tiger: */

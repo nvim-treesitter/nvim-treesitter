@@ -27,3 +27,4 @@ primitive func(a: int, b: string) : array
 /*                     ^ parameter */
 /*                        ^ type.builtin */
 /*                                  ^ type */
+/* vim: set ft=tiger: */
