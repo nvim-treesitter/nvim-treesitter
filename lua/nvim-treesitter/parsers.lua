@@ -161,6 +161,15 @@ list.glsl = {
   maintainers = { "@theHamsta" },
 }
 
+list.hlsl = {
+  install_info = {
+    url = "https://github.com/theHamsta/tree-sitter-hlsl",
+    files = { "src/parser.c", "src/scanner.cc" },
+    generate_requires_npm = true,
+  },
+  maintainers = { "@theHamsta" },
+}
+
 list.dockerfile = {
   install_info = {
     url = "https://github.com/camdencheek/tree-sitter-dockerfile",
