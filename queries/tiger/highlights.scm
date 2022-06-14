@@ -43,27 +43,19 @@
 [
   "array"
   (break_expression)
-  "do"
   "else"
   "end"
-  "for"
-  "function"
   "if"
   "import"
   "in"
   "let"
   "of"
-  "primitive"
   "then"
-  "to"
   "type"
   "var"
-  "while"
 
   "class"
   "extends"
-  "method"
-  "new"
 
   "_cast"
   "_chunks"
