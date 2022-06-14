@@ -1081,6 +1081,18 @@ list.v = {
   maintainers = { "@tami5" },
 }
 
+list.tiger = {
+  install_info = {
+    url = "https://github.com/ambroisie/tree-sitter-tiger",
+    files = { "src/parser.c", "src/scanner.c" },
+    branch = "main",
+    generate_requires_npm = false,
+    requires_generate_from_grammar = false,
+  },
+  filetype = "tiger",
+  maintainers = { "@ambroisie" },
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
