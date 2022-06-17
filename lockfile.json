@@ -99,7 +99,7 @@
     "revision": "cfcbca3f8f734773878e00d7bfcedea98eb10be2"
   },
   "glimmer": {
-    "revision": "083db94116099c5eaf489f9d34ed1de0ccbc81ff"
+    "revision": "490a7f1d284a978e9b4b1a460f5ccd8c0db19a56"
   },
   "glsl": {
     "revision": "a480a02033f8d5c67e798a6f7584ec0d2be568b0"
@@ -123,7 +123,7 @@
     "revision": "67bdb848ab3549c903632967c24c53054b22a366"
   },
   "haskell": {
-    "revision": "ca0a13f1acb60cf32e74cced3cb623b6c70fa77c"
+    "revision": "e91d3a3762a4067599a7e71e903e7f9dcbcc18b4"
   },
   "hcl": {
     "revision": "a4164c40865dbd3d3ab5e49ef914dbc016855970"
@@ -324,7 +324,7 @@
     "revision": "1b3ba31c7538825b05815f4f5bffcca6394edc63"
   },
   "v": {
-    "revision": "cb700bbb2c80e31641bf3d3b187e1dcccf8abece"
+    "revision": "73b3b1f3c2346d95b7327c22b5d8c17d88e21f0e"
   },
   "vala": {
     "revision": "31a08784cc74b61cb10c5d8314cf8a8aa98aa9a8"
