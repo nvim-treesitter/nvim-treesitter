@@ -384,7 +384,6 @@ function M.setup(user_data)
   config.parser_install_dir = user_data.parser_install_dir or nil
   if config.parser_install_dir then
     config.parser_install_dir = vim.fn.expand(config.parser_install_dir, ":p")
-    vim.cmd("set runtimepath+=" .. config.parser_install_dir)
   end
 
   local ensure_installed = user_data.ensure_installed or {}
@@ -545,25 +544,7 @@ function M.get_parser_install_dir(folder_name)
 
   if config.parser_install_dir then
     local parser_dir = utils.join_path(config.parser_install_dir, folder_name)
-
-    -- Try creating and using parser_dir if it doesn't exist
-    if not luv.fs_stat(parser_dir) then
-      local ok, error = pcall(vim.fn.mkdir, parser_dir, "p", "0755")
-      if not ok then
-        return nil, utils.join_space("Couldn't create parser dir", parser_dir, ":", error)
-      end
-
-      return parser_dir
-    end
-
-    -- parser_dir exists, use it if it's read/write
-    if luv.fs_access(parser_dir, "RW") then
-      return parser_dir
-    end
-
-    -- package_path isn't read/write, parser_dir exists but isn't read/write
-    -- either, give up
-    return nil, utils.join_space("Invalid cache rights,", parser_dir, "should be read/write")
+    return utils.create_or_resue_writable_dir(parser_dir)
   end
 
   local package_path = utils.get_package_path()
@@ -577,24 +558,12 @@ function M.get_parser_install_dir(folder_name)
   local site_dir = utils.get_site_dir()
   local parser_dir = utils.join_path(site_dir, folder_name)
 
-  -- Try creating and using parser_dir if it doesn't exist
-  if not luv.fs_stat(parser_dir) then
-    local ok, error = pcall(vim.fn.mkdir, parser_dir, "p", "0755")
-    if not ok then
-      return nil, utils.join_space("Couldn't create parser dir", parser_dir, ":", error)
-    end
-
+  parser_dir = utils.create_or_resue_writable_dir(parser_dir)
+  if parser_dir then
     return parser_dir
+  else
+    return nil, utils.join_space("Invalid cache rights,", package_path, "or", parser_dir, "should be read/write")
   end
-
-  -- parser_dir exists, use it if it's read/write
-  if luv.fs_access(parser_dir, "RW") then
-    return parser_dir
-  end
-
-  -- package_path isn't read/write, parser_dir exists but isn't read/write
-  -- either, give up
-  return nil, utils.join_space("Invalid cache rights,", package_path, "or", parser_dir, "should be read/write")
 end
 
 function M.get_parser_info_dir(parser_install_dir)

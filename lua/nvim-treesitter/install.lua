@@ -243,9 +243,9 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
     compile_location = repo.url
   else
     local repo_location = string.gsub(repo.location or project_name, "/", path_sep)
-    compile_location = cache_folder .. path_sep .. repo_location
+    compile_location = utils.join_path(cache_folder, repo_location)
   end
-  local parser_lib_name = install_folder .. path_sep .. lang .. ".so"
+  local parser_lib_name = utils.join_path(install_folder, lang) .. ".so"
 
   generate_from_grammar = repo.requires_generate_from_grammar or generate_from_grammar
 
@@ -459,11 +459,6 @@ function M.update(options)
 end
 
 function M.uninstall(...)
-  local path_sep = "/"
-  if fn.has "win32" == 1 then
-    path_sep = "\\"
-  end
-
   if vim.tbl_contains({ "all" }, ...) then
     reset_progress_counter()
     local installed = info.installed_parsers()
@@ -478,7 +473,7 @@ function M.uninstall(...)
         return api.nvim_err_writeln(err)
       end
 
-      local parser_lib = install_dir .. path_sep .. lang .. ".so"
+      local parser_lib = utils.join_path(install_dir, lang) .. ".so"
 
       local command_list = {
         shell.select_rm_file_cmd(parser_lib, "Uninstalling parser for " .. lang),

@@ -10,6 +10,27 @@ function M.notify(msg, log_level, opts)
   vim.notify(msg, log_level, vim.tbl_extend("force", default_opts, opts or {}))
 end
 
+-- Returns the system specific path seperator.
+function M.get_path_sep()
+  return fn.has "win32" == 1 and "\\" or "/"
+end
+
+-- Returns a function that joins the given arguments with separator. Arguments
+-- can't be nil. Example:
+--[[
+print(M.generate_join(" ")("foo", "bar"))
+--]]
+-- prints "foo bar"
+function M.generate_join(separator)
+  return function(...)
+    return table.concat({ ... }, separator)
+  end
+end
+
+M.join_path = M.generate_join(M.get_path_sep())
+
+M.join_space = M.generate_join " "
+
 --- Define user defined vim command which calls nvim-treesitter module function
 ---     - If module name is 'mod', it should be defined in hierarchy 'nvim-treesitter.mod'
 ---     - A table with name 'commands' should be defined in 'mod' which needs to be passed as
@@ -65,25 +86,25 @@ function M.setup_commands(mod, commands)
   end
 end
 
-function M.get_path_sep()
-  return fn.has "win32" == 1 and "\\" or "/"
-end
+function M.create_or_resue_writable_dir(dir)
+  -- Try creating and using parser_dir if it doesn't exist
+  if not luv.fs_stat(dir) then
+    local ok, error = pcall(vim.fn.mkdir, dir, "p", "0755")
+    if not ok then
+      return nil, M.join_space("Couldn't create parser dir", dir, ":", error)
+    end
 
--- Returns a function that joins the given arguments with separator. Arguments
--- can't be nil. Example:
---[[
-print(M.generate_join(" ")("foo", "bar"))
---]]
--- prints "foo bar"
-function M.generate_join(separator)
-  return function(...)
-    return table.concat({ ... }, separator)
+    return dir
   end
+
+  -- parser_dir exists, use it if it's read/write
+  if luv.fs_access(dir, "RW") then
+    return dir
+  end
+
+  -- parser_dir exists but isn't read/write, give up
+  return nil, M.join_space("Invalid cache rights,", dir, "should be read/write")
 end
-
-M.join_path = M.generate_join(M.get_path_sep())
-
-M.join_space = M.generate_join " "
 
 function M.get_package_path()
   -- Path to this source file, removing the leading '@'
