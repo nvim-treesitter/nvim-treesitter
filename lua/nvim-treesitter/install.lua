@@ -80,7 +80,7 @@ local function get_revision(lang)
 end
 
 local function get_installed_revision(lang)
-  local lang_file = utils.join_path(utils.get_parser_info_dir(), lang .. ".revision")
+  local lang_file = utils.join_path(configs.get_parser_info_dir(), lang .. ".revision")
   if vim.fn.filereadable(lang_file) == 1 then
     return vim.fn.readfile(lang_file)[1]
   end
@@ -329,7 +329,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
     shell.select_mv_cmd("parser.so", parser_lib_name, compile_location),
     {
       cmd = function()
-        vim.fn.writefile({ revision or "" }, utils.join_path(utils.get_parser_info_dir(), lang .. ".revision"))
+        vim.fn.writefile({ revision or "" }, utils.join_path(configs.get_parser_info_dir(), lang .. ".revision"))
       end,
     },
     { -- auto-attach modules after installation
@@ -392,7 +392,7 @@ local function install(options)
       return api.nvim_err_writeln(err)
     end
 
-    local install_folder, err = utils.get_parser_install_dir()
+    local install_folder, err = configs.get_parser_install_dir()
     if err then
       return api.nvim_err_writeln(err)
     end
@@ -473,7 +473,7 @@ function M.uninstall(...)
   elseif ... then
     local languages = vim.tbl_flatten { ... }
     for _, lang in ipairs(languages) do
-      local install_dir, err = utils.get_parser_install_dir()
+      local install_dir, err = configs.get_parser_install_dir()
       if err then
         return api.nvim_err_writeln(err)
       end

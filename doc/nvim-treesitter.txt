@@ -39,6 +39,11 @@ To enable supported features, put this in your `init.lua` file:
 
 >
   require'nvim-treesitter.configs'.setup {
+    -- A directory to install the parsers into.
+    -- If this is excluded or nil parsers are installed
+    -- to either the package dir, or the "site" dir.
+    parser_install_dir = "/some/path/to/store/parsers
+
     -- A list of parser names, or "all"
     ensure_installed = { "c", "lua", "rust" },
 
