@@ -109,7 +109,7 @@ end
 -- runtimepath
 function M.get_site_dir()
     local path_sep = M.get_path_sep()
-    return M.join_path(fn.stdpath "data", path_sep, "site")
+    return M.join_path(fn.stdpath "data", "site")
 end
 
 -- Gets a property at path

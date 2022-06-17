@@ -382,6 +382,11 @@ function M.setup(user_data)
   config.modules = vim.tbl_deep_extend("force", config.modules, user_data)
   config.ignore_install = user_data.ignore_install or {}
   config.parser_install_dir = user_data.parser_install_dir or nil
+  if config.parser_install_dir then
+    config.parser_install_dir = vim.fn.expand(config.parser_install_dir, ":p")
+    vim.cmd("set runtimepath+="..config.parser_install_dir)
+  end
+  
 
   local ensure_installed = user_data.ensure_installed or {}
   if #ensure_installed > 0 then
