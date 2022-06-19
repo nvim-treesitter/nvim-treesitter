@@ -8,7 +8,8 @@
    name: (_) @text.literal)
 (hotlink
    "|" @conceal (#set! conceal "")
-   destination: (_) @text.uri)
+   destination: (_) @text.reference)
 (backtick
    "`" @conceal (#set! conceal "")
    content: (_) @string)
+(argument) @parameter
