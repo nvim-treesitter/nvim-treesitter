@@ -186,7 +186,7 @@
     "revision": "2b4ffd5a5ffd0c6b4c84f0d9e003050a70db2a37"
   },
   "m68k": {
-    "revision": "7758528ad0bce6ef9ccc6ee00a37cd7caf411f22"
+    "revision": "a7884d04c929c979e480a90739c81166621ef1e7"
   },
   "make": {
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
@@ -204,16 +204,16 @@
     "revision": "17d61df817c1e0a9cdef8d915d4e4c556b7cf68c"
   },
   "ocaml": {
-    "revision": "23d419ba45789c5a47d31448061557716b02750a"
+    "revision": "bcad5b2630e45664223c6f1de75848f66b00a5bc"
   },
   "ocaml_interface": {
-    "revision": "23d419ba45789c5a47d31448061557716b02750a"
+    "revision": "bcad5b2630e45664223c6f1de75848f66b00a5bc"
   },
   "ocamllex": {
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
   },
   "org": {
-    "revision": "7ab140276cff85bf6dd08914e04188f4da1ff0ab"
+    "revision": "447fedff48842d9c81853bfbbc3b7f4d604225b2"
   },
   "pascal": {
     "revision": "2fd40f477d3e2794af152618ccfac8d92eb72a66"
