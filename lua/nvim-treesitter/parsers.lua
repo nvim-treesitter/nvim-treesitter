@@ -436,6 +436,7 @@ list.swift = {
     branch = "with-generated-files",
     files = { "src/parser.c", "src/scanner.c" },
   },
+  maintainers = { "@alex-pinkus" },
 }
 
 list.c_sharp = {
