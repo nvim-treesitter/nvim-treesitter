@@ -3,7 +3,6 @@
 
 ; Identifiers
 (attribute) @variable
-(simple_identifier) @variable
 (type_identifier) @type
 (self_expression) @variable.builtin
 
@@ -21,13 +20,14 @@
 (function_declaration (simple_identifier) @method)
 (function_declaration ["init" @constructor])
 (throws) @keyword
-(async) @keyword
+"async" @keyword
 (where_keyword) @keyword
 (parameter external_name: (simple_identifier) @parameter)
 (parameter name: (simple_identifier) @parameter)
 (type_parameter (type_identifier) @parameter)
 (inheritance_constraint (identifier (simple_identifier) @parameter))
 (equality_constraint (identifier (simple_identifier) @parameter))
+(pattern bound_identifier: (simple_identifier)) @variable
 
 [
   "typealias"
@@ -37,10 +37,17 @@
   "protocol"
   "extension"
   "indirect"
+  "some"
 ] @keyword
 
-(class_body (property_declaration (value_binding_pattern (non_binding_pattern (simple_identifier) @property))))
-(protocol_property_declaration (value_binding_pattern (non_binding_pattern (simple_identifier) @property)))
+[
+  (getter_specifier)
+  (setter_specifier)
+  (modify_specifier)
+] @keyword
+
+(class_body (property_declaration (pattern (simple_identifier) @property)))
+(protocol_property_declaration (pattern (simple_identifier) @property))
 
 (import_declaration ["import" @include])
 
@@ -68,7 +75,6 @@
 ["while" "repeat" "continue" "break"] @repeat
 
 ["let" "var"] @keyword
-(non_binding_pattern (simple_identifier) @variable)
 
 (guard_statement ["guard" @conditional])
 (if_statement ["if" @conditional])
