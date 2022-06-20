@@ -1,4 +1,5 @@
 local api = vim.api
+local luv = vim.loop
 
 local queries = require "nvim-treesitter.query"
 local ts_query = require "vim.treesitter.query"
@@ -14,6 +15,7 @@ local config = {
   ensure_installed = {},
   ignore_install = {},
   update_strategy = "lockfile",
+  parser_install_dir = nil,
 }
 -- List of modules that need to be setup on initialization.
 local queued_modules_defs = {}
@@ -379,6 +381,10 @@ end
 function M.setup(user_data)
   config.modules = vim.tbl_deep_extend("force", config.modules, user_data)
   config.ignore_install = user_data.ignore_install or {}
+  config.parser_install_dir = user_data.parser_install_dir or nil
+  if config.parser_install_dir then
+    config.parser_install_dir = vim.fn.expand(config.parser_install_dir, ":p")
+  end
 
   local ensure_installed = user_data.ensure_installed or {}
   if #ensure_installed > 0 then
@@ -526,6 +532,45 @@ function M.init()
   for _, mod_def in ipairs(queued_modules_defs) do
     M.define_modules(mod_def)
   end
+end
+
+-- If parser_install_dir is not nil is used or created.
+-- If parser_install_dir is nil try the package dir of the nvim-treesitter
+-- plugin first, followed by the "site" dir from "runtimepath". "site" dir will
+-- be created if it doesn't exist. Using only the package dir won't work when
+-- the plugin is installed with Nix, since the "/nix/store" is read-only.
+function M.get_parser_install_dir(folder_name)
+  folder_name = folder_name or "parser"
+
+  if config.parser_install_dir then
+    local parser_dir = utils.join_path(config.parser_install_dir, folder_name)
+    return utils.create_or_resue_writable_dir(
+      parser_dir,
+      utils.join_space("Could not create parser dir '", parser_dir, "': "),
+      utils.join_space("Parser dir '", parser_dir, "' should be read/write.")
+    )
+  end
+
+  local package_path = utils.get_package_path()
+  local package_path_parser_dir = utils.join_path(package_path, folder_name)
+
+  -- If package_path is read/write, use that
+  if luv.fs_access(package_path_parser_dir, "RW") then
+    return package_path_parser_dir
+  end
+
+  local site_dir = utils.get_site_dir()
+  local parser_dir = utils.join_path(site_dir, folder_name)
+
+  return utils.create_or_resue_writable_dir(
+    parser_dir,
+    nil,
+    utils.join_space("Invalid rights,", package_path, "or", parser_dir, "should be read/write")
+  )
+end
+
+function M.get_parser_info_dir(parser_install_dir)
+  return M.get_parser_install_dir "parser-info"
 end
 
 function M.get_update_strategy()

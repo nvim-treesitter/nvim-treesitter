@@ -357,6 +357,38 @@ This will respect your `foldminlines` and `foldnestmax` settings.
 
 # Advanced setup
 
+## Changing the parser install directory
+
+If you want to install the parsers to a custom directory you can specify this
+directory with `parser_install_dir` option in that is passed to `setup`.
+`nvim-treesitter` will then install the parser files into this directory.
+
+This directory must be writeable and must be explicitly added to the
+`runtimepath`. For example:
+
+``` lua
+  require'nvim-treesitter.configs'.setup {
+    parser_install_dir = "/some/path/to/store/parsers",
+
+    ...
+
+  }
+  vim.opt.runtimepath:append("/some/path/to/store/parsers")
+```
+
+If this option is not included in the setup options, or is explicitly set to
+`nil` then the default install directories will be used. If this value is set
+the default directories will be ignored. 
+
+Bear in mind that any parser installed into a parser folder on the runtime path
+will still be considered installed. (For example if
+"~/.local/share/nvim/site/parser/c.so" exists then the "c" parser will be
+considered installed, even though it is not in `parser_install_dir`)
+
+The default paths are:
+1. first the package folder. Where `nvim-treesitter` is installed.
+2. second the site directory. This is the "site" subdirectory of `stdpath("data")`.
+
 ## Adding parsers
 
 If you have a parser that is not on the list of supported languages (either as a repository on Github or in a local directory), you can add it manually for use by `nvim-treesitter` as follows:
