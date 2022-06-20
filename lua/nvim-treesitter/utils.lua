@@ -86,14 +86,14 @@ function M.setup_commands(mod, commands)
   end
 end
 
-function M.create_or_resue_writable_dir(dir,create_err, unreadable_err )
-    create_err = create_err or M.join_space("Could not create dir '",dir,"': ")
-    readable_err = readable_err or M.join_space("Invalid rights, '", dir,"' should be read/write")
+function M.create_or_resue_writable_dir(dir, create_err, writeable_err)
+  create_err = create_err or M.join_space("Could not create dir '", dir, "': ")
+  writeable_err = writeable_err or M.join_space("Invalid rights, '", dir, "' should be read/write")
   -- Try creating and using parser_dir if it doesn't exist
   if not luv.fs_stat(dir) then
     local ok, error = pcall(vim.fn.mkdir, dir, "p", "0755")
     if not ok then
-      return nil, M.join_space(create_err, create_error)
+      return nil, M.join_space(create_err, error)
     end
 
     return dir
@@ -105,7 +105,7 @@ function M.create_or_resue_writable_dir(dir,create_err, unreadable_err )
   end
 
   -- parser_dir exists but isn't read/write, give up
-  return nil, M.join_space(readable_err,dir,"'")
+  return nil, M.join_space(writeable_err, dir, "'")
 end
 
 function M.get_package_path()

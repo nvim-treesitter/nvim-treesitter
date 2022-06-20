@@ -544,10 +544,11 @@ function M.get_parser_install_dir(folder_name)
 
   if config.parser_install_dir then
     local parser_dir = utils.join_path(config.parser_install_dir, folder_name)
-    return utils.create_or_resue_writable_dir(parser_dir, 
-            utils.join_space("Could not create parser dir '",dir,"': "), 
-            utils.join_space("Parser dir '",dir,"' should be read/write.")
-        )
+    return utils.create_or_resue_writable_dir(
+      parser_dir,
+      utils.join_space("Could not create parser dir '", parser_dir, "': "),
+      utils.join_space("Parser dir '", parser_dir, "' should be read/write.")
+    )
   end
 
   local package_path = utils.get_package_path()
@@ -561,7 +562,11 @@ function M.get_parser_install_dir(folder_name)
   local site_dir = utils.get_site_dir()
   local parser_dir = utils.join_path(site_dir, folder_name)
 
-  return utils.create_or_resue_writable_dir(parser_dir, nil, utils.join_space("Invalid rights,", package_path, "or", parser_dir, "should be read/write")))
+  return utils.create_or_resue_writable_dir(
+    parser_dir,
+    nil,
+    utils.join_space("Invalid rights,", package_path, "or", parser_dir, "should be read/write")
+  )
 end
 
 function M.get_parser_info_dir(parser_install_dir)
