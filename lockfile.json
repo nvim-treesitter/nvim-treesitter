@@ -72,7 +72,7 @@
     "revision": "d21df11b0ecc6fd211dbe11278e92ef67bd17e97"
   },
   "embedded_template": {
-    "revision": "d21df11b0ecc6fd211dbe11278e92ef67bd17e97"
+    "revision": "1a538da253d73f896b9f6c0c7d79cda58791ac5c"
   },
   "erlang": {
     "revision": "fab680273af1a8f5cc0c3a0c62cbf5b1bea71f39"
@@ -327,7 +327,7 @@
     "revision": "1b3ba31c7538825b05815f4f5bffcca6394edc63"
   },
   "v": {
-    "revision": "db7454ab4d8fbe0130d80c72d614c758c3744e72"
+    "revision": "0d0da45660037a224b0261896d37a87d8540896b"
   },
   "vala": {
     "revision": "31a08784cc74b61cb10c5d8314cf8a8aa98aa9a8"
