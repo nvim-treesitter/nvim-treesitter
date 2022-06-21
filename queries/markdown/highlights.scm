@@ -81,32 +81,36 @@
 ] @conceal
 (#set! conceal ""))
 
-(inline_link 
-  ["]"] @conceal
-  (#set! conceal " "))
 
+;; Inline_link Conceal
+; Conceal preceeding "[" character for inline links
 (inline_link 
   "["  @conceal
   (#set! conceal ""))
 
-;; Conceal @text.uri preceding '('
-([
-  (link_label)
-  (link_text)
-  (image_description)
-] ["("] @conceal
-(#set! conceal ""))
-
-;; Conceal @text.uri text
-([
-  (link_destination)
-  (uri_autolink)
+; Conceal inline links
+(inline_link
+  [
+    "]"
+    "("
+   (link_destination)
+    ")"
 ] @conceal
 (#set! conceal ""))
 
-;; Conceal @text.uri proceding '('
-([
-  (link_destination)
-  (uri_autolink)
-] [")"] @conceal
-(#set! conceal ""))
+
+;; Image Conceal
+; Conceal preceeding "!" and "[" characters for image links
+(image
+  ["!" "["]  @conceal
+  (#set! conceal ""))
+
+; Conceal image links
+(image
+  [
+    "]"
+    "("
+   (link_destination)
+    ")"
+] @conceal
+  (#set! conceal ""))
