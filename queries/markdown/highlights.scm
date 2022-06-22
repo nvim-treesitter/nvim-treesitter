@@ -82,15 +82,10 @@
 (#set! conceal ""))
 
 
-;; Inline_link Conceal
-; Conceal preceeding "[" character for inline links
-(inline_link 
-  "["  @conceal
-  (#set! conceal ""))
-
 ; Conceal inline links
 (inline_link
   [
+    "["
     "]"
     "("
    (link_destination)
@@ -99,15 +94,11 @@
 (#set! conceal ""))
 
 
-;; Image Conceal
-; Conceal preceeding "!" and "[" characters for image links
-(image
-  ["!" "["]  @conceal
-  (#set! conceal ""))
-
 ; Conceal image links
 (image
   [
+    "!"
+    "["
     "]"
     "("
    (link_destination)
