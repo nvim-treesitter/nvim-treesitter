@@ -528,8 +528,19 @@ list.hcl = {
 list.markdown = {
   install_info = {
     url = "https://github.com/MDeiml/tree-sitter-markdown",
+    location = "tree-sitter-markdown",
     files = { "src/parser.c", "src/scanner.cc" },
-    branch = "main",
+    branch = "split_parser",
+  },
+  experimental = true,
+}
+
+list.markdown_inline = {
+  install_info = {
+    url = "https://github.com/MDeiml/tree-sitter-markdown",
+    location = "tree-sitter-markdown-inline",
+    files = { "src/parser.c", "src/scanner.cc" },
+    branch = "split_parser",
   },
   experimental = true,
 }

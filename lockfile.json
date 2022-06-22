@@ -192,7 +192,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "be3e08acfd85bd87d85f41fde74fdcec25f76dbe"
+    "revision": "acb097808683eea7c6d6d469644a275b9f6a64f5"
+  },
+  "markdown_inline": {
+    "revision": "acb097808683eea7c6d6d469644a275b9f6a64f5"
   },
   "ninja": {
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
