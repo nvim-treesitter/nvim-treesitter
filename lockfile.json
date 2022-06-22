@@ -120,7 +120,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "hack": {
-    "revision": "67bdb848ab3549c903632967c24c53054b22a366"
+    "revision": "b7bd6928532ada34dddb1dece4a158ab62c6e783"
   },
   "haskell": {
     "revision": "14bf3061a3fbcadab428fb5e50eb2c5b1f9be0c3"
@@ -240,7 +240,7 @@
     "revision": "63e214905970e75f065688b1e8aa90823c3aacdc"
   },
   "python": {
-    "revision": "dafcef7943229ec9d530b36ed67d758e659f4c6c"
+    "revision": "2b9e9e0d231d5dd9f491d47f704817baee7d5af0"
   },
   "ql": {
     "revision": "b2c2364e833cc9f1afa243ac367f1475330fef63"
@@ -327,7 +327,7 @@
     "revision": "1b3ba31c7538825b05815f4f5bffcca6394edc63"
   },
   "v": {
-    "revision": "0d0da45660037a224b0261896d37a87d8540896b"
+    "revision": "a11a965be87c6b85c3c2f0efe796f508a3a4f405"
   },
   "vala": {
     "revision": "31a08784cc74b61cb10c5d8314cf8a8aa98aa9a8"
