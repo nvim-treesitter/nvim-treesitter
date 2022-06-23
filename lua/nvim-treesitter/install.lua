@@ -96,6 +96,8 @@ local function is_ignored_parser(lang)
   return vim.tbl_contains(configs.get_ignored_parser_installs(), lang)
 end
 
+--- @param lang string
+--- @return string|nil
 local function get_revision(lang)
   if #lockfile == 0 then
     load_lockfile()
@@ -106,7 +108,9 @@ local function get_revision(lang)
     return install_info.revision
   end
 
-  return (lockfile[lang] and lockfile[lang].revision)
+  if lockfile[lang] then
+    return lockfile[lang].revision
+  end
 end
 
 ---@param lang string
@@ -358,7 +362,11 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
     ) .. '" are not executable.')
     return
   end
-  local revision = configs.get_update_strategy() == "lockfile" and get_revision(lang)
+
+  local revision = repo.revision
+  if not revision and configs.get_update_strategy() == "lockfile" then
+    revision = get_revision(lang)
+  end
 
   local command_list = {}
   if not from_local_path then
