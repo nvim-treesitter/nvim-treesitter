@@ -532,6 +532,7 @@ list.markdown = {
     files = { "src/parser.c", "src/scanner.cc" },
     branch = "split_parser",
   },
+  maintainers = { "@MDeiml" },
   experimental = true,
 }
 
@@ -542,6 +543,7 @@ list.markdown_inline = {
     files = { "src/parser.c", "src/scanner.cc" },
     branch = "split_parser",
   },
+  maintainers = { "@MDeiml" },
   experimental = true,
 }
 
