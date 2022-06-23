@@ -126,7 +126,7 @@
     "revision": "14bf3061a3fbcadab428fb5e50eb2c5b1f9be0c3"
   },
   "hcl": {
-    "revision": "a4164c40865dbd3d3ab5e49ef914dbc016855970"
+    "revision": "45ce22c16ec924e34517cf785e23c07952e45893"
   },
   "heex": {
     "revision": "961bc4d2937cfd24ceb0a5a6b2da607809f8822e"
@@ -192,7 +192,7 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "ab15701d8f3f68aeb74e30573b7d669a6ef2a7ed"
+    "revision": "be3e08acfd85bd87d85f41fde74fdcec25f76dbe"
   },
   "ninja": {
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
@@ -213,7 +213,7 @@
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
   },
   "org": {
-    "revision": "447fedff48842d9c81853bfbbc3b7f4d604225b2"
+    "revision": "63c9563fee36ae1c1c63fc38df75908892ca7278"
   },
   "pascal": {
     "revision": "2fd40f477d3e2794af152618ccfac8d92eb72a66"
@@ -240,7 +240,7 @@
     "revision": "63e214905970e75f065688b1e8aa90823c3aacdc"
   },
   "python": {
-    "revision": "2b9e9e0d231d5dd9f491d47f704817baee7d5af0"
+    "revision": "7473026494597de8bc403735b1bfec7ca846c0d6"
   },
   "ql": {
     "revision": "b2c2364e833cc9f1afa243ac367f1475330fef63"
@@ -327,7 +327,7 @@
     "revision": "1b3ba31c7538825b05815f4f5bffcca6394edc63"
   },
   "v": {
-    "revision": "a11a965be87c6b85c3c2f0efe796f508a3a4f405"
+    "revision": "6dda1e2e9e6a0a13e6ab5321fca3185cf3660337"
   },
   "vala": {
     "revision": "31a08784cc74b61cb10c5d8314cf8a8aa98aa9a8"
