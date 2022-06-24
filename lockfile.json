@@ -99,7 +99,7 @@
     "revision": "cfcbca3f8f734773878e00d7bfcedea98eb10be2"
   },
   "glimmer": {
-    "revision": "490a7f1d284a978e9b4b1a460f5ccd8c0db19a56"
+    "revision": "a23d28de811976f3ca310df735fe09a5d2de16ab"
   },
   "glsl": {
     "revision": "a480a02033f8d5c67e798a6f7584ec0d2be568b0"
@@ -318,13 +318,13 @@
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
   },
   "tsx": {
-    "revision": "1b3ba31c7538825b05815f4f5bffcca6394edc63"
+    "revision": "391803ed80081b483d7ef3a6a412b0fb4d335329"
   },
   "turtle": {
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
   },
   "typescript": {
-    "revision": "1b3ba31c7538825b05815f4f5bffcca6394edc63"
+    "revision": "391803ed80081b483d7ef3a6a412b0fb4d335329"
   },
   "v": {
     "revision": "a48eeba0c1e44d0738cf8461c92315dd50dae8b6"
