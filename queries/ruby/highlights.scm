@@ -14,9 +14,11 @@
  "ensure"
  "module"
  "next"
+ "redo"
  "rescue"
  "retry"
  "then"
+ "undef"
  ] @keyword
 
 [
