@@ -129,7 +129,7 @@
 (identifier) @variable
 
 ((identifier) @variable.builtin
- (#match? @variable.builtin "^self$"))
+ (#eq? @variable.builtin "self"))
 
 ;; Constants
 
