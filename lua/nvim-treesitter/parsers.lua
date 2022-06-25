@@ -398,7 +398,7 @@ list.ocaml = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ocaml",
     files = { "src/parser.c", "src/scanner.cc" },
-    location = "tree-sitter-ocaml/ocaml",
+    location = "ocaml",
   },
   maintainers = { "@undu" },
 }
@@ -407,7 +407,7 @@ list.ocaml_interface = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ocaml",
     files = { "src/parser.c", "src/scanner.cc" },
-    location = "tree-sitter-ocaml_interface/interface",
+    location = "interface",
   },
   maintainers = { "@undu" },
   filetype = "ocamlinterface",
@@ -463,7 +463,7 @@ list.typescript = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-typescript",
     files = { "src/parser.c", "src/scanner.c" },
-    location = "tree-sitter-typescript/typescript",
+    location = "typescript",
     generate_requires_npm = true,
   },
   maintainers = { "@steelsojka" },
@@ -473,7 +473,7 @@ list.tsx = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-typescript",
     files = { "src/parser.c", "src/scanner.c" },
-    location = "tree-sitter-tsx/tsx",
+    location = "tsx",
     generate_requires_npm = true,
   },
   filetype = "typescriptreact",
@@ -1083,7 +1083,7 @@ list.v = {
   install_info = {
     url = "https://github.com/vlang/vls",
     files = { "src/parser.c", "src/scanner.c" },
-    location = "tree-sitter-v/tree_sitter_v",
+    location = "tree_sitter_v",
     generate_requires_npm = false,
     requires_generate_from_grammar = false,
   },

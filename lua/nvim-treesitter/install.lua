@@ -242,7 +242,11 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   if from_local_path then
     compile_location = repo.url
   else
-    local repo_location = string.gsub(repo.location or project_name, "/", path_sep)
+    local repo_location = project_name
+    if repo.location then
+      repo_location = repo_location .. "/" .. repo.location
+    end
+    repo_location = repo_location:gsub("/", path_sep)
     compile_location = utils.join_path(cache_folder, repo_location)
   end
   local parser_lib_name = utils.join_path(install_folder, lang) .. ".so"
