@@ -213,7 +213,7 @@
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
   },
   "org": {
-    "revision": "63c9563fee36ae1c1c63fc38df75908892ca7278"
+    "revision": "4d2b32774414e94a1db20d821cac64c89737134f"
   },
   "pascal": {
     "revision": "2fd40f477d3e2794af152618ccfac8d92eb72a66"
@@ -222,7 +222,7 @@
     "revision": "bbf86084d9b7eb4768f3fb9fe094b3e0600057b1"
   },
   "php": {
-    "revision": "6ff54a9b1556bff4252c0cd0af6e616ba151b1fc"
+    "revision": "ece74b20942a5b23acaf3622512c6d0db1491a7e"
   },
   "phpdoc": {
     "revision": "46d6366a66266f1e9ae00ee7ea27aa9de629ade6"
@@ -240,7 +240,7 @@
     "revision": "63e214905970e75f065688b1e8aa90823c3aacdc"
   },
   "python": {
-    "revision": "7473026494597de8bc403735b1bfec7ca846c0d6"
+    "revision": "188b6b062d8cb256e7dfe76b5ad5089bbdcb7014"
   },
   "ql": {
     "revision": "b2c2364e833cc9f1afa243ac367f1475330fef63"
@@ -327,7 +327,7 @@
     "revision": "391803ed80081b483d7ef3a6a412b0fb4d335329"
   },
   "v": {
-    "revision": "a48eeba0c1e44d0738cf8461c92315dd50dae8b6"
+    "revision": "7fccefae978e2da7441a677523666170af42e943"
   },
   "vala": {
     "revision": "31a08784cc74b61cb10c5d8314cf8a8aa98aa9a8"
@@ -351,6 +351,6 @@
     "revision": "8e9d175982afcefa3dac8ca20d40d1643accd2bd"
   },
   "zig": {
-    "revision": "4cff36421dae9c05388b86cd64d2bab4b9ed6676"
+    "revision": "8d3224c3bd0890fe08358886ebf54fca2ed448a6"
   }
 }
