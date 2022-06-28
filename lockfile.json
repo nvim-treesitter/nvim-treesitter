@@ -6,7 +6,7 @@
     "revision": "275effdfc0edce774acf7d481f9ea195c6c403cd"
   },
   "beancount": {
-    "revision": "78b8ddca3ab774573a4e3bf64eabd79e9452cea9"
+    "revision": "a1050584340a2375b6b480ba9e9691aebb9d33d5"
   },
   "bibtex": {
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
@@ -192,10 +192,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "12d3aa435f97c65251f2891052fd9d05deb23a61"
+    "revision": "82820113af62117c6c63a655bff2806f806fd483"
   },
   "markdown_inline": {
-    "revision": "12d3aa435f97c65251f2891052fd9d05deb23a61"
+    "revision": "82820113af62117c6c63a655bff2806f806fd483"
   },
   "ninja": {
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
