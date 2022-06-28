@@ -186,16 +186,16 @@
     "revision": "2b4ffd5a5ffd0c6b4c84f0d9e003050a70db2a37"
   },
   "m68k": {
-    "revision": "e54461d392fb0b7664f8a8d22d38ca0f74b69d7f"
+    "revision": "5d8e1915284b59e1c4780f79218d5fa6b03016dc"
   },
   "make": {
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "82820113af62117c6c63a655bff2806f806fd483"
+    "revision": "5261e18b6c67059f682d1bd4a3c89104977f8167"
   },
   "markdown_inline": {
-    "revision": "82820113af62117c6c63a655bff2806f806fd483"
+    "revision": "5261e18b6c67059f682d1bd4a3c89104977f8167"
   },
   "ninja": {
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
