@@ -820,7 +820,7 @@ list.r = {
 list.beancount = {
   install_info = {
     url = "https://github.com/polarmutex/tree-sitter-beancount",
-    files = { "src/parser.c" },
+    files = { "src/parser.c", "src/scanner.cc" },
     branch = "master",
   },
   maintainers = { "@polarmutex" },
