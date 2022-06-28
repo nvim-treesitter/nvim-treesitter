@@ -6,7 +6,7 @@
     "revision": "275effdfc0edce774acf7d481f9ea195c6c403cd"
   },
   "beancount": {
-    "revision": "78b8ddca3ab774573a4e3bf64eabd79e9452cea9"
+    "revision": "a1050584340a2375b6b480ba9e9691aebb9d33d5"
   },
   "bibtex": {
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
@@ -186,16 +186,16 @@
     "revision": "2b4ffd5a5ffd0c6b4c84f0d9e003050a70db2a37"
   },
   "m68k": {
-    "revision": "a7884d04c929c979e480a90739c81166621ef1e7"
+    "revision": "351398f2fd04cc1303dcfe4336860dd085426795"
   },
   "make": {
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "acb097808683eea7c6d6d469644a275b9f6a64f5"
+    "revision": "12d3aa435f97c65251f2891052fd9d05deb23a61"
   },
   "markdown_inline": {
-    "revision": "acb097808683eea7c6d6d469644a275b9f6a64f5"
+    "revision": "12d3aa435f97c65251f2891052fd9d05deb23a61"
   },
   "ninja": {
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
@@ -216,7 +216,7 @@
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
   },
   "org": {
-    "revision": "4d2b32774414e94a1db20d821cac64c89737134f"
+    "revision": "bc8a040492b56754a35b3b00a3052fdb7ba12969"
   },
   "pascal": {
     "revision": "2fd40f477d3e2794af152618ccfac8d92eb72a66"
@@ -243,7 +243,7 @@
     "revision": "63e214905970e75f065688b1e8aa90823c3aacdc"
   },
   "python": {
-    "revision": "188b6b062d8cb256e7dfe76b5ad5089bbdcb7014"
+    "revision": "de221eccf9a221f5b85474a553474a69b4b5784d"
   },
   "ql": {
     "revision": "b2c2364e833cc9f1afa243ac367f1475330fef63"
@@ -270,7 +270,7 @@
     "revision": "d4b6c33ec15a4c22d0003dd37a5b20baa352b843"
   },
   "ruby": {
-    "revision": "6334d6ab3d04a5672da695d3b155ca3301511f8d"
+    "revision": "5b305c3cd32db10494cedd2743de6bbe32f1a573"
   },
   "rust": {
     "revision": "36ae187ed6dd3803a8a89dbb54f3124c8ee74662"
@@ -330,7 +330,7 @@
     "revision": "391803ed80081b483d7ef3a6a412b0fb4d335329"
   },
   "v": {
-    "revision": "7fccefae978e2da7441a677523666170af42e943"
+    "revision": "f764ed3a5330e9d2e1a80411873d45de3f8201a2"
   },
   "vala": {
     "revision": "31a08784cc74b61cb10c5d8314cf8a8aa98aa9a8"
