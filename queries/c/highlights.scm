@@ -63,6 +63,7 @@
   ">>"
 
   "->"
+  "."
 
   "<"
   "<="
@@ -94,7 +95,7 @@
  (false)
 ] @boolean
 
-[ "." ";" ":" "," ] @punctuation.delimiter
+[ ";" ":" "," ] @punctuation.delimiter
 
 "..." @punctuation.special
 
