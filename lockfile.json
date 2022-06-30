@@ -174,7 +174,7 @@
     "revision": "7744b56f03ac1e5643fad23c9dd90837fe97291e"
   },
   "latex": {
-    "revision": "c8e55bb7403ab87de58983331df3ec6b115fa318"
+    "revision": "b3b2cf27f33e71438ebe46934900b1153901c6f2"
   },
   "ledger": {
     "revision": "1050a25df55a62878102d10e524b5184b316b7ad"
@@ -186,16 +186,16 @@
     "revision": "2b4ffd5a5ffd0c6b4c84f0d9e003050a70db2a37"
   },
   "m68k": {
-    "revision": "5d8e1915284b59e1c4780f79218d5fa6b03016dc"
+    "revision": "54e422666d4095fb5fd711d2ae895de3541a9df6"
   },
   "make": {
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "5261e18b6c67059f682d1bd4a3c89104977f8167"
+    "revision": "69d9f46028870e8215caff77b34e4f3144b68cc7"
   },
   "markdown_inline": {
-    "revision": "5261e18b6c67059f682d1bd4a3c89104977f8167"
+    "revision": "69d9f46028870e8215caff77b34e4f3144b68cc7"
   },
   "ninja": {
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
