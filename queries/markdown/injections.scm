@@ -5,5 +5,9 @@
 
 ((html_block) @html)
 
-(document . (section . (thematic_break) (_) @yaml @combined (thematic_break)))
+([
+  (minus_metadata)
+  (plus_metadata)
+] @yaml (#offset! @yaml 1 0 -1 0))
+
 ((inline) @markdown_inline (#exclude_children! @markdown_inline))
