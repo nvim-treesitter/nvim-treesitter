@@ -177,7 +177,7 @@
     "revision": "b3b2cf27f33e71438ebe46934900b1153901c6f2"
   },
   "ledger": {
-    "revision": "1050a25df55a62878102d10e524b5184b316b7ad"
+    "revision": "1f864fb2bf6a87fe1b48545cc6adc6d23090adf7"
   },
   "llvm": {
     "revision": "e9948edc41e9e5869af99dddb2b5ff5cc5581af6"
@@ -330,7 +330,7 @@
     "revision": "391803ed80081b483d7ef3a6a412b0fb4d335329"
   },
   "v": {
-    "revision": "1c713c83b69aa6e186e4a8b0879a2d2e2488f042"
+    "revision": "607138c7a04d0515fb359df0d4a69701fb30a7e9"
   },
   "vala": {
     "revision": "31a08784cc74b61cb10c5d8314cf8a8aa98aa9a8"
