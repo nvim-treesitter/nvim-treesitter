@@ -1,6 +1,7 @@
 (identifier) @variable
 
 [
+  "auto"
   "const"
   "default"
   "enum"
