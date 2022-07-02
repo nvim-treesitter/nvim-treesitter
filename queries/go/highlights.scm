@@ -196,6 +196,9 @@
 (false) @boolean
 (nil) @constant.builtin
 
+(keyed_element
+  . (literal_element (identifier) @field))
+
 (comment) @comment
 
 (ERROR) @error
