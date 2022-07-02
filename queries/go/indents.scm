@@ -18,6 +18,8 @@
   "}"
 ] @branch
 
+(const_declaration ")" @branch)
+
 [
  "}"
  ")"
