@@ -6,7 +6,7 @@
     "revision": "275effdfc0edce774acf7d481f9ea195c6c403cd"
   },
   "beancount": {
-    "revision": "a1050584340a2375b6b480ba9e9691aebb9d33d5"
+    "revision": "4cbd1f09cd07c1f1fabf867c2cf354f9da53cc4c"
   },
   "bibtex": {
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
@@ -123,7 +123,7 @@
     "revision": "b7bd6928532ada34dddb1dece4a158ab62c6e783"
   },
   "haskell": {
-    "revision": "14bf3061a3fbcadab428fb5e50eb2c5b1f9be0c3"
+    "revision": "cf394604ae2ec2a5e65b1afbc7dea21258ede403"
   },
   "hcl": {
     "revision": "45ce22c16ec924e34517cf785e23c07952e45893"
@@ -192,10 +192,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "69d9f46028870e8215caff77b34e4f3144b68cc7"
+    "revision": "9a4096f5c98462159ca5a89a7c00a28a939bdb79"
   },
   "markdown_inline": {
-    "revision": "69d9f46028870e8215caff77b34e4f3144b68cc7"
+    "revision": "9a4096f5c98462159ca5a89a7c00a28a939bdb79"
   },
   "ninja": {
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
