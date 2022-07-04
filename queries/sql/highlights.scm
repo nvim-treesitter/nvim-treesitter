@@ -1,5 +1,11 @@
 (function_call
-  name: (identifier) @function)
+  (invocation
+    name: (identifier) @function
+    parameter: [(field)]? @parameter))
+
+(function_call
+  name: (identifier) @function
+  parameter: [(field)]? @parameter)
 
 (table_expression
   name: (identifier) @type)
@@ -12,11 +18,10 @@
   table_alias: (identifier) @variable
   name: (identifier) @field)
 
+(literal) @string
+
 ((literal) @number
  (lua-match? @number "^%d+$"))
-
-((literal) @string
- (lua-match? @string "^\"|'"))
 
 [
   (keyword_select)
@@ -53,7 +58,6 @@
   (keyword_as)
   (keyword_limit)
   (keyword_offset)
-  (keyword_primary)
   (keyword_table)
   (keyword_key)
   (keyword_constraint)
@@ -65,6 +69,75 @@
   (keyword_exists)
   (keyword_auto_increment)
   (keyword_default)
+  (keyword_max)
+  (keyword_min)
+  (keyword_avg)
+  (keyword_materialized)
+  (keyword_column)
+  (keyword_cross)
+  (keyword_lateral)
+  (keyword_alter)
+  (keyword_drop)
+  (keyword_add)
+  (keyword_view)
+  (keyword_case)
+  (keyword_when)
+  (keyword_then)
+  (keyword_else)
+  (keyword_end)
+  (keyword_is)
+  (keyword_using)
+  (keyword_cascade)
+  (double)
+  (keyword_with)
+  (keyword_no)
+  (keyword_data)
+  (keyword_type)
+  (keyword_rename)
+  (keyword_to)
+  (keyword_schema)
+  (keyword_owner)
+  (keyword_temp)
+  (keyword_temporary)
+  (keyword_union)
+  (keyword_all)
+  (keyword_except)
+  (keyword_intersect)
+  (keyword_returning)
+  (keyword_begin)
+  (keyword_commit)
+  (keyword_rollback)
+  (keyword_transaction)
+  (keyword_null)
+  (keyword_true)
+  (keyword_false)
+  (keyword_boolean)
+  (keyword_smallserial)
+  (keyword_serial)
+  (keyword_bigserial)
+  (keyword_smallint)
+  (keyword_int)
+  (keyword_bigint)
+  (keyword_decimal)
+  (keyword_numeric)
+  (keyword_real)
+  (keyword_money)
+  (keyword_char)
+  (keyword_varchar)
+  (keyword_text)
+  (keyword_uuid)
+  (keyword_json)
+  (keyword_jsonb)
+  (keyword_xml)
+  (keyword_bytea)
+  (keyword_date)
+  (keyword_datetime)
+  (keyword_timestamp)
+  (keyword_timestamptz)
+  (keyword_geometry)
+  (keyword_geography)
+  (keyword_box2d)
+  (keyword_box3d)
 ] @keyword
 
 [
