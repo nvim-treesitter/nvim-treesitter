@@ -21,7 +21,7 @@
     "revision": "e57c569ae332ca365da623712ae1f50f84daeae2"
   },
   "cmake": {
-    "revision": "5020572408a386d5d2dfac3516584f5edda7a49b"
+    "revision": "13c7c529d7f67641fbd7ae16ce1bd30387853d6f"
   },
   "comment": {
     "revision": "a37ca370310ac6f89b6e0ebf2b86b2219780494e"
@@ -303,7 +303,7 @@
     "revision": "cfa3f0ac82cd680b4efaa090a0f78035ad43a7c6"
   },
   "swift": {
-    "revision": "ffc574a3f108e3127fac7647563ea72b707af59a"
+    "revision": "33948c72fa206d2040cfe0b213d29d5739090ac6"
   },
   "teal": {
     "revision": "1ae8c68e90523b26b93af56feb7868fe4214e2b2"
