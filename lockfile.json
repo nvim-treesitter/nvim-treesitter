@@ -186,7 +186,7 @@
     "revision": "2b4ffd5a5ffd0c6b4c84f0d9e003050a70db2a37"
   },
   "m68k": {
-    "revision": "756886cac22f20c3d7279aa97debf6906d32ad22"
+    "revision": "17c958a635f501b0cbc9f616010680ff431cd3ea"
   },
   "make": {
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
@@ -321,16 +321,16 @@
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
   },
   "tsx": {
-    "revision": "391803ed80081b483d7ef3a6a412b0fb4d335329"
+    "revision": "c94f0d5c31944beecdd14b39e185f816e95dbe6d"
   },
   "turtle": {
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
   },
   "typescript": {
-    "revision": "391803ed80081b483d7ef3a6a412b0fb4d335329"
+    "revision": "c94f0d5c31944beecdd14b39e185f816e95dbe6d"
   },
   "v": {
-    "revision": "d5db5b71ee7b66879ffbfa5789bb3beb540826a7"
+    "revision": "95b446e8b4f3a7723de285dc177eede7a2238f31"
   },
   "vala": {
     "revision": "31a08784cc74b61cb10c5d8314cf8a8aa98aa9a8"
