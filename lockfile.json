@@ -321,13 +321,13 @@
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
   },
   "tsx": {
-    "revision": "c94f0d5c31944beecdd14b39e185f816e95dbe6d"
+    "revision": "49e82b1bce36d6046df911901684cd66b5345d58"
   },
   "turtle": {
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
   },
   "typescript": {
-    "revision": "c94f0d5c31944beecdd14b39e185f816e95dbe6d"
+    "revision": "49e82b1bce36d6046df911901684cd66b5345d58"
   },
   "v": {
     "revision": "95b446e8b4f3a7723de285dc177eede7a2238f31"
@@ -339,7 +339,7 @@
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
   },
   "vim": {
-    "revision": "4e1f656a69310a1603b78089f8ce83d33801a4b5"
+    "revision": "c5425cf06a7002cb28587778a28aa231a3e5e054"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
