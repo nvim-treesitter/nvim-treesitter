@@ -244,5 +244,4 @@
   ;;; TODO better way?
   "required"
   "property"
-  "var"
 ] @keyword
