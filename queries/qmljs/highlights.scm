@@ -1,3 +1,5 @@
+; inherits: ecma
+
 ;;; Annotations
 
 (ui_annotation
