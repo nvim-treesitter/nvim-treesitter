@@ -47,6 +47,14 @@
 ;;; comments
 (comment) @comment
 
+;;; ui_object_definition
+(ui_object_definition
+	type_name: (identifier) @type)
+
+;;; function
+(function_declaration
+	name: (identifier) @type)
+
 
 ;;; Keywords
 
@@ -61,4 +69,5 @@
   "readonly"
   "required"
   "signal"
+	"function"
 ] @keyword
