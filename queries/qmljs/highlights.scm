@@ -244,4 +244,5 @@
   ;;; TODO better way?
   "required"
   "property"
+  "signal"
 ] @keyword
