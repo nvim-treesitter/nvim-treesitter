@@ -46,7 +46,7 @@ local list = setmetatable({}, {
 list.qmljs = {
   install_info = {
     url = "https://github.com/yuja/tree-sitter-qmljs",
-    branch = {"main"},
+    branch = "main",
     files = {"src/parser.c", "src/scanner.c"}
   },
   filetype = "qmljs",
