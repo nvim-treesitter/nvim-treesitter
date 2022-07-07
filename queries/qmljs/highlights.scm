@@ -31,7 +31,7 @@
 (ui_binding
   name: (identifier) @property
   (#eq? @property "id")
-  value: (expression_statement (identifier) @variable.parameter))
+  value: (expression_statement (identifier) @variable))
 
 (ui_property
   name: (identifier) @property)
@@ -45,10 +45,10 @@
 ;;; Signals
 
 (ui_signal
-  name: (identifier) @function.signal)
+  name: (identifier) @function)
 
 (ui_signal_parameter
-  (identifier) @variable.parameter)
+  (identifier) @variable)
 
 ;;; ui_object_definition
 (ui_object_definition
@@ -87,9 +87,7 @@
 ; Tokens
 ;-------
 
-(template_substitution
-  "${" @punctuation.special
-  "}" @punctuation.special) @embedded
+
 
 ;;; keywrod in qml
 [
@@ -112,8 +110,8 @@
 
 ; Variables
 
-(required_parameter (identifier) @variable.parameter)
-(optional_parameter (identifier) @variable.parameter)
+(required_parameter (identifier) @variable)
+(optional_parameter (identifier) @variable)
 
 ; Keywords
 
