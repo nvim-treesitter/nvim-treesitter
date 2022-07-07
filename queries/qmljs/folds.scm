@@ -1,7 +1,6 @@
 [
   (ui_object_definition)
-] @fold
-
-[
   (function_declaration)
+  (statement_block)
+  (if_statement)
 ] @fold
