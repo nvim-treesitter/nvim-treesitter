@@ -50,14 +50,6 @@
 (ui_object_definition
 	type_name: (nested_identifier) @type)
 
-;;; function
-
-(function_declaration
-	name: (identifier) @type)
-
-;;; Keywords
-(comment) @comment
-
 
 ;;; js
 ; Special identifiers
