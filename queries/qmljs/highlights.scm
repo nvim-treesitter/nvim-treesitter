@@ -70,4 +70,5 @@
   "required"
   "signal"
 	"function"
+	"if"
 ] @keyword
