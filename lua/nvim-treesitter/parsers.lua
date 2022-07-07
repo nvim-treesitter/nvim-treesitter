@@ -43,7 +43,15 @@ local list = setmetatable({}, {
     filetype_to_parsername[parserconfig.filetype or parsername] = parsername
   end,
 })
-
+list.qmljs = {
+  install_info = {
+    url = "https://github.com/yuja/tree-sitter-qmljs",
+    branch = "master",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  filetype = "qmljs",
+  maintainers = { "@yuja" },
+}
 list.scheme = {
   install_info = {
     url = "https://github.com/6cdh/tree-sitter-scheme",
