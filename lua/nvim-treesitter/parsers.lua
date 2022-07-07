@@ -47,10 +47,10 @@ list.qmljs = {
   install_info = {
     url = "https://github.com/yuja/tree-sitter-qmljs",
     branch = "master",
-    files = { "src/parser.c", "src/scanner.c"}
+    files = { "src/parser.c", "src/scanner.c" },
   },
   filetype = "qmljs",
-  maintainers = { "@yuja" }
+  maintainers = { "@yuja" },
 }
 list.scheme = {
   install_info = {
