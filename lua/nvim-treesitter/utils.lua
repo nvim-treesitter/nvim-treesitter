@@ -69,12 +69,8 @@ M.join_space = M.generate_join " "
 function M.setup_commands(mod, commands)
   for command_name, def in pairs(commands) do
     local f_args = def.f_args or "<f-args>"
-    local call_fn = string.format(
-      "lua require'nvim-treesitter.%s'.commands.%s['run<bang>'](%s)",
-      mod,
-      command_name,
-      f_args
-    )
+    local call_fn =
+      string.format("lua require'nvim-treesitter.%s'.commands.%s['run<bang>'](%s)", mod, command_name, f_args)
     local parts = vim.tbl_flatten {
       "command!",
       "-bar",
