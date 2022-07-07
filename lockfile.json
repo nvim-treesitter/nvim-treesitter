@@ -248,6 +248,9 @@
   "ql": {
     "revision": "b2c2364e833cc9f1afa243ac367f1475330fef63"
   },
+  "qmljs": {
+    "revision": "2e20b9d65f3def509df4dda85aa918fb007fcd0c"
+  },
   "query": {
     "revision": "5217c6805c09f8fc00ed13d17d5fcb791437aee6"
   },
