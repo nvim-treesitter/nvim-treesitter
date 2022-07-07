@@ -44,6 +44,10 @@
 (ui_signal_parameter
   (identifier) @variable.parameter)
 
+;;; comments
+(comment) @comment
+
+
 ;;; Keywords
 
 [
