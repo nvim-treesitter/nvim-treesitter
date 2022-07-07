@@ -9,6 +9,10 @@
     (nested_identifier (identifier) @attribute)
   ])
 
+;; type
+(ui_property 
+  type: (type_identifier) @type)
+
 ;;; Properties
 
 (ui_object_definition_binding
@@ -237,6 +241,8 @@
   "while"
   "with"
   "yield"
+  ;;; TODO better way?
+  "required"
+  "property"
+  "var"
 ] @keyword
-
-
