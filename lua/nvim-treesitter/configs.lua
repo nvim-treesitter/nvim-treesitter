@@ -13,6 +13,7 @@ local config = {
   modules = {},
   sync_install = false,
   ensure_installed = {},
+  auto_install = false,
   ignore_install = {},
   update_strategy = "lockfile",
   parser_install_dir = nil,
@@ -384,6 +385,11 @@ function M.setup(user_data)
   config.parser_install_dir = user_data.parser_install_dir or nil
   if config.parser_install_dir then
     config.parser_install_dir = vim.fn.expand(config.parser_install_dir, ":p")
+  end
+
+  config.auto_install = user_data.auto_install or false
+  if config.auto_install then
+    require("nvim-treesitter.install").setup_auto_install()
   end
 
   local ensure_installed = user_data.ensure_installed or {}

@@ -109,6 +109,9 @@ require'nvim-treesitter.configs'.setup {
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
 
+  -- Automatically install missing parsers when entering buffer
+  auto_install = true,
+
   -- List of parsers to ignore installing (for "all")
   ignore_install = { "javascript" },
 
@@ -381,7 +384,7 @@ This directory must be writeable and must be explicitly added to the
 
 If this option is not included in the setup options, or is explicitly set to
 `nil` then the default install directories will be used. If this value is set
-the default directories will be ignored. 
+the default directories will be ignored.
 
 Bear in mind that any parser installed into a parser folder on the runtime path
 will still be considered installed. (For example if
