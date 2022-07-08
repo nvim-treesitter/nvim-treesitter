@@ -46,6 +46,12 @@
 
 "#include" @include
 
+[ ";" ":" "," ] @punctuation.delimiter
+
+"..." @punctuation.special
+
+[ "(" ")" "[" "]" "{" "}"] @punctuation.bracket
+
 [
   "="
 
@@ -90,19 +96,16 @@
   "++"
 ] @operator
 
+;; Make sure the comma operator is given a highlight group after the comma
+;; punctuator so the operator is highlighted properly.
+(comma_expression [ "," ] @operator)
+
 [
  (true)
  (false)
 ] @boolean
 
-[ ";" ":" "," ] @punctuation.delimiter
-
-"..." @punctuation.special
-
 (conditional_expression [ "?" ":" ] @conditional)
-
-
-[ "(" ")" "[" "]" "{" "}"] @punctuation.bracket
 
 (string_literal) @string
 (system_lib_string) @string
