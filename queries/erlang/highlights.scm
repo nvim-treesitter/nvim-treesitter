@@ -23,6 +23,7 @@
   "=>"
  ] @operator
 
+(comment) @comment
 (string) @string
 (variable) @variable
 
