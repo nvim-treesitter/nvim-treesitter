@@ -4,4 +4,4 @@
   (template_literal) @content
   (heredoc_identifier) @language
   (#set! "language" @language)
-  (#downcase! "language"))aint that what we do?
+  (#downcase! "language"))
