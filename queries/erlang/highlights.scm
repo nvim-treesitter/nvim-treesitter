@@ -8,6 +8,7 @@
   "end"
   "module"
   "export"
+  "throw"
 ] @keyword
 
 [
