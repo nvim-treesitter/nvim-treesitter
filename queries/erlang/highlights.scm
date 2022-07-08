@@ -6,6 +6,8 @@
   "after"
   "receive"
   "end"
+  "module"
+  "export"
 ] @keyword
 
 [
