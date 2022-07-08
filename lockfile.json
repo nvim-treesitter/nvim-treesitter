@@ -12,7 +12,7 @@
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
   },
   "c": {
-    "revision": "3ced8d6cd212a6f576cd4ef3d533bcb9c09eface"
+    "revision": "517bf92b2c5e8baa4241cbb8a49085ed7c3c48d4"
   },
   "c_sharp": {
     "revision": "9c494a503c8e2044bfffce57f70b480c01a82f03"
@@ -306,7 +306,7 @@
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
   },
   "svelte": {
-    "revision": "ed9fb880972ddcca1b9400e9e7e792fc83c22885"
+    "revision": "52e122ae68b316d3aa960a0a422d3645ba717f42"
   },
   "swift": {
     "revision": "33948c72fa206d2040cfe0b213d29d5739090ac6"
@@ -336,7 +336,7 @@
     "revision": "49e82b1bce36d6046df911901684cd66b5345d58"
   },
   "v": {
-    "revision": "95b446e8b4f3a7723de285dc177eede7a2238f31"
+    "revision": "316b6e588de3ed9b310a90672db078fbca970449"
   },
   "vala": {
     "revision": "31a08784cc74b61cb10c5d8314cf8a8aa98aa9a8"
