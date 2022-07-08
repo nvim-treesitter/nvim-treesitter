@@ -129,7 +129,7 @@ function M.attach(bufnr)
     else
       mode = "x"
     end
-    local cmd = string.format(":lua require'nvim-treesitter.incremental_selection'.%s()<CR>", funcname)
+    local cmd = string.format("<cmd>lua require'nvim-treesitter.incremental_selection'.%s()<CR>", funcname)
     api.nvim_buf_set_keymap(bufnr, mode, mapping, cmd, { silent = true, noremap = true })
   end
 end
