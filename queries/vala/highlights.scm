@@ -57,7 +57,6 @@
   "yield"
   "break"
 ] @keyword.return
-(primitive_type)
 
 (null) @constant.builtin
 
@@ -202,7 +201,6 @@
 
 ; Types
 
-(primitive_type) @type
 
 (nullable_type
     (_) @type
@@ -317,7 +315,7 @@
 (generic_identifier
 	(identifier) @type )
 (declaration 
-	type_name: (identifier) @primitive_type
+	type_name: (identifier) @type
 	(identifier) @variable)
 
 ;;; inline etc
@@ -334,3 +332,4 @@
 	(identifier) @variable
 	(identifier) @constant)
 (array_identifier (identifier) @type)
+type_name: (identifier) @type
