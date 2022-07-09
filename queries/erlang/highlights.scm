@@ -1,16 +1,37 @@
+;; keywoord
 [
+  "fun"
+  "div"
+] @keyword
+;; bracket
+[
+  "("
+  ")"
+  "{"
+  "}"
+  "["
+  "]"
+	"#"
+] @punctuation.bracket
+;; conditional
+[
+  "receive"
+  "try"
+  "throw"
   "catch"
-  "of"
+  "if"
   "case"
+  "of"
   "when"
   "after"
-  "receive"
   "end"
+] @conditional
+;;; module define
+[
   "module"
   "export"
-  "throw"
-] @keyword
-
+] @include
+;;; operator
 [
   ":"
   ":="
@@ -21,6 +42,9 @@
   "="
   "->"
   "=>"
+	"|"
+	;;;TODO
+	"$"
  ] @operator
 
 (comment) @comment
@@ -28,15 +52,15 @@
 (variable) @variable
 
 (module_name
- (atom) @attribute
- )
+  (atom) @namespace
+)
 ;;; expr_function_call
 (expr_function_call
- name: (computed_function_name) @function 
+  name: (computed_function_name) @function 
 ) 
 
 (expr_function_call
-	arguments: (atom) @variable
+  arguments: (atom) @variable
 )
 
 ;;; map
