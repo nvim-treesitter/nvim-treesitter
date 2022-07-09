@@ -97,7 +97,6 @@
   (preproc_endif)
 ] @keyword
 
-"throw" @exception
 ;;; conditional
 [
   "if"
@@ -105,10 +104,14 @@
   "switch"
   "case"
   "default"
-  "throws"
-	"try"
-  "catch"
+
 ] @conditional
+[
+  "throw"
+  "throws"
+  "try"
+  "catch"
+] @exception
 
 [
   "for"
