@@ -307,9 +307,11 @@
 
 ;;; namespace 
 (namespaced_identifier
-	left: (identifier) @namespace
-	right: (identifier) @type
-	)
+  left: (identifier) @namespace
+)
+(namespaced_identifier
+  right: (identifier) @type
+)
 (primitive_type) @type
 ;;; define variable
 ;;(generic_identifier
