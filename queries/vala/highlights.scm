@@ -191,7 +191,7 @@
 (function_call
   identifier: [
   	(identifier) @method
-    (generic_identifier (_) @type) 
+    ;;;(generic_identifier (_) @type) 
   ]
 )
 
@@ -313,10 +313,10 @@
 	left: (identifier) @namespace
 	right: (identifier) @type
 	)
-
+(primitive_type) @type
 ;;; define variable
-(generic_identifier
-	(identifier) @type )
+;;(generic_identifier
+;;	(identifier) @type )
 (declaration 
 	type_name: (identifier) @type
 	(identifier) @variable)
