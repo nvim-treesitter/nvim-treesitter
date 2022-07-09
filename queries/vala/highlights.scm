@@ -66,10 +66,6 @@
 ] @keyword.operator
 
 (this) @variable.builtin
-;;; move enum to namespace
-[
-  "enum"
-] @namespace
 
 ;;; move new and delet to operator
 [
@@ -78,6 +74,7 @@
 ] @keyword.operator
 ;;; keyword
 [
+  "enum"
   (modifier)
   "namespace"
   "var"
