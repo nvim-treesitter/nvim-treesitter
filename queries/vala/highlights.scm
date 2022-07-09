@@ -2,21 +2,25 @@
 
 ((identifier) @constant (#match? @constant "^[A-Z][A-Z\\d_]+$"))
 
-(namespaced_identifier
-  left: [
-    ; Lowercased names in lhs typically are variables, while camel cased are namespaces
-    ; ((identifier) @namespace (#match? @namespace "^[A-Z]+[a-z]+$"))
-    ((identifier) @variable (#match? @variable "^[a-z]"))
-    (_)
-  ]
-  right: [
-    ; Lowercased are variables, camel cased are types
-    ; ((identifier) @parameter (#match? @parameter "^[a-z]"))
-    ((identifier) @type (#match? @type "^[A-Z]+[a-z]+$"))
-    (_)
-  ]
-)
 
+;;; here make the highlight break so I commit here 
+;;; TODO
+;;;(namespaced_identifier
+;;;  left: [
+;;;    ; Lowercased names in lhs typically are variables, while camel cased are namespaces
+;;;    ; ((identifier) @namespace (#match? @namespace "^[A-Z]+[a-z]+$"))
+;;;    ((identifier) @variable (#match? @variable "^[a-z]"))
+;;;    (_)
+;;;  ]
+;;;  right: [
+;;;    ; Lowercased are variables, camel cased are types
+;;;    ; ((identifier) @parameter (#match? @parameter "^[a-z]"))
+;;;    ((identifier) @type (#match? @type "^[A-Z]+[a-z]+$"))
+;;;    (_)
+;;;  ]
+;;;)
+
+(comment) @comment
 ((identifier) @constructor (#match? @constructor "^[A-Z]*[a-z]+"))
 
 ; Pointers
@@ -53,7 +57,7 @@
   "yield"
   "break"
 ] @keyword.return
-
+(primitive_type)
 
 (null) @constant.builtin
 
@@ -62,24 +66,32 @@
   "is"
 ] @keyword.operator
 
+(this) @variable.builtin
+;;; move enum to namespace
+[
+  "enum"
+] @namespace
+
+;;; move new and delet to operator
+[
+  "new"
+  "delete"
+] @keyword.operator
+;;; keyword
 [
   (modifier)
+  "namespace"
   "var"
   "class"
+	"override"
   "interface"
   (property_parameter)
-  (this)
-  "enum"
-  "new"
+  "public"
   "in"
   "as"
-  "try"
-  "catch"
   "requires"
   "ensures"
   "owned"
-  "throws"
-  "delete"
   "#if"
   "#elif"
   (preproc_else)
@@ -87,13 +99,16 @@
 ] @keyword
 
 "throw" @exception
-
+;;; conditional
 [
   "if"
   "else"
   "switch"
   "case"
   "default"
+  "throws"
+	"try"
+  "catch"
 ] @conditional
 
 [
@@ -157,6 +172,10 @@
   type_name: (_) @type
 )
 
+(declaration
+  (identifier) @variable
+)
+
 ; Methods
 
 (function_definition
@@ -196,11 +215,6 @@
 
 ; Namespace
 
-(namespace
-  "namespace" @include
-  (_) @namespace
-)
-
 "global::" @namespace
 
 (using 
@@ -210,7 +224,8 @@
 
 ; Classes
 
-(class_declaration) @type
+(class_declaration
+	(identifier) @type)
 
 (class_constructor_definition
   name: [
@@ -243,10 +258,6 @@
 (string_template_expression) @variable
 
 ; New instance from Object
-
-(new_instance
-  "new" @keyword
-)
 
 ; GObject construct
 
@@ -295,3 +306,31 @@
   name: (identifier) @attribute
   param: (_) @attribute
 ) @attribute
+
+;;; namespace 
+(namespaced_identifier
+	left: (identifier) @namespace
+	right: (identifier) @type
+	)
+
+;;; define variable
+(generic_identifier
+	(identifier) @type )
+(declaration 
+	type_name: (identifier) @primitive_type
+	(identifier) @variable)
+
+;;; inline etc
+(declaration_parameter 
+	(identifier) @type
+	(identifier) @variable
+	)
+(binary_expression (identifier) @variable)
+(instanciation_parameter (identifier) @variable)
+(assignment (identifier) @variable)
+
+;;; array
+(array_identifier 
+	(identifier) @variable
+	(identifier) @constant)
+(array_identifier (identifier) @type)
