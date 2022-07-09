@@ -16,9 +16,6 @@
 ;; conditional
 [
   "receive"
-  "try"
-  "throw"
-  "catch"
   "if"
   "case"
   "of"
@@ -26,6 +23,12 @@
   "after"
   "end"
 ] @conditional
+
+[
+  "catch"
+	"try"
+	"throw"
+] @exception
 ;;; module define
 [
   "module"
