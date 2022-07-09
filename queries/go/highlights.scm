@@ -38,6 +38,9 @@
 (method_declaration
   name: (field_identifier) @method)
 
+(method_spec 
+  name: (field_identifier) @method) 
+
 ; Operators
 
 [
