@@ -2,5 +2,6 @@
   (function_declaration)
   (lambda_clause)
   (expr_case)
-	(map)
+  (map)
+  (module_export)
 ] @fold
