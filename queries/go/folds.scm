@@ -9,5 +9,6 @@
  (method_declaration)
  (type_declaration)
  (var_declaration)
+ (block)
 ] @fold
 
