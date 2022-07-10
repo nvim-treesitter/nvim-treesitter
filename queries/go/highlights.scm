@@ -123,6 +123,7 @@
 
 ((type_identifier) @type.builtin
  (#any-of? @type.builtin
+           "any"
            "bool"
            "byte"
            "complex128"
