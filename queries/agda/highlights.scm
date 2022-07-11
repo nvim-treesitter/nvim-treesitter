@@ -1,6 +1,6 @@
 
 ;; Constants
-(integer) @constant
+(integer) @number
 
 ;; Variables and Symbols
 

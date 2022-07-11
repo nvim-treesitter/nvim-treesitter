@@ -49,16 +49,16 @@ list.agda = {
     url = "https://github.com/AusCyberman/tree-sitter-agda",
     branch = "master",
     files = { "src/parser.c", "src/scanner.cc" },
+    generate_requires_npm = true,
   },
   filetype = "agda",
-  maintainers = { "@AusCyberman" },
+  maintainers = { "@Decodetalkers" },
 }
 list.qmljs = {
   install_info = {
     url = "https://github.com/yuja/tree-sitter-qmljs",
     branch = "master",
     files = { "src/parser.c", "src/scanner.c" },
-    generate_requires_npm = true,
   },
   filetype = "qmljs",
   maintainers = { "@yuja" },
