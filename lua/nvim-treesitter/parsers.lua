@@ -44,6 +44,15 @@ local list = setmetatable({}, {
   end,
 })
 
+list.agda = {
+  install_info = {
+    url = "https://github.com/AusCyberman/tree-sitter-agda",
+    branch = "master",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  filetype = "agda",
+  maintainers = { "@AusCyberman" },
+}
 list.qmljs = {
   install_info = {
     url = "https://github.com/yuja/tree-sitter-qmljs",
