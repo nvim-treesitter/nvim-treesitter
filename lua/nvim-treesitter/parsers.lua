@@ -58,6 +58,7 @@ list.qmljs = {
     url = "https://github.com/yuja/tree-sitter-qmljs",
     branch = "master",
     files = { "src/parser.c", "src/scanner.c" },
+    generate_requires_npm = true,
   },
   filetype = "qmljs",
   maintainers = { "@yuja" },
