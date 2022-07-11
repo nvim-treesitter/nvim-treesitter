@@ -599,7 +599,7 @@ Identifiers referring to modules and namespaces.
 
 								     *hl-None*
 `TSNone`
-No highlighting (sets all highlight arguments to `NONE`). this group is used
+No highlighting (sets all highlight arguments to `NONE`). This group is used
 to clear certain ranges, for example, string interpolations. Don't change the
 values of this highlight group.
 
@@ -714,7 +714,7 @@ URIs like hyperlinks or email addresses.
 
 								   *hl-TSMath*
 `TSMath`
-Math environments like LaTeX's `$ ... $`
+Math environments like LaTeX's `$ ... $`.
 
 							  *hl-TSTextReference*
 `TSTextReference`
