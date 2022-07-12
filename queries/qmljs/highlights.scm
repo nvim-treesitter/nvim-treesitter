@@ -61,12 +61,22 @@
   (nested_identifier
     (identifier) @namespace)
 )
-;;; js
 
 ; Properties
 ;-----------
 
 (property_identifier) @property
+
+;;; function
+(call_expression
+  function: (member_expression
+		object: (identifier) @variable
+    property:(property_identifier) @function
+  )
+)
+;;; js
+
+
 
 ; Literals
 ;---------
