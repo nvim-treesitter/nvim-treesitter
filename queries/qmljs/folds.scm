@@ -3,4 +3,5 @@
   (function_declaration)
   (statement_block)
   (if_statement)
+  (comment)
 ] @fold
