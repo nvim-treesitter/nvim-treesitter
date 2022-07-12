@@ -1,5 +1,7 @@
 ; inherits: ecma
 
+"pragma" @include
+
 ;;; Annotations
 
 (ui_annotation
