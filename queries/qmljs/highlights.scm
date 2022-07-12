@@ -1,5 +1,7 @@
 ; inherits: ecma
 
+"pragma" @include
+
 ;;; Annotations
 
 (ui_annotation
@@ -56,13 +58,27 @@
 (ui_object_definition
 	type_name: (nested_identifier) @type)
 
-
-;;; js
+;;; namespace
+(nested_identifier
+  (nested_identifier
+    (identifier) @namespace)
+)
 
 ; Properties
 ;-----------
 
 (property_identifier) @property
+
+;;; function
+(call_expression
+  function: (member_expression
+		object: (identifier) @variable
+    property:(property_identifier) @function
+  )
+)
+;;; js
+
+
 
 ; Literals
 ;---------
@@ -91,6 +107,7 @@
 
 ;;; keywrod in qml
 [
+  "on"
   "required"
   "property"
   "signal"
