@@ -63,7 +63,7 @@
     "revision": "5d0c1bfcdf8aaad225525acad930a972b319a675"
   },
   "elm": {
-    "revision": "a9a8efad446f78db3989d7ed8517987daf510c83"
+    "revision": "f73f9cef2e75a10286cc42b56ef63b78a4dddf00"
   },
   "elvish": {
     "revision": "e50787cadd3bc54f6d9c0704493a79078bb8a4e5"
@@ -276,7 +276,7 @@
     "revision": "5b305c3cd32db10494cedd2743de6bbe32f1a573"
   },
   "rust": {
-    "revision": "36ae187ed6dd3803a8a89dbb54f3124c8ee74662"
+    "revision": "0f14a10011ac6e56f309fb99a94829c3312b743a"
   },
   "scala": {
     "revision": "140c96cf398693189d4e50f76d19ddfcd8a018f8"
@@ -336,7 +336,7 @@
     "revision": "49e82b1bce36d6046df911901684cd66b5345d58"
   },
   "v": {
-    "revision": "a90086d2f1be518eccdd396428f1dc3e06eca133"
+    "revision": "78d3df4b1fda31d5d5bf972bc7f060b1202cf4bf"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -345,7 +345,7 @@
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
   },
   "vim": {
-    "revision": "c5425cf06a7002cb28587778a28aa231a3e5e054"
+    "revision": "2d75bf329e3df6e1c13f81262567b9aeb6c241d1"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
