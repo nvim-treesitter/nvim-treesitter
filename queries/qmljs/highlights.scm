@@ -95,6 +95,7 @@
 
 ;;; keywrod in qml
 [
+  "on"
   "required"
   "property"
   "signal"
