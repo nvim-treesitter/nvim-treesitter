@@ -56,7 +56,11 @@
 (ui_object_definition
 	type_name: (nested_identifier) @type)
 
-
+;;; namespace
+(nested_identifier
+  (nested_identifier
+    (identifier) @namespace)
+)
 ;;; js
 
 ; Properties
