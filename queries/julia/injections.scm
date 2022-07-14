@@ -1,6 +1,7 @@
-; TODO: re-add when markdown is added.
-; ((triple_string) @markdown
-;   (#offset! @markdown 0 3 0 -3))
+(source_file
+  ((string_literal) @markdown
+                    (#lua-match? @markdown "^\"\"\"")
+                    (#offset! @markdown 0 3 0 -3)))
 
 [
   (line_comment)
