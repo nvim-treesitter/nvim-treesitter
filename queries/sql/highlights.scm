@@ -19,6 +19,7 @@
   name: (identifier) @field)
 
 (literal) @string
+(comment) @comment
 
 ((literal) @number
  (lua-match? @number "^%d+$"))
