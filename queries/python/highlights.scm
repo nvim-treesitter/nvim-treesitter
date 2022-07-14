@@ -202,6 +202,7 @@
 ] @keyword.operator
 
 [
+  "class"
   "def"
   "lambda"
 ] @keyword.function
@@ -210,7 +211,6 @@
   "assert"
   "async"
   "await"
-  "class"
   "exec"
   "global"
   "nonlocal"
