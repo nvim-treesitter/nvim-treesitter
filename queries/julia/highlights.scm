@@ -111,6 +111,7 @@
   "primitive"
   "struct"
   "type"
+  "mutable"
 ] @keyword
 
 "return" @keyword.return
