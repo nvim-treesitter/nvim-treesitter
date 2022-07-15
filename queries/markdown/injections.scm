@@ -1,6 +1,7 @@
 (fenced_code_block
   (info_string
     (language) @language)
+  (#not-match? @language "elm")
   (code_fence_content) @content (#exclude_children! @content))
 
 ((html_block) @html)
