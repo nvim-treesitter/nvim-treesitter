@@ -63,7 +63,7 @@
     "revision": "5d0c1bfcdf8aaad225525acad930a972b319a675"
   },
   "elm": {
-    "revision": "f73f9cef2e75a10286cc42b56ef63b78a4dddf00"
+    "revision": "0aecfbf69f0c9bcdfada0f6f2c5398235c23949f"
   },
   "elvish": {
     "revision": "e50787cadd3bc54f6d9c0704493a79078bb8a4e5"
@@ -183,7 +183,7 @@
     "revision": "e9948edc41e9e5869af99dddb2b5ff5cc5581af6"
   },
   "lua": {
-    "revision": "a041a547270c17f3d3aca11cb882f5c8eb88a572"
+    "revision": "c9ece5b2d348f917052db5a2da9bd4ecff07426c"
   },
   "m68k": {
     "revision": "cea0a108493441a4da8b927f7703a226327139f6"
@@ -225,7 +225,7 @@
     "revision": "bbf86084d9b7eb4768f3fb9fe094b3e0600057b1"
   },
   "php": {
-    "revision": "ece74b20942a5b23acaf3622512c6d0db1491a7e"
+    "revision": "670d1eb6822d8c7ade1c71232e0bef42757b9da7"
   },
   "phpdoc": {
     "revision": "46d6366a66266f1e9ae00ee7ea27aa9de629ade6"
