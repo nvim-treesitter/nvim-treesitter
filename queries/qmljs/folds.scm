@@ -3,5 +3,6 @@
   (function_declaration)
   (statement_block)
   (if_statement)
+  (ui_binding)
   (comment)
 ] @fold
