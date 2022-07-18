@@ -46,7 +46,7 @@ jobs:
 
           - os: ubuntu-latest
             cc: gcc
-            nvim_tag: nightly
+            nvim_tag: stable
 
     name: Parser compilation
     runs-on: ${{ matrix.os }}
