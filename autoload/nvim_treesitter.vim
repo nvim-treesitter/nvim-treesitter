@@ -1,5 +1,5 @@
 function! nvim_treesitter#statusline(...) abort
-  return luaeval("require'nvim-treesitter'.statusline(_A)", get(a:, 1, {}))
+  return luaeval("require'nvim-treesitter.statusline'.statusline(_A)", get(a:, 1, {}))
 endfunction
 
 function! nvim_treesitter#foldexpr() abort
