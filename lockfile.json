@@ -18,7 +18,7 @@
     "revision": "9c494a503c8e2044bfffce57f70b480c01a82f03"
   },
   "clojure": {
-    "revision": "0ce85ebd12f6e0257d35ca6906d522f4f6c1cfe4"
+    "revision": "087bac78c53fe1387756cd5b8e68a69b3f6d7244"
   },
   "cmake": {
     "revision": "599836393074e4744d78dad76b8b8eb8e1f690ff"
@@ -186,7 +186,7 @@
     "revision": "c9ece5b2d348f917052db5a2da9bd4ecff07426c"
   },
   "m68k": {
-    "revision": "cea0a108493441a4da8b927f7703a226327139f6"
+    "revision": "41284e89ef7bf711d2bd879c6205a9e94fd93a38"
   },
   "make": {
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
@@ -336,7 +336,7 @@
     "revision": "49e82b1bce36d6046df911901684cd66b5345d58"
   },
   "v": {
-    "revision": "af742dbf3819242d67aa4855531fd9f3c3676932"
+    "revision": "6c9332a1d9b14dcc64873edf49d32386b88061f8"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
