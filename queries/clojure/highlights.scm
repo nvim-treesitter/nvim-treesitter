@@ -106,7 +106,10 @@
 
 ; Definition functions
 ((sym_lit) @keyword
- (#lua-match? @keyword "^def.*$"))
+ (#any-of? @keyword
+  "def" "defonce" "defrecord" "defmacro" "definline"
+  "defmulti" "defmethod" "defstruct" "defprotocol"
+  "deftype"))
 ((sym_lit) @keyword
  (#eq? @keyword "declare"))
 ((sym_lit) @keyword.function
@@ -283,7 +286,10 @@
 (list_lit
  .
  (sym_lit) @_keyword ; Don't really want to highlight twice
- (#lua-match? @_keyword "^def.*")
+ (#any-of? @keyword
+   "def" "defonce" "defrecord" "defmacro" "definline"
+   "defmulti" "defmethod" "defstruct" "defprotocol"
+   "deftype")
  .
  (sym_lit)
  .
