@@ -1,4 +1,4 @@
-vim.cmd [[set runtimepath+=.]]
+vim.opt.runtimepath:append "."
 vim.cmd [[runtime! plugin/plenary.vim]]
 vim.cmd [[runtime! plugin/nvim-treesitter.lua]]
 
