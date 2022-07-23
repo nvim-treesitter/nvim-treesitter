@@ -6,9 +6,7 @@
 
 ((html_block) @html)
 
-([
-  (minus_metadata)
-  (plus_metadata)
-] @yaml (#offset! @yaml 1 0 -1 0))
+((minus_metadata) @yaml (#offset! @yaml 1 0 -1 0))
+((plus_metadata) @toml (#offset! @toml 1 0 -1 0))
 
 ((inline) @markdown_inline (#exclude_children! @markdown_inline))
