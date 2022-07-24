@@ -41,6 +41,7 @@ hlmap["field"] = "TSField"
 hlmap["float"] = "TSFloat"
 
 hlmap["function"] = "TSFunction"
+hlmap["function.call"] = "TSFunctionCall"
 hlmap["function.builtin"] = "TSFuncBuiltin"
 hlmap["function.macro"] = "TSFuncMacro"
 
@@ -54,6 +55,7 @@ hlmap["keyword.return"] = "TSKeywordReturn"
 hlmap["label"] = "TSLabel"
 
 hlmap["method"] = "TSMethod"
+hlmap["method.call"] = "TSMethodCall"
 
 hlmap["namespace"] = "TSNamespace"
 
@@ -177,11 +179,13 @@ function M.set_default_hlgroups()
     TSFloat = { link = "Float", default = true },
 
     TSFunction = { link = "Function", default = true },
+    TSFunctionCall = { link = "TSFunction", default = true },
     TSFuncBuiltin = { link = "Special", default = true },
     TSFuncMacro = { link = "Macro", default = true },
     TSParameter = { link = "Identifier", default = true },
     TSParameterReference = { link = "TSParameter", default = true },
     TSMethod = { link = "Function", default = true },
+    TSMethodCall = { link = "TSMethod", default = true },
     TSField = { link = "Identifier", default = true },
     TSProperty = { link = "Identifier", default = true },
     TSConstructor = { link = "Special", default = true },
