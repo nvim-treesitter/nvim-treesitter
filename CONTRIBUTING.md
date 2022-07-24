@@ -122,10 +122,12 @@ effect on highlighting. We will work on improving highlighting in the near futur
 ```
 @function
 @function.builtin
+@function.call
 @function.macro
 @parameter
 
 @method
+@method.call
 @field
 @property
 
