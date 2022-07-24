@@ -56,11 +56,11 @@
  (#match? @function "^([A-Z])@!.*$"))
 
 (call
-  function: (identifier) @function)
+  function: (identifier) @function.call)
 
 (call
   function: (attribute
-              attribute: (identifier) @method))
+              attribute: (identifier) @method.call))
 
 ((call
    function: (identifier) @constructor)
