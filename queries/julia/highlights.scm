@@ -23,13 +23,13 @@
 (function_definition
   name: (identifier) @function)
 (call_expression
-  (identifier) @function)
+  (identifier) @function.call)
 (call_expression
-  (field_expression (identifier) @method .))
+  (field_expression (identifier) @method.call .))
 (broadcast_call_expression
-  (identifier) @function)
+  (identifier) @function.call)
 (broadcast_call_expression
-  (field_expression (identifier) @method .))
+  (field_expression (identifier) @method.call .))
 (parameter_list
   (identifier) @parameter)
 (parameter_list
