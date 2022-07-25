@@ -21,11 +21,11 @@
 ; Function calls
 
 (call_expression
-  function: (identifier) @function)
+  function: (identifier) @function.call)
 
 (call_expression
   function: (selector_expression
-    field: (field_identifier) @method))
+    field: (field_identifier) @method.call))
 
 ; Function definitions
 
