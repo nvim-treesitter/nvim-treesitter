@@ -551,7 +551,11 @@ Floating-point number literals.
 
 							       *hl-TSFunction*
 `TSFunction`
-Function calls and definitions.
+Function definitions.
+
+							   *hl-TSFunctionCall*
+`TSFunctionCall`
+Function calls.
 
 							    *hl-TSFuncBuiltin*
 `TSFuncBuiltin`
@@ -591,7 +595,11 @@ GOTO labels: `label:` in C, and `::label::` in Lua.
 
 								 *hl-TSMethod*
 `TSMethod`
-Method calls and definitions.
+Method definitions.
+
+							     *hl-TSMethodCall*
+`TSMethod`
+Method calls.
 
 							      *hl-TSNamespace*
 `TSNamespace`
