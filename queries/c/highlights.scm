@@ -157,10 +157,10 @@
   (#eq? @_u "#undef"))
 
 (call_expression
-  function: (identifier) @function)
+  function: (identifier) @function.call)
 (call_expression
   function: (field_expression
-    field: (field_identifier) @function))
+    field: (field_identifier) @function.call))
 (function_declarator
   declarator: (identifier) @function)
 (preproc_function_def
