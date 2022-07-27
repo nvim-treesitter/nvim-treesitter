@@ -113,8 +113,8 @@
 [
  (string)
  (encapsed_string)
- (heredoc)
- (nowdoc)
+ (heredoc_body)
+ (nowdoc_body)
  (shell_command_expression) ; backtick operator: `ls -la`
  ] @string
 (escape_sequence) @string.escape
