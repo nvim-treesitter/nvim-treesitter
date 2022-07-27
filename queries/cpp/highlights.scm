@@ -178,6 +178,4 @@
 
 "::" @punctuation.delimiter
 
-(attribute_declaration) @attribute
-
 (literal_suffix) @operator
