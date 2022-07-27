@@ -188,6 +188,7 @@
   "_unaligned"
   "__unaligned"
   "__declspec"
+  (attribute_declaration)
 ] @attribute
 
 (ERROR) @error
