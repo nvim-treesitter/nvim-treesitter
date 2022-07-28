@@ -102,7 +102,7 @@
     "revision": "a23d28de811976f3ca310df735fe09a5d2de16ab"
   },
   "glsl": {
-    "revision": "a55b4c99d8296c83ef53e3b9e536016b2fb1bbc4"
+    "revision": "4a5230b3233931f274a1a3036dd3d7e67cfd36c6"
   },
   "go": {
     "revision": "aeb2f33b366fd78d5789ff104956ce23508b85db"
@@ -192,10 +192,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "11ef9ef7047a1ffdb2ed8becd5e7ec3b1c08c93b"
+    "revision": "d057e6dc918fdae2f27e025ad89a452d4cf79b1f"
   },
   "markdown_inline": {
-    "revision": "11ef9ef7047a1ffdb2ed8becd5e7ec3b1c08c93b"
+    "revision": "d057e6dc918fdae2f27e025ad89a452d4cf79b1f"
   },
   "ninja": {
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
@@ -297,7 +297,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "0caa7fa2ee00e0b770493a79d4efacc1fc376cc5"
+    "revision": "b0638b92203828e203b18b42cf04632cfc801236"
   },
   "supercollider": {
     "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
