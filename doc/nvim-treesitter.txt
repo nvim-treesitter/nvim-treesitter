@@ -598,7 +598,7 @@ GOTO labels: `label:` in C, and `::label::` in Lua.
 Method definitions.
 
 							     *hl-TSMethodCall*
-`TSMethod`
+`TSMethodCall`
 Method calls.
 
 							      *hl-TSNamespace*
