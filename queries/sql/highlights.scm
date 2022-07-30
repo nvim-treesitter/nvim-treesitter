@@ -1,10 +1,10 @@
 (function_call
   (invocation
-    name: (identifier) @function
+    name: (identifier) @function.call
     parameter: [(field)]? @parameter))
 
 (function_call
-  name: (identifier) @function
+  name: (identifier) @function.call
   parameter: [(field)]? @parameter)
 
 (table_expression

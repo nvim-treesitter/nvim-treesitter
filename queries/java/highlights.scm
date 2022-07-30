@@ -9,7 +9,7 @@
 (method_declaration
   name: (identifier) @method)
 (method_invocation
-  name: (identifier) @method)
+  name: (identifier) @method.call)
 
 (super) @function.builtin
 
