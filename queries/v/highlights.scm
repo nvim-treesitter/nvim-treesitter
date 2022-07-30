@@ -41,16 +41,16 @@
 
 ;; Function calls ----------------
 (call_expression
-  function: (identifier) @function)
+  function: (identifier) @function.call)
 
 (((_
-   function: (selector_expression field: (identifier) @function)
+   function: (selector_expression field: (identifier) @function.call)
    arguments: (_) @_args)
   (#not-has-type? @_args arguments_list)))
 
 ((call_expression
   function: (binded_identifier name: (identifier) @function)
-  @function))
+  @function.call))
 
 
 ;; Function definitions ---------

@@ -97,7 +97,7 @@
 (function_definition
   name: (word) @function)
 
-(command_name (word) @function)
+(command_name (word) @function.call)
 
 ((command_name (word) @function.builtin)
  (#any-of? @function.builtin

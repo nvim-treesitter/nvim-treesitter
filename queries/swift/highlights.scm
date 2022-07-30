@@ -54,10 +54,10 @@
 (enum_entry ["case" @keyword])
 
 ; Function calls
-(call_expression (simple_identifier) @function) ; foo()
+(call_expression (simple_identifier) @function.call) ; foo()
 (call_expression ; foo.bar.baz(): highlight the baz()
   (navigation_expression
-    (navigation_suffix (simple_identifier) @function)))
+    (navigation_suffix (simple_identifier) @function.call)))
 ((navigation_expression
    (simple_identifier) @type) ; SomeType.method(): highlight SomeType as a type
    (#lua-match? @type "^[A-Z]"))

@@ -59,7 +59,7 @@
 )
 ;;; expr_function_call
 (expr_function_call
-  name: (computed_function_name) @function 
+  name: (computed_function_name) @function.call 
 ) 
 
 (expr_function_call

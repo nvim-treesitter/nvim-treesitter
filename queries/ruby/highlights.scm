@@ -70,7 +70,7 @@
    method: [
             (identifier)
             (constant)
-            ] @function
+            ] @function.call
    )
 
 (program
