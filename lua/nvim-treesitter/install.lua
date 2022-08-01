@@ -490,11 +490,36 @@ function M.uninstall(...)
       end
 
       local parser_lib = utils.join_path(install_dir, lang) .. ".so"
-
-      local command_list = {
-        shell.select_rm_file_cmd(parser_lib, "Uninstalling parser for " .. lang),
-      }
-      M.iter_cmd(command_list, 1, lang, "Treesitter parser for " .. lang .. " has been uninstalled")
+      local all_parsers = vim.api.nvim_get_runtime_file("parser/" .. lang .. ".so", true)
+      if vim.fn.filereadable(parser_lib) == 1 then
+        local command_list = {
+          shell.select_rm_file_cmd(parser_lib, "Uninstalling parser for " .. lang),
+          {
+            cmd = function()
+              local all_parsers_after_deletion = vim.api.nvim_get_runtime_file("parser/" .. lang .. ".so", true)
+              if #all_parsers_after_deletion > 0 then
+                vim.notify(
+                  "Tried to uninstall parser for "
+                    .. lang
+                    .. "! But the parser is still installed (not by nvim-treesitter)."
+                    .. " Please delete the following files manually: "
+                    .. table.concat(all_parsers_after_deletion, ", "),
+                  vim.log.levels.ERROR
+                )
+              end
+            end,
+          },
+        }
+        M.iter_cmd(command_list, 1, lang, "Treesitter parser for " .. lang .. " has been uninstalled")
+      elseif #all_parsers > 0 then
+        vim.notify(
+          "Parser for "
+            .. lang
+            .. " is installed! But not by nvim-treesitter! Please manually remove the following files: "
+            .. table.concat(all_parsers, ", "),
+          vim.log.levels.ERROR
+        )
+      end
     end
   end
 end
