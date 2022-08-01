@@ -489,6 +489,16 @@ function M.uninstall(...)
         return api.nvim_err_writeln(err)
       end
 
+      if vim.tbl_contains(configs.get_ensure_installed_parsers(), lang) then
+        vim.notify(
+          "Uninstalling "
+            .. lang
+            .. '. But the parser is still configured in "ensure_installed" setting of nvim-treesitter.'
+            .. " Please consider updating your config!",
+          vim.log.levels.ERROR
+        )
+      end
+
       local parser_lib = utils.join_path(install_dir, lang) .. ".so"
       local all_parsers = vim.api.nvim_get_runtime_file("parser/" .. lang .. ".so", true)
       if vim.fn.filereadable(parser_lib) == 1 then
