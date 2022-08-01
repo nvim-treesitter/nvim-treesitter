@@ -30,7 +30,7 @@ jobs:
 
       - name: Update parsers
         env:
-          SKIP_LOCKFILE_UPDATE_FOR_LANGS: verilog,gleam,nix,dart
+          SKIP_LOCKFILE_UPDATE_FOR_LANGS: verilog,gleam,nix
         run: |
           ./nvim.appimage --headless -c "luafile ./scripts/write-lockfile.lua" -c "q"
           # Pretty print
