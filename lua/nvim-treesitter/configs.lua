@@ -401,6 +401,7 @@ function M.setup(user_data)
   end
 
   config.modules.ensure_installed = nil
+  config.ensure_installed = ensure_installed
 
   recurse_modules(function(_, _, new_path)
     local data = utils.get_at_path(config.modules, new_path)
@@ -576,6 +577,10 @@ end
 
 function M.get_ignored_parser_installs()
   return config.ignore_install or {}
+end
+
+function M.get_ensure_installed_parsers()
+  return config.ensure_installed or {}
 end
 
 return M
