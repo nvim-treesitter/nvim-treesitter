@@ -566,7 +566,7 @@ function M.get_parser_install_dir(folder_name)
   )
 end
 
-function M.get_parser_info_dir(parser_install_dir)
+function M.get_parser_info_dir()
   return M.get_parser_install_dir "parser-info"
 end
 
