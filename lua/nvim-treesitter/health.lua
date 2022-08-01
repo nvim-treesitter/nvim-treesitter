@@ -128,7 +128,7 @@ function M.check()
           table.insert(error_collection, { parser_name, query_group, err })
         end
       end
-      table.insert(parser_installation, out)
+      table.insert(parser_installation, vim.fn.trim(out, " ", 2))
     end
   end
   local legend = [[
