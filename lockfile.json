@@ -257,6 +257,9 @@
   "r": {
     "revision": "205c2877af33a814386ff275031f88400a011397"
   },
+  "racket": {
+    "revision": "4bf0e8d87114150ea372107c6f8c47dd1a67c3ed"
+  },
   "rasi": {
     "revision": "12391343979463a2484e6353e5afb6dcb8c31e8b"
   },
