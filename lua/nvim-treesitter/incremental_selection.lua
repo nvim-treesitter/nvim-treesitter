@@ -136,12 +136,8 @@ function M.attach(bufnr)
     else
       mode = "x"
     end
-    vim.keymap.set(
-      mode,
-      mapping,
-      M[funcname],
-      { buffer = bufnr, silent = true, noremap = true, desc = FUNCTION_DESCRIPTIONS[funcname] }
-    )
+    local cmd = string.format(":lua require'nvim-treesitter.incremental_selection'.%s()<CR>", funcname)
+    api.nvim_buf_set_keymap(bufnr, mode, mapping, cmd, { silent = true, noremap = true })
   end
 end
 
@@ -149,9 +145,9 @@ function M.detach(bufnr)
   local config = configs.get_module "incremental_selection"
   for f, mapping in pairs(config.keymaps) do
     if f == "init_selection" then
-      vim.keymap.del("n", mapping, { buffer = bufnr })
+      api.nvim_buf_del_keymap(bufnr, "n", mapping)
     else
-      vim.keymap.del("x", mapping, { buffer = bufnr })
+      api.nvim_buf_del_keymap(bufnr, "x", mapping)
     end
   end
 end
