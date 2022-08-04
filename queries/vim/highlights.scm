@@ -34,7 +34,7 @@
 
 ;; Function related
 (function_declaration name: (_) @function)
-(call_expression function: (identifier) @function)
+(call_expression function: (identifier) @function.call)
 (parameters (identifier) @parameter)
 (default_parameter (identifier) @parameter)
 
@@ -52,6 +52,7 @@
 [
   "let"
   "unlet"
+  "const"
   "call"
   "execute"
   "normal"

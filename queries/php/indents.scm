@@ -16,6 +16,8 @@
 
 [
   (comment)
-] @ignore
+] @auto
 
 (compound_statement "}" @indent_end)
+
+(ERROR) @auto

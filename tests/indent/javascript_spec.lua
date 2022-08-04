@@ -25,6 +25,8 @@ describe("indent JavaScript:", function()
       run:new_line("ecma/binary_expression.js", { on_line = info[1], text = "//", indent = info[2] }, info[3], info[4])
     end
 
+    run:new_line("ecma/new-line-after-class.js", { on_line = 2, text = "", indent = 0 })
+
     for _, info in ipairs {
       { 4, 2 },
       { 6, 0 },

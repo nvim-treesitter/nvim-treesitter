@@ -187,7 +187,7 @@ function M.select_download_commands(repo, project_name, cache_folder, revision, 
       M.select_install_rm_cmd(cache_folder, project_name .. "-tmp"),
       {
         cmd = "curl",
-        info = "Downloading...",
+        info = "Downloading " .. project_name .. "...",
         err = "Error during download, please verify your internet connection",
         opts = {
           args = {
@@ -204,7 +204,7 @@ function M.select_download_commands(repo, project_name, cache_folder, revision, 
       M.select_mkdir_cmd(project_name .. "-tmp", cache_folder, "Creating temporary directory"),
       {
         cmd = "tar",
-        info = "Extracting...",
+        info = "Extracting " .. project_name .. "...",
         err = "Error during tarball extraction.",
         opts = {
           args = {
@@ -231,7 +231,7 @@ function M.select_download_commands(repo, project_name, cache_folder, revision, 
     return {
       {
         cmd = "git",
-        info = "Downloading...",
+        info = "Downloading " .. project_name .. "...",
         err = clone_error,
         opts = {
           args = {

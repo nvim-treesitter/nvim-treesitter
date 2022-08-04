@@ -66,21 +66,21 @@
 
 (call_expression
   function: (qualified_identifier
-              name: (identifier) @function))
+              name: (identifier) @function.call))
 (call_expression
   function: (qualified_identifier
               name: (qualified_identifier
-                      name: (identifier) @function)))
+                      name: (identifier) @function.call)))
 (call_expression
   function:
       (qualified_identifier
         name: (qualified_identifier
               name: (qualified_identifier
-                      name: (identifier) @function))))
+                      name: (identifier) @function.call))))
 
 (call_expression
   function: (field_expression
-              field: (field_identifier) @function))
+              field: (field_identifier) @function.call))
 
 ((call_expression
   function: (identifier) @constructor)
@@ -174,11 +174,8 @@
  ;"xor_eq"
 ] @keyword.operator
 
-[
-  "<=>"
-  "::"
-] @operator
+"<=>" @operator
 
-(attribute_declaration) @attribute
+"::" @punctuation.delimiter
 
 (literal_suffix) @operator
