@@ -60,7 +60,7 @@
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
   "elixir": {
-    "revision": "5d0c1bfcdf8aaad225525acad930a972b319a675"
+    "revision": "05e3631c6a0701c1fa518b0fee7be95a2ceef5e2"
   },
   "elm": {
     "revision": "0aecfbf69f0c9bcdfada0f6f2c5398235c23949f"
@@ -216,7 +216,7 @@
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
   },
   "org": {
-    "revision": "bc8a040492b56754a35b3b00a3052fdb7ba12969"
+    "revision": "a2c1946d78fa8529bb4cfedd598fd6dbce5c79a7"
   },
   "pascal": {
     "revision": "2fd40f477d3e2794af152618ccfac8d92eb72a66"
@@ -300,7 +300,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "b0638b92203828e203b18b42cf04632cfc801236"
+    "revision": "ecde173d5f57919ba768a4f2c9a8ee1e217f32a8"
   },
   "supercollider": {
     "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
