@@ -14,11 +14,12 @@
 ] @indent
 
 [
-  "case"
   "}"
 ] @branch
 
 (const_declaration ")" @branch)
+(import_spec_list ")" @branch)
+(var_declaration ")" @branch)
 
 [
  "}"
