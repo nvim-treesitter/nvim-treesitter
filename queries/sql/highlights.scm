@@ -1,9 +1,8 @@
-(function_call
-  (invocation
-    name: (identifier) @function.call
-    parameter: [(field)]? @parameter))
+(invocation
+  name: (identifier) @function.call
+  parameter: [(field)]? @parameter)
 
-(function_call
+(count
   name: (identifier) @function.call
   parameter: [(field)]? @parameter)
 
