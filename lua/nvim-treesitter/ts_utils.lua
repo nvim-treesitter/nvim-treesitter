@@ -6,7 +6,7 @@ local utils = require "nvim-treesitter.utils"
 local M = {}
 
 local function get_node_text(node, bufnr)
-  local bufnr = bufnr or api.nvim_get_current_buf()
+  bufnr = bufnr or api.nvim_get_current_buf()
   if not node then
     return {}
   end
@@ -16,6 +16,9 @@ local function get_node_text(node, bufnr)
 
   if start_row ~= end_row then
     local lines = api.nvim_buf_get_lines(bufnr, start_row, end_row + 1, false)
+    if next(lines) == nil then
+      return {}
+    end
     lines[1] = string.sub(lines[1], start_col + 1)
     -- end_row might be just after the last line. In this case the last line is not truncated.
     if #lines == end_row - start_row + 1 then
