@@ -158,6 +158,10 @@ daily use yet.
 
 We are looking for maintainers to add more parsers and to write query files for their languages. Check our [tracking issue](https://github.com/nvim-treesitter/nvim-treesitter/issues/2282) for open language requests.
 
+For related information on the supported languages, including related plugins, see [this wiki page](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Supported-Languages-Information).
+
+<details><summary><strong>Click to see supported languages:</strong></summary>
+
 <!--This section of the README is automatically updated by a CI job-->
 <!--parserinfo-->
 - [x] [astro](https://github.com/virchau13/tree-sitter-astro) (maintained by @virchau13)
@@ -282,8 +286,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [yang](https://github.com/Hubro/tree-sitter-yang) (maintained by @Hubro)
 - [x] [zig](https://github.com/maxxnino/tree-sitter-zig) (maintained by @maxxnino)
 <!--parserinfo-->
-
-For related information on the supported languages, including related plugins, see [this wiki page](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Supported-Languages-Information).
+</details>
 
 # Available modules
 
