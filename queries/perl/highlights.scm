@@ -89,9 +89,9 @@
 (pod_statement) @text
 
 (method_invocation
-  function_name: (identifier) @method)
+  function_name: (identifier) @method.call)
 (call_expression
-  function_name: (identifier) @function)
+  function_name: (identifier) @function.call)
 
 ;; ----------
 

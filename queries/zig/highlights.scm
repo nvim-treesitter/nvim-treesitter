@@ -51,7 +51,7 @@ parameter: (IDENTIFIER) @parameter
 [
   function_call: (IDENTIFIER)
   function: (IDENTIFIER)
-] @function
+] @function.call
 
 exception: "!" @exception
 

@@ -6,7 +6,7 @@ local utils = require "nvim-treesitter.utils"
 local M = {}
 
 local function get_node_text(node, bufnr)
-  local bufnr = bufnr or api.nvim_get_current_buf()
+  bufnr = bufnr or api.nvim_get_current_buf()
   if not node then
     return {}
   end
@@ -16,6 +16,9 @@ local function get_node_text(node, bufnr)
 
   if start_row ~= end_row then
     local lines = api.nvim_buf_get_lines(bufnr, start_row, end_row + 1, false)
+    if next(lines) == nil then
+      return {}
+    end
     lines[1] = string.sub(lines[1], start_col + 1)
     -- end_row might be just after the last line. In this case the last line is not truncated.
     if #lines == end_row - start_row + 1 then
@@ -259,14 +262,14 @@ function M.update_selection(buf, node, selection_mode)
   selection_mode = selection_mode or "charwise"
   local start_row, start_col, end_row, end_col = M.get_vim_range({ M.get_node_range(node) }, buf)
 
-  vim.fn.setpos(".", { buf, start_row, start_col, 0 })
-
   -- Start visual selection in appropriate mode
   local v_table = { charwise = "v", linewise = "V", blockwise = "<C-v>" }
   ---- Call to `nvim_replace_termcodes()` is needed for sending appropriate
   ---- command to enter blockwise mode
   local mode_string = vim.api.nvim_replace_termcodes(v_table[selection_mode] or selection_mode, true, true, true)
   vim.cmd("normal! " .. mode_string)
+  vim.fn.setpos(".", { buf, start_row, start_col, 0 })
+  vim.cmd "normal! o"
   vim.fn.setpos(".", { buf, end_row, end_col, 0 })
 end
 

@@ -1,7 +1,7 @@
 ;; General syntax
 (ERROR) @error
 
-(generic_command) @function
+(command_name) @function
 (caption
   command: _ @function)
 
@@ -129,7 +129,6 @@
 (author_declaration
   command: _ @namespace
   authors: (curly_group_author_list
-             ((command_name)? @function)
              ((author)+ @text.title)))
 
 (chapter

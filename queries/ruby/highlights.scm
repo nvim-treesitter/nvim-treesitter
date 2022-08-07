@@ -14,9 +14,11 @@
  "ensure"
  "module"
  "next"
+ "redo"
  "rescue"
  "retry"
  "then"
+ "undef"
  ] @keyword
 
 [
@@ -68,7 +70,7 @@
    method: [
             (identifier)
             (constant)
-            ] @function
+            ] @function.call
    )
 
 (program

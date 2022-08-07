@@ -7,7 +7,7 @@ local shell = require "nvim-treesitter.shell_command_selectors"
 local install = require "nvim-treesitter.install"
 local utils = require "nvim-treesitter.utils"
 
-local health = require "health"
+local health = vim.health or require "health"
 
 local M = {}
 
@@ -128,7 +128,7 @@ function M.check()
           table.insert(error_collection, { parser_name, query_group, err })
         end
       end
-      table.insert(parser_installation, out)
+      table.insert(parser_installation, vim.fn.trim(out, " ", 2))
     end
   end
   local legend = [[

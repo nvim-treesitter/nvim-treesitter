@@ -116,6 +116,7 @@
 
 (exp_infix (variable) @operator)  ; consider infix functions as operators
 
+(exp_infix (exp_name) @function (#set! "priority" 101))
 (exp_apply . (exp_name (variable) @function))
 (exp_apply . (exp_name (qualified_variable (variable) @function)))
 

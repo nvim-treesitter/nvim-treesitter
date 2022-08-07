@@ -80,21 +80,21 @@
 
 (call_expression
   function: (qualified_identifier
-              name: (identifier) @function))
+              name: (identifier) @function.call))
 (call_expression
   function: (qualified_identifier
               name: (qualified_identifier
-                      name: (identifier) @function)))
+                      name: (identifier) @function.call)))
 (call_expression
   function:
       (qualified_identifier
         name: (qualified_identifier
               name: (qualified_identifier
-                      name: (identifier) @function))))
+                      name: (identifier) @function.call))))
 
 (call_expression
   function: (field_expression
-              field: (field_identifier) @function))
+              field: (field_identifier) @function.call))
 
 ((call_expression
   function: (identifier) @constructor)
@@ -191,7 +191,5 @@
 "<=>" @operator
 
 "::" @punctuation.delimiter
-
-(attribute_declaration) @attribute
 
 (literal_suffix) @operator
