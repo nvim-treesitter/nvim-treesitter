@@ -102,7 +102,7 @@
     "revision": "a23d28de811976f3ca310df735fe09a5d2de16ab"
   },
   "glsl": {
-    "revision": "4a5230b3233931f274a1a3036dd3d7e67cfd36c6"
+    "revision": "e594c182d9d55170ba01678e1fc534166a38e171"
   },
   "go": {
     "revision": "aeb2f33b366fd78d5789ff104956ce23508b85db"
@@ -312,7 +312,7 @@
     "revision": "52e122ae68b316d3aa960a0a422d3645ba717f42"
   },
   "swift": {
-    "revision": "33948c72fa206d2040cfe0b213d29d5739090ac6"
+    "revision": "13becc63c8e97d6205cb0c5302a80026e4428f93"
   },
   "teal": {
     "revision": "1ae8c68e90523b26b93af56feb7868fe4214e2b2"
@@ -339,7 +339,7 @@
     "revision": "49e82b1bce36d6046df911901684cd66b5345d58"
   },
   "v": {
-    "revision": "79e749fa285091062aaff1b78fd4714831fcfc98"
+    "revision": "f890f3562b6b1386e0e6c557184af355c350d3c3"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
