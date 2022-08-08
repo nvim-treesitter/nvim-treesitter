@@ -5,7 +5,7 @@ local run = Runner:new(it, "tests/indent/zig", {
   tabstop = 4,
   shiftwidth = 4,
   softtabstop = 4,
-  expandtab = false,
+  expandtab = true,
 })
 
 describe("indent Zig:", function()
