@@ -973,7 +973,7 @@ list.llvm = {
 
 list.http = {
   install_info = {
-    url = "https://github.com/NTBBloodbath/tree-sitter-http",
+    url = "https://github.com/rest-nvim/tree-sitter-http",
     branch = "main",
     files = { "src/parser.c" },
     generate_requires_npm = true,
