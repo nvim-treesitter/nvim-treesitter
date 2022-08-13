@@ -18,6 +18,7 @@
   (begin)
   (unless)
   (assignment)
+  (parenthesized_statements)
 ] @indent
 
 [
