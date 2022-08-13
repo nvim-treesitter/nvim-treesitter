@@ -324,6 +324,16 @@ list.html = {
   maintainers = { "@TravonteD" },
 }
 
+list.xml = {
+  install_info = {
+    url = "https://github.com/dorgnarg/tree-sitter-xml",
+    files = { "src/parser.c" },
+    branch = "main",
+    requires_generate_from_grammar = true,
+  },
+  maintainers = { "theHamsta" },
+}
+
 list.julia = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-julia",
