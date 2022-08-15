@@ -33,6 +33,8 @@
   "typealias"
   "struct"
   "class"
+  "actor"
+  "nonisolated"
   "enum"
   "protocol"
   "extension"
