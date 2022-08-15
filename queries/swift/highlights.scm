@@ -40,6 +40,9 @@
   "extension"
   "indirect"
   "some"
+  "override"
+  "convenience"
+  "required"
 ] @keyword
 
 [
