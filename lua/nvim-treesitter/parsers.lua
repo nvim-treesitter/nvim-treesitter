@@ -1146,6 +1146,16 @@ list.tiger = {
   maintainers = { "@ambroisie" },
 }
 
+list.gitignore = {
+  install_info = {
+    url = "https://github.com/shunsambongi/tree-sitter-gitignore",
+    files = { "src/parser.c" },
+    branch = "main",
+    requires_generate_from_grammar = true,
+  },
+  maintainers = { "@theHamsta" },
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
