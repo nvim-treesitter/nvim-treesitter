@@ -123,7 +123,7 @@
     "revision": "b7bd6928532ada34dddb1dece4a158ab62c6e783"
   },
   "haskell": {
-    "revision": "cf394604ae2ec2a5e65b1afbc7dea21258ede403"
+    "revision": "972156b37ee6f4a8b51a6f67f76aecc6fa13714c"
   },
   "hcl": {
     "revision": "45ce22c16ec924e34517cf785e23c07952e45893"
@@ -147,7 +147,7 @@
     "revision": "bfddd16b1cf78e0042fd1f6846a179f76a254e20"
   },
   "java": {
-    "revision": "ac14b4b1884102839455d32543ab6d53ae089ab7"
+    "revision": "72a9af08f4e501fad1252cc62f71469f247229f1"
   },
   "javascript": {
     "revision": "35565430231d0c15b748b0c9de36b247d8780f75"
@@ -276,7 +276,7 @@
     "revision": "d4b6c33ec15a4c22d0003dd37a5b20baa352b843"
   },
   "ruby": {
-    "revision": "e75d04404c9dd71ad68850d5c672b226d5e694f3"
+    "revision": "4c600a463d97e36a0ca5ac57e11f3ac8c297a0fa"
   },
   "rust": {
     "revision": "41e23b454f503e6fe63ec4b6d9f7f2cf7788ab8e"
