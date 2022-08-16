@@ -1,4 +1,7 @@
 {
+  "agda": {
+    "revision": "80ea622cf952a0059e168e5c92a798b2f1925652"
+  },
   "astro": {
     "revision": "ec0f9f945a08372952403f736a1f783d1679b0ac"
   },
