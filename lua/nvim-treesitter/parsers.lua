@@ -429,7 +429,7 @@ list.ocaml_interface = {
     location = "interface",
   },
   maintainers = { "@undu" },
-  filetype = "ocamlinterface",
+  filetype = "ocaml.interface",
 }
 
 list.ocamllex = {
