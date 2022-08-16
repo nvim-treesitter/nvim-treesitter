@@ -18,7 +18,7 @@ local filetype_to_parsername = {
   pandoc = "markdown",
   rmd = "markdown",
   cs = "c_sharp",
-  ["ocaml.interface"] = "ocaml_interface"
+  ["ocaml.interface"] = "ocamlinterface",
 }
 
 local list = setmetatable({}, {
