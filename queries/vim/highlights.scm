@@ -25,6 +25,8 @@
   "in"
   "while"
   "endwhile"
+  "break"
+  "continue"
 ] @repeat
 
 [
@@ -34,7 +36,7 @@
 
 ;; Function related
 (function_declaration name: (_) @function)
-(call_expression function: (identifier) @function.call)
+(call_expression function: (identifier) @function)
 (parameters (identifier) @parameter)
 (default_parameter (identifier) @parameter)
 
@@ -149,6 +151,8 @@
 (pattern) @string.special
 (pattern_multi) @string.regex
 (filename) @string
+(heredoc (body) @string)
+((heredoc (parameter) @keyword))
 ((scoped_identifier
   (scope) @_scope . (identifier) @boolean)
  (#eq? @_scope "v:")
