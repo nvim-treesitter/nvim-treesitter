@@ -192,6 +192,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [ ] [fortran](https://github.com/stadelmanma/tree-sitter-fortran)
 - [x] [fusion](https://gitlab.com/jirgn/tree-sitter-fusion.git) (maintained by @jirgn)
 - [x] [Godot (gdscript)](https://github.com/PrestonKnopp/tree-sitter-gdscript) (maintained by @Shatur95)
+- [x] [gitignore](https://github.com/shunsambongi/tree-sitter-gitignore) (maintained by @theHamsta)
 - [x] [gleam](https://github.com/J3RN/tree-sitter-gleam) (maintained by @connorlay)
 - [x] [Glimmer and Ember](https://github.com/alexlafroscia/tree-sitter-glimmer) (maintained by @alexlafroscia)
 - [x] [glsl](https://github.com/theHamsta/tree-sitter-glsl) (maintained by @theHamsta)
