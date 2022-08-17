@@ -98,6 +98,9 @@
   "gdscript": {
     "revision": "2a6abdaa47fcb91397e09a97c7433fd995ea46c6"
   },
+  "gitignore": {
+    "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
+  },
   "gleam": {
     "revision": "cfcbca3f8f734773878e00d7bfcedea98eb10be2"
   },
@@ -351,7 +354,7 @@
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
   },
   "vim": {
-    "revision": "6aad077158d10084f17746bc43f0e56634a3e1c9"
+    "revision": "2dbe41988636062fe5c00aefe75a47a4d849d9d2"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
