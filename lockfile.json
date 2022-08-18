@@ -252,7 +252,7 @@
     "revision": "de221eccf9a221f5b85474a553474a69b4b5784d"
   },
   "ql": {
-    "revision": "4b8078c7fdcce9d4ca06ce3cfec3a61e8c3f4555"
+    "revision": "bd087020f0d8c183080ca615d38de0ec827aeeaf"
   },
   "qmljs": {
     "revision": "3bcf9c4d0911e74307c6d704c1ea242a1e4a2f94"
@@ -273,7 +273,7 @@
     "revision": "e1cfca3c79896ff79842f057ea13e529b66af636"
   },
   "rego": {
-    "revision": "6bf5f8878bef2fb760508bff1ce0262a31925018"
+    "revision": "6d70da3a998fd0081efc5d1019c71e74cc1568e9"
   },
   "rnoweb": {
     "revision": "a2562aa0c21fdf4954a30904495119b328b14301"
@@ -354,7 +354,7 @@
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
   },
   "vim": {
-    "revision": "9f674e9178ece2a3827328a4e05568eb861c0d01"
+    "revision": "a546732c8e4e5891f921d06c82636704b13314a5"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
