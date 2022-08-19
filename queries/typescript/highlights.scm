@@ -26,7 +26,7 @@
       ((import_specifier
           name: (identifier) @type)))))
 
-; punctuation
+;; punctuation
 
 (type_arguments
   "<" @punctuation.bracket
@@ -43,6 +43,8 @@
 
 (pair
   ":" @punctuation.delimiter)
+
+"?." @punctuation.delimiter
 
 (property_signature "?" @punctuation.special)
 (optional_parameter "?" @punctuation.special)
