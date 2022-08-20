@@ -143,6 +143,9 @@
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
+  "hlsl": {
+    "revision": "6ef2d3ea538262453fb9bcc778ae48bcc2d77175"
+  },
   "hocon": {
     "revision": "bb412e2633f4a3611a4e16efe58d917093bb4782"
   },
@@ -153,7 +156,7 @@
     "revision": "bfddd16b1cf78e0042fd1f6846a179f76a254e20"
   },
   "java": {
-    "revision": "72a9af08f4e501fad1252cc62f71469f247229f1"
+    "revision": "443275301e60538a1c6f7979ac20a1fda9792934"
   },
   "javascript": {
     "revision": "936d976a782e75395d9b1c8c7c7bf4ba6fe0d86b"
@@ -279,13 +282,13 @@
     "revision": "a2562aa0c21fdf4954a30904495119b328b14301"
   },
   "rst": {
-    "revision": "d4b6c33ec15a4c22d0003dd37a5b20baa352b843"
+    "revision": "3fc88d2097bc854ab6bf70c52b3c482849cf8e8f"
   },
   "ruby": {
     "revision": "4c600a463d97e36a0ca5ac57e11f3ac8c297a0fa"
   },
   "rust": {
-    "revision": "41e23b454f503e6fe63ec4b6d9f7f2cf7788ab8e"
+    "revision": "47b061c1e1ba3a7e9c2f450363a50e87de3f7c61"
   },
   "scala": {
     "revision": "140c96cf398693189d4e50f76d19ddfcd8a018f8"
@@ -345,7 +348,7 @@
     "revision": "49e82b1bce36d6046df911901684cd66b5345d58"
   },
   "v": {
-    "revision": "f890f3562b6b1386e0e6c557184af355c350d3c3"
+    "revision": "6a5fce498eefea10cc505c5d825d5de78899dc0f"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -354,7 +357,7 @@
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
   },
   "vim": {
-    "revision": "a546732c8e4e5891f921d06c82636704b13314a5"
+    "revision": "12fa4f38cdcbc2f8d8b8a8e3ad155b14c355496d"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
