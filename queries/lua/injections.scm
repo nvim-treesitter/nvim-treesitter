@@ -17,6 +17,6 @@
   (#eq? @_vimcmd_identifier "vim.treesitter.query.set_query"))
 
 ;; highlight string as query if starts with `;; query`
-((string ("string_content") @query) (#lua-match? @query "^%s*;;%s?query"))
+((string ("string_content") @query) (#lua-match? @query "^%s*;+%s?query"))
 
 (comment) @comment
