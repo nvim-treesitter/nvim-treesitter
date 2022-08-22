@@ -18,7 +18,7 @@
     "revision": "7175a6dd5fc1cee660dce6fe23f6043d75af424a"
   },
   "c_sharp": {
-    "revision": "9c494a503c8e2044bfffce57f70b480c01a82f03"
+    "revision": "00917d3ddf9635702f93b685ea5672dd96c256ba"
   },
   "clojure": {
     "revision": "087bac78c53fe1387756cd5b8e68a69b3f6d7244"
@@ -66,7 +66,7 @@
     "revision": "05e3631c6a0701c1fa518b0fee7be95a2ceef5e2"
   },
   "elm": {
-    "revision": "0aecfbf69f0c9bcdfada0f6f2c5398235c23949f"
+    "revision": "df4cb639c01b76bc9ac9cc66788709a6da20002c"
   },
   "elvish": {
     "revision": "e50787cadd3bc54f6d9c0704493a79078bb8a4e5"
@@ -84,7 +84,7 @@
     "revision": "517195970428aacca60891b050aa53eabf4ba78d"
   },
   "fish": {
-    "revision": "8a3571fc4a702b216ff918a08c9c5895df7ea06c"
+    "revision": "84436cf24c2b3176bfbb220922a0fdbd0141e406"
   },
   "foam": {
     "revision": "fdb7f14b885abfc4df57728c9b2a2f2ad24d3cb7"
@@ -153,7 +153,7 @@
     "revision": "29f53d8f4f2335e61bf6418ab8958dac3282077a"
   },
   "http": {
-    "revision": "bfddd16b1cf78e0042fd1f6846a179f76a254e20"
+    "revision": "30a9c1789d64429a830802cde5b1760ff1064312"
   },
   "java": {
     "revision": "443275301e60538a1c6f7979ac20a1fda9792934"
@@ -348,7 +348,7 @@
     "revision": "49e82b1bce36d6046df911901684cd66b5345d58"
   },
   "v": {
-    "revision": "6a5fce498eefea10cc505c5d825d5de78899dc0f"
+    "revision": "19d14b7a90f946c90e0fa416bc249ce084ec8cfa"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
