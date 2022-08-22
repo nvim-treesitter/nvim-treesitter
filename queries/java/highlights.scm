@@ -185,6 +185,7 @@
 "public"
 "requires"
 "sealed"
+"non-sealed"
 "static"
 "strictfp"
 "synchronized"
