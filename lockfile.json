@@ -18,7 +18,7 @@
     "revision": "7175a6dd5fc1cee660dce6fe23f6043d75af424a"
   },
   "c_sharp": {
-    "revision": "00917d3ddf9635702f93b685ea5672dd96c256ba"
+    "revision": "ad8e6980e9bf1882a324196229692febf332c4dd"
   },
   "clojure": {
     "revision": "087bac78c53fe1387756cd5b8e68a69b3f6d7244"
@@ -129,7 +129,7 @@
     "revision": "b7bd6928532ada34dddb1dece4a158ab62c6e783"
   },
   "haskell": {
-    "revision": "972156b37ee6f4a8b51a6f67f76aecc6fa13714c"
+    "revision": "1c89468614883e951db7d4ac05a56ec864f80bc1"
   },
   "hcl": {
     "revision": "45ce22c16ec924e34517cf785e23c07952e45893"
@@ -348,7 +348,7 @@
     "revision": "49e82b1bce36d6046df911901684cd66b5345d58"
   },
   "v": {
-    "revision": "19d14b7a90f946c90e0fa416bc249ce084ec8cfa"
+    "revision": "f986463402982f9874bd718b04f5e02e84d30235"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
