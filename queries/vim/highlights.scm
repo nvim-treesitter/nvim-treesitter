@@ -72,6 +72,7 @@
   "perl"
   "python"
   "highlight"
+  "command"
   "delcommand"
   "comclear"
   "colorscheme"
@@ -80,6 +81,16 @@
   "global"
   "runtime"
   "wincmd"
+  "cnext"
+  "cprevious"
+  "cNext"
+  "vertical"
+  "leftabove"
+  "aboveleft"
+  "rightbelow"
+  "belowright"
+  "topleft"
+  "botright"
 ] @keyword
 (map_statement cmd: _ @keyword)
 [ 
@@ -133,6 +144,13 @@
   "link"
   "clear"
 ] @keyword)
+
+;; Command command
+
+(command_attribute name: _ @property)
+(command_attribute
+  val: (behavior
+    (identifier)? @function) @constant)
 
 ;; Runtime command
 
