@@ -213,6 +213,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [http](https://github.com/rest-nvim/tree-sitter-http) (maintained by @NTBBloodbath)
 - [x] [java](https://github.com/tree-sitter/tree-sitter-java) (maintained by @p00f)
 - [x] [javascript](https://github.com/tree-sitter/tree-sitter-javascript) (maintained by @steelsojka)
+- [x] [javascriptflow](https://github.com/tree-sitter/tree-sitter-typescript) (maintained by @steelsojka) (see #3350)
 - [x] [jsdoc](https://github.com/tree-sitter/tree-sitter-jsdoc) (maintained by @steelsojka)
 - [x] [json](https://github.com/tree-sitter/tree-sitter-json) (maintained by @steelsojka)
 - [x] [json5](https://github.com/Joakker/tree-sitter-json5) (maintained by @Joakker)
