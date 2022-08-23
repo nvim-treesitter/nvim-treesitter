@@ -54,6 +54,17 @@ list.agda = {
   filetype = "agda",
   maintainers = { "@Decodetalkers" },
 }
+
+list.meson = {
+  install_info = {
+    url = "https://github.com/Decodetalkers/tree-sitter-meson",
+    branch = "master",
+    files = { "src/parser.c" },
+  },
+  filetype = "meson",
+  maintainers = { "@Decodetalkers" },
+}
+
 list.qmljs = {
   install_info = {
     url = "https://github.com/yuja/tree-sitter-qmljs",
