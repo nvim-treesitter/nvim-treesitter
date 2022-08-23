@@ -91,12 +91,10 @@
   "belowright"
   "topleft"
   "botright"
+  (unknown_command_name)
 ] @keyword
 (map_statement cmd: _ @keyword)
-[ 
-  (command_name)
-  (unknown_command_name)
-]@function.macro
+(command_name) @function.macro
 
 ;; Syntax command
 
