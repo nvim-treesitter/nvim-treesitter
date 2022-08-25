@@ -1,5 +1,14 @@
 (identifier) @type
-(keyword) @keyword
+
+[
+  "strict"
+  "graph"
+  "digraph"
+  "subgraph"
+  "node"
+  "edge"
+] @keyword
+
 (string_literal) @string
 (number_literal) @number
 
