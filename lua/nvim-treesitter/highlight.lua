@@ -6,116 +6,133 @@ local configs = require "nvim-treesitter.configs"
 
 local M = {}
 
-local hlmap = vim.treesitter.highlighter.hl_map
-
 -- nvim-treesitter Highlight Group Mappings
 -- Note: Some highlight groups may not be applied upstream, some may be experimental
+-- TODO(clason): deprecated and will be removed for Nvim 0.8
 
-hlmap["annotation"] = "TSAnnotation"
+local default_map = {
+  ["annotation"] = "TSAnnotation",
 
-hlmap["attribute"] = "TSAttribute"
+  ["attribute"] = "TSAttribute",
 
-hlmap["boolean"] = "TSBoolean"
+  ["boolean"] = "TSBoolean",
 
-hlmap["character"] = "TSCharacter"
-hlmap["character.special"] = "TSCharacterSpecial"
+  ["character"] = "TSCharacter",
+  ["character.special"] = "TSCharacterSpecial",
 
-hlmap["comment"] = "TSComment"
+  ["comment"] = "TSComment",
 
-hlmap["conditional"] = "TSConditional"
+  ["conditional"] = "TSConditional",
 
-hlmap["constant"] = "TSConstant"
-hlmap["constant.builtin"] = "TSConstBuiltin"
-hlmap["constant.macro"] = "TSConstMacro"
+  ["constant"] = "TSConstant",
+  ["constant.builtin"] = "TSConstBuiltin",
+  ["constant.macro"] = "TSConstMacro",
 
-hlmap["constructor"] = "TSConstructor"
+  ["constructor"] = "TSConstructor",
 
-hlmap["debug"] = "TSDebug"
-hlmap["define"] = "TSDefine"
+  ["debug"] = "TSDebug",
+  ["define"] = "TSDefine",
 
-hlmap["error"] = "TSError"
-hlmap["exception"] = "TSException"
+  ["error"] = "TSError",
+  ["exception"] = "TSException",
 
-hlmap["field"] = "TSField"
+  ["field"] = "TSField",
 
-hlmap["float"] = "TSFloat"
+  ["float"] = "TSFloat",
 
-hlmap["function"] = "TSFunction"
-hlmap["function.call"] = "TSFunctionCall"
-hlmap["function.builtin"] = "TSFuncBuiltin"
-hlmap["function.macro"] = "TSFuncMacro"
+  ["function"] = "TSFunction",
+  ["function.call"] = "TSFunctionCall",
+  ["function.builtin"] = "TSFuncBuiltin",
+  ["function.macro"] = "TSFuncMacro",
 
-hlmap["include"] = "TSInclude"
+  ["include"] = "TSInclude",
 
-hlmap["keyword"] = "TSKeyword"
-hlmap["keyword.function"] = "TSKeywordFunction"
-hlmap["keyword.operator"] = "TSKeywordOperator"
-hlmap["keyword.return"] = "TSKeywordReturn"
+  ["keyword"] = "TSKeyword",
+  ["keyword.function"] = "TSKeywordFunction",
+  ["keyword.operator"] = "TSKeywordOperator",
+  ["keyword.return"] = "TSKeywordReturn",
 
-hlmap["label"] = "TSLabel"
+  ["label"] = "TSLabel",
 
-hlmap["method"] = "TSMethod"
-hlmap["method.call"] = "TSMethodCall"
+  ["method"] = "TSMethod",
+  ["method.call"] = "TSMethodCall",
 
-hlmap["namespace"] = "TSNamespace"
+  ["namespace"] = "TSNamespace",
 
-hlmap["none"] = "TSNone"
-hlmap["number"] = "TSNumber"
+  ["none"] = "TSNone",
+  ["number"] = "TSNumber",
 
-hlmap["operator"] = "TSOperator"
+  ["operator"] = "TSOperator",
 
-hlmap["parameter"] = "TSParameter"
-hlmap["parameter.reference"] = "TSParameterReference"
+  ["parameter"] = "TSParameter",
+  ["parameter.reference"] = "TSParameterReference",
 
-hlmap["preproc"] = "TSPreProc"
+  ["preproc"] = "TSPreProc",
 
-hlmap["property"] = "TSProperty"
+  ["property"] = "TSProperty",
 
-hlmap["punctuation.delimiter"] = "TSPunctDelimiter"
-hlmap["punctuation.bracket"] = "TSPunctBracket"
-hlmap["punctuation.special"] = "TSPunctSpecial"
+  ["punctuation.delimiter"] = "TSPunctDelimiter",
+  ["punctuation.bracket"] = "TSPunctBracket",
+  ["punctuation.special"] = "TSPunctSpecial",
 
-hlmap["repeat"] = "TSRepeat"
+  ["repeat"] = "TSRepeat",
 
-hlmap["storageclass"] = "TSStorageClass"
+  ["storageclass"] = "TSStorageClass",
 
-hlmap["string"] = "TSString"
-hlmap["string.regex"] = "TSStringRegex"
-hlmap["string.escape"] = "TSStringEscape"
-hlmap["string.special"] = "TSStringSpecial"
+  ["string"] = "TSString",
+  ["string.regex"] = "TSStringRegex",
+  ["string.escape"] = "TSStringEscape",
+  ["string.special"] = "TSStringSpecial",
 
-hlmap["symbol"] = "TSSymbol"
+  ["symbol"] = "TSSymbol",
 
-hlmap["tag"] = "TSTag"
-hlmap["tag.attribute"] = "TSTagAttribute"
-hlmap["tag.delimiter"] = "TSTagDelimiter"
+  ["tag"] = "TSTag",
+  ["tag.attribute"] = "TSTagAttribute",
+  ["tag.delimiter"] = "TSTagDelimiter",
 
-hlmap["text"] = "TSText"
-hlmap["text.strong"] = "TSStrong"
-hlmap["text.emphasis"] = "TSEmphasis"
-hlmap["text.underline"] = "TSUnderline"
-hlmap["text.strike"] = "TSStrike"
-hlmap["text.title"] = "TSTitle"
-hlmap["text.literal"] = "TSLiteral"
-hlmap["text.uri"] = "TSURI"
-hlmap["text.math"] = "TSMath"
-hlmap["text.reference"] = "TSTextReference"
-hlmap["text.environment"] = "TSEnvironment"
-hlmap["text.environment.name"] = "TSEnvironmentName"
+  ["text"] = "TSText",
+  ["text.strong"] = "TSStrong",
+  ["text.emphasis"] = "TSEmphasis",
+  ["text.underline"] = "TSUnderline",
+  ["text.strike"] = "TSStrike",
+  ["text.title"] = "TSTitle",
+  ["text.literal"] = "TSLiteral",
+  ["text.uri"] = "TSURI",
+  ["text.math"] = "TSMath",
+  ["text.reference"] = "TSTextReference",
+  ["text.environment"] = "TSEnvironment",
+  ["text.environment.name"] = "TSEnvironmentName",
 
-hlmap["text.note"] = "TSNote"
-hlmap["text.warning"] = "TSWarning"
-hlmap["text.danger"] = "TSDanger"
+  ["text.note"] = "TSNote",
+  ["text.warning"] = "TSWarning",
+  ["text.danger"] = "TSDanger",
 
-hlmap["todo"] = "TSTodo"
+  ["todo"] = "TSTodo",
 
-hlmap["type"] = "TSType"
-hlmap["type.builtin"] = "TSTypeBuiltin"
-hlmap["type.qualifier"] = "TSTypeQualifier"
-hlmap["type.definition"] = "TSTypeDefinition"
+  ["type"] = "TSType",
+  ["type.builtin"] = "TSTypeBuiltin",
+  ["type.qualifier"] = "TSTypeQualifier",
+  ["type.definition"] = "TSTypeDefinition",
 
-hlmap["variable"] = "TSVariable"
-hlmap["variable.builtin"] = "TSVariableBuiltin"
+  ["variable"] = "TSVariable",
+  ["variable.builtin"] = "TSVariableBuiltin",
+}
+
+-- compatibility shim
+local link_captures
+if ts.highlighter.hl_map then
+  link_captures = function(capture, hlgroup)
+    ts.highlighter.hl_map[capture] = hlgroup
+  end
+elseif not vim.g.skip_ts_default_groups then
+  link_captures = function(capture, hlgroup)
+    api.nvim_set_hl(0, hlgroup, { link = "@" .. capture })
+  end
+end
+
+for capture, hlgroup in pairs(default_map) do
+  link_captures(capture, hlgroup)
+end
 
 local function should_enable_vim_regex(config, lang)
   local additional_hl = config.additional_vim_regex_highlighting
@@ -152,9 +169,10 @@ function M.detach(bufnr)
   enable_syntax(bufnr)
 end
 
+-- TODO(clason): remove obsolete function after bump to 0.8
 function M.set_custom_captures(captures)
-  for k, v in pairs(captures) do
-    hlmap[k] = v
+  for capture, hlgroup in pairs(captures) do
+    link_captures(capture, hlgroup)
   end
 end
 
