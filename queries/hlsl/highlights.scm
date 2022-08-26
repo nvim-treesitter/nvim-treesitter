@@ -9,10 +9,21 @@
   "groupshared"
   "discard"
   "cbuffer"
-  "nointerpolation"
   "row_major"
   "column_major"
   "globallycoherent"
+  "centroid"
+  "noperspective"
+  "nointerpolation"
+  "sample"
+  "linear"
+  "snorm"
+  "unorm"
+  "point"
+  "line"
+  "triangleadj"
+  "lineadj"
+  "triangle"
 ] @keyword
 
 (
