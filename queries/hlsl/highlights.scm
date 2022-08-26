@@ -12,6 +12,7 @@
   "nointerpolation"
   "row_major"
   "column_major"
+  "globallycoherent"
 ] @keyword
 
 (
