@@ -92,6 +92,12 @@
   "topleft"
   "botright"
   (unknown_command_name)
+  "edit"
+  "enew"
+  "find"
+  "ex"
+  "visual"
+  "view"
 ] @keyword
 (map_statement cmd: _ @keyword)
 (command_name) @function.macro
@@ -145,10 +151,16 @@
 
 ;; Command command
 
-(command_attribute name: _ @property)
 (command_attribute
+  name: _ @property
   val: (behavior
-    (identifier)? @function) @constant)
+    name: _ @constant
+    val: (identifier)? @function)?)
+
+;; Edit command
+(plus_plus_opt
+  val: _? @constant) @property
+(plus_cmd "+" @property) @property
 
 ;; Runtime command
 
@@ -203,6 +215,7 @@
   "/="
   "%="
   ".="
+  "..="
 ] @operator
 
 ; Some characters have different meanings based on the context
