@@ -126,7 +126,7 @@ if ts.highlighter.hl_map then
   end
 elseif not vim.g.skip_ts_default_groups then
   link_captures = function(capture, hlgroup)
-    api.nvim_set_hl(0, hlgroup, { link = "@" .. capture })
+    api.nvim_set_hl(0, "@" .. capture, { link = hlgroup })
   end
 end
 
