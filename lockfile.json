@@ -206,6 +206,9 @@
   "markdown_inline": {
     "revision": "e375ba95ff9a12418f9b9e7c190f549d08b5380a"
   },
+  "meson": {
+    "revision": "13d86d307b421a48d787ce4148371816356de040"
+  },
   "ninja": {
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
