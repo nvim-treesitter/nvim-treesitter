@@ -56,3 +56,13 @@
  (#eq? @_name "hsx")
  ((quasiquote_body) @html)
 )
+
+;; -----------------------------------------------------------------------------
+;; Inline JSON from aeson
+
+(quasiquote
+  (quoter) @_name
+  (#eq? @_quoter "aesonQQ")
+  ((quasiquote_body) @json)
+)
+
