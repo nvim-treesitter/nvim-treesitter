@@ -20,15 +20,16 @@
 ; Set
 (SetN) @type.builtin
 
+(expr . (atom) @function)
+
+((atom) @boolean
+  (#any-of? @boolean "true" "false" "True" "False"))
 
 ;; Imports and Module Declarations
 
 "import"  @include
 
 (module_name) @namespace
-
-
-
 
 ;; Pragmas and comments
 
