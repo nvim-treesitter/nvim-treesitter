@@ -8,7 +8,7 @@ local run = Runner:new(it, "tests/indent/ruby", {
 describe("indent Ruby:", function()
   describe("whole file:", function()
     run:whole_file(".", {
-      expected_failures = {},
+      expected_failures = { "./period-issue-3364.rb" },
     })
   end)
 
