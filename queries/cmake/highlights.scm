@@ -123,3 +123,4 @@
   (#match? @function.builtin "\\c^(add_custom_command)$")
 )
 
+(escape_sequence) @string.escape
