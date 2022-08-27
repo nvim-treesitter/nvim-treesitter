@@ -144,7 +144,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "d5e2ee6953a51bac0c8a5e1e4a8d04855db624c2"
+    "revision": "e869724b47fb573cadb54d21cf0df50c3dac0945"
   },
   "hocon": {
     "revision": "bb412e2633f4a3611a4e16efe58d917093bb4782"
@@ -285,7 +285,7 @@
     "revision": "a2562aa0c21fdf4954a30904495119b328b14301"
   },
   "rst": {
-    "revision": "3fc88d2097bc854ab6bf70c52b3c482849cf8e8f"
+    "revision": "25e6328872ac3a764ba8b926aea12719741103f1"
   },
   "ruby": {
     "revision": "ad1043283b1f9daf4aad381b6a81f18a5a27fe7e"
