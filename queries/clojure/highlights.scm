@@ -281,22 +281,22 @@
 
 ;; >> Context based highlighting
 
-; def-likes
-; Correctly highlight docstrings
-(list_lit
- .
- (sym_lit) @_keyword ; Don't really want to highlight twice
- (#any-of? @keyword
-   "def" "defonce" "defrecord" "defmacro" "definline"
-   "defmulti" "defmethod" "defstruct" "defprotocol"
-   "deftype")
- .
- (sym_lit)
- .
- ;; TODO: Add @comment highlight
- (str_lit)?
- .
- (_))
+;; def-likes
+;; Correctly highlight docstrings
+;(list_lit
+ ;.
+ ;(sym_lit) @_keyword ; Don't really want to highlight twice
+ ;(#any-of? @_keyword
+   ;"def" "defonce" "defrecord" "defmacro" "definline"
+   ;"defmulti" "defmethod" "defstruct" "defprotocol"
+   ;"deftype")
+ ;.
+ ;(sym_lit)
+ ;.
+ ;;; TODO: Add @comment highlight
+ ;(str_lit)?
+ ;.
+ ;(_))
 
 ; Function definitions
 (list_lit
