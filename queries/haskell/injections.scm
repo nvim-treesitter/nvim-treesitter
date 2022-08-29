@@ -62,7 +62,7 @@
 
 (quasiquote
   (quoter) @_name
-  (#eq? @_quoter "aesonQQ")
+  (#eq? @_name "aesonQQ")
   ((quasiquote_body) @json)
 )
 
