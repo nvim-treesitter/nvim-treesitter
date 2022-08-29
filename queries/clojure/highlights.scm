@@ -42,10 +42,10 @@
 ; General function calls
 (list_lit
  .
- (sym_lit) @function)
+ (sym_lit) @function.call)
 (anon_fn_lit
  .
- (sym_lit) @function)
+ (sym_lit) @function.call)
 
 ; Quoted symbols
 (quoting_lit
