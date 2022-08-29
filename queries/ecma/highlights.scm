@@ -83,11 +83,11 @@
 ;--------------------------
 
 (call_expression
-  function: (identifier) @function)
+  function: (identifier) @function.call)
 
 (call_expression
   function: (member_expression
-    property: [(property_identifier) (private_property_identifier)] @method))
+    property: [(property_identifier) (private_property_identifier)] @method.call))
 
 ; Variables
 ;----------
