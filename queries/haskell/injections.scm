@@ -66,3 +66,13 @@
   ((quasiquote_body) @json)
 )
 
+
+;; -----------------------------------------------------------------------------
+;; SQL
+
+; postgresql-simple
+(quasiquote
+  (quoter) @_name 
+  (#eq? @_name "sql")
+  ((quasiquote_body) @sql)
+)
