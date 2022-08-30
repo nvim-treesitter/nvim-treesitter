@@ -8,6 +8,7 @@ local filetype_to_parsername = {
   jsx = "javascript",
   PKGBUILD = "bash",
   html_tags = "html",
+  htmldjango = "html",
   ["typescript.tsx"] = "tsx",
   terraform = "hcl",
   ["html.handlebars"] = "glimmer",
