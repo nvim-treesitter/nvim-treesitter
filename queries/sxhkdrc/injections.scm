@@ -1,0 +1,3 @@
+(command) @bash
+
+(comment) @comment
