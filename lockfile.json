@@ -39,7 +39,7 @@
     "revision": "f40125503642845492d87fa56ece3ed26a4ef4db"
   },
   "css": {
-    "revision": "a03f1d2d1dfbf6f8e0fdca5f9ff030228241eb57"
+    "revision": "769203d0f9abe1a9a691ac2b9fe4bb4397a73c51"
   },
   "cuda": {
     "revision": "bc48d8eaf5a145922a1bed0a69dca1342a83c12c"
@@ -270,7 +270,7 @@
     "revision": "205c2877af33a814386ff275031f88400a011397"
   },
   "racket": {
-    "revision": "4bf0e8d87114150ea372107c6f8c47dd1a67c3ed"
+    "revision": "b9b2e7454d7098e44595dd8c1b471b9d1518b910"
   },
   "rasi": {
     "revision": "12391343979463a2484e6353e5afb6dcb8c31e8b"
@@ -351,7 +351,7 @@
     "revision": "082da44a5263599186dadafd2c974c19f3a73d28"
   },
   "v": {
-    "revision": "ea2ebe049de299543b99a3a663377ec73f7a6534"
+    "revision": "ebe37f71e429ef6f5f7326ea4e9572e6d8f49bc7"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
