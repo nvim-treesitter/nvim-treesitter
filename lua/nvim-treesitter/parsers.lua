@@ -1179,13 +1179,13 @@ list.tiger = {
 list.sxhkdrc = {
   install_info = {
     url = "https://github.com/RaafatTurki/tree-sitter-sxhkdrc",
-    files = {"src/parser.c"},
+    files = { "src/parser.c" },
     branch = "master",
     generate_requires_npm = false,
     requires_generate_from_grammar = false,
     filetype = "sxhkdrc",
-    maintainers = { "@RaafatTurki" },
-  }
+  },
+  maintainers = { "@RaafatTurki" },
 }
 
 list.gitignore = {
