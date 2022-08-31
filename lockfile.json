@@ -138,7 +138,7 @@
     "revision": "961bc4d2937cfd24ceb0a5a6b2da607809f8822e"
   },
   "help": {
-    "revision": "eb01ab5c643bc8bb5bcc4c92251cbd034301ed14"
+    "revision": "a2c5c01f797eef67634941630442eea66eb7e1b6"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
@@ -216,7 +216,7 @@
     "revision": "6b71a810c0acd49b980c50fc79092561f7cee307"
   },
   "norg": {
-    "revision": "17d61df817c1e0a9cdef8d915d4e4c556b7cf68c"
+    "revision": "31990db6340084cf7770fdadcb3c1d6a438f263a"
   },
   "ocaml": {
     "revision": "cc26b1ef111100f26a137bcbcd39fd4e35be9a59"
@@ -312,7 +312,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "fd96265555d53ed5c2babf489fcffc9ab5ac9aa8"
+    "revision": "588fdc309bb66874a943794e155b24e6ffd623a8"
   },
   "supercollider": {
     "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
