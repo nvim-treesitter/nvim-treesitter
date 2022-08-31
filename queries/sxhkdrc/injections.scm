@@ -1,3 +1,1 @@
-(command) @bash
-
 (comment) @comment
