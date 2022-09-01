@@ -1186,6 +1186,16 @@ list.gitignore = {
   maintainers = { "@theHamsta" },
 }
 
+list.luau = {
+  install_info = {
+    url = "https://github.com/JohnnyMorganz/tree-sitter-luau",
+    files = { "src/parser.c", "src/scanner.cc" },
+    branch = "main",
+  },
+  filetype = "luau",
+  maintainers = { "@williamboman" },
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,

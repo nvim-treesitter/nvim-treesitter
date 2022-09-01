@@ -194,6 +194,9 @@
   "lua": {
     "revision": "c9ece5b2d348f917052db5a2da9bd4ecff07426c"
   },
+  "luau": {
+    "revision": "a005b85e11c3d5616eb4d6927179698d5b6c65ec"
+  },
   "m68k": {
     "revision": "d097b123f19c6eaba2bf181c05420d88b9fc489d"
   },
