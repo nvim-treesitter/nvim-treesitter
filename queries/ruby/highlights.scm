@@ -1,5 +1,6 @@
 ; Variables
 (identifier) @variable
+(global_variable) @variable.global
 
 ; Keywords
 
