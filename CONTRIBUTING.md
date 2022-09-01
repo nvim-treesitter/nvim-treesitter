@@ -165,6 +165,7 @@ effect on highlighting. We will work on improving highlighting in the near futur
 ```
 @variable
 @variable.builtin
+@variable.global
 ```
 
 #### Text
