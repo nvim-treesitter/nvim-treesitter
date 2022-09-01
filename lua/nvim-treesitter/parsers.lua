@@ -471,6 +471,15 @@ list.ocamllex = {
   maintainers = { "@undu" },
 }
 
+list.menhir = {
+  install_info = {
+    url = "https://github.com/Kerl13/tree-sitter-menhir",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  maintainers = { "@Kerl13" },
+  filetype = "menhir",
+}
+
 list.org = {
   install_info = {
     url = "https://github.com/milisims/tree-sitter-org",
