@@ -66,7 +66,7 @@
     "revision": "05e3631c6a0701c1fa518b0fee7be95a2ceef5e2"
   },
   "elm": {
-    "revision": "a9317711507b094b2049b42356646dd5764bca06"
+    "revision": "cce0e5938e7779f86cf8bf445eadf7df4b88229d"
   },
   "elvish": {
     "revision": "e50787cadd3bc54f6d9c0704493a79078bb8a4e5"
@@ -93,7 +93,7 @@
     "revision": "f0f2f100952a353e64e26b0fa710b4c296d7af13"
   },
   "fusion": {
-    "revision": "19db2f47ba4c3a0f6238d4ae0e2abfca16e61dd6"
+    "revision": "fatal: unable to access 'https://gitlab.com/jirgn/tree-sitter-fusion.git/': The requested URL returned error: 503"
   },
   "gdscript": {
     "revision": "2a6abdaa47fcb91397e09a97c7433fd995ea46c6"
@@ -171,7 +171,7 @@
     "revision": "5dd5cdc418d9659682556b6adca2dd9ace0ac6d2"
   },
   "jsonc": {
-    "revision": "02b01653c8a1c198ae7287d566efa86a135b30d5"
+    "revision": "fatal: unable to access 'https://gitlab.com/WhyNotHugo/tree-sitter-jsonc.git/': The requested URL returned error: 503"
   },
   "julia": {
     "revision": "0572cebf7b8e8ef5990b4d1e7f44f0b36f62922c"
