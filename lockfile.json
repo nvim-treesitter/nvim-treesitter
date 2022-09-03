@@ -18,7 +18,7 @@
     "revision": "7175a6dd5fc1cee660dce6fe23f6043d75af424a"
   },
   "c_sharp": {
-    "revision": "7bfc87dba66906bbeb2722d8e0dab6800de53a18"
+    "revision": "2734945fcc2da52365e7071958b9eba4ff151937"
   },
   "clojure": {
     "revision": "087bac78c53fe1387756cd5b8e68a69b3f6d7244"
@@ -129,7 +129,7 @@
     "revision": "b7bd6928532ada34dddb1dece4a158ab62c6e783"
   },
   "haskell": {
-    "revision": "1c89468614883e951db7d4ac05a56ec864f80bc1"
+    "revision": "e30bdfd53eb28c73f26a68b77d436fd2140af167"
   },
   "hcl": {
     "revision": "45ce22c16ec924e34517cf785e23c07952e45893"
@@ -144,7 +144,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "e869724b47fb573cadb54d21cf0df50c3dac0945"
+    "revision": "ecdce455eaa3c4089be9f4b202144083b9574a2e"
   },
   "hocon": {
     "revision": "bb412e2633f4a3611a4e16efe58d917093bb4782"
@@ -156,7 +156,7 @@
     "revision": "30a9c1789d64429a830802cde5b1760ff1064312"
   },
   "java": {
-    "revision": "443275301e60538a1c6f7979ac20a1fda9792934"
+    "revision": "81148c0902125150d616ea30190a630c86974a7a"
   },
   "javascript": {
     "revision": "936d976a782e75395d9b1c8c7c7bf4ba6fe0d86b"
@@ -165,7 +165,7 @@
     "revision": "189a6a4829beb9cdbe837260653b4a3dfb0cc3db"
   },
   "json": {
-    "revision": "368736a6137770f785e1e7479a6be29417eb13aa"
+    "revision": "11e2cc12d9b267766fb11a06e52952792fd8e3f0"
   },
   "json5": {
     "revision": "5dd5cdc418d9659682556b6adca2dd9ace0ac6d2"
@@ -288,7 +288,7 @@
     "revision": "25e6328872ac3a764ba8b926aea12719741103f1"
   },
   "ruby": {
-    "revision": "ad1043283b1f9daf4aad381b6a81f18a5a27fe7e"
+    "revision": "656abef0645caea793e33c1c773570722463e1d8"
   },
   "rust": {
     "revision": "47b061c1e1ba3a7e9c2f450363a50e87de3f7c61"
@@ -297,7 +297,7 @@
     "revision": "140c96cf398693189d4e50f76d19ddfcd8a018f8"
   },
   "scheme": {
-    "revision": "5bb5b2de83d548243fbcc77e76224882ffb4ce68"
+    "revision": "2ae1dee116a7612b97dc2179be94ec06ebaaa0d6"
   },
   "scss": {
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
