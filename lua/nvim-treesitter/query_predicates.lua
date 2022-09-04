@@ -134,8 +134,8 @@ query.add_directive("exclude-children!", function(match, _pattern, _bufnr, pred,
   local node = match[capture_id]
   local start_row, start_col, end_row, end_col = node:range()
   local ranges = {}
-  for i = 0, node:named_child_count() - 1 do
-    local child = node:named_child(i)
+  for i = 0, node:child_count() - 1 do
+    local child = node:child(i)
     local child_start_row, child_start_col, child_end_row, child_end_col = child:range()
     if child_start_row > start_row or child_start_col > start_col then
       table.insert(ranges, {
