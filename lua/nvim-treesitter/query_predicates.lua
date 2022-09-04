@@ -129,7 +129,7 @@ query.add_directive("downcase!", function(match, _, bufnr, pred, metadata)
   end
 end)
 
-query.add_directive("exclude_children!", function(match, _pattern, _bufnr, pred, metadata)
+query.add_directive("exclude-children!", function(match, _pattern, _bufnr, pred, metadata)
   local capture_id = pred[2]
   local node = match[capture_id]
   local start_row, start_col, end_row, end_col = node:range()
