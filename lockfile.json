@@ -206,6 +206,9 @@
   "markdown_inline": {
     "revision": "e375ba95ff9a12418f9b9e7c190f549d08b5380a"
   },
+  "menhir": {
+    "revision": "db7953acb0d5551f207373c81fa07a57d7b085cb"
+  },
   "meson": {
     "revision": "13d86d307b421a48d787ce4148371816356de040"
   },
@@ -226,9 +229,6 @@
   },
   "ocamllex": {
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
-  },
-  "menhir": {
-    "revision": "db7953acb0d5551f207373c81fa07a57d7b085cb"
   },
   "org": {
     "revision": "698bb1a34331e68f83fc24bdd1b6f97016bb30de"
