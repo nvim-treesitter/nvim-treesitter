@@ -73,7 +73,7 @@
 ; Statements
 (for_statement ["for" @repeat])
 (for_statement ["in" @repeat])
-(for_statement item: (simple_identifier) @variable)
+(for_statement (pattern) @variable)
 (else) @keyword
 (as_operator) @keyword
 
