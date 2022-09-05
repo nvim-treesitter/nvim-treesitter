@@ -105,7 +105,7 @@
     "revision": "cfcbca3f8f734773878e00d7bfcedea98eb10be2"
   },
   "glimmer": {
-    "revision": "a23d28de811976f3ca310df735fe09a5d2de16ab"
+    "revision": "99f2d6519c686dccc20dff513e744c1bb77224fd"
   },
   "glsl": {
     "revision": "a743ada24fa17da9acc5665133f07d56e03530be"
@@ -324,7 +324,7 @@
     "revision": "52e122ae68b316d3aa960a0a422d3645ba717f42"
   },
   "swift": {
-    "revision": "3cca7fc4009695ebeb76ec6a148f97a8993e7c07"
+    "revision": "81a788594ee22006e9ba094a08b7ff50f08a47a0"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -363,7 +363,7 @@
     "revision": "8f6b1f357d1231c420404b5f7a368a73c25adfa2"
   },
   "vim": {
-    "revision": "d38ee3b8ea625591a0dc009d6691118517205685"
+    "revision": "31ced69f19b65cb92a3f30e71b0b76216d8aeea3"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
