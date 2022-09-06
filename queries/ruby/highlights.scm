@@ -162,6 +162,8 @@
  ] @boolean
 
 (comment) @comment
+(comment) @spell
+(string_content) @spell
 
 ; Operators
 

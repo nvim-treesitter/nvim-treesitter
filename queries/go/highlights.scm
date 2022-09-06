@@ -186,6 +186,7 @@
 
 (interpreted_string_literal) @string
 (raw_string_literal) @string
+(raw_string_literal) @spell
 (rune_literal) @string
 (escape_sequence) @string.escape
 
@@ -202,5 +203,12 @@
 (field_declaration name: (field_identifier) @field)
 
 (comment) @comment
+(comment) @spell
 
 (ERROR) @error
+
+((interpreted_string_literal) @spell
+	(#not-has-parent? @spell
+		import_spec
+	)
+)

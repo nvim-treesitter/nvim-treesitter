@@ -146,6 +146,11 @@
   (block_comment)
 ] @comment
 
+[
+  (line_comment)
+  (block_comment)
+] @spell
+
 (boolean_literal) @boolean
 (integer_literal) @number
 (float_literal) @float

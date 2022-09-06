@@ -158,6 +158,17 @@
 (title) @text.title
 
 (comment) @comment
+(comment) @spell
 (comment "..") @comment
+
+(directive
+    name: (type) @_directive
+    body: (body
+        (content) @spell
+        (#not-match? @_directive "code-block")
+    )
+)
+
+(paragraph) @spell
 
 (ERROR) @error
