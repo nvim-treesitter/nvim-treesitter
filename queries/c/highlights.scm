@@ -167,6 +167,7 @@
   name: (identifier) @function.macro)
 
 (comment) @comment
+(comment) @spell
 
 ;; Parameters
 (parameter_declaration

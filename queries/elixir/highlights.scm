@@ -30,9 +30,11 @@
 
 ; Comments
 (comment) @comment
+(comment) @spell
 
 ; Strings
 (string) @string
+(string) @spell
 
 ; Modules
 (alias) @type

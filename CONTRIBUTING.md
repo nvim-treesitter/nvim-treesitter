@@ -206,6 +206,10 @@ Used for xml-like tags
 
 @conceal followed by `(#set! conceal "")` for captures that are not used for highlights but only for concealing.
 
+#### Spell
+
+@spell for defining regions to be spellchecked.
+
 ### Locals
 
 ```
