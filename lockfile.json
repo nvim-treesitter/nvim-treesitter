@@ -114,7 +114,7 @@
     "revision": "aeb2f33b366fd78d5789ff104956ce23508b85db"
   },
   "godot_resource": {
-    "revision": "b6ef0768711086a86b3297056f9ffb5cc1d77b4a"
+    "revision": "error: RPC failed; HTTP 500 curl 22 The requested URL returned error: 500"
   },
   "gomod": {
     "revision": "4a65743dbc2bb3094114dd2b43da03c820aa5234"
