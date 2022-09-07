@@ -6,10 +6,10 @@
   name: (identifier) @function.call
   parameter: [(field)]? @parameter)
 
-(table_expression
+(table_reference
   name: (identifier) @type)
 
-(table_expression
+(table_reference
   name: (identifier) @type
   table_alias: (identifier) @variable)
 
