@@ -176,6 +176,9 @@
   "jsonc": {
     "revision": "02b01653c8a1c198ae7287d566efa86a135b30d5"
   },
+  "jsonnet": {
+    "revision": "0475a5017ad7dc84845d1d33187f2321abcb261d"
+  },
   "julia": {
     "revision": "0572cebf7b8e8ef5990b4d1e7f44f0b36f62922c"
   },
