@@ -370,6 +370,14 @@ list.json = {
   maintainers = { "@steelsojka" },
 }
 
+list.jsonnet = {
+  install_info = {
+    url = "https://github.com/sourcegraph/tree-sitter-jsonnet",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@nawordar" },
+}
+
 list.css = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-css",
