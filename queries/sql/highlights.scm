@@ -9,8 +9,9 @@
 (table_reference
   name: (identifier) @type)
 
-(table_reference
-  name: (identifier) @type
+(relation
+  (table_reference
+    name: (identifier) @type)
   table_alias: (identifier) @variable)
 
 (field
@@ -91,7 +92,6 @@
   (keyword_using)
   (keyword_cascade)
   (keyword_between)
-  (keyword_window)
   (keyword_window)
   (double)
   (keyword_with)
