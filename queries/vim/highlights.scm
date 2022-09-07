@@ -40,7 +40,7 @@
 (parameters (identifier) @parameter)
 (default_parameter (identifier) @parameter)
 
-[ (bang) (spread) (at) ] @punctuation.special
+[ (bang) (spread) ] @punctuation.special
 
 [ (no_option) (inv_option) (default_option) (option_name) ] @variable.builtin
 [
@@ -131,17 +131,18 @@
   "<unique>"
 ] @constant.builtin
 
-(hl_attribute
-  key: _ @property
-  val: _ @constant)
-
-(hl_group) @variable
 (augroup_name) @namespace
 
 (au_event) @constant
 (normal_statement (commands) @constant)
 
 ;; Highlight command
+
+(hl_attribute
+  key: _ @property
+  val: _ @constant)
+
+(hl_group) @type
 
 (highlight_statement [
   "default"
@@ -150,6 +151,8 @@
 ] @keyword)
 
 ;; Command command
+
+(command) @string
 
 (command_attribute
   name: _ @property
@@ -173,9 +176,10 @@
 ;; Literals
 
 (string_literal) @string
+(string_literal) @spell
 (integer_literal) @number
 (float_literal) @float
-(comment) @comment
+(comment) @comment @spell
 (pattern) @string.special
 (pattern_multi) @string.regex
 (filename) @string
