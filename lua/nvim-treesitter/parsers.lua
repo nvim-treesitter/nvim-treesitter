@@ -1205,6 +1205,17 @@ list.gitignore = {
   maintainers = { "@theHamsta" },
 }
 
+list.gitattributes = {
+  install_info = {
+    url = "https://github.com/ObserverOfTime/tree-sitter-gitattributes",
+    files = { "src/parser.c" },
+    branch = "master",
+    requires_generate_from_grammar = false,
+  },
+  maintainers = { "@ObserverOfTime" },
+  experimental = true,
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
