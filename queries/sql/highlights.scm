@@ -6,11 +6,10 @@
   name: (identifier) @function.call
   parameter: [(field)]? @parameter)
 
-(table_expression
+(table_reference
   name: (identifier) @type)
 
-(table_expression
-  name: (identifier) @type
+(relation
   table_alias: (identifier) @variable)
 
 (field
@@ -19,6 +18,7 @@
 
 (literal) @string
 (comment) @comment
+(marginalia) @comment
 
 ((literal) @number
  (lua-match? @number "^%d+$"))
@@ -143,6 +143,7 @@
   (keyword_geography)
   (keyword_box2d)
   (keyword_box3d)
+  (keyword_only)
 ] @keyword
 
 [
