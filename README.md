@@ -283,7 +283,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [typescript](https://github.com/tree-sitter/tree-sitter-typescript) (maintained by @steelsojka)
 - [x] [v](https://github.com/vlang/vls) (maintained by @tami5)
 - [x] [vala](https://github.com/vala-lang/tree-sitter-vala) (maintained by @Prince781, @vala-lang)
-- [x] [verilog](https://github.com/tree-sitter/tree-sitter-verilog) (experimental, maintained by @zegervdv)
+- [x] [verilog](https://github.com/tree-sitter/tree-sitter-verilog) (maintained by @zegervdv)
 - [x] [vim](https://github.com/vigoux/tree-sitter-viml) (maintained by @vigoux)
 - [x] [vue](https://github.com/ikatyang/tree-sitter-vue) (maintained by @WhyNotHugo)
 - [x] [wgsl](https://github.com/szebniok/tree-sitter-wgsl) (maintained by @szebniok)
