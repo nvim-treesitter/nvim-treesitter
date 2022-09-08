@@ -753,8 +753,6 @@ list.verilog = {
     generate_requires_npm = true,
   },
   maintainers = { "@zegervdv" },
-  -- The parser still uses API version 12, because it does not compile with 13
-  experimental = true,
 }
 
 list.pascal = {
