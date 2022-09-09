@@ -131,8 +131,10 @@ elseif not vim.g.skip_ts_default_groups then
 end
 
 local function link_all_captures()
-  for capture, hlgroup in pairs(default_map) do
-    link_captures(capture, hlgroup)
+  if link_captures then
+    for capture, hlgroup in pairs(default_map) do
+      link_captures(capture, hlgroup)
+    end
   end
 end
 
