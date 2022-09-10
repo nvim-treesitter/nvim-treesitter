@@ -1,5 +1,7 @@
 ; Types
 
+"void" @type
+
 ; Javascript
 
 ; Variables
@@ -241,7 +243,6 @@
 "target"
 "typeof"
 "var"
-"void"
 "with"
 ] @keyword
 
