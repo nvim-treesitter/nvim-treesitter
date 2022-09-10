@@ -3,7 +3,7 @@
     "revision": "80ea622cf952a0059e168e5c92a798b2f1925652"
   },
   "astro": {
-    "revision": "ec0f9f945a08372952403f736a1f783d1679b0ac"
+    "revision": "f5d529d3dff0ab88ca2c59ee0ce0e09c3775fac3"
   },
   "bash": {
     "revision": "275effdfc0edce774acf7d481f9ea195c6c403cd"
@@ -318,7 +318,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "3374374dc9b3b8e4a05027cdd491d1ee23286985"
+    "revision": "b92f57f658831152c47eebe820df24f33469a8e5"
   },
   "supercollider": {
     "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
