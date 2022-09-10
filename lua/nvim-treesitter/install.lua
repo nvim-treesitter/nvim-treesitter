@@ -46,7 +46,7 @@ local function get_parser_install_info(lang, validate)
   local parser_config = parsers.get_parser_configs()[lang]
 
   if not parser_config then
-    return error("Parser not available for language " .. lang)
+    return error('Parser not available for language "' .. lang .. '"')
   end
 
   local install_info = parser_config.install_info
@@ -374,7 +374,17 @@ local function install_lang(lang, ask_reinstall, cache_folder, install_folder, w
     end
   end
 
-  local install_info = get_parser_install_info(lang, true)
+  local ok, install_info = pcall(get_parser_install_info, lang, true)
+  if not ok then
+    vim.notify("Installation not possible: " .. install_info, vim.log.levels.ERROR)
+    if not parsers.get_parser_configs()[lang] then
+      vim.notify(
+        "See https://github.com/nvim-treesitter/nvim-treesitter/#adding-parsers on how to add a new parser!",
+        vim.log.levels.INFO
+      )
+    end
+    return
+  end
 
   run_install(cache_folder, install_folder, lang, install_info, with_sync, generate_from_grammar)
 end
