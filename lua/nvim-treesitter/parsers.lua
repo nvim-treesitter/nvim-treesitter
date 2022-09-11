@@ -1224,6 +1224,15 @@ list.gitattributes = {
   experimental = true,
 }
 
+list.blueprint = {
+  install_info = {
+    url = "https://gitlab.com/gabmus/tree-sitter-blueprint.git",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@gabmus" },
+  experimental = true,
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
