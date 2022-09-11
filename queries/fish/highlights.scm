@@ -149,6 +149,7 @@
 
 [(integer) (float)] @number
 (comment) @comment
+(comment) @spell
 (test_option) @string
 
 ((word) @boolean
