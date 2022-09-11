@@ -286,6 +286,20 @@ end
 -- @param col A column (0-based)
 function M.is_in_node_range(node, line, col)
   local start_line, start_col, end_line, end_col = node:range()
+  return M.is_in_range({
+    start_line,
+    start_col,
+    end_line,
+    end_col,
+  }, line, col)
+end
+
+--- Determines whether (line, col) position is in a range
+-- @param range Table with range {start_line, start_col, end_line, end_col}
+-- @param line A line (0-based)
+-- @param col A column (0-based)
+function M.is_in_range(range, line, col)
+  local start_line, start_col, end_line, end_col = unpack(range)
   if line >= start_line and line <= end_line then
     if line == start_line and line == end_line then
       return col >= start_col and col < end_col
@@ -306,6 +320,36 @@ function M.get_node_range(node_or_range)
     return unpack(node_or_range)
   else
     return node_or_range:range()
+  end
+end
+
+---- Gets the range of a match.
+-- Uses match.metadata.range if it exists which takes into account #offset!
+-- Otherwise uses the range of match.node
+-- @param match:
+--  - node: The node.
+--  - metadata: Optional metadata.
+function M.get_match_range(match)
+  if match.metadata ~= nil and match.metadata.range ~= nil then
+    return unpack(match.metadata.range)
+  else
+    return M.get_node_range(match.node)
+  end
+end
+
+---- Gets the text of a match.
+-- Uses match.metadata.range if it exists which takes into account #offset!
+-- Otherwise uses the range of match.node
+-- @param match:
+--  - node: The node.
+--  - metadata: Optional metadata.
+-- @param bufnr
+function M.get_match_text(match, bufnr)
+  if match.metadata ~= nil and match.metadata.range ~= nil then
+    local srow, scol, erow, ecol = unpack(match.metadata.range)
+    return table.concat(vim.api.nvim_buf_get_text(bufnr, srow, scol, erow, ecol, {}), "\n")
+  else
+    return vim.treesitter.get_node_text(match.node, bufnr)
   end
 end
 
