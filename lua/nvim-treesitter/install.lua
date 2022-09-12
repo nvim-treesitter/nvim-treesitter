@@ -478,9 +478,7 @@ function M.uninstall(...)
   if vim.tbl_contains({ "all" }, ...) then
     reset_progress_counter()
     local installed = info.installed_parsers()
-    for _, langitem in pairs(installed) do
-      M.uninstall(langitem)
-    end
+    M.uninstall(installed)
   elseif ... then
     local languages = vim.tbl_flatten { ... }
     for _, lang in ipairs(languages) do

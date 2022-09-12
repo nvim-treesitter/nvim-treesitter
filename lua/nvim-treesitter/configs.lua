@@ -580,6 +580,9 @@ function M.get_ignored_parser_installs()
 end
 
 function M.get_ensure_installed_parsers()
+  if type(config.ensure_installed) == "string" then
+    return { config.ensure_installed }
+  end
   return config.ensure_installed or {}
 end
 
