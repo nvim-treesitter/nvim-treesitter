@@ -605,9 +605,7 @@ function M.uninstall(...)
   if vim.tbl_contains({ "all" }, ...) then
     reset_progress_counter()
     local installed = info.installed_parsers()
-    for _, langitem in pairs(installed) do
-      M.uninstall(langitem)
-    end
+    M.uninstall(installed)
   elseif ... then
     local ensure_installed_parsers = configs.get_ensure_installed_parsers()
     if ensure_installed_parsers == "all" then
