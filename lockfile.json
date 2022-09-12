@@ -138,10 +138,10 @@
     "revision": "45ce22c16ec924e34517cf785e23c07952e45893"
   },
   "heex": {
-    "revision": "961bc4d2937cfd24ceb0a5a6b2da607809f8822e"
+    "revision": "93aa5bbb9af7ebe29ab837e4dc960c5e89c16b06"
   },
   "help": {
-    "revision": "a2c5c01f797eef67634941630442eea66eb7e1b6"
+    "revision": "5be26866a7fea022ad7efe9a521e953eeb507c0d"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
@@ -333,7 +333,7 @@
     "revision": "52e122ae68b316d3aa960a0a422d3645ba717f42"
   },
   "swift": {
-    "revision": "39f1dac77fbba536fe31405240b8aa711a2c5d97"
+    "revision": "500f49c2e9a4424df510faaaafcf5e80f2b9e721"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
