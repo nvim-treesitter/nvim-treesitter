@@ -14,6 +14,9 @@
   "bibtex": {
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
   },
+  "blueprint": {
+    "revision": "6ef91ca8270f0112b9c6d27ecb9966c741a5d103"
+  },
   "c": {
     "revision": "7175a6dd5fc1cee660dce6fe23f6043d75af424a"
   },
