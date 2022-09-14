@@ -183,7 +183,7 @@ function M.set_custom_captures(captures)
 end
 
 function M.set_default_hlgroups()
-  if not ts.highlighter.hl_map then
+  if not ts.highlighter.hl_map and not vim.g.skip_ts_default_groups then
     link_all_captures()
   end
   local highlights = {
