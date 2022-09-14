@@ -29,7 +29,7 @@
 (marginalia) @comment
 
 ((literal) @number
- (lua-match? @number "^%d+$"))
+ (#lua-match? @number "^%d+$"))
 
 [
   (keyword_select)
@@ -145,7 +145,6 @@
   (keyword_box3d)
   (keyword_only)
   (keyword_like)
-  (keyword_ilike)
   (keyword_similar)
   (keyword_over)
 ] @keyword
