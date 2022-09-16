@@ -55,7 +55,7 @@
 
 (fun_expr pats:
   (pattern id:
-    (ident) @variable.parameter
+    (ident) @parameter
   )+
 )
 
