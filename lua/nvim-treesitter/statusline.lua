@@ -13,9 +13,9 @@ function M.statusline(opts)
     return
   end
   local options = opts or {}
-  -- if type(opts) == "number" then
-  --   options = { indicator_size = opts }
-  -- end
+  if type(opts) == "number" then
+    options = { indicator_size = opts }
+  end
   local bufnr = options.bufnr or 0
   local indicator_size = options.indicator_size or 100
   local type_patterns = options.type_patterns or { "class", "function", "method" }
