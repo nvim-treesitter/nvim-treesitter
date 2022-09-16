@@ -25,7 +25,10 @@
 
 (self) @variable.builtin
 
-(lifetime   ["'" (identifier)] @label)
+; This defines a new group: `@label.lifetime-only-in-rust`, which can be used to
+; highlight lifetimes separately from other labels in Rust. If not overridden,
+; it defaults to its parent: `@label`.
+(lifetime   ["'" (identifier)] @label.lifetime-only-in-rust)
 (loop_label ["'" (identifier)] @label)
 
 
