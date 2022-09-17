@@ -25,7 +25,7 @@
 
 (self) @variable.builtin
 
-; This defines a new group: `@label.lifetime`, which can be used to highlight
+; This defines a new capture: `@label.lifetime`, which can be used to highlight
 ; lifetimes separately from other labels. If not overridden, it defaults to its
 ; parent: `@label`.
 (lifetime   ["'" (identifier)] @label.lifetime)
