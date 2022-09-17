@@ -25,10 +25,10 @@
 
 (self) @variable.builtin
 
-; This defines a new group: `@label.lifetime-only-in-rust`, which can be used to
-; highlight lifetimes separately from other labels in Rust. If not overridden,
-; it defaults to its parent: `@label`.
-(lifetime   ["'" (identifier)] @label.lifetime-only-in-rust)
+; This defines a new group: `@label.lifetime`, which can be used to highlight
+; lifetimes separately from other labels. If not overridden, it defaults to its
+; parent: `@label`.
+(lifetime   ["'" (identifier)] @label.lifetime)
 (loop_label ["'" (identifier)] @label)
 
 
