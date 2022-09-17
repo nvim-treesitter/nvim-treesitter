@@ -1,4 +1,6 @@
-(comment) @jsdoc
+(((comment) @_jsdoc_comment
+  (#match? @_jsdoc_comment "^/\\*\\*[^\\*].*\\*/")) @jsdoc)
+
 (comment) @comment
 
 (call_expression

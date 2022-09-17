@@ -370,6 +370,14 @@ list.json = {
   maintainers = { "@steelsojka" },
 }
 
+list.jsonnet = {
+  install_info = {
+    url = "https://github.com/sourcegraph/tree-sitter-jsonnet",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@nawordar" },
+}
+
 list.css = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-css",
@@ -753,8 +761,6 @@ list.verilog = {
     generate_requires_npm = true,
   },
   maintainers = { "@zegervdv" },
-  -- The parser still uses API version 12, because it does not compile with 13
-  experimental = true,
 }
 
 list.pascal = {
@@ -1205,6 +1211,26 @@ list.gitignore = {
     requires_generate_from_grammar = true,
   },
   maintainers = { "@theHamsta" },
+}
+
+list.gitattributes = {
+  install_info = {
+    url = "https://github.com/ObserverOfTime/tree-sitter-gitattributes",
+    files = { "src/parser.c" },
+    branch = "master",
+    requires_generate_from_grammar = false,
+  },
+  maintainers = { "@ObserverOfTime" },
+  experimental = true,
+}
+
+list.blueprint = {
+  install_info = {
+    url = "https://gitlab.com/gabmus/tree-sitter-blueprint.git",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@gabmus" },
+  experimental = true,
 }
 
 local M = {

@@ -13,6 +13,12 @@
 @punctuation.bracket
 
 [
+  ":"
+  ","
+  "."
+] @punctuation.delimiter
+
+[
   "and"
   "not"
   "or"
@@ -58,6 +64,9 @@
 
 (list
   variable: (identifier) @variable)
+
+(operatorunit
+  (identifier) @variable)
 
 (formatunit
   variable: (identifier) @variable)
