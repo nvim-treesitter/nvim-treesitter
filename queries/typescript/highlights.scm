@@ -13,6 +13,7 @@
 "public"
 "type"
 "readonly"
+"override"
 ] @keyword
 
 ; types
