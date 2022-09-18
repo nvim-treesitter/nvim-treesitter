@@ -81,6 +81,7 @@
   "in"
   "class"
   "instance"
+  "pattern"
   "data"
   "newtype"
   "family"
