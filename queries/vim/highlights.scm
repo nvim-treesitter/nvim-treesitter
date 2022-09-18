@@ -59,10 +59,14 @@
   "execute"
   "normal"
   "set"
+  "setfiletype"
   "setlocal"
   "silent"
   "echo"
+  "echon"
+  "echohl"
   "echomsg"
+  "echoerr"
   "autocmd"
   "augroup"
   "return"
@@ -130,6 +134,8 @@
   "match"
   "cluster"
   "region"
+  "clear"
+  "include"
 ] @keyword)
 
 (syntax_argument name: _ @keyword)
