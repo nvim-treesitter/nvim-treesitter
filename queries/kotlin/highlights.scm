@@ -272,6 +272,9 @@
 ;;; Keywords
 
 (type_alias "typealias" @keyword)
+
+(companion_object "companion" @keyword)
+
 [
 	(class_modifier)
 	(member_modifier)
