@@ -85,6 +85,9 @@
 (comments) @comment
 (comments) @spell
 
+((source_file . (comments) @preproc)
+  (#match? @preproc "^#!/"))
+
 ; POD should be handled specially with its own embedded subtype but for now
 ;   we'll just have to do this.
 (pod_statement) @text

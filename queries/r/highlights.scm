@@ -12,6 +12,9 @@
 
 (comment) @comment
 
+((program . (comment) @preproc)
+  (#match? @preproc "^#!/"))
+
 (identifier) @variable
 
 (formal_parameters (identifier) @parameter)

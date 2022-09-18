@@ -112,10 +112,9 @@
   (undefined)
 ] @constant.builtin
 
-[
-  (comment)
-  (hash_bang_line)
-] @comment
+(comment) @comment
+
+(hash_bang_line) @preproc
 
 (comment) @spell
 

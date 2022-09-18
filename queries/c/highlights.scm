@@ -43,7 +43,7 @@
   "#elif"
   "#endif"
   (preproc_directive)
-] @keyword
+] @preproc
 
 "#include" @include
 

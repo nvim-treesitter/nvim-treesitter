@@ -46,10 +46,9 @@
     (identifier) @constant)
 )
 
-[
-(comment)
-(preproc)
-] @comment
+(comment) @comment
+
+(preproc) @preproc
 
 (comment) @spell
 
