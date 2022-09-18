@@ -182,7 +182,7 @@
 
 (comment) @comment @spell
 
-(hash_bang_line) @comment
+(hash_bang_line) @preproc
 
 (number) @number
 

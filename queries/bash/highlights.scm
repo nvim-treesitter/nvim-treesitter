@@ -131,3 +131,6 @@
   value: (word) @parameter)
 
 (regex) @string.regex
+
+((program . (comment) @preproc)
+  (#match? @preproc "^#!/"))

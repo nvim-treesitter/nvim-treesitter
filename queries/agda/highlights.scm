@@ -33,7 +33,7 @@
 
 ;; Pragmas and comments
 
-(pragma) @constant.macro
+(pragma) @preproc
 
 (comment) @comment
 

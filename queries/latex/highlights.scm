@@ -15,6 +15,9 @@
  (comment_environment)
 ] @comment
 
+((line_comment) @preproc
+  (#lua-match? @preproc "^%% !TeX"))
+
 [
  (brack_group)
  (brack_group_argc)

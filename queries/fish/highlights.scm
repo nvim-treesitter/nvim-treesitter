@@ -155,6 +155,9 @@
 ((word) @boolean
 (#any-of? @boolean "true" "false"))
 
+((program . (comment) @preproc)
+  (#match? @preproc "^#!/"))
+
 ;; Error
 
 (ERROR) @error

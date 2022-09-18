@@ -124,3 +124,6 @@
 )
 
 (escape_sequence) @string.escape
+
+((source_file . (line_comment) @preproc)
+  (#match? @preproc "^#!/"))

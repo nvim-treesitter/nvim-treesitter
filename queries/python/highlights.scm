@@ -141,6 +141,10 @@
 (float) @float
 
 (comment) @comment @spell
+
+((module . (comment) @preproc)
+  (#match? @preproc "^#!/"))
+
 (string) @string
 [
   (escape_sequence)

@@ -207,10 +207,9 @@
 
 ;;; Literals
 
-[
-	(comment)
-	(shebang_line)
-] @comment
+(comment) @comment
+
+(shebang_line) @preproc
 
 (comment) @spell
 

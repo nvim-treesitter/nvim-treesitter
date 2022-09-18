@@ -29,3 +29,6 @@
 
 ((program . (comment) @include)
  (#match? @include "^;\ +inherits\ *:"))
+
+((program . (comment) @preproc)
+ (#match? @preproc "^; +extends"))
