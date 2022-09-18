@@ -652,6 +652,7 @@ list.pug = {
   },
   maintainers = { "@zealot128" },
   filetype = "pug",
+  experimental = true,
 }
 
 list.vue = {
