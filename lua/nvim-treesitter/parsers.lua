@@ -1307,6 +1307,13 @@ list.arduino = {
   maintainers = { "@ObserverOfTime" },
 }
 
+list.jq = {
+  install_info = {
+    url = "https://github.com/flurie/tree-sitter-jq",
+    files = { "src/parser.c" },
+  },
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
