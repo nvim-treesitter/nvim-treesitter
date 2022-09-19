@@ -176,6 +176,9 @@
   "javascript": {
     "revision": "936d976a782e75395d9b1c8c7c7bf4ba6fe0d86b"
   },
+  "jq": {
+    "revision": "13990f530e8e6709b7978503da9bc8701d366791"
+  },
   "jsdoc": {
     "revision": "189a6a4829beb9cdbe837260653b4a3dfb0cc3db"
   },
