@@ -116,14 +116,14 @@
  (heredoc_body)
  (nowdoc_body)
  (shell_command_expression) ; backtick operator: `ls -la`
- ] @string
+ ] @string @spell
 (escape_sequence) @string.escape
 
 (boolean) @boolean
 (null) @constant.builtin
 (integer) @number
 (float) @float
-(comment) @comment
+(comment) @comment @spell
 
 (named_label_statement) @label
 ; Keywords
