@@ -280,25 +280,11 @@ function M.node_length(node)
   return end_byte - start_byte
 end
 
---- Determines whether (line, col) position is in node range
--- @param node Node defining the range
--- @param line A line (0-based)
--- @param col A column (0-based)
-function M.is_in_node_range(node, line, col)
-  local start_line, start_col, end_line, end_col = node:range()
-  return M.is_in_range({
-    start_line,
-    start_col,
-    end_line,
-    end_col,
-  }, line, col)
-end
-
 --- Determines whether (line, col) position is in a range
 -- @param range Table with range {start_line, start_col, end_line, end_col}
 -- @param line A line (0-based)
 -- @param col A column (0-based)
-function M.is_in_range(range, line, col)
+local function is_in_range(range, line, col)
   local start_line, start_col, end_line, end_col = unpack(range)
   if line >= start_line and line <= end_line then
     if line == start_line and line == end_line then
@@ -315,6 +301,36 @@ function M.is_in_range(range, line, col)
   end
 end
 
+--- Determines whether (line, col) position is in node range
+-- @param node Node defining the range
+-- @param line A line (0-based)
+-- @param col A column (0-based)
+function M.is_in_node_range(node, line, col)
+  local start_line, start_col, end_line, end_col = node:range()
+  return is_in_range({
+    start_line,
+    start_col,
+    end_line,
+    end_col,
+  }, line, col)
+end
+
+--- Determines whether (line, col) position is in capture range
+-- @param capture Node defining the range
+--  - node: The node.
+--  - metadata: Optional metadata.
+-- @param line A line (0-based)
+-- @param col A column (0-based)
+function M.is_in_capture_range(capture, line, col)
+  local start_line, start_col, end_line, end_col = M.get_capture_range(capture)
+  return is_in_range({
+    start_line,
+    start_col,
+    end_line,
+    end_col,
+  }, line, col)
+end
+
 function M.get_node_range(node_or_range)
   if type(node_or_range) == "table" then
     return unpack(node_or_range)
@@ -323,34 +339,30 @@ function M.get_node_range(node_or_range)
   end
 end
 
----- Gets the range of a match.
--- Uses match.metadata.range if it exists which takes into account #offset!
--- Otherwise uses the range of match.node
--- @param match:
+---- Gets the range of a capture.
+-- Uses capture.metadata.range if it exists which takes into account #offset!
+-- Otherwise uses the range of capture.node
+-- @param capture:
 --  - node: The node.
 --  - metadata: Optional metadata.
-function M.get_match_range(match)
-  if match.metadata ~= nil and match.metadata.range ~= nil then
-    return unpack(match.metadata.range)
+function M.get_capture_range(capture)
+  if capture.metadata ~= nil and capture.metadata.range ~= nil then
+    return unpack(capture.metadata.range)
   else
-    return M.get_node_range(match.node)
+    return M.get_node_range(capture.node)
   end
 end
 
----- Gets the text of a match.
--- Uses match.metadata.range if it exists which takes into account #offset!
--- Otherwise uses the range of match.node
--- @param match:
+---- Gets the text of a capture.
+-- Uses capture.metadata.range if it exists which takes into account #offset!
+-- Otherwise uses the range of capture.node
+-- @param capture:
 --  - node: The node.
 --  - metadata: Optional metadata.
 -- @param bufnr
-function M.get_match_text(match, bufnr)
-  if match.metadata ~= nil and match.metadata.range ~= nil then
-    local srow, scol, erow, ecol = unpack(match.metadata.range)
-    return table.concat(vim.api.nvim_buf_get_text(bufnr, srow, scol, erow, ecol, {}), "\n")
-  else
-    return vim.treesitter.get_node_text(match.node, bufnr)
-  end
+function M.get_capture_text(capture, bufnr)
+  local srow, scol, erow, ecol = M.get_capture_range(capture)
+  return table.concat(vim.api.nvim_buf_get_text(bufnr, srow, scol, erow, ecol, {}), "\n")
 end
 
 function M.node_to_lsp_range(node)
