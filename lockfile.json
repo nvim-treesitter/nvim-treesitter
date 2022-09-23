@@ -72,7 +72,7 @@
     "revision": "cce0e5938e7779f86cf8bf445eadf7df4b88229d"
   },
   "elvish": {
-    "revision": "e50787cadd3bc54f6d9c0704493a79078bb8a4e5"
+    "revision": "f32711e31e987fd5c2c002f3daba02f25c68672f"
   },
   "embdedded_template": {
     "revision": "d21df11b0ecc6fd211dbe11278e92ef67bd17e97"
@@ -336,7 +336,7 @@
     "revision": "52e122ae68b316d3aa960a0a422d3645ba717f42"
   },
   "swift": {
-    "revision": "7f6768194ce3e4f6980ecfd6c433ff4036b3089d"
+    "revision": "42e75d3e03d94467fceec0c4b88d75979c852e4c"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
