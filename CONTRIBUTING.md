@@ -102,6 +102,7 @@ effect on highlighting. We will work on improving highlighting in the near futur
 ```scheme
 @punctuation.delimiter ; delimiters (e.g. `;` / `.` / `,`)
 @punctuation.bracket   ; brackets (e.g. `()` / `{}` / `[]`)
+@punctuation.quote   ; quotes (e.g. `'` / `"`)
 @punctuation.special   ; special symbols (e.g. `{}` in string interpolation)
 ```
 

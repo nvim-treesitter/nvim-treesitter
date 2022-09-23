@@ -35,24 +35,71 @@
       . name: (identifier) @constant))
 
 ((identifier) @variable.builtin
- (#vim-match? @variable.builtin "^(arguments|module|console|window|document)$"))
+ (#any-of? @variable.builtin
+  "arguments"
+  "module"
+  "console"
+  "window"
+  "document"
+  "Object"
+  "Function"
+  "Boolean"
+  "Symbol"
+  "Number"
+  "Math"
+  "Date"
+  "String"
+  "RegExp"
+  "Map"
+  "Set"
+  "WeakMap"
+  "WeakSet"
+  "Promise"
+  "Intl"
+  "Array"
+  "Int8Array"
+  "Uint8Array"
+  "Uint8ClampedArray"
+  "Int16Array"
+  "Uint16Array"
+  "Int32Array"
+  "Uint32Array"
+  "Float32Array"
+  "Float64Array"
+  "ArrayBuffer"
+  "DataView"
+  "Error"
+  "EvalError"
+  "InternalError"
+  "RangeError"
+  "ReferenceError"
+  "SyntaxError"
+  "TypeError"
+  "URIError"))
 
 ((identifier) @function.builtin
- (#eq? @function.builtin "require"))
+ (#any-of? @function.builtin
+  "eval"
+  "isFinite"
+  "isNaN"
+  "parseFloat"
+  "parseInt"
+  "decodeURI"
+  "decodeURIComponent"
+  "encodeURI"
+  "encodeURIComponent"
+  "require"))
 
 ; Function and method definitions
 ;--------------------------------
 
-(function
-  name: (identifier) @function)
-(function_declaration
-  name: (identifier) @function)
-(generator_function
-  name: (identifier) @function)
-(generator_function_declaration
-  name: (identifier) @function)
-(method_definition
-  name: [(property_identifier) (private_property_identifier)] @method)
+(function name: (identifier) @function)
+(function_declaration name: (identifier) @function)
+(generator_function name: (identifier) @function)
+(generator_function_declaration name: (identifier) @function)
+(method_definition name: [(property_identifier) (private_property_identifier)] @method)
+(method_definition name: (property_identifier) @method.builtin
+  (#eq? @method.builtin "constructor"))
 
 (pair
   key: (property_identifier) @method
@@ -87,12 +134,11 @@
 ; Function and method calls
 ;--------------------------
 
-(call_expression
-  function: (identifier) @function.call)
+(call_expression function: (identifier) @function.call)
 
-(call_expression
-  function: (member_expression
-    property: [(property_identifier) (private_property_identifier)] @method.call))
+(call_expression function:
+  (member_expression property:
+    [(property_identifier) (private_property_identifier)] @method.call))
 
 ; Constructor
 ;------------
@@ -102,26 +148,16 @@
 
 ; Variables
 ;----------
-(namespace_import
-  (identifier) @namespace)
+(namespace_import (identifier) @namespace)
 
 ; Literals
 ;---------
 
-[
-  (this)
-  (super)
-] @variable.builtin
+[(this) (super)] @variable.builtin
 
-[
-  (true)
-  (false)
-] @boolean
+[(true) (false)] @boolean
 
-[
-  (null)
-  (undefined)
-] @constant.builtin
+[(null) (undefined)] @constant.builtin
 
 (comment) @comment
 
@@ -133,20 +169,22 @@
 (template_string) @string
 (escape_sequence) @string.escape
 (regex_pattern) @string.regex
-(regex "/" @punctuation.bracket) ; Regex delimiters
+(regex "/" @punctuation.bracket.regex)
+(regex_flags) @string.regex.flags
+((string_fragment) @string.special
+ (#eq? @string.special "use strict"))
 
 (number) @number
-((identifier) @number
-  (#any-of? @number "NaN" "Infinity"))
+((identifier) @number (#any-of? @number "NaN" "Infinity"))
 
 ; Punctuation
 ;------------
 
 "..." @punctuation.special
 
-";" @punctuation.delimiter
-"." @punctuation.delimiter
-"," @punctuation.delimiter
+[";" "." ","] @punctuation.delimiter
+(member_expression "." @punctuation.delimiter.member)
+(optional_chain) @punctuation.delimiter.member
 
 (pair ":" @punctuation.delimiter)
 (pair_pattern ":" @punctuation.delimiter)
@@ -200,91 +238,99 @@
 (unary_expression ["!" "~" "-" "+"] @operator)
 (unary_expression ["delete" "void" "typeof"] @keyword.operator)
 
-[
-  "("
-  ")"
-  "["
-  "]"
-  "{"
-  "}"
-] @punctuation.bracket
+["(" ")" "[" "]" "{" "}"] @punctuation.bracket
 
-((template_substitution ["${" "}"] @punctuation.special) @none)
+(string ["'" "\""] @punctuation.quote.string)
+(template_string "`" @punctuation.quote.string)
+((template_substitution ["${" "}"] @punctuation.special @punctuation.bracket.string) @none)
+
+(array ["[" "]"] @punctuation.bracket.array)
+(array "," @punctuation.delimiter.array)
+
+(object ["{" "}"] @punctuation.bracket.object)
+(object (pair ":" @punctuation.delimiter.object))
+(object "," @punctuation.delimiter.object)
+
+(if_statement condition: (parenthesized_expression ["(" ")"] @punctuation.bracket.conditional))
+(if_statement consequence: (statement_block ["{" "}"] @punctuation.bracket.conditional))
+(if_statement alternative: (else_clause (statement_block ["{" "}"] @punctuation.bracket.conditional)))
+
+(switch_statement body: (switch_body ["{" "}"] @punctuation.bracket.conditional))
+(switch_case ":" @punctuation.delimiter.conditional)
+(switch_default ":" @punctuation.delimiter.conditional)
+
+(for_statement ["(" ")"] @punctuation.bracket.repeat)
+(for_statement body: (statement_block ["{" "}"] @punctuation.bracket.repeat))
+(for_in_statement ["(" ")"] @punctuation.bracket.repeat)
+(for_in_statement body: (statement_block ["{" "}"] @punctuation.bracket.repeat))
+(while_statement condition: (parenthesized_expression ["(" ")"] @punctuation.bracket.repeat))
+(while_statement body: (statement_block ["{" "}"] @punctuation.bracket.repeat))
+(do_statement body: (statement_block ["{" "}"] @punctuation.bracket.repeat))
+(do_statement condition: (parenthesized_expression ["(" ")"] @punctuation.bracket.repeat))
+
+(with_statement body: (statement_block ["{" "}"] @punctuation.bracket.with))
+
+(try_statement body: (statement_block ["{" "}"] @punctuation.bracket.exception))
+(catch_clause ["(" ")"] @punctuation.bracket.exception)
+(catch_clause body: (statement_block ["{" "}"] @punctuation.bracket.exception))
+(finally_clause body: (statement_block ["{" "}"] @punctuation.bracket.exception))
+
+(class_declaration body: (class_body ["{" "}"] @punctuation.bracket.class))
+
+(function_declaration parameters: (formal_parameters ["(" ")"] @punctuation.bracket.function))
+(function_declaration parameters: (formal_parameters "," @punctuation.delimiter.function))
+(function_declaration body: (statement_block ["{" "}"] @punctuation.bracket.function))
+(generator_function_declaration parameters: (formal_parameters ["(" ")"] @punctuation.bracket.function))
+(generator_function_declaration parameters: (formal_parameters "," @punctuation.delimiter.function))
+(generator_function_declaration body: (statement_block ["{" "}"] @punctuation.bracket.function))
+(function parameters: (formal_parameters ["(" ")"] @punctuation.bracket.function))
+(function parameters: (formal_parameters "," @punctuation.delimiter.function))
+(function body: (statement_block ["{" "}"] @punctuation.bracket.function))
+(arrow_function parameters: (formal_parameters ["(" ")"] @punctuation.bracket.function))
+(arrow_function parameters: (formal_parameters "," @punctuation.delimiter.function))
+(arrow_function "=>" @punctuation.special.function)
+(arrow_function body: (statement_block ["{" "}"] @punctuation.bracket.function))
+(generator_function_declaration "*" @punctuation.special.function)
+(method_definition "*" @punctuation.special.function)
+(method_definition parameters: (formal_parameters ["(" ")"] @punctuation.bracket.function))
+(method_definition parameters: (formal_parameters "," @punctuation.delimiter.function))
+(method_definition body: (statement_block ["{" "}"] @punctuation.bracket.function))
 
 ; Keywords
 ;----------
 
-[
-  "if"
-  "else"
-  "switch"
-  "case"
-] @conditional
+["if" "else" "switch" "case" "default"] @keyword @conditional
+
+["import" "from" "as"] @keyword @include
+
+["new" "delete" "typeof" "in" "instanceof" "void"] @keyword @keyword.operator
+
+["for" "do" "of" "while"] @keyword @repeat
+
+(for_in_statement operator: "in" @keyword @repeat)
+
+["async" "await"] @keyword @keyword.async
 
 [
-  "import"
-  "from"
-] @include
+"class"
+"extends"
+"static" @storageclass
+"get"
+"set"
+] @keyword @keyword.class
 
-(export_specifier "as" @include)
-(import_specifier "as" @include)
-(namespace_export "as" @include)
-(namespace_import "as" @include)
+"debugger" @keyword @keyword.debugger
 
-[
-  "for"
-  "of"
-  "do"
-  "while"
-  "continue"
-] @repeat
+"with" @keyword @keyword.with
 
-[
-  "break"
-  "class"
-  "const"
-  "debugger"
-  "export"
-  "extends"
-  "get"
-  "in"
-  "instanceof"
-  "let"
-  "set"
-  "static"
-  "target"
-  "typeof"
-  "var"
-  "with"
-] @keyword
+["const" "let" "var"] @keyword @keyword.declaration
 
-[
-  "async"
-  "await"
-] @keyword.coroutine
+["return" "yield" "export"] @keyword @keyword.return
+(export_statement "default" @keyword @keyword.return)
 
-[
-  "return"
-  "yield"
-] @keyword.return
+(break_statement "break" @keyword @keyword.break)
+(continue_statement "continue" @keyword @keyword.continue)
 
-[
-  "function"
-] @keyword.function
+"function" @keyword @keyword.function
 
-[
-  "new"
-  "delete"
-] @keyword.operator
-
-[
-  "throw"
-  "try"
-  "catch"
-  "finally"
-] @exception
-
-(export_statement
-  "default" @keyword)
-(switch_default
-  "default" @conditional)
+["throw" "try" "catch" "finally"] @keyword @exception
