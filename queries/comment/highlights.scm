@@ -8,10 +8,10 @@
 (tag (name) @text.note (user)? @constant)
 
 ((tag ((name) @text.warning))
- (#any-of? @text.warning "TODO" "HACK" "WARNING"))
+ (#any-of? @text.warning "TODO" "HACK" "WARNING" "NOTE"))
 
 ("text" @text.warning
- (#any-of? @text.warning "TODO" "HACK" "WARNING"))
+ (#any-of? @text.warning "TODO" "HACK" "WARNING" "NOTE"))
 
 ((tag ((name) @text.danger))
  (#any-of? @text.danger "FIXME" "XXX" "BUG"))
