@@ -149,7 +149,7 @@
 [
   (line_comment)
   (block_comment)
-] @comment
+] @comment @spell
 
 [
 (true)

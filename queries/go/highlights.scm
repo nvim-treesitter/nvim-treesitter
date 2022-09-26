@@ -185,8 +185,7 @@
 ; Literals
 
 (interpreted_string_literal) @string
-(raw_string_literal) @string
-(raw_string_literal) @spell
+(raw_string_literal) @string @spell
 (rune_literal) @string
 (escape_sequence) @string.escape
 
@@ -202,8 +201,7 @@
   . (literal_element (identifier) @field))
 (field_declaration name: (field_identifier) @field)
 
-(comment) @comment
-(comment) @spell
+(comment) @comment @spell
 
 (ERROR) @error
 

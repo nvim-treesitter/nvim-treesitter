@@ -44,7 +44,7 @@
  (string)
  (raw_string)
  (heredoc_body)
-] @string
+] @string @spell
 
 (variable_assignment (word) @string)
 
@@ -84,7 +84,7 @@
 ((word) @boolean
   (#match? @boolean "^(true|false)$"))
 
-(comment) @comment
+(comment) @comment @spell
 (test_operator) @string
 
 (command_substitution

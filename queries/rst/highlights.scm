@@ -157,8 +157,7 @@
 
 (title) @text.title
 
-(comment) @comment
-(comment) @spell
+(comment) @comment @spell
 (comment "..") @comment
 
 (directive

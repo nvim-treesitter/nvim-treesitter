@@ -74,7 +74,7 @@
 
 (implicit_type) @keyword
 
-(comment) @comment
+(comment) @comment @spell
 
 (using_directive
   (identifier) @type)

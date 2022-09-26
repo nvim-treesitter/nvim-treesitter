@@ -26,7 +26,7 @@
   "@"
 ] @operator
 
-(comment) @comment
+(comment) @comment @spell
 
 (image_spec
   (image_tag

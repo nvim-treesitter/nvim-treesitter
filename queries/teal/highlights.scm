@@ -1,8 +1,7 @@
 
 ;; Primitives
 (boolean) @boolean
-(comment) @comment
-(comment) @spell
+(comment) @comment @spell
 (shebang_comment) @comment
 (identifier) @variable
 ((identifier) @variable.builtin
