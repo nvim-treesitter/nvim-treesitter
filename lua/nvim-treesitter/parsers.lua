@@ -1293,6 +1293,13 @@ list.vhs = {
   filetype = "tape",
 }
 
+list.awk = {
+  install_info = {
+    url = "https://github.com/Beaglefoot/tree-sitter-awk",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
