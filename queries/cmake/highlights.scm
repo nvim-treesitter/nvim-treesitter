@@ -9,7 +9,7 @@
 [
  (bracket_comment)
  (line_comment)
-] @comment
+] @comment @spell
 
 (normal_command (identifier) @function)
 

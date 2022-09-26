@@ -11,7 +11,7 @@
  (important)
  ] @keyword
 
-(comment) @comment
+(comment) @comment @spell
 
 [
  (tag_name)

@@ -96,8 +96,10 @@
 (statement_label) @label
 
 ; Comments
-(comment) @comment
-(multiline_comment) @comment
+[
+ (comment)
+ (multiline_comment)
+] @comment @spell
 
 ; String literals
 (line_str_text) @string

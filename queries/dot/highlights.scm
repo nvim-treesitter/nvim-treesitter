@@ -51,4 +51,6 @@
 (preproc)
 ] @comment
 
+(comment) @spell
+
 (ERROR) @error

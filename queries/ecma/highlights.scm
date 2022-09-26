@@ -108,7 +108,7 @@
 ] @boolean
 
 [
-  (null) 
+  (null)
   (undefined)
 ] @constant.builtin
 
@@ -117,7 +117,9 @@
   (hash_bang_line)
 ] @comment
 
-(string) @string
+(comment) @spell
+
+(string) @string @spell
 (template_string) @string
 (escape_sequence) @string.escape
 (regex_pattern) @string.regex
