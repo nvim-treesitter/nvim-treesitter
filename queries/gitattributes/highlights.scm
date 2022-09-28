@@ -50,5 +50,4 @@
 
 (ERROR) @error
 
-(comment) @comment
-(comment) @spell
+(comment) @comment @spell
