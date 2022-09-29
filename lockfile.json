@@ -341,6 +341,9 @@
   "slint": {
     "revision": "d422300f5d6ccce8f9a617dfed57aafb636fadb2"
   },
+  "smali": {
+    "revision": "c444763beb9762b20c86bbaf402534c7701fa75c"
+  },
   "solidity": {
     "revision": "52ed0880c0126df2f2c7693f215fe6f38e4a2e0a"
   },

@@ -1331,6 +1331,15 @@ list.mermaid = {
   experimental = true,
 }
 
+list.smali = {
+  install_info = {
+    url = "https://git.sr.ht/~yotam/tree-sitter-smali",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@ObserverOfTime" },
+  experimental = true,
+}
+
 list.ebnf = {
   install_info = {
     url = "https://github.com/RubixDev/ebnf.git",
