@@ -39,7 +39,7 @@
     "revision": "5e113412aadb78955c27010daa4dbe1d202013cf"
   },
   "cpp": {
-    "revision": "f40125503642845492d87fa56ece3ed26a4ef4db"
+    "revision": "45593f057894db133da3cd46ac954626e0abdaf0"
   },
   "css": {
     "revision": "769203d0f9abe1a9a691ac2b9fe4bb4397a73c51"
@@ -219,7 +219,7 @@
     "revision": "db7953acb0d5551f207373c81fa07a57d7b085cb"
   },
   "meson": {
-    "revision": "13d86d307b421a48d787ce4148371816356de040"
+    "revision": "0c48b0e1b19bef8686b1dcd74f3eefadfbdb7503"
   },
   "ninja": {
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
@@ -300,7 +300,7 @@
     "revision": "25e6328872ac3a764ba8b926aea12719741103f1"
   },
   "ruby": {
-    "revision": "656abef0645caea793e33c1c773570722463e1d8"
+    "revision": "30f9807df1f5015be5fade0b0e54948d2c5f8310"
   },
   "rust": {
     "revision": "47b061c1e1ba3a7e9c2f450363a50e87de3f7c61"
@@ -315,7 +315,7 @@
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
   },
   "slint": {
-    "revision": "e288676635e3cac2b000b32afd0854dc4db39b41"
+    "revision": "d422300f5d6ccce8f9a617dfed57aafb636fadb2"
   },
   "solidity": {
     "revision": "52ed0880c0126df2f2c7693f215fe6f38e4a2e0a"
@@ -324,7 +324,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "ae3384d69ca86c39dfe81248cb6010e3163bdd65"
+    "revision": "740f9b0ea34c1027e7b6e1d8c39f4c8798484335"
   },
   "supercollider": {
     "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
@@ -366,7 +366,7 @@
     "revision": "082da44a5263599186dadafd2c974c19f3a73d28"
   },
   "v": {
-    "revision": "93767cb0adef03dead4155d9e500ca2a0b44c133"
+    "revision": "8af4c9eab6bda1a2d6932c48abce01450f5c2083"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -375,7 +375,7 @@
     "revision": "4457145e795b363f072463e697dfe2f6973c9a52"
   },
   "vim": {
-    "revision": "d1d41e825f155d0e9a691ded01ce034a53f173dc"
+    "revision": "a078eb351837d2ceaddad5774cd0b6a141a18846"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
