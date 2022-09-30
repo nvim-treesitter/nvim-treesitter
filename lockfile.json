@@ -66,7 +66,7 @@
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
   "elixir": {
-    "revision": "10e0103109d59c2fbb3b086f4c963427c61b29b2"
+    "revision": "3b8eb02597599ee38cfcc2c0fea76dc37a7472eb"
   },
   "elm": {
     "revision": "cce0e5938e7779f86cf8bf445eadf7df4b88229d"
@@ -144,7 +144,7 @@
     "revision": "881f1c805f51485a26ecd7865d15c9ef8d606a78"
   },
   "help": {
-    "revision": "eee1c58e6a5d8faaf1caf02094f6d531fa85b756"
+    "revision": "c418f88f4b84fd6eb0c765a9a0ea1ce8108a19d9"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
@@ -210,10 +210,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "e375ba95ff9a12418f9b9e7c190f549d08b5380a"
+    "revision": "d5740f0fe4b8e4603f2229df107c5c9ef5eec389"
   },
   "markdown_inline": {
-    "revision": "e375ba95ff9a12418f9b9e7c190f549d08b5380a"
+    "revision": "d5740f0fe4b8e4603f2229df107c5c9ef5eec389"
   },
   "menhir": {
     "revision": "db7953acb0d5551f207373c81fa07a57d7b085cb"
