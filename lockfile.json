@@ -66,7 +66,7 @@
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
   "elixir": {
-    "revision": "05e3631c6a0701c1fa518b0fee7be95a2ceef5e2"
+    "revision": "10e0103109d59c2fbb3b086f4c963427c61b29b2"
   },
   "elm": {
     "revision": "cce0e5938e7779f86cf8bf445eadf7df4b88229d"
@@ -144,7 +144,7 @@
     "revision": "881f1c805f51485a26ecd7865d15c9ef8d606a78"
   },
   "help": {
-    "revision": "55292d96a0c76235c64a2b50aba8c8d9765129df"
+    "revision": "eee1c58e6a5d8faaf1caf02094f6d531fa85b756"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
