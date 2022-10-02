@@ -10,7 +10,7 @@ local M = {}
 -- Note: Some highlight groups may not be applied upstream, some may be experimental
 -- TODO(clason): deprecated and will be removed for Nvim 0.8
 
-local default_map = {
+M.default_map = {
   ["annotation"] = "TSAnnotation",
 
   ["attribute"] = "TSAttribute",
@@ -132,7 +132,7 @@ end
 
 local function link_all_captures()
   if link_captures then
-    for capture, hlgroup in pairs(default_map) do
+    for capture, hlgroup in pairs(M.default_map) do
       link_captures(capture, hlgroup)
     end
   end
