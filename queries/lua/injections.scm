@@ -19,4 +19,18 @@
 ;; highlight string as query if starts with `;; query`
 ((string ("string_content") @query) (#lua-match? @query "^%s*;+%s?query"))
 
+; string.format("pi = %.2f", 3.14159)
+(function_call
+  (dot_index_expression
+    field: (identifier) @_method
+    (#eq? @_method "format"))
+  arguments: (arguments . (string) @printf))
+
+; ("pi = %.2f"):format(3.14159)
+(function_call
+  (method_index_expression
+    table: (_ (string) @printf)
+    method: (identifier) @_method
+    (#eq? @_method "format")))
+
 (comment) @comment

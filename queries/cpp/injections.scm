@@ -1,3 +1,3 @@
-(preproc_arg) @cpp
+; inherits: c
 
-(comment) @comment
+(preproc_arg) @cpp

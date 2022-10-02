@@ -1,3 +1,3 @@
-(preproc_arg) @arduino
+; inherits: c
 
-(comment) @comment
+(preproc_arg) @arduino

@@ -108,24 +108,4 @@
       . ">" @punctuation.bracket)))
 [ "(" ")" "[" "]" "{" "}" ] @punctuation.bracket
 
-;; Only highlight format specifiers in calls to string.format
-;; string.format('...')
-;(function_call
-;  called_object: (index
-;    (identifier) @base
-;    key: (identifier) @entry)
-;  arguments: (arguments .
-;    (string (format_specifier) @string.escape))
-;
-;  (#eq? @base "string")
-;  (#eq? @entry "format"))
-
-;; ('...'):format()
-;(function_call
-;  called_object: (method_index
-;    (string (format_specifier) @string.escape)
-;    key: (identifier) @func-name)
-;    (#eq? @func-name "format"))
-
-
 (ERROR) @error

@@ -1,3 +1,3 @@
-(preproc_arg) @cuda
+; inherits: c
 
-(comment) @comment
+(preproc_arg) @cuda

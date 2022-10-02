@@ -30,3 +30,13 @@
 		(value_arguments
 			(value_argument
 				[ (line_string_literal) (multi_line_string_literal) ] @regex))))
+
+; "pi = %.2f".format(3.14159)
+(call_expression
+  (navigation_expression
+    [
+      (line_string_literal)
+      (multi_line_string_literal)
+    ] @printf
+    (navigation_suffix (simple_identifier) @_method)
+    (#eq? @_method "format")))

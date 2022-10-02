@@ -1,3 +1,3 @@
-(preproc_arg) @hlsl
+; inherits: c
 
-(comment) @comment
+(preproc_arg) @hlsl

@@ -1272,6 +1272,15 @@ list.twig = {
   filetype = "twig",
 }
 
+list.printf = {
+  install_info = {
+    url = "https://github.com/pstuifzand/tree-sitter-printf",
+    files = { "src/parser.c" },
+    branch = "main",
+    readme_name = "printf format strings",
+  },
+}
+
 list.diff = {
   install_info = {
     url = "https://github.com/the-mikedavis/tree-sitter-diff",
