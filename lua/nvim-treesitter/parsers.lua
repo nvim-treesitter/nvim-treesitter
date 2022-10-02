@@ -1331,6 +1331,17 @@ list.mermaid = {
   experimental = true,
 }
 
+list.ebnf = {
+  install_info = {
+    url = "https://github.com/RubixDev/ebnf.git",
+    files = { "src/parser.c" },
+    location = "crates/tree-sitter-ebnf",
+    branch = "main",
+  },
+  maintainers = { "@RubixDev" },
+  experimental = true,
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
