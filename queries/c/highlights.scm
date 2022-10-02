@@ -148,6 +148,9 @@
 (case_statement
   value: (identifier) @constant)
 
+((identifier) @constant.builtin
+    (#any-of? @constant.builtin "stderr" "stdin" "stdout"))
+
 ;; Preproc def / undef
 (preproc_def
   name: (_) @constant)
