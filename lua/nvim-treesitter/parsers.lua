@@ -1259,7 +1259,7 @@ function M.ft_to_lang(ft)
 end
 
 function M.available_parsers()
-  if vim.fn.executable("tree-sitter") == 1 and vim.fn.executable("node") == 1 then
+  if vim.fn.executable "tree-sitter" == 1 and vim.fn.executable "node" == 1 then
     return vim.tbl_keys(M.list)
   else
     return vim.tbl_filter(function(p)
