@@ -19,4 +19,18 @@
 ;; highlight string as query if starts with `;; query`
 ((string ("string_content") @query) (#lua-match? @query "^%s*;+%s?query"))
 
+; string.match("123", "%d+")
+(function_call
+  (dot_index_expression
+    field: (identifier) @_method
+    (#any-of? @_method "find" "gmatch" "gsub" "match"))
+  arguments: (arguments (_) . (string content: _ @luap)))
+
+; ("123"):match("%d+")
+(function_call
+  (method_index_expression
+    method: (identifier) @_method
+    (#any-of? @_method "find" "gmatch" "gsub" "match"))
+    arguments: (arguments . (string content: _ @luap)))
+
 (comment) @comment
