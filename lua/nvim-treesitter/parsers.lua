@@ -1416,6 +1416,16 @@ list.ebnf = {
   experimental = true,
 }
 
+list.htmldjango = {
+  install_info = {
+    url = "https://github.com/interdependence/tree-sitter-htmldjango",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  maintainers = { "@ObserverOfTime" },
+  experimental = true,
+}
+
 list.ini = {
   install_info = {
     url = "https://github.com/justinmk/tree-sitter-ini",
