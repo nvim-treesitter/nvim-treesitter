@@ -39,7 +39,7 @@
     "revision": "5e113412aadb78955c27010daa4dbe1d202013cf"
   },
   "cpp": {
-    "revision": "45593f057894db133da3cd46ac954626e0abdaf0"
+    "revision": "9a877b6180cfc419622363fa56205505565b4a4f"
   },
   "css": {
     "revision": "769203d0f9abe1a9a691ac2b9fe4bb4397a73c51"
@@ -150,7 +150,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "ecdce455eaa3c4089be9f4b202144083b9574a2e"
+    "revision": "723ef1ebb84ebd55d5f2b50097b7e7c795b1160c"
   },
   "hocon": {
     "revision": "bb412e2633f4a3611a4e16efe58d917093bb4782"
@@ -336,7 +336,7 @@
     "revision": "52e122ae68b316d3aa960a0a422d3645ba717f42"
   },
   "swift": {
-    "revision": "42e75d3e03d94467fceec0c4b88d75979c852e4c"
+    "revision": "2645fe3da4def87787473a28dcb0fc76cd5304cd"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
