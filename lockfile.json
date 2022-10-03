@@ -362,6 +362,9 @@
   "turtle": {
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
   },
+  "twig": {
+    "revision": "20ac35cd92be2ad075a0c5bcce7c3d222c713bf9"
+  },
   "typescript": {
     "revision": "082da44a5263599186dadafd2c974c19f3a73d28"
   },
