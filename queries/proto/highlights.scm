@@ -9,6 +9,7 @@
   "message"
   "enum"
   "oneof"
+  "optional"
   "repeated"
   "reserved"
   "to"

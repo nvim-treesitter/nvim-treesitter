@@ -212,6 +212,8 @@
 	(shebang_line)
 ] @comment
 
+(comment) @spell
+
 (real_literal) @float
 [
 	(integer_literal)

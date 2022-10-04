@@ -652,6 +652,7 @@ list.pug = {
   },
   maintainers = { "@zealot128" },
   filetype = "pug",
+  experimental = true,
 }
 
 list.vue = {
@@ -963,12 +964,11 @@ list.vim = {
 
 list.help = {
   install_info = {
-    url = "https://github.com/vigoux/tree-sitter-vimdoc",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = "https://github.com/neovim/tree-sitter-vimdoc",
+    files = { "src/parser.c" },
   },
   filetype = "help",
   maintainers = { "@vigoux" },
-  experimental = true,
 }
 
 list.json5 = {
@@ -1231,6 +1231,16 @@ list.blueprint = {
   },
   maintainers = { "@gabmus" },
   experimental = true,
+}
+
+list.twig = {
+  install_info = {
+    url = "https://github.com/gbprod/tree-sitter-twig",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@gbprod" },
+  filetype = "twig",
 }
 
 local M = {

@@ -140,8 +140,7 @@
 (integer) @number
 (float) @float
 
-(comment) @comment
-(comment) @spell
+(comment) @comment @spell
 (string) @string
 [
   (escape_sequence)

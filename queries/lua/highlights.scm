@@ -180,15 +180,13 @@
 
 ;; Others
 
-(comment) @comment
-(comment) @spell
+(comment) @comment @spell
 
 (hash_bang_line) @comment
 
 (number) @number
 
-(string) @string
-(string) @spell
+(string) @string @spell
 
 ;; Error
 (ERROR) @error

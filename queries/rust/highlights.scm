@@ -147,12 +147,7 @@
 [
   (line_comment)
   (block_comment)
-] @comment
-
-[
-  (line_comment)
-  (block_comment)
-] @spell
+] @comment @spell
 
 (boolean_literal) @boolean
 (integer_literal) @number
