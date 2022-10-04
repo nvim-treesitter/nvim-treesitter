@@ -39,7 +39,7 @@
     "revision": "5e113412aadb78955c27010daa4dbe1d202013cf"
   },
   "cpp": {
-    "revision": "9a877b6180cfc419622363fa56205505565b4a4f"
+    "revision": "d5e90fba898f320db48d81ddedd78d52c67c1fed"
   },
   "css": {
     "revision": "769203d0f9abe1a9a691ac2b9fe4bb4397a73c51"
@@ -150,7 +150,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "723ef1ebb84ebd55d5f2b50097b7e7c795b1160c"
+    "revision": "85720a54b9706c9d82816d09d7cf495193cdfa22"
   },
   "hocon": {
     "revision": "bb412e2633f4a3611a4e16efe58d917093bb4782"
@@ -171,7 +171,7 @@
     "revision": "189a6a4829beb9cdbe837260653b4a3dfb0cc3db"
   },
   "json": {
-    "revision": "11e2cc12d9b267766fb11a06e52952792fd8e3f0"
+    "revision": "73076754005a460947cafe8e03a8cf5fa4fa2938"
   },
   "json5": {
     "revision": "5dd5cdc418d9659682556b6adca2dd9ace0ac6d2"
@@ -363,7 +363,7 @@
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
   },
   "twig": {
-    "revision": "20ac35cd92be2ad075a0c5bcce7c3d222c713bf9"
+    "revision": "913eb7e9aa7933b590d193d0d5ae6dcfc47e9fce"
   },
   "typescript": {
     "revision": "082da44a5263599186dadafd2c974c19f3a73d28"
@@ -393,6 +393,6 @@
     "revision": "8e9d175982afcefa3dac8ca20d40d1643accd2bd"
   },
   "zig": {
-    "revision": "882ff6b55a0b56f584b32647fda25eb2187b31e0"
+    "revision": "433574f2a086a13cb30463f1f9c72a9be4f88a57"
   }
 }
