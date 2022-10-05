@@ -144,7 +144,7 @@
     "revision": "881f1c805f51485a26ecd7865d15c9ef8d606a78"
   },
   "help": {
-    "revision": "c27e3e21a54f6d90dfb791f37d90eab5b28de971"
+    "revision": "d5950211e725fe7f5af50a5eea1b47adfc02ceb2"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
@@ -324,7 +324,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "740f9b0ea34c1027e7b6e1d8c39f4c8798484335"
+    "revision": "f5ed7f1cbbdb4e4cd0ce9535c5aa3b06f9e3bee7"
   },
   "supercollider": {
     "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
