@@ -1,4 +1,4 @@
-(comment) @comment
+(comment) @comment @spell
 
 (filter_identifier) @function.call
 (function_identifier) @function.call
