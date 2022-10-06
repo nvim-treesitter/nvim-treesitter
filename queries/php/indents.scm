@@ -6,6 +6,7 @@
   (return_statement)
   (arguments)
   (formal_parameters)
+  "["
 ] @indent
 
 [
