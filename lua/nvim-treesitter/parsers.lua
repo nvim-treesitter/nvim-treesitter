@@ -1443,6 +1443,17 @@ list.ini = {
   experimental = true,
 }
 
+list.poe_filter = {
+  install_info = {
+    url = "https://github.com/ObserverOfTime/tree-sitter-poe-filter",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@ObserverOfTime" },
+  experimental = true,
+  filetype = "poefilter",
+  readme_name = "Path of Exile item filter",
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,

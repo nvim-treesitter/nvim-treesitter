@@ -296,6 +296,9 @@
   "pioasm": {
     "revision": "924aadaf5dea2a6074d72027b064f939acf32e20"
   },
+  "poe_filter": {
+    "revision": "80dc10195e26c72598ed1ab02cdf2d8e4c792e7b"
+  },
   "prisma": {
     "revision": "eca2596a355b1a9952b4f80f8f9caed300a272b5"
   },
