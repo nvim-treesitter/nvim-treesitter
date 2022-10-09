@@ -51,7 +51,7 @@ M.default_map = {
   ["keyword.function"] = "TSKeywordFunction",
   ["keyword.operator"] = "TSKeywordOperator",
   ["keyword.return"] = "TSKeywordReturn",
-  ["keyword.using"] = "TSUsingDeclaration"
+  ["keyword.using"] = "TSUsingDeclaration",
 
   ["label"] = "TSLabel",
 
@@ -65,10 +65,10 @@ M.default_map = {
 
   ["operator"] = "TSOperator",
   ["parameter"] = "TSParameter",
-  ["operator.insertion"] = "TSOperatorInsertion"
+  ["operator.insertion"] = "TSOperatorInsertion",
   ["parameter.reference"] = "TSParameterReference",
-  ["reference.declarator"] = "TSReferenceDeclarator"
-  ["pointer.declarator"] = "TSPointerDeclarator"
+  ["reference.declarator"] = "TSReferenceDeclarator",
+  ["pointer.declarator"] = "TSPointerDeclarator",
 
   ["preproc"] = "TSPreProc",
 
@@ -113,7 +113,7 @@ M.default_map = {
   ["todo"] = "TSTodo",
 
   ["type"] = "TSType",
-  ["primitive_type"] = "TSTypeBuiltin"
+  ["primitive_type"] = "TSTypeBuiltin",
   ["type.builtin"] = "TSTypeBuiltin",
   ["type.qualifier"] = "TSTypeQualifier",
   ["type.definition"] = "TSTypeDefinition",
