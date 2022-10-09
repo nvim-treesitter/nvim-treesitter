@@ -196,7 +196,7 @@
 
 "return" @keyword.return
 
-(comment) @comment
+(comment) @comment @spell
 
 ;; `case` is a conditional keyword in case_block
 

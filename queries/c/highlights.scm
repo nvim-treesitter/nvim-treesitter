@@ -179,7 +179,7 @@
 (preproc_function_def
   name: (identifier) @function.macro)
 
-(comment) @comment
+(comment) @comment @spell
 
 ;; Parameters
 (parameter_declaration

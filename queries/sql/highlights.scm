@@ -2,15 +2,22 @@
   name: (identifier) @function.call
   parameter: [(field)]? @parameter)
 
+(keyword_gist) @function.call
+(keyword_btree) @function.call
+(keyword_hash) @function.call
+(keyword_spgist) @function.call
+(keyword_gin) @function.call
+(keyword_brin) @function.call
+(keyword_float) @function.call
+
 (count
   name: (identifier) @function.call
   parameter: [(field)]? @parameter)
 
-(table_expression
+(table_reference
   name: (identifier) @type)
 
-(table_expression
-  name: (identifier) @type
+(relation
   table_alias: (identifier) @variable)
 
 (field
@@ -19,20 +26,19 @@
 
 (literal) @string
 (comment) @comment
+(marginalia) @comment
 
 ((literal) @number
- (lua-match? @number "^%d+$"))
+ (#lua-match? @number "^%d+$"))
 
 [
   (keyword_select)
   (keyword_from)
   (keyword_where)
-  (keyword_use)
   (keyword_index)
   (keyword_join)
   (keyword_on)
   (keyword_primary)
-  (keyword_select)
   (keyword_delete)
   (keyword_create)
   (keyword_insert)
@@ -42,16 +48,14 @@
   (keyword_into)
   (keyword_values)
   (keyword_set)
-  (keyword_from)
   (keyword_left)
   (keyword_right)
   (keyword_outer)
   (keyword_inner)
-  (keyword_join)
-  (keyword_on)
-  (keyword_where)
-  (keyword_order_by)
-  (keyword_group_by)
+  (keyword_order)
+  (keyword_group)
+  (keyword_partition)
+  (keyword_by)
   (keyword_having)
   (keyword_desc)
   (keyword_asc)
@@ -63,7 +67,6 @@
   (keyword_constraint)
   (keyword_force)
   (keyword_use)
-  (keyword_index)
   (keyword_for)
   (keyword_if)
   (keyword_exists)
@@ -88,6 +91,8 @@
   (keyword_is)
   (keyword_using)
   (keyword_cascade)
+  (keyword_between)
+  (keyword_window)
   (double)
   (keyword_with)
   (keyword_no)
@@ -138,6 +143,10 @@
   (keyword_geography)
   (keyword_box2d)
   (keyword_box3d)
+  (keyword_only)
+  (keyword_like)
+  (keyword_similar)
+  (keyword_over)
 ] @keyword
 
 [

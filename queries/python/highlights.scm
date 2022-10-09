@@ -140,13 +140,16 @@
 (integer) @number
 (float) @float
 
-(comment) @comment
+(comment) @comment @spell
 (string) @string
 [
   (escape_sequence)
   "{{"
   "}}"
 ] @string.escape
+
+; doc-strings
+(expression_statement (string) @spell)
 
 ; Tokens
 

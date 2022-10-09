@@ -33,11 +33,16 @@
   "typealias"
   "struct"
   "class"
+  "actor"
+  "nonisolated"
   "enum"
   "protocol"
   "extension"
   "indirect"
   "some"
+  "override"
+  "convenience"
+  "required"
 ] @keyword
 
 [
@@ -68,7 +73,7 @@
 ; Statements
 (for_statement ["for" @repeat])
 (for_statement ["in" @repeat])
-(for_statement item: (simple_identifier) @variable)
+(for_statement (pattern) @variable)
 (else) @keyword
 (as_operator) @keyword
 
@@ -91,8 +96,10 @@
 (statement_label) @label
 
 ; Comments
-(comment) @comment
-(multiline_comment) @comment
+[
+ (comment)
+ (multiline_comment)
+] @comment @spell
 
 ; String literals
 (line_str_text) @string

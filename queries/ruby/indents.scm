@@ -18,6 +18,7 @@
   (begin)
   (unless)
   (assignment)
+  (parenthesized_statements)
 ] @indent
 
 [
@@ -28,9 +29,7 @@
 ] @indent_end
 
 [
-  "("
   ")"
-  "{"
   "}"
   "["
   "]"

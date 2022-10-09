@@ -45,7 +45,7 @@
 ] @branch
 (statement_block "{" @branch)
 
-"}" @indent_end
+["}" "]"] @indent_end
 
 [
   (comment)

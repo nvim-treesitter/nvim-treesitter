@@ -144,7 +144,7 @@
 [
   (line_comment)
   (block_comment)
-] @comment
+] @comment @spell
 
 (boolean_literal) @boolean
 (integer_literal) @number

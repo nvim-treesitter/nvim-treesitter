@@ -48,11 +48,10 @@
     "["
     "]"
     "("
-   (link_destination)
+    (link_destination)
     ")"
-] @conceal
-(#set! conceal ""))
-
+  ] @conceal
+  (#set! conceal ""))
 
 ; Conceal image links
 (image
@@ -61,7 +60,32 @@
     "["
     "]"
     "("
-   (link_destination)
+    (link_destination)
     ")"
-] @conceal
+  ] @conceal
+  (#set! conceal ""))
+
+; Conceal full reference links
+(full_reference_link
+  [
+    "["
+    "]"
+    (link_label)
+  ] @conceal
+  (#set! conceal ""))
+
+; Conceal collapsed reference links
+(collapsed_reference_link
+  [
+    "["
+    "]"
+  ] @conceal
+  (#set! conceal ""))
+
+; Conceal shortcut links
+(shortcut_link
+  [
+    "["
+    "]"
+  ] @conceal
   (#set! conceal ""))

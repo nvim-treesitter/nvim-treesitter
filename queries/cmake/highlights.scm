@@ -9,7 +9,7 @@
 [
  (bracket_comment)
  (line_comment)
-] @comment
+] @comment @spell
 
 (normal_command (identifier) @function)
 
@@ -123,3 +123,4 @@
   (#match? @function.builtin "\\c^(add_custom_command)$")
 )
 
+(escape_sequence) @string.escape

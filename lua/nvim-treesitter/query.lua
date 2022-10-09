@@ -209,7 +209,7 @@ function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
   local matches = query:iter_matches(qnode, bufnr, start_row, end_row)
 
   local function iterator()
-    local pattern, match = matches()
+    local pattern, match, metadata = matches()
     if pattern ~= nil then
       local prepared_match = {}
 
@@ -219,6 +219,8 @@ function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
         if name ~= nil then
           local path = split(name .. ".node")
           insert_to_path(prepared_match, path, node)
+          local metadata_path = split(name .. ".metadata")
+          insert_to_path(prepared_match, metadata_path, metadata[id])
         end
       end
 

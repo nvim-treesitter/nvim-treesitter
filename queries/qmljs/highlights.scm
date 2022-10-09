@@ -72,7 +72,7 @@
 ;;; function
 (call_expression
   function: (member_expression
-		object: (identifier) @variable
+    object: (identifier) @variable
     property:(property_identifier) @function
   )
 )
@@ -119,7 +119,7 @@
 (predefined_type) @type.builtin
 
 ((identifier) @type
- (#match? @type "^[A-Z]"))
+  (#match? @type "^[A-Z]"))
 
 (type_arguments
   "<" @punctuation.bracket
@@ -148,3 +148,7 @@
   "override"
 ] @keyword
 
+[
+  (true)
+  (false)
+] @boolean

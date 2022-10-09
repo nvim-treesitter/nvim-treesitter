@@ -234,3 +234,10 @@
   command: _ @include
   paths: (curly_group_path_list) @string)
 
+(
+    (text) @spell
+    (#not-has-parent? @spell
+        inline_formula
+        displayed_equation
+    )
+)

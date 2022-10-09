@@ -1,5 +1,4 @@
 local api = vim.api
-local luv = vim.loop
 
 local queries = require "nvim-treesitter.query"
 local ts_query = require "vim.treesitter.query"
@@ -402,6 +401,7 @@ function M.setup(user_data)
   end
 
   config.modules.ensure_installed = nil
+  config.ensure_installed = ensure_installed
 
   recurse_modules(function(_, _, new_path)
     local data = utils.get_at_path(config.modules, new_path)
@@ -548,34 +548,26 @@ end
 function M.get_parser_install_dir(folder_name)
   folder_name = folder_name or "parser"
 
+  local install_dir
   if config.parser_install_dir then
-    local parser_dir = utils.join_path(config.parser_install_dir, folder_name)
-    return utils.create_or_reuse_writable_dir(
-      parser_dir,
-      utils.join_space("Could not create parser dir '", parser_dir, "': "),
-      utils.join_space("Parser dir '", parser_dir, "' should be read/write.")
-    )
+    install_dir = config.parser_install_dir
+  else
+    install_dir = utils.get_package_path()
   end
-
-  local package_path = utils.get_package_path()
-  local package_path_parser_dir = utils.join_path(package_path, folder_name)
-
-  -- If package_path is read/write, use that
-  if luv.fs_access(package_path_parser_dir, "RW") then
-    return package_path_parser_dir
-  end
-
-  local site_dir = utils.get_site_dir()
-  local parser_dir = utils.join_path(site_dir, folder_name)
+  local parser_dir = utils.join_path(install_dir, folder_name)
 
   return utils.create_or_reuse_writable_dir(
     parser_dir,
-    nil,
-    utils.join_space("Invalid rights,", package_path, "or", parser_dir, "should be read/write")
+    utils.join_space("Could not create parser dir '", parser_dir, "': "),
+    utils.join_space(
+      "Parser dir '",
+      parser_dir,
+      "' should be read/write (see README on how to configure an alternative install location)"
+    )
   )
 end
 
-function M.get_parser_info_dir(parser_install_dir)
+function M.get_parser_info_dir()
   return M.get_parser_install_dir "parser-info"
 end
 
@@ -585,6 +577,10 @@ end
 
 function M.get_ignored_parser_installs()
   return config.ignore_install or {}
+end
+
+function M.get_ensure_installed_parsers()
+  return config.ensure_installed or {}
 end
 
 return M

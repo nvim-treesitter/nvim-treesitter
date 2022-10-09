@@ -149,7 +149,7 @@
 [
   (line_comment)
   (block_comment)
-] @comment
+] @comment @spell
 
 [
 (true)
@@ -178,11 +178,14 @@
 "open"
 "opens"
 "package"
+"permits"
 "private"
 "protected"
 "provides"
 "public"
 "requires"
+"sealed"
+"non-sealed"
 "static"
 "strictfp"
 "synchronized"

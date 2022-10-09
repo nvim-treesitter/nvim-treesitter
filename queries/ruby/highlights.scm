@@ -1,5 +1,6 @@
 ; Variables
 (identifier) @variable
+(global_variable) @variable.global
 
 ; Keywords
 
@@ -162,6 +163,8 @@
  ] @boolean
 
 (comment) @comment
+(comment) @spell
+(string_content) @spell
 
 ; Operators
 

@@ -165,6 +165,7 @@ effect on highlighting. We will work on improving highlighting in the near futur
 ```
 @variable
 @variable.builtin
+@variable.global
 ```
 
 #### Text
@@ -205,6 +206,10 @@ Used for xml-like tags
 #### Conceal
 
 @conceal followed by `(#set! conceal "")` for captures that are not used for highlights but only for concealing.
+
+#### Spell
+
+@spell for defining regions to be spellchecked.
 
 ### Locals
 
