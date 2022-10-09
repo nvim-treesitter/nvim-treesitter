@@ -34,15 +34,15 @@
   "struct"
   "class"
   "actor"
-  "nonisolated"
   "enum"
   "protocol"
   "extension"
   "indirect"
-  "some"
+  "nonisolated"
   "override"
   "convenience"
   "required"
+  "some"
 ] @keyword
 
 [
@@ -123,6 +123,9 @@
 (real_literal) @float
 (boolean_literal) @boolean
 "nil" @variable.builtin
+
+; Regex literals
+(regex_literal) @string.regex
 
 ; Operators
 (custom_operator) @operator
