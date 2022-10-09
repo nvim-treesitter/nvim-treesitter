@@ -144,7 +144,7 @@
     "revision": "881f1c805f51485a26ecd7865d15c9ef8d606a78"
   },
   "help": {
-    "revision": "d5950211e725fe7f5af50a5eea1b47adfc02ceb2"
+    "revision": "c03640a80722a95dbac9f43d074cae2af3c0d017"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
@@ -336,7 +336,7 @@
     "revision": "52e122ae68b316d3aa960a0a422d3645ba717f42"
   },
   "swift": {
-    "revision": "3cd052dee72128b1d92b8c4928390b75417c8e6f"
+    "revision": "a828c40ee9881e8705182c23a829b38a2199a00d"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
