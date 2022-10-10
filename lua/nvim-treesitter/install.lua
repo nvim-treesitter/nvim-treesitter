@@ -482,6 +482,12 @@ function M.uninstall(...)
       M.uninstall(langitem)
     end
   elseif ... then
+    local ensure_installed_parsers = configs.get_ensure_installed_parsers()
+    if ensure_installed_parsers == "all" then
+      ensure_installed_parsers = parsers.available_parsers()
+    end
+    ensure_installed_parsers = utils.difference(ensure_installed_parsers, configs.get_ignored_parser_installs())
+
     local languages = vim.tbl_flatten { ... }
     for _, lang in ipairs(languages) do
       local install_dir, err = configs.get_parser_install_dir()
@@ -489,7 +495,7 @@ function M.uninstall(...)
         return api.nvim_err_writeln(err)
       end
 
-      if vim.tbl_contains(configs.get_ensure_installed_parsers(), lang) then
+      if vim.tbl_contains(ensure_installed_parsers, lang) then
         vim.notify(
           "Uninstalling "
             .. lang
