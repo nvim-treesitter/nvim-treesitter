@@ -45,7 +45,7 @@
     "revision": "769203d0f9abe1a9a691ac2b9fe4bb4397a73c51"
   },
   "cuda": {
-    "revision": "cb72fa0fb94fccf59de5ac94b42be3601cf63fb5"
+    "revision": "1b77db14c8b6390cd9acd140553c8d2922db5dd2"
   },
   "d": {
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
@@ -150,7 +150,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "85720a54b9706c9d82816d09d7cf495193cdfa22"
+    "revision": "0fe3e609f48d19a55d8cdd7afea51a99c26b8279"
   },
   "hocon": {
     "revision": "bb412e2633f4a3611a4e16efe58d917093bb4782"
