@@ -7,8 +7,6 @@
 ;; In case you want type highlighting based on Julia naming conventions (this might collide with mathematical notation)
 ;((identifier) @type ; exception: mark `A_foo` sort of identifiers as variables
   ;(match? @type "^[A-Z][^_]"))
-((identifier) @constant
-  (#match? @constant "^[A-Z][A-Z_]{2}[A-Z_]*$"))
 
 (macro_identifier) @function.macro
 (macro_identifier (identifier) @function.macro) ; for any one using the variable highlight
