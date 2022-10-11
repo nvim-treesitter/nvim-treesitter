@@ -7,6 +7,7 @@
   (arguments)
   (formal_parameters)
   (enum_declaration_list)
+  (anonymous_function_creation_expression)
   "["
 ] @indent
 

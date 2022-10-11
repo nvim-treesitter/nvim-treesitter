@@ -1,0 +1,3 @@
+<?php
+
+$e = function($param) {
