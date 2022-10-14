@@ -158,20 +158,17 @@
  "new"
  "delete"
 
- ;; these keywords are not supported by the parser
- ;"eq"
- ;"not_eq"
- ;
- ;"compl"
- ;"and"
- ;"or"
- ;
- ;"bitand"
- ;"bitand_eq"
- ;"bitor"
- ;"bitor_eq"
- ;"xor"
- ;"xor_eq"
+ "xor"
+ "bitand"
+ "bitor"
+ "compl"
+ "not"
+ "xor_eq"
+ "and_eq"
+ "or_eq"
+ "not_eq"
+ "and"
+ "or"
 ] @keyword.operator
 
 "<=>" @operator

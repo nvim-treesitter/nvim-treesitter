@@ -6,6 +6,8 @@
   (return_statement)
   (arguments)
   (formal_parameters)
+  (enum_declaration_list)
+  "["
 ] @indent
 
 [
