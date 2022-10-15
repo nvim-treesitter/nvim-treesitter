@@ -276,7 +276,7 @@
     "revision": "0b2b25bcaa7d4925d5f0dda16f6a99c588a437f1"
   },
   "query": {
-    "revision": "5217c6805c09f8fc00ed13d17d5fcb791437aee6"
+    "revision": "0695cd0760532de7b54f23c667d459b5d1332b44"
   },
   "r": {
     "revision": "0f4f66e5050037b759ea040dafd596bcdda1de94"
@@ -378,7 +378,7 @@
     "revision": "4457145e795b363f072463e697dfe2f6973c9a52"
   },
   "vim": {
-    "revision": "a078eb351837d2ceaddad5774cd0b6a141a18846"
+    "revision": "6b4caf267391e11864fd07e14c66eef9db17b89b"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
@@ -393,6 +393,6 @@
     "revision": "8e9d175982afcefa3dac8ca20d40d1643accd2bd"
   },
   "zig": {
-    "revision": "433574f2a086a13cb30463f1f9c72a9be4f88a57"
+    "revision": "b1803f2a665d228f968a831eac4fcc07a377c7bc"
   }
 }
