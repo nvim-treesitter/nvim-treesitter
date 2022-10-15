@@ -211,13 +211,15 @@
 [
   "break"
   "continue"
-  "for"
   "in"
   "loop"
   "while"
 ] @repeat
 
-
+(impl_item
+  "for" @keyword)
+(for_expression
+  "for" @repeat)
 
 ;;; Operators & Punctuation
 
