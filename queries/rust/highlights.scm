@@ -25,7 +25,6 @@
 
 (self) @variable.builtin
 
-(lifetime   ["'" (identifier)] @label)
 (loop_label ["'" (identifier)] @label)
 
 
@@ -172,7 +171,6 @@
 [
   "async"
   "await"
-  "const"
   "default"
   "dyn"
   "enum"
@@ -182,16 +180,25 @@
   "match"
   "move"
   "pub"
-  "ref"
-  "static"
   "struct"
   "trait"
   "type"
   "union"
   "unsafe"
   "where"
-  (mutable_specifier)
 ] @keyword
+
+[
+ "ref"
+ (mutable_specifier)
+] @type.qualifier
+
+[
+ "const"
+ "static"
+] @storageclass
+
+(lifetime ["'" (identifier)] @storageclass.lifetime)
 
 "fn" @keyword.function
 [
