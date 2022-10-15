@@ -67,6 +67,8 @@
   "augroup"
   "return"
   "syntax"
+  "filetype"
+  "source"
   "lua"
   "ruby"
   "perl"
@@ -101,6 +103,16 @@
 ] @keyword
 (map_statement cmd: _ @keyword)
 (command_name) @function.macro
+
+;; Filetype command
+
+(filetype_statement [
+  "detect"
+  "plugin"
+  "indent"
+  "on"
+  "off"
+] @keyword)
 
 ;; Syntax command
 
@@ -176,7 +188,6 @@
 ;; Literals
 
 (string_literal) @string
-(string_literal) @spell
 (integer_literal) @number
 (float_literal) @float
 (comment) @comment @spell
