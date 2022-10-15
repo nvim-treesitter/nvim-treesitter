@@ -156,15 +156,16 @@ effect on highlighting. We will work on improving highlighting in the near futur
 #### Types
 
 ```scheme
-@type            ; type or class definitions and annotations
-@type.builtin    ; built-in types
-@type.definition ; type definitions (e.g. `typedef` in C)
-@type.qualifier  ; type qualifiers (e.g. `const`)
+@type                  ; type or class definitions and annotations
+@type.builtin          ; built-in types
+@type.definition       ; type definitions (e.g. `typedef` in C)
+@type.qualifier        ; type qualifiers (e.g. `const`)
 
-@storageclass    ; visibility/life-time/etc. modifiers (e.g. `static`)
-@attribute       ; attribute annotations (e.g. Python decorators)
-@field           ; object and struct fields
-@property        ; similar to `@field`
+@storageclass          ; visibility/life-time modifiers
+@storageclass.lifetime ; life-time modifiers (e.g. `static`)
+@attribute             ; attribute annotations (e.g. Python decorators)
+@field                 ; object and struct fields
+@property              ; similar to `@field`
 ```
 
 #### Identifiers
