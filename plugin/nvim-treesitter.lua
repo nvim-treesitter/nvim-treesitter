@@ -9,7 +9,6 @@ vim.g.loaded_nvim_treesitter = true
 require("nvim-treesitter").setup()
 
 local api = vim.api
-local highlight = require "nvim-treesitter.highlight"
 
 -- define autocommands
 local augroup = api.nvim_create_augroup("NvimTreesitter", {})
@@ -33,12 +32,3 @@ api.nvim_create_autocmd("Filetype", {
   end,
   desc = "Reload query",
 })
-
-api.nvim_create_autocmd("ColorScheme", {
-  group = augroup,
-  callback = highlight.set_default_hlgroups,
-  desc = "Set default highlights",
-})
-
--- define highlights
-highlight.set_default_hlgroups()

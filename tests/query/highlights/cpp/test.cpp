@@ -5,8 +5,8 @@
 
 auto main( int argc, char** argv ) -> int
       //       ^ parameter
-      //    ^ type 
-      //    ^ TSType 
+      //    ^ type
+      //    ^ type
       //                  ^ operator
 {
     std::cout << "Hello world!" << std::endl;
