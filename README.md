@@ -331,16 +331,21 @@ require'nvim-treesitter.configs'.setup {
 }
 ```
 
-You can add custom highlight captures with:
+To customize the syntax highlighting of a capture, simply define or link a highlight group of the same name:
 
-```vim
-lua <<EOF
-  require"nvim-treesitter.highlight".set_custom_captures {
-    -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
-    ["foo.bar"] = "Identifier",
-  }
-EOF
+```lua
+-- Highlight the @foo.bar capture group with the "Identifier" highlight group
+vim.api.nvim_set_hl(0, "@foo.bar", { link = "Identifier" })
 ```
+
+For a language-specific highlight, append the name of the language:
+
+```lua
+-- Highlight @foo.bar as "Identifier" only in Lua files
+vim.api.nvim_set_hl(0, "@foo.bar.lua", { link = "Identifier" })
+```
+
+See `:h treesitter-highlight-groups` for details.
 
 #### Incremental selection
 
