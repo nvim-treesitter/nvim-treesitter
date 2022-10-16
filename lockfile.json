@@ -66,7 +66,7 @@
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
   "elixir": {
-    "revision": "3b8eb02597599ee38cfcc2c0fea76dc37a7472eb"
+    "revision": "b20eaa75565243c50be5e35e253d8beb58f45d56"
   },
   "elm": {
     "revision": "cce0e5938e7779f86cf8bf445eadf7df4b88229d"
@@ -384,7 +384,7 @@
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
   },
   "wgsl": {
-    "revision": "272e89ef2aeac74178edb9db4a83c1ffef80a463"
+    "revision": "af16e7d9e230004888fb52d33599ad38b4cf6052"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
