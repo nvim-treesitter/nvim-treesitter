@@ -219,7 +219,7 @@
     "revision": "db7953acb0d5551f207373c81fa07a57d7b085cb"
   },
   "meson": {
-    "revision": "0c48b0e1b19bef8686b1dcd74f3eefadfbdb7503"
+    "revision": "153d22588fb5c1eee16a165a084f9ea30f29d941"
   },
   "ninja": {
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
@@ -378,7 +378,7 @@
     "revision": "4457145e795b363f072463e697dfe2f6973c9a52"
   },
   "vim": {
-    "revision": "6b4caf267391e11864fd07e14c66eef9db17b89b"
+    "revision": "405f9cd8534ccd583081e789321109501ffeb74c"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
