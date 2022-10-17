@@ -138,6 +138,7 @@
 "," @punctuation.delimiter
 
 (pair ":" @punctuation.delimiter)
+(pair_pattern ":" @punctuation.delimiter)
 
 [
   "--"
