@@ -8,7 +8,7 @@
 
 vendor/** linguist-vendored=true
 #     ^ punctuation.delimiter
-#      ^^ punctuation.special
+#      ^^ character.special
 #         ^^^^^^^^^^^^^^^^^ parameter
 #                          ^ operator
 #                           ^^^^ boolean
@@ -25,11 +25,11 @@ vendor/** linguist-vendored=true
 #                    ^^^^^^^^^^ parameter
 
 "_\u4E00\t\56txt" encoding=UTF-16
-# <- character.special
+# <- punctuation.special
 # ^^^^^^ string.escape
 #       ^^ string.escape
 #         ^^^ string.escape
-#               ^ character.special
+#               ^ punctuation.special
 #                 ^^^^^^^^ variable.builtin
 #                         ^ operator
 #                          ^^^^^^ string
