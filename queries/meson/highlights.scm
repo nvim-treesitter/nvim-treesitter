@@ -37,7 +37,9 @@
   ">"
   ">="
 ] @operator
-
+[
+  "?"
+] @conditional.ternary
 [
   "if"
   "elif"
@@ -79,3 +81,11 @@
   value: (identifier) @variable)
 
 (escape_sequence) @string.escape
+
+((identifier) @keyword
+  (#any-of? @keyword 
+    "meson" 
+    "host_machine"
+    "build_machine"
+    "target_machine"
+   ))
