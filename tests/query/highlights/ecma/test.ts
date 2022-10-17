@@ -23,3 +23,10 @@ class H {
     //                ^ method.call
   }
 }
+
+function doSomething(options) {
+  const {
+    enable: on,
+    //    ^ punctuation.delimiter
+  } = options
+}
