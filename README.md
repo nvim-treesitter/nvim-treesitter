@@ -191,6 +191,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [d](https://github.com/CyberShadow/tree-sitter-d) (experimental, maintained by @nawordar)
 - [x] [dart](https://github.com/UserNobody14/tree-sitter-dart) (maintained by @Akin909)
 - [x] [devicetree](https://github.com/joelspadin/tree-sitter-devicetree) (maintained by @jedrzejboczar)
+- [x] [diff](https://github.com/the-mikedavis/tree-sitter-diff) (maintained by @gbprod)
 - [x] [dockerfile](https://github.com/camdencheek/tree-sitter-dockerfile) (maintained by @camdencheek)
 - [x] [dot](https://github.com/rydesun/tree-sitter-dot) (maintained by @rydesun)
 - [x] [eex](https://github.com/connorlay/tree-sitter-eex) (maintained by @connorlay)
