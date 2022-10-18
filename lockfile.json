@@ -141,10 +141,10 @@
     "revision": "45ce22c16ec924e34517cf785e23c07952e45893"
   },
   "heex": {
-    "revision": "70ba8245a486e94d06234f42f26af7165cba74f7"
+    "revision": "52b804b1cb2d57e58d90090326d3ef9bd19cf16c"
   },
   "help": {
-    "revision": "eb90ebcaeb4e5acc08e06a356e72fd2bdf9c4724"
+    "revision": "30cd470796a4320be8f8d5676b0181327033eb4a"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
@@ -369,7 +369,7 @@
     "revision": "0ab9d99867435a7667c5548a6617a6bf73dbd830"
   },
   "v": {
-    "revision": "7af983f18541a26485a7016d5703eeb84e62fb25"
+    "revision": "8709feb6f7750095b13e063a6f2ed477724092bc"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
