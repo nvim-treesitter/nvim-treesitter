@@ -84,3 +84,16 @@ jobs:
 
       - name: Check query files
         run: $NVIM --headless -c "luafile ./scripts/check-queries.lua" -c "q"
+
+      - name: Compress parsers
+        run: tar czf parsers-${{ matrix.os }}-${{ matrix.cc }}.tar.gz parser
+
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        if: ${{ github.ref == 'refs/heads/master' }}
+        with:
+           repo_token: "${{ secrets.GITHUB_TOKEN }}"
+           automatic_release_tag: "latest-parsers-${{ matrix.os }}-${{ matrix.cc }}"
+           prerelease: true
+           title: "Parser artifacts (${{ matrix.os }}-${{ matrix.cc }})"
+           files: |
+             parsers-${{ matrix.os }}-${{ matrix.cc }}.tar.gz
