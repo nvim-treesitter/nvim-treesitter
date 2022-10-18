@@ -273,3 +273,8 @@
 (inner_attribute_item ["!" "#"] @punctuation.special)
 (macro_invocation "!" @function.macro)
 (empty_type "!" @type.builtin)
+
+(macro_invocation macro: (identifier) @_ident @exception "!" @exception
+ (#eq? @_ident "panic"))
+(macro_invocation macro: (identifier) @_ident @exception "!" @exception
+ (#contains? @_ident "assert"))
