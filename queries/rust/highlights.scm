@@ -268,6 +268,8 @@
 (closure_parameters "|"    @punctuation.bracket)
 (type_arguments  ["<" ">"] @punctuation.bracket)
 (type_parameters ["<" ">"] @punctuation.bracket)
+(bracketed_type ["<" ">"] @punctuation.bracket)
+(for_lifetimes ["<" ">"] @punctuation.bracket)
 
 ["," "." ":" "::" ";"] @punctuation.delimiter
 
