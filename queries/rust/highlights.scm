@@ -219,8 +219,7 @@
   "while"
 ] @repeat
 
-(impl_item
-  "for" @keyword)
+"for" @keyword
 (for_expression
   "for" @repeat)
 
