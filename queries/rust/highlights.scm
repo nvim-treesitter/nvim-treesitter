@@ -72,6 +72,9 @@
 (scoped_type_identifier
   path: (identifier) @namespace)
 (scoped_type_identifier
+  path: (identifier) @type
+  (#lua-match? @type "^[A-Z]"))
+(scoped_type_identifier
  (scoped_identifier
   name: (identifier) @namespace))
 ((scoped_identifier
