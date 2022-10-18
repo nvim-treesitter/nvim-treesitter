@@ -344,7 +344,7 @@ M.commands = {
 -- @param lang: the language of the buffer (string)
 -- @param bufnr: the bufnr (number)
 function M.is_enabled(mod, lang, bufnr)
-  if not parsers.list[lang] or not parsers.has_parser(lang) then
+  if not parsers.has_parser(lang) then
     return false
   end
 
