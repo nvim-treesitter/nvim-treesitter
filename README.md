@@ -207,6 +207,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [Godot (gdscript)](https://github.com/PrestonKnopp/tree-sitter-gdscript) (maintained by @Shatur95)
 - [x] [gitattributes](https://github.com/ObserverOfTime/tree-sitter-gitattributes) (maintained by @ObserverOfTime)
 - [x] [gitignore](https://github.com/shunsambongi/tree-sitter-gitignore) (maintained by @theHamsta)
+- [x] [git_rebase](https://github.com/the-mikedavis/tree-sitter-git-rebase) (maintained by @gbprod)
 - [x] [gleam](https://github.com/J3RN/tree-sitter-gleam) (maintained by @connorlay)
 - [x] [Glimmer and Ember](https://github.com/alexlafroscia/tree-sitter-glimmer) (maintained by @alexlafroscia)
 - [x] [glsl](https://github.com/theHamsta/tree-sitter-glsl) (maintained by @theHamsta)

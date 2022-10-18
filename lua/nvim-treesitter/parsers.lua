@@ -1219,6 +1219,16 @@ list.gitattributes = {
   maintainers = { "@ObserverOfTime" },
 }
 
+list.git_rebase = {
+  install_info = {
+    url = "https://github.com/the-mikedavis/tree-sitter-git-rebase",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  filetype = "gitrebase",
+  maintainers = { "@gbprod" },
+}
+
 list.blueprint = {
   install_info = {
     url = "https://gitlab.com/gabmus/tree-sitter-blueprint.git",
