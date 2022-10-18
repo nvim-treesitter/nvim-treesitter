@@ -203,6 +203,9 @@ Mainly for markup languages.
 @text.note             ; info notes
 @text.warning          ; warning notes
 @text.danger           ; danger/error notes
+
+@text.diff.add         ; added text (for diff files)
+@text.diff.delete      ; deleted text (for diff files)
 ```
 
 #### Tags

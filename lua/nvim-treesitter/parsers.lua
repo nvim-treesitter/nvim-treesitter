@@ -1238,6 +1238,16 @@ list.twig = {
   filetype = "twig",
 }
 
+list.diff = {
+  install_info = {
+    url = "https://github.com/the-mikedavis/tree-sitter-diff",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@gbprod" },
+  filetype = "gitdiff",
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
