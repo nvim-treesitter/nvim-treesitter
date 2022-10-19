@@ -1,9 +1,6 @@
 (comment) @comment @spell
 
 [
-  "if"
-  "then"
-  "else"
   "forall"
   "in"
   "let"
@@ -56,7 +53,7 @@
 (fun_expr pats:
   (pattern id:
     (ident) @parameter
-  )+
+  )
 )
 
 (applicative t1:
