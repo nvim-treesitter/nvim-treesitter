@@ -84,7 +84,7 @@
     "revision": "1a538da253d73f896b9f6c0c7d79cda58791ac5c"
   },
   "erlang": {
-    "revision": "fab680273af1a8f5cc0c3a0c62cbf5b1bea71f39"
+    "revision": "3a9c769444f08bbccce03845270efac0c641c5e7"
   },
   "fennel": {
     "revision": "517195970428aacca60891b050aa53eabf4ba78d"
@@ -384,7 +384,7 @@
     "revision": "4457145e795b363f072463e697dfe2f6973c9a52"
   },
   "vim": {
-    "revision": "405f9cd8534ccd583081e789321109501ffeb74c"
+    "revision": "9736af8ef0a7f20b4c45f6474342c8f5b473e2cc"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
