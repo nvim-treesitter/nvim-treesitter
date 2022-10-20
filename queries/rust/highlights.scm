@@ -204,7 +204,8 @@
 
 (use_list (self) @keyword)
 (scoped_use_list (self) @keyword)
-(scoped_identifier (self) @keyword)
+(scoped_identifier [(crate) (super) (self)] @keyword)
+(visibility_modifier [(crate) (super) (self)] @keyword)
 
 [
   "else"
