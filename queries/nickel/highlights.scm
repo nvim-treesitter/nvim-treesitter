@@ -20,7 +20,7 @@
 "Array" @type.builtin
 
 ; BUILTIN Constants
-(bool) @constant.builtin
+(bool) @boolean
 "null" @constant.builtin
 
 (num_literal) @number
