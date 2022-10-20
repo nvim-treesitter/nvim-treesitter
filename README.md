@@ -246,6 +246,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [markdown_inline](https://github.com/MDeiml/tree-sitter-markdown) (experimental, maintained by @MDeiml)
 - [x] [menhir](https://github.com/Kerl13/tree-sitter-menhir) (maintained by @Kerl13)
 - [x] [meson](https://github.com/Decodetalkers/tree-sitter-meson) (maintained by @Decodetalkers)
+- [ ] [nickel](https://github.com/nickel-lang/tree-sitter-nickel)
 - [x] [ninja](https://github.com/alemuller/tree-sitter-ninja) (maintained by @alemuller)
 - [x] [nix](https://github.com/cstrahan/tree-sitter-nix) (maintained by @leo60228)
 - [x] [norg](https://github.com/nvim-neorg/tree-sitter-norg) (maintained by @JoeyGrajciar, @vhyrro, @mrossinek)
