@@ -168,6 +168,14 @@ list.capnp = {
   maintainers = { "@amaanq" },
 }
 
+list.chatito = {
+  install_info = {
+    url = "https://github.com/ObserverOfTime/tree-sitter-chatito",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@ObserverOfTime" },
+}
+
 list.clojure = {
   install_info = {
     url = "https://github.com/sogaiu/tree-sitter-clojure",
