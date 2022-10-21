@@ -1314,6 +1314,14 @@ list.jq = {
   },
 }
 
+list.mermaid = {
+  install_info = {
+    url = "https://github.com/monaqa/tree-sitter-mermaid",
+    files = { "src/parser.c" },
+  },
+  experimental = true,
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
