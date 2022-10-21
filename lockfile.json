@@ -35,6 +35,9 @@
   "capnp": {
     "revision": "740c757b9585925b1ed27cef7d61ac39b7824304"
   },
+  "chatito": {
+    "revision": "3baf22e7e507cedf15d1dbc03df8afa50a625586"
+  },
   "clojure": {
     "revision": "262d6d60f39f0f77b3dd08da8ec895bd5a044416"
   },
