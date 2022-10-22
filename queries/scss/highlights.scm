@@ -3,11 +3,13 @@
 [
   "@mixin"
   "@media"
-  "@include"
-  "@function"
 ] @keyword
 
-("@return") @keyword.return
+"@function" @keyword.function
+
+"@return" @keyword.return
+
+"@include" @include
 
 [
   "@while"
