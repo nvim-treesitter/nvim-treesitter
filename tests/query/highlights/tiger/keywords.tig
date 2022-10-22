@@ -10,7 +10,7 @@ let
   /* <- keyword.function */
 
   import "lib.tih"
-  /* <- keyword */
+  /* <- include */
 
   type array_of_int = array of int
   /* <- keyword */
