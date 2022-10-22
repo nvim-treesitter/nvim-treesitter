@@ -36,11 +36,14 @@
   "}"
 ] @punctuation.bracket
 
-(type_annotation(lower_case_identifier) @function)
-(port_annotation(lower_case_identifier) @function)
-(function_declaration_left(lower_case_identifier) @function)
-(function_call_expr target:
-  (value_expr) @function)
+(type_annotation
+  (lower_case_identifier) @function)
+(port_annotation
+  (lower_case_identifier) @function)
+(function_declaration_left
+  (lower_case_identifier) @function)
+(function_call_expr
+  target: (value_expr) @function)
 
 (value_qid (upper_case_identifier) @constructor)
 (value_qid ((dot) (lower_case_identifier) @field))
@@ -67,16 +70,21 @@
 
 (type) @keyword
 
-(module_declaration(upper_case_qid(upper_case_identifier)) @constructor)
-(type_declaration(upper_case_identifier) @constructor)
+(module_declaration
+  (upper_case_qid (upper_case_identifier)) @constructor)
+(type_declaration
+  (upper_case_identifier) @constructor)
 (type_ref) @type
-(type_alias_declaration name: (upper_case_identifier) @type)
+(type_alias_declaration
+  name: (upper_case_identifier) @type.definition)
 (field_type name:
     (lower_case_identifier) @property)
 
-(union_variant(upper_case_identifier) @symbol)
+(union_variant
+  (upper_case_identifier) @symbol)
 (union_pattern) @symbol
-(value_expr(upper_case_qid(upper_case_identifier)) @symbol)
+(value_expr
+  (upper_case_qid (upper_case_identifier)) @symbol)
 
 ; strings
 (string_escape) @string
