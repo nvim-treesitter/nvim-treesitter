@@ -114,44 +114,25 @@
 ] @repeat
 
 [
-  "__gshared"
   "__parameters"
-  "abstract"
   "alias"
   "align"
   "asm"
   "auto"
   "body"
   "class"
-  "const"
   "debug"
-  "deprecated"
   "enum"
   "export"
-  "extern"
-  "final"
   "goto"
-  "immutable"
-  "inout"
   "interface"
   "invariant"
-  "lazy"
   "macro"
-  "nothrow"
-  "null"
   "out"
   "override"
   "package"
-  "private"
-  "protected"
-  "public"
-  "pure"
-  "ref"
-  "scope"
-  "shared"
   "static"
   "struct"
-  "synchronized"
   "template"
   "union"
   "unittest"
@@ -218,6 +199,35 @@
   "throw"
   "try"
 ] @exception
+
+"null" @constant.builtin
+
+[
+  "__gshared"
+  "const"
+  "immutable"
+  "shared"
+] @storageclass
+
+[
+  "abstract"
+  "deprecated"
+  "extern"
+  "final"
+  "inout"
+  "lazy"
+  "nothrow"
+  "private"
+  "protected"
+  "public"
+  "pure"
+  "ref"
+  "scope"
+  "synchronized"
+] @type.qualifier
+
+(alias_assignment
+  . (identifier) @type.definition)
 
 (module_declaration
   "module" @include
