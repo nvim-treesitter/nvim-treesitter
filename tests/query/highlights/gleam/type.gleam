@@ -1,5 +1,5 @@
 pub type Cat {
-// <- keyword
+// <- type.qualifier
 //  ^ keyword.function
 //       ^ type
 //           ^ punctuation.bracket
@@ -53,8 +53,8 @@ type Box(inner_type) {
 }
 
 pub opaque type Counter {
-// <- keyword
-//  ^ keyword
+// <- type.qualifier
+//  ^ type.qualifier
 //         ^ keyword.function
 //              ^ type
 //                      ^ punctuation.bracket
