@@ -24,7 +24,7 @@
   "triangleadj"
   "lineadj"
   "triangle"
-] @keyword
+] @type.qualifier
 
 (
   (identifier) @variable.builtin
