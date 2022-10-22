@@ -13,7 +13,7 @@
 "use" @include
 (import (bareword) @string.special)
 
-["*" "**" "?"] @string.special
+(wildcard ["*" "**" "?"] @character.special)
 
 (command argument: (bareword) @parameter)
 (command head: (identifier) @function.call)
