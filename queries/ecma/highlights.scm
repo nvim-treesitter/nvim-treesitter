@@ -186,7 +186,8 @@
 
 (binary_expression "/" @operator)
 (ternary_expression ["?" ":"] @conditional)
-(unary_expression ["!" "~" "-" "+" "delete" "void" "typeof"]  @operator)
+(unary_expression ["!" "~" "-" "+"] @operator)
+(unary_expression ["delete" "void" "typeof"] @keyword.operator)
 
 [
   "("
@@ -245,7 +246,6 @@
 "target"
 "typeof"
 "var"
-"void"
 "with"
 ] @keyword
 
