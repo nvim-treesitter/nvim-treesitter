@@ -51,7 +51,7 @@
 ; highlight macros
 (
  (method_call_expression (member_access_expression (identifier) @function.macro))
- (#match? @function.macro "^assert[A-Za-z_0-9]*$" "error" "info" "debug" "print" "warning" "warning_once")
+ (#match? @function.macro "^assert[A-Za-z_0-9]*|error|info|debug|print|warning|warning_once$")
 )
 (lambda_expression (identifier) @parameter)
 (parameter (identifier) @parameter)
@@ -64,7 +64,7 @@
 ] @constant.builtin
 (boolean) @boolean
 (character) @character
-(escape_sequence) @character.special
+(escape_sequence) @string.escape
 (integer) @number
 (null) @constant.builtin
 (real) @float
