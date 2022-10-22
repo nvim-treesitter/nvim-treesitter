@@ -1,11 +1,7 @@
 ; Keywords
 [
   "as"
-  "const"
-  "external"
   "let"
-  "opaque"
-  "pub"
   "todo"
   "try"
 ] @keyword
@@ -88,8 +84,8 @@
 ; Comments
 [
   (module_comment)
-  (statement_comment) 
-  (comment) 
+  (statement_comment)
+  (comment)
 ] @comment
 
 ; Unused Identifiers
@@ -112,8 +108,8 @@
 
 ; Numbers
 [
-  (integer) 
-  (float) 
+  (integer)
+  (float)
   (bit_string_segment_option_unit)
 ] @number
 
@@ -141,6 +137,14 @@
 
 ; Type Variables
 (type_var) @type
+
+; Type Qualifiers
+[
+  "const"
+  "external"
+  "opaque"
+  "pub"
+] @type.qualifier
 
 ; Tuples
 (tuple_access index: (integer) @operator)
