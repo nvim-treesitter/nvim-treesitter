@@ -6,34 +6,43 @@
 
 [
   (intrinsic_type)
+  "pointer"
+] @type
+
+[
   "allocatable"
   "attributes"
   "device"
   "dimension"
-  "endtype"
   "global"
   "grid_global"
   "host"
-  "import"
+  "optional"
+  "private"
+  "public"
+  "value"
+] @type.qualifier
+
+[
+  "endtype"
+  "type"
+] @type.definition
+
+[
   "in"
   "inout"
-  "intent"
-  "optional"
   "out"
-  "pointer"
-  "type"
-  "value"
-] @type
+] @storageclass
 
 [
   "contains"
-  "private"
-  "public"
+  "import"
 ] @include
 
 [
   (none)
   "implicit"
+  "intent"
 ] @attribute
 
 [
@@ -167,7 +176,7 @@
   (name) @function)
 
 (subroutine_call
-	(name) @function)
+  (name) @function)
 
 (keyword_argument
   name: (identifier) @keyword)
