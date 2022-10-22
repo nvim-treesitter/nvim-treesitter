@@ -48,7 +48,7 @@
 ] @symbol
 
 ; Interpolation
-(interpolation "#{" @string.escape "}" @string.escape)
+(interpolation ["#{" "}"] @string.special)
 
 ; Escape sequences
 (escape_sequence) @string.escape
