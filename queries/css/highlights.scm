@@ -1,6 +1,5 @@
 [
  "@media"
- "@import"
  "@charset"
  "@namespace"
  "@supports"
@@ -8,8 +7,9 @@
  (at_keyword)
  (to)
  (from)
- (important)
  ] @keyword
+
+"@import" @include
 
 (comment) @comment @spell
 
@@ -40,6 +40,7 @@
  "only"
  ] @operator
 
+(important) @type.qualifier
 
 (attribute_selector (plain_value) @string)
 (pseudo_element_selector "::" (tag_name) @property)
@@ -48,15 +49,15 @@
 [
  (class_name)
  (id_name)
- (namespace_name)
  (property_name)
  (feature_name)
  (attribute_name)
  ] @property
 
+(namespace_name) @namespace
 
-((property_name) @type
-                 (#match? @type "^--"))
+((property_name) @type.definition
+                 (#match? @type.definition "^--"))
 ((plain_value) @type
                (#match? @type "^--"))
 
