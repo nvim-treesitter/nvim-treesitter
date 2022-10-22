@@ -1,6 +1,6 @@
 (modifier) @keyword
 (operator) @operator
-(attribute) @type
+(attribute) @attribute
 (command_sync_prefix) @type
 (punctuation) @punctuation.bracket
 (delimiter) @punctuation.delimiter
