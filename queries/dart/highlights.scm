@@ -104,13 +104,13 @@
 
 (type_identifier) @type
 
+(type_alias
+  (type_identifier) @type.definition)
+
 ; Variables
 ; --------------------
 ; var keyword
 (inferred_type) @keyword
-
-(const_builtin) @constant.builtin
-(final_builtin) @constant.builtin
 
 ((identifier) @type
  (#match? @type "^_?[A-Z].*[a-z]")) ; catch Classes or IClasses not CLASSES
@@ -160,7 +160,14 @@
 
 ; Keywords
 ; --------------------
-["import" "library" "export"] @include
+[
+  "import"
+  "library"
+  "export"
+  "as"
+  "show"
+  "hide"
+] @include
 
 ; Reserved words (cannot be used as identifiers)
 [
@@ -195,16 +202,8 @@
 ; Built in identifiers:
 ; alone these are marked as keywords
 [
-    "abstract"
-    "as"
-    "async"
-    "async*"
-    "sync*"
     "await"
-    "covariant"
     "deferred"
-    "dynamic"
-    "external"
     "factory"
     "get"
     "implements"
@@ -214,10 +213,21 @@
     "mixin"
     "part"
     "set"
-    "show"
-    "static"
     "typedef"
 ] @keyword
+
+[
+    (const_builtin)
+    (final_builtin)
+    "abstract"
+    "async"
+    "async*"
+    "covariant"
+    "dynamic"
+    "external"
+    "static"
+    "sync*"
+] @type.qualifier
 
 ; when used as an identifier:
 ((identifier) @variable.builtin
