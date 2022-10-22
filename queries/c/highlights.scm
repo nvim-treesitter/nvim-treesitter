@@ -2,21 +2,16 @@
 ((identifier) @variable (#set! "priority" 95))
 
 [
-  "const"
   "default"
   "enum"
-  "extern"
-  "inline"
-  "static"
   "struct"
   "typedef"
   "union"
-  "volatile"
   "goto"
-  "register"
 ] @keyword
 
 "sizeof" @keyword.operator
+
 "return" @keyword.return
 
 [
@@ -34,7 +29,6 @@
  "switch"
 ] @conditional
 
-"#define" @constant.macro
 [
   "#if"
   "#ifdef"
@@ -44,6 +38,8 @@
   "#endif"
   (preproc_directive)
 ] @preproc
+
+"#define" @define
 
 "#include" @include
 
@@ -139,7 +135,12 @@
  (type_descriptor)
 ] @type
 
-(sizeof_expression value: (parenthesized_expression (identifier) @type))
+(storage_class_specifier) @storageclass
+
+(type_qualifier) @type.qualifier
+
+(type_definition
+  declarator: (type_identifier) @type.definition)
 
 ((identifier) @constant
  (#lua-match? @constant "^[A-Z][A-Z0-9_]+$"))
