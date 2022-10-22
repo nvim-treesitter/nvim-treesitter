@@ -23,6 +23,7 @@
 [
  "function"
  "primitive"
+ "method"
 ] @keyword.function
 
 [
@@ -32,13 +33,9 @@
   "while"
 ] @repeat
 
-[
- "new"
-] @constructor
+"new" @keyword.operator
 
-[
- "method"
-] @method
+"import" @include
 
 [
   "array"
@@ -46,7 +43,6 @@
   "else"
   "end"
   "if"
-  "import"
   "in"
   "let"
   "of"
