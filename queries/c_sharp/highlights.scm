@@ -79,6 +79,9 @@
 (using_directive
   (identifier) @type)
 
+(using_directive
+  (name_equals (identifier) @type.definition))
+
 (property_declaration
   name: (identifier) @property)
 
@@ -304,6 +307,7 @@
 
 [
  "using"
+ "as"
 ] @include
 
 (alias_qualified_name
@@ -316,7 +320,6 @@
  "nameof"
  "sizeof"
  "is"
- "as"
  "and"
  "or"
  "not"
@@ -331,23 +334,9 @@
  "params"
  "operator"
  "default"
- "abstract"
- "const"
- "extern"
  "implicit"
  "explicit"
- "internal"
  "override"
- "private"
- "protected"
- "public"
- "internal"
- "partial"
- "readonly"
- "sealed"
- "static"
- "virtual"
- "volatile"
  "async"
  "await"
  "class"
@@ -368,6 +357,25 @@
  "unchecked"
  "fixed"
 ] @keyword
+
+[
+ "const"
+ "extern"
+ "readonly"
+ "static"
+ "volatile"
+] @storageclass
+
+[
+ "abstract"
+ "private"
+ "protected"
+ "internal"
+ "public"
+ "partial"
+ "sealed"
+ "virtual"
+] @type.qualifier
 
 (parameter_modifier) @operator
 
