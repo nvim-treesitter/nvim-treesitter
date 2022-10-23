@@ -7,7 +7,7 @@
 
 ":" @punctuation.delimiter
 
-(tag (name) @text.note (user)? @constant)
+(tag (name) @text.todo (user)? @constant)
 
 ((tag ((name) @text.note))
  (#any-of? @text.note "NOTE"))
