@@ -43,7 +43,7 @@
 [
  (string)
  (raw_string)
- (ansii_c_string)
+ (ansi_c_string)
  (heredoc_body)
 ] @string @spell
 
