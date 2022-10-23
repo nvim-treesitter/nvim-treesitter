@@ -20,6 +20,8 @@
  arguments: ((template_string) @glimmer
    (#offset! @glimmer 0 1 0 -1)))
 
+((glimmer_template) @glimmer)
+
 ; styled.div`<css>`
 (call_expression
  function: (member_expression
