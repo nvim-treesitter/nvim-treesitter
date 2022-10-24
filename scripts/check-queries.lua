@@ -1,5 +1,8 @@
 -- Execute as `nvim --headless -c "luafile ./scripts/check-queries.lua"`
 
+-- Remove Neovim's bundled parsers to avoid shadowing
+vim.opt.runtimepath:remove "/usr/local/lib/nvim"
+
 -- Equivalent to print(), but this will ensure consistent output regardless of
 -- operating system.
 local function io_print(text)
