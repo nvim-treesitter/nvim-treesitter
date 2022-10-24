@@ -347,8 +347,6 @@ For a language-specific highlight, append the name of the language:
 vim.api.nvim_set_hl(0, "@foo.bar.lua", { link = "Identifier" })
 ```
 
-See `:h treesitter-highlight-groups` for details.
-
 #### Incremental selection
 
 Incremental selection based on the named nodes from the grammar.
