@@ -1,3 +1,4 @@
+vim.opt.runtimepath:remove "/usr/local/lib/nvim"
 vim.opt.runtimepath:append "."
 vim.cmd [[runtime! plugin/plenary.vim]]
 vim.cmd [[runtime! plugin/nvim-treesitter.lua]]
