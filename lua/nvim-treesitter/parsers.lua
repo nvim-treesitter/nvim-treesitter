@@ -2,7 +2,6 @@ local api = vim.api
 local ts = vim.treesitter
 
 local filetype_to_parsername = {
-  arduino = "cpp",
   javascriptreact = "javascript",
   ecma = "javascript",
   jsx = "javascript",
@@ -1298,6 +1297,14 @@ list.awk = {
     url = "https://github.com/Beaglefoot/tree-sitter-awk",
     files = { "src/parser.c", "src/scanner.c" },
   },
+}
+
+list.arduino = {
+  install_info = {
+    url = "https://github.com/ObserverOfTime/tree-sitter-arduino",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  maintainers = { "@ObserverOfTime" },
 }
 
 local M = {
