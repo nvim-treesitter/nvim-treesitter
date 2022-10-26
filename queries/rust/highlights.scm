@@ -123,6 +123,7 @@
 ;; Attribute macros
 (attribute_item (meta_item (identifier) @function.macro))
 (meta_item (scoped_identifier (identifier) @function.macro .))
+(attribute_item (attr_item (identifier) @function.macro))
 
 ;; Derive macros (assume all arguments are types)
 (meta_item
