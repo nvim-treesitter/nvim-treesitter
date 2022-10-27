@@ -301,6 +301,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [verilog](https://github.com/tree-sitter/tree-sitter-verilog) (maintained by @zegervdv)
 - [x] [vim](https://github.com/vigoux/tree-sitter-viml) (maintained by @vigoux)
 - [x] [vue](https://github.com/ikatyang/tree-sitter-vue) (maintained by @WhyNotHugo)
+- [x] [vhs](https://github.com/charmbracelet/tree-sitter-vhs) (maintained by @caarlos0, @maaslalani)
 - [x] [wgsl](https://github.com/szebniok/tree-sitter-wgsl) (maintained by @szebniok)
 - [x] [yaml](https://github.com/ikatyang/tree-sitter-yaml) (maintained by @stsewd)
 - [x] [yang](https://github.com/Hubro/tree-sitter-yang) (maintained by @Hubro)
