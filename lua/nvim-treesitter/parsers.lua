@@ -18,6 +18,7 @@ local filetype_to_parsername = {
   pandoc = "markdown",
   rmd = "markdown",
   cs = "c_sharp",
+  tape = "vhs",
 }
 
 local list = setmetatable({}, {
