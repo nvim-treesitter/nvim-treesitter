@@ -15,11 +15,17 @@
 ("text" @text.note
  (#any-of? @text.note "NOTE"))
 
+((tag ((name) @text.todo))
+ (#eq? @text.todo "TODO"))
+
+("text" @text.todo 
+ (#eq? @text.todo "TODO"))
+
 ((tag ((name) @text.warning))
- (#any-of? @text.warning "TODO" "HACK" "WARNING"))
+ (#any-of? @text.warning "HACK" "WARNING"))
 
 ("text" @text.warning
- (#any-of? @text.warning "TODO" "HACK" "WARNING"))
+ (#any-of? @text.warning "HACK" "WARNING"))
 
 ((tag ((name) @text.danger))
  (#any-of? @text.danger "FIXME" "XXX" "BUG"))
