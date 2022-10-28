@@ -96,8 +96,8 @@
 
 (const_declaration (const_element (name) @constant))
 
-((name) @variable.builtin
- (#eq? @variable.builtin "this"))
+((variable_name) @variable.builtin
+ (#eq? @variable.builtin "$this"))
 
 ; Namespace
 (namespace_definition
@@ -142,7 +142,6 @@
 ] @keyword.function
 
 [
- "$"
  "abstract"
  "break"
  "class"
