@@ -104,6 +104,9 @@
   "gdscript": {
     "revision": "2a6abdaa47fcb91397e09a97c7433fd995ea46c6"
   },
+  "git_rebase": {
+    "revision": "127f5b56c1ad3e8a449a7d6e0c7412ead7f7724c"
+  },
   "gitattributes": {
     "revision": "cee9f8865694b29bb9e85e0b90805f92ad3fc47e"
   },
@@ -369,7 +372,7 @@
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
   },
   "twig": {
-    "revision": "807b293fec3fead64f54c64fdf6fb05516c032b9"
+    "revision": "6a01f20e73038300d205d370212c361949be3035"
   },
   "typescript": {
     "revision": "0ab9d99867435a7667c5548a6617a6bf73dbd830"
