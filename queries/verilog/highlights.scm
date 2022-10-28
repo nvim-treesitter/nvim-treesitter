@@ -37,9 +37,9 @@
   "default"
   "break"
   "assert"
-  (unique_priority)
   "tagged"
   "extern"
+  (unique_priority)
 ] @keyword
 
 [
@@ -112,14 +112,11 @@
   "&&"
   "||"
   ":"
-  (unary_operator)
   "{"
   "}"
   "'{"
   "<="
   "@"
-  "or"
-  "and"
   "=="
   "!="
   "==="
@@ -132,8 +129,14 @@
   ">>"
   "<<"
   "|="
+  (unary_operator)
   (inc_or_dec_operator)
 ] @operator
+
+[
+  "or"
+  "and"
+] @keyword.operator
 
 (cast
  ["'" "(" ")"] @operator)
@@ -153,7 +156,7 @@
 [
   "signed"
   "unsigned"
-] @label
+] @type.qualifier
 
 (data_type
  (simple_identifier) @type)
@@ -177,10 +180,11 @@
 ] @string @spell
 
 [
-  (include_compiler_directive)
   (default_nettype_compiler_directive)
   (timescale_compiler_directive)
-] @constant.macro
+] @preproc
+
+(include_compiler_directive) @include
 
 ; begin/end label
 (seq_block
@@ -262,7 +266,7 @@
   ;(parameter_identifier) @field))
 
 (type_declaration
-  (data_type ["packed"] @label))
+  (data_type ["packed"] @type.qualifier))
 
 (struct_union) @type
 
