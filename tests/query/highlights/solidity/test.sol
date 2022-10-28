@@ -3,14 +3,14 @@
 // SPDX-License-Identifier: GPL-3.0
 // ^ comment
 pragma solidity >=0.7.0 <0.9.0;
-// ^ keyword
-//     ^ tag
+// ^ preproc
+//     ^ attribute
 
 import * as something from "anotherFile";
 // ^     ^            ^ include
 
 /// @title Voting with delegation.
-//  ^ attribute
+//  ^ preproc
 contract Ballot {
 // ^keyword
 //       ^ type
