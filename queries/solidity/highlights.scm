@@ -1,11 +1,10 @@
 (comment) @comment
-(
- (comment) @attribute
- (#match? @attribute "^/// .*")
-) ;; Handles natspec comments
+;; Handles natspec comments
+((comment) @preproc
+ (#match? @preproc "^/// .*"))
 
 ; Pragma
-(pragma_directive) @tag
+(pragma_directive) @attribute
 
 
 ; Literals
@@ -34,13 +33,14 @@
 (struct_declaration struct_name: (identifier) @type)
 (struct_member name: (identifier) @field)
 (enum_declaration enum_type_name: (identifier) @type)
-; Color payable in payable address conversion as type and not as keyword
-(payable_conversion_expression "payable" @type)
 (emit_statement . (identifier) @type)
-; Handles ContractA, ContractB in function foo() override(ContractA, contractB) {} 
+; Handles ContractA, ContractB in function foo() override(ContractA, contractB) {}
 (override_specifier (identifier) @type)
 ; Ensures that delimiters in mapping( ... => .. ) are not colored like types
-(type_name "(" @punctuation.bracket "=>" @punctuation.delimiter ")" @punctuation.bracket)
+(type_name
+  "(" @punctuation.bracket
+  "=>" @punctuation.delimiter
+  ")" @punctuation.bracket)
 
 
 ; Functions and parameters
@@ -89,7 +89,6 @@
 
 ; Keywords
 [
- "pragma"
  "contract"
  "interface"
  "library"
@@ -97,9 +96,15 @@
  "struct"
  "enum"
  "event"
- "using"
  "assembly"
  "emit"
+ "modifier"
+ "var"
+ (virtual)
+ (override_specifier)
+] @keyword
+
+[
  "public"
  "internal"
  "private"
@@ -107,16 +112,14 @@
  "pure"
  "view"
  "payable"
- "modifier"
+] @type.qualifier
+
+[
  "memory"
  "storage"
  "calldata"
- "var"
  (constant)
- (virtual)
- (override_specifier)
- (yul_leave)
-] @keyword
+] @storageclass
 
 [
  "for"
@@ -142,11 +145,14 @@
 [
  "return"
  "returns"
+ (yul_leave)
 ] @keyword.return
 
 "function" @keyword.function
 
-"import" @include
+"pragma" @preproc
+
+["import" "using"] @include
 (import_directive "as" @include)
 (import_directive "from" @include)
 
@@ -209,4 +215,3 @@
 
 (identifier) @variable
 (yul_identifier) @variable
-
