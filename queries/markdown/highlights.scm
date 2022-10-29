@@ -20,11 +20,10 @@
 ] @text.literal
 
 (pipe_table_header (pipe_table_cell) @text.title)
-[
- (pipe_table_row)
- (pipe_table_delimiter_row)
- (pipe_table_header)
-] "|" @punctuation.special
+
+(pipe_table_header "|" @punctuation.special)
+(pipe_table_row "|" @punctuation.special)
+(pipe_table_delimiter_row "|" @punctuation.special)
 (pipe_table_delimiter_cell) @punctuation.special
 
 [
