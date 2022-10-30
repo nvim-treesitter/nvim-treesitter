@@ -54,9 +54,9 @@
 
 ;;; ui_object_definition
 (ui_object_definition
-	type_name: (identifier) @type)
+  type_name: (identifier) @type)
 (ui_object_definition
-	type_name: (nested_identifier) @type)
+  type_name: (nested_identifier) @type)
 
 ;;; namespace
 (nested_identifier
@@ -86,6 +86,9 @@
 [
   (true)
   (false)
+] @boolean
+
+[
   (null)
   (undefined)
 ] @constant.builtin
@@ -97,21 +100,23 @@
   (template_string)
 ] @string
 
-(regex) @string.special
+(regex) @string.regex
 (number) @number
 
 ; Tokens
 ;-------
 
-
-
-;;; keywrod in qml
 [
-  "on"
+  "abstract"
+
+  "private"
+  "protected"
+  "public"
+
+  "default"
+  "readonly"
   "required"
-  "property"
-  "signal"
-] @keyword
+] @type.qualifier
 
 ; from typescript
 
@@ -132,7 +137,10 @@
 
 ; Keywords
 
-[ "abstract"
+[
+  "on"
+  "property"
+  "signal"
   "declare"
   "enum"
   "export"
@@ -140,15 +148,6 @@
   "interface"
   "keyof"
   "namespace"
-  "private"
-  "protected"
-  "public"
   "type"
-  "readonly"
   "override"
 ] @keyword
-
-[
-  (true)
-  (false)
-] @boolean
