@@ -17,9 +17,24 @@
 
 (identifier) @variable
 
+((dollar (identifier) @variable.builtin)
+ (#eq? @variable.builtin "self"))
+
+((dollar _ (identifier) @field))
+
+; Parameters
+
 (formal_parameters (identifier) @parameter)
+
 (formal_parameters
  (default_parameter name: (identifier) @parameter))
+
+(default_argument name: (identifier) @parameter)
+
+; Namespace
+
+(namespace_get namespace: (identifier) @namespace)
+(namespace_get_internal namespace: (identifier) @namespace)
 
 ; Operators
 [
@@ -34,6 +49,7 @@
   "+"
   "!"
   "~"
+  "?"
 ] @operator)
 
 (binary operator: [
@@ -90,7 +106,7 @@
   (nan)
   (na)
   (null)
-] @type.builtin
+] @constant.builtin
 
 [
   "if"
@@ -111,17 +127,18 @@
 
 "function" @keyword.function
 
-(call function: (identifier) @function)
-(default_argument name: (identifier) @parameter)
+; Functions/Methos
 
-(namespace_get function: (identifier) @method)
-(namespace_get_internal function: (identifier) @method)
+(call function: (identifier) @function.call)
 
-(namespace_get namespace: (identifier) @namespace
- "::" @operator)
+(call
+  (namespace_get function: (identifier) @function.call))
 
-(namespace_get_internal namespace: (identifier) @namespace
- ":::" @operator)
+(call
+  (namespace_get_internal function: (identifier) @function.call))
+
+(call
+  function: ((dollar _ (identifier) @method.call)))
 
 ; Error
 (ERROR) @error
