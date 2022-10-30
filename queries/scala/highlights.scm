@@ -32,7 +32,7 @@
   name: (identifier) @type)
 
 (type_definition
-  name: (type_identifier) @type)
+  name: (type_identifier) @type.definition)
 
 ; method definition
 
@@ -121,22 +121,15 @@
 ;; keywords
 
 [
-  "abstract"
   "case"
   "class"
   "extends"
-  "final"
   "finally"
 ;; `forSome` existential types not implemented yet
-  "implicit"
-  "lazy"
 ;; `macro` not implemented yet
   "object"
   "override"
   "package"
-  "private"
-  "protected"
-  "sealed"
   "trait"
   "type"
   "val"
@@ -144,8 +137,21 @@
   "with"
 ] @keyword
 
-(null_literal) @keyword
-(wildcard) @keyword
+[
+  "abstract"
+  "final"
+  "implicit"
+  "lazy"
+  "private"
+  "protected"
+  "sealed"
+] @type.qualifier
+
+(null_literal) @constant.builtin
+
+(wildcard) @parameter
+
+(annotation) @attribute
 
 ;; special keywords
 
