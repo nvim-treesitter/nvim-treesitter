@@ -99,13 +99,13 @@
  (dots)
  (break)
  (next)
- (inf)
 ] @keyword
 
 [
   (nan)
   (na)
   (null)
+  (inf)
 ] @constant.builtin
 
 [
