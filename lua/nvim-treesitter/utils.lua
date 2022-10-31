@@ -11,6 +11,7 @@ function M.notify(msg, log_level, opts)
 end
 
 -- Returns the system specific path seperator.
+---@return string
 function M.get_path_sep()
   return fn.has "win32" == 1 and "\\" or "/"
 end
@@ -82,6 +83,10 @@ function M.setup_commands(mod, commands)
   end
 end
 
+---@param dir string
+---@param create_err string
+---@param writeable_err string
+---@return string|nil, string|nil
 function M.create_or_reuse_writable_dir(dir, create_err, writeable_err)
   create_err = create_err or M.join_space("Could not create dir '", dir, "': ")
   writeable_err = writeable_err or M.join_space("Invalid rights, '", dir, "' should be read/write")
@@ -201,6 +206,7 @@ function M.to_func(a)
   return type(a) == "function" and a or M.constant(a)
 end
 
+---@return string|nil
 function M.ts_cli_version()
   if fn.executable "tree-sitter" == 1 then
     local handle = io.popen "tree-sitter  -V"
