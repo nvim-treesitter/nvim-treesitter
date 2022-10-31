@@ -7,14 +7,21 @@
  "||"
  "|"
  "&"
- "="
- "!="
  ".."
  "!"
  (direction)
  (stream_redirect)
- (test_option)
 ] @operator
+
+
+; match operators of "test" command
+(command
+  name: (word) @function (#match? @function "^test$")
+  argument: (word) @operator (#match? @operator "^(!?=|-[a-zA-Z]+)$"))
+
+; match operators of "["
+(test_command
+  argument: (word) @operator (#match? @operator "^(!?=|-[a-zA-Z]+)$"))
 
 [
  "not"
@@ -103,7 +110,7 @@
             ]
 )
 
-(command_substitution_dollar "$" @punctuation.bracket)
+(command_substitution "$" @punctuation.bracket)
 
 ; non-bultin command names
 (command name: (word) @function.call)
@@ -115,8 +122,6 @@
         (#any-of? @function.builtin "." ":" "_" "alias" "argparse" "bg" "bind" "block" "breakpoint" "builtin" "cd" "command" "commandline" "complete" "contains" "count" "disown" "echo" "emit" "eval" "exec" "exit" "fg" "functions" "history" "isatty" "jobs" "math" "printf" "pwd" "random" "read" "realpath" "set" "set_color" "source" "status" "string" "test" "time" "type" "ulimit" "wait")
         ]
 )
-
-(test_command "test" @function.builtin)
 
 ;; Functions
 
@@ -150,7 +155,6 @@
 [(integer) (float)] @number
 (comment) @comment
 (comment) @spell
-(test_option) @string
 
 ((word) @boolean
 (#any-of? @boolean "true" "false"))
