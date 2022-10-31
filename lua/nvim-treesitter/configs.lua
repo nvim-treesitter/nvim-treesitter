@@ -8,6 +8,16 @@ local caching = require "nvim-treesitter.caching"
 
 local M = {}
 
+---@class TSConfig
+---@field modules {[string]:TSModule}
+---@field sync_install boolean
+---@field ensure_installed string[]|string
+---@field ignore_install string[]
+---@field auto_install boolean
+---@field update_strategy string
+---@field parser_install_dir string|nil
+
+---@type TSConfig
 local config = {
   modules = {},
   sync_install = false,
@@ -21,6 +31,17 @@ local config = {
 local queued_modules_defs = {}
 -- Whether we've initialized the plugin yet.
 local is_initialized = false
+
+---@class TSModule
+---@field module_path string
+---@field enable boolean|string[]|function(string): boolean
+---@field disable boolean|string[]|function(string): boolean
+---@field is_supported function(string): boolean
+---@field attach function(string)
+---@field detach function(string)
+---@field enabled_buffers table<integer, boolean>
+
+---@type {[string]: TSModule}
 local builtin_modules = {
   highlight = {
     module_path = "nvim-treesitter.highlight",
@@ -54,7 +75,9 @@ local builtin_modules = {
 
 local attached_buffers_by_module = caching.create_buffer_cache()
 
--- Resolves a module by requiring the `module_path` or using the module definition.
+---Resolves a module by requiring the `module_path` or using the module definition.
+---@param mod_name string
+---@return TSModule|nil
 local function resolve_module(mod_name)
   local config_mod = M.get_module(mod_name)
 
@@ -69,10 +92,10 @@ local function resolve_module(mod_name)
   end
 end
 
--- Enables and attaches the module to a buffer for lang.
--- @param mod path to module
--- @param bufnr buffer number, defaults to current buffer
--- @param lang language, defaults to current language
+---Enables and attaches the module to a buffer for lang.
+---@param mod string path to module
+---@param bufnr integer|nil buffer number, defaults to current buffer
+---@param lang string|nil language, defaults to current language
 local function enable_module(mod, bufnr, lang)
   local module = M.get_module(mod)
   if not module then
@@ -93,9 +116,9 @@ local function enable_module(mod, bufnr, lang)
   M.attach_module(mod, bufnr, lang)
 end
 
--- Enables autocomands for the module.
--- After the module is loaded `loaded` will be set to true for the module.
--- @param mod path to module
+---Enables autocomands for the module.
+---After the module is loaded `loaded` will be set to true for the module.
+---@param mod string path to module
 local function enable_mod_conf_autocmd(mod)
   local config_mod = M.get_module(mod)
   if not config_mod or config_mod.loaded then
@@ -113,9 +136,9 @@ local function enable_mod_conf_autocmd(mod)
   config_mod.loaded = true
 end
 
--- Enables the module globally and for all current buffers.
--- After enabled, `enable` will be set to true for the module.
--- @param mod path to module
+---Enables the module globally and for all current buffers.
+---After enabled, `enable` will be set to true for the module.
+---@param mod string path to module
 local function enable_all(mod)
   local config_mod = M.get_module(mod)
   if not config_mod then
@@ -131,9 +154,9 @@ local function enable_all(mod)
   end
 end
 
--- Disables and detaches the module for a buffer.
--- @param mod path to module
--- @param bufnr buffer number, defaults to current buffer
+---Disables and detaches the module for a buffer.
+---@param mod string path to module
+---@param bufnr integer buffer number, defaults to current buffer
 local function disable_module(mod, bufnr)
   local module = M.get_module(mod)
   if not module then
@@ -147,9 +170,9 @@ local function disable_module(mod, bufnr)
   M.detach_module(mod, bufnr)
 end
 
--- Disables autocomands for the module.
--- After the module is unloaded `loaded` will be set to false for the module.
--- @param mod path to module
+---Disables autocomands for the module.
+---After the module is unloaded `loaded` will be set to false for the module.
+---@param mod string path to module
 local function disable_mod_conf_autocmd(mod)
   local config_mod = M.get_module(mod)
   if not config_mod or not config_mod.loaded then
@@ -159,9 +182,9 @@ local function disable_mod_conf_autocmd(mod)
   config_mod.loaded = false
 end
 
--- Disables the module globally and for all current buffers.
--- After disabled, `enable` will be set to false for the module.
--- @param mod path to module
+---Disables the module globally and for all current buffers.
+---After disabled, `enable` will be set to false for the module.
+---@param mod string path to module
 local function disable_all(mod)
   local config_mod = M.get_module(mod)
   if not config_mod then
@@ -177,10 +200,10 @@ local function disable_all(mod)
   end
 end
 
--- Toggles a module for a buffer
--- @param mod path to module
--- @param bufnr buffer number, defaults to current buffer
--- @param lang language, defaults to current language
+---Toggles a module for a buffer
+---@param mod string path to module
+---@param bufnr integer buffer number, defaults to current buffer
+---@param lang string language, defaults to current language
 local function toggle_module(mod, bufnr, lang)
   bufnr = bufnr or api.nvim_get_current_buf()
   lang = lang or parsers.get_buf_lang(bufnr)
@@ -207,10 +230,10 @@ local function toggle_all(mod)
   end
 end
 
--- Recurses through all modules including submodules
--- @param accumulator function called for each module
--- @param root root configuration table to start at
--- @param path prefix path
+---Recurses through all modules including submodules
+---@param accumulator function called for each module
+---@param root {[string]: TSModule} root configuration table to start at
+---@param path string|nil prefix path
 local function recurse_modules(accumulator, root, path)
   root = root or config.modules
 
@@ -225,9 +248,9 @@ local function recurse_modules(accumulator, root, path)
   end
 end
 
--- Shows current configuration of all nvim-treesitter modules
--- @param process_function function used as the `process` parameter
---        for vim.inspect (https://github.com/kikito/inspect.lua#optionsprocess)
+---Shows current configuration of all nvim-treesitter modules
+---@param process_function function used as the `process` parameter
+---       for vim.inspect (https://github.com/kikito/inspect.lua#optionsprocess)
 local function config_info(process_function)
   process_function = process_function
     or function(item, path)
@@ -242,6 +265,8 @@ local function config_info(process_function)
   print(vim.inspect(config, { process = process_function }))
 end
 
+---@param query_group string
+---@param lang string
 function M.edit_query_file(query_group, lang)
   lang = lang or parsers.get_buf_lang()
   local files = ts_query.get_query_files(lang, query_group, true)
@@ -259,6 +284,8 @@ function M.edit_query_file(query_group, lang)
   end
 end
 
+---@param query_group string
+---@param lang string
 function M.edit_query_file_user_after(query_group, lang)
   lang = lang or parsers.get_buf_lang()
   local folder = utils.join_path(vim.fn.stdpath "config", "after", "queries", lang)
@@ -340,9 +367,9 @@ M.commands = {
   },
 }
 
--- @param mod: module (string)
--- @param lang: the language of the buffer (string)
--- @param bufnr: the bufnr (number)
+---@param mod string module
+---@param lang string the language of the buffer
+---@param bufnr integer the bufnr
 function M.is_enabled(mod, lang, bufnr)
   if not parsers.has_parser(lang) then
     return false
@@ -376,8 +403,8 @@ function M.is_enabled(mod, lang, bufnr)
   return true
 end
 
--- Setup call for users to override module configurations.
--- @param user_data module overrides
+---Setup call for users to override module configurations.
+---@param user_data TSConfig module overrides
 function M.setup(user_data)
   config.modules = vim.tbl_deep_extend("force", config.modules, user_data)
   config.ignore_install = user_data.ignore_install or {}
@@ -411,32 +438,33 @@ function M.setup(user_data)
   end, config.modules)
 end
 
--- Defines a table of modules that can be attached/detached to buffers
--- based on language support. A module consist of the following properties:
--- * @enable Whether the modules is enabled. Can be true or false.
--- * @disable A list of languages to disable the module for. Only relevant if enable is true.
--- * @keymaps A list of user mappings for a given module if relevant.
--- * @is_supported A function which, given a ft, will return true if the ft works on the module.
--- * @module_path A string path to a module file using `require`. The exported module must contain
---                an `attach` and `detach` function. This path is not required if `attach` and `detach`
---                functions are provided directly on the module definition.
--- * @attach An attach function that is called for each buffer that the module is enabled for. This is required
---           if a `module_path` is not specified.
--- * @detach A detach function that is called for each buffer that the module is enabled for. This is required
---           if a `module_path` is not specified.
--- Modules are not setup until `init` is invoked by the plugin. This allows modules to be defined in any order
--- and can be loaded lazily.
--- @example
--- require"nvim-treesitter".define_modules {
---   my_cool_module = {
---     attach = function()
---       do_some_cool_setup()
---     end,
---     detach = function()
---       do_some_cool_teardown()
---     end
---   }
--- }
+---Defines a table of modules that can be attached/detached to buffers
+---based on language support. A module consist of the following properties:
+---* @enable Whether the modules is enabled. Can be true or false.
+---* @disable A list of languages to disable the module for. Only relevant if enable is true.
+---* @keymaps A list of user mappings for a given module if relevant.
+---* @is_supported A function which, given a ft, will return true if the ft works on the module.
+---* @module_path A string path to a module file using `require`. The exported module must contain
+---               an `attach` and `detach` function. This path is not required if `attach` and `detach`
+---               functions are provided directly on the module definition.
+---* @attach An attach function that is called for each buffer that the module is enabled for. This is required
+---          if a `module_path` is not specified.
+---* @detach A detach function that is called for each buffer that the module is enabled for. This is required
+---          if a `module_path` is not specified.
+---Modules are not setup until `init` is invoked by the plugin. This allows modules to be defined in any order
+---and can be loaded lazily.
+---@example
+---require"nvim-treesitter".define_modules {
+---  my_cool_module = {
+---    attach = function()
+---      do_some_cool_setup()
+---    end,
+---    detach = function()
+---      do_some_cool_teardown()
+---    end
+---  }
+---}
+---@param mod_defs TSModule[]
 function M.define_modules(mod_defs)
   if not is_initialized then
     table.insert(queued_modules_defs, mod_defs)
@@ -463,10 +491,10 @@ function M.define_modules(mod_defs)
   end
 end
 
--- Attaches a module to a buffer
--- @param mod_name the module name
--- @param bufnr the bufnr
--- @param lang the language of the buffer
+---Attaches a module to a buffer
+---@param mod_name string the module name
+---@param bufnr integer the bufnr
+---@param lang string the language of the buffer
 function M.attach_module(mod_name, bufnr, lang)
   bufnr = bufnr or api.nvim_get_current_buf()
   lang = lang or parsers.get_buf_lang(bufnr)
@@ -478,9 +506,9 @@ function M.attach_module(mod_name, bufnr, lang)
   end
 end
 
--- Detaches a module to a buffer
--- @param mod_name the module name
--- @param bufnr the bufnr
+---Detaches a module to a buffer
+---@param mod_name string the module name
+---@param bufnr integer the bufnr
 function M.detach_module(mod_name, bufnr)
   local resolved_mod = resolve_module(mod_name)
   bufnr = bufnr or api.nvim_get_current_buf()
@@ -491,17 +519,17 @@ function M.detach_module(mod_name, bufnr)
   end
 end
 
--- Same as attach_module, but if the module is already attached, detach it first.
--- @param mod_name the module name
--- @param bufnr the bufnr
--- @param lang the language of the buffer
+---Same as attach_module, but if the module is already attached, detach it first.
+---@param mod_name string the module name
+---@param bufnr integer the bufnr
+---@param lang string the language of the buffer
 function M.reattach_module(mod_name, bufnr, lang)
   M.detach_module(mod_name, bufnr)
   M.attach_module(mod_name, bufnr, lang)
 end
 
--- Gets available modules
--- @param root root table to find modules
+---Gets available modules
+---@param root {[string]:TSModule} table to find modules
 function M.available_modules(root)
   local modules = {}
 
@@ -512,25 +540,26 @@ function M.available_modules(root)
   return modules
 end
 
--- Gets a module config by path
--- @param mod_path path to the module
--- @returns the module or nil
+---Gets a module config by path
+---@param mod_path string path to the module
+---@return TSModule|nil the module or nil
 function M.get_module(mod_path)
   local mod = utils.get_at_path(config.modules, mod_path)
 
   return M.is_module(mod) and mod or nil
 end
 
--- Determines whether the provided table is a module.
--- A module should contain an attach and detach function.
--- @param mod the module table
+---Determines whether the provided table is a module.
+---A module should contain an attach and detach function.
+---@param mod table the module table
+---@return boolean
 function M.is_module(mod)
   return type(mod) == "table"
     and ((type(mod.attach) == "function" and type(mod.detach) == "function") or type(mod.module_path) == "string")
 end
 
--- Initializes built-in modules and any queued modules
--- registered by plugins or the user.
+---Initializes built-in modules and any queued modules
+---registered by plugins or the user.
 function M.init()
   is_initialized = true
   M.define_modules(builtin_modules)
@@ -540,11 +569,13 @@ function M.init()
   end
 end
 
--- If parser_install_dir is not nil is used or created.
--- If parser_install_dir is nil try the package dir of the nvim-treesitter
--- plugin first, followed by the "site" dir from "runtimepath". "site" dir will
--- be created if it doesn't exist. Using only the package dir won't work when
--- the plugin is installed with Nix, since the "/nix/store" is read-only.
+---If parser_install_dir is not nil is used or created.
+---If parser_install_dir is nil try the package dir of the nvim-treesitter
+---plugin first, followed by the "site" dir from "runtimepath". "site" dir will
+---be created if it doesn't exist. Using only the package dir won't work when
+---the plugin is installed with Nix, since the "/nix/store" is read-only.
+---@param folder_name string
+---@return string|nil, string|nil
 function M.get_parser_install_dir(folder_name)
   folder_name = folder_name or "parser"
 

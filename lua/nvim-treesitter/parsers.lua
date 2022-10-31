@@ -21,6 +21,22 @@ local filetype_to_parsername = {
   tape = "vhs",
 }
 
+---@class InstallInfo
+---@field url string
+---@field branch string|nil
+---@field revision string|nil
+---@field files string[]
+---@field generate_requires_npm boolean|nil
+---@field requires_generate_from_grammar boolean|nil
+---@field location string|nil
+
+---@class ParserInfo
+---@field install_info InstallInfo
+---@field filetype string
+---@field maintainers string[]
+---@field experimental boolean|nil
+
+---@type ParserInfo[]
 local list = setmetatable({}, {
   __newindex = function(table, parsername, parserconfig)
     rawset(
@@ -1226,6 +1242,16 @@ list.gitattributes = {
     files = { "src/parser.c" },
   },
   maintainers = { "@ObserverOfTime" },
+}
+
+list.git_rebase = {
+  install_info = {
+    url = "https://github.com/the-mikedavis/tree-sitter-git-rebase",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  filetype = "gitrebase",
+  maintainers = { "@gbprod" },
 }
 
 list.blueprint = {

@@ -102,6 +102,8 @@ local folds_levels = tsutils.memoize_by_buf_tick(function(bufnr)
   return levels
 end)
 
+---@param lnum integer
+---@return string
 function M.get_fold_indic(lnum)
   if not parsers.has_parser() or not lnum then
     return "0"

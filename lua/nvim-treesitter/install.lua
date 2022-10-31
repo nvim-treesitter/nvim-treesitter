@@ -42,11 +42,14 @@ local function get_job_status()
     .. "]"
 end
 
+---@param lang string
+---@param validate boolean|nil
+---@return InstallInfo
 local function get_parser_install_info(lang, validate)
   local parser_config = parsers.get_parser_configs()[lang]
 
   if not parser_config then
-    return error('Parser not available for language "' .. lang .. '"')
+    error('Parser not available for language "' .. lang .. '"')
   end
 
   local install_info = parser_config.install_info
@@ -79,6 +82,8 @@ local function get_revision(lang)
   return (lockfile[lang] and lockfile[lang].revision)
 end
 
+---@param lang string
+---@return string|nil
 local function get_installed_revision(lang)
   local lang_file = utils.join_path(configs.get_parser_info_dir(), lang .. ".revision")
   if vim.fn.filereadable(lang_file) == 1 then
@@ -86,23 +91,30 @@ local function get_installed_revision(lang)
   end
 end
 
+---@param lang string
+---@return boolean
 local function is_installed(lang)
   return #api.nvim_get_runtime_file("parser/" .. lang .. ".so", false) > 0
 end
 
+---@param lang string
+---@return boolean
 local function needs_update(lang)
   local revision = get_revision(lang)
   return not revision or revision ~= get_installed_revision(lang)
 end
 
+---@return table
 local function outdated_parsers()
   return vim.tbl_filter(function(lang)
     return needs_update(lang)
   end, info.installed_parsers())
 end
 
+---@param handle userdata
+---@param is_stderr boolean
 local function onread(handle, is_stderr)
-  return function(err, data)
+  return function(_, data)
     if data then
       if is_stderr then
         complete_error_output[handle] = (complete_error_output[handle] or "") .. data
@@ -147,6 +159,7 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
     local stdout = luv.new_pipe(false)
     local stderr = luv.new_pipe(false)
     attr.opts.stdio = { nil, stdout, stderr }
+    ---@type userdata
     handle = luv.spawn(
       attr.cmd,
       attr.opts,
@@ -225,6 +238,12 @@ local function iter_cmd_sync(cmd_list)
   return true
 end
 
+---@param cache_folder string
+---@param install_folder string
+---@param lang string
+---@param repo InstallInfo
+---@param with_sync boolean
+---@param generate_from_grammar boolean
 local function run_install(cache_folder, install_folder, lang, repo, with_sync, generate_from_grammar)
   parsers.reset_cache()
 
@@ -361,6 +380,12 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   end
 end
 
+---@param lang string
+---@param ask_reinstall boolean
+---@param cache_folder string
+---@param install_folder string
+---@param with_sync boolean
+---@param generate_from_grammar boolean
 local function install_lang(lang, ask_reinstall, cache_folder, install_folder, with_sync, generate_from_grammar)
   if is_installed(lang) and ask_reinstall ~= "force" then
     if not ask_reinstall then
@@ -389,6 +414,7 @@ local function install_lang(lang, ask_reinstall, cache_folder, install_folder, w
   run_install(cache_folder, install_folder, lang, install_info, with_sync, generate_from_grammar)
 end
 
+---@return function
 local function install(options)
   options = options or {}
   local with_sync = options.with_sync
@@ -405,11 +431,14 @@ local function install(options)
     if err then
       return api.nvim_err_writeln(err)
     end
+    assert(cache_folder)
 
-    local install_folder, err = configs.get_parser_install_dir()
+    local install_folder
+    install_folder, err = configs.get_parser_install_dir()
     if err then
       return api.nvim_err_writeln(err)
     end
+    assert(install_folder)
 
     local languages
     local ask

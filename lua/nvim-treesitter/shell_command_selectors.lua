@@ -49,6 +49,7 @@ function M.select_rm_file_cmd(file, info_msg)
   end
 end
 
+---@return string|nil
 function M.select_executable(executables)
   return vim.tbl_filter(function(c)
     return c ~= vim.NIL and fn.executable(c) == 1

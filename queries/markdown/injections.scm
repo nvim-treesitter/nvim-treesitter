@@ -9,4 +9,7 @@
 ((minus_metadata) @yaml (#offset! @yaml 1 0 -1 0))
 ((plus_metadata) @toml (#offset! @toml 1 0 -1 0))
 
-((inline) @markdown_inline (#exclude_children! @markdown_inline))
+([
+  (inline)
+  (pipe_table_cell)
+ ] @markdown_inline (#exclude_children! @markdown_inline))
