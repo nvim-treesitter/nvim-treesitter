@@ -204,7 +204,7 @@
     "revision": "e9948edc41e9e5869af99dddb2b5ff5cc5581af6"
   },
   "lua": {
-    "revision": "887dfd4e83c469300c279314ff1619b1d0b85b91"
+    "revision": "fb30e8cb605e2ebd6c643e6981325a63fbbde320"
   },
   "m68k": {
     "revision": "d097b123f19c6eaba2bf181c05420d88b9fc489d"
@@ -369,7 +369,7 @@
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
   },
   "twig": {
-    "revision": "6a01f20e73038300d205d370212c361949be3035"
+    "revision": "035f549ec8c043e734f04341d7ccdc669bb2ba91"
   },
   "typescript": {
     "revision": "0ab9d99867435a7667c5548a6617a6bf73dbd830"
