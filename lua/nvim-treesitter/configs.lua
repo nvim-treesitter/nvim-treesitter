@@ -11,7 +11,7 @@ local M = {}
 ---@class TSConfig
 ---@field modules {[string]:TSModule}
 ---@field sync_install boolean
----@field ensure_installed string[]
+---@field ensure_installed string[]|string
 ---@field ignore_install string[]
 ---@field auto_install boolean
 ---@field update_strategy string
