@@ -15,9 +15,11 @@
   "Hide"
   "Show" ] @keyword
 
-[ "FontFamily"
+[ "Shell"
+  "FontFamily"
   "FontSize"
   "Framerate"
+  "PlaybackSpeed"
   "Height"
   "LetterSpacing"
   "TypingSpeed"
