@@ -189,7 +189,7 @@
     "revision": "8fb38abff74652c4faddbf04d2d5bbbc6b4bae25"
   },
   "kotlin": {
-    "revision": "a4f71eb9b8c9b19ded3e0e9470be4b1b77c2b569"
+    "revision": "f409360ceb4bc1421b28123c47bbecfb1349bfb3"
   },
   "lalrpop": {
     "revision": "7744b56f03ac1e5643fad23c9dd90837fe97291e"
@@ -330,7 +330,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "2743c7b5e710e6854d4e8c14c302548b436e2a1f"
+    "revision": "70c50264ae022193adb364ffa7a767d765ed9857"
   },
   "supercollider": {
     "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
@@ -384,7 +384,7 @@
     "revision": "4457145e795b363f072463e697dfe2f6973c9a52"
   },
   "vim": {
-    "revision": "9736af8ef0a7f20b4c45f6474342c8f5b473e2cc"
+    "revision": "4ae7bd67706d7e10afed827ce2ded884ab41650f"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
@@ -399,6 +399,6 @@
     "revision": "8e9d175982afcefa3dac8ca20d40d1643accd2bd"
   },
   "zig": {
-    "revision": "b1803f2a665d228f968a831eac4fcc07a377c7bc"
+    "revision": "d90d38d28ce8cc27bfea8b4e0c75211e9e2398ca"
   }
 }
