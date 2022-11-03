@@ -189,7 +189,7 @@
     "revision": "8fb38abff74652c4faddbf04d2d5bbbc6b4bae25"
   },
   "kotlin": {
-    "revision": "f409360ceb4bc1421b28123c47bbecfb1349bfb3"
+    "revision": "b953dbdd05257fcb2b64bc4d9c1578fac12e3c28"
   },
   "lalrpop": {
     "revision": "7744b56f03ac1e5643fad23c9dd90837fe97291e"
@@ -288,7 +288,7 @@
     "revision": "0f4f66e5050037b759ea040dafd596bcdda1de94"
   },
   "racket": {
-    "revision": "b9b2e7454d7098e44595dd8c1b471b9d1518b910"
+    "revision": "69ca563af3bcf9d67220532e0814786f2dc34db1"
   },
   "rasi": {
     "revision": "12391343979463a2484e6353e5afb6dcb8c31e8b"
