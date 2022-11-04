@@ -20,7 +20,7 @@
   name: (name) @type)
 (namespace_use_clause
   [(name) (qualified_name)] @type)
-(namespace_aliasing_clause (name)) @type
+(namespace_aliasing_clause (name)) @type.definition
 (class_interface_clause
   [(name) (qualified_name)] @type)
 (scoped_call_expression
@@ -142,18 +142,15 @@
 ] @keyword.function
 
 [
- "abstract"
  "break"
  "class"
  "clone"
- "const"
  "declare"
  "default"
  "echo"
  "enddeclare"
  "enum"
  "extends"
- "final"
  "global"
  "goto"
  "implements"
@@ -161,14 +158,20 @@
  "interface"
  "namespace"
  "new"
+ "trait"
+ "unset"
+ ] @keyword
+
+[
+ "abstract"
+ "const"
+ "final"
  "private"
  "protected"
  "public"
  "readonly"
  "static"
- "trait"
- "unset"
- ] @keyword
+] @type.qualifier
 
 [
   "return"
