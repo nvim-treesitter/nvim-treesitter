@@ -121,14 +121,14 @@
 (macro_definition "macro_rules!" @function.macro)
 
 ;; Attribute macros
-(attribute_item (meta_item (identifier) @function.macro))
-(meta_item (scoped_identifier (identifier) @function.macro .))
+(attribute_item (attribute (identifier) @function.macro))
+(attribute (scoped_identifier (identifier) @function.macro .))
 
 ;; Derive macros (assume all arguments are types)
-(meta_item
-  (identifier) @_name
-  arguments: (meta_arguments (meta_item (identifier) @type))
-  (#eq? @_name "derive"))
+; (attribute
+;   (identifier) @_name
+;   arguments: (attribute (attribute (identifier) @type))
+;   (#eq? @_name "derive"))
 
 ;; Function-like macros
 (macro_invocation
