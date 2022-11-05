@@ -60,7 +60,7 @@
     "revision": "330eb648bbc257b4e91621e82a85372be7dde27a"
   },
   "dockerfile": {
-    "revision": "25c71d6a24cdba8f0c74ef40d4d2d93defd7e196"
+    "revision": "f913be9bb8689af22114605012693146fbe9ddaa"
   },
   "dot": {
     "revision": "9ab85550c896d8b294d9b9ca1e30698736f08cea"
@@ -156,7 +156,7 @@
     "revision": "384b26ec65e10f26cf147bfcde772c50ca5ef0d0"
   },
   "hocon": {
-    "revision": "bb412e2633f4a3611a4e16efe58d917093bb4782"
+    "revision": "dd53316168106fd921e7234d75aa94e47b119479"
   },
   "html": {
     "revision": "29f53d8f4f2335e61bf6418ab8958dac3282077a"
@@ -252,7 +252,7 @@
     "revision": "2fd40f477d3e2794af152618ccfac8d92eb72a66"
   },
   "perl": {
-    "revision": "ff5c3108083af6fcb7575e32a7558b8165a05bcd"
+    "revision": "749d26fe13fb131b92e6515416096e572575b981"
   },
   "php": {
     "revision": "ab2e72179ceb8bb0b249c8ac9162a148e911b3dc"
