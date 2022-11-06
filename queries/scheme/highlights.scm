@@ -81,7 +81,7 @@
 
 ;; quote
 
-(abbreviation
+(quote
  "'"
  (symbol)) @symbol
 
