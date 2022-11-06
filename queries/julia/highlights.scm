@@ -124,7 +124,7 @@
 
 ((identifier) @keyword (#any-of? @keyword "global" "local")) ; Grammar error
 
-(compound_expression
+(compound_statement
   ["begin" "end"] @keyword)
 (quote_statement
   ["quote" "end"] @keyword)
