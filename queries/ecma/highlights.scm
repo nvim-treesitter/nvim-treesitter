@@ -207,7 +207,6 @@
 "else"
 "switch"
 "case"
-"default"
 ] @conditional
 
 [
@@ -266,3 +265,8 @@
  "catch"
  "finally"
 ] @exception
+
+(export_statement
+  "default" @keyword)
+(switch_default
+  "default" @conditional)
