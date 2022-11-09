@@ -25,3 +25,18 @@
     "charconvert" "ccv"))
 
 (comment) @comment
+
+(call_expression
+  function: (identifier) @_func
+  (_)
+  (string_literal) @vim
+  (#any-of @_func "map" "filter")
+  (#offset! @vim 0 1 0 -1)
+)
+
+(call_expression
+  function: (identifier) @_func
+  (string_literal) @vim
+  (#eq? @_func "call")
+  (#offset! @vim 0 1 0 -1)
+)
