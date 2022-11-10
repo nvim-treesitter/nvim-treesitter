@@ -26,6 +26,7 @@
   "LineHeight"
   "Padding"
   "Theme"
+  "LoopOffset"
   "Width" ] @type
 
 [ "@" ] @operator
