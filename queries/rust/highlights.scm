@@ -25,7 +25,6 @@
 
 (self) @variable.builtin
 
-(lifetime   ["'" (identifier)] @label)
 (loop_label ["'" (identifier)] @label)
 
 
@@ -71,6 +70,9 @@
   name: (identifier) @namespace))
 (scoped_type_identifier
   path: (identifier) @namespace)
+(scoped_type_identifier
+  path: (identifier) @type
+  (#lua-match? @type "^[A-Z]"))
 (scoped_type_identifier
  (scoped_identifier
   name: (identifier) @namespace))
@@ -121,14 +123,14 @@
 (macro_definition "macro_rules!" @function.macro)
 
 ;; Attribute macros
-(attribute_item (meta_item (identifier) @function.macro))
-(meta_item (scoped_identifier (identifier) @function.macro .))
+(attribute_item (attribute (identifier) @function.macro))
+(attribute (scoped_identifier (identifier) @function.macro .))
 
 ;; Derive macros (assume all arguments are types)
-(meta_item
-  (identifier) @_name
-  arguments: (meta_arguments (meta_item (identifier) @type))
-  (#eq? @_name "derive"))
+; (attribute
+;   (identifier) @_name
+;   arguments: (attribute (attribute (identifier) @type))
+;   (#eq? @_name "derive"))
 
 ;; Function-like macros
 (macro_invocation
@@ -169,7 +171,6 @@
 [
   "async"
   "await"
-  "const"
   "default"
   "dyn"
   "enum"
@@ -179,16 +180,25 @@
   "match"
   "move"
   "pub"
-  "ref"
-  "static"
   "struct"
   "trait"
   "type"
   "union"
   "unsafe"
   "where"
-  (mutable_specifier)
 ] @keyword
+
+[
+ "ref"
+ (mutable_specifier)
+] @type.qualifier
+
+[
+ "const"
+ "static"
+] @storageclass
+
+(lifetime ["'" (identifier)] @storageclass.lifetime)
 
 "fn" @keyword.function
 [
@@ -201,7 +211,8 @@
 
 (use_list (self) @keyword)
 (scoped_use_list (self) @keyword)
-(scoped_identifier (self) @keyword)
+(scoped_identifier [(crate) (super) (self)] @keyword)
+(visibility_modifier [(crate) (super) (self)] @keyword)
 
 [
   "else"
@@ -216,8 +227,7 @@
   "while"
 ] @repeat
 
-(impl_item
-  "for" @keyword)
+"for" @keyword
 (for_expression
   "for" @repeat)
 
@@ -266,6 +276,8 @@
 (closure_parameters "|"    @punctuation.bracket)
 (type_arguments  ["<" ">"] @punctuation.bracket)
 (type_parameters ["<" ">"] @punctuation.bracket)
+(bracketed_type ["<" ">"] @punctuation.bracket)
+(for_lifetimes ["<" ">"] @punctuation.bracket)
 
 ["," "." ":" "::" ";"] @punctuation.delimiter
 
@@ -273,3 +285,8 @@
 (inner_attribute_item ["!" "#"] @punctuation.special)
 (macro_invocation "!" @function.macro)
 (empty_type "!" @type.builtin)
+
+(macro_invocation macro: (identifier) @_ident @exception "!" @exception
+ (#eq? @_ident "panic"))
+(macro_invocation macro: (identifier) @_ident @exception "!" @exception
+ (#contains? @_ident "assert"))

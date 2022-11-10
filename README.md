@@ -389,6 +389,7 @@ Tree-sitter based folding. *(Technically not a module because it's per windows a
 ```vim
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
+set nofoldenable                     " Disable folding at startup.
 ```
 
 This will respect your `foldminlines` and `foldnestmax` settings.
