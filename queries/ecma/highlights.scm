@@ -239,7 +239,6 @@
 "let"
 "set"
 "static"
-"switch"
 "target"
 "typeof"
 "var"
