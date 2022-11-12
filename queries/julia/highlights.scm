@@ -21,7 +21,7 @@
 (field_expression
   (identifier) @field .)
 
-(subscript_expression
+(index_expression
   (_)
   (range_expression
     (identifier) @constant.builtin .)
@@ -87,12 +87,9 @@
 
 ;; Annotations
 
-(parameterized_identifier (_) @type)
+(parametrized_type_expression (_) @type)
 
 (type_parameter_list
-  (identifier) @type)
-
-(type_argument_list
   (identifier) @type)
 
 (typed_expression

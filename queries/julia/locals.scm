@@ -4,10 +4,6 @@
 (assignment_expression
   (tuple_expression
     (identifier) @definition.var))
-(assignment_expression
-  (bare_tuple_expression
-    (identifier) @definition.var))
-
 
 ;;; let/const bindings
 (variable_declaration
