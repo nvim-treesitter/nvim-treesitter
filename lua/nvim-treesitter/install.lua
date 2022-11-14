@@ -91,10 +91,18 @@ local function get_installed_revision(lang)
   end
 end
 
+---Checks if parser is installed with nvim-treesitter
 ---@param lang string
 ---@return boolean
 local function is_installed(lang)
-  return #api.nvim_get_runtime_file("parser/" .. lang .. ".so", false) > 0
+  local matched_parsers = vim.api.nvim_get_runtime_file("parser/" .. lang .. ".so", true) or {}
+  for _, path in ipairs(matched_parsers) do
+    local install_dir = configs.get_parser_install_dir()
+    if vim.startswith(path, install_dir) then
+      return true
+    end
+  end
+  return false
 end
 
 ---@param lang string

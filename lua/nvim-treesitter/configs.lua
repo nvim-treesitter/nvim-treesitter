@@ -574,7 +574,7 @@ end
 ---plugin first, followed by the "site" dir from "runtimepath". "site" dir will
 ---be created if it doesn't exist. Using only the package dir won't work when
 ---the plugin is installed with Nix, since the "/nix/store" is read-only.
----@param folder_name string
+---@param folder_name string|nil
 ---@return string|nil, string|nil
 function M.get_parser_install_dir(folder_name)
   folder_name = folder_name or "parser"
