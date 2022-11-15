@@ -2,7 +2,7 @@
 [
   (import) 
   (package)
-] @module
+] @include
 
 [
   (with)
@@ -56,7 +56,7 @@
   (close_curly)
 ] @punctuation.bracket
 
-(rule (rule_head (var) @attribute))
+(rule (rule_head (var) @method))
 
 (rule 
   (rule_head (term (ref (var) @head-var)))
