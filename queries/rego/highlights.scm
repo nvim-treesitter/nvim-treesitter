@@ -43,9 +43,9 @@
 
 (expr_call func_name: (fn_name (var) @function .))
 
-(expr_call func_arguments: (fn_args (expr) @variable.parameter))
+(expr_call func_arguments: (fn_args (expr) @parameter))
 
-(rule_args (term) @variable.parameter)
+(rule_args (term) @parameter)
 
 [
   (open_paren)
