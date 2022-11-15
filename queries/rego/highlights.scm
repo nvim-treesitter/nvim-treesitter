@@ -59,6 +59,6 @@
 (rule (rule_head (var) @method))
 
 (rule 
-  (rule_head (term (ref (var) @head-var)))
-  (rule_body (query (literal (expr (expr_infix (expr (term (ref (var)) @output-var)))))) (#eq? @output-var @head-var))
+  (rule_head (term (ref (var) @namespace)))
+  (rule_body (query (literal (expr (expr_infix (expr (term (ref (var)) @_output)))))) (#eq? @_output @namespace))
 )
