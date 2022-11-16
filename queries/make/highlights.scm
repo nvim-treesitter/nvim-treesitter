@@ -15,7 +15,6 @@
        (#any-of? @function.builtin
         ".DEFAULT"
         ".SUFFIXES"
-        ".DEFAULT"
         ".DELETE_ON_ERROR"
         ".EXPORT_ALL_VARIABLES"
         ".IGNORE"
@@ -64,19 +63,16 @@
   "MAKE_TERMERR"
   "MAKE_TERMOUT"
   "SHELL"
- )
- )
-
+ ))
 
 
 ; Use string to match bash
-(variable_reference (word) @string ) @operator
+(variable_reference (word) @string) @operator
 
 
 (shell_function
  ["$" "(" ")"] @operator
- "shell" @function.builtin
- )
+ "shell" @function.builtin)
 
 (function_call ["$" "(" ")"] @operator)
 (substitution_reference ["$" "(" ")"] @operator)
@@ -117,5 +113,4 @@
  "eval"
  "file"
  "value"
- ] @function.builtin
-)
+ ] @function.builtin)
