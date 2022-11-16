@@ -186,7 +186,7 @@
     "revision": "0475a5017ad7dc84845d1d33187f2321abcb261d"
   },
   "julia": {
-    "revision": "58d0701550b4cce02acf433eedada03b634cc524"
+    "revision": "628713553c42f30595a3b0085bb587e9359b986a"
   },
   "kotlin": {
     "revision": "b953dbdd05257fcb2b64bc4d9c1578fac12e3c28"
@@ -297,7 +297,7 @@
     "revision": "e1cfca3c79896ff79842f057ea13e529b66af636"
   },
   "rego": {
-    "revision": "8778c41757e2ae6738d64da114ea23868dedf349"
+    "revision": "6174f05f58e8c35d8c82323dd8c599b90b3171b3"
   },
   "rnoweb": {
     "revision": "502c1126dc6777f09af5bef16e72a42f75bd081e"
