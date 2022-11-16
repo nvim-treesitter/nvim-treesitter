@@ -5,6 +5,9 @@
   "astro": {
     "revision": "947e93089e60c66e681eba22283f4037841451e7"
   },
+  "awk": {
+    "revision": "a799bc5da7c2a84bc9a06ba5f3540cf1191e4ee3"
+  },
   "bash": {
     "revision": "77cf8a7cab8904baf1a721762e012644ac1d4c7b"
   },
