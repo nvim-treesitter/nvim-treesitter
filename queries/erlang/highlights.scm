@@ -1,4 +1,4 @@
-;; keywoord
+;; keyword
 [
   "fun"
   "div"
@@ -11,7 +11,7 @@
   "}"
   "["
   "]"
-	"#"
+  "#"
 ] @punctuation.bracket
 ;; conditional
 [
@@ -26,8 +26,8 @@
 
 [
   "catch"
-	"try"
-	"throw"
+  "try"
+  "throw"
 ] @exception
 ;;; module define
 [
@@ -45,60 +45,61 @@
   "="
   "->"
   "=>"
-	"|"
-	;;;TODO
-	"$"
+  "|"
+  ;;;TODO
+  "$"
  ] @operator
 
 (comment) @comment
 (string) @string
-(variable) @variable
+(var) @variable
 
-(module_name
+(module_attribute
   (atom) @namespace
 )
 ;;; expr_function_call
-(expr_function_call
-  name: (computed_function_name) @function.call 
-) 
+(call
+  expr: [(atom) (remote) (var)] @function.call 
+)
 
-(expr_function_call
-  arguments: (atom) @variable
+;;; Parenthesized expression: (SomeFunc)(), only highlight the parens
+(call
+  expr: (paren_expr ("(") @function.call (_) (")") @function.call)
 )
 
 ;;; map
-(map 
- (map_entry [
+(map_expr
+ (map_field [
+   (atom)
+   (var)
+ ] @variable)
+)
+
+(map_expr_update
+ (map_field [
    (atom)
    (variable)
  ] @variable)
 )
 
-
 (tuple (atom) @variable)
 (pat_tuple ( pattern (atom) @variable))
 
-(computed_function_name) @function
 ;;; case
-(case_clause
-  pattern: (pattern
-    (atom) @variable
-  )
+(cr_clause
+  pat: (atom) @variable
 )
-(case_clause
+(cr_clause
   body: (atom) @variable
 )
 
 ;;; function
-(qualified_function_name
-  module_name: (atom) @attribute
-  function_name: (atom) @function
+(external_fun
+  module: (atom) @attribute
 )
-;; function
-(function_clause
-  name: (atom) @function)
-;;;lambda
-(lambda_clause
-  arguments:
-    (pattern) @variable
+(external_fun
+  fun: (atom) @function
+)
+(internal_fun
+  fun: (atom) @function
 )
