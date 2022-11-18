@@ -1,127 +1,65 @@
 ; highlights.scm
 
-; Literals
-(integer) @number
+;; Comments
+(comment) @comment
 
-(float) @float
-
-(complex) @number
-
-(string) @string
-(string (escape_sequence) @string.escape)
-
-(comment) @comment @spell
-
-((program . (comment) @preproc)
-  (#match? @preproc "^#!/"))
-
-(identifier) @variable
-
-(formal_parameters (identifier) @parameter)
-(formal_parameters
- (default_parameter name: (identifier) @parameter))
-
-; Operators
+;; Numeric literals
 [
- "="
- "<-"
- "<<-"
- "->"
+ (integer)
+ (float)
+ (complex)
+] @constant.builtin
+
+;; Strings
+(string)  @string
+
+;; Parameters
+(parameters (parameter name: (identifier) @parameter))
+(arguments  (argument  name: (identifier) @parameter))
+
+;; Operators
+[
+  "?" ":=" "=" "<-" "<<-" "->" "->>"
+  "~" "|>" "=>" "||" "|" "&&" "&"
+  "<" "<=" ">" ">=" "==" "!="
+  "+" "-" "*" "/" "::" ":::"
+  "%<>%" "%$%" "%!>%" "%>%" "%T>%" "%%"
+  "**" "^" "$" "@"
 ] @operator
 
-(unary operator: [
-  "-"
-  "+"
-  "!"
-  "~"
-] @operator)
-
-(binary operator: [
-  "-"
-  "+"
-  "*"
-  "/"
-  "^"
-  "<"
-  ">"
-  "<="
-  ">="
-  "=="
-  "!="
-  "||"
-  "|"
-  "&&"
-  "&"
-  ":"
-  "~"
-] @operator)
-
+; Brackets
 [
-  "|>"
-  (special)
-] @operator
-
-(lambda_function "\\" @operator)
-
-[
- "("
- ")"
- "["
- "]"
- "{"
- "}"
+  "("  ")"
+  "{"  "}"
+  "["  "]"
+  "[[" "]]"
 ] @punctuation.bracket
 
-(dollar "$" @operator)
+(comma) @punctuation.delimiter
 
-(subset2
-  "[[" @punctuation.bracket
-  "]]" @punctuation.bracket)
-
+; Keywords
 [
- "in"
- (dots)
- (break)
- (next)
- (inf)
+  (return) (next) (break) (NULL)
 ] @keyword
 
 [
-  (nan)
-  (na)
-  (null)
-] @type.builtin
+  "function"
+] @keyword.function
 
 [
   "if"
   "else"
-  "switch"
-] @conditional
-
-[
   "while"
   "repeat"
   "for"
-] @repeat
+] @keyword
 
 [
-  (true)
-  (false)
-] @boolean
+  (Inf) (NaN) (dots) (TRUE) (FALSE)
+  (NA) (NA_integer_) (NA_real_) (NA_complex_) (NA_character_)
+] @constant.builtin
 
-"function" @keyword.function
-
-(call function: (identifier) @function)
-(default_argument name: (identifier) @parameter)
-
-(namespace_get function: (identifier) @method)
-(namespace_get_internal function: (identifier) @method)
-
-(namespace_get namespace: (identifier) @namespace
- "::" @operator)
-
-(namespace_get_internal namespace: (identifier) @namespace
- ":::" @operator)
+; Calls
 
 ; Error
 (ERROR) @error
