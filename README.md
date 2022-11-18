@@ -31,7 +31,7 @@
 
 The goal of `nvim-treesitter` is both to provide a simple and easy way to use the interface for [tree-sitter](https://github.com/tree-sitter/tree-sitter) in Neovim and to provide some basic functionality such as highlighting based on it:
 
-![cpp example](assets/example-cpp.png)
+![example-cpp](https://user-images.githubusercontent.com/2361214/202753610-e923bf4e-e88f-494b-bb1e-d22a7688446f.png)
 
 Traditional highlighting (left) vs Treesitter-based highlighting (right).
 More examples can be found in [our gallery](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Gallery).
