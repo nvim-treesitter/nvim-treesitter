@@ -11,7 +11,13 @@
 ] @constant.builtin
 
 ;; Strings
-(string)  @string
+(string) @string
+
+;; Boolean
+[
+ (TRUE)
+ (FALSE)
+] @boolean
 
 ;; Parameters
 (parameters (parameter name: (identifier) @parameter))
@@ -27,7 +33,7 @@
   "**" "^" "$" "@"
 ] @operator
 
-; Brackets
+;; Brackets
 [
   "("  ")"
   "{"  "}"
@@ -37,7 +43,7 @@
 
 (comma) @punctuation.delimiter
 
-; Keywords
+;; Keywords
 [
   (return) (next) (break) (NULL)
 ] @keyword
@@ -59,12 +65,12 @@
   (NA) (NA_integer_) (NA_real_) (NA_complex_) (NA_character_)
 ] @constant.builtin
 
-; Namespaces
+;; Namespaces
 ("::"  lhs: (identifier)) @namespace
 (":::" lhs: (identifier)) @namespace
 
-; Calls
+;; Calls
 (call (identifier) @function)
 
-; Error
+;; Error
 (ERROR) @error
