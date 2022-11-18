@@ -47,6 +47,9 @@
 
 (type_identifier) @type
 
+(type_alias
+	(type_identifier) @type.definition)
+
 ((type_identifier) @type.builtin
 	(#any-of? @type.builtin
 		"Byte"
@@ -98,7 +101,7 @@
 	(identifier
 		(simple_identifier) @type @_import)
 	(import_alias
-		(type_identifier) @type)?
+		(type_identifier) @type.definition)?
 		(#lua-match? @_import "^[A-Z]"))
 
 (import_header
@@ -285,7 +288,7 @@
 	(visibility_modifier)
 	(reification_modifier)
 	(inheritance_modifier)
-]@keyword
+] @type.qualifier
 
 [
 	"val"
