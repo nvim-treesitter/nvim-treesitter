@@ -38,7 +38,7 @@
   "∀"
 ] @repeat
 
-(pragma) @constant.macro
+(pragma) @preproc
 
 [
   "if"
