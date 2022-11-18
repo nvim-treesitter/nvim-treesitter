@@ -1,5 +1,5 @@
 [
- "{" "(" "[" "[["
+ "{" "(" "[" "[[" (call)
  "|>" "if" "else" "while" "repeat" "for"
 ] @indent
 
