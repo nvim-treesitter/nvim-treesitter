@@ -2,11 +2,14 @@
   "agda": {
     "revision": "80ea622cf952a0059e168e5c92a798b2f1925652"
   },
+  "arduino": {
+    "revision": "c473c09f23b13d9404ec5208fad3eddea89d70f8"
+  },
   "astro": {
     "revision": "947e93089e60c66e681eba22283f4037841451e7"
   },
   "awk": {
-    "revision": "a799bc5da7c2a84bc9a06ba5f3540cf1191e4ee3"
+    "revision": "e559793754c60c2cdf00cbb0409842d75f0a41dc"
   },
   "bash": {
     "revision": "77cf8a7cab8904baf1a721762e012644ac1d4c7b"
@@ -147,7 +150,7 @@
     "revision": "45ce22c16ec924e34517cf785e23c07952e45893"
   },
   "heex": {
-    "revision": "52b804b1cb2d57e58d90090326d3ef9bd19cf16c"
+    "revision": "2e1348c3cf2c9323e87c2744796cf3f3868aa82a"
   },
   "help": {
     "revision": "49cdef52ded4a886bf34bc474876b09f9270d48f"
@@ -300,7 +303,7 @@
     "revision": "e1cfca3c79896ff79842f057ea13e529b66af636"
   },
   "rego": {
-    "revision": "6174f05f58e8c35d8c82323dd8c599b90b3171b3"
+    "revision": "b2667c975f07b33be3ceb83bea5cfbad88095866"
   },
   "rnoweb": {
     "revision": "502c1126dc6777f09af5bef16e72a42f75bd081e"
@@ -333,7 +336,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "56d33747de8dad6cf92356245e8e8ea7a2654947"
+    "revision": "4f1b91246b43190e34957d9de9a0f3625879ba33"
   },
   "supercollider": {
     "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
