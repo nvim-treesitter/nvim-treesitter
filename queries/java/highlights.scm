@@ -159,7 +159,6 @@
 ; Keywords
 
 [
-"abstract"
 "assert"
 "break"
 "class"
@@ -169,33 +168,45 @@
 "enum"
 "exports"
 "extends"
-"final"
 "implements"
 "instanceof"
 "interface"
 "module"
-"native"
-"open"
 "opens"
 "package"
 "permits"
-"private"
-"protected"
 "provides"
-"public"
 "requires"
-"sealed"
-"non-sealed"
-"static"
-"strictfp"
-"synchronized"
 "to"
-"transient"
-"transitive"
 "uses"
-"volatile"
 "with"
 ] @keyword
+
+(synchronized_statement
+  "synchronized" @keyword)
+
+[
+"abstract"
+"final"
+"native"
+"non-sealed"
+"open"
+"private"
+"protected"
+"public"
+"sealed"
+"static"
+"strictfp"
+"transitive"
+] @type.qualifier
+
+(modifiers
+  "synchronized" @type.qualifier)
+
+[
+"transient"
+"volatile"
+] @storageclass
 
 [
 "return"
