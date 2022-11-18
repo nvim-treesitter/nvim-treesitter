@@ -2,8 +2,8 @@
 
 (function) @scope
 
+(parameter name: (identifier) @definition.parameter)
 (argument  name: (identifier) @definition)
-(parameter name: (identifier) @definition)
 
 ("<-" lhs: (identifier) @definition)
 ("="  lhs: (identifier) @definition)
