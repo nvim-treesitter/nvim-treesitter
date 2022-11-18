@@ -24,6 +24,9 @@
   table_alias: (identifier) @variable
   name: (identifier) @field)
 
+(term
+  alias: (identifier) @variable)
+
 (literal) @string
 (comment) @comment
 (marginalia) @comment
