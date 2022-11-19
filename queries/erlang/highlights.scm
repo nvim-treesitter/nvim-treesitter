@@ -72,7 +72,7 @@
 (macro_call_expr
   "?" @macro
   name: (_) @macro
-) @macro
+) @constant.macro
 
 ;; Preprocessor
 (pp_define) @define
