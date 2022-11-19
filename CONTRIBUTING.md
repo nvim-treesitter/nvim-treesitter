@@ -231,7 +231,8 @@ Used for XML-like tags.
 #### Spell
 
 ```scheme
-@spell ; for defining regions to be spellchecked
+@spell   ; for defining regions to be spellchecked
+@nospell ; for defining regions that should _not_ be spellchecked
 ```
 
 #### Non-standard
