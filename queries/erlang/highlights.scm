@@ -77,7 +77,7 @@
 ;; Preprocessor
 (pp_define) @define
 [(pp_include) (pp_include_lib)] @include
-(_preprocessor_directive) @preprocessor
+(_preprocessor_directive) @preproc
 
 ;;; module define
 [
