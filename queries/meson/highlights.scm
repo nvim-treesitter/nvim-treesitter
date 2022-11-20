@@ -1,6 +1,8 @@
 (comment) @comment
-(number) @number 
+(number) @number
 (bool) @boolean
+
+(identifier) @variable
 
 [
   "("
@@ -9,8 +11,7 @@
   "}"
   "["
   "]"
-]
-@punctuation.bracket
+] @punctuation.bracket
 
 [
   ":"
@@ -38,6 +39,8 @@
   ">="
 ] @operator
 
+"?" @conditional.ternary
+
 [
   "if"
   "elif"
@@ -52,30 +55,21 @@
   (keyword_continue)
 ] @repeat
 
-;;; format
 (string) @string
-["@"] @punctuation.special
 
-(experession_statement
-  object: (identifier) @variable)
+"@" @punctuation.special
 
 (normal_command
   command: (identifier) @function)
-
-(list
-  variable: (identifier) @variable)
-
-(operatorunit
-  (identifier) @variable)
-
-(formatunit
-  variable: (identifier) @variable)
-
-(variableunit
-  value: (identifier) @variable)
 (pair
   key: (identifier) @property)
-(pair
-  value: (identifier) @variable)
 
 (escape_sequence) @string.escape
+
+((identifier) @variable.builtin
+  (#any-of? @variable.builtin
+    "meson"
+    "host_machine"
+    "build_machine"
+    "target_machine"
+   ))
