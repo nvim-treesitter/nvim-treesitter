@@ -79,9 +79,11 @@
 ;; Definitions
 
 (abstract_definition
-  name: (identifier) @type)
+  name: (identifier) @type.definition
+  (subtype_clause (identifier) @type))
 (primitive_definition
-  name: (identifier) @type)
+  name: (identifier) @type.definition
+  (subtype_clause (identifier) @type))
 (struct_definition
   name: (identifier) @type)
 
@@ -107,19 +109,16 @@
 ;;; Keywords
 
 [
-  "abstract"
-  "const"
   "macro"
-  "primitive"
   "struct"
   "type"
-  "mutable"
   "where"
 ] @keyword
 
 "end" @keyword
 
-((identifier) @keyword (#any-of? @keyword "global" "local")) ; Grammar error
+((identifier) @keyword
+ (#any-of? @keyword "global" "local")) ; Grammar error
 
 (compound_statement
   ["begin" "end"] @keyword)
@@ -173,6 +172,13 @@
   "->" @keyword.function)
 (return_statement
   "return" @keyword.return)
+
+[
+  "abstract"
+  "const"
+  "mutable"
+  "primitive"
+] @type.qualifier
 
 
 ;;; Operators & Punctuation
