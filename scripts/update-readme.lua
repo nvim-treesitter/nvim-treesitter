@@ -25,7 +25,7 @@ for _, v in ipairs(sorted_parsers) do
       .. table.concat(v.parser.maintainers, ", ")
       .. ")\n"
   else
-    generated_text = generated_text .. "- [ ] " .. link .. "\n"
+    generated_text = generated_text .. "- [ ] " .. link .. (v.parser.experimental and " (experimental)" or "") .. "\n"
   end
 end
 
