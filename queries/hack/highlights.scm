@@ -6,15 +6,15 @@
 (braced_expression) @none
 
 (scoped_identifier
- (qualified_identifier 
+ (qualified_identifier
    (identifier) @type))
 
-(comment) @comment
-(heredoc) @comment
-
 [
- "function"
-] @keyword.function
+  (comment)
+  (heredoc)
+] @comment
+
+"function" @keyword.function
 
 [
  "async"
@@ -23,20 +23,21 @@
  "interface"
  "implements"
  "class"
- "protected"
- "private"
- "public"
  "using"
  "namespace"
  "attribute"
  "const"
- (xhp_modifier)
- (final_modifier)
  "extends"
  "insteadof"
 ] @keyword
 
-"use" @include
+[
+ "use"
+ "include"
+ "include_once"
+ "require"
+ "require_once"
+] @include
 
 [
   "new"
@@ -47,9 +48,15 @@
   "as"
 ] @keyword.operator
 
+"return" @keyword.return
+
 [
- "return"
-] @keyword.return
+  (abstract_modifier)
+  (final_modifier)
+  (static_modifier)
+  (visibility_modifier)
+  (xhp_modifier)
+] @type.qualifier
 
 [
   "shape"
@@ -92,10 +99,10 @@
   (qualified_identifier
     (identifier) @type .))
 
-(attribute_modifier) @attribute
 [
  "@required"
  "@lateinit"
+  (attribute_modifier)
 ] @attribute
 
 [
@@ -262,6 +269,8 @@
   [ "</" ">" ] @tag.delimiter)
 
 [ "." ";" "::" ":" "," ] @punctuation.delimiter
+(qualified_identifier
+  "\\" @punctuation.delimiter)
 
 (ternary_expression
   ["?" ":"] @conditional)
