@@ -78,7 +78,7 @@
 (numeric_lit) @number
 (bool_lit) @boolean
 (null_lit) @constant
-(comment) @comment
+(comment) @comment @spell
 (identifier) @variable
 
 (block (identifier) @type)
