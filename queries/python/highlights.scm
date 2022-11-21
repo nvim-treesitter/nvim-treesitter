@@ -44,16 +44,23 @@
               "ConnectionRefusedError" "ConnectionResetError" "FileExistsError" "FileNotFoundError" "InterruptedError"
               "IsADirectoryError" "NotADirectoryError" "PermissionError" "ProcessLookupError" "TimeoutError" "Warning"
               "UserWarning" "DeprecationWarning" "PendingDeprecationWarning" "SyntaxWarning" "RuntimeWarning"
-              "FutureWarning" "ImportWarning" "UnicodeWarning" "BytesWarning" "ResourceWarning"))
+              "FutureWarning" "ImportWarning" "UnicodeWarning" "BytesWarning" "ResourceWarning"
+              ;; https://docs.python.org/3/library/stdtypes.html
+              "bool" "int" "float" "complex" "list" "tuple" "range" "str"
+              "bytes" "bytearray" "memoryview" "set" "frozenset" "dict" "type"))
+
+((assignment
+  left: (identifier) @type.definition
+  (type (identifier) @_annotation))
+ (#eq? @_annotation "TypeAlias"))
+
+((assignment
+  left: (identifier) @type.definition
+  right: (call
+    function: (identifier) @_func))
+ (#any-of? @_func "TypeVar" "NewType"))
 
 ; Function calls
-
-(decorator) @function
-((decorator (attribute (identifier) @function))
- (#match? @function "^([A-Z])@!.*$"))
-(decorator) @function
-((decorator (identifier) @function)
- (#match? @function "^([A-Z])@!.*$"))
 
 (call
   function: (identifier) @function.call)
@@ -70,6 +77,26 @@
   function: (attribute
               attribute: (identifier) @constructor))
  (#lua-match? @constructor "^[A-Z]"))
+
+;; Decorators
+
+((decorator "@" @attribute)
+ (#set! "priority" 101))
+
+(decorator
+  (identifier) @attribute)
+(decorator
+  (attribute
+    attribute: (identifier) @attribute))
+(decorator
+  (call (identifier) @attribute))
+(decorator
+  (call (attribute
+          attribute: (identifier) @attribute)))
+
+((decorator
+  (identifier) @attribute.builtin)
+ (#any-of? @attribute.builtin "classmethod" "property"))
 
 ;; Builtin functions
 
@@ -233,7 +260,9 @@
 ] @keyword.return
 (yield "from" @keyword.return)
 
-(future_import_statement "from" @include "__future__" @constant.builtin)
+(future_import_statement
+  "from" @include
+  "__future__" @constant.builtin)
 (import_from_statement "from" @include)
 "import" @include
 
