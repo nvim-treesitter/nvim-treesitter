@@ -49,13 +49,18 @@
 
 ; `?` in `{ x ? y }:`, used to set defaults for named function arguments
 ; I'm not really sure what group this should go in, but it should probably have highlighting, so I'm putting it in @punctuation.special
-(formal "?" @punctuation.special)
+(formal
+  name: (identifier) @parameter
+  "?"? @punctuation.special)
 
 ; `...` in `{ ... }`, used to ignore unknown named function arguments (see above)
 (ellipses) @punctuation.special
 
+; universal is the parameter of the function expression
 ; `:` in `x: y`, used to separate function argument from body (see above)
-(function_expression ":" @punctuation.special)
+(function_expression
+  universal: (identifier) @parameter
+  ":" @punctuation.special)
 
 ; basic identifiers
 (variable_expression) @variable
