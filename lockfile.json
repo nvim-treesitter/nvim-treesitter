@@ -153,7 +153,7 @@
     "revision": "2e1348c3cf2c9323e87c2744796cf3f3868aa82a"
   },
   "help": {
-    "revision": "49cdef52ded4a886bf34bc474876b09f9270d48f"
+    "revision": "ce20f13c3f12506185754888feaae3f2ad54c287"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
@@ -411,7 +411,7 @@
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
   },
   "yang": {
-    "revision": "8e9d175982afcefa3dac8ca20d40d1643accd2bd"
+    "revision": "2c0e6be8dd4dcb961c345fa35c309ad4f5bd3502"
   },
   "zig": {
     "revision": "d90d38d28ce8cc27bfea8b4e0c75211e9e2398ca"
