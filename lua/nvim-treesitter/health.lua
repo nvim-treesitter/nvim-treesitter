@@ -94,6 +94,8 @@ local function install_health()
       )
     end
   end
+
+  health.report_start("OS Info:\n" .. vim.inspect(vim.loop.os_uname()))
 end
 
 local function query_status(lang, query_group)
