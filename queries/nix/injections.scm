@@ -1,5 +1,13 @@
 (comment) @comment
 
+(apply_expression
+  function: (_) @_func
+  argument: [
+    (string_expression (string_fragment) @regex)
+    (indented_string_expression (string_fragment) @regex)
+  ]
+  (#match? @_func "(^|\\.)match$"))
+
 (binding
   attrpath: (attrpath (identifier) @_path)
   expression: [
