@@ -213,8 +213,12 @@
 [
 "import"
 "from"
-"as"
 ] @include
+
+(export_specifier "as" @include)
+(import_specifier "as" @include)
+(namespace_export "as" @include)
+(namespace_import "as" @include)
 
 [
 "for"
