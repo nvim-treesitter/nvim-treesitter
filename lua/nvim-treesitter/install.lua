@@ -115,7 +115,7 @@ end
 ---@return table
 local function outdated_parsers()
   return vim.tbl_filter(function(lang)
-    return needs_update(lang)
+    return is_installed(lang) and needs_update(lang)
   end, info.installed_parsers())
 end
 
