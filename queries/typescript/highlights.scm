@@ -14,6 +14,7 @@
 "type"
 "readonly"
 "override"
+"satisfies"
 ] @keyword
 
 ; types
