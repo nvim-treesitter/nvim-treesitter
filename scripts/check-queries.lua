@@ -73,7 +73,7 @@ local function do_check()
             local is_valid = (
               vim.startswith(capture, "_") -- Helpers.
               or list_any(captures[query_type], function(documented_capture)
-                return vim.startswith(documented_capture, capture)
+                return vim.startswith(capture, documented_capture)
               end)
             )
             if not is_valid then
