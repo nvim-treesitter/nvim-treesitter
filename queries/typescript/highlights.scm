@@ -17,6 +17,8 @@
 "satisfies"
 ] @keyword
 
+(as_expression "as" @keyword)
+
 ; types
 
 (type_identifier) @type
