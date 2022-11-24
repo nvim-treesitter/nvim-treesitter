@@ -13,9 +13,9 @@
  (stream_redirect)
 ] @operator
 
-; match operators of test command
+;; match operators of test command
 (command
-  name: (word) @function (#match? @function "^test$")
+  name: (word) @function.builtin (#match? @function.builtin "^test$")
   argument: (word) @operator (#match? @operator "^(!?\\=|-[a-zA-Z]+)$"))
 
 ;; match operators of [ command
