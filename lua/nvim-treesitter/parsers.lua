@@ -1253,6 +1253,15 @@ list.git_rebase = {
   maintainers = { "@gbprod" },
 }
 
+list.gitcommit = {
+  install_info = {
+    url = "https://github.com/gbprod/tree-sitter-gitcommit",
+    files = { "src/parser.c", "src/scanner.c" },
+    branch = "main",
+  },
+  maintainers = { "@gbprod" },
+}
+
 list.blueprint = {
   install_info = {
     url = "https://gitlab.com/gabmus/tree-sitter-blueprint.git",
