@@ -71,6 +71,9 @@
   "dot": {
     "revision": "9ab85550c896d8b294d9b9ca1e30698736f08cea"
   },
+  "ebnf": {
+    "revision": "ef241bc09f2f105c35f5e4f2ccd8a522dd99071c"
+  },
   "eex": {
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
