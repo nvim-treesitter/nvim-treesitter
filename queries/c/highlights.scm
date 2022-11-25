@@ -141,6 +141,11 @@
 
 (sizeof_expression value: (parenthesized_expression (identifier) @type))
 
+(abstract_pointer_declarator
+    ( "*" @type))
+(pointer_declarator
+    ( "*" @type))
+
 ((identifier) @constant
  (#lua-match? @constant "^[A-Z][A-Z0-9_]+$"))
 (enumerator
