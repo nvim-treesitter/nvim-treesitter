@@ -7,10 +7,10 @@
 (filepath) @text.uri
 (arrow) @punctuation.delimiter
 
-(subject) @text.title
-(subject (overflow) @text)
-(prefix (type) @keyword)
-(prefix (scope) @parameter)
+(subject) @text.title @spell
+(subject (overflow) @text @spell)
+(prefix (type) @keyword @nospell)
+(prefix (scope) @parameter @nospell)
 (prefix [
     "("
     ")"
@@ -20,13 +20,13 @@
     "!"
 ] @punctuation.special)
 
-(message) @text
+(message) @text @spell
 
 (trailer (token) @label)
 (trailer (value) @text)
 
 (breaking_change (token) @text.warning)
-(breaking_change (value) @text)
+(breaking_change (value) @text @spell)
 
 (scissor) @comment
 
