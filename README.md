@@ -196,6 +196,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [diff](https://github.com/the-mikedavis/tree-sitter-diff) (maintained by @gbprod)
 - [x] [dockerfile](https://github.com/camdencheek/tree-sitter-dockerfile) (maintained by @camdencheek)
 - [x] [dot](https://github.com/rydesun/tree-sitter-dot) (maintained by @rydesun)
+- [x] [ebnf](https://github.com/RubixDev/ebnf.git) (experimental, maintained by @RubixDev)
 - [x] [eex](https://github.com/connorlay/tree-sitter-eex) (maintained by @connorlay)
 - [x] [elixir](https://github.com/elixir-lang/tree-sitter-elixir) (maintained by @jonatanklosko, @connorlay)
 - [ ] [elm](https://github.com/elm-tooling/tree-sitter-elm)
