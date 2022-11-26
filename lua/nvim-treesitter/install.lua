@@ -69,6 +69,10 @@ local function load_lockfile()
   lockfile = vim.fn.filereadable(filename) == 1 and vim.fn.json_decode(vim.fn.readfile(filename)) or {}
 end
 
+local function is_ignored_parser(lang)
+  return vim.tbl_contains(configs.get_ignored_parser_installs(), lang)
+end
+
 local function get_revision(lang)
   if #lockfile == 0 then
     load_lockfile()
@@ -477,7 +481,7 @@ function M.setup_auto_install()
     pattern = { "*" },
     callback = function()
       local lang = parsers.get_buf_lang()
-      if parsers.get_parser_configs()[lang] and not is_installed(lang) then
+      if parsers.get_parser_configs()[lang] and not is_installed(lang) and not is_ignored_parser(lang) then
         install() { lang }
       end
     end,
