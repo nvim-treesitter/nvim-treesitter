@@ -166,7 +166,8 @@
 ] @string
 
 [
-(regex_pattern_qr) 
+(pattern_matcher)
+(regex_pattern_qr)
 (patter_matcher_m)
 (substitution_pattern_s)
 ] @string.regex
