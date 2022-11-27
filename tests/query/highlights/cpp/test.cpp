@@ -4,6 +4,7 @@
 //       ^ string
 
 auto main( int argc, char** argv ) -> int
+// ^ type.builtin
       //       ^ parameter
       //    ^ type.builtin
       //    ^ type.builtin
