@@ -130,7 +130,6 @@
 
 [
  (type_identifier)
- (primitive_type)
  (sized_type_specifier)
  (type_descriptor)
 ] @type
@@ -141,6 +140,8 @@
 
 (type_definition
   declarator: (type_identifier) @type.definition)
+
+(primitive_type) @type.builtin
 
 ((identifier) @constant
  (#lua-match? @constant "^[A-Z][A-Z0-9_]+$"))
