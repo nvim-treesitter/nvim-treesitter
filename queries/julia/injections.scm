@@ -1,6 +1,6 @@
-; TODO: re-add when markdown is added.
-; ((triple_string) @markdown
-;   (#offset! @markdown 0 3 0 -3))
+((string_literal) @markdown
+ (#match? @markdown "^\"\"\"")
+ (#offset! @markdown 0 3 0 -3))
 
 [
   (line_comment)
