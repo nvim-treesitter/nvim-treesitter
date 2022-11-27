@@ -364,6 +364,7 @@
  "readonly"
  "static"
  "volatile"
+ "required"
 ] @storageclass
 
 [
