@@ -5,6 +5,7 @@
 
 (parameter_declaration
   declarator: (reference_declarator) @parameter)
+
 ; function(Foo ...foo)
 (variadic_parameter_declaration
   declarator: (variadic_declarator
@@ -38,6 +39,8 @@
 
 (alias_declaration
   name: (type_identifier) @type.definition)
+
+(auto) @type.builtin
 
 (namespace_identifier) @namespace
 ((namespace_identifier) @type
@@ -143,7 +146,6 @@
  "co_await"
  "concept"
  "requires"
- (auto)
 ] @keyword
 
 [
