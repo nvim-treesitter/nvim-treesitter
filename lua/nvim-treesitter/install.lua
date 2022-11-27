@@ -100,9 +100,14 @@ end
 ---@return boolean
 local function is_installed(lang)
   local matched_parsers = vim.api.nvim_get_runtime_file("parser/" .. lang .. ".so", true) or {}
+  local install_dir = configs.get_parser_install_dir()
+  if not install_dir then
+    return false
+  end
+  install_dir = vim.fn.fnamemodify(install_dir, ":p")
   for _, path in ipairs(matched_parsers) do
-    local install_dir = configs.get_parser_install_dir()
-    if vim.startswith(path, install_dir) then
+    local abspath = vim.fn.fnamemodify(path, ":p")
+    if vim.startswith(abspath, install_dir) then
       return true
     end
   end
