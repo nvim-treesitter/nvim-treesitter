@@ -12,7 +12,7 @@
     "revision": "e559793754c60c2cdf00cbb0409842d75f0a41dc"
   },
   "bash": {
-    "revision": "77cf8a7cab8904baf1a721762e012644ac1d4c7b"
+    "revision": "4488aa41406547e478636a4fcfd24f5bbc3f2f74"
   },
   "beancount": {
     "revision": "4cbd1f09cd07c1f1fabf867c2cf354f9da53cc4c"
@@ -219,7 +219,7 @@
     "revision": "e9948edc41e9e5869af99dddb2b5ff5cc5581af6"
   },
   "lua": {
-    "revision": "fb30e8cb605e2ebd6c643e6981325a63fbbde320"
+    "revision": "f5e84ffc2b06858401e0d2edf5dce009efbe34b3"
   },
   "m68k": {
     "revision": "d097b123f19c6eaba2bf181c05420d88b9fc489d"
