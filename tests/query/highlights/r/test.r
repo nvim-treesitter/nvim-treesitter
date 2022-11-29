@@ -31,7 +31,7 @@ Lang$new(name = "r")$print()
 
 for(i in 1:10) {
 # <- @repeat
-#      ^ @keyword
+#      ^ @repeat
 }
 
 add <- function(a, b = 1, ...) {
