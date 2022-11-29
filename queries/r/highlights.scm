@@ -95,7 +95,6 @@
   "]]" @punctuation.bracket)
 
 [
- "in"
  (dots)
  (break)
  (next)
@@ -118,6 +117,7 @@
   "while"
   "repeat"
   "for"
+  "in"
 ] @repeat
 
 [
