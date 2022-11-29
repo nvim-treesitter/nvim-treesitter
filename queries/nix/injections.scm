@@ -28,13 +28,13 @@
   (#match? @_path "^text$"))
 
 (apply_expression
-  (apply_expression
-    function: (apply_expression function: (_) @_func)
-    argument: [
-      (string_expression (string_fragment) @bash)
-      (indented_string_expression (string_fragment) @bash)
-    ])
-  (#match? @_func "(^|\\.)runCommand(((No)?CC)?(Local)?)?$"))
+  function: (apply_expression
+    function: (apply_expression function: (_) @_func))
+  argument: [
+    (string_expression (string_fragment) @bash)
+    (indented_string_expression (string_fragment) @bash)
+  ]
+  (#match? @_func "(^|\\.)runCommand((No)?CC)?(Local)?$"))
 
 ((apply_expression
   function: (apply_expression function: (_) @_func)
