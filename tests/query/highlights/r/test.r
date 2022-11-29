@@ -23,7 +23,7 @@ b <- list(TRUE, FALSE, NA, Inf)
 b <- list(name = "r", version = R.version$major)
 #          ^ @parameter
 #                 ^ @string
-#                                        ^ @punctuation.special
+#                                        ^ @operator
 #                                           ^ @field
 
 Lang$new(name = "r")$print()

@@ -88,7 +88,7 @@
  "}"
 ] @punctuation.bracket
 
-(dollar "$" @operator)
+(dollar _ "$" @operator)
 
 (subset2
   "[[" @punctuation.bracket
