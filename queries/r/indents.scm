@@ -12,6 +12,8 @@
   "for"
 ] @indent
 
+((binary operator: (special)) @indent)
+
 [
   "}"
   ")"
