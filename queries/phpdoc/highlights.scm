@@ -22,6 +22,7 @@
     (array_type)
     (primitive_type)
     (named_type)
+    (optional_type)
   ] @type)
 (tag
   (description (text) @text))
