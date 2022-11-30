@@ -95,6 +95,17 @@ local function get_installed_revision(lang)
   end
 end
 
+-- Clean path for use in a prefix comparison
+-- @param input string
+-- @return string
+local function clean_path(input)
+  local pth = vim.fn.fnamemodify(input, ":p")
+  if fn.has "win32" == 1 then
+    pth = pth:gsub("/", "\\")
+  end
+  return pth
+end
+
 ---Checks if parser is installed with nvim-treesitter
 ---@param lang string
 ---@return boolean
@@ -104,9 +115,9 @@ local function is_installed(lang)
   if not install_dir then
     return false
   end
-  install_dir = vim.fn.fnamemodify(install_dir, ":p")
+  install_dir = clean_path(install_dir)
   for _, path in ipairs(matched_parsers) do
-    local abspath = vim.fn.fnamemodify(path, ":p")
+    local abspath = clean_path(path)
     if vim.startswith(abspath, install_dir) then
       return true
     end
