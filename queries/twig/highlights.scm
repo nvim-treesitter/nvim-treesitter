@@ -53,3 +53,5 @@
 ] @punctuation.bracket
 
 (hash ["{" "}"] @punctuation.bracket)
+
+(ERROR) @error
