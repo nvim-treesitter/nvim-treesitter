@@ -1,6 +1,17 @@
 local fn = vim.fn
 local utils = require "nvim-treesitter.utils"
 
+-- Convert path for cmd.exe on Windows.
+-- This is needed when vim.opt.shellslash is in use.
+local function cmdpath(p)
+  if vim.opt.shellslash:get() then
+    local r = p:gsub("/", "\\")
+    return r
+  else
+    return p
+  end
+end
+
 local M = {}
 
 function M.select_mkdir_cmd(directory, cwd, info_msg)
@@ -8,7 +19,7 @@ function M.select_mkdir_cmd(directory, cwd, info_msg)
     return {
       cmd = "cmd",
       opts = {
-        args = { "/C", "mkdir", directory },
+        args = { "/C", "mkdir", cmdpath(directory) },
         cwd = cwd,
       },
       info = info_msg,
@@ -32,7 +43,7 @@ function M.select_rm_file_cmd(file, info_msg)
     return {
       cmd = "cmd",
       opts = {
-        args = { "/C", "if", "exist", file, "del", file },
+        args = { "/C", "if", "exist", cmdpath(file), "del", cmdpath(file) },
       },
       info = info_msg,
       err = "Could not delete " .. file,
@@ -135,7 +146,7 @@ function M.select_install_rm_cmd(cache_folder, project_name)
     return {
       cmd = "cmd",
       opts = {
-        args = { "/C", "if", "exist", dir, "rmdir", "/s", "/q", dir },
+        args = { "/C", "if", "exist", cmdpath(dir), "rmdir", "/s", "/q", cmdpath(dir) },
       },
     }
   else
@@ -153,7 +164,7 @@ function M.select_mv_cmd(from, to, cwd)
     return {
       cmd = "cmd",
       opts = {
-        args = { "/C", "move", "/Y", from, to },
+        args = { "/C", "move", "/Y", cmdpath(from), cmdpath(to) },
         cwd = cwd,
       },
     }
@@ -261,7 +272,7 @@ end
 
 function M.make_directory_change_for_command(dir, command)
   if fn.has "win32" == 1 then
-    return string.format("pushd %s & %s & popd", dir, command)
+    return string.format("pushd %s & %s & popd", cmdpath(dir), command)
   else
     return string.format("cd %s;\n %s", dir, command)
   end
