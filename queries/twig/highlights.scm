@@ -36,10 +36,14 @@
 [
     ","
     "."
+] @punctuation.delimiter
+
+[
     "?"
     ":"
     "="
-] @punctuation.delimiter
+    "|"
+] @operator
 
 (interpolated_string ["#{" "}"] @punctuation.special)
 
