@@ -116,6 +116,8 @@
 ((signature (forall (context (fun)))) . (function (variable) @function))
 
 (exp_infix (variable) @operator)  ; consider infix functions as operators
+(exp_section_right (variable) @operator) ; partially applied infix functions (sections) also get highlighted as operators
+(exp_section_left (variable) @operator)
 
 (exp_infix (exp_name) @function.call (#set! "priority" 101))
 (exp_apply . (exp_name (variable) @function.call))
