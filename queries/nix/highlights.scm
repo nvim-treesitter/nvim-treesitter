@@ -73,114 +73,31 @@
 ; basic identifiers
 (variable_expression) @variable
 
-; builtin functions
-; modified from `nix __dump-builtins | jq keys`
-((identifier) @function.builtin (#any-of? @function.builtin
-  "add"
-  "all"
-  "any"
-  "attrNames"
-  "attrValues"
-  "baseNameOf"
-  "bitAnd"
-  "bitOr"
-  "bitXor"
-  "break"
-  "catAttrs"
-  "ceil"
-  "compareVersions"
-  "concatLists"
-  "concatMap"
-  "concatStringsSep"
-  "deepSeq"
-  "dirOf"
-  "div"
-  "elem"
-  "elemAt"
-  "fetchClosure"
-  "fetchGit"
-  "fetchTarball"
-  "fetchurl"
-  "filter"
-  "filterSource"
-  "floor"
-  "foldl'"
-  "fromJSON"
-  "functionArgs"
-  "genList"
-  "genericClosure"
-  "getAttr"
-  "getEnv"
-  "getFlake"
-  "groupBy"
-  "hasAttr"
-  "hashFile"
-  "hashString"
-  "head"
-  "intersectAttrs"
-  "isAttrs"
-  "isBool"
-  "isFloat"
-  "isFunction"
-  "isInt"
-  "isList"
-  "isNull"
-  "isPath"
-  "isString"
-  "length"
-  "lessThan"
-  "listToAttrs"
-  "map"
-  "mapAttrs"
-  "match"
-  "mul"
-  "parseDrvName"
-  "partition"
-  "path"
-  "pathExists"
-  "placeholder"
-  "readDir"
-  "readFile"
-  "removeAttrs"
-  "replaceStrings"
-  "seq"
-  "sort"
-  "split"
-  "splitVersion"
-  "storePath"
-  "stringLength"
-  "sub"
-  "substring"
-  "tail"
-  "toFile"
-  "toJSON"
-  "toPath"
-  "toString"
-  "toXML"
-  "trace"
-  "traceVerbose"
-  "tryEval"
-  "typeOf"
-  "zipAttrsWith"
-))
-
 ((identifier) @include (#eq? @include "import"))
-
-; booleans
 ((identifier) @boolean (#any-of? @boolean "true" "false"))
 
+; builtin functions
+((identifier) @function.builtin (#any-of? @function.builtin
+  ; nix eval --impure --expr 'with builtins; filter (x: x != "import" && isFunction builtins.${x}) (attrNames builtins)'
+  "abort" "add" "addErrorContext" "all" "any" "appendContext" "attrNames" "attrValues" "baseNameOf" "bitAnd" "bitOr" "bitXor" "break" "catAttrs" "ceil" "compareVersions" "concatLists" "concatMap" "concatStringsSep" "deepSeq" "derivation" "derivationStrict" "dirOf" "div" "elem" "elemAt" "fetchGit" "fetchMercurial" "fetchTarball" "fetchTree" "fetchurl" "filter" "filterSource" "findFile" "floor" "foldl'" "fromJSON" "fromTOML" "functionArgs" "genList" "genericClosure" "getAttr" "getContext" "getEnv" "getFlake" "groupBy" "hasAttr" "hasContext" "hashFile" "hashString" "head" "intersectAttrs" "isAttrs" "isBool" "isFloat" "isFunction" "isInt" "isList" "isNull" "isPath" "isString" "length" "lessThan" "listToAttrs" "map" "mapAttrs" "match" "mul" "parseDrvName" "partition" "path" "pathExists" "placeholder" "readDir" "readFile" "removeAttrs" "replaceStrings" "scopedImport" "seq" "sort" "split" "splitVersion" "storePath" "stringLength" "sub" "substring" "tail" "throw" "toFile" "toJSON" "toPath" "toString" "toXML" "trace" "traceVerbose" "tryEval" "typeOf" "unsafeDiscardOutputDependency" "unsafeDiscardStringContext" "unsafeGetAttrPos" "zipAttrsWith"
+  ; primops, `__<tab>` in `nix repl`
+ "__add" "__filter" "__isFunction" "__split" "__addErrorContext" "__filterSource" "__isInt" "__splitVersion" "__all" "__findFile" "__isList" "__storeDir" "__any" "__floor" "__isPath" "__storePath" "__appendContext" "__foldl'" "__isString" "__stringLength" "__attrNames" "__fromJSON" "__langVersion" "__sub" "__attrValues" "__functionArgs" "__length" "__substring" "__bitAnd" "__genList" "__lessThan" "__tail" "__bitOr" "__genericClosure" "__listToAttrs" "__toFile" "__bitXor" "__getAttr" "__mapAttrs" "__toJSON" "__catAttrs" "__getContext" "__match" "__toPath" "__ceil" "__getEnv" "__mul" "__toXML" "__compareVersions" "__getFlake" "__nixPath" "__trace" "__concatLists" "__groupBy" "__nixVersion" "__traceVerbose" "__concatMap" "__hasAttr" "__parseDrvName" "__tryEval" "__concatStringsSep" "__hasContext" "__partition" "__typeOf" "__currentSystem" "__hashFile" "__path" "__unsafeDiscardOutputDependency" "__currentTime" "__hashString" "__pathExists" "__unsafeDiscardStringContext" "__deepSeq" "__head" "__readDir" "__unsafeGetAttrPos" "__div" "__intersectAttrs" "__readFile" "__zipAttrsWith" "__elem" "__isAttrs" "__replaceStrings" "__elemAt" "__isBool" "__seq" "__fetchurl" "__isFloat" "__sort"
+))
+
 ; constants
-((identifier) @constant.builtin (#any-of? @constant.builtin "builtins" "null"))
+((identifier) @constant.builtin (#any-of? @constant.builtin
+  ; nix eval --impure --expr 'with builtins; filter (x: !(isFunction builtins.${x} || isBool builtins.${x})) (attrNames builtins)'
+  "builtins" "currentSystem" "currentTime" "langVersion" "nixPath" "nixVersion" "null" "storeDir"
+))
 
 ; string interpolation (this was very annoying to get working properly)
 (interpolation "${" @punctuation.special (_) "}" @punctuation.special) @none
 
-; display entire builtins path as builtin (ex. `builtins.filter` is highlighted as one long builtin)
 (select_expression
-  expression: ((variable_expression) @_i (#eq? @_i "builtins"))
-  attrpath: (attrpath attr: (identifier) @function.builtin))
-
-(select_expression attrpath: (attrpath attr: (identifier) @field))
+  expression: (_) @_expr
+  attrpath: (attrpath attr: (identifier) @field)
+  (#not-eq? @_expr "builtins")
+)
 (attrset_expression (binding_set (binding . (attrpath (identifier) @field))))
 (rec_attrset_expression (binding_set (binding . (attrpath (identifier) @field))))
 
