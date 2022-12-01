@@ -154,6 +154,10 @@ query.add_directive("exclude_children!", function(match, _pattern, _bufnr, pred,
   metadata.content = ranges
 end)
 
+query.add_directive("set-substring-trim!", function(match, _, bufnr, pred, metadata)
+  metadata[pred[2]] = vim.trim(query.get_node_text(match[pred[3]], bufnr):sub(pred[4], pred[5]))
+end)
+
 -- Trim blank lines from end of the region
 -- Arguments are the captures to trim.
 query.add_directive("trim!", function(match, _, bufnr, pred, metadata)
