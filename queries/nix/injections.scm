@@ -1,5 +1,15 @@
 (comment) @comment
 
+(
+  (comment) @_lang
+  [
+    (string_expression (string_fragment) @content)
+    (indented_string_expression (string_fragment) @content)
+  ]
+  (#match? @_lang "^/\\*[[:space:]]*\\w+[[:space:]]*\\*/$")
+  (#set-substring-trim! "language" @_lang 3 -3)
+)
+
 (apply_expression
   function: (_) @_func
   argument: [
