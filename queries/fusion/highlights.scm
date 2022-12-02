@@ -115,3 +115,6 @@
  "."
  "?"
 ] @punctuation.delimiter
+
+(eel_ternary_expression
+  ["?" ":"] @conditional.ternary)

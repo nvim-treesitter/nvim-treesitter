@@ -185,7 +185,7 @@
 ] @operator
 
 (binary_expression "/" @operator)
-(ternary_expression ["?" ":"] @conditional)
+(ternary_expression ["?" ":"] @conditional.ternary)
 (unary_expression ["!" "~" "-" "+"] @operator)
 (unary_expression ["delete" "void" "typeof"] @keyword.operator)
 

@@ -273,7 +273,7 @@
   "\\" @punctuation.delimiter)
 
 (ternary_expression
-  ["?" ":"] @conditional)
+  ["?" ":"] @conditional.ternary)
 
 [
   "if"

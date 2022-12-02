@@ -102,7 +102,7 @@
  (false)
 ] @boolean
 
-(conditional_expression [ "?" ":" ] @conditional)
+(conditional_expression [ "?" ":" ] @conditional.ternary)
 
 (string_literal) @string
 (system_lib_string) @string

@@ -226,7 +226,7 @@
 "case"
 ] @conditional
 
-(ternary_expression ["?" ":"] @conditional)
+(ternary_expression ["?" ":"] @conditional.ternary)
 
 ;
 
