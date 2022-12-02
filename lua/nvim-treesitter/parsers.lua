@@ -845,6 +845,7 @@ list.sql = {
   install_info = {
     url = "https://github.com/derekstride/tree-sitter-sql",
     files = { "src/parser.c" },
+    requires_generate_from_grammar = true,
   },
   maintainers = { "@derekstride" },
 }
