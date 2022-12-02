@@ -374,6 +374,9 @@
   "teal": {
     "revision": "1ae8c68e90523b26b93af56feb7868fe4214e2b2"
   },
+  "terraform": {
+    "revision": "0ff887f2a60a147452d52db060de6b42f42f1441"
+  },
   "tiger": {
     "revision": "a233ebe360a73a92c50978e5c4e9e471bc59ff42"
   },
