@@ -1,13 +1,13 @@
 local Runner = require("tests.indent.common").Runner
 --local XFAIL = require("tests.indent.common").XFAIL
 
-local run = Runner:new(it, "tests/indent/hcl", {
+local run = Runner:new(it, "tests/indent/terraform", {
   tabstop = 2,
   shiftwidth = 2,
   expandtab = true,
 })
 
-describe("indent HCL:", function()
+describe("indent Terraform:", function()
   describe("whole file:", function()
     run:whole_file(".", {
       expected_failures = {},

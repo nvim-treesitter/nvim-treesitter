@@ -8,7 +8,6 @@ local filetype_to_parsername = {
   PKGBUILD = "bash",
   html_tags = "html",
   ["typescript.tsx"] = "tsx",
-  terraform = "hcl",
   ["html.handlebars"] = "glimmer",
   systemverilog = "verilog",
   cls = "latex",
@@ -606,6 +605,17 @@ list.hcl = {
   },
   maintainers = { "@MichaHoffmann" },
   filetype = "hcl",
+}
+
+list.terraform = {
+  install_info = {
+    url = "https://github.com/MichaHoffmann/tree-sitter-hcl",
+    files = { "src/parser.c", "src/scanner.cc" },
+    branch = "main",
+    location = "dialects/terraform",
+  },
+  maintainers = { "@MichaHoffmann" },
+  filetype = "terraform",
 }
 
 list.markdown = {
