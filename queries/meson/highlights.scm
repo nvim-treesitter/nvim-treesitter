@@ -39,7 +39,8 @@
   ">="
 ] @operator
 
-"?" @conditional.ternary
+(ternaryoperator
+  ["?" ":"] @conditional.ternary)
 
 [
   "if"

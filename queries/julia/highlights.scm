@@ -134,7 +134,7 @@
 (else_clause
   ["else"] @conditional)
 (ternary_expression
-  ["?" ":"] @conditional)
+  ["?" ":"] @conditional.ternary)
 
 (try_statement
   ["try" "end"] @exception)

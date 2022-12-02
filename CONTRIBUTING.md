@@ -146,6 +146,7 @@ effect on highlighting. We will work on improving highlighting in the near futur
 @keyword.return   ; keywords like `return` and `yield`
 
 @conditional      ; keywords related to conditionals (e.g. `if` / `else`)
+@conditional.ternary ; Ternary operator: condition ? 1 : 2
 @repeat           ; keywords related to loops (e.g. `for` / `while`)
 @debug            ; keywords related to debugging
 @label            ; GOTO and other labels (e.g. `label:` in C)

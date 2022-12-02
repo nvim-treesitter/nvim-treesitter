@@ -115,7 +115,7 @@
 (ternary_exp [
   "?"
   ":"
-] @operator)
+] @conditional.ternary)
 
 (update_exp [
   "++"
