@@ -33,7 +33,7 @@
     "revision": "087bac78c53fe1387756cd5b8e68a69b3f6d7244"
   },
   "cmake": {
-    "revision": "6e51463ef3052dd3b328322c22172eda093727ad"
+    "revision": "a32265307aa2d31941056d69e8b6633e61750b2f"
   },
   "comment": {
     "revision": "a37ca370310ac6f89b6e0ebf2b86b2219780494e"
@@ -348,7 +348,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "a6d6d0799f2c9091436b5b587b451b10e710f9cb"
+    "revision": "89fac16df3deceb79c4424dfa674c0c734290fcc"
   },
   "supercollider": {
     "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
