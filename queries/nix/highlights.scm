@@ -33,7 +33,8 @@
 (comment) @comment
 
 ; strings
-[ (string_expression) (indented_string_expression) ] @string
+([ (string_expression) (indented_string_expression) ]
+  (#set! "priority" 99)) @string
 
 ; paths and URLs
 [ (path_expression) (spath_expression) (uri_expression) ] @string.special
