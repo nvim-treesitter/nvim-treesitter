@@ -13,7 +13,8 @@
   (do_clause)
   (compound_statement)
 
-  (assignment_expression)
+  (assignment)
+
   (binary_expression)
   (call_expression)
 
