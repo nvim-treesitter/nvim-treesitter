@@ -1,14 +1,14 @@
 ;;; Variables
-(assignment_expression
+(assignment
   (identifier) @definition.var)
-(assignment_expression
+(assignment
   (tuple_expression
     (identifier) @definition.var))
 
 ;;; let/const bindings
-(variable_declaration
+(let_binding
  (identifier) @definition.var)
-(variable_declaration
+(let_binding
  (tuple_expression
   (identifier) @definition.var))
 
