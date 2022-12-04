@@ -35,11 +35,11 @@ end
 
 local function get_job_status()
   return "[nvim-treesitter] ["
-    .. finished_commands
-    .. "/"
-    .. started_commands
-    .. (failed_commands > 0 and ", failed: " .. failed_commands or "")
-    .. "]"
+      .. finished_commands
+      .. "/"
+      .. started_commands
+      .. (failed_commands > 0 and ", failed: " .. failed_commands or "")
+      .. "]"
 end
 
 ---@param lang string
@@ -198,11 +198,11 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
           local err_msg = complete_error_output[handle] or ""
           api.nvim_err_writeln(
             "nvim-treesitter["
-              .. lang
-              .. "]: "
-              .. (attr.err or ("Failed to execute the following command:\n" .. vim.inspect(attr)))
-              .. "\n"
-              .. err_msg
+            .. lang
+            .. "]: "
+            .. (attr.err or ("Failed to execute the following command:\n" .. vim.inspect(attr)))
+            .. "\n"
+            .. err_msg
           )
           return
         end
@@ -294,9 +294,9 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
     if repo.requires_generate_from_grammar then
       api.nvim_err_writeln(
         "tree-sitter CLI is needed because `"
-          .. lang
-          .. "` is marked that it needs "
-          .. "to be generated from the grammar definitions to be compatible with nvim!"
+        .. lang
+        .. "` is marked that it needs "
+        .. "to be generated from the grammar definitions to be compatible with nvim!"
       )
     end
     return
@@ -315,6 +315,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
     return
   end
   local cc = shell.select_executable(M.compilers)
+  api.nvim_err_write("executable " .. cc)
   if not cc then
     api.nvim_err_writeln('No C compiler found! "' .. table.concat(
       vim.tbl_filter(function(c)
@@ -507,7 +508,7 @@ function M.update(options)
           install {
             ask_reinstall = "force",
             with_sync = options.with_sync,
-          }(lang)
+          } (lang)
         end
       end
       if installed == 0 then
@@ -515,7 +516,7 @@ function M.update(options)
       end
     else
       local parsers_to_update = configs.get_update_strategy() == "lockfile" and outdated_parsers()
-        or info.installed_parsers()
+          or info.installed_parsers()
       if #parsers_to_update == 0 then
         utils.notify "All parsers are up-to-date!"
       end
@@ -524,7 +525,7 @@ function M.update(options)
           ask_reinstall = "force",
           exclude_configured_parsers = true,
           with_sync = options.with_sync,
-        }(lang)
+        } (lang)
       end
     end
   end
@@ -554,9 +555,9 @@ function M.uninstall(...)
       if vim.tbl_contains(ensure_installed_parsers, lang) then
         vim.notify(
           "Uninstalling "
-            .. lang
-            .. '. But the parser is still configured in "ensure_installed" setting of nvim-treesitter.'
-            .. " Please consider updating your config!",
+          .. lang
+          .. '. But the parser is still configured in "ensure_installed" setting of nvim-treesitter.'
+          .. " Please consider updating your config!",
           vim.log.levels.ERROR
         )
       end
@@ -572,10 +573,10 @@ function M.uninstall(...)
               if #all_parsers_after_deletion > 0 then
                 vim.notify(
                   "Tried to uninstall parser for "
-                    .. lang
-                    .. "! But the parser is still installed (not by nvim-treesitter)."
-                    .. " Please delete the following files manually: "
-                    .. table.concat(all_parsers_after_deletion, ", "),
+                  .. lang
+                  .. "! But the parser is still installed (not by nvim-treesitter)."
+                  .. " Please delete the following files manually: "
+                  .. table.concat(all_parsers_after_deletion, ", "),
                   vim.log.levels.ERROR
                 )
               end
@@ -586,9 +587,9 @@ function M.uninstall(...)
       elseif #all_parsers > 0 then
         vim.notify(
           "Parser for "
-            .. lang
-            .. " is installed! But not by nvim-treesitter! Please manually remove the following files: "
-            .. table.concat(all_parsers, ", "),
+          .. lang
+          .. " is installed! But not by nvim-treesitter! Please manually remove the following files: "
+          .. table.concat(all_parsers, ", "),
           vim.log.levels.ERROR
         )
       end

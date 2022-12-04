@@ -85,6 +85,7 @@ function M.select_compiler_args(repo, compiler)
       repo.files,
       "-shared",
       "-Os",
+      "-std=c99",
       "-lstdc++",
     }
     if fn.has "win32" == 0 then
@@ -96,17 +97,16 @@ end
 
 function M.select_compile_command(repo, cc, compile_location)
   local make = M.select_executable { "gmake", "make" }
-  if
-    string.match(cc, "cl$")
-    or string.match(cc, "cl.exe$")
-    or not repo.use_makefile
-    or fn.has "win32" == 1
-    or not make
+  if string.match(cc, "cl$")
+      or string.match(cc, "cl.exe$")
+      or not repo.use_makefile
+      or fn.has "win32" == 1
+      or not make
   then
     return {
       cmd = cc,
       info = "Compiling...",
-      err = "Error during compilation",
+      err = "Error during compilation with " .. cc,
       opts = {
         args = vim.tbl_flatten(M.select_compiler_args(repo, cc)),
         cwd = compile_location,
@@ -116,7 +116,7 @@ function M.select_compile_command(repo, cc, compile_location)
     return {
       cmd = make,
       info = "Compiling...",
-      err = "Error during compilation",
+      err = "Error during compilation with " .. cc,
       opts = {
         args = {
           "--makefile=" .. utils.join_path(utils.get_package_path(), "scripts", "compile_parsers.makefile"),
@@ -188,14 +188,16 @@ function M.select_download_commands(repo, project_name, cache_folder, revision, 
       M.select_install_rm_cmd(cache_folder, project_name .. "-tmp"),
       {
         cmd = "curl",
-        info = "Downloading " .. project_name .. "...",
+        info = "Downloading " .. project_name .. "..." .. url .. "/archive/" .. revision .. ".tar.gz",
         err = "Error during download, please verify your internet connection",
         opts = {
           args = {
             "--silent",
             "-L", -- follow redirects
+            "--noproxy",
+            "*",
             is_github and url .. "/archive/" .. revision .. ".tar.gz"
-              or url .. "/-/archive/" .. revision .. "/" .. project_name .. "-" .. revision .. ".tar.gz",
+                or url .. "/-/archive/" .. revision .. "/" .. project_name .. "-" .. revision .. ".tar.gz",
             "--output",
             project_name .. ".tar.gz",
           },
