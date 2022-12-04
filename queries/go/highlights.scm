@@ -13,6 +13,8 @@
 (parameter_declaration (identifier) @parameter)
 (variadic_parameter_declaration (identifier) @parameter)
 
+(label_name) @label
+
 ((identifier) @constant
  (#eq? @constant "_"))
 
