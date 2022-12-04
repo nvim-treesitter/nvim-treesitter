@@ -127,8 +127,8 @@ local function enable_mod_conf_autocmd(mod)
 
   api.nvim_create_autocmd("FileType", {
     group = api.nvim_create_augroup("NvimTreesitter-" .. mod, {}),
-    callback = function()
-      require("nvim-treesitter.configs").reattach_module(mod)
+    callback = function(args)
+      require("nvim-treesitter.configs").reattach_module(mod, args.buf)
     end,
     desc = "Reattach module",
   })
