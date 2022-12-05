@@ -38,6 +38,15 @@
  (endwhile)
 ] @repeat
 
+(normal_command
+  (identifier) @repeat
+  (#match? @repeat "\\c^(continue|break)$")
+)
+(normal_command
+  (identifier) @keyword.return
+  (#match? @keyword.return "\\c^return$")
+)
+
 (function_command
   (function)
   . (argument) @function
@@ -48,6 +57,15 @@
   (macro)
   . (argument) @function.macro
   (argument)* @parameter
+)
+
+(block_def
+  (block_command
+    (block) @function.builtin
+    (argument (unquoted_argument) @constant)
+    (#any-of? @constant "SCOPE_FOR" "POLICIES" "VARIABLES" "PROPAGATE")
+  )
+  (endblock_command (endblock) @function.builtin)
 )
 
 (normal_command
@@ -70,9 +88,9 @@
   (#match? @function.builtin "\\c^(set)$")
   . (argument)
   (
-    (argument) @_cache @constant
+    (argument) @_cache @storageclass
     .
-    (argument) @_type @constant
+    (argument) @_type @type
     (#any-of? @_cache "CACHE")
     (#any-of? @_type "BOOL" "FILEPATH" "PATH" "STRING" "INTERNAL")
   )
@@ -121,6 +139,21 @@
   (#any-of? @constant "OUTPUT" "COMMAND" "MAIN_DEPENDENCY" "DEPENDS" "BYPRODUCTS" "IMPLICIT_DEPENDS" "WORKING_DIRECTORY"
                       "COMMENT" "DEPFILE" "JOB_POOL" "VERBATIM" "APPEND" "USES_TERMINAL" "COMMAND_EXPAND_LISTS")
   (#match? @function.builtin "\\c^(add_custom_command)$")
+)
+
+(normal_command
+  (identifier) @function.builtin
+  (#match? @function.builtin "\\c^include$")
+  (argument) @constant
+  (#any-of? @constant "OPTIONAL" "NO_POLICY_SCOPE")
+)
+(normal_command
+  (identifier) @function.builtin
+  (#match? @function.builtin "\\c^include$")
+  (argument) @constant
+  .
+  (argument) @variable
+  (#match? @constant "RESULT_VARIABLE")
 )
 
 (escape_sequence) @string.escape
