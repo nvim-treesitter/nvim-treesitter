@@ -1,8 +1,5 @@
 ;; keywoord
-[
-  "fun"
-  "div"
-] @keyword
+
 ;; bracket
 [
   "("
@@ -14,91 +11,40 @@
 	"#"
 ] @punctuation.bracket
 ;; conditional
+
+((atom) @boolean
+  (#any-of? @boolean "true" "false" "True" "False"))
 [
-  "receive"
-  "if"
-  "case"
-  "of"
-  "when"
-  "after"
-  "end"
+ "when"
+ "if"
+ "case"
+ "of"
+ "after"
+ "end"
 ] @conditional
 
-[
-  "catch"
-	"try"
-	"throw"
-] @exception
 ;;; module define
-[
-  "module"
-  "export"
-] @include
+;;;[
+;;;  "module"
+;;;  "export"
+;;;] @include
+forms: (module_attribute) @include
+forms: (compile_options_attribute) @include
 ;;; operator
 [
-  ":"
-  ":="
-  "?"
-  "!"
-  "-"
-  "+"
-  "="
   "->"
-  "=>"
-	"|"
 	;;;TODO
-	"$"
  ] @operator
 
 (comment) @comment
-(string) @string
-(variable) @variable
 
-(module_name
-  (atom) @namespace
-)
-;;; expr_function_call
-(expr_function_call
-  name: (computed_function_name) @function.call 
-) 
-
-(expr_function_call
-  arguments: (atom) @variable
-)
-
-;;; map
-(map 
- (map_entry [
-   (atom)
-   (variable)
- ] @variable)
-)
-
-
-(tuple (atom) @variable)
-(pat_tuple ( pattern (atom) @variable))
-
-(computed_function_name) @function
-;;; case
-(case_clause
-  pattern: (pattern
-    (atom) @variable
-  )
-)
-(case_clause
-  body: (atom) @variable
-)
-
-;;; function
-(qualified_function_name
-  module_name: (atom) @attribute
-  function_name: (atom) @function
-)
-;; function
 (function_clause
-  name: (atom) @function)
-;;;lambda
-(lambda_clause
-  arguments:
-    (pattern) @variable
+  [
+    name :(atom) @function.call
+])
+
+(tuple
+  [
+    expr: (atom) @variable
+  ]
 )

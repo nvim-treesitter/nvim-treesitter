@@ -412,7 +412,7 @@ list.scss = {
 
 list.erlang = {
   install_info = {
-    url = "https://github.com/AbstractMachinesLab/tree-sitter-erlang",
+    url = "https://github.com/WhatsApp/tree-sitter-erlang",
     files = { "src/parser.c" },
     branch = "main",
   },

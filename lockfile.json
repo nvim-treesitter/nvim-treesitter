@@ -89,9 +89,6 @@
   "embedded_template": {
     "revision": "91fc5ae1140d5c9d922312431f7d251a48d7b8ce"
   },
-  "erlang": {
-    "revision": "3a9c769444f08bbccce03845270efac0c641c5e7"
-  },
   "fennel": {
     "revision": "517195970428aacca60891b050aa53eabf4ba78d"
   },
