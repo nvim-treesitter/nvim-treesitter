@@ -306,7 +306,7 @@
     "revision": "80efda55672d1293aa738f956c7ae384ecdc31b4"
   },
   "racket": {
-    "revision": "09cb27a06415bce529a26774a842f5a80d50d362"
+    "revision": "dc9c33451fefc2d84d226e55c828adc8a66f2e37"
   },
   "rasi": {
     "revision": "5f04634dd4e12de4574c4a3dc9d6d5d4da4a2a1b"
@@ -348,7 +348,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "89fac16df3deceb79c4424dfa674c0c734290fcc"
+    "revision": "54b363b87c22787f9dcfabb5d8aa221cb65ace42"
   },
   "supercollider": {
     "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
@@ -381,7 +381,7 @@
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
   },
   "tsx": {
-    "revision": "0ae382803abce0807e90f498105c713b9233e0b2"
+    "revision": "faad9094f4061a43d4e9005439e9e85c6541ebe7"
   },
   "turtle": {
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
@@ -390,7 +390,7 @@
     "revision": "2457993b13a06dec2706e6a6c3d5b65bb23024b8"
   },
   "typescript": {
-    "revision": "0ae382803abce0807e90f498105c713b9233e0b2"
+    "revision": "faad9094f4061a43d4e9005439e9e85c6541ebe7"
   },
   "v": {
     "revision": "66b92a89ef1e149300df79c0b2a934ad959c8eec"
