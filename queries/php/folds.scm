@@ -12,4 +12,5 @@
   (trait_declaration)
   (enum_declaration)
   (function_static_declaration)
+  (method_declaration)
 ] @fold
