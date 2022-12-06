@@ -132,7 +132,7 @@
     "revision": "e2c2214045de2628b81089b1a739962f59654558"
   },
   "go": {
-    "revision": "05900faa3cdb5d2d8c8bd5e77ee698487e0a8611"
+    "revision": "06432b86ffd57f791b7cf3a0441026f6fefbc2f2"
   },
   "godot_resource": {
     "revision": "b6ef0768711086a86b3297056f9ffb5cc1d77b4a"
@@ -327,7 +327,7 @@
     "revision": "c91960320d0f337bdd48308a8ad5500bd2616979"
   },
   "rust": {
-    "revision": "0431a2c60828731f27491ee9fdefe25e250ce9c9"
+    "revision": "f7fb205c424b0962de59b26b931fe484e1262b35"
   },
   "scala": {
     "revision": "140c96cf398693189d4e50f76d19ddfcd8a018f8"
