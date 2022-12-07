@@ -30,7 +30,7 @@
     "revision": "3ef3f7f99e16e528e6689eae44dff35150993307"
   },
   "clojure": {
-    "revision": "087bac78c53fe1387756cd5b8e68a69b3f6d7244"
+    "revision": "8c23e0ec078af461ccad43fffbbfc204aa6bc238"
   },
   "cmake": {
     "revision": "a32265307aa2d31941056d69e8b6633e61750b2f"
@@ -132,7 +132,7 @@
     "revision": "e2c2214045de2628b81089b1a739962f59654558"
   },
   "go": {
-    "revision": "06432b86ffd57f791b7cf3a0441026f6fefbc2f2"
+    "revision": "e34b8a418c33bba8bdf3375e8e55903dff7c68b9"
   },
   "godot_resource": {
     "revision": "b6ef0768711086a86b3297056f9ffb5cc1d77b4a"
