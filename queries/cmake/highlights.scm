@@ -107,6 +107,19 @@
   ) .
 )
 
+(normal_command
+  (identifier) @function.builtin
+  (#match? @function.builtin "\\c^(unset)$")
+  . (argument) @variable
+)
+(normal_command
+  (identifier) @function.builtin
+  (#match? @function.builtin "\\c^(unset)$")
+  . (argument)
+  (argument) @storageclass
+  (#any-of? @storageclass "CACHE" "PARENT_SCOPE")
+)
+
 ((argument) @boolean
   (#match? @boolean "\\c^(1|on|yes|true|y|0|off|no|false|n|ignore|notfound|.*-notfound)$")
 )
