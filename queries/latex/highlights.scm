@@ -237,10 +237,13 @@
   command: _ @include
   paths: (curly_group_path_list) @string)
 
-(
-    (text) @spell
-    (#not-has-parent? @spell
-        inline_formula
-        displayed_equation
-    )
-)
+(text) @spell
+(inline_formula) @nospell
+(displayed_equation) @nospell
+(key_value_pair) @nospell
+(generic_environment
+  begin: _ @nospell
+  end: _ @nospell)
+(citation
+  keys: _ @nospell)
+(command_name) @nospell
