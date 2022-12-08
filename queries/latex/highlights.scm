@@ -242,6 +242,8 @@
 (displayed_equation) @nospell
 (key_value_pair) @nospell
 (generic_environment
-  begin: (begin) @nospell
-  end: (end) @nospell)
+  begin: _ @nospell
+  end: _ @nospell)
+(citation
+  keys: _ @nospell)
 (command_name) @nospell
