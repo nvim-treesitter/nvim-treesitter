@@ -93,11 +93,12 @@
 
 ;; Records
 (record_expr) @type
-(record_field_expr _ @structure) @structure
-(record_field_name _ @structure) @structure
-(record_name "#" @structure name: _ @structure) @structure
-(record_decl name: _ @structure)
-(record_field name: _ @structure ty: _ @type)
+(record_field_expr _ @field) @type
+(record_field_name _ @field) @type
+(record_name "#" @type name: _ @type) @type
+(record_decl name: _ @type) @type.definition
+(record_field name: _ @field)
+(record_field name: _ @field ty: _ @type)
 
 ;; Type alias
 (type_alias name: _ @type) @type.definition
