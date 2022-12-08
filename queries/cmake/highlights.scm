@@ -180,6 +180,15 @@
   (#any-of? @_action "APPEND" "PREPEND" "TOUPPER" "TOLOWER" "STRIP" "GENEX_STRIP" "REPLACE")
   (#any-of? @_selector "AT" "FOR" "REGEX")
 )
+(normal_command
+  (identifier) @_function
+  (#match? @_function "\\c^(list)$")
+  . (argument) @_transform @constant
+  (argument) @constant .
+  (argument) @variable
+  (#match? @_transform "TRANSFORM")
+  (#match? @constant "OUTPUT_VARIABLE")
+)
 
 (normal_command
   (identifier) @_function
