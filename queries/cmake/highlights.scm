@@ -93,12 +93,12 @@
 (normal_command
   (identifier) @_function
   . (argument) @variable
-  (#match? @_function "\\c^(set)$")
+  (#match? @_function "\\c^set$")
 )
 
 (normal_command
   (identifier) @_function
-  (#match? @_function "\\c^(set)$")
+  (#match? @_function "\\c^set$")
   (
     (argument) @constant
     (#any-of? @constant "PARENT_SCOPE")
@@ -107,7 +107,7 @@
 
 (normal_command
   (identifier) @_function
-  (#match? @_function "\\c^(set)$")
+  (#match? @_function "\\c^set$")
   . (argument)
   (
     (argument) @_cache @storageclass
@@ -119,7 +119,7 @@
 )
 (normal_command
   (identifier) @_function
-  (#match? @_function "\\c^(set)$")
+  (#match? @_function "\\c^set$")
   . (argument)
   (argument) @_cache
   (#any-of? @_cache "CACHE")
@@ -131,12 +131,12 @@
 
 (normal_command
   (identifier) @_function
-  (#match? @_function "\\c^(unset)$")
+  (#match? @_function "\\c^unset$")
   . (argument) @variable
 )
 (normal_command
   (identifier) @_function
-  (#match? @_function "\\c^(unset)$")
+  (#match? @_function "\\c^unset$")
   . (argument)
   (argument) @storageclass
   (#any-of? @storageclass "CACHE" "PARENT_SCOPE")
@@ -144,7 +144,7 @@
 
 (normal_command
   (identifier) @_function
-  (#match? @_function "\\c^(list)$")
+  (#match? @_function "\\c^list$")
   . (argument) @constant
   (#any-of? @constant "LENGTH" "GET" "JOIN" "SUBLIST" "FIND")
   . (argument) @variable
@@ -152,7 +152,7 @@
 )
 (normal_command
   (identifier) @_function
-  (#match? @_function "\\c^(list)$")
+  (#match? @_function "\\c^list$")
   . (argument) @constant
   . (argument) @variable
   (#any-of? @constant "APPEND" "FILTER" "INSERT"
@@ -162,7 +162,7 @@
 )
 (normal_command
   (identifier) @_function
-  (#match? @_function "\\c^(list)$")
+  (#match? @_function "\\c^list$")
   . (argument) @_transform @constant
   . (argument) @variable
   . (argument) @_action @constant
@@ -171,7 +171,7 @@
 )
 (normal_command
   (identifier) @_function
-  (#match? @_function "\\c^(list)$")
+  (#match? @_function "\\c^list$")
   . (argument) @_transform @constant
   . (argument) @variable
   . (argument) @_action @constant
@@ -182,7 +182,7 @@
 )
 (normal_command
   (identifier) @_function
-  (#match? @_function "\\c^(list)$")
+  (#match? @_function "\\c^list$")
   . (argument) @_transform @constant
   (argument) @constant .
   (argument) @variable
@@ -192,7 +192,7 @@
 
 (normal_command
   (identifier) @_function
-  (#match? @_function "\\c^(add_custom_target)$")
+  (#match? @_function "\\c^add_custom_target$")
   . (argument)
   (argument) @constant
   (#any-of? @constant "ALL" "COMMAND" "DEPENDS" "BYPRODUCTS" "WORKING_DIRECTORY" "COMMENT"
@@ -201,7 +201,7 @@
 
 (normal_command
   (identifier) @_function
-  (#match? @_function "\\c^(add_custom_command)$")
+  (#match? @_function "\\c^add_custom_command$")
   (argument) @constant
   (#any-of? @constant "OUTPUT" "COMMAND" "MAIN_DEPENDENCY" "DEPENDS" "BYPRODUCTS" "IMPLICIT_DEPENDS" "WORKING_DIRECTORY"
                       "COMMENT" "DEPFILE" "JOB_POOL" "VERBATIM" "APPEND" "USES_TERMINAL" "COMMAND_EXPAND_LISTS")
