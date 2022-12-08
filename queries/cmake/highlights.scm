@@ -120,6 +120,45 @@
   (#any-of? @storageclass "CACHE" "PARENT_SCOPE")
 )
 
+(normal_command
+  (identifier) @function.builtin
+  (#match? @function.builtin "\\c^(list)$")
+  . (argument) @constant
+  (#any-of? @constant "LENGTH" "GET" "JOIN" "SUBLIST" "FIND")
+  . (argument) @variable
+  (argument) @variable . 
+)
+(normal_command
+  (identifier) @function.builtin
+  (#match? @function.builtin "\\c^(list)$")
+  . (argument) @constant
+  . (argument) @variable
+  (#any-of? @constant "APPEND" "FILTER" "INSERT"
+                      "POP_BACK" "POP_FRONT" "PREPEND"
+                      "REMOVE_ITEM" "REMOVE_AT" "REMOVE_DUPLICATES"
+                      "REVERSE" "SORT")
+)
+(normal_command
+  (identifier) @function.builtin
+  (#match? @function.builtin "\\c^(list)$")
+  . (argument) @_transform @constant
+  . (argument) @variable
+  . (argument) @_action @constant
+  (#match? @_transform "TRANSFORM")
+  (#any-of? @_action "APPEND" "PREPEND" "TOUPPER" "TOLOWER" "STRIP" "GENEX_STRIP" "REPLACE")
+)
+(normal_command
+  (identifier) @function.builtin
+  (#match? @function.builtin "\\c^(list)$")
+  . (argument) @_transform @constant
+  . (argument) @variable
+  . (argument) @_action @constant
+  . (argument)? @_selector @constant
+  (#match? @_transform "TRANSFORM")
+  (#any-of? @_action "APPEND" "PREPEND" "TOUPPER" "TOLOWER" "STRIP" "GENEX_STRIP" "REPLACE")
+  (#any-of? @_selector "AT" "FOR" "REGEX")
+)
+
 ((argument) @boolean
   (#match? @boolean "\\c^(1|on|yes|true|y|0|off|no|false|n|ignore|notfound|.*-notfound)$")
 )
