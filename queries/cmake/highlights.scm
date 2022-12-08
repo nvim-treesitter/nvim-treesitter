@@ -68,97 +68,6 @@
   (endblock_command (endblock) @function.builtin)
 )
 
-(normal_command
-  (identifier) @function.builtin
-  . (argument) @variable
-  (#match? @function.builtin "\\c^(set)$")
-)
-
-(normal_command
-  (identifier) @function.builtin
-  (#match? @function.builtin "\\c^(set)$")
-  (
-    (argument) @constant
-    (#any-of? @constant "PARENT_SCOPE")
-  ) .
-)
-
-(normal_command
-  (identifier) @function.builtin
-  (#match? @function.builtin "\\c^(set)$")
-  . (argument)
-  (
-    (argument) @_cache @storageclass
-    .
-    (argument) @_type @type
-    (#any-of? @_cache "CACHE")
-    (#any-of? @_type "BOOL" "FILEPATH" "PATH" "STRING" "INTERNAL")
-  )
-)
-(normal_command
-  (identifier) @function.builtin
-  (#match? @function.builtin "\\c^(set)$")
-  . (argument)
-  (argument) @_cache
-  (#any-of? @_cache "CACHE")
-  (
-    (argument) @_force @constant
-    (#any-of? @_force "FORCE")
-  ) .
-)
-
-(normal_command
-  (identifier) @function.builtin
-  (#match? @function.builtin "\\c^(unset)$")
-  . (argument) @variable
-)
-(normal_command
-  (identifier) @function.builtin
-  (#match? @function.builtin "\\c^(unset)$")
-  . (argument)
-  (argument) @storageclass
-  (#any-of? @storageclass "CACHE" "PARENT_SCOPE")
-)
-
-(normal_command
-  (identifier) @function.builtin
-  (#match? @function.builtin "\\c^(list)$")
-  . (argument) @constant
-  (#any-of? @constant "LENGTH" "GET" "JOIN" "SUBLIST" "FIND")
-  . (argument) @variable
-  (argument) @variable . 
-)
-(normal_command
-  (identifier) @function.builtin
-  (#match? @function.builtin "\\c^(list)$")
-  . (argument) @constant
-  . (argument) @variable
-  (#any-of? @constant "APPEND" "FILTER" "INSERT"
-                      "POP_BACK" "POP_FRONT" "PREPEND"
-                      "REMOVE_ITEM" "REMOVE_AT" "REMOVE_DUPLICATES"
-                      "REVERSE" "SORT")
-)
-(normal_command
-  (identifier) @function.builtin
-  (#match? @function.builtin "\\c^(list)$")
-  . (argument) @_transform @constant
-  . (argument) @variable
-  . (argument) @_action @constant
-  (#match? @_transform "TRANSFORM")
-  (#any-of? @_action "APPEND" "PREPEND" "TOUPPER" "TOLOWER" "STRIP" "GENEX_STRIP" "REPLACE")
-)
-(normal_command
-  (identifier) @function.builtin
-  (#match? @function.builtin "\\c^(list)$")
-  . (argument) @_transform @constant
-  . (argument) @variable
-  . (argument) @_action @constant
-  . (argument)? @_selector @constant
-  (#match? @_transform "TRANSFORM")
-  (#any-of? @_action "APPEND" "PREPEND" "TOUPPER" "TOLOWER" "STRIP" "GENEX_STRIP" "REPLACE")
-  (#any-of? @_selector "AT" "FOR" "REGEX")
-)
-
 ((argument) @boolean
   (#match? @boolean "\\c^(1|on|yes|true|y|0|off|no|false|n|ignore|notfound|.*-notfound)$")
 )
@@ -178,30 +87,126 @@
 
 (normal_command
   (identifier) @function.builtin
+  (#match? @function.builtin "\\c^(cmake_host_system_information|cmake_language|cmake_minimum_required|cmake_parse_arguments|cmake_path|cmake_policy|configure_file|execute_process|file|find_file|find_library|find_package|find_path|find_program|foreach|get_cmake_property|get_directory_property|get_filename_component|get_property|include|include_guard|list|macro|mark_as_advanced|math|message|option|separate_arguments|set|set_directory_properties|set_property|site_name|string|unset|variable_watch|add_compile_definitions|add_compile_options|add_custom_command|add_custom_target|add_definitions|add_dependencies|add_executable|add_library|add_link_options|add_subdirectory|add_test|aux_source_directory|build_command|create_test_sourcelist|define_property|enable_language|enable_testing|export|fltk_wrap_ui|get_source_file_property|get_target_property|get_test_property|include_directories|include_external_msproject|include_regular_expression|install|link_directories|link_libraries|load_cache|project|remove_definitions|set_source_files_properties|set_target_properties|set_tests_properties|source_group|target_compile_definitions|target_compile_features|target_compile_options|target_include_directories|target_link_directories|target_link_libraries|target_link_options|target_precompile_headers|target_sources|try_compile|try_run|ctest_build|ctest_configure|ctest_coverage|ctest_empty_binary_directory|ctest_memcheck|ctest_read_custom_files|ctest_run_script|ctest_sleep|ctest_start|ctest_submit|ctest_test|ctest_update|ctest_upload)$")
+)
+
+(normal_command
+  (identifier) @_function
+  . (argument) @variable
+  (#match? @_function "\\c^(set)$")
+)
+
+(normal_command
+  (identifier) @_function
+  (#match? @_function "\\c^(set)$")
+  (
+    (argument) @constant
+    (#any-of? @constant "PARENT_SCOPE")
+  ) .
+)
+
+(normal_command
+  (identifier) @_function
+  (#match? @_function "\\c^(set)$")
+  . (argument)
+  (
+    (argument) @_cache @storageclass
+    .
+    (argument) @_type @type
+    (#any-of? @_cache "CACHE")
+    (#any-of? @_type "BOOL" "FILEPATH" "PATH" "STRING" "INTERNAL")
+  )
+)
+(normal_command
+  (identifier) @_function
+  (#match? @_function "\\c^(set)$")
+  . (argument)
+  (argument) @_cache
+  (#any-of? @_cache "CACHE")
+  (
+    (argument) @_force @constant
+    (#any-of? @_force "FORCE")
+  ) .
+)
+
+(normal_command
+  (identifier) @_function
+  (#match? @_function "\\c^(unset)$")
+  . (argument) @variable
+)
+(normal_command
+  (identifier) @_function
+  (#match? @_function "\\c^(unset)$")
+  . (argument)
+  (argument) @storageclass
+  (#any-of? @storageclass "CACHE" "PARENT_SCOPE")
+)
+
+(normal_command
+  (identifier) @_function
+  (#match? @_function "\\c^(list)$")
+  . (argument) @constant
+  (#any-of? @constant "LENGTH" "GET" "JOIN" "SUBLIST" "FIND")
+  . (argument) @variable
+  (argument) @variable . 
+)
+(normal_command
+  (identifier) @_function
+  (#match? @_function "\\c^(list)$")
+  . (argument) @constant
+  . (argument) @variable
+  (#any-of? @constant "APPEND" "FILTER" "INSERT"
+                      "POP_BACK" "POP_FRONT" "PREPEND"
+                      "REMOVE_ITEM" "REMOVE_AT" "REMOVE_DUPLICATES"
+                      "REVERSE" "SORT")
+)
+(normal_command
+  (identifier) @_function
+  (#match? @_function "\\c^(list)$")
+  . (argument) @_transform @constant
+  . (argument) @variable
+  . (argument) @_action @constant
+  (#match? @_transform "TRANSFORM")
+  (#any-of? @_action "APPEND" "PREPEND" "TOUPPER" "TOLOWER" "STRIP" "GENEX_STRIP" "REPLACE")
+)
+(normal_command
+  (identifier) @_function
+  (#match? @_function "\\c^(list)$")
+  . (argument) @_transform @constant
+  . (argument) @variable
+  . (argument) @_action @constant
+  . (argument)? @_selector @constant
+  (#match? @_transform "TRANSFORM")
+  (#any-of? @_action "APPEND" "PREPEND" "TOUPPER" "TOLOWER" "STRIP" "GENEX_STRIP" "REPLACE")
+  (#any-of? @_selector "AT" "FOR" "REGEX")
+)
+
+(normal_command
+  (identifier) @_function
+  (#match? @_function "\\c^(add_custom_target)$")
   . (argument)
   (argument) @constant
   (#any-of? @constant "ALL" "COMMAND" "DEPENDS" "BYPRODUCTS" "WORKING_DIRECTORY" "COMMENT"
                    "JOB_POOL" "VERBATIM" "USES_TERMINAL" "COMMAND_EXPAND_LISTS" "SOURCES")
-  (#match? @function.builtin "\\c^(add_custom_target)$")
 )
 
 (normal_command
-  (identifier) @function.builtin
+  (identifier) @_function
+  (#match? @_function "\\c^(add_custom_command)$")
   (argument) @constant
   (#any-of? @constant "OUTPUT" "COMMAND" "MAIN_DEPENDENCY" "DEPENDS" "BYPRODUCTS" "IMPLICIT_DEPENDS" "WORKING_DIRECTORY"
                       "COMMENT" "DEPFILE" "JOB_POOL" "VERBATIM" "APPEND" "USES_TERMINAL" "COMMAND_EXPAND_LISTS")
-  (#match? @function.builtin "\\c^(add_custom_command)$")
 )
 
 (normal_command
-  (identifier) @function.builtin
-  (#match? @function.builtin "\\c^include$")
+  (identifier) @_function
+  (#match? @_function "\\c^include$")
   (argument) @constant
   (#any-of? @constant "OPTIONAL" "NO_POLICY_SCOPE")
 )
 (normal_command
-  (identifier) @function.builtin
-  (#match? @function.builtin "\\c^include$")
+  (identifier) @_function
+  (#match? @_function "\\c^include$")
   (argument) @constant
   .
   (argument) @variable
