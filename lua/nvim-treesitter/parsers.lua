@@ -416,7 +416,7 @@ list.erlang = {
     files = { "src/parser.c" },
     branch = "main",
   },
-  maintainers = { "@ostera" },
+  maintainers = { "@filmor" },
 }
 
 list.elixir = {

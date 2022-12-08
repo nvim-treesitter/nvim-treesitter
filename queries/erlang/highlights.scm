@@ -1,3 +1,12 @@
+((atom) @constant (#set! "priority" "90"))
+(var) @variable
+
+(char) @character
+(integer) @number
+(float) @float
+
+(comment) @comment
+
 ;; keyword
 [
   "fun"
@@ -15,19 +24,6 @@
   "#"
 ] @punctuation.bracket
 
-;;; operator
-[
-  ":"
-  ":="
-  "!"
-  "-"
-  "+"
-  "="
-  "->"
-  "=>"
-  "|"
- ] @operator
-
 ;;; Comparisons
 [
   "=="
@@ -39,18 +35,27 @@
   ">"
 ] @operator ;; .comparison
 
+;;; operator
+[
+  ":"
+  ":="
+  "!"
+  ;; "-"
+  "+"
+  "="
+  "->"
+  "=>"
+  "|"
+] @operator
+
 [
   ","
   "."
   ";"
-] @punctuation
-
-[
-  "record"
-] @attribute
+] @punctuation.delimiter
 
 ;; conditional
-[
+([
   "receive"
   "if"
   "case"
@@ -58,72 +63,61 @@
   "when"
   "after"
   "end"
-] @conditional
+] @conditional (#set! "priority" 95))
 
 [
   "catch"
   "try"
 ] @exception
-((atom) @exception (#any-of? @exception "error" "throw" "exit"))
 
 ((atom) @boolean (#any-of? @boolean "true" "false"))
 
 ;; Macros
-(macro_call_expr
-  "?" @macro
-  name: (_) @macro
-) @constant.macro
+((macro_call_expr) @constant.macro (#set! "priority" 101))
 
 ;; Preprocessor
-(pp_define) @define
-[(pp_include) (pp_include_lib)] @include
-(_preprocessor_directive) @preproc
+(pp_define
+  lhs: _ @constant.macro (#set! "priority" 101)
+)
+(_preprocessor_directive) @preproc (#set! "priority" 99)
 
-;;; module define
-[
-  "module"
-  "export"
-  "export_type"
-  "include"
-  "include_lib"
-  "behaviour"
-  "behavior"
-] @include
+;; Attributes
+(pp_include) @include
+(pp_include_lib) @include
+(export_attribute) @include
+(export_type_attribute) @type.definition
+(export_type_attribute types: (fa fun: _ @type (#set! "priority" 101)))
+(behaviour_attribute) @include
+(module_attribute (atom) @namespace) @include
+(wild_attribute name: (attr_name name: _ @attribute)) @attribute
 
 ;; Records
+(record_expr) @type
 (record_field_expr _ @structure) @structure
 (record_field_name _ @structure) @structure
-(record_name name: _ @structure) @structure
+(record_name "#" @structure name: _ @structure) @structure
 (record_decl name: _ @structure)
 (record_field name: _ @structure ty: _ @type)
 
 ;; Type alias
-(type_alias "type" @type.definition)
-(spec "spec" @type.definition)
+(type_alias name: _ @type) @type.definition
+(spec) @type.definition
 
 (comment) @comment
 [(string) (binary)] @string
 
-(module_attribute
-  (atom) @namespace
-)
 ;;; expr_function_call
 (call expr: [(atom) (remote) (var)] @function)
+(call (atom) @exception (#any-of? @exception "error" "throw" "exit"))
 
 ;;; Parenthesized expression: (SomeFunc)(), only highlight the parens
 (call
-  expr: (paren_expr "(" @function ")" @function)
+  expr: (paren_expr "(" @function.call ")" @function.call)
 )
 
 ;;; function
-(external_fun) @function
-(internal_fun fun: (atom) @function)
+(external_fun) @function.call
+(internal_fun fun: (atom) @function.call)
 (function_clause name: (atom) @function)
+(fa fun: (atom) @function)
 
-;;; attributes
-(attr_name name: (atom) @keyword)
-
-(var) @variable
-(atom) @constant
-(integer) @number
-(float) @float
