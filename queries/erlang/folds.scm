@@ -1,7 +1,8 @@
 [
-  (function_declaration)
-  (lambda_clause)
-  (expr_case)
-  (map)
-  (module_export)
+  (fun_decl)
+  (anonymous_fun)
+  (case_expr)
+  (map_expr)
+  (export_attribute)
+  (export_type_attribute)
 ] @fold

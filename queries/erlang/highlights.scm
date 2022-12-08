@@ -1,8 +1,18 @@
-;; keywoord
+((atom) @constant (#set! "priority" "90"))
+(var) @variable
+
+(char) @character
+(integer) @number
+(float) @float
+
+(comment) @comment
+
+;; keyword
 [
   "fun"
   "div"
 ] @keyword
+
 ;; bracket
 [
   "("
@@ -11,10 +21,41 @@
   "}"
   "["
   "]"
-	"#"
+  "#"
 ] @punctuation.bracket
-;; conditional
+
+;;; Comparisons
 [
+  "=="
+  "=:="
+  "=/="
+  "=<"
+  ">="
+  "<"
+  ">"
+] @operator ;; .comparison
+
+;;; operator
+[
+  ":"
+  ":="
+  "!"
+  ;; "-"
+  "+"
+  "="
+  "->"
+  "=>"
+  "|"
+] @operator
+
+[
+  ","
+  "."
+  ";"
+] @punctuation.delimiter
+
+;; conditional
+([
   "receive"
   "if"
   "case"
@@ -22,83 +63,62 @@
   "when"
   "after"
   "end"
-] @conditional
+] @conditional (#set! "priority" 95))
 
 [
   "catch"
-	"try"
-	"throw"
+  "try"
 ] @exception
-;;; module define
-[
-  "module"
-  "export"
-] @include
-;;; operator
-[
-  ":"
-  ":="
-  "?"
-  "!"
-  "-"
-  "+"
-  "="
-  "->"
-  "=>"
-	"|"
-	;;;TODO
-	"$"
- ] @operator
+
+((atom) @boolean (#any-of? @boolean "true" "false"))
+
+;; Macros
+((macro_call_expr) @constant.macro (#set! "priority" 101))
+
+;; Preprocessor
+(pp_define
+  lhs: _ @constant.macro (#set! "priority" 101)
+)
+(_preprocessor_directive) @preproc (#set! "priority" 99)
+
+;; Attributes
+(pp_include) @include
+(pp_include_lib) @include
+(export_attribute) @include
+(export_type_attribute) @type.definition
+(export_type_attribute types: (fa fun: _ @type (#set! "priority" 101)))
+(behaviour_attribute) @include
+(module_attribute (atom) @namespace) @include
+(wild_attribute name: (attr_name name: _ @attribute)) @attribute
+
+;; Records
+(record_expr) @type
+(record_field_expr _ @field) @type
+(record_field_name _ @field) @type
+(record_name "#" @type name: _ @type) @type
+(record_decl name: _ @type) @type.definition
+(record_field name: _ @field)
+(record_field name: _ @field ty: _ @type)
+
+;; Type alias
+(type_alias name: _ @type) @type.definition
+(spec) @type.definition
 
 (comment) @comment
-(string) @string
-(variable) @variable
+[(string) (binary)] @string
 
-(module_name
-  (atom) @namespace
-)
 ;;; expr_function_call
-(expr_function_call
-  name: (computed_function_name) @function.call 
-) 
+(call expr: [(atom) (remote) (var)] @function)
+(call (atom) @exception (#any-of? @exception "error" "throw" "exit"))
 
-(expr_function_call
-  arguments: (atom) @variable
-)
-
-;;; map
-(map 
- (map_entry [
-   (atom)
-   (variable)
- ] @variable)
-)
-
-
-(tuple (atom) @variable)
-(pat_tuple ( pattern (atom) @variable))
-
-(computed_function_name) @function
-;;; case
-(case_clause
-  pattern: (pattern
-    (atom) @variable
-  )
-)
-(case_clause
-  body: (atom) @variable
+;;; Parenthesized expression: (SomeFunc)(), only highlight the parens
+(call
+  expr: (paren_expr "(" @function.call ")" @function.call)
 )
 
 ;;; function
-(qualified_function_name
-  module_name: (atom) @attribute
-  function_name: (atom) @function
-)
-;; function
-(function_clause
-  name: (atom) @function)
-;;;lambda
-(lambda_clause
-  arguments:
-    (pattern) @variable
-)
+(external_fun) @function.call
+(internal_fun fun: (atom) @function.call)
+(function_clause name: (atom) @function)
+(fa fun: (atom) @function)
+
