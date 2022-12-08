@@ -222,6 +222,20 @@
   (#match? @constant "RESULT_VARIABLE")
 )
 
+(normal_command
+  (identifier) @_function
+  (#match? @_function "\\c^project$")
+  (argument) @constant
+  (#any-of? @constant "VERSION" "DESCRIPTION" "HOMEPAGE_URL" "LANGUAGES")
+)
+
+(normal_command
+  (identifier) @_function
+  (#match? @_function "\\c^cmake_minimum_required$")
+  (argument) @constant
+  (#any-of? @constant "VERSION" "FATAL_ERROR")
+)
+
 (escape_sequence) @string.escape
 
 ((source_file . (line_comment) @preproc)
