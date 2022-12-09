@@ -273,7 +273,7 @@
     "revision": "749d26fe13fb131b92e6515416096e572575b981"
   },
   "php": {
-    "revision": "ab2e72179ceb8bb0b249c8ac9162a148e911b3dc"
+    "revision": "b4a8a6048d66fcda4e8e4988bd0d9095980e303a"
   },
   "phpdoc": {
     "revision": "2f4d16c861b5a454b577d057f247f9902d7b47f5"
@@ -348,7 +348,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "54b363b87c22787f9dcfabb5d8aa221cb65ace42"
+    "revision": "a4dd131eeb9fe7f3c9c2ca0f506f6d58d9986a97"
   },
   "supercollider": {
     "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
@@ -360,7 +360,7 @@
     "revision": "52e122ae68b316d3aa960a0a422d3645ba717f42"
   },
   "swift": {
-    "revision": "cff1c9a62df89e8900d53ff48bc42862e6522dcf"
+    "revision": "4443b125240d7ae7e50d35d8415fae5be61bdaf2"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
