@@ -172,7 +172,7 @@
 (function_call name: (dot_index_expression field: (identifier) @function.call))
 (function_declaration name: (dot_index_expression field: (identifier) @function))
 
-(method_index_expression method: (identifier) @method)
+(method_index_expression method: (identifier) @method.call)
 
 (function_call
   (identifier) @function.builtin
