@@ -130,33 +130,37 @@ local FUNCTION_DESCRIPTIONS = {
 function M.attach(bufnr)
   local config = configs.get_module "incremental_selection"
   for funcname, mapping in pairs(config.keymaps) do
-    local mode
-    local rhs
-    if funcname == "init_selection" then
-      mode = "n"
-      rhs = M[funcname]
-    else
-      mode = "x"
-      -- We need to move to command mode to access marks '< (visual area start) and '> (visual area end) which are not
-      -- properly accessible in visual mode.
-      rhs = string.format(":lua require'nvim-treesitter.incremental_selection'.%s()<CR>", funcname)
+    if mapping then
+      local mode
+      local rhs
+      if funcname == "init_selection" then
+        mode = "n"
+        rhs = M[funcname]
+      else
+        mode = "x"
+        -- We need to move to command mode to access marks '< (visual area start) and '> (visual area end) which are not
+        -- properly accessible in visual mode.
+        rhs = string.format(":lua require'nvim-treesitter.incremental_selection'.%s()<CR>", funcname)
+      end
+      vim.keymap.set(
+        mode,
+        mapping,
+        rhs,
+        { buffer = bufnr, silent = true, noremap = true, desc = FUNCTION_DESCRIPTIONS[funcname] }
+      )
     end
-    vim.keymap.set(
-      mode,
-      mapping,
-      rhs,
-      { buffer = bufnr, silent = true, noremap = true, desc = FUNCTION_DESCRIPTIONS[funcname] }
-    )
   end
 end
 
 function M.detach(bufnr)
   local config = configs.get_module "incremental_selection"
   for f, mapping in pairs(config.keymaps) do
-    if f == "init_selection" then
-      vim.keymap.del("n", mapping, { buffer = bufnr })
-    else
-      vim.keymap.del("x", mapping, { buffer = bufnr })
+    if mapping then
+      if f == "init_selection" then
+        vim.keymap.del("n", mapping, { buffer = bufnr })
+      else
+        vim.keymap.del("x", mapping, { buffer = bufnr })
+      end
     end
   end
 end
