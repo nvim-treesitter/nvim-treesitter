@@ -60,6 +60,16 @@ local list = setmetatable({}, {
   end,
 })
 
+list.ada = {
+  install_info = {
+    url = "https://github.com/briot/tree-sitter-ada",
+    branch = "master",
+    files = { "src/parser.c" },
+  },
+  filetype = "ada",
+  maintainers = { "@briot" },
+}
+
 list.agda = {
   install_info = {
     url = "https://github.com/AusCyberman/tree-sitter-agda",
