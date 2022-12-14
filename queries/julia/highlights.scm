@@ -15,17 +15,9 @@
 
 (quote_expression ":" (identifier)) @symbol
 
-
-;;; Fields and indexes
-
 (field_expression
   (identifier) @field .)
 
-(index_expression
-  (_)
-  (range_expression
-    (identifier) @constant.builtin .)
-  (#eq? @constant.builtin "end"))
 
 
 ;;; Function names
@@ -79,13 +71,14 @@
 ;; Definitions
 
 (abstract_definition
-  name: (identifier) @type.definition
-  (subtype_clause (identifier) @type))
+  name: (identifier) @type.definition)
 (primitive_definition
-  name: (identifier) @type.definition
-  (subtype_clause (identifier) @type))
+  name: (identifier) @type.definition)
 (struct_definition
   name: (identifier) @type)
+(subtype_clause [
+  (identifier) @type
+  (field_expression (identifier) @type .)])
 
 ;; Annotations
 
@@ -109,6 +102,8 @@
 ;;; Keywords
 
 [
+  "global"
+  "local"
   "macro"
   "struct"
   "type"
@@ -116,9 +111,6 @@
 ] @keyword
 
 "end" @keyword
-
-((identifier) @keyword
- (#any-of? @keyword "global" "local")) ; Grammar error
 
 (compound_statement
   ["begin" "end"] @keyword)
@@ -185,11 +177,10 @@
 
 (operator) @operator
 (for_binding ["in" "=" "∈"] @operator)
-(pair_expression "=>" @operator)
 (range_expression ":" @operator)
 
 (slurp_parameter "..." @operator)
-(spread_expression "..." @operator)
+(splat_expression "..." @operator)
 
 "." @operator
 ["::" "<:"] @operator

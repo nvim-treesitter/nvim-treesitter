@@ -3,24 +3,25 @@
   (macro_definition)
   (function_definition)
 
+  (compound_statement)
   (if_statement)
   (try_statement)
   (for_statement)
   (while_statement)
   (let_statement)
   (quote_statement)
-
   (do_clause)
-  (compound_statement)
 
   (assignment)
+  (for_binding)
 
   (binary_expression)
   (call_expression)
 
-  (array_expression)
   (tuple_expression)
+  (comprehension_expression)
   (matrix_expression)
+  (vector_expression)
 ] @indent
 
 [
