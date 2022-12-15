@@ -255,10 +255,10 @@
     "revision": "8ad20059c6f128861c4506fff866150ffee1d6f4"
   },
   "ocaml": {
-    "revision": "cc26b1ef111100f26a137bcbcd39fd4e35be9a59"
+    "revision": "de07323343946c32759933cb3b7c78e821098cad"
   },
   "ocaml_interface": {
-    "revision": "cc26b1ef111100f26a137bcbcd39fd4e35be9a59"
+    "revision": "de07323343946c32759933cb3b7c78e821098cad"
   },
   "ocamllex": {
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
