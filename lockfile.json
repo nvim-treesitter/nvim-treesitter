@@ -27,7 +27,7 @@
     "revision": "7175a6dd5fc1cee660dce6fe23f6043d75af424a"
   },
   "c_sharp": {
-    "revision": "8e4ec08f1dae1d72f082df0f7e1176772f553d47"
+    "revision": "d83b3c661db34fde4dcd80e79ce1653d4524998d"
   },
   "clojure": {
     "revision": "8c23e0ec078af461ccad43fffbbfc204aa6bc238"
@@ -219,7 +219,7 @@
     "revision": "e9948edc41e9e5869af99dddb2b5ff5cc5581af6"
   },
   "lua": {
-    "revision": "f5e84ffc2b06858401e0d2edf5dce009efbe34b3"
+    "revision": "0fc89962b7ff5c7d676b8592c1cbce1ceaa806fd"
   },
   "m68k": {
     "revision": "d097b123f19c6eaba2bf181c05420d88b9fc489d"
