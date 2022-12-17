@@ -20,7 +20,8 @@
   name: (identifier) @parameter)
 
 (spread_parameter
- (variable_declarator) @parameter) ; int... foo
+ (variable_declarator
+   name: (identifier) @parameter)) ; int... foo
 
 ;; Lambda parameter
 (inferred_parameters (identifier) @parameter) ; (x,y) -> ...
@@ -50,6 +51,7 @@
 "&&"
 "|"
 "||"
+"!"
 "!="
 "=="
 "*"
@@ -109,7 +111,8 @@
 ; Fields
 
 (field_declaration
-  declarator: (variable_declarator) @field)
+  declarator: (variable_declarator
+    name: (identifier) @field))
 
 (field_access
   field: (identifier) @field)
