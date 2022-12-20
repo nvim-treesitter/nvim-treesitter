@@ -27,7 +27,7 @@
     "revision": "7175a6dd5fc1cee660dce6fe23f6043d75af424a"
   },
   "c_sharp": {
-    "revision": "d83b3c661db34fde4dcd80e79ce1653d4524998d"
+    "revision": "f0e31b964d67598da03b54854eb7471f5c2560b5"
   },
   "clojure": {
     "revision": "8c23e0ec078af461ccad43fffbbfc204aa6bc238"
@@ -198,7 +198,7 @@
     "revision": "02b01653c8a1c198ae7287d566efa86a135b30d5"
   },
   "jsonnet": {
-    "revision": "768a384989391237c6d55ff3d878a0d1e0d2b4fa"
+    "revision": "505f5bd90053ae895aa3d6f2bac8071dd9abd8b2"
   },
   "julia": {
     "revision": "36b099e9ea577f64ba53323115028dadd2991d2c"
@@ -300,7 +300,7 @@
     "revision": "0b2b25bcaa7d4925d5f0dda16f6a99c588a437f1"
   },
   "query": {
-    "revision": "0695cd0760532de7b54f23c667d459b5d1332b44"
+    "revision": "0717de07078a20a8608c98ad5f26c208949d0e15"
   },
   "r": {
     "revision": "80efda55672d1293aa738f956c7ae384ecdc31b4"
