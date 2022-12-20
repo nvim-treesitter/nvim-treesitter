@@ -69,7 +69,6 @@
 
 [
  (predefined_type)
- (void_keyword)
 ] @type.builtin
 
 (implicit_type) @keyword
