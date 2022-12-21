@@ -27,7 +27,7 @@
     "revision": "7175a6dd5fc1cee660dce6fe23f6043d75af424a"
   },
   "c_sharp": {
-    "revision": "f0e31b964d67598da03b54854eb7471f5c2560b5"
+    "revision": "c86fd921a48f517730b2d73bbb5652da65270f6a"
   },
   "clojure": {
     "revision": "8c23e0ec078af461ccad43fffbbfc204aa6bc238"
@@ -108,7 +108,7 @@
     "revision": "19db2f47ba4c3a0f6238d4ae0e2abfca16e61dd6"
   },
   "gdscript": {
-    "revision": "2a6abdaa47fcb91397e09a97c7433fd995ea46c6"
+    "revision": "a8fa839150d05baaf4d5a472520ee71e9b1d8b3c"
   },
   "git_rebase": {
     "revision": "127f5b56c1ad3e8a449a7d6e0c7412ead7f7724c"
@@ -348,7 +348,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "8dc7fa0e51145f0312eedbb5aff9945bd967fb8f"
+    "revision": "8635357363f8b01931ce6abbe0c937aa73e47bf8"
   },
   "supercollider": {
     "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
