@@ -21,9 +21,6 @@ jobs:
         env:
           NVIM_TAG: stable
         run: |
-          wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
-          mv ./jq-linux64 /tmp/jq
-          chmod +x /tmp/jq
           wget https://github.com/josephburnett/jd/releases/download/v1.6.1/jd-amd64-linux
           mv ./jd-amd64-linux /tmp/jd
           chmod +x /tmp/jd
@@ -41,7 +38,7 @@ jobs:
           ./nvim.appimage --headless -c "luafile ./scripts/write-lockfile.lua" -c "q"
           # Pretty print
           cp lockfile.json /tmp/lockfile.json
-          cat /tmp/lockfile.json | /tmp/jq --sort-keys > lockfile.json
+          cat /tmp/lockfile.json | jq --sort-keys > lockfile.json
 
       - name: Commit changes
         run: |
