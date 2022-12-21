@@ -115,14 +115,14 @@ function M.check()
   install_health()
   queries.invalidate_query_cache()
   -- Parser installation checks
-  local parser_installation = { "Parser/Features H L F I J" }
+  local parser_installation = { "Parser/Features" .. string.rep(" ", 9) .. "H L F I J" }
   for _, parser_name in pairs(info.installed_parsers()) do
     local installed = #api.nvim_get_runtime_file("parser/" .. parser_name .. ".so", false)
 
     -- Only append information about installed parsers
     if installed >= 1 then
       local multiple_parsers = installed > 1 and "+" or ""
-      local out = "  - " .. parser_name .. multiple_parsers .. string.rep(" ", 15 - (#parser_name + #multiple_parsers))
+      local out = "  - " .. parser_name .. multiple_parsers .. string.rep(" ", 20 - (#parser_name + #multiple_parsers))
       for _, query_group in pairs(queries.built_in_query_groups) do
         local status, err = query_status(parser_name, query_group)
         out = out .. status .. " "
