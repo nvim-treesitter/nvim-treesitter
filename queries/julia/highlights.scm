@@ -30,9 +30,9 @@
   name: (identifier) @function)
 
 (function_definition
-  name: (scoped_identifier (identifier) @function .))
+  name: (field_expression (identifier) @function .))
 (short_function_definition
-  name: (scoped_identifier (identifier) @function .))
+  name: (field_expression (identifier) @function .))
 
 ;; calls
 
@@ -191,11 +191,7 @@
 
 ;;; Literals
 
-[
-  (true)
-  (false)
-] @boolean
-
+(boolean_literal) @boolean
 (integer_literal) @number
 (float_literal) @float
 
