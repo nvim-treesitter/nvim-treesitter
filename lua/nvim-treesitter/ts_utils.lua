@@ -259,18 +259,36 @@ end
 -- @param selection_mode One of "charwise" (default) or "v", "linewise" or "V",
 --   "blockwise" or "<C-v>" (as a string with 5 characters or a single character)
 function M.update_selection(buf, node, selection_mode)
-  selection_mode = selection_mode or "charwise"
   local start_row, start_col, end_row, end_col = M.get_vim_range({ M.get_node_range(node) }, buf)
+  api.nvim_buf_set_mark(0, "<", start_row, start_col - 1, {})
+  api.nvim_buf_set_mark(0, ">", end_row, end_col - 1, {})
 
-  -- Start visual selection in appropriate mode
   local v_table = { charwise = "v", linewise = "V", blockwise = "<C-v>" }
-  ---- Call to `nvim_replace_termcodes()` is needed for sending appropriate
-  ---- command to enter blockwise mode
-  local mode_string = vim.api.nvim_replace_termcodes(v_table[selection_mode] or selection_mode, true, true, true)
-  vim.cmd("normal! " .. mode_string)
-  vim.fn.setpos(".", { buf, start_row, start_col, 0 })
-  vim.cmd "normal! o"
-  vim.fn.setpos(".", { buf, end_row, end_col, 0 })
+  selection_mode = selection_mode or "charwise"
+
+  -- Normalise selection_mode
+  if vim.tbl_contains(vim.tbl_keys(v_table), selection_mode) then
+    selection_mode = v_table[selection_mode]
+  end
+
+  -- Call to `nvim_replace_termcodes()` is needed for sending appropriate command to enter blockwise mode
+  selection_mode = vim.api.nvim_replace_termcodes(selection_mode, true, true, true)
+
+  local previous_mode = vim.fn.visualmode()
+
+  -- visualmode() is set to "" when no visual selection has yet been made. Defaults it to "v"
+  if previous_mode == "" then
+    previous_mode = "v"
+  end
+
+  if previous_mode == selection_mode then
+    selection_mode = ""
+  end
+
+  -- "gv": Start Visual mode with the same area as the previous area and the same mode.
+  -- Hence, area will be what we defined in "<" and ">" marks. We only feed `selection_mode` if it is
+  -- different than previous `visualmode`, otherwise it will stop visual mode.
+  api.nvim_feedkeys("gv" .. selection_mode, "x", false)
 end
 
 -- Byte length of node range
