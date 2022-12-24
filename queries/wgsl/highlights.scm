@@ -50,7 +50,7 @@
 
 "return" @keyword.return
 
-[ "," "." ":" ";" ] @punctuation.delimiter
+[ "," "." ":" ";" "->" ] @punctuation.delimiter
 
 ["(" ")" "[" "]" "{" "}"] @punctuation.bracket
 
