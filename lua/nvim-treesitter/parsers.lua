@@ -1367,6 +1367,15 @@ list.ebnf = {
   experimental = true,
 }
 
+list.nim = {
+  install_info = {
+    url = "https://github.com/aMOPel/tree-sitter-nim",
+    files = { "src/parser.c", "src/scanner.cc" },
+    branch = "main",
+  },
+  maintainers = { "@theHamsta" },
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
