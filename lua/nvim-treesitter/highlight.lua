@@ -1,7 +1,5 @@
 local api = vim.api
-local ts = vim.treesitter
 
-local parsers = require "nvim-treesitter.parsers"
 local configs = require "nvim-treesitter.configs"
 
 local M = {}
@@ -22,24 +20,10 @@ local function enable_syntax(bufnr)
 end
 
 ---@param bufnr integer
-function M.stop(bufnr)
-  if ts.highlighter.active[bufnr] then
-    ts.highlighter.active[bufnr]:destroy()
-  end
-end
-
----@param bufnr integer
----@param lang string
-function M.start(bufnr, lang)
-  local parser = parsers.get_parser(bufnr, lang)
-  ts.highlighter.new(parser, {})
-end
-
----@param bufnr integer
 ---@param lang string
 function M.attach(bufnr, lang)
   local config = configs.get_module "highlight"
-  M.start(bufnr, lang)
+  vim.treesitter.start(bufnr, lang)
   if config and should_enable_vim_regex(config, lang) then
     enable_syntax(bufnr)
   end
@@ -47,8 +31,26 @@ end
 
 ---@param bufnr integer
 function M.detach(bufnr)
-  M.stop(bufnr)
+  vim.treesitter.stop(bufnr)
   enable_syntax(bufnr)
+end
+
+---@deprecated
+function M.start(...)
+  vim.notify(
+    "`nvim-treesitter.highlight.start` is deprecated: use `nvim-treesitter.highlight.attach` or `vim.treesitter.start`",
+    vim.log.levels.WARN
+  )
+  M.attach(...)
+end
+
+---@deprecated
+function M.stop(...)
+  vim.notify(
+    "`nvim-treesitter.highlight.stop` is deprecated: use `nvim-treesitter.highlight.detach` or `vim.treesitter.stop`",
+    vim.log.levels.WARN
+  )
+  M.detach(...)
 end
 
 return M
