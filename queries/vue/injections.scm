@@ -2,7 +2,7 @@
   (style_element
     (start_tag) @_no_attribute
     (raw_text) @css)
-  (#match? @_no_attribute "<\\s*style\\s*>")
+  (#match? @_no_attribute "^\\<\\s*style\\s*\\>$")
 ) 
 
 (
@@ -30,7 +30,7 @@
   (script_element
     (start_tag) @_no_attribute
     (raw_text) @javascript)
-  (#match? @_no_attribute "<\\s*script\\s*>")
+  (#match? @_no_attribute "^\\<\\s*script\\s*\\>$")
 ) 
 
 ; if start_tag does not specify `lang="..."` then set it to javascript
