@@ -3,6 +3,7 @@
     (start_tag) @_no_attribute
     (raw_text) @css)
   (#match? @_no_attribute "^\\<\\s*style\\s*\\>$")
+  ; unsure why, but without escaping &lt; and &gt; the query breaks
 ) 
 
 (
