@@ -1377,7 +1377,7 @@ function M.ft_to_lang(ft)
   if result then
     return result
   else
-    ft = vim.split(ft, ".", true)[1]
+    ft = vim.split(ft, ".", { plain = true })[1]
     return filetype_to_parsername[ft] or ft
   end
 end
