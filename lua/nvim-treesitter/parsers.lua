@@ -1173,6 +1173,15 @@ list.wgsl = {
   filetype = "wgsl",
 }
 
+list.wgsl_bevy = {
+  install_info = {
+    url = "https://github.com/theHamsta/tree-sitter-wgsl-bevy",
+    files = { "src/parser.c" },
+    generate_requires_npm = true,
+  },
+  maintainers = { "@theHamsta" },
+}
+
 list.m68k = {
   install_info = {
     url = "https://github.com/grahambates/tree-sitter-m68k",
