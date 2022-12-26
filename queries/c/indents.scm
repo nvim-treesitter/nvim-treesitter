@@ -31,6 +31,8 @@
 [
   "#define"
   "#ifdef"
+  "#ifndef"
+  "#elif"
   "#if"
   "#else"
   "#endif"
