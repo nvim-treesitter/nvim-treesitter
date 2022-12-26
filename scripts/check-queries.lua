@@ -65,8 +65,9 @@ local function do_check()
       table.insert(timings, { duration = duration, lang = lang, query_type = query_type })
       io_print("Checking " .. lang .. " " .. query_type .. string.format(" (%.02fms)", duration * 1e-6))
       if not ok then
-        vim.api.nvim_err_writeln(query)
-        last_error = query
+        local err_msg = lang .. " (" .. query_type .. "): " .. query
+        io_print(err_msg)
+        last_error = err_msg
       else
         if query then
           for _, capture in ipairs(query.captures) do
