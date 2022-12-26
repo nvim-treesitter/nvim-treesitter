@@ -13,7 +13,7 @@
 (macro_definition
   name: (identifier) @function.macro)
 
-(quote_expression ":" (identifier)) @symbol
+(quote_expression ":" [(identifier) (operator)]) @symbol
 
 (field_expression
   (identifier) @field .)
@@ -71,18 +71,21 @@
 ;; Definitions
 
 (abstract_definition
-  name: (identifier) @type.definition)
+  name: (identifier) @type.definition) @keyword
 (primitive_definition
-  name: (identifier) @type.definition)
+  name: (identifier) @type.definition) @keyword
 (struct_definition
   name: (identifier) @type)
-(subtype_clause [
-  (identifier) @type
-  (field_expression (identifier) @type .)])
+(type_clause
+  ["<:" ">:"] @operator
+  [(identifier) @type
+    (field_expression (identifier) @type .)])
 
 ;; Annotations
 
-(parametrized_type_expression (_) @type)
+(parametrized_type_expression
+  (_) @type
+  (curly_expression (_) @type))
 
 (type_parameter_list
   (identifier) @type)
@@ -96,7 +99,9 @@
   return_type: (identifier) @type)
 
 (where_clause
-  (identifier) @type) ; where clause without braces
+  (identifier) @type)
+(where_clause
+  (curly_expression (_) @type))
 
 
 ;;; Keywords
@@ -106,8 +111,6 @@
   "local"
   "macro"
   "struct"
-  "type"
-  "where"
 ] @keyword
 
 "end" @keyword
@@ -166,24 +169,30 @@
   "return" @keyword.return)
 
 [
-  "abstract"
   "const"
   "mutable"
-  "primitive"
 ] @type.qualifier
 
 
 ;;; Operators & Punctuation
 
 (operator) @operator
-(for_binding ["in" "=" "∈"] @operator)
-(range_expression ":" @operator)
 
+(adjoint_expression "'" @operator)
+(range_expression ":" @operator)
 (slurp_parameter "..." @operator)
 (splat_expression "..." @operator)
 
-"." @operator
-["::" "<:"] @operator
+((operator) @keyword.operator
+  (#any-of? @keyword.operator "in" "isa"))
+
+(for_binding "in" @keyword.operator)
+(for_binding ["=" "∈"] @operator)
+
+(where_clause "where" @keyword.operator)
+(where_expression "where" @keyword.operator)
+
+["." "::"] @operator
 
 ["," ";"] @punctuation.delimiter
 ["(" ")" "[" "]" "{" "}"] @punctuation.bracket
