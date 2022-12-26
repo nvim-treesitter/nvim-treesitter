@@ -387,6 +387,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
       cmd = function()
         for _, buf in ipairs(vim.api.nvim_list_bufs()) do
           if parsers.get_buf_lang(buf) == lang then
+            vim._ts_remove_language(lang)
             vim.treesitter.language.require_language(lang)
             for _, mod in ipairs(require("nvim-treesitter.configs").available_modules()) do
               require("nvim-treesitter.configs").reattach_module(mod, buf)
