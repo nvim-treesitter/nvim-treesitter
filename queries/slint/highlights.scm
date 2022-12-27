@@ -18,11 +18,11 @@
     field: (identifier) @function.call))
 (vis) @include
 (units) @type
-(array_literal 
+(array_literal
   (identifier) @type)
 (transition_statement state: (identifier) @field)
 (state_expression state: (identifier) @field)
-(struct_block_definition 
+(struct_block_definition
   (identifier) @field)
 
 ; (state_identifier) @field
@@ -35,7 +35,7 @@
 "@" @keyword
 
 [
-"import" 
+"import"
 "from"
 ] @include
 
@@ -116,7 +116,7 @@
 "angle"
 "bool"
 "brush"
-"color" 
+"color"
 "float"
 "image"
 "int"
