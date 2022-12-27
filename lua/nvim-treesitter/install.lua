@@ -44,15 +44,18 @@ end
 
 ---@param lang string
 ---@return function
-local function reattach_if_possible_fn(lang)
+local function reattach_if_possible_fn(lang, error_on_fail)
   return function()
     for _, buf in ipairs(vim.api.nvim_list_bufs()) do
       if parsers.get_buf_lang(buf) == lang then
         vim._ts_remove_language(lang)
-        local ok = pcall(vim.treesitter.language.require_language, lang)
+        local ok, err = pcall(vim.treesitter.language.require_language, lang)
+        if not ok and error_on_fail then
+          vim.notify("Could not load parser for " .. lang .. ": " .. vim.inspect(err))
+        end
         for _, mod in ipairs(require("nvim-treesitter.configs").available_modules()) do
           if ok then
-            require("nvim-treesitter.configs").reattach_module(mod, buf)
+            require("nvim-treesitter.configs").reattach_module(mod, buf, lang)
           else
             require("nvim-treesitter.configs").detach_module(mod, buf)
           end
@@ -404,7 +407,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
       end,
     },
     { -- auto-attach modules after installation
-      cmd = reattach_if_possible_fn(lang),
+      cmd = reattach_if_possible_fn(lang, true),
     },
   })
   if not from_local_path then
@@ -605,7 +608,7 @@ function M.uninstall(...)
             end,
           },
           { -- auto-reattach or detach modules after uninstallation
-            cmd = reattach_if_possible_fn(lang),
+            cmd = reattach_if_possible_fn(lang, false),
           },
         }
         M.iter_cmd(command_list, 1, lang, "Treesitter parser for " .. lang .. " has been uninstalled")
