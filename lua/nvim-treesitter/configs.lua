@@ -232,7 +232,7 @@ end
 
 ---Recurses through all modules including submodules
 ---@param accumulator function called for each module
----@param root {[string]: TSModule} root configuration table to start at
+---@param root {[string]: TSModule}|nil root configuration table to start at
 ---@param path string|nil prefix path
 local function recurse_modules(accumulator, root, path)
   root = root or config.modules
@@ -529,7 +529,7 @@ function M.reattach_module(mod_name, bufnr, lang)
 end
 
 ---Gets available modules
----@param root {[string]:TSModule} table to find modules
+---@param root {[string]:TSModule}|nil table to find modules
 function M.available_modules(root)
   local modules = {}
 
