@@ -107,6 +107,9 @@
   "fortran": {
     "revision": "f0f2f100952a353e64e26b0fa710b4c296d7af13"
   },
+  "fsh": {
+    "revision": "f5b0489d44e588b0d5d77f5c5f50a20491c44441"
+  },
   "fusion": {
     "revision": "19db2f47ba4c3a0f6238d4ae0e2abfca16e61dd6"
   },
