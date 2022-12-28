@@ -7,7 +7,7 @@
   "^"
   "="
   ":"
-] @punctuation.operator
+] @operator
 
 [
   "#"
