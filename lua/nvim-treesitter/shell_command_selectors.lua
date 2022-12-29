@@ -99,7 +99,8 @@ function M.select_compiler_args(repo, compiler)
     }
     if
       #vim.tbl_filter(function(file)
-        return file:match "%.cc$" or file:match "%cpp$" or file:match "%.cxx$"
+        local ext = vim.fn.fnamemodify(file, ":e")
+        return ext == "cc" or ext == "cpp" or ext == "cxx"
       end, repo.files) > 0
     then
       table.insert(args, "-lstdc++")
