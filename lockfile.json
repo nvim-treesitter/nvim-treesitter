@@ -9,7 +9,7 @@
     "revision": "c473c09f23b13d9404ec5208fad3eddea89d70f8"
   },
   "astro": {
-    "revision": "22697b0e2413464b7abaea9269c5e83a59e39a83"
+    "revision": "a1f66bf72ed68b87f779bce9a52e5c6521fc867e"
   },
   "awk": {
     "revision": "e559793754c60c2cdf00cbb0409842d75f0a41dc"
@@ -258,10 +258,10 @@
     "revision": "8ad20059c6f128861c4506fff866150ffee1d6f4"
   },
   "ocaml": {
-    "revision": "de07323343946c32759933cb3b7c78e821098cad"
+    "revision": "f1106bf834703f1f2f795da1a3b5f8f40174ffcc"
   },
   "ocaml_interface": {
-    "revision": "de07323343946c32759933cb3b7c78e821098cad"
+    "revision": "f1106bf834703f1f2f795da1a3b5f8f40174ffcc"
   },
   "ocamllex": {
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
