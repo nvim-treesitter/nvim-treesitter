@@ -96,8 +96,14 @@ function M.select_compiler_args(repo, compiler)
       repo.files,
       "-shared",
       "-Os",
-      "-lstdc++",
     }
+    if
+      #vim.tbl_filter(function(file)
+        return file:match "%.cc$" or file:match "%cpp$" or file:match "%.cxx$"
+      end, repo.files) > 0
+    then
+      table.insert(args, "-lstdc++")
+    end
     if fn.has "win32" == 0 then
       table.insert(args, "-fPIC")
     end
