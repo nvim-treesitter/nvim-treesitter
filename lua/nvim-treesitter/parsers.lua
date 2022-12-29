@@ -581,6 +581,18 @@ list.scala = {
   maintainers = { "@stevanmilic" },
 }
 
+list.smithy = {
+  install_info = {
+    url = "https://github.com/indoorvivants/tree-sitter-smithy",
+    files = { "src/parser.c" },
+    branch = "main",
+    generate_requires_npm = true,
+    requires_generate_from_grammar = true,
+  },
+  maintainers = { "@keynmol" },
+  filetype = "smithy",
+}
+
 list.supercollider = {
   install_info = {
     url = "https://github.com/madskjeldgaard/tree-sitter-supercollider",
