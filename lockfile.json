@@ -422,6 +422,9 @@
   "wgsl": {
     "revision": "61d2604525d47238ecbce8aa38f10cb81ba68fd3"
   },
+  "wgsl_bevy": {
+    "revision": "c81dc770310795caea5e00996505deba024ec698"
+  },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
   },
