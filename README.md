@@ -1,8 +1,8 @@
 <div align="center">
   <h1>nvim-treesitter</h1>
   <p>
-    <a href="https://nvim-treesitter.zulipchat.com/">
-      <img alt="Zulip Chat" src="https://img.shields.io/badge/zulip-join_chat-brightgreen.svg" />
+    <a href="https://matrix.to/#/#nvim-treesitter:matrix.org">
+      <img alt="Matrix Chat" src="https://img.shields.io/matrix/nvim-treesitter:matrix.org" />
     </a>
     <a href="https://github.com/nvim-treesitter/nvim-treesitter/actions?query=workflow%3A%22Linting+and+style+checking%22+branch%3Amaster">
       <img alt="Linting and Style" src="https://github.com/nvim-treesitter/nvim-treesitter/workflows/Linting%20and%20style%20checking/badge.svg" />
