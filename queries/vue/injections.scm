@@ -1,20 +1,6 @@
-(
-  (style_element
-    (start_tag) @_no_attribute
-    (raw_text) @css)
-  (#match? @_no_attribute "^\\<\\s*style\\s*\\>$")
-  ; unsure why, but without escaping &lt; and &gt; the query breaks
-) 
+; inherits html_tags
 
-(
-  (style_element
-    (start_tag
-      (attribute
-        (attribute_name) @_no_lang))
-    (raw_text) @css)
-  (#not-eq? @_no_lang "lang")
-) 
-
+; <script lang="css">
 (
   (style_element
     (start_tag
@@ -26,36 +12,8 @@
   (#eq? @_css "css")
 )
 
-; If script tag does not have any extra attributes, set it to javascript
-(
-  (script_element
-    (start_tag) @_no_attribute
-    (raw_text) @javascript)
-  (#match? @_no_attribute "^\\<\\s*script\\s*\\>$")
-) 
-
-; if start_tag does not specify `lang="..."` then set it to javascript
-(
- (script_element
-    (start_tag
-      (attribute
-        (attribute_name) @_no_lang))
-    (raw_text) @javascript)
- (#not-eq? @_no_lang "lang")
-)
-
-(
-  (script_element
-    (start_tag
-      (attribute
-        (attribute_name) @_lang
-        (quoted_attribute_value (attribute_value) @_js)))
-    (raw_text) @javascript)
-  (#eq? @_lang "lang")
-  (#eq? @_js "js")
-)
-
 ; TODO: When nvim-treesitter have postcss and less parser, use @language and @content instead
+; <script lang="scss">
 (
   (style_element
     (start_tag
@@ -67,6 +25,19 @@
   (#any-of? @_scss "scss" "less" "postcss")
 )
 
+; <script lang="js">
+(
+  (script_element
+    (start_tag
+      (attribute
+        (attribute_name) @_lang
+        (quoted_attribute_value (attribute_value) @_js)))
+    (raw_text) @javascript)
+  (#eq? @_lang "lang")
+  (#eq? @_js "js")
+)
+
+; <script lang="ts">
 (
   (script_element
     (start_tag
@@ -93,5 +64,3 @@
     (text) @pug)
   (#eq? @_lang "pug")
 )
-
-(comment) @comment
