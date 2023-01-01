@@ -166,6 +166,8 @@
 
 (type_declaration
   (union_variant (upper_case_identifier) @constructor))
+(nullary_constructor_argument_pattern
+  (upper_case_qid (upper_case_identifier) @constructor))
 (union_pattern
   (upper_case_qid (upper_case_identifier) @constructor))
 (value_expr
