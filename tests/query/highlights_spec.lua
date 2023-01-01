@@ -76,21 +76,39 @@ local function check_assertions(file)
         end
       end
     end, true)
-    assert.True(
-      captures[assertion.expected_capture_name] or highlights[assertion.expected_capture_name],
-      "Error in at "
-        .. file
-        .. ":"
-        .. (row + 1)
-        .. ":"
-        .. (col + 1)
-        .. ': expected "'
-        .. assertion.expected_capture_name
-        .. '", captures: '
-        .. vim.inspect(vim.tbl_keys(captures))
-        .. '", highlights: '
-        .. vim.inspect(vim.tbl_keys(highlights))
-    )
+    if assertion.expected_capture_name:match "^!" then
+      assert.Falsy(
+        captures[assertion.expected_capture_name:sub(2)] or highlights[assertion.expected_capture_name:sub(2)],
+        "Error in at "
+          .. file
+          .. ":"
+          .. (row + 1)
+          .. ":"
+          .. (col + 1)
+          .. ': expected "'
+          .. assertion.expected_capture_name
+          .. '", captures: '
+          .. vim.inspect(vim.tbl_keys(captures))
+          .. '", highlights: '
+          .. vim.inspect(vim.tbl_keys(highlights))
+      )
+    else
+      assert.True(
+        captures[assertion.expected_capture_name] or highlights[assertion.expected_capture_name],
+        "Error in at "
+          .. file
+          .. ":"
+          .. (row + 1)
+          .. ":"
+          .. (col + 1)
+          .. ': expected "'
+          .. assertion.expected_capture_name
+          .. '", captures: '
+          .. vim.inspect(vim.tbl_keys(captures))
+          .. '", highlights: '
+          .. vim.inspect(vim.tbl_keys(highlights))
+      )
+    end
   end
 end
 
