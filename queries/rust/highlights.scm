@@ -209,10 +209,10 @@
 (type_cast_expression "as" @keyword.operator)
 (qualified_type "as" @keyword.operator)
 
-(use_list (self) @keyword)
-(scoped_use_list (self) @keyword)
-(scoped_identifier [(crate) (super) (self)] @keyword)
-(visibility_modifier [(crate) (super) (self)] @keyword)
+(use_list (self) @namespace)
+(scoped_use_list (self) @namespace)
+(scoped_identifier [(crate) (super) (self)] @namespace)
+(visibility_modifier [(crate) (super) (self)] @namespace)
 
 [
   "else"
