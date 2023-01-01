@@ -35,7 +35,7 @@ jobs:
           mkdir -p ~/.local/share/nvim/site/pack/plenary.nvim/start
           cd ~/.local/share/nvim/site/pack/plenary.nvim/start
           git clone https://github.com/nvim-lua/plenary.nvim
-          curl -L https://github.com/theHamsta/highlight-assertions/releases/download/v0.1.5/highlight-assertions_v0.1.5_x86_64-unknown-linux-gnu.tar.gz | tar -xz
+          curl -L https://github.com/theHamsta/highlight-assertions/releases/download/v0.1.6/highlight-assertions_v0.1.6_x86_64-unknown-linux-gnu.tar.gz | tar -xz
           cp highlight-assertions /usr/local/bin
 
       - name: Install and prepare Neovim
