@@ -82,7 +82,7 @@ list.agda = {
 
 list.meson = {
   install_info = {
-    url = "https://github.com/Decodetalkers/tree-sitter-meson",
+    url = "https://github.com/staysail/tree-sitter-meson",
     branch = "master",
     files = { "src/parser.c" },
   },
