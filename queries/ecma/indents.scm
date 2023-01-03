@@ -46,6 +46,7 @@
 ] @branch
 (statement_block "{" @branch)
 
+(parenthesized_expression ("(" (_) ")" @indent_end))
 ["}" "]"] @indent_end
 
 [
