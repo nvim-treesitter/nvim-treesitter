@@ -45,7 +45,7 @@ jobs:
           git config user.name "GitHub"
           git config user.email "noreply@github.com"
           git add lockfile.json
-          UPDATED_PARSERS=$(/tmp/jd -set /tmp/old_lockfile.json lockfile.json | sed -n '/@/s/","revision"]//;s/"]//;s/@ \["//p' | sed 'N;s/\n/, /')
+          UPDATED_PARSERS=$(/tmp/jd -f merge /tmp/old_lockfile.json lockfile.json | jq -r 'keys | join(", ")')
           echo "UPDATED_PARSERS=$UPDATED_PARSERS" >> $GITHUB_ENV
           git commit -m "Update parsers: $UPDATED_PARSERS" || echo 'No commit necessary!'
           git clean -xf
