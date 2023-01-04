@@ -1,5 +1,3 @@
-local api = vim.api
-
 local configs = require "nvim-treesitter.configs"
 
 local M = {}
@@ -15,24 +13,18 @@ local function should_enable_vim_regex(config, lang)
 end
 
 ---@param bufnr integer
-local function enable_syntax(bufnr)
-  api.nvim_buf_set_option(bufnr, "syntax", "ON")
-end
-
----@param bufnr integer
 ---@param lang string
 function M.attach(bufnr, lang)
   local config = configs.get_module "highlight"
   vim.treesitter.start(bufnr, lang)
   if config and should_enable_vim_regex(config, lang) then
-    enable_syntax(bufnr)
+    vim.bo[bufnr].syntax = "ON"
   end
 end
 
 ---@param bufnr integer
 function M.detach(bufnr)
   vim.treesitter.stop(bufnr)
-  enable_syntax(bufnr)
 end
 
 ---@deprecated
