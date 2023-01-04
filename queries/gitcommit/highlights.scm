@@ -3,6 +3,7 @@
 (title) @text.title
 (text) @text
 (branch) @text.reference
+(commit) @text.reference
 (change) @keyword
 (filepath) @text.uri
 (arrow) @punctuation.delimiter
