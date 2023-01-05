@@ -106,16 +106,19 @@
 
 (variable) @variable
 (pat_wildcard) @variable
+(signature name: (variable) @variable)
 
-(signature name: (variable) @type)
 (function
   name: (variable) @function
   patterns: (patterns))
 (function
   name: (variable) @function
   rhs: (exp_lambda))
+((signature (variable) @function (fun)) . (function (variable)))
 ((signature (variable) @_type (fun)) . (function (variable) @function) (#eq? @function @_type))
+((signature (variable) @function (context (fun))) . (function (variable)))
 ((signature (variable) @_type (context (fun))) . (function (variable) @function) (#eq? @function @_type))
+((signature (variable) @function (forall (context (fun)))) . (function (variable)))
 ((signature (variable) @_type (forall (context (fun)))) . (function (variable) @function) (#eq? @function @_type))
 
 (exp_infix (variable) @operator)  ; consider infix functions as operators
