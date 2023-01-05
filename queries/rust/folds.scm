@@ -16,6 +16,7 @@
  (if_expression)
  (match_expression)
  (call_expression)
+ (array_expression)
 
  (macro_definition)
  (macro_invocation)
