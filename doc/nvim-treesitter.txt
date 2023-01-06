@@ -476,6 +476,222 @@ Note: This is highly experimental, and folding can break on some types of
       edits. If you encounter such breakage, hiting `zx` should fix folding.
       In any case, feel free to open an issue with the reproducing steps.
 
+
+==============================================================================
+Highlights                                        *nvim-treesitter-highlights*
+
+The following is a list of highlights groups, the syntactic elements they apply
+to, and some examples. All the highlight groups defined by nvim-treesitter
+start with an at sign: `@`, to match the syntax of tree-sitter captures
+used in `highlights.scm` files.
+
+This list is not exhaustive, as languages differ a lot.
+
+Note that many of these captures/highlight groups are not supported by Neovim
+for now, and will not have any effect on syntax highlighting. Improvements in
+this area are a work in progress.
+
+------------------------------------------------------------------------------
+Literals
+							*hl-@boolean*
+@boolean		Boolean literals.
+							*hl-@float*
+@float			Floating-point number literals.
+							*hl-@number*
+@number			Any other numeric literal.
+							*hl-@character*
+@character		Character literals.
+							*hl-@character.special*
+@character.special	Special characters.
+							*hl-@string*
+@string			String literals.
+							*hl-@string.regex*
+@string.regex		Regular expression literals.
+							*hl-@string.escape*
+@string.escape		Escape sequences inside strings. e.g. `\n`, `\t`, etc.
+							*hl-@string.special*
+@string.special		Any other string with special meaning.
+
+------------------------------------------------------------------------------
+Keywords
+							*hl-@keyword*
+@keyword		Keywords that don't fit into the categories below.
+							*hl-@keyword.function*
+@keyword.function	Keywords to define a function. e.g. `def` in Python.
+							*hl-@keyword.operator*
+@keyword.operator	Operators that are English words. e.g. `and` / `or` in
+			Python.
+							*hl-@keyword.return*
+@keyword.return		Keywords like `return` and `yield`.
+							*hl-@conditional*
+@conditional		Keywords related to conditionals. e.g. `if`, `else`.
+							*hl-@conditional.ternary*
+@conditional.ternary	The ternary operator. e.g. `condition ? 1 : 2` in C.
+							*hl-@exception*
+@exception		Keywords to raise or catch exceptions. e.g. `try`,
+			`catch` and `throw`.
+							*hl-@include*
+@include		Keywords for including modules. e.g. `import ... from`
+			in Javascript.
+							*hl-@repeat*
+@repeat			Keywords related to loops and iteration. e.g. `for`,
+			`while` and `loop`.
+
+------------------------------------------------------------------------------
+Identifiers
+							*hl-@variable*
+@variable		Variable names that dont' fit into other categories.
+							*hl-@variable.builtin*
+@variable.builtin	Variable names defined by the language. e.g. `this` or
+			`self` in Javascript.
+							*hl-@constant*
+@constant		Constant identifiers. These might not be semantically
+			constant.
+							*hl-@constant.builtin*
+@constant.builtin	Built-in constant values. e.g. `nil` in Lua.
+							*hl-@constant.macro*
+@constant.macro		Constants defined by macros. e.g. `NULL` in C.
+							*hl-@namespace*
+@namespace		Identifier referring to modules or namespaces.
+							*hl-@label*
+@label			GOTO labels: `label:` in C, and `::label::` in Lua.
+							*hl-@symbol*
+@symbol			Interned strings, symbols or atoms.
+
+------------------------------------------------------------------------------
+Functions
+							*hl-@function*
+@function		Function definitions.
+							*hl-@function.builtin*
+@function.builtin	Built-in functions. e.g. `print` in Lua.
+							*hl-@function.call*
+@function.call		Function calls.
+							*hl-@function.macro*
+@function.macro		Macro defined functions (calls and definitions).
+							*hl-@constructor*
+@constructor		Constructors (calls and definitions).
+							*hl-@method*
+@method			Method definitions.
+							*hl-@method.call*
+@method.call		Method calls.
+							*hl-@parameter*
+@parameter		Parameters of a function.
+
+------------------------------------------------------------------------------
+Types
+							*hl-@type*
+@type			Type or class definitions and annotations.
+							*hl-@type.builtin*
+@type.builtin		Built-in types. e.g. `i32` in Rust.
+							*hl-@type.definition*
+@type.definition	Type definitions. e.g. `typedef` in C.
+							*hl-@type.qualifier*
+@type.qualifier		Type qualifiers. e.g. `const` in C or `mut` in Rust.
+							*hl-@storageclass*
+@storageclass		Visibility/life-time modifiers. e.g. `volatile` in C.
+							*hl-@attribute*
+@attribute		Attribute annotations. e.g. Python decorators.
+							*hl-@field*
+@field			Struct or object fields.
+							*hl-@property*
+@property		Same as `@field`.
+
+------------------------------------------------------------------------------
+Text
+
+Mainly for markup languages.
+							*hl-@text*
+@text			Non-structured text.
+							*hl-@text.strong*
+@text.strong		Text presented in bold.
+							*hl-@text.emphasis*
+@text.emphasis		Text presented with emphasis (usually in italics).
+							*hl-@text.underline*
+@text.underline		Text presented with an underline.
+							*hl-@text.strike*
+@text.strike		Text presented with a strikethrough line.
+							*hl-@text.title*
+@text.title		Text that's part of a title.
+							*hl-@text.literal*
+@text.literal		Literal or verbatim text.
+							*hl-@text.uri*
+@text.uri		URIs. e.g. hyperlinks or email addresses.
+							*hl-@text.math*
+@text.math		Math environments. e.g. `$ ... $` in LaTeX.
+							*hl-@text.environment*
+@text.environment	Text environments of markup languages.
+							*hl-@text.environment.name*
+@text.environment.name	Text indicating the type of an environment.
+							*hl-@text.reference*
+@text.reference		Text references, footnotes, citations, etc.
+							*hl-@text.todo*
+@text.todo		To-do notes.
+							*hl-@text.note*
+@text.note		Informational notes.
+							*hl-@text.warning*
+@text.warning		Warning notes.
+							*hl-@text.danger*
+@text.danger		Danger/error notes.
+							*hl-@text.diff.add*
+@text.diff.add		Added text (for diff files).
+							*hl-@text.diff.delete*
+@text.diff.delete	Deleted text (for diff files).
+
+------------------------------------------------------------------------------
+Tags
+
+Used for XML-like tags.
+							*hl-@tag*
+@tag			XML tag names.
+							*hl-@tag.attribute*
+@tag.attribute		XML tag attributes.
+							*hl-@tag.delimiter*
+@tag.delimiter		XML tag delimiters.
+
+------------------------------------------------------------------------------
+Punctuation
+						*hl-@punctuation.delimiter*
+@punctuation.delimiter  Commas, periods, semicolons, etc.
+						*hl-@punctuation.bracket*
+@punctuation.bracket    Brackets, braces, parentheses, etc.
+						*hl-@punctuation.special*
+@punctuation.special    special punctuation that doesn't fit the previous
+                        categories (e.g. `{}` in Python string interpolation).
+
+------------------------------------------------------------------------------
+Miscellaneus highlights
+							*hl-@comment*
+@comment	Line and block comments.
+							*hl-@error*
+@error		Parser errors. This might highlight large sections of code
+		while the user is typing still incomplete code,
+		use a sensible highlight.
+							*hl-@none*
+@none		No highlighting (sets all highlight arguments to `NONE`).
+		This group is used to clear certain ranges (like string
+		interpolations). Don't alter the values of this highlight group.
+							*hl-@preproc*
+@preproc	Preprocessor directives. e.g. `#if` in C.
+							*hl-@define*
+@define		Preprocessor definition directives.
+							*hl-@operator*
+@operator	Binary or unary symbolic operators. e.g. `+` and `->` in C.
+
+------------------------------------------------------------------------------
+Pseudo-highlights
+
+These captures are not used for syntax highlighting, but rather to provide
+metadata on the patterns they apply to.
+
+							*hl-@conceal*
+@conceal	For captures that are only used for concealing
+		In patterns, this must be followed by `(#set! conceal "")`.
+							*hl-@spell*
+@spell		For defining regions to be spellchecked.
+							*hl-@nospell*
+@nospell	For defining regions that should NOT be spellchecked.
+
+
 ==============================================================================
 PERFORMANCE                                      *nvim-treesitter-performance*
 
