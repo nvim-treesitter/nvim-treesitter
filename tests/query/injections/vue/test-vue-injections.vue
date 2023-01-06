@@ -12,59 +12,23 @@
   </template>
 
   <template v-if="'text inside directives'"></template>
-<!--              ^ javascript 
--->
+<!--              ^ javascript -->
 </template>
-<script>
-const foo = "1"
-//    ^ javascript
-</script>
-<script defer>
-const foo = "1"
-//    ^ javascript
-</script>
-<script lang="js">
-const foo = "1"
-//    ^ javascript
-</script>
-<script lang="ts">
-const foo: number = "1"
-//          ^ typescript
-//          ^ !javascript
-</script>
-<style>
-.bar {
-/* ^ css  
-*/
-}
-</style>
-<style scoped>
-.page.page--news {
-  padding: calc(var(--header-height)) 1rem 0 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  min-height: calc(var(--vh, 1vh) * 100 - var(--header-height));
-  background: rebeccapurple;
-/*              ^ css 
-*/
-}
-</style>
-<style lang="css">
-.bar {
-  justify-content: center;
-/*         ^ css
-*/
-}
-</style>
-<style lang="scss">
-.bar {
-  &-baz {
-    &.page{
-//  ^ scss
-//  ^ !css
-    }
-  }
-}
-</style>
+<script> const foo = "1" </script>
+<!--      ^ javascript -->
+<script defer> const foo = "1" </script>
+<!--              ^ javascript -->
+<script lang="js"> const foo = "1" </script>
+<!--                  ^ typescript -->
+<script lang="ts"> const foo: number = "1" </script>
+<!--                            ^ typescript -->
+<!--                            ^ !javascript -->
+<style> .bar { .foo{ } } </style>
+<!--                ^ css   -->
+<style scoped> .page.page--news { background: rebeccapurple; } </style>
+<!--                ^ css  -->
+<style lang="css"> .bar { justify-content: center; } </style>
+<!--                ^ css  -->
+<style lang="scss"> .bar { &-baz { } } </style>
+<!--                       ^ scss -->
+<!--                       ^ !css -->
