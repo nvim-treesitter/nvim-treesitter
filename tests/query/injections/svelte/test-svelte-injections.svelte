@@ -5,6 +5,7 @@
 <script lang="ts">
   const foo: number = 1
 //            ^ typescript
+//            ^ !javascript
 </script>
 
 <style>
@@ -21,6 +22,7 @@
     text-align: center;
     &:hover {
 //  ^ scss
+//  ^ !css
     }
   }
 </style>

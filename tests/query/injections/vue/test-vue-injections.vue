@@ -30,6 +30,7 @@ const foo = "1"
 <script lang="ts">
 const foo: number = "1"
 //          ^ typescript
+//          ^ !javascript
 </script>
 <style>
 .bar {
@@ -62,6 +63,7 @@ const foo: number = "1"
   &-baz {
     &.page{
 //  ^ scss
+//  ^ !css
     }
   }
 }
