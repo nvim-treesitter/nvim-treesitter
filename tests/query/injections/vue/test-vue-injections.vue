@@ -1,15 +1,9 @@
 <template>
   <span>{{"Text inside interpolation"}}</span>
-  <!--      ^ javascript 
--->
+  <!--      ^ javascript -->
 
-  <template lang="pug">
-    ul
-      li(v-for="item in items")
-        a(v-if="item.type == 'link'" :href="item.url") some link title in pug: 
-<!--                                                    ^ pug
--->
-  </template>
+  <template lang="pug"> a(:href="url") some link title in pug: </template>
+  <!--                                       ^ pug -->
 
   <template v-if="'text inside directives'"></template>
 <!--              ^ javascript -->
@@ -18,8 +12,8 @@
 <!--      ^ javascript -->
 <script defer> const foo = "1" </script>
 <!--              ^ javascript -->
-<script lang="js"> const foo = "1" </script>
-<!--                  ^ typescript -->
+<script lang="js">function x(){ return 1;}</script>
+<!--                              ^ javascript -->
 <script lang="ts"> const foo: number = "1" </script>
 <!--                            ^ typescript -->
 <!--                            ^ !javascript -->
