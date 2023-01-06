@@ -108,33 +108,38 @@ describe("update_selection", function()
 end)
 
 describe("swap_nodes", function()
-  local function swap_and_return_cursor(case)
+  local function swap(case)
     vim.api.nvim_buf_set_lines(0, 0, -1, false, case.lines)
-    local a = vim.treesitter.get_node_at_position(0, case.a[1], case.a[2], {})
-    local b = vim.treesitter.get_node_at_position(0, case.b[1], case.b[2], {})
+    local a = vim.treesitter.get_node_at_pos(0, case.a[1], case.a[2], {})
+    local b = vim.treesitter.get_node_at_pos(0, case.b[1], case.b[2], {})
     tsutils.swap_nodes(a, b, 0, true)
-    return vim.api.nvim_win_get_cursor(vim.api.nvim_get_current_win())
   end
 
-  it("moves cursor correctly with adjacent nodes", function()
-    assert.equal(
-      swap_and_return_cursor {
-        lines = { "print(1)" },
-        a = { 0, 0 },
-        b = { 0, 5 },
-      },
-      { 1, 3 }
-    )
+  it("works on adjacent nodes", function()
+    swap {
+      lines = { "print(1)" },
+      a = { 0, 0 },
+      b = { 0, 5 },
+    }
+
+    it("swaps text", function() end)
+    assert.equal(vim.api.nvim_buf_get_lines(0, 0, -1, false), { "(1)print" })
+
+    it("moves the cursor", function() end)
+    assert.equal(vim.api.nvim_win_get_cursor(0), { 1, 3 })
   end)
 
   it("moves cursor correctly with multiline nodes", function()
-    assert.equal(
-      swap_and_return_cursor {
-        lines = { "x = { [[", "]], [[", ".....]]}" },
-        a = { 0, 6 },
-        b = { 1, 4 },
-      },
-      { 2, 9 }
-    )
+    swap {
+      lines = { "x = { [[", "]], [[", ".....]]}" },
+      a = { 0, 6 },
+      b = { 1, 4 },
+    }
+
+    it("swaps text", function() end)
+    assert.equal(vim.api.nvim_buf_get_lines(0, 0, -1, false), { { "x = { [[" }, { ".....]], [[" }, { "]]}" } })
+
+    it("moves the cursor", function() end)
+    assert.equal(vim.api.nvim_win_get_cursor(0), { 2, 9 })
   end)
 end)
