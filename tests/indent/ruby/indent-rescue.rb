@@ -1,3 +1,2 @@
 begin
-rescue StandardError
 end
