@@ -36,6 +36,8 @@
   (when)
   (elsif)
   (else)
+  (rescue)
+  (ensure)
   "end"
 ] @branch
 
