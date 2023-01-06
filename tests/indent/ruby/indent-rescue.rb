@@ -1,0 +1,3 @@
+begin
+rescue StandardError
+end
