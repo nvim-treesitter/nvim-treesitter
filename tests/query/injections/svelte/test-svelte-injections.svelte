@@ -1,29 +1,14 @@
-<script>
-	import Button from "./Button.svelte";
-//              ^ javascript
-</script>
-<script lang="ts">
-  const foo: number = 1
-//            ^ typescript
-</script>
+<script> import Button from "./Button.svelte"; </script>
+<!--              ^ javascript -->
+<script lang="ts"> const foo: number = 1 </script>
+<!--                           ^ typescript -->
+<!--                           ^ !javascript -->
 
-<style>
-  main {
-    font-family: sans-serif;
-    text-align: center;
-/*           ^ css
-*/
-  }
-</style>
-<style lang="scss">
-  main {
-    font-family: sans-serif;
-    text-align: center;
-    &:hover {
-//  ^ scss
-    }
-  }
-</style>
+<style> main { font-family: sans-serif; text-align: center; } </style>
+<!--                       ^ css  -->
+<style lang="scss"> main { &:hover { } } </style>
+<!--                       ^ scss -->
+<!--                       ^ !css -->
 
 <main>
 	<h1>Test file</h1>
