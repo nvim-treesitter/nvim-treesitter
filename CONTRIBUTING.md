@@ -2,9 +2,8 @@
 
 First of all, thank you very much for contributing to `nvim-treesitter`.
 
-If you haven't already, you should really come and reach out to us on our [Zulip]
-server, so we can help you with any question you might have!
-There is also a [Matrix channel] for tree-sitter support in Neovim.
+If you haven't already, you should really come and reach out to us on our
+[Matrix channel], so we can help you with any question you might have!
 
 As you know, `nvim-treesitter` is roughly split in two parts:
 
@@ -37,10 +36,10 @@ Thus far, there is basically two types of modules:
 - Bigger modules (like `completion-treesitter`, or `nvim-tree-docs`), or modules that integrate
   with other plugins, that we call `remote modules`.
 
-In any case, you can build your own module ! To help you started in the process, we have a template
+In any case, you can build your own module! To help you started in the process, we have a template
 repository designed to build new modules [here](https://github.com/nvim-treesitter/module-template).
 Feel free to use it, and contact us over on our
-[Zulip] or on the "Neovim tree-sitter" [Matrix channel].
+on the "Neovim tree-sitter" [Matrix channel].
 
 ## Parser configurations
 
@@ -58,7 +57,7 @@ For now these are the types of queries used by `nvim-treesitter`:
 - `injections.scm`: used to define injections.
 
 For these types there is a *norm* you will have to follow so that features work fine.
-Here are some global advices :
+Here are some global advices:
 
 - If your language is listed [here](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages),
   you can install the [playground plugin](https://github.com/nvim-treesitter/playground).
@@ -322,5 +321,4 @@ the node describing the language and `@content` to describe the injection region
 @zero_indent    ; sets this node at position 0 (no indent)
 ```
 
-[Zulip]: https://nvim-treesitter.zulipchat.com
 [Matrix channel]: https://matrix.to/#/#nvim-treesitter:matrix.org
