@@ -125,13 +125,13 @@ describe("swap_nodes", function()
     }
 
     it("swaps text", function() end)
-    assert.equal(vim.api.nvim_buf_get_lines(0, 0, -1, false), { "(1)print" })
+    assert.same(vim.api.nvim_buf_get_lines(0, 0, -1, false), { "(1)print" })
 
     it("moves the cursor", function() end)
-    assert.equal(vim.api.nvim_win_get_cursor(0), { 1, 3 })
+    assert.same(vim.api.nvim_win_get_cursor(0), { 1, 3 })
   end)
 
-  it("moves cursor correctly with multiline nodes", function()
+  it("works with multiline nodes", function()
     swap {
       filetype = "lua",
       lines = { "x = { [[", "]], [[", ".....]]}" },
@@ -140,9 +140,9 @@ describe("swap_nodes", function()
     }
 
     it("swaps text", function() end)
-    assert.equal(vim.api.nvim_buf_get_lines(0, 0, -1, false), { { "x = { [[" }, { ".....]], [[" }, { "]]}" } })
+    assert.same(vim.api.nvim_buf_get_lines(0, 0, -1, false), { "x = { [[", ".....]], [[", "]]}" })
 
     it("moves the cursor", function() end)
-    assert.equal(vim.api.nvim_win_get_cursor(0), { 2, 9 })
+    assert.same(vim.api.nvim_win_get_cursor(0), { 2, 9 })
   end)
 end)
