@@ -288,7 +288,8 @@ function M.update_selection(buf, node, selection_mode)
   -- "gv": Start Visual mode with the same area as the previous area and the same mode.
   -- Hence, area will be what we defined in "<" and ">" marks. We only feed `selection_mode` if it is
   -- different than previous `visualmode`, otherwise it will stop visual mode.
-  api.nvim_feedkeys("gv" .. selection_mode, "x", false)
+  -- bang=true is provided to avoid gv side-effects
+  api.nvim_cmd({ cmd = "normal", bang = true, args = { "gv" .. selection_mode } }, {})
 end
 
 -- Byte length of node range
