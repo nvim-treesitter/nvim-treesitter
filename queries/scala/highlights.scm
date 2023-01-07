@@ -187,7 +187,7 @@
 "def" @keyword.function
 
 [
- "=>"
+ ;"=>" ; TODO: => disappeared from parse trees
  "<-"
  "@"
 ] @operator
