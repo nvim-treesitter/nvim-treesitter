@@ -110,14 +110,15 @@ end)
 describe("swap_nodes", function()
   local function swap(case)
     vim.api.nvim_buf_set_lines(0, 0, -1, false, case.lines)
-    local a = vim.treesitter.get_node_at_pos(0, case.a[1], case.a[2], { lang = case.lang })
-    local b = vim.treesitter.get_node_at_pos(0, case.b[1], case.b[2], { lang = case.lang })
+    vim.opt.filetype = case.filetype
+    local a = vim.treesitter.get_node_at_pos(0, case.a[1], case.a[2], {})
+    local b = vim.treesitter.get_node_at_pos(0, case.b[1], case.b[2], {})
     tsutils.swap_nodes(a, b, 0, true)
   end
 
   it("works on adjacent nodes", function()
     swap {
-      lang = "python",
+      filetype = "python",
       lines = { "print(1)" },
       a = { 0, 0 },
       b = { 0, 5 },
@@ -132,7 +133,7 @@ describe("swap_nodes", function()
 
   it("moves cursor correctly with multiline nodes", function()
     swap {
-      lang = "lua",
+      filetype = "lua",
       lines = { "x = { [[", "]], [[", ".....]]}" },
       a = { 0, 6 },
       b = { 1, 4 },
