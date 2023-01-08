@@ -600,6 +600,15 @@ list.slint = {
   experimental = true,
 }
 
+list.smali = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-smali",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq" },
+  experimental = true,
+}
+
 list.haskell = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-haskell",

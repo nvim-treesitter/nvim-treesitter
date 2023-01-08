@@ -287,6 +287,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [scheme](https://github.com/6cdh/tree-sitter-scheme) (maintained by @6cdh)
 - [x] [scss](https://github.com/serenadeai/tree-sitter-scss) (maintained by @elianiva)
 - [x] [slint](https://github.com/jrmoulton/tree-sitter-slint) (experimental, maintained by @jrmoulton)
+- [x] [smali](https://github.com/amaanq/tree-sitter-smali) (experimental, maintained by @amaanq)
 - [x] [solidity](https://github.com/YongJieYongJie/tree-sitter-solidity) (maintained by @YongJieYongJie)
 - [x] [sparql](https://github.com/BonaBeavis/tree-sitter-sparql) (maintained by @BonaBeavis)
 - [x] [sql](https://github.com/derekstride/tree-sitter-sql) (maintained by @derekstride)
