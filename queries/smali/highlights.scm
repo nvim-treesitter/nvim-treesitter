@@ -93,8 +93,8 @@
 
 (boolean_literal) @boolean
 
-;; unsupported
-; (character_literal) @character
+; unsupported
+(character_literal) @character
 
 (null_literal) @constant.builtin
 
