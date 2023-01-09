@@ -333,7 +333,7 @@
     "revision": "f7fb205c424b0962de59b26b931fe484e1262b35"
   },
   "scala": {
-    "revision": "c4c7d2e454014659be7383a582bd84456688bb1c"
+    "revision": "ac853f11d66dd24f0aa0105f9d72b65703fc6e25"
   },
   "scheme": {
     "revision": "16bdcf0495865e17ae5b995257458e31e8b7f450"
@@ -423,7 +423,7 @@
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
   },
   "wgsl": {
-    "revision": "4c03f73822c72130c63c385a112e44ad5a69f3e9"
+    "revision": "40259f3c77ea856841a4e0c4c807705f3e4a2b65"
   },
   "wgsl_bevy": {
     "revision": "24757275fa01e813ebfdb6acab85862ced9405d7"
