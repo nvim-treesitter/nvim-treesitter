@@ -16,4 +16,4 @@
   "}"
 ] @branch
 
-(comment) @auto
+[(line_comment) (block_comment)] @auto
