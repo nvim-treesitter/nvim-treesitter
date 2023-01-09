@@ -1195,7 +1195,7 @@ list.wgsl = {
 list.wgsl_bevy = {
   install_info = {
     url = "https://github.com/theHamsta/tree-sitter-wgsl-bevy",
-    files = { "src/parser.c" },
+    files = { "src/parser.c", "src/scanner.c" },
     generate_requires_npm = true,
   },
   maintainers = { "@theHamsta" },
