@@ -1186,7 +1186,7 @@ list.astro = {
 list.wgsl = {
   install_info = {
     url = "https://github.com/szebniok/tree-sitter-wgsl",
-    files = { "src/parser.c" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@szebniok" },
   filetype = "wgsl",
