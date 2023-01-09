@@ -59,7 +59,6 @@
   ".source"
   ".implements"
   ".field"
-  ".method"
   ".annotation"
   ".subannotation"
   ".param"
@@ -79,11 +78,15 @@
 
 [
   (end_field)
-  (end_method)
   (end_annotation)
   (end_subannotation)
   (end_param)
 ] @keyword
+
+[
+  ".method"
+  (end_method)
+] @keyword.function
 
 ; Literals
 
