@@ -29,16 +29,15 @@
 ] @indent_end
 
 [
+  "end"
   ")"
   "}"
-  "["
   "]"
   (when)
   (elsif)
   (else)
   (rescue)
   (ensure)
-  "end"
 ] @branch
 
 (comment) @ignore
