@@ -1,4 +1,4 @@
-def indent_brackets
+def indent_square_brackets
   [
     []
   ]
