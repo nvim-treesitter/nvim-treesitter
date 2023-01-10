@@ -30,7 +30,7 @@
     "revision": "7175a6dd5fc1cee660dce6fe23f6043d75af424a"
   },
   "c_sharp": {
-    "revision": "f076a8efe30a0b8c249eeb61383f6d914376114c"
+    "revision": "4fb55400063d591fda626eb5faa92bb8a6c345f3"
   },
   "clojure": {
     "revision": "50468d3dc38884caa682800343d9a1d0fda46c9b"
@@ -333,7 +333,7 @@
     "revision": "f7fb205c424b0962de59b26b931fe484e1262b35"
   },
   "scala": {
-    "revision": "ac853f11d66dd24f0aa0105f9d72b65703fc6e25"
+    "revision": "612078555246244dd7a8838a1cb871021175a50c"
   },
   "scheme": {
     "revision": "16bdcf0495865e17ae5b995257458e31e8b7f450"
