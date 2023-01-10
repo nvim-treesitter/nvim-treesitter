@@ -96,7 +96,7 @@ list.qmljs = {
     branch = "master",
     files = { "src/parser.c", "src/scanner.c" },
   },
-  filetype = "qmljs",
+  filetype = "qml",
   maintainers = { "@Decodetalkers" },
 }
 
