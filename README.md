@@ -103,8 +103,8 @@ All modules are disabled by default and need to be activated explicitly in your 
 
 ```lua
 require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all"
-  ensure_installed = { "c", "lua", "rust" },
+  -- A list of parser names, or "all" (the four listed parsers should always be installed)
+  ensure_installed = { "c", "lua", "vim", "help" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
