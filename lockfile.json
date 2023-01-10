@@ -90,7 +90,7 @@
     "revision": "f32711e31e987fd5c2c002f3daba02f25c68672f"
   },
   "embedded_template": {
-    "revision": "91fc5ae1140d5c9d922312431f7d251a48d7b8ce"
+    "revision": "a13085849cf69e2401ec44e38cffc3d73f22f3df"
   },
   "erlang": {
     "revision": "a8b8b0e16c4f5552f5e85af3dec976a5d16af8b9"
@@ -333,7 +333,7 @@
     "revision": "f7fb205c424b0962de59b26b931fe484e1262b35"
   },
   "scala": {
-    "revision": "7d7fd07e4119fe3cab9c992e220e874687e27344"
+    "revision": "94bb82c3aa68b08cf23f7458e75adcd558c40bef"
   },
   "scheme": {
     "revision": "16bdcf0495865e17ae5b995257458e31e8b7f450"
