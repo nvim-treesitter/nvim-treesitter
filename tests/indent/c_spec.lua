@@ -41,6 +41,7 @@ describe("indent C:", function()
     runner:new_line("issue-4079.c", { on_line = 2, text = "return;", indent = 8 })
     runner:new_line("issue-4079.c", { on_line = 2, text = "{", indent = 4 })
     runner:new_line("issue-4079.c", { on_line = 6, text = "{", indent = 4 })
+    runner:new_line("issue-4117.c", { on_line = 3, text = "else", indent = 4 })
     -- the line after inserted one will be left with wrong indent but we only care about the inserted one
     for _, line in ipairs { 2, 4, 7, 10 } do
       runner:new_line("no_braces.c", { on_line = line, text = "x++;", indent = 8 })
@@ -67,6 +68,10 @@ describe("indent C:", function()
       { 54, 12 },
     } do
       runner:new_line("if_else.c", { on_line = info[1], text = "x++;", indent = info[2] })
+    end
+    -- dedent braces on new line
+    for _, line in ipairs { 10, 12, 14 } do
+      runner:new_line("if_else.c", { on_line = line, text = "{}", indent = 4 })
     end
   end)
 end)

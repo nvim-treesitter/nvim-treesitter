@@ -10,59 +10,6 @@
 ] @indent
 
 (
- if_statement
-  condition: (_) @indent
-)
-(
-  (if_statement
-    consequence: (_ ";" @indent_end) @_consequence
-  ) @indent
-  (#not-has-type? @_consequence compound_statement)
-) 
-
-;; if-else case,
-;; with else that is not if/compound statement
-(
-  (if_statement
-    consequence: (_ ";" @indent_end) @_consequence
-    "else" @branch
-    alternative: (_) @_alternative 
-  )@indent
-  (#not-has-type? @_consequence compound_statement)
-  (#not-has-type? @_alternative compound_statement)
-)
-
-;; if-elseif-else case
-(
-  if_statement
-  consequence: (_) @_consequence
-  alternative: 
-    (if_statement "else" @branch)
-  (#not-has-type? @_consequence compound_statement)
-)
-
-;; if- else case
-;; The alternative should be one of the cases below 
-;; because the alternative is a nested tree inside the original if
-;; dedent to offset the indent it should have gotten
-;; Does not support multi chained bare ifs 
-(
-  (if_statement
-    consequence: (_ ";" @indent_end) @_consequence
-    "else" @branch
-    alternative: 
-      [
-        (compound_statement) @dedent
-        (if_statement 
-          consequence: (_) @_consequence (#not-has-type? @_consequence compound_statement)
-        ) @dedent
-        (if_statement consequence: (compound_statement) @dedent)
-      ] 
-  )@indent
-  (#not-has-type? @_consequence compound_statement)
-)
-
-(
   ERROR
     "for" "(" @indent ";" ";" ")" @indent_end)
 (
@@ -83,6 +30,64 @@
   (#not-has-type? @_body compound_statement)
 )
 
+(
+  (if_statement)
+  (ERROR "else") @indent
+)
+
+(
+ if_statement
+  condition: (_) @indent
+)
+;; Make sure all cases of if-else are tagged with @indent
+;; So we will offset the indents for the else case
+(
+  (if_statement
+    consequence: (compound_statement)
+    "else" @branch
+    alternative: 
+      [
+        [ "{" "}" ] @branch
+        (compound_statement ["{" "}"] @branch)
+        (_)
+      ] 
+  ) @indent
+)
+(
+  (if_statement
+    consequence: (_ ";" @indent_end) @_consequence
+  ) @indent
+  (#not-has-type? @_consequence compound_statement)
+)
+(
+  (if_statement
+    consequence: (_) @_consequence
+    "else" @branch
+    alternative: 
+      [
+        [ "{" "}" ] @branch
+        (compound_statement ["{" "}"] @branch)
+        (_)
+      ] 
+  )
+  (#not-has-type? @_consequence compound_statement)
+)
+
+;; Dedent for chaining if-else statements
+;; this will go recursively through each if-elseif
+;; if-elseif -> second `if` is dedented once, indented twice
+;; if-elseif-elseif -> third `if` is dedented twice, indented 3 times
+;; -> all are indented once
+(
+  (if_statement
+    consequence: (_)
+    alternative: 
+      [
+        (if_statement consequence: (compound_statement) @dedent)
+        (_)
+      ] @dedent
+  )
+)
 
 (compound_statement "}" @indent_end)
 
