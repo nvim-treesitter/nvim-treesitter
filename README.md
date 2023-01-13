@@ -415,13 +415,14 @@ This directory must be writeable and must be explicitly added to the
 `runtimepath`. For example:
 
 ``` lua
+  vim.opt.runtimepath:append("/some/path/to/store/parsers")
+
   require'nvim-treesitter.configs'.setup {
     parser_install_dir = "/some/path/to/store/parsers",
 
     ...
 
   }
-  vim.opt.runtimepath:append("/some/path/to/store/parsers")
 ```
 
 If this option is not included in the setup options, or is explicitly set to
