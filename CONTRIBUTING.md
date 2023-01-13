@@ -192,7 +192,8 @@ Mainly for markup languages.
 @text.underline        ; underlined text
 @text.strike           ; strikethrough text
 @text.title            ; text that is part of a title
-@text.literal          ; literal or verbatim text
+@text.literal          ; literal or verbatim text (e.g., inline code)
+@text.quote            ; text quotations
 @text.uri              ; URIs (e.g. hyperlinks)
 @text.math             ; math environments (e.g. `$ ... $` in LaTeX)
 @text.environment      ; text environments of markup languages
