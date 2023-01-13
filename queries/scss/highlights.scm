@@ -1,8 +1,14 @@
 ; inherits: css
 
 [
+  "@at-root"
+  "@debug"
+  "@error"
+  "@extend"
+  "@forward"
   "@mixin"
-  "@media"
+  "@use"
+  "@warn"
 ] @keyword
 
 "@function" @keyword.function
