@@ -53,6 +53,8 @@
 (task_list_marker_unchecked) @text.todo.unchecked
 (task_list_marker_checked) @text.todo.checked
 
+(block_quote) @text.quote
+
 [
   (block_continuation)
   (block_quote_marker)
