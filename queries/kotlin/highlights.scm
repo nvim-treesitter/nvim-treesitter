@@ -89,8 +89,8 @@
 		"MutableList"
 ))
 
-(package_header
-	. (identifier)) @namespace
+(package_header "package" @keyword
+	. (identifier (simple_identifier) @namespace))
 
 (import_header
 	"import" @include)
