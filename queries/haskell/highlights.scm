@@ -139,7 +139,7 @@
 (constructor) @constructor
 
 ; True or False
-((constructor) @_bool (#match? @_bool "(True|False)")) @boolean
+((constructor) @boolean (#any-of? @boolean "True" "False"))
 
 
 ;; ----------------------------------------------------------------------------
