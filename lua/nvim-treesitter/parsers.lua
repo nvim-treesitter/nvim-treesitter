@@ -723,6 +723,7 @@ list.elm = {
     url = "https://github.com/elm-tooling/tree-sitter-elm",
     files = { "src/parser.c", "src/scanner.cc" },
   },
+  maintainers = { "@zweimach" },
 }
 
 list.yaml = {

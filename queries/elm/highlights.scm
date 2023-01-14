@@ -181,7 +181,7 @@
   (number_literal) @number)
 
 (upper_case_qid
-  ((upper_case_identifier) @_bool (#match? @_bool "(True|False)")) @boolean)
+  ((upper_case_identifier) @boolean (#any-of? @boolean "True" "False")))
 
 [
   (open_quote)
