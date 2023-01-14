@@ -60,8 +60,12 @@
   (type_operator)
   (tycon_arrow)
   (qualified_module)  ; grabs the `.` (dot), ex: import System.IO
+  (qualified_type)
+  (qualified_variable)
   (all_names)
   (wildcard)
+  "."
+  ".."
   "="
   "|"
   "::"
@@ -134,6 +138,7 @@
 ;; Types
 
 (type) @type
+(type_star) @type
 (type_variable) @type
 
 (constructor) @constructor
