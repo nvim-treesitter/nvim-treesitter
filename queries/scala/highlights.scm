@@ -104,6 +104,9 @@
 (parameter
   name: (identifier) @parameter)
 
+(binding
+  name: (identifier) @parameter)
+
 ; expressions
 
 (field_expression field: (identifier) @property)
