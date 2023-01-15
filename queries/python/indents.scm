@@ -3,11 +3,6 @@
   (dictionary)
   (set)
 
-  (if_statement)
-  (for_statement)
-  (while_statement)
-  (with_statement)
-  (try_statement)
   (import_from_statement)
 
   (parenthesized_expression)
@@ -21,11 +16,22 @@
   (binary_operator)
 
   (lambda)
-  (function_definition)
-  (class_definition)
 
   (concatenated_string)
 ] @indent
+(  
+  [
+    (if_statement)
+    (for_statement)
+    (while_statement)
+    (with_statement)
+    (try_statement)
+
+    (function_definition)
+    (class_definition)
+  ] @indent
+  (#offset! @indent 0 0 1 0)
+)
   
 (if_statement
   condition: (parenthesized_expression) @aligned_indent
