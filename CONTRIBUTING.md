@@ -161,7 +161,7 @@ effect on highlighting. We will work on improving highlighting in the near futur
 @type.definition       ; type definitions (e.g. `typedef` in C)
 @type.qualifier        ; type qualifiers (e.g. `const`)
 
-@storageclass          ; visibility/life-time modifiers
+@storageclass          ; life-time modifiers that affect storage in memory
 @attribute             ; attribute annotations (e.g. Python decorators)
 @field                 ; object and struct fields
 @property              ; similar to `@field`
