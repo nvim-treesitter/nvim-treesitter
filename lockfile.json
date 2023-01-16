@@ -129,7 +129,7 @@
     "revision": "cfcbca3f8f734773878e00d7bfcedea98eb10be2"
   },
   "glimmer": {
-    "revision": "fee34278dc212869dcfc92fce3007ee79a752867"
+    "revision": "c0bfd260cdcbe2976f4633547c218f09f7222a89"
   },
   "glsl": {
     "revision": "e2c2214045de2628b81089b1a739962f59654558"
@@ -291,7 +291,7 @@
     "revision": "42d82fa18f8afe59b5fc0b16c207ee4f84cb185f"
   },
   "pug": {
-    "revision": "63e214905970e75f065688b1e8aa90823c3aacdc"
+    "revision": "148608f3a88708829ac4e79ff9cb1c4a618e01b7"
   },
   "python": {
     "revision": "9e53981ec31b789ee26162ea335de71f02186003"
@@ -333,10 +333,10 @@
     "revision": "f7fb205c424b0962de59b26b931fe484e1262b35"
   },
   "scala": {
-    "revision": "395aea5658e19caf00e75e36f008070ca78f791e"
+    "revision": "fce8f8c3f6210a3eaf7ca210a1c0ebacc974ddda"
   },
   "scheme": {
-    "revision": "16bdcf0495865e17ae5b995257458e31e8b7f450"
+    "revision": "67b90a365bebf4406af4e5a546d6336de787e135"
   },
   "scss": {
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
@@ -354,7 +354,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "3647b9f5b937269f43ac6e4b6ebcb6f52e033c17"
+    "revision": "9d9802991aa1d1bc00eee7713a838dab1eb4f149"
   },
   "supercollider": {
     "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
@@ -366,7 +366,7 @@
     "revision": "52e122ae68b316d3aa960a0a422d3645ba717f42"
   },
   "swift": {
-    "revision": "5f0ffaf21c7fda4d758d9ef5b20d563271653ce0"
+    "revision": "0fe0de56b528cbf24a654c734ca181b48be3831d"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -384,7 +384,7 @@
     "revision": "a233ebe360a73a92c50978e5c4e9e471bc59ff42"
   },
   "tlaplus": {
-    "revision": "f2ad7272d145598ff2d27fda15379d26aa33a7e1"
+    "revision": "68bcbf8895c564dc5866085335ff0d76c3f76ab8"
   },
   "todotxt": {
     "revision": "0207f6a4ab6aeafc4b091914d31d8235049a2578"
@@ -405,7 +405,7 @@
     "revision": "faad9094f4061a43d4e9005439e9e85c6541ebe7"
   },
   "v": {
-    "revision": "497563e140bf17d73f28e20b5a65e72740c2dc65"
+    "revision": "0b039830a33e759f0c9ee978b47ad10b82d37349"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
