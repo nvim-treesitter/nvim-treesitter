@@ -318,7 +318,6 @@
  "with"
  "new"
  "typeof"
- "nameof"
  "sizeof"
  "is"
  "and"
