@@ -30,7 +30,7 @@
     "revision": "7175a6dd5fc1cee660dce6fe23f6043d75af424a"
   },
   "c_sharp": {
-    "revision": "98a28791018cc2587020a36b2d0cf28ccb29903f"
+    "revision": "2574501b475b7ba7bc10d08dd1ff9732d3769662"
   },
   "clojure": {
     "revision": "50468d3dc38884caa682800343d9a1d0fda46c9b"
@@ -120,7 +120,7 @@
     "revision": "577a075d46ea109905c5cb6179809df88da61ce9"
   },
   "gitcommit": {
-    "revision": "0ef7dd07236141a878b4cc2c488375baa5cc9d5d"
+    "revision": "635b4c22b4702894c11bc7d63af950e6eedd89b7"
   },
   "gitignore": {
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
@@ -243,7 +243,7 @@
     "revision": "d787c66276e7e95899230539f556e8b83ee16f6d"
   },
   "meson": {
-    "revision": "6c5f7ef944f9c6ae8a0fc28b9071a4b493652238"
+    "revision": "5f3138d555aceef976ec9a1d4a3f78e13b31e45f"
   },
   "nickel": {
     "revision": "092e90142667482996880044d2c04837d3d1c266"
