@@ -16,7 +16,7 @@
   "->"
 ] @punctuation.special
 
-; Entity Keywords
+; Entities
 [
   "Profile"
   "Alias"
@@ -29,7 +29,7 @@
   "Logical"
   "Resource"
   "RuleSet"
-] @keyword
+] @type.definition
 
 ; Metadata Keywords
 [
@@ -63,13 +63,13 @@
   "where"
   "system"
   "exactly"
-] @keyword
+] @keyword.operator
 
 ; Types
 [
   "Reference"
   "Canonical"
-] @type
+] @type.builtin
 
 
 (sd_metadata (parent (name))) @type
