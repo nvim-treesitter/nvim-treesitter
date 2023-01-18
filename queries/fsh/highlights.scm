@@ -29,7 +29,7 @@
   "Logical"
   "Resource"
   "RuleSet"
-] @type.definition
+] @type.builtin
 
 ; Metadata Keywords
 [
