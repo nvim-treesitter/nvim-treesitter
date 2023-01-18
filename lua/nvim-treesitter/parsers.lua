@@ -242,6 +242,15 @@ list.rust = {
   maintainers = { "@vigoux" },
 }
 
+list.fsh = {
+  install_info = {
+    url = "https://github.com/mgramigna/tree-sitter-fsh",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  maintainers = { "@mgramigna" },
+}
+
 list.fusion = {
   install_info = {
     url = "https://gitlab.com/jirgn/tree-sitter-fusion.git",
