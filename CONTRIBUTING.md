@@ -139,32 +139,33 @@ effect on highlighting. We will work on improving highlighting in the near futur
 #### Keywords
 
 ```scheme
-@keyword          ; various keywords
-@keyword.function ; keywords that define a function (e.g. `func` in Go, `def` in Python)
-@keyword.operator ; operators that are English words (e.g. `and` / `or`)
-@keyword.return   ; keywords like `return` and `yield`
+@keyword             ; various keywords
+@keyword.function    ; keywords that define a function (e.g. `func` in Go, `def` in Python)
+@keyword.operator    ; operators that are English words (e.g. `and` / `or`)
+@keyword.return      ; keywords like `return` and `yield`
 
-@conditional      ; keywords related to conditionals (e.g. `if` / `else`)
-@conditional.ternary ; Ternary operator: condition ? 1 : 2
-@repeat           ; keywords related to loops (e.g. `for` / `while`)
-@debug            ; keywords related to debugging
-@label            ; GOTO and other labels (e.g. `label:` in C)
-@include          ; keywords for including modules (e.g. `import` / `from` in Python)
-@exception        ; keywords related to exceptions (e.g. `throw` / `catch`)
+@conditional         ; keywords related to conditionals (e.g. `if` / `else`)
+@conditional.ternary ; ternary operator (e.g. `?` / `:`)
+
+@repeat              ; keywords related to loops (e.g. `for` / `while`)
+@debug               ; keywords related to debugging
+@label               ; GOTO and other labels (e.g. `label:` in C)
+@include             ; keywords for including modules (e.g. `import` / `from` in Python)
+@exception           ; keywords related to exceptions (e.g. `throw` / `catch`)
 ```
 
 #### Types
 
 ```scheme
-@type                  ; type or class definitions and annotations
-@type.builtin          ; built-in types
-@type.definition       ; type definitions (e.g. `typedef` in C)
-@type.qualifier        ; type qualifiers (e.g. `const`)
+@type            ; type or class definitions and annotations
+@type.builtin    ; built-in types
+@type.definition ; type definitions (e.g. `typedef` in C)
+@type.qualifier  ; type qualifiers (e.g. `const`)
 
-@storageclass          ; modifiers that affect storage in memory or life-time
-@attribute             ; attribute annotations (e.g. Python decorators)
-@field                 ; object and struct fields
-@property              ; similar to `@field`
+@storageclass    ; modifiers that affect storage in memory or life-time
+@attribute       ; attribute annotations (e.g. Python decorators)
+@field           ; object and struct fields
+@property        ; similar to `@field`
 ```
 
 #### Identifiers
@@ -173,9 +174,9 @@ effect on highlighting. We will work on improving highlighting in the near futur
 @variable         ; various variable names
 @variable.builtin ; built-in variable names (e.g. `this`)
 
-@constant          ; constant identifiers
-@constant.builtin  ; built-in constant values
-@constant.macro    ; constants defined by the preprocessor
+@constant         ; constant identifiers
+@constant.builtin ; built-in constant values
+@constant.macro   ; constants defined by the preprocessor
 
 @namespace        ; modules or namespaces
 @symbol           ; symbols or atoms
@@ -260,7 +261,7 @@ Used for XML-like tags.
 
 You can set the scope of a definition by setting the `scope` property on the definition.
 
-For example, a javascript function declaration creates a scope. The function name is captured as the definition.
+For example, a JavaScript function declaration creates a scope. The function name is captured as the definition.
 This means that the function definition would only be available WITHIN the scope of the function, which is not the case.
 The definition can be used in the scope the function was defined in.
 
