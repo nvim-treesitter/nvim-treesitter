@@ -30,7 +30,7 @@
     "revision": "7175a6dd5fc1cee660dce6fe23f6043d75af424a"
   },
   "c_sharp": {
-    "revision": "2574501b475b7ba7bc10d08dd1ff9732d3769662"
+    "revision": "eed2576ae17aae83595c4a4ce1e9c1cbf7071bb6"
   },
   "clojure": {
     "revision": "50468d3dc38884caa682800343d9a1d0fda46c9b"
@@ -93,7 +93,7 @@
     "revision": "a13085849cf69e2401ec44e38cffc3d73f22f3df"
   },
   "erlang": {
-    "revision": "a8b8b0e16c4f5552f5e85af3dec976a5d16af8b9"
+    "revision": "14fd38870c26dcae2ede1b989dc6531f1187f15e"
   },
   "fennel": {
     "revision": "517195970428aacca60891b050aa53eabf4ba78d"
@@ -336,7 +336,7 @@
     "revision": "f7fb205c424b0962de59b26b931fe484e1262b35"
   },
   "scala": {
-    "revision": "f6bbf35de41653b409ca9a3537a154f2b095ef64"
+    "revision": "802eba33a1ae1ad9d873e5269dfcc9c4d86e4116"
   },
   "scheme": {
     "revision": "67b90a365bebf4406af4e5a546d6336de787e135"
@@ -387,7 +387,7 @@
     "revision": "a233ebe360a73a92c50978e5c4e9e471bc59ff42"
   },
   "tlaplus": {
-    "revision": "7c5452a0720271a349d6174b8778e76b189bebef"
+    "revision": "d3ef05eec4473094e2d691243aa243ce63de6406"
   },
   "todotxt": {
     "revision": "0207f6a4ab6aeafc4b091914d31d8235049a2578"
