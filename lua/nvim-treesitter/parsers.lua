@@ -1242,6 +1242,15 @@ list.v = {
   maintainers = { "@kkharji" },
 }
 
+list.thrift = {
+  install_info = {
+    url = "https://github.com/duskmoon314/tree-sitter-thrift",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq", "@duskmoon314" },
+  experimental = true,
+}
+
 list.tiger = {
   install_info = {
     url = "https://github.com/ambroisie/tree-sitter-tiger",
