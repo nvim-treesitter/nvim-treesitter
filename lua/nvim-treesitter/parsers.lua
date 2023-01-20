@@ -17,6 +17,7 @@ local filetype_to_parsername = {
   rmd = "markdown",
   cs = "c_sharp",
   tape = "vhs",
+  dosini = "ini",
 }
 
 ---@class InstallInfo
@@ -1402,6 +1403,15 @@ list.ebnf = {
     branch = "main",
   },
   maintainers = { "@RubixDev" },
+  experimental = true,
+}
+
+list.ini = {
+  install_info = {
+    url = "https://github.com/justinmk/tree-sitter-ini",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@theHamsta" },
   experimental = true,
 }
 
