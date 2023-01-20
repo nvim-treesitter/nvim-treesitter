@@ -18,6 +18,7 @@ local filetype_to_parsername = {
   cs = "c_sharp",
   tape = "vhs",
   dosini = "ini",
+  confini = "ini",
 }
 
 ---@class InstallInfo
