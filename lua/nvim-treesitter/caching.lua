@@ -14,24 +14,28 @@ function M.create_buffer_cache()
       return rawget(tbl, key)
     end,
   })
+  local loaded_buffers = {}
 
   function cache.set(type_name, bufnr, value)
-    if not cache.has(type_name, bufnr) then
+    if not loaded_buffers[bufnr] then
+      loaded_buffers[bufnr] = true
       -- Clean up the cache if the buffer is detached
       -- to avoid memory leaks
       api.nvim_buf_attach(bufnr, false, {
         on_detach = function()
-          cache.remove(type_name, bufnr)
+          cache.clear_buffer(bufnr)
+          loaded_buffers[tostring(bufnr)] = nil
           return true
         end,
+        on_reload = function() end, -- this is needed to prevent on_detach being called on buffer reload
       })
     end
 
-    items[type_name][bufnr] = value
+    items[tostring(bufnr)][type_name] = value
   end
 
   function cache.get(type_name, bufnr)
-    return items[type_name][bufnr]
+    return items[tostring(bufnr)][type_name]
   end
 
   function cache.has(type_name, bufnr)
@@ -39,7 +43,11 @@ function M.create_buffer_cache()
   end
 
   function cache.remove(type_name, bufnr)
-    items[type_name][bufnr] = nil
+    items[tostring(bufnr)][type_name] = nil
+  end
+
+  function cache.clear_buffer(bufnr)
+    items[tostring(bufnr)] = nil
   end
 
   return cache
