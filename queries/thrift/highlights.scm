@@ -119,7 +119,7 @@
 
 [
   "*"
-] @character.special
+] @punctuation.special
 
 ; Misc
 
