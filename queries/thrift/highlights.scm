@@ -9,7 +9,7 @@
   "cpp_include"
 ] @include
 
-(include_path) @definition.import
+(include_path) @string
 
 ; Types
 
