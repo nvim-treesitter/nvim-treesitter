@@ -109,9 +109,7 @@
 
 (boolean) @boolean
 
-[
-  "typedef"
-] @type.definition
+(typedef_definition) @type.definition
 
 [
   "const"
