@@ -36,7 +36,6 @@
 ; Variables
 
 (identifier) @variable
-(enum_identifier) @variable
 
 ; Constants
 
@@ -45,6 +44,7 @@
 
 ; Types
 
+(enum_identifier) @type
 (field_type) @type
 (type_identifier) @type
 
