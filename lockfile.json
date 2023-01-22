@@ -29,6 +29,9 @@
   "c": {
     "revision": "7175a6dd5fc1cee660dce6fe23f6043d75af424a"
   },
+  "capnp": {
+    "revision": "dcb93783452fd8dffab65e8a5dd4574ce4ff91df"
+  },
   "c_sharp": {
     "revision": "a29bac0681802139710b4d3875540901504d15cb"
   },

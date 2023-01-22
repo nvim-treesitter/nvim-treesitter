@@ -1195,6 +1195,15 @@ list.astro = {
   maintainers = { "@virchau13" },
 }
 
+list.capnp = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-capnp",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq" },
+  experimental = true,
+}
+
 list.wgsl = {
   install_info = {
     url = "https://github.com/szebniok/tree-sitter-wgsl",
