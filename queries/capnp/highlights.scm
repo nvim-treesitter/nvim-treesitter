@@ -72,8 +72,6 @@
 [
   "const"
   "extends"
-  "import"
-  "$import"
   "namespace"
   "using"
 ] @keyword
