@@ -27,15 +27,30 @@
 
 ; Fields
 
-(field) @field
+(field_identifier) @field
 
 ; Parameters
 
-(parameter) @parameter
+(param_identifier) @parameter
 
 ; Variables
 
 (identifier) @variable
+
+; Constants
+
+(const_identifier) @constant
+(enum_member) @constant
+
+; Types
+
+(enum_identifier) @type
+(field_type) @type
+(type_identifier) @type
+
+; Attributes
+
+(annotation_identifier) @attribute
 
 ; Operators
 
@@ -75,7 +90,8 @@
   "void"
 ] @keyword
 
-; Deprecated
+; Deprecated Keywords
+
 [
   "async"
   "byte"
@@ -110,6 +126,7 @@
 (boolean) @boolean
 
 (typedef_definition) @type.definition
+(namespace_definition) @type.definition
 
 [
   "const"
@@ -128,6 +145,8 @@
 ["(" ")"] @punctuation.bracket
 
 ["[" "]"] @punctuation.bracket
+
+["<" ">"] @punctuation.bracket
 
 [
   ";"

@@ -1250,7 +1250,6 @@ list.thrift = {
     files = { "src/parser.c" },
   },
   maintainers = { "@amaanq", "@duskmoon314" },
-  experimental = true,
 }
 
 list.tiger = {
