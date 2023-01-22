@@ -50,7 +50,7 @@
 
 ; Attributes
 
-(annotation_identifier) @variable
+(annotation_identifier) @attribute
 
 ; Operators
 
