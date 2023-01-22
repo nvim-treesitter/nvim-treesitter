@@ -7,9 +7,8 @@
 
 (number) @number
 
-(pair
-  key: (string) @label
-  value: (string) @string)
+(pair key: (string) @label)
+(pair value: (string) @string)
 
 (array (string) @string)
 
