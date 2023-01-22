@@ -27,7 +27,7 @@
 
 ; Fields
 
-(field) @field
+(field_identifier) @field
 
 ; Parameters
 
@@ -36,6 +36,18 @@
 ; Variables
 
 (identifier) @variable
+(annotation_identifier) @variable
+
+; Constants
+
+(const_identifier) @constant
+(enum_identifier) @constant
+(enum_member) @constant
+
+; Types
+
+(field_identifier) @type
+(type_identifier) @type
 
 ; Operators
 
@@ -110,6 +122,7 @@
 (boolean) @boolean
 
 (typedef_definition) @type.definition
+(namespace_definition) @type.definition
 
 [
   "const"
@@ -128,6 +141,8 @@
 ["(" ")"] @punctuation.bracket
 
 ["[" "]"] @punctuation.bracket
+
+["<" ">"] @puncutation.bracket
 
 [
   ";"
