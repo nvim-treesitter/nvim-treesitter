@@ -46,7 +46,7 @@
 
 ; Types
 
-(field_identifier) @type
+(field_type) @type
 (type_identifier) @type
 
 ; Operators
@@ -142,7 +142,7 @@
 
 ["[" "]"] @punctuation.bracket
 
-["<" ">"] @puncutation.bracket
+["<" ">"] @punctuation.bracket
 
 [
   ";"
