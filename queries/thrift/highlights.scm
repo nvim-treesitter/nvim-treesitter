@@ -31,7 +31,7 @@
 
 ; Parameters
 
-(parameter) @parameter
+(param_identifier) @parameter
 
 ; Variables
 
@@ -87,7 +87,8 @@
   "void"
 ] @keyword
 
-; Deprecated
+; Deprecated Keywords
+
 [
   "async"
   "byte"
