@@ -36,18 +36,21 @@
 ; Variables
 
 (identifier) @variable
-(annotation_identifier) @variable
+(enum_identifier) @variable
 
 ; Constants
 
 (const_identifier) @constant
-(enum_identifier) @constant
 (enum_member) @constant
 
 ; Types
 
 (field_type) @type
 (type_identifier) @type
+
+; Attributes
+
+(annotation_identifier) @variable
 
 ; Operators
 
