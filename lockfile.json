@@ -48,13 +48,13 @@
     "revision": "5e113412aadb78955c27010daa4dbe1d202013cf"
   },
   "cpp": {
-    "revision": "2d2c4aee8672af4c7c8edff68e7dd4c07e88d2b1"
+    "revision": "3845ff48d6e370616cec189eb43ddce4fd57f4d4"
   },
   "css": {
     "revision": "769203d0f9abe1a9a691ac2b9fe4bb4397a73c51"
   },
   "cuda": {
-    "revision": "0091006d6498ee5647f080ef6c09e5b95e481078"
+    "revision": "097f14dc830d7addde408991cc6a7b283be70e44"
   },
   "d": {
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
@@ -171,7 +171,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "bd0d463d1380816240a8cb1fd747fc0d3fed24aa"
+    "revision": "b09a8d6f49ca9a0a197f3bbf798d39181f71f5eb"
   },
   "hocon": {
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
@@ -213,7 +213,7 @@
     "revision": "505f5bd90053ae895aa3d6f2bac8071dd9abd8b2"
   },
   "julia": {
-    "revision": "041217800bf423099015e1654c9a4fdd75310bb1"
+    "revision": "9d368185be7e8139f2eda93d8b0acc2a54031718"
   },
   "kotlin": {
     "revision": "b953dbdd05257fcb2b64bc4d9c1578fac12e3c28"
@@ -342,7 +342,7 @@
     "revision": "f7fb205c424b0962de59b26b931fe484e1262b35"
   },
   "scala": {
-    "revision": "067ee61ff9484eac4f5bc4d57dfd007900c48f20"
+    "revision": "e4420a84ea03362d2b6b6cd514e98e41d22273db"
   },
   "scheme": {
     "revision": "67b90a365bebf4406af4e5a546d6336de787e135"
@@ -390,7 +390,7 @@
     "revision": "0ff887f2a60a147452d52db060de6b42f42f1441"
   },
   "thrift": {
-    "revision": "999a27d87b8f90a74306d4e79c5e22db3ab61633"
+    "revision": "b05fca8fa29b9ecaae0cd153ba590e4b7f840819"
   },
   "tiger": {
     "revision": "a233ebe360a73a92c50978e5c4e9e471bc59ff42"
