@@ -7,6 +7,7 @@
 [
   "import"
   "$import"
+  "embed"
 ] @include
 
 (import_path) @string
