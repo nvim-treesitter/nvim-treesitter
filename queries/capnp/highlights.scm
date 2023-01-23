@@ -1,6 +1,7 @@
 ; Preproc (?)
 
 (unique_id) @preproc
+(lang_attrs) @preproc
 
 ; Includes
 
@@ -21,10 +22,9 @@
   "enum"
   "group"
   "interface"
-  "List"
   "struct"
   "union"
-] @type.builtin
+] @keyword
 
 ; Typedefs
 
@@ -36,11 +36,16 @@
 
 ; Methods
 
+(annotation_definition_identifier) @method
 (method_identifier) @method
 
 ; Fields
 
 (field_identifier) @field
+
+; Properties
+
+(property) @property
 
 ; Parameters
 
@@ -54,6 +59,7 @@
 ; Constants
 
 (const_identifier) @constant
+(local_const) @constant
 (enum_member) @constant
 
 ; Types
@@ -66,8 +72,8 @@
 
 ; Attributes
 
-(attribute) @attribute
 (annotation_identifier) @attribute
+(attribute) @attribute
 
 ; Operators
 
@@ -82,11 +88,14 @@
   "extends"
   "namespace"
   "using"
+  (void)
+  (annotation_target)
 ] @keyword
 
 ; Literals
 
 (string_literal) @string
+(block_text) @string
 
 (data_string) @string.special
 (namespace) @string.special
@@ -105,6 +114,7 @@
 
 [
   "*"
+  "$"
 ] @punctuation.special
 
 ["{" "}"] @punctuation.bracket
@@ -118,6 +128,8 @@
   ";"
   "->"
 ] @punctuation.delimiter
+
+(data_hex) @symbol
 
 ; Comments
 
