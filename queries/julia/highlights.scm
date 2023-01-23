@@ -128,6 +128,8 @@
   ["elseif"] @conditional)
 (else_clause
   ["else"] @conditional)
+(if_clause
+  "if" @conditional) ; `if` clause in comprehensions
 (ternary_expression
   ["?" ":"] @conditional.ternary)
 
