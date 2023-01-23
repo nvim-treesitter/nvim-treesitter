@@ -30,7 +30,7 @@
     "revision": "7175a6dd5fc1cee660dce6fe23f6043d75af424a"
   },
   "capnp": {
-    "revision": "8e6b8561170c4767720857e3f1dec019f49c6084"
+    "revision": "22c1bdb260779869fa4d30f941f7de1037ec2b53"
   },
   "c_sharp": {
     "revision": "a29bac0681802139710b4d3875540901504d15cb"
@@ -393,7 +393,7 @@
     "revision": "0ff887f2a60a147452d52db060de6b42f42f1441"
   },
   "thrift": {
-    "revision": "ea322237061db4ebb879e2d53e39dab0a2f73ff2"
+    "revision": "0d5541dee561c5a268b616db3c1598cb83318bdc"
   },
   "tiger": {
     "revision": "a233ebe360a73a92c50978e5c4e9e471bc59ff42"

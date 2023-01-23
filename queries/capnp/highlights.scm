@@ -62,6 +62,8 @@
 (local_const) @constant
 (enum_member) @constant
 
+(void) @constant.builtin
+
 ; Types
 
 (enum_identifier) @type
@@ -88,7 +90,6 @@
   "extends"
   "namespace"
   "using"
-  (void)
   (annotation_target)
 ] @keyword
 
