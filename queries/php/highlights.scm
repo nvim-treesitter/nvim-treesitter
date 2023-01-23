@@ -108,6 +108,12 @@
 
 ; Conditions ( ? : )
 (conditional_expression) @conditional
+
+; Directives
+(declare_directive "strict_types" @preproc)
+(declare_directive "ticks" @preproc)
+(declare_directive "encoding" @preproc)
+
 ; Basic tokens
 
 [
@@ -219,6 +225,7 @@
 [
  ","
  ";"
+ ":"
  ] @punctuation.delimiter
 
 [
