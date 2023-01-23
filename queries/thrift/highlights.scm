@@ -19,11 +19,12 @@
   "list"
   "map"
   "set"
+  "void"
 ] @type.builtin
 
 ; Function
 
-(function) @function
+(function_identifier) @function
 
 ; Fields
 
@@ -32,6 +33,7 @@
 ; Parameters
 
 (param_identifier) @parameter
+(exception_param_identifier) @parameter
 
 ; Variables
 
@@ -45,6 +47,8 @@
 ; Types
 
 (enum_identifier) @type
+(exception_identifier) @type
+(exception_param_type) @type
 (field_type) @type
 (type_identifier) @type
 
@@ -64,14 +68,12 @@
 ; Exceptions
 
 [
-  (exception)
-  (throws)
+ "throws"
 ] @exception
 
 ; Keywords
 
 [
-  "const"
   "cpp_include"
   "enum"
   "exception"
@@ -84,10 +86,8 @@
   "senum"
   "service"
   "struct"
-  "throws"
   "typedef"
   "union"
-  "void"
 ] @keyword
 
 ; Deprecated Keywords
@@ -113,7 +113,7 @@
   "xsd_optional"
 ] @keyword
 
-(namespace_scope) @keyword
+(namespace_scope) @namespace
 
 ; Literals
 
@@ -125,8 +125,11 @@
 
 (boolean) @boolean
 
+; Typedefs
 (typedef_definition) @type.definition
 (namespace_definition) @type.definition
+
+; Misc
 
 [
   "const"
@@ -135,8 +138,6 @@
 [
   "*"
 ] @punctuation.special
-
-; Misc
 
 (field_modifier) @attribute
 
