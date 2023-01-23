@@ -15,6 +15,7 @@ local filetype_to_parsername = {
   OpenFOAM = "foam",
   pandoc = "markdown",
   rmd = "markdown",
+  quarto = "markdown",
   cs = "c_sharp",
   tape = "vhs",
   dosini = "ini",
