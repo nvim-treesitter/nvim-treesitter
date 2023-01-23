@@ -1202,7 +1202,6 @@ list.capnp = {
     files = { "src/parser.c" },
   },
   maintainers = { "@amaanq" },
-  experimental = true,
 }
 
 list.wgsl = {

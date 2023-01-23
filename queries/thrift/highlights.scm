@@ -1,6 +1,6 @@
 ; Namespace
 
-(namespace) @namespace
+(namespace_definition) @namespace
 
 ; Includes
 
@@ -47,14 +47,17 @@
 ; Types
 
 (enum_identifier) @type
+(definition_type) @type
 (exception_identifier) @type
 (exception_param_type) @type
 (field_type) @type
+(param_type) @type
 (type_identifier) @type
 
 ; Attributes
 
 (annotation_identifier) @attribute
+(uri_def) @attribute
 
 ; Operators
 
@@ -62,7 +65,6 @@
  "="
  "+"
  "-"
- "&"
 ] @operator
 
 ; Exceptions
@@ -113,11 +115,12 @@
   "xsd_optional"
 ] @keyword
 
-(namespace_scope) @namespace
 
 ; Literals
 
 (string_literal) @string
+
+(uri) @string.special
 
 (number) @number
 
@@ -127,7 +130,7 @@
 
 ; Typedefs
 (typedef_definition) @type.definition
-(namespace_definition) @type.definition
+(namespace_scope) @type.definition
 
 ; Misc
 
@@ -137,6 +140,7 @@
 
 [
   "*"
+  "&"
 ] @punctuation.special
 
 (field_modifier) @attribute

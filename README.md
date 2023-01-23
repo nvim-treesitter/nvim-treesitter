@@ -183,7 +183,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [blueprint](https://gitlab.com/gabmus/tree-sitter-blueprint.git) (experimental, maintained by @gabmus)
 - [x] [c](https://github.com/tree-sitter/tree-sitter-c) (maintained by @vigoux)
 - [x] [c_sharp](https://github.com/tree-sitter/tree-sitter-c-sharp) (maintained by @Luxed)
-- [x] [capnp](https://github.com/amaanq/tree-sitter-capnp) (experimental, maintained by @amaanq)
+- [x] [capnp](https://github.com/amaanq/tree-sitter-capnp) (maintained by @amaanq)
 - [x] [clojure](https://github.com/sogaiu/tree-sitter-clojure) (maintained by @sogaiu)
 - [x] [cmake](https://github.com/uyha/tree-sitter-cmake) (maintained by @uyha)
 - [x] [comment](https://github.com/stsewd/tree-sitter-comment) (maintained by @stsewd)
