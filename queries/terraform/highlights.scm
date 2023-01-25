@@ -4,7 +4,7 @@
 ;
 ;
 ; local/module/data/var/output
-(expression (variable_expr (identifier) @variable.builtin (#any-of? @variable.builtin "data" "var" "local" "module" "output")) (get_attr (identifier) @field))
+(expression (variable_expr (identifier) @type.builtin (#any-of? @type.builtin "data" "var" "local" "module" "output")) (get_attr (identifier) @field))
 
 ; path.root/cwd/module
 (expression (variable_expr (identifier) @type.builtin (#eq? @type.builtin "path")) (get_attr (identifier) @variable.builtin (#any-of? @variable.builtin "root" "cwd" "module")))
