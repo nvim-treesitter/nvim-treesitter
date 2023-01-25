@@ -110,7 +110,7 @@
 (conditional_expression) @conditional
 
 ; Directives
-(declare_directive ["strict_types" "ticks" "encoding"] @preproc)
+(declare_directive ["strict_types" "ticks" "encoding"] @parameter)
 
 ; Basic tokens
 
