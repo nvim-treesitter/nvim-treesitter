@@ -29,11 +29,11 @@
   "c": {
     "revision": "7175a6dd5fc1cee660dce6fe23f6043d75af424a"
   },
-  "capnp": {
-    "revision": "05383e45b0052ac53a9e75283445e4c7e5187669"
-  },
   "c_sharp": {
     "revision": "a29bac0681802139710b4d3875540901504d15cb"
+  },
+  "capnp": {
+    "revision": "05383e45b0052ac53a9e75283445e4c7e5187669"
   },
   "clojure": {
     "revision": "262d6d60f39f0f77b3dd08da8ec895bd5a044416"
@@ -96,7 +96,7 @@
     "revision": "a13085849cf69e2401ec44e38cffc3d73f22f3df"
   },
   "erlang": {
-    "revision": "f0e2f78cdadb2e67323f9ed511656e47dcaa43bb"
+    "revision": "2422bc9373094bfa97653ac540e08759f812523c"
   },
   "fennel": {
     "revision": "517195970428aacca60891b050aa53eabf4ba78d"
@@ -126,7 +126,7 @@
     "revision": "577a075d46ea109905c5cb6179809df88da61ce9"
   },
   "gitcommit": {
-    "revision": "190d288a1746bddb4abe96b597fb7d17b76e5522"
+    "revision": "f71b93f399c9c2b315825827c95466e7405ec622"
   },
   "gitignore": {
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
@@ -195,7 +195,7 @@
     "revision": "09d650def6cdf7f479f4b78f595e9ef5b58ce31e"
   },
   "javascript": {
-    "revision": "7a29d06274b7cf87d643212a433d970b73969016"
+    "revision": "15e85e80b851983fab6b12dce5a535f5a0df0f9c"
   },
   "jq": {
     "revision": "13990f530e8e6709b7978503da9bc8701d366791"
@@ -258,7 +258,7 @@
     "revision": "5f3138d555aceef976ec9a1d4a3f78e13b31e45f"
   },
   "nickel": {
-    "revision": "092e90142667482996880044d2c04837d3d1c266"
+    "revision": "f0b112c5e3e22ee910f1016bf482b8ccf5c24714"
   },
   "ninja": {
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
@@ -345,7 +345,7 @@
     "revision": "f7fb205c424b0962de59b26b931fe484e1262b35"
   },
   "scala": {
-    "revision": "e4420a84ea03362d2b6b6cd514e98e41d22273db"
+    "revision": "d67e84cded57f35459bed3f4a2b3db72f715621c"
   },
   "scheme": {
     "revision": "67b90a365bebf4406af4e5a546d6336de787e135"
@@ -366,7 +366,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "9d9802991aa1d1bc00eee7713a838dab1eb4f149"
+    "revision": "4fe05b2d81565ddb689d2f415e07afdacc515c52"
   },
   "supercollider": {
     "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
@@ -399,7 +399,7 @@
     "revision": "a233ebe360a73a92c50978e5c4e9e471bc59ff42"
   },
   "tlaplus": {
-    "revision": "d3ef05eec4473094e2d691243aa243ce63de6406"
+    "revision": "6fd16d8469c6898317423d61738d97e2b3f5caf7"
   },
   "todotxt": {
     "revision": "0207f6a4ab6aeafc4b091914d31d8235049a2578"
@@ -408,7 +408,7 @@
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
   },
   "tsx": {
-    "revision": "faad9094f4061a43d4e9005439e9e85c6541ebe7"
+    "revision": "5d20856f34315b068c41edaee2ac8a100081d259"
   },
   "turtle": {
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
@@ -417,7 +417,7 @@
     "revision": "2457993b13a06dec2706e6a6c3d5b65bb23024b8"
   },
   "typescript": {
-    "revision": "faad9094f4061a43d4e9005439e9e85c6541ebe7"
+    "revision": "5d20856f34315b068c41edaee2ac8a100081d259"
   },
   "v": {
     "revision": "0b039830a33e759f0c9ee978b47ad10b82d37349"
