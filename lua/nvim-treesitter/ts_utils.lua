@@ -260,8 +260,6 @@ end
 --   "blockwise" or "<C-v>" (as a string with 5 characters or a single character)
 function M.update_selection(buf, node, selection_mode)
   local start_row, start_col, end_row, end_col = M.get_vim_range({ M.get_node_range(node) }, buf)
-  api.nvim_buf_set_mark(0, "<", start_row, start_col - 1, {})
-  api.nvim_buf_set_mark(0, ">", end_row, end_col - 1, {})
 
   local v_table = { charwise = "v", linewise = "V", blockwise = "<C-v>" }
   selection_mode = selection_mode or "charwise"
@@ -271,25 +269,20 @@ function M.update_selection(buf, node, selection_mode)
     selection_mode = v_table[selection_mode]
   end
 
-  -- Call to `nvim_replace_termcodes()` is needed for sending appropriate command to enter blockwise mode
-  selection_mode = vim.api.nvim_replace_termcodes(selection_mode, true, true, true)
-
-  local previous_mode = vim.fn.visualmode()
-
-  -- visualmode() is set to "" when no visual selection has yet been made. Defaults it to "v"
-  if previous_mode == "" then
-    previous_mode = "v"
+  -- enter visual mode if normal or operator-pending (no) mode
+  -- Why? According to https://learnvimscriptthehardway.stevelosh.com/chapters/15.html
+  --   If your operator-pending mapping ends with some text visually selected, Vim will operate on that text.
+  --   Otherwise, Vim will operate on the text between the original cursor position and the new position.
+  local mode = api.nvim_get_mode()
+  if mode.mode ~= selection_mode then
+    -- Call to `nvim_replace_termcodes()` is needed for sending appropriate command to enter blockwise mode
+    selection_mode = vim.api.nvim_replace_termcodes(selection_mode, true, true, true)
+    api.nvim_cmd({ cmd = "normal", bang = true, args = { selection_mode } }, {})
   end
 
-  if previous_mode == selection_mode then
-    selection_mode = ""
-  end
-
-  -- "gv": Start Visual mode with the same area as the previous area and the same mode.
-  -- Hence, area will be what we defined in "<" and ">" marks. We only feed `selection_mode` if it is
-  -- different than previous `visualmode`, otherwise it will stop visual mode.
-  -- bang=true is provided to avoid gv side-effects
-  api.nvim_cmd({ cmd = "normal", bang = true, args = { "gv" .. selection_mode } }, {})
+  api.nvim_win_set_cursor(0, { start_row, start_col - 1 })
+  vim.cmd "normal! o"
+  api.nvim_win_set_cursor(0, { end_row, end_col - 1 })
 end
 
 -- Byte length of node range
