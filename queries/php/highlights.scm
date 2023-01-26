@@ -2,6 +2,15 @@
 
 (variable_name) @variable
 
+; Constants
+
+((name) @constant
+ (#vim-match? @constant "^_?[A-Z][A-Z\d_]*$"))
+((name) @constant.builtin
+ (#vim-match? @constant.builtin "^__[A-Z][A-Z\d_]+__$"))
+
+(const_declaration (const_element (name) @constant))
+
 ; Types
 
 [
@@ -99,13 +108,6 @@
 ; Variables
 
 (relative_scope) @variable.builtin
-
-((name) @constant
- (#vim-match? @constant "^_?[A-Z][A-Z\d_]*$"))
-((name) @constant.builtin
- (#vim-match? @constant.builtin "^__[A-Z][A-Z\d_]+__$"))
-
-(const_declaration (const_element (name) @constant))
 
 ((variable_name) @variable.builtin
  (#eq? @variable.builtin "$this"))
