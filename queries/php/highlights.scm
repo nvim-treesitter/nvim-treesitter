@@ -8,25 +8,31 @@
  (primitive_type)
  (cast_type)
  ] @type.builtin
-(named_type (name)) @type
-(named_type (qualified_name)) @type
+(named_type
+  [(name) @type
+   (qualified_name (name) @type)])
 (class_declaration
   name: (name) @type)
 (base_clause
-  [(name) (qualified_name)] @type)
+  [(name) @type
+   (qualified_name (name) @type)])
 (enum_declaration
   name: (name) @type)
 (interface_declaration
   name: (name) @type)
 (namespace_use_clause
-  [(name) (qualified_name)] @type)
+  [(name) @type
+   (qualified_name (name) @type)])
 (namespace_aliasing_clause (name)) @type.definition
 (class_interface_clause
-  [(name) (qualified_name)] @type)
+  [(name) @type
+   (qualified_name (name) @type)])
 (scoped_call_expression
-  scope: [(name) (qualified_name)] @type)
+  scope: [(name) @type
+          (qualified_name (name) @type)])
 (class_constant_access_expression
-  . [(name) (qualified_name)] @type
+  . [(name) @type
+     (qualified_name (name) @type)]
   (name) @constant)
 (trait_declaration
   name: (name) @type)
@@ -34,7 +40,8 @@
     (name) @type)
 (binary_expression
   operator: "instanceof"
-  right: [(name) (qualified_name)] @type)
+  right: [(name) @type
+          (qualified_name (name) @type)])
 
 ; Functions, methods, constructors
 
@@ -45,7 +52,7 @@
   name: (name) @method)
 
 (function_call_expression
-  function: (qualified_name (name)) @function.call)
+  function: (qualified_name (name) @function.call))
 
 (function_call_expression
   (name) @function.call)
@@ -66,7 +73,8 @@
     name: (name) @constructor
     (#eq? @constructor "__construct"))
 (object_creation_expression
-  [(name) (qualified_name)] @constructor)
+  [(name) @constructor
+   (qualified_name (name) @constructor)])
 
 ; Parameters
 [
@@ -104,7 +112,9 @@
 
 ; Namespace
 (namespace_definition
-  name: (namespace_name) @namespace)
+  name: (namespace_name (name) @namespace))
+(namespace_name_as_prefix
+  (namespace_name (name) @namespace))
 
 ; Attributes
 (attribute_list) @attribute
@@ -227,6 +237,7 @@
  ","
  ";"
  ":"
+ "\\"
  ] @punctuation.delimiter
 
 [
