@@ -138,6 +138,9 @@
 
 (type_qualifier) @type.qualifier
 
+(linkage_specification
+  "extern" @storageclass)
+
 (type_definition
   declarator: (type_identifier) @type.definition)
 
