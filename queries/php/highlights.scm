@@ -32,7 +32,7 @@
 (namespace_use_clause
   [(name) @type
    (qualified_name (name) @type)])
-(namespace_aliasing_clause (name)) @type.definition
+(namespace_aliasing_clause (name) @type.definition)
 (class_interface_clause
   [(name) @type
    (qualified_name (name) @type)])
