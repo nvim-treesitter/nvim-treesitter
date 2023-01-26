@@ -51,7 +51,7 @@
     "revision": "5e113412aadb78955c27010daa4dbe1d202013cf"
   },
   "cpp": {
-    "revision": "3845ff48d6e370616cec189eb43ddce4fd57f4d4"
+    "revision": "20beae977e20df64b280d5803a805466943a52d7"
   },
   "css": {
     "revision": "769203d0f9abe1a9a691ac2b9fe4bb4397a73c51"
@@ -219,7 +219,7 @@
     "revision": "9d368185be7e8139f2eda93d8b0acc2a54031718"
   },
   "kotlin": {
-    "revision": "b953dbdd05257fcb2b64bc4d9c1578fac12e3c28"
+    "revision": "e4637037a5fe6f25fe66c305669faa0855f35692"
   },
   "lalrpop": {
     "revision": "7744b56f03ac1e5643fad23c9dd90837fe97291e"
