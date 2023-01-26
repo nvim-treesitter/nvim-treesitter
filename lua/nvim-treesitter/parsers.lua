@@ -374,6 +374,16 @@ list.java = {
   maintainers = { "@p00f" },
 }
 
+list.kdl = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-kdl",
+    branch = "master",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@amaanq" },
+  experimental = true,
+}
+
 list.kotlin = {
   install_info = {
     url = "https://github.com/fwcd/tree-sitter-kotlin",
