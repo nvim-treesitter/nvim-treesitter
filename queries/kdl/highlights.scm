@@ -50,7 +50,8 @@
   (multi_line_comment)
 ] @comment
 
-(node (node_slash_dash)) @comment
-(node (node_prop_or_arg_slash_dash) @comment (prop) @comment)
-(node (node_prop_or_arg_slash_dash) @comment (value) @comment)
-(node_children (node_children_slash_dash)) @comment
+(node (node_comment) (#set! "priority" 105)) @comment
+
+(node (node_field (node_field_comment) (#set! "priority" 105)) @comment)
+
+(node_children (node_children_comment) (#set! "priority" 105)) @comment
