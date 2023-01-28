@@ -1,24 +1,27 @@
-; Namespace
+ ; Namespace
 
 (namespace_definition) @namespace
 
 ; Includes
 
-[
   "include"
+[
   "cpp_include"
 ] @include
 
 (include_path) @string
+(package_path) @string
 
 ; Types
 
-(primitive_type) @type.builtin
+(primitive) @type.builtin
 
 [
   "list"
   "map"
   "set"
+  "sink"
+  "stream"
   "void"
 ] @type.builtin
 
@@ -81,6 +84,7 @@
   "exception"
   "extends"
   "include"
+  "interaction"
   "namespace"
   "oneway"
   "optional"
@@ -96,7 +100,6 @@
 
 [
   "async"
-  "byte"
   "cocoa_prefix"
   "cpp_namespace"
   "csharp_namespace"
@@ -115,10 +118,28 @@
   "xsd_optional"
 ] @keyword
 
+; Extended Kewords
+[
+  "client"
+  "idempotent"
+  "package"
+  "performs"
+  "permanent"
+  "readonly"
+  "server"
+  "safe"
+  "stateful"
+  "transient"
+] @keyword
 
 ; Literals
 
-(string_literal) @string
+[
+ (annotation_value)
+ (string)
+] @string
+
+(escape_sequence) @string.escape
 
 (uri) @string.special
 
@@ -129,21 +150,26 @@
 (boolean) @boolean
 
 ; Typedefs
+
 (typedef_definition) @type.definition
 (namespace_scope) @type.definition
 
-; Misc
+; Qualifiers
 
 [
   "const"
+  (exception_modifier)
+  (field_modifier)
+  (function_modifier)
 ] @type.qualifier
+
+; Punctuation
 
 [
   "*"
   "&"
+  "@"
 ] @punctuation.special
-
-(field_modifier) @attribute
 
 ["{" "}"] @punctuation.bracket
 
