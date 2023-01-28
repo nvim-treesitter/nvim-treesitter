@@ -218,6 +218,9 @@
   "julia": {
     "revision": "9d368185be7e8139f2eda93d8b0acc2a54031718"
   },
+  "kdl": {
+    "revision": "3a67244a48e9446248fc48117afe11dab19b030a"
+  },
   "kotlin": {
     "revision": "e4637037a5fe6f25fe66c305669faa0855f35692"
   },
