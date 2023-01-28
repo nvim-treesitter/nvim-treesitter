@@ -18,7 +18,7 @@
     "revision": "4488aa41406547e478636a4fcfd24f5bbc3f2f74"
   },
   "beancount": {
-    "revision": "4cbd1f09cd07c1f1fabf867c2cf354f9da53cc4c"
+    "revision": "c68ffc4c6c27eadd81dd56c66f03f4d202d4b2d7"
   },
   "bibtex": {
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
@@ -51,13 +51,13 @@
     "revision": "5e113412aadb78955c27010daa4dbe1d202013cf"
   },
   "cpp": {
-    "revision": "20beae977e20df64b280d5803a805466943a52d7"
+    "revision": "56cec4c2eb5d6af3d2942e69e35db15ae2433740"
   },
   "css": {
     "revision": "769203d0f9abe1a9a691ac2b9fe4bb4397a73c51"
   },
   "cuda": {
-    "revision": "097f14dc830d7addde408991cc6a7b283be70e44"
+    "revision": "de20daa547344bec47d89e55a37fb9ab0706d8cc"
   },
   "d": {
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
@@ -174,7 +174,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "b09a8d6f49ca9a0a197f3bbf798d39181f71f5eb"
+    "revision": "8e2f0907e8d2e17a88a375025e70054bafdaa8b0"
   },
   "hocon": {
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
@@ -192,7 +192,7 @@
     "revision": "1a0ce072ebf3afac7d5603d9a95bb7c9a6709b44"
   },
   "java": {
-    "revision": "09d650def6cdf7f479f4b78f595e9ef5b58ce31e"
+    "revision": "dd597f13eb9bab0c1bccc9aec390e8e6ebf9e0a6"
   },
   "javascript": {
     "revision": "15e85e80b851983fab6b12dce5a535f5a0df0f9c"
@@ -261,7 +261,7 @@
     "revision": "5f3138d555aceef976ec9a1d4a3f78e13b31e45f"
   },
   "nickel": {
-    "revision": "f0b112c5e3e22ee910f1016bf482b8ccf5c24714"
+    "revision": "d6c7eeb751038f934b5b1aa7ff236376d0235c56"
   },
   "ninja": {
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
@@ -351,7 +351,7 @@
     "revision": "f7fb205c424b0962de59b26b931fe484e1262b35"
   },
   "scala": {
-    "revision": "40cb5fc38c5b58441faa2afb78d3ede730c9c206"
+    "revision": "b7cebd27eeb9c46082105938cae0acaaace573e3"
   },
   "scheme": {
     "revision": "67b90a365bebf4406af4e5a546d6336de787e135"
@@ -399,7 +399,7 @@
     "revision": "0ff887f2a60a147452d52db060de6b42f42f1441"
   },
   "thrift": {
-    "revision": "0d5541dee561c5a268b616db3c1598cb83318bdc"
+    "revision": "967048ad0c4fbf93c25f5a0c848ad30b0932c9c4"
   },
   "tiger": {
     "revision": "a233ebe360a73a92c50978e5c4e9e471bc59ff42"
@@ -426,7 +426,7 @@
     "revision": "5d20856f34315b068c41edaee2ac8a100081d259"
   },
   "v": {
-    "revision": "0b039830a33e759f0c9ee978b47ad10b82d37349"
+    "revision": "7ef1f120c1c8950c7a3e1cdffe655bdd7220321b"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
