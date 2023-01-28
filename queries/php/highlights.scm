@@ -32,6 +32,9 @@
   name: (name) @type)
 (use_declaration
     (name) @type)
+(binary_expression
+  operator: "instanceof"
+  right: [(name) (qualified_name)] @type)
 
 ; Functions, methods, constructors
 
