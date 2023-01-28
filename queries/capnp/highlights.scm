@@ -1,7 +1,7 @@
 ; Preproc (?)
 
 (unique_id) @preproc
-(lang_attrs) @preproc
+(top_level_annotation_body) @preproc
 
 ; Includes
 
