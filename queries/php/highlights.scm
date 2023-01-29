@@ -5,9 +5,9 @@
 ; Constants
 
 ((name) @constant
- (#vim-match? @constant "^_?[A-Z][A-Z\d_]*$"))
+ (#lua-match? @constant "^_?[A-Z][A-Z%d_]*$"))
 ((name) @constant.builtin
- (#vim-match? @constant.builtin "^__[A-Z][A-Z\d_]+__$"))
+ (#lua-match? @constant.builtin "^__[A-Z][A-Z%d_]+__$"))
 
 (const_declaration (const_element (name) @constant))
 
