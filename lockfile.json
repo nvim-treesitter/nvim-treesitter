@@ -33,7 +33,7 @@
     "revision": "a29bac0681802139710b4d3875540901504d15cb"
   },
   "capnp": {
-    "revision": "62057f5d3a57ac44ca3d773623f5585b98ae2ce7"
+    "revision": "d8792e1cf95f2e8c21dbc3887555b1b4b612e49a"
   },
   "clojure": {
     "revision": "262d6d60f39f0f77b3dd08da8ec895bd5a044416"
@@ -57,7 +57,7 @@
     "revision": "769203d0f9abe1a9a691ac2b9fe4bb4397a73c51"
   },
   "cuda": {
-    "revision": "de20daa547344bec47d89e55a37fb9ab0706d8cc"
+    "revision": "98265a0a190c116234da73240ac8e373833ff5f7"
   },
   "d": {
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
@@ -219,7 +219,7 @@
     "revision": "9d368185be7e8139f2eda93d8b0acc2a54031718"
   },
   "kdl": {
-    "revision": "3a67244a48e9446248fc48117afe11dab19b030a"
+    "revision": "8d8b85f444165cb0bf706b1dfb17057517973c4a"
   },
   "kotlin": {
     "revision": "e4637037a5fe6f25fe66c305669faa0855f35692"
@@ -399,7 +399,7 @@
     "revision": "0ff887f2a60a147452d52db060de6b42f42f1441"
   },
   "thrift": {
-    "revision": "a4e433e7198c811d44164d50c491c82ec533dfdc"
+    "revision": "0f29e5cf194905b76389247243078f3be7a884a4"
   },
   "tiger": {
     "revision": "a233ebe360a73a92c50978e5c4e9e471bc59ff42"
