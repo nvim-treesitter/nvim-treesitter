@@ -201,6 +201,14 @@ list.d = {
   experimental = true,
 }
 
+list.elsa = {
+  install_info = {
+    url = "https://github.com/glapa-grossklag/tree-sitter-elsa",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@glapa-grossklag", "@amaanq" },
+}
+
 list.glsl = {
   install_info = {
     url = "https://github.com/theHamsta/tree-sitter-glsl",
