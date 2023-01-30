@@ -1,4 +1,5 @@
 [
+  (moduleMember)
   (dataclass)
   (charpred)
   (memberPredicate)
