@@ -274,3 +274,12 @@
   "default" @keyword)
 (switch_default
   "default" @conditional)
+
+; Spell
+;----------
+[
+  "const"
+  "instanceof"
+  "typeof"
+  "async"
+] @nospell
