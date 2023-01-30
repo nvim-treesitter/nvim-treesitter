@@ -33,7 +33,7 @@
     "revision": "a29bac0681802139710b4d3875540901504d15cb"
   },
   "capnp": {
-    "revision": "d8792e1cf95f2e8c21dbc3887555b1b4b612e49a"
+    "revision": "740c757b9585925b1ed27cef7d61ac39b7824304"
   },
   "clojure": {
     "revision": "262d6d60f39f0f77b3dd08da8ec895bd5a044416"
@@ -222,7 +222,7 @@
     "revision": "9d368185be7e8139f2eda93d8b0acc2a54031718"
   },
   "kdl": {
-    "revision": "8d8b85f444165cb0bf706b1dfb17057517973c4a"
+    "revision": "f83f3943568c7e7b4f5e0de1b04d722223bd4d80"
   },
   "kotlin": {
     "revision": "e4637037a5fe6f25fe66c305669faa0855f35692"
@@ -249,10 +249,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "b795aa9893e4417609cf03723fe1e94e547ccfa4"
+    "revision": "63cda483a37c91eae817f33bc55680f228845566"
   },
   "markdown_inline": {
-    "revision": "b795aa9893e4417609cf03723fe1e94e547ccfa4"
+    "revision": "63cda483a37c91eae817f33bc55680f228845566"
   },
   "menhir": {
     "revision": "db7953acb0d5551f207373c81fa07a57d7b085cb"
@@ -354,7 +354,7 @@
     "revision": "f7fb205c424b0962de59b26b931fe484e1262b35"
   },
   "scala": {
-    "revision": "b7cebd27eeb9c46082105938cae0acaaace573e3"
+    "revision": "628e0aab6c2f7d31cf3b7d730f964d4fd9b340ee"
   },
   "scheme": {
     "revision": "67b90a365bebf4406af4e5a546d6336de787e135"
@@ -402,7 +402,7 @@
     "revision": "0ff887f2a60a147452d52db060de6b42f42f1441"
   },
   "thrift": {
-    "revision": "0f29e5cf194905b76389247243078f3be7a884a4"
+    "revision": "634a73fd2c80e169f302917ba665c07ec0b6ff7b"
   },
   "tiger": {
     "revision": "a233ebe360a73a92c50978e5c4e9e471bc59ff42"
