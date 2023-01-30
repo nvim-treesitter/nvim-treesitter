@@ -368,6 +368,9 @@
   "smali": {
     "revision": "d7f535e176c928d33b0e202dd808ac247cacf2ff"
   },
+  "smithy": {
+    "revision": "50011d9a8bafbc30bb71abecc2f66e2f1eee1304"
+  },
   "solidity": {
     "revision": "52ed0880c0126df2f2c7693f215fe6f38e4a2e0a"
   },
