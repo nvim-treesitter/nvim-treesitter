@@ -639,6 +639,14 @@ list.smali = {
   experimental = true,
 }
 
+list.smithy = {
+  install_info = {
+    url = "https://github.com/indoorvivants/tree-sitter-smithy",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq", "@keynmol" },
+}
+
 list.haskell = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-haskell",
