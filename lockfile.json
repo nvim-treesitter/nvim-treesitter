@@ -90,7 +90,7 @@
     "revision": "28bb193640d916dfaf947912c1413cebb0484841"
   },
   "elsa": {
-    "revision": "86fb3dbe8462f299dfc9a93c718a11363d69e90f"
+    "revision": "c83c21c1f8f6b38dfc5bd1392de03a7b05bb78f4"
   },
   "elvish": {
     "revision": "f32711e31e987fd5c2c002f3daba02f25c68672f"
@@ -375,7 +375,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "4fe05b2d81565ddb689d2f415e07afdacc515c52"
+    "revision": "bb58ae16e62e8ad252a4359d54191257892f0acc"
   },
   "supercollider": {
     "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
