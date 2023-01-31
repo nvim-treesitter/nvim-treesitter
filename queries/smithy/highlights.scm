@@ -1,10 +1,10 @@
 ; Preproc
 
-(control_key (#set! "priority" 105)) @preproc
+(control_key) @preproc
 
 ; Namespace
 
-(namespace (#set! "priority" 105)) @namespace
+(namespace) @namespace
 
 ; Includes
 
