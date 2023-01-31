@@ -57,7 +57,7 @@
     "revision": "769203d0f9abe1a9a691ac2b9fe4bb4397a73c51"
   },
   "cuda": {
-    "revision": "98265a0a190c116234da73240ac8e373833ff5f7"
+    "revision": "a02c21408c592e6e6856eaabe4727faa97cf8d85"
   },
   "d": {
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
@@ -378,7 +378,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "bb58ae16e62e8ad252a4359d54191257892f0acc"
+    "revision": "286e10c5bc5d1703ee8f9afb351165a9a6182be1"
   },
   "supercollider": {
     "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
