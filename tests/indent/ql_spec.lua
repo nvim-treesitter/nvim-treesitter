@@ -16,5 +16,9 @@ describe("indent Lua:", function()
 end)
 
 describe("new line:", function()
-  run:new_line("module.ql", { on_line = 3, text = "predicate test() {}", indent = 2 })
+  run:new_line("module.ql", { on_line = 3, text = "predicate foo() {}", indent = 2 })
+end)
+
+describe("new line:", function()
+  run:new_line("module.ql", { on_line = 4, text = "predicate foo() {}", indent = 2 })
 end)
