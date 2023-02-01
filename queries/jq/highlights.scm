@@ -267,6 +267,7 @@
 [
   "if"
   "then"
+  "elif"
   "else"
   "end"
 ] @conditional
