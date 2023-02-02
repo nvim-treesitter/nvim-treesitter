@@ -51,7 +51,7 @@ function M._get_line_for_node(node, type_patterns, transform_fn, bufnr)
   if not is_valid then
     return ""
   end
-  local line = transform_fn(vim.trim(get_node_text(node, bufnr)[1] or ""))
+  local line = transform_fn(vim.trim(get_node_text(node, bufnr)[1] or ""), node)
   -- Escape % to avoid statusline to evaluate content as expression
   return line:gsub("%%", "%%%%")
 end
