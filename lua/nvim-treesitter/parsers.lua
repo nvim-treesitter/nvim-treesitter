@@ -262,6 +262,15 @@ list.fsh = {
   maintainers = { "@mgramigna" },
 }
 
+list.func = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-func",
+    files = { "src/parser.c" },
+    branch = "master",
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.fusion = {
   install_info = {
     url = "https://gitlab.com/jirgn/tree-sitter-fusion.git",
