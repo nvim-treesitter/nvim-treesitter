@@ -445,7 +445,7 @@ Default options (lua syntax):
   {
     indicator_size = 100,
     type_patterns = {'class', 'function', 'method'},
-    transform_fn = function(line) return line:gsub('%s*[%[%(%{]*%s*$', '') end,
+    transform_fn = function(line, _node) return line:gsub('%s*[%[%(%{]*%s*$', '') end,
     separator = ' -> '
   }
 <
@@ -453,7 +453,8 @@ Default options (lua syntax):
   the beginning.
 - `type_patterns` - Which node type patterns to match.
 - `transform_fn` - Function used to transform the single item in line. By
-  default removes opening brackets and spaces from end.
+  default removes opening brackets and spaces from end. Takes two arguments:
+  the text of the line in question, and the corresponding treesitter node.
 - `separator` - Separator between nodes.
 
 						  *nvim_treesitter#foldexpr()*
