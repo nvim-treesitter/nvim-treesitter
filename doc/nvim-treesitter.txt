@@ -451,7 +451,8 @@ Default options (lua syntax):
     indicator_size = 100,
     type_patterns = {'class', 'function', 'method'},
     transform_fn = function(line, _node) return line:gsub('%s*[%[%(%{]*%s*$', '') end,
-    separator = ' -> '
+    separator = ' -> ',
+    dedupe = true
   }
 <
 - `indicator_size` - How long should the string be. If longer, it is cut from
@@ -461,6 +462,7 @@ Default options (lua syntax):
   default removes opening brackets and spaces from end. Takes two arguments:
   the text of the line in question, and the corresponding treesitter node.
 - `separator` - Separator between nodes.
+- `dedupe` - Whether or not to remove duplicate components.
 
 						  *nvim_treesitter#foldexpr()*
 nvim_treesitter#foldexpr()~
