@@ -246,6 +246,7 @@ function M.get_vim_range(range, buf)
     else
       ecol = #api.nvim_buf_get_lines(buf, erow - 1, erow, false)[1]
     end
+    ecol = math.max(ecol, 1)
   end
   return srow, scol, erow, ecol
 end
