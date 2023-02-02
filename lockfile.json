@@ -15,10 +15,10 @@
     "revision": "e559793754c60c2cdf00cbb0409842d75f0a41dc"
   },
   "bash": {
-    "revision": "4488aa41406547e478636a4fcfd24f5bbc3f2f74"
+    "revision": "88ed46b8c32782379d5cab8bc9ea111ca7ad7dcb"
   },
   "beancount": {
-    "revision": "c68ffc4c6c27eadd81dd56c66f03f4d202d4b2d7"
+    "revision": "f3741a3a68ade59ec894ed84a64673494d2ba8f3"
   },
   "bibtex": {
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
@@ -171,7 +171,7 @@
     "revision": "2e1348c3cf2c9323e87c2744796cf3f3868aa82a"
   },
   "help": {
-    "revision": "9dee68e3912d16e9878b06e3cd87e21ada3d9029"
+    "revision": "8f75ef3ec86bc315d5fdb939899b397289389181"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
@@ -378,7 +378,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "286e10c5bc5d1703ee8f9afb351165a9a6182be1"
+    "revision": "8d28e173285ca4bee8113157cb15662a6928925a"
   },
   "supercollider": {
     "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
@@ -432,7 +432,7 @@
     "revision": "5d20856f34315b068c41edaee2ac8a100081d259"
   },
   "v": {
-    "revision": "7ef1f120c1c8950c7a3e1cdffe655bdd7220321b"
+    "revision": "6e9daed18b99f5a3515c5142a0ab66a7bca589d2"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
