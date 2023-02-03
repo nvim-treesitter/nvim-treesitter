@@ -15,7 +15,7 @@
     "revision": "e559793754c60c2cdf00cbb0409842d75f0a41dc"
   },
   "bash": {
-    "revision": "88ed46b8c32782379d5cab8bc9ea111ca7ad7dcb"
+    "revision": "7f9506c34ab6a0f4e3e052b7a49cbeef91f71236"
   },
   "beancount": {
     "revision": "f3741a3a68ade59ec894ed84a64673494d2ba8f3"
@@ -117,7 +117,7 @@
     "revision": "fa3347712f7a59ed02ccf508284554689c6cde28"
   },
   "func": {
-    "revision": "ea161a03f738872426c9bcc207ec0f4763f9672c"
+    "revision": "88ee7d0f569af10ab8c78a12f37217a8d15a0ffa"
   },
   "fusion": {
     "revision": "19db2f47ba4c3a0f6238d4ae0e2abfca16e61dd6"
@@ -252,10 +252,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "63cda483a37c91eae817f33bc55680f228845566"
+    "revision": "abea13b86c404564991244b69b7afc4ca362d0c0"
   },
   "markdown_inline": {
-    "revision": "63cda483a37c91eae817f33bc55680f228845566"
+    "revision": "abea13b86c404564991244b69b7afc4ca362d0c0"
   },
   "menhir": {
     "revision": "db7953acb0d5551f207373c81fa07a57d7b085cb"
@@ -381,7 +381,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "8d28e173285ca4bee8113157cb15662a6928925a"
+    "revision": "30e15d45dceb24ea51acf81ee7d75d81567b6e02"
   },
   "supercollider": {
     "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
@@ -435,7 +435,7 @@
     "revision": "5d20856f34315b068c41edaee2ac8a100081d259"
   },
   "v": {
-    "revision": "6e9daed18b99f5a3515c5142a0ab66a7bca589d2"
+    "revision": "719cf0cd297f9b2f45ecfbeb0115379fb8cfa9c3"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
