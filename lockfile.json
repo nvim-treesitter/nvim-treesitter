@@ -155,6 +155,9 @@
   "gomod": {
     "revision": "4a65743dbc2bb3094114dd2b43da03c820aa5234"
   },
+  "gosum": {
+    "revision": "68974b63c19dc6e27214a5c76b6e26c0c40fe5b7"
+  },
   "gowork": {
     "revision": "949a8a470559543857a62102c84700d291fc984c"
   },

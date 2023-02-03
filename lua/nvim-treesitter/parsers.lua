@@ -534,6 +534,15 @@ list.gomod = {
   filetype = "gomod",
 }
 
+list.gosum = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-go-sum",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq" },
+  filetype = "gosum",
+}
+
 list.gowork = {
   install_info = {
     url = "https://github.com/omertuc/tree-sitter-go-work",

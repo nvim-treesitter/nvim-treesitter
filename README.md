@@ -224,6 +224,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [go](https://github.com/tree-sitter/tree-sitter-go) (maintained by @theHamsta, @WinWisely268)
 - [x] [Godot Resources (gdresource)](https://github.com/PrestonKnopp/tree-sitter-godot-resource) (maintained by @pierpo)
 - [x] [gomod](https://github.com/camdencheek/tree-sitter-go-mod) (maintained by @camdencheek)
+- [x] [gosum](https://github.com/amaanq/tree-sitter-go-sum) (maintained by @amaanq)
 - [x] [gowork](https://github.com/omertuc/tree-sitter-go-work) (maintained by @omertuc)
 - [x] [graphql](https://github.com/bkegley/tree-sitter-graphql) (maintained by @bkegley)
 - [ ] [hack](https://github.com/slackhq/tree-sitter-hack)
