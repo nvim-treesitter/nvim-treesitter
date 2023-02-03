@@ -20,8 +20,8 @@
 ; Special identifiers
 ;--------------------
 
-((identifier) @constructor
- (#lua-match? @constructor "^[A-Z]"))
+((identifier) @type
+ (#lua-match? @type "^[A-Z]"))
 
 ((identifier) @constant
  (#lua-match? @constant "^[A-Z_][A-Z%d_]+$"))
@@ -88,6 +88,12 @@
 (call_expression
   function: (member_expression
     property: [(property_identifier) (private_property_identifier)] @method.call))
+
+; Constructor
+;------------
+
+(new_expression
+  constructor: (identifier) @constructor)
 
 ; Variables
 ;----------
