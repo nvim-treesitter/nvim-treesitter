@@ -694,3 +694,17 @@ require'nvim-treesitter.configs'.setup {
     --
 }
 ```
+
+#### I experience compilation errors when installing certain parsers
+
+Some parsers do not specify a standard for their compilation and rely on the compiler having a sufficient default.
+Check that your compiler is a recent version and update if necessary.
+If you cannot update the compiler, but the one you have supports the minimum standard for the failing parser, you can force compilation via Makefile by adding in your Lua config:
+
+```lua
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+-- For parsers written in c99 or earlier the following line is sufficient.
+parser_config['parser'].install_info.use_makefile = true
+-- For parsers with parts written in c++ you may need to set the following.
+ parser_config['parser'].install_info.cxx_standard = 'c++11'
+```
