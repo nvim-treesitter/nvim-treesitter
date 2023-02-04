@@ -123,7 +123,7 @@
     "revision": "19db2f47ba4c3a0f6238d4ae0e2abfca16e61dd6"
   },
   "gdscript": {
-    "revision": "a8fa839150d05baaf4d5a472520ee71e9b1d8b3c"
+    "revision": "4849e657b98945cd040ffa7fd833d6130259dbab"
   },
   "git_rebase": {
     "revision": "127f5b56c1ad3e8a449a7d6e0c7412ead7f7724c"
@@ -354,7 +354,7 @@
     "revision": "25e6328872ac3a764ba8b926aea12719741103f1"
   },
   "ruby": {
-    "revision": "7a1921bcfd90e3a04c1ad011059087aaf0168dd4"
+    "revision": "206c7077164372c596ffa8eaadb9435c28941364"
   },
   "rust": {
     "revision": "f7fb205c424b0962de59b26b931fe484e1262b35"
@@ -384,7 +384,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "30e15d45dceb24ea51acf81ee7d75d81567b6e02"
+    "revision": "c508e6044adf4298d7b321f966c90cbe32d75d23"
   },
   "supercollider": {
     "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
@@ -468,6 +468,6 @@
     "revision": "2c0e6be8dd4dcb961c345fa35c309ad4f5bd3502"
   },
   "zig": {
-    "revision": "d90d38d28ce8cc27bfea8b4e0c75211e9e2398ca"
+    "revision": "b0693dd473efd91d6085acd8e0ff9c627d37e077"
   }
 }
