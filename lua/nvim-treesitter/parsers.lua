@@ -416,7 +416,6 @@ list.func = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-func",
     files = { "src/parser.c" },
-    branch = "master",
   },
   maintainers = { "@amaanq" },
 }
@@ -738,7 +737,6 @@ list.julia = {
 list.kdl = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-kdl",
-    branch = "master",
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@amaanq" },
@@ -1109,6 +1107,14 @@ list.rnoweb = {
   },
   filetype = "rnoweb",
   maintainers = { "@bamonroe" },
+}
+
+list.ron = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-ron",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@amaanq" },
 }
 
 list.rst = {
