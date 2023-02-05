@@ -111,9 +111,10 @@
   "defp"
   "defprotocol"
   "defstruct"
-)) (arguments [
-  (identifier) @function
-  (binary_operator left: (identifier) @function operator: "when")])?)
+  ))
+  (arguments [
+    (call (identifier) @function)
+    (binary_operator left: (call target: (identifier) @function) operator: "when")])?)
 
 ; Kernel Keywords & Special Forms
 (call target: ((identifier) @keyword (#any-of? @keyword
