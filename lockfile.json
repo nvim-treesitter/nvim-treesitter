@@ -6,7 +6,7 @@
     "revision": "80ea622cf952a0059e168e5c92a798b2f1925652"
   },
   "arduino": {
-    "revision": "c473c09f23b13d9404ec5208fad3eddea89d70f8"
+    "revision": "257efffa387da3283a37816b71dedfecf4af5222"
   },
   "astro": {
     "revision": "a1f66bf72ed68b87f779bce9a52e5c6521fc867e"
@@ -258,10 +258,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "abea13b86c404564991244b69b7afc4ca362d0c0"
+    "revision": "7e7aa9a25ca9729db9fe22912f8f47bdb403a979"
   },
   "markdown_inline": {
-    "revision": "abea13b86c404564991244b69b7afc4ca362d0c0"
+    "revision": "7e7aa9a25ca9729db9fe22912f8f47bdb403a979"
   },
   "menhir": {
     "revision": "db7953acb0d5551f207373c81fa07a57d7b085cb"
@@ -420,7 +420,7 @@
     "revision": "a233ebe360a73a92c50978e5c4e9e471bc59ff42"
   },
   "tlaplus": {
-    "revision": "6fd16d8469c6898317423d61738d97e2b3f5caf7"
+    "revision": "510eddb0be455463e5e571f06a93cc0c2d08fe9d"
   },
   "todotxt": {
     "revision": "0207f6a4ab6aeafc4b091914d31d8235049a2578"
