@@ -1,11 +1,12 @@
 [
   (annotation)
   (enum)
+  (exception)
+  (function)
   (senum)
   (service)
   (struct)
   (union)
 
-  (function_parameters)
-  (exception_parameters)
+  (comment)
 ] @fold
