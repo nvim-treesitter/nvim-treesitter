@@ -1,3 +1,8 @@
 ; Folds
 
-(node_children) @fold
+[
+  (node)
+  (node_children)
+  (string)
+  (multi_line_comment)
+] @fold

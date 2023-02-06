@@ -757,7 +757,6 @@ list.kdl = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@amaanq" },
-  experimental = true,
 }
 
 list.kotlin = {
