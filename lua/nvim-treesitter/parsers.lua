@@ -1324,6 +1324,7 @@ list.thrift = {
   install_info = {
     url = "https://github.com/duskmoon314/tree-sitter-thrift",
     files = { "src/parser.c" },
+    branch = "main",
   },
   maintainers = { "@amaanq", "@duskmoon314" },
 }
