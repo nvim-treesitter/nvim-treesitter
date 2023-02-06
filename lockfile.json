@@ -30,7 +30,7 @@
     "revision": "7175a6dd5fc1cee660dce6fe23f6043d75af424a"
   },
   "c_sharp": {
-    "revision": "a29bac0681802139710b4d3875540901504d15cb"
+    "revision": "d5a310ae1892135fde2f101a59b05095915df495"
   },
   "capnp": {
     "revision": "740c757b9585925b1ed27cef7d61ac39b7824304"
@@ -42,7 +42,7 @@
     "revision": "262d6d60f39f0f77b3dd08da8ec895bd5a044416"
   },
   "cmake": {
-    "revision": "a32265307aa2d31941056d69e8b6633e61750b2f"
+    "revision": "399605a02bcd5daa309ce63a6459c600dce3473f"
   },
   "comment": {
     "revision": "a37ca370310ac6f89b6e0ebf2b86b2219780494e"
@@ -321,7 +321,7 @@
     "revision": "42d82fa18f8afe59b5fc0b16c207ee4f84cb185f"
   },
   "pug": {
-    "revision": "26f6ac805e11e19c4492089f24aa44fe71be7c1f"
+    "revision": "884e225b5ecca5d885ae627275f16ef648acd42e"
   },
   "python": {
     "revision": "9e53981ec31b789ee26162ea335de71f02186003"
@@ -444,7 +444,7 @@
     "revision": "5d20856f34315b068c41edaee2ac8a100081d259"
   },
   "v": {
-    "revision": "719cf0cd297f9b2f45ecfbeb0115379fb8cfa9c3"
+    "revision": "fc043947598f45d702f450216a2ee4707d80ce5e"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -456,7 +456,7 @@
     "revision": "8a0df32b72a8cf8d3e3e84f16c19e9ba46d3dba5"
   },
   "vim": {
-    "revision": "55ff1b080c09edeced9b748cf4c16d0b49d17fb9"
+    "revision": "e39a7bbcfdcfc7900629962b785c7e14503ae590"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
