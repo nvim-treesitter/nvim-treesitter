@@ -439,6 +439,14 @@ function M.goto_node(node, goto_end, avoid_set_jump)
   else
     position = { range[3], range[4] }
   end
+
+  -- Enter visual mode if we are in operator pending mode
+  -- If we don't do this, it will miss the last character.
+  local mode = vim.api.nvim_get_mode()
+  if mode.mode == "no" then
+    vim.cmd "normal! v"
+  end
+
   -- Position is 1, 0 indexed.
   api.nvim_win_set_cursor(0, { position[1], position[2] - 1 })
 end
