@@ -155,6 +155,8 @@
   ["module" "baremodule" "end"] @include)
 (import_statement
   ["import" "using"] @include)
+(import_alias
+  "as" @include)
 (export_statement
   "export" @include)
 

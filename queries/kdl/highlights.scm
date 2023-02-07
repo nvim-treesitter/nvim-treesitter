@@ -48,7 +48,7 @@
 [
   (single_line_comment)
   (multi_line_comment)
-] @comment
+] @comment @spell
 
 (node (node_comment) (#set! "priority" 105)) @comment
 (node (node_field (node_field_comment) (#set! "priority" 105)) @comment)
