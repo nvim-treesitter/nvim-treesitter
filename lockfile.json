@@ -81,7 +81,7 @@
     "revision": "9ab85550c896d8b294d9b9ca1e30698736f08cea"
   },
   "ebnf": {
-    "revision": "ef241bc09f2f105c35f5e4f2ccd8a522dd99071c"
+    "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
   },
   "eex": {
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
@@ -99,7 +99,7 @@
     "revision": "f32711e31e987fd5c2c002f3daba02f25c68672f"
   },
   "embedded_template": {
-    "revision": "a13085849cf69e2401ec44e38cffc3d73f22f3df"
+    "revision": "203f7bd3c1bbfbd98fc19add4b8fcb213c059205"
   },
   "erlang": {
     "revision": "2422bc9373094bfa97653ac540e08759f812523c"
@@ -126,7 +126,7 @@
     "revision": "19db2f47ba4c3a0f6238d4ae0e2abfca16e61dd6"
   },
   "gdscript": {
-    "revision": "4849e657b98945cd040ffa7fd833d6130259dbab"
+    "revision": "5d43d78c276570f76773685f08baf9e4ada09639"
   },
   "git_rebase": {
     "revision": "127f5b56c1ad3e8a449a7d6e0c7412ead7f7724c"
@@ -231,7 +231,7 @@
     "revision": "e2f449e2bcc95f1d07ceb62d67f986005f73a6be"
   },
   "kdl": {
-    "revision": "92fcc2fe21474f9f855617a6f705fe3cdb288bfe"
+    "revision": "b50d6c8b77d311639ecbf2b803ffb720c2b4cee2"
   },
   "kotlin": {
     "revision": "e4637037a5fe6f25fe66c305669faa0855f35692"
@@ -417,7 +417,7 @@
     "revision": "0ff887f2a60a147452d52db060de6b42f42f1441"
   },
   "thrift": {
-    "revision": "634a73fd2c80e169f302917ba665c07ec0b6ff7b"
+    "revision": "763ae3d760b7a7719b57568bdf9ffae2d896680f"
   },
   "tiger": {
     "revision": "a233ebe360a73a92c50978e5c4e9e471bc59ff42"
@@ -474,6 +474,6 @@
     "revision": "2c0e6be8dd4dcb961c345fa35c309ad4f5bd3502"
   },
   "zig": {
-    "revision": "b0693dd473efd91d6085acd8e0ff9c627d37e077"
+    "revision": "6b3f5788f38be900b45f5af5a753bf6a37d614b8"
   }
 }
