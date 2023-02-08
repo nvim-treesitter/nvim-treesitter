@@ -171,7 +171,7 @@
     "revision": "b7bd6928532ada34dddb1dece4a158ab62c6e783"
   },
   "haskell": {
-    "revision": "aee3725d02cf3bca5f307b35dd3a96a97e109b4e"
+    "revision": "3b9f849b9fcbbf563c45ed42f9480876f99cc153"
   },
   "hcl": {
     "revision": "0ff887f2a60a147452d52db060de6b42f42f1441"
@@ -225,7 +225,7 @@
     "revision": "02b01653c8a1c198ae7287d566efa86a135b30d5"
   },
   "jsonnet": {
-    "revision": "505f5bd90053ae895aa3d6f2bac8071dd9abd8b2"
+    "revision": "fdc775714afa27fdef823adbaba6ab98f5ae66f2"
   },
   "julia": {
     "revision": "e2f449e2bcc95f1d07ceb62d67f986005f73a6be"
@@ -423,7 +423,7 @@
     "revision": "a233ebe360a73a92c50978e5c4e9e471bc59ff42"
   },
   "tlaplus": {
-    "revision": "510eddb0be455463e5e571f06a93cc0c2d08fe9d"
+    "revision": "6d2ec894aef843fc89312c904e20c5f555aec4e3"
   },
   "todotxt": {
     "revision": "0207f6a4ab6aeafc4b091914d31d8235049a2578"
