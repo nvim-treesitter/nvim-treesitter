@@ -26,3 +26,15 @@
   (#eq? @_attr "lang") 
   (#any-of? @_lang "ts" "typescript")
 )
+
+(
+  (element
+    (start_tag
+      (attribute
+        (attribute_name) @_attr
+        (quoted_attribute_value
+          (attribute_value) @_lang)))
+    (text) @pug)
+  (#eq? @_attr "lang") 
+  (#eq? @_lang "pug")
+)
