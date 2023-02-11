@@ -118,7 +118,7 @@
 ;;; Function definitions
 
 (function_declaration
-	. (simple_identifier) @function)
+	(simple_identifier) @function)
 
 (getter
 	("get") @function.builtin)
@@ -152,6 +152,10 @@
 
 ; function()
 (call_expression
+	. (simple_identifier) @function.call)
+
+; ::function
+(callable_reference
 	. (simple_identifier) @function.call)
 
 ; object.function() or object.property.function()
