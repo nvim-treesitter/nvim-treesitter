@@ -509,6 +509,9 @@
   "smithy": {
     "revision": "cf8c7eb9faf7c7049839585eac19c94af231e6a0"
   },
+  "snakemake": {
+    "revision": "65a6c3b4671877821082164da0a310851b211953"
+  },
   "solidity": {
     "revision": "168020304759ad5d8b4a88a541a699134e3730c5"
   },
