@@ -1,8 +1,8 @@
 require "nvim-treesitter.highlight" -- yes, this is necessary to set the hlmap
 local highlighter = require "vim.treesitter.highlighter"
 local configs = require "nvim-treesitter.configs"
-local ts_utils = require "nvim-treesitter.ts_utils"
 local parsers = require "nvim-treesitter.parsers"
+local ts = vim.treesitter
 
 local function check_assertions(file)
   local buf = vim.fn.bufadd(file)
@@ -39,7 +39,7 @@ local function check_assertions(file)
       local root = tstree:root()
       --- If there are multiple tree with the smallest range possible
       --- Check all of them to see if they fit or not
-      if not ts_utils.is_in_node_range(root, row, col) or root == top_level_root then
+      if not ts.is_in_node_range(root, row, col) or root == top_level_root then
         return
       end
       if assertion.expected_capture_name == tree:lang() then

@@ -1,6 +1,7 @@
 local parsers = require "nvim-treesitter.parsers"
 local queries = require "nvim-treesitter.query"
 local tsutils = require "nvim-treesitter.ts_utils"
+local ts = vim.treesitter
 
 local M = {}
 
@@ -82,7 +83,7 @@ function M.get_indent(lnum)
       return
     end
     local local_root = tstree:root()
-    if tsutils.is_in_node_range(local_root, lnum - 1, 0) then
+    if ts.is_in_node_range(local_root, lnum - 1, 0) then
       if not root or tsutils.node_length(root) >= tsutils.node_length(local_root) then
         root = local_root
         lang_tree = tree

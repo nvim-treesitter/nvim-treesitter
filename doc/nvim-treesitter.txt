@@ -412,11 +412,6 @@ node_to_lsp_range(node)~
 
 Get an lsp formatted range from a node range
 
-						     *ts_utils.get_node_range*
-get_node_range(node_or_range)~
-
-Get the range from either a node or a range
-
 							*ts_utils.node_length*
 node_length(node)~
 
