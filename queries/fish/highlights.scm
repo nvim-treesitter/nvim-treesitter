@@ -21,7 +21,7 @@
 ;; match operators of [ command
 (command
   name: (word) @punctuation.bracket (#match? @punctuation.bracket "^\\[$")
-  argument: (word) @operator (#match? @operator "^(!?=|-[a-zA-Z]+)$"))
+  argument: (word) @operator (#match? @operator "^(!?\\=|-[a-zA-Z]+)$"))
 
 [
  "not"
@@ -122,8 +122,6 @@
         (#any-of? @function.builtin "." ":" "_" "alias" "argparse" "bg" "bind" "block" "breakpoint" "builtin" "cd" "command" "commandline" "complete" "contains" "count" "disown" "echo" "emit" "eval" "exec" "exit" "fg" "functions" "history" "isatty" "jobs" "math" "printf" "pwd" "random" "read" "realpath" "set" "set_color" "source" "status" "string" "test" "time" "type" "ulimit" "wait")
         ]
 )
-
-(test_command (word) @function.builtin)
 
 ;; Functions
 
