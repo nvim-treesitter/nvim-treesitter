@@ -2,6 +2,7 @@ local api = vim.api
 
 local parsers = require "nvim-treesitter.parsers"
 local utils = require "nvim-treesitter.utils"
+local ts = vim.treesitter
 
 local M = {}
 
@@ -12,7 +13,7 @@ local function get_node_text(node, bufnr)
   end
 
   -- We have to remember that end_col is end-exclusive
-  local start_row, start_col, end_row, end_col = M.get_node_range(node)
+  local start_row, start_col, end_row, end_col = ts.get_node_range(node)
 
   if start_row ~= end_row then
     local lines = api.nvim_buf_get_lines(bufnr, start_row, end_row + 1, false)
@@ -169,7 +170,7 @@ function M.get_node_at_cursor(winnr, ignore_injected_langs)
   if ignore_injected_langs then
     for _, tree in ipairs(root_lang_tree:trees()) do
       local tree_root = tree:root()
-      if tree_root and M.is_in_node_range(tree_root, cursor_range[1], cursor_range[2]) then
+      if tree_root and ts.is_in_node_range(tree_root, cursor_range[1], cursor_range[2]) then
         root = tree_root
         break
       end
@@ -199,7 +200,7 @@ function M.get_root_for_position(line, col, root_lang_tree)
   for _, tree in ipairs(lang_tree:trees()) do
     local root = tree:root()
 
-    if root and M.is_in_node_range(root, line, col) then
+    if root and ts.is_in_node_range(root, line, col) then
       return root, tree, lang_tree
     end
   end
@@ -260,7 +261,7 @@ end
 -- @param selection_mode One of "charwise" (default) or "v", "linewise" or "V",
 --   "blockwise" or "<C-v>" (as a string with 5 characters or a single character)
 function M.update_selection(buf, node, selection_mode)
-  local start_row, start_col, end_row, end_col = M.get_vim_range({ M.get_node_range(node) }, buf)
+  local start_row, start_col, end_row, end_col = M.get_vim_range({ ts.get_node_range(node) }, buf)
 
   local v_table = { charwise = "v", linewise = "V", blockwise = "<C-v>" }
   selection_mode = selection_mode or "charwise"
@@ -294,10 +295,15 @@ function M.node_length(node)
 end
 
 --- Determines whether (line, col) position is in node range
+--- @deprecated Use `vim.treesitter.is_in_node_range()` instead
 -- @param node Node defining the range
 -- @param line A line (0-based)
 -- @param col A column (0-based)
 function M.is_in_node_range(node, line, col)
+  vim.notify_once(
+    "nvim-treesitter.ts_utils.is_in_node_range is deprecated: use vim.treesitter.is_in_node_range",
+    vim.log.levels.WARN
+  )
   local start_line, start_col, end_line, end_col = node:range()
   if line >= start_line and line <= end_line then
     if line == start_line and line == end_line then
@@ -314,16 +320,17 @@ function M.is_in_node_range(node, line, col)
   end
 end
 
+--- @deprecated Use `vim.treesitter.get_node_range()` instead
 function M.get_node_range(node_or_range)
-  if type(node_or_range) == "table" then
-    return unpack(node_or_range)
-  else
-    return node_or_range:range()
-  end
+  vim.notify_once(
+    "nvim-treesitter.ts_utils.get_node_range is deprecated: use vim.treesitter.get_node_range",
+    vim.log.levels.WARN
+  )
+  return ts.get_node_range(node_or_range)
 end
 
 function M.node_to_lsp_range(node)
-  local start_line, start_col, end_line, end_col = M.get_node_range(node)
+  local start_line, start_col, end_line, end_col = ts.get_node_range(node)
   local rtn = {}
   rtn.start = { line = start_line, character = start_col }
   rtn["end"] = { line = end_line, character = end_col }
