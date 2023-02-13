@@ -72,7 +72,7 @@
     "revision": "ea30a05d0f0446a96d8b096ad11828ad4f8ad849"
   },
   "diff": {
-    "revision": "1d63cd49529ef3153393cf8f620718b274bba715"
+    "revision": "f69bde8e56f431863eba2fe4bab23e7d9692855f"
   },
   "dockerfile": {
     "revision": "09e316dba307b869831e9399b11a83bbf0f2a24b"
@@ -282,7 +282,7 @@
     "revision": "6b71a810c0acd49b980c50fc79092561f7cee307"
   },
   "norg": {
-    "revision": "6348056b999f06c2c7f43bb0a5aa7cfde5302712"
+    "revision": "1a305093569632de50f9a316ff843dcda25b4ef5"
   },
   "ocaml": {
     "revision": "f1106bf834703f1f2f795da1a3b5f8f40174ffcc"
@@ -339,7 +339,7 @@
     "revision": "80efda55672d1293aa738f956c7ae384ecdc31b4"
   },
   "racket": {
-    "revision": "dc9c33451fefc2d84d226e55c828adc8a66f2e37"
+    "revision": "1a5df0206b25a05cb1b35a68d2105fc7493df39b"
   },
   "rasi": {
     "revision": "5f04634dd4e12de4574c4a3dc9d6d5d4da4a2a1b"
@@ -411,7 +411,7 @@
     "revision": "f8106fcf5a27f905b3d9d55d9cd3e910bea70c60"
   },
   "teal": {
-    "revision": "1ae8c68e90523b26b93af56feb7868fe4214e2b2"
+    "revision": "2158ecce11ea542f9b791baf2c7fb33798174ed2"
   },
   "terraform": {
     "revision": "0ff887f2a60a147452d52db060de6b42f42f1441"
