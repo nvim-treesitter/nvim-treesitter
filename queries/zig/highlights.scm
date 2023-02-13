@@ -111,8 +111,6 @@ field_constant: (IDENTIFIER) @constant
 
 [
   "return"
-  "break"
-  "continue"
   "async"
   "await"
   "suspend"
@@ -128,6 +126,8 @@ field_constant: (IDENTIFIER) @constant
 [
   "for"
   "while"
+  "break"
+  "continue"
 ] @repeat
 
 [
