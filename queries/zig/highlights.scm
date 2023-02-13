@@ -2,7 +2,7 @@
   (container_doc_comment)
   (doc_comment)
   (line_comment)
-] @comment
+] @comment @spell
 
 [
   variable: (IDENTIFIER)
@@ -82,7 +82,7 @@ field_constant: (IDENTIFIER) @constant
 [
   (LINESTRING)
   (STRINGLITERALSINGLE)
-] @string
+] @string @spell
 
 (CHAR_LITERAL) @character
 (EscapeSequence) @string.escape
