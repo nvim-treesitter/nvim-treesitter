@@ -214,7 +214,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [fsh](https://github.com/mgramigna/tree-sitter-fsh) (maintained by @mgramigna)
 - [x] [func](https://github.com/amaanq/tree-sitter-func) (maintained by @amaanq)
 - [x] [fusion](https://gitlab.com/jirgn/tree-sitter-fusion.git) (maintained by @jirgn)
-- [x] [Godot (gdscript)](https://github.com/PrestonKnopp/tree-sitter-gdscript) (maintained by @Shatur)
+- [ ] [Godot (gdscript)](https://github.com/PrestonKnopp/tree-sitter-gdscript)
 - [x] [git_rebase](https://github.com/the-mikedavis/tree-sitter-git-rebase) (maintained by @gbprod)
 - [x] [gitattributes](https://github.com/ObserverOfTime/tree-sitter-gitattributes) (maintained by @ObserverOfTime)
 - [x] [gitcommit](https://github.com/gbprod/tree-sitter-gitcommit) (maintained by @gbprod)
