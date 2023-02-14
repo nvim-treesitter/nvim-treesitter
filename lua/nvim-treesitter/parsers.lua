@@ -443,7 +443,6 @@ list.gdscript = {
     files = { "src/parser.c", "src/scanner.cc" },
   },
   readme_name = "Godot (gdscript)",
-  maintainers = { "@Shatur" },
 }
 
 list.git_rebase = {

@@ -126,7 +126,7 @@
     "revision": "19db2f47ba4c3a0f6238d4ae0e2abfca16e61dd6"
   },
   "gdscript": {
-    "revision": "5d43d78c276570f76773685f08baf9e4ada09639"
+    "revision": "31ebb7cd0b880ea53a152eaf9d4df73f737181cc"
   },
   "git_rebase": {
     "revision": "127f5b56c1ad3e8a449a7d6e0c7412ead7f7724c"
@@ -417,7 +417,7 @@
     "revision": "0ff887f2a60a147452d52db060de6b42f42f1441"
   },
   "thrift": {
-    "revision": "763ae3d760b7a7719b57568bdf9ffae2d896680f"
+    "revision": "d1f350b19dd70ccdbd6d565dbea4879e4cef03da"
   },
   "tiger": {
     "revision": "a233ebe360a73a92c50978e5c4e9e471bc59ff42"
