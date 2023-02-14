@@ -10,7 +10,7 @@
   (class_definition)
 ] @indent
 
-((argument_list) @aligned_indent
+((arguments) @aligned_indent
  (#set! "delimiter" "()"))
 ((parameters) @aligned_indent
  (#set! "delimiter" "()"))
