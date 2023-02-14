@@ -105,9 +105,10 @@
 ;; Highlight the name of subprograms
 (procedure_specification name: (_) @function)
 (function_specification name: (_) @function)
-(package_specification name: (_) @function)
+(package_declaration name: (_) @function)
 (package_body name: (_) @function)
 (generic_instantiation name: (_) @function)
+(entry_declaration . (identifier) @function)
 
 ;; Some keywords should take different categories depending on the context
 (use_clause "use"  @include "type" @include)

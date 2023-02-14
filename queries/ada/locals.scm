@@ -3,7 +3,7 @@
 ;;  See https://tree-sitter.github.io/tree-sitter/syntax-highlighting#local-variables
 
 (compilation) @scope
-(package_specification) @scope
+(package_declaration) @scope
 (package_body) @scope
 (subprogram_declaration) @scope
 (subprogram_body) @scope
@@ -12,7 +12,7 @@
 (with_clause (identifier) @definition.import)
 (procedure_specification name: (_) @definition.function)
 (function_specification name: (_) @definition.function)
-(package_specification name: (_) @definition.var)
+(package_declaration name: (_) @definition.var)
 (package_body name: (_) @definition.var)
 (generic_instantiation . name: (_) @definition.var)
 (component_declaration . (identifier) @definition.var)
