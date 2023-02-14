@@ -11,7 +11,7 @@
 (keyword_float) @function.call
 
 (count
-  name: (identifier) @function.call
+  name: (keyword_count) @function.call
   parameter: [(field)]? @parameter)
 
 (table_reference
@@ -27,12 +27,63 @@
 (term
   alias: (identifier) @variable)
 
+((term
+   value: (cast
+    name: (keyword_cast) @function.call
+    parameter: [(literal)]?)))
+
 (literal) @string
 (comment) @comment
 (marginalia) @comment
 
 ((literal) @number
  (#lua-match? @number "^%d+$"))
+
+((literal) @float
+(#lua-match? @float "^[-]?%d*\.%d*$"))
+
+(parameter) @parameter
+
+[
+ (keyword_true)
+ (keyword_false)
+] @boolean
+
+[
+ (keyword_asc)
+ (keyword_desc)
+ (keyword_external)
+ (keyword_stored)
+ (keyword_parquet)
+ (keyword_csv)
+ (keyword_rcfile)
+ (keyword_textfile)
+ (keyword_orc)
+ (keyword_avro)
+ (keyword_jsonfile)
+ (keyword_temp)
+ (keyword_cached)
+ (keyword_uncached)
+ (keyword_unlogged)
+ (keyword_terminated)
+ (keyword_escaped)
+ (keyword_partitioned)
+ (keyword_location)
+ (keyword_lines)
+ (keyword_unsigned)
+ (keyword_nulls)
+ (keyword_last)
+ (keyword_materialized)
+ (keyword_temp)
+ (keyword_temporary)
+] @attribute
+
+[
+ (keyword_case)
+ (keyword_when)
+ (keyword_then)
+ (keyword_else)
+] @conditional
 
 [
   (keyword_select)
@@ -57,11 +108,8 @@
   (keyword_inner)
   (keyword_order)
   (keyword_group)
-  (keyword_partition)
   (keyword_by)
   (keyword_having)
-  (keyword_desc)
-  (keyword_asc)
   (keyword_as)
   (keyword_limit)
   (keyword_offset)
@@ -78,7 +126,6 @@
   (keyword_max)
   (keyword_min)
   (keyword_avg)
-  (keyword_materialized)
   (keyword_column)
   (keyword_cross)
   (keyword_lateral)
@@ -86,17 +133,12 @@
   (keyword_drop)
   (keyword_add)
   (keyword_view)
-  (keyword_case)
-  (keyword_when)
-  (keyword_then)
-  (keyword_else)
   (keyword_end)
   (keyword_is)
   (keyword_using)
   (keyword_cascade)
   (keyword_between)
   (keyword_window)
-  (double)
   (keyword_with)
   (keyword_no)
   (keyword_data)
@@ -105,8 +147,6 @@
   (keyword_to)
   (keyword_schema)
   (keyword_owner)
-  (keyword_temp)
-  (keyword_temporary)
   (keyword_union)
   (keyword_all)
   (keyword_except)
@@ -116,19 +156,25 @@
   (keyword_commit)
   (keyword_rollback)
   (keyword_transaction)
+  (keyword_only)
+  (keyword_like)
+  (keyword_similar)
+  (keyword_over)
+] @keyword
+
+[
+  (keyword_int)
   (keyword_null)
-  (keyword_true)
-  (keyword_false)
   (keyword_boolean)
   (keyword_smallserial)
   (keyword_serial)
   (keyword_bigserial)
   (keyword_smallint)
-  (keyword_int)
   (keyword_bigint)
   (keyword_decimal)
   (keyword_numeric)
   (keyword_real)
+  (double)
   (keyword_money)
   (keyword_char)
   (keyword_varchar)
@@ -146,11 +192,7 @@
   (keyword_geography)
   (keyword_box2d)
   (keyword_box3d)
-  (keyword_only)
-  (keyword_like)
-  (keyword_similar)
-  (keyword_over)
-] @keyword
+] @type.builtin
 
 [
   (keyword_in)
@@ -184,3 +226,4 @@
   ","
   "."
 ] @punctuation.delimiter
+
