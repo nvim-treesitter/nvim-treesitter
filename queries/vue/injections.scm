@@ -49,6 +49,30 @@
   (#eq? @_ts "ts")
 )
 
+; <script lang="jsx">
+(
+  (script_element
+    (start_tag
+      (attribute
+        (attribute_name) @_lang
+        (quoted_attribute_value (attribute_value) @_js)))
+    (raw_text) @javascript)
+  (#eq? @_lang "lang")
+  (#eq? @_js "jsx")
+)
+
+; <script lang="tsx">
+(
+  (script_element
+    (start_tag
+      (attribute
+        (attribute_name) @_lang
+        (quoted_attribute_value (attribute_value) @_ts)))
+    (raw_text) @typescript)
+  (#eq? @_lang "lang")
+  (#eq? @_ts "tsx")
+)
+
 ((interpolation
   (raw_text) @javascript))
 
