@@ -24,8 +24,8 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-2022, macos-latest]
-        cc: [ gcc, clang ]
-        nvim_tag: [ stable ]
+        cc: [gcc, clang]
+        nvim_tag: [stable]
         exclude:
           - os: ubuntu-latest
             cc: clang
@@ -59,10 +59,12 @@ jobs:
       - uses: ilammy/msvc-dev-cmd@v1
       - uses: actions/setup-node@v3
 
+      - name: Install tree-sitter CLI
+        run: npm i -g tree-sitter-cli
+
       - name: Install and prepare Neovim
         env:
           NVIM_TAG: ${{ matrix.nvim_tag }}
-          TREE_SITTER_CLI_TAG: v0.20.6
         run: |
           bash ./scripts/ci-install-${{ matrix.os }}.sh
 

@@ -20,7 +20,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        cc: [ gcc ]
+        cc: [gcc]
 
     name: Run tests
     runs-on: ${{ matrix.os }}
@@ -29,6 +29,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
+
+      - name: Install tree-sitter CLI
+        run: npm i -g tree-sitter-cli
 
       - name: Test Dependencies
         run: |
