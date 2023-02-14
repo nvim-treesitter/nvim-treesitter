@@ -2,7 +2,8 @@
 ;;    za     toggles folding a package, subprogram, if statement or loop
 
 [
-   (package_specification)
+   (package_declaration)
+   (generic_package_declaration)
    (package_body)
    (subprogram_body)
    (block_statement)
