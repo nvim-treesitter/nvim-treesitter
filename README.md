@@ -42,7 +42,7 @@ We recommend using the nightly builds of Neovim if possible.
 You can find the current roadmap [here](https://github.com/nvim-treesitter/nvim-treesitter/projects/1).
 The roadmap and all features of this plugin are open to change, and any suggestion will be highly appreciated!**
 
-Nvim-treesitter is based on three interlocking features: [**language parsers**](#language-parsers), [**queries**](#adding-queries), and [**modules**](#available-modules), where *modules* provide features – e.g., highlighting – based on *queries* for syntax objects extracted from a given buffer by *language parsers*.
+Nvim-treesitter is based on three interlocking features: [**language parsers**](#language-parsers), [**queries**](#adding-queries), and [**modules**](#available-modules), where _modules_ provide features – e.g., highlighting – based on _queries_ for syntax objects extracted from a given buffer by _language parsers_.
 Users will generally only need to interact with parsers and modules as explained in the next section.
 For more detailed information on setting these up, see ["Advanced setup"](#advanced-setup).
 
@@ -50,12 +50,12 @@ For more detailed information on setting these up, see ["Advanced setup"](#advan
 
 ### Table of contents
 
-* [Quickstart](#quickstart)
-* [Supported languages](#supported-languages)
-* [Available modules](#available-modules)
-* [Advanced setup](#advanced-setup)
-* [Extra features](#extra-features)
-* [Troubleshooting](#troubleshooting)
+- [Quickstart](#quickstart)
+- [Supported languages](#supported-languages)
+- [Available modules](#available-modules)
+- [Advanced setup](#advanced-setup)
+- [Extra features](#extra-features)
+- [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -85,9 +85,11 @@ For other plugin managers such as `packer.nvim`, see this [Installation page fro
 Treesitter uses a different _parser_ for every language, which needs to be generated via `tree-sitter-cli` from a `grammar.js` file, then compiled to a `.so` library that needs to be placed in neovim's `runtimepath` (typically under `parser/{language}.so`).
 To simplify this, `nvim-treesitter` provides commands to automate this process.
 If the language is already [supported by `nvim-treesitter`](#supported-languages), you can install it with
+
 ```vim
 :TSInstall <language_to_install>
 ```
+
 This command supports tab expansion.
 You can also get a list of all available languages and their installation status with `:TSInstallInfo`.
 Parsers not on this list can be added manually by following the steps described under ["Adding parsers"](#adding-parsers) below.
@@ -171,6 +173,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 
 <!--This section of the README is automatically updated by a CI job-->
 <!--parserinfo-->
+
 - [x] [ada](https://github.com/briot/tree-sitter-ada) (maintained by @briot)
 - [x] [agda](https://github.com/AusCyberman/tree-sitter-agda) (maintained by @Decodetalkers)
 - [x] [arduino](https://github.com/ObserverOfTime/tree-sitter-arduino) (maintained by @ObserverOfTime)
@@ -407,7 +410,7 @@ require'nvim-treesitter.configs'.setup {
 
 #### Folding
 
-Tree-sitter based folding. *(Technically not a module because it's per windows and not per buffer.)*
+Tree-sitter based folding. _(Technically not a module because it's per windows and not per buffer.)_
 
 ```vim
 set foldmethod=expr
@@ -428,7 +431,7 @@ directory with `parser_install_dir` option in that is passed to `setup`.
 This directory must be writeable and must be explicitly added to the
 `runtimepath`. For example:
 
-``` lua
+```lua
   vim.opt.runtimepath:append("/some/path/to/store/parsers")
 
   require'nvim-treesitter.configs'.setup {
@@ -449,6 +452,7 @@ will still be considered installed. (For example if
 considered installed, even though it is not in `parser_install_dir`)
 
 The default paths are:
+
 1. first the package folder. Where `nvim-treesitter` is installed.
 2. second the site directory. This is the "site" subdirectory of `stdpath("data")`.
 
@@ -490,7 +494,7 @@ Once the parser is installed, you can update it (from the latest revision of the
 Note that neither `:TSInstall` nor `:TSInstallFromGrammar` copy query files from the grammar repository.
 If you want your installed grammar to be useful, you must manually [add query files](#adding-queries) to your local nvim-treesitter installation.
 Note also that module functionality is only triggered if your language's filetype is correctly identified.
-If Neovim does not detect your language's filetype by default, you can use [Neovim's `vim.filetype.add()`](https://neovim.io/doc/user/lua.html#vim.filetype.add()) to add a custom detection rule.
+If Neovim does not detect your language's filetype by default, you can use [Neovim's `vim.filetype.add()`](<https://neovim.io/doc/user/lua.html#vim.filetype.add()>) to add a custom detection rule.
 
 If you use a git repository for your parser and want to use a specific version, you can set the `revision` key
 in the `install_info` table for you parser config.
@@ -645,11 +649,13 @@ require("nvim-treesitter.install").prefer_git = true
 #### I want to use a HTTP proxy for downloading the parsers
 
 You can either configure curl to use additional CLI arguments in your Lua config:
+
 ```lua
 require("nvim-treesitter.install").command_extra_args = {
     curl = { "--proxy", "<proxy url>" },
 }
 ```
+
 or you can configure git via `.gitconfig` and use git instead of curl
 
 ```lua

@@ -3,11 +3,11 @@ name: Tests
 on:
   push:
     branches:
-      - 'master'
+      - "master"
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
     branches:
-      - 'master'
+      - "master"
 
 # Cancel any in-progress CI runs for a PR if it is updated
 concurrency:

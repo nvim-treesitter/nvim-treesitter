@@ -1,6 +1,6 @@
 name: Highlighting issue
 description: Missing or incorrect highlights or you want to change the way something is highlighted
-labels: [ highlights ]
+labels: [highlights]
 
 body:
   - type: markdown
