@@ -120,7 +120,6 @@ require'nvim-treesitter.configs'.setup {
   -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
 
   highlight = {
-    -- `false` will disable the whole extension
     enable = true,
 
     -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
