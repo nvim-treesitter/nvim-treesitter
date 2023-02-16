@@ -1,16 +1,28 @@
 [
+    (block_comment)
     (comment)
-    (note)
 ] @comment
+((note) @comment.note)
+((test) @comment.test)
 
-[
-    (date)
-    (interval)
-    (quantity)
-] @number
+((date) @number.date)
+((effective_date) @number.date.effective)
+((time) @number.time)
+((interval) @number.interval)
+((quantity) @number.quantity)
+((negative_quantity) @number.negative.quantity)
 
-((account) @field)
-((commodity) @text.literal)
+((account) @field.account)
+((commodity) @text.literal.commodity)
+((option) @text.literal.option)
+((option_value) @text.literal.option_value)
+
+((check_in) @text.literal.check_in)
+(check_in . (date) @number.date.check_in)
+(check_in . (date) . (time) @number.time.check_in)
+((check_out) @text.literal.check_out)
+(check_out . (date) @number.date.check_out)
+(check_out . (date) . (time) @number.time.check_out)
 
 "include" @include
 
@@ -20,6 +32,7 @@
     "assert"
     "check"
     "commodity"
+    "comment"
     "def"
     "default"
     "end"
@@ -28,7 +41,7 @@
     "nomarket"
     "note"
     "payee"
-    "check"
+    "test"
     "A"
     "Y"
     "N"
