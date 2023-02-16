@@ -294,30 +294,13 @@ function M.node_length(node)
   return end_byte - start_byte
 end
 
---- Determines whether (line, col) position is in node range
 --- @deprecated Use `vim.treesitter.is_in_node_range()` instead
--- @param node Node defining the range
--- @param line A line (0-based)
--- @param col A column (0-based)
 function M.is_in_node_range(node, line, col)
   vim.notify_once(
     "nvim-treesitter.ts_utils.is_in_node_range is deprecated: use vim.treesitter.is_in_node_range",
     vim.log.levels.WARN
   )
-  local start_line, start_col, end_line, end_col = node:range()
-  if line >= start_line and line <= end_line then
-    if line == start_line and line == end_line then
-      return col >= start_col and col < end_col
-    elseif line == start_line then
-      return col >= start_col
-    elseif line == end_line then
-      return col < end_col
-    else
-      return true
-    end
-  else
-    return false
-  end
+  return ts.is_in_node_range(node, line, col)
 end
 
 --- @deprecated Use `vim.treesitter.get_node_range()` instead
