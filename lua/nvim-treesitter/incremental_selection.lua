@@ -157,9 +157,9 @@ function M.detach(bufnr)
   for f, mapping in pairs(config.keymaps) do
     if mapping then
       if f == "init_selection" then
-        vim.keymap.del("n", mapping, { buffer = bufnr })
+        pcall(vim.keymap.del, "n", mapping, { buffer = bufnr })
       else
-        vim.keymap.del("x", mapping, { buffer = bufnr })
+        pcall(vim.keymap.del, "x", mapping, { buffer = bufnr })
       end
     end
   end
