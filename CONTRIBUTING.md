@@ -61,7 +61,7 @@ Here are some global advices:
 
 - If your language is listed [here](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages),
   you can install the [playground plugin](https://github.com/nvim-treesitter/playground).
-- If your language is listed [here](https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries),
+- If your language is listed [here](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages),
   you can debug and experiment with your queries there.
 - If not, you should consider installing the [tree-sitter cli](https://github.com/tree-sitter/tree-sitter/tree/master/cli),
   you should then be able to open a local playground using `tree-sitter build-wasm && tree-sitter web-ui` within the
