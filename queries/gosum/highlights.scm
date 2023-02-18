@@ -7,14 +7,12 @@
   "+incompatible"
 ] @keyword
 
-[
-  (module_path)
-  (hash)
-] @string
 
-(base_version) @string.special
+(module_path) @string @text.uri
+(module_version) @string.special
 
-(hash_version) @symbol
+(hash_version) @attribute
+(hash) @symbol
 
 [
  (number)

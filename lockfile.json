@@ -159,7 +159,7 @@
     "revision": "4a65743dbc2bb3094114dd2b43da03c820aa5234"
   },
   "gosum": {
-    "revision": "68974b63c19dc6e27214a5c76b6e26c0c40fe5b7"
+    "revision": "bd0ec1fe9d68a5d4713d907417a43d489fa1b62a"
   },
   "gowork": {
     "revision": "949a8a470559543857a62102c84700d291fc984c"
@@ -417,7 +417,7 @@
     "revision": "0ff887f2a60a147452d52db060de6b42f42f1441"
   },
   "thrift": {
-    "revision": "d1f350b19dd70ccdbd6d565dbea4879e4cef03da"
+    "revision": "c5a94547f01eb51b26446f9b94ee8644fa791223"
   },
   "tiger": {
     "revision": "a233ebe360a73a92c50978e5c4e9e471bc59ff42"

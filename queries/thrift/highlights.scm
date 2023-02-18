@@ -4,15 +4,15 @@
 
 ; Includes
 
-  "include"
 [
+  "include"
   "cpp_include"
 ] @include
 
 (include_path) @string
 (package_path) @string
 
-; Types
+; Builtins
 
 (primitive) @type.builtin
 
@@ -141,7 +141,7 @@
 
 (escape_sequence) @string.escape
 
-(uri) @string.special
+(uri (string_fragment) @text.uri) @string.special
 
 (number) @number
 
@@ -182,7 +182,6 @@
 [
   ";"
   ","
-  (list_separator)
 ] @punctuation.delimiter
 
 ; Errors
