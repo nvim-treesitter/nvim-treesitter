@@ -392,6 +392,9 @@
   "sql": {
     "revision": "3a3f92b29c880488a08bc2baaf1aca6432ec3380"
   },
+  "starlark": {
+    "revision": "2e94347f71147c268a4c5c0ce188be8baf2fce5a"
+  },
   "supercollider": {
     "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
   },

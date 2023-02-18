@@ -1234,6 +1234,15 @@ list.sql = {
   maintainers = { "@derekstride" },
 }
 
+list.starlark = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-starlark",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  filetype = "bzl",
+  maintainers = { "@amaanq" },
+}
+
 list.supercollider = {
   install_info = {
     url = "https://github.com/madskjeldgaard/tree-sitter-supercollider",
