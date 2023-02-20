@@ -336,6 +336,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [wgsl_bevy](https://github.com/theHamsta/tree-sitter-wgsl-bevy) (maintained by @theHamsta)
 - [x] [yaml](https://github.com/ikatyang/tree-sitter-yaml) (maintained by @stsewd)
 - [x] [yang](https://github.com/Hubro/tree-sitter-yang) (maintained by @Hubro)
+- [x] [yuck](https://github.com/Philipp-M/tree-sitter-yuck) (maintained by @Philipp-M, @amaanq)
 - [x] [zig](https://github.com/maxxnino/tree-sitter-zig) (maintained by @maxxnino)
 <!--parserinfo-->
 

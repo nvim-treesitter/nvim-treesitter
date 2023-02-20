@@ -488,6 +488,9 @@
   "yang": {
     "revision": "2c0e6be8dd4dcb961c345fa35c309ad4f5bd3502"
   },
+  "yuck": {
+    "revision": "607bf03cc78912cbaa85a3d373af21ddeaef5b41"
+  },
   "zig": {
     "revision": "6b3f5788f38be900b45f5af5a753bf6a37d614b8"
   }
