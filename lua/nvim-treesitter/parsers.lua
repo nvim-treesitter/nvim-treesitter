@@ -1451,6 +1451,14 @@ list.typescript = {
   maintainers = { "@steelsojka" },
 }
 
+list.ungrammar = {
+  install_info = {
+    url = "https://github.com/Philipp-M/tree-sitter-ungrammar",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@Philipp-M", "@amaanq" },
+}
+
 list.v = {
   install_info = {
     url = "https://github.com/vlang/vls",
