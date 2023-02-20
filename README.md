@@ -266,6 +266,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [menhir](https://github.com/Kerl13/tree-sitter-menhir) (maintained by @Kerl13)
 - [ ] [mermaid](https://github.com/monaqa/tree-sitter-mermaid) (experimental)
 - [x] [meson](https://github.com/Decodetalkers/tree-sitter-meson) (maintained by @Decodetalkers)
+- [x] [mlir](https://github.com/artagnon/tree-sitter-mlir) (experimental, maintained by @artagnon)
 - [ ] [nickel](https://github.com/nickel-lang/tree-sitter-nickel)
 - [x] [ninja](https://github.com/alemuller/tree-sitter-ninja) (maintained by @alemuller)
 - [x] [nix](https://github.com/cstrahan/tree-sitter-nix) (maintained by @leo60228)

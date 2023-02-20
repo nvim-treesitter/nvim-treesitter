@@ -278,6 +278,9 @@
   "meson": {
     "revision": "5f3138d555aceef976ec9a1d4a3f78e13b31e45f"
   },
+  "mlir": {
+    "revision": "f36fef9932e1214f65aa37cf700197ea5837e90a"
+  },
   "nickel": {
     "revision": "d6c7eeb751038f934b5b1aa7ff236376d0235c56"
   },
