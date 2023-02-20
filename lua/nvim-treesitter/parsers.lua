@@ -1193,11 +1193,10 @@ list.slint = {
 
 list.smali = {
   install_info = {
-    url = "https://github.com/amaanq/tree-sitter-smali",
+    url = "https://git.sr.ht/~yotam/tree-sitter-smali",
     files = { "src/parser.c" },
   },
   maintainers = { "@amaanq" },
-  experimental = true,
 }
 
 list.smithy = {
