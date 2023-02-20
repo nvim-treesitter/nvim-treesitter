@@ -1551,6 +1551,15 @@ list.yang = {
   filetype = "yang",
 }
 
+list.yuck = {
+  install_info = {
+    url = "https://github.com/Philipp-M/tree-sitter-yuck",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@Philipp-M", "@amaanq" },
+  filetype = "yuck",
+}
+
 list.zig = {
   install_info = {
     url = "https://github.com/maxxnino/tree-sitter-zig",
