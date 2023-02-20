@@ -905,6 +905,16 @@ list.meson = {
   maintainers = { "@Decodetalkers" },
 }
 
+list.mlir = {
+  install_info = {
+    url = "https://github.com/artagnon/tree-sitter-mlir",
+    files = { "src/parser.c" },
+    requires_generate_from_grammar = true,
+  },
+  experimental = true,
+  maintainers = { "@artagnon" },
+}
+
 list.nickel = {
   install_info = {
     url = "https://github.com/nickel-lang/tree-sitter-nickel",
