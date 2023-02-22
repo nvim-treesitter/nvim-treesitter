@@ -48,7 +48,7 @@
 (type_identifier) @type
 
 ; '?' operator, replacement for Java @Nullable
-(nullable_type) @attribute
+(nullable_type) @punctuation.special
 
 (type_alias
 	(type_identifier) @type.definition)
