@@ -408,7 +408,7 @@
 ; NOTE: `interpolated_identifier`s can be highlighted in any way
 (line_string_literal
 	"$" @punctuation.special
-	(interpolated_identifier) @variable)
+	(interpolated_identifier) @none @variable)
 (line_string_literal
 	"${" @punctuation.special
 	(interpolated_expression) @none
@@ -416,7 +416,7 @@
 
 (multi_line_string_literal
     "$" @punctuation.special
-    (interpolated_identifier) @variable)
+    (interpolated_identifier) @none @variable)
 (multi_line_string_literal
 	"${" @punctuation.special
 	(interpolated_expression) @none
