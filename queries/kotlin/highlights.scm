@@ -47,6 +47,9 @@
 
 (type_identifier) @type
 
+; '?' operator, replacement for Java @Nullable
+(nullable_type) @attribute
+
 (type_alias
 	(type_identifier) @type.definition)
 
@@ -405,7 +408,7 @@
 ; NOTE: `interpolated_identifier`s can be highlighted in any way
 (line_string_literal
 	"$" @punctuation.special
-	(interpolated_identifier) @none)
+	(interpolated_identifier) @variable)
 (line_string_literal
 	"${" @punctuation.special
 	(interpolated_expression) @none
@@ -413,7 +416,7 @@
 
 (multi_line_string_literal
     "$" @punctuation.special
-    (interpolated_identifier) @none)
+    (interpolated_identifier) @variable)
 (multi_line_string_literal
 	"${" @punctuation.special
 	(interpolated_expression) @none
