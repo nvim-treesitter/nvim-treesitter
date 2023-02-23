@@ -279,7 +279,7 @@ end
 
 function M.make_directory_change_for_command(dir, command)
   if fn.has "win32" == 1 then
-    return string.format("pushd %s & %s & popd", cmdpath(dir), command)
+    return string.format([[cmd /C "pushd %s & %s & popd"]], dir, command)
   else
     return string.format("cd %s;\n %s", dir, command)
   end
