@@ -220,6 +220,14 @@ list.cooklang = {
   maintainers = { "@addcninblue" },
 }
 
+list.cpon = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-cpon",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.cpp = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-cpp",
