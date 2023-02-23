@@ -51,7 +51,7 @@
   name:  (identifier) @function)
 (yul_evm_builtin) @function.builtin
 
-; Use contructor coloring for special functions
+; Use constructor coloring for special functions
 (constructor_definition "constructor" @constructor)
 (fallback_receive_definition "receive" @constructor)
 (fallback_receive_definition "fallback" @constructor)

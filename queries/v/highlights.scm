@@ -8,7 +8,7 @@
 (interpreted_string_literal) @string
 (string_interpolation) @none
 
-; TODO: Have differnt highlight to make then standout + highlight }{$ as special
+; TODO: Have different highlight to make then standout + highlight }{$ as special
 ; ((string_interpolation
 ;   (identifier) @constant
 ;   "$" @punctuation.special

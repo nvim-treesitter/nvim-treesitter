@@ -6,7 +6,7 @@
 ;; For the most part this means that some things have to be assigned multiple
 ;; groups.
 ;; By doing this we can add a basic capture and then later refine it with more
-;; specialied captures.
+;; specialized captures.
 ;; This can mean that sometimes things are highlighted weirdly because they
 ;; have multiple highlight groups applied to them.
 
