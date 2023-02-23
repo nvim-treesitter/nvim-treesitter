@@ -144,6 +144,14 @@ list.bibtex = {
   maintainers = { "@theHamsta", "@clason" },
 }
 
+list.bicep = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-bicep",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.blueprint = {
   install_info = {
     url = "https://gitlab.com/gabmus/tree-sitter-blueprint.git",
