@@ -1,6 +1,6 @@
 ; highlights.scm
 
-; higlight comments and symbols
+; highlight comments and symbols
 (comment) @comment
 (symbol) @symbol
 (member_access_expression (_) (identifier) @symbol)

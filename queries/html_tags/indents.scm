@@ -9,7 +9,7 @@
   (element (self_closing_tag))
 ] @indent
 
-; These tags are usually written one-lined and doesnt use self-closing tags so special-cased them 
+; These tags are usually written one-lined and doesn't use self-closing tags so special-cased them
 ; but add indent to the tag to make sure attributes inside them are still indented if written multi-lined
 (
   (start_tag 

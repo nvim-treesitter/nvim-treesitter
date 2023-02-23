@@ -118,7 +118,7 @@
   "xsd_optional"
 ] @keyword
 
-; Extended Kewords
+; Extended Keywords
 [
   "client"
   "idempotent"

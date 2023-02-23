@@ -114,7 +114,7 @@
 		(type_identifier) @function)?
 		(#lua-match? @_import "^[a-z]"))
 
-; TODO: Seperate labeled returns/breaks/continue/super/this
+; TODO: Separate labeled returns/breaks/continue/super/this
 ;       Must be implemented in the parser first
 (label) @label
 

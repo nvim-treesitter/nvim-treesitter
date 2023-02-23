@@ -10,7 +10,7 @@ function M.notify(msg, log_level, opts)
   vim.notify(msg, log_level, vim.tbl_extend("force", default_opts, opts or {}))
 end
 
--- Returns the system specific path seperator.
+-- Returns the system specific path separator.
 ---@return string
 function M.get_path_sep()
   return (fn.has "win32" == 1 and not vim.opt.shellslash:get()) and "\\" or "/"
@@ -37,7 +37,7 @@ M.join_space = M.generate_join " "
 ---     - A table with name 'commands' should be defined in 'mod' which needs to be passed as
 ---       the commands param of this function
 ---
----@param mod string, Name of the module that resides in the heirarchy - nvim-treesitter.module
+---@param mod string, Name of the module that resides in the hierarchy - nvim-treesitter.module
 ---@param commands table, Command list for the module
 ---         - {command_name} Name of the vim user defined command, Keys:
 ---             - {run}: (function) callback function that needs to be executed

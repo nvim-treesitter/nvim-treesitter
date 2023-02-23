@@ -370,7 +370,7 @@
 (statement ((identifier) @repeat
  (#lua-match? @repeat "^[cC][oO][nN][tT][iI][nN][uU][eE]$")))
 
-; -- Identifier type inferrence
+; -- Identifier type inference
 
 ; VERY QUESTIONABLE: Highlighting of identifiers based on spelling
 (exprBinary ((identifier) @constant
