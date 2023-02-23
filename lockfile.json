@@ -71,6 +71,9 @@
   "devicetree": {
     "revision": "ea30a05d0f0446a96d8b096ad11828ad4f8ad849"
   },
+  "dhall": {
+    "revision": "affb6ee38d629c9296749767ab832d69bb0d9ea8"
+  },
   "diff": {
     "revision": "f69bde8e56f431863eba2fe4bab23e7d9692855f"
   },

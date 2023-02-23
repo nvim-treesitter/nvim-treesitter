@@ -275,6 +275,14 @@ list.devicetree = {
   maintainers = { "@jedrzejboczar" },
 }
 
+list.dhall = {
+  install_info = {
+    url = "https://github.com/jbellerb/tree-sitter-dhall",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.diff = {
   install_info = {
     url = "https://github.com/the-mikedavis/tree-sitter-diff",
