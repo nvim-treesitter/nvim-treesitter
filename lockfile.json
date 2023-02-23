@@ -27,13 +27,13 @@
     "revision": "6ef91ca8270f0112b9c6d27ecb9966c741a5d103"
   },
   "c": {
-    "revision": "7175a6dd5fc1cee660dce6fe23f6043d75af424a"
+    "revision": "f35789006ccbe5be8db21d1a2dd4cc0b5a1286f2"
   },
   "c_sharp": {
     "revision": "5b6c4d0d19d79b05c69ad752e11829910e3b4610"
   },
   "capnp": {
-    "revision": "9ed3aa8c212cddc94dca087cfe2c30d43234c867"
+    "revision": "fc6e2addf103861b9b3dffb82c543eb6b71061aa"
   },
   "chatito": {
     "revision": "3baf22e7e507cedf15d1dbc03df8afa50a625586"
@@ -54,13 +54,13 @@
     "revision": "5e113412aadb78955c27010daa4dbe1d202013cf"
   },
   "cpp": {
-    "revision": "56cec4c2eb5d6af3d2942e69e35db15ae2433740"
+    "revision": "66262d3e76eb2046c76e6d661a6b72664bfb5819"
   },
   "css": {
     "revision": "769203d0f9abe1a9a691ac2b9fe4bb4397a73c51"
   },
   "cuda": {
-    "revision": "a02c21408c592e6e6856eaabe4727faa97cf8d85"
+    "revision": "9b1f7481a151686fce8af66da147f40388f8ee4d"
   },
   "d": {
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
@@ -186,7 +186,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "8e2f0907e8d2e17a88a375025e70054bafdaa8b0"
+    "revision": "18f2dcb5f65075457638658c4763672e826dcddf"
   },
   "hocon": {
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
@@ -207,7 +207,7 @@
     "revision": "dd597f13eb9bab0c1bccc9aec390e8e6ebf9e0a6"
   },
   "javascript": {
-    "revision": "15e85e80b851983fab6b12dce5a535f5a0df0f9c"
+    "revision": "266455e22fc54f0add4dd2404ebe307d4d65deae"
   },
   "jq": {
     "revision": "13990f530e8e6709b7978503da9bc8701d366791"
@@ -363,7 +363,7 @@
     "revision": "206c7077164372c596ffa8eaadb9435c28941364"
   },
   "rust": {
-    "revision": "f7fb205c424b0962de59b26b931fe484e1262b35"
+    "revision": "fbf9e507d09d8b3c0bb9dfc4d46c31039a47dc4a"
   },
   "scala": {
     "revision": "2275b754360de8539e02e84106fa38f7cb6de275"
@@ -378,7 +378,7 @@
     "revision": "07547525cdf4627343dca5891f1743ae45e879bb"
   },
   "smali": {
-    "revision": "5a742af7388864a3ff2ce8421328a33e7246a2d5"
+    "revision": "a67a429784dafa0ca4342d71e6530137ca803883"
   },
   "smithy": {
     "revision": "cf8c7eb9faf7c7049839585eac19c94af231e6a0"
