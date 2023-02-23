@@ -811,6 +811,16 @@ list.lua = {
   maintainers = { "@muniftanjim" },
 }
 
+list.luap = {
+  install_info = {
+    url = "https://github.com/vhyrro/tree-sitter-luap",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@vhyrro" },
+  filetype = "lua",
+}
+
 list.m68k = {
   install_info = {
     url = "https://github.com/grahambates/tree-sitter-m68k",
