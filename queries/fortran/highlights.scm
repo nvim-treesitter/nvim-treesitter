@@ -11,10 +11,6 @@
  "device"
  "dimension"
  "endtype"
- "global"
- "grid_global"
- "host"
- "import"
  "in"
  "inout"
  "intent"
@@ -27,6 +23,8 @@
 
 [
  "contains"
+ "import"
+ "include"
  "private"
  "public"
  ] @include
@@ -67,8 +65,10 @@
  "exit"
  "extends"
  "format"
+ "global"
  "goto"
- "include"
+ "grid_global"
+ "host"
  "interface"
  "intrinsic"
  "non_intrinsic"
@@ -190,7 +190,7 @@
   (name) @function)
 
 (subroutine_call
-  (identifier) @function)
+  (identifier) @function.call)
 
 (keyword_argument
   name: (identifier) @keyword)
