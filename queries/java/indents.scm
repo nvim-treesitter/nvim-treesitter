@@ -22,9 +22,7 @@
   "]"
 ] @branch
 
-[
-  "}"
-] @indent_end
+"}" @indent_end
 
 (line_comment) @ignore
 
