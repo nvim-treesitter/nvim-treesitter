@@ -140,6 +140,7 @@ effect on highlighting. We will work on improving highlighting in the near futur
 
 ```scheme
 @keyword             ; various keywords
+@keyword.coroutine   ; keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
 @keyword.function    ; keywords that define a function (e.g. `func` in Go, `def` in Python)
 @keyword.operator    ; operators that are English words (e.g. `and` / `or`)
 @keyword.return      ; keywords like `return` and `yield`
