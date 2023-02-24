@@ -7,8 +7,7 @@ jobs:
   luarocks-upload:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        uses: nvim-neorocks/luarocks-tag-release@v1.0.2
+      - uses: nvim-neorocks/luarocks-tag-release@v1.0.2
         env:
           LUAROCKS_API_KEY: ${{ secrets.LUAROCKS_API_KEY }}
         with:
