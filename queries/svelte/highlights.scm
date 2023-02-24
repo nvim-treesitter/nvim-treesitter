@@ -11,6 +11,12 @@
 ((special_block_keyword) @keyword.coroutine
   (#eq? @keyword.coroutine "await"))
 
+((special_block_keyword) @exception
+  (#eq? @exception "catch"))
+
+((special_block_keyword) @conditional
+  (#match? @conditional "^(if|else)$"))
+
 [
   "{"
   "}"
