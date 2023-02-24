@@ -6,6 +6,7 @@
   (func_literal)
   (literal_value)
   (expression_case)
+  (communication_case)
   (default_case)
   (block)
   (call_expression)
