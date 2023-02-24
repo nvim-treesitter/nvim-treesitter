@@ -481,12 +481,13 @@ parser_config.zimbu = {
 }
 ```
 
-If you wish to set a specific parser for a filetype, you should extend the `filetype_to_parsername` table:
+If you wish to set a specific parser for a filetype, you should use `vim.treesitter.language.register()`:
 
 ```lua
-local ft_to_parser = require"nvim-treesitter.parsers".filetype_to_parsername
-ft_to_parser.someft = "python" -- the someft filetype will use the python parser and queries.
+vim.treesitter.language.register('python', 'someft')  -- the someft filetype will use the python parser and queries.
 ```
+
+Note this requires Nvim v0.9.
 
 4. Start `nvim` and `:TSInstall zimbu`.
 

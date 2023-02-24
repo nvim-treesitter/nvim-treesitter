@@ -54,7 +54,13 @@ local function reattach_if_possible_fn(lang, error_on_fail)
     for _, buf in ipairs(vim.api.nvim_list_bufs()) do
       if parsers.get_buf_lang(buf) == lang then
         vim._ts_remove_language(lang)
-        local ok, err = pcall(vim.treesitter.language.require_language, lang)
+        local ok, err
+        if vim.treesitter.language.add then
+          local ft = vim.bo[buf].filetype
+          ok, err = pcall(vim.treesitter.language.add, lang, { filetype = ft })
+        else
+          ok, err = pcall(vim.treesitter.language.require_language, lang)
+        end
         if not ok and error_on_fail then
           vim.notify("Could not load parser for " .. lang .. ": " .. vim.inspect(err))
         end
