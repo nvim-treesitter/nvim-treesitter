@@ -112,6 +112,9 @@
   "deftype"))
 ((sym_lit) @keyword
  (#eq? @keyword "declare"))
+((sym_name) @keyword.coroutine
+ (#any-of? @keyword.coroutine
+  "alts!" "alts!!" "await" "await-for" "await1" "chan" "close!" "future" "go" "sync" "thread" "timeout" "<!" "<!!" ">!" ">!!"))
 ((sym_lit) @keyword.function
  (#match? @keyword.function "^(defn|defn-|fn|fn[*])$"))
 
@@ -148,13 +151,13 @@
  (#any-of? @function.macro
   "." ".." "->" "->>" "amap" "areduce" "as->" "assert"
   "binding" "bound-fn" "delay" "do" "dosync"
-  "doto" "extend-protocol" "extend-type" "future"
+  "doto" "extend-protocol" "extend-type"
   "gen-class" "gen-interface" "io!" "lazy-cat"
   "lazy-seq" "let" "letfn" "locking" "memfn" "monitor-enter"
   "monitor-exit" "proxy" "proxy-super" "pvalues"
-  "refer-clojure" "reify" "set!" "some->" "some->>" "sync"
+  "refer-clojure" "reify" "set!" "some->" "some->>"
   "time" "unquote" "unquote-splicing" "var" "vswap!"
-  "ex-cause" "ex-data" "ex-message")) 
+  "ex-cause" "ex-data" "ex-message"))
 ((sym_lit) @function.macro
  (#match? @function.macro "^with\\-.*$"))
 
@@ -175,9 +178,8 @@
   "any?" "apply" "array-map" "aset" "aset-boolean" "aset-byte"
   "aset-char" "aset-double" "aset-float" "aset-int"
   "aset-long" "aset-short" "assoc" "assoc!" "assoc-in"
-  "associative?" "atom" "await" "await-for" "await1"
-  "bases" "bean" "bigdec" "bigint" "biginteger" "bit-and"
-  "bit-and-not" "bit-clear" "bit-flip" "bit-not" "bit-or"
+  "associative?" "atom" "bases" "bean" "bigdec" "bigint" "biginteger"
+  "bit-and" "bit-and-not" "bit-clear" "bit-flip" "bit-not" "bit-or"
   "bit-set" "bit-shift-left" "bit-shift-right" "bit-test"
   "bit-xor" "boolean" "boolean-array" "boolean?"
   "booleans" "bound-fn*" "bound?" "bounded-count"

@@ -307,7 +307,13 @@
 ;	"typeof" ; NOTE: It is reserved for future use
 ] @keyword
 
-("fun") @keyword.function
+[
+  "suspend"
+] @keyword.coroutine
+
+[
+  "fun"
+] @keyword.function
 
 (jump_expression) @keyword.return
 

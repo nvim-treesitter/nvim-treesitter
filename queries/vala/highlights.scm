@@ -90,7 +90,6 @@
 
 [
  "abstract"
- "async"
  "class"
  "construct"
  "continue"
@@ -113,6 +112,11 @@
  "virtual"
  "with"
 ] @keyword
+
+[
+  "async"
+  "yield"
+] @keyword.coroutine
 
 [
  "const"
@@ -183,7 +187,6 @@
 
 [
   "return"
-  "yield"
 ] @keyword.return
 
 [

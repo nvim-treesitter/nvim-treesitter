@@ -17,8 +17,6 @@
 "function" @keyword.function
 
 [
- "async"
- "await"
  "type"
  "interface"
  "implements"
@@ -30,6 +28,11 @@
  "extends"
  "insteadof"
 ] @keyword
+
+[
+  "async"
+  "await"
+] @keyword.coroutine
 
 [
  "use"

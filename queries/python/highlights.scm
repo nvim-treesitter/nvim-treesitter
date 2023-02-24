@@ -240,8 +240,6 @@
 
 [
   "assert"
-  "async"
-  "await"
   "class"
   "exec"
   "global"
@@ -251,6 +249,11 @@
   "with"
   "as"
 ] @keyword
+
+[
+  "async"
+  "await"
+] @keyword.coroutine
 
 [
   "return"

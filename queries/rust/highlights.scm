@@ -169,8 +169,6 @@
 (use_as_clause "as" @include)
 
 [
-  "async"
-  "await"
   "default"
   "dyn"
   "enum"
@@ -187,6 +185,11 @@
   "unsafe"
   "where"
 ] @keyword
+
+[
+  "async"
+  "await"
+] @keyword.coroutine
 
 [
  "ref"
