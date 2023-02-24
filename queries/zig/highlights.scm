@@ -80,6 +80,11 @@ field_constant: (IDENTIFIER) @constant
 (FLOAT) @float
 
 [
+  "true"
+  "false"
+] @boolean
+
+[
   (LINESTRING)
   (STRINGLITERALSINGLE)
 ] @string @spell
@@ -96,6 +101,11 @@ field_constant: (IDENTIFIER) @constant
   "defer"
   "errdefer"
   "test"
+  "struct"
+  "union"
+  "enum"
+  "opaque"
+  "error"
 ] @keyword
 
 [
@@ -148,14 +158,6 @@ field_constant: (IDENTIFIER) @constant
 ] @type.builtin
 
 [
-  "struct"
-  "union"
-  "enum"
-  "opaque"
-  "error"
-] @type.definition
-
-[
   "const"
   "var"
   "volatile"
@@ -185,8 +187,6 @@ field_constant: (IDENTIFIER) @constant
   "null"
   "unreachable"
   "undefined"
-  "true"
-  "false"
 ] @constant.builtin
 
 [
