@@ -95,9 +95,16 @@ field_constant: (IDENTIFIER) @constant
   "asm"
   "defer"
   "errdefer"
-  "nosuspend"
   "test"
 ] @keyword
+
+[
+  "async"
+  "await"
+  "suspend"
+  "nosuspend"
+  "resume"
+] @keyword.coroutine
 
 [
   "fn"
@@ -111,10 +118,6 @@ field_constant: (IDENTIFIER) @constant
 
 [
   "return"
-  "async"
-  "await"
-  "suspend"
-  "resume"
 ] @keyword.return
 
 [

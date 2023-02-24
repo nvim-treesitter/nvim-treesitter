@@ -81,7 +81,6 @@
   (pcal_algorithm_start)
   "algorithm"
   "assert"
-  "await"
   "begin"
   "call"
   "define"
@@ -98,6 +97,9 @@
   "when"
   "with"
 ] @keyword
+[
+  "await"
+] @keyword.coroutine
 (pcal_with ("=") @keyword)
 (pcal_process ("=") @keyword)
 [ 

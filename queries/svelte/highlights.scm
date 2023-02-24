@@ -8,6 +8,9 @@
   (as)
 ] @keyword
 
+((special_block_keyword) @keyword.coroutine
+  (#eq? @keyword.coroutine "await"))
+
 [
   "{"
   "}"

@@ -159,12 +159,15 @@
 "func" @keyword.function
 
 [
-  "await"
   "return"
 ] @keyword.return
 
-(call (identifier) @keyword.return
-      (#eq? @keyword.return "yield"))
+[
+  "await"
+] @keyword.coroutine
+
+(call (identifier) @keyword.coroutine
+      (#eq? @keyword.coroutine "yield"))
 
 
 ;; Builtins

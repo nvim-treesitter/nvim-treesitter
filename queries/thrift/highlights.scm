@@ -86,7 +86,6 @@
   "include"
   "interaction"
   "namespace"
-  "oneway"
   "optional"
   "required"
   "senum"
@@ -96,10 +95,13 @@
   "union"
 ] @keyword
 
+[
+  "oneway"
+] @keyword.coroutine
+
 ; Deprecated Keywords
 
 [
-  "async"
   "cocoa_prefix"
   "cpp_namespace"
   "csharp_namespace"
@@ -118,7 +120,12 @@
   "xsd_optional"
 ] @keyword
 
+[
+  "async"
+] @keyword.coroutine
+
 ; Extended Keywords
+
 [
   "client"
   "idempotent"

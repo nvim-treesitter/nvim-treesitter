@@ -229,6 +229,11 @@
 ] @keyword
 
 [
+  "async"
+  "await"
+] @keyword.coroutine
+
+[
   "return"
 ] @keyword.return
 

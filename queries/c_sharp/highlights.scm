@@ -337,8 +337,6 @@
  "implicit"
  "explicit"
  "override"
- "async"
- "await"
  "class"
  "delegate"
  "enum"
@@ -357,6 +355,11 @@
  "unchecked"
  "fixed"
 ] @keyword
+
+[
+  "async"
+  "await"
+] @keyword.coroutine
 
 [
  "const"
