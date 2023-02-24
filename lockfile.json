@@ -30,7 +30,7 @@
     "revision": "f35789006ccbe5be8db21d1a2dd4cc0b5a1286f2"
   },
   "c_sharp": {
-    "revision": "5b6c4d0d19d79b05c69ad752e11829910e3b4610"
+    "revision": "3a5de1b38136add719c2e4dfba64359619745ae6"
   },
   "capnp": {
     "revision": "fc6e2addf103861b9b3dffb82c543eb6b71061aa"
@@ -396,10 +396,10 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "3a3f92b29c880488a08bc2baaf1aca6432ec3380"
+    "revision": "672fe6b5180d20e9e84fd61749cc3e083e88d9d9"
   },
   "starlark": {
-    "revision": "2e94347f71147c268a4c5c0ce188be8baf2fce5a"
+    "revision": "2608deac514242c9e7e5609cbfab59095997b1da"
   },
   "supercollider": {
     "revision": "90c6d9f777d2b8c4ce497c48b5f270a44bcf3ea0"
