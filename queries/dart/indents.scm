@@ -21,6 +21,10 @@
   "]"
 ] @branch
 
+[
+ "}"
+] @indent_end
+
 ; this one is for dedenting the else block
 (if_statement (block) @branch)
 
