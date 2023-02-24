@@ -1235,11 +1235,11 @@ list.smithy = {
 
 list.solidity = {
   install_info = {
-    url = "https://github.com/YongJieYongJie/tree-sitter-solidity",
-    branch = "with-generated-c-code",
+    url = "https://github.com/JoranHonig/tree-sitter-solidity",
+    branch = "master",
     files = { "src/parser.c" },
   },
-  maintainers = { "@YongJieYongJie" },
+  maintainers = { "@amaanq" },
 }
 
 list.sparql = {

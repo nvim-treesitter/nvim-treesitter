@@ -303,7 +303,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [slint](https://github.com/jrmoulton/tree-sitter-slint) (experimental, maintained by @jrmoulton)
 - [x] [smali](https://git.sr.ht/~yotam/tree-sitter-smali) (maintained by @amaanq)
 - [x] [smithy](https://github.com/indoorvivants/tree-sitter-smithy) (maintained by @amaanq, @keynmol)
-- [x] [solidity](https://github.com/YongJieYongJie/tree-sitter-solidity) (maintained by @YongJieYongJie)
+- [x] [solidity](https://github.com/JoranHonig/tree-sitter-solidity) (maintained by @amaanq)
 - [x] [sparql](https://github.com/BonaBeavis/tree-sitter-sparql) (maintained by @BonaBeavis)
 - [x] [sql](https://github.com/derekstride/tree-sitter-sql) (maintained by @derekstride)
 - [x] [starlark](https://github.com/amaanq/tree-sitter-starlark) (maintained by @amaanq)
