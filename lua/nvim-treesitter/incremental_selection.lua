@@ -8,6 +8,7 @@ local queries = require "nvim-treesitter.query"
 
 local M = {}
 
+---@type table<integer, table<TSNode|nil>>
 local selections = {}
 
 function M.init_selection()
@@ -17,14 +18,15 @@ function M.init_selection()
   ts_utils.update_selection(buf, node)
 end
 
---- Get the range of the current visual selection.
+-- Get the range of the current visual selection.
 --
--- The range start with 1 and the ending is inclusive.
+-- The range starts with 1 and the ending is inclusive.
+---@return integer, integer, integer, integer
 local function visual_selection_range()
-  local _, csrow, cscol, _ = unpack(vim.fn.getpos "'<")
-  local _, cerow, cecol, _ = unpack(vim.fn.getpos "'>")
+  local _, csrow, cscol, _ = unpack(vim.fn.getpos "'<") ---@type integer, integer, integer, integer
+  local _, cerow, cecol, _ = unpack(vim.fn.getpos "'>") ---@type integer, integer, integer, integer
 
-  local start_row, start_col, end_row, end_col
+  local start_row, start_col, end_row, end_col ---@type integer, integer, integer, integer
 
   if csrow < cerow or (csrow == cerow and cscol <= cecol) then
     start_row = csrow
@@ -41,12 +43,16 @@ local function visual_selection_range()
   return start_row, start_col, end_row, end_col
 end
 
+---@param node TSNode
+---@return boolean
 local function range_matches(node)
   local csrow, cscol, cerow, cecol = visual_selection_range()
   local srow, scol, erow, ecol = ts_utils.get_vim_range { node:range() }
   return srow == csrow and scol == cscol and erow == cerow and ecol == cecol
 end
 
+---@param get_parent fun(node: TSNode): TSNode|nil
+---@return fun():nil
 local function select_incremental(get_parent)
   return function()
     local buf = api.nvim_get_current_buf()
@@ -67,7 +73,7 @@ local function select_incremental(get_parent)
     end
 
     -- Find a node that changes the current selection.
-    local node = nodes[#nodes]
+    local node = nodes[#nodes] ---@type TSNode
     while true do
       local parent = get_parent(node)
       if not parent or parent == node then
@@ -116,7 +122,7 @@ function M.node_decremental()
   end
 
   table.remove(selections[buf])
-  local node = nodes[#nodes]
+  local node = nodes[#nodes] ---@type TSNode
   ts_utils.update_selection(buf, node)
 end
 
@@ -127,14 +133,16 @@ local FUNCTION_DESCRIPTIONS = {
   node_decremental = "Shrink selection to previous named node",
 }
 
+---@param bufnr integer
 function M.attach(bufnr)
   local config = configs.get_module "incremental_selection"
   for funcname, mapping in pairs(config.keymaps) do
     if mapping then
-      local mode
-      local rhs
+      ---@type string, string|function
+      local mode, rhs
       if funcname == "init_selection" then
         mode = "n"
+        ---@type function
         rhs = M[funcname]
       else
         mode = "x"

@@ -20,12 +20,17 @@ local function valid_args(name, pred, count, strict_count)
   return true
 end
 
-query.add_predicate("nth?", function(match, pattern, bufnr, pred)
+---@param match (TSNode|nil)[]
+---@param _pattern string
+---@param _bufnr integer
+---@param pred string[]
+---@return boolean|nil
+query.add_predicate("nth?", function(match, _pattern, _bufnr, pred)
   if not valid_args("nth?", pred, 2, true) then
     return
   end
 
-  local node = match[pred[2]]
+  local node = match[pred[2]] ---@type TSNode
   local n = tonumber(pred[3])
   if node and node:parent() and node:parent():named_child_count() > n then
     return node:parent():named_child(n) == node
@@ -34,7 +39,12 @@ query.add_predicate("nth?", function(match, pattern, bufnr, pred)
   return false
 end)
 
-local function has_ancestor(match, pattern, bufnr, pred)
+---@param match (TSNode|nil)[]
+---@param _pattern string
+---@param _bufnr integer
+---@param pred string[]
+---@return boolean|nil
+local function has_ancestor(match, _pattern, _bufnr, pred)
   if not valid_args(pred[1], pred, 2) then
     return
   end
@@ -65,7 +75,12 @@ query.add_predicate("has-ancestor?", has_ancestor)
 
 query.add_predicate("has-parent?", has_ancestor)
 
-query.add_predicate("is?", function(match, pattern, bufnr, pred)
+---@param match (TSNode|nil)[]
+---@param _pattern string
+---@param bufnr integer
+---@param pred string[]
+---@return boolean|nil
+query.add_predicate("is?", function(match, _pattern, bufnr, pred)
   if not valid_args("is?", pred, 2) then
     return
   end
@@ -84,7 +99,12 @@ query.add_predicate("is?", function(match, pattern, bufnr, pred)
   return vim.tbl_contains(types, kind)
 end)
 
-query.add_predicate("has-type?", function(match, pattern, bufnr, pred)
+---@param match (TSNode|nil)[]
+---@param _pattern string
+---@param _bufnr integer
+---@param pred string[]
+---@return boolean|nil
+query.add_predicate("has-type?", function(match, _pattern, _bufnr, pred)
   if not valid_args(pred[1], pred, 2) then
     return
   end
@@ -102,8 +122,14 @@ end)
 -- Just avoid some annoying warnings for this directive
 query.add_directive("make-range!", function() end)
 
+---@param match (TSNode|nil)[]
+---@param _ string
+---@param bufnr integer
+---@param pred string[]
+---@param metadata table
+---@return boolean|nil
 query.add_directive("downcase!", function(match, _, bufnr, pred, metadata)
-  local text, key, value
+  local text, key, value ---@type string|string[], string, string|integer
 
   if #pred == 3 then
     -- (#downcase! @capture "key")
@@ -129,13 +155,19 @@ query.add_directive("downcase!", function(match, _, bufnr, pred, metadata)
   end
 end)
 
+---@param match (TSNode|nil)[]
+---@param _pattern string
+---@param _bufnr integer
+---@param pred string[]
+---@param metadata table
+---@return boolean|nil
 query.add_directive("exclude_children!", function(match, _pattern, _bufnr, pred, metadata)
   local capture_id = pred[2]
   local node = match[capture_id]
   local start_row, start_col, end_row, end_col = node:range()
   local ranges = {}
   for i = 0, node:named_child_count() - 1 do
-    local child = node:named_child(i)
+    local child = node:named_child(i) ---@type TSNode
     local child_start_row, child_start_col, child_end_row, child_end_col = child:range()
     if child_start_row > start_row or child_start_col > start_col then
       table.insert(ranges, {
@@ -156,6 +188,11 @@ end)
 
 -- Trim blank lines from end of the region
 -- Arguments are the captures to trim.
+---@param match (TSNode|nil)[]
+---@param _ string
+---@param bufnr integer
+---@param pred string[]
+---@param metadata table
 query.add_directive("trim!", function(match, _, bufnr, pred, metadata)
   for _, id in ipairs { select(2, unpack(pred)) } do
     local node = match[id]

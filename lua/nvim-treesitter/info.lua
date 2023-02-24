@@ -31,6 +31,8 @@ end
 -- {'mod1', 'mod2.sub1', 'mod2.sub2', 'mod3'}
 -- ->
 -- { default = {'mod1', 'mod3'}, mod2 = {'sub1', 'sub2'}}
+---@param modulelist string[]
+---@return table
 local function namespace_modules(modulelist)
   local modules = {}
   for _, module in ipairs(modulelist) do
@@ -50,6 +52,8 @@ local function namespace_modules(modulelist)
   return modules
 end
 
+---@param list string[]
+---@return integer length
 local function longest_string_length(list)
   local length = 0
   for _, value in ipairs(list) do
@@ -60,6 +64,11 @@ local function longest_string_length(list)
   return length
 end
 
+---@param curbuf integer
+---@param origbuf integer
+---@param parserlist string[]
+---@param namespace string
+---@param modulelist string[]
 local function append_module_table(curbuf, origbuf, parserlist, namespace, modulelist)
   local maxlen_parser = longest_string_length(parserlist)
   table.sort(modulelist)
@@ -104,6 +113,7 @@ local function print_info_modules(parserlist, module)
     modules = namespace_modules(configs.available_modules())
   end
 
+  ---@type string[]
   local namespaces = {}
   for k, _ in pairs(modules) do
     table.insert(namespaces, k)
@@ -150,6 +160,7 @@ local function module_info(module)
   end
 end
 
+---@return string[]
 function M.installed_parsers()
   local installed = {}
   for _, p in pairs(parsers.available_parsers()) do
