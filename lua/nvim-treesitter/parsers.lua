@@ -40,24 +40,7 @@ local filetype_to_parsername = {
 ---@type ParserInfo[]
 local list = setmetatable({}, {
   __newindex = function(table, parsername, parserconfig)
-    rawset(
-      table,
-      parsername,
-      setmetatable(parserconfig, {
-        __newindex = function(parserconfigtable, key, value)
-          if key == "used_by" then
-            require("nvim-treesitter.utils").notify(
-              "used_by is deprecated, please use 'filetype_to_parsername'",
-              vim.log.levels.WARN
-            )
-            filetype_to_parsername[value] = parsername
-          else
-            rawset(parserconfigtable, key, value)
-          end
-        end,
-      })
-    )
-
+    rawset(table, parsername, parserconfig)
     filetype_to_parsername[parserconfig.filetype or parsername] = parsername
   end,
 })
