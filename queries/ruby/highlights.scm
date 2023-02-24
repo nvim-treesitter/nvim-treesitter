@@ -8,19 +8,13 @@
 [
  "alias"
  "begin"
- "break"
  "class"
- "def"
  "do"
  "end"
  "ensure"
  "module"
- "next"
- "redo"
  "rescue"
- "retry"
  "then"
- "undef"
  ] @keyword
 
 [
@@ -36,6 +30,14 @@
 ] @keyword.operator
 
 [
+  "def"
+  "undef"
+] @keyword.function
+
+(method
+  "end" @keyword.function)
+
+[
  "case"
  "else"
  "elsif"
@@ -44,10 +46,23 @@
  "when"
  ] @conditional
 
+(if
+  "end" @conditional)
+(if
+  (then) @conditional)
+(unless
+  (then) @conditional)
+(elsif
+  (then) @conditional)
+
 [
  "for"
  "until"
  "while"
+ "break"
+ "redo"
+ "retry"
+ "next"
  ] @repeat
 
 (constant) @type
