@@ -2,13 +2,14 @@ local configs = require "nvim-treesitter.configs"
 
 local M = {}
 
----@param config table
+---@param config TSModule
 ---@param lang string
 ---@return boolean
 local function should_enable_vim_regex(config, lang)
   local additional_hl = config.additional_vim_regex_highlighting
   local is_table = type(additional_hl) == "table"
 
+  ---@diagnostic disable-next-line: param-type-mismatch
   return additional_hl and (not is_table or vim.tbl_contains(additional_hl, lang))
 end
 

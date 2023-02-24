@@ -36,6 +36,7 @@ local filetype_to_parsername = {
 ---@field filetype string
 ---@field maintainers string[]
 ---@field experimental boolean|nil
+---@field readme_name string|nil
 
 ---@type ParserInfo[]
 local list = setmetatable({}, {
@@ -1534,11 +1535,13 @@ function M.ft_to_lang(ft)
   end
 end
 
+-- Get a list of all available parsers
+---@return string[]
 function M.available_parsers()
   if vim.fn.executable "tree-sitter" == 1 and vim.fn.executable "node" == 1 then
     return vim.tbl_keys(M.list)
   else
-    return vim.tbl_filter(function(p)
+    return vim.tbl_filter(function(p) ---@param p string
       return not M.list[p].install_info.requires_generate_from_grammar
     end, vim.tbl_keys(M.list))
   end
@@ -1590,9 +1593,9 @@ function M.get_tree_root(bufnr)
   return M.get_parser(bufnr):parse()[1]:root()
 end
 
--- get language of given buffer
--- @param optional buffer number or current buffer
--- @returns language string of buffer
+-- Gets the language of a given buffer
+---@param bufnr number? or current buffer
+---@return string
 function M.get_buf_lang(bufnr)
   bufnr = bufnr or api.nvim_get_current_buf()
   return M.ft_to_lang(api.nvim_buf_get_option(bufnr, "ft"))

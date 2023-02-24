@@ -2,20 +2,26 @@ local api = vim.api
 
 local M = {}
 
---- Creates a cache table for buffers keyed by a type name.
---- Cache entries attach to the buffer and cleanup entries
---- as buffers are detached.
+-- Creates a cache table for buffers keyed by a type name.
+-- Cache entries attach to the buffer and cleanup entries
+-- as buffers are detached.
 function M.create_buffer_cache()
   local cache = {}
 
+  ---@type table<string, table<string, any>>
   local items = setmetatable({}, {
     __index = function(tbl, key)
       rawset(tbl, key, {})
       return rawget(tbl, key)
     end,
   })
+
+  ---@type table<integer|string, boolean>
   local loaded_buffers = {}
 
+  ---@param type_name string
+  ---@param bufnr integer
+  ---@param value any
   function cache.set(type_name, bufnr, value)
     if not loaded_buffers[bufnr] then
       loaded_buffers[bufnr] = true
@@ -34,18 +40,27 @@ function M.create_buffer_cache()
     items[tostring(bufnr)][type_name] = value
   end
 
+  ---@param type_name string
+  ---@param bufnr integer
+  ---@return any
   function cache.get(type_name, bufnr)
     return items[tostring(bufnr)][type_name]
   end
 
+  ---@param type_name string
+  ---@param bufnr integer
+  ---@return boolean
   function cache.has(type_name, bufnr)
     return cache.get(type_name, bufnr) ~= nil
   end
 
+  ---@param type_name string
+  ---@param bufnr integer
   function cache.remove(type_name, bufnr)
     items[tostring(bufnr)][type_name] = nil
   end
 
+  ---@param bufnr integer
   function cache.clear_buffer(bufnr)
     items[tostring(bufnr)] = nil
   end
