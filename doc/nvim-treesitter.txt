@@ -472,6 +472,335 @@ Note: This is highly experimental, and folding can break on some types of
       In any case, feel free to open an issue with the reproducing steps.
 
 ==============================================================================
+HIGHLIGHTS                                        *nvim-treesitter-highlights*
+
+The following is a list of highlights groups, the syntactic elements they
+apply to, and some examples.
+
+							      *hl-@attribute*
+`@attribute`
+Annotations that can be attached to the code to denote some kind of meta
+information. e.g. C++/Dart attributes, Python decorators.
+
+								*hl-@boolean*
+`@boolean`
+Boolean literals: `True` and `False` in Python.
+
+							      *hl-@character*
+`@character`
+Character literals: `'a'` in C.
+
+						       *hl-@character.special*
+`@character.special`
+Special characters.
+
+								*hl-@conceal*
+`@conceal`
+Concealing: e.g. quotes in JSON.
+
+								*hl-@comment*
+`@comment`
+Line comments and block comments.
+
+							    *hl-@conditional*
+`@conditional`
+Keywords related to conditionals: `if`, `when`, `cond`, etc.
+
+							    *hl-@conditional.ternary*
+`@conditional.ternary`
+Ternary operator: e.g. `?` / `:`.
+
+							       *hl-@constant*
+`@constant`
+Constants identifiers. These might not be semantically constant.
+E.g. uppercase variables in Python.
+
+							   *hl-@constant.builtin*
+`@constant.builtin`
+Built-in constant values: `nil` in Lua.
+
+							     *hl-@constant.macro*
+`@constant.macro`
+Constants defined by macros: `NULL` in C.
+
+							    *hl-@constructor*
+`@constructor`
+Constructor calls and definitions: `{}` in Lua, and Java constructors.
+
+								  *hl-@debug*
+`@debug`
+Debugging statements.
+
+								 *hl-@define*
+`@define`
+Preprocessor #define statements.
+
+								  *hl-@error*
+`@error`
+Syntax/parser errors. This might highlight large sections of code while the
+user is typing still incomplete code, use a sensible highlight.
+
+							      *hl-@exception*
+`@exception`
+Exception related keywords: `try`, `except`, `finally` in Python.
+
+								  *hl-@field*
+`@field`
+Object and struct fields.
+
+								  *hl-@float*
+`@float`
+Floating-point number literals.
+
+							       *hl-@function*
+`@function`
+Function definitions.
+
+							   *hl-@function.call*
+`@function.call`
+Function calls.
+
+							    *hl-@function.builtin*
+`@function.builtin`
+Built-in functions: `print` in Lua.
+
+							      *hl-@function.macro*
+`@function.macro`
+Macro defined functions (calls and definitions): each `macro_rules` in
+Rust.
+
+								*hl-@include*
+`@include`
+File or module inclusion keywords: `#include` in C, `use` or `extern crate` in
+Rust.
+
+								*hl-@keyword*
+`@keyword`
+Keywords that don't fit into other categories.
+
+							*hl-@keyword.function*
+`@keyword.function`
+Keywords used to define a function: `function` in Lua, `def` and `lambda` in
+Python.
+
+							*hl-@keyword.operator*
+`@keyword.operator`
+Unary and binary operators that are English words: `and`, `or` in Python;
+`sizeof` in C.
+
+							  *hl-@keyword.return*
+`@keyword.return`
+Keywords like `return` and `yield`.
+
+								  *hl-@label*
+`@label`
+GOTO labels: `label:` in C, and `::label::` in Lua.
+
+								 *hl-@method*
+`@method`
+Method definitions.
+
+							     *hl-@method.call*
+`@method.call`
+Method calls.
+
+							      *hl-@namespace*
+`@namespace`
+Identifiers referring to modules and namespaces.
+
+								     *hl-@none*
+`@none`
+No highlighting (sets all highlight arguments to `NONE`). This group is used
+to clear certain ranges, for example, string interpolations. Don't change the
+values of this highlight group.
+
+								 *hl-@nospell*
+`@nospell`
+Defining regions to NOT be spellchecked.
+
+								 *hl-@number*
+`@number`
+Numeric literals that don't fit into other categories.
+
+							       *hl-@operator*
+`@operator`
+Binary or unary operators: `+`, and also `->` and `*` in C.
+
+							      *hl-@parameter*
+`@parameter`
+Parameters of a function.
+
+								*hl-@preproc*
+`@preproc`
+Preprocessor #if, #else, #endif, etc.
+
+							       *hl-@property*
+`@property`
+Same as `@field`.
+
+							 *hl-@punctuation.delimiter*
+`@punctuation.delimiter`
+Punctuation delimiters: Periods, commas, semicolons, etc.
+
+							   *hl-@punctuation.bracket*
+`@punctuation.bracket`
+Brackets, braces, parentheses, etc.
+
+							   *hl-@punctuation.special*
+`@punctuation.special`
+Special punctuation that doesn't fit into the previous categories.
+
+							     *hl-@reference*
+`@reference`
+Defining identifiers references.
+
+								 *hl-@repeat*
+`@repeat`
+Keywords related to loops: `for`, `while`, etc.
+
+							     *hl-@scope*
+`@scope`
+Defining a scope block.
+
+							     *hl-@storageclass*
+`@storageclass`
+Keywords that affect how a variable is stored: `static`, `comptime`, `extern`,
+etc.
+
+								 *hl-@spell*
+`@spell`
+Defining regions to be spellchecked.
+
+								 *hl-@string*
+`@string`
+String literals.
+
+							    *hl-@string.regex*
+`@string.regex`
+Regular expression literals.
+
+							   *hl-@string.escape*
+`@string.escape`
+Escape characters within a string: `\n`, `\t`, etc.
+
+							  *hl-@string.special*
+`@string.special`
+Strings with special meaning that don't fit into the previous categories.
+
+								 *hl-@symbol*
+`@symbol`
+Identifiers referring to symbols or atoms.
+
+								    *hl-@tag*
+`@tag`
+Tags like HTML tag names.
+
+							   *hl-@tag.attribute*
+`@tag.attribute`
+HTML tag attributes.
+
+							   *hl-@tag.delimiter*
+`@tag.delimiter`
+Tag delimiters like `<` `>` `/`.
+
+								   *hl-@text*
+`@text`
+Non-structured text. Like text in a markup language.
+
+								 *hl-@text.strong*
+`@text.strong`
+Text to be represented in bold.
+
+							       *hl-@text.emphasis*
+`@text.emphasis`
+Text to be represented with emphasis.
+
+							      *hl-@text.underline*
+`@text.underline`
+Text to be represented with an underline.
+
+								 *hl-@text.strike*
+`@text.strike`
+Strikethrough text.
+
+								  *hl-@text.title*
+`@text.title`
+Text that is part of a title.
+
+								*hl-@text.literal*
+`@text.literal`
+Literal or verbatim text.
+
+								    *hl-@text.uri*
+`@text.uri`
+URIs like hyperlinks or email addresses.
+
+								   *hl-@text.math*
+`@text.math`
+Math environments like LaTeX's `$ ... $`.
+
+							     *hl-@text.environment*
+`@text.environment`
+Text environments of markup languages.
+
+							 *hl-@text.environment.name*
+`@text.environment.name`
+Text/string indicating the type of text environment. Like the name of a
+`\begin` block in LaTeX.
+
+							  *hl-@text.reference*
+`@text.reference`
+Footnotes, text references, citations, etc.
+
+								   *hl-@text.todo*
+`@text.todo`
+Anything that needs extra attention, such as keywords like TODO or FIXME.
+
+								   *hl-@text.note*
+`@text.note`
+Text representation of an informational note.
+
+								   *hl-@text.warning*
+`@text.warning`
+Text representation of a warning note.
+
+								    *@text.danger*
+`@text.danger`
+Text representation of a danger note.
+
+								    *@text.diff.add*
+`@text.diff.add`
+Text representation of added text (for diff files).
+
+								    *@text.diff.delete*
+`@text.diff.delete`
+Text representation of deleted text (for diff files).
+
+								   *hl-@type*
+`@type`
+Type (and class) definitions and annotations.
+
+							    *hl-@type.builtin*
+`@type.builtin`
+Built-in types: `i32` in Rust.
+
+							 *hl-@type.definition*
+`@type.definition`
+Type definitions, e.g. `typedef` in C.
+
+							  *hl-@type.qualifier*
+`@type.qualifier`
+Qualifiers on types, e.g. `const` or `volatile` in C or `mut` in Rust.
+
+							       *hl-@variable*
+`@variable`
+Variable names that don't fit into other categories.
+
+							*hl-@variable.builtin*
+`@variable.builtin`
+Variable names defined by the language: `this` or `self` in Javascript.
+
+==============================================================================
 PERFORMANCE                                      *nvim-treesitter-performance*
 
 `nvim-treesitter` checks the 'runtimepath' on startup in order to discover
