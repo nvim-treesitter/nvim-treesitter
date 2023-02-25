@@ -20,7 +20,7 @@ local M = {}
 ---@type TSConfig
 local config = {
   modules = {},
-  sync_install = false,
+  sync_install = #vim.api.nvim_list_uis() == 0,
   ensure_installed = {},
   auto_install = false,
   ignore_install = {},
