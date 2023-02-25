@@ -643,8 +643,7 @@ function M.uninstall(...)
                 vim.notify(
                   "Tried to uninstall parser for "
                     .. lang
-                    .. "! But the parser is still installed (not by nvim-treesitter)."
-                    .. " Please delete the following files manually: "
+                    .. "! But the parser is still installed (not by nvim-treesitter):"
                     .. table.concat(all_parsers_after_deletion, ", "),
                   vim.log.levels.ERROR
                 )
