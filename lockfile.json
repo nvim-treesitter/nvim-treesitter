@@ -57,7 +57,7 @@
     "revision": "5e113412aadb78955c27010daa4dbe1d202013cf"
   },
   "cpon": {
-    "revision": "b894a70f883d2cb7505b87a9d84a189fe8cd1982"
+    "revision": "eedb93bf9e22e82ed6a67e6c57fd78731b44f591"
   },
   "cpp": {
     "revision": "66262d3e76eb2046c76e6d661a6b72664bfb5819"
@@ -216,7 +216,7 @@
     "revision": "3c24aa9365985830421a3a7b6791b415961ea770"
   },
   "javascript": {
-    "revision": "266455e22fc54f0add4dd2404ebe307d4d65deae"
+    "revision": "5720b249490b3c17245ba772f6be4a43edb4e3b7"
   },
   "jq": {
     "revision": "13990f530e8e6709b7978503da9bc8701d366791"
@@ -309,7 +309,7 @@
     "revision": "9e995404ddff8319631d72d4b46552e737206912"
   },
   "perl": {
-    "revision": "749d26fe13fb131b92e6515416096e572575b981"
+    "revision": "3e4b9cad82a3e7e45390b751528dce581eb092b7"
   },
   "php": {
     "revision": "f860e598194f4a71747f91789bf536b393ad4a56"
@@ -444,7 +444,7 @@
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
   },
   "tsx": {
-    "revision": "5d20856f34315b068c41edaee2ac8a100081d259"
+    "revision": "c6e56d44c686a67c89e29e773e662567285d610f"
   },
   "turtle": {
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
@@ -453,7 +453,7 @@
     "revision": "2457993b13a06dec2706e6a6c3d5b65bb23024b8"
   },
   "typescript": {
-    "revision": "5d20856f34315b068c41edaee2ac8a100081d259"
+    "revision": "c6e56d44c686a67c89e29e773e662567285d610f"
   },
   "ungrammar": {
     "revision": "5275e45d1edb16aab4f0d63a3aa15b61ef033a9c"
