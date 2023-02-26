@@ -443,6 +443,7 @@ list.fortran = {
     url = "https://github.com/stadelmanma/tree-sitter-fortran",
     files = { "src/parser.c", "src/scanner.cc" },
   },
+  maintainers = { "@amaanq" },
 }
 
 list.fsh = {
