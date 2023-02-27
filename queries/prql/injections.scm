@@ -9,3 +9,5 @@
   (literal) @json
   (#offset! @json 0 3 0 -3)
 )
+
+(comment) @comment
