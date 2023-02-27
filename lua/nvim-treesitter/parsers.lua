@@ -1061,6 +1061,16 @@ list.proto = {
   filetype = "proto",
 }
 
+list.prql = {
+  install_info = {
+    url = "https://github.com/PRQL/tree-sitter-prql",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@matthias-Q" },
+  filetype = "prql",
+}
+
 list.pug = {
   install_info = {
     url = "https://github.com/zealot128/tree-sitter-pug",

@@ -329,6 +329,9 @@
   "proto": {
     "revision": "42d82fa18f8afe59b5fc0b16c207ee4f84cb185f"
   },
+  "prql": {
+    "revision": "3f27cac466f030ee7d985d91eba5470e01dd21ea"
+  },
   "pug": {
     "revision": "884e225b5ecca5d885ae627275f16ef648acd42e"
   },
