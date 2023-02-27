@@ -97,7 +97,6 @@ alias: (identifier) @field
  (keyword_side)
  (keyword_version)
  (keyword_target)
- (keyword_null)
  (keyword_format)
 ] @attribute
 
@@ -138,3 +137,5 @@ alias: (identifier) @field
 (variable
   (keyword_let)
   name: (identifier) @constant)
+
+ (keyword_null) @constant.builtin
