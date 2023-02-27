@@ -91,15 +91,15 @@
 )
 
 (normal_command
-  (identifier) @_function
-  . (argument) @variable
-  (#match? @_function "\\c^set$")
+  (identifier)
+  (argument (unquoted_argument)) @constant
+  (#match? @constant "^[A-Z][A-Z_]+$")
 )
 
 (normal_command
-  (identifier)
-  (argument) @constant
-  (#match? @constant "^[A-Z][A-Z_]+$")
+  (identifier) @_function
+  . (argument) @variable
+  (#match? @_function "\\c^set$")
 )
 
 (escape_sequence) @string.escape
