@@ -33,7 +33,7 @@
     "revision": "f35789006ccbe5be8db21d1a2dd4cc0b5a1286f2"
   },
   "c_sharp": {
-    "revision": "3a5de1b38136add719c2e4dfba64359619745ae6"
+    "revision": "fc6be5ae61c8788e0c028e757f132d67bfc538f5"
   },
   "capnp": {
     "revision": "fc6e2addf103861b9b3dffb82c543eb6b71061aa"
@@ -123,7 +123,7 @@
     "revision": "c238f4af9a5723a212cf1a4c9b31dd5c1d5270a2"
   },
   "fortran": {
-    "revision": "67cf1c96fd0dd92edd7812a95626c86c9be0781a"
+    "revision": "31552ac43ecaffa443a12ebea68cc526d334892f"
   },
   "fsh": {
     "revision": "fa3347712f7a59ed02ccf508284554689c6cde28"
@@ -414,7 +414,7 @@
     "revision": "52e122ae68b316d3aa960a0a422d3645ba717f42"
   },
   "swift": {
-    "revision": "0c32d2948b79939b6464d9ced40fca43912cd486"
+    "revision": "c249318113629435c75c7eedfd5d5bfcb4b6d12a"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
