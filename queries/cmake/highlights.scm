@@ -1,3 +1,9 @@
+(normal_command
+  (identifier)
+  (argument (unquoted_argument)) @constant
+  (#match? @constant "^[A-Z][A-Z_]+$")
+)
+
 [
  (quoted_argument)
  (bracket_argument)
@@ -103,15 +109,78 @@
 )
 
 (normal_command
-  (identifier)
-  (argument (unquoted_argument)) @constant
-  (#match? @constant "^[A-Z][A-Z_]+$")
+  (identifier) @_function
+  . (argument) @variable
+  (#match? @_function "\\c^set$")
 )
 
 (normal_command
   (identifier) @_function
-  . (argument) @variable
   (#match? @_function "\\c^set$")
+  . (argument)
+  (
+    (argument) @_cache @storageclass
+    .
+    (argument) @_type @type
+    (#any-of? @_cache "CACHE")
+    (#any-of? @_type "BOOL" "FILEPATH" "PATH" "STRING" "INTERNAL")
+  )
+)
+
+(normal_command
+  (identifier) @_function
+  (#match? @_function "\\c^unset$")
+  . (argument)
+  (argument) @storageclass
+  (#any-of? @storageclass "CACHE" "PARENT_SCOPE")
+)
+
+(normal_command
+  (identifier) @_function
+  (#match? @_function "\\c^list$")
+  . (argument) @constant
+  (#any-of? @constant "LENGTH" "GET" "JOIN" "SUBLIST" "FIND")
+  . (argument) @variable
+  (argument) @variable . 
+)
+(normal_command
+  (identifier) @_function
+  (#match? @_function "\\c^list$")
+  . (argument) @constant
+  . (argument) @variable
+  (#any-of? @constant "APPEND" "FILTER" "INSERT"
+                      "POP_BACK" "POP_FRONT" "PREPEND"
+                      "REMOVE_ITEM" "REMOVE_AT" "REMOVE_DUPLICATES"
+                      "REVERSE" "SORT")
+)
+(normal_command
+  (identifier) @_function
+  (#match? @_function "\\c^list$")
+  . (argument) @_transform @constant
+  . (argument) @variable
+  . (argument) @_action @constant
+  (#match? @_transform "TRANSFORM")
+  (#any-of? @_action "APPEND" "PREPEND" "TOUPPER" "TOLOWER" "STRIP" "GENEX_STRIP" "REPLACE")
+)
+(normal_command
+  (identifier) @_function
+  (#match? @_function "\\c^list$")
+  . (argument) @_transform @constant
+  . (argument) @variable
+  . (argument) @_action @constant
+  . (argument)? @_selector @constant
+  (#match? @_transform "TRANSFORM")
+  (#any-of? @_action "APPEND" "PREPEND" "TOUPPER" "TOLOWER" "STRIP" "GENEX_STRIP" "REPLACE")
+  (#any-of? @_selector "AT" "FOR" "REGEX")
+)
+(normal_command
+  (identifier) @_function
+  (#match? @_function "\\c^list$")
+  . (argument) @_transform @constant
+  (argument) @constant .
+  (argument) @variable
+  (#match? @_transform "TRANSFORM")
+  (#match? @constant "OUTPUT_VARIABLE")
 )
 
 (escape_sequence) @string.escape
