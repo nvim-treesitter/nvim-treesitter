@@ -218,7 +218,6 @@
 ] @keyword.function
 
 [
-  "assert"
   "async"
   "await"
   "exec"
@@ -255,6 +254,11 @@
 (ERROR) @error
 
 ;; Starlark-specific
+
+;; Assertion calls
+(assert_keyword) @keyword
+
+(assert_builtin) @function.builtin
 
 ;; Struct definitions
 ((call
