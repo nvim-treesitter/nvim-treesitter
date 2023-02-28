@@ -276,6 +276,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [ocamllex](https://github.com/atom-ocaml/tree-sitter-ocamllex) (maintained by @undu)
 - [ ] [org](https://github.com/milisims/tree-sitter-org)
 - [x] [pascal](https://github.com/Isopod/tree-sitter-pascal.git) (maintained by @Isopod)
+- [x] [passwd](https://github.com/ath3/tree-sitter-passwd) (maintained by @amaanq)
 - [x] [perl](https://github.com/ganezdragon/tree-sitter-perl) (maintained by @lcrownover)
 - [x] [php](https://github.com/tree-sitter/tree-sitter-php) (maintained by @tk-shirasaka)
 - [x] [phpdoc](https://github.com/claytonrcarter/tree-sitter-phpdoc) (experimental, maintained by @mikehaertl)

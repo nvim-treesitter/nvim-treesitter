@@ -995,6 +995,14 @@ list.pascal = {
   maintainers = { "@Isopod" },
 }
 
+list.passwd = {
+  install_info = {
+    url = "https://github.com/ath3/tree-sitter-passwd",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.perl = {
   install_info = {
     url = "https://github.com/ganezdragon/tree-sitter-perl",

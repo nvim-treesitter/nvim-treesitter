@@ -308,6 +308,9 @@
   "pascal": {
     "revision": "9e995404ddff8319631d72d4b46552e737206912"
   },
+  "passwd": {
+    "revision": "20239395eacdc2e0923a7e5683ad3605aee7b716"
+  },
   "perl": {
     "revision": "c43bae0090cfcfc62d9904312599ded1b645a66d"
   },
