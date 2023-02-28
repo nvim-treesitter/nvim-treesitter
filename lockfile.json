@@ -272,6 +272,9 @@
   "markdown_inline": {
     "revision": "7e7aa9a25ca9729db9fe22912f8f47bdb403a979"
   },
+  "matlab": {
+    "revision": "2d5d3d5193718a86477d4335aba5b34e79147326"
+  },
   "menhir": {
     "revision": "db7953acb0d5551f207373c81fa07a57d7b085cb"
   },
