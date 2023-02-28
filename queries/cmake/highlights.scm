@@ -1,7 +1,7 @@
 (normal_command
   (identifier)
   (argument (unquoted_argument)) @constant
-  (#match? @constant "^[A-Z][A-Z_]+$")
+  (#lua-match? @constant "^%u[%u_]+$")
 )
 
 [
@@ -186,4 +186,4 @@
 (escape_sequence) @string.escape
 
 ((source_file . (line_comment) @preproc)
-  (#match? @preproc "^#!/"))
+  (#lua-match? @preproc "^#!/"))
