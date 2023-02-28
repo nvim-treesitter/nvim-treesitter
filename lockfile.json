@@ -267,10 +267,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "ca85c6db7088ce98f59e2fbc31b966f5834ea6d7"
+    "revision": "6138ee0c0d0ddafc4bf0e25728b73f902bbf2c98"
   },
   "markdown_inline": {
-    "revision": "ca85c6db7088ce98f59e2fbc31b966f5834ea6d7"
+    "revision": "6138ee0c0d0ddafc4bf0e25728b73f902bbf2c98"
   },
   "matlab": {
     "revision": "2d5d3d5193718a86477d4335aba5b34e79147326"
@@ -336,7 +336,7 @@
     "revision": "884e225b5ecca5d885ae627275f16ef648acd42e"
   },
   "python": {
-    "revision": "528855eee2665210e1bf5556de48b8d8dacb8932"
+    "revision": "62827156d01c74dc1538266344e788da74536b8a"
   },
   "ql": {
     "revision": "bd087020f0d8c183080ca615d38de0ec827aeeaf"
@@ -495,6 +495,6 @@
     "revision": "607bf03cc78912cbaa85a3d373af21ddeaef5b41"
   },
   "zig": {
-    "revision": "6b3f5788f38be900b45f5af5a753bf6a37d614b8"
+    "revision": "1cd5f339b146b764f39b36bb7be98ca631a2e02a"
   }
 }
