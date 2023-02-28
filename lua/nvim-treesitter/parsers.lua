@@ -478,6 +478,7 @@ list.gdscript = {
     files = { "src/parser.c", "src/scanner.cc" },
   },
   readme_name = "Godot (gdscript)",
+  maintainers = { "@PrestonKnopp" },
 }
 
 list.git_rebase = {
