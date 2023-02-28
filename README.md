@@ -280,6 +280,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [php](https://github.com/tree-sitter/tree-sitter-php) (maintained by @tk-shirasaka)
 - [x] [phpdoc](https://github.com/claytonrcarter/tree-sitter-phpdoc) (experimental, maintained by @mikehaertl)
 - [x] [pioasm](https://github.com/leo60228/tree-sitter-pioasm) (maintained by @leo60228)
+- [x] [po](https://github.com/erasin/tree-sitter-po) (maintained by @amaanq)
 - [x] [Path of Exile item filter](https://github.com/ObserverOfTime/tree-sitter-poe-filter) (experimental, maintained by @ObserverOfTime)
 - [x] [prisma](https://github.com/victorhqc/tree-sitter-prisma) (maintained by @elianiva)
 - [x] [proto](https://github.com/mitchellh/tree-sitter-proto) (maintained by @fsouza)
