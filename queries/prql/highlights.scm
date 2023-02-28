@@ -70,13 +70,7 @@ alias: (identifier) @field
   (pipe)
 ] @punctuation.delimiter
 
-(literal
-  (integer) @number)
-
 (integer) @number
-
-(literal
-  (decimal_number) @float)
 
 (decimal_number) @float
 
