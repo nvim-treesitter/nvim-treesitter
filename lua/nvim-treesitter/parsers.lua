@@ -1048,6 +1048,14 @@ list.pioasm = {
   maintainers = { "@leo60228" },
 }
 
+list.po = {
+  install_info = {
+    url = "https://github.com/erasin/tree-sitter-po",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.poe_filter = {
   install_info = {
     url = "https://github.com/ObserverOfTime/tree-sitter-poe-filter",
