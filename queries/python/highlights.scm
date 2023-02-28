@@ -173,11 +173,7 @@
   (#match? @preproc "^#!/"))
 
 (string) @string
-[
-  (escape_sequence)
-  "{{"
-  "}}"
-] @string.escape
+(escape_sequence) @string.escape
 
 ; doc-strings
 (expression_statement (string) @spell)
