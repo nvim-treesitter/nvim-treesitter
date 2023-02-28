@@ -888,6 +888,14 @@ list.markdown_inline = {
   experimental = true,
 }
 
+list.matlab = {
+  install_info = {
+    url = "https://github.com/mstanciu552/tree-sitter-matlab",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.menhir = {
   install_info = {
     url = "https://github.com/Kerl13/tree-sitter-menhir",
