@@ -354,7 +354,7 @@ list.eex = {
     files = { "src/parser.c" },
     branch = "main",
   },
-  filetype = "eex",
+  filetype = "eelixir",
   maintainers = { "@connorlay" },
 }
 
