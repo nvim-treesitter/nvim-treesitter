@@ -1104,6 +1104,14 @@ list.ql = {
   maintainers = { "@pwntester" },
 }
 
+list.qmldir = {
+  install_info = {
+    url = "https://github.com/Decodetalkers/tree-sitter-qmldir",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.qmljs = {
   install_info = {
     url = "https://github.com/yuja/tree-sitter-qmljs",
