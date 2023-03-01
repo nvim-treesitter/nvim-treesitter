@@ -344,6 +344,9 @@
   "ql": {
     "revision": "bd087020f0d8c183080ca615d38de0ec827aeeaf"
   },
+  "qmldir": {
+    "revision": "ce42c9abb9b86a563f117d733b3bc0dd7e2e6e76"
+  },
   "qmljs": {
     "revision": "ab75be9750e6f2f804638824d1790034286a830c"
   },
