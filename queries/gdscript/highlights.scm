@@ -78,8 +78,8 @@
 ((identifier) @variable.builtin
   (#any-of? @variable.builtin "self" "super"))
 
-((attribute (identifier) (attribute_call (identifier) @constructor))
- (#eq? @constructor "new"))
+(attribute_call (identifier) @keyword.operator
+ (#eq? @keyword.operator "new"))
 
 ;; Match Pattern
 
