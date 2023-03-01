@@ -176,7 +176,18 @@
 (escape_sequence) @string.escape
 
 ; doc-strings
-(expression_statement (string) @spell)
+
+(module . (expression_statement (string) @string.documentation @spell))
+
+(class_definition
+  body:
+    (block
+      . (expression_statement (string) @string.documentation @spell)))
+
+(function_definition
+  body:
+    (block
+      . (expression_statement (string) @string.documentation @spell)))
 
 ; Tokens
 

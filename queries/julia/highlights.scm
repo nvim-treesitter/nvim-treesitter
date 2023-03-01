@@ -226,8 +226,18 @@
 (prefixed_command_literal
   prefix: (identifier) @function.macro) @string.special
 
+((string_literal) @string.documentation
+  . [
+      (module_definition)
+      (abstract_definition)
+      (struct_definition)
+      (function_definition)
+      (assignment)
+      (const_declaration)
+    ])
+
 [
   (line_comment)
   (block_comment)
-] @comment
+] @comment @spell
 
