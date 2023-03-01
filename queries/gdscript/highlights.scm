@@ -5,9 +5,7 @@
 (name) @variable
 (type) @type
 (comment) @comment @spell
-(get_node) @string @symbol    ; fallback to string
-(string_name) @string @symbol
-(node_path) @string @symbol
+(string_name) @string
 (string) @string
 (float) @float
 (integer) @number
@@ -21,6 +19,11 @@
 (breakpoint_statement) @debug
 (inferred_type) @operator
 [(true) (false)] @boolean
+
+[
+  (get_node)
+  (node_path)
+] @text.uri
 
 (class_name_statement
   (name) @type) @keyword
