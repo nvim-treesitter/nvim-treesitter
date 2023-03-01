@@ -25,6 +25,7 @@
  (array)
  (dictionary)
  (parenthesized_expression)
+ (ERROR)
 ] @auto
 
 [
