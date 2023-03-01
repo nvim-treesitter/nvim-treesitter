@@ -53,7 +53,6 @@ alias: (identifier) @field
   "!="
   ">="
   ">"
-  "->"
   (bang)
 ] @operator
 
@@ -68,6 +67,7 @@ alias: (identifier) @field
   ","
   "."
   (pipe)
+  "->"
 ] @punctuation.delimiter
 
 (integer) @number
