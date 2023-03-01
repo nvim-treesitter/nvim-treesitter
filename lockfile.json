@@ -135,7 +135,7 @@
     "revision": "19db2f47ba4c3a0f6238d4ae0e2abfca16e61dd6"
   },
   "gdscript": {
-    "revision": "31ebb7cd0b880ea53a152eaf9d4df73f737181cc"
+    "revision": "a4b57cc3bcbfc24550e858159647e9238e7ad1ac"
   },
   "git_rebase": {
     "revision": "d8a4207ebbc47bd78bacdf48f883db58283f9fd8"
@@ -282,7 +282,7 @@
     "revision": "d787c66276e7e95899230539f556e8b83ee16f6d"
   },
   "meson": {
-    "revision": "5f3138d555aceef976ec9a1d4a3f78e13b31e45f"
+    "revision": "3d6dfbdb2432603bc84ca7dc009bb39ed9a8a7b1"
   },
   "nickel": {
     "revision": "d6c7eeb751038f934b5b1aa7ff236376d0235c56"
@@ -501,7 +501,7 @@
     "revision": "2c0e6be8dd4dcb961c345fa35c309ad4f5bd3502"
   },
   "yuck": {
-    "revision": "607bf03cc78912cbaa85a3d373af21ddeaef5b41"
+    "revision": "1e1a7e10053b910f3864fe8d97ca1741d2df66b2"
   },
   "zig": {
     "revision": "1cd5f339b146b764f39b36bb7be98ca631a2e02a"
