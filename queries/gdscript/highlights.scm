@@ -178,7 +178,7 @@
 
 ;; Bulitin Annotations
 
-((annotation (identifier) @attribute)
+((annotation "@" @attribute (identifier) @attribute)
  (#any-of? @attribute
   ; @GDScript
   "export" "export_category" "export_color_no_alpha" "export_dir"
