@@ -111,7 +111,7 @@ alias: (identifier) @field
   (keyword_full)
   (keyword_csv)
   (keyword_json)
-] @method
+] @method.call
 
 [
   (keyword_true)
