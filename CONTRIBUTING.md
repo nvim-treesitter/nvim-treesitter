@@ -108,17 +108,18 @@ effect on highlighting. We will work on improving highlighting in the near futur
 #### Literals
 
 ```scheme
-@string            ; string literals
-@string.regex      ; regular expressions
-@string.escape     ; escape sequences
-@string.special    ; other special strings (e.g. dates)
+@string               ; string literals
+@string.documentation ; string documenting code (e.g. Python docstrings)
+@string.regex         ; regular expressions
+@string.escape        ; escape sequences
+@string.special       ; other special strings (e.g. dates)
 
-@character         ; character literals
-@character.special ; special characters (e.g. wildcards)
+@character            ; character literals
+@character.special    ; special characters (e.g. wildcards)
 
-@boolean           ; boolean literals
-@number            ; numeric literals
-@float             ; floating-point number literals
+@boolean              ; boolean literals
+@number               ; numeric literals
+@float                ; floating-point number literals
 ```
 
 #### Functions
