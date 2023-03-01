@@ -1,39 +1,39 @@
 (_) @spell
 
 ((tag
-  (name) @text.todo
+  (name) @text.todo @nospell
   ("(" @punctuation.bracket (user) @constant ")" @punctuation.bracket)?
   ":" @punctuation.delimiter)
   (#eq? @text.todo "TODO"))
 
-("text" @text.todo
+("text" @text.todo @nospell
  (#eq? @text.todo "TODO"))
 
 ((tag
-  (name) @text.note
+  (name) @text.note @nospell
   ("(" @punctuation.bracket (user) @constant ")" @punctuation.bracket)?
   ":" @punctuation.delimiter)
   (#any-of? @text.note "NOTE" "XXX"))
 
-("text" @text.note
+("text" @text.note @nospell
  (#any-of? @text.note "NOTE" "XXX"))
 
 ((tag
-  (name) @text.warning
+  (name) @text.warning @nospell
   ("(" @punctuation.bracket (user) @constant ")" @punctuation.bracket)?
   ":" @punctuation.delimiter)
   (#any-of? @text.warning "HACK" "WARNING"))
 
-("text" @text.warning
+("text" @text.warning @nospell
  (#any-of? @text.warning "HACK" "WARNING"))
 
 ((tag
-  (name) @text.danger
+  (name) @text.danger @nospell
   ("(" @punctuation.bracket (user) @constant ")" @punctuation.bracket)?
   ":" @punctuation.delimiter)
   (#any-of? @text.danger "FIXME" "BUG"))
 
-("text" @text.danger
+("text" @text.danger @nospell
  (#any-of? @text.danger "FIXME" "BUG"))
 
 ; Issue number (#123)
@@ -41,5 +41,5 @@
  (#lua-match? @number "^#[0-9]+$"))
 
 ; User mention (@user)
-("text" @constant
+("text" @constant @nospell
  (#lua-match? @constant "^[@][a-zA-Z0-9_-]+$"))
