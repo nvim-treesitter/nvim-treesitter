@@ -31,17 +31,20 @@
 
 (number (decimal) @float)
 (number (exponent) @float)
-(number (decimal) (exponent) @float)
 
 (boolean) @boolean
 
-; Misc
-
 "null" @constant.builtin
+
+; Punctuation
 
 ["{" "}"] @punctuation.bracket
 
 ["(" ")"] @punctuation.bracket
+
+[
+  ";"
+] @punctuation.delimiter
 
 ; Comments
 
