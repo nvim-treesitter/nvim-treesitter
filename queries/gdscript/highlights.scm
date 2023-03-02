@@ -83,10 +83,8 @@
 
 ;; Match Pattern
 
-[
-  (underscore)
-  (pattern_open_ending)
-] @punctuation.special
+(underscore) @constant          ; The "_" pattern.
+(pattern_open_ending) @operator ; The ".." pattern.
 
 ;; Alternations
 ["(" ")" "[" "]" "{" "}"] @punctuation.bracket
