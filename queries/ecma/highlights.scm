@@ -123,11 +123,12 @@
   (undefined)
 ] @constant.builtin
 
-(comment) @comment
+(comment) @comment @spell
+
+((comment) @comment.documentation
+  (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
 
 (hash_bang_line) @preproc
-
-(comment) @spell
 
 (string) @string @spell
 (template_string) @string

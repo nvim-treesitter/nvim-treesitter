@@ -1,7 +1,9 @@
 ; highlights.scm
 
 ; highlight comments and symbols
-(comment) @comment
+(comment) @comment @spell
+((comment) @comment.documentation
+  (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
 (symbol) @symbol
 (member_access_expression (_) (identifier) @symbol)
 

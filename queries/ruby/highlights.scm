@@ -173,13 +173,30 @@
 (float) @float
 
 [
- (nil)
  (true)
  (false)
  ] @boolean
 
-(comment) @comment
-(comment) @spell
+(nil) @constant.builtin
+
+(comment) @comment @spell
+
+(program
+  (comment)+ @comment.documentation
+  (class))
+
+(module
+  (comment)+ @comment.documentation
+  (body_statement (class)))
+
+(class
+  (comment)+ @comment.documentation
+  (body_statement (method)))
+
+(body_statement
+  (comment)+ @comment.documentation
+  (method))
+
 (string_content) @spell
 
 ; Operators

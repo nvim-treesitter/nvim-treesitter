@@ -4,7 +4,18 @@
   (line_comment)
   (block_comment)
   (nesting_block_comment)
-] @comment
+] @comment @spell
+
+((line_comment) @comment.documentation
+  (#lua-match? @comment.documentation "^///[^/]"))
+((line_comment) @comment.documentation
+  (#lua-match? @comment.documentation "^///$"))
+
+((block_comment) @comment.documentation
+  (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
+
+((nesting_block_comment) @comment.documentation
+  (#lua-match? @comment.documentation "^/[+][+][^+].*[+]/$"))
 
 [
   "(" ")"
