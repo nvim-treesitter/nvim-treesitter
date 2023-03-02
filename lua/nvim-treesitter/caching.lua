@@ -8,7 +8,7 @@ local M = {}
 function M.create_buffer_cache()
   local cache = {}
 
-  ---@type table<string, table<string, any>>
+  ---@type table<integer, table<string, any>>
   local items = setmetatable({}, {
     __index = function(tbl, key)
       rawset(tbl, key, {})
@@ -16,7 +16,7 @@ function M.create_buffer_cache()
     end,
   })
 
-  ---@type table<integer|string, boolean>
+  ---@type table<integer, boolean>
   local loaded_buffers = {}
 
   ---@param type_name string
@@ -30,21 +30,21 @@ function M.create_buffer_cache()
       api.nvim_buf_attach(bufnr, false, {
         on_detach = function()
           cache.clear_buffer(bufnr)
-          loaded_buffers[tostring(bufnr)] = nil
+          loaded_buffers[bufnr] = nil
           return true
         end,
         on_reload = function() end, -- this is needed to prevent on_detach being called on buffer reload
       })
     end
 
-    items[tostring(bufnr)][type_name] = value
+    items[bufnr][type_name] = value
   end
 
   ---@param type_name string
   ---@param bufnr integer
   ---@return any
   function cache.get(type_name, bufnr)
-    return items[tostring(bufnr)][type_name]
+    return items[bufnr][type_name]
   end
 
   ---@param type_name string
@@ -57,12 +57,12 @@ function M.create_buffer_cache()
   ---@param type_name string
   ---@param bufnr integer
   function cache.remove(type_name, bufnr)
-    items[tostring(bufnr)][type_name] = nil
+    items[bufnr][type_name] = nil
   end
 
   ---@param bufnr integer
   function cache.clear_buffer(bufnr)
-    items[tostring(bufnr)] = nil
+    items[bufnr] = nil
   end
 
   return cache
