@@ -22,7 +22,7 @@
 ] @keyword
 
 [
- (literal)
+ (literal_string)
  (f_string)
  (s_string)
 ] @string
@@ -84,6 +84,15 @@ alias: (identifier) @field
   (keyword_sum)
   (keyword_stddev)
   (keyword_count)
+  (keyword_lag)
+  (keyword_lead)
+  (keyword_first)
+  (keyword_last)
+  (keyword_rank)
+  (keyword_row_number)
+  (keyword_round)
+  (keyword_all)
+  (keyword_map)
 ] @function
 
 [
