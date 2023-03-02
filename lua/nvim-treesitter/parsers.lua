@@ -869,7 +869,7 @@ list.markdown = {
   install_info = {
     url = "https://github.com/MDeiml/tree-sitter-markdown",
     location = "tree-sitter-markdown",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
     branch = "split_parser",
     readme_name = "markdown (basic highlighting)",
   },
@@ -881,7 +881,7 @@ list.markdown_inline = {
   install_info = {
     url = "https://github.com/MDeiml/tree-sitter-markdown",
     location = "tree-sitter-markdown-inline",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
     branch = "split_parser",
     readme_name = "markdown_inline (needs to be installed for full markdown highlighting)",
   },
