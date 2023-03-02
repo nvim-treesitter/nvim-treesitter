@@ -111,7 +111,7 @@
     "revision": "203f7bd3c1bbfbd98fc19add4b8fcb213c059205"
   },
   "erlang": {
-    "revision": "2422bc9373094bfa97653ac540e08759f812523c"
+    "revision": "9fe5cdfab0f0d753112e9949a3501f64b75a3d92"
   },
   "fennel": {
     "revision": "517195970428aacca60891b050aa53eabf4ba78d"
@@ -180,7 +180,7 @@
     "revision": "b7bd6928532ada34dddb1dece4a158ab62c6e783"
   },
   "haskell": {
-    "revision": "3bdba07c7a8eec23f87fa59ce9eb2ea4823348b3"
+    "revision": "0da7f826e85b3e589e217adf69a6fd89ee4301b9"
   },
   "hcl": {
     "revision": "0ff887f2a60a147452d52db060de6b42f42f1441"
@@ -351,7 +351,7 @@
     "revision": "bd087020f0d8c183080ca615d38de0ec827aeeaf"
   },
   "qmldir": {
-    "revision": "ce42c9abb9b86a563f117d733b3bc0dd7e2e6e76"
+    "revision": "6b2b5e41734bd6f07ea4c36ac20fb6f14061c841"
   },
   "qmljs": {
     "revision": "ab75be9750e6f2f804638824d1790034286a830c"
@@ -414,7 +414,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "672fe6b5180d20e9e84fd61749cc3e083e88d9d9"
+    "revision": "d4b8be1e52b07b66e5ec62d2f1c0d701dfa85ed9"
   },
   "starlark": {
     "revision": "8ad93a74c2a880bc16325affba3cc66c14bb2bde"
@@ -474,7 +474,7 @@
     "revision": "debd26fed283d80456ebafa33a06957b0c52e451"
   },
   "v": {
-    "revision": "136f3a0ad91ab8a781c2d4eb419df0a981839f69"
+    "revision": "66cf9d3086fb5ecc827cb32c64c5d812ab17d2c6"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
