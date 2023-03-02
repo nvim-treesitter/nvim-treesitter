@@ -155,8 +155,8 @@
 (false) @boolean
 (null_literal) @constant.builtin
 
-(documentation_comment) @comment
-(comment) @comment
+(comment) @comment @spell
+(documentation_comment) @comment.documentation @spell
 
 ; Keywords
 ; --------------------

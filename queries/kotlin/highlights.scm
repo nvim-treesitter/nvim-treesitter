@@ -217,11 +217,12 @@
 
 ;;; Literals
 
-(comment) @comment
+(comment) @comment @spell
+
+((comment) @comment.documentation
+  (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
 
 (shebang_line) @preproc
-
-(comment) @spell
 
 (real_literal) @float
 [

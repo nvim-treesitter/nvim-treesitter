@@ -406,5 +406,8 @@
 
 (ERROR) @error
 
-(comment) @comment
+(comment) @comment @spell
 
+(_
+  (comment)+ @comment.documentation
+  [(function_declaration) (type_declaration) (const_spec) (enum_declaration)])

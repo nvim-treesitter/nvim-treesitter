@@ -107,6 +107,15 @@
  (multiline_comment)
 ] @comment @spell
 
+((comment) @comment.documentation
+  (#lua-match? @comment.documentation "^///[^/]"))
+
+((comment) @comment.documentation
+  (#lua-match? @comment.documentation "^///$"))
+
+((multiline_comment) @comment.documentation
+  (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
+
 ; String literals
 (line_str_text) @string
 (str_escaped_char) @string

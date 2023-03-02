@@ -5,7 +5,10 @@
 (integer) @number
 (float) @float
 
-(comment) @comment
+(comment) @comment @spell
+
+((comment) @comment.documentation
+  (#lua-match? @comment.documentation "^[%%][%%]"))
 
 ;; keyword
 [
@@ -104,7 +107,6 @@
 (type_alias name: _ @type) @type.definition
 (spec) @type.definition
 
-(comment) @comment
 [(string) (binary)] @string
 
 ;;; expr_function_call

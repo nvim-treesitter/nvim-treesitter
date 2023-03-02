@@ -83,10 +83,13 @@
 
 ; Comments
 [
+  (comment)
+] @comment @spell
+
+[
   (module_comment)
   (statement_comment)
-  (comment)
-] @comment
+] @comment.documentation @spell
 
 ; Unused Identifiers
 [

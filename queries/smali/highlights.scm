@@ -182,3 +182,10 @@
 ; Comments
 
 (comment) @comment @spell
+
+(class_definition
+  (comment) @comment.documentation)
+
+; Errors
+
+(ERROR) @error

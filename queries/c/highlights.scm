@@ -176,6 +176,9 @@
 
 (comment) @comment @spell
 
+((comment) @comment.documentation
+  (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
+
 ;; Parameters
 (parameter_declaration
   declarator: (identifier) @parameter)
