@@ -17,6 +17,9 @@
 <script lang="ts"> const foo: number = "1" </script>
 <!--                            ^ typescript -->
 <!--                            ^ !javascript -->
+<script setup lang="ts"> const foo: number = "1" </script>
+<!--                            ^ typescript -->
+<!--                            ^ !javascript -->
 <style> .bar { .foo{ } } </style>
 <!--                ^ css   -->
 <style scoped> .page.page--news { background: rebeccapurple; } </style>
@@ -24,5 +27,12 @@
 <style lang="css"> .bar { justify-content: center; } </style>
 <!--                ^ css  -->
 <style lang="scss"> .bar { &-baz { } } </style>
+<!--                       ^ scss -->
+<!--                       ^ !css -->
+<style scoped lang="scss">
+.header.isFixed {
+  position: sticky;
+  top: 0;
+  z-index: 10000; box-sizing: border-box; } </style>
 <!--                       ^ scss -->
 <!--                       ^ !css -->

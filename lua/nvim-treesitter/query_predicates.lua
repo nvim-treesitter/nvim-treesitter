@@ -119,6 +119,32 @@ query.add_predicate("has-type?", function(match, _pattern, _bufnr, pred)
   return vim.tbl_contains(types, node:type())
 end)
 
+---@param match (TSNode|nil)[]
+---@param _pattern string
+---@param bufnr integer
+---@param pred string[]
+---@return boolean|nil
+query.add_predicate("exist?", function(match, _pattern, bufnr, pred)
+  local node = match[pred[2]]
+  if not node then
+    return true
+  end
+
+  local string_set = pred["string_set"]
+  if not string_set then
+    string_set = {}
+    for i = 3, #pred do
+      string_set[pred[i]] = true
+    end
+    pred["string_set"] = string_set
+  end
+  local node_text = query.get_node_text(node, bufnr)
+  if not pred["exist"] then
+    pred["exist"] = pred["exist"] or string_set[node_text]
+  end
+  return pred["exist"]
+end)
+
 -- Just avoid some annoying warnings for this directive
 query.add_directive("make-range!", function() end)
 

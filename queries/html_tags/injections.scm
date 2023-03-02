@@ -15,7 +15,7 @@
       (attribute
         (attribute_name) @_no_set_type))
     (raw_text) @css)
-  (#not-any-of? @_no_set_type "type" "lang")
+  (#not-exist? @_no_set_type "type" "lang")
 ) 
 
 (
@@ -44,7 +44,7 @@
       (attribute
         (attribute_name) @_no_set_type))
     (raw_text) @javascript)
-  (#not-any-of? @_no_set_type "type" "lang")
+  (#not-exist? @_no_set_type "type" "lang")
 ) 
 
 (
@@ -55,7 +55,7 @@
         (quoted_attribute_value (attribute_value) @_javascript)))
     (raw_text) @javascript)
   (#eq? @_type "type")
-  (#eq? @_javascript "text/javascript")
+  (#any-of? @_javascript "text/javascript" "module")
 )
 
 ((attribute
