@@ -2,13 +2,16 @@
   name: (identifier) @function.call
   parameter: [(field)]? @parameter)
 
-(keyword_gist) @function.call
-(keyword_btree) @function.call
-(keyword_hash) @function.call
-(keyword_spgist) @function.call
-(keyword_gin) @function.call
-(keyword_brin) @function.call
-(keyword_float) @function.call
+[
+  (keyword_gist)
+  (keyword_btree)
+  (keyword_hash)
+  (keyword_spgist)
+  (keyword_gin)
+  (keyword_brin)
+  (keyword_float)
+  (keyword_array)
+] @function.call
 
 (count
   name: (keyword_count) @function.call
@@ -33,7 +36,7 @@
     parameter: [(literal)]?)))
 
 (literal) @string
-(comment) @comment
+(comment) @comment @spell
 (marginalia) @comment
 
 ((literal) @number
@@ -53,7 +56,6 @@
  (keyword_asc)
  (keyword_desc)
  (keyword_external)
- (keyword_stored)
  (keyword_parquet)
  (keyword_csv)
  (keyword_rcfile)
@@ -61,21 +63,27 @@
  (keyword_orc)
  (keyword_avro)
  (keyword_jsonfile)
+ (keyword_sequencefile)
  (keyword_temp)
- (keyword_cached)
  (keyword_uncached)
  (keyword_unlogged)
  (keyword_terminated)
  (keyword_escaped)
- (keyword_partitioned)
- (keyword_location)
- (keyword_lines)
  (keyword_unsigned)
  (keyword_nulls)
  (keyword_last)
  (keyword_materialized)
  (keyword_temp)
  (keyword_temporary)
+ (keyword_delimited)
+ (keyword_replication)
+ (keyword_auto_increment)
+ (keyword_default)
+ (keyword_collate)
+ (keyword_concurrently)
+ (keyword_engine)
+ (keyword_character)
+  (keyword_concurrently)
 ] @attribute
 
 [
@@ -91,7 +99,6 @@
   (keyword_where)
   (keyword_index)
   (keyword_join)
-  (keyword_on)
   (keyword_primary)
   (keyword_delete)
   (keyword_create)
@@ -107,10 +114,9 @@
   (keyword_outer)
   (keyword_inner)
   (keyword_order)
+  (keyword_partition)
   (keyword_group)
-  (keyword_by)
   (keyword_having)
-  (keyword_as)
   (keyword_limit)
   (keyword_offset)
   (keyword_table)
@@ -121,8 +127,6 @@
   (keyword_for)
   (keyword_if)
   (keyword_exists)
-  (keyword_auto_increment)
-  (keyword_default)
   (keyword_max)
   (keyword_min)
   (keyword_avg)
@@ -139,7 +143,6 @@
   (keyword_cascade)
   (keyword_between)
   (keyword_window)
-  (keyword_with)
   (keyword_no)
   (keyword_data)
   (keyword_type)
@@ -160,18 +163,54 @@
   (keyword_like)
   (keyword_similar)
   (keyword_over)
+  (keyword_change)
+  (keyword_modify)
+  (keyword_restrict)
+  (keyword_first)
+  (keyword_after)
+  (keyword_range)
+  (keyword_rows)
+  (keyword_groups)
+  (keyword_unbounded)
+  (keyword_preceding)
+  (keyword_following)
+  (keyword_exclude)
+  (keyword_current)
+  (keyword_ties)
+  (keyword_others)
+  (keyword_unique)
+  (keyword_preserve)
+  (keyword_zerofill)
+  (keyword_format)
+  (keyword_fields)
+  (keyword_row)
+  (keyword_sort)
+  (keyword_compute)
+  (keyword_stats)
+  (keyword_comment)
+  (keyword_partitioned)
+  (keyword_location)
+  (keyword_cached)
+  (keyword_lines)
+  (keyword_stored)
 ] @keyword
+
+(keyword_with) @repeat
+
+(keyword_as) @label
 
 [
   (keyword_int)
   (keyword_null)
   (keyword_boolean)
+  (keyword_bit)
   (keyword_smallserial)
   (keyword_serial)
   (keyword_bigserial)
   (keyword_smallint)
   (keyword_bigint)
   (keyword_decimal)
+  (keyword_float)
   (keyword_numeric)
   (keyword_real)
   (double)
@@ -199,6 +238,8 @@
   (keyword_and)
   (keyword_or)
   (keyword_not)
+  (keyword_by)
+  (keyword_on)
 ] @keyword.operator
 
 [
@@ -214,6 +255,7 @@
   "!="
   ">="
   ">"
+  "<>"
 ] @operator
 
 [
@@ -226,4 +268,5 @@
   ","
   "."
 ] @punctuation.delimiter
+
 
