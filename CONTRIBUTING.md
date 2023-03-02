@@ -89,12 +89,13 @@ effect on highlighting. We will work on improving highlighting in the near futur
 #### Misc
 
 ```scheme
-@comment  ; line and block comments
-@error    ; syntax/parser errors
-@none     ; completely disable the highlight
-@preproc  ; various preprocessor directives & shebangs
-@define   ; preprocessor definition directives
-@operator ; symbolic operators (e.g. `+` / `*`)
+@comment               ; line and block comments
+@comment.documentation ; comments documenting code
+@error                 ; syntax/parser errors
+@none                  ; completely disable the highlight
+@preproc               ; various preprocessor directives & shebangs
+@define                ; preprocessor definition directives
+@operator              ; symbolic operators (e.g. `+` / `*`)
 ```
 
 #### Punctuation
