@@ -260,6 +260,9 @@
   "lua": {
     "revision": "0fc89962b7ff5c7d676b8592c1cbce1ceaa806fd"
   },
+  "luap": {
+    "revision": "ebc6739bf8900a0191a386ef53371fc556c662a8"
+  },
   "m68k": {
     "revision": "d097b123f19c6eaba2bf181c05420d88b9fc489d"
   },
