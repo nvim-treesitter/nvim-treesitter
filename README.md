@@ -261,6 +261,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [ledger](https://github.com/cbarrete/tree-sitter-ledger) (maintained by @cbarrete)
 - [x] [llvm](https://github.com/benwilliamgraham/tree-sitter-llvm) (maintained by @benwilliamgraham)
 - [x] [lua](https://github.com/MunifTanjim/tree-sitter-lua) (maintained by @muniftanjim)
+- [x] [lua patterns](https://github.com/vhyrro/tree-sitter-luap) (maintained by @amaanq)
 - [x] [m68k](https://github.com/grahambates/tree-sitter-m68k) (maintained by @grahambates)
 - [x] [make](https://github.com/alemuller/tree-sitter-make) (maintained by @lewis6991)
 - [x] [markdown](https://github.com/MDeiml/tree-sitter-markdown) (experimental, maintained by @MDeiml)
