@@ -24,10 +24,15 @@
  (#lua-match? @type "^[A-Z]"))
 
 ((identifier) @constant
- (#lua-match? @constant "^[A-Z_][A-Z%d_]+$"))
+ (#lua-match? @constant "^_*[A-Z][A-Z%d_]*$"))
 
 ((shorthand_property_identifier) @constant
- (#lua-match? @constant "^[A-Z_][A-Z%d_]+$"))
+ (#lua-match? @constant "^_*[A-Z][A-Z%d_]*$"))
+
+(lexical_declaration
+  "const"
+  . (variable_declarator
+      . name: (identifier) @constant))
 
 ((identifier) @variable.builtin
  (#vim-match? @variable.builtin "^(arguments|module|console|window|document)$"))
