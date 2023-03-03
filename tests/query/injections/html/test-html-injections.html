@@ -19,6 +19,10 @@
     <!--              ^ javascript -->
     <script type="text/javascript"> const x = 1 </script>
     <!--                              ^ javascript -->
+    <script type="module"> import { foo } from "bar" </script>
+    <!--                              ^ javascript -->
+    <script defer type="text/javascript"> const x = 1 </script>
+                                        <!-- ^ javascript -->
     <div style="height: 100%">
 <!--                ^ css      -->
       Test div to test css injections for style attributes
