@@ -396,6 +396,8 @@
 
 (rune_literal) @string
 
+(raw_string_literal) @string
+
 (escape_sequence) @string.escape
 
 (float_literal) @float
