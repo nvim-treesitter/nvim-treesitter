@@ -56,26 +56,11 @@
 [
  (keyword_asc)
  (keyword_desc)
- (keyword_external)
- (keyword_parquet)
- (keyword_csv)
- (keyword_rcfile)
- (keyword_textfile)
- (keyword_orc)
- (keyword_avro)
- (keyword_jsonfile)
- (keyword_sequencefile)
- (keyword_temp)
- (keyword_uncached)
- (keyword_unlogged)
  (keyword_terminated)
  (keyword_escaped)
  (keyword_unsigned)
  (keyword_nulls)
  (keyword_last)
- (keyword_materialized)
- (keyword_temp)
- (keyword_temporary)
  (keyword_delimited)
  (keyword_replication)
  (keyword_auto_increment)
@@ -89,6 +74,22 @@
  (keyword_following)
  (keyword_first)
 ] @attribute
+
+[
+ (keyword_materialized)
+ (keyword_temp)
+ (keyword_temporary)
+ (keyword_unlogged)
+ (keyword_external)
+ (keyword_parquet)
+ (keyword_csv)
+ (keyword_rcfile)
+ (keyword_textfile)
+ (keyword_orc)
+ (keyword_avro)
+ (keyword_jsonfile)
+ (keyword_sequencefile)
+] @storageclass
 
 [
  (keyword_case)
@@ -190,8 +191,12 @@
   (keyword_partitioned)
   (keyword_location)
   (keyword_cached)
+  (keyword_uncached)
   (keyword_lines)
   (keyword_stored)
+  (keyword_location)
+  (keyword_partitioned)
+  (keyword_cached)
 ] @keyword
 
 [
