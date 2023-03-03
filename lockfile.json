@@ -60,13 +60,13 @@
     "revision": "eedb93bf9e22e82ed6a67e6c57fd78731b44f591"
   },
   "cpp": {
-    "revision": "66262d3e76eb2046c76e6d661a6b72664bfb5819"
+    "revision": "03fa93db133d6048a77d4de154a7b17ea8b9d076"
   },
   "css": {
     "revision": "769203d0f9abe1a9a691ac2b9fe4bb4397a73c51"
   },
   "cuda": {
-    "revision": "9b1f7481a151686fce8af66da147f40388f8ee4d"
+    "revision": "91c3ca3e42326e0f7b83c82765940bbf7f91c847"
   },
   "d": {
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
@@ -267,10 +267,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "afbb3195c9c1683e358eb36805c0088ffbb2306c"
+    "revision": "10b9b5ad8742456b383908868b14709d73ff81f4"
   },
   "markdown_inline": {
-    "revision": "afbb3195c9c1683e358eb36805c0088ffbb2306c"
+    "revision": "10b9b5ad8742456b383908868b14709d73ff81f4"
   },
   "matlab": {
     "revision": "2d5d3d5193718a86477d4335aba5b34e79147326"
@@ -363,7 +363,7 @@
     "revision": "80efda55672d1293aa738f956c7ae384ecdc31b4"
   },
   "racket": {
-    "revision": "1a5df0206b25a05cb1b35a68d2105fc7493df39b"
+    "revision": "c2f7baa22053a66b4dba852cdba3f14f34bb6985"
   },
   "rasi": {
     "revision": "5f04634dd4e12de4574c4a3dc9d6d5d4da4a2a1b"
@@ -414,7 +414,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "d4b8be1e52b07b66e5ec62d2f1c0d701dfa85ed9"
+    "revision": "ee50e2e8c3df92bd66093aefa1834b2735355b9b"
   },
   "starlark": {
     "revision": "8ad93a74c2a880bc16325affba3cc66c14bb2bde"
