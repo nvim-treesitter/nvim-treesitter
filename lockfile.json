@@ -414,7 +414,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "ee50e2e8c3df92bd66093aefa1834b2735355b9b"
+    "revision": "1cb7c7a11015983f6d173847d5a3574f8e20107b"
   },
   "starlark": {
     "revision": "8ad93a74c2a880bc16325affba3cc66c14bb2bde"
@@ -504,7 +504,7 @@
     "revision": "2c0e6be8dd4dcb961c345fa35c309ad4f5bd3502"
   },
   "yuck": {
-    "revision": "1e1a7e10053b910f3864fe8d97ca1741d2df66b2"
+    "revision": "0f96c1d3bbdd32ca92b4e706c3f1fc2cb0d26b3f"
   },
   "zig": {
     "revision": "1cd5f339b146b764f39b36bb7be98ca631a2e02a"
