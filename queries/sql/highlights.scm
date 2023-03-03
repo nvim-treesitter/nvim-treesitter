@@ -11,6 +11,7 @@
   (keyword_brin)
   (keyword_float)
   (keyword_array)
+  (keyword_group_concat)
 ] @function.call
 
 (count
@@ -83,7 +84,10 @@
  (keyword_concurrently)
  (keyword_engine)
  (keyword_character)
-  (keyword_concurrently)
+ (keyword_concurrently)
+ (keyword_preceding)
+ (keyword_following)
+ (keyword_first)
 ] @attribute
 
 [
@@ -116,6 +120,8 @@
   (keyword_order)
   (keyword_partition)
   (keyword_group)
+  (keyword_with)
+  (keyword_as)
   (keyword_having)
   (keyword_limit)
   (keyword_offset)
@@ -140,7 +146,6 @@
   (keyword_end)
   (keyword_is)
   (keyword_using)
-  (keyword_cascade)
   (keyword_between)
   (keyword_window)
   (keyword_no)
@@ -165,20 +170,14 @@
   (keyword_over)
   (keyword_change)
   (keyword_modify)
-  (keyword_restrict)
-  (keyword_first)
   (keyword_after)
   (keyword_range)
   (keyword_rows)
   (keyword_groups)
-  (keyword_unbounded)
-  (keyword_preceding)
-  (keyword_following)
   (keyword_exclude)
   (keyword_current)
   (keyword_ties)
   (keyword_others)
-  (keyword_unique)
   (keyword_preserve)
   (keyword_zerofill)
   (keyword_format)
@@ -195,9 +194,12 @@
   (keyword_stored)
 ] @keyword
 
-(keyword_with) @repeat
-
-(keyword_as) @label
+[
+ (keyword_restrict)
+ (keyword_unbounded)
+ (keyword_unique)
+ (keyword_cascade)
+] @type.qualifier
 
 [
   (keyword_int)
@@ -231,6 +233,7 @@
   (keyword_geography)
   (keyword_box2d)
   (keyword_box3d)
+  (keyword_interval)
 ] @type.builtin
 
 [
