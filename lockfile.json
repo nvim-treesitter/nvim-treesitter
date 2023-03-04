@@ -68,6 +68,9 @@
   "cuda": {
     "revision": "91c3ca3e42326e0f7b83c82765940bbf7f91c847"
   },
+  "cue": {
+    "revision": "4ffcda8c2bdfee1c2ba786cd503d0508ea92cca2"
+  },
   "d": {
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
   },
