@@ -7,6 +7,7 @@
   (literal_value)
   (expression_case)
   (communication_case)
+  (type_case)
   (default_case)
   (block)
   (call_expression)

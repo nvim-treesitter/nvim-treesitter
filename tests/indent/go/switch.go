@@ -11,4 +11,10 @@ func test(ch byte) {
 	case 'l':
 		return
 	}
+
+	var i interface{}
+	switch i.(type) {
+	case int:
+		return
+	}
 }
