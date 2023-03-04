@@ -271,6 +271,14 @@ list.cuda = {
   maintainers = { "@theHamsta" },
 }
 
+list.cue = {
+  install_info = {
+    url = "https://github.com/eonpatapon/tree-sitter-cue",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.d = {
   install_info = {
     url = "https://github.com/CyberShadow/tree-sitter-d",
