@@ -859,9 +859,9 @@ list.luap = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-luap",
     files = { "src/parser.c" },
-    readme_name = "lua patterns",
   },
   maintainers = { "@amaanq" },
+  readme_name = "lua patterns",
 }
 
 list.m68k = {
@@ -888,9 +888,9 @@ list.markdown = {
     location = "tree-sitter-markdown",
     files = { "src/parser.c", "src/scanner.c" },
     branch = "split_parser",
-    readme_name = "markdown (basic highlighting)",
   },
   maintainers = { "@MDeiml" },
+  readme_name = "markdown (basic highlighting)",
   experimental = true,
 }
 
@@ -900,9 +900,9 @@ list.markdown_inline = {
     location = "tree-sitter-markdown-inline",
     files = { "src/parser.c", "src/scanner.c" },
     branch = "split_parser",
-    readme_name = "markdown_inline (needs to be installed for full markdown highlighting)",
   },
   maintainers = { "@MDeiml" },
+  readme_name = "markdown_inline (needed for full highlighting)",
   experimental = true,
 }
 
