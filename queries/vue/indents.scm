@@ -4,4 +4,4 @@
   (template_element)
 ] @indent
 
-(template_element (end_tag "</" @branch ">" @indent_end))
+(template_element (end_tag ">" @indent_end) @branch)
