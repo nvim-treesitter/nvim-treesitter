@@ -314,6 +314,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [solidity](https://github.com/JoranHonig/tree-sitter-solidity) (maintained by @amaanq)
 - [x] [sparql](https://github.com/BonaBeavis/tree-sitter-sparql) (maintained by @BonaBeavis)
 - [x] [sql](https://github.com/derekstride/tree-sitter-sql) (maintained by @derekstride)
+- [x] [squirrel](https://github.com/amaanq/tree-sitter-squirrel) (maintained by @amaanq)
 - [x] [starlark](https://github.com/amaanq/tree-sitter-starlark) (maintained by @amaanq)
 - [x] [supercollider](https://github.com/madskjeldgaard/tree-sitter-supercollider) (maintained by @madskjeldgaard)
 - [x] [surface](https://github.com/connorlay/tree-sitter-surface) (maintained by @connorlay)
