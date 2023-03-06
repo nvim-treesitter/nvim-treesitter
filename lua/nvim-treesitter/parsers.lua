@@ -1329,6 +1329,14 @@ list.sql = {
   maintainers = { "@derekstride" },
 }
 
+list.squirrel = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-squirrel",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.starlark = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-starlark",

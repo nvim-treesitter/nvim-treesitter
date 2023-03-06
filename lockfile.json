@@ -422,6 +422,9 @@
   "sql": {
     "revision": "1cb7c7a11015983f6d173847d5a3574f8e20107b"
   },
+  "squirrel": {
+    "revision": "518ab2feba8e14147009e788530b8ac88dfa9e73"
+  },
   "starlark": {
     "revision": "8ad93a74c2a880bc16325affba3cc66c14bb2bde"
   },
