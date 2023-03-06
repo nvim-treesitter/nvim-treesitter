@@ -172,7 +172,7 @@
   "sealed"
   "private"
   "protected"
-] @type.qualifier
+] @modifier
 
 (inline_modifier) @storageclass
 
