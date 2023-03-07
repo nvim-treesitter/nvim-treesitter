@@ -32,7 +32,7 @@ cp ~/.local/share/nvim/plugged/plenary.nvim/plugin/plenary.vim plugin/
 
 ### Run specific tests
 
-You can supply a test as a second argument to the `run_tests.sh`. The test argument is a path to the test you want to run, starting from the `nvim/test/` directory.
+You can supply a test as a second argument to the `run_tests.sh`. The test argument is a path to the test you want to run, starting from the `nvim-treesitter/test/` directory.
 
 For example, here's how we'd run the JavaScript indentation tests.
 
