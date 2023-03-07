@@ -2,27 +2,29 @@
 
 This document aims to provide some basic information on writing and running the `nvim-treesitter` test suite.
 
+## Setup
+
+### Install plenary and nvim-treesitter dependencies
+
+You'll need to have modules `plenary.nvim` and `nvim-treesitter` available on your runtime path.
+
+If you use packer, plenary should be on the runtime path already. Otherwise, the simplest way to get it is to add a copy of the `plenary.vim` file to your local `plugin/` directory.
+
+Here's a quick solution to get latest.
+
+```
+wget https://raw.githubusercontent.com/nvim-lua/plenary.nvim/master/plugin/plenary.vim -O plugin/plenary.vim
+```
+
+There should be a copy of `nvim-treesitter` in the `plugin/` directory already.
+
+### Install and run highlight-assertions 
+
+The [highlight-assertions](https://github.com/theHamsta/highlight-assertions) project is required for running highlighting tests.
+
+TODO: How do we install this? What command should we run?
+
 ## Running tests
-
-### Setup
-
-The only required dependency to run `nvim-treesitter` tests is `plenary.nvim`: https://github.com/nvim-lua/plenary.nvim
-
-#### Installing plenary.nvim using packer
-
-TODO: I'm not sure how to set this up.
-
-#### Installing plenary.nvim using vim-plug
-
-These instrunctions assume you have `vim-plug` configured, and are using it as your package manager. If not, follow the [installation instructions](https://github.com/junegunn/vim-plug#installation) to get started.
-
-First, install the `plenary.nvim` module if you don't already have it. See the [`vim-plug` usage section](https://github.com/junegunn/vim-plug#usage) for installation instructions.
-
-Next, copy your local version of `plenary.vim` to the `nvim-treesitter/plugin/` directory. You will probably be able to find this file at `~/.local/share/nvim/plugged/plenary.nvim/plugin/plenary.vim`, though it might elsewhere for earlier versions of `vim-plug`.
-
-```
-cp ~/.local/share/nvim/plugged/plenary.nvim/plugin/plenary.vim plugin/
-```
 
 ### Run full test suite
 
@@ -52,7 +54,7 @@ TODO: I don't know how to write these.
 
 ### Indentation tests
 
-Indentation tests belong in the `nvim-treesitter/tests/indent/` directory.
+Indentation tests belong in the `tests/indent/` directory.
 
 For the sake of this guide, let's imagine we'd like to make a test to ensure that JavaScript function bodies are properly indented. We'll use the namespace "js" for our example, though in reality you'd most likely want to use the existing "ecma"/"javascript" namespaces.
 
@@ -62,14 +64,14 @@ function doSomething() {
 }
 ```
 
-First, create a file `nvim-treesitter/tests/indent/js/simple_function.js` with the test function.
+First, create a file `tests/indent/js/simple_function.js` with the test function.
 
 ```javascript
 function doSomething() {
 }
 ```
 
-Next, create a Lua spec file at `nvim-treesitter/tests/indent/js_spec.lua`. Add the following content.
+Next, create a Lua spec file at `tests/indent/js_spec.lua`. Add the following content.
 
 ```lua
 local Runner = require("tests.indent.common").Runner
