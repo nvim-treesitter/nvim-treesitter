@@ -1520,6 +1520,16 @@ list.ungrammar = {
   maintainers = { "@Philipp-M", "@amaanq" },
 }
 
+list.uxntal = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-uxntal",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  filetype = "tal",
+  maintainers = { "@amaanq" },
+  readme_name = "uxn tal",
+}
+
 list.v = {
   install_info = {
     url = "https://github.com/vlang/vls",
