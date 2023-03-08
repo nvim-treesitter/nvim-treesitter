@@ -204,18 +204,25 @@
  (keyword_unbounded)
  (keyword_unique)
  (keyword_cascade)
+ (keyword_delayed)
+ (keyword_high_priority)
+ (keyword_low_priority)
+ (keyword_ignore)
+ (keyword_nothing)
 ] @type.qualifier
 
 [
   (keyword_int)
   (keyword_null)
   (keyword_boolean)
+  (keyword_binary)
   (keyword_bit)
   (keyword_smallserial)
   (keyword_serial)
   (keyword_bigserial)
   (keyword_smallint)
   (keyword_bigint)
+  (keyword_tinyint)
   (keyword_decimal)
   (keyword_float)
   (keyword_numeric)
@@ -224,7 +231,9 @@
   (keyword_money)
   (keyword_char)
   (keyword_varchar)
+  (keyword_varying)
   (keyword_text)
+  (keyword_string)
   (keyword_uuid)
   (keyword_json)
   (keyword_jsonb)
@@ -248,6 +257,7 @@
   (keyword_not)
   (keyword_by)
   (keyword_on)
+  (keyword_do)
 ] @keyword.operator
 
 [
