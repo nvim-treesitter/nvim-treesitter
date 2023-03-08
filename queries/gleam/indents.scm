@@ -10,17 +10,14 @@
   (import)
   (let)
   (list)
-  (public_constant)
-  (public_external_function)
-  (public_function)
-  (public_opaque_type_definition)
-  (public_type_alias)
-  (public_type_definition)
+  (constant)
+  (external_function)
+  (function)
+  (type_definition)
+  (type_alias)
   (todo)
   (try)
   (tuple)
-  (type_alias)
-  (type_definition)
 ] @indent
 
 [
