@@ -423,7 +423,7 @@
     "revision": "1cb7c7a11015983f6d173847d5a3574f8e20107b"
   },
   "squirrel": {
-    "revision": "518ab2feba8e14147009e788530b8ac88dfa9e73"
+    "revision": "3fefc6b9bb2b4de1b1c461783f675918cd957546"
   },
   "starlark": {
     "revision": "8ad93a74c2a880bc16325affba3cc66c14bb2bde"
@@ -516,7 +516,7 @@
     "revision": "2c0e6be8dd4dcb961c345fa35c309ad4f5bd3502"
   },
   "yuck": {
-    "revision": "044fea8b9b9a19897d99b0a892bbaab4b5f44433"
+    "revision": "fefe8e32ac5306b261af6af52571e13edf7b420c"
   },
   "zig": {
     "revision": "f3bc9ffe9ca10f52dee01999b5b6ce9a4074b0ac"
