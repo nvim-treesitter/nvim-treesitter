@@ -528,10 +528,10 @@ list.gitignore = {
 
 list.gleam = {
   install_info = {
-    url = "https://github.com/J3RN/tree-sitter-gleam",
+    url = "https://github.com/gleam-lang/tree-sitter-gleam",
     files = { "src/parser.c", "src/scanner.c" },
   },
-  maintainers = { "@connorlay" },
+  maintainers = { "@amaanq" },
 }
 
 list.glimmer = {
