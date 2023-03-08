@@ -529,8 +529,7 @@ list.gitignore = {
 list.gleam = {
   install_info = {
     url = "https://github.com/J3RN/tree-sitter-gleam",
-    files = { "src/parser.c" },
-    branch = "main",
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@connorlay" },
 }
