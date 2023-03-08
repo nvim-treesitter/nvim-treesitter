@@ -8,21 +8,33 @@ This document aims to provide some basic information on writing and running the 
 
 You'll need to have modules `plenary.nvim` and `nvim-treesitter` available on your runtime path.
 
-If you use packer, plenary should be on the runtime path already. Otherwise, the simplest way to get it is to add a copy of the `plenary.vim` file to your local `plugin/` directory.
+If you use packer, simply install plenary and nvim-treesitter normally.
 
-Here's a quick solution to get latest.
+`vim-plug` users will need to add the `plenary.vim` file to the `plugin/` directory in addition to installing the module.
+
+Here's a quick solution to get the latest `plenary.vim` file.
 
 ```
-wget https://raw.githubusercontent.com/nvim-lua/plenary.nvim/master/plugin/plenary.vim -O plugin/plenary.vim
+curl https://raw.githubusercontent.com/nvim-lua/plenary.nvim/master/plugin/plenary.vim --output plugin/plenary.vim
 ```
 
-There should be a copy of `nvim-treesitter` in the `plugin/` directory already.
+### Install highlight-assertions 
 
-### Install and run highlight-assertions 
+The [highlight-assertions](https://github.com/theHamsta/highlight-assertions) project is required to test highlighting and injections. The test runners automatically execute the `highlight-assertions` command, so you just need to have the binary available on your path.
 
-The [highlight-assertions](https://github.com/theHamsta/highlight-assertions) project is required for running highlighting tests.
+If you have a Rust toolchain on your system, you can install the binary with the following command.
 
-TODO: How do we install this? What command should we run?
+```
+cargo install --git https://github.com/theHamsta/highlight-assertions
+```
+
+Otherwise, you can download an pre-built binary from the [GitHub release page](https://github.com/theHamsta/highlight-assertions/releases/) and add it to your shell path.
+
+You can check that `highlight-assertions` is properly installed like so.
+
+```
+highlight-assertions --version
+```
 
 ## Running tests
 
