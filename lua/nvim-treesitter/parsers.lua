@@ -1085,6 +1085,17 @@ list.poe_filter = {
   readme_name = "Path of Exile item filter",
 }
 
+list.ponylang = {
+  install_info = {
+    url = "https://github.com/mfelsche/tree-sitter-ponylang",
+    revision = "v0.0.2",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@mfelsche" },
+  experimental = true,
+  filetype = "pony",
+}
+
 list.prisma = {
   install_info = {
     url = "https://github.com/victorhqc/tree-sitter-prisma",

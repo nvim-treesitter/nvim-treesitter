@@ -338,6 +338,9 @@
   "poe_filter": {
     "revision": "80dc10195e26c72598ed1ab02cdf2d8e4c792e7b"
   },
+  "ponylang": {
+    "revision": "v0.0.2"
+  },
   "prisma": {
     "revision": "eca2596a355b1a9952b4f80f8f9caed300a272b5"
   },
