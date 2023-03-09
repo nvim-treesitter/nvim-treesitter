@@ -1,9 +1,9 @@
 pub fn main() {
   try x = Ok(1)
-  // <- keyword
+  // <- exception
   //  ^ variable
   //    ^ operator
-  //      ^ type
+  //      ^^ constant.builtin
   //        ^ punctuation.bracket
   //         ^ number
   //          ^ punctuation.bracket
