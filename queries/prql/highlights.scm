@@ -9,7 +9,7 @@
   (keyword_window)
   (keyword_join)
   (keyword_select)
-  (keyword_switch)
+  (keyword_case)
   (keyword_append)
   (keyword_remove)
   (keyword_intersect)
@@ -19,6 +19,7 @@
   (keyword_let)
   (keyword_prql)
   (keyword_from_text)
+  (keyword_loop)
 ] @keyword
 
 [
