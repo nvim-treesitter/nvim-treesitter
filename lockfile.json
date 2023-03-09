@@ -149,6 +149,9 @@
   "gitcommit": {
     "revision": "f71b93f399c9c2b315825827c95466e7405ec622"
   },
+  "git_config": {
+    "revision": "a01b498b25003d97a5f93b0da0e6f28307454347"
+  },
   "gitignore": {
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
   },
