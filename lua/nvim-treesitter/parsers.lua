@@ -516,6 +516,16 @@ list.gitcommit = {
   maintainers = { "@gbprod" },
 }
 
+list.git_config = {
+  install_info = {
+    url = "https://github.com/the-mikedavis/tree-sitter-git-config",
+    files = { "src/parser.c" },
+  },
+  filetype = "gitconfig",
+  maintainers = { "@amaanq" },
+  readme_name = "gitconfig",
+}
+
 list.gitignore = {
   install_info = {
     url = "https://github.com/shunsambongi/tree-sitter-gitignore",
