@@ -100,6 +100,15 @@
 (where_clause
   (curly_expression (_) @type))
 
+;; Builtins
+
+((identifier) @variable.builtin
+  (#any-of? @variable.builtin "begin" "end")
+  (#has-ancestor? @variable.builtin index_expression))
+
+((identifier) @variable.builtin
+  (#any-of? @variable.builtin "begin" "end")
+  (#has-ancestor? @variable.builtin range_expression))
 
 ;;; Keywords
 
