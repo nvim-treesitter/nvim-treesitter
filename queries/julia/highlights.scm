@@ -19,10 +19,9 @@
   (identifier) @field .)
 
 
-
 ;;; Function names
 
-;; definitions
+;; Definitions
 
 (function_definition
   name: (identifier) @function)
@@ -57,9 +56,7 @@
   (identifier) @parameter)
 
 (typed_parameter
-  parameter: (identifier) @parameter
-  type: (_) @type)
-(typed_parameter
+  parameter: (identifier)? @parameter
   type: (_) @type)
 
 (function_expression
@@ -111,9 +108,9 @@
   "local"
   "macro"
   "struct"
+  "end"
 ] @keyword
 
-"end" @keyword
 
 (compound_statement
   ["begin" "end"] @keyword)
@@ -125,9 +122,9 @@
 (if_statement
   ["if" "end"] @conditional)
 (elseif_clause
-  ["elseif"] @conditional)
+  "elseif" @conditional)
 (else_clause
-  ["else"] @conditional)
+  "else" @conditional)
 (if_clause
   "if" @conditional) ; `if` clause in comprehensions
 (ternary_expression
@@ -167,8 +164,6 @@
   ["function" "end"] @keyword.function)
 (do_clause
   ["do" "end"] @keyword.function)
-(function_expression
-  "->" @keyword.function)
 (return_statement
   "return" @keyword.return)
 
@@ -180,25 +175,35 @@
 
 ;;; Operators & Punctuation
 
-(operator) @operator
+[
+  "="
+  "∈"
+  (operator)
+] @operator
 
 (adjoint_expression "'" @operator)
 (range_expression ":" @operator)
-(slurp_parameter "..." @operator)
-(splat_expression "..." @operator)
 
 ((operator) @keyword.operator
   (#any-of? @keyword.operator "in" "isa"))
 
 (for_binding "in" @keyword.operator)
-(for_binding ["=" "∈"] @operator)
 
 (where_clause "where" @keyword.operator)
 (where_expression "where" @keyword.operator)
 
-["." "::"] @operator
+[
+  ","
+  "."
+  ";"
+  "::"
+  "->"
+] @punctuation.delimiter
 
-["," ";"] @punctuation.delimiter
+[
+  "..."
+] @punctuation.special
+
 ["(" ")" "[" "]" "{" "}"] @punctuation.bracket
 
 
