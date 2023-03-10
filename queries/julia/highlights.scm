@@ -45,6 +45,17 @@
 (broadcast_call_expression
   (field_expression (identifier) @function.call .))
 
+;; Builtins
+
+((identifier) @function.builtin
+  (#any-of? @function.builtin 
+  "_abstracttype" "_apply_iterate" "_apply_pure" "_call_in_world" "_call_in_world_total"
+  "_call_latest" "_equiv_typedef" "_expr" "_primitivetype" "_setsuper!" "_structtype"
+  "_typebody!" "_typevar" "applicable" "apply_type" "arrayref" "arrayset" "arraysize"
+  "const_arrayref" "donotdelete" "fieldtype" "get_binding_type" "getfield" "ifelse" "invoke" "isa"
+  "isdefined" "modifyfield!" "nfields" "replacefield!" "set_binding_type!" "setfield!" "sizeof"
+  "svec" "swapfield!" "throw" "tuple" "typeassert" "typeof"))
+
 
 ;;; Parameters
 
@@ -101,6 +112,36 @@
   (curly_expression (_) @type))
 
 ;; Builtins
+
+((identifier) @type.builtin
+ (#any-of? @type.builtin
+  "Type" "DataType" "Any" "Union" "UnionAll" "Tuple" "NTuple" "NamedTuple"
+  "Val" "Nothing" "Some" "Enum" "Expr" "Symbol" "Module" "Function" "ComposedFunction"
+  "Number" "Real" "AbstractFloat" "Integer" "Signed" "AbstractIrrational"
+  "Fix1" "Fix2" "Missing" "Cmd" "EnvDict" "VersionNumber" "ArgumentError"
+  "AssertionError" "BoundsError" "CompositeException" "DimensionMismatch"
+  "DivideError" "DomainError" "EOFError" "ErrorException" "InexactError"
+  "InterruptException" "KeyError" "LoadError" "MethodError" "OutOfMemoryError"
+  "ReadOnlyMemoryError" "OverflowError" "ProcessFailedException" "StackOverflowError"
+  "SystemError" "TypeError" "UndefKeywordError" "UndefRefError" "UndefVarError"
+  "StringIndexError" "InitError" "ExponentialBackOff" "Timer" "AsyncCondition"
+  "ParseError" "QuoteNode" "IteratorSize" "IteratorEltype" "AbstractRange"
+  "OrdinalRange" "AbstractUnitRange" "StepRange" "UnitRange" "LinRange" "AbstractDict"
+  "Dict" "IdDict" "WeakKeyDict" "ImmutableDict" "AbstractSet" "Set" "BitSet" "Pair"
+  "Pairs" "OneTo" " StepRangeLen" "RoundingMode" "Float16" "Float32" "Float64"
+  "BigFloat" "Bool" "Int" "Int8" "UInt8" "Int16" "UInt16" "Int32" "UInt32" "Int64"
+  "UInt64" "Int128" "UInt128" "BigInt" "Complex" "Rational" "Irrational" "AbstractChar"
+  "Char" "SubString" "Regex" "SubstitutionString" "RegexMatch" "AbstractArray"
+  "AbstractVector" "AbstractMatrix" "AbstractVecOrMat" "Array" "UndefInitializer"
+  "Vector" "Matrix" "VecOrMat" "DenseArray" "DenseVector" "DenseMatrix" "DenseVecOrMat"
+  "StridedArray" "StridedVector" "StridedMatrix" "StridedVecOrMat" "BitArray" "Dims"
+  "SubArray" "Task" "Condition" "Event" "Semaphore" "AbstractLniock" "ReentrantLock"
+  "Channel" "Atomic" "SpinLock" "RawFD" "IOStream" "IOBuffer" "AbstractDisplay" "MIME"
+  "TextDisplay" "PartialQuickSort" "Ordering" "ReverseOrdering" "By" "Lt" "Perm"
+  "Stateful" "CFunction" "Ptr" "Ref" "Cchar" "Cuchar" "Cshort" "Cstring" "Cushort"
+  "Cint" "Cuint" "Clong" "Culong" "Clonglong" "Culonglong" "Cintmax_t" "Cuintmax_t"
+  "Csize_t" "Cssize_t" "Cptrdiff_t" "Cwchar_t" "Cwstring" "Cfloat" "Cdouble" "Tmstruct"
+  "StackFrame" "StackTrace"))
 
 ((identifier) @variable.builtin
   (#any-of? @variable.builtin "begin" "end")
