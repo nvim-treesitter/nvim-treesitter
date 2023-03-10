@@ -224,7 +224,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [gitattributes](https://github.com/ObserverOfTime/tree-sitter-gitattributes) (maintained by @ObserverOfTime)
 - [x] [gitcommit](https://github.com/gbprod/tree-sitter-gitcommit) (maintained by @gbprod)
 - [x] [gitignore](https://github.com/shunsambongi/tree-sitter-gitignore) (maintained by @theHamsta)
-- [x] [gleam](https://github.com/J3RN/tree-sitter-gleam) (maintained by @connorlay)
+- [x] [gleam](https://github.com/gleam-lang/tree-sitter-gleam) (maintained by @amaanq)
 - [x] [Glimmer and Ember](https://github.com/alexlafroscia/tree-sitter-glimmer) (maintained by @NullVoxPopuli)
 - [x] [glsl](https://github.com/theHamsta/tree-sitter-glsl) (maintained by @theHamsta)
 - [x] [go](https://github.com/tree-sitter/tree-sitter-go) (maintained by @theHamsta, @WinWisely268)
