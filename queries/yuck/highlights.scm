@@ -1,147 +1,95 @@
 ; Tags
 
+; TODO apply to every symbol in list? I think it should probably only be applied to the first child of the list
 (list
   (symbol) @tag)
 
 ; Includes
 
-((symbol) @include
-  (#match? @include "include"))
+(list .
+  ((symbol) @include
+    (#eq? @include "include")))
 
 ; Keywords
 
-((symbol) @keyword
-  (#any-of? @keyword "defwindow" "defwidget" "defvar" "defpoll" "deflisten" "for" "geometry" "children" "struts"))
+; I think there's a bug in tree-sitter the anchor doesn't seem to be working, see
+; https://github.com/tree-sitter/tree-sitter/pull/2107
+(list .
+  ((symbol) @keyword
+    (#any-of? @keyword "defwindow" "defwidget" "defvar" "defpoll" "deflisten" "geometry" "children" "struts")))
+
+; Loop
+
+(loop_widget . "for" @repeat . (symbol) @variable . "in" @keyword.operator)
+
+(loop_widget . "for" @repeat . (symbol) @variable . "in" @keyword.operator . (symbol) @variable)
+
+; Builtin widgets
+
+(list .
+  ((symbol) @tag.builtin
+    (#any-of? @tag.builtin
+      "box"
+      "button"
+      "calendar"
+      "centerbox"
+      "checkbox"
+      "circular-progress"
+      "color-button"
+      "color-chooser"
+      "combo-box-text"
+      "eventbox"
+      "expander"
+      "graph"
+      "image"
+      "input"
+      "label"
+      "literal"
+      "overlay"
+      "progress"
+      "revealer"
+      "scale"
+      "scroll"
+      "transform")))
+
+; Variables
+
+(ident) @variable
+
+(array
+  (symbol) @variable)
+
+; Properties & Fields
+
+(keyword) @property
+
+(json_access
+  (_)
+  "["
+  (simplexpr
+    (ident) @property))
+
+(json_safe_access
+  (_)
+  "?."
+  "["
+  (simplexpr
+    (ident) @property))
+
+(json_dot_access
+  (index) @property)
+
+(json_safe_dot_access
+  (index) @property)
+
+(json_object
+  (simplexpr
+    (ident) @field))
 
 ; Functions
 
 (function_call
   name: (ident) @function.call)
-
-; Variables
-
-(array
-  (symbol) @variable)
-
-(binary_expression
-	(simplexpr
-    (ident) @variable))
-
-(unary_expression
-	(simplexpr
-    (ident) @variable))
-
-(ternary_expression
-	(simplexpr
-		(ident) @variable))
-
-(array
-  (symbol) @variable)
-
-(json_access
-	(simplexpr
-		(ident) @variable))
-
-(json_safe_access
-	(simplexpr
-		(ident) @variable))
-
-(json_array
-	(simplexpr
-    (ident) @variable))
-
-(json_dot_access
-	(simplexpr
-		(ident) @variable))
-
-(json_safe_dot_access
-	(simplexpr
-		(ident) @variable))
-
-(json_object
-  (_)
-  ":"
-	(simplexpr
-		(ident) @variable))
-
-; Properties & Fields
-
-(keyword) @property
-
-(json_access
-  (_)
-  "["
-	(simplexpr
-		(ident) @property))
-
-(json_safe_access
-  (_)
-  "?."
-  "["
-	(simplexpr
-		(ident) @property))
-
-(json_dot_access
-  (index) @property)
-
-(json_safe_dot_access
-  (index) @property)
-
-(json_object
-	(simplexpr
-		(ident) @field))
-
-; Operators
-
-[
-  "+"
-  "-"
-  "*"
-  "/"
-  "%"
-	"&&"
-  "||"
-  "=="
-  "!="
-  "=~"
-	">="
-	"<="
-  ">"
-  "<"
-	"?:"
-	"?."
-  "!"
-] @operator
-
-(ternary_expression
-  ["?" ":"] @conditional.ternary)
-
-; Properties & Fields
-
-(keyword) @property
-
-(json_access
-  (_)
-  "["
-	(simplexpr
-		(ident) @property))
-
-(json_safe_access
-  (_)
-  "?."
-  "["
-	(simplexpr
-		(ident) @property))
-
-(json_dot_access
-  (index) @property)
-
-(json_safe_dot_access
-  (index) @property)
-
-(json_object
-	(simplexpr
-		(ident) @field))
 
 ; Operators
 
@@ -162,20 +110,18 @@
   "<="
   "!"
   "?."
+  "?:"
 ] @operator
-
-(ternary_expression
-  ["?" ":"] @conditional.ternary)
 
 ; Punctuation
 
-[
-  ":"
-  "."
-  ","
-] @punctuation.delimiter
-
+[":" "." ","] @punctuation.delimiter
 ["{" "}" "[" "]" "(" ")"] @punctuation.bracket
+
+; Ternary expression
+
+(ternary_expression
+  ["?" ":"] @conditional.ternary)
 
 ; Literals
 
@@ -198,11 +144,6 @@
 ; Comments
 
 (comment) @comment @spell
-
-; Other stuff that has not been catched by the previous queries yet
-
-(ident) @variable
-(index) @property
 
 ; Errors
 
