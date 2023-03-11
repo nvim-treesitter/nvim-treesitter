@@ -16,6 +16,7 @@ end
 
 local M = {}
 
+-- Returns the mkdir command based on the OS
 ---@param directory string
 ---@param cwd string
 ---@param info_msg string
@@ -44,6 +45,7 @@ function M.select_mkdir_cmd(directory, cwd, info_msg)
   end
 end
 
+-- Returns the remove command based on the OS
 ---@param file string
 ---@param info_msg string
 ---@return table
@@ -77,6 +79,7 @@ function M.select_executable(executables)
   end, executables)[1]
 end
 
+-- Returns the compiler arguments based on the compiler and OS
 ---@param repo InstallInfo
 ---@param compiler string
 ---@return string[]
@@ -125,6 +128,11 @@ function M.select_compiler_args(repo, compiler)
   end
 end
 
+-- Returns the compile command based on the OS and user options
+---@param repo InstallInfo
+---@param cc string
+---@param compile_location string
+---@return Command
 function M.select_compile_command(repo, cc, compile_location)
   local make = M.select_executable { "gmake", "make" }
   if
@@ -160,6 +168,10 @@ function M.select_compile_command(repo, cc, compile_location)
   end
 end
 
+-- Returns the remove command based on the OS
+---@param cache_folder string
+---@param project_name string
+---@return Command
 function M.select_install_rm_cmd(cache_folder, project_name)
   if fn.has "win32" == 1 then
     local dir = cache_folder .. "\\" .. project_name
@@ -179,6 +191,11 @@ function M.select_install_rm_cmd(cache_folder, project_name)
   end
 end
 
+-- Returns the move command based on the OS
+---@param from string
+---@param to string
+---@param cwd string
+---@return Command
 function M.select_mv_cmd(from, to, cwd)
   if fn.has "win32" == 1 then
     return {
