@@ -29,7 +29,10 @@
 (string) @string
 
 ((string) @text.uri
- (#match? @text.uri "^(~|./|/)"))
+ (#lua-match? @text.uri "^[.]?[/]"))
+
+((string) @text.uri
+ (#lua-match? @text.uri "^[~]"))
 
 (section_header
   [
