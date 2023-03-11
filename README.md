@@ -235,6 +235,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [gowork](https://github.com/omertuc/tree-sitter-go-work) (maintained by @omertuc)
 - [x] [graphql](https://github.com/bkegley/tree-sitter-graphql) (maintained by @bkegley)
 - [ ] [hack](https://github.com/slackhq/tree-sitter-hack)
+- [x] [hare](https://github.com/amaanq/tree-sitter-hare) (maintained by @amaanq)
 - [ ] [haskell](https://github.com/tree-sitter/tree-sitter-haskell)
 - [x] [hcl](https://github.com/MichaHoffmann/tree-sitter-hcl) (maintained by @MichaHoffmann)
 - [x] [heex](https://github.com/connorlay/tree-sitter-heex) (maintained by @connorlay)
