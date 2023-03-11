@@ -1,7 +1,7 @@
 (normal_command
   (identifier)
   (argument (unquoted_argument)) @constant
-  (#lua-match? @constant "^%u[%u_]+$")
+  (#lua-match? @constant "^[%u@][%u%d_]+$")
 )
 
 [
