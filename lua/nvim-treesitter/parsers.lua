@@ -948,7 +948,6 @@ list.nim = {
     branch = "main",
   },
   maintainers = { "@j-james" },
-
 }
 
 list.nix = {
