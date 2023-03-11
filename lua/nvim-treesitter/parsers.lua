@@ -628,6 +628,14 @@ list.hack = {
   },
 }
 
+list.hare = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-hare",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.haskell = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-haskell",
