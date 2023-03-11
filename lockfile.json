@@ -348,7 +348,7 @@
     "revision": "42d82fa18f8afe59b5fc0b16c207ee4f84cb185f"
   },
   "prql": {
-    "revision": "a5a1fdb45826f7f0d94e258ee5ada2e973708191"
+    "revision": "4045dcff3f8ac04669855b32584053dec065bba4"
   },
   "pug": {
     "revision": "884e225b5ecca5d885ae627275f16ef648acd42e"
@@ -402,7 +402,7 @@
     "revision": "2275b754360de8539e02e84106fa38f7cb6de275"
   },
   "scheme": {
-    "revision": "67b90a365bebf4406af4e5a546d6336de787e135"
+    "revision": "38aef90f54ef8f2e8e402b1f6f036ed19c636759"
   },
   "scss": {
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
@@ -423,7 +423,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "fcc9a446b63181603edecd05370f976f112d94fa"
+    "revision": "b2f6b30ce12cbddfb663473457b670f2b3bffaa9"
   },
   "squirrel": {
     "revision": "3fefc6b9bb2b4de1b1c461783f675918cd957546"
@@ -519,7 +519,7 @@
     "revision": "2c0e6be8dd4dcb961c345fa35c309ad4f5bd3502"
   },
   "yuck": {
-    "revision": "e3d91a3c65decdea467adebe4127b8366fa47919"
+    "revision": "c348825d3f86dec71dee0e1223c6bd73114e3579"
   },
   "zig": {
     "revision": "f3bc9ffe9ca10f52dee01999b5b6ce9a4074b0ac"
