@@ -379,7 +379,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   end
 
   local revision = repo.revision
-  if not revision and configs.get_update_strategy() == "lockfile" then
+  if not revision then
     revision = get_revision(lang)
   end
 
@@ -583,8 +583,7 @@ function M.update(options)
         utils.notify "Parsers are up-to-date!"
       end
     else
-      local parsers_to_update = configs.get_update_strategy() == "lockfile" and outdated_parsers()
-        or info.installed_parsers()
+      local parsers_to_update = outdated_parsers() or info.installed_parsers()
       if #parsers_to_update == 0 then
         utils.notify "All parsers are up-to-date!"
       end

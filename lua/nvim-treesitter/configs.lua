@@ -14,7 +14,6 @@ local M = {}
 ---@field ensure_installed string[]|string
 ---@field ignore_install string[]
 ---@field auto_install boolean
----@field update_strategy string
 ---@field parser_install_dir string|nil
 
 ---@type TSConfig
@@ -24,7 +23,6 @@ local config = {
   ensure_installed = {},
   auto_install = false,
   ignore_install = {},
-  update_strategy = "lockfile",
   parser_install_dir = nil,
 }
 
@@ -602,10 +600,6 @@ end
 
 function M.get_parser_info_dir()
   return M.get_parser_install_dir "parser-info"
-end
-
-function M.get_update_strategy()
-  return config.update_strategy
 end
 
 function M.get_ignored_parser_installs()
