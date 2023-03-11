@@ -129,7 +129,7 @@
 (identifier) @variable
 
 ((identifier) @variable.builtin
- (#eq? @variable.builtin "self"))
+ (#any-of? @variable.builtin "self" "string" "table" "vim"))
 
 (variable_list
    attribute: (attribute
