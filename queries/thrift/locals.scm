@@ -1,32 +1,51 @@
-(document) @scope
-(definition) @scope
+; Scopes
 
 [
-  (identifier)
-  (field_type)
-  (custom_type)
-] @reference
-(const_value (const_identifier) @reference)
+  (document)
+  (definition)
+] @scope
+
+; References
+
+(identifier) @reference
+
+; Definitions
 
 (annotation_identifier) @definition
 
-(const (const_identifier) @definition.constant)
-(enum_member) @definition.constant
+(const_definition (identifier) @definition.constant)
 
-(enum_identifier) @definition.enum
+(enum_definition "enum"
+  . (identifier) @definition.enum
+  "{" (identifier) @definition.constant "}")
 
-(field_identifier) @definition.field
+(senum_definition "senum"
+  . (identifier) @definition.enum)
 
-(function_identifier) @definition.function
+(field (identifier) @definition.field)
 
-(namespace_definition) @definition.namespace
+(function_definition (identifier) @definition.function)
 
-[
-  (param_identifier)
-  (exception_param_identifier)
-] @definition.parameter
+(namespace_declaration
+  "namespace" (namespace_scope)
+  . (_) @definition.namespace
+  (namespace_uri)?)
 
-[
-  (type_identifier)
-  (exception_identifier)
-] @definition.type
+(parameter (identifier) @definition.parameter)
+
+(struct_definition
+  "struct" . (identifier) @definition.type)
+
+(union_definition
+  "union" . (identifier) @definition.type)
+
+(exception_definition
+  "exception" . (identifier) @definition.type)
+
+(service_definition
+  "service" . (identifier) @definition.type)
+
+(interaction_definition
+  "interaction" . (identifier) @definition.type)
+
+(typedef_identifier) @definition.type
