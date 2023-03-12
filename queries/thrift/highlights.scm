@@ -1,6 +1,7 @@
- ; Namespace
+; Variables
 
-(namespace_definition) @namespace
+((identifier) @variable
+  (#set! "priority" 95))
 
 ; Includes
 
@@ -9,10 +10,62 @@
   "cpp_include"
 ] @include
 
-(include_path) @string
-(package_path) @string
+; Function
 
-; Builtins
+(function_definition
+  (identifier) @function)
+
+; Fields
+
+(field (identifier) @field)
+
+; Parameters
+
+(function_definition
+  (parameters
+    (parameter (identifier) @parameter)))
+
+(throws
+  (parameters
+    (parameter (identifier) @parameter)))
+
+; Types
+
+(typedef_identifier) @type
+(struct_definition
+  "struct" (identifier) @type)
+
+(union_definition
+  "union" (identifier) @type)
+
+(exception_definition
+  "exception" (identifier) @type)
+
+(service_definition
+  "service" (identifier) @type)
+
+(interaction_definition
+  "interaction" (identifier) @type)
+
+(type
+  type: (identifier) @type)
+
+(definition_type
+  type: (identifier) @type)
+
+((identifier) @type
+  (#lua-match? @type "^[_]*[A-Z]"))
+
+; Constants
+
+(const_definition (identifier) @constant)
+((identifier) @constant
+  (#lua-match? @constant "^[_A-Z][A-Z0-9_]*$"))
+(enum_definition "enum"
+  . (identifier) @type
+  "{" (identifier) @constant "}")
+
+; Builtin Types
 
 (primitive) @type.builtin
 
@@ -25,79 +78,49 @@
   "void"
 ] @type.builtin
 
-; Function
+; Namespace
 
-(function_identifier) @function
-
-; Fields
-
-(field_identifier) @field
-
-; Parameters
-
-(param_identifier) @parameter
-(exception_param_identifier) @parameter
-
-; Variables
-
-(identifier) @variable
-
-; Constants
-
-(const_identifier) @constant
-(enum_member) @constant
-
-; Types
-
-(enum_identifier) @type
-(definition_type) @type
-(exception_identifier) @type
-(exception_param_type) @type
-(field_type) @type
-(param_type) @type
-(type_identifier) @type
+(namespace_declaration
+  (namespace_scope) @tag
+  [(namespace) @namespace (_ (identifier) @namespace)])
 
 ; Attributes
 
-(annotation_identifier) @attribute
-(uri_def) @attribute
+(annotation_definition
+  (annotation_identifier (identifier) @attribute))
+(fb_annotation_definition
+  "@" @attribute (annotation_identifier (identifier) @attribute)
+  (identifier)? @attribute)
+(namespace_uri (string) @attribute)
 
 ; Operators
 
 [
- "="
- "+"
- "-"
+  "="
+  "&"
 ] @operator
 
 ; Exceptions
 
 [
- "throws"
+  "throws"
 ] @exception
 
 ; Keywords
 
 [
-  "cpp_include"
   "enum"
   "exception"
   "extends"
-  "include"
   "interaction"
   "namespace"
-  "optional"
-  "required"
   "senum"
   "service"
   "struct"
   "typedef"
   "union"
+  "uri"
 ] @keyword
-
-[
-  "oneway"
-] @keyword.coroutine
 
 ; Deprecated Keywords
 
@@ -120,35 +143,41 @@
   "xsd_optional"
 ] @keyword
 
+; Extended Kewords
+[
+  "package"
+  "performs"
+] @keyword
+
 [
   "async"
+  "oneway"
 ] @keyword.coroutine
 
-; Extended Keywords
+; Qualifiers
 
 [
   "client"
+  "const"
   "idempotent"
-  "package"
-  "performs"
+  "optional"
   "permanent"
   "readonly"
-  "server"
+  "required"
   "safe"
+  "server"
   "stateful"
   "transient"
-] @keyword
+] @type.qualifier
 
 ; Literals
 
-[
- (annotation_value)
- (string)
-] @string
+(string) @string
 
 (escape_sequence) @string.escape
 
-(uri (string_fragment) @text.uri) @string.special
+(namespace_uri
+  (string) @text.uri @string.special)
 
 (number) @number
 
@@ -158,24 +187,12 @@
 
 ; Typedefs
 
-(typedef_definition) @type.definition
-(namespace_scope) @type.definition
-
-; Qualifiers
-
-[
-  "const"
-  (exception_modifier)
-  (field_modifier)
-  (function_modifier)
-] @type.qualifier
+(typedef_identifier) @type.definition
 
 ; Punctuation
 
 [
   "*"
-  "&"
-  "@"
 ] @punctuation.special
 
 ["{" "}"] @punctuation.bracket
@@ -187,13 +204,11 @@
 ["<" ">"] @punctuation.bracket
 
 [
-  ";"
+  "."
   ","
+  ";"
+  ":"
 ] @punctuation.delimiter
-
-; Errors
-
-(invalid) @error
 
 ; Comments
 
@@ -206,3 +221,10 @@
   (#lua-match? @comment.documentation "^///[^/]"))
 ((comment) @comment.documentation
   (#lua-match? @comment.documentation "^///$"))
+
+((comment) @preproc
+  (#lua-match? @preproc "#!.*"))
+
+; Errors
+
+(ERROR) @error
