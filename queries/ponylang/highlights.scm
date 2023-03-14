@@ -1,3 +1,6 @@
+;; it seems for highlighting the latest query is the one being used
+;; So lets order them by least to most concrete
+
 [
   (line_comment)
   (block_comment)
@@ -8,6 +11,18 @@
 (float) @float
 (character) @character
 
+;; variables
+;; references to upper case things are considered constructors
+(
+    (identifier) @variable
+    (#lua-match? @variable "^[a-z]")
+)
+(
+  (identifier) @type
+  (#lua-match? @type "^[A-Z]")
+)
+
+
 ;; strings and docstring
 (source_file docstring: (string) @string.documentation)
 (entity docstring: (string) @string.documentation)
@@ -17,7 +32,6 @@
 (method body: (block . (string) @string.documentation)) ; docstring for methods with body
 (behavior body: (block . (string) @string.documentation))
 (constructor body: (block . (string) @string.documentation))
-(field docstring: (string) @string.documentation)
 (string) @string
 
 ;; Punctuation
@@ -36,8 +50,6 @@
 ] @punctuation.delimiter
 
 (this) @variable.builtin
-
-(field name: (identifier) @variable.other.member)
 
 (use) @include
 [
@@ -106,6 +118,7 @@
 [
   "where"
   (entity_type)
+  "object"
 ] @keyword
 
 [
@@ -157,21 +170,14 @@
 (chain function: (identifier) @method.call)
 
 ;; fields and params
-(field name: (identifier) @field)
-(param (identifier) @parameter)
-(lambdaparam (identifier) @parameter)
+(field name: (identifier) @field docstring: (string)? @string.documentation)
+(param name: (identifier) @parameter)
+(lambdaparam name: (identifier) @parameter)
 
 ;; this.field is considered a member access
-(field_access base: (this) field: (identifier) @variable)
+(field_access base: (this) field: (identifier) @field)
 
 ;; annotations
 (annotations (identifier) @attribute)
 
-;; variables
-;; references to upper case things are considered constructors
-(
-  (identifier) @constructor
-  (#match? @constructor "^[A-Z]")
-)
-(identifier) @variable
 
