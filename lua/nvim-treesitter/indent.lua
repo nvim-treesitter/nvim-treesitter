@@ -137,7 +137,13 @@ function M.get_indent(lnum)
 
   while node do
     -- do 'autoindent' if not marked as @indent
-    if not q.indent[node:id()] and q.auto[node:id()] and node:start() < lnum - 1 and lnum - 1 <= node:end_() then
+    if
+      not q.indent[node:id()]
+      and not q.aligned_indent[node:id()]
+      and q.auto[node:id()]
+      and node:start() < lnum - 1
+      and lnum - 1 <= node:end_()
+    then
       return -1
     end
 
@@ -171,7 +177,7 @@ function M.get_indent(lnum)
       should_process
       and (
         q.indent[node:id()]
-        and (srow ~= erow or is_in_err)
+        and (srow ~= erow or is_in_err or q.indent[node:id()].immediate_indent)
         and (srow ~= lnum - 1 or q.indent[node:id()].start_at_same_line)
       )
     then
@@ -183,12 +189,16 @@ function M.get_indent(lnum)
     if q.aligned_indent[node:id()] and srow ~= erow and (srow ~= lnum - 1) then
       local metadata = q.aligned_indent[node:id()]
       local o_delim_node, is_last_in_line ---@type TSNode|nil, boolean|nil
+      local c_delim_node ---@type TSNode|nil
       if metadata.delimiter then
         ---@type string
         local opening_delimiter = metadata.delimiter and metadata.delimiter:sub(1, 1)
         o_delim_node, is_last_in_line = find_delimiter(bufnr, node, opening_delimiter)
+        local closing_delimiter = metadata.delimiter and metadata.delimiter:sub(2, 2)
+        c_delim_node, _ = find_delimiter(bufnr, node, closing_delimiter)
       else
         o_delim_node = node
+        c_delim_node = node
       end
 
       if o_delim_node then
@@ -196,8 +206,29 @@ function M.get_indent(lnum)
           -- hanging indent (previous line ended with starting delimiter)
           indent = indent + indent_size * 1
         else
-          local _, o_scol = o_delim_node:start()
-          return math.max(indent, 0) + o_scol + (metadata.increment or 1)
+          local o_srow, o_scol = o_delim_node:start()
+          local final_line_indent = false
+          if c_delim_node then
+            local c_srow, _ = c_delim_node:start()
+            if c_srow ~= o_srow and c_srow == lnum - 1 then
+              -- delims end on current line, and are not open and closed same line.
+              -- final_line_indent controls this behavior, for example this is not desirable
+              -- for a tuple.
+              final_line_indent = metadata.final_line_indent or false
+            end
+          end
+          if final_line_indent then
+            -- last line must be indented more in cases where
+            -- it would be same indent as next line
+            local aligned_indent = o_scol + (metadata.increment or 1)
+            if aligned_indent <= indent then
+              return indent + indent_size * 1
+            else
+              return aligned_indent
+            end
+          else
+            return o_scol + (metadata.increment or 1)
+          end
         end
       end
     end
