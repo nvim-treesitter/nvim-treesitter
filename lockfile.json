@@ -297,7 +297,7 @@
     "revision": "3d6dfbdb2432603bc84ca7dc009bb39ed9a8a7b1"
   },
   "mlir": {
-    "revision": "f36fef9932e1214f65aa37cf700197ea5837e90a"
+    "revision": "e2053f7c8856d91bc36c87604f697784845cee69"
   },
   "nickel": {
     "revision": "d6c7eeb751038f934b5b1aa7ff236376d0235c56"
@@ -381,7 +381,7 @@
     "revision": "ed5369ad17166c0749ab7241d826c438bd69338d"
   },
   "rasi": {
-    "revision": "5f04634dd4e12de4574c4a3dc9d6d5d4da4a2a1b"
+    "revision": "371dac6bcce0df5566c1cfebde69d90ecbeefd2d"
   },
   "regex": {
     "revision": "e1cfca3c79896ff79842f057ea13e529b66af636"
