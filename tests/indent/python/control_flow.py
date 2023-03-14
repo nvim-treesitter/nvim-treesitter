@@ -20,3 +20,11 @@ except:
     pass
 finally:
     pass
+
+while (a > 4 and
+       b > 5):
+    pass
+
+try:
+    pass
+
