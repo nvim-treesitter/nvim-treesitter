@@ -129,7 +129,10 @@
 (identifier) @variable
 
 ((identifier) @variable.builtin
- (#any-of? @variable.builtin "self" "string" "table" "vim"))
+ (#any-of? @variable.builtin "_G" "_VERSION" "debug" "io" "jit" "math" "os" "package" "self" "string" "table" "utf8"))
+
+((identifier) @keyword.coroutine
+  (#eq? @keyword.coroutine "coroutine"))
 
 (variable_list
    attribute: (attribute
@@ -180,8 +183,11 @@
     ;; built-in functions in Lua 5.1
     "assert" "collectgarbage" "dofile" "error" "getfenv" "getmetatable" "ipairs"
     "load" "loadfile" "loadstring" "module" "next" "pairs" "pcall" "print"
-    "rawequal" "rawget" "rawset" "require" "select" "setfenv" "setmetatable"
-    "tonumber" "tostring" "type" "unpack" "xpcall"))
+    "rawequal" "rawget" "rawlen" "rawset" "require" "select" "setfenv" "setmetatable"
+    "tonumber" "tostring" "type" "unpack" "xpcall"
+    "__add" "__band" "__bnot" "__bor" "__bxor" "__call" "__concat" "__div" "__eq" "__gc"
+    "__idiv" "__index" "__le" "__len" "__lt" "__metatable" "__mod" "__mul" "__name" "__newindex"
+    "__pairs" "__pow" "__shl" "__shr" "__sub" "__tostring" "__unm"))
 
 ;; Others
 
