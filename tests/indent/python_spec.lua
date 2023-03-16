@@ -74,5 +74,9 @@ describe("indent Python:", function()
     run:new_line("line_after_indent.py", { on_line = 49, text = "x", indent = 0 })
     run:new_line("line_after_indent.py", { on_line = 55, text = "x", indent = 4 })
     run:new_line("line_after_indent.py", { on_line = 63, text = "x", indent = 4 })
+
+    for _, line in ipairs { 2, 5, 8, 11, 16 } do
+      run:new_line("return_dedent.py", { on_line = line, text = "x", indent = 0 })
+    end
   end)
 end)
