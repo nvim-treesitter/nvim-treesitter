@@ -206,6 +206,14 @@ function M.get_indent(lnum)
           -- hanging indent (previous line ended with starting delimiter)
           if not is_in_err then
             indent = indent + indent_size * 1
+            if c_delim_node and c_is_last_in_line then
+              -- If current line is outside the range of a node marked with @aligned_indent
+              -- Then its indent level shouldn't be affected by @aligned_indent node
+              local c_srow, _ = c_delim_node:start()
+              if c_srow < lnum - 1 then
+                indent = indent - indent_size
+              end
+            end
           end
         else
           local o_srow, o_scol = o_delim_node:start()
