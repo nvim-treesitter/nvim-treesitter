@@ -15,7 +15,7 @@
     "revision": "e559793754c60c2cdf00cbb0409842d75f0a41dc"
   },
   "bash": {
-    "revision": "7f9506c34ab6a0f4e3e052b7a49cbeef91f71236"
+    "revision": "b338fa9f4807b9e0336cd4dde04948a8c324a4cf"
   },
   "beancount": {
     "revision": "f3741a3a68ade59ec894ed84a64673494d2ba8f3"
@@ -405,7 +405,7 @@
     "revision": "fbf9e507d09d8b3c0bb9dfc4d46c31039a47dc4a"
   },
   "scala": {
-    "revision": "6f9bc5ab749d90bb2ac4ad083891f9d0481d768d"
+    "revision": "7d348f51e442563f4ab2b6c3e136dac658649f93"
   },
   "scheme": {
     "revision": "9a23ff3df8f03da555f7679ab640a98a9e851c79"
