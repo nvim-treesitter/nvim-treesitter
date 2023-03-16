@@ -186,7 +186,7 @@ function M.get_indent(lnum)
     end
 
     -- do not indent for nodes that starts-and-ends on same line and starts on target line (lnum)
-    if q.aligned_indent[node:id()] and srow ~= erow and (srow ~= lnum - 1) then
+    if q.aligned_indent[node:id()] and (srow ~= erow or is_in_err) and (srow ~= lnum - 1) then
       local metadata = q.aligned_indent[node:id()]
       local o_delim_node, is_last_in_line ---@type TSNode|nil, boolean|nil
       local c_delim_node ---@type TSNode|nil
@@ -204,7 +204,9 @@ function M.get_indent(lnum)
       if o_delim_node then
         if is_last_in_line then
           -- hanging indent (previous line ended with starting delimiter)
-          indent = indent + indent_size * 1
+          if not is_in_err then
+            indent = indent + indent_size * 1
+          end
         else
           local o_srow, o_scol = o_delim_node:start()
           local final_line_indent = false
