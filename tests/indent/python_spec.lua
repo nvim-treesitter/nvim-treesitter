@@ -43,6 +43,8 @@ describe("indent Python:", function()
     run:new_line("branches.py", { on_line = 29, text = "and x > 9", indent = 4 })
     run:new_line("hanging_indent.py", { on_line = 1, text = "arg0,", indent = 8 })
     run:new_line("hanging_indent.py", { on_line = 5, text = "0,", indent = 4 })
+    run:new_line("error_states.py", { on_line = 6, text = "b,", indent = 11 })
+    run:new_line("error_states2.py", { on_line = 7, text = "a,", indent = 4 })
     run:new_line(
       "join_lines.py",
       { on_line = 1, text = "+ 1 \\", indent = 4 },
