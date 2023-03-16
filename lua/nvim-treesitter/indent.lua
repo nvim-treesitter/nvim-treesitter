@@ -211,15 +211,16 @@ function M.get_indent(lnum)
               -- Then its indent level shouldn't be affected by @aligned_indent node
               local c_srow, _ = c_delim_node:start()
               if c_srow < lnum - 1 then
-                indent = indent - indent_size
+                indent = math.max(indent - indent_size, 0)
               end
             end
           end
         else
           local o_srow, o_scol = o_delim_node:start()
+          local c_srow
           local final_line_indent = false
           if c_delim_node then
-            local c_srow, _ = c_delim_node:start()
+            c_srow, _ = c_delim_node:start()
             if c_srow ~= o_srow and c_srow == lnum - 1 then
               -- delims end on current line, and are not open and closed same line.
               -- final_line_indent controls this behavior, for example this is not desirable
@@ -237,7 +238,11 @@ function M.get_indent(lnum)
               return aligned_indent
             end
           else
-            return o_scol + (metadata.increment or 1)
+            if c_srow and o_srow ~= c_srow and c_srow < lnum - 1 then
+              return vim.fn.indent(o_srow + 1)
+            else
+              return o_scol + (metadata.increment or 1)
+            end
           end
         end
       end
