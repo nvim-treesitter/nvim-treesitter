@@ -1350,6 +1350,14 @@ list.t32 = {
   maintainers = { "@xasc" },
 }
 
+list.tablegen = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-tablegen",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.teal = {
   install_info = {
     url = "https://github.com/euclidianAce/tree-sitter-teal",

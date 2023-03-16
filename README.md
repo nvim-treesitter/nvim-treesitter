@@ -325,6 +325,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [swift](https://github.com/alex-pinkus/tree-sitter-swift) (maintained by @alex-pinkus)
 - [x] [sxhkdrc](https://github.com/RaafatTurki/tree-sitter-sxhkdrc) (maintained by @RaafatTurki)
 - [x] [t32](https://codeberg.org/xasc/tree-sitter-t32) (maintained by @xasc)
+- [x] [tablegen](https://github.com/amaanq/tree-sitter-tablegen) (maintained by @amaanq)
 - [x] [teal](https://github.com/euclidianAce/tree-sitter-teal) (maintained by @euclidianAce)
 - [x] [terraform](https://github.com/MichaHoffmann/tree-sitter-hcl) (maintained by @MichaHoffmann)
 - [x] [thrift](https://github.com/duskmoon314/tree-sitter-thrift) (maintained by @amaanq, @duskmoon314)
