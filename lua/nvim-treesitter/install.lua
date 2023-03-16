@@ -330,6 +330,9 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   local compile_location
   if from_local_path then
     compile_location = repo.url
+    if repo.location then
+      compile_location = utils.join_path(compile_location, repo.location)
+    end
   else
     local repo_location = project_name
     if repo.location then
