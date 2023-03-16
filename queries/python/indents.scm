@@ -50,12 +50,12 @@
 
 ((ERROR "(" . (_)) @aligned_indent
  (#set! "delimiter" "()"))
-((argument_list ")" @indent_end) @aligned_indent
+((argument_list) @aligned_indent
  (#set! "delimiter" "()"))
 ((parameters) @aligned_indent
  (#set! "delimiter" "()")
  (#set! "final_line_indent" 1))
-((tuple ")" @indent_end) @aligned_indent
+((tuple) @aligned_indent
  (#set! "delimiter" "()"))
 
 (list "]" @indent_end)
@@ -75,9 +75,17 @@
 (return_statement
   [
     (_) @indent_end 
-    (_ (_) @indent_end .)
+    (_
+      [
+        (_)
+        ")"
+        "}"
+        "]"
+      ] @indent_end .)
     (attribute 
       attribute: (_) @indent_end)
+    (call
+      arguments: (_ ")" @indent_end))
     "return" @indent_end
   ] .)
 

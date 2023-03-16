@@ -17,6 +17,9 @@ describe("indent Python:", function()
 
   describe("new line:", function()
     run:new_line("aligned_indent.py", { on_line = 1, text = "arg3,", indent = 19 })
+    run:new_line("aligned_indent_2.py", { on_line = 2, text = "x", indent = 4 })
+    run:new_line("aligned_indent_2.py", { on_line = 9, text = "x", indent = 4 })
+    run:new_line("aligned_indent_2.py", { on_line = 12, text = "x", indent = 4 })
     run:new_line("basic_blocks.py", { on_line = 1, text = "wait,", indent = 4 })
     run:new_line("basic_blocks.py", { on_line = 6, text = "x += 1", indent = 4 })
     run:new_line("basic_blocks.py", { on_line = 7, text = "x += 1", indent = 4 })
@@ -75,7 +78,7 @@ describe("indent Python:", function()
     run:new_line("line_after_indent.py", { on_line = 55, text = "x", indent = 4 })
     run:new_line("line_after_indent.py", { on_line = 63, text = "x", indent = 4 })
 
-    for _, line in ipairs { 2, 5, 8, 11, 16 } do
+    for _, line in ipairs { 2, 5, 8, 11, 16, 21, 24, 27, 34, 39 } do
       run:new_line("return_dedent.py", { on_line = line, text = "x", indent = 0 })
     end
   end)
