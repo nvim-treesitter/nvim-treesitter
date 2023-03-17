@@ -27,23 +27,23 @@
       (#not-match? @_no_type_lang "\\s(lang|type)\\s*\\=")
     (raw_text) @javascript))
 
-(
-  (script_element
-    (start_tag
-      (attribute
-        (attribute_name) @_type
-        (quoted_attribute_value (attribute_value) @_javascript)))
-    (raw_text) @javascript)
-  (#eq? @_type "type")
-  (#any-of? @_javascript "text/javascript" "module")
-)
+; <script type="mimetype-or-well-known-script-type">
+(script_element
+   (start_tag
+      ((attribute
+           (attribute_name) @_attr (#eq? @_attr "type")
+           (quoted_attribute_value (attribute_value) @_type))))
+   (raw_text) @content (#set-lang-from-mimetype! @_type))
 
+; <a style="/* css */">
 ((attribute
    (attribute_name) @_attr
    (quoted_attribute_value (attribute_value) @css))
  (#eq? @_attr "style"))
 
 ; lit-html style template interpolation
+; <a @click=${e => console.log(e)}>
+; <a @click="${e => console.log(e)}">
 ((attribute
   (quoted_attribute_value (attribute_value) @javascript))
   (#match? @javascript "\\$\\{")
