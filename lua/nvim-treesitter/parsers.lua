@@ -1497,6 +1497,7 @@ list.v = {
     files = { "src/parser.c", "src/scanner.c" },
     location = "tree_sitter_v",
   },
+  filetype = "vlang",
   maintainers = { "@kkharji" },
 }
 
