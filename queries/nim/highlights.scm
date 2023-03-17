@@ -1,96 +1,37 @@
 (keyw) @keyword
-; more specific matches are done below whenever possible
-
-; note: the below four statements match overzealously,
-; and so are placed at the start of the file.
+; various keywords
 
 (primary (symbol) @variable)
-; overzealous, matches generic symbols
+; variables - overzealous, so placed first
 
-(primary
-  (primarySuffix
-    (qualifiedSuffix
-      (symbol) @variable.other.member)))
-; overzealous, matches x in foo.x
+[
+  (comment)
+  (multilineComment)
+] @comment
+; line and block comments
 
-((primary (symbol) @type)
- (#match? @type "[A-Z].+"))
-; assume PascalCase identifiers to be types
+[
+  (docComment)
+  (multilineDocComment)
+] @comment.documentation
+; comments documenting code
 
-((primary
-  (primarySuffix
-    (qualifiedSuffix
-      (symbol) @type)))
- (#match? @type "[A-Z].+"))
-; assume PascalCase member variables to be enum entries
-
-((primary (symbol) @variable.builtin)
- (#match? @variable.builtin "result"))
-; `result` is an implicit builtin variable inside function scopes
-
-(variable
-  (keyw) @type.definition
-  (declColonEquals (symbol) @variable))
-; let, var, const expressions
-
-(symbolEqExpr
-  (symbol) @variable)
-; named parameters
-
-(symbolColonExpr
-  (symbol) @variable)
-; object constructor parameters
-
-(identColon (ident) @variable)
-; named parts of tuples
-
-(paramList
-  (paramColonEquals
-    (symbol) @parameter))
-; parameter identifiers
-
-(routine
-  . (keyw) @keyword.function
-  . (symbol) @function)
-; function declarations
-
-(routineExpr
-  (keyw) @keyword.function)
-; discarded function
-
-(routineExprTypeDesc
-  (keyw) @keyword.function)
-; function declarations as types
-
-(primary
-  . (symbol) @function.call
-  . (primarySuffix (functionCall)))
-; regular function calls
-
-(primary
-  . (symbol) @function.call
-  . (primarySuffix (cmdCall)))
-; function calls without parenthesis
-
-(primary
-  (primarySuffix (qualifiedSuffix (symbol) @function.call))
-  . (primarySuffix (functionCall)))
-; uniform function call syntax calls
-
-(primary
-  (symbol) @constructor
-  (primarySuffix (objectConstr)))
-; object constructor
-
-; does not appear to be a way to distinguish these without verbatium matching
-; [] @function.builtin
-; [] @function.method
-; [] @function.macro
-; [] @function.special
+(ERROR) @error
+; syntax/parser errors
 
 (pragma) @preproc
+; various preprocessor directives & shebangs
 
-[(operator) (opr) "="] @operator
+; TODO: maybe put pragma definitions or macro definitions here
+;@define                ; preprocessor definition directives
+
+(declaration (variable (declColonEquals "=" @operator)))
+(exprStmt "=" @operator)
+[
+  (operator)
+  (opr)
+] @operator
+; symbolic operators (e.g. `+` / `*`)
 
 [
   "."
@@ -98,138 +39,110 @@
   ";"
   ":"
 ] @punctuation.delimiter
-[
-  "("
-  ")"
-  "["
-  "]"
-  "{"
-  "}"
-  "{."
-  ".}"
-  "#["
-  "]#"
-] @punctuation.bracket
-(interpolated_str_lit ["&" "{" "}"] @punctuation.special)
+; delimiters (e.g. `;` / `.` / `,`)
 
-[(literal) (generalizedLit)] @constant
-[(nil_lit)] @constant.builtin
-[(bool_lit)] @boolean
-[(char_lit)] @character
-[(char_esc_seq) (str_esc_seq)] @string.escape
-[(custom_numeric_lit)] @number
-[(int_lit) (int_suffix)] @number
-[(float_lit) (float_suffix)] @float
-; note: somewhat irritatingly for testing, lits have the same syntax highlighting as types
+(tupleConstr ["(" ")"] @punctuation.bracket   )
+(arrayConstr ["[" "]"] @punctuation.bracket   )
+(tableConstr ["{" "}"] @punctuation.bracket   )
+(setConstr ["{" "}"] @punctuation.bracket   )
+(genericParamList ["[" "]"] @punctuation.bracket   )
+; TODO: doesn't work with ["(" ")"] because of token schenanigans in grammar
+(indexSuffix)  @punctuation.bracket
+; brackets (e.g. `()` / `{}` / `[]`)
 
-[(str_lit) (triplestr_lit) (rstr_lit)] @string
-; [] @string.regexp
-[(generalized_str_lit) (generalized_triplestr_lit) (interpolated_str_lit) (interpolated_triplestr_lit)] @string.special
-; [] @string.special.path
-; [] @string.special.url
-; [] @string.special.symbol
-
-(comment) @comment
-(multilineComment) @comment
-(docComment) @comment.documentation
-(multilineDocComment) @comment.documentation
-; comments
-
-(typeDef
-  (keyw) @type.definition
-  (symbol) @type)
-
-(primarySuffix
-  (indexSuffix
-    (exprColonEqExprList
-      (exprColonEqExpr
-        (expr
-          (primary
-            (symbol) @type))))))
-; types in brackets, i.e. seq[string]
-; FIXME: this is overzealous. seq[tuple[a, b: int]] matches both a and b when it shouldn't.
-
-(primaryTypeDef
-  (symbol) @type)
-; primary types of type declarations (nested types in brackets are matched with above)
-
-(primaryTypeDesc
-  (symbol) @type)
-; type annotations, on declarations or in objects
-
-(primaryTypeDesc
-  (primaryPrefix
-    (keyw) @type))
-; var types
-
-(genericParamList
-  (genericParam
-    (symbol) @type))
-; types in generic blocks
-
-(enumDecl
-  (keyw) @type.definition
-  (enumElement
-    (symbol) @type.enum.variant))
-
-(tupleDecl
-  (keyw) @type.definition)
-
-(objectDecl
-  (keyw) @type.definition)
-
-(objectPart
-  (symbol) @variable.other.member)
-; object field
-
-(objectCase
-  (keyw) @conditional
-  (symbol) @variable
-  (objectBranches
-    ; (objectWhen (keyw) @conditional)?
-    (objectElse (keyw) @conditional)?
-    (objectElif (keyw) @conditional)?
-    (objectBranch (keyw) @conditional)?))
-
-(conceptDecl
-  (keyw) @type.definition
-  (conceptParam
-    (symbol) @variable))
-
-((exprStmt
-  (primary (symbol))
-  (operator) @operator
-  (primary (symbol) @type))
- (#match? @operator "is"))
-; "x is t" means t is either a type or a type variable
-
-; distinct?
+(interpolated_str_lit "&" @punctuation.special)
+(interpolated_str_lit "{" @punctuation.special)
+(interpolated_str_lit "}" @punctuation.special)
+; special symbols (e.g. `{}` in string interpolation)
 
 [
-  "and"
-  "or"
-  "xor"
-  "not"
-  "in"
-  "notin"
-  "is"
-  "isnot"
-  "div"
-  "mod"
-  "shl"
-  "shr"
-] @keyword.operator
-; todo: better to just use (operator) and (opr)?
+  (str_lit)
+  (rstr_lit)
+  (triplestr_lit)
+  (interpolated_str_lit)
+  (interpolated_triplestr_lit)
+  (generalized_str_lit)
+  (generalized_triplestr_lit)
+] @string
+; string literals
 
-(staticStmt (keyw) @keyword)
-(deferStmt (keyw) @keyword)
-(asmStmt (keyw) @keyword)
-(bindStmt (keyw) @keyword)
-(mixinStmt (keyw) @keyword)
+; TODO:
+;@string.regex         ; regular expressions
 
-(blockStmt
-  (keyw) @repeat
-  (symbol) @label)
+[
+  (str_esc_seq)
+  (char_esc_seq)
+] @string.escape
+; escape sequences
+
+[
+  (char_lit)
+] @character
+; character literals
+
+[
+  (bool_lit)
+  (nil_lit)
+] @boolean
+; boolean literals
+
+[
+  (int_lit)
+  (int_suffix)
+  (custom_numeric_lit)
+] @number
+; numeric literals
+
+[
+  (float_lit)
+  (float_suffix)
+] @float
+; floating-point number literals
+
+(routine (symbol [(ident) (operator)] @function))
+(routine (paramList ["(" ")"] @function))
+(routine "=" @function)
+; function definitions
+
+; primaryPrefix breaks function.call query
+(castExpr ["(" ")"] @function.call)
+(primary
+  (symbol (ident) @function.call)
+  . (primarySuffix (functionCall ["(" ")"] @function.call)))
+; regular function calls
+(primary
+  . (symbol (ident) @function.call)
+  . (primarySuffix (cmdCall)))
+; function calls without parenthesis
+(primary
+  (primarySuffix (qualifiedSuffix (symbol (ident) @function.call)))
+  . (primarySuffix (cmdCall)))
+; uniform function call syntax calls
+
+(routine (pragma) @function.macro)
+; preprocessor macros
+
+(primary
+  (symbol (ident) @constructor)
+  . (primarySuffix (objectConstr ["(" ")"] @constructor)))
+; constructor calls and definitions
+
+(paramList (paramColonEquals (symbol) @parameter))
+(functionCall (symbolEqExprList (symbolEqExpr (symbol) @parameter)))
+; parameters of a function
+
+(routineExprTypeDesc (keyw) @keyword.function)
+(routineExpr (keyw) @keyword.function)
+(routine (keyw) @keyword.function)
+; keywords that define a function (e.g. `func` in Go, `def` in Python)
+
+(operator (keyw) @keyword.operator)
+; operators that are English words (e.g. `and` / `or`)
+
+(returnStmt (keyw) @keyword.return)
+(yieldStmt (keyw) @keyword.return)
+(discardStmt (keyw) @keyword.return)
+; keywords like `return` and `yield`
 
 (ifStmt (keyw) @conditional)
 (whenStmt (keyw) @conditional)
@@ -239,41 +152,135 @@
 (ofBranch (keyw) @conditional)
 (inlineIfStmt (keyw) @conditional)
 (inlineWhenStmt (keyw) @conditional)
-; todo: do block
+(objectCase (keyw) @conditional (symbol) @variable)
+(objectBranch (keyw) @conditional)
+(objectElif (keyw) @conditional)
+(objectElse (keyw) @conditional)
+(objectWhen (keyw) @conditional)
+; keywords related to conditionals (e.g. `if` / `else`)
 
-(forStmt
-  (keyw) @repeat
-  (symbol) @variable
-  (keyw) @repeat)
+(forStmt . (keyw) @repeat (keyw) @repeat)
 (whileStmt (keyw) @repeat)
+(breakStmt (keyw) @repeat)
+(continueStmt (keyw) @repeat)
+; keywords related to loops (e.g. `for` / `while`)
 
-(importStmt
-  (keyw) @include
-  (expr (primary (symbol) @include)))
-(importExceptStmt
-  (keyw) @include
-  (expr (primary (symbol) @include)))
-(exportStmt
-  (keyw) @include
-  (expr (primary (symbol) @include)))
-(fromStmt
-  (keyw) @include
-  (expr (primary (symbol) @include)))
-(includeStmt
-  (keyw) @include
-  (expr (primary (symbol) @include)))
-; FIXME: entries in std/[one, two] get highlighted as variables
-
-(returnStmt (keyw) @keyword.return)
-(yieldStmt (keyw) @keyword.return)
-(discardStmt (keyw) @keyword.return)
-(breakStmt (keyw) @keyword.return)
-(continueStmt (keyw) @keyword.return)
+(importStmt (keyw) @include)
+(importExceptStmt (keyw) @include)
+(exportStmt (keyw) @include)
+(fromStmt (keyw) @include)
+(includeStmt (keyw) @include)
+; keywords for including modules (e.g. `import` / `from` in Python)
 
 (raiseStmt (keyw) @exception)
 (tryStmt (keyw) @exception)
 (tryExceptStmt (keyw) @exception)
 (tryFinallyStmt (keyw) @exception)
-(inlineTryStmt (keyw) @exception)
-; (inlineTryExceptStmt (keyw) @exception)
-; (inlineTryFinallyStmt (keyw) @exception)
+; keywords related to exceptions (e.g. `throw` / `catch`)
+
+(primaryTypeDef (symbol) @type)
+(primaryTypeDesc (symbol) @type)
+(primaryTypeDesc
+  (primarySuffix
+    (indexSuffix
+      (exprColonEqExprList
+        (exprColonEqExpr
+          (expr
+            (primary
+              (symbol) @type)))))))
+(primaryTypeDef
+  (primarySuffix
+    (indexSuffix
+      (exprColonEqExprList
+        (exprColonEqExpr
+          (expr
+            (primary
+              (symbol) @type)))))))
+(genericParam (symbol) @type)
+(tupleDecl (keyw) @type)
+(enumDecl (keyw) @type)
+(objectDecl (keyw) @type)
+(conceptDecl (keyw) @type)
+((exprStmt
+  (primary (symbol))
+  (operator) @keyword.operator
+  (primary (symbol) @type))
+ (#match? @keyword.operator "is"))
+((expr
+  (primary (symbol))
+  (operator) @keyword.operator
+  (primary (symbol) @type))
+ (#match? @keyword.operator "is"))
+; type or class definitions and annotations
+
+(primaryTypeDef (symbol (ident) @type.builtin)
+  (#match? @type.builtin "int|float|string|cstring|bool|array|seq|tuple|set|varargs|openArray|typed|untyped|auto"))
+(primaryTypeDesc (symbol (ident) @type.builtin)
+  (#match? @type.builtin "int|float|string|cstring|bool|array|seq|tuple|set|varargs|openArray|typed|untyped|auto"))
+(primaryTypeDesc (tupleDesc (keyw) @type.builtin))
+(primaryTypeDesc
+  (primarySuffix
+    (indexSuffix
+      (exprColonEqExprList
+        (exprColonEqExpr
+          (expr
+            (primary
+              (symbol) @type.builtin)
+              (#match? @type.builtin "int|float|string|cstring|bool|array|seq|tuple|set|varargs|openArray|typed|untyped|auto")
+            ))))))
+(primaryTypeDef
+  (primarySuffix
+    (indexSuffix
+      (exprColonEqExprList
+        (exprColonEqExpr
+          (expr
+            (primary
+              (symbol) @type.builtin)
+              (#match? @type.builtin "int|float|string|cstring|bool|array|seq|tuple|set|varargs|openArray|typed|untyped|auto")
+            ))))))
+; built-in types
+
+(typeDef
+  (keyw) @keyword
+  (symbol) @type.definition)
+; type definitions (e.g. `typedef` in C)
+
+(typeDesc (primaryTypeDesc (primaryPrefix (keyw) @type.qualifier)))
+(typeDef (primaryTypeDef (primaryPrefix (keyw) @type.qualifier)))
+(conceptParam (keyw) @type.qualifier)
+; type qualifiers (e.g. `const`)
+
+(objectPart (symbol) @variable)
+; has to be here because below is more specific
+
+(objectDecl (objectPart (symbol) @field))
+(primary (primarySuffix (qualifiedSuffix (symbol) @field)))
+(objectConstr (symbolColonExpr (symbol) @field))
+(tupleConstr (symbolColonExpr (symbol) @field))
+(tupleDecl (identColon (ident) @field))
+; object and struct fields
+
+(primary
+  (primarySuffix (qualifiedSuffix (symbol) @function.call))
+  . (primarySuffix (functionCall ["(" ")"] @function.call)))
+; uniform function call syntax calls
+
+(tupleDesc (identColon (ident) @variable))
+(conceptParam (symbol) @variable)
+(forStmt (symbol) @variable)
+(declaration (variable (keyw) @keyword (declColonEquals (symbol) @variable)))
+; various variable names
+
+((primary (symbol) @variable.builtin)
+  (#match? @variable.builtin "result"))
+; built-in variable names (e.g. `this`)
+
+(enumElement (symbol) @constant)
+(declaration (constant (keyw) @keyword (declColonEquals (symbol) @constant)))
+; constant identifiers
+
+;@constant.builtin ; built-in constant values
+;@constant.macro   ; constants defined by the preprocessor
+
+;@namespace        ; modules or namespaces
+;@symbol           ; symbols or atoms
