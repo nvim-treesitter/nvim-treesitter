@@ -54,3 +54,20 @@
   (#offset! @javascript 0 2 0 -2))
 
 (comment) @comment
+
+; <input pattern="[0-9]">
+(element
+   (_
+      (tag_name) @_tagname (#eq? @_tagname "input")
+      ((attribute
+          (attribute_name) @_attr
+          (quoted_attribute_value (attribute_value) @regex)
+       (#eq? @_attr "pattern")))))
+; <input pattern=[0-9]>
+(element
+   (_
+      (tag_name) @_tagname (#eq? @_tagname "input")
+      ((attribute
+          (attribute_name) @_attr
+          (attribute_value) @regex
+       (#eq? @_attr "pattern")))))
