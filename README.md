@@ -63,7 +63,7 @@ For more detailed information on setting these up, see ["Advanced setup"](#advan
 
 ## Requirements
 
-- **Neovim 0.8.3 or later** built with **tree-sitter 0.20.3+** (latest [nightly](https://github.com/neovim/neovim#install-from-source) recommended)
+- [Latest](https://github.com/neovim/neovim/releases/tag/stable) Neovim release ([nightly](https://github.com/neovim/neovim#install-from-source) recommended)
 - `tar` and `curl` in your path (or alternatively `git`)
 - A C compiler in your path and libstdc++ installed ([Windows users please read this!](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support)).
 
