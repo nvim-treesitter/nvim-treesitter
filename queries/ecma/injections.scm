@@ -11,6 +11,19 @@
      (#offset! @content 0 1 0 -1))
 )
 
+; html`...`, sql`...` etc
+(call_expression 
+ function: ((identifier) @language)
+ arguments: ((template_string) @content
+     (#offset! @content 0 1 0 -1))
+)
+
+; svg`...`, which uses the html parser
+(call_expression
+ function: ((identifier) @_name (#eq? @_name "svg"))
+ arguments: ((template_string) @html
+     (#offset! @html 0 1 0 -1)))
+
 (call_expression
  function: ((identifier) @_name
    (#eq? @_name "gql"))
