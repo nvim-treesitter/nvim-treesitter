@@ -3,26 +3,27 @@
 
 (comment) @comment
 
-; html(`...`), sql(...) etc
-(call_expression 
- function: ((identifier) @language)
- arguments: (arguments
-   (template_string) @content
-     (#offset! @content 0 1 0 -1))
-)
-
-; html`...`, sql`...` etc
-(call_expression 
- function: ((identifier) @language)
- arguments: ((template_string) @content
-     (#offset! @content 0 1 0 -1))
-)
-
-; svg`...`, which uses the html parser
+; html(`...`), html`...`, sql(...) etc
 (call_expression
- function: ((identifier) @_name (#eq? @_name "svg"))
- arguments: ((template_string) @html
-     (#offset! @html 0 1 0 -1)))
+ function: ((identifier) @language)
+ arguments: [
+             (arguments
+              (template_string) @content)
+             (template_string) @content
+            ]
+     (#offset! @content 0 1 0 -1)
+     (#not-eq? @content "svg"))
+
+; svg`...` or svg(`...`), which uses the html parser, so is not included in the previous query
+(call_expression
+ function: ((identifier) @svg)
+ arguments: [
+             (arguments
+              (template_string) @content)
+             (template_string) @content
+            ]
+     (#offset! @content 0 1 0 -1)
+     (#eq? @content "svg"))
 
 (call_expression
  function: ((identifier) @_name
