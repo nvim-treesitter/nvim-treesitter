@@ -8,14 +8,14 @@ This document aims to provide some basic information on writing and running the 
 
 You'll need to have modules `plenary.nvim` and `nvim-treesitter` available on your runtime path.
 
-If you use packer, simply install plenary and nvim-treesitter normally.
+If you cloned the this repository, `nvim-treesitter` should be included on the runtime path by default when you run tests.
 
-`vim-plug` users will need to add the `plenary.vim` file to the `plugin/` directory in addition to installing the module.
+You can add `plenary.nvim` to the path however you see fit. One option is to clone the [repository](https://github.com/nvim-lua/plenary.nvim) into your `nvim-treesitter` directory and edit `scripts/minimal_init.lua` to add it to the path.
 
-Here's a quick solution to get the latest `plenary.vim` file.
-
-```
-curl https://raw.githubusercontent.com/nvim-lua/plenary.nvim/master/plugin/plenary.vim --output plugin/plenary.vim
+```lua
+vim.opt.runtimepath:append "."
+vim.opt.runtimepath:append "./plenary.nvim" -- Add this line.
+vim.cmd [[runtime! plugin/plenary.vim]]
 ```
 
 ### Install highlight-assertions 
@@ -25,7 +25,7 @@ The [highlight-assertions](https://github.com/theHamsta/highlight-assertions) pr
 If you have a Rust toolchain on your system, you can install the binary with the following command.
 
 ```
-cargo install --git https://github.com/theHamsta/highlight-assertions
+cargo +nightly install --git https://github.com/theHamsta/highlight-assertions
 ```
 
 Otherwise, you can download an pre-built binary from the [GitHub release page](https://github.com/theHamsta/highlight-assertions/releases/) and add it to your shell path.
@@ -56,13 +56,11 @@ For example, here's how we'd run the JavaScript indentation tests.
 
 ## Writing tests
 
-### Highlighting tests
+### Highlighting and injection tests
 
-TODO: I don't know how to write these.
+Highlighting and injection tests follow [Treesitter's unit testing guidelines](https://tree-sitter.github.io/tree-sitter/syntax-highlighting#unit-testing).
 
-### Injection tests
-
-TODO: I don't know how to write these.
+In addition, there is a special `!` token that can be used for negative assertions. For example, `^ !javascript` means we expect "javascript" to not appear at this location.
 
 ### Indentation tests
 
