@@ -114,7 +114,7 @@
 ; Constants
 
 (this) @variable.builtin
-(nullptr) @constant
+(nullptr) @constant.builtin
 
 (true) @boolean
 (false) @boolean
