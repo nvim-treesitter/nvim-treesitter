@@ -369,7 +369,7 @@
     "revision": "6b2b5e41734bd6f07ea4c36ac20fb6f14061c841"
   },
   "qmljs": {
-    "revision": "ab75be9750e6f2f804638824d1790034286a830c"
+    "revision": "35ead5b9955cdb29bcf709d622fa960ff33992b6"
   },
   "query": {
     "revision": "e97504446f14f529d5a8e649667d3d60391e4dfd"
@@ -447,7 +447,7 @@
     "revision": "52e122ae68b316d3aa960a0a422d3645ba717f42"
   },
   "swift": {
-    "revision": "449d5974981d402181ca721e0573346f8c17f726"
+    "revision": "4cf4bb67c27f5c5a75f634fe941c588660e69ab3"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
