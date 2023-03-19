@@ -4,7 +4,7 @@
 ; without having this element being captured twice
 (
   (style_element
-    (start_tag) @_no_type_lang 
+    (start_tag) @_no_type_lang
       (#not-match? @_no_type_lang "\\s(lang|type)\\s*\\=")
     (raw_text) @css))
 
@@ -23,7 +23,7 @@
 ; <script defer>...</script>
 (
   (script_element
-    (start_tag) @_no_type_lang 
+    (start_tag) @_no_type_lang
       (#not-match? @_no_type_lang "\\s(lang|type)\\s*\\=")
     (raw_text) @javascript))
 
@@ -55,19 +55,12 @@
 
 (comment) @comment
 
-; <input pattern="[0-9]">
-(element
-   (_
-      (tag_name) @_tagname (#eq? @_tagname "input")
-      ((attribute
-          (attribute_name) @_attr
-          (quoted_attribute_value (attribute_value) @regex)
-       (#eq? @_attr "pattern")))))
-; <input pattern=[0-9]>
-(element
-   (_
-      (tag_name) @_tagname (#eq? @_tagname "input")
-      ((attribute
-          (attribute_name) @_attr
-          (attribute_value) @regex
-       (#eq? @_attr "pattern")))))
+; <input pattern="[0-9]"> or <input pattern=[0-9]>
+(element (_
+  (tag_name) @_tagname (#eq? @_tagname "input")
+  ((attribute
+    (attribute_name) @_attr [
+      (quoted_attribute_value (attribute_value) @regex)
+      (attribute_value) @regex
+    ] (#eq? @_attr "pattern")))
+))
