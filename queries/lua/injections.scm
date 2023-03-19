@@ -19,6 +19,10 @@
 ;; highlight string as query if starts with `;; query`
 ((string ("string_content") @query) (#lua-match? @query "^%s*;+%s?query"))
 
+((comment) @luadoc
+  (#lua-match? @luadoc "[-][-][-][%s]*@")
+  (#offset! @luadoc 0 3 0 0))
+
 ; string.match("123", "%d+")
 (function_call
   (dot_index_expression
