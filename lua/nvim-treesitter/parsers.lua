@@ -825,6 +825,14 @@ list.lua = {
   maintainers = { "@muniftanjim" },
 }
 
+list.luadoc = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-luadoc",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.luap = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-luap",
