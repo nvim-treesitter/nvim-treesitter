@@ -238,7 +238,10 @@ function M.get_indent(lnum)
               return aligned_indent
             end
           else
-            if c_srow and o_srow ~= c_srow and c_srow < lnum - 1 then
+            if c_is_last_in_line and o_srow ~= c_srow and c_srow < lnum - 1 then
+              -- Current line is outside the range of the aligned_indent node
+              -- So try to follow indent of the line before that
+              -- Use indent level of the line containing opening delimiter
               return vim.fn.indent(o_srow + 1)
             else
               return o_scol + (metadata.increment or 1)
