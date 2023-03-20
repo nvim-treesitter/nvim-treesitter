@@ -9,7 +9,8 @@
 
 ; TODO: can't get this to work, goal is to indent at the property ":" prefix
 ; ((list (identifier) (property)) @aligned_indent
-;   (#set! "delimiter" ":"))
+;   (#set! "open_delimiter" "(")
+;   (#set! "close_delimiter" ")"))
 
 [")" "}" "]"] @indent_end
 

@@ -23,18 +23,24 @@
 
 (if_statement
   condition: (parenthesized_expression) @aligned_indent
-  (#set! "delimiter" "()")
+  (#set! "open_delimiter" "(")
+  (#set! "close_delimiter" ")")
 )
 ((ERROR "(" . (_)) @aligned_indent
- (#set! "delimiter" "()"))
+ (#set! "open_delimiter" "(")
+ (#set! "close_delimiter" ")"))
 ((argument_list) @aligned_indent
- (#set! "delimiter" "()"))
+ (#set! "open_delimiter" "(")
+ (#set! "close_delimiter" ")"))
 ((argument_list) @aligned_indent
- (#set! "delimiter" "()"))
+ (#set! "open_delimiter" "(")
+ (#set! "close_delimiter" ")"))
 ((parameters) @aligned_indent
- (#set! "delimiter" "()"))
+ (#set! "open_delimiter" "(")
+ (#set! "close_delimiter" ")"))
 ((tuple) @aligned_indent
- (#set! "delimiter" "()"))
+ (#set! "open_delimiter" "(")
+ (#set! "close_delimiter" ")"))
 
 [
   ")"

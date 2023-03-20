@@ -42,8 +42,8 @@
 ] @indent
 
 ;; This only works with expanded tabs.
-; ((parameters) @aligned_indent (#set! "delimiter" "()"))
-; ((arguments)  @aligned_indent (#set! "delimiter" "()"))
+; ((parameters) @aligned_indent (#set! "open_delimiter" "(") (#set! "close_delimiter" ")"))
+; ((arguments)  @aligned_indent (#set! "open_delimiter" "(") (#set! "close_delimiter" ")"))
 
 ;; The following queries either do not agree with the current body parsing or are
 ;; attempted workarounds. Specifically as the last statement of a body. Opening
