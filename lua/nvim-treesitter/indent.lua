@@ -42,7 +42,10 @@ local function find_delimiter(bufnr, node, delimiter)
       local linenr = child:start()
       local line = vim.api.nvim_buf_get_lines(bufnr, linenr, linenr + 1, false)[1]
       local end_char = { child:end_() }
-      return child, #line == end_char[2]
+      local trimmed_after_delim
+      local escaped_delimiter = delimiter:gsub("[%-%.%+%[%]%(%)%$%^%%%?%*]", "%%%1")
+      trimmed_after_delim, _ = line:sub(end_char[2] + 1):gsub("[%s" .. escaped_delimiter .. "]*", "")
+      return child, #trimmed_after_delim == 0
     end
   end
 end
@@ -185,50 +188,92 @@ function M.get_indent(lnum)
       is_processed = true
     end
 
+    if is_in_err and not q.aligned_indent[node:id()] then
+      -- only when the node is in error, promote the
+      -- first child's aligned indent to the error node
+      -- to work around ((ERROR "X" . (_)) @aligned_indent (#set! "delimeter" "AB"))
+      -- matching for all X, instead set do
+      -- (ERROR "X" @aligned_indent (#set! "delimeter" "AB") . (_))
+      -- and we will fish it out here.
+      for c in node:iter_children() do
+        if q.aligned_indent[c:id()] then
+          q.aligned_indent[node:id()] = q.aligned_indent[c:id()]
+          break
+        end
+      end
+    end
     -- do not indent for nodes that starts-and-ends on same line and starts on target line (lnum)
-    if q.aligned_indent[node:id()] and srow ~= erow and (srow ~= lnum - 1) then
+    if should_process and q.aligned_indent[node:id()] and (srow ~= erow or is_in_err) and (srow ~= lnum - 1) then
       local metadata = q.aligned_indent[node:id()]
-      local o_delim_node, is_last_in_line ---@type TSNode|nil, boolean|nil
-      local c_delim_node ---@type TSNode|nil
+      local o_delim_node, o_is_last_in_line ---@type TSNode|nil, boolean|nil
+      local c_delim_node, c_is_last_in_line ---@type TSNode|nil, boolean|nil, boolean|nil
+      local indent_is_absolute = false
       if metadata.delimiter then
         ---@type string
         local opening_delimiter = metadata.delimiter and metadata.delimiter:sub(1, 1)
-        o_delim_node, is_last_in_line = find_delimiter(bufnr, node, opening_delimiter)
+        o_delim_node, o_is_last_in_line = find_delimiter(bufnr, node, opening_delimiter)
+        ---@type string
         local closing_delimiter = metadata.delimiter and metadata.delimiter:sub(2, 2)
-        c_delim_node, _ = find_delimiter(bufnr, node, closing_delimiter)
+        c_delim_node, c_is_last_in_line = find_delimiter(bufnr, node, closing_delimiter)
       else
         o_delim_node = node
         c_delim_node = node
       end
 
       if o_delim_node then
-        if is_last_in_line then
+        local o_srow, o_scol = o_delim_node:start()
+        local c_srow = nil
+        if c_delim_node then
+          c_srow, _ = c_delim_node:start()
+        end
+        if o_is_last_in_line then
           -- hanging indent (previous line ended with starting delimiter)
-          indent = indent + indent_size * 1
+          -- should be processed like indent
+          if should_process then
+            indent = indent + indent_size * 1
+            if c_is_last_in_line then
+              -- If current line is outside the range of a node marked with `@aligned_indent`
+              -- Then its indent level shouldn't be affected by `@aligned_indent` node
+              if c_srow and c_srow < lnum - 1 then
+                indent = math.max(indent - indent_size, 0)
+              end
+            end
+          end
         else
-          local o_srow, o_scol = o_delim_node:start()
-          local final_line_indent = false
-          if c_delim_node then
-            local c_srow, _ = c_delim_node:start()
-            if c_srow ~= o_srow and c_srow == lnum - 1 then
-              -- delims end on current line, and are not open and closed same line.
-              -- final_line_indent controls this behavior, for example this is not desirable
-              -- for a tuple.
-              final_line_indent = metadata.final_line_indent or false
-            end
-          end
-          if final_line_indent then
-            -- last line must be indented more in cases where
-            -- it would be same indent as next line
-            local aligned_indent = o_scol + (metadata.increment or 1)
-            if aligned_indent <= indent then
-              return indent + indent_size * 1
-            else
-              return aligned_indent
-            end
+          -- aligned indent
+          if c_is_last_in_line and c_srow and o_srow ~= c_srow and c_srow < lnum - 1 then
+            -- If current line is outside the range of a node marked with `@aligned_indent`
+            -- Then its indent level shouldn't be affected by `@aligned_indent` node
+            indent = math.max(indent - indent_size, 0)
           else
-            return o_scol + (metadata.increment or 1)
+            indent = o_scol + (metadata.increment or 1)
+            indent_is_absolute = true
           end
+        end
+        -- deal with the final line
+        local avoid_last_matching_next = false
+        if c_srow and c_srow ~= o_srow and c_srow == lnum - 1 then
+          -- delims end on current line, and are not open and closed same line.
+          -- then this last line may need additional indent to avoid clashes
+          -- with the next. `avoid_last_matching_next` controls this behavior,
+          -- for example this is needed for function parameters.
+          avoid_last_matching_next = metadata.avoid_last_matching_next or false
+        end
+        if avoid_last_matching_next then
+          -- last line must be indented more in cases where
+          -- it would be same indent as next line (we determine this as one
+          -- width more than the open indent to avoid confusing with any
+          -- hanging indents)
+          if indent <= vim.fn.indent(o_srow + 1) + indent_size then
+            indent = indent + indent_size * 1
+          else
+            indent = indent
+          end
+        end
+        is_processed = true
+        if indent_is_absolute then
+          -- don't allow further indenting by parent nodes, this is an absolute position
+          return indent
         end
       end
     end

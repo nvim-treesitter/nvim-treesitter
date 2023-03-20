@@ -26,5 +26,3 @@ while (a > 4 and
     pass
 
 try:
-    pass
-
