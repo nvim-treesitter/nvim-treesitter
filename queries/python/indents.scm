@@ -1,8 +1,4 @@
 [
-  (list)
-  (dictionary)
-  (set)
-
   (import_from_statement)
 
   (parenthesized_expression)
@@ -20,6 +16,16 @@
   (concatenated_string)
 ] @indent
 
+((list) @aligned_indent
+ (#set! "delimiter" "[]")
+)
+((dictionary) @aligned_indent
+ (#set! "delimiter" "{}")
+)
+((set) @aligned_indent
+ (#set! "delimiter" "{}")
+)
+
 ((for_statement) @indent
  (#set! "immediate_indent" 1))
 ((if_statement) @indent
@@ -28,8 +34,7 @@
  (#set! "immediate_indent" 1))
 ((try_statement) @indent
  (#set! "immediate_indent" 1))
-((ERROR "try" ":") @indent
- (#set! "immediate_indent" 1))
+(ERROR "try" ":" @indent (#set! "immediate_indent" 1))
 ((function_definition) @indent
  (#set! "immediate_indent" 1))
 ((class_definition) @indent
@@ -40,27 +45,24 @@
 (if_statement
   condition: (parenthesized_expression) @aligned_indent
   (#set! "delimiter" "()")
-  (#set! "final_line_indent" 1) ; parenthesized_expression already indented
-)
+  (#set! "avoid_last_matching_next" 1))
 (while_statement
   condition: (parenthesized_expression) @aligned_indent
   (#set! "delimiter" "()")
-  (#set! "final_line_indent" 1) ; parenthesized_expression already indented
-)
+  (#set! "avoid_last_matching_next" 1))
 
-((ERROR "(" . (_)) @aligned_indent
- (#set! "delimiter" "()"))
-((argument_list ")" @indent_end) @aligned_indent
+(ERROR "(" @aligned_indent (#set! "delimiter" "()") . (_)) 
+((argument_list) @aligned_indent
  (#set! "delimiter" "()"))
 ((parameters) @aligned_indent
  (#set! "delimiter" "()")
- (#set! "final_line_indent" 1))
-((tuple ")" @indent_end) @aligned_indent
+ (#set! "avoid_last_matching_next" 1))
+((tuple) @aligned_indent
  (#set! "delimiter" "()"))
 
-(list "]" @indent_end)
-(dictionary "}" @indent_end)
-(set "}" @indent_end)
+(ERROR "[" @aligned_indent (#set! "delimiter" "[]") . (_)) 
+
+(ERROR "{" @aligned_indent (#set! "delimiter" "{}") . (_)) 
 
 (parenthesized_expression ")" @indent_end)
 (generator_expression ")" @indent_end)
@@ -75,9 +77,17 @@
 (return_statement
   [
     (_) @indent_end 
-    (_ (_) @indent_end .)
+    (_
+      [
+        (_)
+        ")"
+        "}"
+        "]"
+      ] @indent_end .)
     (attribute 
       attribute: (_) @indent_end)
+    (call
+      arguments: (_ ")" @indent_end))
     "return" @indent_end
   ] .)
 
@@ -92,3 +102,4 @@
 ] @branch
 
 (string) @auto
+
