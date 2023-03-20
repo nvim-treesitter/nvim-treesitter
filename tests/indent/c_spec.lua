@@ -73,5 +73,21 @@ describe("indent C:", function()
     for _, line in ipairs { 10, 12, 14 } do
       runner:new_line("if_else.c", { on_line = line, text = "{}", indent = 4 })
     end
+
+    for _, info in ipairs {
+      { 8, 0 },
+      { 10, 0 },
+      { 13, 4 },
+      { 14, 4 },
+      { 15, 4 },
+      { 16, 4 },
+      { 17, 4 },
+      { 18, 4 },
+      { 20, 8 },
+      { 21, 8 },
+      { 22, 4 },
+    } do
+      runner:new_line("issue-4525.c", { on_line = info[1], text = "x++;", indent = info[2] })
+    end
   end)
 end)
