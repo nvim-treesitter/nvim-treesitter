@@ -122,7 +122,8 @@ function M.check()
     -- Only append information about installed parsers
     if installed >= 1 then
       local multiple_parsers = installed > 1 and "+" or ""
-      local out = "  - " .. parser_name .. multiple_parsers .. string.rep(" ", 20 - (#parser_name + #multiple_parsers))
+      local padding = string.rep(" ", 20 + 3 - (#parser_name + #multiple_parsers))
+      local out = "  - " .. parser_name .. multiple_parsers .. padding
       for _, query_group in pairs(queries.built_in_query_groups) do
         local status, err = query_status(parser_name, query_group)
         out = out .. status .. " "
