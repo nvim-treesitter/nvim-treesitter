@@ -29,6 +29,7 @@ for ft, lang in pairs {
   javascriptreact = "javascript",
   ecma = "javascript",
   jsx = "javascript",
+  sh = "bash",
   PKGBUILD = "bash",
   html_tags = "html",
   ["typescript.tsx"] = "tsx",
