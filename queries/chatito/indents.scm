@@ -2,6 +2,6 @@
  (intent_def)
  (slot_def)
  (alias_def)
-] @indent
+] @indent.begin
 
-(ERROR "]") @indent
+(ERROR "]") @indent.begin

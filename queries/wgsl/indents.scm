@@ -3,17 +3,17 @@
   (compound_statement)
   (loop_statement)
   (struct_declaration)
-] @indent
+] @indent.begin
 
-(compound_statement "}" @indent_end)
-(loop_statement "}" @indent_end)
-(function_declaration ")" @indent_end)
-(struct_declaration "}" @indent_end)
+(compound_statement "}" @indent.end)
+(loop_statement "}" @indent.end)
+(function_declaration ")" @indent.end)
+(struct_declaration "}" @indent.end)
 
 [
   "else"
   ")"
   "}"
-] @branch
+] @indent.branch
 
-[(line_comment) (block_comment)] @auto
+[(line_comment) (block_comment)] @indent.auto

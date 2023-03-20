@@ -5,10 +5,10 @@
 (handler_body)
 (consequence_body)
 (global_single)
-] @indent
+] @indent.begin
 
-"}" @indent_end
+"}" @indent.end
 
-(comment) @auto
+(comment) @indent.auto
 
-(string_literal) @auto
+(string_literal) @indent.auto

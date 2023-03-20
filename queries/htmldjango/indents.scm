@@ -1,3 +1,3 @@
-(paired_statement) @indent
-(end_paired_statement) @indent_end
-(branch_statement) @branch
+(paired_statement) @indent.begin
+(end_paired_statement) @indent.end
+(branch_statement) @indent.branch

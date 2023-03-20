@@ -15,39 +15,39 @@
   (foreach_statement)
   ; (try_statement)
   (catch_statement)
-] @indent
+] @indent.begin
 
 (
   (if_statement)
-  (ERROR "else") @indent
+  (ERROR "else") @indent.begin
 )
 
 (if_statement
-  condition: (_) @indent)
+  condition: (_) @indent.begin)
 
 (if_statement
   consequence: (_)
-  (else_statement) @indent)
+  (else_statement) @indent.begin)
 
 (do_while_statement
   "do"
-  (_) @indent)
+  (_) @indent.begin)
 
 (try_statement
-  (_) @indent
-  (catch_statement) @indent)
+  (_) @indent.begin
+  (catch_statement) @indent.begin)
 
-[ "{" "}" ] @branch
+[ "{" "}" ] @indent.branch
 
-[ "(" ")" ] @branch
+[ "(" ")" ] @indent.branch
 
-[ "[" "]" ] @branch
+[ "[" "]" ] @indent.branch
 
 [
   "}"
   ")"
   "]"
-] @indent_end
+] @indent.end
 
 [
   (ERROR)
@@ -55,4 +55,4 @@
 
   (string)
   (verbatim_string)
-] @auto
+] @indent.auto

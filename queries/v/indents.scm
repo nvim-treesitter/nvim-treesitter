@@ -7,11 +7,11 @@
  (map)
  (call_expression)
  (parameter_list)]
-@indent
+@indent.begin
 
 [ "}"]
-@branch
+@indent.branch
 
-(parameter_list ")" @branch)
+(parameter_list ")" @indent.branch)
 
-(comment) @ignore
+(comment) @indent.ignore

@@ -2,6 +2,6 @@
 
 [
   (template_element)
-] @indent
+] @indent.begin
 
-(template_element (end_tag ">" @indent_end) @branch)
+(template_element (end_tag ">" @indent.end) @indent.branch)

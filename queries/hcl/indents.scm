@@ -3,13 +3,13 @@
   (object)
   (tuple)
   (function_call)
-] @indent
+] @indent.begin
 
 [
   "]"
   ")"
   "}"
-] @branch @indent_end
+] @indent.branch @indent.end
 
-(comment) @auto
-(ERROR) @auto
+(comment) @indent.auto
+(ERROR) @indent.auto

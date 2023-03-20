@@ -1,16 +1,16 @@
-(definition) @indent
+(definition) @indent.begin
 
-((parameters (parameter)) @aligned_indent
- (#set! "open_delimiter" "(")
- (#set! "close_delimiter" ")"))
+((parameters (parameter)) @indent.align
+ (#set! indent.open_delimiter "(")
+ (#set! indent.close_delimiter ")"))
 
-"}" @indent_end
+"}" @indent.end
 
-[ "{" "}" ] @branch
+[ "{" "}" ] @indent.branch
 
-[ "(" ")" ] @branch
+[ "(" ")" ] @indent.branch
 
 [
   (ERROR)
   (comment)
-] @auto
+] @indent.auto

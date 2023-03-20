@@ -14,97 +14,91 @@
   (lambda)
 
   (concatenated_string)
-] @indent
+] @indent.begin
 
-((list) @aligned_indent
- (#set! "open_delimiter" "[")
- (#set! "close_delimiter" "]")
- (#set! "dedent_lone_close_delimiter" 1)
+((list) @indent.align
+ (#set! indent.open_delimiter "[")
+ (#set! indent.close_delimiter "]")
 )
-((dictionary) @aligned_indent
- (#set! "open_delimiter" "{")
- (#set! "close_delimiter" "}")
- (#set! "dedent_lone_close_delimiter" 1)
+((dictionary) @indent.align
+ (#set! indent.open_delimiter "{")
+ (#set! indent.close_delimiter "}")
 )
-((set) @aligned_indent
- (#set! "open_delimiter" "{")
- (#set! "close_delimiter" "}")
- (#set! "dedent_lone_close_delimiter" 1)
+((set) @indent.align
+ (#set! indent.open_delimiter "{")
+ (#set! indent.close_delimiter "}")
 )
 
-((for_statement) @indent
- (#set! "immediate_indent" 1))
-((if_statement) @indent
- (#set! "immediate_indent" 1))
-((while_statement) @indent
- (#set! "immediate_indent" 1))
-((try_statement) @indent
- (#set! "immediate_indent" 1))
-(ERROR "try" ":" @indent (#set! "immediate_indent" 1))
-((function_definition) @indent
- (#set! "immediate_indent" 1))
-((class_definition) @indent
- (#set! "immediate_indent" 1))
-((with_statement) @indent
- (#set! "immediate_indent" 1))
+((for_statement) @indent.begin
+ (#set! indent.immediate 1))
+((if_statement) @indent.begin
+ (#set! indent.immediate 1))
+((while_statement) @indent.begin
+ (#set! indent.immediate 1))
+((try_statement) @indent.begin
+ (#set! indent.immediate 1))
+(ERROR "try" ":" @indent.begin (#set! indent.immediate 1))
+((function_definition) @indent.begin
+ (#set! indent.immediate 1))
+((class_definition) @indent.begin
+ (#set! indent.immediate 1))
+((with_statement) @indent.begin
+ (#set! indent.immediate 1))
 
 (if_statement
-  condition: (parenthesized_expression) @aligned_indent
-  (#set! "open_delimiter" "(")
-  (#set! "close_delimiter" ")")
-  (#set! "avoid_last_matching_next" 1)
+  condition: (parenthesized_expression) @indent.align
+  (#set! indent.open_delimiter "(")
+  (#set! indent.close_delimiter ")")
+  (#set! indent.avoid_last_matching_next 1)
 )
 (while_statement
-  condition: (parenthesized_expression) @aligned_indent
-  (#set! "open_delimiter" "(")
-  (#set! "close_delimiter" ")")
-  (#set! "avoid_last_matching_next" 1)
+  condition: (parenthesized_expression) @indent.align
+  (#set! indent.open_delimiter "(")
+  (#set! indent.close_delimiter ")")
+  (#set! indent.avoid_last_matching_next 1)
 )
 
-(ERROR "(" @aligned_indent (#set! "open_delimiter" "(") (#set! "close_delimiter" ")") . (_)) 
-((argument_list) @aligned_indent
- (#set! "open_delimiter" "(")
- (#set! "close_delimiter" ")"))
-((parameters) @aligned_indent
- (#set! "open_delimiter" "(")
- (#set! "close_delimiter" ")")
- (#set! "avoid_last_matching_next" 1))
-((tuple) @aligned_indent
- (#set! "open_delimiter" "(")
- (#set! "close_delimiter" ")"))
+(ERROR "(" @indent.align (#set! indent.open_delimiter "(") (#set! indent.close_delimiter ")") . (_)) 
+((argument_list) @indent.align
+ (#set! indent.open_delimiter "(")
+ (#set! indent.close_delimiter ")"))
+((parameters) @indent.align
+ (#set! indent.open_delimiter "(")
+ (#set! indent.close_delimiter ")")
+ (#set! indent.avoid_last_matching_next 1))
+((tuple) @indent.align
+ (#set! indent.open_delimiter "(")
+ (#set! indent.close_delimiter ")"))
 
-(ERROR "[" @aligned_indent (#set! "open_delimiter" "[") (#set! "close_delimiter" "]") . (_)) 
-(list "]" @indent_end)
+(ERROR "[" @indent.align (#set! indent.open_delimiter "[") (#set! indent.close_delimiter "]") . (_)) 
 
-(ERROR "{" @aligned_indent (#set! "open_delimiter" "{") (#set! "close_delimiter" "}") . (_)) 
-(dictionary "}" @indent_end)
-(set "}" @indent_end)
+(ERROR "{" @indent.align (#set! indent.open_delimiter "{") (#set! indent.close_delimiter "}") . (_)) 
 
-(parenthesized_expression ")" @indent_end)
-(generator_expression ")" @indent_end)
-(list_comprehension "]" @indent_end)
-(set_comprehension "}" @indent_end)
-(dictionary_comprehension "}" @indent_end)
+(parenthesized_expression ")" @indent.end)
+(generator_expression ")" @indent.end)
+(list_comprehension "]" @indent.end)
+(set_comprehension "}" @indent.end)
+(dictionary_comprehension "}" @indent.end)
 
-(tuple_pattern ")" @indent_end)
-(list_pattern "]" @indent_end)
+(tuple_pattern ")" @indent.end)
+(list_pattern "]" @indent.end)
 
 
 (return_statement
   [
-    (_) @indent_end 
+    (_) @indent.end
     (_
       [
         (_)
         ")"
         "}"
         "]"
-      ] @indent_end .)
+      ] @indent.end .)
     (attribute 
-      attribute: (_) @indent_end)
+      attribute: (_) @indent.end)
     (call
-      arguments: (_ ")" @indent_end))
-    "return" @indent_end
+      arguments: (_ ")" @indent.end))
+    "return" @indent.end
   ] .)
 
 [
@@ -115,7 +109,7 @@
   (else_clause)
   (except_clause)
   (finally_clause)
-] @branch
+] @indent.branch
 
-(string) @auto
+(string) @indent.auto
 
