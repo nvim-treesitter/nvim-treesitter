@@ -14,10 +14,12 @@
 ] @indent
 
 ((struct_shorthand (property)) @aligned_indent
-  (#set! "delimiter" "()"))
+  (#set! "open_delimiter" "(")
+  (#set! "close_delimiter" ")"))
 
 ((const_list (const_value)) @aligned_indent
-  (#set! "delimiter" "[]"))
+  (#set! "open_delimiter" "(")
+  (#set! "close_delimiter" ")"))
 
 [
   "}"

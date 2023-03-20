@@ -113,8 +113,10 @@
 ] @ignore
 
 ((ERROR (parameter_declaration)) @aligned_indent
- (#set! "delimiter" "()"))
+ (#set! "open_delimiter" "(")
+ (#set! "close_delimiter" ")"))
 ([(argument_list) (parameter_list)] @aligned_indent
-  (#set! "delimiter" "()"))
+  (#set! "open_delimiter" "(")
+  (#set! "close_delimiter" ")"))
 
 (comment) @auto

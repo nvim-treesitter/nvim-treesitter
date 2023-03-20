@@ -208,15 +208,14 @@ function M.get_indent(lnum)
       local o_delim_node, o_is_last_in_line ---@type TSNode|nil, boolean|nil
       local c_delim_node, c_is_last_in_line ---@type TSNode|nil, boolean|nil, boolean|nil
       local indent_is_absolute = false
-      if metadata.delimiter then
-        ---@type string
-        local opening_delimiter = metadata.delimiter and metadata.delimiter:sub(1, 1)
-        o_delim_node, o_is_last_in_line = find_delimiter(bufnr, node, opening_delimiter)
-        ---@type string
-        local closing_delimiter = metadata.delimiter and metadata.delimiter:sub(2, 2)
-        c_delim_node, c_is_last_in_line = find_delimiter(bufnr, node, closing_delimiter)
+      if metadata.open_delimiter then
+        o_delim_node, o_is_last_in_line = find_delimiter(bufnr, node, metadata.open_delimiter)
       else
         o_delim_node = node
+      end
+      if metadata.close_delimiter then
+        c_delim_node, c_is_last_in_line = find_delimiter(bufnr, node, metadata.close_delimiter)
+      else
         c_delim_node = node
       end
 

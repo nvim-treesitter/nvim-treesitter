@@ -1,7 +1,8 @@
 (definition) @indent
 
 ((parameters (parameter)) @aligned_indent
-  (#set! "delimiter" "()"))
+ (#set! "open_delimiter" "(")
+ (#set! "close_delimiter" ")"))
 
 "}" @indent_end
 

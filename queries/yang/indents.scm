@@ -7,4 +7,5 @@
 (block "}" @indent_end @branch)
 
 ((string) @aligned_indent
- (#set! "delimiter" "\"\""))
+ (#set! "open_delimiter" "\"")
+ (#set! "close_delimiter" "\""))
