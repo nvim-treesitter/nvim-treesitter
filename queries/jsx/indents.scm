@@ -3,19 +3,19 @@
   (jsx_element)
   (jsx_self_closing_element)
   (jsx_expression)
-] @indent
+] @indent.begin
 
 (jsx_fragment
-  ("<" ">" (_) "<" @branch "/" ">" @indent_end)
+  ("<" ">" (_) "<" @indent.branch "/" ">" @indent.end)
 )
 
-(jsx_closing_element (">" @indent_end))
-(jsx_self_closing_element ">" @indent_end)
+(jsx_closing_element (">" @indent.end))
+(jsx_self_closing_element ">" @indent.end)
 
 [
   (jsx_closing_element)
   ">"
-] @branch
+] @indent.branch
 ; <button
 ; />
-(jsx_self_closing_element "/" @branch)
+(jsx_self_closing_element "/" @indent.branch)

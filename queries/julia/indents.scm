@@ -22,7 +22,7 @@
   (comprehension_expression)
   (matrix_expression)
   (vector_expression)
-] @indent
+] @indent.begin
 
 [
   "end"
@@ -34,10 +34,10 @@
   (elseif_clause)
   (catch_clause)
   (finally_clause)
-] @branch
+] @indent.branch
 
 [
   (line_comment)
   (block_comment)
-] @ignore
+] @indent.ignore
 

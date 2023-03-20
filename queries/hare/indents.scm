@@ -12,25 +12,25 @@
   (array_literal)
   (struct_literal)
   (tuple_literal)
-] @indent
+] @indent.begin
 
 (if_statement
-   ("(" condition: (_) ")") @indent)
+   ("(" condition: (_) ")") @indent.begin)
 
 [
   "}"
   "]"
   ")"
-] @indent_end
+] @indent.end
 
-[ "{" "}" ] @branch
+[ "{" "}" ] @indent.branch
 
-[ "[" "]" ] @branch
+[ "[" "]" ] @indent.branch
 
-[ "(" ")" ] @branch
+[ "(" ")" ] @indent.branch
 
 [
   (ERROR)
   (comment)
   (concatenated_string)
-] @auto
+] @indent.auto

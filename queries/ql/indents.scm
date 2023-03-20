@@ -4,20 +4,20 @@
   (classMember)
   (classlessPredicate)
   (quantified)
-] @indent
+] @indent.begin
 
 [
   ")"
   "}"
-] @indent_end
+] @indent.end
 
 [
   ")"
   "}"
-] @branch
+] @indent.branch
 
 [
   (block_comment)
   (line_comment)
   (qldoc)
-] @ignore
+] @indent.ignore

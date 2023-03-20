@@ -1,6 +1,6 @@
-(reduction) @indent
+(reduction) @indent.begin
 
 [
   (ERROR)
   (comment)
-] @auto
+] @indent.auto

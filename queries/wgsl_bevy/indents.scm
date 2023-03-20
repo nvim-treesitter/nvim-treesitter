@@ -4,4 +4,4 @@
   "#ifndef"
   "#else"
   "#endif"
-] @zero_indent
+] @indent.zero

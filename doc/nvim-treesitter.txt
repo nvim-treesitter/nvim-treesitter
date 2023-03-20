@@ -224,29 +224,29 @@ Supported options:
   }
 
 `@indent`				    *nvim-treesitter-indentation-queries*
-Queries can use the following captures: `@indent` and `@dedent`,
-`@branch`, `@indent_end` or `@aligned_indent`. An `@ignore` capture tells
-treesitter to ignore indentation and a `@zero_indent` capture sets
+Queries can use the following captures: `@indent.begin` and `@indent.dedent`,
+`@indent.branch`, `@indent.end` or `@indent.align`. An `@indent.ignore` capture tells
+treesitter to ignore indentation and a `@indent.zero` capture sets
 the indentation to 0.
 
-`@indent`				    *nvim-treesitter-indentation-indent*
-The `@indent` specifies that the next line should be indented.  Multiple
+`@indent.begin`			    *nvim-treesitter-indentation-indent.begin*
+The `@indent.begin` specifies that the next line should be indented.  Multiple
 indents on the same line get collapsed. Eg.
 
 >
   (
    (if_statement)
-   (ERROR "else") @indent
+   (ERROR "else") @indent.begin
   )
 <
-Indent can also have `immediate_indent` set using a `#set!` directive, which
+Indent can also have `indent.immediate` set using a `#set!` directive, which
 permits the next line to indent even when the block intended to be indented
 has no content yet, improving interactive typing.
 
 eg for python:
 >
- ((if_statement) @indent
-   (#set! "immediate_indent" 1))
+ ((if_statement) @indent.begin
+   (#set! indent.immediate 1))
 <
 
 Will allow:
@@ -254,19 +254,19 @@ Will allow:
   if True:<CR>
       # Auto indent to here
 
-`@indent_end`				*nvim-treesitter-indentation-indent_end*
-An `@indent_end` capture is used to specify that the indented region ends and
+`@indent.end`				*nvim-treesitter-indentation-indent.end*
+An `@indent.end` capture is used to specify that the indented region ends and
 any text subsequent to the capture should be dedented.  
 
-`@branch`				*nvim-treesitter-indentation-branch*
-An `@branch` capture is used to specify that a dedented region starts
+`@indent.branch`		    *nvim-treesitter-indentation-indent.branch*
+An `@indent.branch` capture is used to specify that a dedented region starts
 at the line including the captured nodes.
 
-`@dedent`				*nvim-treesitter-indentation-dedent*
-A `@dedent` capture specifies dedenting starting on the next line.
+`@indent.dedent`		    *nvim-treesitter-indentation-indent.dedent*
+A `@indent.dedent` capture specifies dedenting starting on the next line.
 >
-`@aligned_indent`			*nvim-treesitter-indentation-aligned_indent*
-Aligned indent blocks may be specified with the `@aligned_indent` capture.
+`@indent.align`		    *nvim-treesitter-indentation-aligned_indent.align*
+Aligned indent blocks may be specified with the `@indent.align` capture.
 This permits
 
 >
@@ -289,15 +289,15 @@ and finally
     c
   )
 <
-To specify the delimiters to use `open_delimiter` and `close_delimiter`
-should be used.  Eg.
+To specify the delimiters to use `indent.open_delimiter` and
+`indent.close_delimiter` should be used.  Eg.
 >
- ((argument_list) @aligned_indent
-  (#set! "open_delimiter" "(")
-  (#set! "close_delimiter" ")"))
+ ((argument_list) @indent.align
+  (#set! indent.open_delimiter "(")
+  (#set! indent.close_delimiter ")"))
 <
 
-For some languages the last line of an `aligned_indent` block must not be
+For some languages the last line of an `indent.align` block must not be
 the same indent as the natural next line.
 
 For example in python:
@@ -314,17 +314,17 @@ Is not correct, whereas
       pass
 
 Would be correctly indented.  This behavior may be chosen using
-`avoid_last_matching_next`.  Eg.
+`indent.avoid_last_matching_next`.  Eg.
 
 >
  (if_statement
-  condition: (parenthesized_expression) @aligned_indent
-  (#set! "open_delimiter" "(")
-  (#set! "close_delimiter" ")")
-  (#set! "avoid_last_matching_next" 1)
+  condition: (parenthesized_expression) @indent.align
+  (#set! indent.open_delimiter "(")
+  (#set! indent.close_delimiter ")")
+  (#set! indent.avoid_last_matching_next 1)
  )
 <
-Could be used to specify that the last line of an `@aligned_indent` capture
+Could be used to specify that the last line of an `@indent.align` capture
 should be additionally indented to avoid clashing with the indent of the first
 line of the block inside an if.
 

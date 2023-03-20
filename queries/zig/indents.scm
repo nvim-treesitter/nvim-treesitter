@@ -3,9 +3,9 @@
   (ContainerDecl)
   (SwitchExpr)
   (InitList)
-] @indent
+] @indent.begin
 
-(Block "}" @indent_end)
+(Block "}" @indent.end)
 
 [
   "("
@@ -14,11 +14,11 @@
   "]"
   "{"
   "}"
-] @branch
+] @indent.branch
 
 [
   (line_comment)
   (container_doc_comment)
   (doc_comment)
   (LINESTRING)
-] @ignore
+] @indent.ignore

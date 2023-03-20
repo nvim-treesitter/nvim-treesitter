@@ -1,18 +1,18 @@
 [
   (array)
   (object)
-] @indent
+] @indent.begin
 
-"}" @indent_end
+"}" @indent.end
 
-[ "{" "}" ] @branch
+[ "{" "}" ] @indent.branch
 
-[ "[" "]" ] @branch
+[ "[" "]" ] @indent.branch
 
-[ "(" ")" ] @branch
+[ "(" ")" ] @indent.branch
 
 [
   (ERROR)
   (comment)
   (diagnostic_comment)
-] @auto
+] @indent.auto

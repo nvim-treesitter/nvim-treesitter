@@ -9,19 +9,19 @@
   (if)
   (let) 
   (value_suffix)
-] @indent
+] @indent.begin
 
 [
   "}"
   "]"
   ")"
   ">"
-] @indent_end
+] @indent.end
 
-[ "{" "}" ] @branch
+[ "{" "}" ] @indent.branch
 
-[ "[" "]" ] @branch
+[ "[" "]" ] @indent.branch
 
-[ "(" ")" ] @branch
+[ "(" ")" ] @indent.branch
 
-[ "<" ">" ] @branch
+[ "<" ">" ] @indent.branch

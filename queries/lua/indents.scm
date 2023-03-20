@@ -13,17 +13,17 @@
   (table_constructor)
   (arguments)
   (return_statement)
-] @indent
+] @indent.begin
 
 [
   "end"
   ")"
   "}"
-] @indent_end
+] @indent.end
 
 (return_statement
   (expression_list
-    (function_call))) @dedent
+    (function_call))) @indent.dedent
 
 [
   "end"
@@ -35,8 +35,9 @@
   (elseif_statement)
   "else"
   (else_statement)
-] @branch
+] @indent.branch
 
-(comment) @auto
+(comment) @indent.auto
 
-(string) @auto
+(string) @indent.auto
+

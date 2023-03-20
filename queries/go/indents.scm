@@ -13,21 +13,21 @@
   (call_expression)
   (parameter_list)
   (struct_type)
-] @indent
+] @indent.begin
 
 [
   "}"
-] @branch
+] @indent.branch
 
-(const_declaration ")" @branch)
-(import_spec_list ")" @branch)
-(var_declaration ")" @branch)
+(const_declaration ")" @indent.branch)
+(import_spec_list ")" @indent.branch)
+(var_declaration ")" @indent.branch)
 
 [
  "}"
  ")"
-] @indent_end
+] @indent.end
 
-(parameter_list ")" @branch)
+(parameter_list ")" @indent.branch)
 
-(comment) @ignore
+(comment) @indent.ignore

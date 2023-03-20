@@ -1,17 +1,17 @@
-(memory_execution) @auto
+(memory_execution) @indent.auto
 
 [
   (subroutine)
   (brackets)
-] @indent
+] @indent.begin
 
-"}" @indent_end
+"}" @indent.end
 
-[ "{" "}" ] @branch
+[ "{" "}" ] @indent.branch
 
-[ "[" "]" ] @branch
+[ "[" "]" ] @indent.branch
 
 [
   (ERROR)
   (comment)
-] @auto
+] @indent.auto
