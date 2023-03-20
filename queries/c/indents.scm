@@ -6,8 +6,14 @@
   (compound_literal_expression)
   (initializer_list)
   (init_declarator)
-  (expression_statement)
 ] @indent.begin
+
+; With current indent logic, if we capture expression_statement with @indent.begin
+; It will be affected by _parent_ node with error subnodes deep down the tree
+; So narrow indent capture to check for error inside expression statement only, 
+(expression_statement
+  (_) @indent.begin
+  ";" @indent.end)
 
 (
   ERROR
