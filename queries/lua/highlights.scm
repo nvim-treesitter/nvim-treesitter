@@ -8,8 +8,6 @@
  "local"
 ] @keyword
 
-(label_statement) @label
-
 (break_statement) @keyword
 
 (do_statement
@@ -109,6 +107,7 @@
 [
   ";"
   ":"
+  "::"
   ","
   "."
 ] @punctuation.delimiter
@@ -135,6 +134,12 @@
    attribute: (attribute
      (["<" ">"] @punctuation.bracket
       (identifier) @attribute)))
+
+;; Labels
+
+(label_statement (identifier) @label)
+
+(goto_statement (identifier) @label)
 
 ;; Constants
 
