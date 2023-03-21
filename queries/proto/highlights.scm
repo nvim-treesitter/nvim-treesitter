@@ -1,8 +1,6 @@
 [
   "syntax"
-  "package"
   "option"
-  "import"
   "service"
   "rpc"
   "returns"
@@ -14,6 +12,11 @@
   "reserved"
   "to"
 ] @keyword
+
+[
+  "package"
+  "import"
+] @include
 
 [
   (key_type)
