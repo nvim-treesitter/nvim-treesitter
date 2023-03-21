@@ -197,7 +197,7 @@
    ; Thread Methods
    "call" "wakeup" "wakeupthrow" "getstackinfos"
 
-   ; Weak Referece Methods
+   ; Weak Reference Methods
    "ref" "weakref"
 ))
 
