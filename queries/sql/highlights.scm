@@ -73,10 +73,12 @@
  (keyword_preceding)
  (keyword_following)
  (keyword_first)
+ (keyword_current_timestamp)
 ] @attribute
 
 [
  (keyword_materialized)
+ (keyword_recursive)
  (keyword_temp)
  (keyword_temporary)
  (keyword_unlogged)
@@ -209,6 +211,10 @@
  (keyword_low_priority)
  (keyword_ignore)
  (keyword_nothing)
+ (keyword_check)
+ (keyword_option)
+ (keyword_local)
+ (keyword_cascaded)
 ] @type.qualifier
 
 [
