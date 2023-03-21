@@ -72,7 +72,7 @@
 (call_expression . (identifier) @function.call)
 
 ; Function parameters
-(event_parameter name: (identifier) @parameter)
+(event_paramater name: (identifier) @parameter)
 (parameter name: (identifier) @parameter)
 
 ; Yul functions
@@ -113,7 +113,7 @@
 ; FIXME: update grammar
 ; (block_statement "unchecked" @keyword)
 
-(event_parameter "indexed" @keyword)
+(event_paramater "indexed" @keyword)
 
 [
   "public"
