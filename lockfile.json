@@ -159,7 +159,7 @@
     "revision": "ae79782c00656945db69641378e688cdb78d52c1"
   },
   "glimmer": {
-    "revision": "40cfb72a53654cbd666451ca04ffd500257c7b73"
+    "revision": "e0460316c0b1e07b21bbc7a5d5edca14afea88f4"
   },
   "glsl": {
     "revision": "e2c2214045de2628b81089b1a739962f59654558"
@@ -432,7 +432,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "4cb5b36d70687bfe4687c68483b4dacde309ae6f"
+    "revision": "b3c771f890dd2d94994d2647aeb744c93d762f0d"
   },
   "squirrel": {
     "revision": "3fefc6b9bb2b4de1b1c461783f675918cd957546"
