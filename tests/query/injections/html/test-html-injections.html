@@ -14,18 +14,51 @@
   </head>
   <body>
     <script> const x = 1 </script>
-    <!--        ^ javascript -->
+           <!-- ^ javascript -->
     <script defer> const x = 1 </script>
-    <!--              ^ javascript -->
+                  <!-- ^ javascript -->
+    <script async defer> const x = 1 </script>
+                     <!-- ^ javascript -->
     <script type="text/javascript"> const x = 1 </script>
-    <!--                              ^ javascript -->
+                                  <!-- ^ javascript -->
+    <script type="text/ecmascript"> const x = 1 </script>
+                                  <!-- ^ javascript -->
+    <script type="application/ecmascript"> const x = 1 </script>
+                                       <!-- ^ javascript -->
+    <script type="application/javascript"> const x = 1 </script>
+                                       <!-- ^ javascript -->
     <script type="module"> import { foo } from "bar" </script>
-    <!--                              ^ javascript -->
+                                 <!-- ^ javascript -->
     <script defer type="text/javascript"> const x = 1 </script>
                                         <!-- ^ javascript -->
+    <script type="text/markdown">## Hello *World*!</script>
+                              <!-- ^ markdown -->
+    <script type="application/graphql">query OK { dokey }</script>
+                                      <!-- ^ graphql -->
+    <script type="application/typescript">type A = number;</script>
+                                      <!-- ^ typescript -->
+    <script type="application/json">{ "true": false }</script>
+                                      <!-- ^ json -->
+    <script type="importmap">{ "true": false }</script>
+                                  <!-- ^ json -->
+    <script type="module">html`<p></p>`</script>
+                             <!-- ^ html -->
+    <script type="module">html(`<p></p>`)</script>
+                             <!-- ^ html -->
+    <script type="module">svg`<p></p>`</script>
+                             <!-- ^ html -->
+    <script type="module">svg(`<p></p>`)</script>
+                             <!-- ^ html -->
+
     <div style="height: 100%">
-<!--                ^ css      -->
+               <!-- ^ css -->
       Test div to test css injections for style attributes
     </div>
+
+    <input pattern="[0-9]+">
+                  <!-- ^ regex -->
+    <input pattern=[0-9]+ type="tel">
+                <!-- ^ regex -->
+
   </body>
 </html>
