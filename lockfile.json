@@ -17,6 +17,9 @@
   "bash": {
     "revision": "b338fa9f4807b9e0336cd4dde04948a8c324a4cf"
   },
+  "bass": {
+    "revision": "27f110dfe79620993f5493ffa0d0f2fe12d250ed"
+  },
   "beancount": {
     "revision": "f3741a3a68ade59ec894ed84a64673494d2ba8f3"
   },

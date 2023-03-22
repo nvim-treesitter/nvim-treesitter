@@ -179,6 +179,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [astro](https://github.com/virchau13/tree-sitter-astro) (maintained by @virchau13)
 - [ ] [awk](https://github.com/Beaglefoot/tree-sitter-awk)
 - [x] [bash](https://github.com/tree-sitter/tree-sitter-bash) (maintained by @TravonteD)
+- [x] [bass](https://github.com/amaanq/tree-sitter-bass) (maintained by @amaanq)
 - [x] [beancount](https://github.com/polarmutex/tree-sitter-beancount) (maintained by @polarmutex)
 - [x] [bibtex](https://github.com/latex-lsp/tree-sitter-bibtex) (maintained by @theHamsta, @clason)
 - [x] [bicep](https://github.com/amaanq/tree-sitter-bicep) (maintained by @amaanq)
