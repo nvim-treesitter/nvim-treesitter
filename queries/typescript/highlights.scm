@@ -66,6 +66,7 @@
 
 "?." @punctuation.delimiter
 
+(method_signature "?" @punctuation.special)
 (property_signature "?" @punctuation.special)
 (optional_parameter "?" @punctuation.special)
 
@@ -104,3 +105,20 @@
 ;; a => null
 (arrow_function
   parameter: (identifier) @parameter)
+
+;; function signatures
+(ambient_declaration
+  (function_signature
+    name: (identifier) @function))
+
+;; method signatures
+(method_signature name: (_) @method)
+
+;; property signatures
+(property_signature
+  name: (property_identifier) @method
+  type: (type_annotation
+          [
+            (union_type (parenthesized_type (function_type)))
+            (function_type)
+          ]))
