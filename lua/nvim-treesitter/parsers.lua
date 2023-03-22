@@ -120,6 +120,14 @@ list.bash = {
   maintainers = { "@TravonteD" },
 }
 
+list.bass = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-bass",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.beancount = {
   install_info = {
     url = "https://github.com/polarmutex/tree-sitter-beancount",
