@@ -47,7 +47,7 @@
               "FutureWarning" "ImportWarning" "UnicodeWarning" "BytesWarning" "ResourceWarning"
               ;; https://docs.python.org/3/library/stdtypes.html
               "bool" "int" "float" "complex" "list" "tuple" "range" "str"
-              "bytes" "bytearray" "memoryview" "set" "frozenset" "dict" "type"))
+              "bytes" "bytearray" "memoryview" "set" "frozenset" "dict" "type" "object"))
 
 ((assignment
   left: (identifier) @type.definition
