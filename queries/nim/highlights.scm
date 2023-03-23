@@ -165,6 +165,9 @@
 (continueStmt (keyw) @repeat)
 ; keywords related to loops (e.g. `for` / `while`)
 
+(blockStmt (keyw) @repeat (symbol) @label)
+; blocks
+
 (importStmt (keyw) @include)
 (importExceptStmt (keyw) @include)
 (exportStmt (keyw) @include)
@@ -174,28 +177,27 @@
 
 (raiseStmt (keyw) @exception)
 (tryStmt (keyw) @exception)
+(inlineTryStmt (keyw) @exception)
 (tryExceptStmt (keyw) @exception)
 (tryFinallyStmt (keyw) @exception)
 ; keywords related to exceptions (e.g. `throw` / `catch`)
 
+(primarySuffix
+  (indexSuffix
+    (exprColonEqExprList
+      (exprColonEqExpr
+        (expr
+          (primary
+            (symbol) @type))))))
+; nested types in brackets, i.e. seq[string]
+
+(exprColonEqExpr
+  . (expr (primary (symbol) @parameter))
+  . (expr (primary (symbol) @type)))
+; variables in inline tuple declarations
+
 (primaryTypeDef (symbol) @type)
 (primaryTypeDesc (symbol) @type)
-(primaryTypeDesc
-  (primarySuffix
-    (indexSuffix
-      (exprColonEqExprList
-        (exprColonEqExpr
-          (expr
-            (primary
-              (symbol) @type)))))))
-(primaryTypeDef
-  (primarySuffix
-    (indexSuffix
-      (exprColonEqExprList
-        (exprColonEqExpr
-          (expr
-            (primary
-              (symbol) @type)))))))
 (genericParam (symbol) @type)
 (tupleDecl (keyw) @type)
 (enumDecl (keyw) @type)
@@ -212,33 +214,6 @@
   (primary (symbol) @type))
  (#match? @keyword.operator "is"))
 ; type or class definitions and annotations
-
-(primaryTypeDef (symbol (ident) @type.builtin)
-  (#match? @type.builtin "int|float|string|cstring|bool|array|seq|tuple|set|varargs|openArray|typed|untyped|auto"))
-(primaryTypeDesc (symbol (ident) @type.builtin)
-  (#match? @type.builtin "int|float|string|cstring|bool|array|seq|tuple|set|varargs|openArray|typed|untyped|auto"))
-(primaryTypeDesc (tupleDesc (keyw) @type.builtin))
-(primaryTypeDesc
-  (primarySuffix
-    (indexSuffix
-      (exprColonEqExprList
-        (exprColonEqExpr
-          (expr
-            (primary
-              (symbol) @type.builtin)
-              (#match? @type.builtin "int|float|string|cstring|bool|array|seq|tuple|set|varargs|openArray|typed|untyped|auto")
-            ))))))
-(primaryTypeDef
-  (primarySuffix
-    (indexSuffix
-      (exprColonEqExprList
-        (exprColonEqExpr
-          (expr
-            (primary
-              (symbol) @type.builtin)
-              (#match? @type.builtin "int|float|string|cstring|bool|array|seq|tuple|set|varargs|openArray|typed|untyped|auto")
-            ))))))
-; built-in types
 
 (typeDef
   (keyw) @keyword
@@ -261,6 +236,13 @@
 ; object and struct fields
 
 (primary
+  (primarySuffix
+    (qualifiedSuffix
+      (symbol (ident) @function.call)))
+  . (primarySuffix (cmdCall)))
+; must come after @field
+
+(primary
   (primarySuffix (qualifiedSuffix (symbol) @function.call))
   . (primarySuffix (functionCall ["(" ")"] @function.call)))
 ; uniform function call syntax calls
@@ -278,9 +260,3 @@
 (enumElement (symbol) @constant)
 (declaration (constant (keyw) @keyword (declColonEquals (symbol) @constant)))
 ; constant identifiers
-
-;@constant.builtin ; built-in constant values
-;@constant.macro   ; constants defined by the preprocessor
-
-;@namespace        ; modules or namespaces
-;@symbol           ; symbols or atoms
