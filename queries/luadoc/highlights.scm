@@ -1,6 +1,11 @@
 ; Keywords
 
 [
+  "@module"
+  "@package"
+] @include
+
+[
   "@class"
   "@type"
   "@param"
@@ -10,6 +15,11 @@
   "@vararg"
   "@diagnostic"
   "@deprecated"
+  "@meta"
+  "@source"
+  "@version"
+  "@operator"
+  "@nodiscard"
   "@cast"
   "@overload"
   "@enum"
@@ -23,9 +33,16 @@
   "@async"
 ] @keyword.coroutine
 
-(language_injection "@language" (identifier) @parameter)
+(language_injection "@language" (identifier) @keyword)
 
 (function_type ["fun" "function"] @keyword.function)
+
+(source_annotation
+  filename: (identifier) @text.uri @string.special
+  extension: (identifier) @text.uri @string.special)
+
+(version_annotation
+  version: _ @constant.builtin)
 
 [
   "@return"
@@ -93,6 +110,8 @@
 
 ; Literals
 
+(string) @namespace ; only used in @module
+
 (literal_type) @string
 
 (number) @number
@@ -123,11 +142,11 @@
 
 (comment) @comment @spell
 
-(at_comment 
-  (identifier) @type 
+(at_comment
+  (identifier) @type
   (_) @comment @spell)
 
-(class_at_comment 
-  (identifier) @type 
+(class_at_comment
+  (identifier) @type
   ("extends"? (identifier)? @type)
   (_) @comment @spell)
