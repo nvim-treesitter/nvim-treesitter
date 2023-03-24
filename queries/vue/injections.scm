@@ -49,6 +49,18 @@
   (#eq? @_ts "ts")
 )
 
+; <script lang="tsx">
+; <script lang="jsx">
+(
+  (script_element
+    (start_tag
+      (attribute
+        (attribute_name) @_attr
+        (quoted_attribute_value (attribute_value) @language)))
+    (raw_text) @content)
+    (#eq? @_attr "lang")
+    (#any-of? @language "tsx" "jsx"))
+
 ((interpolation
   (raw_text) @javascript))
 

@@ -20,6 +20,10 @@
 <script lang="ts" defer>const foo: number = 1 </script>
 <!--                            ^ typescript -->
 <!--                            ^ !javascript -->
+<script lang="tsx" defer>const foo: number = 1</script>
+                              <!--  ^ tsx -->
+                              <!--  ^ !jsx -->
+                              <!--  ^ !typescript -->
 <style> .bar { .foo{ } } </style>
 <!--                ^ css   -->
 <style scoped> .page.page--news { background: rebeccapurple; } </style>
