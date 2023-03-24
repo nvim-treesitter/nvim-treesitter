@@ -1,5 +1,5 @@
 local api = vim.api
-local tsq = require "vim.treesitter.query"
+local ts = require "nvim-treesitter.compat"
 local tsrange = require "nvim-treesitter.tsrange"
 local utils = require "nvim-treesitter.utils"
 local parsers = require "nvim-treesitter.parsers"
@@ -105,7 +105,7 @@ do
   ---@param query_name string
   function M.get_query(lang, query_name)
     if cache[lang][query_name] == nil then
-      cache[lang][query_name] = tsq.get_query(lang, query_name)
+      cache[lang][query_name] = ts.get_query(lang, query_name)
     end
 
     return cache[lang][query_name]
