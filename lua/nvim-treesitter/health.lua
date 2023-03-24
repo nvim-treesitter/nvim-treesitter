@@ -16,8 +16,8 @@ local NVIM_TREESITTER_MINIMUM_ABI = 13
 local function install_health()
   health.report_start "Installation"
 
-  if fn.has "nvim-0.7" == 0 then
-    health.report_error "Nvim-treesitter requires Neovim 0.7.0+"
+  if fn.has "nvim-0.8.3" ~= 1 then
+    health.report_error "Nvim-treesitter requires Neovim 0.8.3+"
   end
 
   if fn.executable "tree-sitter" == 0 then
