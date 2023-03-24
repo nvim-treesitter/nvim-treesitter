@@ -145,7 +145,7 @@ query.add_directive("downcase!", function(match, _, bufnr, pred, metadata)
     text = value
   else
     local node = match[value]
-    text = query.get_node_text(node, bufnr) or ""
+    text = vim.treesitter.get_node_text(node, bufnr) or ""
   end
 
   if #pred == 3 then
