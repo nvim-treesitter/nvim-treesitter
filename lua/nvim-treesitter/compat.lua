@@ -1,5 +1,6 @@
 -- Shim module to address deprecations across nvim versions
-local tsq = vim.treesitter.query
+local ts = vim.treesitter
+local tsq = ts.query
 
 local M = {}
 
@@ -13,6 +14,10 @@ end
 
 function M.parse_query(lang, query)
   return (tsq.parse or tsq.parse_query)(lang, query)
+end
+
+function M.get_range(node, source, metadata)
+  return (ts.get_range or tsq.get_range)(node, source, metadata)
 end
 
 return M
