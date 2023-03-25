@@ -91,8 +91,14 @@ describe("indent Python:", function()
     run:new_line("break_continue.py", { on_line = 4, text = "pass", indent = 8 })
     run:new_line("break_continue.py", { on_line = 9, text = "pass", indent = 8 })
 
-    for _, line in ipairs { 2, 5, 8, 11, 16, 21, 24, 27, 34, 39 } do
+    for _, line in ipairs { 3, 7, 11, 17, 21, 25, 32, 36, 42, 46, 52, 58 } do
+      run:new_line("return_dedent.py", { on_line = line, text = "x", indent = 4 })
+    end
+    for _, line in ipairs { 61, 64, 67, 70, 73, 79, 82, 87, 90, 95, 100 } do
       run:new_line("return_dedent.py", { on_line = line, text = "x", indent = 0 })
+    end
+    for _, line in ipairs { 3, 5, 9 } do
+      run:new_line("exceptions.py", { on_line = line, text = "x", indent = 4 })
     end
   end)
 end)

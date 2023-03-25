@@ -249,18 +249,20 @@ function M.get_indent(lnum)
           if should_process then
             indent = indent + indent_size * 1
             if c_is_last_in_line then
-              -- If current line is outside the range of a node marked with `@aligned_indent`
-              -- Then its indent level shouldn't be affected by `@aligned_indent` node
+              -- If current line is outside the range of a node marked with `@indent.align`
+              -- Then its indent level shouldn't be affected by `@indent.align` node
+              -- This will just reset what has been added right above,
+              -- instead of resetting indent level to max(indent - indent_size, 0)
               if c_srow and c_srow < lnum - 1 then
-                indent = math.max(indent - indent_size, 0)
+                indent = indent - indent_size
               end
             end
           end
         else
           -- aligned indent
           if c_is_last_in_line and c_srow and o_srow ~= c_srow and c_srow < lnum - 1 then
-            -- If current line is outside the range of a node marked with `@aligned_indent`
-            -- Then its indent level shouldn't be affected by `@aligned_indent` node
+            -- If current line is outside the range of a node marked with `@indent.align`
+            -- Then its indent level shouldn't be affected by `@indent.align` node
             indent = math.max(indent - indent_size, 0)
           else
             indent = o_scol + (metadata["indent.increment"] or 1)

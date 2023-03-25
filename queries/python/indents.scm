@@ -81,34 +81,65 @@
 [
   (break_statement)
   (continue_statement)
+  (raise_statement)
+  (return_statement)
 ] @indent.dedent
 
-(parenthesized_expression ")" @indent.end)
-(generator_expression ")" @indent.end)
-(list_comprehension "]" @indent.end)
-(set_comprehension "}" @indent.end)
-(dictionary_comprehension "}" @indent.end)
+(return_statement 
+  [
+    ; indent.align
+    (list "]" @indent.dedent)
+    (dictionary "}" @indent.dedent)
+    (set "}" @indent.dedent)
+    (tuple ")" @indent.dedent)
+    (call
+      arguments: (argument_list ")" @indent.dedent))
+    (await
+      (call
+        arguments: (argument_list ")" @indent.dedent)))
+  ] 
+)
+
+(return_statement
+  [
+    ; indent.begin -> dedent twice 
+    (parenthesized_expression ")" @indent.dedent)
+    (generator_expression ")" @indent.dedent)
+    (list_comprehension "]" @indent.dedent)
+    (set_comprehension "}" @indent.dedent)
+    (dictionary_comprehension "}" @indent.dedent)
+    ; (tuple_pattern "(" @indent.begin ")" @indent.dedent)
+    ; (list_pattern "]" @indent.dedent)
+
+    ; functions
+    ; (call)
+    ; (await)
+  ]
+)
+
+(raise_statement
+  (call
+    arguments: (argument_list ")" @indent.dedent)))
+
+(parenthesized_expression 
+  ")" @indent.end
+  (#not-has-parent? @indent.end return_statement raise_statement))
+(generator_expression 
+  ")" @indent.end
+  (#not-has-parent? @indent.end return_statement raise_statement))
+(list_comprehension 
+  "]" @indent.end
+  (#not-has-parent? @indent.end return_statement raise_statement))
+(set_comprehension 
+  "}" @indent.end
+  (#not-has-parent? @indent.end return_statement raise_statement))
+(dictionary_comprehension 
+  "}" @indent.end
+  (#not-has-parent? @indent.end return_statement raise_statement))
 
 (tuple_pattern ")" @indent.end)
 (list_pattern "]" @indent.end)
 
-
-(return_statement
-  [
-    (_) @indent.end
-    (_
-      [
-        (_)
-        ")"
-        "}"
-        "]"
-      ] @indent.end .)
-    (attribute 
-      attribute: (_) @indent.end)
-    (call
-      arguments: (_ ")" @indent.end))
-    "return" @indent.end
-  ] .)
 
 [
   ")"
