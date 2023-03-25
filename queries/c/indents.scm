@@ -90,10 +90,13 @@
 )
 
 (compound_statement "}" @indent.end)
+(initializer_list "}" @indent.end)
+(field_declaration_list "}" @indent.end)
+(enumerator_list "}" @indent.end)
+(declaration_list "}" @indent.end)
 
 [
   ")"
-  "}"
   (statement_identifier)
 ] @indent.branch
 

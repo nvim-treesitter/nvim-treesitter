@@ -1,6 +1,4 @@
 [
-  (import_from_statement)
-
   (parenthesized_expression)
   (generator_expression)
   (list_comprehension)
@@ -19,14 +17,17 @@
 ((list) @indent.align
  (#set! indent.open_delimiter "[")
  (#set! indent.close_delimiter "]")
+ (#set! indent.dedent_hanging_closing 1)
 )
 ((dictionary) @indent.align
  (#set! indent.open_delimiter "{")
  (#set! indent.close_delimiter "}")
+ (#set! indent.dedent_hanging_closing 1)
 )
 ((set) @indent.align
  (#set! indent.open_delimiter "{")
  (#set! indent.close_delimiter "}")
+ (#set! indent.dedent_hanging_closing 1)
 )
 
 ((match_statement) @indent.begin
@@ -69,14 +70,20 @@
 (ERROR "(" @indent.align (#set! indent.open_delimiter "(") (#set! indent.close_delimiter ")") . (_)) 
 ((argument_list) @indent.align
  (#set! indent.open_delimiter "(")
- (#set! indent.close_delimiter ")"))
+ (#set! indent.close_delimiter ")")
+ (#set! indent.dedent_hanging_closing 1))
 ((parameters) @indent.align
  (#set! indent.open_delimiter "(")
  (#set! indent.close_delimiter ")")
  (#set! indent.avoid_last_matching_next 1))
 ((tuple) @indent.align
  (#set! indent.open_delimiter "(")
- (#set! indent.close_delimiter ")"))
+ (#set! indent.close_delimiter ")")
+ (#set! indent.dedent_hanging_closing 1))
+((import_from_statement "(" _ ")") @indent.align 
+ (#set! indent.open_delimiter "(")
+ (#set! indent.close_delimiter ")")
+ (#set! indent.dedent_hanging_closing 1))
 
 (ERROR "[" @indent.align (#set! indent.open_delimiter "[") (#set! indent.close_delimiter "]") . (_)) 
 
@@ -91,22 +98,39 @@
 (tuple_pattern ")" @indent.end)
 (list_pattern "]" @indent.end)
 
-[
-    (return_statement)
-    (raise_statement)
-    (break_statement)
-    (continue_statement)
-] @indent.end
+((return_statement) @indent.end
+ (#set! indent.after 1))
+((raise_statement) @indent.end
+ (#set! indent.after 1))
+((break_statement) @indent.end
+ (#set! indent.after 1))
+((continue_statement) @indent.end
+ (#set! indent.after 1))
 
-[
-  ")"
-  "]"
-  "}"
-  (elif_clause)
-  (else_clause)
-  (except_clause)
-  (finally_clause)
-] @indent.branch
+(
+ (except_clause
+  "except" @indent.branch
+  (_) @indent.begin)
+)
+
+(
+ (finally_clause
+  "finally" @indent.branch
+  (_) @indent.begin)
+)
+
+(
+ (elif_clause
+  "elif" @indent.branch
+  consequence: (_) @indent.begin)
+)
+
+(
+ (else_clause
+  "else" @indent.branch
+  body: (_) @indent.begin
+ )
+)
 
 (string) @indent.auto
 

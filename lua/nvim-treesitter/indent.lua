@@ -45,7 +45,8 @@ local function find_delimiter(bufnr, node, delimiter)
       local trimmed_after_delim
       local escaped_delimiter = delimiter:gsub("[%-%.%+%[%]%(%)%$%^%%%?%*]", "%%%1")
       trimmed_after_delim, _ = line:sub(end_char[2] + 1):gsub("[%s" .. escaped_delimiter .. "]*", "")
-      return child, #trimmed_after_delim == 0
+      trimmed_before_delim, _ = line:sub(1, end_char[2] - 1):gsub("[%s" .. escaped_delimiter .. "]*", "")
+      return child, #trimmed_after_delim == 0, #trimmed_before_delim == 0
     end
   end
 end
@@ -145,8 +146,7 @@ function M.get_indent(lnum)
   end
 
   -- tracks to ensure multiple indent levels are not applied for same line
-  local is_start_processed_by_row = {}
-  local is_end_processed_by_row = {}
+  local is_processed_by_row = {}
 
   if q.indent.zero[node:id()] then
     return 0
@@ -179,24 +179,41 @@ function M.get_indent(lnum)
 
     local srow, _, erow = node:range()
 
-    local is_start_processed = false
-    local is_end_processed = false
+    local is_processed = false
 
-    if not is_end_processed_by_row[erow] and q.indent["end"][node:id()] and erow < lnum - 1 then
-      indent = indent - indent_size
-      is_end_processed = true
-    end
-
-    if
-      not is_start_processed_by_row[srow]
-      and ((q.indent.branch[node:id()] and srow == lnum - 1) or (q.indent.dedent[node:id()] and srow ~= lnum - 1))
+    if not is_processed_by_row[erow]
+       and (q.indent["end"][node:id()] and q.indent["end"][node:id()]["indent.after"] and erow < lnum - 1)
     then
-      indent = indent - indent_size
-      is_start_processed = true
+       --indent = math.max(indent - indent_size, 0)
+       indent = indent - indent_size
+       is_processed = true
     end
+    -- do not process indent, dedent if there's already an end
+    is_processed_by_row[srow] = is_processed_by_row[srow] or is_processed
+
+    if not is_processed_by_row[srow]
+       and (q.indent["end"][node:id()] and not q.indent["end"][node:id()]["indent.after"] and erow <= lnum - 1)
+    then
+       --indent = math.max(indent - indent_size, 0)
+       indent = indent - indent_size
+       is_processed = true
+    end
+    -- do not process indent, dedent if there's already an end
+    is_processed_by_row[srow] = is_processed_by_row[srow] or is_processed
+
+    if not is_processed_by_row[srow]
+       and ((q.indent.branch[node:id()] and srow <= lnum - 1 and erow >= lnum - 1) or
+            (q.indent.dedent[node:id()] and srow < lnum - 1 and erow >= lnum - 1))
+    then
+       --indent = math.max(indent - indent_size, 0)
+       indent = indent - indent_size
+       is_processed = true
+    end
+    -- process any remaining indent anyway, often branch blocks will be reindented in
+    -- chained conditionals
 
     -- do not indent for nodes that starts-and-ends on same line and starts on target line (lnum)
-    local should_process = not is_start_processed_by_row[srow]
+    local should_process = not is_processed_by_row[srow]
     local is_in_err = false
     if should_process then
       local parent = node:parent()
@@ -211,7 +228,7 @@ function M.get_indent(lnum)
       )
     then
       indent = indent + indent_size
-      is_start_processed = true
+      is_processed = true
     end
 
     if is_in_err and not q.indent.align[node:id()] then
@@ -231,16 +248,18 @@ function M.get_indent(lnum)
     -- do not indent for nodes that starts-and-ends on same line and starts on target line (lnum)
     if should_process and q.indent.align[node:id()] and (srow ~= erow or is_in_err) and (srow ~= lnum - 1) then
       local metadata = q.indent.align[node:id()]
-      local o_delim_node, o_is_last_in_line ---@type TSNode|nil, boolean|nil
-      local c_delim_node, c_is_last_in_line ---@type TSNode|nil, boolean|nil, boolean|nil
+      local o_delim_node, o_is_last_in_line, o_is_first_in_line  ---@type TSNode|nil, boolean|nil, boolean|nil
+      local c_delim_node, c_is_last_in_line, c_is_first_in_line ---@type TSNode|nil, boolean|nil, boolean|nil
       local indent_is_absolute = false
       if metadata["indent.open_delimiter"] then
-        o_delim_node, o_is_last_in_line = find_delimiter(bufnr, node, metadata["indent.open_delimiter"])
+        o_delim_node, o_is_last_in_line, o_is_first_in_line = 
+          find_delimiter(bufnr, node, metadata["indent.open_delimiter"])
       else
         o_delim_node = node
       end
       if metadata["indent.close_delimiter"] then
-        c_delim_node, c_is_last_in_line = find_delimiter(bufnr, node, metadata["indent.close_delimiter"])
+        c_delim_node, c_is_last_in_line, c_is_first_in_line =
+          find_delimiter(bufnr, node, metadata["indent.close_delimiter"])
       else
         c_delim_node = node
       end
@@ -259,7 +278,16 @@ function M.get_indent(lnum)
             if c_is_last_in_line then
               -- If current line is outside the range of a node marked with `@aligned_indent`
               -- Then its indent level shouldn't be affected by `@aligned_indent` node
-              if c_srow and c_srow < lnum - 1 then
+              if c_srow and (c_srow < lnum - 1)
+              then
+                indent = math.max(indent - indent_size, 0)
+              end
+            end
+            if c_is_first_in_line then
+              -- If current line is outside the range of a node marked with `@aligned_indent`
+              -- Then its indent level shouldn't be affected by `@aligned_indent` node
+              if c_srow and (c_srow <= lnum - 1 and metadata["indent.dedent_hanging_closing"])
+              then
                 indent = math.max(indent - indent_size, 0)
               end
             end
@@ -295,7 +323,7 @@ function M.get_indent(lnum)
             indent = indent
           end
         end
-        is_start_processed = true
+        is_processed = true
         if indent_is_absolute then
           -- don't allow further indenting by parent nodes, this is an absolute position
           return indent
@@ -303,8 +331,7 @@ function M.get_indent(lnum)
       end
     end
 
-    is_start_processed_by_row[srow] = is_start_processed_by_row[srow] or is_start_processed
-    is_end_processed_by_row[erow] = is_end_processed_by_row[erow] or is_end_processed
+    is_processed_by_row[srow] = is_processed_by_row[srow] or is_processed
 
     node = node:parent()
   end

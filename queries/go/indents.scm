@@ -15,18 +15,13 @@
   (struct_type)
 ] @indent.begin
 
-[
-  "}"
-] @indent.branch
-
 (const_declaration ")" @indent.branch)
 (import_spec_list ")" @indent.branch)
 (var_declaration ")" @indent.branch)
 
-[
- "}"
- ")"
-] @indent.end
+("}" @indent.end)
+(")" @indent.end
+ (#set! indent.after 1))
 
 (parameter_list ")" @indent.branch)
 
