@@ -88,6 +88,8 @@ describe("indent Python:", function()
     run:new_line("match_case.py", { on_line = 5, text = "pass", indent = 12 })
     run:new_line("match_case.py", { on_line = 10, text = "pass", indent = 8 })
     run:new_line("match_case.py", { on_line = 15, text = "pass", indent = 12 })
+    run:new_line("break_continue.py", { on_line = 4, text = "pass", indent = 8 })
+    run:new_line("break_continue.py", { on_line = 9, text = "pass", indent = 8 })
 
     for _, line in ipairs { 2, 5, 8, 11, 16, 21, 24, 27, 34, 39 } do
       run:new_line("return_dedent.py", { on_line = line, text = "x", indent = 0 })
