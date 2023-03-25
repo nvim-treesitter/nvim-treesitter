@@ -44,6 +44,10 @@
  (#set! indent.immediate 1))
 ((with_statement) @indent.begin
  (#set! indent.immediate 1))
+((match_statement) @indent.begin
+ (#set! indent.immediate 1))
+((case_clause) @indent.begin
+ (#set! indent.immediate 1))
 
 (if_statement
   condition: (parenthesized_expression) @indent.align
