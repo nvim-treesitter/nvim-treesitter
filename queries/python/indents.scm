@@ -82,11 +82,6 @@
 
 (ERROR "{" @indent.align (#set! indent.open_delimiter "{") (#set! indent.close_delimiter "}") . (_)) 
 
-[
-  (break_statement)
-  (continue_statement)
-] @indent.dedent
-
 (parenthesized_expression ")" @indent.end)
 (generator_expression ")" @indent.end)
 (list_comprehension "]" @indent.end)
