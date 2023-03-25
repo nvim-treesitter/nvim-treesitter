@@ -10,12 +10,6 @@
 ] @indent.begin
 
 (
- (parenthesized_expression) @indent.align
- (#set! indent.open_delimiter "(")
- (#set! indent.close_delimiter ")")
-)
-
-(
   ERROR
     "for" "(" @indent.begin ";" ";" ")" @indent.end)
 (
