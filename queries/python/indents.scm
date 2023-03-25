@@ -96,11 +96,12 @@
 (tuple_pattern ")" @indent.end)
 (list_pattern "]" @indent.end)
 
-
-((return_statement) @indent.end)
-((raise_statement) @indent.end)
-((break_statement) @indent.end)
-((continue_statement) @indent.end)
+[
+    (return_statement)
+    (raise_statement)
+    (break_statement)
+    (continue_statement)
+] @indent.end
 
 [
   ")"
