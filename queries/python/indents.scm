@@ -29,6 +29,10 @@
  (#set! indent.close_delimiter "}")
 )
 
+((match_statement) @indent.begin
+ (#set! indent.immediate 1))
+((case_clause) @indent.begin
+ (#set! indent.immediate 1))
 ((for_statement) @indent.begin
  (#set! indent.immediate 1))
 ((if_statement) @indent.begin
@@ -93,22 +97,10 @@
 (list_pattern "]" @indent.end)
 
 
-(return_statement
-  [
-    (_) @indent.end
-    (_
-      [
-        (_)
-        ")"
-        "}"
-        "]"
-      ] @indent.end .)
-    (attribute 
-      attribute: (_) @indent.end)
-    (call
-      arguments: (_ ")" @indent.end))
-    "return" @indent.end
-  ] .)
+((return_statement) @indent.end)
+((raise_statement) @indent.end)
+((break_statement) @indent.end)
+((continue_statement) @indent.end)
 
 [
   ")"

@@ -145,7 +145,8 @@ function M.get_indent(lnum)
   end
 
   -- tracks to ensure multiple indent levels are not applied for same line
-  local is_processed_by_row = {}
+  local is_start_processed_by_row = {}
+  local is_end_processed_by_row = {}
 
   if q.indent.zero[node:id()] then
     return 0
@@ -155,6 +156,7 @@ function M.get_indent(lnum)
     -- do 'autoindent' if not marked as @indent
     if
       not q.indent.begin[node:id()]
+      and not q.indent["end"][node:id()]
       and not q.indent.align[node:id()]
       and q.indent.auto[node:id()]
       and node:start() < lnum - 1
@@ -177,18 +179,28 @@ function M.get_indent(lnum)
 
     local srow, _, erow = node:range()
 
-    local is_processed = false
+    local is_start_processed = false
+    local is_end_processed = false
 
     if
-      not is_processed_by_row[srow]
-      and ((q.indent.branch[node:id()] and srow == lnum - 1) or (q.indent.dedent[node:id()] and srow ~= lnum - 1))
+      not is_end_processed_by_row[erow]
+      and q.indent["end"][node:id()] and erow < lnum - 1
     then
       indent = indent - indent_size
-      is_processed = true
+      is_end_processed = true
+    end
+
+    if
+      not is_start_processed_by_row[srow]
+      and ((q.indent.branch[node:id()] and srow == lnum - 1) or
+           (q.indent.dedent[node:id()] and srow ~= lnum - 1))
+    then
+      indent = indent - indent_size
+      is_start_processed = true
     end
 
     -- do not indent for nodes that starts-and-ends on same line and starts on target line (lnum)
-    local should_process = not is_processed_by_row[srow]
+    local should_process = not is_start_processed_by_row[srow]
     local is_in_err = false
     if should_process then
       local parent = node:parent()
@@ -203,7 +215,7 @@ function M.get_indent(lnum)
       )
     then
       indent = indent + indent_size
-      is_processed = true
+      is_start_processed = true
     end
 
     if is_in_err and not q.indent.align[node:id()] then
@@ -287,7 +299,7 @@ function M.get_indent(lnum)
             indent = indent
           end
         end
-        is_processed = true
+        is_start_processed = true
         if indent_is_absolute then
           -- don't allow further indenting by parent nodes, this is an absolute position
           return indent
@@ -295,7 +307,8 @@ function M.get_indent(lnum)
       end
     end
 
-    is_processed_by_row[srow] = is_processed_by_row[srow] or is_processed
+    is_start_processed_by_row[srow] = is_start_processed_by_row[srow] or is_start_processed
+    is_end_processed_by_row[erow] = is_end_processed_by_row[erow] or is_end_processed
 
     node = node:parent()
   end
