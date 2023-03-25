@@ -61,6 +61,7 @@ local get_indents = tsutils.memoize_by_buf_tick(function(bufnr, root, lang)
       ignore = {},
       align = {},
       zero = {},
+      ["follow-parent"] = {},
     },
   }
 
@@ -176,6 +177,14 @@ function M.get_indent(lnum)
     end
 
     local srow, _, erow = node:range()
+
+    if
+      node:parent()
+      and (q.indent["follow-parent"][node:id()] and erow < lnum - 1 )
+      and (node:parent():start() ~= srow)
+    then
+      return vim.fn.indent(node:parent():start() + 1)
+    end
 
     local is_processed = false
 
