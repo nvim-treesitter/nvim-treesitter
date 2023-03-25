@@ -182,18 +182,14 @@ function M.get_indent(lnum)
     local is_start_processed = false
     local is_end_processed = false
 
-    if
-      not is_end_processed_by_row[erow]
-      and q.indent["end"][node:id()] and erow < lnum - 1
-    then
+    if not is_end_processed_by_row[erow] and q.indent["end"][node:id()] and erow < lnum - 1 then
       indent = indent - indent_size
       is_end_processed = true
     end
 
     if
       not is_start_processed_by_row[srow]
-      and ((q.indent.branch[node:id()] and srow == lnum - 1) or
-           (q.indent.dedent[node:id()] and srow ~= lnum - 1))
+      and ((q.indent.branch[node:id()] and srow == lnum - 1) or (q.indent.dedent[node:id()] and srow ~= lnum - 1))
     then
       indent = indent - indent_size
       is_start_processed = true

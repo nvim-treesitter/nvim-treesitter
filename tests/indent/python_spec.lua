@@ -102,6 +102,5 @@ describe("indent Python:", function()
     run:new_line("raise_dedent.py", { on_line = 2, text = "x", indent = 0 })
     run:new_line("raise_dedent.py", { on_line = 7, text = "x", indent = 0 })
     run:new_line("raise_dedent.py", { on_line = 14, text = "x", indent = 0 })
-    
   end)
 end)
