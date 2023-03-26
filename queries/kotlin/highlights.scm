@@ -217,9 +217,12 @@
 
 ;;; Literals
 
-(comment) @comment @spell
+[
+  (line_comment)
+  (multiline_comment)
+] @comment @spell
 
-((comment) @comment.documentation
+((multiline_comment) @comment.documentation
   (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
 
 (shebang_line) @preproc
@@ -240,19 +243,16 @@
 
 (character_literal) @character
 
-[
-	(line_string_literal)
-	(multi_line_string_literal)
-] @string
+(string_literal) @string
 
 ; NOTE: Escapes not allowed in multi-line strings
-(line_string_literal (character_escape_seq) @string.escape)
+(character_literal (character_escape_seq) @string.escape)
 
 ; There are 3 ways to define a regex
 ;    - "[abc]?".toRegex()
 (call_expression
 	(navigation_expression
-		([(line_string_literal) (multi_line_string_literal)] @string.regex)
+		((string_literal) @string.regex)
 		(navigation_suffix
 			((simple_identifier) @_function
 			(#eq? @_function "toRegex")))))
@@ -264,7 +264,7 @@
 	(call_suffix
 		(value_arguments
 			(value_argument
-				[ (line_string_literal) (multi_line_string_literal) ] @string.regex))))
+				(string_literal) @string.regex))))
 
 ;    - Regex.fromLiteral("[abc]?")
 (call_expression
@@ -277,7 +277,7 @@
 	(call_suffix
 		(value_arguments
 			(value_argument
-				[ (line_string_literal) (multi_line_string_literal) ] @string.regex))))
+				(string_literal) @string.regex))))
 
 ;;; Keywords
 
@@ -413,18 +413,10 @@
 ] @punctuation.delimiter
 
 ; NOTE: `interpolated_identifier`s can be highlighted in any way
-(line_string_literal
+(string_literal
 	"$" @punctuation.special
 	(interpolated_identifier) @none @variable)
-(line_string_literal
-	"${" @punctuation.special
-	(interpolated_expression) @none
-	"}" @punctuation.special)
-
-(multi_line_string_literal
-    "$" @punctuation.special
-    (interpolated_identifier) @none @variable)
-(multi_line_string_literal
+(string_literal
 	"${" @punctuation.special
 	(interpolated_expression) @none
 	"}" @punctuation.special)
