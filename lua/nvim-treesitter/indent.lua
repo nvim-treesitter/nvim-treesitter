@@ -42,7 +42,7 @@ local function find_delimiter(bufnr, node, delimiter)
       local linenr = child:start()
       local line = vim.api.nvim_buf_get_lines(bufnr, linenr, linenr + 1, false)[1]
       local end_char = { child:end_() }
-      local trimmed_after_delim
+      local trimmed_after_delim, trimmed_before_delim
       local escaped_delimiter = delimiter:gsub("[%-%.%+%[%]%(%)%$%^%%%?%*]", "%%%1")
       trimmed_after_delim, _ = line:sub(end_char[2] + 1):gsub("[%s" .. escaped_delimiter .. "]*", "")
       trimmed_before_delim, _ = line:sub(1, end_char[2] - 1):gsub("[%s" .. escaped_delimiter .. "]*", "")
@@ -182,31 +182,37 @@ function M.get_indent(lnum)
     local is_processed = false
 
     local did_end = false
-    if not is_processed_by_row[erow]
-       and (q.indent["end"][node:id()] and q.indent["end"][node:id()]["indent.after"] and erow < lnum - 1)
+    if
+      not is_processed_by_row[erow]
+      and (q.indent["end"][node:id()] and q.indent["end"][node:id()]["indent.after"] and erow < lnum - 1)
     then
-       --indent = math.max(indent - indent_size, 0)
-       indent = indent - indent_size
-       is_processed = true
-       did_end = true
+      --indent = math.max(indent - indent_size, 0)
+      indent = indent - indent_size
+      is_processed = true
+      did_end = true
     end
 
-    if not is_processed_by_row[srow]
-       and (q.indent["end"][node:id()] and not q.indent["end"][node:id()]["indent.after"] and erow <= lnum - 1)
+    if
+      not is_processed_by_row[srow]
+      and (q.indent["end"][node:id()] and not q.indent["end"][node:id()]["indent.after"] and erow <= lnum - 1)
     then
-       --indent = math.max(indent - indent_size, 0)
-       indent = indent - indent_size
-       is_processed = true
-       did_end = true
+      --indent = math.max(indent - indent_size, 0)
+      indent = indent - indent_size
+      is_processed = true
+      did_end = true
     end
 
-    if not is_processed_by_row[srow] and not did_end
-       and ((q.indent.branch[node:id()] and srow <= lnum - 1 and erow >= lnum - 1) or
-            (q.indent.dedent[node:id()] and srow < lnum - 1 and erow >= lnum - 1))
+    if
+      not is_processed_by_row[srow]
+      and not did_end
+      and (
+        (q.indent.branch[node:id()] and srow <= lnum - 1 and erow >= lnum - 1)
+        or (q.indent.dedent[node:id()] and srow < lnum - 1 and erow >= lnum - 1)
+      )
     then
-       --indent = math.max(indent - indent_size, 0)
-       indent = indent - indent_size
-       is_processed = true
+      --indent = math.max(indent - indent_size, 0)
+      indent = indent - indent_size
+      is_processed = true
     end
     -- process any remaining indent anyway, often branch blocks will be reindented in
     -- chained conditionals
@@ -247,12 +253,11 @@ function M.get_indent(lnum)
     -- do not indent for nodes that starts-and-ends on same line and starts on target line (lnum)
     if should_process and q.indent.align[node:id()] and (srow ~= erow or is_in_err) and (srow ~= lnum - 1) then
       local metadata = q.indent.align[node:id()]
-      local o_delim_node, o_is_last_in_line, o_is_first_in_line  ---@type TSNode|nil, boolean|nil, boolean|nil
+      local o_delim_node, o_is_last_in_line ---@type TSNode|nil, boolean|nil
       local c_delim_node, c_is_last_in_line, c_is_first_in_line ---@type TSNode|nil, boolean|nil, boolean|nil
       local indent_is_absolute = false
       if metadata["indent.open_delimiter"] then
-        o_delim_node, o_is_last_in_line, o_is_first_in_line = 
-          find_delimiter(bufnr, node, metadata["indent.open_delimiter"])
+        o_delim_node, o_is_last_in_line, _ = find_delimiter(bufnr, node, metadata["indent.open_delimiter"])
       else
         o_delim_node = node
       end
@@ -277,16 +282,14 @@ function M.get_indent(lnum)
             if c_is_last_in_line then
               -- If current line is outside the range of a node marked with `@aligned_indent`
               -- Then its indent level shouldn't be affected by `@aligned_indent` node
-              if c_srow and (c_srow < lnum - 1)
-              then
+              if c_srow and (c_srow < lnum - 1) then
                 indent = math.max(indent - indent_size, 0)
               end
             end
             if c_is_first_in_line then
               -- If current line is outside the range of a node marked with `@aligned_indent`
               -- Then its indent level shouldn't be affected by `@aligned_indent` node
-              if c_srow and (c_srow <= lnum - 1 and metadata["indent.dedent_hanging_closing"])
-              then
+              if c_srow and (c_srow <= lnum - 1 and metadata["indent.dedent_hanging_closing"]) then
                 indent = math.max(indent - indent_size, 0)
               end
             end
