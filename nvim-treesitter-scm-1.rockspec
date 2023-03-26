@@ -29,6 +29,7 @@ build = {
   },
   copy_directories = {
     'autoload',
+    'doc',
     'plugin',
     'queries'
   }
