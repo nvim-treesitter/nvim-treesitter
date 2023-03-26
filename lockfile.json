@@ -122,6 +122,9 @@
   "fennel": {
     "revision": "517195970428aacca60891b050aa53eabf4ba78d"
   },
+  "firrtl": {
+    "revision": "58e9655caa6b6d0ef8dc0e6bd3d8e060beb6b40d"
+  },
   "fish": {
     "revision": "f9176908c9eb2e11eb684d79e1d00f3b29bd65c9"
   },
