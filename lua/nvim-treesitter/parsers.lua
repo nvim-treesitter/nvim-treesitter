@@ -1070,6 +1070,14 @@ list.poe_filter = {
   experimental = true,
 }
 
+list.pony = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-pony",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@amaanq", "@mfelsche" },
+}
+
 list.prisma = {
   install_info = {
     url = "https://github.com/victorhqc/tree-sitter-prisma",
