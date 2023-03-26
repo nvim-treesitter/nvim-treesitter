@@ -181,15 +181,15 @@ function M.get_indent(lnum)
 
     local is_processed = false
 
+    local did_end = false
     if not is_processed_by_row[erow]
        and (q.indent["end"][node:id()] and q.indent["end"][node:id()]["indent.after"] and erow < lnum - 1)
     then
        --indent = math.max(indent - indent_size, 0)
        indent = indent - indent_size
        is_processed = true
+       did_end = true
     end
-    -- do not process indent, dedent if there's already an end
-    is_processed_by_row[srow] = is_processed_by_row[srow] or is_processed
 
     if not is_processed_by_row[srow]
        and (q.indent["end"][node:id()] and not q.indent["end"][node:id()]["indent.after"] and erow <= lnum - 1)
@@ -197,11 +197,10 @@ function M.get_indent(lnum)
        --indent = math.max(indent - indent_size, 0)
        indent = indent - indent_size
        is_processed = true
+       did_end = true
     end
-    -- do not process indent, dedent if there's already an end
-    is_processed_by_row[srow] = is_processed_by_row[srow] or is_processed
 
-    if not is_processed_by_row[srow]
+    if not is_processed_by_row[srow] and not did_end
        and ((q.indent.branch[node:id()] and srow <= lnum - 1 and erow >= lnum - 1) or
             (q.indent.dedent[node:id()] and srow < lnum - 1 and erow >= lnum - 1))
     then

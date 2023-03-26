@@ -15,8 +15,8 @@
 ] @indent.begin
 
 [
-  (elif_clause)
-  (else_clause)
+  "else"
+  "elif"
 ] @indent.branch
 
 [

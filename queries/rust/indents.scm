@@ -39,6 +39,8 @@
   body: (field_declaration_list "}" @indent.end))
 (trait_item
   body: (declaration_list "}" @indent.end))
+(function_item
+ body: (block "}" @indent.end))
 
 (impl_item (where_clause) @indent.dedent)
 
@@ -46,9 +48,11 @@
   "where"
   ")"
   "]"
-  "}"
 ] @indent.branch
-(impl_item (declaration_list) @indent.branch)
+(impl_item (declaration_list "{" @indent.branch))
+
+
+("}" @indent.end)
 
 [
   (line_comment)

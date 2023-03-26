@@ -38,12 +38,7 @@
 (object "}" @indent.end)
 (statement_block "}" @indent.end)
 
-[
-  (arguments (object))
-  ")"
-  "}"
-  "]"
-] @indent.branch
+(")" @indent.branch)
 (statement_block "{" @indent.branch)
 
 (parenthesized_expression ("(" (_) ")" @indent.end))
