@@ -415,6 +415,14 @@ list.fennel = {
   maintainers = { "@TravonteD" },
 }
 
+list.firrtl = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-firrtl",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.fish = {
   install_info = {
     url = "https://github.com/ram02z/tree-sitter-fish",
