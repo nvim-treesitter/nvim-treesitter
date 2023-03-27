@@ -240,6 +240,12 @@ Used for XML-like tags.
 
 ### Locals
 
+Note: pay specific attention to the captures here as they are a bit different to
+those listed in the upstream [Local Variables
+docs](https://tree-sitter.github.io/tree-sitter/syntax-highlighting#local-variables).
+Some of these docs didn't exist when `nvim-treesitter` was created and the
+upstream captures are more limiting than what we have here.
+
 ```scheme
 @definition            ; various definitions
 @definition.constant   ; constants
