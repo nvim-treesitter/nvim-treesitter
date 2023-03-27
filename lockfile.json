@@ -12,7 +12,7 @@
     "revision": "a1f66bf72ed68b87f779bce9a52e5c6521fc867e"
   },
   "awk": {
-    "revision": "e559793754c60c2cdf00cbb0409842d75f0a41dc"
+    "revision": "b8e81f62109e65adca1ab51ab9d414411db5a37f"
   },
   "bash": {
     "revision": "b338fa9f4807b9e0336cd4dde04948a8c324a4cf"
@@ -165,7 +165,7 @@
     "revision": "ae79782c00656945db69641378e688cdb78d52c1"
   },
   "glimmer": {
-    "revision": "bc1c685aa6a7caf9e58c5746ab386a1e673eb9af"
+    "revision": "16c3786e1a2c87a236c823d1a8859574778a3436"
   },
   "glsl": {
     "revision": "e2c2214045de2628b81089b1a739962f59654558"
@@ -195,7 +195,7 @@
     "revision": "f0a9e6207a8c84bbd11143c8eb0c6cf70dc6d8b4"
   },
   "haskell": {
-    "revision": "fb3c19e8e307acaf9336ab88330fd386ce731638"
+    "revision": "98fc7f59049aeb713ab9b72a8ff25dcaaef81087"
   },
   "hcl": {
     "revision": "0ff887f2a60a147452d52db060de6b42f42f1441"
@@ -459,7 +459,7 @@
     "revision": "52e122ae68b316d3aa960a0a422d3645ba717f42"
   },
   "swift": {
-    "revision": "4cf4bb67c27f5c5a75f634fe941c588660e69ab3"
+    "revision": "8c8412a54d97d6f96a4bf4ecb76cba4808952ed5"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -510,7 +510,7 @@
     "revision": "14e47600afef0affffcbfbe1543381b1ac8fbc5c"
   },
   "v": {
-    "revision": "66cf9d3086fb5ecc827cb32c64c5d812ab17d2c6"
+    "revision": "1828a1e6611703371039fdefba955018ac570105"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
