@@ -8,7 +8,7 @@ local utils = require "nvim-treesitter.utils"
 local function cmdpath(p)
   if vim.opt.shellslash:get() then
     local r = p:gsub("/", "\\")
-    return r
+    return fn.shellescape(r)
   else
     return p
   end
