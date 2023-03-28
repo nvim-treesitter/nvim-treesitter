@@ -18,12 +18,12 @@
  (#set! "priority" 105) ; Higher priority to mark the whole sexpr as a comment
 )
 (kwd_lit) @symbol
-(str_lit) @string
+(str_lit) @string @spell
 (num_lit) @number
 (char_lit) @character
 (bool_lit) @boolean
 (nil_lit) @constant.builtin
-(comment) @comment
+(comment) @comment @spell
 (regex_lit) @string.regex
 
 ["'" "`"] @string.escape
