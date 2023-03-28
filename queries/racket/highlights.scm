@@ -20,6 +20,7 @@
 [(string)
  (here_string)
  (byte_string)] @string
+(string) @spell
 
 (escape_sequence) @string.escape
 
@@ -30,6 +31,9 @@
 [(comment)
  (block_comment)
  (sexp_comment)] @comment
+
+[(comment)
+ (block_comment)] @spell
 
 ;; symbol ;;
 

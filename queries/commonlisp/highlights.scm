@@ -60,7 +60,7 @@
   package: (_) @namespace)
 "cl" @namespace
 
-(str_lit) @string
+(str_lit) @string @spell
 
 (num_lit) @number
 
@@ -68,7 +68,7 @@
 
 (nil_lit) @constant.builtin
 
-(comment) @comment
+(comment) @comment @spell
 
 ;; dynamic variables
 ((sym_lit) @variable.builtin
@@ -90,7 +90,7 @@
 
 ["(" ")"] @punctuation.bracket
 
-(block_comment) @comment
+(block_comment) @comment @spell
 
 
 (with_clause
