@@ -204,7 +204,7 @@
     "revision": "2e1348c3cf2c9323e87c2744796cf3f3868aa82a"
   },
   "help": {
-    "revision": "8f75ef3ec86bc315d5fdb939899b397289389181"
+    "revision": "c4e23d265f022dcd51053c40d47cd06e7756a347"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
@@ -483,7 +483,7 @@
     "revision": "a233ebe360a73a92c50978e5c4e9e471bc59ff42"
   },
   "tlaplus": {
-    "revision": "6d2ec894aef843fc89312c904e20c5f555aec4e3"
+    "revision": "7ba226cf85280c7917d082940022006e6a3b7b6f"
   },
   "todotxt": {
     "revision": "0207f6a4ab6aeafc4b091914d31d8235049a2578"
@@ -510,7 +510,7 @@
     "revision": "14e47600afef0affffcbfbe1543381b1ac8fbc5c"
   },
   "v": {
-    "revision": "76ce05a3fbf9b8283972b2d81412071ea1a19552"
+    "revision": "4cd190d1aaced458e8f1548e11b3beae5e4ea806"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -519,7 +519,7 @@
     "revision": "4457145e795b363f072463e697dfe2f6973c9a52"
   },
   "vhs": {
-    "revision": "54fe7c05dfa2b9e100572496531e15c9bec86343"
+    "revision": "621457c5c6efe471b601edb5a42191824f304b41"
   },
   "vim": {
     "revision": "e39a7bbcfdcfc7900629962b785c7e14503ae590"
