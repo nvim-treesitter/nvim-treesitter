@@ -177,7 +177,7 @@
 ; some from:
 ; - https://github.com/godotengine/godot-vscode-plugin/blob/0636797c22bf1e23a41fd24d55cdb9be62e0c992/syntaxes/GDScript.tmLanguage.json
 
-;; Bulitin Annotations
+;; Built-in Annotations
 
 ((annotation "@" @attribute (identifier) @attribute)
  (#any-of? @attribute
