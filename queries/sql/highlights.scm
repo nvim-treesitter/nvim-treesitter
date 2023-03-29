@@ -245,6 +245,7 @@
   (keyword_jsonb)
   (keyword_xml)
   (keyword_bytea)
+  (keyword_enum)
   (keyword_date)
   (keyword_datetime)
   (keyword_timestamp)
