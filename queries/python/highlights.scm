@@ -247,11 +247,11 @@
 [
   "def"
   "lambda"
+  "class"
 ] @keyword.function
 
 [
   "assert"
-  "class"
   "exec"
   "global"
   "nonlocal"
@@ -336,7 +336,7 @@
 ((class_definition
   (block
     (function_definition
-      name: (identifier) @constructor)))
+      name: (identifier) @constructor.function)))
  (#any-of? @constructor "__new__" "__init__"))
 
 ;; Error
