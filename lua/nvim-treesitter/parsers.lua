@@ -894,6 +894,7 @@ list.markdown_inline = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@MDeiml" },
+  filetype = "markdown",
   readme_name = "markdown_inline (needed for full highlighting)",
   experimental = true,
 }
