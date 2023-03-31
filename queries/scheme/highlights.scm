@@ -5,9 +5,9 @@
 (number) @number
 (character) @character
 (boolean) @boolean
-(string) @string
+(string) @string @spell
 [(comment)
- (block_comment)] @comment
+ (block_comment)] @comment @spell
 
 ;; highlight for datum comment
 ;; copied from ../clojure/highlights.scm

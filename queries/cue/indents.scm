@@ -1,21 +1,21 @@
 [
   (import_spec_list)
   (field)
-] @indent
+] @indent.begin
 
 [
   "}"
   "]"
   ")"
-] @indent_end
+] @indent.end
 
-[ "{" "}" ] @branch
+[ "{" "}" ] @indent.branch
 
-[ "[" "]" ] @branch
+[ "[" "]" ] @indent.branch
 
-[ "(" ")" ] @branch
+[ "(" ")" ] @indent.branch
 
 [
   (ERROR)
   (comment)
-] @auto
+] @indent.auto

@@ -12,12 +12,12 @@
   (match_body)
   (set_body)
   (get_body)
-] @indent
+] @indent.begin
 
 [
   (elif_clause)
   (else_clause)
-] @branch
+] @indent.branch
 
 [
  (string)
@@ -26,46 +26,46 @@
  (dictionary)
  (parenthesized_expression)
  (ERROR)
-] @auto
+] @indent.auto
 
 [
   (pass_statement)
   (continue_statement)
   (break_statement)
   (return_statement)
-] @dedent
+] @indent.dedent
 
 [
   (ERROR "[")
   (ERROR "(")
   (ERROR "{")
-] @indent
+] @indent.begin
 
 ;; This only works with expanded tabs.
-; ((parameters) @aligned_indent (#set! "delimiter" "()"))
-; ((arguments)  @aligned_indent (#set! "delimiter" "()"))
+; ((parameters) @indent.align (#set! indent.open_delimiter "(") (#set! indent.close_delimiter ")"))
+; ((arguments)  @indent.align (#set! indent.open_delimiter "(") (#set! indent.close_delimiter ")"))
 
 ;; The following queries either do not agree with the current body parsing or are
 ;; attempted workarounds. Specifically as the last statement of a body. Opening
 ;; a new line in between statements works well.
 ;;
-;; The overall experience is poor, so I've opted for @auto.
+;; The overall experience is poor, so I've opted for @indent.auto.
 ;;
 ;; The gdscript parser will need to be patched to accommodate more interactive
 ;; edits. As far as I can tell the parser greedily consumes whitespace
 ;; as a zero-width token which causes trouble when inserting indents.
 
 ;; This indents correctly with tabs.
-; (arguments) @indent
-; (parameters) @indent
-; (array) @indent
-; (dictionary) @indent
-; (parenthesized_expression) @indent
+; (arguments) @indent.begin
+; (parameters) @indent.begin
+; (array) @indent.begin
+; (dictionary) @indent.begin
+; (parenthesized_expression) @indent.begin
 
 ;; Partial workaround for when the cursor is on the bracket character and a newline
 ;; is created with <o>. Without this the newline is opened with extra
 ;; indentation.
-; (body (_ (array "]" @indent_end) ) _)
+; (body (_ (array "]" @indent.end) ) _)
 ;; Problematic behaviors occur at the last statement of a body.
 ;; with @dedent:
 ;;   - [ | ] i<CR> will dedent ] to 0.
@@ -75,4 +75,4 @@
 ;;   - [ | ] i<CR> same
 ;;   - [
 ;;   ]| o will open new line with extra indent.
-;(body (_ (array "]" @auto) ) .)
+;(body (_ (array "]" @indent.auto) ) .)

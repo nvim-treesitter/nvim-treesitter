@@ -19,22 +19,28 @@
 
   (lambda)
   (function_definition)
-] @indent
+] @indent.begin
 
 (if_statement
-  condition: (parenthesized_expression) @aligned_indent
-  (#set! "delimiter" "()")
+  condition: (parenthesized_expression) @indent.align
+  (#set! indent.open_delimiter "(")
+  (#set! indent.close_delimiter ")")
 )
-((ERROR "(" . (_)) @aligned_indent
- (#set! "delimiter" "()"))
-((argument_list) @aligned_indent
- (#set! "delimiter" "()"))
-((argument_list) @aligned_indent
- (#set! "delimiter" "()"))
-((parameters) @aligned_indent
- (#set! "delimiter" "()"))
-((tuple) @aligned_indent
- (#set! "delimiter" "()"))
+((ERROR "(" . (_)) @indent.align
+ (#set! indent.open_delimiter "(")
+ (#set! indent.close_delimiter ")"))
+((argument_list) @indent.align
+ (#set! indent.open_delimiter "(")
+ (#set! indent.close_delimiter ")"))
+((argument_list) @indent.align
+ (#set! indent.open_delimiter "(")
+ (#set! indent.close_delimiter ")"))
+((parameters) @indent.align
+ (#set! indent.open_delimiter "(")
+ (#set! indent.close_delimiter ")"))
+((tuple) @indent.align
+ (#set! indent.open_delimiter "(")
+ (#set! indent.close_delimiter ")"))
 
 [
   ")"
@@ -42,6 +48,6 @@
   "}"
   (elif_clause)
   (else_clause)
-] @branch
+] @indent.branch
 
-(string) @auto
+(string) @indent.auto

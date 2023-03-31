@@ -1,69 +1,69 @@
 ; Control flow {{{
-(if_expression) @indent
-"then" @branch
-"else" @branch
+(if_expression) @indent.begin
+"then" @indent.branch
+"else" @indent.branch
 
-(while_expression) @indent
-"do" @branch
+(while_expression) @indent.begin
+"do" @indent.branch
 
-(for_expression) @indent
-"to" @branch
+(for_expression) @indent.begin
+"to" @indent.branch
 ; }}}
 
 ; Class {{{
-(class_declaration) @indent
-(class_declaration "}" @indent_end)
+(class_declaration) @indent.begin
+(class_declaration "}" @indent.end)
 
-(class_type) @indent
-(class_type "}" @indent_end)
+(class_type) @indent.begin
+(class_type "}" @indent.end)
 ; }}}
 
 ; Groups {{{
-(let_expression) @indent
-"in" @branch
-"end" @branch
-(let_expression "end" @indent_end)
+(let_expression) @indent.begin
+"in" @indent.branch
+"end" @indent.branch
+(let_expression "end" @indent.end)
 
-(sequence_expression) @indent
-")" @branch
-(sequence_expression ")" @indent_end)
+(sequence_expression) @indent.begin
+")" @indent.branch
+(sequence_expression ")" @indent.end)
 ; }}}
 
 ; Functions and methods {{{
-(parameters) @indent
-(parameters ")" @indent_end)
+(parameters) @indent.begin
+(parameters ")" @indent.end)
 
-(function_call) @indent
-(method_call) @indent
-")" @branch
+(function_call) @indent.begin
+(method_call) @indent.begin
+")" @indent.branch
 
-(function_declaration) @indent
-(primitive_declaration) @indent
-(method_declaration) @indent
+(function_declaration) @indent.begin
+(primitive_declaration) @indent.begin
+(method_declaration) @indent.begin
 ; }}}
 
 ; Values and expressions {{{
-(array_value) @indent
-"]" @branch
-(array_value "]" @indent_end)
+(array_value) @indent.begin
+"]" @indent.branch
+(array_value "]" @indent.end)
 
-(array_expression) @indent
-"of" @branch
+(array_expression) @indent.begin
+"of" @indent.branch
 
-(record_expression) @indent
-"}" @branch
-(record_expression "}" @indent_end)
+(record_expression) @indent.begin
+"}" @indent.branch
+(record_expression "}" @indent.end)
 
-(record_type) @indent
-"}" @branch
-(record_type "}" @indent_end)
+(record_type) @indent.begin
+"}" @indent.branch
+(record_type "}" @indent.end)
 
-(variable_declaration) @indent
+(variable_declaration) @indent.begin
 ; }}}
 
 ; Misc{{{
-(comment) @ignore
-(string_literal) @ignore
+(comment) @indent.ignore
+(string_literal) @indent.ignore
 ; }}}
 
 ; vim: sw=2 foldmethod=marker

@@ -11,24 +11,26 @@
   (struct)
   (struct_shorthand)
   (union)
-] @indent
+] @indent.begin
 
-((struct_shorthand (property)) @aligned_indent
-  (#set! "delimiter" "()"))
+((struct_shorthand (property)) @indent.align
+  (#set! indent.open_delimiter "(")
+  (#set! indent.close_delimiter ")"))
 
-((const_list (const_value)) @aligned_indent
-  (#set! "delimiter" "[]"))
+((const_list (const_value)) @indent.align
+  (#set! indent.open_delimiter "(")
+  (#set! indent.close_delimiter ")"))
 
 [
   "}"
   ")"
-] @indent_end
+] @indent.end
 
-[ "{" "}" ] @branch
+[ "{" "}" ] @indent.branch
 
-[ "(" ")" ] @branch
+[ "(" ")" ] @indent.branch
 
 [
   (ERROR)
   (comment)
-] @auto
+] @indent.auto

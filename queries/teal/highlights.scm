@@ -2,7 +2,11 @@
 ;; Primitives
 (boolean) @boolean
 (comment) @comment @spell
-(shebang_comment) @comment
+((comment) @comment.documentation
+  (#lua-match? @comment.documentation "^[-][-][-]"))
+((comment) @comment.documentation
+  (#lua-match? @comment.documentation "^[-][-](%s?)@"))
+(shebang_comment) @preproc
 (identifier) @variable
 ((identifier) @variable.builtin
   (#eq? @variable.builtin "self"))

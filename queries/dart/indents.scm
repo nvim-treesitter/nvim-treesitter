@@ -10,7 +10,7 @@
   (list_literal)
   (return_statement)
   (arguments)
-] @indent
+] @indent.begin
 
 [
   "("
@@ -19,13 +19,13 @@
   "}"
   "["
   "]"
-] @branch
+] @indent.branch
 
 [
  "}"
-] @indent_end
+] @indent.end
 
 ; this one is for dedenting the else block
-(if_statement (block) @branch)
+(if_statement (block) @indent.branch)
 
-(comment) @ignore
+(comment) @indent.ignore

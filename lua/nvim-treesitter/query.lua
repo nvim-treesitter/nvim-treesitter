@@ -1,5 +1,5 @@
 local api = vim.api
-local tsq = require "vim.treesitter.query"
+local ts = require "nvim-treesitter.compat"
 local tsrange = require "nvim-treesitter.tsrange"
 local utils = require "nvim-treesitter.utils"
 local parsers = require "nvim-treesitter.parsers"
@@ -105,7 +105,7 @@ do
   ---@param query_name string
   function M.get_query(lang, query_name)
     if cache[lang][query_name] == nil then
-      cache[lang][query_name] = tsq.get_query(lang, query_name)
+      cache[lang][query_name] = ts.get_query(lang, query_name)
     end
 
     return cache[lang][query_name]
@@ -213,6 +213,24 @@ local function prepare_query(bufnr, query_name, root, root_lang)
     }
 end
 
+-- Given a path (i.e. a List(String)) this functions inserts value at path
+---@param object any
+---@param path string[]
+---@param value any
+function M.insert_to_path(object, path, value)
+  local curr_obj = object
+
+  for index = 1, (#path - 1) do
+    if curr_obj[path[index]] == nil then
+      curr_obj[path[index]] = {}
+    end
+
+    curr_obj = curr_obj[path[index]]
+  end
+
+  curr_obj[path[#path]] = value
+end
+
 ---@param query Query
 ---@param bufnr integer
 ---@param start_row integer
@@ -230,24 +248,6 @@ function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
     return t
   end
 
-  -- Given a path (i.e. a List(String)) this functions inserts value at path
-  ---@param object any
-  ---@param path string[]
-  ---@param value any
-  local function insert_to_path(object, path, value)
-    local curr_obj = object
-
-    for index = 1, (#path - 1) do
-      if curr_obj[path[index]] == nil then
-        curr_obj[path[index]] = {}
-      end
-
-      curr_obj = curr_obj[path[index]]
-    end
-
-    curr_obj[path[#path]] = value
-  end
-
   local matches = query:iter_matches(qnode, bufnr, start_row, end_row)
 
   local function iterator()
@@ -260,9 +260,9 @@ function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
         local name = query.captures[id] -- name of the capture in the query
         if name ~= nil then
           local path = split(name .. ".node")
-          insert_to_path(prepared_match, path, node)
+          M.insert_to_path(prepared_match, path, node)
           local metadata_path = split(name .. ".metadata")
-          insert_to_path(prepared_match, metadata_path, metadata[id])
+          M.insert_to_path(prepared_match, metadata_path, metadata[id])
         end
       end
 
@@ -273,10 +273,10 @@ function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
         for _, pred in pairs(preds) do
           -- functions
           if pred[1] == "set!" and type(pred[2]) == "string" then
-            insert_to_path(prepared_match, split(pred[2]), pred[3])
+            M.insert_to_path(prepared_match, split(pred[2]), pred[3])
           end
           if pred[1] == "make-range!" and type(pred[2]) == "string" and #pred == 4 then
-            insert_to_path(
+            M.insert_to_path(
               prepared_match,
               split(pred[2] .. ".node"),
               tsrange.TSRange.from_nodes(bufnr, match[pred[3]], match[pred[4]])

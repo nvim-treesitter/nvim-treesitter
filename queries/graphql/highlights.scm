@@ -111,9 +111,9 @@
 ;---------
 
 (description
-  (string_value) @comment)
+  (string_value) @string.documentation @spell)
 
-(comment) @comment
+(comment) @comment @spell
 
 (directive_location
   (executable_directive_location) @type.builtin)

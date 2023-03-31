@@ -6,6 +6,7 @@ local info = require "nvim-treesitter.info"
 local shell = require "nvim-treesitter.shell_command_selectors"
 local install = require "nvim-treesitter.install"
 local utils = require "nvim-treesitter.utils"
+local ts = require "nvim-treesitter.compat"
 
 local health = vim.health or require "health"
 
@@ -16,8 +17,8 @@ local NVIM_TREESITTER_MINIMUM_ABI = 13
 local function install_health()
   health.report_start "Installation"
 
-  if fn.has "nvim-0.7" == 0 then
-    health.report_error "Nvim-treesitter requires Neovim 0.7.0+"
+  if fn.has "nvim-0.8.3" ~= 1 then
+    health.report_error "Nvim-treesitter requires Neovim 0.8.3+"
   end
 
   if fn.executable "tree-sitter" == 0 then
@@ -147,13 +148,13 @@ function M.check()
       local lang, type, err = unpack(p)
       local lines = {}
       table.insert(lines, lang .. "(" .. type .. "): " .. err)
-      local files = vim.treesitter.query.get_query_files(lang, type)
+      local files = ts.get_query_files(lang, type)
       if #files > 0 then
         table.insert(lines, lang .. "(" .. type .. ") is concatenated from the following files:")
         for _, file in ipairs(files) do
           local fd = io.open(file, "r")
           if fd then
-            local ok, file_err = pcall(vim.treesitter.query.parse_query, lang, fd:read "*a")
+            local ok, file_err = pcall(ts.parse_query, lang, fd:read "*a")
             if ok then
               table.insert(lines, '|    [OK]:"' .. file .. '"')
             else

@@ -14,10 +14,14 @@
 ((function_call
   name: (_) @_vimcmd_identifier
   arguments: (arguments (string content: _ @query) .))
-  (#any-of? @_vimcmd_identifier "vim.treesitter.query.set_query" "vim.treesitter.query.parse_query"))
+  (#any-of? @_vimcmd_identifier "vim.treesitter.query.set" "vim.treesitter.query.parse_query" "vim.treesitter.query.parse"))
 
 ;; highlight string as query if starts with `;; query`
 ((string ("string_content") @query) (#lua-match? @query "^%s*;+%s?query"))
+
+((comment) @luadoc
+  (#lua-match? @luadoc "[-][-][-][%s]*@")
+  (#offset! @luadoc 0 3 0 0))
 
 ; string.match("123", "%d+")
 (function_call

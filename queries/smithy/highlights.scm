@@ -108,7 +108,6 @@
 
 ; Comments
 
-[
-  (comment)
-  (documentation_comment)
-] @comment @spell
+(comment) @comment @spell
+
+(documentation_comment) @comment.documentation @spell

@@ -2,16 +2,15 @@
   (class_body)
   (enum_body)
   (interface_body)
-  (constructor_declaration)
   (constructor_body)
   (block)
   (switch_block)
   (array_initializer)
   (argument_list)
   (formal_parameters)
-] @indent
+] @indent.begin
 
-(expression_statement (method_invocation) @indent)
+(expression_statement (method_invocation) @indent.begin)
 
 [
   "("
@@ -20,13 +19,14 @@
   "}"
   "["
   "]"
-] @branch
+] @indent.branch
 
-"}" @indent_end
+"}" @indent.end
 
-(line_comment) @ignore
+(line_comment) @indent.ignore
 
 [
   (ERROR)
   (block_comment)
-] @auto
+] @indent.auto
+

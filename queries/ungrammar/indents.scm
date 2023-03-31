@@ -1,6 +1,6 @@
-(node) @indent
+(node) @indent.begin
 
 [
   (ERROR)
   (comment)
-] @auto
+] @indent.auto

@@ -19,14 +19,14 @@
   (unless)
   (assignment)
   (parenthesized_statements)
-] @indent
+] @indent.begin
 
 [
   "end"
   ")"
   "}"
   "]"
-] @indent_end
+] @indent.end
 
 [
   "end"
@@ -38,6 +38,6 @@
   (else)
   (rescue)
   (ensure)
-] @branch
+] @indent.branch
 
-(comment) @ignore
+(comment) @indent.ignore

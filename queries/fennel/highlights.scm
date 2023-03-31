@@ -1,4 +1,4 @@
-(comment) @comment
+(comment) @comment @spell
 
 [
   "("
@@ -23,7 +23,7 @@
 (boolean) @boolean
 (number) @number
 
-(string) @string
+(string) @string @spell
 (escape_sequence) @string.escape
 
 (symbol) @variable

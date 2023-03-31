@@ -11,18 +11,18 @@
   (match_block)
   (case_statement)
   "["
-] @indent
+] @indent.begin
 
 [
   ")"
   "}"
   "]"
-] @branch
+] @indent.branch
 
 [
   (comment)
-] @auto
+] @indent.auto
 
-(compound_statement "}" @indent_end)
+(compound_statement "}" @indent.end)
 
-(ERROR) @auto
+(ERROR) @indent.auto

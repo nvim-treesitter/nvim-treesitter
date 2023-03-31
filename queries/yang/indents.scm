@@ -1,10 +1,11 @@
-(module) @indent
-(submodule) @indent
-(statement) @indent
-(extension_statement) @indent
-(statement ";" @indent_end)
-(extension_statement ";" @indent_end)
-(block "}" @indent_end @branch)
+(module) @indent.begin
+(submodule) @indent.begin
+(statement) @indent.begin
+(extension_statement) @indent.begin
+(statement ";" @indent.end)
+(extension_statement ";" @indent.end)
+(block "}" @indent.end @indent.branch)
 
-((string) @aligned_indent
- (#set! "delimiter" "\"\""))
+((string) @indent.align
+ (#set! indent.open_delimiter "\"")
+ (#set! indent.close_delimiter "\""))

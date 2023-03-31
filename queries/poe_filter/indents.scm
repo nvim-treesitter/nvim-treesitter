@@ -1,5 +1,5 @@
-(block) @indent
+(block) @indent.begin
 
-(ERROR) @auto
+(ERROR) @indent.auto
 
-(comment) @ignore
+(comment) @indent.ignore

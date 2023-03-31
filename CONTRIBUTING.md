@@ -89,12 +89,13 @@ effect on highlighting. We will work on improving highlighting in the near futur
 #### Misc
 
 ```scheme
-@comment  ; line and block comments
-@error    ; syntax/parser errors
-@none     ; completely disable the highlight
-@preproc  ; various preprocessor directives & shebangs
-@define   ; preprocessor definition directives
-@operator ; symbolic operators (e.g. `+` / `*`)
+@comment               ; line and block comments
+@comment.documentation ; comments documenting code
+@error                 ; syntax/parser errors
+@none                  ; completely disable the highlight
+@preproc               ; various preprocessor directives & shebangs
+@define                ; preprocessor definition directives
+@operator              ; symbolic operators (e.g. `+` / `*`)
 ```
 
 #### Punctuation
@@ -109,17 +110,18 @@ effect on highlighting. We will work on improving highlighting in the near futur
 #### Literals
 
 ```scheme
-@string            ; string literals
-@string.regex      ; regular expressions
-@string.escape     ; escape sequences
-@string.special    ; other special strings (e.g. dates)
+@string               ; string literals
+@string.documentation ; string documenting code (e.g. Python docstrings)
+@string.regex         ; regular expressions
+@string.escape        ; escape sequences
+@string.special       ; other special strings (e.g. dates)
 
-@character         ; character literals
-@character.special ; special characters (e.g. wildcards)
+@character            ; character literals
+@character.special    ; special characters (e.g. wildcards)
 
-@boolean           ; boolean literals
-@number            ; numeric literals
-@float             ; floating-point number literals
+@boolean              ; boolean literals
+@number               ; numeric literals
+@float                ; floating-point number literals
 ```
 
 #### Functions
@@ -314,14 +316,14 @@ the node describing the language and `@content` to describe the injection region
 ### Indents
 
 ```scheme
-@indent         ; indent children when matching this node
-@indent_end     ; marks the end of indented block
-@aligned_indent ; behaves like python aligned/hanging indent
-@dedent         ; dedent children when matching this node
-@branch         ; dedent itself when matching this node
-@ignore         ; do not indent in this node
-@auto           ; behaves like 'autoindent' buffer option
-@zero_indent    ; sets this node at position 0 (no indent)
+@indent.begin       ; indent children when matching this node
+@indent.end         ; marks the end of indented block
+@indent.align       ; behaves like python aligned/hanging indent
+@indent.dedent      ; dedent children when matching this node
+@indent.branch      ; dedent itself when matching this node
+@indent.ignore      ; do not indent in this node
+@indent.auto        ; behaves like 'autoindent' buffer option
+@indent.zero        ; sets this node at position 0 (no indent)
 ```
 
 [Matrix channel]: https://matrix.to/#/#nvim-treesitter:matrix.org

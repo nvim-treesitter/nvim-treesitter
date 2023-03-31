@@ -119,6 +119,29 @@ query.add_predicate("has-type?", function(match, _pattern, _bufnr, pred)
   return vim.tbl_contains(types, node:type())
 end)
 
+local html_script_type_languages = {
+  ["importmap"] = "json",
+  ["module"] = "javascript",
+  ["application/ecmascript"] = "javascript",
+  ["text/ecmascript"] = "javascript",
+}
+
+---@param match string
+---@param metadata table
+---@return boolean|nil
+query.add_directive("set-lang-from-mimetype!", function(match, pattern, bufnr, predicate, metadata)
+  local capture_id = predicate[2]
+  local node = match[capture_id]
+  local type_attr_value = vim.treesitter.get_node_text(node, bufnr)
+  local configured = html_script_type_languages[type_attr_value]
+  if configured then
+    metadata.language = configured
+  else
+    local parts = vim.split(type_attr_value, "/", {})
+    metadata.language = parts[#parts]
+  end
+end)
+
 -- Just avoid some annoying warnings for this directive
 query.add_directive("make-range!", function() end)
 
@@ -145,7 +168,7 @@ query.add_directive("downcase!", function(match, _, bufnr, pred, metadata)
     text = value
   else
     local node = match[value]
-    text = query.get_node_text(node, bufnr) or ""
+    text = vim.treesitter.get_node_text(node, bufnr) or ""
   end
 
   if #pred == 3 then

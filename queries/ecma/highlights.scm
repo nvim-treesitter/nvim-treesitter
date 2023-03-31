@@ -29,11 +29,6 @@
 ((shorthand_property_identifier) @constant
  (#lua-match? @constant "^_*[A-Z][A-Z%d_]*$"))
 
-(lexical_declaration
-  "const"
-  . (variable_declarator
-      . name: (identifier) @constant))
-
 ((identifier) @variable.builtin
  (#any-of? @variable.builtin
   "arguments"
@@ -159,11 +154,12 @@
 
 [(null) (undefined)] @constant.builtin
 
-(comment) @comment
+(comment) @comment @spell
+
+((comment) @comment.documentation
+  (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
 
 (hash_bang_line) @preproc
-
-(comment) @spell
 
 (string) @string @spell
 (template_string) @string

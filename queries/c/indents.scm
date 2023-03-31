@@ -7,66 +7,66 @@
   (initializer_list)
   (init_declarator)
   (expression_statement)
-] @indent
+] @indent.begin
 
 (
   ERROR
-    "for" "(" @indent ";" ";" ")" @indent_end)
+    "for" "(" @indent.begin ";" ";" ")" @indent.end)
 (
   (for_statement
     body: (_) @_body
-  ) @indent
+  ) @indent.begin
   (#not-has-type? @_body compound_statement)
 )
 
 (
   while_statement
-    condition: (_) @indent
+    condition: (_) @indent.begin
 )
 (
   (while_statement
     body: (_) @_body
-  ) @indent
+  ) @indent.begin
   (#not-has-type? @_body compound_statement)
 )
 
 (
   (if_statement)
-  (ERROR "else") @indent
+  (ERROR "else") @indent.begin
 )
 
 (
  if_statement
-  condition: (_) @indent
+  condition: (_) @indent.begin
 )
-;; Make sure all cases of if-else are tagged with @indent
+;; Make sure all cases of if-else are tagged with @indent.begin
 ;; So we will offset the indents for the else case
 (
   (if_statement
     consequence: (compound_statement)
-    "else" @branch
+    "else" @indent.branch
     alternative: 
       [
-        [ "{" "}" ] @branch
-        (compound_statement ["{" "}"] @branch)
+        [ "{" "}" ] @indent.branch
+        (compound_statement ["{" "}"] @indent.branch)
         (_)
       ] 
-  ) @indent
+  ) @indent.begin
 )
 (
   (if_statement
-    consequence: (_ ";" @indent_end) @_consequence
-  ) @indent
+    consequence: (_ ";" @indent.end) @_consequence
+  ) @indent.begin
   (#not-has-type? @_consequence compound_statement)
 )
 (
   (if_statement
     consequence: (_) @_consequence
-    "else" @branch
+    "else" @indent.branch
     alternative: 
       [
-        [ "{" "}" ] @branch
-        (compound_statement ["{" "}"] @branch)
+        [ "{" "}" ] @indent.branch
+        (compound_statement ["{" "}"] @indent.branch)
         (_)
       ] 
   )
@@ -83,19 +83,19 @@
     consequence: (_)
     alternative: 
       [
-        (if_statement consequence: (compound_statement) @dedent)
+        (if_statement consequence: (compound_statement) @indent.dedent)
         (_)
-      ] @dedent
+      ] @indent.dedent
   )
 )
 
-(compound_statement "}" @indent_end)
+(compound_statement "}" @indent.end)
 
 [
   ")"
   "}"
   (statement_identifier)
-] @branch
+] @indent.branch
 
 [
   "#define"
@@ -105,16 +105,19 @@
   "#if"
   "#else"
   "#endif"
-] @zero_indent
+] @indent.zero
 
 [
   (preproc_arg)
   (string_literal)
-] @ignore
+] @indent.ignore
 
-((ERROR (parameter_declaration)) @aligned_indent
- (#set! "delimiter" "()"))
-([(argument_list) (parameter_list)] @aligned_indent
-  (#set! "delimiter" "()"))
+((ERROR (parameter_declaration)) @indent.align
+ (#set! indent.open_delimiter "(")
+ (#set! indent.close_delimiter ")"))
+([(argument_list) (parameter_list)] @indent.align
+  (#set! indent.open_delimiter "(")
+  (#set! indent.close_delimiter ")"))
 
-(comment) @auto
+(comment) @indent.auto
+

@@ -29,12 +29,10 @@
 ((identifier) @comment (#match? @comment "^_"))
 
 ; Comments
-(comment) @comment
-(comment) @spell
+(comment) @comment @spell
 
 ; Strings
-(string) @string
-(string) @spell
+(string) @string @spell
 
 ; Modules
 (alias) @type
@@ -214,15 +212,15 @@
 (unary_operator
   operator: "@"
   operand: (call
-    target: ((identifier) @_identifier (#any-of? @_identifier "moduledoc" "typedoc" "shortdoc" "doc")) @comment
+    target: ((identifier) @_identifier (#any-of? @_identifier "moduledoc" "typedoc" "shortdoc" "doc")) @comment.documentation
     (arguments [
       (string)
       (boolean)
       (charlist)
       (sigil
-        "~" @comment
-        ((sigil_name) @comment)
-        quoted_start: _ @comment
-        (quoted_content) @comment
-        quoted_end: _ @comment)
-    ] @comment))) @comment
+        "~" @comment.documentation
+        ((sigil_name) @comment.documentation)
+        quoted_start: _ @comment.documentation
+        (quoted_content) @comment.documentation
+        quoted_end: _ @comment.documentation)
+    ] @comment.documentation))) @comment.documentation

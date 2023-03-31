@@ -1,20 +1,16 @@
-(definition) @indent
+(definition) @indent.begin
 
-; (function (function_identifier) @aligned_indent)
+((parameters (parameter)) @indent.align
+ (#set! indent.open_delimiter "(")
+ (#set! indent.close_delimiter ")"))
 
-((function_parameters (function_parameter)) @aligned_indent
-  (#set! "delimiter" "()"))
+"}" @indent.end
 
-((exception_parameters (exception_parameter)) @aligned_indent
-  (#set! "delimiter" "()"))
+[ "{" "}" ] @indent.branch
 
-"}" @indent_end
-
-[ "{" "}" ] @branch
-
-[ "(" ")" ] @branch
+[ "(" ")" ] @indent.branch
 
 [
- (ERROR)
- (comment)
-] @auto
+  (ERROR)
+  (comment)
+] @indent.auto

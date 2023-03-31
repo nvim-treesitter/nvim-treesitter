@@ -12,7 +12,10 @@
 [
   (comment)
   (heredoc)
-] @comment
+] @comment @spell
+
+((comment) @comment.documentation
+  (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
 
 "function" @keyword.function
 

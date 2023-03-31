@@ -222,7 +222,112 @@ Supported options:
       enable = true
     },
   }
+
+`@indent`				    *nvim-treesitter-indentation-queries*
+Queries can use the following captures: `@indent.begin` and `@indent.dedent`,
+`@indent.branch`, `@indent.end` or `@indent.align`. An `@indent.ignore` capture tells
+treesitter to ignore indentation and a `@indent.zero` capture sets
+the indentation to 0.
+
+`@indent.begin`			    *nvim-treesitter-indentation-indent.begin*
+The `@indent.begin` specifies that the next line should be indented.  Multiple
+indents on the same line get collapsed. Eg.
+
+>
+  (
+   (if_statement)
+   (ERROR "else") @indent.begin
+  )
 <
+Indent can also have `indent.immediate` set using a `#set!` directive, which
+permits the next line to indent even when the block intended to be indented
+has no content yet, improving interactive typing.
+
+eg for python:
+>
+ ((if_statement) @indent.begin
+   (#set! indent.immediate 1))
+<
+
+Will allow:
+>
+  if True:<CR>
+      # Auto indent to here
+
+`@indent.end`				*nvim-treesitter-indentation-indent.end*
+An `@indent.end` capture is used to specify that the indented region ends and
+any text subsequent to the capture should be dedented.  
+
+`@indent.branch`		    *nvim-treesitter-indentation-indent.branch*
+An `@indent.branch` capture is used to specify that a dedented region starts
+at the line including the captured nodes.
+
+`@indent.dedent`		    *nvim-treesitter-indentation-indent.dedent*
+A `@indent.dedent` capture specifies dedenting starting on the next line.
+>
+`@indent.align`		    *nvim-treesitter-indentation-aligned_indent.align*
+Aligned indent blocks may be specified with the `@indent.align` capture.
+This permits
+
+>
+  foo(a,
+      b,
+      c)
+<
+As well as
+>
+  foo(
+    a,
+    b,
+    c)
+<
+and finally
+>
+  foo(
+    a,
+    b,
+    c
+  )
+<
+To specify the delimiters to use `indent.open_delimiter` and
+`indent.close_delimiter` should be used.  Eg.
+>
+ ((argument_list) @indent.align
+  (#set! indent.open_delimiter "(")
+  (#set! indent.close_delimiter ")"))
+<
+
+For some languages the last line of an `indent.align` block must not be
+the same indent as the natural next line.
+
+For example in python:
+
+>
+  if (a > b and
+      c < d):
+      pass
+
+Is not correct, whereas
+>
+  if (a > b and
+	c < d):
+      pass
+
+Would be correctly indented.  This behavior may be chosen using
+`indent.avoid_last_matching_next`.  Eg.
+
+>
+ (if_statement
+  condition: (parenthesized_expression) @indent.align
+  (#set! indent.open_delimiter "(")
+  (#set! indent.close_delimiter ")")
+  (#set! indent.avoid_last_matching_next 1)
+ )
+<
+Could be used to specify that the last line of an `@indent.align` capture
+should be additionally indented to avoid clashing with the indent of the first
+line of the block inside an if.
+
 ==============================================================================
 COMMANDS                                            *nvim-treesitter-commands*
 
@@ -325,9 +430,9 @@ These highlight groups are used by default:
 :TSEditQuery {query-group} [{lang}]~
 
 Edit the query file for a {query-group} (e.g. highlights, locals) for given
-{lang}.  If there are multiple the user is prompted to select one of them.
+{lang}. If there are multiple files, the user is prompted to select one of them.
 If no such file exists, a buffer for a new file in the user's config directory
-is created.  If {lang} is not specified, the language of the current buffer
+is created. If {lang} is not specified, the language of the current buffer
 is used.
 
 						       *:TSEditQueryUserAfter*
@@ -454,7 +559,7 @@ Default options (lua syntax):
   the beginning.
 - `type_patterns` - Which node type patterns to match.
 - `transform_fn` - Function used to transform the single item in line. By
-  default removes opening brackets and spaces from end. Takes two arguments:
+  default it removes opening brackets and spaces from end. Takes two arguments:
   the text of the line in question, and the corresponding treesitter node.
 - `separator` - Separator between nodes.
 - `allow_duplicates` - Whether or not to remove duplicate components.
@@ -471,7 +576,7 @@ To use it: >
 This will respect your 'foldminlines' and 'foldnestmax' settings.
 
 Note: This is highly experimental, and folding can break on some types of
-      edits. If you encounter such breakage, hiting `zx` should fix folding.
+      edits. If you encounter such breakage, hitting `zx` should fix folding.
       In any case, feel free to open an issue with the reproducing steps.
 
 ==============================================================================

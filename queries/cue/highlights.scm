@@ -155,7 +155,7 @@
 
 (interpolation "\\(" (identifier) @variable ")")
 
-; Commments
+; Comments
 
 (comment) @comment @spell
 

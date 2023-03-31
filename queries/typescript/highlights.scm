@@ -12,6 +12,7 @@
   "override"
   "satisfies"
   "module"
+  "infer"
 ] @keyword
 
 (as_expression "as" @keyword)
@@ -35,6 +36,8 @@
       ((import_specifier
           name: (identifier) @type)))))
 
+(template_literal_type) @string
+
 ;; punctuation
 
 (type_arguments
@@ -55,10 +58,21 @@
 (pair
   ":" @punctuation.delimiter)
 
+(index_signature
+  ":" @punctuation.delimiter)
+
+(opting_type_annotation
+  "?:" @punctuation.delimiter)
+
 "?." @punctuation.delimiter
 
+(method_signature "?" @punctuation.special)
 (property_signature "?" @punctuation.special)
 (optional_parameter "?" @punctuation.special)
+
+(template_type ["${" "}"] @punctuation.special)
+
+(conditional_type ["?" ":"] @conditional.ternary)
 
 ; Variables
 
@@ -91,3 +105,20 @@
 ;; a => null
 (arrow_function
   parameter: (identifier) @parameter)
+
+;; function signatures
+(ambient_declaration
+  (function_signature
+    name: (identifier) @function))
+
+;; method signatures
+(method_signature name: (_) @method)
+
+;; property signatures
+(property_signature
+  name: (property_identifier) @method
+  type: (type_annotation
+          [
+            (union_type (parenthesized_type (function_type)))
+            (function_type)
+          ]))

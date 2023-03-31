@@ -1,53 +1,55 @@
 ; inherits html_tags
 
 ; <script lang="css">
-(
-  (style_element
+((style_element
     (start_tag
       (attribute
         (attribute_name) @_lang
         (quoted_attribute_value (attribute_value) @_css)))
-    (raw_text) @css)
-  (#eq? @_lang "lang")
-  (#eq? @_css "css")
-)
+    (#eq? @_lang "lang")
+    (#eq? @_css "css")
+    (raw_text) @css))
 
 ; TODO: When nvim-treesitter have postcss and less parser, use @language and @content instead
 ; <script lang="scss">
-(
-  (style_element
+((style_element
     (start_tag
       (attribute
         (attribute_name) @_lang
         (quoted_attribute_value (attribute_value) @_scss)))
-    (raw_text) @scss)
-  (#eq? @_lang "lang")
-  (#any-of? @_scss "scss" "less" "postcss")
-)
-
+    (#eq? @_lang "lang")
+    (#any-of? @_scss "scss" "less" "postcss")
+    (raw_text) @scss))
 ; <script lang="js">
-(
-  (script_element
+((script_element
     (start_tag
       (attribute
         (attribute_name) @_lang
         (quoted_attribute_value (attribute_value) @_js)))
-    (raw_text) @javascript)
-  (#eq? @_lang "lang")
-  (#eq? @_js "js")
-)
+    (#eq? @_lang "lang")
+    (#eq? @_js "js")
+    (raw_text) @javascript))
 
 ; <script lang="ts">
-(
-  (script_element
+((script_element
     (start_tag
       (attribute
         (attribute_name) @_lang
         (quoted_attribute_value (attribute_value) @_ts)))
-    (raw_text) @typescript)
-  (#eq? @_lang "lang")
-  (#eq? @_ts "ts")
-)
+    (#eq? @_lang "lang")
+    (#eq? @_ts "ts")
+    (raw_text) @typescript))
+
+; <script lang="tsx">
+; <script lang="jsx">
+((script_element
+    (start_tag
+      (attribute
+        (attribute_name) @_attr
+        (quoted_attribute_value (attribute_value) @language)))
+    (#eq? @_attr "lang")
+    (#any-of? @language "tsx" "jsx")
+    (raw_text) @content))
 
 ((interpolation
   (raw_text) @javascript))
@@ -56,11 +58,9 @@
     (quoted_attribute_value
       (attribute_value) @javascript)))
 
-(
-  (template_element
+((template_element
     (start_tag
       (attribute
         (quoted_attribute_value (attribute_value) @_lang)))
-    (text) @pug)
-  (#eq? @_lang "pug")
-)
+    (#eq? @_lang "pug")
+    (text) @pug))

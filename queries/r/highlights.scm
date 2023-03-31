@@ -127,7 +127,7 @@
 
 "function" @keyword.function
 
-; Functions/Methos
+; Functions/Methods
 
 (call function: (identifier) @function.call)
 

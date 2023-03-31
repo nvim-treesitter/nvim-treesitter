@@ -10,24 +10,21 @@
   (import)
   (let)
   (list)
-  (public_constant)
-  (public_external_function)
-  (public_function)
-  (public_opaque_type_definition)
-  (public_type_alias)
-  (public_type_definition)
+  (constant)
+  (external_function)
+  (function)
+  (type_definition)
+  (type_alias)
   (todo)
   (try)
   (tuple)
-  (type_alias)
-  (type_definition)
-] @indent
+] @indent.begin
 
 [
   ")"
   "]"
   "}"
-] @indent_end @branch
+] @indent.end @indent.branch
 
 ; Gleam pipelines are not indented, but other binary expression chains are
-((binary_expression operator: _ @_operator) @indent (#not-eq? @_operator "|>"))
+((binary_expression operator: _ @_operator) @indent.begin (#not-eq? @_operator "|>"))

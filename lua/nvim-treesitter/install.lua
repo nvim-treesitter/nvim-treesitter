@@ -330,6 +330,9 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   local compile_location
   if from_local_path then
     compile_location = repo.url
+    if repo.location then
+      compile_location = utils.join_path(compile_location, repo.location)
+    end
   else
     local repo_location = project_name
     if repo.location then
@@ -379,7 +382,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   end
 
   local revision = repo.revision
-  if not revision and configs.get_update_strategy() == "lockfile" then
+  if not revision then
     revision = get_revision(lang)
   end
 
@@ -583,8 +586,7 @@ function M.update(options)
         utils.notify "Parsers are up-to-date!"
       end
     else
-      local parsers_to_update = configs.get_update_strategy() == "lockfile" and outdated_parsers()
-        or info.installed_parsers()
+      local parsers_to_update = outdated_parsers() or info.installed_parsers()
       if #parsers_to_update == 0 then
         utils.notify "All parsers are up-to-date!"
       end
@@ -603,9 +605,7 @@ function M.uninstall(...)
   if vim.tbl_contains({ "all" }, ...) then
     reset_progress_counter()
     local installed = info.installed_parsers()
-    for _, langitem in pairs(installed) do
-      M.uninstall(langitem)
-    end
+    M.uninstall(installed)
   elseif ... then
     local ensure_installed_parsers = configs.get_ensure_installed_parsers()
     if ensure_installed_parsers == "all" then
