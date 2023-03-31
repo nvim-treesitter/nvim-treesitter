@@ -47,6 +47,9 @@
  "then"
  ] @conditional
 
+(if
+  "end" @conditional)
+
 [
  "for"
  "until"
