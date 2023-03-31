@@ -44,16 +44,11 @@
  "if"
  "unless"
  "when"
+ "then"
  ] @conditional
 
 (if
   "end" @conditional)
-(if
-  (then) @conditional)
-(unless
-  (then) @conditional)
-(elsif
-  (then) @conditional)
 
 [
  "for"
