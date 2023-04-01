@@ -17,17 +17,19 @@ M.comment_parsers = {
 
 ---@param root TSNode
 ---@param lnum integer
+---@param col? integer
 ---@return TSNode
-local function get_first_node_at_line(root, lnum)
-  local col = vim.fn.indent(lnum)
+local function get_first_node_at_line(root, lnum, col)
+  col = col or vim.fn.indent(lnum)
   return root:descendant_for_range(lnum - 1, col, lnum - 1, col)
 end
 
 ---@param root TSNode
 ---@param lnum integer
+---@param col? integer
 ---@return TSNode
-local function get_last_node_at_line(root, lnum)
-  local col = #vim.fn.getline(lnum) - 1
+local function get_last_node_at_line(root, lnum, col)
+  col = col or (#vim.fn.getline(lnum) - 1)
   return root:descendant_for_range(lnum - 1, col, lnum - 1, col)
 end
 
@@ -128,7 +130,23 @@ function M.get_indent(lnum)
   local node ---@type TSNode
   if is_empty_line then
     local prevlnum = vim.fn.prevnonblank(lnum)
-    node = get_last_node_at_line(root, prevlnum)
+    local indent = vim.fn.indent(prevlnum)
+    local prevline = vim.trim(vim.fn.getline(prevlnum))
+    -- The final position can be trailing spaces, which should not affect indentation
+    node = get_last_node_at_line(root, prevlnum, indent + #prevline - 1)
+    if node:type():match "comment" then
+      -- The final node we capture of the previous line can be a comment node, which should also be ignored
+      -- Unless the last line is an entire line of comment, ignore the comment range and find the last node again
+      local first_node = get_first_node_at_line(root, prevlnum, indent)
+      if first_node:id() ~= node:id() then
+        -- In case the last captured node is a trailing comment node, re-trim the string
+        prevline = vim.trim(prevline:sub(1, node:start() + 1 - indent))
+        -- Add back indent as indent of prevline was trimmed away
+        local col = indent + #prevline - 1
+        node = get_last_node_at_line(root, prevlnum, col)
+      end
+    end
+
     if q.indent["end"][node:id()] then
       node = get_first_node_at_line(root, lnum)
     end
