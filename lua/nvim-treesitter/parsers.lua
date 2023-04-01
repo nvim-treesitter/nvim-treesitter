@@ -641,14 +641,6 @@ list.heex = {
   maintainers = { "@connorlay" },
 }
 
-list.help = {
-  install_info = {
-    url = "https://github.com/neovim/tree-sitter-vimdoc",
-    files = { "src/parser.c" },
-  },
-  maintainers = { "@vigoux" },
-}
-
 list.hjson = {
   install_info = {
     url = "https://github.com/winston0410/tree-sitter-hjson",
@@ -1548,6 +1540,15 @@ list.vim = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@vigoux" },
+}
+
+list.vimdoc = {
+  install_info = {
+    url = "https://github.com/neovim/tree-sitter-vimdoc",
+    files = { "src/parser.c" },
+  },
+  filetype = "help",
+  maintainers = { "@clason" },
 }
 
 list.vue = {

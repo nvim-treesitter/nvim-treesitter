@@ -203,9 +203,6 @@
   "heex": {
     "revision": "2e1348c3cf2c9323e87c2744796cf3f3868aa82a"
   },
-  "help": {
-    "revision": "c4e23d265f022dcd51053c40d47cd06e7756a347"
-  },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
@@ -523,6 +520,9 @@
   },
   "vim": {
     "revision": "e39a7bbcfdcfc7900629962b785c7e14503ae590"
+  },
+  "vimdoc": {
+    "revision": "b2ec4ec5f7be24cb6f7ccffafd7204477fe5784a"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
