@@ -110,9 +110,13 @@ function M.select_compiler_args(repo, compiler)
       "parser.so",
       "-I./src",
       repo.files,
-      "-shared",
       "-Os",
     }
+    if fn.has "mac" == 1 then
+      table.insert(args, "-bundle")
+    else
+      table.insert(args, "-shared")
+    end
     if
       #vim.tbl_filter(function(file) ---@param file string
         local ext = vim.fn.fnamemodify(file, ":e")
