@@ -1,5 +1,5 @@
 (((comment) @_jsdoc_comment
-  (#match? @_jsdoc_comment "^/\\*\\*[^\\*].*\\*/")) @jsdoc)
+  (#lua-match? @_jsdoc_comment "^/[*][*][^*].*[*]/$")) @jsdoc)
 
 (comment) @comment
 
