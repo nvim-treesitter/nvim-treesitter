@@ -138,15 +138,15 @@ function M.get_indent(lnum)
       -- The final node we capture of the previous line can be a comment node, which should also be ignored
       -- Unless the last line is an entire line of comment, ignore the comment range and find the last node again
       local first_node = get_first_node_at_line(root, prevlnum, indent)
+      local _, scol, _, _ = node:range()
       if first_node:id() ~= node:id() then
         -- In case the last captured node is a trailing comment node, re-trim the string
-        prevline = vim.trim(prevline:sub(1, node:start() + 1 - indent))
+        prevline = vim.trim(prevline:sub(1, scol - indent))
         -- Add back indent as indent of prevline was trimmed away
         local col = indent + #prevline - 1
         node = get_last_node_at_line(root, prevlnum, col)
       end
     end
-
     if q.indent["end"][node:id()] then
       node = get_first_node_at_line(root, lnum)
     end
