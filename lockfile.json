@@ -453,10 +453,10 @@
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
   },
   "svelte": {
-    "revision": "52e122ae68b316d3aa960a0a422d3645ba717f42"
+    "revision": "697bb515471871e85ff799ea57a76298a71a9cca"
   },
   "swift": {
-    "revision": "8c8412a54d97d6f96a4bf4ecb76cba4808952ed5"
+    "revision": "ca3a37055069277ad91d6a2c35faf9f247dcfbfb"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -522,7 +522,7 @@
     "revision": "e39a7bbcfdcfc7900629962b785c7e14503ae590"
   },
   "vimdoc": {
-    "revision": "b2ec4ec5f7be24cb6f7ccffafd7204477fe5784a"
+    "revision": "15c2fdcc57f51f1caef82fe75e1ffb733626dcae"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
