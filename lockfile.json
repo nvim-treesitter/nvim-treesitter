@@ -36,7 +36,7 @@
     "revision": "f35789006ccbe5be8db21d1a2dd4cc0b5a1286f2"
   },
   "c_sharp": {
-    "revision": "fcacbeb4af6bcdcfb4527978a997bb03f4fe086d"
+    "revision": "92d572eef5ffdd4117e7ba36b56850a90cb79151"
   },
   "capnp": {
     "revision": "fc6e2addf103861b9b3dffb82c543eb6b71061aa"
@@ -156,7 +156,7 @@
     "revision": "577a075d46ea109905c5cb6179809df88da61ce9"
   },
   "gitcommit": {
-    "revision": "f71b93f399c9c2b315825827c95466e7405ec622"
+    "revision": "17235998809be904892f14ee57730d96795e9323"
   },
   "gitignore": {
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
