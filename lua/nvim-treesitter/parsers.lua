@@ -1536,10 +1536,10 @@ list.vhs = {
 
 list.vim = {
   install_info = {
-    url = "https://github.com/vigoux/tree-sitter-viml",
+    url = "https://github.com/neovim/tree-sitter-vim",
     files = { "src/parser.c", "src/scanner.c" },
   },
-  maintainers = { "@vigoux" },
+  maintainers = { "@clason" },
 }
 
 list.vimdoc = {
