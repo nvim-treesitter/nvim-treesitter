@@ -10,6 +10,7 @@
   (list_literal)
   (return_statement)
   (arguments)
+  (try_statement)
 ] @indent.begin
 
 [
