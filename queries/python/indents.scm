@@ -84,12 +84,12 @@
 ] @indent.dedent
 
 (ERROR
-  (_) @indent.dedent ":" .
-  (#lua-match? @indent.dedent "^else"))
+  (_) @indent.branch ":" .
+  (#lua-match? @indent.branch "^else"))
 
 (ERROR
-  (_) @indent.dedent ":"
-  (#lua-match? @indent.dedent "elif"))
+  (_) @indent.branch ":" .
+  (#lua-match? @indent.branch "^elif"))
 
 (parenthesized_expression ")" @indent.end)
 (generator_expression ")" @indent.end)
