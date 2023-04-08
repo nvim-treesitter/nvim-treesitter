@@ -50,6 +50,8 @@ describe("indent Python:", function()
     run:new_line("error_state_dict.py", { on_line = 6, text = "9:10,", indent = 6 })
     run:new_line("error_state_set.py", { on_line = 5, text = "9,", indent = 6 })
     run:new_line("error_state_funcall.py", { on_line = 5, text = "6,", indent = 2 })
+    run:new_line("if_else.py", { on_line = 5, text = "else:", indent = 4 })
+    run:new_line("if_else.py", { on_line = 5, text = "elif False:", indent = 4 })
     run:new_line(
       "join_lines.py",
       { on_line = 1, text = "+ 1 \\", indent = 4 },

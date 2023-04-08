@@ -88,7 +88,7 @@
   (#lua-match? @indent.branch "^else"))
 
 (ERROR
-  (_) @indent.branch ":" .
+  (_) @indent.branch @indent.dedent ":" .
   (#lua-match? @indent.branch "^elif"))
 
 (parenthesized_expression ")" @indent.end)
