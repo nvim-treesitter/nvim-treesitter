@@ -83,6 +83,14 @@
   (continue_statement)
 ] @indent.dedent
 
+(ERROR
+  (_) @indent.dedent ":" .
+  (#lua-match? @indent.dedent "^else"))
+
+(ERROR
+  (_) @indent.dedent ":"
+  (#lua-match? @indent.dedent "elif"))
+
 (parenthesized_expression ")" @indent.end)
 (generator_expression ")" @indent.end)
 (list_comprehension "]" @indent.end)
