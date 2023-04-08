@@ -2,7 +2,7 @@
 [
   (code_span)
   (link_title)
-] @text.literal
+] @text.literal @nospell
 
 [
   (emphasis_delimiter)
@@ -18,7 +18,7 @@
 [
   (link_destination)
   (uri_autolink)
-] @text.uri
+] @text.uri @nospell
 
 [
   (link_label)
