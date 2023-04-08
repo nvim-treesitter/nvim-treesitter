@@ -49,58 +49,93 @@
 (destructor_name
   (identifier) @method)
 
+; functions
 (function_declarator
-      declarator: (qualified_identifier
-        name: (identifier) @function))
+  (qualified_identifier
+    (identifier) @function))
 (function_declarator
-      declarator: (qualified_identifier
-        name: (qualified_identifier
-          name: (identifier) @function)))
+  (qualified_identifier
+    (qualified_identifier
+      (identifier) @function)))
 (function_declarator
-      declarator: (template_function
-        name: (identifier) @function))
+  (qualified_identifier
+    (qualified_identifier
+      (qualified_identifier
+        (identifier) @function))))
+((qualified_identifier
+  (qualified_identifier
+    (qualified_identifier
+      (qualified_identifier
+        (identifier) @function)))) @_parent
+  (#has-ancestor? @_parent function_declarator))
+
 (function_declarator
-      declarator: (template_method
-        name: (field_identifier) @method))
-((function_declarator
-      declarator: (qualified_identifier
-        name: (identifier) @constructor))
- (#lua-match? @constructor "^[A-Z]"))
+  (template_function
+    (identifier) @function))
 
 (operator_name) @function
 "operator" @function
 "static_assert" @function.builtin
 
 (call_expression
-  function: (qualified_identifier
-              name: (identifier) @function.call))
+  (qualified_identifier
+    (identifier) @function.call))
 (call_expression
-  function: (qualified_identifier
-              name: (qualified_identifier
-                      name: (identifier) @function.call)))
+  (qualified_identifier
+    (qualified_identifier
+      (identifier) @function.call)))
 (call_expression
-  function:
+  (qualified_identifier
+    (qualified_identifier
       (qualified_identifier
-        name: (qualified_identifier
-              name: (qualified_identifier
-                      name: (identifier) @function.call))))
-(call_expression
-  function: (template_function
-              name: (identifier) @function.call))
-(call_expression
-  function: (qualified_identifier
-              name: (template_function
-                      name: (identifier) @function.call)))
-(call_expression
-  function:
+        (identifier) @function.call))))
+((qualified_identifier
+  (qualified_identifier
+    (qualified_identifier
       (qualified_identifier
-        name: (qualified_identifier
-              name: (template_function
-                      name: (identifier) @function.call))))
+        (identifier) @function.call)))) @_parent
+  (#has-ancestor? @_parent call_expression))
 
 (call_expression
-  function: (field_expression
-              field: (field_identifier) @method.call))
+  (template_function
+    (identifier) @function.call))
+(call_expression
+  (qualified_identifier
+    (template_function
+      (identifier) @function.call)))
+(call_expression
+  (qualified_identifier
+    (qualified_identifier
+      (template_function
+        (identifier) @function.call))))
+(call_expression
+  (qualified_identifier
+    (qualified_identifier
+      (qualified_identifier
+        (template_function
+          (identifier) @function.call)))))
+((qualified_identifier
+  (qualified_identifier
+    (qualified_identifier
+      (qualified_identifier
+        (template_function
+          (identifier) @function.call))))) @_parent
+  (#has-ancestor? @_parent call_expression))
+
+; methods
+(function_declarator
+  (template_method
+    (field_identifier) @method))
+(call_expression
+  (field_expression
+    (field_identifier) @method.call))
+
+; constructors
+
+((function_declarator
+  (qualified_identifier
+    (identifier) @constructor))
+  (#lua-match? @constructor "^[A-Z]"))
 
 ((call_expression
   function: (identifier) @constructor)
