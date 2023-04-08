@@ -15,15 +15,10 @@
     declarator: (_) @parameter)
 
 ;(field_expression) @parameter ;; How to highlight this?
-(template_function
-  name: (identifier) @function)
-
-(template_method
-  name: (field_identifier) @method)
 
 (((field_expression
      (field_identifier) @method)) @_parent
- (#has-parent? @_parent template_method function_declarator call_expression))
+ (#has-parent? @_parent template_method function_declarator))
 
 (field_declaration
   (field_identifier) @field)
@@ -61,6 +56,12 @@
       declarator: (qualified_identifier
         name: (qualified_identifier
           name: (identifier) @function)))
+(function_declarator
+      declarator: (template_function
+        name: (identifier) @function))
+(function_declarator
+      declarator: (template_method
+        name: (field_identifier) @method))
 ((function_declarator
       declarator: (qualified_identifier
         name: (identifier) @constructor))
@@ -83,10 +84,23 @@
         name: (qualified_identifier
               name: (qualified_identifier
                       name: (identifier) @function.call))))
+(call_expression
+  function: (template_function
+              name: (identifier) @function.call))
+(call_expression
+  function: (qualified_identifier
+              name: (template_function
+                      name: (identifier) @function.call)))
+(call_expression
+  function:
+      (qualified_identifier
+        name: (qualified_identifier
+              name: (template_function
+                      name: (identifier) @function.call))))
 
 (call_expression
   function: (field_expression
-              field: (field_identifier) @function.call))
+              field: (field_identifier) @method.call))
 
 ((call_expression
   function: (identifier) @constructor)
