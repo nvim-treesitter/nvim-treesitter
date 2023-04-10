@@ -81,7 +81,7 @@
     "revision": "53485a8f301254e19c518aa20c80f1bcf7cf5c62"
   },
   "devicetree": {
-    "revision": "ea30a05d0f0446a96d8b096ad11828ad4f8ad849"
+    "revision": "6428cee0e9d76fac3291796ced56ac14ecd036ee"
   },
   "dhall": {
     "revision": "affb6ee38d629c9296749767ab832d69bb0d9ea8"
@@ -198,7 +198,7 @@
     "revision": "98fc7f59049aeb713ab9b72a8ff25dcaaef81087"
   },
   "hcl": {
-    "revision": "0ff887f2a60a147452d52db060de6b42f42f1441"
+    "revision": "becebebd3509c02e871c99be55556269be1def1b"
   },
   "heex": {
     "revision": "2e1348c3cf2c9323e87c2744796cf3f3868aa82a"
@@ -471,7 +471,7 @@
     "revision": "2158ecce11ea542f9b791baf2c7fb33798174ed2"
   },
   "terraform": {
-    "revision": "0ff887f2a60a147452d52db060de6b42f42f1441"
+    "revision": "becebebd3509c02e871c99be55556269be1def1b"
   },
   "thrift": {
     "revision": "d4deb1bd9e848f2dbe81103a151d99e8546de480"
@@ -519,7 +519,7 @@
     "revision": "77fd8a8fcc0b4788e0b1569b1a4fa070b36add28"
   },
   "vim": {
-    "revision": "2886b52143d570d81f97c98be7a1e204ce9d3bcd"
+    "revision": "cd63bd20644a419d209b625d21258617580273d2"
   },
   "vimdoc": {
     "revision": "15c2fdcc57f51f1caef82fe75e1ffb733626dcae"
@@ -543,6 +543,6 @@
     "revision": "c348825d3f86dec71dee0e1223c6bd73114e3579"
   },
   "zig": {
-    "revision": "f3bc9ffe9ca10f52dee01999b5b6ce9a4074b0ac"
+    "revision": "2c7b6308d906d7aec4b3e1fafaaeca447a8a2c2f"
   }
 }
