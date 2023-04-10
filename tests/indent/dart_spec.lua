@@ -17,4 +17,5 @@ end)
 
 describe("new line:", function()
   run:new_line("class.dart", { on_line = 2, text = "var x;", indent = 0 })
+  run:new_line("try.dart", { on_line = 2, text = "var x;", indent = 4 })
 end)
