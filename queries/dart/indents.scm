@@ -1,6 +1,7 @@
 [
   (class_body)
   (function_body)
+  (function_expression_body)
   (declaration (initializers))
   (switch_block)
   (if_statement)
@@ -27,7 +28,5 @@
 
 ; this one is for dedenting the else block
 (if_statement (block) @indent.branch)
-; Issue #4637
-(function_expression_body (block) @indent.branch)
 
 (comment) @indent.ignore
