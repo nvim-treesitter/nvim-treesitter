@@ -5,6 +5,7 @@
   (switch_block)
   (if_statement)
   (formal_parameter_list)
+  (function_expression_body)
   (formal_parameter)
   (list_literal)
   (return_statement)
