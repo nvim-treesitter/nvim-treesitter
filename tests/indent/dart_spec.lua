@@ -11,7 +11,9 @@ local run = Runner:new(it, "tests/indent/dart", {
 describe("indent Lua:", function()
   describe("whole file:", function()
     run:whole_file(".", {
-      expected_failures = {},
+      expected_failures = {
+        "./dart/multiple_arguments.dart", -- expected failure issue #4637
+      },
     })
   end)
 end)
