@@ -14,7 +14,6 @@ describe("indent Lua:", function()
       expected_failures = {
         "./multiple_arguments.dart",
         "./class.dart",
-        "./switch.dart",
         "./class_function_argument.dart",
       },
     })
@@ -33,7 +32,5 @@ describe("new line:", function()
     "expected failure issue #4637",
     XFAIL
   )
-  run:new_line("switch.dart", { on_line = 3, text = "case 7:", indent = 4 })
-  run:new_line("switch.dart", { on_line = 6, text = "break;", indent = 6 }, "expected failure", XFAIL)
   run:new_line("class_function_argument.dart", { on_line = 11, text = "}", indent = 4 })
 end)
