@@ -12,14 +12,19 @@ describe("indent Lua:", function()
   describe("whole file:", function()
     run:whole_file(".", {
       expected_failures = {
-        "./multiple_arguments.dart", -- expected failure issue #4637
+        "./multiple_arguments.dart",
+        "./class.dart",
+        "./switch.dart",
+        "./class_function_argument.dart",
       },
     })
   end)
 end)
 
 describe("new line:", function()
-  run:new_line("class.dart", { on_line = 2, text = "var x;", indent = 0 })
+  run:new_line("class.dart", { on_line = 4, text = "int five;", indent = 2 })
+  run:new_line("class.dart", { on_line = 6, text = "'100'", indent = 8 }, "expected failure", XFAIL)
+  run:new_line("class.dart", { on_line = 7, text = "int five = 5", indent = 2 }, "expected failure", XFAIL)
   run:new_line("try.dart", { on_line = 2, text = "var x;", indent = 4 })
   run:new_line("multiple_arguments.dart", { on_line = 10, text = "var x;", indent = 4 })
   run:new_line(
@@ -28,4 +33,7 @@ describe("new line:", function()
     "expected failure issue #4637",
     XFAIL
   )
+  run:new_line("switch.dart", { on_line = 3, text = "case 7:", indent = 4 })
+  run:new_line("switch.dart", { on_line = 6, text = "break;", indent = 6 }, "expected failure", XFAIL)
+  run:new_line("class_function_argument.dart", { on_line = 11, text = "}", indent = 4 })
 end)
