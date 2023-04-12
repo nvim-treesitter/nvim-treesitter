@@ -163,7 +163,8 @@ function M.get_indent(lnum)
   end
 
   -- tracks to ensure multiple indent levels are not applied for same line
-  local is_processed_by_row = {}
+  local is_indent_processed_by_row = {}
+  local is_dedent_processed_by_row = {}
 
   if q.indent.zero[node:id()] then
     return 0
@@ -198,15 +199,15 @@ function M.get_indent(lnum)
     local is_processed = false
 
     if
-      not is_processed_by_row[srow]
+      not is_dedent_processed_by_row[srow]
       and ((q.indent.branch[node:id()] and srow == lnum - 1) or (q.indent.dedent[node:id()] and srow ~= lnum - 1))
     then
       indent = indent - indent_size
-      is_processed = true
+      is_dedent_processed_by_row[srow] = true
     end
 
     -- do not indent for nodes that starts-and-ends on same line and starts on target line (lnum)
-    local should_process = not is_processed_by_row[srow]
+    local should_process = not is_indent_processed_by_row[srow]
     local is_in_err = false
     if should_process then
       local parent = node:parent()
@@ -313,7 +314,7 @@ function M.get_indent(lnum)
       end
     end
 
-    is_processed_by_row[srow] = is_processed_by_row[srow] or is_processed
+    is_indent_processed_by_row[srow] = is_indent_processed_by_row[srow] or is_processed
 
     node = node:parent()
   end
