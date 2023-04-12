@@ -51,7 +51,7 @@
     "revision": "399605a02bcd5daa309ce63a6459c600dce3473f"
   },
   "comment": {
-    "revision": "a37ca370310ac6f89b6e0ebf2b86b2219780494e"
+    "revision": "f08e7d44b2923e9da2bf487a2f365d08677d368e"
   },
   "commonlisp": {
     "revision": "c7e814975ab0d0d04333d1f32391c41180c58919"
@@ -156,7 +156,7 @@
     "revision": "577a075d46ea109905c5cb6179809df88da61ce9"
   },
   "gitcommit": {
-    "revision": "17235998809be904892f14ee57730d96795e9323"
+    "revision": "04dcb2cb9a4cf638252b8bd4a829f9acadf2cc4c"
   },
   "gitignore": {
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
@@ -165,7 +165,7 @@
     "revision": "ae79782c00656945db69641378e688cdb78d52c1"
   },
   "glimmer": {
-    "revision": "16c3786e1a2c87a236c823d1a8859574778a3436"
+    "revision": "21805f429c5b7536be9f5f61dcabb5d3a4173bec"
   },
   "glsl": {
     "revision": "e2c2214045de2628b81089b1a739962f59654558"
@@ -507,7 +507,7 @@
     "revision": "14e47600afef0affffcbfbe1543381b1ac8fbc5c"
   },
   "v": {
-    "revision": "4cd190d1aaced458e8f1548e11b3beae5e4ea806"
+    "revision": "234c1028883187c6b48e030780b7332229faefa3"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
