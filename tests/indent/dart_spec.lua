@@ -12,7 +12,7 @@ describe("indent Lua:", function()
   describe("whole file:", function()
     run:whole_file(".", {
       expected_failures = {
-        "./dart/multiple_arguments.dart", -- expected failure issue #4637
+        "./multiple_arguments.dart", -- expected failure issue #4637
       },
     })
   end)
