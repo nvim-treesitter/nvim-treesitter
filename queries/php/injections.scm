@@ -1,4 +1,4 @@
-(text) @html
+(text) @html @combined
 
 (comment) @phpdoc
 
