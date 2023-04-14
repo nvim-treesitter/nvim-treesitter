@@ -39,7 +39,6 @@ for ft, lang in pairs {
   sty = "latex",
   pandoc = "markdown",
   rmd = "markdown",
-  quarto = "markdown",
   dosini = "ini",
   confini = "ini",
 } do
