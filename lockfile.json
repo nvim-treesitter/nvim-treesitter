@@ -36,7 +36,7 @@
     "revision": "f35789006ccbe5be8db21d1a2dd4cc0b5a1286f2"
   },
   "c_sharp": {
-    "revision": "92d572eef5ffdd4117e7ba36b56850a90cb79151"
+    "revision": "0dd182a14a519a70dc60c3727fdc2fdb65c030ae"
   },
   "capnp": {
     "revision": "fc6e2addf103861b9b3dffb82c543eb6b71061aa"
@@ -213,7 +213,7 @@
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
   },
   "html": {
-    "revision": "29f53d8f4f2335e61bf6418ab8958dac3282077a"
+    "revision": "594f23eb6da580cf269a59d966db68f2cde7d0c8"
   },
   "htmldjango": {
     "revision": "b2dba02eddab66be669022320273d0dfe1ff923d"
@@ -291,7 +291,7 @@
     "revision": "fa6bfd51727e4bef99f7eec5f43947f73d64ea7d"
   },
   "matlab": {
-    "revision": "2d5d3d5193718a86477d4335aba5b34e79147326"
+    "revision": "dd95e1fc1b5514aa3a882d5fb8ddbf4683e953f0"
   },
   "menhir": {
     "revision": "db7953acb0d5551f207373c81fa07a57d7b085cb"
@@ -336,7 +336,7 @@
     "revision": "20239395eacdc2e0923a7e5683ad3605aee7b716"
   },
   "perl": {
-    "revision": "3d3a95ee6645d7bcd993e77b252ffd33fd297c8e"
+    "revision": "60aa138f9e1db15becad53070f4d5898b0e8a98c"
   },
   "php": {
     "revision": "1a40581b7a899201d7c2b4684ee34490bc306bd6"
@@ -462,7 +462,7 @@
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
   },
   "t32": {
-    "revision": "f8106fcf5a27f905b3d9d55d9cd3e910bea70c60"
+    "revision": "0802b3638a1c5022b4d55bdafa64f856ed43d7d6"
   },
   "tablegen": {
     "revision": "e5e046e1b221e25111175469f02f3cf336010857"
@@ -543,6 +543,6 @@
     "revision": "c348825d3f86dec71dee0e1223c6bd73114e3579"
   },
   "zig": {
-    "revision": "2c7b6308d906d7aec4b3e1fafaaeca447a8a2c2f"
+    "revision": "9b84cb66e7d480e7c0370f4e33e8325bac6ad09f"
   }
 }
