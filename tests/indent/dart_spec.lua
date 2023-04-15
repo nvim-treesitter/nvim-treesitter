@@ -25,6 +25,9 @@ describe("new line:", function()
   run:new_line("class.dart", { on_line = 6, text = "'100'", indent = 8 }, "expected failure", XFAIL)
   run:new_line("class.dart", { on_line = 7, text = "int five = 5", indent = 2 }, "expected failure", XFAIL)
   run:new_line("try.dart", { on_line = 2, text = "var x;", indent = 4 })
+  for _, content in ipairs { "var x;", "var x" } do
+    run:new_line("try.dart", { on_line = 10, text = content, indent = 6 })
+  end
   run:new_line("switch.dart", { on_line = 3, text = "x = 1;", indent = 6 })
   run:new_line("switch.dart", { on_line = 9, text = "x = 1;", indent = 6 })
   run:new_line("switch.dart", { on_line = 3, text = "case 2:", indent = 4 })
