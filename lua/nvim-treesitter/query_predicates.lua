@@ -1,5 +1,30 @@
 local query = require "vim.treesitter.query"
 
+local html_script_type_languages = {
+  ["importmap"] = "json",
+  ["module"] = "javascript",
+  ["application/ecmascript"] = "javascript",
+  ["text/ecmascript"] = "javascript",
+}
+
+local injection_language_aliases = {
+  ex = "elixir",
+  fc = "func",
+  fir = "firrtl",
+  ha = "hare",
+  hs = "haskell",
+  js = "javascript",
+  kt = "kotlin",
+  ml = "ocaml",
+  pl = "perl",
+  py = "python",
+  ts = "typescript",
+  rs = "rust",
+  sh = "bash",
+  ungram = "ungrammar",
+  uxn = "uxntal",
+}
+
 local function error(str)
   vim.api.nvim_err_writeln(str)
 end
@@ -119,19 +144,17 @@ query.add_predicate("has-type?", function(match, _pattern, _bufnr, pred)
   return vim.tbl_contains(types, node:type())
 end)
 
-local html_script_type_languages = {
-  ["importmap"] = "json",
-  ["module"] = "javascript",
-  ["application/ecmascript"] = "javascript",
-  ["text/ecmascript"] = "javascript",
-}
-
----@param match string
----@param metadata table
+---@param match (TSNode|nil)[]
+---@param _ string
+---@param bufnr integer
+---@param pred string[]
 ---@return boolean|nil
-query.add_directive("set-lang-from-mimetype!", function(match, pattern, bufnr, predicate, metadata)
-  local capture_id = predicate[2]
+query.add_directive("set-lang-from-mimetype!", function(match, _, bufnr, pred, metadata)
+  local capture_id = pred[2]
   local node = match[capture_id]
+  if not node then
+    return
+  end
   local type_attr_value = vim.treesitter.get_node_text(node, bufnr)
   local configured = html_script_type_languages[type_attr_value]
   if configured then
@@ -139,6 +162,26 @@ query.add_directive("set-lang-from-mimetype!", function(match, pattern, bufnr, p
   else
     local parts = vim.split(type_attr_value, "/", {})
     metadata.language = parts[#parts]
+  end
+end)
+
+---@param match (TSNode|nil)[]
+---@param _ string
+---@param bufnr integer
+---@param pred string[]
+---@return boolean|nil
+query.add_directive("set-lang-from-alias!", function(match, _, bufnr, pred, metadata)
+  local capture_id = pred[2]
+  local node = match[capture_id]
+  if not node then
+    return
+  end
+  local injection_alias = vim.treesitter.get_node_text(node, bufnr)
+  local configured = injection_language_aliases[injection_alias]
+  if configured then
+    metadata.language = configured
+  else
+    metadata.language = injection_alias
   end
 end)
 
