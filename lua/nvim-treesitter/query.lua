@@ -105,7 +105,7 @@ do
   ---@param query_name string
   function M.get_query(lang, query_name)
     if cache[lang][query_name] == nil then
-      cache[lang][query_name] = ts.get_query(lang, query_name)
+      cache[lang][query_name] = ts.get(lang, query_name)
     end
 
     return cache[lang][query_name]
