@@ -150,12 +150,12 @@
  ] @string
 
 [
- (bare_symbol)
  (heredoc_beginning)
  (heredoc_end)
  ] @constant
 
 [
+ (bare_symbol)
  (simple_symbol)
  (delimited_symbol)
  (hash_key_symbol)
