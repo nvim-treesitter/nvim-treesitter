@@ -63,13 +63,13 @@
     "revision": "eedb93bf9e22e82ed6a67e6c57fd78731b44f591"
   },
   "cpp": {
-    "revision": "0b6d0eb9abdf7cea31961cd903eeed5bbd0aae74"
+    "revision": "670404d7c689be1c868a46f919ba2a3912f2b7ef"
   },
   "css": {
     "revision": "769203d0f9abe1a9a691ac2b9fe4bb4397a73c51"
   },
   "cuda": {
-    "revision": "967e7d74a1a04a680674199e12141963a8dd6336"
+    "revision": "a35854270463a96e79096bb854aae30a4f0e6cd2"
   },
   "cue": {
     "revision": "f83fd9abbece9becb5232c517b9d47ff141e237a"
@@ -105,7 +105,7 @@
     "revision": "869dff3ceb8823ca4b17ca33b663667c8e41e8ba"
   },
   "elm": {
-    "revision": "28bb193640d916dfaf947912c1413cebb0484841"
+    "revision": "692c50c0b961364c40299e73c1306aecb5d20f40"
   },
   "elsa": {
     "revision": "0a66b2b3f3c1915e67ad2ef9f7dbd2a84820d9d7"
@@ -207,7 +207,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "fce5ea2e842404ce1af13fffdcf0daa02240c3dd"
+    "revision": "40472c119b5740d9a1fa0b0dc0b013502b636708"
   },
   "hocon": {
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
@@ -273,7 +273,7 @@
     "revision": "0fc89962b7ff5c7d676b8592c1cbce1ceaa806fd"
   },
   "luadoc": {
-    "revision": "5c9572faf56d1fa0f7e0740c94de1c4f67c6af5e"
+    "revision": "1e1152264cc68e11d65d9e2493566f5717a13d11"
   },
   "luap": {
     "revision": "bfb38d254f380362e26b5c559a4086ba6e92ba77"
@@ -456,7 +456,7 @@
     "revision": "697bb515471871e85ff799ea57a76298a71a9cca"
   },
   "swift": {
-    "revision": "ca3a37055069277ad91d6a2c35faf9f247dcfbfb"
+    "revision": "05467af73ac315fc80c7f3ef397e261f30395e2a"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
