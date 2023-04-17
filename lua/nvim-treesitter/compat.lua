@@ -20,4 +20,8 @@ function M.get_range(node, source, metadata)
   return (ts.get_range or tsq.get_range)(node, source, metadata)
 end
 
+function M.get_node_text(node, bufnr)
+  return (ts.get_node_text or tsq.get_node_text)(node, bufnr)
+end
+
 return M
