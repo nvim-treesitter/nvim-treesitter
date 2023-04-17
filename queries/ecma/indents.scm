@@ -49,9 +49,9 @@
 (parenthesized_expression ("(" (_) ")" @indent.end))
 ["}" "]"] @indent.end
 
+(template_string) @indent.ignore
+
 [
   (comment)
-  (template_string)
-] @indent.ignore
-
-(ERROR) @indent.auto
+  (ERROR)
+] @indent.auto
