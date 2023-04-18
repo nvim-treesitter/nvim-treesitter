@@ -1,8 +1,11 @@
 (fenced_code_block
   (info_string
-    (language) @language)
-  (#not-match? @language "elm")
-  (code_fence_content) @content (#exclude_children! @content))
+    (language) @_lang)
+  (#not-match? @_lang "elm") ; prevent segfault when using elm parser
+  (code_fence_content)
+    @content
+    (#set-lang-from-info-string! @_lang)
+    (#exclude_children! @content))
 
 ((html_block) @html)
 
