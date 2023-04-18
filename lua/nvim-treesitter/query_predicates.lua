@@ -15,7 +15,7 @@ local non_filetype_match_injection_language_aliases = {
   ts = "typescript",
 }
 
-local function get_language_name_from_fenced_code_block_tag(injection_alias)
+local function get_parser_from_markdown_info_string(injection_alias)
   local match = vim.filetype.match { filename = "a." .. injection_alias }
   return match or non_filetype_match_injection_language_aliases[injection_alias] or injection_alias
 end
@@ -165,14 +165,14 @@ end)
 ---@param bufnr integer
 ---@param pred string[]
 ---@return boolean|nil
-query.add_directive("set-lang-from-alias!", function(match, _, bufnr, pred, metadata)
+query.add_directive("set-lang-from-info-string!", function(match, _, bufnr, pred, metadata)
   local capture_id = pred[2]
   local node = match[capture_id]
   if not node then
     return
   end
   local injection_alias = vim.treesitter.get_node_text(node, bufnr)
-  metadata.language = get_language_name_from_fenced_code_block_tag(injection_alias)
+  metadata.language = get_parser_from_markdown_info_string(injection_alias)
 end)
 
 -- Just avoid some annoying warnings for this directive
