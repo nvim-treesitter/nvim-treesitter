@@ -4,7 +4,7 @@
   (#not-match? @_lang "elm") ; prevent segfault when using elm parser
   (code_fence_content)
     @content
-    (#set-lang-from-info-string @_lang)
+    (#set-lang-from-info-string! @_lang)
     (#exclude_children! @content))
 
 ((html_block) @html)
