@@ -7,23 +7,18 @@ local html_script_type_languages = {
   ["text/ecmascript"] = "javascript",
 }
 
-local injection_language_aliases = {
+local non_filetype_match_injection_language_aliases = {
   ex = "elixir",
-  fc = "func",
-  fir = "firrtl",
-  ha = "hare",
-  hs = "haskell",
-  js = "javascript",
-  kt = "kotlin",
-  ml = "ocaml",
   pl = "perl",
-  py = "python",
-  ts = "typescript",
-  rs = "rust",
   sh = "bash",
-  ungram = "ungrammar",
   uxn = "uxntal",
+  ts = "typescript",
 }
+
+local function get_language_name_from_fenced_code_block_tag(injection_alias)
+  local match = vim.filetype.match { filename = "a." .. injection_alias }
+  return match or non_filetype_match_injection_language_aliases[injection_alias] or injection_alias
+end
 
 local function error(str)
   vim.api.nvim_err_writeln(str)
@@ -177,12 +172,7 @@ query.add_directive("set-lang-from-alias!", function(match, _, bufnr, pred, meta
     return
   end
   local injection_alias = vim.treesitter.get_node_text(node, bufnr)
-  local configured = injection_language_aliases[injection_alias]
-  if configured then
-    metadata.language = configured
-  else
-    metadata.language = injection_alias
-  end
+  metadata.language = get_language_name_from_fenced_code_block_tag(injection_alias)
 end)
 
 -- Just avoid some annoying warnings for this directive
