@@ -508,7 +508,7 @@ list.gitcommit = {
   maintainers = { "@gbprod" },
 }
 
-list.git_config = {
+list.gitconfig = {
   install_info = {
     url = "https://github.com/the-mikedavis/tree-sitter-git-config",
     files = { "src/parser.c" },
