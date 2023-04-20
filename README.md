@@ -246,7 +246,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [hocon](https://github.com/antosha417/tree-sitter-hocon) (maintained by @antosha417)
 - [x] [html](https://github.com/tree-sitter/tree-sitter-html) (maintained by @TravonteD)
 - [x] [htmldjango](https://github.com/interdependence/tree-sitter-htmldjango) (experimental, maintained by @ObserverOfTime)
-- [x] [http](https://github.com/rest-nvim/tree-sitter-http) (maintained by @NTBBloodbath)
+- [x] [http](https://github.com/rest-nvim/tree-sitter-http) (maintained by @amaanq)
 - [x] [ini](https://github.com/justinmk/tree-sitter-ini) (experimental, maintained by @theHamsta)
 - [x] [java](https://github.com/tree-sitter/tree-sitter-java) (maintained by @p00f)
 - [x] [javascript](https://github.com/tree-sitter/tree-sitter-javascript) (maintained by @steelsojka)
