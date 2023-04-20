@@ -156,7 +156,7 @@
     "revision": "577a075d46ea109905c5cb6179809df88da61ce9"
   },
   "gitcommit": {
-    "revision": "04dcb2cb9a4cf638252b8bd4a829f9acadf2cc4c"
+    "revision": "735f02b12d9cdd9a8b90ac4b2dff8cdab6dd1e7b"
   },
   "gitignore": {
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
@@ -213,7 +213,7 @@
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
   },
   "html": {
-    "revision": "594f23eb6da580cf269a59d966db68f2cde7d0c8"
+    "revision": "86c253e675e7fdd1c0482efe0706f24bafbc3a7d"
   },
   "htmldjango": {
     "revision": "b2dba02eddab66be669022320273d0dfe1ff923d"
@@ -225,7 +225,7 @@
     "revision": "1a0ce072ebf3afac7d5603d9a95bb7c9a6709b44"
   },
   "java": {
-    "revision": "3c24aa9365985830421a3a7b6791b415961ea770"
+    "revision": "c194ee5e6ede5f26cf4799feead4a8f165dcf14d"
   },
   "javascript": {
     "revision": "5720b249490b3c17245ba772f6be4a43edb4e3b7"
@@ -462,7 +462,7 @@
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
   },
   "t32": {
-    "revision": "0802b3638a1c5022b4d55bdafa64f856ed43d7d6"
+    "revision": "b7d81e1e998f2246997fbbe4f31f8e6b01f43ea2"
   },
   "tablegen": {
     "revision": "e5e046e1b221e25111175469f02f3cf336010857"
