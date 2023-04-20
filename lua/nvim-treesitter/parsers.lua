@@ -515,7 +515,7 @@ list.git_config = {
   },
   filetype = "gitconfig",
   maintainers = { "@amaanq" },
-  readme_name = "gitconfig",
+  readme_name = "git_config",
 }
 
 list.gitignore = {
