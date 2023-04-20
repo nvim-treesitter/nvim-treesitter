@@ -691,7 +691,7 @@ list.http = {
     files = { "src/parser.c" },
     generate_requires_npm = true,
   },
-  maintainers = { "@NTBBloodbath" },
+  maintainers = { "@amaanq" },
 }
 
 list.ini = {
