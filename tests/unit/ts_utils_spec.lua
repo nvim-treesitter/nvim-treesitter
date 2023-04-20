@@ -71,8 +71,14 @@ describe("swap_nodes", function()
   local function swap(case)
     vim.api.nvim_buf_set_lines(0, 0, -1, false, case.lines)
     vim.opt.filetype = case.filetype
-    local a = vim.treesitter.get_node_at_pos(0, case.a[1], case.a[2], {})
-    local b = vim.treesitter.get_node_at_pos(0, case.b[1], case.b[2], {})
+    local a = vim.treesitter.get_node {
+      bufnr = 0,
+      pos = { case.a[1], case.a[2] },
+    }
+    local b = vim.treesitter.get_node {
+      bufnr = 0,
+      pos = { case.b[1], case.b[2] },
+    }
     tsutils.swap_nodes(a, b, 0, true)
   end
 
