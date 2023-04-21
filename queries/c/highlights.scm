@@ -145,7 +145,7 @@
 
 (primitive_type) @type.builtin
 
-(sized_type_specifier _ @type.builtin type: _)
+(sized_type_specifier _ @type.builtin type: _?)
 
 ((identifier) @constant
  (#lua-match? @constant "^[A-Z][A-Z0-9_]+$"))
