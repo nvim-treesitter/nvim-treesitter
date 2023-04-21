@@ -167,7 +167,7 @@ list.c = {
     url = "https://github.com/tree-sitter/tree-sitter-c",
     files = { "src/parser.c" },
   },
-  maintainers = { "@vigoux" },
+  maintainers = { "@amaanq" },
 }
 
 list.c_sharp = {
@@ -1230,7 +1230,7 @@ list.rust = {
     url = "https://github.com/tree-sitter/tree-sitter-rust",
     files = { "src/parser.c", "src/scanner.c" },
   },
-  maintainers = { "@vigoux" },
+  maintainers = { "@amaanq" },
 }
 
 list.scala = {
