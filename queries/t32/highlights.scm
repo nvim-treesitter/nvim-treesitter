@@ -81,7 +81,7 @@
 (
   (command_expression
     command: (identifier) @keyword.return)
-  (#match? @keyword.return "^[rR][eE][tT][uU][rR][nN]$")
+  (#lua-match? @keyword.return "^[rR][eE][tT][uU][rR][nN]$")
 )
 
 ; Subroutine calls
@@ -97,14 +97,14 @@
   (identifier) @constant)
 (
  (argument_list (identifier) @constant.builtin)
- (#match? @constant.builtin "^[%/][a-zA-Z][a-zA-Z0-9.]*$")
+ (#lua-match? @constant.builtin "^[%%/][%l%u][%l%u%d.]*$")
 )
 
 (
   (command_expression
     command: (identifier) @keyword
     arguments: (argument_list . (identifier) @label))
-  (#match? @keyword "^[gG][oO][tT][oO]$")
+  (#lua-match? @keyword "^[gG][oO][tT][oO]$")
 )
 (labeled_expression
   label: (identifier) @label)

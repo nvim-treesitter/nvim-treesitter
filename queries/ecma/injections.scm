@@ -90,7 +90,7 @@
 (assignment_expression
   left: (member_expression
           property: (property_identifier) @_prop
-          (#match? @_prop "(out|inn)erHTML"))
+           (#any-of? @_prop "innerHTML" "outerHTML"))
   right: (template_string) @html
     (#offset! @html 0 1 0 -1))
 
@@ -98,6 +98,6 @@
 (assignment_expression
    left: (member_expression
            property: (property_identifier) @_prop
-           (#match? @_prop "(out|inn)erHTML"))
+            (#any-of? @_prop "innerHTML" "outerHTML"))
    right: (string) @html
             (#offset! @html 0 1 0 -1))

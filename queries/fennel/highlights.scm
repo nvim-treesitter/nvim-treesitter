@@ -40,7 +40,7 @@
 (list . (multi_symbol (symbol) @function .))
 
 ((symbol) @variable.builtin
- (#match? @variable.builtin "^[$]"))
+ (#lua-match? @variable.builtin "^[$]"))
 
 (binding) @symbol
 

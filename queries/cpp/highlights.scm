@@ -1,7 +1,7 @@
 ; inherits: c
 
 ((identifier) @field
- (#match? @field "(^_|^m_|_$)"))
+  (#lua-match? @field "^m?_.*$"))
 
 (parameter_declaration
   declarator: (reference_declarator) @parameter)
@@ -39,7 +39,7 @@
 
 (namespace_identifier) @namespace
 ((namespace_identifier) @type
-                        (#lua-match? @type "^[A-Z]"))
+  (#lua-match? @type "^[%u]"))
 
 (case_statement
   value: (qualified_identifier (identifier) @constant))
@@ -135,26 +135,26 @@
 ((function_declarator
   (qualified_identifier
     (identifier) @constructor))
-  (#lua-match? @constructor "^[A-Z]"))
+  (#lua-match? @constructor "^%u"))
 
 ((call_expression
   function: (identifier) @constructor)
-(#lua-match? @constructor "^[A-Z]"))
+(#lua-match? @constructor "^%u"))
 ((call_expression
   function: (qualified_identifier
               name: (identifier) @constructor))
-(#lua-match? @constructor "^[A-Z]"))
+(#lua-match? @constructor "^%u"))
 
 ((call_expression
   function: (field_expression
               field: (field_identifier) @constructor))
-(#lua-match? @constructor "^[A-Z]"))
+(#lua-match? @constructor "^%u"))
 
 ;; constructing a type in an initializer list: Constructor ():  **SuperType (1)**
 ((field_initializer
   (field_identifier) @constructor
   (argument_list))
- (#lua-match? @constructor "^[A-Z]"))
+ (#lua-match? @constructor "^%u"))
 
 
 ; Constants

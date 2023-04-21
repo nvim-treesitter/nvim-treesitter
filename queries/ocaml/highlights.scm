@@ -58,10 +58,8 @@
 (application_expression
   function: (value_path (value_name) @function))
 
-(
-  (value_name) @function.builtin
-  (#match? @function.builtin "^(raise(_notrace)?|failwith|invalid_arg)$")
-)
+((value_name) @function.builtin
+  (#any-of? @function.builtin "raise" "raise_notrace" "failwith" "invalid_arg"))
 
 ; Properties
 ;-----------

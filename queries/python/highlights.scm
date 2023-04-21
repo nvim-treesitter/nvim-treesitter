@@ -29,7 +29,7 @@
 
 ((attribute
     attribute: (identifier) @field)
- (#match? @field "^([A-Z])@!.*$"))
+ (#lua-match? @field "^%u@!.*$"))
 
 ((identifier) @type.builtin
  (#any-of? @type.builtin
@@ -71,12 +71,12 @@
 
 ((call
    function: (identifier) @constructor)
- (#lua-match? @constructor "^[A-Z]"))
+ (#lua-match? @constructor "^%u"))
 
 ((call
   function: (attribute
               attribute: (identifier) @constructor))
- (#lua-match? @constructor "^[A-Z]"))
+ (#lua-match? @constructor "^%u"))
 
 ;; Decorators
 
@@ -170,7 +170,7 @@
 (comment) @comment @spell
 
 ((module . (comment) @preproc)
-  (#match? @preproc "^#!/"))
+  (#lua-match? @preproc "^#!/"))
 
 (string) @string
 (escape_sequence) @string.escape
@@ -324,14 +324,14 @@
           (expression_statement
             (assignment
               left: (identifier) @field))))
- (#match? @field "^([A-Z])@!.*$"))
+ (#lua-match? @field "^%u@!.*$"))
 ((class_definition
   body: (block
           (expression_statement
             (assignment
               left: (_
                      (identifier) @field)))))
- (#match? @field "^([A-Z])@!.*$"))
+ (#lua-match? @field "^%u@!.*$"))
 
 ((class_definition
   (block

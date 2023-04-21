@@ -59,28 +59,28 @@
 
 ; Inline function variables
 ((sym_lit) @variable.builtin
- (#match? @variable.builtin "^[%]"))
+ (#lua-match? @variable.builtin "^%%"))
 
 ; Constructor
 ((sym_lit) @constructor
- (#match? @constructor "^-\\>[^\\>].*"))
+ (#lua-match? @constructor "^-\\>[^\\>].*"))
 
 ; Dynamic variables
 ((sym_lit) @variable.builtin
- (#match? @variable.builtin "^[*].+[*]$"))
+ (#lua-match? @variable.builtin "^[*].+[*]$"))
 
 ; Gensym
 ;; Might not be needed
 ((sym_lit) @variable
- (#match? @variable "^.*#$"))
+ (#lua-match? @variable "^.*#$"))
 
 ; Types
 ;; TODO: improve?
 ((sym_lit) @type
- (#match? @type "^[A-Z][^/]*$"))
+ (#lua-match? @type "^[%u][^/]*$"))
 ;; Symbols with `.` but not `/`
 ((sym_lit) @type
- (#match? @type "^[^/]+[.][^/]*$"))
+ (#lua-match? @type "^[^/]+[.][^/]*$"))
 
 ; Interop
 ((sym_lit) @method
@@ -88,11 +88,11 @@
 ((sym_lit) @field
  (#match? @field "^\\.-"))
 ((sym_lit) @field
- (#match? @field "^[A-Z].*/.+"))
+ (#lua-match? @field "^[%u].*/.+"))
 (list_lit
  .
  (sym_lit) @method
- (#match? @method "^[A-Z].*/.+"))
+ (#lua-match? @method "^[%u].*/.+"))
 ;; TODO: Special casing for the `.` macro
 
 ; Operators

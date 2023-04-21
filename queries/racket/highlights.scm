@@ -40,7 +40,7 @@
 (symbol) @variable
 
 ((symbol) @comment
- (#match? @comment "^#[cC][iIsS]$"))
+ (#lua-match? @comment "^#[cC][iIsS]$"))
 
 ;; extension ;;
 

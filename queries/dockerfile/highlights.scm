@@ -55,9 +55,3 @@
 
 (expose_instruction
   (expose_port) @number)
-
-((stopsignal_instruction) @number
-  (#match? @number "[0-9][0-9]?$"))
-
-((stopsignal_instruction) @constant.builtin
-  (#match? @constant.builtin "SIG(ABRT|HUP|INT|KILL|QUIT|STOP|TERM|TSTP)$"))

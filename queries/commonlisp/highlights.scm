@@ -64,7 +64,7 @@
 
 (num_lit) @number
 
-((sym_lit)  @boolean (#match? @boolean "^(t|T)$"))
+((sym_lit)  @boolean (#any-of? @boolean "t" "T"))
 
 (nil_lit) @constant.builtin
 
@@ -72,7 +72,7 @@
 
 ;; dynamic variables
 ((sym_lit) @variable.builtin
- (#match? @variable.builtin "^[*].+[*]$"))
+ (#lua-match? @variable.builtin "^[*].+[*]$"))
 
 ;; quote
 "'" @string.escape
@@ -147,7 +147,7 @@
 
 ;; constant
 ((sym_lit) @constant
- (#match? @constant "^[+].+[+]$"))
+ (#lua-match? @constant "^[+].+[+]$"))
 
 (var_quoting_lit
   marker: "#'" @symbol
@@ -180,7 +180,7 @@
 
 
 ((sym_lit) @symbol
-(#match? @symbol "^[&]"))
+(#lua-match? @symbol "^[&]"))
 
 [(array_dimension) "#0A" "#0a"] @number
 

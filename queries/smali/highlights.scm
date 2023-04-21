@@ -82,7 +82,10 @@
   (#lua-match? @keyword.return "^return"))
 
 ((opcode) @conditional
-  (#match? @conditional "^(if|cmp)"))
+  (#lua-match? @conditional "^if"))
+
+((opcode) @conditional
+  (#lua-match? @conditional "^cmp"))
 
 ((opcode) @exception
   (#lua-match? @exception "^throw"))

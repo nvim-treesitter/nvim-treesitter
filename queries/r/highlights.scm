@@ -13,7 +13,7 @@
 (comment) @comment @spell
 
 ((program . (comment) @preproc)
-  (#match? @preproc "^#!/"))
+  (#lua-match? @preproc "^#!/"))
 
 (identifier) @variable
 

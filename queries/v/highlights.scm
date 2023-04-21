@@ -31,7 +31,7 @@
   (#not-has-parent? @_parent call_expression special_call_expression)))
 
 ((identifier) @variable.builtin
- (#match? @variable.builtin "^(err|macos|linux|windows)$"))
+  (#any-of? @variable.builtin "err" "macos" "linux" "windows"))
 
 (attribute_declaration) @attribute
 ;; C: TODO: fixme make `C`.exten highlighted as variable.builtin

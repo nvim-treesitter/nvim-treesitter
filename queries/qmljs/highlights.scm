@@ -124,7 +124,7 @@
 (predefined_type) @type.builtin
 
 ((identifier) @type
-  (#match? @type "^[A-Z]"))
+  (#lua-match? @type "^%u"))
 
 (type_arguments
   "<" @punctuation.bracket

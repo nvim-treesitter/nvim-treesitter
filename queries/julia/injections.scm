@@ -8,7 +8,7 @@
     (assignment)
     (const_declaration)
   ]
- (#match? @markdown "^\"\"\"")
+ (#lua-match? @markdown "^\"\"\"")
  (#offset! @markdown 0 3 0 -3))
 
 [
