@@ -130,7 +130,6 @@
 
 [
  (type_identifier)
- (sized_type_specifier)
  (type_descriptor)
 ] @type
 
@@ -145,6 +144,8 @@
   declarator: (type_identifier) @type.definition)
 
 (primitive_type) @type.builtin
+
+(sized_type_specifier _ @type.builtin type: _)
 
 ((identifier) @constant
  (#lua-match? @constant "^[A-Z][A-Z0-9_]+$"))
@@ -171,6 +172,10 @@
     field: (field_identifier) @function.call))
 (function_declarator
   declarator: (identifier) @function)
+(function_declarator
+  declarator: (parenthesized_declarator
+                (pointer_declarator
+                  declarator: (field_identifier) @function)))
 (preproc_function_def
   name: (identifier) @function.macro)
 
