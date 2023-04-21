@@ -117,7 +117,7 @@
     "revision": "203f7bd3c1bbfbd98fc19add4b8fcb213c059205"
   },
   "erlang": {
-    "revision": "abf5794511a912059b8234ea7e70d60b55df8805"
+    "revision": "616f09eab421671c8b54f9e8a0c9df759f956bc8"
   },
   "fennel": {
     "revision": "517195970428aacca60891b050aa53eabf4ba78d"
@@ -438,7 +438,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "8f1c49febcb8944d39df8554d32c749b4f5f3158"
+    "revision": "178148650a7847ab54e672d7483e850f5ad4e89d"
   },
   "squirrel": {
     "revision": "3fefc6b9bb2b4de1b1c461783f675918cd957546"
@@ -462,7 +462,7 @@
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
   },
   "t32": {
-    "revision": "b7d81e1e998f2246997fbbe4f31f8e6b01f43ea2"
+    "revision": "286623444eabaf8eb36a5e9b3fe4bf3d9b575f1e"
   },
   "tablegen": {
     "revision": "e5e046e1b221e25111175469f02f3cf336010857"
