@@ -84,7 +84,7 @@
  (#match? @constant.builtin "^SIG(HUP|INT|QUIT|ILL|TRAP|ABRT|BUS|FPE|KILL|USR[12]|SEGV|PIPE|ALRM|TERM|STKFLT|CHLD|CONT|STOP|TSTP|TT(IN|OU)|URG|XCPU|XFSZ|VTALRM|PROF|WINCH|IO|PWR|SYS|RTMIN([+]([1-9]|1[0-5]))?|RTMAX(-([1-9]|1[0-4]))?)$"))
 
 ((word) @boolean
-  (#match? @boolean "^(true|false)$"))
+  (#any-of? @boolean "true" "false"))
 
 (comment) @comment @spell
 (test_operator) @string
@@ -133,4 +133,4 @@
 (regex) @string.regex
 
 ((program . (comment) @preproc)
-  (#match? @preproc "^#!/"))
+  (#lua-match? @preproc "^#!/"))

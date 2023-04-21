@@ -159,7 +159,7 @@
   . (argument) @_transform @constant
   . (argument) @variable
   . (argument) @_action @constant
-  (#match? @_transform "TRANSFORM")
+  (#eq? @_transform "TRANSFORM")
   (#any-of? @_action "APPEND" "PREPEND" "TOUPPER" "TOLOWER" "STRIP" "GENEX_STRIP" "REPLACE")
 )
 (normal_command
@@ -169,7 +169,7 @@
   . (argument) @variable
   . (argument) @_action @constant
   . (argument)? @_selector @constant
-  (#match? @_transform "TRANSFORM")
+  (#eq? @_transform "TRANSFORM")
   (#any-of? @_action "APPEND" "PREPEND" "TOUPPER" "TOLOWER" "STRIP" "GENEX_STRIP" "REPLACE")
   (#any-of? @_selector "AT" "FOR" "REGEX")
 )
@@ -179,8 +179,8 @@
   . (argument) @_transform @constant
   (argument) @constant .
   (argument) @variable
-  (#match? @_transform "TRANSFORM")
-  (#match? @constant "OUTPUT_VARIABLE")
+  (#eq? @_transform "TRANSFORM")
+  (#eq? @constant "OUTPUT_VARIABLE")
 )
 
 (escape_sequence) @string.escape

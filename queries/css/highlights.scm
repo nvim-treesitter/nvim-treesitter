@@ -57,9 +57,9 @@
 (namespace_name) @namespace
 
 ((property_name) @type.definition
-                 (#match? @type.definition "^--"))
+  (#lua-match? @type.definition "^[-][-]"))
 ((plain_value) @type
-               (#match? @type "^--"))
+  (#lua-match? @type "^[-][-]"))
 
 [
  (string_value)

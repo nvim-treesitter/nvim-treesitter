@@ -15,12 +15,12 @@
 
 ;; match operators of test command
 (command
-  name: (word) @function.builtin (#match? @function.builtin "^test$")
+  name: (word) @function.builtin (#eq? @function.builtin "test")
   argument: (word) @operator (#match? @operator "^(!?\\=|-[a-zA-Z]+)$"))
 
 ;; match operators of [ command
 (command
-  name: (word) @punctuation.bracket (#match? @punctuation.bracket "^\\[$")
+  name: (word) @punctuation.bracket (#eq? @punctuation.bracket "[")
   argument: (word) @operator (#match? @operator "^(!?\\=|-[a-zA-Z]+)$"))
 
 [
@@ -106,7 +106,7 @@
 
 (command
   argument: [
-             (word) @parameter (#match? @parameter "^-")
+             (word) @parameter (#lua-match? @parameter "^[-]")
             ]
 )
 
@@ -137,7 +137,7 @@
   option: [
           (word)
           (concatenation (word))
-          ] @parameter (#match? @parameter "^-")
+          ] @parameter (#lua-match? @parameter "^[-]")
 )
 
 ;; Strings
@@ -160,7 +160,7 @@
 (#any-of? @boolean "true" "false"))
 
 ((program . (comment) @preproc)
-  (#match? @preproc "^#!/"))
+  (#lua-match? @preproc "^#!/"))
 
 ;; Error
 

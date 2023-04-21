@@ -29,7 +29,7 @@
 
 ((attribute
     attribute: (identifier) @field)
- (#match? @field "^([A-Z])@!.*$"))
+ (#lua-match? @field "^%u@!.*$"))
 
 ((identifier) @type.builtin
  (#any-of? @type.builtin
@@ -148,7 +148,7 @@
 (comment) @comment @spell
 
 ((module . (comment) @preproc)
-  (#match? @preproc "^#!/"))
+  (#lua-match? @preproc "^#!/"))
 
 (string) @string
 [

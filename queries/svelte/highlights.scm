@@ -15,7 +15,7 @@
   (#eq? @exception "catch"))
 
 ((special_block_keyword) @conditional
-  (#match? @conditional "^(if|else)$"))
+  (#any-of? @conditional "if" "else"))
 
 [
   "{"

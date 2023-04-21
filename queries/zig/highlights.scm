@@ -24,7 +24,7 @@ parameter: (IDENTIFIER) @parameter
     field_access: (IDENTIFIER)
     parameter: (IDENTIFIER)
   ] @type
-  (#match? @type "^[A-Z]([a-z]+[A-Za-z0-9]*)*$")
+  (#lua-match? @type "^%u([%l]+[%u%l%d]*)*$")
 )
 ;; assume camelCase is a function
 (
@@ -33,7 +33,7 @@ parameter: (IDENTIFIER) @parameter
     field_access: (IDENTIFIER)
     parameter: (IDENTIFIER)
   ] @function
-  (#match? @function "^[a-z]+([A-Z][a-z0-9]*)+$")
+  (#lua-match? @function "^%l+([%u][%l%d]*)+$")
 )
 
 ;; assume all CAPS_1 is a constant
@@ -42,7 +42,7 @@ parameter: (IDENTIFIER) @parameter
     variable_type_function: (IDENTIFIER)
     field_access: (IDENTIFIER)
   ] @constant
-  (#match? @constant "^[A-Z][A-Z_0-9]+$")
+  (#lua-match? @constant "^%u[%u%d_]+$")
 )
 
 [
