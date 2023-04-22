@@ -224,6 +224,9 @@
   "ini": {
     "revision": "1a0ce072ebf3afac7d5603d9a95bb7c9a6709b44"
   },
+  "janet_simple": {
+    "revision": "95f19cfb8ab03d994389e89d69477511440a08c6"
+  },
   "java": {
     "revision": "c194ee5e6ede5f26cf4799feead4a8f165dcf14d"
   },

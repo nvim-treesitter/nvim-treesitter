@@ -703,6 +703,15 @@ list.ini = {
   experimental = true,
 }
 
+list.janet_simple = {
+  install_info = {
+    url = "https://github.com/sogaiu/tree-sitter-janet-simple",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  filetype = "janet",
+  maintainers = { "@sogaiu" },
+}
+
 list.java = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-java",
