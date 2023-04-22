@@ -29,7 +29,7 @@
 
 ((attribute
     attribute: (identifier) @field)
- (#lua-match? @field "^%u@!.*$"))
+ (#lua-match? @field "^.*%l.*$"))
 
 ((identifier) @type.builtin
  (#any-of? @type.builtin

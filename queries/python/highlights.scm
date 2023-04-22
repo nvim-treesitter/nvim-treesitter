@@ -29,7 +29,7 @@
 
 ((attribute
     attribute: (identifier) @field)
- (#lua-match? @field "^%u@!.*$"))
+ (#lua-match? @field "^.*%l.*$"))
 
 ((identifier) @type.builtin
  (#any-of? @type.builtin
@@ -324,14 +324,14 @@
           (expression_statement
             (assignment
               left: (identifier) @field))))
- (#lua-match? @field "^%u@!.*$"))
+ (#lua-match? @field "^%l.*$"))
 ((class_definition
   body: (block
           (expression_statement
             (assignment
               left: (_
                      (identifier) @field)))))
- (#lua-match? @field "^%u@!.*$"))
+ (#lua-match? @field "^%l.*$"))
 
 ((class_definition
   (block
