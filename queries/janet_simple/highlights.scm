@@ -104,12 +104,19 @@
  (#any-of? @include "import" "require" "use"))
 
 ;; Builtin macros
+;;
+;; (each name (all-bindings)
+;;   (when-let [info (dyn (symbol name))]
+;;     (when (info :macro)
+;;       (print name))))
 ((sym_lit) @function.macro
  (#any-of? @function.macro
- "++" "+=" "--"
+ "%=" "*="
+ "++" "+="
+ "--" "-="
  "->" "->>" "-?>" "-?>>"
- "-=" "*=" "/=" "%="
- "and" "as->" "as?->"
+ "/="
+ "and" "as->" "as-macro" "as?->" "assert"
  "case" "chr" "comment" "compif" "comptime" "compwhen" "cond" "coro"
  "def-" "default" "defdyn" "defer" "defmacro" "defmacro-"
  "defn" "defn-"
@@ -120,6 +127,7 @@
  "ev/do-thread" "ev/gather" "ev/spawn" "ev/spawn-thread"
  "ev/with-deadline"
  "ffi/defbind"
+ "fiber-fn"
  "for" "forever" "forv"
  "generate"
  "if-let" "if-not" "if-with" "import"
@@ -130,10 +138,10 @@
  "prompt" "protect"
  "repeat"
  "seq" "short-fn"
- "tabseq" "tracev" "try"
+ "tabseq" "toggle" "tracev" "try"
  "unless" "use"
- "var-"
- "when" "when-let" "when-with" 
+ "var-" "varfn"
+ "when" "when-let" "when-with"
  "with" "with-dyns" "with-syms" "with-vars"))
 
 ;; All builtin functions
