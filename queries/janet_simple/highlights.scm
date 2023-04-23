@@ -33,10 +33,10 @@
 
 ;; >> Symbols
 
-; General symbol highlighting
+;; General symbol highlighting
 (sym_lit) @variable
 
-; General function calls
+;; General function calls
 (par_tup_lit
  .
  (sym_lit) @function.call)
@@ -45,18 +45,18 @@
  .
  (sym_lit) @function.call)
 
-; Quoted symbols
+;; Quoted symbols
 (quote_lit
  (sym_lit) @symbol)
 
 (qq_lit
  (sym_lit) @symbol)
 
-; Dynamic variables
+;; Dynamic variables
 ((sym_lit) @variable.builtin
  (#lua-match? @variable.builtin "^[*].+[*]$"))
 
-; Operators
+;; Operators
 ((sym_lit) @operator
  (#any-of? @operator
   "%" "*" "+" "-" "/"
@@ -66,7 +66,7 @@
  (#any-of? @keyword.operator
   "not" "not=" "and" "or"))
 
-; Definition
+;; Definition
 ((sym_lit) @keyword
  (#any-of? @keyword
   "def" "def-" "defdyn" "defglobal" "defmacro" "defmacro-"
@@ -75,11 +75,11 @@
 ((sym_lit) @keyword.function
  (#match? @keyword.function "^(defn|defn-|fn|varfn)$"))
 
-; Comment
+;; Comment
 ((sym_lit) @comment
  (#any-of? @comment "comment"))
 
-; Conditionals
+;; Conditionals
 ((sym_lit) @conditional
  (#any-of? @conditional
   "case" "cond"))
@@ -90,21 +90,20 @@
 ((sym_lit) @conditional
  (#match? @conditional "^when(\\-.*)?$"))
 
-; Repeats
+;; Repeats
 ((sym_lit) @repeat
  (#any-of? @repeat
   "for" "forever" "forv" "loop" "repeat" "while"))
 
-; Exception
+;; Exception
 ((sym_lit) @exception
  (#any-of? @exception "error" "errorf" "try"))
 
-; Includes
+;; Includes
 ((sym_lit) @include
  (#any-of? @include "import" "require" "use"))
 
-; Builtin macros
-;; TODO: Do all these items belong here?
+;; Builtin macros
 ((sym_lit) @function.macro
  (#any-of? @function.macro
  "++" "+=" "--"
@@ -137,10 +136,7 @@
  "when" "when-let" "when-with" 
  "with" "with-dyns" "with-syms" "with-vars"))
 
-((sym_lit) @function.macro
- (#match? @function.macro "^with\\-.*$"))
-
-; All builtin functions
+;; All builtin functions
 ((sym_lit) @function.builtin
  (#any-of? @function.builtin
   "*" "+" "-" "/"
