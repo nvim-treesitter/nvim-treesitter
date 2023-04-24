@@ -1269,7 +1269,7 @@ list.slint = {
 list.smali = {
   install_info = {
     url = "https://git.sr.ht/~yotam/tree-sitter-smali",
-    files = { "src/parser.c" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@amaanq" },
 }
