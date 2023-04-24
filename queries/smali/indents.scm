@@ -22,7 +22,7 @@
   ".end sparse-switch"
   ".end subannotation"
   "}"
-] @indent.end
+] @indent.end @indent.branch
 
 [ "{" "}" ] @indent.branch
 
