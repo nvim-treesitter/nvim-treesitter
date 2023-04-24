@@ -81,7 +81,7 @@
     "revision": "53485a8f301254e19c518aa20c80f1bcf7cf5c62"
   },
   "devicetree": {
-    "revision": "6428cee0e9d76fac3291796ced56ac14ecd036ee"
+    "revision": "d2cc332aeb814ea40e1e34ed6b9446324b32612a"
   },
   "dhall": {
     "revision": "affb6ee38d629c9296749767ab832d69bb0d9ea8"
@@ -456,13 +456,13 @@
     "revision": "697bb515471871e85ff799ea57a76298a71a9cca"
   },
   "swift": {
-    "revision": "05467af73ac315fc80c7f3ef397e261f30395e2a"
+    "revision": "80c1ff80502414f80de177ca162f4f71aa196ee2"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
   },
   "t32": {
-    "revision": "8a55c59b28d99fe1db7e056e93e4d66d71f5fad4"
+    "revision": "51373bc49e6b43b063a2eec121b5948ca00d17d9"
   },
   "tablegen": {
     "revision": "e5e046e1b221e25111175469f02f3cf336010857"
