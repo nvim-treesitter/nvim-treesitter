@@ -24,7 +24,7 @@
   (#any-of? @_method "\"nvim_exec_lua\"" "'nvim_exec_lua'" "[[nvim_exec_lua]]"))
 
 ; highlight string as query if starts with `;; query`
-((string ("string_content") @query) (#lua-match? @query "^%s*;+%s?query"))
+(string content: _ @query (#lua-match? @query "^%s*;+%s?query"))
 
 ((comment) @luadoc
   (#lua-match? @luadoc "[-][-][-][%s]*@")
