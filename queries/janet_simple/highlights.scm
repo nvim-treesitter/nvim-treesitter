@@ -1,16 +1,3 @@
-;; >> Explanation
-;; Parsers for lisps are a bit weird in that they just return the raw forms.
-;; This means we have to do a bit of extra work in the queries to get things
-;; highlighted as they should be.
-;;
-;; For the most part this means that some things have to be assigned multiple
-;; groups.
-;; By doing this we can add a basic capture and then later refine it with more
-;; specialized captures.
-;; This can mean that sometimes things are highlighted weirdly because they
-;; have multiple highlight groups applied to them.
-
-
 ;; >> Literals
 
 (kwd_lit) @symbol
@@ -22,10 +9,6 @@
 (bool_lit) @boolean
 (nil_lit) @constant.builtin
 (comment) @comment @spell
-
-["'" "~"] @string.escape
-
-["|" "," ";"] @punctuation.special
 
 ["{" "@{" "}"
  "[" "@[" "]"
@@ -46,6 +29,7 @@
  (sym_lit) @function.call)
 
 ;; Quoted symbols
+
 (quote_lit
  (sym_lit) @symbol)
 
@@ -53,64 +37,38 @@
  (sym_lit) @symbol)
 
 ;; Dynamic variables
+
 ((sym_lit) @variable.builtin
  (#lua-match? @variable.builtin "^[*].+[*]$"))
 
-;; Operators
-((sym_lit) @operator
- (#any-of? @operator
-  "%" "*" "+" "-" "/"
-  "<" "<=" "=" "==" ">" ">="))
-
-((sym_lit) @keyword.operator
- (#any-of? @keyword.operator
-  "not" "not=" "and" "or"))
-
-;; Definition
-((sym_lit) @keyword
- (#any-of? @keyword
-  "def" "def-" "defdyn" "defglobal" "defmacro" "defmacro-"
-  "var" "var-" "varglobal"))
-
-((sym_lit) @keyword.function
- (#match? @keyword.function "^(defn|defn-|fn|varfn)$"))
-
 ;; Comment
+
 ((sym_lit) @comment
  (#any-of? @comment "comment"))
 
-;; Conditionals
-((sym_lit) @conditional
- (#any-of? @conditional
-  "case" "cond"))
-
-((sym_lit) @conditional
- (#match? @conditional "^if(\\-.*)?$"))
-
-((sym_lit) @conditional
- (#match? @conditional "^when(\\-.*)?$"))
-
-;; Repeats
-((sym_lit) @repeat
- (#any-of? @repeat
-  "for" "forever" "forv" "loop" "repeat" "while"))
-
-;; Exception
-((sym_lit) @exception
- (#any-of? @exception "error" "errorf" "try"))
-
-;; Includes
-((sym_lit) @include
- (#any-of? @include "import" "require" "use"))
-
-;; Builtin macros
+;; Special forms and builtin macros
 ;;
+;; # special forms were manually added at the beginning
+;;
+;; # for macros
 ;; (each name (all-bindings)
 ;;   (when-let [info (dyn (symbol name))]
 ;;     (when (info :macro)
 ;;       (print name))))
+
 ((sym_lit) @function.macro
  (#any-of? @function.macro
+  ;; special forms
+  "break"
+  "def" "do"
+  "fn"
+  "if"
+  "quasiquote" "quote"
+  "set" "splice"
+  "unquote" "upscope"
+  "var"
+  "while"
+  ;; macros
   "%=" "*="
   "++" "+="
   "--" "-="
@@ -152,6 +110,7 @@
 ;;                (or (function? (info :value))
 ;;                    (cfunction? (info :value))))
 ;;       (print name))))
+
 ((sym_lit) @function.builtin
  (#any-of? @function.builtin
   "%" "*" "+" "-" "/"
