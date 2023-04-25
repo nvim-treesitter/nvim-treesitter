@@ -165,7 +165,7 @@
     "revision": "ae79782c00656945db69641378e688cdb78d52c1"
   },
   "glimmer": {
-    "revision": "21805f429c5b7536be9f5f61dcabb5d3a4173bec"
+    "revision": "d3031a8294bf331600d5046b1d14e690a0d8ba0c"
   },
   "glsl": {
     "revision": "e2c2214045de2628b81089b1a739962f59654558"
@@ -543,6 +543,6 @@
     "revision": "c348825d3f86dec71dee0e1223c6bd73114e3579"
   },
   "zig": {
-    "revision": "9b84cb66e7d480e7c0370f4e33e8325bac6ad09f"
+    "revision": "c73f666a48339657f6eb0f6fd0c67823f1d90992"
   }
 }
