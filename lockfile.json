@@ -165,7 +165,7 @@
     "revision": "ae79782c00656945db69641378e688cdb78d52c1"
   },
   "glimmer": {
-    "revision": "21805f429c5b7536be9f5f61dcabb5d3a4173bec"
+    "revision": "d3031a8294bf331600d5046b1d14e690a0d8ba0c"
   },
   "glsl": {
     "revision": "e2c2214045de2628b81089b1a739962f59654558"
@@ -426,7 +426,7 @@
     "revision": "07547525cdf4627343dca5891f1743ae45e879bb"
   },
   "smali": {
-    "revision": "b002dceb9b91a6d6de45479ab4b2e9596ebbaaf3"
+    "revision": "9bf8aa671a233ae2d2c6e9512c7144ce121b1fb6"
   },
   "smithy": {
     "revision": "cf8c7eb9faf7c7049839585eac19c94af231e6a0"
@@ -543,6 +543,6 @@
     "revision": "c348825d3f86dec71dee0e1223c6bd73114e3579"
   },
   "zig": {
-    "revision": "9b84cb66e7d480e7c0370f4e33e8325bac6ad09f"
+    "revision": "c73f666a48339657f6eb0f6fd0c67823f1d90992"
   }
 }
