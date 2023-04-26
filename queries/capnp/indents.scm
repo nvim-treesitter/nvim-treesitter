@@ -1,5 +1,6 @@
 [
   (annotation_targets)
+  (const)
   (const_list)
   (enum)
   (interface)
@@ -21,6 +22,8 @@
   (#set! indent.open_delimiter "(")
   (#set! indent.close_delimiter ")"))
 
+(concatenated_string) @indent.align
+
 [
   "}"
   ")"
@@ -33,4 +36,5 @@
 [
   (ERROR)
   (comment)
+  (block_text)
 ] @indent.auto
