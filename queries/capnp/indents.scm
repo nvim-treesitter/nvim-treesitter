@@ -1,7 +1,6 @@
 [
   (annotation_targets)
   (const)
-  (const_list)
   (enum)
   (interface)
   (implicit_generics)
@@ -10,31 +9,30 @@
   (method_parameters)
   (named_return_types)
   (struct)
-  (struct_shorthand)
   (union)
+  (field)
 ] @indent.begin
 
 ((struct_shorthand (property)) @indent.align
   (#set! indent.open_delimiter "(")
   (#set! indent.close_delimiter ")"))
 
+((method (field_version)) @indent.align
+  (#set! indent.open_delimiter field_version))
+
 ((const_list (const_value)) @indent.align
-  (#set! indent.open_delimiter "(")
-  (#set! indent.close_delimiter ")"))
+  (#set! indent.open_delimiter "[")
+  (#set! indent.close_delimiter "]"))
 
 (concatenated_string) @indent.align
 
 [
   "}"
   ")"
-] @indent.end
+] @indent.end @indent.branch
 
-[ "{" "}" ] @indent.branch
-
-[ "(" ")" ] @indent.branch
 
 [
   (ERROR)
   (comment)
-  (block_text)
 ] @indent.auto

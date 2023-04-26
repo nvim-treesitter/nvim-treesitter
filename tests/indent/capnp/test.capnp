@@ -92,48 +92,48 @@ struct TestDefaults {
   textField      @12 : Text    = "foo";
   dataField      @13 : Data    = 0x"62 61 72"; # "bar"
   structField    @14 : TestAllTypes = (
-      voidField      = void,
-      boolField      = true,
-      int8Field      = -12,
-      int16Field     = 3456,
-      int32Field     = -78901234,
-      int64Field     = 56789012345678,
-      uInt8Field     = 90,
-      uInt16Field    = 1234,
-      uInt32Field    = 56789012,
-      uInt64Field    = 345678901234567890,
-      float32Field   = -1.25e-10,
-      float64Field   = 345,
-      textField      = "baz",
-      dataField      = "qux",
-      structField    = (
-          textField = "nested",
-          structField = (textField = "really nested")),
-      enumField      = baz,
-      # interfaceField can't have a default
+    voidField      = void,
+    boolField      = true,
+    int8Field      = -12,
+    int16Field     = 3456,
+    int32Field     = -78901234,
+    int64Field     = 56789012345678,
+    uInt8Field     = 90,
+    uInt16Field    = 1234,
+    uInt32Field    = 56789012,
+    uInt64Field    = 345678901234567890,
+    float32Field   = -1.25e-10,
+    float64Field   = 345,
+    textField      = "baz",
+    dataField      = "qux",
+    structField    = (
+      textField = "nested",
+      structField = (textField = "really nested")),
+    enumField      = baz,
+    # interfaceField can't have a default
 
-      voidList      = [void, void, void],
-      boolList      = [false, true, false, true, true],
-      int8List      = [12, -34, -0x80, 0x7f],
-      int16List     = [1234, -5678, -0x8000, 0x7fff],
-      int32List     = [12345678, -90123456, -0x80000000, 0x7fffffff],
-      int64List     = [123456789012345, -678901234567890, -0x8000000000000000, 0x7fffffffffffffff],
-      uInt8List     = [12, 34, 0, 0xff],
-      uInt16List    = [1234, 5678, 0, 0xffff],
-      uInt32List    = [12345678, 90123456, 0, 0xffffffff],
-      uInt64List    = [123456789012345, 678901234567890, 0, 0xffffffffffffffff],
-      float32List   = [0, 1234567, 1e37, -1e37, 1e-37, -1e-37],
-      float64List   = [0, 123456789012345, 1e306, -1e306, 1e-306, -1e-306],
-      textList      = ["quux", "corge", "grault"],
-      dataList      = ["garply", "waldo", "fred"],
-      structList    = [
-          (textField = "x " "structlist"
-                       " 1"),
-          (textField = "x structlist 2"),
-          (textField = "x structlist 3")],
-      enumList      = [qux, bar, grault]
-      # interfaceList can't have a default
-      );
+    voidList      = [void, void, void],
+    boolList      = [false, true, false, true, true],
+    int8List      = [12, -34, -0x80, 0x7f],
+    int16List     = [1234, -5678, -0x8000, 0x7fff],
+    int32List     = [12345678, -90123456, -0x80000000, 0x7fffffff],
+    int64List     = [123456789012345, -678901234567890, -0x8000000000000000, 0x7fffffffffffffff],
+    uInt8List     = [12, 34, 0, 0xff],
+    uInt16List    = [1234, 5678, 0, 0xffff],
+    uInt32List    = [12345678, 90123456, 0, 0xffffffff],
+    uInt64List    = [123456789012345, 678901234567890, 0, 0xffffffffffffffff],
+    float32List   = [0, 1234567, 1e37, -1e37, 1e-37, -1e-37],
+    float64List   = [0, 123456789012345, 1e306, -1e306, 1e-306, -1e-306],
+    textList      = ["quux", "corge", "grault"],
+    dataList      = ["garply", "waldo", "fred"],
+    structList    = [
+      (textField = "x " "structlist"
+                    " 1"),
+      (textField = "x structlist 2"),
+      (textField = "x structlist 3")],
+    enumList      = [qux, bar, grault]
+    # interfaceList can't have a default
+  );
   enumField      @15 : TestEnum = corge;
   interfaceField @16 : Void;  # TODO
 
@@ -152,9 +152,9 @@ struct TestDefaults {
   textList      @29 : List(Text)    = ["plugh", "xyzzy", "thud"];
   dataList      @30 : List(Data)    = ["oops", "exhausted", "rfc3092"];
   structList    @31 : List(TestAllTypes) = [
-      (textField = "structlist 1"),
-      (textField = "structlist 2"),
-      (textField = "structlist 3")];
+    (textField = "structlist 1"),
+    (textField = "structlist 2"),
+    (textField = "structlist 3")];
   enumList      @32 : List(TestEnum) = [foo, garply];
   interfaceList @33 : List(Void);  # TODO
 }
@@ -348,11 +348,11 @@ struct TestInterleavedGroups {
 
 struct TestUnionDefaults {
   s16s8s64s8Set @0 :TestUnion =
-      (union0 = (u0f0s16 = 321), union1 = (u1f0s8 = 123), union2 = (u2f0s64 = 12345678901234567),
-       union3 = (u3f0s8 = 55));
+    (union0 = (u0f0s16 = 321), union1 = (u1f0s8 = 123), union2 = (u2f0s64 = 12345678901234567),
+     union3 = (u3f0s8 = 55));
   s0sps1s32Set @1 :TestUnion =
-      (union0 = (u0f1s0 = void), union1 = (u1f0sp = "foo"), union2 = (u2f0s1 = true),
-       union3 = (u3f0s32 = 12345678));
+    (union0 = (u0f1s0 = void), union1 = (u1f0sp = "foo"), union2 = (u2f0s1 = true),
+     union3 = (u3f0s32 = 12345678));
 
   unnamed1 @2 :TestUnnamedUnion = (foo = 123);
   unnamed2 @3 :TestUnnamedUnion = (bar = 321, before = "foo", after = "bar");
@@ -430,16 +430,16 @@ struct TestFieldZeroIsBit {
 
 struct TestListDefaults {
   lists @0 :TestLists = (
-      list0  = [(f = void), (f = void)],
-      list1  = [(f = true), (f = false), (f = true), (f = true)],
-      list8  = [(f = 123), (f = 45)],
-      list16 = [(f = 12345), (f = 6789)],
-      list32 = [(f = 123456789), (f = 234567890)],
-      list64 = [(f = 1234567890123456), (f = 2345678901234567)],
-      listP  = [(f = "foo"), (f = "bar")],
-      int32ListList = [[1, 2, 3], [4, 5], [12341234]],
-      textListList = [["foo", "bar"], ["baz"], ["qux", "corge"]],
-      structListList = [[(int32Field = 123), (int32Field = 456)], [(int32Field = 789)]]);
+    list0  = [(f = void), (f = void)],
+    list1  = [(f = true), (f = false), (f = true), (f = true)],
+    list8  = [(f = 123), (f = 45)],
+    list16 = [(f = 12345), (f = 6789)],
+    list32 = [(f = 123456789), (f = 234567890)],
+    list64 = [(f = 1234567890123456), (f = 2345678901234567)],
+    listP  = [(f = "foo"), (f = "bar")],
+    int32ListList = [[1, 2, 3], [4, 5], [12341234]],
+    textListList = [["foo", "bar"], ["baz"], ["qux", "corge"]],
+    structListList = [[(int32Field = 123), (int32Field = 456)], [(int32Field = 789)]]);
 }
 
 struct TestLateUnion {
@@ -626,33 +626,33 @@ struct TestUseGenerics $TestGenerics(Text, Data).ann("foo") {
   genericCap @19 :TestGenerics(TestAllTypes, List(UInt32)).Interface(Data);
 
   default @5 :TestGenerics(TestAllTypes, Text) =
-      (foo = (int16Field = 123), rev = (foo = "text", rev = (foo = (int16Field = 321))));
+    (foo = (int16Field = 123), rev = (foo = "text", rev = (foo = (int16Field = 321))));
   defaultInner @6 :TestGenerics(TestAllTypes, Text).Inner =
-      (foo = (int16Field = 123), bar = "text");
+    (foo = (int16Field = 123), bar = "text");
   defaultUser @7 :TestUseGenerics = (basic = (foo = (int16Field = 123)));
   defaultWrapper @9 :TestGenericsWrapper(Text, TestAllTypes) =
-      (value = (foo = "text", rev = (foo = (int16Field = 321))));
+    (value = (foo = "text", rev = (foo = (int16Field = 321))));
   defaultWrapper2 @10 :TestGenericsWrapper2 =
-      (value = (value = (foo = "text", rev = (foo = (int16Field = 321)))));
+    (value = (value = (foo = "text", rev = (foo = (int16Field = 321)))));
 
   aliasFoo @11 :TestGenerics(TestAllTypes, TestAnyPointer).AliasFoo = (int16Field = 123);
   aliasInner @12 :TestGenerics(TestAllTypes, TestAnyPointer).AliasInner
-      = (foo = (int16Field = 123));
+    = (foo = (int16Field = 123));
   aliasInner2 @13 :TestGenerics(TestAllTypes, TestAnyPointer).AliasInner2
-      = (innerBound = (foo = (int16Field = 123)));
+    = (innerBound = (foo = (int16Field = 123)));
   aliasInner2Bind @14 :TestGenerics(TestAllTypes, TestAnyPointer).AliasInner2(List(UInt32))
-      = (baz = [12, 34], innerBound = (foo = (int16Field = 123)));
+    = (baz = [12, 34], innerBound = (foo = (int16Field = 123)));
   aliasInner2Text @15 :TestGenerics(TestAllTypes, TestAnyPointer).AliasInner2Text
-      = (baz = "text", innerBound = (foo = (int16Field = 123)));
+    = (baz = "text", innerBound = (foo = (int16Field = 123)));
   aliasRev @16 :TestGenerics(TestAnyPointer, Text).AliasRev.AliasFoo = "text";
 
   useAliases @17 :TestGenerics(TestAllTypes, List(UInt32)).UseAliases = (
-      foo = (int16Field = 123),
-      inner = (foo = (int16Field = 123)),
-      inner2 = (innerBound = (foo = (int16Field = 123))),
-      inner2Bind = (baz = "text", innerBound = (foo = (int16Field = 123))),
-      inner2Text = (baz = "text", innerBound = (foo = (int16Field = 123))),
-      revFoo = [12, 34, 56]);
+    foo = (int16Field = 123),
+    inner = (foo = (int16Field = 123)),
+    inner2 = (innerBound = (foo = (int16Field = 123))),
+    inner2Bind = (baz = "text", innerBound = (foo = (int16Field = 123))),
+    inner2Text = (baz = "text", innerBound = (foo = (int16Field = 123))),
+    revFoo = [12, 34, 56]);
 }
 
 struct TestEmptyStruct {}
@@ -673,48 +673,48 @@ struct TestConstants {
   const textConst      :Text    = "foo";
   const dataConst      :Data    = "bar";
   const structConst    :TestAllTypes = (
-      voidField      = void,
-      boolField      = true,
-      int8Field      = -12,
-      int16Field     = 3456,
-      int32Field     = -78901234,
-      int64Field     = 56789012345678,
-      uInt8Field     = 90,
-      uInt16Field    = 1234,
-      uInt32Field    = 56789012,
-      uInt64Field    = 345678901234567890,
-      float32Field   = -1.25e-10,
-      float64Field   = 345,
-      textField      = "baz",
-      dataField      = "qux",
-      structField    = (
-          textField = "nested",
-          structField = (textField = "really nested")),
-      enumField      = baz,
-      # interfaceField can't have a default
+    voidField      = void,
+    boolField      = true,
+    int8Field      = -12,
+    int16Field     = 3456,
+    int32Field     = -78901234,
+    int64Field     = 56789012345678,
+    uInt8Field     = 90,
+    uInt16Field    = 1234,
+    uInt32Field    = 56789012,
+    uInt64Field    = 345678901234567890,
+    float32Field   = -1.25e-10,
+    float64Field   = 345,
+    textField      = "baz",
+    dataField      = "qux",
+    structField    = (
+      textField = "nested",
+      structField = (textField = "really nested")),
+    enumField      = baz,
+    # interfaceField can't have a default
 
-      voidList      = [void, void, void],
-      boolList      = [false, true, false, true, true],
-      int8List      = [12, -34, -0x80, 0x7f],
-      int16List     = [1234, -5678, -0x8000, 0x7fff],
-      int32List     = [12345678, -90123456, -0x80000000, 0x7fffffff],
-      int64List     = [123456789012345, -678901234567890, -0x8000000000000000, 0x7fffffffffffffff],
-      uInt8List     = [12, 34, 0, 0xff],
-      uInt16List    = [1234, 5678, 0, 0xffff],
-      uInt32List    = [12345678, 90123456, 0, 0xffffffff],
-      uInt64List    = [123456789012345, 678901234567890, 0, 0xffffffffffffffff],
-      float32List   = [0, 1234567, 1e37, -1e37, 1e-37, -1e-37],
-      float64List   = [0, 123456789012345, 1e306, -1e306, 1e-306, -1e-306],
-      textList      = ["quux", "corge", "grault"],
-      dataList      = ["garply", "waldo", "fred"],
-      structList    = [
-        (textField = "x " "structlist"
-                     " 1"),
-        (textField = "x structlist 2"),
-        (textField = "x structlist 3")],
-      enumList      = [qux, bar, grault]
-      # interfaceList can't have a default
-      );
+    voidList      = [void, void, void],
+    boolList      = [false, true, false, true, true],
+    int8List      = [12, -34, -0x80, 0x7f],
+    int16List     = [1234, -5678, -0x8000, 0x7fff],
+    int32List     = [12345678, -90123456, -0x80000000, 0x7fffffff],
+    int64List     = [123456789012345, -678901234567890, -0x8000000000000000, 0x7fffffffffffffff],
+    uInt8List     = [12, 34, 0, 0xff],
+    uInt16List    = [1234, 5678, 0, 0xffff],
+    uInt32List    = [12345678, 90123456, 0, 0xffffffff],
+    uInt64List    = [123456789012345, 678901234567890, 0, 0xffffffffffffffff],
+    float32List   = [0, 1234567, 1e37, -1e37, 1e-37, -1e-37],
+    float64List   = [0, 123456789012345, 1e306, -1e306, 1e-306, -1e-306],
+    textList      = ["quux", "corge", "grault"],
+    dataList      = ["garply", "waldo", "fred"],
+    structList    = [
+      (textField = "x " "structlist"
+                    " 1"),
+      (textField = "x structlist 2"),
+      (textField = "x structlist 3")],
+    enumList      = [qux, bar, grault]
+    # interfaceList can't have a default
+  );
   const enumConst      :TestEnum = corge;
 
   const voidListConst      :List(Void)    = [void, void, void, void, void, void];
@@ -743,14 +743,14 @@ const globalText :Text = "foobar";
 const globalStruct :TestAllTypes = (int32Field = 54321);
 const globalPrintableStruct :TestPrintInlineStructs = (someText = "foo");
 const derivedConstant :TestAllTypes = (
-    uInt32Field = .globalInt,
-    textField = TestConstants.textConst,
-    structField = TestConstants.structConst,
-    int16List = TestConstants.int16ListConst,
-    structList = TestConstants.structListConst);
+  uInt32Field = .globalInt,
+  textField = TestConstants.textConst,
+  structField = TestConstants.structConst,
+  int16List = TestConstants.int16ListConst,
+  structList = TestConstants.structListConst);
 
 const genericConstant :TestGenerics(TestAllTypes, Text) =
-    (foo = (int16Field = 123), rev = (foo = "text", rev = (foo = (int16Field = 321))));
+  (foo = (int16Field = 123), rev = (foo = "text", rev = (foo = (int16Field = 321))));
 
 const embeddedData :Data = embed "testdata/packed";
 const embeddedText :Text = embed "testdata/short.txt";
@@ -759,11 +759,11 @@ const embeddedStruct :TestAllTypes = embed "testdata/binary";
 const nonAsciiText :Text = "♫ é ✓";
 
 const blockText :Text =
-    `foo bar baz
-    `"qux" `corge` 'grault'
-    "regular\"quoted\"line"
-    `garply\nwaldo\tfred\"plugh\"xyzzy\'thud
-    ;
+  `foo bar baz
+  `"qux" `corge` 'grault'
+  "regular\"quoted\"line"
+  `garply\nwaldo\tfred\"plugh\"xyzzy\'thud
+  ;
 
 struct TestAnyPointerConstants {
   anyKindAsStruct @0 :AnyPointer;
