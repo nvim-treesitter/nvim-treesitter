@@ -1111,6 +1111,14 @@ list.pug = {
   experimental = true,
 }
 
+list.puppet = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-puppet",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.python = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-python",
