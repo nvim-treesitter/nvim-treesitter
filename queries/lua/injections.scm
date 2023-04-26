@@ -40,7 +40,7 @@
 (function_call
   (dot_index_expression
     field: (identifier) @_method
-    (#eq? @_method "gmatch" "gsub"))
+    (#any-of? @_method "gmatch" "gsub"))
   arguments: (arguments (_) (string content: _ @luap)))
 
 ; ("123"):match("%d+")
