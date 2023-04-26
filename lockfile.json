@@ -39,7 +39,7 @@
     "revision": "0dd182a14a519a70dc60c3727fdc2fdb65c030ae"
   },
   "capnp": {
-    "revision": "fc6e2addf103861b9b3dffb82c543eb6b71061aa"
+    "revision": "7d5fa4e94d3643ec15750106113be0d40f9fc1bb"
   },
   "chatito": {
     "revision": "3baf22e7e507cedf15d1dbc03df8afa50a625586"
@@ -276,7 +276,7 @@
     "revision": "1e1152264cc68e11d65d9e2493566f5717a13d11"
   },
   "luap": {
-    "revision": "bfb38d254f380362e26b5c559a4086ba6e92ba77"
+    "revision": "393915db4b16a792da9c60f52d11d93247d870b9"
   },
   "m68k": {
     "revision": "d097b123f19c6eaba2bf181c05420d88b9fc489d"
@@ -354,7 +354,7 @@
     "revision": "80dc10195e26c72598ed1ab02cdf2d8e4c792e7b"
   },
   "pony": {
-    "revision": "af8a2d40ed813d818380e7798f16732f34d95bf6"
+    "revision": "5fd795ae7597b568b0a356c5d243cc92162bc00c"
   },
   "prisma": {
     "revision": "eca2596a355b1a9952b4f80f8f9caed300a272b5"
@@ -411,7 +411,7 @@
     "revision": "206c7077164372c596ffa8eaadb9435c28941364"
   },
   "rust": {
-    "revision": "fbf9e507d09d8b3c0bb9dfc4d46c31039a47dc4a"
+    "revision": "0a70e15da977489d954c219af9b50b8a722630ee"
   },
   "scala": {
     "revision": "7d348f51e442563f4ab2b6c3e136dac658649f93"
@@ -438,7 +438,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "178148650a7847ab54e672d7483e850f5ad4e89d"
+    "revision": "9de72fb40cd6d13a64c3aeeabc079c6b8dadb339"
   },
   "squirrel": {
     "revision": "3fefc6b9bb2b4de1b1c461783f675918cd957546"
@@ -543,6 +543,6 @@
     "revision": "c348825d3f86dec71dee0e1223c6bd73114e3579"
   },
   "zig": {
-    "revision": "c73f666a48339657f6eb0f6fd0c67823f1d90992"
+    "revision": "0d08703e4c3f426ec61695d7617415fff97029bd"
   }
 }
