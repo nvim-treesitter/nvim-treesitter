@@ -368,6 +368,9 @@
   "pug": {
     "revision": "884e225b5ecca5d885ae627275f16ef648acd42e"
   },
+  "puppet": {
+    "revision": "5e1bb979ea71efc0860d4bc56eb3b3f7a670d6ec"
+  },
   "python": {
     "revision": "62827156d01c74dc1538266344e788da74536b8a"
   },
