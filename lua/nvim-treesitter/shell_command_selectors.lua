@@ -213,7 +213,7 @@ function M.select_mv_cmd(from, to, cwd)
     return {
       cmd = "mv",
       opts = {
-        args = { from, to },
+        args = { "-f", from, to },
         cwd = cwd,
       },
     }
