@@ -26,15 +26,12 @@
     (function_call))) @indent.dedent
 
 [
-  "end"
   "then"
   "until"
   "}"
   ")"
   "elseif"
-  (elseif_statement)
   "else"
-  (else_statement)
 ] @indent.branch
 
 (comment) @indent.auto

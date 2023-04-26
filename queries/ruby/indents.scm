@@ -29,10 +29,6 @@
 ] @indent.end
 
 [
-  "end"
-  ")"
-  "}"
-  "]"
   (when)
   (elsif)
   (else)

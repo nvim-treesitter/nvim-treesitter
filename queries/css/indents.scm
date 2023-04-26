@@ -3,7 +3,6 @@
   (declaration)
 ] @indent.begin
 
-(block ("}") @indent.branch)
-("}") @indent.dedent
+(block ("}") @indent.end)
 
 (comment) @indent.ignore
