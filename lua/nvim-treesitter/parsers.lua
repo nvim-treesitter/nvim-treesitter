@@ -851,6 +851,14 @@ list.luap = {
   readme_name = "lua patterns",
 }
 
+list.luau = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-luau",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.m68k = {
   install_info = {
     url = "https://github.com/grahambates/tree-sitter-m68k",
