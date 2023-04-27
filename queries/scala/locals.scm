@@ -3,7 +3,7 @@
 [
   (template_body)
   (lambda_expression)
-  (function_declaration)
+  (function_definition)
   (block)
 ] @scope
 
