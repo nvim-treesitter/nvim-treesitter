@@ -278,6 +278,9 @@
   "luap": {
     "revision": "393915db4b16a792da9c60f52d11d93247d870b9"
   },
+  "luau": {
+    "revision": "4f8fc207b3a25b07cba1d3b4066f2872dcfe201f"
+  },
   "m68k": {
     "revision": "d097b123f19c6eaba2bf181c05420d88b9fc489d"
   },
