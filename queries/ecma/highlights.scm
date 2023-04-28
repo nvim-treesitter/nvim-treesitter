@@ -341,6 +341,10 @@
   "finally"
 ] @exception
 
+[
+  "export"
+] @keyword.export
+
 (export_statement
   "default" @keyword)
 (switch_default
