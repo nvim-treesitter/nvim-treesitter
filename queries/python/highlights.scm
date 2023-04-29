@@ -29,7 +29,7 @@
 
 ((attribute
     attribute: (identifier) @field)
- (#lua-match? @field "^.*%l.*$"))
+ (#lua-match? @field "^[%l_].*$"))
 
 ((assignment
   left: (identifier) @type.definition
