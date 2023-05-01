@@ -225,7 +225,7 @@
     "revision": "1a0ce072ebf3afac7d5603d9a95bb7c9a6709b44"
   },
   "janet_simple": {
-    "revision": "95f19cfb8ab03d994389e89d69477511440a08c6"
+    "revision": "bd9cbaf1ea8b942dfd58e68df10c9a378ab3d2b6"
   },
   "java": {
     "revision": "c194ee5e6ede5f26cf4799feead4a8f165dcf14d"
@@ -465,7 +465,7 @@
     "revision": "697bb515471871e85ff799ea57a76298a71a9cca"
   },
   "swift": {
-    "revision": "80c1ff80502414f80de177ca162f4f71aa196ee2"
+    "revision": "56ecc996e5765054fc25cdae5fbddfd75a64287b"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -531,7 +531,7 @@
     "revision": "cd63bd20644a419d209b625d21258617580273d2"
   },
   "vimdoc": {
-    "revision": "15c2fdcc57f51f1caef82fe75e1ffb733626dcae"
+    "revision": "b3fca1b950ca9666bd1e891efe79470fb6dc403e"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
