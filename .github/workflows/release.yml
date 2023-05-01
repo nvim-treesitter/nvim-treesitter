@@ -2,7 +2,7 @@ name: "release"
 on:
   push:
     tags:
-      - '*'
+      - "*"
 jobs:
   luarocks-upload:
     runs-on: ubuntu-latest

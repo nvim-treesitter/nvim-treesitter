@@ -81,14 +81,14 @@ body:
   - type: textarea
     attributes:
       label: Output of `:checkhealth nvim-treesitter`
-      render: markdown
+      render: Markdown
     validations:
       required: true
 
   - type: textarea
     attributes:
       label: Output of `nvim --version`
-      render: text
+      render: Text
     validations:
       required: true
 

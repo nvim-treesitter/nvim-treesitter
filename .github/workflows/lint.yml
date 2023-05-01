@@ -2,7 +2,15 @@ name: Linting and style checking
 
 on:
   push:
+    paths:
+      - "lua/**"
+      - "scripts/**"
+      - "tests/**"
   pull_request:
+    paths:
+      - "lua/**"
+      - "scripts/**"
+      - "tests/**"
 
 jobs:
   luacheck:

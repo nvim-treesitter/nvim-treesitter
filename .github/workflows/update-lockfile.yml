@@ -44,7 +44,7 @@ jobs:
           git add lockfile.json
           UPDATED_PARSERS=$(/tmp/jd -f merge /tmp/old_lockfile.json lockfile.json | jq -r 'keys | join(", ")')
           echo "UPDATED_PARSERS=$UPDATED_PARSERS" >> $GITHUB_ENV
-          git commit -m "Update parsers: $UPDATED_PARSERS" || echo 'No commit necessary!'
+          git commit -m "chore(parsers): update $UPDATED_PARSERS" || echo 'No commit necessary!'
           git clean -xf
 
       - name: Create Pull Request

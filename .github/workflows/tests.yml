@@ -4,9 +4,21 @@ on:
   push:
     branches:
       - "master"
+    paths:
+      - "lockfile.json"
+      - "lua/**"
+      - "queries/**"
+      - "scripts/**"
+      - "tests/**"
   pull_request:
     branches:
       - "master"
+    paths:
+      - "lockfile.json"
+      - "lua/**"
+      - "queries/**"
+      - "scripts/**"
+      - "tests/**"
 
 # Cancel any in-progress CI runs for a PR if it is updated
 concurrency:

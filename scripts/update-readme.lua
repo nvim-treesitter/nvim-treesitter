@@ -17,7 +17,7 @@ table.sort(sorted_parsers, function(a, b)
   return a.name < b.name
 end)
 
-local generated_text = ""
+local generated_text = "\n"
 
 ---@param v Parser
 for _, v in ipairs(sorted_parsers) do
