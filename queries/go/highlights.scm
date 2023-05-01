@@ -15,9 +15,6 @@
 
 (label_name) @label
 
-((identifier) @constant
- (#eq? @constant "_"))
-
 (const_spec
   name: (identifier) @constant)
 
@@ -40,6 +37,14 @@
 
 (method_spec 
   name: (field_identifier) @method) 
+
+; Constructors
+
+((call_expression (identifier) @constructor)
+  (#lua-match? @constructor "^[nN]ew.+$"))
+
+((call_expression (identifier) @constructor)
+  (#lua-match? @constructor "^[mM]ake.+$"))
 
 ; Operators
 
