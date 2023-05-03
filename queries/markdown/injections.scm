@@ -7,7 +7,7 @@
     (#set-lang-from-info-string! @_lang)
     (#exclude_children! @content))
 
-((html_block) @html)
+((html_block) @html @combined)
 
 ((minus_metadata) @yaml (#offset! @yaml 1 0 -1 0))
 ((plus_metadata) @toml (#offset! @toml 1 0 -1 0))
