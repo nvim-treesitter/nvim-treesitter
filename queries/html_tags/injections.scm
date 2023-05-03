@@ -57,7 +57,6 @@
 
 (comment) @comment
 
-
 ; <input pattern="[0-9]"> or <input pattern=[0-9]>
 (element (_
   (tag_name) @_tagname (#eq? @_tagname "input")
