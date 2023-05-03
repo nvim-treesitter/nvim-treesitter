@@ -1,3 +1,6 @@
-(comment) @comment
-(marginalia) @comment
+((comment) @injection.content
+ (#set! injection.language "comment"))
+
+((marginalia) @injection.content
+ (#set! injection.language "comment"))
 
