@@ -1,8 +1,10 @@
 ((call
   function: (attribute
 	  object: (identifier) @_re)
-  arguments: (argument_list (string) @regex))
+  arguments: (argument_list (string) @injection.content))
  (#eq? @_re "re")
- (#lua-match? @regex "^r.*"))
+ (#lua-match? @injection.content "^r.*")
+ (#set! injection.language "regex"))
 
-(comment) @comment
+((comment) @injection.content
+ (#set! injection.language "comment"))
