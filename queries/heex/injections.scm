@@ -2,10 +2,15 @@
 (directive [
   (expression_value) 
   (partial_expression_value)
-] @elixir @combined)  
+] @injection.content
+  (#set! injection.language "elixir")
+  (#set! injection.combined))  
 
 ; HEEx Elixir expressions are always within a tag or component
-(expression (expression_value) @elixir)
+(expression 
+  (expression_value) @injection.content 
+  (#set! injection.language "elixir"))
 
 ; HEEx comments
-(comment) @comment
+((comment) @injection.content
+ (#set! injection.language "comment"))
