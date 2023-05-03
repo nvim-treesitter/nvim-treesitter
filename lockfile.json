@@ -30,13 +30,13 @@
     "revision": "b94a0983b69ebb75e9129329a188199ad6ebcec0"
   },
   "blueprint": {
-    "revision": "6ef91ca8270f0112b9c6d27ecb9966c741a5d103"
+    "revision": "7f1a5df44861291d6951b6b2146a9fef4c226e14"
   },
   "c": {
     "revision": "f35789006ccbe5be8db21d1a2dd4cc0b5a1286f2"
   },
   "c_sharp": {
-    "revision": "0dd182a14a519a70dc60c3727fdc2fdb65c030ae"
+    "revision": "2340fd6b57b06ccbf24c2c6dafb15905fdccfb1f"
   },
   "capnp": {
     "revision": "7d5fa4e94d3643ec15750106113be0d40f9fc1bb"
@@ -90,7 +90,7 @@
     "revision": "f69bde8e56f431863eba2fe4bab23e7d9692855f"
   },
   "dockerfile": {
-    "revision": "8ee3a0f7587b2bd8c45c8cb7d28bd414604aec62"
+    "revision": "fd30df68c4178964ed012ef7f745055db76f8ebf"
   },
   "dot": {
     "revision": "9ab85550c896d8b294d9b9ca1e30698736f08cea"
@@ -195,7 +195,7 @@
     "revision": "f0a9e6207a8c84bbd11143c8eb0c6cf70dc6d8b4"
   },
   "haskell": {
-    "revision": "3241b683cc1eaa466afb83b9a5592ab39caaa2fa"
+    "revision": "684638edce563245e4dc6263940aeffa2a0205c2"
   },
   "hcl": {
     "revision": "becebebd3509c02e871c99be55556269be1def1b"
