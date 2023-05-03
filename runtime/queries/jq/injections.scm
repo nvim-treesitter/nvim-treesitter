@@ -1,4 +1,4 @@
-(comment) @comment
+((comment) @injection.content (#set! injection.language "comment"))
 
 ; test(val)
 (query
@@ -12,7 +12,10 @@
              "splits"
              "sub"
              "gsub"))
-  (args . (query (string) @regex)))
+  (args . 
+    (query 
+      (string) @injection.content
+      (#set! injection.language "regex"))))
 
 
 ; test(regex; flags)
@@ -28,4 +31,6 @@
              "sub"
              "gsub"))
   (args . (args
-    (query (string) @regex))))
+    (query 
+      (string) @injection.content
+      (#set! injection.language "regex")))))

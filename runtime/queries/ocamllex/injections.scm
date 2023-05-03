@@ -1,3 +1,5 @@
-(ocaml) @ocaml
+((ocaml) @injection.content
+ (#set! injection.language "ocaml"))
 
-(comment) @comment
+((comment) @injection.content
+ (#set! injection.language "comment"))

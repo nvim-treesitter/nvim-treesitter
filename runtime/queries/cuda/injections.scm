@@ -1,4 +1,10 @@
-(preproc_function_def (preproc_arg) @cuda)
-(preproc_call (preproc_arg) @cuda)
+(preproc_function_def
+ (preproc_arg) @injection.content
+ (#set! injection.language "cuda"))
 
-(comment) @comment
+(preproc_call
+ (preproc_arg) @injection.content
+ (#set! injection.language "cuda"))
+
+((comment) @injection.content 
+ (#set! injection.language "comment"))
