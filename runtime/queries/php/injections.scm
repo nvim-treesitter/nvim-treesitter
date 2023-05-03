@@ -1,20 +1,34 @@
-(text) @html @combined
+((text) @injection.content
+ (#set! injection.language "html")
+ (#set! injection.combined))
 
-(comment) @phpdoc
+((comment) @injection.content
+ (#set! injection.language "phpdoc"))
 
 ;; regex
 
 ((function_call_expression
   function: (_) @_preg_func_identifier
-  arguments: (arguments . (argument (_ (string_value) @regex))))
+  arguments: 
+    (arguments . 
+      (argument 
+        (_ (string_value) @injection.content))))
+    (#set! injection.language "regex")
     (#lua-match? @_preg_func_identifier "^preg_"))
 
 ;; bash
 
 ((function_call_expression
   function: (_) @_shell_func_identifier
-  arguments: (arguments . (argument (_ (string_value) @bash))))
+  arguments: 
+    (arguments . 
+      (argument 
+        (_ (string_value) @injection.content))))
+  (#set! injection.language "bash")
   (#any-of? @_shell_func_identifier "shell_exec" "escapeshellarg" 
    "escapeshellcmd" "exec" "passthru" "proc_open" "shell_exec" "system"))
 
-((expression_statement (shell_command_expression (string_value) @bash)))
+(expression_statement 
+  (shell_command_expression 
+    (string_value) @injection.content)
+    (#set! injection.language "bash"))
