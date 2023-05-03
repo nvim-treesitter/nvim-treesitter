@@ -1,7 +1,9 @@
-((code) @cpp
-  (#offset! @cpp 0 2 0 -2))
+((code) @injection.content
+  (#set! injection.language "cpp")
+  (#offset! @injection.content 0 2 0 -2))
 
 ((tablegen_file
-  (comment) @bash)
-  (#lua-match? @bash "^.*RUN")
-  (#offset! @bash 0 8))
+  (comment) @injection.content)
+  (#lua-match? @injection.content "^.*RUN")
+  (#set! injection.language "bash")
+  (#offset! @injection.content 0 8))
