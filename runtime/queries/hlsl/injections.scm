@@ -1,3 +1,5 @@
-(preproc_arg) @hlsl
+((preproc_arg) @injection.content
+ (#set! injection.language "hlsl"))
 
-(comment) @comment
+((comment) @injection.content
+ (#set! injection.language "comment"))

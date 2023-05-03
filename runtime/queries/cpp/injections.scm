@@ -1,7 +1,9 @@
-(preproc_arg) @cpp
+((preproc_arg) @injection.content 
+ (#set! injection.language "cpp"))
 
-(comment) @comment
+((comment) @injection.content 
+ (#set! injection.language "comment"))
 
 (raw_string_literal
-  delimiter: (raw_string_delimiter) @language
-  (raw_string_content) @content)
+  delimiter: (raw_string_delimiter) @injection.language
+  (raw_string_content) @injection.content)

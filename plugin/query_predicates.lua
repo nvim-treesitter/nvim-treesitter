@@ -38,10 +38,10 @@ query.add_directive('set-lang-from-mimetype!', function(match, _, bufnr, pred, m
   local type_attr_value = vim.treesitter.get_node_text(node, bufnr)
   local configured = mimetype_aliases[type_attr_value]
   if configured then
-    metadata.language = configured
+    metadata['injection.language'] = configured
   else
     local parts = vim.split(type_attr_value, '/', {})
-    metadata.language = parts[#parts]
+    metadata['injection.language'] = parts[#parts]
   end
 end)
 
@@ -67,7 +67,7 @@ query.add_directive('set-lang-from-info-string!', function(match, _, bufnr, pred
 
   local injection_alias = vim.treesitter.get_node_text(node, bufnr)
   local filetype = vim.filetype.match({ filename = 'a.' .. injection_alias })
-  metadata.language = filetype or injection_aliases[injection_alias] or injection_alias
+  metadata['injection.language'] = filetype or injection_aliases[injection_alias] or injection_alias
 end)
 
 query.add_directive('downcase!', function(match, _, bufnr, pred, metadata)
@@ -95,40 +95,6 @@ query.add_directive('downcase!', function(match, _, bufnr, pred, metadata)
   else
     metadata[key] = string.lower(text)
   end
-end)
-
----@param match (TSNode|nil)[]
----@param pred string[]
----@param metadata table
----@return boolean|nil
----TODO(clason): remove when switching to upstream injections
-query.add_directive('exclude_children!', function(match, _, _, pred, metadata)
-  local capture_id = pred[2]
-  local node = match[capture_id]
-  if not node then
-    return
-  end
-
-  local start_row, start_col, end_row, end_col = node:range()
-  local ranges = {}
-  for i = 0, node:named_child_count() - 1 do
-    local child = node:named_child(i) ---@type TSNode
-    local child_start_row, child_start_col, child_end_row, child_end_col = child:range()
-    if child_start_row > start_row or child_start_col > start_col then
-      table.insert(ranges, {
-        start_row,
-        start_col,
-        child_start_row,
-        child_start_col,
-      })
-    end
-    start_row = child_end_row
-    start_col = child_end_col
-  end
-  if end_row > start_row or end_col > start_col then
-    table.insert(ranges, { start_row, start_col, end_row, end_col })
-  end
-  metadata.content = ranges
 end)
 
 -- Trim blank lines from end of the region
