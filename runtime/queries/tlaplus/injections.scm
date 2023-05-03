@@ -1,4 +1,5 @@
-[
+([
   (comment)
   (block_comment_text)
-] @comment
+ ] @injection.content
+ (#set! injection.language "comment"))
