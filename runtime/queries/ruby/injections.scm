@@ -1,9 +1,12 @@
-(comment) @comment
+((comment) @injection.content 
+ (#set! injection.language "comment"))
 
 (heredoc_body
- (heredoc_content) @content
- (heredoc_end) @language
- (#set! "language" @language)
+ (heredoc_content) @injection.content
+ (heredoc_end) @injection.language
+ (#set! "language" @injection.language)
  (#downcase! "language"))
 
-(regex (string_content) @regex)
+(regex 
+  (string_content) @injection.content 
+  (#set! injection.language "regex"))

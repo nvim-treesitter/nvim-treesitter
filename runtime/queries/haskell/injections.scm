@@ -2,11 +2,12 @@
 ;; General language injection
 
 (quasiquote
- ((quoter) @language)
- ((quasiquote_body) @content)
+ ((quoter) @injection.language)
+ ((quasiquote_body) @injection.content)
 )
 
-(comment) @comment
+((comment) @injection.content
+ (#set! injection.language "comment"))
 
 ;; -----------------------------------------------------------------------------
 ;; shakespeare library
@@ -17,35 +18,36 @@
 ; (quasiquote
 ;  (quoter) @_name
 ;  (#eq? @_name "coffee")
-;  ((quasiquote_body) @coffeescript)
+;  ((quasiquote_body) @injection.content
+;   (#set! injection.language "coffeescript")))
 
 ; CSS: Text.Cassius, Text.Lucius
 (quasiquote
  (quoter) @_name
  (#any-of? @_name "cassius" "lucius")
- ((quasiquote_body) @css)
-)
+ ((quasiquote_body) @injection.content)
+ (#set! injection.language "css"))
 
 ; HTML: Text.Hamlet
 (quasiquote
  (quoter) @_name
  (#any-of? @_name "shamlet" "xshamlet" "hamlet" "xhamlet" "ihamlet")
- ((quasiquote_body) @html)
-)
+ ((quasiquote_body) @injection.content)
+ (#set! injection.language "html"))
 
 ; JS: Text.Julius
 (quasiquote
  (quoter) @_name
  (#any-of? @_name "js" "julius")
- ((quasiquote_body) @javascript)
-)
+ ((quasiquote_body) @injection.content)
+ (#set! injection.language "javascript"))
 
 ; TS: Text.TypeScript
 (quasiquote
  (quoter) @_name
  (#any-of? @_name "tsc" "tscJSX")
- ((quasiquote_body) @typescript)
-)
+ ((quasiquote_body) @injection.content)
+ (#set! injection.language "typescript"))
 
 
 ;; -----------------------------------------------------------------------------
@@ -54,8 +56,8 @@
 (quasiquote
  (quoter) @_name
  (#eq? @_name "hsx")
- ((quasiquote_body) @html)
-)
+ ((quasiquote_body) @injection.content)
+ (#set! injection.language "html"))
 
 ;; -----------------------------------------------------------------------------
 ;; Inline JSON from aeson
@@ -63,8 +65,8 @@
 (quasiquote
   (quoter) @_name
   (#eq? @_name "aesonQQ")
-  ((quasiquote_body) @json)
-)
+  ((quasiquote_body) @injection.content)
+  (#set! injection.language "json"))
 
 
 ;; -----------------------------------------------------------------------------
@@ -72,14 +74,12 @@
 
 ; postgresql-simple
 (quasiquote
-  (quoter) @_name 
-  (#eq? @_name "sql")
-  ((quasiquote_body) @sql)
-)
+  (quoter) @injection.language
+  (#eq? @injection.language "sql")
+  ((quasiquote_body) @injection.content))
 
-; persistent
 (quasiquote
- (quoter) @_name
- (#any-of? @_name "persistUpperCase" "persistLowerCase" "persistWith")
- ((quasiquote_body) @haskell_persistent)
-)
+  (quoter) @_name
+  (#any-of? @_name "persistUpperCase" "persistLowerCase" "persistWith")
+  ((quasiquote_body) @injection.content)
+  (#set! injection.language "haskell_persistent"))
