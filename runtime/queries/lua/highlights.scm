@@ -243,5 +243,7 @@
 
 (string) @string @spell
 
+(escape_sequence) @string.escape
+
 ;; Error
 (ERROR) @error
