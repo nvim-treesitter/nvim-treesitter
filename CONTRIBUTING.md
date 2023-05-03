@@ -297,18 +297,31 @@ query.
 ### Injections
 
 Some captures are related to language injection (like markdown code blocks). They are used in `injections.scm`.
-You can directly use the name of the language that you want to inject (e.g. `@html` to inject html).
 
-If you want to dynamically detect the language (e.g. for Markdown blocks) use the `@language` to capture
-the node describing the language and `@content` to describe the injection region.
+If you want to dynamically detect the language (e.g. for Markdown blocks) use the `@injection.language` to capture
+the node describing the language and `@injection.content` to describe the injection region.
 
 ```scheme
-@{lang}   ; e.g. @html to describe a html region
-
-@language ; dynamic detection of the injection language (i.e. the text of the captured node describes the language)
-@content  ; region for the dynamically detected language
-@combined ; combine all matches of a pattern as one single block of content
+@injection.language ; dynamic detection of the injection language (i.e. the text of the captured node describes the language)
+@injection.content  ; region for the dynamically detected language
 ```
+
+For example, to inject javascript into HTML's `<script>` tag
+
+```html
+<script>someJsCode();</script>
+```
+
+```query
+(script_element
+  (raw_text) @injection.content
+  (#set! injection.language "javascript")) ; set the parser language for @injection.content region to javascript
+```
+
+For regions that don't have a corresponding `@injection.language`, you need to manually set the language 
+through `(#set injection.language "lang_name")`
+
+To combine all matches of a pattern as one single block of content, add `(#set! injection.combined)` to such pattern
 
 ### Indents
 

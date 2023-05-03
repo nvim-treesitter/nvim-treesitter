@@ -3,57 +3,65 @@
     (identifier) @_cdef_identifier
     (_ _ (identifier) @_cdef_identifier)
   ]
-  arguments: (arguments (string content: _ @c)))
+  arguments: 
+    (arguments 
+      (string content: _ @injection.content)))
+  (#set! injection.language "c")
   (#eq? @_cdef_identifier "cdef"))
 
 ((function_call
   name: (_) @_vimcmd_identifier
-  arguments: (arguments . (string content: _ @vim)))
-  (#any-of? @_vimcmd_identifier "vim.cmd" "vim.api.nvim_command" "vim.api.nvim_exec" "vim.api.nvim_exec2"))
+  arguments: (arguments (string content: _ @injection.content)))
+  (#set! injection.language "vim")
+  (#any-of? @_vimcmd_identifier "vim.cmd" "vim.api.nvim_command" "vim.api.nvim_command" "vim.api.nvim_exec2"))
 
 ((function_call
   name: (_) @_vimcmd_identifier
-  arguments: (arguments (string content: _ @query) .))
-  (#any-of? @_vimcmd_identifier "vim.treesitter.query.set" "vim.treesitter.query.parse_query" "vim.treesitter.query.parse"))
+  arguments: (arguments (string content: _ @injection.content) .))
+  (#set! injection.language "query")
+  (#any-of? @_vimcmd_identifier "vim.treesitter.query.set" "vim.treesitter.query.parse"))
 
-; vim.rcprequest(123, "nvim_exec_lua", "return vim.api.nvim_buf_get_lines(0, 0, -1, false)", false)
 ((function_call
   name: (_) @_vimcmd_identifier
-  arguments: (arguments . (_) . (string content: _ @_method) . (string content: _ @lua)))
+  arguments: (arguments . (_) . (string content: _ @_method) . (string content: _ @injection.content)))
   (#any-of? @_vimcmd_identifier "vim.rpcrequest" "vim.rpcnotify")
-  (#eq? @_method "nvim_exec_lua"))
+  (#eq? @_method "nvim_exec_lua")
+  (#set! injection.language "lua"))
 
-; highlight string as query if starts with `;; query`
-(string content: _ @query (#lua-match? @query "^%s*;+%s?query"))
+;; highlight string as query if starts with `;; query`
+(string content: _ @injection.content 
+ (#lua-match? @injection.content "^%s*;+%s?query")
+ (#set! injection.language "query"))
 
-((comment) @luadoc
-  (#lua-match? @luadoc "[-][-][-][%s]*@")
-  (#offset! @luadoc 0 3 0 0))
+((comment) @injection.content
+  (#lua-match? @injection.content "[-][-][-][%s]*@")
+  (#set! injection.language "luadoc")
+  (#offset! @injection.content 0 3 0 0))
 
 ; string.match("123", "%d+")
 (function_call
   (dot_index_expression
     field: (identifier) @_method
     (#any-of? @_method "find" "match"))
-  arguments: (arguments (_) . (string content: _ @luap)))
+  arguments: (arguments (_) . (string content: _ @injection.content (#set! injection.language "luap"))))
 
 (function_call
   (dot_index_expression
     field: (identifier) @_method
     (#any-of? @_method "gmatch" "gsub"))
-  arguments: (arguments (_) (string content: _ @luap)))
+  arguments: (arguments (_) (string content: _ @injection.content (#set! injection.language "luap"))))
 
 ; ("123"):match("%d+")
 (function_call
   (method_index_expression
     method: (identifier) @_method
     (#any-of? @_method "find" "match"))
-    arguments: (arguments . (string content: _ @luap)))
+    arguments: (arguments . (string content: _ @injection.content (#set! injection.language "luap"))))
 
 (function_call
   (method_index_expression
     method: (identifier) @_method
     (#any-of? @_method "gmatch" "gsub"))
-    arguments: (arguments (string content: _ @luap)))
+    arguments: (arguments (string content: _ @injection.content (#set! injection.language "luap"))))
 
-(comment) @comment
+((comment) @injection.content (#set! injection.language "comment"))

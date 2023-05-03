@@ -1,3 +1,5 @@
-(comment) @comment
+((comment) @injection.content 
+ (#set! injection.language "comment"))
 
-(regex) @regex
+((regex) @injection.content 
+ (#set! injection.language "regex"))
