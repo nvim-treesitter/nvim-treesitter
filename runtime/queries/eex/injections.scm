@@ -1,5 +1,8 @@
 ; EEx expressions are Elixir
-(expression) @elixir
+((expression) @injection.content 
+ (#set! injection.language "elixir"))
 
 ; EEx expressions can span multiple interpolated lines
-(partial_expression) @elixir @combined
+((partial_expression) @injection.content
+ (#set! injection.language "elixir")
+ (#set! injection.combined))
