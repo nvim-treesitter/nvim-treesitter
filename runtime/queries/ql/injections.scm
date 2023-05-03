@@ -1,5 +1,6 @@
-[
+([
   (line_comment)
   (block_comment)
   (qldoc)
-] @comment
+ ] @injection.content
+ (#set! injection.language "comment"))

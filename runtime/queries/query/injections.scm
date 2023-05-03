@@ -1,13 +1,16 @@
 ((predicate 
   name: (identifier) @_name
-  parameters: (parameters (string) @regex))
+  parameters: (parameters (string) @injection.content))
  (#match? @_name "^#?(not-)?(match|vim-match)$")
- (#offset! @regex 0 1 0 -1))
+ (#set! injection.language "regex")
+ (#offset! @injection.content 0 1 0 -1))
 
 ((predicate
   name: (identifier) @_name
-  parameters: (parameters (string) @luap))
+  parameters: (parameters (string) @injection.content))
  (#match? @_name "^#?(not-)?lua-match$")
- (#offset! @luap 0 1 0 -1))
+ (#set! injection.language "luap")
+ (#offset! @injection.content 0 1 0 -1))
 
-(comment) @comment
+((comment) @injection.content
+ (#set! injection.language "comment"))
