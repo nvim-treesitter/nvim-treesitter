@@ -1,2 +1,3 @@
-(content) @html
+((content) @injection.content
+ (#set! injection.language "html"))
 
