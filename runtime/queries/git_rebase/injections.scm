@@ -1,5 +1,6 @@
 ((operation
    (command) @_command
-   (message) @bash)
+   (message) @injection.content)
+(#set! injection.language "bash")
 (#any-of? @_command "exec" "x"))
 
