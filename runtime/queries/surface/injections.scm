@@ -1,8 +1,10 @@
 ; Surface expressions and components are Elixir code
-[
+([
   (expression_value)
   (component_name)
-] @elixir
+] @injection.content
+ (#set! injection.language "elixir"))
 
 ; Surface comments are nvim-treesitter comments
-(comment) @comment
+((comment) @injection.content
+ (#set! injection.language "comment"))
