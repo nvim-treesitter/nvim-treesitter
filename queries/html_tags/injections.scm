@@ -71,5 +71,4 @@
 (attribute
   (attribute_name) @_name
   (#lua-match? @_name "^on[a-z]+$")
-  (#offset! @javascript 0 1 0 -1)
-  (quoted_attribute_value) @javascript)
+  (quoted_attribute_value (attribute_value) @javascript))
