@@ -1,4 +1,5 @@
-[
- (comment)
- (diagnostic_comment)
-] @comment
+([
+  (comment)
+  (diagnostic_comment)
+ ] @injection.content
+ (#set! injection.language "comment"))
