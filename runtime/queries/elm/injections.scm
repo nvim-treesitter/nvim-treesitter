@@ -1,3 +1,8 @@
-[(line_comment) (block_comment)] @comment
+([
+  (line_comment) 
+  (block_comment)
+ ] @injection.content
+ (#set! injection.language "comment"))
 
-(glsl_content) @glsl
+((glsl_content) @injection.content
+ (#set! injection.language "glsl"))
