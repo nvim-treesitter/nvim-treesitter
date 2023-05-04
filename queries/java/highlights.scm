@@ -258,6 +258,9 @@
 
 [ "(" ")" ] @punctuation.bracket
 
+(type_arguments [ "<" ">" ] @punctuation.bracket)
+(type_parameters [ "<" ">" ] @punctuation.bracket)
+
 ; Exceptions
 
 [
