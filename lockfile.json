@@ -78,7 +78,7 @@
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
   },
   "dart": {
-    "revision": "53485a8f301254e19c518aa20c80f1bcf7cf5c62"
+    "revision": "3abbd3a486a1e356acfdf0367dbf3680f8a0024d"
   },
   "devicetree": {
     "revision": "d2cc332aeb814ea40e1e34ed6b9446324b32612a"
@@ -270,7 +270,7 @@
     "revision": "1cc4445908966046c1dd211d9ddaac4c3198bd1d"
   },
   "llvm": {
-    "revision": "e9948edc41e9e5869af99dddb2b5ff5cc5581af6"
+    "revision": "d47c95d78ef0e7495a74d214dd6fcddf6e402dfc"
   },
   "lua": {
     "revision": "4e94980e52f81f713d09be104ba32bf050000031"
