@@ -306,3 +306,5 @@
  (#eq? @_ident "panic"))
 (macro_invocation macro: (identifier) @_ident @exception "!" @exception
  (#contains? @_ident "assert"))
+(macro_invocation macro: (identifier) @_ident @include "!" @include
+ (#contains? @_ident "include"))
