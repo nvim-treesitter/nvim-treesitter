@@ -298,6 +298,8 @@
  ":"
 ] @punctuation.delimiter
 
+(conditional_expression ["?" ":"] @conditional.ternary)
+
 [
  "["
  "]"
