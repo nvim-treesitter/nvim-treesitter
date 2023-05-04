@@ -307,4 +307,4 @@
 (macro_invocation macro: (identifier) @_ident @exception "!" @exception
  (#contains? @_ident "assert"))
 (macro_invocation macro: (identifier) @_ident @debug "!" @debug
- (#contains? @_ident "dbg" "debug"))
+ (#eq? @_ident "dbg"))
