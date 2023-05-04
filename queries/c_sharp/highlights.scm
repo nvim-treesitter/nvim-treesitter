@@ -305,9 +305,9 @@
  "}"
  "("
  ")"
- "<"
- ">"
 ] @punctuation.bracket
+
+(type_argument_list ["<" ">"] @punctuation.bracket)
 
 [
  (this_expression)
