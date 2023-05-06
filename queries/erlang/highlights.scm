@@ -49,6 +49,7 @@
   "->"
   "=>"
   "|"
+  "?="
 ] @operator
 
 [
@@ -58,7 +59,7 @@
 ] @punctuation.delimiter
 
 ;; conditional
-([
+[
   "receive"
   "if"
   "case"
@@ -66,7 +67,9 @@
   "when"
   "after"
   "end"
-] @conditional (#set! "priority" 95))
+  "maybe"
+  "else"
+] @conditional
 
 [
   "catch"
