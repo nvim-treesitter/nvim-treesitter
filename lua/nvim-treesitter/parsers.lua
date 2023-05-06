@@ -1522,6 +1522,14 @@ list.ungrammar = {
   maintainers = { "@Philipp-M", "@amaanq" },
 }
 
+list.usd = {
+  install_info = {
+    url = "https://github.com/ColinKennedy/tree-sitter-usd",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@ColinKennedy" },
+}
+
 list.uxntal = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-uxntal",
