@@ -90,8 +90,8 @@
     alternative: 
       [
         (if_statement consequence: (compound_statement) @indent.dedent)
-        (_)
-      ] @indent.dedent
+        (_) @indent.dedent
+      ] 
   )
 )
 
