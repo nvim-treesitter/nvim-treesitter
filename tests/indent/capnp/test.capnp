@@ -117,7 +117,9 @@ struct TestDefaults {
     int8List      = [12, -34, -0x80, 0x7f],
     int16List     = [1234, -5678, -0x8000, 0x7fff],
     int32List     = [12345678, -90123456, -0x80000000, 0x7fffffff],
-    int64List     = [123456789012345, -678901234567890, -0x8000000000000000, 0x7fffffffffffffff],
+    int64List     = [
+      123456789012345, -678901234567890, 
+      -0x8000000000000000, 0x7fffffffffffffff],
     uInt8List     = [12, 34, 0, 0xff],
     uInt16List    = [1234, 5678, 0, 0xffff],
     uInt32List    = [12345678, 90123456, 0, 0xffffffff],
@@ -162,7 +164,8 @@ struct TestDefaults {
 struct TestAnyPointer {
   anyPointerField @0 :AnyPointer;
 
-  # Do not add any other fields here!  Some tests rely on anyPointerField being the last pointer
+  # Do not add any other fields here!  
+  # Some tests rely on anyPointerField being the last pointer
   # in the struct.
 }
 
@@ -224,7 +227,8 @@ struct TestUnion {
     u1f0sp  @30: Text;
     u1f1sp  @31: Text;
 
-    # Pack more stuff into union1 -- each should go into the same space as corresponding u1f0s*.
+    # Pack more stuff into union1
+    # each should go into the same space as corresponding u1f0s*.
     u1f2s0  @32: Void;
     u1f2s1  @33: Bool;
     u1f2s8  @34: Int8;
@@ -243,8 +247,8 @@ struct TestUnion {
   bit7 @44: Bool;
 
   # Interleave two unions to be really annoying.
-  # Also declare in reverse order to make sure union discriminant values are sorted by field number
-  # and not by declaration order.
+  # Also declare in reverse order to make sure 
+  # union discriminant values are sorted by field number and not by declaration order.
   union2 @2! :union {
     u2f0s64 @54: Int64;
     u2f0s32 @52: Int32;
@@ -443,8 +447,8 @@ struct TestListDefaults {
 }
 
 struct TestLateUnion {
-  # Test what happens if the unions are not the first ordinals in the struct.  At one point this
-  # was broken for the dynamic API.
+  # Test what happens if the unions are not the first ordinals in the struct.  
+  # At one point this was broken for the dynamic API.
 
   foo @0 :Int32;
   bar @1 :Text;
@@ -698,7 +702,11 @@ struct TestConstants {
     int8List      = [12, -34, -0x80, 0x7f],
     int16List     = [1234, -5678, -0x8000, 0x7fff],
     int32List     = [12345678, -90123456, -0x80000000, 0x7fffffff],
-    int64List     = [123456789012345, -678901234567890, -0x8000000000000000, 0x7fffffffffffffff],
+    int64List     = [
+      123456789012345, 
+      -678901234567890, 
+      -0x8000000000000000, 
+      0x7fffffffffffffff],
     uInt8List     = [12, 34, 0, 0xff],
     uInt16List    = [1234, 5678, 0, 0xffff],
     uInt32List    = [12345678, 90123456, 0, 0xffffffff],
@@ -781,7 +789,8 @@ const anyPointerConstants :TestAnyPointerConstants = (
 
 struct TestListOfAny {
   capList @0 :List(Capability);
-  #listList @1 :List(AnyList); # TODO(0.10): Make List(AnyList) work correctly in C++ generated code.
+  #listList @1 :List(AnyList); 
+  # TODO(0.10): Make List(AnyList) work correctly in C++ generated code.
 }
 
 interface TestInterface {
@@ -839,7 +848,8 @@ interface TestStreaming $Cxx.allowCancellation {
   doStreamI @0 (i :UInt32) -> stream;
   doStreamJ @1 (j :UInt32) -> stream;
   finishStream @2 () -> (totalI :UInt32, totalJ :UInt32);
-  # Test streaming. finishStream() returns the totals of the values streamed to the other calls.
+  # Test streaming. finishStream() returns 
+  # the totals of the values streamed to the other calls.
 }
 
 interface TestHandle {}
@@ -871,13 +881,17 @@ interface TestMoreStuff extends(TestCallOrder) {
   expectCancel @7 (cap :TestInterface) -> () $Cxx.allowCancellation;
   # evalLater()-loops forever, holding `cap`.  Must be canceled.
 
-  methodWithDefaults @8 (a :Text, b :UInt32 = 123, c :Text = "foo") -> (d :Text, e :Text = "bar");
+  methodWithDefaults @8 (
+    a :Text, 
+    b :UInt32 = 123, 
+    c :Text = "foo"
+  ) -> (d :Text, e :Text = "bar");
 
   methodWithNullDefault @12 (a :Text, b :TestInterface = null);
 
   getHandle @9 () -> (handle :TestHandle);
-  # Get a new handle. Tests have an out-of-band way to check the current number of live handles, so
-  # this can be used to test garbage collection.
+  # Get a new handle. Tests have an out-of-band way to check
+  # the current number of live handles, so this can be used to test garbage collection.
 
   getNull @10 () -> (nullCap :TestMoreStuff);
   # Always returns a null capability.
@@ -887,8 +901,9 @@ interface TestMoreStuff extends(TestCallOrder) {
 
   writeToFd @13 (fdCap1 :TestInterface, fdCap2 :TestInterface)
              -> (fdCap3 :TestInterface, secondFdPresent :Bool);
-  # Expects fdCap1 and fdCap2 wrap socket file descriptors. Writes "foo" to the first and "bar" to
-  # the second. Also creates a socketpair, writes "baz" to one end, and returns the other end.
+  # Expects fdCap1 and fdCap2 wrap socket file descriptors.
+  # Writes "foo" to the first and "bar" to the second. 
+  # Also creates a socketpair, writes "baz" to one end, and returns the other end.
 
   throwException @14 ();
   throwRemoteException @15 ();
@@ -997,7 +1012,9 @@ struct TestNameAnnotation $Cxx.name("RenamedStruct") {
 }
 
 interface TestNameAnnotationInterface $Cxx.name("RenamedInterface") {
-  badlyNamedMethod @0 (badlyNamedParam :UInt8 $Cxx.name("renamedParam")) $Cxx.name("renamedMethod");
+  badlyNamedMethod @0 (
+    badlyNamedParam :UInt8 $Cxx.name("renamedParam")
+  ) $Cxx.name("renamedMethod");
 }
 
 struct TestImpliedFirstField {
