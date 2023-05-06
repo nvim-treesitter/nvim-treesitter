@@ -195,7 +195,7 @@
     "revision": "f0a9e6207a8c84bbd11143c8eb0c6cf70dc6d8b4"
   },
   "haskell": {
-    "revision": "3a50c9fc2827e4014ced8f037ddac595038c3b1b"
+    "revision": "14a48ba6a02b24b2897f5d9ed9621255e1ea8cf0"
   },
   "hcl": {
     "revision": "becebebd3509c02e871c99be55556269be1def1b"
@@ -528,10 +528,10 @@
     "revision": "77fd8a8fcc0b4788e0b1569b1a4fa070b36add28"
   },
   "vim": {
-    "revision": "cd63bd20644a419d209b625d21258617580273d2"
+    "revision": "26b1aea3b3a5dae31f784a1204205fd57f2b82b5"
   },
   "vimdoc": {
-    "revision": "b3fca1b950ca9666bd1e891efe79470fb6dc403e"
+    "revision": "e9b4d2b3e732ed841980e7369e945e46ce715b8c"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
