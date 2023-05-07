@@ -8,7 +8,7 @@ local filetype_to_parsername = {}
 if new_lang_api then
   filetype_to_parsername = setmetatable({}, {
     __newindex = function(_, k, v)
-      require("nvim-treesitter.utils").notify(
+      require('nvim-treesitter.utils').notify(
         "filetype_to_parsername is deprecated, please use 'vim.treesitter.language.register'",
         vim.log.levels.WARN
       )
@@ -25,24 +25,24 @@ local function register_lang(lang, ft)
   filetype_to_parsername[ft] = lang
 end
 
-for ft, lang in pairs {
-  javascriptreact = "javascript",
-  ecma = "javascript",
-  jsx = "javascript",
-  sh = "bash",
-  PKGBUILD = "bash",
-  html_tags = "html",
-  ["typescript.tsx"] = "tsx",
-  ["html.handlebars"] = "glimmer",
-  systemverilog = "verilog",
-  cls = "latex",
-  sty = "latex",
-  pandoc = "markdown",
-  rmd = "markdown",
-  quarto = "markdown",
-  dosini = "ini",
-  confini = "ini",
-} do
+for ft, lang in pairs({
+  javascriptreact = 'javascript',
+  ecma = 'javascript',
+  jsx = 'javascript',
+  sh = 'bash',
+  PKGBUILD = 'bash',
+  html_tags = 'html',
+  ['typescript.tsx'] = 'tsx',
+  ['html.handlebars'] = 'glimmer',
+  systemverilog = 'verilog',
+  cls = 'latex',
+  sty = 'latex',
+  pandoc = 'markdown',
+  rmd = 'markdown',
+  quarto = 'markdown',
+  dosini = 'ini',
+  confini = 'ini',
+}) do
   register_lang(lang, ft)
 end
 
@@ -74,369 +74,369 @@ local list = setmetatable({}, {
 
 list.ada = {
   install_info = {
-    url = "https://github.com/briot/tree-sitter-ada",
-    files = { "src/parser.c" },
+    url = 'https://github.com/briot/tree-sitter-ada',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@briot" },
+  maintainers = { '@briot' },
 }
 
 list.agda = {
   install_info = {
-    url = "https://github.com/AusCyberman/tree-sitter-agda",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/AusCyberman/tree-sitter-agda',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@Decodetalkers" },
+  maintainers = { '@Decodetalkers' },
 }
 
 list.arduino = {
   install_info = {
-    url = "https://github.com/ObserverOfTime/tree-sitter-arduino",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/ObserverOfTime/tree-sitter-arduino',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@ObserverOfTime" },
+  maintainers = { '@ObserverOfTime' },
 }
 
 list.astro = {
   install_info = {
-    url = "https://github.com/virchau13/tree-sitter-astro",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/virchau13/tree-sitter-astro',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@virchau13" },
+  maintainers = { '@virchau13' },
 }
 
 list.awk = {
   install_info = {
-    url = "https://github.com/Beaglefoot/tree-sitter-awk",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/Beaglefoot/tree-sitter-awk',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
 }
 
 list.bash = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-bash",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/tree-sitter/tree-sitter-bash',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  filetype = "sh",
-  maintainers = { "@TravonteD" },
+  filetype = 'sh',
+  maintainers = { '@TravonteD' },
 }
 
 list.bass = {
   install_info = {
-    url = "https://github.com/amaanq/tree-sitter-bass",
-    files = { "src/parser.c" },
+    url = 'https://github.com/amaanq/tree-sitter-bass',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.beancount = {
   install_info = {
-    url = "https://github.com/polarmutex/tree-sitter-beancount",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/polarmutex/tree-sitter-beancount',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@polarmutex" },
+  maintainers = { '@polarmutex' },
 }
 
 list.bibtex = {
   install_info = {
-    url = "https://github.com/latex-lsp/tree-sitter-bibtex",
-    files = { "src/parser.c" },
+    url = 'https://github.com/latex-lsp/tree-sitter-bibtex',
+    files = { 'src/parser.c' },
   },
-  filetype = "bib",
-  maintainers = { "@theHamsta", "@clason" },
+  filetype = 'bib',
+  maintainers = { '@theHamsta', '@clason' },
 }
 
 list.bicep = {
   install_info = {
-    url = "https://github.com/amaanq/tree-sitter-bicep",
-    files = { "src/parser.c" },
+    url = 'https://github.com/amaanq/tree-sitter-bicep',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.blueprint = {
   install_info = {
-    url = "https://gitlab.com/gabmus/tree-sitter-blueprint.git",
-    files = { "src/parser.c" },
+    url = 'https://gitlab.com/gabmus/tree-sitter-blueprint.git',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@gabmus" },
+  maintainers = { '@gabmus' },
   experimental = true,
 }
 
 list.c = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-c",
-    files = { "src/parser.c" },
+    url = 'https://github.com/tree-sitter/tree-sitter-c',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.c_sharp = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-c-sharp",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/tree-sitter/tree-sitter-c-sharp',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  filetype = "cs",
-  maintainers = { "@Luxed" },
+  filetype = 'cs',
+  maintainers = { '@Luxed' },
 }
 
 list.capnp = {
   install_info = {
-    url = "https://github.com/amaanq/tree-sitter-capnp",
-    files = { "src/parser.c" },
+    url = 'https://github.com/amaanq/tree-sitter-capnp',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.chatito = {
   install_info = {
-    url = "https://github.com/ObserverOfTime/tree-sitter-chatito",
-    files = { "src/parser.c" },
+    url = 'https://github.com/ObserverOfTime/tree-sitter-chatito',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@ObserverOfTime" },
+  maintainers = { '@ObserverOfTime' },
 }
 
 list.clojure = {
   install_info = {
-    url = "https://github.com/sogaiu/tree-sitter-clojure",
-    files = { "src/parser.c" },
+    url = 'https://github.com/sogaiu/tree-sitter-clojure',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@sogaiu" },
+  maintainers = { '@sogaiu' },
 }
 
 list.cmake = {
   install_info = {
-    url = "https://github.com/uyha/tree-sitter-cmake",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/uyha/tree-sitter-cmake',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@uyha" },
+  maintainers = { '@uyha' },
 }
 
 list.comment = {
   install_info = {
-    url = "https://github.com/stsewd/tree-sitter-comment",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/stsewd/tree-sitter-comment',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@stsewd" },
+  maintainers = { '@stsewd' },
 }
 
 list.commonlisp = {
   install_info = {
-    url = "https://github.com/theHamsta/tree-sitter-commonlisp",
-    files = { "src/parser.c" },
+    url = 'https://github.com/theHamsta/tree-sitter-commonlisp',
+    files = { 'src/parser.c' },
     generate_requires_npm = true,
   },
-  filetype = "lisp",
-  maintainers = { "@theHamsta" },
+  filetype = 'lisp',
+  maintainers = { '@theHamsta' },
 }
 
 list.cooklang = {
   install_info = {
-    url = "https://github.com/addcninblue/tree-sitter-cooklang",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/addcninblue/tree-sitter-cooklang',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@addcninblue" },
+  maintainers = { '@addcninblue' },
 }
 
 list.cpon = {
   install_info = {
-    url = "https://github.com/amaanq/tree-sitter-cpon",
-    files = { "src/parser.c" },
+    url = 'https://github.com/amaanq/tree-sitter-cpon',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.cpp = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-cpp",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/tree-sitter/tree-sitter-cpp',
+    files = { 'src/parser.c', 'src/scanner.cc' },
     generate_requires_npm = true,
   },
-  maintainers = { "@theHamsta" },
+  maintainers = { '@theHamsta' },
 }
 
 list.css = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-css",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/tree-sitter/tree-sitter-css',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@TravonteD" },
+  maintainers = { '@TravonteD' },
 }
 
 list.cuda = {
   install_info = {
-    url = "https://github.com/theHamsta/tree-sitter-cuda",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/theHamsta/tree-sitter-cuda',
+    files = { 'src/parser.c', 'src/scanner.cc' },
     generate_requires_npm = true,
   },
-  maintainers = { "@theHamsta" },
+  maintainers = { '@theHamsta' },
 }
 
 list.cue = {
   install_info = {
-    url = "https://github.com/eonpatapon/tree-sitter-cue",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/eonpatapon/tree-sitter-cue',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.d = {
   install_info = {
-    url = "https://github.com/CyberShadow/tree-sitter-d",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/CyberShadow/tree-sitter-d',
+    files = { 'src/parser.c', 'src/scanner.cc' },
     requires_generate_from_grammar = true,
   },
   -- Generating grammar takes ~60s
   experimental = true,
-  maintainers = { "@nawordar" },
+  maintainers = { '@nawordar' },
 }
 
 list.dart = {
   install_info = {
-    url = "https://github.com/UserNobody14/tree-sitter-dart",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/UserNobody14/tree-sitter-dart',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@akinsho" },
+  maintainers = { '@akinsho' },
 }
 
 list.devicetree = {
   install_info = {
-    url = "https://github.com/joelspadin/tree-sitter-devicetree",
-    files = { "src/parser.c" },
+    url = 'https://github.com/joelspadin/tree-sitter-devicetree',
+    files = { 'src/parser.c' },
   },
-  filetype = "dts",
-  maintainers = { "@jedrzejboczar" },
+  filetype = 'dts',
+  maintainers = { '@jedrzejboczar' },
 }
 
 list.dhall = {
   install_info = {
-    url = "https://github.com/jbellerb/tree-sitter-dhall",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/jbellerb/tree-sitter-dhall',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.diff = {
   install_info = {
-    url = "https://github.com/the-mikedavis/tree-sitter-diff",
-    files = { "src/parser.c" },
+    url = 'https://github.com/the-mikedavis/tree-sitter-diff',
+    files = { 'src/parser.c' },
   },
-  filetype = "gitdiff",
-  maintainers = { "@gbprod" },
+  filetype = 'gitdiff',
+  maintainers = { '@gbprod' },
 }
 
 list.dockerfile = {
   install_info = {
-    url = "https://github.com/camdencheek/tree-sitter-dockerfile",
-    files = { "src/parser.c" },
+    url = 'https://github.com/camdencheek/tree-sitter-dockerfile',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@camdencheek" },
+  maintainers = { '@camdencheek' },
 }
 
 list.dot = {
   install_info = {
-    url = "https://github.com/rydesun/tree-sitter-dot",
-    files = { "src/parser.c" },
+    url = 'https://github.com/rydesun/tree-sitter-dot',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@rydesun" },
+  maintainers = { '@rydesun' },
 }
 
 list.ebnf = {
   install_info = {
-    url = "https://github.com/RubixDev/ebnf",
-    files = { "src/parser.c" },
-    location = "crates/tree-sitter-ebnf",
+    url = 'https://github.com/RubixDev/ebnf',
+    files = { 'src/parser.c' },
+    location = 'crates/tree-sitter-ebnf',
   },
-  maintainers = { "@RubixDev" },
+  maintainers = { '@RubixDev' },
   experimental = true,
 }
 
 list.eex = {
   install_info = {
-    url = "https://github.com/connorlay/tree-sitter-eex",
-    files = { "src/parser.c" },
+    url = 'https://github.com/connorlay/tree-sitter-eex',
+    files = { 'src/parser.c' },
   },
-  filetype = "eelixir",
-  maintainers = { "@connorlay" },
+  filetype = 'eelixir',
+  maintainers = { '@connorlay' },
 }
 
 list.elixir = {
   install_info = {
-    url = "https://github.com/elixir-lang/tree-sitter-elixir",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/elixir-lang/tree-sitter-elixir',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@connorlay" },
+  maintainers = { '@connorlay' },
 }
 
 list.elm = {
   install_info = {
-    url = "https://github.com/elm-tooling/tree-sitter-elm",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/elm-tooling/tree-sitter-elm',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@zweimach" },
+  maintainers = { '@zweimach' },
 }
 
 list.elsa = {
   install_info = {
-    url = "https://github.com/glapa-grossklag/tree-sitter-elsa",
-    files = { "src/parser.c" },
+    url = 'https://github.com/glapa-grossklag/tree-sitter-elsa',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@glapa-grossklag", "@amaanq" },
+  maintainers = { '@glapa-grossklag', '@amaanq' },
 }
 
 list.elvish = {
   install_info = {
-    url = "https://github.com/ckafi/tree-sitter-elvish",
-    files = { "src/parser.c" },
+    url = 'https://github.com/ckafi/tree-sitter-elvish',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@ckafi" },
+  maintainers = { '@ckafi' },
 }
 
 list.embedded_template = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-embedded-template",
-    files = { "src/parser.c" },
+    url = 'https://github.com/tree-sitter/tree-sitter-embedded-template',
+    files = { 'src/parser.c' },
   },
-  filetype = "eruby",
+  filetype = 'eruby',
 }
 
 list.erlang = {
   install_info = {
-    url = "https://github.com/WhatsApp/tree-sitter-erlang",
-    files = { "src/parser.c" },
+    url = 'https://github.com/WhatsApp/tree-sitter-erlang',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@filmor" },
+  maintainers = { '@filmor' },
 }
 
 list.fennel = {
   install_info = {
-    url = "https://github.com/travonted/tree-sitter-fennel",
-    files = { "src/parser.c" },
+    url = 'https://github.com/travonted/tree-sitter-fennel',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@TravonteD" },
+  maintainers = { '@TravonteD' },
 }
 
 list.firrtl = {
   install_info = {
-    url = "https://github.com/amaanq/tree-sitter-firrtl",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/amaanq/tree-sitter-firrtl',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.fish = {
   install_info = {
-    url = "https://github.com/ram02z/tree-sitter-fish",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/ram02z/tree-sitter-fish',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@ram02z" },
+  maintainers = { '@ram02z' },
 }
 
 list.foam = {
   install_info = {
-    url = "https://github.com/FoamScience/tree-sitter-foam",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/FoamScience/tree-sitter-foam',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@FoamScience" },
+  maintainers = { '@FoamScience' },
   -- Queries might change over time on the grammar's side
   -- Otherwise everything runs fine
   experimental = true,
@@ -444,570 +444,570 @@ list.foam = {
 
 list.fortran = {
   install_info = {
-    url = "https://github.com/stadelmanma/tree-sitter-fortran",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/stadelmanma/tree-sitter-fortran',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.fsh = {
   install_info = {
-    url = "https://github.com/mgramigna/tree-sitter-fsh",
-    files = { "src/parser.c" },
+    url = 'https://github.com/mgramigna/tree-sitter-fsh',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@mgramigna" },
+  maintainers = { '@mgramigna' },
 }
 
 list.func = {
   install_info = {
-    url = "https://github.com/amaanq/tree-sitter-func",
-    files = { "src/parser.c" },
+    url = 'https://github.com/amaanq/tree-sitter-func',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.fusion = {
   install_info = {
-    url = "https://gitlab.com/jirgn/tree-sitter-fusion.git",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://gitlab.com/jirgn/tree-sitter-fusion.git',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@jirgn" },
+  maintainers = { '@jirgn' },
 }
 
 list.gdscript = {
   install_info = {
-    url = "https://github.com/PrestonKnopp/tree-sitter-gdscript",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/PrestonKnopp/tree-sitter-gdscript',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@PrestonKnopp" },
-  readme_name = "Godot (gdscript)",
+  maintainers = { '@PrestonKnopp' },
+  readme_name = 'Godot (gdscript)',
 }
 
 list.git_rebase = {
   install_info = {
-    url = "https://github.com/the-mikedavis/tree-sitter-git-rebase",
-    files = { "src/parser.c" },
+    url = 'https://github.com/the-mikedavis/tree-sitter-git-rebase',
+    files = { 'src/parser.c' },
   },
-  filetype = "gitrebase",
-  maintainers = { "@gbprod" },
+  filetype = 'gitrebase',
+  maintainers = { '@gbprod' },
 }
 
 list.gitattributes = {
   install_info = {
-    url = "https://github.com/ObserverOfTime/tree-sitter-gitattributes",
-    files = { "src/parser.c" },
+    url = 'https://github.com/ObserverOfTime/tree-sitter-gitattributes',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@ObserverOfTime" },
+  maintainers = { '@ObserverOfTime' },
 }
 
 list.gitcommit = {
   install_info = {
-    url = "https://github.com/gbprod/tree-sitter-gitcommit",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/gbprod/tree-sitter-gitcommit',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@gbprod" },
+  maintainers = { '@gbprod' },
 }
 
 list.git_config = {
   install_info = {
-    url = "https://github.com/the-mikedavis/tree-sitter-git-config",
-    files = { "src/parser.c" },
+    url = 'https://github.com/the-mikedavis/tree-sitter-git-config',
+    files = { 'src/parser.c' },
   },
-  filetype = "gitconfig",
-  maintainers = { "@amaanq" },
-  readme_name = "git_config",
+  filetype = 'gitconfig',
+  maintainers = { '@amaanq' },
+  readme_name = 'git_config',
 }
 
 list.gitignore = {
   install_info = {
-    url = "https://github.com/shunsambongi/tree-sitter-gitignore",
-    files = { "src/parser.c" },
+    url = 'https://github.com/shunsambongi/tree-sitter-gitignore',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@theHamsta" },
+  maintainers = { '@theHamsta' },
 }
 
 list.gleam = {
   install_info = {
-    url = "https://github.com/gleam-lang/tree-sitter-gleam",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/gleam-lang/tree-sitter-gleam',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.glimmer = {
   install_info = {
-    url = "https://github.com/alexlafroscia/tree-sitter-glimmer",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/alexlafroscia/tree-sitter-glimmer',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  filetype = "handlebars",
-  maintainers = { "@NullVoxPopuli" },
-  readme_name = "Glimmer and Ember",
+  filetype = 'handlebars',
+  maintainers = { '@NullVoxPopuli' },
+  readme_name = 'Glimmer and Ember',
 }
 
 list.glsl = {
   install_info = {
-    url = "https://github.com/theHamsta/tree-sitter-glsl",
-    files = { "src/parser.c" },
+    url = 'https://github.com/theHamsta/tree-sitter-glsl',
+    files = { 'src/parser.c' },
     generate_requires_npm = true,
   },
-  maintainers = { "@theHamsta" },
+  maintainers = { '@theHamsta' },
 }
 
 list.go = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-go",
-    files = { "src/parser.c" },
+    url = 'https://github.com/tree-sitter/tree-sitter-go',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@theHamsta", "@WinWisely268" },
+  maintainers = { '@theHamsta', '@WinWisely268' },
 }
 
 list.godot_resource = {
   install_info = {
-    url = "https://github.com/PrestonKnopp/tree-sitter-godot-resource",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/PrestonKnopp/tree-sitter-godot-resource',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  filetype = "gdresource",
-  maintainers = { "@pierpo" },
-  readme_name = "Godot Resources (gdresource)",
+  filetype = 'gdresource',
+  maintainers = { '@pierpo' },
+  readme_name = 'Godot Resources (gdresource)',
 }
 
 list.gomod = {
   install_info = {
-    url = "https://github.com/camdencheek/tree-sitter-go-mod",
-    files = { "src/parser.c" },
+    url = 'https://github.com/camdencheek/tree-sitter-go-mod',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@camdencheek" },
+  maintainers = { '@camdencheek' },
 }
 
 list.gosum = {
   install_info = {
-    url = "https://github.com/amaanq/tree-sitter-go-sum",
-    files = { "src/parser.c" },
+    url = 'https://github.com/amaanq/tree-sitter-go-sum',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.gowork = {
   install_info = {
-    url = "https://github.com/omertuc/tree-sitter-go-work",
-    files = { "src/parser.c" },
+    url = 'https://github.com/omertuc/tree-sitter-go-work',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@omertuc" },
+  maintainers = { '@omertuc' },
 }
 
 list.graphql = {
   install_info = {
-    url = "https://github.com/bkegley/tree-sitter-graphql",
-    files = { "src/parser.c" },
+    url = 'https://github.com/bkegley/tree-sitter-graphql',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@bkegley" },
+  maintainers = { '@bkegley' },
 }
 
 list.hack = {
   install_info = {
-    url = "https://github.com/slackhq/tree-sitter-hack",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/slackhq/tree-sitter-hack',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
 }
 
 list.hare = {
   install_info = {
-    url = "https://github.com/amaanq/tree-sitter-hare",
-    files = { "src/parser.c" },
+    url = 'https://github.com/amaanq/tree-sitter-hare',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.haskell = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-haskell",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/tree-sitter/tree-sitter-haskell',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
 }
 
 list.hcl = {
   install_info = {
-    url = "https://github.com/MichaHoffmann/tree-sitter-hcl",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/MichaHoffmann/tree-sitter-hcl',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@MichaHoffmann" },
+  maintainers = { '@MichaHoffmann' },
 }
 
 list.heex = {
   install_info = {
-    url = "https://github.com/connorlay/tree-sitter-heex",
-    files = { "src/parser.c" },
+    url = 'https://github.com/connorlay/tree-sitter-heex',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@connorlay" },
+  maintainers = { '@connorlay' },
 }
 
 list.hjson = {
   install_info = {
-    url = "https://github.com/winston0410/tree-sitter-hjson",
-    files = { "src/parser.c" },
+    url = 'https://github.com/winston0410/tree-sitter-hjson',
+    files = { 'src/parser.c' },
     generate_requires_npm = true,
   },
-  maintainers = { "@winston0410" },
+  maintainers = { '@winston0410' },
 }
 
 list.hlsl = {
   install_info = {
-    url = "https://github.com/theHamsta/tree-sitter-hlsl",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/theHamsta/tree-sitter-hlsl',
+    files = { 'src/parser.c', 'src/scanner.cc' },
     generate_requires_npm = true,
   },
-  maintainers = { "@theHamsta" },
+  maintainers = { '@theHamsta' },
 }
 
 list.hocon = {
   install_info = {
-    url = "https://github.com/antosha417/tree-sitter-hocon",
-    files = { "src/parser.c" },
+    url = 'https://github.com/antosha417/tree-sitter-hocon',
+    files = { 'src/parser.c' },
     generate_requires_npm = true,
   },
-  maintainers = { "@antosha417" },
+  maintainers = { '@antosha417' },
 }
 
 list.html = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-html",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/tree-sitter/tree-sitter-html',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@TravonteD" },
+  maintainers = { '@TravonteD' },
 }
 
 list.htmldjango = {
   install_info = {
-    url = "https://github.com/interdependence/tree-sitter-htmldjango",
-    files = { "src/parser.c" },
+    url = 'https://github.com/interdependence/tree-sitter-htmldjango',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@ObserverOfTime" },
+  maintainers = { '@ObserverOfTime' },
   experimental = true,
 }
 
 list.http = {
   install_info = {
-    url = "https://github.com/rest-nvim/tree-sitter-http",
-    files = { "src/parser.c" },
+    url = 'https://github.com/rest-nvim/tree-sitter-http',
+    files = { 'src/parser.c' },
     generate_requires_npm = true,
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.ini = {
   install_info = {
-    url = "https://github.com/justinmk/tree-sitter-ini",
-    files = { "src/parser.c" },
+    url = 'https://github.com/justinmk/tree-sitter-ini',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@theHamsta" },
+  maintainers = { '@theHamsta' },
   experimental = true,
 }
 
 list.janet_simple = {
   install_info = {
-    url = "https://github.com/sogaiu/tree-sitter-janet-simple",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/sogaiu/tree-sitter-janet-simple',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  filetype = "janet",
-  maintainers = { "@sogaiu" },
+  filetype = 'janet',
+  maintainers = { '@sogaiu' },
 }
 
 list.java = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-java",
-    files = { "src/parser.c" },
+    url = 'https://github.com/tree-sitter/tree-sitter-java',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@p00f" },
+  maintainers = { '@p00f' },
 }
 
 list.javascript = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-javascript",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/tree-sitter/tree-sitter-javascript',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@steelsojka" },
+  maintainers = { '@steelsojka' },
 }
 
 list.jq = {
   install_info = {
-    url = "https://github.com/flurie/tree-sitter-jq",
-    files = { "src/parser.c" },
+    url = 'https://github.com/flurie/tree-sitter-jq',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@ObserverOfTime" },
+  maintainers = { '@ObserverOfTime' },
 }
 
 list.jsdoc = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-jsdoc",
-    files = { "src/parser.c" },
+    url = 'https://github.com/tree-sitter/tree-sitter-jsdoc',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@steelsojka" },
+  maintainers = { '@steelsojka' },
 }
 
 list.json = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-json",
-    files = { "src/parser.c" },
+    url = 'https://github.com/tree-sitter/tree-sitter-json',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@steelsojka" },
+  maintainers = { '@steelsojka' },
 }
 
 list.json5 = {
   install_info = {
-    url = "https://github.com/Joakker/tree-sitter-json5",
-    files = { "src/parser.c" },
+    url = 'https://github.com/Joakker/tree-sitter-json5',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@Joakker" },
+  maintainers = { '@Joakker' },
 }
 
 list.jsonc = {
   install_info = {
-    url = "https://gitlab.com/WhyNotHugo/tree-sitter-jsonc.git",
-    files = { "src/parser.c" },
+    url = 'https://gitlab.com/WhyNotHugo/tree-sitter-jsonc.git',
+    files = { 'src/parser.c' },
     generate_requires_npm = true,
   },
-  maintainers = { "@WhyNotHugo" },
-  readme_name = "JSON with comments",
+  maintainers = { '@WhyNotHugo' },
+  readme_name = 'JSON with comments',
 }
 
 list.jsonnet = {
   install_info = {
-    url = "https://github.com/sourcegraph/tree-sitter-jsonnet",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/sourcegraph/tree-sitter-jsonnet',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@nawordar" },
+  maintainers = { '@nawordar' },
 }
 
 list.julia = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-julia",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/tree-sitter/tree-sitter-julia',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@theHamsta" },
+  maintainers = { '@theHamsta' },
 }
 
 list.kdl = {
   install_info = {
-    url = "https://github.com/amaanq/tree-sitter-kdl",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/amaanq/tree-sitter-kdl',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.kotlin = {
   install_info = {
-    url = "https://github.com/fwcd/tree-sitter-kotlin",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/fwcd/tree-sitter-kotlin',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@SalBakraa" },
+  maintainers = { '@SalBakraa' },
 }
 
 list.lalrpop = {
   install_info = {
-    url = "https://github.com/traxys/tree-sitter-lalrpop",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/traxys/tree-sitter-lalrpop',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@traxys" },
+  maintainers = { '@traxys' },
 }
 
 list.latex = {
   install_info = {
-    url = "https://github.com/latex-lsp/tree-sitter-latex",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/latex-lsp/tree-sitter-latex',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  filetype = "tex",
-  maintainers = { "@theHamsta", "@clason" },
+  filetype = 'tex',
+  maintainers = { '@theHamsta', '@clason' },
 }
 
 list.ledger = {
   install_info = {
-    url = "https://github.com/cbarrete/tree-sitter-ledger",
-    files = { "src/parser.c" },
+    url = 'https://github.com/cbarrete/tree-sitter-ledger',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@cbarrete" },
+  maintainers = { '@cbarrete' },
 }
 
 list.llvm = {
   install_info = {
-    url = "https://github.com/benwilliamgraham/tree-sitter-llvm",
-    files = { "src/parser.c" },
+    url = 'https://github.com/benwilliamgraham/tree-sitter-llvm',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@benwilliamgraham" },
+  maintainers = { '@benwilliamgraham' },
 }
 
 list.lua = {
   install_info = {
-    url = "https://github.com/MunifTanjim/tree-sitter-lua",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/MunifTanjim/tree-sitter-lua',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@muniftanjim" },
+  maintainers = { '@muniftanjim' },
 }
 
 list.luadoc = {
   install_info = {
-    url = "https://github.com/amaanq/tree-sitter-luadoc",
-    files = { "src/parser.c" },
+    url = 'https://github.com/amaanq/tree-sitter-luadoc',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.luap = {
   install_info = {
-    url = "https://github.com/amaanq/tree-sitter-luap",
-    files = { "src/parser.c" },
+    url = 'https://github.com/amaanq/tree-sitter-luap',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@amaanq" },
-  readme_name = "lua patterns",
+  maintainers = { '@amaanq' },
+  readme_name = 'lua patterns',
 }
 
 list.luau = {
   install_info = {
-    url = "https://github.com/amaanq/tree-sitter-luau",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/amaanq/tree-sitter-luau',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.m68k = {
   install_info = {
-    url = "https://github.com/grahambates/tree-sitter-m68k",
-    files = { "src/parser.c" },
+    url = 'https://github.com/grahambates/tree-sitter-m68k',
+    files = { 'src/parser.c' },
   },
-  filetype = "asm68k",
-  maintainers = { "@grahambates" },
+  filetype = 'asm68k',
+  maintainers = { '@grahambates' },
 }
 
 list.make = {
   install_info = {
-    url = "https://github.com/alemuller/tree-sitter-make",
-    files = { "src/parser.c" },
+    url = 'https://github.com/alemuller/tree-sitter-make',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@lewis6991" },
+  maintainers = { '@lewis6991' },
 }
 
 list.markdown = {
   install_info = {
-    url = "https://github.com/MDeiml/tree-sitter-markdown",
-    location = "tree-sitter-markdown",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/MDeiml/tree-sitter-markdown',
+    location = 'tree-sitter-markdown',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@MDeiml" },
-  readme_name = "markdown (basic highlighting)",
+  maintainers = { '@MDeiml' },
+  readme_name = 'markdown (basic highlighting)',
   experimental = true,
 }
 
 list.markdown_inline = {
   install_info = {
-    url = "https://github.com/MDeiml/tree-sitter-markdown",
-    location = "tree-sitter-markdown-inline",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/MDeiml/tree-sitter-markdown',
+    location = 'tree-sitter-markdown-inline',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@MDeiml" },
-  readme_name = "markdown_inline (needed for full highlighting)",
+  maintainers = { '@MDeiml' },
+  readme_name = 'markdown_inline (needed for full highlighting)',
   experimental = true,
 }
 
 list.matlab = {
   install_info = {
-    url = "https://github.com/mstanciu552/tree-sitter-matlab",
-    files = { "src/parser.c" },
+    url = 'https://github.com/mstanciu552/tree-sitter-matlab',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.menhir = {
   install_info = {
-    url = "https://github.com/Kerl13/tree-sitter-menhir",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/Kerl13/tree-sitter-menhir',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@Kerl13" },
+  maintainers = { '@Kerl13' },
 }
 
 list.mermaid = {
   install_info = {
-    url = "https://github.com/monaqa/tree-sitter-mermaid",
-    files = { "src/parser.c" },
+    url = 'https://github.com/monaqa/tree-sitter-mermaid',
+    files = { 'src/parser.c' },
   },
   experimental = true,
 }
 
 list.meson = {
   install_info = {
-    url = "https://github.com/Decodetalkers/tree-sitter-meson",
-    files = { "src/parser.c" },
+    url = 'https://github.com/Decodetalkers/tree-sitter-meson',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@Decodetalkers" },
+  maintainers = { '@Decodetalkers' },
 }
 
 list.mlir = {
   install_info = {
-    url = "https://github.com/artagnon/tree-sitter-mlir",
-    files = { "src/parser.c" },
+    url = 'https://github.com/artagnon/tree-sitter-mlir',
+    files = { 'src/parser.c' },
     requires_generate_from_grammar = true,
   },
   experimental = true,
-  maintainers = { "@artagnon" },
+  maintainers = { '@artagnon' },
 }
 
 list.nickel = {
   install_info = {
-    url = "https://github.com/nickel-lang/tree-sitter-nickel",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/nickel-lang/tree-sitter-nickel',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
 }
 
 list.ninja = {
   install_info = {
-    url = "https://github.com/alemuller/tree-sitter-ninja",
-    files = { "src/parser.c" },
+    url = 'https://github.com/alemuller/tree-sitter-ninja',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@alemuller" },
+  maintainers = { '@alemuller' },
 }
 
 list.nix = {
   install_info = {
-    url = "https://github.com/cstrahan/tree-sitter-nix",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/cstrahan/tree-sitter-nix',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@leo60228" },
+  maintainers = { '@leo60228' },
 }
 
 list.norg = {
   install_info = {
-    url = "https://github.com/nvim-neorg/tree-sitter-norg",
-    files = { "src/parser.c", "src/scanner.cc" },
-    cxx_standard = "c++14",
+    url = 'https://github.com/nvim-neorg/tree-sitter-norg',
+    files = { 'src/parser.c', 'src/scanner.cc' },
+    cxx_standard = 'c++14',
     use_makefile = true,
   },
-  maintainers = { "@JoeyGrajciar", "@vhyrro" },
+  maintainers = { '@JoeyGrajciar', '@vhyrro' },
 }
 
 list.ocaml = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-ocaml",
-    files = { "src/parser.c", "src/scanner.cc" },
-    location = "ocaml",
+    url = 'https://github.com/tree-sitter/tree-sitter-ocaml',
+    files = { 'src/parser.c', 'src/scanner.cc' },
+    location = 'ocaml',
   },
-  maintainers = { "@undu" },
+  maintainers = { '@undu' },
 }
 
 list.ocaml_interface = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-ocaml",
-    files = { "src/parser.c", "src/scanner.cc" },
-    location = "interface",
+    url = 'https://github.com/tree-sitter/tree-sitter-ocaml',
+    files = { 'src/parser.c', 'src/scanner.cc' },
+    location = 'interface',
   },
-  filetype = "ocamlinterface",
-  maintainers = { "@undu" },
+  filetype = 'ocamlinterface',
+  maintainers = { '@undu' },
 }
 
 list.ocamllex = {
   install_info = {
-    url = "https://github.com/atom-ocaml/tree-sitter-ocamllex",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/atom-ocaml/tree-sitter-ocamllex',
+    files = { 'src/parser.c', 'src/scanner.cc' },
     requires_generate_from_grammar = true,
   },
-  maintainers = { "@undu" },
+  maintainers = { '@undu' },
 }
 
 list.odin = {
@@ -1020,506 +1020,506 @@ list.odin = {
 
 list.org = {
   install_info = {
-    url = "https://github.com/milisims/tree-sitter-org",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/milisims/tree-sitter-org',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
 }
 
 list.pascal = {
   install_info = {
-    url = "https://github.com/Isopod/tree-sitter-pascal.git",
-    files = { "src/parser.c" },
+    url = 'https://github.com/Isopod/tree-sitter-pascal.git',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@Isopod" },
+  maintainers = { '@Isopod' },
 }
 
 list.passwd = {
   install_info = {
-    url = "https://github.com/ath3/tree-sitter-passwd",
-    files = { "src/parser.c" },
+    url = 'https://github.com/ath3/tree-sitter-passwd',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.perl = {
   install_info = {
-    url = "https://github.com/ganezdragon/tree-sitter-perl",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/ganezdragon/tree-sitter-perl',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@lcrownover" },
+  maintainers = { '@lcrownover' },
 }
 
 list.php = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-php",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/tree-sitter/tree-sitter-php',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@tk-shirasaka" },
+  maintainers = { '@tk-shirasaka' },
 }
 
 -- Parsers for injections
 list.phpdoc = {
   install_info = {
-    url = "https://github.com/claytonrcarter/tree-sitter-phpdoc",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/claytonrcarter/tree-sitter-phpdoc',
+    files = { 'src/parser.c', 'src/scanner.c' },
     generate_requires_npm = true,
   },
-  maintainers = { "@mikehaertl" },
+  maintainers = { '@mikehaertl' },
   experimental = true,
 }
 
 list.pioasm = {
   install_info = {
-    url = "https://github.com/leo60228/tree-sitter-pioasm",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/leo60228/tree-sitter-pioasm',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@leo60228" },
+  maintainers = { '@leo60228' },
 }
 
 list.po = {
   install_info = {
-    url = "https://github.com/erasin/tree-sitter-po",
-    files = { "src/parser.c" },
+    url = 'https://github.com/erasin/tree-sitter-po',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.poe_filter = {
   install_info = {
-    url = "https://github.com/ObserverOfTime/tree-sitter-poe-filter",
-    files = { "src/parser.c" },
+    url = 'https://github.com/ObserverOfTime/tree-sitter-poe-filter',
+    files = { 'src/parser.c' },
   },
-  filetype = "poefilter",
-  maintainers = { "@ObserverOfTime" },
-  readme_name = "Path of Exile item filter",
+  filetype = 'poefilter',
+  maintainers = { '@ObserverOfTime' },
+  readme_name = 'Path of Exile item filter',
   experimental = true,
 }
 
 list.pony = {
   install_info = {
-    url = "https://github.com/amaanq/tree-sitter-pony",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/amaanq/tree-sitter-pony',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@amaanq", "@mfelsche" },
+  maintainers = { '@amaanq', '@mfelsche' },
 }
 
 list.prisma = {
   install_info = {
-    url = "https://github.com/victorhqc/tree-sitter-prisma",
-    files = { "src/parser.c" },
+    url = 'https://github.com/victorhqc/tree-sitter-prisma',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@elianiva" },
+  maintainers = { '@elianiva' },
 }
 
 list.proto = {
   install_info = {
-    url = "https://github.com/mitchellh/tree-sitter-proto",
-    files = { "src/parser.c" },
+    url = 'https://github.com/mitchellh/tree-sitter-proto',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@fsouza" },
+  maintainers = { '@fsouza' },
 }
 
 list.prql = {
   install_info = {
-    url = "https://github.com/PRQL/tree-sitter-prql",
-    files = { "src/parser.c" },
+    url = 'https://github.com/PRQL/tree-sitter-prql',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@matthias-Q" },
+  maintainers = { '@matthias-Q' },
 }
 
 list.pug = {
   install_info = {
-    url = "https://github.com/zealot128/tree-sitter-pug",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/zealot128/tree-sitter-pug',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@zealot128" },
+  maintainers = { '@zealot128' },
   experimental = true,
 }
 
 list.puppet = {
   install_info = {
-    url = "https://github.com/amaanq/tree-sitter-puppet",
-    files = { "src/parser.c" },
+    url = 'https://github.com/amaanq/tree-sitter-puppet',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.python = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-python",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/tree-sitter/tree-sitter-python',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@stsewd", "@theHamsta" },
+  maintainers = { '@stsewd', '@theHamsta' },
 }
 
 list.ql = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-ql",
-    files = { "src/parser.c" },
+    url = 'https://github.com/tree-sitter/tree-sitter-ql',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@pwntester" },
+  maintainers = { '@pwntester' },
 }
 
 list.qmldir = {
   install_info = {
-    url = "https://github.com/Decodetalkers/tree-sitter-qmldir",
-    files = { "src/parser.c" },
+    url = 'https://github.com/Decodetalkers/tree-sitter-qmldir',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.qmljs = {
   install_info = {
-    url = "https://github.com/yuja/tree-sitter-qmljs",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/yuja/tree-sitter-qmljs',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  filetype = "qml",
-  maintainers = { "@Decodetalkers" },
+  filetype = 'qml',
+  maintainers = { '@Decodetalkers' },
 }
 
 list.query = {
   install_info = {
-    url = "https://github.com/nvim-treesitter/tree-sitter-query",
-    files = { "src/parser.c" },
+    url = 'https://github.com/nvim-treesitter/tree-sitter-query',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@steelsojka" },
-  readme_name = "Tree-Sitter query language",
+  maintainers = { '@steelsojka' },
+  readme_name = 'Tree-Sitter query language',
 }
 
 list.r = {
   install_info = {
-    url = "https://github.com/r-lib/tree-sitter-r",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/r-lib/tree-sitter-r',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@echasnovski" },
+  maintainers = { '@echasnovski' },
 }
 
 list.racket = {
   install_info = {
-    url = "https://github.com/6cdh/tree-sitter-racket",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/6cdh/tree-sitter-racket',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@6cdh" },
+  maintainers = { '@6cdh' },
 }
 
 list.rasi = {
   install_info = {
-    url = "https://github.com/Fymyte/tree-sitter-rasi",
-    files = { "src/parser.c" },
+    url = 'https://github.com/Fymyte/tree-sitter-rasi',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@Fymyte" },
+  maintainers = { '@Fymyte' },
 }
 
 list.regex = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-regex",
-    files = { "src/parser.c" },
+    url = 'https://github.com/tree-sitter/tree-sitter-regex',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@theHamsta" },
+  maintainers = { '@theHamsta' },
 }
 
 list.rego = {
   install_info = {
-    url = "https://github.com/FallenAngel97/tree-sitter-rego",
-    files = { "src/parser.c" },
+    url = 'https://github.com/FallenAngel97/tree-sitter-rego',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@FallenAngel97" },
+  maintainers = { '@FallenAngel97' },
 }
 
 list.rnoweb = {
   install_info = {
-    url = "https://github.com/bamonroe/tree-sitter-rnoweb",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/bamonroe/tree-sitter-rnoweb',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@bamonroe" },
+  maintainers = { '@bamonroe' },
 }
 
 list.ron = {
   install_info = {
-    url = "https://github.com/amaanq/tree-sitter-ron",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/amaanq/tree-sitter-ron',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.rst = {
   install_info = {
-    url = "https://github.com/stsewd/tree-sitter-rst",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/stsewd/tree-sitter-rst',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@stsewd" },
+  maintainers = { '@stsewd' },
 }
 
 list.ruby = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-ruby",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/tree-sitter/tree-sitter-ruby',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@TravonteD" },
+  maintainers = { '@TravonteD' },
 }
 
 list.rust = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-rust",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/tree-sitter/tree-sitter-rust',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.scala = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-scala",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/tree-sitter/tree-sitter-scala',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@stevanmilic" },
+  maintainers = { '@stevanmilic' },
 }
 
 list.scheme = {
   install_info = {
-    url = "https://github.com/6cdh/tree-sitter-scheme",
-    files = { "src/parser.c" },
+    url = 'https://github.com/6cdh/tree-sitter-scheme',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@6cdh" },
+  maintainers = { '@6cdh' },
 }
 
 list.scss = {
   install_info = {
-    url = "https://github.com/serenadeai/tree-sitter-scss",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/serenadeai/tree-sitter-scss',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@elianiva" },
+  maintainers = { '@elianiva' },
 }
 
 list.slint = {
   install_info = {
-    url = "https://github.com/jrmoulton/tree-sitter-slint",
-    files = { "src/parser.c" },
+    url = 'https://github.com/jrmoulton/tree-sitter-slint',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@jrmoulton" },
+  maintainers = { '@jrmoulton' },
   experimental = true,
 }
 
 list.smali = {
   install_info = {
-    url = "https://git.sr.ht/~yotam/tree-sitter-smali",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://git.sr.ht/~yotam/tree-sitter-smali',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.smithy = {
   install_info = {
-    url = "https://github.com/indoorvivants/tree-sitter-smithy",
-    files = { "src/parser.c" },
+    url = 'https://github.com/indoorvivants/tree-sitter-smithy',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@amaanq", "@keynmol" },
+  maintainers = { '@amaanq', '@keynmol' },
 }
 
 list.solidity = {
   install_info = {
-    url = "https://github.com/JoranHonig/tree-sitter-solidity",
-    files = { "src/parser.c" },
+    url = 'https://github.com/JoranHonig/tree-sitter-solidity',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.sparql = {
   install_info = {
-    url = "https://github.com/BonaBeavis/tree-sitter-sparql",
-    files = { "src/parser.c" },
+    url = 'https://github.com/BonaBeavis/tree-sitter-sparql',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@BonaBeavis" },
+  maintainers = { '@BonaBeavis' },
 }
 
 list.sql = {
   install_info = {
-    url = "https://github.com/derekstride/tree-sitter-sql",
-    files = { "src/parser.c" },
-    branch = "gh-pages",
+    url = 'https://github.com/derekstride/tree-sitter-sql',
+    files = { 'src/parser.c' },
+    branch = 'gh-pages',
   },
-  maintainers = { "@derekstride" },
+  maintainers = { '@derekstride' },
 }
 
 list.squirrel = {
   install_info = {
-    url = "https://github.com/amaanq/tree-sitter-squirrel",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/amaanq/tree-sitter-squirrel',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.starlark = {
   install_info = {
-    url = "https://github.com/amaanq/tree-sitter-starlark",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/amaanq/tree-sitter-starlark',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  filetype = "bzl",
-  maintainers = { "@amaanq" },
+  filetype = 'bzl',
+  maintainers = { '@amaanq' },
 }
 
 list.supercollider = {
   install_info = {
-    url = "https://github.com/madskjeldgaard/tree-sitter-supercollider",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/madskjeldgaard/tree-sitter-supercollider',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@madskjeldgaard" },
+  maintainers = { '@madskjeldgaard' },
 }
 
 list.surface = {
   install_info = {
-    url = "https://github.com/connorlay/tree-sitter-surface",
-    files = { "src/parser.c" },
+    url = 'https://github.com/connorlay/tree-sitter-surface',
+    files = { 'src/parser.c' },
   },
-  filetype = "sface",
-  maintainers = { "@connorlay" },
+  filetype = 'sface',
+  maintainers = { '@connorlay' },
 }
 
 list.svelte = {
   install_info = {
-    url = "https://github.com/Himujjal/tree-sitter-svelte",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/Himujjal/tree-sitter-svelte',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@elianiva" },
+  maintainers = { '@elianiva' },
 }
 
 list.swift = {
   install_info = {
-    url = "https://github.com/alex-pinkus/tree-sitter-swift",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/alex-pinkus/tree-sitter-swift',
+    files = { 'src/parser.c', 'src/scanner.c' },
     requires_generate_from_grammar = true,
   },
-  maintainers = { "@alex-pinkus" },
+  maintainers = { '@alex-pinkus' },
 }
 
 list.sxhkdrc = {
   install_info = {
-    url = "https://github.com/RaafatTurki/tree-sitter-sxhkdrc",
-    files = { "src/parser.c" },
+    url = 'https://github.com/RaafatTurki/tree-sitter-sxhkdrc',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@RaafatTurki" },
+  maintainers = { '@RaafatTurki' },
 }
 
 list.t32 = {
   install_info = {
-    url = "https://codeberg.org/xasc/tree-sitter-t32",
-    files = { "src/parser.c", "src/scanner.c" },
-    revision = "675cd7de4eb80f2faa1e6d3bc9ee195fa9ef9790",
+    url = 'https://codeberg.org/xasc/tree-sitter-t32',
+    files = { 'src/parser.c', 'src/scanner.c' },
+    revision = '675cd7de4eb80f2faa1e6d3bc9ee195fa9ef9790',
   },
-  maintainers = { "@xasc" },
+  maintainers = { '@xasc' },
 }
 
 list.tablegen = {
   install_info = {
-    url = "https://github.com/amaanq/tree-sitter-tablegen",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/amaanq/tree-sitter-tablegen',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.teal = {
   install_info = {
-    url = "https://github.com/euclidianAce/tree-sitter-teal",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/euclidianAce/tree-sitter-teal',
+    files = { 'src/parser.c', 'src/scanner.c' },
     requires_generate_from_grammar = true,
   },
-  maintainers = { "@euclidianAce" },
+  maintainers = { '@euclidianAce' },
 }
 
 list.terraform = {
   install_info = {
-    url = "https://github.com/MichaHoffmann/tree-sitter-hcl",
-    files = { "src/parser.c", "src/scanner.cc" },
-    location = "dialects/terraform",
+    url = 'https://github.com/MichaHoffmann/tree-sitter-hcl',
+    files = { 'src/parser.c', 'src/scanner.cc' },
+    location = 'dialects/terraform',
   },
-  maintainers = { "@MichaHoffmann" },
+  maintainers = { '@MichaHoffmann' },
 }
 
 list.thrift = {
   install_info = {
-    url = "https://github.com/duskmoon314/tree-sitter-thrift",
-    files = { "src/parser.c" },
+    url = 'https://github.com/duskmoon314/tree-sitter-thrift',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@amaanq", "@duskmoon314" },
+  maintainers = { '@amaanq', '@duskmoon314' },
 }
 
 list.tiger = {
   install_info = {
-    url = "https://github.com/ambroisie/tree-sitter-tiger",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/ambroisie/tree-sitter-tiger',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@ambroisie" },
+  maintainers = { '@ambroisie' },
 }
 
 list.tlaplus = {
   install_info = {
-    url = "https://github.com/tlaplus-community/tree-sitter-tlaplus",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/tlaplus-community/tree-sitter-tlaplus',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  filetype = "tla",
-  maintainers = { "@ahelwer", "@susliko" },
+  filetype = 'tla',
+  maintainers = { '@ahelwer', '@susliko' },
 }
 
 list.todotxt = {
   install_info = {
-    url = "https://github.com/arnarg/tree-sitter-todotxt.git",
-    files = { "src/parser.c" },
+    url = 'https://github.com/arnarg/tree-sitter-todotxt.git',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@arnarg" },
+  maintainers = { '@arnarg' },
   experimental = true,
 }
 
 list.toml = {
   install_info = {
-    url = "https://github.com/ikatyang/tree-sitter-toml",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/ikatyang/tree-sitter-toml',
+    files = { 'src/parser.c', 'src/scanner.c' },
     generate_requires_npm = true,
   },
-  maintainers = { "@tk-shirasaka" },
+  maintainers = { '@tk-shirasaka' },
 }
 
 list.tsx = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-typescript",
-    files = { "src/parser.c", "src/scanner.c" },
-    location = "tsx",
+    url = 'https://github.com/tree-sitter/tree-sitter-typescript',
+    files = { 'src/parser.c', 'src/scanner.c' },
+    location = 'tsx',
     generate_requires_npm = true,
   },
-  filetype = "typescriptreact",
-  maintainers = { "@steelsojka" },
+  filetype = 'typescriptreact',
+  maintainers = { '@steelsojka' },
 }
 
 list.turtle = {
   install_info = {
-    url = "https://github.com/BonaBeavis/tree-sitter-turtle",
-    files = { "src/parser.c" },
+    url = 'https://github.com/BonaBeavis/tree-sitter-turtle',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@BonaBeavis" },
+  maintainers = { '@BonaBeavis' },
 }
 
 list.twig = {
   install_info = {
-    url = "https://github.com/gbprod/tree-sitter-twig",
-    files = { "src/parser.c" },
+    url = 'https://github.com/gbprod/tree-sitter-twig',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@gbprod" },
+  maintainers = { '@gbprod' },
 }
 
 list.typescript = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-typescript",
-    files = { "src/parser.c", "src/scanner.c" },
-    location = "typescript",
+    url = 'https://github.com/tree-sitter/tree-sitter-typescript',
+    files = { 'src/parser.c', 'src/scanner.c' },
+    location = 'typescript',
     generate_requires_npm = true,
   },
-  maintainers = { "@steelsojka" },
+  maintainers = { '@steelsojka' },
 }
 
 list.ungrammar = {
   install_info = {
-    url = "https://github.com/Philipp-M/tree-sitter-ungrammar",
-    files = { "src/parser.c" },
+    url = 'https://github.com/Philipp-M/tree-sitter-ungrammar',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@Philipp-M", "@amaanq" },
+  maintainers = { '@Philipp-M', '@amaanq' },
 }
 
 list.usd = {
@@ -1532,121 +1532,121 @@ list.usd = {
 
 list.uxntal = {
   install_info = {
-    url = "https://github.com/amaanq/tree-sitter-uxntal",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/amaanq/tree-sitter-uxntal',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  filetype = "tal",
-  maintainers = { "@amaanq" },
-  readme_name = "uxn tal",
+  filetype = 'tal',
+  maintainers = { '@amaanq' },
+  readme_name = 'uxn tal',
 }
 
 list.v = {
   install_info = {
-    url = "https://github.com/vlang/vls",
-    files = { "src/parser.c", "src/scanner.c" },
-    location = "tree_sitter_v",
+    url = 'https://github.com/vlang/vls',
+    files = { 'src/parser.c', 'src/scanner.c' },
+    location = 'tree_sitter_v',
   },
-  filetype = "vlang",
-  maintainers = { "@kkharji" },
+  filetype = 'vlang',
+  maintainers = { '@kkharji' },
 }
 
 list.vala = {
   install_info = {
-    url = "https://github.com/vala-lang/tree-sitter-vala",
-    files = { "src/parser.c" },
+    url = 'https://github.com/vala-lang/tree-sitter-vala',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@Prince781" },
+  maintainers = { '@Prince781' },
 }
 
 list.verilog = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-verilog",
-    files = { "src/parser.c" },
+    url = 'https://github.com/tree-sitter/tree-sitter-verilog',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@zegervdv" },
+  maintainers = { '@zegervdv' },
 }
 
 list.vhs = {
   install_info = {
-    url = "https://github.com/charmbracelet/tree-sitter-vhs",
-    files = { "src/parser.c" },
+    url = 'https://github.com/charmbracelet/tree-sitter-vhs',
+    files = { 'src/parser.c' },
   },
-  filetype = "tape",
-  maintainers = { "@caarlos0" },
+  filetype = 'tape',
+  maintainers = { '@caarlos0' },
 }
 
 list.vim = {
   install_info = {
-    url = "https://github.com/neovim/tree-sitter-vim",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/neovim/tree-sitter-vim',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@clason" },
+  maintainers = { '@clason' },
 }
 
 list.vimdoc = {
   install_info = {
-    url = "https://github.com/neovim/tree-sitter-vimdoc",
-    files = { "src/parser.c" },
+    url = 'https://github.com/neovim/tree-sitter-vimdoc',
+    files = { 'src/parser.c' },
   },
-  filetype = "help",
-  maintainers = { "@clason" },
+  filetype = 'help',
+  maintainers = { '@clason' },
 }
 
 list.vue = {
   install_info = {
-    url = "https://github.com/ikatyang/tree-sitter-vue",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/ikatyang/tree-sitter-vue',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@WhyNotHugo" },
+  maintainers = { '@WhyNotHugo' },
 }
 
 list.wgsl = {
   install_info = {
-    url = "https://github.com/szebniok/tree-sitter-wgsl",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/szebniok/tree-sitter-wgsl',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@szebniok" },
+  maintainers = { '@szebniok' },
 }
 
 list.wgsl_bevy = {
   install_info = {
-    url = "https://github.com/theHamsta/tree-sitter-wgsl-bevy",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/theHamsta/tree-sitter-wgsl-bevy',
+    files = { 'src/parser.c', 'src/scanner.c' },
     generate_requires_npm = true,
   },
-  maintainers = { "@theHamsta" },
+  maintainers = { '@theHamsta' },
 }
 
 list.yaml = {
   install_info = {
-    url = "https://github.com/ikatyang/tree-sitter-yaml",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = 'https://github.com/ikatyang/tree-sitter-yaml',
+    files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  maintainers = { "@stsewd" },
+  maintainers = { '@stsewd' },
 }
 
 list.yang = {
   install_info = {
-    url = "https://github.com/Hubro/tree-sitter-yang",
-    files = { "src/parser.c" },
+    url = 'https://github.com/Hubro/tree-sitter-yang',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@Hubro" },
+  maintainers = { '@Hubro' },
 }
 
 list.yuck = {
   install_info = {
-    url = "https://github.com/Philipp-M/tree-sitter-yuck",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/Philipp-M/tree-sitter-yuck',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@Philipp-M", "@amaanq" },
+  maintainers = { '@Philipp-M', '@amaanq' },
 }
 
 list.zig = {
   install_info = {
-    url = "https://github.com/maxxnino/tree-sitter-zig",
-    files = { "src/parser.c" },
+    url = 'https://github.com/maxxnino/tree-sitter-zig',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@maxxnino" },
+  maintainers = { '@maxxnino' },
 }
 
 local M = {
@@ -1666,7 +1666,7 @@ function M.ft_to_lang(ft)
   if result then
     return result
   else
-    ft = vim.split(ft, ".", { plain = true })[1]
+    ft = vim.split(ft, '.', { plain = true })[1]
     return get_lang(ft) or ft
   end
 end
@@ -1676,7 +1676,7 @@ end
 function M.available_parsers()
   local parsers = vim.tbl_keys(M.list)
   table.sort(parsers)
-  if vim.fn.executable "tree-sitter" == 1 and vim.fn.executable "node" == 1 then
+  if vim.fn.executable('tree-sitter') == 1 and vim.fn.executable('node') == 1 then
     return parsers
   else
     return vim.tbl_filter(function(p) ---@param p string
@@ -1694,7 +1694,7 @@ local parser_files
 function M.reset_cache()
   parser_files = setmetatable({}, {
     __index = function(tbl, key)
-      rawset(tbl, key, api.nvim_get_runtime_file("parser/" .. key .. ".*", false))
+      rawset(tbl, key, api.nvim_get_runtime_file('parser/' .. key .. '.*', false))
       return rawget(tbl, key)
     end,
   })
@@ -1736,7 +1736,7 @@ end
 ---@return string
 function M.get_buf_lang(bufnr)
   bufnr = bufnr or api.nvim_get_current_buf()
-  return M.ft_to_lang(api.nvim_buf_get_option(bufnr, "ft"))
+  return M.ft_to_lang(api.nvim_buf_get_option(bufnr, 'ft'))
 end
 
 return M

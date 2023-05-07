@@ -2,28 +2,28 @@
 -- Locals are a generalization of definition and scopes
 -- its the way nvim-treesitter uses to "understand" the code
 
-local queries = require "nvim-treesitter.query"
-local ts_utils = require "nvim-treesitter.ts_utils"
+local queries = require('nvim-treesitter.query')
+local ts_utils = require('nvim-treesitter.ts_utils')
 local ts = vim.treesitter
 local api = vim.api
 
 local M = {}
 
 function M.collect_locals(bufnr)
-  return queries.collect_group_results(bufnr, "locals")
+  return queries.collect_group_results(bufnr, 'locals')
 end
 
 -- Iterates matches from a locals query file.
 -- @param bufnr the buffer
 -- @param root the root node
 function M.iter_locals(bufnr, root)
-  return queries.iter_group_results(bufnr, "locals", root)
+  return queries.iter_group_results(bufnr, 'locals', root)
 end
 
 ---@param bufnr integer
 ---@return any
 function M.get_locals(bufnr)
-  return queries.get_matches(bufnr, "locals")
+  return queries.get_matches(bufnr, 'locals')
 end
 
 -- Creates unique id for a node based on text and range
@@ -32,7 +32,7 @@ end
 ---@return string: a string id
 function M.get_definition_id(scope, node_text)
   -- Add a valid starting character in case node text doesn't start with a valid one.
-  return table.concat({ "k", node_text or "", scope:range() }, "_")
+  return table.concat({ 'k', node_text or '', scope:range() }, '_')
 end
 
 function M.get_definitions(bufnr)
@@ -118,7 +118,7 @@ function M.get_local_nodes(local_def)
   local result = {}
 
   M.recurse_local_nodes(local_def, function(def, _node, kind)
-    table.insert(result, vim.tbl_extend("keep", { kind = kind }, def))
+    table.insert(result, vim.tbl_extend('keep', { kind = kind }, def))
   end)
 
   return result
@@ -135,7 +135,7 @@ end
 ---@param full_match? string The full match path to append to
 ---@param last_match? string The last match
 function M.recurse_local_nodes(local_def, accumulator, full_match, last_match)
-  if type(local_def) ~= "table" then
+  if type(local_def) ~= 'table' then
     return
   end
 
@@ -143,7 +143,12 @@ function M.recurse_local_nodes(local_def, accumulator, full_match, last_match)
     accumulator(local_def, local_def.node, full_match, last_match)
   else
     for match_key, def in pairs(local_def) do
-      M.recurse_local_nodes(def, accumulator, full_match and (full_match .. "." .. match_key) or match_key, match_key)
+      M.recurse_local_nodes(
+        def,
+        accumulator,
+        full_match and (full_match .. '.' .. match_key) or match_key,
+        match_key
+      )
     end
   end
 end
@@ -196,10 +201,10 @@ function M.get_definition_scopes(node, bufnr, scope_type)
 
   -- Definition is valid for the containing scope
   -- and the containing scope of that scope
-  if scope_type == "parent" then
+  if scope_type == 'parent' then
     scope_count = 2
     -- Definition is valid in all parent scopes
-  elseif scope_type == "global" then
+  elseif scope_type == 'global' then
     scope_count = nil
   end
 
@@ -254,7 +259,11 @@ function M.find_usages(node, scope_node, bufnr)
   local usages = {}
 
   for match in M.iter_locals(bufnr, scope_node) do
-    if match.reference and match.reference.node and ts.get_node_text(match.reference.node, bufnr) == node_text then
+    if
+      match.reference
+      and match.reference.node
+      and ts.get_node_text(match.reference.node, bufnr) == node_text
+    then
       local def_node, _, kind = M.find_definition(match.reference.node, bufnr)
 
       if kind == nil or def_node == node then

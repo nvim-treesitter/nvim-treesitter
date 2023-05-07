@@ -1,22 +1,22 @@
-local query = require "vim.treesitter.query"
+local query = require('vim.treesitter.query')
 
 local html_script_type_languages = {
-  ["importmap"] = "json",
-  ["module"] = "javascript",
-  ["application/ecmascript"] = "javascript",
-  ["text/ecmascript"] = "javascript",
+  ['importmap'] = 'json',
+  ['module'] = 'javascript',
+  ['application/ecmascript'] = 'javascript',
+  ['text/ecmascript'] = 'javascript',
 }
 
 local non_filetype_match_injection_language_aliases = {
-  ex = "elixir",
-  pl = "perl",
-  sh = "bash",
-  uxn = "uxntal",
-  ts = "typescript",
+  ex = 'elixir',
+  pl = 'perl',
+  sh = 'bash',
+  uxn = 'uxntal',
+  ts = 'typescript',
 }
 
 local function get_parser_from_markdown_info_string(injection_alias)
-  local match = vim.filetype.match { filename = "a." .. injection_alias }
+  local match = vim.filetype.match({ filename = 'a.' .. injection_alias })
   return match or non_filetype_match_injection_language_aliases[injection_alias] or injection_alias
 end
 
@@ -29,11 +29,11 @@ local function valid_args(name, pred, count, strict_count)
 
   if strict_count then
     if arg_count ~= count then
-      error(string.format("%s must have exactly %d arguments", name, count))
+      error(string.format('%s must have exactly %d arguments', name, count))
       return false
     end
   elseif arg_count < count then
-    error(string.format("%s must have at least %d arguments", name, count))
+    error(string.format('%s must have at least %d arguments', name, count))
     return false
   end
 
@@ -45,8 +45,8 @@ end
 ---@param _bufnr integer
 ---@param pred string[]
 ---@return boolean|nil
-query.add_predicate("nth?", function(match, _pattern, _bufnr, pred)
-  if not valid_args("nth?", pred, 2, true) then
+query.add_predicate('nth?', function(match, _pattern, _bufnr, pred)
+  if not valid_args('nth?', pred, 2, true) then
     return
   end
 
@@ -75,7 +75,7 @@ local function has_ancestor(match, _pattern, _bufnr, pred)
     return true
   end
 
-  local just_direct_parent = pred[1]:find("has-parent", 1, true)
+  local just_direct_parent = pred[1]:find('has-parent', 1, true)
 
   node = node:parent()
   while node do
@@ -100,13 +100,13 @@ query.add_predicate("has-parent?", has_ancestor, true)
 ---@param bufnr integer
 ---@param pred string[]
 ---@return boolean|nil
-query.add_predicate("is?", function(match, _pattern, bufnr, pred)
-  if not valid_args("is?", pred, 2) then
+query.add_predicate('is?', function(match, _pattern, bufnr, pred)
+  if not valid_args('is?', pred, 2) then
     return
   end
 
   -- Avoid circular dependencies
-  local locals = require "nvim-treesitter.locals"
+  local locals = require('nvim-treesitter.locals')
   local node = match[pred[2]]
   local types = { unpack(pred, 3) }
 
@@ -124,7 +124,7 @@ end)
 ---@param _bufnr integer
 ---@param pred string[]
 ---@return boolean|nil
-query.add_predicate("has-type?", function(match, _pattern, _bufnr, pred)
+query.add_predicate('has-type?', function(match, _pattern, _bufnr, pred)
   if not valid_args(pred[1], pred, 2) then
     return
   end
@@ -144,7 +144,7 @@ end)
 ---@param bufnr integer
 ---@param pred string[]
 ---@return boolean|nil
-query.add_directive("set-lang-from-mimetype!", function(match, _, bufnr, pred, metadata)
+query.add_directive('set-lang-from-mimetype!', function(match, _, bufnr, pred, metadata)
   local capture_id = pred[2]
   local node = match[capture_id]
   if not node then
@@ -155,7 +155,7 @@ query.add_directive("set-lang-from-mimetype!", function(match, _, bufnr, pred, m
   if configured then
     metadata.language = configured
   else
-    local parts = vim.split(type_attr_value, "/", {})
+    local parts = vim.split(type_attr_value, '/', {})
     metadata.language = parts[#parts]
   end
 end)
@@ -165,7 +165,7 @@ end)
 ---@param bufnr integer
 ---@param pred string[]
 ---@return boolean|nil
-query.add_directive("set-lang-from-info-string!", function(match, _, bufnr, pred, metadata)
+query.add_directive('set-lang-from-info-string!', function(match, _, bufnr, pred, metadata)
   local capture_id = pred[2]
   local node = match[capture_id]
   if not node then
@@ -176,7 +176,7 @@ query.add_directive("set-lang-from-info-string!", function(match, _, bufnr, pred
 end)
 
 -- Just avoid some annoying warnings for this directive
-query.add_directive("make-range!", function() end)
+query.add_directive('make-range!', function() end)
 
 ---@param match (TSNode|nil)[]
 ---@param _ string
@@ -184,7 +184,7 @@ query.add_directive("make-range!", function() end)
 ---@param pred string[]
 ---@param metadata table
 ---@return boolean|nil
-query.add_directive("downcase!", function(match, _, bufnr, pred, metadata)
+query.add_directive('downcase!', function(match, _, bufnr, pred, metadata)
   local text, key, value ---@type string|string[], string, string|integer
 
   if #pred == 3 then
@@ -197,11 +197,11 @@ query.add_directive("downcase!", function(match, _, bufnr, pred, metadata)
     value = metadata[key]
   end
 
-  if type(value) == "string" then
+  if type(value) == 'string' then
     text = value
   else
     local node = match[value]
-    text = vim.treesitter.get_node_text(node, bufnr) or ""
+    text = vim.treesitter.get_node_text(node, bufnr) or ''
   end
 
   if #pred == 3 then
@@ -217,7 +217,7 @@ end)
 ---@param pred string[]
 ---@param metadata table
 ---@return boolean|nil
-query.add_directive("exclude_children!", function(match, _pattern, _bufnr, pred, metadata)
+query.add_directive('exclude_children!', function(match, _pattern, _bufnr, pred, metadata)
   local capture_id = pred[2]
   local node = match[capture_id]
   local start_row, start_col, end_row, end_col = node:range()
@@ -249,8 +249,8 @@ end)
 ---@param bufnr integer
 ---@param pred string[]
 ---@param metadata table
-query.add_directive("trim!", function(match, _, bufnr, pred, metadata)
-  for _, id in ipairs { select(2, unpack(pred)) } do
+query.add_directive('trim!', function(match, _, bufnr, pred, metadata)
+  for _, id in ipairs({ select(2, unpack(pred)) }) do
     local node = match[id]
     local start_row, start_col, end_row, end_col = node:range()
 
@@ -263,7 +263,7 @@ query.add_directive("trim!", function(match, _, bufnr, pred, metadata)
       -- As we only care when end_col == 0, always inspect one line above end_row.
       local end_line = vim.api.nvim_buf_get_lines(bufnr, end_row - 1, end_row, true)[1]
 
-      if end_line ~= "" then
+      if end_line ~= '' then
         break
       end
 

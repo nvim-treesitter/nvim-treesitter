@@ -9,14 +9,14 @@ local M = {}
 ---@param log_level number|nil
 ---@param opts table|nil
 function M.notify(msg, log_level, opts)
-  local default_opts = { title = "nvim-treesitter" }
-  vim.notify(msg, log_level, vim.tbl_extend("force", default_opts, opts or {}))
+  local default_opts = { title = 'nvim-treesitter' }
+  vim.notify(msg, log_level, vim.tbl_extend('force', default_opts, opts or {}))
 end
 
 -- Returns the system-specific path separator.
 ---@return string
 function M.get_path_sep()
-  return (fn.has "win32" == 1 and not vim.opt.shellslash:get()) and "\\" or "/"
+  return (fn.has('win32') == 1 and not vim.opt.shellslash:get()) and '\\' or '/'
 end
 
 -- Returns a function that joins the given arguments with separator. Arguments
@@ -36,7 +36,7 @@ end
 
 M.join_path = M.generate_join(M.get_path_sep())
 
-M.join_space = M.generate_join " "
+M.join_space = M.generate_join(' ')
 
 ---@class Command
 ---@field run function
@@ -80,17 +80,21 @@ M.join_space = M.generate_join " "
 ---  </pre>
 function M.setup_commands(mod, commands)
   for command_name, def in pairs(commands) do
-    local f_args = def.f_args or "<f-args>"
-    local call_fn =
-      string.format("lua require'nvim-treesitter.%s'.commands.%s['run<bang>'](%s)", mod, command_name, f_args)
-    local parts = vim.tbl_flatten {
-      "command!",
-      "-bar",
+    local f_args = def.f_args or '<f-args>'
+    local call_fn = string.format(
+      "lua require'nvim-treesitter.%s'.commands.%s['run<bang>'](%s)",
+      mod,
+      command_name,
+      f_args
+    )
+    local parts = vim.tbl_flatten({
+      'command!',
+      '-bar',
       def.args,
       command_name,
       call_fn,
-    }
-    api.nvim_command(table.concat(parts, " "))
+    })
+    api.nvim_command(table.concat(parts, ' '))
   end
 end
 
@@ -103,7 +107,7 @@ function M.create_or_reuse_writable_dir(dir, create_err, writeable_err)
   writeable_err = writeable_err or M.join_space("Invalid rights, '", dir, "' should be read/write")
   -- Try creating and using parser_dir if it doesn't exist
   if not luv.fs_stat(dir) then
-    local ok, error = pcall(vim.fn.mkdir, dir, "p", "0755")
+    local ok, error = pcall(vim.fn.mkdir, dir, 'p', '0755')
     if not ok then
       return nil, M.join_space(create_err, error)
     end
@@ -112,7 +116,7 @@ function M.create_or_reuse_writable_dir(dir, create_err, writeable_err)
   end
 
   -- parser_dir exists, use it if it's read/write
-  if luv.fs_access(dir, "RW") then
+  if luv.fs_access(dir, 'RW') then
     return dir
   end
 
@@ -122,28 +126,23 @@ end
 
 function M.get_package_path()
   -- Path to this source file, removing the leading '@'
-  local source = string.sub(debug.getinfo(1, "S").source, 2)
+  local source = string.sub(debug.getinfo(1, 'S').source, 2)
 
   -- Path to the package root
-  return fn.fnamemodify(source, ":p:h:h:h")
+  return fn.fnamemodify(source, ':p:h:h:h')
 end
 
 function M.get_cache_dir()
-  local cache_dir = fn.stdpath "data"
+  local cache_dir = fn.stdpath('data')
 
-  if luv.fs_access(cache_dir, "RW") then
+  if luv.fs_access(cache_dir, 'RW') then
     return cache_dir
-  elseif luv.fs_access("/tmp", "RW") then
-    return "/tmp"
+  elseif luv.fs_access('/tmp', 'RW') then
+    return '/tmp'
   end
 
-  return nil, M.join_space("Invalid cache rights,", fn.stdpath "data", "or /tmp should be read/write")
-end
-
--- Returns $XDG_DATA_HOME/nvim/site, but could use any directory that is in
--- runtimepath
-function M.get_site_dir()
-  return M.join_path(fn.stdpath "data", "site")
+  return nil,
+    M.join_space('Invalid cache rights,', fn.stdpath('data'), 'or /tmp should be read/write')
 end
 
 -- Gets a property at path
@@ -151,16 +150,16 @@ end
 ---@param path string the '.' separated path
 ---@return table|nil result the value at path or nil
 function M.get_at_path(tbl, path)
-  if path == "" then
+  if path == '' then
     return tbl
   end
 
-  local segments = vim.split(path, ".", true)
+  local segments = vim.split(path, '.', true)
   ---@type table[]|table
   local result = tbl
 
   for _, segment in ipairs(segments) do
-    if type(result) == "table" then
+    if type(result) == 'table' then
       ---@type table
       -- TODO: figure out the actual type of tbl
       result = result[segment]
@@ -170,10 +169,7 @@ function M.get_at_path(tbl, path)
   return result
 end
 
-function M.set_jump()
-  vim.cmd "normal! m'"
-end
-
+--- TODO(clason): replace all these with `vim.iter` (where appropriate)
 -- Filters a list based on the given predicate
 ---@param tbl any[] The list to filter
 ---@param predicate fun(v:any, i:number):boolean The predicate to filter with
@@ -218,19 +214,19 @@ end
 ---@param a any
 ---@return fun(...):any
 function M.to_func(a)
-  return type(a) == "function" and a or M.constant(a)
+  return type(a) == 'function' and a or M.constant(a)
 end
 
 ---@return string|nil
 function M.ts_cli_version()
-  if fn.executable "tree-sitter" == 1 then
-    local handle = io.popen "tree-sitter -V"
+  if fn.executable('tree-sitter') == 1 then
+    local handle = io.popen('tree-sitter -V')
     if not handle then
       return
     end
-    local result = handle:read "*a"
+    local result = handle:read('*a')
     handle:close()
-    return vim.split(result, "\n")[1]:match "[^tree%psitter ].*"
+    return vim.split(result, '\n')[1]:match('[^tree%psitter ].*')
   end
 end
 

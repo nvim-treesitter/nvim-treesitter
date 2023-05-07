@@ -2,11 +2,11 @@ local api = vim.api
 local fn = vim.fn
 local luv = vim.loop
 
-local utils = require "nvim-treesitter.utils"
-local parsers = require "nvim-treesitter.parsers"
-local info = require "nvim-treesitter.info"
-local configs = require "nvim-treesitter.configs"
-local shell = require "nvim-treesitter.shell_command_selectors"
+local utils = require('nvim-treesitter.utils')
+local parsers = require('nvim-treesitter.parsers')
+local info = require('nvim-treesitter.info')
+local configs = require('nvim-treesitter.configs')
+local shell = require('nvim-treesitter.shell_command_selectors')
 
 local M = {}
 
@@ -16,8 +16,8 @@ local M = {}
 ---@type table<string, LockfileInfo>
 local lockfile = {}
 
-M.compilers = { vim.fn.getenv "CC", "cc", "gcc", "clang", "cl", "zig" }
-M.prefer_git = fn.has "win32" == 1
+M.compilers = { vim.fn.getenv('CC'), 'cc', 'gcc', 'clang', 'cl', 'zig' }
+M.prefer_git = fn.has('win32') == 1
 M.command_extra_args = {}
 M.ts_generate_args = nil
 
@@ -39,41 +39,12 @@ local function reset_progress_counter()
 end
 
 local function get_job_status()
-  return "[nvim-treesitter] ["
+  return '[nvim-treesitter] ['
     .. finished_commands
-    .. "/"
+    .. '/'
     .. started_commands
-    .. (failed_commands > 0 and ", failed: " .. failed_commands or "")
-    .. "]"
-end
-
----@param lang string
----@return function
-local function reattach_if_possible_fn(lang, error_on_fail)
-  return function()
-    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-      if parsers.get_buf_lang(buf) == lang then
-        vim._ts_remove_language(lang)
-        local ok, err
-        if vim.treesitter.language.add then
-          local ft = vim.bo[buf].filetype
-          ok, err = pcall(vim.treesitter.language.add, lang, { filetype = ft })
-        else
-          ok, err = pcall(vim.treesitter.language.require_language, lang)
-        end
-        if not ok and error_on_fail then
-          vim.notify("Could not load parser for " .. lang .. ": " .. vim.inspect(err))
-        end
-        for _, mod in ipairs(require("nvim-treesitter.configs").available_modules()) do
-          if ok then
-            require("nvim-treesitter.configs").reattach_module(mod, buf, lang)
-          else
-            require("nvim-treesitter.configs").detach_module(mod, buf)
-          end
-        end
-      end
-    end
-  end
+    .. (failed_commands > 0 and ', failed: ' .. failed_commands or '')
+    .. ']'
 end
 
 ---@param lang string
@@ -89,18 +60,19 @@ local function get_parser_install_info(lang, validate)
   local install_info = parser_config.install_info
 
   if validate then
-    vim.validate {
-      url = { install_info.url, "string" },
-      files = { install_info.files, "table" },
-    }
+    vim.validate({
+      url = { install_info.url, 'string' },
+      files = { install_info.files, 'table' },
+    })
   end
 
   return install_info
 end
 
 local function load_lockfile()
-  local filename = utils.join_path(utils.get_package_path(), "lockfile.json")
-  lockfile = vim.fn.filereadable(filename) == 1 and vim.fn.json_decode(vim.fn.readfile(filename)) or {}
+  local filename = utils.join_path(utils.get_package_path(), 'lockfile.json')
+  lockfile = vim.fn.filereadable(filename) == 1 and vim.fn.json_decode(vim.fn.readfile(filename))
+    or {}
 end
 
 local function is_ignored_parser(lang)
@@ -127,7 +99,7 @@ end
 ---@param lang string
 ---@return string|nil
 local function get_installed_revision(lang)
-  local lang_file = utils.join_path(configs.get_parser_info_dir(), lang .. ".revision")
+  local lang_file = utils.join_path(configs.get_parser_info_dir(), lang .. '.revision')
   if vim.fn.filereadable(lang_file) == 1 then
     return vim.fn.readfile(lang_file)[1]
   end
@@ -137,9 +109,9 @@ end
 ---@param input string
 ---@return string
 local function clean_path(input)
-  local pth = vim.fn.fnamemodify(input, ":p")
-  if fn.has "win32" == 1 then
-    pth = pth:gsub("/", "\\")
+  local pth = vim.fn.fnamemodify(input, ':p')
+  if fn.has('win32') == 1 then
+    pth = pth:gsub('/', '\\')
   end
   return pth
 end
@@ -148,7 +120,7 @@ end
 ---@param lang string
 ---@return boolean
 local function is_installed(lang)
-  local matched_parsers = vim.api.nvim_get_runtime_file("parser/" .. lang .. ".so", true) or {}
+  local matched_parsers = vim.api.nvim_get_runtime_file('parser/' .. lang .. '.so', true) or {}
   local install_dir = configs.get_parser_install_dir()
   if not install_dir then
     return false
@@ -183,9 +155,9 @@ local function onread(handle, is_stderr)
   return function(_, data)
     if data then
       if is_stderr then
-        complete_error_output[handle] = (complete_error_output[handle] or "") .. data
+        complete_error_output[handle] = (complete_error_output[handle] or '') .. data
       else
-        complete_std_output[handle] = (complete_std_output[handle] or "") .. data
+        complete_std_output[handle] = (complete_std_output[handle] or '') .. data
       end
     end
   end
@@ -197,19 +169,19 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
   end
   if i == #cmd_list + 1 then
     finished_commands = finished_commands + 1
-    return print(get_job_status() .. " " .. success_message)
+    return print(get_job_status() .. ' ' .. success_message)
   end
 
   local attr = cmd_list[i]
   if attr.info then
-    print(get_job_status() .. " " .. attr.info)
+    print(get_job_status() .. ' ' .. attr.info)
   end
 
   if attr.opts and attr.opts.args and M.command_extra_args[attr.cmd] then
     vim.list_extend(attr.opts.args, M.command_extra_args[attr.cmd])
   end
 
-  if type(attr.cmd) == "function" then
+  if type(attr.cmd) == 'function' then
     local ok, err = pcall(attr.cmd)
     if ok then
       M.iter_cmd(cmd_list, i + 1, lang, success_message)
@@ -217,7 +189,9 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
       failed_commands = failed_commands + 1
       finished_commands = finished_commands + 1
       return api.nvim_err_writeln(
-        (attr.err or ("Failed to execute the following command:\n" .. vim.inspect(attr))) .. "\n" .. vim.inspect(err)
+        (attr.err or ('Failed to execute the following command:\n' .. vim.inspect(attr)))
+          .. '\n'
+          .. vim.inspect(err)
       )
     end
   else
@@ -240,17 +214,17 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
         if code ~= 0 then
           failed_commands = failed_commands + 1
           finished_commands = finished_commands + 1
-          if complete_std_output[handle] and complete_std_output[handle] ~= "" then
+          if complete_std_output[handle] and complete_std_output[handle] ~= '' then
             print(complete_std_output[handle])
           end
 
-          local err_msg = complete_error_output[handle] or ""
+          local err_msg = complete_error_output[handle] or ''
           api.nvim_err_writeln(
-            "nvim-treesitter["
+            'nvim-treesitter['
               .. lang
-              .. "]: "
-              .. (attr.err or ("Failed to execute the following command:\n" .. vim.inspect(attr)))
-              .. "\n"
+              .. ']: '
+              .. (attr.err or ('Failed to execute the following command:\n' .. vim.inspect(attr)))
+              .. '\n'
               .. err_msg
           )
           return
@@ -266,17 +240,17 @@ end
 ---@param cmd Command
 ---@return string command
 local function get_command(cmd)
-  local options = ""
+  local options = ''
   if cmd.opts and cmd.opts.args then
     if M.command_extra_args[cmd.cmd] then
       vim.list_extend(cmd.opts.args, M.command_extra_args[cmd.cmd])
     end
     for _, opt in ipairs(cmd.opts.args) do
-      options = string.format("%s %s", options, opt)
+      options = string.format('%s %s', options, opt)
     end
   end
 
-  local command = string.format("%s %s", cmd.cmd, options)
+  local command = string.format('%s %s', cmd.cmd, options)
   if cmd.opts and cmd.opts.cwd then
     command = shell.make_directory_change_for_command(cmd.opts.cwd, command)
   end
@@ -291,14 +265,16 @@ local function iter_cmd_sync(cmd_list)
       print(cmd.info)
     end
 
-    if type(cmd.cmd) == "function" then
+    if type(cmd.cmd) == 'function' then
       cmd.cmd()
     else
       local ret = vim.fn.system(get_command(cmd))
       if vim.v.shell_error ~= 0 then
         print(ret)
         api.nvim_err_writeln(
-          (cmd.err and cmd.err .. "\n" or "") .. "Failed to execute the following command:\n" .. vim.inspect(cmd)
+          (cmd.err and cmd.err .. '\n' or '')
+            .. 'Failed to execute the following command:\n'
+            .. vim.inspect(cmd)
         )
         return false
       end
@@ -314,12 +290,19 @@ end
 ---@param repo InstallInfo
 ---@param with_sync boolean
 ---@param generate_from_grammar boolean
-local function run_install(cache_folder, install_folder, lang, repo, with_sync, generate_from_grammar)
+local function run_install(
+  cache_folder,
+  install_folder,
+  lang,
+  repo,
+  with_sync,
+  generate_from_grammar
+)
   parsers.reset_cache()
 
   local path_sep = utils.get_path_sep()
 
-  local project_name = "tree-sitter-" .. lang
+  local project_name = 'tree-sitter-' .. lang
   local maybe_local_path = vim.fn.expand(repo.url)
   local from_local_path = vim.fn.isdirectory(maybe_local_path) == 1
   if from_local_path then
@@ -336,48 +319,52 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   else
     local repo_location = project_name
     if repo.location then
-      repo_location = repo_location .. "/" .. repo.location
+      repo_location = repo_location .. '/' .. repo.location
     end
-    repo_location = repo_location:gsub("/", path_sep)
+    repo_location = repo_location:gsub('/', path_sep)
     compile_location = utils.join_path(cache_folder, repo_location)
   end
-  local parser_lib_name = utils.join_path(install_folder, lang) .. ".so"
+  local parser_lib_name = utils.join_path(install_folder, lang) .. '.so'
 
   generate_from_grammar = repo.requires_generate_from_grammar or generate_from_grammar
 
-  if generate_from_grammar and vim.fn.executable "tree-sitter" ~= 1 then
-    api.nvim_err_writeln "tree-sitter CLI not found: `tree-sitter` is not executable!"
+  if generate_from_grammar and vim.fn.executable('tree-sitter') ~= 1 then
+    api.nvim_err_writeln('tree-sitter CLI not found: `tree-sitter` is not executable!')
     if repo.requires_generate_from_grammar then
       api.nvim_err_writeln(
-        "tree-sitter CLI is needed because `"
+        'tree-sitter CLI is needed because `'
           .. lang
-          .. "` is marked that it needs "
-          .. "to be generated from the grammar definitions to be compatible with nvim!"
+          .. '` is marked that it needs '
+          .. 'to be generated from the grammar definitions to be compatible with nvim!'
       )
     end
     return
   else
     if not M.ts_generate_args then
       local ts_cli_version = utils.ts_cli_version()
-      if ts_cli_version and vim.split(ts_cli_version, " ")[1] > "0.20.2" then
-        M.ts_generate_args = { "generate", "--abi", vim.treesitter.language_version }
+      if ts_cli_version and vim.split(ts_cli_version, ' ')[1] > '0.20.2' then
+        M.ts_generate_args = { 'generate', '--abi', vim.treesitter.language_version }
       else
-        M.ts_generate_args = { "generate" }
+        M.ts_generate_args = { 'generate' }
       end
     end
   end
-  if generate_from_grammar and vim.fn.executable "node" ~= 1 then
-    api.nvim_err_writeln "Node JS not found: `node` is not executable!"
+  if generate_from_grammar and vim.fn.executable('node') ~= 1 then
+    api.nvim_err_writeln('Node JS not found: `node` is not executable!')
     return
   end
   local cc = shell.select_executable(M.compilers)
   if not cc then
-    api.nvim_err_writeln('No C compiler found! "' .. table.concat(
-      vim.tbl_filter(function(c) ---@param c string
-        return type(c) == "string"
-      end, M.compilers),
-      '", "'
-    ) .. '" are not executable.')
+    api.nvim_err_writeln(
+      'No C compiler found! "'
+        .. table.concat(
+          vim.tbl_filter(function(c) ---@param c string
+            return type(c) == 'string'
+          end, M.compilers),
+          '", "'
+        )
+        .. '" are not executable.'
+    )
     return
   end
 
@@ -407,17 +394,19 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   end
   if generate_from_grammar then
     if repo.generate_requires_npm then
-      if vim.fn.executable "npm" ~= 1 then
-        api.nvim_err_writeln("`" .. lang .. "` requires NPM to be installed from grammar.js")
+      if vim.fn.executable('npm') ~= 1 then
+        api.nvim_err_writeln('`' .. lang .. '` requires NPM to be installed from grammar.js')
         return
       end
       vim.list_extend(command_list, {
         {
-          cmd = "npm",
-          info = "Installing NPM dependencies of " .. lang .. " parser",
-          err = "Error during `npm install` (required for parser generation of " .. lang .. " with npm dependencies)",
+          cmd = 'npm',
+          info = 'Installing NPM dependencies of ' .. lang .. ' parser',
+          err = 'Error during `npm install` (required for parser generation of '
+            .. lang
+            .. ' with npm dependencies)',
           opts = {
-            args = { "install" },
+            args = { 'install' },
             cwd = compile_location,
           },
         },
@@ -425,8 +414,8 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
     end
     vim.list_extend(command_list, {
       {
-        cmd = vim.fn.exepath "tree-sitter",
-        info = "Generating source files from grammar.js...",
+        cmd = vim.fn.exepath('tree-sitter'),
+        info = 'Generating source files from grammar.js...',
         err = 'Error during "tree-sitter generate"',
         opts = {
           args = M.ts_generate_args,
@@ -437,14 +426,14 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   end
   vim.list_extend(command_list, {
     shell.select_compile_command(repo, cc, compile_location),
-    shell.select_mv_cmd("parser.so", parser_lib_name, compile_location),
+    shell.select_mv_cmd('parser.so', parser_lib_name, compile_location),
     {
       cmd = function()
-        vim.fn.writefile({ revision or "" }, utils.join_path(configs.get_parser_info_dir() or "", lang .. ".revision"))
+        vim.fn.writefile(
+          { revision or '' },
+          utils.join_path(configs.get_parser_info_dir() or '', lang .. '.revision')
+        )
       end,
-    },
-    { -- auto-attach modules after installation
-      cmd = reattach_if_possible_fn(lang, true),
     },
   })
   if not from_local_path then
@@ -453,10 +442,10 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
 
   if with_sync then
     if iter_cmd_sync(command_list) == true then
-      print("Treesitter parser for " .. lang .. " has been installed")
+      print('Treesitter parser for ' .. lang .. ' has been installed')
     end
   else
-    M.iter_cmd(command_list, 1, lang, "Treesitter parser for " .. lang .. " has been installed")
+    M.iter_cmd(command_list, 1, lang, 'Treesitter parser for ' .. lang .. ' has been installed')
   end
 end
 
@@ -466,25 +455,32 @@ end
 ---@param install_folder string
 ---@param with_sync boolean
 ---@param generate_from_grammar boolean
-local function install_lang(lang, ask_reinstall, cache_folder, install_folder, with_sync, generate_from_grammar)
-  if is_installed(lang) and ask_reinstall ~= "force" then
+local function install_lang(
+  lang,
+  ask_reinstall,
+  cache_folder,
+  install_folder,
+  with_sync,
+  generate_from_grammar
+)
+  if is_installed(lang) and ask_reinstall ~= 'force' then
     if not ask_reinstall then
       return
     end
 
-    local yesno = fn.input(lang .. " parser already available: would you like to reinstall ? y/n: ")
-    print "\n "
-    if not string.match(yesno, "^y.*") then
+    local yesno = fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
+    print('\n ')
+    if not string.match(yesno, '^y.*') then
       return
     end
   end
 
   local ok, install_info = pcall(get_parser_install_info, lang, true)
   if not ok then
-    vim.notify("Installation not possible: " .. install_info, vim.log.levels.ERROR)
+    vim.notify('Installation not possible: ' .. install_info, vim.log.levels.ERROR)
     if not parsers.get_parser_configs()[lang] then
       vim.notify(
-        "See https://github.com/nvim-treesitter/nvim-treesitter/#adding-parsers on how to add a new parser!",
+        'See https://github.com/nvim-treesitter/nvim-treesitter/#adding-parsers on how to add a new parser!',
         vim.log.levels.INFO
       )
     end
@@ -511,8 +507,8 @@ local function install(options)
   local exclude_configured_parsers = options.exclude_configured_parsers
 
   return function(...)
-    if fn.executable "git" == 0 then
-      return api.nvim_err_writeln "Git is required on your system to run this command"
+    if fn.executable('git') == 0 then
+      return api.nvim_err_writeln('Git is required on your system to run this command')
     end
 
     local cache_folder, err = utils.get_cache_dir()
@@ -530,11 +526,11 @@ local function install(options)
 
     local languages ---@type string[]
     local ask ---@type boolean|string
-    if ... == "all" then
+    if ... == 'all' then
       languages = parsers.available_parsers()
       ask = false
     else
-      languages = vim.tbl_flatten { ... }
+      languages = vim.tbl_flatten({ ... })
       ask = ask_reinstall
     end
 
@@ -553,12 +549,16 @@ local function install(options)
 end
 
 function M.setup_auto_install()
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "*" },
-    callback = function()
-      local lang = parsers.get_buf_lang()
-      if parsers.get_parser_configs()[lang] and not is_installed(lang) and not is_ignored_parser(lang) then
-        install() { lang }
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = { '*' },
+    callback = function(args)
+      local lang = utils.get_buf_lang(args.buffer)
+      if
+        parsers.get_parser_configs()[lang]
+        and not is_installed(lang)
+        and not is_ignored_parser(lang)
+      then
+        install()({ lang })
       end
     end,
   })
@@ -569,52 +569,53 @@ function M.update(options)
   return function(...)
     M.lockfile = {}
     reset_progress_counter()
-    if ... and ... ~= "all" then
+    if ... and ... ~= 'all' then
       ---@type string[]
-      local languages = vim.tbl_flatten { ... }
+      local languages = vim.tbl_flatten({ ... })
       local installed = 0
       for _, lang in ipairs(languages) do
         if (not is_installed(lang)) or (needs_update(lang)) then
           installed = installed + 1
-          install {
-            ask_reinstall = "force",
+          install({
+            ask_reinstall = 'force',
             with_sync = options.with_sync,
-          }(lang)
+          })(lang)
         end
       end
       if installed == 0 then
-        utils.notify "Parsers are up-to-date!"
+        utils.notify('Parsers are up-to-date!')
       end
     else
       local parsers_to_update = outdated_parsers() or info.installed_parsers()
       if #parsers_to_update == 0 then
-        utils.notify "All parsers are up-to-date!"
+        utils.notify('All parsers are up-to-date!')
       end
       for _, lang in pairs(parsers_to_update) do
-        install {
-          ask_reinstall = "force",
+        install({
+          ask_reinstall = 'force',
           exclude_configured_parsers = true,
           with_sync = options.with_sync,
-        }(lang)
+        })(lang)
       end
     end
   end
 end
 
 function M.uninstall(...)
-  if vim.tbl_contains({ "all" }, ...) then
+  if vim.tbl_contains({ 'all' }, ...) then
     reset_progress_counter()
     local installed = info.installed_parsers()
     M.uninstall(installed)
   elseif ... then
     local ensure_installed_parsers = configs.get_ensure_installed_parsers()
-    if ensure_installed_parsers == "all" then
+    if ensure_installed_parsers == 'all' then
       ensure_installed_parsers = parsers.available_parsers()
     end
-    ensure_installed_parsers = utils.difference(ensure_installed_parsers, configs.get_ignored_parser_installs())
+    ensure_installed_parsers =
+      utils.difference(ensure_installed_parsers, configs.get_ignored_parser_installs())
 
     ---@type string[]
-    local languages = vim.tbl_flatten { ... }
+    local languages = vim.tbl_flatten({ ... })
     for _, lang in ipairs(languages) do
       local install_dir, err = configs.get_parser_install_dir()
       if err then
@@ -623,44 +624,47 @@ function M.uninstall(...)
 
       if vim.tbl_contains(ensure_installed_parsers, lang) then
         vim.notify(
-          "Uninstalling "
+          'Uninstalling '
             .. lang
             .. '. But the parser is still configured in "ensure_installed" setting of nvim-treesitter.'
-            .. " Please consider updating your config!",
+            .. ' Please consider updating your config!',
           vim.log.levels.ERROR
         )
       end
 
-      local parser_lib = utils.join_path(install_dir, lang) .. ".so"
-      local all_parsers = vim.api.nvim_get_runtime_file("parser/" .. lang .. ".so", true)
+      local parser_lib = utils.join_path(install_dir, lang) .. '.so'
+      local all_parsers = vim.api.nvim_get_runtime_file('parser/' .. lang .. '.so', true)
       if vim.fn.filereadable(parser_lib) == 1 then
         local command_list = {
-          shell.select_rm_file_cmd(parser_lib, "Uninstalling parser for " .. lang),
+          shell.select_rm_file_cmd(parser_lib, 'Uninstalling parser for ' .. lang),
           {
             cmd = function()
-              local all_parsers_after_deletion = vim.api.nvim_get_runtime_file("parser/" .. lang .. ".so", true)
+              local all_parsers_after_deletion =
+                vim.api.nvim_get_runtime_file('parser/' .. lang .. '.so', true)
               if #all_parsers_after_deletion > 0 then
                 vim.notify(
-                  "Tried to uninstall parser for "
+                  'Tried to uninstall parser for '
                     .. lang
-                    .. "! But the parser is still installed (not by nvim-treesitter):"
-                    .. table.concat(all_parsers_after_deletion, ", "),
+                    .. '! But the parser is still installed (not by nvim-treesitter):'
+                    .. table.concat(all_parsers_after_deletion, ', '),
                   vim.log.levels.ERROR
                 )
               end
             end,
           },
-          { -- auto-reattach or detach modules after uninstallation
-            cmd = reattach_if_possible_fn(lang, false),
-          },
         }
-        M.iter_cmd(command_list, 1, lang, "Treesitter parser for " .. lang .. " has been uninstalled")
+        M.iter_cmd(
+          command_list,
+          1,
+          lang,
+          'Treesitter parser for ' .. lang .. ' has been uninstalled'
+        )
       elseif #all_parsers > 0 then
         vim.notify(
-          "Parser for "
+          'Parser for '
             .. lang
-            .. " is installed! But not by nvim-treesitter! Please manually remove the following files: "
-            .. table.concat(all_parsers, ", "),
+            .. ' is installed! But not by nvim-treesitter! Please manually remove the following files: '
+            .. table.concat(all_parsers, ', '),
           vim.log.levels.ERROR
         )
       end
@@ -691,19 +695,23 @@ function M.write_lockfile(verbose, skip_langs)
       if v.parser.install_info.branch then
         sha = vim.split(
           vim.fn.systemlist(
-            "git ls-remote " .. v.parser.install_info.url .. " | grep refs/heads/" .. v.parser.install_info.branch
+            'git ls-remote '
+              .. v.parser.install_info.url
+              .. ' | grep refs/heads/'
+              .. v.parser.install_info.branch
           )[1],
-          "\t"
+          '\t'
         )[1]
       else
-        sha = vim.split(vim.fn.systemlist("git ls-remote " .. v.parser.install_info.url)[1], "\t")[1]
+        sha =
+          vim.split(vim.fn.systemlist('git ls-remote ' .. v.parser.install_info.url)[1], '\t')[1]
       end
       lockfile[v.name] = { revision = sha }
       if verbose then
-        print(v.name .. ": " .. sha)
+        print(v.name .. ': ' .. sha)
       end
     else
-      print("Skipping " .. v.name)
+      print('Skipping ' .. v.name)
     end
   end
 
@@ -711,61 +719,61 @@ function M.write_lockfile(verbose, skip_langs)
     print(vim.inspect(lockfile))
   end
   vim.fn.writefile(
-    vim.fn.split(vim.fn.json_encode(lockfile), "\n"),
-    utils.join_path(utils.get_package_path(), "lockfile.json")
+    vim.fn.split(vim.fn.json_encode(lockfile), '\n'),
+    utils.join_path(utils.get_package_path(), 'lockfile.json')
   )
 end
 
-M.ensure_installed = install { exclude_configured_parsers = true }
-M.ensure_installed_sync = install { with_sync = true, exclude_configured_parsers = true }
+M.ensure_installed = install({ exclude_configured_parsers = true })
+M.ensure_installed_sync = install({ with_sync = true, exclude_configured_parsers = true })
 
 M.commands = {
   TSInstall = {
-    run = install { ask_reinstall = true },
-    ["run!"] = install { ask_reinstall = "force" },
+    run = install({ ask_reinstall = true }),
+    ['run!'] = install({ ask_reinstall = 'force' }),
     args = {
-      "-nargs=+",
-      "-bang",
-      "-complete=custom,nvim_treesitter#installable_parsers",
+      '-nargs=+',
+      '-bang',
+      '-complete=custom,nvim_treesitter#installable_parsers',
     },
   },
   TSInstallFromGrammar = {
-    run = install { generate_from_grammar = true, ask_reinstall = true },
-    ["run!"] = install { generate_from_grammar = true, ask_reinstall = "force" },
+    run = install({ generate_from_grammar = true, ask_reinstall = true }),
+    ['run!'] = install({ generate_from_grammar = true, ask_reinstall = 'force' }),
     args = {
-      "-nargs=+",
-      "-bang",
-      "-complete=custom,nvim_treesitter#installable_parsers",
+      '-nargs=+',
+      '-bang',
+      '-complete=custom,nvim_treesitter#installable_parsers',
     },
   },
   TSInstallSync = {
-    run = install { with_sync = true, ask_reinstall = true },
-    ["run!"] = install { with_sync = true, ask_reinstall = "force" },
+    run = install({ with_sync = true, ask_reinstall = true }),
+    ['run!'] = install({ with_sync = true, ask_reinstall = 'force' }),
     args = {
-      "-nargs=+",
-      "-bang",
-      "-complete=custom,nvim_treesitter#installable_parsers",
+      '-nargs=+',
+      '-bang',
+      '-complete=custom,nvim_treesitter#installable_parsers',
     },
   },
   TSUpdate = {
-    run = M.update {},
+    run = M.update({}),
     args = {
-      "-nargs=*",
-      "-complete=custom,nvim_treesitter#installed_parsers",
+      '-nargs=*',
+      '-complete=custom,nvim_treesitter#installed_parsers',
     },
   },
   TSUpdateSync = {
-    run = M.update { with_sync = true },
+    run = M.update({ with_sync = true }),
     args = {
-      "-nargs=*",
-      "-complete=custom,nvim_treesitter#installed_parsers",
+      '-nargs=*',
+      '-complete=custom,nvim_treesitter#installed_parsers',
     },
   },
   TSUninstall = {
     run = M.uninstall,
     args = {
-      "-nargs=+",
-      "-complete=custom,nvim_treesitter#installed_parsers",
+      '-nargs=+',
+      '-complete=custom,nvim_treesitter#installed_parsers',
     },
   },
 }
