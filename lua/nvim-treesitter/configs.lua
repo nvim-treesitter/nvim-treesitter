@@ -19,7 +19,7 @@ local config = {
 }
 
 ---Setup call for users to override configuration configurations.
----@param user_data TSConfig user configuration table
+---@param user_data TSConfig|nil user configuration table
 function M.setup(user_data)
   if user_data then
     if user_data.parser_install_dir then
@@ -46,7 +46,7 @@ end
 -- Returns the install path for parsers, parser info, and queries.
 -- If the specified directory does not exist, it is created.
 ---@param dir_name string
----@return string|nil
+---@return string
 function M.get_install_dir(dir_name)
   local dir = utils.join_path(config.parser_install_dir, dir_name)
 
@@ -54,7 +54,6 @@ function M.get_install_dir(dir_name)
     local ok, error = pcall(vim.fn.mkdir, dir, 'p', '0755')
     if not ok then
       vim.notify(error, vim.log.levels.ERROR)
-      return
     end
   end
   return dir

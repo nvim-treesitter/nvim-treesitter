@@ -120,7 +120,7 @@ end
 ---@return boolean
 local function is_installed(lang)
   local matched_parsers = api.nvim_get_runtime_file('parser/' .. lang .. '.so', true) or {}
-  local install_dir = configs.get_install_dir()
+  local install_dir = configs.get_install_dir('parser')
   if not install_dir then
     return false
   end

@@ -27,7 +27,7 @@ local function check_assertions(file)
         .. comment_node
     )
   )
-  local parser = parsers.get_parser(buf, lang)
+  local parser = ts.get_parser(buf, lang)
 
   local self = highlighter.new(parser, {})
 

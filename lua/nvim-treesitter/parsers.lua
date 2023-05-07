@@ -1,30 +1,7 @@
 local api = vim.api
 local ts = vim.treesitter
 
-local new_lang_api = ts.language.register ~= nil
-
-local filetype_to_parsername = {}
-
-if new_lang_api then
-  filetype_to_parsername = setmetatable({}, {
-    __newindex = function(_, k, v)
-      require('nvim-treesitter.utils').notify(
-        "filetype_to_parsername is deprecated, please use 'vim.treesitter.language.register'",
-        vim.log.levels.WARN
-      )
-      ts.language.register(v, k)
-    end,
-  })
-end
-
-local function register_lang(lang, ft)
-  if new_lang_api then
-    ts.language.register(lang, ft)
-    return
-  end
-  filetype_to_parsername[ft] = lang
-end
-
+-- TODO(clason) register on startup for installed parsers
 for ft, lang in pairs({
   javascriptreact = 'javascript',
   ecma = 'javascript',
@@ -43,7 +20,7 @@ for ft, lang in pairs({
   dosini = 'ini',
   confini = 'ini',
 }) do
-  register_lang(lang, ft)
+  ts.language.register(lang, ft)
 end
 
 ---@class InstallInfo
@@ -68,7 +45,7 @@ end
 local list = setmetatable({}, {
   __newindex = function(table, parsername, parserconfig)
     rawset(table, parsername, parserconfig)
-    register_lang(parsername, parserconfig.filetype or parsername)
+    ts.language.register(parsername, parserconfig.filetype or parsername)
   end,
 })
 
@@ -1651,25 +1628,7 @@ list.zig = {
 
 local M = {
   list = list,
-  filetype_to_parsername = filetype_to_parsername,
 }
-
-local function get_lang(ft)
-  if new_lang_api then
-    return ts.language.get_lang(ft)
-  end
-  return filetype_to_parsername[ft]
-end
-
-function M.ft_to_lang(ft)
-  local result = get_lang(ft)
-  if result then
-    return result
-  else
-    ft = vim.split(ft, '.', { plain = true })[1]
-    return get_lang(ft) or ft
-  end
-end
 
 -- Get a list of all available parsers
 ---@return string[]
@@ -1715,28 +1674,20 @@ function M.has_parser(lang)
   return #parser_files[lang] > 0
 end
 
-function M.get_parser(bufnr, lang)
-  bufnr = bufnr or api.nvim_get_current_buf()
-  lang = lang or M.get_buf_lang(bufnr)
-
-  if M.has_parser(lang) then
-    return ts.get_parser(bufnr, lang)
-  end
-end
-
--- @deprecated This is only kept for legacy purposes.
---             All root nodes should be accounted for.
-function M.get_tree_root(bufnr)
-  bufnr = bufnr or api.nvim_get_current_buf()
-  return M.get_parser(bufnr):parse()[1]:root()
-end
-
 -- Gets the language of a given buffer
 ---@param bufnr number? or current buffer
 ---@return string
 function M.get_buf_lang(bufnr)
   bufnr = bufnr or api.nvim_get_current_buf()
-  return M.ft_to_lang(api.nvim_buf_get_option(bufnr, 'ft'))
+
+  local ft = api.nvim_buf_get_option(bufnr, 'ft')
+  local result = ts.language.get_lang(ft)
+  if result then
+    return result
+  else
+    ft = vim.split(ft, '.', { plain = true })[1]
+    return ts.language.get_lang(ft) or ft
+  end
 end
 
 return M

@@ -151,7 +151,7 @@ local function prepare_query(bufnr, query_name, root, root_lang)
     return
   end
 
-  local parser = parsers.get_parser(bufnr, buf_lang)
+  local parser = vim.treesitter.get_parser(bufnr, buf_lang)
   if not parser then
     return
   end

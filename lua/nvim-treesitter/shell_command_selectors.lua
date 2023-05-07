@@ -47,7 +47,7 @@ end
 
 -- Returns the remove command based on the OS
 ---@param file string
----@param info_msg string
+---@param info_msg string|nil
 ---@param recursive boolean|nil
 ---@return table
 function M.select_rm_file_cmd(file, info_msg, recursive)

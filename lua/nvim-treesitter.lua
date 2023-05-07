@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup(...)
-  require('lua.nvim-treesitter.configs').setup(...)
+  require('nvim-treesitter.configs').setup(...)
 end
 
 function M.indentexpr()

@@ -93,7 +93,7 @@ end, {
 ---@param lnum number (1-indexed)
 function M.get_indent(lnum)
   local bufnr = vim.api.nvim_get_current_buf()
-  local parser = parsers.get_parser(bufnr)
+  local parser = ts.get_parser(bufnr)
   if not parser or not lnum then
     return -1
   end
