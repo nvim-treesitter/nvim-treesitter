@@ -1,29 +1,50 @@
 -- Functions to handle locals
 -- Locals are a generalization of definition and scopes
--- its the way nvim-treesitter uses to "understand" the code
+-- it's the way nvim-treesitter uses to "understand" the code
 
-local queries = require "nvim-treesitter.query"
-local ts_utils = require "nvim-treesitter.ts_utils"
+local query = require('nvim-treesitter.query')
 local ts = vim.treesitter
 local api = vim.api
 
 local M = {}
 
+local function get_named_children(node)
+  local nodes = {} ---@type TSNode[]
+  for i = 0, node:named_child_count() - 1, 1 do
+    nodes[i + 1] = node:named_child(i)
+  end
+  return nodes
+end
+
+---@param node TSNode
+---@return TSNode result
+local function get_root_for_node(node)
+  local parent = node
+  local result = node
+
+  while parent ~= nil do
+    result = parent
+    parent = result:parent()
+  end
+
+  return result
+end
+
 function M.collect_locals(bufnr)
-  return queries.collect_group_results(bufnr, "locals")
+  return query.collect_group_results(bufnr, 'locals')
 end
 
 -- Iterates matches from a locals query file.
 -- @param bufnr the buffer
 -- @param root the root node
 function M.iter_locals(bufnr, root)
-  return queries.iter_group_results(bufnr, "locals", root)
+  return query.iter_group_results(bufnr, 'locals', root)
 end
 
 ---@param bufnr integer
 ---@return any
 function M.get_locals(bufnr)
-  return queries.get_matches(bufnr, "locals")
+  return query.collect_group_results(bufnr, 'locals')
 end
 
 -- Creates unique id for a node based on text and range
@@ -32,7 +53,7 @@ end
 ---@return string: a string id
 function M.get_definition_id(scope, node_text)
   -- Add a valid starting character in case node text doesn't start with a valid one.
-  return table.concat({ "k", node_text or "", scope:range() }, "_")
+  return table.concat({ 'k', node_text or '', scope:range() }, '_')
 end
 
 function M.get_definitions(bufnr)
@@ -103,7 +124,7 @@ function M.iter_scope_tree(node, bufnr)
       return
     end
 
-    local scope = M.containing_scope(last_node, bufnr, false) or ts_utils.get_root_for_node(node)
+    local scope = M.containing_scope(last_node, bufnr, false) or get_root_for_node(node)
 
     last_node = scope:parent()
 
@@ -117,8 +138,8 @@ end
 function M.get_local_nodes(local_def)
   local result = {}
 
-  M.recurse_local_nodes(local_def, function(def, _node, kind)
-    table.insert(result, vim.tbl_extend("keep", { kind = kind }, def))
+  M.recurse_local_nodes(local_def, function(def, _, kind)
+    table.insert(result, vim.tbl_extend('keep', { kind = kind }, def))
   end)
 
   return result
@@ -135,7 +156,7 @@ end
 ---@param full_match? string The full match path to append to
 ---@param last_match? string The last match
 function M.recurse_local_nodes(local_def, accumulator, full_match, last_match)
-  if type(local_def) ~= "table" then
+  if type(local_def) ~= 'table' then
     return
   end
 
@@ -143,8 +164,33 @@ function M.recurse_local_nodes(local_def, accumulator, full_match, last_match)
     accumulator(local_def, local_def.node, full_match, last_match)
   else
     for match_key, def in pairs(local_def) do
-      M.recurse_local_nodes(def, accumulator, full_match and (full_match .. "." .. match_key) or match_key, match_key)
+      M.recurse_local_nodes(
+        def,
+        accumulator,
+        full_match and (full_match .. '.' .. match_key) or match_key,
+        match_key
+      )
     end
+  end
+end
+
+---Memoize a function using hash_fn to hash the arguments.
+---@generic F: function
+---@param fn F
+---@param hash_fn fun(...): any
+---@return F
+local function memoize(fn, hash_fn)
+  local cache = setmetatable({}, { __mode = 'kv' }) ---@type table<any,any>
+
+  return function(...)
+    local key = hash_fn(...)
+    if cache[key] == nil then
+      local v = fn(...) ---@type any
+      cache[key] = v ~= nil and v or vim.NIL
+    end
+
+    local v = cache[key]
+    return v ~= vim.NIL and v or nil
   end
 end
 
@@ -161,7 +207,7 @@ end
 --
 ---@param bufnr integer: the buffer
 ---@return table result: a table for looking up definitions
-M.get_definitions_lookup_table = ts_utils.memoize_by_buf_tick(function(bufnr)
+M.get_definitions_lookup_table = memoize(function(bufnr)
   local definitions = M.get_definitions(bufnr)
   local result = {}
 
@@ -178,6 +224,8 @@ M.get_definitions_lookup_table = ts_utils.memoize_by_buf_tick(function(bufnr)
   end
 
   return result
+end, function(bufnr)
+  return tostring(bufnr)
 end)
 
 -- Gets all the scopes of a definition based on the scope type
@@ -196,10 +244,10 @@ function M.get_definition_scopes(node, bufnr, scope_type)
 
   -- Definition is valid for the containing scope
   -- and the containing scope of that scope
-  if scope_type == "parent" then
+  if scope_type == 'parent' then
     scope_count = 2
     -- Definition is valid in all parent scopes
-  elseif scope_type == "global" then
+  elseif scope_type == 'global' then
     scope_count = nil
   end
 
@@ -235,7 +283,7 @@ function M.find_definition(node, bufnr)
     end
   end
 
-  return node, ts_utils.get_root_for_node(node), nil
+  return node, get_root_for_node(node), nil
 end
 
 -- Finds usages of a node in a given scope.
@@ -250,11 +298,15 @@ function M.find_usages(node, scope_node, bufnr)
     return {}
   end
 
-  local scope_node = scope_node or ts_utils.get_root_for_node(node)
+  local scope_node = scope_node or get_root_for_node(node)
   local usages = {}
 
   for match in M.iter_locals(bufnr, scope_node) do
-    if match.reference and match.reference.node and ts.get_node_text(match.reference.node, bufnr) == node_text then
+    if
+      match.reference
+      and match.reference.node
+      and ts.get_node_text(match.reference.node, bufnr) == node_text
+    then
       local def_node, _, kind = M.find_definition(match.reference.node, bufnr)
 
       if kind == nil or def_node == node then
@@ -300,7 +352,7 @@ function M.nested_scope(node, cursor_pos)
   local col = cursor_pos.col ---@type integer
   local scope = M.containing_scope(node)
 
-  for _, child in ipairs(ts_utils.get_named_children(scope)) do
+  for _, child in ipairs(get_named_children(scope)) do
     local row_, col_ = child:start()
     if vim.tbl_contains(scopes, child) and ((row_ + 1 == row and col_ > col) or row_ + 1 > row) then
       return child
@@ -324,7 +376,7 @@ function M.next_scope(node)
   end
 
   local is_prev = true
-  for _, child in ipairs(ts_utils.get_named_children(parent)) do
+  for _, child in ipairs(get_named_children(parent)) do
     if child == scope then
       is_prev = false
     elseif not is_prev and vim.tbl_contains(scopes, child) then
@@ -351,7 +403,7 @@ function M.previous_scope(node)
   end
 
   local is_prev = true
-  local children = ts_utils.get_named_children(parent)
+  local children = get_named_children(parent)
   for i = #children, 1, -1 do
     if children[i] == scope then
       is_prev = false
@@ -360,5 +412,22 @@ function M.previous_scope(node)
     end
   end
 end
+
+-- register custom directive
+---@param match (TSNode|nil)[]
+---@param bufnr integer
+---@param pred string[]
+---@return boolean|nil
+ts.query.add_predicate('is?', function(match, _, bufnr, pred)
+  local node = match[pred[2]]
+  if not node then
+    return true
+  end
+
+  local _, _, kind = M.find_definition(node, bufnr)
+
+  local types = { unpack(pred, 3) }
+  return vim.tbl_contains(types, kind)
+end)
 
 return M
