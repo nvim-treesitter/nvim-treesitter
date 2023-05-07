@@ -1,28 +1,6 @@
 local api = vim.api
 local ts = vim.treesitter
 
--- TODO(clason) register on startup for installed parsers
-for ft, lang in pairs({
-  javascriptreact = 'javascript',
-  ecma = 'javascript',
-  jsx = 'javascript',
-  sh = 'bash',
-  PKGBUILD = 'bash',
-  html_tags = 'html',
-  ['typescript.tsx'] = 'tsx',
-  ['html.handlebars'] = 'glimmer',
-  systemverilog = 'verilog',
-  cls = 'latex',
-  sty = 'latex',
-  pandoc = 'markdown',
-  rmd = 'markdown',
-  quarto = 'markdown',
-  dosini = 'ini',
-  confini = 'ini',
-}) do
-  ts.language.register(lang, ft)
-end
-
 ---@class InstallInfo
 ---@field url string
 ---@field branch string|nil
@@ -36,7 +14,7 @@ end
 
 ---@class ParserInfo
 ---@field install_info InstallInfo
----@field filetype string
+---@field filetype string[]
 ---@field maintainers string[]
 ---@field experimental boolean|nil
 ---@field readme_name string|nil
@@ -45,7 +23,11 @@ end
 local list = setmetatable({}, {
   __newindex = function(table, parsername, parserconfig)
     rawset(table, parsername, parserconfig)
-    ts.language.register(parsername, parserconfig.filetype or parsername)
+    if parserconfig.filetype then
+      for _, ft in pairs(parserconfig.filetype) do
+        ts.language.register(parsername, ft)
+      end
+    end
   end,
 })
 
@@ -93,7 +75,7 @@ list.bash = {
     url = 'https://github.com/tree-sitter/tree-sitter-bash',
     files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  filetype = 'sh',
+  filetype = { 'sh', 'PKGBUILD' },
   maintainers = { '@TravonteD' },
 }
 
@@ -118,7 +100,7 @@ list.bibtex = {
     url = 'https://github.com/latex-lsp/tree-sitter-bibtex',
     files = { 'src/parser.c' },
   },
-  filetype = 'bib',
+  filetype = { 'bib' },
   maintainers = { '@theHamsta', '@clason' },
 }
 
@@ -152,7 +134,7 @@ list.c_sharp = {
     url = 'https://github.com/tree-sitter/tree-sitter-c-sharp',
     files = { 'src/parser.c', 'src/scanner.c' },
   },
-  filetype = 'cs',
+  filetype = { 'cs' },
   maintainers = { '@Luxed' },
 }
 
@@ -202,7 +184,7 @@ list.commonlisp = {
     files = { 'src/parser.c' },
     generate_requires_npm = true,
   },
-  filetype = 'lisp',
+  filetype = { 'lisp' },
   maintainers = { '@theHamsta' },
 }
 
@@ -280,7 +262,7 @@ list.devicetree = {
     url = 'https://github.com/joelspadin/tree-sitter-devicetree',
     files = { 'src/parser.c' },
   },
-  filetype = 'dts',
+  filetype = { 'dts' },
   maintainers = { '@jedrzejboczar' },
 }
 
@@ -297,7 +279,7 @@ list.diff = {
     url = 'https://github.com/the-mikedavis/tree-sitter-diff',
     files = { 'src/parser.c' },
   },
-  filetype = 'gitdiff',
+  filetype = { 'gitdiff' },
   maintainers = { '@gbprod' },
 }
 
@@ -332,7 +314,7 @@ list.eex = {
     url = 'https://github.com/connorlay/tree-sitter-eex',
     files = { 'src/parser.c' },
   },
-  filetype = 'eelixir',
+  filetype = { 'eelixir' },
   maintainers = { '@connorlay' },
 }
 
@@ -373,7 +355,7 @@ list.embedded_template = {
     url = 'https://github.com/tree-sitter/tree-sitter-embedded-template',
     files = { 'src/parser.c' },
   },
-  filetype = 'eruby',
+  filetype = { 'eruby' },
 }
 
 list.erlang = {
@@ -465,7 +447,7 @@ list.git_rebase = {
     url = 'https://github.com/the-mikedavis/tree-sitter-git-rebase',
     files = { 'src/parser.c' },
   },
-  filetype = 'gitrebase',
+  filetype = { 'gitrebase' },
   maintainers = { '@gbprod' },
 }
 
@@ -490,7 +472,7 @@ list.git_config = {
     url = 'https://github.com/the-mikedavis/tree-sitter-git-config',
     files = { 'src/parser.c' },
   },
-  filetype = 'gitconfig',
+  filetype = { 'gitconfig' },
   maintainers = { '@amaanq' },
   readme_name = 'git_config',
 }
@@ -516,7 +498,7 @@ list.glimmer = {
     url = 'https://github.com/alexlafroscia/tree-sitter-glimmer',
     files = { 'src/parser.c', 'src/scanner.c' },
   },
-  filetype = 'handlebars',
+  filetype = { 'handlebars', 'html.handlebars' },
   maintainers = { '@NullVoxPopuli' },
   readme_name = 'Glimmer and Ember',
 }
@@ -543,7 +525,7 @@ list.godot_resource = {
     url = 'https://github.com/PrestonKnopp/tree-sitter-godot-resource',
     files = { 'src/parser.c', 'src/scanner.c' },
   },
-  filetype = 'gdresource',
+  filetype = { 'gdresource' },
   maintainers = { '@pierpo' },
   readme_name = 'Godot Resources (gdresource)',
 }
@@ -650,6 +632,7 @@ list.html = {
     url = 'https://github.com/tree-sitter/tree-sitter-html',
     files = { 'src/parser.c', 'src/scanner.cc' },
   },
+  filetype = { 'html_tags' },
   maintainers = { '@TravonteD' },
 }
 
@@ -676,6 +659,7 @@ list.ini = {
     url = 'https://github.com/justinmk/tree-sitter-ini',
     files = { 'src/parser.c' },
   },
+  filetypes = { 'dosini', 'confini' },
   maintainers = { '@theHamsta' },
   experimental = true,
 }
@@ -685,7 +669,7 @@ list.janet_simple = {
     url = 'https://github.com/sogaiu/tree-sitter-janet-simple',
     files = { 'src/parser.c', 'src/scanner.c' },
   },
-  filetype = 'janet',
+  filetype = { 'janet' },
   maintainers = { '@sogaiu' },
 }
 
@@ -702,6 +686,7 @@ list.javascript = {
     url = 'https://github.com/tree-sitter/tree-sitter-javascript',
     files = { 'src/parser.c', 'src/scanner.c' },
   },
+  filetype = { ' javascriptreact', 'ecma', 'jsx' },
   maintainers = { '@steelsojka' },
 }
 
@@ -792,7 +777,7 @@ list.latex = {
     url = 'https://github.com/latex-lsp/tree-sitter-latex',
     files = { 'src/parser.c', 'src/scanner.c' },
   },
-  filetype = 'tex',
+  filetype = { 'tex', 'cls', 'sty' },
   maintainers = { '@theHamsta', '@clason' },
 }
 
@@ -850,7 +835,7 @@ list.m68k = {
     url = 'https://github.com/grahambates/tree-sitter-m68k',
     files = { 'src/parser.c' },
   },
-  filetype = 'asm68k',
+  filetype = { 'asm68k' },
   maintainers = { '@grahambates' },
 }
 
@@ -868,6 +853,7 @@ list.markdown = {
     location = 'tree-sitter-markdown',
     files = { 'src/parser.c', 'src/scanner.c' },
   },
+  filetype = { 'pandoc', 'quarto', 'rmd' },
   maintainers = { '@MDeiml' },
   readme_name = 'markdown (basic highlighting)',
   experimental = true,
@@ -974,7 +960,7 @@ list.ocaml_interface = {
     files = { 'src/parser.c', 'src/scanner.cc' },
     location = 'interface',
   },
-  filetype = 'ocamlinterface',
+  filetype = { 'ocamlinterface' },
   maintainers = { '@undu' },
 }
 
@@ -1066,7 +1052,7 @@ list.poe_filter = {
     url = 'https://github.com/ObserverOfTime/tree-sitter-poe-filter',
     files = { 'src/parser.c' },
   },
-  filetype = 'poefilter',
+  filetype = { 'poefilter' },
   maintainers = { '@ObserverOfTime' },
   readme_name = 'Path of Exile item filter',
   experimental = true,
@@ -1150,7 +1136,7 @@ list.qmljs = {
     url = 'https://github.com/yuja/tree-sitter-qmljs',
     files = { 'src/parser.c', 'src/scanner.c' },
   },
-  filetype = 'qml',
+  filetype = { 'qml' },
   maintainers = { '@Decodetalkers' },
 }
 
@@ -1330,7 +1316,7 @@ list.starlark = {
     url = 'https://github.com/amaanq/tree-sitter-starlark',
     files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  filetype = 'bzl',
+  filetype = { 'bzl' },
   maintainers = { '@amaanq' },
 }
 
@@ -1347,7 +1333,7 @@ list.surface = {
     url = 'https://github.com/connorlay/tree-sitter-surface',
     files = { 'src/parser.c' },
   },
-  filetype = 'sface',
+  filetype = { 'sface' },
   maintainers = { '@connorlay' },
 }
 
@@ -1432,7 +1418,7 @@ list.tlaplus = {
     url = 'https://github.com/tlaplus-community/tree-sitter-tlaplus',
     files = { 'src/parser.c', 'src/scanner.cc' },
   },
-  filetype = 'tla',
+  filetype = { 'tla' },
   maintainers = { '@ahelwer', '@susliko' },
 }
 
@@ -1461,7 +1447,7 @@ list.tsx = {
     location = 'tsx',
     generate_requires_npm = true,
   },
-  filetype = 'typescriptreact',
+  filetype = { 'typescriptreact', 'typescript.tsx' },
   maintainers = { '@steelsojka' },
 }
 
@@ -1512,7 +1498,7 @@ list.uxntal = {
     url = 'https://github.com/amaanq/tree-sitter-uxntal',
     files = { 'src/parser.c', 'src/scanner.c' },
   },
-  filetype = 'tal',
+  filetype = { 'tal' },
   maintainers = { '@amaanq' },
   readme_name = 'uxn tal',
 }
@@ -1523,7 +1509,7 @@ list.v = {
     files = { 'src/parser.c', 'src/scanner.c' },
     location = 'tree_sitter_v',
   },
-  filetype = 'vlang',
+  filetype = { 'vlang' },
   maintainers = { '@kkharji' },
 }
 
@@ -1540,6 +1526,7 @@ list.verilog = {
     url = 'https://github.com/tree-sitter/tree-sitter-verilog',
     files = { 'src/parser.c' },
   },
+  filetype = { 'sysverilog' },
   maintainers = { '@zegervdv' },
 }
 
@@ -1548,7 +1535,7 @@ list.vhs = {
     url = 'https://github.com/charmbracelet/tree-sitter-vhs',
     files = { 'src/parser.c' },
   },
-  filetype = 'tape',
+  filetype = { 'tape' },
   maintainers = { '@caarlos0' },
 }
 
@@ -1565,7 +1552,7 @@ list.vimdoc = {
     url = 'https://github.com/neovim/tree-sitter-vimdoc',
     files = { 'src/parser.c' },
   },
-  filetype = 'help',
+  filetype = { 'help' },
   maintainers = { '@clason' },
 }
 
