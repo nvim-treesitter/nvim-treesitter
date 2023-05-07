@@ -499,7 +499,7 @@ end
 -- Install a parser
 ---@param options? InstallOptions
 ---@return function
-local function install(options)
+function M.install(options)
   options = options or {}
   local with_sync = options.with_sync
   local ask_reinstall = options.ask_reinstall
@@ -558,7 +558,7 @@ function M.setup_auto_install()
         and not is_installed(lang)
         and not is_ignored_parser(lang)
       then
-        install()({ lang })
+        M.install()({ lang })
       end
     end,
   })
@@ -576,7 +576,7 @@ function M.update(options)
       for _, lang in ipairs(languages) do
         if (not is_installed(lang)) or (needs_update(lang)) then
           installed = installed + 1
-          install({
+          M.install({
             ask_reinstall = 'force',
             with_sync = options.with_sync,
           })(lang)
@@ -591,7 +591,7 @@ function M.update(options)
         utils.notify('All parsers are up-to-date!')
       end
       for _, lang in pairs(parsers_to_update) do
-        install({
+        M.install({
           ask_reinstall = 'force',
           exclude_configured_parsers = true,
           with_sync = options.with_sync,
@@ -724,58 +724,7 @@ function M.write_lockfile(verbose, skip_langs)
   )
 end
 
-M.ensure_installed = install({ exclude_configured_parsers = true })
-M.ensure_installed_sync = install({ with_sync = true, exclude_configured_parsers = true })
-
-M.commands = {
-  TSInstall = {
-    run = install({ ask_reinstall = true }),
-    ['run!'] = install({ ask_reinstall = 'force' }),
-    args = {
-      '-nargs=+',
-      '-bang',
-      '-complete=custom,nvim_treesitter#installable_parsers',
-    },
-  },
-  TSInstallFromGrammar = {
-    run = install({ generate_from_grammar = true, ask_reinstall = true }),
-    ['run!'] = install({ generate_from_grammar = true, ask_reinstall = 'force' }),
-    args = {
-      '-nargs=+',
-      '-bang',
-      '-complete=custom,nvim_treesitter#installable_parsers',
-    },
-  },
-  TSInstallSync = {
-    run = install({ with_sync = true, ask_reinstall = true }),
-    ['run!'] = install({ with_sync = true, ask_reinstall = 'force' }),
-    args = {
-      '-nargs=+',
-      '-bang',
-      '-complete=custom,nvim_treesitter#installable_parsers',
-    },
-  },
-  TSUpdate = {
-    run = M.update({}),
-    args = {
-      '-nargs=*',
-      '-complete=custom,nvim_treesitter#installed_parsers',
-    },
-  },
-  TSUpdateSync = {
-    run = M.update({ with_sync = true }),
-    args = {
-      '-nargs=*',
-      '-complete=custom,nvim_treesitter#installed_parsers',
-    },
-  },
-  TSUninstall = {
-    run = M.uninstall,
-    args = {
-      '-nargs=+',
-      '-complete=custom,nvim_treesitter#installed_parsers',
-    },
-  },
-}
+M.ensure_installed = M.install({ exclude_configured_parsers = true })
+M.ensure_installed_sync = M.install({ with_sync = true, exclude_configured_parsers = true })
 
 return M

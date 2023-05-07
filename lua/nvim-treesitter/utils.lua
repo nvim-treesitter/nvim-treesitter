@@ -1,5 +1,3 @@
-local api = vim.api
-local fn = vim.fn
 local luv = vim.loop
 
 local M = {}
@@ -16,7 +14,7 @@ end
 -- Returns the system-specific path separator.
 ---@return string
 function M.get_path_sep()
-  return (fn.has('win32') == 1 and not vim.opt.shellslash:get()) and '\\' or '/'
+  return (vim.fn.has('win32') == 1 and not vim.opt.shellslash:get()) and '\\' or '/'
 end
 
 -- Returns a function that joins the given arguments with separator. Arguments
@@ -37,66 +35,6 @@ end
 M.join_path = M.generate_join(M.get_path_sep())
 
 M.join_space = M.generate_join(' ')
-
----@class Command
----@field run function
----@field f_args string
----@field args string
-
--- Define user defined vim command which calls nvim-treesitter module function
---     - If module name is 'mod', it should be defined in hierarchy 'nvim-treesitter.mod'
---     - A table with name 'commands' should be defined in 'mod' which needs to be passed as
---       the commands param of this function
---
----@param mod string  Name of the module that resides in the hierarchy - nvim-treesitter.module
----@param commands table<string, Command>  Command list for the module
----         - {command_name} Name of the vim user defined command, Keys:
----             - {run}: (function) callback function that needs to be executed
----             - {f_args}: (string, default <f-args>)
----                 - type of arguments that needs to be passed to the vim command
----             - {args}: (string, optional)
----                 - vim command attributes
----
----* @example
----  If module is nvim-treesitter.custom_mod
----  <pre>
----  M.commands = {
----      custom_command = {
----          run = M.module_function,
----          f_args = "<f-args>",
----          args = {
----              "-range"
----          }
----      }
----  }
----
----  utils.setup_commands("custom_mod", require("nvim-treesitter.custom_mod").commands)
----  </pre>
----
----  Will generate command :
----  <pre>
----  command! -range custom_command \
----      lua require'nvim-treesitter.custom_mod'.commands.custom_command['run<bang>'](<f-args>)
----  </pre>
-function M.setup_commands(mod, commands)
-  for command_name, def in pairs(commands) do
-    local f_args = def.f_args or '<f-args>'
-    local call_fn = string.format(
-      "lua require'nvim-treesitter.%s'.commands.%s['run<bang>'](%s)",
-      mod,
-      command_name,
-      f_args
-    )
-    local parts = vim.tbl_flatten({
-      'command!',
-      '-bar',
-      def.args,
-      command_name,
-      call_fn,
-    })
-    api.nvim_command(table.concat(parts, ' '))
-  end
-end
 
 ---@param dir string
 ---@param create_err string
@@ -129,11 +67,11 @@ function M.get_package_path()
   local source = string.sub(debug.getinfo(1, 'S').source, 2)
 
   -- Path to the package root
-  return fn.fnamemodify(source, ':p:h:h:h')
+  return vim.fn.fnamemodify(source, ':p:h:h:h')
 end
 
 function M.get_cache_dir()
-  local cache_dir = fn.stdpath('data')
+  local cache_dir = vim.fn.stdpath('data')
 
   if luv.fs_access(cache_dir, 'RW') then
     return cache_dir
@@ -142,7 +80,7 @@ function M.get_cache_dir()
   end
 
   return nil,
-    M.join_space('Invalid cache rights,', fn.stdpath('data'), 'or /tmp should be read/write')
+    M.join_space('Invalid cache rights,', vim.fn.stdpath('data'), 'or /tmp should be read/write')
 end
 
 -- Gets a property at path
@@ -219,7 +157,7 @@ end
 
 ---@return string|nil
 function M.ts_cli_version()
-  if fn.executable('tree-sitter') == 1 then
+  if vim.fn.executable('tree-sitter') == 1 then
     local handle = io.popen('tree-sitter -V')
     if not handle then
       return

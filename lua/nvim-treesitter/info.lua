@@ -3,7 +3,7 @@ local parsers = require('nvim-treesitter.parsers')
 
 local M = {}
 
-local function install_info()
+function M.install_info()
   local max_len = 0
   for _, ft in pairs(parsers.available_parsers()) do
     if #ft > max_len then
@@ -36,14 +36,5 @@ function M.installed_parsers()
   end
   return installed
 end
-
-M.commands = {
-  TSInstallInfo = {
-    run = install_info,
-    args = {
-      '-nargs=0',
-    },
-  },
-}
 
 return M
