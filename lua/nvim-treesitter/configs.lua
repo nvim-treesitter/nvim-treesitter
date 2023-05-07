@@ -18,39 +18,36 @@ local config = {
   parser_install_dir = utils.join_path(vim.fn.stdpath('data'), 'nvim-treesitter'),
 }
 
----Setup call for users to override module configurations.
----@param user_data TSConfig module overrides
+---Setup call for users to override configuration configurations.
+---@param user_data TSConfig user configuration table
 function M.setup(user_data)
-  if user_data and user_data.parser_install_dir then
-    config.parser_install_dir = vim.fn.expand(user_data.parser_install_dir, ':p')
+  if user_data then
+    if user_data.parser_install_dir then
+      user_data.parser_install_dir = vim.fn.expand(user_data.parser_install_dir, ':p')
+    end
+    config = vim.tbl_deep_extend('force', config, user_data)
   end
   vim.opt.runtimepath:append(config.parser_install_dir)
 
-  config.auto_install = user_data and user_data.auto_install or false
   if config.auto_install then
     require('nvim-treesitter.install').setup_auto_install()
   end
 
-  local ensure_installed = user_data and user_data.ensure_installed or {}
+  local ensure_installed = config.ensure_installed
   if #ensure_installed > 0 then
-    if user_data and user_data.sync_install then
+    if config.sync_install then
       require('nvim-treesitter.install').ensure_installed_sync(ensure_installed)
     else
       require('nvim-treesitter.install').ensure_installed(ensure_installed)
     end
   end
-  config.ensure_installed = ensure_installed
-
-  config.ignore_install = user_data and user_data.ignore_install or {}
 end
 
--- If parser_install_dir is not nil it is used or created.
--- If parser_install_dir is nil, use "site" dir from "runtimepath"
----@param dir_name string|nil
+-- Returns the install path for parsers, parser info, and queries.
+-- If the specified directory does not exist, it is created.
+---@param dir_name string
 ---@return string|nil
-function M.get_parser_install_dir(dir_name)
-  dir_name = dir_name or 'parser'
-
+function M.get_install_dir(dir_name)
   local dir = utils.join_path(config.parser_install_dir, dir_name)
 
   if not vim.loop.fs_stat(dir) then
@@ -61,10 +58,6 @@ function M.get_parser_install_dir(dir_name)
     end
   end
   return dir
-end
-
-function M.get_parser_info_dir()
-  return M.get_parser_install_dir('parser-info')
 end
 
 function M.get_ignored_parser_installs()

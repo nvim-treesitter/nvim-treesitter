@@ -48,15 +48,14 @@ end
 -- Returns the remove command based on the OS
 ---@param file string
 ---@param info_msg string
----@param opts table: `recursive` (default false)
+---@param recursive boolean|nil
 ---@return table
-function M.select_rm_file_cmd(file, info_msg, opts)
-  local recursive = opts and opts.recursive
+function M.select_rm_file_cmd(file, info_msg, recursive)
   if fn.has('win32') == 1 then
     return {
       cmd = 'cmd',
       opts = {
-        args = recursive and { '/C', 'if', 'exist', cmdpath(file), 'del', cmdpath(file) }
+        args = recursive and { '/C', 'if', 'exist', cmdpath(file), 'rmdir', '/s', cmdpath(file) }
           or { '/C', 'if', 'exist', cmdpath(file), 'rd', '/s', cmdpath(file) },
       },
       info = info_msg,
@@ -194,6 +193,28 @@ function M.select_install_rm_cmd(cache_dir, project_name)
       cmd = 'rm',
       opts = {
         args = { '-rf', cache_dir .. '/' .. project_name },
+      },
+    }
+  end
+end
+
+-- Returns the copy command based on the OS
+---@param from string
+---@param to string
+---@return Command
+function M.select_cp_cmd(from, to)
+  if fn.has('win32') == 1 then
+    return {
+      cmd = 'cmd',
+      opts = {
+        args = { '/C', 'xcopy', '/Y', cmdpath(from), cmdpath(to) },
+      },
+    }
+  else
+    return {
+      cmd = 'cp',
+      opts = {
+        args = { '-Rf', from, to },
       },
     }
   end

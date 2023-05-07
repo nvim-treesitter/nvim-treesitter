@@ -99,7 +99,7 @@ end
 ---@param lang string
 ---@return string|nil
 local function get_installed_revision(lang)
-  local lang_file = utils.join_path(configs.get_parser_info_dir(), lang .. '.revision')
+  local lang_file = utils.join_path(configs.get_install_dir('parser-info'), lang .. '.revision')
   if vim.fn.filereadable(lang_file) == 1 then
     return vim.fn.readfile(lang_file)[1]
   end
@@ -121,7 +121,7 @@ end
 ---@return boolean
 local function is_installed(lang)
   local matched_parsers = vim.api.nvim_get_runtime_file('parser/' .. lang .. '.so', true) or {}
-  local install_dir = configs.get_parser_install_dir()
+  local install_dir = configs.get_install_dir()
   if not install_dir then
     return false
   end
@@ -424,7 +424,7 @@ local function run_install(cache_dir, install_dir, lang, repo, with_sync, genera
       cmd = function()
         vim.fn.writefile(
           { revision or '' },
-          utils.join_path(configs.get_parser_info_dir() or '', lang .. '.revision')
+          utils.join_path(configs.get_install_dir('parser-info') or '', lang .. '.revision')
         )
       end,
     },
@@ -432,6 +432,13 @@ local function run_install(cache_dir, install_dir, lang, repo, with_sync, genera
   if not from_local_path then
     vim.list_extend(command_list, { shell.select_install_rm_cmd(cache_dir, project_name) })
   end
+
+  vim.list_extend(command_list, {
+    shell.select_cp_cmd(
+      utils.join_path(utils.get_package_path(), 'runtime', 'queries', lang),
+      utils.join_path(configs.get_install_dir('queries'), lang)
+    ),
+  })
 
   if with_sync then
     if iter_cmd_sync(command_list) == true then
@@ -512,7 +519,7 @@ function M.install(options)
 
     local cache_dir = vim.fn.stdpath('cache')
 
-    local install_dir = configs.get_parser_install_dir()
+    local install_dir = configs.get_install_dir('parser')
     assert(install_dir)
 
     local languages ---@type string[]
@@ -608,7 +615,7 @@ function M.uninstall(...)
     ---@type string[]
     local languages = vim.tbl_flatten({ ... })
     for _, lang in ipairs(languages) do
-      local install_dir = configs.get_parser_install_dir()
+      local install_dir = configs.get_install_dir('parser')
       assert(install_dir)
 
       if vim.tbl_contains(ensure_installed_parsers, lang) then
@@ -626,6 +633,12 @@ function M.uninstall(...)
       if vim.fn.filereadable(parser_lib) == 1 then
         local command_list = {
           shell.select_rm_file_cmd(parser_lib, 'Uninstalling parser for ' .. lang),
+          shell.select_rm_file_cmd(
+            utils.join_path(configs.get_install_dir('queries'), lang),
+            'Uninstalling queries for ' .. lang,
+            true
+          ),
+
           {
             cmd = function()
               local all_parsers_after_deletion =

@@ -17,7 +17,7 @@ local function check_assertions(file)
   local assertions = vim.fn.json_decode(
     vim.fn.system(
       "highlight-assertions -p '"
-        .. configs.get_parser_install_dir()
+        .. configs.get_install_dir('parser')
         .. '/'
         .. lang
         .. ".so'"
