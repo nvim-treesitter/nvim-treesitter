@@ -45,25 +45,6 @@ end
 ---@param _bufnr integer
 ---@param pred string[]
 ---@return boolean|nil
-query.add_predicate('nth?', function(match, _pattern, _bufnr, pred)
-  if not valid_args('nth?', pred, 2, true) then
-    return
-  end
-
-  local node = match[pred[2]] ---@type TSNode
-  local n = tonumber(pred[3])
-  if node and node:parent() and node:parent():named_child_count() > n then
-    return node:parent():named_child(n) == node
-  end
-
-  return false
-end)
-
----@param match (TSNode|nil)[]
----@param _pattern string
----@param _bufnr integer
----@param pred string[]
----@return boolean|nil
 local function has_ancestor(match, _pattern, _bufnr, pred)
   if not valid_args(pred[1], pred, 2) then
     return
@@ -175,15 +156,6 @@ query.add_directive('set-lang-from-info-string!', function(match, _, bufnr, pred
   metadata.language = get_parser_from_markdown_info_string(injection_alias)
 end)
 
--- Just avoid some annoying warnings for this directive
-query.add_directive('make-range!', function() end)
-
----@param match (TSNode|nil)[]
----@param _ string
----@param bufnr integer
----@param pred string[]
----@param metadata table
----@return boolean|nil
 query.add_directive('downcase!', function(match, _, bufnr, pred, metadata)
   local text, key, value ---@type string|string[], string, string|integer
 
@@ -217,6 +189,7 @@ end)
 ---@param pred string[]
 ---@param metadata table
 ---@return boolean|nil
+---TODO(clason): remove when switching to upstream injections
 query.add_directive('exclude_children!', function(match, _pattern, _bufnr, pred, metadata)
   local capture_id = pred[2]
   local node = match[capture_id]
@@ -249,6 +222,7 @@ end)
 ---@param bufnr integer
 ---@param pred string[]
 ---@param metadata table
+----TODO(clason): upstream or replace
 query.add_directive('trim!', function(match, _, bufnr, pred, metadata)
   for _, id in ipairs({ select(2, unpack(pred)) }) do
     local node = match[id]
