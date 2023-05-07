@@ -1524,10 +1524,10 @@ list.ungrammar = {
 
 list.usd = {
   install_info = {
-    url = "https://github.com/ColinKennedy/tree-sitter-usd",
-    files = { "src/parser.c" },
+    url = 'https://github.com/ColinKennedy/tree-sitter-usd',
+    files = { 'src/parser.c' },
   },
-  maintainers = { "@ColinKennedy" },
+  maintainers = { '@ColinKennedy' },
 }
 
 list.uxntal = {

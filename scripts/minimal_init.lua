@@ -14,7 +14,7 @@ vim.filetype.add {
 vim.o.swapfile = false
 vim.bo.swapfile = false
 
-require("nvim-treesitter.configs").setup {
+require('nvim-treesitter.configs').setup({
   indent = { enable = true },
   highlight = { enable = true },
-}
+})
