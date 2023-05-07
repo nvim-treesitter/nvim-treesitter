@@ -48,13 +48,16 @@ end
 -- Returns the remove command based on the OS
 ---@param file string
 ---@param info_msg string
+---@param opts table: `recursive` (default false)
 ---@return table
-function M.select_rm_file_cmd(file, info_msg)
+function M.select_rm_file_cmd(file, info_msg, opts)
+  local recursive = opts and opts.recursive
   if fn.has('win32') == 1 then
     return {
       cmd = 'cmd',
       opts = {
-        args = { '/C', 'if', 'exist', cmdpath(file), 'del', cmdpath(file) },
+        args = recursive and { '/C', 'if', 'exist', cmdpath(file), 'del', cmdpath(file) }
+          or { '/C', 'if', 'exist', cmdpath(file), 'rd', '/s', cmdpath(file) },
       },
       info = info_msg,
       err = 'Could not delete ' .. file,
@@ -63,7 +66,7 @@ function M.select_rm_file_cmd(file, info_msg)
     return {
       cmd = 'rm',
       opts = {
-        args = { file },
+        args = recursive and { '-r', file } or { file },
       },
       info = info_msg,
       err = 'Could not delete ' .. file,

@@ -517,11 +517,7 @@ function M.install(options)
       return api.nvim_err_writeln('Git is required on your system to run this command')
     end
 
-    local cache_folder, err = utils.get_cache_dir()
-    if err then
-      return api.nvim_err_writeln(err)
-    end
-    assert(cache_folder)
+    local cache_folder = vim.fn.stdpath('cache')
 
     local install_folder
     install_folder, err = configs.get_parser_install_dir()
