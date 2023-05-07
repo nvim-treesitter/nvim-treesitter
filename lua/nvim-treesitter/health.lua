@@ -1,5 +1,4 @@
 local api = vim.api
-local fn = vim.fn
 
 local queries = require('nvim-treesitter.query')
 local info = require('nvim-treesitter.info')
@@ -15,11 +14,11 @@ local NVIM_TREESITTER_MINIMUM_ABI = 13
 local function install_health()
   vim.health.start('Installation')
 
-  if fn.has('nvim-0.8.3') ~= 1 then
-    vim.health.error('Nvim-treesitter requires Neovim 0.8.3+')
+  if vim.fn.has('nvim-0.10') ~= 1 then
+    vim.health.error('Nvim-treesitter requires Neovim Nightly')
   end
 
-  if fn.executable('tree-sitter') == 0 then
+  if vim.fn.executable('tree-sitter') == 0 then
     vim.health.warn(
       '`tree-sitter` executable not found (parser generator, only needed for :TSInstallFromGrammar,'
         .. ' not required for :TSInstall)'
@@ -32,7 +31,7 @@ local function install_health()
     )
   end
 
-  if fn.executable('node') == 0 then
+  if vim.fn.executable('node') == 0 then
     vim.health.warn(
       '`node` executable not found (only needed for :TSInstallFromGrammar,'
         .. ' not required for :TSInstall)'
@@ -45,7 +44,7 @@ local function install_health()
     vim.health.ok('`node` found ' .. version .. ' (only needed for :TSInstallFromGrammar)')
   end
 
-  if fn.executable('git') == 0 then
+  if vim.fn.executable('git') == 0 then
     vim.health.error('`git` executable not found.', {
       'Install it with your package manager.',
       'Check that your `$PATH` is set correctly.',
