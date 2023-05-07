@@ -7,7 +7,7 @@ local M = {}
 ---@field ensure_installed string[]|string
 ---@field ignore_install string[]
 ---@field auto_install boolean
----@field parser_install_dir string|nil
+---@field install_dir string|nil
 
 ---@type TSConfig
 local config = {
@@ -15,19 +15,19 @@ local config = {
   ensure_installed = {},
   auto_install = false,
   ignore_install = {},
-  parser_install_dir = utils.join_path(vim.fn.stdpath('data'), 'nvim-treesitter'),
+  install_dir = utils.join_path(vim.fn.stdpath('data'), 'site'),
 }
 
 ---Setup call for users to override configuration configurations.
 ---@param user_data TSConfig|nil user configuration table
 function M.setup(user_data)
   if user_data then
-    if user_data.parser_install_dir then
-      user_data.parser_install_dir = vim.fn.expand(user_data.parser_install_dir, ':p')
+    if user_data.install_dir then
+      user_data.install_dir = vim.fn.expand(user_data.install_dir, ':p')
     end
     config = vim.tbl_deep_extend('force', config, user_data)
   end
-  vim.opt.runtimepath:append(config.parser_install_dir)
+  vim.opt.runtimepath:append(config.install_dir)
 
   if config.auto_install then
     require('nvim-treesitter.install').setup_auto_install()
@@ -48,7 +48,7 @@ end
 ---@param dir_name string
 ---@return string
 function M.get_install_dir(dir_name)
-  local dir = utils.join_path(config.parser_install_dir, dir_name)
+  local dir = utils.join_path(config.install_dir, dir_name)
 
   if not vim.loop.fs_stat(dir) then
     local ok, error = pcall(vim.fn.mkdir, dir, 'p', '0755')
