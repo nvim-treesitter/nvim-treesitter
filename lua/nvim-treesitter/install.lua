@@ -490,6 +490,12 @@ local function install_lang(
   run_install(cache_folder, install_folder, lang, install_info, with_sync, generate_from_grammar)
 end
 
+local function difference(t1, t2)
+  return vim.iter.filter(function(v)
+    return not vim.list_contains(t2, v)
+  end, t1)
+end
+
 ---@class InstallOptions
 ---@field with_sync boolean
 ---@field ask_reinstall boolean|string
@@ -535,7 +541,7 @@ function M.install(options)
     end
 
     if exclude_configured_parsers then
-      languages = utils.difference(languages, configs.get_ignored_parser_installs())
+      languages = difference(languages, configs.get_ignored_parser_installs())
     end
 
     if #languages > 1 then
@@ -612,7 +618,7 @@ function M.uninstall(...)
       ensure_installed_parsers = parsers.available_parsers()
     end
     ensure_installed_parsers =
-      utils.difference(ensure_installed_parsers, configs.get_ignored_parser_installs())
+      difference(ensure_installed_parsers, configs.get_ignored_parser_installs())
 
     ---@type string[]
     local languages = vim.tbl_flatten({ ... })

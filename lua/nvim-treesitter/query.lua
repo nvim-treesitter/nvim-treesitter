@@ -1,5 +1,4 @@
 local api = vim.api
-local utils = require('nvim-treesitter.utils')
 local parsers = require('nvim-treesitter.parsers')
 local caching = require('nvim-treesitter.caching')
 local tsq = vim.treesitter.query
@@ -267,43 +266,6 @@ function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
     end
   end
   return iterator
-end
-
--- Return all nodes corresponding to a specific capture path (like @definition.var, @reference.type)
--- Works like M.get_references or M.get_scopes except you can choose the capture
--- Can also be a nested capture like @definition.function to get all nodes defining a function.
---
----@param bufnr integer the buffer
----@param captures string|string[]
----@param query_group string the name of query group (highlights or injections for example)
----@param root TSNode|nil node from where to start the search
----@param lang string|nil the language from where to get the captures.
----              Root nodes can have several languages.
----@return table|nil
-function M.get_capture_matches(bufnr, captures, query_group, root, lang)
-  if type(captures) == 'string' then
-    captures = { captures }
-  end
-  local strip_captures = {} ---@type string[]
-  for i, capture in ipairs(captures) do
-    if capture:sub(1, 1) ~= '@' then
-      error('Captures must start with "@"')
-      return
-    end
-    -- Remove leading "@".
-    strip_captures[i] = capture:sub(2)
-  end
-
-  local matches = {}
-  for match in M.iter_group_results(bufnr, query_group, root, lang) do
-    for _, capture in ipairs(strip_captures) do
-      local insert = utils.get_at_path(match, capture)
-      if insert then
-        table.insert(matches, insert)
-      end
-    end
-  end
-  return matches
 end
 
 function M.iter_captures(bufnr, query_name, root, lang)

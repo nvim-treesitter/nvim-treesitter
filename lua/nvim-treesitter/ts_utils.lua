@@ -1,9 +1,5 @@
 local api = vim.api
 
-local parsers = require('nvim-treesitter.parsers')
-local utils = require('nvim-treesitter.utils')
-local ts = vim.treesitter
-
 local M = {}
 
 function M.get_named_children(node)
@@ -12,29 +8,6 @@ function M.get_named_children(node)
     nodes[i + 1] = node:named_child(i)
   end
   return nodes
-end
-
-function M.get_root_for_position(line, col, root_lang_tree)
-  if not root_lang_tree then
-    if not parsers.has_parser() then
-      return
-    end
-
-    root_lang_tree = parsers.get_parser()
-  end
-
-  local lang_tree = root_lang_tree:language_for_range({ line, col, line, col })
-
-  for _, tree in ipairs(lang_tree:trees()) do
-    local root = tree:root()
-
-    if root and ts.is_in_node_range(root, line, col) then
-      return root, tree, lang_tree
-    end
-  end
-
-  -- This isn't a likely scenario, since the position must belong to a tree somewhere.
-  return nil, nil, lang_tree
 end
 
 ---comment
@@ -61,6 +34,16 @@ function M.node_length(node)
   return end_byte - start_byte
 end
 
+-- Returns a function that returns the given value if it is a function,
+-- otherwise returns a function that returns the given value.
+---@param a any
+---@return fun(...):any
+local function to_func(a)
+  return type(a) == 'function' and a or function()
+    return a
+  end
+end
+
 -- Memoizes a function based on the buffer tick of the provided bufnr.
 -- The cache entry is cleared when the buffer is detached to avoid memory leaks.
 -- The options argument is a table with two optional values:
@@ -74,8 +57,13 @@ function M.memoize_by_buf_tick(fn, options)
 
   ---@type table<string, {result: any, last_tick: integer}>
   local cache = setmetatable({}, { __mode = "kv" })
-  local bufnr_fn = utils.to_func(options.bufnr or utils.identity)
-  local key_fn = utils.to_func(options.key or utils.identity)
+  -- TODO(clason): can this be simplified?
+  local bufnr_fn = to_func(options.bufnr or function(a)
+    return a
+  end)
+  local key_fn = to_func(options.key or function(a)
+    return a
+  end)
 
   return function(...)
     local bufnr = bufnr_fn(...)

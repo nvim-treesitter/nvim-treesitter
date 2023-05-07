@@ -8,29 +8,24 @@ local install = require('nvim-treesitter.install')
 local utils = require('nvim-treesitter.utils')
 local tsq = vim.treesitter.query
 
-local _start = vim.health.start
-local _ok = vim.health.ok
-local _warn = vim.health.warn
-local _error = vim.health.error
-
 local M = {}
 
 local NVIM_TREESITTER_MINIMUM_ABI = 13
 
 local function install_health()
-  _start('Installation')
+  vim.health.start('Installation')
 
   if fn.has('nvim-0.8.3') ~= 1 then
-    _error('Nvim-treesitter requires Neovim 0.8.3+')
+    vim.health.error('Nvim-treesitter requires Neovim 0.8.3+')
   end
 
   if fn.executable('tree-sitter') == 0 then
-    _warn(
+    vim.health.warn(
       '`tree-sitter` executable not found (parser generator, only needed for :TSInstallFromGrammar,'
         .. ' not required for :TSInstall)'
     )
   else
-    _ok(
+    vim.health.ok(
       '`tree-sitter` found '
         .. (utils.ts_cli_version() or '(unknown version)')
         .. ' (parser generator, only needed for :TSInstallFromGrammar)'
@@ -38,7 +33,7 @@ local function install_health()
   end
 
   if fn.executable('node') == 0 then
-    _warn(
+    vim.health.warn(
       '`node` executable not found (only needed for :TSInstallFromGrammar,'
         .. ' not required for :TSInstall)'
     )
@@ -47,21 +42,21 @@ local function install_health()
     local result = handle:read('*a')
     handle:close()
     local version = vim.split(result, '\n')[1]
-    _ok('`node` found ' .. version .. ' (only needed for :TSInstallFromGrammar)')
+    vim.health.ok('`node` found ' .. version .. ' (only needed for :TSInstallFromGrammar)')
   end
 
   if fn.executable('git') == 0 then
-    _error('`git` executable not found.', {
+    vim.health.error('`git` executable not found.', {
       'Install it with your package manager.',
       'Check that your `$PATH` is set correctly.',
     })
   else
-    _ok('`git` executable found.')
+    vim.health.ok('`git` executable found.')
   end
 
   local cc = shell.select_executable(install.compilers)
   if not cc then
-    _error('`cc` executable not found.', {
+    vim.health.error('`cc` executable not found.', {
       'Check that any of '
         .. vim.inspect(install.compilers)
         .. ' is in your $PATH'
@@ -69,7 +64,7 @@ local function install_health()
     })
   else
     local version = vim.fn.systemlist(cc .. (cc == 'cl' and '' or ' --version'))[1]
-    _ok(
+    vim.health.ok(
       '`'
         .. cc
         .. '` executable found. Selected from '
@@ -79,7 +74,7 @@ local function install_health()
   end
   if vim.treesitter.language_version then
     if vim.treesitter.language_version >= NVIM_TREESITTER_MINIMUM_ABI then
-      _ok(
+      vim.health.ok(
         'Neovim was compiled with tree-sitter runtime ABI version '
           .. vim.treesitter.language_version
           .. ' (required >='
@@ -87,7 +82,7 @@ local function install_health()
           .. '). Parsers must be compatible with runtime ABI.'
       )
     else
-      _error(
+      vim.health.error(
         'Neovim was compiled with tree-sitter runtime ABI version '
           .. vim.treesitter.language_version
           .. '.\n'
@@ -100,7 +95,7 @@ local function install_health()
     end
   end
 
-  _start('OS Info:\n' .. vim.inspect(vim.loop.os_uname()))
+  vim.health.start('OS Info:\n' .. vim.inspect(vim.loop.os_uname()))
 end
 
 local function query_status(lang, query_group)
@@ -148,9 +143,9 @@ function M.check()
          x) errors found in the query, try to run :TSUpdate {lang}]]
   table.insert(parser_installation, legend)
   -- Finally call the report function
-  _start(table.concat(parser_installation, '\n'))
+  vim.health.start(table.concat(parser_installation, '\n'))
   if #error_collection > 0 then
-    _start('The following errors have been detected:')
+    vim.health.start('The following errors have been detected:')
     for _, p in ipairs(error_collection) do
       local lang, type, err = unpack(p)
       local lines = {}
@@ -171,7 +166,7 @@ function M.check()
           end
         end
       end
-      _error(table.concat(lines, '\n'))
+      vim.health.error(table.concat(lines, '\n'))
     end
   end
 end
