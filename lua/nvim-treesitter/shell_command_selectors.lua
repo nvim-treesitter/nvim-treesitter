@@ -177,12 +177,12 @@ function M.select_compile_command(repo, cc, compile_location)
 end
 
 -- Returns the remove command based on the OS
----@param cache_folder string
+---@param cache_dir string
 ---@param project_name string
 ---@return Command
-function M.select_install_rm_cmd(cache_folder, project_name)
+function M.select_install_rm_cmd(cache_dir, project_name)
   if fn.has('win32') == 1 then
-    local dir = cache_folder .. '\\' .. project_name
+    local dir = cache_dir .. '\\' .. project_name
     return {
       cmd = 'cmd',
       opts = {
@@ -193,7 +193,7 @@ function M.select_install_rm_cmd(cache_folder, project_name)
     return {
       cmd = 'rm',
       opts = {
-        args = { '-rf', cache_folder .. '/' .. project_name },
+        args = { '-rf', cache_dir .. '/' .. project_name },
       },
     }
   end
@@ -226,11 +226,11 @@ end
 
 ---@param repo InstallInfo
 ---@param project_name string
----@param cache_folder string
+---@param cache_dir string
 ---@param revision string|nil
 ---@param prefer_git boolean
 ---@return table
-function M.select_download_commands(repo, project_name, cache_folder, revision, prefer_git)
+function M.select_download_commands(repo, project_name, cache_dir, revision, prefer_git)
   local can_use_tar = vim.fn.executable('tar') == 1 and vim.fn.executable('curl') == 1
   local is_github = repo.url:find('github.com', 1, true)
   local is_gitlab = repo.url:find('gitlab.com', 1, true)
@@ -241,13 +241,13 @@ function M.select_download_commands(repo, project_name, cache_folder, revision, 
     local path_sep = utils.get_path_sep()
     local url = repo.url:gsub('.git$', '')
 
-    local folder_rev = revision
+    local dir_rev = revision
     if is_github and revision:match('^v%d') then
-      folder_rev = revision:sub(2)
+      dir_rev = revision:sub(2)
     end
 
     return {
-      M.select_install_rm_cmd(cache_folder, project_name .. '-tmp'),
+      M.select_install_rm_cmd(cache_dir, project_name .. '-tmp'),
       {
         cmd = 'curl',
         info = 'Downloading ' .. project_name .. '...',
@@ -268,10 +268,10 @@ function M.select_download_commands(repo, project_name, cache_folder, revision, 
             '--output',
             project_name .. '.tar.gz',
           },
-          cwd = cache_folder,
+          cwd = cache_dir,
         },
       },
-      M.select_mkdir_cmd(project_name .. '-tmp', cache_folder, 'Creating temporary directory'),
+      M.select_mkdir_cmd(project_name .. '-tmp', cache_dir, 'Creating temporary directory'),
       {
         cmd = 'tar',
         info = 'Extracting ' .. project_name .. '...',
@@ -283,19 +283,19 @@ function M.select_download_commands(repo, project_name, cache_folder, revision, 
             '-C',
             project_name .. '-tmp',
           },
-          cwd = cache_folder,
+          cwd = cache_dir,
         },
       },
-      M.select_rm_file_cmd(cache_folder .. path_sep .. project_name .. '.tar.gz'),
+      M.select_rm_file_cmd(cache_dir .. path_sep .. project_name .. '.tar.gz'),
       M.select_mv_cmd(
-        utils.join_path(project_name .. '-tmp', url:match('[^/]-$') .. '-' .. folder_rev),
+        utils.join_path(project_name .. '-tmp', url:match('[^/]-$') .. '-' .. dir_rev),
         project_name,
-        cache_folder
+        cache_dir
       ),
-      M.select_install_rm_cmd(cache_folder, project_name .. '-tmp'),
+      M.select_install_rm_cmd(cache_dir, project_name .. '-tmp'),
     }
   else
-    local git_folder = utils.join_path(cache_folder, project_name)
+    local git_dir = utils.join_path(cache_dir, project_name)
     local clone_error = 'Error during download, please verify your internet connection'
 
     return {
@@ -309,7 +309,7 @@ function M.select_download_commands(repo, project_name, cache_folder, revision, 
             repo.url,
             project_name,
           },
-          cwd = cache_folder,
+          cwd = cache_dir,
         },
       },
       {
@@ -321,7 +321,7 @@ function M.select_download_commands(repo, project_name, cache_folder, revision, 
             'checkout',
             revision,
           },
-          cwd = git_folder,
+          cwd = git_dir,
         },
       },
     }

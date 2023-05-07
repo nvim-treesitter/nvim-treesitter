@@ -284,20 +284,13 @@ local function iter_cmd_sync(cmd_list)
   return true
 end
 
----@param cache_folder string
----@param install_folder string
+---@param cache_dir string
+---@param install_dir string
 ---@param lang string
 ---@param repo InstallInfo
 ---@param with_sync boolean
 ---@param generate_from_grammar boolean
-local function run_install(
-  cache_folder,
-  install_folder,
-  lang,
-  repo,
-  with_sync,
-  generate_from_grammar
-)
+local function run_install(cache_dir, install_dir, lang, repo, with_sync, generate_from_grammar)
   parsers.reset_cache()
 
   local path_sep = utils.get_path_sep()
@@ -322,9 +315,9 @@ local function run_install(
       repo_location = repo_location .. '/' .. repo.location
     end
     repo_location = repo_location:gsub('/', path_sep)
-    compile_location = utils.join_path(cache_folder, repo_location)
+    compile_location = utils.join_path(cache_dir, repo_location)
   end
-  local parser_lib_name = utils.join_path(install_folder, lang) .. '.so'
+  local parser_lib_name = utils.join_path(install_dir, lang) .. '.so'
 
   generate_from_grammar = repo.requires_generate_from_grammar or generate_from_grammar
 
@@ -386,10 +379,10 @@ local function run_install(
   ---@type Command[]
   local command_list = {}
   if not from_local_path then
-    vim.list_extend(command_list, { shell.select_install_rm_cmd(cache_folder, project_name) })
+    vim.list_extend(command_list, { shell.select_install_rm_cmd(cache_dir, project_name) })
     vim.list_extend(
       command_list,
-      shell.select_download_commands(repo, project_name, cache_folder, revision, M.prefer_git)
+      shell.select_download_commands(repo, project_name, cache_dir, revision, M.prefer_git)
     )
   end
   if generate_from_grammar then
@@ -437,7 +430,7 @@ local function run_install(
     },
   })
   if not from_local_path then
-    vim.list_extend(command_list, { shell.select_install_rm_cmd(cache_folder, project_name) })
+    vim.list_extend(command_list, { shell.select_install_rm_cmd(cache_dir, project_name) })
   end
 
   if with_sync then
@@ -451,15 +444,15 @@ end
 
 ---@param lang string
 ---@param ask_reinstall boolean|string
----@param cache_folder string
----@param install_folder string
+---@param cache_dir string
+---@param install_dir string
 ---@param with_sync boolean
 ---@param generate_from_grammar boolean
 local function install_lang(
   lang,
   ask_reinstall,
-  cache_folder,
-  install_folder,
+  cache_dir,
+  install_dir,
   with_sync,
   generate_from_grammar
 )
@@ -487,7 +480,7 @@ local function install_lang(
     return
   end
 
-  run_install(cache_folder, install_folder, lang, install_info, with_sync, generate_from_grammar)
+  run_install(cache_dir, install_dir, lang, install_info, with_sync, generate_from_grammar)
 end
 
 local function difference(t1, t2)
@@ -517,14 +510,10 @@ function M.install(options)
       return api.nvim_err_writeln('Git is required on your system to run this command')
     end
 
-    local cache_folder = vim.fn.stdpath('cache')
+    local cache_dir = vim.fn.stdpath('cache')
 
-    local install_folder
-    install_folder, err = configs.get_parser_install_dir()
-    if err then
-      return api.nvim_err_writeln(err)
-    end
-    assert(install_folder)
+    local install_dir = configs.get_parser_install_dir()
+    assert(install_dir)
 
     local languages ---@type string[]
     local ask ---@type boolean|string
@@ -545,7 +534,7 @@ function M.install(options)
     end
 
     for _, lang in ipairs(languages) do
-      install_lang(lang, ask, cache_folder, install_folder, with_sync, generate_from_grammar)
+      install_lang(lang, ask, cache_dir, install_dir, with_sync, generate_from_grammar)
     end
   end
 end
@@ -619,10 +608,8 @@ function M.uninstall(...)
     ---@type string[]
     local languages = vim.tbl_flatten({ ... })
     for _, lang in ipairs(languages) do
-      local install_dir, err = configs.get_parser_install_dir()
-      if err then
-        return api.nvim_err_writeln(err)
-      end
+      local install_dir = configs.get_parser_install_dir()
+      assert(install_dir)
 
       if vim.tbl_contains(ensure_installed_parsers, lang) then
         vim.notify(

@@ -1,4 +1,4 @@
-local query = require('vim.treesitter.query')
+local query = vim.treesitter.query
 
 local html_script_type_languages = {
   ['importmap'] = 'json',

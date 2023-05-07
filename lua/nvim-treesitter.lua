@@ -1,6 +1,3 @@
--- Registers all query predicates
-require('nvim-treesitter.query_predicates')
-
 local M = {}
 
 function M.setup(...)

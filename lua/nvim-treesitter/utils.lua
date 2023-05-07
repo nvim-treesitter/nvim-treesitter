@@ -1,5 +1,3 @@
-local luv = vim.loop
-
 local M = {}
 
 -- Wrapper around vim.notify with common options set.

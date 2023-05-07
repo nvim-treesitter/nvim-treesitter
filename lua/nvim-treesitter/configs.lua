@@ -46,12 +46,12 @@ end
 
 -- If parser_install_dir is not nil it is used or created.
 -- If parser_install_dir is nil, use "site" dir from "runtimepath"
----@param folder_name string|nil
----@return string|nil, string|nil
-function M.get_parser_install_dir(folder_name)
-  folder_name = folder_name or 'parser'
+---@param dir_name string|nil
+---@return string|nil
+function M.get_parser_install_dir(dir_name)
+  dir_name = dir_name or 'parser'
 
-  local dir = utils.join_path(config.parser_install_dir, folder_name)
+  local dir = utils.join_path(config.parser_install_dir, dir_name)
 
   if not vim.loop.fs_stat(dir) then
     local ok, error = pcall(vim.fn.mkdir, dir, 'p', '0755')
