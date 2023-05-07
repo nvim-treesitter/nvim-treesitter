@@ -1,5 +1,4 @@
 local api = vim.api
-local fn = vim.fn
 local luv = vim.loop
 
 local utils = require('nvim-treesitter.utils')
@@ -17,7 +16,7 @@ local M = {}
 local lockfile = {}
 
 M.compilers = { vim.fn.getenv('CC'), 'cc', 'gcc', 'clang', 'cl', 'zig' }
-M.prefer_git = fn.has('win32') == 1
+M.prefer_git = vim.fn.has('win32') == 1
 M.command_extra_args = {}
 M.ts_generate_args = nil
 
@@ -110,7 +109,7 @@ end
 ---@return string
 local function clean_path(input)
   local pth = vim.fn.fnamemodify(input, ':p')
-  if fn.has('win32') == 1 then
+  if vim.fn.has('win32') == 1 then
     pth = pth:gsub('/', '\\')
   end
   return pth
@@ -120,7 +119,7 @@ end
 ---@param lang string
 ---@return boolean
 local function is_installed(lang)
-  local matched_parsers = vim.api.nvim_get_runtime_file('parser/' .. lang .. '.so', true) or {}
+  local matched_parsers = api.nvim_get_runtime_file('parser/' .. lang .. '.so', true) or {}
   local install_dir = configs.get_install_dir()
   if not install_dir then
     return false
@@ -468,7 +467,8 @@ local function install_lang(
       return
     end
 
-    local yesno = fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
+    local yesno =
+      vim.fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
     print('\n ')
     if not string.match(yesno, '^y.*') then
       return
@@ -513,7 +513,7 @@ function M.install(options)
   local exclude_configured_parsers = options.exclude_configured_parsers
 
   return function(...)
-    if fn.executable('git') == 0 then
+    if vim.fn.executable('git') == 0 then
       return api.nvim_err_writeln('Git is required on your system to run this command')
     end
 
@@ -547,7 +547,7 @@ function M.install(options)
 end
 
 function M.setup_auto_install()
-  vim.api.nvim_create_autocmd('FileType', {
+  api.nvim_create_autocmd('FileType', {
     pattern = { '*' },
     callback = function(args)
       local lang = utils.get_buf_lang(args.buffer)
@@ -629,7 +629,7 @@ function M.uninstall(...)
       end
 
       local parser_lib = utils.join_path(install_dir, lang) .. '.so'
-      local all_parsers = vim.api.nvim_get_runtime_file('parser/' .. lang .. '.so', true)
+      local all_parsers = api.nvim_get_runtime_file('parser/' .. lang .. '.so', true)
       if vim.fn.filereadable(parser_lib) == 1 then
         local command_list = {
           shell.select_rm_file_cmd(parser_lib, 'Uninstalling parser for ' .. lang),
@@ -642,7 +642,7 @@ function M.uninstall(...)
           {
             cmd = function()
               local all_parsers_after_deletion =
-                vim.api.nvim_get_runtime_file('parser/' .. lang .. '.so', true)
+                api.nvim_get_runtime_file('parser/' .. lang .. '.so', true)
               if #all_parsers_after_deletion > 0 then
                 vim.notify(
                   'Tried to uninstall parser for '

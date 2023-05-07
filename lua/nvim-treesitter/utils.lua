@@ -24,15 +24,13 @@ end
 --prints "foo bar"
 ---@param separator string
 ---@return fun(...: string): string
-function M.generate_join(separator)
+local function generate_join(separator)
   return function(...)
     return table.concat({ ... }, separator)
   end
 end
 
-M.join_path = M.generate_join(M.get_path_sep())
-
-M.join_space = M.generate_join(' ')
+M.join_path = generate_join(M.get_path_sep())
 
 function M.get_package_path()
   -- Path to this source file, removing the leading '@'
