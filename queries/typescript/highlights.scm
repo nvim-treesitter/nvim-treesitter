@@ -38,6 +38,8 @@
 
 (template_literal_type) @string
 
+(non_null_expression "!" @operator)
+
 ;; punctuation
 
 (type_arguments
