@@ -96,10 +96,10 @@ function M.run_indent_test(file, runner, opts)
 
   -- load reference file
   vim.cmd(string.format('edit %s', file))
-  vim.bo.indentexpr = 'nvim_treesitter#indent()'
+  vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
   local before = vim.api.nvim_buf_get_lines(0, 0, -1, true)
 
-  assert.are.same('nvim_treesitter#indent()', vim.bo.indentexpr)
+  assert.are.same("v:lua.require'nvim-treesitter'.indentexpr()", vim.bo.indentexpr)
   set_buf_indent_opts(opts)
 
   -- perform the test
