@@ -2,7 +2,7 @@
 -- Locals are a generalization of definition and scopes
 -- its the way nvim-treesitter uses to "understand" the code
 
-local queries = require('nvim-treesitter.query')
+local query = require('nvim-treesitter.query')
 local ts_utils = require('nvim-treesitter.ts_utils')
 local ts = vim.treesitter
 local api = vim.api
@@ -10,20 +10,20 @@ local api = vim.api
 local M = {}
 
 function M.collect_locals(bufnr)
-  return queries.collect_group_results(bufnr, 'locals')
+  return query.collect_group_results(bufnr, 'locals')
 end
 
 -- Iterates matches from a locals query file.
 -- @param bufnr the buffer
 -- @param root the root node
 function M.iter_locals(bufnr, root)
-  return queries.iter_group_results(bufnr, 'locals', root)
+  return query.iter_group_results(bufnr, 'locals', root)
 end
 
 ---@param bufnr integer
 ---@return any
 function M.get_locals(bufnr)
-  return queries.get_matches(bufnr, 'locals')
+  return query.get_matches(bufnr, 'locals')
 end
 
 -- Creates unique id for a node based on text and range
@@ -369,5 +369,23 @@ function M.previous_scope(node)
     end
   end
 end
+
+-- register custom directive
+---@param match (TSNode|nil)[]
+---@param bufnr integer
+---@param pred string[]
+---@return boolean|nil
+query.add_predicate('is?', function(match, _, bufnr, pred)
+  local node = match[pred[2]]
+  local types = { unpack(pred, 3) }
+
+  if not node then
+    return true
+  end
+
+  local _, _, kind = M.find_definition(node, bufnr)
+
+  return vim.tbl_contains(types, kind)
+end)
 
 return M

@@ -1,124 +1,66 @@
 local query = vim.treesitter.query
 
-local html_script_type_languages = {
-  ['importmap'] = 'json',
-  ['module'] = 'javascript',
-  ['application/ecmascript'] = 'javascript',
-  ['text/ecmascript'] = 'javascript',
-}
-
-local non_filetype_match_injection_language_aliases = {
-  ex = 'elixir',
-  pl = 'perl',
-  sh = 'bash',
-  uxn = 'uxntal',
-  ts = 'typescript',
-}
-
-local function get_parser_from_markdown_info_string(injection_alias)
-  local match = vim.filetype.match({ filename = 'a.' .. injection_alias })
-  return match or non_filetype_match_injection_language_aliases[injection_alias] or injection_alias
-end
-
-local function error(str)
-  vim.api.nvim_err_writeln(str)
-end
-
-local function valid_args(name, pred, count, strict_count)
-  local arg_count = #pred - 1
-
-  if strict_count then
-    if arg_count ~= count then
-      error(string.format('%s must have exactly %d arguments', name, count))
-      return false
-    end
-  elseif arg_count < count then
-    error(string.format('%s must have at least %d arguments', name, count))
-    return false
-  end
-
-  return true
-end
+-- register custom predicates
 
 ---@param match (TSNode|nil)[]
----@param _pattern string
----@param _bufnr integer
 ---@param pred string[]
 ---@return boolean|nil
-local function has_ancestor(match, _pattern, _bufnr, pred)
-  if not valid_args(pred[1], pred, 2) then
-    return
-  end
-
+---TODO(clason): upstream
+query.add_predicate('has-ancestor?', function(match, _, _, pred)
   local node = match[pred[2]]
-  local ancestor_types = { unpack(pred, 3) }
   if not node then
     return true
   end
 
-  local just_direct_parent = pred[1]:find('has-parent', 1, true)
-
+  local ancestor_types = { unpack(pred, 3) }
   node = node:parent()
   while node do
     if vim.tbl_contains(ancestor_types, node:type()) then
       return true
     end
-    if just_direct_parent then
-      node = nil
-    else
-      node = node:parent()
-    end
+    node = node:parent()
   end
   return false
-end
-
-query.add_predicate("has-ancestor?", has_ancestor, true)
-
-query.add_predicate("has-parent?", has_ancestor, true)
-
----@param match (TSNode|nil)[]
----@param _pattern string
----@param bufnr integer
----@param pred string[]
----@return boolean|nil
-query.add_predicate('is?', function(match, _pattern, bufnr, pred)
-  if not valid_args('is?', pred, 2) then
-    return
-  end
-
-  -- Avoid circular dependencies
-  local locals = require('nvim-treesitter.locals')
-  local node = match[pred[2]]
-  local types = { unpack(pred, 3) }
-
-  if not node then
-    return true
-  end
-
-  local _, _, kind = locals.find_definition(node, bufnr)
-
-  return vim.tbl_contains(types, kind)
 end)
 
 ---@param match (TSNode|nil)[]
----@param _pattern string
----@param _bufnr integer
 ---@param pred string[]
 ---@return boolean|nil
-query.add_predicate('has-type?', function(match, _pattern, _bufnr, pred)
-  if not valid_args(pred[1], pred, 2) then
-    return
-  end
-
+---TODO(clason): upstream
+query.add_predicate('has-parent?', function(match, _, _, pred)
   local node = match[pred[2]]
-  local types = { unpack(pred, 3) }
-
   if not node then
     return true
   end
 
+  local ancestor_types = { unpack(pred, 3) }
+  if vim.tbl_contains(ancestor_types, node:parent():type()) then
+    return true
+  end
+  return false
+end)
+
+---@param match (TSNode|nil)[]
+---@param pred string[]
+---@return boolean|nil
+query.add_predicate('has-type?', function(match, _, _, pred)
+  local node = match[pred[2]]
+  if not node then
+    return true
+  end
+
+  local types = { unpack(pred, 3) }
   return vim.tbl_contains(types, node:type())
 end)
+
+-- register custom directives
+
+local mimetype_aliases = {
+  ['importmap'] = 'json',
+  ['module'] = 'javascript',
+  ['application/ecmascript'] = 'javascript',
+  ['text/ecmascript'] = 'javascript',
+}
 
 ---@param match (TSNode|nil)[]
 ---@param _ string
@@ -132,7 +74,7 @@ query.add_directive('set-lang-from-mimetype!', function(match, _, bufnr, pred, m
     return
   end
   local type_attr_value = vim.treesitter.get_node_text(node, bufnr)
-  local configured = html_script_type_languages[type_attr_value]
+  local configured = mimetype_aliases[type_attr_value]
   if configured then
     metadata.language = configured
   else
@@ -140,6 +82,14 @@ query.add_directive('set-lang-from-mimetype!', function(match, _, bufnr, pred, m
     metadata.language = parts[#parts]
   end
 end)
+
+local injection_aliases = {
+  ex = 'elixir',
+  pl = 'perl',
+  sh = 'bash',
+  uxn = 'uxntal',
+  ts = 'typescript',
+}
 
 ---@param match (TSNode|nil)[]
 ---@param _ string
@@ -152,8 +102,10 @@ query.add_directive('set-lang-from-info-string!', function(match, _, bufnr, pred
   if not node then
     return
   end
+
   local injection_alias = vim.treesitter.get_node_text(node, bufnr)
-  metadata.language = get_parser_from_markdown_info_string(injection_alias)
+  local filetype = vim.filetype.match({ filename = 'a.' .. injection_alias })
+  metadata.language = filetype or injection_aliases[injection_alias] or injection_alias
 end)
 
 query.add_directive('downcase!', function(match, _, bufnr, pred, metadata)
@@ -184,15 +136,17 @@ query.add_directive('downcase!', function(match, _, bufnr, pred, metadata)
 end)
 
 ---@param match (TSNode|nil)[]
----@param _pattern string
----@param _bufnr integer
 ---@param pred string[]
 ---@param metadata table
 ---@return boolean|nil
 ---TODO(clason): remove when switching to upstream injections
-query.add_directive('exclude_children!', function(match, _pattern, _bufnr, pred, metadata)
+query.add_directive('exclude_children!', function(match, _, _, pred, metadata)
   local capture_id = pred[2]
   local node = match[capture_id]
+  if not node then
+    return
+  end
+
   local start_row, start_col, end_row, end_col = node:range()
   local ranges = {}
   for i = 0, node:named_child_count() - 1 do
@@ -226,6 +180,10 @@ end)
 query.add_directive('trim!', function(match, _, bufnr, pred, metadata)
   for _, id in ipairs({ select(2, unpack(pred)) }) do
     local node = match[id]
+    if not node then
+      return
+    end
+
     local start_row, start_col, end_row, end_col = node:range()
 
     -- Don't trim if region ends in middle of a line

@@ -3,13 +3,10 @@ if vim.g.loaded_nvim_treesitter then
 end
 vim.g.loaded_nvim_treesitter = true
 
--- Registers all query predicates
-require('nvim-treesitter.query_predicates')
-
 local api = vim.api
 
 -- define autocommands
-local augroup = api.nvim_create_augroup('NvimTreesitter', {})
+local augroup = api.nvim_create_augroup('nvim-treesitter', {})
 
 api.nvim_create_autocmd('Filetype', {
   pattern = 'query',
