@@ -1635,35 +1635,18 @@ function M.get_parser_configs()
   return M.list
 end
 
-local parser_files
-
-function M.reset_cache()
-  parser_files = setmetatable({}, {
-    __index = function(tbl, key)
-      rawset(tbl, key, api.nvim_get_runtime_file('parser/' .. key .. '.*', false))
-      return rawget(tbl, key)
-    end,
-  })
-end
-
-M.reset_cache()
-
+-- Checks whether a parser for {lang} is available
+---@param lang string
+---@return boolean
+-- TODO(clason): move to utils or inline?
 function M.has_parser(lang)
-  lang = lang or M.get_buf_lang(api.nvim_get_current_buf())
-
-  if not lang or #lang == 0 then
-    return false
-  end
-  -- HACK: nvim internal API
-  if vim._ts_has_language(lang) then
-    return true
-  end
-  return #parser_files[lang] > 0
+  return api.nvim_get_runtime_file('parser/' .. lang .. '.*', false)
 end
 
 -- Gets the language of a given buffer
 ---@param bufnr number? or current buffer
 ---@return string
+-- TODO(clason): move to utils?
 function M.get_buf_lang(bufnr)
   bufnr = bufnr or api.nvim_get_current_buf()
 

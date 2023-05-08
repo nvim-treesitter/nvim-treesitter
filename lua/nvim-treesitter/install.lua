@@ -290,8 +290,6 @@ end
 ---@param with_sync boolean
 ---@param generate_from_grammar boolean
 local function run_install(cache_dir, install_dir, lang, repo, with_sync, generate_from_grammar)
-  parsers.reset_cache()
-
   local path_sep = utils.get_path_sep()
 
   local project_name = 'tree-sitter-' .. lang
