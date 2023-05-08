@@ -55,9 +55,6 @@
 (type_annotation
   ":" @punctuation.delimiter)
 
-(pair
-  ":" @punctuation.delimiter)
-
 (index_signature
   ":" @punctuation.delimiter)
 
