@@ -30,7 +30,7 @@ api.nvim_create_autocmd('Filetype', {
 
 -- create user commands
 api.nvim_create_user_command('TSInstallInfo', function()
-  require('nvim-treesitter.info').install_info()
+  require('nvim-treesitter.install').info()
 end, { nargs = 0, desc = 'List available treesitter parsers' })
 
 api.nvim_create_user_command('TSInstall', function(args)
@@ -91,7 +91,7 @@ end, {
   complete = function(arglead)
     return vim.iter.filter(function(v)
       return v:find(arglead)
-    end, require('nvim-treesitter.info').installed_parsers())
+    end, require('nvim-treesitter.install').installed_parsers())
   end,
   desc = 'Update installed treesitter parsers',
 })
@@ -104,7 +104,7 @@ end, {
   complete = function(arglead)
     return vim.iter.filter(function(v)
       return v:find(arglead)
-    end, require('nvim-treesitter.info').installed_parsers())
+    end, require('nvim-treesitter.install').installed_parsers())
   end,
   desc = 'Update installed treesitter parsers synchronously',
 })
@@ -117,7 +117,7 @@ end, {
   complete = function(arglead)
     return vim.iter.filter(function(v)
       return v:find(arglead)
-    end, require('nvim-treesitter.info').installed_parsers())
+    end, require('nvim-treesitter.install').installed_parsers())
   end,
   desc = 'Uninstall treesitter parsers',
 })

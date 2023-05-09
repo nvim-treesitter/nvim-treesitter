@@ -1,38 +1,4 @@
-local api = vim.api
-
 local M = {}
-
-function M.get_named_children(node)
-  local nodes = {} ---@type TSNode[]
-  for i = 0, node:named_child_count() - 1, 1 do
-    nodes[i + 1] = node:named_child(i)
-  end
-  return nodes
-end
-
----comment
----@param node TSNode
----@return TSNode result
-function M.get_root_for_node(node)
-  local parent = node
-  local result = node
-
-  while parent ~= nil do
-    result = parent
-    parent = result:parent()
-  end
-
-  return result
-end
-
--- Byte length of node range
----@param node TSNode
----@return number
-function M.node_length(node)
-  local _, _, start_byte = node:start()
-  local _, _, end_byte = node:end_()
-  return end_byte - start_byte
-end
 
 -- Returns a function that returns the given value if it is a function,
 -- otherwise returns a function that returns the given value.
@@ -68,7 +34,7 @@ function M.memoize_by_buf_tick(fn, options)
   return function(...)
     local bufnr = bufnr_fn(...)
     local key = key_fn(...)
-    local tick = api.nvim_buf_get_changedtick(bufnr)
+    local tick = vim.api.nvim_buf_get_changedtick(bufnr)
 
     if cache[key] then
       if cache[key].last_tick == tick then
@@ -80,7 +46,7 @@ function M.memoize_by_buf_tick(fn, options)
       end
 
       -- Clean up logic only!
-      api.nvim_buf_attach(bufnr, false, {
+      vim.api.nvim_buf_attach(bufnr, false, {
         on_detach = detach_handler,
         on_reload = detach_handler,
       })

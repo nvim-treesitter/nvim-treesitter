@@ -1,11 +1,11 @@
-local configs = require('nvim-treesitter.configs')
-local parsers = require('nvim-treesitter.parsers')
+local config = require('nvim-treesitter.config')
+local utils = require('nvim-treesitter.utils')
 local ts = vim.treesitter
 
 local function check_assertions(file)
   local buf = vim.fn.bufadd(file)
   vim.fn.bufload(file)
-  local lang = parsers.get_buf_lang(buf)
+  local lang = utils.get_buf_lang(buf)
   assert.same(
     1,
     vim.fn.executable('highlight-assertions'),
@@ -15,7 +15,7 @@ local function check_assertions(file)
   local assertions = vim.fn.json_decode(
     vim.fn.system(
       "highlight-assertions -p '"
-        .. configs.get_install_dir('parser')
+        .. config.get_install_dir('parser')
         .. '/'
         .. lang
         .. ".so'"

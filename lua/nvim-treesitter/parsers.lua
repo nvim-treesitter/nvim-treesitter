@@ -1,6 +1,3 @@
-local api = vim.api
-local ts = vim.treesitter
-
 ---@class InstallInfo
 ---@field url string
 ---@field branch string|nil
@@ -25,7 +22,7 @@ local list = setmetatable({}, {
     rawset(table, parsername, parserconfig)
     if parserconfig.filetype then
       for _, ft in pairs(parserconfig.filetype) do
-        ts.language.register(parsername, ft)
+        vim.treesitter.language.register(parsername, ft)
       end
     end
   end,
@@ -1633,31 +1630,6 @@ end
 
 function M.get_parser_configs()
   return M.list
-end
-
--- Checks whether a parser for {lang} is available
----@param lang string
----@return boolean
--- TODO(clason): move to utils or inline?
-function M.has_parser(lang)
-  return api.nvim_get_runtime_file('parser/' .. lang .. '.*', false)
-end
-
--- Gets the language of a given buffer
----@param bufnr number? or current buffer
----@return string
--- TODO(clason): move to utils?
-function M.get_buf_lang(bufnr)
-  bufnr = bufnr or api.nvim_get_current_buf()
-
-  local ft = api.nvim_buf_get_option(bufnr, 'ft')
-  local result = ts.language.get_lang(ft)
-  if result then
-    return result
-  else
-    ft = vim.split(ft, '.', { plain = true })[1]
-    return ts.language.get_lang(ft) or ft
-  end
 end
 
 return M

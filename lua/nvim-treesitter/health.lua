@@ -1,15 +1,24 @@
-local api = vim.api
-
 local queries = require('nvim-treesitter.query')
-local info = require('nvim-treesitter.info')
-local shell = require('nvim-treesitter.shell_command_selectors')
+local shell = require('nvim-treesitter.shell_cmds')
 local install = require('nvim-treesitter.install')
-local utils = require('nvim-treesitter.utils')
 local tsq = vim.treesitter.query
 
 local M = {}
 
 local NVIM_TREESITTER_MINIMUM_ABI = 13
+
+---@return string|nil
+local function ts_cli_version()
+  if vim.fn.executable('tree-sitter') == 1 then
+    local handle = io.popen('tree-sitter -V')
+    if not handle then
+      return
+    end
+    local result = handle:read('*a')
+    handle:close()
+    return vim.split(result, '\n')[1]:match('[^tree%psitter ].*')
+  end
+end
 
 local function install_health()
   vim.health.start('Installation')
@@ -26,7 +35,7 @@ local function install_health()
   else
     vim.health.ok(
       '`tree-sitter` found '
-        .. (utils.ts_cli_version() or '(unknown version)')
+        .. (ts_cli_version() or '(unknown version)')
         .. ' (parser generator, only needed for :TSInstallFromGrammar)'
     )
   end
@@ -115,8 +124,8 @@ function M.check()
   queries.invalidate_query_cache()
   -- Parser installation checks
   local parser_installation = { 'Parser/Features' .. string.rep(' ', 9) .. 'H L F I J' }
-  for _, parser_name in pairs(info.installed_parsers()) do
-    local installed = #api.nvim_get_runtime_file('parser/' .. parser_name .. '.so', false)
+  for _, parser_name in pairs(install.installed_parsers()) do
+    local installed = #vim.api.nvim_get_runtime_file('parser/' .. parser_name .. '.so', false)
 
     -- Only append information about installed parsers
     if installed >= 1 then
@@ -125,7 +134,7 @@ function M.check()
         .. parser_name
         .. multiple_parsers
         .. string.rep(' ', 20 - (#parser_name + #multiple_parsers))
-      for _, query_group in pairs(queries.built_in_query_groups) do
+      for _, query_group in pairs(M.bundled_queries) do
         local status, err = query_status(parser_name, query_group)
         out = out .. status .. ' '
         if err then
@@ -157,9 +166,9 @@ function M.check()
           if fd then
             local ok, file_err = pcall(tsq.parse, lang, fd:read('*a'))
             if ok then
-              table.insert(lines, '|    [OK]:"' .. file .. '"')
+              table.insert(lines, '|  [OK]:"' .. file .. '"')
             else
-              table.insert(lines, '| [ERROR]:"' .. file .. '", failed to load: ' .. file_err)
+              table.insert(lines, '| [ERR]:"' .. file .. '", failed to load: ' .. file_err)
             end
             fd:close()
           end
@@ -169,5 +178,7 @@ function M.check()
     end
   end
 end
+
+M.bundled_queries = { 'highlights', 'locals', 'folds', 'indents', 'injections' }
 
 return M

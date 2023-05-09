@@ -1,5 +1,5 @@
 local highlighter = require('vim.treesitter.highlighter')
-local parsers = require('nvim-treesitter.parsers')
+local utils = require('nvim-treesitter.utils')
 local ts = vim.treesitter
 
 local COMMENT_NODES = {
@@ -9,7 +9,7 @@ local COMMENT_NODES = {
 local function check_assertions(file)
   local buf = vim.fn.bufadd(file)
   vim.fn.bufload(file)
-  local lang = parsers.get_buf_lang(buf)
+  local lang = utils.get_buf_lang(buf)
   assert.same(
     1,
     vim.fn.executable('highlight-assertions'),

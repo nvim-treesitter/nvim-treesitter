@@ -176,7 +176,7 @@ end)
 ---@param bufnr integer
 ---@param pred string[]
 ---@param metadata table
----TODO(clason): upstream or replace
+---TODO(clason): upstream
 query.add_directive('trim!', function(match, _, bufnr, pred, metadata)
   for _, id in ipairs({ select(2, unpack(pred)) }) do
     local node = match[id]

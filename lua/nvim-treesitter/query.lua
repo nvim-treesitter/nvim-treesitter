@@ -1,13 +1,11 @@
 local api = vim.api
-local parsers = require('nvim-treesitter.parsers')
 local caching = require('nvim-treesitter.caching')
+local utils = require('nvim-treesitter.utils')
 local tsq = vim.treesitter.query
 
 local M = {}
 
 local EMPTY_ITER = function() end
-
-M.built_in_query_groups = { 'highlights', 'locals', 'folds', 'indents', 'injections' }
 
 -- Creates a function that checks whether a given query exists
 -- for a specific language.
@@ -19,7 +17,8 @@ local function get_query_guard(query)
   end
 end
 
-for _, query in ipairs(M.built_in_query_groups) do
+local built_in_query_groups = { 'highlights', 'locals', 'folds', 'indents', 'injections' }
+for _, query in ipairs(built_in_query_groups) do
   M['has_' .. query] = get_query_guard(query)
 end
 
@@ -145,7 +144,7 @@ end
 ---@param root_lang string|nil
 ---@return Query|nil, QueryInfo|nil
 local function prepare_query(bufnr, query_name, root, root_lang)
-  local buf_lang = parsers.get_buf_lang(bufnr)
+  local buf_lang = utils.get_buf_lang(bufnr)
 
   if not buf_lang then
     return

@@ -3,9 +3,8 @@ local luv = vim.loop
 
 local utils = require('nvim-treesitter.utils')
 local parsers = require('nvim-treesitter.parsers')
-local info = require('nvim-treesitter.info')
-local configs = require('nvim-treesitter.configs')
-local shell = require('nvim-treesitter.shell_command_selectors')
+local config = require('nvim-treesitter.config')
+local shell = require('nvim-treesitter.shell_cmds')
 
 local M = {}
 
@@ -75,7 +74,7 @@ local function load_lockfile()
 end
 
 local function is_ignored_parser(lang)
-  return vim.tbl_contains(configs.get_ignored_parser_installs(), lang)
+  return vim.tbl_contains(config.get_ignored_parser_installs(), lang)
 end
 
 ---@param lang string
@@ -98,7 +97,7 @@ end
 ---@param lang string
 ---@return string|nil
 local function get_installed_revision(lang)
-  local lang_file = utils.join_path(configs.get_install_dir('parser-info'), lang .. '.revision')
+  local lang_file = utils.join_path(config.get_install_dir('parser-info'), lang .. '.revision')
   if vim.fn.filereadable(lang_file) == 1 then
     return vim.fn.readfile(lang_file)[1]
   end
@@ -120,7 +119,7 @@ end
 ---@return boolean
 local function is_installed(lang)
   local matched_parsers = api.nvim_get_runtime_file('parser/' .. lang .. '.so', true) or {}
-  local install_dir = configs.get_install_dir('parser')
+  local install_dir = config.get_install_dir('parser')
   if not install_dir then
     return false
   end
@@ -145,7 +144,7 @@ end
 local function outdated_parsers()
   return vim.tbl_filter(function(lang) ---@param lang string
     return is_installed(lang) and needs_update(lang)
-  end, info.installed_parsers())
+  end, M.installed_parsers())
 end
 
 ---@param handle userdata
@@ -331,12 +330,7 @@ local function run_install(cache_dir, install_dir, lang, repo, with_sync, genera
     return
   else
     if not M.ts_generate_args then
-      local ts_cli_version = utils.ts_cli_version()
-      if ts_cli_version and vim.split(ts_cli_version, ' ')[1] > '0.20.2' then
-        M.ts_generate_args = { 'generate', '--abi', vim.treesitter.language_version }
-      else
-        M.ts_generate_args = { 'generate' }
-      end
+      M.ts_generate_args = { 'generate', '--abi', vim.treesitter.language_version }
     end
   end
   if generate_from_grammar and vim.fn.executable('node') ~= 1 then
@@ -421,7 +415,7 @@ local function run_install(cache_dir, install_dir, lang, repo, with_sync, genera
       cmd = function()
         vim.fn.writefile(
           { revision or '' },
-          utils.join_path(configs.get_install_dir('parser-info') or '', lang .. '.revision')
+          utils.join_path(config.get_install_dir('parser-info') or '', lang .. '.revision')
         )
       end,
     },
@@ -433,7 +427,7 @@ local function run_install(cache_dir, install_dir, lang, repo, with_sync, genera
   vim.list_extend(command_list, {
     shell.select_cp_cmd(
       utils.join_path(utils.get_package_path(), 'runtime', 'queries', lang),
-      utils.join_path(configs.get_install_dir('queries'), lang)
+      utils.join_path(config.get_install_dir('queries'), lang)
     ),
   })
 
@@ -517,7 +511,7 @@ function M.install(options)
 
     local cache_dir = vim.fn.stdpath('cache')
 
-    local install_dir = configs.get_install_dir('parser')
+    local install_dir = config.get_install_dir('parser')
     assert(install_dir)
 
     local languages ---@type string[]
@@ -531,7 +525,7 @@ function M.install(options)
     end
 
     if exclude_configured_parsers then
-      languages = difference(languages, configs.get_ignored_parser_installs())
+      languages = difference(languages, config.get_ignored_parser_installs())
     end
 
     if #languages > 1 then
@@ -579,12 +573,12 @@ function M.update(options)
         end
       end
       if installed == 0 then
-        utils.notify('Parsers are up-to-date!')
+        vim.notify('Parsers are up-to-date!')
       end
     else
-      local parsers_to_update = outdated_parsers() or info.installed_parsers()
+      local parsers_to_update = outdated_parsers() or M.installed_parsers()
       if #parsers_to_update == 0 then
-        utils.notify('All parsers are up-to-date!')
+        vim.notify('All parsers are up-to-date!')
       end
       for _, lang in pairs(parsers_to_update) do
         M.install({
@@ -600,20 +594,20 @@ end
 function M.uninstall(...)
   if vim.tbl_contains({ 'all' }, ...) then
     reset_progress_counter()
-    local installed = info.installed_parsers()
+    local installed = M.installed_parsers()
     M.uninstall(installed)
   elseif ... then
-    local ensure_installed_parsers = configs.get_ensure_installed_parsers()
+    local ensure_installed_parsers = config.get_ensure_installed_parsers()
     if ensure_installed_parsers == 'all' then
       ensure_installed_parsers = parsers.available_parsers()
     end
     ensure_installed_parsers =
-      difference(ensure_installed_parsers, configs.get_ignored_parser_installs())
+      difference(ensure_installed_parsers, config.get_ignored_parser_installs())
 
     ---@type string[]
     local languages = vim.tbl_flatten({ ... })
     for _, lang in ipairs(languages) do
-      local install_dir = configs.get_install_dir('parser')
+      local install_dir = config.get_install_dir('parser')
       assert(install_dir)
 
       if vim.tbl_contains(ensure_installed_parsers, lang) then
@@ -632,7 +626,7 @@ function M.uninstall(...)
         local command_list = {
           shell.select_rm_file_cmd(parser_lib, 'Uninstalling parser for ' .. lang),
           shell.select_rm_file_cmd(
-            utils.join_path(configs.get_install_dir('queries'), lang),
+            utils.join_path(config.get_install_dir('queries'), lang),
             'Uninstalling queries for ' .. lang,
             true
           ),
@@ -726,5 +720,39 @@ end
 
 M.ensure_installed = M.install({ exclude_configured_parsers = true })
 M.ensure_installed_sync = M.install({ with_sync = true, exclude_configured_parsers = true })
+
+---@return string[]
+function M.installed_parsers()
+  local installed = {}
+  for _, p in pairs(parsers.available_parsers()) do
+    if utils.has_parser(p) then
+      table.insert(installed, p)
+    end
+  end
+  return installed
+end
+
+function M.info()
+  local max_len = 0
+  for _, ft in pairs(parsers.available_parsers()) do
+    if #ft > max_len then
+      max_len = #ft
+    end
+  end
+
+  local parser_list = parsers.available_parsers()
+  table.sort(parser_list)
+  for _, lang in pairs(parser_list) do
+    local installed = #api.nvim_get_runtime_file('parser/' .. lang .. '.so', false) > 0
+    api.nvim_out_write(lang .. string.rep(' ', max_len - #lang + 1))
+    if installed then
+      api.nvim_out_write('[✓] installed\n')
+    elseif pcall(vim.treesitter.inspect_lang, lang) then
+      api.nvim_out_write('[✗] not installed (but still loaded. Restart Neovim!)\n')
+    else
+      api.nvim_out_write('[✗] not installed\n')
+    end
+  end
+end
 
 return M

@@ -1,4 +1,4 @@
-local parsers = require('nvim-treesitter.parsers')
+local utils = require('nvim-treesitter.utils')
 local queries = require('nvim-treesitter.query')
 local tsutils = require('nvim-treesitter.ts_utils')
 local ts = vim.treesitter
@@ -31,6 +31,14 @@ end
 local function get_last_node_at_line(root, lnum, col)
   col = col or (#vim.fn.getline(lnum) - 1)
   return root:descendant_for_range(lnum - 1, col, lnum - 1, col)
+end
+
+---@param node TSNode
+---@return number
+local function node_length(node)
+  local _, _, start_byte = node:start()
+  local _, _, end_byte = node:end_()
+  return end_byte - start_byte
 end
 
 ---@param bufnr integer
@@ -98,7 +106,7 @@ function M.get_indent(lnum)
     return -1
   end
 
-  local root_lang = parsers.get_buf_lang(bufnr)
+  local root_lang = utils.get_buf_lang(bufnr)
 
   -- some languages like Python will actually have worse results when re-parsing at opened new line
   if not M.avoid_force_reparsing[root_lang] then
@@ -114,7 +122,7 @@ function M.get_indent(lnum)
     end
     local local_root = tstree:root()
     if ts.is_in_node_range(local_root, lnum - 1, 0) then
-      if not root or tsutils.node_length(root) >= tsutils.node_length(local_root) then
+      if not root or node_length(root) >= node_length(local_root) then
         root = local_root
         lang_tree = tree
       end

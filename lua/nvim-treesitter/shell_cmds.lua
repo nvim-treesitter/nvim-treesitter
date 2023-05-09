@@ -1,4 +1,3 @@
-local fn = vim.fn
 local utils = require('nvim-treesitter.utils')
 
 -- Convert path for cmd.exe on Windows.
@@ -22,7 +21,7 @@ local M = {}
 ---@param info_msg string
 ---@return table
 function M.select_mkdir_cmd(directory, cwd, info_msg)
-  if fn.has('win32') == 1 then
+  if vim.fn.has('win32') == 1 then
     return {
       cmd = 'cmd',
       opts = {
@@ -51,7 +50,7 @@ end
 ---@param recursive boolean|nil
 ---@return table
 function M.select_rm_file_cmd(file, info_msg, recursive)
-  if fn.has('win32') == 1 then
+  if vim.fn.has('win32') == 1 then
     return {
       cmd = 'cmd',
       opts = {
@@ -77,7 +76,7 @@ end
 ---@return string|nil
 function M.select_executable(executables)
   return vim.tbl_filter(function(c) ---@param c string
-    return c ~= vim.NIL and fn.executable(c) == 1
+    return c ~= vim.NIL and vim.fn.executable(c) == 1
   end, executables)[1]
 end
 
@@ -114,7 +113,7 @@ function M.select_compiler_args(repo, compiler)
       repo.files,
       '-Os',
     }
-    if fn.has('mac') == 1 then
+    if vim.fn.has('mac') == 1 then
       table.insert(args, '-bundle')
     else
       table.insert(args, '-shared')
@@ -127,7 +126,7 @@ function M.select_compiler_args(repo, compiler)
     then
       table.insert(args, '-lstdc++')
     end
-    if fn.has('win32') == 0 then
+    if vim.fn.has('win32') == 0 then
       table.insert(args, '-fPIC')
     end
     return args
@@ -145,7 +144,7 @@ function M.select_compile_command(repo, cc, compile_location)
     string.match(cc, 'cl$')
     or string.match(cc, 'cl.exe$')
     or not repo.use_makefile
-    or fn.has('win32') == 1
+    or vim.fn.has('win32') == 1
     or not make
   then
     return {
@@ -180,7 +179,7 @@ end
 ---@param project_name string
 ---@return Command
 function M.select_install_rm_cmd(cache_dir, project_name)
-  if fn.has('win32') == 1 then
+  if vim.fn.has('win32') == 1 then
     local dir = cache_dir .. '\\' .. project_name
     return {
       cmd = 'cmd',
@@ -203,7 +202,7 @@ end
 ---@param to string
 ---@return Command
 function M.select_cp_cmd(from, to)
-  if fn.has('win32') == 1 then
+  if vim.fn.has('win32') == 1 then
     return {
       cmd = 'cmd',
       opts = {
@@ -226,7 +225,7 @@ end
 ---@param cwd string
 ---@return Command
 function M.select_mv_cmd(from, to, cwd)
-  if fn.has('win32') == 1 then
+  if vim.fn.has('win32') == 1 then
     return {
       cmd = 'cmd',
       opts = {
@@ -353,7 +352,7 @@ end
 ---@param command string
 ---@return string command
 function M.make_directory_change_for_command(dir, command)
-  if fn.has('win32') == 1 then
+  if vim.fn.has('win32') == 1 then
     if string.find(vim.o.shell, 'cmd') ~= nil then
       return string.format('pushd %s & %s & popd', cmdpath(dir), command)
     else

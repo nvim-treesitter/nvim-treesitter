@@ -1,14 +1,5 @@
 local M = {}
 
--- Wrapper around vim.notify with common options set.
----@param msg string
----@param log_level number|nil
----@param opts table|nil
-function M.notify(msg, log_level, opts)
-  local default_opts = { title = 'nvim-treesitter' }
-  vim.notify(msg, log_level, vim.tbl_extend('force', default_opts, opts or {}))
-end
-
 -- Returns the system-specific path separator.
 ---@return string
 function M.get_path_sep()
@@ -40,16 +31,27 @@ function M.get_package_path()
   return vim.fn.fnamemodify(source, ':p:h:h:h')
 end
 
----@return string|nil
-function M.ts_cli_version()
-  if vim.fn.executable('tree-sitter') == 1 then
-    local handle = io.popen('tree-sitter -V')
-    if not handle then
-      return
-    end
-    local result = handle:read('*a')
-    handle:close()
-    return vim.split(result, '\n')[1]:match('[^tree%psitter ].*')
+-- Checks whether a parser for {lang} is available
+---@param lang string
+---@return boolean
+-- TODO(clason): inline?
+function M.has_parser(lang)
+  return #vim.api.nvim_get_runtime_file('parser/' .. lang .. '.*', false) > 0
+end
+
+-- Gets the language of a given buffer
+---@param bufnr number? or current buffer
+---@return string
+function M.get_buf_lang(bufnr)
+  bufnr = bufnr or vim.api.nvim_get_current_buf()
+
+  local ft = vim.api.nvim_buf_get_option(bufnr, 'ft')
+  local result = vim.treesitter.language.get_lang(ft)
+  if result then
+    return result
+  else
+    ft = vim.split(ft, '.', { plain = true })[1]
+    return vim.treesitter.language.get_lang(ft) or ft
   end
 end
 

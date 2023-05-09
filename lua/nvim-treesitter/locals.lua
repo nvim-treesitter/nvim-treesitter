@@ -9,6 +9,28 @@ local api = vim.api
 
 local M = {}
 
+local function get_named_children(node)
+  local nodes = {} ---@type TSNode[]
+  for i = 0, node:named_child_count() - 1, 1 do
+    nodes[i + 1] = node:named_child(i)
+  end
+  return nodes
+end
+
+---@param node TSNode
+---@return TSNode result
+local function get_root_for_node(node)
+  local parent = node
+  local result = node
+
+  while parent ~= nil do
+    result = parent
+    parent = result:parent()
+  end
+
+  return result
+end
+
 function M.collect_locals(bufnr)
   return query.collect_group_results(bufnr, 'locals')
 end
@@ -103,7 +125,7 @@ function M.iter_scope_tree(node, bufnr)
       return
     end
 
-    local scope = M.containing_scope(last_node, bufnr, false) or ts_utils.get_root_for_node(node)
+    local scope = M.containing_scope(last_node, bufnr, false) or get_root_for_node(node)
 
     last_node = scope:parent()
 
@@ -117,7 +139,7 @@ end
 function M.get_local_nodes(local_def)
   local result = {}
 
-  M.recurse_local_nodes(local_def, function(def, _node, kind)
+  M.recurse_local_nodes(local_def, function(def, _, kind)
     table.insert(result, vim.tbl_extend('keep', { kind = kind }, def))
   end)
 
@@ -240,7 +262,7 @@ function M.find_definition(node, bufnr)
     end
   end
 
-  return node, ts_utils.get_root_for_node(node), nil
+  return node, get_root_for_node(node), nil
 end
 
 -- Finds usages of a node in a given scope.
@@ -255,7 +277,7 @@ function M.find_usages(node, scope_node, bufnr)
     return {}
   end
 
-  local scope_node = scope_node or ts_utils.get_root_for_node(node)
+  local scope_node = scope_node or get_root_for_node(node)
   local usages = {}
 
   for match in M.iter_locals(bufnr, scope_node) do
@@ -309,7 +331,7 @@ function M.nested_scope(node, cursor_pos)
   local col = cursor_pos.col ---@type integer
   local scope = M.containing_scope(node)
 
-  for _, child in ipairs(ts_utils.get_named_children(scope)) do
+  for _, child in ipairs(get_named_children(scope)) do
     local row_, col_ = child:start()
     if vim.tbl_contains(scopes, child) and ((row_ + 1 == row and col_ > col) or row_ + 1 > row) then
       return child
@@ -333,7 +355,7 @@ function M.next_scope(node)
   end
 
   local is_prev = true
-  for _, child in ipairs(ts_utils.get_named_children(parent)) do
+  for _, child in ipairs(get_named_children(parent)) do
     if child == scope then
       is_prev = false
     elseif not is_prev and vim.tbl_contains(scopes, child) then
@@ -360,7 +382,7 @@ function M.previous_scope(node)
   end
 
   local is_prev = true
-  local children = ts_utils.get_named_children(parent)
+  local children = get_named_children(parent)
   for i = #children, 1, -1 do
     if children[i] == scope then
       is_prev = false

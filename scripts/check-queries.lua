@@ -46,9 +46,8 @@ end
 
 local function do_check()
   local timings = {}
-  local parsers = require('nvim-treesitter.info').installed_parsers()
-  local queries = require('nvim-treesitter.query')
-  local query_types = queries.built_in_query_groups
+  local parsers = require('nvim-treesitter.install').installed_parsers()
+  local query_types = require('nvim-treesitter.health').bundled_queries
 
   local captures = extract_captures()
   local last_error
@@ -59,7 +58,7 @@ local function do_check()
     timings[lang] = {}
     for _, query_type in pairs(query_types) do
       local before = vim.loop.hrtime()
-      local ok, query = pcall(queries.get_query, lang, query_type)
+      local ok, query = pcall(vim.treesitter.query.get, lang, query_type)
       local after = vim.loop.hrtime()
       local duration = after - before
       table.insert(timings, { duration = duration, lang = lang, query_type = query_type })
@@ -105,7 +104,7 @@ local ok, result = pcall(do_check)
 local allowed_to_fail = vim.split(vim.env.ALLOWED_INSTALLATION_FAILURES or '', ',', true)
 
 for k, v in pairs(require('nvim-treesitter.parsers').get_parser_configs()) do
-  if not require('nvim-treesitter.parsers').has_parser(k) then
+  if not require('nvim-treesitter.utils').has_parser(k) then
     -- On CI all parsers that can be installed from C files should be installed
     if
       vim.env.CI
