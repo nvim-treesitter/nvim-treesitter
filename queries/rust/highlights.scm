@@ -86,6 +86,18 @@
     name: (identifier) @constant)
  (#lua-match? @constant "^[A-Z][A-Z%d_]*$"))
 
+((scoped_identifier
+  path: (identifier) @type
+  name: (identifier) @constant)
+  (#lua-match? @type "^[A-Z]")
+  (#lua-match? @constant "^[A-Z]"))
+
+((scoped_type_identifier
+  path: (identifier) @type
+  name: (type_identifier) @constant)
+  (#lua-match? @type "^[A-Z]")
+  (#lua-match? @constant "^[A-Z]"))
+
 [
   (crate)
   (super)
