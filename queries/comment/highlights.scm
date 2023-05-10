@@ -36,6 +36,15 @@
 ("text" @text.danger @nospell
  (#any-of? @text.danger "FIXME" "BUG"))
 
+((tag
+  (name) @text.done @nospell
+  ("(" @punctuation.bracket (user) @constant ")" @punctuation.bracket)?
+  ":" @punctuation.delimiter)
+  (#eq? @text.done "DONE"))
+
+("text" @text.done @nospell
+ (#eq? @text.done "DONE"))
+
 ; Issue number (#123)
 ("text" @number
  (#lua-match? @number "^#[0-9]+$"))
