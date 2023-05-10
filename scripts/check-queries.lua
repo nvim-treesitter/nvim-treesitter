@@ -104,7 +104,7 @@ local ok, result = pcall(do_check)
 local allowed_to_fail = vim.split(vim.env.ALLOWED_INSTALLATION_FAILURES or '', ',', true)
 
 for k, v in pairs(require('nvim-treesitter.parsers').get_parser_configs()) do
-  if not require('nvim-treesitter.utils').has_parser(k) then
+  if #vim.api.nvim_get_runtime_file('parser/' .. v .. '.*', false) == 0 then
     -- On CI all parsers that can be installed from C files should be installed
     if
       vim.env.CI

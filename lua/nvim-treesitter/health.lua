@@ -1,4 +1,3 @@
-local queries = require('nvim-treesitter.query')
 local shell = require('nvim-treesitter.shell_cmds')
 local install = require('nvim-treesitter.install')
 local tsq = vim.treesitter.query
@@ -107,7 +106,7 @@ local function install_health()
 end
 
 local function query_status(lang, query_group)
-  local ok, err = pcall(queries.get_query, lang, query_group)
+  local ok, err = pcall(tsq.get, lang, query_group)
   if not ok then
     return 'x', err
   elseif not err then
@@ -121,7 +120,6 @@ function M.check()
   local error_collection = {}
   -- Installation dependency checks
   install_health()
-  queries.invalidate_query_cache()
   -- Parser installation checks
   local parser_installation = { 'Parser/Features' .. string.rep(' ', 9) .. 'H L F I J' }
   for _, parser_name in pairs(install.installed_parsers()) do

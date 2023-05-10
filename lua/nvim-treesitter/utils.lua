@@ -31,14 +31,6 @@ function M.get_package_path()
   return vim.fn.fnamemodify(source, ':p:h:h:h')
 end
 
--- Checks whether a parser for {lang} is available
----@param lang string
----@return boolean
--- TODO(clason): inline?
-function M.has_parser(lang)
-  return #vim.api.nvim_get_runtime_file('parser/' .. lang .. '.*', false) > 0
-end
-
 -- Gets the language of a given buffer
 ---@param bufnr number? or current buffer
 ---@return string
