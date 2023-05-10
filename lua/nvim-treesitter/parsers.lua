@@ -1013,9 +1013,9 @@ list.ocamllex = {
 list.odin = {
   install_info = {
     url = "https://github.com/laytan/tree-sitter-odin",
-    files = { 'src/parser.c' },
+    files = { "src/parser.c" },
   },
-  maintainers = { '@laytan' },
+  maintainers = { "@laytan" },
 }
 
 list.org = {
