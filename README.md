@@ -29,9 +29,11 @@
   </p>
 </div>
 
-# NOTE
+# WARNING
 
-**This branch is a full rewrite of `nvim-treesitter` and work in progress; the contents of this README are not accurate. See https://github.com/nvim-treesitter/nvim-treesitter/issues/4767.**
+**This branch is a full, incompatible, rewrite of `nvim-treesitter` and work in progress; the contents of this README are not accurate. See https://github.com/nvim-treesitter/nvim-treesitter/issues/4767.**
+
+**This branch REQUIRES (the latest commit on) Neovim `master`.**
 
 The goal of `nvim-treesitter` is both to provide a simple and easy way to use the interface for [tree-sitter](https://github.com/tree-sitter/tree-sitter) in Neovim and to provide some basic functionality such as highlighting based on it:
 
