@@ -284,6 +284,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [ocaml](https://github.com/tree-sitter/tree-sitter-ocaml) (maintained by @undu)
 - [x] [ocaml_interface](https://github.com/tree-sitter/tree-sitter-ocaml) (maintained by @undu)
 - [x] [ocamllex](https://github.com/atom-ocaml/tree-sitter-ocamllex) (maintained by @undu)
+- [x] [odin](https://github.com/amaanq/tree-sitter-odin) (maintained by @amaanq)
 - [ ] [org](https://github.com/milisims/tree-sitter-org)
 - [x] [pascal](https://github.com/Isopod/tree-sitter-pascal.git) (maintained by @Isopod)
 - [x] [passwd](https://github.com/ath3/tree-sitter-passwd) (maintained by @amaanq)

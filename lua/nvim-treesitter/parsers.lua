@@ -1010,6 +1010,14 @@ list.ocamllex = {
   maintainers = { "@undu" },
 }
 
+list.odin = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-odin",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.org = {
   install_info = {
     url = "https://github.com/milisims/tree-sitter-org",
