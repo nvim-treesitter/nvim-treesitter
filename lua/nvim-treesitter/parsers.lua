@@ -1014,6 +1014,7 @@ list.odin = {
   install_info = {
     url = "https://github.com/laytan/tree-sitter-odin",
     files = { "src/parser.c" },
+    branch = "main",
   },
   maintainers = { "@laytan" },
 }
