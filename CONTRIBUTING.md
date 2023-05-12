@@ -25,6 +25,8 @@ cargo install stylua
 ln -s ../../scripts/pre-push .git/hooks/pre-push
 ```
 
+For running tests, see [TESTING.md](/TESTING.md).
+
 ## Adding new modules
 
 If you want to see a new functionality added to `nvim-treesitter` feel free to first open an issue
