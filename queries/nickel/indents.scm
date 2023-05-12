@@ -6,3 +6,8 @@
   "]"
   "}"
 ] @indent.branch
+
+[
+  "]"
+  "}"
+] @indent.end
