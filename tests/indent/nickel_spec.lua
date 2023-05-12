@@ -6,6 +6,12 @@ local run = Runner:new(it, "tests/indent/nickel", {
 })
 
 describe("indent Nickel:", function()
+  describe("whole file:", function()
+    run:whole_file(".", {
+      expected_failures = {},
+    })
+  end)
+
   describe("new line:", function()
     run:new_line("indent-newline.ncl", { on_line = 1, text = "stmt", indent = 2 })
     run:new_line("indent-newline.ncl", { on_line = 2, text = "stmt", indent = 2 })
