@@ -27,10 +27,10 @@
 )
 
 (while_block
-  (command_expression) @indent.end .) @indent.begin
+  (command_expression)) @indent.begin
 
 (repeat_block
-  (command_expression) @indent.end .) @indent.begin
+  (command_expression)) @indent.begin
 
 
 (comment) @indent.ignore
