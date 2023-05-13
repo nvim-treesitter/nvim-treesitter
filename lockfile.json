@@ -27,7 +27,7 @@
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
   },
   "bicep": {
-    "revision": "b94a0983b69ebb75e9129329a188199ad6ebcec0"
+    "revision": "3604d8c961ab129d2bfc6dfca56419c236ccdb83"
   },
   "blueprint": {
     "revision": "7f1a5df44861291d6951b6b2146a9fef4c226e14"
@@ -36,7 +36,7 @@
     "revision": "735716c926837d9e39e4effb3fdc28cee81a7e5e"
   },
   "c_sharp": {
-    "revision": "35bee13fa5f739a85d4434ec45ebea4f07da395d"
+    "revision": "76114711aedd3f4b6e1333a7513975647930c629"
   },
   "capnp": {
     "revision": "7d5fa4e94d3643ec15750106113be0d40f9fc1bb"
@@ -60,7 +60,7 @@
     "revision": "5e113412aadb78955c27010daa4dbe1d202013cf"
   },
   "cpon": {
-    "revision": "eedb93bf9e22e82ed6a67e6c57fd78731b44f591"
+    "revision": "f4b3cbc8b0bd4e13035d39940fef09f1392e8739"
   },
   "cpp": {
     "revision": "70aed2e9e83eb7320ab7c454d3084300bf587037"
@@ -138,7 +138,7 @@
     "revision": "fa3347712f7a59ed02ccf508284554689c6cde28"
   },
   "func": {
-    "revision": "f161cfe22452b386eeeab29ba0d2c14893f1a31f"
+    "revision": "0834e35ecf8b23fbf9ad15b088af6a897e19d4a8"
   },
   "fusion": {
     "revision": "19db2f47ba4c3a0f6238d4ae0e2abfca16e61dd6"
@@ -180,7 +180,7 @@
     "revision": "4a65743dbc2bb3094114dd2b43da03c820aa5234"
   },
   "gosum": {
-    "revision": "14da5c2a34861eb2d97ed89f39324156031e8878"
+    "revision": "e2ac513b2240c7ff1069ae33b2df29ce90777c11"
   },
   "gowork": {
     "revision": "949a8a470559543857a62102c84700d291fc984c"
@@ -192,7 +192,7 @@
     "revision": "b7bd6928532ada34dddb1dece4a158ab62c6e783"
   },
   "hare": {
-    "revision": "f0a9e6207a8c84bbd11143c8eb0c6cf70dc6d8b4"
+    "revision": "3d4af179414525a35dd069ba0208c9b71093d8b3"
   },
   "haskell": {
     "revision": "c5cb0c860a399308305f44792bc4853737c40c07"
@@ -255,7 +255,7 @@
     "revision": "e2f449e2bcc95f1d07ceb62d67f986005f73a6be"
   },
   "kdl": {
-    "revision": "d118f9376ef4f0461975289302fe74a28f073876"
+    "revision": "e180e05132c4cb229a8ba679b298790ef1eca77c"
   },
   "kotlin": {
     "revision": "100d79fd96b56a1b99099a8d2f3c114b8687acfb"
@@ -273,13 +273,13 @@
     "revision": "d47c95d78ef0e7495a74d214dd6fcddf6e402dfc"
   },
   "lua": {
-    "revision": "f6a13e357899aa602663f0a3462e5a2db7202c77"
+    "revision": "dcc44f7473ecec4d7b99af0a9529705d98a769f1"
   },
   "luadoc": {
-    "revision": "1e1152264cc68e11d65d9e2493566f5717a13d11"
+    "revision": "978cc13791c1d6e4626ee7e8db108d0be14f07e7"
   },
   "luap": {
-    "revision": "393915db4b16a792da9c60f52d11d93247d870b9"
+    "revision": "43916b0f31c48a05e03783eb0bab4eec54a4ac75"
   },
   "luau": {
     "revision": "4f8fc207b3a25b07cba1d3b4066f2872dcfe201f"
@@ -375,7 +375,7 @@
     "revision": "884e225b5ecca5d885ae627275f16ef648acd42e"
   },
   "puppet": {
-    "revision": "5e1bb979ea71efc0860d4bc56eb3b3f7a670d6ec"
+    "revision": "843868bfb909b734bfb63778a5685fae4bf2a33f"
   },
   "python": {
     "revision": "62827156d01c74dc1538266344e788da74536b8a"
@@ -435,7 +435,7 @@
     "revision": "6f128658eb22cfd15a801f52369d517c25253d5c"
   },
   "smali": {
-    "revision": "9bf8aa671a233ae2d2c6e9512c7144ce121b1fb6"
+    "revision": "72e334b2630f5852825ba5ff9dfd872447175eb5"
   },
   "smithy": {
     "revision": "cf8c7eb9faf7c7049839585eac19c94af231e6a0"
