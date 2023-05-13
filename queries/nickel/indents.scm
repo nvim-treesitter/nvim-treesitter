@@ -1,13 +1,13 @@
 [
-  (term)
+ (atom (uni_record)) ; for {...}
+ (atom terms: (term)) ; for [...]
 ] @indent.begin
 
 [
   "]"
   "}"
-] @indent.branch
+] @indent.end @indent.branch
 
 [
-  "]"
-  "}"
-] @indent.end
+  (comment)
+] @indent.auto
