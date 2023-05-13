@@ -7,3 +7,7 @@
   "]"
   "}"
 ] @indent.end @indent.branch
+
+[
+  (comment)
+] @indent.auto
