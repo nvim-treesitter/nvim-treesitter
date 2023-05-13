@@ -7,3 +7,8 @@
     key4 = 4
   }
 }
+
+# no indent after this line
+{
+  another = 1
+}
