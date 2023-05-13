@@ -972,10 +972,10 @@ list.ocamllex = {
 
 list.odin = {
   install_info = {
-    url = "https://github.com/amaanq/tree-sitter-odin",
-    files = { "src/parser.c", "src/scanner.c" },
+    url = 'https://github.com/amaanq/tree-sitter-odin',
+    files = { 'src/parser.c', 'src/scanner.c' },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { '@amaanq' },
 }
 
 list.org = {
