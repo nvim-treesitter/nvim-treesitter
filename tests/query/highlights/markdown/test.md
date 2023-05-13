@@ -1,8 +1,8 @@
 # H1
-<!-- <- punctuation.special -->
+<!-- <- text.title.1.marker -->
 
 ## H2
-<!-- <- punctuation.special -->
+<!-- <- text.title.2.marker -->
 
 - Item 1
 - Item 2
@@ -16,13 +16,13 @@
 <!--  ^ text.reference                                                    -->
 <!--                              ^ text.uri                              -->
 <!--                                                      ^ text.literal  -->
-<!--^ punctuation.delimiter                                               -->
-<!-- ^ punctuation.delimiter                                              -->
-<!--                                                                      //TODO: currently disabled punctuation.delimiter -->
+<!--^ punctuation.special                                                 -->
+<!-- ^ punctuation.bracket                                                -->
+<!--                    ^ punctuation.bracket                             -->
 
 [link_text](#local_reference "link go brr...")
 <!-- ^ text.reference                                                     -->
 <!--                 ^ text.uri                                           -->
 <!--                            ^ text.literal                            -->
-<!-- <- punctuation.delimiter                                             -->
-<!--                                                                      //TODO: currently disabled punctuation.delimiter -->
+<!-- <- punctuation.bracket                                               -->
+<!--       ^ punctuation.bracket                                          -->
