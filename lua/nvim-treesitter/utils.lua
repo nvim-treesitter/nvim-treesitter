@@ -31,20 +31,4 @@ function M.get_package_path()
   return vim.fn.fnamemodify(source, ':p:h:h:h')
 end
 
--- Gets the language of a given buffer
----@param bufnr number? or current buffer
----@return string
-function M.get_buf_lang(bufnr)
-  bufnr = bufnr or vim.api.nvim_get_current_buf()
-
-  local ft = vim.api.nvim_buf_get_option(bufnr, 'ft')
-  local result = vim.treesitter.language.get_lang(ft)
-  if result then
-    return result
-  else
-    ft = vim.split(ft, '.', { plain = true })[1]
-    return vim.treesitter.language.get_lang(ft) or ft
-  end
-end
-
 return M

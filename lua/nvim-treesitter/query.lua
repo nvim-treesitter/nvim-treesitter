@@ -1,7 +1,6 @@
 local api = vim.api
-local caching = require('nvim-treesitter.caching')
-local utils = require('nvim-treesitter.utils')
 local tsq = vim.treesitter.query
+local caching = require('nvim-treesitter.caching')
 
 local M = {}
 
@@ -144,8 +143,8 @@ end
 ---@param root_lang string|nil
 ---@return Query|nil, QueryInfo|nil
 local function prepare_query(bufnr, query_name, root, root_lang)
-  local buf_lang = utils.get_buf_lang(bufnr)
-
+  local ft = vim.bo[bufnr].filetype
+  local buf_lang = vim.treesitter.language.get_lang(ft) or ft
   if not buf_lang then
     return
   end

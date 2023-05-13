@@ -1,4 +1,3 @@
-local utils = require('nvim-treesitter.utils')
 local queries = require('nvim-treesitter.query')
 local tsutils = require('nvim-treesitter.ts_utils')
 local ts = vim.treesitter
@@ -106,7 +105,8 @@ function M.get_indent(lnum)
     return -1
   end
 
-  local root_lang = utils.get_buf_lang(bufnr)
+  local ft = vim.bo[bufnr].filetype
+  local root_lang = vim.treesitter.language.get_lang(ft) or ft
 
   -- some languages like Python will actually have worse results when re-parsing at opened new line
   if not M.avoid_force_reparsing[root_lang] then

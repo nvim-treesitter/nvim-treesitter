@@ -532,7 +532,8 @@ function M.setup_auto_install()
   api.nvim_create_autocmd('FileType', {
     pattern = { '*' },
     callback = function(args)
-      local lang = utils.get_buf_lang(args.buffer)
+      local ft = vim.bo[args.buffer].filetype
+      local lang = vim.treesitter.language.get_lang(ft) or ft
       if
         parsers.get_parser_configs()[lang]
         and not is_installed(lang)
