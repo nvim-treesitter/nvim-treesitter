@@ -699,16 +699,16 @@ function M.info()
   end
 
   for _, lang in pairs(parser_list) do
-    api.nvim_out_write(lang .. string.rep(' ', max_len - #lang + 1))
+    local parser = (lang .. string.rep(' ', max_len - #lang + 1))
+    local output
     if vim.tbl_contains(installed, lang) then
-      api.nvim_out_write('[✓] installed\n')
+      output = { parser .. '[✓] installed', 'DiagnosticOk' }
     elseif #api.nvim_get_runtime_file('parser/' .. lang .. '.*', true) > 0 then
-      api.nvim_out_write('[·] not installed (but available from runtimepath)\n')
-    elseif pcall(vim.treesitter.inspect_lang, lang) then
-      api.nvim_out_write('[✗] not installed (but still loaded. Restart Neovim!)\n')
+      output = { parser .. '[·] not installed (but available from runtimepath)', 'DiagnosticInfo' }
     else
-      api.nvim_out_write('[✗] not installed\n')
+      output = { parser .. '[✗] not installed' }
     end
+    api.nvim_echo({ output }, false, {})
   end
 end
 
