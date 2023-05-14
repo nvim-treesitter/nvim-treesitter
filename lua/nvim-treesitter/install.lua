@@ -49,7 +49,7 @@ end
 ---@param validate boolean|nil
 ---@return InstallInfo
 local function get_parser_install_info(lang, validate)
-  local parser_config = parsers.get_parser_configs()[lang]
+  local parser_config = parsers.configs[lang]
 
   if not parser_config then
     error('Parser not available for language "' .. lang .. '"')
@@ -510,7 +510,7 @@ function M.install(options)
     local languages ---@type string[]
     local ask ---@type boolean|string
     if ... == 'all' then
-      languages = parsers.available_parsers()
+      languages = parsers.get_available()
       ask = false
     else
       languages = vim.tbl_flatten({ ... })
@@ -534,11 +534,7 @@ function M.setup_auto_install()
     callback = function(args)
       local ft = vim.bo[args.buffer].filetype
       local lang = vim.treesitter.language.get_lang(ft) or ft
-      if
-        parsers.get_parser_configs()[lang]
-        and not is_installed(lang)
-        and not is_ignored_parser(lang)
-      then
+      if parsers.configs[lang] and not is_installed(lang) and not is_ignored_parser(lang) then
         M.install()({ lang })
       end
     end,
@@ -626,7 +622,7 @@ function M.write_lockfile(verbose, skip_langs)
   load_lockfile()
   skip_langs = skip_langs or {}
 
-  for k, v in pairs(parsers.get_parser_configs()) do
+  for k, v in pairs(parsers.configs) do
     table.insert(sorted_parsers, { name = k, parser = v })
   end
 
@@ -677,37 +673,37 @@ M.ensure_installed_sync = M.install({ with_sync = true, exclude_configured_parse
 
 ---@return string[]
 function M.installed_parsers()
-  local installed = {}
   local install_dir = require('nvim-treesitter.config').get_install_dir('parser')
-  local all_parsers = parsers.available_parsers()
-
-  for _, lang in pairs(all_parsers) do
-    local paths = vim.api.nvim_get_runtime_file('parser/' .. lang .. '.*', true)
+  local installed = {}
+  for _, lang in pairs(parsers.get_available()) do
+    local paths = api.nvim_get_runtime_file('parser/' .. lang .. '.*', true)
     if vim.iter(paths):any(function(p)
       return p:find(install_dir)
     end) then
       installed[#installed + 1] = lang
     end
   end
-
   return installed
 end
 
 function M.info()
+  local installed = M.installed_parsers()
+  local parser_list = parsers.get_available()
+  table.sort(parser_list)
+
   local max_len = 0
-  for _, ft in pairs(parsers.available_parsers()) do
-    if #ft > max_len then
-      max_len = #ft
+  for _, lang in pairs(parser_list) do
+    if #lang > max_len then
+      max_len = #lang
     end
   end
 
-  local parser_list = parsers.available_parsers()
-  table.sort(parser_list)
   for _, lang in pairs(parser_list) do
-    local installed = #api.nvim_get_runtime_file('parser/' .. lang .. '.so', false) > 0
     api.nvim_out_write(lang .. string.rep(' ', max_len - #lang + 1))
-    if installed then
+    if vim.tbl_contains(installed, lang) then
       api.nvim_out_write('[✓] installed\n')
+    elseif #api.nvim_get_runtime_file('parser/' .. lang .. '.*', true) > 0 then
+      api.nvim_out_write('[·] not installed (but available from runtimepath)\n')
     elseif pcall(vim.treesitter.inspect_lang, lang) then
       api.nvim_out_write('[✗] not installed (but still loaded. Restart Neovim!)\n')
     else

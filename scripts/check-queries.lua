@@ -27,7 +27,7 @@ local function extract_captures()
   end
 
   -- Complete captures for injections.
-  local parsers = vim.tbl_keys(require('nvim-treesitter.parsers').list)
+  local parsers = vim.tbl_keys(require('nvim-treesitter.parsers').configs)
   for _, lang in pairs(parsers) do
     table.insert(captures['injections'], lang)
   end
@@ -103,7 +103,7 @@ end
 local ok, result = pcall(do_check)
 local allowed_to_fail = vim.split(vim.env.ALLOWED_INSTALLATION_FAILURES or '', ',', true)
 
-for k, v in pairs(require('nvim-treesitter.parsers').get_parser_configs()) do
+for k, v in pairs(require('nvim-treesitter.parsers').configs) do
   if #vim.api.nvim_get_runtime_file('parser/' .. v .. '.*', false) == 0 then
     -- On CI all parsers that can be installed from C files should be installed
     if

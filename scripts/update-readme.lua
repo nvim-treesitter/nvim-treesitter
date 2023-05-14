@@ -4,7 +4,7 @@
 ---@field name string
 ---@field parser ParserInfo
 
-local parsers = require('nvim-treesitter.parsers').get_parser_configs()
+local parsers = require('nvim-treesitter.parsers').configs
 local sorted_parsers = {}
 
 for k, v in pairs(parsers) do

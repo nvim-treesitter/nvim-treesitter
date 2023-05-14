@@ -21,7 +21,7 @@ end, {
   complete = function(arglead)
     return vim.iter.filter(function(v)
       return v:find(arglead)
-    end, require('nvim-treesitter.parsers').available_parsers())
+    end, require('nvim-treesitter.parsers').get_available())
   end,
   desc = 'Install treesitter parsers',
 })
@@ -38,7 +38,7 @@ end, {
   complete = function(arglead)
     return vim.iter.filter(function(v)
       return v:find(arglead)
-    end, require('nvim-treesitter.parsers').available_parsers())
+    end, require('nvim-treesitter.parsers').get_available())
   end,
   desc = 'Install treesitter parsers from grammar',
 })
@@ -55,7 +55,7 @@ end, {
   complete = function(arglead)
     return vim.iter.filter(function(v)
       return v:find(arglead)
-    end, require('nvim-treesitter.parsers').available_parsers())
+    end, require('nvim-treesitter.parsers').get_available())
   end,
   desc = 'Install treesitter parsers synchronously',
 })
