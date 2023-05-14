@@ -13,8 +13,8 @@
 ---@field install_info InstallInfo
 ---@field filetype string[]
 ---@field maintainers string[]
----@field experimental boolean|nil
----@field readme_name string|nil
+---@field tier integer|nil
+---@field readme_note string|nil
 
 local M = {
   ---@type ParserInfo[]
@@ -117,7 +117,7 @@ M.configs.blueprint = {
     files = { 'src/parser.c' },
   },
   maintainers = { '@gabmus' },
-  experimental = true,
+  tier = 4,
 }
 
 M.configs.c = {
@@ -244,7 +244,7 @@ M.configs.d = {
     requires_generate_from_grammar = true,
   },
   -- Generating grammar takes ~60s
-  experimental = true,
+  tier = 4,
   maintainers = { '@nawordar' },
 }
 
@@ -305,7 +305,7 @@ M.configs.ebnf = {
     location = 'crates/tree-sitter-ebnf',
   },
   maintainers = { '@RubixDev' },
-  experimental = true,
+  tier = 4,
 }
 
 M.configs.eex = {
@@ -397,7 +397,7 @@ M.configs.foam = {
   maintainers = { '@FoamScience' },
   -- Queries might change over time on the grammar's side
   -- Otherwise everything runs fine
-  experimental = true,
+  tier = 4,
 }
 
 M.configs.fortran = {
@@ -438,7 +438,7 @@ M.configs.gdscript = {
     files = { 'src/parser.c', 'src/scanner.cc' },
   },
   maintainers = { '@PrestonKnopp' },
-  readme_name = 'Godot (gdscript)',
+  readme_note = 'Godot',
 }
 
 M.configs.git_rebase = {
@@ -473,7 +473,7 @@ M.configs.git_config = {
   },
   filetype = { 'gitconfig' },
   maintainers = { '@amaanq' },
-  readme_name = 'git_config',
+  readme_note = 'git_config',
 }
 
 M.configs.gitignore = {
@@ -499,7 +499,7 @@ M.configs.glimmer = {
   },
   filetype = { 'handlebars', 'html.handlebars' },
   maintainers = { '@NullVoxPopuli' },
-  readme_name = 'Glimmer and Ember',
+  readme_note = 'Glimmer and Ember',
 }
 
 M.configs.glsl = {
@@ -526,7 +526,7 @@ M.configs.godot_resource = {
   },
   filetype = { 'gdresource' },
   maintainers = { '@pierpo' },
-  readme_name = 'Godot Resources (gdresource)',
+  readme_note = 'Godot Resources',
 }
 
 M.configs.gomod = {
@@ -641,7 +641,7 @@ M.configs.htmldjango = {
     files = { 'src/parser.c' },
   },
   maintainers = { '@ObserverOfTime' },
-  experimental = true,
+  tier = 4,
 }
 
 M.configs.http = {
@@ -660,7 +660,7 @@ M.configs.ini = {
   },
   filetypes = { 'dosini', 'confini' },
   maintainers = { '@theHamsta' },
-  experimental = true,
+  tier = 4,
 }
 
 M.configs.janet_simple = {
@@ -728,7 +728,7 @@ M.configs.jsonc = {
     generate_requires_npm = true,
   },
   maintainers = { '@WhyNotHugo' },
-  readme_name = 'JSON with comments',
+  readme_note = 'JSON with comments',
 }
 
 M.configs.jsonnet = {
@@ -801,6 +801,7 @@ M.configs.lua = {
     url = 'https://github.com/MunifTanjim/tree-sitter-lua',
     files = { 'src/parser.c', 'src/scanner.c' },
   },
+  tier = 1,
   maintainers = { '@muniftanjim' },
 }
 
@@ -818,7 +819,7 @@ M.configs.luap = {
     files = { 'src/parser.c' },
   },
   maintainers = { '@amaanq' },
-  readme_name = 'lua patterns',
+  readme_note = 'Lua patterns',
 }
 
 M.configs.luau = {
@@ -854,8 +855,7 @@ M.configs.markdown = {
   },
   filetype = { 'pandoc', 'quarto', 'rmd' },
   maintainers = { '@MDeiml' },
-  readme_name = 'markdown (basic highlighting)',
-  experimental = true,
+  readme_note = 'basic highlighting',
 }
 
 M.configs.markdown_inline = {
@@ -865,8 +865,7 @@ M.configs.markdown_inline = {
     files = { 'src/parser.c', 'src/scanner.c' },
   },
   maintainers = { '@MDeiml' },
-  readme_name = 'markdown_inline (needed for full highlighting)',
-  experimental = true,
+  readme_note = 'needed for full highlighting',
 }
 
 M.configs.matlab = {
@@ -890,7 +889,7 @@ M.configs.mermaid = {
     url = 'https://github.com/monaqa/tree-sitter-mermaid',
     files = { 'src/parser.c' },
   },
-  experimental = true,
+  tier = 4,
 }
 
 M.configs.meson = {
@@ -907,7 +906,7 @@ M.configs.mlir = {
     files = { 'src/parser.c' },
     requires_generate_from_grammar = true,
   },
-  experimental = true,
+  tier = 4,
   maintainers = { '@artagnon' },
 }
 
@@ -1027,7 +1026,7 @@ M.configs.phpdoc = {
     generate_requires_npm = true,
   },
   maintainers = { '@mikehaertl' },
-  experimental = true,
+  tier = 4,
 }
 
 M.configs.pioasm = {
@@ -1053,8 +1052,8 @@ M.configs.poe_filter = {
   },
   filetype = { 'poefilter' },
   maintainers = { '@ObserverOfTime' },
-  readme_name = 'Path of Exile item filter',
-  experimental = true,
+  readme_note = 'Path of Exile item filter',
+  tier = 4,
 }
 
 M.configs.pony = {
@@ -1095,7 +1094,7 @@ M.configs.pug = {
     files = { 'src/parser.c', 'src/scanner.cc' },
   },
   maintainers = { '@zealot128' },
-  experimental = true,
+  tier = 4,
 }
 
 M.configs.puppet = {
@@ -1145,7 +1144,7 @@ M.configs.query = {
     files = { 'src/parser.c' },
   },
   maintainers = { '@steelsojka' },
-  readme_name = 'Tree-Sitter query language',
+  readme_note = 'Tree-sitter query language',
 }
 
 M.configs.r = {
@@ -1258,7 +1257,7 @@ M.configs.slint = {
     files = { 'src/parser.c' },
   },
   maintainers = { '@jrmoulton' },
-  experimental = true,
+  tier = 4,
 }
 
 M.configs.smali = {
@@ -1427,7 +1426,7 @@ M.configs.todotxt = {
     files = { 'src/parser.c' },
   },
   maintainers = { '@arnarg' },
-  experimental = true,
+  tier = 4,
 }
 
 M.configs.toml = {
@@ -1499,7 +1498,7 @@ M.configs.uxntal = {
   },
   filetype = { 'tal' },
   maintainers = { '@amaanq' },
-  readme_name = 'uxn tal',
+  readme_note = 'uxn tal',
 }
 
 M.configs.v = {
