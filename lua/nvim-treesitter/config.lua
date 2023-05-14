@@ -36,9 +36,14 @@ function M.setup(user_data)
   local ensure_installed = config.ensure_installed
   if #ensure_installed > 0 then
     if config.sync_install then
-      require('nvim-treesitter.install').ensure_installed_sync(ensure_installed)
+      require('nvim-treesitter.install').install({ exclude_configured_parsers = true })(
+        ensure_installed
+      )
     else
-      require('nvim-treesitter.install').ensure_installed(ensure_installed)
+      require('nvim-treesitter.install').install({
+        with_sync = true,
+        exclude_configured_parsers = true,
+      })(ensure_installed)
     end
   end
 end

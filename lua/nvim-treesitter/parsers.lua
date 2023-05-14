@@ -16,19 +16,21 @@
 ---@field tier integer|nil
 ---@field readme_note string|nil
 
-local M = {
-  ---@type ParserInfo[]
-  configs = setmetatable({}, {
-    __newindex = function(table, parsername, parserconfig)
-      rawset(table, parsername, parserconfig)
-      if parserconfig.filetype then
-        for _, ft in pairs(parserconfig.filetype) do
-          vim.treesitter.language.register(parsername, ft)
-        end
+local M = {}
+
+M.tiers = { 'core', 'stable', 'community', 'unstable' }
+
+---@type ParserInfo[]
+M.configs = setmetatable({}, {
+  __newindex = function(table, parsername, parserconfig)
+    rawset(table, parsername, parserconfig)
+    if parserconfig.filetype then
+      for _, ft in pairs(parserconfig.filetype) do
+        vim.treesitter.language.register(parsername, ft)
       end
-    end,
-  }),
-}
+    end
+  end,
+})
 
 M.configs.ada = {
   install_info = {
@@ -1612,17 +1614,22 @@ M.configs.zig = {
 }
 
 -- Get a list of all available parsers
+---@param tier integer? only get parsers of specified tier
 ---@return string[]
-function M.get_available()
+function M.get_available(tier)
   local parsers = vim.tbl_keys(M.configs)
   table.sort(parsers)
-  if vim.fn.executable('tree-sitter') == 1 and vim.fn.executable('node') == 1 then
-    return parsers
-  else
-    return vim.iter.filter(function(p) ---@param p string
+  if tier then
+    parsers = vim.iter.filter(function(p)
+      return M.configs[p].tier == tier
+    end, parsers)
+  end
+  if vim.fn.executable('tree-sitter') == 0 or vim.fn.executable('node') == 0 then
+    parsers = vim.iter.filter(function(p)
       return not M.configs[p].install_info.requires_generate_from_grammar
     end, parsers)
   end
+  return parsers
 end
 
 return M

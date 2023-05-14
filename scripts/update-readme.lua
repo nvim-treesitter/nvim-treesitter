@@ -14,7 +14,7 @@ table.sort(sorted_parsers, function(a, b)
   return a.name < b.name
 end)
 
-local tiers = { 'core', 'stable', 'community', 'unstable' }
+local tiers = require('nvim-treesitter.parsers').tiers
 
 local generated_text = [[
 Language | Tier | Queries | CLI | NPM | Maintainer

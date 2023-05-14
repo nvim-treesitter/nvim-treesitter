@@ -465,12 +465,6 @@ local function install_lang(
   run_install(cache_dir, install_dir, lang, install_info, with_sync, generate_from_grammar)
 end
 
-local function difference(t1, t2)
-  return vim.iter.filter(function(v)
-    return not vim.list_contains(t2, v)
-  end, t1)
-end
-
 -- Copy bundled queries for {lang} into install directory (on rtp)
 ---@param lang string
 local function sync_queries(lang)
@@ -514,11 +508,21 @@ function M.install(options)
       ask = false
     else
       languages = vim.tbl_flatten({ ... })
+      for i, tier in ipairs(parsers.tiers) do
+        if vim.list_contains(languages, tier) then
+          languages = vim.iter.filter(function(l)
+            return l ~= tier
+          end, languages)
+          vim.list_extend(languages, parsers.get_available(i))
+        end
+      end
       ask = ask_reinstall
     end
 
     if exclude_configured_parsers then
-      languages = difference(languages, config.get_ignored_parser_installs())
+      languages = vim.iter.filter(function(v)
+        return not vim.list_contains(config.get_ignored_parser_installs(), v)
+      end, languages)
     end
 
     for _, lang in ipairs(languages) do
