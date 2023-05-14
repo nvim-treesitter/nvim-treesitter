@@ -123,30 +123,20 @@ function M.check()
   -- Parser installation checks
   local parser_installation = { 'Parser/Features' .. string.rep(' ', 9) .. 'H L F I J' }
   for _, parser_name in pairs(install.installed_parsers()) do
-    local installed = #vim.api.nvim_get_runtime_file('parser/' .. parser_name .. '.so', false)
-
-    -- Only append information about installed parsers
-    if installed >= 1 then
-      local multiple_parsers = installed > 1 and '+' or ''
-      local out = '  - '
-        .. parser_name
-        .. multiple_parsers
-        .. string.rep(' ', 20 - (#parser_name + #multiple_parsers))
-      for _, query_group in pairs(M.bundled_queries) do
-        local status, err = query_status(parser_name, query_group)
-        out = out .. status .. ' '
-        if err then
-          table.insert(error_collection, { parser_name, query_group, err })
-        end
+    local out = '  - ' .. parser_name .. string.rep(' ', 20 - #parser_name)
+    for _, query_group in pairs(M.bundled_queries) do
+      local status, err = query_status(parser_name, query_group)
+      out = out .. status .. ' '
+      if err then
+        table.insert(error_collection, { parser_name, query_group, err })
       end
-      table.insert(parser_installation, vim.fn.trim(out, ' ', 2))
     end
+    table.insert(parser_installation, vim.fn.trim(out, ' ', 2))
   end
   local legend = [[
 
-  Legend: H[ighlight], L[ocals], F[olds], I[ndents], In[j]ections
-         +) multiple parsers found, only one will be used
-         x) errors found in the query, try to run :TSUpdate {lang}]]
+  Legend: H[ighlight], L[ocals], F[olds], I[ndents], In[J]ections
+          x) errors found in the query, try to run :TSUpdate {lang}]]
   table.insert(parser_installation, legend)
   -- Finally call the report function
   vim.health.start(table.concat(parser_installation, '\n'))

@@ -22,8 +22,8 @@ M.ts_generate_args = nil
 local started_commands = 0
 local finished_commands = 0
 local failed_commands = 0
-local complete_std_output = {}
-local complete_error_output = {}
+local stdout_output = {}
+local stderr_output = {}
 
 local function reset_progress_counter()
   if started_commands ~= finished_commands then
@@ -32,8 +32,8 @@ local function reset_progress_counter()
   started_commands = 0
   finished_commands = 0
   failed_commands = 0
-  complete_std_output = {}
-  complete_error_output = {}
+  stdout_output = {}
+  stderr_output = {}
 end
 
 local function get_job_status()
@@ -73,10 +73,6 @@ local function load_lockfile()
     or {}
 end
 
-local function is_ignored_parser(lang)
-  return vim.tbl_contains(config.get_ignored_parser_installs(), lang)
-end
-
 ---@param lang string
 ---@return string|nil
 local function get_revision(lang)
@@ -103,34 +99,15 @@ local function get_installed_revision(lang)
   end
 end
 
--- Clean path for use in a prefix comparison
----@param input string
----@return string
-local function clean_path(input)
-  local pth = vim.fn.fnamemodify(input, ':p')
-  if vim.fn.has('win32') == 1 then
-    pth = pth:gsub('/', '\\')
-  end
-  return pth
-end
-
 -- Checks if parser is installed with nvim-treesitter
 ---@param lang string
 ---@return boolean
 local function is_installed(lang)
-  local matched_parsers = api.nvim_get_runtime_file('parser/' .. lang .. '.so', true) or {}
-  local install_dir = config.get_install_dir('parser')
-  if not install_dir then
-    return false
-  end
-  install_dir = clean_path(install_dir)
-  for _, path in ipairs(matched_parsers) do
-    local abspath = clean_path(path)
-    if vim.startswith(abspath, install_dir) then
-      return true
-    end
-  end
-  return false
+  return vim.list_contains(M.installed_parsers(), lang)
+end
+
+local function is_ignored(lang)
+  return vim.list_contains(config.get_ignore_install(), lang)
 end
 
 ---@param lang string
@@ -145,20 +122,6 @@ local function outdated_parsers()
   return vim.tbl_filter(function(lang) ---@param lang string
     return is_installed(lang) and needs_update(lang)
   end, M.installed_parsers())
-end
-
----@param handle userdata
----@param is_stderr boolean
-local function onread(handle, is_stderr)
-  return function(_, data)
-    if data then
-      if is_stderr then
-        complete_error_output[handle] = (complete_error_output[handle] or '') .. data
-      else
-        complete_std_output[handle] = (complete_std_output[handle] or '') .. data
-      end
-    end
-  end
 end
 
 function M.iter_cmd(cmd_list, i, lang, success_message)
@@ -212,11 +175,11 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
         if code ~= 0 then
           failed_commands = failed_commands + 1
           finished_commands = finished_commands + 1
-          if complete_std_output[handle] and complete_std_output[handle] ~= '' then
-            print(complete_std_output[handle])
+          if stdout_output[handle] and stdout_output[handle] ~= '' then
+            print(stdout_output[handle])
           end
 
-          local err_msg = complete_error_output[handle] or ''
+          local err_msg = stderr_output[handle] or ''
           api.nvim_err_writeln(
             'nvim-treesitter['
               .. lang
@@ -230,8 +193,16 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
         M.iter_cmd(cmd_list, i + 1, lang, success_message)
       end)
     )
-    luv.read_start(stdout, onread(handle, false))
-    luv.read_start(stderr, onread(handle, true))
+    luv.read_start(stdout, function(_, data)
+      if data then
+        stdout_output[handle] = (stdout_output[handle] or '') .. data
+      end
+    end)
+    luv.read_start(stderr, function(_, data)
+      if data then
+        stderr_output[handle] = (stderr_output[handle] or '') .. data
+      end
+    end)
   end
 end
 
@@ -521,7 +492,7 @@ function M.install(options)
 
     if exclude_configured_parsers then
       languages = vim.iter.filter(function(v)
-        return not vim.list_contains(config.get_ignored_parser_installs(), v)
+        return not is_ignored(v)
       end, languages)
     end
 
@@ -538,7 +509,7 @@ function M.setup_auto_install()
     callback = function(args)
       local ft = vim.bo[args.buffer].filetype
       local lang = vim.treesitter.language.get_lang(ft) or ft
-      if parsers.configs[lang] and not is_installed(lang) and not is_ignored_parser(lang) then
+      if parsers.configs[lang] and not is_installed(lang) and not is_ignored(lang) then
         M.install()({ lang })
       end
     end,
@@ -671,9 +642,6 @@ function M.write_lockfile(verbose, skip_langs)
     utils.join_path(utils.get_package_path(), 'lockfile.json')
   )
 end
-
-M.ensure_installed = M.install({ exclude_configured_parsers = true })
-M.ensure_installed_sync = M.install({ with_sync = true, exclude_configured_parsers = true })
 
 ---@return string[]
 function M.installed_parsers()

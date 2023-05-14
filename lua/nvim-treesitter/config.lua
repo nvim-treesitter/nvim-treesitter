@@ -4,7 +4,7 @@ local M = {}
 
 ---@class TSConfig
 ---@field sync_install boolean
----@field ensure_installed string[]|string
+---@field ensure_install string[]|string
 ---@field ignore_install string[]
 ---@field auto_install boolean
 ---@field install_dir string|nil
@@ -12,8 +12,8 @@ local M = {}
 ---@type TSConfig
 local config = {
   sync_install = false,
-  ensure_installed = {},
   auto_install = false,
+  ensure_install = {},
   ignore_install = {},
   install_dir = utils.join_path(vim.fn.stdpath('data'), 'site'),
 }
@@ -33,17 +33,17 @@ function M.setup(user_data)
     require('nvim-treesitter.install').setup_auto_install()
   end
 
-  local ensure_installed = config.ensure_installed
-  if #ensure_installed > 0 then
+  local ensure_install = config.ensure_install
+  if #ensure_install > 0 then
     if config.sync_install then
       require('nvim-treesitter.install').install({ exclude_configured_parsers = true })(
-        ensure_installed
+        ensure_install
       )
     else
       require('nvim-treesitter.install').install({
         with_sync = true,
         exclude_configured_parsers = true,
-      })(ensure_installed)
+      })(ensure_install)
     end
   end
 end
@@ -64,15 +64,18 @@ function M.get_install_dir(dir_name)
   return dir
 end
 
-function M.get_ignored_parser_installs()
+function M.get_ignore_install()
+  if type(config.ignore_install) == 'string' then
+    return { config.ignore_install }
+  end
   return config.ignore_install or {}
 end
 
-function M.get_ensure_installed_parsers()
-  if type(config.ensure_installed) == 'string' then
-    return { config.ensure_installed }
+function M.get_ensure_install()
+  if type(config.ensure_install) == 'string' then
+    return { config.ensure_install }
   end
-  return config.ensure_installed or {}
+  return config.ensure_install or {}
 end
 
 return M
