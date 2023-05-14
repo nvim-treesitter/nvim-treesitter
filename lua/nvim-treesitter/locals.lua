@@ -1,6 +1,6 @@
 -- Functions to handle locals
 -- Locals are a generalization of definition and scopes
--- its the way nvim-treesitter uses to "understand" the code
+-- it's the way nvim-treesitter uses to "understand" the code
 
 local query = require('nvim-treesitter.query')
 local ts_utils = require('nvim-treesitter.ts_utils')
@@ -397,16 +397,15 @@ end
 ---@param bufnr integer
 ---@param pred string[]
 ---@return boolean|nil
-query.add_predicate('is?', function(match, _, bufnr, pred)
+ts.query.add_predicate('is?', function(match, _, bufnr, pred)
   local node = match[pred[2]]
-  local types = { unpack(pred, 3) }
-
   if not node then
     return true
   end
 
   local _, _, kind = M.find_definition(node, bufnr)
 
+  local types = { unpack(pred, 3) }
   return vim.tbl_contains(types, kind)
 end)
 
