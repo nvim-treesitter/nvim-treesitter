@@ -10,9 +10,8 @@ local function cmdpath(p)
   if vim.opt.shellslash:get() then
     local r = p:gsub('/', '\\')
     return r
-  else
-    return p
   end
+  return p
 end
 
 local M = {}
@@ -115,7 +114,7 @@ function M.select_compiler_args(repo, compiler)
       repo.files,
       '-Os',
     }
-    if vim.fn.has('mac') == 1 then
+    if vim.loop.os_uname().sysname == 'Darwin' then
       table.insert(args, '-bundle')
     else
       table.insert(args, '-shared')

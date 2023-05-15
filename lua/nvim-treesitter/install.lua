@@ -14,7 +14,7 @@ local M = {}
 ---@type table<string, LockfileInfo>
 local lockfile = {}
 
-M.compilers = { vim.fn.getenv('CC'), 'cc', 'gcc', 'clang', 'cl', 'zig' }
+M.compilers = { uv.os_getenv('CC'), 'cc', 'gcc', 'clang', 'cl', 'zig' }
 M.prefer_git = uv.os_uname().sysname == 'Windows_NT'
 M.command_extra_args = {}
 M.ts_generate_args = nil
@@ -559,7 +559,7 @@ end
 
 function M.uninstall(...)
   reset_progress_counter()
-  if vim.tbl_contains({ 'all' }, ...) then
+  if vim.list_contains({ 'all' }, ...) then
     local installed = M.installed_parsers()
     M.uninstall(installed)
   elseif ... then
@@ -568,7 +568,7 @@ function M.uninstall(...)
     ---@type string[]
     local languages = vim.tbl_flatten({ ... })
     for _, lang in ipairs(languages) do
-      if not vim.tbl_contains(M.installed_parsers(), lang) then
+      if not vim.list_contains(M.installed_parsers(), lang) then
         vim.notify(
           'Parser for ' .. lang .. ' is is not managed by nvim-treesitter.',
           vim.log.levels.ERROR
@@ -591,7 +591,7 @@ function M.uninstall(...)
   end
 end
 
-function M.write_lockfile(verbose, skip_langs)
+function M.write_lockfile(skip_langs)
   local sorted_parsers = {} ---@type Parser[]
   -- Load previous lockfile
   load_lockfile()
@@ -608,7 +608,7 @@ function M.write_lockfile(verbose, skip_langs)
   end)
 
   for _, v in ipairs(sorted_parsers) do
-    if not vim.tbl_contains(skip_langs, v.name) then
+    if not vim.list_contains(skip_langs, v.name) then
       -- I'm sure this can be done in aync way with iter_cmd
       local sha ---@type string
       if v.parser.install_info.branch then
@@ -626,17 +626,13 @@ function M.write_lockfile(verbose, skip_langs)
           vim.split(vim.fn.systemlist('git ls-remote ' .. v.parser.install_info.url)[1], '\t')[1]
       end
       lockfile[v.name] = { revision = sha }
-      if verbose then
-        print(v.name .. ': ' .. sha)
-      end
+      print(v.name .. ': ' .. sha)
     else
       print('Skipping ' .. v.name)
     end
   end
 
-  if verbose then
-    print(vim.inspect(lockfile))
-  end
+  print(vim.inspect(lockfile))
   vim.fn.writefile(
     vim.fn.split(vim.fn.json_encode(lockfile), '\n'),
     utils.join_path(utils.get_package_path(), 'lockfile.json')
@@ -673,7 +669,7 @@ function M.info()
   for _, lang in pairs(parser_list) do
     local parser = (lang .. string.rep(' ', max_len - #lang + 1))
     local output
-    if vim.tbl_contains(installed, lang) then
+    if vim.list_contains(installed, lang) then
       output = { parser .. '[✓] installed', 'DiagnosticOk' }
     elseif #api.nvim_get_runtime_file('parser/' .. lang .. '.*', true) > 0 then
       output = { parser .. '[·] not installed (but available from runtimepath)', 'DiagnosticInfo' }

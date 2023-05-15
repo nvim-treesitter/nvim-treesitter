@@ -109,7 +109,7 @@ for k, v in pairs(require('nvim-treesitter.parsers').configs) do
     if
       vim.env.CI
       and not v.install_info.requires_generate_from_grammar
-      and not vim.tbl_contains(allowed_to_fail, k)
+      and not vim.list_contains(allowed_to_fail, k)
     then
       io_print('Error: parser for ' .. k .. ' is not installed')
       vim.cmd('cq')

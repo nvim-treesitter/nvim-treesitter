@@ -50,7 +50,7 @@ query.add_predicate('has-type?', function(match, _, _, pred)
   end
 
   local types = { unpack(pred, 3) }
-  return vim.tbl_contains(types, node:type())
+  return vim.list_contains(types, node:type())
 end)
 
 -- register custom directives
