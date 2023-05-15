@@ -14,10 +14,6 @@
   (keyword_group_concat)
 ] @function.call
 
-(count
-  name: (keyword_count) @function.call
-  parameter: [(field)]? @parameter)
-
 (table_reference
   name: (identifier) @type)
 
