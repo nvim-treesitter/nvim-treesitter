@@ -1,5 +1,7 @@
 local utils = require('nvim-treesitter.utils')
 
+local iswin = vim.loop.os_uname().sysname == 'Windows_NT'
+
 -- Convert path for cmd.exe on Windows.
 -- This is needed when vim.opt.shellslash is in use.
 ---@param p string
@@ -21,7 +23,7 @@ local M = {}
 ---@param info_msg string
 ---@return table
 function M.select_mkdir_cmd(directory, cwd, info_msg)
-  if vim.fn.has('win32') == 1 then
+  if iswin then
     return {
       cmd = 'cmd',
       opts = {
@@ -50,7 +52,7 @@ end
 ---@param recursive boolean|nil
 ---@return table
 function M.select_rm_file_cmd(file, info_msg, recursive)
-  if vim.fn.has('win32') == 1 then
+  if iswin then
     return {
       cmd = 'cmd',
       opts = {
@@ -126,7 +128,7 @@ function M.select_compiler_args(repo, compiler)
     then
       table.insert(args, '-lstdc++')
     end
-    if vim.fn.has('win32') == 0 then
+    if not iswin then
       table.insert(args, '-fPIC')
     end
     return args
@@ -144,7 +146,7 @@ function M.select_compile_command(repo, cc, compile_location)
     string.match(cc, 'cl$')
     or string.match(cc, 'cl.exe$')
     or not repo.use_makefile
-    or vim.fn.has('win32') == 1
+    or iswin
     or not make
   then
     return {
@@ -179,7 +181,7 @@ end
 ---@param project_name string
 ---@return Command
 function M.select_install_rm_cmd(cache_dir, project_name)
-  if vim.fn.has('win32') == 1 then
+  if iswin then
     local dir = cache_dir .. '\\' .. project_name
     return {
       cmd = 'cmd',
@@ -202,7 +204,7 @@ end
 ---@param to string
 ---@return Command
 function M.select_cp_cmd(from, to)
-  if vim.fn.has('win32') == 1 then
+  if iswin then
     return {
       cmd = 'cmd',
       opts = {
@@ -225,7 +227,7 @@ end
 ---@param cwd string
 ---@return Command
 function M.select_mv_cmd(from, to, cwd)
-  if vim.fn.has('win32') == 1 then
+  if iswin then
     return {
       cmd = 'cmd',
       opts = {
@@ -352,7 +354,7 @@ end
 ---@param command string
 ---@return string command
 function M.make_directory_change_for_command(dir, command)
-  if vim.fn.has('win32') == 1 then
+  if iswin then
     if string.find(vim.o.shell, 'cmd') ~= nil then
       return string.format('pushd %s & %s & popd', cmdpath(dir), command)
     else

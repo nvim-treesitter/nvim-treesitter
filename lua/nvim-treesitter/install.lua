@@ -1,5 +1,5 @@
 local api = vim.api
-local luv = vim.loop
+local uv = vim.loop
 
 local utils = require('nvim-treesitter.utils')
 local parsers = require('nvim-treesitter.parsers')
@@ -15,7 +15,7 @@ local M = {}
 local lockfile = {}
 
 M.compilers = { vim.fn.getenv('CC'), 'cc', 'gcc', 'clang', 'cl', 'zig' }
-M.prefer_git = vim.fn.has('win32') == 1
+M.prefer_git = uv.os_uname().sysname == 'Windows_NT'
 M.command_extra_args = {}
 M.ts_generate_args = nil
 
@@ -157,11 +157,11 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
     end
   else
     local handle
-    local stdout = luv.new_pipe(false)
-    local stderr = luv.new_pipe(false)
+    local stdout = uv.new_pipe(false)
+    local stderr = uv.new_pipe(false)
     attr.opts.stdio = { nil, stdout, stderr }
     ---@type userdata
-    handle = luv.spawn(
+    handle = uv.spawn(
       attr.cmd,
       attr.opts,
       vim.schedule_wrap(function(code)
@@ -193,12 +193,12 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
         M.iter_cmd(cmd_list, i + 1, lang, success_message)
       end)
     )
-    luv.read_start(stdout, function(_, data)
+    uv.read_start(stdout, function(_, data)
       if data then
         stdout_output[handle] = (stdout_output[handle] or '') .. data
       end
     end)
-    luv.read_start(stderr, function(_, data)
+    uv.read_start(stderr, function(_, data)
       if data then
         stderr_output[handle] = (stderr_output[handle] or '') .. data
       end
@@ -263,7 +263,7 @@ local function run_install(cache_dir, install_dir, lang, repo, with_sync, genera
   local path_sep = utils.get_path_sep()
 
   local project_name = 'tree-sitter-' .. lang
-  local maybe_local_path = vim.fn.expand(repo.url)
+  local maybe_local_path = vim.fs.normalize(repo.url)
   local from_local_path = vim.fn.isdirectory(maybe_local_path) == 1
   if from_local_path then
     repo.url = maybe_local_path

@@ -3,7 +3,8 @@ local M = {}
 -- Returns the system-specific path separator.
 ---@return string
 function M.get_path_sep()
-  return (vim.fn.has('win32') == 1 and not vim.opt.shellslash:get()) and '\\' or '/'
+  return (vim.loop.os_uname().sysname == 'Windows_NT' and not vim.opt.shellslash:get()) and '\\'
+    or '/'
 end
 
 function M.join_path(...)
