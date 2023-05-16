@@ -58,7 +58,6 @@ For more detailed information on setting these up, see ["Advanced setup"](#advan
 
 - [Quickstart](#quickstart)
 - [Supported languages](#supported-languages)
-- [Available modules](#available-modules)
 - [Advanced setup](#advanced-setup)
 - [Extra features](#extra-features)
 - [Troubleshooting](#troubleshooting)
@@ -102,15 +101,10 @@ Parsers not on this list can be added manually by following the steps described 
 
 To make sure a parser is at the latest compatible version (as specified in `nvim-treesitter`'s `lockfile.json`), use `:TSUpdate {language}`. To update all parsers unconditionally, use `:TSUpdate all` or just `:TSUpdate`.
 
-## Modules
-
-Each module provides a distinct tree-sitter-based feature such as [highlighting](#highlight), [indentation](#indentation), or [folding](#folding); see [`:h nvim-treesitter-modules`](doc/nvim-treesitter.txt) or ["Available modules"](#available-modules) below for a list of modules and their options.
-
-Following examples assume that you are configuring neovim with lua. If you are using vimscript, see `:h lua-heredoc`.
-All modules are disabled by default and need to be activated explicitly in your `init.lua`, e.g., via
+## Setup
 
 ```lua
-require'nvim-treesitter.configs'.setup {
+require'nvim-treesitter'.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
   ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
 
@@ -124,43 +118,9 @@ require'nvim-treesitter.configs'.setup {
   -- List of parsers to ignore installing (for "all")
   ignore_install = { "javascript" },
 
-  ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
-  -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
-
-  highlight = {
-    enable = true,
-
-    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-    -- the name of the parser)
-    -- list of language that will be disabled
-    disable = { "c", "rust" },
-    -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
-    disable = function(lang, buf)
-        local max_filesize = 100 * 1024 -- 100 KB
-        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-        if ok and stats and stats.size > max_filesize then
-            return true
-        end
-    end,
-
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
+  -- If you need to change the installation directory of the parsers (see -> Advanced Setup)
+  install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
 }
-```
-
-Each module can also be enabled or disabled interactively through the following commands:
-
-```vim
-:TSBufEnable {module} " enable module on current buffer
-:TSBufDisable {module} " disable module on current buffer
-:TSEnable {module} [{ft}] " enable module on every buffer. If filetype is specified, enable only for this filetype.
-:TSDisable {module} [{ft}] " disable module on every buffer. If filetype is specified, disable only for this filetype.
-:TSModuleInfo [{module}] " list information about modules state for each filetype
 ```
 
 Check [`:h nvim-treesitter-commands`](doc/nvim-treesitter.txt) for a list of all available commands.
@@ -176,95 +136,12 @@ We are looking for maintainers to add more parsers and to write query files for 
 
 For related information on the supported languages, including related plugins, see [this wiki page](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Supported-Languages-Information).
 
-# Available modules
-
-Modules provide the top-level features of `nvim-treesitter`.
-The following is a list of modules included in `nvim-treesitter` and their configuration via `init.lua` (where multiple modules can be combined in a single call to `setup`).
-Note that not all modules work for all languages (depending on the queries available for them).
-Additional modules can be provided as [external plugins](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Extra-modules-and-plugins).
-
-#### Highlight
-
-Consistent syntax highlighting.
-
-```lua
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-}
-```
-
-To customize the syntax highlighting of a capture, simply define or link a highlight group of the same name:
-
-```lua
--- Highlight the @foo.bar capture group with the "Identifier" highlight group
-vim.api.nvim_set_hl(0, "@foo.bar", { link = "Identifier" })
-```
-
-For a language-specific highlight, append the name of the language:
-
-```lua
--- Highlight @foo.bar as "Identifier" only in Lua files
-vim.api.nvim_set_hl(0, "@foo.bar.lua", { link = "Identifier" })
-```
-
-See `:h treesitter-highlight-groups` for details.
-
-#### Incremental selection
-
-Incremental selection based on the named nodes from the grammar.
-
-```lua
-require'nvim-treesitter.configs'.setup {
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "gnn", -- set to `false` to disable one of the mappings
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
-    },
-  },
-}
-```
-
-#### Indentation
-
-Indentation based on treesitter for the `=` operator.
-**NOTE: This is an experimental feature**.
-
-```lua
-require'nvim-treesitter.configs'.setup {
-  indent = {
-    enable = true
-  }
-}
-```
-
-#### Folding
-
-Tree-sitter based folding. _(Technically not a module because it's per windows and not per buffer.)_
-
-```vim
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-set nofoldenable                     " Disable folding at startup.
-```
-
-This will respect your `foldminlines` and `foldnestmax` settings.
-
 # Advanced setup
 
 ## Changing the parser install directory
 
 If you want to install the parsers to a custom directory you can specify this
-directory with `parser_install_dir` option in that is passed to `setup`.
+directory with `install_dir` option in that is passed to `setup`.
 `nvim-treesitter` will then install the parser files into this directory.
 
 This directory must be writeable and must be explicitly added to the
@@ -273,8 +150,8 @@ This directory must be writeable and must be explicitly added to the
 ```lua
   vim.opt.runtimepath:append("/some/path/to/store/parsers")
 
-  require'nvim-treesitter.configs'.setup {
-    parser_install_dir = "/some/path/to/store/parsers",
+  require'nvim-treesitter'.setup {
+    install_dir = "/some/path/to/store/parsers",
 
     ...
 
@@ -288,7 +165,7 @@ the default directories will be ignored.
 Bear in mind that any parser installed into a parser folder on the runtime path
 will still be considered installed. (For example if
 "~/.local/share/nvim/site/parser/c.so" exists then the "c" parser will be
-considered installed, even though it is not in `parser_install_dir`)
+considered installed, even though it is not in `install_dir`)
 
 The default paths are:
 
@@ -304,7 +181,7 @@ If you have a parser that is not on the list of supported languages (either as a
 3. Add the following snippet to your `init.lua`:
 
 ```lua
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+local parser_config = require "nvim-treesitter.parsers".configs
 parser_config.zimbu = {
   install_info = {
     url = "~/projects/tree-sitter-zimbu", -- local path or git repo
@@ -333,7 +210,6 @@ Once the parser is installed, you can update it (from the latest revision of the
 
 Note that neither `:TSInstall` nor `:TSInstallFromGrammar` copy query files from the grammar repository.
 If you want your installed grammar to be useful, you must manually [add query files](#adding-queries) to your local nvim-treesitter installation.
-Note also that module functionality is only triggered if your language's filetype is correctly identified.
 If Neovim does not detect your language's filetype by default, you can use [Neovim's `vim.filetype.add()`](<https://neovim.io/doc/user/lua.html#vim.filetype.add()>) to add a custom detection rule.
 
 If you use a git repository for your parser and want to use a specific version, you can set the `revision` key
@@ -344,7 +220,7 @@ in the `install_info` table for you parser config.
 Queries are what `nvim-treesitter` uses to extract information from the syntax tree;
 they are located in the `queries/{language}/*` runtime directories (see `:h rtp`),
 like the `queries` folder of this plugin, e.g. `queries/{language}/{locals,highlights,textobjects}.scm`.
-Other modules may require additional queries such as `folding.scm`. You can find a
+Other features may require additional queries such as `folding.scm`. You can find a
 list of all supported capture names in [CONTRIBUTING.md](https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md#parser-configurations).
 
 All queries found in the runtime directories will be combined.
@@ -359,41 +235,6 @@ require("vim.treesitter.query").set_query("c", "injections", "(comment) @comment
 ```
 
 Note: when using `set_query`, all queries in the runtime directories will be ignored.
-
-## Adding modules
-
-If you wish you write your own module, you need to support
-
-- tree-sitter language detection support;
-- attaching and detaching to buffers;
-- all nvim-treesitter commands.
-
-At the top level, you can use the `define_modules` function to define one or more modules or module groups:
-
-```lua
-require'nvim-treesitter'.define_modules {
-  my_cool_plugin = {
-    attach = function(bufnr, lang)
-      -- Do cool stuff here
-    end,
-    detach = function(bufnr)
-      -- Undo cool stuff here
-    end,
-    is_supported = function(lang)
-      -- Check if the language is supported
-    end
-  }
-}
-```
-
-with the following properties:
-
-- `module_path` specifies a require path (string) that exports a module with an `attach` and `detach` function. This is not required if the functions are on this definition.
-- `enable` determines if the module is enabled by default. This is usually overridden by the user.
-- `disable` takes a list of languages that this module is disabled for. This is usually overridden by the user.
-- `is_supported` takes a function that takes a language and determines if this module supports that language.
-- `attach` takes a function that attaches to a buffer. This is required if `module_path` is not provided.
-- `detach` takes a function that detaches from a buffer. This is required if `module_path` is not provided.
 
 # Extra features
 
@@ -434,10 +275,6 @@ You can also quickly & temporarily set the filetype for a single buffer with the
 If everything is okay, then it might be an actual error.
 In that case, feel free to [open an issue here](https://github.com/nvim-treesitter/nvim-treesitter/issues/new/choose).
 
-#### I get `module 'vim.treesitter.query' not found`
-
-Make sure you have the latest version of Neovim.
-
 #### I get `Error detected while processing .../plugin/nvim-treesitter.vim` every time I open Neovim
 
 This is probably due to a change in a parser's grammar or its queries.
@@ -452,26 +289,9 @@ or due to an outdated parser.
 
 - Make sure you have the parsers up to date with `:TSUpdate`
 - Make sure you don't have more than one `parser` runtime directory.
-  You can execute this command `:echo nvim_get_runtime_file('parser', v:true)` to find all runtime directories.
+  You can execute this command `:= vim.api.nvim_get_runtime_file('parser', true)` to find all runtime directories.
   If you get more than one path, remove the ones that are outside this plugin (`nvim-treesitter` directory),
   so the correct version of the parser is used.
-
-#### I experience weird highlighting issues similar to [#78](https://github.com/nvim-treesitter/nvim-treesitter/issues/78)
-
-This is a well known issue, which arises when the tree and the buffer have gotten out of sync.
-As this is an upstream issue, we don't have any definite fix.
-To get around this, you can force reparsing the buffer with
-
-```vim
-:write | edit | TSBufEnable highlight
-```
-
-This will save, restore and enable highlighting for the current buffer.
-
-#### I experience bugs when using `nvim-treesitter`'s `foldexpr` similar to [#194](https://github.com/nvim-treesitter/nvim-treesitter/issues/194)
-
-This might happen, and is known to happen, with `vim-clap`.
-To avoid these kind of errors, please use `setlocal` instead of `set` for the respective filetypes.
 
 #### I run into errors like `module 'nvim-treesitter.configs' not found` at startup
 
@@ -507,11 +327,11 @@ require("nvim-treesitter.install").prefer_git = true
 In your Lua config:
 
 ```lua
-for _, config in pairs(require("nvim-treesitter.parsers").get_parser_configs()) do
+for _, config in pairs(require("nvim-treesitter.parsers").configs) do
   config.install_info.url = config.install_info.url:gsub("https://github.com/", "something else")
 end
 
-require'nvim-treesitter.configs'.setup {
+require'nvim-treesitter'.setup {
     --
     --
 }
