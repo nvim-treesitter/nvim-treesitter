@@ -33,17 +33,23 @@ function M.setup(user_data)
     require('nvim-treesitter.install').setup_auto_install()
   end
 
-  local ensure_install = config.ensure_install
-  if #ensure_install > 0 then
+  local to_install = config.ensure_install
+
+  if #to_install > 0 then
+    local installed = require('nvim-treesitter.install').installed_parsers()
+    to_install = vim.iter.filter(function(v)
+      return not vim.list_contains(installed, v)
+    end, to_install)
+  end
+
+  if #to_install > 0 then
     if config.sync_install then
-      require('nvim-treesitter.install').install({ exclude_configured_parsers = true })(
-        ensure_install
-      )
+      require('nvim-treesitter.install').install({ exclude_configured_parsers = true })(to_install)
     else
       require('nvim-treesitter.install').install({
         with_sync = true,
         exclude_configured_parsers = true,
-      })(ensure_install)
+      })(to_install)
     end
   end
 end
