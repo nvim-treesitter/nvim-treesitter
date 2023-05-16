@@ -642,15 +642,13 @@ end
 ---@return string[]
 function M.installed_parsers()
   local install_dir = require('nvim-treesitter.config').get_install_dir('parser')
-  local installed = {}
-  for _, lang in pairs(parsers.get_available()) do
-    local paths = api.nvim_get_runtime_file('parser/' .. lang .. '.*', true)
-    if vim.iter(paths):any(function(p)
-      return p:find(install_dir)
-    end) then
-      installed[#installed + 1] = lang
-    end
+
+  local installed = {} --- @type string[]
+  for f in vim.fs.dir(install_dir) do
+    local lang = assert(f:match('(.*)%..*'))
+    installed[#installed + 1] = lang
   end
+
   return installed
 end
 
