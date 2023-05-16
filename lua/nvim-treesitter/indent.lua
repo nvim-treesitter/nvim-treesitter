@@ -1,4 +1,3 @@
-local tsutils = require('nvim-treesitter.ts_utils')
 local ts = vim.treesitter
 
 local M = {}
@@ -77,7 +76,27 @@ local function insert_to_path(object, path, value)
   curr_obj[path[#path]] = value
 end
 
-local get_indents = tsutils.memoize_by_buf_tick(function(bufnr, root, lang)
+---Memoize a function using hash_fn to hash the arguments.
+---@generic F: function
+---@param fn F
+---@param hash_fn fun(...): any
+---@return F
+local function memoize(fn, hash_fn)
+  local cache = setmetatable({}, { __mode = 'kv' }) ---@type table<any,any>
+
+  return function(...)
+    local key = hash_fn(...)
+    if cache[key] == nil then
+      local v = fn(...) ---@type any
+      cache[key] = v ~= nil and v or vim.NIL
+    end
+
+    local v = cache[key]
+    return v ~= vim.NIL and v or nil
+  end
+end
+
+local get_indents = memoize(function(bufnr, root, lang)
   local map = {
     indent = {
       auto = {},
@@ -103,12 +122,9 @@ local get_indents = tsutils.memoize_by_buf_tick(function(bufnr, root, lang)
   end
 
   return map
-end, {
-  -- Memoize by bufnr and lang together.
-  key = function(bufnr, root, lang)
-    return tostring(bufnr) .. root:id() .. '_' .. lang
-  end,
-})
+end, function(bufnr, root, lang)
+  return tostring(bufnr) .. root:id() .. '_' .. lang
+end)
 
 ---@param lnum number (1-indexed)
 function M.get_indent(lnum)

@@ -22,7 +22,7 @@ function M.memoize_by_buf_tick(fn, options)
   options = options or {}
 
   ---@type table<string, {result: any, last_tick: integer}>
-  local cache = setmetatable({}, { __mode = "kv" })
+  local cache = setmetatable({}, { __mode = 'kv' })
   -- TODO(clason): can this be simplified?
   local bufnr_fn = to_func(options.bufnr or function(a)
     return a
