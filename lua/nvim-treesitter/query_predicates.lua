@@ -1,4 +1,8 @@
-local query = require "vim.treesitter.query"
+local query = vim.treesitter.query
+local list_contains = vim.list_contains or vim.tbl_contains
+
+local predicates = query.list_predicates()
+
 
 local html_script_type_languages = {
   ["importmap"] = "json",
@@ -59,41 +63,43 @@ query.add_predicate("nth?", function(match, _pattern, _bufnr, pred)
   return false
 end)
 
----@param match (TSNode|nil)[]
----@param _pattern string
----@param _bufnr integer
----@param pred string[]
----@return boolean|nil
-local function has_ancestor(match, _pattern, _bufnr, pred)
-  if not valid_args(pred[1], pred, 2) then
-    return
-  end
+if not list_contains(predicates, "has-parent?") then
+  ---@param match (TSNode|nil)[]
+  ---@param _pattern string
+  ---@param _bufnr integer
+  ---@param pred string[]
+  ---@return boolean|nil
+  local function has_ancestor(match, _pattern, _bufnr, pred)
+    if not valid_args(pred[1], pred, 2) then
+      return
+    end
 
-  local node = match[pred[2]]
-  local ancestor_types = { unpack(pred, 3) }
-  if not node then
-    return true
-  end
-
-  local just_direct_parent = pred[1]:find("has-parent", 1, true)
-
-  node = node:parent()
-  while node do
-    if vim.tbl_contains(ancestor_types, node:type()) then
+    local node = match[pred[2]]
+    local ancestor_types = { unpack(pred, 3) }
+    if not node then
       return true
     end
-    if just_direct_parent then
-      node = nil
-    else
-      node = node:parent()
+
+    local just_direct_parent = pred[1]:find("has-parent", 1, true)
+
+    node = node:parent()
+    while node do
+      if vim.tbl_contains(ancestor_types, node:type()) then
+        return true
+      end
+      if just_direct_parent then
+        node = nil
+      else
+        node = node:parent()
+      end
     end
+    return false
   end
-  return false
+
+  query.add_predicate("has-ancestor?", has_ancestor)
+
+  query.add_predicate("has-parent?", has_ancestor)
 end
-
-query.add_predicate("has-ancestor?", has_ancestor)
-
-query.add_predicate("has-parent?", has_ancestor)
 
 ---@param match (TSNode|nil)[]
 ---@param _pattern string
