@@ -1,4 +1,3 @@
-local queries = require('nvim-treesitter.query')
 local tsutils = require('nvim-treesitter.ts_utils')
 local ts = vim.treesitter
 
@@ -60,6 +59,24 @@ local function find_delimiter(bufnr, node, delimiter)
   end
 end
 
+-- Given a path (i.e. a List(String)) this functions inserts value at path
+---@param object any
+---@param path string[]
+---@param value any
+local function insert_to_path(object, path, value)
+  local curr_obj = object
+
+  for index = 1, (#path - 1) do
+    if curr_obj[path[index]] == nil then
+      curr_obj[path[index]] = {}
+    end
+
+    curr_obj = curr_obj[path[index]]
+  end
+
+  curr_obj[path[#path]] = value
+end
+
 local get_indents = tsutils.memoize_by_buf_tick(function(bufnr, root, lang)
   local map = {
     indent = {
@@ -74,19 +91,15 @@ local get_indents = tsutils.memoize_by_buf_tick(function(bufnr, root, lang)
     },
   }
 
-  local function split(to_split)
-    local t = {}
-    for str in string.gmatch(to_split, '([^.]+)') do
-      table.insert(t, str)
+  local query = ts.query.get(lang, 'indents')
+  for id, node, metadata in query:iter_captures(root, bufnr) do
+    local path = {}
+    for part in string.gmatch(query.captures[id], '([^.]+)') do
+      path[#path + 1] = part
     end
-    return t
-  end
-
-  for name, node, metadata in queries.iter_captures(bufnr, 'indents', root, lang) do
-    local path = split(name)
     -- node may contain a period so append directly.
-    table.insert(path, node:id())
-    queries.insert_to_path(map, path, metadata or {})
+    path[#path + 1] = node:id()
+    insert_to_path(map, path, metadata or {})
   end
 
   return map
