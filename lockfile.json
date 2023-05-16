@@ -78,7 +78,7 @@
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
   },
   "dart": {
-    "revision": "e22648d689e61d05e25994c1cd939a0eda208695"
+    "revision": "d56cc088de91d5a7ef7ec46b5a5ab4aa3fe82409"
   },
   "devicetree": {
     "revision": "d2cc332aeb814ea40e1e34ed6b9446324b32612a"
@@ -156,7 +156,7 @@
     "revision": "577a075d46ea109905c5cb6179809df88da61ce9"
   },
   "gitcommit": {
-    "revision": "735f02b12d9cdd9a8b90ac4b2dff8cdab6dd1e7b"
+    "revision": "6c14f8b63767cf6264c5c43ec71cc9351420e831"
   },
   "gitignore": {
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
@@ -514,6 +514,9 @@
   },
   "ungrammar": {
     "revision": "debd26fed283d80456ebafa33a06957b0c52e451"
+  },
+  "usd": {
+    "revision": "04816b1fbfe548e1446a9efe8b069f3f6e095504"
   },
   "uxntal": {
     "revision": "14e47600afef0affffcbfbe1543381b1ac8fbc5c"
