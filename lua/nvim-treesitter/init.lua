@@ -5,7 +5,7 @@ function M.setup(...)
 end
 
 function M.indentexpr()
-  return require('nvim-treeesitter.indent').get_indent(vim.v.lnum)
+  return require('nvim-treesitter.indent').get_indent(vim.v.lnum)
 end
 
 return M
