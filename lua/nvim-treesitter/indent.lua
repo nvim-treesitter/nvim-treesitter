@@ -1,5 +1,5 @@
 local ts = vim.treesitter
-local parsers = require "lua.nvim-treesitter.parsers"
+local parsers = require "nvim-treesitter.parsers"
 
 local M = {}
 
