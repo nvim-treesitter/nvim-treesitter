@@ -91,9 +91,9 @@ local function has_ancestor(match, _pattern, _bufnr, pred)
   return false
 end
 
-query.add_predicate("has-ancestor?", has_ancestor)
+query.add_predicate("has-ancestor?", has_ancestor, true)
 
-query.add_predicate("has-parent?", has_ancestor)
+query.add_predicate("has-parent?", has_ancestor, true)
 
 ---@param match (TSNode|nil)[]
 ---@param _pattern string

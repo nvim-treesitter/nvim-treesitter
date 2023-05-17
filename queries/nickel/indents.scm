@@ -1,17 +1,13 @@
 [
-  (meta_map)
-  (map)
-  (imap)
-  (array)
+ (atom (uni_record)) ; for {...}
+ (atom terms: (term)) ; for [...]
 ] @indent.begin
 
 [
   "]"
   "}"
-  ">"
 ] @indent.end @indent.branch
 
 [
-  (ERROR)
   (comment)
 ] @indent.auto

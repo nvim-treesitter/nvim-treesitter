@@ -351,7 +351,7 @@ function M.memoize_by_buf_tick(fn, options)
   options = options or {}
 
   ---@type table<string, {result: any, last_tick: integer}>
-  local cache = {}
+  local cache = setmetatable({}, { __mode = "kv" })
   local bufnr_fn = utils.to_func(options.bufnr or utils.identity)
   local key_fn = utils.to_func(options.key or utils.identity)
 
