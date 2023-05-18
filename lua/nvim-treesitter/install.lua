@@ -25,6 +25,10 @@ local failed_commands = 0
 local stdout_output = {}
 local stderr_output = {}
 
+---
+--- JOB API functions
+---
+
 local function reset_progress_counter()
   if started_commands ~= finished_commands then
     return
@@ -45,83 +49,51 @@ local function get_job_status()
     .. ']'
 end
 
----@param lang string
----@param validate boolean|nil
----@return InstallInfo
-local function get_parser_install_info(lang, validate)
-  local parser_config = parsers.configs[lang]
-
-  if not parser_config then
-    error('Parser not available for language "' .. lang .. '"')
+---@param cmd Command
+---@return string command
+local function get_command(cmd)
+  local options = ''
+  if cmd.opts and cmd.opts.args then
+    if M.command_extra_args[cmd.cmd] then
+      vim.list_extend(cmd.opts.args, M.command_extra_args[cmd.cmd])
+    end
+    for _, opt in ipairs(cmd.opts.args) do
+      options = string.format('%s %s', options, opt)
+    end
   end
 
-  local install_info = parser_config.install_info
-
-  if validate then
-    vim.validate({
-      url = { install_info.url, 'string' },
-      files = { install_info.files, 'table' },
-    })
+  local command = string.format('%s %s', cmd.cmd, options)
+  if cmd.opts and cmd.opts.cwd then
+    command = shell.make_directory_change_for_command(cmd.opts.cwd, command)
   end
-
-  return install_info
+  return command
 end
 
-local function load_lockfile()
-  local filename = utils.join_path(utils.get_package_path(), 'lockfile.json')
-  lockfile = vim.fn.filereadable(filename) == 1 and vim.fn.json_decode(vim.fn.readfile(filename))
-    or {}
-end
-
----@param lang string
----@return string|nil
-local function get_revision(lang)
-  if #lockfile == 0 then
-    load_lockfile()
-  end
-
-  local install_info = get_parser_install_info(lang)
-  if install_info.revision then
-    return install_info.revision
-  end
-
-  if lockfile[lang] then
-    return lockfile[lang].revision
-  end
-end
-
----@param lang string
----@return string|nil
-local function get_installed_revision(lang)
-  local lang_file = utils.join_path(config.get_install_dir('parser-info'), lang .. '.revision')
-  if vim.fn.filereadable(lang_file) == 1 then
-    return vim.fn.readfile(lang_file)[1]
-  end
-end
-
--- Checks if parser is installed with nvim-treesitter
----@param lang string
+---@param cmd_list Command[]
 ---@return boolean
-local function is_installed(lang)
-  return vim.list_contains(config.installed_parsers(), lang)
-end
+local function iter_cmd_sync(cmd_list)
+  for _, cmd in ipairs(cmd_list) do
+    if cmd.info then
+      print(cmd.info)
+    end
 
-local function is_ignored(lang)
-  return vim.list_contains(config.ignored_parsers(), lang)
-end
+    if type(cmd.cmd) == 'function' then
+      cmd.cmd()
+    else
+      local ret = vim.fn.system(get_command(cmd))
+      if vim.v.shell_error ~= 0 then
+        print(ret)
+        api.nvim_err_writeln(
+          (cmd.err and cmd.err .. '\n' or '')
+            .. 'Failed to execute the following command:\n'
+            .. vim.inspect(cmd)
+        )
+        return false
+      end
+    end
+  end
 
----@param lang string
----@return boolean
-local function needs_update(lang)
-  local revision = get_revision(lang)
-  return not revision or revision ~= get_installed_revision(lang)
-end
-
----@return string[]
-local function outdated_parsers()
-  return vim.tbl_filter(function(lang) ---@param lang string
-    return is_installed(lang) and needs_update(lang)
-  end, config.installed_parsers())
+  return true
 end
 
 function M.iter_cmd(cmd_list, i, lang, success_message)
@@ -206,52 +178,114 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
   end
 end
 
----@param cmd Command
----@return string command
-local function get_command(cmd)
-  local options = ''
-  if cmd.opts and cmd.opts.args then
-    if M.command_extra_args[cmd.cmd] then
-      vim.list_extend(cmd.opts.args, M.command_extra_args[cmd.cmd])
-    end
-    for _, opt in ipairs(cmd.opts.args) do
-      options = string.format('%s %s', options, opt)
-    end
+---
+--- PARSER INFO
+---
+
+---@param lang string
+---@param validate boolean|nil
+---@return InstallInfo
+local function get_parser_install_info(lang, validate)
+  local parser_config = parsers.configs[lang]
+
+  if not parser_config then
+    error('Parser not available for language "' .. lang .. '"')
   end
 
-  local command = string.format('%s %s', cmd.cmd, options)
-  if cmd.opts and cmd.opts.cwd then
-    command = shell.make_directory_change_for_command(cmd.opts.cwd, command)
+  local install_info = parser_config.install_info
+
+  if validate then
+    vim.validate({
+      url = { install_info.url, 'string' },
+      files = { install_info.files, 'table' },
+    })
   end
-  return command
+
+  return install_info
 end
 
----@param cmd_list Command[]
+---@param lang string
+---@return string|nil
+local function get_revision(lang)
+  if #lockfile == 0 then
+    local filename = utils.join_path(utils.get_package_path(), 'lockfile.json')
+    lockfile = vim.fn.filereadable(filename) == 1 and vim.fn.json_decode(vim.fn.readfile(filename))
+      or {}
+  end
+
+  local install_info = get_parser_install_info(lang)
+  if install_info.revision then
+    return install_info.revision
+  end
+
+  if lockfile[lang] then
+    return lockfile[lang].revision
+  end
+end
+
+---@param lang string
+---@return string|nil
+local function get_installed_revision(lang)
+  local lang_file = utils.join_path(config.get_install_dir('parser-info'), lang .. '.revision')
+  if vim.fn.filereadable(lang_file) == 1 then
+    return vim.fn.readfile(lang_file)[1]
+  end
+end
+
+-- Checks if parser is installed with nvim-treesitter
+---@param lang string
 ---@return boolean
-local function iter_cmd_sync(cmd_list)
-  for _, cmd in ipairs(cmd_list) do
-    if cmd.info then
-      print(cmd.info)
-    end
+local function is_installed(lang)
+  return vim.list_contains(config.installed_parsers(), lang)
+end
 
-    if type(cmd.cmd) == 'function' then
-      cmd.cmd()
-    else
-      local ret = vim.fn.system(get_command(cmd))
-      if vim.v.shell_error ~= 0 then
-        print(ret)
-        api.nvim_err_writeln(
-          (cmd.err and cmd.err .. '\n' or '')
-            .. 'Failed to execute the following command:\n'
-            .. vim.inspect(cmd)
-        )
-        return false
-      end
+local function is_ignored(lang)
+  return vim.list_contains(config.ignored_parsers(), lang)
+end
+
+---@param lang string
+---@return boolean
+local function needs_update(lang)
+  local revision = get_revision(lang)
+  return not revision or revision ~= get_installed_revision(lang)
+end
+
+---@return string[]
+local function outdated_parsers()
+  return vim.tbl_filter(function(lang) ---@param lang string
+    return is_installed(lang) and needs_update(lang)
+  end, config.installed_parsers())
+end
+
+function M.info()
+  local installed = config.installed_parsers()
+  local parser_list = parsers.get_available()
+  table.sort(parser_list)
+
+  local max_len = 0
+  for _, lang in pairs(parser_list) do
+    if #lang > max_len then
+      max_len = #lang
     end
   end
 
-  return true
+  for _, lang in pairs(parser_list) do
+    local parser = (lang .. string.rep(' ', max_len - #lang + 1))
+    local output
+    if vim.list_contains(installed, lang) then
+      output = { parser .. '[✓] installed', 'DiagnosticOk' }
+    elseif #api.nvim_get_runtime_file('parser/' .. lang .. '.*', true) > 0 then
+      output = { parser .. '[·] not installed (but available from runtimepath)', 'DiagnosticInfo' }
+    else
+      output = { parser .. '[✗] not installed' }
+    end
+    api.nvim_echo({ output }, false, {})
+  end
 end
+
+---
+--- PARSER MANAGEMENT FUNCTIONS
+---
 
 ---@param cache_dir string
 ---@param install_dir string
@@ -574,81 +608,6 @@ function M.uninstall(...)
         }, 1, lang, 'Treesitter parser for ' .. lang .. ' has been uninstalled')
       end
     end
-  end
-end
-
---TODO(clason): move to update-lockfile script?
-function M.write_lockfile(skip_langs)
-  local sorted_parsers = {} ---@type Parser[]
-  -- Load previous lockfile
-  load_lockfile()
-  skip_langs = skip_langs or {}
-
-  for k, v in pairs(parsers.configs) do
-    table.insert(sorted_parsers, { name = k, parser = v })
-  end
-
-  ---@param a Parser
-  ---@param b Parser
-  table.sort(sorted_parsers, function(a, b)
-    return a.name < b.name
-  end)
-
-  for _, v in ipairs(sorted_parsers) do
-    if not vim.list_contains(skip_langs, v.name) then
-      -- I'm sure this can be done in aync way with iter_cmd
-      local sha ---@type string
-      if v.parser.install_info.branch then
-        sha = vim.split(
-          vim.fn.systemlist(
-            'git ls-remote '
-              .. v.parser.install_info.url
-              .. ' | grep refs/heads/'
-              .. v.parser.install_info.branch
-          )[1],
-          '\t'
-        )[1]
-      else
-        sha =
-          vim.split(vim.fn.systemlist('git ls-remote ' .. v.parser.install_info.url)[1], '\t')[1]
-      end
-      lockfile[v.name] = { revision = sha }
-      print(v.name .. ': ' .. sha)
-    else
-      print('Skipping ' .. v.name)
-    end
-  end
-
-  print(vim.inspect(lockfile))
-  vim.fn.writefile(
-    vim.fn.split(vim.fn.json_encode(lockfile), '\n'),
-    utils.join_path(utils.get_package_path(), 'lockfile.json')
-  )
-end
-
-function M.info()
-  local installed = config.installed_parsers()
-  local parser_list = parsers.get_available()
-  table.sort(parser_list)
-
-  local max_len = 0
-  for _, lang in pairs(parser_list) do
-    if #lang > max_len then
-      max_len = #lang
-    end
-  end
-
-  for _, lang in pairs(parser_list) do
-    local parser = (lang .. string.rep(' ', max_len - #lang + 1))
-    local output
-    if vim.list_contains(installed, lang) then
-      output = { parser .. '[✓] installed', 'DiagnosticOk' }
-    elseif #api.nvim_get_runtime_file('parser/' .. lang .. '.*', true) > 0 then
-      output = { parser .. '[·] not installed (but available from runtimepath)', 'DiagnosticInfo' }
-    else
-      output = { parser .. '[✗] not installed' }
-    end
-    api.nvim_echo({ output }, false, {})
   end
 end
 

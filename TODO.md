@@ -8,7 +8,6 @@ This document lists the planned and finished changes in this rewrite towards [Nv
 - [ ] **`parsers.lua`:** modularize?
 - [ ] **`parsers.lua`:** assign tiers
 - [ ] **`install.lua`:** simplify, use Nvim/Luv API as much as possible (@lewis6991)
-- [ ] **`indent.lua`:** replace vim.fn by Nvim API
 - [ ] **`locals.lua`:** move to `nvim-treesitter-refactor`
 - [ ] **update-lockfile:** allow specifying version in addition to commit hash (for Tier 1)
 - [ ] **tests/scripts:** test, fix

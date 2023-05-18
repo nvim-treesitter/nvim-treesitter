@@ -1,4 +1,4 @@
--- Execute as `nvim -l ./scripts/update-readme.lua`
+-- Execute as `nvim --clean -l ./scripts/update-readme.lua`
 vim.opt.runtimepath:append('.')
 
 ---@class Parser

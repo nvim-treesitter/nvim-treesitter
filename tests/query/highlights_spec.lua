@@ -75,7 +75,7 @@ local function check_assertions(file)
           end
         end
       end
-    end, true)
+    end)
     if assertion.expected_capture_name:match('^!') then
       assert.Falsy(
         captures[assertion.expected_capture_name:sub(2)]

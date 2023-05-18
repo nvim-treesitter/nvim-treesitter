@@ -1,4 +1,4 @@
--- Execute as `nvim -l ./scripts/check-queries.lua`
+-- Execute as `nvim --clean -l ./scripts/check-queries.lua`
 vim.opt.runtimepath:append('.')
 
 -- Equivalent to print(), but this will ensure consistent output regardless of
