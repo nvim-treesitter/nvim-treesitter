@@ -121,6 +121,7 @@
 ; Parameter declarations
 (parameter_declaration
   command: (identifier) @keyword
+  (identifier)? @constant.builtin
   macro: (macro) @parameter)
 
 ; Control flow

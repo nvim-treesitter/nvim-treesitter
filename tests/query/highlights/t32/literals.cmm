@@ -27,9 +27,10 @@ List `main`
 ;           ^ operator
 ;                       ^ character
 
-Data.Set 0xffff800000 0y0011xx01xx&&a
-;                     ^ number
-;                                 ^ operator
+Data.Set N: 0xffff800000 0y0011xx01xx&&a
+;        ^ number
+;                        ^ number
+;                                    ^ operator
 
 WinPOS 0% 85% 100% 15%
 ;             ^ number
