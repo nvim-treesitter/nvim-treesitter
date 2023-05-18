@@ -27,8 +27,8 @@
 ((parameters (identifier) @number)
  (#match? @number "^[-+]?[0-9]+(.[0-9]+)?$"))
 
-((program . (comment) @include)
+((program . (comment)* . (comment) @include)
  (#match? @include "^;\ +inherits\ *:"))
 
-((program . (comment) @preproc)
+((program . (comment)* . (comment) @preproc)
  (#match? @preproc "^; +extends"))
