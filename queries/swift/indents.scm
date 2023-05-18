@@ -1,16 +1,18 @@
 [
-  (protocol_body)
-  (class_body)
-  (function_declaration)
-  (computed_property)
-  (subscript_declaration)
+  ; ... refers to the section that will get affected by this indent.begin capture
+  (protocol_body)               ; protocol Foo { ... }
+  (class_body)                  ; class Foo { ... }
+  (enum_class_body)             ; enum Foo { ... }
+  (function_declaration)        ; func Foo (...) {...}
+  (computed_property)           ; { ... }
+  (subscript_declaration)       ; subscript Foo(...) { ... }
 
-  (computed_getter)
-  (computed_setter)
+  (computed_getter)             ; get { ... }
+  (computed_setter)             ; set { ... }
 
-  (assignment)
+  (assignment)                  ; a = b
 
-  (control_transfer_statement) ; return ...
+  (control_transfer_statement)  ; return ...
   (for_statement)
   (while_statement)
   (repeat_while_statement)
@@ -19,15 +21,15 @@
   (switch_statement)
   (guard_statement)
 
-  (type_parameters) ; x<Foo>
-  (tuple_type) ; (...)
-  (array_type) ; [String]
-  (dictionary_type); [Foo: Bar]
+  (type_parameters)             ; x<Foo>
+  (tuple_type)                  ; (...)
+  (array_type)                  ; [String]
+  (dictionary_type)             ; [Foo: Bar]
 
-  (call_expression)
-  (tuple_expression)
-  (array_literal)
-  (dictionary_literal)
+  (call_expression)             ; callFunc(...)
+  (tuple_expression)            ; ( foo + bar )
+  (array_literal)               ; [ foo, bar ]
+  (dictionary_literal)          ; [ foo: bar, x: y ]
   (lambda_literal) 
 ] @indent.begin
 
@@ -59,6 +61,9 @@
 (if_statement
   (if_statement) @indent.dedent)
 
+; case Foo:
+; default Foo:
+; @attribute default Foo:
 (switch_entry . _ @indent.branch)
 
 (function_declaration ")" @indent.branch)
