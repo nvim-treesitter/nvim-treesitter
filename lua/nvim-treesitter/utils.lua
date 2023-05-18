@@ -1,5 +1,6 @@
 local M = {}
 
+--TODO(clason): replace by vim.fs._join_paths
 function M.join_path(...)
   return table.concat(
     { ... },

@@ -3,18 +3,6 @@ local utils = require('nvim-treesitter.utils')
 
 local iswin = uv.os_uname().sysname == 'Windows_NT'
 
--- Convert path for cmd.exe on Windows.
--- This is needed when vim.opt.shellslash is in use.
----@param p string
----@return string
-local function cmdpath(p)
-  if vim.opt.shellslash:get() then
-    local r = p:gsub('/', '\\')
-    return r
-  end
-  return p
-end
-
 local M = {}
 
 ---@param executables string[]
@@ -243,6 +231,15 @@ function M.select_download_commands(repo, project_name, cache_dir, revision, pre
       },
     }
   end
+end
+
+--TODO(clason): only needed for iter_cmd_sync -> replace with uv.spawn?
+
+-- Convert path for cmd.exe on Windows (needed when shellslash is set)
+---@param p string
+---@return string
+local function cmdpath(p)
+  return vim.o.shellslash and p:gsub('/', '\\') or p
 end
 
 ---@param dir string

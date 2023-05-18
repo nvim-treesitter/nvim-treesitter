@@ -7,10 +7,9 @@ This document lists the planned and finished changes in this rewrite towards [Nv
 - [ ] **`query_predicates.lua`:** upstream/remove
 - [ ] **`parsers.lua`:** modularize?
 - [ ] **`parsers.lua`:** assign tiers
-- [ ] **`install.lua`:** simplify, use Nvim/Luv API as much as possible (@lewis6991)
+- [ ] **`install.lua`:** simplify jobs framework, use vim.loop for sync (@lewis6991)
 - [ ] **`locals.lua`:** move to `nvim-treesitter-refactor`
 - [ ] **update-lockfile:** allow specifying version in addition to commit hash (for Tier 1)
-- [ ] **tests/scripts:** test, fix
 - [ ] **documentation:** consolidate, autogenerate?
 - [ ] **documentation:** migration guide
 - [ ] **downstream:** adapt to breaking changes (`nvim-treesitter-textobjects`, `nvim-treesitter-refactor`)
