@@ -75,8 +75,6 @@ vim.fn.writefile(vim.fn.split(new_readme_text, '\n'), 'SUPPORTED_LANGUAGES.md')
 
 if string.find(readme_text, generated_text, 1, true) then
   print('README.md is up-to-date!')
-  vim.cmd('q')
 else
   print('New README.md was written. Please commit that change!')
-  vim.cmd('cq')
 end

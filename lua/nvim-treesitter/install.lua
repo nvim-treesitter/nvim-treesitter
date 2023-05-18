@@ -208,7 +208,7 @@ end
 ---@return string|nil
 local function get_revision(lang)
   if #lockfile == 0 then
-    local filename = utils.join_path(utils.get_package_path(), 'lockfile.json')
+    local filename = utils.get_package_path('lockfile.json')
     lockfile = vim.fn.filereadable(filename) == 1 and vim.fn.json_decode(vim.fn.readfile(filename))
       or {}
   end
@@ -294,8 +294,6 @@ end
 ---@param with_sync boolean
 ---@param generate_from_grammar boolean
 local function run_install(cache_dir, install_dir, lang, repo, with_sync, generate_from_grammar)
-  local path_sep = utils.get_path_sep()
-
   local project_name = 'tree-sitter-' .. lang
   local maybe_local_path = vim.fs.normalize(repo.url)
   local from_local_path = vim.fn.isdirectory(maybe_local_path) == 1
@@ -313,9 +311,8 @@ local function run_install(cache_dir, install_dir, lang, repo, with_sync, genera
   else
     local repo_location = project_name
     if repo.location then
-      repo_location = repo_location .. '/' .. repo.location
+      repo_location = utils.join_path(repo_location, repo.location)
     end
-    repo_location = repo_location:gsub('/', path_sep)
     compile_location = utils.join_path(cache_dir, repo_location)
   end
   local parser_lib_name = utils.join_path(install_dir, lang) .. '.so'
@@ -375,7 +372,13 @@ local function run_install(cache_dir, install_dir, lang, repo, with_sync, genera
   ---@type Command[]
   local command_list = {}
   if not from_local_path then
-    vim.list_extend(command_list, { shell.select_install_rm_cmd(cache_dir, project_name) })
+    vim.list_extend(command_list, {
+      {
+        cmd = function()
+          vim.fn.delete(utils.join_path(cache_dir, project_name), 'rf')
+        end,
+      },
+    })
     vim.list_extend(
       command_list,
       shell.select_download_commands(repo, project_name, cache_dir, revision, M.prefer_git)
@@ -430,7 +433,13 @@ local function run_install(cache_dir, install_dir, lang, repo, with_sync, genera
     },
   })
   if not from_local_path then
-    vim.list_extend(command_list, { shell.select_install_rm_cmd(cache_dir, project_name) })
+    vim.list_extend(command_list, {
+      {
+        cmd = function()
+          vim.fn.delete(utils.join_path(cache_dir, project_name), 'rf')
+        end,
+      },
+    })
   end
 
   if with_sync then
@@ -526,7 +535,7 @@ function M.install(options)
     for _, lang in ipairs(languages) do
       install_lang(lang, ask, cache_dir, install_dir, with_sync, generate_from_grammar)
       uv.fs_symlink(
-        utils.join_path(utils.get_package_path(), 'runtime', 'queries', lang),
+        utils.get_package_path('runtime', 'queries', lang),
         utils.join_path(config.get_install_dir('queries'), lang),
         { dir = true }
       )

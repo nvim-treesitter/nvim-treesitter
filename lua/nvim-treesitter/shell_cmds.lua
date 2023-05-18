@@ -108,35 +108,11 @@ function M.select_compile_command(repo, cc, compile_location)
       err = 'Error during compilation',
       opts = {
         args = {
-          '--makefile='
-            .. utils.join_path(utils.get_package_path(), 'scripts', 'compile_parsers.makefile'),
+          '--makefile=' .. utils.get_package_path('scripts', 'compile_parsers.makefile'),
           'CC=' .. cc,
           'CXX_STANDARD=' .. (repo.cxx_standard or 'c++14'),
         },
         cwd = compile_location,
-      },
-    }
-  end
-end
-
--- Returns the remove command based on the OS
----@param cache_dir string
----@param project_name string
----@return Command
-function M.select_install_rm_cmd(cache_dir, project_name)
-  local dir = utils.join_path(cache_dir, project_name)
-  if iswin then
-    return {
-      cmd = 'cmd',
-      opts = {
-        args = { '/C', 'if', 'exist', cmdpath(dir), 'rmdir', '/s', '/q', cmdpath(dir) },
-      },
-    }
-  else
-    return {
-      cmd = 'rm',
-      opts = {
-        args = { '-rf', dir },
       },
     }
   end
@@ -152,11 +128,11 @@ function M.select_download_commands(repo, project_name, cache_dir, revision, pre
   local can_use_tar = vim.fn.executable('tar') == 1 and vim.fn.executable('curl') == 1
   local is_github = repo.url:find('github.com', 1, true)
   local is_gitlab = repo.url:find('gitlab.com', 1, true)
+  local project_dir = utils.join_path(cache_dir, project_name)
 
   revision = revision or repo.branch or 'master'
 
   if can_use_tar and (is_github or is_gitlab) and not prefer_git then
-    local path_sep = utils.get_path_sep()
     local url = repo.url:gsub('.git$', '')
 
     local dir_rev = revision
@@ -164,8 +140,14 @@ function M.select_download_commands(repo, project_name, cache_dir, revision, pre
       dir_rev = revision:sub(2)
     end
 
+    local temp_dir = project_dir .. '-tmp'
+
     return {
-      M.select_install_rm_cmd(cache_dir, project_name .. '-tmp'),
+      {
+        cmd = function()
+          vim.fn.delete(temp_dir, 'rf')
+        end,
+      },
       {
         cmd = 'curl',
         info = 'Downloading ' .. project_name .. '...',
@@ -191,7 +173,7 @@ function M.select_download_commands(repo, project_name, cache_dir, revision, pre
       },
       {
         cmd = function()
-          uv.fs_mkdir(utils.join_path(cache_dir, project_name .. '-tmp'), 493)
+          uv.fs_mkdir(temp_dir, 493)
         end,
         info = 'Creating temporary directory',
         err = 'Could not create ' .. project_name .. '-tmp',
@@ -212,25 +194,25 @@ function M.select_download_commands(repo, project_name, cache_dir, revision, pre
       },
       {
         cmd = function()
-          uv.fs_unlink(cache_dir .. path_sep .. project_name .. '.tar.gz')
+          uv.fs_unlink(project_dir .. '.tar.gz')
         end,
       },
       {
         cmd = function()
           uv.fs_rename(
-            utils.join_path(
-              cache_dir,
-              project_name .. '-tmp',
-              url:match('[^/]-$') .. '-' .. dir_rev
-            ),
-            utils.join_path(cache_dir, project_name)
+            utils.join_path(temp_dir, url:match('[^/]-$') .. '-' .. dir_rev),
+            project_dir
           )
         end,
       },
-      M.select_install_rm_cmd(cache_dir, project_name .. '-tmp'),
+      {
+        cmd = function()
+          vim.fn.delete(temp_dir, 'rf')
+        end,
+      },
     }
   else
-    local git_dir = utils.join_path(cache_dir, project_name)
+    local git_dir = project_dir
     local clone_error = 'Error during download, please verify your internet connection'
 
     return {

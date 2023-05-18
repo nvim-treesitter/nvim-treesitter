@@ -16,7 +16,7 @@ end
 vim.print('Skipping languages: ', skip_langs)
 
 -- Load previous lockfile
-local filename = utils.join_path(utils.get_package_path(), 'lockfile.json')
+local filename = utils.get_package_path('lockfile.json')
 local lockfile = vim.fn.filereadable(filename) == 1
     and vim.fn.json_decode(vim.fn.readfile(filename))
   or {}
@@ -57,5 +57,5 @@ vim.print(lockfile)
 -- write new lockfile
 vim.fn.writefile(
   vim.fn.split(vim.fn.json_encode(lockfile), '\n'),
-  utils.join_path(utils.get_package_path(), 'lockfile.json')
+  utils.get_package_path('lockfile.json')
 )

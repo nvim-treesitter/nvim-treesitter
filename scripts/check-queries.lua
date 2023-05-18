@@ -138,10 +138,8 @@ if ok then
   end
   io_print('::endgroup::')
   io_print('Check successful!')
-  vim.cmd('q')
 else
   io_print('Check failed:')
   io_print(result)
   io_print('\n')
-  vim.cmd('cq')
 end
