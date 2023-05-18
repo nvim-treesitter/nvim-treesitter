@@ -23,9 +23,7 @@ api.nvim_create_user_command('TSInstallInfo', function()
 end, { nargs = 0, desc = 'List available treesitter parsers' })
 
 api.nvim_create_user_command('TSInstall', function(args)
-  require('nvim-treesitter.install').install({ ask_reinstall = not args.bang or 'force' })(
-    unpack(args.fargs)
-  )
+  require('nvim-treesitter.install').install({ force = args.bang })(unpack(args.fargs))
 end, {
   nargs = '+',
   bang = true,
@@ -37,7 +35,7 @@ end, {
 api.nvim_create_user_command('TSInstallFromGrammar', function(args)
   require('nvim-treesitter.install').install({
     generate_from_grammar = true,
-    ask_reinstall = not args.bang or 'force',
+    force = args.bang,
   })(unpack(args.fargs))
 end, {
   nargs = '+',
@@ -50,7 +48,7 @@ end, {
 api.nvim_create_user_command('TSInstallSync', function(args)
   require('nvim-treesitter.install').install({
     with_sync = true,
-    ask_reinstall = not args.bang or 'force',
+    force = args.bang,
   })(unpack(args.fargs))
 end, {
   nargs = '+',

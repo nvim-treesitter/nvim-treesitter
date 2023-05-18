@@ -287,13 +287,26 @@ end
 --- PARSER MANAGEMENT FUNCTIONS
 ---
 
+---@param lang string
 ---@param cache_dir string
 ---@param install_dir string
----@param lang string
----@param repo InstallInfo
+---@param force boolean
 ---@param with_sync boolean
 ---@param generate_from_grammar boolean
-local function run_install(cache_dir, install_dir, lang, repo, with_sync, generate_from_grammar)
+local function install_lang(lang, cache_dir, install_dir, force, with_sync, generate_from_grammar)
+  if is_installed(lang) then
+    if not force then
+      local yesno =
+        vim.fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
+      print('\n ')
+      if not string.match(yesno, '^y.*') then
+        return
+      end
+    end
+  end
+
+  local repo = get_parser_install_info(lang)
+
   local project_name = 'tree-sitter-' .. lang
   local maybe_local_path = vim.fs.normalize(repo.url)
   local from_local_path = vim.fn.isdirectory(maybe_local_path) == 1
@@ -451,41 +464,9 @@ local function run_install(cache_dir, install_dir, lang, repo, with_sync, genera
   end
 end
 
----@param lang string
----@param ask_reinstall boolean|string
----@param cache_dir string
----@param install_dir string
----@param with_sync boolean
----@param generate_from_grammar boolean
-local function install_lang(
-  lang,
-  ask_reinstall,
-  cache_dir,
-  install_dir,
-  with_sync,
-  generate_from_grammar
-)
-  if is_installed(lang) and ask_reinstall ~= 'force' then
-    if not ask_reinstall then
-      return
-    end
-
-    local yesno =
-      vim.fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
-    print('\n ')
-    if not string.match(yesno, '^y.*') then
-      return
-    end
-  end
-
-  local install_info = get_parser_install_info(lang)
-
-  run_install(cache_dir, install_dir, lang, install_info, with_sync, generate_from_grammar)
-end
-
 ---@class InstallOptions
 ---@field with_sync boolean
----@field ask_reinstall boolean|string
+---@field force boolean
 ---@field generate_from_grammar boolean
 ---@field exclude_configured_parsers boolean
 
@@ -495,7 +476,7 @@ end
 function M.install(options)
   options = options or {}
   local with_sync = options.with_sync
-  local ask_reinstall = options.ask_reinstall
+  local force = options.force
   local generate_from_grammar = options.generate_from_grammar
   local exclude_configured_parsers = options.exclude_configured_parsers
 
@@ -509,10 +490,9 @@ function M.install(options)
     local install_dir = config.get_install_dir('parser')
 
     local languages ---@type string[]
-    local ask ---@type boolean|string
     if ... == 'all' then
       languages = parsers.get_available()
-      ask = false
+      force = false
     else
       languages = vim.tbl_flatten({ ... })
       for i, tier in ipairs(parsers.tiers) do
@@ -523,7 +503,6 @@ function M.install(options)
           vim.list_extend(languages, parsers.get_available(i))
         end
       end
-      ask = ask_reinstall
     end
 
     if exclude_configured_parsers then
@@ -533,7 +512,7 @@ function M.install(options)
     end
 
     for _, lang in ipairs(languages) do
-      install_lang(lang, ask, cache_dir, install_dir, with_sync, generate_from_grammar)
+      install_lang(lang, cache_dir, install_dir, force, with_sync, generate_from_grammar)
       uv.fs_symlink(
         utils.get_package_path('runtime', 'queries', lang),
         utils.join_path(config.get_install_dir('queries'), lang),
@@ -556,7 +535,7 @@ function M.update(options)
         if (not is_installed(lang)) or (needs_update(lang)) then
           installed = installed + 1
           M.install({
-            ask_reinstall = 'force',
+            force = true,
             with_sync = options.with_sync,
           })(lang)
         end
@@ -571,7 +550,7 @@ function M.update(options)
       end
       for _, lang in pairs(parsers_to_update) do
         M.install({
-          ask_reinstall = 'force',
+          force = true,
           exclude_configured_parsers = true,
           with_sync = options.with_sync,
         })(lang)
