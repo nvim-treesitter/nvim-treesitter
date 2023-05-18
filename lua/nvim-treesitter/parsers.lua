@@ -982,6 +982,14 @@ list.norg = {
   maintainers = { "@JoeyGrajciar", "@vhyrro" },
 }
 
+list.objc = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-objc",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.ocaml = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ocaml",
