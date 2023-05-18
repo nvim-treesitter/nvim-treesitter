@@ -28,7 +28,7 @@
  (#match? @number "^[-+]?[0-9]+(.[0-9]+)?$"))
 
 ((program . (comment)* . (comment) @include)
- (#match? @include "^;\ +inherits\ *:"))
+ (#match? @include "^;+ +inherits *:"))
 
 ((program . (comment)* . (comment) @preproc)
- (#match? @preproc "^; +extends"))
+ (#match? @preproc "^;+ +extends"))
