@@ -18,7 +18,7 @@ end
 ---@param compiler string
 ---@return string[]
 function M.select_compiler_args(repo, compiler)
-  if string.match(compiler, 'cl$') or string.match(compiler, 'cl.exe$') then
+  if compiler:find('cl$') or compiler:find('cl.exe$') then
     return {
       '/Fe:',
       'parser.so',
@@ -27,7 +27,7 @@ function M.select_compiler_args(repo, compiler)
       '-Os',
       '/LD',
     }
-  elseif string.match(compiler, 'zig$') or string.match(compiler, 'zig.exe$') then
+  elseif compiler:find('zig$') or compiler:find('zig.exe$') then
     return {
       'c++',
       '-o',
@@ -73,13 +73,7 @@ end
 ---@return Command
 function M.select_compile_command(repo, cc, compile_location)
   local make = M.select_executable({ 'gmake', 'make' })
-  if
-    string.match(cc, 'cl$')
-    or string.match(cc, 'cl.exe$')
-    or not repo.use_makefile
-    or iswin
-    or not make
-  then
+  if cc:find('cl$') or cc:find('cl.exe$') or not repo.use_makefile or iswin or not make then
     return {
       cmd = cc,
       info = 'Compiling...',
@@ -124,7 +118,7 @@ function M.select_download_commands(repo, project_name, cache_dir, revision, pre
     local url = repo.url:gsub('.git$', '')
 
     local dir_rev = revision
-    if is_github and revision:match('^v%d') then
+    if is_github and revision:find('^v%d') then
       dir_rev = revision:sub(2)
     end
 

@@ -299,7 +299,7 @@ local function install_lang(lang, cache_dir, install_dir, force, with_sync, gene
       local yesno =
         vim.fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
       print('\n ')
-      if not string.match(yesno, '^y.*') then
+      if not yesno:find('^y.*') then
         return
       end
     end
