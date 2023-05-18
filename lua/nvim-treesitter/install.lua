@@ -96,7 +96,7 @@ local function iter_cmd_sync(cmd_list)
   return true
 end
 
-function M.iter_cmd(cmd_list, i, lang, success_message)
+local function iter_cmd(cmd_list, i, lang, success_message)
   if i == 1 then
     started_commands = started_commands + 1
   end
@@ -117,7 +117,7 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
   if type(attr.cmd) == 'function' then
     local ok, err = pcall(attr.cmd)
     if ok then
-      M.iter_cmd(cmd_list, i + 1, lang, success_message)
+      iter_cmd(cmd_list, i + 1, lang, success_message)
     else
       failed_commands = failed_commands + 1
       finished_commands = finished_commands + 1
@@ -162,7 +162,7 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
           )
           return
         end
-        M.iter_cmd(cmd_list, i + 1, lang, success_message)
+        iter_cmd(cmd_list, i + 1, lang, success_message)
       end)
     )
     uv.read_start(stdout, function(_, data)
@@ -438,7 +438,7 @@ local function run_install(cache_dir, install_dir, lang, repo, with_sync, genera
       print('Treesitter parser for ' .. lang .. ' has been installed')
     end
   else
-    M.iter_cmd(command_list, 1, lang, 'Treesitter parser for ' .. lang .. ' has been installed')
+    iter_cmd(command_list, 1, lang, 'Treesitter parser for ' .. lang .. ' has been installed')
   end
 end
 
@@ -594,7 +594,7 @@ function M.uninstall(...)
       local parser = utils.join_path(parser_dir, lang) .. '.so'
       local queries = utils.join_path(query_dir, lang)
       if vim.fn.filereadable(parser) == 1 then
-        M.iter_cmd({
+        iter_cmd({
           {
             cmd = function()
               uv.fs_unlink(parser)
