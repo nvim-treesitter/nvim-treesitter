@@ -1,6 +1,7 @@
+local uv = vim.loop
 local utils = require('nvim-treesitter.utils')
 
-local iswin = vim.loop.os_uname().sysname == 'Windows_NT'
+local iswin = uv.os_uname().sysname == 'Windows_NT'
 
 -- Convert path for cmd.exe on Windows.
 -- This is needed when vim.opt.shellslash is in use.
@@ -15,63 +16,6 @@ local function cmdpath(p)
 end
 
 local M = {}
-
--- Returns the mkdir command based on the OS
----@param directory string
----@param cwd string
----@param info_msg string
----@return table
-function M.select_mkdir_cmd(directory, cwd, info_msg)
-  if iswin then
-    return {
-      cmd = 'cmd',
-      opts = {
-        args = { '/C', 'mkdir', cmdpath(directory) },
-        cwd = cwd,
-      },
-      info = info_msg,
-      err = 'Could not create ' .. directory,
-    }
-  else
-    return {
-      cmd = 'mkdir',
-      opts = {
-        args = { directory },
-        cwd = cwd,
-      },
-      info = info_msg,
-      err = 'Could not create ' .. directory,
-    }
-  end
-end
-
--- Returns the remove command based on the OS
----@param file string
----@param info_msg string|nil
----@param recursive boolean|nil
----@return table
-function M.select_rm_file_cmd(file, info_msg, recursive)
-  if iswin then
-    return {
-      cmd = 'cmd',
-      opts = {
-        args = recursive and { '/C', 'if', 'exist', cmdpath(file), 'rmdir', '/s', cmdpath(file) }
-          or { '/C', 'if', 'exist', cmdpath(file), 'rd', '/s', cmdpath(file) },
-      },
-      info = info_msg,
-      err = 'Could not delete ' .. file,
-    }
-  else
-    return {
-      cmd = 'rm',
-      opts = {
-        args = recursive and { '-r', file } or { file },
-      },
-      info = info_msg,
-      err = 'Could not delete ' .. file,
-    }
-  end
-end
 
 ---@param executables string[]
 ---@return string|nil
@@ -114,7 +58,7 @@ function M.select_compiler_args(repo, compiler)
       repo.files,
       '-Os',
     }
-    if vim.loop.os_uname().sysname == 'Darwin' then
+    if uv.os_uname().sysname == 'Darwin' then
       table.insert(args, '-bundle')
     else
       table.insert(args, '-shared')
@@ -180,8 +124,8 @@ end
 ---@param project_name string
 ---@return Command
 function M.select_install_rm_cmd(cache_dir, project_name)
+  local dir = utils.join_path(cache_dir, project_name)
   if iswin then
-    local dir = cache_dir .. '\\' .. project_name
     return {
       cmd = 'cmd',
       opts = {
@@ -192,54 +136,7 @@ function M.select_install_rm_cmd(cache_dir, project_name)
     return {
       cmd = 'rm',
       opts = {
-        args = { '-rf', cache_dir .. '/' .. project_name },
-      },
-    }
-  end
-end
-
--- Returns the copy command based on the OS
----@param from string
----@param to string
----@return Command
-function M.select_cp_cmd(from, to)
-  if iswin then
-    return {
-      cmd = 'cmd',
-      opts = {
-        args = { '/C', 'xcopy', '/Y', cmdpath(from), cmdpath(to) },
-      },
-    }
-  else
-    return {
-      cmd = 'cp',
-      opts = {
-        args = { '-Rf', from, to },
-      },
-    }
-  end
-end
-
--- Returns the move command based on the OS
----@param from string
----@param to string
----@param cwd string
----@return Command
-function M.select_mv_cmd(from, to, cwd)
-  if iswin then
-    return {
-      cmd = 'cmd',
-      opts = {
-        args = { '/C', 'move', '/Y', cmdpath(from), cmdpath(to) },
-        cwd = cwd,
-      },
-    }
-  else
-    return {
-      cmd = 'mv',
-      opts = {
-        args = { '-f', from, to },
-        cwd = cwd,
+        args = { '-rf', dir },
       },
     }
   end
@@ -292,7 +189,13 @@ function M.select_download_commands(repo, project_name, cache_dir, revision, pre
           cwd = cache_dir,
         },
       },
-      M.select_mkdir_cmd(project_name .. '-tmp', cache_dir, 'Creating temporary directory'),
+      {
+        cmd = function()
+          uv.fs_mkdir(utils.join_path(cache_dir, project_name .. '-tmp'), 493)
+        end,
+        info = 'Creating temporary directory',
+        err = 'Could not create ' .. project_name .. '-tmp',
+      },
       {
         cmd = 'tar',
         info = 'Extracting ' .. project_name .. '...',
@@ -307,12 +210,23 @@ function M.select_download_commands(repo, project_name, cache_dir, revision, pre
           cwd = cache_dir,
         },
       },
-      M.select_rm_file_cmd(cache_dir .. path_sep .. project_name .. '.tar.gz'),
-      M.select_mv_cmd(
-        utils.join_path(project_name .. '-tmp', url:match('[^/]-$') .. '-' .. dir_rev),
-        project_name,
-        cache_dir
-      ),
+      {
+        cmd = function()
+          uv.fs_unlink(cache_dir .. path_sep .. project_name .. '.tar.gz')
+        end,
+      },
+      {
+        cmd = function()
+          uv.fs_rename(
+            utils.join_path(
+              cache_dir,
+              project_name .. '-tmp',
+              url:match('[^/]-$') .. '-' .. dir_rev
+            ),
+            utils.join_path(cache_dir, project_name)
+          )
+        end,
+      },
       M.select_install_rm_cmd(cache_dir, project_name .. '-tmp'),
     }
   else

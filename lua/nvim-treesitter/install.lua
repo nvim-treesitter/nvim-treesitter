@@ -381,7 +381,11 @@ local function run_install(cache_dir, install_dir, lang, repo, with_sync, genera
   end
   vim.list_extend(command_list, {
     shell.select_compile_command(repo, cc, compile_location),
-    shell.select_mv_cmd('parser.so', parser_lib_name, compile_location),
+    {
+      cmd = function()
+        uv.fs_copyfile(utils.join_path(compile_location, 'parser.so'), parser_lib_name)
+      end,
+    },
     {
       cmd = function()
         vim.fn.writefile(
@@ -436,17 +440,6 @@ local function install_lang(
   run_install(cache_dir, install_dir, lang, install_info, with_sync, generate_from_grammar)
 end
 
--- Copy bundled queries for {lang} into install directory (on rtp)
----@param lang string
-local function sync_queries(lang)
-  return iter_cmd_sync({
-    shell.select_cp_cmd(
-      utils.join_path(utils.get_package_path(), 'runtime', 'queries', lang),
-      utils.join_path(config.get_install_dir('queries'), lang)
-    ),
-  })
-end
-
 ---@class InstallOptions
 ---@field with_sync boolean
 ---@field ask_reinstall boolean|string
@@ -498,7 +491,11 @@ function M.install(options)
 
     for _, lang in ipairs(languages) do
       install_lang(lang, ask, cache_dir, install_dir, with_sync, generate_from_grammar)
-      sync_queries(lang)
+      uv.fs_symlink(
+        utils.join_path(utils.get_package_path(), 'runtime', 'queries', lang),
+        utils.join_path(config.get_install_dir('queries'), lang),
+        { dir = true }
+      )
     end
   end
 end
@@ -537,10 +534,6 @@ function M.update(options)
         })(lang)
       end
     end
-    -- always sync all installed queries
-    for _, lang in pairs(config.installed_parsers()) do
-      sync_queries(lang)
-    end
   end
 end
 
@@ -550,7 +543,8 @@ function M.uninstall(...)
     local installed = config.installed_parsers()
     M.uninstall(installed)
   elseif ... then
-    local install_dir = config.get_install_dir('parser')
+    local parser_dir = config.get_install_dir('parser')
+    local query_dir = config.get_install_dir('queries')
 
     ---@type string[]
     local languages = vim.tbl_flatten({ ... })
@@ -563,15 +557,20 @@ function M.uninstall(...)
         break
       end
 
-      local parser_lib = utils.join_path(install_dir, lang) .. '.so'
-      if vim.fn.filereadable(parser_lib) == 1 then
+      local parser = utils.join_path(parser_dir, lang) .. '.so'
+      local queries = utils.join_path(query_dir, lang)
+      if vim.fn.filereadable(parser) == 1 then
         M.iter_cmd({
-          shell.select_rm_file_cmd(parser_lib, 'Uninstalling parser for ' .. lang),
-          shell.select_rm_file_cmd(
-            utils.join_path(config.get_install_dir('queries'), lang),
-            'Uninstalling queries for ' .. lang,
-            true
-          ),
+          {
+            cmd = function()
+              uv.fs_unlink(parser)
+            end,
+          },
+          {
+            cmd = function()
+              uv.fs_unlink(queries)
+            end,
+          },
         }, 1, lang, 'Treesitter parser for ' .. lang .. ' has been uninstalled')
       end
     end
