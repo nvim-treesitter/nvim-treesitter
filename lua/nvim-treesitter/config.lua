@@ -15,7 +15,7 @@ local config = {
   auto_install = false,
   ensure_install = {},
   ignore_install = {},
-  install_dir = utils.join_path(vim.fn.stdpath('data'), '/site'),
+  install_dir = utils.join_path(vim.fn.stdpath('data'), 'site'),
 }
 
 ---Setup call for users to override configuration configurations.
