@@ -55,7 +55,7 @@ local function find_delimiter(bufnr, node, delimiter)
       local end_char = { child:end_() }
       local trimmed_after_delim
       local escaped_delimiter = delimiter:gsub('[%-%.%+%[%]%(%)%$%^%%%?%*]', '%%%1')
-      trimmed_after_delim, _ =
+      trimmed_after_delim =
         line:sub(end_char[2] + 1):gsub('[%s' .. escaped_delimiter .. ']*', '')
       return child, #trimmed_after_delim == 0
     end
@@ -94,7 +94,7 @@ local get_indents = memoize(function(bufnr, root, lang)
     ['indent.zero'] = {},
   }
 
-  local query = ts.query.get(lang, 'indents')
+  local query = assert(ts.query.get(lang, 'indents'))
   for id, node, metadata in query:iter_captures(root, bufnr) do
     if query.captures[id]:sub(1, 1) ~= '_' then
       map[query.captures[id]][node:id()] = metadata or {}
@@ -107,6 +107,7 @@ end, function(bufnr, root, lang)
 end)
 
 ---@param lnum number (1-indexed)
+---@return integer
 function M.get_indent(lnum)
   local bufnr = vim.api.nvim_get_current_buf()
   local parser = ts.get_parser(bufnr)
@@ -180,7 +181,7 @@ function M.get_indent(lnum)
   end
 
   -- tracks to ensure multiple indent levels are not applied for same line
-  local is_processed_by_row = {}
+  local is_processed_by_row = {}  --- @type table<integer,boolean>
 
   if q['indent.zero'][node:id()] then
     return 0
@@ -284,9 +285,9 @@ function M.get_indent(lnum)
 
       if o_delim_node then
         local o_srow, o_scol = o_delim_node:start()
-        local c_srow = nil
+        local c_srow = nil --- @type integer?
         if c_delim_node then
-          c_srow, _ = c_delim_node:start()
+          c_srow = c_delim_node:start()
         end
         if o_is_last_in_line then
           -- hanging indent (previous line ended with starting delimiter)
