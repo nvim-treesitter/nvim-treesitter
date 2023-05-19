@@ -55,7 +55,4 @@ end
 vim.print(lockfile)
 
 -- write new lockfile
-vim.fn.writefile(
-  vim.fn.split(vim.fn.json_encode(lockfile), '\n'),
-  utils.get_package_path('lockfile.json')
-)
+vim.fn.writefile(vim.fn.split(vim.fn.json_encode(lockfile), '\n'), filename)

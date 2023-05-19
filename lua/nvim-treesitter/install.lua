@@ -333,13 +333,12 @@ local function install_lang(lang, cache_dir, install_dir, force, with_sync, gene
   generate_from_grammar = repo.requires_generate_from_grammar or generate_from_grammar
 
   if generate_from_grammar and vim.fn.executable('tree-sitter') ~= 1 then
-    api.nvim_err_writeln('tree-sitter CLI not found: `tree-sitter` is not executable!')
+    api.nvim_err_writeln('tree-sitter CLI not found: `tree-sitter` is not executable')
     if repo.requires_generate_from_grammar then
       api.nvim_err_writeln(
-        'tree-sitter CLI is needed because `'
+        'tree-sitter CLI is needed because the parser for `'
           .. lang
-          .. '` is marked that it needs '
-          .. 'to be generated from the grammar definitions to be compatible with nvim!'
+          .. '` needs to be generated from grammar'
       )
     end
     return
@@ -349,7 +348,7 @@ local function install_lang(lang, cache_dir, install_dir, force, with_sync, gene
     end
   end
   if generate_from_grammar and vim.fn.executable('node') ~= 1 then
-    api.nvim_err_writeln('Node JS not found: `node` is not executable!')
+    api.nvim_err_writeln('Node JS not found: `node` is not executable')
     return
   end
   local cc = shell.select_executable(M.compilers)
@@ -457,10 +456,10 @@ local function install_lang(lang, cache_dir, install_dir, force, with_sync, gene
 
   if with_sync then
     if iter_cmd_sync(command_list) == true then
-      vim.notify('Treesitter parser for ' .. lang .. ' has been installed')
+      vim.notify('Parser for ' .. lang .. ' has been installed')
     end
   else
-    iter_cmd(command_list, 1, lang, 'Treesitter parser for ' .. lang .. ' has been installed')
+    iter_cmd(command_list, 1, lang, 'Parser for ' .. lang .. ' has been installed')
   end
 end
 
@@ -541,12 +540,12 @@ function M.update(options)
         end
       end
       if installed == 0 then
-        vim.notify('Parsers are up-to-date!')
+        vim.notify('All parsers are up-to-date')
       end
     else
       local parsers_to_update = outdated_parsers() or config.installed_parsers()
       if #parsers_to_update == 0 then
-        vim.notify('All parsers are up-to-date!')
+        vim.notify('All parsers are up-to-date')
       end
       for _, lang in pairs(parsers_to_update) do
         M.install({
@@ -573,7 +572,7 @@ function M.uninstall(...)
     for _, lang in ipairs(languages) do
       if not vim.list_contains(config.installed_parsers(), lang) then
         vim.notify(
-          'Parser for ' .. lang .. ' is is not managed by nvim-treesitter.',
+          'Parser for ' .. lang .. ' is is not managed by nvim-treesitter',
           vim.log.levels.ERROR
         )
         break
@@ -593,7 +592,7 @@ function M.uninstall(...)
               uv.fs_unlink(queries)
             end,
           },
-        }, 1, lang, 'Treesitter parser for ' .. lang .. ' has been uninstalled')
+        }, 1, lang, 'Parser for ' .. lang .. ' has been uninstalled')
       end
     end
   end

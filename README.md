@@ -166,7 +166,7 @@ Queries can be placed anywhere in your `runtimepath` under `queries/<language>`,
 
 E.g., to add queries for `zimbu`, put `highlights.scm` etc. under
 ```lua
-vim.fn.stdpath('data') . 'site/queries/zimbu'
+vim.fn.stdpath('data') .. 'site/queries/zimbu'
 ```
 
 # Troubleshooting

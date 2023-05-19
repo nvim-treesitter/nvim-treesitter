@@ -119,7 +119,7 @@ Language | Tier | Queries | CLI | NPM | Maintainer
 [nickel](https://github.com/nickel-lang/tree-sitter-nickel) |  | `H I `|  |  | 
 [ninja](https://github.com/alemuller/tree-sitter-ninja) |  | `HFI `|  |  | @alemuller
 [nix](https://github.com/cstrahan/tree-sitter-nix) |  | `HF J`|  |  | @leo60228
-[norg](https://github.com/nvim-neorg/tree-sitter-norg) |  | `    `|  |  | @JoeyGrajciar, @vhyrro
+[norg](https://github.com/nvim-neorg/tree-sitter-norg) | unstable | `    `|  |  | @JoeyGrajciar, @vhyrro
 [ocaml](https://github.com/tree-sitter/tree-sitter-ocaml) |  | `HFIJ`|  |  | @undu
 [ocaml_interface](https://github.com/tree-sitter/tree-sitter-ocaml) |  | `HFIJ`|  |  | @undu
 [ocamllex](https://github.com/atom-ocaml/tree-sitter-ocamllex) |  | `H  J`| ✓ |  | @undu
