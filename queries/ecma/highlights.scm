@@ -207,6 +207,7 @@
 
 (pair ":" @punctuation.delimiter)
 (pair_pattern ":" @punctuation.delimiter)
+(switch_case ":" @punctuation.delimiter)
 
 [
   "--"
