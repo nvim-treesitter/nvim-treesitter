@@ -209,8 +209,9 @@ end
 local function get_revision(lang)
   if #lockfile == 0 then
     local filename = utils.get_package_path('lockfile.json')
-    lockfile = vim.fn.filereadable(filename) == 1 and vim.fn.json_decode(vim.fn.readfile(filename))
-      or {}
+    local file = assert(io.open(filename, 'r'))
+    lockfile = vim.json.decode(file:read('*all'))
+    file:close()
   end
 
   local install_info = get_parser_install_info(lang)
@@ -227,9 +228,10 @@ end
 ---@return string|nil
 local function get_installed_revision(lang)
   local lang_file = utils.join_path(config.get_install_dir('parser-info'), lang .. '.revision')
-  if vim.fn.filereadable(lang_file) == 1 then
-    return vim.fn.readfile(lang_file)[1]
-  end
+  local file = assert(io.open(lang_file, 'r'))
+  local revision = file:read('*a')
+  file:close()
+  return revision
 end
 
 -- Checks if parser is installed with nvim-treesitter
@@ -437,10 +439,14 @@ local function install_lang(lang, cache_dir, install_dir, force, with_sync, gene
     },
     {
       cmd = function()
-        vim.fn.writefile(
-          { revision or '' },
-          utils.join_path(config.get_install_dir('parser-info') or '', lang .. '.revision')
+        local file = assert(
+          io.open(
+            utils.join_path(config.get_install_dir('parser-info') or '', lang .. '.revision'),
+            'w'
+          )
         )
+        file:write(revision or '')
+        file:close()
       end,
     },
   })

@@ -64,17 +64,22 @@ for _, v in ipairs(sorted_parsers) do
 end
 generated_text = generated_text .. footnotes
 
-local readme_text = table.concat(vim.fn.readfile('SUPPORTED_LANGUAGES.md'), '\n')
+local readme = assert(io.open('SUPPORTED_LANGUAGES.md'), 'rb')
+local readme_text = readme:read('*a')
+readme:close()
 
 local new_readme_text = string.gsub(
   readme_text,
   '<!%-%-parserinfo%-%->.*<!%-%-parserinfo%-%->',
   '<!--parserinfo-->\n' .. generated_text .. '<!--parserinfo-->'
 )
-vim.fn.writefile(vim.fn.split(new_readme_text, '\n'), 'SUPPORTED_LANGUAGES.md')
+
+readme = assert(io.open('SUPPORTED_LANGUAGES.md'), 'w')
+readme:write(new_readme_text)
+readme:close()
 
 if string.find(readme_text, generated_text, 1, true) then
-  print('README.md is up-to-date!')
+  print('README.md is up-to-date\n')
 else
-  print('New README.md was written. Please commit that change!')
+  print('New README.md was written\n')
 end

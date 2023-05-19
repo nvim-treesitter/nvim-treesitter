@@ -15,7 +15,7 @@ local config = {
   auto_install = false,
   ensure_install = {},
   ignore_install = {},
-  install_dir = vim.fn.stdpath('data') .. 'site',
+  install_dir = utils.join_path(vim.fn.stdpath('data'), '/site'),
 }
 
 ---Setup call for users to override configuration configurations.
@@ -23,7 +23,7 @@ local config = {
 function M.setup(user_data)
   if user_data then
     if user_data.install_dir then
-      user_data.install_dir = vim.fn.expand(user_data.install_dir, ':p')
+      user_data.install_dir = vim.fs.normalize(user_data.install_dir)
     end
     config = vim.tbl_deep_extend('force', config, user_data)
   end

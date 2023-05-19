@@ -11,13 +11,12 @@ local function io_print(text)
 end
 
 local function extract_captures()
-  local lines = vim.fn.readfile('CONTRIBUTING.md')
   local captures = {}
   local current_query
 
-  for _, line in ipairs(lines) do
+  for line in io.lines('CONTRIBUTING.md') do
     if vim.startswith(line, '### ') then
-      current_query = vim.fn.tolower(line:sub(5))
+      current_query = line:sub(5):lower()
     elseif vim.startswith(line, '@') and current_query then
       if not captures[current_query] then
         captures[current_query] = {}

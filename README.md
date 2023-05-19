@@ -66,7 +66,7 @@ require'nvim-treesitter'.setup {
   auto_install = false,
 
   -- Directory to install parsers and queries to
-  install_dir = vim.fn.stdpath('data') .. 'site'
+  install_dir = vim.fn.stdpath('data') .. '/site'
 }
 ```
 

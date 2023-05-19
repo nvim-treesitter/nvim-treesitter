@@ -1,28 +1,20 @@
 -- Execute as `nvim --clean -l ./scripts/write-lockfile.lua`
 vim.opt.runtimepath:append('.')
-local utils = require('nvim-treesitter.utils')
-local parsers = require('nvim-treesitter.parsers')
-
----@type string|any[]
-local skip_langs = vim.fn.getenv('SKIP_LOCKFILE_UPDATE_FOR_LANGS')
-
-if skip_langs == vim.NIL then
-  skip_langs = {}
-else
-  ---@diagnostic disable-next-line: param-type-mismatch
-  skip_langs = vim.fn.split(skip_langs, ',')
-end
-
-vim.print('Skipping languages: ', skip_langs)
 
 -- Load previous lockfile
-local filename = utils.get_package_path('lockfile.json')
-local lockfile = vim.fn.filereadable(filename) == 1
-    and vim.fn.json_decode(vim.fn.readfile(filename))
-  or {}
+local filename = require('nvim-treesitter.utils').get_package_path('lockfile.json')
+local file = assert(io.open(filename, 'r'))
+local lockfile = vim.json.decode(file:read('*a'))
+file:close()
+
+---@type string?
+local skip_lang_string = os.getenv('SKIP_LOCKFILE_UPDATE_FOR_LANGS')
+local skip_langs = skip_lang_string and vim.split(skip_lang_string, ',') or {}
+vim.print('Skipping languages: ', skip_langs)
 
 local sorted_parsers = {}
-for k, v in pairs(parsers.configs) do
+local configs = require('nvim-treesitter.parsers').configs
+for k, v in pairs(configs) do
   table.insert(sorted_parsers, { name = k, parser = v })
 end
 table.sort(sorted_parsers, function(a, b)
@@ -55,4 +47,6 @@ end
 vim.print(lockfile)
 
 -- write new lockfile
-vim.fn.writefile(vim.fn.split(vim.fn.json_encode(lockfile), '\n'), filename)
+file = assert(io.open(filename, 'w'))
+file:write(vim.json.encode(lockfile))
+file:close()
