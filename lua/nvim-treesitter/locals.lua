@@ -415,21 +415,4 @@ function M.previous_scope(node)
   end
 end
 
--- register custom directive
----@param match (TSNode|nil)[]
----@param bufnr integer
----@param pred string[]
----@return boolean|nil
-ts.query.add_predicate('is?', function(match, _, bufnr, pred)
-  local node = match[pred[2]]
-  if not node then
-    return true
-  end
-
-  local _, _, kind = M.find_definition(node, bufnr)
-
-  local types = { unpack(pred, 3) }
-  return vim.tbl_contains(types, kind)
-end)
-
 return M
