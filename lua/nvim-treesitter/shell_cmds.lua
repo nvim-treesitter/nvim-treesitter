@@ -103,7 +103,7 @@ end
 ---@param cache_dir string
 ---@param revision string|nil
 ---@param prefer_git boolean
----@return table
+---@return Command[]
 function M.select_download_commands(repo, project_name, cache_dir, revision, prefer_git)
   local can_use_tar = vim.fn.executable('tar') == 1 and vim.fn.executable('curl') == 1
   local is_github = repo.url:find('github.com', 1, true)
@@ -228,30 +228,6 @@ end
 
 function M.get_package_path(...)
   return vim.fs.joinpath(vim.fn.fnamemodify(debug.getinfo(1, 'S').source:sub(2), ':p:h:h:h'), ...)
-end
-
---TODO(clason): only needed for iter_cmd_sync -> replace with uv.spawn?
-
--- Convert path for cmd.exe on Windows (needed when shellslash is set)
----@param p string
----@return string
-local function cmdpath(p)
-  return vim.o.shellslash and p:gsub('/', '\\') or p
-end
-
----@param dir string
----@param command string
----@return string command
-function M.make_directory_change_for_command(dir, command)
-  if iswin then
-    if string.find(vim.o.shell, 'cmd') ~= nil then
-      return string.format('pushd %s & %s & popd', cmdpath(dir), command)
-    else
-      return string.format('pushd %s ; %s ; popd', cmdpath(dir), command)
-    end
-  else
-    return string.format('cd %s;\n %s', dir, command)
-  end
 end
 
 return M
