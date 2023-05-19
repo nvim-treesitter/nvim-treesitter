@@ -40,7 +40,7 @@ function M.setup(user_data)
           and not vim.list_contains(M.installed_parsers(), lang)
           and not vim.list_contains(M.ignored_parsers(), lang)
         then
-          require('nvim-treesitter.install').install()({ lang })
+          require('nvim-treesitter.install').install(lang)
         end
       end,
     })
@@ -50,16 +50,17 @@ function M.setup(user_data)
 
   if #to_install > 0 then
     local installed = M.installed_parsers()
+    --- @type string[]
     to_install = vim.iter.filter(function(v)
       return not vim.list_contains(installed, v)
     end, to_install)
   end
 
   if #to_install > 0 then
-    require('nvim-treesitter.install').install({
+    require('nvim-treesitter.install').install(to_install, {
       with_sync = config.sync_install,
       exclude_configured_parsers = true,
-    })(to_install)
+    })
   end
 end
 

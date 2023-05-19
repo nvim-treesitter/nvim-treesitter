@@ -252,13 +252,6 @@ local function needs_update(lang)
   return not revision or revision ~= get_installed_revision(lang)
 end
 
----@return string[]
-local function outdated_parsers()
-  return vim.tbl_filter(function(lang) ---@param lang string
-    return is_installed(lang) and needs_update(lang)
-  end, config.installed_parsers())
-end
-
 function M.info()
   local installed = config.installed_parsers()
   local parser_list = parsers.get_available()
@@ -475,10 +468,57 @@ end
 ---@field generate_from_grammar boolean
 ---@field exclude_configured_parsers boolean
 
+---Normalize languages
+---@param languages? string[]|string
+---@param filter_installed? boolean
+---@param exclude_configured? boolean
+---@return string[]
+local function norm_languages(languages, filter_installed, exclude_configured)
+  if not languages then
+    return {}
+  end
+
+  -- Turn into table
+  if type(languages) == 'string' then
+    languages = { languages }
+  end
+
+  if vim.list_contains(languages, 'all') then
+    if filter_installed then
+      return config.installed_parsers()
+    end
+    languages = parsers.get_available()
+  end
+
+  for i, tier in ipairs(parsers.tiers) do
+    if vim.list_contains(languages, tier) then
+      languages = vim.iter.filter(function(l)
+        return l ~= tier
+      end, languages)
+      vim.list_extend(languages, parsers.get_available(i))
+    end
+  end
+
+  if exclude_configured then
+    languages = vim.iter.filter(function(v)
+      return not is_ignored(v)
+    end, languages)
+  end
+
+  if filter_installed then
+    local installed = config.installed_parsers()
+    languages = vim.iter.filter(function(v)
+      return vim.list_contains(installed, v)
+    end, languages)
+  end
+
+  return languages
+end
+
 -- Install a parser
+---@param languages? string[]|string
 ---@param options? InstallOptions
----@return function
-function M.install(options)
+function M.install(languages, options)
   options = options or {}
   local with_sync = options.with_sync
   local force = options.force
@@ -486,120 +526,98 @@ function M.install(options)
   local exclude_configured_parsers = options.exclude_configured_parsers
 
   reset_progress_counter()
-  return function(...)
-    if vim.fn.executable('git') == 0 then
-      return api.nvim_err_writeln('Git is required on your system to run this command')
-    end
 
-    local cache_dir = vim.fn.stdpath('cache')
-    local install_dir = config.get_install_dir('parser')
+  if vim.fn.executable('git') == 0 then
+    api.nvim_err_writeln('Git is required on your system to run this command')
+    return
+  end
 
-    local languages ---@type string[]
-    if ... == 'all' then
-      languages = parsers.get_available()
-      force = false
-    else
-      languages = vim.tbl_flatten({ ... })
-      for i, tier in ipairs(parsers.tiers) do
-        if vim.list_contains(languages, tier) then
-          languages = vim.iter.filter(function(l)
-            return l ~= tier
-          end, languages)
-          vim.list_extend(languages, parsers.get_available(i))
-        end
-      end
-    end
+  local cache_dir = vim.fn.stdpath('cache')
+  local install_dir = config.get_install_dir('parser')
 
-    if exclude_configured_parsers then
-      languages = vim.iter.filter(function(v)
-        return not is_ignored(v)
-      end, languages)
-    end
+  if languages == 'all' then
+    force = false
+  end
 
-    for _, lang in ipairs(languages) do
-      install_lang(lang, cache_dir, install_dir, force, with_sync, generate_from_grammar)
-      uv.fs_symlink(
-        utils.get_package_path('runtime', 'queries', lang),
-        utils.join_path(config.get_install_dir('queries'), lang),
-        { dir = true }
-      )
-    end
+  languages = norm_languages(languages, nil, exclude_configured_parsers)
+
+  for _, lang in ipairs(languages) do
+    install_lang(lang, cache_dir, install_dir, force, with_sync, generate_from_grammar)
+    uv.fs_symlink(
+      utils.get_package_path('runtime', 'queries', lang),
+      utils.join_path(config.get_install_dir('queries'), lang),
+      { dir = true }
+    )
   end
 end
 
-function M.update(options)
+---@class UpdateOptions
+---@field with_sync boolean
+
+---@param languages? string[]|string
+---@param options? UpdateOptions
+function M.update(languages, options)
   options = options or {}
-  return function(...)
-    reset_progress_counter()
-    M.lockfile = {}
-    if ... and ... ~= 'all' then
-      ---@type string[]
-      local languages = vim.tbl_flatten({ ... })
-      local installed = 0
-      for _, lang in ipairs(languages) do
-        if (not is_installed(lang)) or (needs_update(lang)) then
-          installed = installed + 1
-          M.install({
-            force = true,
-            with_sync = options.with_sync,
-          })(lang)
-        end
-      end
-      if installed == 0 then
-        vim.notify('All parsers are up-to-date')
-      end
-    else
-      local parsers_to_update = outdated_parsers() or config.installed_parsers()
-      if #parsers_to_update == 0 then
-        vim.notify('All parsers are up-to-date')
-      end
-      for _, lang in pairs(parsers_to_update) do
-        M.install({
-          force = true,
-          exclude_configured_parsers = true,
-          with_sync = options.with_sync,
-        })(lang)
-      end
-    end
+
+  reset_progress_counter()
+  M.lockfile = {}
+
+  languages = norm_languages(languages or 'all', true)
+  languages = vim.iter.filter(needs_update, languages) --- @type string[]
+
+  if #languages == 0 then
+    M.install(languages, {
+      force = true,
+      exclude_configured_parsers = true,
+      with_sync = options.with_sync,
+    })
+  else
+    vim.notify('All parsers are up-to-date')
   end
 end
 
-function M.uninstall(...)
+--- @param lang string
+--- @param parser string
+--- @param queries string
+local function uninstall(lang, parser, queries)
+  if vim.fn.filereadable(parser) ~= 1 then
+    return
+  end
+
+  iter_cmd({
+    {
+      cmd = function()
+        uv.fs_unlink(parser)
+      end,
+    },
+    {
+      cmd = function()
+        uv.fs_unlink(queries)
+      end,
+    },
+  }, 1, lang, 'Parser for ' .. lang .. ' has been uninstalled')
+end
+
+--- @param languages string[]|string
+function M.uninstall(languages)
   reset_progress_counter()
-  if vim.list_contains({ 'all' }, ...) then
-    local installed = config.installed_parsers()
-    M.uninstall(installed)
-  elseif ... then
-    local parser_dir = config.get_install_dir('parser')
-    local query_dir = config.get_install_dir('queries')
 
-    ---@type string[]
-    local languages = vim.tbl_flatten({ ... })
-    for _, lang in ipairs(languages) do
-      if not vim.list_contains(config.installed_parsers(), lang) then
-        vim.notify(
-          'Parser for ' .. lang .. ' is is not managed by nvim-treesitter',
-          vim.log.levels.ERROR
-        )
-        break
-      end
+  languages = norm_languages(languages or 'all', true)
 
+  local parser_dir = config.get_install_dir('parser')
+  local query_dir = config.get_install_dir('queries')
+  local installed = config.installed_parsers()
+
+  for _, lang in ipairs(languages) do
+    if not vim.list_contains(installed, lang) then
+      vim.notify(
+        'Parser for ' .. lang .. ' is is not managed by nvim-treesitter',
+        vim.log.levels.ERROR
+      )
+    else
       local parser = utils.join_path(parser_dir, lang) .. '.so'
       local queries = utils.join_path(query_dir, lang)
-      if vim.fn.filereadable(parser) == 1 then
-        iter_cmd({
-          {
-            cmd = function()
-              uv.fs_unlink(parser)
-            end,
-          },
-          {
-            cmd = function()
-              uv.fs_unlink(queries)
-            end,
-          },
-        }, 1, lang, 'Parser for ' .. lang .. ' has been uninstalled')
-      end
+      uninstall(lang, parser, queries)
     end
   end
 end

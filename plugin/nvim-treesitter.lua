@@ -23,7 +23,7 @@ api.nvim_create_user_command('TSInstallInfo', function()
 end, { nargs = 0, desc = 'List available treesitter parsers' })
 
 api.nvim_create_user_command('TSInstall', function(args)
-  require('nvim-treesitter.install').install({ force = args.bang })(unpack(args.fargs))
+  require('nvim-treesitter.install').install(args.fargs, { force = args.bang })
 end, {
   nargs = '+',
   bang = true,
@@ -33,10 +33,10 @@ end, {
 })
 
 api.nvim_create_user_command('TSInstallFromGrammar', function(args)
-  require('nvim-treesitter.install').install({
+  require('nvim-treesitter.install').install(args.fargs, {
     generate_from_grammar = true,
     force = args.bang,
-  })(unpack(args.fargs))
+  })
 end, {
   nargs = '+',
   bang = true,
@@ -46,10 +46,10 @@ end, {
 })
 
 api.nvim_create_user_command('TSInstallSync', function(args)
-  require('nvim-treesitter.install').install({
+  require('nvim-treesitter.install').install(args.fargs, {
     with_sync = true,
     force = args.bang,
-  })(unpack(args.fargs))
+  })
 end, {
   nargs = '+',
   bang = true,
@@ -59,7 +59,7 @@ end, {
 })
 
 api.nvim_create_user_command('TSUpdate', function(args)
-  require('nvim-treesitter.install').update()(unpack(args.fargs))
+  require('nvim-treesitter.install').update(args.fargs)
 end, {
   nargs = '*',
   bar = true,
@@ -68,7 +68,7 @@ end, {
 })
 
 api.nvim_create_user_command('TSUpdateSync', function(args)
-  require('nvim-treesitter.install').update({ with_sync = true })(unpack(args.fargs))
+  require('nvim-treesitter.install').update(args.fargs, { with_sync = true })
 end, {
   nargs = '*',
   bar = true,
@@ -77,7 +77,7 @@ end, {
 })
 
 api.nvim_create_user_command('TSUninstall', function(args)
-  require('nvim-treesitter.install').uninstall(unpack(args.fargs))
+  require('nvim-treesitter.install').uninstall(args.fargs)
 end, {
   nargs = '+',
   bar = true,
