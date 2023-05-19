@@ -536,7 +536,7 @@ function M.install(languages, options)
   local install_dir = config.get_install_dir('parser')
 
   if languages == 'all' then
-    force = false
+    force = true
   end
 
   languages = norm_languages(languages, nil, exclude_configured_parsers)
