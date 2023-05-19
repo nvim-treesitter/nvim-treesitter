@@ -3,8 +3,8 @@
 -- it's the way nvim-treesitter uses to "understand" the code
 
 local query = require('nvim-treesitter.query')
-local ts = vim.treesitter
 local api = vim.api
+local ts = vim.treesitter
 
 local M = {}
 
@@ -30,10 +30,6 @@ local function get_root_for_node(node)
   return result
 end
 
-function M.collect_locals(bufnr)
-  return query.collect_group_results(bufnr, 'locals')
-end
-
 -- Iterates matches from a locals query file.
 -- @param bufnr the buffer
 -- @param root the root node
@@ -43,7 +39,7 @@ end
 
 ---@param bufnr integer
 ---@return any
-function M.get_locals(bufnr)
+function M.collect_locals(bufnr)
   return query.collect_group_results(bufnr, 'locals')
 end
 
@@ -57,7 +53,7 @@ function M.get_definition_id(scope, node_text)
 end
 
 function M.get_definitions(bufnr)
-  local locals = M.get_locals(bufnr)
+  local locals = M.collect_locals(bufnr)
 
   local defs = {}
 
@@ -71,7 +67,7 @@ function M.get_definitions(bufnr)
 end
 
 function M.get_scopes(bufnr)
-  local locals = M.get_locals(bufnr)
+  local locals = M.collect_locals(bufnr)
 
   local scopes = {}
 
@@ -85,7 +81,7 @@ function M.get_scopes(bufnr)
 end
 
 function M.get_references(bufnr)
-  local locals = M.get_locals(bufnr)
+  local locals = M.collect_locals(bufnr)
 
   local refs = {}
 
@@ -298,7 +294,7 @@ function M.find_usages(node, scope_node, bufnr)
     return {}
   end
 
-  local scope_node = scope_node or get_root_for_node(node)
+  scope_node = scope_node or get_root_for_node(node)
   local usages = {}
 
   for match in M.iter_locals(bufnr, scope_node) do
@@ -323,8 +319,8 @@ end
 ---@param allow_scope? boolean
 ---@return TSNode|nil
 function M.containing_scope(node, bufnr, allow_scope)
-  local bufnr = bufnr or api.nvim_get_current_buf()
-  local allow_scope = allow_scope == nil or allow_scope == true
+  bufnr = bufnr or api.nvim_get_current_buf()
+  allow_scope = allow_scope == nil or allow_scope == true
 
   local scopes = M.get_scopes(bufnr)
   if not node or not scopes then
@@ -369,6 +365,9 @@ function M.next_scope(node)
   end
 
   local scope = M.containing_scope(node)
+  if not scope then
+    return
+  end
 
   local parent = scope:parent()
   if not parent then
@@ -396,6 +395,9 @@ function M.previous_scope(node)
   end
 
   local scope = M.containing_scope(node)
+  if not scope then
+    return
+  end
 
   local parent = scope:parent()
   if not parent then
