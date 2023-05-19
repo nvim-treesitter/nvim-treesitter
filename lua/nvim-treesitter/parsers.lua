@@ -7,7 +7,6 @@
 ---@field requires_generate_from_grammar boolean|nil
 ---@field location string|nil
 ---@field use_makefile boolean|nil
----@field cxx_standard string|nil
 
 ---@class ParserInfo
 ---@field install_info InstallInfo
@@ -231,7 +230,6 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
       requires_generate_from_grammar = true,
     },
-    -- Generating grammar takes ~60s
     tier = 4,
     maintainers = { '@nawordar' },
   },
@@ -908,9 +906,9 @@ M.configs = {
     install_info = {
       url = 'https://github.com/nvim-neorg/tree-sitter-norg',
       files = { 'src/parser.c', 'src/scanner.cc' },
-      cxx_standard = 'c++14',
       use_makefile = true,
     },
+    tier = 4,
     maintainers = { '@JoeyGrajciar', '@vhyrro' },
   },
 

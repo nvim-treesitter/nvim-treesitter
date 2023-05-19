@@ -92,7 +92,6 @@ function M.select_compile_command(repo, cc, compile_location)
         args = {
           '--makefile=' .. utils.get_package_path('scripts', 'compile_parsers.makefile'),
           'CC=' .. cc,
-          'CXX_STANDARD=' .. (repo.cxx_standard or 'c++14'),
         },
         cwd = compile_location,
       },

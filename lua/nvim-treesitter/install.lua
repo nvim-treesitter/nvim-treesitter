@@ -74,7 +74,7 @@ end
 local function iter_cmd_sync(cmd_list)
   for _, cmd in ipairs(cmd_list) do
     if cmd.info then
-      print(cmd.info)
+      vim.notify(cmd.info)
     end
 
     if type(cmd.cmd) == 'function' then
@@ -82,7 +82,7 @@ local function iter_cmd_sync(cmd_list)
     else
       local ret = vim.fn.system(get_command(cmd))
       if vim.v.shell_error ~= 0 then
-        print(ret)
+        vim.notify(ret)
         api.nvim_err_writeln(
           (cmd.err and cmd.err .. '\n' or '')
             .. 'Failed to execute the following command:\n'
@@ -102,12 +102,12 @@ local function iter_cmd(cmd_list, i, lang, success_message)
   end
   if i == #cmd_list + 1 then
     finished_commands = finished_commands + 1
-    return print(get_job_status() .. ' ' .. success_message)
+    return vim.notify(get_job_status() .. ' ' .. success_message)
   end
 
   local attr = cmd_list[i]
   if attr.info then
-    print(get_job_status() .. ' ' .. attr.info)
+    vim.notify(get_job_status() .. ' ' .. attr.info)
   end
 
   if attr.opts and attr.opts.args and M.command_extra_args[attr.cmd] then
@@ -148,7 +148,7 @@ local function iter_cmd(cmd_list, i, lang, success_message)
           failed_commands = failed_commands + 1
           finished_commands = finished_commands + 1
           if stdout_output[handle] and stdout_output[handle] ~= '' then
-            print(stdout_output[handle])
+            vim.notify(stdout_output[handle])
           end
 
           local err_msg = stderr_output[handle] or ''
@@ -299,7 +299,7 @@ local function install_lang(lang, cache_dir, install_dir, force, with_sync, gene
       local yesno =
         vim.fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
       print('\n ')
-      if not yesno:find('^y.*') then
+      if yesno:sub(1, 1) ~= 'y' then
         return
       end
     end
@@ -457,7 +457,7 @@ local function install_lang(lang, cache_dir, install_dir, force, with_sync, gene
 
   if with_sync then
     if iter_cmd_sync(command_list) == true then
-      print('Treesitter parser for ' .. lang .. ' has been installed')
+      vim.notify('Treesitter parser for ' .. lang .. ' has been installed')
     end
   else
     iter_cmd(command_list, 1, lang, 'Treesitter parser for ' .. lang .. ' has been installed')
