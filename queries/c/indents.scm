@@ -1,7 +1,7 @@
 [
-  (compound_statement) 
+  (compound_statement)          ; Most { ... } blocks
   (field_declaration_list)
-  (case_statement)
+  (case_statement)              ; whatever comes after `case Foo:` 
   (enumerator_list)
   (compound_literal_expression)
   (initializer_list)
@@ -121,6 +121,8 @@
 ((ERROR (parameter_declaration)) @indent.align
  (#set! indent.open_delimiter "(")
  (#set! indent.close_delimiter ")"))
+
+; Functions arguments, i.e. `x(...)`
 ([(argument_list) (parameter_list)] @indent.align
   (#set! indent.open_delimiter "(")
   (#set! indent.close_delimiter ")"))
