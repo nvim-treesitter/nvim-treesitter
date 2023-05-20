@@ -15,7 +15,7 @@ jobs:
 
       - name: Prepare
         env:
-          NVIM_TAG: stable
+          NVIM_TAG: nightly
         run: |
           bash ./scripts/ci-install-ubuntu-latest.sh
 
