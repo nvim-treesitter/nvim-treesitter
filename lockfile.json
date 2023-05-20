@@ -33,7 +33,7 @@
     "revision": "7f1a5df44861291d6951b6b2146a9fef4c226e14"
   },
   "c": {
-    "revision": "424d0145efb0a87927269ab47709f98a564f8c4f"
+    "revision": "cac392ac3d7d365c469971b117e92a0df3bc8305"
   },
   "c_sharp": {
     "revision": "aaafc3d75f058ca5fe639b7ed5829964a3ca4575"
@@ -156,7 +156,7 @@
     "revision": "577a075d46ea109905c5cb6179809df88da61ce9"
   },
   "gitcommit": {
-    "revision": "6c14f8b63767cf6264c5c43ec71cc9351420e831"
+    "revision": "9d8c81e8e64b3b4f4c36de1425c5fc841097d7f4"
   },
   "gitignore": {
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
@@ -429,7 +429,7 @@
     "revision": "0a70e15da977489d954c219af9b50b8a722630ee"
   },
   "scala": {
-    "revision": "7d348f51e442563f4ab2b6c3e136dac658649f93"
+    "revision": "78ae129292990224bcae025e7d3f4873a88f772d"
   },
   "scheme": {
     "revision": "6abcfe33d976ebe3e244ca80273c7e8a070441b5"
@@ -453,7 +453,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "0f774f4ce1fbc7aa6df6202301e0b08b8c844ae4"
+    "revision": "721087c8819cda10ca37f974e914ab9be46b290f"
   },
   "squirrel": {
     "revision": "3fefc6b9bb2b4de1b1c461783f675918cd957546"
