@@ -15,7 +15,7 @@ jobs:
 
       - name: Prepare
         env:
-          NVIM_TAG: stable
+          NVIM_TAG: nightly
         run: |
           sudo apt install libfuse2
           wget https://github.com/neovim/neovim/releases/download/${NVIM_TAG}/nvim.appimage
