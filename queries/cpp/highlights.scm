@@ -234,4 +234,7 @@
 (template_argument_list
   ["<" ">"] @punctuation.bracket)
 
+(template_parameter_list
+  ["<" ">"] @punctuation.bracket)
+
 (literal_suffix) @operator
