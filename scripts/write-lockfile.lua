@@ -2,7 +2,7 @@
 vim.opt.runtimepath:append('.')
 
 -- Load previous lockfile
-local filename = require('nvim-treesitter.utils').get_package_path('lockfile.json')
+local filename = require('nvim-treesitter.shell_cmds').get_package_path('lockfile.json')
 local file = assert(io.open(filename, 'r'))
 local lockfile = vim.json.decode(file:read('*a'))
 file:close()
