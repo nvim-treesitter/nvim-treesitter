@@ -22,7 +22,7 @@ jobs:
 
       - name: Prepare
         env:
-          NVIM_TAG: stable
+          NVIM_TAG: nightly
         run: |
           wget https://github.com/josephburnett/jd/releases/download/v1.7.1/jd-amd64-linux
           mv jd-amd64-linux /tmp/jd
