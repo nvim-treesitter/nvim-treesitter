@@ -47,6 +47,7 @@ for _, v in ipairs(sorted_parsers) do
     .. (vim.loop.fs_stat('runtime/queries/' .. v.name .. '/folds.scm') and 'F' or ' ')
     .. (vim.loop.fs_stat('runtime/queries/' .. v.name .. '/indents.scm') and 'I' or ' ')
     .. (vim.loop.fs_stat('runtime/queries/' .. v.name .. '/injections.scm') and 'J' or ' ')
+    .. (vim.loop.fs_stat('runtime/queries/' .. v.name .. '/locals.scm') and 'L' or ' ')
     .. '` | '
 
   -- CLI
