@@ -1,5 +1,3 @@
-local utils = require('nvim-treesitter.utils')
-
 local M = {}
 
 ---@class TSConfig
@@ -15,7 +13,7 @@ local config = {
   auto_install = false,
   ensure_install = {},
   ignore_install = {},
-  install_dir = utils.join_path(vim.fn.stdpath('data'), 'site'),
+  install_dir = vim.fs.joinpath(vim.fn.stdpath('data'), 'site'),
 }
 
 ---Setup call for users to override configuration configurations.
@@ -62,7 +60,7 @@ end
 ---@param dir_name string
 ---@return string
 function M.get_install_dir(dir_name)
-  local dir = utils.join_path(config.install_dir, dir_name)
+  local dir = vim.fs.joinpath(config.install_dir, dir_name)
 
   if not vim.loop.fs_stat(dir) then
     local ok, error = pcall(vim.fn.mkdir, dir, 'p', '0755')
