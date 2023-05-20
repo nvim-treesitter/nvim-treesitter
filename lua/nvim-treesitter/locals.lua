@@ -184,7 +184,7 @@ M.get = memoize(function(bufnr)
 
   return definitions, references, scopes
 end, function(bufnr)
-return tostring(bufnr)
+  return tostring(bufnr)
 end)
 
 -- Get a single dimension table to look definition nodes.
