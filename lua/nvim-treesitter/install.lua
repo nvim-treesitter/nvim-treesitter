@@ -1,7 +1,7 @@
 local api = vim.api
+local fs = vim.fs
 local uv = vim.loop
 
-local utils = require('nvim-treesitter.utils')
 local parsers = require('nvim-treesitter.parsers')
 local config = require('nvim-treesitter.config')
 local shell = require('nvim-treesitter.shell_cmds')
@@ -208,7 +208,7 @@ end
 ---@return string|nil
 local function get_revision(lang)
   if #lockfile == 0 then
-    local filename = utils.get_package_path('lockfile.json')
+    local filename = shell.get_package_path('lockfile.json')
     local file = assert(io.open(filename, 'r'))
     lockfile = vim.json.decode(file:read('*all'))
     file:close()
@@ -227,7 +227,7 @@ end
 ---@param lang string
 ---@return string|nil
 local function get_installed_revision(lang)
-  local lang_file = utils.join_path(config.get_install_dir('parser-info'), lang .. '.revision')
+  local lang_file = fs.joinpath(config.get_install_dir('parser-info'), lang .. '.revision')
   local file = assert(io.open(lang_file, 'r'))
   local revision = file:read('*a')
   file:close()
@@ -292,7 +292,7 @@ local function install_lang(lang, cache_dir, install_dir, force, with_sync, gene
   local repo = get_parser_install_info(lang)
 
   local project_name = 'tree-sitter-' .. lang
-  local maybe_local_path = vim.fs.normalize(repo.url)
+  local maybe_local_path = fs.normalize(repo.url)
   local from_local_path = vim.fn.isdirectory(maybe_local_path) == 1
   if from_local_path then
     repo.url = maybe_local_path
@@ -303,16 +303,16 @@ local function install_lang(lang, cache_dir, install_dir, force, with_sync, gene
   if from_local_path then
     compile_location = repo.url
     if repo.location then
-      compile_location = utils.join_path(compile_location, repo.location)
+      compile_location = fs.joinpath(compile_location, repo.location)
     end
   else
     local repo_location = project_name
     if repo.location then
-      repo_location = utils.join_path(repo_location, repo.location)
+      repo_location = fs.joinpath(repo_location, repo.location)
     end
-    compile_location = utils.join_path(cache_dir, repo_location)
+    compile_location = fs.joinpath(cache_dir, repo_location)
   end
-  local parser_lib_name = utils.join_path(install_dir, lang) .. '.so'
+  local parser_lib_name = fs.joinpath(install_dir, lang) .. '.so'
 
   generate_from_grammar = repo.requires_generate_from_grammar or generate_from_grammar
 
@@ -371,7 +371,7 @@ local function install_lang(lang, cache_dir, install_dir, force, with_sync, gene
     vim.list_extend(command_list, {
       {
         cmd = function()
-          vim.fn.delete(utils.join_path(cache_dir, project_name), 'rf')
+          vim.fn.delete(fs.joinpath(cache_dir, project_name), 'rf')
         end,
       },
     })
@@ -416,14 +416,14 @@ local function install_lang(lang, cache_dir, install_dir, force, with_sync, gene
     shell.select_compile_command(repo, cc, compile_location),
     {
       cmd = function()
-        uv.fs_copyfile(utils.join_path(compile_location, 'parser.so'), parser_lib_name)
+        uv.fs_copyfile(fs.joinpath(compile_location, 'parser.so'), parser_lib_name)
       end,
     },
     {
       cmd = function()
         local file = assert(
           io.open(
-            utils.join_path(config.get_install_dir('parser-info') or '', lang .. '.revision'),
+            fs.joinpath(config.get_install_dir('parser-info') or '', lang .. '.revision'),
             'w'
           )
         )
@@ -436,7 +436,7 @@ local function install_lang(lang, cache_dir, install_dir, force, with_sync, gene
     vim.list_extend(command_list, {
       {
         cmd = function()
-          vim.fn.delete(utils.join_path(cache_dir, project_name), 'rf')
+          vim.fn.delete(fs.joinpath(cache_dir, project_name), 'rf')
         end,
       },
     })
@@ -486,8 +486,8 @@ function M.install(languages, options)
   for _, lang in ipairs(languages) do
     install_lang(lang, cache_dir, install_dir, force, with_sync, generate_from_grammar)
     uv.fs_symlink(
-      utils.get_package_path('runtime', 'queries', lang),
-      utils.join_path(config.get_install_dir('queries'), lang),
+      shell.get_package_path('runtime', 'queries', lang),
+      fs.joinpath(config.get_install_dir('queries'), lang),
       { dir = true, junction = true } -- needed on Windows (non-junction links require admin)
     )
   end
@@ -556,8 +556,8 @@ function M.uninstall(languages)
         vim.log.levels.ERROR
       )
     else
-      local parser = utils.join_path(parser_dir, lang) .. '.so'
-      local queries = utils.join_path(query_dir, lang)
+      local parser = fs.joinpath(parser_dir, lang) .. '.so'
+      local queries = fs.joinpath(query_dir, lang)
       uninstall(lang, parser, queries)
     end
   end
