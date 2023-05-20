@@ -1,5 +1,4 @@
 local uv = vim.loop
-local utils = require('nvim-treesitter.utils')
 
 local iswin = uv.os_uname().sysname == 'Windows_NT'
 
@@ -90,7 +89,7 @@ function M.select_compile_command(repo, cc, compile_location)
       err = 'Error during compilation',
       opts = {
         args = {
-          '--makefile=' .. utils.get_package_path('scripts', 'compile_parsers.makefile'),
+          '--makefile=' .. M.get_package_path('scripts', 'compile_parsers.makefile'),
           'CC=' .. cc,
         },
         cwd = compile_location,
@@ -109,7 +108,7 @@ function M.select_download_commands(repo, project_name, cache_dir, revision, pre
   local can_use_tar = vim.fn.executable('tar') == 1 and vim.fn.executable('curl') == 1
   local is_github = repo.url:find('github.com', 1, true)
   local is_gitlab = repo.url:find('gitlab.com', 1, true)
-  local project_dir = utils.join_path(cache_dir, project_name)
+  local project_dir = vim.fs.joinpath(cache_dir, project_name)
 
   revision = revision or repo.branch or 'master'
 
@@ -182,7 +181,7 @@ function M.select_download_commands(repo, project_name, cache_dir, revision, pre
       {
         cmd = function()
           uv.fs_rename(
-            utils.join_path(temp_dir, url:match('[^/]-$') .. '-' .. dir_rev),
+            vim.fs.joinpath(temp_dir, url:match('[^/]-$') .. '-' .. dir_rev),
             project_dir
           )
         end,
@@ -225,6 +224,10 @@ function M.select_download_commands(repo, project_name, cache_dir, revision, pre
       },
     }
   end
+end
+
+function M.get_package_path(...)
+  return vim.fs.joinpath(vim.fn.fnamemodify(debug.getinfo(1, 'S').source:sub(2), ':p:h:h:h'), ...)
 end
 
 --TODO(clason): only needed for iter_cmd_sync -> replace with uv.spawn?
