@@ -119,6 +119,10 @@ vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 
 Injections are used for multi-language documents, see `:h treesitter-language-injections`. No setup is needed.
 
+## Locals
+
+These queries can be used to look up definitions and references to identifiers in a given scope. They are used, e.g., by the `nvim-treesitter-refactor` plugin.
+
 # Advanced setup
 
 ## Adding parsers
