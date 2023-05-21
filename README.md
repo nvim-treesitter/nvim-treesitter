@@ -248,6 +248,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [htmldjango](https://github.com/interdependence/tree-sitter-htmldjango) (experimental, maintained by @ObserverOfTime)
 - [x] [http](https://github.com/rest-nvim/tree-sitter-http) (maintained by @amaanq)
 - [x] [ini](https://github.com/justinmk/tree-sitter-ini) (experimental, maintained by @theHamsta)
+- [x] [ispc](https://github.com/fab4100/tree-sitter-ispc) (maintained by @fab4100)
 - [x] [janet_simple](https://github.com/sogaiu/tree-sitter-janet-simple) (maintained by @sogaiu)
 - [x] [java](https://github.com/tree-sitter/tree-sitter-java) (maintained by @p00f)
 - [x] [javascript](https://github.com/tree-sitter/tree-sitter-javascript) (maintained by @steelsojka)
