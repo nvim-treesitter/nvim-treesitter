@@ -703,6 +703,15 @@ list.ini = {
   experimental = true,
 }
 
+list.ispc = {
+  install_info = {
+    url = "https://github.com/fab4100/tree-sitter-ispc",
+    files = { "src/parser.c" },
+    generate_requires_npm = true,
+  },
+  maintainers = { "@fab4100" },
+}
+
 list.janet_simple = {
   install_info = {
     url = "https://github.com/sogaiu/tree-sitter-janet-simple",
