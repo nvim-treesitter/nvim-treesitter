@@ -28,7 +28,7 @@
  (#match? @number "^[-+]?[0-9]+(.[0-9]+)?$"))
 
 ((program . (comment)* . (comment) @include)
- (#match? @include "^;+ *inherits *:"))
+ (#lua-match? @include "^;+ *inherits *:"))
 
 ((program . (comment)* . (comment) @preproc)
- (#match? @preproc "^;+ *extends"))
+ (#lua-match? @preproc "^;+ *extends"))
