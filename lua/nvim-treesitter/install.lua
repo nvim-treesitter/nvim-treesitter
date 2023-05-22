@@ -569,7 +569,11 @@ M.install = a.sync(function(languages, options)
   local cache_dir = vim.fn.stdpath('cache')
   local install_dir = config.get_install_dir('parser')
 
-  if languages == 'all' then
+  if not languages or type(languages) == 'string' then
+    languages = { languages }
+  end
+
+  if languages[1] == 'all' then
     force = true
   end
 
