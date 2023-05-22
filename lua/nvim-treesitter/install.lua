@@ -4,7 +4,6 @@ local uv = vim.loop
 
 local parsers = require('nvim-treesitter.parsers')
 local config = require('nvim-treesitter.config')
-local shell = require('nvim-treesitter.shell_cmds')
 
 local a = require('nvim-treesitter.async')
 local job = require('nvim-treesitter.job')
@@ -21,12 +20,14 @@ local max_jobs = 50
 
 M.compilers = { uv.os_getenv('CC'), 'cc', 'gcc', 'clang', 'cl', 'zig' }
 M.prefer_git = uv.os_uname().sysname == 'Windows_NT'
-M.command_extra_args = {}
-M.ts_generate_args = nil
+M.ts_generate_args = nil --- @type string[]?
 
 local started_commands = 0
 local finished_commands = 0
 local failed_commands = 0
+
+local iswin = uv.os_uname().sysname == 'Windows_NT'
+local ismac = uv.os_uname().sysname == 'Darwin'
 
 ---
 --- JOB API functions
@@ -67,11 +68,15 @@ local function get_parser_install_info(lang, validate)
   return install_info
 end
 
+local function get_package_path(...)
+  return vim.fs.joinpath(vim.fn.fnamemodify(debug.getinfo(1, 'S').source:sub(2), ':p:h:h:h'), ...)
+end
+
 ---@param lang string
 ---@return string|nil
 local function get_revision(lang)
   if #lockfile == 0 then
-    local filename = shell.get_package_path('lockfile.json')
+    local filename = get_package_path('lockfile.json')
     local file = assert(io.open(filename, 'r'))
     lockfile = vim.json.decode(file:read('*all')) --[[@as table<string, LockfileInfo>]]
     file:close()
@@ -127,34 +132,6 @@ function M.info()
       output = { parser .. '[✗] not installed' }
     end
     api.nvim_echo({ output }, false, {})
-  end
-end
-
---- @param cmd Command
-local function run_command(cmd)
-  if cmd.info then
-    print(cmd.info)
-  end
-
-  if type(cmd.cmd) == 'function' then
-    cmd.cmd()
-    return
-  end
-
-  local cmd1 = { cmd.cmd }
-  if cmd.opts and cmd.opts.args then
-    vim.list_extend(cmd1, cmd.opts.args)
-  end
-
-  local r = job.run(cmd1, {
-    cwd = (cmd.opts or {}).cwd,
-  })
-  a.main()
-
-  if r.exit_code > 0 then
-    failed_commands = failed_commands + 1
-    finished_commands = finished_commands + 1
-    error(cmd.err .. ': ' .. vim.inspect(r.stderr))
   end
 end
 
@@ -235,6 +212,257 @@ local function do_generate_from_grammar(repo, lang, compile_location)
   end
 end
 
+---@param repo InstallInfo
+---@param project_name string
+---@param cache_dir string
+---@param revision string
+---@param project_dir string
+local function do_download_tar(repo, project_name, cache_dir, revision, project_dir)
+  local is_github = repo.url:find('github.com', 1, true)
+  local url = repo.url:gsub('.git$', '')
+
+  local dir_rev = revision
+  if is_github and revision:find('^v%d') then
+    dir_rev = revision:sub(2)
+  end
+
+  local temp_dir = project_dir .. '-tmp'
+
+  vim.fn.delete(temp_dir, 'rf')
+
+  print('Downloading ' .. project_name .. '...')
+  local target = is_github and url .. '/archive/' .. revision .. '.tar.gz'
+  or url
+  .. '/-/archive/'
+  .. revision
+  .. '/'
+  .. project_name
+  .. '-'
+  .. revision
+  .. '.tar.gz'
+
+  local r = job.run({
+    'curl',
+    '--silent',
+    '-L', -- follow redirects
+    target,
+    '--output',
+    project_name .. '.tar.gz',
+  }, {
+    cwd = cache_dir,
+  })
+  a.main()
+  if r.exit_code > 0 then
+    failed_commands = failed_commands + 1
+    finished_commands = finished_commands + 1
+    error('Error during download, please verify your internet connection: '.. vim.inspect(r.stderr))
+  end
+
+  print('Creating temporary directory')
+  --TODO(clason): use vim.fn.mkdir(temp_dir, 'p') in case stdpath('cache') is not created
+  local err = a.wrap(uv.fs_mkdir, 3)(temp_dir, 493)
+  a.main()
+  if err then
+    failed_commands = failed_commands + 1
+    finished_commands = finished_commands + 1
+    error(string.format('Could not create %s-tmp: %s', project_name, err))
+  end
+
+  print('Extracting ' .. project_name .. '...')
+  r = job.run({
+    'tar',
+     '-xvzf',
+     project_name .. '.tar.gz',
+     '-C',
+     project_name .. '-tmp',
+  }, {
+    cwd = cache_dir,
+  })
+
+  a.main()
+  if r.exit_code > 0 then
+    failed_commands = failed_commands + 1
+    finished_commands = finished_commands + 1
+    error('Error during tarball extraction: '.. vim.inspect(r.stderr))
+  end
+
+  err = a.wrap(uv.fs_unlink, 2)(project_dir .. '.tar.gz')
+  if err then
+    failed_commands = failed_commands + 1
+    finished_commands = finished_commands + 1
+    error('Could not remove tarball: '..err)
+  end
+  a.main()
+
+  err = a.wrap(uv.fs_rename, 3)(
+    vim.fs.joinpath(temp_dir, url:match('[^/]-$') .. '-' .. dir_rev),
+    project_dir
+  )
+  a.main()
+
+  if err then
+    failed_commands = failed_commands + 1
+    finished_commands = finished_commands + 1
+    error('Could not rename temp: '..err)
+  end
+
+  vim.fn.delete(temp_dir, 'rf')
+end
+
+---@param repo InstallInfo
+---@param project_name string
+---@param cache_dir string
+---@param revision string
+---@param project_dir string
+local function do_download_git(repo, project_name, cache_dir, revision, project_dir)
+  local clone_error = 'Error during download, please verify your internet connection'
+
+  print('Downloading ' .. project_name .. '...')
+  local r = job.run({
+    'git', 'clone', repo.url, project_name,
+  }, {
+    cwd = cache_dir,
+  })
+
+  a.main()
+
+  if r.exit_code > 0 then
+    failed_commands = failed_commands + 1
+    finished_commands = finished_commands + 1
+    error(clone_error..': '..r.stderr)
+  end
+
+  print('Checking out locked revision')
+  r = job.run({
+    'git', 'checkout', revision
+  }, {
+    cwd = project_dir,
+  })
+
+  a.main()
+
+  if r.exit_code > 0 then
+    failed_commands = failed_commands + 1
+    finished_commands = finished_commands + 1
+    error('Error while checking out revision: '..vim.inspect(r.stderr))
+  end
+end
+
+---@param executables string[]
+---@return string|nil
+local function select_executable(executables)
+  return vim.tbl_filter(function(c) ---@param c string
+    return c ~= vim.NIL and vim.fn.executable(c) == 1
+  end, executables)[1]
+end
+
+-- Returns the compiler arguments based on the compiler and OS
+---@param repo InstallInfo
+---@param compiler string
+---@return string[]
+local function select_compiler_args(repo, compiler)
+  if compiler:find('cl$') or compiler:find('cl.exe$') then
+    return {
+      '/Fe:',
+      'parser.so',
+      '/Isrc',
+      repo.files,
+      '-Os',
+      '/LD',
+    }
+  end
+
+  if compiler:find('zig$') or compiler:find('zig.exe$') then
+    return {
+      'c++',
+      '-o',
+      'parser.so',
+      repo.files,
+      '-lc',
+      '-Isrc',
+      '-shared',
+      '-Os',
+    }
+  end
+
+  local args = {
+    '-o',
+    'parser.so',
+    '-I./src',
+    repo.files,
+    '-Os',
+    ismac and '-bundle' or '-shared'
+  }
+
+  if
+    #vim.tbl_filter(function(file) ---@param file string
+      local ext = vim.fn.fnamemodify(file, ':e')
+      return ext == 'cc' or ext == 'cpp' or ext == 'cxx'
+    end, repo.files) > 0
+  then
+    table.insert(args, '-lstdc++')
+  end
+
+  if not iswin then
+    table.insert(args, '-fPIC')
+  end
+
+  return args
+end
+
+---@param repo InstallInfo
+---@param project_name string
+---@param cache_dir string
+---@param revision string|nil
+---@param prefer_git boolean
+local function do_download(repo, project_name, cache_dir, revision, prefer_git)
+  local can_use_tar = vim.fn.executable('tar') == 1 and vim.fn.executable('curl') == 1
+  local is_github = repo.url:find('github.com', 1, true)
+  local is_gitlab = repo.url:find('gitlab.com', 1, true)
+  local project_dir = vim.fs.joinpath(cache_dir, project_name)
+
+  revision = revision or repo.branch or 'master'
+
+  if can_use_tar and (is_github or is_gitlab) and not prefer_git then
+    do_download_tar(repo, project_name, cache_dir, revision, project_dir)
+    return
+  end
+
+  do_download_git(repo, project_name, cache_dir, revision, project_dir)
+end
+
+-- Returns the compile command based on the OS and user options
+---@param repo InstallInfo
+---@param cc string
+---@param compile_location string
+local function do_compile(repo, cc, compile_location)
+  local make = select_executable({ 'gmake', 'make' })
+
+  print('Compiling...')
+
+  local cmd --- @type string[]
+  if cc:find('cl$') or cc:find('cl.exe$') or not repo.use_makefile or iswin or not make then
+    local args = vim.tbl_flatten(select_compiler_args(repo, cc))
+    cmd = vim.list_extend({cc}, args)
+  else
+    cmd = {
+      make,
+      '--makefile=' .. M.get_package_path('scripts', 'compile_parsers.makefile'),
+      'CC=' .. cc
+    }
+  end
+
+  local r = job.run(cmd, { cwd = compile_location })
+
+  a.main()
+
+  if r.exit_code > 0 then
+    failed_commands = failed_commands + 1
+    finished_commands = finished_commands + 1
+    error('Error during compilation: ' .. vim.inspect(r.stderr))
+  end
+end
+
 ---@param lang string
 ---@param cache_dir string
 ---@param install_dir string
@@ -287,42 +515,24 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
     return
   end
 
-  local cc = shell.select_executable(M.compilers)
+  local cc = select_executable(M.compilers)
   if not cc then
     cc_err()
     return
   end
 
-  local revision = repo.revision
-  if not revision then
-    revision = get_revision(lang)
-  end
-
-  ---@class Command
-  ---@field cmd string
-  ---@field info string
-  ---@field err string
-  ---@field opts CmdOpts
-
-  ---@class CmdOpts
-  ---@field args string[]
-  ---@field cwd string
+  local revision = repo.revision or get_revision(lang)
 
   if not from_local_path then
     vim.fn.delete(fs.joinpath(cache_dir, project_name), 'rf')
-
-    local dlcmds =
-      shell.select_download_commands(repo, project_name, cache_dir, revision, M.prefer_git)
-    for _, cmd in ipairs(dlcmds) do
-      run_command(cmd)
-    end
+    do_download(repo, project_name, cache_dir, revision, M.prefer_git)
   end
 
   if generate_from_grammar then
     do_generate_from_grammar(repo, lang, compile_location)
   end
 
-  run_command(shell.select_compile_command(repo, cc, compile_location))
+  do_compile(repo, cc, compile_location)
 
   local copyfile = a.wrap(uv.fs_copyfile, 4)
 
@@ -392,7 +602,7 @@ M.install = a.sync(function(languages, options)
     tasks[#tasks + 1] = a.sync(function()
       install_lang(lang, cache_dir, install_dir, force, generate_from_grammar)
       local err = symlink(
-        shell.get_package_path('runtime', 'queries', lang),
+        get_package_path('runtime', 'queries', lang),
         fs.joinpath(config.get_install_dir('queries'), lang),
         { dir = true, junction = true }
       )
