@@ -38,7 +38,11 @@ function M.setup(user_data)
           and not vim.list_contains(M.installed_parsers(), lang)
           and not vim.list_contains(config.ignore_install, lang)
         then
-          require('nvim-treesitter.install').install(lang)
+          require('nvim-treesitter.install').install(lang, nil, function()
+            -- Need to pcall since 'FileType' can be triggered multiple times
+            -- per buffer
+            pcall(vim.treesitter.start, args.buf, lang)
+          end)
         end
       end,
     })
@@ -48,9 +52,7 @@ function M.setup(user_data)
     local to_install = M.norm_languages(config.ensure_install, { ignored = true, installed = true })
 
     if #to_install > 0 then
-      require('nvim-treesitter.install').install(to_install, {
-        with_sync = config.sync_install,
-      })
+      require('nvim-treesitter.install').install(to_install)
     end
   end
 end
@@ -63,9 +65,10 @@ function M.get_install_dir(dir_name)
   local dir = vim.fs.joinpath(config.install_dir, dir_name)
 
   if not vim.loop.fs_stat(dir) then
-    local ok, error = pcall(vim.fn.mkdir, dir, 'p', '0755')
+    local ok, err = pcall(vim.fn.mkdir, dir, 'p', '0755')
     if not ok then
-      vim.notify(error, vim.log.levels.ERROR)
+      local log = require('nvim-treesitter.log')
+      log.error(err --[[@as string]])
     end
   end
   return dir
@@ -110,7 +113,7 @@ function M.norm_languages(languages, skip)
     if vim.list_contains(languages, tier) then
       languages = vim.iter.filter(function(l)
         return l ~= tier
-      end, languages)
+      end, languages) --[[@as string[] ]]
       vim.list_extend(languages, parsers.get_available(i))
     end
   end
@@ -119,21 +122,21 @@ function M.norm_languages(languages, skip)
     local ignored = config.ignore_install
     languages = vim.iter.filter(function(v)
       return not vim.list_contains(ignored, v)
-    end, languages)
+    end, languages) --[[@as string[] ]]
   end
 
   if skip and skip.installed then
     local installed = M.installed_parsers()
     languages = vim.iter.filter(function(v)
       return not vim.list_contains(installed, v)
-    end, languages)
+    end, languages) --[[@as string[] ]]
   end
 
   if skip and skip.missing then
     local installed = M.installed_parsers()
     languages = vim.iter.filter(function(v)
       return vim.list_contains(installed, v)
-    end, languages)
+    end, languages) --[[@as string[] ]]
   end
 
   return languages
