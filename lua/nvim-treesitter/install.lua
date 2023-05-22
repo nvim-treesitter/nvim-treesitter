@@ -8,6 +8,12 @@ local config = require('nvim-treesitter.config')
 local a = require('nvim-treesitter.async')
 local job = require('nvim-treesitter.job')
 
+local uv_copyfile = a.wrap(uv.fs_copyfile, 4)
+local uv_mkdir = a.wrap(uv.fs_mkdir, 3)
+local uv_rename  = a.wrap(uv.fs_rename, 3)
+local uv_symlink = a.wrap(uv.fs_symlink, 4)
+local uv_unlink = a.wrap(uv.fs_unlink, 2)
+
 local M = {}
 
 ---@class LockfileInfo
@@ -255,7 +261,7 @@ local function do_download_tar(repo, project_name, cache_dir, revision, project_
 
   print('Creating temporary directory')
   --TODO(clason): use vim.fn.mkdir(temp_dir, 'p') in case stdpath('cache') is not created
-  local err = a.wrap(uv.fs_mkdir, 3)(temp_dir, 493)
+  local err = uv_mkdir(temp_dir, 493)
   a.main()
   if err then
     failed_commands = failed_commands + 1
@@ -281,7 +287,7 @@ local function do_download_tar(repo, project_name, cache_dir, revision, project_
     error('Error during tarball extraction: ' .. vim.inspect(r.stderr))
   end
 
-  err = a.wrap(uv.fs_unlink, 2)(project_dir .. '.tar.gz')
+  err = uv_unlink(project_dir .. '.tar.gz')
   if err then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
@@ -289,7 +295,7 @@ local function do_download_tar(repo, project_name, cache_dir, revision, project_
   end
   a.main()
 
-  err = a.wrap(uv.fs_rename, 3)(
+  err = uv_rename(
     vim.fs.joinpath(temp_dir, url:match('[^/]-$') .. '-' .. dir_rev),
     project_dir
   )
@@ -530,11 +536,9 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
 
   do_compile(repo, cc, compile_location)
 
-  local copyfile = a.wrap(uv.fs_copyfile, 4)
-
   local parser_lib_name = fs.joinpath(install_dir, lang) .. '.so'
 
-  local err = copyfile(fs.joinpath(compile_location, 'parser.so'), parser_lib_name)
+  local err = uv_copyfile(fs.joinpath(compile_location, 'parser.so'), parser_lib_name)
   a.main()
   if err then
     failed_commands = failed_commands + 1
@@ -559,9 +563,6 @@ end
 ---@field force boolean
 ---@field generate_from_grammar boolean
 ---@field skip table
-
-local unlink = a.wrap(uv.fs_unlink, 2)
-local symlink = a.wrap(uv.fs_symlink, 4)
 
 -- Install a parser
 ---@param languages? string[]|string
@@ -599,7 +600,7 @@ M.install = a.sync(function(languages, options)
   for _, lang in ipairs(languages) do
     tasks[#tasks + 1] = a.sync(function()
       install_lang(lang, cache_dir, install_dir, force, generate_from_grammar)
-      local err = symlink(
+      local err = uv_symlink(
         get_package_path('runtime', 'queries', lang),
         fs.joinpath(config.get_install_dir('queries'), lang),
         { dir = true, junction = true }
@@ -645,7 +646,7 @@ local function uninstall(lang, parser, queries)
     return
   end
 
-  local perr = unlink(parser)
+  local perr = uv_unlink(parser)
 
   if perr then
     vim.schedule(function()
@@ -653,7 +654,7 @@ local function uninstall(lang, parser, queries)
     end)
   end
 
-  local qerr = unlink(queries)
+  local qerr = uv_unlink(queries)
 
   if qerr then
     vim.schedule(function()
