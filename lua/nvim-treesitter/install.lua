@@ -74,7 +74,7 @@ local function get_parser_install_info(lang, validate)
 end
 
 function M.get_package_path(...)
-  return vim.fs.joinpath(vim.fn.fnamemodify(debug.getinfo(1, 'S').source:sub(2), ':p:h:h:h'), ...)
+  return fs.joinpath(vim.fn.fnamemodify(debug.getinfo(1, 'S').source:sub(2), ':p:h:h:h'), ...)
 end
 
 ---@param lang string
@@ -291,7 +291,7 @@ local function do_download_tar(repo, project_name, cache_dir, revision, project_
   end
   a.main()
 
-  err = uv_rename(vim.fs.joinpath(temp_dir, url:match('[^/]-$') .. '-' .. dir_rev), project_dir)
+  err = uv_rename(fs.joinpath(temp_dir, url:match('[^/]-$') .. '-' .. dir_rev), project_dir)
   a.main()
 
   if err then
@@ -418,7 +418,7 @@ local function do_download(repo, project_name, cache_dir, revision)
   local can_use_tar = vim.fn.executable('tar') == 1 and vim.fn.executable('curl') == 1
   local is_github = repo.url:find('github.com', 1, true)
   local is_gitlab = repo.url:find('gitlab.com', 1, true)
-  local project_dir = vim.fs.joinpath(cache_dir, project_name)
+  local project_dir = fs.joinpath(cache_dir, project_name)
 
   revision = revision or repo.branch or 'master'
 
