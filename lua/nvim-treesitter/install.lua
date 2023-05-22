@@ -354,7 +354,7 @@ end
 
 ---@param executables string[]
 ---@return string|nil
-local function select_executable(executables)
+function M.select_executable(executables)
   return vim.tbl_filter(function(c) ---@param c string
     return c ~= vim.NIL and vim.fn.executable(c) == 1
   end, executables)[1]
@@ -439,7 +439,7 @@ end
 ---@param cc string
 ---@param compile_location string
 local function do_compile(repo, cc, compile_location)
-  local make = select_executable({ 'gmake', 'make' })
+  local make = M.select_executable({ 'gmake', 'make' })
 
   print('Compiling...')
 
@@ -483,7 +483,7 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
     end
   end
 
-  local cc = select_executable(M.compilers)
+  local cc = M.select_executable(M.compilers)
   if not cc then
     cc_err()
     return
