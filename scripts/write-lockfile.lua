@@ -2,10 +2,8 @@
 vim.opt.runtimepath:append('.')
 
 -- Load previous lockfile
-local filename = require('nvim-treesitter.shell_cmds').get_package_path('lockfile.json')
-local file = assert(io.open(filename, 'r'))
-local lockfile = vim.json.decode(file:read('*a'))
-file:close()
+local filename = require('nvim-treesitter.install').get_package_path('lockfile.json')
+local lockfile = vim.json.decode(require('nvim-treesitter.util').read_file(filename))
 
 ---@type string?
 local skip_lang_string = os.getenv('SKIP_LOCKFILE_UPDATE_FOR_LANGS')
@@ -47,6 +45,4 @@ end
 vim.print(lockfile)
 
 -- write new lockfile
-file = assert(io.open(filename, 'w'))
-file:write(vim.json.encode(lockfile))
-file:close()
+require('nvim-treesitter.util').write_file(filename, vim.json.encode(lockfile))
