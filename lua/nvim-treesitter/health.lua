@@ -1,6 +1,6 @@
-local shell = require('nvim-treesitter.shell_cmds')
 local install = require('nvim-treesitter.install')
 local config = require('nvim-treesitter.config')
+local util = require('nvim-treesitter.util')
 local tsq = vim.treesitter.query
 
 local M = {}
@@ -62,7 +62,7 @@ local function install_health()
     vim.health.ok('`git` executable found.')
   end
 
-  local cc = shell.select_executable(install.compilers)
+  local cc = install.select_executable(install.compilers)
   if not cc then
     vim.health.error('`cc` executable not found.', {
       'Check that any of '
@@ -118,6 +118,7 @@ local function query_status(lang, query_group)
 end
 
 function M.check()
+  --- @type {[1]: string, [2]: string, [3]: string}[]
   local error_collection = {}
   -- Installation dependency checks
   install_health()
@@ -144,22 +145,19 @@ function M.check()
   if #error_collection > 0 then
     vim.health.start('The following errors have been detected:')
     for _, p in ipairs(error_collection) do
-      local lang, type, err = unpack(p)
+      local lang, type, err = p[1], p[2], p[3]
       local lines = {}
       table.insert(lines, lang .. '(' .. type .. '): ' .. err)
       local files = tsq.get_files(lang, type)
       if #files > 0 then
         table.insert(lines, lang .. '(' .. type .. ') is concatenated from the following files:')
         for _, file in ipairs(files) do
-          local fd = io.open(file, 'r')
-          if fd then
-            local ok, file_err = pcall(tsq.parse, lang, fd:read('*a'))
-            if ok then
-              table.insert(lines, '|  [OK]:"' .. file .. '"')
-            else
-              table.insert(lines, '| [ERR]:"' .. file .. '", failed to load: ' .. file_err)
-            end
-            fd:close()
+          local query = util.read_file(file)
+          local ok, file_err = pcall(tsq.parse, lang, query)
+          if ok then
+            table.insert(lines, '|  [OK]:"' .. file .. '"')
+          else
+            table.insert(lines, '| [ERR]:"' .. file .. '", failed to load: ' .. file_err)
           end
         end
       end
