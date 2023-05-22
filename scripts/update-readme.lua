@@ -65,9 +65,8 @@ for _, v in ipairs(sorted_parsers) do
 end
 generated_text = generated_text .. footnotes
 
-local readme = assert(io.open('SUPPORTED_LANGUAGES.md', 'r'))
-local readme_text = readme:read('*a')
-readme:close()
+local readme = 'SUPPORTED_LANGUAGES.md'
+local readme_text = require('nvim-treesitter.util').read_file(readme)
 
 local new_readme_text = string.gsub(
   readme_text,
@@ -75,12 +74,10 @@ local new_readme_text = string.gsub(
   '<!--parserinfo-->\n' .. generated_text .. '<!--parserinfo-->'
 )
 
-readme = assert(io.open('SUPPORTED_LANGUAGES.md', 'w'))
-readme:write(new_readme_text)
-readme:close()
+require('nvim-treesitter.util').write_file(readme, new_readme_text)
 
 if string.find(readme_text, generated_text, 1, true) then
-  print('README.md is up-to-date\n')
+  print(readme .. ' is up-to-date\n')
 else
-  print('New README.md was written\n')
+  print('New ' .. readme .. ' was written\n')
 end
