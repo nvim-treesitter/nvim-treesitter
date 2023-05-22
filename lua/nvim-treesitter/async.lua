@@ -1,18 +1,24 @@
 local co = coroutine
 
+local M = {}
+
 ---Executes a future with a callback when it is done
+--- @param func function
+--- @param callback function
+--- @param ... unknown
 local function execute(func, callback, ...)
   local thread = co.create(func)
 
   local function step(...)
     local ret = { co.resume(thread, ...) }
-    local stat, nargs, fn_or_ret = unpack(ret)
+    --- @type boolean, any
+    local stat, nargs_or_err = unpack(ret)
 
     if not stat then
       error(
         string.format(
           'The coroutine failed with this message: %s\n%s',
-          nargs,
+          nargs_or_err,
           debug.traceback(thread)
         )
       )
@@ -25,15 +31,14 @@ local function execute(func, callback, ...)
       return
     end
 
-    local args = { select(4, unpack(ret)) }
-    args[nargs] = step
-    fn_or_ret(unpack(args, 1, nargs))
+    --- @type function, any[]
+    local fn, args = ret[3], { select(4, unpack(ret)) }
+    args[nargs_or_err] = step
+    fn(unpack(args, 1, nargs_or_err))
   end
 
   step(...)
 end
-
-local M = {}
 
 --- Creates an async function with a callback style function.
 --- @generic F: function
@@ -41,10 +46,9 @@ local M = {}
 --- @param argc integer
 --- @return F
 function M.wrap(func, argc)
+  --- @param ... unknown
+  --- @return unknown
   return function(...)
-    if not co.running() or select('#', ...) == argc then
-      return func(...)
-    end
     return co.yield(argc, func, ...)
   end
 end
@@ -59,30 +63,14 @@ end
 function M.sync(func, nargs)
   nargs = nargs or 0
   return function(...)
-    if co.running() then
-      return func(...)
-    end
     local callback = select(nargs + 1, ...)
     execute(func, callback, unpack({ ... }, 1, nargs))
   end
 end
 
---- For functions that don't provide a callback as there last argument
---- @generic F: function
---- @param func F
---- @return F
-function M.void(func)
-  return function(...)
-    if co.running() then
-      return func(...)
-    end
-    execute(func, nil, ...)
-  end
-end
-
 --- @param n integer max number of concurrent jobs
---- @param interrupt_check function()
---- @param thunks function()[]
+--- @param interrupt_check? function
+--- @param thunks function[]
 --- @return any
 function M.join(n, interrupt_check, thunks)
   return co.yield(1, function(finish)
@@ -93,7 +81,7 @@ function M.join(n, interrupt_check, thunks)
     local remaining = { select(n + 1, unpack(thunks)) }
     local to_go = #thunks
 
-    local ret = {}
+    local ret = {} --- @type any[]
 
     local function cb(...)
       ret[#ret + 1] = { ... }
@@ -112,20 +100,6 @@ function M.join(n, interrupt_check, thunks)
       thunks[i](cb)
     end
   end, 1)
-end
-
----Useful for partially applying arguments to an async function
---- @return function
-function M.curry(fn, ...)
-  local args = { ... }
-  local nargs = select('#', ...)
-  return function(...)
-    local other = { ... }
-    for i = 1, select('#', ...) do
-      args[nargs + i] = other[i]
-    end
-    fn(unpack(args))
-  end
 end
 
 ---An async function that when called will yield to the Neovim scheduler to be

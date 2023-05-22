@@ -58,7 +58,7 @@ local function spawn(cmd, options, callback)
         handle:kill('sigint')
         handle:close()
         for _, pipe in
-          ipairs(options.stdio --[[@as uv_pipe_t[] ]])
+          pairs(options.stdio --[[@as uv_pipe_t[] ]])
         do
           pipe:close()
         end
@@ -71,7 +71,7 @@ end
 --- Main exposed function for the jobs module. Takes a task and options and
 --- returns an async function that will run the task with the given opts via
 --- vim.loop.spawn
---- @param task string|string[]
+--- @param task string[]
 --- @param opts JobOpts
 --- @param callback fun(_: JobResult)
 --- @type fun(task: string|string[], opts: JobOpts): JobResult
@@ -79,14 +79,8 @@ M.run = a.wrap(function(task, opts, callback)
   local stdout_data = {}
   local stderr_data = {}
 
-  local stdout = uv.new_pipe(false)
-  local stderr = uv.new_pipe(false)
-
-  if type(task) == 'string' then
-    local shell = os.getenv('SHELL') or vim.o.shell
-    local minus_c = shell:find('cmd.exe$') and '/c' or '-c'
-    task = { shell, minus_c, task }
-  end
+  local stdout = assert(uv.new_pipe(false))
+  local stderr = assert(uv.new_pipe(false))
 
   spawn(task[1], {
     args = { unpack(task, 2) },
@@ -105,26 +99,24 @@ M.run = a.wrap(function(task, opts, callback)
   end)
 
   for kind, pipe in pairs({ stdout = stdout, stderr = stderr }) do
-    if pipe then
-      pipe:read_start(function(err, data)
-        if kind == 'stderr' and opts.on_stderr and data then
-          opts.on_stderr(data)
-        end
-        if kind == 'stdout' and opts.on_stdout and data then
-          opts.on_stdout(data)
-        end
-        -- if err then
-        --   log.error(err)
-        -- end
-        if data ~= nil then
-          local output = kind == 'stdout' and stdout_data or stderr_data
-          table.insert(output, vim.trim(data))
-        else
-          pipe:read_stop()
-          pipe:close()
-        end
-      end)
-    end
+    pipe:read_start(function(err, data)
+      if kind == 'stderr' and opts.on_stderr and data then
+        opts.on_stderr(data)
+      end
+      if kind == 'stdout' and opts.on_stdout and data then
+        opts.on_stdout(data)
+      end
+      if err then
+        error(err)
+      end
+      if data ~= nil then
+        local output = kind == 'stdout' and stdout_data or stderr_data
+        table.insert(output, vim.trim(data))
+      else
+        pipe:read_stop()
+        pipe:close()
+      end
+    end)
   end
 end, 3)
 

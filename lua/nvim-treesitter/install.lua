@@ -73,7 +73,7 @@ local function get_revision(lang)
   if #lockfile == 0 then
     local filename = shell.get_package_path('lockfile.json')
     local file = assert(io.open(filename, 'r'))
-    lockfile = vim.json.decode(file:read('*all'))
+    lockfile = vim.json.decode(file:read('*all')) --[[@as table<string, LockfileInfo>]]
     file:close()
   end
 
@@ -118,7 +118,7 @@ function M.info()
 
   for _, lang in pairs(parser_list) do
     local parser = (lang .. string.rep(' ', max_len - #lang + 1))
-    local output
+    local output --- @type string[]
     if vim.list_contains(installed, lang) then
       output = { parser .. '[✓] installed', 'DiagnosticOk' }
     elseif #api.nvim_get_runtime_file('parser/' .. lang .. '.*', true) > 0 then
@@ -162,13 +162,85 @@ end
 --- PARSER MANAGEMENT FUNCTIONS
 ---
 
+--- @param repo InstallInfo
+--- @param project_name string
+--- @param cache_dir string
+--- @param from_local_path boolean
+--- @return string
+local function get_compile_location(repo, cache_dir, project_name, from_local_path)
+  ---@type string compile_location only needed for typescript installs.
+  if from_local_path then
+    local compile_location = repo.url
+    if repo.location then
+      compile_location = fs.joinpath(compile_location, repo.location)
+    end
+    return compile_location
+  end
+
+  local repo_location = project_name
+  if repo.location then
+    repo_location = fs.joinpath(repo_location, repo.location)
+  end
+  return fs.joinpath(cache_dir, repo_location)
+end
+
+local function cc_err()
+  api.nvim_err_writeln(
+    'No C compiler found! "'
+      .. table.concat(
+        vim.tbl_filter(function(c) ---@param c string
+          return type(c) == 'string'
+        end, M.compilers),
+        '", "'
+      )
+      .. '" are not executable.'
+  )
+end
+
+--- @param repo InstallInfo
+--- @param lang string
+--- @param compile_location string
+local function do_generate_from_grammar(repo, lang, compile_location)
+  if repo.generate_requires_npm then
+    if vim.fn.executable('npm') ~= 1 then
+      api.nvim_err_writeln('`' .. lang .. '` requires NPM to be installed from grammar.js')
+      return
+    end
+
+    print('Installing NPM dependencies of ' .. lang .. ' parser')
+    local r = job.run({ 'npm', 'install' }, { cwd = compile_location })
+    a.main()
+    if r.exit_code > 0 then
+      failed_commands = failed_commands + 1
+      finished_commands = finished_commands + 1
+      error(
+        'Error during `npm install` (required for parser generation of '
+          .. lang
+          .. ' with npm dependencies)'
+      )
+    end
+  end
+
+  local tscmd = { vim.fn.exepath('tree-sitter') }
+  vim.list_extend(tscmd, M.ts_generate_args)
+
+  print('Generating source files from grammar.js...')
+
+  local r = job.run(tscmd, { cwd = compile_location })
+  a.main()
+  if r.exit_code > 0 then
+    failed_commands = failed_commands + 1
+    finished_commands = finished_commands + 1
+    error('Error during "tree-sitter generate"')
+  end
+end
+
 ---@param lang string
 ---@param cache_dir string
 ---@param install_dir string
 ---@param force boolean
----@param with_sync boolean
 ---@param generate_from_grammar boolean
-local function install_lang(lang, cache_dir, install_dir, force, with_sync, generate_from_grammar)
+local function install_lang(lang, cache_dir, install_dir, force, generate_from_grammar)
   if vim.list_contains(config.installed_parsers(), lang) then
     if not force then
       local yesno =
@@ -189,20 +261,8 @@ local function install_lang(lang, cache_dir, install_dir, force, with_sync, gene
     repo.url = maybe_local_path
   end
 
-  ---@type string compile_location only needed for typescript installs.
-  local compile_location
-  if from_local_path then
-    compile_location = repo.url
-    if repo.location then
-      compile_location = fs.joinpath(compile_location, repo.location)
-    end
-  else
-    local repo_location = project_name
-    if repo.location then
-      repo_location = fs.joinpath(repo_location, repo.location)
-    end
-    compile_location = fs.joinpath(cache_dir, repo_location)
-  end
+  local compile_location = get_compile_location(repo, cache_dir, project_name, from_local_path)
+
   local parser_lib_name = fs.joinpath(install_dir, lang) .. '.so'
 
   generate_from_grammar = repo.requires_generate_from_grammar or generate_from_grammar
@@ -226,18 +286,10 @@ local function install_lang(lang, cache_dir, install_dir, force, with_sync, gene
     api.nvim_err_writeln('Node JS not found: `node` is not executable')
     return
   end
+
   local cc = shell.select_executable(M.compilers)
   if not cc then
-    api.nvim_err_writeln(
-      'No C compiler found! "'
-        .. table.concat(
-          vim.tbl_filter(function(c) ---@param c string
-            return type(c) == 'string'
-          end, M.compilers),
-          '", "'
-        )
-        .. '" are not executable.'
-    )
+    cc_err()
     return
   end
 
@@ -267,38 +319,7 @@ local function install_lang(lang, cache_dir, install_dir, force, with_sync, gene
   end
 
   if generate_from_grammar then
-    if repo.generate_requires_npm then
-      if vim.fn.executable('npm') ~= 1 then
-        api.nvim_err_writeln('`' .. lang .. '` requires NPM to be installed from grammar.js')
-        return
-      end
-
-      print('Installing NPM dependencies of ' .. lang .. ' parser')
-      local r = job.run({ 'npm', 'install' }, { cwd = compile_location })
-      a.main()
-      if r.exit_code > 0 then
-        failed_commands = failed_commands + 1
-        finished_commands = finished_commands + 1
-        error(
-          'Error during `npm install` (required for parser generation of '
-            .. lang
-            .. ' with npm dependencies)'
-        )
-      end
-    end
-
-    local tscmd = { vim.fn.exepath('tree-sitter') }
-    vim.list_extend(tscmd, M.ts_generate_args)
-
-    print('Generating source files from grammar.js...')
-
-    local r = job.run(tscmd, { cwd = compile_location })
-    a.main()
-    if r.exit_code > 0 then
-      failed_commands = failed_commands + 1
-      finished_commands = finished_commands + 1
-      error('Error during "tree-sitter generate"')
-    end
+    do_generate_from_grammar(repo, lang, compile_location)
   end
 
   run_command(shell.select_compile_command(repo, cc, compile_location))
@@ -313,9 +334,8 @@ local function install_lang(lang, cache_dir, install_dir, force, with_sync, gene
     error(err)
   end
 
-  local file = assert(
-    io.open(fs.joinpath(config.get_install_dir('parser-info') or '', lang .. '.revision'), 'w')
-  )
+  local revfile = fs.joinpath(config.get_install_dir('parser-info') or '', lang .. '.revision')
+  local file = assert(io.open(revfile))
   file:write(revision or '')
   file:close()
 
@@ -323,12 +343,7 @@ local function install_lang(lang, cache_dir, install_dir, force, with_sync, gene
     vim.fn.delete(fs.joinpath(cache_dir, project_name), 'rf')
   end
 
-  if with_sync then
-    -- TODO(lewis6991): sync support
-    print('No sync support yet')
-  else
-    print('Parser for ' .. lang .. ' has been installed')
-  end
+  print('Parser for ' .. lang .. ' has been installed')
 end
 
 ---@class InstallOptions
@@ -350,6 +365,12 @@ M.install = a.sync(function(languages, options)
   local generate_from_grammar = options.generate_from_grammar
   local skip = options.skip
 
+  if with_sync then
+    -- TODO(lewis6991): sync support
+    print('No sync support yet')
+    return
+  end
+
   reset_progress_counter()
 
   if vim.fn.executable('git') == 0 then
@@ -366,10 +387,10 @@ M.install = a.sync(function(languages, options)
 
   languages = config.norm_languages(languages, skip)
 
-  local tasks = {}
+  local tasks = {} --- @type fun()[]
   for _, lang in ipairs(languages) do
     tasks[#tasks + 1] = a.sync(function()
-      install_lang(lang, cache_dir, install_dir, force, with_sync, generate_from_grammar)
+      install_lang(lang, cache_dir, install_dir, force, generate_from_grammar)
       local err = symlink(
         shell.get_package_path('runtime', 'queries', lang),
         fs.joinpath(config.get_install_dir('queries'), lang),
@@ -411,7 +432,7 @@ end, 2)
 --- @param lang string
 --- @param parser string
 --- @param queries string
-local uninstall = a.sync(function(lang, parser, queries)
+local function uninstall(lang, parser, queries)
   if vim.fn.filereadable(parser) ~= 1 then
     return
   end
@@ -433,7 +454,7 @@ local uninstall = a.sync(function(lang, parser, queries)
   end
 
   print('Parser for ' .. lang .. ' has been uninstalled')
-end, 3)
+end
 
 --- @param languages string[]|string
 M.uninstall = a.sync(function(languages)
@@ -445,14 +466,16 @@ M.uninstall = a.sync(function(languages)
   local query_dir = config.get_install_dir('queries')
   local installed = config.installed_parsers()
 
-  local tasks = {}
+  local tasks = {} --- @type fun()[]
   for _, lang in ipairs(languages) do
     if not vim.list_contains(installed, lang) then
       print('Parser for ' .. lang .. ' is is not managed by nvim-treesitter', vim.log.levels.ERROR)
     else
       local parser = fs.joinpath(parser_dir, lang) .. '.so'
       local queries = fs.joinpath(query_dir, lang)
-      tasks[#tasks + 1] = a.curry(uninstall, lang, parser, queries)
+      tasks[#tasks + 1] = a.sync(function()
+        uninstall(lang, parser, queries)
+      end)
     end
   end
 
