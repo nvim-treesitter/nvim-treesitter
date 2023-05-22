@@ -580,6 +580,7 @@ M.install = a.sync(function(languages, options)
   languages = config.norm_languages(languages, skip)
 
   local tasks = {} --- @type fun()[]
+  local done = 0
   for _, lang in ipairs(languages) do
     tasks[#tasks + 1] = a.sync(function()
       a.main()
@@ -595,10 +596,13 @@ M.install = a.sync(function(languages, options)
       if err then
         log.error(err)
       end
+      done = done + 1
     end)
   end
 
   a.join(max_jobs, nil, tasks)
+  a.main()
+  log.info('Installed %d/%d parsers', done, #tasks)
 end, 2)
 
 ---@class UpdateOptions
@@ -667,6 +671,7 @@ M.uninstall = a.sync(function(languages)
   local installed = config.installed_parsers()
 
   local tasks = {} --- @type fun()[]
+  local done = 0
   for _, lang in ipairs(languages) do
     if not vim.list_contains(installed, lang) then
       log.warn('Parser for ' .. lang .. ' is is not managed by nvim-treesitter')
@@ -675,11 +680,14 @@ M.uninstall = a.sync(function(languages)
       local queries = fs.joinpath(query_dir, lang)
       tasks[#tasks + 1] = a.sync(function()
         uninstall(lang, parser, queries)
+        done = done + 1
       end)
     end
   end
 
   a.join(max_jobs, nil, tasks)
+  a.main()
+  log.info('Uninstalled %d/%d parsers', done, #tasks)
 end, 1)
 
 return M
