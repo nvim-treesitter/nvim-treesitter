@@ -7,6 +7,7 @@ local config = require('nvim-treesitter.config')
 
 local a = require('nvim-treesitter.async')
 local job = require('nvim-treesitter.job')
+local util = require('nvim-treesitter.util')
 
 local uv_copyfile = a.wrap(uv.fs_copyfile, 4)
 local uv_mkdir = a.wrap(uv.fs_mkdir, 3)
@@ -78,12 +79,10 @@ end
 
 ---@param lang string
 ---@return string|nil
-local function get_revision(lang)
+local function get_target_revision(lang)
   if #lockfile == 0 then
     local filename = M.get_package_path('lockfile.json')
-    local file = assert(io.open(filename, 'r'))
-    lockfile = vim.json.decode(file:read('*all')) --[[@as table<string, LockfileInfo>]]
-    file:close()
+    lockfile = vim.json.decode(util.read_file(filename)) --[[@as table<string, LockfileInfo>]]
   end
 
   local install_info = get_parser_install_info(lang)
@@ -100,16 +99,13 @@ end
 ---@return string|nil
 local function get_installed_revision(lang)
   local lang_file = fs.joinpath(config.get_install_dir('parser-info'), lang .. '.revision')
-  local file = assert(io.open(lang_file, 'r'))
-  local revision = file:read('*a')
-  file:close()
-  return revision
+  return util.read_file(lang_file)
 end
 
 ---@param lang string
 ---@return boolean
 local function needs_update(lang)
-  local revision = get_revision(lang)
+  local revision = get_target_revision(lang)
   return not revision or revision ~= get_installed_revision(lang)
 end
 
@@ -512,7 +508,7 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
     return
   end
 
-  local revision = repo.revision or get_revision(lang)
+  local revision = repo.revision or get_target_revision(lang)
 
   local maybe_local_path = fs.normalize(repo.url)
   local from_local_path = vim.fn.isdirectory(maybe_local_path) == 1
@@ -544,9 +540,7 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
   end
 
   local revfile = fs.joinpath(config.get_install_dir('parser-info') or '', lang .. '.revision')
-  local file = assert(io.open(revfile))
-  file:write(revision or '')
-  file:close()
+  util.write_file(revfile, revision or '')
 
   if not from_local_path then
     vim.fn.delete(fs.joinpath(cache_dir, project_name), 'rf')
