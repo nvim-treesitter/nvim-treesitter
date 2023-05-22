@@ -10,7 +10,7 @@ local job = require('nvim-treesitter.job')
 
 local uv_copyfile = a.wrap(uv.fs_copyfile, 4)
 local uv_mkdir = a.wrap(uv.fs_mkdir, 3)
-local uv_rename  = a.wrap(uv.fs_rename, 3)
+local uv_rename = a.wrap(uv.fs_rename, 3)
 local uv_symlink = a.wrap(uv.fs_symlink, 4)
 local uv_unlink = a.wrap(uv.fs_unlink, 2)
 
@@ -295,10 +295,7 @@ local function do_download_tar(repo, project_name, cache_dir, revision, project_
   end
   a.main()
 
-  err = uv_rename(
-    vim.fs.joinpath(temp_dir, url:match('[^/]-$') .. '-' .. dir_rev),
-    project_dir
-  )
+  err = uv_rename(vim.fs.joinpath(temp_dir, url:match('[^/]-$') .. '-' .. dir_rev), project_dir)
   a.main()
 
   if err then
