@@ -72,7 +72,7 @@ local function get_parser_install_info(lang, validate)
   return install_info
 end
 
-local function get_package_path(...)
+function M.get_package_path(...)
   return vim.fs.joinpath(vim.fn.fnamemodify(debug.getinfo(1, 'S').source:sub(2), ':p:h:h:h'), ...)
 end
 
@@ -80,7 +80,7 @@ end
 ---@return string|nil
 local function get_revision(lang)
   if #lockfile == 0 then
-    local filename = get_package_path('lockfile.json')
+    local filename = M.get_package_path('lockfile.json')
     local file = assert(io.open(filename, 'r'))
     lockfile = vim.json.decode(file:read('*all')) --[[@as table<string, LockfileInfo>]]
     file:close()
@@ -598,7 +598,7 @@ M.install = a.sync(function(languages, options)
     tasks[#tasks + 1] = a.sync(function()
       install_lang(lang, cache_dir, install_dir, force, generate_from_grammar)
       local err = uv_symlink(
-        get_package_path('runtime', 'queries', lang),
+        M.get_package_path('runtime', 'queries', lang),
         fs.joinpath(config.get_install_dir('queries'), lang),
         { dir = true, junction = true }
       )
