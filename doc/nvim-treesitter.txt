@@ -38,15 +38,12 @@ To install supported parsers and queries, put this in your `init.lua` file:
 
 >lua
   require'nvim-treesitter.configs'.setup {
-    -- A directory to install the parsers into.
+    -- A directory to install the parsers and queries to.
     -- Defaults to the `stdpath('data')/site` dir.
     install_dir = "/some/path/to/store/parsers",
 
     -- A list of parser names, or "core", "stable", "community", "unstable"
     ensure_install = { "core", "rust" },
-
-    -- Install parsers synchronously (only applied to `ensure_installed`)
-    sync_install = false,
 
     -- Automatically install missing parsers when entering buffer
     auto_install = false,
@@ -66,10 +63,6 @@ COMMANDS                                            *nvim-treesitter-commands*
 Install one or more treesitter parsers.
 You can use |:TSInstall| `all` to install all parsers. Use |:TSInstall!| to
 force the reinstallation of already installed parsers.
-							      *:TSInstallSync*
-:TSInstallSync {language} ... ~
-
-Perform the |:TSInstall| operation synchronously.
 
 							      *:TSInstallInfo*
 :TSInstallInfo ~
@@ -82,11 +75,6 @@ List information about currently installed parsers
 Update the installed parser for one more {language} or all installed parsers
 if {language} is omitted. The specified parser is installed if it is not already
 installed.
-
-							       *:TSUpdateSync*
-:TSUpdateSync {language} ... ~
-
-Perform the |:TSUpdate| operation synchronously.
 
 								*:TSUninstall*
 :TSUninstall {language} ... ~

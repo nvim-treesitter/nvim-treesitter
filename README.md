@@ -59,9 +59,6 @@ require'nvim-treesitter'.setup {
   -- List of parsers to ignore installing
   ignore_install = { },
 
-  -- Install parsers synchronously (only applied to `ensure_install`)
-  sync_install = false,
-
   -- Automatically install missing parsers when entering buffer
   auto_install = false,
 
