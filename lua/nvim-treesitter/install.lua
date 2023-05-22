@@ -578,11 +578,13 @@ M.install = a.sync(function(languages, options)
   local tasks = {} --- @type fun()[]
   for _, lang in ipairs(languages) do
     tasks[#tasks + 1] = a.sync(function()
+      a.main()
       install_lang(lang, cache_dir, install_dir, force, generate_from_grammar)
       local queries = fs.joinpath(config.get_install_dir('queries'), lang)
+      local queries_src = M.get_package_path('runtime', 'queries', lang)
       uv_unlink(queries)
       local err = uv_symlink(
-        M.get_package_path('runtime', 'queries', lang),
+        queries_src,
         queries,
         { dir = true, junction = true }
       )
