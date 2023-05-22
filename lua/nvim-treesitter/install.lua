@@ -22,7 +22,6 @@ local iswin = uv.os_uname().sysname == 'Windows_NT'
 local ismac = uv.os_uname().sysname == 'Darwin'
 
 M.compilers = { uv.os_getenv('CC'), 'cc', 'gcc', 'clang', 'cl', 'zig' }
-M.ts_generate_args = nil --- @type string[]?
 
 local started_commands = 0
 local finished_commands = 0
@@ -197,12 +196,14 @@ local function do_generate_from_grammar(repo, lang, compile_location)
     end
   end
 
-  local tscmd = { vim.fn.exepath('tree-sitter') }
-  vim.list_extend(tscmd, M.ts_generate_args)
-
   print('Generating source files from grammar.js...')
 
-  local r = job.run(tscmd, { cwd = compile_location })
+  local r = job.run({
+    vim.fn.exepath('tree-sitter'),
+    'generate',
+    '--abi',
+    tostring(vim.treesitter.language_version),
+  }, { cwd = compile_location })
   a.main()
   if r.exit_code > 0 then
     failed_commands = failed_commands + 1
@@ -231,14 +232,7 @@ local function do_download_tar(repo, project_name, cache_dir, revision, project_
 
   print('Downloading ' .. project_name .. '...')
   local target = is_github and url .. '/archive/' .. revision .. '.tar.gz'
-  or url
-  .. '/-/archive/'
-  .. revision
-  .. '/'
-  .. project_name
-  .. '-'
-  .. revision
-  .. '.tar.gz'
+    or url .. '/-/archive/' .. revision .. '/' .. project_name .. '-' .. revision .. '.tar.gz'
 
   local r = job.run({
     'curl',
@@ -254,7 +248,9 @@ local function do_download_tar(repo, project_name, cache_dir, revision, project_
   if r.exit_code > 0 then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    error('Error during download, please verify your internet connection: '.. vim.inspect(r.stderr))
+    error(
+      'Error during download, please verify your internet connection: ' .. vim.inspect(r.stderr)
+    )
   end
 
   print('Creating temporary directory')
@@ -270,10 +266,10 @@ local function do_download_tar(repo, project_name, cache_dir, revision, project_
   print('Extracting ' .. project_name .. '...')
   r = job.run({
     'tar',
-     '-xvzf',
-     project_name .. '.tar.gz',
-     '-C',
-     project_name .. '-tmp',
+    '-xvzf',
+    project_name .. '.tar.gz',
+    '-C',
+    project_name .. '-tmp',
   }, {
     cwd = cache_dir,
   })
@@ -282,14 +278,14 @@ local function do_download_tar(repo, project_name, cache_dir, revision, project_
   if r.exit_code > 0 then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    error('Error during tarball extraction: '.. vim.inspect(r.stderr))
+    error('Error during tarball extraction: ' .. vim.inspect(r.stderr))
   end
 
   err = a.wrap(uv.fs_unlink, 2)(project_dir .. '.tar.gz')
   if err then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    error('Could not remove tarball: '..err)
+    error('Could not remove tarball: ' .. err)
   end
   a.main()
 
@@ -302,7 +298,7 @@ local function do_download_tar(repo, project_name, cache_dir, revision, project_
   if err then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    error('Could not rename temp: '..err)
+    error('Could not rename temp: ' .. err)
   end
 
   vim.fn.delete(temp_dir, 'rf')
@@ -314,11 +310,13 @@ end
 ---@param revision string
 ---@param project_dir string
 local function do_download_git(repo, project_name, cache_dir, revision, project_dir)
-  local clone_error = 'Error during download, please verify your internet connection'
-
   print('Downloading ' .. project_name .. '...')
+
   local r = job.run({
-    'git', 'clone', repo.url, project_name,
+    'git',
+    'clone',
+    repo.url,
+    project_name,
   }, {
     cwd = cache_dir,
   })
@@ -328,12 +326,16 @@ local function do_download_git(repo, project_name, cache_dir, revision, project_
   if r.exit_code > 0 then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    error(clone_error..': '..r.stderr)
+    error(
+      'Error during download, please verify your internet connection: ' .. vim.inspect(r.stderr)
+    )
   end
 
   print('Checking out locked revision')
   r = job.run({
-    'git', 'checkout', revision
+    'git',
+    'checkout',
+    revision,
   }, {
     cwd = project_dir,
   })
@@ -343,7 +345,7 @@ local function do_download_git(repo, project_name, cache_dir, revision, project_
   if r.exit_code > 0 then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    error('Error while checking out revision: '..vim.inspect(r.stderr))
+    error('Error while checking out revision: ' .. vim.inspect(r.stderr))
   end
 end
 
@@ -390,7 +392,7 @@ local function select_compiler_args(repo, compiler)
     '-I./src',
     repo.files,
     '-Os',
-    ismac and '-bundle' or '-shared'
+    ismac and '-bundle' or '-shared',
   }
 
   if
@@ -441,12 +443,12 @@ local function do_compile(repo, cc, compile_location)
   local cmd --- @type string[]
   if cc:find('cl$') or cc:find('cl.exe$') or not repo.use_makefile or iswin or not make then
     local args = vim.tbl_flatten(select_compiler_args(repo, cc))
-    cmd = vim.list_extend({cc}, args)
+    cmd = vim.list_extend({ cc }, args)
   else
     cmd = {
       make,
       '--makefile=' .. M.get_package_path('scripts', 'compile_parsers.makefile'),
-      'CC=' .. cc
+      'CC=' .. cc,
     }
   end
 
@@ -478,18 +480,15 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
     end
   end
 
+  local cc = select_executable(M.compilers)
+  if not cc then
+    cc_err()
+    return
+  end
+
   local repo = get_parser_install_info(lang)
 
   local project_name = 'tree-sitter-' .. lang
-  local maybe_local_path = fs.normalize(repo.url)
-  local from_local_path = vim.fn.isdirectory(maybe_local_path) == 1
-  if from_local_path then
-    repo.url = maybe_local_path
-  end
-
-  local compile_location = get_compile_location(repo, cache_dir, project_name, from_local_path)
-
-  local parser_lib_name = fs.joinpath(install_dir, lang) .. '.so'
 
   generate_from_grammar = repo.requires_generate_from_grammar or generate_from_grammar
 
@@ -503,28 +502,27 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
       )
     end
     return
-  else
-    if not M.ts_generate_args then
-      M.ts_generate_args = { 'generate', '--abi', tostring(vim.treesitter.language_version) }
-    end
   end
+
   if generate_from_grammar and vim.fn.executable('node') ~= 1 then
     api.nvim_err_writeln('Node JS not found: `node` is not executable')
     return
   end
 
-  local cc = select_executable(M.compilers)
-  if not cc then
-    cc_err()
-    return
-  end
-
   local revision = repo.revision or get_revision(lang)
+
+  local maybe_local_path = fs.normalize(repo.url)
+  local from_local_path = vim.fn.isdirectory(maybe_local_path) == 1
+  if from_local_path then
+    repo.url = maybe_local_path
+  end
 
   if not from_local_path then
     vim.fn.delete(fs.joinpath(cache_dir, project_name), 'rf')
     do_download(repo, project_name, cache_dir, revision)
   end
+
+  local compile_location = get_compile_location(repo, cache_dir, project_name, from_local_path)
 
   if generate_from_grammar then
     do_generate_from_grammar(repo, lang, compile_location)
@@ -533,6 +531,8 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
   do_compile(repo, cc, compile_location)
 
   local copyfile = a.wrap(uv.fs_copyfile, 4)
+
+  local parser_lib_name = fs.joinpath(install_dir, lang) .. '.so'
 
   local err = copyfile(fs.joinpath(compile_location, 'parser.so'), parser_lib_name)
   a.main()
