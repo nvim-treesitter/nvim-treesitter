@@ -311,7 +311,7 @@ local function do_download_git(repo, project_name, cache_dir, revision, project_
   local r = job.run({
     'git',
     'clone',
-    '--depth=1',
+    '--filter=blob:none',
     repo.url,
     project_name,
   }, {
