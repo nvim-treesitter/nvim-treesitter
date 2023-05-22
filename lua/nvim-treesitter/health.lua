@@ -1,4 +1,3 @@
-local shell = require('nvim-treesitter.shell_cmds')
 local install = require('nvim-treesitter.install')
 local config = require('nvim-treesitter.config')
 local tsq = vim.treesitter.query
@@ -62,7 +61,7 @@ local function install_health()
     vim.health.ok('`git` executable found.')
   end
 
-  local cc = shell.select_executable(install.compilers)
+  local cc = install.select_executable(install.compilers)
   if not cc then
     vim.health.error('`cc` executable not found.', {
       'Check that any of '

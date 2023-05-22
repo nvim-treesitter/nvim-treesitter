@@ -4,7 +4,15 @@ local uv = vim.loop
 
 local parsers = require('nvim-treesitter.parsers')
 local config = require('nvim-treesitter.config')
-local shell = require('nvim-treesitter.shell_cmds')
+
+local a = require('nvim-treesitter.async')
+local job = require('nvim-treesitter.job')
+
+local uv_copyfile = a.wrap(uv.fs_copyfile, 4)
+local uv_mkdir = a.wrap(uv.fs_mkdir, 3)
+local uv_rename = a.wrap(uv.fs_rename, 3)
+local uv_symlink = a.wrap(uv.fs_symlink, 4)
+local uv_unlink = a.wrap(uv.fs_unlink, 2)
 
 local M = {}
 
@@ -14,16 +22,16 @@ local M = {}
 ---@type table<string, LockfileInfo>
 local lockfile = {}
 
+local max_jobs = 50
+
+local iswin = uv.os_uname().sysname == 'Windows_NT'
+local ismac = uv.os_uname().sysname == 'Darwin'
+
 M.compilers = { uv.os_getenv('CC'), 'cc', 'gcc', 'clang', 'cl', 'zig' }
-M.prefer_git = uv.os_uname().sysname == 'Windows_NT'
-M.command_extra_args = {}
-M.ts_generate_args = nil
 
 local started_commands = 0
 local finished_commands = 0
 local failed_commands = 0
-local stdout_output = {}
-local stderr_output = {}
 
 ---
 --- JOB API functions
@@ -36,146 +44,6 @@ local function reset_progress_counter()
   started_commands = 0
   finished_commands = 0
   failed_commands = 0
-  stdout_output = {}
-  stderr_output = {}
-end
-
-local function get_job_status()
-  return '[nvim-treesitter] ['
-    .. finished_commands
-    .. '/'
-    .. started_commands
-    .. (failed_commands > 0 and ', failed: ' .. failed_commands or '')
-    .. ']'
-end
-
----@param cmd Command
----@return string command
-local function get_command(cmd)
-  local options = ''
-  if cmd.opts and cmd.opts.args then
-    if M.command_extra_args[cmd.cmd] then
-      vim.list_extend(cmd.opts.args, M.command_extra_args[cmd.cmd])
-    end
-    for _, opt in ipairs(cmd.opts.args) do
-      options = string.format('%s %s', options, opt)
-    end
-  end
-
-  local command = string.format('%s %s', cmd.cmd, options)
-  if cmd.opts and cmd.opts.cwd then
-    command = shell.make_directory_change_for_command(cmd.opts.cwd, command)
-  end
-  return command
-end
-
----@param cmd_list Command[]
----@return boolean
-local function iter_cmd_sync(cmd_list)
-  for _, cmd in ipairs(cmd_list) do
-    if cmd.info then
-      vim.notify(cmd.info)
-    end
-
-    if type(cmd.cmd) == 'function' then
-      cmd.cmd()
-    else
-      local ret = vim.fn.system(get_command(cmd))
-      if vim.v.shell_error ~= 0 then
-        vim.notify(ret)
-        api.nvim_err_writeln(
-          (cmd.err and cmd.err .. '\n' or '')
-            .. 'Failed to execute the following command:\n'
-            .. vim.inspect(cmd)
-        )
-        return false
-      end
-    end
-  end
-
-  return true
-end
-
-local function iter_cmd(cmd_list, i, lang, success_message)
-  if i == 1 then
-    started_commands = started_commands + 1
-  end
-  if i == #cmd_list + 1 then
-    finished_commands = finished_commands + 1
-    return vim.notify(get_job_status() .. ' ' .. success_message)
-  end
-
-  local attr = cmd_list[i]
-  if attr.info then
-    vim.notify(get_job_status() .. ' ' .. attr.info)
-  end
-
-  if attr.opts and attr.opts.args and M.command_extra_args[attr.cmd] then
-    vim.list_extend(attr.opts.args, M.command_extra_args[attr.cmd])
-  end
-
-  if type(attr.cmd) == 'function' then
-    local ok, err = pcall(attr.cmd)
-    if ok then
-      iter_cmd(cmd_list, i + 1, lang, success_message)
-    else
-      failed_commands = failed_commands + 1
-      finished_commands = finished_commands + 1
-      return api.nvim_err_writeln(
-        (attr.err or ('Failed to execute the following command:\n' .. vim.inspect(attr)))
-          .. '\n'
-          .. vim.inspect(err)
-      )
-    end
-  else
-    local handle
-    local stdout = uv.new_pipe(false)
-    local stderr = uv.new_pipe(false)
-    attr.opts.stdio = { nil, stdout, stderr }
-    ---@type userdata
-    handle = uv.spawn(
-      attr.cmd,
-      attr.opts,
-      vim.schedule_wrap(function(code)
-        if code ~= 0 then
-          stdout:read_stop()
-          stderr:read_stop()
-        end
-        stdout:close()
-        stderr:close()
-        handle:close()
-        if code ~= 0 then
-          failed_commands = failed_commands + 1
-          finished_commands = finished_commands + 1
-          if stdout_output[handle] and stdout_output[handle] ~= '' then
-            vim.notify(stdout_output[handle])
-          end
-
-          local err_msg = stderr_output[handle] or ''
-          api.nvim_err_writeln(
-            'nvim-treesitter['
-              .. lang
-              .. ']: '
-              .. (attr.err or ('Failed to execute the following command:\n' .. vim.inspect(attr)))
-              .. '\n'
-              .. err_msg
-          )
-          return
-        end
-        iter_cmd(cmd_list, i + 1, lang, success_message)
-      end)
-    )
-    uv.read_start(stdout, function(_, data)
-      if data then
-        stdout_output[handle] = (stdout_output[handle] or '') .. data
-      end
-    end)
-    uv.read_start(stderr, function(_, data)
-      if data then
-        stderr_output[handle] = (stderr_output[handle] or '') .. data
-      end
-    end)
-  end
 end
 
 ---
@@ -204,13 +72,17 @@ local function get_parser_install_info(lang, validate)
   return install_info
 end
 
+function M.get_package_path(...)
+  return vim.fs.joinpath(vim.fn.fnamemodify(debug.getinfo(1, 'S').source:sub(2), ':p:h:h:h'), ...)
+end
+
 ---@param lang string
 ---@return string|nil
 local function get_revision(lang)
   if #lockfile == 0 then
-    local filename = shell.get_package_path('lockfile.json')
+    local filename = M.get_package_path('lockfile.json')
     local file = assert(io.open(filename, 'r'))
-    lockfile = vim.json.decode(file:read('*all'))
+    lockfile = vim.json.decode(file:read('*all')) --[[@as table<string, LockfileInfo>]]
     file:close()
   end
 
@@ -255,7 +127,7 @@ function M.info()
 
   for _, lang in pairs(parser_list) do
     local parser = (lang .. string.rep(' ', max_len - #lang + 1))
-    local output
+    local output --- @type string[]
     if vim.list_contains(installed, lang) then
       output = { parser .. '[✓] installed', 'DiagnosticOk' }
     elseif #api.nvim_get_runtime_file('parser/' .. lang .. '.*', true) > 0 then
@@ -271,13 +143,335 @@ end
 --- PARSER MANAGEMENT FUNCTIONS
 ---
 
+--- @param repo InstallInfo
+--- @param project_name string
+--- @param cache_dir string
+--- @param from_local_path boolean
+--- @return string
+local function get_compile_location(repo, cache_dir, project_name, from_local_path)
+  ---@type string compile_location only needed for typescript installs.
+  if from_local_path then
+    local compile_location = repo.url
+    if repo.location then
+      compile_location = fs.joinpath(compile_location, repo.location)
+    end
+    return compile_location
+  end
+
+  local repo_location = project_name
+  if repo.location then
+    repo_location = fs.joinpath(repo_location, repo.location)
+  end
+  return fs.joinpath(cache_dir, repo_location)
+end
+
+local function cc_err()
+  api.nvim_err_writeln(
+    'No C compiler found! "'
+      .. table.concat(
+        vim.tbl_filter(function(c) ---@param c string
+          return type(c) == 'string'
+        end, M.compilers),
+        '", "'
+      )
+      .. '" are not executable.'
+  )
+end
+
+--- @param repo InstallInfo
+--- @param lang string
+--- @param compile_location string
+local function do_generate_from_grammar(repo, lang, compile_location)
+  if repo.generate_requires_npm then
+    if vim.fn.executable('npm') ~= 1 then
+      api.nvim_err_writeln('`' .. lang .. '` requires NPM to be installed from grammar.js')
+      return
+    end
+
+    print('Installing NPM dependencies of ' .. lang .. ' parser')
+    local r = job.run({ 'npm', 'install' }, { cwd = compile_location })
+    a.main()
+    if r.exit_code > 0 then
+      failed_commands = failed_commands + 1
+      finished_commands = finished_commands + 1
+      error(
+        'Error during `npm install` (required for parser generation of '
+          .. lang
+          .. ' with npm dependencies)'
+      )
+    end
+  end
+
+  print('Generating source files from grammar.js...')
+
+  local r = job.run({
+    vim.fn.exepath('tree-sitter'),
+    'generate',
+    '--abi',
+    tostring(vim.treesitter.language_version),
+  }, { cwd = compile_location })
+  a.main()
+  if r.exit_code > 0 then
+    failed_commands = failed_commands + 1
+    finished_commands = finished_commands + 1
+    error('Error during "tree-sitter generate"')
+  end
+end
+
+---@param repo InstallInfo
+---@param project_name string
+---@param cache_dir string
+---@param revision string
+---@param project_dir string
+local function do_download_tar(repo, project_name, cache_dir, revision, project_dir)
+  local is_github = repo.url:find('github.com', 1, true)
+  local url = repo.url:gsub('.git$', '')
+
+  local dir_rev = revision
+  if is_github and revision:find('^v%d') then
+    dir_rev = revision:sub(2)
+  end
+
+  local temp_dir = project_dir .. '-tmp'
+
+  vim.fn.delete(temp_dir, 'rf')
+
+  print('Downloading ' .. project_name .. '...')
+  local target = is_github and url .. '/archive/' .. revision .. '.tar.gz'
+    or url .. '/-/archive/' .. revision .. '/' .. project_name .. '-' .. revision .. '.tar.gz'
+
+  local r = job.run({
+    'curl',
+    '--silent',
+    '-L', -- follow redirects
+    target,
+    '--output',
+    project_name .. '.tar.gz',
+  }, {
+    cwd = cache_dir,
+  })
+  a.main()
+  if r.exit_code > 0 then
+    failed_commands = failed_commands + 1
+    finished_commands = finished_commands + 1
+    error(
+      'Error during download, please verify your internet connection: ' .. vim.inspect(r.stderr)
+    )
+  end
+
+  print('Creating temporary directory')
+  --TODO(clason): use vim.fn.mkdir(temp_dir, 'p') in case stdpath('cache') is not created
+  local err = uv_mkdir(temp_dir, 493)
+  a.main()
+  if err then
+    failed_commands = failed_commands + 1
+    finished_commands = finished_commands + 1
+    error(string.format('Could not create %s-tmp: %s', project_name, err))
+  end
+
+  print('Extracting ' .. project_name .. '...')
+  r = job.run({
+    'tar',
+    '-xvzf',
+    project_name .. '.tar.gz',
+    '-C',
+    project_name .. '-tmp',
+  }, {
+    cwd = cache_dir,
+  })
+
+  a.main()
+  if r.exit_code > 0 then
+    failed_commands = failed_commands + 1
+    finished_commands = finished_commands + 1
+    error('Error during tarball extraction: ' .. vim.inspect(r.stderr))
+  end
+
+  err = uv_unlink(project_dir .. '.tar.gz')
+  if err then
+    failed_commands = failed_commands + 1
+    finished_commands = finished_commands + 1
+    error('Could not remove tarball: ' .. err)
+  end
+  a.main()
+
+  err = uv_rename(vim.fs.joinpath(temp_dir, url:match('[^/]-$') .. '-' .. dir_rev), project_dir)
+  a.main()
+
+  if err then
+    failed_commands = failed_commands + 1
+    finished_commands = finished_commands + 1
+    error('Could not rename temp: ' .. err)
+  end
+
+  vim.fn.delete(temp_dir, 'rf')
+end
+
+---@param repo InstallInfo
+---@param project_name string
+---@param cache_dir string
+---@param revision string
+---@param project_dir string
+local function do_download_git(repo, project_name, cache_dir, revision, project_dir)
+  print('Downloading ' .. project_name .. '...')
+
+  local r = job.run({
+    'git',
+    'clone',
+    repo.url,
+    project_name,
+  }, {
+    cwd = cache_dir,
+  })
+
+  a.main()
+
+  if r.exit_code > 0 then
+    failed_commands = failed_commands + 1
+    finished_commands = finished_commands + 1
+    error(
+      'Error during download, please verify your internet connection: ' .. vim.inspect(r.stderr)
+    )
+  end
+
+  print('Checking out locked revision')
+  r = job.run({
+    'git',
+    'checkout',
+    revision,
+  }, {
+    cwd = project_dir,
+  })
+
+  a.main()
+
+  if r.exit_code > 0 then
+    failed_commands = failed_commands + 1
+    finished_commands = finished_commands + 1
+    error('Error while checking out revision: ' .. vim.inspect(r.stderr))
+  end
+end
+
+---@param executables string[]
+---@return string|nil
+function M.select_executable(executables)
+  return vim.tbl_filter(function(c) ---@param c string
+    return c ~= vim.NIL and vim.fn.executable(c) == 1
+  end, executables)[1]
+end
+
+-- Returns the compiler arguments based on the compiler and OS
+---@param repo InstallInfo
+---@param compiler string
+---@return string[]
+local function select_compiler_args(repo, compiler)
+  if compiler:find('cl$') or compiler:find('cl.exe$') then
+    return {
+      '/Fe:',
+      'parser.so',
+      '/Isrc',
+      repo.files,
+      '-Os',
+      '/LD',
+    }
+  end
+
+  if compiler:find('zig$') or compiler:find('zig.exe$') then
+    return {
+      'c++',
+      '-o',
+      'parser.so',
+      repo.files,
+      '-lc',
+      '-Isrc',
+      '-shared',
+      '-Os',
+    }
+  end
+
+  local args = {
+    '-o',
+    'parser.so',
+    '-I./src',
+    repo.files,
+    '-Os',
+    ismac and '-bundle' or '-shared',
+  }
+
+  if
+    #vim.tbl_filter(function(file) ---@param file string
+      local ext = vim.fn.fnamemodify(file, ':e')
+      return ext == 'cc' or ext == 'cpp' or ext == 'cxx'
+    end, repo.files) > 0
+  then
+    table.insert(args, '-lstdc++')
+  end
+
+  if not iswin then
+    table.insert(args, '-fPIC')
+  end
+
+  return args
+end
+
+---@param repo InstallInfo
+---@param project_name string
+---@param cache_dir string
+---@param revision string|nil
+local function do_download(repo, project_name, cache_dir, revision)
+  local can_use_tar = vim.fn.executable('tar') == 1 and vim.fn.executable('curl') == 1
+  local is_github = repo.url:find('github.com', 1, true)
+  local is_gitlab = repo.url:find('gitlab.com', 1, true)
+  local project_dir = vim.fs.joinpath(cache_dir, project_name)
+
+  revision = revision or repo.branch or 'master'
+
+  if can_use_tar and (is_github or is_gitlab) and not iswin then
+    do_download_tar(repo, project_name, cache_dir, revision, project_dir)
+    return
+  end
+
+  do_download_git(repo, project_name, cache_dir, revision, project_dir)
+end
+
+-- Returns the compile command based on the OS and user options
+---@param repo InstallInfo
+---@param cc string
+---@param compile_location string
+local function do_compile(repo, cc, compile_location)
+  local make = M.select_executable({ 'gmake', 'make' })
+
+  print('Compiling...')
+
+  local cmd --- @type string[]
+  if cc:find('cl$') or cc:find('cl.exe$') or not repo.use_makefile or iswin or not make then
+    local args = vim.tbl_flatten(select_compiler_args(repo, cc))
+    cmd = vim.list_extend({ cc }, args)
+  else
+    cmd = {
+      make,
+      '--makefile=' .. M.get_package_path('scripts', 'compile_parsers.makefile'),
+      'CC=' .. cc,
+    }
+  end
+
+  local r = job.run(cmd, { cwd = compile_location })
+
+  a.main()
+
+  if r.exit_code > 0 then
+    failed_commands = failed_commands + 1
+    finished_commands = finished_commands + 1
+    error('Error during compilation: ' .. vim.inspect(r.stderr))
+  end
+end
+
 ---@param lang string
 ---@param cache_dir string
 ---@param install_dir string
 ---@param force boolean
----@param with_sync boolean
 ---@param generate_from_grammar boolean
-local function install_lang(lang, cache_dir, install_dir, force, with_sync, generate_from_grammar)
+local function install_lang(lang, cache_dir, install_dir, force, generate_from_grammar)
   if vim.list_contains(config.installed_parsers(), lang) then
     if not force then
       local yesno =
@@ -289,30 +483,15 @@ local function install_lang(lang, cache_dir, install_dir, force, with_sync, gene
     end
   end
 
+  local cc = M.select_executable(M.compilers)
+  if not cc then
+    cc_err()
+    return
+  end
+
   local repo = get_parser_install_info(lang)
 
   local project_name = 'tree-sitter-' .. lang
-  local maybe_local_path = fs.normalize(repo.url)
-  local from_local_path = vim.fn.isdirectory(maybe_local_path) == 1
-  if from_local_path then
-    repo.url = maybe_local_path
-  end
-
-  ---@type string compile_location only needed for typescript installs.
-  local compile_location
-  if from_local_path then
-    compile_location = repo.url
-    if repo.location then
-      compile_location = fs.joinpath(compile_location, repo.location)
-    end
-  else
-    local repo_location = project_name
-    if repo.location then
-      repo_location = fs.joinpath(repo_location, repo.location)
-    end
-    compile_location = fs.joinpath(cache_dir, repo_location)
-  end
-  local parser_lib_name = fs.joinpath(install_dir, lang) .. '.so'
 
   generate_from_grammar = repo.requires_generate_from_grammar or generate_from_grammar
 
@@ -326,129 +505,54 @@ local function install_lang(lang, cache_dir, install_dir, force, with_sync, gene
       )
     end
     return
-  else
-    if not M.ts_generate_args then
-      M.ts_generate_args = { 'generate', '--abi', vim.treesitter.language_version }
-    end
   end
+
   if generate_from_grammar and vim.fn.executable('node') ~= 1 then
     api.nvim_err_writeln('Node JS not found: `node` is not executable')
     return
   end
-  local cc = shell.select_executable(M.compilers)
-  if not cc then
-    api.nvim_err_writeln(
-      'No C compiler found! "'
-        .. table.concat(
-          vim.tbl_filter(function(c) ---@param c string
-            return type(c) == 'string'
-          end, M.compilers),
-          '", "'
-        )
-        .. '" are not executable.'
-    )
-    return
+
+  local revision = repo.revision or get_revision(lang)
+
+  local maybe_local_path = fs.normalize(repo.url)
+  local from_local_path = vim.fn.isdirectory(maybe_local_path) == 1
+  if from_local_path then
+    repo.url = maybe_local_path
   end
 
-  local revision = repo.revision
-  if not revision then
-    revision = get_revision(lang)
-  end
-
-  ---@class Command
-  ---@field cmd string
-  ---@field info string
-  ---@field err string
-  ---@field opts CmdOpts
-
-  ---@class CmdOpts
-  ---@field args string[]
-  ---@field cwd string
-
-  ---@type Command[]
-  local command_list = {}
   if not from_local_path then
-    vim.list_extend(command_list, {
-      {
-        cmd = function()
-          vim.fn.delete(fs.joinpath(cache_dir, project_name), 'rf')
-        end,
-      },
-    })
-    vim.list_extend(
-      command_list,
-      shell.select_download_commands(repo, project_name, cache_dir, revision, M.prefer_git)
-    )
+    vim.fn.delete(fs.joinpath(cache_dir, project_name), 'rf')
+    do_download(repo, project_name, cache_dir, revision)
   end
+
+  local compile_location = get_compile_location(repo, cache_dir, project_name, from_local_path)
+
   if generate_from_grammar then
-    if repo.generate_requires_npm then
-      if vim.fn.executable('npm') ~= 1 then
-        api.nvim_err_writeln('`' .. lang .. '` requires NPM to be installed from grammar.js')
-        return
-      end
-      vim.list_extend(command_list, {
-        {
-          cmd = 'npm',
-          info = 'Installing NPM dependencies of ' .. lang .. ' parser',
-          err = 'Error during `npm install` (required for parser generation of '
-            .. lang
-            .. ' with npm dependencies)',
-          opts = {
-            args = { 'install' },
-            cwd = compile_location,
-          },
-        },
-      })
-    end
-    vim.list_extend(command_list, {
-      {
-        cmd = vim.fn.exepath('tree-sitter'),
-        info = 'Generating source files from grammar.js...',
-        err = 'Error during "tree-sitter generate"',
-        opts = {
-          args = M.ts_generate_args,
-          cwd = compile_location,
-        },
-      },
-    })
-  end
-  vim.list_extend(command_list, {
-    shell.select_compile_command(repo, cc, compile_location),
-    {
-      cmd = function()
-        uv.fs_copyfile(fs.joinpath(compile_location, 'parser.so'), parser_lib_name)
-      end,
-    },
-    {
-      cmd = function()
-        local file = assert(
-          io.open(
-            fs.joinpath(config.get_install_dir('parser-info') or '', lang .. '.revision'),
-            'w'
-          )
-        )
-        file:write(revision or '')
-        file:close()
-      end,
-    },
-  })
-  if not from_local_path then
-    vim.list_extend(command_list, {
-      {
-        cmd = function()
-          vim.fn.delete(fs.joinpath(cache_dir, project_name), 'rf')
-        end,
-      },
-    })
+    do_generate_from_grammar(repo, lang, compile_location)
   end
 
-  if with_sync then
-    if iter_cmd_sync(command_list) == true then
-      vim.notify('Parser for ' .. lang .. ' has been installed')
-    end
-  else
-    iter_cmd(command_list, 1, lang, 'Parser for ' .. lang .. ' has been installed')
+  do_compile(repo, cc, compile_location)
+
+  local parser_lib_name = fs.joinpath(install_dir, lang) .. '.so'
+
+  local err = uv_copyfile(fs.joinpath(compile_location, 'parser.so'), parser_lib_name)
+  a.main()
+  if err then
+    failed_commands = failed_commands + 1
+    finished_commands = finished_commands + 1
+    error(err)
   end
+
+  local revfile = fs.joinpath(config.get_install_dir('parser-info') or '', lang .. '.revision')
+  local file = assert(io.open(revfile))
+  file:write(revision or '')
+  file:close()
+
+  if not from_local_path then
+    vim.fn.delete(fs.joinpath(cache_dir, project_name), 'rf')
+  end
+
+  print('Parser for ' .. lang .. ' has been installed')
 end
 
 ---@class InstallOptions
@@ -460,12 +564,18 @@ end
 -- Install a parser
 ---@param languages? string[]|string
 ---@param options? InstallOptions
-function M.install(languages, options)
+M.install = a.sync(function(languages, options)
   options = options or {}
   local with_sync = options.with_sync
   local force = options.force
   local generate_from_grammar = options.generate_from_grammar
   local skip = options.skip
+
+  if with_sync then
+    -- TODO(lewis6991): sync support
+    print('No sync support yet')
+    return
+  end
 
   reset_progress_counter()
 
@@ -483,22 +593,30 @@ function M.install(languages, options)
 
   languages = config.norm_languages(languages, skip)
 
+  local tasks = {} --- @type fun()[]
   for _, lang in ipairs(languages) do
-    install_lang(lang, cache_dir, install_dir, force, with_sync, generate_from_grammar)
-    uv.fs_symlink(
-      shell.get_package_path('runtime', 'queries', lang),
-      fs.joinpath(config.get_install_dir('queries'), lang),
-      { dir = true, junction = true } -- needed on Windows (non-junction links require admin)
-    )
+    tasks[#tasks + 1] = a.sync(function()
+      install_lang(lang, cache_dir, install_dir, force, generate_from_grammar)
+      local err = uv_symlink(
+        M.get_package_path('runtime', 'queries', lang),
+        fs.joinpath(config.get_install_dir('queries'), lang),
+        { dir = true, junction = true }
+      )
+      if err then
+        error(err)
+      end
+    end)
   end
-end
+
+  a.join(max_jobs, nil, tasks)
+end, 2)
 
 ---@class UpdateOptions
 ---@field with_sync boolean
 
 ---@param languages? string[]|string
 ---@param options? UpdateOptions
-function M.update(languages, options)
+M.update = a.sync(function(languages, options)
   options = options or {}
 
   reset_progress_counter()
@@ -513,9 +631,9 @@ function M.update(languages, options)
       with_sync = options.with_sync,
     })
   else
-    vim.notify('All parsers are up-to-date')
+    print('All parsers are up-to-date')
   end
-end
+end, 2)
 
 --- @param lang string
 --- @param parser string
@@ -525,22 +643,27 @@ local function uninstall(lang, parser, queries)
     return
   end
 
-  iter_cmd({
-    {
-      cmd = function()
-        uv.fs_unlink(parser)
-      end,
-    },
-    {
-      cmd = function()
-        uv.fs_unlink(queries)
-      end,
-    },
-  }, 1, lang, 'Parser for ' .. lang .. ' has been uninstalled')
+  local perr = uv_unlink(parser)
+
+  if perr then
+    vim.schedule(function()
+      error(perr)
+    end)
+  end
+
+  local qerr = uv_unlink(queries)
+
+  if qerr then
+    vim.schedule(function()
+      error(qerr)
+    end)
+  end
+
+  print('Parser for ' .. lang .. ' has been uninstalled')
 end
 
 --- @param languages string[]|string
-function M.uninstall(languages)
+M.uninstall = a.sync(function(languages)
   reset_progress_counter()
 
   languages = config.norm_languages(languages or 'all', { missing = true })
@@ -549,18 +672,20 @@ function M.uninstall(languages)
   local query_dir = config.get_install_dir('queries')
   local installed = config.installed_parsers()
 
+  local tasks = {} --- @type fun()[]
   for _, lang in ipairs(languages) do
     if not vim.list_contains(installed, lang) then
-      vim.notify(
-        'Parser for ' .. lang .. ' is is not managed by nvim-treesitter',
-        vim.log.levels.ERROR
-      )
+      print('Parser for ' .. lang .. ' is is not managed by nvim-treesitter', vim.log.levels.ERROR)
     else
       local parser = fs.joinpath(parser_dir, lang) .. '.so'
       local queries = fs.joinpath(query_dir, lang)
-      uninstall(lang, parser, queries)
+      tasks[#tasks + 1] = a.sync(function()
+        uninstall(lang, parser, queries)
+      end)
     end
   end
-end
+
+  a.join(max_jobs, nil, tasks)
+end, 1)
 
 return M
