@@ -398,6 +398,302 @@ local function do_compile(repo, cc, compile_location)
   return system(cmd, { cwd = compile_location })
 end
 
+--- @param repo InstallInfo
+--- @param project_name string
+--- @param cache_dir string
+--- @param from_local_path boolean
+--- @return string
+local function get_compile_location(repo, cache_dir, project_name, from_local_path)
+  ---@type string compile_location only needed for typescript installs.
+  if from_local_path then
+    local compile_location = repo.url
+    if repo.location then
+      compile_location = fs.joinpath(compile_location, repo.location)
+    end
+    return compile_location
+  end
+
+  local repo_location = project_name
+  if repo.location then
+    repo_location = fs.joinpath(repo_location, repo.location)
+  end
+  return fs.joinpath(cache_dir, repo_location)
+end
+
+local function cc_err()
+  log.error('No C compiler found! "' .. table.concat(
+    vim.tbl_filter(
+      ---@param c string
+      ---@return boolean
+      function(c)
+        return type(c) == 'string'
+      end,
+      M.compilers
+    ),
+    '", "'
+  ) .. '" are not executable.')
+end
+
+--- @param logger Logger
+--- @param repo InstallInfo
+--- @param compile_location string
+local function do_generate_from_grammar(logger, repo, compile_location)
+  if repo.generate_requires_npm then
+    if vim.fn.executable('npm') ~= 1 then
+      logger:error('NPM requires to be installed from grammar.js')
+    end
+
+    logger:info('Installing NPM dependencies')
+    local r = job.run({ 'npm', 'install' }, { cwd = compile_location })
+    a.main()
+    if r.exit_code > 0 then
+      logger:error('Error during `npm install`')
+    end
+  end
+
+  logger:info('Generating source files from grammar.js...')
+
+  local r = job.run({
+    vim.fn.exepath('tree-sitter'),
+    'generate',
+    '--abi',
+    tostring(vim.treesitter.language_version),
+  }, { cwd = compile_location })
+  a.main()
+  if r.exit_code > 0 then
+    logger:error('Error during "tree-sitter generate"')
+  end
+end
+
+---@param logger Logger
+---@param repo InstallInfo
+---@param project_name string
+---@param cache_dir string
+---@param revision string
+---@param project_dir string
+local function do_download_tar(logger, repo, project_name, cache_dir, revision, project_dir)
+  local is_github = repo.url:find('github.com', 1, true)
+  local url = repo.url:gsub('.git$', '')
+
+  local dir_rev = revision
+  if is_github and revision:find('^v%d') then
+    dir_rev = revision:sub(2)
+  end
+
+  local temp_dir = project_dir .. '-tmp'
+
+  util.delete(temp_dir)
+
+  logger:info('Downloading ' .. project_name .. '...')
+  local target = is_github and url .. '/archive/' .. revision .. '.tar.gz'
+    or url .. '/-/archive/' .. revision .. '/' .. project_name .. '-' .. revision .. '.tar.gz'
+
+  local r = job.run({
+    'curl',
+    '--silent',
+    '-L', -- follow redirects
+    target,
+    '--output',
+    project_name .. '.tar.gz',
+  }, {
+    cwd = cache_dir,
+  })
+  a.main()
+  if r.exit_code > 0 then
+    logger:error(
+      'Error during download, please verify your internet connection: ' .. vim.inspect(r.stderr)
+    )
+  end
+
+  logger:debug('Creating temporary directory: ' .. temp_dir)
+  --TODO(clason): use vim.fn.mkdir(temp_dir, 'p') in case stdpath('cache') is not created
+  local err = uv_mkdir(temp_dir, 493)
+  a.main()
+  if err then
+    logger:error('Could not create %s-tmp: %s', project_name, err)
+  end
+
+  logger:info('Extracting ' .. project_name .. '...')
+  r = job.run({
+    'tar',
+    '-xzf',
+    project_name .. '.tar.gz',
+    '-C',
+    project_name .. '-tmp',
+  }, {
+    cwd = cache_dir,
+  })
+
+  a.main()
+  if r.exit_code > 0 then
+    logger:error('Error during tarball extraction: ' .. vim.inspect(r.stderr))
+  end
+
+  err = uv_unlink(project_dir .. '.tar.gz')
+  if err then
+    logger:error('Could not remove tarball: ' .. err)
+  end
+  a.main()
+
+  err = uv_rename(fs.joinpath(temp_dir, url:match('[^/]-$') .. '-' .. dir_rev), project_dir)
+  a.main()
+
+  if err then
+    logger:error('Could not rename temp: ' .. err)
+  end
+
+  util.delete(temp_dir)
+end
+
+---@param logger Logger
+---@param repo InstallInfo
+---@param project_name string
+---@param cache_dir string
+---@param revision string
+---@param project_dir string
+local function do_download_git(logger, repo, project_name, cache_dir, revision, project_dir)
+  logger:info('Downloading ' .. project_name .. '...')
+
+  local r = job.run({
+    'git',
+    'clone',
+    '--filter=blob:none',
+    repo.url,
+    project_name,
+  }, {
+    cwd = cache_dir,
+  })
+
+  a.main()
+
+  if r.exit_code > 0 then
+    logger:error(
+      'Error during download, please verify your internet connection: ' .. vim.inspect(r.stderr)
+    )
+  end
+
+  logger:info('Checking out locked revision')
+  r = job.run({
+    'git',
+    'checkout',
+    revision,
+  }, {
+    cwd = project_dir,
+  })
+
+  a.main()
+
+  if r.exit_code > 0 then
+    logger:error('Error while checking out revision: ' .. vim.inspect(r.stderr))
+  end
+end
+
+---@param executables string[]
+---@return string?
+function M.select_executable(executables)
+  return vim.tbl_filter(
+    ---@param c string
+    ---@return boolean
+    function(c)
+      return c ~= vim.NIL and vim.fn.executable(c) == 1
+    end,
+    executables
+  )[1]
+end
+
+-- Returns the compiler arguments based on the compiler and OS
+---@param repo InstallInfo
+---@param compiler string
+---@return string[]
+local function select_compiler_args(repo, compiler)
+  if compiler:find('cl$') or compiler:find('cl.exe$') then
+    return {
+      '/Fe:',
+      'parser.so',
+      '/Isrc',
+      repo.files,
+      '-Os',
+      '/LD',
+    }
+  end
+
+  if compiler:find('zig$') or compiler:find('zig.exe$') then
+    return {
+      'c++',
+      '-o',
+      'parser.so',
+      repo.files,
+      '-lc',
+      '-Isrc',
+      '-shared',
+      '-Os',
+    }
+  end
+
+  local args = {
+    '-o',
+    'parser.so',
+    '-I./src',
+    repo.files,
+    '-Os',
+    ismac and '-bundle' or '-shared',
+  }
+
+  if
+    #vim.tbl_filter(
+      --- @param file string
+      --- @return boolean
+      function(file)
+        local ext = vim.fn.fnamemodify(file, ':e')
+        return ext == 'cc' or ext == 'cpp' or ext == 'cxx'
+      end,
+      repo.files
+    ) > 0
+  then
+    table.insert(args, '-lstdc++')
+  end
+
+  if not iswin then
+    table.insert(args, '-fPIC')
+  end
+
+  return args
+end
+
+---@param repo InstallInfo
+---@return boolean
+local function can_download_tar(repo)
+  local can_use_tar = vim.fn.executable('tar') == 1 and vim.fn.executable('curl') == 1
+  local is_github = repo.url:find('github.com', 1, true)
+  local is_gitlab = repo.url:find('gitlab.com', 1, true)
+  return can_use_tar and (is_github or is_gitlab) and not iswin
+end
+
+-- Returns the compile command based on the OS and user options
+---@param repo InstallInfo
+---@param cc string
+---@param compile_location string
+---@return JobResult
+local function do_compile(repo, cc, compile_location)
+  local make = M.select_executable({ 'gmake', 'make' })
+
+  local cmd --- @type string[]
+  if cc:find('cl$') or cc:find('cl.exe$') or not repo.use_makefile or iswin or not make then
+    local args = vim.tbl_flatten(select_compiler_args(repo, cc))
+    cmd = vim.list_extend({ cc }, args)
+  else
+    cmd = {
+      make,
+      '--makefile=' .. M.get_package_path('scripts', 'compile_parsers.makefile'),
+      'CC=' .. cc,
+    }
+  end
+
+  local r = job.run(cmd, { cwd = compile_location })
+  a.main()
+  return r
+end
+
 ---@param lang string
 ---@param cache_dir string
 ---@param install_dir string
