@@ -7,7 +7,6 @@ This document lists the planned and finished changes in this rewrite towards [Nv
 - [ ] **`query_predicates.lua`:** upstream/remove
 - [ ] **`parsers.lua`:** modularize?
 - [ ] **`parsers.lua`:** assign tiers
-- [ ] **`install.lua`:** fix messages, add sync support (@lewis6991)
 - [ ] **`install.lua`:** simplify compilation:
   - hardcode one compiler + args per platform
   - provide `install.compile_command` for overriding (function that takes files, ...?)
@@ -32,5 +31,6 @@ This document lists the planned and finished changes in this rewrite towards [Nv
 - [X] install parsers to standard directory by default
 - [X] remove bundled queries from runtimepath; copy on parser install
 - [X] general refactor and cleanup
+- [X] rewrite installation using async module (drop support for sync; use callback instead)
 - [X] switch to upstream injection format
 - [X] remove locals from highlighting (cf. https://github.com/nvim-treesitter/nvim-treesitter/issues/3944#issuecomment-1458782497)
