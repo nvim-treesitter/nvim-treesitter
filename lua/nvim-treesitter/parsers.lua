@@ -2289,17 +2289,18 @@ M.configs = {
 ---@param tier integer? only get parsers of specified tier
 ---@return string[]
 function M.get_available(tier)
+  --- @type string[]
   local parsers = vim.tbl_keys(M.configs)
   table.sort(parsers)
   if tier then
     parsers = vim.iter.filter(function(p)
       return M.configs[p].tier == tier
-    end, parsers)
+    end, parsers) --[[@as string[] ]]
   end
   if vim.fn.executable('tree-sitter') == 0 or vim.fn.executable('node') == 0 then
     parsers = vim.iter.filter(function(p)
       return not M.configs[p].install_info.requires_generate_from_grammar
-    end, parsers)
+    end, parsers) --[[@as string[] ]]
   end
   return parsers
 end
