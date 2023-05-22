@@ -230,7 +230,7 @@ local function do_download_tar(repo, project_name, cache_dir, revision, project_
 
   local temp_dir = project_dir .. '-tmp'
 
-  vim.fn.delete(temp_dir, 'rf')
+  util.delete(temp_dir)
 
   print('Downloading ' .. project_name .. '...')
   local target = is_github and url .. '/archive/' .. revision .. '.tar.gz'
@@ -300,7 +300,7 @@ local function do_download_tar(repo, project_name, cache_dir, revision, project_
     error('Could not rename temp: ' .. err)
   end
 
-  vim.fn.delete(temp_dir, 'rf')
+  util.delete(temp_dir)
 end
 
 ---@param repo InstallInfo
@@ -517,7 +517,7 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
   end
 
   if not from_local_path then
-    vim.fn.delete(fs.joinpath(cache_dir, project_name), 'rf')
+    util.delete(fs.joinpath(cache_dir, project_name))
     do_download(repo, project_name, cache_dir, revision)
   end
 
@@ -543,7 +543,7 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
   util.write_file(revfile, revision or '')
 
   if not from_local_path then
-    vim.fn.delete(fs.joinpath(cache_dir, project_name), 'rf')
+    util.delete(fs.joinpath(cache_dir, project_name))
   end
 
   print('Parser for ' .. lang .. ' has been installed')
