@@ -505,7 +505,7 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
     return
   else
     if not M.ts_generate_args then
-      M.ts_generate_args = { 'generate', '--abi', vim.treesitter.language_version }
+      M.ts_generate_args = { 'generate', '--abi', tostring(vim.treesitter.language_version) }
     end
   end
   if generate_from_grammar and vim.fn.executable('node') ~= 1 then
