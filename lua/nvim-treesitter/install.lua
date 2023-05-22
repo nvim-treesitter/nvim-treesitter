@@ -18,16 +18,15 @@ local lockfile = {}
 
 local max_jobs = 50
 
+local iswin = uv.os_uname().sysname == 'Windows_NT'
+local ismac = uv.os_uname().sysname == 'Darwin'
+
 M.compilers = { uv.os_getenv('CC'), 'cc', 'gcc', 'clang', 'cl', 'zig' }
-M.prefer_git = uv.os_uname().sysname == 'Windows_NT'
 M.ts_generate_args = nil --- @type string[]?
 
 local started_commands = 0
 local finished_commands = 0
 local failed_commands = 0
-
-local iswin = uv.os_uname().sysname == 'Windows_NT'
-local ismac = uv.os_uname().sysname == 'Darwin'
 
 ---
 --- JOB API functions
@@ -414,8 +413,7 @@ end
 ---@param project_name string
 ---@param cache_dir string
 ---@param revision string|nil
----@param prefer_git boolean
-local function do_download(repo, project_name, cache_dir, revision, prefer_git)
+local function do_download(repo, project_name, cache_dir, revision)
   local can_use_tar = vim.fn.executable('tar') == 1 and vim.fn.executable('curl') == 1
   local is_github = repo.url:find('github.com', 1, true)
   local is_gitlab = repo.url:find('gitlab.com', 1, true)
@@ -423,7 +421,7 @@ local function do_download(repo, project_name, cache_dir, revision, prefer_git)
 
   revision = revision or repo.branch or 'master'
 
-  if can_use_tar and (is_github or is_gitlab) and not prefer_git then
+  if can_use_tar and (is_github or is_gitlab) and not iswin then
     do_download_tar(repo, project_name, cache_dir, revision, project_dir)
     return
   end
@@ -525,7 +523,7 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
 
   if not from_local_path then
     vim.fn.delete(fs.joinpath(cache_dir, project_name), 'rf')
-    do_download(repo, project_name, cache_dir, revision, M.prefer_git)
+    do_download(repo, project_name, cache_dir, revision)
   end
 
   if generate_from_grammar then
