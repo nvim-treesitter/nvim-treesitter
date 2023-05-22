@@ -8,6 +8,7 @@ local config = require('nvim-treesitter.config')
 local a = require('nvim-treesitter.async')
 local job = require('nvim-treesitter.job')
 local util = require('nvim-treesitter.util')
+local log = require('nvim-treesitter.log')
 
 local uv_copyfile = a.wrap(uv.fs_copyfile, 4)
 local uv_mkdir = a.wrap(uv.fs_mkdir, 3)
@@ -58,7 +59,7 @@ local function get_parser_install_info(lang, validate)
   local parser_config = parsers.configs[lang]
 
   if not parser_config then
-    error('Parser not available for language "' .. lang .. '"')
+    log.error('Parser not available for language "' .. lang .. '"')
   end
 
   local install_info = parser_config.install_info
@@ -162,16 +163,12 @@ local function get_compile_location(repo, cache_dir, project_name, from_local_pa
 end
 
 local function cc_err()
-  api.nvim_err_writeln(
-    'No C compiler found! "'
-      .. table.concat(
-        vim.tbl_filter(function(c) ---@param c string
-          return type(c) == 'string'
-        end, M.compilers),
-        '", "'
-      )
-      .. '" are not executable.'
-  )
+  log.error('No C compiler found! "' .. table.concat(
+    vim.tbl_filter(function(c) ---@param c string
+      return type(c) == 'string'
+    end, M.compilers),
+    '", "'
+  ) .. '" are not executable.')
 end
 
 --- @param repo InstallInfo
@@ -180,17 +177,16 @@ end
 local function do_generate_from_grammar(repo, lang, compile_location)
   if repo.generate_requires_npm then
     if vim.fn.executable('npm') ~= 1 then
-      api.nvim_err_writeln('`' .. lang .. '` requires NPM to be installed from grammar.js')
-      return
+      log.error('`' .. lang .. '` requires NPM to be installed from grammar.js')
     end
 
-    print('Installing NPM dependencies of ' .. lang .. ' parser')
+    log.info('Installing NPM dependencies of ' .. lang .. ' parser')
     local r = job.run({ 'npm', 'install' }, { cwd = compile_location })
     a.main()
     if r.exit_code > 0 then
       failed_commands = failed_commands + 1
       finished_commands = finished_commands + 1
-      error(
+      log.error(
         'Error during `npm install` (required for parser generation of '
           .. lang
           .. ' with npm dependencies)'
@@ -198,7 +194,7 @@ local function do_generate_from_grammar(repo, lang, compile_location)
     end
   end
 
-  print('Generating source files from grammar.js...')
+  log.info('Generating source files from grammar.js...')
 
   local r = job.run({
     vim.fn.exepath('tree-sitter'),
@@ -210,7 +206,7 @@ local function do_generate_from_grammar(repo, lang, compile_location)
   if r.exit_code > 0 then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    error('Error during "tree-sitter generate"')
+    log.error('Error during "tree-sitter generate"')
   end
 end
 
@@ -232,7 +228,7 @@ local function do_download_tar(repo, project_name, cache_dir, revision, project_
 
   util.delete(temp_dir)
 
-  print('Downloading ' .. project_name .. '...')
+  log.info('Downloading ' .. project_name .. '...')
   local target = is_github and url .. '/archive/' .. revision .. '.tar.gz'
     or url .. '/-/archive/' .. revision .. '/' .. project_name .. '-' .. revision .. '.tar.gz'
 
@@ -250,25 +246,26 @@ local function do_download_tar(repo, project_name, cache_dir, revision, project_
   if r.exit_code > 0 then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    error(
+    log.error(
       'Error during download, please verify your internet connection: ' .. vim.inspect(r.stderr)
     )
   end
 
-  print('Creating temporary directory')
+  log.info('Creating temporary directory')
+  log.debug('Creating temporary directory: ' .. temp_dir)
   --TODO(clason): use vim.fn.mkdir(temp_dir, 'p') in case stdpath('cache') is not created
   local err = uv_mkdir(temp_dir, 493)
   a.main()
   if err then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    error(string.format('Could not create %s-tmp: %s', project_name, err))
+    log.error('Could not create %s-tmp: %s', project_name, err)
   end
 
-  print('Extracting ' .. project_name .. '...')
+  log.info('Extracting ' .. project_name .. '...')
   r = job.run({
     'tar',
-    '-xvzf',
+    '-xzf',
     project_name .. '.tar.gz',
     '-C',
     project_name .. '-tmp',
@@ -280,14 +277,14 @@ local function do_download_tar(repo, project_name, cache_dir, revision, project_
   if r.exit_code > 0 then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    error('Error during tarball extraction: ' .. vim.inspect(r.stderr))
+    log.error('Error during tarball extraction: ' .. vim.inspect(r.stderr))
   end
 
   err = uv_unlink(project_dir .. '.tar.gz')
   if err then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    error('Could not remove tarball: ' .. err)
+    log.error('Could not remove tarball: ' .. err)
   end
   a.main()
 
@@ -297,7 +294,7 @@ local function do_download_tar(repo, project_name, cache_dir, revision, project_
   if err then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    error('Could not rename temp: ' .. err)
+    log.error('Could not rename temp: ' .. err)
   end
 
   util.delete(temp_dir)
@@ -309,7 +306,7 @@ end
 ---@param revision string
 ---@param project_dir string
 local function do_download_git(repo, project_name, cache_dir, revision, project_dir)
-  print('Downloading ' .. project_name .. '...')
+  log.info('Downloading ' .. project_name .. '...')
 
   local r = job.run({
     'git',
@@ -326,12 +323,12 @@ local function do_download_git(repo, project_name, cache_dir, revision, project_
   if r.exit_code > 0 then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    error(
+    log.error(
       'Error during download, please verify your internet connection: ' .. vim.inspect(r.stderr)
     )
   end
 
-  print('Checking out locked revision')
+  log.info('Checking out locked revision')
   r = job.run({
     'git',
     'checkout',
@@ -345,7 +342,7 @@ local function do_download_git(repo, project_name, cache_dir, revision, project_
   if r.exit_code > 0 then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    error('Error while checking out revision: ' .. vim.inspect(r.stderr))
+    log.error('Error while checking out revision: ' .. vim.inspect(r.stderr))
   end
 end
 
@@ -438,8 +435,6 @@ end
 local function do_compile(repo, cc, compile_location)
   local make = M.select_executable({ 'gmake', 'make' })
 
-  print('Compiling...')
-
   local cmd --- @type string[]
   if cc:find('cl$') or cc:find('cl.exe$') or not repo.use_makefile or iswin or not make then
     local args = vim.tbl_flatten(select_compiler_args(repo, cc))
@@ -459,7 +454,7 @@ local function do_compile(repo, cc, compile_location)
   if r.exit_code > 0 then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    error('Error during compilation: ' .. vim.inspect(r.stderr))
+    log.error('Error during compilation: ' .. vim.inspect(r.stderr))
   end
 end
 
@@ -493,20 +488,11 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
   generate_from_grammar = repo.requires_generate_from_grammar or generate_from_grammar
 
   if generate_from_grammar and vim.fn.executable('tree-sitter') ~= 1 then
-    api.nvim_err_writeln('tree-sitter CLI not found: `tree-sitter` is not executable')
-    if repo.requires_generate_from_grammar then
-      api.nvim_err_writeln(
-        'tree-sitter CLI is needed because the parser for `'
-          .. lang
-          .. '` needs to be generated from grammar'
-      )
-    end
-    return
+    log.error('tree-sitter CLI not found: `tree-sitter` is not executable')
   end
 
   if generate_from_grammar and vim.fn.executable('node') ~= 1 then
-    api.nvim_err_writeln('Node JS not found: `node` is not executable')
-    return
+    log.error('Node JS not found: `node` is not executable')
   end
 
   local revision = repo.revision or get_target_revision(lang)
@@ -528,6 +514,7 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
     do_generate_from_grammar(repo, lang, compile_location)
   end
 
+  log.info('Compiling parser for ' .. lang)
   do_compile(repo, cc, compile_location)
 
   local parser_lib_name = fs.joinpath(install_dir, lang) .. '.so'
@@ -537,7 +524,7 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
   if err then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    error(err)
+    log.error(err)
   end
 
   local revfile = fs.joinpath(config.get_install_dir('parser-info') or '', lang .. '.revision')
@@ -547,7 +534,7 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
     util.delete(fs.joinpath(cache_dir, project_name))
   end
 
-  print('Parser for ' .. lang .. ' has been installed')
+  log.info('Parser for ' .. lang .. ' has been installed')
 end
 
 ---@class InstallOptions
@@ -568,14 +555,14 @@ M.install = a.sync(function(languages, options)
 
   if with_sync then
     -- TODO(lewis6991): sync support
-    print('No sync support yet')
+    log.warn('No sync support yet')
     return
   end
 
   reset_progress_counter()
 
   if vim.fn.executable('git') == 0 then
-    api.nvim_err_writeln('Git is required on your system to run this command')
+    log.error('Git is required on your system to run this command')
     return
   end
 
@@ -592,13 +579,15 @@ M.install = a.sync(function(languages, options)
   for _, lang in ipairs(languages) do
     tasks[#tasks + 1] = a.sync(function()
       install_lang(lang, cache_dir, install_dir, force, generate_from_grammar)
+      local queries = fs.joinpath(config.get_install_dir('queries'), lang)
+      uv_unlink(queries)
       local err = uv_symlink(
         M.get_package_path('runtime', 'queries', lang),
-        fs.joinpath(config.get_install_dir('queries'), lang),
+        queries,
         { dir = true, junction = true }
       )
       if err then
-        error(err)
+        log.error(err)
       end
     end)
   end
@@ -626,7 +615,7 @@ M.update = a.sync(function(languages, options)
       with_sync = options.with_sync,
     })
   else
-    print('All parsers are up-to-date')
+    log.info('All parsers are up-to-date')
   end
 end, 2)
 
@@ -634,27 +623,31 @@ end, 2)
 --- @param parser string
 --- @param queries string
 local function uninstall(lang, parser, queries)
+  log.debug('Uninstalling ' .. lang)
   if vim.fn.filereadable(parser) ~= 1 then
     return
   end
 
+  log.debug('Unlinking ' .. parser)
   local perr = uv_unlink(parser)
 
   if perr then
     vim.schedule(function()
-      error(perr)
+      log.error(perr)
     end)
   end
 
+  log.debug('Unlinking ' .. queries)
   local qerr = uv_unlink(queries)
 
   if qerr then
     vim.schedule(function()
-      error(qerr)
+      log.error(qerr)
     end)
   end
 
-  print('Parser for ' .. lang .. ' has been uninstalled')
+  a.main()
+  log.info('Parser for ' .. lang .. ' has been uninstalled')
 end
 
 --- @param languages string[]|string
@@ -670,7 +663,7 @@ M.uninstall = a.sync(function(languages)
   local tasks = {} --- @type fun()[]
   for _, lang in ipairs(languages) do
     if not vim.list_contains(installed, lang) then
-      print('Parser for ' .. lang .. ' is is not managed by nvim-treesitter', vim.log.levels.ERROR)
+      log.warn('Parser for ' .. lang .. ' is is not managed by nvim-treesitter')
     else
       local parser = fs.joinpath(parser_dir, lang) .. '.so'
       local queries = fs.joinpath(query_dir, lang)

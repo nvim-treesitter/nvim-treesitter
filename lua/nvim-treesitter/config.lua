@@ -63,9 +63,10 @@ function M.get_install_dir(dir_name)
   local dir = vim.fs.joinpath(config.install_dir, dir_name)
 
   if not vim.loop.fs_stat(dir) then
-    local ok, error = pcall(vim.fn.mkdir, dir, 'p', '0755')
+    local ok, err = pcall(vim.fn.mkdir, dir, 'p', '0755')
     if not ok then
-      vim.notify(error, vim.log.levels.ERROR)
+      local log = require('nvim-treesitter.log')
+      log.error(err)
     end
   end
   return dir
