@@ -640,23 +640,20 @@ local function uninstall(lang, parser, queries)
 
   log.debug('Unlinking ' .. parser)
   local perr = uv_unlink(parser)
+  a.main()
 
   if perr then
-    vim.schedule(function()
-      log.error(perr)
-    end)
+    log.error(perr)
   end
 
   log.debug('Unlinking ' .. queries)
   local qerr = uv_unlink(queries)
+  a.main()
 
   if qerr then
-    vim.schedule(function()
-      log.error(qerr)
-    end)
+    log.error(qerr)
   end
 
-  a.main()
   log.info('Parser for ' .. lang .. ' has been uninstalled')
 end
 
