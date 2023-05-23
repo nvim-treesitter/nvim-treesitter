@@ -2,13 +2,12 @@ local api = vim.api
 local fs = vim.fs
 local uv = vim.loop
 
-local parsers = require('nvim-treesitter.parsers')
-local config = require('nvim-treesitter.config')
-
 local a = require('nvim-treesitter.async')
+local config = require('nvim-treesitter.config')
 local job = require('nvim-treesitter.job')
-local util = require('nvim-treesitter.util')
 local log = require('nvim-treesitter.log')
+local parsers = require('nvim-treesitter.parsers')
+local util = require('nvim-treesitter.util')
 
 local uv_copyfile = a.wrap(uv.fs_copyfile, 4)
 local uv_mkdir = a.wrap(uv.fs_mkdir, 3)
