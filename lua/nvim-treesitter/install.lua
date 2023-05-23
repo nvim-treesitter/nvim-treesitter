@@ -45,7 +45,7 @@ M.compilers = { uv.os_getenv('CC'), 'cc', 'gcc', 'clang', 'cl', 'zig' }
 ---
 
 ---@param lang string
----@param validate boolean|nil
+---@param validate? boolean
 ---@return InstallInfo
 local function get_parser_install_info(lang, validate)
   local parser_config = parsers.configs[lang]
@@ -66,12 +66,14 @@ local function get_parser_install_info(lang, validate)
   return install_info
 end
 
+--- @param ... string
+--- @return string
 function M.get_package_path(...)
   return fs.joinpath(vim.fn.fnamemodify(debug.getinfo(1, 'S').source:sub(2), ':p:h:h:h'), ...)
 end
 
 ---@param lang string
----@return string|nil
+---@return string?
 local function get_target_revision(lang)
   if #lockfile == 0 then
     local filename = M.get_package_path('lockfile.json')
@@ -89,7 +91,7 @@ local function get_target_revision(lang)
 end
 
 ---@param lang string
----@return string|nil
+---@return string?
 local function get_installed_revision(lang)
   local lang_file = fs.joinpath(config.get_install_dir('parser-info'), lang .. '.revision')
   return util.read_file(lang_file)
@@ -323,7 +325,7 @@ local function do_download_git(logger, repo, project_name, cache_dir, revision, 
 end
 
 ---@param executables string[]
----@return string|nil
+---@return string?
 function M.select_executable(executables)
   return vim.tbl_filter(
     ---@param c string
