@@ -117,6 +117,7 @@ local function query_status(lang, query_group)
 end
 
 function M.check()
+  --- @type {[1]: string, [2]: string, [3]: string}[]
   local error_collection = {}
   -- Installation dependency checks
   install_health()
@@ -143,7 +144,7 @@ function M.check()
   if #error_collection > 0 then
     vim.health.start('The following errors have been detected:')
     for _, p in ipairs(error_collection) do
-      local lang, type, err = unpack(p)
+      local lang, type, err = p[1], p[2], p[3]
       local lines = {}
       table.insert(lines, lang .. '(' .. type .. '): ' .. err)
       local files = tsq.get_files(lang, type)

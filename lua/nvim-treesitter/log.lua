@@ -112,6 +112,7 @@ local noctx_logger = M.new()
 
 setmetatable(M, {
   __index = function(t, k)
+    --- @diagnostic disable-next-line:no-unknown
     t[k] = function(...)
       return noctx_logger[k](noctx_logger, ...)
     end

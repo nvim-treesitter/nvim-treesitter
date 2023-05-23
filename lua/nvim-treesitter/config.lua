@@ -66,7 +66,7 @@ function M.get_install_dir(dir_name)
     local ok, err = pcall(vim.fn.mkdir, dir, 'p', '0755')
     if not ok then
       local log = require('nvim-treesitter.log')
-      log.error(err)
+      log.error(err --[[@as string]])
     end
   end
   return dir
@@ -111,7 +111,7 @@ function M.norm_languages(languages, skip)
     if vim.list_contains(languages, tier) then
       languages = vim.iter.filter(function(l)
         return l ~= tier
-      end, languages)
+      end, languages) --[[@as string[] ]]
       vim.list_extend(languages, parsers.get_available(i))
     end
   end
@@ -120,21 +120,21 @@ function M.norm_languages(languages, skip)
     local ignored = config.ignore_install
     languages = vim.iter.filter(function(v)
       return not vim.list_contains(ignored, v)
-    end, languages)
+    end, languages) --[[@as string[] ]]
   end
 
   if skip and skip.installed then
     local installed = M.installed_parsers()
     languages = vim.iter.filter(function(v)
       return not vim.list_contains(installed, v)
-    end, languages)
+    end, languages) --[[@as string[] ]]
   end
 
   if skip and skip.missing then
     local installed = M.installed_parsers()
     languages = vim.iter.filter(function(v)
       return vim.list_contains(installed, v)
-    end, languages)
+    end, languages) --[[@as string[] ]]
   end
 
   return languages

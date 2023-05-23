@@ -22,6 +22,7 @@ end
 --- Recursively delete a directory
 --- @param name string
 function M.delete(name)
+  --- @diagnostic disable-next-line:param-type-mismatch
   local stat = uv.fs_lstat(name)
   if not stat then
     return

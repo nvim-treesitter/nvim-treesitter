@@ -41,6 +41,7 @@ local function spawn(cmd, options, callback)
   end)
 
   --- @type integer?
+  --- @diagnostic disable-next-line:undefined-field
   local timeout = options.timeout
 
   if timeout then
