@@ -1,6 +1,7 @@
 -- Interface with Neovim job control and provide a simple job sequencing structure
 local uv = vim.loop
 local a = require('nvim-treesitter.async')
+local log = require('nvim-treesitter.log')
 
 local M = { JobResult = {}, Opts = {} }
 
@@ -17,12 +18,6 @@ local M = { JobResult = {}, Opts = {} }
 --- @field on_stderr  fun(_: string)
 --- @field on_stdout  fun(_: string)
 
---- @param cmd string
---- @param options table
-local function trace(cmd, options)
-  --- TBD
-end
-
 --- Wrapper for vim.loop.spawn. Takes a command, options, and callback just like
 --- vim.loop.spawn, but ensures that all output from the command has been
 --- flushed before calling the callback.
@@ -32,7 +27,7 @@ end
 local function spawn(cmd, options, callback)
   local handle --- @type uv_process_t?
   local timer --- @type uv_timer_t
-  trace(cmd, options)
+  log.trace('running job: (cwd=%s) %s %s', options.cwd, cmd, table.concat(options.args, ' '))
   handle = uv.spawn(cmd, options, function(exit_code, signal)
     ---@cast handle -nil
 
@@ -54,7 +49,7 @@ local function spawn(cmd, options, callback)
       timer:stop()
       timer:close()
       if handle and handle:is_active() then
-        -- log.warn('Killing ' .. cmd .. ' due to timeout!')
+        log.warn('Killing %s due to timeout!', cmd)
         handle:kill('sigint')
         handle:close()
         for _, pipe in
@@ -106,8 +101,11 @@ M.run = a.wrap(function(task, opts, callback)
       if kind == 'stdout' and opts.on_stdout and data then
         opts.on_stdout(data)
       end
+      if data then
+        log.trace('%s -> %s', kind, data)
+      end
       if err then
-        error(err)
+        log.error(err)
       end
       if data ~= nil then
         local output = kind == 'stdout' and stdout_data or stderr_data

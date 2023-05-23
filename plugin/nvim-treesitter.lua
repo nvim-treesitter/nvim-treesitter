@@ -84,3 +84,9 @@ end, {
   complete = complete_installed_parsers,
   desc = 'Uninstall treesitter parsers',
 })
+
+api.nvim_create_user_command('TSLog', function()
+  require('nvim-treesitter.log').show()
+end, {
+  desc = 'View log messages',
+})
