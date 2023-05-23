@@ -592,9 +592,13 @@ M.install = a.sync(function(languages, options)
     end)
   end
 
-  a.join(max_jobs, nil, tasks)
-  a.main()
-  log.info('Installed %d/%d parsers', done, #tasks)
+  if #tasks == 1 then
+    tasks[1]()
+  else
+    a.join(max_jobs, nil, tasks)
+    a.main()
+    log.info('Installed %d/%d parsers', done, #tasks)
+  end
 end, 2)
 
 ---@class UpdateOptions
@@ -675,9 +679,13 @@ M.uninstall = a.sync(function(languages)
     end
   end
 
-  a.join(max_jobs, nil, tasks)
-  a.main()
-  log.info('Uninstalled %d/%d parsers', done, #tasks)
+  if #tasks == 1 then
+    tasks[1]()
+  else
+    a.join(max_jobs, nil, tasks)
+    a.main()
+    log.info('Uninstalled %d/%d parsers', done, #tasks)
+  end
 end, 1)
 
 return M
