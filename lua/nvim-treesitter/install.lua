@@ -171,30 +171,26 @@ local function cc_err()
   ) .. '" are not executable.')
 end
 
+--- @param logger Logger
 --- @param repo InstallInfo
---- @param lang string
 --- @param compile_location string
-local function do_generate_from_grammar(repo, lang, compile_location)
+local function do_generate_from_grammar(logger, repo, compile_location)
   if repo.generate_requires_npm then
     if vim.fn.executable('npm') ~= 1 then
-      log.error('`' .. lang .. '` requires NPM to be installed from grammar.js')
+      logger:error('NPM requires to be installed from grammar.js')
     end
 
-    log.info('Installing NPM dependencies of ' .. lang .. ' parser')
+    logger:info('Installing NPM dependencies')
     local r = job.run({ 'npm', 'install' }, { cwd = compile_location })
     a.main()
     if r.exit_code > 0 then
       failed_commands = failed_commands + 1
       finished_commands = finished_commands + 1
-      log.error(
-        'Error during `npm install` (required for parser generation of '
-          .. lang
-          .. ' with npm dependencies)'
-      )
+      logger:error('Error during `npm install`')
     end
   end
 
-  log.info('Generating source files from grammar.js...')
+  logger:info('Generating source files from grammar.js...')
 
   local r = job.run({
     vim.fn.exepath('tree-sitter'),
@@ -206,16 +202,17 @@ local function do_generate_from_grammar(repo, lang, compile_location)
   if r.exit_code > 0 then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    log.error('Error during "tree-sitter generate"')
+    logger:error('Error during "tree-sitter generate"')
   end
 end
 
+---@param logger Logger
 ---@param repo InstallInfo
 ---@param project_name string
 ---@param cache_dir string
 ---@param revision string
 ---@param project_dir string
-local function do_download_tar(repo, project_name, cache_dir, revision, project_dir)
+local function do_download_tar(logger, repo, project_name, cache_dir, revision, project_dir)
   local is_github = repo.url:find('github.com', 1, true)
   local url = repo.url:gsub('.git$', '')
 
@@ -228,7 +225,7 @@ local function do_download_tar(repo, project_name, cache_dir, revision, project_
 
   util.delete(temp_dir)
 
-  log.info('Downloading ' .. project_name .. '...')
+  logger:info('Downloading ' .. project_name .. '...')
   local target = is_github and url .. '/archive/' .. revision .. '.tar.gz'
     or url .. '/-/archive/' .. revision .. '/' .. project_name .. '-' .. revision .. '.tar.gz'
 
@@ -246,23 +243,22 @@ local function do_download_tar(repo, project_name, cache_dir, revision, project_
   if r.exit_code > 0 then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    log.error(
+    logger:error(
       'Error during download, please verify your internet connection: ' .. vim.inspect(r.stderr)
     )
   end
 
-  log.info('Creating temporary directory')
-  log.debug('Creating temporary directory: ' .. temp_dir)
+  logger:debug('Creating temporary directory: ' .. temp_dir)
   --TODO(clason): use vim.fn.mkdir(temp_dir, 'p') in case stdpath('cache') is not created
   local err = uv_mkdir(temp_dir, 493)
   a.main()
   if err then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    log.error('Could not create %s-tmp: %s', project_name, err)
+    logger:error('Could not create %s-tmp: %s', project_name, err)
   end
 
-  log.info('Extracting ' .. project_name .. '...')
+  logger:info('Extracting ' .. project_name .. '...')
   r = job.run({
     'tar',
     '-xzf',
@@ -277,14 +273,14 @@ local function do_download_tar(repo, project_name, cache_dir, revision, project_
   if r.exit_code > 0 then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    log.error('Error during tarball extraction: ' .. vim.inspect(r.stderr))
+    logger:error('Error during tarball extraction: ' .. vim.inspect(r.stderr))
   end
 
   err = uv_unlink(project_dir .. '.tar.gz')
   if err then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    log.error('Could not remove tarball: ' .. err)
+    logger:error('Could not remove tarball: ' .. err)
   end
   a.main()
 
@@ -294,19 +290,20 @@ local function do_download_tar(repo, project_name, cache_dir, revision, project_
   if err then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    log.error('Could not rename temp: ' .. err)
+    logger:error('Could not rename temp: ' .. err)
   end
 
   util.delete(temp_dir)
 end
 
+---@param logger Logger
 ---@param repo InstallInfo
 ---@param project_name string
 ---@param cache_dir string
 ---@param revision string
 ---@param project_dir string
-local function do_download_git(repo, project_name, cache_dir, revision, project_dir)
-  log.info('Downloading ' .. project_name .. '...')
+local function do_download_git(logger, repo, project_name, cache_dir, revision, project_dir)
+  logger:info('Downloading ' .. project_name .. '...')
 
   local r = job.run({
     'git',
@@ -323,12 +320,12 @@ local function do_download_git(repo, project_name, cache_dir, revision, project_
   if r.exit_code > 0 then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    log.error(
+    logger:error(
       'Error during download, please verify your internet connection: ' .. vim.inspect(r.stderr)
     )
   end
 
-  log.info('Checking out locked revision')
+  logger:info('Checking out locked revision')
   r = job.run({
     'git',
     'checkout',
@@ -342,7 +339,7 @@ local function do_download_git(repo, project_name, cache_dir, revision, project_
   if r.exit_code > 0 then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    log.error('Error while checking out revision: ' .. vim.inspect(r.stderr))
+    logger:error('Error while checking out revision: ' .. vim.inspect(r.stderr))
   end
 end
 
@@ -409,29 +406,19 @@ local function select_compiler_args(repo, compiler)
 end
 
 ---@param repo InstallInfo
----@param project_name string
----@param cache_dir string
----@param revision string|nil
-local function do_download(repo, project_name, cache_dir, revision)
+---@return boolean
+local function can_download_tar(repo)
   local can_use_tar = vim.fn.executable('tar') == 1 and vim.fn.executable('curl') == 1
   local is_github = repo.url:find('github.com', 1, true)
   local is_gitlab = repo.url:find('gitlab.com', 1, true)
-  local project_dir = fs.joinpath(cache_dir, project_name)
-
-  revision = revision or repo.branch or 'master'
-
-  if can_use_tar and (is_github or is_gitlab) and not iswin then
-    do_download_tar(repo, project_name, cache_dir, revision, project_dir)
-    return
-  end
-
-  do_download_git(repo, project_name, cache_dir, revision, project_dir)
+  return can_use_tar and (is_github or is_gitlab) and not iswin
 end
 
 -- Returns the compile command based on the OS and user options
 ---@param repo InstallInfo
 ---@param cc string
 ---@param compile_location string
+---@return JobResult
 local function do_compile(repo, cc, compile_location)
   local make = M.select_executable({ 'gmake', 'make' })
 
@@ -448,14 +435,8 @@ local function do_compile(repo, cc, compile_location)
   end
 
   local r = job.run(cmd, { cwd = compile_location })
-
   a.main()
-
-  if r.exit_code > 0 then
-    failed_commands = failed_commands + 1
-    finished_commands = finished_commands + 1
-    log.error('Error during compilation: ' .. vim.inspect(r.stderr))
-  end
+  return r
 end
 
 ---@param lang string
@@ -485,14 +466,16 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
 
   local project_name = 'tree-sitter-' .. lang
 
+  local logger = log.new('install/' .. lang)
+
   generate_from_grammar = repo.requires_generate_from_grammar or generate_from_grammar
 
   if generate_from_grammar and vim.fn.executable('tree-sitter') ~= 1 then
-    log.error('tree-sitter CLI not found: `tree-sitter` is not executable')
+    logger:error('tree-sitter CLI not found: `tree-sitter` is not executable')
   end
 
   if generate_from_grammar and vim.fn.executable('node') ~= 1 then
-    log.error('Node JS not found: `node` is not executable')
+    logger:error('Node JS not found: `node` is not executable')
   end
 
   local revision = repo.revision or get_target_revision(lang)
@@ -505,17 +488,30 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
 
   if not from_local_path then
     util.delete(fs.joinpath(cache_dir, project_name))
-    do_download(repo, project_name, cache_dir, revision)
+    local project_dir = fs.joinpath(cache_dir, project_name)
+
+    revision = revision or repo.branch or 'master'
+
+    if can_download_tar(repo) then
+      do_download_tar(logger, repo, project_name, cache_dir, revision, project_dir)
+    else
+      do_download_git(logger, repo, project_name, cache_dir, revision, project_dir)
+    end
   end
 
   local compile_location = get_compile_location(repo, cache_dir, project_name, from_local_path)
 
   if generate_from_grammar then
-    do_generate_from_grammar(repo, lang, compile_location)
+    do_generate_from_grammar(logger, repo, compile_location)
   end
 
-  log.info('Compiling parser for ' .. lang)
-  do_compile(repo, cc, compile_location)
+  logger:info('Compiling parser')
+  local r = do_compile(repo, cc, compile_location)
+  if r.exit_code > 0 then
+    failed_commands = failed_commands + 1
+    finished_commands = finished_commands + 1
+    logger:error('Error during compilation: ' .. vim.inspect(r.stderr))
+  end
 
   local parser_lib_name = fs.joinpath(install_dir, lang) .. '.so'
 
@@ -524,7 +520,7 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
   if err then
     failed_commands = failed_commands + 1
     finished_commands = finished_commands + 1
-    log.error(err)
+    logger:error(err)
   end
 
   local revfile = fs.joinpath(config.get_install_dir('parser-info') or '', lang .. '.revision')
@@ -534,7 +530,7 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
     util.delete(fs.joinpath(cache_dir, project_name))
   end
 
-  log.info('Parser for ' .. lang .. ' has been installed')
+  logger:info('Parser installed')
 end
 
 ---@class InstallOptions
@@ -588,11 +584,7 @@ M.install = a.sync(function(languages, options)
       local queries = fs.joinpath(config.get_install_dir('queries'), lang)
       local queries_src = M.get_package_path('runtime', 'queries', lang)
       uv_unlink(queries)
-      local err = uv_symlink(
-        queries_src,
-        queries,
-        { dir = true, junction = true }
-      )
+      local err = uv_symlink(queries_src, queries, { dir = true, junction = true })
       if err then
         log.error(err)
       end
@@ -633,12 +625,13 @@ end, 2)
 --- @param parser string
 --- @param queries string
 local function uninstall(lang, parser, queries)
-  log.debug('Uninstalling ' .. lang)
+  local logger = log.new('uninstall/' .. lang)
+  logger:debug('Uninstalling ' .. lang)
   if vim.fn.filereadable(parser) ~= 1 then
     return
   end
 
-  log.debug('Unlinking ' .. parser)
+  logger:debug('Unlinking ' .. parser)
   local perr = uv_unlink(parser)
   a.main()
 
@@ -646,15 +639,15 @@ local function uninstall(lang, parser, queries)
     log.error(perr)
   end
 
-  log.debug('Unlinking ' .. queries)
+  logger:debug('Unlinking ' .. queries)
   local qerr = uv_unlink(queries)
   a.main()
 
   if qerr then
-    log.error(qerr)
+    logger:error(qerr)
   end
 
-  log.info('Parser for ' .. lang .. ' has been uninstalled')
+  logger:info('Parser uninstalled')
 end
 
 --- @param languages string[]|string
