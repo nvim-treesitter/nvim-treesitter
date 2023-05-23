@@ -31,23 +31,6 @@ local ismac = uv.os_uname().sysname == 'Darwin'
 
 M.compilers = { uv.os_getenv('CC'), 'cc', 'gcc', 'clang', 'cl', 'zig' }
 
-local started_commands = 0
-local finished_commands = 0
-local failed_commands = 0
-
----
---- JOB API functions
----
-
-local function reset_progress_counter()
-  if started_commands ~= finished_commands then
-    return
-  end
-  started_commands = 0
-  finished_commands = 0
-  failed_commands = 0
-end
-
 ---
 --- PARSER INFO
 ---
@@ -184,8 +167,6 @@ local function do_generate_from_grammar(logger, repo, compile_location)
     local r = job.run({ 'npm', 'install' }, { cwd = compile_location })
     a.main()
     if r.exit_code > 0 then
-      failed_commands = failed_commands + 1
-      finished_commands = finished_commands + 1
       logger:error('Error during `npm install`')
     end
   end
@@ -200,8 +181,6 @@ local function do_generate_from_grammar(logger, repo, compile_location)
   }, { cwd = compile_location })
   a.main()
   if r.exit_code > 0 then
-    failed_commands = failed_commands + 1
-    finished_commands = finished_commands + 1
     logger:error('Error during "tree-sitter generate"')
   end
 end
@@ -241,8 +220,6 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
   })
   a.main()
   if r.exit_code > 0 then
-    failed_commands = failed_commands + 1
-    finished_commands = finished_commands + 1
     logger:error(
       'Error during download, please verify your internet connection: ' .. vim.inspect(r.stderr)
     )
@@ -253,8 +230,6 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
   local err = uv_mkdir(temp_dir, 493)
   a.main()
   if err then
-    failed_commands = failed_commands + 1
-    finished_commands = finished_commands + 1
     logger:error('Could not create %s-tmp: %s', project_name, err)
   end
 
@@ -271,15 +246,11 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
 
   a.main()
   if r.exit_code > 0 then
-    failed_commands = failed_commands + 1
-    finished_commands = finished_commands + 1
     logger:error('Error during tarball extraction: ' .. vim.inspect(r.stderr))
   end
 
   err = uv_unlink(project_dir .. '.tar.gz')
   if err then
-    failed_commands = failed_commands + 1
-    finished_commands = finished_commands + 1
     logger:error('Could not remove tarball: ' .. err)
   end
   a.main()
@@ -288,8 +259,6 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
   a.main()
 
   if err then
-    failed_commands = failed_commands + 1
-    finished_commands = finished_commands + 1
     logger:error('Could not rename temp: ' .. err)
   end
 
@@ -318,8 +287,6 @@ local function do_download_git(logger, repo, project_name, cache_dir, revision, 
   a.main()
 
   if r.exit_code > 0 then
-    failed_commands = failed_commands + 1
-    finished_commands = finished_commands + 1
     logger:error(
       'Error during download, please verify your internet connection: ' .. vim.inspect(r.stderr)
     )
@@ -337,8 +304,6 @@ local function do_download_git(logger, repo, project_name, cache_dir, revision, 
   a.main()
 
   if r.exit_code > 0 then
-    failed_commands = failed_commands + 1
-    finished_commands = finished_commands + 1
     logger:error('Error while checking out revision: ' .. vim.inspect(r.stderr))
   end
 end
@@ -508,8 +473,6 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
   logger:info('Compiling parser')
   local r = do_compile(repo, cc, compile_location)
   if r.exit_code > 0 then
-    failed_commands = failed_commands + 1
-    finished_commands = finished_commands + 1
     logger:error('Error during compilation: ' .. vim.inspect(r.stderr))
   end
 
@@ -518,8 +481,6 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
   local err = uv_copyfile(fs.joinpath(compile_location, 'parser.so'), parser_lib_name)
   a.main()
   if err then
-    failed_commands = failed_commands + 1
-    finished_commands = finished_commands + 1
     logger:error(err)
   end
 
@@ -554,8 +515,6 @@ M.install = a.sync(function(languages, options)
     log.warn('No sync support yet')
     return
   end
-
-  reset_progress_counter()
 
   if vim.fn.executable('git') == 0 then
     log.error('Git is required on your system to run this command')
@@ -609,7 +568,6 @@ end, 2)
 M.update = a.sync(function(languages, options)
   options = options or {}
 
-  reset_progress_counter()
   M.lockfile = {}
 
   languages = config.norm_languages(languages or 'all', { ignored = true, missing = true })
@@ -656,8 +614,6 @@ end
 
 --- @param languages string[]|string
 M.uninstall = a.sync(function(languages)
-  reset_progress_counter()
-
   languages = config.norm_languages(languages or 'all', { missing = true })
 
   local parser_dir = config.get_install_dir('parser')
