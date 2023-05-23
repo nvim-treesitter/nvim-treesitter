@@ -521,26 +521,19 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
 end
 
 ---@class InstallOptions
----@field with_sync boolean
 ---@field force boolean
 ---@field generate_from_grammar boolean
 ---@field skip table
 
--- Install a parser
----@param languages? string[]|string
----@param options? InstallOptions
-M.install = a.sync(function(languages, options)
+--- Install a parser
+--- @param languages? string[]|string
+--- @param options? InstallOptions
+--- @param _callback? fun()
+local function install(languages, options, _callback)
   options = options or {}
-  local with_sync = options.with_sync
   local force = options.force
   local generate_from_grammar = options.generate_from_grammar
   local skip = options.skip
-
-  if with_sync then
-    -- TODO(lewis6991): sync support
-    log.warn('No sync support yet')
-    return
-  end
 
   if vim.fn.executable('git') == 0 then
     log.error('Git is required on your system to run this command')
@@ -584,26 +577,23 @@ M.install = a.sync(function(languages, options)
     a.main()
     log.info('Installed %d/%d parsers', done, #tasks)
   end
-end, 2)
+end
+
+M.install = a.sync(install, 2)
 
 ---@class UpdateOptions
----@field with_sync boolean
 
 ---@param languages? string[]|string
----@param options? UpdateOptions
-M.update = a.sync(function(languages, options)
-  options = options or {}
-
+---@param _options? UpdateOptions
+---@param _callback function
+M.update = a.sync(function(languages, _options, _callback)
   M.lockfile = {}
 
   languages = config.norm_languages(languages or 'all', { ignored = true, missing = true })
   languages = vim.iter.filter(needs_update, languages) --- @type string[]
 
   if #languages > 0 then
-    M.install(languages, {
-      force = true,
-      with_sync = options.with_sync,
-    })
+    install(languages, { force = true })
   else
     log.info('All parsers are up-to-date')
   end
@@ -612,7 +602,7 @@ end, 2)
 --- @param lang string
 --- @param parser string
 --- @param queries string
-local function uninstall(lang, parser, queries)
+local function uninstall_lang(lang, parser, queries)
   local logger = log.new('uninstall/' .. lang)
   logger:debug('Uninstalling ' .. lang)
   if vim.fn.filereadable(parser) ~= 1 then
@@ -639,7 +629,9 @@ local function uninstall(lang, parser, queries)
 end
 
 --- @param languages string[]|string
-M.uninstall = a.sync(function(languages)
+--- @param _options? UpdateOptions
+--- @param _callback fun()
+M.uninstall = a.sync(function(languages, _options, _callback)
   languages = config.norm_languages(languages or 'all', { missing = true })
 
   local parser_dir = config.get_install_dir('parser')
@@ -655,7 +647,7 @@ M.uninstall = a.sync(function(languages)
       local parser = fs.joinpath(parser_dir, lang) .. '.so'
       local queries = fs.joinpath(query_dir, lang)
       tasks[#tasks + 1] = a.sync(function()
-        uninstall(lang, parser, queries)
+        uninstall_lang(lang, parser, queries)
         done = done + 1
       end)
     end
@@ -668,6 +660,6 @@ M.uninstall = a.sync(function(languages)
     a.main()
     log.info('Uninstalled %d/%d parsers', done, #tasks)
   end
-end, 1)
+end, 2)
 
 return M

@@ -45,19 +45,6 @@ end, {
   desc = 'Install treesitter parsers from grammar',
 })
 
-api.nvim_create_user_command('TSInstallSync', function(args)
-  require('nvim-treesitter.install').install(args.fargs, {
-    with_sync = true,
-    force = args.bang,
-  })
-end, {
-  nargs = '+',
-  bang = true,
-  bar = true,
-  complete = complete_available_parsers,
-  desc = 'Install treesitter parsers synchronously',
-})
-
 api.nvim_create_user_command('TSUpdate', function(args)
   require('nvim-treesitter.install').update(args.fargs)
 end, {
@@ -65,15 +52,6 @@ end, {
   bar = true,
   complete = complete_installed_parsers,
   desc = 'Update installed treesitter parsers',
-})
-
-api.nvim_create_user_command('TSUpdateSync', function(args)
-  require('nvim-treesitter.install').update(args.fargs, { with_sync = true })
-end, {
-  nargs = '*',
-  bar = true,
-  complete = complete_installed_parsers,
-  desc = 'Update installed treesitter parsers synchronously',
 })
 
 api.nvim_create_user_command('TSUninstall', function(args)
