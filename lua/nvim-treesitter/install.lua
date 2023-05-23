@@ -9,10 +9,19 @@ local log = require('nvim-treesitter.log')
 local parsers = require('nvim-treesitter.parsers')
 local util = require('nvim-treesitter.util')
 
+--- @type fun(path: string, new_path: string, flags?: table): string?
 local uv_copyfile = a.wrap(uv.fs_copyfile, 4)
+
+--- @type fun(path: string, mode: integer): string?
 local uv_mkdir = a.wrap(uv.fs_mkdir, 3)
+
+--- @type fun(path: string, new_path: string): string?
 local uv_rename = a.wrap(uv.fs_rename, 3)
+
+--- @type fun(path: string, new_path: string, flags?: table): string?
 local uv_symlink = a.wrap(uv.fs_symlink, 4)
+
+--- @type fun(path: string): string?
 local uv_unlink = a.wrap(uv.fs_unlink, 2)
 
 local M = {}
@@ -28,6 +37,7 @@ local max_jobs = 50
 local iswin = uv.os_uname().sysname == 'Windows_NT'
 local ismac = uv.os_uname().sysname == 'Darwin'
 
+--- @diagnostic disable-next-line:missing-parameter
 M.compilers = { uv.os_getenv('CC'), 'cc', 'gcc', 'clang', 'cl', 'zig' }
 
 ---
@@ -146,9 +156,14 @@ end
 
 local function cc_err()
   log.error('No C compiler found! "' .. table.concat(
-    vim.tbl_filter(function(c) ---@param c string
-      return type(c) == 'string'
-    end, M.compilers),
+    vim.tbl_filter(
+      ---@param c string
+      ---@return boolean
+      function(c)
+        return type(c) == 'string'
+      end,
+      M.compilers
+    ),
     '", "'
   ) .. '" are not executable.')
 end
@@ -310,9 +325,14 @@ end
 ---@param executables string[]
 ---@return string|nil
 function M.select_executable(executables)
-  return vim.tbl_filter(function(c) ---@param c string
-    return c ~= vim.NIL and vim.fn.executable(c) == 1
-  end, executables)[1]
+  return vim.tbl_filter(
+    ---@param c string
+    ---@return boolean
+    function(c)
+      return c ~= vim.NIL and vim.fn.executable(c) == 1
+    end,
+    executables
+  )[1]
 end
 
 -- Returns the compiler arguments based on the compiler and OS
@@ -354,10 +374,15 @@ local function select_compiler_args(repo, compiler)
   }
 
   if
-    #vim.tbl_filter(function(file) ---@param file string
-      local ext = vim.fn.fnamemodify(file, ':e')
-      return ext == 'cc' or ext == 'cpp' or ext == 'cxx'
-    end, repo.files) > 0
+    #vim.tbl_filter(
+      --- @param file string
+      --- @return boolean
+      function(file)
+        local ext = vim.fn.fnamemodify(file, ':e')
+        return ext == 'cc' or ext == 'cpp' or ext == 'cxx'
+      end,
+      repo.files
+    ) > 0
   then
     table.insert(args, '-lstdc++')
   end
