@@ -96,6 +96,9 @@ local get_indents = memoize(function(bufnr, root, lang)
 
   --TODO(clason): remove when dropping Nvim 0.8 compat
   local query = (ts.query.get or ts.get_query)(lang, "indents")
+  if not query then
+    return map
+  end
   for id, node, metadata in query:iter_captures(root, bufnr) do
     if query.captures[id]:sub(1, 1) ~= "_" then
       map[query.captures[id]][node:id()] = metadata or {}
