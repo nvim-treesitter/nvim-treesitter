@@ -33,7 +33,7 @@
     "revision": "7f1a5df44861291d6951b6b2146a9fef4c226e14"
   },
   "c": {
-    "revision": "cac392ac3d7d365c469971b117e92a0df3bc8305"
+    "revision": "a015709e7d1bb4f823a2fc53175e0cbee96c1c3e"
   },
   "c_sharp": {
     "revision": "aaafc3d75f058ca5fe639b7ed5829964a3ca4575"
@@ -69,7 +69,7 @@
     "revision": "769203d0f9abe1a9a691ac2b9fe4bb4397a73c51"
   },
   "cuda": {
-    "revision": "7f6b48249b8500d506bd424cfa8e4c9d83e17754"
+    "revision": "9c20a3120c405db9efda9349cd005c29f2aace3c"
   },
   "cue": {
     "revision": "f83fd9abbece9becb5232c517b9d47ff141e237a"
@@ -432,7 +432,7 @@
     "revision": "0a70e15da977489d954c219af9b50b8a722630ee"
   },
   "scala": {
-    "revision": "78ae129292990224bcae025e7d3f4873a88f772d"
+    "revision": "5aefc0ae4c174fa74d6e973faefa28692e081954"
   },
   "scheme": {
     "revision": "6abcfe33d976ebe3e244ca80273c7e8a070441b5"
@@ -480,7 +480,7 @@
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
   },
   "t32": {
-    "revision": "c5ab392fece192875d2206da487449b856afcdef"
+    "revision": "b4dca3527463274de1f3263c0e1c329bc3b4f514"
   },
   "tablegen": {
     "revision": "e5e046e1b221e25111175469f02f3cf336010857"
