@@ -4,8 +4,8 @@ HERE="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 cd $HERE/..
 
 run() {
-    nvim --headless --noplugin -u scripts/minimal_init.lua \
-        -c "PlenaryBustedDirectory $1 { minimal_init = './scripts/minimal_init.lua' }"
+    nvim --headless --noplugin -u ./scripts/minimal_init.lua \
+        -c "PlenaryBustedDirectory $1 { init = './scripts/minimal_init.lua' }"
 }
 
 if [[ $2 = '--summary' ]]; then

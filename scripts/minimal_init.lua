@@ -2,6 +2,8 @@ vim.opt.runtimepath:append "."
 vim.cmd.runtime { "plugin/plenary.vim", bang = true }
 vim.cmd.runtime { "plugin/nvim-treesitter.lua", bang = true }
 
+vim.g.loaded_matchparen = 1
+
 vim.filetype.add {
   extension = {
     conf = "hocon",
