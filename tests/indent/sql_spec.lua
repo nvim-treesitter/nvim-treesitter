@@ -15,9 +15,5 @@ describe("indent SQL:", function()
     })
   end)
 
-  
-  describe("new line:", function()
-  end)
-
+  describe("new line:", function() end)
 end)
-

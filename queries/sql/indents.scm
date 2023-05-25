@@ -1,26 +1,29 @@
 [
- (select_expression)
+ (select)
  (cte)
  (column_definitions)
  (case)
- (keyword_when)
- (keyword_else)
  (subquery)
+ (insert)
 ] @indent.begin
 
 
 (compound_statement
   (keyword_begin)
-  (statement) @indent.begin
-)
+) @indent.begin
 
 (column_definitions "(" @indent.begin)
 (column_definitions ")" @indent.branch)
+
 (subquery ")" @indent.branch)
 (subquery "(" @indent.begin)
 
+(cte ")" @indent.branch)
+
 [
  (keyword_end)
+ (keyword_values)
+ (keyword_into)
 ] @indent.branch
 
- (keyword_from) @indent.align
+(keyword_end) @indent.end
