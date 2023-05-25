@@ -12,11 +12,9 @@
   (keyword_begin)
 ) @indent.begin
 
-(column_definitions "(" @indent.begin)
 (column_definitions ")" @indent.branch)
 
 (subquery ")" @indent.branch)
-(subquery "(" @indent.begin)
 
 (cte ")" @indent.branch)
 
