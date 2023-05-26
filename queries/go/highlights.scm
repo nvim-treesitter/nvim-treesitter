@@ -35,8 +35,8 @@
 (method_declaration
   name: (field_identifier) @method)
 
-(method_spec 
-  name: (field_identifier) @method) 
+(method_spec
+  name: (field_identifier) @method)
 
 ; Constructors
 
@@ -163,6 +163,7 @@
  (#any-of? @function.builtin
            "append"
            "cap"
+           "clear"
            "close"
            "complex"
            "copy"
