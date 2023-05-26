@@ -1,6 +1,7 @@
 #!/usr/bin/env -S nvim -l
 
 vim.opt.runtimepath:append('.')
+local parsers = require('nvim-treesitter.parsers')
 
 -- Equivalent to print(), but this will ensure consistent output regardless of
 -- operating system.
@@ -28,8 +29,8 @@ local function extract_captures()
   end
 
   -- Complete captures for injections.
-  local parsers = vim.tbl_keys(require('nvim-treesitter.parsers').configs)
-  for _, lang in pairs(parsers) do
+
+  for _, lang in ipairs(parsers.get_names()) do
     table.insert(captures['injections'], lang)
   end
 
@@ -47,7 +48,6 @@ end
 
 local function do_check()
   local timings = {}
-  local parsers = require('nvim-treesitter.config').installed_parsers()
   local query_types = require('nvim-treesitter.health').bundled_queries
 
   local captures = extract_captures()
@@ -55,7 +55,7 @@ local function do_check()
 
   io_print('::group::Check parsers')
 
-  for _, lang in pairs(parsers) do
+  for _, lang in ipairs(require('nvim-treesitter.config').installed_parsers()) do
     timings[lang] = {}
     for _, query_type in pairs(query_types) do
       local before = vim.uv.hrtime()
@@ -104,20 +104,21 @@ end
 local ok, result = pcall(do_check)
 local allowed_to_fail = vim.split(vim.env.ALLOWED_INSTALLATION_FAILURES or '', ',', true)
 
-for k, v in pairs(require('nvim-treesitter.parsers').configs) do
-  if v.install_info then
+for _, name in pairs(parsers.get_names()) do
+  local parser = parsers.configs[name]
+  if parser.install_info then
     -- skip "query only" languages
-    if #vim.api.nvim_get_runtime_file('parser/' .. k .. '.*', false) == 0 then
+    if #vim.api.nvim_get_runtime_file('parser/' .. name .. '.*', false) == 0 then
       -- On CI all parsers that can be installed from C files should be installed
       if
         vim.env.CI
-        and not v.install_info.requires_generate_from_grammar
-        and not vim.list_contains(allowed_to_fail, k)
+        and not parser.install_info.requires_generate_from_grammar
+        and not vim.list_contains(allowed_to_fail, name)
       then
-        io_print('Error: parser for ' .. k .. ' is not installed')
+        io_print('Error: parser for ' .. name .. ' is not installed')
         vim.cmd('cq')
       else
-        io_print('Warning: parser for ' .. k .. ' is not installed')
+        io_print('Warning: parser for ' .. name .. ' is not installed')
       end
     end
   end

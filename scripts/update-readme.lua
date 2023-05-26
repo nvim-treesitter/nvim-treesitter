@@ -3,17 +3,10 @@
 vim.opt.runtimepath:append('.')
 local util = require('nvim-treesitter.util')
 local parsers = require('nvim-treesitter.parsers')
+
 ---@class Parser
 ---@field name string
 ---@field parser ParserInfo
-
-local sorted_parsers = {}
-for k, v in pairs(parsers.configs) do
-  table.insert(sorted_parsers, { name = k, parser = v })
-end
-table.sort(sorted_parsers, function(a, b)
-  return a.name < b.name
-end)
 
 local generated_text = [[
 Language | Tier | Queries | CLI | NPM | Maintainer
@@ -21,28 +14,28 @@ Language | Tier | Queries | CLI | NPM | Maintainer
 ]]
 local footnotes = ''
 
-for _, v in ipairs(sorted_parsers) do
-  local p = v.parser
+for _, name in ipairs(parsers.get_names()) do
+  local p = parsers.configs[name]
   -- language
   if p.install_info then
     generated_text = generated_text
       .. '['
-      .. v.name
+      .. name
       .. ']('
       .. p.install_info.url
       .. ')'
-      .. (p.readme_note and '[^' .. v.name .. ']' or '')
+      .. (p.readme_note and '[^' .. name .. ']' or '')
       .. ' | '
   else
     generated_text = generated_text
-      .. v.name
+      .. name
       .. ' (queries only)'
-      .. (p.readme_note and '[^' .. v.name .. ']' or '')
+      .. (p.readme_note and '[^' .. name .. ']' or '')
       .. ' | '
   end
 
   if p.readme_note then
-    footnotes = footnotes .. '[^' .. v.name .. ']: ' .. p.readme_note .. '\n'
+    footnotes = footnotes .. '[^' .. name .. ']: ' .. p.readme_note .. '\n'
   end
 
   -- tier
@@ -51,11 +44,11 @@ for _, v in ipairs(sorted_parsers) do
   -- queries
   generated_text = generated_text
     .. '`'
-    .. (vim.uv.fs_stat('runtime/queries/' .. v.name .. '/highlights.scm') and 'H' or ' ')
-    .. (vim.uv.fs_stat('runtime/queries/' .. v.name .. '/folds.scm') and 'F' or ' ')
-    .. (vim.uv.fs_stat('runtime/queries/' .. v.name .. '/indents.scm') and 'I' or ' ')
-    .. (vim.uv.fs_stat('runtime/queries/' .. v.name .. '/injections.scm') and 'J' or ' ')
-    .. (vim.uv.fs_stat('runtime/queries/' .. v.name .. '/locals.scm') and 'L' or ' ')
+    .. (vim.uv.fs_stat('runtime/queries/' .. name .. '/highlights.scm') and 'H' or ' ')
+    .. (vim.uv.fs_stat('runtime/queries/' .. name .. '/folds.scm') and 'F' or ' ')
+    .. (vim.uv.fs_stat('runtime/queries/' .. name .. '/indents.scm') and 'I' or ' ')
+    .. (vim.uv.fs_stat('runtime/queries/' .. name .. '/injections.scm') and 'J' or ' ')
+    .. (vim.uv.fs_stat('runtime/queries/' .. name .. '/locals.scm') and 'L' or ' ')
     .. '` | '
 
   -- CLI

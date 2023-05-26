@@ -2,6 +2,7 @@
 
 vim.opt.runtimepath:append('.')
 local util = require('nvim-treesitter.util')
+local parsers = require('lua.nvim-treesitter.parsers')
 
 -- Load previous lockfile
 local filename = require('nvim-treesitter.install').get_package_path('lockfile.json')
@@ -12,35 +13,28 @@ local skip_lang_string = os.getenv('LOCKFILE_SKIP')
 local skip_langs = skip_lang_string and vim.split(skip_lang_string, ',') or {}
 vim.print('Skipping languages: ', skip_langs)
 
-local sorted_parsers = {}
-for k, v in pairs(require('nvim-treesitter.parsers').configs) do
-  table.insert(sorted_parsers, { name = k, parser = v })
-end
-table.sort(sorted_parsers, function(a, b)
-  return a.name < b.name
-end)
-
 -- check for new revisions
-for _, v in ipairs(sorted_parsers) do
-  if not vim.list_contains(skip_langs, v.name) and v.parser.install_info then
+for _, name in ipairs(parsers.get_names()) do
+  local config = parsers.configs[name]
+  if not vim.list_contains(skip_langs, name) and config.install_info then
     local sha ---@type string
-    if v.parser.install_info.branch then
+    if config.install_info.branch then
       sha = vim.split(
         vim.fn.systemlist(
           'git ls-remote '
-            .. v.parser.install_info.url
+            .. config.install_info.url
             .. ' | grep refs/heads/'
-            .. v.parser.install_info.branch
+            .. config.install_info.branch
         )[1],
         '\t'
       )[1]
     else
-      sha = vim.split(vim.fn.systemlist('git ls-remote ' .. v.parser.install_info.url)[1], '\t')[1]
+      sha = vim.split(vim.fn.systemlist('git ls-remote ' .. config.install_info.url)[1], '\t')[1]
     end
-    lockfile[v.name] = { revision = sha }
-    print(v.name .. ': ' .. sha)
+    lockfile[name] = { revision = sha }
+    print(name .. ': ' .. sha)
   else
-    print('Skipping ' .. v.name)
+    print('Skipping ' .. name)
   end
 end
 
