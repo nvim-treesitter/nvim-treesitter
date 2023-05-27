@@ -72,7 +72,7 @@
     "revision": "9c20a3120c405db9efda9349cd005c29f2aace3c"
   },
   "cue": {
-    "revision": "f83fd9abbece9becb5232c517b9d47ff141e237a"
+    "revision": "971130aa1d2da22098d75062c024bb1250ff9d62"
   },
   "d": {
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
@@ -117,7 +117,7 @@
     "revision": "203f7bd3c1bbfbd98fc19add4b8fcb213c059205"
   },
   "erlang": {
-    "revision": "13a6a51d1bda845f756971773dd6049b80a3cffc"
+    "revision": "6228b1df25f25dbd69e4e0342c4c65eb9b5e957d"
   },
   "fennel": {
     "revision": "517195970428aacca60891b050aa53eabf4ba78d"
@@ -195,7 +195,7 @@
     "revision": "3d4af179414525a35dd069ba0208c9b71093d8b3"
   },
   "haskell": {
-    "revision": "c5cb0c860a399308305f44792bc4853737c40c07"
+    "revision": "e002d60072c73ab09bafedc82d3e35a4349ca6c0"
   },
   "hcl": {
     "revision": "becebebd3509c02e871c99be55556269be1def1b"
@@ -225,7 +225,7 @@
     "revision": "1a0ce072ebf3afac7d5603d9a95bb7c9a6709b44"
   },
   "ispc": {
-    "revision": "a5c2fd44a6a7fe4230c72d651c1b9b2d28fc20fe"
+    "revision": "848e58874ffa2f7e540a6ec01ab9652b26995f37"
   },
   "janet_simple": {
     "revision": "bd9cbaf1ea8b942dfd58e68df10c9a378ab3d2b6"
@@ -315,13 +315,13 @@
     "revision": "e2053f7c8856d91bc36c87604f697784845cee69"
   },
   "nickel": {
-    "revision": "3a794388773f2424a97b2186828aa3fac4c66ce6"
+    "revision": "b1a4718601ebd29a62bf3a7fd1069a99ccf48093"
   },
   "ninja": {
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "6b71a810c0acd49b980c50fc79092561f7cee307"
+    "revision": "02878b40ac77d2889833519c6b6e9e63cfc690e6"
   },
   "norg": {
     "revision": "1a305093569632de50f9a316ff843dcda25b4ef5"
@@ -330,10 +330,10 @@
     "revision": "0612ff9874bf376db4ae92b9f46ddcd4bdec1342"
   },
   "ocaml": {
-    "revision": "a09c63f4d754d2d2dffb7265f6e6f39c9e6e6db1"
+    "revision": "11559418d8de82a2313504dc5bec9983d17ea4e9"
   },
   "ocaml_interface": {
-    "revision": "a09c63f4d754d2d2dffb7265f6e6f39c9e6e6db1"
+    "revision": "11559418d8de82a2313504dc5bec9983d17ea4e9"
   },
   "ocamllex": {
     "revision": "ac1d5957e719d49bd6acd27439b79843e4daf8ed"
@@ -354,10 +354,10 @@
     "revision": "60aa138f9e1db15becad53070f4d5898b0e8a98c"
   },
   "php": {
-    "revision": "1a40581b7a899201d7c2b4684ee34490bc306bd6"
+    "revision": "ff6a35badb0fe373575196bd728a8a53e9be70bd"
   },
   "phpdoc": {
-    "revision": "2f4d16c861b5a454b577d057f247f9902d7b47f5"
+    "revision": "2d20f39476348c2682761ce7251914031a7c013f"
   },
   "pioasm": {
     "revision": "924aadaf5dea2a6074d72027b064f939acf32e20"
@@ -432,16 +432,16 @@
     "revision": "0a70e15da977489d954c219af9b50b8a722630ee"
   },
   "scala": {
-    "revision": "5aefc0ae4c174fa74d6e973faefa28692e081954"
+    "revision": "17a19b0f0505eec059b82e1b2fd8928f5f6f0b02"
   },
   "scheme": {
-    "revision": "6abcfe33d976ebe3e244ca80273c7e8a070441b5"
+    "revision": "dd9a73d851238881a3a9426298d69742d24b7842"
   },
   "scss": {
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
   },
   "slint": {
-    "revision": "6f128658eb22cfd15a801f52369d517c25253d5c"
+    "revision": "00c8a2d3645766f68c0d0460086c0a994e5b0d85"
   },
   "smali": {
     "revision": "72e334b2630f5852825ba5ff9dfd872447175eb5"
