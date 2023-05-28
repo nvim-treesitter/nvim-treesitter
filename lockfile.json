@@ -354,7 +354,7 @@
     "revision": "60aa138f9e1db15becad53070f4d5898b0e8a98c"
   },
   "php": {
-    "revision": "ff6a35badb0fe373575196bd728a8a53e9be70bd"
+    "revision": "a17c0caaf133f7bb37b3531dadcfd0879bea23f1"
   },
   "phpdoc": {
     "revision": "2d20f39476348c2682761ce7251914031a7c013f"
@@ -432,7 +432,7 @@
     "revision": "0a70e15da977489d954c219af9b50b8a722630ee"
   },
   "scala": {
-    "revision": "17a19b0f0505eec059b82e1b2fd8928f5f6f0b02"
+    "revision": "4072a37b9c06242ecae642f18cf341db64e055fb"
   },
   "scheme": {
     "revision": "dd9a73d851238881a3a9426298d69742d24b7842"
