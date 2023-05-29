@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: master
+          ref: main
 
       - uses: actions/create-github-app-token@v1
         id: app-token
@@ -34,10 +34,7 @@ jobs:
           SKIP_LOCKFILE_UPDATE_FOR_LANGS: ""
         run: |
           cp lockfile.json /tmp/old_lockfile.json
-          nvim -l scripts/write-lockfile.lua
-          # Pretty print
-          cp lockfile.json /tmp/lockfile.json
-          cat /tmp/lockfile.json | jq --sort-keys > lockfile.json
+          nvim -l ./scripts/update-lockfile.lua
           UPDATED_PARSERS=$(/tmp/jd -f merge /tmp/old_lockfile.json lockfile.json | jq -r 'keys | join(", ")')
           echo "UPDATED_PARSERS=$UPDATED_PARSERS" >> $GITHUB_ENV
 
