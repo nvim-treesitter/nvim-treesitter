@@ -237,6 +237,14 @@ list.cooklang = {
   maintainers = { "@addcninblue" },
 }
 
+list.corn = {
+  install_info = {
+    url = "https://github.com/jakestanger/tree-sitter-corn",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@jakestanger" },
+}
+
 list.cpon = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-cpon",
