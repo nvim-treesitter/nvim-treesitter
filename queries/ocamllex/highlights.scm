@@ -14,9 +14,9 @@
 (character_set "^" @operator)
 (regexp_alternative ["|"] @operator)
 (regexp_difference ["#"] @operator)
-(regexp_option ["?"] @operator)
+(regexp_repetition ["?"] @operator)
 (regexp_repetition ["*"] @operator)
-(regexp_strict_repetition ["+"] @operator)
+(regexp_repetition ["+"] @operator)
 
 (action ["{" "}"] @punctuation.special)
 (character_set ["[" "]"] @punctuation.bracket)
