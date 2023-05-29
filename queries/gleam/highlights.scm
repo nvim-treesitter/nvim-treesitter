@@ -27,7 +27,6 @@
 ; Exceptions
 [
   "assert"
-  "try"
 ] @exception
 
 ; Punctuation
