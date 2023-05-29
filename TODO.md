@@ -5,8 +5,9 @@ This document lists the planned and finished changes in this rewrite towards [Nv
 ## TODO
 
 - [ ] **`query_predicates.lua`:** upstream/remove
-- [ ] **`parsers.lua`:** modularize?
+- [ ] **`parsers.lua`:** add dependencies (and "query-only" langs like ecma, jsx, html_tags, ...)
 - [ ] **`parsers.lua`:** assign tiers
+- [ ] **`parsers.lua`:** modularize?
 - [ ] **`install.lua`:** simplify compilation:
   - hardcode one compiler + args per platform
   - provide `install.compile_command` for overriding (function that takes files, ...?)
