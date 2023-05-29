@@ -1,18 +1,18 @@
 #!/usr/bin/env -S nvim -l
 vim.opt.runtimepath:append('.')
+local util = require('nvim-treesitter.util')
 
 -- Load previous lockfile
 local filename = require('nvim-treesitter.install').get_package_path('lockfile.json')
-local lockfile = vim.json.decode(require('nvim-treesitter.util').read_file(filename))
+local lockfile = vim.json.decode(util.read_file(filename))
 
 ---@type string?
-local skip_lang_string = os.getenv('SKIP_LOCKFILE_UPDATE_FOR_LANGS')
+local skip_lang_string = os.getenv('LOCKFILE_SKIP')
 local skip_langs = skip_lang_string and vim.split(skip_lang_string, ',') or {}
 vim.print('Skipping languages: ', skip_langs)
 
 local sorted_parsers = {}
-local configs = require('nvim-treesitter.parsers').configs
-for k, v in pairs(configs) do
+for k, v in pairs(require('nvim-treesitter.parsers').configs) do
   table.insert(sorted_parsers, { name = k, parser = v })
 end
 table.sort(sorted_parsers, function(a, b)
@@ -42,7 +42,6 @@ for _, v in ipairs(sorted_parsers) do
     print('Skipping ' .. v.name)
   end
 end
-vim.print(lockfile)
 
--- write new lockfile
-require('nvim-treesitter.util').write_file(filename, vim.json.encode(lockfile))
+lockfile = vim.fn.system('jq --sort-keys', vim.json.encode(lockfile))
+util.write_file(filename, lockfile)
