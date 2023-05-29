@@ -1,21 +1,19 @@
 #!/usr/bin/env -S nvim -l
 
 vim.opt.runtimepath:append('.')
-
+local util = require('nvim-treesitter.util')
+local parsers = require('nvim-treesitter.parsers')
 ---@class Parser
 ---@field name string
 ---@field parser ParserInfo
 
-local parsers = require('nvim-treesitter.parsers').configs
 local sorted_parsers = {}
-for k, v in pairs(parsers) do
+for k, v in pairs(parsers.configs) do
   table.insert(sorted_parsers, { name = k, parser = v })
 end
 table.sort(sorted_parsers, function(a, b)
   return a.name < b.name
 end)
-
-local tiers = require('nvim-treesitter.parsers').tiers
 
 local generated_text = [[
 Language | Tier | Queries | CLI | NPM | Maintainer
@@ -39,7 +37,7 @@ for _, v in ipairs(sorted_parsers) do
   end
 
   -- tier
-  generated_text = generated_text .. (p.tier and tiers[p.tier] or '') .. ' | '
+  generated_text = generated_text .. (p.tier and parsers.tiers[p.tier] or '') .. ' | '
 
   -- queries
   generated_text = generated_text
@@ -67,7 +65,7 @@ end
 generated_text = generated_text .. footnotes
 
 local readme = 'SUPPORTED_LANGUAGES.md'
-local readme_text = require('nvim-treesitter.util').read_file(readme)
+local readme_text = util.read_file(readme)
 
 local new_readme_text = string.gsub(
   readme_text,
@@ -75,7 +73,7 @@ local new_readme_text = string.gsub(
   '<!--parserinfo-->\n' .. generated_text .. '<!--parserinfo-->'
 )
 
-require('nvim-treesitter.util').write_file(readme, new_readme_text)
+util.write_file(readme, new_readme_text)
 
 if string.find(readme_text, generated_text, 1, true) then
   print(readme .. ' is up-to-date\n')
