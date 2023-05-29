@@ -129,12 +129,13 @@
 
 ;; Builtin types
 
+[ "chan" "map" ] @type.builtin
+
 ((type_identifier) @type.builtin
  (#any-of? @type.builtin
            "any"
            "bool"
            "byte"
-           "chan"
            "comparable"
            "complex128"
            "complex64"
@@ -146,7 +147,6 @@
            "int32"
            "int64"
            "int8"
-           "map"
            "rune"
            "string"
            "uint"
