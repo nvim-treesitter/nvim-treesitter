@@ -74,7 +74,7 @@ assert:register(
 local function compare_indent(before, after, xfail)
   assert:add_formatter(format_indent)
   if xfail then
-    io.stdout:write('Warning! Known failure of this test! Please help to fix it! ')
+    -- io.stdout:write('Warning! Known failure of this test! Please help to fix it! ')
     assert.is_not.same_indent(before, after)
   else
     assert.is.same_indent(before, after)
