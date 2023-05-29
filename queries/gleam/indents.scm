@@ -16,7 +16,6 @@
   (type_definition)
   (type_alias)
   (todo)
-  (try)
   (tuple)
 ] @indent.begin
 
