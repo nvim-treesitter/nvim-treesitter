@@ -193,6 +193,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [comment](https://github.com/stsewd/tree-sitter-comment) (maintained by @stsewd)
 - [x] [commonlisp](https://github.com/theHamsta/tree-sitter-commonlisp) (maintained by @theHamsta)
 - [x] [cooklang](https://github.com/addcninblue/tree-sitter-cooklang) (maintained by @addcninblue)
+- [x] [corn](https://github.com/jakestanger/tree-sitter-corn) (maintained by @jakestanger)
 - [x] [cpon](https://github.com/amaanq/tree-sitter-cpon) (maintained by @amaanq)
 - [x] [cpp](https://github.com/tree-sitter/tree-sitter-cpp) (maintained by @theHamsta)
 - [x] [css](https://github.com/tree-sitter/tree-sitter-css) (maintained by @TravonteD)
