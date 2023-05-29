@@ -1,12 +1,12 @@
 name: Test queries
 
 on:
-  push:
-    branches:
-      - "master"
+  # push:
+  #   branches:
+  #     - "main"
   pull_request:
     branches:
-      - "master"
+      - "main"
 
 # Cancel any in-progress CI runs for a PR if it is updated
 concurrency:
@@ -24,28 +24,32 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-14]
         cc: [gcc, clang]
-        nvim_tag: [stable]
+        nvim_tag: [nightly]
         exclude:
           - os: ubuntu-latest
             cc: clang
-            nvim_tag: stable
+            nvim_tag: nightly
 
           - os: macos-14
             cc: gcc
-            nvim_tag: stable
+            nvim_tag: nightly
+
+          - os: windows-latest
+            cc: gcc
+            nvim_tag: nightly
 
           - os: windows-latest
             cc: clang
-            nvim_tag: stable
-
-        include:
-          - os: windows-latest
-            cc: cl
-            nvim_tag: stable
-
-          - os: ubuntu-latest
-            cc: gcc
             nvim_tag: nightly
+
+        # include:
+          # - os: windows-latest
+          #   cc: cl
+          #   nvim_tag: nightly
+
+          # - os: ubuntu-latest
+          #   cc: gcc
+          #   nvim_tag: nightly
 
     name: Parser compilation
     runs-on: ${{ matrix.os }}
@@ -72,16 +76,12 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            ./parser/
-            ~/AppData/Local/nvim/pack/nvim-treesitter/start/nvim-treesitter/parser/
-          key: ${{ matrix.os }}-${{ matrix.cc }}-${{ matrix.nvim_tag }}-parsers-v1-${{ hashFiles('./lockfile.json', './lua/nvim-treesitter/parsers.lua', './lua/nvim-treesitter/install.lua', './lua/nvim-treesitter/shell_command_selectors.lua') }}
+            ~/.local/share/nvim/site/parser/
+            ~/AppData/Local/nvim-data/site/parser/
+          key: ${{ matrix.os }}-${{ matrix.cc }}-${{ matrix.nvim_tag }}-parsers-v1-${{ hashFiles('./lockfile.json', './lua/nvim-treesitter/parsers.lua', './lua/nvim-treesitter/install.lua', './lua/nvim-treesitter/util.lua') }}
 
       - name: Compile parsers
-        run: $NVIM --headless -c "lua require'nvim-treesitter.install'.prefer_git=false" -c "TSInstallSync all" -c "q"
-
-      - name: Post compile Windows
-        if: runner.os == 'Windows'
-        run: cp -r ~/AppData/Local/nvim/pack/nvim-treesitter/start/nvim-treesitter/parser/* parser
+        run: $NVIM -l ./scripts/install-parsers.lua
 
       - name: Check query files
         run: ./scripts/check-queries.lua
