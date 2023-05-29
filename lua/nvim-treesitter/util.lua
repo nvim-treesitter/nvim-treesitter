@@ -39,4 +39,21 @@ function M.delete(name)
   uv.fs_unlink(name)
 end
 
+--- Throttles a function using the first argument as an ID
+--- @generic F: function
+--- @param fn F Function to throttle
+--- @return F throttled function.
+function M.throttle_by_id(fn)
+  local running = {} --- @type table<any,boolean>
+  return function(id, ...)
+    if running[id] then
+      return
+    end
+    running[id] = true
+    local r = { fn(id, ...) }
+    running[id] = nil
+    return unpack(r)
+  end
+end
+
 return M

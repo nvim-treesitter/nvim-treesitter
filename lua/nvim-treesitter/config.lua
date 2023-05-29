@@ -1,3 +1,5 @@
+local util = require('nvim-treesitter.util')
+
 local M = {}
 
 ---@class TSConfig
@@ -14,6 +16,27 @@ local config = {
   install_dir = vim.fs.joinpath(vim.fn.stdpath('data'), 'site'),
 }
 
+--- @param bufnr integer
+local auto_install = util.throttle_by_id(function(bufnr)
+  local ft = vim.bo[bufnr].filetype
+  local lang = vim.treesitter.language.get_lang(ft) or ft
+  if
+    not require('nvim-treesitter.parsers').configs[lang]
+    or vim.list_contains(M.installed_parsers(), lang)
+    or vim.list_contains(config.ignore_install, lang)
+  then
+    return
+  end
+
+  local a = require('nvim-treesitter.async')
+  local install = require('nvim-treesitter.install')
+  a.run(function()
+    if pcall(install._install, lang) then
+      vim.treesitter.start(bufnr, lang)
+    end
+  end)
+end)
+
 ---Setup call for users to override configuration configurations.
 ---@param user_data TSConfig|nil user configuration table
 function M.setup(user_data)
@@ -29,19 +52,7 @@ function M.setup(user_data)
   if config.auto_install then
     vim.api.nvim_create_autocmd('FileType', {
       callback = function(args)
-        local ft = vim.bo[args.buf].filetype
-        local lang = vim.treesitter.language.get_lang(ft) or ft
-        if
-          require('nvim-treesitter.parsers').configs[lang]
-          and not vim.list_contains(M.installed_parsers(), lang)
-          and not vim.list_contains(config.ignore_install, lang)
-        then
-          require('nvim-treesitter.install').install(lang, nil, function()
-            -- Need to pcall since 'FileType' can be triggered multiple times
-            -- per buffer
-            pcall(vim.treesitter.start, args.buf, lang)
-          end)
-        end
+        auto_install(args.buf)
       end,
     })
   end

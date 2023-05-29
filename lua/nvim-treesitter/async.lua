@@ -6,19 +6,20 @@ local M = {}
 --- @param func function
 --- @param callback function
 --- @param ... unknown
-local function execute(func, callback, ...)
+function M.run(func, callback, ...)
   local thread = co.create(func)
 
   local function step(...)
     local ret = { co.resume(thread, ...) }
     --- @type boolean, any
-    local stat, nargs_or_err = unpack(ret)
+    local stat = ret[1]
 
     if not stat then
+      local err = ret[2]
       error(
         string.format(
           'The coroutine failed with this message: %s\n%s',
-          nargs_or_err,
+          err,
           debug.traceback(thread)
         )
       )
@@ -26,20 +27,51 @@ local function execute(func, callback, ...)
 
     if co.status(thread) == 'dead' then
       if callback then
-        callback(unpack(ret, 3))
+        callback(unpack(ret, 2, table.maxn(ret)))
       end
       return
     end
 
-    --- @type function, any[]
-    local fn, args = ret[3], { select(4, unpack(ret)) }
-    args[nargs_or_err] = step
-    fn(unpack(args, 1, nargs_or_err))
+    --- @type integer, function, any[]
+    local nargs, fn, args = ret[2], ret[3], { select(4, unpack(ret)) }
+
+    assert(type(nargs) == 'number')
+    assert(type(fn) == 'function')
+
+    args[nargs] = step
+    fn(unpack(args, 1, nargs))
   end
 
   step(...)
 end
 
+function M.wait(argc, func, ...)
+  -- Always run the wrapped functions in xpcall and re-raise the error in the
+  -- coroutine. This makes pcall work as normal.
+  local function pfunc(...)
+    local args = { ... }
+    local step = args[argc]
+
+    args[argc] = function(...)
+      step(true, ...)
+    end
+
+    xpcall(func, function(err)
+      step(false, err, debug.traceback())
+    end, unpack(args, 1, argc))
+  end
+
+  local ret = { co.yield(argc, pfunc, ...) }
+
+  local ok = ret[1]
+
+  if not ok then
+    local err, traceback = ret[2], ret[3]
+    error(string.format('Wrapped function failed: %s\n%s', err, traceback))
+  end
+
+  return unpack(ret, 2, table.maxn(ret))
+end
 --- Creates an async function with a callback style function.
 --- @generic F: function
 --- @param func F
@@ -53,7 +85,7 @@ function M.wrap(func, argc)
   --- @param ... unknown
   --- @return unknown
   return function(...)
-    return co.yield(argc, func, ...)
+    return M.wait(argc, func, ...)
   end
 end
 
@@ -68,7 +100,7 @@ function M.sync(func, nargs)
   nargs = nargs or 0
   return function(...)
     local callback = select(nargs + 1, ...)
-    execute(func, callback, unpack({ ... }, 1, nargs))
+    M.run(func, callback, unpack({ ... }, 1, nargs))
   end
 end
 
@@ -77,7 +109,7 @@ end
 --- @param thunks function[]
 --- @return any
 function M.join(n, interrupt_check, thunks)
-  return co.yield(1, function(finish)
+  local function run(finish)
     if #thunks == 0 then
       return finish()
     end
@@ -103,7 +135,9 @@ function M.join(n, interrupt_check, thunks)
     for i = 1, math.min(n, #thunks) do
       thunks[i](cb)
     end
-  end, 1)
+  end
+
+  return M.wait(1, run)
 end
 
 ---An async function that when called will yield to the Neovim scheduler to be

@@ -207,13 +207,9 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
     dir_rev = revision:sub(2)
   end
 
-  local temp_dir = project_dir .. '-tmp'
-
-  util.delete(temp_dir)
-
   logger:info('Downloading ' .. project_name .. '...')
-  local target = is_github and url .. '/archive/' .. revision .. '.tar.gz'
-    or url .. '/-/archive/' .. revision .. '/' .. project_name .. '-' .. revision .. '.tar.gz'
+  local target = is_github and string.format('%s/archive/%s.tar.gz', url, revision)
+    or string.format('%s/-/archive/%s/%s-%s.tar.gz', url, revision, project, revsion)
 
   local r = system({
     'curl',
@@ -229,8 +225,11 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
     logger:error('Error during download, please verify your internet connection: %s', r.stderr)
   end
 
+  local temp_dir = project_dir .. '-tmp'
+
   logger:debug('Creating temporary directory: ' .. temp_dir)
   --TODO(clason): use vim.fn.mkdir(temp_dir, 'p') in case stdpath('cache') is not created
+  util.delete(temp_dir)
   local err = uv_mkdir(temp_dir, 493)
   a.main()
   if err then
@@ -431,7 +430,7 @@ end
 ---@param install_dir string
 ---@param force boolean
 ---@param generate_from_grammar boolean
-local function install_lang(lang, cache_dir, install_dir, force, generate_from_grammar)
+local function install_lang0(lang, cache_dir, install_dir, force, generate_from_grammar)
   if vim.list_contains(config.installed_parsers(), lang) then
     if not force then
       local yesno =
@@ -523,49 +522,42 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
   if err then
     logger:error(err)
   end
-  logger:info('Language installed')
-end
 
---- Throttles a function using the first argument as an ID
----
---- If function is already running then the function will be scheduled to run
---- again once the running call has finished.
----
----   fn#1        _/‾\__/‾\_/‾\_____________________________
----   throttled#1 _/‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾\/‾‾‾‾‾‾‾‾‾‾\____________
---
----   fn#2        ______/‾\___________/‾\___________________
----   throttled#2 ______/‾‾‾‾‾‾‾‾‾‾\__/‾‾‾‾‾‾‾‾‾‾\__________
----
----
---- @generic F: function
---- @param fn F Function to throttle
---- @return F throttled function.
-local function throttle_by_id(fn)
-  local scheduled = {} --- @type table<any,boolean>
-  local running = {} --- @type table<any,boolean>
-  return function(id, ...)
-    if scheduled[id] then
-      -- If fn is already scheduled, then drop
-      return
-    end
-    if not running[id] then
-      scheduled[id] = true
-    end
-    if running[id] then
-      return
-    end
-    while scheduled[id] do
-      scheduled[id] = nil
-      running[id] = true
-      fn(id, ...)
-      running[id] = nil
-    end
+  local revfile = fs.joinpath(config.get_install_dir('parser-info') or '', lang .. '.revision')
+  util.write_file(revfile, revision or '')
+
+  if not from_local_path then
+    util.delete(fs.joinpath(cache_dir, project_name))
   end
+
+  local queries = fs.joinpath(config.get_install_dir('queries'), lang)
+  local queries_src = M.get_package_path('runtime', 'queries', lang)
+  uv_unlink(queries)
+  err = uv_symlink(queries_src, queries, { dir = true, junction = true })
+  a.main()
+  if err then
+    logger:error(err)
+  end
+
+  logger:info('Parser installed')
 end
 
--- Async functions must not be interleaved
-local install_lang_throttled = throttle_by_id(install_lang)
+local installing = {} --- @type table<string,true>
+
+---@param lang string
+---@param cache_dir string
+---@param install_dir string
+---@param force boolean
+---@param generate_from_grammar boolean
+local function install_lang(lang, cache_dir, install_dir, force, generate_from_grammar)
+  if installing[lang] then
+    log.error('Installation of %s already in progress', lang)
+    return
+  end
+  installing[lang] = true
+  install_lang0(lang, cache_dir, install_dir, force, generate_from_grammar)
+  installing[lang] = nil
+end
 
 ---@class InstallOptions
 ---@field force boolean
@@ -576,7 +568,7 @@ local install_lang_throttled = throttle_by_id(install_lang)
 --- @param languages? string[]|string
 --- @param options? InstallOptions
 --- @param _callback? fun()
-local function install(languages, options, _callback)
+function M._install(languages, options, _callback)
   options = options or {}
   local force = options.force
   local generate_from_grammar = options.generate_from_grammar
@@ -602,22 +594,34 @@ local function install(languages, options, _callback)
 
   local tasks = {} --- @type fun()[]
   local done = 0
+
   for _, lang in ipairs(languages) do
     tasks[#tasks + 1] = a.sync(function()
       a.main()
-      install_lang_throttled(lang, cache_dir, install_dir, force, generate_from_grammar)
-      done = done + 1
+      local stat, ret =
+        pcall(install_lang, lang, cache_dir, install_dir, force, generate_from_grammar)
+      if stat then
+        done = done + 1
+      else
+        return ret
+      end
     end)
   end
 
-  a.join(max_jobs, nil, tasks)
+  for _, r in pairs(a.join(max_jobs, nil, tasks)) do
+    local err = unpack(r)
+    if err then
+      error(err)
+    end
+  end
+
   if #tasks > 1 then
     a.main()
     log.info('Installed %d/%d languages', done, #tasks)
   end
 end
 
-M.install = a.sync(install, 2)
+M.install = a.sync(M._install, 2)
 
 ---@class UpdateOptions
 
@@ -634,7 +638,7 @@ M.update = a.sync(function(languages, _options, _callback)
   languages = vim.iter.filter(needs_update, languages) --- @type string[]
 
   if #languages > 0 then
-    install(languages, { force = true })
+    M._install(languages, { force = true })
   else
     log.info('All parsers are up-to-date')
   end
