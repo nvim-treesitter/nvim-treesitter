@@ -47,11 +47,11 @@
 
 (infix_expression
   left: (value_path (value_name) @function)
-  (infix_operator) @operator
+  operator: (concat_operator) @operator
   (#eq? @operator "@@"))
 
 (infix_expression
-  (infix_operator) @operator
+  operator: (rel_operator) @operator
   right: (value_path (value_name) @function)
   (#eq? @operator "|>"))
 
@@ -143,7 +143,14 @@
 [
   (prefix_operator)
   (sign_operator)
-  (infix_operator)
+  (pow_operator)
+  (mult_operator)
+  (add_operator)
+  (concat_operator)
+  (rel_operator)
+  (and_operator)
+  (or_operator)
+  (assign_operator)
   (hash_operator)
   (indexing_operator)
   (let_operator)
@@ -153,14 +160,7 @@
 
 (match_expression (match_operator) @keyword)
 
-(value_definition [(let_operator) (and_operator)] @keyword)
-
-;; TODO: this is an error now
-;(prefix_operator "!" @operator)
-
-(infix_operator ["&" "+" "-" "=" ">" "|" "%"] @operator)
-
-(signed_number ["+" "-"] @operator)
+(value_definition [(let_operator) (let_and_operator)] @keyword)
 
 ["*" "#" "::" "<-"] @operator
 
