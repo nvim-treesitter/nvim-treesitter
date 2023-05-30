@@ -1,6 +1,6 @@
 local query = vim.treesitter.query
 
--- register custom predicates
+-- register custom predicates (overwrite existing; needed for CI)
 
 ---@param match (TSNode|nil)[]
 ---@param pred string[]
@@ -13,7 +13,7 @@ query.add_predicate('has-type?', function(match, _, _, pred)
 
   local types = { unpack(pred, 3) }
   return vim.list_contains(types, node:type())
-end)
+end, true)
 
 -- register custom directives
 
@@ -43,7 +43,7 @@ query.add_directive('set-lang-from-mimetype!', function(match, _, bufnr, pred, m
     local parts = vim.split(type_attr_value, '/', {})
     metadata['injection.language'] = parts[#parts]
   end
-end)
+end, true)
 
 local injection_aliases = {
   ex = 'elixir',
@@ -68,7 +68,7 @@ query.add_directive('set-lang-from-info-string!', function(match, _, bufnr, pred
   local injection_alias = vim.treesitter.get_node_text(node, bufnr)
   local filetype = vim.filetype.match({ filename = 'a.' .. injection_alias })
   metadata['injection.language'] = filetype or injection_aliases[injection_alias] or injection_alias
-end)
+end, true)
 
 query.add_directive('downcase!', function(match, _, bufnr, pred, metadata)
   local text, key, value ---@type string|string[], string, string|integer
@@ -95,7 +95,7 @@ query.add_directive('downcase!', function(match, _, bufnr, pred, metadata)
   else
     metadata[key] = string.lower(text)
   end
-end)
+end, true)
 
 -- Trim blank lines from end of the region
 -- Arguments are the captures to trim.
@@ -138,4 +138,4 @@ query.add_directive('trim!', function(match, _, bufnr, pred, metadata)
       metadata[id].range = { start_row, start_col, end_row, end_col }
     end
   end
-end)
+end, true)
