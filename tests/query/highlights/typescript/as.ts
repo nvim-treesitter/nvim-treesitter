@@ -5,4 +5,4 @@ export { foo as bar };
 //           ^ include
 
 const n = 5 as number;
-//          ^ keyword
+//          ^ keyword.operator
