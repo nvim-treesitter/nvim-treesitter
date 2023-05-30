@@ -59,6 +59,9 @@
   "cooklang": {
     "revision": "5e113412aadb78955c27010daa4dbe1d202013cf"
   },
+  "corn": {
+    "revision": "6a6b0f4b1d564392c1b6a8ebcc27d94185f72ede"
+  },
   "cpon": {
     "revision": "f4b3cbc8b0bd4e13035d39940fef09f1392e8739"
   },
@@ -432,7 +435,7 @@
     "revision": "0a70e15da977489d954c219af9b50b8a722630ee"
   },
   "scala": {
-    "revision": "4072a37b9c06242ecae642f18cf341db64e055fb"
+    "revision": "dacd7bdbe27ba79fb7f3959d220f97820dc71dcc"
   },
   "scheme": {
     "revision": "dd9a73d851238881a3a9426298d69742d24b7842"
