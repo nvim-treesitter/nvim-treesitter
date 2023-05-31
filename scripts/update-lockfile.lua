@@ -22,7 +22,7 @@ end)
 
 -- check for new revisions
 for _, v in ipairs(sorted_parsers) do
-  if skip_langs and not vim.list_contains(skip_langs, v.name) then
+  if not vim.list_contains(skip_langs, v.name) and v.parser.install_info then
     local sha ---@type string
     if v.parser.install_info.branch then
       sha = vim.split(
@@ -44,5 +44,8 @@ for _, v in ipairs(sorted_parsers) do
   end
 end
 
-lockfile = vim.fn.system('jq --sort-keys', vim.json.encode(lockfile))
+lockfile = vim.json.encode(lockfile)
+if vim.fn.executable('jq') == 1 then
+  lockfile = vim.fn.system('jq --sort-keys', lockfile)
+end
 util.write_file(filename, lockfile)
