@@ -47,13 +47,13 @@
 
 (infix_expression
   left: (value_path (value_name) @function)
-  operator: (concat_operator) @operator
-  (#eq? @operator "@@"))
+  operator: (concat_operator) @_operator
+  (#eq? @_operator "@@"))
 
 (infix_expression
-  operator: (rel_operator) @operator
+  operator: (rel_operator) @_operator
   right: (value_path (value_name) @function)
-  (#eq? @operator "|>"))
+  (#eq? @_operator "|>"))
 
 (application_expression
   function: (value_path (value_name) @function))
