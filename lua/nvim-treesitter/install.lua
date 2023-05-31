@@ -446,74 +446,76 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
     end
   end
 
-  local cc = M.select_executable(M.compilers)
-  if not cc then
-    cc_err()
-    return
-  end
+  local logger = log.new('install/' .. lang)
+  local err
 
   local repo = get_parser_install_info(lang)
-
-  local project_name = 'tree-sitter-' .. lang
-
-  local logger = log.new('install/' .. lang)
-
-  generate_from_grammar = repo.requires_generate_from_grammar or generate_from_grammar
-
-  if generate_from_grammar and vim.fn.executable('tree-sitter') ~= 1 then
-    logger:error('tree-sitter CLI not found: `tree-sitter` is not executable')
-  end
-
-  if generate_from_grammar and vim.fn.executable('node') ~= 1 then
-    logger:error('Node JS not found: `node` is not executable')
-  end
-
-  local revision = repo.revision or get_target_revision(lang)
-
-  local maybe_local_path = fs.normalize(repo.url)
-  local from_local_path = vim.fn.isdirectory(maybe_local_path) == 1
-  if from_local_path then
-    repo.url = maybe_local_path
-  end
-
-  if not from_local_path then
-    util.delete(fs.joinpath(cache_dir, project_name))
-    local project_dir = fs.joinpath(cache_dir, project_name)
-
-    revision = revision or repo.branch or 'master'
-
-    if can_download_tar(repo) then
-      do_download_tar(logger, repo, project_name, cache_dir, revision, project_dir)
-    else
-      do_download_git(logger, repo, project_name, cache_dir, revision, project_dir)
+  if repo then
+    local cc = M.select_executable(M.compilers)
+    if not cc then
+      cc_err()
+      return
     end
-  end
 
-  local compile_location = get_compile_location(repo, cache_dir, project_name, from_local_path)
+    local project_name = 'tree-sitter-' .. lang
 
-  if generate_from_grammar then
-    do_generate_from_grammar(logger, repo, compile_location)
-  end
+    generate_from_grammar = repo.requires_generate_from_grammar or generate_from_grammar
 
-  logger:info('Compiling parser')
-  local r = do_compile(repo, cc, compile_location)
-  if r.exit_code > 0 then
-    logger:error('Error during compilation: ' .. vim.inspect(r.stderr))
-  end
+    if generate_from_grammar and vim.fn.executable('tree-sitter') ~= 1 then
+      logger:error('tree-sitter CLI not found: `tree-sitter` is not executable')
+    end
 
-  local parser_lib_name = fs.joinpath(install_dir, lang) .. '.so'
+    if generate_from_grammar and vim.fn.executable('node') ~= 1 then
+      logger:error('Node JS not found: `node` is not executable')
+    end
 
-  local err = uv_copyfile(fs.joinpath(compile_location, 'parser.so'), parser_lib_name)
-  a.main()
-  if err then
-    logger:error(err)
-  end
+    local revision = repo.revision or get_target_revision(lang)
 
-  local revfile = fs.joinpath(config.get_install_dir('parser-info') or '', lang .. '.revision')
-  util.write_file(revfile, revision or '')
+    local maybe_local_path = fs.normalize(repo.url)
+    local from_local_path = vim.fn.isdirectory(maybe_local_path) == 1
+    if from_local_path then
+      repo.url = maybe_local_path
+    end
 
-  if not from_local_path then
-    util.delete(fs.joinpath(cache_dir, project_name))
+    if not from_local_path then
+      util.delete(fs.joinpath(cache_dir, project_name))
+      local project_dir = fs.joinpath(cache_dir, project_name)
+
+      revision = revision or repo.branch or 'master'
+
+      if can_download_tar(repo) then
+        do_download_tar(logger, repo, project_name, cache_dir, revision, project_dir)
+      else
+        do_download_git(logger, repo, project_name, cache_dir, revision, project_dir)
+      end
+    end
+
+    local compile_location = get_compile_location(repo, cache_dir, project_name, from_local_path)
+
+    if generate_from_grammar then
+      do_generate_from_grammar(logger, repo, compile_location)
+    end
+
+    logger:info('Compiling parser')
+    local r = do_compile(repo, cc, compile_location)
+    if r.exit_code > 0 then
+      logger:error('Error during compilation: ' .. vim.inspect(r.stderr))
+    end
+
+    local parser_lib_name = fs.joinpath(install_dir, lang) .. '.so'
+
+    err = uv_copyfile(fs.joinpath(compile_location, 'parser.so'), parser_lib_name)
+    a.main()
+    if err then
+      logger:error(err)
+    end
+
+    local revfile = fs.joinpath(config.get_install_dir('parser-info') or '', lang .. '.revision')
+    util.write_file(revfile, revision or '')
+
+    if not from_local_path then
+      util.delete(fs.joinpath(cache_dir, project_name))
+    end
   end
 
   local queries = fs.joinpath(config.get_install_dir('queries'), lang)
@@ -524,7 +526,7 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
   if err then
     logger:error(err)
   end
-  logger:info('Parser installed')
+  logger:info('Language installed')
 end
 
 --- Throttles a function using the first argument as an ID
@@ -614,7 +616,7 @@ local function install(languages, options, _callback)
   a.join(max_jobs, nil, tasks)
   if #tasks > 1 then
     a.main()
-    log.info('Installed %d/%d parsers', done, #tasks)
+    log.info('Installed %d/%d languages', done, #tasks)
   end
 end
 
@@ -647,34 +649,35 @@ end, 2)
 local function uninstall_lang(lang, parser, queries)
   local logger = log.new('uninstall/' .. lang)
   logger:debug('Uninstalling ' .. lang)
-  if vim.fn.filereadable(parser) ~= 1 then
-    return
+
+  if vim.fn.filereadable(parser) == 1 then
+    logger:debug('Unlinking ' .. parser)
+    local perr = uv_unlink(parser)
+    a.main()
+
+    if perr then
+      log.error(perr)
+    end
   end
 
-  logger:debug('Unlinking ' .. parser)
-  local perr = uv_unlink(parser)
-  a.main()
+  if vim.fn.isdirectory(queries) == 1 then
+    logger:debug('Unlinking ' .. queries)
+    local qerr = uv_unlink(queries)
+    a.main()
 
-  if perr then
-    log.error(perr)
+    if qerr then
+      logger:error(qerr)
+    end
   end
 
-  logger:debug('Unlinking ' .. queries)
-  local qerr = uv_unlink(queries)
-  a.main()
-
-  if qerr then
-    logger:error(qerr)
-  end
-
-  logger:info('Parser uninstalled')
+  logger:info('Language uninstalled')
 end
 
 --- @param languages string[]|string
 --- @param _options? UpdateOptions
 --- @param _callback fun()
 M.uninstall = a.sync(function(languages, _options, _callback)
-  languages = config.norm_languages(languages or 'all', { missing = true })
+  languages = config.norm_languages(languages or 'all', { missing = true, dependencies = true })
 
   local parser_dir = config.get_install_dir('parser')
   local query_dir = config.get_install_dir('queries')
@@ -698,7 +701,7 @@ M.uninstall = a.sync(function(languages, _options, _callback)
   a.join(max_jobs, nil, tasks)
   if #tasks > 1 then
     a.main()
-    log.info('Uninstalled %d/%d parsers', done, #tasks)
+    log.info('Uninstalled %d/%d languages', done, #tasks)
   end
 end, 2)
 
