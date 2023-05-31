@@ -74,12 +74,11 @@ end
 
 ---@return string[]
 function M.installed_parsers()
-  local install_dir = M.get_install_dir('parser')
+  local install_dir = M.get_install_dir('queries')
 
   local installed = {} --- @type string[]
   for f in vim.fs.dir(install_dir) do
-    local lang = assert(f:match('(.*)%..*'))
-    installed[#installed + 1] = lang
+    installed[#installed + 1] = f
   end
 
   return installed
@@ -137,6 +136,14 @@ function M.norm_languages(languages, skip)
     languages = vim.iter.filter(function(v)
       return vim.list_contains(installed, v)
     end, languages) --[[@as string[] ]]
+  end
+
+  if not (skip and skip.dependencies) then
+    for _, lang in pairs(languages) do
+      if parsers.configs[lang].requires then
+        vim.list_extend(languages, parsers.configs[lang].requires)
+      end
+    end
   end
 
   return languages
