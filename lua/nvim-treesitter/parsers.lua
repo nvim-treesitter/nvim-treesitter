@@ -695,6 +695,11 @@ M.configs = {
     tier = 3,
   },
 
+  html_tags = {
+    maintainers = { '@TravonteD' },
+    readme_note = 'queries required by html, astro, vue, svelte',
+  },
+
   html = {
     install_info = {
       url = 'https://github.com/tree-sitter/tree-sitter-html',
@@ -832,6 +837,11 @@ M.configs = {
     maintainers = { '@steelsojka' },
     readme_note = 'queries required by javascript, tsx',
     tier = 2,
+  },
+
+  jsx = {
+    maintainers = { '@steelsojka' },
+    readme_note = 'queries required by javascript, tsx',
   },
 
   julia = {
