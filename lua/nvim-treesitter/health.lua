@@ -1,4 +1,5 @@
 local install = require('nvim-treesitter.install')
+local parsers = require('nvim-treesitter.parsers')
 local config = require('nvim-treesitter.config')
 local util = require('nvim-treesitter.util')
 local tsq = vim.treesitter.query
@@ -123,14 +124,25 @@ function M.check()
   -- Installation dependency checks
   install_health()
   -- Parser installation checks
+  local languages = config.installed_parsers()
   local parser_installation = { 'Parser/Features' .. string.rep(' ', 9) .. 'H L F I J' }
-  for _, parser_name in pairs(config.installed_parsers()) do
-    local out = '  - ' .. parser_name .. string.rep(' ', 20 - #parser_name)
-    for _, query_group in pairs(M.bundled_queries) do
-      local status, err = query_status(parser_name, query_group)
-      out = out .. status .. ' '
-      if err then
-        table.insert(error_collection, { parser_name, query_group, err })
+  for _, lang in pairs(languages) do
+    local parser = parsers.configs[lang]
+    local out = '  - ' .. lang .. string.rep(' ', 20 - #lang)
+    if parser.install_info then
+      for _, query_group in pairs(M.bundled_queries) do
+        local status, err = query_status(lang, query_group)
+        out = out .. status .. ' '
+        if err then
+          table.insert(error_collection, { lang, query_group, err })
+        end
+      end
+    end
+    if parser.requires then
+      for _, p in pairs(parser.requires) do
+        if not vim.list_contains(languages, p) then
+          table.insert(error_collection, { lang, 'queries', 'dependency ' .. p .. ' missing' })
+        end
       end
     end
     table.insert(parser_installation, vim.fn.trim(out, ' ', 2))
