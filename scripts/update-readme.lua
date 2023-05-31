@@ -23,14 +23,23 @@ local footnotes = ''
 for _, v in ipairs(sorted_parsers) do
   local p = v.parser
   -- language
-  generated_text = generated_text
-    .. '['
-    .. v.name
-    .. ']('
-    .. p.install_info.url
-    .. ')'
-    .. (p.readme_note and '[^' .. v.name .. ']' or '')
-    .. ' | '
+  if p.install_info then
+    generated_text = generated_text
+      .. '['
+      .. v.name
+      .. ']('
+      .. p.install_info.url
+      .. ')'
+      .. (p.readme_note and '[^' .. v.name .. ']' or '')
+      .. ' | '
+  else
+    generated_text = generated_text
+      .. v.name
+      .. ' (queries only)'
+      .. (p.readme_note and '[^' .. v.name .. ']' or '')
+      .. ' | '
+  end
+
   if p.readme_note then
     footnotes = footnotes .. '[^' .. v.name .. ']: ' .. p.readme_note .. '\n'
   end
@@ -50,11 +59,13 @@ for _, v in ipairs(sorted_parsers) do
 
   -- CLI
   generated_text = generated_text
-    .. (p.install_info.requires_generate_from_grammar and '✓' or '')
+    .. (p.install_info and p.install_info.requires_generate_from_grammar and '✓' or '')
     .. ' | '
 
   -- NPM
-  generated_text = generated_text .. (p.install_info.generate_requires_npm and '✓' or '') .. ' | '
+  generated_text = generated_text
+    .. (p.install_info and p.install_info.generate_requires_npm and '✓' or '')
+    .. ' | '
 
   -- Maintainer
   generated_text = generated_text
