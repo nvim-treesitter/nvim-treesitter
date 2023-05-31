@@ -5,14 +5,9 @@ This document lists the planned and finished changes in this rewrite towards [Nv
 ## TODO
 
 - [ ] **`query_predicates.lua`:** upstream/remove
-- [ ] **`parsers.lua`:** add dependencies (and "query-only" langs like ecma, jsx, html_tags, ...)
 - [ ] **`parsers.lua`:** assign tiers
 - [ ] **`parsers.lua`:** modularize?
-- [ ] **`install.lua`:** simplify compilation:
-  - hardcode one compiler + args per platform
-  - provide `install.compile_command` for overriding (function that takes files, ...?)
-  - allow using repo makefile (norg!)?
-  - ...or switch to makefile completely?
+- [ ] **`install.lua`:** drop norg (and makefile); document c++11 requirement
 - [ ] **`locals.lua`:** move to `nvim-treesitter-refactor`?
 - [ ] **update-lockfile:** allow specifying version in addition to commit hash (for Tier 1)
 - [ ] **update-lockfile:** one commit per parser/tier?
