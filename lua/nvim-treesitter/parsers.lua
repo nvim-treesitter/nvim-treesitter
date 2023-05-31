@@ -12,6 +12,7 @@
 ---@field install_info InstallInfo
 ---@field filetype string[]
 ---@field maintainers string[]
+---@field requires string[]
 ---@field tier integer|nil
 ---@field readme_note string|nil
 
@@ -44,6 +45,7 @@ M.configs = {
       generate_requires_npm = true,
     },
     maintainers = { '@dlvandenberg' },
+    requires = { 'html', 'html_tags' },
     tier = 4,
   },
 
@@ -63,6 +65,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@ObserverOfTime' },
+    requires = { 'cpp' },
   },
 
   asm = {
@@ -80,6 +83,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@virchau13' },
+    requires = { 'html', 'html_tags' },
   },
 
   authzed = {
@@ -275,6 +279,7 @@ M.configs = {
       generate_requires_npm = true,
     },
     maintainers = { '@theHamsta' },
+    requires = { 'c' },
   },
 
   css = {
@@ -292,6 +297,7 @@ M.configs = {
       location = 'csv',
     },
     maintainers = { '@amaanq' },
+    requires = { 'tsv' },
     tier = 2,
   },
 
@@ -302,6 +308,7 @@ M.configs = {
       generate_requires_npm = true,
     },
     maintainers = { '@theHamsta' },
+    requires = { 'cpp' },
   },
 
   cue = {
@@ -424,6 +431,12 @@ M.configs = {
     tier = 4,
   },
 
+  ecma = {
+    maintainers = { '@steelsojka' },
+    readme_note = 'queries required by javascript, typescript, tsx, qmljs',
+    tier = 3,
+  },
+
   editorconfig = {
     install_info = {
       url = 'https://github.com/ValdezFOmar/tree-sitter-editorconfig',
@@ -487,6 +500,7 @@ M.configs = {
       url = 'https://github.com/tree-sitter/tree-sitter-embedded-template',
       files = { 'src/parser.c' },
     },
+    tier = 4,
   },
 
   erlang = {
@@ -735,6 +749,7 @@ M.configs = {
       generate_requires_npm = true,
     },
     maintainers = { '@theHamsta' },
+    requires = { 'c' },
   },
 
   gn = {
@@ -855,6 +870,7 @@ M.configs = {
       url = 'https://github.com/slackhq/tree-sitter-hack',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
+    tier = 4,
   },
 
   hare = {
@@ -871,6 +887,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@mrcjkb' },
+    tier = 3,
   },
 
   haskell_persistent = {
@@ -915,6 +932,7 @@ M.configs = {
       generate_requires_npm = true,
     },
     maintainers = { '@winston0410' },
+    requires = { 'json' },
   },
 
   hlsl = {
@@ -924,6 +942,7 @@ M.configs = {
       generate_requires_npm = true,
     },
     maintainers = { '@theHamsta' },
+    requires = { 'cpp' },
   },
 
   hlsplaylist = {
@@ -953,12 +972,18 @@ M.configs = {
     tier = 4,
   },
 
+  html_tags = {
+    maintainers = { '@TravonteD' },
+    readme_note = 'queries required by html, astro, vue, svelte',
+  },
+
   html = {
     install_info = {
       url = 'https://github.com/tree-sitter/tree-sitter-html',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@TravonteD' },
+    requires = { 'html_tags' },
   },
 
   htmldjango = {
@@ -1030,6 +1055,7 @@ M.configs = {
       generate_requires_npm = true,
     },
     maintainers = { '@fab4100' },
+    requires = { 'c' },
   },
 
   janet_simple = {
@@ -1054,6 +1080,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@steelsojka' },
+    requires = { 'ecma', 'jsx' },
   },
 
   jq = {
@@ -1095,7 +1122,7 @@ M.configs = {
       generate_requires_npm = true,
     },
     maintainers = { '@WhyNotHugo' },
-    readme_note = 'JSON with comments',
+    requires = { 'json' },
   },
 
   jsonnet = {
@@ -1104,6 +1131,11 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@nawordar' },
+  },
+
+  jsx = {
+    maintainers = { '@steelsojka' },
+    readme_note = 'queries required by javascript, tsx',
   },
 
   julia = {
@@ -1242,8 +1274,8 @@ M.configs = {
       url = 'https://github.com/MunifTanjim/tree-sitter-lua',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
-    tier = 1,
     maintainers = { '@muniftanjim' },
+    tier = 1,
   },
 
   luadoc = {
@@ -1269,6 +1301,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
+    requires = { 'lua' },
   },
 
   m68k = {
@@ -1295,6 +1328,7 @@ M.configs = {
     },
     maintainers = { '@MDeiml' },
     readme_note = 'basic highlighting',
+    requires = { 'markdown_inline' },
     tier = 1,
   },
 
@@ -1347,8 +1381,8 @@ M.configs = {
       files = { 'src/parser.c' },
       requires_generate_from_grammar = true,
     },
-    tier = 4,
     maintainers = { '@artagnon' },
+    tier = 4,
   },
 
   muttrc = {
@@ -1383,6 +1417,7 @@ M.configs = {
       url = 'https://github.com/nickel-lang/tree-sitter-nickel',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
+    tier = 4,
   },
 
   nim = {
@@ -1391,6 +1426,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@aMOPel' },
+    requires = { 'nim_format_string' },
     tier = 3,
   },
 
@@ -1425,8 +1461,8 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
       use_makefile = true,
     },
-    tier = 4,
     maintainers = { '@JoeyGrajciar', '@vhyrro' },
+    tier = 4,
   },
 
   nqc = {
@@ -1444,6 +1480,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
+    requires = { 'c' },
   },
 
   objdump = {
@@ -1471,6 +1508,7 @@ M.configs = {
       location = 'grammars/interface',
     },
     maintainers = { '@undu' },
+    requires = { 'ocaml' },
   },
 
   ocamllex = {
@@ -1495,6 +1533,7 @@ M.configs = {
       url = 'https://github.com/milisims/tree-sitter-org',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
+    tier = 4,
   },
 
   pascal = {
@@ -1696,6 +1735,7 @@ M.configs = {
       location = 'psv',
     },
     maintainers = { '@amaanq' },
+    requires = { 'tsv' },
     tier = 2,
   },
 
@@ -1765,6 +1805,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@Decodetalkers' },
+    requires = { 'ecma' },
   },
 
   query = {
@@ -1972,6 +2013,8 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@elianiva' },
+    requires = { 'css' },
+    tier = 3,
   },
 
   sflog = {
@@ -2157,6 +2200,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
+    requires = { 'html_tags' },
     tier = 2,
   },
 
@@ -2254,6 +2298,8 @@ M.configs = {
       location = 'dialects/terraform',
     },
     maintainers = { '@MichaHoffmann' },
+    requires = { 'hcl' },
+    tier = 3,
   },
 
   textproto = {
@@ -2334,6 +2380,7 @@ M.configs = {
       generate_requires_npm = true,
     },
     maintainers = { '@steelsojka' },
+    requires = { 'ecma', 'jsx', 'typescript' },
   },
 
   turtle = {
@@ -2360,6 +2407,7 @@ M.configs = {
       generate_requires_npm = true,
     },
     maintainers = { '@steelsojka' },
+    requires = { 'ecma' },
   },
 
   typespec = {
@@ -2516,6 +2564,7 @@ M.configs = {
       branch = 'main',
     },
     maintainers = { '@WhyNotHugo', '@lucario387' },
+    requires = { 'html_tags' },
     tier = 2,
   },
 
@@ -2569,6 +2618,7 @@ M.configs = {
       location = 'xml',
     },
     maintainers = { '@ObserverOfTime' },
+    requires = { 'dtd' },
     tier = 2,
   },
 
