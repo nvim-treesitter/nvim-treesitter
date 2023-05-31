@@ -21,21 +21,12 @@ end)
 
 -- check for new revisions
 for _, v in ipairs(sorted_parsers) do
-  if skip_langs and not vim.list_contains(skip_langs, v.name) then
-    local sha ---@type string
+  if not vim.list_contains(skip_langs, v.name) and v.parser.install_info then
+    local cmd = 'git ls-remote ' .. v.parser.install_info.url
     if v.parser.install_info.branch then
-      sha = vim.split(
-        vim.fn.systemlist(
-          'git ls-remote '
-            .. v.parser.install_info.url
-            .. ' | grep refs/heads/'
-            .. v.parser.install_info.branch
-        )[1],
-        '\t'
-      )[1]
-    else
-      sha = vim.split(vim.fn.systemlist('git ls-remote ' .. v.parser.install_info.url)[1], '\t')[1]
+      cmd = cmd .. ' | grep refs/heads/' .. v.parser.install_info.branch
     end
+    local sha = vim.split(vim.fn.systemlist(cmd)[1], '\t')[1]
     lockfile[v.name] = { revision = sha }
     print(v.name .. ': ' .. sha)
   else
@@ -43,5 +34,8 @@ for _, v in ipairs(sorted_parsers) do
   end
 end
 
-lockfile = vim.fn.system('jq --sort-keys', vim.json.encode(lockfile))
+lockfile = vim.json.encode(lockfile)
+if vim.fn.executable('jq') == 1 then
+  lockfile = vim.fn.system('jq --sort-keys', lockfile)
+end
 util.write_file(filename, lockfile)
