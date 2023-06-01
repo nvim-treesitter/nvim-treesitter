@@ -1,5 +1,4 @@
-; Lower priority to prefer @parameter when identifier appears in parameter_declaration.
-((identifier) @variable (#set! "priority" 95))
+(identifier) @variable
 
 [
   "default"
@@ -189,7 +188,7 @@
   declarator: (identifier) @parameter)
 
 (parameter_declaration
-  declarator: (pointer_declarator) @parameter)
+  declarator: (pointer_declarator) @parameter (#set! "priority" 110))
 
 (preproc_params (identifier) @parameter)
 
