@@ -8,6 +8,14 @@
   code: (source_code) @python
 )
 
+(sagesilent_environment
+  code: (source_code) @python
+)
+
+(sageblock_environment
+  code: (source_code) @python
+)
+
 (minted_environment
   (begin
     language: (curly_group_text
