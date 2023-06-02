@@ -75,7 +75,7 @@
     "revision": "867c97ed7769e56bff99f7122cf63effadb812cc"
   },
   "cue": {
-    "revision": "971130aa1d2da22098d75062c024bb1250ff9d62"
+    "revision": "0deecf48944aa54bb73e5383ba8acfbf9f2c44b4"
   },
   "d": {
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
@@ -171,7 +171,7 @@
     "revision": "d3031a8294bf331600d5046b1d14e690a0d8ba0c"
   },
   "glsl": {
-    "revision": "29dcda3e8299b91df24cafd24bba43cdd3ca2456"
+    "revision": "53ca269cae2a47b1b75791e2bfe843baeb02e903"
   },
   "go": {
     "revision": "7cccc30535a40da07092626031120ae6b36202d7"
@@ -210,7 +210,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "e7e2670872c2f1a6556eeedd0b80778b5653e187"
+    "revision": "eeb138aba44de8379dae474624fef65d4288476a"
   },
   "hocon": {
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
@@ -270,7 +270,7 @@
     "revision": "7744b56f03ac1e5643fad23c9dd90837fe97291e"
   },
   "latex": {
-    "revision": "b0686a83c2429cc04e6d01f067f5a0a8efc0d17b"
+    "revision": "dfe891922ccd2e7cef52eccb2775e1b576727165"
   },
   "ledger": {
     "revision": "8a841fb20ce683bfbb3469e6ba67f2851cfdf94a"
@@ -435,7 +435,7 @@
     "revision": "0a70e15da977489d954c219af9b50b8a722630ee"
   },
   "scala": {
-    "revision": "9d71af464132b29ea1c3316ca6084cc0d6232c65"
+    "revision": "236c7b20dbddedb031ce40517fafc027434f6860"
   },
   "scheme": {
     "revision": "dd9a73d851238881a3a9426298d69742d24b7842"
