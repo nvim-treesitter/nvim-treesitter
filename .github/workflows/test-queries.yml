@@ -56,7 +56,6 @@ jobs:
     env:
       CC: ${{ matrix.cc }}
       NVIM: ${{ matrix.os == 'windows-latest' && 'nvim-win64\\bin\\nvim.exe' || 'nvim' }}
-      ALLOWED_INSTALLATION_FAILURES: ${{ matrix.os == 'windows-latest' && 'rnoweb' }}
     steps:
       - uses: actions/checkout@v4
       - uses: ilammy/msvc-dev-cmd@v1
