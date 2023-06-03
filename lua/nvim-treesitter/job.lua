@@ -1,5 +1,5 @@
 -- Interface with Neovim job control and provide a simple job sequencing structure
-local uv = vim.loop
+local uv = vim.uv
 local a = require('nvim-treesitter.async')
 local log = require('nvim-treesitter.log')
 
@@ -18,8 +18,8 @@ local M = { JobResult = {}, Opts = {} }
 --- @field on_stderr  fun(_: string)
 --- @field on_stdout  fun(_: string)
 
---- Wrapper for vim.loop.spawn. Takes a command, options, and callback just like
---- vim.loop.spawn, but ensures that all output from the command has been
+--- Wrapper for vim.uv.spawn. Takes a command, options, and callback just like
+--- vim.uv.spawn, but ensures that all output from the command has been
 --- flushed before calling the callback.
 --- @param cmd string
 --- @param options uv.aliases.spawn_options
@@ -66,7 +66,7 @@ end
 
 --- Main exposed function for the jobs module. Takes a task and options and
 --- returns an async function that will run the task with the given opts via
---- vim.loop.spawn
+--- vim.uv.spawn
 --- @param task string[]
 --- @param opts JobOpts
 --- @param callback fun(_: JobResult)
