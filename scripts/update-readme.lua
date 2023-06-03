@@ -50,11 +50,11 @@ for _, v in ipairs(sorted_parsers) do
   -- queries
   generated_text = generated_text
     .. '`'
-    .. (vim.loop.fs_stat('runtime/queries/' .. v.name .. '/highlights.scm') and 'H' or ' ')
-    .. (vim.loop.fs_stat('runtime/queries/' .. v.name .. '/folds.scm') and 'F' or ' ')
-    .. (vim.loop.fs_stat('runtime/queries/' .. v.name .. '/indents.scm') and 'I' or ' ')
-    .. (vim.loop.fs_stat('runtime/queries/' .. v.name .. '/injections.scm') and 'J' or ' ')
-    .. (vim.loop.fs_stat('runtime/queries/' .. v.name .. '/locals.scm') and 'L' or ' ')
+    .. (vim.uv.fs_stat('runtime/queries/' .. v.name .. '/highlights.scm') and 'H' or ' ')
+    .. (vim.uv.fs_stat('runtime/queries/' .. v.name .. '/folds.scm') and 'F' or ' ')
+    .. (vim.uv.fs_stat('runtime/queries/' .. v.name .. '/indents.scm') and 'I' or ' ')
+    .. (vim.uv.fs_stat('runtime/queries/' .. v.name .. '/injections.scm') and 'J' or ' ')
+    .. (vim.uv.fs_stat('runtime/queries/' .. v.name .. '/locals.scm') and 'L' or ' ')
     .. '` | '
 
   -- CLI
