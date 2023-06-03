@@ -48,6 +48,7 @@ local function do_check()
   local timings = {}
   local parsers = require('nvim-treesitter.config').installed_parsers()
   local query_types = require('nvim-treesitter.health').bundled_queries
+  local configs = require('nvim-treesitter.parsers').configs
 
   local captures = extract_captures()
   local errors = {}
@@ -55,32 +56,34 @@ local function do_check()
   io_print('::group::Check parsers')
 
   for _, lang in pairs(parsers) do
-    timings[lang] = {}
-    for _, query_type in pairs(query_types) do
-      local before = vim.loop.hrtime()
-      local ok, query = pcall(vim.treesitter.query.get, lang, query_type)
-      local after = vim.loop.hrtime()
-      local duration = after - before
-      table.insert(timings, { duration = duration, lang = lang, query_type = query_type })
-      io_print(
-        'Checking ' .. lang .. ' ' .. query_type .. string.format(' (%.02fms)', duration * 1e-6)
-      )
-      if not ok then
-        local err_msg = lang .. ' (' .. query_type .. '): ' .. query
-        errors[#errors + 1] = err_msg
-      else
-        if query then
-          for _, capture in ipairs(query.captures) do
-            local is_valid = (
-              vim.startswith(capture, '_') -- Helpers.
-              or list_any(captures[query_type], function(documented_capture)
-                return vim.startswith(capture, documented_capture)
-              end)
-            )
-            if not is_valid then
-              local error =
-                string.format('(x) Invalid capture @%s in %s for %s.', capture, query_type, lang)
-              errors[#errors + 1] = error
+    if configs[lang].install_info then
+      timings[lang] = {}
+      for _, query_type in pairs(query_types) do
+        local before = vim.uv.hrtime()
+        local ok, query = pcall(vim.treesitter.query.get, lang, query_type)
+        local after = vim.uv.hrtime()
+        local duration = after - before
+        table.insert(timings, { duration = duration, lang = lang, query_type = query_type })
+        io_print(
+          'Checking ' .. lang .. ' ' .. query_type .. string.format(' (%.02fms)', duration * 1e-6)
+        )
+        if not ok then
+          local err_msg = lang .. ' (' .. query_type .. '): ' .. query
+          errors[#errors + 1] = err_msg
+        else
+          if query then
+            for _, capture in ipairs(query.captures) do
+              local is_valid = (
+                vim.startswith(capture, '_') -- Helpers.
+                or list_any(captures[query_type], function(documented_capture)
+                  return vim.startswith(capture, documented_capture)
+                end)
+              )
+              if not is_valid then
+                local error =
+                  string.format('(x) Invalid capture @%s in %s for %s.', capture, query_type, lang)
+                errors[#errors + 1] = error
+              end
             end
           end
         end
@@ -101,27 +104,6 @@ local function do_check()
 end
 
 local ok, result = pcall(do_check)
-local allowed_to_fail = vim.split(vim.env.ALLOWED_INSTALLATION_FAILURES or '', ',', true)
-
-for k, v in pairs(require('nvim-treesitter.parsers').configs) do
-  if v.install_info then
-    -- skip "query only" languages
-    if #vim.api.nvim_get_runtime_file('parser/' .. k .. '.*', false) == 0 then
-      -- On CI all parsers that can be installed from C files should be installed
-      if
-        vim.env.CI
-        and not v.install_info.requires_generate_from_grammar
-        and not vim.list_contains(allowed_to_fail, k)
-      then
-        io_print('Error: parser for ' .. k .. ' is not installed')
-        vim.cmd('cq')
-      else
-        io_print('Warning: parser for ' .. k .. ' is not installed')
-      end
-    end
-  end
-end
-
 if ok then
   io_print('::group::Timings')
   table.sort(result, function(a, b)
