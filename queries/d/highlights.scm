@@ -1,21 +1,75 @@
+;; Variables
+(identifier) @variable
+
 ;; Misc
 
-[
-  (line_comment)
-  (block_comment)
-  (nesting_block_comment)
-] @comment @spell
+(comment) @comment @spell
 
-((line_comment) @comment.documentation
+((comment) @comment.documentation
   (#lua-match? @comment.documentation "^///[^/]"))
-((line_comment) @comment.documentation
+
+((comment) @comment.documentation
   (#lua-match? @comment.documentation "^///$"))
 
-((block_comment) @comment.documentation
+((comment) @comment.documentation
   (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
 
-((nesting_block_comment) @comment.documentation
+((comment) @comment.documentation
   (#lua-match? @comment.documentation "^/[+][+][^+].*[+]/$"))
+
+(directive) @preproc
+(shebang) @preproc
+
+;; Operators
+
+[
+  "/="
+  "/"
+  ".."
+  "..."
+  "&"
+  "&="
+  "&&"
+  "|"
+  "|="
+  "||"
+  "-"
+  "-="
+  "--"
+  "+"
+  "+="
+  "++"
+  "<"
+  "<="
+  "<<"
+  "<<="
+  ">"
+  ">="
+  ">>="
+  ">>>="
+  ">>"
+  ">>>"
+  "!"
+  "!="
+  "?"
+  "$"
+  "="
+  "=="
+  "*"
+  "*="
+  "%"
+  "%="
+  "^"
+  "^="
+  "^^"
+  "^^="
+  "~"
+  "~="
+  "@"
+  "=>"
+] @operator
+
+;; Punctuation
 
 [
   "(" ")"
@@ -35,254 +89,196 @@
   "$"
 ] @punctuation.special
 
-;; Constants
-
-[
-  "__FILE_FULL_PATH__"
-  "__FILE__"
-  "__FUNCTION__"
-  "__LINE__"
-  "__MODULE__"
-  "__PRETTY_FUNCTION__"
-] @constant.macro
-
-[
-  (wysiwyg_string)
-  (alternate_wysiwyg_string)
-  (double_quoted_string)
-  (hex_string)
-  (delimited_string)
-  (token_string)
-] @string
-
-(character_literal) @character
-
-(integer_literal) @number
-
-(float_literal) @float
-
-[
-  "true"
-  "false"
-] @boolean
-
-;; Functions
-
-(func_declarator
-  (identifier) @function
-)
-
-[
-  "__traits"
-  "__vector"
-  "assert"
-  "is"
-  "mixin"
-  "pragma"
-  "typeid"
-] @function.builtin
-
-(import_expression
-  "import" @function.builtin
-)
-
-(parameter
-  (var_declarator
-    (identifier) @parameter
-  )
-)
-
-(function_literal
-  (identifier) @parameter
-)
-
-(constructor
-  "this" @constructor
-)
-
-(destructor
-  "this" @constructor
-)
-
 ;; Keywords
 
-[
-  "case"
-  "default"
-  "else"
-  "if"
-  "switch"
-] @conditional
+; these are listed first, because they override keyword queries
+(identity_expression (in) @keyword.operator)
+(identity_expression (is) @keyword.operator)
 
 [
-  "break"
-  "continue"
-  "do"
-  "for"
-  "foreach"
-  "foreach_reverse"
-  "while"
-] @repeat
-
-[
-  "__parameters"
-  "alias"
-  "align"
-  "asm"
-  "auto"
-  "body"
-  "class"
-  "debug"
-  "enum"
-  "export"
-  "goto"
-  "interface"
-  "invariant"
-  "macro"
-  "out"
-  "override"
-  "package"
-  "static"
-  "struct"
-  "template"
-  "union"
-  "unittest"
-  "version"
-  "with"
-] @keyword
-
-[
-  "delegate"
-  "function"
-] @keyword.function
-
-"return" @keyword.return
-
-[
-  "cast"
-  "new"
+  (not_in)
+  (not_is)
 ] @keyword.operator
 
 [
-  "+"
-  "++"
-  "+="
-  "-"
-  "--"
-  "-="
-  "*"
-  "*="
-  "%"
-  "%="
-  "^"
-  "^="
-  "^^"
-  "^^="
-  "/"
-  "/="
-  "|"
-  "|="
-  "||"
-  "~"
-  "~="
-  "="
-  "=="
-  "=>"
-  "<"
-  "<="
-  "<<"
-  "<<="
-  ">"
-  ">="
-  ">>"
-  ">>="
-  ">>>"
-  ">>>="
-  "!"
-  "!="
-  "&"
-  "&&"
-] @operator
-
-[
-  "catch"
-  "finally"
-  "throw"
-  "try"
-] @exception
-
-"null" @constant.builtin
-
-[
-  "__gshared"
-  "const"
-  "immutable"
-  "shared"
-] @storageclass
-
-[
-  "abstract"
-  "deprecated"
-  "extern"
-  "final"
-  "inout"
-  "lazy"
-  "nothrow"
-  "private"
-  "protected"
-  "public"
-  "pure"
-  "ref"
-  "scope"
-  "synchronized"
+  (const)
+  (immutable)
+  (inout)
+  (shared)
 ] @type.qualifier
 
-(alias_assignment
-  . (identifier) @type.definition)
+[
+  (gshared)
+  (scope)
+  (abstract)
+  (final)
+  (override)
+  (lazy)
+  (align)
+  (extern)
+  (static)
+  (synchronized)
+  (auto)
+  (ref)
+  (nothrow)
+  (pure)
+  (deprecated)
+] @storageclass
 
-(module_declaration
-  "module" @include
-)
+(parameter_attribute (return) @storageclass)
+(parameter_attribute (in) @storageclass)
+(parameter_attribute (out) @storageclass)
 
-(import_declaration
-  "import" @include
-)
+[
+  (case)
+  (default)
+  (if)
+  (else)
+  (switch)
+] @conditional
 
-(type) @type
+[
+  (break)
+  (continue)
+  (do)
+  (for)
+  (while)
+  (foreach)
+  (foreach_reverse)
+] @repeat
 
-(catch_parameter
-  (qualified_identifier) @type
-)
+[
+  (delegate)
+  (function)
+] @keyword.function
 
-(var_declarations
-  (qualified_identifier) @type
-)
+(return) @keyword.return
 
-(func_declaration
-  (qualified_identifier) @type
-)
+(debug) @debug
+(import) @include
 
-(parameter
-  (qualified_identifier) @type
-)
+[
+  (abstract)
+  (alias)
+  (align)
+  (asm)
+  (assert)
+  (cast)
+  (class)
+  (delete)
+  (enum)
+  (export)
+  (extern)
+  (final)
+  (in)
+  (inout)
+  (interface)
+  (invariant)
+  (is)
+  (lazy)
+  ; "macro" - obsolete
+  (mixin)
+  (module)
+  (new)
+  (nothrow)
+  (out)
+  (override)
+  (package)
+  (pragma)
+  (private)
+  (protected)
+  (public)
+  (pure)
+  (ref)
+  (static)
+  (struct)
+  (super)
+  (synchronized)
+  (template)
+  (this)
+  (typeid)
+  (typeof)
+  (union)
+  (unittest)
+  (version)
+  (with)
+  (gshared)
+  (traits)
+  (vector)
+  (parameters_)
+] @keyword
 
-(class_declaration
-  (identifier) @type
-)
+[
+  (catch)
+  (finally)
+  (throw)
+  (try)
+] @exception
 
-(fundamental_type) @type.builtin
-
-(module_fully_qualified_name (packages (package_name) @namespace))
-(module_name) @namespace
+(label (identifier) @label)
+(goto_statement (goto) @keyword (identifier) @label)
 
 (at_attribute) @attribute
 
-(user_defined_attribute
-  "@" @attribute
-)
+;; Literals
 
-;; Variables
+(int_literal) @number
+(float_literal) @float
+(char_literal) @character
+(string_literal) @string
 
-(primary_expression
-  "this" @variable.builtin
-)
+[
+  (true)
+  (false)
+] @boolean
+
+;; Constants
+
+(null) @constant.builtin
+(special_keyword) @constant.builtin
+
+;; Types
+
+[
+  (void)
+  (bool)
+  (byte)
+  (ubyte)
+  (char)
+  (short)
+  (ushort)
+  (wchar)
+  (dchar)
+  (int)
+  (uint)
+  (long)
+  (ulong)
+  (real)
+  (double)
+  (float)
+
+  ; considered deprecated builtin types
+  (cent)
+  (ucent)
+  (ireal)
+  (idouble)
+  (ifloat)
+  (creal)
+  (double)
+  (cfloat)
+] @type.builtin
+
+(type (identifier) @type)
+
+;; Functions
+
+(function_declaration (identifier) @function)
+
+(call_expression (identifier) @function.call)
+(call_expression (type (identifier) @function.call))
+
+; everything after __EOF_ is plain text
+(end_file) @text
+
+; special node for errors
+(ERROR) @error

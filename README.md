@@ -199,7 +199,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [css](https://github.com/tree-sitter/tree-sitter-css) (maintained by @TravonteD)
 - [x] [cuda](https://github.com/theHamsta/tree-sitter-cuda) (maintained by @theHamsta)
 - [x] [cue](https://github.com/eonpatapon/tree-sitter-cue) (maintained by @amaanq)
-- [x] [d](https://github.com/CyberShadow/tree-sitter-d) (experimental, maintained by @nawordar)
+- [x] [d](https://github.com/gdamore/tree-sitter-d) (maintained by @ljmf00)
 - [x] [dart](https://github.com/UserNobody14/tree-sitter-dart) (maintained by @akinsho)
 - [x] [devicetree](https://github.com/joelspadin/tree-sitter-devicetree) (maintained by @jedrzejboczar)
 - [x] [dhall](https://github.com/jbellerb/tree-sitter-dhall) (maintained by @amaanq)
