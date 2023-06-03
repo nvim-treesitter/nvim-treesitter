@@ -105,7 +105,7 @@
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
   "elixir": {
-    "revision": "869dff3ceb8823ca4b17ca33b663667c8e41e8ba"
+    "revision": "4ba9dab6e2602960d95b2b625f3386c27e08084e"
   },
   "elm": {
     "revision": "692c50c0b961364c40299e73c1306aecb5d20f40"
@@ -408,7 +408,7 @@
     "revision": "80efda55672d1293aa738f956c7ae384ecdc31b4"
   },
   "racket": {
-    "revision": "ed5369ad17166c0749ab7241d826c438bd69338d"
+    "revision": "e196cd417c425c2c3dc54f3b7b7666fe968ba50b"
   },
   "rasi": {
     "revision": "371dac6bcce0df5566c1cfebde69d90ecbeefd2d"
@@ -438,7 +438,7 @@
     "revision": "236c7b20dbddedb031ce40517fafc027434f6860"
   },
   "scheme": {
-    "revision": "dd9a73d851238881a3a9426298d69742d24b7842"
+    "revision": "0c763bd5f85b18e354bc338d17cf1daa23b478b1"
   },
   "scss": {
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
