@@ -58,9 +58,9 @@ local function do_check()
   for _, lang in pairs(parsers) do
     timings[lang] = {}
     for _, query_type in pairs(query_types) do
-      local before = vim.loop.hrtime()
+      local before = vim.uv.hrtime()
       local ok, query = pcall(vim.treesitter.query.get, lang, query_type)
-      local after = vim.loop.hrtime()
+      local after = vim.uv.hrtime()
       local duration = after - before
       table.insert(timings, { duration = duration, lang = lang, query_type = query_type })
       io_print(
