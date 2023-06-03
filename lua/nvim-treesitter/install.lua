@@ -1,6 +1,6 @@
 local api = vim.api
 local fs = vim.fs
-local uv = vim.loop
+local uv = vim.uv
 
 local a = require('nvim-treesitter.async')
 local config = require('nvim-treesitter.config')
