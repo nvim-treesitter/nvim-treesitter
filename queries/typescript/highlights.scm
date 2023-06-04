@@ -13,6 +13,7 @@
   "satisfies"
   "module"
   "infer"
+  "is"
 ] @keyword
 
 (as_expression "as" @keyword)
@@ -55,6 +56,9 @@
   "&" @punctuation.delimiter)
 
 (type_annotation
+  ":" @punctuation.delimiter)
+
+(type_predicate_annotation
   ":" @punctuation.delimiter)
 
 (index_signature
