@@ -6,17 +6,20 @@
   "export"
   "implements"
   "interface"
-  "keyof"
   "type"
   "namespace"
   "override"
-  "satisfies"
   "module"
   "infer"
   "is"
 ] @keyword
 
-(as_expression "as" @keyword)
+[
+  "keyof"
+  "satisfies"
+] @keyword.operator
+
+(as_expression "as" @keyword.operator)
 
 [
   "abstract"

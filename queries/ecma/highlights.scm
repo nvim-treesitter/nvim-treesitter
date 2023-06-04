@@ -256,7 +256,7 @@
 (binary_expression "/" @operator)
 (ternary_expression ["?" ":"] @conditional.ternary)
 (unary_expression ["!" "~" "-" "+"] @operator)
-(unary_expression ["delete" "void" "typeof"] @keyword.operator)
+(unary_expression ["delete" "void"] @keyword.operator)
 
 [
   "("
@@ -305,13 +305,10 @@
   "export"
   "extends"
   "get"
-  "in"
-  "instanceof"
   "let"
   "set"
   "static"
   "target"
-  "typeof"
   "var"
   "with"
 ] @keyword
@@ -333,6 +330,9 @@
 [
   "new"
   "delete"
+  "in"
+  "instanceof"
+  "typeof"
 ] @keyword.operator
 
 [
