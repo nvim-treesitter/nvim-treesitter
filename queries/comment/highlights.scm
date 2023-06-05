@@ -4,37 +4,37 @@
   (name) @text.todo @nospell
   ("(" @punctuation.bracket (user) @constant ")" @punctuation.bracket)?
   ":" @punctuation.delimiter)
-  (#eq? @text.todo "TODO"))
+  (#eq? @text.todo "TODO" "WIP"))
 
 ("text" @text.todo @nospell
- (#eq? @text.todo "TODO"))
+ (#eq? @text.todo "TODO" "WIP"))
 
 ((tag
   (name) @text.note @nospell
   ("(" @punctuation.bracket (user) @constant ")" @punctuation.bracket)?
   ":" @punctuation.delimiter)
-  (#any-of? @text.note "NOTE" "XXX"))
+  (#any-of? @text.note "NOTE" "XXX" "INFO"))
 
 ("text" @text.note @nospell
- (#any-of? @text.note "NOTE" "XXX"))
+ (#any-of? @text.note "NOTE" "XXX" "INFO"))
 
 ((tag
   (name) @text.warning @nospell
   ("(" @punctuation.bracket (user) @constant ")" @punctuation.bracket)?
   ":" @punctuation.delimiter)
-  (#any-of? @text.warning "HACK" "WARNING"))
+  (#any-of? @text.warning "HACK" "WARNING" "WARN" "FIX"))
 
 ("text" @text.warning @nospell
- (#any-of? @text.warning "HACK" "WARNING"))
+ (#any-of? @text.warning "HACK" "WARNING" "WARN" "FIX"))
 
 ((tag
   (name) @text.danger @nospell
   ("(" @punctuation.bracket (user) @constant ")" @punctuation.bracket)?
   ":" @punctuation.delimiter)
-  (#any-of? @text.danger "FIXME" "BUG"))
+  (#any-of? @text.danger "FIXME" "BUG" "ERROR"))
 
 ("text" @text.danger @nospell
- (#any-of? @text.danger "FIXME" "BUG"))
+ (#any-of? @text.danger "FIXME" "BUG" "ERROR"))
 
 ; Issue number (#123)
 ("text" @number
