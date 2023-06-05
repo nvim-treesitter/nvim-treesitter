@@ -51,10 +51,10 @@
     "revision": "399605a02bcd5daa309ce63a6459c600dce3473f"
   },
   "comment": {
-    "revision": "7a7f9e2f9f1fdea6817e609474f66f2a1f65f1c2"
+    "revision": "94c99a66bb5051d8321b5900aee92b76450c50ce"
   },
   "commonlisp": {
-    "revision": "c7e814975ab0d0d04333d1f32391c41180c58919"
+    "revision": "5b83fc6c2e45df43333db605e87615cdf00eb164"
   },
   "cooklang": {
     "revision": "5e113412aadb78955c27010daa4dbe1d202013cf"
@@ -72,7 +72,7 @@
     "revision": "769203d0f9abe1a9a691ac2b9fe4bb4397a73c51"
   },
   "cuda": {
-    "revision": "867c97ed7769e56bff99f7122cf63effadb812cc"
+    "revision": "32efc637d841d3adcebb182e4420bc1dd48dab9f"
   },
   "cue": {
     "revision": "0deecf48944aa54bb73e5383ba8acfbf9f2c44b4"
@@ -297,10 +297,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "fa6bfd51727e4bef99f7eec5f43947f73d64ea7d"
+    "revision": "231f3163cd27d48f91a4517cfdf72d167a9ef164"
   },
   "markdown_inline": {
-    "revision": "fa6bfd51727e4bef99f7eec5f43947f73d64ea7d"
+    "revision": "231f3163cd27d48f91a4517cfdf72d167a9ef164"
   },
   "matlab": {
     "revision": "dd95e1fc1b5514aa3a882d5fb8ddbf4683e953f0"
@@ -426,7 +426,7 @@
     "revision": "ce6086b2c9e8e71065b8129d6c2289c5f66d1879"
   },
   "rst": {
-    "revision": "25e6328872ac3a764ba8b926aea12719741103f1"
+    "revision": "c7c2b24918e231072af2d10c03b4893818de9d5d"
   },
   "ruby": {
     "revision": "206c7077164372c596ffa8eaadb9435c28941364"
