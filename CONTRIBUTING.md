@@ -82,9 +82,7 @@ you can mark the language as optional (by putting it between parenthesis).
 
 ### Highlights
 
-As languages differ quite a lot, here is a set of captures available to you when building a `highlights.scm` query.
-One important thing to note is that many of these capture groups are not supported by `neovim` for now, and will not have any
-effect on highlighting. We will work on improving highlighting in the near future though.
+As languages differ quite a lot, here is a set of captures available to you when building a `highlights.scm` query. Note that your colorscheme needs to define (or link) these captures as highlight groups.
 
 #### Misc
 
@@ -196,13 +194,16 @@ Mainly for markup languages.
 @text.underline        ; underlined text
 @text.strike           ; strikethrough text
 @text.title            ; text that is part of a title
-@text.literal          ; literal or verbatim text (e.g., inline code)
 @text.quote            ; text quotations
 @text.uri              ; URIs (e.g. hyperlinks)
 @text.math             ; math environments (e.g. `$ ... $` in LaTeX)
 @text.environment      ; text environments of markup languages
 @text.environment.name ; text indicating the type of an environment
 @text.reference        ; text references, footnotes, citations, etc.
+
+@text.literal          ; literal or verbatim text (e.g., inline code)
+@text.literal.block    ; literal or verbatim text as a stand-alone block
+                       ; (use priority 90 for blocks with injections)
 
 @text.todo             ; todo notes
 @text.note             ; info notes
@@ -237,6 +238,14 @@ Used for XML-like tags.
 @spell   ; for defining regions to be spellchecked
 @nospell ; for defining regions that should NOT be spellchecked
 ```
+
+#### Priority
+
+Captures can be assigned a priority to control precedence of highlights via the
+`#set! "priority" <number>` directive (see `:h treesitter-highlight-priority`).
+The default priority for treesitter highlights is `100`; queries should only
+set priorities between `90` and `120`, to avoid conflict with other sources of
+highlighting (such as diagnostics or LSP semantic tokens).
 
 ### Locals
 

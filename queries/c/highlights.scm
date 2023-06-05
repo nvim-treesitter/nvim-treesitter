@@ -112,10 +112,8 @@
 (number_literal) @number
 (char_literal) @character
 
-[
- (preproc_arg)
- (preproc_defined)
-]  @function.macro
+((preproc_arg) @function.macro (#set! "priority" 90))
+(preproc_defined) @function.macro
 
 (((field_expression
      (field_identifier) @property)) @_parent

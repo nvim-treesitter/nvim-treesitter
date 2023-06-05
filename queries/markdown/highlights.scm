@@ -9,11 +9,9 @@
 (atx_heading (atx_h5_marker) @text.title.5.marker (inline) @text.title.5)
 (atx_heading (atx_h6_marker) @text.title.6.marker (inline) @text.title.6)
 
-[
-  (link_title)
-  (indented_code_block)
-  (fenced_code_block)
-] @text.literal
+(link_title) @text.literal
+(indented_code_block) @text.literal.block
+((fenced_code_block) @text.literal.block (#set! "priority" 90))
 
 (info_string) @label
 

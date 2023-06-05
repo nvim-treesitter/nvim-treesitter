@@ -15,7 +15,7 @@
 (codespan
    "`" @conceal (#set! conceal "")
    text: (_) @text.literal)
-(codeblock) @text.literal
+((codeblock) @text.literal.block (#set! "priority" 90))
 (codeblock
    [">" (language)] @conceal (#set! conceal ""))
 (block
