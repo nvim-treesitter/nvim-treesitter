@@ -6,7 +6,6 @@
 ; Control flow statements
 (
   (if_block
-    _*
     condition: (_)
     . (_) @_then) @indent.begin
   (#not-has-type? @_then block)
@@ -20,17 +19,16 @@
 (
   (else_block
     (if_block
-      _*
       condition: (_)
       . (_) @_then)) @indent.branch
   (#not-has-type? @_then block)
 )
 
 (while_block
-  (command_expression)) @indent.begin
+  (command_expression)) @indent.auto
 
 (repeat_block
-  (command_expression)) @indent.begin
+  (command_expression)) @indent.auto
 
 
-(comment) @indent.ignore
+(comment) @indent.auto

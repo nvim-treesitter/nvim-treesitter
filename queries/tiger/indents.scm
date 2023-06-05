@@ -34,6 +34,7 @@
 (parameters ")" @indent.end)
 
 (function_call) @indent.begin
+(function_call ")" @indent.end)
 (method_call) @indent.begin
 ")" @indent.branch
 
