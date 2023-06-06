@@ -1,4 +1,3 @@
-local api = vim.api
 local fs = vim.fs
 local uv = vim.uv
 
@@ -38,7 +37,10 @@ local iswin = uv.os_uname().sysname == 'Windows_NT'
 local ismac = uv.os_uname().sysname == 'Darwin'
 
 --- @diagnostic disable-next-line:missing-parameter
-M.compilers = { uv.os_getenv('CC'), 'cc', 'gcc', 'clang', 'cl', 'zig' }
+M.compilers = { 'cc', 'gcc', 'clang', 'cl', 'zig' }
+if uv.os_getenv('CC') then
+  table.insert(M.compilers, 1, uv.os_getenv('CC'))
+end
 
 ---
 --- PARSER INFO
@@ -104,31 +106,6 @@ local function needs_update(lang)
   return not revision or revision ~= get_installed_revision(lang)
 end
 
-function M.info()
-  local installed = config.installed_parsers()
-  local parser_list = parsers.get_available()
-
-  local max_len = 0
-  for _, lang in pairs(parser_list) do
-    if #lang > max_len then
-      max_len = #lang
-    end
-  end
-
-  for _, lang in pairs(parser_list) do
-    local parser = (lang .. string.rep(' ', max_len - #lang + 1))
-    local output --- @type string[]
-    if vim.list_contains(installed, lang) then
-      output = { parser .. '[✓] installed', 'DiagnosticOk' }
-    elseif #api.nvim_get_runtime_file('parser/' .. lang .. '.*', true) > 0 then
-      output = { parser .. '[·] not installed (but available from runtimepath)', 'DiagnosticInfo' }
-    else
-      output = { parser .. '[✗] not installed' }
-    end
-    api.nvim_echo({ output }, false, {})
-  end
-end
-
 ---
 --- PARSER MANAGEMENT FUNCTIONS
 ---
@@ -157,7 +134,7 @@ end
 
 local function cc_err()
   log.error('No C compiler found! "' .. table.concat(
-    vim.tbl_filter(
+    vim.iter.filter(
       ---@param c string
       ---@return boolean
       function(c)
@@ -326,11 +303,11 @@ end
 ---@param executables string[]
 ---@return string?
 function M.select_executable(executables)
-  return vim.tbl_filter(
+  return vim.iter.filter(
     ---@param c string
     ---@return boolean
     function(c)
-      return c ~= vim.NIL and vim.fn.executable(c) == 1
+      return vim.fn.executable(c) == 1
     end,
     executables
   )[1]
@@ -375,7 +352,7 @@ local function select_compiler_args(repo, compiler)
   }
 
   if
-    #vim.tbl_filter(
+    #vim.iter.filter(
       --- @param file string
       --- @return boolean
       function(file)
