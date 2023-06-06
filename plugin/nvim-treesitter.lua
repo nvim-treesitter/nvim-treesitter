@@ -18,10 +18,6 @@ local function complete_installed_parsers(arglead)
 end
 
 -- create user commands
-api.nvim_create_user_command('TSInstallInfo', function()
-  require('nvim-treesitter.install').info()
-end, { nargs = 0, desc = 'List available treesitter parsers' })
-
 api.nvim_create_user_command('TSInstall', function(args)
   require('nvim-treesitter.install').install(args.fargs, { force = args.bang })
 end, {
