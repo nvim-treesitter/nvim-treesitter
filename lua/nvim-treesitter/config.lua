@@ -91,13 +91,11 @@ end
 function M.norm_languages(languages, skip)
   if not languages then
     return {}
-  end
-  local parsers = require('nvim-treesitter.parsers')
-
-  -- Turn into table
-  if type(languages) == 'string' then
+  elseif type(languages) == 'string' then
     languages = { languages }
   end
+
+  local parsers = require('nvim-treesitter.parsers')
 
   if vim.list_contains(languages, 'all') then
     if skip and skip.missing then
@@ -107,18 +105,24 @@ function M.norm_languages(languages, skip)
   end
   --TODO(clason): skip and warn on unavailable parser
 
-  for i, tier in ipairs(parsers.tiers) do
-    if vim.list_contains(languages, tier) then
-      languages = vim.iter.filter(function(l)
-        return l ~= tier
-      end, languages) --[[@as string[] ]]
-      vim.list_extend(languages, parsers.get_available(i))
+  -- keep local to avoid leaking parsers module
+  local function expand_tiers(list)
+    for i, tier in ipairs(parsers.tiers) do
+      if vim.list_contains(list, tier) then
+        list = vim.iter.filter(function(l)
+          return l ~= tier
+        end, list) --[[@as string[] ]]
+        vim.list_extend(list, parsers.get_available(i))
+      end
     end
+
+    return list
   end
 
-  --TODO(clason): support skipping tiers
+  languages = expand_tiers(languages)
+
   if skip and skip.ignored then
-    local ignored = config.ignore_install
+    local ignored = expand_tiers(config.ignore_install)
     languages = vim.iter.filter(function(v)
       return not vim.list_contains(ignored, v)
     end, languages) --[[@as string[] ]]
