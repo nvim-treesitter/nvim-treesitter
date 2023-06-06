@@ -31,7 +31,7 @@ Install the parser for your language
 To get a list of supported languages
 
 >vim
-  :TSInstallInfo
+  :TSInstall <tab>
 <
 
 To install supported parsers and queries, put this in your `init.lua` file:
@@ -50,9 +50,10 @@ To install supported parsers and queries, put this in your `init.lua` file:
 
     -- List of parsers to ignore installing (for "core" etc.)
     ignore_install = { "javascript" },
+  }
 
 <
-See |nvim-treesitter-commands| for a list of all available commands.
+To check installed parsers and queries, use `:checkhealth nvim-treesitter`.
 
 ==============================================================================
 COMMANDS                                            *nvim-treesitter-commands*
@@ -63,11 +64,6 @@ COMMANDS                                            *nvim-treesitter-commands*
 Install one or more treesitter parsers.
 You can use |:TSInstall| `all` to install all parsers. Use |:TSInstall!| to
 force the reinstallation of already installed parsers.
-
-							      *:TSInstallInfo*
-:TSInstallInfo ~
-
-List information about currently installed parsers
 
 								   *:TSUpdate*
 :TSUpdate {language} ... ~
