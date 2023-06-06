@@ -233,6 +233,7 @@
 "return" @keyword.return
 
 (comment) @comment @spell
+(block_comment) @comment @spell
 
 ((comment) @comment.documentation
   (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
