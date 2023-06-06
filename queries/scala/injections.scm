@@ -1,2 +1,4 @@
-(comment) @comment
-(block_comment) @comment
+[
+  (comment) 
+  (block_comment)
+] @comment
