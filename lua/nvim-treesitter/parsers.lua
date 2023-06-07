@@ -20,7 +20,7 @@ local M = {}
 
 M.tiers = { 'core', 'stable', 'community', 'unstable' }
 
----@type ParserInfo[]
+---@type table<string,ParserInfo>
 M.configs = {
   ada = {
     install_info = {
