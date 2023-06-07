@@ -18,7 +18,10 @@
   (#set! indent.immediate 1)
   (#set! indent.start_at_same_line 1))
 
-(switch_label) @indent.branch
+[
+  (switch_statement_case)
+  (switch_statement_default)
+] @indent.branch
 
 [
   "("

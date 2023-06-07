@@ -29,7 +29,7 @@ jobs:
 
       - name: Update parsers
         env:
-          SKIP_LOCKFILE_UPDATE_FOR_LANGS: "dart"
+          SKIP_LOCKFILE_UPDATE_FOR_LANGS: ""
         run: |
           cp lockfile.json /tmp/old_lockfile.json
           ./nvim.appimage --headless -c "luafile ./scripts/write-lockfile.lua" -c "q"
