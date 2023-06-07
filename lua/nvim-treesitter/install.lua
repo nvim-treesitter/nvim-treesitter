@@ -3,7 +3,6 @@ local uv = vim.uv
 
 local a = require('nvim-treesitter.async')
 local config = require('nvim-treesitter.config')
-local job = require('nvim-treesitter.job')
 local log = require('nvim-treesitter.log')
 local parsers = require('nvim-treesitter.parsers')
 local util = require('nvim-treesitter.util')
@@ -40,6 +39,20 @@ local ismac = uv.os_uname().sysname == 'Darwin'
 M.compilers = { 'cc', 'gcc', 'clang', 'cl', 'zig' }
 if uv.os_getenv('CC') then
   table.insert(M.compilers, 1, uv.os_getenv('CC'))
+end
+
+local function system(cmd, opts)
+  log.trace('running job: (cwd=%s) %s', opts.cwd, table.concat(cmd, ' '))
+  local r = a.wrap(vim.system, 3)(cmd, opts) --[[@as SystemCompleted]]
+  a.main()
+  if r.stdout and r.stdout ~= '' then
+    log.trace('stdout -> %s', r.stdout)
+  end
+  if r.stderr and r.stderr ~= '' then
+    log.trace('stderr -> %s', r.stderr)
+  end
+
+  return r
 end
 
 ---
@@ -156,23 +169,21 @@ local function do_generate_from_grammar(logger, repo, compile_location)
     end
 
     logger:info('Installing NPM dependencies')
-    local r = job.run({ 'npm', 'install' }, { cwd = compile_location })
-    a.main()
-    if r.exit_code > 0 then
+    local r = system({ 'npm', 'install' }, { cwd = compile_location })
+    if r.code > 0 then
       logger:error('Error during `npm install`')
     end
   end
 
   logger:info('Generating source files from grammar.js...')
 
-  local r = job.run({
+  local r = system({
     vim.fn.exepath('tree-sitter'),
     'generate',
     '--abi',
     tostring(vim.treesitter.language_version),
   }, { cwd = compile_location })
-  a.main()
-  if r.exit_code > 0 then
+  if r.code > 0 then
     logger:error('Error during "tree-sitter generate"')
   end
 end
@@ -200,7 +211,7 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
   local target = is_github and url .. '/archive/' .. revision .. '.tar.gz'
     or url .. '/-/archive/' .. revision .. '/' .. project_name .. '-' .. revision .. '.tar.gz'
 
-  local r = job.run({
+  local r = system({
     'curl',
     '--silent',
     '-L', -- follow redirects
@@ -210,11 +221,8 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
   }, {
     cwd = cache_dir,
   })
-  a.main()
-  if r.exit_code > 0 then
-    logger:error(
-      'Error during download, please verify your internet connection: ' .. vim.inspect(r.stderr)
-    )
+  if r.code > 0 then
+    logger:error('Error during download, please verify your internet connection: %s', r.stderr)
   end
 
   logger:debug('Creating temporary directory: ' .. temp_dir)
@@ -226,7 +234,7 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
   end
 
   logger:info('Extracting ' .. project_name .. '...')
-  r = job.run({
+  r = system({
     'tar',
     '-xzf',
     project_name .. '.tar.gz',
@@ -236,14 +244,13 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
     cwd = cache_dir,
   })
 
-  a.main()
-  if r.exit_code > 0 then
-    logger:error('Error during tarball extraction: ' .. vim.inspect(r.stderr))
+  if r.code > 0 then
+    logger:error('Error during tarball extraction: %s', r.stderr)
   end
 
   err = uv_unlink(project_dir .. '.tar.gz')
   if err then
-    logger:error('Could not remove tarball: ' .. err)
+    logger:error('Could not remove tarball: %s', err)
   end
   a.main()
 
@@ -251,7 +258,7 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
   a.main()
 
   if err then
-    logger:error('Could not rename temp: ' .. err)
+    logger:error('Could not rename temp: %s', err)
   end
 
   util.delete(temp_dir)
@@ -266,7 +273,7 @@ end
 local function do_download_git(logger, repo, project_name, cache_dir, revision, project_dir)
   logger:info('Downloading ' .. project_name .. '...')
 
-  local r = job.run({
+  local r = system({
     'git',
     'clone',
     '--filter=blob:none',
@@ -276,16 +283,12 @@ local function do_download_git(logger, repo, project_name, cache_dir, revision, 
     cwd = cache_dir,
   })
 
-  a.main()
-
-  if r.exit_code > 0 then
-    logger:error(
-      'Error during download, please verify your internet connection: ' .. vim.inspect(r.stderr)
-    )
+  if r.code > 0 then
+    logger:error('Error during download, please verify your internet connection: ' .. r.stderr)
   end
 
   logger:info('Checking out locked revision')
-  r = job.run({
+  r = system({
     'git',
     'checkout',
     revision,
@@ -293,10 +296,8 @@ local function do_download_git(logger, repo, project_name, cache_dir, revision, 
     cwd = project_dir,
   })
 
-  a.main()
-
-  if r.exit_code > 0 then
-    logger:error('Error while checking out revision: ' .. vim.inspect(r.stderr))
+  if r.code > 0 then
+    logger:error('Error while checking out revision: %s', r.stderr)
   end
 end
 
@@ -385,7 +386,7 @@ end
 ---@param repo InstallInfo
 ---@param cc string
 ---@param compile_location string
----@return JobResult
+---@return SystemCompleted
 local function do_compile(repo, cc, compile_location)
   local make = M.select_executable({ 'gmake', 'make' })
 
@@ -401,9 +402,7 @@ local function do_compile(repo, cc, compile_location)
     }
   end
 
-  local r = job.run(cmd, { cwd = compile_location })
-  a.main()
-  return r
+  return system(cmd, { cwd = compile_location })
 end
 
 ---@param lang string
@@ -475,8 +474,8 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
 
     logger:info('Compiling parser')
     local r = do_compile(repo, cc, compile_location)
-    if r.exit_code > 0 then
-      logger:error('Error during compilation: ' .. vim.inspect(r.stderr))
+    if r.code > 0 then
+      logger:error('Error during compilation: %s', r.stderr)
     end
 
     local parser_lib_name = fs.joinpath(install_dir, lang) .. '.so'
