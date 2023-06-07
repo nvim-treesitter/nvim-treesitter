@@ -70,7 +70,7 @@ local function install_health()
         .. ' or set `$CC` or `require"nvim-treesitter.install".compilers` explicitly.',
     })
   else
-    local version = vim.fn.systemlist(cc .. (cc == 'cl' and '' or ' --version'))[1]
+    local version = assert(vim.system({ cc, cc == 'cl' and '' or '--version' }):wait().stdout)
     health.ok(
       '`'
         .. cc
