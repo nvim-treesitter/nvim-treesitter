@@ -37,6 +37,10 @@
   "="
 ] @operator
 
+"for" @repeat
+
+"function" @keyword.function
+
 "in" @keyword.operator
 
 [
