@@ -3,15 +3,15 @@ local co = coroutine
 local M = {}
 
 ---Executes a future with a callback when it is done
---- @param func function
---- @param callback function
---- @param ... unknown
+---@param func function
+---@param callback function
+---@param ... unknown
 local function execute(func, callback, ...)
   local thread = co.create(func)
 
   local function step(...)
     local ret = { co.resume(thread, ...) }
-    --- @type boolean, any
+    ---@type boolean, any
     local stat, nargs_or_err = unpack(ret)
 
     if not stat then
@@ -31,7 +31,7 @@ local function execute(func, callback, ...)
       return
     end
 
-    --- @type function, any[]
+    ---@type function, any[]
     local fn, args = ret[3], { unpack(ret, 4, table.maxn(ret)) }
     args[nargs_or_err] = step
     fn(unpack(args, 1, nargs_or_err))
@@ -41,13 +41,15 @@ local function execute(func, callback, ...)
 end
 
 --- Creates an async function with a callback style function.
---- @generic F: function
---- @param func F
---- @param argc integer
---- @return F
+---@generic F: function
+---@param func F
+---@param argc integer
+---@return F
 function M.wrap(func, argc)
-  --- @param ... unknown
-  --- @return unknown
+  vim.validate('func', func, 'function')
+  vim.validate('argc', argc, 'number')
+  ---@param ... unknown
+  ---@return unknown
   return function(...)
     return co.yield(argc, func, ...)
   end
@@ -56,10 +58,10 @@ end
 ---Use this to create a function which executes in an async context but
 ---called from a non-async context. Inherently this cannot return anything
 ---since it is non-blocking
---- @generic F: function
---- @param func async F
---- @param nargs? integer
---- @return F
+---@generic F: function
+---@param func async F
+---@param nargs? integer
+---@return F
 function M.sync(func, nargs)
   nargs = nargs or 0
   return function(...)
@@ -68,10 +70,10 @@ function M.sync(func, nargs)
   end
 end
 
---- @param n integer max number of concurrent jobs
---- @param interrupt_check? function
---- @param thunks function[]
---- @return any
+---@param n integer max number of concurrent jobs
+---@param interrupt_check? function
+---@param thunks function[]
+---@return any
 function M.join(n, interrupt_check, thunks)
   return co.yield(1, function(finish)
     if #thunks == 0 then
@@ -81,7 +83,7 @@ function M.join(n, interrupt_check, thunks)
     local remaining = { select(n + 1, unpack(thunks)) }
     local to_go = #thunks
 
-    local ret = {} --- @type any[]
+    local ret = {} ---@type any[]
 
     local function cb(...)
       ret[#ret + 1] = { ... }
@@ -104,7 +106,7 @@ end
 
 ---An async function that when called will yield to the Neovim scheduler to be
 ---able to call the API.
---- @type fun()
+---@type fun()
 M.main = M.wrap(vim.schedule, 1)
 
 return M
