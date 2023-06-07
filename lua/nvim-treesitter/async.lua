@@ -46,6 +46,10 @@ end
 --- @param argc integer
 --- @return F
 function M.wrap(func, argc)
+  vim.validate({
+    func = { func, 'function' },
+    argc = { argc, 'number' },
+  })
   --- @param ... unknown
   --- @return unknown
   return function(...)
