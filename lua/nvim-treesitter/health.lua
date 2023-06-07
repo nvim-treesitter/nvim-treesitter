@@ -12,12 +12,7 @@ local NVIM_TREESITTER_MINIMUM_ABI = 13
 ---@return string|nil
 local function ts_cli_version()
   if vim.fn.executable('tree-sitter') == 1 then
-    local handle = io.popen('tree-sitter -V')
-    if not handle then
-      return
-    end
-    local result = handle:read('*a')
-    handle:close()
+    local result = assert(vim.system({ 'tree-sitter', '-V' }):wait().stdout)
     return vim.split(result, '\n')[1]:match('[^tree%psitter ].*')
   end
 end
@@ -45,9 +40,7 @@ local function install_health()
   if vim.fn.executable('node') == 0 then
     health.warn('`node` executable not found (only needed for `:TSInstallFromGrammar`.')
   else
-    local handle = assert(io.popen('node --version'))
-    local result = handle:read('*a')
-    handle:close()
+    local result = assert(vim.system({ 'node', '--version' }):wait().stdout)
     local version = vim.split(result, '\n')[1]
     health.ok('`node` found ' .. version .. ' (only needed for `:TSInstallFromGrammar`)')
   end
@@ -70,7 +63,7 @@ local function install_health()
         .. ' or set `$CC` or `require"nvim-treesitter.install".compilers` explicitly.',
     })
   else
-    local version = vim.fn.systemlist(cc .. (cc == 'cl' and '' or ' --version'))[1]
+    local version = assert(vim.system({ cc, cc == 'cl' and '' or '--version' }):wait().stdout)
     health.ok(
       '`'
         .. cc
