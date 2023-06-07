@@ -453,14 +453,13 @@ local function do_generate_from_grammar(logger, repo, compile_location)
 
   logger:info('Generating source files from grammar.js...')
 
-  local r = job.run({
+  local r = system({
     vim.fn.exepath('tree-sitter'),
     'generate',
     '--abi',
     tostring(vim.treesitter.language_version),
   }, { cwd = compile_location })
-  a.main()
-  if r.exit_code > 0 then
+  if r.code > 0 then
     logger:error('Error during "tree-sitter generate"')
   end
 end
@@ -488,7 +487,7 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
   local target = is_github and url .. '/archive/' .. revision .. '.tar.gz'
     or url .. '/-/archive/' .. revision .. '/' .. project_name .. '-' .. revision .. '.tar.gz'
 
-  local r = job.run({
+  local r = system({
     'curl',
     '--silent',
     '-L', -- follow redirects
@@ -498,11 +497,8 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
   }, {
     cwd = cache_dir,
   })
-  a.main()
-  if r.exit_code > 0 then
-    logger:error(
-      'Error during download, please verify your internet connection: ' .. vim.inspect(r.stderr)
-    )
+  if r.code > 0 then
+    logger:error('Error during download, please verify your internet connection: %s', r.stderr)
   end
 
   logger:debug('Creating temporary directory: ' .. temp_dir)
@@ -514,7 +510,7 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
   end
 
   logger:info('Extracting ' .. project_name .. '...')
-  r = job.run({
+  r = system({
     'tar',
     '-xzf',
     project_name .. '.tar.gz',
@@ -524,14 +520,13 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
     cwd = cache_dir,
   })
 
-  a.main()
-  if r.exit_code > 0 then
-    logger:error('Error during tarball extraction: ' .. vim.inspect(r.stderr))
+  if r.code > 0 then
+    logger:error('Error during tarball extraction: %s', r.stderr)
   end
 
   err = uv_unlink(project_dir .. '.tar.gz')
   if err then
-    logger:error('Could not remove tarball: ' .. err)
+    logger:error('Could not remove tarball: %s', err)
   end
   a.main()
 
@@ -539,7 +534,7 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
   a.main()
 
   if err then
-    logger:error('Could not rename temp: ' .. err)
+    logger:error('Could not rename temp: %s', err)
   end
 
   util.delete(temp_dir)
@@ -554,7 +549,7 @@ end
 local function do_download_git(logger, repo, project_name, cache_dir, revision, project_dir)
   logger:info('Downloading ' .. project_name .. '...')
 
-  local r = job.run({
+  local r = system({
     'git',
     'clone',
     '--filter=blob:none',
@@ -564,16 +559,12 @@ local function do_download_git(logger, repo, project_name, cache_dir, revision, 
     cwd = cache_dir,
   })
 
-  a.main()
-
-  if r.exit_code > 0 then
-    logger:error(
-      'Error during download, please verify your internet connection: ' .. vim.inspect(r.stderr)
-    )
+  if r.code > 0 then
+    logger:error('Error during download, please verify your internet connection: ' .. r.stderr)
   end
 
   logger:info('Checking out locked revision')
-  r = job.run({
+  r = system({
     'git',
     'checkout',
     revision,
@@ -581,10 +572,8 @@ local function do_download_git(logger, repo, project_name, cache_dir, revision, 
     cwd = project_dir,
   })
 
-  a.main()
-
-  if r.exit_code > 0 then
-    logger:error('Error while checking out revision: ' .. vim.inspect(r.stderr))
+  if r.code > 0 then
+    logger:error('Error while checking out revision: %s', r.stderr)
   end
 end
 
@@ -673,7 +662,7 @@ end
 ---@param repo InstallInfo
 ---@param cc string
 ---@param compile_location string
----@return JobResult
+---@return SystemCompleted
 local function do_compile(repo, cc, compile_location)
   local make = M.select_executable({ 'gmake', 'make' })
 
@@ -689,9 +678,7 @@ local function do_compile(repo, cc, compile_location)
     }
   end
 
-  local r = job.run(cmd, { cwd = compile_location })
-  a.main()
-  return r
+  return system(cmd, { cwd = compile_location })
 end
 
 ---@param lang string

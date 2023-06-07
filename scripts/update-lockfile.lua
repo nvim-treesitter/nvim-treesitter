@@ -14,6 +14,8 @@ local parsers = require('nvim-treesitter.parsers').configs
 
 local jobs = {} --- @type table<string,SystemObj>
 
+local jobs = {} --- @type table<{name:string,parser:ParserInfo},SystemObj>
+
 -- check for new revisions
 for k, p in pairs(parsers) do
   if p.tier == 4 then
