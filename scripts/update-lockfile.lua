@@ -66,6 +66,7 @@ assert(#vim.tbl_keys(jobs) == 0)
 
 local lockfile_json = vim.json.encode(lockfile) --[[@as string]]
 if vim.fn.executable('jq') == 1 then
-  lockfile_json = assert(vim.system({ 'jq', '--sort-keys' }, { stdin = lockfile }):wait().stdout)
+  lockfile_json =
+    assert(vim.system({ 'jq', '--sort-keys' }, { stdin = lockfile_json }):wait().stdout)
 end
 util.write_file(filename, lockfile_json)
