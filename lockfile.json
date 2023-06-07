@@ -1,6 +1,6 @@
 {
   "ada": {
-    "revision": "42cc2eb141529b03a91c18ec8646a0a58fb111ba"
+    "revision": "ba7951a8f3fb08f9ea923625153e7670c89f30b4"
   },
   "agda": {
     "revision": "80ea622cf952a0059e168e5c92a798b2f1925652"
@@ -120,7 +120,7 @@
     "revision": "203f7bd3c1bbfbd98fc19add4b8fcb213c059205"
   },
   "erlang": {
-    "revision": "6228b1df25f25dbd69e4e0342c4c65eb9b5e957d"
+    "revision": "c431b0b2d9228ed0869f7a6bb88fc9d2796d44b1"
   },
   "fennel": {
     "revision": "517195970428aacca60891b050aa53eabf4ba78d"
@@ -174,7 +174,7 @@
     "revision": "53ca269cae2a47b1b75791e2bfe843baeb02e903"
   },
   "go": {
-    "revision": "7cccc30535a40da07092626031120ae6b36202d7"
+    "revision": "3a3a8ee53777eaa6cbfc032afd11af407ee1f7fe"
   },
   "godot_resource": {
     "revision": "b6ef0768711086a86b3297056f9ffb5cc1d77b4a"
@@ -279,7 +279,7 @@
     "revision": "d47c95d78ef0e7495a74d214dd6fcddf6e402dfc"
   },
   "lua": {
-    "revision": "dcc44f7473ecec4d7b99af0a9529705d98a769f1"
+    "revision": "092f32a3d58e37a40bbc8e83b44740e1f23719fb"
   },
   "luadoc": {
     "revision": "978cc13791c1d6e4626ee7e8db108d0be14f07e7"
@@ -435,7 +435,7 @@
     "revision": "0a70e15da977489d954c219af9b50b8a722630ee"
   },
   "scala": {
-    "revision": "236c7b20dbddedb031ce40517fafc027434f6860"
+    "revision": "97d88301d3af69e88098f90f7689061fa47f6154"
   },
   "scheme": {
     "revision": "0c763bd5f85b18e354bc338d17cf1daa23b478b1"
