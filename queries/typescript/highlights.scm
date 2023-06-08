@@ -1,5 +1,9 @@
 ; inherits: ecma
 
+"require" @include
+
+(import_require_clause source: (string) @text.uri)
+
 [
   "declare"
   "enum"
@@ -10,6 +14,7 @@
   "namespace"
   "override"
   "module"
+  "asserts"
   "infer"
   "is"
 ] @keyword
@@ -20,6 +25,8 @@
 ] @keyword.operator
 
 (as_expression "as" @keyword.operator)
+(export_statement "as" @keyword.operator)
+(mapped_type_clause "as" @keyword.operator)
 
 [
   "abstract"
@@ -52,6 +59,9 @@
 (type_parameters
   ["<" ">"] @punctuation.bracket)
 
+(object_type
+  ["{|" "|}"] @punctuation.bracket)
+
 (union_type
   "|" @punctuation.delimiter)
 
@@ -67,14 +77,22 @@
 (index_signature
   ":" @punctuation.delimiter)
 
+(omitting_type_annotation
+  "-?:" @punctuation.delimiter)
+
 (opting_type_annotation
   "?:" @punctuation.delimiter)
 
 "?." @punctuation.delimiter
 
+(abstract_method_signature "?" @punctuation.special)
 (method_signature "?" @punctuation.special)
+(method_definition "?" @punctuation.special)
 (property_signature "?" @punctuation.special)
 (optional_parameter "?" @punctuation.special)
+(optional_type "?" @punctuation.special)
+(public_field_definition [ "?" "!" ] @punctuation.special)
+(flow_maybe_type "?" @punctuation.special)
 
 (template_type ["${" "}"] @punctuation.special)
 
