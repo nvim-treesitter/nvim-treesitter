@@ -5,45 +5,29 @@ local util = require('nvim-treesitter.util')
 
 -- Load previous lockfile
 local filename = require('nvim-treesitter.install').get_package_path('lockfile.json')
-local lockfile = vim.json.decode(util.read_file(filename)) --[[@as table<string,{revision:string}>]]
+-- local old_lockfile = vim.json.decode(util.read_file(filename)) --[[@as table<string,{revision:string}>]]
 
----@type string?
-local skip_lang_string = os.getenv('LOCKFILE_SKIP')
-local skip_langs = skip_lang_string and vim.split(skip_lang_string, ',') or {}
-vim.print('Skipping languages: ', skip_langs)
+---@type table<string,{revision:string}>
+local new_lockfile = {}
 
-local sorted_parsers = {} --- @type {name:string,parser:ParserInfo}[]
-for k, v in pairs(require('nvim-treesitter.parsers').configs) do
-  table.insert(sorted_parsers, { name = k, parser = v })
-end
-table.sort(sorted_parsers, function(a, b)
-  return a.name < b.name
-end)
+local parsers = require('nvim-treesitter.parsers').configs
 
-local jobs = {} --- @type table<{name:string,parser:ParserInfo},SystemObj>
+local jobs = {} --- @type table<string,SystemObj>
 
 -- check for new revisions
-for i, v in ipairs(sorted_parsers) do
-  -- keep spawning jobs until we hit EMFILE
-  local ok, err = pcall(function()
-    if vim.list_contains(skip_langs, v.name) or not v.parser.install_info then
-      print('Skipping ' .. v.name)
-      return
-    end
+for k, p in pairs(parsers) do
+  if not p.install_info then
+    print('Skipping ' .. k)
+  else
+    jobs[k] = vim.system({ 'git', 'ls-remote', p.install_info.url })
+  end
 
-    jobs[v] = vim.system({ 'git', 'ls-remote', v.parser.install_info.url })
-  end)
-
-  if not ok or i == #sorted_parsers then
-    if err and not err:match('EMFILE') then
-      error(err)
-    end
-
-    for vi, job in pairs(jobs) do
+  if #vim.tbl_keys(jobs) % 100 == 0 or next(parsers, k) == nil then
+    for name, job in pairs(jobs) do
       local stdout = vim.split(job:wait().stdout, '\n')
-      jobs[vi] = nil
+      jobs[name] = nil
 
-      local branch = vi.parser.install_info.branch
+      local branch = parsers[name].install_info.branch
 
       local line = 1
       if branch then
@@ -56,17 +40,18 @@ for i, v in ipairs(sorted_parsers) do
       end
 
       local sha = vim.split(stdout[line], '\t')[1]
-      lockfile[vi.name] = { revision = sha }
-      print(vi.name .. ': ' .. sha)
+      new_lockfile[name] = { revision = sha }
+      print(name .. ': ' .. sha)
     end
   end
 end
 
 assert(#vim.tbl_keys(jobs) == 0)
 
-local lockfile_json = vim.json.encode(lockfile) --[[@as string]]
+local lockfile_json = vim.json.encode(new_lockfile) --[[@as string]]
 if vim.fn.executable('jq') == 1 then
   lockfile_json =
     assert(vim.system({ 'jq', '--sort-keys' }, { stdin = lockfile_json }):wait().stdout)
 end
+
 util.write_file(filename, lockfile_json)
