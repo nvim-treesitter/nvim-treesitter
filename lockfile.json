@@ -497,9 +497,6 @@
   "nix": {
     "revision": "21897cc3dcd15325303e46b85295b743742af6ab"
   },
-  "norg": {
-    "revision": "d89d95af13d409f30a6c7676387bde311ec4a2c8"
-  },
   "nqc": {
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
   },
