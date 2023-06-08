@@ -500,9 +500,6 @@
   "nix": {
     "revision": "4b952d99ce6fc795ff3cfa48b05637f2b1751d3b"
   },
-  "norg": {
-    "revision": "d89d95af13d409f30a6c7676387bde311ec4a2c8"
-  },
   "nqc": {
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
   },
