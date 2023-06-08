@@ -199,8 +199,6 @@
 ; Punctuation
 ;------------
 
-"..." @punctuation.special
-
 ";" @punctuation.delimiter
 "." @punctuation.delimiter
 "," @punctuation.delimiter
@@ -251,6 +249,7 @@
   "&&="
   "||="
   "??="
+  "..."
 ] @operator
 
 (binary_expression "/" @operator)
