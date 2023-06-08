@@ -168,7 +168,6 @@ jsx (queries only)[^jsx] |  | `HFIJ ` |  |  | @steelsojka
 [nim_format_string](https://github.com/aMOPel/tree-sitter-nim-format-string) | community | `H  J ` |  |  | @aMOPel
 [ninja](https://github.com/alemuller/tree-sitter-ninja) |  | `HFI  ` |  |  | @alemuller
 [nix](https://github.com/cstrahan/tree-sitter-nix) |  | `HF JL` |  |  | @leo60228
-[norg](https://github.com/nvim-neorg/tree-sitter-norg) | unstable | `     ` |  |  | @JoeyGrajciar, @vhyrro
 [nqc](https://github.com/amaanq/tree-sitter-nqc) | stable | `HFIJL` |  |  | @amaanq
 [objc](https://github.com/amaanq/tree-sitter-objc) |  | `HFIJL` |  |  | @amaanq
 [objdump](https://github.com/ColinKennedy/tree-sitter-objdump) | community | `H  J ` |  |  | @ColinKennedy
