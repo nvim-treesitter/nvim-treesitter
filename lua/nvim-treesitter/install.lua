@@ -388,19 +388,8 @@ end
 ---@param compile_location string
 ---@return SystemCompleted
 local function do_compile(repo, cc, compile_location)
-  local make = M.select_executable({ 'gmake', 'make' })
-
-  local cmd --- @type string[]
-  if cc:find('cl$') or cc:find('cl.exe$') or not repo.use_makefile or iswin or not make then
-    local args = vim.tbl_flatten(select_compiler_args(repo, cc))
-    cmd = vim.list_extend({ cc }, args)
-  else
-    cmd = {
-      make,
-      '--makefile=' .. M.get_package_path('scripts', 'compile_parsers.makefile'),
-      'CC=' .. cc,
-    }
-  end
+  local args = vim.tbl_flatten(select_compiler_args(repo, cc))
+  local cmd = vim.list_extend({ cc }, args)
 
   return system(cmd, { cwd = compile_location })
 end
