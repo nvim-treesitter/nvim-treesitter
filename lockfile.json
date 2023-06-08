@@ -54,7 +54,7 @@
     "revision": "94c99a66bb5051d8321b5900aee92b76450c50ce"
   },
   "commonlisp": {
-    "revision": "5b83fc6c2e45df43333db605e87615cdf00eb164"
+    "revision": "747a6e161ee8ab000f00f3adf0bec8dfbf6a8403"
   },
   "cooklang": {
     "revision": "5e113412aadb78955c27010daa4dbe1d202013cf"
@@ -279,7 +279,7 @@
     "revision": "d47c95d78ef0e7495a74d214dd6fcddf6e402dfc"
   },
   "lua": {
-    "revision": "092f32a3d58e37a40bbc8e83b44740e1f23719fb"
+    "revision": "d8360bc472ca1d55d437624ee7299152b693e1a0"
   },
   "luadoc": {
     "revision": "978cc13791c1d6e4626ee7e8db108d0be14f07e7"
@@ -429,13 +429,13 @@
     "revision": "c7c2b24918e231072af2d10c03b4893818de9d5d"
   },
   "ruby": {
-    "revision": "206c7077164372c596ffa8eaadb9435c28941364"
+    "revision": "74fde5e5fb2bb5978aaee7895188eb199f7facf0"
   },
   "rust": {
     "revision": "0a70e15da977489d954c219af9b50b8a722630ee"
   },
   "scala": {
-    "revision": "97d88301d3af69e88098f90f7689061fa47f6154"
+    "revision": "007a1845a46d3b4c1edfd157491ffc5739e2340f"
   },
   "scheme": {
     "revision": "0c763bd5f85b18e354bc338d17cf1daa23b478b1"
