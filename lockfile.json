@@ -356,9 +356,6 @@
   "nix": {
     "revision": "66e3e9ce9180ae08fc57372061006ef83f0abde7"
   },
-  "norg": {
-    "revision": "1a305093569632de50f9a316ff843dcda25b4ef5"
-  },
   "objc": {
     "revision": "62e61b6f5c0289c376d61a8c91faf6435cde9012"
   },
