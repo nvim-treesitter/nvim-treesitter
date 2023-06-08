@@ -7,7 +7,6 @@ This document lists the planned and finished changes in this rewrite towards [Nv
 - [ ] **`query_predicates.lua`:** upstream/remove
 - [ ] **`parsers.lua`:** assign tiers
 - [ ] **`parsers.lua`:** modularize?
-- [ ] **`install.lua`:** drop norg (and makefile); document c++11 requirement
 - [ ] **`locals.lua`:** move to `nvim-treesitter-refactor`?
 - [ ] **update-lockfile:** allow specifying version in addition to commit hash (for Tier 1)
 - [ ] **update-lockfile:** one commit per parser/tier?
