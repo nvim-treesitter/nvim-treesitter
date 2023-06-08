@@ -159,6 +159,7 @@ If Neovim does not detect your language's filetype by default, you can use [Neov
 You can also skip step 2 and use `:TSInstallFromGrammar zimbu` to install directly from a `grammar.js` in the top-level directory specified by `url`.
 Once the parser is installed, you can update it (from the latest revision of the `main` branch if `url` is a Github repository) with `:TSUpdate zimbu`.
 
+**Note:** Parsers using external scanner need to be written in C. C++ scanners are no longer supported.
 
 ## Adding queries
 
