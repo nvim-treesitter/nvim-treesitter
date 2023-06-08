@@ -142,7 +142,6 @@ jsx (queries only)[^jsx] |  | `HFIJ ` |  |  | @steelsojka
 [nickel](https://github.com/nickel-lang/tree-sitter-nickel) | unstable | `H I  ` |  |  | 
 [ninja](https://github.com/alemuller/tree-sitter-ninja) |  | `HFI  ` |  |  | @alemuller
 [nix](https://github.com/cstrahan/tree-sitter-nix) |  | `HF JL` |  |  | @leo60228
-[norg](https://github.com/nvim-neorg/tree-sitter-norg) | unstable | `     ` |  |  | @JoeyGrajciar, @vhyrro
 [nqc](https://github.com/amaanq/tree-sitter-nqc) | stable | `HFIJL` |  |  | @amaanq
 [objc](https://github.com/amaanq/tree-sitter-objc) |  | `HFIJL` |  |  | @amaanq
 [ocaml](https://github.com/tree-sitter/tree-sitter-ocaml) |  | `HFIJL` |  |  | @undu
