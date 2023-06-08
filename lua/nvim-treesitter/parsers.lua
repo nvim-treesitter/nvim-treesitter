@@ -6,7 +6,6 @@
 ---@field generate_requires_npm boolean|nil
 ---@field requires_generate_from_grammar boolean|nil
 ---@field location string|nil
----@field use_makefile boolean|nil
 
 ---@class ParserInfo
 ---@field install_info InstallInfo
@@ -1272,16 +1271,6 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@leo60228' },
-  },
-
-  norg = {
-    install_info = {
-      url = 'https://github.com/nvim-neorg/tree-sitter-norg',
-      files = { 'src/parser.c', 'src/scanner.cc' },
-      use_makefile = true,
-    },
-    maintainers = { '@JoeyGrajciar', '@vhyrro' },
-    tier = 4,
   },
 
   nqc = {
