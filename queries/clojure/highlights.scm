@@ -305,7 +305,7 @@
   ;; 1.11
   "NaN?" "abs" "infinite?" "iteration" "random-uuid"
   "parse-boolean" "parse-double" "parse-long" "parse-uuid"
-  "seq-to-map-for-destructuring"
+  "seq-to-map-for-destructuring" "update-keys" "update-vals"
   ;; 1.12
   "partitionv" "partitionv-all" "splitv-at"))
 
