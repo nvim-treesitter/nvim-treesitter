@@ -10,7 +10,7 @@ local M = {}
 local config = {
   auto_install = false,
   ensure_install = {},
-  ignore_install = {},
+  ignore_install = { 'unsupported' },
   install_dir = vim.fs.joinpath(vim.fn.stdpath('data'), 'site'),
 }
 

@@ -4,7 +4,7 @@ local util = require('nvim-treesitter.util')
 
 -- Load previous lockfile
 local filename = require('nvim-treesitter.install').get_package_path('lockfile.json')
--- local old_lockfile = vim.json.decode(util.read_file(filename)) --[[@as table<string,{revision:string}>]]
+local old_lockfile = vim.json.decode(util.read_file(filename)) --[[@as table<string,{revision:string}>]]
 
 ---@type table<string,{revision:string}>
 local new_lockfile = {}
@@ -15,9 +15,10 @@ local jobs = {} --- @type table<string,SystemObj>
 
 -- check for new revisions
 for k, p in pairs(parsers) do
-  if not p.install_info then
+  if p.tier == 4 then
+    new_lockfile[k] = old_lockfile[k]
     print('Skipping ' .. k)
-  else
+  elseif p.install_info then
     jobs[k] = vim.system({ 'git', 'ls-remote', p.install_info.url })
   end
 

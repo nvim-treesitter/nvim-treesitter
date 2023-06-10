@@ -53,11 +53,11 @@ require('lazy').setup(
 
 ```lua
 require'nvim-treesitter'.setup {
-  -- A list of parser names or tiers ('core', 'stable', 'community', 'unstable')
+  -- A list of parser names or tiers ('stable', 'core', 'community', 'unsupported')
   ensure_install = { },
 
   -- List of parsers to ignore installing
-  ignore_install = { },
+  ignore_install = { 'unsupported' },
 
   -- Automatically install missing parsers when entering buffer
   auto_install = false,

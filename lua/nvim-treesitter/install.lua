@@ -95,11 +95,6 @@ local function get_target_revision(lang)
     lockfile = vim.json.decode(util.read_file(filename)) --[[@as table<string, LockfileInfo>]]
   end
 
-  local install_info = get_parser_install_info(lang)
-  if install_info.revision then
-    return install_info.revision
-  end
-
   if lockfile[lang] then
     return lockfile[lang].revision
   end
@@ -434,7 +429,7 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
       logger:error('Node JS not found: `node` is not executable')
     end
 
-    local revision = repo.revision or get_target_revision(lang)
+    local revision = get_target_revision(lang)
 
     local maybe_local_path = fs.normalize(repo.url)
     local from_local_path = vim.fn.isdirectory(maybe_local_path) == 1
