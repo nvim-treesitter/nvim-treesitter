@@ -4,16 +4,15 @@ This document lists the planned and finished changes in this rewrite towards [Nv
 
 ## TODO
 
-- [ ] **`query_predicates.lua`:** upstream/remove
-- [ ] **`parsers.lua`:** assign tiers
-- [ ] **`parsers.lua`:** modularize?
 - [ ] **`locals.lua`:** move to `nvim-treesitter-refactor`?
+- [ ] **`parsers.lua`:** include revision? (<https://stackoverflow.com/questions/64260981>)
 - [ ] **update-lockfile:** allow specifying version in addition to commit hash (for Tier 1)
 - [ ] **update-lockfile:** one commit per parser/tier?
+- [ ] **tests:** fix, update, extend (cover all Tier 1 languages)
 - [ ] **documentation:** consolidate, autogenerate?
 - [ ] **documentation:** migration guide
 - [ ] **textobjects:** include simple(!) function, queries? (check Helix)
-- [ ] **downstream:** adapt to breaking changes (`nvim-treesitter-textobjects`, `nvim-treesitter-refactor`)
+- [ ] **downstream:** adapt to breaking changes (`nvim-treesitter-refactor`)
 
 ## DONE
 
