@@ -12,6 +12,7 @@ local filetypes = {
   git_rebase = { 'gitrebase' },
   glimmer = { 'handlebars', 'html.handlebars' },
   godot_resource = { 'gdresource' },
+  haskell_persistent = { 'haskellpersistent' },
   html = { 'html_tags' },
   janet_simple = { 'janet' },
   javascript = { 'javascript', 'javascriptreact', 'ecma', 'jsx' },
