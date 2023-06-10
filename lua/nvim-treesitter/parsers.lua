@@ -1,7 +1,6 @@
 ---@class InstallInfo
 ---@field url string
 ---@field branch string|nil
----@field revision string|nil
 ---@field files string[]
 ---@field generate_requires_npm boolean|nil
 ---@field requires_generate_from_grammar boolean|nil
@@ -17,7 +16,7 @@
 
 local M = {}
 
-M.tiers = { 'core', 'stable', 'community', 'unstable' }
+M.tiers = { 'stable', 'core', 'community', 'unmaintained' }
 
 ---@type table<string,ParserInfo>
 M.configs = {
@@ -27,6 +26,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@briot' },
+    tier = 3,
   },
 
   agda = {
@@ -35,6 +35,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
     },
     maintainers = { '@Decodetalkers' },
+    tier = 3,
   },
 
   arduino = {
@@ -44,6 +45,7 @@ M.configs = {
     },
     maintainers = { '@ObserverOfTime' },
     requires = { 'cpp' },
+    tier = 2,
   },
 
   astro = {
@@ -53,6 +55,7 @@ M.configs = {
     },
     maintainers = { '@virchau13' },
     requires = { 'html', 'html_tags' },
+    tier = 3,
   },
 
   awk = {
@@ -60,6 +63,7 @@ M.configs = {
       url = 'https://github.com/Beaglefoot/tree-sitter-awk',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
+    tier = 4,
   },
 
   bash = {
@@ -68,6 +72,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
     },
     maintainers = { '@TravonteD' },
+    tier = 3,
   },
 
   bass = {
@@ -76,6 +81,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   beancount = {
@@ -84,6 +90,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
     },
     maintainers = { '@polarmutex' },
+    tier = 3,
   },
 
   bibtex = {
@@ -92,7 +99,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@theHamsta', '@clason' },
-    tier = 3,
+    tier = 2,
   },
 
   bicep = {
@@ -101,6 +108,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   blueprint = {
@@ -127,6 +135,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@Luxed' },
+    tier = 3,
   },
 
   capnp = {
@@ -135,6 +144,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   chatito = {
@@ -143,6 +153,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@ObserverOfTime' },
+    tier = 2,
   },
 
   clojure = {
@@ -151,6 +162,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@sogaiu' },
+    tier = 3,
   },
 
   cmake = {
@@ -159,6 +171,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
     },
     maintainers = { '@uyha' },
+    tier = 4,
   },
 
   comment = {
@@ -177,6 +190,7 @@ M.configs = {
       generate_requires_npm = true,
     },
     maintainers = { '@theHamsta' },
+    tier = 2,
   },
 
   cooklang = {
@@ -185,6 +199,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
     },
     maintainers = { '@addcninblue' },
+    tier = 3,
   },
 
   corn = {
@@ -202,6 +217,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   cpp = {
@@ -212,6 +228,7 @@ M.configs = {
     },
     maintainers = { '@theHamsta' },
     requires = { 'c' },
+    tier = 1,
   },
 
   css = {
@@ -220,6 +237,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@TravonteD' },
+    tier = 3,
   },
 
   cuda = {
@@ -230,6 +248,7 @@ M.configs = {
     },
     maintainers = { '@theHamsta' },
     requires = { 'cpp' },
+    tier = 2,
   },
 
   cue = {
@@ -238,6 +257,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   d = {
@@ -246,8 +266,8 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
       requires_generate_from_grammar = true,
     },
-    tier = 4,
     maintainers = { '@nawordar' },
+    tier = 4,
   },
 
   dart = {
@@ -256,6 +276,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@akinsho' },
+    tier = 3,
   },
 
   devicetree = {
@@ -264,6 +285,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@jedrzejboczar' },
+    tier = 3,
   },
 
   dhall = {
@@ -272,6 +294,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   diff = {
@@ -280,6 +303,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@gbprod' },
+    tier = 3,
   },
 
   dockerfile = {
@@ -288,6 +312,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@camdencheek' },
+    tier = 3,
   },
 
   dot = {
@@ -296,6 +321,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@rydesun' },
+    tier = 3,
   },
 
   ebnf = {
@@ -311,6 +337,7 @@ M.configs = {
   ecma = {
     maintainers = { '@steelsojka' },
     readme_note = 'queries required by javascript, typescript, tsx, qmljs',
+    tier = 2,
   },
 
   eex = {
@@ -319,6 +346,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@connorlay' },
+    tier = 3,
   },
 
   elixir = {
@@ -327,6 +355,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
     },
     maintainers = { '@connorlay' },
+    tier = 3,
   },
 
   elm = {
@@ -335,6 +364,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
     },
     maintainers = { '@zweimach' },
+    tier = 4,
   },
 
   elsa = {
@@ -343,6 +373,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@glapa-grossklag', '@amaanq' },
+    tier = 2,
   },
 
   elvish = {
@@ -351,6 +382,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@ckafi' },
+    tier = 3,
   },
 
   embedded_template = {
@@ -367,6 +399,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@filmor' },
+    tier = 3,
   },
 
   fennel = {
@@ -375,6 +408,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@TravonteD' },
+    tier = 3,
   },
 
   firrtl = {
@@ -383,6 +417,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   fish = {
@@ -391,6 +426,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@ram02z' },
+    tier = 3,
   },
 
   foam = {
@@ -408,6 +444,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   fsh = {
@@ -416,6 +453,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@mgramigna' },
+    tier = 3,
   },
 
   func = {
@@ -424,6 +462,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   fusion = {
@@ -432,6 +471,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@jirgn' },
+    tier = 3,
   },
 
   gdscript = {
@@ -441,6 +481,7 @@ M.configs = {
     },
     maintainers = { '@PrestonKnopp' },
     readme_note = 'Godot',
+    tier = 3,
   },
 
   git_rebase = {
@@ -449,6 +490,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@gbprod' },
+    tier = 3,
   },
 
   gitattributes = {
@@ -457,6 +499,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@ObserverOfTime' },
+    tier = 2,
   },
 
   gitcommit = {
@@ -465,6 +508,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@gbprod' },
+    tier = 3,
   },
 
   git_config = {
@@ -473,7 +517,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
-    readme_note = 'git_config',
+    tier = 2,
   },
 
   gitignore = {
@@ -482,6 +526,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@theHamsta' },
+    tier = 2,
   },
 
   gleam = {
@@ -490,6 +535,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   glimmer = {
@@ -499,6 +545,7 @@ M.configs = {
     },
     maintainers = { '@NullVoxPopuli' },
     readme_note = 'Glimmer and Ember',
+    tier = 3,
   },
 
   glsl = {
@@ -509,6 +556,7 @@ M.configs = {
     },
     maintainers = { '@theHamsta' },
     requires = { 'c' },
+    tier = 2,
   },
 
   go = {
@@ -517,6 +565,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@theHamsta', '@WinWisely268' },
+    tier = 1,
   },
 
   godot_resource = {
@@ -526,6 +575,7 @@ M.configs = {
     },
     maintainers = { '@pierpo' },
     readme_note = 'Godot Resources',
+    tier = 3,
   },
 
   gomod = {
@@ -534,6 +584,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@camdencheek' },
+    tier = 3,
   },
 
   gosum = {
@@ -542,6 +593,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   gowork = {
@@ -550,6 +602,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@omertuc' },
+    tier = 3,
   },
 
   graphql = {
@@ -558,6 +611,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@bkegley' },
+    tier = 3,
   },
 
   hack = {
@@ -574,6 +628,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   haskell = {
@@ -590,6 +645,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
     },
     maintainers = { '@MichaHoffmann' },
+    tier = 3,
   },
 
   heex = {
@@ -598,6 +654,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@connorlay' },
+    tier = 3,
   },
 
   hjson = {
@@ -608,6 +665,7 @@ M.configs = {
     },
     maintainers = { '@winston0410' },
     requires = { 'json' },
+    tier = 3,
   },
 
   hlsl = {
@@ -618,6 +676,7 @@ M.configs = {
     },
     maintainers = { '@theHamsta' },
     requires = { 'cpp' },
+    tier = 2,
   },
 
   hocon = {
@@ -627,11 +686,13 @@ M.configs = {
       generate_requires_npm = true,
     },
     maintainers = { '@antosha417' },
+    tier = 4,
   },
 
   html_tags = {
     maintainers = { '@TravonteD' },
     readme_note = 'queries required by html, astro, vue, svelte',
+    tier = 3,
   },
 
   html = {
@@ -641,6 +702,7 @@ M.configs = {
     },
     maintainers = { '@TravonteD' },
     requires = { 'html_tags' },
+    tier = 3,
   },
 
   htmldjango = {
@@ -659,6 +721,7 @@ M.configs = {
       generate_requires_npm = true,
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   ini = {
@@ -678,6 +741,7 @@ M.configs = {
     },
     maintainers = { '@fab4100' },
     requires = { 'c' },
+    tier = 3,
   },
 
   janet_simple = {
@@ -686,6 +750,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@sogaiu' },
+    tier = 3,
   },
 
   java = {
@@ -694,6 +759,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@p00f' },
+    tier = 3,
   },
 
   javascript = {
@@ -703,6 +769,7 @@ M.configs = {
     },
     maintainers = { '@steelsojka' },
     requires = { 'ecma', 'jsx' },
+    tier = 2,
   },
 
   jq = {
@@ -711,6 +778,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@ObserverOfTime' },
+    tier = 2,
   },
 
   jsdoc = {
@@ -719,6 +787,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@steelsojka' },
+    tier = 2,
   },
 
   json = {
@@ -727,6 +796,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@steelsojka' },
+    tier = 2,
   },
 
   json5 = {
@@ -735,6 +805,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@Joakker' },
+    tier = 3,
   },
 
   jsonc = {
@@ -745,6 +816,7 @@ M.configs = {
     },
     maintainers = { '@WhyNotHugo' },
     requires = { 'json' },
+    tier = 3,
   },
 
   jsonnet = {
@@ -753,11 +825,13 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@nawordar' },
+    tier = 3,
   },
 
   jsx = {
     maintainers = { '@steelsojka' },
     readme_note = 'queries required by javascript, tsx',
+    tier = 2,
   },
 
   julia = {
@@ -766,7 +840,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@theHamsta' },
-    tier = 3,
+    tier = 2,
   },
 
   kdl = {
@@ -775,6 +849,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   kotlin = {
@@ -783,6 +858,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@SalBakraa' },
+    tier = 3,
   },
 
   lalrpop = {
@@ -791,6 +867,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@traxys' },
+    tier = 3,
   },
 
   latex = {
@@ -799,7 +876,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@theHamsta', '@clason' },
-    tier = 3,
+    tier = 2,
   },
 
   ledger = {
@@ -808,6 +885,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@cbarrete' },
+    tier = 3,
   },
 
   llvm = {
@@ -816,6 +894,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@benwilliamgraham' },
+    tier = 3,
   },
 
   lua = {
@@ -833,6 +912,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   luap = {
@@ -842,6 +922,7 @@ M.configs = {
     },
     maintainers = { '@amaanq' },
     readme_note = 'Lua patterns',
+    tier = 2,
   },
 
   luau = {
@@ -851,6 +932,7 @@ M.configs = {
     },
     maintainers = { '@amaanq' },
     requires = { 'lua' },
+    tier = 2,
   },
 
   m68k = {
@@ -859,6 +941,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@grahambates' },
+    tier = 3,
   },
 
   make = {
@@ -867,6 +950,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@lewis6991' },
+    tier = 2,
   },
 
   markdown = {
@@ -898,6 +982,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   menhir = {
@@ -906,6 +991,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
     },
     maintainers = { '@Kerl13' },
+    tier = 3,
   },
 
   mermaid = {
@@ -922,6 +1008,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@Decodetalkers' },
+    tier = 3,
   },
 
   mlir = {
@@ -948,6 +1035,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@alemuller' },
+    tier = 3,
   },
 
   nix = {
@@ -956,6 +1044,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@leo60228' },
+    tier = 3,
   },
 
   objc = {
@@ -965,6 +1054,7 @@ M.configs = {
     },
     maintainers = { '@amaanq' },
     requires = { 'c' },
+    tier = 2,
   },
 
   ocaml = {
@@ -974,6 +1064,7 @@ M.configs = {
       location = 'ocaml',
     },
     maintainers = { '@undu' },
+    tier = 3,
   },
 
   ocaml_interface = {
@@ -984,6 +1075,7 @@ M.configs = {
     },
     maintainers = { '@undu' },
     requires = { 'ocaml' },
+    tier = 3,
   },
 
   ocamllex = {
@@ -993,6 +1085,7 @@ M.configs = {
       requires_generate_from_grammar = true,
     },
     maintainers = { '@undu' },
+    tier = 3,
   },
 
   odin = {
@@ -1001,6 +1094,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   org = {
@@ -1017,6 +1111,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@Isopod' },
+    tier = 3,
   },
 
   passwd = {
@@ -1025,6 +1120,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 3,
   },
 
   perl = {
@@ -1033,6 +1129,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
     },
     maintainers = { '@lcrownover' },
+    tier = 3,
   },
 
   php = {
@@ -1041,6 +1138,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
     },
     maintainers = { '@tk-shirasaka' },
+    tier = 3,
   },
 
   phpdoc = {
@@ -1059,6 +1157,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@leo60228' },
+    tier = 3,
   },
 
   po = {
@@ -1067,6 +1166,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   poe_filter = {
@@ -1085,6 +1185,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq', '@mfelsche' },
+    tier = 2,
   },
 
   prisma = {
@@ -1093,6 +1194,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@elianiva' },
+    tier = 3,
   },
 
   proto = {
@@ -1101,6 +1203,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@fsouza' },
+    tier = 3,
   },
 
   prql = {
@@ -1109,6 +1212,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@matthias-Q' },
+    tier = 2,
   },
 
   pug = {
@@ -1126,6 +1230,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   python = {
@@ -1134,6 +1239,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
     },
     maintainers = { '@stsewd', '@theHamsta' },
+    tier = 1,
   },
 
   ql = {
@@ -1142,6 +1248,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@pwntester' },
+    tier = 3,
   },
 
   qmldir = {
@@ -1150,6 +1257,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   qmljs = {
@@ -1159,6 +1267,7 @@ M.configs = {
     },
     maintainers = { '@Decodetalkers' },
     requires = { 'ecma' },
+    tier = 3,
   },
 
   query = {
@@ -1177,6 +1286,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
     },
     maintainers = { '@echasnovski' },
+    tier = 3,
   },
 
   racket = {
@@ -1185,6 +1295,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
     },
     maintainers = { '@6cdh' },
+    tier = 3,
   },
 
   rasi = {
@@ -1193,6 +1304,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@Fymyte' },
+    tier = 3,
   },
 
   regex = {
@@ -1201,6 +1313,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@theHamsta' },
+    tier = 1,
   },
 
   rego = {
@@ -1209,6 +1322,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@FallenAngel97' },
+    tier = 3,
   },
 
   rnoweb = {
@@ -1217,6 +1331,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@bamonroe' },
+    tier = 3,
   },
 
   ron = {
@@ -1225,6 +1340,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   rst = {
@@ -1233,6 +1349,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@stsewd' },
+    tier = 2,
   },
 
   ruby = {
@@ -1241,6 +1358,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
     },
     maintainers = { '@TravonteD' },
+    tier = 3,
   },
 
   rust = {
@@ -1249,6 +1367,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   scala = {
@@ -1257,6 +1376,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@stevanmilic' },
+    tier = 3,
   },
 
   scheme = {
@@ -1265,6 +1385,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@6cdh' },
+    tier = 3,
   },
 
   scss = {
@@ -1292,6 +1413,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   smithy = {
@@ -1300,6 +1422,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq', '@keynmol' },
+    tier = 2,
   },
 
   solidity = {
@@ -1308,6 +1431,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   sparql = {
@@ -1316,6 +1440,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@BonaBeavis' },
+    tier = 3,
   },
 
   sql = {
@@ -1325,6 +1450,7 @@ M.configs = {
       branch = 'gh-pages',
     },
     maintainers = { '@derekstride' },
+    tier = 3,
   },
 
   squirrel = {
@@ -1333,6 +1459,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   starlark = {
@@ -1341,6 +1468,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   supercollider = {
@@ -1349,6 +1477,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@madskjeldgaard' },
+    tier = 3,
   },
 
   surface = {
@@ -1357,6 +1486,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@connorlay' },
+    tier = 3,
   },
 
   svelte = {
@@ -1366,6 +1496,7 @@ M.configs = {
     },
     maintainers = { '@elianiva' },
     requires = { 'html_tags' },
+    tier = 3,
   },
 
   swift = {
@@ -1375,6 +1506,7 @@ M.configs = {
       requires_generate_from_grammar = true,
     },
     maintainers = { '@alex-pinkus' },
+    tier = 3,
   },
 
   sxhkdrc = {
@@ -1383,15 +1515,16 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@RaafatTurki' },
+    tier = 3,
   },
 
   t32 = {
     install_info = {
       url = 'https://codeberg.org/xasc/tree-sitter-t32',
       files = { 'src/parser.c', 'src/scanner.c' },
-      revision = '1dd98248b01e4a3933c1b85b58bab0875e2ba437',
     },
     maintainers = { '@xasc' },
+    tier = 4,
   },
 
   tablegen = {
@@ -1400,6 +1533,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
+    tier = 2,
   },
 
   teal = {
@@ -1409,6 +1543,7 @@ M.configs = {
       requires_generate_from_grammar = true,
     },
     maintainers = { '@euclidianAce' },
+    tier = 3,
   },
 
   terraform = {
@@ -1428,6 +1563,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq', '@duskmoon314' },
+    tier = 2,
   },
 
   tiger = {
@@ -1436,6 +1572,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@ambroisie' },
+    tier = 3,
   },
 
   tlaplus = {
@@ -1444,6 +1581,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
     },
     maintainers = { '@ahelwer', '@susliko' },
+    tier = 3,
   },
 
   todotxt = {
@@ -1462,6 +1600,7 @@ M.configs = {
       generate_requires_npm = true,
     },
     maintainers = { '@tk-shirasaka' },
+    tier = 3,
   },
 
   tsx = {
@@ -1473,6 +1612,7 @@ M.configs = {
     },
     maintainers = { '@steelsojka' },
     requires = { 'ecma', 'jsx', 'typescript' },
+    tier = 2,
   },
 
   turtle = {
@@ -1481,6 +1621,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@BonaBeavis' },
+    tier = 3,
   },
 
   twig = {
@@ -1489,6 +1630,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@gbprod' },
+    tier = 3,
   },
 
   typescript = {
@@ -1500,6 +1642,7 @@ M.configs = {
     },
     maintainers = { '@steelsojka' },
     requires = { 'ecma' },
+    tier = 2,
   },
 
   ungrammar = {
@@ -1508,6 +1651,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@Philipp-M', '@amaanq' },
+    tier = 3,
   },
 
   usd = {
@@ -1516,6 +1660,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@ColinKennedy' },
+    tier = 3,
   },
 
   uxntal = {
@@ -1525,6 +1670,7 @@ M.configs = {
     },
     maintainers = { '@amaanq' },
     readme_note = 'uxn tal',
+    tier = 2,
   },
 
   v = {
@@ -1534,6 +1680,7 @@ M.configs = {
       location = 'tree_sitter_v',
     },
     maintainers = { '@kkharji' },
+    tier = 3,
   },
 
   vala = {
@@ -1542,6 +1689,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@Prince781' },
+    tier = 3,
   },
 
   verilog = {
@@ -1550,6 +1698,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@zegervdv' },
+    tier = 3,
   },
 
   vhs = {
@@ -1558,6 +1707,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@caarlos0' },
+    tier = 3,
   },
 
   vim = {
@@ -1585,6 +1735,7 @@ M.configs = {
     },
     maintainers = { '@WhyNotHugo' },
     requires = { 'html_tags' },
+    tier = 3,
   },
 
   wgsl = {
@@ -1593,6 +1744,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@szebniok' },
+    tier = 3,
   },
 
   wgsl_bevy = {
@@ -1602,6 +1754,7 @@ M.configs = {
       generate_requires_npm = true,
     },
     maintainers = { '@theHamsta' },
+    tier = 2,
   },
 
   yaml = {
@@ -1610,6 +1763,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.cc' },
     },
     maintainers = { '@stsewd' },
+    tier = 2,
   },
 
   yang = {
@@ -1618,6 +1772,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@Hubro' },
+    tier = 3,
   },
 
   yuck = {
@@ -1626,6 +1781,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@Philipp-M', '@amaanq' },
+    tier = 3,
   },
 
   zig = {
@@ -1634,6 +1790,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@maxxnino' },
+    tier = 3,
   },
 }
 
