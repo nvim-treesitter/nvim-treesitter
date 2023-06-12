@@ -3,7 +3,7 @@ name: Linting and style checking
 on:
   pull_request:
     branches:
-      - "master"
+      - "main"
 
 jobs:
   luacheck:
@@ -37,7 +37,7 @@ jobs:
     name: Lint queries
     runs-on: ubuntu-latest
     env:
-      NVIM_TAG: stable
+      NVIM_TAG: nightly
     steps:
       - uses: actions/checkout@v4
       - name: Prepare
