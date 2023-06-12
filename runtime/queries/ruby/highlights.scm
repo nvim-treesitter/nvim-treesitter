@@ -164,9 +164,6 @@
 (keyword_parameter
   (identifier) @variable.parameter)
 
-; TODO: Re-enable this once it is supported
-; ((identifier) @function
-;  (#is-not? local))
 ; Literals
 [
   (string)
