@@ -1,3 +1,4 @@
+; TODO(clason): use @comment.{error,warning,hint,info,ok} -- cf. Helix
 (_) @spell
 
 ((tag
