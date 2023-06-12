@@ -1,0 +1,37 @@
+local filetypes = {
+  bash = { 'sh', 'PKGBUILD' },
+  bibtex = { 'bib' },
+  c_sharp = { 'cs' },
+  commonlisp = { 'lisp' },
+  devicetree = { 'dts' },
+  diff = { 'gitdiff' },
+  eex = { 'eelixir' },
+  embedded_template = { 'eruby' },
+  git_config = { 'gitconfig' },
+  git_rebase = { 'gitrebase' },
+  glimmer = { 'handlebars', 'html.handlebars' },
+  godot_resource = { 'gdresource' },
+  html = { 'html_tags' },
+  janet_simple = { 'janet' },
+  javascript = { ' javascriptreact', 'ecma', 'jsx' },
+  latex = { 'tex', 'cls', 'sty' },
+  m68k = { 'asm68k' },
+  markdown = { 'pandoc', 'quarto', 'rmd' },
+  ocaml_interface = { 'ocamlinterface' },
+  poe_filter = { 'poefilter' },
+  qmljs = { 'qml' },
+  starlark = { 'bzl' },
+  surface = { 'sface' },
+  t32 = { 'trace32' },
+  tlaplus = { 'tla' },
+  tsx = { 'typescriptreact', 'typescript.tsx' },
+  uxntal = { 'tal' },
+  v = { 'vlang' },
+  verilog = { 'sysverilog' },
+  vhs = { 'tape' },
+  vimdoc = { 'help' },
+}
+
+for lang, ft in pairs(filetypes) do
+  vim.treesitter.language.register(lang, ft)
+end
