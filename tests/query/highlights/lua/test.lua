@@ -14,5 +14,5 @@ next(a)
 -- ^ @function.builtin
 
 -- Checking for incorrect hlgroup of injected luap
-string.match(s, "\0%d[^\n]+")
---                       ^ @!constant
+string.match(s, '\0%d[^\n]+')
+--                       ^ !constant
