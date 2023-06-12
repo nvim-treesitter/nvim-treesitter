@@ -27,7 +27,7 @@ jobs:
         run: |
           git config user.email "actions@github"
           git config user.name "Github Actions"
-          ./nvim.appimage --headless -c "luafile ./scripts/update-readme.lua" -c "q" || echo "Needs update"
+          ./nvim.appimage -l ./scripts/update-readme.lua || echo "Needs update"
           git add README.md
           git commit -m "Update README" || echo 'No commit necessary!'
           git clean -xf
