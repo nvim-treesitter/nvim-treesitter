@@ -84,4 +84,4 @@ jobs:
         run: cp -r ~/AppData/Local/nvim/pack/nvim-treesitter/start/nvim-treesitter/parser/* parser
 
       - name: Check query files
-        run: $NVIM -l scripts/check-queries.lua
+        run: ./scripts/check-queries.lua
