@@ -111,7 +111,16 @@ end
 ---@return boolean
 local function needs_update(lang)
   local revision = get_target_revision(lang)
-  return not revision or revision ~= get_installed_revision(lang)
+  if revision then
+    return revision ~= get_installed_revision(lang)
+  end
+
+  -- No revision. Check the queries link to the same place
+
+  local queries = fs.joinpath(config.get_install_dir('queries'), lang)
+  local queries_src = M.get_package_path('runtime', 'queries', lang)
+
+  return uv.fs_realpath(queries) ~= uv.fs_realpath(queries_src)
 end
 
 ---
