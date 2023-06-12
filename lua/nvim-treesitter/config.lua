@@ -86,7 +86,7 @@ end
 
 ---Normalize languages
 ---@param languages? string[]|string
----@param skip? table
+---@param skip? { ignored: boolean, missing: boolean, installed: boolean, dependencies: boolean }
 ---@return string[]
 function M.norm_languages(languages, skip)
   if not languages then
@@ -103,7 +103,6 @@ function M.norm_languages(languages, skip)
     end
     languages = parsers.get_available()
   end
-  --TODO(clason): skip and warn on unavailable parser
 
   -- keep local to avoid leaking parsers module
   local function expand_tiers(list)
@@ -141,6 +140,11 @@ function M.norm_languages(languages, skip)
       return vim.list_contains(installed, v)
     end, languages) --[[@as string[] ]]
   end
+
+  languages = vim.iter.filter(function(v)
+    -- TODO(lewis6991): warn of any unknown parsers?
+    return parsers.configs[v] ~= nil
+  end, languages) --[[@as string[] ]]
 
   if not (skip and skip.dependencies) then
     for _, lang in pairs(languages) do
