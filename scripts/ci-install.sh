@@ -2,6 +2,8 @@
 
 set -e
 
+NVIM_TAG=${NVIM_TAG-nightly}
+
 os=$(uname -s)
 if [[ $os == Linux ]]; then
   wget https://github.com/neovim/neovim/releases/download/${NVIM_TAG}/nvim-linux-x86_64.tar.gz
@@ -18,7 +20,7 @@ elif [[ $os == Darwin ]]; then
   mkdir -p ~/.local/share/nvim/site/pack/nvim-treesitter/start
   ln -s "$PWD" ~/.local/share/nvim/site/pack/nvim-treesitter/start
 else
-  curl -L https://github.com/neovim/neovim/releases/download/${NVIM_TAG}/nvim-win64.zip -o nvim-win64.zip
+  curl -L "https://github.com/neovim/neovim/releases/download/${NVIM_TAG}/nvim-win64.zip" -o nvim-win64.zip
   unzip nvim-win64
   mkdir -p ~/AppData/Local/nvim/pack/nvim-treesitter/start
   mkdir -p ~/AppData/Local/nvim-data
