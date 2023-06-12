@@ -136,10 +136,6 @@
 (block_parameter (identifier) @parameter)
 (keyword_parameter (identifier) @parameter)
 
-; TODO: Re-enable this once it is supported
-; ((identifier) @function
-;  (#is-not? local))
-
 ; Literals
 
 [
