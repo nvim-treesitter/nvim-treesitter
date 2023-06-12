@@ -2,20 +2,14 @@
 ((function_call
   function: (identifier) @function.builtin)
   (#any-of? @function.builtin "chr" "concat" "exit" "flush" "getchar" "not" "ord" "print" "print_err" "print_int" "size" "strcmp" "streq" "substring")
-  ; FIXME: not supported by neovim
-  ; (#is-not? local)
   )
 
 ((type_identifier) @type.builtin
   (#any-of? @type.builtin "int" "string" "Object")
-  ; FIXME: not supported by neovim
-  ; (#is-not? local)
   )
 
 ((identifier) @variable.builtin
   (#eq? @variable.builtin "self")
-  ; FIXME: not supported by neovim
-  ; (#is-not? local)
   )
 ; }}}
 
