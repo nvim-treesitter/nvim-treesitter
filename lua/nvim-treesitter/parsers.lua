@@ -926,10 +926,10 @@ list.markdown_inline = {
 
 list.matlab = {
   install_info = {
-    url = "https://github.com/mstanciu552/tree-sitter-matlab",
-    files = { "src/parser.c" },
+    url = "https://github.com/acristoffers/tree-sitter-matlab",
+    files = { "src/parser.c", "src/scanner.c" },
   },
-  maintainers = { "@amaanq" },
+  maintainers = { "@acristoffers" },
 }
 
 list.menhir = {
