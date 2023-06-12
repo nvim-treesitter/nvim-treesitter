@@ -69,7 +69,7 @@ ecma (queries only)[^ecma] | core | `HFIJL` |  |  | @steelsojka
 [gitcommit](https://github.com/gbprod/tree-sitter-gitcommit) | community | `H  J ` |  |  | @gbprod
 [gitignore](https://github.com/shunsambongi/tree-sitter-gitignore) | core | `H    ` |  |  | @theHamsta
 [gleam](https://github.com/gleam-lang/tree-sitter-gleam) | core | `HFIJL` |  |  | @amaanq
-[glimmer](https://github.com/alexlafroscia/tree-sitter-glimmer)[^glimmer] | community | `H    ` |  |  | @NullVoxPopuli
+[glimmer](https://github.com/alexlafroscia/tree-sitter-glimmer)[^glimmer] | community | `HFI L` |  |  | @NullVoxPopuli
 [glsl](https://github.com/theHamsta/tree-sitter-glsl) | core | `HFIJL` |  | ✓ | @theHamsta
 [go](https://github.com/tree-sitter/tree-sitter-go) | stable | `HFIJL` |  |  | @theHamsta, @WinWisely268
 [godot_resource](https://github.com/PrestonKnopp/tree-sitter-godot-resource)[^godot_resource] | community | `HF  L` |  |  | @pierpo
