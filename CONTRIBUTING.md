@@ -5,10 +5,7 @@ First of all, thank you very much for contributing to `nvim-treesitter`.
 If you haven't already, you should really come and reach out to us on our
 [Matrix channel], so we can help you with any question you might have!
 
-As you know, `nvim-treesitter` is roughly split in two parts:
-
-- Parser configurations : for various things like `locals`, `highlights`
-- What we like to call _modules_ : tiny Lua modules that provide a given feature, based on parser configurations
+The main goal of `nvim-treesitter` is to provide a framework to easily install parsers and queries.
 
 Depending on which part of the plugin you want to contribute to, please read the appropriate section.
 
@@ -25,25 +22,9 @@ cargo install stylua
 ln -s ../../scripts/pre-push .git/hooks/pre-push
 ```
 
-## Adding new modules
-
-If you want to see a new functionality added to `nvim-treesitter` feel free to first open an issue
-to that we can track our solution!
-Thus far, there is basically two types of modules:
-
-- Little modules (like `incremental selection`) that are built in `nvim-treesitter`, we call them
-  `builtin modules`.
-- Bigger modules (like `completion-treesitter`, or `nvim-tree-docs`), or modules that integrate
-  with other plugins, that we call `remote modules`.
-
-In any case, you can build your own module! To help you started in the process, we have a template
-repository designed to build new modules [here](https://github.com/nvim-treesitter/module-template).
-Feel free to use it, and contact us over on our
-on the "Neovim tree-sitter" [Matrix channel].
-
 ## Parser configurations
 
-Contributing to parser configurations is basically modifying one of the `queries/*/*.scm`.
+Contributing to parser configurations is basically modifying one of the `runtime/queries/*/*.scm`.
 Each of these `scheme` files contains a _tree-sitter query_ for a given purpose.
 Before going any further, we highly suggest that you [read more about tree-sitter queries](https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries).
 
@@ -60,13 +41,11 @@ For these types there is a _norm_ you will have to follow so that features work 
 Here are some global advices:
 
 - If your language is listed [here](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages),
-  you can install the [playground plugin](https://github.com/nvim-treesitter/playground).
-- If your language is listed [here](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages),
   you can debug and experiment with your queries there.
 - If not, you should consider installing the [tree-sitter CLI](https://github.com/tree-sitter/tree-sitter/tree/master/cli),
   you should then be able to open a local playground using `tree-sitter build-wasm && tree-sitter web-ui` within the
   parsers repo.
-- Examples of queries can be found in [queries/](queries/)
+- Examples of queries can be found in [runtime/queries/](runtime/queries/)
 - Matches in the bottom will override queries that are above of them.
 
 #### Inheriting languages
