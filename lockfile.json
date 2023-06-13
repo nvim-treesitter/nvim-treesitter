@@ -9,7 +9,7 @@
     "revision": "833b53df97143bc46e014608dee9f64f78d7473c"
   },
   "astro": {
-    "revision": "d111ae5ebbd30ffeaf58a3bebd2eb99682c0f6a3"
+    "revision": "a4535d1530558866a543c1660c90c57fbf2fd709"
   },
   "awk": {
     "revision": "8eaa762d05cc67c0e2cc53a0a71750b3c16733c2"
@@ -198,7 +198,7 @@
     "revision": "3d4af179414525a35dd069ba0208c9b71093d8b3"
   },
   "haskell": {
-    "revision": "e002d60072c73ab09bafedc82d3e35a4349ca6c0"
+    "revision": "d2345d17ccf06253d63aa9a2e09ac9d7b4ca3c8d"
   },
   "hcl": {
     "revision": "becebebd3509c02e871c99be55556269be1def1b"
@@ -429,13 +429,13 @@
     "revision": "c7c2b24918e231072af2d10c03b4893818de9d5d"
   },
   "ruby": {
-    "revision": "2edbd437ee901b8fa95861ec538e56efe3ebd127"
+    "revision": "f257f3f57833d584050336921773738a3fd8ca22"
   },
   "rust": {
     "revision": "0a70e15da977489d954c219af9b50b8a722630ee"
   },
   "scala": {
-    "revision": "199cf060eec9e0d427ae3c6fe46de2c830d0c1e9"
+    "revision": "3c5e57a55b7d80657ef2e1dffaa7a58ffb9b8523"
   },
   "scheme": {
     "revision": "0c763bd5f85b18e354bc338d17cf1daa23b478b1"
