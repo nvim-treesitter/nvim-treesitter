@@ -36,7 +36,7 @@
     "revision": "0906255f8de1d319b8ec682ac8c43e7d2524b4fa"
   },
   "c_sharp": {
-    "revision": "aaafc3d75f058ca5fe639b7ed5829964a3ca4575"
+    "revision": "cfdad1a01ce7cae6ad6ddd5f338740bc6e08690a"
   },
   "capnp": {
     "revision": "7d5fa4e94d3643ec15750106113be0d40f9fc1bb"
@@ -81,7 +81,7 @@
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
   },
   "dart": {
-    "revision": "921149688d70f163d650f26c23f1bc42fac5d303"
+    "revision": "e398400a0b785af3cf571f5a57eccab242f0cdf9"
   },
   "devicetree": {
     "revision": "d2cc332aeb814ea40e1e34ed6b9446324b32612a"
@@ -540,7 +540,7 @@
     "revision": "4457145e795b363f072463e697dfe2f6973c9a52"
   },
   "vhs": {
-    "revision": "77fd8a8fcc0b4788e0b1569b1a4fa070b36add28"
+    "revision": "fec6e981b7795b68262ddf229d73d2aa03a89b9a"
   },
   "vim": {
     "revision": "26b1aea3b3a5dae31f784a1204205fd57f2b82b5"
