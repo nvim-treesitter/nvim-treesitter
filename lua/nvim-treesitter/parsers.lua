@@ -2491,7 +2491,8 @@ function M.get_available(tier)
   end
   if vim.fn.executable('tree-sitter') == 0 or vim.fn.executable('node') == 0 then
     parsers = vim.iter.filter(function(p)
-      return not M.configs[p].install_info.requires_generate_from_grammar
+      return M.configs[p].install_info
+        and not M.configs[p].install_info.requires_generate_from_grammar
     end, parsers) --[[@as string[] ]]
   end
   return parsers
