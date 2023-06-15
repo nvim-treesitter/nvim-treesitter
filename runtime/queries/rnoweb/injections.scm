@@ -1,12 +1,7 @@
-((latex) @injection.content
- (#set! injection.language "latex")
- (#set! injection.combined))
-
+(latex) @latex @combined
 (rchunk
-  (renv_content) @injection.content
-  (#set! injection.language "r")
-  (#set! injection.combined))
-
+	(renv_content) @r @combined
+)
 (rinline
-  (renv_content) @injection.content
-  (#set! injection.language "r"))
+	(renv_content) @r
+)

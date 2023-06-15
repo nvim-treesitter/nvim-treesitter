@@ -1,11 +1,7 @@
-((comment) @injection.content 
- (#set! injection.language "comment"))
+(comment) @comment
 
-((json_body) @injection.content
- (#set! injection.language "json"))
+(json_body) @json
 
-; ((xml_body) @injection.content
-;  (#set! injection.language "xml"))
+; (xml_body) @xml
 
-; ((graphql_body) @injection.content 
-;  (#set! injection.language "graphql")) ; Not used as of now..
+; (graphql_body) @graphql Not used as of now..

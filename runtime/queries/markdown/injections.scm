@@ -1,28 +1,18 @@
 (fenced_code_block
   (info_string
     (language) @_lang)
-  (code_fence_content) @injection.content
-
   (#not-match? @_lang "elm") ; prevent segfault when using elm parser
-  (#set-lang-from-info-string! @_lang))
+  (code_fence_content)
+    @content
+    (#set-lang-from-info-string! @_lang)
+    (#exclude_children! @content))
 
-((html_block) @injection.content 
- (#set! injection.language "html")
- (#set! injection.combined)
- (#set! injection.include-children))
+((html_block) @html @combined)
 
-((minus_metadata) @injection.content 
- (#set! injection.language "yaml") 
- (#offset! @injection.content 1 0 -1 0)
- (#set! injection.include-children))
-
-((plus_metadata) @injection.content 
- (#set! injection.language "toml") 
- (#offset! @injection.content 1 0 -1 0)
- (#set! injection.include-children))
+((minus_metadata) @yaml (#offset! @yaml 1 0 -1 0))
+((plus_metadata) @toml (#offset! @toml 1 0 -1 0))
 
 ([
   (inline)
   (pipe_table_cell)
- ] @injection.content
- (#set! injection.language "markdown_inline"))
+ ] @markdown_inline (#exclude_children! @markdown_inline))

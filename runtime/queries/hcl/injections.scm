@@ -1,7 +1,7 @@
-((comment) @injection.content
- (#set! injection.language "comment"))
+(comment) @comment
 
 (heredoc_template
-  (template_literal) @injection.content
-  (heredoc_identifier) @injection.language
-  (#downcase! @injection.language))
+  (template_literal) @content
+  (heredoc_identifier) @language
+  (#set! "language" @language)
+  (#downcase! "language"))

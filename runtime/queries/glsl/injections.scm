@@ -1,5 +1,3 @@
-((preproc_arg) @injection.content 
- (#set! injection.language "glsl"))
+(preproc_arg) @glsl
 
-((comment) @injection.content 
- (#set! injection.language "comment"))
+(comment) @comment

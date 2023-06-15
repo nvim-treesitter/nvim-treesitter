@@ -1,5 +1,2 @@
-((diff) @injection.content
- (#set! injection.language "diff"))
-
-((rebase_command) @injection.content 
- (#set! injection.language "git_rebase"))
+((diff) @diff (#exclude_children! @diff))
+(rebase_command) @git_rebase

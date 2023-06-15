@@ -1,5 +1,3 @@
-((preproc_arg) @injection.content
- (#set! injection.language "arduino"))
+(preproc_arg) @arduino
 
-((comment) @injection.content 
- (#set! injection.language "comment"))
+(comment) @comment

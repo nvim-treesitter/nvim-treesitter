@@ -1,5 +1,3 @@
-((preproc_arg) @injection.content 
- (#set! injection.language "cuda"))
+(preproc_arg) @cuda
 
-((comment) @injection.content 
- (#set! injection.language "comment"))
+(comment) @comment

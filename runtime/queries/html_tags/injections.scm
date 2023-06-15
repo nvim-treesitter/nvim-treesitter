@@ -2,84 +2,73 @@
 ; <style blocking> ...</style>
 ; Add "lang" to predicate check so that vue/svelte can inherit this
 ; without having this element being captured twice
-((style_element
+(
+  (style_element
     (start_tag) @_no_type_lang
-    (raw_text) @injection.content)
-  (#not-lua-match? @_no_type_lang "%slang%s*=")
-  (#not-lua-match? @_no_type_lang "%stype%s*=")
-  (#set! injection.language "css")
-  (#set! injection.include-children))
+      (#not-lua-match? @_no_type_lang "%slang%s*=")
+      (#not-lua-match? @_no_type_lang "%stype%s*=")
+    (raw_text) @css))
 
-((style_element
-   (start_tag
-     (attribute
-       (attribute_name) @_type
-       (quoted_attribute_value (attribute_value) @_css)))
-   (raw_text) @injection.content)
- (#eq? @_type "type")
- (#eq? @_css "text/css")
- (#set! injection.language "css")
- (#set! injection.include-children))
+(
+  (style_element
+    (start_tag
+      (attribute
+        (attribute_name) @_type
+        (quoted_attribute_value (attribute_value) @_css)))
+    (raw_text) @css)
+  (#eq? @_type "type")
+  (#eq? @_css "text/css")
+)
 
 ; <script>...</script>
 ; <script defer>...</script>
-((script_element
-   (start_tag) @_no_type_lang
-   (raw_text) @injection.content)
- (#not-lua-match? @_no_type_lang "%slang%s*=")
- (#not-lua-match? @_no_type_lang "%stype%s*=")
- (#set! injection.language "javascript")
- (#set! injection.include-children))
+(
+  (script_element
+    (start_tag) @_no_type_lang
+      (#not-lua-match? @_no_type_lang "%slang%s*=")
+      (#not-lua-match? @_no_type_lang "%stype%s*=")
+    (raw_text) @javascript))
 
 ; <script type="mimetype-or-well-known-script-type">
 (script_element
-  (start_tag
-    ((attribute
-         (attribute_name) @_attr (#eq? @_attr "type")
-         (quoted_attribute_value (attribute_value) @_type))))
-  (raw_text) @injection.content (#set-lang-from-mimetype! @_type)
-  (#set! injection.include-children))
+   (start_tag
+      ((attribute
+           (attribute_name) @_attr (#eq? @_attr "type")
+           (quoted_attribute_value (attribute_value) @_type))))
+   (raw_text) @content (#set-lang-from-mimetype! @_type))
 
 ; <a style="/* css */">
 ((attribute
    (attribute_name) @_attr
-   (quoted_attribute_value (attribute_value) @injection.content))
- (#eq? @_attr "style")
- (#set! injection.language "css")
- (#set! injection.include-children))
+   (quoted_attribute_value (attribute_value) @css))
+ (#eq? @_attr "style"))
 
 ; lit-html style template interpolation
 ; <a @click=${e => console.log(e)}>
 ; <a @click="${e => console.log(e)}">
 ((attribute
-  (quoted_attribute_value (attribute_value) @injection.content))
-  (#lua-match? @injection.content "%${")
-  (#offset! @injection.content 0 2 0 -1)
-  (#set! injection.language "javascript")
-  (#set! injection.include-children))
-
+  (quoted_attribute_value (attribute_value) @javascript))
+  (#lua-match? @javascript "%${")
+  (#offset! @javascript 0 2 0 -1))
 ((attribute
-  (attribute_value) @injection.content)
-  (#lua-match? @injection.content "%${")
-  (#offset! @injection.content 0 2 0 -2)
-  (#set! injection.language "javascript")
-  (#set! injection.include-children))
+  (attribute_value) @javascript)
+  (#lua-match? @javascript "%${")
+  (#offset! @javascript 0 2 0 -2))
+
+(comment) @comment
 
 ; <input pattern="[0-9]"> or <input pattern=[0-9]>
 (element (_
   (tag_name) @_tagname (#eq? @_tagname "input")
   ((attribute
     (attribute_name) @_attr [
-      (quoted_attribute_value (attribute_value) @injection.content)
-      (attribute_value) @injection.content
+      (quoted_attribute_value (attribute_value) @regex)
+      (attribute_value) @regex
     ] (#eq? @_attr "pattern")))
-  (#set! injection.language "regex")
-  (#set! injection.include-children)))
+))
 
 ; <input type="checkbox" onchange="this.closest('form').elements.output.value = this.checked">
 (attribute
   (attribute_name) @_name
   (#lua-match? @_name "^on[a-z]+$")
-  (quoted_attribute_value (attribute_value) @injection.content)
-  (#set! injection.language "javascript")
-  (#set! injection.include-children))
+  (quoted_attribute_value (attribute_value) @javascript))

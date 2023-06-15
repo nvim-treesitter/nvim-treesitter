@@ -1,9 +1,7 @@
-([
+[
   (line_comment)
   (block_comment)
   (nesting_block_comment)
- ] @injection.content
- (#set! injection.language "comment")) 
+] @comment
 
-((token_string_tokens) @injection.content
- (#set! injection.language "d"))
+(token_string_tokens) @d

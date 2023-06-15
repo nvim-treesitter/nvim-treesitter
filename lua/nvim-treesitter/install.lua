@@ -413,6 +413,7 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
         return
       end
     end
+    api.nvim_echo({ output }, false, {})
   end
 
   local logger = log.new('install/' .. lang)
