@@ -559,7 +559,7 @@ local function install(languages, options, _callback)
     return
   end
 
-  local cache_dir = vim.fn.stdpath('cache')
+  local cache_dir = vim.fs.normalize(vim.fn.stdpath('cache'))
   local install_dir = config.get_install_dir('parser')
 
   if not languages or type(languages) == 'string' then
