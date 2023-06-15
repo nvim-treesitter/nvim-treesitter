@@ -33,10 +33,10 @@
     "revision": "7f1a5df44861291d6951b6b2146a9fef4c226e14"
   },
   "c": {
-    "revision": "0906255f8de1d319b8ec682ac8c43e7d2524b4fa"
+    "revision": "f1b2a0b2102ff001a4ed9a26cd9a9405d09c590c"
   },
   "c_sharp": {
-    "revision": "cfdad1a01ce7cae6ad6ddd5f338740bc6e08690a"
+    "revision": "95b22531b496eec47fbb4c25375b507c909982ca"
   },
   "capnp": {
     "revision": "7d5fa4e94d3643ec15750106113be0d40f9fc1bb"
@@ -66,13 +66,13 @@
     "revision": "f4b3cbc8b0bd4e13035d39940fef09f1392e8739"
   },
   "cpp": {
-    "revision": "4c917d560572dc2b3704b041715b2729fa199963"
+    "revision": "d63acf7c2ae9599a2f01c8e8beb7d333e54956e4"
   },
   "css": {
     "revision": "769203d0f9abe1a9a691ac2b9fe4bb4397a73c51"
   },
   "cuda": {
-    "revision": "32efc637d841d3adcebb182e4420bc1dd48dab9f"
+    "revision": "90446edd3e2e1eed0cb77755a083d9ed91ddea63"
   },
   "cue": {
     "revision": "0deecf48944aa54bb73e5383ba8acfbf9f2c44b4"
@@ -408,7 +408,7 @@
     "revision": "80efda55672d1293aa738f956c7ae384ecdc31b4"
   },
   "racket": {
-    "revision": "0c8791fdfed9412ea44177f1108da618d8a0470f"
+    "revision": "2804e03223953dc4709f4c041b57b722095a0397"
   },
   "rasi": {
     "revision": "371dac6bcce0df5566c1cfebde69d90ecbeefd2d"
@@ -435,7 +435,7 @@
     "revision": "0a70e15da977489d954c219af9b50b8a722630ee"
   },
   "scala": {
-    "revision": "3c5e57a55b7d80657ef2e1dffaa7a58ffb9b8523"
+    "revision": "e0d5372a203b7c2e95cb34e43124a3a819940bae"
   },
   "scheme": {
     "revision": "0c763bd5f85b18e354bc338d17cf1daa23b478b1"
