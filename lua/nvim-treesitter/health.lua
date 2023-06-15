@@ -110,7 +110,7 @@ local function install_health()
   end
   if
     vim.iter(vim.api.nvim_list_runtime_paths()):any(function(p)
-      if installdir == p .. '/' then
+      if installdir == vim.fs.normalize(p) .. '/' then
         return true
       end
     end)
