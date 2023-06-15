@@ -45,8 +45,6 @@ require('lazy').setup(
 )
 ```
 
-**Important:** If you use `lazy.nvim`, you need to set `performance.rtp.reset = false` so installed parsers and queries have the correct precedence!
-
 **NOTE: This plugin does not support lazy-loading.**
 
 ## Setup
