@@ -206,7 +206,7 @@ list.clojure = {
 list.cmake = {
   install_info = {
     url = "https://github.com/uyha/tree-sitter-cmake",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@uyha" },
 }
