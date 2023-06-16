@@ -4,10 +4,10 @@
   (name) @text.todo @nospell
   ("(" @punctuation.bracket (user) @constant ")" @punctuation.bracket)?
   ":" @punctuation.delimiter)
-  (#eq? @text.todo "TODO" "WIP"))
+  (#any-of? @text.todo "TODO" "WIP"))
 
 ("text" @text.todo @nospell
- (#eq? @text.todo "TODO" "WIP"))
+ (#any-of? @text.todo "TODO" "WIP"))
 
 ((tag
   (name) @text.note @nospell
