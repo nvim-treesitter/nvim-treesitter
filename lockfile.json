@@ -36,7 +36,7 @@
     "revision": "f1b2a0b2102ff001a4ed9a26cd9a9405d09c590c"
   },
   "c_sharp": {
-    "revision": "95b22531b496eec47fbb4c25375b507c909982ca"
+    "revision": "03b9b6272ef3df674f9c54507cc042412f257eed"
   },
   "capnp": {
     "revision": "7d5fa4e94d3643ec15750106113be0d40f9fc1bb"
@@ -51,16 +51,16 @@
     "revision": "24ed4fd565cd95fcba4f42e995cf186cab180ccb"
   },
   "comment": {
-    "revision": "94c99a66bb5051d8321b5900aee92b76450c50ce"
+    "revision": "fd1e1026d1a33b996db91a01dafeeff0a41d536c"
   },
   "commonlisp": {
-    "revision": "7a61fd78c1673da5c38b7bef56794f0ac6250e91"
+    "revision": "338db38330f0d25cba8e2c6428240ebc5e020264"
   },
   "cooklang": {
     "revision": "5e113412aadb78955c27010daa4dbe1d202013cf"
   },
   "corn": {
-    "revision": "6a6b0f4b1d564392c1b6a8ebcc27d94185f72ede"
+    "revision": "604d73c38d4c28ca68e9e441ffd405d68cb63051"
   },
   "cpon": {
     "revision": "f4b3cbc8b0bd4e13035d39940fef09f1392e8739"
@@ -120,7 +120,7 @@
     "revision": "203f7bd3c1bbfbd98fc19add4b8fcb213c059205"
   },
   "erlang": {
-    "revision": "c431b0b2d9228ed0869f7a6bb88fc9d2796d44b1"
+    "revision": "5dba13dcd531c19bf99829e2e0bb31f2e08e16fe"
   },
   "fennel": {
     "revision": "517195970428aacca60891b050aa53eabf4ba78d"
@@ -531,7 +531,7 @@
     "revision": "14e47600afef0affffcbfbe1543381b1ac8fbc5c"
   },
   "v": {
-    "revision": "234c1028883187c6b48e030780b7332229faefa3"
+    "revision": "519e0f64007a40852e59bb72ff1b6e2375068664"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
