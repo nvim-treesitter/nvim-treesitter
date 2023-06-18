@@ -51,7 +51,7 @@
     "revision": "24ed4fd565cd95fcba4f42e995cf186cab180ccb"
   },
   "comment": {
-    "revision": "fd1e1026d1a33b996db91a01dafeeff0a41d536c"
+    "revision": "67446ac511a50ab26d55b2b496d9a7e6889d6704"
   },
   "commonlisp": {
     "revision": "338db38330f0d25cba8e2c6428240ebc5e020264"
@@ -426,7 +426,7 @@
     "revision": "ce6086b2c9e8e71065b8129d6c2289c5f66d1879"
   },
   "rst": {
-    "revision": "c7c2b24918e231072af2d10c03b4893818de9d5d"
+    "revision": "a41a933524a54de1ba3ac4f5336b6eeb46deac15"
   },
   "ruby": {
     "revision": "f257f3f57833d584050336921773738a3fd8ca22"
