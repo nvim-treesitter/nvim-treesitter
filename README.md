@@ -274,7 +274,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [make](https://github.com/alemuller/tree-sitter-make) (maintained by @lewis6991)
 - [x] [markdown (basic highlighting)](https://github.com/MDeiml/tree-sitter-markdown) (experimental, maintained by @MDeiml)
 - [x] [markdown_inline (needed for full highlighting)](https://github.com/MDeiml/tree-sitter-markdown) (experimental, maintained by @MDeiml)
-- [x] [matlab](https://github.com/mstanciu552/tree-sitter-matlab) (maintained by @amaanq)
+- [x] [matlab](https://github.com/acristoffers/tree-sitter-matlab) (maintained by @acristoffers)
 - [x] [menhir](https://github.com/Kerl13/tree-sitter-menhir) (maintained by @Kerl13)
 - [ ] [mermaid](https://github.com/monaqa/tree-sitter-mermaid) (experimental)
 - [x] [meson](https://github.com/Decodetalkers/tree-sitter-meson) (maintained by @Decodetalkers)
