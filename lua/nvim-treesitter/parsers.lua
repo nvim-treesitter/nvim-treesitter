@@ -603,6 +603,15 @@ list.gowork = {
   maintainers = { "@omertuc" },
 }
 
+list.groovy = {
+  install_info = {
+    url = "https://github.com/Decodetalkers/tree-sitter-groovy",
+    files = { "src/parser.c" },
+    branch = "gh-pages",
+  },
+  maintainers = { "@Decodetalkers" },
+}
+
 list.graphql = {
   install_info = {
     url = "https://github.com/bkegley/tree-sitter-graphql",
