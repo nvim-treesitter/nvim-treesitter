@@ -127,6 +127,7 @@
   (keyword_limit)
   (keyword_offset)
   (keyword_table)
+  (keyword_tables)
   (keyword_key)
   (keyword_references)
   (keyword_foreign)
@@ -140,6 +141,7 @@
   (keyword_min)
   (keyword_avg)
   (keyword_column)
+  (keyword_columns)
   (keyword_cross)
   (keyword_lateral)
   (keyword_alter)
@@ -190,7 +192,6 @@
   (keyword_row)
   (keyword_sort)
   (keyword_compute)
-  (keyword_stats)
   (keyword_comment)
   (keyword_partitioned)
   (keyword_location)
@@ -201,6 +202,12 @@
   (keyword_location)
   (keyword_partitioned)
   (keyword_cached)
+  (keyword_analyze)
+  (keyword_rewrite)
+  (keyword_statistics)
+  (keyword_optimize)
+  (keyword_vacuum)
+  (keyword_cache)
 ] @keyword
 
 [
@@ -217,6 +224,14 @@
  (keyword_option)
  (keyword_local)
  (keyword_cascaded)
+ (keyword_wait)
+ (keyword_nowait)
+ (keyword_metadata)
+ (keyword_incremental)
+ (keyword_bin_pack)
+ (keyword_noscan)
+ (keyword_stats)
+ (keyword_statistics)
 ] @type.qualifier
 
 [
