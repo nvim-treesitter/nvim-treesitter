@@ -1046,7 +1046,7 @@ list.odin = {
 list.org = {
   install_info = {
     url = "https://github.com/milisims/tree-sitter-org",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
 }
 
