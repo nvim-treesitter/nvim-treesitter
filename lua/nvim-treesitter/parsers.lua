@@ -91,7 +91,7 @@ list.agda = {
 list.arduino = {
   install_info = {
     url = "https://github.com/ObserverOfTime/tree-sitter-arduino",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@ObserverOfTime" },
 }
