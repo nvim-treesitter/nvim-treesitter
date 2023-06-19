@@ -116,7 +116,7 @@ jsx (queries only)[^jsx] | core | `HFIJ ` |  |  | @steelsojka
 [make](https://github.com/alemuller/tree-sitter-make) | core | `HF J ` |  |  | @lewis6991
 [markdown](https://github.com/MDeiml/tree-sitter-markdown)[^markdown] | stable | `HFIJ ` |  |  | @MDeiml
 [markdown_inline](https://github.com/MDeiml/tree-sitter-markdown)[^markdown_inline] | stable | `H  J ` |  |  | @MDeiml
-[matlab](https://github.com/mstanciu552/tree-sitter-matlab) | core | `HF J ` |  |  | @amaanq
+[matlab](https://github.com/acristoffers/tree-sitter-matlab) | community | `HFIJL` |  |  | @acristoffers
 [menhir](https://github.com/Kerl13/tree-sitter-menhir) | community | `H  J ` |  |  | @Kerl13
 [mermaid](https://github.com/monaqa/tree-sitter-mermaid) | unmaintained | `H    ` |  |  | 
 [meson](https://github.com/Decodetalkers/tree-sitter-meson) | community | `HF J ` |  |  | @Decodetalkers
