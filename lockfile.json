@@ -51,7 +51,7 @@
     "revision": "aafadc0d657faa99e483a4f2c70dbe64491b1802"
   },
   "comment": {
-    "revision": "67446ac511a50ab26d55b2b496d9a7e6889d6704"
+    "revision": "c9a7e2df7cac2dfb730f766a4f343308f84ff346"
   },
   "commonlisp": {
     "revision": "338db38330f0d25cba8e2c6428240ebc5e020264"
@@ -282,7 +282,7 @@
     "revision": "d8360bc472ca1d55d437624ee7299152b693e1a0"
   },
   "luadoc": {
-    "revision": "978cc13791c1d6e4626ee7e8db108d0be14f07e7"
+    "revision": "8981072676ec8bd74def6134be4f883655f7c082"
   },
   "luap": {
     "revision": "43916b0f31c48a05e03783eb0bab4eec54a4ac75"
