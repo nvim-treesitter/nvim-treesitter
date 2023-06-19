@@ -370,7 +370,7 @@ list.eex = {
 list.elixir = {
   install_info = {
     url = "https://github.com/elixir-lang/tree-sitter-elixir",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@connorlay" },
 }
