@@ -256,7 +256,7 @@ list.cpon = {
 list.cpp = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-cpp",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
     generate_requires_npm = true,
   },
   maintainers = { "@theHamsta" },
