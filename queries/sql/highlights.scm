@@ -18,10 +18,10 @@
   name: (identifier) @type)
 
 (relation
-  table_alias: (identifier) @variable)
+  alias: (identifier) @variable)
 
 (field
-  table_alias: (identifier) @variable
+  alias: (identifier) @variable
   name: (identifier) @field)
 
 (term
