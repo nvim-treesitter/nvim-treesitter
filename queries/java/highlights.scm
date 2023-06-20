@@ -84,6 +84,8 @@
 
 (interface_declaration
   name: (identifier) @type)
+(annotation_type_declaration
+  name: (identifier) @type)
 (class_declaration
   name: (identifier) @type)
 (record_declaration
@@ -169,6 +171,7 @@
   "implements"
   "instanceof"
   "interface"
+  "@interface"
   "permits"
   "to"
   "with"
