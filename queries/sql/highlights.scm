@@ -14,7 +14,7 @@
   (keyword_group_concat)
 ] @function.call
 
-(table_reference
+(object_reference
   name: (identifier) @type)
 
 (relation
