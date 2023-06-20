@@ -426,7 +426,7 @@ list.fennel = {
 list.firrtl = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-firrtl",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@amaanq" },
 }
