@@ -1376,7 +1376,7 @@ list.squirrel = {
 list.starlark = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-starlark",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   filetype = "bzl",
   maintainers = { "@amaanq" },
