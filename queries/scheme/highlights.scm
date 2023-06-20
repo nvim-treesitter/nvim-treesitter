@@ -9,11 +9,6 @@
 [(comment)
  (block_comment)] @comment @spell
 
-;; highlight for datum comment
-;; copied from ../clojure/highlights.scm
-([(comment) (directive)] @comment
- (#set! "priority" 105))
-
 (escape_sequence) @string.escape
 
 ["(" ")" "[" "]" "{" "}"] @punctuation.bracket
@@ -78,17 +73,6 @@
 
 ((symbol) @conditional
  (#any-of? @conditional "if" "cond" "case" "when" "unless"))
-
-;; quote
-
-(quote
- "'"
- (symbol)) @symbol
-
-(list
- .
- (symbol) @_f
- (#eq? @_f "quote")) @symbol
 
 ;; library
 
@@ -179,4 +163,26 @@
   "write" "display" "newline" "write-char"
   ;; system
   "load" "transcript-on" "transcript-off"))
+
+;;------------------------------------------------------------------;;
+;;                         Solve conflicts                          ;;
+;;------------------------------------------------------------------;;
+
+;; See `:h treesitter-highlight-priority`
+
+;; quote
+
+(quote (#set! "priority" 105)) @symbol
+
+(list
+ .
+ (symbol) @_f
+ (#eq? @_f "quote")
+ (#set! "priority" 105)) @symbol
+
+;; sexp comment
+
+([(comment) (directive)] @comment
+ (#set! "priority" 110))
+
 
