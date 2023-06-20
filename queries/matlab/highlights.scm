@@ -134,6 +134,8 @@
   ":"
 ] @operator
 
+(unary_operator ["+" "-"] @number)
+
 ; Literals
 
 (string) @string
