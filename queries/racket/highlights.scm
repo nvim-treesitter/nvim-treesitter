@@ -47,10 +47,6 @@
 (extension) @keyword
 (lang_name) @variable.builtin
 
-;; quote ;;
-
-(quote) @symbol
-
 ;; list ;;
 
 ["(" ")" "[" "]" "{" "}"] @punctuation.bracket
@@ -124,7 +120,7 @@
 ;;                         Solve conflicts                          ;;
 ;;------------------------------------------------------------------;;
 
-;; See `:h treesitter`, and search `priority`
+;; See `:h treesitter-highlight-priority`
 
 (list
  .
@@ -132,10 +128,17 @@
  (#eq? @include "require")
  (#set! "priority" 101))
 
-(quote
-  .
-  (symbol)
-  (#set! "priority" 105)) @symbol
+;; quote
+
+(quote (#set! "priority" 105)) @symbol
+
+(list
+ .
+ (symbol) @_f
+ (#eq? @_f "quote")
+ (#set! "priority" 105)) @symbol
+
+
 
 ((sexp_comment) @comment
  (#set! "priority" 110))
