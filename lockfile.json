@@ -36,7 +36,7 @@
     "revision": "f1b2a0b2102ff001a4ed9a26cd9a9405d09c590c"
   },
   "c_sharp": {
-    "revision": "03b9b6272ef3df674f9c54507cc042412f257eed"
+    "revision": "8acd38dae01bea4157f729325f5c69d0b47a75f2"
   },
   "capnp": {
     "revision": "7d5fa4e94d3643ec15750106113be0d40f9fc1bb"
@@ -126,7 +126,7 @@
     "revision": "517195970428aacca60891b050aa53eabf4ba78d"
   },
   "firrtl": {
-    "revision": "572ac53752252c4b77bd7cf0ce6a07a2db177ab7"
+    "revision": "2b5adae629c8cba528c7b1e4aa67a8ae28934ea5"
   },
   "fish": {
     "revision": "f9176908c9eb2e11eb684d79e1d00f3b29bd65c9"
@@ -147,7 +147,7 @@
     "revision": "19db2f47ba4c3a0f6238d4ae0e2abfca16e61dd6"
   },
   "gdscript": {
-    "revision": "3fd70bf70a7b7d706ae0fe81730c68642713eeaa"
+    "revision": "03f20b94707a21bed90bb95101684bc4036139ce"
   },
   "git_config": {
     "revision": "a01b498b25003d97a5f93b0da0e6f28307454347"
@@ -258,7 +258,7 @@
     "revision": "fdc775714afa27fdef823adbaba6ab98f5ae66f2"
   },
   "julia": {
-    "revision": "e2f449e2bcc95f1d07ceb62d67f986005f73a6be"
+    "revision": "4d4dc7d8a4ad3856200a9ef151f9056fc14cec8b"
   },
   "kdl": {
     "revision": "e180e05132c4cb229a8ba679b298790ef1eca77c"
@@ -279,7 +279,7 @@
     "revision": "d47c95d78ef0e7495a74d214dd6fcddf6e402dfc"
   },
   "lua": {
-    "revision": "d8360bc472ca1d55d437624ee7299152b693e1a0"
+    "revision": "7268c1cea5df56ac0c779cd37d6631d4e6f41d4f"
   },
   "luadoc": {
     "revision": "8981072676ec8bd74def6134be4f883655f7c082"
@@ -288,7 +288,7 @@
     "revision": "43916b0f31c48a05e03783eb0bab4eec54a4ac75"
   },
   "luau": {
-    "revision": "4f8fc207b3a25b07cba1d3b4066f2872dcfe201f"
+    "revision": "6953cd4fa5967c9aa3c769b4e4c7e69c904b9fa9"
   },
   "m68k": {
     "revision": "d097b123f19c6eaba2bf181c05420d88b9fc489d"
@@ -303,7 +303,7 @@
     "revision": "231f3163cd27d48f91a4517cfdf72d167a9ef164"
   },
   "matlab": {
-    "revision": "5a047c1572792ae943b51af7cf9307097b2fcce0"
+    "revision": "138f2ee2eaadcff53ef1fce944713942af92c097"
   },
   "menhir": {
     "revision": "db7953acb0d5551f207373c81fa07a57d7b085cb"
@@ -462,10 +462,10 @@
     "revision": "7cbac0472e5b8f8486ce64ffbcf1982d5cd5fc8d"
   },
   "squirrel": {
-    "revision": "3fefc6b9bb2b4de1b1c461783f675918cd957546"
+    "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
   },
   "starlark": {
-    "revision": "80516b3a8c2cf058b896d3481309bacf7497f933"
+    "revision": "504ddd75ecc78fbbce22aa6facd70375d3f8854a"
   },
   "supercollider": {
     "revision": "3b35bd0fded4423c8fb30e9585c7bacbcd0e8095"
