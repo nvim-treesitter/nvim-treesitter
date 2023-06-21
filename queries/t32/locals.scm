@@ -29,7 +29,7 @@
   (subroutine_call_expression
     command: (identifier)
     subroutine: (identifier) @reference)
-  (set! reference.kind "function")
+  (#set! reference.kind "function")
 )
 
 (macro) @reference
