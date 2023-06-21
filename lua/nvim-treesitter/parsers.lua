@@ -633,6 +633,15 @@ list.haskell = {
   },
 }
 
+list.haskell_persistent = {
+  install_info = {
+    url = "https://github.com/MercuryTechnologies/tree-sitter-haskell-persistent",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  filetype = "haskell.persistent",
+  maintainers = { "@lykahb" },
+}
+
 list.hcl = {
   install_info = {
     url = "https://github.com/MichaHoffmann/tree-sitter-hcl",

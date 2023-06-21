@@ -76,3 +76,10 @@
   (#eq? @_name "sql")
   ((quasiquote_body) @sql)
 )
+
+; persistent
+(quasiquote
+ (quoter) @_name
+ (#any-of? @_name "persistUpperCase" "persistLowerCase" "persistWith")
+ ((quasiquote_body) @haskell_persistent)
+)
