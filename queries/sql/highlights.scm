@@ -1,6 +1,7 @@
 (invocation
-  name: (identifier) @function.call
-  parameter: [(field)]? @parameter)
+  (object_reference
+    name: (identifier) @function.call
+    parameter: [(field)]? @parameter))
 
 [
   (keyword_gist)
