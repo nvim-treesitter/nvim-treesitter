@@ -21,7 +21,6 @@
   alias: (identifier) @variable)
 
 (field
-  alias: (identifier) @variable
   name: (identifier) @field)
 
 (term
