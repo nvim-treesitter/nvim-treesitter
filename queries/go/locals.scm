@@ -36,7 +36,7 @@
 (type_identifier) @reference
 (field_identifier) @reference
 ((package_identifier) @reference
-  (set! reference.kind "namespace"))
+  (#set! reference.kind "namespace"))
 
 (package_clause
    (package_identifier) @definition.namespace)
@@ -48,24 +48,24 @@
 ;; Call references
 ((call_expression
    function: (identifier) @reference)
- (set! reference.kind "call" ))
+ (#set! reference.kind "call" ))
 
 ((call_expression
     function: (selector_expression
                 field: (field_identifier) @reference))
- (set! reference.kind "call" ))
+ (#set! reference.kind "call" ))
 
 
 ((call_expression
     function: (parenthesized_expression
                 (identifier) @reference))
- (set! reference.kind "call" ))
+ (#set! reference.kind "call" ))
 
 ((call_expression
    function: (parenthesized_expression
                (selector_expression
                  field: (field_identifier) @reference)))
- (set! reference.kind "call" ))
+ (#set! reference.kind "call" ))
 
 ;; Scopes
 
