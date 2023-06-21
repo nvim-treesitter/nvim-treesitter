@@ -57,7 +57,7 @@ ecma (queries only)[^ecma] | core | `HFIJL` |  |  | @steelsojka
 [fennel](https://github.com/travonted/tree-sitter-fennel) | community | `HF JL` |  |  | @TravonteD
 [firrtl](https://github.com/amaanq/tree-sitter-firrtl) | core | `HFIJL` |  |  | @amaanq
 [fish](https://github.com/ram02z/tree-sitter-fish) | community | `HFIJL` |  |  | @ram02z
-[foam](https://github.com/FoamScience/tree-sitter-foam) | unsupported | `HFIJL` |  |  | @FoamScience
+[foam](https://github.com/FoamScience/tree-sitter-foam) | community | `HFIJL` |  |  | @FoamScience
 [fortran](https://github.com/stadelmanma/tree-sitter-fortran) | core | `HFI  ` |  |  | @amaanq
 [fsh](https://github.com/mgramigna/tree-sitter-fsh) | community | `H    ` |  |  | @mgramigna
 [func](https://github.com/amaanq/tree-sitter-func) | core | `H    ` |  |  | @amaanq
