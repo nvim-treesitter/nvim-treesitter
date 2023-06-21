@@ -36,8 +36,8 @@
    ":" @punctuation.delimiter
    (symbol) @method .)
 
-(list . (symbol) @function)
-(list . (multi_symbol (symbol) @function .))
+(list . (symbol) @function.call)
+(list . (multi_symbol (symbol) @function.call .))
 
 ((symbol) @variable.builtin
  (#lua-match? @variable.builtin "^[$]"))
