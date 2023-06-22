@@ -6,7 +6,7 @@
     "revision": "80ea622cf952a0059e168e5c92a798b2f1925652"
   },
   "arduino": {
-    "revision": "2caedf3e9eb314551a3a6cc9d3b6c4fcdee37747"
+    "revision": "e138ee33bf3c951a1f31ff276ed797fa2bfd8858"
   },
   "astro": {
     "revision": "a4535d1530558866a543c1660c90c57fbf2fd709"
@@ -36,7 +36,7 @@
     "revision": "f1b2a0b2102ff001a4ed9a26cd9a9405d09c590c"
   },
   "c_sharp": {
-    "revision": "8acd38dae01bea4157f729325f5c69d0b47a75f2"
+    "revision": "adfbb69b05c2448d913a7b61f29562151ba3dfad"
   },
   "capnp": {
     "revision": "7d5fa4e94d3643ec15750106113be0d40f9fc1bb"
@@ -66,7 +66,7 @@
     "revision": "f4b3cbc8b0bd4e13035d39940fef09f1392e8739"
   },
   "cpp": {
-    "revision": "2e29f23abcb5f92ddffb22de8b292f09ed78db01"
+    "revision": "0e7b7a02b6074859b51c1973eb6a8275b3315b1d"
   },
   "css": {
     "revision": "769203d0f9abe1a9a691ac2b9fe4bb4397a73c51"
@@ -267,7 +267,7 @@
     "revision": "100d79fd96b56a1b99099a8d2f3c114b8687acfb"
   },
   "lalrpop": {
-    "revision": "7744b56f03ac1e5643fad23c9dd90837fe97291e"
+    "revision": "b7431e4b64183a5d0d094895a4cd5daf51ed3103"
   },
   "latex": {
     "revision": "2ae2021d7b224fb6aa57b760e0d146059f943bb8"
@@ -303,7 +303,7 @@
     "revision": "231f3163cd27d48f91a4517cfdf72d167a9ef164"
   },
   "matlab": {
-    "revision": "138f2ee2eaadcff53ef1fce944713942af92c097"
+    "revision": "10ae0e6e7ea74c653982f25fc7c8f27c061f9a7d"
   },
   "menhir": {
     "revision": "db7953acb0d5551f207373c81fa07a57d7b085cb"
@@ -435,7 +435,7 @@
     "revision": "0a70e15da977489d954c219af9b50b8a722630ee"
   },
   "scala": {
-    "revision": "a5c4c29b95aca29dea71f34bf046ad0b36499045"
+    "revision": "cda0de8a038b0e4ad79a97f7aa281250fcf88560"
   },
   "scheme": {
     "revision": "0c763bd5f85b18e354bc338d17cf1daa23b478b1"
@@ -516,7 +516,7 @@
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
   },
   "twig": {
-    "revision": "2457993b13a06dec2706e6a6c3d5b65bb23024b8"
+    "revision": "779ee5ab1e065dcef7f51f253030dc875445b25f"
   },
   "typescript": {
     "revision": "286e90c32060032225f636a573d0e999f7766c97"
