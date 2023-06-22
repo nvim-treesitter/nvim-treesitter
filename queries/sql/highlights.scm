@@ -1,8 +1,3 @@
-(invocation
-  (object_reference
-    name: (identifier) @function.call
-    parameter: [(field)]? @parameter))
-
 [
   (keyword_gist)
   (keyword_btree)
@@ -17,6 +12,11 @@
 
 (object_reference
   name: (identifier) @type)
+
+(invocation
+  (object_reference
+    name: (identifier) @function.call
+    parameter: [(field)]? @parameter))
 
 (relation
   alias: (identifier) @variable)
