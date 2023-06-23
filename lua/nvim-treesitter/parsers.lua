@@ -1172,7 +1172,7 @@ list.puppet = {
 list.python = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-python",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@stsewd", "@theHamsta" },
 }
