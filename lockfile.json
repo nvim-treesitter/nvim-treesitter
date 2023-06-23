@@ -6,7 +6,7 @@
     "revision": "80ea622cf952a0059e168e5c92a798b2f1925652"
   },
   "arduino": {
-    "revision": "e138ee33bf3c951a1f31ff276ed797fa2bfd8858"
+    "revision": "da8cae9ce365a81dcba25256f76c713674121017"
   },
   "astro": {
     "revision": "a4535d1530558866a543c1660c90c57fbf2fd709"
@@ -36,7 +36,7 @@
     "revision": "f1b2a0b2102ff001a4ed9a26cd9a9405d09c590c"
   },
   "c_sharp": {
-    "revision": "adfbb69b05c2448d913a7b61f29562151ba3dfad"
+    "revision": "1648e21b4f087963abf0101ee5221bb413107b07"
   },
   "capnp": {
     "revision": "7d5fa4e94d3643ec15750106113be0d40f9fc1bb"
@@ -372,7 +372,7 @@
     "revision": "80dc10195e26c72598ed1ab02cdf2d8e4c792e7b"
   },
   "pony": {
-    "revision": "5fd795ae7597b568b0a356c5d243cc92162bc00c"
+    "revision": "16f930b250433cfcd4fb4144df92bb98ad344c20"
   },
   "prisma": {
     "revision": "eca2596a355b1a9952b4f80f8f9caed300a272b5"
@@ -459,7 +459,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "baab519f9781937e948cdb2b4ee4138a0dcda866"
+    "revision": "f70c2d5da5e437bfe82942be7fee6e6e30177fde"
   },
   "squirrel": {
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
