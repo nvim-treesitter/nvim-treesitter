@@ -240,6 +240,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [ ] [hack](https://github.com/slackhq/tree-sitter-hack)
 - [x] [hare](https://github.com/amaanq/tree-sitter-hare) (maintained by @amaanq)
 - [ ] [haskell](https://github.com/tree-sitter/tree-sitter-haskell)
+- [x] [haskell_persistent](https://github.com/MercuryTechnologies/tree-sitter-haskell-persistent) (maintained by @lykahb)
 - [x] [hcl](https://github.com/MichaHoffmann/tree-sitter-hcl) (maintained by @MichaHoffmann)
 - [x] [heex](https://github.com/connorlay/tree-sitter-heex) (maintained by @connorlay)
 - [x] [hjson](https://github.com/winston0410/tree-sitter-hjson) (maintained by @winston0410)
