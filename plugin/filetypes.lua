@@ -39,6 +39,7 @@ local filetypes = {
   textproto = { 'pbtxt' },
   tlaplus = { 'tla' },
   tsx = { 'typescriptreact', 'typescript.tsx' },
+  typescript = { 'ts' },
   udev = { 'udevrules' },
   uxntal = { 'tal' },
   v = { 'vlang' },
