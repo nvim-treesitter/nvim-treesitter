@@ -26,6 +26,7 @@ local filetypes = {
   t32 = { 'trace32' },
   tlaplus = { 'tla' },
   tsx = { 'typescriptreact', 'typescript.tsx' },
+  typescript = { 'ts' },
   uxntal = { 'tal' },
   v = { 'vlang' },
   verilog = { 'sysverilog' },
