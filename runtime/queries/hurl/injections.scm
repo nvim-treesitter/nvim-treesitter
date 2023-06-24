@@ -9,7 +9,6 @@
   (#set! injection.language "xml"))
 
 (multiline_string
-  (multiline_string_type) @_lang
+  (multiline_string_type) @injection.language
   (multiline_string_content) @injection.content
-  (#set-lang-from-info-string! @_lang)
   (#set! injection.combined))
