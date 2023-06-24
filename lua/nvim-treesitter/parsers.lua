@@ -1222,7 +1222,7 @@ list.r = {
 list.racket = {
   install_info = {
     url = "https://github.com/6cdh/tree-sitter-racket",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@6cdh" },
 }
