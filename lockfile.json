@@ -200,6 +200,9 @@
   "haskell": {
     "revision": "a75238fdefc2281cdba7dc4dca13f1d68a91f177"
   },
+  "haskell_persistent": {
+    "revision": "58a6ccfd56d9f1de8fb9f77e6c42151f8f0d0f3d"
+  },
   "hcl": {
     "revision": "becebebd3509c02e871c99be55556269be1def1b"
   },
