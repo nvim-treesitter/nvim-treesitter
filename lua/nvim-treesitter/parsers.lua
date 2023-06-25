@@ -688,7 +688,7 @@ list.hocon = {
 list.html = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-html",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@TravonteD" },
 }
