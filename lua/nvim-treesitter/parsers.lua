@@ -614,7 +614,7 @@ list.graphql = {
 list.hack = {
   install_info = {
     url = "https://github.com/slackhq/tree-sitter-hack",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
 }
 
