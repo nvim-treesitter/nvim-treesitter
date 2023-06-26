@@ -142,6 +142,7 @@
 (null) @constant.builtin
 (integer) @number
 (float) @float
+(comment) @comment
 
 (named_label_statement) @label
 ; Keywords
