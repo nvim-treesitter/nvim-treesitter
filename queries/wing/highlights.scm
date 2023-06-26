@@ -1,3 +1,7 @@
+(identifier) @variable
+(reference_identifier) @variable
+(member_identifier) @property
+
 ; Classes
 
 (custom_type) @type
@@ -88,7 +92,3 @@
   "return"
   (inflight_specifier)
 ] @keyword
-
-(identifier) @variable
-(reference_identifier) @variable
-(member_identifier) @property
