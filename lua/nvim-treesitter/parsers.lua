@@ -378,7 +378,7 @@ list.elixir = {
 list.elm = {
   install_info = {
     url = "https://github.com/elm-tooling/tree-sitter-elm",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@zweimach" },
 }
