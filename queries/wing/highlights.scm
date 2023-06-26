@@ -2,13 +2,13 @@
 
 (custom_type) @type
 (class_field 
-  name: (identifier) @member
+  name: (identifier) @field
 ) 
 (class_definition 
   name: (identifier) @type
 )
 (method_definition
-  name: (identifier) @function
+  name: (identifier) @method
 )
 (inflight_method_definition
   name: (identifier) @function
@@ -16,15 +16,15 @@
 
 ; Functions
 
-(keyword_argument_key) @variable.parameter
+(keyword_argument_key) @parameter
 (call 
   caller: (reference 
   	(nested_identifier 
-    	property: (member_identifier) @function.method)) 
+    	property: (member_identifier) @method.call)) 
 )
 (call 
   caller: (reference 
-  	(reference_identifier) @function.method)
+  	(reference_identifier) @method.call)
 )
 
 ; Primitives
