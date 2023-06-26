@@ -1,4 +1,4 @@
-(tag_name) @attribute @nospell
+(tag_name) @attribute
 (tag
   (tag_name) @_tag (#eq? @_tag "@param")
   (variable_name) @parameter
@@ -24,10 +24,8 @@
     (named_type)
     (optional_type)
   ] @type)
-(type_list) @nospell
-(variable_name) @nospell
 (tag
-  (description (text) @text))
+  (description (text) @text @spell))
 (tag
   [
     (author_name)
@@ -43,5 +41,3 @@
   (tag_name) @_tag_name
   ["<" ">"] @keyword
   (#eq? @_tag_name "@author"))
-
-(text) @spell
