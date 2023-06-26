@@ -1259,7 +1259,6 @@ list.racket = {
     url = "https://github.com/6cdh/tree-sitter-racket",
     files = { "src/parser.c", "src/scanner.c" },
   },
-  maintainers = { "@6cdh" },
 }
 
 list.rasi = {
@@ -1339,7 +1338,6 @@ list.scheme = {
     url = "https://github.com/6cdh/tree-sitter-scheme",
     files = { "src/parser.c" },
   },
-  maintainers = { "@6cdh" },
 }
 
 list.scss = {
