@@ -356,6 +356,9 @@
   "passwd": {
     "revision": "20239395eacdc2e0923a7e5683ad3605aee7b716"
   },
+  "pem": {
+    "revision": "3662443335bc95bac0168a338b0f29f87162c244"
+  },
   "perl": {
     "revision": "60aa138f9e1db15becad53070f4d5898b0e8a98c"
   },
