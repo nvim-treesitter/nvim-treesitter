@@ -14,7 +14,7 @@
   name: (identifier) @method
 )
 (inflight_method_definition
-  name: (identifier) @function
+  name: (identifier) @method
 )
 
 ; Functions
