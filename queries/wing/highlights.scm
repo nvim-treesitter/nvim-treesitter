@@ -6,8 +6,7 @@
 
 (custom_type) @type
 (class_field 
-  name: (identifier) @field
-) 
+  name: (identifier) @field)
 (class_definition 
   name: (identifier) @type
 )
@@ -33,12 +32,10 @@
 
 ; Primitives
 
-[
- (number)
- (duration)
-] @constant.builtin
+(number) @number
+(duration) @constant
 (string) @string
-(bool) @constant.builtin
+(bool) @boolean
 (builtin_type) @type.builtin
 (json_container_type) @type.builtin
 
