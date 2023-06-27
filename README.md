@@ -237,6 +237,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [gosum](https://github.com/amaanq/tree-sitter-go-sum) (maintained by @amaanq)
 - [x] [gowork](https://github.com/omertuc/tree-sitter-go-work) (maintained by @omertuc)
 - [x] [graphql](https://github.com/bkegley/tree-sitter-graphql) (maintained by @bkegley)
+- [x] [groovy](https://github.com/Decodetalkers/tree-sitter-groovy) (maintained by @Decodetalkers)
 - [ ] [hack](https://github.com/slackhq/tree-sitter-hack)
 - [x] [hare](https://github.com/amaanq/tree-sitter-hare) (maintained by @amaanq)
 - [ ] [haskell](https://github.com/tree-sitter/tree-sitter-haskell)
