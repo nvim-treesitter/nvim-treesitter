@@ -1075,6 +1075,14 @@ list.passwd = {
   maintainers = { "@amaanq" },
 }
 
+list.pem = {
+  install_info = {
+    url = "https://github.com/ObserverOfTime/tree-sitter-pem",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@ObserverOfTime" },
+}
+
 list.perl = {
   install_info = {
     url = "https://github.com/ganezdragon/tree-sitter-perl",
