@@ -132,7 +132,7 @@
     "revision": "f9176908c9eb2e11eb684d79e1d00f3b29bd65c9"
   },
   "foam": {
-    "revision": "c238f4af9a5723a212cf1a4c9b31dd5c1d5270a2"
+    "revision": "ec73f2e317f9c09356e7be452d85671b9923a428"
   },
   "fortran": {
     "revision": "31552ac43ecaffa443a12ebea68cc526d334892f"
@@ -192,7 +192,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "hack": {
-    "revision": "b1c41e4b82c625cc33ddb8701f6aa5a09c72fcf5"
+    "revision": "95e63e79e0d9f91000bd11d458997fabed1bb1e2"
   },
   "hare": {
     "revision": "3d4af179414525a35dd069ba0208c9b71093d8b3"
@@ -549,7 +549,7 @@
     "revision": "26b1aea3b3a5dae31f784a1204205fd57f2b82b5"
   },
   "vimdoc": {
-    "revision": "8c0469d1f84f1e2733d4490dfb3cf8f8b100e2da"
+    "revision": "c0f85802485afe4d15e65bbf995ae864bb8ed7c4"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
