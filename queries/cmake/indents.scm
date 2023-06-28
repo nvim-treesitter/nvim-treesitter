@@ -20,3 +20,5 @@
 
 (")" @indent.branch)
 (")" @indent.end)
+
+(argument_list) @indent.auto
