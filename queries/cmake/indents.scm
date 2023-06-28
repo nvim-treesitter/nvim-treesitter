@@ -18,5 +18,5 @@
  (endblock_command)
 ] @indent.branch
 
-(normal_command ")" @indent.branch)
-(normal_command ")" @indent.end)
+(")" @indent.branch)
+(")" @indent.end)
