@@ -33,7 +33,7 @@
     "revision": "7f1a5df44861291d6951b6b2146a9fef4c226e14"
   },
   "c": {
-    "revision": "f1b2a0b2102ff001a4ed9a26cd9a9405d09c590c"
+    "revision": "84bdf409067676dd5c003b2a7cb7760456e731bf"
   },
   "c_sharp": {
     "revision": "1648e21b4f087963abf0101ee5221bb413107b07"
@@ -191,6 +191,9 @@
   "graphql": {
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
+  "groovy": {
+    "revision": "7ebfaf33a0f68f9283be17903ebecfdac05a1f3b"
+  },
   "hack": {
     "revision": "95e63e79e0d9f91000bd11d458997fabed1bb1e2"
   },
@@ -219,7 +222,7 @@
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
   },
   "html": {
-    "revision": "ff48883eb679bbb71b7ac08c8023c8defbf9e234"
+    "revision": "03e9435d5a95e3fcb9d7e2720c2aac5fc1b9ae8f"
   },
   "htmldjango": {
     "revision": "11e73ebd8e73356badaad826a0534437b208b6e7"
