@@ -221,6 +221,9 @@
   "hocon": {
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
   },
+  "hoon": {
+    "revision": "37563e0b57dfc7b0e6072f8b12f98cedaf22553a"
+  },
   "html": {
     "revision": "ab91d87963c47ffd08a7967b9aa73eb53293d120"
   },
