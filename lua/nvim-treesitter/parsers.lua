@@ -700,6 +700,7 @@ list.hoon = {
     files = { "src/parser.c" },
   },
   maintainers = { "@urbit-pilled" },
+  experimental = true,
 }
 
 list.html = {
