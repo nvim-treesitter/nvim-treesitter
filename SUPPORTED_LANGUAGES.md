@@ -28,7 +28,7 @@ Language | Tier | Queries | CLI | NPM | Maintainer
 [capnp](https://github.com/amaanq/tree-sitter-capnp) | core | `HFIJL` |  |  | @amaanq
 [chatito](https://github.com/ObserverOfTime/tree-sitter-chatito) | core | `HFIJL` |  |  | @ObserverOfTime
 [clojure](https://github.com/sogaiu/tree-sitter-clojure) | community | `HF JL` |  |  | @sogaiu
-[cmake](https://github.com/uyha/tree-sitter-cmake) | unsupported | `HF   ` |  |  | @uyha
+[cmake](https://github.com/uyha/tree-sitter-cmake) | unsupported | `HFI  ` |  |  | @uyha
 [comment](https://github.com/stsewd/tree-sitter-comment) | core | `H    ` |  |  | @stsewd
 [commonlisp](https://github.com/theHamsta/tree-sitter-commonlisp) | core | `HF  L` |  | ✓ | @theHamsta
 [cooklang](https://github.com/addcninblue/tree-sitter-cooklang) | community | `H    ` |  |  | @addcninblue
