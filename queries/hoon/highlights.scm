@@ -15,7 +15,7 @@
 ] @punctuation.delimiter
 
 
-(rune) @keyword
+(rune) @operator
 
 (term) @constant
 
@@ -25,8 +25,9 @@
 
 (boolean) @constant.builtin
 
-(date) @constant.builtin
-(mold) @constant.builtin
-(specialIndex) @constant.builtin
+(date) @string.special
+
+(mold) @symbol
+(specialIndex) @number.builtin
 (lark) @operator
-(fullContext) @constant.builtin
+(fullContext) @symbol
