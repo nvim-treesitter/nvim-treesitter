@@ -114,7 +114,7 @@ list.awk = {
 list.bash = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-bash",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   filetype = "sh",
   maintainers = { "@TravonteD" },
