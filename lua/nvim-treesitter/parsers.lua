@@ -1668,6 +1668,17 @@ list.wgsl_bevy = {
   maintainers = { "@theHamsta" },
 }
 
+list.wing = {
+  install_info = {
+    url = "https://github.com/winglang/wing",
+    files = { "src/parser.c", "src/scanner.c" },
+    location = "libs/tree-sitter-wing",
+    requires_generate_from_grammar = true,
+  },
+  maintainers = { "@gshpychka" },
+  experimental = true,
+}
+
 list.yaml = {
   install_info = {
     url = "https://github.com/ikatyang/tree-sitter-yaml",
