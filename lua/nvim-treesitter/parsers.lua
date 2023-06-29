@@ -694,6 +694,15 @@ list.hocon = {
   maintainers = { "@antosha417" },
 }
 
+list.hoon = {
+  install_info = {
+    url = "https://github.com/urbit-pilled/tree-sitter-hoon",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@urbit-pilled" },
+  experimental = true,
+}
+
 list.html = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-html",
