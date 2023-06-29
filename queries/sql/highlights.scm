@@ -69,6 +69,7 @@
  (keyword_following)
  (keyword_first)
  (keyword_current_timestamp)
+ (keyword_filter)
 ] @attribute
 
 [
