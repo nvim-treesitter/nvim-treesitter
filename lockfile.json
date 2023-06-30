@@ -12,7 +12,7 @@
     "revision": "a4535d1530558866a543c1660c90c57fbf2fd709"
   },
   "awk": {
-    "revision": "8eaa762d05cc67c0e2cc53a0a71750b3c16733c2"
+    "revision": "16e6fd822a5efa654d0a1ad7122aa1cc5e489cff"
   },
   "bash": {
     "revision": "493646764e7ad61ce63ce3b8c59ebeb37f71b841"
@@ -132,7 +132,7 @@
     "revision": "f9176908c9eb2e11eb684d79e1d00f3b29bd65c9"
   },
   "foam": {
-    "revision": "ec73f2e317f9c09356e7be452d85671b9923a428"
+    "revision": "024449594c2841c944463481b741b141d1ab5727"
   },
   "fortran": {
     "revision": "31552ac43ecaffa443a12ebea68cc526d334892f"
@@ -225,7 +225,7 @@
     "revision": "5b61ea6129dd6841140fa0d16172ca5d105526fd"
   },
   "html": {
-    "revision": "ab91d87963c47ffd08a7967b9aa73eb53293d120"
+    "revision": "d2592b006e5270a281c6bafdbcb3768cd97fa47a"
   },
   "htmldjango": {
     "revision": "11e73ebd8e73356badaad826a0534437b208b6e7"
@@ -312,7 +312,7 @@
     "revision": "936cc84289f6de83c263ae8e659fb342867ceb16"
   },
   "matlab": {
-    "revision": "b09c27e42732c59321604a15163480ebb4f82f1c"
+    "revision": "d7b24aaaf3e4814d073517d072727319d2b5ffc3"
   },
   "menhir": {
     "revision": "db7953acb0d5551f207373c81fa07a57d7b085cb"
@@ -327,7 +327,7 @@
     "revision": "e2053f7c8856d91bc36c87604f697784845cee69"
   },
   "nickel": {
-    "revision": "b1a4718601ebd29a62bf3a7fd1069a99ccf48093"
+    "revision": "e1d9337864d209898a08c26b8cd4c2dd14c15148"
   },
   "ninja": {
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
@@ -402,7 +402,7 @@
     "revision": "843868bfb909b734bfb63778a5685fae4bf2a33f"
   },
   "python": {
-    "revision": "dd3861c8f433c963cab727ad0827b55da74faae6"
+    "revision": "36f9e33d52b7572536ac1a8af8d7e78363ad52c3"
   },
   "ql": {
     "revision": "bd087020f0d8c183080ca615d38de0ec827aeeaf"
@@ -447,7 +447,7 @@
     "revision": "0a70e15da977489d954c219af9b50b8a722630ee"
   },
   "scala": {
-    "revision": "cda0de8a038b0e4ad79a97f7aa281250fcf88560"
+    "revision": "8062487fb3b7f3ce1bb7ce1fd1c84bed60c75203"
   },
   "scheme": {
     "revision": "0c763bd5f85b18e354bc338d17cf1daa23b478b1"
@@ -570,7 +570,7 @@
     "revision": "7cd38d6895060b023353e04f7af099ec64add5d1"
   },
   "wing": {
-    "revision": "e6d0f806db97dac29cdc6ba6a029055123312e6d"
+    "revision": "e5327844f545d4b6d78d23afc97439fae2aa5944"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
