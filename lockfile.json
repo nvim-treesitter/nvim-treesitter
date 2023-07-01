@@ -174,7 +174,7 @@
     "revision": "53ca269cae2a47b1b75791e2bfe843baeb02e903"
   },
   "go": {
-    "revision": "3a3a8ee53777eaa6cbfc032afd11af407ee1f7fe"
+    "revision": "7a4edcbc376302efa8d6ba7e235070ab7ee3c4c8"
   },
   "godot_resource": {
     "revision": "b6ef0768711086a86b3297056f9ffb5cc1d77b4a"
@@ -312,7 +312,7 @@
     "revision": "936cc84289f6de83c263ae8e659fb342867ceb16"
   },
   "matlab": {
-    "revision": "d7b24aaaf3e4814d073517d072727319d2b5ffc3"
+    "revision": "0b020e5816830ad51ad2cd6185bd9b5052ab2df4"
   },
   "menhir": {
     "revision": "db7953acb0d5551f207373c81fa07a57d7b085cb"
@@ -570,7 +570,7 @@
     "revision": "7cd38d6895060b023353e04f7af099ec64add5d1"
   },
   "wing": {
-    "revision": "e5327844f545d4b6d78d23afc97439fae2aa5944"
+    "revision": "9840f377f740fb0efa902ccdd4b9f386a50a1d2b"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
