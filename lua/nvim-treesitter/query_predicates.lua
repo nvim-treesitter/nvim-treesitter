@@ -57,7 +57,7 @@ query.add_predicate("nth?", function(match, _pattern, _bufnr, pred)
   end
 
   return false
-end)
+end, true)
 
 ---@param match (TSNode|nil)[]
 ---@param _pattern string
@@ -117,7 +117,7 @@ query.add_predicate("is?", function(match, _pattern, bufnr, pred)
   local _, _, kind = locals.find_definition(node, bufnr)
 
   return vim.tbl_contains(types, kind)
-end)
+end, true)
 
 ---@param match (TSNode|nil)[]
 ---@param _pattern string
@@ -137,7 +137,7 @@ query.add_predicate("has-type?", function(match, _pattern, _bufnr, pred)
   end
 
   return vim.tbl_contains(types, node:type())
-end)
+end, true)
 
 ---@param match (TSNode|nil)[]
 ---@param _ string
@@ -158,7 +158,7 @@ query.add_directive("set-lang-from-mimetype!", function(match, _, bufnr, pred, m
     local parts = vim.split(type_attr_value, "/", {})
     metadata.language = parts[#parts]
   end
-end)
+end, true)
 
 ---@param match (TSNode|nil)[]
 ---@param _ string
@@ -173,10 +173,10 @@ query.add_directive("set-lang-from-info-string!", function(match, _, bufnr, pred
   end
   local injection_alias = vim.treesitter.get_node_text(node, bufnr)
   metadata.language = get_parser_from_markdown_info_string(injection_alias)
-end)
+end, true)
 
 -- Just avoid some annoying warnings for this directive
-query.add_directive("make-range!", function() end)
+query.add_directive("make-range!", function() end, true)
 
 ---@param match (TSNode|nil)[]
 ---@param _ string
@@ -209,7 +209,7 @@ query.add_directive("downcase!", function(match, _, bufnr, pred, metadata)
   else
     metadata[key] = string.lower(text)
   end
-end)
+end, true)
 
 ---@param match (TSNode|nil)[]
 ---@param _pattern string
@@ -240,7 +240,7 @@ query.add_directive("exclude_children!", function(match, _pattern, _bufnr, pred,
     table.insert(ranges, { start_row, start_col, end_row, end_col })
   end
   metadata.content = ranges
-end)
+end, true)
 
 -- Trim blank lines from end of the region
 -- Arguments are the captures to trim.
@@ -278,4 +278,4 @@ query.add_directive("trim!", function(match, _, bufnr, pred, metadata)
       metadata[id].range = { start_row, start_col, end_row, end_col }
     end
   end
-end)
+end, true)
