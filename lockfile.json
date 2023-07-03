@@ -6,7 +6,7 @@
     "revision": "80ea622cf952a0059e168e5c92a798b2f1925652"
   },
   "arduino": {
-    "revision": "da8cae9ce365a81dcba25256f76c713674121017"
+    "revision": "bf0db73db96ec02f872cb7b5058dcc8bfd8fe714"
   },
   "astro": {
     "revision": "a4535d1530558866a543c1660c90c57fbf2fd709"
@@ -21,7 +21,7 @@
     "revision": "27f110dfe79620993f5493ffa0d0f2fe12d250ed"
   },
   "beancount": {
-    "revision": "f3741a3a68ade59ec894ed84a64673494d2ba8f3"
+    "revision": "358e5ecbb87109eef7fd596ea518a4ff74cb9b31"
   },
   "bibtex": {
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
@@ -312,7 +312,7 @@
     "revision": "936cc84289f6de83c263ae8e659fb342867ceb16"
   },
   "matlab": {
-    "revision": "3e7fb43959510b923d4f28eb1f0ca2de12921690"
+    "revision": "835cdab0e105ccc670cf08193a958d1661f3e52b"
   },
   "menhir": {
     "revision": "db7953acb0d5551f207373c81fa07a57d7b085cb"
@@ -471,7 +471,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "e35a16e4b7b342de6a0fbeee108d536bb6633562"
+    "revision": "5bf5e5256949b5d0b1bfecd9ac7ee86630760aea"
   },
   "squirrel": {
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
@@ -495,7 +495,7 @@
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
   },
   "t32": {
-    "revision": "fatal: unable to access 'https://codeberg.org/xasc/tree-sitter-t32/': The requested URL returned error: 502"
+    "revision": "4e581fcd17d76651aa92759a68f9a8186b9fe8dc"
   },
   "tablegen": {
     "revision": "e5e046e1b221e25111175469f02f3cf336010857"
@@ -570,7 +570,7 @@
     "revision": "7cd38d6895060b023353e04f7af099ec64add5d1"
   },
   "wing": {
-    "revision": "99220ed7dc54f0b5b4a827a07dbcdecd51773223"
+    "revision": "0835281a20ec380fc52a1179de908c951d8d447d"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
