@@ -1600,12 +1600,12 @@ list.uxntal = {
 
 list.v = {
   install_info = {
-    url = "https://github.com/vlang/vls",
+    url = "https://github.com/v-analyzer/v-analyzer",
     files = { "src/parser.c", "src/scanner.c" },
     location = "tree_sitter_v",
   },
   filetype = "vlang",
-  maintainers = { "@kkharji" },
+  maintainers = { "@kkharji", "@amaanq" },
 }
 
 list.vala = {

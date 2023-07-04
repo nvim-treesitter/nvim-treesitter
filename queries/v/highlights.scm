@@ -1,76 +1,35 @@
-;; reference https://github.com/vlang/vls
-;; rev: c3e9874fa6c3b38beaa50d53aff4967403e251a4
-
-;; Identifiers -------------------
-(import_path) @namespace
-(module_identifier) @variable.builtin
-(identifier) @variable
-(interpreted_string_literal) @string
-(string_interpolation) @none
-
-; TODO: Have different highlight to make then standout + highlight }{$ as special
-; ((string_interpolation
-;   (identifier) @constant
-;   "$" @punctuation.special
-;   "${" @punctuation.special
-;   "}" @punctuation.special))
-
-[(type_identifier) (array_type) (pointer_type)] @type
-
-(field_identifier) @property
-
-(builtin_type) @type.builtin
-
-(parameter_declaration
-  name: (identifier) @parameter)
-
-(const_spec
-  name: (identifier) @constant)
-
-((((selector_expression field: (identifier) @property)) @_parent
-  (#not-has-parent? @_parent call_expression special_call_expression)))
-
-((identifier) @variable.builtin
-  (#any-of? @variable.builtin "err" "macos" "linux" "windows"))
-
-(attribute_declaration) @attribute
-;; C: TODO: fixme make `C`.exten highlighted as variable.builtin
-; ((binded_identifier) @content
-;  (#offset! @content 0 3 0 -1)
-;  (#match? @content "^C$"))
-
-;; Function calls ----------------
-(call_expression
-  function: (identifier) @function.call)
-
-(((_
-   function: (selector_expression field: (identifier) @function.call)
-   arguments: (_) @_args)
-  (#not-has-type? @_args arguments_list)))
-
-((call_expression
-  function: (binded_identifier name: (identifier) @function)
-  @function.call))
-
-
-;; Function definitions ---------
-(function_declaration
-  name: (identifier) @function)
-
-(function_declaration
-  receiver: (parameter_list)
-  name: (identifier) @method)
-
-((function_declaration
-  (binded_identifier name: (identifier) @function)
-  @function))
-
-;; Keywords
+; Includes
 
 [
   "import"
   "module"
 ] @include
+
+; Keywords
+
+[
+  "asm"
+  "assert"
+  "const"
+  "defer"
+  "enum"
+  "goto"
+  "interface"
+  "struct"
+  "sql"
+  "type"
+  "union"
+  "unsafe"
+] @keyword
+
+[
+  "as"
+  "in"
+  "!in"
+  "or"
+  "is"
+  "!is"
+] @keyword.operator
 
 [
   "match"
@@ -78,119 +37,138 @@
   "$if"
   "else"
   "$else"
+  "select"
 ] @conditional
 
 [
-  "for" @repeat
+  "for"
   "$for"
+  "continue"
+  "break"
 ] @repeat
 
-[
- "as"
- "in"
- "!in"
- "or"
- "is"
- "!is"
-] @keyword.operator
-
-[
- "asm"
- "assert"
- "const"
- "defer"
- "enum"
- "go"
- "goto"
- "interface"
- "lock"
- "mut"
- "pub"
- "rlock"
- "struct"
- "type"
- "unsafe"
-]
- ;; Either not supported or will be dropped
- ;"atomic"
- ;"break"
- ; "continue"
- ;"shared"
- ;"static"
- ;"union"
-@keyword
-
 "fn" @keyword.function
+
 "return" @keyword.return
 
-; "import" @include ;; note: comment out b/c of import_path @namespace
+[
+  "__global"
+  "shared"
+  "static"
+  "const"
+] @storageclass
+
+[
+  "pub"
+  "mut"
+] @type.qualifier
+
+[
+  "go"
+  "spawn"
+  "lock"
+  "rlock"
+] @keyword.coroutine
+
+; Variables
+
+(identifier) @variable
+
+; Namespace
+
+(module_clause
+ (identifier) @namespace)
+
+(import_path
+ (import_name) @namespace)
+
+(import_alias
+ (import_name) @namespace)
+
+; Literals
 
 [ (true) (false) ] @boolean
 
+(interpreted_string_literal) @string
 
+(string_interpolation) @none
 
-;; Conditionals ----------------
-[ "else" "if"] @conditional
+; Types
 
-;; Operators ----------------
-[ "." "," ":" ";"] @punctuation.delimiter
+(struct_declaration
+  name: (identifier) @type)
 
-[ "(" ")" "{" "}" "[" "]"] @punctuation.bracket
+(enum_declaration
+  name: (identifier) @type)
 
-(array) @punctuation.bracket
+(interface_declaration
+  name: (identifier) @type)
 
-[
- "++"
- "--"
+(type_declaration
+  name: (identifier) @type)
 
- "+"
- "-"
- "*"
- "/"
- "%"
+(type_reference_expression (identifier) @type)
 
- "~"
- "&"
- "|"
- "^"
+; Labels
 
- "!"
- "&&"
- "||"
- "!="
+(label_reference) @label
 
- "<<"
- ">>"
+; Fields
 
- "<"
- ">"
- "<="
- ">="
+(selector_expression field: (reference_expression (identifier) @field))
 
- "+="
- "-="
- "*="
- "/="
- "&="
- "|="
- "^="
- "<<="
- ">>="
+(field_name) @field
 
- "="
- ":="
- "=="
+(struct_field_declaration
+  name: (identifier) @field)
 
- "?"
- "<-"
- "$"
- ".."
- "..."]
-@operator
+; Parameters
 
-;; Builtin Functions, maybe redundant with (builtin_type)
+(parameter_declaration
+  name: (identifier) @parameter)
+
+(receiver
+  name: (identifier) @parameter)
+
+; Constants
+
+((identifier) @constant
+  (#has-ancestor? @constant compile_time_if_expression))
+
+(enum_fetch
+  (reference_expression) @constant)
+
+(enum_field_definition
+  (identifier) @constant)
+
+(const_definition
+  name: (identifier) @constant)
+
+((identifier) @variable.builtin
+  (#any-of? @variable.builtin "err" "macos" "linux" "windows"))
+
+; Attributes
+
+(attribute) @attribute
+
+; Functions
+
+(function_declaration
+  name: (identifier) @function)
+
+(function_declaration
+  receiver: (receiver)
+  name: (identifier) @method)
+
+(call_expression
+ name: (selector_expression
+  field: (reference_expression) @method.call))
+
+(call_expression
+ name: (reference_expression) @function.call)
+
 ((identifier) @function.builtin
- (#any-of? @function.builtin
+  (#any-of? @function.builtin
     "eprint"
     "eprintln"
     "error"
@@ -389,25 +367,101 @@
     "vstrlen_char"
     "winapi_lasterr_str"))
 
+; Operators
 
-;; Literals
+[
+  "++"
+  "--"
+
+  "+"
+  "-"
+  "*"
+  "/"
+  "%"
+
+  "~"
+  "&"
+  "|"
+  "^"
+
+  "!"
+  "&&"
+  "||"
+  "!="
+
+  "<<"
+  ">>"
+
+  "<"
+  ">"
+  "<="
+  ">="
+
+  "+="
+  "-="
+  "*="
+  "/="
+  "&="
+  "|="
+  "^="
+  "<<="
+  ">>="
+
+  "="
+  ":="
+  "=="
+
+  "?"
+  "<-"
+  "$"
+  ".."
+  "..."
+] @operator
+
+; Punctuation
+
+[ "." "," ":" ";" ] @punctuation.delimiter
+
+[ "(" ")" "{" "}" "[" "]" ] @punctuation.bracket
+
+; Literals
 
 (int_literal) @number
 
-(rune_literal) @string
+(float_literal) @float
 
-(raw_string_literal) @string
+[
+  (c_string_literal)
+  (raw_string_literal)
+  (interpreted_string_literal)
+  (string_interpolation)
+  (rune_literal)
+] @string
+
+(string_interpolation
+  (braced_interpolation_opening) @punctuation.bracket
+  (interpolated_expression) @none
+  (braced_interpolation_closing) @punctuation.bracket)
 
 (escape_sequence) @string.escape
 
-(float_literal) @float
+[
+  (true)
+  (false)
+] @boolean
 
-[(true) (false)] @boolean
+(nil) @constant.builtin
 
-(ERROR) @error
+(none) @variable.builtin
+
+; Comments
 
 (comment) @comment @spell
 
 (_
   (comment)+ @comment.documentation
-  [(function_declaration) (type_declaration) (const_spec) (enum_declaration)])
+  [(function_declaration) (type_declaration) (enum_declaration)])
+
+; Errors
+
+(ERROR) @error
