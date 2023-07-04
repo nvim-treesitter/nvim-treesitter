@@ -731,8 +731,7 @@ list.http = {
 
 list.hurl = {
   install_info = {
-    url = "https://github.com/pfeiferj/tree-sitter-hurl.git",
-    branch = "main",
+    url = "https://github.com/pfeiferj/tree-sitter-hurl",
     files = { "src/parser.c" },
   },
   maintainers = { "@pfeiferj" },
