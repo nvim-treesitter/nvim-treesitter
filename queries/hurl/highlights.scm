@@ -56,7 +56,7 @@
   (variable_option "variable")
   "verbose"
   "very-verbose"
-]
+] @constant.builtin
 
 (boolean) @boolean
 
