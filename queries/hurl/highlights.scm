@@ -1,51 +1,59 @@
 ; highlights.scm
 
-"[QueryStringParams]" @property
-"[FormParams]" @property
-"[MultipartFormData]" @property
-"[Cookies]" @property
-"[Captures]" @property
-"[Asserts]" @property
-"[Options]" @property
-"[BasicAuth]" @property
+[ 
+  "[QueryStringParams]"
+  "[FormParams]"
+  "[MultipartFormData]"
+  "[Cookies]"
+  "[Captures]"
+  "[Asserts]"
+  "[Options]"
+  "[BasicAuth]"
+] @property
 
 (comment) @comment @spell
 
 (key_string) @property
 (json_key_string) @property
 
-(value_string) @string
-(quoted_string) @string
-(json_string) @string
+[ 
+  (value_string)
+  (quoted_string)
+  (json_string)
+] @string
 (file_value) @string.special
 (regex) @string.regex
 
-"\\" @string.escape
-(regex_escaped_char) @string.escape
-(quoted_string_escaped_char) @string.escape
-(key_string_escaped_char) @string.escape
-(value_string_escaped_char) @string.escape
-(oneline_string_escaped_char) @string.escape
-(multiline_string_escaped_char) @string.escape
-(filename_escaped_char) @string.escape
-(json_string_escaped_char) @string.escape
+[ 
+  "\\"
+  (regex_escaped_char)
+  (quoted_string_escaped_char)
+  (key_string_escaped_char)
+  (value_string_escaped_char)
+  (oneline_string_escaped_char)
+  (multiline_string_escaped_char)
+  (filename_escaped_char)
+  (json_string_escaped_char)
+] @string.escape
 
 (method) @type.builtin
 (multiline_string_type) @type
 
-"status" @function.builtin
-"url" @function.builtin
-"header" @function.builtin
-"cookie" @function.builtin
-"body" @function.builtin
-"xpath" @function.builtin
-"jsonpath" @function.builtin
-"regex" @function.builtin
-"variable" @function.builtin
-"duration" @function.builtin
-"sha256" @function.builtin
-"md5" @function.builtin
-"bytes" @function.builtin
+[
+  "status"
+  "url"
+  "header"
+  "cookie"
+  "body"
+  "xpath"
+  "jsonpath"
+  "regex"
+  "variable"
+  "duration"
+  "sha256"
+  "md5"
+  "bytes"
+] @function.builtin
 
 (filter) @attribute
 
@@ -70,45 +78,49 @@
 
 (variable_name) @variable
 
-"not" @keyword.operator
-"equals" @keyword.operator
-"==" @operator
-"notEquals" @keyword.operator
-"!=" @operator
-"greaterThan" @keyword.operator
-">" @operator
-"greaterThanOrEquals" @keyword.operator
-">=" @operator
-"lessThan" @keyword.operator
-"<" @operator
-"lessThanOrEquals" @keyword.operator
-"<=" @operator
-"startsWith" @keyword.operator
-"endsWith" @keyword.operator
-"contains" @keyword.operator
-"matches" @keyword.operator
-"exists" @keyword.operator
-"includes" @keyword.operator
-"isInteger" @keyword.operator
-"isFloat" @keyword.operator
-"isBoolean" @keyword.operator
-"isString" @keyword.operator
-"isCollection" @keyword.operator
+[
+  "not"
+  "equals"
+  "notEquals"
+  "greaterThan"
+  "greaterThanOrEquals"
+  "lessThan"
+  "lessThanOrEquals"
+  "startsWith"
+  "endsWith"
+  "contains"
+  "matches"
+  "exists"
+  "includes"
+  "isInteger"
+  "isFloat"
+  "isBoolean"
+  "isString"
+  "isCollection"
+] @keyword.operator
 
-(integer) @number
-(float) @float
-(status) @number
-(json_number) @float
+[
+  "=="
+  "!="
+  ">"
+  ">="
+  "<"
+  "<="
+] @operator
 
-":" @punctuation.delimiter
-"," @punctuation.delimiter
+[
+  (integer)
+  (status)
+] @number
 
-"[" @punctuation.bracket
-"]" @punctuation.bracket
-"{" @punctuation.bracket
-"}" @punctuation.bracket
-"{{" @punctuation.special
-"}}" @punctuation.special
+[
+  (float)
+  (json_number)
+] @float
+
+[ ":" "," ] @punctuation.delimiter
+
+[ "[" "]" "{" "}" "{{" "}}" ] @punctuation.bracket
 
 "base64," @string.special
 "file," @string.special
