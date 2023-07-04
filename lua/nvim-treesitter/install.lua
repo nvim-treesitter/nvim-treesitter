@@ -305,6 +305,21 @@ local function do_download_git(logger, repo, project_name, cache_dir, revision, 
   end
 end
 
+--- @type table<string,table<string,boolean>>
+local cc_args_cache = vim.defaulttable()
+
+--- @param cc string
+--- @param arg string
+--- @return boolean
+local function test_cc_arg(cc, arg)
+  if cc_args_cache[cc][arg] == nil then
+    cc_args_cache[cc][arg] = system({ cc, '-xc', '-', arg }, {
+      stdin = 'int main(void) { return 0; }',
+    }).code == 0
+  end
+  return cc_args_cache[cc][arg]
+end
+
 ---@param executables string[]
 ---@return string?
 function M.select_executable(executables)
@@ -356,6 +371,13 @@ local function select_compiler_args(repo, compiler)
     ismac and '-bundle' or '-shared',
   }
 
+  --- @param arg string
+  local function add_cc_arg(arg)
+    if test_cc_arg(compiler, arg) then
+      args[#args + 1] = arg
+    end
+  end
+
   if
     #vim.iter.filter(
       --- @param file string
@@ -367,11 +389,17 @@ local function select_compiler_args(repo, compiler)
       repo.files
     ) > 0
   then
-    table.insert(args, '-lstdc++')
+    add_cc_arg('-lstdc++')
   end
 
   if not iswin then
-    table.insert(args, '-fPIC')
+    add_cc_arg('-Wall')
+    add_cc_arg('-Wextra')
+    add_cc_arg('-fPIC')
+
+    -- Make sure we don't compile in any unresolved symbols, otherwise nvim will
+    -- just exit (not even crash)
+    add_cc_arg('-Werror=implicit-function-declaration')
   end
 
   return args
