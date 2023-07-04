@@ -222,7 +222,7 @@
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
   },
   "hoon": {
-    "revision": "5b61ea6129dd6841140fa0d16172ca5d105526fd"
+    "revision": "89271dfe18f20aa71cbe5ef813252a8f98901240"
   },
   "html": {
     "revision": "d2592b006e5270a281c6bafdbcb3768cd97fa47a"
@@ -312,7 +312,7 @@
     "revision": "936cc84289f6de83c263ae8e659fb342867ceb16"
   },
   "matlab": {
-    "revision": "835cdab0e105ccc670cf08193a958d1661f3e52b"
+    "revision": "676117eafa64afedc8380a921a77cd9f2244bc6b"
   },
   "menhir": {
     "revision": "db7953acb0d5551f207373c81fa07a57d7b085cb"
@@ -543,7 +543,7 @@
     "revision": "14e47600afef0affffcbfbe1543381b1ac8fbc5c"
   },
   "v": {
-    "revision": "519e0f64007a40852e59bb72ff1b6e2375068664"
+    "revision": "f1b3a99285a58c6f5fe8add47877cde664b75a60"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -570,7 +570,7 @@
     "revision": "7cd38d6895060b023353e04f7af099ec64add5d1"
   },
   "wing": {
-    "revision": "0835281a20ec380fc52a1179de908c951d8d447d"
+    "revision": "b9fa34ca30af7ef40d35cb844fd8677872ddf0bd"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
