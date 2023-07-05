@@ -48,7 +48,7 @@
 ;; Builtins
 
 ((identifier) @function.builtin
-  (#any-of? @function.builtin 
+  (#any-of? @function.builtin
   "_abstracttype" "_apply_iterate" "_apply_pure" "_call_in_world" "_call_in_world_total"
   "_call_latest" "_equiv_typedef" "_expr" "_primitivetype" "_setsuper!" "_structtype"
   "_typebody!" "_typevar" "applicable" "apply_type" "arrayref" "arrayset" "arraysize"
@@ -85,7 +85,6 @@
 (struct_definition
   name: (identifier) @type)
 (type_clause
-  ["<:" ">:"] @operator
   [(identifier) @type
     (field_expression (identifier) @type .)])
 
@@ -288,7 +287,7 @@
       (struct_definition)
       (function_definition)
       (assignment)
-      (const_declaration)
+      (const_statement)
     ])
 
 [
