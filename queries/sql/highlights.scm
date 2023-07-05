@@ -5,7 +5,6 @@
   (keyword_spgist)
   (keyword_gin)
   (keyword_brin)
-  (keyword_float)
   (keyword_array)
 ] @function.call
 
@@ -69,7 +68,13 @@
  (keyword_following)
  (keyword_first)
  (keyword_current_timestamp)
- (keyword_filter)
+ (keyword_immutable)
+ (keyword_atomic)
+ (keyword_parallel)
+ (keyword_leakproof)
+ (keyword_safe)
+ (keyword_cost)
+ (keyword_strict)
 ] @attribute
 
 [
@@ -87,6 +92,7 @@
  (keyword_avro)
  (keyword_jsonfile)
  (keyword_sequencefile)
+ (keyword_volatile)
 ] @storageclass
 
 [
@@ -193,21 +199,44 @@
   (keyword_sort)
   (keyword_compute)
   (keyword_comment)
-  (keyword_partitioned)
   (keyword_location)
   (keyword_cached)
   (keyword_uncached)
   (keyword_lines)
   (keyword_stored)
-  (keyword_location)
   (keyword_partitioned)
-  (keyword_cached)
   (keyword_analyze)
   (keyword_rewrite)
-  (keyword_statistics)
   (keyword_optimize)
   (keyword_vacuum)
   (keyword_cache)
+  (keyword_language)
+  (keyword_sql)
+  (keyword_called)
+  (keyword_conflict)
+  (keyword_declare)
+  (keyword_filter)
+  (keyword_function)
+  (keyword_input)
+  (keyword_name)
+  (keyword_oid)
+  (keyword_options)
+  (keyword_plpgsql)
+  (keyword_precision)
+  (keyword_regclass)
+  (keyword_regnamespace)
+  (keyword_regproc)
+  (keyword_regtype)
+  (keyword_restricted)
+  (keyword_return)
+  (keyword_returns)
+  (keyword_separator)
+  (keyword_setof)
+  (keyword_stable)
+  (keyword_support)
+  (keyword_tblproperties)
+  (keyword_trigger)
+  (keyword_unsafe)
 ] @keyword
 
 [
@@ -246,10 +275,12 @@
   (keyword_serial)
   (keyword_bigserial)
   (keyword_smallint)
+  (keyword_mediumint)
   (keyword_bigint)
   (keyword_tinyint)
   (keyword_decimal)
   (keyword_float)
+  (keyword_double)
   (keyword_numeric)
   (keyword_real)
   (double)
@@ -293,6 +324,7 @@
   "/"
   "%"
   "^"
+  ":="
   "="
   "<"
   "<="
