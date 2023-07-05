@@ -471,7 +471,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "5bf5e5256949b5d0b1bfecd9ac7ee86630760aea"
+    "revision": "b1086083473cc7a0b0476d853f3152dd3a378aef"
   },
   "squirrel": {
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
@@ -570,7 +570,7 @@
     "revision": "7cd38d6895060b023353e04f7af099ec64add5d1"
   },
   "wing": {
-    "revision": "b9fa34ca30af7ef40d35cb844fd8677872ddf0bd"
+    "revision": "0be6fa1cdb142191c608260b9ee2c74ad7bb1899"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
