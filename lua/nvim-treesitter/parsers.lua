@@ -273,7 +273,7 @@ list.css = {
 list.cuda = {
   install_info = {
     url = "https://github.com/theHamsta/tree-sitter-cuda",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
     generate_requires_npm = true,
   },
   maintainers = { "@theHamsta" },
