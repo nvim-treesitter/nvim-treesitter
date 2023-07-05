@@ -679,7 +679,7 @@ list.hjson = {
 list.hlsl = {
   install_info = {
     url = "https://github.com/theHamsta/tree-sitter-hlsl",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
     generate_requires_npm = true,
   },
   maintainers = { "@theHamsta" },
