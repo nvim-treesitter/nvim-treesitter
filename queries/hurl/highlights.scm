@@ -47,7 +47,7 @@
   "compressed"
   "location"
   "insecure"
-  "path_as_is"
+  "path-as-is"
   "proxy"
   "max-redirs"
   "retry"
