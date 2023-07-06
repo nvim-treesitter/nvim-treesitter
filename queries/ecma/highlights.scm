@@ -190,6 +190,7 @@
 (template_string) @string
 (escape_sequence) @string.escape
 (regex_pattern) @string.regex
+(regex_flags) @character.special
 (regex "/" @punctuation.bracket) ; Regex delimiters
 
 (number) @number
