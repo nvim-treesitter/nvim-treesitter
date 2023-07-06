@@ -3,12 +3,12 @@
 [
   (json_object)
   (json_array)
-] @indent
+] @indent.begin
 
 [
   "}"
   "]"
-] @branch
+] @indent.branch
 
-(xml_tag) @indent
-(xml_close_tag) @branch
+(xml_tag) @indent.begin
+(xml_close_tag) @indent.branch

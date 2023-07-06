@@ -3,5 +3,5 @@
 (xml) @html
 
 (multiline_string
-  (multiline_string_type) @language
-  (multiline_string_content) @content @include-children @combined)
+  (multiline_string_type) @injection.language
+  (multiline_string_content) @injection.content)
