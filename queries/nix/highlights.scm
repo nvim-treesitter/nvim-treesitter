@@ -37,7 +37,7 @@
   (#set! "priority" 99)) @string
 
 ; paths and URLs
-[ (path_expression) (spath_expression) (uri_expression) ] @string.special
+[ (path_expression) (hpath_expression) (spath_expression) (uri_expression) ] @string.special
 
 ; escape sequences
 (escape_sequence) @string.escape
