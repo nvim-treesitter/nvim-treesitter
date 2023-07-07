@@ -179,6 +179,14 @@ list.c_sharp = {
   maintainers = { "@Luxed" },
 }
 
+list.cairo = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-cairo",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.capnp = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-capnp",

@@ -38,6 +38,9 @@
   "c_sharp": {
     "revision": "1648e21b4f087963abf0101ee5221bb413107b07"
   },
+  "cairo": {
+    "revision": "ce7ae19dabb3fc0fb57773f6ac0a40af17adf46f"
+  },
   "capnp": {
     "revision": "7d5fa4e94d3643ec15750106113be0d40f9fc1bb"
   },
