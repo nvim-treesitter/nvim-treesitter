@@ -43,7 +43,19 @@
 
 (string) @string
 
-(comment) @comment
+[
+  (line_comment)
+  (block_comment)
+] @comment @spell
+
+((block_comment) @comment.documentation
+  (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
+
+((line_comment) @comment.documentation
+  (#lua-match? @comment.documentation "^///[^/]"))
+
+((line_comment) @comment.documentation
+  (#lua-match? @comment.documentation "^///$"))
 
 (operators) @operator
 (leading_key) @operator
