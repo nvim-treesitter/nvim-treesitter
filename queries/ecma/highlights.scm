@@ -166,6 +166,9 @@
   (super)
 ] @variable.builtin
 
+((identifier) @variable.builtin
+ (#eq? @variable.builtin "self"))
+
 [
   (true)
   (false)
