@@ -6,7 +6,7 @@
     "revision": "80ea622cf952a0059e168e5c92a798b2f1925652"
   },
   "arduino": {
-    "revision": "bf0db73db96ec02f872cb7b5058dcc8bfd8fe714"
+    "revision": "787bc6e1ca23092821231f6096438343f728ee6f"
   },
   "astro": {
     "revision": "a4535d1530558866a543c1660c90c57fbf2fd709"
@@ -39,7 +39,7 @@
     "revision": "1648e21b4f087963abf0101ee5221bb413107b07"
   },
   "cairo": {
-    "revision": "ce7ae19dabb3fc0fb57773f6ac0a40af17adf46f"
+    "revision": "02ec1461f11aa126d3c16abb2da284ca3ba15631"
   },
   "capnp": {
     "revision": "7d5fa4e94d3643ec15750106113be0d40f9fc1bb"
@@ -336,7 +336,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "02878b40ac77d2889833519c6b6e9e63cfc690e6"
+    "revision": "14b53610c9038500066c509b2e67de04775b97fe"
   },
   "norg": {
     "revision": "1a305093569632de50f9a316ff843dcda25b4ef5"
@@ -345,10 +345,10 @@
     "revision": "0612ff9874bf376db4ae92b9f46ddcd4bdec1342"
   },
   "ocaml": {
-    "revision": "82e103cee0ffb61ee59f9b654b8e1d4b8e9cab74"
+    "revision": "4e672f346fde683d506289bb191523c747205d7a"
   },
   "ocaml_interface": {
-    "revision": "82e103cee0ffb61ee59f9b654b8e1d4b8e9cab74"
+    "revision": "4e672f346fde683d506289bb191523c747205d7a"
   },
   "ocamllex": {
     "revision": "62118551bd9501b8253598b835cb4bef04b31e3d"
@@ -552,7 +552,7 @@
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
   },
   "verilog": {
-    "revision": "4457145e795b363f072463e697dfe2f6973c9a52"
+    "revision": "22f9b845c77c52b86b21adaebe689864957f4e31"
   },
   "vhs": {
     "revision": "fec6e981b7795b68262ddf229d73d2aa03a89b9a"
@@ -573,7 +573,7 @@
     "revision": "7cd38d6895060b023353e04f7af099ec64add5d1"
   },
   "wing": {
-    "revision": "c4a42cd02490e52cb9ba517f88f6636327f2bc82"
+    "revision": "eeb6325378b4de68a6889774efc34a73ba84f9b4"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
