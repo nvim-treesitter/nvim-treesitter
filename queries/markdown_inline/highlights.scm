@@ -15,6 +15,8 @@
 
 (strikethrough) @text.strike
 
+(tag) @tag
+
 [
   (link_destination)
   (uri_autolink)
@@ -37,6 +39,7 @@
 (image ["[" "]" "(" ")"] @punctuation.bracket)
 (inline_link ["[" "]" "(" ")"] @punctuation.bracket)
 (shortcut_link ["[" "]"] @punctuation.bracket)
+(wiki_link ["[" "|" "]"] @punctuation.bracket)
 
 ; Conceal codeblock and text style markers
 ([
@@ -54,6 +57,23 @@
     (link_destination)
     ")"
   ] @conceal
+  (#set! conceal ""))
+
+; Conceal wiki links
+(wiki_link
+  [
+    "["
+    "]"
+  ] @conceal
+  (#set! conceal ""))
+
+; Conceal destination of wiki links if display text is present
+(wiki_link
+  [
+    (link_destination)
+    "|"
+  ] @conceal
+  (link_text)
   (#set! conceal ""))
 
 ; Conceal image links
