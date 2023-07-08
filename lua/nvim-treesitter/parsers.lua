@@ -1187,6 +1187,15 @@ list.prisma = {
   maintainers = { "@elianiva" },
 }
 
+list.promql = {
+  install_info = {
+    url = "https://github.com/MichaHoffmann/tree-sitter-promql",
+    files = { "src/parser.c" },
+    experimental = true,
+  },
+  maintainers = { "@MichaHoffmann" },
+}
+
 list.proto = {
   install_info = {
     url = "https://github.com/mitchellh/tree-sitter-proto",
