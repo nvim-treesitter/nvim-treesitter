@@ -12,7 +12,7 @@
     "revision": "a4535d1530558866a543c1660c90c57fbf2fd709"
   },
   "awk": {
-    "revision": "16e6fd822a5efa654d0a1ad7122aa1cc5e489cff"
+    "revision": "476b1a0f3de58c31cde57317c744059ca6792e52"
   },
   "bash": {
     "revision": "493646764e7ad61ce63ce3b8c59ebeb37f71b841"
@@ -270,7 +270,7 @@
     "revision": "fdc775714afa27fdef823adbaba6ab98f5ae66f2"
   },
   "julia": {
-    "revision": "8e5ce1e5a96e8dfe0b0eee74633f5ba2766bf48b"
+    "revision": "784364cb9185ef8dc245de4b0b51e3a22503419d"
   },
   "kdl": {
     "revision": "e180e05132c4cb229a8ba679b298790ef1eca77c"
@@ -573,7 +573,7 @@
     "revision": "7cd38d6895060b023353e04f7af099ec64add5d1"
   },
   "wing": {
-    "revision": "eeb6325378b4de68a6889774efc34a73ba84f9b4"
+    "revision": "8b4843a1c432d42e00a28f7eafb81a9f591fecb3"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
