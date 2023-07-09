@@ -1045,7 +1045,7 @@ list.objc = {
 list.ocaml = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ocaml",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
     location = "ocaml",
   },
   maintainers = { "@undu" },
@@ -1054,7 +1054,7 @@ list.ocaml = {
 list.ocaml_interface = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ocaml",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
     location = "interface",
   },
   filetype = "ocamlinterface",
