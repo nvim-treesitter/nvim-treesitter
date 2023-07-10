@@ -9,10 +9,10 @@
     "revision": "787bc6e1ca23092821231f6096438343f728ee6f"
   },
   "astro": {
-    "revision": "a4535d1530558866a543c1660c90c57fbf2fd709"
+    "revision": "e122a8fcd07e808a7b873bfadc2667834067daf1"
   },
   "awk": {
-    "revision": "476b1a0f3de58c31cde57317c744059ca6792e52"
+    "revision": "7fef05082d7aeb4e9dc0d9dca2695056b28ce6a8"
   },
   "bash": {
     "revision": "493646764e7ad61ce63ce3b8c59ebeb37f71b841"
@@ -345,10 +345,10 @@
     "revision": "0612ff9874bf376db4ae92b9f46ddcd4bdec1342"
   },
   "ocaml": {
-    "revision": "7a61e11f8e44b4edee23adb15a187c9dd2beecef"
+    "revision": "3ad4d7988edf8b8a9780a1db7a5af657911dbfba"
   },
   "ocaml_interface": {
-    "revision": "7a61e11f8e44b4edee23adb15a187c9dd2beecef"
+    "revision": "3ad4d7988edf8b8a9780a1db7a5af657911dbfba"
   },
   "ocamllex": {
     "revision": "fab854a2de25b2284582bf7ed7f9970d19988c73"
@@ -573,7 +573,7 @@
     "revision": "7cd38d6895060b023353e04f7af099ec64add5d1"
   },
   "wing": {
-    "revision": "8b4843a1c432d42e00a28f7eafb81a9f591fecb3"
+    "revision": "210e492e7729cdadd326123949bd5eed73065cf3"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
