@@ -1064,7 +1064,7 @@ list.ocaml_interface = {
 list.ocamllex = {
   install_info = {
     url = "https://github.com/atom-ocaml/tree-sitter-ocamllex",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
     requires_generate_from_grammar = true,
   },
   maintainers = { "@undu" },
