@@ -737,6 +737,14 @@ list.http = {
   maintainers = { "@amaanq" },
 }
 
+list.hurl = {
+  install_info = {
+    url = "https://github.com/pfeiferj/tree-sitter-hurl",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@pfeiferj" },
+}
+
 list.ini = {
   install_info = {
     url = "https://github.com/justinmk/tree-sitter-ini",

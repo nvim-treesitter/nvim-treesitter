@@ -236,6 +236,9 @@
   "http": {
     "revision": "6824a247d1326079aab4fa9f9164e9319678081d"
   },
+  "hurl": {
+    "revision": "0eca909c8338364992e04c4862ac6afc5342cbb8"
+  },
   "ini": {
     "revision": "1a0ce072ebf3afac7d5603d9a95bb7c9a6709b44"
   },
