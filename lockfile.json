@@ -252,7 +252,7 @@
     "revision": "c194ee5e6ede5f26cf4799feead4a8f165dcf14d"
   },
   "javascript": {
-    "revision": "5720b249490b3c17245ba772f6be4a43edb4e3b7"
+    "revision": "f772967f7b7bc7c28f845be2420a38472b16a8ee"
   },
   "jq": {
     "revision": "13990f530e8e6709b7978503da9bc8701d366791"
@@ -528,7 +528,7 @@
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
   },
   "tsx": {
-    "revision": "3429d8c77d7a83e80032667f0642e6cb19d0c772"
+    "revision": "51c4c9eb5387c6e42fdb02f22fe68d408c89952b"
   },
   "turtle": {
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
@@ -537,7 +537,7 @@
     "revision": "779ee5ab1e065dcef7f51f253030dc875445b25f"
   },
   "typescript": {
-    "revision": "3429d8c77d7a83e80032667f0642e6cb19d0c772"
+    "revision": "51c4c9eb5387c6e42fdb02f22fe68d408c89952b"
   },
   "ungrammar": {
     "revision": "debd26fed283d80456ebafa33a06957b0c52e451"
