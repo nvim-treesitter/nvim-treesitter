@@ -1473,6 +1473,14 @@ list.sxhkdrc = {
   maintainers = { "@RaafatTurki" },
 }
 
+list.systemtap = {
+  install_info = {
+    url = "https://github.com/ok-ryoko/tree-sitter-systemtap",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@ok-ryoko" },
+}
+
 list.t32 = {
   install_info = {
     url = "https://codeberg.org/xasc/tree-sitter-t32",
