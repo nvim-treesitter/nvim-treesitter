@@ -159,7 +159,7 @@
     "revision": "d8a4207ebbc47bd78bacdf48f883db58283f9fd8"
   },
   "gitattributes": {
-    "revision": "577a075d46ea109905c5cb6179809df88da61ce9"
+    "revision": "19c716d2f45eac9529703413dc12aa8c76d13adc"
   },
   "gitcommit": {
     "revision": "6856a5fd0ffeff17d83325a8ce4e57811010eff1"
@@ -177,7 +177,7 @@
     "revision": "53ca269cae2a47b1b75791e2bfe843baeb02e903"
   },
   "go": {
-    "revision": "7a4edcbc376302efa8d6ba7e235070ab7ee3c4c8"
+    "revision": "8c8007eaee47702bb0291a3c7aeb004909baab4d"
   },
   "godot_resource": {
     "revision": "b6ef0768711086a86b3297056f9ffb5cc1d77b4a"
@@ -348,13 +348,13 @@
     "revision": "6d876afade2d5e70d394aaf994321c78297e3607"
   },
   "ocaml": {
-    "revision": "3ad4d7988edf8b8a9780a1db7a5af657911dbfba"
+    "revision": "fa4a8175a005a35c934ab36c4e4887d217061b2e"
   },
   "ocaml_interface": {
-    "revision": "3ad4d7988edf8b8a9780a1db7a5af657911dbfba"
+    "revision": "fa4a8175a005a35c934ab36c4e4887d217061b2e"
   },
   "ocamllex": {
-    "revision": "fab854a2de25b2284582bf7ed7f9970d19988c73"
+    "revision": "c8f90e42e1b9cf9e30b1669c386b8d9de992d201"
   },
   "odin": {
     "revision": "d165dbee27617dab2653e38737d96ede1030d14f"
@@ -408,7 +408,7 @@
     "revision": "843868bfb909b734bfb63778a5685fae4bf2a33f"
   },
   "python": {
-    "revision": "db1d218a4f8fb87145aabeb22ca3c35925c411fc"
+    "revision": "538a5322047be6af79c246b6253f2e6e26680fad"
   },
   "ql": {
     "revision": "bd087020f0d8c183080ca615d38de0ec827aeeaf"
@@ -576,7 +576,7 @@
     "revision": "7cd38d6895060b023353e04f7af099ec64add5d1"
   },
   "wing": {
-    "revision": "755aef4e57da4a00da47e85b6aff976b007d500c"
+    "revision": "8d973d1749d5f11aae4d45e1c1eb0b145dc4067f"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
