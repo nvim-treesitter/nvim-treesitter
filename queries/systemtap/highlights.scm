@@ -109,7 +109,6 @@
 
 [
   "delete"
-  "global"
   "limit"
   "next"
   "private"
@@ -150,3 +149,5 @@
 ] @preproc
 
 "@define" @define
+
+"global" @storageclass
