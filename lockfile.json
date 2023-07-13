@@ -339,7 +339,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "14b53610c9038500066c509b2e67de04775b97fe"
+    "revision": "66e3e9ce9180ae08fc57372061006ef83f0abde7"
   },
   "norg": {
     "revision": "1a305093569632de50f9a316ff843dcda25b4ef5"
@@ -378,7 +378,7 @@
     "revision": "d43130fd1525301e9826f420c5393a4d169819fc"
   },
   "phpdoc": {
-    "revision": "2d20f39476348c2682761ce7251914031a7c013f"
+    "revision": "915a527d5aafa81b31acf67fab31b0ac6b6319c0"
   },
   "pioasm": {
     "revision": "924aadaf5dea2a6074d72027b064f939acf32e20"
@@ -408,7 +408,7 @@
     "revision": "843868bfb909b734bfb63778a5685fae4bf2a33f"
   },
   "python": {
-    "revision": "538a5322047be6af79c246b6253f2e6e26680fad"
+    "revision": "7c8930b6388b5590ebef248853f144185a9eda1d"
   },
   "ql": {
     "revision": "bd087020f0d8c183080ca615d38de0ec827aeeaf"
@@ -528,7 +528,7 @@
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
   },
   "tsx": {
-    "revision": "51c4c9eb5387c6e42fdb02f22fe68d408c89952b"
+    "revision": "6e695f4148a3ea96f0678513a10ebb5e52e8f352"
   },
   "turtle": {
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
@@ -537,7 +537,7 @@
     "revision": "779ee5ab1e065dcef7f51f253030dc875445b25f"
   },
   "typescript": {
-    "revision": "51c4c9eb5387c6e42fdb02f22fe68d408c89952b"
+    "revision": "6e695f4148a3ea96f0678513a10ebb5e52e8f352"
   },
   "ungrammar": {
     "revision": "debd26fed283d80456ebafa33a06957b0c52e451"
@@ -576,7 +576,7 @@
     "revision": "7cd38d6895060b023353e04f7af099ec64add5d1"
   },
   "wing": {
-    "revision": "8d973d1749d5f11aae4d45e1c1eb0b145dc4067f"
+    "revision": "0e7781afec05f9d4240a918a3b0bbe508953cff5"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
