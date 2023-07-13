@@ -1,7 +1,7 @@
 (identifier) @variable
 
 (preprocessor_macro_definition
-  name: (identifier) @define)
+  name: (identifier) @function.macro)
 
 (preprocessor_macro_expansion) @function.macro
 
@@ -26,7 +26,7 @@
 
 (type) @type.builtin
 
-(aggregation_operator) @function.macro
+(aggregation_operator) @attribute
 
 (member_expression
   member: (identifier) @field)
@@ -108,8 +108,6 @@
 ] @punctuation.bracket
 
 [
-  "break"
-  "continue"
   "delete"
   "global"
   "limit"
@@ -128,6 +126,8 @@
 ] @conditional
 
 [
+  "break"
+  "continue"
   "for"
   "foreach"
   "while"
