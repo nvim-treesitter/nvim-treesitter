@@ -500,6 +500,9 @@
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
   },
+  "systemtap": {
+    "revision": "1af543a96d060b1f808982037bfc54cc02218edd"
+  },
   "t32": {
     "revision": "4e581fcd17d76651aa92759a68f9a8186b9fe8dc"
   },
