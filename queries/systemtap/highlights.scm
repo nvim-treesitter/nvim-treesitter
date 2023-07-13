@@ -34,18 +34,14 @@
 (call_expression
   function: (identifier) @function.call)
 
-(
-  (call_expression
+((call_expression
     function: (identifier) @function.builtin)
   (#any-of? @function.builtin
     "print" "printd" "printdln" "printf" "println"
-    "sprint" "sprintd" "sprintdln" "sprintf" "sprintln")
-)
+    "sprint" "sprintd" "sprintdln" "sprintf" "sprintln"))
 
-(
-  (identifier) @variable.builtin
-  (#lua-match? @variable.builtin "^\$+[0-9A-Z_a-z]+\$*$")
-)
+((identifier) @variable.builtin
+  (#lua-match? @variable.builtin "^\$+[0-9A-Z_a-z]+\$*$"))
 
 (shebang_line) @preproc
 
