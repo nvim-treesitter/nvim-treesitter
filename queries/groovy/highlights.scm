@@ -1,16 +1,16 @@
 (unit
-    (identifier) @variable)
+  (identifier) @variable)
 (string
-    (identifier) @variable)
+  (identifier) @variable)
 
 (escape_sequence) @string.escape
 
 (block
-    (unit
-       (identifier) @namespace))
+  (unit
+    (identifier) @namespace))
 
 (func
-    (identifier) @function)
+  (identifier) @function)
 
 (number) @number
 
@@ -20,10 +20,20 @@
 ((identifier) @constant
   (#lua-match? @constant "^[A-Z][A-Z%d_]*$"))
 
-((identifier) @type.definition
-  (#any-of? @type.definition
-    "string"
+((identifier) @constant.builtin
+  (#eq? @constant.builtin "null"))
+
+((identifier) @type
+  (#any-of? @type
     "String"
+    "Map"
+    "Object"
+    "Boolean"
+    "Integer"
+    "List"))
+
+((identifier) @function.builtin
+  (#any-of? @function.builtin
     "void"
     "id"
     "version"
@@ -39,7 +49,27 @@
     "class"
     "def"
     "import"
+    "package"
+    "assert"
+    "extends"
+    "implements"
+    "instanceof"
+    "interface"
     "new"))
+
+((identifier) @type.qualifier
+  (#any-of? @type.qualifier
+    "abstract"
+    "protected"
+    "private"
+    "public"))
+
+((identifier) @exception
+  (#any-of? @exception
+    "throw"
+    "finally"
+    "try"
+    "catch"))
 
 (string) @string
 
@@ -57,7 +87,9 @@
 ((line_comment) @comment.documentation
   (#lua-match? @comment.documentation "^///$"))
 
-(operators) @operator
-(leading_key) @operator
+[
+  (operators)
+  (leading_key)
+] @operator
 
 ["(" ")" "[" "]" "{" "}"]  @punctuation.bracket
