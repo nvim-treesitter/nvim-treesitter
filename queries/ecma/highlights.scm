@@ -158,6 +158,11 @@
 (namespace_import
   (identifier) @namespace)
 
+; Decorators
+;----------
+(decorator "@" @attribute (identifier) @attribute)
+(decorator "@" @attribute (call_expression (identifier) @attribute))
+
 ; Literals
 ;---------
 
@@ -210,6 +215,7 @@
 (pair ":" @punctuation.delimiter)
 (pair_pattern ":" @punctuation.delimiter)
 (switch_case ":" @punctuation.delimiter)
+(switch_default ":" @punctuation.delimiter)
 
 [
   "--"
