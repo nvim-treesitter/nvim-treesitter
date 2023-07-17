@@ -401,10 +401,10 @@ list.elsa = {
 
 list.elvish = {
   install_info = {
-    url = "https://github.com/ckafi/tree-sitter-elvish",
+    url = "https://github.com/elves/tree-sitter-elvish",
     files = { "src/parser.c" },
   },
-  maintainers = { "@ckafi" },
+  maintainers = { "@elves" },
 }
 
 list.embedded_template = {
