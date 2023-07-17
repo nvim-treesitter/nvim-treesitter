@@ -440,6 +440,9 @@
   "rnoweb": {
     "revision": "502c1126dc6777f09af5bef16e72a42f75bd081e"
   },
+  "robot": {
+    "revision": "f1142bfaa6acfce95e25d2c6d18d218f4f533927"
+  },
   "ron": {
     "revision": "ce6086b2c9e8e71065b8129d6c2289c5f66d1879"
   },

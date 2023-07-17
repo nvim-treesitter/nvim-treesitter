@@ -1309,6 +1309,15 @@ list.rnoweb = {
   maintainers = { "@bamonroe" },
 }
 
+list.robot = {
+  install_info = {
+    url = "https://github.com/Hubro/tree-sitter-robot",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@ema2159" },
+  experimental = true,
+}
+
 list.ron = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-ron",
