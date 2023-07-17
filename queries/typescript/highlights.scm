@@ -136,6 +136,9 @@
 (arrow_function
   parameter: (identifier) @parameter)
 
+;; global declaration
+(ambient_declaration "global" @namespace)
+
 ;; function signatures
 (ambient_declaration
   (function_signature
