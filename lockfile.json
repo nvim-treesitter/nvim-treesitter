@@ -6,7 +6,7 @@
     "revision": "80ea622cf952a0059e168e5c92a798b2f1925652"
   },
   "arduino": {
-    "revision": "787bc6e1ca23092821231f6096438343f728ee6f"
+    "revision": "4de2f3e6235ee8659ecb7467c16ed13bde7fb272"
   },
   "astro": {
     "revision": "e122a8fcd07e808a7b873bfadc2667834067daf1"
@@ -33,7 +33,7 @@
     "revision": "7f1a5df44861291d6951b6b2146a9fef4c226e14"
   },
   "c": {
-    "revision": "693d298099a01a5d6cad589fe1c2c8836a6f7702"
+    "revision": "6adee194587678b250608cdb808544f06bcd26e7"
   },
   "c_sharp": {
     "revision": "1648e21b4f087963abf0101ee5221bb413107b07"
@@ -108,7 +108,7 @@
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
   "elixir": {
-    "revision": "59a2ba5c0d768f8a7a6de8caa7f523d03ec6b647"
+    "revision": "2616034f78ffa83ca6a521ebd7eee1868cb5c14c"
   },
   "elm": {
     "revision": "73edfcdc3bb2ddfc731cd5d63e6cb287a18da90d"
@@ -348,10 +348,10 @@
     "revision": "6d876afade2d5e70d394aaf994321c78297e3607"
   },
   "ocaml": {
-    "revision": "fa4a8175a005a35c934ab36c4e4887d217061b2e"
+    "revision": "ee871b50b845b6adaa22e85aa3c794a3fd49b1fb"
   },
   "ocaml_interface": {
-    "revision": "fa4a8175a005a35c934ab36c4e4887d217061b2e"
+    "revision": "ee871b50b845b6adaa22e85aa3c794a3fd49b1fb"
   },
   "ocamllex": {
     "revision": "c8f90e42e1b9cf9e30b1669c386b8d9de992d201"
@@ -576,7 +576,7 @@
     "revision": "7cd38d6895060b023353e04f7af099ec64add5d1"
   },
   "wing": {
-    "revision": "ab04b9ed56a8a6c75ae0f45b637fd6e8aa744331"
+    "revision": "1f8736fc86204a045644e0086bee68f7171e1967"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
