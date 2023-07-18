@@ -99,6 +99,8 @@
 ] @punctuation.delimiter
 
 [
+  "%{"
+  "%}"
   "("
   ")"
   "["
@@ -142,8 +144,6 @@
   "%)"
   "%:"
   "%?"
-  "%{"
-  "%}"
   (preprocessor_tokens)
   (embedded_code)
 ] @preproc
