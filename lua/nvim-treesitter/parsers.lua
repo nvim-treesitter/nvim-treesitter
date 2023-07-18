@@ -978,7 +978,7 @@ list.matlab = {
 list.menhir = {
   install_info = {
     url = "https://github.com/Kerl13/tree-sitter-menhir",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@Kerl13" },
 }
