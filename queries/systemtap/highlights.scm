@@ -113,7 +113,6 @@
   "delete"
   "limit"
   "next"
-  "private"
   "probe"
 ] @keyword
 
@@ -150,4 +149,5 @@
 
 "@define" @define
 
+"private" @type.qualifier
 "global" @storageclass
