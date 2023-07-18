@@ -5,6 +5,7 @@
  (case)
  (subquery)
  (insert)
+ (when_clause)
 ] @indent.begin
 
 (block
