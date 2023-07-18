@@ -305,6 +305,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [Path of Exile item filter](https://github.com/ObserverOfTime/tree-sitter-poe-filter) (experimental, maintained by @ObserverOfTime)
 - [x] [pony](https://github.com/amaanq/tree-sitter-pony) (maintained by @amaanq, @mfelsche)
 - [x] [prisma](https://github.com/victorhqc/tree-sitter-prisma) (maintained by @elianiva)
+- [x] [promql](https://github.com/MichaHoffmann/tree-sitter-promql) (maintained by @MichaHoffmann)
 - [x] [proto](https://github.com/mitchellh/tree-sitter-proto) (maintained by @fsouza)
 - [x] [prql](https://github.com/PRQL/tree-sitter-prql) (maintained by @matthias-Q)
 - [x] [pug](https://github.com/zealot128/tree-sitter-pug) (experimental, maintained by @zealot128)
