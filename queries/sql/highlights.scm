@@ -75,6 +75,7 @@
  (keyword_safe)
  (keyword_cost)
  (keyword_strict)
+ (keyword_matched)
 ] @attribute
 
 [
@@ -112,6 +113,7 @@
   (keyword_delete)
   (keyword_create)
   (keyword_insert)
+  (keyword_merge)
   (keyword_distinct)
   (keyword_replace)
   (keyword_update)
