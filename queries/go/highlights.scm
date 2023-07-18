@@ -171,6 +171,8 @@
            "imag"
            "len"
            "make"
+           "max"
+           "min"
            "new"
            "panic"
            "print"
