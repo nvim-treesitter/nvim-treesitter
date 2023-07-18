@@ -74,6 +74,7 @@
  (keyword_leakproof)
  (keyword_safe)
  (keyword_cost)
+ (keyword_matched)
  (keyword_strict)
 ] @attribute
 
@@ -112,6 +113,7 @@
   (keyword_delete)
   (keyword_create)
   (keyword_insert)
+  (keyword_merge)
   (keyword_distinct)
   (keyword_replace)
   (keyword_update)
