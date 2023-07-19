@@ -45,7 +45,7 @@
                (flow_node) @promql))))
 
 (block_mapping_pair
-  key: (flow_node) @_expr (#eq @_expr "expr")
+  key: (flow_node) @_expr (#eq? @_expr "expr")
   value: (block_node
            (block_sequence
              (block_sequence_item
