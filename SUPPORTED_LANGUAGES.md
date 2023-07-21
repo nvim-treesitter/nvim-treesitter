@@ -40,7 +40,7 @@ Language | Tier | Queries | CLI | NPM | Maintainer
 [cuda](https://github.com/theHamsta/tree-sitter-cuda) | core | `HFIJL` |  | ✓ | @theHamsta
 [cue](https://github.com/eonpatapon/tree-sitter-cue) | core | `HFIJL` |  |  | @amaanq
 [d](https://github.com/CyberShadow/tree-sitter-d) | unsupported | `HFIJ ` | ✓ |  | @nawordar
-[dart](https://github.com/UserNobody14/tree-sitter-dart) | community | `HFIJL` |  |  | @akinsho
+[dart](https://github.com/UserNobody14/tree-sitter-dart) | unsupported | `HFIJL` |  |  | @akinsho
 [devicetree](https://github.com/joelspadin/tree-sitter-devicetree) | community | `HFIJL` |  |  | @jedrzejboczar
 [dhall](https://github.com/jbellerb/tree-sitter-dhall) | core | `HF J ` |  |  | @amaanq
 [diff](https://github.com/the-mikedavis/tree-sitter-diff) | community | `H    ` |  |  | @gbprod
@@ -95,7 +95,7 @@ html_tags (queries only)[^html_tags] | community | `H IJ ` |  |  | @TravonteD
 [http](https://github.com/rest-nvim/tree-sitter-http) | core | `H  J ` |  | ✓ | @amaanq
 [hurl](https://github.com/pfeiferj/tree-sitter-hurl) | community | `HFIJ ` |  |  | @pfeiferj
 [ini](https://github.com/justinmk/tree-sitter-ini) | unsupported | `HF   ` |  |  | @theHamsta
-[ispc](https://github.com/fab4100/tree-sitter-ispc) | community | `HFIJL` |  | ✓ | @fab4100
+[ispc](https://github.com/fab4100/tree-sitter-ispc) | unsupported | `HFIJL` |  | ✓ | @fab4100
 [janet_simple](https://github.com/sogaiu/tree-sitter-janet-simple) | community | `HF JL` |  |  | @sogaiu
 [java](https://github.com/tree-sitter/tree-sitter-java) | community | `HFIJL` |  |  | @p00f
 [javascript](https://github.com/tree-sitter/tree-sitter-javascript) | core | `HFIJL` |  |  | @steelsojka
