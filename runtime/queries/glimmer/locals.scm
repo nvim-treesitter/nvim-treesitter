@@ -1,7 +1,7 @@
 [
  (element_node)
  (block_statement)
-] @scope
+] @local.scope
 
-(identifier) @reference
-(block_params (identifier) @definition.var)
+(identifier) @local.reference
+(block_params (identifier) @local.definition.var)
