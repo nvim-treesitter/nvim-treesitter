@@ -1,7 +1,7 @@
 (parameter
   keyword: "Tag"
-  argument: (string) @reference)
+  argument: (string) @local.reference)
 
 (condition
   criteria: "tagged"
-  argument: (pattern) @definition)
+  argument: (pattern) @local.definition)

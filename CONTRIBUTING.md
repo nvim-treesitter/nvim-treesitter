@@ -232,29 +232,29 @@ highlighting (such as diagnostics or LSP semantic tokens).
 
 ### Locals
 
-Note: pay specific attention to the captures here as they are a bit different to
-those listed in the upstream [Local Variables
-docs](https://tree-sitter.github.io/tree-sitter/syntax-highlighting#local-variables).
-Some of these docs didn't exist when `nvim-treesitter` was created and the
-upstream captures are more limiting than what we have here.
+Locals are used to keep track of definitions and references in local or global
+scopes, see [upstream
+documentation](https://tree-sitter.github.io/tree-sitter/syntax-highlighting#local-variables).
+Note that nvim-treesitter uses more specific subcaptures for definitions and
+**does not use locals for highlighting**.
 
 ```scheme
-@definition            ; various definitions
-@definition.constant   ; constants
-@definition.function   ; functions
-@definition.method     ; methods
-@definition.var        ; variables
-@definition.parameter  ; parameters
-@definition.macro      ; preprocessor macros
-@definition.type       ; types or classes
-@definition.field      ; fields or properties
-@definition.enum       ; enumerations
-@definition.namespace  ; modules or namespaces
-@definition.import     ; imported names
-@definition.associated ; the associated type of a variable
+@local.definition            ; various definitions
+@local.definition.constant   ; constants
+@local.definition.function   ; functions
+@local.definition.method     ; methods
+@local.definition.var        ; variables
+@local.definition.parameter  ; parameters
+@local.definition.macro      ; preprocessor macros
+@local.definition.type       ; types or classes
+@local.definition.field      ; fields or properties
+@local.definition.enum       ; enumerations
+@local.definition.namespace  ; modules or namespaces
+@local.definition.import     ; imported names
+@local.definition.associated ; the associated type of a variable
 
-@scope                 ; scope block
-@reference             ; identifier reference
+@local.scope                 ; scope block
+@local.reference             ; identifier reference
 ```
 
 #### Definition Scope
@@ -273,7 +273,7 @@ doSomething(); // Should point to the declaration as the definition
 
 ```query
 (function_declaration
-  ((identifier) @definition.var)
+  ((identifier) @local.definition.var)
    (#set! "definition.var.scope" "parent"))
 ```
 
@@ -291,7 +291,7 @@ You can define folds for a given language by adding a `folds.scm` query :
 @fold ; fold this node
 ```
 
-If the `folds.scm` query is not present, this will fall back to the `@scope` captures in the `locals`
+If the `folds.scm` query is not present, this will fall back to the `@local.scope` captures in the `locals`
 query.
 
 ### Injections

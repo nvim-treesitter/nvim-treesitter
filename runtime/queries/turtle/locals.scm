@@ -1,12 +1,12 @@
-(turtle_doc) @scope
+(turtle_doc) @local.scope
 
 (subject
   [
     (prefixed_name)
     (iri_reference)
-  ] @definition.var)
+  ] @local.definition.var)
 
 [
   (prefixed_name)
   (iri_reference)
-] @reference
+] @local.reference

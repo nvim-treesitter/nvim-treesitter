@@ -1,7 +1,7 @@
-(funcdef (identifier) @definition.function)
+(funcdef (identifier) @local.definition.function)
 
-(funcdefargs (identifier) @definition.parameter)
+(funcdefargs (identifier) @local.definition.parameter)
 
-(funcname) @reference
+(funcname) @local.reference
 
-(index (identifier) @reference)
+(index (identifier) @local.reference)

@@ -1,10 +1,10 @@
 [
   (script_file)
   (function_definition)
-] @scope
+] @local.scope
 
-(function_declaration name: (identifier) @definition.function)
-(function_declaration parameters: (parameters (identifier) @definition.parameter))
-(let_statement [(scoped_identifier) (identifier)] @definition.var)
+(function_declaration name: (identifier) @local.definition.function)
+(function_declaration parameters: (parameters (identifier) @local.definition.parameter))
+(let_statement [(scoped_identifier) (identifier)] @local.definition.var)
 
-(identifier) @reference
+(identifier) @local.reference
