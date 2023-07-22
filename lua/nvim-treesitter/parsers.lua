@@ -1367,6 +1367,15 @@ list.scala = {
   maintainers = { "@stevanmilic" },
 }
 
+list.scfg = {
+  install_info = {
+    url = "https://git.sr.ht/~rockorager/tree-sitter-scfg",
+    files = { "src/parser.c" },
+    requires_generate_from_grammar = true,
+  },
+  maintainers = { "@WhyNotHugo" },
+}
+
 list.scheme = {
   install_info = {
     url = "https://github.com/6cdh/tree-sitter-scheme",
