@@ -1,12 +1,12 @@
-(source_file) @scope
-(source_file (array) @scope)
-(source_file (map) @scope)
-(source_file (struct) @scope)
-(source_file (tuple) @scope)
+(source_file) @local.scope
+(source_file (array) @local.scope)
+(source_file (map) @local.scope)
+(source_file (struct) @local.scope)
+(source_file (tuple) @local.scope)
 
-(identifier) @reference
+(identifier) @local.reference
 
-(struct_entry (identifier) @definition.field)
-(struct_entry (identifier) @definition.enum (enum_variant))
+(struct_entry (identifier) @local.definition.field)
+(struct_entry (identifier) @local.definition.enum (enum_variant))
 
-(struct (struct_name) @definition.type)
+(struct (struct_name) @local.definition.type)

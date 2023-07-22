@@ -6,21 +6,21 @@
  (each)
  (for)
  (match)
-] @scope
+] @local.scope
 
 (
-  (list . (symbol) @_special) @scope
+  (list . (symbol) @_special) @local.scope
   (#any-of? @_special
    "while" "if" "when" "do" "collect" "icollect" "accumulate")
 )
 
-(fn name: (symbol) @definition.function
+(fn name: (symbol) @local.definition.function
   (#set! definition.function.scope "parent"))
-(lambda name: (symbol) @definition.function
+(lambda name: (symbol) @local.definition.function
   (#set! definition.function.scope "parent"))
 
-; TODO: use @definition.parameter for parameters
-(binding (symbol) @definition.var)
-(for_clause . (symbol) @definition.var)
+; TODO: use @local.definition.parameter for parameters
+(binding (symbol) @local.definition.var)
+(for_clause . (symbol) @local.definition.var)
 
-(symbol) @reference
+(symbol) @local.reference

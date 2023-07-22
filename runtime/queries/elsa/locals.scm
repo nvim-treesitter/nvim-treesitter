@@ -1,12 +1,12 @@
 [
   (source_file)
   (reduction)
-] @scope
+] @local.scope
 
-(identifier) @reference
+(identifier) @local.reference
 
-(function) @definition.function
+(function) @local.definition.function
 
-(method) @definition.method
+(method) @local.definition.method
 
-(parameter) @definition.parameter
+(parameter) @local.definition.parameter

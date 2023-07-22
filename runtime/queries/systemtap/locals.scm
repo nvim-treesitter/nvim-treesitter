@@ -6,30 +6,30 @@
   (for_statement)
   (foreach_statement)
   (catch_clause)
-] @scope
+] @local.scope
 
 (init_declarator
-  name: (identifier) @definition.var)
+  name: (identifier) @local.definition.var)
 
 (array_declarator
-  name: (identifier) @definition.var)
+  name: (identifier) @local.definition.var)
 
 (function_definition
-  name: (identifier) @definition.function)
+  name: (identifier) @local.definition.function)
 
 (parameter
-  name: (identifier) @definition.parameter)
+  name: (identifier) @local.definition.parameter)
 
 (tuple_capture
-  (identifier) @definition.var)
+  (identifier) @local.definition.var)
 
 (catch_clause
-  parameter: (identifier) @definition.var)
+  parameter: (identifier) @local.definition.var)
 
 (assignment_expression
-  left: (identifier) @definition.var)
+  left: (identifier) @local.definition.var)
 
 (call_expression
-  function: (identifier) @reference)
+  function: (identifier) @local.reference)
 
-(identifier) @reference
+(identifier) @local.reference

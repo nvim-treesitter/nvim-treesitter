@@ -1,4 +1,4 @@
 [
   (block)
   (metadata)
-] @scope
+] @local.scope
