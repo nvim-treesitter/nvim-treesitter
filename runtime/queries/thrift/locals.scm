@@ -3,49 +3,49 @@
 [
   (document)
   (definition)
-] @scope
+] @local.scope
 
 ; References
 
-(identifier) @reference
+(identifier) @local.reference
 
 ; Definitions
 
-(annotation_identifier) @definition
+(annotation_identifier) @local.definition
 
-(const_definition (identifier) @definition.constant)
+(const_definition (identifier) @local.definition.constant)
 
 (enum_definition "enum"
-  . (identifier) @definition.enum
-  "{" (identifier) @definition.constant "}")
+  . (identifier) @local.definition.enum
+  "{" (identifier) @local.definition.constant "}")
 
 (senum_definition "senum"
-  . (identifier) @definition.enum)
+  . (identifier) @local.definition.enum)
 
-(field (identifier) @definition.field)
+(field (identifier) @local.definition.field)
 
-(function_definition (identifier) @definition.function)
+(function_definition (identifier) @local.definition.function)
 
 (namespace_declaration
   "namespace" (namespace_scope)
-  . (_) @definition.namespace
+  . (_) @local.definition.namespace
   (namespace_uri)?)
 
-(parameter (identifier) @definition.parameter)
+(parameter (identifier) @local.definition.parameter)
 
 (struct_definition
-  "struct" . (identifier) @definition.type)
+  "struct" . (identifier) @local.definition.type)
 
 (union_definition
-  "union" . (identifier) @definition.type)
+  "union" . (identifier) @local.definition.type)
 
 (exception_definition
-  "exception" . (identifier) @definition.type)
+  "exception" . (identifier) @local.definition.type)
 
 (service_definition
-  "service" . (identifier) @definition.type)
+  "service" . (identifier) @local.definition.type)
 
 (interaction_definition
-  "interaction" . (identifier) @definition.type)
+  "interaction" . (identifier) @local.definition.type)
 
-(typedef_identifier) @definition.type
+(typedef_identifier) @local.definition.type

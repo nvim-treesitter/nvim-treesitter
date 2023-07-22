@@ -1,32 +1,32 @@
 ;; Scopes
 
-(document) @scope
+(document) @local.scope
 
-(directive) @scope
+(directive) @local.scope
 
 ;; Definitions
 
-(title) @definition
+(title) @local.definition
 
 (substitution_definition
-  name: (substitution) @definition)
+  name: (substitution) @local.definition)
 
 (footnote
-  name: (label) @definition)
+  name: (label) @local.definition)
 
 (citation
-  name: (label) @definition)
+  name: (label) @local.definition)
 
 (target
-  name: (name) @definition)
+  name: (name) @local.definition)
 
 ; Inline targets
-(inline_target) @definition
+(inline_target) @local.definition
 
 ; The role directive can define a new role
 ((directive
   name: (type) @_type
-  body: (body (arguments) @definition))
+  body: (body (arguments) @local.definition))
  (#eq? @_type "role"))
 
 ;; References
@@ -37,4 +37,4 @@
  (citation_reference)
  (reference)
  (role)
-] @reference
+] @local.reference

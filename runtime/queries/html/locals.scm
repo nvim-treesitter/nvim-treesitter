@@ -1,1 +1,1 @@
-(element) @scope
+(element) @local.scope
