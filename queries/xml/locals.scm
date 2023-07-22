@@ -1,25 +1,25 @@
 ;; tags
 
-(elementdecl (Name) @definition.type)
+(elementdecl (Name) @local.definition.type)
 
 (elementdecl
   (contentspec
-    (children (Name) @reference)))
+    (children (Name) @local.reference)))
 
-(AttlistDecl . (Name) @reference)
+(AttlistDecl . (Name) @local.reference)
 
-(STag (Name) @reference)
-(ETag (Name) @reference)
-(EmptyElemTag (Name) @reference)
+(STag (Name) @local.reference)
+(ETag (Name) @local.reference)
+(EmptyElemTag (Name) @local.reference)
 
 ;; attributes
 
-(AttDef (Name) @definition.field)
+(AttDef (Name) @local.definition.field)
 
-(Attribute (Name) @reference)
+(Attribute (Name) @local.reference)
 
 ;; entities
 
-(GEDecl (Name) @definition.macro)
+(GEDecl (Name) @local.definition.macro)
 
-(EntityRef (Name) @reference)
+(EntityRef (Name) @local.reference)
