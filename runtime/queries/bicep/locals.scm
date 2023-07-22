@@ -13,62 +13,62 @@
   (array)
   (object)
   (interpolation)
-] @scope
+] @local.scope
 
 ; References
 
-(property_identifier) @reference
+(property_identifier) @local.reference
 
 (call_expression
-  (identifier) @reference)
+  (identifier) @local.reference)
 
 (object_property
   (_)
   ":"
-  (identifier) @reference)
+  (identifier) @local.reference)
 
 (resource_expression
-  (identifier) @reference)
+  (identifier) @local.reference)
 
 ; Definitions
 
-(type) @definition.associated
+(type) @local.definition.associated
 
 (object_property
-  (identifier) @definition.field
+  (identifier) @local.definition.field
   (_))
 
 (object_property
-  (compatible_identifier) @definition.field
+  (compatible_identifier) @local.definition.field
   (_))
 
-(import_name) @definition.import
+(import_name) @local.definition.import
 
 (module_declaration
-  (identifier) @definition.namespace)
+  (identifier) @local.definition.namespace)
 
 (parameter_declaration
-  (identifier) @definition.parameter
+  (identifier) @local.definition.parameter
   (_))
 
 (type_declaration
-  (identifier) @definition.type
+  (identifier) @local.definition.type
   (_))
 
 (variable_declaration
-  (identifier) @definition.var
+  (identifier) @local.definition.var
   (_))
 
 (metadata_declaration
-  (identifier) @definition.var
+  (identifier) @local.definition.var
   (_))
 
 (output_declaration
-  (identifier) @definition.var
+  (identifier) @local.definition.var
   (_))
 
 (for_statement
   "for"
   (for_loop_parameters
-    (loop_variable) @definition.var
-    (loop_enumerator) @definition.var))
+    (loop_variable) @local.definition.var
+    (loop_enumerator) @local.definition.var))

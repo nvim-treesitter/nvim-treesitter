@@ -1,1 +1,1 @@
-(body) @scope
+(body) @local.scope

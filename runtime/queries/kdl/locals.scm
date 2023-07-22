@@ -1,10 +1,10 @@
-(document) @scope
-(node (node_children) @scope)
-(node_children (node) @scope)
+(document) @local.scope
+(node (node_children) @local.scope)
+(node_children (node) @local.scope)
 
-(identifier) @reference
+(identifier) @local.reference
 
-(node_field) @definition.field
+(node_field) @local.definition.field
 
-(node (identifier) @definition.type)
-(type) @definition.type
+(node (identifier) @local.definition.type)
+(type) @local.definition.type
