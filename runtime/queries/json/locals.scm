@@ -1,4 +1,4 @@
 [
   (object)
   (array)
-] @scope
+] @local.scope
