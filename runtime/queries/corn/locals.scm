@@ -3,14 +3,14 @@
 [
   (object)
   (array)
-] @scope
+] @local.scope
 
 ; definitions
 
 (assign_block 
   (assignment
     (input) 
-      @definition.constant))
+      @local.definition.constant))
 
-(value (input) @reference)
+(value (input) @local.reference)
 

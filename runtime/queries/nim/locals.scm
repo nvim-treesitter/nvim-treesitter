@@ -1,112 +1,112 @@
 
 ; ==============================================================================
-; @definition            ; various definitions
+; @local.definition            ; various definitions
 
 (block
   label: [
-    (identifier) @definition
-    (accent_quoted) @definition
+    (identifier) @local.definition
+    (accent_quoted) @local.definition
   ])
 
 ; ==============================================================================
-; @definition.constant   ; constants
+; @local.definition.constant   ; constants
 
 (const_section
   (variable_declaration
     (symbol_declaration_list
       (symbol_declaration
         name: [
-          (identifier) @definition.constant
-          (accent_quoted) @definition.constant
-          (exported_symbol (identifier) @definition.constant)
-          (exported_symbol (accent_quoted) @definition.constant)
+          (identifier) @local.definition.constant
+          (accent_quoted) @local.definition.constant
+          (exported_symbol (identifier) @local.definition.constant)
+          (exported_symbol (accent_quoted) @local.definition.constant)
         ]))
-    type: (type_expression)? @definition.associated))
+    type: (type_expression)? @local.definition.associated))
 
 ; ==============================================================================
-; @definition.function   ; functions
+; @local.definition.function   ; functions
 
 (proc_declaration
   name: [
-    (identifier) @definition.function
-    (accent_quoted) @definition.function
-    (exported_symbol (identifier) @definition.function)
-    (exported_symbol (accent_quoted) @definition.function)
+    (identifier) @local.definition.function
+    (accent_quoted) @local.definition.function
+    (exported_symbol (identifier) @local.definition.function)
+    (exported_symbol (accent_quoted) @local.definition.function)
   ]
   (#set! "definition.function.scope" "parent"))
 
 (func_declaration
   name: [
-    (identifier) @definition.function
-    (accent_quoted) @definition.function
-    (exported_symbol (identifier) @definition.function)
-    (exported_symbol (accent_quoted) @definition.function)
+    (identifier) @local.definition.function
+    (accent_quoted) @local.definition.function
+    (exported_symbol (identifier) @local.definition.function)
+    (exported_symbol (accent_quoted) @local.definition.function)
   ]
   (#set! "definition.function.scope" "parent"))
 
 (iterator_declaration
   name: [
-    (identifier) @definition.function
-    (accent_quoted) @definition.function
-    (exported_symbol (identifier) @definition.function)
-    (exported_symbol (accent_quoted) @definition.function)
+    (identifier) @local.definition.function
+    (accent_quoted) @local.definition.function
+    (exported_symbol (identifier) @local.definition.function)
+    (exported_symbol (accent_quoted) @local.definition.function)
   ]
   (#set! "definition.function.scope" "parent"))
 
 (converter_declaration
   name: [
-    (identifier) @definition.function
-    (accent_quoted) @definition.function
-    (exported_symbol (identifier) @definition.function)
-    (exported_symbol (accent_quoted) @definition.function)
+    (identifier) @local.definition.function
+    (accent_quoted) @local.definition.function
+    (exported_symbol (identifier) @local.definition.function)
+    (exported_symbol (accent_quoted) @local.definition.function)
   ]
   (#set! "definition.function.scope" "parent"))
 
 ; ==============================================================================
-; @definition.method     ; methods
+; @local.definition.method     ; methods
 
 (method_declaration
   name: [
-    (identifier) @definition.method
-    (accent_quoted) @definition.method
-    (exported_symbol (identifier) @definition.method)
-    (exported_symbol (accent_quoted) @definition.method)
+    (identifier) @local.definition.method
+    (accent_quoted) @local.definition.method
+    (exported_symbol (identifier) @local.definition.method)
+    (exported_symbol (accent_quoted) @local.definition.method)
   ]
   (#set! "definition.method.scope" "parent"))
 
 ; ==============================================================================
-; @definition.var        ; variables
+; @local.definition.var        ; variables
 
 (var_section
   (variable_declaration
     (symbol_declaration_list
       (symbol_declaration
         name: [
-          (identifier) @definition.var
-          (accent_quoted) @definition.var
-          (exported_symbol (identifier) @definition.var)
-          (exported_symbol (accent_quoted) @definition.var)
+          (identifier) @local.definition.var
+          (accent_quoted) @local.definition.var
+          (exported_symbol (identifier) @local.definition.var)
+          (exported_symbol (accent_quoted) @local.definition.var)
         ]))
-    type: (type_expression)? @definition.associated))
+    type: (type_expression)? @local.definition.associated))
 
 (let_section
   (variable_declaration
     (symbol_declaration_list
       (symbol_declaration
         name: [
-          (identifier) @definition.var
-          (accent_quoted) @definition.var
-          (exported_symbol (identifier) @definition.var)
-          (exported_symbol (accent_quoted) @definition.var)
+          (identifier) @local.definition.var
+          (accent_quoted) @local.definition.var
+          (exported_symbol (identifier) @local.definition.var)
+          (exported_symbol (accent_quoted) @local.definition.var)
         ]))
-    type: (type_expression)? @definition.associated))
+    type: (type_expression)? @local.definition.associated))
 
 (for
   (symbol_declaration_list
     (symbol_declaration
       name: [
-        (identifier) @definition.var
-        (accent_quoted) @definition.var
+        (identifier) @local.definition.var
+        (accent_quoted) @local.definition.var
       ])))
 
 (try
@@ -114,84 +114,84 @@
     values: (expression_list
       (infix_expression
         right: [
-          (identifier) @definition.var
-          (accent_quoted) @definition.var
+          (identifier) @local.definition.var
+          (accent_quoted) @local.definition.var
         ]))))
 
 ; ==============================================================================
-; @definition.parameter  ; parameters
+; @local.definition.parameter  ; parameters
 
 (parameter_declaration
   (symbol_declaration_list
     (symbol_declaration
       name: [
-        (identifier) @definition.parameter
-        (accent_quoted) @definition.parameter
+        (identifier) @local.definition.parameter
+        (accent_quoted) @local.definition.parameter
       ]))
-  type: (type_expression)? @definition.associated)
+  type: (type_expression)? @local.definition.associated)
 
 (concept_declaration
   parameters: 
     (parameter_list [
-      (identifier) @definition.parameter
-      (accent_quoted (identifier) @definition.parameter)
+      (identifier) @local.definition.parameter
+      (accent_quoted (identifier) @local.definition.parameter)
     ]))
 (var_parameter [
-  (identifier) @definition.parameter
-  (accent_quoted (identifier) @definition.parameter)
+  (identifier) @local.definition.parameter
+  (accent_quoted (identifier) @local.definition.parameter)
 ])
 (type_parameter [
-  (identifier) @definition.parameter
-  (accent_quoted (identifier) @definition.parameter)
+  (identifier) @local.definition.parameter
+  (accent_quoted (identifier) @local.definition.parameter)
 ])
 (static_parameter [
-  (identifier) @definition.parameter
-  (accent_quoted (identifier) @definition.parameter)
+  (identifier) @local.definition.parameter
+  (accent_quoted (identifier) @local.definition.parameter)
 ])
 (ref_parameter [
-  (identifier) @definition.parameter
-  (accent_quoted (identifier) @definition.parameter)
+  (identifier) @local.definition.parameter
+  (accent_quoted (identifier) @local.definition.parameter)
 ])
 (pointer_parameter [
-  (identifier) @definition.parameter
-  (accent_quoted (identifier) @definition.parameter)
+  (identifier) @local.definition.parameter
+  (accent_quoted (identifier) @local.definition.parameter)
 ])
 
 ; ==============================================================================
-; @definition.macro      ; preprocessor macros
+; @local.definition.macro      ; preprocessor macros
 
 (template_declaration
   name: [
-    (identifier) @definition.macro
-    (accent_quoted) @definition.macro
-    (exported_symbol (identifier) @definition.macro)
-    (exported_symbol (accent_quoted) @definition.macro)
+    (identifier) @local.definition.macro
+    (accent_quoted) @local.definition.macro
+    (exported_symbol (identifier) @local.definition.macro)
+    (exported_symbol (accent_quoted) @local.definition.macro)
   ]
   (#set! "definition.macro.scope" "parent"))
 
 (macro_declaration
   name: [
-    (identifier) @definition.macro
-    (accent_quoted) @definition.macro
-    (exported_symbol (identifier) @definition.macro)
-    (exported_symbol (accent_quoted) @definition.macro)
+    (identifier) @local.definition.macro
+    (accent_quoted) @local.definition.macro
+    (exported_symbol (identifier) @local.definition.macro)
+    (exported_symbol (accent_quoted) @local.definition.macro)
   ]
   (#set! "definition.macro.scope" "parent"))
 
 ; ==============================================================================
-; @definition.type       ; types or classes
+; @local.definition.type       ; types or classes
 
 (type_declaration
   (type_symbol_declaration
     name: [
-      (identifier) @definition.type
-      (accent_quoted) @definition.type
-      (exported_symbol (identifier) @definition.type)
-      (exported_symbol (accent_quoted) @definition.type)
+      (identifier) @local.definition.type
+      (accent_quoted) @local.definition.type
+      (exported_symbol (identifier) @local.definition.type)
+      (exported_symbol (accent_quoted) @local.definition.type)
     ]))
 
 ; ==============================================================================
-; @definition.field      ; fields or properties
+; @local.definition.field      ; fields or properties
 
 (object_declaration
   (field_declaration_list
@@ -199,88 +199,88 @@
       (symbol_declaration_list
         (symbol_declaration
           name: [
-            (identifier) @definition.field
-            (accent_quoted) @definition.field
-            (exported_symbol (identifier) @definition.field)
-            (exported_symbol (accent_quoted) @definition.field)
+            (identifier) @local.definition.field
+            (accent_quoted) @local.definition.field
+            (exported_symbol (identifier) @local.definition.field)
+            (exported_symbol (accent_quoted) @local.definition.field)
           ]))
-      type: (type_expression)? @definition.associated)))
+      type: (type_expression)? @local.definition.associated)))
 
 (tuple_type
   (field_declaration
     (symbol_declaration_list
       (symbol_declaration
         name: [
-          (identifier) @definition.field
-          (accent_quoted) @definition.field
+          (identifier) @local.definition.field
+          (accent_quoted) @local.definition.field
         ]))
-    type: (type_expression)? @definition.associated))
+    type: (type_expression)? @local.definition.associated))
 
 ; ==============================================================================
-; @definition.enum       ; enumerations
+; @local.definition.enum       ; enumerations
 
 (enum_declaration
   (enum_field_declaration
     (symbol_declaration
       name: [
-        (identifier) @definition.enum
-        (accent_quoted) @definition.enum
+        (identifier) @local.definition.enum
+        (accent_quoted) @local.definition.enum
       ])))
 
 ; ==============================================================================
-; @definition.namespace  ; modules or namespaces
-; @definition.import     ; imported names
+; @local.definition.namespace  ; modules or namespaces
+; @local.definition.import     ; imported names
 
 (import_statement
   (expression_list
-    (identifier) @definition.namespace))
+    (identifier) @local.definition.namespace))
 
 (import_statement
   (expression_list
     (infix_expression
       operator: "as"
-      right: (identifier) @definition.namespace)))
+      right: (identifier) @local.definition.namespace)))
 
 (import_statement
   (expression_list
     (infix_expression
       operator: (operator) @_operator
       right: [
-        (identifier) @definition.namespace
-        (array_construction (identifier) @definition.namespace)
+        (identifier) @local.definition.namespace
+        (array_construction (identifier) @local.definition.namespace)
       ]))
   (#eq? @_operator "/"))
 
 (import_from_statement
   module: (infix_expression
     operator: (operator) @_operator
-    right: (identifier) @definition.namespace)
+    right: (identifier) @local.definition.namespace)
   (expression_list [
-    (identifier) @definition.import
-    (accent_quoted) @definition.import
+    (identifier) @local.definition.import
+    (accent_quoted) @local.definition.import
   ])
   (#eq? @_operator "/"))
 
 ; ==============================================================================
-; @scope                 ; scope block
+; @local.scope                 ; scope block
 
 ; (when)
 ; NOTE: `when` does actually not create a scope
 
 (if
-  consequence: (statement_list) @scope
-  alternative: (elif_branch)* @scope
-  alternative: (else_branch)? @scope)
+  consequence: (statement_list) @local.scope
+  alternative: (elif_branch)* @local.scope
+  alternative: (else_branch)? @local.scope)
 
 (case
-  (of_branch)* @scope
-  (elif_branch)* @scope
-  (else_branch)? @scope)
+  (of_branch)* @local.scope
+  (elif_branch)* @local.scope
+  (else_branch)? @local.scope)
 
 (try
-  body: (statement_list) @scope
-  (except_branch) @scope
-  (finally_branch)? @scope)
+  body: (statement_list) @local.scope
+  (except_branch) @local.scope
+  (finally_branch)? @local.scope)
 
 [
   (for)
@@ -301,10 +301,10 @@
   (iterator_expression)
 
   (concept_declaration)
-] @scope
+] @local.scope
 
 ; ==============================================================================
-; @reference             ; identifier reference
+; @local.reference             ; identifier reference
 
-(identifier) @reference
-(accent_quoted) @reference
+(identifier) @local.reference
+(accent_quoted) @local.reference

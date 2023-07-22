@@ -1,23 +1,23 @@
 ;;; Imports
 
 (package_header
-	. (identifier) @definition.namespace)
+	. (identifier) @local.definition.namespace)
 
 (import_header
 	(identifier
-		(simple_identifier) @definition.import .)
+		(simple_identifier) @local.definition.import .)
 	(import_alias
-		(type_identifier) @definition.import)?)
+		(type_identifier) @local.definition.import)?)
 
 ;;; Functions
 
 (function_declaration
-	. (simple_identifier) @definition.function
+	. (simple_identifier) @local.definition.function
 	(#set! "definition.function.scope" "parent"))
 
 (class_body
 	(function_declaration
-		. (simple_identifier) @definition.method)
+		. (simple_identifier) @local.definition.method)
 	(#set! "definition.method.scope" "parent"))
 
 ;;; Variables
@@ -25,38 +25,38 @@
 (function_declaration
 	(function_value_parameters
 		(parameter
-			(simple_identifier) @definition.parameter)))
+			(simple_identifier) @local.definition.parameter)))
 
 (lambda_literal
 	(lambda_parameters
 		(variable_declaration
-			(simple_identifier) @definition.parameter)))
+			(simple_identifier) @local.definition.parameter)))
 
 (class_body
 	(property_declaration
 		(variable_declaration
-			(simple_identifier) @definition.field)))
+			(simple_identifier) @local.definition.field)))
 
 (class_declaration
 	(primary_constructor
 		(class_parameter
-			(simple_identifier) @definition.field)))
+			(simple_identifier) @local.definition.field)))
 
 (enum_class_body
 	(enum_entry
-		(simple_identifier) @definition.field))
+		(simple_identifier) @local.definition.field))
 
 (variable_declaration
-	(simple_identifier) @definition.var)
+	(simple_identifier) @local.definition.var)
 
 ;;; Types
 
 (class_declaration
-	(type_identifier) @definition.type
+	(type_identifier) @local.definition.type
 	(#set! "definition.type.scope" "parent"))
 
 (type_alias
-	(type_identifier) @definition.type
+	(type_identifier) @local.definition.type
 	(#set! "definition.type.scope" "parent"))
 
 ;;; Scopes
@@ -81,4 +81,4 @@
 	(enum_entry)
 
 	(interpolated_expression)
-] @scope
+] @local.scope

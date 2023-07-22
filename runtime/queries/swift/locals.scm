@@ -1,5 +1,5 @@
-(import_declaration (identifier) @definition.import)
-(function_declaration name: (simple_identifier) @definition.function)
+(import_declaration (identifier) @local.definition.import)
+(function_declaration name: (simple_identifier) @local.definition.function)
 
 ; Scopes
 [
@@ -15,4 +15,4 @@
  (function_declaration)
  (class_declaration)
  (protocol_declaration)
-] @scope
+] @local.scope
