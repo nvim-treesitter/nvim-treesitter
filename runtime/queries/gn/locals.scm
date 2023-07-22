@@ -1,6 +1,6 @@
 [
   (source_file)
   (block)
-] @scope
+] @local.scope
 
-(identifier) @reference
+(identifier) @local.reference

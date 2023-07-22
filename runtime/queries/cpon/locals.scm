@@ -4,4 +4,4 @@
   (meta_map)
   (map)
   (array)
-] @scope
+] @local.scope

@@ -4,12 +4,12 @@
  (symbol)
  (filename)
  (quoted_symbol)
-] @reference
+] @local.reference
 
 ; Definitions
 
-(output_section name: (symbol) @definition.var)
+(output_section name: (symbol) @local.definition.var)
 
-(memory_command name: (symbol) @definition.var)
+(memory_command name: (symbol) @local.definition.var)
 
-(phdrs_command name: (symbol) @definition.var)
+(phdrs_command name: (symbol) @local.definition.var)
