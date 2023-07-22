@@ -4,36 +4,36 @@
   (block)
   (declaration)
   (statement)
-] @scope
+] @local.scope
 
 ; References
 
-(identifier) @reference
+(identifier) @local.reference
 
 ; Definitions
 
-(package_declaration (identifier) @definition.namespace)
+(package_declaration (identifier) @local.definition.namespace)
 
-(import_declaration alias: (identifier) @definition.namespace)
+(import_declaration alias: (identifier) @local.definition.namespace)
 
-(procedure_declaration (identifier) @definition.function)
+(procedure_declaration (identifier) @local.definition.function)
 
-(struct_declaration (identifier) @definition.type "::")
+(struct_declaration (identifier) @local.definition.type "::")
 
-(enum_declaration (identifier) @definition.enum "::")
+(enum_declaration (identifier) @local.definition.enum "::")
 
-(union_declaration (identifier) @definition.type "::")
+(union_declaration (identifier) @local.definition.type "::")
 
-(variable_declaration (identifier) @definition.var ":=")
+(variable_declaration (identifier) @local.definition.var ":=")
 
-(const_declaration (identifier) @definition.constant "::")
+(const_declaration (identifier) @local.definition.constant "::")
 
-(const_type_declaration (identifier) @definition.type ":")
+(const_type_declaration (identifier) @local.definition.type ":")
 
-(parameter (identifier) @definition.parameter ":"?)
+(parameter (identifier) @local.definition.parameter ":"?)
 
-(default_parameter (identifier) @definition.parameter ":=")
+(default_parameter (identifier) @local.definition.parameter ":=")
 
-(field (identifier) @definition.field ":")
+(field (identifier) @local.definition.field ":")
 
-(label_statement (identifier) @definition ":")
+(label_statement (identifier) @local.definition ":")

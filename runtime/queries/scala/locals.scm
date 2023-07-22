@@ -5,38 +5,38 @@
   (lambda_expression)
   (function_definition)
   (block)
-] @scope
+] @local.scope
 
 ; References
 
-(identifier) @reference
+(identifier) @local.reference
 
 ; Definitions
 
 (function_declaration
-  name: (identifier) @definition.function)
+  name: (identifier) @local.definition.function)
 
 (function_definition
-  name: (identifier) @definition.function)
+  name: (identifier) @local.definition.function)
 
 (parameter
-  name: (identifier) @definition.parameter)
+  name: (identifier) @local.definition.parameter)
 
 (class_parameter
-  name: (identifier) @definition.parameter)
+  name: (identifier) @local.definition.parameter)
 
 (binding
-  name: (identifier) @definition.var)
+  name: (identifier) @local.definition.var)
 
 (val_definition
-  pattern: (identifier) @definition.var)
+  pattern: (identifier) @local.definition.var)
 
 (var_definition
-  pattern: (identifier) @definition.var)
+  pattern: (identifier) @local.definition.var)
 
 (val_declaration
-  name: (identifier) @definition.var)
+  name: (identifier) @local.definition.var)
 
 (var_declaration
-  name: (identifier) @definition.var)
+  name: (identifier) @local.definition.var)
 

@@ -7,12 +7,12 @@
   (begin_statement)
   (while_statement)
   (switch_statement)
-] @scope
+] @local.scope
 
 ;; Definitions
 (function_definition
-  name: (word) @definition.function)
+  name: (word) @local.definition.function)
 
 ;; References
-(variable_name) @reference
-(word) @reference
+(variable_name) @local.reference
+(word) @local.reference
