@@ -2,7 +2,7 @@
 ["," "."]                 @punctuation.delimiter
 (method_signatures "|"    @punctuation.special)
 
-["class" "interface" "module" "end" "def" "alias"] @scope
+["class" "interface" "module" "end" "def" "alias"] @keyword.scope
 
 ["=" "->" "<" "::"]           @operator
 (supertype)                   @operator
