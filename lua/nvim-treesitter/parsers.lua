@@ -1297,7 +1297,7 @@ list.rasi = {
 list.rbs = {
   install_info = {
     url = "https://github.com/apexatoll/tree-sitter-rbs",
-    files = { "src/parser.c"},
+    files = { "src/parser.c" },
   },
   maintainers = { "@apexatoll" },
 }
