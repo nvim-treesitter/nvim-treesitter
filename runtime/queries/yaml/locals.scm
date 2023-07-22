@@ -2,7 +2,7 @@
  (stream)
  (document)
  (block_node)
-] @scope
+] @local.scope
 
-(anchor_name) @definition
-(alias_name) @reference
+(anchor_name) @local.definition
+(alias_name) @local.reference
