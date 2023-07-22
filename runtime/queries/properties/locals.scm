@@ -1,3 +1,3 @@
-(property (key) @definition)
+(property (key) @local.definition)
 
-(substitution (key) @reference)
+(substitution (key) @local.reference)

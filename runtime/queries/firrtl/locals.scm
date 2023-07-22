@@ -7,32 +7,32 @@
 
   (else)
   (when)
-] @scope
+] @local.scope
 
 ; References
 
-(identifier) @reference
+(identifier) @local.reference
 
 ; Definitions
 
-(port (identifier) @definition.field)
+(port (identifier) @local.definition.field)
 
-(wire (identifier) @definition.field)
+(wire (identifier) @local.definition.field)
 
-(cmem (identifier) @definition.field)
+(cmem (identifier) @local.definition.field)
 
-(smem (identifier) @definition.field)
+(smem (identifier) @local.definition.field)
 
-(memory (identifier) @definition.field)
+(memory (identifier) @local.definition.field)
 
-(register (identifier) @definition.field)
+(register (identifier) @local.definition.field)
 
-(circuit (identifier) @definition.namespace)
+(circuit (identifier) @local.definition.namespace)
 
-(module (identifier) @definition.namespace)
+(module (identifier) @local.definition.namespace)
 
-(parameter (identifier) @definition.parameter)
+(parameter (identifier) @local.definition.parameter)
 
-(rdwr (identifier) @definition.var)
+(rdwr (identifier) @local.definition.var)
 
-(node (identifier) @definition.var)
+(node (identifier) @local.definition.var)
