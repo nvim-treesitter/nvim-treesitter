@@ -17,13 +17,6 @@
 ] @operator
 
 [
-  "and"
-  "unless"
-  "or"
-  "bool"
-] @keyword.operator
-
-[
   "{"
   "}"
   "["
@@ -43,11 +36,6 @@
 (label_value) @text.underline @string.regex
 
 (function_name) @function.call
-
-[ 
-  "by"
-  "without"
-] @function
 
 (comment) @comment @spell
 (ERROR) @error
