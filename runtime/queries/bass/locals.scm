@@ -4,22 +4,22 @@
   (list)
   (scope)
   (cons)
-] @scope
+] @local.scope
 
 ; References
 
-(symbol) @reference
+(symbol) @local.reference
 
 ; Definitions
 
 ((list
   . (symbol) @_fnkw
-  . (symbol) @definition.function
-  (symbol)? @definition.parameter)
+  . (symbol) @local.definition.function
+  (symbol)? @local.definition.parameter)
   (#any-of? @_fnkw "def" "defop" "defn" "fn"))
 
 ((cons
   . (symbol) @_fnkw
-  . (symbol) @definition.function
-  (symbol)? @definition.parameter)
+  . (symbol) @local.definition.function
+  (symbol)? @local.definition.parameter)
   (#any-of? @_fnkw "def" "defop" "defn" "fn"))
