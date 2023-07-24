@@ -6,7 +6,7 @@
     "revision": "80ea622cf952a0059e168e5c92a798b2f1925652"
   },
   "arduino": {
-    "revision": "4de2f3e6235ee8659ecb7467c16ed13bde7fb272"
+    "revision": "3446bac828d5db2a6cf60ab31813c02ab53547a7"
   },
   "astro": {
     "revision": "e122a8fcd07e808a7b873bfadc2667834067daf1"
@@ -33,7 +33,7 @@
     "revision": "7f1a5df44861291d6951b6b2146a9fef4c226e14"
   },
   "c": {
-    "revision": "fcd123005b7c0bf3b3a63c1dae85590ef4740464"
+    "revision": "ad095896dd223f1c22b85ac5ec84ab11fb732b07"
   },
   "c_sharp": {
     "revision": "1648e21b4f087963abf0101ee5221bb413107b07"
@@ -69,13 +69,13 @@
     "revision": "f4b3cbc8b0bd4e13035d39940fef09f1392e8739"
   },
   "cpp": {
-    "revision": "2c7aff437deed72bbceceab95797b3909cc4627d"
+    "revision": "f88bf81238ec2842682e4d1dac0acf3b43b686e9"
   },
   "css": {
     "revision": "5f2c94b897601b4029fedcce7db4c6d76ce8a128"
   },
   "cuda": {
-    "revision": "c5befe09c99f5e88190574676ffa8eb29775d410"
+    "revision": "2af3d43cd96dd3f3c3868095222c7f5e2462b3ab"
   },
   "cue": {
     "revision": "0deecf48944aa54bb73e5383ba8acfbf9f2c44b4"
@@ -174,7 +174,7 @@
     "revision": "d3031a8294bf331600d5046b1d14e690a0d8ba0c"
   },
   "glsl": {
-    "revision": "7d76863f2126ed3b246fead68f9591760d546c94"
+    "revision": "34e0657e37323874c6b67c718a0f83410c4602cf"
   },
   "go": {
     "revision": "8c8007eaee47702bb0291a3c7aeb004909baab4d"
@@ -219,7 +219,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "b8fab02e808bab41c49829fb5e4fb0ce7eab8d1a"
+    "revision": "20c40a3f1bb68c596f56bb0c0290008b9d4f58dd"
   },
   "hocon": {
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
@@ -243,7 +243,7 @@
     "revision": "1a0ce072ebf3afac7d5603d9a95bb7c9a6709b44"
   },
   "ispc": {
-    "revision": "848e58874ffa2f7e540a6ec01ab9652b26995f37"
+    "revision": "0bdbb03d9abde78d8be2f2199e57119b2c7f8fd7"
   },
   "janet_simple": {
     "revision": "bd9cbaf1ea8b942dfd58e68df10c9a378ab3d2b6"
