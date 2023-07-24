@@ -440,6 +440,9 @@
   "rego": {
     "revision": "b2667c975f07b33be3ceb83bea5cfbad88095866"
   },
+  "requirements": {
+    "revision": "56ddb4dad2ea0761d20c0995a0de2990caa350b5"
+  },
   "rnoweb": {
     "revision": "502c1126dc6777f09af5bef16e72a42f75bd081e"
   },

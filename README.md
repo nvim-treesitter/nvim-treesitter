@@ -320,6 +320,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [rasi](https://github.com/Fymyte/tree-sitter-rasi) (maintained by @Fymyte)
 - [x] [regex](https://github.com/tree-sitter/tree-sitter-regex) (maintained by @theHamsta)
 - [x] [rego](https://github.com/FallenAngel97/tree-sitter-rego) (maintained by @FallenAngel97)
+- [x] [pip requirements](https://github.com/ObserverOfTime/tree-sitter-requirements) (maintained by @ObserverOfTime)
 - [x] [rnoweb](https://github.com/bamonroe/tree-sitter-rnoweb) (maintained by @bamonroe)
 - [x] [robot](https://github.com/Hubro/tree-sitter-robot) (experimental, maintained by @ema2159)
 - [x] [ron](https://github.com/amaanq/tree-sitter-ron) (maintained by @amaanq)

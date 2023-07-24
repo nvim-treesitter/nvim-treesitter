@@ -1310,6 +1310,15 @@ list.rego = {
   maintainers = { "@FallenAngel97" },
 }
 
+list.requirements = {
+  install_info = {
+    url = "https://github.com/ObserverOfTime/tree-sitter-requirements",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@ObserverOfTime" },
+  readme_name = "pip requirements",
+}
+
 list.rnoweb = {
   install_info = {
     url = "https://github.com/bamonroe/tree-sitter-rnoweb",
