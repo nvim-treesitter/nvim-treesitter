@@ -461,7 +461,7 @@ list.foam = {
 list.fortran = {
   install_info = {
     url = "https://github.com/stadelmanma/tree-sitter-fortran",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@amaanq" },
 }
