@@ -29,6 +29,7 @@
   "if"
   "elsif"
   "else"
+  "unless"
   "case"
 ] @conditional
 
