@@ -95,7 +95,7 @@ html_tags (queries only)[^html_tags] | community | `H IJ ` |  |  | @TravonteD
 [http](https://github.com/rest-nvim/tree-sitter-http) | core | `H  J ` |  | ✓ | @amaanq
 [hurl](https://github.com/pfeiferj/tree-sitter-hurl) | community | `HFIJ ` |  |  | @pfeiferj
 [ini](https://github.com/justinmk/tree-sitter-ini) | unsupported | `HF   ` |  |  | @theHamsta
-[ispc](https://github.com/fab4100/tree-sitter-ispc) | unsupported | `HFIJL` |  | ✓ | @fab4100
+[ispc](https://github.com/fab4100/tree-sitter-ispc) | community | `HFIJL` |  | ✓ | @fab4100
 [janet_simple](https://github.com/sogaiu/tree-sitter-janet-simple) | community | `HF JL` |  |  | @sogaiu
 [java](https://github.com/tree-sitter/tree-sitter-java) | community | `HFIJL` |  |  | @p00f
 [javascript](https://github.com/tree-sitter/tree-sitter-javascript) | core | `HFIJL` |  |  | @steelsojka
