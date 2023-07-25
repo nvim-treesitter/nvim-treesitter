@@ -13,10 +13,10 @@
   (name) @text.note @nospell
   ("(" @punctuation.bracket (user) @constant ")" @punctuation.bracket)?
   ":" @punctuation.delimiter)
-  (#any-of? @text.note "NOTE" "XXX" "INFO"))
+  (#any-of? @text.note "NOTE" "XXX" "INFO" "DOCS" "PERF" "TEST"))
 
 ("text" @text.note @nospell
- (#any-of? @text.note "NOTE" "XXX" "INFO"))
+ (#any-of? @text.note "NOTE" "XXX" "INFO" "DOCS" "PERF" "TEST"))
 
 ((tag
   (name) @text.warning @nospell
