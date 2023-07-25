@@ -13,7 +13,7 @@
 (command_expression
   command: (identifier)
   arguments: (argument_list
-    variable: (identifier) @definition.var))
+    declarator: (trace32_hll_variable) @definition.var))
 
 ; Function definitions
 (subroutine_block
@@ -32,4 +32,7 @@
   (#set! reference.kind "function")
 )
 
-(macro) @reference
+[
+  (macro)
+  (trace32_hll_variable)
+] @reference
