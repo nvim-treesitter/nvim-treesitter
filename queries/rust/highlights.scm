@@ -78,47 +78,47 @@
 
 ; Assume that uppercase names in paths are types
 
-(scoped_identifier
-  path: (identifier) @namespace)
-
-(scoped_identifier
- (scoped_identifier
-  name: (identifier) @namespace))
-
-(scoped_type_identifier
-  path: (identifier) @namespace)
-
-(scoped_type_identifier
-  path: (identifier) @type
-  (#lua-match? @type "^[A-Z]"))
-
-(scoped_type_identifier
- (scoped_identifier
-  name: (identifier) @namespace))
-
 ((scoped_identifier
   path: (identifier) @type)
  (#lua-match? @type "^[A-Z]"))
 
 ((scoped_identifier
-    name: (identifier) @type)
+  name: (identifier) @type)
  (#lua-match? @type "^[A-Z]"))
 
 ((scoped_identifier
-    name: (identifier) @constant)
+  name: (identifier) @constant)
  (#lua-match? @constant "^[A-Z][A-Z%d_]*$"))
 
 ((scoped_identifier
   path: (identifier) @type
   name: (identifier) @constant)
-  (#lua-match? @type "^[A-Z]")
-  (#lua-match? @constant "^[A-Z]"))
+ (#lua-match? @type "^[A-Z]")
+ (#lua-match? @constant "^[A-Z]"))
+
+((scoped_type_identifier
+  path: (identifier) @type)
+ (#lua-match? @type "^[A-Z]"))
 
 ((scoped_type_identifier
   path: (identifier) @type
   name: (type_identifier) @constant)
-  (#lua-match? @type "^[A-Z]")
-  (#lua-match? @constant "^[A-Z]"))
+ (#lua-match? @type "^[A-Z]")
+ (#lua-match? @constant "^[A-Z]"))
+
+(scoped_identifier
+  path: (identifier) @namespace)
+
+(scoped_identifier
+ (scoped_identifier
+  name: (identifier) @namespace))
+
+(scoped_type_identifier
+  path: (identifier) @namespace)
+
+(scoped_type_identifier
+ (scoped_identifier
+  name: (identifier) @namespace))
 
 [
   (crate)
