@@ -461,6 +461,9 @@
   "scala": {
     "revision": "8062487fb3b7f3ce1bb7ce1fd1c84bed60c75203"
   },
+  "scfg": {
+    "revision": "6deae0cbb458c849a4d1e2985093e9c9c32d7fd0"
+  },
   "scheme": {
     "revision": "ca8af220aaf2a80aaf609bfb0df193817e4f064b"
   },
