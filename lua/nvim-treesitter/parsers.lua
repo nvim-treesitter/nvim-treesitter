@@ -705,7 +705,7 @@ list.hocon = {
 list.hoon = {
   install_info = {
     url = "https://github.com/urbit-pilled/tree-sitter-hoon",
-    files = { "src/parser.c" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@urbit-pilled" },
   experimental = true,
