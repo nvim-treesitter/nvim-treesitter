@@ -1,5 +1,6 @@
 ; Lower priority to prefer @parameter when identifier appears in parameter_declaration.
 ((identifier) @variable (#set! "priority" 95))
+(preproc_def (preproc_arg) @variable)
 
 [
   "default"
@@ -157,6 +158,8 @@
 
 ((identifier) @constant
  (#lua-match? @constant "^[A-Z][A-Z0-9_]+$"))
+(preproc_def (preproc_arg) @constant
+  (#lua-match? @constant "^[A-Z][A-Z0-9_]+$"))
 (enumerator
   name: (identifier) @constant)
 (case_statement
@@ -164,6 +167,8 @@
 
 ((identifier) @constant.builtin
     (#any-of? @constant.builtin "stderr" "stdin" "stdout"))
+(preproc_def (preproc_arg) @constant.builtin
+  (#any-of? @constant.builtin "stderr" "stdin" "stdout"))
 
 ;; Preproc def / undef
 (preproc_def
@@ -195,6 +200,9 @@
 ;; Parameters
 (parameter_declaration
   declarator: (identifier) @parameter)
+
+(parameter_declaration
+  declarator: (array_declarator) @parameter)
 
 (parameter_declaration
   declarator: (pointer_declarator) @parameter)
