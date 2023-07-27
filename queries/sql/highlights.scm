@@ -76,6 +76,7 @@
  (keyword_cost)
  (keyword_matched)
  (keyword_strict)
+ (keyword_matched)
 ] @attribute
 
 [

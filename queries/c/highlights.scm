@@ -1,5 +1,6 @@
 ; Lower priority to prefer @parameter when identifier appears in parameter_declaration.
 ((identifier) @variable (#set! "priority" 95))
+(preproc_def (preproc_arg) @variable)
 
 [
   "default"
@@ -8,9 +9,14 @@
   "typedef"
   "union"
   "goto"
+  "asm"
+  "__asm__"
 ] @keyword
 
-"sizeof" @keyword.operator
+[
+  "sizeof"
+  "offsetof"
+] @keyword.operator
 
 "return" @keyword.return
 
@@ -36,6 +42,8 @@
   "#else"
   "#elif"
   "#endif"
+  "#elifdef"
+  "#elifndef"
   (preproc_directive)
 ] @preproc
 
@@ -43,7 +51,7 @@
 
 "#include" @include
 
-[ ";" ":" "," ] @punctuation.delimiter
+[ ";" ":" "," "::" ] @punctuation.delimiter
 
 "..." @punctuation.special
 
@@ -98,8 +106,8 @@
 (comma_expression [ "," ] @operator)
 
 [
- (true)
- (false)
+  (true)
+  (false)
 ] @boolean
 
 (conditional_expression [ "?" ":" ] @conditional.ternary)
@@ -133,7 +141,10 @@
 
 (storage_class_specifier) @storageclass
 
-(type_qualifier) @type.qualifier
+[
+  (type_qualifier) 
+  (gnu_asm_qualifier)
+] @type.qualifier
 
 (linkage_specification
   "extern" @storageclass)
@@ -147,6 +158,8 @@
 
 ((identifier) @constant
  (#lua-match? @constant "^[A-Z][A-Z0-9_]+$"))
+(preproc_def (preproc_arg) @constant
+  (#lua-match? @constant "^[A-Z][A-Z0-9_]+$"))
 (enumerator
   name: (identifier) @constant)
 (case_statement
@@ -154,6 +167,8 @@
 
 ((identifier) @constant.builtin
     (#any-of? @constant.builtin "stderr" "stdin" "stdout"))
+(preproc_def (preproc_arg) @constant.builtin
+  (#any-of? @constant.builtin "stderr" "stdin" "stdout"))
 
 ;; Preproc def / undef
 (preproc_def
@@ -187,21 +202,24 @@
   declarator: (identifier) @parameter)
 
 (parameter_declaration
+  declarator: (array_declarator) @parameter)
+
+(parameter_declaration
   declarator: (pointer_declarator) @parameter)
 
 (preproc_params (identifier) @parameter)
 
 [
   "__attribute__"
+  "__declspec"
+  "__based"
   "__cdecl"
   "__clrcall"
   "__stdcall"
   "__fastcall"
   "__thiscall"
   "__vectorcall"
-  "_unaligned"
-  "__unaligned"
-  "__declspec"
+  (ms_pointer_modifier)
   (attribute_declaration)
 ] @attribute
 

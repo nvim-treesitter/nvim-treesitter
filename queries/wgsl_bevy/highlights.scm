@@ -1,10 +1,21 @@
 ; inherits wgsl
 
 [
+ "virtual"
+ "override"
+] @keyword
+
+[
  "#import"
  "#define_import_path"
+ "as"
 ] @include
+
 "::" @punctuation.delimiter
+
+(function_declaration
+  (import_path
+    ((identifier) @function .)))
 
 (import_path (identifier) @namespace (identifier))
 

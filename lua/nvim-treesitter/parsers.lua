@@ -461,7 +461,7 @@ list.foam = {
 list.fortran = {
   install_info = {
     url = "https://github.com/stadelmanma/tree-sitter-fortran",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@amaanq" },
 }
@@ -662,7 +662,7 @@ list.haskell_persistent = {
 list.hcl = {
   install_info = {
     url = "https://github.com/MichaHoffmann/tree-sitter-hcl",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@MichaHoffmann" },
 }
@@ -705,7 +705,7 @@ list.hocon = {
 list.hoon = {
   install_info = {
     url = "https://github.com/urbit-pilled/tree-sitter-hoon",
-    files = { "src/parser.c" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@urbit-pilled" },
   experimental = true,
@@ -978,7 +978,7 @@ list.matlab = {
 list.menhir = {
   install_info = {
     url = "https://github.com/Kerl13/tree-sitter-menhir",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@Kerl13" },
 }
@@ -1187,6 +1187,15 @@ list.prisma = {
   maintainers = { "@elianiva" },
 }
 
+list.promql = {
+  install_info = {
+    url = "https://github.com/MichaHoffmann/tree-sitter-promql",
+    files = { "src/parser.c" },
+    experimental = true,
+  },
+  maintainers = { "@MichaHoffmann" },
+}
+
 list.proto = {
   install_info = {
     url = "https://github.com/mitchellh/tree-sitter-proto",
@@ -1206,7 +1215,7 @@ list.prql = {
 list.pug = {
   install_info = {
     url = "https://github.com/zealot128/tree-sitter-pug",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@zealot128" },
   experimental = true,
@@ -1265,7 +1274,7 @@ list.query = {
 list.r = {
   install_info = {
     url = "https://github.com/r-lib/tree-sitter-r",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@echasnovski" },
 }
@@ -1356,6 +1365,15 @@ list.scala = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@stevanmilic" },
+}
+
+list.scfg = {
+  install_info = {
+    url = "https://git.sr.ht/~rockorager/tree-sitter-scfg",
+    files = { "src/parser.c" },
+    requires_generate_from_grammar = true,
+  },
+  maintainers = { "@WhyNotHugo" },
 }
 
 list.scheme = {
@@ -1482,6 +1500,14 @@ list.sxhkdrc = {
   maintainers = { "@RaafatTurki" },
 }
 
+list.systemtap = {
+  install_info = {
+    url = "https://github.com/ok-ryoko/tree-sitter-systemtap",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@ok-ryoko" },
+}
+
 list.t32 = {
   install_info = {
     url = "https://codeberg.org/xasc/tree-sitter-t32",
@@ -1511,7 +1537,7 @@ list.teal = {
 list.terraform = {
   install_info = {
     url = "https://github.com/MichaHoffmann/tree-sitter-hcl",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
     location = "dialects/terraform",
   },
   maintainers = { "@MichaHoffmann" },
