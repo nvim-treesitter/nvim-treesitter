@@ -210,7 +210,7 @@
     "revision": "58a6ccfd56d9f1de8fb9f77e6c42151f8f0d0f3d"
   },
   "hcl": {
-    "revision": "becebebd3509c02e871c99be55556269be1def1b"
+    "revision": "b5539065432c08e4118eb3ee7c94902fdda85708"
   },
   "heex": {
     "revision": "2e1348c3cf2c9323e87c2744796cf3f3868aa82a"
@@ -519,7 +519,7 @@
     "revision": "2158ecce11ea542f9b791baf2c7fb33798174ed2"
   },
   "terraform": {
-    "revision": "becebebd3509c02e871c99be55556269be1def1b"
+    "revision": "b5539065432c08e4118eb3ee7c94902fdda85708"
   },
   "thrift": {
     "revision": "d4deb1bd9e848f2dbe81103a151d99e8546de480"
