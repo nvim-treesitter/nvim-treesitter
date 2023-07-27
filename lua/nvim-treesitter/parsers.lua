@@ -1274,7 +1274,7 @@ list.query = {
 list.r = {
   install_info = {
     url = "https://github.com/r-lib/tree-sitter-r",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@echasnovski" },
 }
