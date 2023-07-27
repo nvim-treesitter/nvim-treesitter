@@ -1215,7 +1215,7 @@ list.prql = {
 list.pug = {
   install_info = {
     url = "https://github.com/zealot128/tree-sitter-pug",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@zealot128" },
   experimental = true,
