@@ -167,9 +167,9 @@ function M.check()
   if #error_collection > 0 then
     health.start('The following errors have been detected in query files:')
     for _, p in ipairs(error_collection) do
-      local lang, type = p[1], p[2]
+      local lang, type, err = p[1], p[2], p[3]
       local lines = {}
-      table.insert(lines, lang .. '(' .. type .. '): ')
+      table.insert(lines, lang .. '(' .. type .. '): ' .. err)
       local files = tsq.get_files(lang, type)
       if #files > 0 then
         for _, file in ipairs(files) do
