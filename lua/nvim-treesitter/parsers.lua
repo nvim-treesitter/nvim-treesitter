@@ -662,7 +662,7 @@ list.haskell_persistent = {
 list.hcl = {
   install_info = {
     url = "https://github.com/MichaHoffmann/tree-sitter-hcl",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@MichaHoffmann" },
 }
@@ -1537,7 +1537,7 @@ list.teal = {
 list.terraform = {
   install_info = {
     url = "https://github.com/MichaHoffmann/tree-sitter-hcl",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
     location = "dialects/terraform",
   },
   maintainers = { "@MichaHoffmann" },
