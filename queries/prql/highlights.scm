@@ -58,14 +58,15 @@ alias: (identifier) @field
   ">"
   "&&"
   "||"
+  "//"
   (bang)
 ] @operator
 
 [
   "("
   ")"
-  "["
-  "]"
+  "{"
+  "}"
 ] @punctuation.bracket
 
 [
