@@ -33,7 +33,7 @@
     "revision": "7f1a5df44861291d6951b6b2146a9fef4c226e14"
   },
   "c": {
-    "revision": "28d910c52e701ff3414d3d99c1c2be21d694dbee"
+    "revision": "39bea7d391f57c5f0e061419e1c3066e03eb14b3"
   },
   "c_sharp": {
     "revision": "1648e21b4f087963abf0101ee5221bb413107b07"
@@ -75,7 +75,7 @@
     "revision": "5f2c94b897601b4029fedcce7db4c6d76ce8a128"
   },
   "cuda": {
-    "revision": "2af3d43cd96dd3f3c3868095222c7f5e2462b3ab"
+    "revision": "ccb8368181f1684d3c9815bc1271eb25aa7ddb16"
   },
   "cue": {
     "revision": "0deecf48944aa54bb73e5383ba8acfbf9f2c44b4"
@@ -138,7 +138,7 @@
     "revision": "7ef88a8c652073785bffd7ce9c3effc68035aa11"
   },
   "fortran": {
-    "revision": "482bdb8b8fb7305b928937379820aa6449e359a7"
+    "revision": "7f901048c80e2886f3f0b1d38c699bf75c6a42dd"
   },
   "fsh": {
     "revision": "fa3347712f7a59ed02ccf508284554689c6cde28"
@@ -204,7 +204,7 @@
     "revision": "3d4af179414525a35dd069ba0208c9b71093d8b3"
   },
   "haskell": {
-    "revision": "ba0bfb0e5d8e9e31c160d287878c6f26add3ec08"
+    "revision": "99706824b92f162d4e0f47c7e930bbccb367276e"
   },
   "haskell_persistent": {
     "revision": "58a6ccfd56d9f1de8fb9f77e6c42151f8f0d0f3d"
@@ -213,7 +213,7 @@
     "revision": "b5539065432c08e4118eb3ee7c94902fdda85708"
   },
   "heex": {
-    "revision": "2e1348c3cf2c9323e87c2744796cf3f3868aa82a"
+    "revision": "9bf4ae444a8779839ecbca3b6b896dee426b10ae"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
@@ -300,7 +300,7 @@
     "revision": "8981072676ec8bd74def6134be4f883655f7c082"
   },
   "luap": {
-    "revision": "43916b0f31c48a05e03783eb0bab4eec54a4ac75"
+    "revision": "31461ae9bd0866cb5117cfe5de71189854fd0f3e"
   },
   "luau": {
     "revision": "6953cd4fa5967c9aa3c769b4e4c7e69c904b9fa9"
@@ -354,7 +354,7 @@
     "revision": "694c57718fd85d514f8b81176038e7a4cfabcaaf"
   },
   "ocamllex": {
-    "revision": "c8f90e42e1b9cf9e30b1669c386b8d9de992d201"
+    "revision": "4b9898ccbf198602bb0dec9cd67cc1d2c0a4fad2"
   },
   "odin": {
     "revision": "d165dbee27617dab2653e38737d96ede1030d14f"
@@ -375,7 +375,7 @@
     "revision": "6141ee2cb4c954d5fab9c4ed20ad2b159341533c"
   },
   "php": {
-    "revision": "d43130fd1525301e9826f420c5393a4d169819fc"
+    "revision": "d76de26b8218df208949f46b31e0c422020eda3a"
   },
   "phpdoc": {
     "revision": "915a527d5aafa81b31acf67fab31b0ac6b6319c0"
@@ -411,7 +411,7 @@
     "revision": "9ce9a5f7d64528572aaa8d59459ba869e634086b"
   },
   "python": {
-    "revision": "1a1b51823c40b9f2c05fe1ba2365d9ecd6b72127"
+    "revision": "5af00f64af6bbf822f208243cce5cf75396fb6f5"
   },
   "ql": {
     "revision": "bd087020f0d8c183080ca615d38de0ec827aeeaf"
@@ -567,7 +567,7 @@
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
   },
   "verilog": {
-    "revision": "22f9b845c77c52b86b21adaebe689864957f4e31"
+    "revision": "902031343056bc0b11f3e47b33f036a9cf59f58d"
   },
   "vhs": {
     "revision": "fec6e981b7795b68262ddf229d73d2aa03a89b9a"
@@ -588,7 +588,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "9c1a59ee61e4e58055af2cf06cdb5ccbd5305aad"
+    "revision": "820a17ab5bd18fd523c22f0856eb16d4d6fc3b11"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
