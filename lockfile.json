@@ -138,7 +138,7 @@
     "revision": "7ef88a8c652073785bffd7ce9c3effc68035aa11"
   },
   "fortran": {
-    "revision": "7f901048c80e2886f3f0b1d38c699bf75c6a42dd"
+    "revision": "6828cf3629addb1706bdbbd33491e95f12b7042c"
   },
   "fsh": {
     "revision": "fa3347712f7a59ed02ccf508284554689c6cde28"
@@ -174,7 +174,7 @@
     "revision": "d3031a8294bf331600d5046b1d14e690a0d8ba0c"
   },
   "glsl": {
-    "revision": "34e0657e37323874c6b67c718a0f83410c4602cf"
+    "revision": "e9c49d0752d968bc6dcd35d0c3a88397c5d51757"
   },
   "go": {
     "revision": "bbaa67a180cfe0c943e50c55130918be8efb20bd"
@@ -225,7 +225,7 @@
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
   },
   "hoon": {
-    "revision": "dfa565f87c8997d43cec725d41f023cc3577ca46"
+    "revision": "900a272271cc2fb78f24aa7b5a1e21ed36bb1d39"
   },
   "html": {
     "revision": "e5d7d7decbbdec5a4c90bbc69436b3828f5646e7"
@@ -318,7 +318,7 @@
     "revision": "aaf76797aa8ecd9a5e78e0ec3681941de6c945ee"
   },
   "matlab": {
-    "revision": "9100997fecc8dba33948712c7536637136842a75"
+    "revision": "c8723b33970deda54257e640779714fb181d4d5f"
   },
   "menhir": {
     "revision": "be8866a6bcc2b563ab0de895af69daeffa88fe70"
@@ -588,7 +588,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "820a17ab5bd18fd523c22f0856eb16d4d6fc3b11"
+    "revision": "996e87a0fa23ebd41d6c50fdff61d2ec6e2e1c1e"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
