@@ -99,7 +99,7 @@ local function do_check()
 end
 
 local ok, result = pcall(do_check)
-local allowed_to_fail = { "t32" } -- codeberg hoster is unreliable
+local allowed_to_fail = vim.split(vim.env.ALLOWED_INSTALLATION_FAILURES or "", ",", true)
 
 for k, v in pairs(require("nvim-treesitter.parsers").get_parser_configs()) do
   if not require("nvim-treesitter.parsers").has_parser(k) then
