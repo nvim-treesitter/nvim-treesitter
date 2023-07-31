@@ -34,7 +34,7 @@
 
 (multi_symbol_method
    ":" @punctuation.delimiter
-   (symbol) @method .)
+   (symbol) @method.call .)
 
 (list . (symbol) @function.call)
 (list . (multi_symbol (symbol) @function.call .))
