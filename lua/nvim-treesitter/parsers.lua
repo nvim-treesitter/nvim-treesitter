@@ -1512,7 +1512,6 @@ list.t32 = {
   install_info = {
     url = "https://gitlab.com/xasc/tree-sitter-t32",
     files = { "src/parser.c", "src/scanner.c" },
-    revision = "9d2520ae9886d3a768a352ec80db8762afb5232d",
   },
   maintainers = { "@xasc" },
 }
