@@ -589,7 +589,7 @@ list.godot_resource = {
 
 list.gomod = {
   install_info = {
-    url = "https://github.com/camdencheek/tree-sitter-go-mod",
+    url = "https://github.com/camdencheek/tree-sitter-gomod",
     files = { "src/parser.c" },
   },
   maintainers = { "@camdencheek" },
