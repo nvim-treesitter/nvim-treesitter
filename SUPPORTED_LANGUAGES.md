@@ -138,7 +138,7 @@ jsx (queries only)[^jsx] | core | `HFIJ ` |  |  | @steelsojka
 [pascal](https://github.com/Isopod/tree-sitter-pascal.git) | community | `HFIJL` |  |  | @Isopod
 [passwd](https://github.com/ath3/tree-sitter-passwd) | community | `H    ` |  |  | @amaanq
 [pem](https://github.com/ObserverOfTime/tree-sitter-pem) | core | `HF J ` |  |  | @ObserverOfTime
-[perl](https://github.com/ganezdragon/tree-sitter-perl) | community | `HF J ` |  |  | @lcrownover
+[perl](https://github.com/ganezdragon/tree-sitter-perl) | unsupported | `HF J ` |  |  | 
 [php](https://github.com/tree-sitter/tree-sitter-php) | community | `HFIJL` |  |  | @tk-shirasaka
 [phpdoc](https://github.com/claytonrcarter/tree-sitter-phpdoc) | unsupported | `H    ` |  | ✓ | @mikehaertl
 [pioasm](https://github.com/leo60228/tree-sitter-pioasm) | community | `H  J ` |  |  | @leo60228
