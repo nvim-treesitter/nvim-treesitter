@@ -1510,7 +1510,7 @@ list.systemtap = {
 
 list.t32 = {
   install_info = {
-    url = "https://gitlab.com/xasc/tree-sitter-t32",
+    url = "https://gitlab.com/xasc/tree-sitter-t32.git",
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@xasc" },
