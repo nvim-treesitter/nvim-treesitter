@@ -15,8 +15,6 @@
 [ "if" "elsif" "unless" "else" ] @conditional
 (ternary_expression
   ["?" ":"] @conditional.ternary)
-(ternary_expression_in_hash
-  ["?" ":"] @conditional.ternary)
 
 ; Keywords that mark repeating loops
 [ "while" "until" "for" "foreach" ] @repeat
