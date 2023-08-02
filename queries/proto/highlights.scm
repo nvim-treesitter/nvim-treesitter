@@ -6,12 +6,18 @@
   "oneof"
   "option"
   "reserved"
-  "returns"
-  "rpc"
   "service"
   "syntax"
   "to"
 ] @keyword
+
+[
+ "rpc"
+] @keyword.function
+
+[
+ "returns"
+] @keyword.return
 
 [
   "optional"
