@@ -5,16 +5,19 @@
   "message"
   "oneof"
   "option"
-  "optional"
-  "repeated"
   "reserved"
   "returns"
-  "required"
   "rpc"
   "service"
   "syntax"
   "to"
 ] @keyword
+
+[
+  "optional"
+  "repeated"
+  "required"
+] @type.qualifier
 
 [
   "package"
@@ -37,6 +40,7 @@
 [
   (string)
   "\"proto3\""
+  "\"proto2\""
 ] @string
 
 (int_lit) @number
