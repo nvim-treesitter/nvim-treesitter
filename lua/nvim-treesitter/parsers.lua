@@ -1198,10 +1198,10 @@ list.promql = {
 
 list.proto = {
   install_info = {
-    url = "https://github.com/mitchellh/tree-sitter-proto",
+    url = "https://github.com/treywood/tree-sitter-proto",
     files = { "src/parser.c" },
   },
-  maintainers = { "@fsouza" },
+  maintainers = { "@treywood" },
 }
 
 list.prql = {
