@@ -3,7 +3,7 @@
  (#set! injection.language "json"))
 
 ((xml) @injection.content
- (#set! injection.language "html"))
+ (#set! injection.language "xml"))
 
 (multiline_string
   (multiline_string_type) @_lang

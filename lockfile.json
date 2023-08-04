@@ -101,6 +101,9 @@
   "dot": {
     "revision": "9ab85550c896d8b294d9b9ca1e30698736f08cea"
   },
+  "dtd": {
+    "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
+  },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
   },
@@ -592,6 +595,9 @@
   },
   "wing": {
     "revision": "9399564d1e32864c6af2d49c0dcd1f76d54443f2"
+  },
+  "xml": {
+    "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"

@@ -42,6 +42,9 @@ for ft, lang in pairs {
   quarto = "markdown",
   dosini = "ini",
   confini = "ini",
+  svg = "xml",
+  xsd = "xml",
+  xslt = "xml",
 } do
   register_lang(lang, ft)
 end
@@ -354,6 +357,15 @@ list.dot = {
     files = { "src/parser.c" },
   },
   maintainers = { "@rydesun" },
+}
+
+list.dtd = {
+  install_info = {
+    url = "https://github.com/ObserverOfTime/tree-sitter-xml",
+    files = { "src/parser.c", "src/scanner.c" },
+    location = "tree-sitter-dtd",
+  },
+  maintainers = { "@ObserverOfTime" },
 }
 
 list.ebnf = {
@@ -1743,6 +1755,15 @@ list.wing = {
   },
   maintainers = { "@gshpychka" },
   experimental = true,
+}
+
+list.xml = {
+  install_info = {
+    url = "https://github.com/ObserverOfTime/tree-sitter-xml",
+    files = { "src/parser.c", "src/scanner.c" },
+    location = "tree-sitter-xml",
+  },
+  maintainers = { "@ObserverOfTime" },
 }
 
 list.yaml = {
