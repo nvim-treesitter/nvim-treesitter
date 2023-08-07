@@ -29,7 +29,8 @@ function M.setup(user_data)
   if config.auto_install then
     vim.api.nvim_create_autocmd('FileType', {
       callback = function(args)
-        local ft = vim.bo[args.buf].filetype
+        local buf = args.buf --- @type integer
+        local ft = vim.bo[buf].filetype
         local lang = vim.treesitter.language.get_lang(ft) or ft
         if
           require('nvim-treesitter.parsers').configs[lang]
@@ -39,7 +40,7 @@ function M.setup(user_data)
           require('nvim-treesitter.install').install(lang, nil, function()
             -- Need to pcall since 'FileType' can be triggered multiple times
             -- per buffer
-            pcall(vim.treesitter.start, args.buf, lang)
+            pcall(vim.treesitter.start, buf, lang)
           end)
         end
       end,
