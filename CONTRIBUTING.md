@@ -239,6 +239,10 @@ Used for XML-like tags.
 @nospell ; for defining regions that should NOT be spellchecked
 ```
 
+The main types of nodes which are spell checked are:
+- Comments
+- Strings; where it makes sense. Strings that have interpolation or are typically used for non text purposes are not spell checked (e.g. bash).
+
 #### Priority
 
 Captures can be assigned a priority to control precedence of highlights via the

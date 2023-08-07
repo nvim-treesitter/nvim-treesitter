@@ -40,12 +40,15 @@
  "!="
  ] @operator
 
+; Do *not* spell check strings since they typically have some sort of
+; interpolation in them, or, are typically used for things like filenames, URLs,
+; flags and file content.
 [
  (string)
  (raw_string)
  (ansi_c_string)
  (heredoc_body)
-] @string @spell
+] @string
 
 (variable_assignment (word) @string)
 
