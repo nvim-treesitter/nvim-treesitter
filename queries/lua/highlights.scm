@@ -241,7 +241,7 @@
 
 (number) @number
 
-(string) @string @spell
+(string) @string
 
 ;; Error
 (ERROR) @error

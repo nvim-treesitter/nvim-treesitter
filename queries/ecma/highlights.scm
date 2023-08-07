@@ -194,7 +194,7 @@
 ((string_fragment) @preproc
  (#eq? @preproc "use strict"))
 
-(string) @string @spell
+(string) @string
 (template_string) @string
 (escape_sequence) @string.escape
 (regex_pattern) @string.regex

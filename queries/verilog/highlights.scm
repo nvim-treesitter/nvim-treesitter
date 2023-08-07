@@ -177,7 +177,7 @@
 [
   (double_quoted_string)
   (string_literal)
-] @string @spell
+] @string
 
 [
   (default_nettype_compiler_directive)

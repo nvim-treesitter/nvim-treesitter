@@ -5,7 +5,7 @@
 (number) @number
 (character) @character
 (boolean) @boolean
-(string) @string @spell
+(string) @string
 [(comment)
  (block_comment)] @comment @spell
 
