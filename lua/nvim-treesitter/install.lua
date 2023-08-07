@@ -1,3 +1,4 @@
+local fn = vim.fn
 local fs = vim.fs
 local uv = vim.uv
 
@@ -60,31 +61,21 @@ end
 ---
 
 ---@param lang string
----@param validate? boolean
----@return InstallInfo
-local function get_parser_install_info(lang, validate)
+---@return InstallInfo?
+local function get_parser_install_info(lang)
   local parser_config = parsers.configs[lang]
 
   if not parser_config then
     log.error('Parser not available for language "' .. lang .. '"')
   end
 
-  local install_info = parser_config.install_info
-
-  if validate then
-    vim.validate({
-      url = { install_info.url, 'string' },
-      files = { install_info.files, 'table' },
-    })
-  end
-
-  return install_info
+  return parser_config.install_info
 end
 
 --- @param ... string
 --- @return string
 function M.get_package_path(...)
-  return fs.joinpath(vim.fn.fnamemodify(debug.getinfo(1, 'S').source:sub(2), ':p:h:h:h'), ...)
+  return fs.joinpath(fn.fnamemodify(debug.getinfo(1, 'S').source:sub(2), ':p:h:h:h'), ...)
 end
 
 ---@param lang string
@@ -163,12 +154,18 @@ local function cc_err()
   ) .. '" are not executable.')
 end
 
+--- @param x string
+--- @return boolean
+local function executable(x)
+  return fn.executable(x) == 1
+end
+
 --- @param logger Logger
 --- @param repo InstallInfo
 --- @param compile_location string
 local function do_generate_from_grammar(logger, repo, compile_location)
   if repo.generate_requires_npm then
-    if vim.fn.executable('npm') ~= 1 then
+    if not executable('npm') then
       logger:error('NPM requires to be installed from grammar.js')
     end
 
@@ -182,7 +179,7 @@ local function do_generate_from_grammar(logger, repo, compile_location)
   logger:info('Generating source files from grammar.js...')
 
   local r = system({
-    vim.fn.exepath('tree-sitter'),
+    fn.exepath('tree-sitter'),
     'generate',
     '--abi',
     tostring(vim.treesitter.language_version),
@@ -230,7 +227,7 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
   end
 
   logger:debug('Creating temporary directory: ' .. temp_dir)
-  --TODO(clason): use vim.fn.mkdir(temp_dir, 'p') in case stdpath('cache') is not created
+  --TODO(clason): use fn.mkdir(temp_dir, 'p') in case stdpath('cache') is not created
   local err = uv_mkdir(temp_dir, 493)
   a.main()
   if err then
@@ -323,14 +320,7 @@ end
 ---@param executables string[]
 ---@return string?
 function M.select_executable(executables)
-  return vim.iter.filter(
-    ---@param c string
-    ---@return boolean
-    function(c)
-      return vim.fn.executable(c) == 1
-    end,
-    executables
-  )[1]
+  return vim.iter.filter(executable, executables)[1]
 end
 
 -- Returns the compiler arguments based on the compiler and OS
@@ -383,7 +373,7 @@ local function select_compiler_args(repo, compiler)
       --- @param file string
       --- @return boolean
       function(file)
-        local ext = vim.fn.fnamemodify(file, ':e')
+        local ext = fn.fnamemodify(file, ':e')
         return ext == 'cc' or ext == 'cpp' or ext == 'cxx'
       end,
       repo.files
@@ -408,9 +398,9 @@ end
 ---@param repo InstallInfo
 ---@return boolean
 local function can_download_tar(repo)
-  local can_use_tar = vim.fn.executable('tar') == 1 and vim.fn.executable('curl') == 1
-  local is_github = repo.url:find('github.com', 1, true)
-  local is_gitlab = repo.url:find('gitlab.com', 1, true)
+  local can_use_tar = executable('tar') and executable('curl')
+  local is_github = repo.url:find('github.com', 1, true) ~= nil
+  local is_gitlab = repo.url:find('gitlab.com', 1, true) ~= nil
   return can_use_tar and (is_github or is_gitlab) and not iswin
 end
 
@@ -429,13 +419,13 @@ end
 ---@param lang string
 ---@param cache_dir string
 ---@param install_dir string
----@param force boolean
----@param generate_from_grammar boolean
+---@param force? boolean
+---@param generate_from_grammar? boolean
 local function install_lang(lang, cache_dir, install_dir, force, generate_from_grammar)
   if vim.list_contains(config.installed_parsers(), lang) then
     if not force then
       local yesno =
-        vim.fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
+        fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
       print('\n ')
       if yesno:sub(1, 1) ~= 'y' then
         return
@@ -444,7 +434,6 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
   end
 
   local logger = log.new('install/' .. lang)
-  local err
 
   local repo = get_parser_install_info(lang)
   if repo then
@@ -458,18 +447,18 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
 
     generate_from_grammar = repo.requires_generate_from_grammar or generate_from_grammar
 
-    if generate_from_grammar and vim.fn.executable('tree-sitter') ~= 1 then
+    if generate_from_grammar and not executable('tree-sitter') then
       logger:error('tree-sitter CLI not found: `tree-sitter` is not executable')
     end
 
-    if generate_from_grammar and vim.fn.executable('node') ~= 1 then
+    if generate_from_grammar and not executable('node') then
       logger:error('Node JS not found: `node` is not executable')
     end
 
     local revision = get_target_revision(lang)
 
     local maybe_local_path = fs.normalize(repo.url)
-    local from_local_path = vim.fn.isdirectory(maybe_local_path) == 1
+    local from_local_path = fn.isdirectory(maybe_local_path) == 1
     if from_local_path then
       repo.url = maybe_local_path
     end
@@ -501,7 +490,7 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
 
     local parser_lib_name = fs.joinpath(install_dir, lang) .. '.so'
 
-    err = uv_copyfile(fs.joinpath(compile_location, 'parser.so'), parser_lib_name)
+    local err = uv_copyfile(fs.joinpath(compile_location, 'parser.so'), parser_lib_name)
     a.main()
     if err then
       logger:error(err)
@@ -518,7 +507,7 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
   local queries = fs.joinpath(config.get_install_dir('queries'), lang)
   local queries_src = M.get_package_path('runtime', 'queries', lang)
   uv_unlink(queries)
-  err = uv_symlink(queries_src, queries, { dir = true, junction = true })
+  local err = uv_symlink(queries_src, queries, { dir = true, junction = true })
   a.main()
   if err then
     logger:error(err)
@@ -539,14 +528,14 @@ end
 ---
 ---
 --- @generic F: function
---- @param fn F Function to throttle
+--- @param f F Function to throttle
 --- @return F throttled function.
-local function throttle_by_id(fn)
+local function throttle_by_id(f)
   local scheduled = {} --- @type table<any,boolean>
   local running = {} --- @type table<any,boolean>
   return function(id, ...)
     if scheduled[id] then
-      -- If fn is already scheduled, then drop
+      -- If f is already scheduled, then drop
       return
     end
     if not running[id] then
@@ -558,7 +547,7 @@ local function throttle_by_id(fn)
     while scheduled[id] do
       scheduled[id] = nil
       running[id] = true
-      fn(id, ...)
+      f(id, ...)
       running[id] = nil
     end
   end
@@ -568,9 +557,9 @@ end
 local install_lang_throttled = throttle_by_id(install_lang)
 
 ---@class InstallOptions
----@field force boolean
----@field generate_from_grammar boolean
----@field skip table
+---@field force? boolean
+---@field generate_from_grammar? boolean
+---@field skip? table
 
 --- Install a parser
 --- @param languages? string[]|string
@@ -582,12 +571,12 @@ local function install(languages, options, _callback)
   local generate_from_grammar = options.generate_from_grammar
   local skip = options.skip
 
-  if vim.fn.executable('git') == 0 then
+  if not executable('git') then
     log.error('Git is required on your system to run this command')
     return
   end
 
-  local cache_dir = vim.fs.normalize(vim.fn.stdpath('cache'))
+  local cache_dir = vim.fs.normalize(fn.stdpath('cache'))
   local install_dir = config.get_install_dir('parser')
 
   if not languages or type(languages) == 'string' then
