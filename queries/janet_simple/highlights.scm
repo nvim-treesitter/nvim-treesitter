@@ -1,10 +1,10 @@
 ;; >> Literals
 
 (kwd_lit) @symbol
-(str_lit) @string @spell
-(long_str_lit) @string @spell
-(buf_lit) @string @spell
-(long_buf_lit) @string @spell
+(str_lit) @string
+(long_str_lit) @string
+(buf_lit) @string
+(long_buf_lit) @string
 (num_lit) @number
 (bool_lit) @boolean
 (nil_lit) @constant.builtin

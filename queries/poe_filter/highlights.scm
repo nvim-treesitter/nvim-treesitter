@@ -6,7 +6,7 @@
 
 (operator) @operator
 
-(string) @string @spell
+(string) @string
 
 (file) @string
 

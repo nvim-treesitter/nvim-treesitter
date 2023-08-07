@@ -32,7 +32,7 @@
 (comment) @comment @spell
 
 ; Strings
-(string) @string @spell
+(string) @string
 
 ; Modules
 (alias) @type

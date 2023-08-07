@@ -23,7 +23,7 @@
 (boolean) @boolean
 (number) @number
 
-(string) @string @spell
+(string) @string
 (escape_sequence) @string.escape
 
 (symbol) @variable

@@ -20,7 +20,6 @@
 [(string)
  (here_string)
  (byte_string)] @string
-(string) @spell
 
 (escape_sequence) @string.escape
 
