@@ -231,7 +231,7 @@
     "revision": "e5d7d7decbbdec5a4c90bbc69436b3828f5646e7"
   },
   "htmldjango": {
-    "revision": "11e73ebd8e73356badaad826a0534437b208b6e7"
+    "revision": "717e83aefd328735beeeb671f3f95b2624e70c57"
   },
   "http": {
     "revision": "6824a247d1326079aab4fa9f9164e9319678081d"
@@ -459,7 +459,7 @@
     "revision": "0a70e15da977489d954c219af9b50b8a722630ee"
   },
   "scala": {
-    "revision": "a2f36c2477859110d5b7b675f395e50241fbc004"
+    "revision": "f14629b4d53f72356ce8f6d4ac8c54d21b4e74dd"
   },
   "scfg": {
     "revision": "6deae0cbb458c849a4d1e2985093e9c9c32d7fd0"
@@ -486,7 +486,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "a000dd8930464c71fa6fec9be4fdd6198068393c"
+    "revision": "3dfa1b1fafac51e3ffc39064eafb26b5111861a2"
   },
   "squirrel": {
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
@@ -588,7 +588,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "df94899fcee25e2da32744760aa4394d2e728a33"
+    "revision": "6ae93e3950b12b6c1b3881e4d347263574222c4e"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
