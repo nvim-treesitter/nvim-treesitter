@@ -151,6 +151,7 @@ jsx (queries only)[^jsx] | core | `HFIJ ` |  |  | @steelsojka
 [prql](https://github.com/PRQL/tree-sitter-prql) | core | `H  J ` |  |  | @matthias-Q
 [pug](https://github.com/zealot128/tree-sitter-pug) | unsupported | `H  J ` |  |  | @zealot128
 [puppet](https://github.com/amaanq/tree-sitter-puppet) | core | `HFIJL` |  |  | @amaanq
+[pymanifest](https://github.com/ObserverOfTime/tree-sitter-pymanifest)[^pymanifest] |  | `H  J ` |  |  | @ObserverOfTime
 [python](https://github.com/tree-sitter/tree-sitter-python) | stable | `HFIJL` |  |  | @stsewd, @theHamsta
 [ql](https://github.com/tree-sitter/tree-sitter-ql) | community | `HFIJL` |  |  | @pwntester
 [qmldir](https://github.com/Decodetalkers/tree-sitter-qmldir) | core | `H  J ` |  |  | @amaanq
@@ -226,6 +227,7 @@ jsx (queries only)[^jsx] | core | `HFIJ ` |  |  | @steelsojka
 [^markdown]: basic highlighting
 [^markdown_inline]: needed for full highlighting
 [^poe_filter]: Path of Exile item filter
+[^pymanifest]: PyPA manifest
 [^query]: Tree-sitter query language
 [^uxntal]: uxn tal
 <!--parserinfo-->

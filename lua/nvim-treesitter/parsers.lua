@@ -1296,6 +1296,16 @@ M.configs = {
     tier = 2,
   },
 
+  pymanifest = {
+    install_info = {
+      url = 'https://github.com/ObserverOfTime/tree-sitter-pymanifest',
+      files = { 'src/parser.c' },
+    },
+    maintainers = { '@ObserverOfTime' },
+    tier = 2,
+    readme_note = 'PyPA manifest',
+  },
+
   python = {
     install_info = {
       url = 'https://github.com/tree-sitter/tree-sitter-python',
