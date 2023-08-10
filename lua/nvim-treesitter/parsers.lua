@@ -1241,6 +1241,15 @@ list.puppet = {
   maintainers = { "@amaanq" },
 }
 
+list.pymanifest = {
+  install_info = {
+    url = "https://github.com/ObserverOfTime/tree-sitter-pymanifest",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@ObserverOfTime" },
+  readme_name = "PyPA manifest",
+}
+
 list.python = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-python",

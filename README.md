@@ -311,6 +311,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [prql](https://github.com/PRQL/tree-sitter-prql) (maintained by @matthias-Q)
 - [x] [pug](https://github.com/zealot128/tree-sitter-pug) (experimental, maintained by @zealot128)
 - [x] [puppet](https://github.com/amaanq/tree-sitter-puppet) (maintained by @amaanq)
+- [x] [PyPA manifest](https://github.com/ObserverOfTime/tree-sitter-pymanifest) (maintained by @ObserverOfTime)
 - [x] [python](https://github.com/tree-sitter/tree-sitter-python) (maintained by @stsewd, @theHamsta)
 - [x] [ql](https://github.com/tree-sitter/tree-sitter-ql) (maintained by @pwntester)
 - [x] [qmldir](https://github.com/Decodetalkers/tree-sitter-qmldir) (maintained by @amaanq)
