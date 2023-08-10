@@ -1,4 +1,5 @@
-(preproc_arg) @cpp
+(preproc_function_def (preproc_arg) @cpp)
+(preproc_call (preproc_arg) @cpp)
 
 (comment) @comment
 
