@@ -659,6 +659,15 @@ list.haskell_persistent = {
   maintainers = { "@lykahb" },
 }
 
+list.haxe = {
+  install_info = {
+    url = "https://github.com/vantreeseba/tree-sitter-haxe",
+    files = { "src/parser.c" },
+  },
+  filetype = "haxe",
+  maintainers = { "@vantreeseba" },
+}
+
 list.hcl = {
   install_info = {
     url = "https://github.com/MichaHoffmann/tree-sitter-hcl",
