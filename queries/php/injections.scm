@@ -15,6 +15,18 @@
   (heredoc_end) @injection.language
   (#downcase! @injection.language))
 
+((heredoc
+  (heredoc_body) @injection.content
+  (heredoc_end) @injection.language
+ (#set! injection.include-children)
+ (#downcase! @injection.language)))
+
+((nowdoc
+  (nowdoc_body) @injection.content
+  (heredoc_end) @injection.language
+ (#set! injection.include-children)
+ (#downcase! @injection.language)))
+
 ;; regex
 
 ((function_call_expression
