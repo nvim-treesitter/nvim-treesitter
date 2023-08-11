@@ -3,7 +3,6 @@ local runner = Runner:new(it, 'tests/indent/jsx', {
   tabstop = 2,
   shiftwidth = 2,
   expandtab = true,
-  filetype = 'jsx',
 })
 
 describe('indent JSX Elements:', function()

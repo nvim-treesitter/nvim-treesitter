@@ -6,7 +6,6 @@ local run = Runner:new(it, 'tests/indent', {
   shiftwidth = 2,
   softtabstop = 0,
   expandtab = true,
-  filetype = 'javascript',
 })
 
 describe('indent JavaScript:', function()
