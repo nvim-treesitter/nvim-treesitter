@@ -6,7 +6,7 @@
     "revision": "80ea622cf952a0059e168e5c92a798b2f1925652"
   },
   "arduino": {
-    "revision": "11d4fd1b0320514272cfbe3aa911a3cd8705b7a9"
+    "revision": "d988e6a803203cc2bbfd2a8a84edffc73d2922b4"
   },
   "astro": {
     "revision": "e122a8fcd07e808a7b873bfadc2667834067daf1"
@@ -243,7 +243,7 @@
     "revision": "7f11a02fb8891482068e0fe419965d7bade81a68"
   },
   "ispc": {
-    "revision": "0bdbb03d9abde78d8be2f2199e57119b2c7f8fd7"
+    "revision": "cc57a931eb782474324910e19ca253aa0d5fe38a"
   },
   "janet_simple": {
     "revision": "bd9cbaf1ea8b942dfd58e68df10c9a378ab3d2b6"
