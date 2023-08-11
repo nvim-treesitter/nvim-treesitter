@@ -178,37 +178,25 @@ end, true)
 -- Just avoid some annoying warnings for this directive
 query.add_directive("make-range!", function() end, true)
 
+--- transform node text to lower case (e.g., to make @injection.language case insensitive)
+---
 ---@param match (TSNode|nil)[]
 ---@param _ string
 ---@param bufnr integer
 ---@param pred string[]
----@param metadata table
 ---@return boolean|nil
 query.add_directive("downcase!", function(match, _, bufnr, pred, metadata)
-  local text, key, value ---@type string|string[], string, string|integer
-
-  if #pred == 3 then
-    -- (#downcase! @capture "key")
-    key = pred[3]
-    value = metadata[pred[2]][key]
-  else
-    -- (#downcase! "key")
-    key = pred[2]
-    value = metadata[key]
+  local id = pred[2]
+  local node = match[id]
+  if not node then
+    return
   end
 
-  if type(value) == "string" then
-    text = value
-  else
-    local node = match[value]
-    text = vim.treesitter.get_node_text(node, bufnr) or ""
+  local text = vim.treesitter.get_node_text(node, bufnr, { metadata = metadata[id] }) or ""
+  if not metadata[id] then
+    metadata[id] = {}
   end
-
-  if #pred == 3 then
-    metadata[pred[2]][key] = string.lower(text)
-  else
-    metadata[key] = string.lower(text)
-  end
+  metadata[id].text = string.lower(text)
 end, true)
 
 -- Trim blank lines from end of the region

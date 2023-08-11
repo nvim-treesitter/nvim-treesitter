@@ -4,8 +4,7 @@
 (heredoc_body
  (heredoc_content) @injection.content
  (heredoc_end) @injection.language
- (#set! "language" @injection.language)
- (#downcase! "language"))
+ (#downcase! @injection.language))
 
 (regex 
   (string_content) @injection.content 
