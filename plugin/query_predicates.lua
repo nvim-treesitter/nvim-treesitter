@@ -46,30 +46,23 @@ query.add_directive('set-lang-from-mimetype!', function(match, _, bufnr, pred, m
   end
 end, true)
 
+--- transform node text to lower case (e.g., to make @injection.language case insensitive)
+---
+---@param match (TSNode|nil)[]
+---@param _ string
+---@param bufnr integer
+---@param pred string[]
+---@return boolean|nil
 query.add_directive('downcase!', function(match, _, bufnr, pred, metadata)
-  local text, key, value ---@type string|string[], string, string|integer
   local id = pred[2]
-
-  if #pred == 3 then
-    -- (#downcase! @capture "key")
-    key = pred[3]
-    value = metadata[id][key]
-  else
-    -- (#downcase! "key")
-    key = id
-    value = metadata[key]
+  local node = match[id]
+  if not node then
+    return
   end
 
-  if type(value) == 'string' then
-    text = value
-  else
-    local node = match[value]
-    text = vim.treesitter.get_node_text(node, bufnr, { metadata = metadata[id] }) or ''
+  local text = vim.treesitter.get_node_text(node, bufnr, { metadata = metadata[id] }) or ''
+  if not metadata[id] then
+    metadata[id] = {}
   end
-
-  if #pred == 3 then
-    metadata[id][key] = string.lower(text)
-  else
-    metadata[key] = string.lower(text)
-  end
+  metadata[id].text = string.lower(text)
 end, true)
