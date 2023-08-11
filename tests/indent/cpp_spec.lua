@@ -7,7 +7,6 @@ local run = Runner:new(it, 'tests/indent', {
   shiftwidth = 4,
   softtabstop = 0,
   expandtab = true,
-  filetype = 'cpp',
 })
 
 describe('indent C++:', function()
