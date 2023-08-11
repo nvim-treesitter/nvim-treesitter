@@ -5,15 +5,17 @@
 ((comment) @injection.content
   (#set! injection.language "phpdoc"))
 
-(heredoc
+((heredoc
   (heredoc_body) @injection.content
   (heredoc_end) @injection.language
-  (#downcase! @injection.language))
+ (#set! injection.include-children)
+ (#downcase! @injection.language)))
 
-(nowdoc
+((nowdoc
   (nowdoc_body) @injection.content
   (heredoc_end) @injection.language
-  (#downcase! @injection.language))
+ (#set! injection.include-children)
+ (#downcase! @injection.language)))
 
 ;; regex
 
