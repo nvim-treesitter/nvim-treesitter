@@ -45,31 +45,3 @@ query.add_directive('set-lang-from-mimetype!', function(match, _, bufnr, pred, m
     metadata['injection.language'] = parts[#parts]
   end
 end, true)
-
-query.add_directive('downcase!', function(match, _, bufnr, pred, metadata)
-  local text, key, value ---@type string|string[], string, string|integer
-  local id = pred[2]
-
-  if #pred == 3 then
-    -- (#downcase! @capture "key")
-    key = pred[3]
-    value = metadata[id][key]
-  else
-    -- (#downcase! "key")
-    key = id
-    value = metadata[key]
-  end
-
-  if type(value) == 'string' then
-    text = value
-  else
-    local node = match[value]
-    text = vim.treesitter.get_node_text(node, bufnr, { metadata = metadata[id] }) or ''
-  end
-
-  if #pred == 3 then
-    metadata[id][key] = string.lower(text)
-  else
-    metadata[key] = string.lower(text)
-  end
-end, true)
