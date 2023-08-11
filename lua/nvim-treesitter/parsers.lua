@@ -655,7 +655,7 @@ list.haskell_persistent = {
     url = "https://github.com/MercuryTechnologies/tree-sitter-haskell-persistent",
     files = { "src/parser.c", "src/scanner.cc" },
   },
-  filetype = "haskell.persistent",
+  filetype = "haskellpersistent",
   maintainers = { "@lykahb" },
 }
 
