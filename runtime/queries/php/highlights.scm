@@ -138,6 +138,13 @@
  ] @string
 (escape_sequence) @string.escape
 
+[
+ (heredoc_start)
+ (heredoc_end)
+] @label
+
+(nowdoc "'" @label)
+
 (boolean) @boolean
 (null) @constant.builtin
 (integer) @number
@@ -271,6 +278,7 @@
   "&"
   "<<"
   ">>"
+  "<<<"
 
   "->"
   "?->"
