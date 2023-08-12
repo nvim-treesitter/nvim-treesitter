@@ -522,7 +522,7 @@
     "revision": "300f6a490e71f895e644ed2deec6920860a2e107"
   },
   "teal": {
-    "revision": "2158ecce11ea542f9b791baf2c7fb33798174ed2"
+    "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
   },
   "terraform": {
     "revision": "b5539065432c08e4118eb3ee7c94902fdda85708"
@@ -591,7 +591,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "f416d4b76141d803ea2ebadf0629fca164133723"
+    "revision": "9399564d1e32864c6af2d49c0dcd1f76d54443f2"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
