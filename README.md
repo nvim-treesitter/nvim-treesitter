@@ -131,15 +131,16 @@ If you have a parser that is not on the list of supported languages (either as a
 3. Add the following snippet to your `init.lua`:
 
 ```lua
-local parser_config = require "nvim-treesitter.parsers".configs
+local parser_config = require('nvim-treesitter.parsers').configs
 parser_config.zimbu = {
   install_info = {
-    url = "~/projects/tree-sitter-zimbu", -- local path or git repo
-    files = {"src/parser.c"}, -- note that some parsers also require src/scanner.c or src/scanner.cc
+    url = '~/projects/tree-sitter-zimbu', -- local path or git repo
+    files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c or src/scanner.cc
     -- optional entries:
-    branch = "develop", -- only needed if different from default branch
-    generate_requires_npm = false, -- if stand-alone parser without npm dependencies
-    requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+    branch = 'develop', -- only needed if different from default branch
+    location= 'parser', -- only needed if the parser is in subdirectory of a "monorepo"
+    requires_generate_from_grammar = true, -- only needed if repo does not contain pre-generated src/parser.c
+    generate_requires_npm = true, -- only needed if parser has npm dependencies
   },
 }
 ```
