@@ -18,8 +18,6 @@ jobs:
           LUAROCKS_API_KEY: ${{ secrets.LUAROCKS_API_KEY }}
         with:
           name: nvim-treesitter
-          version: 0.1
-          license: apache 2
           detailed_description: |
             The goal of nvim-treesitter is both to provide a simple and easy way to use the interface for tree-sitter in Neovim
             and to provide some basic functionality such as highlighting based on it.
