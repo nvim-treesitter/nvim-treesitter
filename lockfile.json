@@ -6,7 +6,7 @@
     "revision": "80ea622cf952a0059e168e5c92a798b2f1925652"
   },
   "arduino": {
-    "revision": "d988e6a803203cc2bbfd2a8a84edffc73d2922b4"
+    "revision": "a2aa2b38301960822c5384cd10a07c2026e9d44e"
   },
   "astro": {
     "revision": "e122a8fcd07e808a7b873bfadc2667834067daf1"
@@ -75,7 +75,7 @@
     "revision": "5f2c94b897601b4029fedcce7db4c6d76ce8a128"
   },
   "cuda": {
-    "revision": "c5fa8c999c9b599c7014467e59920dd00cc5a64c"
+    "revision": "607851cc524d9f5b5a5cd31ad4044fd431cee54e"
   },
   "cue": {
     "revision": "0deecf48944aa54bb73e5383ba8acfbf9f2c44b4"
@@ -177,7 +177,7 @@
     "revision": "d3031a8294bf331600d5046b1d14e690a0d8ba0c"
   },
   "glsl": {
-    "revision": "00ffe2099374613d2f313ace4a9dda44370b458b"
+    "revision": "4780c2b689a5a5bd0ccfd78403510e9cf4a0f2fc"
   },
   "go": {
     "revision": "bbaa67a180cfe0c943e50c55130918be8efb20bd"
@@ -222,7 +222,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "95361dde7ad4025fbec5dc4e5cdde0ea8ed64172"
+    "revision": "246354da450a9a6f27f04b67c673b2ed77abb4b7"
   },
   "hocon": {
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
@@ -348,7 +348,7 @@
     "revision": "1a305093569632de50f9a316ff843dcda25b4ef5"
   },
   "objc": {
-    "revision": "97e022ec4a908108283bad23d42eee39ad204db6"
+    "revision": "62e61b6f5c0289c376d61a8c91faf6435cde9012"
   },
   "ocaml": {
     "revision": "694c57718fd85d514f8b81176038e7a4cfabcaaf"
@@ -399,7 +399,7 @@
     "revision": "eca2596a355b1a9952b4f80f8f9caed300a272b5"
   },
   "promql": {
-    "revision": "ed9a12f6ae4e75d4622adef8fb1b1e4d0ac0a759"
+    "revision": "77625d78eebc3ffc44d114a07b2f348dff3061b0"
   },
   "proto": {
     "revision": "e9f6b43f6844bd2189b50a422d4e2094313f6aa3"
@@ -597,7 +597,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "a930aa4e36da798162fb088884d2c154f04c641c"
+    "revision": "fc4e19540659eca83e52116e36a49cefa0d87902"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
