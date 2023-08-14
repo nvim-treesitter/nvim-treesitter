@@ -16,6 +16,19 @@
 
 ;(field_expression) @parameter ;; How to highlight this?
 
+; variable declaration and init
+(declaration
+  declarator: (identifier) @variable.definition)
+
+(pointer_declarator
+  declarator: (identifier) @variable.definition)
+
+(init_declarator
+  declarator: (identifier) @variable.definition)
+
+(init_declarator
+  declarator: (reference_declarator) @variable.definition)
+
 (((field_expression
      (field_identifier) @method)) @_parent
  (#has-parent? @_parent template_method function_declarator))
