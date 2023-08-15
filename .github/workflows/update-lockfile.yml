@@ -18,29 +18,25 @@ jobs:
         env:
           NVIM_TAG: stable
         run: |
-          wget https://github.com/josephburnett/jd/releases/download/v1.6.1/jd-amd64-linux
-          mv ./jd-amd64-linux /tmp/jd
+          wget https://github.com/josephburnett/jd/releases/download/v1.7.1/jd-amd64-linux
+          mv jd-amd64-linux /tmp/jd
           chmod +x /tmp/jd
-          sudo apt install libfuse2
-          wget https://github.com/neovim/neovim/releases/download/${NVIM_TAG}/nvim.appimage
-          chmod u+x nvim.appimage
-          mkdir -p ~/.local/share/nvim/site/pack/nvim-treesitter/start
-          ln -s $(pwd) ~/.local/share/nvim/site/pack/nvim-treesitter/start
+          bash scripts/ci-install-${{ matrix.os }}.sh
 
       - name: Update parsers
         env:
           SKIP_LOCKFILE_UPDATE_FOR_LANGS: ""
         run: |
           cp lockfile.json /tmp/old_lockfile.json
-          ./nvim.appimage --headless -c "luafile ./scripts/write-lockfile.lua" -c "q"
+          nvim -l scripts/write-lockfile.lua
           # Pretty print
           cp lockfile.json /tmp/lockfile.json
           cat /tmp/lockfile.json | jq --sort-keys > lockfile.json
 
       - name: Commit changes
         run: |
-          git config user.name "GitHub"
-          git config user.email "noreply@github.com"
+          git config user.name 'GitHub'
+          git config user.email 'noreply@github.com'
           git add lockfile.json
           UPDATED_PARSERS=$(/tmp/jd -f merge /tmp/old_lockfile.json lockfile.json | jq -r 'keys | join(", ")')
           echo "UPDATED_PARSERS=$UPDATED_PARSERS" >> $GITHUB_ENV
