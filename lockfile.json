@@ -194,6 +194,9 @@
   "gowork": {
     "revision": "949a8a470559543857a62102c84700d291fc984c"
   },
+  "gpg": {
+    "revision": "af97733568c8141090d8a79dfff66806c96c2cc0"
+  },
   "graphql": {
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },

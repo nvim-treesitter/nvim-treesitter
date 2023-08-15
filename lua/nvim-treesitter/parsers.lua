@@ -623,6 +623,14 @@ list.gowork = {
   maintainers = { "@omertuc" },
 }
 
+list.gpg = {
+  install_info = {
+    url = "https://github.com/ObserverOfTime/tree-sitter-gpg-config",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@ObserverOfTime" },
+}
+
 list.groovy = {
   install_info = {
     url = "https://github.com/Decodetalkers/tree-sitter-groovy",
