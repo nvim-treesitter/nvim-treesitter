@@ -238,6 +238,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [gomod](https://github.com/camdencheek/tree-sitter-go-mod) (maintained by @camdencheek)
 - [x] [gosum](https://github.com/amaanq/tree-sitter-go-sum) (maintained by @amaanq)
 - [x] [gowork](https://github.com/omertuc/tree-sitter-go-work) (maintained by @omertuc)
+- [x] [gpg](https://github.com/ObserverOfTime/tree-sitter-gpg-config) (maintained by @ObserverOfTime)
 - [x] [graphql](https://github.com/bkegley/tree-sitter-graphql) (maintained by @bkegley)
 - [x] [groovy](https://github.com/Decodetalkers/tree-sitter-groovy) (maintained by @Decodetalkers)
 - [ ] [hack](https://github.com/slackhq/tree-sitter-hack)
