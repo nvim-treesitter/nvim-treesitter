@@ -100,6 +100,15 @@
   (#set! injection.language "graphql"))
 
 ; el.innerHTML = `<html>`
+(assignment_expression
+  left: 
+    (member_expression
+      property: (property_identifier) @_prop
+      (#any-of? @_prop "outerHTML" "innerHTML"))
+  right: (template_string) @injection.content
+    (#offset! @injection.content 0 1 0 -1)
+    (#set! injection.language "html"))
+
 ; el.innerHTML = '<html>'
 (assignment_expression
   left: 
@@ -107,9 +116,5 @@
       property: (property_identifier) @_prop
       (#any-of? @_prop "outerHTML" "innerHTML"))
   right: 
-    [
-      (template_string)
-      (string)
-    ] @injection.content
-    (#offset! @injection.content 0 1 0 -1)
+    (string (string_fragment) @injection.content)
     (#set! injection.language "html"))
