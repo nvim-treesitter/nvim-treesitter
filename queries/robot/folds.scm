@@ -1,5 +1,5 @@
 [
- (section)
- (keyword_definition)
- (test_case_definition)
+  (section)
+  (keyword_definition)
+  (test_case_definition)
 ] @fold
