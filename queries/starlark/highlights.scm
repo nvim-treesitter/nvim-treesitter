@@ -153,8 +153,7 @@
 (string) @string
 [
   (escape_sequence)
-  "{{"
-  "}}"
+  (escape_interpolation)
 ] @string.escape
 
 ; doc-strings

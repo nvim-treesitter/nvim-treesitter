@@ -417,7 +417,7 @@
     "revision": "8953f91d733dd92c1ac43b3d58a7a2f43fa62dae"
   },
   "python": {
-    "revision": "5af00f64af6bbf822f208243cce5cf75396fb6f5"
+    "revision": "28fa64492e93619427c7f22c3ba39c2505b1ff2d"
   },
   "ql": {
     "revision": "bd087020f0d8c183080ca615d38de0ec827aeeaf"
@@ -501,7 +501,7 @@
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
   },
   "starlark": {
-    "revision": "504ddd75ecc78fbbce22aa6facd70375d3f8854a"
+    "revision": "c45ce2b39062bbd12ea1c210bd200db250efb24a"
   },
   "supercollider": {
     "revision": "3b35bd0fded4423c8fb30e9585c7bacbcd0e8095"

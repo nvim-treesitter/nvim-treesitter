@@ -155,7 +155,10 @@
   (#lua-match? @preproc "^#!/"))
 
 (string) @string
-(escape_sequence) @string.escape
+[
+  (escape_sequence)
+  (escape_interpolation)
+] @string.escape
 
 ; doc-strings
 
