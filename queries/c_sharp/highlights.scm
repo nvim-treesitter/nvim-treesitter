@@ -223,6 +223,7 @@
  "switch"
  "break"
  "case"
+ "when"
  (if_directive)
  (elif_directive)
  (else_directive)
@@ -289,6 +290,8 @@
  ">>="
  ">>>="
  "=>"
+ "??"
+ "??="
 ] @operator
 
 [
@@ -364,6 +367,7 @@
  "checked"
  "unchecked"
  "fixed"
+ "alias"
 ] @keyword
 
 [
