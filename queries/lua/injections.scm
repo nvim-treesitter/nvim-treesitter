@@ -33,10 +33,10 @@
  (#lua-match? @injection.content "^%s*;+%s?query")
  (#set! injection.language "query"))
 
-((comment) @injection.content
-  (#lua-match? @injection.content "[-][-][-][%s]*@")
+(comment content: (_) @injection.content
+  (#lua-match? @injection.content "^[-][%s]*@")
   (#set! injection.language "luadoc")
-  (#offset! @injection.content 0 3 0 0))
+  (#offset! @injection.content 0 1 0 0))
 
 ; string.match("123", "%d+")
 (function_call
@@ -64,4 +64,5 @@
     (#any-of? @_method "gmatch" "gsub"))
     arguments: (arguments (string content: _ @injection.content (#set! injection.language "luap"))))
 
-((comment) @injection.content (#set! injection.language "comment"))
+(comment content: (_) @injection.content
+  (#set! injection.language "comment"))
