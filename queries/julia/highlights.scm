@@ -282,7 +282,7 @@
 (prefixed_command_literal
   prefix: (identifier) @function.macro) @string.special
 
-((string_literal) @string.documentation
+((string_literal) @string.documentation @spell
   . [
       (module_definition)
       (abstract_definition)
