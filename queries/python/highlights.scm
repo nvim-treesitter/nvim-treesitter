@@ -27,6 +27,8 @@
            "credits"
            "license"))
 
+"_" @constant.builtin ; match wildcard
+
 ((attribute
     attribute: (identifier) @field)
  (#lua-match? @field "^[%l_].*$"))
@@ -244,6 +246,7 @@
   "print"
   "with"
   "as"
+  "type"
 ] @keyword
 
 [
