@@ -281,6 +281,15 @@ list.css = {
   maintainers = { "@TravonteD" },
 }
 
+list.csv = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-csv",
+    files = { "src/parser.c" },
+    location = "csv",
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.cuda = {
   install_info = {
     url = "https://github.com/theHamsta/tree-sitter-cuda",
@@ -1224,6 +1233,15 @@ list.prql = {
   maintainers = { "@matthias-Q" },
 }
 
+list.psv = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-csv",
+    files = { "src/parser.c" },
+    location = "psv",
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.pug = {
   install_info = {
     url = "https://github.com/zealot128/tree-sitter-pug",
@@ -1613,6 +1631,15 @@ list.toml = {
     generate_requires_npm = true,
   },
   maintainers = { "@tk-shirasaka" },
+}
+
+list.tsv = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-csv",
+    files = { "src/parser.c" },
+    location = "tsv",
+  },
+  maintainers = { "@amaanq" },
 }
 
 list.tsx = {
