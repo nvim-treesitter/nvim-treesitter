@@ -54,11 +54,11 @@
  (#eq? @_type "math"))
 
 ; TODO: re-add when a parser for csv is added.
-; ((directive
-;    name: (type) @_type
-;    body: (body (content) @injection.content))
-;  (#set! injection.language "csv")
-;  (#eq? @_type "csv-table"))
+((directive
+   name: (type) @_type
+   body: (body (content) @injection.content))
+ (#set! injection.language "csv")
+ (#eq? @_type "csv-table"))
 
 ;; Special roles - prefix
 
