@@ -465,7 +465,18 @@ Tree-sitter based folding. _(Technically not a module because it's per windows a
 ```vim
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
-set nofoldenable                     " Disable folding at startup.
+" With the above settings applied, vim will fold everything by default when
+" opening a file... setting foldlevelstart to a high value allows you to
+" start with no folds and then toggle them as desired with the za keymap.
+set foldlevelstart = 99
+```
+
+or if you prefer lua:
+
+```lua
+vim.wo.foldmethod = "expr"
+vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+vim.go.foldlevelstart = 99
 ```
 
 This will respect your `foldminlines` and `foldnestmax` settings.
