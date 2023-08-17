@@ -156,6 +156,14 @@ list.bicep = {
   maintainers = { "@amaanq" },
 }
 
+list.bitbake = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-bitbake",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.blueprint = {
   install_info = {
     url = "https://gitlab.com/gabmus/tree-sitter-blueprint.git",

@@ -29,6 +29,9 @@
   "bicep": {
     "revision": "3604d8c961ab129d2bfc6dfca56419c236ccdb83"
   },
+  "bitbake": {
+    "revision": "ed92abd7b67ab66a6fa3a747a0157f01d2e467d8"
+  },
   "blueprint": {
     "revision": "7f1a5df44861291d6951b6b2146a9fef4c226e14"
   },
