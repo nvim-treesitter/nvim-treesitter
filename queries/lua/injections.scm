@@ -39,30 +39,50 @@
   (#offset! @injection.content 0 1 0 0))
 
 ; string.match("123", "%d+")
+
 (function_call
   (dot_index_expression
     field: (identifier) @_method
     (#any-of? @_method "find" "match"))
-  arguments: (arguments (_) . (string content: _ @injection.content (#set! injection.language "luap"))))
+  arguments: (arguments
+               . (_)
+               . (string
+                   content: (string_content) @injection.content
+                   (#set! injection.language "luap")
+                   (#set! injection.include-children))))
 
 (function_call
   (dot_index_expression
     field: (identifier) @_method
     (#any-of? @_method "gmatch" "gsub"))
-  arguments: (arguments (_) (string content: _ @injection.content (#set! injection.language "luap"))))
+  arguments: (arguments
+               . (_)
+               . (string
+                 content: (string_content) @injection.content
+                 (#set! injection.language "luap")
+                 (#set! injection.include-children))))
 
-; ("123"):match("%d+")
+;("123"):match("%d+")
+
 (function_call
   (method_index_expression
     method: (identifier) @_method
     (#any-of? @_method "find" "match"))
-    arguments: (arguments . (string content: _ @injection.content (#set! injection.language "luap"))))
+  arguments: (arguments
+               . (string
+                   content: (string_content) @injection.content
+                   (#set! injection.language "luap")
+                   (#set! injection.include-children))))
 
 (function_call
   (method_index_expression
     method: (identifier) @_method
     (#any-of? @_method "gmatch" "gsub"))
-    arguments: (arguments (string content: _ @injection.content (#set! injection.language "luap"))))
+  arguments: (arguments
+               . (string
+                 content: (string_content) @injection.content
+                 (#set! injection.language "luap")
+                 (#set! injection.include-children))))
 
 (comment content: (_) @injection.content
   (#set! injection.language "comment"))
