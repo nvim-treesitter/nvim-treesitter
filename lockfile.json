@@ -81,7 +81,7 @@
     "revision": "f1d35df780976721d3cd38f0b16538dd31f87a23"
   },
   "cuda": {
-    "revision": "607851cc524d9f5b5a5cd31ad4044fd431cee54e"
+    "revision": "f00c91430124797e798cbf28e09075d7d192938a"
   },
   "cue": {
     "revision": "0deecf48944aa54bb73e5383ba8acfbf9f2c44b4"
@@ -201,7 +201,7 @@
     "revision": "949a8a470559543857a62102c84700d291fc984c"
   },
   "gpg": {
-    "revision": "af97733568c8141090d8a79dfff66806c96c2cc0"
+    "revision": "c44ce76960114352dd00728b835ceef02e0506b8"
   },
   "graphql": {
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
@@ -231,7 +231,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "246354da450a9a6f27f04b67c673b2ed77abb4b7"
+    "revision": "45e60a69b4dac922d81474b5d6fa88b4e5387b21"
   },
   "hocon": {
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
@@ -261,10 +261,10 @@
     "revision": "bd9cbaf1ea8b942dfd58e68df10c9a378ab3d2b6"
   },
   "java": {
-    "revision": "333cb0bd74a8de7ffd987a18e3421e41838031a1"
+    "revision": "0b3f9cfe10a973df0530533313fdbef6c2c92bfa"
   },
   "javascript": {
-    "revision": "f772967f7b7bc7c28f845be2420a38472b16a8ee"
+    "revision": "c69aabab53609d00e8e198ab902e4fde4b8e449f"
   },
   "jq": {
     "revision": "13990f530e8e6709b7978503da9bc8701d366791"
@@ -387,7 +387,7 @@
     "revision": "79e88f64681660f3961939bf764d8f3b4bbb0d27"
   },
   "php": {
-    "revision": "d76de26b8218df208949f46b31e0c422020eda3a"
+    "revision": "ce2c73a8d84b5648e8792698dc9fd955e5f6a906"
   },
   "phpdoc": {
     "revision": "915a527d5aafa81b31acf67fab31b0ac6b6319c0"
@@ -480,7 +480,7 @@
     "revision": "0a70e15da977489d954c219af9b50b8a722630ee"
   },
   "scala": {
-    "revision": "f14629b4d53f72356ce8f6d4ac8c54d21b4e74dd"
+    "revision": "3a67773e205eb43c993cc5d43f633ddb79eb1653"
   },
   "scfg": {
     "revision": "6deae0cbb458c849a4d1e2985093e9c9c32d7fd0"
@@ -612,7 +612,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "672baf4f0f73c918581ba6ca1e2e49f77f32fb3c"
+    "revision": "f30b02c4bf363b797de39ae63375a4f357718ae9"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
