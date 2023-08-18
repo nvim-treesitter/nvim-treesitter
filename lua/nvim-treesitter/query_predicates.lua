@@ -15,7 +15,15 @@ local non_filetype_match_injection_language_aliases = {
   ts = "typescript",
 }
 
+local ignore_filetype_match_injection_language_aliases = {
+  tsx = true,
+}
+
 local function get_parser_from_markdown_info_string(injection_alias)
+  if ignore_filetype_match_injection_language_aliases[injection_alias] then
+    return injection_alias
+  end
+
   local match = vim.filetype.match { filename = "a." .. injection_alias }
   return match or non_filetype_match_injection_language_aliases[injection_alias] or injection_alias
 end
