@@ -198,7 +198,7 @@
 
 (number) @number
 
-(string) @string @spell
+(string) @string
 
 (nil) @constant.builtin
 

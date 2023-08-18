@@ -5,7 +5,6 @@
   (case)
   (case_clause)
   (constant)
-  (expression_group)
   (external_function)
   (function)
   (import)

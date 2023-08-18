@@ -76,8 +76,8 @@
 (target_type (name)) @type
 
 ; Strings
-(string) @string @spell
-(multiline_string) @string @spell
+(string) @string
+(multiline_string) @string
 
 ; Constants
 (strength_value) @constant

@@ -158,6 +158,11 @@
 (namespace_import
   (identifier) @namespace)
 
+; Decorators
+;----------
+(decorator "@" @attribute (identifier) @attribute)
+(decorator "@" @attribute (call_expression (identifier) @attribute))
+
 ; Literals
 ;---------
 
@@ -165,6 +170,9 @@
   (this)
   (super)
 ] @variable.builtin
+
+((identifier) @variable.builtin
+ (#eq? @variable.builtin "self"))
 
 [
   (true)
@@ -186,10 +194,11 @@
 ((string_fragment) @preproc
  (#eq? @preproc "use strict"))
 
-(string) @string @spell
+(string) @string
 (template_string) @string
 (escape_sequence) @string.escape
 (regex_pattern) @string.regex
+(regex_flags) @character.special
 (regex "/" @punctuation.bracket) ; Regex delimiters
 
 (number) @number
@@ -206,6 +215,7 @@
 (pair ":" @punctuation.delimiter)
 (pair_pattern ":" @punctuation.delimiter)
 (switch_case ":" @punctuation.delimiter)
+(switch_default ":" @punctuation.delimiter)
 
 [
   "--"

@@ -115,6 +115,12 @@
   (object_pattern
     (shorthand_property_identifier_pattern) @parameter))
 
+;; ({ a = b }) => null
+(required_parameter
+  (object_pattern
+    (object_assignment_pattern
+      (shorthand_property_identifier_pattern) @parameter)))
+
 ;; ({ a: b }) => null
 (required_parameter
   (object_pattern
@@ -129,6 +135,9 @@
 ;; a => null
 (arrow_function
   parameter: (identifier) @parameter)
+
+;; global declaration
+(ambient_declaration "global" @namespace)
 
 ;; function signatures
 (ambient_declaration

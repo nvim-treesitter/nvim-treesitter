@@ -171,6 +171,8 @@
            "imag"
            "len"
            "make"
+           "max"
+           "min"
            "new"
            "panic"
            "print"
@@ -197,7 +199,7 @@
 ; Literals
 
 (interpreted_string_literal) @string
-(raw_string_literal) @string @spell
+(raw_string_literal) @string
 (rune_literal) @string
 (escape_sequence) @string.escape
 

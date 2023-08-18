@@ -1,10 +1,9 @@
 [(import_declaration)
  (const_declaration)
  (type_declaration)
- (literal_value)
  (type_initializer)
  (block)
- (map)
+ (map_init_expression)
  (call_expression)
  (parameter_list)]
 @indent.begin

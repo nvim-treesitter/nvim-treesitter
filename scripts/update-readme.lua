@@ -1,4 +1,4 @@
--- Execute as `nvim --headless -c "luafile ./scripts/update-readme.lua"`
+#!/usr/bin/env -S nvim -l
 
 ---@class Parser
 ---@field name string

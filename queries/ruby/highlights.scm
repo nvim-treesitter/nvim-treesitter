@@ -192,8 +192,6 @@
   (comment)+ @comment.documentation
   (method))
 
-(string_content) @spell
-
 ; Operators
 
 [

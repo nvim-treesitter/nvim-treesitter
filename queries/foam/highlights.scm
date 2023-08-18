@@ -29,10 +29,11 @@
 ((preproc_call) @conditional
   (#any-of? @conditional "else" "endif"))
 
-;; Literal numbers and strings
+;; Literals
 (number_literal) @float
 (string_literal) @string
 (escape_sequence) @string.escape
+(boolean) @boolean
 
 ;; Treat [m^2 s^-2] the same as if it was put in numbers format
 (dimensions dimension: (identifier) @float)
@@ -54,12 +55,7 @@
   "$$"
 ] @punctuation.bracket
 
-[
-  ";"
-] @punctuation.delimiter
-
-;; Special identifiers
-[ "on" "off" "true" "false" "yes" "no" ] @constant.builtin
+";" @punctuation.delimiter
 
 ((identifier) @constant.builtin
   (#any-of? @constant.builtin "uniform" "non-uniform" "and" "or"))

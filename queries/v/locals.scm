@@ -1,25 +1,24 @@
 ((function_declaration
      name: (identifier) @definition.function)) ;@function
 
-(short_var_declaration
-  left: (expression_list
-          (identifier) @definition.var))
+(var_declaration
+  var_list: (expression_list
+              (reference_expression
+                (identifier) @definition.var)))
 
 ((function_declaration
-  name: (binded_identifier
-          name: (identifier) @definition.function)))
+  name: (identifier) @definition.function))
 
-(const_declaration (const_spec (identifier) @definition.var))
+(const_declaration (const_definition name: (identifier) @definition.var))
 
 (identifier) @reference
-(type_identifier) @reference
 
-((call_expression function: (identifier) @reference)
+((call_expression name: (reference_expression (identifier)) @reference)
  (#set! reference.kind "call"))
 
 ((call_expression
-   function: (selector_expression
-                field: (identifier) @definition.function))
+   name: (selector_expression
+                field: (reference_expression (identifier) @definition.function)))
  (#set! reference.kind "call"))
 
 (source_file) @scope

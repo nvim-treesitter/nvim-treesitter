@@ -1,4 +1,4 @@
--- Execute as `nvim --headless -c "luafile ./scripts/write-lockfile.lua"`
+#!/usr/bin/env -S nvim -l
 
 ---@type string|any[]
 local skip_langs = vim.fn.getenv "SKIP_LOCKFILE_UPDATE_FOR_LANGS"

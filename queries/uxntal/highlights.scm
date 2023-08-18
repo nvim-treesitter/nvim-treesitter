@@ -4,6 +4,10 @@
   "~" @include
   _ @text.uri @string.special)
 
+; Variables
+
+(identifier) @variable
+
 ; Macros
 
 (macro
@@ -43,10 +47,6 @@
 
 ((identifier) @repeat
   (#eq? @repeat "while"))
-
-; Variables
-
-(identifier) @variable
 
 ; Literals
 

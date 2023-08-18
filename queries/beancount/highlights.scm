@@ -7,7 +7,7 @@
 (amount_tolerance) @number
 (currency) @property
 (key) @label
-(string) @string @spell
+(string) @string
 (narration) @string @spell
 (payee) @string @spell
 (tag) @constant

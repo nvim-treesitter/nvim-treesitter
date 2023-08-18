@@ -60,7 +60,7 @@
   package: (_) @namespace)
 "cl" @namespace
 
-(str_lit) @string @spell
+(str_lit) @string
 
 (num_lit) @number
 

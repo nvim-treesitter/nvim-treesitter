@@ -15,8 +15,6 @@
 [ "if" "elsif" "unless" "else" ] @conditional
 (ternary_expression
   ["?" ":"] @conditional.ternary)
-(ternary_expression_in_hash
-  ["?" ":"] @conditional.ternary)
 
 ; Keywords that mark repeating loops
 [ "while" "until" "for" "foreach" ] @repeat
@@ -31,15 +29,6 @@
 
 ; Keywords to define a function
 [ "sub" ] @keyword.function
-
-; Lots of builtin functions, except tree-sitter-perl doesn't emit most of
-;   these yet
-;[
-;  "print" "printf" "sprintf" "say"
-;  "push" "pop" "shift" "unshift" "splice"
-;  "exists" "delete" "keys" "values"
-;  "each"
-;] @function.builtin
 
 ; Keywords that are regular infix operators
 [
@@ -62,6 +51,9 @@
   (special_literal)
   (super)
 ] @variable.builtin
+
+((scalar_variable) @variable.builtin
+ (#eq? @variable.builtin "$#ARGV"))
 
 ; Integer numbers
 [
@@ -86,8 +78,7 @@
 (super) @namespace
 
 ; Comments are comments
-(comments) @comment
-(comments) @spell
+(comments) @comment @spell
 
 ((source_file . (comments) @preproc)
   (#lua-match? @preproc "^#!/"))
@@ -101,6 +92,21 @@
 (call_expression
   function_name: (identifier) @function.call)
 
+; Built-in functions
+((call_expression
+  function_name: (identifier) @function.builtin)
+ (#any-of? @function.builtin
+   "print" "printf" "sprintf" "say"
+   "push" "pop" "shift" "unshift" "splice"
+   "exists" "delete" "keys" "values"
+   "each"))
+
+[
+  (map)
+  (grep)
+  (bless)
+] @function.builtin
+
 ;; ----------
 
 (use_constant_statement
@@ -112,76 +118,79 @@
 (function_definition
   name: (identifier) @function)
 
-[
-(function)
-(map)
-(grep)
-(bless)
-] @function
+(function) @function
 
 [
-"("
-")"
-"["
-"]"
-"{"
-"}"
+  "(" ")"
+  "[" "]"
+  "{" "}"
+  (standard_input_to_variable)
 ] @punctuation.bracket
-(standard_input_to_variable) @punctuation.bracket
+
+[ "`" "\"" ] @punctuation.special
 
 [
-"=~"
-"!~"
-"="
-"=="
-"+"
-"-"
-"."
-"//"
-"||"
-(arrow_operator)
-(hash_arrow_operator)
-(array_dereference)
-(hash_dereference)
-(to_reference)
-(type_glob)
-(hash_access_variable)
+  "=~"
+  "!~"
+  "="
+  "=="
+  "+"
+  "-"
+  "."
+  "//"
+  "||"
+  "&&"
+  "<<"
+  (arrow_operator)
+  (hash_arrow_operator)
+  (array_dereference)
+  (hash_dereference)
+  (to_reference)
+  (type_glob)
+  (hash_access_variable)
 ] @operator
 
 [
-(regex_option)
-(regex_option_for_substitution)
-(regex_option_for_transliteration)
+  (regex_option)
+  (regex_option_for_substitution)
+  (regex_option_for_transliteration)
 ] @parameter
 
 (type_glob
   (identifier) @variable)
 
 [
-(word_list_qw)
-(command_qx_quoted)
-(string_single_quoted)
-(string_double_quoted)
-(string_qq_quoted)
-(bareword)
-(transliteration_tr_or_y)
+  (word_list_qw)
+  (command_qx_quoted)
+  (string_single_quoted)
+  (string_double_quoted)
+  (string_qq_quoted)
+  (bareword)
+  (transliteration_tr_or_y)
 ] @string
 
 [
-(pattern_matcher)
-(regex_pattern_qr)
-(patter_matcher_m)
-(substitution_pattern_s)
+ (heredoc_start_identifier)
+ (heredoc_end_identifier)
+] @label
+
+(heredoc_body_statement) @text.literal
+
+[
+  (pattern_matcher)
+  (regex_pattern_qr)
+  (patter_matcher_m)
+  (substitution_pattern_s)
 ] @string.regex
 
 (escape_sequence) @string.escape
 
 [
-","
-(semi_colon)
-(start_delimiter)
-(end_delimiter)
-(ellipsis_statement)
+  ","
+  (semi_colon)
+  (start_delimiter)
+  (end_delimiter)
+  (ellipsis_statement)
 ] @punctuation.delimiter
 
 (function_attribute) @field
