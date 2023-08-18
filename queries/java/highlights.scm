@@ -264,6 +264,8 @@
 (type_arguments [ "<" ">" ] @punctuation.bracket)
 (type_parameters [ "<" ">" ] @punctuation.bracket)
 
+(string_interpolation [ "\\{" "}" ] @punctuation.special)
+
 ; Exceptions
 
 [
