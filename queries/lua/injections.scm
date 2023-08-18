@@ -46,10 +46,11 @@
     (#any-of? @_method "find" "match"))
   arguments: (arguments
                . (_)
-               . (string
-                   content: (string_content) @injection.content
-                   (#set! injection.language "luap")
-                   (#set! injection.include-children))))
+               .
+               (string
+                 content: (string_content) @injection.content
+                 (#set! injection.language "luap")
+                 (#set! injection.include-children))))
 
 (function_call
   (dot_index_expression
@@ -57,7 +58,8 @@
     (#any-of? @_method "gmatch" "gsub"))
   arguments: (arguments
                . (_)
-               . (string
+               .
+               (string
                  content: (string_content) @injection.content
                  (#set! injection.language "luap")
                  (#set! injection.include-children))))
