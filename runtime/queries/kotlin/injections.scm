@@ -34,3 +34,11 @@
     (value_arguments
       (value_argument
         (string_literal) @injection.content (#set! injection.language "regex")))))
+
+; "pi = %.2f".format(3.14159)
+((call_expression
+  (navigation_expression
+    (string_literal) @injection.content
+    (navigation_suffix (simple_identifier) @_method)))
+ (#eq? @_method "format")
+ (#set! injection.language "printf"))
