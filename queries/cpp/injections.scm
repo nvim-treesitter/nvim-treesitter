@@ -1,6 +1,4 @@
-((preproc_arg) @injection.content
-  (#set! injection.language "cpp"))
-
+; inherits: c
 ((comment) @injection.content
   (#set! injection.language "comment"))
 
