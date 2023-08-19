@@ -1387,6 +1387,14 @@ list.pony = {
   maintainers = { "@amaanq", "@mfelsche" },
 }
 
+list.printf = {
+  install_info = {
+    url = "https://github.com/ObserverOfTime/tree-sitter-printf",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@ObserverOfTime" },
+}
+
 list.prisma = {
   install_info = {
     url = "https://github.com/victorhqc/tree-sitter-prisma",
