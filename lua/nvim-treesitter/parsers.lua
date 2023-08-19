@@ -1285,6 +1285,16 @@ M.configs = {
     tier = 2,
   },
 
+  printf = {
+    install_info = {
+      url = 'https://github.com/ObserverOfTime/tree-sitter-printf',
+      files = { 'src/parser.c' },
+    },
+    maintainers = { '@ObserverOfTime' },
+    readme_note = 'printf format strings',
+    tier = 2,
+  },
+
   prisma = {
     install_info = {
       url = 'https://github.com/victorhqc/tree-sitter-prisma',

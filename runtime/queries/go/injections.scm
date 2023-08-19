@@ -18,3 +18,15 @@
     ] @injection.content
     (#offset! @injection.content 0 1 0 -1)
     (#set! injection.language "regex")))
+
+((call_expression
+  function: (selector_expression field: (field_identifier) @_method)
+  arguments: (argument_list . (interpreted_string_literal) @injection.content))
+ (#any-of? @_method "Printf" "Sprintf" "Fatalf" "Scanf")
+ (#set! injection.language "printf"))
+
+((call_expression
+  function: (selector_expression field: (field_identifier) @_method)
+  arguments: (argument_list (_) . (interpreted_string_literal) @injection.content))
+ (#eq? @_method "Fprintf")
+ (#set! injection.language "printf"))
