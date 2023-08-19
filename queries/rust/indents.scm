@@ -23,53 +23,6 @@
   (token_tree)
   (macro_definition)
 ] @indent.begin
-; Typing in "(" inside macro definitions breaks the tree entirely
-; Making macro_definition becoming errors
-; Offset this by adding back one indent for start of macro rules
-(ERROR
-  .
-  "macro_rules!"
-  "(" @indent.begin
-  (#set! indent.immediate)
-  (#set! indent.start_at_same_line))
-
-(block
-  "}" @indent.end)
-
-(enum_item
-  body:
-    (enum_variant_list
-      "}" @indent.end))
-
-(impl_item
-  body:
-    (declaration_list
-      "}" @indent.end))
-
-(match_expression
-  body:
-    (match_block
-      "}" @indent.end))
-
-(mod_item
-  body:
-    (declaration_list
-      "}" @indent.end))
-
-(struct_item
-  body:
-    (field_declaration_list
-      "}" @indent.end))
-
-; Typing in "(" inside macro definitions breaks the tree entirely
-; Making macro_definition becoming errors
-; Offset this by adding back one indent for start of macro rules
-(ERROR
-  .
-  "macro_rules!"
-  "(" @indent.begin
-  (#set! indent.immediate)
-  (#set! indent.start_at_same_line))
 
 (trait_item
   body: (_) @indent.begin)
@@ -77,6 +30,16 @@
 (string_literal
   (escape_sequence)) @indent.begin
 
+; Typing in "(" inside macro definitions breaks the tree entirely
+; Making macro_definition becoming errors
+; Offset this by adding back one indent for start of macro rules
+(ERROR
+  .
+  "macro_rules!"
+  "(" @indent.begin
+  (#set! indent.immediate)
+  (#set! indent.start_at_same_line))
+
 (block
   "}" @indent.end)
 
@@ -104,6 +67,16 @@
   body:
     (field_declaration_list
       "}" @indent.end))
+
+; Typing in "(" inside macro definitions breaks the tree entirely
+; Making macro_definition becoming errors
+; Offset this by adding back one indent for start of macro rules
+(ERROR
+  .
+  "macro_rules!"
+  "(" @indent.begin
+  (#set! indent.immediate)
+  (#set! indent.start_at_same_line))
 
 (trait_item
   body:
