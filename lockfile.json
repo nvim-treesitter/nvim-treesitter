@@ -455,6 +455,9 @@
   "pony": {
     "revision": "16f930b250433cfcd4fb4144df92bb98ad344c20"
   },
+  "printf": {
+    "revision": "8a3f07c1f620ae46d14873e5b7ee0d3e114c15e8"
+  },
   "prisma": {
     "revision": "eca2596a355b1a9952b4f80f8f9caed300a272b5"
   },

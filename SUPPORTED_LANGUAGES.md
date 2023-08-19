@@ -167,6 +167,7 @@ jsx (queries only)[^jsx] | core | `HFIJ ` |  |  | @steelsojka
 [pod](https://github.com/tree-sitter-perl/tree-sitter-pod) | community | `H    ` |  |  | @RabbiVeesh, @LeoNerd
 [poe_filter](https://github.com/ObserverOfTime/tree-sitter-poe-filter)[^poe_filter] | unsupported | `HFIJ ` |  |  | @ObserverOfTime
 [pony](https://github.com/amaanq/tree-sitter-pony) | core | `HFIJL` |  |  | @amaanq, @mfelsche
+[printf](https://github.com/ObserverOfTime/tree-sitter-printf)[^printf] | core | `H    ` |  |  | @ObserverOfTime
 [prisma](https://github.com/victorhqc/tree-sitter-prisma) | community | `HF   ` |  |  | @elianiva
 [promql](https://github.com/MichaHoffmann/tree-sitter-promql) | unsupported | `H  J ` |  |  | @MichaHoffmann
 [properties](https://github.com/ObserverOfTime/tree-sitter-properties)[^properties] | core | `H  JL` |  |  | @ObserverOfTime
@@ -266,6 +267,7 @@ jsx (queries only)[^jsx] | core | `HFIJ ` |  |  | @steelsojka
 [^markdown]: basic highlighting
 [^markdown_inline]: needed for full highlighting
 [^poe_filter]: Path of Exile item filter
+[^printf]: printf format strings
 [^properties]: Java properties files
 [^query]: Tree-sitter query language
 [^uxntal]: uxn tal
