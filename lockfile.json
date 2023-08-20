@@ -6,7 +6,7 @@
     "revision": "80ea622cf952a0059e168e5c92a798b2f1925652"
   },
   "arduino": {
-    "revision": "a2aa2b38301960822c5384cd10a07c2026e9d44e"
+    "revision": "db929fc6822b9b9e1211678d508f187894ce0345"
   },
   "astro": {
     "revision": "e122a8fcd07e808a7b873bfadc2667834067daf1"
@@ -15,7 +15,7 @@
     "revision": "244426241376b08d9531616290d657106ec8f7ff"
   },
   "bash": {
-    "revision": "8077be4c5504f2618f1280295bc4ae20a75988c1"
+    "revision": "c0f5797a728fc4ebd78a8b0e436b1494a8ab5f51"
   },
   "bass": {
     "revision": "27f110dfe79620993f5493ffa0d0f2fe12d250ed"
@@ -285,7 +285,7 @@
     "revision": "d34615fa12cc1d1cfc1f1f1a80acc9db80ee4596"
   },
   "julia": {
-    "revision": "ab0f70c0a919d38b41822305a8ca80e527c94e4f"
+    "revision": "bb7e587837fdeda74dd510256253d60f59a1e2cd"
   },
   "kdl": {
     "revision": "e180e05132c4cb229a8ba679b298790ef1eca77c"
@@ -477,7 +477,7 @@
     "revision": "f257f3f57833d584050336921773738a3fd8ca22"
   },
   "rust": {
-    "revision": "0a70e15da977489d954c219af9b50b8a722630ee"
+    "revision": "afb6000a71fb9dff3f47f90d412ec080ae12bbb4"
   },
   "scala": {
     "revision": "3a67773e205eb43c993cc5d43f633ddb79eb1653"
@@ -612,7 +612,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "f30b02c4bf363b797de39ae63375a4f357718ae9"
+    "revision": "72cbd819d5b49590b2921323d7f07051d38ffc1f"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
