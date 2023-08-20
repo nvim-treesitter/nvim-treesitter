@@ -665,6 +665,14 @@ list.graphql = {
   maintainers = { "@bkegley" },
 }
 
+list.gstlaunch = {
+  install_info = {
+    url = "https://github.com/theHamsta/tree-sitter-gstlaunch",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@theHamsta" },
+}
+
 list.hack = {
   install_info = {
     url = "https://github.com/slackhq/tree-sitter-hack",
