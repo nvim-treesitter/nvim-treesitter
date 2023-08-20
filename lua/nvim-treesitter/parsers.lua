@@ -1522,6 +1522,14 @@ list.starlark = {
   maintainers = { "@amaanq" },
 }
 
+list.strace = {
+  install_info = {
+    url = "https://github.com/sigmaSd/tree-sitter-strace",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.supercollider = {
   install_info = {
     url = "https://github.com/madskjeldgaard/tree-sitter-supercollider",
