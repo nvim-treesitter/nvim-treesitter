@@ -222,6 +222,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [firrtl](https://github.com/amaanq/tree-sitter-firrtl) (maintained by @amaanq)
 - [x] [fish](https://github.com/ram02z/tree-sitter-fish) (maintained by @ram02z)
 - [x] [foam](https://github.com/FoamScience/tree-sitter-foam) (experimental, maintained by @FoamScience)
+- [x] [forth](https://github.com/AlexanderBrevig/tree-sitter-forth) (maintained by @amaanq)
 - [x] [fortran](https://github.com/stadelmanma/tree-sitter-fortran) (maintained by @amaanq)
 - [x] [fsh](https://github.com/mgramigna/tree-sitter-fsh) (maintained by @mgramigna)
 - [x] [func](https://github.com/amaanq/tree-sitter-func) (maintained by @amaanq)

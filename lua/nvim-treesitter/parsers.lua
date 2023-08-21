@@ -487,6 +487,14 @@ list.foam = {
   experimental = true,
 }
 
+list.forth = {
+  install_info = {
+    url = "https://github.com/AlexanderBrevig/tree-sitter-forth",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.fortran = {
   install_info = {
     url = "https://github.com/stadelmanma/tree-sitter-fortran",

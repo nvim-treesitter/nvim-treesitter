@@ -146,6 +146,9 @@
   "foam": {
     "revision": "09e03445f49290450589c5d293610ab39434e3e4"
   },
+  "forth": {
+    "revision": "304ed77beb113e37af38b20ff14e3c37bf350d10"
+  },
   "fortran": {
     "revision": "6828cf3629addb1706bdbbd33491e95f12b7042c"
   },
