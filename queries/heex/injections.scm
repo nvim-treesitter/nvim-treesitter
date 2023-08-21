@@ -6,7 +6,10 @@
 ;       <p>hello, tree-sitter!</p>
 ;     <% end %>
 (directive
-  (partial_expression_value) @injection.content
+  [
+    (partial_expression_value)
+    (ending_expression_value)
+  ] @injection.content
   (#set! injection.language "elixir")
   (#set! injection.include-children)
   (#set! injection.combined))
