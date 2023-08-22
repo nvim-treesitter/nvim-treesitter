@@ -33,10 +33,11 @@
  (#lua-match? @injection.content "^%s*;+%s?query")
  (#set! injection.language "query"))
 
-(comment content: (_) @injection.content
-  (#lua-match? @injection.content "^[-][%s]*@")
+((comment) @injection.content
+  (#lua-match? @injection.content "^[-][-][-][%s]*@")
   (#set! injection.language "luadoc")
-  (#offset! @injection.content 0 1 0 0))
+  (#set! injection.include-children)
+  (#offset! @injection.content 0 3 0 0))
 
 ; string.match("123", "%d+")
 
@@ -86,5 +87,6 @@
                  (#set! injection.language "luap")
                  (#set! injection.include-children))))
 
-(comment content: (_) @injection.content
-  (#set! injection.language "comment"))
+((comment) @injection.content
+  (#set! injection.language "comment")
+  (#set! injection.include-children))
