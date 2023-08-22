@@ -1357,6 +1357,14 @@ list.rasi = {
   maintainers = { "@Fymyte" },
 }
 
+list.re2c = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-re2c",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.regex = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-regex",
