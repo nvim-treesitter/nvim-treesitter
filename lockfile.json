@@ -15,7 +15,7 @@
     "revision": "244426241376b08d9531616290d657106ec8f7ff"
   },
   "bash": {
-    "revision": "c0f5797a728fc4ebd78a8b0e436b1494a8ab5f51"
+    "revision": "81d8b921e715e53963be44afeeaeb6b28f5a2bfb"
   },
   "bass": {
     "revision": "27f110dfe79620993f5493ffa0d0f2fe12d250ed"
@@ -147,7 +147,7 @@
     "revision": "09e03445f49290450589c5d293610ab39434e3e4"
   },
   "forth": {
-    "revision": "304ed77beb113e37af38b20ff14e3c37bf350d10"
+    "revision": "e7d1f8a351fd5e95d9a89a8e87878c49ca14a5b0"
   },
   "fortran": {
     "revision": "6828cf3629addb1706bdbbd33491e95f12b7042c"
@@ -252,7 +252,7 @@
     "revision": "6824a247d1326079aab4fa9f9164e9319678081d"
   },
   "hurl": {
-    "revision": "0eca909c8338364992e04c4862ac6afc5342cbb8"
+    "revision": "cd1a0ada92cc73dd0f4d7eedc162be4ded758591"
   },
   "ini": {
     "revision": "7f11a02fb8891482068e0fe419965d7bade81a68"
@@ -618,7 +618,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "19ef86cd590e7d531b0c843c08456ec81ac1bc9e"
+    "revision": "ba6730eeab258d5d027dd737ddd5339dde9c358e"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
