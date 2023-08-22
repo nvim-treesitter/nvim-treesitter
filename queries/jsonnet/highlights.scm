@@ -92,10 +92,10 @@
 ((id) @function.reference
  (#is? @function.reference function))
 
-((id) @var.reference
- (#is? @var.reference var))
-((id) @define
- (#is? @var.reference var))
+;((id) @var.reference
+; (#is? @var.reference var))
+;((id) @define
+; (#is? @var.reference var))
 
 ; References do not apply to static field IDs
 ; Workaround for `(#is-not? local)` not supported
@@ -112,11 +112,11 @@
   (id) @parameter.reference
   "]"
   (#is? @parameter.reference parameter)))
-(fieldname
- ("["
-  (id) @define
-  "]"
-  (#is? @var.reference var)))
+;(fieldname
+; ("["
+;  (id) @define
+;  "]"
+;  (#is? @var.reference var)))
 
 ; Functions
 (field
