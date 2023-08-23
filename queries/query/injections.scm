@@ -1,14 +1,14 @@
 ((predicate 
   name: (identifier) @_name
   parameters: (parameters (string) @injection.content))
- (#match? @_name "^#?(not-)?(match|vim-match)$")
+ (#any-of? @_name "match" "not-match" "vim-match" "not-vim-match")
  (#set! injection.language "regex")
  (#offset! @injection.content 0 1 0 -1))
 
 ((predicate
   name: (identifier) @_name
   parameters: (parameters (string) @injection.content))
- (#match? @_name "^#?(not-)?lua-match$")
+ (#any-of? @_name "lua-match" "not-lua-match")
  (#set! injection.language "luap")
  (#offset! @injection.content 0 1 0 -1))
 

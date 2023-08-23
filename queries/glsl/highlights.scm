@@ -31,7 +31,5 @@
 
 (extension_storage_class) @storageclass
 
-(
-  (identifier) @variable.builtin
-  (#match? @variable.builtin "^gl_")
-)
+((identifier) @variable.builtin
+ (#lua-match? @variable.builtin "^gl_"))
