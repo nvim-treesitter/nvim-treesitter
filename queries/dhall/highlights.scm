@@ -25,7 +25,7 @@
 ((primitive_expression
   (identifier (label) @type)
   (selector (label) @type)) @variable
-  (#vim-match? @variable "^[A-Z][^.]*$"))
+  (#lua-match? @variable "^[A-Z][^.]*$"))
 
 ;; Parameters
 

@@ -101,9 +101,9 @@
 
 ; Interop
 ((sym_lit) @method
- (#match? @method "^\\.[^-]"))
+ (#lua-match? @method "^[.][^-]"))
 ((sym_lit) @field
- (#match? @field "^\\.-"))
+ (#lua-match? @field "^[.]-"))
 ((sym_lit) @field
  (#lua-match? @field "^[%u].*/.+"))
 (list_lit
@@ -133,7 +133,7 @@
  (#any-of? @keyword.coroutine
   "alts!" "alts!!" "await" "await-for" "await1" "chan" "close!" "future" "go" "sync" "thread" "timeout" "<!" "<!!" ">!" ">!!"))
 ((sym_lit) @keyword.function
- (#match? @keyword.function "^(defn|defn-|fn|fn[*])$"))
+ (#any-of? @keyword.function "defn" "defn-" "fn" "fn*"))
 
 ; Comment
 ((sym_lit) @comment

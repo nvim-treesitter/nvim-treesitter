@@ -193,18 +193,18 @@
 ((generic_command
   command: (command_name) @_name
   arg: (curly_group (_) @text.emphasis))
-  (#match? @_name "^(\\\\textit|\\\\mathit)$"))
+ (#any-of? @_name "\\textit" "\\mathit"))
 
 ((generic_command
   command: (command_name) @_name
   arg: (curly_group (_) @text.strong))
-  (#match? @_name "^(\\\\textbf|\\\\mathbf)$"))
+ (#any-of? @_name "\\textbf" "\\mathbf"))
 
 ((generic_command
   command: (command_name) @_name
   .
   arg: (curly_group (_) @text.uri))
- (#match? @_name "^(\\\\url|\\\\href)$"))
+ (#any-of? @_name "\\url" "\\href"))
 
 ;; File inclusion commands
 (class_include
