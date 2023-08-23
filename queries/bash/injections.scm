@@ -1,11 +1,13 @@
 ((comment) @injection.content 
  (#set! injection.language "comment"))
 
-((regex) @injection.content 
+((regex) @injection.content
+ (#set! injection.language "regex"))
 
-((redirected_statement
-   (heredoc_redirect
-     (heredoc_start) @injection.language))
- (heredoc_body) @injection.content
- (#offset! @injection.content 0 0 -1 0)
- (#downcase! @injection.language))(#set! injection.language "regex"))
+((heredoc_redirect
+  [
+    (heredoc_body)
+    (simple_heredoc_body)
+  ] @injection.content
+  (heredoc_end) @injection.language)
+ (#downcase! @injection.language))
