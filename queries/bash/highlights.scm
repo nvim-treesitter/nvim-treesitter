@@ -1,36 +1,21 @@
-(simple_expansion) @none
-(expansion
-  "${" @punctuation.special
-  "}" @punctuation.special) @none
 [
- "("
- ")"
- "(("
- "))"
- "{"
- "}"
- "["
- "]"
- "[["
- "]]"
- ] @punctuation.bracket
+ "(" ")"
+ "{" "}"
+ "[" "]"
+ "[[" "]]"
+] @punctuation.bracket
 
 [
  ";"
  ";;"
- (heredoc_start)
- ] @punctuation.delimiter
-
-[
- "$"
-] @punctuation.special
+ "&"
+] @punctuation.delimiter
 
 [
  ">"
  ">>"
  "<"
  "<<"
- "&"
  "&&"
  "|"
  "||"
@@ -38,7 +23,7 @@
  "=~"
  "=="
  "!="
- ] @operator
+] @operator
 
 ; Do *not* spell check strings since they typically have some sort of
 ; interpolation in them, or, are typically used for things like filenames, URLs,
@@ -48,7 +33,13 @@
  (raw_string)
  (ansi_c_string)
  (heredoc_body)
+ (simple_heredoc_body)
 ] @string
+
+[
+ (heredoc_start)
+ (heredoc_end)
+] @label
 
 (variable_assignment (word) @string)
 
@@ -61,7 +52,7 @@
  "case"
  "in"
  "esac"
- ] @conditional
+] @conditional
 
 [
  "for"
@@ -70,7 +61,7 @@
  "select"
  "until"
  "while"
- ] @repeat
+] @repeat
 
 [
  "declare"
@@ -78,7 +69,7 @@
  "local"
  "readonly"
  "unset"
- ] @keyword
+] @keyword
 
 "function" @keyword.function
 
@@ -89,17 +80,26 @@
  (#match? @constant.builtin "^SIG(HUP|INT|QUIT|ILL|TRAP|ABRT|BUS|FPE|KILL|USR[12]|SEGV|PIPE|ALRM|TERM|STKFLT|CHLD|CONT|STOP|TSTP|TT(IN|OU)|URG|XCPU|XFSZ|VTALRM|PROF|WINCH|IO|PWR|SYS|RTMIN([+]([1-9]|1[0-5]))?|RTMAX(-([1-9]|1[0-4]))?)$"))
 
 ((word) @boolean
-  (#any-of? @boolean "true" "false"))
+ (#any-of? @boolean "true" "false"))
 
 (comment) @comment @spell
-(test_operator) @string
 
-(command_substitution
-  [ "$(" ")" ] @punctuation.bracket)
+(test_operator) @operator
 
-(process_substitution
-  [ "<(" ")" ] @punctuation.bracket)
+(command_substitution "$(" @punctuation.bracket)
+(process_substitution "<(" @punctuation.bracket)
 
+(arithmetic_expansion
+  [ "$((" "((" ] @punctuation.special
+  "))" @punctuation.special)
+
+(arithmetic_expansion "," @punctuation.delimiter)
+
+(ternary_expression [ "?" ":" ] @conditional.ternary)
+
+(binary_expression operator: _ @operator)
+(unary_expression operator: _ @operator)
+(postfix_expression operator: _ @operator)
 
 (function_definition
   name: (word) @function)
@@ -124,15 +124,27 @@
              (concatenation (word) @parameter)
              ])
 
+(number) @number
 ((word) @number
-  (#lua-match? @number "^[0-9]+$"))
+ (#lua-match? @number "^[0-9]+$"))
 
 (file_redirect
   descriptor: (file_descriptor) @operator
   destination: (word) @parameter)
 
+(simple_expansion
+  "$" @punctuation.special) @none
 (expansion
-  [ "${" "}" ] @punctuation.bracket)
+  "${" @punctuation.special
+  "}" @punctuation.special) @none
+
+(expansion operator: _ @punctuation.special)
+(expansion "@" . operator: _ @character.special)
+
+((expansion
+  (subscript
+    index: (word) @character.special))
+ (#any-of? @character.special "@" "*"))
 
 (variable_name) @variable
 
@@ -145,4 +157,4 @@
 (regex) @string.regex
 
 ((program . (comment) @preproc)
-  (#lua-match? @preproc "^#!/"))
+ (#lua-match? @preproc "^#!/"))
