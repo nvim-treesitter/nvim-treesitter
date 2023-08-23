@@ -1,6 +1,6 @@
 {
   "ada": {
-    "revision": "ba7951a8f3fb08f9ea923625153e7670c89f30b4"
+    "revision": "f67bc6622a9b9bc879b2808164abdbaf99d65d4a"
   },
   "agda": {
     "revision": "80ea622cf952a0059e168e5c92a798b2f1925652"
@@ -15,7 +15,7 @@
     "revision": "244426241376b08d9531616290d657106ec8f7ff"
   },
   "bash": {
-    "revision": "81d8b921e715e53963be44afeeaeb6b28f5a2bfb"
+    "revision": "f6eacf39e5a4f2c05e70ce2ab861700a1e979227"
   },
   "bass": {
     "revision": "27f110dfe79620993f5493ffa0d0f2fe12d250ed"
@@ -264,7 +264,7 @@
     "revision": "bd9cbaf1ea8b942dfd58e68df10c9a378ab3d2b6"
   },
   "java": {
-    "revision": "0b3f9cfe10a973df0530533313fdbef6c2c92bfa"
+    "revision": "2a156343a9e8521c1ff73ef0982cf13c51a905eb"
   },
   "javascript": {
     "revision": "c69aabab53609d00e8e198ab902e4fde4b8e449f"
@@ -333,7 +333,7 @@
     "revision": "aaf76797aa8ecd9a5e78e0ec3681941de6c945ee"
   },
   "matlab": {
-    "revision": "c8723b33970deda54257e640779714fb181d4d5f"
+    "revision": "6071891a8c39600203eba20513666cf93b4d650a"
   },
   "menhir": {
     "revision": "be8866a6bcc2b563ab0de895af69daeffa88fe70"
@@ -618,7 +618,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "ba6730eeab258d5d027dd737ddd5339dde9c358e"
+    "revision": "5f56442a8f1c1b41371c7033e6dc50addab78ba5"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
