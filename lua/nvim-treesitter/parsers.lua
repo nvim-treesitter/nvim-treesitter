@@ -1357,6 +1357,14 @@ list.rasi = {
   maintainers = { "@Fymyte" },
 }
 
+list.rbs = {
+  install_info = {
+    url = "https://github.com/apexatoll/tree-sitter-rbs",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@apexatoll" },
+}
+
 list.regex = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-regex",

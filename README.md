@@ -325,6 +325,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [r](https://github.com/r-lib/tree-sitter-r) (maintained by @echasnovski)
 - [ ] [racket](https://github.com/6cdh/tree-sitter-racket)
 - [x] [rasi](https://github.com/Fymyte/tree-sitter-rasi) (maintained by @Fymyte)
+- [x] [rbs](https://github.com/apexatoll/tree-sitter-rbs) (maintained by @apexatoll)
 - [x] [regex](https://github.com/tree-sitter/tree-sitter-regex) (maintained by @theHamsta)
 - [x] [rego](https://github.com/FallenAngel97/tree-sitter-rego) (maintained by @FallenAngel97)
 - [x] [pip requirements](https://github.com/ObserverOfTime/tree-sitter-requirements) (maintained by @ObserverOfTime)

@@ -455,6 +455,9 @@
   "rasi": {
     "revision": "371dac6bcce0df5566c1cfebde69d90ecbeefd2d"
   },
+  "rbs": {
+    "revision": "843be6548cd52ed7c57280093acf30544ad0ed96"
+  },
   "regex": {
     "revision": "2354482d7e2e8f8ff33c1ef6c8aa5690410fbc96"
   },
