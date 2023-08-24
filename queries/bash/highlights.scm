@@ -3,11 +3,14 @@
  "{" "}"
  "[" "]"
  "[[" "]]"
+ "((" "))"
 ] @punctuation.bracket
 
 [
  ";"
  ";;"
+ ";&"
+ ";;&"
  "&"
 ] @punctuation.delimiter
 
@@ -18,11 +21,24 @@
  "<<"
  "&&"
  "|"
+ "|&"
  "||"
  "="
+ "+="
  "=~"
  "=="
  "!="
+
+ "&>"
+ "&>>"
+ "<&"
+ ">&"
+ ">|"
+
+ "<<-"
+ "<<<"
+
+ ".."
 ] @operator
 
 ; Do *not* spell check strings since they typically have some sort of
@@ -42,6 +58,7 @@
 ] @label
 
 (variable_assignment (word) @string)
+(command argument: "$" @string) ; bare dollar
 
 [
  "if"
@@ -64,11 +81,13 @@
 ] @repeat
 
 [
- "declare"
- "export"
- "local"
- "readonly"
- "unset"
+  "declare"
+  "typeset"
+  "export"
+  "readonly"
+  "local"
+  "unset"
+  "unsetenv"
 ] @keyword
 
 "function" @keyword.function
@@ -129,8 +148,9 @@
  (#lua-match? @number "^[0-9]+$"))
 
 (file_redirect
-  descriptor: (file_descriptor) @operator
   destination: (word) @parameter)
+
+(file_descriptor) @operator
 
 (simple_expansion
   "$" @punctuation.special) @none
@@ -146,6 +166,8 @@
     index: (word) @character.special))
  (#any-of? @character.special "@" "*"))
 
+"``" @punctuation.special
+
 (variable_name) @variable
 
 ((variable_name) @constant
@@ -154,7 +176,10 @@
 (case_item
   value: (word) @parameter)
 
-(regex) @string.regex
+[
+  (regex)
+  (extglob_pattern)
+] @string.regex
 
 ((program . (comment) @preproc)
  (#lua-match? @preproc "^#!/"))
