@@ -18,8 +18,6 @@
 ; --------------------
 (annotation
   name: (identifier) @attribute)
-(marker_annotation
-  name: (identifier) @attribute)
 
 ; Operators and Tokens
 ; --------------------
