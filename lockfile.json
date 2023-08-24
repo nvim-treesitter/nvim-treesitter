@@ -15,7 +15,7 @@
     "revision": "244426241376b08d9531616290d657106ec8f7ff"
   },
   "bash": {
-    "revision": "f6eacf39e5a4f2c05e70ce2ab861700a1e979227"
+    "revision": "42ab5ca0e6bb7130c397c7ca10440fd5cfc2d564"
   },
   "bass": {
     "revision": "27f110dfe79620993f5493ffa0d0f2fe12d250ed"
@@ -90,7 +90,7 @@
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
   },
   "dart": {
-    "revision": "e398400a0b785af3cf571f5a57eccab242f0cdf9"
+    "revision": "bcef6d57d0dd4df37bc9d8b1920ea4963c724826"
   },
   "devicetree": {
     "revision": "d2cc332aeb814ea40e1e34ed6b9446324b32612a"
@@ -228,7 +228,7 @@
     "revision": "b5539065432c08e4118eb3ee7c94902fdda85708"
   },
   "heex": {
-    "revision": "9bf4ae444a8779839ecbca3b6b896dee426b10ae"
+    "revision": "4a36c9a388505180da6ee0eda1d8afb8c83481c8"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
@@ -264,7 +264,7 @@
     "revision": "bd9cbaf1ea8b942dfd58e68df10c9a378ab3d2b6"
   },
   "java": {
-    "revision": "2a156343a9e8521c1ff73ef0982cf13c51a905eb"
+    "revision": "38be6eccc1b86d6ec5dca0976659e807fd4dc28d"
   },
   "javascript": {
     "revision": "c69aabab53609d00e8e198ab902e4fde4b8e449f"
@@ -621,7 +621,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "5f56442a8f1c1b41371c7033e6dc50addab78ba5"
+    "revision": "2cd49595d46c6808622e654c7a92214e003de561"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
