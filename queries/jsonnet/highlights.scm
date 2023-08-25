@@ -1,21 +1,61 @@
+(id) @variable
+(comment) @comment
+
+; Literals
+(null) @constant.builtin
+(string) @string
+(number) @number
 [
   (true)
   (false)
 ] @boolean
 
-(comment) @comment
-(id) @variable
-(import) @include
-(null) @constant.builtin
-(number) @number
-(string) @string
+; Keywords
+"for" @repeat
+"in" @keyword.operator
+"function" @keyword.function
 
-(fieldname (id) @field)
-(fieldaccess
-  last: (id) @field)
-(fieldaccess_super
-  (id) @field)
+[
+  "if"
+  "then"
+  "else"
+] @conditional
 
+[
+  (local)
+  (tailstrict)
+  "function"
+] @keyword
+
+[
+  "assert"
+  "error"
+] @exception
+
+[
+  (dollar)
+  (self)
+  (super)
+] @variable.builtin
+((id) @variable.builtin
+ (#eq? @variable.builtin "std"))
+
+; Operators
+[
+  (multiplicative)
+  (additive)
+  (bitshift)
+  (comparison)
+  (equality)
+  (bitand)
+  (bitxor)
+  (bitor)
+  (and)
+  (or)
+  (unaryop)
+] @operator
+
+; Punctuation
 [
   "["
   "]"
@@ -30,63 +70,52 @@
   ","
   ";"
   ":"
-  "::"
-  ":::"
 ] @punctuation.delimiter
 
-; Nested field inheritance
-("+" @punctuation.delimiter [":" "::" ":::"])
-
-"=" @operator
-(unaryop) @operator
-(binary
-  operator: (_) @operator)
-
-"for" @repeat
-
-"function" @keyword.function
-
-"in" @keyword.operator
-
 [
- (local)
- (tailstrict)
- "assert"
-] @keyword
+  "::"
+  ":::"
+] @punctuation.special
 
+(field
+  (fieldname) "+" @punctuation.special)
+
+; Imports
 [
-  "else"
-  "if"
-  "then"
-] @conditional
+  (import)
+  (importstr)
+] @include
 
-"error" @exception
+; Fields
 
-[
-  (dollar)
-  (self)
-  (super)
-] @variable.builtin
-((id) @variable.builtin
- (#eq? @variable.builtin "std"))
+(fieldname (id) @field)
+(fieldname (string (string_content) @field))
 
-; Function declaration
+; Functions
+(field
+  function: (fieldname (id) @function))
+(field
+  function: (fieldname
+              (string (string_content) @function)))
 (param
   identifier: (id) @parameter)
-(field
-  (fieldname (id) @function)
-  [(anonymous_function) (params)])
-(bind
-  function: (id) @function)
+
+(bind (id) @variable.local)
+(bind function: (id) @function)
 
 ; Function call
-(functioncall (id) @function.call)
 (functioncall
   (fieldaccess
-    last: (id) @function.call))
-(functioncall
+    last: (id) @function.call)?
   (fieldaccess_super
-    (id) @function.call))
-(named_argument (id) @parameter)
+    (id) @function.call)?
+  (id)? @function.call
+  "("
+  (args
+    (named_argument
+      (id) @parameter
+    ))?
+  ")")
 
+; ERROR
 (ERROR) @error
