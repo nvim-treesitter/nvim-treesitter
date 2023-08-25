@@ -6,8 +6,7 @@
 
 (field
   function: (fieldname (id)  @definition.function)
-  (#set! "definition.function.scope" "parent")
-)
+  (#set! "definition.function.scope" "parent"))
 
 (bind (id)  @definition.var)
 (bind function: (id)  @definition.function)
