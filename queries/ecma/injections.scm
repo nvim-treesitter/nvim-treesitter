@@ -5,16 +5,27 @@
 ((comment) @injection.content
  (#set! injection.language "comment"))
 
-; html(`...`), html`...`, sql(...) etc
+; html(`...`), html`...`
 (call_expression
- function: ((identifier) @injection.language)
+ function: ((identifier) @_name (#eq? @_name "html"))
  arguments: [
              (arguments
               (template_string) @injection.content)
              (template_string) @injection.content
             ]
      (#offset! @injection.content 0 1 0 -1)
-     (#not-eq? @injection.language "svg"))
+     (#set! injection.language "html"))
+
+; sql(`...`), sql`...`
+(call_expression
+ function: ((identifier) @_name (#eq? @_name "sql"))
+ arguments: [
+             (arguments
+              (template_string) @injection.content)
+             (template_string) @injection.content
+            ]
+     (#offset! @injection.content 0 1 0 -1)
+     (#set! injection.language "sql"))
 
 ; svg`...` or svg(`...`), which uses the html parser, so is not included in the previous query
 (call_expression
