@@ -39,5 +39,5 @@
     (#set! injection.language "regex"))
 
 ((block_comment) @injection.content
-  (#match? @injection.content "/\*!([a-zA-Z]+:)?re2c")
+  (#match? @injection.content "/\\*!([a-zA-Z]+:)?re2c")
   (#set! injection.language "re2c"))
