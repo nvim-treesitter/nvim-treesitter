@@ -89,20 +89,14 @@
 ; Fields
 
 (fieldname (id) @field)
-(fieldname (string
-             (string_start) @text.strong
-             (string_content) @field
-             (string_end) @text.strong))
+(fieldname (string (string_content) @field))
 
 ; Functions
 (field
   function: (fieldname (id) @function))
 (field
   function: (fieldname
-              (string
-                (string_start) @text.strong
-                (string_content) @function
-                (string_end) @text.strong)))
+              (string (string_content) @function)))
 (param
   identifier: (id) @parameter)
 
