@@ -92,8 +92,7 @@
 (fieldname (string
              (string_start) @text.strong
              (string_content) @field
-             (string_end) @text.strong
-           ))
+             (string_end) @text.strong))
 
 ; Functions
 (field
@@ -103,31 +102,26 @@
               (string
                 (string_start) @text.strong
                 (string_content) @function
-                (string_end) @text.strong
-              )))
+                (string_end) @text.strong)))
 (param
   identifier: (id) @parameter)
 
-(bind (id) @define)
+(bind (id) @variable.local)
 (bind function: (id) @function)
 
 ; Function call
 (functioncall
   (fieldaccess
-    last: (id) @function.call
-  )?
+    last: (id) @function.call)?
   (fieldaccess_super
-    (id) @function.call
-  )?
+    (id) @function.call)?
   (id)? @function.call
   "("
   (args
     (named_argument
       (id) @parameter
-    )
-  )?
-  ")"
-)
+    ))?
+  ")")
 
 ; ERROR
 (ERROR) @error
