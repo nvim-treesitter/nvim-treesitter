@@ -15,4 +15,4 @@
 (param (id) @definition.parameter)
 
 (id) @reference
-;(fieldname (id) (#is-not? local))
+;(fieldname (id) (#is-not? local)) ; (#is-not?) not supported yet
