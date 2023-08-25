@@ -376,6 +376,14 @@ list.dot = {
   maintainers = { "@rydesun" },
 }
 
+list.doxygen = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-doxygen",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.dtd = {
   install_info = {
     url = "https://github.com/ObserverOfTime/tree-sitter-xml",

@@ -107,6 +107,9 @@
   "dot": {
     "revision": "9ab85550c896d8b294d9b9ca1e30698736f08cea"
   },
+  "doxygen": {
+    "revision": "19284113dbd42263c13b39d81b2a3b2492022c9b"
+  },
   "dtd": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
   },
