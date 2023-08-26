@@ -49,7 +49,6 @@
  (raw_string)
  (ansi_c_string)
  (heredoc_body)
- (simple_heredoc_body)
 ] @string
 
 [
