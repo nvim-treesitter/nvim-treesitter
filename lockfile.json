@@ -60,7 +60,7 @@
     "revision": "c9a7e2df7cac2dfb730f766a4f343308f84ff346"
   },
   "commonlisp": {
-    "revision": "338db38330f0d25cba8e2c6428240ebc5e020264"
+    "revision": "5153dbbc70e4cc2324320c1bdae020d31079c7c0"
   },
   "cooklang": {
     "revision": "5e113412aadb78955c27010daa4dbe1d202013cf"
@@ -189,7 +189,7 @@
     "revision": "d3031a8294bf331600d5046b1d14e690a0d8ba0c"
   },
   "glsl": {
-    "revision": "7491ce41c982ce74a54744ac21a2e4c360325fbb"
+    "revision": "4296be48e59be05284be2f79d62b155b61b20518"
   },
   "go": {
     "revision": "bbaa67a180cfe0c943e50c55130918be8efb20bd"
@@ -624,7 +624,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "8efecc27b58d3266e3946ea5c8fb8b3ef853914d"
+    "revision": "2b2aa817bef5f56c56c8a0d02961858dd47c5860"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
