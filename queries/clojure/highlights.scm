@@ -103,7 +103,7 @@
 ((sym_lit) @method
  (#lua-match? @method "^[.][^-]"))
 ((sym_lit) @field
- (#lua-match? @field "^[.]-"))
+ (#lua-match? @field "^\\.-"))
 ((sym_lit) @field
  (#lua-match? @field "^[%u].*/.+"))
 (list_lit
