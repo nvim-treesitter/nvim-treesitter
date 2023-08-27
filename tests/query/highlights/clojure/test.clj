@@ -3,22 +3,93 @@
 ; ^ include
 ;    ^ namespace
 
-'abc
-; <- string.escape
-; ^ symbol
+ ; asdf
+;^^^^^^ comment
 
-:abc
-; <- keyword
-; ^ keyword
+ #_ abc
+;^^^^^^ comment
+
+ :abc
+;^^^^ symbol
+
+ "abc"
+;^^^^^ string
+
+ 123
+;^^^ number
+
+ \c
+;^^ character
+
+ true false
+;^^^^ ^^^^^ boolean
+
+ nil
+;^^^ constant.builtin
+
+ #"asdf"
+;^ punctuation.special
+;^^^^^^ string.regex
+
+ 'abc
+;^ string.escape
+; ^^^ symbol
+
+ `abc
+;^ string.escape
+; ^^^ symbol
+
+ ~ ~@ #
+;^ ^^ ^punctuation.special
+
+ ()
+;^^ punctuation.bracket
+
+ []
+;^^ punctuation.bracket
+
+ #{}
+;^ punctuation.special
+; ^^ punctuation.bracket
+
+ abc
+;^^^ variable
 
 (func obj)
-; ^ function.call
-;     ^ variable
+;^^^^ function.call
+;     ^^^ variable
 
-(.-field obj)
-; ^ field
-;        ^ variable
+ #(+ % %1 %&)
+;^ punctuation.special
+;  ^ function.call
+;    ^ ^^ ^^ variable.builtin
 
-(.method obj)
-; ^ method
-;        ^ variable
+ &
+;^ parameter
+
+ ->abc
+;^^^^^ constructor
+
+ ->>abc
+;^^^^^^ variable
+
+ *1 *2 *3 *e
+;^^ ^^ ^^ ^^ variable.builtin
+
+(.-field)
+;^^^^^^^ field
+
+(.method)
+;^^^^^^^ method
+
+(Abc/method)
+;^^^^^^^^^^ method
+
+ Abc
+;^^^ type
+
+ abc.
+;^^^^ type
+
+ ^abc
+;^ punctuation.special

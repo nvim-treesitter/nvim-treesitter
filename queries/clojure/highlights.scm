@@ -63,7 +63,7 @@
 
 ; Constructor
 ((sym_lit) @constructor
- (#lua-match? @constructor "^-\\>[^\\>].*"))
+ (#lua-match? @constructor "^-%>[^>].*"))
 
 ; Builtin dynamic variables
 ((sym_lit) @variable.builtin
@@ -100,11 +100,17 @@
  (#lua-match? @type "^[^/]+[.][^/]*$"))
 
 ; Interop
-((sym_lit) @method
- (#lua-match? @method "^[.][^-]"))
-((sym_lit) @field
- (#lua-match? @field "^%.-"))
-((sym_lit) @field
+(list_lit
+ .
+ (sym_lit) @method
+ (#lua-match? @method "^%.[^-]"))
+(list_lit
+ .
+ (sym_lit) @field
+ (#lua-match? @field "^%.%-.*"))
+(list_lit
+ .
+ (sym_lit) @field
  (#lua-match? @field "^[%u].*/.+"))
 (list_lit
  .
