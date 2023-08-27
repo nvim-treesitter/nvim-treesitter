@@ -106,6 +106,7 @@
   "visual"
   "view"
   "eval"
+  "sign"
 ] @keyword
 (map_statement cmd: _ @keyword)
 (command_name) @function.macro
