@@ -100,18 +100,17 @@
  (#lua-match? @type "^[^/]+[.][^/]*$"))
 
 ; Interop
-(list_lit
- .
- (sym_lit) @method
+; (.instanceMember instance args*)
+; (.instanceMember Classname args*)
+((sym_lit) @method
  (#lua-match? @method "^%.[^-]"))
-(list_lit
- .
- (sym_lit) @field
+; (.-instanceField instance)
+((sym_lit) @field
  (#lua-match? @field "^%.%-.*"))
-(list_lit
- .
- (sym_lit) @field
+;  Classname/staticField
+((sym_lit) @field
  (#lua-match? @field "^[%u].*/.+"))
+; (Classname/staticMethod args*)
 (list_lit
  .
  (sym_lit) @method

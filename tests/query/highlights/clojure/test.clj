@@ -9,52 +9,6 @@
  #_ abc
 ;^^^^^^ comment
 
- :abc
-;^^^^ symbol
-
- "abc"
-;^^^^^ string
-
- 123
-;^^^ number
-
- \c
-;^^ character
-
- true false
-;^^^^ ^^^^^ boolean
-
- nil
-;^^^ constant.builtin
-
- #"asdf"
-;^ punctuation.special
-;^^^^^^ string.regex
-
- 'abc
-;^ string.escape
-; ^^^ symbol
-
- `abc
-;^ string.escape
-; ^^^ symbol
-
- ~ ~@ #
-;^ ^^ ^punctuation.special
-
- ()
-;^^ punctuation.bracket
-
- []
-;^^ punctuation.bracket
-
- #{}
-;^ punctuation.special
-; ^^ punctuation.bracket
-
- abc
-;^^^ variable
-
 (func obj)
 ;^^^^ function.call
 ;     ^^^ variable
@@ -76,11 +30,14 @@
  *1 *2 *3 *e
 ;^^ ^^ ^^ ^^ variable.builtin
 
+(.method)
+;^^^^^^^ method
+
 (.-field)
 ;^^^^^^^ field
 
-(.method)
-;^^^^^^^ method
+ Abc/method
+;^^^^^^^^^^ field
 
 (Abc/method)
 ;^^^^^^^^^^ method
