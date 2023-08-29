@@ -107,6 +107,14 @@ list.astro = {
   maintainers = { "@virchau13" },
 }
 
+list.authzed = {
+  install_info = {
+    url = "https://github.com/mleonidas/tree-sitter-authzed",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+}
+
 list.awk = {
   install_info = {
     url = "https://github.com/Beaglefoot/tree-sitter-awk",
