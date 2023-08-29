@@ -1,6 +1,6 @@
 {
   "ada": {
-    "revision": "f67bc6622a9b9bc879b2808164abdbaf99d65d4a"
+    "revision": "0f572c4dccac8cd6a149bbc88c9d8423e9c71ce9"
   },
   "agda": {
     "revision": "80ea622cf952a0059e168e5c92a798b2f1925652"
@@ -267,7 +267,7 @@
     "revision": "bd9cbaf1ea8b942dfd58e68df10c9a378ab3d2b6"
   },
   "java": {
-    "revision": "38be6eccc1b86d6ec5dca0976659e807fd4dc28d"
+    "revision": "ca4afaaa41dd7735b35edc0a77629cf932e95799"
   },
   "javascript": {
     "revision": "f1e5a09b8d02f8209a68249c93f0ad647b228e6e"
@@ -624,7 +624,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "5d5d46ee60ed948cdfa2e3de40cd1ec080418e21"
+    "revision": "353b660b4be2b0e8cd6ac3f06344eaa968be7da8"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
