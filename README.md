@@ -474,9 +474,9 @@ set foldlevelstart = 99
 or if you prefer lua:
 
 ```lua
-vim.wo.foldmethod = "expr"
-vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
-vim.go.foldlevelstart = 99
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldlevelstart = 99
 ```
 
 This will respect your `foldminlines` and `foldnestmax` settings.
