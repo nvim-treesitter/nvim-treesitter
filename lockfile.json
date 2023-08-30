@@ -216,7 +216,7 @@
     "revision": "76e02db5866dd2b096512103ed4d8f630cc32980"
   },
   "hack": {
-    "revision": "2887d3927c5fadebfd71c604922d0c59748e9901"
+    "revision": "fca1e294f6dce8ec5659233a6a21f5bd0ed5b4f2"
   },
   "hare": {
     "revision": "3d4af179414525a35dd069ba0208c9b71093d8b3"
@@ -486,7 +486,7 @@
     "revision": "f257f3f57833d584050336921773738a3fd8ca22"
   },
   "rust": {
-    "revision": "39eaeb41e17572c17e35bb050d6bf2da17568dbf"
+    "revision": "17a6b15562b09db1f27b8f5f26f17edbb2aac097"
   },
   "scala": {
     "revision": "d50b6ca5cc3d925e3d1f497199cb8d8383ddae8a"
@@ -561,7 +561,7 @@
     "revision": "d4deb1bd9e848f2dbe81103a151d99e8546de480"
   },
   "tiger": {
-    "revision": "4a099243ed68a4fc72fdad8ea3ce57ec411ebfe3"
+    "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
   },
   "tlaplus": {
     "revision": "7ba226cf85280c7917d082940022006e6a3b7b6f"
@@ -624,7 +624,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "353b660b4be2b0e8cd6ac3f06344eaa968be7da8"
+    "revision": "915f263722a6a74e5a30be82310d3843ed203058"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
