@@ -462,24 +462,29 @@ require'nvim-treesitter.configs'.setup {
 
 Tree-sitter based folding. _(Technically not a module because it's per windows and not per buffer.)_
 
-```vim
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-" With the above settings applied, vim will fold everything by default when
-" opening a file... setting foldlevelstart to a high value allows you to
-" start with no folds and then toggle them as desired with the za keymap.
-set foldlevelstart = 99
-```
-
-or if you prefer lua:
-
 ```lua
 vim.o.foldmethod = "expr"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- With the above settings applied, vim will fold everything by default when
+-- opening a file... setting foldlevelstart to a high value allows you to
+-- start with no folds and then toggle them as desired with the za keymap.
 vim.o.foldlevelstart = 99
 ```
 
-This will respect your `foldminlines` and `foldnestmax` settings.
+or if you prefer vimscript:
+
+```vim
+set foldmethod=expr
+set foldexpr=v:lua.vim.treesitter.foldexpr()
+set foldlevelstart=99
+```
+
+This will respect your `foldminlines` and `foldnestmax` settings. Once inside 
+a buffer, you could use `:set foldlevel=2` to collapse all folds above level 2.
+
+Note that this applies these options globally. If you want these settings to
+only be set for certain filetypes, then apply the above as window options using
+`vim.wo` in a `ftplugin/<filetype>.lua` file or in a `FileType` autocommand.
 
 # Advanced setup
 
