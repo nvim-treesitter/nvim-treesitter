@@ -1499,10 +1499,7 @@ list.smali = {
 list.snakemake = {
   install_info = {
     url = "https://github.com/osthomas/tree-sitter-snakemake",
-    branch = "main",
-    location = "tree-sitter-snakemake",
     files = { "src/parser.c", "src/scanner.c" },
-    requires_generate_from_grammar = false,
   },
   maintainer = { "@osthomas" },
   experimental = true,
