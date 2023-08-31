@@ -1,6 +1,11 @@
 ((tag_name) @keyword
   (#set! "priority" 105))
 
+[
+  "@code"
+  "@endcode"
+] @keyword
+
 (identifier) @variable
 
 ((tag
@@ -14,7 +19,10 @@
 
 (emphasis) @text.emphasis
 
-"\\a" @tag
+[
+  "\\a"
+  "\\c"
+] @tag
 
 (code_block_language) @label
 
@@ -33,12 +41,13 @@
 ] @tag
 
 [
+  "."
   ","
   "::"
   (code_block_start)
   (code_block_end)
 ] @punctuation.delimiter
 
-[ "(" ")" "[" "]" ] @punctuation.bracket
+[ "(" ")" "{" "}" "[" "]" ] @punctuation.bracket
 
 (code_block_content) @none
