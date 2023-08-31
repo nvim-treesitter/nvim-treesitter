@@ -1095,6 +1095,14 @@ list.norg = {
   maintainers = { "@JoeyGrajciar", "@vhyrro" },
 }
 
+list.nqc = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-nqc",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.objc = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-objc",
