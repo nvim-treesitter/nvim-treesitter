@@ -45,12 +45,12 @@
 
 (blank_pattern) @variable.builtin
 
-((pattern) @variable.other.member (constructor_or_variable_pattern) @type)
+((pattern) @variable (constructor_or_variable_pattern) @type)
 
 (use_clause) @keyword.control.import
 
 ;; Types
-(record_field name: (wordy_id) @variable.other.member type: (wordy_id) @type)
+(record_field name: (wordy_id) @variable type: (wordy_id) @type)
 [
   (type_name)
   (type_signature)
