@@ -293,6 +293,9 @@
   "julia": {
     "revision": "bb7e587837fdeda74dd510256253d60f59a1e2cd"
   },
+  "kconfig": {
+    "revision": "4242bff4d92964a1cbaa95cb45a87a32b3e1c896"
+  },
   "kdl": {
     "revision": "e180e05132c4cb229a8ba679b298790ef1eca77c"
   },
