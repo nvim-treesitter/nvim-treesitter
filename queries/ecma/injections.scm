@@ -13,6 +13,7 @@
               (template_string) @injection.content)
              (template_string) @injection.content
             ]
+     (#lua-match? @injection.language "^[a-zA-Z][a-zA-Z0-9]*$")
      (#offset! @injection.content 0 1 0 -1)
      (#not-eq? @injection.language "svg"))
 
