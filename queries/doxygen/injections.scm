@@ -1,7 +1,7 @@
 ((type) @injection.content
   (#set! injection.parent))
 
-((function_link) @injection.content
+([ (function_link) (code) ] @injection.content
   (#set! injection.parent))
 
 ((link) @injection.content
