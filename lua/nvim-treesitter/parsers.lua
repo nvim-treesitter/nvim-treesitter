@@ -1743,6 +1743,15 @@ list.ungrammar = {
   maintainers = { "@Philipp-M", "@amaanq" },
 }
 
+list.unison = {
+  install_info = {
+    url = "https://github.com/kylegoetz/tree-sitter-unison",
+    files = { "src/parser.c", "src/scanner.c", "src/maybe.c" },
+    branch = "main",
+  },
+  maintainers = { "@tapegram" },
+}
+
 list.usd = {
   install_info = {
     url = "https://github.com/ColinKennedy/tree-sitter-usd",
