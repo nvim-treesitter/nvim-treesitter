@@ -899,6 +899,14 @@ list.julia = {
   maintainers = { "@theHamsta" },
 }
 
+list.kconfig = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-kconfig",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@amaanq" },
+}
+
 list.kdl = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-kdl",
