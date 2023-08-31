@@ -17,7 +17,7 @@
 
 (kw_let) @keyword.function
 (structural_kw) @storageclass
-(unique) @storeageclass
+(unique) @storageclass
 
 [ 
   (type_constructor)
