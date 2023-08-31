@@ -1,10 +1,10 @@
 ;; Primitives
 (comment) @comment
-(nat) @constant.numeric
+(nat) @number
 (unit) @constant.builtin
-(literal_char) @constant.character
+(literal_char) @character
 (literal_text) @string
-(literal_boolean) @constant.builtin.boolean
+(literal_boolean) @boolean
 
 ;; Keywords
 [
@@ -16,8 +16,8 @@
 ] @keyword
 
 (kw_let) @keyword.function
-(structural_kw) @keyword.storage.type
-(unique) @keyword.storage.modifier
+(structural_kw) @storageclass
+(unique) @storeageclass
 
 [ 
   (type_constructor)
@@ -41,13 +41,13 @@
   (match)
   (with)
   (cases)
-] @keyword.control.conditional
+] @conditional
 
 (blank_pattern) @variable.builtin
 
 ((pattern) @variable (constructor_or_variable_pattern) @type)
 
-(use_clause) @keyword.control.import
+(use_clause) @include
 
 ;; Types
 (record_field name: (wordy_id) @variable type: (wordy_id) @type)
