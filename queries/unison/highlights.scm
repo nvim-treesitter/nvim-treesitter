@@ -1,5 +1,5 @@
 ;; Primitives
-(comment) @comment
+(comment) @comment @spell
 (nat) @number
 (unit) @constant.builtin
 (literal_char) @character
@@ -11,19 +11,17 @@
   (kw_forall)
   (unique_kw)
   (type_kw)
-  (kw_equals)
   (do)
+  (kw_let)
 ] @keyword
 
-(kw_let) @keyword.function
-(structural_kw) @storageclass
-(unique) @storageclass
+(kw_equals) @keyword.operator
+(structural_kw) @type.qualifier
+(unique) @type.qualifier
 
-[ 
-  (type_constructor)
-] @constructor
+(type_constructor) @constructor
 
-(doc_block) @comment
+(doc_block) @comment.documentation
 
 
 [
@@ -32,7 +30,7 @@
   (arrow_symbol) 
   (">")
   (or)
-] @operator
+] @keyword.operator
 
 [
   "if"
