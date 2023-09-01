@@ -43,7 +43,7 @@
 
 (blank_pattern) @variable.builtin
 
-((pattern) @variable (constructor_or_variable_pattern) @type)
+(pattern) @variable (constructor_or_variable_pattern) @type
 
 (use_clause) @include
 
