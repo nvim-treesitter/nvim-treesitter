@@ -1746,7 +1746,7 @@ list.ungrammar = {
 list.unison = {
   install_info = {
     url = "https://github.com/kylegoetz/tree-sitter-unison",
-    files = { "src/parser.c", "src/scanner.c", "src/maybe.c" },
+    files = { "src/parser.c", "src/scanner.c" },
     requires_generate_from_grammar = true,
   },
   maintainers = { "@tapegram" },
