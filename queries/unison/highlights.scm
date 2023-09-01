@@ -28,7 +28,7 @@
   (operator)
   (pipe) 
   (arrow_symbol) 
-  (">")
+  ">"
   (or)
 ] @keyword.operator
 
