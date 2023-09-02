@@ -207,7 +207,7 @@
     "revision": "949a8a470559543857a62102c84700d291fc984c"
   },
   "gpg": {
-    "revision": "c44ce76960114352dd00728b835ceef02e0506b8"
+    "revision": "9c26b66d6bca0bd0520269e98241709806561bd5"
   },
   "graphql": {
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
@@ -474,7 +474,7 @@
     "revision": "b2667c975f07b33be3ceb83bea5cfbad88095866"
   },
   "requirements": {
-    "revision": "56ddb4dad2ea0761d20c0995a0de2990caa350b5"
+    "revision": "eda424eade0f2afbafbf0c89d18c77818fa19273"
   },
   "rnoweb": {
     "revision": "502c1126dc6777f09af5bef16e72a42f75bd081e"
@@ -630,7 +630,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "ca6d5bea6c7cf5d16ca65f9ee223d2d3457ab2ec"
+    "revision": "7f2871822417d61b7fb35c1db02c93f4a67615b7"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
