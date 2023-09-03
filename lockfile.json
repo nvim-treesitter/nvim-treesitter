@@ -596,6 +596,9 @@
   "ungrammar": {
     "revision": "debd26fed283d80456ebafa33a06957b0c52e451"
   },
+  "unison": {
+    "revision": "694c8c0c79f8d1b80d497401acf4d1b77bfb004a"
+  },
   "usd": {
     "revision": "718a6b3e939904e0b4fe7cff6742e96af4781f4b"
   },
