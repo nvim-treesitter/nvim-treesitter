@@ -1,4 +1,3 @@
-local highlighter = require('vim.treesitter.highlighter')
 local ts = vim.treesitter
 
 local COMMENT_NODES = {
@@ -6,16 +5,16 @@ local COMMENT_NODES = {
 }
 
 local function check_assertions(file)
-  local buf = vim.fn.bufadd(file)
-  vim.fn.bufload(file)
-  local ft = vim.bo[buf].filetype
-  local lang = vim.treesitter.language.get_lang(ft) or ft
   assert.same(
     1,
     vim.fn.executable('highlight-assertions'),
     '"highlight-assertions" not executable!'
       .. ' Get it via "cargo install --git https://github.com/theHamsta/highlight-assertions"'
   )
+  local buf = vim.fn.bufadd(file)
+  vim.fn.bufload(file)
+  local ft = vim.bo[buf].filetype
+  local lang = vim.treesitter.language.get_lang(ft) or ft
   local comment_node = COMMENT_NODES[lang] or 'comment'
   local assertions = vim.fn.json_decode(
     vim.fn.system(
@@ -27,18 +26,20 @@ local function check_assertions(file)
         .. comment_node
     )
   )
-  local parser = ts.get_parser(buf, lang)
-
-  local self = highlighter.new(parser, {})
-
   assert.True(#assertions > 0, 'No assertions detected!')
+
+  local parser = ts.get_parser(buf)
+
+  parser:parse(true)
+
   for _, assertion in ipairs(assertions) do
     local row = assertion.position.row
     local col = assertion.position.column
+    assert.is.number(row)
+    assert.is.number(col)
 
     local captures = {}
-    local highlights = {}
-    self.tree:for_each_tree(function(tstree, tree)
+    parser:for_each_tree(function(tstree, tree)
       if not tstree then
         return
       end
@@ -51,36 +52,24 @@ local function check_assertions(file)
         return
       end
 
-      local query = self:get_query(tree:lang())
-
-      -- Some injected languages may not have highlight queries.
-      if not query:query() then
+      local query = ts.query.get(tree:lang(), 'highlights')
+      if not query then
         return
       end
 
-      local iter = query:query():iter_captures(root, self.bufnr, row, row + 1)
-
-      for capture, node, _ in iter do
-        local hl = query.hl_cache[capture]
-        assert.is.truthy(hl)
-
-        assert.Truthy(node)
-        assert.is.number(row)
-        assert.is.number(col)
-        if hl and ts.is_in_node_range(node, row, col) then
-          local c = query._query.captures[capture] -- name of the capture in the query
-          if c ~= nil and c ~= 'spell' and c ~= 'conceal' then
-            captures[c] = true
-            highlights[c] = true
+      for id, node, _ in query:iter_captures(root, buf, row, row + 1) do
+        if ts.is_in_node_range(node, row, col) then
+          local capture = query.captures[id]
+          if capture ~= nil and capture ~= 'conceal' and capture ~= 'spell' then
+            captures[capture] = true
           end
         end
       end
     end)
     if assertion.expected_capture_name:match('^!') then
       assert.Falsy(
-        captures[assertion.expected_capture_name:sub(2)]
-          or highlights[assertion.expected_capture_name:sub(2)],
-        'Error in at '
+        captures[assertion.expected_capture_name:sub(2)],
+        'Error in '
           .. file
           .. ':'
           .. (row + 1)
@@ -90,13 +79,11 @@ local function check_assertions(file)
           .. assertion.expected_capture_name
           .. '", captures: '
           .. vim.inspect(vim.tbl_keys(captures))
-          .. '", highlights: '
-          .. vim.inspect(vim.tbl_keys(highlights))
       )
     else
       assert.True(
-        captures[assertion.expected_capture_name] or highlights[assertion.expected_capture_name],
-        'Error in at '
+        captures[assertion.expected_capture_name],
+        'Error in '
           .. file
           .. ':'
           .. (row + 1)
@@ -106,8 +93,6 @@ local function check_assertions(file)
           .. assertion.expected_capture_name
           .. '", captures: '
           .. vim.inspect(vim.tbl_keys(captures))
-          .. '", highlights: '
-          .. vim.inspect(vim.tbl_keys(highlights))
       )
     end
   end
