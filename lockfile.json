@@ -33,7 +33,7 @@
     "revision": "ed92abd7b67ab66a6fa3a747a0157f01d2e467d8"
   },
   "blueprint": {
-    "revision": "7f1a5df44861291d6951b6b2146a9fef4c226e14"
+    "revision": "863cea9f83ad5637300478e0559262f1e791684b"
   },
   "c": {
     "revision": "a2b7bac3b313efbaa683d9a276ff63cdc544d960"
@@ -93,7 +93,7 @@
     "revision": "bcef6d57d0dd4df37bc9d8b1920ea4963c724826"
   },
   "devicetree": {
-    "revision": "d2cc332aeb814ea40e1e34ed6b9446324b32612a"
+    "revision": "cc26cbf2121a27eaa72a05a795ce38aba4e0f86e"
   },
   "dhall": {
     "revision": "affb6ee38d629c9296749767ab832d69bb0d9ea8"
@@ -267,7 +267,7 @@
     "revision": "bd9cbaf1ea8b942dfd58e68df10c9a378ab3d2b6"
   },
   "java": {
-    "revision": "ca4afaaa41dd7735b35edc0a77629cf932e95799"
+    "revision": "83044af4950e9f1adb46a20f616d10934930ce7e"
   },
   "javascript": {
     "revision": "f1e5a09b8d02f8209a68249c93f0ad647b228e6e"
@@ -633,7 +633,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "7f2871822417d61b7fb35c1db02c93f4a67615b7"
+    "revision": "6dbb1ac0939403f5d8117e6ac0d1f41218ed3652"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
