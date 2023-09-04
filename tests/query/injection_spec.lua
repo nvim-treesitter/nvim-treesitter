@@ -25,9 +25,7 @@ local function check_assertions(file)
     )
   )
   local parser = ts.get_parser(buf, lang)
-
-  local self = ts.highlighter.new(parser, {})
-  local top_level_root = parser:parse()[1]:root()
+  local top_level_root = parser:parse(true)[1]:root()
 
   for _, assertion in ipairs(assertions) do
     local row = assertion.position.row
@@ -37,7 +35,7 @@ local function check_assertions(file)
     assertion.expected_capture_name = neg_assert and assertion.expected_capture_name:sub(2)
       or assertion.expected_capture_name
     local found = false
-    self.tree:for_each_tree(function(tstree, tree)
+    parser:for_each_tree(function(tstree, tree)
       if not tstree then
         return
       end
@@ -50,11 +48,11 @@ local function check_assertions(file)
       if assertion.expected_capture_name == tree:lang() then
         found = true
       end
-    end, true)
+    end)
     if neg_assert then
       assert.False(
         found,
-        'Error in at '
+        'Error in '
           .. file
           .. ':'
           .. (row + 1)
@@ -67,7 +65,7 @@ local function check_assertions(file)
     else
       assert.True(
         found,
-        'Error in at '
+        'Error in '
           .. file
           .. ':'
           .. (row + 1)
