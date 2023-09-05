@@ -291,7 +291,7 @@
     "revision": "d34615fa12cc1d1cfc1f1f1a80acc9db80ee4596"
   },
   "julia": {
-    "revision": "bb7e587837fdeda74dd510256253d60f59a1e2cd"
+    "revision": "0c088d1ad270f02c4e84189247ac7001e86fe342"
   },
   "kconfig": {
     "revision": "aaba009ba9d7881f0f81742da588ae70b572316d"
@@ -633,7 +633,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "6dbb1ac0939403f5d8117e6ac0d1f41218ed3652"
+    "revision": "a6e41306a669d575caaf38c2393f1e61ce7fb22d"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
