@@ -1,6 +1,6 @@
 {
   "ada": {
-    "revision": "0f572c4dccac8cd6a149bbc88c9d8423e9c71ce9"
+    "revision": "f21f13afe0410311be1f78959a25aee393c569c9"
   },
   "agda": {
     "revision": "80ea622cf952a0059e168e5c92a798b2f1925652"
@@ -243,7 +243,7 @@
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
   },
   "hoon": {
-    "revision": "900a272271cc2fb78f24aa7b5a1e21ed36bb1d39"
+    "revision": "1d5df35af3e0afe592832a67b9fb3feeeba1f7b6"
   },
   "html": {
     "revision": "e5d7d7decbbdec5a4c90bbc69436b3828f5646e7"
@@ -633,7 +633,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "a6e41306a669d575caaf38c2393f1e61ce7fb22d"
+    "revision": "f1446e78183df1d12f864c3e514b24c1b00c0a47"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
