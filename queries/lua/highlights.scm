@@ -140,9 +140,10 @@
   (#eq? @keyword.coroutine "coroutine"))
 
 (variable_list
-   attribute: (attribute
-     (["<" ">"] @punctuation.bracket
-      (identifier) @attribute)))
+  (attribute
+    "<" @punctuation.bracket
+    (identifier) @attribute
+    ">" @punctuation.bracket))
 
 ;; Labels
 
