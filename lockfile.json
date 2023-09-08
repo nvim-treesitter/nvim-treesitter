@@ -90,7 +90,7 @@
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
   },
   "dart": {
-    "revision": "bcef6d57d0dd4df37bc9d8b1920ea4963c724826"
+    "revision": "7e447dc18a2d293498670fb5ea16138648c883e5"
   },
   "devicetree": {
     "revision": "cc26cbf2121a27eaa72a05a795ce38aba4e0f86e"
@@ -315,7 +315,7 @@
     "revision": "d47c95d78ef0e7495a74d214dd6fcddf6e402dfc"
   },
   "lua": {
-    "revision": "88e446476a1e97a8724dff7a23e2d709855077f2"
+    "revision": "9668709211b2e683f27f414454a8b51bf0a6bda1"
   },
   "luadoc": {
     "revision": "8981072676ec8bd74def6134be4f883655f7c082"
@@ -522,7 +522,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "6fa716163fcf183e4938c75f427379ceba881fbe"
+    "revision": "39750c48bf9ad63bcc1399554355b0aa0aaa1c33"
   },
   "squirrel": {
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
@@ -552,7 +552,7 @@
     "revision": "1af543a96d060b1f808982037bfc54cc02218edd"
   },
   "t32": {
-    "revision": "6da5e3cbabd376b566d04282005e52ffe67ef74a"
+    "revision": "c17070b014d02319b4cc335d28651926b0ee5ed6"
   },
   "tablegen": {
     "revision": "300f6a490e71f895e644ed2deec6920860a2e107"
@@ -633,7 +633,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "13082becae059dd96fa60b2492e95335350549be"
+    "revision": "eaba03a1c9284669e666c86a0dfd43f895edd6e4"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
