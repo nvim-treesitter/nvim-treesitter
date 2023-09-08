@@ -5,6 +5,7 @@
   (lambda_expression)
   (function_definition)
   (block)
+  (for_expression)
 ] @scope
 
 ; References
@@ -40,3 +41,8 @@
 (var_declaration
   name: (identifier) @definition.var)
 
+(for_expression
+  enumerators: (enumerators
+    (enumerator
+      (tuple_pattern
+        (identifier) @definition.var))))
