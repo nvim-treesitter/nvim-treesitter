@@ -157,9 +157,6 @@
 [
   "global"
   "local"
-  "macro"
-  "struct"
-  "end"
 ] @keyword
 
 
@@ -208,8 +205,11 @@
 (export_statement
   "export" @include)
 
+(struct_definition
+  ["struct" "end"] @keyword)
+
 (macro_definition
-  ["macro" "end" @keyword])
+  ["macro" "end"] @keyword)
 
 (function_definition
   ["function" "end"] @keyword.function)
