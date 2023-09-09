@@ -403,6 +403,14 @@ list.ebnf = {
   experimental = true,
 }
 
+list.eds = {
+  install_info = {
+    url = "https://github.com/uyha/tree-sitter-eds",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@uyha" },
+}
+
 list.eex = {
   install_info = {
     url = "https://github.com/connorlay/tree-sitter-eex",
