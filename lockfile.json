@@ -312,7 +312,7 @@
     "revision": "8a841fb20ce683bfbb3469e6ba67f2851cfdf94a"
   },
   "llvm": {
-    "revision": "d47c95d78ef0e7495a74d214dd6fcddf6e402dfc"
+    "revision": "1b96e58faf558ce057d4dc664b904528aee743cb"
   },
   "lua": {
     "revision": "9668709211b2e683f27f414454a8b51bf0a6bda1"
@@ -633,7 +633,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "eaba03a1c9284669e666c86a0dfd43f895edd6e4"
+    "revision": "6fcfe7db18944f57dff8fb46bee927f704fe2df8"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
