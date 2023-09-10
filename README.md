@@ -212,6 +212,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [doxygen](https://github.com/amaanq/tree-sitter-doxygen) (maintained by @amaanq)
 - [x] [dtd](https://github.com/ObserverOfTime/tree-sitter-xml) (maintained by @ObserverOfTime)
 - [x] [ebnf](https://github.com/RubixDev/ebnf) (experimental, maintained by @RubixDev)
+- [x] [eds](https://github.com/uyha/tree-sitter-eds) (maintained by @uyha)
 - [x] [eex](https://github.com/connorlay/tree-sitter-eex) (maintained by @connorlay)
 - [x] [elixir](https://github.com/elixir-lang/tree-sitter-elixir) (maintained by @connorlay)
 - [x] [elm](https://github.com/elm-tooling/tree-sitter-elm) (maintained by @zweimach)
