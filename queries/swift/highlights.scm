@@ -63,7 +63,7 @@
 (navigation_expression
   (navigation_suffix (simple_identifier) @property))
 (value_argument
-  name: (simple_identifier) @property)
+  name: (value_argument_label) @property)
 
 (import_declaration ["import" @include])
 
@@ -186,3 +186,4 @@
  "..."
   (bang)
 ] @operator
+
