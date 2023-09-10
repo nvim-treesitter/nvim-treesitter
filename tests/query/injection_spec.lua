@@ -1,5 +1,4 @@
 require "nvim-treesitter.highlight" -- yes, this is necessary to set the hlmap
-local highlighter = require "vim.treesitter.highlighter"
 local configs = require "nvim-treesitter.configs"
 local parsers = require "nvim-treesitter.parsers"
 local ts = vim.treesitter
@@ -19,10 +18,8 @@ local function check_assertions(file)
       "highlight-assertions -p '" .. configs.get_parser_install_dir() .. "/" .. lang .. ".so'" .. " -s '" .. file .. "'"
     )
   )
-  local parser = parsers.get_parser(buf, lang)
-
-  local self = highlighter.new(parser, {})
-  local top_level_root = parser:parse()[1]:root()
+  local parser = ts.get_parser(buf, lang)
+  local top_level_root = parser:parse(true)[1]:root()
 
   for _, assertion in ipairs(assertions) do
     local row = assertion.position.row
@@ -32,7 +29,7 @@ local function check_assertions(file)
     assertion.expected_capture_name = neg_assert and assertion.expected_capture_name:sub(2)
       or assertion.expected_capture_name
     local found = false
-    self.tree:for_each_tree(function(tstree, tree)
+    parser:for_each_tree(function(tstree, tree)
       if not tstree then
         return
       end
@@ -45,11 +42,11 @@ local function check_assertions(file)
       if assertion.expected_capture_name == tree:lang() then
         found = true
       end
-    end, true)
+    end)
     if neg_assert then
       assert.False(
         found,
-        "Error in at "
+        "Error in "
           .. file
           .. ":"
           .. (row + 1)
@@ -62,7 +59,7 @@ local function check_assertions(file)
     else
       assert.True(
         found,
-        "Error in at "
+        "Error in "
           .. file
           .. ":"
           .. (row + 1)
