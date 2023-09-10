@@ -116,6 +116,9 @@
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
   },
+  "eds": {
+    "revision": "fde62029d4c715562230070b9af51a9500c2ce10"
+  },
   "eex": {
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
