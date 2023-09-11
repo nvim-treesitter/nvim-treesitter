@@ -1,6 +1,7 @@
 ---@class InstallInfo
 ---@field url string
 ---@field branch string|nil
+---@field revision string|nil Used to override lockfile revision
 ---@field files string[]
 ---@field generate_requires_npm boolean|nil
 ---@field requires_generate_from_grammar boolean|nil
