@@ -81,6 +81,11 @@ end
 ---@param lang string
 ---@return string?
 local function get_target_revision(lang)
+  local info = get_parser_install_info(lang)
+  if info and info.revision then
+    return info.revision
+  end
+
   if #lockfile == 0 then
     local filename = M.get_package_path('lockfile.json')
     lockfile = vim.json.decode(util.read_file(filename)) --[[@as table<string, LockfileInfo>]]
