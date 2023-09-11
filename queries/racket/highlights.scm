@@ -25,6 +25,8 @@
 
 (regex) @string.regex
 
+((string) @symbol (#has-ancestor? @symbol quote))
+
 ;; comment ;;
 
 [(comment)
@@ -40,6 +42,8 @@
 
 ((symbol) @comment
  (#lua-match? @comment "^#[cC][iIsS]$"))
+
+((symbol) @symbol (#has-ancestor? @symbol quote))
 
 ;; extension ;;
 
@@ -58,7 +62,7 @@
 
 (list
  .
- (symbol) @function)
+ (symbol) @function (#not-has-ancestor? @function quote))
 
 ;;------------------------------------------------------------------;;
 ;;                        Builtin highlights                        ;;
