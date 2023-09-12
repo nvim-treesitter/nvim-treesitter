@@ -6,7 +6,7 @@
 
 "=>" @operator
 
-(comment) @comment
+(comment) @comment @spell
 
 [
 (version)

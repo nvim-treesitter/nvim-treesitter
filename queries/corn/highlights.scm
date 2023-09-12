@@ -11,7 +11,7 @@
 "." @punctuation.delimiter
 
 (input) @constant
-(comment) @comment
+(comment) @comment @spell
 
 (string) @string
 (integer) @number

@@ -1,6 +1,6 @@
 (section_name
   (text) @type) ; consistency with toml
-(comment) @comment
+(comment) @comment @spell
 
 [
  "["

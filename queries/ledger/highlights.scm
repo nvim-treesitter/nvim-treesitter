@@ -3,7 +3,7 @@
     (comment)
     (note)
     (test)
-] @comment
+] @comment @spell
 
 [
     (quantity)

@@ -3,7 +3,7 @@
 (string) @string
 (escape_sequence) @string.escape
 
-(comment) @comment
+(comment) @comment @spell
 
 (constant) @constant.builtin
 

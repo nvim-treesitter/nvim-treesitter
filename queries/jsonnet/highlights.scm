@@ -1,5 +1,5 @@
 (id) @variable
-(comment) @comment
+(comment) @comment @spell
 
 ; Literals
 (null) @constant.builtin

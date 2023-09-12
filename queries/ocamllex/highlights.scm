@@ -37,5 +37,5 @@
 
 ; Misc
 
-(comment) @comment
+(comment) @comment @spell
 (ERROR) @error

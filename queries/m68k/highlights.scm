@@ -47,7 +47,7 @@
 (repeat (control_mnemonic) @repeat)
 (conditional (control_mnemonic) @conditional)
 
-(comment) @comment
+(comment) @comment @spell
 
 [
   (operator)

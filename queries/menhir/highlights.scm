@@ -25,5 +25,5 @@
 (ocaml_type) @type
 (ocaml) @none
 
-[(comment) (line_comment) (ocaml_comment)] @comment
+[(comment) (line_comment) (ocaml_comment)] @comment @spell
 (ERROR) @error

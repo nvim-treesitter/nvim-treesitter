@@ -96,3 +96,5 @@
  (split)
  (comment)
 ] @comment
+
+(comment) @spell

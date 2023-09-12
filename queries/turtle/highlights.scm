@@ -48,7 +48,7 @@
   (anon)
 ] @punctuation.bracket
 
-(comment) @comment
+(comment) @comment @spell
 
 (echar) @string.escape
 

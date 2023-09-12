@@ -1,4 +1,4 @@
-(comment) @comment
+(comment) @comment @spell
 
 "@media" @keyword
 "@import" @include

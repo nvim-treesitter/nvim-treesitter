@@ -1,5 +1,5 @@
-(comment) @comment
-(afx_comment) @comment
+(comment) @comment @spell
+(afx_comment) @comment @spell
 
 ; identifiers afx
 (afx_opening_element

@@ -30,7 +30,7 @@
 "or" @keyword.operator
 
 ; comments
-(comment) @comment
+(comment) @comment @spell
 
 ; strings
 ([ (string_expression) (indented_string_expression) ]

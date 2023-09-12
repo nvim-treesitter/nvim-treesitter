@@ -19,4 +19,4 @@
 
 (ERROR) @error
 
-(comment) @comment
+(comment) @comment @spell
