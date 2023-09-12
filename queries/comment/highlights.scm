@@ -1,5 +1,3 @@
-(_) @spell
-
 ((tag
   (name) @text.todo @nospell
   ("(" @punctuation.bracket (user) @constant ")" @punctuation.bracket)?
