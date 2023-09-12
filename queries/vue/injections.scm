@@ -8,8 +8,7 @@
         (quoted_attribute_value (attribute_value) @injection.language)))
     (raw_text) @injection.content)
     (#eq? @_lang "lang")
-    (#any-of? @injection.language "css" "scss")
-    (#set! injection.include-children))
+    (#any-of? @injection.language "css" "scss"))
 
 ; TODO: When nvim-treesitter has postcss and less parsers, use @injection.language and @injection.content instead
 ; <script lang="scss">
@@ -21,8 +20,7 @@
     (raw_text) @injection.content
     (#eq? @_lang "lang")
     (#any-of? @_scss "less" "postcss")
-    (#set! injection.language "scss")
-    (#set! injection.include-children)))
+    (#set! injection.language "scss")))
 
 ; <script lang="js">
 ((script_element
@@ -33,8 +31,7 @@
     (raw_text) @injection.content)
     (#eq? @_lang "lang")
     (#eq? @_js "js")
-    (#set! injection.language "javascript")
-    (#set! injection.include-children))
+    (#set! injection.language "javascript"))
 
 ; <script lang="ts">
 ((script_element
@@ -45,8 +42,7 @@
     (raw_text) @injection.content)
     (#eq? @_lang "lang")
     (#eq? @_ts "ts")
-    (#set! injection.language "typescript")
-    (#set! injection.include-children))
+    (#set! injection.language "typescript"))
 
 ; <script lang="tsx">
 ; <script lang="jsx">
@@ -57,24 +53,20 @@
         (quoted_attribute_value (attribute_value) @injection.language)))
     (#eq? @_attr "lang")
     (#any-of? @injection.language "tsx" "jsx")
-    (raw_text) @injection.content)
-    (#set! injection.include-children))
+    (raw_text) @injection.content))
 
 ((interpolation
   (raw_text) @injection.content)
-  (#set! injection.language "javascript")
-  (#set! injection.include-children))
+  (#set! injection.language "javascript"))
 
 (directive_attribute
   (quoted_attribute_value
     (attribute_value) @injection.content
-    (#set! injection.language "javascript")
-    (#set! injection.include-children)))
+    (#set! injection.language "javascript")))
 
 (template_element
     (start_tag
       (attribute
         (quoted_attribute_value (attribute_value) @injection.language)))
     (text) @injection.content
-    (#eq? @injection.language "pug")
-    (#set! injection.include-children))
+    (#eq? @injection.language "pug"))
