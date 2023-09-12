@@ -192,7 +192,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [chatito](https://github.com/ObserverOfTime/tree-sitter-chatito) (maintained by @ObserverOfTime)
 - [x] [clojure](https://github.com/sogaiu/tree-sitter-clojure) (maintained by @sogaiu)
 - [x] [cmake](https://github.com/uyha/tree-sitter-cmake) (maintained by @uyha)
-- [x] [comment](https://github.com/stsewd/tree-sitter-comment) (maintained by @stsewd)
+- [x] [comment](https://github.com/stsewd/tree-sitter-comment) (slow - see #5057, maintained by @stsewd)
 - [x] [commonlisp](https://github.com/theHamsta/tree-sitter-commonlisp) (maintained by @theHamsta)
 - [x] [cooklang](https://github.com/addcninblue/tree-sitter-cooklang) (maintained by @addcninblue)
 - [x] [corn](https://github.com/jakestanger/tree-sitter-corn) (maintained by @jakestanger)
