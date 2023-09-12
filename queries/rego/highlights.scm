@@ -37,7 +37,7 @@
 
 (term (ref (var))) @variable
 
-(comment) @comment
+(comment) @comment @spell
 
 (number) @number
 

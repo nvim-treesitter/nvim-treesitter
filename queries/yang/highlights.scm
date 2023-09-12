@@ -1,5 +1,5 @@
 
-(comment) @comment
+(comment) @comment @spell
 
 ; Module / submodule
 ["module" "submodule"] @keyword

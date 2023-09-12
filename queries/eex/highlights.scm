@@ -9,7 +9,7 @@
 ] @tag.delimiter
 
 ; EEx comments are highlighted as such
-(comment) @comment
+(comment) @comment @spell
 
 ; Tree-sitter parser errors
 (ERROR) @error

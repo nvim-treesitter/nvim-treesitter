@@ -1,7 +1,7 @@
 [
   (comment)
   (extra_text)
-] @comment
+] @comment @spell
 
 [
   (section_header)

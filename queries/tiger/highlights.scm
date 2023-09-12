@@ -111,7 +111,7 @@
 ; }}}
 
 ; Misc {{{
-(comment) @comment
+(comment) @comment @spell
 
 (type_identifier) @type
 (field_identifier) @property

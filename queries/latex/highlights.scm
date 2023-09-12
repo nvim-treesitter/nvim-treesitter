@@ -13,7 +13,7 @@
  (line_comment)
  (block_comment)
  (comment_environment)
-] @comment
+] @comment @spell
 
 ((line_comment) @preproc
   (#lua-match? @preproc "^%% !TeX"))

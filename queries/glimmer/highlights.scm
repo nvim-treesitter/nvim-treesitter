@@ -73,7 +73,7 @@
 
 (hash_pair key: (identifier) @property)
 
-(comment_statement) @comment
+(comment_statement) @comment @spell
 
 (attribute_node "=" @operator)
 

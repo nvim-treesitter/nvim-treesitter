@@ -36,7 +36,7 @@
 
 ; Special
 
-(comment) @comment
+(comment) @comment @spell
 
 [
   "("

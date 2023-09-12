@@ -172,6 +172,6 @@
 ; Comments
 ;---------
 
-[(comment) (line_number_directive) (directive) (shebang)] @comment
+[(comment) (line_number_directive) (directive) (shebang)] @comment @spell
 
 (ERROR) @error

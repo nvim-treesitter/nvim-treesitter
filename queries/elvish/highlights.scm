@@ -1,4 +1,4 @@
-(comment) @comment
+(comment) @comment @spell
 
 ["if" "elif"] @conditional
 (if (else "else" @conditional))

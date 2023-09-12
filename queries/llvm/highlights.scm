@@ -112,7 +112,7 @@
   ] @keyword.function)
 
 (number) @number
-(comment) @comment
+(comment) @comment @spell
 (string) @string
 (cstring) @string
 (label) @label

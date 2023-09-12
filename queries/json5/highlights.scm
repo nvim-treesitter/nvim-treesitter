@@ -9,7 +9,7 @@
 
 (number) @number
 
-(comment) @comment
+(comment) @comment @spell
 
 (member
     name: (_) @keyword)

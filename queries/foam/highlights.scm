@@ -1,5 +1,5 @@
 ;; Comments
-(comment) @comment
+(comment) @comment @spell
 
 ;; Generic Key-value pairs and dictionary keywords
 (key_value

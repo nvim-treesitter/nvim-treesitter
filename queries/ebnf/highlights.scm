@@ -5,7 +5,7 @@
 
 (integer) @number
 
-(comment) @comment
+(comment) @comment @spell
 
 ;;;; Identifiers ;;;;
 

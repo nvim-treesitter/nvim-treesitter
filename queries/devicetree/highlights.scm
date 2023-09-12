@@ -1,4 +1,4 @@
-(comment) @comment
+(comment) @comment @spell
 
 [
   (preproc_include)

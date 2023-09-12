@@ -1,6 +1,6 @@
 (tag_name) @tag
 (erroneous_end_tag_name) @error
-(comment) @comment
+(comment) @comment @spell
 (attribute_name) @tag.attribute
 (attribute
   (quoted_attribute_value) @string)
