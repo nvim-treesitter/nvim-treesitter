@@ -6,8 +6,7 @@
 
 ((heredoc_redirect
   (heredoc_body) @injection.content
-  (heredoc_end) @injection.language)
- (#downcase! @injection.language))
+  (heredoc_end) @injection.language))
 
 ; printf 'format'
 ((command
