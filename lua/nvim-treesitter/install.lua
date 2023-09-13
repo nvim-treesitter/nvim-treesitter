@@ -145,18 +145,16 @@ local function get_compile_location(repo, cache_dir, project_name, from_local_pa
   return fs.joinpath(cache_dir, repo_location)
 end
 
+local function istring(c)
+  return type(c) == 'string'
+end
+
 local function cc_err()
-  log.error('No C compiler found! "' .. table.concat(
-    vim.iter.filter(
-      ---@param c string
-      ---@return boolean
-      function(c)
-        return type(c) == 'string'
-      end,
-      M.compilers
-    ),
-    '", "'
-  ) .. '" are not executable.')
+  log.error(
+    'No C compiler found! "'
+      .. table.concat(vim.iter.filter(istring, M.compilers), '", "')
+      .. '" are not executable.'
+  )
 end
 
 --- @param x string
