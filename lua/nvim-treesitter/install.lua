@@ -44,7 +44,7 @@ end
 
 local function system(cmd, opts)
   log.trace('running job: (cwd=%s) %s', opts.cwd, table.concat(cmd, ' '))
-  local r = a.wrap(vim.system, 3)(cmd, opts) --[[@as SystemCompleted]]
+  local r = a.wrap(vim.system, 3)(cmd, opts) --[[@as vim.SystemCompleted]]
   a.main()
   if r.stdout and r.stdout ~= '' then
     log.trace('stdout -> %s', r.stdout)
@@ -413,7 +413,7 @@ end
 ---@param repo InstallInfo
 ---@param cc string
 ---@param compile_location string
----@return SystemCompleted
+---@return vim.SystemCompleted
 local function do_compile(repo, cc, compile_location)
   local args = vim.tbl_flatten(select_compiler_args(repo, cc))
   local cmd = vim.list_extend({ cc }, args)
