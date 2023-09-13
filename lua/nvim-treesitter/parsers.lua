@@ -1520,6 +1520,15 @@ list.smali = {
   maintainers = { "@amaanq" },
 }
 
+list.snakemake = {
+  install_info = {
+    url = "https://github.com/osthomas/tree-sitter-snakemake",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainer = { "@osthomas" },
+  experimental = true,
+}
+
 list.smithy = {
   install_info = {
     url = "https://github.com/indoorvivants/tree-sitter-smithy",
