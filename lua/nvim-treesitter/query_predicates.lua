@@ -1,4 +1,5 @@
 local query = require "vim.treesitter.query"
+local parsers = require "nvim-treesitter.parsers"
 
 local html_script_type_languages = {
   ["importmap"] = "json",
@@ -16,8 +17,9 @@ local non_filetype_match_injection_language_aliases = {
 }
 
 local function get_parser_from_markdown_info_string(injection_alias)
-  local match = vim.filetype.match { filename = "a." .. injection_alias }
-  return match or non_filetype_match_injection_language_aliases[injection_alias] or injection_alias
+  local ft = vim.filetype.match { filename = "a." .. injection_alias }
+  local lang = parsers.ft_to_lang(ft)
+  return lang or non_filetype_match_injection_language_aliases[injection_alias] or injection_alias
 end
 
 local function error(str)
