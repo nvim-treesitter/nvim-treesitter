@@ -362,6 +362,12 @@
   "nickel": {
     "revision": "b759233581fd8bae239e905c67a9ba453205da78"
   },
+  "nim": {
+    "revision": "35c0245439947e66239c1d59ea28b3fb0bba3d4c"
+  },
+  "nim_format_string": {
+    "revision": "b60f0e982a74fb5df93d26a468120cfe67e7e1af"
+  },
   "ninja": {
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
