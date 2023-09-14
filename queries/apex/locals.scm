@@ -36,9 +36,6 @@
 
 ;; definitions
 
-(class_declaration
-  name: (identifier) @definition.type)
-
 (enum_declaration
   name: (identifier) @definition.enum)
 

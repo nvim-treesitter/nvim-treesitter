@@ -49,15 +49,15 @@
 (class_declaration
   name: (identifier) @type)
 (class_declaration
-  (superclass) @class) ;; 
+  (superclass) @storageclass) ;; 
 (enum_declaration
   name: (identifier) @type)
 (enum_constant
-  name: (identifier) @enumMember);;
+  name: (identifier) @variable);;
 
 (interfaces
   (type_list
-    (type_identifier) @interface ));;
+    (type_identifier) @function ));;
 
 (local_variable_declaration
   (type_identifier) @variable)
@@ -140,7 +140,7 @@
 (constructor_declaration
   name: (identifier) @constructor)
 
-(dml_type) @function.defaultLibrary;;
+(dml_type) @function.builtin;;
 
 (bound_apex_expression
   (identifier) @variable)
@@ -166,7 +166,7 @@
 
 (switch_rule
   (switch_label
-    (identifier) @enumMember ))
+    (identifier) @variable ))
 
 (trigger_declaration
   name: (identifier) @type
@@ -216,7 +216,7 @@
 [
   (boolean_type)
   (void_type)
-] @type.defaultLibrary;;
+] @type.builtin;;
 
 ; Fields
 

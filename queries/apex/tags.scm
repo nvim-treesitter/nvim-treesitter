@@ -1,6 +1,3 @@
-(class_declaration
-  name: (identifier) @name) @definition.class
-
 (interface_declaration
   name: (identifier) @name) @definition.interface
 
