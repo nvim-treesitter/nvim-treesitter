@@ -125,7 +125,7 @@
   "my_territory"
   "my_team_territory"
   "team"
-] @enumMember
+] @keyword
 
 ; With
 [
@@ -137,6 +137,6 @@
   "System_Mode"
   "User_Mode"
   "UserId"
-] @enumMember
+] @keyword
 
 
