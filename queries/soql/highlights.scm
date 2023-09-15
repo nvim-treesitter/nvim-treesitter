@@ -32,9 +32,9 @@
 (alias_expression
   (identifier) @label)
 
-(storage_identifier) @type
+(storage_identifier) @storageclass
 (function_name) @function
-(date_literal) @variable.readonly.defaultLibrary
+(date_literal) @string.special
 
 [
   ","
@@ -117,9 +117,12 @@
   "VIEW"
   "VIEWSTAT"
   "WITH"
+] @keyword
+
+[
   "WHERE"
   "WHEN"
-] @keyword
+] @conditional
 
 ; Using Scope
 [
