@@ -1,4 +1,3 @@
-; https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide#semantic-token-classification
 (field_identifier
   (identifier) @property)
 
