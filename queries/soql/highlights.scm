@@ -49,19 +49,22 @@
   "AND"
   "OR"
   "NOT"
-  "="
-  "!="
   "LIKE"
   "NOT_IN"
   "INCLUDES"
   "EXCLUDES"
+] @keyword.operator
+
+[
+  "="
+  "!="
+  "<="
+  "=>"
 ] @operator
-(value_comparison_operator "<" @operator)
-"<=" @operator
-(value_comparison_operator ">" @operator)
-">=" @operator
- @operator
-(set_comparison_operator "IN" @operator)
+
+(value_comparison_operator  [ "<" ">" ] @operator)
+
+(set_comparison_operator "IN" @keyword.operator)
 
 (int) @number
 (decimal) @number
