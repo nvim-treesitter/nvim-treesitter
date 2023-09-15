@@ -95,7 +95,7 @@ list.apex = {
   install_info = {
     url = "https://github.com/aheber/tree-sitter-sfapex",
     files = { "src/parser.c" },
-    location = "apex"
+    location = "apex",
   },
   maintainers = { "@aheber" },
 }
@@ -1553,7 +1553,6 @@ list.solidity = {
   },
   maintainers = { "@amaanq" },
 }
-
 
 list.soql = {
   install_info = {
