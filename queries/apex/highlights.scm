@@ -53,7 +53,7 @@
 (enum_declaration
   name: (identifier) @type)
 (enum_constant
-  name: (identifier) @variable);;
+  name: (identifier) @constant)
 
 (interfaces
   (type_list
