@@ -59,7 +59,6 @@
   "="
   "!="
   "<="
-  "=>"
 ] @operator
 
 (value_comparison_operator  [ "<" ">" ] @operator)
