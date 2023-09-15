@@ -57,7 +57,7 @@
 
 (interfaces
   (type_list
-    (type_identifier) @function ));;
+    (type_identifier) @type));;
 
 (local_variable_declaration
   (type_identifier) @variable)
