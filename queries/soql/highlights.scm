@@ -66,9 +66,11 @@
 
 (set_comparison_operator "IN" @keyword.operator)
 
-(int) @number
-(decimal) @number
-(currency_literal) @number
+[
+  (int)
+  (decimal)
+  (currency_literal)
+] @number
 (string_literal) @string
 (date) @variable.readonly
 (date_time) @variable.readonly
