@@ -76,8 +76,9 @@
 [
   "TRUE"
   "FALSE"
-  (null_literal)
-] @variable.readonly.defaultLibrary
+] @boolean
+
+(null_literal) @constant.builtin
 
 [
   "ABOVE"
