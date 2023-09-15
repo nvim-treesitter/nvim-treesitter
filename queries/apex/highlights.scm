@@ -64,8 +64,8 @@
 
 (expression_statement (_ (identifier)) @variable)
 
-(type_arguments "<" @punctuation)
-(type_arguments ">" @punctuation)
+(type_arguments "<" @punctuation.delimiter)
+(type_arguments ">" @punctuation.delimiter)
 
 ; (identifier) @variable
 
