@@ -49,7 +49,7 @@
 (class_declaration
   name: (identifier) @type)
 (class_declaration
-  (superclass) @storageclass) ;; 
+  (superclass) @type) 
 (enum_declaration
   name: (identifier) @type)
 (enum_constant
