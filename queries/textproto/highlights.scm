@@ -15,4 +15,3 @@
 (close_square) @punctuation.bracket
 (open_arrow) @punctuation.bracket
 (close_arrow) @punctuation.bracket
-

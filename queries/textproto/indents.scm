@@ -5,4 +5,3 @@
 (scalar_list (close_square) @indent.branch)
 (message_list) @indent.begin
 (message_list (close_square) @indent.branch)
-
