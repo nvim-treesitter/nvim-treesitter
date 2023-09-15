@@ -93,8 +93,9 @@ list.agda = {
 
 list.apex = {
   install_info = {
-    url = "https://github.com/aheber/tree-sitter-sfapex/tree/main/apex",
+    url = "https://github.com/aheber/tree-sitter-sfapex",
     files = { "src/parser.c" },
+    location = "apex"
   },
   maintainers = { "@aheber" },
 }
@@ -1556,16 +1557,18 @@ list.solidity = {
 
 list.soql = {
   install_info = {
-    url = "https://github.com/aheber/tree-sitter-sfapex/tree/main/soql",
+    url = "https://github.com/aheber/tree-sitter-sfapex",
     files = { "src/parser.c" },
+    location = "soql",
   },
   maintainers = { "@aheber" },
 }
 
 list.sosl = {
   install_info = {
-    url = "https://github.com/aheber/tree-sitter-sfapex/tree/main/sosl",
+    url = "https://github.com/aheber/tree-sitter-sfapex",
     files = { "src/parser.c" },
+    location = "sosl",
   },
   maintainers = { "@aheber" },
 }
