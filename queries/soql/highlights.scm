@@ -44,7 +44,7 @@
   "?"
   "("
   ")"
-] @@punctuation.delimiter
+] @punctuation.delimiter
 
 [
   "AND"
