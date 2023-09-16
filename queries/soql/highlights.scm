@@ -94,7 +94,6 @@
   "CUSTOM"
   "DATA_CATEGORY"
   "DESC"
-  "ELSE"
   "END"
   "FIELDS"
   "FOR"
@@ -109,7 +108,6 @@
   "REFERENCE"
   "SELECT"
   "STANDARD"
-  "THEN"
   "TRACKING"
   "TYPEOF"
   "UPDATE"
@@ -122,6 +120,8 @@
 [
   "WHERE"
   "WHEN"
+  "ELSE"
+  "THEN"
 ] @conditional
 
 ; Using Scope
