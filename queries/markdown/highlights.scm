@@ -26,6 +26,14 @@
   (fenced_code_block_delimiter)
 ] @punctuation.delimiter
 
+;; Conceal backticks
+(fenced_code_block
+  (fenced_code_block_delimiter) @conceal
+  (#set! conceal ""))
+(fenced_code_block
+  (info_string (language) @conceal
+  (#set! conceal "")))
+
 (code_fence_content) @none
 
 [
