@@ -1597,6 +1597,15 @@ list.squirrel = {
   maintainers = { "@amaanq" },
 }
 
+list.ssh_config = {
+  install_info = {
+    url = "https://github.com/ObserverOfTime/tree-sitter-ssh-config",
+    files = { "src/parser.c" },
+  },
+  filetype = "sshconfig",
+  maintainers = { "@ObserverOfTime" },
+}
+
 list.starlark = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-starlark",

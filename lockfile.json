@@ -542,6 +542,9 @@
   "squirrel": {
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
   },
+  "ssh_config": {
+    "revision": "f1039c88c488f77a10a616c6de5ec1c4c6e8572f"
+  },
   "starlark": {
     "revision": "c45ce2b39062bbd12ea1c210bd200db250efb24a"
   },
