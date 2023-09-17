@@ -175,6 +175,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 <!--parserinfo-->
 - [x] [ada](https://github.com/briot/tree-sitter-ada) (maintained by @briot)
 - [x] [agda](https://github.com/AusCyberman/tree-sitter-agda) (maintained by @Decodetalkers)
+- [x] [apex](https://github.com/aheber/tree-sitter-sfapex) (maintained by @aheber)
 - [x] [arduino](https://github.com/ObserverOfTime/tree-sitter-arduino) (maintained by @ObserverOfTime)
 - [x] [astro](https://github.com/virchau13/tree-sitter-astro) (maintained by @virchau13)
 - [ ] [awk](https://github.com/Beaglefoot/tree-sitter-awk)
@@ -348,6 +349,8 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [smithy](https://github.com/indoorvivants/tree-sitter-smithy) (maintained by @amaanq, @keynmol)
 - [ ] [snakemake](https://github.com/osthomas/tree-sitter-snakemake) (experimental)
 - [x] [solidity](https://github.com/JoranHonig/tree-sitter-solidity) (maintained by @amaanq)
+- [x] [soql](https://github.com/aheber/tree-sitter-sfapex) (maintained by @aheber)
+- [x] [sosl](https://github.com/aheber/tree-sitter-sfapex) (maintained by @aheber)
 - [x] [sparql](https://github.com/BonaBeavis/tree-sitter-sparql) (maintained by @BonaBeavis)
 - [x] [sql](https://github.com/derekstride/tree-sitter-sql) (maintained by @derekstride)
 - [x] [squirrel](https://github.com/amaanq/tree-sitter-squirrel) (maintained by @amaanq)
