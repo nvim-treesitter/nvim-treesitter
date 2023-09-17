@@ -69,7 +69,7 @@
 (function_application function_name: (path) function_name: (wordy_id) @function)
 
 (term_definition name: (wordy_id) @variable)
-; (term_definition param: (wordy_id) @parameter)
+(term_definition param: (wordy_id) @parameter)
 ;; Punctuation
 [
   (type_signature_colon)
