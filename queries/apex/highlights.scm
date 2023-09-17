@@ -17,7 +17,6 @@
   ":"
   "?"
   ";"
-  "."
  ] @punctuation.delimiter
 
 ;; Default general color defination
@@ -195,10 +194,6 @@
   "if"
   "else"
   "switch"
-  "WHERE"
-  "WHEN"
-  "ELSE"
-  "THEN"
 ] @conditional
 
 [
@@ -219,16 +214,7 @@
  "catch"
  ] @exception
 
-[
-  "new"
-  "AND"
-  "OR"
-  "NOT"
-  "LIKE"
-  "NOT_IN"
-  "INCLUDES"
-  "EXCLUDES"
-] @keyword.operator
+"new" @keyword.operator
 
 [
   "abstract"
