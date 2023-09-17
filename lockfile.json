@@ -5,6 +5,9 @@
   "agda": {
     "revision": "80ea622cf952a0059e168e5c92a798b2f1925652"
   },
+  "apex": {
+    "revision": "e63bcdcc26ae808b3fe79dfb8fa61bebdb95bda4"
+  },
   "arduino": {
     "revision": "db929fc6822b9b9e1211678d508f187894ce0345"
   },
@@ -523,6 +526,12 @@
   },
   "solidity": {
     "revision": "168020304759ad5d8b4a88a541a699134e3730c5"
+  },
+  "soql": {
+    "revision": "e63bcdcc26ae808b3fe79dfb8fa61bebdb95bda4"
+  },
+  "sosl": {
+    "revision": "e63bcdcc26ae808b3fe79dfb8fa61bebdb95bda4"
   },
   "sparql": {
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"

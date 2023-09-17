@@ -91,6 +91,15 @@ list.agda = {
   maintainers = { "@Decodetalkers" },
 }
 
+list.apex = {
+  install_info = {
+    url = "https://github.com/aheber/tree-sitter-sfapex",
+    files = { "src/parser.c" },
+    location = "apex",
+  },
+  maintainers = { "@aheber" },
+}
+
 list.arduino = {
   install_info = {
     url = "https://github.com/ObserverOfTime/tree-sitter-arduino",
@@ -1543,6 +1552,24 @@ list.solidity = {
     files = { "src/parser.c" },
   },
   maintainers = { "@amaanq" },
+}
+
+list.soql = {
+  install_info = {
+    url = "https://github.com/aheber/tree-sitter-sfapex",
+    files = { "src/parser.c" },
+    location = "soql",
+  },
+  maintainers = { "@aheber" },
+}
+
+list.sosl = {
+  install_info = {
+    url = "https://github.com/aheber/tree-sitter-sfapex",
+    files = { "src/parser.c" },
+    location = "sosl",
+  },
+  maintainers = { "@aheber" },
 }
 
 list.sparql = {
