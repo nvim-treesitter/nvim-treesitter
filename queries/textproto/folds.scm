@@ -1,3 +1,5 @@
-(message_value) @fold
-(scalar_list) @fold
-(message_list) @fold
+[
+  (message_value)
+  (scalar_list)
+  (message_list)
+] @fold
