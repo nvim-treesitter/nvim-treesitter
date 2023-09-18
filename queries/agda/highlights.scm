@@ -62,7 +62,6 @@
   "infixl"
   "infixr"
   "record"
-	(ARROW)
 ]
 @keyword
 
