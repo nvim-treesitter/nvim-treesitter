@@ -85,8 +85,8 @@ list.ada = {
 
 list.agda = {
   install_info = {
-    url = "https://github.com/AusCyberman/tree-sitter-agda",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = "https://github.com/tree-sitter/tree-sitter-agda",
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@Decodetalkers" },
 }
