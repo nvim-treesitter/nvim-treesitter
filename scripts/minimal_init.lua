@@ -8,6 +8,7 @@ vim.filetype.add {
     cmm = "t32",
     hurl = "hurl",
     ncl = "nickel",
+    textproto = "textproto",
     tig = "tiger",
     usd = "usd",
     usda = "usd",

@@ -581,6 +581,9 @@
   "terraform": {
     "revision": "b5539065432c08e4118eb3ee7c94902fdda85708"
   },
+  "textproto": {
+    "revision": "8dacf02aa402892c91079f8577998ed5148c0496"
+  },
   "thrift": {
     "revision": "d4deb1bd9e848f2dbe81103a151d99e8546de480"
   },

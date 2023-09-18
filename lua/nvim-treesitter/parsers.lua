@@ -1707,6 +1707,14 @@ list.terraform = {
   maintainers = { "@MichaHoffmann" },
 }
 
+list.textproto = {
+  install_info = {
+    url = "https://github.com/PorterAtGoogle/tree-sitter-textproto",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@Porter" },
+}
+
 list.thrift = {
   install_info = {
     url = "https://github.com/duskmoon314/tree-sitter-thrift",
