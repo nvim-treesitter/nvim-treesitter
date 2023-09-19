@@ -1,6 +1,6 @@
 ; highlights.scm
 ((identifier) @keyword
- (#match? @keyword "^(definition|permission|relation)$"))
+ (#any-of? @keyword "definition" "permission" "relation"))
 
 ((permission_literal) @variable.builtin)
 
