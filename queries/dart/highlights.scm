@@ -228,6 +228,9 @@
     "dynamic"
     "external"
     "static"
+    "final"
+    "base"
+    "sealed"
 ] @type.qualifier
 
 ; when used as an identifier:
