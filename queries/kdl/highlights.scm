@@ -56,3 +56,5 @@
 (node (node_comment) (#set! "priority" 105)) @comment
 (node (node_field (node_field_comment) (#set! "priority" 105)) @comment)
 (node_children (node_children_comment) (#set! "priority" 105)) @comment
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

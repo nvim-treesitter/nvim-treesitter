@@ -155,3 +155,5 @@
             (union_type (parenthesized_type (function_type)))
             (function_type)
           ]))
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

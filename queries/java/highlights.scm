@@ -296,3 +296,5 @@
 
 ((line_comment) @comment.documentation
   (#lua-match? @comment.documentation "^///$"))
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

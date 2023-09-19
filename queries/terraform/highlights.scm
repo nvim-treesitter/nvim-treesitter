@@ -19,3 +19,5 @@
 (object_elem val: (expression
   (variable_expr
     (identifier) @type.builtin (#any-of? @type.builtin "bool" "string" "number" "object" "tuple" "list" "map" "set" "any"))))
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

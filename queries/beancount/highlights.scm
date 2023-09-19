@@ -22,3 +22,5 @@
     (custom) (pushtag) (poptag) (pushmeta)
     (popmeta) (option) (include) (plugin)
 ] @keyword
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

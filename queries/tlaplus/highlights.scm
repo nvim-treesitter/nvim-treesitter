@@ -268,3 +268,5 @@
 (bound_nonfix_op symbol: (_) @constant (#is? @constant constant))
 (bound_nonfix_op symbol: (_) @function.macro (#is? @function.macro macro))
 (bound_nonfix_op symbol: (_) @parameter (#is? @parameter parameter))
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

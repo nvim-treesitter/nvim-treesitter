@@ -95,3 +95,5 @@
 
 ; SinOsc.ar()!2
 (duplicated_statement) @repeat
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

@@ -23,3 +23,5 @@
 (argument) @parameter
 (keycode) @string.special
 (url) @text.uri
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

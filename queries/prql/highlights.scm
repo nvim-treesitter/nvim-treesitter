@@ -149,3 +149,5 @@ alias: (identifier) @field
  (keyword_null) @constant.builtin
 
 
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

@@ -43,3 +43,5 @@
   (#eq? @_tag_name "@author"))
 
 (text) @spell
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

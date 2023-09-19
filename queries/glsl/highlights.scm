@@ -33,3 +33,5 @@
 
 ((identifier) @variable.builtin
  (#lua-match? @variable.builtin "^gl_"))
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

@@ -58,3 +58,5 @@
 
 (string_literal) @string
 (regex_literal) @string
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

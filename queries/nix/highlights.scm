@@ -131,3 +131,5 @@
   (unary_expression "-" (float_expression))
   (float_expression)
 ] @float
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

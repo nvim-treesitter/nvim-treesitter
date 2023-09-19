@@ -59,3 +59,5 @@
 
 ((identifier) @constant.builtin
   (#any-of? @constant.builtin "uniform" "non-uniform" "and" "or"))
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

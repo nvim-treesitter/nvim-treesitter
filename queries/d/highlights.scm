@@ -286,3 +286,5 @@
 (primary_expression
   "this" @variable.builtin
 )
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

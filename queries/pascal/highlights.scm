@@ -422,3 +422,5 @@
  (#match? @constant "^[A-Z][A-Z0-9_]+$|^[a-z]{2,3}[A-Z].+$")))
 (defaultValue ((identifier) @constant
  (#match? @constant "^[A-Z][A-Z0-9_]+$|^[a-z]{2,3}[A-Z].+$")))
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

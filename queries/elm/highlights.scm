@@ -203,3 +203,5 @@
   (string_escape) @character)
 (char_constant_expr
   (regular_string_part) @character)
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

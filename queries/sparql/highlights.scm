@@ -209,3 +209,5 @@
   (iri_reference)
   (prefixed_name)
 ] @variable
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

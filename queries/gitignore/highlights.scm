@@ -29,3 +29,5 @@
 (bracket_range 
   "-" @operator)
 (bracket_char_class) @constant.builtin
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

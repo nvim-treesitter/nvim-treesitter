@@ -47,3 +47,5 @@
    (statement (key) @_key) @number
    (#match? @_key "\\c^(DefaultValue|LowLimit|HighLimit|SubNumber)$")
    (#not-match? @_name "\\c^Comments$"))
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

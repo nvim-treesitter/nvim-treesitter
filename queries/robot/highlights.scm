@@ -55,3 +55,5 @@
 ] @exception
 (try_statement "END" @exception)
 (try_statement (else_statement "ELSE" @exception))
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

@@ -32,3 +32,5 @@
 
 ((program . (comment)* . (comment) @preproc)
  (#lua-match? @preproc "^;+ *extends"))
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

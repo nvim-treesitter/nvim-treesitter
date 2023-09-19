@@ -33,3 +33,5 @@
 (jsx_self_closing_element ((member_expression (identifier) @tag (property_identifier) @constructor)))
 
 (jsx_text) @none
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

@@ -20,3 +20,5 @@
 	(amount
 	  (quantity)? @number
 		(units)? @tag.attribute)?)
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

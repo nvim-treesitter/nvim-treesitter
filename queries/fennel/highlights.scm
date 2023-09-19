@@ -119,3 +119,5 @@
 ((symbol) @function.builtin
  (#any-of? @function.builtin
   "loadstring" "module" "setfenv" "unpack"))
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

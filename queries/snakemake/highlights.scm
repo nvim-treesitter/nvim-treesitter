@@ -62,3 +62,5 @@
   (#any-of? @label "input" "log" "output" "params" "resources" "threads" "wildcards")
   (#has-ancestor? @label "directive")
   (#has-ancestor? @label "block"))
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

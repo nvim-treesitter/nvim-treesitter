@@ -62,3 +62,5 @@
   (rule_head (term (ref (var) @namespace)))
   (rule_body (query (literal (expr (expr_infix (expr (term (ref (var)) @_output)))))) (#eq? @_output @namespace))
 )
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

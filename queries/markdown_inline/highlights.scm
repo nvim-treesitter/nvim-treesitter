@@ -100,3 +100,5 @@
 ((entity_reference) @conceal (#eq? @conceal "&amp;") (#set! conceal "&"))
 ((entity_reference) @conceal (#eq? @conceal "&quot;") (#set! conceal "\""))
 ((entity_reference) @conceal (#any-of? @conceal "&ensp;" "&emsp;") (#set! conceal " "))
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

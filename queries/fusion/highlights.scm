@@ -118,3 +118,5 @@
 
 (eel_ternary_expression
   ["?" ":"] @conditional.ternary)
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

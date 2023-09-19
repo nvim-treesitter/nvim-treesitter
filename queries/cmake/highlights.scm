@@ -215,3 +215,5 @@
 
 ((source_file . (line_comment) @preproc)
   (#lua-match? @preproc "^#!/"))
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

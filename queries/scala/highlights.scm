@@ -262,3 +262,5 @@
 ;; Scala CLI using directives
 (using_directive_key) @parameter
 (using_directive_value) @string
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

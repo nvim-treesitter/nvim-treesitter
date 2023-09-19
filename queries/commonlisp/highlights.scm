@@ -143,3 +143,5 @@
 [(array_dimension) "#0A" "#0a"] @number
 
 (char_lit) @character
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

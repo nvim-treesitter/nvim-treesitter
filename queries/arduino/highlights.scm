@@ -109,3 +109,5 @@
   (function_declarator
     declarator: (identifier) @constructor)
   (#eq? @type.builtin "SPISettings"))
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

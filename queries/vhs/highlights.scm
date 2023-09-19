@@ -36,3 +36,5 @@
 (comment) @comment @spell
 [(path) (string) (json)] @string
 (time) @symbol
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node
