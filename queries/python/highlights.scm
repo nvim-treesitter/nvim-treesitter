@@ -348,4 +348,4 @@
               "bytes" "bytearray" "memoryview" "set" "frozenset" "dict" "type" "object"))
 
 ;; Error
-(ERROR) @error
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

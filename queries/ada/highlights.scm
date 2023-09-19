@@ -192,5 +192,5 @@
 ;; Highlight errors in red. This is not very useful in practice, as text will
 ;; be highlighted as user types, and the error could be elsewhere in the code.
 ;; This also requires defining    :hi @error guifg=Red    for instance.
-(ERROR) @error
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node
 

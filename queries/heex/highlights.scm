@@ -32,9 +32,6 @@
 ; HEEx text content is treated as markup
 (text) @text
 
-; Tree-sitter parser errors
-(ERROR) @error
-
 ; HEEx tags and slots are highlighted as HTML
 [
  (tag_name) 
@@ -54,3 +51,6 @@
   (function) @function
   "." @punctuation.delimiter
 ])
+
+; Tree-sitter parser errors
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

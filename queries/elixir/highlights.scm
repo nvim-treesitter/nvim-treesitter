@@ -19,9 +19,6 @@
   "%"
 ] @punctuation.special
 
-; Parser Errors
-(ERROR) @error
-
 ; Identifiers
 (identifier) @variable
 
@@ -224,3 +221,6 @@
         (quoted_content) @comment.documentation
         quoted_end: _ @comment.documentation)
     ] @comment.documentation))) @comment.documentation
+
+; Parser Errors
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

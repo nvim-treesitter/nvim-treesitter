@@ -12,8 +12,6 @@
 
 (array (string) @string)
 
-(ERROR) @error
-
 ["," ":"] @punctuation.delimiter
 
 [
@@ -28,3 +26,5 @@
 ((escape_sequence) @conceal
  (#eq? @conceal "\\\"")
  (#set! conceal "\""))
+
+(ERROR _ @error)  ; up the specificity to nodes under error, instead of parent node

@@ -96,4 +96,4 @@
 ; first element in get_attr is a variable.builtin or a reference to a variable.builtin
 (expression (variable_expr (identifier) @variable.builtin) (get_attr (identifier) @field))
 
-(ERROR) @error
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

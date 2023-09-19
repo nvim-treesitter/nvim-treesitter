@@ -1,6 +1,4 @@
 ;; General syntax
-(ERROR) @error
-
 (command_name) @function
 (caption
   command: _ @function)
@@ -247,3 +245,5 @@
 (citation
   keys: _ @nospell)
 (command_name) @nospell
+
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node

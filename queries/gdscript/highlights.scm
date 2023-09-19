@@ -1,6 +1,4 @@
 ;; Basic
-(ERROR) @error
-
 (identifier) @variable
 (name) @variable
 (type) @type
@@ -342,3 +340,4 @@
   "OP_BIT_AND" "OP_BIT_OR" "OP_BIT_XOR" "OP_BIT_NEGATE" "OP_AND" "OP_OR" "OP_XOR" "OP_NOT" "OP_IN" "OP_MAX"
  ))
 
+(ERROR _ @error) ; up the specificity to nodes under error, instead of parent node
