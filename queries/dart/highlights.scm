@@ -210,8 +210,6 @@
     "part"
     "set"
     "typedef"
-    "base"
-    "sealed"
 ] @keyword
 
 [
@@ -231,6 +229,8 @@
     "external"
     "static"
     "final"
+    "base"
+    "sealed"
 ] @type.qualifier
 
 ; when used as an identifier:
