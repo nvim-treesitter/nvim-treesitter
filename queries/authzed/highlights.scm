@@ -28,7 +28,7 @@
   (hash_literal)
   .
   (identifier) @constant
-  ) @coment))
+  ) @comment))
 
 
 (permission
