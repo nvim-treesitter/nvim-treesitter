@@ -113,6 +113,7 @@ list.authzed = {
     files = { "src/parser.c" },
     branch = "main",
   },
+  maintainers = { "@mattpolzin" },
 }
 
 list.awk = {
