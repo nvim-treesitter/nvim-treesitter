@@ -324,7 +324,7 @@
     "revision": "9668709211b2e683f27f414454a8b51bf0a6bda1"
   },
   "luadoc": {
-    "revision": "8981072676ec8bd74def6134be4f883655f7c082"
+    "revision": "990926b13488a4bc0fc0804fc0f8400b5b0a1fb4"
   },
   "luap": {
     "revision": "31461ae9bd0866cb5117cfe5de71189854fd0f3e"
@@ -501,7 +501,7 @@
     "revision": "17a6b15562b09db1f27b8f5f26f17edbb2aac097"
   },
   "scala": {
-    "revision": "59ab070df6667cad5bd669dd31aa866913129aa2"
+    "revision": "aa84398ad72bba17af18fa103fba6680aab78a79"
   },
   "scfg": {
     "revision": "6deae0cbb458c849a4d1e2985093e9c9c32d7fd0"
@@ -543,7 +543,7 @@
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
   },
   "ssh_config": {
-    "revision": "9611147e15be496655773f0c67d68e42b6c39e61"
+    "revision": "0842ab575dad561a0e903f309b7f871ee71c3e42"
   },
   "starlark": {
     "revision": "c45ce2b39062bbd12ea1c210bd200db250efb24a"
@@ -654,7 +654,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "b71cae19d036459e5fee1a6084e229bd34bc7a01"
+    "revision": "3ccdc20067cacbd6c8bd0f6c609bd235801b2334"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
