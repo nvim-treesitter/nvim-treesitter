@@ -25,18 +25,16 @@
 (relation
   (rel_expression
     (
-  (hash_literal)
-  .
-  (identifier) @constant
-  ) @comment))
+      (hash_literal)
+      .
+      (identifier) @constant) @comment))
 
 
 (permission
- (perm_expression
-   (
-    (stabby)
-    .
-    (identifier)
-    @function) @punctuation))
+  (perm_expression
+    (
+      (stabby)
+      .
+      (identifier) @function) @punctuation))
 
 ((comment) @comment)
