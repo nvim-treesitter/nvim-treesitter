@@ -973,6 +973,15 @@ list.llvm = {
   maintainers = { "@benwilliamgraham" },
 }
 
+list.liquidsoap = {
+  install_info = {
+    url = "https://github.com/savonet/tree-sitter-liquidsoap",
+    files = {"src/parser.c", "src/scanner.cc"},
+    branch = "main"
+  },
+  maintainers = { "@toots" },
+}
+
 list.lua = {
   install_info = {
     url = "https://github.com/MunifTanjim/tree-sitter-lua",

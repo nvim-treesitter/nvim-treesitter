@@ -320,6 +320,9 @@
   "llvm": {
     "revision": "1b96e58faf558ce057d4dc664b904528aee743cb"
   },
+  "liquidsoap": {
+    "revision": "5435617c8ee59fa666762728d6a6c7a9f9c86cca"
+  },
   "lua": {
     "revision": "9668709211b2e683f27f414454a8b51bf0a6bda1"
   },
