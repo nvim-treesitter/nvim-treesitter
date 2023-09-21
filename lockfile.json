@@ -18,7 +18,7 @@
     "revision": "374da90decaa60fea7a22490a77440ece6d4161d"
   },
   "bash": {
-    "revision": "bdcd56c5a3896f7bbb7684e223c43d9f24380351"
+    "revision": "fd4e40dab883d6456da4d847de8321aee9c80805"
   },
   "bass": {
     "revision": "27f110dfe79620993f5493ffa0d0f2fe12d250ed"
@@ -570,7 +570,7 @@
     "revision": "1af543a96d060b1f808982037bfc54cc02218edd"
   },
   "t32": {
-    "revision": "5e6ce99611b2fef9b4d812e43898b176185c61ed"
+    "revision": "6d317c49ab310152c486ab85eb06724fd49df52d"
   },
   "tablegen": {
     "revision": "300f6a490e71f895e644ed2deec6920860a2e107"
@@ -654,7 +654,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "3ccdc20067cacbd6c8bd0f6c609bd235801b2334"
+    "revision": "162d0e86752d39519c08288c854f5cd0e51d4a83"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
