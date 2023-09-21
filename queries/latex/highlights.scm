@@ -184,6 +184,9 @@
  (#eq? @_name "\\frametitle"))
 
 ;; Formatting
+(text_mode
+  content: (curly_group (_) @text))
+
 ((generic_command
   command: (command_name) @_name
   arg: (curly_group (_) @text.emphasis))
