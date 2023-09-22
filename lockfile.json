@@ -33,7 +33,7 @@
     "revision": "3604d8c961ab129d2bfc6dfca56419c236ccdb83"
   },
   "bitbake": {
-    "revision": "ed92abd7b67ab66a6fa3a747a0157f01d2e467d8"
+    "revision": "6cb07d98f1cad180b8ea28965e59ee05023a5693"
   },
   "blueprint": {
     "revision": "863cea9f83ad5637300478e0559262f1e791684b"
@@ -447,7 +447,7 @@
     "revision": "8953f91d733dd92c1ac43b3d58a7a2f43fa62dae"
   },
   "python": {
-    "revision": "c01fb4e38587e959b9058b8cd34b9e6a3068c827"
+    "revision": "a901729099257aac932d79c60adb5e8a53fa7e6c"
   },
   "ql": {
     "revision": "bd087020f0d8c183080ca615d38de0ec827aeeaf"
@@ -498,7 +498,7 @@
     "revision": "f257f3f57833d584050336921773738a3fd8ca22"
   },
   "rust": {
-    "revision": "17a6b15562b09db1f27b8f5f26f17edbb2aac097"
+    "revision": "48e053397b587de97790b055a1097b7c8a4ef846"
   },
   "scala": {
     "revision": "aa84398ad72bba17af18fa103fba6680aab78a79"
@@ -654,7 +654,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "162d0e86752d39519c08288c854f5cd0e51d4a83"
+    "revision": "0316314246f6fbdfe614e6dc7e29d4b9b9ce1ca8"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
