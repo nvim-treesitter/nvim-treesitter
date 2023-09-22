@@ -1,26 +1,30 @@
 (op) @keyword.operator
+["and" "or"] @keyword.operator
 "..." @keyword.operator
+
+[ "def"
+  "fun"
+  "let" ] @keyword.function 
 
 [
   "open"
-  "def"
-  "let"
-  "if"
-  "then"
-  "elsif"
-  "else"
   "begin"
   "end"
-  "while"
-  "do"
-  "to"
-  "for"
-  "fun"
-  "try"
-  "catch"
 ] @keyword
 
-["and" "or"] @conditional
+[ "while"
+  "do"
+  "to"
+  "for" ] @repeat
+
+[ "if"
+  "then"
+  "elsif"
+  "else" ] @conditional
+
+[ "try"
+  "catch" ] @exception
+
 (inline_if [ "?" ":" ] @conditional.ternary)
 
 [
@@ -55,7 +59,6 @@
 (method) @method
 (method_app) @method.call
 
-(method) @function.method
 (var) @variable
 (string) @string
 (integer) @number
