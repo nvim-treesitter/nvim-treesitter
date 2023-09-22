@@ -1,6 +1,6 @@
-(op) @keyword.operator
-["and" "or"] @keyword.operator
-"..." @keyword.operator
+(op) @operator
+"..." @operator
+["and" "or" "not"] @keyword.operator
 
 [ "def"
   "fun"
