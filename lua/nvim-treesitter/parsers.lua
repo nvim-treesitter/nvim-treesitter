@@ -45,6 +45,7 @@ for ft, lang in pairs {
   svg = "xml",
   xsd = "xml",
   xslt = "xml",
+  sbt = "scala",
 } do
   register_lang(lang, ft)
 end
