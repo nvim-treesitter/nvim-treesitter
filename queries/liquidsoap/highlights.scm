@@ -2,9 +2,11 @@
 "..." @operator
 ["and" "or" "not"] @keyword.operator
 
-[ "def"
+[
+  "def"
   "fun"
-  "let" ] @keyword.function 
+  "let"
+] @keyword.function
 
 [
   "open"
@@ -12,18 +14,24 @@
   "end"
 ] @keyword
 
-[ "while"
+[
+  "while"
   "do"
   "to"
-  "for" ] @repeat
+  "for"
+] @repeat
 
-[ "if"
+[
+  "if"
   "then"
   "elsif"
-  "else" ] @conditional
+  "else"
+] @conditional
 
-[ "try"
-  "catch" ] @exception
+[
+  "try"
+  "catch"
+] @exception
 
 (inline_if [ "?" ":" ] @conditional.ternary)
 
