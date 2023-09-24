@@ -976,8 +976,8 @@ list.llvm = {
 list.liquidsoap = {
   install_info = {
     url = "https://github.com/savonet/tree-sitter-liquidsoap",
-    files = {"src/parser.c", "src/scanner.cc"},
-    branch = "main"
+    files = { "src/parser.c", "src/scanner.cc" },
+    branch = "main",
   },
   maintainers = { "@toots" },
 }

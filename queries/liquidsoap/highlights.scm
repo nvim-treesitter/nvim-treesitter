@@ -70,7 +70,7 @@
 (var) @variable
 (string) @string
 (integer) @number
-(float) @number
+(float) @float
 (bool) @boolean
 (comment) @comment
 (regexp) @string.regex
