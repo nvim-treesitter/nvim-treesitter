@@ -13,7 +13,7 @@ Depending on which part of the plugin you want to contribute to, please read the
 
 We haven't implemented any functional tests yet. Feel free to contribute.
 However, we check code style with `luacheck` and `stylua`!
-Please install luacheck and activate our `pre-push` hook to automatically check style before
+Please install `luacheck` and activate our `pre-push` hook to automatically check style before
 every push:
 
 ```bash
@@ -22,9 +22,51 @@ cargo install stylua
 ln -s ../../scripts/pre-push .git/hooks/pre-push
 ```
 
-## Parser configurations
+## Parsers
 
-Contributing to parser configurations is basically modifying one of the `runtime/queries/*/*.scm`.
+To add a new parser, edit the following files:
+
+1. In `lua/parsers.lua`, add an entry to the `M.configs` table of the following form:
+
+```lua
+zimbu = {
+  install_info = {
+    url = 'https://github.com/zimbulang/tree-sitter-zimbu', -- local path or git repo
+    files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c or src/scanner.cc
+    -- optional entries:
+    branch = 'develop', -- only needed if different from default branch
+    location = 'parser', -- only needed if the parser is in subdirectory of a "monorepo"
+    revision = 'v2.1', -- tag or commit hash; bypasses automated updates
+    requires_generate_from_grammar = true, -- only needed if repo does not contain pre-generated src/parser.c
+    generate_requires_npm = true, -- only needed if parser has npm dependencies
+  },
+  maintainers = { '@me' }, -- the person who will be pinged about any issues with the parser or queries
+  tier = 3, -- community-contributed parser
+  -- optional entries:
+  requires = { 'vim' }, -- if the queries inherit from another language
+  readme_note = "an example language", -- if the 
+}
+```
+
+2. In `lockfile.json`, add an entry for the current commit your queries are compatible with:
+
+```json
+  "zimbu": {
+    "revision": "0d08703e4c3f426ec61695d7617415fff97029bd"
+  },
+```
+
+3. If the parser name is not the same as the Vim filetype, add an entry to the `filetypes` table in `plugin/filetypes.lua`:
+
+```lua
+  zimbu = { 'zu' },
+```
+
+**Note: We only support external scanners written in C (preferably) and C++03 for portability reasons.**
+
+## Queries
+
+Contributing to queries for an existing parser is basically modifying one of the `runtime/queries/*/*.scm`.
 Each of these `scheme` files contains a _tree-sitter query_ for a given purpose.
 Before going any further, we highly suggest that you [read more about tree-sitter queries](https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries).
 
@@ -48,6 +90,8 @@ Here are some global advices:
 - Examples of queries can be found in [runtime/queries/](runtime/queries/)
 - Matches in the bottom will override queries that are above of them.
 
+If the parser and queries are added to (a local checkout) of `nvim-treesitter` and installed via `:TSInstall`, you can test whether the queries are compatible by running `./scripts/check-queries.lua`.
+
 If your language is an extension of a language (TypeScript is an extension of JavaScript for
 example), you can include the queries from your base language by adding the following _as the first
 line of your file_.
@@ -65,7 +109,7 @@ As languages differ quite a lot, here is a set of captures available to you when
 
 #### Misc
 
-```scheme
+```query
 @comment               ; line and block comments
 @comment.documentation ; comments documenting code
 @error                 ; syntax/parser errors
@@ -77,7 +121,7 @@ As languages differ quite a lot, here is a set of captures available to you when
 
 #### Punctuation
 
-```scheme
+```query
 @punctuation.delimiter ; delimiters (e.g. `;` / `.` / `,`)
 @punctuation.bracket   ; brackets (e.g. `()` / `{}` / `[]`)
 @punctuation.special   ; special symbols (e.g. `{}` in string interpolation)
@@ -85,7 +129,7 @@ As languages differ quite a lot, here is a set of captures available to you when
 
 #### Literals
 
-```scheme
+```query
 @string               ; string literals
 @string.documentation ; string documenting code (e.g. Python docstrings)
 @string.regex         ; regular expressions
@@ -102,7 +146,7 @@ As languages differ quite a lot, here is a set of captures available to you when
 
 #### Functions
 
-```scheme
+```query
 @function         ; function definitions
 @function.builtin ; built-in functions
 @function.call    ; function calls
@@ -117,7 +161,7 @@ As languages differ quite a lot, here is a set of captures available to you when
 
 #### Keywords
 
-```scheme
+```query
 @keyword             ; various keywords
 @keyword.coroutine   ; keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
 @keyword.function    ; keywords that define a function (e.g. `func` in Go, `def` in Python)
@@ -136,7 +180,7 @@ As languages differ quite a lot, here is a set of captures available to you when
 
 #### Types
 
-```scheme
+```query
 @type            ; type or class definitions and annotations
 @type.builtin    ; built-in types
 @type.definition ; identifiers in type definitions (e.g. `typedef <type> <identifier>` in C)
@@ -150,7 +194,7 @@ As languages differ quite a lot, here is a set of captures available to you when
 
 #### Identifiers
 
-```scheme
+```query
 @variable         ; various variable names
 @variable.builtin ; built-in variable names (e.g. `this`)
 
@@ -166,7 +210,7 @@ As languages differ quite a lot, here is a set of captures available to you when
 
 Mainly for markup languages.
 
-```scheme
+```query
 @text                  ; non-structured text
 @text.strong           ; bold text
 @text.emphasis         ; text with emphasis
@@ -197,7 +241,7 @@ Mainly for markup languages.
 
 Used for XML-like tags.
 
-```scheme
+```query
 @tag           ; XML tag names
 @tag.attribute ; XML tag attributes
 @tag.delimiter ; XML tag delimiters
@@ -205,7 +249,7 @@ Used for XML-like tags.
 
 #### Conceal
 
-```scheme
+```query
 @conceal ; for captures that are only used for concealing
 ```
 
@@ -213,7 +257,7 @@ Used for XML-like tags.
 
 #### Spell
 
-```scheme
+```query
 @spell   ; for defining regions to be spellchecked
 @nospell ; for defining regions that should NOT be spellchecked
 ```
@@ -238,7 +282,7 @@ documentation](https://tree-sitter.github.io/tree-sitter/syntax-highlighting#loc
 Note that nvim-treesitter uses more specific subcaptures for definitions and
 **does not use locals for highlighting**.
 
-```scheme
+```query
 @local.definition            ; various definitions
 @local.definition.constant   ; constants
 @local.definition.function   ; functions
@@ -287,7 +331,7 @@ Possible scope values are:
 
 You can define folds for a given language by adding a `folds.scm` query :
 
-```scheme
+```query
 @fold ; fold this node
 ```
 
@@ -301,7 +345,7 @@ Some captures are related to language injection (like markdown code blocks). The
 If you want to dynamically detect the language (e.g. for Markdown blocks) use the `@injection.language` to capture
 the node describing the language and `@injection.content` to describe the injection region.
 
-```scheme
+```query
 @injection.language ; dynamic detection of the injection language (i.e. the text of the captured node describes the language)
 @injection.content  ; region for the dynamically detected language
 ```
@@ -325,7 +369,7 @@ To combine all matches of a pattern as one single block of content, add `(#set! 
 
 ### Indents
 
-```scheme
+```query
 @indent.begin       ; indent children when matching this node
 @indent.end         ; marks the end of indented block
 @indent.align       ; behaves like python aligned/hanging indent
