@@ -84,7 +84,7 @@
     "revision": "6c1957405bd6f7751b050f61367f1094fab91444"
   },
   "cuda": {
-    "revision": "f00c91430124797e798cbf28e09075d7d192938a"
+    "revision": "275cfb95013b88382e11490aef1e7c9b17a95ef7"
   },
   "cue": {
     "revision": "2df92e6755337e9234ad18ffef37f35d95e2ba9d"
@@ -195,7 +195,7 @@
     "revision": "d3031a8294bf331600d5046b1d14e690a0d8ba0c"
   },
   "glsl": {
-    "revision": "64e786e36398b1e18ccfdbfd964d922a67392ebc"
+    "revision": "ec6100d2bdf22363ca8a711a212f2144ea49233f"
   },
   "go": {
     "revision": "bbaa67a180cfe0c943e50c55130918be8efb20bd"
@@ -501,7 +501,7 @@
     "revision": "48e053397b587de97790b055a1097b7c8a4ef846"
   },
   "scala": {
-    "revision": "aa84398ad72bba17af18fa103fba6680aab78a79"
+    "revision": "1d3a1f9f18c2592a7326effb5783e6d080729a3d"
   },
   "scfg": {
     "revision": "6deae0cbb458c849a4d1e2985093e9c9c32d7fd0"
@@ -543,7 +543,7 @@
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
   },
   "ssh_config": {
-    "revision": "0842ab575dad561a0e903f309b7f871ee71c3e42"
+    "revision": "6afe38a8e418a1ffd05d45ea979e5e689b025a51"
   },
   "starlark": {
     "revision": "c45ce2b39062bbd12ea1c210bd200db250efb24a"
