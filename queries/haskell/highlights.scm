@@ -77,7 +77,10 @@
   "@"
 ] @operator
 
-(module) @namespace
+(qualified_module (module) @constructor)
+(qualified_type (module) @namespace)
+(qualified_variable (module) @namespace)
+(import (module) @namespace)
 
 [
   (where)
@@ -132,6 +135,8 @@
 (exp_infix (exp_name) @function.call (#set! "priority" 101))
 (exp_apply . (exp_name (variable) @function.call))
 (exp_apply . (exp_name (qualified_variable (variable) @function.call)))
+
+("@" @namespace)  ; "as" pattern operator, e.g. x@Constructor
 
 
 ;; ----------------------------------------------------------------------------
