@@ -228,7 +228,7 @@
     "revision": "3d4af179414525a35dd069ba0208c9b71093d8b3"
   },
   "haskell": {
-    "revision": "99706824b92f162d4e0f47c7e930bbccb367276e"
+    "revision": "d7ac98f49e3ed7e17541256fe3881a967d7ffdd3"
   },
   "haskell_persistent": {
     "revision": "577259b4068b2c281c9ebf94c109bd50a74d5857"
@@ -501,7 +501,7 @@
     "revision": "48e053397b587de97790b055a1097b7c8a4ef846"
   },
   "scala": {
-    "revision": "1d3a1f9f18c2592a7326effb5783e6d080729a3d"
+    "revision": "1b4c2fa5c55c5fd83cbb0d2f818f916aba221a42"
   },
   "scfg": {
     "revision": "6deae0cbb458c849a4d1e2985093e9c9c32d7fd0"
@@ -654,7 +654,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "cd90a2e9e8b5a0f48b507534da08578bf6e6197f"
+    "revision": "f817ea10fe897dc15fb4affd09c4dc536b4edd81"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
