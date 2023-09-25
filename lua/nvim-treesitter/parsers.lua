@@ -111,7 +111,6 @@ list.authzed = {
   install_info = {
     url = "https://github.com/mleonidas/tree-sitter-authzed",
     files = { "src/parser.c" },
-    branch = "main",
   },
   maintainers = { "@mattpolzin" },
 }
