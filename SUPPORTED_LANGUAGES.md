@@ -20,7 +20,7 @@ Language | Tier | Queries | CLI | NPM | Maintainer
 [awk](https://github.com/Beaglefoot/tree-sitter-awk) | unsupported | `H  J ` |  |  | 
 [bash](https://github.com/tree-sitter/tree-sitter-bash) | community | `HF JL` |  |  | @TravonteD
 [bass](https://github.com/amaanq/tree-sitter-bass) | core | `HFIJL` |  |  | @amaanq
-[beancount](https://github.com/polarmutex/tree-sitter-beancount) | community | `HF   ` |  |  | @polarmutex
+[beancount](https://github.com/polarmutex/tree-sitter-beancount) | unsupported | `HF   ` |  |  | @polarmutex
 [bibtex](https://github.com/latex-lsp/tree-sitter-bibtex) | core | `HFI  ` |  |  | @theHamsta, @clason
 [bicep](https://github.com/amaanq/tree-sitter-bicep) | core | `HFIJL` |  |  | @amaanq
 [bitbake](https://github.com/amaanq/tree-sitter-bitbake) | core | `HFIJL` |  |  | @amaanq
