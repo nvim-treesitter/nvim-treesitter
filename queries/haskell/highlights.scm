@@ -1,4 +1,16 @@
 ;; ----------------------------------------------------------------------------
+;; Parameters
+
+;; NOTE: These are at the top, so that they have low priority,
+;; and don't override destructured parameters 
+
+(function
+  patterns: (patterns (pat_name) @parameter))
+
+(exp_lambda
+  (pat_name) @parameter)
+
+;; ----------------------------------------------------------------------------
 ;; Literals and comments
 
 (integer) @number
@@ -11,6 +23,31 @@
 
 (comment) @comment
 
+; FIXME: The below documentation comment queries are inefficient
+; and need to be anchored, using something like
+; ((comment) @_first . (comment)+ @comment.documentation)
+; once https://github.com/neovim/neovim/pull/24738 has been merged.
+;
+; ((comment) @comment.documentation 
+;   (#lua-match? @comment.documentation "^-- |"))
+;
+; ((comment) @_first @comment.documentation 
+;  (comment) @comment.documentation 
+;   (#lua-match? @_first "^-- |"))
+;
+; ((comment) @comment.documentation 
+;   (#lua-match? @comment.documentation "^-- %^"))
+;
+; ((comment) @_first @comment.documentation 
+;  (comment) @comment.documentation 
+;   (#lua-match? @_first "^-- %^"))
+;
+; ((comment) @comment.documentation 
+;   (#lua-match? @comment.documentation "^{-"))
+;
+; ((comment) @_first @comment.documentation 
+;  (comment) @comment.documentation 
+;   (#lua-match? @_first "^{-"))
 
 ;; ----------------------------------------------------------------------------
 ;; Punctuation
@@ -77,6 +114,8 @@
   "@"
 ] @operator
 
+
+(module) @namespace
 (qualified_module (module) @constructor)
 (qualified_type (module) @namespace)
 (qualified_variable (module) @namespace)
@@ -136,9 +175,6 @@
 (exp_apply . (exp_name (variable) @function.call))
 (exp_apply . (exp_name (qualified_variable (variable) @function.call)))
 
-("@" @namespace)  ; "as" pattern operator, e.g. x@Constructor
-
-
 ;; ----------------------------------------------------------------------------
 ;; Types
 
@@ -150,13 +186,77 @@
 
 ; True or False
 ((constructor) @boolean (#any-of? @boolean "True" "False"))
-
+; otherwise (= True)
+((variable) @boolean
+  (#eq? @boolean "otherwise"))
 
 ;; ----------------------------------------------------------------------------
 ;; Quasi-quotes
 
 (quoter) @function.call
-; Highlighting of quasiquote_body is handled by injections.scm
+
+(quasiquote 
+  (quoter) @_name (#eq? @_name "qq")
+  (quasiquote_body) @string)
+
+; Highlighting of quasiquote_body for other languages is handled by injections.scm
+
+;; ----------------------------------------------------------------------------
+;; Exceptions/error handling
+
+((variable) @exception
+  (#any-of? @exception 
+   "error"
+   "undefined"
+   "try"
+   "tryJust"
+   "tryAny"
+   "catch"
+   "catches"
+   "catchJust"
+   "handle"
+   "handleJust"
+   "throw"
+   "throwIO"
+   "throwTo"
+   "throwError"
+   "ioError"
+   "mask"
+   "mask_"
+   "uninterruptibleMask"
+   "uninterruptibleMask_"
+   "bracket"
+   "bracket_"
+   "bracketOnErrorSource"
+   "finally"
+   "onException"))
+
+;; ----------------------------------------------------------------------------
+;; Debugging
+((variable) @debug
+  (#any-of? @debug 
+   "trace"
+   "traceId"
+   "traceShow"
+   "traceShowId"
+   "traceWith"
+   "traceShowWith"
+   "traceStack"
+   "traceIO"
+   "traceM"
+   "traceShowM"
+   "traceEvent"
+   "traceEventWith"
+   "traceEventIO"
+   "flushEventLog"
+   "traceMarker"
+   "traceMarkerIO"))
+
+
+;; ----------------------------------------------------------------------------
+;; Record fields
+(record_fields (field (variable) @field))
+
 
 ;; ----------------------------------------------------------------------------
 ;; Spell checking
