@@ -83,17 +83,17 @@
 ; Types
 
 (interface_declaration
-  name: (identifier) @type)
+  name: (identifier) @type.definition)
 (annotation_type_declaration
-  name: (identifier) @type)
+  name: (identifier) @type.definition)
 (class_declaration
-  name: (identifier) @type)
+  name: (identifier) @type.definition)
 (record_declaration
-  name: (identifier) @type)
+  name: (identifier) @type.definition)
 (enum_declaration
-  name: (identifier) @type)
+  name: (identifier) @type.definition)
 (constructor_declaration
-  name: (identifier) @type)
+  name: (identifier) @type.definition)
 (type_identifier) @type
 ((method_invocation
   object: (identifier) @type)
