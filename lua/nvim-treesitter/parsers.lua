@@ -719,6 +719,7 @@ list.haskell = {
     url = "https://github.com/tree-sitter/tree-sitter-haskell",
     files = { "src/parser.c", "src/scanner.c" },
   },
+  maintainers = { "@mrcjkb" },
 }
 
 list.haskell_persistent = {
