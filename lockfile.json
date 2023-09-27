@@ -174,7 +174,7 @@
     "revision": "03f20b94707a21bed90bb95101684bc4036139ce"
   },
   "git_config": {
-    "revision": "a01b498b25003d97a5f93b0da0e6f28307454347"
+    "revision": "9c2a1b7894e6d9eedfe99805b829b4ecd871375e"
   },
   "git_rebase": {
     "revision": "d8a4207ebbc47bd78bacdf48f883db58283f9fd8"
@@ -189,7 +189,7 @@
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
   },
   "gleam": {
-    "revision": "297031dce60e07acf90345d62777623469e46027"
+    "revision": "32c8f1e32aee036583ca09e7e6e4ea881852b42c"
   },
   "glimmer": {
     "revision": "d3031a8294bf331600d5046b1d14e690a0d8ba0c"
@@ -654,7 +654,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "60c61fd6b6e2e6dbea7c206653d3e360435bfee2"
+    "revision": "380c161a2996efe1f481e6efc86e768bf05cdb6d"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
