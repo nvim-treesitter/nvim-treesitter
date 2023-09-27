@@ -116,6 +116,7 @@
   "var"
   "let"
   "emit"
+  "error"
   "fallback"
   "receive"
   (virtual)
