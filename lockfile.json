@@ -105,7 +105,7 @@
     "revision": "c165725c28e69b36c5799ff0e458713a844f1aaf"
   },
   "dockerfile": {
-    "revision": "c0a9d694d9bf8ab79a919f5f9c7bc9c169caf321"
+    "revision": "1800d5a06789797065ba5e7d80712b6bbf5483d7"
   },
   "dot": {
     "revision": "9ab85550c896d8b294d9b9ca1e30698736f08cea"
@@ -543,7 +543,7 @@
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
   },
   "ssh_config": {
-    "revision": "6afe38a8e418a1ffd05d45ea979e5e689b025a51"
+    "revision": "e4008633536870f3fed3198c96503250af0b0a12"
   },
   "starlark": {
     "revision": "c45ce2b39062bbd12ea1c210bd200db250efb24a"
@@ -570,7 +570,7 @@
     "revision": "1af543a96d060b1f808982037bfc54cc02218edd"
   },
   "t32": {
-    "revision": "6d317c49ab310152c486ab85eb06724fd49df52d"
+    "revision": "c544082904fd1d27da5493857bd3fc278bae2a1a"
   },
   "tablegen": {
     "revision": "300f6a490e71f895e644ed2deec6920860a2e107"
@@ -654,7 +654,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "380c161a2996efe1f481e6efc86e768bf05cdb6d"
+    "revision": "0c8625d5d39374613e1802cd5d20fe034cf5bfa5"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
