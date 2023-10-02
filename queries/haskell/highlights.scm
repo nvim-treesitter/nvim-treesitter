@@ -116,7 +116,8 @@
 
 
 (module) @namespace
-(qualified_module (module) @constructor)
+((qualified_module (module) @constructor)
+ . (module))
 (qualified_type (module) @namespace)
 (qualified_variable (module) @namespace)
 (import (module) @namespace)
@@ -152,7 +153,24 @@
 
 (variable) @variable
 (pat_wildcard) @variable
-(signature name: (variable) @variable)
+(signature name: (variable) @function)
+((signature name: (variable) @variable)
+ (function 
+  name: (variable) @_name
+  rhs: [
+   (exp_literal)
+   (exp_apply (exp_name (constructor)))
+   (quasiquote)
+  ])
+ (#eq? @variable @_name))
+(function name: (variable) @function)
+(function 
+  name: (variable) @variable
+  rhs: [
+   (exp_literal)
+   (exp_apply (exp_name (constructor)))
+   (quasiquote)
+  ])
 
 (function
   name: (variable) @function
@@ -167,13 +185,60 @@
 ((signature (variable) @function (forall (context (fun)))) . (function (variable)))
 ((signature (variable) @_type (forall (context (fun)))) . (function (variable) @function) (#eq? @function @_type))
 
-(exp_infix (variable) @operator)  ; consider infix functions as operators
-(exp_section_right (variable) @operator) ; partially applied infix functions (sections) also get highlighted as operators
+; consider infix functions as operators
+(exp_infix (variable) @operator)  
+(exp_infix (qualified_variable (variable) @operator))
+; partially applied infix functions (sections) also get highlighted as operators
+(exp_section_right (variable) @operator) 
+(exp_section_right (qualified_variable (variable) @operator)) 
 (exp_section_left (variable) @operator)
+(exp_section_left (qualified_variable (variable) @operator))
 
-(exp_infix (exp_name) @function.call (#set! "priority" 101))
+; function calls with an infix operator
+; e.g. func <$> a <*> b
+(exp_infix (exp_name) @function.call . (operator))
+; qualified function calls with an infix operator
+(exp_infix (exp_name 
+  (qualified_variable (
+      (module) @namespace
+      (variable) @function.call))) . (operator))
+; infix operators applied to variables
+((exp_name (variable) @variable) . (operator))
+((operator) . (exp_name (variable) @variable))
+; function calls with infix operators
+((exp_name (variable) @function.call) . (operator) @_op
+ (#any-of? @_op "$" "<$>" ">>="))
+; function composition, arrows
+((exp_name (variable) @function) . (operator) @_op
+ (#any-of? @_op "." ">>>"))
+((operator) @_op (exp_name (variable) @function)
+ (#any-of? @_op "." ">>>"))
+        
+        
 (exp_apply . (exp_name (variable) @function.call))
 (exp_apply . (exp_name (qualified_variable (variable) @function.call)))
+
+; let/where bindings
+(_ (decls (function name: (variable) @variable)))
+(_ (decls 
+  (function 
+    name: (variable) @function
+    patterns: (patterns (pat_name) @parameter))))
+
+; higher-order function parameters
+(function
+  patterns: (patterns (pat_name (variable) @function))
+  rhs: (exp_apply (exp_name (variable) @_name) . (exp_name)+)
+  (#eq? @function @_name))
+(function
+  patterns: (patterns (pat_name (variable) @function))
+  rhs: (_ (operator) @_op (exp_name (variable))
+ (#any-of? @_op "." ">>>")))
+(function
+  patterns: (patterns (pat_name (variable) @function))
+  rhs: (_ (exp_name (variable)) . (operator) @_op)
+ (#any-of? @_op "$" "<$>" ">>=" "." ">>>"))
+
 
 ;; ----------------------------------------------------------------------------
 ;; Types
@@ -254,12 +319,11 @@
 
 
 ;; ----------------------------------------------------------------------------
-;; Record fields
-(record_fields (field (variable) @field))
+;; Fields
+(field (variable) @field)
 
 
 ;; ----------------------------------------------------------------------------
 ;; Spell checking
 
 (comment) @spell
-
