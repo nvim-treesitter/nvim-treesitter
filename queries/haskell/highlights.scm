@@ -1,14 +1,23 @@
 ;; ----------------------------------------------------------------------------
-;; Parameters
+;; Parameters and variables
 
 ;; NOTE: These are at the top, so that they have low priority,
 ;; and don't override destructured parameters 
 
-(function
-  patterns: (patterns (pat_name) @parameter))
+(variable) @variable
+(pat_wildcard) @variable
 
-(exp_lambda
-  (pat_name) @parameter)
+(function
+  patterns: (patterns (_) @parameter))
+
+(exp_lambda (_) @parameter . (_))
+
+(function 
+  infix: (infix
+    lhs: (_) @parameter))
+(function 
+  infix: (infix
+    rhs: (_) @parameter))
 
 ;; ----------------------------------------------------------------------------
 ;; Literals and comments
@@ -121,6 +130,7 @@
 (qualified_type (module) @namespace)
 (qualified_variable (module) @namespace)
 (import (module) @namespace)
+(import (module) @constructor . (module))
 
 [
   (where)
@@ -151,26 +161,79 @@
 ;; ----------------------------------------------------------------------------
 ;; Functions and variables
 
-(variable) @variable
-(pat_wildcard) @variable
 (signature name: (variable) @function)
 ((signature name: (variable) @variable)
  (function 
   name: (variable) @_name
   rhs: [
    (exp_literal)
-   (exp_apply (exp_name (constructor)))
+   (exp_apply 
+     (exp_name 
+       [(constructor)
+        (variable)
+       ]))
    (quasiquote)
+   ((exp_name) . (operator))
   ])
  (#eq? @variable @_name))
+
+((signature name: (variable) @variable)
+ (function 
+  name: (variable) @_name
+  rhs: (exp_infix 
+    [
+     (exp_literal)
+     (exp_apply 
+       (exp_name 
+         [(constructor)
+          (variable)
+         ]))
+     (quasiquote)
+     ((exp_name) . (operator))
+    ]))
+ (#eq? @variable @_name))
+
+((signature name: (variable) @function)
+ (function 
+  name: (variable) @_name
+  patterns: (patterns))
+ (#eq? @function @_name))
+
+(signature 
+  name: (variable) @function
+  type: (fun))
+((signature 
+   name: (variable) @_name
+   type: (fun))
+ (function
+   name: (variable) @function)
+ (#eq? @function @_name))
+
 (function name: (variable) @function)
 (function 
   name: (variable) @variable
   rhs: [
    (exp_literal)
-   (exp_apply (exp_name (constructor)))
+   (exp_apply 
+     (exp_name 
+       [(constructor)
+        (variable)
+       ]))
    (quasiquote)
+   ((exp_name) . (operator))
   ])
+(function 
+  name: (variable) @variable
+  rhs: (exp_infix [
+   (exp_literal)
+   (exp_apply 
+     (exp_name 
+       [(constructor)
+        (variable)
+       ]))
+   (quasiquote)
+   ((exp_name) . (operator))
+  ]))
 
 (function
   name: (variable) @function
@@ -186,59 +249,86 @@
 ((signature (variable) @_type (forall (context (fun)))) . (function (variable) @function) (#eq? @function @_type))
 
 ; consider infix functions as operators
-(exp_infix (variable) @operator)  
-(exp_infix (qualified_variable (variable) @operator))
+(exp_infix [
+  (variable) @operator
+  (qualified_variable (variable) @operator)
+])
 ; partially applied infix functions (sections) also get highlighted as operators
-(exp_section_right (variable) @operator) 
-(exp_section_right (qualified_variable (variable) @operator)) 
-(exp_section_left (variable) @operator)
-(exp_section_left (qualified_variable (variable) @operator))
+(exp_section_right [
+  ((variable) @operator)
+  (qualified_variable (variable) @operator)
+  ]) 
+(exp_section_left [
+  ((variable) @operator)
+  (qualified_variable (variable) @operator)
+  ])
 
 ; function calls with an infix operator
 ; e.g. func <$> a <*> b
-(exp_infix (exp_name) @function.call . (operator))
-; qualified function calls with an infix operator
-(exp_infix (exp_name 
-  (qualified_variable (
-      (module) @namespace
-      (variable) @function.call))) . (operator))
+(exp_infix 
+  (exp_name 
+    [
+      ((variable) @function.call)
+      (qualified_variable (
+        (module) @namespace
+        (variable) @function.call))
+    ])
+  . (operator))
 ; infix operators applied to variables
 ((exp_name (variable) @variable) . (operator))
 ((operator) . (exp_name (variable) @variable))
 ; function calls with infix operators
 ((exp_name (variable) @function.call) . (operator) @_op
- (#any-of? @_op "$" "<$>" ">>="))
-; function composition, arrows
-((exp_name (variable) @function) . (operator) @_op
- (#any-of? @_op "." ">>>"))
-((operator) @_op (exp_name (variable) @function)
- (#any-of? @_op "." ">>>"))
+ (#any-of? @_op "$" "<$>" ">>=" "=<<"))
+; right hand side of infix operator
+((exp_infix 
+   [(operator)(variable)] ; infix or `func`
+  . (exp_name [
+      ((variable) @function.call)
+      (qualified_variable (variable) @function.call)
+    ])) . (operator) @_op
+ (#any-of? @_op "$" "<$>" "=<<"))
+; function composition, arrows, monadic composition (rhs)
+((exp_name [
+  ((variable) @function)
+  (qualified_variable (variable) @function)
+ ]) . (operator) @_op
+ (#any-of? @_op "." ">>>" "***" ">=>" "<=<"))
+; right hand side of infix operator
+((exp_infix 
+   [(operator)(variable)] ; infix or `func`
+  . (exp_name [
+      ((variable) @function)
+      (qualified_variable (variable) @function)
+    ])) . (operator) @_op
+ (#any-of? @_op "." ">>>" "***" ">=>" "<=<"))
+; function composition, arrows, monadic composition (rhs)
+((operator) @_op . (exp_name [
+  ((variable) @function)
+  (qualified_variable (variable) @function)
+ ])
+ (#any-of? @_op "." ">>>" "***" ">=>" "<=<" ))
         
-        
-(exp_apply . (exp_name (variable) @function.call))
-(exp_apply . (exp_name (qualified_variable (variable) @function.call)))
-
-; let/where bindings
-(_ (decls (function name: (variable) @variable)))
-(_ (decls 
-  (function 
-    name: (variable) @function
-    patterns: (patterns (pat_name) @parameter))))
-
-; higher-order function parameters
-(function
-  patterns: (patterns (pat_name (variable) @function))
-  rhs: (exp_apply (exp_name (variable) @_name) . (exp_name)+)
-  (#eq? @function @_name))
-(function
-  patterns: (patterns (pat_name (variable) @function))
-  rhs: (_ (operator) @_op (exp_name (variable))
- (#any-of? @_op "." ">>>")))
-(function
-  patterns: (patterns (pat_name (variable) @function))
-  rhs: (_ (exp_name (variable)) . (operator) @_op)
- (#any-of? @_op "$" "<$>" ">>=" "." ">>>"))
-
+(exp_apply (exp_name 
+  [
+    ((variable) @function.call)
+    (qualified_variable (variable) @function.call)
+  ]))
+(exp_apply [
+    (exp_name [
+      (variable)
+      (qualified_variable (variable))
+      (constructor)
+      (qualified_constructor (constructor))
+    ])
+    (exp_type_application)
+    (exp_parens)
+  ]
+  . (exp_name [
+    ((variable) @variable)
+    (qualified_variable (variable) @variable)
+  ])
+)
 
 ;; ----------------------------------------------------------------------------
 ;; Types
@@ -263,6 +353,13 @@
 (quasiquote 
   (quoter) @_name (#eq? @_name "qq")
   (quasiquote_body) @string)
+;; namespaced quasi-quoter
+(quasiquote
+  (_
+    (module) @namespace
+    . (variable) @function.call
+  )
+) 
 
 ; Highlighting of quasiquote_body for other languages is handled by injections.scm
 
@@ -294,7 +391,8 @@
    "bracket_"
    "bracketOnErrorSource"
    "finally"
-   "onException"))
+   "onException"
+   "expectationFailure"))
 
 ;; ----------------------------------------------------------------------------
 ;; Debugging
@@ -321,6 +419,9 @@
 ;; ----------------------------------------------------------------------------
 ;; Fields
 (field (variable) @field)
+(pat_field (variable) @field)
+(exp_projection field: (variable) @field)
+(import_item (type) . (import_con_names (variable) @field))
 
 
 ;; ----------------------------------------------------------------------------

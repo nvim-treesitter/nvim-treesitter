@@ -20,6 +20,11 @@ import qualified Data.Map as Map
                            -- ^ @namespace
 import qualified Chronos
                 -- ^ @namespace
+import qualified Chronos as C
+                -- ^ @constructor
+                         -- ^ @namespace
+import FooMod (BarTy (barField))
+                      -- ^ @field
 
 data ADT
 -- ^ @keyword
@@ -32,6 +37,10 @@ data ADT
   -- ^ @keyword
          -- ^ @type
                -- ^ @type
+mkA x = A x
+       -- ^ @variable
+mkAQualified x = SomeModule.A x
+                           -- ^ @variable
 
 class Ord a => PartialOrd a
     -- ^ @type
@@ -56,6 +65,10 @@ newtype Rec
  -- ^ @punctuation.bracket
     deriving Eq
            -- ^ @type
+recordWildCard Rec { field } = field
+                    -- ^ @field
+recordDotSyntax rec = rec.field
+                        -- ^ @field
 
 main :: IO ()
 -- ^ @function
@@ -76,6 +89,10 @@ someFunc0 x = someFunc1 x
     someFunc1 _ = 5
     -- ^ @function
                -- ^ @number
+scopedTypeParam (x :: Int) = someFunc x
+              -- ^ @parameter
+scopedTypeParam (Just x :: Int) = someFunc x
+                   -- ^ @parameter
 
 someInfix :: Integral a => a -> Double
             -- ^ @type
@@ -88,12 +105,36 @@ someInfix x = fromIntegral x `myAdd` floatVal
                              -- ^ @operator
                                     -- ^ @variable
   where
+    myAdd :: Num a => a -> a
+    -- ^ @function
     myAdd x y = x + y
              -- ^ @variable
                  -- ^ @variable
+    floatVal :: Double
+    -- ^ @variable
     floatVal = 5.5
     -- ^ @variable
             -- ^ @float
+    intVal :: Int
+    -- ^ @variable
+    intVal = getInt 5
+    -- ^ @variable
+    boolVal :: Bool
+    -- ^ @variable
+    boolVal = bool False True $ 1 + 2 == 3
+    -- ^ @variable
+    isInt :: Either Double Int -> Bool
+    -- ^ @function
+    isInt eith@Left{} = False
+        -- ^ @parameter
+    isInt eith@(Left x) = False
+    -- ^ @function
+                  -- ^ @parameter
+    isInt (Left x) = False
+             -- ^ @parameter
+    isInt (Right _) = True
+    -- ^ @function
+
 
 someIOaction :: IO ()
 -- ^ @function
@@ -104,6 +145,8 @@ someIOaction = do
             -- ^ @namespace
                    -- ^ @function.call
                           -- ^ @operator
+  _ <- someFunc0 =<< someIOAction
+        -- ^ @function.call
   let bar = SomeModule.doSomething $ "a" "b"
     -- ^ @variable
             -- ^ @namespace
@@ -114,6 +157,15 @@ someIOaction = do
         -- ^ @parameter
               -- ^ @variable
                   -- ^ @variable
+      gunc x y = func x $ y + 7
+                   -- ^ @variable
+                       -- ^ @variable
+  when foo $ putStrLn $ T.showt =<< bar
+ -- ^ @function.call
+     -- ^ @variable
+            -- ^ @function.call
+                        -- ^ @function.call
+
   pure $ func 1 2
   -- ^ @function.call
         -- ^ @function.call
@@ -132,6 +184,12 @@ getLambda x = \y -> x `SomeModule.someInfix` y
             -- ^ @parameter
                       -- ^ @namespace
                                   -- ^ @operator
+lambdaTyped = \(y :: Int) -> x
+             -- ^ @parameter
+lambdaPattern = \(Just x) -> x
+                    -- ^ @parameter
+lambdaPatternTyped = \(Just x :: Int) -> x
+                         -- ^ @parameter
 
 isVowel = (`elem` "AEIOU")
           -- ^ @operator
@@ -149,13 +207,68 @@ quasiQuotedString = [qq|Some string|]
 -- ^ @variable
                    -- ^ @function.call
                       -- ^ @string
-
-higherOrderFn f x = f x
-           -- ^ @function
-             -- ^ @variable
+quasiQuotedString2 = [SomeModule.qq|Some string|]
+                        -- ^ @namespace
+                              -- ^ @function.call
 
 composition f g = f . g
-         -- ^ @function
-           -- ^ @function
                -- ^ @function
                    -- ^ @function
+qualifiedComposition = SomeModule.f . SomeModule.g
+                               -- ^ @function
+                                              -- ^ @function
+takeMVarOrThrow = evaluate <=< takeMVar
+                  -- ^ @function
+                              -- ^ @function
+modifyMVarOrThrow v f = modifyMVar v $ f >=> evaluate
+                                -- ^ @variable
+                                    -- ^ @function
+                                           -- ^ @function
+assertNonEmpty xs = xs `shouldSatisfy` not . null
+                 -- ^ @variable
+                                     -- ^ @function
+                                            -- ^ @function
+
+param1 |*| param2 = Qu $ param1 * param2
+-- ^ @parameter
+         -- ^ @parameter
+(param1 :: Int) |*| (param2 :: Int) = Qu $ param1 * param2
+-- ^ @parameter
+                   -- ^ @parameter
+(Qu a) |/| (SomeModule.Qu b) = a / b
+ -- ^ @parameter
+                       -- ^ @parameter
+(Qu a :: Int) |/| (SomeModule.Qu b :: Int) = a / b
+ -- ^ @parameter
+                              -- ^ @parameter
+(Qu a, b, c :: Int) |/| x = undefined
+ -- ^ @parameter
+    -- ^ @parameter
+       -- ^ @parameter
+[Qu a, b, c :: Int] >< x = undefined
+ -- ^ @parameter
+    -- ^ @parameter
+       -- ^ @parameter
+listParam [a, b :: Int, Just c] = undefined
+        -- ^ @parameter
+           -- ^ @parameter
+                          -- ^ @parameter
+tupleParam (a :: Int, b, Just c) = undefined
+         -- ^ @parameter
+                   -- ^ @parameter
+                           -- ^ @parameter
+listLambda = \[a, a :: Int, Just c] -> undefined
+            -- ^ @parameter
+               -- ^ @parameter
+                              -- ^ @parameter
+tupleLambda = \(a, b :: Int, Just c) -> undefined
+             -- ^ @parameter
+                -- ^ @parameter
+nestedDestructure (Left (Just a)) = undefined
+                           -- ^ @parameter
+typeApplication x y = someFun @ty x y
+                               -- ^ @variable
+                                 -- ^ @variable
+encrypt key pass = encrypt (defaultOAEPParams SHA1) key pass
+                                                 -- ^ @variable
+                                                      -- ^ @variable
