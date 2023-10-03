@@ -359,6 +359,9 @@
   "mlir": {
     "revision": "e2053f7c8856d91bc36c87604f697784845cee69"
   },
+  "nasm": {
+    "revision": "3bc691d2cfba44bea339a775ad496c8bc552c60d"
+  },
   "nickel": {
     "revision": "b759233581fd8bae239e905c67a9ba453205da78"
   },
