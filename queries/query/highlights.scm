@@ -2,7 +2,7 @@
 (escape_sequence) @string.escape
 (capture (identifier) @type)
 (anonymous_node (identifier) @string)
-(predicate name: (identifier) @function)
+(predicate name: (identifier) @function.call)
 (named_node name: (identifier) @variable)
 (field_definition name: (identifier) @property)
 (negated_field "!" @operator (identifier) @property)
