@@ -46,17 +46,17 @@
 ;------------
 
 (infix_expression
-  left: (value_path (value_name) @function)
+  left: (value_path (value_name) @function.call)
   operator: (concat_operator) @_operator
   (#eq? @_operator "@@"))
 
 (infix_expression
   operator: (rel_operator) @_operator
-  right: (value_path (value_name) @function)
+  right: (value_path (value_name) @function.call)
   (#eq? @_operator "|>"))
 
 (application_expression
-  function: (value_path (value_name) @function))
+  function: (value_path (value_name) @function.call))
 
 ((value_name) @function.builtin
   (#any-of? @function.builtin "raise" "raise_notrace" "failwith" "invalid_arg"))
