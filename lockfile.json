@@ -6,7 +6,7 @@
     "revision": "c21c3a0f996363ed17b8ac99d827fe5a4821f217"
   },
   "apex": {
-    "revision": "e63bcdcc26ae808b3fe79dfb8fa61bebdb95bda4"
+    "revision": "a768c956b6aee72ffebb5df7f7c0b3702eaa2fbd"
   },
   "arduino": {
     "revision": "db929fc6822b9b9e1211678d508f187894ce0345"
@@ -18,7 +18,7 @@
     "revision": "374da90decaa60fea7a22490a77440ece6d4161d"
   },
   "bash": {
-    "revision": "fd4e40dab883d6456da4d847de8321aee9c80805"
+    "revision": "1479a4030f1a399c253aee02097576d4af46f23a"
   },
   "bass": {
     "revision": "27f110dfe79620993f5493ffa0d0f2fe12d250ed"
@@ -252,7 +252,7 @@
     "revision": "1d5df35af3e0afe592832a67b9fb3feeeba1f7b6"
   },
   "html": {
-    "revision": "e5d7d7decbbdec5a4c90bbc69436b3828f5646e7"
+    "revision": "d742025fa2d8e6100f134a6ea990443aa1f074b3"
   },
   "htmldjango": {
     "revision": "717e83aefd328735beeeb671f3f95b2624e70c57"
@@ -306,7 +306,7 @@
     "revision": "e180e05132c4cb229a8ba679b298790ef1eca77c"
   },
   "kotlin": {
-    "revision": "06a2f6e71c7fcac34addcbf2a4667adad1b9c5a7"
+    "revision": "7587b4a7f1c3a0fe4ab41301596f9b4517395a4e"
   },
   "lalrpop": {
     "revision": "06ae1b6c26e23c77c7fb86d51dddad62b42e66b0"
@@ -369,7 +369,7 @@
     "revision": "66e3e9ce9180ae08fc57372061006ef83f0abde7"
   },
   "norg": {
-    "revision": "1a305093569632de50f9a316ff843dcda25b4ef5"
+    "revision": "014073fe8016d1ac440c51d22c77e3765d8f6855"
   },
   "nqc": {
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
@@ -405,7 +405,7 @@
     "revision": "79e88f64681660f3961939bf764d8f3b4bbb0d27"
   },
   "php": {
-    "revision": "a05c6112a1dfdd9e586cb275700931e68d3c7c85"
+    "revision": "92a98adaa534957b9a70b03e9acb9ccf9345033a"
   },
   "phpdoc": {
     "revision": "915a527d5aafa81b31acf67fab31b0ac6b6319c0"
@@ -528,16 +528,16 @@
     "revision": "168020304759ad5d8b4a88a541a699134e3730c5"
   },
   "soql": {
-    "revision": "e63bcdcc26ae808b3fe79dfb8fa61bebdb95bda4"
+    "revision": "a768c956b6aee72ffebb5df7f7c0b3702eaa2fbd"
   },
   "sosl": {
-    "revision": "e63bcdcc26ae808b3fe79dfb8fa61bebdb95bda4"
+    "revision": "a768c956b6aee72ffebb5df7f7c0b3702eaa2fbd"
   },
   "sparql": {
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "39750c48bf9ad63bcc1399554355b0aa0aaa1c33"
+    "revision": "4c2eeb19cb3daff46ee9d87df77748724bd8344d"
   },
   "squirrel": {
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
@@ -654,7 +654,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "a572271027b3a611ba40825c47355e99369d4f32"
+    "revision": "101558a99a184e1110827bd293f2a8220a4b4992"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
