@@ -69,6 +69,7 @@
 
 (var) @variable
 (string) @string
+(string_interpolation [ "#{" "}" ] @punctuation.special)
 (integer) @number
 (float) @float
 (bool) @boolean
