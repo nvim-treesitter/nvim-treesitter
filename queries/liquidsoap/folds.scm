@@ -4,5 +4,7 @@
  (simple_fun)
  (def)
  (if)
+ (while)
+ (for)
  (block)
 ] @fold
