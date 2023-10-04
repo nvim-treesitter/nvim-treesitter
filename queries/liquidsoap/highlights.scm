@@ -6,12 +6,13 @@
   "def"
   "fun"
   "let"
+  "def_end"
 ] @keyword.function
 
 [
   "open"
   "begin"
-  "end"
+  "block_end"
 ] @keyword
 
 [
@@ -19,6 +20,8 @@
   "do"
   "to"
   "for"
+  "for_end"
+  "while_end"
 ] @repeat
 
 [
@@ -26,11 +29,13 @@
   "then"
   "elsif"
   "else"
+  "if_end"
 ] @conditional
 
 [
   "try"
   "catch"
+  "try_end"
 ] @exception
 
 (inline_if [ "?" ":" ] @conditional.ternary)
