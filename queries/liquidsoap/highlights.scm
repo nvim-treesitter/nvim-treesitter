@@ -8,6 +8,8 @@
   "def_end"
 ] @keyword.function
 
+(let_decoration) @keyword.coroutine
+
 [
   "open"
   "begin"
