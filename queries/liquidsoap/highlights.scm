@@ -1,5 +1,4 @@
 (op) @operator
-"..." @operator
 ["and" "or" "not"] @keyword.operator
 
 [
