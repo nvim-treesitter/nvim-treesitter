@@ -1,10 +1,11 @@
+(var) @variable
+
 (op) @operator
 ["and" "or" "not"] @keyword.operator
 
 [
   "def"
   "fun"
-  "let"
   "def_end"
 ] @keyword.function
 
@@ -14,6 +15,7 @@
   "open"
   "begin"
   "block_end"
+  "let"
 ] @keyword
 
 [
@@ -73,7 +75,6 @@
 (method) @method
 (method_app) @method.call
 
-(var) @variable
 (string) @string
 (string_interpolation [ "#{" "}" ] @punctuation.special)
 (integer) @number
