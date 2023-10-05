@@ -328,8 +328,7 @@
   . (exp_name [
     ((variable) @variable)
     (qualified_variable (variable) @variable)
-  ])
-)
+  ]))
 
 ;; ----------------------------------------------------------------------------
 ;; Types
@@ -359,8 +358,7 @@
   (_
     (module) @namespace
     . (variable) @function.call
-  )
-) 
+  ))
 
 ; Highlighting of quasiquote_body for other languages is handled by injections.scm
 
