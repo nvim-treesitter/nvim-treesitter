@@ -10,7 +10,7 @@
 (function
   patterns: (patterns (_) @parameter))
 
-(exp_lambda (_) @parameter . (_))
+(exp_lambda (_)+ @parameter "->")
 
 (function 
   infix: (infix
@@ -323,6 +323,7 @@
     ])
     (exp_type_application)
     (exp_parens)
+    (exp_record)
   ]
   . (exp_name [
     ((variable) @variable)

@@ -272,3 +272,6 @@ typeApplication x y = someFun @ty x y
 encrypt key pass = encrypt (defaultOAEPParams SHA1) key pass
                                                  -- ^ @variable
                                                       -- ^ @variable
+recordUpdate x y rec = someFun rec {field = 5} x y
+                                            -- ^ @variable
+                                              -- ^ @variable
