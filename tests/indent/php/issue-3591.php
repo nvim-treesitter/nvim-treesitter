@@ -2,4 +2,5 @@
 
 function test() {
     $array = [
+    ]
 }
