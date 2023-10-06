@@ -84,7 +84,7 @@
     "revision": "6c1957405bd6f7751b050f61367f1094fab91444"
   },
   "cuda": {
-    "revision": "275cfb95013b88382e11490aef1e7c9b17a95ef7"
+    "revision": "759cf0a2557c9138baeae342aac61044acbdd618"
   },
   "cue": {
     "revision": "2df92e6755337e9234ad18ffef37f35d95e2ba9d"
@@ -129,7 +129,7 @@
     "revision": "a2861e88a730287a60c11ea9299c033c7d076e30"
   },
   "elm": {
-    "revision": "0694058bf0555adbf5f700ce4868d18e463cb824"
+    "revision": "debe14fad40a8100c679d95c66f599b48111742c"
   },
   "elsa": {
     "revision": "0a66b2b3f3c1915e67ad2ef9f7dbd2a84820d9d7"
@@ -141,7 +141,7 @@
     "revision": "203f7bd3c1bbfbd98fc19add4b8fcb213c059205"
   },
   "erlang": {
-    "revision": "4a0ec79b7eb7671efe935cd97967430c34598c7d"
+    "revision": "4ec4aadac76ad1a701187e38152c83dba9cbacf4"
   },
   "fennel": {
     "revision": "517195970428aacca60891b050aa53eabf4ba78d"
@@ -192,10 +192,10 @@
     "revision": "32c8f1e32aee036583ca09e7e6e4ea881852b42c"
   },
   "glimmer": {
-    "revision": "8c99566ab0e454f98a2c123d0571da5d83045e50"
+    "revision": "f9746dc1d0707717fbba84cb5c22a71586af23e1"
   },
   "glsl": {
-    "revision": "ec6100d2bdf22363ca8a711a212f2144ea49233f"
+    "revision": "008abfeb24b73c696e1a07f3f1d299f95d4efbb1"
   },
   "go": {
     "revision": "bbaa67a180cfe0c943e50c55130918be8efb20bd"
@@ -243,7 +243,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "d698c21dbfcfa1df84cdaaf9dba32cba1e4f92b4"
+    "revision": "360f5fdb6e1d1a201c52d67184e2d115f67c4e26"
   },
   "hocon": {
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
@@ -273,7 +273,7 @@
     "revision": "bd9cbaf1ea8b942dfd58e68df10c9a378ab3d2b6"
   },
   "java": {
-    "revision": "83044af4950e9f1adb46a20f616d10934930ce7e"
+    "revision": "2b57cd9541f9fd3a89207d054ce8fbe72657c444"
   },
   "javascript": {
     "revision": "f1e5a09b8d02f8209a68249c93f0ad647b228e6e"
@@ -606,7 +606,7 @@
     "revision": "6c1957405bd6f7751b050f61367f1094fab91444"
   },
   "tsx": {
-    "revision": "c604297f8197b468026f2ea32119935887e01c67"
+    "revision": "d847898fec3fe596798c9fda55cb8c05a799001a"
   },
   "turtle": {
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
@@ -615,7 +615,7 @@
     "revision": "779ee5ab1e065dcef7f51f253030dc875445b25f"
   },
   "typescript": {
-    "revision": "c604297f8197b468026f2ea32119935887e01c67"
+    "revision": "d847898fec3fe596798c9fda55cb8c05a799001a"
   },
   "ungrammar": {
     "revision": "debd26fed283d80456ebafa33a06957b0c52e451"
@@ -624,7 +624,7 @@
     "revision": "694c8c0c79f8d1b80d497401acf4d1b77bfb004a"
   },
   "usd": {
-    "revision": "718a6b3e939904e0b4fe7cff6742e96af4781f4b"
+    "revision": "ab8c30bde2df0e58c4b3f01f220fb0125ecb57a7"
   },
   "uxntal": {
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
@@ -657,7 +657,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "066e14225c792ca0aacb494a525d080eafd694c0"
+    "revision": "0226d23de5a41f24f1c483682de87c7c436bd086"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
