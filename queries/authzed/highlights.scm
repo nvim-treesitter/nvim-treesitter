@@ -15,8 +15,9 @@
 
 (relation
   (rel_expression
-    ((hash_literal)
-     . (identifier) @constant)))
+    (hash_literal)
+    .
+    (identifier) @constant))
 
 ; permissions
 (perm_expression (identifier) @property)
