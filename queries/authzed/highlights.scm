@@ -43,8 +43,9 @@
 [
   (true)
   (false)
-  (nil)
-] @constant.builtin
+] @boolean
+
+(nil) @constant.builtin
 
 [
   (caveat_literal)
