@@ -1,5 +1,4 @@
 local ts = vim.treesitter
-local parsers = require "nvim-treesitter.parsers"
 
 local M = {}
 
@@ -94,8 +93,7 @@ local get_indents = memoize(function(bufnr, root, lang)
     ["indent.zero"] = {},
   }
 
-  --TODO(clason): remove when dropping Nvim 0.8 compat
-  local query = (ts.query.get or ts.get_query)(lang, "indents")
+  local query = ts.query.get(lang, "indents")
   if not query then
     return map
   end
@@ -113,13 +111,14 @@ end)
 ---@param lnum number (1-indexed)
 function M.get_indent(lnum)
   local bufnr = vim.api.nvim_get_current_buf()
-  local parser = parsers.get_parser(bufnr)
+  --- @type LanguageTree|nil
+  local parser = vim.F.npcall(ts.get_parser, bufnr)
   if not parser or not lnum then
     return -1
   end
 
-  --TODO(clason): replace when dropping Nvim 0.8 compat
-  local root_lang = parsers.get_buf_lang(bufnr)
+  local ft = vim.bo[bufnr].filetype
+  local root_lang = ts.language.get_lang(ft) or ft
 
   -- some languages like Python will actually have worse results when re-parsing at opened new line
   if not M.avoid_force_reparsing[root_lang] then
