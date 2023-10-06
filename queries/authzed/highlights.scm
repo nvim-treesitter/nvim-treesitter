@@ -27,8 +27,9 @@
     field: (field_identifier) @function.method))
 
 (perm_expression
-  ((stabby) @operator
-   . (identifier) @function))
+  (stabby) @operator
+  . 
+  (identifier) @function)
 
 ; misc
 [
