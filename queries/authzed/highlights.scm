@@ -1,36 +1,53 @@
-((identifier) @keyword
- (#any-of? @keyword "definition" "permission" "relation"))
+((identifier) @function)
 
-(permission_literal) @variable.builtin
+(block
+  (relation
+    (relation_literal) @function.builtin
+    (identifier) @constant))
 
-(permission (identifier) @type)
-(relation (identifier) @constant)
-(perm_expression (identifier) @property)
+(block
+  (permission
+    (permission_literal) @variable.builtin
+    (identifier) @type))
 
-[
-  (block_start)
-  (block_end)
-] @punctuation.bracket
-
-(block (identifier) (identifier) @constructor)
-
-[
-  (plus_literal)
-  (pipe_literal)
-] @operator
-
-(relation_literal) @function
+; relations
 (rel_expression (identifier) @property)
 
 (relation
   (rel_expression
     ((hash_literal)
-     . (identifier) @constant) @comment))
+     . (identifier) @constant)))
 
-(permission
-  (perm_expression
-    ((stabby)
-     . (identifier) @function) @operator))
+; permissions
+(perm_expression (identifier) @property)
+
+(call_expression
+  function: (selector_expression
+    operand: (identifier) @constant
+    field: (field_identifier) @function.method))
+
+(perm_expression
+  ((stabby) @operator
+   . (identifier) @function))
+
+; misc
+[
+  (plus_literal)
+  (minus_literal)
+  (amp_literal)
+  (pipe_literal)
+] @operator
+
+[
+  (true)
+  (false)
+  (nil)
+] @constant.builtin
+
+[
+  (caveat_literal)
+  (definition_literal)
+] @keyword
 
 [
   (hash_literal)
