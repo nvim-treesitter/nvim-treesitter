@@ -105,8 +105,8 @@
 ((field_access
   object: (identifier) @type)
   (#lua-match? @type "^[A-Z]"))
-((scoped_identifier
-  scope: (identifier) @type)
+(scoped_identifier
+  (identifier) @type
   (#lua-match? @type "^[A-Z]"))
 
 ; Fields
