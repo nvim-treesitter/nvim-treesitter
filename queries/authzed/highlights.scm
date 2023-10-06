@@ -1,4 +1,4 @@
-((identifier) @function)
+(identifier) @function
 
 (block
   (relation
