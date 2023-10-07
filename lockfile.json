@@ -14,6 +14,9 @@
   "astro": {
     "revision": "e122a8fcd07e808a7b873bfadc2667834067daf1"
   },
+  "authzed": {
+    "revision": "1dec7e1af96c56924e3322cd85fdce15d0a31d00"
+  },
   "awk": {
     "revision": "374da90decaa60fea7a22490a77440ece6d4161d"
   },
