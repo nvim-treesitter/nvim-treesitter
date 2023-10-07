@@ -144,7 +144,7 @@
     "revision": "203f7bd3c1bbfbd98fc19add4b8fcb213c059205"
   },
   "erlang": {
-    "revision": "4ec4aadac76ad1a701187e38152c83dba9cbacf4"
+    "revision": "bb06a83db4f0c176875d9d49756b760d15211134"
   },
   "fennel": {
     "revision": "517195970428aacca60891b050aa53eabf4ba78d"
@@ -309,7 +309,7 @@
     "revision": "e180e05132c4cb229a8ba679b298790ef1eca77c"
   },
   "kotlin": {
-    "revision": "7587b4a7f1c3a0fe4ab41301596f9b4517395a4e"
+    "revision": "5baa0fe2288830f88bd38e328b08d829f3914164"
   },
   "lalrpop": {
     "revision": "06ae1b6c26e23c77c7fb86d51dddad62b42e66b0"
@@ -660,7 +660,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "0226d23de5a41f24f1c483682de87c7c436bd086"
+    "revision": "2ae397275b7848b16161a7fc0bc253c1b4a168ad"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
