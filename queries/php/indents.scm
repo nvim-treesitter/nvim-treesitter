@@ -24,5 +24,13 @@
 
 (compound_statement "}" @indent.end)
 
-(ERROR "(" @indent.align (#set! indent.open_delimiter "(") (#set! indent.close_delimiter ")") . (_))
-(ERROR "[" @indent.align (#set! indent.open_delimiter "[") (#set! indent.close_delimiter "]") . (_))
+(ERROR
+  "(" @indent.align
+  . (_)
+  (#set! indent.open_delimiter "(")
+  (#set! indent.close_delimiter ")"))
+(ERROR
+  "[" @indent.align
+  . (_)
+  (#set! indent.open_delimiter "[")
+  (#set! indent.close_delimiter "]"))
