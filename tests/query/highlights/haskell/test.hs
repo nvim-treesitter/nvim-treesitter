@@ -26,6 +26,9 @@ import qualified Chronos as C
 import FooMod (BarTy (barField))
                       -- ^ @field
 
+x = mempty { field = 5 }
+           -- ^ @field
+
 data ADT
 -- ^ @keyword
   = A Int
@@ -70,6 +73,7 @@ recordWildCard Rec { field } = field
 recordDotSyntax rec = rec.field
                         -- ^ @field
 
+
 main :: IO ()
 -- ^ @function
   -- ^ @operator
@@ -111,15 +115,26 @@ someInfix x = fromIntegral x `myAdd` floatVal
              -- ^ @variable
                  -- ^ @variable
     floatVal :: Double
+    -- ^ @variable
     floatVal = 5.5
     -- ^ @variable
             -- ^ @float
     intVal :: Int
+    -- ^ @variable
     intVal = getInt 5
     -- ^ @variable
     boolVal :: Bool
+    -- ^ @variable
     boolVal = bool False True $ 1 + 2 == 3
     -- ^ @variable
+    refVal = boolVal
+    -- ^ @variable
+    namespacedRecord = NS.Rec { field = bar }
+    -- ^ @variable
+    record = Rec { field = bar }
+    -- ^ @variable
+    constructorRef = A
+    -- ^ @function
     isInt :: Either Double Int -> Bool
     -- ^ @function
     isInt eith@Left{} = False
@@ -131,7 +146,6 @@ someInfix x = fromIntegral x `myAdd` floatVal
              -- ^ @parameter
     isInt (Right _) = True
     -- ^ @function
-
 
 someIOaction :: IO ()
 -- ^ @function
@@ -175,9 +189,29 @@ intFun :: Int -> Int
 intFun = 5
 -- ^ @function
 
+undefinedFun :: Int -> Int
+undefinedFun = undefined
+-- ^ @function
+
 mbInt :: Maybe Int
+-- ^ @variable
 mbInt = Just 5
 -- ^ @variable
+
+tupleVal :: (a, b)
+-- ^@variable
+tupleVal = (1, "x")
+-- ^@variable
+
+listVal :: [a]
+-- ^@variable
+listVal = [1, 2]
+-- ^@variable
+-- ^@variable
+condVal = if otherwise
+-- ^@variable
+            then False
+            else True
 
 getLambda x = \y -> x `SomeModule.someInfix` y
             -- ^ @parameter
@@ -227,7 +261,12 @@ assertNonEmpty xs = xs `shouldSatisfy` not . null
                  -- ^ @variable
                                      -- ^ @function
                                             -- ^ @function
-
+appliedComposition f g var = (f . g) var
+                           -- ^ @function.call
+                               -- ^ @function.call
+appliedComposition f g var = (NS.f . NS.g) var
+                              -- ^ @function.call
+                                     -- ^ @function.call
 param1 |*| param2 = Qu $ param1 * param2
 -- ^ @parameter
          -- ^ @parameter
@@ -271,6 +310,18 @@ typeApplication x y = someFun @ty x y
 encrypt key pass = encrypt (defaultOAEPParams SHA1) key pass
                                                  -- ^ @variable
                                                       -- ^ @variable
-recordUpdate x y rec = someFun rec {field = 5} x y
-                                            -- ^ @variable
-                                              -- ^ @variable
+recordUpdate x y rec = someFun rec {field = 5} (x, x) y
+                                             -- ^ @variable
+                                                   -- ^ @variable
+viewPattern (func -> var) = 5
+           -- ^ @function.call
+                   -- ^ @parameter
+g (func :: a -> b) x = func y
+  -- ^ @parameter
+  -- ^ @function
+lambdaAlias :: LambdaAlias
+lambdaAlias _ _ _ = undefined
+  -- ^ @function
+spec :: Spec
+spec = describe "test ns" $ it "test case" pending
+-- ^ @variable
