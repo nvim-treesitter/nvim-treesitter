@@ -11,12 +11,16 @@
   (section_here_token)
 ] @variable.builtin
 
-(label) @label
+(label (word) @label)
+(assembl_directive_symbols (word) @label)
+(assembl_directive_sections (word) @label)
 
 (unary_expression
   operator: _ @operator)
 (binary_expression
   operator: _ @operator)
+
+"?" @constant.builtin
 
 (conditional_expression
   [ "?" ":" ] @conditional.ternary)
@@ -34,7 +38,7 @@
 
 (instruction_prefix) @keyword
 (actual_instruction
-  instruction: (word) @function)
+  instruction: (word) @function.builtin)
 
 (call_syntax_expression
   base: (word) @function.call)
@@ -50,7 +54,7 @@
 (effective_address
   segment: _ @constant.builtin)
 
-(register) @constant.builtin
+(register) @variable.builtin
 
 (string_literal) @string
 
