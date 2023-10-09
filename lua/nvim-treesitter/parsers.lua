@@ -237,7 +237,7 @@ list.clojure = {
     url = "https://github.com/sogaiu/tree-sitter-clojure",
     files = { "src/parser.c" },
   },
-  maintainers = { "@sogaiu" },
+  maintainers = { "@NoahTheDuke" },
 }
 
 list.cmake = {
