@@ -162,26 +162,11 @@
 ;; Functions and variables
 
 (signature name: (variable) @function)
-((signature name: (variable) @variable)
- (function 
-  name: (variable) @_name
-  rhs: [
-   (exp_literal)
-   (exp_apply 
-     (exp_name 
-       [(constructor)
-        (variable)
-       ]))
-   (quasiquote)
-   ((exp_name) . (operator))
-  ])
- (#eq? @variable @_name))
 
 ((signature name: (variable) @variable)
- (function 
-  name: (variable) @_name
-  rhs: (exp_infix 
-    [
+ . (function 
+    name: (variable) @_name
+    rhs: [
      (exp_literal)
      (exp_apply 
        (exp_name 
@@ -190,26 +175,36 @@
          ]))
      (quasiquote)
      ((exp_name) . (operator))
-    ]))
+    ])
+ (#eq? @variable @_name))
+
+((signature name: (variable) @variable)
+ . (function 
+    name: (variable) @_name
+    rhs: (exp_infix 
+      [
+       (exp_literal)
+       (exp_apply 
+         (exp_name 
+           [(constructor)
+            (variable)
+           ]))
+       (quasiquote)
+       ((exp_name) . (operator))
+      ]))
  (#eq? @variable @_name))
 
 ((signature name: (variable) @function)
- (function 
-  name: (variable) @_name
-  patterns: (patterns))
+ . (function 
+    name: (variable) @_name
+    patterns: (patterns))
  (#eq? @function @_name))
 
-(signature 
-  name: (variable) @function
-  type: (fun))
-((signature 
-   name: (variable) @_name
-   type: (fun))
- (function
-   name: (variable) @function)
- (#eq? @function @_name))
+;; For some reason, `(signature name: (variable) type: (fun))` doesn't work here
+(signature (variable) @function . (fun))
 
 (function name: (variable) @function)
+
 (function 
   name: (variable) @variable
   rhs: [
@@ -222,6 +217,7 @@
    (quasiquote)
    ((exp_name) . (operator))
   ])
+
 (function 
   name: (variable) @variable
   rhs: (exp_infix [
