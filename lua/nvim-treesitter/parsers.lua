@@ -1105,6 +1105,14 @@ list.mlir = {
   maintainers = { "@artagnon" },
 }
 
+list.nasm = {
+  install_info = {
+    url = "https://github.com/naclsn/tree-sitter-nasm",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@ObserverOfTime" },
+}
+
 list.nickel = {
   install_info = {
     url = "https://github.com/nickel-lang/tree-sitter-nickel",
