@@ -27,7 +27,7 @@
     "revision": "27f110dfe79620993f5493ffa0d0f2fe12d250ed"
   },
   "beancount": {
-    "revision": "358e5ecbb87109eef7fd596ea518a4ff74cb9b31"
+    "revision": "0631b99d9096e10f4e289efe618e518debe918b4"
   },
   "bibtex": {
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
@@ -651,7 +651,7 @@
     "revision": "32c76f150347c1cd044e90b8e2bc73c00677fa55"
   },
   "vimdoc": {
-    "revision": "c0f85802485afe4d15e65bbf995ae864bb8ed7c4"
+    "revision": "60045f7d717eba85fa8abd996e0bb50eed5a3d8e"
   },
   "vue": {
     "revision": "91fe2754796cd8fba5f229505a23fa08f3546c06"
@@ -663,7 +663,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "cb2f0316becd6d5ac2952d2e04188b3d21d6328a"
+    "revision": "ab0803ca0f16e24c92539a1651e0c49c3da0ec04"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
