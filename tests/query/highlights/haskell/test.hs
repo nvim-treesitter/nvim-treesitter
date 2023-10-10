@@ -111,16 +111,13 @@ someInfix x = fromIntegral x `myAdd` floatVal
              -- ^ @variable
                  -- ^ @variable
     floatVal :: Double
-    -- ^ @variable
     floatVal = 5.5
     -- ^ @variable
             -- ^ @float
     intVal :: Int
-    -- ^ @variable
     intVal = getInt 5
     -- ^ @variable
     boolVal :: Bool
-    -- ^ @variable
     boolVal = bool False True $ 1 + 2 == 3
     -- ^ @variable
     isInt :: Either Double Int -> Bool
@@ -171,12 +168,14 @@ someIOaction = do
         -- ^ @function.call
 
 intVal :: Int
--- ^ @variable
 intVal = 5
 -- ^ @variable
 
+intFun :: Int -> Int
+intFun = 5
+-- ^ @function
+
 mbInt :: Maybe Int
--- ^ @variable
 mbInt = Just 5
 -- ^ @variable
 
