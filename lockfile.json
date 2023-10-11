@@ -21,7 +21,7 @@
     "revision": "374da90decaa60fea7a22490a77440ece6d4161d"
   },
   "bash": {
-    "revision": "1479a4030f1a399c253aee02097576d4af46f23a"
+    "revision": "7331995b19b8f8aba2d5e26deb51d2195c18bc94"
   },
   "bass": {
     "revision": "27f110dfe79620993f5493ffa0d0f2fe12d250ed"
@@ -108,7 +108,7 @@
     "revision": "c165725c28e69b36c5799ff0e458713a844f1aaf"
   },
   "dockerfile": {
-    "revision": "1800d5a06789797065ba5e7d80712b6bbf5483d7"
+    "revision": "33e22c33bcdbfc33d42806ee84cfd0b1248cc392"
   },
   "dot": {
     "revision": "9ab85550c896d8b294d9b9ca1e30698736f08cea"
@@ -222,7 +222,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "groovy": {
-    "revision": "76e02db5866dd2b096512103ed4d8f630cc32980"
+    "revision": "ae8aa51ec3275afb567a4a67df1a26d89feb135f"
   },
   "hack": {
     "revision": "fca1e294f6dce8ec5659233a6a21f5bd0ed5b4f2"
@@ -456,7 +456,7 @@
     "revision": "8953f91d733dd92c1ac43b3d58a7a2f43fa62dae"
   },
   "python": {
-    "revision": "a901729099257aac932d79c60adb5e8a53fa7e6c"
+    "revision": "82f5c9937fe4300b4bec3ee0e788d642c77aab2c"
   },
   "ql": {
     "revision": "bd087020f0d8c183080ca615d38de0ec827aeeaf"
@@ -570,7 +570,7 @@
     "revision": "697bb515471871e85ff799ea57a76298a71a9cca"
   },
   "swift": {
-    "revision": "597d544b3c93b2f67d2e143f27cc51ba874ec5c3"
+    "revision": "7e4ccc97a25315022a70b730085deccd5680a39b"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -663,7 +663,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "ab0803ca0f16e24c92539a1651e0c49c3da0ec04"
+    "revision": "7cf9c675c1177ba412fa404c36129749f56b1db4"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
