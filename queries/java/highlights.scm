@@ -95,6 +95,8 @@
 (constructor_declaration
   name: (identifier) @type)
 (type_identifier) @type
+((type_identifier) @type.builtin
+  (#eq? @type.builtin "var"))
 ((method_invocation
   object: (identifier) @type)
  (#lua-match? @type "^[A-Z]"))
