@@ -35,11 +35,11 @@
 ; Annotations
 
 (annotation
-  "@" @annotation
-  name: (identifier) @annotation.name)
+  "@" @attribute
+  name: (identifier) @attribute)
 (marker_annotation
-  "@" @annotation
-  name: (identifier) @annotation.name)
+  "@" @attribute
+  name: (identifier) @attribute)
 
 ; Operators
 
