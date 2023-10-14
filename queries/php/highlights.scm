@@ -16,6 +16,7 @@
 [
  (primitive_type)
  (cast_type)
+ (bottom_type)
  ] @type.builtin
 (named_type
   [(name) @type
