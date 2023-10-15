@@ -112,6 +112,7 @@
   ))
   (arguments [
     (call (identifier) @function)
+    (identifier) @function
     (binary_operator left: (call target: (identifier) @function) operator: "when")])?)
 
 ; Kernel Keywords & Special Forms
