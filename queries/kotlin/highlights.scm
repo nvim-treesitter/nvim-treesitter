@@ -309,14 +309,16 @@
 ] @keyword
 
 [
+  "return"
+] @keyword.return
+
+[
   "suspend"
 ] @keyword.coroutine
 
 [
   "fun"
 ] @keyword.function
-
-(jump_expression) @keyword.return
 
 [
 	"if"
