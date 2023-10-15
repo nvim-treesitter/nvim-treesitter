@@ -98,10 +98,6 @@
 
 (conditional_type ["?" ":"] @conditional.ternary)
 
-; Variables
-
-(undefined) @variable.builtin
-
 ;;; Parameters
 (required_parameter (identifier) @parameter)
 (optional_parameter (identifier) @parameter)
