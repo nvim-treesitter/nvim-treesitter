@@ -19,6 +19,8 @@
  (universal_selector)
  ] @type
 
+((class_selector) @type (#set! "priority" 110))
+
 (function_name) @function
 
 [
