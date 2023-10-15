@@ -5,19 +5,19 @@
 
 (integer) @number
 
-(comment) @comment
+(comment) @comment @spell
 
 ;;;; Identifiers ;;;;
 
 ; Allow different highlighting for specific casings
 ((identifier) @type
- (#match? @type "^[A-Z]"))
+ (#lua-match? @type "^%u"))
 
 ((identifier) @symbol
- (#match? @symbol "^[a-z]"))
+ (#lua-match? @symbol "^%l"))
 
 ((identifier) @constant
- (#match? @constant "^[A-Z][A-Z0-9_]+$"))
+ (#lua-match? @constant "^%u[%u%d_]+$"))
 
 ;;; Punctuation ;;;;
 [

@@ -38,4 +38,4 @@
 
 ; Comments
 
-(comment) @comment
+(comment) @comment @spell

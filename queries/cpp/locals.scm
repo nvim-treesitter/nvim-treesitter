@@ -47,7 +47,7 @@
   body: (_) @scope)
 
 ((namespace_identifier) @reference
-                        (set! reference.kind "namespace"))
+                        (#set! reference.kind "namespace"))
 
 ;; Function definitions
 (template_function
@@ -61,8 +61,8 @@
                 name: (identifier) @definition.function)) @scope
 
 (field_declaration
-        declarator: (function_declarator
-                       (field_identifier) @definition.method))
+  declarator: (function_declarator
+                (field_identifier) @definition.method))
 
 (lambda_expression) @scope
 

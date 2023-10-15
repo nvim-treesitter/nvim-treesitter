@@ -37,18 +37,35 @@
 (include_directive ["include" "-include"] @include)
 
 (variable_assignment
- (word) @symbol)
-(variable_assignment [
- "?="
- ":="
- "+="
- "="
+ name: (word) @symbol
+ [
+  "?="
+  ":="
+  "::="
+; ":::="
+  "+="
+  "="
  ] @operator)
 
+(shell_assignment
+ name: (word) @symbol
+ "!=" @operator)
+
+(define_directive
+ "define" @keyword
+ name: (word) @symbol
+ [
+  "="
+  ":="
+  "::="
+; ":::="
+  "?="
+  "!="
+ ]? @operator
+ "endef" @keyword)
 
 (variable_assignment
- (word) @variable.builtin
- (#any-of? @variable.builtin
+ (word) @variable.builtin (#any-of? @variable.builtin
   ".DEFAULT_GOAL"
   ".EXTRA_PREREQS"
   ".FEATURES"
@@ -65,10 +82,8 @@
   "SHELL"
  ))
 
-
 ; Use string to match bash
 (variable_reference (word) @string) @operator
-
 
 (shell_function
  ["$" "(" ")"] @operator

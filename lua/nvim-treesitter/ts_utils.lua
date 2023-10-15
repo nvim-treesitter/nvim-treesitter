@@ -173,7 +173,7 @@ function M.get_node_at_cursor(winnr, ignore_injected_langs)
 
   local root ---@type TSNode|nil
   if ignore_injected_langs then
-    for _, tree in ipairs(root_lang_tree:trees()) do
+    for _, tree in pairs(root_lang_tree:trees()) do
       local tree_root = tree:root()
       if tree_root and ts.is_in_node_range(tree_root, cursor_range[1], cursor_range[2]) then
         root = tree_root
@@ -202,7 +202,7 @@ function M.get_root_for_position(line, col, root_lang_tree)
 
   local lang_tree = root_lang_tree:language_for_range { line, col, line, col }
 
-  for _, tree in ipairs(lang_tree:trees()) do
+  for _, tree in pairs(lang_tree:trees()) do
     local root = tree:root()
 
     if root and ts.is_in_node_range(root, line, col) then
@@ -351,7 +351,7 @@ function M.memoize_by_buf_tick(fn, options)
   options = options or {}
 
   ---@type table<string, {result: any, last_tick: integer}>
-  local cache = {}
+  local cache = setmetatable({}, { __mode = "kv" })
   local bufnr_fn = utils.to_func(options.bufnr or utils.identity)
   local key_fn = utils.to_func(options.key or utils.identity)
 

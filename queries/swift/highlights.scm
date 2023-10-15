@@ -17,6 +17,7 @@
   (property_modifier)
   (parameter_modifier)
   (inheritance_modifier)
+  (mutation_modifier)
 ] @type.qualifier
 
 (function_declaration (simple_identifier) @method)
@@ -59,6 +60,10 @@
 
 (class_body (property_declaration (pattern (simple_identifier) @property)))
 (protocol_property_declaration (pattern (simple_identifier) @property))
+(navigation_expression
+  (navigation_suffix (simple_identifier) @property))
+(value_argument
+  name: (value_argument_label) @property)
 
 (import_declaration ["import" @include])
 
@@ -69,6 +74,8 @@
 (call_expression ; foo.bar.baz(): highlight the baz()
   (navigation_expression
     (navigation_suffix (simple_identifier) @function.call)))
+(call_expression
+  (prefix_expression (simple_identifier) @function.call)) ; .foo()
 ((navigation_expression
    (simple_identifier) @type) ; SomeType.method(): highlight SomeType as a type
    (#lua-match? @type "^[A-Z]"))
@@ -148,7 +155,6 @@
  "try"
  "try?"
  "try!"
- "!"
  "+"
  "-"
  "*"
@@ -178,4 +184,6 @@
 
  "..<"
  "..."
+  (bang)
 ] @operator
+

@@ -35,11 +35,7 @@
 
 alias: (identifier) @field
 
-
-
 (comment) @comment @spell
-
-(keyword_func) @keyword.function
 
 (function_call
   (identifier) @function.call)
@@ -56,14 +52,18 @@ alias: (identifier) @field
   "!="
   ">="
   ">"
+  "&&"
+  "||"
+  "//"
+  "~="
   (bang)
 ] @operator
 
 [
   "("
   ")"
-  "["
-  "]"
+  "{"
+  "}"
 ] @punctuation.bracket
 
 [
@@ -131,13 +131,11 @@ alias: (identifier) @field
 ] @boolean
 
 [
- (keyword_and)
- (keyword_or)
  (keyword_in)
 ] @keyword.operator
 
 (function_definition
-  (keyword_func)
+  (keyword_let)
   name: (identifier) @function)
 
 (parameter

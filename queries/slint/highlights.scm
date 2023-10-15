@@ -1,6 +1,6 @@
 (identifier) @variable
 (type_identifier) @type
-(comment) @comment
+(comment) @comment @spell
 (int_literal) @number
 (float_literal) @float
 (string_literal) @string

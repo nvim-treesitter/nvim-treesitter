@@ -2,6 +2,7 @@
  (for_statement)
  (if_statement)
  (while_statement)
+ (do_statement)
  (switch_statement)
  (case_statement)
  (function_definition)
@@ -12,8 +13,10 @@
  (preproc_elif)
  (preproc_else)
  (preproc_ifdef)
+ (preproc_function_def)
  (initializer_list)
+ (gnu_asm_expression)
 ] @fold
 
- (compound_statement
+(compound_statement
   (compound_statement) @fold)

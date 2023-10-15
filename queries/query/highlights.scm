@@ -2,7 +2,7 @@
 (escape_sequence) @string.escape
 (capture (identifier) @type)
 (anonymous_node (identifier) @string)
-(predicate name: (identifier) @function)
+(predicate name: (identifier) @function.call)
 (named_node name: (identifier) @variable)
 (field_definition name: (identifier) @property)
 (negated_field "!" @operator (identifier) @property)
@@ -27,8 +27,8 @@
 ((parameters (identifier) @number)
  (#match? @number "^[-+]?[0-9]+(.[0-9]+)?$"))
 
-((program . (comment) @include)
- (#match? @include "^;\ +inherits\ *:"))
+((program . (comment)* . (comment) @include)
+ (#lua-match? @include "^;+ *inherits *:"))
 
-((program . (comment) @preproc)
- (#match? @preproc "^; +extends"))
+((program . (comment)* . (comment) @preproc)
+ (#lua-match? @preproc "^;+ *extends"))

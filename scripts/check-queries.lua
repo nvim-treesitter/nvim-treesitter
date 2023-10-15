@@ -1,4 +1,4 @@
--- Execute as `nvim --headless -c "luafile ./scripts/check-queries.lua"`
+#!/usr/bin/env -S nvim -l
 
 -- Equivalent to print(), but this will ensure consistent output regardless of
 -- operating system.

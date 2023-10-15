@@ -35,14 +35,15 @@
 ; Annotations
 
 (annotation
+  "@" @attribute
   name: (identifier) @attribute)
 (marker_annotation
+  "@" @attribute
   name: (identifier) @attribute)
 
 ; Operators
 
 [
-  "@"
   "+"
   ":"
   "++"
@@ -84,6 +85,8 @@
 
 (interface_declaration
   name: (identifier) @type)
+(annotation_type_declaration
+  name: (identifier) @type)
 (class_declaration
   name: (identifier) @type)
 (record_declaration
@@ -93,6 +96,8 @@
 (constructor_declaration
   name: (identifier) @type)
 (type_identifier) @type
+((type_identifier) @type.builtin
+  (#eq? @type.builtin "var"))
 ((method_invocation
   object: (identifier) @type)
  (#lua-match? @type "^[A-Z]"))
@@ -103,8 +108,8 @@
 ((field_access
   object: (identifier) @type)
   (#lua-match? @type "^[A-Z]"))
-((scoped_identifier
-  scope: (identifier) @type)
+(scoped_identifier
+  (identifier) @type
   (#lua-match? @type "^[A-Z]"))
 
 ; Fields
@@ -169,6 +174,7 @@
   "implements"
   "instanceof"
   "interface"
+  "@interface"
   "permits"
   "to"
   "with"
@@ -257,6 +263,11 @@
 [ "[" "]" ] @punctuation.bracket
 
 [ "(" ")" ] @punctuation.bracket
+
+(type_arguments [ "<" ">" ] @punctuation.bracket)
+(type_parameters [ "<" ">" ] @punctuation.bracket)
+
+(string_interpolation [ "\\{" "}" ] @punctuation.special)
 
 ; Exceptions
 

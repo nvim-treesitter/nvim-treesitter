@@ -29,25 +29,7 @@
 
 ((attribute
     attribute: (identifier) @field)
- (#match? @field "^([A-Z])@!.*$"))
-
-((identifier) @type.builtin
- (#any-of? @type.builtin
-              ;; https://docs.python.org/3/library/exceptions.html
-              "ArithmeticError" "BufferError" "LookupError" "AssertionError" "AttributeError"
-              "EOFError" "FloatingPointError" "ModuleNotFoundError" "IndexError" "KeyError"
-              "KeyboardInterrupt" "MemoryError" "NameError" "NotImplementedError" "OSError" "OverflowError" "RecursionError"
-              "ReferenceError" "RuntimeError" "StopIteration" "StopAsyncIteration" "SyntaxError" "IndentationError" "TabError"
-              "SystemError" "SystemExit" "TypeError" "UnboundLocalError" "UnicodeError" "UnicodeEncodeError" "UnicodeDecodeError"
-              "UnicodeTranslateError" "ValueError" "ZeroDivisionError" "EnvironmentError" "IOError" "WindowsError"
-              "BlockingIOError" "ChildProcessError" "ConnectionError" "BrokenPipeError" "ConnectionAbortedError"
-              "ConnectionRefusedError" "ConnectionResetError" "FileExistsError" "FileNotFoundError" "InterruptedError"
-              "IsADirectoryError" "NotADirectoryError" "PermissionError" "ProcessLookupError" "TimeoutError" "Warning"
-              "UserWarning" "DeprecationWarning" "PendingDeprecationWarning" "SyntaxWarning" "RuntimeWarning"
-              "FutureWarning" "UnicodeWarning" "BytesWarning" "ResourceWarning"
-              ;; https://docs.python.org/3/library/stdtypes.html
-              "bool" "int" "float" "complex" "list" "tuple" "range" "str"
-              "bytes" "bytearray" "memoryview" "set" "frozenset" "dict" "type"))
+ (#lua-match? @field "^[%l_].*$"))
 
 ((assignment
   left: (identifier) @type.definition
@@ -106,6 +88,24 @@
     (identifier) @type))
  (#eq? @_isinstance "isinstance"))
 
+((identifier) @type.builtin
+ (#any-of? @type.builtin
+              ;; https://docs.python.org/3/library/exceptions.html
+              "ArithmeticError" "BufferError" "LookupError" "AssertionError" "AttributeError"
+              "EOFError" "FloatingPointError" "ModuleNotFoundError" "IndexError" "KeyError"
+              "KeyboardInterrupt" "MemoryError" "NameError" "NotImplementedError" "OSError" "OverflowError" "RecursionError"
+              "ReferenceError" "RuntimeError" "StopIteration" "StopAsyncIteration" "SyntaxError" "IndentationError" "TabError"
+              "SystemError" "SystemExit" "TypeError" "UnboundLocalError" "UnicodeError" "UnicodeEncodeError" "UnicodeDecodeError"
+              "UnicodeTranslateError" "ValueError" "ZeroDivisionError" "EnvironmentError" "IOError" "WindowsError"
+              "BlockingIOError" "ChildProcessError" "ConnectionError" "BrokenPipeError" "ConnectionAbortedError"
+              "ConnectionRefusedError" "ConnectionResetError" "FileExistsError" "FileNotFoundError" "InterruptedError"
+              "IsADirectoryError" "NotADirectoryError" "PermissionError" "ProcessLookupError" "TimeoutError" "Warning"
+              "UserWarning" "DeprecationWarning" "PendingDeprecationWarning" "SyntaxWarning" "RuntimeWarning"
+              "FutureWarning" "UnicodeWarning" "BytesWarning" "ResourceWarning"
+              ;; https://docs.python.org/3/library/stdtypes.html
+              "bool" "int" "float" "complex" "list" "tuple" "range" "str"
+              "bytes" "bytearray" "memoryview" "set" "frozenset" "dict" "type"))
+
 ;; Normal parameters
 (parameters
   (identifier) @parameter)
@@ -148,13 +148,12 @@
 (comment) @comment @spell
 
 ((module . (comment) @preproc)
-  (#match? @preproc "^#!/"))
+  (#lua-match? @preproc "^#!/"))
 
 (string) @string
 [
   (escape_sequence)
-  "{{"
-  "}}"
+  (escape_interpolation)
 ] @string.escape
 
 ; doc-strings
@@ -258,6 +257,8 @@
 (interpolation
   "{" @punctuation.special
   "}" @punctuation.special)
+
+(type_conversion) @function.macro
 
 ["," "." ":" ";" (ellipsis)] @punctuation.delimiter
 

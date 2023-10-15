@@ -12,6 +12,8 @@
 
 (solidity_version_comparison_operator) @operator
 
+(solidity_version) @text.underline @string.special
+
 ; Literals
 
 [
@@ -35,8 +37,17 @@
 
 (yul_boolean) @boolean
 
-; Type
+; Variables
+
+[
+  (identifier)
+  (yul_identifier)
+] @variable
+
+; Types
+
 (type_name (identifier) @type)
+(type_name (user_defined_type (identifier) @type))
 (type_name "mapping" @function.builtin)
 
 [
@@ -55,9 +66,9 @@
 ; Functions and parameters
 
 (function_definition
-  name:  (identifier) @function)
+  name: (identifier) @function)
 (modifier_definition
-  name:  (identifier) @function)
+  name: (identifier) @function)
 (yul_evm_builtin) @function.builtin
 
 ; Use constructor coloring for special functions
@@ -88,8 +99,8 @@
 (struct_field_assignment name: (identifier) @field)
 (enum_value) @constant
 
-
 ; Keywords
+
 [
   "contract"
   "interface"
@@ -105,6 +116,7 @@
   "var"
   "let"
   "emit"
+  "error"
   "fallback"
   "receive"
   (virtual)
@@ -173,7 +185,8 @@
 ] @include
 (import_directive "as" @include)
 (import_directive "from" @include)
-(import_directive "*" @character.special)
+((import_directive source: (string) @text.underline)
+  (#offset! @text.underline 0 1 0 -1))
 
 ; Punctuation
 
@@ -186,20 +199,12 @@
 [
   "."
   ","
+  ":"
   ; FIXME: update grammar
   ; (semicolon)
   "->"
   "=>"
 ] @punctuation.delimiter
-
-(call_struct_argument
-  ":" @punctuation.delimiter)
-(slice_access
-  ":" @punctuation.delimiter)
-(struct_field_assignment
-  ":" @punctuation.delimiter)
-(yul_label 
-  ":" @punctuation.delimiter)
 
 ; Operators
 
@@ -218,6 +223,7 @@
   "/"
   "%"
   "**"
+  "="
   "<"
   "<="
   "=="
@@ -234,19 +240,12 @@
   ":="
 ] @operator
 
-(yul_assignment
-  ":" @operator
-  "=" @operator)
-
 [
   "delete"
   "new"
 ] @keyword.operator
 
-[
-  (identifier)
-  (yul_identifier)
-] @variable
+(import_directive "*" @character.special)
 
 ; Comments
 

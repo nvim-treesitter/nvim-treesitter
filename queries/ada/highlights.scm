@@ -96,7 +96,7 @@
    "raise"
 ] @exception
 (comment) @comment @spell
-(string_literal) @string @spell
+(string_literal) @string
 (character_literal) @string
 (numeric_literal) @number
 

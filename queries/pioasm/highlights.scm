@@ -1,4 +1,4 @@
-[ (line_comment) (block_comment) ] @comment
+[ (line_comment) (block_comment) ] @comment @spell
 
 (label_decl) @label
 

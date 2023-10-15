@@ -30,14 +30,14 @@
 "or" @keyword.operator
 
 ; comments
-(comment) @comment
+(comment) @comment @spell
 
 ; strings
 ([ (string_expression) (indented_string_expression) ]
   (#set! "priority" 99)) @string
 
 ; paths and URLs
-[ (path_expression) (spath_expression) (uri_expression) ] @string.special
+[ (path_expression) (hpath_expression) (spath_expression) (uri_expression) ] @string.special
 
 ; escape sequences
 (escape_sequence) @string.escape
@@ -89,7 +89,14 @@
   name: (identifier) @boolean
   (#any-of? @boolean "true" "false"))
 
-; builtin functions
+; builtin functions (with builtins prefix)
+(select_expression
+  expression: (variable_expression name: (identifier) @_id)
+  attrpath: (attrpath attr: (identifier) @function.builtin)
+  (#eq? @_id "builtins")
+)
+
+; builtin functions (without builtins prefix)
 (variable_expression name: (identifier) @function.builtin (#any-of? @function.builtin
   ; nix eval --impure --expr 'with builtins; filter (x: !(elem x [ "abort" "derivation" "import" "throw" ]) && isFunction builtins.${x}) (attrNames builtins)'
   "add" "addErrorContext" "all" "any" "appendContext" "attrNames" "attrValues" "baseNameOf" "bitAnd" "bitOr" "bitXor" "break" "catAttrs" "ceil" "compareVersions" "concatLists" "concatMap" "concatStringsSep" "deepSeq" "derivationStrict" "dirOf" "div" "elem" "elemAt" "fetchGit" "fetchMercurial" "fetchTarball" "fetchTree" "fetchurl" "filter" "filterSource" "findFile" "floor" "foldl'" "fromJSON" "fromTOML" "functionArgs" "genList" "genericClosure" "getAttr" "getContext" "getEnv" "getFlake" "groupBy" "hasAttr" "hasContext" "hashFile" "hashString" "head" "intersectAttrs" "isAttrs" "isBool" "isFloat" "isFunction" "isInt" "isList" "isNull" "isPath" "isString" "length" "lessThan" "listToAttrs" "map" "mapAttrs" "match" "mul" "parseDrvName" "partition" "path" "pathExists" "placeholder" "readDir" "readFile" "removeAttrs" "replaceStrings" "scopedImport" "seq" "sort" "split" "splitVersion" "storePath" "stringLength" "sub" "substring" "tail" "toFile" "toJSON" "toPath" "toString" "toXML" "trace" "traceVerbose" "tryEval" "typeOf" "unsafeDiscardOutputDependency" "unsafeDiscardStringContext" "unsafeGetAttrPos" "zipAttrsWith"
@@ -114,6 +121,11 @@
 (attrset_expression (binding_set (binding . (attrpath (identifier) @field))))
 (rec_attrset_expression (binding_set (binding . (attrpath (identifier) @field))))
 
+; function definition
+(binding 
+  attrpath: (attrpath attr: (identifier) @function)
+  expression: (function_expression))
+
 ; unary operators
 (unary_expression operator: _ @operator)
 
@@ -131,3 +143,4 @@
   (unary_expression "-" (float_expression))
   (float_expression)
 ] @float
+

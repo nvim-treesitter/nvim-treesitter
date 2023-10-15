@@ -1,19 +1,19 @@
 ; Built-ins {{{
 ((function_call
   function: (identifier) @function.builtin)
-  (#match? @function.builtin "^(chr|concat|exit|flush|getchar|not|ord|print|print_err|print_int|size|strcmp|streq|substring)$")
+  (#any-of? @function.builtin "chr" "concat" "exit" "flush" "getchar" "not" "ord" "print" "print_err" "print_int" "size" "strcmp" "streq" "substring")
   ; FIXME: not supported by neovim
   ; (#is-not? local)
   )
 
 ((type_identifier) @type.builtin
-  (#match? @type.builtin "^(int|string|Object)$")
+  (#any-of? @type.builtin "int" "string" "Object")
   ; FIXME: not supported by neovim
   ; (#is-not? local)
   )
 
 ((identifier) @variable.builtin
-  (#match? @variable.builtin "^self$")
+  (#eq? @variable.builtin "self")
   ; FIXME: not supported by neovim
   ; (#is-not? local)
   )
@@ -111,7 +111,7 @@
 ; }}}
 
 ; Misc {{{
-(comment) @comment
+(comment) @comment @spell
 
 (type_identifier) @type
 (field_identifier) @property

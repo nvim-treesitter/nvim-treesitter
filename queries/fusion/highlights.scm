@@ -1,5 +1,5 @@
-(comment) @comment
-(afx_comment) @comment
+(comment) @comment @spell
+(afx_comment) @comment @spell
 
 ; identifiers afx
 (afx_opening_element
@@ -18,7 +18,7 @@
 
 (eel_object_path
   (eel_path_identifier) @variable.builtin
-  (#match? @variable.builtin "^(this|props)$")
+  (#any-of? @variable.builtin "this" "props")
 )
 
 (eel_object_path

@@ -9,13 +9,7 @@
   "]"
   "}"
   ">"
-] @indent.end
-
-[ "{" "}" ] @indent.branch
-
-[ "[" "]" ] @indent.branch
-
-[ "<" ">" ] @indent.branch
+] @indent.end @indent.branch
 
 [
   (ERROR)

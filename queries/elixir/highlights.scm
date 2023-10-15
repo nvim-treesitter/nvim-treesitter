@@ -26,13 +26,13 @@
 (identifier) @variable
 
 ; Unused Identifiers
-((identifier) @comment (#match? @comment "^_"))
+((identifier) @comment (#lua-match? @comment "^_"))
 
 ; Comments
 (comment) @comment @spell
 
 ; Strings
-(string) @string @spell
+(string) @string
 
 ; Modules
 (alias) @type

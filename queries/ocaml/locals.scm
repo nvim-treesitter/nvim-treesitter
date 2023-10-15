@@ -27,15 +27,15 @@
 
 (let_binding
   pattern: (value_name) @definition.var
-  (set! definition.var.scope "parent"))
+  (#set! definition.var.scope "parent"))
 
 (let_binding
   pattern: (tuple_pattern (value_name) @definition.var)
-  (set! definition.var.scope "parent"))
+  (#set! definition.var.scope "parent"))
 
 (let_binding
   pattern: (record_pattern (field_pattern (value_name) @definition.var))
-  (set! definition.var.scope "parent"))
+  (#set! definition.var.scope "parent"))
 
 (external (value_name) @definition.var)
 
@@ -47,7 +47,7 @@
 
 (module_binding
   (module_name) @definition.namespace
-  (set! definition.namespace.scope "parent"))
+  (#set! definition.namespace.scope "parent"))
 
 (module_parameter (module_name) @definition.namespace)
 
@@ -58,20 +58,20 @@
 
 (value_path .
   (value_name) @reference
-  (set! reference.kind "var"))
+  (#set! reference.kind "var"))
 
 (type_constructor_path .
   (type_constructor) @reference
-  (set! reference.kind "type"))
+  (#set! reference.kind "type"))
 
 (method_invocation
   (method_name) @reference
-  (set! reference.kind "method"))
+  (#set! reference.kind "method"))
 
 (module_path .
   (module_name) @reference
-  (set! reference.kind "type"))
+  (#set! reference.kind "type"))
 
 (module_type_path .
   (module_type_name) @reference
-  (set! reference.kind "type"))
+  (#set! reference.kind "type"))

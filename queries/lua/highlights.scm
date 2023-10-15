@@ -127,16 +127,23 @@
 
 (identifier) @variable
 
+((identifier) @constant.builtin
+  (#eq? @constant.builtin "_VERSION"))
+
 ((identifier) @variable.builtin
- (#any-of? @variable.builtin "_G" "_VERSION" "debug" "io" "jit" "math" "os" "package" "self" "string" "table" "utf8"))
+  (#eq? @variable.builtin "self"))
+
+((identifier) @namespace.builtin
+  (#any-of? @namespace.builtin "_G" "debug" "io" "jit" "math" "os" "package" "string" "table" "utf8"))
 
 ((identifier) @keyword.coroutine
   (#eq? @keyword.coroutine "coroutine"))
 
 (variable_list
-   attribute: (attribute
-     (["<" ">"] @punctuation.bracket
-      (identifier) @attribute)))
+  (attribute
+    "<" @punctuation.bracket
+    (identifier) @attribute
+    ">" @punctuation.bracket))
 
 ;; Labels
 
@@ -174,13 +181,40 @@
 
 (parameters (identifier) @parameter)
 
-(function_call name: (identifier) @function.call)
-(function_declaration name: (identifier) @function)
+(function_declaration
+  name: [
+    (identifier) @function
+    (dot_index_expression
+      field: (identifier) @function)
+  ])
 
-(function_call name: (dot_index_expression field: (identifier) @function.call))
-(function_declaration name: (dot_index_expression field: (identifier) @function))
+(function_declaration
+  name: (method_index_expression
+    method: (identifier) @method))
 
-(method_index_expression method: (identifier) @method.call)
+(assignment_statement
+  (variable_list .
+    name: [
+      (identifier) @function
+      (dot_index_expression
+        field: (identifier) @function)
+    ])
+  (expression_list .
+    value: (function_definition)))
+
+(table_constructor
+  (field
+    name: (identifier) @function
+    value: (function_definition)))
+
+(function_call
+  name: [
+    (identifier) @function.call
+    (dot_index_expression
+      field: (identifier) @function.call)
+    (method_index_expression
+      method: (identifier) @method.call)
+  ])
 
 (function_call
   (identifier) @function.builtin
@@ -208,7 +242,9 @@
 
 (number) @number
 
-(string) @string @spell
+(string) @string
+
+(escape_sequence) @string.escape
 
 ;; Error
 (ERROR) @error

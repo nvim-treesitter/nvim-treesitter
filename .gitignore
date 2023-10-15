@@ -2,3 +2,6 @@ doc/tags
 .luacheckcache
 /tags
 nvim.appimage
+nvim-linux64*
+nvim-macos*
+nvim-win64*

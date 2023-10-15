@@ -13,7 +13,7 @@
  (line_comment)
  (block_comment)
  (comment_environment)
-] @comment
+] @comment @spell
 
 ((line_comment) @preproc
   (#lua-match? @preproc "^%% !TeX"))
@@ -126,48 +126,48 @@
 ;; Sectioning
 (title_declaration
   command: _ @namespace
-  options: (brack_group (_) @text.title)?
-  text: (curly_group (_) @text.title))
+  options: (brack_group (_) @text.title.1)?
+  text: (curly_group (_) @text.title.1))
 
 (author_declaration
   command: _ @namespace
   authors: (curly_group_author_list
-             ((author)+ @text.title)))
+             ((author)+ @text.title.1)))
 
 (chapter
   command: _ @namespace
-  toc: (brack_group (_) @text.title)?
-  text: (curly_group (_) @text.title))
+  toc: (brack_group (_) @text.title.2)?
+  text: (curly_group (_) @text.title.2))
 
 (part
   command: _ @namespace
-  toc: (brack_group (_) @text.title)?
-  text: (curly_group (_) @text.title))
+  toc: (brack_group (_) @text.title.2)?
+  text: (curly_group (_) @text.title.2))
 
 (section
   command: _ @namespace
-  toc: (brack_group (_) @text.title)?
-  text: (curly_group (_) @text.title))
+  toc: (brack_group (_) @text.title.3)?
+  text: (curly_group (_) @text.title.3))
 
 (subsection
   command: _ @namespace
-  toc: (brack_group (_) @text.title)?
-  text: (curly_group (_) @text.title))
+  toc: (brack_group (_) @text.title.4)?
+  text: (curly_group (_) @text.title.4))
 
 (subsubsection
   command: _ @namespace
-  toc: (brack_group (_) @text.title)?
-  text: (curly_group (_) @text.title))
+  toc: (brack_group (_) @text.title.5)?
+  text: (curly_group (_) @text.title.5))
 
 (paragraph
   command: _ @namespace
-  toc: (brack_group (_) @text.title)?
-  text: (curly_group (_) @text.title))
+  toc: (brack_group (_) @text.title.6)?
+  text: (curly_group (_) @text.title.6))
 
 (subparagraph
   command: _ @namespace
-  toc: (brack_group (_) @text.title)?
-  text: (curly_group (_) @text.title))
+  toc: (brack_group (_) @text.title.6)?
+  text: (curly_group (_) @text.title.6))
 
 ;; Beamer frames
 (generic_environment
@@ -193,18 +193,18 @@
 ((generic_command
   command: (command_name) @_name
   arg: (curly_group (_) @text.emphasis))
-  (#match? @_name "^(\\\\textit|\\\\mathit)$"))
+ (#any-of? @_name "\\textit" "\\mathit"))
 
 ((generic_command
   command: (command_name) @_name
   arg: (curly_group (_) @text.strong))
-  (#match? @_name "^(\\\\textbf|\\\\mathbf)$"))
+ (#any-of? @_name "\\textbf" "\\mathbf"))
 
 ((generic_command
   command: (command_name) @_name
   .
   arg: (curly_group (_) @text.uri))
- (#match? @_name "^(\\\\url|\\\\href)$"))
+ (#any-of? @_name "\\url" "\\href"))
 
 ;; File inclusion commands
 (class_include

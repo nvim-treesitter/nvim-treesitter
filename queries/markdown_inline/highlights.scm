@@ -2,7 +2,7 @@
 [
   (code_span)
   (link_title)
-] @text.literal
+] @text.literal @nospell
 
 [
   (emphasis_delimiter)
@@ -18,7 +18,9 @@
 [
   (link_destination)
   (uri_autolink)
-] @text.uri
+] @text.uri @nospell
+
+(shortcut_link (link_text) @nospell)
 
 [
   (link_label)
@@ -31,12 +33,10 @@
   (hard_line_break)
 ] @string.escape
 
-; "(" not part of query because of
-; https://github.com/nvim-treesitter/nvim-treesitter/issues/2206
-; TODO: Find better fix for this
-(image ["!" "[" "]" "(" ")"] @punctuation.delimiter)
-(inline_link ["[" "]" "(" ")"] @punctuation.delimiter)
-(shortcut_link ["[" "]"] @punctuation.delimiter)
+(image "!" @punctuation.special)
+(image ["[" "]" "(" ")"] @punctuation.bracket)
+(inline_link ["[" "]" "(" ")"] @punctuation.bracket)
+(shortcut_link ["[" "]"] @punctuation.bracket)
 
 ; Conceal codeblock and text style markers
 ([
@@ -92,3 +92,11 @@
     "]"
   ] @conceal
   (#set! conceal ""))
+
+;; Replace common HTML entities.
+((entity_reference) @conceal (#eq? @conceal "&nbsp;") (#set! conceal ""))
+((entity_reference) @conceal (#eq? @conceal "&lt;") (#set! conceal "<"))
+((entity_reference) @conceal (#eq? @conceal "&gt;") (#set! conceal ">"))
+((entity_reference) @conceal (#eq? @conceal "&amp;") (#set! conceal "&"))
+((entity_reference) @conceal (#eq? @conceal "&quot;") (#set! conceal "\""))
+((entity_reference) @conceal (#any-of? @conceal "&ensp;" "&emsp;") (#set! conceal " "))

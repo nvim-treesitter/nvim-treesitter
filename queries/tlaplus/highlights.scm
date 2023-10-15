@@ -232,8 +232,8 @@
 ; Comments and tags
 (block_comment "(*" @comment)
 (block_comment "*)" @comment)
-(block_comment_text) @comment
-(comment) @comment
+(block_comment_text) @comment @spell
+(comment) @comment @spell
 (single_line) @comment
 (_ label: (identifier) @label)
 (label name: (_) @label)

@@ -1,17 +1,61 @@
+(id) @variable
+(comment) @comment @spell
+
+; Literals
+(null) @constant.builtin
+(string) @string
+(number) @number
 [
   (true)
   (false)
 ] @boolean
 
-(comment) @comment
-(id) @variable
-(import) @include
-(null) @constant.builtin
-(number) @number
-(string) @string
+; Keywords
+"for" @repeat
+"in" @keyword.operator
+"function" @keyword.function
 
-(fieldname (id) @label)
+[
+  "if"
+  "then"
+  "else"
+] @conditional
 
+[
+  (local)
+  (tailstrict)
+  "function"
+] @keyword
+
+[
+  "assert"
+  "error"
+] @exception
+
+[
+  (dollar)
+  (self)
+  (super)
+] @variable.builtin
+((id) @variable.builtin
+ (#eq? @variable.builtin "std"))
+
+; Operators
+[
+  (multiplicative)
+  (additive)
+  (bitshift)
+  (comparison)
+  (equality)
+  (bitand)
+  (bitxor)
+  (bitor)
+  (and)
+  (or)
+  (unaryop)
+] @operator
+
+; Punctuation
 [
   "["
   "]"
@@ -26,51 +70,52 @@
   ","
   ";"
   ":"
-  "::"
-  ":::"
 ] @punctuation.delimiter
 
-(expr
-  operator: (_) @operator)
 [
-  "+"
-  "="
-] @operator
+  "::"
+  ":::"
+] @punctuation.special
 
-"in" @keyword.operator
+(field
+  (fieldname) "+" @punctuation.special)
 
+; Imports
 [
- (local)
- "assert"
-] @keyword
+  (import)
+  (importstr)
+] @include
 
-[
-  "else"
-  "if"
-  "then"
-] @conditional
+; Fields
 
-[
-  (dollar)
-  (self)
-] @variable.builtin
-((id) @variable.builtin
- (#eq? @variable.builtin "std"))
+(fieldname (id) @field)
+(fieldname (string (string_content) @field))
 
-; Function declaration
-(bind
-  function: (id) @function
-  params: (params
-            (param
-              identifier: (id) @parameter)))
+; Functions
+(field
+  function: (fieldname (id) @function))
+(field
+  function: (fieldname
+              (string (string_content) @function)))
+(param
+  identifier: (id) @parameter)
+
+(bind (id) @variable.local)
+(bind function: (id) @function)
 
 ; Function call
-(expr
-  (expr (id) @function.call)
+(functioncall
+  (fieldaccess
+    last: (id) @function.call)?
+  (fieldaccess_super
+    (id) @function.call)?
+  (id)? @function.call
   "("
   (args
     (named_argument
-      (id) @parameter))?
+      (id) @parameter
+    ))?
   ")")
 
+; ERROR
 (ERROR) @error

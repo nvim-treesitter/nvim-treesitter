@@ -20,12 +20,12 @@
 ([
   (let_binding (label) @type)
   (union_type_entry (label) @type)
-] (#match? @type "^[A-Z]"))
+] (#lua-match? @type "^%u"))
 
 ((primitive_expression
   (identifier (label) @type)
   (selector (label) @type)) @variable
-  (#vim-match? @variable "^[A-Z][^.]*$"))
+  (#lua-match? @variable "^[A-Z][^.]*$"))
 
 ;; Parameters
 

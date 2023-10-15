@@ -1,4 +1,4 @@
-(comment) @comment
+(comment) @comment @spell
 
 (null) @constant.builtin
 [ (true) (false) ] @boolean

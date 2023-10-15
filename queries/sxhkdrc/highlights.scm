@@ -5,6 +5,6 @@
 (punctuation) @punctuation.bracket
 (delimiter) @punctuation.delimiter
 (keysym) @variable
-(comment) @comment
+(comment) @comment @spell
 (range) @number
 "\\\n" @punctuation.special

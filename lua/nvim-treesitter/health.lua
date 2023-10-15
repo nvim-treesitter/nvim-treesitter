@@ -10,24 +10,30 @@ local ts = require "nvim-treesitter.compat"
 
 local health = vim.health or require "health"
 
+-- "report_" prefix has been deprecated, use the recommended replacements if they exist.
+local _start = health.start or health.report_start
+local _ok = health.ok or health.report_ok
+local _warn = health.warn or health.report_warn
+local _error = health.error or health.report_error
+
 local M = {}
 
 local NVIM_TREESITTER_MINIMUM_ABI = 13
 
 local function install_health()
-  health.report_start "Installation"
+  _start "Installation"
 
-  if fn.has "nvim-0.8.3" ~= 1 then
-    health.report_error "Nvim-treesitter requires Neovim 0.8.3+"
+  if fn.has "nvim-0.9.1" ~= 1 then
+    _error "Nvim-treesitter requires Neovim 0.9.1+"
   end
 
   if fn.executable "tree-sitter" == 0 then
-    health.report_warn(
+    _warn(
       "`tree-sitter` executable not found (parser generator, only needed for :TSInstallFromGrammar,"
         .. " not required for :TSInstall)"
     )
   else
-    health.report_ok(
+    _ok(
       "`tree-sitter` found "
         .. (utils.ts_cli_version() or "(unknown version)")
         .. " (parser generator, only needed for :TSInstallFromGrammar)"
@@ -35,29 +41,27 @@ local function install_health()
   end
 
   if fn.executable "node" == 0 then
-    health.report_warn(
-      "`node` executable not found (only needed for :TSInstallFromGrammar," .. " not required for :TSInstall)"
-    )
+    _warn("`node` executable not found (only needed for :TSInstallFromGrammar," .. " not required for :TSInstall)")
   else
     local handle = io.popen "node --version"
     local result = handle:read "*a"
     handle:close()
     local version = vim.split(result, "\n")[1]
-    health.report_ok("`node` found " .. version .. " (only needed for :TSInstallFromGrammar)")
+    _ok("`node` found " .. version .. " (only needed for :TSInstallFromGrammar)")
   end
 
   if fn.executable "git" == 0 then
-    health.report_error("`git` executable not found.", {
+    _error("`git` executable not found.", {
       "Install it with your package manager.",
       "Check that your `$PATH` is set correctly.",
     })
   else
-    health.report_ok "`git` executable found."
+    _ok "`git` executable found."
   end
 
   local cc = shell.select_executable(install.compilers)
   if not cc then
-    health.report_error("`cc` executable not found.", {
+    _error("`cc` executable not found.", {
       "Check that any of "
         .. vim.inspect(install.compilers)
         .. " is in your $PATH"
@@ -65,7 +69,7 @@ local function install_health()
     })
   else
     local version = vim.fn.systemlist(cc .. (cc == "cl" and "" or " --version"))[1]
-    health.report_ok(
+    _ok(
       "`"
         .. cc
         .. "` executable found. Selected from "
@@ -75,7 +79,7 @@ local function install_health()
   end
   if vim.treesitter.language_version then
     if vim.treesitter.language_version >= NVIM_TREESITTER_MINIMUM_ABI then
-      health.report_ok(
+      _ok(
         "Neovim was compiled with tree-sitter runtime ABI version "
           .. vim.treesitter.language_version
           .. " (required >="
@@ -83,7 +87,7 @@ local function install_health()
           .. "). Parsers must be compatible with runtime ABI."
       )
     else
-      health.report_error(
+      _error(
         "Neovim was compiled with tree-sitter runtime ABI version "
           .. vim.treesitter.language_version
           .. ".\n"
@@ -96,7 +100,7 @@ local function install_health()
     end
   end
 
-  health.report_start("OS Info:\n" .. vim.inspect(vim.loop.os_uname()))
+  _start("OS Info:\n" .. vim.inspect(vim.loop.os_uname()))
 end
 
 local function query_status(lang, query_group)
@@ -141,9 +145,9 @@ function M.check()
          x) errors found in the query, try to run :TSUpdate {lang}]]
   table.insert(parser_installation, legend)
   -- Finally call the report function
-  health.report_start(table.concat(parser_installation, "\n"))
+  _start(table.concat(parser_installation, "\n"))
   if #error_collection > 0 then
-    health.report_start "The following errors have been detected:"
+    _start "The following errors have been detected:"
     for _, p in ipairs(error_collection) do
       local lang, type, err = unpack(p)
       local lines = {}
@@ -164,7 +168,7 @@ function M.check()
           end
         end
       end
-      health.report_error(table.concat(lines, "\n"))
+      _error(table.concat(lines, "\n"))
     end
   end
 end

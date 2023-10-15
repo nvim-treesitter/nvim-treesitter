@@ -71,9 +71,9 @@
 ; References
 (identifier) @reference
 ((type_identifier) @reference
-                   (set! reference.kind "type"))
+                   (#set! reference.kind "type"))
 ((field_identifier) @reference
-                   (set! reference.kind "field"))
+                   (#set! reference.kind "field"))
 
 
 ; Macros

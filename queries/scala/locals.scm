@@ -3,7 +3,8 @@
 [
   (template_body)
   (lambda_expression)
-  (function_declaration)
+  (function_definition)
+  (block)
 ] @scope
 
 ; References
@@ -19,6 +20,9 @@
   name: (identifier) @definition.function)
 
 (parameter
+  name: (identifier) @definition.parameter)
+
+(class_parameter
   name: (identifier) @definition.parameter)
 
 (binding

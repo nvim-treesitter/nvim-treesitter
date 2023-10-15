@@ -10,12 +10,12 @@
 ; highlight constants
 (
   (member_access_expression (identifier) @constant)
-  (#match? @constant "^[A-Z][A-Z_0-9]*$")
+  (#lua-match? @constant "^[%u][%u%d_]*$")
 )
 
 (
   (member_access_expression (member_access_expression) @include (identifier) @constant)
-  (#match? @constant "^[A-Z][A-Z_0-9]*$")
+  (#lua-match? @constant "^[%u][%u%d_]*$")
 )
 
 ; highlight types and probable types
@@ -28,7 +28,7 @@
 ; highlight creation methods in object creation expressions
 (
   (object_creation_expression (type (symbol (symbol (symbol)? @include (identifier) @type) (identifier) @constructor)))
-  (#match? @constructor "^[a-z][a-z_0-9]*$")
+  (#lua-match? @constructor "^[%l][%l%d_]*$")
 )
 
 (unqualified_type (symbol . (identifier) @type))

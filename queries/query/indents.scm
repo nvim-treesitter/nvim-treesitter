@@ -6,3 +6,7 @@
   "["
   "]"
 ] @indent.begin
+
+[
+  "]"
+] @indent.branch

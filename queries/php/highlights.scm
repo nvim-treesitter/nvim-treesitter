@@ -16,6 +16,7 @@
 [
  (primitive_type)
  (cast_type)
+ (bottom_type)
  ] @type.builtin
 (named_type
   [(name) @type
@@ -135,8 +136,15 @@
  (heredoc_body)
  (nowdoc_body)
  (shell_command_expression) ; backtick operator: `ls -la`
- ] @string @spell
+ ] @string
 (escape_sequence) @string.escape
+
+[
+ (heredoc_start)
+ (heredoc_end)
+] @label
+
+(nowdoc "'" @label)
 
 (boolean) @boolean
 (null) @constant.builtin
@@ -271,6 +279,7 @@
   "&"
   "<<"
   ">>"
+  "<<<"
 
   "->"
   "?->"

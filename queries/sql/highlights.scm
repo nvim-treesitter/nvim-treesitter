@@ -1,7 +1,3 @@
-(invocation
-  name: (identifier) @function.call
-  parameter: [(field)]? @parameter)
-
 [
   (keyword_gist)
   (keyword_btree)
@@ -9,23 +5,21 @@
   (keyword_spgist)
   (keyword_gin)
   (keyword_brin)
-  (keyword_float)
   (keyword_array)
-  (keyword_group_concat)
 ] @function.call
 
-(count
-  name: (keyword_count) @function.call
-  parameter: [(field)]? @parameter)
-
-(table_reference
+(object_reference
   name: (identifier) @type)
 
+(invocation
+  (object_reference
+    name: (identifier) @function.call
+    parameter: [(field)]? @parameter))
+
 (relation
-  table_alias: (identifier) @variable)
+  alias: (identifier) @variable)
 
 (field
-  table_alias: (identifier) @variable
   name: (identifier) @field)
 
 (term
@@ -68,20 +62,44 @@
  (keyword_collate)
  (keyword_concurrently)
  (keyword_engine)
- (keyword_character)
- (keyword_concurrently)
+ (keyword_always)
+ (keyword_generated)
  (keyword_preceding)
  (keyword_following)
  (keyword_first)
  (keyword_current_timestamp)
+ (keyword_immutable)
+ (keyword_atomic)
+ (keyword_parallel)
+ (keyword_leakproof)
+ (keyword_safe)
+ (keyword_cost)
+ (keyword_strict)
+ (keyword_matched)
+ (keyword_encrypted)
+ (keyword_valid)
+ (keyword_admin)
+ (keyword_user)
+ (keyword_until)
+ (keyword_connection)
+ (keyword_cycle)
+ (keyword_increment)
+ (keyword_minvalue)
+ (keyword_maxvalue)
+ (keyword_none)
+ (keyword_owned)
+ (keyword_verbose)
+ (keyword_authorization)
 ] @attribute
 
 [
  (keyword_materialized)
+ (keyword_tablespace)
  (keyword_recursive)
  (keyword_temp)
  (keyword_temporary)
  (keyword_unlogged)
+ (keyword_logged)
  (keyword_external)
  (keyword_parquet)
  (keyword_csv)
@@ -91,6 +109,7 @@
  (keyword_avro)
  (keyword_jsonfile)
  (keyword_sequencefile)
+ (keyword_volatile)
 ] @storageclass
 
 [
@@ -110,16 +129,21 @@
   (keyword_delete)
   (keyword_create)
   (keyword_insert)
+  (keyword_merge)
+  (keyword_truncate)
+  (keyword_explain)
   (keyword_distinct)
   (keyword_replace)
   (keyword_update)
   (keyword_into)
+  (keyword_overwrite)
   (keyword_values)
   (keyword_set)
   (keyword_left)
   (keyword_right)
   (keyword_outer)
   (keyword_inner)
+  (keyword_full)
   (keyword_order)
   (keyword_partition)
   (keyword_group)
@@ -129,7 +153,10 @@
   (keyword_limit)
   (keyword_offset)
   (keyword_table)
+  (keyword_tables)
   (keyword_key)
+  (keyword_references)
+  (keyword_foreign)
   (keyword_constraint)
   (keyword_force)
   (keyword_use)
@@ -140,12 +167,17 @@
   (keyword_min)
   (keyword_avg)
   (keyword_column)
+  (keyword_columns)
   (keyword_cross)
   (keyword_lateral)
   (keyword_alter)
   (keyword_drop)
   (keyword_add)
   (keyword_view)
+  (keyword_database)
+  (keyword_role)
+  (keyword_group)
+  (keyword_sequence)
   (keyword_end)
   (keyword_is)
   (keyword_using)
@@ -154,12 +186,16 @@
   (keyword_no)
   (keyword_data)
   (keyword_type)
+  (keyword_value)
+  (keyword_attribute)
   (keyword_rename)
   (keyword_to)
   (keyword_schema)
   (keyword_owner)
   (keyword_union)
   (keyword_all)
+  (keyword_any)
+  (keyword_some)
   (keyword_except)
   (keyword_intersect)
   (keyword_returning)
@@ -174,6 +210,7 @@
   (keyword_change)
   (keyword_modify)
   (keyword_after)
+  (keyword_before)
   (keyword_range)
   (keyword_rows)
   (keyword_groups)
@@ -188,17 +225,47 @@
   (keyword_row)
   (keyword_sort)
   (keyword_compute)
-  (keyword_stats)
   (keyword_comment)
-  (keyword_partitioned)
   (keyword_location)
   (keyword_cached)
   (keyword_uncached)
   (keyword_lines)
   (keyword_stored)
-  (keyword_location)
   (keyword_partitioned)
-  (keyword_cached)
+  (keyword_analyze)
+  (keyword_rewrite)
+  (keyword_optimize)
+  (keyword_vacuum)
+  (keyword_cache)
+  (keyword_language)
+  (keyword_sql)
+  (keyword_called)
+  (keyword_conflict)
+  (keyword_declare)
+  (keyword_filter)
+  (keyword_function)
+  (keyword_input)
+  (keyword_name)
+  (keyword_oid)
+  (keyword_options)
+  (keyword_plpgsql)
+  (keyword_precision)
+  (keyword_regclass)
+  (keyword_regnamespace)
+  (keyword_regproc)
+  (keyword_regtype)
+  (keyword_restricted)
+  (keyword_return)
+  (keyword_returns)
+  (keyword_separator)
+  (keyword_setof)
+  (keyword_stable)
+  (keyword_support)
+  (keyword_tblproperties)
+  (keyword_trigger)
+  (keyword_unsafe)
+  (keyword_start)
+  (keyword_restart)
 ] @keyword
 
 [
@@ -215,6 +282,14 @@
  (keyword_option)
  (keyword_local)
  (keyword_cascaded)
+ (keyword_wait)
+ (keyword_nowait)
+ (keyword_metadata)
+ (keyword_incremental)
+ (keyword_bin_pack)
+ (keyword_noscan)
+ (keyword_stats)
+ (keyword_statistics)
 ] @type.qualifier
 
 [
@@ -222,21 +297,30 @@
   (keyword_null)
   (keyword_boolean)
   (keyword_binary)
+  (keyword_varbinary)
+  (keyword_image)
   (keyword_bit)
+  (keyword_inet)
+  (keyword_character)
   (keyword_smallserial)
   (keyword_serial)
   (keyword_bigserial)
   (keyword_smallint)
+  (keyword_mediumint)
   (keyword_bigint)
   (keyword_tinyint)
   (keyword_decimal)
   (keyword_float)
+  (keyword_double)
   (keyword_numeric)
   (keyword_real)
   (double)
   (keyword_money)
+  (keyword_smallmoney)
   (keyword_char)
+  (keyword_nchar)
   (keyword_varchar)
+  (keyword_nvarchar)
   (keyword_varying)
   (keyword_text)
   (keyword_string)
@@ -248,6 +332,10 @@
   (keyword_enum)
   (keyword_date)
   (keyword_datetime)
+  (keyword_time)
+  (keyword_datetime2)
+  (keyword_datetimeoffset)
+  (keyword_smalldatetime)
   (keyword_timestamp)
   (keyword_timestamptz)
   (keyword_geometry)
@@ -274,6 +362,7 @@
   "/"
   "%"
   "^"
+  ":="
   "="
   "<"
   "<="
@@ -281,6 +370,10 @@
   ">="
   ">"
   "<>"
+  "->"
+  "->>"
+  "#>"
+  "#>>"
 ] @operator
 
 [
@@ -293,5 +386,3 @@
   ","
   "."
 ] @punctuation.delimiter
-
-

@@ -35,9 +35,9 @@
 ;; References
 (identifier) @reference
 ((field_identifier) @reference
-                   (set! reference.kind "field"))
+                    (#set! reference.kind "field"))
 ((type_identifier) @reference
-                   (set! reference.kind "type"))
+                   (#set! reference.kind "type"))
 
 (goto_statement (statement_identifier) @reference)
 

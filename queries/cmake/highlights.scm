@@ -1,6 +1,8 @@
 (normal_command
   (identifier)
-  (argument (unquoted_argument)) @constant
+  (argument_list
+    (argument (unquoted_argument)) @constant
+  )
   (#lua-match? @constant "^[%u@][%u%d_]+$")
 )
 
@@ -55,32 +57,40 @@
 
 (function_command
   (function)
-  . (argument) @function
-  (argument)* @parameter
+  (argument_list
+    . (argument) @function
+    (argument)* @parameter
+  )
 )
 
 (macro_command
   (macro)
-  . (argument) @function.macro
-  (argument)* @parameter
+  (argument_list
+    . (argument) @function.macro
+    (argument)* @parameter
+  )
 )
 
 (block_def
   (block_command
     (block) @function.builtin
-    (argument (unquoted_argument) @constant)
+    (argument_list
+      (argument (unquoted_argument) @constant)
+    )
     (#any-of? @constant "SCOPE_FOR" "POLICIES" "VARIABLES" "PROPAGATE")
   )
   (endblock_command (endblock) @function.builtin)
 )
-
+;
 ((argument) @boolean
   (#match? @boolean "\\c^(1|on|yes|true|y|0|off|no|false|n|ignore|notfound|.*-notfound)$")
 )
-
+;
 (if_command
   (if)
-  (argument) @keyword.operator
+  (argument_list
+    (argument) @keyword.operator
+  )
   (#any-of? @keyword.operator "NOT" "AND" "OR"
                               "COMMAND" "POLICY" "TARGET" "TEST" "DEFINED" "IN_LIST"
                               "EXISTS" "IS_NEWER_THAN" "IS_DIRECTORY" "IS_SYMLINK" "IS_ABSOLUTE"
@@ -92,7 +102,9 @@
 )
 (elseif_command
   (elseif)
-  (argument) @keyword.operator
+  (argument_list
+    (argument) @keyword.operator
+  )
   (#any-of? @keyword.operator "NOT" "AND" "OR"
                               "COMMAND" "POLICY" "TARGET" "TEST" "DEFINED" "IN_LIST"
                               "EXISTS" "IS_NEWER_THAN" "IS_DIRECTORY" "IS_SYMLINK" "IS_ABSOLUTE"
@@ -110,77 +122,93 @@
 
 (normal_command
   (identifier) @_function
-  . (argument) @variable
+  (argument_list
+    . (argument) @variable
+  )
   (#match? @_function "\\c^set$")
 )
 
 (normal_command
   (identifier) @_function
   (#match? @_function "\\c^set$")
-  . (argument)
-  (
+  (argument_list
+    . (argument)
+    (
     (argument) @_cache @storageclass
     .
     (argument) @_type @type
     (#any-of? @_cache "CACHE")
     (#any-of? @_type "BOOL" "FILEPATH" "PATH" "STRING" "INTERNAL")
+    )
   )
 )
 
 (normal_command
   (identifier) @_function
   (#match? @_function "\\c^unset$")
-  . (argument)
-  (argument) @storageclass
-  (#any-of? @storageclass "CACHE" "PARENT_SCOPE")
+  (argument_list
+    . (argument)
+    (argument) @storageclass
+    (#any-of? @storageclass "CACHE" "PARENT_SCOPE")
+  )
 )
 
 (normal_command
   (identifier) @_function
   (#match? @_function "\\c^list$")
-  . (argument) @constant
-  (#any-of? @constant "LENGTH" "GET" "JOIN" "SUBLIST" "FIND")
-  . (argument) @variable
-  (argument) @variable . 
+  (argument_list
+    . (argument) @constant
+    (#any-of? @constant "LENGTH" "GET" "JOIN" "SUBLIST" "FIND")
+    . (argument) @variable
+    (argument) @variable . 
+  )
 )
 (normal_command
   (identifier) @_function
   (#match? @_function "\\c^list$")
-  . (argument) @constant
-  . (argument) @variable
-  (#any-of? @constant "APPEND" "FILTER" "INSERT"
-                      "POP_BACK" "POP_FRONT" "PREPEND"
-                      "REMOVE_ITEM" "REMOVE_AT" "REMOVE_DUPLICATES"
-                      "REVERSE" "SORT")
+  (argument_list
+    . (argument) @constant
+    . (argument) @variable
+    (#any-of? @constant "APPEND" "FILTER" "INSERT"
+                        "POP_BACK" "POP_FRONT" "PREPEND"
+                        "REMOVE_ITEM" "REMOVE_AT" "REMOVE_DUPLICATES"
+                        "REVERSE" "SORT")
+  )
 )
 (normal_command
   (identifier) @_function
   (#match? @_function "\\c^list$")
-  . (argument) @_transform @constant
-  . (argument) @variable
-  . (argument) @_action @constant
-  (#match? @_transform "TRANSFORM")
-  (#any-of? @_action "APPEND" "PREPEND" "TOUPPER" "TOLOWER" "STRIP" "GENEX_STRIP" "REPLACE")
+  (argument_list
+    . (argument) @_transform @constant
+    . (argument) @variable
+    . (argument) @_action @constant
+    (#eq? @_transform "TRANSFORM")
+    (#any-of? @_action "APPEND" "PREPEND" "TOUPPER" "TOLOWER" "STRIP" "GENEX_STRIP" "REPLACE")
+  )
 )
 (normal_command
   (identifier) @_function
   (#match? @_function "\\c^list$")
-  . (argument) @_transform @constant
-  . (argument) @variable
-  . (argument) @_action @constant
-  . (argument)? @_selector @constant
-  (#match? @_transform "TRANSFORM")
-  (#any-of? @_action "APPEND" "PREPEND" "TOUPPER" "TOLOWER" "STRIP" "GENEX_STRIP" "REPLACE")
-  (#any-of? @_selector "AT" "FOR" "REGEX")
+  (argument_list
+    . (argument) @_transform @constant
+    . (argument) @variable
+    . (argument) @_action @constant
+    . (argument)? @_selector @constant
+    (#eq? @_transform "TRANSFORM")
+    (#any-of? @_action "APPEND" "PREPEND" "TOUPPER" "TOLOWER" "STRIP" "GENEX_STRIP" "REPLACE")
+    (#any-of? @_selector "AT" "FOR" "REGEX")
+  )
 )
 (normal_command
   (identifier) @_function
   (#match? @_function "\\c^list$")
-  . (argument) @_transform @constant
-  (argument) @constant .
-  (argument) @variable
-  (#match? @_transform "TRANSFORM")
-  (#match? @constant "OUTPUT_VARIABLE")
+  (argument_list
+    . (argument) @_transform @constant
+    (argument) @constant .
+    (argument) @variable
+    (#eq? @_transform "TRANSFORM")
+    (#eq? @constant "OUTPUT_VARIABLE")
+  )
 )
 
 (escape_sequence) @string.escape

@@ -1,4 +1,4 @@
-(comment_directive) @comment
+(comment_directive) @comment @spell
 
 [
   "<%#"

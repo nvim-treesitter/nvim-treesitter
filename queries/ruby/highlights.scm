@@ -44,16 +44,11 @@
  "if"
  "unless"
  "when"
+ "then"
  ] @conditional
 
 (if
   "end" @conditional)
-(if
-  (then) @conditional)
-(unless
-  (then) @conditional)
-(elsif
-  (then) @conditional)
 
 [
  "for"
@@ -65,7 +60,7 @@
  "next"
  ] @repeat
 
-(constant) @type
+(constant) @constant
 
 ((identifier) @type.qualifier
  (#any-of? @type.qualifier "private" "protected" "public"))
@@ -121,10 +116,10 @@
  ] @label
 
 ((identifier) @constant.builtin
- (#vim-match? @constant.builtin "^__(callee|dir|id|method|send|ENCODING|FILE|LINE)__$"))
+ (#match? @constant.builtin "^__(callee|dir|id|method|send|ENCODING|FILE|LINE)__$"))
 
 ((constant) @type
- (#vim-match? @type "^[A-Z\\d_]+$"))
+ (#not-lua-match? @type "^[A-Z0-9_]+$"))
 
 [
  (self)
@@ -155,12 +150,12 @@
  ] @string
 
 [
- (bare_symbol)
  (heredoc_beginning)
  (heredoc_end)
  ] @constant
 
 [
+ (bare_symbol)
  (simple_symbol)
  (delimited_symbol)
  (hash_key_symbol)
@@ -196,8 +191,6 @@
 (body_statement
   (comment)+ @comment.documentation
   (method))
-
-(string_content) @spell
 
 ; Operators
 

@@ -1,17 +1,29 @@
 [
-  "syntax"
-  "option"
-  "service"
-  "rpc"
-  "returns"
-  "message"
   "enum"
+  "extend"
+  "extensions"
+  "message"
   "oneof"
-  "optional"
-  "repeated"
+  "option"
   "reserved"
+  "service"
+  "syntax"
   "to"
 ] @keyword
+
+[
+ "rpc"
+] @keyword.function
+
+[
+ "returns"
+] @keyword.return
+
+[
+  "optional"
+  "repeated"
+  "required"
+] @type.qualifier
 
 [
   "package"
@@ -34,6 +46,7 @@
 [
   (string)
   "\"proto3\""
+  "\"proto2\""
 ] @string
 
 (int_lit) @number

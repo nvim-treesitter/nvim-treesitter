@@ -2,7 +2,7 @@
 (text) @text
 
 ; Surface has two types of comments, both are highlighted as such
-(comment) @comment
+(comment) @comment @spell
 
 ; Surface attributes are highlighted as HTML attributes
 (attribute_name) @tag.attribute

@@ -35,7 +35,7 @@
 
 (pragma) @preproc
 
-(comment) @comment
+(comment) @comment @spell
 
 ;; Keywords
 [
@@ -62,7 +62,6 @@
   "infixl"
   "infixr"
   "record"
-	(ARROW)
 ]
 @keyword
 

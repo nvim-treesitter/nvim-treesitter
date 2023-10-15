@@ -332,4 +332,4 @@
 
 (caret_id) @tag
 (value_use) @variable
-(comment) @comment
+(comment) @comment @spell

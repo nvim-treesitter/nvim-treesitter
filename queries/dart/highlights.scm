@@ -11,14 +11,12 @@
 
 ; NOTE: This query is a bit of a work around for the fact that the dart grammar doesn't
 ; specifically identify a node as a function call
-(((identifier) @function (#match? @function "^_?[a-z]"))
+(((identifier) @function (#lua-match? @function "^_?[%l]"))
   . (selector . (argument_part))) @function
 
 ; Annotations
 ; --------------------
 (annotation
-  name: (identifier) @attribute)
-(marker_annotation
   name: (identifier) @attribute)
 
 ; Operators and Tokens
@@ -100,7 +98,7 @@
 ((scoped_identifier
   scope: (identifier) @type
   name: (identifier) @type)
- (#match? @type "^[a-zA-Z]"))
+ (#lua-match? @type "^[%u%l]"))
 
 (type_identifier) @type
 
@@ -113,7 +111,7 @@
 (inferred_type) @keyword
 
 ((identifier) @type
- (#match? @type "^_?[A-Z].*[a-z]")) ; catch Classes or IClasses not CLASSES
+ (#lua-match? @type "^_?[%u].*[%l]")) ; catch Classes or IClasses not CLASSES
 
 ("Function" @type)
 
@@ -230,6 +228,9 @@
     "dynamic"
     "external"
     "static"
+    "final"
+    "base"
+    "sealed"
 ] @type.qualifier
 
 ; when used as an identifier:

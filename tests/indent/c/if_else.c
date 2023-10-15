@@ -55,6 +55,5 @@ int baz(int x){
         else
             x++;
     }
-    else
-        return x;
+    return 0;
 }

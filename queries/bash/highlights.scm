@@ -1,53 +1,65 @@
-(simple_expansion) @none
-(expansion
-  "${" @punctuation.special
-  "}" @punctuation.special) @none
 [
- "("
- ")"
- "(("
- "))"
- "{"
- "}"
- "["
- "]"
- "[["
- "]]"
- ] @punctuation.bracket
+ "(" ")"
+ "{" "}"
+ "[" "]"
+ "[[" "]]"
+ "((" "))"
+] @punctuation.bracket
 
 [
  ";"
  ";;"
- (heredoc_start)
- ] @punctuation.delimiter
-
-[
- "$"
-] @punctuation.special
+ ";&"
+ ";;&"
+ "&"
+] @punctuation.delimiter
 
 [
  ">"
  ">>"
  "<"
  "<<"
- "&"
  "&&"
  "|"
+ "|&"
  "||"
  "="
+ "+="
  "=~"
  "=="
  "!="
- ] @operator
 
+ "&>"
+ "&>>"
+ "<&"
+ ">&"
+ ">|"
+ "<&-"
+ ">&-"
+
+ "<<-"
+ "<<<"
+
+ ".."
+] @operator
+
+; Do *not* spell check strings since they typically have some sort of
+; interpolation in them, or, are typically used for things like filenames, URLs,
+; flags and file content.
 [
  (string)
  (raw_string)
  (ansi_c_string)
  (heredoc_body)
-] @string @spell
+] @string
+
+[
+ (heredoc_start)
+ (heredoc_end)
+] @label
 
 (variable_assignment (word) @string)
+(command argument: "$" @string) ; bare dollar
 
 [
  "if"
@@ -58,22 +70,26 @@
  "case"
  "in"
  "esac"
- ] @conditional
+] @conditional
 
 [
  "for"
  "do"
  "done"
+ "select"
+ "until"
  "while"
- ] @repeat
+] @repeat
 
 [
- "declare"
- "export"
- "local"
- "readonly"
- "unset"
- ] @keyword
+  "declare"
+  "typeset"
+  "export"
+  "readonly"
+  "local"
+  "unset"
+  "unsetenv"
+] @keyword
 
 "function" @keyword.function
 
@@ -84,17 +100,26 @@
  (#match? @constant.builtin "^SIG(HUP|INT|QUIT|ILL|TRAP|ABRT|BUS|FPE|KILL|USR[12]|SEGV|PIPE|ALRM|TERM|STKFLT|CHLD|CONT|STOP|TSTP|TT(IN|OU)|URG|XCPU|XFSZ|VTALRM|PROF|WINCH|IO|PWR|SYS|RTMIN([+]([1-9]|1[0-5]))?|RTMAX(-([1-9]|1[0-4]))?)$"))
 
 ((word) @boolean
-  (#match? @boolean "^(true|false)$"))
+ (#any-of? @boolean "true" "false"))
 
 (comment) @comment @spell
-(test_operator) @string
 
-(command_substitution
-  [ "$(" ")" ] @punctuation.bracket)
+(test_operator) @operator
 
-(process_substitution
-  [ "<(" ")" ] @punctuation.bracket)
+(command_substitution "$(" @punctuation.bracket)
+(process_substitution "<(" @punctuation.bracket)
 
+(arithmetic_expansion
+  [ "$((" "((" ] @punctuation.special
+  "))" @punctuation.special)
+
+(arithmetic_expansion "," @punctuation.delimiter)
+
+(ternary_expression [ "?" ":" ] @conditional.ternary)
+
+(binary_expression operator: _ @operator)
+(unary_expression operator: _ @operator)
+(postfix_expression operator: _ @operator)
 
 (function_definition
   name: (word) @function)
@@ -103,8 +128,15 @@
 
 ((command_name (word) @function.builtin)
  (#any-of? @function.builtin
-    "alias" "cd" "clear" "echo" "eval" "exit" "getopts" "popd"
-    "pushd" "return" "set" "shift" "shopt" "source" "test"))
+    "alias" "bg" "bind" "break" "builtin" "caller" "cd"
+    "command" "compgen" "complete" "compopt" "continue"
+    "coproc" "dirs" "disown" "echo" "enable" "eval"
+    "exec" "exit" "fc" "fg" "getopts" "hash" "help"
+    "history" "jobs" "kill" "let" "logout" "mapfile"
+    "popd" "printf" "pushd" "pwd" "read" "readarray"
+    "return" "set" "shift" "shopt" "source" "suspend"
+    "test" "time" "times" "trap" "type" "typeset"
+    "ulimit" "umask" "unalias" "wait"))
 
 (command
   argument: [
@@ -112,15 +144,30 @@
              (concatenation (word) @parameter)
              ])
 
+(number) @number
 ((word) @number
-  (#lua-match? @number "^[0-9]+$"))
+ (#lua-match? @number "^[0-9]+$"))
 
 (file_redirect
-  descriptor: (file_descriptor) @operator
   destination: (word) @parameter)
 
+(file_descriptor) @operator
+
+(simple_expansion
+  "$" @punctuation.special) @none
 (expansion
-  [ "${" "}" ] @punctuation.bracket)
+  "${" @punctuation.special
+  "}" @punctuation.special) @none
+
+(expansion operator: _ @punctuation.special)
+(expansion "@" . operator: _ @character.special)
+
+((expansion
+  (subscript
+    index: (word) @character.special))
+ (#any-of? @character.special "@" "*"))
+
+"``" @punctuation.special
 
 (variable_name) @variable
 
@@ -130,7 +177,10 @@
 (case_item
   value: (word) @parameter)
 
-(regex) @string.regex
+[
+  (regex)
+  (extglob_pattern)
+] @string.regex
 
 ((program . (comment) @preproc)
-  (#match? @preproc "^#!/"))
+ (#lua-match? @preproc "^#!/"))

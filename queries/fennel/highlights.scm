@@ -23,7 +23,7 @@
 (boolean) @boolean
 (number) @number
 
-(string) @string @spell
+(string) @string
 (escape_sequence) @string.escape
 
 (symbol) @variable
@@ -34,13 +34,13 @@
 
 (multi_symbol_method
    ":" @punctuation.delimiter
-   (symbol) @method .)
+   (symbol) @method.call .)
 
-(list . (symbol) @function)
-(list . (multi_symbol (symbol) @function .))
+(list . (symbol) @function.call)
+(list . (multi_symbol (symbol) @function.call .))
 
 ((symbol) @variable.builtin
- (#match? @variable.builtin "^[$]"))
+ (#lua-match? @variable.builtin "^[$]"))
 
 (binding) @symbol
 

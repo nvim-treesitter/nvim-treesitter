@@ -176,7 +176,7 @@
 ] @keyword.operator
 
 
-(comment) @comment
+(comment) @comment @spell
 
 
 ; Could this be summarized?

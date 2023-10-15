@@ -18,7 +18,7 @@
 
 ((member_expression
   object: (identifier) @type.builtin)
-  (#match? @type.builtin "^sys$"))
+  (#eq? @type.builtin "sys"))
 
 ; Functions
 

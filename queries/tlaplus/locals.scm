@@ -75,8 +75,7 @@
     (_ (_ (_ (_ (identifier_ref) @definition.var))))
     (_ (_ (_ (_ (_ (identifier_ref) @definition.var)))))
   ]
-  (#vim-match? @definition.var "^(self|pc|stack)$")
-)
+  (#any-of? @definition.var "self" "pc" "stack"))
 
 ; References
 (identifier_ref) @reference

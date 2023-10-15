@@ -27,7 +27,7 @@
 (doctype) @constant
 
 ; HEEx comments are highlighted as such
-(comment) @comment
+(comment) @comment @spell
 
 ; HEEx text content is treated as markup
 (text) @text

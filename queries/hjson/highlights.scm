@@ -13,4 +13,4 @@
 "{" @punctuation.bracket
 "}" @punctuation.bracket
 
-(comment) @comment
+(comment) @comment @spell

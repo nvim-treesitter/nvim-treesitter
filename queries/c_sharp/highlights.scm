@@ -223,6 +223,7 @@
  "switch"
  "break"
  "case"
+ "when"
  (if_directive)
  (elif_directive)
  (else_directive)
@@ -289,6 +290,8 @@
  ">>="
  ">>>="
  "=>"
+ "??"
+ "??="
 ] @operator
 
 [
@@ -298,6 +301,8 @@
  ":"
 ] @punctuation.delimiter
 
+(conditional_expression ["?" ":"] @conditional.ternary)
+
 [
  "["
  "]"
@@ -305,9 +310,9 @@
  "}"
  "("
  ")"
- "<"
- ">"
 ] @punctuation.bracket
+
+(type_argument_list ["<" ">"] @punctuation.bracket)
 
 [
  (this_expression)
@@ -362,6 +367,7 @@
  "checked"
  "unchecked"
  "fixed"
+ "alias"
 ] @keyword
 
 [

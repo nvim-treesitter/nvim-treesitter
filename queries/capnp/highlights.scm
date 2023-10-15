@@ -1,7 +1,9 @@
 ; Preproc
 
-(unique_id) @preproc
-(top_level_annotation_body) @preproc
+[
+  (unique_id)
+  (top_level_annotation_body)
+] @preproc
 
 ; Includes
 
@@ -9,11 +11,29 @@
   "import"
   "$import"
   "embed"
+  "using"
 ] @include
 
-(import_path) @string
+(import_path) @string @text.uri
+
+; Keywords
+
+[
+  "annotation"
+  "enum"
+  "group"
+  "interface"
+  "struct"
+  "union"
+  "extends"
+  "namespace"
+] @keyword
 
 ; Builtins
+
+[
+  "const"
+] @type.qualifier
 
 [
   (primitive_type)
@@ -30,8 +50,10 @@
 
 ; Methods
 
-(annotation_definition_identifier) @method
-(method_identifier) @method
+[
+  (annotation_definition_identifier)
+  (method_identifier)
+] @method
 
 ; Fields
 
@@ -43,53 +65,41 @@
 
 ; Parameters
 
-(param_identifier) @parameter
-(return_identifier) @parameter
+[
+  (param_identifier)
+  (return_identifier)
+] @parameter
+
+(annotation_target) @parameter.builtin
 
 ; Constants
 
-(const_identifier) @constant
-(local_const) @constant
-(enum_member) @constant
+[
+  (const_identifier)
+  (local_const)
+  (enum_member)
+] @constant
 
 (void) @constant.builtin
 
 ; Types
 
-(enum_identifier) @type
-(extend_type) @type
-(type_identifier) @type
+[
+  (enum_identifier)
+  (extend_type)
+  (type_identifier)
+] @type
 
 ; Attributes
 
-(annotation_identifier) @attribute
-(attribute) @attribute
+[
+  (annotation_identifier)
+  (attribute)
+] @attribute
 
 ; Operators
 
-[
- ; @ ! -
-  "="
-] @operator
-
-; Keywords
-
-
-[
-  "annotation"
-  "enum"
-  "group"
-  "interface"
-  "struct"
-  "union"
-] @keyword
-
-[
-  "extends"
-  "namespace"
-  "using"
-  (annotation_target)
-] @keyword
+"=" @operator
 
 ; Literals
 
@@ -99,6 +109,8 @@
   (block_text)
   (namespace)
 ] @string
+
+(namespace) @text.underline
 
 (escape_sequence) @string.escape
 
@@ -110,11 +122,9 @@
 
 (boolean) @boolean
 
-; Misc
+(data_hex) @symbol
 
-[
-  "const"
-] @type.qualifier
+; Punctuation
 
 [
   "*"
@@ -129,13 +139,16 @@
 ["[" "]"] @punctuation.bracket
 
 [
+  "."
   ","
   ";"
   "->"
 ] @punctuation.delimiter
 
-(data_hex) @symbol
-
 ; Comments
 
 (comment) @comment @spell
+
+; Errors
+
+(ERROR) @error

@@ -11,6 +11,8 @@
   (comment)
 ] @comment
 
+(comment) @spell
+
 [
   "="
   "#"

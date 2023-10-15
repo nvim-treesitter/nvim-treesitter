@@ -31,4 +31,4 @@
  (non_boundary_assertion)
 ] @string.escape
 
-[ "*" "+" "?" "|" "=" "<=" "!" "<!" ] @operator
+[ "*" "+" "?" "|" "=" "!" ] @operator

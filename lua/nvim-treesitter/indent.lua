@@ -1,7 +1,5 @@
-local parsers = require "nvim-treesitter.parsers"
-local queries = require "nvim-treesitter.query"
-local tsutils = require "nvim-treesitter.ts_utils"
 local ts = vim.treesitter
+local parsers = require "nvim-treesitter.parsers"
 
 local M = {}
 
@@ -15,20 +13,34 @@ M.comment_parsers = {
   phpdoc = true,
 }
 
+local function getline(lnum)
+  return vim.api.nvim_buf_get_lines(0, lnum - 1, lnum, false)[1] or ""
+end
+
 ---@param root TSNode
 ---@param lnum integer
+---@param col? integer
 ---@return TSNode
-local function get_first_node_at_line(root, lnum)
-  local col = vim.fn.indent(lnum)
+local function get_first_node_at_line(root, lnum, col)
+  col = col or vim.fn.indent(lnum)
   return root:descendant_for_range(lnum - 1, col, lnum - 1, col)
 end
 
 ---@param root TSNode
 ---@param lnum integer
+---@param col? integer
 ---@return TSNode
-local function get_last_node_at_line(root, lnum)
-  local col = #vim.fn.getline(lnum) - 1
+local function get_last_node_at_line(root, lnum, col)
+  col = col or (#getline(lnum) - 1)
   return root:descendant_for_range(lnum - 1, col, lnum - 1, col)
+end
+
+---@param node TSNode
+---@return number
+local function node_length(node)
+  local _, _, start_byte = node:start()
+  local _, _, end_byte = node:end_()
+  return end_byte - start_byte
 end
 
 ---@param bufnr integer
@@ -50,42 +62,53 @@ local function find_delimiter(bufnr, node, delimiter)
   end
 end
 
-local get_indents = tsutils.memoize_by_buf_tick(function(bufnr, root, lang)
+---Memoize a function using hash_fn to hash the arguments.
+---@generic F: function
+---@param fn F
+---@param hash_fn fun(...): any
+---@return F
+local function memoize(fn, hash_fn)
+  local cache = setmetatable({}, { __mode = "kv" }) ---@type table<any,any>
+
+  return function(...)
+    local key = hash_fn(...)
+    if cache[key] == nil then
+      local v = fn(...) ---@type any
+      cache[key] = v ~= nil and v or vim.NIL
+    end
+
+    local v = cache[key]
+    return v ~= vim.NIL and v or nil
+  end
+end
+
+local get_indents = memoize(function(bufnr, root, lang)
   local map = {
-    indent = {
-      auto = {},
-      begin = {},
-      ["end"] = {},
-      dedent = {},
-      branch = {},
-      ignore = {},
-      align = {},
-      zero = {},
-    },
+    ["indent.auto"] = {},
+    ["indent.begin"] = {},
+    ["indent.end"] = {},
+    ["indent.dedent"] = {},
+    ["indent.branch"] = {},
+    ["indent.ignore"] = {},
+    ["indent.align"] = {},
+    ["indent.zero"] = {},
   }
 
-  local function split(to_split)
-    local t = {}
-    for str in string.gmatch(to_split, "([^.]+)") do
-      table.insert(t, str)
-    end
-    return t
+  --TODO(clason): remove when dropping Nvim 0.8 compat
+  local query = (ts.query.get or ts.get_query)(lang, "indents")
+  if not query then
+    return map
   end
-
-  for name, node, metadata in queries.iter_captures(bufnr, "indents", root, lang) do
-    local path = split(name)
-    -- node may contain a period so append directly.
-    table.insert(path, node:id())
-    queries.insert_to_path(map, path, metadata or {})
+  for id, node, metadata in query:iter_captures(root, bufnr) do
+    if query.captures[id]:sub(1, 1) ~= "_" then
+      map[query.captures[id]][node:id()] = metadata or {}
+    end
   end
 
   return map
-end, {
-  -- Memoize by bufnr and lang together.
-  key = function(bufnr, root, lang)
-    return tostring(bufnr) .. root:id() .. "_" .. lang
-  end,
-})
+end, function(bufnr, root, lang)
+  return tostring(bufnr) .. root:id() .. "_" .. lang
+end)
 
 ---@param lnum number (1-indexed)
 function M.get_indent(lnum)
@@ -95,12 +118,13 @@ function M.get_indent(lnum)
     return -1
   end
 
+  --TODO(clason): replace when dropping Nvim 0.8 compat
   local root_lang = parsers.get_buf_lang(bufnr)
 
   -- some languages like Python will actually have worse results when re-parsing at opened new line
   if not M.avoid_force_reparsing[root_lang] then
     -- Reparse in case we got triggered by ":h indentkeys"
-    parser:parse()
+    parser:parse { vim.fn.line "w0" - 1, vim.fn.line "w$" - 1 }
   end
 
   -- Get language tree with smallest range around node that's not a comment parser
@@ -111,7 +135,7 @@ function M.get_indent(lnum)
     end
     local local_root = tstree:root()
     if ts.is_in_node_range(local_root, lnum - 1, 0) then
-      if not root or tsutils.node_length(root) >= tsutils.node_length(local_root) then
+      if not root or node_length(root) >= node_length(local_root) then
         root = local_root
         lang_tree = tree
       end
@@ -124,12 +148,28 @@ function M.get_indent(lnum)
   end
 
   local q = get_indents(vim.api.nvim_get_current_buf(), root, lang_tree:lang())
-  local is_empty_line = string.match(vim.fn.getline(lnum), "^%s*$") ~= nil
+  local is_empty_line = string.match(getline(lnum), "^%s*$") ~= nil
   local node ---@type TSNode
   if is_empty_line then
     local prevlnum = vim.fn.prevnonblank(lnum)
-    node = get_last_node_at_line(root, prevlnum)
-    if q.indent["end"][node:id()] then
+    local indent = vim.fn.indent(prevlnum)
+    local prevline = vim.trim(getline(prevlnum))
+    -- The final position can be trailing spaces, which should not affect indentation
+    node = get_last_node_at_line(root, prevlnum, indent + #prevline - 1)
+    if node:type():match "comment" then
+      -- The final node we capture of the previous line can be a comment node, which should also be ignored
+      -- Unless the last line is an entire line of comment, ignore the comment range and find the last node again
+      local first_node = get_first_node_at_line(root, prevlnum, indent)
+      local _, scol, _, _ = node:range()
+      if first_node:id() ~= node:id() then
+        -- In case the last captured node is a trailing comment node, re-trim the string
+        prevline = vim.trim(prevline:sub(1, scol - indent))
+        -- Add back indent as indent of prevline was trimmed away
+        local col = indent + #prevline - 1
+        node = get_last_node_at_line(root, prevlnum, col)
+      end
+    end
+    if q["indent.end"][node:id()] then
       node = get_first_node_at_line(root, lnum)
     end
   else
@@ -147,16 +187,16 @@ function M.get_indent(lnum)
   -- tracks to ensure multiple indent levels are not applied for same line
   local is_processed_by_row = {}
 
-  if q.indent.zero[node:id()] then
+  if q["indent.zero"][node:id()] then
     return 0
   end
 
   while node do
     -- do 'autoindent' if not marked as @indent
     if
-      not q.indent.begin[node:id()]
-      and not q.indent.align[node:id()]
-      and q.indent.auto[node:id()]
+      not q["indent.begin"][node:id()]
+      and not q["indent.align"][node:id()]
+      and q["indent.auto"][node:id()]
       and node:start() < lnum - 1
       and lnum - 1 <= node:end_()
     then
@@ -167,8 +207,8 @@ function M.get_indent(lnum)
     -- If a node spans from L1,C1 to L2,C2, we know that lines where L1 < line <= L2 would
     -- have their indentations contained by the node.
     if
-      not q.indent.begin[node:id()]
-      and q.indent.ignore[node:id()]
+      not q["indent.begin"][node:id()]
+      and q["indent.ignore"][node:id()]
       and node:start() < lnum - 1
       and lnum - 1 <= node:end_()
     then
@@ -181,7 +221,7 @@ function M.get_indent(lnum)
 
     if
       not is_processed_by_row[srow]
-      and ((q.indent.branch[node:id()] and srow == lnum - 1) or (q.indent.dedent[node:id()] and srow ~= lnum - 1))
+      and ((q["indent.branch"][node:id()] and srow == lnum - 1) or (q["indent.dedent"][node:id()] and srow ~= lnum - 1))
     then
       indent = indent - indent_size
       is_processed = true
@@ -197,16 +237,16 @@ function M.get_indent(lnum)
     if
       should_process
       and (
-        q.indent.begin[node:id()]
-        and (srow ~= erow or is_in_err or q.indent.begin[node:id()]["indent.immediate"])
-        and (srow ~= lnum - 1 or q.indent.begin[node:id()]["indent.start_at_same_line"])
+        q["indent.begin"][node:id()]
+        and (srow ~= erow or is_in_err or q["indent.begin"][node:id()]["indent.immediate"])
+        and (srow ~= lnum - 1 or q["indent.begin"][node:id()]["indent.start_at_same_line"])
       )
     then
       indent = indent + indent_size
       is_processed = true
     end
 
-    if is_in_err and not q.indent.align[node:id()] then
+    if is_in_err and not q["indent.align"][node:id()] then
       -- only when the node is in error, promote the
       -- first child's aligned indent to the error node
       -- to work around ((ERROR "X" . (_)) @aligned_indent (#set! "delimeter" "AB"))
@@ -214,15 +254,15 @@ function M.get_indent(lnum)
       -- (ERROR "X" @aligned_indent (#set! "delimeter" "AB") . (_))
       -- and we will fish it out here.
       for c in node:iter_children() do
-        if q.indent.align[c:id()] then
-          q.indent.align[node:id()] = q.indent.align[c:id()]
+        if q["indent.align"][c:id()] then
+          q["indent.align"][node:id()] = q["indent.align"][c:id()]
           break
         end
       end
     end
     -- do not indent for nodes that starts-and-ends on same line and starts on target line (lnum)
-    if should_process and q.indent.align[node:id()] and (srow ~= erow or is_in_err) and (srow ~= lnum - 1) then
-      local metadata = q.indent.align[node:id()]
+    if should_process and q["indent.align"][node:id()] and (srow ~= erow or is_in_err) and (srow ~= lnum - 1) then
+      local metadata = q["indent.align"][node:id()]
       local o_delim_node, o_is_last_in_line ---@type TSNode|nil, boolean|nil
       local c_delim_node, c_is_last_in_line ---@type TSNode|nil, boolean|nil, boolean|nil
       local indent_is_absolute = false

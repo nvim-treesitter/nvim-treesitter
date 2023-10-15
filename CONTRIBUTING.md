@@ -82,9 +82,7 @@ you can mark the language as optional (by putting it between parenthesis).
 
 ### Highlights
 
-As languages differ quite a lot, here is a set of captures available to you when building a `highlights.scm` query.
-One important thing to note is that many of these capture groups are not supported by `neovim` for now, and will not have any
-effect on highlighting. We will work on improving highlighting in the near future though.
+As languages differ quite a lot, here is a set of captures available to you when building a `highlights.scm` query. Note that your colorscheme needs to define (or link) these captures as highlight groups.
 
 #### Misc
 
@@ -196,13 +194,16 @@ Mainly for markup languages.
 @text.underline        ; underlined text
 @text.strike           ; strikethrough text
 @text.title            ; text that is part of a title
-@text.literal          ; literal or verbatim text (e.g., inline code)
 @text.quote            ; text quotations
 @text.uri              ; URIs (e.g. hyperlinks)
 @text.math             ; math environments (e.g. `$ ... $` in LaTeX)
 @text.environment      ; text environments of markup languages
 @text.environment.name ; text indicating the type of an environment
 @text.reference        ; text references, footnotes, citations, etc.
+
+@text.literal          ; literal or verbatim text (e.g., inline code)
+@text.literal.block    ; literal or verbatim text as a stand-alone block
+                       ; (use priority 90 for blocks with injections)
 
 @text.todo             ; todo notes
 @text.note             ; info notes
@@ -238,7 +239,25 @@ Used for XML-like tags.
 @nospell ; for defining regions that should NOT be spellchecked
 ```
 
+The main types of nodes which are spell checked are:
+- Comments
+- Strings; where it makes sense. Strings that have interpolation or are typically used for non text purposes are not spell checked (e.g. bash).
+
+#### Priority
+
+Captures can be assigned a priority to control precedence of highlights via the
+`#set! "priority" <number>` directive (see `:h treesitter-highlight-priority`).
+The default priority for treesitter highlights is `100`; queries should only
+set priorities between `90` and `120`, to avoid conflict with other sources of
+highlighting (such as diagnostics or LSP semantic tokens).
+
 ### Locals
+
+Note: pay specific attention to the captures here as they are a bit different to
+those listed in the upstream [Local Variables
+docs](https://tree-sitter.github.io/tree-sitter/syntax-highlighting#local-variables).
+Some of these docs didn't exist when `nvim-treesitter` was created and the
+upstream captures are more limiting than what we have here.
 
 ```scheme
 @definition            ; various definitions
@@ -299,18 +318,31 @@ query.
 ### Injections
 
 Some captures are related to language injection (like markdown code blocks). They are used in `injections.scm`.
-You can directly use the name of the language that you want to inject (e.g. `@html` to inject html).
 
-If you want to dynamically detect the language (e.g. for Markdown blocks) use the `@language` to capture
-the node describing the language and `@content` to describe the injection region.
+If you want to dynamically detect the language (e.g. for Markdown blocks) use the `@injection.language` to capture
+the node describing the language and `@injection.content` to describe the injection region.
 
 ```scheme
-@{lang}   ; e.g. @html to describe a html region
-
-@language ; dynamic detection of the injection language (i.e. the text of the captured node describes the language)
-@content  ; region for the dynamically detected language
-@combined ; combine all matches of a pattern as one single block of content
+@injection.language ; dynamic detection of the injection language (i.e. the text of the captured node describes the language)
+@injection.content  ; region for the dynamically detected language
 ```
+
+For example, to inject javascript into HTML's `<script>` tag
+
+```html
+<script>someJsCode();</script>
+```
+
+```query
+(script_element
+  (raw_text) @injection.content
+  (#set! injection.language "javascript")) ; set the parser language for @injection.content region to javascript
+```
+
+For regions that don't have a corresponding `@injection.language`, you need to manually set the language 
+through `(#set injection.language "lang_name")`
+
+To combine all matches of a pattern as one single block of content, add `(#set! injection.combined)` to such pattern
 
 ### Indents
 

@@ -5,6 +5,11 @@ ENTRY &password
 ; <- keyword
 ;        ^ parameter
 
+ENTRY %LINE &salt
+; <- keyword
+;      ^ constant.builtin
+;            ^ parameter
+
 IF "&password"==""
 ; <- conditional
 ;  ^ string
@@ -30,7 +35,7 @@ ELSE
         RETURNVALUES &pass
 ;                     ^ parameter
         WAIT 10.ms
-;            ^ number
+;            ^ float
     )
 
     IF !&pass
@@ -56,9 +61,9 @@ RePeaT &num PRINT "Password: &password"
 WinCLEAR
 FramePOS ,,,,Maximized
 ;        ^ punctuation.delimiter
-;            ^ constant
+;            ^ constant.builtin
 WinPOS 0% 50% 100% 35%
-;      ^ number
+;      ^ float
 COVerage.ListFunc
 
 ENDDO
@@ -79,13 +84,16 @@ verify_password:
 
     SYStem.Option.KEYCODE "&password"
     SYStem.JtagClock  1kHz
-;                     ^ number
+;                     ^ float
     SYStem.Mode.Attach
 
-    Data.Set EAXI:0x34000000 %Long 0x34000100 0x34000021 /verify
-;            ^ number
-;                             ^ constant.builtin
-;                                                         ^ constant
+    Data.Set N: EAXI:0x34000000 %Long 0x34000100 0x34000021 /verify
+;            ^ constant.builtin
+;               ^ constant.builtin
+;                    ^ number
+;                                ^ constant.builtin
+;                                     ^ number
+;                                                            ^ constant.builtin
 
     RETURN TRUE()
 ;   ^ keyword.return
@@ -93,8 +101,20 @@ verify_password:
 
 
 SUBROUTINE start_debug
+; <- keyword.function
 ;          ^ function
 (
+    COVerage.ListModule %MULTI.OBC \sieve
+;    ^ keyword
+;                        ^ constant.builtin
+;                                  ^ symbol
+
+    Var.DRAW flags[0..16] /Alternate 3
+;    ^ keyword
+;             ^ variable
+;                          ^ constant.builtin
+;                                    ^ number
+
     Go main
     RETURN
 ;   ^ keyword.return

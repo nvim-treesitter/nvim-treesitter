@@ -2,8 +2,8 @@ local Runner = require("tests.indent.common").Runner
 --local XFAIL = require("tests.indent.common").XFAIL
 
 local run = Runner:new(it, "tests/indent/wgsl", {
-  tabstop = 4,
-  shiftwidth = 4,
+  tabstop = 2,
+  shiftwidth = 2,
   softtabstop = 0,
   expandtab = true,
 })
