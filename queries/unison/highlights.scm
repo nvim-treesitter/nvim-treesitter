@@ -13,6 +13,8 @@
   (type_kw)
   (do)
   (kw_let)
+  (ability)
+  (where)
 ] @keyword
 
 (kw_equals) @keyword.operator
@@ -49,14 +51,25 @@
 
 ;; Types
 (record_field name: (wordy_id) @variable type: (wordy_id) @type)
-[
-  (type_name)
-  (type_signature)
-  (effect)
-] @type
+(type_name) @type
 
-(term_definition) @variable
+(ability_declaration type_name: (wordy_id) @type type_arg: (wordy_id) @parameter)
+(effect (wordy_id) @attribute) ;; NOTE: an effect is a special type
 
+
+;; Namespaces
+(path) @namespace
+(namespace) @namespace
+
+;; Terms
+(type_signature term_name: (path) @namespace term_name: (wordy_id) @variable)
+(type_signature term_name: (wordy_id) @variable)
+(term_type) @type
+
+(function_application function_name: (path) function_name: (wordy_id) @function)
+
+(term_definition name: (wordy_id) @variable)
+(term_definition param: (wordy_id) @parameter)
 ;; Punctuation
 [
   (type_signature_colon)
@@ -71,3 +84,5 @@
   "["
   "]"
 ] @punctuation.bracket
+
+(test_watch_expression (wordy_id) @preproc)
