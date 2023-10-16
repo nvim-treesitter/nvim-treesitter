@@ -88,7 +88,7 @@ ecma (queries only)[^ecma] | core | `HFIJL` |  |  | @steelsojka
 [gpg](https://github.com/ObserverOfTime/tree-sitter-gpg-config) | core | `H  J ` |  |  | @ObserverOfTime
 [graphql](https://github.com/bkegley/tree-sitter-graphql) | community | `H IJ ` |  |  | @bkegley
 [groovy](https://github.com/Decodetalkers/tree-sitter-groovy) | community | `H  J ` |  |  | @Decodetalkers
-[gstlaunch](https://github.com/theHamsta/tree-sitter-gstlaunch) | core | `     ` |  |  | @theHamsta
+[gstlaunch](https://github.com/theHamsta/tree-sitter-gstlaunch) | core | `H    ` |  |  | @theHamsta
 [hack](https://github.com/slackhq/tree-sitter-hack) | unsupported | `H    ` |  |  | 
 [hare](https://github.com/amaanq/tree-sitter-hare) | core | `HFIJL` |  |  | @amaanq
 [haskell](https://github.com/tree-sitter/tree-sitter-haskell) | community | `HF J ` |  |  | @mrcjkb
