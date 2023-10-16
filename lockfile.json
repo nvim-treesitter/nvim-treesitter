@@ -18,7 +18,7 @@
     "revision": "1dec7e1af96c56924e3322cd85fdce15d0a31d00"
   },
   "awk": {
-    "revision": "374da90decaa60fea7a22490a77440ece6d4161d"
+    "revision": "90c8d9b47edcf7e2d67680c6649d5f6358d2ce06"
   },
   "bash": {
     "revision": "7331995b19b8f8aba2d5e26deb51d2195c18bc94"
@@ -42,7 +42,7 @@
     "revision": "863cea9f83ad5637300478e0559262f1e791684b"
   },
   "c": {
-    "revision": "f1075f2d65ecb62725821fd8a34ce68c1fa8ae51"
+    "revision": "0d33f0422ad391c6d652283645d546ffa048f503"
   },
   "c_sharp": {
     "revision": "1648e21b4f087963abf0101ee5221bb413107b07"
@@ -223,6 +223,9 @@
   },
   "groovy": {
     "revision": "ae8aa51ec3275afb567a4a67df1a26d89feb135f"
+  },
+  "gstlaunch": {
+    "revision": "2c0d9c94d35e37aa63fa5002163c8480985b3e5b"
   },
   "hack": {
     "revision": "fca1e294f6dce8ec5659233a6a21f5bd0ed5b4f2"
@@ -546,7 +549,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "eeab7240a11098724e6f95bc57cc3ceaf5487d5f"
+    "revision": "c86aa9c19ab9f04f2e55a6ef00f34147932c15e5"
   },
   "squirrel": {
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
@@ -579,7 +582,7 @@
     "revision": "1af543a96d060b1f808982037bfc54cc02218edd"
   },
   "t32": {
-    "revision": "942e91a2e262420ca4b35352010c2f134fa7e809"
+    "revision": "b075f2f55ba29edce51b6b6b9f234ce3988dbb0a"
   },
   "tablegen": {
     "revision": "300f6a490e71f895e644ed2deec6920860a2e107"
@@ -663,7 +666,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "d61083e478b3d41b2fe5f481d4b57ca97b4c444f"
+    "revision": "d28bc4856a9804f2116bf2c3663139f5381658bb"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
