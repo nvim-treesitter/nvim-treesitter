@@ -1,198 +1,146 @@
-; Misc keywords
-[
-  "my" "our" "local"
-  "next" "last" "redo"
-  "goto"
-  "package"
-;  "do"
-;  "eval"
-] @keyword
-
-; Keywords for including
-[ "use" "no" "require" ] @include
-
-; Keywords that mark conditional statements
-[ "if" "elsif" "unless" "else" ] @conditional
-(ternary_expression
-  ["?" ":"] @conditional.ternary)
-
-; Keywords that mark repeating loops
-[ "while" "until" "for" "foreach" ] @repeat
-
-; Keyword for return expressions
-[ "return" ] @keyword.return
-
-; Keywords for phaser blocks
-; TODO: Ideally these would be @keyword.phaser but vim-treesitter doesn't
-;   have such a thing yet
-[ "BEGIN" "CHECK" "UNITCHECK" "INIT" "END" ] @keyword.function
-
-; Keywords to define a function
-[ "sub" ] @keyword.function
-
-; Keywords that are regular infix operators
-[
-  "and" "or" "not" "xor"
-  "eq" "ne" "lt" "le" "ge" "gt" "cmp"
-] @keyword.operator
-
-; Variables
-[
-  (scalar_variable)
-  (array_variable)
-  (hash_variable)
-] @variable
-
-; Special builtin variables
-[
-  (special_scalar_variable)
-  (special_array_variable)
-  (special_hash_variable)
-  (special_literal)
-  (super)
-] @variable.builtin
-
-((scalar_variable) @variable.builtin
- (#eq? @variable.builtin "$#ARGV"))
-
-; Integer numbers
-[
-  (integer)
-  (hexadecimal)
-] @number
-
-; Float numbers
-[
-  (floating_point)
-  (scientific_notation)
-] @float
-
-; version sortof counts as a kind of multipart integer
-(version) @constant
-
-; Package names are types
-(package_name) @type
-
-; The special SUPER:: could be called a namespace. It isn't really but it
-;   should highlight differently and we might as well do it this way
-(super) @namespace
-
-; Comments are comments
-(comments) @comment @spell
-
-((source_file . (comments) @preproc)
+((source_file . (comment) @preproc)
   (#lua-match? @preproc "^#!/"))
 
-; POD should be handled specially with its own embedded subtype but for now
-;   we'll just have to do this.
-(pod_statement) @text
+[ "use" "no" "require" ] @include
 
-(method_invocation
-  function_name: (identifier) @method.call)
-(call_expression
-  function_name: (identifier) @function.call)
+[ "if" "elsif" "unless" "else" ] @conditional
 
-; Built-in functions
-((call_expression
-  function_name: (identifier) @function.builtin)
- (#any-of? @function.builtin
-   "print" "printf" "sprintf" "say"
-   "push" "pop" "shift" "unshift" "splice"
-   "exists" "delete" "keys" "values"
-   "each"))
+(conditional_expression [ "?" ":" ] @conditional.ternary) 
+
+[ "while" "until" "for" "foreach" ] @repeat
+
+"return" @keyword.return
+
+"sub" @keyword.function
+
+[ "map" "grep" ] @function.builtin
+
+"package" @include
 
 [
-  (map)
-  (grep)
-  (bless)
-] @function.builtin
+  "do"
+  "my" "our" "local"
+  "last" "next" "redo" "goto"
+  "undef"
+] @keyword
 
-;; ----------
+(_ operator: _ @operator)
+"\\" @operator
 
-(use_constant_statement
-  constant: (identifier) @constant)
+(yadayada) @exception
 
-(named_block_statement
-  function_name: (identifier) @function)
-
-(function_definition
-  name: (identifier) @function)
-
-(function) @function
+(phaser_statement phase: _ @keyword.phaser)
 
 [
-  "(" ")"
-  "[" "]"
-  "{" "}"
-  (standard_input_to_variable)
-] @punctuation.bracket
+  "or" "and"
+  "eq" "ne" "cmp" "lt" "le" "ge" "gt"
+  "isa"
+] @keyword.operator
 
-[ "`" "\"" ] @punctuation.special
+(eof_marker) @preproc
+(data_section) @comment
 
-[
-  "=~"
-  "!~"
-  "="
-  "=="
-  "+"
-  "-"
-  "."
-  "//"
-  "||"
-  "&&"
-  "<<"
-  (arrow_operator)
-  (hash_arrow_operator)
-  (array_dereference)
-  (hash_dereference)
-  (to_reference)
-  (type_glob)
-  (hash_access_variable)
-] @operator
+(pod) @text
 
 [
-  (regex_option)
-  (regex_option_for_substitution)
-  (regex_option_for_transliteration)
-] @parameter
-
-(type_glob
-  (identifier) @variable)
+  (number)
+  (version)
+] @number
 
 [
-  (word_list_qw)
-  (command_qx_quoted)
-  (string_single_quoted)
-  (string_double_quoted)
-  (string_qq_quoted)
-  (bareword)
-  (transliteration_tr_or_y)
+  (string_literal) 
+  (interpolated_string_literal) 
+  (quoted_word_list) 
+  (command_string) 
+  (heredoc_content)
+  (replacement)
+  (transliteration_content)
 ] @string
 
 [
- (heredoc_start_identifier)
- (heredoc_end_identifier)
+  (heredoc_token)
+  (command_heredoc_token)
+  (heredoc_end)
 ] @label
 
-(heredoc_body_statement) @text.literal
+[(escape_sequence) (escaped_delimiter)] @string.escape
 
-[
-  (pattern_matcher)
-  (regex_pattern_qr)
-  (patter_matcher_m)
-  (substitution_pattern_s)
+(_ modifiers: _ @character.special)
+[  
+ (quoted_regexp)
+ (match_regexp)
+ (regexp_content)
 ] @string.regex
 
-(escape_sequence) @string.escape
+(autoquoted_bareword _?) @string.special
 
-[
-  ","
-  (semi_colon)
-  (start_delimiter)
-  (end_delimiter)
-  (ellipsis_statement)
-] @punctuation.delimiter
+(use_statement (package) @type)
+(package_statement (package) @type)
+(require_expression (bareword) @type)
 
-(function_attribute) @field
+(subroutine_declaration_statement name: (bareword) @function)
+(attribute_name) @attribute
+(attribute_value) @string
 
-(function_signature) @type
+(label) @label
+
+(statement_label label: _ @label)
+
+(relational_expression operator: "isa" right: (bareword) @type)
+
+(function_call_expression (function) @function.call)
+(method_call_expression (method) @method.call)
+(method_call_expression invocant: (bareword) @type)
+
+(func0op_call_expression function: _ @function.builtin)
+(func1op_call_expression function: _ @function.builtin)
+
+([(function)(expression_statement (bareword))] @function.builtin
+ (#set! "priority" 101)
+ (#lua-match? @function.builtin
+   "^(accept|atan2|bind|binmode|bless|crypt|chmod|chown|connect|die|dbmopen|exec|fcntl|flock|getpriority|getprotobynumber|gethostbyaddr|getnetbyaddr|getservbyname|getservbyport|getsockopt|glob|index|ioctl|join|kill|link|listen|mkdir|msgctl|msgget|msgrcv|msgsend|opendir|print|printf|push|pack|pipe|return|rename|rindex|read|recv|reverse|say|select|seek|semctl|semget|semop|send|setpgrp|setpriority|seekdir|setsockopt|shmctl|shmread|shmwrite|shutdown|socket|socketpair|split|sprintf|splice|substr|system|symlink|syscall|sysopen|sysseek|sysread|syswrite|tie|truncate|unlink|unpack|utime|unshift|vec|warn|waitpid|formline|open|sort)$"
+))
+
+(function) @function
+
+(ERROR) @error
+
+(_
+  "{" @punctuation.special
+  (varname)
+  "}" @punctuation.special)
+
+(varname 
+  (block
+    "{" @punctuation.special 
+    "}" @punctuation.special))
+
+
+(
+  [(varname) (filehandle)] @variable.builtin
+  (#lua-match? @variable.builtin "^((ENV|ARGV|INC|ARGVOUT|SIG|STDIN|STDOUT|STDERR)|[_ab]|\\W|\\d+|\\^.*)$")
+)
+
+(scalar) @variable.scalar
+(scalar_deref_expression [ "$" "*"] @variable.scalar)
+[(array) (arraylen)] @variable.array
+(array_deref_expression [ "@" "*"] @variable.array)
+(hash) @variable.hash
+(hash_deref_expression [ "%" "*"] @variable.hash)
+
+(array_element_expression array:(_) @variable.array)
+(slice_expression array:(_) @variable.array)
+(keyval_expression array:(_) @variable.array)
+
+(hash_element_expression hash:(_) @variable.hash)
+(slice_expression hash:(_) @variable.hash)
+(keyval_expression hash:(_) @variable.hash)
+
+(comment) @comment
+
+([ "=>" "," ";" "->" ] @punctuation.delimiter)
+
+(
+  [ "[" "]" "{" "}" "(" ")" ] @punctuation.bracket
+  ; priority hack so nvim + ts-cli behave the same
+  (#set! "priority" 90))
