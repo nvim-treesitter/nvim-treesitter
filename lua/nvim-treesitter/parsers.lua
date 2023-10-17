@@ -1239,10 +1239,11 @@ list.pem = {
 
 list.perl = {
   install_info = {
-    url = "https://github.com/ganezdragon/tree-sitter-perl",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = "https://github.com/tree-sitter-perl/tree-sitter-perl",
+    files = { "src/parser.c", "src/scanner.c" },
+    branch = "release",
   },
-  maintainers = { "@lcrownover" },
+  maintainers = { "@RabbiVeesh", "@LeoNerd" },
 }
 
 list.php = {
