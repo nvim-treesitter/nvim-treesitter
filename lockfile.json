@@ -42,7 +42,7 @@
     "revision": "863cea9f83ad5637300478e0559262f1e791684b"
   },
   "c": {
-    "revision": "0d33f0422ad391c6d652283645d546ffa048f503"
+    "revision": "25371f9448b97c55b853a6ee8bb0bfb1bca6da9f"
   },
   "c_sharp": {
     "revision": "1648e21b4f087963abf0101ee5221bb413107b07"
@@ -87,7 +87,7 @@
     "revision": "6c1957405bd6f7751b050f61367f1094fab91444"
   },
   "cuda": {
-    "revision": "759cf0a2557c9138baeae342aac61044acbdd618"
+    "revision": "3161aed045130c900f870ef53fad93a574317769"
   },
   "cue": {
     "revision": "2df92e6755337e9234ad18ffef37f35d95e2ba9d"
@@ -198,7 +198,7 @@
     "revision": "f9746dc1d0707717fbba84cb5c22a71586af23e1"
   },
   "glsl": {
-    "revision": "008abfeb24b73c696e1a07f3f1d299f95d4efbb1"
+    "revision": "952739a25a7c014882aa777f1a32da8950f31f58"
   },
   "go": {
     "revision": "bbaa67a180cfe0c943e50c55130918be8efb20bd"
@@ -249,7 +249,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "360f5fdb6e1d1a201c52d67184e2d115f67c4e26"
+    "revision": "f2902bd614e3916bdf65e1bc9ad45ebd08417bba"
   },
   "hocon": {
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
@@ -549,7 +549,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "c86aa9c19ab9f04f2e55a6ef00f34147932c15e5"
+    "revision": "36c4de35f76dfa732493aae606feb69dce4b1daa"
   },
   "squirrel": {
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
@@ -666,7 +666,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "d28bc4856a9804f2116bf2c3663139f5381658bb"
+    "revision": "bde93562c6dae6aaffd641cb367356386da412d0"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
