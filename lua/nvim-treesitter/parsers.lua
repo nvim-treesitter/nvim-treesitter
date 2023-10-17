@@ -1281,6 +1281,15 @@ list.po = {
   maintainers = { "@amaanq" },
 }
 
+list.pod = {
+  install_info = {
+    url = "https://github.com/tree-sitter-perl/tree-sitter-pod",
+    files = { "src/parser.c", "src/scanner.c" },
+    branch = "release",
+  },
+  maintainers = { "@RabbiVeesh", "@LeoNerd" },
+}
+
 list.poe_filter = {
   install_info = {
     url = "https://github.com/ObserverOfTime/tree-sitter-poe-filter",
