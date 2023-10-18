@@ -96,7 +96,7 @@
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
   },
   "dart": {
-    "revision": "7e447dc18a2d293498670fb5ea16138648c883e5"
+    "revision": "e14bbac8a0fcb6fab1b3becf6ed3fe464123c377"
   },
   "devicetree": {
     "revision": "cc26cbf2121a27eaa72a05a795ce38aba4e0f86e"
@@ -666,7 +666,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "bde93562c6dae6aaffd641cb367356386da412d0"
+    "revision": "6a7b21b322a347cda6076fe14dbe0bb592c5a041"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
