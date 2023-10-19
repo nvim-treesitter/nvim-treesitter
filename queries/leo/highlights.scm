@@ -188,11 +188,5 @@
   ) @punctuation.delimiter
 ) 
 
-;import declaration filename if "leo" is used as extension -> okay
 (import_declaration
-  (program_id
-    name: (identifier)
-    extension: (identifier) @_ext
-    (#eq? @_ext "leo")
-  ) @string
-)
+  (program_id) @string.special)
