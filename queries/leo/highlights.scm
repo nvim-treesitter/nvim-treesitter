@@ -105,14 +105,14 @@
 (program_declaration
   (program_id 
     name: (identifier) 
-    extension: (identifier) @ext (#eq? @ext "aleo")) @string
+    extension: (identifier) @_ext (#eq? @_ext "aleo")) @string
 )
 
 ;program name if with not with extension "aleo" -> error
 (program_declaration
   (program_id 
     name: (identifier) 
-    extension: (identifier) @ext (#not-eq? @ext "aleo")) @punctuation.delimiter
+    extension: (identifier) @_ext (#not-eq? @_ext "aleo")) @punctuation.delimiter
 )
 
 ;record declaration
@@ -226,8 +226,8 @@
 (locator
   (program_id
     name: (identifier)
-    extension: (identifier) @ext
-    (#eq? @ext "leo")
+    extension: (identifier) @_ext
+    (#eq? @_ext "leo")
   ) @string
 ) 
 
@@ -235,8 +235,8 @@
 (locator
   (program_id
     name: (identifier)
-    extension: (identifier) @ext
-    (#not-eq? @ext "leo")
+    extension: (identifier) @_ext
+    (#not-eq? @_ext "leo")
   ) @punctuation.delimiter
 ) 
 
@@ -244,8 +244,8 @@
 (import_declaration
   (program_id
     name: (identifier)
-    extension: (identifier) @ext
-    (#eq? @ext "leo")
+    extension: (identifier) @_ext
+    (#eq? @_ext "leo")
   ) @string
 )
 
@@ -253,8 +253,8 @@
 (import_declaration
   (program_id
     name: (identifier)
-    extension: (identifier) @ext
-    (#not-eq? @ext "leo")
+    extension: (identifier) @_ext
+    (#not-eq? @_ext "leo")
   ) @punctuation.delimiter
 ) 
 
