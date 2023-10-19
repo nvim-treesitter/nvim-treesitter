@@ -102,19 +102,8 @@
 (constant_declaration 
   (identifier) @constant)
 
-;program name if with right extension "aleo" -> okay
 (program_declaration
-  (program_id 
-    name: (identifier) 
-    extension: (identifier) @_ext (#eq? @_ext "aleo")) @string
-)
-
-;program name if with not with extension "aleo" -> error
-(program_declaration
-  (program_id 
-    name: (identifier) 
-    extension: (identifier) @_ext (#not-eq? @_ext "aleo")) @punctuation.delimiter
-)
+  (program_id) @string.special)
 
 ;record declaration
 (record_declaration (identifier) @field) 
