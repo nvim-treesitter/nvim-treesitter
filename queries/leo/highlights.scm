@@ -145,8 +145,7 @@
 )
 
 (function_parameter
- (identifier) @parameter
-) 
+ (identifier) @parameter)
 
 (struct_declaration
   name: (identifier) @field)
