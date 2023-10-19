@@ -138,11 +138,8 @@
   . name: (identifier) @function)
 
 (method_call
-  .
-  (_)
-  .
-  (identifier) @method
-)
+  . (_)
+  . (identifier) @method)
 
 (function_parameter
  (identifier) @parameter)
