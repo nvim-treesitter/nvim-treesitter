@@ -218,12 +218,3 @@
     (#eq? @_ext "leo")
   ) @string
 )
-
-;import declaration filename if NOT "leo" used as extension -> error
-(import_declaration
-  (program_id
-    name: (identifier)
-    extension: (identifier) @_ext
-    (#not-eq? @_ext "leo")
-  ) @punctuation.delimiter
-) 
