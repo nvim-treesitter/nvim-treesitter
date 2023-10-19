@@ -1,4 +1,4 @@
-(identifier) @variable 
+(variable) @variable
 
 [
  "assert"
@@ -21,6 +21,14 @@
 ] @keyword
 
 [
+	"constant"
+	"public"
+	"private"
+] @type.qualifier
+
+"self" @variable.builtin
+
+[
  "transition"
  "function"
  "inline"
@@ -29,6 +37,8 @@
 "import" @include
 
 "return" @keyword.return
+
+ (return_arrow) @punctuation.delimiter
 
 "for" @repeat
 
@@ -102,8 +112,10 @@
 (constant_declaration 
   (identifier) @constant)
 
-(program_declaration
-  (program_id) @string.special)
+[
+ (this_program_id)
+ (program_id)
+] @string.special
 
 ;record declaration
 (record_declaration (identifier) @field) 
@@ -121,10 +133,16 @@
  (block_height)
 ] @constant.builtin
 
-(return_arrow) @punctuation.delimiter
+(free_function_call
+ (locator
+	(identifier) @function))
+
+(record_type
+ (locator
+	(identifier) @field))
 
 (transition_declaration
-  . name: (identifier) @function.bultin)
+  name: (identifier) @function.builtin)
 
 ;external transition call
 ;will be wrong for internal function calls!
@@ -132,10 +150,10 @@
   (identifier) @function)
 
 (function_declaration
-  . name: (identifier) @function)
+  name: (identifier) @function)
 
 (inline_declaration
-  . name: (identifier) @function)
+  name: (identifier) @function.macro)
 
 (method_call
   . (_)
@@ -147,31 +165,18 @@
 (struct_declaration
   name: (identifier) @field)
 
+(variable_declaration
+	(identifier_or_identifiers
+		(identifier) @variable))
+
 [ 
   (unsigned_literal) 
-
   (signed_literal) 
-
   (field_literal) 
-
   (product_group_literal) 
-
   (affine_group_literal) 
-
   (scalar_literal) 
-
   (address_literal)
 ] @number
 
-;external transition call locator if "leo" extension used -> okay
-(struct_component_expression
-  (_)
-  (identifier) @_leo 
-  (#eq? @_leo "leo")
-) @string
-
-(locator
-  (program_id) @string.special)
-
-(import_declaration
-  (program_id) @string.special)
+(ERROR) @error
