@@ -173,14 +173,5 @@
 (locator
   (program_id) @string.special)
 
-;external transition call locator if NOT "leo" is used as extension -> error
-(locator
-  (program_id
-    name: (identifier)
-    extension: (identifier) @_ext
-    (#not-eq? @_ext "leo")
-  ) @punctuation.delimiter
-) 
-
 (import_declaration
   (program_id) @string.special)
