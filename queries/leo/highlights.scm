@@ -129,7 +129,7 @@
 ;external transition call
 ;will be wrong for internal function calls!
 (free_function_call
-  (identifier)  @function ) 
+  (identifier) @function)
 
 (function_declaration
   .
