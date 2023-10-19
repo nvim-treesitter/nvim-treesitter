@@ -38,6 +38,11 @@
   "else"
 ] @conditional
 
+(ternary_if) @conditional.ternary
+
+(ternary_else) @conditional.ternary
+
+
 [ ";" "," "::"] @punctuation.delimiter
 
 [
@@ -93,10 +98,6 @@
 
 (boolean_literal) @boolean
 
-(ternary_if) @conditional
-
-(ternary_else) @conditional
-
 (constant_declaration 
   (identifier) @constant
 )
@@ -116,21 +117,20 @@
 )
 
 ;record declaration
-(record_declaration (identifier) @structure) 
+(record_declaration (identifier) @field) 
 
 ;struct component 
 (struct_component_declaration 
-  (identifier) @parameter
-  (type)       @type
+  (identifier) @field
 ) 
 
 (type) @type
 
 (associated_constant) @constant
 
-(self_caller) @constant
+(self_caller) @constant.builtin
 
-(block_height) @constant
+(block_height) @constant.builtin
 
 (transition_declaration
   .
@@ -189,7 +189,7 @@
 ) 
 
 (struct_declaration
-  name: (identifier) @structure)
+  name: (identifier) @field)
 
 [ 
   (unsigned_literal) 
@@ -211,17 +211,17 @@
 
 
 ;address with wrong length or characters -> error
-((identifier) @address
- (#match? @address "^aleo1.*$")
- (#not-match? @address "aleo1[a-z0-9]{58}"
+((identifier) @_address
+ (#match? @_address "^aleo1.*$")
+ (#not-match? @_address "aleo1[a-z0-9]{58}"
  )) @punctuation.delimiter 
 
 
 ;external transition call locator if "leo" extension used -> okay
 (struct_component_expression
   (_)
-  (identifier) @leo 
-  (#eq? @leo "leo")
+  (identifier) @_leo 
+  (#eq? @_leo "leo")
 ) @string
 
 ;external transition call locator if "leo" is used as extension -> okay
@@ -259,5 +259,3 @@
     (#not-eq? @_ext "leo")
   ) @punctuation.delimiter
 ) 
-
-
