@@ -93,12 +93,9 @@
 
 (boolean_literal) @boolean
 
-(ternary_expression
-  (_)
-  (ternary_if) @conditional
-  (_)
-  (ternary_else) @conditional
-  (_))
+(ternary_if) @conditional
+
+(ternary_else) @conditional
 
 (constant_declaration 
   (identifier) @constant
