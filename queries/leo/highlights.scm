@@ -100,8 +100,7 @@
 (boolean_literal) @boolean
 
 (constant_declaration 
-  (identifier) @constant
-)
+  (identifier) @constant)
 
 ;program name if with right extension "aleo" -> okay
 (program_declaration
