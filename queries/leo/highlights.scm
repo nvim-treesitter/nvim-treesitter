@@ -38,9 +38,10 @@
   "else"
 ] @conditional
 
-(ternary_if) @conditional.ternary
-
-(ternary_else) @conditional.ternary
+[
+ (ternary_if)
+ (ternary_else)
+] @conditional.ternary
 
 
 [ ";" "," "::"] @punctuation.delimiter
@@ -128,9 +129,10 @@
 
 (associated_constant) @constant
 
-(self_caller) @constant.builtin
-
-(block_height) @constant.builtin
+[
+ (self_caller)
+ (block_height)
+] @constant.builtin
 
 (transition_declaration
   .
@@ -180,7 +182,9 @@
 )
 
 (method_call
+  .
   (_)
+  .
   (identifier) @method
 )
 
@@ -206,9 +210,6 @@
 
   (address_literal)
 ] @number
-
-(boolean_literal) @boolean
-
 
 ;address with wrong length or characters -> error
 ((identifier) @_address
