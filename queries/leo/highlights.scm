@@ -95,7 +95,7 @@
 
 ] @operator
 
-(comment) @comment
+(comment) @comment @spell
 
 (boolean_literal) @boolean
 
