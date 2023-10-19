@@ -121,19 +121,10 @@
  (block_height)
 ] @constant.builtin
 
+(return_arrow) @punctuation.delimiter
+
 (transition_declaration
-  .
-  name: (identifier) @function.bultin
-  .
-  (function_parameters)*
-  .
-  (return_arrow) @keyword.return
-  .
-  (type)
-  .
-  (block)
-  .
-)
+  . name: (identifier) @function.bultin)
 
 ;external transition call
 ;will be wrong for internal function calls!
