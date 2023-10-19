@@ -983,7 +983,7 @@ list.ledger = {
   maintainers = { "@cbarrete" },
 }
 
-list.ledger = {
+list.leo = {
   install_info = {
     url = "https://github.com/r001/tree-sitter-leo",
     files = { "src/parser.c" },
