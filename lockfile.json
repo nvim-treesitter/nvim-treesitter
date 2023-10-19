@@ -323,6 +323,9 @@
   "ledger": {
     "revision": "8a841fb20ce683bfbb3469e6ba67f2851cfdf94a"
   },
+  "leo": {
+    "revision": "f194fb3ed9fb7aa40d519169c11f4630b9f93bcd"
+  },
   "liquidsoap": {
     "revision": "bbef4df4dc5b324455ad1ea4770bbed0df5130ea"
   },
