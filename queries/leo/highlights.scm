@@ -178,5 +178,3 @@
   (scalar_literal) 
   (address_literal)
 ] @number
-
-(ERROR) @error
