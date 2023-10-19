@@ -170,14 +170,8 @@
   (#eq? @_leo "leo")
 ) @string
 
-;external transition call locator if "leo" is used as extension -> okay
 (locator
-  (program_id
-    name: (identifier)
-    extension: (identifier) @_ext
-    (#eq? @_ext "leo")
-  ) @string
-) 
+  (program_id) @string.special)
 
 ;external transition call locator if NOT "leo" is used as extension -> error
 (locator
