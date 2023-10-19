@@ -110,8 +110,7 @@
 
 ;struct component 
 (struct_component_declaration 
-  (identifier) @field
-) 
+  (identifier) @field)
 
 (type) @type
 
