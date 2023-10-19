@@ -132,18 +132,7 @@
   (identifier) @function)
 
 (function_declaration
-  .
-  name: (identifier) @function
-  .
-  (function_parameters)*
-  .
-  (return_arrow) @keyword.return
-  .
-  (type)
-  .
-  (block)
-  .
-)
+  . name: (identifier) @function)
 
 (inline_declaration
   .
