@@ -191,21 +191,23 @@
 (struct_declaration
   name: (identifier) @structure)
 
-(unsigned_literal) @number
+[ 
+  (unsigned_literal) 
 
-(signed_literal) @number
+  (signed_literal) 
 
-(field_literal) @number
+  (field_literal) 
 
-(product_group_literal) @number
+  (product_group_literal) 
 
-(affine_group_literal) @number
+  (affine_group_literal) 
 
-(scalar_literal) @number
+  (scalar_literal) 
+
+  (address_literal)
+] @number
 
 (boolean_literal) @boolean
-
-(address_literal) @number
 
 
 ;address with wrong length or characters -> error
