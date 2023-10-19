@@ -1,4 +1,4 @@
-((identifier) @variable (#set! "priority" 95))
+(identifier) @variable 
 
 [
  "assert"
