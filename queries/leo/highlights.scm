@@ -163,13 +163,6 @@
   (address_literal)
 ] @number
 
-;address with wrong length or characters -> error
-((identifier) @_address
- (#match? @_address "^aleo1.*$")
- (#not-match? @_address "aleo1[a-z0-9]{58}"
- )) @punctuation.delimiter 
-
-
 ;external transition call locator if "leo" extension used -> okay
 (struct_component_expression
   (_)
