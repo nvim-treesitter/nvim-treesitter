@@ -160,7 +160,7 @@ As languages differ quite a lot, here is a set of captures available to you when
 ```scheme
 @type            ; type or class definitions and annotations
 @type.builtin    ; built-in types
-@type.definition ; identifiers in type definitions (e.g. in `typedef <type> <identifier>` in C)
+@type.definition ; identifiers in type definitions (e.g. `typedef <type> <identifier>` in C)
 @type.qualifier  ; type qualifiers (e.g. `const`)
 
 @storageclass    ; modifiers that affect storage in memory or life-time
