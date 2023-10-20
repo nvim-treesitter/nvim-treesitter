@@ -324,7 +324,7 @@
     "revision": "8a841fb20ce683bfbb3469e6ba67f2851cfdf94a"
   },
   "liquidsoap": {
-    "revision": "bbef4df4dc5b324455ad1ea4770bbed0df5130ea"
+    "revision": "4acf9035d852fc65e013f05f597635204e6d1ca5"
   },
   "llvm": {
     "revision": "1b96e58faf558ce057d4dc664b904528aee743cb"
@@ -417,7 +417,7 @@
     "revision": "79e88f64681660f3961939bf764d8f3b4bbb0d27"
   },
   "php": {
-    "revision": "92a98adaa534957b9a70b03e9acb9ccf9345033a"
+    "revision": "0e02e7fab7913a0e77343edb347c8f17cac1f0ba"
   },
   "phpdoc": {
     "revision": "915a527d5aafa81b31acf67fab31b0ac6b6319c0"
