@@ -153,7 +153,7 @@
 
 (method_call
   . (_)
-  . (identifier) @method)
+  . (identifier) @method.call)
 
 (function_parameter
  (identifier) @parameter)
