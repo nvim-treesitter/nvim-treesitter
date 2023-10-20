@@ -7,24 +7,21 @@
  "block"
  "console"
  "const"
- "constant"
  "finalize"
  "in"
  "let"
  "mapping"
- "private"
  "program"
- "public"
  "record"
  "self"
  "struct"
 ] @keyword
 
 [
-	"constant"
-	"public"
-	"private"
-] @type.qualifier
+ "constant"
+ "public"
+ "private"
+ ] @type.qualifier
 
 "self" @variable.builtin
 
