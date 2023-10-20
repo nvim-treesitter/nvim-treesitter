@@ -745,3 +745,15 @@ require'nvim-treesitter.configs'.setup {
     --
 }
 ```
+
+#### Using an existing parser for another filetype
+
+For example, to use the `bash` tree-sitter to highlight file with
+`filetype=apkbuild`, use:
+
+```lua
+vim.treesitter.language.register("bash", "apkbuild")
+```
+
+The `bash` tree-sitter must be installed following the usual procedure [as
+described above](#language-parsers).
