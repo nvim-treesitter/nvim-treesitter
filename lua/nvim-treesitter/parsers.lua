@@ -30,6 +30,7 @@ for ft, lang in pairs {
   ecma = "javascript",
   jsx = "javascript",
   sh = "bash",
+  apkbuild = "bash",
   PKGBUILD = "bash",
   html_tags = "html",
   ["typescript.tsx"] = "tsx",
