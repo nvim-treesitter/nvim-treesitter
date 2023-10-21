@@ -22,31 +22,31 @@
 
 [
  "constant"
- "public"
  "private"
+ "public"
  ] @type.qualifier
 
 "self" @variable.builtin
 
 [
- "transition"
- "function"
  "finalize"
+ "function"
  "inline"
+ "transition"
 ] @keyword.function
 
 "import" @include
 
 "return" @keyword.return
 
- (return_arrow) @punctuation.delimiter
+(return_arrow) @punctuation.delimiter
 
 "for" @repeat
 
 [ 
+  "else"
   "if"
   "then"
-  "else"
 ] @conditional
 
 [
@@ -114,8 +114,8 @@
   (identifier) @constant)
 
 [
- (this_program_id)
  (program_id)
+ (this_program_id)
 ] @string.special
 
 ;record declaration
@@ -130,8 +130,8 @@
 (associated_constant) @constant
 
 [
- (self_caller)
  (block_height)
+ (self_caller)
 ] @constant.builtin
 
 (free_function_call
@@ -170,11 +170,11 @@
 		(identifier) @variable))
 
 [ 
-  (unsigned_literal) 
-  (signed_literal) 
+  (address_literal)
+  (affine_group_literal) 
   (field_literal) 
   (product_group_literal) 
-  (affine_group_literal) 
   (scalar_literal) 
-  (address_literal)
+  (signed_literal) 
+  (unsigned_literal) 
 ] @number
