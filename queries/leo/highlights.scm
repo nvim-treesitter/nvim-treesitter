@@ -6,7 +6,6 @@
  "assert_neq"
  "block"
  "console"
- "in"
  "let"
  "mapping"
  "program"
