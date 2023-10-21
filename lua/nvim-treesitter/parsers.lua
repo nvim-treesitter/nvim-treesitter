@@ -1128,6 +1128,22 @@ list.nickel = {
   },
 }
 
+list.nim = {
+  install_info = {
+    url = "https://github.com/alaviss/tree-sitter-nim",
+    files = { "src/parser.c", "src/scanner.cc" },
+  },
+  maintainers = { "@aMOPel" },
+}
+
+list.nim_format_string = {
+  install_info = {
+    url = "https://github.com/aMOPel/tree-sitter-nim-format-string",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@aMOPel" },
+}
+
 list.ninja = {
   install_info = {
     url = "https://github.com/alemuller/tree-sitter-ninja",
