@@ -1174,7 +1174,7 @@ list.objc = {
 list.objdump = {
   install_info = {
     url = "https://github.com/ColinKennedy/tree-sitter-objdump",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@ColinKennedy" },
 }
