@@ -6,6 +6,7 @@
  "assert_neq"
  "block"
  "console"
+ "const"
  "let"
  "mapping"
  "program"
@@ -14,10 +15,7 @@
  "struct"
 ] @keyword
 
-[
- "const"
- "in"
-] @keyword.operator
+ "in" @keyword.operator
 
 [
  "constant"
