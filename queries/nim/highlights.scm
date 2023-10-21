@@ -630,6 +630,17 @@
       (accent_quoted (identifier) @field)
     ]))
 
+(variant_declaration
+  (variant_discriminator_declaration
+    (symbol_declaration_list
+      (symbol_declaration
+        name: [
+          (identifier) @field
+          (accent_quoted (identifier) @field)
+          (exported_symbol (identifier) @field)
+          (exported_symbol (accent_quoted (identifier) @field))
+        ]))))
+
 ; =============================================================================
 ; @property        ; similar to `@field`
 ; unused
