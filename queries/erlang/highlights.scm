@@ -66,6 +66,7 @@
   "of"
   "when"
   "after"
+  "begin"
   "end"
   "maybe"
   "else"
