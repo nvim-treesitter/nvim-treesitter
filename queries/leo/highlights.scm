@@ -145,8 +145,7 @@
 (transition_declaration
   name: (identifier) @function.builtin)
 
-;external transition call
-;will be wrong for internal function calls!
+(free_function_call
   (identifier) @function.call)
 
 (function_declaration
