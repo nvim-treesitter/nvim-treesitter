@@ -6,7 +6,6 @@
  "assert_neq"
  "block"
  "console"
- "const"
  "finalize"
  "in"
  "let"
@@ -16,6 +15,11 @@
  "self"
  "struct"
 ] @keyword
+
+[
+ "const"
+ "in"
+] @keyword.operator
 
 [
  "constant"
