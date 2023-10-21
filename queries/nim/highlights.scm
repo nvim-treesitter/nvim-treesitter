@@ -211,18 +211,18 @@
 
 (template_declaration
   name: [
-    (identifier) @function
-    (accent_quoted (identifier) @function)
-    (exported_symbol (identifier) @function)
-    (exported_symbol (accent_quoted (identifier) @function))
+    (identifier) @function.macro
+    (accent_quoted (identifier) @function.macro)
+    (exported_symbol (identifier) @function.macro)
+    (exported_symbol (accent_quoted (identifier) @function.macro))
   ])
 
 (macro_declaration
   name: [
-    (identifier) @function
-    (accent_quoted (identifier) @function)
-    (exported_symbol (identifier) @function)
-    (exported_symbol (accent_quoted (identifier) @function))
+    (identifier) @function.macro
+    (accent_quoted (identifier) @function.macro)
+    (exported_symbol (identifier) @function.macro)
+    (exported_symbol (accent_quoted (identifier) @function.macro))
   ])
 
 ; =============================================================================
