@@ -6,7 +6,6 @@
  "assert_neq"
  "block"
  "console"
- "finalize"
  "in"
  "let"
  "mapping"
@@ -32,6 +31,7 @@
 [
  "transition"
  "function"
+ "finalize"
  "inline"
 ] @keyword.function
 
