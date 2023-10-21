@@ -1131,7 +1131,7 @@ list.nickel = {
 list.nim = {
   install_info = {
     url = "https://github.com/alaviss/tree-sitter-nim",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@aMOPel" },
 }
