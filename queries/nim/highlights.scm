@@ -68,7 +68,12 @@
 ; =============================================================================
 ; @string               ; string literals
 
-(string_literal) @string
+[
+  (interpreted_string_literal)
+  (long_string_literal)
+  (raw_string_literal)
+  (generalized_string)
+] @string
 
 ; =============================================================================
 ; @string.documentation ; string documenting code (e.g. Python docstrings)
@@ -173,10 +178,11 @@
 ; `identifier"string literal"`
 ; is short for
 ; `identifier(r"string literal")`
-(generalized_string . [
-  (identifier) @function.call
-  (accent_quoted (identifier) @function.call)
-])
+(generalized_string 
+  function: [
+    (identifier) @function.call
+    (accent_quoted (identifier) @function.call)
+  ])
 
 ; call with leading literal
 (dot_expression
@@ -186,7 +192,10 @@
     (float_literal)
     (custom_numeric_literal)
     (char_literal)
-    (string_literal)
+    (interpreted_string_literal)
+    (long_string_literal)
+    (raw_string_literal)
+    (generalized_string)
     (array_construction)
     ; for sequences
     (prefix_expression 
@@ -768,7 +777,10 @@
     (float_literal)
     (custom_numeric_literal)
     (char_literal)
-    (string_literal)
+    (interpreted_string_literal)
+    (long_string_literal)
+    (raw_string_literal)
+    (generalized_string)
     (array_construction)
     ; for sequences
     (prefix_expression 
