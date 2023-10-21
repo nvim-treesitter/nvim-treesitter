@@ -51,6 +51,7 @@
  (ternary_else)
 ] @conditional.ternary
 
+[ "(" ")" "{" "}" "[" "]" ] @punctuation.bracket
 
 [ ";" "," "::"] @punctuation.delimiter
 
