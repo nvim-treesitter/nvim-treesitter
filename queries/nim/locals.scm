@@ -204,6 +204,7 @@
 
 ; ==============================================================================
 ; @definition.namespace  ; modules or namespaces
+; @definition.import     ; imported names
 
 (import_statement
   (expression_list
@@ -223,12 +224,6 @@
     (identifier) @definition.import
     (accent_quoted) @definition.import
   ]))
-
-; ==============================================================================
-; @definition.import     ; imported names
-
-; ==============================================================================
-; @definition.associated ; the associated type of a variable
 
 ; ==============================================================================
 ; @scope                 ; scope block

@@ -24,14 +24,6 @@
 ] @comment.documentation
 
 ; =============================================================================
-; @none                  ; completely disable the highlight
-; unused
-
-; =============================================================================
-; @define                ; preprocessor definition directives
-; unused
-
-; =============================================================================
 ; @operator              ; symbolic operators (e.g. `+` / `*`)
 
 (operator) @operator
@@ -76,30 +68,14 @@
 ] @string
 
 ; =============================================================================
-; @string.documentation ; string documenting code (e.g. Python docstrings)
-; unused
-
-; =============================================================================
-; @string.regex         ; regular expressions
-; unused
-
-; =============================================================================
 ; @string.escape        ; escape sequences
 
 (escape_sequence) @string.escape
 
 ; =============================================================================
-; @string.special       ; other special strings (e.g. dates)
-; unused
-
-; =============================================================================
 ; @character            ; character literals
 
 (char_literal) @character
-
-; =============================================================================
-; @character.special    ; special characters (e.g. wildcards)
-; unused
 
 ; =============================================================================
 ; @boolean              ; boolean literals
@@ -213,7 +189,7 @@
 
 ; =============================================================================
 ; @function.builtin ; built-in functions
-; unused
+; TODO: 
 
 ; =============================================================================
 ; @function.macro   ; preprocessor macros
@@ -244,10 +220,6 @@
     (exported_symbol (identifier) @method)
     (exported_symbol (accent_quoted (identifier) @method))
   ])
-
-; =============================================================================
-; @method.call      ; method calls
-; unused
 
 ; =============================================================================
 ; @constructor      ; constructor calls and definitions
@@ -347,10 +319,6 @@
 ] @keyword
 
 ; =============================================================================
-; @keyword.coroutine   ; keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
-; unused
-
-; =============================================================================
 ; @keyword.function    ; keywords that define a function (e.g. `func` in Go, `def` in Python)
 
 [
@@ -407,9 +375,6 @@
 (of_branch "of" @conditional)
 
 ; =============================================================================
-; @conditional.ternary ; ternary operator (e.g. `?` / `:`)
-
-; =============================================================================
 ; @repeat              ; keywords related to loops (e.g. `for` / `while`)
 
 [
@@ -420,10 +385,6 @@
 ] @repeat
 
 (for "in" @repeat)
-
-; =============================================================================
-; @debug               ; keywords related to debugging
-; unused
 
 ; =============================================================================
 ; @label               ; GOTO and other labels (e.g. `label:` in C)
@@ -472,7 +433,6 @@
 ; 3. "priority and has-ancestor version".
 ; "no-priority" was the worst, the other two were almost the same,
 ; but "has-ancestor" is superior, since it allows for infinite nesting.
-
 
 ; generic types when declaring
 ((generic_parameter_list
@@ -570,10 +530,6 @@
 ; where `tuple` is captured as @keyword
 
 ; =============================================================================
-; @type.builtin    ; built-in types
-; unused
-
-; =============================================================================
 ; @type.definition ; type definitions (e.g. `typedef` in C)
 
 (type_section
@@ -598,14 +554,6 @@
 (ref_type "ref" @type.qualifier)
 
 (pointer_type "ptr" @type.qualifier)
-
-; =============================================================================
-; @storageclass    ; modifiers that affect storage in memory or life-time
-; unused
-
-; =============================================================================
-; @attribute       ; attribute annotations (e.g. Python decorators)
-; unused
 
 ; =============================================================================
 ; @field           ; object and struct fields
@@ -648,13 +596,6 @@
           (exported_symbol (identifier) @field)
           (exported_symbol (accent_quoted (identifier) @field))
         ]))))
-
-; =============================================================================
-; @property        ; similar to `@field`
-; unused
-
-; =============================================================================
-; @variable         ; various variable names
 
 ; =============================================================================
 ; @variable.builtin ; built-in variable names (e.g. `this`)
@@ -744,16 +685,9 @@
 (nil_literal) @constant.builtin
 
 ; =============================================================================
-; @constant.macro   ; constants defined by the preprocessor
-; unused
-
-; =============================================================================
 ; @namespace        ; modules or namespaces
-; unused
-
-; =============================================================================
-; @symbol           ; symbols or atoms
-; unused
+; TODO: when the semantic highlights from nimsuggest are there, we can
+; highlight module names on import
 
 ; =============================================================================
 ; overrule things
