@@ -641,6 +641,15 @@ list.glsl = {
   maintainers = { "@theHamsta" },
 }
 
+list.gn = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-gn",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@amaanq" },
+  readme_name = "GN (Generate Ninja)",
+}
+
 list.go = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-go",

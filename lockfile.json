@@ -200,6 +200,9 @@
   "glsl": {
     "revision": "952739a25a7c014882aa777f1a32da8950f31f58"
   },
+  "gn": {
+    "revision": "492878ebee3552ac4631b064e02d19a00b894535"
+  },
   "go": {
     "revision": "bbaa67a180cfe0c943e50c55130918be8efb20bd"
   },
