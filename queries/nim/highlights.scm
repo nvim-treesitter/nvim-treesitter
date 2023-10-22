@@ -463,8 +463,7 @@
 ((identifier) @type
   (#has-ancestor? @type type_expression)
   (#not-has-ancestor? @type pragma_list)
-  (#set! "priority" 98) ; for parameters in proc_type
-  )
+  (#set! "priority" 98)) ; for parameters in proc_type
 ; NOTE: benchmarked with
 ; `$ hyperfine -P version 1 3 "tree-sitter query -q $QUERIES/highlights{version}.scm $NIM_REPO/**/*.nim"`
 ; with
