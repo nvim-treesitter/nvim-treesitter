@@ -8,12 +8,6 @@
   (#set! injection.language "regex")
   (#any-of? @_string_prefix "re" "rex"))
 
-; sql in generalized_strings
-; and anyhting you like as long as the function name is the same as the injected language's parser
-(generalized_string 
-  function: (identifier) @injection.language
-  (string_content) @injection.content)
-
 ; format string in generalized_strings
 (generalized_string 
   function: (identifier) @_string_prefix .
@@ -31,6 +25,13 @@
   ] 
   (#set! injection.language "nim_format_string")
   (#eq? @_string_prefix "&"))
+
+; sql in generalized_strings
+; and anyhting you like as long as the function name is the same as the injected language's parser
+(generalized_string 
+  function: (identifier) @injection.language
+  (string_content) @injection.content
+  (#not-any-of? @injection.language "re" "rex" "fmt"))
 
 ; =============================================================================
 ; asm statement
