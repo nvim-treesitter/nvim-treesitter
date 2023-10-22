@@ -143,6 +143,9 @@
 (transition_declaration
   name: (identifier) @function.builtin)
 
+(finalizer
+  name: (identifier) @function.builtin)
+
 (free_function_call
   (identifier) @function.call)
 
