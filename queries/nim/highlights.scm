@@ -45,8 +45,13 @@
 ; =============================================================================
 ; @preproc               ; various preprocessor directives & shebangs
 
+[
+  "macro"
+  "template"
+] @preproc
+
 (pragma_list ["{." "}" ".}"] @preproc)
-; NOTE: has to come after punctuation bracket
+; NOTE: has to come after @punctuation.bracket
 
 ; =============================================================================
 ; @punctuation.special   ; special symbols (e.g. `{}` in string interpolation)
@@ -328,8 +333,6 @@
   "method"
   "converter"
   "iterator"
-  "macro"
-  "template"
 ] @keyword.function
 
 ; =============================================================================
