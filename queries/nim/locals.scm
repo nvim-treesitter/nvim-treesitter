@@ -209,21 +209,22 @@
 (import_statement
   (expression_list
     (infix_expression
-      operator: (operator) @_operator (#eq? @_operator "/")
+      operator: (operator) @_operator
       right: [
         (identifier) @definition.namespace
         (array_construction (identifier) @definition.namespace)
-      ]
-      )))
+      ]))
+  (#eq? @_operator "/"))
 
 (import_from_statement
   module: (infix_expression
-    operator: (operator) @_operator (#eq? @_operator "/")
+    operator: (operator) @_operator
     right: (identifier) @definition.namespace)
   (expression_list [
     (identifier) @definition.import
     (accent_quoted) @definition.import
-  ]))
+  ])
+  (#eq? @_operator "/"))
 
 ; ==============================================================================
 ; @scope                 ; scope block
