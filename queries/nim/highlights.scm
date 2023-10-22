@@ -26,16 +26,15 @@
 ] @comment.documentation
 
 ; =============================================================================
-; @operator              ; symbolic operators (e.g. `+` / `*`)
-
-(operator) @operator
-
-; =============================================================================
 ; @punctuation.delimiter ; delimiters (e.g. `;` / `.` / `,`)
 
 [ "." ";" "," ":" "=" ] @punctuation.delimiter
 
-; needs to be after @punctuation.delimiter
+; =============================================================================
+; @operator              ; symbolic operators (e.g. `+` / `*`)
+
+(operator) @operator
+
 (assignment "=" @operator)
 
 ; =============================================================================
