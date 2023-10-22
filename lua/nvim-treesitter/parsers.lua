@@ -1188,6 +1188,14 @@ list.objc = {
   maintainers = { "@amaanq" },
 }
 
+list.objdump = {
+  install_info = {
+    url = "https://github.com/ColinKennedy/tree-sitter-objdump",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@ColinKennedy" },
+}
+
 list.ocaml = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ocaml",

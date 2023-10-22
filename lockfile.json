@@ -395,6 +395,9 @@
   "objc": {
     "revision": "62e61b6f5c0289c376d61a8c91faf6435cde9012"
   },
+  "objdump": {
+    "revision": "64e4741d58345c36ded639f5a3bcd7811be7f8f8"
+  },
   "ocaml": {
     "revision": "694c57718fd85d514f8b81176038e7a4cfabcaaf"
   },

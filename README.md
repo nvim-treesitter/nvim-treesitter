@@ -305,6 +305,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [norg](https://github.com/nvim-neorg/tree-sitter-norg) (maintained by @JoeyGrajciar, @vhyrro)
 - [x] [nqc](https://github.com/amaanq/tree-sitter-nqc) (maintained by @amaanq)
 - [x] [objc](https://github.com/amaanq/tree-sitter-objc) (maintained by @amaanq)
+- [x] [objdump](https://github.com/ColinKennedy/tree-sitter-objdump) (maintained by @ColinKennedy)
 - [x] [ocaml](https://github.com/tree-sitter/tree-sitter-ocaml) (maintained by @undu)
 - [x] [ocaml_interface](https://github.com/tree-sitter/tree-sitter-ocaml) (maintained by @undu)
 - [x] [ocamllex](https://github.com/atom-ocaml/tree-sitter-ocamllex) (maintained by @undu)
