@@ -789,8 +789,3 @@
     (tuple_construction)
     (curly_construction)
   ] @comment)
-
-; =============================================================================
-; @error                 ; syntax/parser errors
-
-(ERROR) @error
