@@ -689,8 +689,36 @@
 
 ; =============================================================================
 ; @namespace        ; modules or namespaces
-; TODO: when the semantic highlights from nimsuggest are there, we can
-; highlight module names on import
+
+(import_statement
+  (expression_list
+    (identifier) @namespace))
+
+(import_statement
+  (expression_list
+    (infix_expression
+      operator: "as"
+      right: (identifier) @namespace)))
+
+(import_statement
+  (expression_list
+    (infix_expression
+      operator: (operator) @_operator
+      right: [
+        (identifier) @namespace
+        (array_construction (identifier) @namespace)
+      ]))
+  (#eq? @_operator "/"))
+
+(import_from_statement
+  module: (infix_expression
+    operator: (operator) @_operator
+    right: (identifier) @namespace)
+  (#eq? @_operator "/"))
+
+(export_statement
+  (expression_list
+    (identifier) @namespace))
 
 ; =============================================================================
 ; overrule things
