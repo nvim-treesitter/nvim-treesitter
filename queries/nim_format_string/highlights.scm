@@ -16,4 +16,4 @@
 
 (matching_curlies 
   nim_expression: (nim_expression 
-    escaped_curly: (escaped_curly)+ @string.escape) @error)
+    escaped_curly: (escaped_curly)+ @string.escape) @none)
