@@ -6,6 +6,13 @@
   (address)
 ] @number
 
+[
+  "file" "format"
+  "File" "Offset:"
+  "discriminator"
+] @text
+"Disassembly of section " @text.title
+
 (section_address) @number @text.underline
 
 (identifier) @variable
@@ -20,7 +27,6 @@
 (instruction) @function
 (bad_instruction) @text.warning
 (label) @label
-(machine_code_bytes) @field
 
 ["<" ">"] @punctuation.special
 ["(" ")"] @punctuation.bracket
