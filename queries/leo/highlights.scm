@@ -50,12 +50,11 @@
  (ternary_if)
  (ternary_else)
 ] @conditional.ternary
-(
- [ "(" ")" "{" "}" "[" "]" ] @punctuation.bracket
- (#set! "priority" 90))
 
- ([ ";" "," "::"] @punctuation.delimiter
- (#set! "priority" 90))
+[ "(" ")" "{" "}" "[" "]" ] @punctuation.bracket
+
+[ ";" "," "::"] @punctuation.delimiter
+
 [
 "!"
 
@@ -169,10 +168,12 @@
 
 [ 
   (address_literal)
-  (affine_group_literal) 
+  ((affine_group_literal) (#set! "priority" 101))
   (field_literal) 
   (product_group_literal) 
   (scalar_literal) 
   (signed_literal) 
   (unsigned_literal) 
 ] @number
+
+(annotation) @attribute
