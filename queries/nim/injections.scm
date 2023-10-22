@@ -61,11 +61,7 @@
     (pragma_list
       (colon_expression
         left: (identifier) @_emit_keyword (#eq? @_emit_keyword "emit")
-        right: [
-          (interpreted_string_literal (string_content) @injection.content)
-          (long_string_literal (string_content) @injection.content)
-          (raw_string_literal (string_content) @injection.content)
-        ]))))
+        right: (_ (string_content) @injection.content)))))
 
 ; =============================================================================
 ; comments
