@@ -1,4 +1,4 @@
-(tag_name) @attribute
+(tag_name) @attribute @nospell
 (tag
   (tag_name) @_tag (#eq? @_tag "@param")
   (variable_name) @parameter
@@ -24,6 +24,8 @@
     (named_type)
     (optional_type)
   ] @type)
+(type_list) @nospell
+(variable_name) @nospell
 (tag
   (description (text) @text))
 (tag
