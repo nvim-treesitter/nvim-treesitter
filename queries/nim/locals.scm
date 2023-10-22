@@ -208,6 +208,16 @@
 
 (import_statement
   (expression_list
+    (identifier) @definition.namespace))
+
+(import_statement
+  (expression_list
+    (infix_expression
+      operator: "as"
+      right: (identifier) @definition.namespace)))
+
+(import_statement
+  (expression_list
     (infix_expression
       operator: (operator) @_operator
       right: [
