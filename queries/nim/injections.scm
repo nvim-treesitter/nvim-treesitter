@@ -18,11 +18,7 @@
 ; format string in normal strings with & prefix
 (prefix_expression
   operator: (operator) @_string_prefix .
-  [
-    (interpreted_string_literal (string_content) @injection.content)
-    (long_string_literal (string_content) @injection.content)
-    (raw_string_literal (string_content) @injection.content)
-  ] 
+  (_ (string_content) @injection.content) 
   (#set! injection.language "nim_format_string")
   (#eq? @_string_prefix "&"))
 
