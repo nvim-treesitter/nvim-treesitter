@@ -200,6 +200,9 @@
   "glsl": {
     "revision": "952739a25a7c014882aa777f1a32da8950f31f58"
   },
+  "gn": {
+    "revision": "bc06955bc1e3c9ff8e9b2b2a55b38b94da923c05"
+  },
   "go": {
     "revision": "bbaa67a180cfe0c943e50c55130918be8efb20bd"
   },
@@ -234,7 +237,7 @@
     "revision": "3d4af179414525a35dd069ba0208c9b71093d8b3"
   },
   "haskell": {
-    "revision": "d7ac98f49e3ed7e17541256fe3881a967d7ffdd3"
+    "revision": "ca10c43a4c9bfe588c480d2941726c2fadcae699"
   },
   "haskell_persistent": {
     "revision": "577259b4068b2c281c9ebf94c109bd50a74d5857"
@@ -324,10 +327,10 @@
     "revision": "8a841fb20ce683bfbb3469e6ba67f2851cfdf94a"
   },
   "leo": {
-    "revision": "bf56a34745ee7a322442702f3aef2e633bb0b36c"
+    "revision": "91d7aa606f524cf4f5df7f4aacb45b4056fac704"
   },
   "liquidsoap": {
-    "revision": "bbef4df4dc5b324455ad1ea4770bbed0df5130ea"
+    "revision": "01df7d97af6210071f3f125e072d62305501bc50"
   },
   "llvm": {
     "revision": "1b96e58faf558ce057d4dc664b904528aee743cb"
@@ -392,6 +395,9 @@
   "objc": {
     "revision": "62e61b6f5c0289c376d61a8c91faf6435cde9012"
   },
+  "objdump": {
+    "revision": "64e4741d58345c36ded639f5a3bcd7811be7f8f8"
+  },
   "ocaml": {
     "revision": "694c57718fd85d514f8b81176038e7a4cfabcaaf"
   },
@@ -417,10 +423,10 @@
     "revision": "e01767921df18142055d97407595329d7629e643"
   },
   "perl": {
-    "revision": "79e88f64681660f3961939bf764d8f3b4bbb0d27"
+    "revision": "99bbcb0faddfc79db3fd2996cb56689a4685e78c"
   },
   "php": {
-    "revision": "92a98adaa534957b9a70b03e9acb9ccf9345033a"
+    "revision": "0e02e7fab7913a0e77343edb347c8f17cac1f0ba"
   },
   "phpdoc": {
     "revision": "915a527d5aafa81b31acf67fab31b0ac6b6319c0"
@@ -430,6 +436,9 @@
   },
   "po": {
     "revision": "d6aed225290bc71a15ab6f06305cb11419360c56"
+  },
+  "pod": {
+    "revision": "ea5d557cbd185cdcb5efcfdb6bc846fe909d86ae"
   },
   "poe_filter": {
     "revision": "d7b43b51f92fb19efe8af45c2246087c611c8f63"
@@ -552,7 +561,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "36c4de35f76dfa732493aae606feb69dce4b1daa"
+    "revision": "caf2938f1bc6b174e5bf5b6f3b5522cb723ee55b"
   },
   "squirrel": {
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
@@ -669,7 +678,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "6a7b21b322a347cda6076fe14dbe0bb592c5a041"
+    "revision": "2b00ad4c06f1f49257f1310b01f23a98dc117f77"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
