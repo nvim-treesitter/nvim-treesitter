@@ -5,9 +5,7 @@
 ; =============================================================================
 ; catch all rules
 
-((identifier) @variable (#set! "priority" 95))
-; NOTE: this priority is necessary, because the capture is most specific 
-; and will overrule things like (type_expression) which contain (identifier)s
+(identifier) @variable 
 
 ; =============================================================================
 ; @comment               ; line and block comments
@@ -252,46 +250,6 @@
 ; those will be matched as @function.call instead
 
 ; =============================================================================
-; @parameter        ; parameters of a function
-
-; named parameters when calling
-; call(parameter_name=arg)
-(argument_list
-  (equal_expression
-    left: [
-      (identifier) @parameter
-      (accent_quoted (identifier) @parameter)
-    ]))
-
-; parameters in function declaration
-(parameter_declaration_list
-  (parameter_declaration
-    (symbol_declaration_list
-      (symbol_declaration
-        name: [
-          (identifier) @parameter
-          (accent_quoted (identifier) @parameter)
-        ]))))
-
-; for loop variables
-(for
-  left:
-    (symbol_declaration_list
-      (symbol_declaration
-        name: [
-          (identifier) @parameter
-          (accent_quoted (identifier) @parameter)
-        ])))
-
-((tuple_deconstruct_declaration
-  (symbol_declaration
-    name: [
-      (identifier) @parameter
-      (accent_quoted (identifier) @parameter)
-    ])) @_tuple_decons
-  (#has-ancestor? @_tuple_decons for))
-
-; =============================================================================
 ; @keyword             ; various keywords
 
 ; unhandled but reserved keywords
@@ -427,8 +385,8 @@
 
 ((identifier) @type
   (#has-ancestor? @type type_expression)
-  (#not-has-ancestor? @type pragma_list)
-  (#set! "priority" 98)) ; for parameters in proc_type
+  (#not-has-ancestor? @type pragma_list))
+; NOTE: needs to be after @variable
 ; NOTE: benchmarked with
 ; `$ hyperfine -P version 1 3 "tree-sitter query -q $QUERIES/highlights{version}.scm $NIM_REPO/**/*.nim"`
 ; with
@@ -532,6 +490,47 @@
 ; NOTE: this is consistent with other generic types like `seq[int]`
 ; but inconsistent with multiline tuple declaration,
 ; where `tuple` is captured as @keyword
+
+; =============================================================================
+; @parameter        ; parameters of a function
+
+; named parameters when calling
+; call(parameter_name=arg)
+(argument_list
+  (equal_expression
+    left: [
+      (identifier) @parameter
+      (accent_quoted (identifier) @parameter)
+    ]))
+
+; parameters in function declaration
+(parameter_declaration_list
+  (parameter_declaration
+    (symbol_declaration_list
+      (symbol_declaration
+        name: [
+          (identifier) @parameter
+          (accent_quoted (identifier) @parameter)
+        ]))))
+; NOTE: needs to be after @type
+
+; for loop variables
+(for
+  left:
+    (symbol_declaration_list
+      (symbol_declaration
+        name: [
+          (identifier) @parameter
+          (accent_quoted (identifier) @parameter)
+        ])))
+
+((tuple_deconstruct_declaration
+  (symbol_declaration
+    name: [
+      (identifier) @parameter
+      (accent_quoted (identifier) @parameter)
+    ])) @_tuple_decons
+  (#has-ancestor? @_tuple_decons for))
 
 ; =============================================================================
 ; @type.definition ; type definitions (e.g. `typedef` in C)
