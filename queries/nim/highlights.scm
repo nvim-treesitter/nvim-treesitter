@@ -762,7 +762,7 @@
 (dot_expression left: [
   (identifier) @none
   (accent_quoted (identifier) @none)
-] (#set! "priority" 110))
+])
 ; NOTE: we can't know what the left identifier is, so better leave it alone
 ; for consistency
 
