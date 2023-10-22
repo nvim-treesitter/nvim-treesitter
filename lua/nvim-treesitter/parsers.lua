@@ -984,6 +984,14 @@ list.ledger = {
   maintainers = { "@cbarrete" },
 }
 
+list.leo = {
+  install_info = {
+    url = "https://github.com/r001/tree-sitter-leo",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@r001" },
+}
+
 list.llvm = {
   install_info = {
     url = "https://github.com/benwilliamgraham/tree-sitter-llvm",
