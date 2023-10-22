@@ -13,6 +13,7 @@
  "record"
  "self"
  "struct"
+ "then"
 ] @keyword
 
  "in" @keyword.operator
@@ -43,7 +44,6 @@
 [ 
   "else"
   "if"
-  "then"
 ] @conditional
 
 [
