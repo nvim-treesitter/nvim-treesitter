@@ -201,7 +201,7 @@
     "revision": "952739a25a7c014882aa777f1a32da8950f31f58"
   },
   "gn": {
-    "revision": "492878ebee3552ac4631b064e02d19a00b894535"
+    "revision": "bc06955bc1e3c9ff8e9b2b2a55b38b94da923c05"
   },
   "go": {
     "revision": "bbaa67a180cfe0c943e50c55130918be8efb20bd"
@@ -327,10 +327,10 @@
     "revision": "8a841fb20ce683bfbb3469e6ba67f2851cfdf94a"
   },
   "leo": {
-    "revision": "bf56a34745ee7a322442702f3aef2e633bb0b36c"
+    "revision": "a3727051dd8e1d350667608190498f508c1cf6d6"
   },
   "liquidsoap": {
-    "revision": "4acf9035d852fc65e013f05f597635204e6d1ca5"
+    "revision": "01df7d97af6210071f3f125e072d62305501bc50"
   },
   "llvm": {
     "revision": "1b96e58faf558ce057d4dc664b904528aee743cb"
