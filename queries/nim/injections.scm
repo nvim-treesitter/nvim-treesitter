@@ -38,7 +38,7 @@
 
 ; there is no ts parser for assembly
 ; (assembly_statement (string_literal) @injection.content
-;   (#set! injection.language "assembly"))
+;   (#set! injection.language "asm"))
 
 ; =============================================================================
 ; emit pragma
