@@ -281,6 +281,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [lalrpop](https://github.com/traxys/tree-sitter-lalrpop) (maintained by @traxys)
 - [x] [latex](https://github.com/latex-lsp/tree-sitter-latex) (maintained by @theHamsta, @clason)
 - [x] [ledger](https://github.com/cbarrete/tree-sitter-ledger) (maintained by @cbarrete)
+- [x] [leo](https://github.com/r001/tree-sitter-leo) (maintained by @r001)
 - [x] [liquidsoap](https://github.com/savonet/tree-sitter-liquidsoap) (maintained by @toots)
 - [x] [llvm](https://github.com/benwilliamgraham/tree-sitter-llvm) (maintained by @benwilliamgraham)
 - [x] [lua](https://github.com/MunifTanjim/tree-sitter-lua) (maintained by @muniftanjim)
