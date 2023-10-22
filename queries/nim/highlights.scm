@@ -6,6 +6,8 @@
 ; catch all rules
 
 ((identifier) @variable (#set! "priority" 95))
+; NOTE: this priority is necessary, because the capture is most specific 
+; and will overrule things like (type_expression) which contain (identifier)s
 
 ; =============================================================================
 ; @comment               ; line and block comments
