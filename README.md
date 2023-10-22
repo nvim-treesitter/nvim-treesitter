@@ -240,6 +240,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [gleam](https://github.com/gleam-lang/tree-sitter-gleam) (maintained by @amaanq)
 - [x] [Glimmer and Ember](https://github.com/alexlafroscia/tree-sitter-glimmer) (maintained by @NullVoxPopuli)
 - [x] [glsl](https://github.com/theHamsta/tree-sitter-glsl) (maintained by @theHamsta)
+- [x] [GN (Generate Ninja)](https://github.com/amaanq/tree-sitter-gn) (maintained by @amaanq)
 - [x] [go](https://github.com/tree-sitter/tree-sitter-go) (maintained by @theHamsta, @WinWisely268)
 - [x] [Godot Resources (gdresource)](https://github.com/PrestonKnopp/tree-sitter-godot-resource) (maintained by @pierpo)
 - [x] [gomod](https://github.com/camdencheek/tree-sitter-go-mod) (maintained by @camdencheek)
