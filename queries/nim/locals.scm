@@ -239,7 +239,7 @@
 ; ==============================================================================
 ; @scope                 ; scope block
 
-; (when) 
+; (when)
 ; NOTE: `when` does actually not create a scope
 
 (if

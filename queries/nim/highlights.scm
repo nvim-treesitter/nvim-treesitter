@@ -5,7 +5,7 @@
 ; =============================================================================
 ; catch all rules
 
-(identifier) @variable 
+(identifier) @variable
 
 ; =============================================================================
 ; @comment               ; line and block comments
@@ -158,7 +158,7 @@
 ; `identifier"string literal"`
 ; is short for
 ; `identifier(r"string literal")`
-(generalized_string 
+(generalized_string
   function: [
     (identifier) @function.call
     (accent_quoted (identifier) @function.call)
@@ -178,7 +178,7 @@
     (generalized_string)
     (array_construction)
     ; for sequences
-    (prefix_expression 
+    (prefix_expression
       operator: (operator) @_at
       (array_construction)
       (#eq? @_at "@"))
@@ -193,7 +193,7 @@
 
 ; =============================================================================
 ; @function.builtin ; built-in functions
-; TODO: 
+; TODO:
 
 ; =============================================================================
 ; @function.macro   ; preprocessor macros
@@ -719,7 +719,7 @@
     (generalized_string)
     (array_construction)
     ; for sequences
-    (prefix_expression 
+    (prefix_expression
       operator: (operator) @_at
       (array_construction)
       (#eq? @_at "@"))

@@ -2,14 +2,14 @@
 ; generalized_strings
 
 ; regex in generalized_strings
-(generalized_string 
+(generalized_string
   function: (identifier) @_string_prefix .
   (string_content) @injection.content
   (#set! injection.language "regex")
   (#any-of? @_string_prefix "re" "rex"))
 
 ; format string in generalized_strings
-(generalized_string 
+(generalized_string
   function: (identifier) @_string_prefix .
   (string_content) @injection.content
   (#set! injection.language "nim_format_string")
@@ -18,13 +18,13 @@
 ; format string in normal strings with & prefix
 (prefix_expression
   operator: (operator) @_string_prefix .
-  (_ (string_content) @injection.content) 
+  (_ (string_content) @injection.content)
   (#set! injection.language "nim_format_string")
   (#eq? @_string_prefix "&"))
 
 ; sql in generalized_strings
 ; and anyhting you like as long as the function name is the same as the injected language's parser
-(generalized_string 
+(generalized_string
   function: (identifier) @injection.language
   (string_content) @injection.content
   (#not-any-of? @injection.language "re" "rex" "fmt"))
@@ -51,7 +51,7 @@
 ; {.emit: "<javascript code>".}
 
 ; normal strings
-((comment (comment_content) @injection.language) 
+((comment (comment_content) @injection.language)
   .
   (pragma_statement
     (pragma_list
@@ -71,4 +71,3 @@
 ; markdown parser in block_documentation_comment
 (block_documentation_comment (comment_content) @injection.content
   (#set! injection.language "markdown"))
-
