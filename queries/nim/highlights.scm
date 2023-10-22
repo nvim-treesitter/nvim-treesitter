@@ -763,7 +763,7 @@
   (identifier) @none
   (accent_quoted (identifier) @none)
 ] (#set! "priority" 110))
-; NOTE: it can't be know what the left identifier is, so better leave it alone
+; NOTE: we can't know what the left identifier is, so better leave it alone
 ; for consistency
 
 ; discard literals is like a comment
