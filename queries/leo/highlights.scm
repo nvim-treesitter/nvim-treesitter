@@ -50,11 +50,12 @@
  (ternary_if)
  (ternary_else)
 ] @conditional.ternary
+(
+ [ "(" ")" "{" "}" "[" "]" ] @punctuation.bracket
+ (#set! "priority" 90))
 
-[ "(" ")" "{" "}" "[" "]" ] @punctuation.bracket
-
-[ ";" "," "::"] @punctuation.delimiter
-
+ ([ ";" "," "::"] @punctuation.delimiter
+ (#set! "priority" 90))
 [
 "!"
 
