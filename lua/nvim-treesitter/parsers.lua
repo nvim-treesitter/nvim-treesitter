@@ -1874,6 +1874,14 @@ list.typescript = {
   maintainers = { "@steelsojka" },
 }
 
+list.typoscript = {
+  install_info = {
+    url = "https://github.com/Teddytrombone/tree-sitter-typoscript", -- local path or git repo
+    files = { "src/parser.c" }, -- note that some parsers also require src/scanner.c or src/scanner.cc
+  },
+  maintainers = { "@Teddytrombone" },
+}
+
 list.ungrammar = {
   install_info = {
     url = "https://github.com/Philipp-M/tree-sitter-ungrammar",

@@ -638,6 +638,9 @@
   "typescript": {
     "revision": "d847898fec3fe596798c9fda55cb8c05a799001a"
   },
+  "typoscript": {
+    "revision": "43b221c0b76e77244efdaa9963e402a17c930fbc"
+  },
   "ungrammar": {
     "revision": "debd26fed283d80456ebafa33a06957b0c52e451"
   },
