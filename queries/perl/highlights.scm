@@ -72,7 +72,7 @@
  (regexp_content)
 ] @string.regex
 
-(autoquoted_bareword _?) @string.special
+(autoquoted_bareword) @string.special
 
 (use_statement (package) @type)
 (package_statement (package) @type)
