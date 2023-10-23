@@ -37,9 +37,7 @@
   (condition_bool)
 ] @operator
 
-[
-  ","
-] @punctuation.delimiter
+"," @punctuation.delimiter
 
 [
  "("
