@@ -327,10 +327,10 @@
     "revision": "8a841fb20ce683bfbb3469e6ba67f2851cfdf94a"
   },
   "leo": {
-    "revision": "a3727051dd8e1d350667608190498f508c1cf6d6"
+    "revision": "91d7aa606f524cf4f5df7f4aacb45b4056fac704"
   },
   "liquidsoap": {
-    "revision": "01df7d97af6210071f3f125e072d62305501bc50"
+    "revision": "4620ab746d1e9e5b6ebccaaa6afc5ebce06b4d75"
   },
   "llvm": {
     "revision": "1b96e58faf558ce057d4dc664b904528aee743cb"
@@ -423,7 +423,7 @@
     "revision": "e01767921df18142055d97407595329d7629e643"
   },
   "perl": {
-    "revision": "99bbcb0faddfc79db3fd2996cb56689a4685e78c"
+    "revision": "186906b7b03a0a4d9c4e27444b234320e9b470c9"
   },
   "php": {
     "revision": "0e02e7fab7913a0e77343edb347c8f17cac1f0ba"
@@ -678,7 +678,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "2b00ad4c06f1f49257f1310b01f23a98dc117f77"
+    "revision": "8abdb5e1846a56004bcba6e1d9a735e22bb5fff4"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
