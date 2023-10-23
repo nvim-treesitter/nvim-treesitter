@@ -2,6 +2,6 @@
   (block)
 ] @indent.begin
 
-("}") @indent.dedent
+("}") @indent.branch @indent.end 
 
 (comment) @indent.ignore

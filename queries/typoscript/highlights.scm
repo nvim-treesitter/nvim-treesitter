@@ -11,12 +11,6 @@
   (condition_else)
 ] @conditional
 
-
-[
-  "@import"
-  "INCLUDE_TYPOSCRIPT"
-] @keyword
-
 (cobject) @type.builtin
 
 [
