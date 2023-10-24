@@ -386,6 +386,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [turtle](https://github.com/BonaBeavis/tree-sitter-turtle) (maintained by @BonaBeavis)
 - [x] [twig](https://github.com/gbprod/tree-sitter-twig) (maintained by @gbprod)
 - [x] [typescript](https://github.com/tree-sitter/tree-sitter-typescript) (maintained by @steelsojka)
+- [x] [typoscript](https://github.com/Teddytrombone/tree-sitter-typoscript) (maintained by @Teddytrombone)
 - [x] [ungrammar](https://github.com/Philipp-M/tree-sitter-ungrammar) (maintained by @Philipp-M, @amaanq)
 - [x] [unison](https://github.com/kylegoetz/tree-sitter-unison) (maintained by @tapegram)
 - [x] [usd](https://github.com/ColinKennedy/tree-sitter-usd) (maintained by @ColinKennedy)
