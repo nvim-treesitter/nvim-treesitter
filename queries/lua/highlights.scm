@@ -181,6 +181,8 @@
 
 (parameters (identifier) @parameter)
 
+(vararg_expression) @parameter.builtin
+
 (function_declaration
   name: [
     (identifier) @function
