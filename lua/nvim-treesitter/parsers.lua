@@ -1874,6 +1874,14 @@ list.typescript = {
   maintainers = { "@steelsojka" },
 }
 
+list.typoscript = {
+  install_info = {
+    url = "https://github.com/Teddytrombone/tree-sitter-typoscript",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@Teddytrombone" },
+}
+
 list.ungrammar = {
   install_info = {
     url = "https://github.com/Philipp-M/tree-sitter-ungrammar",
