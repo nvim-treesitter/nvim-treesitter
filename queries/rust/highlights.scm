@@ -120,6 +120,12 @@
   (#lua-match? @type "^[A-Z]")
   (#lua-match? @constant "^[A-Z]"))
 
+(struct_item
+  name: (type_identifier) @type.definition)
+
+(enum_item
+  name: (type_identifier) @type.definition)
+
 [
   (crate)
   (super)

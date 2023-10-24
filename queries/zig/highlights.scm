@@ -228,5 +228,12 @@ field_constant: (IDENTIFIER) @constant
   (PtrIndexPayload "|")
 ] @punctuation.bracket
 
+(Decl
+  (VarDecl
+    variable_type_function: (IDENTIFIER) @type.definition
+    (ErrorUnionExpr
+      (SuffixExpr
+        [(ErrorSetDecl) (ContainerDecl)]))))
+
 ; Error
 (ERROR) @error
