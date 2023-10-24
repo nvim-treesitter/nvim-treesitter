@@ -21,7 +21,7 @@
 [
   (comment)
   (single_line_comment)
-] @comment
+] @comment @spell
 
 [
   (string)
