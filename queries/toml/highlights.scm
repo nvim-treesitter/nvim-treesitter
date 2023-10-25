@@ -32,5 +32,3 @@
 "]]" @punctuation.bracket
 "{" @punctuation.bracket
 "}" @punctuation.bracket
-
-(ERROR) @error

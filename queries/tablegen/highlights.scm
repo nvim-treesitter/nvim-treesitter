@@ -150,7 +150,3 @@
 
 ((comment) @preproc
   (#lua-match? @preproc "^.*RUN"))
-
-; Errors
-
-(ERROR) @error

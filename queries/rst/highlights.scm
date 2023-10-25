@@ -167,5 +167,3 @@
         (#not-any-of? @_directive "code" "code-block" "sourcecode")))
 
 (paragraph) @spell
-
-(ERROR) @error

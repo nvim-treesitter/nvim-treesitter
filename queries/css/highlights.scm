@@ -87,5 +87,3 @@
  "("
  "}"
  ] @punctuation.bracket
-
-(ERROR) @error

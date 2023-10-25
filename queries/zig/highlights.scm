@@ -227,6 +227,3 @@ field_constant: (IDENTIFIER) @constant
   (PtrPayload "|")
   (PtrIndexPayload "|")
 ] @punctuation.bracket
-
-; Error
-(ERROR) @error

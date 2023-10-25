@@ -332,7 +332,3 @@
 ; Comment
 
 (comment) @comment @spell
-
-; Errors
-
-(ERROR) @error

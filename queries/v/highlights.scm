@@ -461,7 +461,3 @@
 (_
   (comment)+ @comment.documentation
   [(function_declaration) (type_declaration) (enum_declaration)])
-
-; Errors
-
-(ERROR) @error

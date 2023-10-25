@@ -18,5 +18,3 @@
 (float) @float
 (boolean) @boolean
 (null) @keyword
-
-(ERROR) @error

@@ -319,5 +319,3 @@
   "@"
   "::"
 ] @operator
-
-(ERROR) @error

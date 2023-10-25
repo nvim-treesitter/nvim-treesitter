@@ -116,6 +116,3 @@
       (id) @parameter
     ))?
   ")")
-
-; ERROR
-(ERROR) @error

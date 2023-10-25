@@ -29,5 +29,3 @@
 (breaking_change (value) @text @spell)
 
 (scissor) @comment
-
-(ERROR) @error

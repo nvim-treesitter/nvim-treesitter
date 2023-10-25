@@ -161,8 +161,3 @@
 
 ((program . (comment) @preproc)
   (#lua-match? @preproc "^#!/"))
-
-;; Error
-
-(ERROR) @error
-

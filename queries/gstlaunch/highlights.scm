@@ -28,5 +28,3 @@
   type: (_) @type)
 (bin
   type: (_) @type)
-
-(ERROR) @error

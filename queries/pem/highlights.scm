@@ -7,5 +7,3 @@
 (data) @none
 
 (comment) @comment @spell
-
-(ERROR) @error

@@ -13,5 +13,3 @@
 
 (member
     name: (_) @keyword)
-
-(ERROR) @error

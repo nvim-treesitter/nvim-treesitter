@@ -38,4 +38,3 @@
 ; Misc
 
 (comment) @comment @spell
-(ERROR) @error

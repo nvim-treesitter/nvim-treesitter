@@ -12,8 +12,6 @@
 
 (array (string) @string)
 
-(ERROR) @error
-
 ["," ":"] @punctuation.delimiter
 
 [

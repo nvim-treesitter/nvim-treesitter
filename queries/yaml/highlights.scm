@@ -11,7 +11,6 @@
 (anchor_name) @type
 (alias_name) @type
 (tag) @type
-(ERROR) @error
 
 [
   (yaml_directive)

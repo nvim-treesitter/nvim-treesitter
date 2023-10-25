@@ -1,5 +1,4 @@
 ;; Basic
-(ERROR) @error
 
 (identifier) @variable
 (name) @variable

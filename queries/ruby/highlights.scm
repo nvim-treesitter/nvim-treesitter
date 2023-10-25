@@ -255,5 +255,3 @@
 (interpolation
   "#{" @punctuation.special
   "}" @punctuation.special) @none
-
-(ERROR) @error

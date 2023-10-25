@@ -245,10 +245,6 @@
   (comment)+ @comment.documentation
   . (var_declaration))
 
-; Errors
-
-(ERROR) @error
-
 ; Spell
 
 ((interpreted_string_literal) @spell

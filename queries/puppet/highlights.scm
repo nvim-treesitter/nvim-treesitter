@@ -189,7 +189,3 @@
 ; Comments
 
 (comment) @comment @spell
-
-; Errors
-
-(ERROR) @error

@@ -313,5 +313,3 @@
  (xhp_open)
  (xhp_close)
 ] @tag
-
-(ERROR) @error

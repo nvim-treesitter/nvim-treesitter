@@ -38,5 +38,3 @@
 (function_name) @function.call
 
 (comment) @comment @spell
-(ERROR) @error
-

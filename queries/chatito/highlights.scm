@@ -48,7 +48,3 @@
 ;; Comment
 
 (comment) @comment @spell
-
-;; Error
-
-(ERROR) @error

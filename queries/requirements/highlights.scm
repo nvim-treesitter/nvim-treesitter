@@ -42,6 +42,4 @@
 
 (linebreak) @character.special
 
-(ERROR) @error
-
 (comment) @comment @spell
