@@ -268,6 +268,3 @@
 ] @exception
 
 ["do" "while" "continue" "for"] @repeat
-
-; Error
-(ERROR) @error

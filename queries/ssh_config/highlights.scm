@@ -68,8 +68,6 @@
 
 (comment) @comment @spell
 
-(ERROR) @error
-
 ; Punctuation
 
 [ "${" "}" ] @punctuation.special

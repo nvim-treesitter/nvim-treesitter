@@ -139,6 +139,3 @@
 
 (call
   function: ((dollar _ (identifier) @method.call)))
-
-; Error
-(ERROR) @error

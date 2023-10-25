@@ -246,7 +246,3 @@
 
 ((comment) @comment.documentation
   (#lua-match? @comment.documentation "^[-][-](%s?)@"))
-
-; Errors
-
-(ERROR) @error

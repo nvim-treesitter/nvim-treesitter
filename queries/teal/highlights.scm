@@ -130,6 +130,3 @@
 ;    (string (format_specifier) @string.escape)
 ;    key: (identifier) @func-name)
 ;    (#eq? @func-name "format"))
-
-
-(ERROR) @error

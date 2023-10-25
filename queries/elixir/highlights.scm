@@ -19,9 +19,6 @@
   "%"
 ] @punctuation.special
 
-; Parser Errors
-(ERROR) @error
-
 ; Identifiers
 (identifier) @variable
 

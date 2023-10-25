@@ -224,7 +224,3 @@
 
 ((comment) @preproc
   (#lua-match? @preproc "#!.*"))
-
-; Errors
-
-(ERROR) @error

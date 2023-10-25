@@ -77,5 +77,3 @@
 (source (prompt) @text.uri @string.special)
 
 (comment) @comment @spell
-
-(ERROR) @error

@@ -326,7 +326,3 @@
 
 ((comment) @comment.documentation
   (#lua-match? @comment.documentation "^!>"))
-
-; Errors
-
-(ERROR) @error

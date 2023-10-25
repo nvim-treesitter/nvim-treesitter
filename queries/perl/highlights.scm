@@ -103,8 +103,6 @@
 
 (function) @function
 
-(ERROR) @error
-
 (_
   "{" @punctuation.special
   (varname)

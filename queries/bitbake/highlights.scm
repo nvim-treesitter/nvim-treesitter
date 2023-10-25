@@ -356,5 +356,3 @@
               "bytes" "bytearray" "memoryview" "set" "frozenset" "dict" "type" "object"))
 
 (comment) @comment @spell
-
-(ERROR) @error

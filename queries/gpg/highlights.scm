@@ -45,5 +45,3 @@
 [ "\"" "'" "," ] @punctuation.delimiter
 
 (comment) @comment @spell
-
-(ERROR) @error

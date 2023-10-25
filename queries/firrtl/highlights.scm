@@ -184,6 +184,3 @@
 (comment) @comment @spell
 
 ["=>" "<=" "="] @operator
-
-; Error
-(ERROR) @error

@@ -247,6 +247,3 @@
 (string) @string
 
 (escape_sequence) @string.escape
-
-;; Error
-(ERROR) @error

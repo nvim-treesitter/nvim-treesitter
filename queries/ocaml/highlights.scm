@@ -173,5 +173,3 @@
 ;---------
 
 [(comment) (line_number_directive) (directive) (shebang)] @comment @spell
-
-(ERROR) @error

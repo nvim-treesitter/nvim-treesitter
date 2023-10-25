@@ -32,9 +32,6 @@
 ; HEEx text content is treated as markup
 (text) @text
 
-; Tree-sitter parser errors
-(ERROR) @error
-
 ; HEEx tags and slots are highlighted as HTML
 [
  (tag_name) 

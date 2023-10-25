@@ -117,5 +117,3 @@
 [ "INCLUDE" "IGNORE" ] @include
 
 (Comment) @comment @spell
-
-(ERROR) @error

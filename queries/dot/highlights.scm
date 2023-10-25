@@ -51,5 +51,3 @@
 (preproc) @preproc
 
 (comment) @spell
-
-(ERROR) @error

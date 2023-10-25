@@ -186,5 +186,3 @@
   (comment)
   (ignore_block)
 ] @comment @spell
-
-(ERROR) @error

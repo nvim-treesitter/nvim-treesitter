@@ -262,9 +262,6 @@
 
 ["," "." ":" ";" (ellipsis)] @punctuation.delimiter
 
-;; Error
-(ERROR) @error
-
 ;; Starlark-specific
 
 ;; Assertion calls

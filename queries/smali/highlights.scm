@@ -212,7 +212,3 @@
 
 (class_definition
   (comment) @comment.documentation)
-
-; Errors
-
-(ERROR) @error

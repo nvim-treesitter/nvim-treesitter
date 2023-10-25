@@ -148,7 +148,3 @@
 ; Comments
 
 [ (comment) (line_continuation) ] @comment @spell
-
-; Errors
-
-(ERROR) @error

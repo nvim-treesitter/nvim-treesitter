@@ -27,7 +27,3 @@
 (comment (reference (text) @string.special.path))
 
 (comment (flag (text) @preproc))
-
-; Errors
-
-(ERROR) @error

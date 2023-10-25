@@ -50,4 +50,3 @@
 ;------------
 
 (escape_sequence) @string.escape
-(ERROR) @error

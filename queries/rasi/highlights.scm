@@ -78,5 +78,3 @@
 (environ_value "env" @function.builtin (identifier) @variable)
 
 (property_name) @variable
-
-(ERROR) @error

@@ -17,6 +17,4 @@
 
 (escaped_char) @string.escape
 
-(ERROR) @error
-
 (comment) @comment @spell

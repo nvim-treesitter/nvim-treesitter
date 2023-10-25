@@ -282,5 +282,3 @@
   (ms_pointer_modifier)
   (attribute_declaration)
 ] @attribute
-
-(ERROR) @error

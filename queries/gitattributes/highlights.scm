@@ -48,6 +48,4 @@
   (trailing_slash)
 ] @error
 
-(ERROR) @error
-
 (comment) @comment @spell
