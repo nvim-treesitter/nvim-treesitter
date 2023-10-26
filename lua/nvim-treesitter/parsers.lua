@@ -1653,7 +1653,7 @@ list.sparql = {
 list.sql = {
   install_info = {
     url = "https://github.com/derekstride/tree-sitter-sql",
-    files = { "src/parser.c" },
+    files = { "src/parser.c", "src/scanner.c" },
     branch = "gh-pages",
   },
   maintainers = { "@derekstride" },
