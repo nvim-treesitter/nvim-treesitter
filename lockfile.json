@@ -183,7 +183,7 @@
     "revision": "d8a4207ebbc47bd78bacdf48f883db58283f9fd8"
   },
   "gitattributes": {
-    "revision": "2339ffe87a88d0b7838c015592c8269eb0063140"
+    "revision": "f58a4a4bc55b9b43dfa7c4106257422764f97776"
   },
   "gitcommit": {
     "revision": "6856a5fd0ffeff17d83325a8ce4e57811010eff1"
@@ -594,7 +594,7 @@
     "revision": "1af543a96d060b1f808982037bfc54cc02218edd"
   },
   "t32": {
-    "revision": "64e64e201bc8b8e0a09f5b95a66dd8831375e3b3"
+    "revision": "884a034e0ae29ce72649041a603deacdfb4a3275"
   },
   "tablegen": {
     "revision": "300f6a490e71f895e644ed2deec6920860a2e107"
@@ -681,7 +681,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "22a07719a928074eaee0b3e314acc17869e44531"
+    "revision": "e71fee95e97cc9f7f8e5efcef36f99bfe066901a"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
