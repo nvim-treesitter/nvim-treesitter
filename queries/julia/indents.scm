@@ -22,16 +22,21 @@
   (comprehension_expression)
   (matrix_expression)
   (vector_expression)
+  (curly_expression)
 ] @indent.begin
 
 [
   "end"
+  ")"
+  "]"
+  "}"
 ] @indent.end
 
 [
   "end"
   ")"
   "]"
+  "}"
   (else_clause)
   (elseif_clause)
   (catch_clause)
