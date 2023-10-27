@@ -26,9 +26,11 @@
 
 [
   "end"
-  "("
+] @indent.end
+
+[
+  "end"
   ")"
-  "["
   "]"
   (else_clause)
   (elseif_clause)
