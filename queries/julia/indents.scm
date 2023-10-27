@@ -30,9 +30,7 @@
 
 [
   "end"
-  "("
   ")"
-  "["
   "]"
   (else_clause)
   (elseif_clause)
