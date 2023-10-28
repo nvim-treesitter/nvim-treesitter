@@ -5,7 +5,10 @@
 ; =============================================================================
 ; catch all rules
 
-(identifier) @variable
+((identifier) @variable (#set! "priority" 91))
+; NOTE: we need priority, since (identifier) is most specific and we have to
+; capture nodes containing (identifier) as a whole, while overruling the
+; @variable capture.
 
 ; =============================================================================
 ; @comment               ; line and block comments
@@ -383,18 +386,15 @@
 ; =============================================================================
 ; @type            ; type or class definitions and annotations
 
-((identifier) @type
-  (#has-ancestor? @type type_expression)
-  (#not-has-ancestor? @type pragma_list))
-; NOTE: needs to be after @variable
-; NOTE: benchmarked with
-; `$ hyperfine -P version 1 3 "tree-sitter query -q $QUERIES/highlights{version}.scm $NIM_REPO/**/*.nim"`
-; with
-; 1. "no-priority" version,
-; 2. "priority and (_ (_ (_... nesting version" and
-; 3. "priority and has-ancestor version".
-; "no-priority" was the worst, the other two were almost the same,
-; but "has-ancestor" is superior, since it allows for infinite nesting.
+((type_expression) @type (#set! "priority" 98))
+
+; overrule identifiers in pragmas in (proc_type)s
+(proc_type
+  pragmas: (pragma_list (_) @variable)
+  (#set! "priority" 99))
+(iterator_type
+  pragmas: (pragma_list (_) @variable)
+  (#set! "priority" 99))
 
 ; generic types when declaring
 ((generic_parameter_list
@@ -409,69 +409,37 @@
 ; generic types when calling
 (call
   function: (bracket_expression
-    right: (argument_list [
-      (identifier) @type
-      (_ (identifier) @type)
-      (_ (_ (identifier) @type))
-      (_ (_ (_ (identifier) @type)))
-      (_ (_ (_ (_ (identifier) @type))))
-      (_ (_ (_ (_ (_ (identifier) @type)))))
-      (_ (_ (_ (_ (_ (_ (identifier) @type))))))
-      (_ (_ (_ (_ (_ (_ (_ (identifier) @type)))))))
-      (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @type))))))))
-      (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @type)))))))))
-      (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @type))))))))))
-      (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @type)))))))))))
-      (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @type))))))))))))
-    ])))
+    right: (argument_list) @type)
+  (#set! "priority" 98))
 ; NOTE: this also falsely matches
 ; when accessing and directly call elements from an array of routines
 ; eg `array_of_routines[index](arguments), but that is an uncommon case
+; NOTE: this will falsly capture (identifier)s that aren't types as well, eg
+; array[enum1..enum2, int]
 
 ; right side of `is` operator is always type
 (infix_expression
   operator: [ "is" "isnot" ]
-  right: [
-    (identifier) @type
-    (_ (identifier) @type)
-    (_ (_ (identifier) @type))
-    (_ (_ (_ (identifier) @type)))
-    (_ (_ (_ (_ (identifier) @type))))
-    (_ (_ (_ (_ (_ (identifier) @type)))))
-    (_ (_ (_ (_ (_ (_ (identifier) @type))))))
-    (_ (_ (_ (_ (_ (_ (_ (identifier) @type)))))))
-    (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @type))))))))
-    (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @type)))))))))
-    (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @type))))))))))
-    (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @type)))))))))))
-    (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @type))))))))))))
-  ])
+  right: (_) @type
+  (#set! "priority" 98))
 
 ; except branch always contains types of errors
 ; Eg: `except module.exception[gen_type]:`
-; Or `except module.exception[gen_type] as variable:`
 (except_branch
-  values: (expression_list [
-    (identifier) @type
-    (accent_quoted (identifier) @type)
+  values: (expression_list) @type
+  (#set! "priority" 98))
+
+; overrule special case in (except_branch) with "as" operator
+; `except module.exception[gen_type] as variable:`
+(except_branch
+  values: (expression_list
     (infix_expression
-      left: [
-        (identifier) @type
-        (_ (identifier) @type)
-        (_ (_ (identifier) @type))
-        (_ (_ (_ (identifier) @type)))
-        (_ (_ (_ (_ (identifier) @type))))
-        (_ (_ (_ (_ (_ (identifier) @type)))))
-        (_ (_ (_ (_ (_ (_ (identifier) @type))))))
-        (_ (_ (_ (_ (_ (_ (_ (identifier) @type)))))))
-        (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @type))))))))
-        (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @type)))))))))
-        (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @type))))))))))
-        (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @type)))))))))))
-        (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @type))))))))))))
-      ]
-      operator: "as")
-  ]))
+      operator: "as"
+      right: [
+        (identifier) @variable
+        (accent_quoted (identifier) @variable)
+      ]))
+  (#set! "priority" 99))
 
 ; for inline tuple types
 ; `type a = tuple[a: int]`
@@ -607,28 +575,14 @@
 ; identifiers in "case" "of" branches have to be enums
 (case
   (of_branch values:
-    (expression_list [
-      (identifier) @constant
-      (_ (identifier) @constant)
-      (_ (_ (identifier) @constant))
-      (_ (_ (_ (identifier) @constant)))
-      (_ (_ (_ (_ (identifier) @constant))))
-      (_ (_ (_ (_ (_ (identifier) @constant)))))
-      (_ (_ (_ (_ (_ (_ (identifier) @constant))))))
-    ])))
+    (expression_list (_)))
+  (#set! "priority" 98))
 
 ; in variant objects with "case" "of"
 (variant_declaration
   (of_branch values:
-    (expression_list [
-      (identifier) @constant
-      (_ (identifier) @constant)
-      (_ (_ (identifier) @constant))
-      (_ (_ (_ (identifier) @constant)))
-      (_ (_ (_ (_ (identifier) @constant))))
-      (_ (_ (_ (_ (_ (identifier) @constant)))))
-      (_ (_ (_ (_ (_ (_ (identifier) @constant))))))
-    ])))
+    (expression_list (_)))
+  (#set! "priority" 98))
 
 ; enum declaration
 (enum_field_declaration
@@ -641,15 +595,8 @@
 ; constants/enums in array construction
 (array_construction
   (colon_expression
-    left: [
-      (identifier) @constant
-      (_ (identifier) @constant)
-      (_ (_ (identifier) @constant))
-      (_ (_ (_ (identifier) @constant)))
-      (_ (_ (_ (_ (identifier) @constant))))
-      (_ (_ (_ (_ (_ (identifier) @constant)))))
-      (_ (_ (_ (_ (_ (_ (identifier) @constant))))))
-    ]))
+    left: (_))
+  (#set! "priority" 98))
 
 ; constant declaration
 (const_section
