@@ -575,13 +575,13 @@
 ; identifiers in "case" "of" branches have to be enums
 (case
   (of_branch values:
-    (expression_list (_)))
+    (expression_list (_) @constant))
   (#set! "priority" 98))
 
 ; in variant objects with "case" "of"
 (variant_declaration
   (of_branch values:
-    (expression_list (_)))
+    (expression_list (_) @constant))
   (#set! "priority" 98))
 
 ; enum declaration
@@ -595,7 +595,7 @@
 ; constants/enums in array construction
 (array_construction
   (colon_expression
-    left: (_))
+    left: (_) @constant)
   (#set! "priority" 98))
 
 ; constant declaration
