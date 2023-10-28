@@ -1,5 +1,5 @@
 local Runner = require("tests.indent.common").Runner
-local XFAIL = require("tests.indent.common").XFAIL
+-- local XFAIL = require("tests.indent.common").XFAIL
 
 local run = Runner:new(it, "tests/indent/julia", {
   tabstop = 4,
