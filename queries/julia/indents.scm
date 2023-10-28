@@ -15,8 +15,8 @@
   (assignment)
   (for_binding)
 
-  (binary_expression)
   (call_expression)
+  (parenthesized_expression)
 
   (tuple_expression)
   (comprehension_expression)
@@ -48,3 +48,10 @@
   (block_comment)
 ] @indent.ignore
 
+((argument_list) @indent.align
+  (#set! indent.open_delimiter "(")
+  (#set! indent.close_delimiter ")"))
+
+((parameter_list) @indent.align
+  (#set! indent.open_delimiter "(")
+  (#set! indent.close_delimiter ")"))
