@@ -5,7 +5,7 @@
 ; =============================================================================
 ; catch all rules
 
-((identifier) @variable (#set! "priority" 91))
+((identifier) @variable (#set! "priority" 99))
 ; NOTE: we need priority, since (identifier) is most specific and we have to
 ; capture nodes containing (identifier) as a whole, while overruling the
 ; @variable capture.
@@ -386,15 +386,15 @@
 ; =============================================================================
 ; @type            ; type or class definitions and annotations
 
-((type_expression) @type (#set! "priority" 98))
+(type_expression) @type
 
 ; overrule identifiers in pragmas in (proc_type)s
 (proc_type
   pragmas: (pragma_list (_) @variable)
-  (#set! "priority" 99))
+  (#set! "priority" 101))
 (iterator_type
   pragmas: (pragma_list (_) @variable)
-  (#set! "priority" 99))
+  (#set! "priority" 101))
 
 ; generic types when declaring
 ((generic_parameter_list
@@ -409,8 +409,7 @@
 ; generic types when calling
 (call
   function: (bracket_expression
-    right: (argument_list) @type)
-  (#set! "priority" 98))
+    right: (argument_list) @type))
 ; NOTE: this also falsely matches
 ; when accessing and directly call elements from an array of routines
 ; eg `array_of_routines[index](arguments), but that is an uncommon case
@@ -420,14 +419,12 @@
 ; right side of `is` operator is always type
 (infix_expression
   operator: [ "is" "isnot" ]
-  right: (_) @type
-  (#set! "priority" 98))
+  right: (_) @type)
 
 ; except branch always contains types of errors
 ; Eg: `except module.exception[gen_type]:`
 (except_branch
-  values: (expression_list) @type
-  (#set! "priority" 98))
+  values: (expression_list) @type)
 
 ; overrule special case in (except_branch) with "as" operator
 ; `except module.exception[gen_type] as variable:`
@@ -438,8 +435,7 @@
       right: [
         (identifier) @variable
         (accent_quoted (identifier) @variable)
-      ]))
-  (#set! "priority" 99))
+      ])))
 
 ; for inline tuple types
 ; `type a = tuple[a: int]`
@@ -575,14 +571,12 @@
 ; identifiers in "case" "of" branches have to be enums
 (case
   (of_branch values:
-    (expression_list (_) @constant))
-  (#set! "priority" 98))
+    (expression_list (_) @constant)))
 
 ; in variant objects with "case" "of"
 (variant_declaration
   (of_branch values:
-    (expression_list (_) @constant))
-  (#set! "priority" 98))
+    (expression_list (_) @constant)))
 
 ; enum declaration
 (enum_field_declaration
@@ -595,8 +589,7 @@
 ; constants/enums in array construction
 (array_construction
   (colon_expression
-    left: (_) @constant)
-  (#set! "priority" 98))
+    left: (_) @constant))
 
 ; constant declaration
 (const_section
