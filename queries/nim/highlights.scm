@@ -21,10 +21,11 @@
 ; =============================================================================
 ; @comment.documentation ; comments documenting code
 
-[
-  (documentation_comment)
-  (block_documentation_comment)
-] @comment.documentation
+(documentation_comment "##" @comment.documentation)
+(block_documentation_comment 
+  "##[" @comment.documentation 
+  "]##" @comment.documentation)
+; NOTE: leaving content uncaptured so markdown can be injected
 
 ; =============================================================================
 ; @punctuation.delimiter ; delimiters (e.g. `;` / `.` / `,`)
@@ -73,6 +74,22 @@
   (raw_string_literal)
   (generalized_string)
 ] @string
+
+; injections in generalized_strings
+(generalized_string (string_content) @none)
+
+; format string injection in normal strings with & prefix
+(prefix_expression
+  operator: (operator) @_string_prefix .
+  (_ (string_content) @none)
+  (#eq? @_string_prefix "&"))
+
+; emit pragma injection
+(pragma_statement
+  (pragma_list
+    (colon_expression
+      left: (identifier) @_emit_keyword (#eq? @_emit_keyword "emit")
+      right: (_ (string_content) @none))))
 
 ; =============================================================================
 ; @string.escape        ; escape sequences
