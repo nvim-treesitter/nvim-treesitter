@@ -428,15 +428,6 @@
 ; when accessing and directly call elements from an array of routines
 ; eg `array_of_routines[index](arguments), but that is an uncommon case
 
-; left side of type declaration
-(type_symbol_declaration
-  name: [
-    (identifier) @type
-    (accent_quoted (identifier) @type)
-    (exported_symbol (identifier) @type)
-    (exported_symbol (accent_quoted (identifier) @type))
-  ])
-
 ; right side of `is` operator is always type
 (infix_expression
   operator: [ "is" "isnot" ]
@@ -732,7 +723,6 @@
 ; for consistency
 
 ; discard literals is like a comment
-
 (discard_statement
   "discard" @comment
   [
