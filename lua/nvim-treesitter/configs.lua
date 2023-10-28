@@ -506,7 +506,14 @@ function M.attach_module(mod_name, bufnr, lang)
 
   if resolved_mod and not attached_buffers_by_module.has(mod_name, bufnr) and M.is_enabled(mod_name, lang, bufnr) then
     attached_buffers_by_module.set(mod_name, bufnr, true)
-    resolved_mod.attach(bufnr, lang)
+    local handle
+    handle = vim.loop.new_async(vim.schedule_wrap(function()
+      if not handle:is_closing() then
+        resolved_mod.attach(bufnr, lang)
+        handle:close()
+      end
+    end))
+    handle:send()
   end
 end
 
