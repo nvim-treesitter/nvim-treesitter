@@ -30,13 +30,6 @@
   (#not-any-of? @injection.language "re" "rex" "fmt"))
 
 ; =============================================================================
-; asm statement
-
-; there is no ts parser for assembly
-; (assembly_statement (string_literal) @injection.content
-;   (#set! injection.language "asm"))
-
-; =============================================================================
 ; emit pragma
 
 ; C / CPP / OBJC / JAVASCRIPT
@@ -58,6 +51,15 @@
       (colon_expression
         left: (identifier) @_emit_keyword (#eq? @_emit_keyword "emit")
         right: (_ (string_content) @injection.content)))))
+
+
+; =============================================================================
+; asm statement
+
+; works same as emit pragma, needs preceding comment with language name
+((comment (comment_content) @injection.language)
+  .
+  (assembly_statement (_ (string_content) @injection.content)))
 
 ; =============================================================================
 ; comments
