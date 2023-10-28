@@ -76,6 +76,7 @@ local builtin_modules = {
 }
 
 local attached_buffers_by_module = caching.create_buffer_cache()
+local completed_attached_buffers_by_module = caching.create_buffer_cache()
 
 ---Resolves a module by requiring the `module_path` or using the module definition.
 ---@param mod_name string
@@ -510,6 +511,7 @@ function M.attach_module(mod_name, bufnr, lang)
     handle = vim.loop.new_async(vim.schedule_wrap(function()
       if not handle:is_closing() then
         resolved_mod.attach(bufnr, lang)
+        completed_attached_buffers_by_module.set(mod_name, bufnr, true)
         handle:close()
       end
     end))
@@ -524,8 +526,9 @@ function M.detach_module(mod_name, bufnr)
   local resolved_mod = resolve_module(mod_name)
   bufnr = bufnr or api.nvim_get_current_buf()
 
-  if resolved_mod and attached_buffers_by_module.has(mod_name, bufnr) then
+  if resolved_mod and completed_attached_buffers_by_module.has(mod_name, bufnr) then
     attached_buffers_by_module.remove(mod_name, bufnr)
+    completed_attached_buffers_by_module.remove(mod_name, bufnr)
     resolved_mod.detach(bufnr)
   end
 end
