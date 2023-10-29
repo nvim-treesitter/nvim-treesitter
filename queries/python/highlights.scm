@@ -163,6 +163,7 @@
 ] @string.escape
 
 ; doc-strings
+; (see also queries/python/injections.scm)
 
 (module . (expression_statement (string) @string.documentation @spell))
 
