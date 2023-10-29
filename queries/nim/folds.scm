@@ -20,6 +20,7 @@
   (while)
   (block)
   (static_statement)
+  (pragma_statement)
 
   (try)
   (except_branch)
@@ -41,4 +42,6 @@
   (proc_expression)
   (func_expression)
   (iterator_expression)
+
+  (concept_declaration)
 ] @fold

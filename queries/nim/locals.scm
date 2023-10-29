@@ -127,10 +127,35 @@
       name: [
         (identifier) @definition.parameter
         (accent_quoted) @definition.parameter
-        (exported_symbol (identifier) @definition.parameter)
-        (exported_symbol (accent_quoted) @definition.parameter)
       ]))
   type: (type_expression)? @definition.associated)
+
+(concept_declaration
+  parameters: 
+    (parameter_list [
+      (identifier) @definition.parameter
+      (accent_quoted (identifier) @definition.parameter)
+    ]))
+(var_parameter [
+  (identifier) @definition.parameter
+  (accent_quoted (identifier) @definition.parameter)
+])
+(type_parameter [
+  (identifier) @definition.parameter
+  (accent_quoted (identifier) @definition.parameter)
+])
+(static_parameter [
+  (identifier) @definition.parameter
+  (accent_quoted (identifier) @definition.parameter)
+])
+(ref_parameter [
+  (identifier) @definition.parameter
+  (accent_quoted (identifier) @definition.parameter)
+])
+(pointer_parameter [
+  (identifier) @definition.parameter
+  (accent_quoted (identifier) @definition.parameter)
+])
 
 ; ==============================================================================
 ; @definition.macro      ; preprocessor macros
@@ -274,6 +299,8 @@
   (proc_expression)
   (func_expression)
   (iterator_expression)
+
+  (concept_declaration)
 ] @scope
 
 ; ==============================================================================

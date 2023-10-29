@@ -174,6 +174,12 @@
       (dot_expression right: (accent_quoted (identifier) @function.call)))
   ])
 
+(dot_generic_call
+  function: [
+    (identifier) @function.call
+    (accent_quoted (identifier) @function.call)
+  ])
+
 ; generalized_string is a function call
 ; `identifier"string literal"`
 ; is short for
@@ -210,10 +216,6 @@
     (accent_quoted (identifier) @function.call)
   ])
 ; NOTE: will double capture as @function.call if it also has argument_list
-
-; =============================================================================
-; @function.builtin ; built-in functions
-; TODO:
 
 ; =============================================================================
 ; @function.macro   ; preprocessor macros
@@ -433,6 +435,9 @@
 ; NOTE: this will falsly capture (identifier)s that aren't types as well, eg
 ; array[enum1..enum2, int]
 
+(dot_generic_call
+  generic_arguments: (_) @type)
+
 ; right side of `is` operator is always type
 (infix_expression
   operator: [ "is" "isnot" ]
@@ -504,6 +509,34 @@
     ])) @_tuple_decons
   (#has-ancestor? @_tuple_decons for))
 
+(concept_declaration
+  parameters: 
+    (parameter_list [
+      (identifier) @parameter
+      (accent_quoted (identifier) @parameter)
+    ]))
+(var_parameter [
+  (identifier) @parameter
+  (accent_quoted (identifier) @parameter)
+])
+(type_parameter [
+  (identifier) @parameter
+  (accent_quoted (identifier) @parameter)
+])
+(static_parameter [
+  (identifier) @parameter
+  (accent_quoted (identifier) @parameter)
+])
+(ref_parameter [
+  (identifier) @parameter
+  (accent_quoted (identifier) @parameter)
+])
+(pointer_parameter [
+  (identifier) @parameter
+  (accent_quoted (identifier) @parameter)
+])
+
+
 ; =============================================================================
 ; @type.definition ; type definitions (e.g. `typedef` in C)
 
@@ -521,14 +554,16 @@
 ; @type.qualifier  ; type qualifiers (e.g. `const`)
 
 (var_type "var" @type.qualifier)
-
 (out_type "out" @type.qualifier)
-
 (distinct_type "distinct" @type.qualifier)
-
 (ref_type "ref" @type.qualifier)
-
 (pointer_type "ptr" @type.qualifier)
+
+(var_parameter "var" @type.qualifier)
+(type_parameter "type" @type.qualifier)
+(static_parameter "static" @type.qualifier)
+(ref_parameter "ref" @type.qualifier)
+(pointer_parameter "ptr" @type.qualifier)
 
 ; =============================================================================
 ; @field           ; object and struct fields
