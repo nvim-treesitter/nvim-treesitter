@@ -4,4 +4,4 @@ build:
 
 install:
 	mkdir -p $(INST_LUADIR)
-	cp -r autoload plugin queries lua $(INST_LUADIR)
+	cp -r lua/* $(INST_LUADIR)
