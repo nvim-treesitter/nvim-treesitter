@@ -300,6 +300,8 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [mlir](https://github.com/artagnon/tree-sitter-mlir) (experimental, maintained by @artagnon)
 - [x] [nasm](https://github.com/naclsn/tree-sitter-nasm) (maintained by @ObserverOfTime)
 - [ ] [nickel](https://github.com/nickel-lang/tree-sitter-nickel)
+- [x] [nim](https://github.com/alaviss/tree-sitter-nim) (maintained by @aMOPel)
+- [x] [nim_format_string](https://github.com/aMOPel/tree-sitter-nim-format-string) (maintained by @aMOPel)
 - [x] [ninja](https://github.com/alemuller/tree-sitter-ninja) (maintained by @alemuller)
 - [x] [nix](https://github.com/cstrahan/tree-sitter-nix) (maintained by @leo60228)
 - [x] [norg](https://github.com/nvim-neorg/tree-sitter-norg) (maintained by @JoeyGrajciar, @vhyrro)
