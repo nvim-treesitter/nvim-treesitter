@@ -37,9 +37,5 @@ build = {
     INST_LUADIR='$(LUADIR)',
     INST_CONFDIR='$(CONFDIR)',
   },
-  copy_directories = {
-    'autoload',
-    'plugin',
-    'queries'
-  }
+  copy_directories = $copy_directories,
 }
