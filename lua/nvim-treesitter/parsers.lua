@@ -650,6 +650,15 @@ list.gn = {
   readme_name = "GN (Generate Ninja)",
 }
 
+list.gnuplot = {
+  install_info = {
+    url = "https://github.com/dpezt/tree-sitter-gnuplot",
+    files = { "src/parser.c" },
+    requires_generate_from_grammar = true,
+  },
+  maintainers = { "@dpezto" },
+}
+
 list.go = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-go",
