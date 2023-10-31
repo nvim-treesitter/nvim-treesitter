@@ -264,7 +264,7 @@
     "revision": "d742025fa2d8e6100f134a6ea990443aa1f074b3"
   },
   "htmldjango": {
-    "revision": "717e83aefd328735beeeb671f3f95b2624e70c57"
+    "revision": "8873e3df89f9ea1d33f6235e516b600009288557"
   },
   "http": {
     "revision": "6824a247d1326079aab4fa9f9164e9319678081d"
@@ -384,7 +384,7 @@
     "revision": "7550f55c3f3dab32c6cb42d22907d75876a0ca74"
   },
   "nim_format_string": {
-    "revision": "b60f0e982a74fb5df93d26a468120cfe67e7e1af"
+    "revision": "d45f75022d147cda056e98bfba68222c9c8eca3a"
   },
   "ninja": {
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
@@ -687,7 +687,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "c900234651fd0979ab28fd49213d387932fe7ab6"
+    "revision": "480bee435849a5b7bc6516bf71538136593d09c4"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
