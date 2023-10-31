@@ -583,18 +583,13 @@ like the `queries` folder of this plugin, e.g. `queries/{language}/{locals,highl
 Other modules may require additional queries such as `folding.scm`. You can find a
 list of all supported capture names in [CONTRIBUTING.md](https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md#parser-configurations).
 
-All queries found in the runtime directories will be combined.
-By convention, if you want to write a query, use the `queries/` directory,
-but if you want to extend a query use the `after/queries/` directory.
+Queries can be placed anywhere in your runtimepath under `queries/<language>`, with earlier directories taking precedence unless the queries are marked with `; extends` (see `:h treesitter-query`).
 
-If you want to completely override a query, you can use `:h set_query()`.
-For example, to override the `injections` queries from `c` with your own:
-
-```lua
-require("vim.treesitter.query").set_query("c", "injections", "(comment) @comment")
-```
-
-Note: when using `set_query`, all queries in the runtime directories will be ignored.
+Note: Since Neovim 0.8.0, the first query file on `runtimepath` will be used
+(see `:h treesitter-query`), unless a query string is explicitly set via
+`vim.treesitter.query.set()`.
+If you want to make a query on the user config extend other queries instead of replacing them,
+see `:h treesitter-query-modeline-extends`.
 
 ## Adding modules
 
