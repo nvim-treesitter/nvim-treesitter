@@ -328,7 +328,7 @@ function M.make_directory_change_for_command(dir, command)
       return string.format("pushd %s ; %s ; popd", cmdpath(dir), command)
     end
   else
-    return string.format("cd %s;\n %s", dir, command)
+    return string.format("cd %s;\n %s", vim.fn.shellescape(dir), command)
   end
 end
 
