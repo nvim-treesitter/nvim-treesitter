@@ -272,7 +272,7 @@
   "."
   ","
   ":"
-  (separator)
+  ";"
 ] @punctuation.delimiter
 
 
