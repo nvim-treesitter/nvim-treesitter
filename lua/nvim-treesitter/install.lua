@@ -272,7 +272,7 @@ local function get_command(cmd)
       vim.list_extend(cmd.opts.args, M.command_extra_args[cmd.cmd])
     end
     for _, opt in ipairs(cmd.opts.args) do
-      options = string.format("%s %s", options, opt)
+      options = string.format("%s %s", options, vim.fn.shellescape(opt))
     end
   end
 
