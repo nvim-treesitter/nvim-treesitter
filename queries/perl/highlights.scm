@@ -95,10 +95,21 @@
 (func0op_call_expression function: _ @function.builtin)
 (func1op_call_expression function: _ @function.builtin)
 
+; this was a regex for the CLI
 ([(function)(expression_statement (bareword))] @function.builtin
- (#set! "priority" 101)
- (#lua-match? @function.builtin
-   "^(accept|atan2|bind|binmode|bless|crypt|chmod|chown|connect|die|dbmopen|exec|fcntl|flock|getpriority|getprotobynumber|gethostbyaddr|getnetbyaddr|getservbyname|getservbyport|getsockopt|glob|index|ioctl|join|kill|link|listen|mkdir|msgctl|msgget|msgrcv|msgsend|opendir|print|printf|push|pack|pipe|return|rename|rindex|read|recv|reverse|say|select|seek|semctl|semget|semop|send|setpgrp|setpriority|seekdir|setsockopt|shmctl|shmread|shmwrite|shutdown|socket|socketpair|split|sprintf|splice|substr|system|symlink|syscall|sysopen|sysseek|sysread|syswrite|tie|truncate|unlink|unpack|utime|unshift|vec|warn|waitpid|formline|open|sort)$"
+ (#any-of? @function.builtin
+  "accept" "atan2" "bind" "binmode" "bless" "crypt" "chmod" "chown" "connect"
+  "die" "dbmopen" "exec" "fcntl" "flock" "formline" "getpriority"
+  "getprotobynumber" "gethostbyaddr" "getnetbyaddr" "getservbyname"
+  "getservbyport" "getsockopt" "glob" "index" "ioctl" "join" "kill" "link"
+  "listen" "mkdir" "msgctl" "msgget" "msgrcv" "msgsend" "open" "opendir"
+  "print" "printf" "push" "pack" "pipe" "return" "rename" "rindex" "read"
+  "recv" "reverse" "say" "select" "seek" "semctl" "semget" "semop" "send"
+  "setpgrp" "setpriority" "seekdir" "setsockopt" "shmctl" "shmread" "shmwrite"
+  "shutdown" "socket" "socketpair" "split" "sprintf" "splice" "substr" "system"
+  "symlink" "syscall" "sysopen" "sysseek" "sysread" "syswrite" "tie" "truncate"
+  "unlink" "unpack" "utime" "unshift" "vec" "warn"
+  "waitpid"
 ))
 
 (function) @function
@@ -114,10 +125,15 @@
     "}" @punctuation.special))
 
 
-(
-  [(varname) (filehandle)] @variable.builtin
-  (#lua-match? @variable.builtin "^((ENV|ARGV|INC|ARGVOUT|SIG|STDIN|STDOUT|STDERR)|[_ab]|\\W|\\d+|\\^.*)$")
-)
+([(varname) (filehandle)] @variable.builtin
+  (#any-of? @variable.builtin "ENV" "ARGV" "INC" "ARGVOUT" "SIG" "STDIN" "STDOUT" "STDERR" "a" "b" "_"))
+((varname) @variable.builtin
+  ; highlights all the reserved ^ vars like ${^THINGS}
+  (#lua-match? @variable.builtin "%^"))
+((varname) @variable.builtin
+  ; highlights punc vars and also numeric only like $11
+  (#lua-match? @variable.builtin "^%A+$"))
+
 
 (scalar) @variable.scalar
 (scalar_deref_expression [ "$" "*"] @variable.scalar)
