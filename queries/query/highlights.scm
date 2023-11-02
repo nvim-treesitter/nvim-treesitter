@@ -31,4 +31,4 @@
  (#lua-match? @include "^;+ *inherits *:"))
 
 ((program . (comment)* . (comment) @preproc)
- (#lua-match? @preproc "^;+ *extends"))
+ (#lua-match? @preproc "^;+ *extends *$"))
