@@ -1,36 +1,36 @@
 ; highlights.scm
 ; FIX: "tc" "fc" "lc" highlight
 
-(comment) @comment
+(comment) @comment @spell
+
+(identifier) @variable
 
 (unary_expression
   _? @operator
-  (_) @variable
+  (_)
   _? @operator)
 
 (binary_expression
-  (_) @variable
+  (_)
   _ @operator
-  (_) @variable)
+  (_))
 
 (ternary_expression
-  condition: (_) @variable
+  condition: (_)
   "?" @conditional.ternary
-  true: (_) @variable
+  true: (_)
   ":" @conditional.ternary
-  false: (_) @variable)
+  false: (_))
 
-(func_def (function) "=" @operator)
-(var_def var: (identifier) "=" @operator)
-(array_def "array"
-           [
-            ((array) ("=" @operator)?)
-            ((identifier) "[" (_) "]" "=" @operator)
-            ])
+"=" @operator
 
-(sum_block "sum" @repeat)
+"sum" @function.builtin
 
 (for_block "for" @repeat "in"? @repeat)
+
+(c_break) @keyword
+
+(c_cd) @keyword
 
 (c_clear) @keyword
 
@@ -48,16 +48,15 @@
 
 (c_if
   "if" @conditional
-  (parenthesized_expression)
   [
    (_)+
    ("{" (_)* "}"
-   ("else" @conditional "if" @conditional (parenthesized_expression)+ "{" (_)* "}")*
+   ("else" @conditional "if" @conditional "{" (_)* "}")*
    ("else" @conditional "{" (_)* "}"))
    ]
   )
 
-(c_load "load" @keyword (_))
+(c_load "load" @keyword)
 
 (c_lower "lower" @keyword)
 
@@ -68,29 +67,29 @@
   "sample"? @keyword)
 
 (plot_element
-  (range_block)*
-  (for_block)?
   [
    ("axes" ["x1y1" "x2y2" "x1y2" "x2y1"] @attribute)
+   ; ("title" title: (_) [("at" ["begining" "end"] @attribute) "enhanced"]* @attribute)
    ("title" title: (_))
    ("notitle" title: (_)?)
    "nogrid" ; NOTE: splot only option
    ("with" with: (plot_style) (style_opts)?)
+   (style_opts)?
    ]* @field)
 
 (datafile_modifiers
   [
    "binary" ; TODO: complete
    matrix: (["nonuniform" "sparce"]? "matrix" @attribute) ; TODO: complete
-   ("skip" N_lines: (_))
-   ("smooth" (smooth_options)?)
+   ("skip" (_))
+   "smooth" 
    ; TODO: add bins
    "mask" "convexhull" "volatile" "zsort"
    ]* @attribute
   [
-   index: ("index" m: (_) (":" n: (_))? (":" p: (_))?)
-   ("every" point_incr: (_)? (":" block_incr: (_)?)? (":" start_point: (_)?)? (":" start_block: (_)?)? (":" end_point: (_)?)? (":" end_block: (_)?)? )
-   using: ("using" (_) (":" (_))*)
+   ("index" (_))
+   "every"
+   ("using" (_))
    ]* @field)
 
 (smooth_options) @property
@@ -103,17 +102,16 @@
 
 (c_reset "reset" @keyword ["bind" "errors" "session"]? @attribute)
 
-(c_set "cmd" @keyword (for_block)? "arg" @field)
+(c_set "cmd" @keyword "arg" @field)
 
 (angles) @attribute
 (arrow
-  tag: (_)?
   [
-   (("from" (position))? "to_rto" @attribute (position))
-   ("from" (position) "length" length: (_) "angle" angle: (_))
+   ("from" "to_rto" @attribute)
+   ("from" "length" @attribute "angle" @attribute)
    ]* @attribute)
 (autoscale ["axes" "fix" "keepfix" "noextend"] @attribute)
-(border (_)? ["front" "back" "behind" (style_opts) "polar"]? @attribute)
+(border ["front" "back" "behind" "polar"]? @attribute)
 (boxwidth ["absolute" "relative"] @attribute)
 (boxdepth "square" @attribute)
 (colormap "new" @attribute)
@@ -131,13 +129,13 @@
    "horizontal"
    "invert"
    "default"
-   ("origin" (position))
-   ("size" (position))
+   "origin" 
+   "size" 
    "fb"
    "noborder"
    "bdefault"
-   ("border" (line_style))
-   ("cbtics" (line_style))
+   "border" 
+   "cbtics" 
    ]+ @attribute) ; TODO: complete
 (contour) @attribute
 (datafile
@@ -215,7 +213,6 @@
    ("samplen" length: (_))
    ("spacing" spacing: (_))
    ("title" "enhanced"? @attribute(position)? @attribute)
-   (font_spec)
    ("tc" (colorspec))
    "placement"
    "margin"
@@ -227,62 +224,62 @@
 (link
   [
    "x2" "y2"
-   ("via" (_) "inverse" @attribute (_))
+   ("via" "inverse" @attribute)
    ] @attribute) ; NOTE: maybe change highlight
 (logscale "axis" @attribute)
 (mapping) @attribute
 (margin
   [
-   ("at" "screen" @attribute(_)) ; TODO: check if correct
-   ("screen" @attribute(_))
-   ("margins" lm: (_) "," rm: (_) "," bm: (_) "," tm: (_))
+   ("at" "screen" @attribute) ; TODO: check if correct
+   "screen"
+   "margins"
    ]? @attribute)
 ; (mouse) ; TODO: complete
 (multiplot
   [
-   ("title" title: (_) (font_spec)? "enhanced"? @property)
-   ("layout" rows: (_) "," cols: (_))
+   ("title" title: (_) "enhanced"? @property)
+   ("layout" rows: (_) cols: (_))
    "rowsfirst" "columnsfirst"
    "downwards" "upwards"
-   ("scale" xscale: (_) ("," yscale: (_))?)
+   ("scale" xscale: (_) yscale: (_)?)
    "offset"
-   ("margins" lm: (_) "," rm: (_) "," bm: (_) "," tm: (_))
-   ("spacing" xspacing: (_) ("," yspacing: (_))?)
+   ("margins" lm: (_) rm: (_) bm: (_) tm: (_))
+   ("spacing" xspacing: (_) yspacing: (_)?)
    "pn"
    ]+ @attribute)
 (mxtics
   [
    "default"
-   ["seconds" "minutes" "hours" "days" "weeks" "months" "years"]
+   ("time" ["seconds" "minutes" "hours" "days" "weeks" "months" "years"] @property)
    ]* @attribute)
 (palette
   [
    "gray" "color"
-   ("gamma" gamma: (_))
-   ("rgbformulae" r: (_) ("," g: (_))? ("," b: (_))?)
-   ("defined" ("(" gray: (_) color: (_) ("," gray: (_) color: (_))* ")")?)
-   ("file" filename: (_)(datafile_modifiers)?)
-   ("colormap" colormap_name: (_))
-   ("functions" R: (_) "," G: (_) "," B: (_))
+   "gamma"
+   "rgbformulae"
+   "defined"
+   "file"
+   "colormap"
+   "functions"
    ("cubehelix" ("start" val: (_))? @property ("cycles" val: (_))? @property ("saturation" val: (_))? @property)
    "viridis"
    ("model" (["RGB" "CMY" ("HSV" ("start" radians: (_))? @attribute)])? @property )
    "pn"
    "nops_allcF" "ps_allcF"
-   ("maxcolors" maxcolors: (_))
+   "maxcolors"
    ]+ @attribute)
 (paxis
   [
-   ("range" (range_block) ["reverse" "writeback" "extend" "restore"]* @property)
-   ("tics" (tics_opts)?)
-   ("label" label: (_)? (label_opts)?)
-   ("offset" offset: (position))
+   ("range" ["reverse" "writeback" "extend" "restore"]* @property)
+   "tics" 
+   "label"
+   "offset"
    ]+ @attribute)
 ; (pixmap)
 (pm3d
   [
    ("at" (position))
-   ("interpolate" steps: (_) "," between: (_))
+   ("interpolate" steps: (_) between: (_))
    "scanorder" ("depthorder" "base"? @property) "hidden3d"
    ("flush" ["begin""center""end"] @property)
    "ftriangles"
@@ -302,26 +299,26 @@
    ]+ @attribute)
 (style
   [
-   ("arrow" index:(_)? ["defaults" @attribute (arrow_opts)])
-   ("boxplot") ; TODO: complete
+   ("arrow" ["defaults" @attribute (arrow_opts)])
+   "boxplot"
    ("data" [(plot_style) "spiderplot" @attribute])
-   ("fs" (fill_style))
-   ("function" (plot_style))
-   ("line" (line_style))
-   ("circle") ; TODO: complete
-   ("rectangle") ; TODO: complete
-   ("ellipse") ; TODO: complete
-   ("parallelaxis" "fb"? @attribute (style_opts)?)
-   ; ((spiderplot)) ; TODO: complete
-   ("textbox") ; TODO: complete
-   ] @property )
+   "fs" 
+   "function" 
+   "line" 
+   "circle"
+   "rectangle"
+   "ellipse"
+   ("parallelaxis" "fb"? @attribute)
+   ; (spiderplot) ; TODO: complete
+   "textbox"
+   ] @property)
 (surface ["implicit" "explicit"] @attribute)
 ; (table)
 (terminal ["name" "push" "pop"] @property)
 (t_cairolatex
   [
    "eps" "pdf" "png" "standalone" "input" "blacktext" "colortext" "colourtext" ("header"(_)) "mono" "color"
-   ("background" (_)) (font_spec) ("fontscale" (_)) "rounded" "butt" "square"
+   "background" "fontscale" "rounded" "butt" "square"
    ]* @attribute )
 ; (t_canvas)
 ; (t_cgm)
@@ -362,26 +359,24 @@
 (termoption
   [
    "enhanced" @attribute
-   (font_spec)
-   ("fontscale" @attribute (_))
-   ("lw" @field (_))
+   "fontscale" @attribute 
+   "lw" @field 
    ])
 (theta) @attribute
 ; (timestamp)
-(title title: (_)?
+(title
   [
-   offset: ("offset" (position))
-   (font_spec)
+   "offset" 
    ("tc" [(colorspec) ("lt" @field (_))])
    "enhanced"
    ]+ @attribute)
-(vgrid ("size" @attribute (_))?)
+(vgrid ("size" @attribute)?)
 (view
   [
-   ("map" "scale"?)
+   ("map" "scale"? @property)
    ("projection" ["xy" "xz" "yz"]? @property)
    ("equal" ["xy" "xyz"]? @property)
-   ("azimuth")
+   "azimuth"
    ]+ @attribute)
 (walls
   [
@@ -391,25 +386,21 @@
    ]+)
 (xdata) @attribute
 (xlabel
-  label: (_)?
   [
    ("offset" (position))
    ("rotate" [("by" angle: (_)) "parallel"]? @attribute)
    ("tc" [(colorspec) ("lt" @field (_))])
-   (font_spec)
    "enhanced"
    ]+ @attribute)
 (xrange ["reverse" "writeback" "extend" "restore"]+ @attribute)
-(xyplane [("at" zval: (_))("relative" val: (_))]? @attribute)
+(xyplane ["at" "relative"]? @attribute)
 
 (c_show "show" @keyword); TODO: complete
 
-(c_splot "splot" @keyword "sample"? @keyword (range_block)* (plot_element) ("," (plot_element))*)
+(c_splot "splot" @keyword "sample"? @keyword)
 
 (c_stats
   "stats" @keyword
-  (range_block)*
-  filename: (_)
   [
    "matrix"? @field
    [
@@ -419,24 +410,24 @@
     "zsort"
     ]* @field]
   [
-   (["name" "prefix"] @field (_))
+   ["name" "prefix"] @field 
    "output" @field
    ; ("vgridname" ("name" (name))?)
    ]*)
 
-(c_test)
+(c_test "test" @keyword) ; TODO: complete
 
-(c_undefine)
+(c_undefine "undefine" @keyword)
 
 (c_vfill "vfill" @keyword "sample"? @field)
 
-(c_while "while" @repeat (parenthesized_expression) "{" _* "}" )
+(c_while "while" @repeat "{" _* "}" )
 
 (plot_style
   ["lines" "points" "lp" "financebars" "dots" "impulses"
-   ("labels" (label_opts)*)
+   "labels" 
    "surface" "steps" "fsteps" "histeps" "arrows"
-   ("vectors"(arrow_opts)*)
+   "vectors"
    "sectors" "contourfill" "errorbar" "errorlines" "parallelaxes" "boxes" "boxerrorbars"
    "boxxyerror" "isosurface" "boxplot" "candlesticks" "circles" "zerrorfill"
    "ellipses"
@@ -448,25 +439,25 @@
      ]? @property)
    ("fillsteps" ["above" "below"]? @property ("y" "=" @operator (_))?)
    "histograms" ("image" "pixels"? @property)
-   ("pm3d" (pm3d)?) "rgbalpha" "rgbimage" "polygons" "table" "mask"
-   ] @attribute)
+   "pm3d" "rgbalpha" "rgbimage" "polygons" "table" "mask"
+  ] @attribute)
 
 (fill_style
   [
    "empty"
    "solid"
-   ("transparent"? "solid" @attribute density: (_)?)
-   ("pattern" n: (_)?)
-   ("transparent"? "pattern" @attribute n: (_)?)
-   ("border" [("lt"? @field (_)) ("lc" @field [(_) (colorspec)])]?)
+   ("transparent"? "solid" @attribute)
+   "pattern"
+   ("transparent"? "pattern" @attribute)
+   ("border" ["lt" "lc"]? @field)
   ] @attribute)
 
 (line_style
   [
    "default"
-   ("lt" [(_) (colorspec) "black" "bgnd" "nodraw"] @attribute)
-   ("lw" (_))
-   ("lc" [(_) (colorspec)])
+   ("lt" ["black" "bgnd" "nodraw"] @attribute)
+   "lw"
+   "lc"
    "dt"
    "pt"
    "ps"
@@ -479,9 +470,9 @@
    ("rgbcolor" [(_) "variable" @property])
    ("palette"
     [
-     ("frac" @property val: (_))
-     ("cb" @property val: (_))
-     "z" @property]?)
+     "frac"
+     "cb"
+     "z"]? @property)
     "variable"
     "bgnd"
     "black"] @attribute)
@@ -500,7 +491,7 @@
    "axis"
    "mirror"
    "inout"
-   ("scale" ["default" ((_) ("," (_))?)]?)
+   ("scale" ["default" ((_) (_)?)]?)
    ("rotate" "by" @attribute angle: (_))
    "norotate"
    [("offset" (position)) "nooffset"]
@@ -517,25 +508,25 @@
 
 (label_opts
   [
-   "norotate"@attribute
-   ("rotate" @attribute("by" @attribute degrees: (_))?)
-   "enhanced"@attribute
-   "fb"@attribute
+   "norotate" @attribute
+   ("rotate" @attribute "by"? @attribute) 
+   "enhanced" @attribute
+   "fb" @attribute
    ("tc" @field [(colorspec) (["lt" "ls"] @field (_))])
-   ("offset" @attribute(position))
-   "align"@attribute
-   ("at" @attribute (position))
-   "nopoint"@attribute
-   "point"@attribute
-   "boxed"@attribute
-   "nobox"@attribute
-   "hypertext"@attribute
+   ("offset" @attribute)
+   "align" @attribute
+   ("at" @attribute)
+   "nopoint" @attribute
+   "point" @attribute
+   "boxed" @attribute
+   "nobox" @attribute
+   "hypertext" @attribute
    ])
 
 (style_opts
   [
    ("ls" (_))
-   ("lt" [(_) (colorspec) "black"@attribute "bgnd"@attribute "nodraw"@attribute])
+   ("lt" [(_) (colorspec) "black" @attribute "bgnd" @attribute "nodraw" @attribute])
    ("lw" (_))
    ("lc" [(_) (colorspec)])
    "dt"
@@ -559,8 +550,8 @@
 
 (function name: (identifier) @function)
 ((function name: (identifier) @function.builtin)
- (#match? @function.builtin
-  "^(abs|acos|acosh|airy|arg|asin|asinh|atan|atan2|atanh|besj0|besj1|besjn|besy0|besy1|besyn|besi0|besi1|besin|cbrt|ceil|conj|cos|cosh|EllipticK|EllipticE|EllipticPi|erf|erfc|exp|expint|floor|gamma|ibeta|inverf|igamma|imag|int|invnorm|invibeta|invigamma|LambertW|lambertw|lgamma|lnGamma|log|log10|norm|rand|real|round|sgn|sin|sinh|sqrt|SynchrotronF|tan|tanh|uigamma|voigt|zeta|cerf|cdawson|faddeva|erfi|FresnelC|FresnelS|VP|VP_fwhm|Ai|Bi|BesselH1|BesselH2|BesselJ|BesselY|BesselI|BesselK|gprintf|sprintf|strlen|strstrt|substr|strptime|srtftime|system|trim|word|words|time|timecolumn|tm_hour|tm_mday|tm_min|tm_mon|tm_sec|tm_wday|tm_week|tm_yday|tm_year|weekday_iso|weekday_cdc|column|columnhead|exists|hsv2rgb|index|palette|rgbcolor|stringcolumn|valid|value|voxel)$"))
+ (#any-of? @function.builtin
+  "abs""acos""acosh""airy""arg""asin""asinh""atan""atan2""atanh""besj0""besj1""besjn""besy0""besy1""besyn""besi0""besi1""besin""cbrt""ceil""conj""cos""cosh""EllipticK""EllipticE""EllipticPi""erf""erfc""exp""expint""floor""gamma""ibeta""inverf""igamma""imag""int""invnorm""invibeta""invigamma""LambertW""lambertw""lgamma""lnGamma""log""log10""norm""rand""real""round""sgn""sin""sinh""sqrt""SynchrotronF""tan""tanh""uigamma""voigt""zeta""cerf""cdawson""faddeva""erfi""FresnelC""FresnelS""VP""VP_fwhm""Ai""Bi""BesselH1""BesselH2""BesselJ""BesselY""BesselI""BesselK""gprintf""sprintf""strlen""strstrt""substr""strptime""srtftime""system""trim""word""words""time""timecolumn""tm_hour""tm_mday""tm_min""tm_mon""tm_sec""tm_wday""tm_week""tm_yday""tm_year""weekday_iso""weekday_cdc""column""columnhead""exists""hsv2rgb""index""palette""rgbcolor""stringcolumn""valid""value""voxel"))
 
 ((identifier) @variable.builtin
   (#match? @variable.builtin

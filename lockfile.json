@@ -203,6 +203,9 @@
   "gn": {
     "revision": "bc06955bc1e3c9ff8e9b2b2a55b38b94da923c05"
   },
+  "gnuplot": {
+    "revision": "2d8ff6c68680fa57ba4dc3827b7de2dd0b30236d"
+  },
   "go": {
     "revision": "bbaa67a180cfe0c943e50c55130918be8efb20bd"
   },
