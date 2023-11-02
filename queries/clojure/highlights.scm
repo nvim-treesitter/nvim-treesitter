@@ -10,7 +10,9 @@
 ;; This can mean that sometimes things are highlighted weirdly because they
 ;; have multiple highlight groups applied to them.
 
-
+;; dispatch `discard` reader macro
+((dis_expr "#_" @preproc))
+ 
 ;; >> Literals
 
 (kwd_lit) @symbol
