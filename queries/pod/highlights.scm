@@ -4,6 +4,11 @@
  (command)
  (cut_command)] @keyword
 
+((command_paragraph
+  (command) @keyword
+  (content) @string)
+  (#set! "priority" 99))
+
 (command_paragraph
   (command) @keyword
   (#lua-match? @keyword "^=head")
@@ -24,10 +29,6 @@
   (#lua-match? @keyword "^=encoding")
   (content) @string.special)
 
-(command_paragraph
-  (command) @keyword
-  (#not-lua-match? @keyword "^=(head|over|item|encoding)")
-  (content) @string)
 
 (verbatim_paragraph (content) @text.literal)
 
