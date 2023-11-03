@@ -279,7 +279,7 @@
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
   },
   "janet_simple": {
-    "revision": "bd9cbaf1ea8b942dfd58e68df10c9a378ab3d2b6"
+    "revision": "3c6f947f9039bbd803d9f3cf57dcee3783b3e2ce"
   },
   "java": {
     "revision": "2b57cd9541f9fd3a89207d054ce8fbe72657c444"
@@ -567,13 +567,13 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "4ee5a6ad1542cf3f0e2afde91863f1fe74e28154"
+    "revision": "25be0b8f17e9189ad9e1b875869d025c5aec1286"
   },
   "squirrel": {
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
   },
   "ssh_config": {
-    "revision": "e4008633536870f3fed3198c96503250af0b0a12"
+    "revision": "9dcfe0f30ccbde8115790c72acbde4c04ec8e74e"
   },
   "starlark": {
     "revision": "c45ce2b39062bbd12ea1c210bd200db250efb24a"
@@ -687,7 +687,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "58ba1ae91c61b69d74172c856a7d013d18d047a5"
+    "revision": "d3ab286ac986d1eaf2461d6924132fe26cb46764"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
