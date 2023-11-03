@@ -1898,6 +1898,15 @@ list.typoscript = {
   maintainers = { "@Teddytrombone" },
 }
 
+list.udev = {
+  install_info = {
+    url = "https://github.com/ObserverOfTime/tree-sitter-udev",
+    files = { "src/parser.c" },
+  },
+  filetype = "udevrules",
+  maintainers = { "@ObserverOfTime" },
+}
+
 list.ungrammar = {
   install_info = {
     url = "https://github.com/Philipp-M/tree-sitter-ungrammar",
