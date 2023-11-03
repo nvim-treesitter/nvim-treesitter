@@ -24,6 +24,7 @@
 ["@" "#"] @punctuation.special
 "_" @constant
 
+(parameters (identifier) @parameter)
 ((parameters (identifier) @number)
  (#match? @number "^[-+]?[0-9]+(.[0-9]+)?$"))
 
