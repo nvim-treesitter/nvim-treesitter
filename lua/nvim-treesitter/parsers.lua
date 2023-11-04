@@ -1410,6 +1410,14 @@ list.puppet = {
   maintainers = { "@amaanq" },
 }
 
+list.purescript = {
+  install_info = {
+    url = "https://github.com/postsolar/tree-sitter-purescript",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers - { "@postsolar" },
+}
+
 list.pymanifest = {
   install_info = {
     url = "https://github.com/ObserverOfTime/tree-sitter-pymanifest",
