@@ -1415,7 +1415,7 @@ list.purescript = {
     url = "https://github.com/postsolar/tree-sitter-purescript",
     files = { "src/parser.c", "src/scanner.c" },
   },
-  maintainers - { "@postsolar" },
+  maintainers = { "@postsolar" },
 }
 
 list.pymanifest = {
