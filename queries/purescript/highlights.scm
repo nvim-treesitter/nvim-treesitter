@@ -33,10 +33,6 @@
 ; ----------------------------------------------------------------------------
 ; Keywords, operators, includes
 
- ; This needs to come before the other "else" in
- ; order to be highlighted correctly
- (class_instance "else" @keyword)
-
  [
    "if"
    "then"
@@ -104,6 +100,8 @@
    "infixl"
    "infixr"
  ] @keyword
+
+ (class_instance "else" @keyword)
 
  (type_role_declaration
    "role" @keyword
