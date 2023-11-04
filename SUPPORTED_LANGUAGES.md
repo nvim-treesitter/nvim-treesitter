@@ -186,7 +186,7 @@ jsx (queries only)[^jsx] | core | `HFIJ ` |  |  | @steelsojka
 [regex](https://github.com/tree-sitter/tree-sitter-regex) | stable | `H    ` |  |  | @theHamsta
 [rego](https://github.com/FallenAngel97/tree-sitter-rego) | community | `H  J ` |  |  | @FallenAngel97
 [requirements](https://github.com/ObserverOfTime/tree-sitter-requirements) | core | `H  J ` |  |  | @ObserverOfTime
-[rnoweb](https://github.com/bamonroe/tree-sitter-rnoweb) | community | ` F J ` |  |  | @bamonroe
+[rnoweb](https://github.com/bamonroe/tree-sitter-rnoweb) | community | `HF J ` |  |  | @bamonroe
 [robot](https://github.com/Hubro/tree-sitter-robot) | community | `HFI  ` |  |  | @Hubro
 [ron](https://github.com/amaanq/tree-sitter-ron) | core | `HFIJL` |  |  | @amaanq
 [rst](https://github.com/stsewd/tree-sitter-rst) | core | `H  JL` |  |  | @stsewd
