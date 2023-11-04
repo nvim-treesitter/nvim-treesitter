@@ -12,7 +12,6 @@
 
  (comment) @comment @spell
 
-
 ; ----------------------------------------------------------------------------
 ; Punctuation
 
@@ -115,6 +114,8 @@
 ; ----------------------------------------------------------------------------
 ; Functions and variables
 
+ (variable) @variable
+
  (row_field (field_name) @field)
  (record_field (field_name) @field)
  (record_accessor (variable) @field)
@@ -135,10 +136,6 @@
  (exp_ticked (_) @operator)
  (exp_ticked (exp_name (variable) @operator))
  (exp_ticked (exp_name (qualified_variable (variable) @operator)))
-
- (variable) @variable
-
- ("@" @namespace)  ; "as" pattern operator, e.g. x@Constructor
 
 ; ----------------------------------------------------------------------------
 ; Types
