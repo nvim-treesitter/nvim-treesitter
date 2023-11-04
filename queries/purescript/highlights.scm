@@ -27,6 +27,8 @@
  [
  (comma)
  ";"
+ (qualified_module)  ; grabs the `.` (dot), ex: import System.IO
+ "."
  ] @punctuation.delimiter
 
 
@@ -50,7 +52,6 @@
    (operator)
    (constructor_operator)
    (type_operator)
-   (qualified_module)  ; grabs the `.` (dot), ex: import System.IO
    (all_names)
 
    ; `_` wildcards in if-then-else and case-of expressions,
