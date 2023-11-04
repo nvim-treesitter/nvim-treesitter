@@ -96,7 +96,7 @@
     "revision": "c2fbf21bd3aa45495fe13247e040ad5815250032"
   },
   "dart": {
-    "revision": "e14bbac8a0fcb6fab1b3becf6ed3fe464123c377"
+    "revision": "f71e310a93010863f4b17a2a501ea8e2032c345b"
   },
   "devicetree": {
     "revision": "cc26cbf2121a27eaa72a05a795ce38aba4e0f86e"
@@ -159,7 +159,7 @@
     "revision": "09e03445f49290450589c5d293610ab39434e3e4"
   },
   "forth": {
-    "revision": "e7d1f8a351fd5e95d9a89a8e87878c49ca14a5b0"
+    "revision": "90189238385cf636b9ee99ce548b9e5b5e569d48"
   },
   "fortran": {
     "revision": "f73d473e3530862dee7cbb38520f28824e7804f6"
@@ -192,7 +192,7 @@
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
   },
   "gleam": {
-    "revision": "399172f660160258ede7d8e1d769f7fc5f61ff33"
+    "revision": "0589025ee57e335fe0698190a1bc322748d8f026"
   },
   "glimmer": {
     "revision": "f9746dc1d0707717fbba84cb5c22a71586af23e1"
@@ -507,7 +507,7 @@
     "revision": "2354482d7e2e8f8ff33c1ef6c8aa5690410fbc96"
   },
   "rego": {
-    "revision": "b2667c975f07b33be3ceb83bea5cfbad88095866"
+    "revision": "9ac75e71b2d791e0aadeef68098319d86a2a14cf"
   },
   "requirements": {
     "revision": "eda424eade0f2afbafbf0c89d18c77818fa19273"
@@ -687,7 +687,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "d3ab286ac986d1eaf2461d6924132fe26cb46764"
+    "revision": "61ed52fa76a1797b7d22b831959b3abbbfdb7a05"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
