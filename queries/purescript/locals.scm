@@ -1,4 +1,4 @@
-(signature name: (variable)) @local.definition
-(function name: (variable)) @local.definition
-(pat_name (variable)) @local.definition
-(exp_name (variable)) @local.reference
+(signature name: (variable)) @definition
+(function name: (variable)) @definition
+(pat_name (variable)) @definition
+(exp_name (variable)) @reference

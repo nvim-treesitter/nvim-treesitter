@@ -1,10 +1,10 @@
 ; ----------------------------------------------------------------------------
 ; Literals and comments
 
- (integer) @constant.numeric.integer
- (exp_negation) @constant.numeric.integer
- (exp_literal (number)) @constant.numeric.float
- (char) @constant.character
+ (integer) @number
+ (exp_negation) @number
+ (exp_literal (number)) @float
+ (char) @character
  [
    (string)
    (triple_quote_string)
@@ -44,12 +44,12 @@
    "else"
    "case"
    "of"
- ] @keyword.control.conditional
+ ] @conditional
 
  [
    "import"
    "module"
- ] @keyword.control.import
+ ] @include
 
  [
    (operator)
@@ -110,15 +110,15 @@
    "role" @keyword
    role: (type_role) @keyword)
 
- (hole) @label
+ (hole) @character.special
 
 ; ----------------------------------------------------------------------------
 ; Functions and variables
 
- (row_field (field_name) @variable.other.member)
- (record_field (field_name) @variable.other.member)
- (record_accessor (variable) @variable.other.member)
- (exp_record_access (variable) @variable.other.member)
+ (row_field (field_name) @field)
+ (record_field (field_name) @field)
+ (record_accessor (variable) @field)
+ (exp_record_access (variable) @field)
 
  (signature name: (variable) @type)
  (function name: (variable) @function)
@@ -126,8 +126,8 @@
  (derive_declaration (instance_name) @function)
 
  ; true or false
-((variable) @constant.builtin.boolean
- (#match? @constant.builtin.boolean "^(true|false)$"))
+((variable) @boolean
+ (#match? @boolean "^(true|false)$"))
 
  ; The former one works for `tree-sitter highlight` but not in Helix/Kakoune.
  ; The latter two work in Helix (but not Kakoune) and are a good compromise between not highlighting anything at all
