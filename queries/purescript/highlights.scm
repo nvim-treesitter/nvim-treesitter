@@ -127,7 +127,7 @@
 
  ; true or false
 ((variable) @boolean
- (#match? @boolean "^(true|false)$"))
+ (#any-of? @boolean "true" "false"))
 
  ; The former one works for `tree-sitter highlight` but not in Helix/Kakoune.
  ; The latter two work in Helix (but not Kakoune) and are a good compromise between not highlighting anything at all
