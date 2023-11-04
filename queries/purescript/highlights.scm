@@ -10,7 +10,7 @@
    (triple_quote_string)
  ] @string
 
- (comment) @comment
+ (comment) @comment @spell
 
 
 ; ----------------------------------------------------------------------------
