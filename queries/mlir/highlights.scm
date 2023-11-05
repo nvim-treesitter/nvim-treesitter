@@ -84,8 +84,8 @@
   "arith.addui_extended"
   "arith.addf"
   "arith.divf"
-  "arith.maxf"
-  "arith.minf"
+  "arith.maximumf"
+  "arith.minimumf"
   "arith.mulf"
   "arith.remf"
   "arith.subf"
@@ -324,6 +324,7 @@
   "->"
 ] @operator
 
+(builtin_dialect name: (symbol_ref_id) @function)
 (func_dialect name: (symbol_ref_id) @function)
 (llvm_dialect name: (symbol_ref_id) @function)
 
