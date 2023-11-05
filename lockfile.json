@@ -18,7 +18,7 @@
     "revision": "1dec7e1af96c56924e3322cd85fdce15d0a31d00"
   },
   "awk": {
-    "revision": "90c8d9b47edcf7e2d67680c6649d5f6358d2ce06"
+    "revision": "fc5a51138717a5c766b30ad7438fcfc5ef291cb3"
   },
   "bash": {
     "revision": "7331995b19b8f8aba2d5e26deb51d2195c18bc94"
@@ -192,7 +192,7 @@
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
   },
   "gleam": {
-    "revision": "0589025ee57e335fe0698190a1bc322748d8f026"
+    "revision": "11b843da16cbc4c536213ab4ba03a48fff6e3e10"
   },
   "glimmer": {
     "revision": "f9746dc1d0707717fbba84cb5c22a71586af23e1"
@@ -279,7 +279,7 @@
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
   },
   "janet_simple": {
-    "revision": "3c6f947f9039bbd803d9f3cf57dcee3783b3e2ce"
+    "revision": "069a6d300e09c725fa4d6e3dfe0d6468fb16ca54"
   },
   "java": {
     "revision": "2b57cd9541f9fd3a89207d054ce8fbe72657c444"
@@ -354,10 +354,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "aaf76797aa8ecd9a5e78e0ec3681941de6c945ee"
+    "revision": "85d0f22d9e1a4f92cfd26d0237b108f067e2761a"
   },
   "markdown_inline": {
-    "revision": "aaf76797aa8ecd9a5e78e0ec3681941de6c945ee"
+    "revision": "85d0f22d9e1a4f92cfd26d0237b108f067e2761a"
   },
   "matlab": {
     "revision": "6071891a8c39600203eba20513666cf93b4d650a"
@@ -687,7 +687,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "61ed52fa76a1797b7d22b831959b3abbbfdb7a05"
+    "revision": "b8056b854f933886e204e46a3001f007441ca1be"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
