@@ -54,9 +54,6 @@
    (type_operator)
    (all_names)
 
-   ; `_` wildcards in if-then-else and case-of expressions,
-   ; as well as record updates and operator sections
-   (wildcard)
    "="
    "|"
    "::"
@@ -109,6 +106,10 @@
    role: (type_role) @keyword)
 
  (hole) @character.special
+
+ ; `_` wildcards in if-then-else and case-of expressions,
+ ; as well as record updates and operator sections
+ (wildcard) @parameter
 
 ; ----------------------------------------------------------------------------
 ; Functions and variables
