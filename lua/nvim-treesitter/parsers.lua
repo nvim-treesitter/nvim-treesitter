@@ -968,6 +968,15 @@ list.kotlin = {
   maintainers = { "@SalBakraa" },
 }
 
+list.kusto = {
+  install_info = {
+    url = "https://github.com/Willem-J-an/tree-sitter-kusto",
+    files = { "src/parser.c" },
+  },
+  filetype = "kusto",
+  maintainers = { "@Willem-J-an" },
+}
+
 list.lalrpop = {
   install_info = {
     url = "https://github.com/traxys/tree-sitter-lalrpop",
