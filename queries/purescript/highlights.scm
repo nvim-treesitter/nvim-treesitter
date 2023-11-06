@@ -122,6 +122,7 @@
  (exp_record_access (variable) @field)
 
  (signature name: (variable) @type)
+ (kind_declaration (class_name) @type)
  (function name: (variable) @function)
  (foreign_import (variable) @function)
  (class_instance (instance_name) @function)
