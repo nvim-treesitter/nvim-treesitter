@@ -123,6 +123,7 @@
 
  (signature name: (variable) @type)
  (function name: (variable) @function)
+ (foreign_import (variable) @function)
  (class_instance (instance_name) @function)
  (derive_declaration (instance_name) @function)
 
