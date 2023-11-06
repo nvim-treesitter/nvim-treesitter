@@ -18,7 +18,7 @@
     "revision": "1dec7e1af96c56924e3322cd85fdce15d0a31d00"
   },
   "awk": {
-    "revision": "fc5a51138717a5c766b30ad7438fcfc5ef291cb3"
+    "revision": "4b4b46c9a44ec7fb9e8c9ce4a010295edc5be8d5"
   },
   "bash": {
     "revision": "7331995b19b8f8aba2d5e26deb51d2195c18bc94"
@@ -279,7 +279,7 @@
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
   },
   "janet_simple": {
-    "revision": "069a6d300e09c725fa4d6e3dfe0d6468fb16ca54"
+    "revision": "69d46e8a76f3c249e15652ac922be50ba39a2ee1"
   },
   "java": {
     "revision": "2b57cd9541f9fd3a89207d054ce8fbe72657c444"
@@ -354,10 +354,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "85d0f22d9e1a4f92cfd26d0237b108f067e2761a"
+    "revision": "cd705f159127c947cd92ac163c6b17b5dcba7f94"
   },
   "markdown_inline": {
-    "revision": "85d0f22d9e1a4f92cfd26d0237b108f067e2761a"
+    "revision": "cd705f159127c947cd92ac163c6b17b5dcba7f94"
   },
   "matlab": {
     "revision": "6071891a8c39600203eba20513666cf93b4d650a"
@@ -687,7 +687,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "b8056b854f933886e204e46a3001f007441ca1be"
+    "revision": "aa19914c881eccb97c73318638e2cea26557b8d2"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
