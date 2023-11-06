@@ -1,4 +1,4 @@
-(source) @variable
+(identifier) @variable
 (let_statement
   (let_keyword) @keyword
   (identifier) @variable)
@@ -13,24 +13,9 @@
 ] @function.call
 
 (typed_parameter
-  (identifier) @parameter
-  )
-
+  (identifier) @parameter)
 (function_arguments (identifier) @parameter)
-(operation (identifier) @variable)
-(compound_expression (identifier) @variable)
-(binary_expression (identifier) @variable)
-(assignment (identifier) @variable)
-(property_identifier (identifier) @variable)
-(property_index (identifier) @variable)
-(sort_by (identifier) @variable)
-(range_operation (identifier) @variable)
 
-(pipe) @punctuation.delimiter
-[
-  (join_types)
-  (sort_keyword)
-] @constant
 [
   (binary_operator)
   (compound_keywords)
@@ -42,12 +27,16 @@
   (mv_apply_operator)
   (sort_keyword)
 ] @keyword.operator
+
 (string) @string
 (number) @number
 (bool) @boolean
 (null) @constant.builtin
-(comment) @comment
+(comment) @comment @spell
+
 (type) @type
+(join_types) @type.qualifier
+
 [
   "("
   ")"
@@ -59,4 +48,6 @@
 
 [
   ","
+  ":"
+  (pipe)
 ] @punctuation.delimiter
