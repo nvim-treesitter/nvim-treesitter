@@ -1,7 +1,6 @@
 (identifier) @variable
-(let_statement
-  (let_keyword) @keyword
-  (identifier) @variable)
+
+(let_keyword) @keyword
 
 (function_call
   (identifier) @function.call)
