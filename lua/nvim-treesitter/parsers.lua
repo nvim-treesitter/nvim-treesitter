@@ -652,9 +652,8 @@ list.gn = {
 
 list.gnuplot = {
   install_info = {
-    url = "https://github.com/dpezt/tree-sitter-gnuplot",
+    url = "https://github.com/dpezto/tree-sitter-gnuplot",
     files = { "src/parser.c" },
-    requires_generate_from_grammar = true,
   },
   maintainers = { "@dpezto" },
 }
