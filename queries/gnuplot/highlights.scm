@@ -1,5 +1,4 @@
 ; highlights.scm
-; FIX: "tc" "fc" "lc" highlight
 
 (comment) @comment @spell
 
@@ -26,7 +25,12 @@
 
 "sum" @function.builtin
 
-(for_block "for" @repeat "in"? @repeat)
+[
+ "for"
+ "in"
+ "do"
+ "while"
+ ] @repeat
 
 (c_break) @keyword
 
@@ -34,27 +38,19 @@
 
 (c_clear) @keyword
 
-(c_do "do" @repeat (for_block))
-
 (c_eval "evaluate" @keyword (_))
 
 (c_fit
   "fit" @keyword
-  (range_block)*
   (_)+
   "via" @keyword)
 
 (c_help "help" @keyword)
 
-(c_if
-  "if" @conditional
-  [
-   (_)+
-   ("{" (_)* "}"
-   ("else" @conditional "if" @conditional "{" (_)* "}")*
-   ("else" @conditional "{" (_)* "}"))
-   ]
-  )
+[
+ "if"
+ "else"
+ ] @conditional
 
 (c_load "load" @keyword)
 
@@ -73,8 +69,7 @@
    ("title" title: (_))
    ("notitle" title: (_)?)
    "nogrid" ; NOTE: splot only option
-   ("with" with: (plot_style) (style_opts)?)
-   (style_opts)?
+   [("with" with: (plot_style) (style_opts)?) (style_opts)]
    ]* @field)
 
 (datafile_modifiers
@@ -82,15 +77,10 @@
    "binary" ; TODO: complete
    matrix: (["nonuniform" "sparce"]? "matrix" @attribute) ; TODO: complete
    ("skip" (_))
-   "smooth" 
+   "smooth"
    ; TODO: add bins
    "mask" "convexhull" "volatile" "zsort"
-   ]* @attribute
-  [
-   ("index" (_))
-   "every"
-   ("using" (_))
-   ]* @field)
+   ]* @attribute)
 
 (smooth_options) @property
 
@@ -129,13 +119,13 @@
    "horizontal"
    "invert"
    "default"
-   "origin" 
-   "size" 
+   "origin"
+   "size"
    "fb"
    "noborder"
    "bdefault"
-   "border" 
-   "cbtics" 
+   "border"
+   "cbtics"
    ]+ @attribute) ; TODO: complete
 (contour) @attribute
 (datafile
@@ -261,17 +251,18 @@
    "file"
    "colormap"
    "functions"
-   ("cubehelix" ("start" val: (_))? @property ("cycles" val: (_))? @property ("saturation" val: (_))? @property)
+   ("cubehelix" "start"? @property "cycles"? @property "saturation"? @property)
    "viridis"
-   ("model" (["RGB" "CMY" ("HSV" ("start" radians: (_))? @attribute)])? @property )
-   "pn"
+   ("model" (["RGB" "CMY" ("HSV" "start"? @attribute)])? @property)
+   "positive"
+   "negative"
    "nops_allcF" "ps_allcF"
    "maxcolors"
    ]+ @attribute)
 (paxis
   [
    ("range" ["reverse" "writeback" "extend" "restore"]* @property)
-   "tics" 
+   "tics"
    "label"
    "offset"
    ]+ @attribute)
@@ -302,9 +293,9 @@
    ("arrow" ["defaults" @attribute (arrow_opts)])
    "boxplot"
    ("data" [(plot_style) "spiderplot" @attribute])
-   "fs" 
-   "function" 
-   "line" 
+   "fs"
+   "function"
+   "line"
    "circle"
    "rectangle"
    "ellipse"
@@ -359,14 +350,14 @@
 (termoption
   [
    "enhanced" @attribute
-   "fontscale" @attribute 
-   "lw" @field 
+   "fontscale" @attribute
+   "lw" @field
    ])
 (theta) @attribute
 ; (timestamp)
 (title
   [
-   "offset" 
+   "offset"
    ("tc" [(colorspec) ("lt" @field (_))])
    "enhanced"
    ]+ @attribute)
@@ -401,19 +392,18 @@
 
 (c_stats
   "stats" @keyword
+  "matrix"? @field
   [
-   "matrix"? @field
-   [
-    index: ("index" m: (_) (":" n: (_))? (":" p: (_))?)
-    ("every" point_incr: (_)? (":" block_incr: (_)?)? (":" start_point: (_)?)? (":" start_block: (_)?)? (":" end_point: (_)?)? (":" end_block: (_)?)? )
-    using: ("using" (_) (":" (_))*)
-    "zsort"
-    ]* @field]
-  [
-   ["name" "prefix"] @field 
-   "output" @field
-   ; ("vgridname" ("name" (name))?)
-   ]*)
+   ("name" (_))
+   "prefix"
+   "output"
+   ]* @field)
+
+[
+ "every"
+ "index"
+ "using"
+ ] @field
 
 (c_test "test" @keyword) ; TODO: complete
 
@@ -421,11 +411,9 @@
 
 (c_vfill "vfill" @keyword "sample"? @field)
 
-(c_while "while" @repeat "{" _* "}" )
-
 (plot_style
   ["lines" "points" "lp" "financebars" "dots" "impulses"
-   "labels" 
+   "labels"
    "surface" "steps" "fsteps" "histeps" "arrows"
    "vectors"
    "sectors" "contourfill" "errorbar" "errorlines" "parallelaxes" "boxes" "boxerrorbars"
@@ -442,6 +430,7 @@
    "pm3d" "rgbalpha" "rgbimage" "polygons" "table" "mask"
   ] @attribute)
 
+; FIX: "tc" "fc" "lc" highlight
 (fill_style
   [
    "empty"
@@ -494,7 +483,8 @@
    ("scale" ["default" ((_) (_)?)]?)
    ("rotate" "by" @attribute angle: (_))
    "norotate"
-   [("offset" (position)) "nooffset"]
+   ("offset" (position))
+   "nooffset"
    "align"
    "add"
    "autofreq"
@@ -509,7 +499,7 @@
 (label_opts
   [
    "norotate" @attribute
-   ("rotate" @attribute "by"? @attribute) 
+   ("rotate" @attribute "by"? @attribute)
    "enhanced" @attribute
    "fb" @attribute
    ("tc" @field [(colorspec) (["lt" "ls"] @field (_))])
@@ -566,8 +556,8 @@
 ((identifier) @variable.builtin
   (#match? @variable.builtin "^((GPVAL|MOUSE|FIT)_\\w+|GNUTERM|NaN|VoxelDistance|GridDistance|pi)$"))
 
-(array_def "array" @keyword.function (array))
-(array (identifier) @function "[" (_) "]")
+(array_def "array" @keyword.function)
+(array (identifier) @function)
 
 (number) @number
 
