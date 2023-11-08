@@ -279,7 +279,7 @@
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
   },
   "janet_simple": {
-    "revision": "143b15e7a40b9fc2d9664d8357d3f2714bd8bf5f"
+    "revision": "77f8418fdba7b402350e4817bbb54816bbc627d2"
   },
   "java": {
     "revision": "2b57cd9541f9fd3a89207d054ce8fbe72657c444"
@@ -690,7 +690,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "cac0b1d1cf9d9c864da1f8ade48e1eeaf3720814"
+    "revision": "0dedb057b5c508971abd7fcc0b12fcbe823927b8"
   },
   "xml": {
     "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
