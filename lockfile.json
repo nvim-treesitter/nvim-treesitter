@@ -317,6 +317,9 @@
   "kotlin": {
     "revision": "494fb7644a9d2bbe4c7a0c5db2ef94d2aad6b0d8"
   },
+  "kusto": {
+    "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
+  },
   "lalrpop": {
     "revision": "06ae1b6c26e23c77c7fb86d51dddad62b42e66b0"
   },
