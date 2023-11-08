@@ -1,8 +1,10 @@
 ; ----------------------------------------------------------------------------
 ; Literals and comments
 
- (integer) @number
- (exp_negation) @number
+[
+  (integer)
+  (exp_negation)
+] @number
  (exp_literal (number)) @float
  (char) @character
  [
