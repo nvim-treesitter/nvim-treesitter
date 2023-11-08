@@ -115,6 +115,8 @@
 ; Functions and variables
 
  (variable) @variable
+ (exp_apply . (exp_name (variable) @function))
+ (exp_apply . (exp_name (qualified_variable (variable) @function)))
 
  (row_field (field_name) @field)
  (record_field (field_name) @field)
@@ -129,8 +131,8 @@
  (derive_declaration (instance_name) @function)
 
  ; true or false
-((variable) @boolean
- (#any-of? @boolean "true" "false"))
+ ((variable) @boolean
+  (#any-of? @boolean "true" "false"))
 
  ; The former one works for `tree-sitter highlight` but not in Helix/Kakoune.
  ; The latter two work in Helix (but not Kakoune) and are a good compromise between not highlighting anything at all
