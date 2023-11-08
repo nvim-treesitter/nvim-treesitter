@@ -14,11 +14,15 @@
 ((simple_identifier) @variable.builtin
 (#eq? @variable.builtin "field"))
 
-; `this` this keyword inside classes
-(this_expression) @variable.builtin
+[
+	"this"
+	"super"
+	"this@"
+	"super@"
+] @variable.builtin
 
-; `super` keyword inside classes
-(super_expression) @variable.builtin
+; NOTE: for consistency with "super@"
+(super_expression "@" @variable.builtin)
 
 (class_parameter
 	(simple_identifier) @property)
@@ -114,8 +118,6 @@
 		(type_identifier) @function)?
 		(#lua-match? @_import "^[a-z]"))
 
-; TODO: Separate labeled returns/breaks/continue/super/this
-;       Must be implemented in the parser first
 (label) @label
 
 ;;; Function definitions
@@ -309,14 +311,13 @@
 ] @keyword
 
 [
-  "suspend"
-] @keyword.coroutine
+	"return"
+	"return@"
+] @keyword.return
 
-[
-  "fun"
-] @keyword.function
+"suspend" @keyword.coroutine
 
-(jump_expression) @keyword.return
+"fun" @keyword.function
 
 [
 	"if"
@@ -328,6 +329,10 @@
 	"for"
 	"do"
 	"while"
+	"continue"
+	"continue@"
+	"break"
+	"break@"
 ] @repeat
 
 [
@@ -411,6 +416,10 @@
 	":"
 	"::"
 ] @punctuation.delimiter
+
+(super_expression [ "<" ">" ] @punctuation.delimiter)
+(type_arguments [ "<" ">" ] @punctuation.delimiter)
+(type_parameters [ "<" ">" ] @punctuation.delimiter)
 
 ; NOTE: `interpolated_identifier`s can be highlighted in any way
 (string_literal
