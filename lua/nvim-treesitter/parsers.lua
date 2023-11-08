@@ -110,6 +110,15 @@ list.arduino = {
   maintainers = { "@ObserverOfTime" },
 }
 
+list.asciidoc = {
+  install_info = {
+    url = "https://github.com/cathaysia/tree-sitter-asciidoc",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  experimental = true,
+  maintainers = { "@ObserverOfTime" },
+}
+
 list.astro = {
   install_info = {
     url = "https://github.com/virchau13/tree-sitter-astro",

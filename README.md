@@ -177,6 +177,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [agda](https://github.com/tree-sitter/tree-sitter-agda) (maintained by @Decodetalkers)
 - [x] [apex](https://github.com/aheber/tree-sitter-sfapex) (maintained by @aheber)
 - [x] [arduino](https://github.com/ObserverOfTime/tree-sitter-arduino) (maintained by @ObserverOfTime)
+- [x] [asciidoc](https://github.com/cathaysia/tree-sitter-asciidoc) (experimental, maintained by @ObserverOfTime)
 - [x] [astro](https://github.com/virchau13/tree-sitter-astro) (maintained by @virchau13)
 - [x] [authzed](https://github.com/mleonidas/tree-sitter-authzed) (maintained by @mattpolzin)
 - [ ] [awk](https://github.com/Beaglefoot/tree-sitter-awk)

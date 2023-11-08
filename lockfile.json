@@ -11,6 +11,9 @@
   "arduino": {
     "revision": "db929fc6822b9b9e1211678d508f187894ce0345"
   },
+  "asciidoc": {
+    "revision": "ddb82e4257c6703ddc192344ec4383a1b45df2ef"
+  },
   "astro": {
     "revision": "e122a8fcd07e808a7b873bfadc2667834067daf1"
   },
