@@ -9,7 +9,7 @@
     "revision": "a768c956b6aee72ffebb5df7f7c0b3702eaa2fbd"
   },
   "arduino": {
-    "revision": "db929fc6822b9b9e1211678d508f187894ce0345"
+    "revision": "ff1045f5da90344d547022c50f1756be4adaf721"
   },
   "astro": {
     "revision": "e122a8fcd07e808a7b873bfadc2667834067daf1"
@@ -36,7 +36,7 @@
     "revision": "3604d8c961ab129d2bfc6dfca56419c236ccdb83"
   },
   "bitbake": {
-    "revision": "edcdb7dffd0e1680c60d489a625ab119e0d273a0"
+    "revision": "ffe6c2f3dbf30224479a28ca5d50df594b2486a9"
   },
   "blueprint": {
     "revision": "863cea9f83ad5637300478e0559262f1e791684b"
@@ -54,7 +54,7 @@
     "revision": "dc28c9f4212809eab74d10996086297853eb34e5"
   },
   "chatito": {
-    "revision": "c80c219da2086696202cec8fc2501c02f4819a3f"
+    "revision": "871622a3a483f0baf94923d8495c8e0bb2c09009"
   },
   "clojure": {
     "revision": "6e41628e9d18b19caea1cb1d72aae4ccff5bdfe9"
@@ -117,7 +117,7 @@
     "revision": "a750758da90955c86fcc22fcbb6fa44a7d009865"
   },
   "dtd": {
-    "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
+    "revision": "a3bfa1ae7e8400ab81a6358f5e8d2983f5dd0697"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -144,7 +144,7 @@
     "revision": "203f7bd3c1bbfbd98fc19add4b8fcb213c059205"
   },
   "erlang": {
-    "revision": "bb06a83db4f0c176875d9d49756b760d15211134"
+    "revision": "35ae91b2e9f5514c0ad6d6887f9859f28907c7d5"
   },
   "fennel": {
     "revision": "517195970428aacca60891b050aa53eabf4ba78d"
@@ -183,7 +183,7 @@
     "revision": "d8a4207ebbc47bd78bacdf48f883db58283f9fd8"
   },
   "gitattributes": {
-    "revision": "f58a4a4bc55b9b43dfa7c4106257422764f97776"
+    "revision": "19d554d39e4a8491f7a77abcdb75bfbc1c19d0b5"
   },
   "gitcommit": {
     "revision": "6856a5fd0ffeff17d83325a8ce4e57811010eff1"
@@ -192,7 +192,7 @@
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
   },
   "gleam": {
-    "revision": "11b843da16cbc4c536213ab4ba03a48fff6e3e10"
+    "revision": "3f93cccaf278cc4c9cf9a373ea2f6389174d634c"
   },
   "glimmer": {
     "revision": "f9746dc1d0707717fbba84cb5c22a71586af23e1"
@@ -315,7 +315,7 @@
     "revision": "e180e05132c4cb229a8ba679b298790ef1eca77c"
   },
   "kotlin": {
-    "revision": "494fb7644a9d2bbe4c7a0c5db2ef94d2aad6b0d8"
+    "revision": "0ef87892401bb01c84b40916e1f150197bc134b1"
   },
   "kusto": {
     "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
@@ -477,7 +477,7 @@
     "revision": "9ce9a5f7d64528572aaa8d59459ba869e634086b"
   },
   "purescript": {
-    "revision": "e055b28b2f81db9fdd277b07bff3329c3680943e"
+    "revision": "5ef5592674ea42de75fc2792972e4ea0b6e3da6c"
   },
   "pymanifest": {
     "revision": "8953f91d733dd92c1ac43b3d58a7a2f43fa62dae"
@@ -669,7 +669,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "e14fdf6e661b10edccc744102e4ccf0b187aa8ad"
+    "revision": "1ddb381210fbb54764710a644761ebb3afefefe8"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -696,10 +696,10 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "0dedb057b5c508971abd7fcc0b12fcbe823927b8"
+    "revision": "8e6ae63a557c92d662161607d43c3a0bfbd76dec"
   },
   "xml": {
-    "revision": "9deacbfb79cb3527a0396255beb17e1bba3f2052"
+    "revision": "a3bfa1ae7e8400ab81a6358f5e8d2983f5dd0697"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
