@@ -698,6 +698,9 @@
   "wing": {
     "revision": "a30e8eca90b7a7deb3a85503dbdd172a68ba0e05"
   },
+  "xcompose": {
+    "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
+  },
   "xml": {
     "revision": "a3bfa1ae7e8400ab81a6358f5e8d2983f5dd0697"
   },
