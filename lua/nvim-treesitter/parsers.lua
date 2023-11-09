@@ -2046,6 +2046,14 @@ list.wing = {
   experimental = true,
 }
 
+list.xcompose = {
+  install_info = {
+    url = "https://github.com/ObserverOfTime/tree-sitter-xcompose",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@ObserverOfTime" },
+}
+
 list.xml = {
   install_info = {
     url = "https://github.com/ObserverOfTime/tree-sitter-xml",
