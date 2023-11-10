@@ -2,8 +2,9 @@
 (erroneous_end_tag_name) @error
 (comment) @comment @spell
 (attribute_name) @tag.attribute
-(attribute
+((attribute
   (quoted_attribute_value) @string)
+ (#set! "priority" 99))
 (text) @text @spell
 
 ((element (start_tag (tag_name) @_tag) (text) @text.title)

@@ -200,7 +200,7 @@
 
 ; Namespace
 
-(inherit_directive (identifier) @namespace)
+(inherit_path) @namespace
 
 ;; Normal parameters
 (parameters

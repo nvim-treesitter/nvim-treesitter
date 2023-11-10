@@ -976,6 +976,14 @@ list.kotlin = {
   maintainers = { "@SalBakraa" },
 }
 
+list.kusto = {
+  install_info = {
+    url = "https://github.com/Willem-J-an/tree-sitter-kusto",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@Willem-J-an" },
+}
+
 list.lalrpop = {
   install_info = {
     url = "https://github.com/traxys/tree-sitter-lalrpop",
@@ -1416,6 +1424,14 @@ list.puppet = {
     files = { "src/parser.c" },
   },
   maintainers = { "@amaanq" },
+}
+
+list.purescript = {
+  install_info = {
+    url = "https://github.com/postsolar/tree-sitter-purescript",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@postsolar" },
 }
 
 list.pymanifest = {
@@ -1904,6 +1920,15 @@ list.typoscript = {
     files = { "src/parser.c" },
   },
   maintainers = { "@Teddytrombone" },
+}
+
+list.udev = {
+  install_info = {
+    url = "https://github.com/ObserverOfTime/tree-sitter-udev",
+    files = { "src/parser.c" },
+  },
+  filetype = "udevrules",
+  maintainers = { "@ObserverOfTime" },
 }
 
 list.ungrammar = {

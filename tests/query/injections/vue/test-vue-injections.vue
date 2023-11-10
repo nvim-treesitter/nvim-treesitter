@@ -1,12 +1,12 @@
 <template>
   <span>{{"Text inside interpolation"}}</span>
-  <!--      ^ javascript -->
+  <!--      ^ typescript -->
 
   <template lang="pug"> a(:href="url") some link title in pug: </template>
   <!--                                       ^ pug -->
 
   <template v-if="'text inside directives'"></template>
-<!--              ^ javascript -->
+<!--              ^ typescript -->
 </template>
 <script> const foo = "1" </script>
 <!--      ^ javascript -->

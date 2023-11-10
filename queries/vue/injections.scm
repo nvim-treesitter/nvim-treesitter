@@ -57,12 +57,12 @@
 
 ((interpolation
   (raw_text) @injection.content)
-  (#set! injection.language "javascript"))
+  (#set! injection.language "typescript"))
 
 (directive_attribute
   (quoted_attribute_value
     (attribute_value) @injection.content
-    (#set! injection.language "javascript")))
+    (#set! injection.language "typescript")))
 
 (template_element
     (start_tag
