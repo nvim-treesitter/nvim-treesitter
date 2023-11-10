@@ -87,7 +87,7 @@
 (clip) @attribute
 (cntrparam "auto"? @property)
 (contour) @attribute
-; (contourfill "auto"? @field)
+(contourfill "auto"? @field)
 (encoding) @attribute
 ; (errorbars)
 (format _? @attribute (_) _? @attribute)
@@ -111,7 +111,7 @@
    "parallelaxis"
    ; (spiderplot) ; TODO: complete
    "textbox"
-   ; ("watchpoint" "labels" @attribute (_)?) FIX:
+   ("watchpoint" "labels" @attribute (_)?)
    ] @property)
 ; (table)
 (terminal "name" @property)
