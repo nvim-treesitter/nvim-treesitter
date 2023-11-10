@@ -38,12 +38,12 @@
 
 (c_clear) @keyword
 
-(c_eval "evaluate" @keyword (_))
+(c_eval "evaluate" @keyword)
 
 [
-  "fit"
-  "via"
-] @keyword
+ "fit"
+ "via"
+ ] @keyword
 
 (c_help "help" @keyword)
 
@@ -247,7 +247,7 @@
    "color"
    ("gamma" (_))
    ("rgbformulae" (_) (_)? (_)?)
-   ("defined" ("(" (_)+ "," (_)+ ")")?)
+   ("defined" ("(" "," ")")?)
    "file"
    "colormap"
    ("functions" (_) (_) (_))
