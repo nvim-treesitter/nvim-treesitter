@@ -191,6 +191,7 @@
  "using"
  "concept"
  "requires"
+ "constexpr"
 ] @keyword
 
 [
