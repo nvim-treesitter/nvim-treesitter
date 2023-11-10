@@ -23,13 +23,26 @@
 
 (keyword) @keyword
 
-(operator) @operator
-(variable "|" @operator)
-(paired_statement "=" @operator)
+[
+ "|"
+ "="
+ (operator)
+] @operator
 (keyword_operator) @keyword.operator
 
+(string) @string
+(filter [ "'" "\"" ] . (filter_argument) @string)
+
 (number) @number
+((filter (filter_argument) @number)
+ (#lua-match? @number "^%d+$"))
 
 (boolean) @boolean
+((filter (filter_argument) @boolean)
+ (#any-of? @boolean "True" "False"))
 
-(string) @string
+[
+  ":"
+  "'"
+  "\""
+] @punctuation.delimiter
