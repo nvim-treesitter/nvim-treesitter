@@ -654,7 +654,7 @@ list.gnuplot = {
   install_info = {
     url = "https://github.com/dpezto/tree-sitter-gnuplot",
     files = { "src/parser.c" },
-    requires_generate_from_grammar = true,
+    branch = "release",
   },
   maintainers = { "@dpezto" },
 }
