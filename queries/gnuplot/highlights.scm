@@ -111,7 +111,7 @@
    "parallelaxis"
    ; (spiderplot) ; TODO: complete
    "textbox"
-   ("watchpoint" "labels" @attribute (_)?)
+   ; ("watchpoint" "labels" @attribute (_)?) FIX:
    ] @property)
 ; (table)
 (terminal "name" @property)
