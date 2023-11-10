@@ -204,7 +204,7 @@
     "revision": "bc06955bc1e3c9ff8e9b2b2a55b38b94da923c05"
   },
   "go": {
-    "revision": "bbaa67a180cfe0c943e50c55130918be8efb20bd"
+    "revision": "ff86c7f1734873c8c4874ca4dd95603695686d7a"
   },
   "godot_resource": {
     "revision": "b6ef0768711086a86b3297056f9ffb5cc1d77b4a"
@@ -219,7 +219,7 @@
     "revision": "949a8a470559543857a62102c84700d291fc984c"
   },
   "gpg": {
-    "revision": "9c26b66d6bca0bd0520269e98241709806561bd5"
+    "revision": "18b2690a15f061a6ff48730589f7a4039af2d002"
   },
   "graphql": {
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
@@ -450,7 +450,7 @@
     "revision": "ea5d557cbd185cdcb5efcfdb6bc846fe909d86ae"
   },
   "poe_filter": {
-    "revision": "d7b43b51f92fb19efe8af45c2246087c611c8f63"
+    "revision": "374f618de179498c2a821136bb86c3edbe221e10"
   },
   "pony": {
     "revision": "16f930b250433cfcd4fb4144df92bb98ad344c20"
@@ -579,7 +579,7 @@
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
   },
   "ssh_config": {
-    "revision": "9dcfe0f30ccbde8115790c72acbde4c04ec8e74e"
+    "revision": "6ac08decae456ef2fc307977d9210f86d75d4eca"
   },
   "starlark": {
     "revision": "c45ce2b39062bbd12ea1c210bd200db250efb24a"
@@ -627,7 +627,7 @@
     "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
   },
   "tlaplus": {
-    "revision": "7ba226cf85280c7917d082940022006e6a3b7b6f"
+    "revision": "204e858899f7dd5713dea7b0148d6aa477d4a18f"
   },
   "todotxt": {
     "revision": "0207f6a4ab6aeafc4b091914d31d8235049a2578"
@@ -654,7 +654,7 @@
     "revision": "43b221c0b76e77244efdaa9963e402a17c930fbc"
   },
   "udev": {
-    "revision": "e3ad4cb3c59e4c71a177cd4af62958749e53a8bd"
+    "revision": "baeac48a999abb9384cdcce320f0182937aec8ba"
   },
   "ungrammar": {
     "revision": "debd26fed283d80456ebafa33a06957b0c52e451"
@@ -669,7 +669,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "1ddb381210fbb54764710a644761ebb3afefefe8"
+    "revision": "099a85fbd34a8b9db9f83da19f184bd4c1886e7c"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -696,7 +696,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "8e6ae63a557c92d662161607d43c3a0bfbd76dec"
+    "revision": "a30e8eca90b7a7deb3a85503dbdd172a68ba0e05"
   },
   "xml": {
     "revision": "a3bfa1ae7e8400ab81a6358f5e8d2983f5dd0697"
