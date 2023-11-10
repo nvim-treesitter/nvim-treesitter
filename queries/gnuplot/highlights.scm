@@ -87,7 +87,7 @@
 (clip) @attribute
 (cntrparam "auto"? @property)
 (contour) @attribute
-(contourfill "auto"? @field)
+; (contourfill "auto"? @field)
 (encoding) @attribute
 ; (errorbars)
 (format _? @attribute (_) _? @attribute)
