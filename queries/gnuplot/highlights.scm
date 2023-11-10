@@ -40,10 +40,10 @@
 
 (c_eval "evaluate" @keyword (_))
 
-(c_fit
-  "fit" @keyword
-  (_)+
-  "via" @keyword)
+[
+  "fit"
+  "via"
+] @keyword
 
 (c_help "help" @keyword)
 
