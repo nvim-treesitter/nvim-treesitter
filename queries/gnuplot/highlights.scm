@@ -38,11 +38,12 @@
 
 (c_clear) @keyword
 
-(c_eval "evaluate" @keyword)
+(c_eval "evaluate" @keyword (_))
 
 [
  "fit"
  "via"
+ "inverse"
  ] @keyword
 
 (c_help "help" @keyword)
@@ -58,24 +59,15 @@
 
 (c_pause "pause" @keyword "mouse" @field _? @attribute ("," _ @attribute)?)
 
-(c_plot
-  "plot" @keyword
-  "sample"? @keyword)
+(c_plot "plot" @keyword "sample"? @keyword)
 
-(plot_element
-  [
-   ("axes" ["x1y1" "x2y2" "x1y2" "x2y1"] @attribute)
-   "nogrid" ; NOTE: splot only option
-   ]* @field)
+(plot_element "axes"? @field)
 
 (datafile_modifiers
   [
    "binary" ; TODO: complete
-   ; matrix: [["nonuniform" "sparce"]? "matrix"] @attribute; TODO: check
    ("skip" (_))
-   "smooth"
    ; TODO: add bins
-   "mask" "convexhull" "concavehull" "volatile" "zsort"
    ]* @attribute)
 
 (smooth_options) @property
@@ -86,212 +78,28 @@
 
 (c_reread) @keyword
 
-(c_reset "reset" @keyword ["bind" "errors" "session"]? @attribute)
+(c_reset "reset" @keyword)
 
-(c_set "cmd" @keyword "arg" @field)
+(c_set "cmd" @keyword)
 
 (angles) @attribute
-(arrow
-  [
-   ("from" "to_rto" @attribute)
-   ("from" "length" @attribute "angle" @attribute)
-   ]* @attribute)
-(autoscale ["axes" "fix" "keepfix" "noextend"] @attribute)
-(border ["front" "back" "behind" "polar"]? @attribute)
-(boxwidth ["absolute" "relative"] @attribute)
-(boxdepth "square" @attribute)
-(colormap "new" @attribute)
 (colorsequence) @attribute
 (clip) @attribute
-(cntrlabel ["format" "start" "interval" "onecolor"] @attribute)
-(cntrparam
-  [
-   "linear" "cubicspline" "bspline" "points" "order"
-   ("levels" ["auto" "discrete" "incremental"]? @property "sorted"? @attribute "firstlinetype"? @attribute)
-   ]* @attribute)
-(colorbox
-  [
-   "vertical"
-   "horizontal"
-   "invert"
-   ("origin" (_))
-   ("size" (_))
-   "fb"
-   "noborder"
-   "bdefault"
-   ("border" (_))
-   ("cbtics" (_))
-   ]+ @attribute)
+(cntrparam "auto"? @property)
 (contour) @attribute
-(contourfill
-  [
-   ("auto" (_))
-   "ztics"
-   "cbtics"
-   "palette"
-   ("firstlinetype" (_))
-   ]+ @attribute)
-(datafile
-  [
-   "columnheaders"
-   "fortran"
-   "nofpe_trap"
-   "missing"
-   ("separator" ["whitespace" "tab" "comma"] @property)
-   "commentschars"
-   ]? @attribute)
-(decimalsign "locale" @attribute)
-(dgrid3d [
-          "splines" "qnorm"
-          (["gauss" "cauchy" "exp" "box" "hann"] "kdensity"? @property)
-          ]+ @attribute)
+(contourfill ("auto" (_)) @field)
 (encoding) @attribute
 ; (errorbars)
-(fit
-  [
-   "nologfile"
-   ("logfile" ["default" (_)])
-   "fit_out"
-   "errorvariables"
-   "covariancevariables"
-   "errorscaling"
-   "prescale"
-   ("maxiter" ["default" (_)])
-   ("limit" ["default" (_)])
-   ("limit_abs" ["default" (_)])
-   ("start-lambda" ["default" (_)])
-   ("lambda-factor" ["default" (_)])
-   ("script" ["default" (_)])
-   "version"
-   ]+ @attribute)
 (format _? @attribute (_) _? @attribute)
-(grid
-  [
-   "tics"
-   "polar"
-   "layerdefault" "front" "back"
-   "vertical"
-   ]+ @attribute)
-(hidden3d
-  [
-   "defaults"
-   "fb"
-   "offset"
-   "trianglepattern"
-   "undefined"
-   "noundefined"
-   "altdiagonal"
-   "bentover"
-   ]? @attribute)
 ; (hystory)
-(isosurface ["mixed" "triangles" "noinsidecolor" ("insidecolor" (_))] @attribute)
-(jitter ["overlap" "spread" "wrap" "swarm" "square" "vertical"] @attribute)
-(key
-  [
-   "on" "off"
-   ("a" "columnheader"? @property)
-   "box"
-   "opaque"
-   ("width" (_))
-   ("height" (_))
-   "vertical"
-   "horizontal"
-   ("maxcols" ["auto"]?)
-   ("maxrows" ["auto"]?)
-   ("columns")
-   ("keywidth" ["screen" "graph"])
-   "lr"
-   "reverse"
-   ("samplen" (_))
-   ("spacing" (_))
-   "inside"
-   "outside"
-   "fixed"
-   "margin"
-   ("at" (_))
-   "cen" "lef" "rig" "top" "bot"
-   ]+ @attribute)
-(linetype "cycle" @attribute)
-(link
-  [
-   "x2" "y2"
-   ("via" "inverse" @attribute)
-   ] @attribute) ; TODO: check highlight
-(logscale "axis" @attribute)
+(key "auto"? @property)
 (mapping) @attribute
-(margin
-  [
-   ("at" "screen" @attribute) ; TODO: check if correct
-   "screen"
-   "margins"
-   ]? @attribute)
 ; (mouse) ; TODO: complete
-(multiplot
-  [
-   ("layout" rows: (_) cols: (_))
-   "rowsfirst" "columnsfirst"
-   "downwards" "upwards"
-   ("scale" (_))
-   ("offset" (_))
-   ("margins" lm: (_) rm: (_) bm: (_) tm: (_))
-   ("spacing" (_))
-   "prevnext"
-   ]+ @attribute)
-(mxtics
-  [
-   ("time" ["seconds" "minutes" "hours" "days" "weeks" "months" "years"] @property)
-   ]* @attribute)
-(palette
-  [
-   "gray"
-   "color"
-   ("gamma" (_))
-   ("rgbformulae" (_) (_)? (_)?)
-   ("defined" ("(" "," ")")?)
-   "file"
-   "colormap"
-   ("functions" (_) (_) (_))
-   ("cubehelix" [("start" (_)) ("cycles" (_)) ("saturation" (_))]? @property)
-   "viridis"
-   ("model" ["RGB" "CMY" ("HSV" ("start" (_))? @property)]? @property)
-   "positive"
-   "negative"
-   "nops_allcF"
-   "ps_allcF"
-   ("maxcolors" (_))
-   ]+ @attribute)
-(paxis ; TODO: check
-  [
-   ("range" (_) ["reverse" "writeback" "extend" "restore"]* @property)
-   ("tics" (_))
-   ("label" (_) (_)?)
-   ("offset" (_))
-   ]+ @attribute)
 ; (pixmap)
-(pm3d
+(pm3d "clip" "z"? @property)
+(style ; TODO: complete
   [
-   ("at" (_))
-   ("interpolate" steps: (_) "," between: (_))
-   "scanorder" ("depthorder" "base"? @property) "hidden3d"
-   ("flush" ["begin""center""end"] @property)
-   "ftriangles"
-   ("clip" "z"? @property) "clip1in" "clip4in"
-   "clipcb"
-   ("corners2color" "c2c" @property)
-   ("lighting" [("primary" (_))? ("specular" (_))? ("spec2" (_))?] @property)
-   ("border" "retrace"? @property)
-   "implicit" "explicit"
-   "map"
-   ]+ @attribute)
-(size
-  [
-   "square"
-   "ratio"
-   "noratio"
-   ]+ @attribute)
-(style
-  [
-   ("arrow" ["defaults" @attribute (_)])
+   "arrow"
    "boxplot"
    ("data" [(_) "spiderplot" @attribute])
    "fs"
@@ -300,18 +108,18 @@
    "circle"
    "rectangle"
    "ellipse"
-   ("parallelaxis" "fb"? @attribute)
+   "parallelaxis"
    ; (spiderplot) ; TODO: complete
    "textbox"
    ("watchpoint" "labels" @attribute (_)?)
    ] @property)
-(surface ["implicit" "explicit"] @attribute)
 ; (table)
-(terminal ["name" "push" "pop"] @property)
+(terminal "name" @property)
+; TODO: complete terminals in grammar and then simplify its options here
 (t_cairolatex
   [
    "eps" "pdf" "png" "standalone" "input" "blacktext" "colortext" "colourtext" ("header"(_)) "mono" "color"
-   "background" "fontscale" "rounded" "butt" "square"
+   "background" "rounded" "butt"
    ]* @attribute)
 ; (t_canvas)
 ; (t_cgm)
@@ -342,50 +150,18 @@
 ; (t_tikz)
 ; (t_tkcanvas)
 
-(canvas_size
-  "size" @attribute
-  x:((_) ["cm" "in"]? @property)
-  ","
-  y:((_) ["cm" "in"]? @property))
-
-(font_spec "font" @attribute)
-
-(termoption "fontscale" @attribute)
 (theta) @attribute
 ; (timestamp)
-(title "offset" @attribute)
-(vgrid ("size" @attribute)?)
-(view
-  [
-   ("map" "scale"? @property)
-   ("projection" ["xy" "xz" "yz"]? @property)
-   ("equal" ["xy" "xyz"]? @property)
-   "azimuth"
-   ]+ @attribute)
 (walls "wall" @attribute)
 (xdata) @attribute
-(xlabel
-  [
-   ("offset" (_))
-   ("rotate" [("by" (_)) "parallel"]? @attribute)
-   ]+ @attribute)
-(xrange ["reverse" "writeback" "extend" "restore"]+ @attribute)
-(xyplane ["at" "relative"]? @attribute)
 
-(c_show "show" @keyword); TODO: complete
+(c_show "show" @keyword "plot"? @attribute)
 
 (c_splot "splot" @keyword "sample"? @keyword)
 
-(c_stats
-  "stats" @keyword
-  "matrix"? @field
-  [
-   ("name" (_))
-   "prefix"
-   "output"
-   ]* @field)
+(c_stats "stats" @keyword ("name" (_))? @field)
 
-(c_test "test" @keyword ["palette" "terminal"]? @field)
+(c_test "test" @keyword)
 
 (c_undefine "undefine" @keyword)
 
@@ -393,116 +169,108 @@
 
 (plot_style
   [
-   "lines" "points" "lp" "financebars" "dots" "impulses"
-   "labels"
-   "surface" "steps" "fsteps" "histeps" "arrows"
-   "vectors"
+   "lines" "points" "lp" "financebars" "dots" "impulses" "labels"
+   "surface" "steps" "fsteps" "histeps" "arrows" "vectors"
    "sectors" "contourfill" "errorbar" "errorlines" "parallelaxes" "boxes" "boxerrorbars"
    "boxxyerror" "isosurface" "boxplot" "candlesticks" "circles" "zerrorfill"
-   "ellipses"
-   ("filledcurves"
-    [
-     "closed"
-     "between"
-     (["above" "below"]? ["x1""x2""y1""y2""y""r"] @attribute)
-     ]? @property)
-   ("fillsteps" ["above" "below"]? @property "y"? @attribute)
-   "histograms" ("image" "pixels"? @property)
+   "ellipses" "filledcurves" "fillsteps" "histograms" "image"
    "pm3d" "rgbalpha" "rgbimage" "polygons" "table" "mask"
    ] @attribute)
 
 [
- "tc"
- "fc" "fs"
- "lc" "ls" "lw" "lt"
- "pt" "ps" "pi" "pn"
- "dt" "as"
+ "tc" "fc" "fs" "lc" "ls" "lw" "lt" "pt" "ps" "pi" "pn" "dt" "as"
+ "scale"
+ "start" "cycles" "saturation" "interval" "format"
+ "layout" "margins" "spacing"
+ "keywidth" "samplen" "columns"
  "title" "notitle"
  "every" "index" "using" "with"
+ "frac"
+ "arg"
+ "prefix" "output"
+ "primary" "specular" "spec2"
+ "firstlinetype"
+ "width" "height"
  ] @field
 
 [
+ "on" "off" "opaque" "inside" "outside" "margin" "cen" "lef" "rig" "top" "bot" "lr" "a" "maxcols" "maxrows"
+ "overlap" "spread" "wrap" "swarm"
+ "range" "label"
+ "mixed" "triangles" "insidecolor" "noinsidecolor"
+ "cycle"
+ "x1" "x2" "y1" "y2" "y" "r"
+ "xy" "xz" "yz" "xyz"
+ "x1y1" "x2y2" "x1y2" "x2y1"
+ "tics" "ztics" "cbtics"
+ "bdefault" "origin"
+ "time"
+ "palette"
+ "terminal"
+ "onecolor"
+ "invert" "reverse" "writeback" "extend" "restore"
+ "linear" "cubicspline" "bspline" "points" "order" "levels" "sorted"
+ "autofreq" "add" "inout" "axis" "mirror" "type"
+ "rowsfirst" "columnsfirst" "downwards" "upwards" "prevnext"
+ "gray" "color" "gamma" "defined" "cubehelix" "model" "maxcolors" "file" "colormap" "rgbformulae" "viridis" "positive" "negative" "nops_allcF" "ps_allcF"
+ "bind" "errors" "session"
+ "behind" "polar" "layerdefault"
+ "front" "back"
+ "locale"
+ "axes" "fix" "keepfix" "noextend"
+ "head" "fixed" "filled" "nofilled"
+ "absolute" "at" "relative"
  "enhanced"
- "matrix"
- "border"
- "black"
- "bgnd"
+ "mask" "convexhull" "concavehull" "volatile" "zsort"
+ "smooth" "nonuniform" "sparce" "matrix"
+ "border" "noborder"
+ "rgbcolor" "empty" "black" "bgnd"
  "nodraw"
- "variable"
+ "size"
+ "new"
+ "first" "second" "screen" "graph" "character"
+ "trianglepattern" "undefined" "noundefined" "altdiagonal" "bentover"
+ "vertical" "horizontal"
+ "square" "ratio" "noratio"
+ "solid" "transparent" "pattern"
+ "from" "to_rto" "length" "angle"
+ "columnheaders" "fortran" "nofpe_trap" "missing" "separator" "commentschars"
+ "align"
+ "log" "rangelimited"
+ "offset" "nooffset"
+ "font"
+ "point" "nopoint" "boxed" "noboxed" "hypertext"
+ "defaults"
+ "keyentry"
+ "splines" "qnorm" "gauss" "cauchy" "exp" "box" "hann"
+ "implicit" "explicit"
+ "rotate" "by" "parallel" "norotate"
+ "map" "projection" "equal" "azimuth"
+ "nohidden3d" "nocontours" "nosurface"
+ "colornames" "functions" "variables" "version"
+ "nologfile" "logfile" "fit_out" "errorvariables" "covariancevariables" "errorscaling" "prescale" "maxiter" "limit" "limit_abs" "start-lambda" "lambda-factor" "script" "clip"
+ "fontscale"
  ] @attribute
 
-"default" @property
+[
+ "columnheader"
+ "seconds" "minutes" "hours" "days" "weeks" "months" "years"
+ "cm" "in"
+ "discrete" "incremental"
+ "default"
+ "long"
+ "nogrid"
+ "kdensity"
+ "closed" "between" "above" "below"
+ "variable"
+ "pixels"
+ "RGB" "CMY" "HSV"
+ "base" "begin" "center" "end" "lighting" "interpolate" "scanorder" "depthorder" "hidden3d" "flush" "ftriangles" "clip1in" "clip4in" "clipcb" "corners2color" "c2c" "retrace"
+ "whitespace" "tab" "comma"
+ "push" "pop"
+ ] @property
 
-(fill_style
-  [
-   "empty"
-   "solid"
-   ("transparent"? "solid" @attribute)
-   "pattern"
-   ("transparent"? "pattern" @attribute)
-   "border"
-   ] @attribute)
-
-(line_style ["palette"]? @field) ; TODO: check
-
-(colorspec
-  [
-   ("rgbcolor" "variable"? @property)
-   ("palette" ["frac" "cb" "z"]? @property)
-   ] @attribute)
-
-(arrow_opts
-  [
-   "head"
-   "size"
-   "fixed" "filled" "empty" "nofilled" "noborder" "front" "back"
-   ]+ @attribute)
-
-(dash_opts "solid" @attribute)
-
-(tics_opts
-  [
-   "axis"
-   "mirror"
-   "inout"
-   ("scale" ["default" ((_) (_)?)]?)
-   ("rotate" "by" @attribute (_))
-   "norotate"
-   ("offset" (_))
-   "nooffset"
-   "align"
-   "add"
-   "autofreq"
-   "format"
-   ("format" (_))
-   "log"
-   "rangelimited"
-   ]+ @attribute)
-
-(label_opts
-  [
-   "norotate"
-   ("rotate" "by"? @attribute (_))
-   "fb"
-   ("offset" (_))
-   "align"
-   ("at" (_))
-   "nopoint"
-   ("point" (_))
-   "boxed"
-   "noboxed"
-   "hypertext"
-   ]* @attribute)
-
-(style_opts
-  [
-   "nohidden3d"
-   "nocontours"
-   "nosurface"
-   "palette"
-   ]+ @field)
-
-(system) @attribute
+(colorspec [["cb" "z"] @field "palette" @attribute])
 
 (macro) @function.macro
 (datablock) @function.macro
