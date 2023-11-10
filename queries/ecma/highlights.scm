@@ -74,22 +74,6 @@
            "TypeError"
            "URIError"))
 
-((identifier) @namespace.builtin
- (#eq? @namespace.builtin "Intl"))
-
-((identifier) @function.builtin
- (#any-of? @function.builtin
-           "eval"
-           "isFinite"
-           "isNaN"
-           "parseFloat"
-           "parseInt"
-           "decodeURI"
-           "decodeURIComponent"
-           "encodeURI"
-           "encodeURIComponent"
-           "require"))
-
 ; Function and method definitions
 ;--------------------------------
 
@@ -146,6 +130,25 @@
 (call_expression
   function: (member_expression
     property: [(property_identifier) (private_property_identifier)] @method.call))
+
+; Builtins
+;---------
+
+((identifier) @namespace.builtin
+ (#eq? @namespace.builtin "Intl"))
+
+((identifier) @function.builtin
+ (#any-of? @function.builtin
+           "eval"
+           "isFinite"
+           "isNaN"
+           "parseFloat"
+           "parseInt"
+           "decodeURI"
+           "decodeURIComponent"
+           "encodeURI"
+           "encodeURIComponent"
+           "require"))
 
 ; Constructor
 ;------------
