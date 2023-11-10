@@ -55,6 +55,8 @@
   "foreach"
 ] @function.builtin
 
+((funcname) @function.call . "(")
+
 ; jq -n 'builtins | map(split("/")[0]) | unique | .[]'
 ((funcname) @function.builtin
  (#any-of? @function.builtin
