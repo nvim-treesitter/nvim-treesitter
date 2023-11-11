@@ -1204,6 +1204,14 @@ list.nqc = {
   maintainers = { "@amaanq" },
 }
 
+list.nu = {
+  install_info = {
+    url = "https://github.com/nushell/tree-sitter-nu",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@nushell" },
+}
+
 list.objc = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-objc",

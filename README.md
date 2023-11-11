@@ -307,6 +307,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [nix](https://github.com/cstrahan/tree-sitter-nix) (maintained by @leo60228)
 - [x] [norg](https://github.com/nvim-neorg/tree-sitter-norg) (maintained by @JoeyGrajciar, @vhyrro)
 - [x] [nqc](https://github.com/amaanq/tree-sitter-nqc) (maintained by @amaanq)
+- [x] [nu](https://github.com/nushell/tree-sitter-nu) (experimental, maintained by @nushell)
 - [x] [objc](https://github.com/amaanq/tree-sitter-objc) (maintained by @amaanq)
 - [x] [objdump](https://github.com/ColinKennedy/tree-sitter-objdump) (maintained by @ColinKennedy)
 - [x] [ocaml](https://github.com/tree-sitter/tree-sitter-ocaml) (maintained by @undu)
