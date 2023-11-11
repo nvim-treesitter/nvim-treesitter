@@ -36,7 +36,7 @@
     "revision": "3604d8c961ab129d2bfc6dfca56419c236ccdb83"
   },
   "bitbake": {
-    "revision": "ffe6c2f3dbf30224479a28ca5d50df594b2486a9"
+    "revision": "10bacac929ff36a1e8f4056503fe4f8717b21b94"
   },
   "blueprint": {
     "revision": "863cea9f83ad5637300478e0559262f1e791684b"
@@ -225,7 +225,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "groovy": {
-    "revision": "ae8aa51ec3275afb567a4a67df1a26d89feb135f"
+    "revision": "7e023227f46fee428b16a0288eeb0f65ee2523ec"
   },
   "gstlaunch": {
     "revision": "2c0d9c94d35e37aa63fa5002163c8480985b3e5b"
@@ -279,7 +279,7 @@
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
   },
   "janet_simple": {
-    "revision": "77f8418fdba7b402350e4817bbb54816bbc627d2"
+    "revision": "51271e260346878e1a1aa6c506ce6a797b7c25e2"
   },
   "java": {
     "revision": "2b57cd9541f9fd3a89207d054ce8fbe72657c444"
@@ -333,7 +333,7 @@
     "revision": "91d7aa606f524cf4f5df7f4aacb45b4056fac704"
   },
   "liquidsoap": {
-    "revision": "cff1fea7c2ef9eed066a4d3de8af6cb4d7117056"
+    "revision": "b35882f2e1460867ddddcbe8af586e6807d4676f"
   },
   "llvm": {
     "revision": "1b96e58faf558ce057d4dc664b904528aee743cb"
@@ -357,10 +357,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "cd705f159127c947cd92ac163c6b17b5dcba7f94"
+    "revision": "7ce4c69fe92d1c10225e3d1b3676c87dd9427b45"
   },
   "markdown_inline": {
-    "revision": "cd705f159127c947cd92ac163c6b17b5dcba7f94"
+    "revision": "7ce4c69fe92d1c10225e3d1b3676c87dd9427b45"
   },
   "matlab": {
     "revision": "6071891a8c39600203eba20513666cf93b4d650a"
@@ -480,7 +480,7 @@
     "revision": "5ef5592674ea42de75fc2792972e4ea0b6e3da6c"
   },
   "pymanifest": {
-    "revision": "8953f91d733dd92c1ac43b3d58a7a2f43fa62dae"
+    "revision": "a77547018ada84ca4bc115c7650b19441120f065"
   },
   "python": {
     "revision": "82f5c9937fe4300b4bec3ee0e788d642c77aab2c"
@@ -516,7 +516,7 @@
     "revision": "9ac75e71b2d791e0aadeef68098319d86a2a14cf"
   },
   "requirements": {
-    "revision": "eda424eade0f2afbafbf0c89d18c77818fa19273"
+    "revision": "389dd46a39075ce36af6ee3af50393d9aa506d14"
   },
   "rnoweb": {
     "revision": "502c1126dc6777f09af5bef16e72a42f75bd081e"
@@ -573,7 +573,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "25be0b8f17e9189ad9e1b875869d025c5aec1286"
+    "revision": "5f928f404d2aa024abce8657778fc10c03f1511f"
   },
   "squirrel": {
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
@@ -696,7 +696,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "a30e8eca90b7a7deb3a85503dbdd172a68ba0e05"
+    "revision": "238200d172538d5ff1228a929ea543465acfc410"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
