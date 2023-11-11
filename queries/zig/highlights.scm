@@ -10,73 +10,66 @@
   variable_type_function: (IDENTIFIER)
 ] @variable
 
-parameter: (IDENTIFIER) @parameter
+parameter: (IDENTIFIER) @variable.parameter
 
 [
   field_member: (IDENTIFIER)
   field_access: (IDENTIFIER)
-] @field
+] @variable.member
 
-;; assume TitleCase is a type
-(
-  [
-    variable_type_function: (IDENTIFIER)
-    field_access: (IDENTIFIER)
-    parameter: (IDENTIFIER)
-  ] @type
-  (#lua-match? @type "^%u([%l]+[%u%l%d]*)*$")
-)
-;; assume camelCase is a function
-(
-  [
-    variable_type_function: (IDENTIFIER)
-    field_access: (IDENTIFIER)
-    parameter: (IDENTIFIER)
-  ] @function
-  (#lua-match? @function "^%l+([%u][%l%d]*)+$")
-)
+; assume TitleCase is a type
+([
+  variable_type_function: (IDENTIFIER)
+  field_access: (IDENTIFIER)
+  parameter: (IDENTIFIER)
+] @type
+  (#lua-match? @type "^%u([%l]+[%u%l%d]*)*$"))
 
-;; assume all CAPS_1 is a constant
-(
-  [
-    variable_type_function: (IDENTIFIER)
-    field_access: (IDENTIFIER)
-  ] @constant
-  (#lua-match? @constant "^%u[%u%d_]+$")
-)
+; assume camelCase is a function
+([
+  variable_type_function: (IDENTIFIER)
+  field_access: (IDENTIFIER)
+  parameter: (IDENTIFIER)
+] @function
+  (#lua-match? @function "^%l+([%u][%l%d]*)+$"))
+
+; assume all CAPS_1 is a constant
+([
+  variable_type_function: (IDENTIFIER)
+  field_access: (IDENTIFIER)
+] @constant
+  (#lua-match? @constant "^%u[%u%d_]+$"))
 
 function: (IDENTIFIER) @function
+
 function_call: (IDENTIFIER) @function.call
 
-exception: "!" @exception
+exception: "!" @keyword.exception
 
-(
-  (IDENTIFIER) @variable.builtin
-  (#eq? @variable.builtin "_")
-)
+((IDENTIFIER) @variable.builtin
+  (#eq? @variable.builtin "_"))
 
-(PtrTypeStart "c" @variable.builtin)
+(PtrTypeStart
+  "c" @variable.builtin)
 
-(
-  (ContainerDeclType
-    [
-      (ErrorUnionExpr)
-      "enum"
-    ]
-  )
-  (ContainerField (IDENTIFIER) @constant)
-)
+((ContainerDeclType
+  [
+    (ErrorUnionExpr)
+    "enum"
+  ])
+  (ContainerField
+    (IDENTIFIER) @constant))
 
 field_constant: (IDENTIFIER) @constant
 
 (BUILTINIDENTIFIER) @function.builtin
 
-((BUILTINIDENTIFIER) @include
-  (#any-of? @include "@import" "@cImport"))
+((BUILTINIDENTIFIER) @keyword.import
+  (#any-of? @keyword.import "@import" "@cImport"))
 
 (INTEGER) @number
 
-(FLOAT) @float
+(FLOAT) @number.float
 
 [
   "true"
@@ -89,11 +82,16 @@ field_constant: (IDENTIFIER) @constant
 ] @string @spell
 
 (CHAR_LITERAL) @character
+
 (EscapeSequence) @string.escape
+
 (FormatSequence) @string.special
 
-(BreakLabel (IDENTIFIER) @label)
-(BlockLabel (IDENTIFIER) @label)
+(BreakLabel
+  (IDENTIFIER) @label)
+
+(BlockLabel
+  (IDENTIFIER) @label)
 
 [
   "asm"
@@ -115,9 +113,7 @@ field_constant: (IDENTIFIER) @constant
   "resume"
 ] @keyword.coroutine
 
-[
-  "fn"
-] @keyword.function
+"fn" @keyword.function
 
 [
   "and"
@@ -125,31 +121,27 @@ field_constant: (IDENTIFIER) @constant
   "orelse"
 ] @keyword.operator
 
-[
-  "return"
-] @keyword.return
+"return" @keyword.return
 
 [
   "if"
   "else"
   "switch"
-] @conditional
+] @keyword.conditional
 
 [
   "for"
   "while"
   "break"
   "continue"
-] @repeat
+] @keyword.repeat
 
-[
-  "usingnamespace"
-] @include
+"usingnamespace" @keyword.import
 
 [
   "try"
   "catch"
-] @exception
+] @keyword.exception
 
 [
   "anytype"
@@ -169,7 +161,7 @@ field_constant: (IDENTIFIER) @constant
   "align"
   "callconv"
   "linksection"
-] @storageclass
+] @keyword.storage
 
 [
   "comptime"
@@ -223,7 +215,10 @@ field_constant: (IDENTIFIER) @constant
   ")"
   "{"
   "}"
-  (Payload "|")
-  (PtrPayload "|")
-  (PtrIndexPayload "|")
+  (Payload
+    "|")
+  (PtrPayload
+    "|")
+  (PtrIndexPayload
+    "|")
 ] @punctuation.bracket

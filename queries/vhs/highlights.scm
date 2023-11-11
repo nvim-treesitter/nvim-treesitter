@@ -13,9 +13,11 @@
   "Type"
   "Sleep"
   "Hide"
-  "Show" ] @keyword
+  "Show"
+] @keyword
 
-[ "Shell"
+[
+  "Shell"
   "FontFamily"
   "FontSize"
   "Framerate"
@@ -27,12 +29,24 @@
   "Padding"
   "Theme"
   "LoopOffset"
-  "Width" ] @type
+  "Width"
+] @type
 
-[ "@" ] @operator
+"@" @operator
+
 (control) @function.macro
-(float) @float
+
+(float) @number.float
+
 (integer) @number
+
 (comment) @comment @spell
-[(path) (string) (json)] @string
-(time) @symbol
+
+[
+  (string)
+  (json)
+] @string
+
+(path) @string.special.path
+
+(time) @string.special

@@ -1,6 +1,6 @@
 ; Literals
-
 (string) @string
+
 (escape_sequence) @string.escape
 
 (hex_blob
@@ -15,32 +15,40 @@
   "d" @character.special
   (_) @string.special)
 
-(_ key: (_) @label)
+(_
+  key: (_) @property)
 
 (number) @number
 
-(float) @float
+(float) @number.float
 
 (boolean) @boolean
 
 (null) @constant.builtin
 
 ; Punctuation
-
 [
   ","
   ":"
 ] @punctuation.delimiter
 
-[ "{" "}" ] @punctuation.bracket
+[
+  "{"
+  "}"
+] @punctuation.bracket
 
-[ "[" "]" ] @punctuation.bracket
+[
+  "["
+  "]"
+] @punctuation.bracket
 
-[ "<" ">" ] @punctuation.bracket
+[
+  "<"
+  ">"
+] @punctuation.bracket
 
-(("\"" @conceal)
- (#set! conceal ""))
+("\"" @string
+  (#set! conceal ""))
 
 ; Comments
-
 (comment) @comment @spell

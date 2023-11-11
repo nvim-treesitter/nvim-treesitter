@@ -1,41 +1,48 @@
-;; packages
-
+; packages
 (package) @variable
 
-(extras (package) @parameter)
+(extras
+  (package) @variable.parameter)
 
-(path) @text.underline @string.special
+(path) @string.special.path
 
-(url) @text.uri
+(url) @string.special.url
 
-;; versions
-
+; versions
 (version_cmp) @operator
 
 (version) @number
 
-;; markers
-
+; markers
 (marker_var) @attribute
 
 (marker_op) @keyword.operator
 
-;; options
-
+; options
 (option) @function
 
 "=" @operator
 
-;; punctuation
+; punctuation
+[
+  "["
+  "]"
+  "("
+  ")"
+] @punctuation.bracket
 
-[ "[" "]" "(" ")" ] @punctuation.bracket
+[
+  ","
+  ";"
+  "@"
+] @punctuation.delimiter
 
-[ "," ";" "@" ] @punctuation.delimiter
+[
+  "${"
+  "}"
+] @punctuation.special
 
-[ "${" "}" ] @punctuation.special
-
-;; misc
-
+; misc
 (env_var) @constant
 
 (quoted_string) @string

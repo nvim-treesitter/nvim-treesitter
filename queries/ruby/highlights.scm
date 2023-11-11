@@ -1,32 +1,31 @@
 ; Variables
-
 (identifier) @variable
+
 (global_variable) @variable.global
 
 ; Keywords
+[
+  "alias"
+  "begin"
+  "class"
+  "do"
+  "end"
+  "ensure"
+  "module"
+  "rescue"
+  "then"
+] @keyword
 
 [
- "alias"
- "begin"
- "class"
- "do"
- "end"
- "ensure"
- "module"
- "rescue"
- "then"
- ] @keyword
-
-[
- "return"
- "yield"
+  "return"
+  "yield"
 ] @keyword.return
 
 [
- "and"
- "or"
- "in"
- "not"
+  "and"
+  "or"
+  "in"
+  "not"
 ] @keyword.operator
 
 [
@@ -38,139 +37,170 @@
   "end" @keyword.function)
 
 [
- "case"
- "else"
- "elsif"
- "if"
- "unless"
- "when"
- "then"
- ] @conditional
+  "case"
+  "else"
+  "elsif"
+  "if"
+  "unless"
+  "when"
+  "then"
+] @keyword.conditional
 
 (if
-  "end" @conditional)
+  "end" @keyword.conditional)
 
 [
- "for"
- "until"
- "while"
- "break"
- "redo"
- "retry"
- "next"
- ] @repeat
+  "for"
+  "until"
+  "while"
+  "break"
+  "redo"
+  "retry"
+  "next"
+] @keyword.repeat
 
 (constant) @constant
 
 ((identifier) @type.qualifier
- (#any-of? @type.qualifier "private" "protected" "public"))
+  (#any-of? @type.qualifier "private" "protected" "public"))
 
 [
- "rescue"
- "ensure"
- ] @exception
+  "rescue"
+  "ensure"
+] @keyword.exception
 
-((identifier) @exception
- (#any-of? @exception "fail" "raise"))
+((identifier) @keyword.exception
+  (#any-of? @keyword.exception "fail" "raise"))
 
 ; Function calls
-
 "defined?" @function
 
 (call
-   receiver: (constant)? @type
-   method: [
-            (identifier)
-            (constant)
-            ] @function.call
-   )
+  receiver: (constant)? @type
+  method:
+    [
+      (identifier)
+      (constant)
+    ] @function.call)
 
 (program
- (call
-  (identifier) @include)
- (#any-of? @include "require" "require_relative" "load"))
+  (call
+    (identifier) @keyword.import)
+  (#any-of? @keyword.import "require" "require_relative" "load"))
 
 ; Function definitions
+(alias
+  (identifier) @function)
 
-(alias (identifier) @function)
-(setter (identifier) @function)
+(setter
+  (identifier) @function)
 
-(method name: [
-               (identifier) @function
-               (constant) @type
-               ])
+(method
+  name:
+    [
+      (identifier) @function
+      (constant) @type
+    ])
 
-(singleton_method name: [
-                         (identifier) @function
-                         (constant) @type
-                         ])
+(singleton_method
+  name:
+    [
+      (identifier) @function
+      (constant) @type
+    ])
 
-(class name: (constant) @type)
-(module name: (constant) @type)
-(superclass (constant) @type)
+(class
+  name: (constant) @type)
+
+(module
+  name: (constant) @type)
+
+(superclass
+  (constant) @type)
 
 ; Identifiers
 [
- (class_variable)
- (instance_variable)
- ] @label
+  (class_variable)
+  (instance_variable)
+] @variable.member
 
 ((identifier) @constant.builtin
- (#match? @constant.builtin "^__(callee|dir|id|method|send|ENCODING|FILE|LINE)__$"))
+  (#any-of? @constant.builtin "__callee__" "__dir__" "__id__" "__method__" "__send__" "__ENCODING__" "__FILE__" "__LINE__"))
 
 ((constant) @type
- (#not-lua-match? @type "^[A-Z0-9_]+$"))
+  (#not-lua-match? @type "^[A-Z0-9_]+$"))
 
 [
- (self)
- (super)
- ] @variable.builtin
+  (self)
+  (super)
+] @variable.builtin
 
-(method_parameters (identifier) @parameter)
-(lambda_parameters (identifier) @parameter)
-(block_parameters (identifier) @parameter)
-(splat_parameter (identifier) @parameter)
-(hash_splat_parameter (identifier) @parameter)
-(optional_parameter (identifier) @parameter)
-(destructured_parameter (identifier) @parameter)
-(block_parameter (identifier) @parameter)
-(keyword_parameter (identifier) @parameter)
+(method_parameters
+  (identifier) @variable.parameter)
+
+(lambda_parameters
+  (identifier) @variable.parameter)
+
+(block_parameters
+  (identifier) @variable.parameter)
+
+(splat_parameter
+  (identifier) @variable.parameter)
+
+(hash_splat_parameter
+  (identifier) @variable.parameter)
+
+(optional_parameter
+  (identifier) @variable.parameter)
+
+(destructured_parameter
+  (identifier) @variable.parameter)
+
+(block_parameter
+  (identifier) @variable.parameter)
+
+(keyword_parameter
+  (identifier) @variable.parameter)
 
 ; TODO: Re-enable this once it is supported
 ; ((identifier) @function
 ;  (#is-not? local))
-
 ; Literals
+[
+  (string)
+  (bare_string)
+  (subshell)
+  (heredoc_body)
+] @string
 
 [
- (string)
- (bare_string)
- (subshell)
- (heredoc_body)
- ] @string
+  (heredoc_beginning)
+  (heredoc_end)
+] @label
 
 [
- (heredoc_beginning)
- (heredoc_end)
- ] @constant
+  (bare_symbol)
+  (simple_symbol)
+  (delimited_symbol)
+  (hash_key_symbol)
+] @string.special.symbol
 
-[
- (bare_symbol)
- (simple_symbol)
- (delimited_symbol)
- (hash_key_symbol)
- ] @symbol
+(pair
+  key: (hash_key_symbol)
+  ":" @constant)
 
-(pair key: (hash_key_symbol) ":" @constant)
-(regex) @string.regex
+(regex) @string.regexp
+
 (escape_sequence) @string.escape
+
 (integer) @number
-(float) @float
+
+(float) @number.float
 
 [
- (true)
- (false)
- ] @boolean
+  (true)
+  (false)
+] @boolean
 
 (nil) @constant.builtin
 
@@ -182,75 +212,76 @@
 
 (module
   (comment)+ @comment.documentation
-  (body_statement (class)))
+  (body_statement
+    (class)))
 
 (class
   (comment)+ @comment.documentation
-  (body_statement (method)))
+  (body_statement
+    (method)))
 
 (body_statement
   (comment)+ @comment.documentation
   (method))
 
 ; Operators
+[
+  "!"
+  "="
+  "=="
+  "==="
+  "<=>"
+  "=>"
+  "->"
+  ">>"
+  "<<"
+  ">"
+  "<"
+  ">="
+  "<="
+  "**"
+  "*"
+  "/"
+  "%"
+  "+"
+  "-"
+  "&"
+  "|"
+  "^"
+  "&&"
+  "||"
+  "||="
+  "&&="
+  "!="
+  "%="
+  "+="
+  "-="
+  "*="
+  "/="
+  "=~"
+  "!~"
+  "?"
+  ":"
+  ".."
+  "..."
+] @operator
 
 [
- "!"
- "="
- "=="
- "==="
- "<=>"
- "=>"
- "->"
- ">>"
- "<<"
- ">"
- "<"
- ">="
- "<="
- "**"
- "*"
- "/"
- "%"
- "+"
- "-"
- "&"
- "|"
- "^"
- "&&"
- "||"
- "||="
- "&&="
- "!="
- "%="
- "+="
- "-="
- "*="
- "/="
- "=~"
- "!~"
- "?"
- ":"
- ".."
- "..."
- ] @operator
+  ","
+  ";"
+  "."
+] @punctuation.delimiter
 
 [
- ","
- ";"
- "."
- ] @punctuation.delimiter
-
-[
- "("
- ")"
- "["
- "]"
- "{"
- "}"
- "%w("
- "%i("
- ] @punctuation.bracket
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+  "%w("
+  "%i("
+] @punctuation.bracket
 
 (interpolation
   "#{" @punctuation.special

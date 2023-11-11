@@ -3,37 +3,37 @@
 ; top-to-bottom).
 ;
 ; [1]: https://github.com/tree-sitter/tree-sitter/issues/918
-
 ; Scopes {{{
 [
- (for_expression)
- (let_expression)
- (function_declaration)
-] @scope
-; }}}
+  (for_expression)
+  (let_expression)
+  (function_declaration)
+] @local.scope
 
+; }}}
 ; Definitions {{{
 (type_declaration
-  name: (identifier) @definition.type
+  name: (identifier) @local.definition.type
   (#set! "definition.var.scope" "parent"))
 
 (parameters
-  name: (identifier) @definition.parameter)
+  name: (identifier) @local.definition.parameter)
 
 (function_declaration
-  name: (identifier) @definition.function
+  name: (identifier) @local.definition.function
   (#set! "definition.var.scope" "parent"))
+
 (primitive_declaration
-  name: (identifier) @definition.function
+  name: (identifier) @local.definition.function
   (#set! "definition.var.scope" "parent"))
 
 (variable_declaration
-  name: (identifier) @definition.var
+  name: (identifier) @local.definition.var
   (#set! "definition.var.scope" "parent"))
-; }}}
 
+; }}}
 ; References {{{
-(identifier) @reference
-; }}}
+(identifier) @local.reference
 
+; }}}
 ; vim: sw=2 foldmethod=marker

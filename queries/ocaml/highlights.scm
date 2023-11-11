@@ -1,86 +1,112 @@
 ; Modules
 ;--------
-
-[(module_name) (module_type_name)] @namespace
+[
+  (module_name)
+  (module_type_name)
+] @module
 
 ; Types
 ;------
+((type_constructor) @type.builtin
+  (#any-of? @type.builtin "int" "char" "bytes" "string" "float" "bool" "unit" "exn" "array" "list" "option" "int32" "int64" "nativeint" "format6" "lazy_t"))
 
-(
-  (type_constructor) @type.builtin
-  (#any-of? @type.builtin
-    "int" "char" "bytes" "string" "float"
-    "bool" "unit" "exn" "array" "list" "option"
-    "int32" "int64" "nativeint" "format6" "lazy_t")
-)
+[
+  (class_name)
+  (class_type_name)
+  (type_constructor)
+] @type
 
-[(class_name) (class_type_name) (type_constructor)] @type
-
-[(constructor_name) (tag)] @constructor
+[
+  (constructor_name)
+  (tag)
+] @constructor
 
 ; Variables
 ;----------
+[
+  (value_name)
+  (type_variable)
+] @variable
 
-[(value_name) (type_variable)] @variable
-
-(value_pattern) @parameter
+(value_pattern) @variable.parameter
 
 ; Functions
 ;----------
-
 (let_binding
   pattern: (value_name) @function
   (parameter))
 
 (let_binding
   pattern: (value_name) @function
-  body: [(fun_expression) (function_expression)])
+  body:
+    [
+      (fun_expression)
+      (function_expression)
+    ])
 
-(value_specification (value_name) @function)
+(value_specification
+  (value_name) @function)
 
-(external (value_name) @function)
+(external
+  (value_name) @function)
 
-(method_name) @method
+(method_name) @function.method
 
 ; Application
 ;------------
-
 (infix_expression
-  left: (value_path (value_name) @function.call)
+  left:
+    (value_path
+      (value_name) @function.call)
   operator: (concat_operator) @_operator
   (#eq? @_operator "@@"))
 
 (infix_expression
   operator: (rel_operator) @_operator
-  right: (value_path (value_name) @function.call)
+  right:
+    (value_path
+      (value_name) @function.call)
   (#eq? @_operator "|>"))
 
 (application_expression
-  function: (value_path (value_name) @function.call))
+  function:
+    (value_path
+      (value_name) @function.call))
 
 ((value_name) @function.builtin
   (#any-of? @function.builtin "raise" "raise_notrace" "failwith" "invalid_arg"))
 
-; Properties
-;-----------
+; Fields
+;-------
+[
+  (field_name)
+  (instance_variable_name)
+] @variable.member
 
-[(label_name) (field_name) (instance_variable_name)] @property
+; Labels
+; ------
+(label_name) @label
 
 ; Constants
 ;----------
-
 ; Don't let normal parens take priority over this
-((unit) @constant.builtin (#set! "priority" 105))
+((unit) @constant.builtin
+  (#set! "priority" 105))
 
 (boolean) @boolean
 
-[(number) (signed_number)] @number
+[
+  (number)
+  (signed_number)
+] @number
 
 (character) @character
 
 (string) @string
 
-(quoted_string "{" @string "}" @string) @string
+(quoted_string
+  "{" @string
+  "}" @string) @string
 
 (escape_sequence) @string.escape
 
@@ -91,55 +117,162 @@
 
 ; Keywords
 ;---------
-
 [
-  "and" "as" "assert" "begin" "class"
-  "constraint" "end" "external" "in"
-  "inherit" "initializer" "let" "match"
-  "method" "module" "new" "object" "of"
-  "sig" "struct" "type" "val" "when" "with"
+  "and"
+  "as"
+  "assert"
+  "begin"
+  "class"
+  "constraint"
+  "end"
+  "external"
+  "in"
+  "inherit"
+  "initializer"
+  "let"
+  "match"
+  "method"
+  "module"
+  "new"
+  "object"
+  "of"
+  "sig"
+  "struct"
+  "type"
+  "val"
+  "when"
+  "with"
 ] @keyword
 
 [
-  "lazy" "mutable" "nonrec"
-  "rec" "private" "virtual"
+  "lazy"
+  "mutable"
+  "nonrec"
+  "rec"
+  "private"
+  "virtual"
 ] @type.qualifier
 
-["fun" "function" "functor"] @keyword.function
+[
+  "fun"
+  "function"
+  "functor"
+] @keyword.function
 
-["if" "then" "else"] @conditional
+[
+  "if"
+  "then"
+  "else"
+] @keyword.conditional
 
-["exception" "try"] @exception
+[
+  "exception"
+  "try"
+] @keyword.exception
 
-["include" "open"] @include
+[
+  "include"
+  "open"
+] @keyword.import
 
-["for" "to" "downto" "while" "do" "done"] @repeat
+[
+  "for"
+  "to"
+  "downto"
+  "while"
+  "do"
+  "done"
+] @keyword.repeat
 
 ; Punctuation
 ;------------
+(attribute
+  [
+    "[@"
+    "]"
+  ] @punctuation.special)
 
-(attribute ["[@" "]"] @punctuation.special)
-(item_attribute ["[@@" "]"] @punctuation.special)
-(floating_attribute ["[@@@" "]"] @punctuation.special)
-(extension ["[%" "]"] @punctuation.special)
-(item_extension ["[%%" "]"] @punctuation.special)
-(quoted_extension ["{%" "}"] @punctuation.special)
-(quoted_item_extension ["{%%" "}"] @punctuation.special)
+(item_attribute
+  [
+    "[@@"
+    "]"
+  ] @punctuation.special)
+
+(floating_attribute
+  [
+    "[@@@"
+    "]"
+  ] @punctuation.special)
+
+(extension
+  [
+    "[%"
+    "]"
+  ] @punctuation.special)
+
+(item_extension
+  [
+    "[%%"
+    "]"
+  ] @punctuation.special)
+
+(quoted_extension
+  [
+    "{%"
+    "}"
+  ] @punctuation.special)
+
+(quoted_item_extension
+  [
+    "{%%"
+    "}"
+  ] @punctuation.special)
 
 "%" @punctuation.special
 
-["(" ")" "[" "]" "{" "}" "[|" "|]" "[<" "[>"] @punctuation.bracket
+[
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+  "[|"
+  "|]"
+  "[<"
+  "[>"
+] @punctuation.bracket
 
-(object_type ["<" ">"] @punctuation.bracket)
+(object_type
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
 
 [
-  "," "." ";" ":" "=" "|" "~" "?" "+" "-" "!" ">" "&"
-  "->" ";;" ":>" "+=" ":=" ".."
+  ","
+  "."
+  ";"
+  ":"
+  "="
+  "|"
+  "~"
+  "?"
+  "+"
+  "-"
+  "!"
+  ">"
+  "&"
+  "->"
+  ";;"
+  ":>"
+  "+="
+  ":="
+  ".."
 ] @punctuation.delimiter
 
 ; Operators
 ;----------
-
 [
   (prefix_operator)
   (sign_operator)
@@ -158,18 +291,32 @@
   (match_operator)
 ] @operator
 
-(match_expression (match_operator) @keyword)
+(match_expression
+  (match_operator) @keyword)
 
-(value_definition [(let_operator) (let_and_operator)] @keyword)
+(value_definition
+  [
+    (let_operator)
+    (let_and_operator)
+  ] @keyword)
 
-["*" "#" "::" "<-"] @operator
+[
+  "*"
+  "#"
+  "::"
+  "<-"
+] @operator
 
 ; Attributes
 ;-----------
-
-(attribute_id) @property
+(attribute_id) @attribute
 
 ; Comments
 ;---------
+[
+  (comment)
+  (line_number_directive)
+  (directive)
+] @comment @spell
 
-[(comment) (line_number_directive) (directive) (shebang)] @comment @spell
+(shebang) @keyword.directive

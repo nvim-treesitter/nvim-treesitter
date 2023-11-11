@@ -1,14 +1,27 @@
-["Show" "Hide" "Minimal"] @namespace
+[
+  "Show"
+  "Hide"
+  "Minimal"
+] @module
 
-(condition (name) @conditional)
-(action (name) @keyword)
+[
+  "Import"
+  "Optional"
+] @keyword.import
+
+(condition
+  (name) @keyword.conditional)
+
+(action
+  (name) @keyword)
+
 (continue) @label
 
 (operator) @operator
 
 (string) @string
 
-(file) @string
+(file) @string.special.path
 
 [
   (quality)
@@ -33,6 +46,7 @@
 
 "\"" @punctuation.delimiter
 
+; conceal unnecessary quotes
 ("\"" @conceal
   (#not-has-parent? @conceal string file)
   (#set! conceal ""))

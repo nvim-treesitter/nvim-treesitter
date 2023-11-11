@@ -1,56 +1,62 @@
 ; Preproc
-
 [
   "%builtins"
   "%lang"
-] @preproc
+] @keyword.directive
 
 ; Includes
-
-(import_statement [ "from" "import" ] @include module_name: (dotted_name (identifier) @namespace . ))
+(import_statement
+  [
+    "from"
+    "import"
+  ] @keyword.import
+  module_name:
+    (dotted_name
+      (identifier) @module .))
 
 [
   "as"
   "use"
   "mod"
-] @include
+] @keyword.import
 
 ; Variables
-
 (identifier) @variable
 
 ; Namespaces
-
-(namespace_definition (identifier) @namespace)
+(namespace_definition
+  (identifier) @module)
 
 (mod_item
-  name: (identifier) @namespace)
+  name: (identifier) @module)
 
-(use_list (self) @namespace)
+(use_list
+  (self) @module)
 
-(scoped_use_list (self) @namespace)
+(scoped_use_list
+  (self) @module)
 
 (scoped_identifier
-  path: (identifier) @namespace)
+  path: (identifier) @module)
 
 (scoped_identifier
- (scoped_identifier
-  name: (identifier) @namespace))
+  (scoped_identifier
+    name: (identifier) @module))
 
 (scoped_type_identifier
-  path: (identifier) @namespace)
+  path: (identifier) @module)
 
 ((scoped_identifier
   path: (identifier) @type)
- (#lua-match? @type "^[A-Z]"))
+  (#lua-match? @type "^[A-Z]"))
 
 ((scoped_identifier
-    name: (identifier) @type)
- (#lua-match? @type "^[A-Z]"))
+  name: (identifier) @type)
+  (#lua-match? @type "^[A-Z]"))
 
 ((scoped_identifier
-    name: (identifier) @constant)
- (#lua-match? @constant "^[A-Z][A-Z%d_]*$"))
+  name: (identifier) @constant)
+  (#lua-match? @constant "^[A-Z][A-Z%d_]*$"))
 
 ((scoped_identifier
   path: (identifier) @type
@@ -65,20 +71,28 @@
   (#lua-match? @constant "^[A-Z]"))
 
 (scoped_use_list
-  path: (identifier) @namespace)
+  path: (identifier) @module)
 
 (scoped_use_list
-  path: (scoped_identifier
-          (identifier) @namespace))
+  path:
+    (scoped_identifier
+      (identifier) @module))
 
-(use_list (scoped_identifier (identifier) @namespace . (_)))
+(use_list
+  (scoped_identifier
+    (identifier) @module
+    .
+    (_)))
 
-(use_list (identifier) @type (#lua-match? @type "^[A-Z]"))
+(use_list
+  (identifier) @type
+  (#lua-match? @type "^[A-Z]"))
 
-(use_as_clause alias: (identifier) @type (#lua-match? @type "^[A-Z]"))
+(use_as_clause
+  alias: (identifier) @type
+  (#lua-match? @type "^[A-Z]"))
 
 ; Keywords
-
 [
   ; 0.x
   "using"
@@ -96,7 +110,6 @@
   "with"
   "call"
   "nondet"
-
   ; 1.0
   "type"
   "impl"
@@ -125,52 +138,69 @@
 [
   "tempvar"
   "extern"
-] @storageclass
+] @keyword.storage
 
 [
   "if"
   "else"
   "match"
-] @conditional
+] @keyword.conditional
 
-[
-  "loop"
-] @repeat
+"loop" @keyword.repeat
 
 [
   "assert"
   "static_assert"
   "nopanic"
-] @exception
+] @keyword.exception
 
 ; Fields
+(implicit_arguments
+  (typed_identifier
+    (identifier) @variable.member))
 
-(implicit_arguments (typed_identifier (identifier) @field))
+(member_expression
+  "."
+  (identifier) @variable.member)
 
-(member_expression "." (identifier) @field)
+(call_expression
+  (assignment_expression
+    left: (identifier) @variable.member))
 
-(call_expression (assignment_expression left: (identifier) @field))
+(tuple_expression
+  (assignment_expression
+    left: (identifier) @variable.member))
 
-(tuple_expression (assignment_expression left: (identifier) @field))
+(field_identifier) @variable.member
 
-(field_identifier) @field
-
-(shorthand_field_initializer (identifier) @field)
+(shorthand_field_initializer
+  (identifier) @variable.member)
 
 ; Parameters
+(arguments
+  (typed_identifier
+    (identifier) @variable.parameter))
 
-(arguments (typed_identifier (identifier) @parameter))
+(call_expression
+  (tuple_expression
+    (assignment_expression
+      left: (identifier) @variable.parameter)))
 
-(call_expression (tuple_expression (assignment_expression left: (identifier) @parameter)))
+(return_type
+  (tuple_type
+    (named_type
+      .
+      (identifier) @variable.parameter)))
 
-(return_type (tuple_type (named_type . (identifier) @parameter)))
-
-(parameter (identifier) @parameter)
+(parameter
+  (identifier) @variable.parameter)
 
 ; Builtins
+(builtin_directive
+  (identifier) @variable.builtin)
 
-(builtin_directive (identifier) @variable.builtin)
-(lang_directive (identifier) @variable.builtin)
+(lang_directive
+  (identifier) @variable.builtin)
 
 [
   "ap"
@@ -179,32 +209,45 @@
 ] @variable.builtin
 
 ; Functions
+(function_definition
+  "func"
+  (identifier) @function)
 
-(function_definition "func" (identifier) @function)
-(function_definition "fn" (identifier) @function)
-(function_signature "fn" (identifier) @function)
-(extern_function_statement (identifier) @function)
+(function_definition
+  "fn"
+  (identifier) @function)
+
+(function_signature
+  "fn"
+  (identifier) @function)
+
+(extern_function_statement
+  (identifier) @function)
 
 (call_expression
   function: (identifier) @function.call)
 
 (call_expression
-  function: (scoped_identifier
-              (identifier) @function.call .))
+  function:
+    (scoped_identifier
+      (identifier) @function.call .))
 
 (call_expression
-  function: (field_expression
-    field: (field_identifier) @function.call))
+  function:
+    (field_expression
+      field: (field_identifier) @function.call))
 
-[
-  "jmp"
-] @function.builtin
+"jmp" @function.builtin
 
 ; Types
+(struct_definition
+  .
+  (identifier) @type
+  (typed_identifier
+    (identifier) @variable.member)?)
 
-(struct_definition . (identifier) @type (typed_identifier (identifier) @field)?)
-
-(named_type (identifier) @type .)
+(named_type
+  (identifier) @type .)
 
 [
   (builtin_type)
@@ -217,7 +260,6 @@
 (type_identifier) @type
 
 ; Constants
-
 ((identifier) @constant
   (#lua-match? @constant "^[A-Z_][A-Z0-9_]*$"))
 
@@ -225,49 +267,68 @@
   name: (identifier) @constant)
 
 (call_expression
-  function: (scoped_identifier
-    "::"
-    name: (identifier) @constant)
+  function:
+    (scoped_identifier
+      "::"
+      name: (identifier) @constant)
   (#lua-match? @constant "^[A-Z]"))
 
 ((match_arm
-   pattern: (match_pattern (identifier) @constant))
- (#lua-match? @constant "^[A-Z]"))
+  pattern:
+    (match_pattern
+      (identifier) @constant))
+  (#lua-match? @constant "^[A-Z]"))
 
 ((match_arm
-   pattern: (match_pattern
-     (scoped_identifier
-       name: (identifier) @constant)))
- (#lua-match? @constant "^[A-Z]"))
+  pattern:
+    (match_pattern
+      (scoped_identifier
+        name: (identifier) @constant)))
+  (#lua-match? @constant "^[A-Z]"))
 
 ((identifier) @constant.builtin
- (#any-of? @constant.builtin "Some" "None" "Ok" "Err"))
+  (#any-of? @constant.builtin "Some" "None" "Ok" "Err"))
 
 ; Constructors
+(unary_expression
+  "new"
+  (call_expression
+    .
+    (identifier) @constructor))
 
-(unary_expression "new" (call_expression . (identifier) @constructor))
-
-((call_expression . (identifier) @constructor)
+((call_expression
+  .
+  (identifier) @constructor)
   (#lua-match? @constructor "^%u"))
 
 ; Attributes
+(decorator
+  "@" @attribute
+  (identifier) @attribute)
 
-(decorator "@" @attribute (identifier) @attribute)
+(attribute_item
+  (identifier) @function.macro)
 
-(attribute_item (identifier) @function.macro)
-
-(attribute_item (scoped_identifier (identifier) @function.macro .))
+(attribute_item
+  (scoped_identifier
+    (identifier) @function.macro .))
 
 ; Labels
+(label
+  .
+  (identifier) @label)
 
-(label . (identifier) @label)
+(inst_jmp_to_label
+  "jmp"
+  .
+  (identifier) @label)
 
-(inst_jmp_to_label "jmp" . (identifier) @label)
-
-(inst_jnz_to_label "jmp" . (identifier) @label)
+(inst_jnz_to_label
+  "jmp"
+  .
+  (identifier) @label)
 
 ; Operators
-
 [
   "+"
   "-"
@@ -307,7 +368,6 @@
 ] @operator
 
 ; Literals
-
 (number) @number
 
 (boolean) @boolean
@@ -318,17 +378,41 @@
 ] @string
 
 ; Punctuation
+(attribute_item
+  "#" @punctuation.special)
 
-(attribute_item "#" @punctuation.special)
+[
+  "."
+  ","
+  ":"
+  ";"
+  "->"
+  "=>"
+  "::"
+] @punctuation.delimiter
 
-[ "." "," ":" ";" "->" "=>" "::" ] @punctuation.delimiter
+[
+  "{"
+  "}"
+  "("
+  ")"
+  "["
+  "]"
+  "%{"
+  "%}"
+] @punctuation.bracket
 
-[ "{" "}" "(" ")" "[" "]" "%{" "%}" ] @punctuation.bracket
+(type_parameters
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
 
-(type_parameters [ "<" ">" ] @punctuation.bracket)
-
-(type_arguments [ "<" ">" ] @punctuation.bracket)
+(type_arguments
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
 
 ; Comment
-
 (comment) @comment @spell

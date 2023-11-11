@@ -10,6 +10,7 @@
 ] @keyword
 
 (string_literal) @string
+
 (number_literal) @number
 
 [
@@ -32,22 +33,20 @@
 ] @punctuation.bracket
 
 (subgraph
-  id: (id
-    (identifier) @namespace)
-)
+  id:
+    (id
+      (identifier) @module))
 
 (attribute
-  name: (id
-    (identifier) @field)
-)
+  name:
+    (id
+      (identifier) @variable.member))
 
 (attribute
-  value: (id
-    (identifier) @constant)
-)
+  value:
+    (id
+      (identifier) @constant))
 
-(comment) @comment
+(comment) @comment @spell
 
-(preproc) @preproc
-
-(comment) @spell
+(preproc) @keyword.directive

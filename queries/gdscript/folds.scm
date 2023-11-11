@@ -2,7 +2,6 @@
   ; Body fold will "join" the next adjacent fold into a SUPER fold.
   ; This is an issue with the grammar.
   ; (body)
-
   (if_statement)
   (elif_clause)
   (else_clause)
@@ -19,7 +18,9 @@
 
 ; It's nice to be able to fold the if/elif/else clauses and the entire
 ; if_statement.
-(if_statement (body) @fold)
+(if_statement
+  (body) @fold)
 
 ; Fold strings that are probably doc strings.
-(expression_statement (string) @fold)
+(expression_statement
+  (string) @fold)

@@ -1,38 +1,45 @@
 ; Scopes
-
 [
   (source_file)
   (circuit)
   (module)
-
   (else)
   (when)
-] @scope
+] @local.scope
 
 ; References
-
-(identifier) @reference
+(identifier) @local.reference
 
 ; Definitions
+(port
+  (identifier) @local.definition.field)
 
-(port (identifier) @definition.field)
+(wire
+  (identifier) @local.definition.field)
 
-(wire (identifier) @definition.field)
+(cmem
+  (identifier) @local.definition.field)
 
-(cmem (identifier) @definition.field)
+(smem
+  (identifier) @local.definition.field)
 
-(smem (identifier) @definition.field)
+(memory
+  (identifier) @local.definition.field)
 
-(memory (identifier) @definition.field)
+(register
+  (identifier) @local.definition.field)
 
-(register (identifier) @definition.field)
+(circuit
+  (identifier) @local.definition.namespace)
 
-(circuit (identifier) @definition.namespace)
+(module
+  (identifier) @local.definition.namespace)
 
-(module (identifier) @definition.namespace)
+(parameter
+  (identifier) @local.definition.parameter)
 
-(parameter (identifier) @definition.parameter)
+(rdwr
+  (identifier) @local.definition.var)
 
-(rdwr (identifier) @definition.var)
-
-(node (identifier) @definition.var)
+(node
+  (identifier) @local.definition.var)

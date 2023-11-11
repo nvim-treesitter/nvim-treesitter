@@ -1,5 +1,4 @@
 ; Keywords
-
 [
   "msgctxt"
   "msgid"
@@ -9,11 +8,12 @@
 ] @keyword
 
 ; Punctuation
-
-[ "[" "]" ] @punctuation.bracket
+[
+  "["
+  "]"
+] @punctuation.bracket
 
 ; Literals
-
 (string) @string
 
 (escape_sequence) @string.escape
@@ -21,9 +21,12 @@
 (number) @number
 
 ; Comments
-
 (comment) @comment @spell
 
-(comment (reference (text) @string.special.path))
+(comment
+  (reference
+    (text) @string.special.path))
 
-(comment (flag (text) @preproc))
+(comment
+  (flag
+    (text) @keyword.directive))

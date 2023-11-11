@@ -4,4 +4,9 @@
 ] @indent.begin
 
 ; incomplete declarations
-(ERROR . [ "Host" "Match" ]) @indent.begin
+(ERROR
+  .
+  [
+    "Host"
+    "Match"
+  ]) @indent.begin

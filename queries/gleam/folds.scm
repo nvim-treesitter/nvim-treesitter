@@ -1,7 +1,7 @@
 ; Folds
 [
   (case)
-  (function) 
+  (function)
   (anonymous_function)
   (type_definition)
 ] @fold

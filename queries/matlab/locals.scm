@@ -1,20 +1,33 @@
 ; References
-
-(identifier) @reference
+(identifier) @local.reference
 
 ; Definitions
-
 (function_definition
-  name: (identifier) @definition.function
+  name: (identifier) @local.definition.function
   (function_arguments
-    (identifier)* @definition.parameter
-    ("," (identifier) @definition.parameter)*)?) @scope
+    (identifier)* @local.definition.parameter
+    (","
+      (identifier) @local.definition.parameter)*)?) @local.scope
 
-(assignment left: (identifier) @definition.var)
-(multioutput_variable (identifier) @definition.var)
+(assignment
+  left: (identifier) @local.definition.var)
 
-(iterator . (identifier) @definition.var)
-(lambda (arguments (identifier) @definition.parameter))
-(global_operator (identifier) @definition.var)
-(persistent_operator (identifier) @definition.var)
-(catch_clause (identifier) @definition)
+(multioutput_variable
+  (identifier) @local.definition.var)
+
+(iterator
+  .
+  (identifier) @local.definition.var)
+
+(lambda
+  (arguments
+    (identifier) @local.definition.parameter))
+
+(global_operator
+  (identifier) @local.definition.var)
+
+(persistent_operator
+  (identifier) @local.definition.var)
+
+(catch_clause
+  (identifier) @local.definition)

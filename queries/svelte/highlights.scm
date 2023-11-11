@@ -1,5 +1,4 @@
 ; inherits: html_tags
-
 (raw_text_expr) @none
 
 [
@@ -11,11 +10,11 @@
 ((special_block_keyword) @keyword.coroutine
   (#eq? @keyword.coroutine "await"))
 
-((special_block_keyword) @exception
-  (#eq? @exception "catch"))
+((special_block_keyword) @keyword.exception
+  (#eq? @keyword.exception "catch"))
 
-((special_block_keyword) @conditional
-  (#any-of? @conditional "if" "else"))
+((special_block_keyword) @keyword.conditional
+  (#any-of? @keyword.conditional "if" "else"))
 
 [
   "{"

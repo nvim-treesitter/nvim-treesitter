@@ -1,5 +1,4 @@
 ; Scopes
-
 [
   (block)
   (defined_resource_type)
@@ -13,34 +12,53 @@
   (case_statement)
   (hash)
   (array)
-] @scope
+] @local.scope
 
 ; References
-
 [
   (identifier)
   (class_identifier)
-  (variable) 
-] @reference
+  (variable)
+] @local.reference
 
 ; Definitions
-
-(attribute [(identifier) (variable)] @definition.field)
+(attribute
+  [
+    (identifier)
+    (variable)
+  ] @local.definition.field)
 
 (function_declaration
-  [(identifier) (class_identifier)] @definition.function)
+  [
+    (identifier)
+    (class_identifier)
+  ] @local.definition.function)
 
-(include_statement [(identifier) (class_identifier)] @definition.import)
+(include_statement
+  [
+    (identifier)
+    (class_identifier)
+  ] @local.definition.import)
 
-(parameter (variable) @definition.parameter)
+(parameter
+  (variable) @local.definition.parameter)
 
 (class_definition
-  [(identifier) (class_identifier)] @definition.type)
+  [
+    (identifier)
+    (class_identifier)
+  ] @local.definition.type)
 
 (node_definition
-  (node_name (identifier) @definition.type))
+  (node_name
+    (identifier) @local.definition.type))
 
 (resource_declaration
-  [(identifier) (class_identifier)] @definition.type)
+  [
+    (identifier)
+    (class_identifier)
+  ] @local.definition.type)
 
-(assignment . (variable) @definition.var)
+(assignment
+  .
+  (variable) @local.definition.var)

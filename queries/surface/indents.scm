@@ -1,4 +1,4 @@
-; Surface indents like HTML, with the addition of blocks 
+; Surface indents like HTML, with the addition of blocks
 [
   (component)
   (tag)

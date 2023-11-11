@@ -1,51 +1,54 @@
 ; Variables
-
 ((identifier) @variable
   (#set! "priority" 95))
 
 ; Includes
-
 [
   "include"
   "cpp_include"
-] @include
+] @keyword.import
 
 ; Function
-
 (function_definition
   (identifier) @function)
 
 ; Fields
-
-(field (identifier) @field)
+(field
+  (identifier) @variable.member)
 
 ; Parameters
-
 (function_definition
   (parameters
-    (parameter (identifier) @parameter)))
+    (parameter
+      (identifier) @variable.parameter)))
 
 (throws
   (parameters
-    (parameter (identifier) @parameter)))
+    (parameter
+      (identifier) @variable.parameter)))
 
 ; Types
-
 (typedef_identifier) @type
+
 (struct_definition
-  "struct" (identifier) @type)
+  "struct"
+  (identifier) @type)
 
 (union_definition
-  "union" (identifier) @type)
+  "union"
+  (identifier) @type)
 
 (exception_definition
-  "exception" (identifier) @type)
+  "exception"
+  (identifier) @type)
 
 (service_definition
-  "service" (identifier) @type)
+  "service"
+  (identifier) @type)
 
 (interaction_definition
-  "interaction" (identifier) @type)
+  "interaction"
+  (identifier) @type)
 
 (type
   type: (identifier) @type)
@@ -57,16 +60,21 @@
   (#lua-match? @type "^[_]*[A-Z]"))
 
 ; Constants
+(const_definition
+  (identifier) @constant)
 
-(const_definition (identifier) @constant)
 ((identifier) @constant
   (#lua-match? @constant "^[_A-Z][A-Z0-9_]*$"))
-(enum_definition "enum"
-  . (identifier) @type
-  "{" (identifier) @constant "}")
+
+(enum_definition
+  "enum"
+  .
+  (identifier) @type
+  "{"
+  (identifier) @constant
+  "}")
 
 ; Builtin Types
-
 (primitive) @type.builtin
 
 [
@@ -79,35 +87,38 @@
 ] @type.builtin
 
 ; Namespace
-
 (namespace_declaration
-  (namespace_scope) @tag
-  [(namespace) @namespace (_ (identifier) @namespace)])
+  (namespace_scope) @string.special
+  [
+    (namespace) @module
+    (_
+      (identifier) @module)
+  ])
 
 ; Attributes
-
 (annotation_definition
-  (annotation_identifier (identifier) @attribute))
+  (annotation_identifier
+    (identifier) @attribute))
+
 (fb_annotation_definition
-  "@" @attribute (annotation_identifier (identifier) @attribute)
+  "@" @attribute
+  (annotation_identifier
+    (identifier) @attribute)
   (identifier)? @attribute)
-(namespace_uri (string) @attribute)
+
+(namespace_uri
+  (string) @attribute)
 
 ; Operators
-
 [
   "="
   "&"
 ] @operator
 
 ; Exceptions
-
-[
-  "throws"
-] @exception
+"throws" @keyword.exception
 
 ; Keywords
-
 [
   "enum"
   "exception"
@@ -123,7 +134,6 @@
 ] @keyword
 
 ; Deprecated Keywords
-
 [
   "cocoa_prefix"
   "cpp_namespace"
@@ -155,7 +165,6 @@
 ] @keyword.coroutine
 
 ; Qualifiers
-
 [
   "client"
   "const"
@@ -171,37 +180,44 @@
 ] @type.qualifier
 
 ; Literals
-
 (string) @string
 
 (escape_sequence) @string.escape
 
 (namespace_uri
-  (string) @text.uri @string.special)
+  (string) @string.special.url)
 
 (number) @number
 
-(double) @float
+(double) @number.float
 
 (boolean) @boolean
 
 ; Typedefs
-
 (typedef_identifier) @type.definition
 
 ; Punctuation
+"*" @punctuation.special
 
 [
-  "*"
-] @punctuation.special
+  "{"
+  "}"
+] @punctuation.bracket
 
-["{" "}"] @punctuation.bracket
+[
+  "("
+  ")"
+] @punctuation.bracket
 
-["(" ")"] @punctuation.bracket
+[
+  "["
+  "]"
+] @punctuation.bracket
 
-["[" "]"] @punctuation.bracket
-
-["<" ">"] @punctuation.bracket
+[
+  "<"
+  ">"
+] @punctuation.bracket
 
 [
   "."
@@ -211,7 +227,6 @@
 ] @punctuation.delimiter
 
 ; Comments
-
 (comment) @comment @spell
 
 ((comment) @comment.documentation
@@ -219,8 +234,9 @@
 
 ((comment) @comment.documentation
   (#lua-match? @comment.documentation "^///[^/]"))
+
 ((comment) @comment.documentation
   (#lua-match? @comment.documentation "^///$"))
 
-((comment) @preproc
-  (#lua-match? @preproc "#!.*"))
+((comment) @keyword.directive
+  (#lua-match? @keyword.directive "#!.*"))

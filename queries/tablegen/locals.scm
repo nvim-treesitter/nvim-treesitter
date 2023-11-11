@@ -1,5 +1,4 @@
 ; Scopes
-
 [
   (class)
   (multiclass)
@@ -10,42 +9,45 @@
   (foreach)
   (if)
   (let)
-] @scope
+] @local.scope
 
 ; References
-
 [
   (var)
   (identifier)
-] @reference
+] @local.reference
 
 ; Definitions
-
 (instruction
-  (identifier) @definition.field)
+  (identifier) @local.definition.field)
 
 (let_instruction
-  (identifier) @definition.field)
+  (identifier) @local.definition.field)
 
 (include_directive
-  (string) @definition.import)
+  (string) @local.definition.import)
 
-(template_arg (identifier) @definition.parameter)
+(template_arg
+  (identifier) @local.definition.parameter)
 
 (class
-  name: (identifier) @definition.type)
+  name: (identifier) @local.definition.type)
 
 (multiclass
-  name: (identifier) @definition.type)
+  name: (identifier) @local.definition.type)
 
 (def
-  name: (value (_) @definition.type))
+  name:
+    (value
+      (_) @local.definition.type))
 
 (defm
-  name: (value (_) @definition.type))
+  name:
+    (value
+      (_) @local.definition.type))
 
 (defset
-  name: (identifier) @definition.type)
+  name: (identifier) @local.definition.type)
 
 (def_var
-  name: (identifier) @definition.var)
+  name: (identifier) @local.definition.var)

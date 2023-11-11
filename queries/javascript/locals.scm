@@ -1,51 +1,55 @@
 ; inherits: ecma,jsx
-
 ; Both properties are matched here.
 ;
 ;   class Foo {
 ;     this.#bar = "baz";
 ;     this.quuz = "qux";
 ;   }
-(field_definition 
-  property: [(property_identifier) (private_property_identifier)] @definition.var)
+(field_definition
+  property:
+    [
+      (property_identifier)
+      (private_property_identifier)
+    ] @local.definition.var)
 
 ; this.foo = "bar"
 (assignment_expression
-  left: (member_expression
-    object: (this)
-    property: (property_identifier) @definition.var))
+  left:
+    (member_expression
+      object: (this)
+      property: (property_identifier) @local.definition.var))
 
 (formal_parameters
-  (identifier) @definition.parameter)
+  (identifier) @local.definition.parameter)
 
 ; function(arg = []) {
 (formal_parameters
   (assignment_pattern
-    left: (identifier) @definition.parameter))
+    left: (identifier) @local.definition.parameter))
 
 ; x => x
 (arrow_function
-  parameter: (identifier) @definition.parameter)
+  parameter: (identifier) @local.definition.parameter)
 
-;; ({ a }) => null
+; ({ a }) => null
 (formal_parameters
   (object_pattern
-    (shorthand_property_identifier_pattern) @definition.parameter))
+    (shorthand_property_identifier_pattern) @local.definition.parameter))
 
-;; ({ a: b }) => null
+; ({ a: b }) => null
 (formal_parameters
   (object_pattern
     (pair_pattern
-      value: (identifier) @definition.parameter)))
+      value: (identifier) @local.definition.parameter)))
 
-;; ([ a ]) => null
+; ([ a ]) => null
 (formal_parameters
   (array_pattern
-    (identifier) @definition.parameter))
+    (identifier) @local.definition.parameter))
 
 (formal_parameters
   (rest_pattern
-    (identifier) @definition.parameter))
+    (identifier) @local.definition.parameter))
 
 ; Both methods are matched here.
 ;
@@ -54,10 +58,13 @@
 ;     baz(y) { y }
 ;   }
 (method_definition
-  ([(property_identifier) (private_property_identifier)] @definition.function)
-   (#set! definition.var.scope parent))
+  [
+    (property_identifier)
+    (private_property_identifier)
+  ] @local.definition.function
+  (#set! definition.var.scope parent))
 
 ; this.foo()
 (member_expression
   object: (this)
-  property: (property_identifier) @reference)
+  property: (property_identifier) @local.reference)

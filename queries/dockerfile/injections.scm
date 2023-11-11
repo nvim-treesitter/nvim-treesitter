@@ -1,6 +1,6 @@
-((comment) @injection.content 
- (#set! injection.language "comment"))
+((comment) @injection.content
+  (#set! injection.language "comment"))
 
-((shell_command) @injection.content 
- (#set! injection.language "bash")
- (#set! injection.include-children))
+((shell_command) @injection.content
+  (#set! injection.language "bash")
+  (#set! injection.include-children))

@@ -1,20 +1,15 @@
 ; Preproc
-
-(control_key) @preproc
+(control_key) @keyword.directive
 
 ; Namespace
-
-(namespace) @namespace
+(namespace) @module
 
 ; Includes
-
-[
-  "use"
-] @include
+"use" @keyword.import
 
 ; Builtins
-
 (primitive) @type.builtin
+
 [
   "enum"
   "intEnum"
@@ -24,35 +19,35 @@
 ] @type.builtin
 
 ; Fields (Members)
+; (field) @variable.member
+(key_identifier) @variable.member
 
-; (field) @field
-
-(key_identifier) @field
 (shape_member
-  (field) @field)
-(operation_field) @field
-(operation_error_field) @field
+  (field) @variable.member)
+
+(operation_field) @variable.member
+
+(operation_error_field) @variable.member
 
 ; Constants
-
 (enum_member
   (enum_field) @constant)
 
 ; Types
-
 (identifier) @type
+
 (structure_resource
   (shape_id) @type)
 
 ; Attributes
-
 (mixins
   (shape_id) @attribute)
+
 (trait_statement
-  (shape_id (#set! "priority" 105)) @attribute)
+  (shape_id
+    (#set! "priority" 105)) @attribute)
 
 ; Operators
-
 [
   "@"
   "-"
@@ -61,7 +56,6 @@
 ] @operator
 
 ; Keywords
-
 [
   "namespace"
   "service"
@@ -76,30 +70,38 @@
 ] @keyword
 
 ; Literals
-
 (string) @string
+
 (escape_sequence) @string.escape
 
 (number) @number
 
-(float) @float
+(float) @number.float
 
 (boolean) @boolean
 
 (null) @constant.builtin
 
 ; Misc
-
 [
   "$"
   "#"
 ] @punctuation.special
 
-["{" "}"] @punctuation.bracket
+[
+  "{"
+  "}"
+] @punctuation.bracket
 
-["(" ")"] @punctuation.bracket
+[
+  "("
+  ")"
+] @punctuation.bracket
 
-["[" "]"] @punctuation.bracket
+[
+  "["
+  "]"
+] @punctuation.bracket
 
 [
   ":"
@@ -107,7 +109,6 @@
 ] @punctuation.delimiter
 
 ; Comments
-
 (comment) @comment @spell
 
 (documentation_comment) @comment.documentation @spell

@@ -1,11 +1,11 @@
 def Xform "cube" (
     assetInfo = {
-    # <- keyword
+    # <- @keyword
         asset[] payloadAssetDependencies = [@fizz.usd@, @buzz.usd@]
-        # <- type
-        #       ^ keyword
-        #                                   ^ text.uri
-        #                                               ^ text.uri
+        # <- @type
+        #       ^ @keyword
+        #                                   ^ @string.special.url
+        #                                               ^ @string.special.url
     }
 )
 {
@@ -13,13 +13,13 @@ def Xform "cube" (
 
 def "root" (
     add references = @foo.usda@</Model> (offset = 1; scale = 2.0)
-                      # <- text.uri
-                      #        ^ string.special
-                      #                  ^ keyword
-                      #                           ^ number
-                      #                            ^ punctuation.delimiter
-                      #                              ^ keyword
-                      #                                      ^ float
+                      # <- @string.special.url
+                      #        ^ @string.special
+                      #                  ^ @keyword
+                      #                           ^ @number
+                      #                            ^ @punctuation.delimiter
+                      #                              ^ @keyword
+                      #                                      ^ @number.float
 )
 {
 }
@@ -28,14 +28,14 @@ def "World"
 {
     over "points" (
         clips = {
-        # <- keyword
+        # <- @keyword
             dictionary default = {
-            # <- type
-            #          ^ variable
+            # <- @type
+            #          ^ @variable
                 double2[] times = [(101, 101), (102, 102)]
-                # <- type
-                #         ^ keyword
-                #                   ^ number
+                # <- @type
+                #         ^ @keyword
+                #                   ^ @number
             }
         }
     )
@@ -49,9 +49,9 @@ def Xform "torch_2" (
 )
 {
     // Pre-published light list
-    # <- comment
+    # <- @comment
     rel lightList = [ <light> ]  # inline comment
-    #                            ^ comment
+    #                            ^ @comment
     token lightList:cacheBehavior = "consumeAndContinue"
 
     double3 xformOp:translate = (1, 0, 0.5)
@@ -60,7 +60,7 @@ def Xform "torch_2" (
 
 def "foo" (
   "some comment"
-  # <- comment.documentation
+  # <- @comment.documentation
 )
 {
 }
@@ -68,20 +68,20 @@ def "foo" (
 def "foo" (
   # inline comment
   "actual in-description comment"
-  # <- comment.documentation
+  # <- @comment.documentation
 )
 {
 }
 
 def "foo" (
     add references = @foo.usda@
-    # <- function.call
+    # <- @function.call
     append references = @foo.usda@
-    # <- function.call
+    # <- @function.call
     delete references = @foo.usda@
-    # <- function.call
+    # <- @function.call
     reorder references = [@foo.usda@]
-    # <- function.call
+    # <- @function.call
 
     references = [@foo.usda@]  # explicit
 )
@@ -90,11 +90,11 @@ def "foo" (
 
 over "Parent" (
     prepend references = [</InternalRef>, @./ref.usda@</RefParent>]
-    # <- function.call
-    #       ^ keyword
-    #                     ^ string.special
-    #                                     ^ text.uri
-    #                                                 ^ string.special
+    # <- @function.call
+    #       ^ @keyword
+    #                     ^ @string.special
+    #                                     ^ @string.special.url
+    #                                                 ^ @string.special
 )
 {
 }
@@ -102,17 +102,17 @@ over "Parent" (
 def "foo"
 {
     float value.timeSamples = {
-    # <- type
-    #     ^ variable
-    #           ^ property
+    # <- @type
+    #     ^ @variable
+    #           ^ @property
       -414: 14.4
-      # <- number
-      #     ^ float
+      # <- @number
+      #     ^ @number.float
       10: 201.0,
-      # <- number
-      #   ^ float
+      # <- @number
+      #   ^ @number.float
       10.123: 201.0123,
-      # <- float
-      #       ^ float
+      # <- @number.float
+      #       ^ @number.float
     }
 }

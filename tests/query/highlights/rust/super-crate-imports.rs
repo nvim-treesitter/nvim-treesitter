@@ -1,12 +1,12 @@
 use crate::a;
-//  ^ namespace
+//  ^ @module
 //  ^ !keyword
 use crate::{b, c};
-//  ^ namespace
+//  ^ @module
 //  ^ !keyword
 use super::a;
-//  ^ namespace
+//  ^ @module
 //  ^ !keyword
 use super::{b, c};
-//  ^ namespace
+//  ^ @module
 //  ^ !keyword

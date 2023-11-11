@@ -6,50 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/style.css" rel="stylesheet">
     <style> footer{ } </style>
-    <!--      ^ css  -->
+    <!--       ^ @css  -->
     <style title="Test Style without type attribute"> footer{ } </style>
-    <!--                                                ^ css  -->
+    <!--                                                 ^ @css  -->
     <style type="text/css" title="test style with defined type attribute"> footer{ } </style>
-    <!--                                                                    ^ css  -->
+    <!--                                                                     ^ @css  -->
   </head>
   <body>
     <script> const x = 1 </script>
-           <!-- ^ javascript -->
+           <!--  ^ @javascript -->
     <script defer> const x = 1 </script>
-                  <!-- ^ javascript -->
+                  <!--  ^ @javascript -->
     <script async defer> const x = 1 </script>
-                     <!-- ^ javascript -->
+                     <!--  ^ @javascript -->
     <script type="text/javascript"> const x = 1 </script>
-                                  <!-- ^ javascript -->
+                                  <!--  ^ @javascript -->
     <script type="text/ecmascript"> const x = 1 </script>
-                                  <!-- ^ javascript -->
+                                  <!--  ^ @javascript -->
     <script type="application/ecmascript"> const x = 1 </script>
-                                       <!-- ^ javascript -->
+                                       <!--  ^ @javascript -->
     <script type="application/javascript"> const x = 1 </script>
-                                       <!-- ^ javascript -->
+                                       <!--  ^ @javascript -->
     <script type="module"> import { foo } from "bar" </script>
-                                 <!-- ^ javascript -->
+                                 <!--  ^ @javascript -->
     <script defer type="text/javascript"> const x = 1 </script>
-                                        <!-- ^ javascript -->
+                                        <!--  ^ @javascript -->
     <script type="text/markdown">## Hello *World*!</script>
-                              <!-- ^ markdown -->
+                              <!--  ^ @markdown -->
     <script type="application/graphql">query OK { dokey }</script>
-                                      <!-- ^ graphql -->
+                                      <!--  ^ @graphql -->
     <script type="application/typescript">type A = number;</script>
-                                      <!-- ^ typescript -->
+                                      <!--  ^ @typescript -->
     <script type="application/json">{ "true": false }</script>
-                                      <!-- ^ json -->
+                                      <!--  ^ @json -->
     <script type="importmap">{ "true": false }</script>
-                                  <!-- ^ json -->
+                                  <!--  ^ @json -->
     <div style="height: 100%">
-               <!-- ^ css -->
+               <!--  ^ @css -->
       Test div to test css injections for style attributes
     </div>
 
     <input pattern="[0-9]+">
-                  <!-- ^ regex -->
+                  <!--  ^ @regex -->
     <input pattern=[0-9]+ type="tel">
-                <!-- ^ regex -->
+                <!--  ^ @regex -->
 
   </body>
 </html>

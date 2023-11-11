@@ -1,23 +1,19 @@
 ; Include
+"#include" @keyword.import
 
-"#include" @include
 (include_path) @string
 
 ; Preproc
-
-[
-  "#pragma"
-] @preproc
+"#pragma" @keyword.directive
 
 (pragma_directive
   [
     "version"
     "not-version"
     "test-version-set"
-  ] @preproc)
+  ] @keyword.directive)
 
 ; Keywords
-
 [
   "asm"
   "impure"
@@ -27,12 +23,9 @@
   "type"
 ] @keyword
 
-[
-  "return"
-] @keyword.return
+"return" @keyword.return
 
 ; Conditionals
-
 [
   "if"
   "ifnot"
@@ -40,23 +33,21 @@
   "elseif"
   "elseifnot"
   "until"
-] @conditional
+] @keyword.conditional
 
 ; Exceptions
-
 [
   "try"
   "catch"
-] @exception
+] @keyword.exception
 
 ; Repeats
-
 [
   "do"
   "forall"
   "repeat"
   "while"
-] @repeat
+] @keyword.repeat
 
 ; Qualifiers
 [
@@ -66,16 +57,13 @@
 ] @type.qualifier
 
 ; Variables
-
 (identifier) @variable
 
 ; Constants
-
 (const_var_declarations
   name: (identifier) @constant)
 
 ; Functions/Methods
-
 (function_definition
   name: (function_name) @function)
 
@@ -83,20 +71,17 @@
   function: (identifier) @function)
 
 (method_call
-  method_name: (identifier) @method.call)
+  method_name: (identifier) @function.method.call)
 
 ; Parameters
-
-(parameter) @parameter
+(parameter) @variable.parameter
 
 ; Types
-
 (type_identifier) @type
 
 (primitive_type) @type.builtin
 
 ; Operators
-
 [
   "="
   "+="
@@ -143,7 +128,6 @@
 ] @operator
 
 ; Literals
-
 [
   (string)
   (asm_instruction)
@@ -157,12 +141,21 @@
 (number) @number
 
 ; Punctuation
+[
+  "{"
+  "}"
+] @punctuation.bracket
 
-["{" "}"] @punctuation.bracket
+[
+  "("
+  ")"
+  "()"
+] @punctuation.bracket
 
-["(" ")" "()"] @punctuation.bracket
-
-["[" "]"] @punctuation.bracket
+[
+  "["
+  "]"
+] @punctuation.bracket
 
 [
   ";"
@@ -171,5 +164,4 @@
 ] @punctuation.delimiter
 
 ; Comments
-
 (comment) @comment @spell

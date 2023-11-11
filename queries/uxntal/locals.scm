@@ -1,22 +1,21 @@
 ; Scopes
-
 [
   (program)
   (macro)
   (memory_execution)
   (subroutine)
-] @scope
+] @local.scope
 
 ; References
-
-(identifier) @reference
+(identifier) @local.reference
 
 ; Definitions
-
 (label
   "@"
-  . (identifier) @definition.function)
+  .
+  (identifier) @local.definition.function)
 
 (macro
   "%"
-  . (identifier) @definition.macro)
+  .
+  (identifier) @local.definition.macro)

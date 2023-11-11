@@ -1,17 +1,28 @@
-(parenthesis) @scope
-(anonymous_function) @scope
-(object) @scope
-(field) @scope
-(local_bind) @scope
+(parenthesis) @local.scope
+
+(anonymous_function) @local.scope
+
+(object) @local.scope
+
+(field) @local.scope
+
+(local_bind) @local.scope
 
 (field
-  function: (fieldname (id)  @definition.function)
+  function:
+    (fieldname
+      (id) @local.definition.function)
   (#set! "definition.function.scope" "parent"))
 
-(bind (id)  @definition.var)
-(bind function: (id)  @definition.function)
+(bind
+  (id) @local.definition.var)
 
-(param (id) @definition.parameter)
+(bind
+  function: (id) @local.definition.function)
 
-(id) @reference
+(param
+  (id) @local.definition.parameter)
+
+(id) @local.reference
+
 ;(fieldname (id) (#is-not? local)) ; (#is-not?) not supported yet

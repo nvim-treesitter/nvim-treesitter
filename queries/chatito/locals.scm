@@ -1,10 +1,16 @@
-;; Definitions
+; Definitions
+(intent_def
+  (intent) @local.definition)
 
-(intent_def (intent) @definition)
-(slot_def (slot) @definition)
-(alias_def (alias) @definition)
+(slot_def
+  (slot) @local.definition)
 
-;; References
+(alias_def
+  (alias) @local.definition)
 
-(slot_ref (slot) @reference)
-(alias_ref (alias) @reference)
+; References
+(slot_ref
+  (slot) @local.reference)
+
+(alias_ref
+  (alias) @local.reference)

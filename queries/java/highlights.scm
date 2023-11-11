@@ -1,48 +1,35 @@
 ; CREDITS @maxbrunsfeld (maxbrunsfeld@gmail.com)
-
 ; Variables
-
 (identifier) @variable
 
 ; Methods
-
 (method_declaration
-  name: (identifier) @method)
+  name: (identifier) @function.method)
+
 (method_invocation
-  name: (identifier) @method.call)
+  name: (identifier) @function.method.call)
 
 (super) @function.builtin
 
 ; Parameters
-
 (formal_parameter
-  name: (identifier) @parameter)
+  name: (identifier) @variable.parameter)
 
 (catch_formal_parameter
-  name: (identifier) @parameter)
+  name: (identifier) @variable.parameter)
 
 (spread_parameter
- (variable_declarator
-   name: (identifier) @parameter)) ; int... foo
+  (variable_declarator
+    name: (identifier) @variable.parameter)) ; int... foo
 
-;; Lambda parameter
-
-(inferred_parameters (identifier) @parameter) ; (x,y) -> ...
+; Lambda parameter
+(inferred_parameters
+  (identifier) @variable.parameter) ; (x,y) -> ...
 
 (lambda_expression
-    parameters: (identifier) @parameter) ; x -> ...
-
-; Annotations
-
-(annotation
-  "@" @attribute
-  name: (identifier) @attribute)
-(marker_annotation
-  "@" @attribute
-  name: (identifier) @attribute)
+  parameters: (identifier) @variable.parameter) ; x -> ...
 
 ; Operators
-
 [
   "+"
   ":"
@@ -82,44 +69,54 @@
 ] @operator
 
 ; Types
-
 (interface_declaration
   name: (identifier) @type)
+
 (annotation_type_declaration
   name: (identifier) @type)
+
 (class_declaration
   name: (identifier) @type)
+
 (record_declaration
   name: (identifier) @type)
+
 (enum_declaration
   name: (identifier) @type)
+
 (constructor_declaration
   name: (identifier) @type)
+
 (type_identifier) @type
+
 ((type_identifier) @type.builtin
   (#eq? @type.builtin "var"))
+
 ((method_invocation
   object: (identifier) @type)
- (#lua-match? @type "^[A-Z]"))
+  (#lua-match? @type "^[A-Z]"))
+
 ((method_reference
-  . (identifier) @type)
- (#lua-match? @type "^[A-Z]"))
+  .
+  (identifier) @type)
+  (#lua-match? @type "^[A-Z]"))
 
 ((field_access
   object: (identifier) @type)
   (#lua-match? @type "^[A-Z]"))
+
 (scoped_identifier
   (identifier) @type
   (#lua-match? @type "^[A-Z]"))
 
 ; Fields
-
 (field_declaration
-  declarator: (variable_declarator
-    name: (identifier) @field))
+  declarator:
+    (variable_declarator
+      name: (identifier) @variable.member))
 
 (field_access
-  field: (identifier) @field)
+  field: (identifier) @variable.member)
 
 [
   (boolean_type)
@@ -129,14 +126,21 @@
 ] @type.builtin
 
 ; Variables
-
 ((identifier) @constant
   (#lua-match? @constant "^[A-Z_][A-Z%d_]+$"))
 
 (this) @variable.builtin
 
-; Literals
+; Annotations
+(annotation
+  "@" @attribute
+  name: (identifier) @attribute)
 
+(marker_annotation
+  "@" @attribute
+  name: (identifier) @attribute)
+
+; Literals
 (string_literal) @string
 
 (escape_sequence) @string.escape
@@ -153,7 +157,7 @@
 [
   (decimal_floating_point_literal)
   (hex_floating_point_literal)
-] @float
+] @number.float
 
 [
   (true)
@@ -163,7 +167,6 @@
 (null_literal) @constant.builtin
 
 ; Keywords
-
 [
   "assert"
   "class"
@@ -204,40 +207,39 @@
 [
   "transient"
   "volatile"
-] @storageclass
+] @keyword.storage
 
 [
   "return"
   "yield"
 ] @keyword.return
 
-[
-  "new"
-] @keyword.operator
+"new" @keyword.operator
 
 ; Conditionals
-
 [
   "if"
   "else"
   "switch"
   "case"
-] @conditional
+] @keyword.conditional
 
-(ternary_expression ["?" ":"] @conditional.ternary)
+(ternary_expression
+  [
+    "?"
+    ":"
+  ] @keyword.conditional.ternary)
 
 ; Loops
-
 [
   "for"
   "while"
   "do"
   "continue"
   "break"
-] @repeat
+] @keyword.repeat
 
 ; Includes
-
 [
   "exports"
   "import"
@@ -247,10 +249,9 @@
   "provides"
   "requires"
   "uses"
-] @include
+] @keyword.import
 
 ; Punctuation
-
 [
   ";"
   "."
@@ -258,34 +259,53 @@
   ","
 ] @punctuation.delimiter
 
-[ "{" "}" ] @punctuation.bracket
+[
+  "{"
+  "}"
+] @punctuation.bracket
 
-[ "[" "]" ] @punctuation.bracket
+[
+  "["
+  "]"
+] @punctuation.bracket
 
-[ "(" ")" ] @punctuation.bracket
+[
+  "("
+  ")"
+] @punctuation.bracket
 
-(type_arguments [ "<" ">" ] @punctuation.bracket)
-(type_parameters [ "<" ">" ] @punctuation.bracket)
+(type_arguments
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
 
-(string_interpolation [ "\\{" "}" ] @punctuation.special)
+(type_parameters
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
+
+(string_interpolation
+  [
+    "\\{"
+    "}"
+  ] @punctuation.special)
 
 ; Exceptions
-
 [
   "throw"
   "throws"
   "finally"
   "try"
   "catch"
-] @exception
+] @keyword.exception
 
 ; Labels
-
 (labeled_statement
   (identifier) @label)
 
 ; Comments
-
 [
   (line_comment)
   (block_comment)

@@ -9,17 +9,18 @@
 ] @indent.begin
 
 [
- (elseif_command)
- (else_command)
- (endif_command)
- (endforeach_command)
- (endwhile_command)
- (endfunction_command)
- (endmacro_command)
- (endblock_command)
+  (elseif_command)
+  (else_command)
+  (endif_command)
+  (endforeach_command)
+  (endwhile_command)
+  (endfunction_command)
+  (endmacro_command)
+  (endblock_command)
 ] @indent.branch
 
-(")" @indent.branch)
-(")" @indent.end)
+")" @indent.branch
+
+")" @indent.end
 
 (argument_list) @indent.auto

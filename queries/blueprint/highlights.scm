@@ -1,6 +1,7 @@
 (object_id) @variable
 
 (string) @string
+
 (escape_sequence) @string.escape
 
 (comment) @comment @spell
@@ -9,36 +10,56 @@
 
 (boolean) @boolean
 
-(using) @include
+(using) @keyword.import
 
 (template) @keyword
 
 (decorator) @attribute
 
-(property_definition (property_name) @property)
+(property_definition
+  (property_name) @property)
 
 (object) @type
 
-(signal_binding (signal_name) @function.builtin)
-(signal_binding (function (identifier)) @function)
-(signal_binding "swapped" @keyword)
+(signal_binding
+  (signal_name) @function.builtin)
 
-(styles_list "styles" @function.macro)
-(layout_definition "layout" @function.macro)
+(signal_binding
+  (function
+    (identifier)) @function)
 
-(gettext_string "_" @function.builtin)
+(signal_binding
+  "swapped" @keyword)
 
-(menu_definition "menu" @keyword)
-(menu_section "section" @keyword)
-(menu_item "item" @function.macro)
+(styles_list
+  "styles" @function.macro)
 
-(template_definition (template_name_qualifier) @type.qualifier)
+(layout_definition
+  "layout" @function.macro)
 
-(import_statement (gobject_library) @namespace)
+(gettext_string
+  "_" @function.builtin)
 
-(import_statement (version_number) @float)
+(menu_definition
+  "menu" @keyword)
 
-(float) @float
+(menu_section
+  "section" @keyword)
+
+(menu_item
+  "item" @function.macro)
+
+(template_definition
+  (template_name_qualifier) @type.qualifier)
+
+(import_statement
+  (gobject_library) @module)
+
+(import_statement
+  (version_number) @number.float)
+
+(float) @number.float
+
 (number) @number
 
 [

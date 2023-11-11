@@ -1,12 +1,12 @@
 class C extends Superclass implements Iface {
-//      ^ keyword          ^ keyword
+//      ^ @keyword          ^ @keyword
   use Trait;
-  // < include
+  // <- @keyword.import
   const type X = shape(
-  // <- keyword ^ type.builtin
+  // <- @keyword ^ @type.builtin
     "a" => int,
-  // ^ string
+  // ^ @string
     "b" => string,
-  //       ^ type.builtin
+  //       ^ @type.builtin
   );
 }

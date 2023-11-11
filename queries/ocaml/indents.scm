@@ -1,3 +1,4 @@
+; format-ignore
 [ 
   (let_binding)                 ; let = ...
   (type_binding)
@@ -22,48 +23,55 @@
 ; handle if-else if-else case
 (if_expression
   condition: (_) @indent.begin)
+
 (then_clause) @indent.begin
-((else_clause 
-   (_) @_not_if) @indent.begin
- (#not-has-type? @_not_if if_expression))
+
+((else_clause
+  (_) @_not_if) @indent.begin
+  (#not-has-type? @_not_if if_expression))
 
 ((parameter) @indent.begin
- (#set! indent.start_at_same_line))
+  (#set! indent.start_at_same_line))
 
-(_ (ERROR) @indent.begin
- (#set! indent.start_at_same_line))
+(_
+  (ERROR) @indent.begin
+  (#set! indent.start_at_same_line))
 
-(ERROR "|" @indent.begin
- (#set! indent.start_at_same_line))
-
+(ERROR
+  "|" @indent.begin
+  (#set! indent.start_at_same_line))
 
 (try_expression
   "with" @indent.branch
   [
     (match_case) @indent.dedent
-    (match_case 
+    (match_case
       [
-        (parenthesized_expression) 
+        (parenthesized_expression)
         (list_expression)
       ] @indent.dedent)
-  ]
-)
+  ])
 
-[
-  "}"
-] @indent.branch @indent.end
+"}" @indent.branch @indent.end
 
+(list_expression
+  "]" @indent.branch)
 
-(list_expression "]" @indent.branch)
-(parenthesized_expression ")" @indent.branch)
+(parenthesized_expression
+  ")" @indent.branch)
 
 ";;" @indent.end
 
-(do_clause "done" @indent.end @indent.branch) 
-(structure "end" @indent.end @indent.branch)
-(signature "end" @indent.end @indent.branch)
+(do_clause
+  "done" @indent.end @indent.branch)
+
+(structure
+  "end" @indent.end @indent.branch)
+
+(signature
+  "end" @indent.end @indent.branch)
 
 [
   (string)
-  (comment) 
+  (comment)
 ] @indent.auto

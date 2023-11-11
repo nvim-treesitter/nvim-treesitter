@@ -1,5 +1,6 @@
 (unit
   (identifier) @variable)
+
 (string
   (identifier) @variable)
 
@@ -7,7 +8,7 @@
 
 (block
   (unit
-    (identifier) @namespace))
+    (identifier) @module))
 
 (func
   (identifier) @function)
@@ -24,52 +25,19 @@
   (#eq? @constant.builtin "null"))
 
 ((identifier) @type
-  (#any-of? @type
-    "String"
-    "Map"
-    "Object"
-    "Boolean"
-    "Integer"
-    "List"))
+  (#any-of? @type "String" "Map" "Object" "Boolean" "Integer" "List"))
 
 ((identifier) @function.builtin
-  (#any-of? @function.builtin
-    "void"
-    "id"
-    "version"
-    "apply"
-    "implementation"
-    "testImplementation"
-    "androidTestImplementation"
-    "debugImplementation"))
+  (#any-of? @function.builtin "void" "id" "version" "apply" "implementation" "testImplementation" "androidTestImplementation" "debugImplementation"))
 
 ((identifier) @keyword
-  (#any-of? @keyword
-    "static"
-    "class"
-    "def"
-    "import"
-    "package"
-    "assert"
-    "extends"
-    "implements"
-    "instanceof"
-    "interface"
-    "new"))
+  (#any-of? @keyword "static" "class" "def" "import" "package" "assert" "extends" "implements" "instanceof" "interface" "new"))
 
 ((identifier) @type.qualifier
-  (#any-of? @type.qualifier
-    "abstract"
-    "protected"
-    "private"
-    "public"))
+  (#any-of? @type.qualifier "abstract" "protected" "private" "public"))
 
-((identifier) @exception
-  (#any-of? @exception
-    "throw"
-    "finally"
-    "try"
-    "catch"))
+((identifier) @keyword.exception
+  (#any-of? @keyword.exception "throw" "finally" "try" "catch"))
 
 (string) @string
 
@@ -92,4 +60,11 @@
   (leading_key)
 ] @operator
 
-["(" ")" "[" "]" "{" "}"]  @punctuation.bracket
+[
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+] @punctuation.bracket

@@ -1,15 +1,35 @@
-[(anonymous_function) (binding) (def) (let)] @scope
+[
+  (anonymous_function)
+  (binding)
+  (def)
+  (let)
+] @local.scope
 
-(anonymous_argument (var) @definition.parameter)
-(labeled_argument label: (var) @definition.parameter)
+(anonymous_argument
+  (var) @local.definition.parameter)
+
+(labeled_argument
+  label: (var) @local.definition.parameter)
 
 (binding
-  defined: (var) @definition.var)
-(def defined: (var) @definition.var)
-(let defined: (var) @definition.var)
-(meth_pattern (var) @definition.var)
-(list_pattern (var) @definition.var)
-(tuple_pattern (var) @definition.var)
-(spread (var) @definition.var)
+  defined: (var) @local.definition.var)
 
-(var) @reference
+(def
+  defined: (var) @local.definition.var)
+
+(let
+  defined: (var) @local.definition.var)
+
+(meth_pattern
+  (var) @local.definition.var)
+
+(list_pattern
+  (var) @local.definition.var)
+
+(tuple_pattern
+  (var) @local.definition.var)
+
+(spread
+  (var) @local.definition.var)
+
+(var) @local.reference

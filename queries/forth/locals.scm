@@ -1,3 +1,3 @@
-(word) @reference
+(word) @local.reference
 
-(word_definition) @scope
+(word_definition) @local.scope

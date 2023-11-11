@@ -1,13 +1,13 @@
 ; References
+(identifier) @local.reference
 
-(identifier) @reference
-((type_identifier) @reference
+((type_identifier) @local.reference
   (#set! reference.kind "type"))
-((field_identifier) @reference
+
+((field_identifier) @local.reference
   (#set! reference.kind "field"))
 
 ; Scopes
-
 [
   (program)
   (block)
@@ -16,53 +16,52 @@
   (if_expression)
   (match_expression)
   (match_arm)
-
   (struct_item)
   (enum_item)
   (impl_item)
-] @scope
+] @local.scope
 
-(use_declaration 
-  argument: (scoped_identifier 
-              name: (identifier) @definition.import))
+(use_declaration
+  argument:
+    (scoped_identifier
+      name: (identifier) @local.definition.import))
 
-(use_as_clause 
-  alias: (identifier) @definition.import)
+(use_as_clause
+  alias: (identifier) @local.definition.import)
 
 (use_list
-    (identifier) @definition.import) ; use std::process::{Child, Command, Stdio};
+  (identifier) @local.definition.import) ; use std::process::{Child, Command, Stdio};
 
 ; Functions
+(function_definition
+  (identifier) @local.definition.function)
 
 (function_definition
-    (identifier) @definition.function)
-
-(function_definition
-  (identifier) @definition.method
-  (parameter (self)))
+  (identifier) @local.definition.method
+  (parameter
+    (self)))
 
 ; Function with parameters, defines parameters
-
 (parameter
-  [ (identifier) (self) ]  @definition.parameter)
+  [
+    (identifier)
+    (self)
+  ] @local.definition.parameter)
 
 ; Types
-
 (struct_item
-  name: (type_identifier) @definition.type)
+  name: (type_identifier) @local.definition.type)
 
-(constrained_type_parameter 
-  left: (type_identifier) @definition.type) ; the P in  remove_file<P: AsRef<Path>>(path: P)
+(constrained_type_parameter
+  left: (type_identifier) @local.definition.type) ; the P in  remove_file<P: AsRef<Path>>(path: P)
 
 (enum_item
-  name: (type_identifier) @definition.type)
+  name: (type_identifier) @local.definition.type)
 
 ; Module
-
-(mod_item 
-  name: (identifier) @definition.namespace)
+(mod_item
+  name: (identifier) @local.definition.namespace)
 
 ; Variables
-
 (assignment_expression
- left: (identifier) @definition.var)
+  left: (identifier) @local.definition.var)

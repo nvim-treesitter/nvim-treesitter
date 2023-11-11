@@ -1,18 +1,15 @@
 ; Scopes
-
 [
-  (use_statement) 
+  (use_statement)
   (actor_definition)
   (class_definition)
   (primitive_definition)
   (interface_definition)
   (trait_definition)
   (struct_definition)
-
   (constructor)
   (method)
   (behavior)
-
   (if_statement)
   (iftype_statement)
   (elseif_block)
@@ -28,64 +25,62 @@
   (case_statement)
   (parenthesized_expression)
   (tuple_expression)
-
   (array_literal)
-  (object_literal) 
-] @scope
+  (object_literal)
+] @local.scope
 
 ; References
-
-(identifier) @reference
+(identifier) @local.reference
 
 ; Definitions
-
 (field
-  name: (identifier) @definition.field)
+  name: (identifier) @local.definition.field)
 
 (use_statement
-  (identifier) @definition.import)
+  (identifier) @local.definition.import)
 
 (constructor
-  (identifier) @definition.method)
+  (identifier) @local.definition.method)
 
 (method
-  (identifier) @definition.method)
+  (identifier) @local.definition.method)
 
 (behavior
-  (identifier) @definition.method)
+  (identifier) @local.definition.method)
 
 (actor_definition
-  (identifier) @definition.type)
+  (identifier) @local.definition.type)
 
 (type_alias
-  (identifier) @definition.type)
+  (identifier) @local.definition.type)
 
 (class_definition
-  (identifier) @definition.type)
+  (identifier) @local.definition.type)
 
 (primitive_definition
-  (identifier) @definition.type)
+  (identifier) @local.definition.type)
 
 (interface_definition
-  (identifier) @definition.type)
+  (identifier) @local.definition.type)
 
 (trait_definition
-  (identifier) @definition.type)
+  (identifier) @local.definition.type)
 
 (struct_definition
-  (identifier) @definition.type)
+  (identifier) @local.definition.type)
 
 (parameter
-  name: (identifier) @definition.parameter)
+  name: (identifier) @local.definition.parameter)
 
 (variable_declaration
-  (identifier) @definition.var)
+  (identifier) @local.definition.var)
 
 (for_statement
   [
-    (identifier) @definition.var
-    (tuple_expression (identifier) @definition.var)
+    (identifier) @local.definition.var
+    (tuple_expression
+      (identifier) @local.definition.var)
   ])
 
-(with_elem 
-  (identifier) @definition.var)
+(with_elem
+  (identifier) @local.definition.var)

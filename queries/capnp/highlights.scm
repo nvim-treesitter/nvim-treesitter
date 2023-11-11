@@ -1,23 +1,20 @@
 ; Preproc
-
 [
   (unique_id)
   (top_level_annotation_body)
-] @preproc
+] @keyword.directive
 
 ; Includes
-
 [
   "import"
   "$import"
   "embed"
   "using"
-] @include
+] @keyword.import
 
-(import_path) @string @text.uri
+(import_path) @string.special.path
 
 ; Keywords
-
 [
   "annotation"
   "enum"
@@ -30,10 +27,7 @@
 ] @keyword
 
 ; Builtins
-
-[
-  "const"
-] @type.qualifier
+"const" @type.qualifier
 
 [
   (primitive_type)
@@ -41,39 +35,32 @@
 ] @type.builtin
 
 ; Typedefs
-
 (type_definition) @type.definition
 
 ; Labels (@number, @number!)
-
 (field_version) @label
 
 ; Methods
-
 [
   (annotation_definition_identifier)
   (method_identifier)
-] @method
+] @function.method
 
 ; Fields
-
-(field_identifier) @field
+(field_identifier) @variable.member
 
 ; Properties
-
 (property) @property
 
 ; Parameters
-
 [
   (param_identifier)
   (return_identifier)
-] @parameter
+] @variable.parameter
 
-(annotation_target) @parameter.builtin
+(annotation_target) @variable.parameter.builtin
 
 ; Constants
-
 [
   (const_identifier)
   (local_const)
@@ -83,7 +70,6 @@
 (void) @constant.builtin
 
 ; Types
-
 [
   (enum_identifier)
   (extend_type)
@@ -91,18 +77,15 @@
 ] @type
 
 ; Attributes
-
 [
   (annotation_identifier)
   (attribute)
 ] @attribute
 
 ; Operators
-
 "=" @operator
 
 ; Literals
-
 [
   (string)
   (concatenated_string)
@@ -110,7 +93,7 @@
   (namespace)
 ] @string
 
-(namespace) @text.underline
+(namespace) @string.special
 
 (escape_sequence) @string.escape
 
@@ -118,25 +101,33 @@
 
 (number) @number
 
-(float) @float
+(float) @number.float
 
 (boolean) @boolean
 
-(data_hex) @symbol
+(data_hex) @string.special.symbol
 
 ; Punctuation
-
 [
   "*"
   "$"
   ":"
 ] @punctuation.special
 
-["{" "}"] @punctuation.bracket
+[
+  "{"
+  "}"
+] @punctuation.bracket
 
-["(" ")"] @punctuation.bracket
+[
+  "("
+  ")"
+] @punctuation.bracket
 
-["[" "]"] @punctuation.bracket
+[
+  "["
+  "]"
+] @punctuation.bracket
 
 [
   "."
@@ -146,5 +137,4 @@
 ] @punctuation.delimiter
 
 ; Comments
-
 (comment) @comment @spell

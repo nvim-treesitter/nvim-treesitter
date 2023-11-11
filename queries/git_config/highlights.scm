@@ -1,26 +1,23 @@
 ; Sections
-
 (section_name) @type
 
-((section_name) @include
- (#eq? @include "include"))
+((section_name) @keyword.import
+  (#eq? @keyword.import "include"))
 
 ((section_header
-   (section_name) @include
-   (subsection_name))
- (#eq? @include "includeIf"))
+  (section_name) @keyword.import
+  (subsection_name))
+  (#eq? @keyword.import "includeIf"))
 
-(variable (name) @property)
+(variable
+  (name) @property)
 
 ; Operators
-
-[
- "="
-] @operator
+"=" @operator
 
 ; Literals
-
 (integer) @number
+
 [
   (true)
   (false)
@@ -28,11 +25,11 @@
 
 (string) @string
 
-((string) @text.uri
- (#lua-match? @text.uri "^[.]?[/]"))
+((string) @string.special.path
+  (#lua-match? @string.special.path "^[.]?[.]?[/]"))
 
-((string) @text.uri
- (#lua-match? @text.uri "^[~]"))
+((string) @string.special.path
+  (#lua-match? @string.special.path "^[~]"))
 
 (section_header
   [
@@ -40,10 +37,21 @@
     (subsection_name)
   ] @string.special)
 
-; Punctuation
+((section_header
+  (section_name) @_name
+  (subsection_name) @string.special.url)
+  (#any-of? @_name "credential" "url"))
 
-[ "[" "]" ] @punctuation.bracket
+((variable
+  (name) @_name
+  value: (string) @string.special.url)
+  (#eq? @_name "insteadOf"))
+
+; Punctuation
+[
+  "["
+  "]"
+] @punctuation.bracket
 
 ; Comments
-
 (comment) @comment @spell

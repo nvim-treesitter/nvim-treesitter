@@ -1,41 +1,43 @@
-;; Definitions
+; Definitions
 (variable_declarator
-  . (identifier) @definition.var)
+  .
+  (identifier) @local.definition.var)
 
 (variable_declarator
   (tuple_pattern
-    (identifier) @definition.var))
+    (identifier) @local.definition.var))
 
 (declaration_expression
-  name: (identifier) @definition.var)
+  name: (identifier) @local.definition.var)
 
 (for_each_statement
-  left: (identifier) @definition.var)
+  left: (identifier) @local.definition.var)
 
 (for_each_statement
-  left: (tuple_pattern
-    (identifier) @definition.var))
+  left:
+    (tuple_pattern
+      (identifier) @local.definition.var))
 
 (parameter
-  (identifier) @definition.parameter)
+  (identifier) @local.definition.parameter)
 
 (method_declaration
-  name: (identifier) @definition.method)
+  name: (identifier) @local.definition.method)
 
 (local_function_statement
-  name: (identifier) @definition.method)
+  name: (identifier) @local.definition.method)
 
 (property_declaration
-  name: (identifier) @definition)
+  name: (identifier) @local.definition)
 
 (type_parameter
-  (identifier) @definition.type)
+  (identifier) @local.definition.type)
 
 (class_declaration
-  name: (identifier) @definition)
+  name: (identifier) @local.definition)
 
-;; References
-(identifier) @reference
+; References
+(identifier) @local.reference
 
-;; Scope
-(block) @scope
+; Scope
+(block) @local.scope

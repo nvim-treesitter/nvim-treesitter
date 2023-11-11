@@ -1,17 +1,17 @@
 ; inherits: c
-
 (reference_declarator
-  (identifier) @definition.var)
+  (identifier) @local.definition.var)
 
 (type_parameter_declaration
-  (type_identifier) @definition.type)
-(template_declaration) @scope
+  (type_identifier) @local.definition.type)
+
+(template_declaration) @local.scope
 
 (template_function
-  name: (identifier) @definition.function) @scope
+  name: (identifier) @local.definition.function) @local.scope
 
 [
- (foreach_statement)
- (foreach_instance_statement)
- (unmasked_statement)
-] @scope
+  (foreach_statement)
+  (foreach_instance_statement)
+  (unmasked_statement)
+] @local.scope

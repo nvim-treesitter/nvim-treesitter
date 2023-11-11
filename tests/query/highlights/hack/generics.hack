@@ -1,24 +1,24 @@
 class Box<T> {
-  //      ^ type
-  //   ^ type
+  //      ^ @type
+  //   ^ @type
   protected T $data;
-  // ^ type.qualifier
-  //        ^ type
+  // ^ @type.qualifier
+  //        ^ @type
 
   public function __construct(T $data) {
-  //                          ^ type
-  //                             ^ parameter
-  //        ^ keyword.function
-  // ^ type.qualifier
-  //                    ^ method
+  //                          ^ @type
+  //                             ^ @variable.parameter
+  //        ^ @keyword.function
+  // ^ @type.qualifier
+  //                    ^ @function.method
     $this->data = $data;
   }
 
   public function getData(): T {
-                // ^ method
-  // ^ type.qualifier
+                // ^ @function.method
+  // ^ @type.qualifier
     return $this->data;
-              // ^ operator
-          // ^ variable.builtin
+              // ^ @operator
+          // ^ @variable.builtin
   }
 }

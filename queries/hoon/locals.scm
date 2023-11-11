@@ -1,4 +1,4 @@
 (tisfasTall
-  name: (name) @definition.var)
-  
-(name) @reference
+  name: (name) @local.definition.var)
+
+(name) @local.reference

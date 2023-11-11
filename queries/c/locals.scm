@@ -1,53 +1,67 @@
-;; Functions definitions
+; Functions definitions
 (function_declarator
-  declarator: (identifier) @definition.function)
+  declarator: (identifier) @local.definition.function)
+
 (preproc_function_def
-  name: (identifier) @definition.macro) @scope
+  name: (identifier) @local.definition.macro) @local.scope
 
 (preproc_def
-  name: (identifier) @definition.macro)
+  name: (identifier) @local.definition.macro)
+
 (pointer_declarator
-  declarator: (identifier) @definition.var)
+  declarator: (identifier) @local.definition.var)
+
 (parameter_declaration
-  declarator: (identifier) @definition.parameter)
+  declarator: (identifier) @local.definition.parameter)
+
 (init_declarator
-  declarator: (identifier) @definition.var)
+  declarator: (identifier) @local.definition.var)
+
 (array_declarator
-  declarator: (identifier) @definition.var)
+  declarator: (identifier) @local.definition.var)
+
 (declaration
-  declarator: (identifier) @definition.var)
+  declarator: (identifier) @local.definition.var)
+
 (enum_specifier
-  name: (_) @definition.type
+  name: (_) @local.definition.type
   (enumerator_list
-    (enumerator name: (identifier) @definition.var)))
+    (enumerator
+      name: (identifier) @local.definition.var)))
 
-;; Type / Struct / Enum
+; Type / Struct / Enum
 (field_declaration
-  declarator: (field_identifier) @definition.field)
+  declarator: (field_identifier) @local.definition.field)
+
 (type_definition
-  declarator: (type_identifier) @definition.type)
+  declarator: (type_identifier) @local.definition.type)
+
 (struct_specifier
-  name: (type_identifier) @definition.type)
+  name: (type_identifier) @local.definition.type)
 
-;; goto
-(labeled_statement (statement_identifier) @definition)
+; goto
+(labeled_statement
+  (statement_identifier) @local.definition)
 
-;; References
-(identifier) @reference
-((field_identifier) @reference
-                    (#set! reference.kind "field"))
-((type_identifier) @reference
-                   (#set! reference.kind "type"))
+; References
+(identifier) @local.reference
 
-(goto_statement (statement_identifier) @reference)
+((field_identifier) @local.reference
+  (#set! reference.kind "field"))
 
-;; Scope
+((type_identifier) @local.reference
+  (#set! reference.kind "type"))
+
+(goto_statement
+  (statement_identifier) @local.reference)
+
+; Scope
 [
- (for_statement)
- (if_statement)
- (while_statement)
- (translation_unit)
- (function_definition)
- (compound_statement) ; a block in curly braces
- (struct_specifier)
-] @scope
+  (for_statement)
+  (if_statement)
+  (while_statement)
+  (translation_unit)
+  (function_definition)
+  (compound_statement) ; a block in curly braces
+  (struct_specifier)
+] @local.scope

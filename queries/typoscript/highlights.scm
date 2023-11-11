@@ -1,22 +1,23 @@
-(identifier) @field
+(identifier) @variable.member
 
 (constant) @constant
 
 (modifier_function) @function
+
 (modifier_predefined) @function.builtin
 
 [
-  (condition) 
-  (condition_end) 
+  (condition)
+  (condition_end)
   (condition_else)
-] @conditional
+] @keyword.conditional
 
 (cobject) @type.builtin
 
 [
   "@import"
   "INCLUDE_TYPOSCRIPT"
-] @include
+] @keyword.import
 
 [
   (comment)
@@ -40,7 +41,7 @@
 "," @punctuation.delimiter
 
 [
- "("
- ")"
- (block_punctuation)
- ] @punctuation.bracket
+  "("
+  ")"
+  (block_punctuation)
+] @punctuation.bracket

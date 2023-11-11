@@ -1,29 +1,20 @@
 ; Built-ins {{{
 ((function_call
   function: (identifier) @function.builtin)
-  (#any-of? @function.builtin "chr" "concat" "exit" "flush" "getchar" "not" "ord" "print" "print_err" "print_int" "size" "strcmp" "streq" "substring")
-  ; FIXME: not supported by neovim
-  ; (#is-not? local)
-  )
+  (#any-of? @function.builtin "chr" "concat" "exit" "flush" "getchar" "not" "ord" "print" "print_err" "print_int" "size" "strcmp" "streq" "substring"))
 
 ((type_identifier) @type.builtin
-  (#any-of? @type.builtin "int" "string" "Object")
-  ; FIXME: not supported by neovim
-  ; (#is-not? local)
-  )
+  (#any-of? @type.builtin "int" "string" "Object"))
 
 ((identifier) @variable.builtin
-  (#eq? @variable.builtin "self")
-  ; FIXME: not supported by neovim
-  ; (#is-not? local)
-  )
-; }}}
+  (#eq? @variable.builtin "self"))
 
+; }}}
 ; Keywords {{{
 [
- "function"
- "primitive"
- "method"
+  "function"
+  "primitive"
+  "method"
 ] @keyword.function
 
 [
@@ -31,11 +22,11 @@
   "for"
   "to"
   "while"
-] @repeat
+] @keyword.repeat
 
 "new" @keyword.operator
 
-"import" @include
+"import" @keyword.import
 
 [
   "array"
@@ -49,73 +40,79 @@
   "then"
   "type"
   "var"
-
   "class"
   "extends"
-
   "_cast"
   "_chunks"
   "_exp"
   "_lvalue"
   "_namety"
 ] @keyword
-; }}}
 
+; }}}
 ; Operators {{{
 (operator) @operator
 
 [
- ","
- ";"
- ":"
- "."
+  ","
+  ";"
+  ":"
+  "."
 ] @punctuation.delimiter
 
 [
- "("
- ")"
- "["
- "]"
- "{"
- "}"
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
 ] @punctuation.bracket
-; }}}
 
+; }}}
 ; Functions and methods {{{
 (function_call
   function: (identifier) @function)
+
 (function_declaration
   name: (identifier) @function)
+
 (primitive_declaration
   name: (identifier) @function)
 
 (method_call
-  method: (identifier) @method)
+  method: (identifier) @function.method)
+
 (method_declaration
-  name: (identifier) @method)
+  name: (identifier) @function.method)
 
 (parameters
-  name: (identifier) @parameter)
-; }}}
+  name: (identifier) @variable.parameter)
 
+; }}}
 ; Declarations {{{
 (import_declaration
-  file: (string_literal) @string.special)
-; }}}
+  file: (string_literal) @string.special.path)
 
+; }}}
 ; Literals {{{
 (nil_literal) @constant.builtin
-(integer_literal) @number
-(string_literal) @string
-(escape_sequence) @string.escape
-; }}}
 
+(integer_literal) @number
+
+(string_literal) @string
+
+(escape_sequence) @string.escape
+
+; }}}
 ; Misc {{{
 (comment) @comment @spell
 
 (type_identifier) @type
-(field_identifier) @property
-(identifier) @variable
-; }}}
 
+(field_identifier) @variable.member
+
+(identifier) @variable
+
+; }}}
 ; vim: sw=2 foldmethod=marker

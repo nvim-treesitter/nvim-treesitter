@@ -1,5 +1,5 @@
-; Surface text is highlighted as such
-(text) @text
+; Surface text is not highlighted
+(text) @none
 
 ; Surface has two types of comments, both are highlighted as such
 (comment) @comment @spell
@@ -12,7 +12,7 @@
 
 ; Surface blocks are highlighted as keywords
 [
-  (start_block) 
+  (start_block)
   (end_block)
   (subblock)
 ] @keyword
@@ -41,4 +41,4 @@
 (directive_name) @keyword
 
 ; Surface operators
-["="] @operator
+"=" @operator

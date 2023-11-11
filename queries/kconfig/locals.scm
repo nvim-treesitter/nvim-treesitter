@@ -1,7 +1,7 @@
 [
   (symbol)
   (prompt)
-] @reference
+] @local.reference
 
 [
   (config)
@@ -10,8 +10,15 @@
   (comment_entry)
   (menu)
   (if)
-] @scope
+] @local.scope
 
-(type_definition (prompt) @definition.var)
-(type_definition (input_prompt (prompt) @definition.var))
-(type_definition_default (expression (prompt) @definition.var))
+(type_definition
+  (prompt) @local.definition.var)
+
+(type_definition
+  (input_prompt
+    (prompt) @local.definition.var))
+
+(type_definition_default
+  (expression
+    (prompt) @local.definition.var))

@@ -71,21 +71,27 @@
   "Canonical"
 ] @type.builtin
 
+(sd_metadata
+  (parent
+    (name))) @type
 
-(sd_metadata (parent (name))) @type
-(target_type (name)) @type
+(target_type
+  (name)) @type
 
 ; Strings
 (string) @string
+
 (multiline_string) @string
 
 ; Constants
 (strength_value) @constant
+
 (bool) @constant.boolean
+
 (flag) @constant
 
 ; Special Params
-(code_value) @parameter
+(code_value) @variable.parameter
 
 ; Extras
 (fsh_comment) @comment @spell

@@ -1,12 +1,17 @@
 (string) @string
 
-(field_name) @field
+(field_name) @variable.member
 
 (comment) @comment
 
 (number) @number
+
 ; For stuff like "inf" and "-inf".
-(scalar_value [ (identifier) (signed_identifier) ]) @number
+(scalar_value
+  [
+    (identifier)
+    (signed_identifier)
+  ]) @number
 
 [
   (open_squiggly)

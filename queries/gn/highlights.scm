@@ -1,20 +1,16 @@
 ; Includes
-
-"import" @include
+"import" @keyword.import
 
 ; Conditionals
-
 [
   "if"
   "else"
-] @conditional
+] @keyword.conditional
 
 ; Repeats
-
-"foreach" @repeat
+"foreach" @keyword.repeat
 
 ; Operators
-
 [
   "="
   "+="
@@ -33,19 +29,17 @@
 ] @operator
 
 ; Variables
-
 (identifier) @variable
 
 ; Functions
-
-(call_expression function: (identifier) @function.call)
+(call_expression
+  function: (identifier) @function.call)
 
 ; Fields
-
-(scope_access field: (identifier) @field)
+(scope_access
+  field: (identifier) @variable.member)
 
 ; Literals
-
 (string) @string
 
 (escape_sequence) @string.escape
@@ -59,16 +53,26 @@
 (boolean) @boolean
 
 ; Punctuation
-
-[ "{" "}" "[" "]" "(" ")" ] @punctuation.bracket
+[
+  "{"
+  "}"
+  "["
+  "]"
+  "("
+  ")"
+] @punctuation.bracket
 
 [
   "."
   ","
 ] @punctuation.delimiter
 
-(expansion ["$" "${" "}"] @punctuation.special)
+(expansion
+  [
+    "$"
+    "${"
+    "}"
+  ] @punctuation.special)
 
 ; Comments
-
 (comment) @comment

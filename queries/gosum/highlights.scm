@@ -7,17 +7,18 @@
   "+incompatible"
 ] @keyword
 
+(module_path) @string.special.url
 
-(module_path) @string @text.uri
 (module_version) @string.special
 
 (hash_version) @attribute
-(hash) @symbol
+
+(hash) @string.special.symbol
 
 [
- (number)
- (number_with_decimal)
- (hex_number)
+  (number)
+  (number_with_decimal)
+  (hex_number)
 ] @number
 
 (checksum

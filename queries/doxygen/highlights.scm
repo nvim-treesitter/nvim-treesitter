@@ -9,15 +9,16 @@
 (identifier) @variable
 
 ((tag
-  (tag_name) @_param 
-  (identifier) @parameter)
+  (tag_name) @_param
+  (identifier) @variable.parameter)
   (#any-of? @_param "@param" "\\param"))
 
-(function (identifier) @function)
+(function
+  (identifier) @function)
 
 (function_link) @function
 
-(emphasis) @text.emphasis
+(emphasis) @markup.italic
 
 [
   "\\a"
@@ -30,7 +31,7 @@
   "in"
   "out"
   "inout"
-] @storageclass
+] @keyword.storage
 
 "~" @operator
 
@@ -48,6 +49,13 @@
   (code_block_end)
 ] @punctuation.delimiter
 
-[ "(" ")" "{" "}" "[" "]" ] @punctuation.bracket
+[
+  "("
+  ")"
+  "{"
+  "}"
+  "["
+  "]"
+] @punctuation.bracket
 
 (code_block_content) @none

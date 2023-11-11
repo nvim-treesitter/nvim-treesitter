@@ -1,71 +1,75 @@
-;;; Variables
+; Variables
 (assignment
-  (identifier) @definition.var)
+  (identifier) @local.definition.var)
+
 (assignment
   (tuple_expression
-    (identifier) @definition.var))
+    (identifier) @local.definition.var))
 
-;;; let/const bindings
+; let/const bindings
 (let_binding
- (identifier) @definition.var)
+  (identifier) @local.definition.var)
+
 (let_binding
- (tuple_expression
-  (identifier) @definition.var))
+  (tuple_expression
+    (identifier) @local.definition.var))
 
-
-;;; For bindings
+; For bindings
 (for_binding
-  (identifier) @definition.var)
+  (identifier) @local.definition.var)
+
 (for_binding
   (tuple_expression
-    (identifier) @definition.var))
+    (identifier) @local.definition.var))
 
-
-;;; Types
-
+; Types
 (struct_definition
-  name: (identifier) @definition.type)
+  name: (identifier) @local.definition.type)
+
 (abstract_definition
-  name: (identifier) @definition.type)
+  name: (identifier) @local.definition.type)
+
 (abstract_definition
-  name: (identifier) @definition.type)
+  name: (identifier) @local.definition.type)
 
 (type_parameter_list
-  (identifier) @definition.type)
+  (identifier) @local.definition.type)
 
-;;; Module imports
-
+; Module imports
 (import_statement
-  (identifier) @definition.import)
+  (identifier) @local.definition.import)
 
-
-;;; Parameters
-
+; Parameters
 (parameter_list
-  (identifier) @definition.parameter)
-(optional_parameter .
-  (identifier) @definition.parameter)
+  (identifier) @local.definition.parameter)
+
+(optional_parameter
+  .
+  (identifier) @local.definition.parameter)
+
 (slurp_parameter
-  (identifier) @definition.parameter)
+  (identifier) @local.definition.parameter)
 
 (typed_parameter
-  parameter: (identifier) @definition.parameter
+  parameter: (identifier) @local.definition.parameter
   (_))
 
+; Single parameter arrow function
 (function_expression
- . (identifier) @definition.parameter) ;; Single parameter arrow function
+  .
+  (identifier) @local.definition.parameter)
 
-
-;;; Function/macro definitions
-
+; Function/macro definitions
 (function_definition
-  name: (identifier) @definition.function) @scope
-(short_function_definition
-  name: (identifier) @definition.function) @scope
-(macro_definition 
-  name: (identifier) @definition.macro) @scope
+  name: (identifier) @local.definition.function) @local.scope
 
-(identifier) @reference
+(short_function_definition
+  name: (identifier) @local.definition.function) @local.scope
+
+(macro_definition
+  name: (identifier) @local.definition.macro) @local.scope
+
+(identifier) @local.reference
 
 [
   (for_statement)
@@ -76,4 +80,4 @@
   (let_statement)
   (quote_statement)
   (do_clause)
-] @scope
+] @local.scope

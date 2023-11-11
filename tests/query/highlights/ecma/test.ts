@@ -1,32 +1,32 @@
 class H {
   pub_field = "Hello";
-  //  ^ property
+  //  ^ @variable.member
 
   #priv_field = "World!";
-  //   ^ property
+  //   ^ @variable.member
 
   #private_method() {
-    //  ^ method
+    //  ^ @function.method
     return `${this.pub_field} -- ${this.#priv_field}`;
-    //                                      ^ property
-    //                ^ property
+    //                                      ^ @variable.member
+    //                ^ @variable.member
   }
 
   public_method() {
-    //  ^ method
+    //  ^ @function.method
     return this.#private_method();
-    //                ^ method.call
+    //                ^ @function.method.call
   }
 
   ok() {
     return this.public_method();
-    //                ^ method.call
+    //                ^ @function.method.call
   }
 }
 
 function doSomething(options) {
   const {
     enable: on,
-    //    ^ punctuation.delimiter
+    //    ^ @punctuation.delimiter
   } = options
 }

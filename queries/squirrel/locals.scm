@@ -1,18 +1,15 @@
 ; Scopes
-
 [
   (script)
   (class_declaration)
   (enum_declaration)
   (function_declaration)
   (attribute_declaration)
-
   (array)
   (block)
   (table)
   (anonymous_function)
   (parenthesized_expression)
-
   (if_statement)
   (else_statement)
   (while_statement)
@@ -22,46 +19,57 @@
   (foreach_statement)
   (try_statement)
   (catch_statement)
-] @scope
-
+] @local.scope
 
 ; References
-
 [
   (identifier)
   (global_variable)
-] @reference
+] @local.reference
 
 ; Definitions
-
 (const_declaration
-  . (identifier) @definition.constant)
+  .
+  (identifier) @local.definition.constant)
 
 (enum_declaration
-  . (identifier) @definition.enum)
+  .
+  (identifier) @local.definition.enum)
 
 (member_declaration
-  (identifier) @definition.field 
-  . "=")
+  (identifier) @local.definition.field
+  .
+  "=")
 
 (table_slot
-  . (identifier) @definition.field
-  . ["=" ":"])
+  .
+  (identifier) @local.definition.field
+  .
+  [
+    "="
+    ":"
+  ])
 
 ((function_declaration
-  . (identifier) @definition.function)
-  (#not-has-ancestor? @definition.function member_declaration))
+  .
+  (identifier) @local.definition.function)
+  (#not-has-ancestor? @local.definition.function member_declaration))
 
 (member_declaration
   (function_declaration
-    . (identifier) @definition.method))
+    .
+    (identifier) @local.definition.method))
 
 (class_declaration
-  . (identifier) @definition.type)
+  .
+  (identifier) @local.definition.type)
 
 (var_statement
-  "var" . (identifier) @definition.variable)
+  "var"
+  .
+  (identifier) @local.definition.variable)
 
 (local_declaration
-  (identifier) @definition.variable 
-  . "=")
+  (identifier) @local.definition.variable
+  .
+  "=")

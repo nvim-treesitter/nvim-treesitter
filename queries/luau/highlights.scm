@@ -1,84 +1,96 @@
 ; Preproc
+(hash_bang_line) @keyword.directive
 
-(hash_bang_line) @preproc
-
-;; Keywords
-
+; Keywords
 "return" @keyword.return
 
 [
- "local"
- "type"
- "export"
+  "local"
+  "type"
+  "export"
 ] @keyword
 
 (do_statement
-[
-  "do"
-  "end"
-] @keyword)
+  [
+    "do"
+    "end"
+  ] @keyword)
 
 (while_statement
-[
-  "while"
-  "do"
-  "end"
-] @repeat)
+  [
+    "while"
+    "do"
+    "end"
+  ] @keyword.repeat)
 
 (repeat_statement
-[
-  "repeat"
-  "until"
-] @repeat)
+  [
+    "repeat"
+    "until"
+  ] @keyword.repeat)
 
 [
   (break_statement)
   (continue_statement)
-] @repeat
+] @keyword.repeat
 
 (if_statement
-[
-  "if"
-  "elseif"
-  "else"
-  "then"
-  "end"
-] @conditional)
+  [
+    "if"
+    "elseif"
+    "else"
+    "then"
+    "end"
+  ] @keyword.conditional)
+
+(if_expression
+  [
+    "if"
+    "then"
+  ] @keyword.conditional)
 
 (elseif_statement
-[
-  "elseif"
-  "then"
-  "end"
-] @conditional)
+  [
+    "elseif"
+    "then"
+    "end"
+  ] @keyword.conditional)
+
+(elseif_clause
+  [
+    "elseif"
+    "then"
+  ] @keyword.conditional)
 
 (else_statement
-[
-  "else"
-  "end"
-] @conditional)
+  [
+    "else"
+    "end"
+  ] @keyword.conditional)
+
+(else_clause
+  "else" @keyword.conditional)
 
 (for_statement
-[
-  "for"
-  "do"
-  "end"
-] @repeat)
+  [
+    "for"
+    "do"
+    "end"
+  ] @keyword.repeat)
 
 (function_declaration
-[
-  "function"
-  "end"
-] @keyword.function)
+  [
+    "function"
+    "end"
+  ] @keyword.function)
 
 (function_definition
-[
-  "function"
-  "end"
-] @keyword.function)
+  [
+    "function"
+    "end"
+  ] @keyword.function)
 
-;; Operators
-
+; Operators
 [
   "and"
   "not"
@@ -103,7 +115,6 @@
   ">"
   "="
   "&"
-  "~"
   "|"
   "?"
   "//"
@@ -117,15 +128,16 @@
   "..="
 ] @operator
 
-;; Variables
-
+; Variables
 (identifier) @variable
 
 ; Types
+(type
+  (identifier) @type)
 
-(type (identifier) @type)
-
-(type (generic_type (identifier) @type))
+(type
+  (generic_type
+    (identifier) @type))
 
 (builtin_type) @type.builtin
 
@@ -133,59 +145,77 @@
   (#lua-match? @type "^[A-Z]"))
 
 ; Typedefs
-
-(type_definition "type" . (type) @type.definition "=")
+(type_definition
+  "type"
+  .
+  (type) @type.definition
+  "=")
 
 ; Constants
-
 ((identifier) @constant
- (#lua-match? @constant "^[A-Z][A-Z_0-9]+$"))
+  (#lua-match? @constant "^[A-Z][A-Z_0-9]+$"))
 
 ; Builtins
-
 ((identifier) @constant.builtin
   (#eq? @constant.builtin "_VERSION"))
 
 ((identifier) @variable.builtin
   (#eq? @variable.builtin "self"))
 
-((identifier) @namespace.builtin
-  (#any-of? @namespace.builtin "_G" "debug" "io" "jit" "math" "os" "package" "string" "table" "utf8"))
+((identifier) @module.builtin
+  (#any-of? @module.builtin "_G" "debug" "io" "jit" "math" "os" "package" "string" "table" "utf8"))
 
 ((identifier) @keyword.coroutine
   (#eq? @keyword.coroutine "coroutine"))
 
-;; Tables
+; Tables
+(field
+  name: (identifier) @variable.member)
 
-(field name: (identifier) @field)
+(dot_index_expression
+  field: (identifier) @variable.member)
 
-(dot_index_expression field: (identifier) @field)
-
-(object_type (identifier) @field)
+(object_type
+  (identifier) @variable.member)
 
 (table_constructor
-[
-  "{"
-  "}"
-] @constructor)
+  [
+    "{"
+    "}"
+  ] @constructor)
 
 ; Functions
+(parameter
+  .
+  (identifier) @variable.parameter)
 
-(parameter . (identifier) @parameter)
-(function_type (identifier) @parameter)
+(function_type
+  (identifier) @variable.parameter)
 
-(function_call name: (identifier) @function.call)
-(function_declaration name: (identifier) @function)
+(function_call
+  name: (identifier) @function.call)
 
-(function_call name: (dot_index_expression field: (identifier) @function.call))
-(function_declaration name: (dot_index_expression field: (identifier) @function))
+(function_declaration
+  name: (identifier) @function)
 
-(method_index_expression method: (identifier) @method.call)
+(function_call
+  name:
+    (dot_index_expression
+      field: (identifier) @function.call))
+
+(function_declaration
+  name:
+    (dot_index_expression
+      field: (identifier) @function))
+
+(method_index_expression
+  method: (identifier) @function.method.call)
 
 (function_call
   (identifier) @function.builtin
+  ; format-ignore
   (#any-of? @function.builtin
-    ;; built-in functions in Lua 5.1
+    ; built-in functions in Lua 5.1
     "assert" "collectgarbage" "dofile" "error" "getfenv" "getmetatable" "ipairs"
     "load" "loadfile" "loadstring" "module" "next" "pairs" "pcall" "print"
     "rawequal" "rawget" "rawlen" "rawset" "require" "select" "setfenv" "setmetatable"
@@ -195,7 +225,6 @@
     "__pairs" "__pow" "__shl" "__shr" "__sub" "__tostring" "__unm"))
 
 ; Literals
-
 (number) @number
 
 (string) @string
@@ -209,8 +238,7 @@
   (true)
 ] @boolean
 
-;; Punctuations
-
+; Punctuations
 [
   ";"
   ":"
@@ -221,24 +249,36 @@
 ] @punctuation.delimiter
 
 [
- "("
- ")"
- "["
- "]"
- "{"
- "}"
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
 ] @punctuation.bracket
 
 (variable_list
-   attribute: (attribute
-     (["<" ">"] @punctuation.bracket
-      (identifier) @attribute)))
+  attribute:
+    (attribute
+      ([
+        "<"
+        ">"
+      ] @punctuation.bracket
+        (identifier) @attribute)))
 
-(generic_type [ "<" ">" ] @punctuation.bracket)
-(generic_type_list [ "<" ">" ] @punctuation.bracket)
+(generic_type
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
+
+(generic_type_list
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
 
 ; Comments
-
 (comment) @comment @spell
 
 ((comment) @comment.documentation
@@ -246,3 +286,27 @@
 
 ((comment) @comment.documentation
   (#lua-match? @comment.documentation "^[-][-](%s?)@"))
+
+; string.match("123", "%d+")
+(function_call
+  (dot_index_expression
+    field: (identifier) @_method
+    (#any-of? @_method "find" "format" "match" "gmatch" "gsub"))
+  arguments:
+    (arguments
+      .
+      (_)
+      .
+      (string
+        content: _ @string.regexp)))
+
+; ("123"):match("%d+")
+(function_call
+  (method_index_expression
+    method: (identifier) @_method
+    (#any-of? @_method "find" "format" "match" "gmatch" "gsub"))
+  arguments:
+    (arguments
+      .
+      (string
+        content: _ @string.regexp)))

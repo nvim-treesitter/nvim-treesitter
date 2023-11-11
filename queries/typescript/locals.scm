@@ -1,27 +1,30 @@
 ; inherits: ecma
-(required_parameter (identifier) @definition)
-(optional_parameter (identifier) @definition)
+(required_parameter
+  (identifier) @local.definition)
+
+(optional_parameter
+  (identifier) @local.definition)
 
 ; x => x
 (arrow_function
-  parameter: (identifier) @definition.parameter)
+  parameter: (identifier) @local.definition.parameter)
 
-;; ({ a }) => null
+; ({ a }) => null
 (required_parameter
   (object_pattern
-    (shorthand_property_identifier_pattern) @definition.parameter))
+    (shorthand_property_identifier_pattern) @local.definition.parameter))
 
-;; ({ a: b }) => null
+; ({ a: b }) => null
 (required_parameter
   (object_pattern
     (pair_pattern
-      value: (identifier) @definition.parameter)))
+      value: (identifier) @local.definition.parameter)))
 
-;; ([ a ]) => null
+; ([ a ]) => null
 (required_parameter
   (array_pattern
-    (identifier) @definition.parameter))
+    (identifier) @local.definition.parameter))
 
 (required_parameter
   (rest_pattern
-    (identifier) @definition.parameter))
+    (identifier) @local.definition.parameter))

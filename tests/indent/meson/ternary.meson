@@ -1,0 +1,11 @@
+# vim: ft=meson
+
+x = cond ?
+  iftrue :
+  iffalse
+
+x = cond
+  ? iftrue
+  : iffalse
+
+x = cond ?

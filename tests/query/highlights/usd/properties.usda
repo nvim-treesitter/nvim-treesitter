@@ -1,21 +1,21 @@
 dictionary foo = {}
-# <- type
+# <- @type
 half[] foo = [2, 1, 2]
-# <- type
+# <- @type
 string foo = "something"
-# <- type
+# <- @type
 timecode time = 1.0
-# <- type
+# <- @type
 token[] purpose = ["default", "render"]
-# <- type
+# <- @type
 
 rel material:binding:collection:Erasers = None
-# <- type
-#   ^ namespace
-#           ^ punctuation.delimiter
-#            ^ namespace
-#                   ^ punctuation.delimiter
-#                    ^ namespace
-#                              ^ punctuation.delimiter
-#                               ^ variable
-#                                         ^ constant.builtin
+# <- @type
+#   ^ @module
+#           ^ @punctuation.delimiter
+#            ^ @module
+#                   ^ @punctuation.delimiter
+#                    ^ @module
+#                              ^ @punctuation.delimiter
+#                               ^ @variable
+#                                         ^ @constant.builtin

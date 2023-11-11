@@ -1,5 +1,4 @@
 ; Keywords
-
 [
   "class"
   "clone"
@@ -11,9 +10,7 @@
   "var"
 ] @keyword
 
-[
-  "function"
-] @keyword.function
+"function" @keyword.function
 
 [
   "in"
@@ -27,12 +24,11 @@
 ] @keyword.return
 
 ((global_variable
-   "::"
-   (_) @keyword.coroutine)
+  "::"
+  (_) @keyword.coroutine)
   (#any-of? @keyword.coroutine "suspend" "newthread"))
 
 ; Conditionals
-
 [
   "if"
   "else"
@@ -40,47 +36,40 @@
   "case"
   "default"
   "break"
-] @conditional
+] @keyword.conditional
 
 ; Repeats
-
 [
   "for"
   "foreach"
   "do"
   "while"
   "continue"
-] @repeat
+] @keyword.repeat
 
 ; Exceptions
-
 [
   "try"
   "catch"
   "throw"
-] @exception
+] @keyword.exception
 
 ; Storageclasses
-
-[
-  "local"
-] @storageclass
+"local" @keyword.storage
 
 ; Qualifiers
-
 [
   "static"
   "const"
 ] @type.qualifier
 
 ; Variables
-
-(identifier) @variable 
+(identifier) @variable
 
 (local_declaration
   (identifier) @variable.local
-  . "=")
-
+  .
+  "=")
 
 (global_variable) @variable.global
 
@@ -88,58 +77,76 @@
   (#any-of? @variable.builtin "base" "this" "vargv"))
 
 ; Parameters
-
 (parameter
-  . (identifier) @parameter)
+  .
+  (identifier) @variable.parameter)
 
 ; Properties (Slots)
-
 (deref_expression
   "."
-  . (identifier) @property)
+  .
+  (identifier) @variable.member)
 
 (member_declaration
-  (identifier) @property
-  . "=")
+  (identifier) @variable.member
+  .
+  "=")
 
 ((table_slot
-  . (identifier) @property
-  . ["=" ":"])
+  .
+  (identifier) @variable.member
+  .
+  [
+    "="
+    ":"
+  ])
   (#set! "priority" 105))
 
 ; Types
-
 ((identifier) @type
- (#lua-match? @type "^[A-Z]"))
+  (#lua-match? @type "^[A-Z]"))
 
 (class_declaration
   (identifier) @type
-  "extends"? . (identifier)? @type)
+  "extends"?
+  .
+  (identifier)? @type)
 
 (enum_declaration
   (identifier) @type)
 
 ; Attributes
-
 (attribute_declaration
   left: (identifier) @attribute)
 
 ; Functions & Methods
-
 (member_declaration
   (function_declaration
-    "::"? (_) @method . "(" (_)? ")"))
+    "::"?
+    (_) @function.method
+    .
+    "("
+    (_)?
+    ")"))
 
 ((function_declaration
-   "::"? (_) @function . "(" (_)? ")")
+  "::"?
+  (_) @function
+  .
+  "("
+  (_)?
+  ")")
   (#not-has-ancestor? @function member_declaration))
 
 (call_expression
   function: (identifier) @function.call)
 
 (call_expression
-  function: (deref_expression
-    "." . (identifier) @function.call))
+  function:
+    (deref_expression
+      "."
+      .
+      (identifier) @function.call))
 
 (call_expression
   (global_variable
@@ -150,14 +157,21 @@
   (identifier) @function
   "="
   (lambda_expression
-    "@" @symbol))
+    "@" @string.special.symbol))
 
-(call_expression 
+(call_expression
   [
-   function: (identifier) @function.builtin
-   function: (global_variable "::" (_) @function.builtin)
-   function: (deref_expression "." (_) @function.builtin)
+    function: (identifier) @function.builtin
+    function:
+      (global_variable
+        "::"
+        (_) @function.builtin)
+    function:
+      (deref_expression
+        "."
+        (_) @function.builtin)
   ]
+  ; format-ignore
   (#any-of? @function.builtin
    ; General Methods
    "assert" "array" "callee" "collectgarbage" "compilestring"
@@ -205,20 +219,20 @@
   "constructor" @constructor)
 
 ; Constants
-
 (const_declaration
   "const"
-  . (identifier) @constant)
+  .
+  (identifier) @constant)
 
 (enum_declaration
   "{"
-  . (identifier) @constant)
+  .
+  (identifier) @constant)
 
 ((identifier) @constant
- (#lua-match? @constant "^_*[A-Z][A-Z%d_]*$"))
+  (#lua-match? @constant "^_*[A-Z][A-Z%d_]*$"))
 
 ; Operators
-
 [
   "+"
   "-"
@@ -254,14 +268,25 @@
 ] @operator
 
 ; Punctuation
+[
+  "{"
+  "}"
+] @punctuation.bracket
 
-[ "{" "}" ] @punctuation.bracket
+[
+  "["
+  "]"
+] @punctuation.bracket
 
-[ "[" "]" ] @punctuation.bracket
+[
+  "("
+  ")"
+] @punctuation.bracket
 
-[ "(" ")" ] @punctuation.bracket
-
-[ "</" "/>" ] @punctuation.bracket
+[
+  "</"
+  "/>"
+] @punctuation.bracket
 
 [
   "."
@@ -276,13 +301,11 @@
 ] @punctuation.special
 
 ; Ternaries
-
 (ternary_expression
-  "?" @conditional.ternary
-  ":" @conditional.ternary)
+  "?" @keyword.conditional.ternary
+  ":" @keyword.conditional.ternary)
 
 ; Literals
-
 (string) @string
 
 (verbatim_string) @string.special
@@ -293,14 +316,13 @@
 
 (integer) @number
 
-(float) @float
+(float) @number.float
 
 (bool) @boolean
 
 (null) @constant.builtin
 
 ; Comments
-
 (comment) @comment @spell
 
 ((comment) @comment.documentation

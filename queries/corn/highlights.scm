@@ -1,4 +1,5 @@
 "let" @keyword
+
 "in" @keyword
 
 [
@@ -11,10 +12,15 @@
 "." @punctuation.delimiter
 
 (input) @constant
+
 (comment) @comment @spell
 
 (string) @string
+
 (integer) @number
-(float) @float
+
+(float) @number.float
+
 (boolean) @boolean
+
 (null) @keyword

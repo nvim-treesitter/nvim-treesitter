@@ -16,11 +16,9 @@
 [
   "*"
   "?"
-] @repeat
+] @keyword.repeat
 
-[
-  ":"
-] @punctuation.delimiter
+":" @punctuation.delimiter
 
 [
   "("

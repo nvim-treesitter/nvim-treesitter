@@ -8,7 +8,9 @@
 (preprocessor_constant) @constant.macro
 
 (number) @number
+
 (string) @string
+
 (escape_sequence) @string.escape
 
 [
@@ -22,28 +24,26 @@
   name: (identifier) @function)
 
 (parameter
-  name: (identifier) @parameter)
+  name: (identifier) @variable.parameter)
 
 (type) @type.builtin
 
 (aggregation_operator) @attribute
 
 (member_expression
-  member: (identifier) @field)
+  member: (identifier) @variable.member)
 
 (call_expression
   function: (identifier) @function.call)
 
 ((call_expression
-    function: (identifier) @function.builtin)
-  (#any-of? @function.builtin
-    "print" "printd" "printdln" "printf" "println"
-    "sprint" "sprintd" "sprintdln" "sprintf" "sprintln"))
+  function: (identifier) @function.builtin)
+  (#any-of? @function.builtin "print" "printd" "printdln" "printf" "println" "sprint" "sprintd" "sprintdln" "sprintf" "sprintln"))
 
 ((identifier) @variable.builtin
   (#lua-match? @variable.builtin "^\$+[0-9A-Z_a-z]+\$*$"))
 
-(shebang_line) @preproc
+(shebang_line) @keyword.directive
 
 (comment) @comment @spell
 
@@ -117,13 +117,15 @@
 ] @keyword
 
 "function" @keyword.function
+
 "in" @keyword.operator
+
 "return" @keyword.return
 
 [
   "if"
   "else"
-] @conditional
+] @keyword.conditional
 
 [
   "break"
@@ -131,12 +133,12 @@
   "for"
   "foreach"
   "while"
-] @repeat
+] @keyword.repeat
 
 [
   "try"
   "catch"
-] @exception
+] @keyword.exception
 
 [
   "%("
@@ -145,9 +147,10 @@
   "%?"
   (preprocessor_tokens)
   (embedded_code)
-] @preproc
+] @keyword.directive
 
-"@define" @define
+"@define" @keyword.directive.define
 
 "private" @type.qualifier
-"global" @storageclass
+
+"global" @keyword.storage

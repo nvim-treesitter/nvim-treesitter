@@ -23,24 +23,58 @@
   (token_tree)
   (macro_definition)
 ] @indent.begin
-(trait_item body: (_) @indent.begin)
-(string_literal (escape_sequence)) @indent.begin
 
-(block "}" @indent.end)
-(enum_item
-  body: (enum_variant_list "}" @indent.end))
-(impl_item
-  body: (declaration_list "}" @indent.end))
-(match_expression
-  body: (match_block "}" @indent.end))
-(mod_item
-  body: (declaration_list "}" @indent.end))
-(struct_item
-  body: (field_declaration_list "}" @indent.end))
+; Typing in "(" inside macro definitions breaks the tree entirely
+; Making macro_definition becoming errors
+; Offset this by adding back one indent for start of macro rules
+(ERROR
+  .
+  "macro_rules!"
+  "(" @indent.begin
+  (#set! indent.immediate)
+  (#set! indent.start_at_same_line))
+
 (trait_item
-  body: (declaration_list "}" @indent.end))
+  body: (_) @indent.begin)
 
-(impl_item (where_clause) @indent.dedent)
+(string_literal
+  (escape_sequence)) @indent.begin
+
+(block
+  "}" @indent.end)
+
+(enum_item
+  body:
+    (enum_variant_list
+      "}" @indent.end))
+
+(impl_item
+  body:
+    (declaration_list
+      "}" @indent.end))
+
+(match_expression
+  body:
+    (match_block
+      "}" @indent.end))
+
+(mod_item
+  body:
+    (declaration_list
+      "}" @indent.end))
+
+(struct_item
+  body:
+    (field_declaration_list
+      "}" @indent.end))
+
+(trait_item
+  body:
+    (declaration_list
+      "}" @indent.end))
+
+(impl_item
+  (where_clause) @indent.dedent)
 
 [
   "where"
@@ -48,13 +82,13 @@
   "]"
   "}"
 ] @indent.branch
-(impl_item (declaration_list) @indent.branch)
+
+(impl_item
+  (declaration_list) @indent.branch)
 
 [
   (line_comment)
   (string_literal)
 ] @indent.ignore
 
-
 (raw_string_literal) @indent.auto
-

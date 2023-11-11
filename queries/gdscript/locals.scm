@@ -1,5 +1,4 @@
-;; Scopes
-
+; Scopes
 [
   (if_statement)
   (elif_clause)
@@ -14,79 +13,109 @@
   (lambda)
   (get_body)
   (set_body)
-] @scope
+] @local.scope
 
-;; Parameters
+; Parameters
+(parameters
+  (identifier) @local.definition.parameter)
 
-(parameters (identifier) @definition.parameter)
-(default_parameter (identifier) @definition.parameter)
-(typed_parameter (identifier) @definition.parameter)
-(typed_default_parameter (identifier) @definition.parameter)
+(default_parameter
+  (identifier) @local.definition.parameter)
 
-;; Signals
+(typed_parameter
+  (identifier) @local.definition.parameter)
 
+(typed_default_parameter
+  (identifier) @local.definition.parameter)
+
+; Signals
 ; Can gdscript 2 signals be considered fields?
-(signal_statement (name) @definition.field)
+(signal_statement
+  (name) @local.definition.field)
 
-;; Variable Definitions
+; Variable Definitions
+(const_statement
+  (name) @local.definition.constant)
 
-(const_statement (name) @definition.constant)
 ; onready and export variations are only properties.
-(variable_statement (name) @definition.var)
+(variable_statement
+  (name) @local.definition.var)
 
-(setter) @reference
-(getter) @reference
+(setter) @local.reference
 
-;; Function Definition
+(getter) @local.reference
 
-((function_definition (name) @definition.function)
- (#set! "definition.function.scope" "parent"))
+; Function Definition
+((function_definition
+  (name) @local.definition.function)
+  (#set! "definition.function.scope" "parent"))
 
-;; Lambda
-
+; Lambda
 ; lambda names are not accessible and are only for debugging.
-(lambda (name) @definition.function)
+(lambda
+  (name) @local.definition.function)
 
-;; Source
+; Source
+(class_name_statement
+  (name) @local.definition.type)
 
-(class_name_statement (name) @definition.type)
+(source
+  (variable_statement
+    (name) @local.definition.field))
 
-(source (variable_statement (name) @definition.field))
-(source (onready_variable_statement (name) @definition.field))
-(source (export_variable_statement (name) @definition.field))
+(source
+  (onready_variable_statement
+    (name) @local.definition.field))
 
-;; Class
+(source
+  (export_variable_statement
+    (name) @local.definition.field))
 
-((class_definition (name) @definition.type)
- (#set! "definition.type.scope" "parent"))
+; Class
+((class_definition
+  (name) @local.definition.type)
+  (#set! "definition.type.scope" "parent"))
 
 (class_definition
-  (body (variable_statement (name) @definition.field)))
+  (body
+    (variable_statement
+      (name) @local.definition.field)))
+
 (class_definition
-  (body (onready_variable_statement (name) @definition.field)))
+  (body
+    (onready_variable_statement
+      (name) @local.definition.field)))
+
 (class_definition
-  (body (export_variable_statement (name) @definition.field)))
+  (body
+    (export_variable_statement
+      (name) @local.definition.field)))
+
 (class_definition
-  (body (signal_statement (name) @definition.field)))
+  (body
+    (signal_statement
+      (name) @local.definition.field)))
 
 ; Although a script is also a class, let's only define functions in an inner class as
 ; methods.
 ((class_definition
-  (body (function_definition (name) @definition.method)))
- (#set! "definition.method.scope" "parent"))
+  (body
+    (function_definition
+      (name) @local.definition.method)))
+  (#set! "definition.method.scope" "parent"))
 
-;; Enum
+; Enum
+(enum_definition
+  (name) @local.definition.enum)
 
-((enum_definition (name) @definition.enum))
+; Repeat
+(for_statement
+  .
+  (identifier) @local.definition.var)
 
-;; Repeat
+; Match Statement
+(pattern_binding
+  (identifier) @local.definition.var)
 
-(for_statement . (identifier) @definition.var)
-
-;; Match Statement
-
-(pattern_binding (identifier) @definition.var)
-
-;; References
-
-(identifier) @reference
+; References
+(identifier) @local.reference

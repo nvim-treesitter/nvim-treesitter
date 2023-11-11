@@ -1,34 +1,93 @@
-[ (line_comment) (block_comment) ] @comment @spell
+[
+  (line_comment)
+  (block_comment)
+] @comment @spell
 
 (label_decl) @label
 
 (string) @string
 
-(instruction opcode: _ @function.call)
+(instruction
+  opcode: _ @function.call)
 
-[ "pins" "x" "y" "null" "isr" "osr" "osre" "status" "pc" "exec" ] @constant.builtin
-(wait_source [ "irq" "gpio" "pin" ] @constant.builtin)
+[
+  "pins"
+  "x"
+  "y"
+  "null"
+  "isr"
+  "osr"
+  "osre"
+  "status"
+  "pc"
+  "exec"
+] @constant.builtin
 
-(out_target "pindirs" @constant.builtin)
-(set_target "pindirs" @constant.builtin)
-(directive "pindirs" @attribute)
+(wait_source
+  [
+    "irq"
+    "gpio"
+    "pin"
+  ] @constant.builtin)
 
-(condition [ "--" "!=" ] @operator)
-(expression [ "+" "-" "*" "/" "|" "&" "^" "::" ] @operator)
+(out_target
+  "pindirs" @constant.builtin)
+
+(set_target
+  "pindirs" @constant.builtin)
+
+(directive
+  "pindirs" @attribute)
+
+(condition
+  [
+    "--"
+    "!="
+  ] @operator)
+
+(expression
+  [
+    "+"
+    "-"
+    "*"
+    "/"
+    "|"
+    "&"
+    "^"
+    "::"
+  ] @operator)
+
 (not) @operator
 
-[ (optional) (irq_modifiers) ] @type.qualifier
+[
+  (optional)
+  (irq_modifiers)
+] @type.qualifier
 
-[ "block" "noblock" "rel" ] @attribute
+[
+  "block"
+  "noblock"
+  "rel"
+] @attribute
 
-[ "iffull" "ifempty" ] @conditional
+[
+  "iffull"
+  "ifempty"
+] @keyword.conditional
 
-"public" @storageclass
+"public" @keyword.storage
 
 (integer) @number
 
-(directive (identifier) @variable)
-(directive (symbol_def (identifier) @variable))
-(value (identifier) @variable)
+(directive
+  (identifier) @variable)
 
-(directive directive: _ @preproc)
+(directive
+  (symbol_def
+    (identifier) @variable))
+
+(value
+  (identifier) @variable)
+
+(directive
+  directive: _ @keyword.directive)

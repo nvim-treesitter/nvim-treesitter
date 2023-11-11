@@ -1,7 +1,5 @@
 ; inherits: soql
-
-;;; Apex + SOQL
-
+; Apex + SOQL
 [
   "["
   "]"
@@ -17,31 +15,27 @@
   ":"
   "?"
   ";"
- ] @punctuation.delimiter
+] @punctuation.delimiter
 
-;; Default general color defination
-
+; Default general color defination
 (identifier) @variable
 
 (type_identifier) @type
 
-;; Methods
-
+; Methods
 (method_declaration
-  name: (identifier) @method)
+  name: (identifier) @function.method)
 
 (method_invocation
-  name: (identifier) @method.call)
+  name: (identifier) @function.method.call)
 
 (super) @function.builtin
 
-;; Annotations
-
+; Annotations
 (annotation
   name: (identifier) @attribute)
 
-;; Types
-
+; Types
 (interface_declaration
   name: (identifier) @type)
 
@@ -49,7 +43,7 @@
   name: (identifier) @type)
 
 (class_declaration
-  (superclass) @type) 
+  (superclass) @type)
 
 (enum_declaration
   name: (identifier) @type)
@@ -57,27 +51,30 @@
 (enum_constant
   name: (identifier) @constant)
 
-(type_arguments "<" @punctuation.delimiter)
-(type_arguments ">" @punctuation.delimiter)
+(type_arguments
+  "<" @punctuation.delimiter)
 
-((field_access
-  object: (identifier) @type))
+(type_arguments
+  ">" @punctuation.delimiter)
+
+(field_access
+  object: (identifier) @type)
 
 (field_access
   field: (identifier) @property)
 
 ((scoped_identifier
   scope: (identifier) @type)
- (#match? @type "^[A-Z]"))
+  (#match? @type "^[A-Z]"))
 
 ((method_invocation
   object: (identifier) @type)
- (#match? @type "^[A-Z]"))
+  (#match? @type "^[A-Z]"))
 
 (method_declaration
   (formal_parameters
     (formal_parameter
-      name: (identifier) @parameter)))
+      name: (identifier) @variable.parameter)))
 
 (constructor_declaration
   name: (identifier) @constructor)
@@ -86,16 +83,21 @@
 
 (assignment_operator) @operator
 
-(update_expression ["++" "--"] @operator)
+(update_expression
+  [
+    "++"
+    "--"
+  ] @operator)
 
 (trigger_declaration
   name: (identifier) @type
   object: (identifier) @type
   (trigger_event) @keyword
-  ("," (trigger_event) @keyword)*)
+  (","
+    (trigger_event) @keyword)*)
 
 [
-  "@" 
+  "@"
   "="
   "!="
   "<="
@@ -103,54 +105,67 @@
 ] @operator
 
 (binary_expression
-  operator: [
-    ">"
-    "<"
-    "=="
-    "==="
-    "!=="
-    "&&"
-    "||"
-    "+"
-    "-"
-    "*"
-    "/"
-    "&"
-    "|"
-    "^"
-    "%"
-    "<<"
-    ">>"
-    ">>>"] @operator)
+  operator:
+    [
+      ">"
+      "<"
+      "=="
+      "==="
+      "!=="
+      "&&"
+      "||"
+      "+"
+      "-"
+      "*"
+      "/"
+      "&"
+      "|"
+      "^"
+      "%"
+      "<<"
+      ">>"
+      ">>>"
+    ] @operator)
 
 (unary_expression
-  operator: [
-    "+"
-    "-"
-    "!"
-    "~"
-  ]) @operator
+  operator:
+    [
+      "+"
+      "-"
+      "!"
+      "~"
+    ]) @operator
 
-(map_initializer "=>" @operator)
+(map_initializer
+  "=>" @operator)
 
 [
   (boolean_type)
   (void_type)
-] @type.builtin;;
+] @type.builtin
 
 ; Fields
-
 (field_declaration
-  declarator: (variable_declarator
-    name: (identifier) @field))
+  declarator:
+    (variable_declarator
+      name: (identifier) @variable.member))
 
 (field_access
-  field: (identifier) @field)
+  field: (identifier) @variable.member)
 
 ; Variables
-
 (field_declaration
-  (modifiers (modifier ["final" "static"])(modifier ["final" "static"]))
+  (modifiers
+    (modifier
+      [
+        "final"
+        "static"
+      ])
+    (modifier
+      [
+        "final"
+        "static"
+      ]))
   (variable_declarator
     name: (identifier) @constant))
 
@@ -163,7 +178,6 @@
 (this) @variable.builtin
 
 ; Literals
-
 [
   (int)
   (decimal)
@@ -179,40 +193,37 @@
 
 (null_literal) @constant.builtin
 
-;; ;; Keywords
-
+; ;; Keywords
 [
- "abstract"
- "final"
- "private"
- "protected"
- "public"
- "static"
- ] @type.qualifier
+  "abstract"
+  "final"
+  "private"
+  "protected"
+  "public"
+  "static"
+] @type.qualifier
 
 [
   "if"
   "else"
   "switch"
-] @conditional
+] @keyword.conditional
 
 [
   "for"
   "while"
   "do"
   "break"
-] @repeat
+] @keyword.repeat
+
+"return" @keyword.return
 
 [
-  "return"
-] @keyword.return
-
-[
- "throw"
- "finally"
- "try"
- "catch"
- ] @exception
+  "throw"
+  "finally"
+  "try"
+  "catch"
+] @keyword.exception
 
 "new" @keyword.operator
 
@@ -245,4 +256,4 @@
   "inherited_sharing"
 ] @keyword
 
-"System.runAs" @type.builtin
+"System.runAs" @function.builtin

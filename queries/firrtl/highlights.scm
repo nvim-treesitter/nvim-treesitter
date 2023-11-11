@@ -1,30 +1,26 @@
 ; Namespaces
+(circuit
+  (identifier) @module)
 
-(circuit (identifier) @namespace)
-
-(module (identifier) @namespace)
+(module
+  (identifier) @module)
 
 ; Types
-
 ((identifier) @type
   (#lua-match? @type "^[A-Z][A-Za-z0-9_$]*$"))
 
 ; Keywords
-
 [
   "circuit"
   "module"
   "extmodule"
-
   "flip"
   "parameter"
   "reset"
   "wire"
-
   "cmem"
   "smem"
   "mem"
-
   "reg"
   "with"
   "mport"
@@ -34,39 +30,32 @@
   "is"
   "invalid"
   "skip"
-
   "infer"
   "read"
   "write"
   "rdwr"
-
   "defname"
 ] @keyword
 
 ; Qualifiers
-
 (qualifier) @type.qualifier
 
 ; Storageclasses
-
 [
   "input"
   "output"
-] @storageclass
+] @keyword.storage
 
 ; Conditionals
-
 [
   "when"
   "else"
-] @conditional
+] @keyword.conditional
 
 ; Annotations
-
 (info) @attribute
 
 ; Builtins
-
 [
   "stop"
   "printf"
@@ -89,7 +78,6 @@
 ] @type.builtin
 
 ; Fields
-
 [
   "data-type"
   "depth"
@@ -99,38 +87,49 @@
   "reader"
   "writer"
   "readwriter"
-] @field.builtin
+] @variable.member.builtin
 
-((field_id) @field
+((field_id) @variable.member
   (#set! "priority" 105))
 
-(port (identifier) @field)
+(port
+  (identifier) @variable.member)
 
-(wire (identifier) @field)
+(wire
+  (identifier) @variable.member)
 
-(cmem (identifier) @field)
+(cmem
+  (identifier) @variable.member)
 
-(smem (identifier) @field)
+(smem
+  (identifier) @variable.member)
 
-(memory (identifier) @field)
+(memory
+  (identifier) @variable.member)
 
-(register (identifier) @field)
+(register
+  (identifier) @variable.member)
 
 ; Parameters
+(primitive_operation
+  (identifier) @variable.parameter)
 
-(primitive_operation (identifier) @parameter)
+(mux
+  (identifier) @variable.parameter)
 
-(mux (identifier) @parameter)
-(printf (identifier) @parameter)
-(reset (identifier) @parameter)
-(stop (identifier) @parameter)
+(printf
+  (identifier) @variable.parameter)
+
+(reset
+  (identifier) @variable.parameter)
+
+(stop
+  (identifier) @variable.parameter)
 
 ; Variables
-
 (identifier) @variable
 
 ; Operators
-
 (primop) @keyword.operator
 
 [
@@ -143,7 +142,6 @@
 ] @operator
 
 ; Literals
-
 [
   (uint)
   (number)
@@ -151,7 +149,7 @@
 
 (number_str) @string.special
 
-(double) @float
+(double) @number.float
 
 (string) @string
 
@@ -164,14 +162,25 @@
 ] @constant.builtin
 
 ; Punctuation
+[
+  "{"
+  "}"
+] @punctuation.bracket
 
-[ "{" "}" ] @punctuation.bracket
+[
+  "["
+  "]"
+] @punctuation.bracket
 
-[ "[" "]" ] @punctuation.bracket
+[
+  "<"
+  ">"
+] @punctuation.bracket
 
-[ "<" ">" ] @punctuation.bracket
-
-[ "(" ")" ] @punctuation.bracket
+[
+  "("
+  ")"
+] @punctuation.bracket
 
 [
   ","
@@ -180,7 +189,10 @@
 ] @punctuation.delimiter
 
 ; Comments
-
 (comment) @comment @spell
 
-["=>" "<=" "="] @operator
+[
+  "=>"
+  "<="
+  "="
+] @operator

@@ -6,16 +6,16 @@
   (json_array)
   (json_object)
   (parenthesized_expression)
-] @scope
+] @local.scope
 
-(symbol) @reference
+(symbol) @local.reference
 
-(keyword) @definition.field
+(keyword) @local.definition.field
 
 (json_object
-	(simplexpr
-    (ident) @definition.field))
+  (simplexpr
+    (ident) @local.definition.field))
 
 (ast_block
   (symbol)
-  (ident) @definition.type)
+  (ident) @local.definition.type)

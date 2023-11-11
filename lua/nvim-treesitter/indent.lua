@@ -23,7 +23,7 @@ end
 ---@return TSNode
 local function get_first_node_at_line(root, lnum, col)
   col = col or vim.fn.indent(lnum)
-  return root:descendant_for_range(lnum - 1, col, lnum - 1, col)
+  return root:descendant_for_range(lnum - 1, col, lnum - 1, col + 1)
 end
 
 ---@param root TSNode
@@ -32,7 +32,7 @@ end
 ---@return TSNode
 local function get_last_node_at_line(root, lnum, col)
   col = col or (#getline(lnum) - 1)
-  return root:descendant_for_range(lnum - 1, col, lnum - 1, col)
+  return root:descendant_for_range(lnum - 1, col, lnum - 1, col + 1)
 end
 
 ---@param node TSNode
@@ -124,7 +124,7 @@ function M.get_indent(lnum)
   -- some languages like Python will actually have worse results when re-parsing at opened new line
   if not M.avoid_force_reparsing[root_lang] then
     -- Reparse in case we got triggered by ":h indentkeys"
-    parser:parse { vim.fn.line "w0" - 1, vim.fn.line "w$" - 1 }
+    parser:parse { vim.fn.line "w0" - 1, vim.fn.line "w$" }
   end
 
   -- Get language tree with smallest range around node that's not a comment parser

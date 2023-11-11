@@ -20,20 +20,20 @@
   (keyword_from_text)
 ] @keyword
 
-(keyword_loop) @repeat
+(keyword_loop) @keyword.repeat
 
-(keyword_case) @conditional
+(keyword_case) @keyword.conditional
 
 [
- (literal_string)
- (f_string)
- (s_string)
+  (literal_string)
+  (f_string)
+  (s_string)
 ] @string
 
 (assignment
-  alias: (field) @field)
+  alias: (field) @variable.member)
 
-alias: (identifier) @field
+alias: (identifier) @variable.member
 
 (comment) @comment @spell
 
@@ -75,7 +75,7 @@ alias: (identifier) @field
 
 (integer) @number
 
-(decimal_number) @float
+(decimal_number) @number.float
 
 [
   (keyword_min)
@@ -99,18 +99,18 @@ alias: (identifier) @field
 ] @function
 
 [
- (keyword_side)
- (keyword_format)
+  (keyword_side)
+  (keyword_format)
 ] @attribute
 
 [
- (keyword_version)
- (keyword_target)
+  (keyword_version)
+  (keyword_target)
 ] @type.qualifier
 
 (target) @function.builtin
 
- [
+[
   (date)
   (time)
   (timestamp)
@@ -123,29 +123,24 @@ alias: (identifier) @field
   (keyword_full)
   (keyword_csv)
   (keyword_json)
-] @method.call
+] @function.method.call
 
 [
   (keyword_true)
   (keyword_false)
 ] @boolean
 
-[
- (keyword_in)
-] @keyword.operator
+(keyword_in) @keyword.operator
 
 (function_definition
   (keyword_let)
   name: (identifier) @function)
 
 (parameter
-  (identifier) @parameter)
+  (identifier) @variable.parameter)
 
 (variable
   (keyword_let)
   name: (identifier) @constant)
 
-
- (keyword_null) @constant.builtin
-
-
+(keyword_null) @constant.builtin

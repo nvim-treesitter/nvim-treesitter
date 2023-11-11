@@ -1,123 +1,123 @@
 PRIVATE &password
-; <- keyword
-;        ^ variable.builtin
+; <- @keyword
+;        ^ @variable.builtin
 ENTRY &password
-; <- keyword
-;        ^ parameter
+; <- @keyword
+;        ^ @variable.parameter
 
 ENTRY %LINE &salt
-; <- keyword
-;      ^ constant.builtin
-;            ^ parameter
+; <- @keyword
+;      ^ @constant.builtin
+;            ^ @variable.parameter
 
 IF "&password"==""
-; <- conditional
-;  ^ string
-;    ^ variable.builtin
-;             ^ operator
+; <- @keyword.conditional
+;  ^ @string
+;    ^ @variable.builtin
+;             ^ @operator
 (
     ECHO "Failed to provide password."
     ENDDO
-;   ^ keyword.return
+;   ^ @keyword.return
 )
 ELSE
-; <- conditional
+; <- @keyword.conditional
 (
     PRIVATE &pass
 
     &pass=FALSE()
-;          ^ function.builtin
+;          ^ @function.builtin
     WHILE !&pass
-;         ^ operator
+;         ^ @operator
     (
         GOSUB verify_password "&password"
-;             ^ function.call
+;             ^ @function.call
         RETURNVALUES &pass
-;                     ^ parameter
+;                     ^ @variable.parameter
         WAIT 10.ms
-;            ^ float
+;            ^ @number.float
     )
 
     IF !&pass
         GOTO fail
-;            ^ label
+;            ^ @label
     ELSE
     (
         GOSUB start_debug
-;             ^ function.call
+;             ^ @function.call
     )
 )
 
 LOCAL &num
-;      ^ variable.builtin
+;      ^ @variable.builtin
 
 &num = 2.
-;      ^ number
+;      ^ @number
 
 RePeaT &num PRINT "Password: &password"
-;       ^ variable.builtin
-;                             ^ variable.builtin
+;       ^ @variable.builtin
+;                             ^ @variable.builtin
 
 WinCLEAR
 FramePOS ,,,,Maximized
-;        ^ punctuation.delimiter
-;            ^ constant.builtin
+;        ^ @punctuation.delimiter
+;            ^ @constant.builtin
 WinPOS 0% 50% 100% 35%
-;      ^ float
+;      ^ @number.float
 COVerage.ListFunc
 
 ENDDO
 
 
 fail:
-; <- label
+; <- @label
     PRINT %ERROR "Password verification failed."
     END
-;   ^ keyword.return
+;   ^ @keyword.return
 
 
 verify_password:
-; <- function
+; <- @function
 (
     PARAMETERS &password
-;               ^ parameter
+;               ^ @variable.parameter
 
     SYStem.Option.KEYCODE "&password"
     SYStem.JtagClock  1kHz
-;                     ^ float
+;                     ^ @number.float
     SYStem.Mode.Attach
 
     Data.Set N: EAXI:0x34000000 %Long 0x34000100 0x34000021 /verify
-;            ^ constant.builtin
-;               ^ constant.builtin
-;                    ^ number
-;                                ^ constant.builtin
-;                                     ^ number
-;                                                            ^ constant.builtin
+;            ^ @constant.builtin
+;               ^ @constant.builtin
+;                    ^ @number
+;                                ^ @constant.builtin
+;                                     ^ @number
+;                                                            ^ @constant.builtin
 
     RETURN TRUE()
-;   ^ keyword.return
+;   ^ @keyword.return
 )
 
 
 SUBROUTINE start_debug
-; <- keyword.function
-;          ^ function
+; <- @keyword.function
+;          ^ @function
 (
     COVerage.ListModule %MULTI.OBC \sieve
-;    ^ keyword
-;                        ^ constant.builtin
-;                                  ^ symbol
+;    ^ @keyword
+;                        ^ @constant.builtin
+;                                  ^ @string.special.symbol
 
     Var.DRAW flags[0..16] /Alternate 3
-;    ^ keyword
-;             ^ variable
-;                          ^ constant.builtin
-;                                    ^ number
+;    ^ @keyword
+;             ^ @variable
+;                          ^ @constant.builtin
+;                                    ^ @number
 
     Go main
     RETURN
-;   ^ keyword.return
+;   ^ @keyword.return
 )
 
 // vim: set ft=t32:

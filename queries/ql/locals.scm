@@ -1,30 +1,49 @@
 ; SCOPES
-(module) @scope
-(dataclass) @scope
-(datatype) @scope
-;; TODO does not work
-;(classMember (body)  @scope)
-(memberPredicate (body)  @scope)
-(classlessPredicate (body)  @scope)
-(quantified (conjunction) @scope)
-(select) @scope
+(module) @local.scope
+
+(dataclass) @local.scope
+
+(datatype) @local.scope
+
+; TODO does not work
+;(classMember (body)  @local.scope)
+(memberPredicate
+  (body) @local.scope)
+
+(classlessPredicate
+  (body) @local.scope)
+
+(quantified
+  (conjunction) @local.scope)
+
+(select) @local.scope
 
 ; DEFINITIONS
-
 ; module
-(module name: (moduleName) @definition.namespace)
+(module
+  name: (moduleName) @local.definition.namespace)
 
 ; classes
-(dataclass name: (className) @definition.type)
-(datatype name: (className) @definition.type)
+(dataclass
+  name: (className) @local.definition.type)
+
+(datatype
+  name: (className) @local.definition.type)
 
 ; predicates
-(charpred (className) @definition.method)
-(memberPredicate name: (predicateName) @definition.method)
-(classlessPredicate name: (predicateName) @definition.function)
+(charpred
+  (className) @local.definition.method)
+
+(memberPredicate
+  name: (predicateName) @local.definition.method)
+
+(classlessPredicate
+  name: (predicateName) @local.definition.function)
 
 ; variables
-(varDecl (varName (simpleId) @definition.var))
+(varDecl
+  (varName
+    (simpleId) @local.definition.var))
 
 ; REFERENCES
-(simpleId) @reference
+(simpleId) @local.reference

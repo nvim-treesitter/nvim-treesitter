@@ -3,9 +3,10 @@
 [
   (preproc_include)
   (dtsi_include)
-] @include
+] @keyword.import
 
 (preproc_def) @constant.macro
+
 (preproc_function_def) @function.macro
 
 [
@@ -22,14 +23,39 @@
 (integer_literal) @number
 
 (identifier) @variable
-(node (identifier) @namespace)
-(property (identifier) @property)
-(labeled_item (identifier) @label)
-(call_expression (identifier) @function.macro)
+
+(node
+  (identifier) @module)
+
+(property
+  (identifier) @property)
+
+(node
+  label: (_) @label)
+
+(call_expression
+  (identifier) @function.macro)
 
 (reference) @label ; referencing labeled_item.identifier
+
 (unit_address) @constant
 
-[ "=" ] @operator
-[ "(" ")" "[" "]" "{" "}" "<" ">" ] @punctuation.bracket
-[ ";" ":" "," "@" ] @punctuation.delimiter
+"=" @operator
+
+[
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+  "<"
+  ">"
+] @punctuation.bracket
+
+[
+  ";"
+  ":"
+  ","
+  "@"
+] @punctuation.delimiter

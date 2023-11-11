@@ -1,26 +1,33 @@
 (symbol) @variable
 
-(label name: (symbol) @label)
+(label
+  name: (symbol) @label)
 
 [
   (instruction_mnemonic)
   (directive_mnemonic)
 ] @function.builtin
 
-(include (directive_mnemonic) @include)
-(include_bin (directive_mnemonic) @include)
-(include_dir (directive_mnemonic) @include)
+(include
+  (directive_mnemonic) @keyword.import)
 
+(include_bin
+  (directive_mnemonic) @keyword.import)
+
+(include_dir
+  (directive_mnemonic) @keyword.import)
 
 (size) @attribute
 
-(macro_definition name: (symbol) @function.macro)
-(macro_call name: (symbol) @function.macro)
+(macro_definition
+  name: (symbol) @function.macro)
 
-[
-  (path)
-  (string_literal)
-] @string
+(macro_call
+  name: (symbol) @function.macro)
+
+(string_literal) @string
+
+(path) @string.special.path
 
 [
   (decimal_literal)
@@ -32,7 +39,7 @@
 [
   (reptn)
   (carg)
-  (narg) 
+  (narg)
   (macro_arg)
 ] @variable.builtin
 
@@ -44,8 +51,11 @@
   (named_register)
 ] @keyword
 
-(repeat (control_mnemonic) @repeat)
-(conditional (control_mnemonic) @conditional)
+(repeat
+  (control_mnemonic) @keyword.repeat)
+
+(conditional
+  (control_mnemonic) @keyword.conditional)
 
 (comment) @comment @spell
 
@@ -68,4 +78,4 @@
   ")+"
 ] @punctuation.bracket
 
-(section) @namespace
+(section) @module

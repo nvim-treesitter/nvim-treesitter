@@ -2,98 +2,126 @@
 [
   (python_identifier)
   (identifier)
-] @reference
+] @local.reference
 
 ; Imports
 (aliased_import
-  alias: (python_identifier) @definition.import)
+  alias: (python_identifier) @local.definition.import)
+
 (import_statement
-  name: (dotted_name ((python_identifier) @definition.import)))
+  name:
+    (dotted_name
+      (python_identifier) @local.definition.import))
+
 (import_from_statement
-  name: (dotted_name ((python_identifier) @definition.import)))
+  name:
+    (dotted_name
+      (python_identifier) @local.definition.import))
 
 ; Function with parameters, defines parameters
 (parameters
-  (python_identifier) @definition.parameter)
+  (python_identifier) @local.definition.parameter)
 
 (default_parameter
-  (python_identifier) @definition.parameter)
+  (python_identifier) @local.definition.parameter)
 
 (typed_parameter
-  (python_identifier) @definition.parameter)
+  (python_identifier) @local.definition.parameter)
 
 (typed_default_parameter
-  (python_identifier) @definition.parameter)
+  (python_identifier) @local.definition.parameter)
 
 ; *args parameter
 (parameters
   (list_splat_pattern
-    (python_identifier) @definition.parameter))
+    (python_identifier) @local.definition.parameter))
 
 ; **kwargs parameter
 (parameters
   (dictionary_splat_pattern
-    (python_identifier) @definition.parameter))
+    (python_identifier) @local.definition.parameter))
 
 ; Function defines function and scope
 ((python_function_definition
-  name: (python_identifier) @definition.function) @scope
- (#set! definition.function.scope "parent"))
+  name: (python_identifier) @local.definition.function) @local.scope
+  (#set! definition.function.scope "parent"))
 
-(function_definition (identifier) @definition.function)
+(function_definition
+  (identifier) @local.definition.function)
 
-(anonymous_python_function (identifier) @definition.function)
+(anonymous_python_function
+  (identifier) @local.definition.function)
 
-;;; Loops
+; Loops
 ; not a scope!
 (for_statement
-  left: (pattern_list
-          (python_identifier) @definition.var))
+  left:
+    (pattern_list
+      (python_identifier) @local.definition.var))
+
 (for_statement
-  left: (tuple_pattern
-          (python_identifier) @definition.var))
+  left:
+    (tuple_pattern
+      (python_identifier) @local.definition.var))
+
 (for_statement
-  left: (python_identifier) @definition.var)
+  left: (python_identifier) @local.definition.var)
 
 ; not a scope!
-;(while_statement) @scope
-
+;(while_statement) @local.scope
 ; for in list comprehension
 (for_in_clause
-  left: (python_identifier) @definition.var)
+  left: (python_identifier) @local.definition.var)
+
 (for_in_clause
-  left: (tuple_pattern
-          (python_identifier) @definition.var))
+  left:
+    (tuple_pattern
+      (python_identifier) @local.definition.var))
+
 (for_in_clause
-  left: (pattern_list
-          (python_identifier) @definition.var))
+  left:
+    (pattern_list
+      (python_identifier) @local.definition.var))
 
-(dictionary_comprehension) @scope
-(list_comprehension) @scope
-(set_comprehension) @scope
+(dictionary_comprehension) @local.scope
 
-;;; Assignments
+(list_comprehension) @local.scope
+
+(set_comprehension) @local.scope
+
+; Assignments
+(assignment
+  left: (python_identifier) @local.definition.var)
 
 (assignment
- left: (python_identifier) @definition.var)
+  left:
+    (pattern_list
+      (python_identifier) @local.definition.var))
 
 (assignment
- left: (pattern_list
-   (python_identifier) @definition.var))
-(assignment
- left: (tuple_pattern
-   (python_identifier) @definition.var))
+  left:
+    (tuple_pattern
+      (python_identifier) @local.definition.var))
 
 (assignment
- left: (attribute
-   (python_identifier)
-   (python_identifier) @definition.field))
+  left:
+    (attribute
+      (python_identifier)
+      (python_identifier) @local.definition.field))
 
-(variable_assignment (identifier) operator: [ "=" "?=" "??=" ":=" ] @definition.var)
+(variable_assignment
+  (identifier)
+  operator:
+    [
+      "="
+      "?="
+      "??="
+      ":="
+    ] @local.definition.var)
 
 ; Walrus operator  x := 1
 (named_expression
-  (python_identifier) @definition.var)
+  (python_identifier) @local.definition.var)
 
 (as_pattern
-  alias: (as_pattern_target) @definition.var)
+  alias: (as_pattern_target) @local.definition.var)

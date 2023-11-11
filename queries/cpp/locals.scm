@@ -1,75 +1,82 @@
 ; inherits: c
-
-;; Parameters
+; Parameters
 (variadic_parameter_declaration
-  declarator: (variadic_declarator
-                (identifier) @definition.parameter))
+  declarator:
+    (variadic_declarator
+      (identifier) @local.definition.parameter))
+
 (optional_parameter_declaration
-  declarator: (identifier) @definition.parameter)
-;; Class / struct definitions
-(class_specifier) @scope
+  declarator: (identifier) @local.definition.parameter)
+
+; Class / struct definitions
+(class_specifier) @local.scope
 
 (reference_declarator
-  (identifier) @definition.var)
+  (identifier) @local.definition.var)
 
 (variadic_declarator
-  (identifier) @definition.var)
+  (identifier) @local.definition.var)
 
 (struct_specifier
-  name: (qualified_identifier
-          name: (type_identifier) @definition.type))
+  name:
+    (qualified_identifier
+      name: (type_identifier) @local.definition.type))
 
 (class_specifier
-  name: (type_identifier) @definition.type)
+  name: (type_identifier) @local.definition.type)
 
 (concept_definition
-  name: (identifier) @definition.type)
+  name: (identifier) @local.definition.type)
 
 (class_specifier
-  name: (qualified_identifier
-          name: (type_identifier) @definition.type))
+  name:
+    (qualified_identifier
+      name: (type_identifier) @local.definition.type))
 
 (alias_declaration
-  name: (type_identifier) @definition.type)
+  name: (type_identifier) @local.definition.type)
 
 ;template <typename T>
 (type_parameter_declaration
-  (type_identifier) @definition.type)
-(template_declaration) @scope
+  (type_identifier) @local.definition.type)
 
-;; Namespaces
+(template_declaration) @local.scope
+
+; Namespaces
 (namespace_definition
-  name: (namespace_identifier) @definition.namespace
-  body: (_) @scope)
+  name: (namespace_identifier) @local.definition.namespace
+  body: (_) @local.scope)
 
 (namespace_definition
-  name: (nested_namespace_specifier) @definition.namespace
-  body: (_) @scope)
+  name: (nested_namespace_specifier) @local.definition.namespace
+  body: (_) @local.scope)
 
-((namespace_identifier) @reference
-                        (#set! reference.kind "namespace"))
+((namespace_identifier) @local.reference
+  (#set! reference.kind "namespace"))
 
-;; Function definitions
+; Function definitions
 (template_function
-  name: (identifier) @definition.function) @scope
+  name: (identifier) @local.definition.function) @local.scope
 
 (template_method
-  name: (field_identifier) @definition.method) @scope
+  name: (field_identifier) @local.definition.method) @local.scope
 
 (function_declarator
-  declarator: (qualified_identifier
-                name: (identifier) @definition.function)) @scope
+  declarator:
+    (qualified_identifier
+      name: (identifier) @local.definition.function)) @local.scope
 
 (field_declaration
-  declarator: (function_declarator
-                (field_identifier) @definition.method))
+  declarator:
+    (function_declarator
+      (field_identifier) @local.definition.method))
 
-(lambda_expression) @scope
+(lambda_expression) @local.scope
 
-;; Control structures
+; Control structures
 (try_statement
-  body: (_) @scope)
+  body: (_) @local.scope)
 
-(catch_clause) @scope
+(catch_clause) @local.scope
 
-(requires_expression) @scope
+(requires_expression) @local.scope

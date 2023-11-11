@@ -1,19 +1,19 @@
 #include <iostream>
 #include <cstdlib>
-//    ^ include
-//       ^ string
+//    ^ @keyword.import
+//       ^ @string
 
 auto main( int argc, char** argv ) -> int
-// ^ type.builtin
-      //       ^ parameter
-      //    ^ type.builtin
-      //    ^ type.builtin
-      //                  ^ operator
+// ^ @type.builtin
+      //       ^ @variable.parameter
+      //    ^ @type.builtin
+      //    ^ @type.builtin
+      //                  ^ @operator
 {
     std::cout << "Hello world!" << std::endl;
-    //  ^ punctuation.delimiter
+    //  ^ @punctuation.delimiter
     
     return EXIT_SUCCESS;
-    // ^ keyword.return
-    //      ^ constant
+    // ^ @keyword.return
+    //      ^ @constant
 }

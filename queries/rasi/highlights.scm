@@ -1,15 +1,19 @@
 (comment) @comment @spell
 
 "@media" @keyword
-"@import" @include
-"@theme" @include
+
+"@import" @keyword.import
+
+"@theme" @keyword.import
 
 (string_value) @string
+
 [
   (integer_value)
   (float_value)
   "0"
- ] @number
+] @number
+
 (boolean_value) @boolean
 
 [
@@ -22,59 +26,114 @@
   (orientation_value)
   (cursor_value)
   "inherit"
- ] @keyword
+] @keyword
 
+(url_image
+  "url" @function.builtin)
 
-(url_image "url" @function.builtin)
-(gradient_image "linear-gradient" @function.builtin)
-(distance_calc "calc" @function.builtin)
-(rgb_color ["rgb" "rgba"] @function.builtin)
-(hsl_color ["hsl" "hsla"] @function.builtin)
-(hwb_color ["hwb" "hwba"] @function.builtin)
-(cmyk_color "cmyk" @function.builtin)
+(gradient_image
+  "linear-gradient" @function.builtin)
+
+(distance_calc
+  "calc" @function.builtin)
+
+(rgb_color
+  [
+    "rgb"
+    "rgba"
+  ] @function.builtin)
+
+(hsl_color
+  [
+    "hsl"
+    "hsla"
+  ] @function.builtin)
+
+(hwb_color
+  [
+    "hwb"
+    "hwba"
+  ] @function.builtin)
+
+(cmyk_color
+  "cmyk" @function.builtin)
 
 [
- "("
- ")"
- "{"
- "}"
- "["
- "]"
- ] @punctuation.bracket
+  "("
+  ")"
+  "{"
+  "}"
+  "["
+  "]"
+] @punctuation.bracket
 
 (distance_op) @operator
 
 [
- ";"
- ","
- ":"
- "."
- ] @punctuation.delimiter
+  ";"
+  ","
+  ":"
+  "."
+] @punctuation.delimiter
 
 [
- (angle_unit)
- (integer_distance_unit)
- (float_distance_unit)
- ] @type
+  (angle_unit)
+  (integer_distance_unit)
+  (float_distance_unit)
+] @type
+
 (percentage) @number
-(percentage "%" @type)
+
+(percentage
+  "%" @type)
 
 [
   (global_selector)
   (id_selector)
- ] @namespace
+] @module
 
-(id_selector_view [ "normal" "selected" "alternate" ] @attribute)
-(id_selector_state [ "normal" "urgent" "active" ] @type.qualifier)
+(id_selector_view
+  [
+    "normal"
+    "selected"
+    "alternate"
+  ] @attribute)
+
+(id_selector_state
+  [
+    "normal"
+    "urgent"
+    "active"
+  ] @type.qualifier)
 
 (hex_color) @number
-(hex_color "#" @punctuation.special)
-(named_color (identifier) @string.special)
-(named_color "/" @operator)
-(reference_value "@" @punctuation.special (identifier) @variable)
-(reference_value "var" @function.builtin (identifier) @variable)
-(list_value (identifier) @variable)
-(environ_value "$" @punctuation.special (identifier) @variable)
-(environ_value "env" @function.builtin (identifier) @variable)
+
+(hex_color
+  "#" @punctuation.special)
+
+(named_color
+  (identifier) @string.special)
+
+(named_color
+  "/" @operator)
+
+(reference_value
+  "@" @punctuation.special
+  (identifier) @variable)
+
+(reference_value
+  "var" @function.builtin
+  (identifier) @variable)
+
+(list_value
+  (identifier) @variable)
+
+(environ_value
+  "$" @punctuation.special
+  (identifier) @variable)
+
+(environ_value
+  "env" @function.builtin
+  (identifier) @variable)
 
 (property_name) @variable

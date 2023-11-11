@@ -1,22 +1,22 @@
 import gleam/io
-// <- include
-//     ^ namespace
-//          ^ operator
-//           ^ namespace
+// <- @keyword.import
+//     ^ @module
+//          ^ @operator
+//           ^ @module
 
 import cat as kitten
-// <- include
-//     ^ namespace
-//         ^ keyword
-//            ^ namespace
+// <- @keyword.import
+//     ^ @module
+//         ^ @keyword
+//            ^ @module
 
 import animal/cat.{Cat, stroke}
-// <- include
-//     ^ namespace
-//           ^ operator
-//               ^ punctuation.delimiter
-//                ^ punctuation.bracket
-//                 ^^^ type
-//                    ^ punctuation.delimiter
-//                      ^^^^^^ function
-//                            ^ punctuation.bracket
+// <- @keyword.import
+//     ^ @module
+//           ^ @operator
+//               ^ @punctuation.delimiter
+//                ^ @punctuation.bracket
+//                 ^^^ @type
+//                    ^ @punctuation.delimiter
+//                      ^^^^^^ @function
+//                            ^ @punctuation.bracket

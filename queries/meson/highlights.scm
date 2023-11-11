@@ -1,5 +1,7 @@
 (comment) @comment @spell
+
 (number) @number
+
 (bool) @boolean
 
 (identifier) @variable
@@ -40,21 +42,24 @@
 ] @operator
 
 (ternaryoperator
-  ["?" ":"] @conditional.ternary)
+  [
+    "?"
+    ":"
+  ] @keyword.conditional.ternary)
 
 [
   "if"
   "elif"
   "else"
   "endif"
-] @conditional
+] @keyword.conditional
 
 [
   "foreach"
   "endforeach"
   (keyword_break)
   (keyword_continue)
-] @repeat
+] @keyword.repeat
 
 (string) @string
 
@@ -62,15 +67,11 @@
 
 (normal_command
   command: (identifier) @function)
+
 (pair
   key: (identifier) @property)
 
 (escape_sequence) @string.escape
 
 ((identifier) @variable.builtin
-  (#any-of? @variable.builtin
-    "meson"
-    "host_machine"
-    "build_machine"
-    "target_machine"
-   ))
+  (#any-of? @variable.builtin "meson" "host_machine" "build_machine" "target_machine"))

@@ -1,8 +1,9 @@
-;; adapted from https://github.com/naclsn/tree-sitter-nasm/blob/main/queries/highlights.scm
-
+; adapted from https://github.com/naclsn/tree-sitter-nasm/blob/main/queries/highlights.scm
 (word) @variable
+
 ((word) @constant
   (#lua-match? @constant "^[A-Z_][?A-Z_0-9]+$"))
+
 ((word) @constant.builtin
   (#lua-match? @constant.builtin "^__%?[A-Z_a-z0-9]+%?__$"))
 
@@ -11,19 +12,28 @@
   (section_here_token)
 ] @variable.builtin
 
-(label (word) @label)
-(assembl_directive_symbols (word) @label)
-(assembl_directive_sections (word) @label)
+(label
+  (word) @label)
+
+(assembl_directive_symbols
+  (word) @label)
+
+(assembl_directive_sections
+  (word) @label)
 
 (unary_expression
   operator: _ @operator)
+
 (binary_expression
   operator: _ @operator)
 
 "?" @constant.builtin
 
 (conditional_expression
-  [ "?" ":" ] @conditional.ternary)
+  [
+    "?"
+    ":"
+  ] @keyword.conditional.ternary)
 
 [
   ":"
@@ -31,12 +41,16 @@
 ] @punctuation.delimiter
 
 [
-  "(" ")"
-  "[" "]"
-  "{" "}"
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
 ] @punctuation.bracket
 
 (instruction_prefix) @keyword
+
 (actual_instruction
   instruction: (word) @function.builtin)
 
@@ -44,13 +58,16 @@
   base: (word) @function.call)
 
 (size_hint) @type
+
 (struc_declaration
   name: (word) @type)
+
 (struc_instance
   name: (word) @type)
 
 (effective_address
   hint: _ @type)
+
 (effective_address
   segment: _ @constant.builtin)
 
@@ -58,7 +75,7 @@
 
 (string_literal) @string
 
-(float_literal) @float
+(float_literal) @number.float
 
 [
   (packed_bcd_literal)
@@ -83,18 +100,18 @@
   (preproc_pragma)
   (preproc_line)
   (preproc_clear)
-] @preproc
+] @keyword.directive
 
-(preproc_include) @include
+(preproc_include) @keyword.import
 
-(preproc_rep_loop) @repeat
+(preproc_rep_loop) @keyword.repeat
 
-(preproc_if) @conditional
+(preproc_if) @keyword.conditional
 
 [
   (preproc_def)
   (preproc_undef)
-] @define
+] @keyword.directive.define
 
 (preproc_function_def) @keyword.function
 

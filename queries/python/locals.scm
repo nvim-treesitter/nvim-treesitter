@@ -1,115 +1,137 @@
-;;; Program structure
-(module) @scope
+; Program structure
+(module) @local.scope
 
 (class_definition
-  body: (block
-          (expression_statement
-            (assignment
-              left: (identifier) @definition.field)))) @scope
+  body:
+    (block
+      (expression_statement
+        (assignment
+          left: (identifier) @local.definition.field)))) @local.scope
+
 (class_definition
-  body: (block
-          (expression_statement
-            (assignment
-              left: (_ 
-                     (identifier) @definition.field))))) @scope
+  body:
+    (block
+      (expression_statement
+        (assignment
+          left:
+            (_
+              (identifier) @local.definition.field))))) @local.scope
 
 ; Imports
 (aliased_import
-  alias: (identifier) @definition.import)
+  alias: (identifier) @local.definition.import)
+
 (import_statement
-  name: (dotted_name ((identifier) @definition.import)))
+  name:
+    (dotted_name
+      (identifier) @local.definition.import))
+
 (import_from_statement
-  name: (dotted_name ((identifier) @definition.import)))
+  name:
+    (dotted_name
+      (identifier) @local.definition.import))
 
 ; Function with parameters, defines parameters
 (parameters
-  (identifier) @definition.parameter)
+  (identifier) @local.definition.parameter)
 
 (default_parameter
-  (identifier) @definition.parameter)
+  (identifier) @local.definition.parameter)
 
 (typed_parameter
-  (identifier) @definition.parameter)
+  (identifier) @local.definition.parameter)
 
 (typed_default_parameter
-  (identifier) @definition.parameter)
+  (identifier) @local.definition.parameter)
 
 ; *args parameter
 (parameters
   (list_splat_pattern
-    (identifier) @definition.parameter))
+    (identifier) @local.definition.parameter))
 
 ; **kwargs parameter
 (parameters
   (dictionary_splat_pattern
-    (identifier) @definition.parameter))
+    (identifier) @local.definition.parameter))
 
 ; Function defines function and scope
 ((function_definition
-  name: (identifier) @definition.function) @scope
- (#set! definition.function.scope "parent"))
-
+  name: (identifier) @local.definition.function) @local.scope
+  (#set! definition.function.scope "parent"))
 
 ((class_definition
-  name: (identifier) @definition.type) @scope
- (#set! definition.type.scope "parent"))
+  name: (identifier) @local.definition.type) @local.scope
+  (#set! definition.type.scope "parent"))
 
 (class_definition
-  body: (block
-          (function_definition
-            name: (identifier) @definition.method)))
+  body:
+    (block
+      (function_definition
+        name: (identifier) @local.definition.method)))
 
-;;; Loops
+; Loops
 ; not a scope!
 (for_statement
-  left: (pattern_list
-          (identifier) @definition.var))
+  left:
+    (pattern_list
+      (identifier) @local.definition.var))
+
 (for_statement
-  left: (tuple_pattern
-          (identifier) @definition.var))
+  left:
+    (tuple_pattern
+      (identifier) @local.definition.var))
+
 (for_statement
-  left: (identifier) @definition.var)
+  left: (identifier) @local.definition.var)
 
 ; not a scope!
-;(while_statement) @scope
-
+;(while_statement) @local.scope
 ; for in list comprehension
 (for_in_clause
-  left: (identifier) @definition.var)
+  left: (identifier) @local.definition.var)
+
 (for_in_clause
-  left: (tuple_pattern
-          (identifier) @definition.var))
+  left:
+    (tuple_pattern
+      (identifier) @local.definition.var))
+
 (for_in_clause
-  left: (pattern_list
-          (identifier) @definition.var))
+  left:
+    (pattern_list
+      (identifier) @local.definition.var))
 
-(dictionary_comprehension) @scope
-(list_comprehension) @scope
-(set_comprehension) @scope
+(dictionary_comprehension) @local.scope
 
-;;; Assignments
+(list_comprehension) @local.scope
+
+(set_comprehension) @local.scope
+
+; Assignments
+(assignment
+  left: (identifier) @local.definition.var)
 
 (assignment
- left: (identifier) @definition.var)
+  left:
+    (pattern_list
+      (identifier) @local.definition.var))
 
 (assignment
- left: (pattern_list
-   (identifier) @definition.var))
-(assignment
- left: (tuple_pattern
-   (identifier) @definition.var))
+  left:
+    (tuple_pattern
+      (identifier) @local.definition.var))
 
 (assignment
- left: (attribute
-   (identifier)
-   (identifier) @definition.field))
+  left:
+    (attribute
+      (identifier)
+      (identifier) @local.definition.field))
 
 ; Walrus operator  x := 1
 (named_expression
-  (identifier) @definition.var)
+  (identifier) @local.definition.var)
 
-(as_pattern 
-  alias: (as_pattern_target) @definition.var)
+(as_pattern
+  alias: (as_pattern_target) @local.definition.var)
 
-;;; REFERENCES
-(identifier) @reference
+; REFERENCES
+(identifier) @local.reference

@@ -1,6 +1,15 @@
-[(addition) (new_file)] @text.diff.add
-[(deletion) (old_file)] @text.diff.delete
+[
+  (addition)
+  (new_file)
+] @diff.plus
+
+[
+  (deletion)
+  (old_file)
+] @diff.minus
 
 (commit) @constant
+
 (location) @attribute
+
 (command) @function

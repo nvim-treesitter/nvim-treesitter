@@ -1,54 +1,54 @@
 [
-    (block_comment)
-    (comment)
-    (note)
-    (test)
+  (block_comment)
+  (comment)
+  (note)
+  (test)
 ] @comment @spell
 
 [
-    (quantity)
-    (negative_quantity)
+  (quantity)
+  (negative_quantity)
 ] @number
 
 [
-    (date)
-    (effective_date)
-    (time)
-    (interval)
+  (date)
+  (effective_date)
+  (time)
+  (interval)
 ] @string.special
 
 [
-    (commodity)
-    (option)
-    (option_value)
-    (check_in)
-    (check_out)
-] @text.literal
+  (commodity)
+  (option)
+  (option_value)
+  (check_in)
+  (check_out)
+] @markup.raw
 
-((account) @field)
+(account) @variable.member
 
-"include" @include
+"include" @keyword.import
 
 [
-    "account"
-    "alias"
-    "assert"
-    "check"
-    "commodity"
-    "comment"
-    "def"
-    "default"
-    "end"
-    "eval"
-    "format"
-    "nomarket"
-    "note"
-    "payee"
-    "test"
-    "A"
-    "Y"
-    "N"
-    "D"
-    "C"
-    "P"
+  "account"
+  "alias"
+  "assert"
+  "check"
+  "commodity"
+  "comment"
+  "def"
+  "default"
+  "end"
+  "eval"
+  "format"
+  "nomarket"
+  "note"
+  "payee"
+  "test"
+  "A"
+  "Y"
+  "N"
+  "D"
+  "C"
+  "P"
 ] @keyword

@@ -1,0 +1,16 @@
+# vim: ft=meson
+
+if a == b
+endif
+
+if a == b
+  foo()
+endif
+
+if a == b
+  foo()
+elif a != b
+  foo()
+else
+  foo()
+endif

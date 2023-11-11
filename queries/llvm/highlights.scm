@@ -4,9 +4,11 @@
 ] @variable
 
 (type) @type
+
 (type_keyword) @type.builtin
 
-(type [
+(type
+  [
     (local_var)
     (global_var)
   ] @type)
@@ -14,9 +16,10 @@
 (global_type
   (local_var) @type.definition)
 
-(argument) @parameter
+(argument) @variable.parameter
 
-(_ inst_name: _ @keyword.operator)
+(_
+  inst_name: _ @keyword.operator)
 
 [
   "catch"
@@ -36,18 +39,24 @@
   "inbounds"
   "inrange"
 ] @keyword
+
 (icmp_cond) @keyword
+
 (fcmp_cond) @keyword
 
 (fast_math) @keyword
 
-(_ callee: _ @function)
-(function_header name: _ @function)
+(_
+  callee: _ @function)
+
+(function_header
+  name: _ @function)
 
 [
   "declare"
   "define"
 ] @keyword.function
+
 (calling_conv) @keyword.function
 
 [
@@ -86,7 +95,6 @@
   "vscale"
 ] @keyword
 
-
 [
   "no_cfi"
   (dso_local)
@@ -101,23 +109,31 @@
   "localexec"
   (unnamed_addr)
   (dll_storage_class)
-] @storageclass
+] @keyword.storage
 
 (attribute_name) @attribute
 
-(function_header [
+(function_header
+  [
     (linkage)
     (calling_conv)
     (unnamed_addr)
   ] @keyword.function)
 
 (number) @number
+
 (comment) @comment @spell
+
 (string) @string
+
 (cstring) @string
+
 (label) @label
-(_ inst_name: "ret" @keyword.return)
-(float) @float
+
+(_
+  inst_name: "ret" @keyword.return)
+
+(float) @number.float
 
 [
   (struct_value)

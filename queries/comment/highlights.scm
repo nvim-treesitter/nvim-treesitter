@@ -1,41 +1,49 @@
 ((tag
-  (name) @text.todo @nospell
-  ("(" @punctuation.bracket (user) @constant ")" @punctuation.bracket)?
+  (name) @comment.todo @nospell
+  ("(" @punctuation.bracket
+    (user) @constant
+    ")" @punctuation.bracket)?
   ":" @punctuation.delimiter)
-  (#any-of? @text.todo "TODO" "WIP"))
+  (#any-of? @comment.todo "TODO" "WIP" "FIXME"))
 
-("text" @text.todo @nospell
- (#any-of? @text.todo "TODO" "WIP"))
+("text" @comment.todo @nospell
+  (#any-of? @comment.todo "TODO" "WIP" "FIXME"))
 
 ((tag
-  (name) @text.note @nospell
-  ("(" @punctuation.bracket (user) @constant ")" @punctuation.bracket)?
+  (name) @comment.note @nospell
+  ("(" @punctuation.bracket
+    (user) @constant
+    ")" @punctuation.bracket)?
   ":" @punctuation.delimiter)
-  (#any-of? @text.note "NOTE" "XXX" "INFO" "DOCS" "PERF" "TEST"))
+  (#any-of? @comment.note "NOTE" "XXX" "INFO" "DOCS" "PERF" "TEST"))
 
-("text" @text.note @nospell
- (#any-of? @text.note "NOTE" "XXX" "INFO" "DOCS" "PERF" "TEST"))
+("text" @comment.note @nospell
+  (#any-of? @comment.note "NOTE" "XXX" "INFO" "DOCS" "PERF" "TEST"))
 
 ((tag
-  (name) @text.warning @nospell
-  ("(" @punctuation.bracket (user) @constant ")" @punctuation.bracket)?
+  (name) @comment.warning @nospell
+  ("(" @punctuation.bracket
+    (user) @constant
+    ")" @punctuation.bracket)?
   ":" @punctuation.delimiter)
-  (#any-of? @text.warning "HACK" "WARNING" "WARN" "FIX"))
+  (#any-of? @comment.warning "HACK" "WARNING" "WARN" "FIX"))
 
-("text" @text.warning @nospell
- (#any-of? @text.warning "HACK" "WARNING" "WARN" "FIX"))
+("text" @comment.warning @nospell
+  (#any-of? @comment.warning "HACK" "WARNING" "WARN" "FIX"))
 
 ((tag
-  (name) @text.danger @nospell
-  ("(" @punctuation.bracket (user) @constant ")" @punctuation.bracket)?
+  (name) @comment.error @nospell
+  ("(" @punctuation.bracket
+    (user) @constant
+    ")" @punctuation.bracket)?
   ":" @punctuation.delimiter)
-  (#any-of? @text.danger "FIXME" "BUG" "ERROR"))
+  (#any-of? @comment.error "FIXME" "BUG" "ERROR"))
 
-("text" @text.danger @nospell
- (#any-of? @text.danger "FIXME" "BUG" "ERROR"))
+("text" @comment.error @nospell
+  (#any-of? @comment.error "FIXME" "BUG" "ERROR"))
 
 ; Issue number (#123)
 ("text" @number
- (#lua-match? @number "^#[0-9]+$"))
+  (#lua-match? @number "^#[0-9]+$"))
 
-((uri) @text.uri @nospell)
+(uri) @string.special.url @nospell

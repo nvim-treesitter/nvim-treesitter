@@ -1,47 +1,54 @@
-(option . _ @keyword)
+(option
+  .
+  _ @keyword)
 
 (option
-  ("no-" @parameter)?
-  (name) @parameter)
+  ("no-" @variable.parameter)?
+  (name) @variable.parameter)
 
-(string (content) @string)
+(string
+  (content) @string)
 
 [
- (value)
- "clear"
+  (value)
+  "clear"
 ] @string.special
 
-(url) @text.uri
+(url) @string.special.url
 
 (key) @constant
 
 [
- (number)
- (expire_time)
- (iso_time)
+  (number)
+  (expire_time)
+  (iso_time)
 ] @number
 
 (format) @character.special
 
 "sensitive:" @type.qualifier
 
-(filter_name) @parameter
+(filter_name) @variable.parameter
 
-(filter_scope) @namespace
+(filter_scope) @module
 
 (filter_property) @property
 
 (filter_value) @string
 
 [
- (filter_op0)
- (filter_op1)
- (filter_lc)
- "="
+  (filter_op0)
+  (filter_op1)
+  (filter_lc)
+  "="
 ] @operator
 
 "!" @punctuation.special
 
-[ "\"" "'" "," ] @punctuation.delimiter
+[
+  "\""
+  "'"
+  ","
+] @punctuation.delimiter
 
 (comment) @comment @spell

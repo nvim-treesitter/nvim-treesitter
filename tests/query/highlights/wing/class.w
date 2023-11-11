@@ -1,19 +1,19 @@
 bring cloud;
-// <- keyword
+// <- @keyword
 
 class Foo {
-// <- keyword
-//    ^   variable
-//        ^ punctuation.bracket
+// <- @keyword
+//    ^   @variable
+//        ^ @punctuation.bracket
   name: str;
-//^    field
-//      ^   type.builtin
-//         ^ punctuation.delimiter
-  init(name:  str) {
-//^    keyword
-//     ^    variable
+//^    @variable.member
+//      ^   @type.builtin
+//         ^ @punctuation.delimiter
+  new(name:  str) {
+//^    @keyword
+//    ^    @variable
     this.name = name;
-//      ^ punctuation.delimiter
-//            ^ operator
+//      ^ @punctuation.delimiter
+//            ^ @operator
   }
 }

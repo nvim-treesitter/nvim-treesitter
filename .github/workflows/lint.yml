@@ -9,7 +9,7 @@ jobs:
     name: Luacheck
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Prepare
         run: |
@@ -24,10 +24,26 @@ jobs:
     name: StyLua
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Lint with stylua
         uses: JohnnyMorganz/stylua-action@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           version: latest
           args: --check .
+
+  format-queries:
+    name: Lint queries
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare
+        run: |
+          wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
+          tar -zxf nvim-linux64.tar.gz
+          sudo ln -s "$PWD"/nvim-linux64/bin/nvim /usr/local/bin
+
+      - name: Lint
+        run: |
+          nvim -l scripts/format-queries.lua queries
+          git diff --exit-code

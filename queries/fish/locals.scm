@@ -1,4 +1,4 @@
-;; Scopes
+; Scopes
 [
   (command)
   (function_definition)
@@ -7,12 +7,13 @@
   (begin_statement)
   (while_statement)
   (switch_statement)
-] @scope
+] @local.scope
 
-;; Definitions
+; Definitions
 (function_definition
-  name: (word) @definition.function)
+  name: (word) @local.definition.function)
 
-;; References
-(variable_name) @reference
-(word) @reference
+; References
+(variable_name) @local.reference
+
+(word) @local.reference

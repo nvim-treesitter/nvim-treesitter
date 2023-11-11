@@ -1,13 +1,14 @@
 ; Scopes
-(function_definition) @scope
+(function_definition) @local.scope
 
 ; Definitions
-(variable_assignment 
-  name: (variable_name) @definition.var)
+(variable_assignment
+  name: (variable_name) @local.definition.var)
 
 (function_definition
-  name: (word) @definition.function)
+  name: (word) @local.definition.function)
 
 ; References
-(variable_name) @reference
-(word) @reference
+(variable_name) @local.reference
+
+(word) @local.reference

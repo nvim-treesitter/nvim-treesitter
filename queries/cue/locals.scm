@@ -1,34 +1,31 @@
 ; Scopes
-
 [
   (source_file)
   (field)
   (for_clause)
-] @scope
+] @local.scope
 
 ; References
-
-(identifier) @reference
+(identifier) @local.reference
 
 ; Definitions
-
 (import_spec
-  path: (string) @definition.import)
+  path: (string) @local.definition.import)
 
 (field
   (label
-  (identifier) @definition.field))
+    (identifier) @local.definition.field))
 
-(package_identifier) @definition.namespace
+(package_identifier) @local.definition.namespace
 
 (for_clause
-  (identifier) @definition.variable
+  (identifier) @local.definition.variable
   (expression))
 
 (for_clause
   (identifier)
-  (identifier) @definition.variable
+  (identifier) @local.definition.variable
   (expression))
 
 (let_clause
-  (identifier) @definition.variable)
+  (identifier) @local.definition.variable)

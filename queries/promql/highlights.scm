@@ -1,5 +1,4 @@
 ; highlights.scm
-
 [
   "*"
   "/"
@@ -25,15 +24,19 @@
   ")"
 ] @punctuation.bracket
 
-(float_literal) @float
+(float_literal) @number.float
+
 (string_literal) @string
 
 (metric_name) @type
-(range_selection) @text.strong @type
-(subquery_range_selection) @text.strong @type
 
-(label_name) @field
-(label_value) @text.underline @string.regex
+(range_selection) @type
+
+(subquery_range_selection) @type
+
+(label_name) @variable.member
+
+(label_value) @string.regexp
 
 (function_name) @function.call
 

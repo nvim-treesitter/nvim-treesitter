@@ -8,11 +8,9 @@
 [
   "include"
   "subninja"
-] @include
+] @keyword.import
 
-[
-  ":"
-] @punctuation.delimiter
+":" @punctuation.delimiter
 
 [
   "="
@@ -27,74 +25,76 @@
   "}"
 ] @punctuation.special
 
-;;
-;; Names
-;; =====
-(pool      name: (identifier) @type)
-(rule      name: (identifier) @function)
-(let       name: (identifier) @constant)
-(expansion       (identifier) @constant)
-(build     rule: (identifier) @function)
+;
+; Names
+; =====
+(pool
+  name: (identifier) @type)
 
-;;
-;; Paths and Text
-;; ==============
-(path) @string.special
+(rule
+  name: (identifier) @function)
+
+(let
+  name: (identifier) @constant)
+
+(expansion
+  (identifier) @constant)
+
+(build
+  rule: (identifier) @function)
+
+;
+; Paths and Text
+; ==============
+(path) @string.special.path
+
 (text) @string
 
-;;
-;; Builtins
-;; ========
-(pool  name: (identifier) @type.builtin
-                (#any-of? @type.builtin "console"))
-(build rule: (identifier) @function.builtin
-                (#any-of? @function.builtin "phony" "dyndep"))
+;
+; Builtins
+; ========
+(pool
+  name: (identifier) @type.builtin
+  (#any-of? @type.builtin "console"))
 
-;; Top level bindings
-;; ------------------
+(build
+  rule: (identifier) @function.builtin
+  (#any-of? @function.builtin "phony" "dyndep"))
+
+; Top level bindings
+; ------------------
 (manifest
-  (let name: ((identifier) @constant.builtin
-                 (#any-of? @constant.builtin "builddir"
-                                             "ninja_required_version"))))
+  (let
+    name:
+      ((identifier) @constant.builtin
+        (#any-of? @constant.builtin "builddir" "ninja_required_version"))))
 
-;; Rules bindings
-;; -----------------
+; Rules bindings
+; -----------------
 (rule
   (body
-    (let name: (identifier)  @constant.builtin
-               (#not-any-of? @constant.builtin "command"
-                                               "depfile"
-                                               "deps"
-                                               "msvc_deps_prefix"
-                                               "description"
-                                               "dyndep"
-                                               "generator"
-                                               "in"
-                                               "in_newline"
-                                               "out"
-                                               "restat"
-                                               "rspfile"
-                                               "rspfile_content"
-                                               "pool"))))
+    (let
+      name: (identifier) @constant.builtin
+      (#not-any-of? @constant.builtin "command" "depfile" "deps" "msvc_deps_prefix" "description" "dyndep" "generator" "in" "in_newline" "out" "restat" "rspfile" "rspfile_content" "pool"))))
 
-;;
-;; Expansion
-;; ---------
+;
+; Expansion
+; ---------
 (expansion
   (identifier) @constant.macro
-     (#any-of? @constant.macro "in" "out"))
+  (#any-of? @constant.macro "in" "out"))
 
-;;
-;; Escape sequences
-;; ================
+;
+; Escape sequences
+; ================
 (quote) @string.escape
 
-;;
-;; Others
-;; ======
+;
+; Others
+; ======
 [
- (split)
- (comment)
+  (split)
+  (comment)
 ] @comment
 
 (comment) @spell

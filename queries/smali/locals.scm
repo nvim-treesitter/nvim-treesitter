@@ -7,36 +7,37 @@
   (packed_switch_directive)
   (sparse_switch_directive)
   (subannotation_directive)
-] @scope
+] @local.scope
 
 [
   (identifier)
   (class_identifier)
   (label)
   (jmp_label)
-] @reference
+] @local.reference
 
 (enum_reference
-  (field_identifier) @definition.enum)
+  (field_identifier) @local.definition.enum)
 
 ((field_definition
   (access_modifiers) @_mod
-  (field_identifier) @definition.enum)
+  (field_identifier) @local.definition.enum)
   (#eq? @_mod "enum"))
 
 (field_definition
-  (field_identifier) @definition.field
-  (field_type) @definition.associated)
+  (field_identifier) @local.definition.field
+  (field_type) @local.definition.associated)
 
-(annotation_key) @definition.field
+(annotation_key) @local.definition.field
 
 (method_definition
-  (method_signature (method_identifier) @definition.method))
+  (method_signature
+    (method_identifier) @local.definition.method))
 
-(param_identifier) @definition.parameter
+(param_identifier) @local.definition.parameter
 
 (annotation_directive
-  (class_identifier) @definition.type)
+  (class_identifier) @local.definition.type)
 
 (class_directive
-  (class_identifier) @definition.type)
+  (class_identifier) @local.definition.type)

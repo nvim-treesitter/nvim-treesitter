@@ -1,6 +1,10 @@
 ; highlights.scm
+[
+  (key_string)
+  (json_key_string)
+] @property
 
-[ 
+[
   "[QueryStringParams]"
   "[FormParams]"
   "[MultipartFormData]"
@@ -9,11 +13,9 @@
   "[Asserts]"
   "[Options]"
   "[BasicAuth]"
-  (key_string)
-  (json_key_string)
-] @property
+] @module
 
-[ 
+[
   "\\"
   (regex_escaped_char)
   (quoted_string_escaped_char)
@@ -53,10 +55,12 @@
   "retry"
   "retry-interval"
   "retry-max-count"
-  (variable_option "variable")
   "verbose"
   "very-verbose"
 ] @constant.builtin
+
+(variable_option
+  "variable" @constant.builtin)
 
 (boolean) @boolean
 
@@ -100,28 +104,40 @@
 [
   (float)
   (json_number)
-] @float
+] @number.float
 
-[ ":" "," ] @punctuation.delimiter
+[
+  ":"
+  ","
+] @punctuation.delimiter
 
-[ "[" "]" "{" "}" "{{" "}}" ] @punctuation.bracket
+[
+  "["
+  "]"
+  "{"
+  "}"
+  "{{"
+  "}}"
+] @punctuation.bracket
 
-[ 
+[
   (value_string)
   (quoted_string)
   (json_string)
 ] @string
 
-
 [
   "base64,"
-  "file,"
   "hex,"
-  (file_value)
   (version)
 ] @string.special
 
-(regex) @string.regex
+[
+  "file,"
+  (file_value)
+] @string.special.path
+
+(regex) @string.regexp
 
 (multiline_string_type) @type
 
@@ -130,4 +146,3 @@
 (filter) @attribute
 
 (method) @type.builtin
-

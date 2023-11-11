@@ -1,16 +1,13 @@
 ; scopes
-
 [
   (object)
   (array)
-] @scope
+] @local.scope
 
 ; definitions
-
-(assign_block 
+(assign_block
   (assignment
-    (input) 
-      @definition.constant))
+    (input) @local.definition.constant))
 
-(value (input) @reference)
-
+(value
+  (input) @local.reference)

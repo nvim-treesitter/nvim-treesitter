@@ -2,55 +2,103 @@
 [
   (bounded_quantification)
   (choose)
-  (function_definition) 
+  (function_definition)
   (function_literal)
-  (lambda) 
+  (lambda)
   (let_in)
-  (module) 
+  (module)
   (module_definition)
   (operator_definition)
   (set_filter)
   (set_map)
   (unbounded_quantification)
-] @scope
+] @local.scope
 
-(choose (identifier) @definition.parameter)
-(choose (tuple_of_identifiers (identifier) @definition.parameter))
-(constant_declaration (identifier) @definition.constant)
-(constant_declaration (operator_declaration name: (_) @definition.constant))
+(choose
+  (identifier) @local.definition.parameter)
+
+(choose
+  (tuple_of_identifiers
+    (identifier) @local.definition.parameter))
+
+(constant_declaration
+  (identifier) @local.definition.constant)
+
+(constant_declaration
+  (operator_declaration
+    name: (_) @local.definition.constant))
+
 (function_definition
-  name: (identifier) @definition.function
+  name: (identifier) @local.definition.function
   (#set! "definition.function.scope" "parent"))
-(lambda (identifier) @definition.parameter)
+
+(lambda
+  (identifier) @local.definition.parameter)
+
 (module_definition
-  name: (_) @definition.import
+  name: (_) @local.definition.import
   (#set! "definition.import.scope" "parent"))
-(module_definition parameter: (identifier) @definition.parameter)
-(module_definition parameter: (operator_declaration name: (_) @definition.parameter))
+
+(module_definition
+  parameter: (identifier) @local.definition.parameter)
+
+(module_definition
+  parameter:
+    (operator_declaration
+      name: (_) @local.definition.parameter))
+
 (operator_definition
-  name: (_) @definition.macro
+  name: (_) @local.definition.macro
   (#set! "definition.macro.scope" "parent"))
-(operator_definition parameter: (identifier) @definition.parameter)
-(operator_definition parameter: (operator_declaration name: (_) @definition.parameter))
-(quantifier_bound (identifier) @definition.parameter)
-(quantifier_bound (tuple_of_identifiers (identifier) @definition.parameter))
-(unbounded_quantification (identifier) @definition.parameter)
-(variable_declaration (identifier) @definition.var)
+
+(operator_definition
+  parameter: (identifier) @local.definition.parameter)
+
+(operator_definition
+  parameter:
+    (operator_declaration
+      name: (_) @local.definition.parameter))
+
+(quantifier_bound
+  (identifier) @local.definition.parameter)
+
+(quantifier_bound
+  (tuple_of_identifiers
+    (identifier) @local.definition.parameter))
+
+(unbounded_quantification
+  (identifier) @local.definition.parameter)
+
+(variable_declaration
+  (identifier) @local.definition.var)
 
 ; Proof scopes and definitions
 [
   (non_terminal_proof)
   (suffices_proof_step)
   (theorem)
-] @scope
+] @local.scope
 
-(assume_prove (new (identifier) @definition.parameter))
-(assume_prove (new (operator_declaration name: (_) @definition.parameter)))
-(assumption name: (identifier) @definition.constant)
-(pick_proof_step (identifier) @definition.parameter)
-(take_proof_step (identifier) @definition.parameter)
+(assume_prove
+  (new
+    (identifier) @local.definition.parameter))
+
+(assume_prove
+  (new
+    (operator_declaration
+      name: (_) @local.definition.parameter)))
+
+(assumption
+  name: (identifier) @local.definition.constant)
+
+(pick_proof_step
+  (identifier) @local.definition.parameter)
+
+(take_proof_step
+  (identifier) @local.definition.parameter)
+
 (theorem
-  name: (identifier) @definition.constant
+  name: (identifier) @local.definition.constant
   (#set! "definition.constant.scope" "parent"))
 
 ; PlusCal scopes and definitions
@@ -59,30 +107,63 @@
   (pcal_macro)
   (pcal_procedure)
   (pcal_with)
-] @scope
+] @local.scope
 
-(pcal_macro_decl parameter: (identifier) @definition.parameter)
-(pcal_proc_var_decl (identifier) @definition.parameter)
-(pcal_var_decl (identifier) @definition.var)
-(pcal_with (identifier) @definition.parameter)
+(pcal_macro_decl
+  parameter: (identifier) @local.definition.parameter)
+
+(pcal_proc_var_decl
+  (identifier) @local.definition.parameter)
+
+(pcal_var_decl
+  (identifier) @local.definition.var)
+
+(pcal_with
+  (identifier) @local.definition.parameter)
 
 ; Built-in PlusCal variables
 (pcal_algorithm_body
   [
-    (_ (identifier_ref) @definition.var)
-    (_ (_ (identifier_ref) @definition.var))
-    (_ (_ (_ (identifier_ref) @definition.var))) 
-    (_ (_ (_ (_ (identifier_ref) @definition.var))))
-    (_ (_ (_ (_ (_ (identifier_ref) @definition.var)))))
+    (_
+      (identifier_ref) @local.definition.var)
+    (_
+      (_
+        (identifier_ref) @local.definition.var))
+    (_
+      (_
+        (_
+          (identifier_ref) @local.definition.var)))
+    (_
+      (_
+        (_
+          (_
+            (identifier_ref) @local.definition.var))))
+    (_
+      (_
+        (_
+          (_
+            (_
+              (identifier_ref) @local.definition.var)))))
   ]
-  (#any-of? @definition.var "self" "pc" "stack"))
+  (#any-of? @local.definition.var "self" "pc" "stack"))
 
 ; References
-(identifier_ref) @reference
-((prefix_op_symbol) @reference)
-(bound_prefix_op symbol: (_) @reference)
-((infix_op_symbol) @reference)
-(bound_infix_op symbol: (_) @reference)
-((postfix_op_symbol) @reference)
-(bound_postfix_op symbol: (_) @reference)
-(bound_nonfix_op symbol: (_) @reference)
+(identifier_ref) @local.reference
+
+(prefix_op_symbol) @local.reference
+
+(bound_prefix_op
+  symbol: (_) @local.reference)
+
+(infix_op_symbol) @local.reference
+
+(bound_infix_op
+  symbol: (_) @local.reference)
+
+(postfix_op_symbol) @local.reference
+
+(bound_postfix_op
+  symbol: (_) @local.reference)
+
+(bound_nonfix_op
+  symbol: (_) @local.reference)

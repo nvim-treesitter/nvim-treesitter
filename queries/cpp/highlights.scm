@@ -1,33 +1,33 @@
 ; inherits: c
-
-((identifier) @field
-  (#lua-match? @field "^m?_.*$"))
+((identifier) @variable.member
+  (#lua-match? @variable.member "^m_.*$"))
 
 (parameter_declaration
-  declarator: (reference_declarator) @parameter)
+  declarator: (reference_declarator) @variable.parameter)
 
 ; function(Foo ...foo)
 (variadic_parameter_declaration
-  declarator: (variadic_declarator
-                (_) @parameter))
+  declarator:
+    (variadic_declarator
+      (_) @variable.parameter))
+
 ; int foo = 0
 (optional_parameter_declaration
-    declarator: (_) @parameter)
+  declarator: (_) @variable.parameter)
 
-;(field_expression) @parameter ;; How to highlight this?
-
-(((field_expression
-     (field_identifier) @method)) @_parent
- (#has-parent? @_parent template_method function_declarator))
+;(field_expression) @variable.parameter ;; How to highlight this?
+((field_expression
+  (field_identifier) @function.method) @_parent
+  (#has-parent? @_parent template_method function_declarator))
 
 (field_declaration
-  (field_identifier) @field)
+  (field_identifier) @variable.member)
 
 (field_initializer
- (field_identifier) @property)
+  (field_identifier) @property)
 
 (function_declarator
-  declarator: (field_identifier) @method)
+  declarator: (field_identifier) @function.method)
 
 (concept_definition
   name: (identifier) @type.definition)
@@ -37,31 +37,46 @@
 
 (auto) @type.builtin
 
-(namespace_identifier) @namespace
+(namespace_identifier) @module
+
 ((namespace_identifier) @type
   (#lua-match? @type "^[%u]"))
 
 (case_statement
-  value: (qualified_identifier (identifier) @constant))
+  value:
+    (qualified_identifier
+      (identifier) @constant))
 
-(using_declaration . "using" . "namespace" . [(qualified_identifier) (identifier)] @namespace)
+(using_declaration
+  .
+  "using"
+  .
+  "namespace"
+  .
+  [
+    (qualified_identifier)
+    (identifier)
+  ] @module)
 
 (destructor_name
-  (identifier) @method)
+  (identifier) @function.method)
 
 ; functions
 (function_declarator
   (qualified_identifier
     (identifier) @function))
+
 (function_declarator
   (qualified_identifier
     (qualified_identifier
       (identifier) @function)))
+
 (function_declarator
   (qualified_identifier
     (qualified_identifier
       (qualified_identifier
         (identifier) @function))))
+
 ((qualified_identifier
   (qualified_identifier
     (qualified_identifier
@@ -74,21 +89,26 @@
     (identifier) @function))
 
 (operator_name) @function
+
 "operator" @function
+
 "static_assert" @function.builtin
 
 (call_expression
   (qualified_identifier
     (identifier) @function.call))
+
 (call_expression
   (qualified_identifier
     (qualified_identifier
       (identifier) @function.call)))
+
 (call_expression
   (qualified_identifier
     (qualified_identifier
       (qualified_identifier
         (identifier) @function.call))))
+
 ((qualified_identifier
   (qualified_identifier
     (qualified_identifier
@@ -99,21 +119,25 @@
 (call_expression
   (template_function
     (identifier) @function.call))
+
 (call_expression
   (qualified_identifier
     (template_function
       (identifier) @function.call)))
+
 (call_expression
   (qualified_identifier
     (qualified_identifier
       (template_function
         (identifier) @function.call))))
+
 (call_expression
   (qualified_identifier
     (qualified_identifier
       (qualified_identifier
         (template_function
           (identifier) @function.call)))))
+
 ((qualified_identifier
   (qualified_identifier
     (qualified_identifier
@@ -125,13 +149,13 @@
 ; methods
 (function_declarator
   (template_method
-    (field_identifier) @method))
+    (field_identifier) @function.method))
+
 (call_expression
   (field_expression
-    (field_identifier) @method.call))
+    (field_identifier) @function.method.call))
 
 ; constructors
-
 ((function_declarator
   (qualified_identifier
     (identifier) @constructor))
@@ -139,92 +163,91 @@
 
 ((call_expression
   function: (identifier) @constructor)
-(#lua-match? @constructor "^%u"))
-((call_expression
-  function: (qualified_identifier
-              name: (identifier) @constructor))
-(#lua-match? @constructor "^%u"))
+  (#lua-match? @constructor "^%u"))
 
 ((call_expression
-  function: (field_expression
-              field: (field_identifier) @constructor))
-(#lua-match? @constructor "^%u"))
+  function:
+    (qualified_identifier
+      name: (identifier) @constructor))
+  (#lua-match? @constructor "^%u"))
 
-;; constructing a type in an initializer list: Constructor ():  **SuperType (1)**
+((call_expression
+  function:
+    (field_expression
+      field: (field_identifier) @constructor))
+  (#lua-match? @constructor "^%u"))
+
+; constructing a type in an initializer list: Constructor ():  **SuperType (1)**
 ((field_initializer
   (field_identifier) @constructor
   (argument_list))
- (#lua-match? @constructor "^%u"))
-
+  (#lua-match? @constructor "^%u"))
 
 ; Constants
-
 (this) @variable.builtin
-(null "nullptr" @constant.builtin)
+
+(null
+  "nullptr" @constant.builtin)
 
 (true) @boolean
+
 (false) @boolean
 
 ; Literals
-
-(raw_string_literal)  @string
+(raw_string_literal) @string
 
 ; Keywords
+[
+  "try"
+  "catch"
+  "noexcept"
+  "throw"
+] @keyword.exception
 
 [
- "try"
- "catch"
- "noexcept"
- "throw"
-] @exception
-
-
-[
- "class"
- "decltype"
- "explicit"
- "friend"
- "namespace"
- "override"
- "template"
- "typename"
- "using"
- "concept"
- "requires"
+  "class"
+  "decltype"
+  "explicit"
+  "friend"
+  "namespace"
+  "override"
+  "template"
+  "typename"
+  "using"
+  "concept"
+  "requires"
+  "constexpr"
 ] @keyword
 
-[
-  "co_await"
-] @keyword.coroutine
+"co_await" @keyword.coroutine
 
 [
- "co_yield"
- "co_return"
+  "co_yield"
+  "co_return"
 ] @keyword.coroutine.return
 
 [
- "public"
- "private"
- "protected"
- "virtual"
- "final"
+  "public"
+  "private"
+  "protected"
+  "virtual"
+  "final"
 ] @type.qualifier
 
 [
- "new"
- "delete"
-
- "xor"
- "bitand"
- "bitor"
- "compl"
- "not"
- "xor_eq"
- "and_eq"
- "or_eq"
- "not_eq"
- "and"
- "or"
+  "new"
+  "delete"
+  "xor"
+  "bitand"
+  "bitor"
+  "compl"
+  "not"
+  "xor_eq"
+  "and_eq"
+  "or_eq"
+  "not_eq"
+  "and"
+  "or"
 ] @keyword.operator
 
 "<=>" @operator
@@ -232,9 +255,15 @@
 "::" @punctuation.delimiter
 
 (template_argument_list
-  ["<" ">"] @punctuation.bracket)
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
 
 (template_parameter_list
-  ["<" ">"] @punctuation.bracket)
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
 
 (literal_suffix) @operator

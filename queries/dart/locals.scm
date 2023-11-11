@@ -1,34 +1,32 @@
-;; Definitions
-
+; Definitions
 (function_signature
-  name: (identifier) @definition.function)
+  name: (identifier) @local.definition.function)
 
 (formal_parameter
-  name: (identifier) @definition.parameter)
+  name: (identifier) @local.definition.parameter)
 
 (initialized_variable_definition
-  name: (identifier) @definition.var)
+  name: (identifier) @local.definition.var)
 
 (initialized_identifier
-  (identifier) @definition.var)
+  (identifier) @local.definition.var)
 
 (static_final_declaration
-  (identifier) @definition.var)
+  (identifier) @local.definition.var)
 
-;; References
+; References
+(identifier) @local.reference
 
-(identifier) @reference
-
-;; Scopes
-
+; Scopes
 (class_definition
-  body: (_) @scope)
+  body: (_) @local.scope)
+
 [
- (block)
- (if_statement)
- (for_statement)
- (while_statement)
- (try_statement)
- (catch_clause)
- (finally_clause)
-] @scope
+  (block)
+  (if_statement)
+  (for_statement)
+  (while_statement)
+  (try_statement)
+  (catch_clause)
+  (finally_clause)
+] @local.scope

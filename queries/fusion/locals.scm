@@ -1,21 +1,23 @@
-;; Fusion base
-(block) @scope
+; Fusion base
+(block) @local.scope
 
 (namespace_declaration
-  (alias_namespace) @definition.namespace)
+  (alias_namespace) @local.definition.namespace)
 
 (property
-  (path (path_part) @definition.field))
+  (path
+    (path_part) @local.definition.field))
 
 (type
-  namespace: (package_name)? @definition.namespace
-  name: (type_name) @definition.type
-)
+  namespace: (package_name)? @local.definition.namespace
+  name: (type_name) @local.definition.type)
 
-;; Eel Expressions
-(eel_arrow_function) @scope
-(eel_object) @scope
+; Eel Expressions
+(eel_arrow_function) @local.scope
 
-(eel_parameter) @definition.parameter
+(eel_object) @local.scope
+
+(eel_parameter) @local.definition.parameter
+
 (eel_object_pair
-  key: (eel_property_name) @definition.field)
+  key: (eel_property_name) @local.definition.field)

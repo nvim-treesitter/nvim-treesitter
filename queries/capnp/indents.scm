@@ -13,14 +13,17 @@
   (field)
 ] @indent.begin
 
-((struct_shorthand (property)) @indent.align
+((struct_shorthand
+  (property)) @indent.align
   (#set! indent.open_delimiter "(")
   (#set! indent.close_delimiter ")"))
 
-((method (field_version)) @indent.align
+((method
+  (field_version)) @indent.align
   (#set! indent.open_delimiter field_version))
 
-((const_list (const_value)) @indent.align
+((const_list
+  (const_value)) @indent.align
   (#set! indent.open_delimiter "[")
   (#set! indent.close_delimiter "]"))
 
@@ -30,7 +33,6 @@
   "}"
   ")"
 ] @indent.end @indent.branch
-
 
 [
   (ERROR)

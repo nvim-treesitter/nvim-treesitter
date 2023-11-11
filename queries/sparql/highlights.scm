@@ -19,13 +19,12 @@
 [
   "_:"
   (namespace)
-] @namespace
+] @module
 
 [
   "UNDEF"
   "a"
 ] @variable.builtin
-
 
 [
   "ADD"
@@ -78,13 +77,16 @@
 ] @keyword
 
 (string) @string
+
 (echar) @string.escape
 
 (integer) @number
+
 [
   (decimal)
   (double)
-] @float
+] @number.float
+
 (boolean_literal) @boolean
 
 [
@@ -172,36 +174,75 @@
 
 [
   "IN"
-  ("NOT" "IN")
+  ("NOT"
+    "IN")
 ] @keyword.operator
-
 
 (comment) @comment @spell
 
-
 ; Could this be summarized?
-(select_clause 
+(select_clause
   [
     bound_variable: (var)
     "*"
-  ] @parameter)
-(bind bound_variable: (var) @parameter)
-(data_block bound_variable: (var) @parameter)
-(group_condition bound_variable: (var) @parameter)
+  ] @variable.parameter)
 
-(iri_reference ["<" ">"] @namespace)
+(bind
+  bound_variable: (var) @variable.parameter)
+
+(data_block
+  bound_variable: (var) @variable.parameter)
+
+(group_condition
+  bound_variable: (var) @variable.parameter)
+
+(iri_reference
+  [
+    "<"
+    ">"
+  ] @module)
 
 (lang_tag) @type
-(rdf_literal 
+
+(rdf_literal
   "^^" @type
-	datatype: (_ ["<" ">" (namespace)] @type) @type)
+  datatype:
+    (_
+      [
+        "<"
+        ">"
+        (namespace)
+      ] @type) @type)
 
-(function_call identifier: (_) @function)
+(function_call
+  identifier: (_) @function)
 
-(function_call identifier: (iri_reference ["<" ">"] @function))
-(function_call identifier: (prefixed_name (namespace) @function))
-(base_declaration (iri_reference ["<" ">"] @variable))
-(prefix_declaration (iri_reference ["<" ">"] @variable))
+(function_call
+  identifier:
+    (iri_reference
+      [
+        "<"
+        ">"
+      ] @function))
+
+(function_call
+  identifier:
+    (prefixed_name
+      (namespace) @function))
+
+(base_declaration
+  (iri_reference
+    [
+      "<"
+      ">"
+    ] @variable))
+
+(prefix_declaration
+  (iri_reference
+    [
+      "<"
+      ">"
+    ] @variable))
 
 [
   (var)

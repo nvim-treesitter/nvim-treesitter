@@ -1,59 +1,65 @@
-;; Text
-
-;; Imports
-
-(missing_import) @include
+; Text
+; Imports
+(missing_import) @keyword.import
 
 (local_import) @string.special.path
 
-(http_import) @string @text.uri
+(http_import) @string.special.url
 
 [
   (env_variable)
   (import_hash)
 ] @string.special
 
-[ (import_as_location) (import_as_text) ] @type
+[
+  (import_as_location)
+  (import_as_text)
+] @type
 
-;; Types
-
+; Types
 ([
-  (let_binding (label) @type)
-  (union_type_entry (label) @type)
-] (#lua-match? @type "^%u"))
+  (let_binding
+    (label) @type)
+  (union_type_entry
+    (label) @type)
+]
+  (#lua-match? @type "^%u"))
 
 ((primitive_expression
-  (identifier (label) @type)
-  (selector (label) @type)) @variable
+  (identifier
+    (label) @type)
+  (selector
+    (label) @type)) @variable
   (#lua-match? @variable "^[A-Z][^.]*$"))
 
-;; Parameters
+; Parameters
+(lambda_expression
+  label: (label) @variable.parameter)
 
-(lambda_expression label: (label) @parameter)
-
-;; Variables
-
+; Variables
 (label) @variable
 
-(identifier [
-  (label) @variable
-  (de_bruijn_index) @operator
-])
+(identifier
+  [
+    (label) @variable
+    (de_bruijn_index) @operator
+  ])
 
-(let_binding label: (label) @variable)
+(let_binding
+  label: (label) @variable)
 
 ; Fields
+(record_literal_entry
+  (label) @variable.member)
 
-(record_literal_entry (label) @field)
-
-(record_type_entry (label) @field)
+(record_type_entry
+  (label) @variable.member)
 
 (selector
   (selector_dot)
-  (_) @field)
+  (_) @variable.member)
 
-;; Keywords
-
+; Keywords
 (env_import) @keyword
 
 [
@@ -68,8 +74,7 @@
   "with"
 ] @keyword.operator
 
-;; Operators
-
+; Operators
 [
   (type_operator)
   (assign_operator)
@@ -82,71 +87,88 @@
   (empty_record_literal)
 ] @operator
 
-;; Builtins
-
+; Builtins
 (builtin_function) @function.builtin
-(builtin [
-  "Natural"
-  "Natural/build"
-  "Natural/fold"
-  "Natural/isZero"
-  "Natural/even"
-  "Natural/odd"
-  "Natural/subtract"
-  "Natural/toInteger"
-  "Natural/show"
-  "Integer"
-  "Integer/toDouble"
-  "Integer/show"
-  "Integer/negate"
-  "Integer/clamp"
-  "Double"
-  "Double/show"
-  "List"
-  "List/build"
-  "List/fold"
-  "List/length"
-  "List/head"
-  "List/last"
-  "List/indexed"
-  "List/reverse"
-  "Text"
-  "Text/show"
-  "Text/replace"
-  "Optional"
-  "Date"
-  "Time"
-  "TimeZone"
-  "Type"
-  "Kind"
-  "Sort"
-] @type.builtin)
 
-;; Punctuation
+(builtin
+  [
+    "Natural"
+    "Natural/build"
+    "Natural/fold"
+    "Natural/isZero"
+    "Natural/even"
+    "Natural/odd"
+    "Natural/subtract"
+    "Natural/toInteger"
+    "Natural/show"
+    "Integer"
+    "Integer/toDouble"
+    "Integer/show"
+    "Integer/negate"
+    "Integer/clamp"
+    "Double"
+    "Double/show"
+    "List"
+    "List/build"
+    "List/fold"
+    "List/length"
+    "List/head"
+    "List/last"
+    "List/indexed"
+    "List/reverse"
+    "Text"
+    "Text/show"
+    "Text/replace"
+    "Optional"
+    "Date"
+    "Time"
+    "TimeZone"
+    "Type"
+    "Kind"
+    "Sort"
+  ] @type.builtin)
 
-[ "," "|" ] @punctuation.delimiter
+; Punctuation
+[
+  ","
+  "|"
+] @punctuation.delimiter
+
 (selector_dot) @punctuation.delimiter
 
-[ "{" "}" ] @punctuation.bracket
+[
+  "{"
+  "}"
+] @punctuation.bracket
 
-[ "[" "]" ] @punctuation.bracket
+[
+  "["
+  "]"
+] @punctuation.bracket
 
-[ "(" ")" ] @punctuation.bracket
+[
+  "("
+  ")"
+] @punctuation.bracket
 
-[ "<" ">" ] @punctuation.bracket
+[
+  "<"
+  ">"
+] @punctuation.bracket
 
-;; Conditionals
-
+; Conditionals
 [
   "if"
   "then"
   "else"
-] @conditional
+] @keyword.conditional
 
-;; Literals
-
+; Literals
 (text_literal) @string
-(interpolation "}" @string)
+
+(interpolation
+  "}" @string)
+
 [
   (double_quote_escaped)
   (single_quote_escaped)
@@ -157,14 +179,14 @@
   (natural_literal)
 ] @number
 
-(double_literal) @float
+(double_literal) @number.float
 
 (boolean_literal) @boolean
 
-(builtin "None") @constant.builtin
+(builtin
+  "None") @constant.builtin
 
-;; Comments
-
+; Comments
 [
   (line_comment)
   (block_comment)

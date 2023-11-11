@@ -1,5 +1,5 @@
-(nonterminal_name 
-  (macro_id) @definition.function)
+(nonterminal_name
+  (macro_id) @local.definition.function)
 
 (nonterminal_name
-  (identifier) @definition.function)
+  (identifier) @local.definition.function)

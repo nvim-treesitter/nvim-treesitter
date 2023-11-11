@@ -1,60 +1,60 @@
 include: SomeFile.fusion
-//<- include
-//       ^text.uri
+//<- @keyword.import
+//       ^ @string.special.url
 
 namespace: ns = Neos.Fusion.Space
-//<- keyword
-//         ^namespace
-//            ^operator
-//              ^namespace
+//<- @keyword
+//         ^ @module
+//            ^ @operator
+//              ^ @module
 
 prototype(MyType) < prototype(ns:SuperType) {
 //<-keyword
-//       ^punctuation.bracket
-//        ^type
-//              ^punctuation.bracket
-//                ^operator
-//                            ^namespace
-//                                ^type
+//       ^ @punctuation.bracket
+//        ^ @type
+//              ^ @punctuation.bracket
+//                ^ @operator
+//                            ^ @module
+//                                ^ @type
 
   deleteProp >
-  //         ^operator
+  //         ^ @operator
 
   string = 'value'
-  //<- property
-  //     ^operator
-  //        ^string
+  //<- @property
+  //     ^ @operator
+  //        ^ @string
 
   number = 10.2
-  //       ^number
+  //       ^ @number
 
   null = null
-  //     ^constant.builtin
+  //     ^ @constant.builtin
 
   boolean = true
-  //        ^boolean
+  //        ^ @boolean
 
   property.inner = "value"
-  //<- property
-  //       ^property
+  //<- @property
+  //       ^ @property
 
   property.@meta = "value"
-  //<- property
-  //       ^attribute
+  //<- @property
+  //       ^ @attribute
 
   property.type = SomeType
-  //<- property
-  //              ^type
+  //<- @property
+  //              ^ @type
 
   property.aliasedType = ns:SomeType
-  //<- property
-  //                     ^namespace
-  //                        ^type
+  //<- @property
+  //                     ^ @module
+  //                        ^ @type
 
   property.fullQualifiedType = SomeNamespace:SomeType
-  //<- property
-  //                           ^namespace
-  //                                         ^type
+  //<- @property
+  //                           ^ @module
+  //                                         ^ @type
 
 }
 

@@ -1,20 +1,38 @@
 (keysym) @constant
 
 ((keysym) @constant.builtin
- (#eq? @constant.builtin "Multi_key"))
+  (#eq? @constant.builtin "Multi_key"))
 
 (text) @string
 
-"include" @include
+"include" @keyword.import
 
-[ (octal) (hex) ] @number
+[
+  (octal)
+  (hex)
+] @number
 
-[ (modifier) "None" ] @type.qualifier
+[
+  (modifier)
+  "None"
+] @type.qualifier
 
-[ "%L" "%H" "%S" ] @string.special
+[
+  "%L"
+  "%H"
+  "%S"
+] @string.special
 
-[ "!" "~" ] @operator
+[
+  "!"
+  "~"
+] @operator
 
-[ ":" "<" ">" "\"" ] @punctuation.delimiter
+[
+  ":"
+  "<"
+  ">"
+  "\""
+] @punctuation.delimiter
 
 (comment) @comment @spell

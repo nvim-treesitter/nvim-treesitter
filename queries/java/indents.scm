@@ -1,3 +1,4 @@
+; format-ignore
 [
   ; ... refers to the portion that this indent query will have effects on
   (class_body)                        ; { ... } of `class X`
@@ -14,7 +15,8 @@
   (element_value_array_initializer)   ; { a, b } inside @Annotation()
 ] @indent.begin
 
-(expression_statement (method_invocation) @indent.begin)
+(expression_statement
+  (method_invocation) @indent.begin)
 
 [
   "("
@@ -25,7 +27,9 @@
   "]"
 ] @indent.branch
 
-(annotation_argument_list ")" @indent.end) ; This should be a special cased as `()` here doesn't have ending `;`
+(annotation_argument_list
+  ")" @indent.end) ; This should be a special cased as `()` here doesn't have ending `;`
+
 "}" @indent.end
 
 (line_comment) @indent.ignore
@@ -34,4 +38,3 @@
   (ERROR)
   (block_comment)
 ] @indent.auto
-

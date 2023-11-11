@@ -1,9 +1,9 @@
 ; injections.scm
 ((json_value) @injection.content
- (#set! injection.language "json"))
+  (#set! injection.language "json"))
 
 ((xml) @injection.content
- (#set! injection.language "xml"))
+  (#set! injection.language "xml"))
 
 (multiline_string
   (multiline_string_type) @_lang

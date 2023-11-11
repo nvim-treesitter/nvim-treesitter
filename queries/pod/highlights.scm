@@ -1,8 +1,9 @@
 ; A highlight file for nvim-treesitter to use
-
-[(pod_command)
- (command)
- (cut_command)] @keyword
+[
+  (pod_command)
+  (command)
+  (cut_command)
+] @keyword
 
 ((command_paragraph
   (command) @keyword
@@ -12,7 +13,7 @@
 (command_paragraph
   (command) @keyword
   (#lua-match? @keyword "^=head")
-  (content) @text.title)
+  (content) @markup.heading)
 
 (command_paragraph
   (command) @keyword
@@ -22,50 +23,52 @@
 (command_paragraph
   (command) @keyword
   (#lua-match? @keyword "^=item")
-  (content) @text)
+  (content) @none)
 
 (command_paragraph
   (command) @keyword
   (#lua-match? @keyword "^=encoding")
   (content) @string.special)
 
-
-(verbatim_paragraph (content) @text.literal)
+(verbatim_paragraph
+  (content) @markup.raw)
 
 (interior_sequence
   (sequence_letter) @character
-  ["<" ">"] @punctuation.delimiter
-)
+  [
+    "<"
+    ">"
+  ] @punctuation.delimiter)
 
 (interior_sequence
   (sequence_letter) @character
   (#eq? @character "B")
-  (content) @text.strong)
+  (content) @markup.strong)
 
 (interior_sequence
   (sequence_letter) @character
   (#eq? @character "C")
-  (content) @text.literal)
+  (content) @markup.raw)
 
 (interior_sequence
   (sequence_letter) @character
   (#eq? @character "F")
-  (content) @text.underline @string.special)
+  (content) @string.special.path)
 
 (interior_sequence
   (sequence_letter) @character
   (#eq? @character "I")
-  (content) @text.emphasis)
+  (content) @markup.italic)
 
 (interior_sequence
   (sequence_letter) @character
   (#eq? @character "L")
-  (content) @text.uri)
+  (content) @string.special.url)
 
 (interior_sequence
   (sequence_letter) @character
   (#eq? @character "X")
-  (content) @text.reference)
+  (content) @markup.link)
 
 (interior_sequence
   (sequence_letter) @character

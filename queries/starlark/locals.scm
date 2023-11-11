@@ -1,91 +1,104 @@
-;;; Program structure
-(module) @scope
+; Program structure
+(module) @local.scope
 
 ; Function with parameters, defines parameters
 (parameters
-  (identifier) @definition.parameter)
+  (identifier) @local.definition.parameter)
 
 (default_parameter
-  (identifier) @definition.parameter)
+  (identifier) @local.definition.parameter)
 
 (typed_parameter
-  (identifier) @definition.parameter)
+  (identifier) @local.definition.parameter)
 
 (typed_default_parameter
-  (identifier) @definition.parameter)
+  (identifier) @local.definition.parameter)
 
 ; *args parameter
 (parameters
   (list_splat_pattern
-    (identifier) @definition.parameter))
+    (identifier) @local.definition.parameter))
 
 ; **kwargs parameter
 (parameters
   (dictionary_splat_pattern
-    (identifier) @definition.parameter))
+    (identifier) @local.definition.parameter))
 
 ; Function defines function and scope
 ((function_definition
-  name: (identifier) @definition.function) @scope
- (#set! definition.function.scope "parent"))
+  name: (identifier) @local.definition.function) @local.scope
+  (#set! definition.function.scope "parent"))
 
-;;; Loops
+; Loops
 ; not a scope!
 (for_statement
-  left: (pattern_list
-          (identifier) @definition.var))
+  left:
+    (pattern_list
+      (identifier) @local.definition.var))
+
 (for_statement
-  left: (tuple_pattern
-          (identifier) @definition.var))
+  left:
+    (tuple_pattern
+      (identifier) @local.definition.var))
+
 (for_statement
-  left: (identifier) @definition.var)
+  left: (identifier) @local.definition.var)
 
 ; for in list comprehension
 (for_in_clause
-  left: (identifier) @definition.var)
+  left: (identifier) @local.definition.var)
+
 (for_in_clause
-  left: (tuple_pattern
-          (identifier) @definition.var))
+  left:
+    (tuple_pattern
+      (identifier) @local.definition.var))
+
 (for_in_clause
-  left: (pattern_list
-          (identifier) @definition.var))
+  left:
+    (pattern_list
+      (identifier) @local.definition.var))
 
-(dictionary_comprehension) @scope
-(list_comprehension) @scope
-(set_comprehension) @scope
+(dictionary_comprehension) @local.scope
 
-;;; Assignments
+(list_comprehension) @local.scope
+
+(set_comprehension) @local.scope
+
+; Assignments
+(assignment
+  left: (identifier) @local.definition.var)
 
 (assignment
- left: (identifier) @definition.var)
+  left:
+    (pattern_list
+      (identifier) @local.definition.var))
 
 (assignment
- left: (pattern_list
-   (identifier) @definition.var))
-(assignment
- left: (tuple_pattern
-   (identifier) @definition.var))
+  left:
+    (tuple_pattern
+      (identifier) @local.definition.var))
 
 (assignment
- left: (attribute
-   (identifier)
-   (identifier) @definition.field))
+  left:
+    (attribute
+      (identifier)
+      (identifier) @local.definition.field))
 
 ; Walrus operator  x := 1
 (named_expression
-  (identifier) @definition.var)
+  (identifier) @local.definition.var)
 
-(as_pattern 
-  alias: (as_pattern_target) @definition.var)
+(as_pattern
+  alias: (as_pattern_target) @local.definition.var)
 
-;;; REFERENCES
-(identifier) @reference
+; REFERENCES
+(identifier) @local.reference
 
-;; Starlark-specific
-
+; Starlark-specific
 ; Loads
 ((call
   function: (identifier) @_fn
-  arguments: (argument_list
-    (string) @definition.import))
+  arguments:
+    (argument_list
+      (string) @local.definition.import))
   (#eq? @_fn "load"))

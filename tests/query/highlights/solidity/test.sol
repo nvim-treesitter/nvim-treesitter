@@ -1,27 +1,27 @@
 // Example contract from official documentation at https://github.com/ethereum/solidity/blob/v0.8.12/docs/examples/voting.rst
 
 // SPDX-License-Identifier: GPL-3.0
-// ^ comment
+// ^ @comment
 pragma solidity >=0.7.0 <0.9.0;
-// ^ preproc
-//     ^ preproc
+// ^ @keyword.directive
+//     ^ @keyword.directive
 
 import * as something from "anotherFile";
-// ^     ^            ^ include
+// ^     ^            ^ @keyword.import
 
 /// @title Voting with delegation.
-// <- comment
+// <- @comment
 contract Ballot {
 // ^keyword
-//       ^ type
+//       ^ @type
     // This declares a new complex type which will
     // be used for variables later.
     // It will represent a single voter.
     struct Voter {
-//         ^ type
+//         ^ @type
         uint weight; // weight is accumulated by delegation
-//      ^ type.builtin
-//           ^ field
+//      ^ @type.builtin
+//           ^ @variable.member
         bool voted;  // if true, that person already voted
         address delegate; // person delegated to
         uint vote;   // index of the voted proposal
@@ -34,23 +34,23 @@ contract Ballot {
     }
 
     address public chairperson;
-//  ^ type.builtin
+//  ^ @type.builtin
 
     // This declares a state variable that
     // stores a `Voter` struct for each possible address.
     mapping(address => Voter) public voters;
-//         ^                ^ punctuation.bracket
-//                  ^ punctuation.delimiter
+//         ^                ^ @punctuation.bracket
+//                  ^ @punctuation.delimiter
 
     // A dynamically-sized array of `Proposal` structs.
     Proposal[] public proposals;
 
     enum ActionChoices { GoLeft, GoRight, GoStraight, SitStill }
-//                       ^ constant
+//                       ^ @constant
 
     /// Create a new ballot to choose one of `proposalNames`.
     constructor(bytes32[] memory proposalNames) {
-//  ^ constructor
+//  ^ @constructor
         chairperson = msg.sender;
         voters[chairperson].weight = 1;
 
@@ -63,7 +63,7 @@ contract Ballot {
             // appends it to the end of `proposals`.
             proposals.push(Proposal({
                 name: proposalNames[i],
-//              ^ field
+//              ^ @variable.member
                 voteCount: 0
             }));
         }
@@ -72,9 +72,9 @@ contract Ballot {
     // Give `voter` the right to vote on this ballot.
     // May only be called by `chairperson`.
     function giveRightToVote(address voter) external {
-//  ^ keyword.function
-//           ^ function
-//                                   ^ parameter
+//  ^ @keyword.function
+//           ^ @function
+//                                   ^ @variable.parameter
         // If the first argument of `require` evaluates
         // to `false`, execution terminates and all
         // changes to the state and to Ether balances
@@ -180,7 +180,7 @@ contract Ballot {
 
 contract Another {
   Ballot b = new Ballot(new bytes32[](1));
-//           ^ keyword.operator
+//           ^ @keyword.operator
 }
 
 // vim:ft=solidity

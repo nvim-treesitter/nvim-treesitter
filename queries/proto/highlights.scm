@@ -11,13 +11,9 @@
   "to"
 ] @keyword
 
-[
- "rpc"
-] @keyword.function
+"rpc" @keyword.function
 
-[
- "returns"
-] @keyword.return
+"returns" @keyword.return
 
 [
   "optional"
@@ -28,7 +24,7 @@
 [
   "package"
   "import"
-] @include
+] @keyword.import
 
 [
   (key_type)
@@ -43,15 +39,16 @@
 (enum_field
   (identifier) @constant)
 
+(string) @string
+
 [
-  (string)
   "\"proto3\""
   "\"proto2\""
-] @string
+] @string.special
 
 (int_lit) @number
 
-(float_lit) @float
+(float_lit) @number.float
 
 [
   (true)
@@ -75,8 +72,8 @@
 ] @punctuation.bracket
 
 [
- ";"
- ","
+  ";"
+  ","
 ] @punctuation.delimiter
 
 "=" @operator

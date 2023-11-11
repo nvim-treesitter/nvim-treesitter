@@ -1,22 +1,27 @@
 (macro_definition
-  name: (symbol) @definition.macro)
+  name: (symbol) @local.definition.macro)
 
 (symbol_assignment
-  name: (symbol) @definition.var)
+  name: (symbol) @local.definition.var)
 
 (label
-  name: (symbol) @definition.constant)
+  name: (symbol) @local.definition.constant)
+
 (symbol_definition
-  name: (symbol) @definition.constant)
+  name: (symbol) @local.definition.constant)
+
 (offset_definition
-  name: (symbol) @definition.constant)
+  name: (symbol) @local.definition.constant)
+
 (register_definition
-  name: (symbol) @definition.constant)
+  name: (symbol) @local.definition.constant)
+
 (register_list_definition
-  name: (symbol) @definition.constant)
+  name: (symbol) @local.definition.constant)
 
 (external_reference
-  symbols: (symbol_list
-    (symbol) @definition.import))
+  symbols:
+    (symbol_list
+      (symbol) @local.definition.import))
 
-(symbol) @reference
+(symbol) @local.reference

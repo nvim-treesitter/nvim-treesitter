@@ -7,18 +7,18 @@
 #           ^ @punctuation.delimiter
 
 .source "baksmali_test_class.smali"
-# <- @include
+# <- @keyword.import
 
 .implements Lsome/interface;
 .implements Lsome/other/interface;
 
 
 .annotation build Lsome/annotation;
-#           ^^^^^ @storageclass
+#           ^^^^^ @keyword.storage
 #                  ^^^^ @type
 #                                 ^ @punctuation.delimiter
     value1 = "test"
-#   ^^^^^^ @field
+#   ^^^^^^ @variable.member
 #          ^ @operator
 #            ^^^^^^ @string
     value2 = .subannotation Lsome/annotation;
@@ -50,7 +50,7 @@
 .field public static byteNegStaticField:B = 0xAAt
 
 .field public static floatStaticField:F = 3.1415926f
-#                                         ^^^^^^^^^^ @float
+#                                         ^^^^^^^^^^ @number.float
 
 .field public static doubleStaticField:D = 3.141592653589793
 
@@ -73,7 +73,7 @@
 
 .field public static methodStaticField:Ljava/lang/reflect/Method; = Lbaksmali/test/class;->testMethod(ILjava/lang/String;)Ljava/lang/String;
 #                                                                                        ^^ @punctuation.delimiter
-#                                                                                          ^^^^^^^^^^ @method.call
+#                                                                                          ^^^^^^^^^^ @function.method.call
 
 .field public static arrayStaticField:[I = {1, 2, 3, {1, 2, 3, 4}}
 #                                     ^ @punctuation.special
@@ -81,7 +81,7 @@
 #                                            ^ @punctuation.delimiter
 
 .field public static enumStaticField:Lsome/enum; = .enum Lsome/enum;->someEnumValue:Lsome/enum;
-#                                                                     ^^^^^^^^^^^^^ @field
+#                                                                     ^^^^^^^^^^^^^ @variable.member
 
 .field public static annotationStaticField:Lsome/annotation; = .subannotation Lsome/annotation;
     value1 = "test"
@@ -93,7 +93,7 @@
 
 .field public static staticFieldWithAnnotation:I
     .annotation runtime La/field/annotation;
-#               ^^^^^^^ @storageclass
+#               ^^^^^^^ @keyword.storage
         this = "is"
         a = "test"
     .end annotation
@@ -112,13 +112,13 @@
     .registers 1
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 #   ^^^^^^^^^^^^^ @keyword.operator
-#                  ^^ @parameter.builtin
+#                  ^^ @variable.parameter.builtin
     return-void
 #   ^^^^^^^^^^^ @keyword.return
 .end method
 
 .method public testMethod(ILjava/lang/String;)Ljava/lang/String;
-#              ^^^^^^^^^^ @method
+#              ^^^^^^^^^^ @function.method
     .registers 3
     .annotation runtime Lorg/junit/Test;
     .end annotation
@@ -144,9 +144,9 @@
     nop
     try_end:
     .catch Ljava/lang/Exception; {try_start: .. try_end:} handler:
-#   ^^^^^^ @exception
+#   ^^^^^^ @keyword.exception
     .catchall {try_start: .. try_end:} handler2:
-#   ^^^^^^^^^ @exception
+#   ^^^^^^^^^ @keyword.exception
 #                         ^^ @operator
 
     handler:
@@ -232,9 +232,9 @@
     nop
 
     .source "somefile.java"
-#   ^^^^^^^ @include
+#   ^^^^^^^ @keyword.import
     .line 101
-#         ^^^ @text.literal
+#         ^^^ @string.special
 
     nop
 

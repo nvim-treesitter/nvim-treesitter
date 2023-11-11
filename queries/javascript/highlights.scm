@@ -1,55 +1,55 @@
 ; inherits: ecma,jsx
-
-;;; Parameters
-(formal_parameters (identifier) @parameter)
+; Parameters
+(formal_parameters
+  (identifier) @variable.parameter)
 
 (formal_parameters
   (rest_pattern
-    (identifier) @parameter))
+    (identifier) @variable.parameter))
 
-;; ({ a }) => null
+; ({ a }) => null
 (formal_parameters
   (object_pattern
-    (shorthand_property_identifier_pattern) @parameter))
+    (shorthand_property_identifier_pattern) @variable.parameter))
 
-;; ({ a = b }) => null
+; ({ a = b }) => null
 (formal_parameters
   (object_pattern
     (object_assignment_pattern
-      (shorthand_property_identifier_pattern) @parameter)))
+      (shorthand_property_identifier_pattern) @variable.parameter)))
 
-;; ({ a: b }) => null
+; ({ a: b }) => null
 (formal_parameters
   (object_pattern
     (pair_pattern
-      value: (identifier) @parameter)))
+      value: (identifier) @variable.parameter)))
 
-;; ([ a ]) => null
+; ([ a ]) => null
 (formal_parameters
   (array_pattern
-    (identifier) @parameter))
+    (identifier) @variable.parameter))
 
-;; ({ a } = { a }) => null
+; ({ a } = { a }) => null
 (formal_parameters
   (assignment_pattern
     (object_pattern
-      (shorthand_property_identifier_pattern) @parameter)))
+      (shorthand_property_identifier_pattern) @variable.parameter)))
 
-;; ({ a = b } = { a }) => null
+; ({ a = b } = { a }) => null
 (formal_parameters
   (assignment_pattern
     (object_pattern
       (object_assignment_pattern
-        (shorthand_property_identifier_pattern) @parameter))))
+        (shorthand_property_identifier_pattern) @variable.parameter))))
 
-;; a => null
+; a => null
 (arrow_function
-  parameter: (identifier) @parameter)
+  parameter: (identifier) @variable.parameter)
 
-;; optional parameters
+; optional parameters
 (formal_parameters
   (assignment_pattern
-    left: (identifier) @parameter))
+    left: (identifier) @variable.parameter))
 
-;; punctuation
+; punctuation
 (optional_chain) @punctuation.delimiter

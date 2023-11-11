@@ -1,20 +1,16 @@
 [
-  (use_statement) 
+  (use_statement)
   (actor_definition)
   (class_definition)
   (primitive_definition)
   (interface_definition)
   (trait_definition)
   (struct_definition)
-
   (constructor)
   (method)
   (behavior)
-
   (parameters)
-
   (type)
-
   (if_statement)
   (iftype_statement)
   (elseif_block)
@@ -30,10 +26,8 @@
   (case_statement)
   (parenthesized_expression)
   (tuple_expression)
-
   (array_literal)
   (object_literal)
   (string)
-
   (block_comment)
 ] @fold

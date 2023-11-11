@@ -1,5 +1,4 @@
-;; Misc
-
+; Misc
 [
   (line_comment)
   (block_comment)
@@ -8,6 +7,7 @@
 
 ((line_comment) @comment.documentation
   (#lua-match? @comment.documentation "^///[^/]"))
+
 ((line_comment) @comment.documentation
   (#lua-match? @comment.documentation "^///$"))
 
@@ -18,9 +18,12 @@
   (#lua-match? @comment.documentation "^/[+][+][^+].*[+]/$"))
 
 [
-  "(" ")"
-  "[" "]"
-  "{" "}"
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
 ] @punctuation.bracket
 
 [
@@ -35,8 +38,7 @@
   "$"
 ] @punctuation.special
 
-;; Constants
-
+; Constants
 [
   "__FILE_FULL_PATH__"
   "__FILE__"
@@ -59,18 +61,16 @@
 
 (integer_literal) @number
 
-(float_literal) @float
+(float_literal) @number.float
 
 [
   "true"
   "false"
 ] @boolean
 
-;; Functions
-
+; Functions
 (func_declarator
-  (identifier) @function
-)
+  (identifier) @function)
 
 [
   "__traits"
@@ -83,36 +83,29 @@
 ] @function.builtin
 
 (import_expression
-  "import" @function.builtin
-)
+  "import" @function.builtin)
 
 (parameter
   (var_declarator
-    (identifier) @parameter
-  )
-)
+    (identifier) @variable.parameter))
 
 (function_literal
-  (identifier) @parameter
-)
+  (identifier) @variable.parameter)
 
 (constructor
-  "this" @constructor
-)
+  "this" @constructor)
 
 (destructor
-  "this" @constructor
-)
+  "this" @constructor)
 
-;; Keywords
-
+; Keywords
 [
   "case"
   "default"
   "else"
   "if"
   "switch"
-] @conditional
+] @keyword.conditional
 
 [
   "break"
@@ -122,7 +115,7 @@
   "foreach"
   "foreach_reverse"
   "while"
-] @repeat
+] @keyword.repeat
 
 [
   "__parameters"
@@ -209,7 +202,7 @@
   "finally"
   "throw"
   "try"
-] @exception
+] @keyword.exception
 
 "null" @constant.builtin
 
@@ -218,7 +211,7 @@
   "const"
   "immutable"
   "shared"
-] @storageclass
+] @keyword.storage
 
 [
   "abstract"
@@ -238,51 +231,45 @@
 ] @type.qualifier
 
 (alias_assignment
-  . (identifier) @type.definition)
+  .
+  (identifier) @type.definition)
 
 (module_declaration
-  "module" @include
-)
+  "module" @keyword.import)
 
 (import_declaration
-  "import" @include
-)
+  "import" @keyword.import)
 
 (type) @type
 
 (catch_parameter
-  (qualified_identifier) @type
-)
+  (qualified_identifier) @type)
 
 (var_declarations
-  (qualified_identifier) @type
-)
+  (qualified_identifier) @type)
 
 (func_declaration
-  (qualified_identifier) @type
-)
+  (qualified_identifier) @type)
 
 (parameter
-  (qualified_identifier) @type
-)
+  (qualified_identifier) @type)
 
 (class_declaration
-  (identifier) @type
-)
+  (identifier) @type)
 
 (fundamental_type) @type.builtin
 
-(module_fully_qualified_name (packages (package_name) @namespace))
-(module_name) @namespace
+(module_fully_qualified_name
+  (packages
+    (package_name) @module))
+
+(module_name) @module
 
 (at_attribute) @attribute
 
 (user_defined_attribute
-  "@" @attribute
-)
+  "@" @attribute)
 
-;; Variables
-
+; Variables
 (primary_expression
-  "this" @variable.builtin
-)
+  "this" @variable.builtin)

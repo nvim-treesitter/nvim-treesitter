@@ -1,104 +1,126 @@
 (identifier) @variable
+
 (int_literal) @number
-(float_literal) @float
+
+(float_literal) @number.float
+
 (bool_literal) @boolean
 
 (type_declaration) @type
 
 (function_declaration
-    (identifier) @function)
+  (identifier) @function)
 
 (parameter
-    (variable_identifier_declaration (identifier) @parameter))
+  (variable_identifier_declaration
+    (identifier) @variable.parameter))
 
 (struct_declaration
-    (identifier) @type)
+  (identifier) @type)
 
 (struct_declaration
-    (struct_member (variable_identifier_declaration (identifier) @field)))
+  (struct_member
+    (variable_identifier_declaration
+      (identifier) @variable.member)))
 
 (type_constructor_or_function_call_expression
-    (type_declaration) @function.call)
+  (type_declaration) @function.call)
 
 [
-    "struct"
-    "bitcast"
-    "discard"
-    "enable"
-    "fallthrough"
-    "let"
-    "type"
-    "var"
-    "override"
-    (texel_format)
+  "struct"
+  "bitcast"
+  "discard"
+  "enable"
+  "fallthrough"
+  "let"
+  "type"
+  "var"
+  "override"
+  (texel_format)
 ] @keyword
 
 [
-    "private"
-    "storage"
-    "uniform"
-    "workgroup"
-] @storageclass
+  "private"
+  "storage"
+  "uniform"
+  "workgroup"
+] @keyword.storage
 
 [
-    "read"
-    "read_write"
-    "write"
+  "read"
+  "read_write"
+  "write"
 ] @type.qualifier
 
 "fn" @keyword.function
 
 "return" @keyword.return
 
-[ "," "." ":" ";" "->" ] @punctuation.delimiter
-
-["(" ")" "[" "]" "{" "}"] @punctuation.bracket
+[
+  ","
+  "."
+  ":"
+  ";"
+  "->"
+] @punctuation.delimiter
 
 [
-    "loop"
-    "for"
-    "while"
-    "break"
-    "continue"
-    "continuing"
-] @repeat
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+] @punctuation.bracket
 
 [
-    "if"
-    "else"
-    "switch"
-    "case"
-    "default"
-] @conditional
+  "loop"
+  "for"
+  "while"
+  "break"
+  "continue"
+  "continuing"
+] @keyword.repeat
 
 [
-    "&"
-    "&&"
-    "/"
-    "!"
-    "="
-    "=="
-    "!="
-    ">"
-    ">="
-    ">>"
-    "<"
-    "<="
-    "<<"
-    "%"
-    "-"
-    "+"
-    "|"
-    "||"
-    "*"
-    "~"
-    "^"
-    "@"
-    "++"
-    "--"
+  "if"
+  "else"
+  "switch"
+  "case"
+  "default"
+] @keyword.conditional
+
+[
+  "&"
+  "&&"
+  "/"
+  "!"
+  "="
+  "=="
+  "!="
+  ">"
+  ">="
+  ">>"
+  "<"
+  "<="
+  "<<"
+  "%"
+  "-"
+  "+"
+  "|"
+  "||"
+  "*"
+  "~"
+  "^"
+  "@"
+  "++"
+  "--"
 ] @operator
 
 (attribute
-    (identifier) @attribute)
+  (identifier) @attribute)
 
-[(line_comment) (block_comment)] @comment @spell
+[
+  (line_comment)
+  (block_comment)
+] @comment @spell

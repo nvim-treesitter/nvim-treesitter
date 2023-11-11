@@ -1,8 +1,8 @@
 ; inherits: ecma
+"require" @keyword.import
 
-"require" @include
-
-(import_require_clause source: (string) @text.uri)
+(import_require_clause
+  source: (string) @string.special.url)
 
 [
   "declare"
@@ -24,9 +24,14 @@
   "satisfies"
 ] @keyword.operator
 
-(as_expression "as" @keyword.operator)
-(export_statement "as" @keyword.operator)
-(mapped_type_clause "as" @keyword.operator)
+(as_expression
+  "as" @keyword.operator)
+
+(export_statement
+  "as" @keyword.operator)
+
+(mapped_type_clause
+  "as" @keyword.operator)
 
 [
   "abstract"
@@ -37,35 +42,45 @@
 ] @type.qualifier
 
 ; types
-
 (type_identifier) @type
+
 (predefined_type) @type.builtin
 
-(import_statement "type"
+(import_statement
+  "type"
   (import_clause
     (named_imports
-      ((import_specifier
-          name: (identifier) @type)))))
+      (import_specifier
+        name: (identifier) @type))))
 
 (template_literal_type) @string
 
-(non_null_expression "!" @operator)
+(non_null_expression
+  "!" @operator)
 
-;; punctuation
-
+; punctuation
 (type_arguments
-  ["<" ">"] @punctuation.bracket)
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
 
 (type_parameters
-  ["<" ">"] @punctuation.bracket)
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
 
 (object_type
-  ["{|" "|}"] @punctuation.bracket)
+  [
+    "{|"
+    "|}"
+  ] @punctuation.bracket)
 
 (union_type
   "|" @punctuation.delimiter)
 
-(intersection_type 
+(intersection_type
   "&" @punctuation.delimiter)
 
 (type_annotation
@@ -85,69 +100,103 @@
 
 "?." @punctuation.delimiter
 
-(abstract_method_signature "?" @punctuation.special)
-(method_signature "?" @punctuation.special)
-(method_definition "?" @punctuation.special)
-(property_signature "?" @punctuation.special)
-(optional_parameter "?" @punctuation.special)
-(optional_type "?" @punctuation.special)
-(public_field_definition [ "?" "!" ] @punctuation.special)
-(flow_maybe_type "?" @punctuation.special)
+(abstract_method_signature
+  "?" @punctuation.special)
 
-(template_type ["${" "}"] @punctuation.special)
+(method_signature
+  "?" @punctuation.special)
 
-(conditional_type ["?" ":"] @conditional.ternary)
+(method_definition
+  "?" @punctuation.special)
 
-;;; Parameters
-(required_parameter (identifier) @parameter)
-(optional_parameter (identifier) @parameter)
+(property_signature
+  "?" @punctuation.special)
+
+(optional_parameter
+  "?" @punctuation.special)
+
+(optional_type
+  "?" @punctuation.special)
+
+(public_field_definition
+  [
+    "?"
+    "!"
+  ] @punctuation.special)
+
+(flow_maybe_type
+  "?" @punctuation.special)
+
+(template_type
+  [
+    "${"
+    "}"
+  ] @punctuation.special)
+
+(conditional_type
+  [
+    "?"
+    ":"
+  ] @keyword.conditional.ternary)
+
+; Parameters
+(required_parameter
+  (identifier) @variable.parameter)
+
+(optional_parameter
+  (identifier) @variable.parameter)
 
 (required_parameter
   (rest_pattern
-    (identifier) @parameter))
+    (identifier) @variable.parameter))
 
-;; ({ a }) => null
+; ({ a }) => null
 (required_parameter
   (object_pattern
-    (shorthand_property_identifier_pattern) @parameter))
+    (shorthand_property_identifier_pattern) @variable.parameter))
 
-;; ({ a = b }) => null
+; ({ a = b }) => null
 (required_parameter
   (object_pattern
     (object_assignment_pattern
-      (shorthand_property_identifier_pattern) @parameter)))
+      (shorthand_property_identifier_pattern) @variable.parameter)))
 
-;; ({ a: b }) => null
+; ({ a: b }) => null
 (required_parameter
   (object_pattern
     (pair_pattern
-      value: (identifier) @parameter)))
+      value: (identifier) @variable.parameter)))
 
-;; ([ a ]) => null
+; ([ a ]) => null
 (required_parameter
   (array_pattern
-    (identifier) @parameter))
+    (identifier) @variable.parameter))
 
-;; a => null
+; a => null
 (arrow_function
-  parameter: (identifier) @parameter)
+  parameter: (identifier) @variable.parameter)
 
-;; global declaration
-(ambient_declaration "global" @namespace)
+; global declaration
+(ambient_declaration
+  "global" @module)
 
-;; function signatures
+; function signatures
 (ambient_declaration
   (function_signature
     name: (identifier) @function))
 
-;; method signatures
-(method_signature name: (_) @method)
+; method signatures
+(method_signature
+  name: (_) @function.method)
 
-;; property signatures
+; property signatures
 (property_signature
-  name: (property_identifier) @method
-  type: (type_annotation
-          [
-            (union_type (parenthesized_type (function_type)))
-            (function_type)
-          ]))
+  name: (property_identifier) @function.method
+  type:
+    (type_annotation
+      [
+        (union_type
+          (parenthesized_type
+            (function_type)))
+        (function_type)
+      ]))

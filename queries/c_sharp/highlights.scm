@@ -4,13 +4,19 @@
   (#eq? @keyword "value")
   (#has-ancestor? @keyword accessor_declaration))
 
+((identifier) @variable.builtin
+  (#eq? @variable.builtin "_"))
+
 (method_declaration
-  name: (identifier) @method)
+  name: (identifier) @function.method)
 
 (local_function_statement
-  name: (identifier) @method)
+  name: (identifier) @function.method)
 
 (method_declaration
+  type: (identifier) @type)
+
+(declaration_pattern
   type: (identifier) @type)
 
 (local_function_statement
@@ -18,58 +24,78 @@
 
 (interpolation) @none
 
+(member_access_expression
+  name: (identifier) @variable.member)
+
 (invocation_expression
   (member_access_expression
-    name: (identifier) @method.call))
+    name: (identifier) @function.method.call))
 
 (invocation_expression
-  function: (conditional_access_expression
-    (member_binding_expression
-      name: (identifier) @method.call)))
+  function:
+    (conditional_access_expression
+      (member_binding_expression
+        name: (identifier) @function.method.call)))
 
 (namespace_declaration
-  name: [(qualified_name) (identifier)] @namespace)
+  name:
+    [
+      (qualified_name)
+      (identifier)
+    ] @module)
 
 (qualified_name
   (identifier) @type)
 
+(namespace_declaration
+  name:
+    [
+      (qualified_name
+        (identifier) @module)
+      (identifier) @module
+    ])
+
 (invocation_expression
-      (identifier) @method.call)
+  (identifier) @function.method.call)
 
 (field_declaration
   (variable_declaration
     (variable_declarator
-      (identifier) @field)))
+      (identifier) @variable.member)))
 
 (initializer_expression
   (assignment_expression
-    left: (identifier) @field))
+    left: (identifier) @variable.member))
 
 (parameter_list
   (parameter
-   name: (identifier) @parameter))
+    name: (identifier) @variable.parameter))
+
+(implicit_parameter_list
+  (parameter
+    name: (identifier) @variable.parameter))
 
 (parameter_list
   (parameter
-   type: (identifier) @type))
+    type: (identifier) @type))
 
 (integer_literal) @number
-(real_literal) @float
+
+(real_literal) @number.float
 
 (null_literal) @constant.builtin
+
 (character_literal) @character
 
 [
- (string_literal)
- (verbatim_string_literal)
- (interpolated_string_expression)
+  (string_literal)
+  (verbatim_string_literal)
+  (interpolated_string_expression)
 ] @string
 
 (boolean_literal) @boolean
 
-[
- (predefined_type)
-] @type.builtin
+(predefined_type) @type.builtin
 
 (implicit_type) @keyword
 
@@ -80,6 +106,7 @@
 
 ((comment) @comment.documentation
   (#lua-match? @comment.documentation "^///[^/]"))
+
 ((comment) @comment.documentation
   (#lua-match? @comment.documentation "^///$"))
 
@@ -87,7 +114,8 @@
   (identifier) @type)
 
 (using_directive
-  (name_equals (identifier) @type.definition))
+  (name_equals
+    (identifier) @type.definition))
 
 (property_declaration
   name: (identifier) @property)
@@ -103,20 +131,25 @@
 
 (interface_declaration
   name: (identifier) @type)
+
 (class_declaration
   name: (identifier) @type)
+
 (record_declaration
   name: (identifier) @type)
+
 (enum_declaration
   name: (identifier) @type)
+
 (constructor_declaration
   name: (identifier) @constructor)
-(constructor_initializer [
-  "base" @constructor
-])
+
+(constructor_initializer
+  "base" @constructor)
 
 (variable_declaration
   (identifier) @type)
+
 (object_creation_expression
   (identifier) @type)
 
@@ -139,30 +172,34 @@
 
 (object_creation_expression
   (generic_name
-   (identifier) @type))
+    (identifier) @type))
 
 (property_declaration
   (generic_name
     (identifier) @type))
 
 (_
-  type: (generic_name
-   (identifier) @type))
+  type:
+    (generic_name
+      (identifier) @type))
+
 ; Generic Method invocation with generic type
 (invocation_expression
-  function: (generic_name
-              . (identifier) @method.call))
+  function:
+    (generic_name
+      .
+      (identifier) @function.method.call))
 
 (invocation_expression
   (member_access_expression
     (generic_name
-      (identifier) @method)))
+      (identifier) @function.method)))
 
 (base_list
   (identifier) @type)
 
 (type_argument_list
- (identifier) @type)
+  (identifier) @type)
 
 (type_parameter_list
   (type_parameter) @type)
@@ -171,7 +208,7 @@
   target: (identifier) @type)
 
 (attribute
- name: (identifier) @attribute)
+  name: (identifier) @attribute)
 
 (for_each_statement
   type: (identifier) @type)
@@ -191,183 +228,198 @@
   (identifier) @type)
 
 (name_colon
-  (identifier) @parameter)
+  (identifier) @variable.parameter)
 
-(warning_directive) @text.warning
-(error_directive) @exception
+(warning_directive) @comment.warning
+
+(error_directive) @keyword.exception
 
 (define_directive
   (identifier) @constant) @constant.macro
+
 (undef_directive
   (identifier) @constant) @constant.macro
 
 (line_directive) @constant.macro
+
 (line_directive
   (preproc_integer_literal) @constant
   (preproc_string_literal)? @string)
 
 (pragma_directive
   (identifier) @constant) @constant.macro
+
 (pragma_directive
   (preproc_string_literal) @string) @constant.macro
 
 [
- (nullable_directive)
- (region_directive)
- (endregion_directive)
+  (nullable_directive)
+  (region_directive)
+  (endregion_directive)
 ] @constant.macro
 
 [
- "if"
- "else"
- "switch"
- "break"
- "case"
- "when"
- (if_directive)
- (elif_directive)
- (else_directive)
- (endif_directive)
-] @conditional
+  "if"
+  "else"
+  "switch"
+  "break"
+  "case"
+  "when"
+  (if_directive)
+  (elif_directive)
+  (else_directive)
+  (endif_directive)
+] @keyword.conditional
 
 (if_directive
   (identifier) @constant)
+
 (elif_directive
   (identifier) @constant)
 
 [
- "while"
- "for"
- "do"
- "continue"
- "goto"
- "foreach"
-] @repeat
+  "while"
+  "for"
+  "do"
+  "continue"
+  "goto"
+  "foreach"
+] @keyword.repeat
 
 [
- "try"
- "catch"
- "throw"
- "finally"
-] @exception
+  "try"
+  "catch"
+  "throw"
+  "finally"
+] @keyword.exception
 
 [
- "+"
- "?"
- ":"
- "++"
- "-"
- "--"
- "&"
- "&&"
- "|"
- "||"
- "!"
- "!="
- "=="
- "*"
- "/"
- "%"
- "<"
- "<="
- ">"
- ">="
- "="
- "-="
- "+="
- "*="
- "/="
- "%="
- "^"
- "^="
- "&="
- "|="
- "~"
- ">>"
- ">>>"
- "<<"
- "<<="
- ">>="
- ">>>="
- "=>"
- "??"
- "??="
+  "+"
+  "?"
+  ":"
+  "++"
+  "-"
+  "--"
+  "&"
+  "&&"
+  "|"
+  "||"
+  "!"
+  "!="
+  "=="
+  "*"
+  "/"
+  "%"
+  "<"
+  "<="
+  ">"
+  ">="
+  "="
+  "-="
+  "+="
+  "*="
+  "/="
+  "%="
+  "^"
+  "^="
+  "&="
+  "|="
+  "~"
+  ">>"
+  ">>>"
+  "<<"
+  "<<="
+  ">>="
+  ">>>="
+  "=>"
+  "??"
+  "??="
 ] @operator
 
 [
- ";"
- "."
- ","
- ":"
+  ";"
+  "."
+  ","
+  ":"
 ] @punctuation.delimiter
 
-(conditional_expression ["?" ":"] @conditional.ternary)
+(conditional_expression
+  [
+    "?"
+    ":"
+  ] @keyword.conditional.ternary)
 
 [
- "["
- "]"
- "{"
- "}"
- "("
- ")"
+  "["
+  "]"
+  "{"
+  "}"
+  "("
+  ")"
 ] @punctuation.bracket
 
-(type_argument_list ["<" ">"] @punctuation.bracket)
+(type_argument_list
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
 
 [
- (this_expression)
- (base_expression)
+  (this_expression)
+  (base_expression)
+  "this"
 ] @variable.builtin
 
 [
- "using"
- "as"
-] @include
+  "using"
+  "as"
+] @keyword.import
 
 (alias_qualified_name
-  (identifier "global") @include)
+  (identifier
+    "global") @keyword.import)
 
 [
- "with"
- "new"
- "typeof"
- "sizeof"
- "is"
- "and"
- "or"
- "not"
- "stackalloc"
- "in"
- "out"
- "ref"
+  "with"
+  "new"
+  "typeof"
+  "sizeof"
+  "is"
+  "and"
+  "or"
+  "not"
+  "stackalloc"
+  "in"
+  "out"
+  "ref"
 ] @keyword.operator
 
 [
- "lock"
- "params"
- "operator"
- "default"
- "implicit"
- "explicit"
- "override"
- "class"
- "delegate"
- "enum"
- "interface"
- "namespace"
- "struct"
- "get"
- "set"
- "init"
- "where"
- "record"
- "event"
- "add"
- "remove"
- "checked"
- "unchecked"
- "fixed"
- "alias"
+  "lock"
+  "params"
+  "operator"
+  "default"
+  "implicit"
+  "explicit"
+  "override"
+  "class"
+  "delegate"
+  "enum"
+  "interface"
+  "namespace"
+  "struct"
+  "get"
+  "set"
+  "init"
+  "where"
+  "record"
+  "event"
+  "add"
+  "remove"
+  "checked"
+  "unchecked"
+  "fixed"
+  "alias"
 ] @keyword
 
 [
@@ -376,39 +428,40 @@
 ] @keyword.coroutine
 
 [
- "const"
- "extern"
- "readonly"
- "static"
- "volatile"
- "required"
-] @storageclass
+  "const"
+  "extern"
+  "readonly"
+  "static"
+  "volatile"
+  "required"
+] @keyword.storage
 
 [
- "abstract"
- "private"
- "protected"
- "internal"
- "public"
- "partial"
- "sealed"
- "virtual"
+  "abstract"
+  "private"
+  "protected"
+  "internal"
+  "public"
+  "partial"
+  "sealed"
+  "virtual"
 ] @type.qualifier
 
 (parameter_modifier) @operator
 
 (query_expression
-  (_ [
-    "from"
-    "orderby"
-    "select"
-    "group"
-    "by"
-    "ascending"
-    "descending"
-    "equals"
-    "let"
-  ] @keyword))
+  (_
+    [
+      "from"
+      "orderby"
+      "select"
+      "group"
+      "by"
+      "ascending"
+      "descending"
+      "equals"
+      "let"
+    ] @keyword))
 
 [
   "return"

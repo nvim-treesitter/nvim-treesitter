@@ -19,37 +19,77 @@
 ; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 ; OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ; SOFTWARE.
+; DECLARATIONS AND SCOPES
+(method) @local.scope
 
-;;; DECLARATIONS AND SCOPES
-(method) @scope
-(class) @scope
+(class) @local.scope
 
 [
- (block)
- (do_block) 
- ] @scope
+  (block)
+  (do_block)
+] @local.scope
 
-(identifier) @reference
-(constant) @reference
-(instance_variable) @reference
+(identifier) @local.reference
 
-(module name: (constant) @definition.namespace)
-(class name: (constant) @definition.type)
-(method name: [(identifier) (constant)] @definition.function)
-(singleton_method name: [(identifier) (constant)] @definition.function)
+(constant) @local.reference
 
-(method_parameters (identifier) @definition.var)
-(lambda_parameters (identifier) @definition.var)
-(block_parameters (identifier) @definition.var)
-(splat_parameter (identifier) @definition.var)
-(hash_splat_parameter (identifier) @definition.var)
-(optional_parameter name: (identifier) @definition.var)
-(destructured_parameter (identifier) @definition.var)
-(block_parameter name: (identifier) @definition.var)
-(keyword_parameter name: (identifier) @definition.var)
+(instance_variable) @local.reference
 
-(assignment left: (_) @definition.var)
+(module
+  name: (constant) @local.definition.namespace)
 
-(left_assignment_list (identifier) @definition.var)
-(rest_assignment (identifier) @definition.var)
-(destructured_left_assignment (identifier) @definition.var)
+(class
+  name: (constant) @local.definition.type)
+
+(method
+  name:
+    [
+      (identifier)
+      (constant)
+    ] @local.definition.function)
+
+(singleton_method
+  name:
+    [
+      (identifier)
+      (constant)
+    ] @local.definition.function)
+
+(method_parameters
+  (identifier) @local.definition.var)
+
+(lambda_parameters
+  (identifier) @local.definition.var)
+
+(block_parameters
+  (identifier) @local.definition.var)
+
+(splat_parameter
+  (identifier) @local.definition.var)
+
+(hash_splat_parameter
+  (identifier) @local.definition.var)
+
+(optional_parameter
+  name: (identifier) @local.definition.var)
+
+(destructured_parameter
+  (identifier) @local.definition.var)
+
+(block_parameter
+  name: (identifier) @local.definition.var)
+
+(keyword_parameter
+  name: (identifier) @local.definition.var)
+
+(assignment
+  left: (_) @local.definition.var)
+
+(left_assignment_list
+  (identifier) @local.definition.var)
+
+(rest_assignment
+  (identifier) @local.definition.var)
+
+(destructured_left_assignment
+  (identifier) @local.definition.var)
