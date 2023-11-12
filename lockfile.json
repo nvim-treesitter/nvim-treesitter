@@ -715,5 +715,8 @@
   },
   "zig": {
     "revision": "0d08703e4c3f426ec61695d7617415fff97029bd"
+  },
+  "templ": {
+    "revision": "94ea27668915ef8f084c9fd7174cfd384ac9a275"
   }
 }
