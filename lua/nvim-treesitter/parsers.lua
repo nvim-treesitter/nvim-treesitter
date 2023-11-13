@@ -2042,7 +2042,7 @@ list.wing = {
     location = "libs/tree-sitter-wing",
     requires_generate_from_grammar = true,
   },
-  maintainers = { "@gshpychka" },
+  maintainers = { "@gshpychka", "@MarkMcCulloh" },
   experimental = true,
 }
 

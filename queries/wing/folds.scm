@@ -12,5 +12,4 @@
   (enum_definition)
   (try_catch_statement)
   (method_definition)
-  (inflight_method_definition)
 ] @fold

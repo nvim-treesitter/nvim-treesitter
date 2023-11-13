@@ -11,8 +11,6 @@
   name: (identifier) @type)
 (method_definition
   name: (identifier) @method)
-(inflight_method_definition
-  name: (identifier) @method)
 
 ; Functions
 
