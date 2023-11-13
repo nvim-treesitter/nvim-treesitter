@@ -34,28 +34,15 @@
   (info_string (language) @conceal
   (#set! conceal "")))
 
-;; Conceal blockquote markers
-((block_quote_marker) @punctuation.special
-  (#offset! @punctuation.special 0 0 0 -1)
-  (#set! conceal "▐"))
-((block_continuation) @punctuation.special
-  (#eq? @punctuation.special ">")
-  (#set! conceal "▐"))
-((block_continuation) @punctuation.special
-  (#eq? @punctuation.special "> ")
-  (#offset! @punctuation.special 0 0 0 -1)
-  (#set! conceal "▐"))
-((block_continuation) @punctuation.special
-  ; for indented code blocks
-  (#eq? @punctuation.special ">     ")
-  (#offset! @punctuation.special 0 0 0 -5)
-  (#set! conceal "▐"))
-
 ;; Conceal bullet points
-([(list_marker_minus) (list_marker_plus) (list_marker_star)]
+([(list_marker_plus) (list_marker_star)]
   @punctuation.special
   (#offset! @punctuation.special 0 0 0 -1)
   (#set! conceal "•"))
+((list_marker_minus)
+  @punctuation.special
+  (#offset! @punctuation.special 0 0 0 -1)
+  (#set! conceal "—"))
 
 (code_fence_content) @none
 
