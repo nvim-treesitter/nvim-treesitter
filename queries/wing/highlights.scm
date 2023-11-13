@@ -76,7 +76,6 @@
   "for"
   "if"
   "in"
-  "init"
   "let"
   "new"
   "return"
