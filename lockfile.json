@@ -192,7 +192,7 @@
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
   },
   "gleam": {
-    "revision": "3f93cccaf278cc4c9cf9a373ea2f6389174d634c"
+    "revision": "b2afa4fd6bb41a7bf912b034c653c90af7ae5122"
   },
   "glimmer": {
     "revision": "f9746dc1d0707717fbba84cb5c22a71586af23e1"
@@ -243,7 +243,7 @@
     "revision": "577259b4068b2c281c9ebf94c109bd50a74d5857"
   },
   "hcl": {
-    "revision": "b5539065432c08e4118eb3ee7c94902fdda85708"
+    "revision": "fdf6463216f1a45d83ba911cdb9f57445a8d3b51"
   },
   "heex": {
     "revision": "4a36c9a388505180da6ee0eda1d8afb8c83481c8"
@@ -252,7 +252,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "f2902bd614e3916bdf65e1bc9ad45ebd08417bba"
+    "revision": "ac65c934b3214e96e0f854be009a3bd51549bd14"
   },
   "hocon": {
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
@@ -273,7 +273,7 @@
     "revision": "cd1a0ada92cc73dd0f4d7eedc162be4ded758591"
   },
   "ini": {
-    "revision": "7f11a02fb8891482068e0fe419965d7bade81a68"
+    "revision": "bcb84a2d4bcd6f55b911c42deade75c8f90cb0c5"
   },
   "ispc": {
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
@@ -330,7 +330,7 @@
     "revision": "8a841fb20ce683bfbb3469e6ba67f2851cfdf94a"
   },
   "leo": {
-    "revision": "91d7aa606f524cf4f5df7f4aacb45b4056fac704"
+    "revision": "23a9534d09d523d0dcee7dbf89e7c819e6835f6f"
   },
   "liquidsoap": {
     "revision": "b35882f2e1460867ddddcbe8af586e6807d4676f"
@@ -357,10 +357,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "7ce4c69fe92d1c10225e3d1b3676c87dd9427b45"
+    "revision": "f9820b2db958228f9be339b67d2de874d065866e"
   },
   "markdown_inline": {
-    "revision": "7ce4c69fe92d1c10225e3d1b3676c87dd9427b45"
+    "revision": "f9820b2db958228f9be339b67d2de874d065866e"
   },
   "matlab": {
     "revision": "6071891a8c39600203eba20513666cf93b4d650a"
@@ -477,7 +477,7 @@
     "revision": "9ce9a5f7d64528572aaa8d59459ba869e634086b"
   },
   "purescript": {
-    "revision": "5ef5592674ea42de75fc2792972e4ea0b6e3da6c"
+    "revision": "f89bd149e44624342bf49f76245d3284f2beed9a"
   },
   "pymanifest": {
     "revision": "a77547018ada84ca4bc115c7650b19441120f065"
@@ -573,7 +573,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "5f928f404d2aa024abce8657778fc10c03f1511f"
+    "revision": "1dcf6bd933af6271c609566a3c1204c920efbca5"
   },
   "squirrel": {
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
@@ -615,7 +615,7 @@
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
   },
   "terraform": {
-    "revision": "b5539065432c08e4118eb3ee7c94902fdda85708"
+    "revision": "fdf6463216f1a45d83ba911cdb9f57445a8d3b51"
   },
   "textproto": {
     "revision": "8dacf02aa402892c91079f8577998ed5148c0496"
@@ -627,7 +627,7 @@
     "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
   },
   "tlaplus": {
-    "revision": "204e858899f7dd5713dea7b0148d6aa477d4a18f"
+    "revision": "d99cb5c77bb0e733176d607a0875ac30e17e1e72"
   },
   "todotxt": {
     "revision": "0207f6a4ab6aeafc4b091914d31d8235049a2578"
