@@ -9,9 +9,9 @@ class Foo {
 //^    field
 //      ^   type.builtin
 //         ^ punctuation.delimiter
-  init(name:  str) {
+  new(name:  str) {
 //^    keyword
-//     ^    variable
+//    ^    variable
     this.name = name;
 //      ^ punctuation.delimiter
 //            ^ operator
