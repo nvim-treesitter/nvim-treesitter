@@ -171,6 +171,8 @@ someIOaction = do
       gunc x y = func x $ y + 7
                    -- ^ @variable
                        -- ^ @variable
+      valueFromList = HashSet.fromList []
+      -- ^ @variable
   when foo $ putStrLn $ T.showt =<< bar
  -- ^ @function.call
      -- ^ @variable

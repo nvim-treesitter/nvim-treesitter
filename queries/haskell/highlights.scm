@@ -173,6 +173,7 @@
      (exp_name 
        [(constructor)
         (variable)
+        (qualified_variable)
        ]))
    (quasiquote)
    ((exp_name) . (operator))
@@ -186,6 +187,7 @@
      (exp_name 
        [(constructor)
         (variable)
+        (qualified_variable)
        ]))
    (quasiquote)
    ((exp_name) . (operator))
@@ -325,7 +327,7 @@
   . (variable) @variable
   . [
      (exp_record)
-     (exp_name (variable))
+     (exp_name [(variable) (qualified_variable)])
      (exp_list)
      (exp_tuple)
      (exp_cond)
