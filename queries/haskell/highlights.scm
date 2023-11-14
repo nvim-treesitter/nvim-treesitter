@@ -295,6 +295,12 @@
  ])
  (#any-of? @_op "." ">>>" "***" ">=>" "<=<" ))
         
+; function defined in terms of a function composition
+(function 
+  name: (variable) @function
+  rhs: (exp_infix (_) . (operator) @_op . (_)
+  (#any-of? @_op "." ">>>" "***" ">=>" "<=<")))
+
 (exp_apply (exp_name 
   [
     ((variable) @function.call)
