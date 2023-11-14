@@ -405,7 +405,7 @@
     "revision": "62e61b6f5c0289c376d61a8c91faf6435cde9012"
   },
   "objdump": {
-    "revision": "64e4741d58345c36ded639f5a3bcd7811be7f8f8"
+    "revision": "28d3b2e25a0b1881d1b47ed1924ca276c7003d45"
   },
   "ocaml": {
     "revision": "694c57718fd85d514f8b81176038e7a4cfabcaaf"
@@ -573,7 +573,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "1dcf6bd933af6271c609566a3c1204c920efbca5"
+    "revision": "9fe5aeaa8d58d00cc31c20a3ae923ae695ce2ce7"
   },
   "squirrel": {
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
@@ -696,7 +696,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "d6af9180bfbd82b01980e7e5307d77ed3939e2a7"
+    "revision": "c48ce7e07cf2834c538be9e8ec653a244245c8a6"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
