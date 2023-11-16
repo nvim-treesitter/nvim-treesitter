@@ -2095,6 +2095,14 @@ list.zig = {
   maintainers = { "@maxxnino" },
 }
 
+list.templ = {
+  install_info = {
+    url = "https://github.com/vrischmann/tree-sitter-templ",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@vrischmann" },
+}
+
 local M = {
   list = list,
   filetype_to_parsername = filetype_to_parsername,
