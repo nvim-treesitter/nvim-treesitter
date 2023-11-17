@@ -32,7 +32,7 @@
 
 (self) @variable.builtin
 
-(loop_label ["'" (identifier)] @label)
+(label ["'" (identifier)] @label)
 
 ; Function definitions
 
