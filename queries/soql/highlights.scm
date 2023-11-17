@@ -33,7 +33,6 @@
   (identifier) @label)
 
 (storage_identifier) @storageclass
-(function_name) @function
 (date_literal) @string.special
 
 [
