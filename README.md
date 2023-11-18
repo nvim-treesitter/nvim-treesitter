@@ -360,6 +360,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [scfg](https://git.sr.ht/~rockorager/tree-sitter-scfg) (maintained by @WhyNotHugo)
 - [ ] [scheme](https://github.com/6cdh/tree-sitter-scheme)
 - [x] [scss](https://github.com/serenadeai/tree-sitter-scss) (maintained by @elianiva)
+- [x] [slang](https://github.com/theHamsta/tree-sitter-slang) (experimental, maintained by @theHamsta)
 - [x] [slint](https://github.com/jrmoulton/tree-sitter-slint) (experimental, maintained by @jrmoulton)
 - [x] [smali](https://git.sr.ht/~yotam/tree-sitter-smali) (maintained by @amaanq)
 - [x] [smithy](https://github.com/indoorvivants/tree-sitter-smithy) (maintained by @amaanq, @keynmol)
