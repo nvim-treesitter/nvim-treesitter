@@ -557,6 +557,9 @@
   "scss": {
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
   },
+  "slang": {
+    "revision": "47415d3f9ed2b3df9b9fc5f5d0ee1a71be3c67e0"
+  },
   "slint": {
     "revision": "00c8a2d3645766f68c0d0460086c0a994e5b0d85"
   },

@@ -1641,6 +1641,17 @@ list.scss = {
   maintainers = { "@elianiva" },
 }
 
+list.slang = {
+  install_info = {
+    url = "https://github.com/theHamsta/tree-sitter-slang",
+    files = { "src/parser.c", "src/scanner.c" },
+    generate_requires_npm = true,
+  },
+  filetype = "shaderslang",
+  maintainers = { "@theHamsta" },
+  experimental = true,
+}
+
 list.slint = {
   install_info = {
     url = "https://github.com/jrmoulton/tree-sitter-slint",
