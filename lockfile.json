@@ -42,7 +42,7 @@
     "revision": "863cea9f83ad5637300478e0559262f1e791684b"
   },
   "c": {
-    "revision": "25371f9448b97c55b853a6ee8bb0bfb1bca6da9f"
+    "revision": "212a80f86452bb1316324fa0db730cf52f29e05a"
   },
   "c_sharp": {
     "revision": "1648e21b4f087963abf0101ee5221bb413107b07"
@@ -78,7 +78,7 @@
     "revision": "f4b3cbc8b0bd4e13035d39940fef09f1392e8739"
   },
   "cpp": {
-    "revision": "d153fe1c3385ee0521730ff4e0be9358e903b322"
+    "revision": "3502513c3c5371b1c1480015c5eec85755d7a880"
   },
   "css": {
     "revision": "fec7d3757ab8f46a0ffe298be99b16ad5b9fa229"
@@ -87,7 +87,7 @@
     "revision": "6c1957405bd6f7751b050f61367f1094fab91444"
   },
   "cuda": {
-    "revision": "3161aed045130c900f870ef53fad93a574317769"
+    "revision": "d33ee2caab572f7b46cef12e090331b9ed1c02e2"
   },
   "cue": {
     "revision": "2df92e6755337e9234ad18ffef37f35d95e2ba9d"
@@ -198,7 +198,7 @@
     "revision": "f9746dc1d0707717fbba84cb5c22a71586af23e1"
   },
   "glsl": {
-    "revision": "bea82d337801e472e35b5cd08038afdf13263768"
+    "revision": "c9082edab87b145e97090b133167cb53626d9f58"
   },
   "gn": {
     "revision": "bc06955bc1e3c9ff8e9b2b2a55b38b94da923c05"
@@ -333,7 +333,7 @@
     "revision": "23a9534d09d523d0dcee7dbf89e7c819e6835f6f"
   },
   "liquidsoap": {
-    "revision": "b35882f2e1460867ddddcbe8af586e6807d4676f"
+    "revision": "91d2708e12a5869154a85190b13ac89cb1414189"
   },
   "llvm": {
     "revision": "1b96e58faf558ce057d4dc664b904528aee743cb"
@@ -477,13 +477,13 @@
     "revision": "9ce9a5f7d64528572aaa8d59459ba869e634086b"
   },
   "purescript": {
-    "revision": "f89bd149e44624342bf49f76245d3284f2beed9a"
+    "revision": "85a90951c10f118f819c1137f669800246890db7"
   },
   "pymanifest": {
     "revision": "a77547018ada84ca4bc115c7650b19441120f065"
   },
   "python": {
-    "revision": "82f5c9937fe4300b4bec3ee0e788d642c77aab2c"
+    "revision": "4bfdd9033a2225cc95032ce77066b7aeca9e2efc"
   },
   "ql": {
     "revision": "bd087020f0d8c183080ca615d38de0ec827aeeaf"
@@ -534,7 +534,7 @@
     "revision": "f257f3f57833d584050336921773738a3fd8ca22"
   },
   "rust": {
-    "revision": "464df136755e81b54885ab18f8093f6ec9def8bb"
+    "revision": "c741c105c0df43664fcc978dac5bc27888c9558f"
   },
   "scala": {
     "revision": "1b4c2fa5c55c5fd83cbb0d2f818f916aba221a42"
@@ -573,13 +573,13 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "9fe5aeaa8d58d00cc31c20a3ae923ae695ce2ce7"
+    "revision": "d8fffdf0902bf55994fd2e8a0a46e221ca988589"
   },
   "squirrel": {
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
   },
   "ssh_config": {
-    "revision": "6ac08decae456ef2fc307977d9210f86d75d4eca"
+    "revision": "1651e637d57c667708add5440d3726f07e97d953"
   },
   "starlark": {
     "revision": "c45ce2b39062bbd12ea1c210bd200db250efb24a"
@@ -606,13 +606,16 @@
     "revision": "1af543a96d060b1f808982037bfc54cc02218edd"
   },
   "t32": {
-    "revision": "884a034e0ae29ce72649041a603deacdfb4a3275"
+    "revision": "b904af353fb2f1df6ac45d8d3e3a5ee85a6cc306"
   },
   "tablegen": {
     "revision": "300f6a490e71f895e644ed2deec6920860a2e107"
   },
   "teal": {
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
+  },
+  "templ": {
+    "revision": "6b9dff614d5bab902cb6989bfcaa180636218159"
   },
   "terraform": {
     "revision": "fdf6463216f1a45d83ba911cdb9f57445a8d3b51"
@@ -669,7 +672,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "099a85fbd34a8b9db9f83da19f184bd4c1886e7c"
+    "revision": "2f24b0377ddb865eb4285634f6945cb4ee3f395c"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -696,7 +699,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "eacf704338661b981fcf4fdb5ee44d898f038144"
+    "revision": "6e6f9d2632518be6702ffc29460455fa7b3e4196"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
@@ -715,8 +718,5 @@
   },
   "zig": {
     "revision": "0d08703e4c3f426ec61695d7617415fff97029bd"
-  },
-  "templ": {
-    "revision": "94ea27668915ef8f084c9fd7174cfd384ac9a275"
   }
 }
