@@ -1555,8 +1555,7 @@ list.robot = {
     url = "https://github.com/Hubro/tree-sitter-robot",
     files = { "src/parser.c" },
   },
-  maintainers = { "@ema2159" },
-  experimental = true,
+  maintainers = { "@Hubro" },
 }
 
 list.ron = {
