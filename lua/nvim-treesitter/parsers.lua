@@ -1017,6 +1017,15 @@ list.llvm = {
   maintainers = { "@benwilliamgraham" },
 }
 
+list.linkerscript = {
+  install_info = {
+    url = "https://github.com/amaanq/tree-sitter-linkerscript",
+    files = { "src/parser.c" },
+  },
+  filetype = "ld",
+  maintainers = { "@amaanq" },
+}
+
 list.liquidsoap = {
   install_info = {
     url = "https://github.com/savonet/tree-sitter-liquidsoap",

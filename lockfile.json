@@ -332,6 +332,9 @@
   "leo": {
     "revision": "23a9534d09d523d0dcee7dbf89e7c819e6835f6f"
   },
+  "linkerscript": {
+    "revision": "f99011a3554213b654985a4b0a65b3b032ec4621"
+  },
   "liquidsoap": {
     "revision": "91d2708e12a5869154a85190b13ac89cb1414189"
   },
