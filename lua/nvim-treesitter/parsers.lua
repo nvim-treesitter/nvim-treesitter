@@ -951,7 +951,7 @@ list.just = {
     branch = "main",
   },
   filetype = "just",
-  maintainers = { "@Hubro" }
+  maintainers = { "@Hubro" },
 }
 
 list.kconfig = {
