@@ -78,7 +78,7 @@
     "revision": "f4b3cbc8b0bd4e13035d39940fef09f1392e8739"
   },
   "cpp": {
-    "revision": "3502513c3c5371b1c1480015c5eec85755d7a880"
+    "revision": "a71474021410973b29bfe99440d57bcd750246b1"
   },
   "css": {
     "revision": "fec7d3757ab8f46a0ffe298be99b16ad5b9fa229"
@@ -435,7 +435,7 @@
     "revision": "3911403cba497196fb867a6f1e286e3e1576f425"
   },
   "php": {
-    "revision": "33e30169e6f9bb29845c80afaa62a4a87f23f6d6"
+    "revision": "0a99deca13c4af1fb9adcb03c958bfc9f4c740a9"
   },
   "phpdoc": {
     "revision": "915a527d5aafa81b31acf67fab31b0ac6b6319c0"
@@ -534,7 +534,7 @@
     "revision": "f257f3f57833d584050336921773738a3fd8ca22"
   },
   "rust": {
-    "revision": "c741c105c0df43664fcc978dac5bc27888c9558f"
+    "revision": "79456e6080f50fc1ca7c21845794308fa5d35a51"
   },
   "scala": {
     "revision": "1b4c2fa5c55c5fd83cbb0d2f818f916aba221a42"
@@ -699,7 +699,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "11c5e35ec0437492497a931ca631787851e88c9d"
+    "revision": "f6423ecace1ef34f57dc77db031504ce21ebfaaf"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
