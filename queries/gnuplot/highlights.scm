@@ -4,24 +4,11 @@
 
 (identifier) @variable
 
-(unary_expression
-  _? @operator
-  (_)
-  _? @operator)
+[
+ "-""+""~""!""$""|""**""*""/""%""==""!=""<""<="">"">=""<<"">>""&""^""&&""||""="","".""eq""ne"
+ ] @operator
 
-(binary_expression
-  (_)
-  _ @operator
-  (_))
-
-(ternary_expression
-  condition: (_)
-  "?" @conditional.ternary
-  true: (_)
-  ":" @conditional.ternary
-  false: (_))
-
-"=" @operator
+(ternary_expression ["?"":"] @conditional.ternary)
 
 "sum" @function.builtin
 
@@ -32,71 +19,52 @@
  "while"
  ] @repeat
 
-(c_break) @keyword
-
-(c_cd) @keyword
-
-(c_clear) @keyword
-
-(c_eval "evaluate" @keyword (_))
-
 [
+ (c_break)
+ (c_cd)
+ (c_clear)
+ "evaluate"
  "fit"
- "via"
- "inverse"
+ "help"
+ "load"
+ "lower"
+ "print"
+ (c_replot)
+ (c_reread)
+ "reset"
+ "splot"
+ "cmd"
+ "test"
+ "undefine"
+ "vfill"
  ] @keyword
 
-(c_help "help" @keyword)
+(c_pause "pause" @keyword "mouse" @field _? @attribute ("," _ @attribute)?)
+
+(c_plot "plot" @keyword)
+
+(c_show "show" @keyword "plot"? @attribute)
+
+(c_stats "stats" @keyword ("name" (_))? @field)
+
+[
+ "via"
+ "inverse"
+ "sample"
+ ] @keyword.function
 
 [
  "if"
  "else"
  ] @conditional
 
-(c_load "load" @keyword)
-
-(c_lower "lower" @keyword)
-
-(c_pause "pause" @keyword "mouse" @field _? @attribute ("," _ @attribute)?)
-
-(c_plot "plot" @keyword "sample"? @keyword)
-
 (plot_element "axes"? @field)
 
-(datafile_modifiers
-  [
-   "binary" ; TODO: complete
-   ("skip" (_))
-   ; TODO: add bins
-   ]* @attribute)
-
-(smooth_options) @property
-
-(c_print "print" @keyword)
-
-(c_replot) @keyword
-
-(c_reread) @keyword
-
-(c_reset "reset" @keyword)
-
-(c_set "cmd" @keyword)
-
-(angles) @attribute
-(colorsequence) @attribute
-(clip) @attribute
 (cntrparam "auto"? @property)
-(contour) @attribute
+(colorbox "origin"? @attribute)
 (contourfill "auto"? @field)
-(encoding) @attribute
-; (errorbars)
 (format _? @attribute (_) _? @attribute)
-; (hystory)
 (key "auto"? @property)
-(mapping) @attribute
-; (mouse) ; TODO: complete
-; (pixmap)
-(pm3d "clip" "z"? @property)
 (style ; TODO: complete
   [
    "arrow"
@@ -113,7 +81,6 @@
    "textbox"
    ("watchpoint" "labels" @attribute (_)?)
    ] @property)
-; (table)
 (terminal "name" @property)
 ; TODO: complete terminals in grammar and then simplify its options here
 (t_cairolatex
@@ -150,60 +117,49 @@
 ; (t_tikz)
 ; (t_tkcanvas)
 
-(theta) @attribute
-; (timestamp)
-(walls "wall" @attribute)
-(xdata) @attribute
-
-(c_show "show" @keyword "plot"? @attribute)
-
-(c_splot "splot" @keyword "sample"? @keyword)
-
-(c_stats "stats" @keyword ("name" (_))? @field)
-
-(c_test "test" @keyword)
-
-(c_undefine "undefine" @keyword)
-
-(c_vfill "vfill" @keyword "sample"? @field)
-
 (plot_style
   [
    "lines" "points" "lp" "financebars" "dots" "impulses" "labels"
    "surface" "steps" "fsteps" "histeps" "arrows" "vectors"
    "sectors" "contourfill" "errorbar" "errorlines" "parallelaxes" "boxes" "boxerrorbars"
    "boxxyerror" "isosurface" "boxplot" "candlesticks" "circles" "zerrorfill"
-   "ellipses" "filledcurves" "fillsteps" "histograms" "image"
+   "ellipses" "filledcurves" "fillsteps" "histograms" "image" "spiderplot"
    "pm3d" "rgbalpha" "rgbimage" "polygons" "table" "mask"
    ] @attribute)
 
 [
  "tc" "fc" "fs" "lc" "ls" "lw" "lt" "pt" "ps" "pi" "pn" "dt" "as"
- "scale"
  "start" "cycles" "saturation" "interval" "format"
- "layout" "margins" "spacing"
  "keywidth" "samplen" "columns"
  "title" "notitle"
  "every" "index" "using" "with"
- "frac"
+ "frac" "cb"
  "arg"
  "prefix" "output"
  "primary" "specular" "spec2"
  "firstlinetype"
  "width" "height"
+ "expand"
+ "array" "dx" "dy" "dz" "filetype" "center" "record"
  ] @field
 
 [
- "on" "off" "opaque" "inside" "outside" "margin" "cen" "lef" "rig" "top" "bot" "lr" "a" "maxcols" "maxrows"
+ (angles)
+ (clip)
+ (colorsequence)
+ (contour)
+ (encoding)
+ (mapping)
+ (xdata)
+ (theta)
+ "wall"
+ "on" "off" "opaque" "inside" "outside" "margin" "cen" "lef" "rig" "top" "bot" "lr" "a" "maxcols" "maxrows" "autojustify"
  "overlap" "spread" "wrap" "swarm"
  "range" "label"
  "mixed" "triangles" "insidecolor" "noinsidecolor"
  "cycle"
- "x1" "x2" "y1" "y2" "y" "r"
- "xy" "xz" "yz" "xyz"
- "x1y1" "x2y2" "x1y2" "x2y1"
  "tics" "ztics" "cbtics"
- "bdefault" "origin"
+ "user" "front" "back" "bdefault"
  "time"
  "palette"
  "terminal"
@@ -213,16 +169,16 @@
  "autofreq" "add" "inout" "axis" "mirror" "type"
  "rowsfirst" "columnsfirst" "downwards" "upwards" "prevnext"
  "gray" "color" "gamma" "defined" "cubehelix" "model" "maxcolors" "file" "colormap" "rgbformulae" "viridis" "positive" "negative" "nops_allcF" "ps_allcF"
+ "quiet" "full" "trip" "numbers"
+ "small" "large" "fullwidth"
+ "append"
  "bind" "errors" "session"
  "behind" "polar" "layerdefault"
- "front" "back"
  "locale"
  "axes" "fix" "keepfix" "noextend"
  "head" "fixed" "filled" "nofilled"
  "absolute" "at" "relative"
  "enhanced"
- "mask" "convexhull" "concavehull" "volatile" "zsort"
- "smooth" "nonuniform" "sparce" "matrix"
  "border" "noborder"
  "rgbcolor" "empty" "black" "bgnd"
  "nodraw"
@@ -235,9 +191,8 @@
  "solid" "transparent" "pattern"
  "from" "to_rto" "length" "angle"
  "columnheaders" "fortran" "nofpe_trap" "missing" "separator" "commentschars"
- "align"
  "log" "rangelimited"
- "offset" "nooffset"
+ "offset" "nooffset" "scale"
  "font"
  "point" "nopoint" "boxed" "noboxed" "hypertext"
  "defaults"
@@ -250,9 +205,15 @@
  "colornames" "functions" "variables" "version"
  "nologfile" "logfile" "fit_out" "errorvariables" "covariancevariables" "errorscaling" "prescale" "maxiter" "limit" "limit_abs" "start-lambda" "lambda-factor" "script" "clip"
  "fontscale"
+ "lighting" "depthorder" "interpolate" "corners2color" "flush" "scanorder" "hidden3d" "clipcb"
+ "layout" "margins" "spacing"
+ "smooth" "binary" "skip" "bins" "binrange" "binwidth" "binvalue" "mask" "convexhull" "concavehull" "volatile" "zsort" "nonuniform" "sparse" "matrix"
  ] @attribute
 
 [
+ "x1" "x2" "y1" "y2" "y" "r" "z"
+ "xy" "xz" "yz" "xyz"
+ "x1y1" "x2y2" "x1y2" "x2y1"
  "columnheader"
  "seconds" "minutes" "hours" "days" "weeks" "months" "years"
  "cm" "in"
@@ -260,22 +221,30 @@
  "default"
  "long"
  "nogrid"
+ "unique" "frequency" "fnormal" "cumulative" "cnormal" "csplines" "acsplines" "mcsplines" "path" "bezier" "sbezier" "unwrap"
  "kdensity"
  "closed" "between" "above" "below"
  "variable"
  "pixels"
  "RGB" "CMY" "HSV"
- "base" "begin" "center" "end" "lighting" "interpolate" "scanorder" "depthorder" "hidden3d" "flush" "ftriangles" "clip1in" "clip4in" "clipcb" "corners2color" "c2c" "retrace"
+ "base" "begin" "center" "end" "ftriangles" "clip1in" "clip4in" "c2c" "retrace"
  "whitespace" "tab" "comma"
  "push" "pop"
+ "flipx" "flipy" "flipz"
  ] @property
 
-(colorspec [["cb" "z"] @field "palette" @attribute])
+(colorspec "palette" @attribute)
+
+(datafile_modifiers "origin"? @field)
+((datafile_modifiers filetype: (identifier) @property)
+ (#any-of? @property
+  "avs""bin""edf""ehf""gif""gpbin""jpeg""jpg""png""raw""rgb""auto"))
 
 (macro) @function.macro
 (datablock) @function.macro
 
 (function name: (identifier) @function)
+
 ((function name: (identifier) @function.builtin)
  (#any-of? @function.builtin
   "abs""acos""acosh""airy""arg""asin""asinh""atan""atan2""atanh""besj0""besj1""besjn""besy0""besy1""besyn""besi0""besi1""besin""cbrt""ceil""conj""cos""cosh""EllipticK""EllipticE""EllipticPi""erf""erfc""exp""expint""floor""gamma""ibeta""inverf""igamma""imag""int""invnorm""invibeta""invigamma""LambertW""lambertw""lgamma""lnGamma""log""log10""norm""rand""real""round""sgn""sin""sinh""sqrt""SynchrotronF""tan""tanh""uigamma""voigt""zeta""cerf""cdawson""faddeva""erfi""FresnelC""FresnelS""VP""VP_fwhm""Ai""Bi""BesselH1""BesselH2""BesselJ""BesselY""BesselI""BesselK""gprintf""sprintf""strlen""strstrt""substr""strptime""srtftime""system""trim""word""words""time""timecolumn""tm_hour""tm_mday""tm_min""tm_mon""tm_sec""tm_wday""tm_week""tm_yday""tm_year""weekday_iso""weekday_cdc""column""columnhead""exists""hsv2rgb""index""palette""rgbcolor""stringcolumn""valid""value""voxel"))
