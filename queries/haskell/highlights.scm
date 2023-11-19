@@ -173,6 +173,7 @@
      (exp_name 
        [(constructor)
         (variable)
+        (qualified_variable)
        ]))
    (quasiquote)
    ((exp_name) . (operator))
@@ -186,6 +187,7 @@
      (exp_name 
        [(constructor)
         (variable)
+        (qualified_variable)
        ]))
    (quasiquote)
    ((exp_name) . (operator))
@@ -293,6 +295,12 @@
  ])
  (#any-of? @_op "." ">>>" "***" ">=>" "<=<" ))
         
+; function defined in terms of a function composition
+(function 
+  name: (variable) @function
+  rhs: (exp_infix (_) . (operator) @_op . (_)
+  (#any-of? @_op "." ">>>" "***" ">=>" "<=<")))
+
 (exp_apply (exp_name 
   [
     ((variable) @function.call)
@@ -325,7 +333,7 @@
   . (variable) @variable
   . [
      (exp_record)
-     (exp_name (variable))
+     (exp_name [(variable) (qualified_variable)])
      (exp_list)
      (exp_tuple)
      (exp_cond)
