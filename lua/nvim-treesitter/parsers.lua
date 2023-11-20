@@ -952,6 +952,7 @@ list.just = {
   },
   filetype = "just",
   maintainers = { "@Hubro" },
+  experimental = true,
 }
 
 list.kconfig = {
