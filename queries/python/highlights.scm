@@ -352,5 +352,5 @@
 (call
   function: (attribute
               object: (identifier) @_re)
-  arguments: (argument_list (string) @string.regex)
+  arguments: (argument_list . (string) @string.regex)
   (#eq? @_re "re"))
