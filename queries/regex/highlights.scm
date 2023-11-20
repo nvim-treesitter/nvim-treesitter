@@ -25,10 +25,14 @@
  (control_letter_escape)
  (character_class_escape)
  (control_escape)
- (start_assertion)
- (end_assertion)
  (boundary_assertion)
  (non_boundary_assertion)
 ] @string.escape
 
-[ "*" "+" "?" "|" "=" "!" ] @operator
+[ "*" "+" "?" "|" "=" "!" "-"] @operator
+
+[
+ (any_character)
+ (start_assertion)
+ (end_assertion)
+] @variable.builtin
