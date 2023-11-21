@@ -1385,6 +1385,15 @@ list.promql = {
   maintainers = { "@MichaHoffmann" },
 }
 
+list.properties = {
+  install_info = {
+    url = "https://github.com/ObserverOfTime/tree-sitter-properties",
+    files = { "src/parser.c" },
+  },
+  filetype = "jproperties",
+  maintainers = { "@ObserverOfTime" },
+}
+
 list.proto = {
   install_info = {
     url = "https://github.com/treywood/tree-sitter-proto",
