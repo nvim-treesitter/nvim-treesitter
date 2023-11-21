@@ -99,7 +99,7 @@
     "revision": "f71e310a93010863f4b17a2a501ea8e2032c345b"
   },
   "devicetree": {
-    "revision": "cc26cbf2121a27eaa72a05a795ce38aba4e0f86e"
+    "revision": "e876e2aee525d98b2704ba75a05e1dd2b04aba76"
   },
   "dhall": {
     "revision": "affb6ee38d629c9296749767ab832d69bb0d9ea8"
@@ -702,7 +702,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "29894ffc9585f160b99f5b753dae07fcd319528f"
+    "revision": "bc272f53bed53520d78d08a21fb0b412336e22d4"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
