@@ -66,6 +66,13 @@
 (command
   argument: "$" @string) ; bare dollar
 
+(concatenation
+  [
+    (simple_expansion)
+    (expansion)
+  ]
+  (word) @string)
+
 [
   "if"
   "then"
