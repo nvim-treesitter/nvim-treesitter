@@ -15,6 +15,7 @@
 (source_file 
   (item (setting lang: (NAME) @injection.language))
   (item (recipe (body (recipe_body) @injection.content))) 
+  (#not-eq? @injection.language "python3")
   (#set! injection.include-children))
 
 ; For shebang recipes, use the shebang executable name as the language
@@ -27,4 +28,5 @@
 (shebang_recipe
   (shebang interpreter: (TEXT) @injection.language)
   (shebang_body) @injection.content
+  (#not-eq? @injection.language "python3")
   (#set! injection.include-children))
