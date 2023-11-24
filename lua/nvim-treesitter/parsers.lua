@@ -93,6 +93,14 @@ list.agda = {
   maintainers = { "@Decodetalkers" },
 }
 
+list.angular = {
+  install_info = {
+    url = "https://github.com/steelsojka/tree-sitter-angular",
+    files = { "src/parser.c" },
+  },
+  maintainers = {"@steelsojka"}
+}
+
 list.apex = {
   install_info = {
     url = "https://github.com/aheber/tree-sitter-sfapex",
