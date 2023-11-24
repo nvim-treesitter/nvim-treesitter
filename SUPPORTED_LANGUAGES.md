@@ -98,7 +98,7 @@ ecma (queries only)[^ecma] | core | `HFIJL` |  |  | @steelsojka
 [heex](https://github.com/connorlay/tree-sitter-heex) | community | `HFIJL` |  |  | @connorlay
 [hjson](https://github.com/winston0410/tree-sitter-hjson) | community | `HFIJL` |  | ✓ | @winston0410
 [hlsl](https://github.com/theHamsta/tree-sitter-hlsl) | core | `HFIJL` |  | ✓ | @theHamsta
-[hocon](https://github.com/antosha417/tree-sitter-hocon) | unsupported | `H  J ` |  | ✓ | @antosha417
+[hocon](https://github.com/antosha417/tree-sitter-hocon) | unsupported | `HF J ` |  | ✓ | @antosha417
 [hoon](https://github.com/urbit-pilled/tree-sitter-hoon) | unsupported | `HF  L` |  |  | @urbit-pilled
 [html](https://github.com/tree-sitter/tree-sitter-html) | community | `HFIJL` |  |  | @TravonteD
 html_tags (queries only)[^html_tags] | community | `H IJ ` |  |  | @TravonteD
