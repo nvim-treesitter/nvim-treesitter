@@ -7,19 +7,15 @@
 ["@" "==" "!=" "+" ":="] @operator
 [ "(" ")" "[" "]" "{{" "}}" "{" "}"] @punctuation.bracket
 
-[
-  (assignment (NAME))
-  (alias (NAME))
-  (value (NAME))
-  (parameter (NAME))
-] @variable
+(assignment (NAME) @variable)
+(alias (NAME) @variable)
+(value (NAME) @variable)
+(parameter (NAME) @variable)
 
 ; Recipe definitions
-[
-  (recipeheader (NAME))
-  (dependency (NAME))
-  (dependency (depcall (NAME)))
-] @function
+(recipeheader (NAME) @function)
+(dependency (NAME) @function)
+(dependency (depcall (NAME) @function))
 (parameter) @parameter
 (depcall (expression (value (NAME) @parameter)))
 
