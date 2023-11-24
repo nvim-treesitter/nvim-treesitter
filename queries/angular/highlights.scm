@@ -43,9 +43,9 @@
 ] @punctuation.delimiter
 
 ((identifier) @boolean
-  (#vim-match? @boolean "^(true|false)$"))
+  (#any-of? @boolean "true" "false"))
 ((identifier) @variable.builtin
-  (#vim-match? @variable.builtin "^(this|\$event|null)$"))
+  (#any-of? @variable.builtin "this" "\$event" "null"))
 
 [
   "-"
