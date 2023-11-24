@@ -1,7 +1,7 @@
 
 (comment) @comment
 (string) @string
-(boolean ["true" "false"]) @boolean
+[ "true" "false" ] @boolean
 ["if" "else"] @conditional
 ["export" "alias" "set"] @keyword
 ["@" "==" "!=" "+" ":="] @operator
