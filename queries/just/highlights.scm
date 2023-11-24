@@ -27,7 +27,6 @@
   (shebang_body) @text.literal.block (#set! "priority" 90))
 
 ; Ref: https://just.systems/man/en/chapter_26.html
-(setting (NAME) @error)
 (setting (NAME) @constant.builtin
   (#any-of? @constant.builtin 
     "allow-duplicate-recipes"
@@ -47,7 +46,6 @@
 (setting lang: (NAME) @string.special)
 
 ; Ref: https://just.systems/man/en/chapter_31.html
-(call (NAME) @error)
 (call (NAME) @function
   (#any-of? @function 
     "arch"
