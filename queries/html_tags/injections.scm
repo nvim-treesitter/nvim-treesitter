@@ -74,3 +74,24 @@
   (#lua-match? @_name "^on[a-z]+$")
   (quoted_attribute_value (attribute_value) @injection.content)
   (#set! injection.language "javascript"))
+
+(attribute
+  ((attribute_name) @_name
+   (#lua-match? @_name "[%[%(].*[%)%]]"))
+  (quoted_attribute_value
+    (attribute_value) @injection.content)
+  (#set! injection.language "angular"))
+
+(attribute
+  ((attribute_name) @_name
+   (#lua-match? @_name "^%*"))
+  (quoted_attribute_value
+    ((attribute_value) @injection.content))
+  (#set! injection.language "angular"))
+
+(element
+  ((text) @injection.content
+   (#lua-match? @injection.content "%{%{.*%}%}")
+   (#offset! @injection.content 0 2 0 -2))
+  (#set! injection.language "angular"))
+
