@@ -98,7 +98,7 @@ list.angular = {
     url = "https://github.com/steelsojka/tree-sitter-angular",
     files = { "src/parser.c" },
   },
-  maintainers = {"@steelsojka"}
+  maintainers = { "@steelsojka" },
 }
 
 list.apex = {
