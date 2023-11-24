@@ -144,7 +144,7 @@
     "revision": "203f7bd3c1bbfbd98fc19add4b8fcb213c059205"
   },
   "erlang": {
-    "revision": "35ae91b2e9f5514c0ad6d6887f9859f28907c7d5"
+    "revision": "b7969b5f12c44038379901a6f2094c31afa2ec2f"
   },
   "fennel": {
     "revision": "517195970428aacca60891b050aa53eabf4ba78d"
@@ -585,7 +585,7 @@
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
   },
   "ssh_config": {
-    "revision": "1651e637d57c667708add5440d3726f07e97d953"
+    "revision": "9ff3cabeb738f94bfc3c2de4d3857133ad717e3f"
   },
   "starlark": {
     "revision": "c45ce2b39062bbd12ea1c210bd200db250efb24a"
@@ -705,7 +705,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "635fa4b72ee913f3028bf6be54c40393edbc259d"
+    "revision": "d483d21ad212bc9641e88deee0db2dad670eaaf3"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
