@@ -117,7 +117,7 @@
     "revision": "a750758da90955c86fcc22fcbb6fa44a7d009865"
   },
   "dtd": {
-    "revision": "a3bfa1ae7e8400ab81a6358f5e8d2983f5dd0697"
+    "revision": "dd7ef38c74d8430da729b4da815e4c40776e03bb"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -585,7 +585,7 @@
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
   },
   "ssh_config": {
-    "revision": "9ff3cabeb738f94bfc3c2de4d3857133ad717e3f"
+    "revision": "096981397385f49833dfd66037fa98081bbd9ef9"
   },
   "starlark": {
     "revision": "c45ce2b39062bbd12ea1c210bd200db250efb24a"
@@ -705,13 +705,13 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "d483d21ad212bc9641e88deee0db2dad670eaaf3"
+    "revision": "cf025a5f727a2b4645dd332876e94cef80e5147f"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
   },
   "xml": {
-    "revision": "a3bfa1ae7e8400ab81a6358f5e8d2983f5dd0697"
+    "revision": "dd7ef38c74d8430da729b4da815e4c40776e03bb"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
