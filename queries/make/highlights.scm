@@ -10,6 +10,8 @@
  ] @conditional)
  "endif" @conditional)
 
+(rule (targets (word) @function))
+
 (rule (targets
        (word) @function.builtin
        (#any-of? @function.builtin
