@@ -149,6 +149,9 @@
   "erlang": {
     "revision": "b7969b5f12c44038379901a6f2094c31afa2ec2f"
   },
+  "facility": {
+    "revision": "a2f90a0d4a3c41bcaa80cabb5f7467daefcd33f4"
+  },
   "fennel": {
     "revision": "517195970428aacca60891b050aa53eabf4ba78d"
   },
