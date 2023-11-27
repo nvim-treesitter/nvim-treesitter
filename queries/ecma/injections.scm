@@ -119,3 +119,69 @@
   right: 
     (string (string_fragment) @injection.content)
     (#set! injection.language "html"))
+
+;---- Angular injections -----
+; @Component({
+;   template: `<html>`
+; })
+((decorator
+  (call_expression
+    function: ((identifier) @_name
+               (#eq? @_name "Component"))
+    arguments: (arguments
+                 (object
+                   (pair
+                     key: ((property_identifier) @_prop
+                           (#eq? @_prop "template"))
+                     value: ((template_string) @injection.content
+                              (#offset! @injection.content 0 1 0 -1)
+                              (#set! injection.language "html")
+                            ) 
+                   )
+               ))
+  )
+))
+
+; @Component({
+;   styles: [`<css>`]
+; })
+((decorator
+  (call_expression
+    function: ((identifier) @_name
+               (#eq? @_name "Component"))
+    arguments: (arguments
+                 (object
+                   (pair
+                     key: ((property_identifier) @_prop
+                           (#eq? @_prop "styles"))
+                     value: (array
+                              ((template_string) @injection.content 
+                                  (#offset! @injection.content 0 1 0 -1)
+                                  (#set! injection.language "css")
+                              )
+                            )
+                   )
+               ))
+  )
+))
+
+; @Component({
+;   styles: `<css>`
+; })
+((decorator
+  (call_expression
+    function: ((identifier) @_name
+               (#eq? @_name "Component"))
+    arguments: (arguments
+                 (object
+                   (pair
+                     key: ((property_identifier) @_prop
+                           (#eq? @_prop "styles"))
+                     value: ((template_string) @injection.content 
+                              (#offset! @injection.content 0 1 0 -1)
+                              (#set! injection.language "css")
+                            )
+                   )
+               ))
+  )
+))

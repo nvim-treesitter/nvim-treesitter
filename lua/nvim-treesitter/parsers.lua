@@ -95,10 +95,11 @@ list.agda = {
 
 list.angular = {
   install_info = {
-    url = "https://github.com/steelsojka/tree-sitter-angular",
+    url = "https://github.com/dlvandenberg/tree-sitter-angular",
     files = { "src/parser.c" },
     requires_generate_from_grammar = true,
   },
+  maintainers = { "@dlvandenberg" },
   experimental = true,
 }
 
