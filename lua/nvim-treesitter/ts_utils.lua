@@ -244,23 +244,29 @@ end
 ---comment
 ---@param range integer[]
 ---@param buf integer|nil
+---@param end_exclusive? boolean Keep end col exclusive
 ---@return integer, integer, integer, integer
-function M.get_vim_range(range, buf)
+function M.get_vim_range(range, buf, end_exclusive)
   ---@type integer, integer, integer, integer
   local srow, scol, erow, ecol = unpack(range)
   srow = srow + 1
   scol = scol + 1
   erow = erow + 1
 
+  local end_offset = -1
+  if end_exclusive then end_offset = 0 end
+
   if ecol == 0 then
     -- Use the value of the last col of the previous row instead.
     erow = erow - 1
     if not buf or buf == 0 then
-      ecol = vim.fn.col { erow, "$" } - 1
+      ecol = vim.fn.col { erow, "$" } + end_offset
     else
-      ecol = #api.nvim_buf_get_lines(buf, erow - 1, erow, false)[1]
+      ecol = #api.nvim_buf_get_lines(buf, erow - 1, erow, false)[1] + 1 + end_offset
     end
     ecol = math.max(ecol, 1)
+  else
+    ecol = ecol + 1 + end_offset
   end
   return srow, scol, erow, ecol
 end
@@ -272,11 +278,17 @@ function M.highlight_range(range, buf, hl_namespace, hl_group)
   vim.highlight.range(buf, hl_namespace, hl_group, { start_row, start_col }, { end_row, end_col })
 end
 
+---@return boolean
+function M.is_selecton_end_exclusive()
+  return vim.o.selection == "exclusive"
+end
+
 -- Set visual selection to node
 -- @param selection_mode One of "charwise" (default) or "v", "linewise" or "V",
 --   "blockwise" or "<C-v>" (as a string with 5 characters or a single character)
-function M.update_selection(buf, node, selection_mode)
-  local start_row, start_col, end_row, end_col = M.get_vim_range({ ts.get_node_range(node) }, buf)
+-- @param end_exclusive? boolean Adjust the end to be exclusive
+function M.update_selection(buf, node, selection_mode, end_exclusive)
+  local start_row, start_col, end_row, end_col = M.get_vim_range({ ts.get_node_range(node) }, buf, end_exclusive)
 
   local v_table = { charwise = "v", linewise = "V", blockwise = "<C-v>" }
   selection_mode = selection_mode or "charwise"

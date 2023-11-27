@@ -15,7 +15,7 @@ function M.init_selection()
   local buf = api.nvim_get_current_buf()
   local node = ts_utils.get_node_at_cursor()
   selections[buf] = { [1] = node }
-  ts_utils.update_selection(buf, node)
+  ts_utils.update_selection(buf, node, nil, ts_utils.is_selecton_end_exclusive())
 end
 
 -- Get the range of the current visual selection.
@@ -38,6 +38,10 @@ local function visual_selection_range()
     start_col = cecol
     end_row = csrow
     end_col = cscol
+  end
+
+  if ts_utils.is_selecton_end_exclusive() then
+    end_col = end_col - 1
   end
 
   return start_row, start_col, end_row, end_col
@@ -63,7 +67,7 @@ local function select_incremental(get_parent)
     if not nodes or #nodes == 0 or not range_matches(nodes[#nodes]) then
       local root = parsers.get_parser():parse()[1]:root()
       local node = root:named_descendant_for_range(csrow - 1, cscol - 1, cerow - 1, cecol)
-      ts_utils.update_selection(buf, node)
+      ts_utils.update_selection(buf, node, nil, ts_utils.is_selecton_end_exclusive())
       if nodes and #nodes > 0 then
         table.insert(selections[buf], node)
       else
@@ -82,7 +86,7 @@ local function select_incremental(get_parent)
         local root = parsers.get_parser():parse()[1]:root()
         parent = root:named_descendant_for_range(csrow - 1, cscol - 1, cerow - 1, cecol)
         if not parent or root == node or parent == node then
-          ts_utils.update_selection(buf, node)
+          ts_utils.update_selection(buf, node, nil, ts_utils.is_selecton_end_exclusive())
           return
         end
       end
@@ -94,7 +98,7 @@ local function select_incremental(get_parent)
         if node ~= nodes[#nodes] then
           table.insert(nodes, node)
         end
-        ts_utils.update_selection(buf, node)
+        ts_utils.update_selection(buf, node, nil, ts_utils.is_selecton_end_exclusive())
         return
       end
     end
@@ -123,7 +127,7 @@ function M.node_decremental()
 
   table.remove(selections[buf])
   local node = nodes[#nodes] ---@type TSNode
-  ts_utils.update_selection(buf, node)
+  ts_utils.update_selection(buf, node, nil, ts_utils.is_selecton_end_exclusive())
 end
 
 local FUNCTION_DESCRIPTIONS = {
