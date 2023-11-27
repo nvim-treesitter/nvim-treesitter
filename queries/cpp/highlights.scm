@@ -1,7 +1,7 @@
 ; inherits: c
 
 ((identifier) @field
-  (#lua-match? @field "^m?_.*$"))
+  (#lua-match? @field "^m_.*$"))
 
 (parameter_declaration
   declarator: (reference_declarator) @parameter)
