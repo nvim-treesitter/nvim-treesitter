@@ -496,6 +496,15 @@ list.erlang = {
   maintainers = { "@filmor" },
 }
 
+list.facility = {
+  install_info = {
+    url = "https://github.com/FacilityApi/tree-sitter-facility",
+    files = { "src/parser.c" },
+  },
+  filetype = "fsd",
+  maintainers = { "@bryankenote" },
+}
+
 list.fennel = {
   install_info = {
     url = "https://github.com/travonted/tree-sitter-fennel",
