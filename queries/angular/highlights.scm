@@ -21,7 +21,7 @@
   function: ((identifier) @function.builtin
     (#eq? @function.builtin "$any")))
 
-(annotation) @punctuation.special
+(annotation) @type
 
 [
   (control_flow_keyword)
@@ -31,25 +31,26 @@
 (special_block_keyword) @type
 
 [
-"("
-")"
-"["
-"]"
-"{"
-"}"
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
 ] @punctuation.bracket
 
 [
-";"
-"."
-","
-"?."
+  ";"
+  "."
+  ","
+  "?."
 ] @punctuation.delimiter
 
 ((identifier) @boolean
   (#vim-match? @boolean "^(true|false)$"))
 ((identifier) @variable.builtin
   (#vim-match? @variable.builtin "^(this|\$event|null)$"))
+
 
 [
   "-"
@@ -70,4 +71,7 @@
   "%"
 ] @operator
 
-(ternary_operator) @conditional.ternary
+[
+ (ternary_operator)
+ (conditional_operator)
+] @conditional.ternary

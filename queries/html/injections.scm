@@ -36,7 +36,7 @@
 
 ; }
 ((text) @injection.content 
-  (#lua-match? @injection.content "%}.*")
+  (#lua-match? @injection.content "%}")
   (#set! injection.language "angular")
 )
 
