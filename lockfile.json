@@ -147,7 +147,7 @@
     "revision": "203f7bd3c1bbfbd98fc19add4b8fcb213c059205"
   },
   "erlang": {
-    "revision": "b7969b5f12c44038379901a6f2094c31afa2ec2f"
+    "revision": "56942778b5791d07949e6c7b6093e01aba5b7ab4"
   },
   "fennel": {
     "revision": "517195970428aacca60891b050aa53eabf4ba78d"
@@ -708,7 +708,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "be512815ce78a92e8a62fef9ca4bdf2fdaecd159"
+    "revision": "97d7dd56bfd0e0642ef43bbb29cae2c78e6d520e"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
