@@ -22,7 +22,7 @@
   macro:
     ((identifier) @injection.language)
   (token_tree) @injection.content)
-  (#eq? @injection.language "html"))
+  (#any-of? @injection.language "html" "json"))
 
 (call_expression
   function:
