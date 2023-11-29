@@ -10,6 +10,7 @@
 (macro_definition
   (macro_rule
     right: (token_tree) @injection.content
+    (#set! injection.combined)
     (#set! injection.language "rust")))
 
 ([
@@ -22,7 +23,9 @@
   macro:
     ((identifier) @injection.language)
   (token_tree) @injection.content)
-  (#eq? @injection.language "html"))
+  (#set! injection.combined)
+  (#set! injection.include-children)
+  (#any-of? @injection.language "html" "json"))
 
 (call_expression
   function:
