@@ -8,6 +8,7 @@
   (impl_item)
   (type_item)
   (union_item)
+  (const_item)
   (use_declaration)
   (let_declaration)
   (loop_expression)
