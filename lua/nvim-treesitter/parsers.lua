@@ -1536,6 +1536,14 @@ list.rasi = {
   maintainers = { "@Fymyte" },
 }
 
+list.rbs = {
+  install_info = {
+    url = "https://github.com/joker1007/tree-sitter-rbs",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@joker1007" },
+}
+
 list.re2c = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-re2c",
