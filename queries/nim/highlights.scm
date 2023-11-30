@@ -21,6 +21,10 @@
 (iterator_type
   pragmas:
     (pragma_list) @variable)
+(type_expression
+  (pragma_expression
+    right:
+      (pragma_list) @variable))
 ; NOTE: has to be after 
 ; (type_expression) @type
 ; and before @preproc and all literals
