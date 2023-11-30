@@ -236,6 +236,22 @@
   ])
 ; NOTE: will double capture as @function.call if it also has argument_list
 
+; function.calls in `varargs[type, routine]`
+(bracket_expression
+  left: (identifier) @_varargs
+  right: 
+    (argument_list
+      . 
+      (_)
+      .
+      [
+        (identifier) @function.call
+        (accent_quoted (identifier) @function.call)
+        (dot_expression right: (identifier) @function.call)
+        (dot_expression right: (accent_quoted (identifier) @function.call))
+      ])
+  (#eq? @_varargs "varargs"))
+
 ; =============================================================================
 ; @function.macro   ; preprocessor macros
 
@@ -431,8 +447,6 @@
 ; NOTE: this also falsely matches
 ; when accessing and directly call elements from an array of routines
 ; eg `array_of_routines[index](arguments), but that is an uncommon case
-; NOTE: this will falsly capture (identifier)s that aren't types as well, eg
-; array[enum1..enum2, int]
 
 (dot_generic_call
   generic_arguments: (_) @type)
