@@ -1,8 +1,12 @@
+; Use directive
+
 (use_clause
   [
     (type_name)
     (simple_type_name)
   ] @type)
+
+; Buitin constants and Keywords
 
 [
   "true"
@@ -27,6 +31,8 @@
 ] @keyword
 
 "def" @keyword.function
+
+; Members of declaration
 
 [
  "include"
@@ -63,18 +69,24 @@
 (const_name (constant) @constant)
 (global_name) @property
 
+; Standard Arguments
 (parameter (var_name) @parameter)
 
+; Keyword Arguments
 (keyword) @parameter
 
+; Self
 (self) @variable.builtin
 
+; Literal
 (type (symbol_literal) @symbol)
 
 (type (string_literal (escape_sequence) @string.escape))
 (type (string_literal) @string)
 
 (type (integer_literal) @number)
+
+; Operators
 
 [
  "="
@@ -86,6 +98,8 @@
  "|"
  "^"
  ] @operator
+
+; Punctuation
 
 [
  "("
