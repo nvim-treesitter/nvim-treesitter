@@ -9,9 +9,7 @@
   "false"
 ] @boolean
 
-[
- "nil"
-] @constant.builtin
+"nil" @constant.builtin
 
 [
   "use"
@@ -28,9 +26,7 @@
   "alias"
 ] @keyword
 
-[
- "def"
-] @keyword.function
+"def" @keyword.function
 
 [
  "include"
@@ -49,7 +45,7 @@
      (constant)
      (operator)
      (setter)
-    ] @function.method))
+    ] @method))
 
 [(ivar_name) (cvar_name)] @property
 
@@ -67,9 +63,9 @@
 (const_name (constant) @constant)
 (global_name) @property
 
-(parameter (var_name) @variable.parameter)
+(parameter (var_name) @parameter)
 
-(keyword) @variable.parameter
+(keyword) @parameter
 
 (self) @variable.builtin
 
