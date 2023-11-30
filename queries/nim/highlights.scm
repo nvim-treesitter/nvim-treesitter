@@ -10,6 +10,25 @@
 ; capture nodes containing (identifier) as a whole, while overruling the
 ; @variable capture.
 
+(type_expression) @type
+; NOTE: has to be after 
+; ((identifier) @variable (#set! "priority" 99))
+
+; overrule identifiers in pragmas in (proc_type)s and (pragma_expression)s
+(proc_type
+  pragmas:
+    (pragma_list) @variable)
+(iterator_type
+  pragmas:
+    (pragma_list) @variable)
+(type_expression
+  (pragma_expression
+    right:
+      (pragma_list) @variable))
+; NOTE: has to be after 
+; (type_expression) @type
+; and before @preproc and all literals
+
 ; =============================================================================
 ; @comment               ; line and block comments
 
@@ -22,8 +41,8 @@
 ; @comment.documentation ; comments documenting code
 
 (documentation_comment "##" @comment.documentation)
-(block_documentation_comment 
-  "##[" @comment.documentation 
+(block_documentation_comment
+  "##[" @comment.documentation
   "]##" @comment.documentation)
 ; NOTE: leaving content uncaptured so markdown can be injected
 
@@ -217,6 +236,22 @@
   ])
 ; NOTE: will double capture as @function.call if it also has argument_list
 
+; function.calls in `varargs[type, routine]`
+(bracket_expression
+  left: (identifier) @_varargs
+  right: 
+    (argument_list
+      . 
+      (_)
+      .
+      [
+        (identifier) @function.call
+        (accent_quoted (identifier) @function.call)
+        (dot_expression right: (identifier) @function.call)
+        (dot_expression right: (accent_quoted (identifier) @function.call))
+      ])
+  (#eq? @_varargs "varargs"))
+
 ; =============================================================================
 ; @function.macro   ; preprocessor macros
 
@@ -405,26 +440,6 @@
 ; =============================================================================
 ; @type            ; type or class definitions and annotations
 
-(type_expression) @type
-
-; overrule identifiers in pragmas in (proc_type)s
-(proc_type
-  pragmas: (pragma_list (_) @variable)
-  (#set! "priority" 101))
-(iterator_type
-  pragmas: (pragma_list (_) @variable)
-  (#set! "priority" 101))
-
-; generic types when declaring
-((generic_parameter_list
-  (parameter_declaration
-    (symbol_declaration_list
-      (symbol_declaration
-        name: [
-          (identifier) @type
-          (accent_quoted (identifier) @type)
-        ])))))
-
 ; generic types when calling
 (call
   function: (bracket_expression
@@ -432,8 +447,6 @@
 ; NOTE: this also falsely matches
 ; when accessing and directly call elements from an array of routines
 ; eg `array_of_routines[index](arguments), but that is an uncommon case
-; NOTE: this will falsly capture (identifier)s that aren't types as well, eg
-; array[enum1..enum2, int]
 
 (dot_generic_call
   generic_arguments: (_) @type)
@@ -491,6 +504,16 @@
         ]))))
 ; NOTE: needs to be after @type
 
+; generic types when declaring
+((generic_parameter_list
+  (parameter_declaration
+    (symbol_declaration_list
+      (symbol_declaration
+        name: [
+          (identifier) @parameter
+          (accent_quoted (identifier) @parameter)
+        ])))))
+
 ; for loop variables
 (for
   left:
@@ -510,7 +533,7 @@
   (#has-ancestor? @_tuple_decons for))
 
 (concept_declaration
-  parameters: 
+  parameters:
     (parameter_list [
       (identifier) @parameter
       (accent_quoted (identifier) @parameter)
@@ -664,6 +687,36 @@
       (exported_symbol (accent_quoted (identifier) @constant))
     ])) @_tuple_decons
   (#has-ancestor? @_tuple_decons const_section))
+
+; constants x and y in `array[x..y, type]`
+(bracket_expression
+  left: (identifier) @_array
+  right: 
+    (argument_list
+      . 
+      (infix_expression 
+        right: [
+          (identifier) @constant
+          (accent_quoted (identifier) @constant)
+          (dot_expression right: (identifier) @constant)
+          (dot_expression right: (accent_quoted (identifier) @constant))
+        ]))
+  (#any-of? @_array "array" "range"))
+(bracket_expression
+  left: (identifier) @_array
+  right: 
+    (argument_list
+      . 
+      (infix_expression 
+        left: [
+          (identifier) @constant
+          (accent_quoted (identifier) @constant)
+          (dot_expression right: (identifier) @constant)
+          (dot_expression right: (accent_quoted (identifier) @constant))
+        ]))
+  (#any-of? @_array "array" "range"))
+; NOTE: can only do this for (infix_expression)s, since standalone identifiers
+; could be ordinal types and constants
 
 ; =============================================================================
 ; @constant.builtin ; built-in constant values
