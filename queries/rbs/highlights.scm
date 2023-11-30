@@ -82,8 +82,6 @@
 
 (type (integer_literal) @number)
 
-(ERROR) @error
-
 [
  "="
  "->"
