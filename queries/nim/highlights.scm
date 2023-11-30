@@ -10,6 +10,21 @@
 ; capture nodes containing (identifier) as a whole, while overruling the
 ; @variable capture.
 
+(type_expression) @type
+; NOTE: has to be after 
+; ((identifier) @variable (#set! "priority" 99))
+
+; overrule identifiers in pragmas in (proc_type)s and (pragma_expression)s
+(proc_type
+  pragmas:
+    (pragma_list) @variable)
+(iterator_type
+  pragmas:
+    (pragma_list) @variable)
+; NOTE: has to be after 
+; (type_expression) @type
+; and before @preproc and all literals
+
 ; =============================================================================
 ; @comment               ; line and block comments
 
@@ -404,16 +419,6 @@
 
 ; =============================================================================
 ; @type            ; type or class definitions and annotations
-
-(type_expression) @type
-
-; overrule identifiers in pragmas in (proc_type)s
-(proc_type
-  pragmas: (pragma_list (_) @variable)
-  (#set! "priority" 101))
-(iterator_type
-  pragmas: (pragma_list (_) @variable)
-  (#set! "priority" 101))
 
 ; generic types when declaring
 ((generic_parameter_list
