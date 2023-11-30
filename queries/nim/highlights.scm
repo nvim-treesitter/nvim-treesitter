@@ -424,16 +424,6 @@
 ; =============================================================================
 ; @type            ; type or class definitions and annotations
 
-; generic types when declaring
-((generic_parameter_list
-  (parameter_declaration
-    (symbol_declaration_list
-      (symbol_declaration
-        name: [
-          (identifier) @type
-          (accent_quoted (identifier) @type)
-        ])))))
-
 ; generic types when calling
 (call
   function: (bracket_expression
@@ -499,6 +489,16 @@
           (accent_quoted (identifier) @parameter)
         ]))))
 ; NOTE: needs to be after @type
+
+; generic types when declaring
+((generic_parameter_list
+  (parameter_declaration
+    (symbol_declaration_list
+      (symbol_declaration
+        name: [
+          (identifier) @parameter
+          (accent_quoted (identifier) @parameter)
+        ])))))
 
 ; for loop variables
 (for
