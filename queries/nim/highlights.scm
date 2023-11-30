@@ -37,8 +37,8 @@
 ; @comment.documentation ; comments documenting code
 
 (documentation_comment "##" @comment.documentation)
-(block_documentation_comment 
-  "##[" @comment.documentation 
+(block_documentation_comment
+  "##[" @comment.documentation
   "]##" @comment.documentation)
 ; NOTE: leaving content uncaptured so markdown can be injected
 
@@ -515,7 +515,7 @@
   (#has-ancestor? @_tuple_decons for))
 
 (concept_declaration
-  parameters: 
+  parameters:
     (parameter_list [
       (identifier) @parameter
       (accent_quoted (identifier) @parameter)
