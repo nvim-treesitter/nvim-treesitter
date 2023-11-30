@@ -36,7 +36,7 @@
 
 (visibility) @type.qualifier
 
-(comment) @comment
+(comment) @comment @spell
 
 (method_member
   (method_name
