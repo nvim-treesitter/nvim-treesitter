@@ -674,6 +674,36 @@
     ])) @_tuple_decons
   (#has-ancestor? @_tuple_decons const_section))
 
+; constants x and y in `array[x..y, type]`
+(bracket_expression
+  left: (identifier) @_array
+  right: 
+    (argument_list
+      . 
+      (infix_expression 
+        right: [
+          (identifier) @constant
+          (accent_quoted (identifier) @constant)
+          (dot_expression right: (identifier) @constant)
+          (dot_expression right: (accent_quoted (identifier) @constant))
+        ]))
+  (#any-of? @_array "array" "range"))
+(bracket_expression
+  left: (identifier) @_array
+  right: 
+    (argument_list
+      . 
+      (infix_expression 
+        left: [
+          (identifier) @constant
+          (accent_quoted (identifier) @constant)
+          (dot_expression right: (identifier) @constant)
+          (dot_expression right: (accent_quoted (identifier) @constant))
+        ]))
+  (#any-of? @_array "array" "range"))
+; NOTE: can only do this for (infix_expression)s, since standalone identifiers
+; could be ordinal types and constants
+
 ; =============================================================================
 ; @constant.builtin ; built-in constant values
 
