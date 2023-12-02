@@ -110,6 +110,9 @@
   "diff": {
     "revision": "c165725c28e69b36c5799ff0e458713a844f1aaf"
   },
+  "disassembly": {
+    "revision": "e48ebe20581145b381204cf21adf305e29329b5d"
+  },
   "dockerfile": {
     "revision": "33e22c33bcdbfc33d42806ee84cfd0b1248cc392"
   },
