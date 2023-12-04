@@ -132,7 +132,7 @@
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
   "elixir": {
-    "revision": "a2861e88a730287a60c11ea9299c033c7d076e30"
+    "revision": "11426c5fd20eef360d5ecaf10729191f6bc5d715"
   },
   "elm": {
     "revision": "0ae8d475281a25e9d7ab1068a952ff9a1615c0df"
@@ -504,7 +504,7 @@
     "revision": "6b2b5e41734bd6f07ea4c36ac20fb6f14061c841"
   },
   "qmljs": {
-    "revision": "35ead5b9955cdb29bcf709d622fa960ff33992b6"
+    "revision": "259133077f2fd854bcaa6f0149d3fc281fc8070b"
   },
   "query": {
     "revision": "3a9808b22742d5bd906ef5d1a562f2f1ae57406d"
@@ -717,7 +717,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "9573195e753fa0d303e65d8237d3902159708457"
+    "revision": "ee7bc3b0557a48cc22221f4ced5ca6c56cfe76db"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
