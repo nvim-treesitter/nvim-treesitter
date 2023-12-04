@@ -85,7 +85,7 @@
 
 (table_literal_type field: (identifier) @field)
 
-(member_type ["#" "."] . (identifier) @field)
+(member_type ["#" "."] . (identifier) @field.lua)
 
 ; Types
 
