@@ -32,15 +32,6 @@
 (lambda_expression
     parameters: (identifier) @parameter) ; x -> ...
 
-; Annotations
-
-(annotation
-  "@" @attribute
-  name: (identifier) @attribute)
-(marker_annotation
-  "@" @attribute
-  name: (identifier) @attribute)
-
 ; Operators
 
 [
@@ -134,6 +125,15 @@
   (#lua-match? @constant "^[A-Z_][A-Z%d_]+$"))
 
 (this) @variable.builtin
+
+; Annotations
+
+(annotation
+  "@" @attribute
+  name: (identifier) @attribute)
+(marker_annotation
+  "@" @attribute
+  name: (identifier) @attribute)
 
 ; Literals
 
