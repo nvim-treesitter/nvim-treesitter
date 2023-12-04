@@ -417,6 +417,7 @@
    "bracket_"
    "bracketOnErrorSource"
    "finally"
+   "fail"
    "onException"
    "expectationFailure"))
 
