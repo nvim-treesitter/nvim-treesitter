@@ -83,6 +83,7 @@
   "delcommand"
   "comclear"
   "colorscheme"
+  "scriptencoding"
   "startinsert"
   "stopinsert"
   "global"
@@ -193,6 +194,10 @@
 ;; Colorscheme command
 
 (colorscheme_statement (name) @string)
+
+;; Scriptencoding command
+
+(scriptencoding_statement (encoding) @string.special)
 
 ;; Literals
 
