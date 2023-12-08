@@ -9,6 +9,7 @@
 
 (subject) @text.title @spell
 (subject (overflow) @text @spell)
+(subject (subject_prefix) @function @nospell)
 (prefix (type) @keyword @nospell)
 (prefix (scope) @parameter @nospell)
 (prefix [
