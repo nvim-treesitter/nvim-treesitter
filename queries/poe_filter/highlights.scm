@@ -1,5 +1,7 @@
 ["Show" "Hide" "Minimal"] @namespace
 
+["Import" "Optional"] @include
+
 (condition (name) @conditional)
 (action (name) @keyword)
 (continue) @label
@@ -8,7 +10,7 @@
 
 (string) @string
 
-(file) @string
+(file) @string.special
 
 [
   (quality)
@@ -33,6 +35,7 @@
 
 "\"" @punctuation.delimiter
 
+; conceal unnecessary quotes
 ("\"" @conceal
   (#not-has-parent? @conceal string file)
   (#set! conceal ""))
