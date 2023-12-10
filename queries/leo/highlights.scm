@@ -131,6 +131,7 @@
 [
  (block_height)
  (self_caller)
+ (self_signer)
 ] @constant.builtin
 
 (free_function_call
@@ -172,6 +173,7 @@
 
 [ 
   (address_literal)
+  (signature_literal)
   ((affine_group_literal) (#set! "priority" 101))
   (field_literal) 
   (product_group_literal) 
