@@ -393,7 +393,7 @@
     "revision": "502a8746c82c616ed441e0ab2b8c09772ee7d114"
   },
   "nim": {
-    "revision": "1f9308c9e440ddbc67c0aaeb9396c992d266b281"
+    "revision": "fe53e07e42fc6c8fab934ab3675d65b4247e9c29"
   },
   "nim_format_string": {
     "revision": "d45f75022d147cda056e98bfba68222c9c8eca3a"
@@ -690,7 +690,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "ce3481c10eabed0ba36cfa9f72957c4d3f88689d"
+    "revision": "012e7732614acf9ec75c0e5e774900da1313031e"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -717,7 +717,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "55f5626617726954a1a95aa93e363a6a04913fa1"
+    "revision": "5feebac75906910415766f0aec55c24188e592c3"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
