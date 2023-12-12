@@ -216,7 +216,7 @@
     "revision": "b6ef0768711086a86b3297056f9ffb5cc1d77b4a"
   },
   "gomod": {
-    "revision": "f41a27386f1cfa1271122db5f0ff59b910520007"
+    "revision": "af4270aed18500af1d24e6de5f6e7d243e2c8b05"
   },
   "gosum": {
     "revision": "e2ac513b2240c7ff1069ae33b2df29ce90777c11"
@@ -243,7 +243,7 @@
     "revision": "3d4af179414525a35dd069ba0208c9b71093d8b3"
   },
   "haskell": {
-    "revision": "ca10c43a4c9bfe588c480d2941726c2fadcae699"
+    "revision": "d70b321b8b702939d722c2c15f4c28d14e91a400"
   },
   "haskell_persistent": {
     "revision": "577259b4068b2c281c9ebf94c109bd50a74d5857"
@@ -264,7 +264,7 @@
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
   },
   "hoon": {
-    "revision": "1d5df35af3e0afe592832a67b9fb3feeeba1f7b6"
+    "revision": "0135187126370cbf112d759a50eab4a5c913a827"
   },
   "html": {
     "revision": "d742025fa2d8e6100f134a6ea990443aa1f074b3"
@@ -393,7 +393,7 @@
     "revision": "502a8746c82c616ed441e0ab2b8c09772ee7d114"
   },
   "nim": {
-    "revision": "fe53e07e42fc6c8fab934ab3675d65b4247e9c29"
+    "revision": "77762e3680cb7b0a4380580de7a8b95e00f0dc6b"
   },
   "nim_format_string": {
     "revision": "d45f75022d147cda056e98bfba68222c9c8eca3a"
@@ -564,7 +564,7 @@
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
   },
   "slang": {
-    "revision": "11526ab1a2514c7302f3c4af60b0ebc992cee086"
+    "revision": "b07419a4b9dda852b6d9bb05bbf8391150bcdd62"
   },
   "slint": {
     "revision": "00c8a2d3645766f68c0d0460086c0a994e5b0d85"
@@ -591,7 +591,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "1b7d451554f435d28c3217724acf00cdc627ee73"
+    "revision": "b599f6a1ca37cb5bae827a424cd98371a0d91bdc"
   },
   "squirrel": {
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
@@ -690,7 +690,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "012e7732614acf9ec75c0e5e774900da1313031e"
+    "revision": "fdd137445c50d73767548c1b2386e5f560d5d042"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -717,7 +717,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "5feebac75906910415766f0aec55c24188e592c3"
+    "revision": "76420bc5832e421fb7b0ade2262f19fdff005988"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
