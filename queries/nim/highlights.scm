@@ -29,6 +29,24 @@
 ; (type_expression) @type
 ; and before @preproc and all literals
 
+; constants/enums in array construction
+(array_construction
+  (colon_expression
+    left: (_) @constant))
+; NOTE: has to be before literals and punctuation etc.
+
+; identifiers in "case" "of" branches have to be enums
+(case
+  consequence: (of_branch values:
+    (expression_list (_) @constant)))
+; NOTE: has to be before literals and punctuation etc.
+
+; in variant objects with "case" "of"
+(variant_declaration
+  (of_branch values:
+    (expression_list (_) @constant)))
+; NOTE: has to be before literals and punctuation etc.
+
 ; =============================================================================
 ; @comment               ; line and block comments
 
@@ -448,6 +466,7 @@
 ; when accessing and directly call elements from an array of routines
 ; eg `array_of_routines[index](arguments), but that is an uncommon case
 
+; dot_generic_call `v.call[:type, type]()
 (dot_generic_call
   generic_arguments: (_) @type)
 
@@ -643,16 +662,6 @@
 ; =============================================================================
 ; @constant         ; constant identifiers
 
-; identifiers in "case" "of" branches have to be enums
-(case
-  (of_branch values:
-    (expression_list (_) @constant)))
-
-; in variant objects with "case" "of"
-(variant_declaration
-  (of_branch values:
-    (expression_list (_) @constant)))
-
 ; enum declaration
 (enum_field_declaration
   (symbol_declaration
@@ -660,11 +669,6 @@
       (identifier) @constant
       (accent_quoted (identifier) @constant)
     ]))
-
-; constants/enums in array construction
-(array_construction
-  (colon_expression
-    left: (_) @constant))
 
 ; constant declaration
 (const_section
