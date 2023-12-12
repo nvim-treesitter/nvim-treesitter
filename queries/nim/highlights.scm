@@ -11,7 +11,7 @@
 ; @variable capture.
 
 (type_expression) @type
-; NOTE: has to be after 
+; NOTE: has to be after
 ; ((identifier) @variable (#set! "priority" 99))
 
 ; overrule identifiers in pragmas in (proc_type)s and (pragma_expression)s
@@ -25,7 +25,7 @@
   (pragma_expression
     right:
       (pragma_list) @variable))
-; NOTE: has to be after 
+; NOTE: has to be after
 ; (type_expression) @type
 ; and before @preproc and all literals
 
@@ -37,14 +37,18 @@
 
 ; identifiers in "case" "of" branches have to be enums
 (case
-  consequence: (of_branch values:
-    (expression_list (_) @constant)))
+  alternative:
+    (of_branch
+      values:
+        (expression_list (_) @constant)))
 ; NOTE: has to be before literals and punctuation etc.
 
 ; in variant objects with "case" "of"
 (variant_declaration
-  (of_branch values:
-    (expression_list (_) @constant)))
+  alternative:
+    (of_branch
+      values:
+        (expression_list (_) @constant)))
 ; NOTE: has to be before literals and punctuation etc.
 
 ; =============================================================================
@@ -257,9 +261,9 @@
 ; function.calls in `varargs[type, routine]`
 (bracket_expression
   left: (identifier) @_varargs
-  right: 
+  right:
     (argument_list
-      . 
+      .
       (_)
       .
       [
@@ -695,10 +699,10 @@
 ; constants x and y in `array[x..y, type]`
 (bracket_expression
   left: (identifier) @_array
-  right: 
+  right:
     (argument_list
-      . 
-      (infix_expression 
+      .
+      (infix_expression
         right: [
           (identifier) @constant
           (accent_quoted (identifier) @constant)
@@ -708,10 +712,10 @@
   (#any-of? @_array "array" "range"))
 (bracket_expression
   left: (identifier) @_array
-  right: 
+  right:
     (argument_list
-      . 
-      (infix_expression 
+      .
+      (infix_expression
         left: [
           (identifier) @constant
           (accent_quoted (identifier) @constant)

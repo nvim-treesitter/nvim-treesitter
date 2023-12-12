@@ -131,7 +131,7 @@
   type: (type_expression)? @definition.associated)
 
 (concept_declaration
-  parameters: 
+  parameters:
     (parameter_list [
       (identifier) @definition.parameter
       (accent_quoted (identifier) @definition.parameter)
@@ -193,28 +193,21 @@
 ; ==============================================================================
 ; @definition.field      ; fields or properties
 
-(object_declaration
-  (field_declaration_list
-    (field_declaration
-      (symbol_declaration_list
-        (symbol_declaration
-          name: [
-            (identifier) @definition.field
-            (accent_quoted) @definition.field
-            (exported_symbol (identifier) @definition.field)
-            (exported_symbol (accent_quoted) @definition.field)
-          ]))
-      type: (type_expression)? @definition.associated)))
-
-(tuple_type
-  (field_declaration
-    (symbol_declaration_list
-      (symbol_declaration
-        name: [
-          (identifier) @definition.field
-          (accent_quoted) @definition.field
-        ]))
-    type: (type_expression)? @definition.associated))
+; object_declaration
+; variant_declaration
+; conditional_declaration
+; tuple_type inline
+; tuple_type multiline
+(field_declaration
+  (symbol_declaration_list
+    (symbol_declaration
+      name: [
+        (identifier) @definition.field
+        (accent_quoted) @definition.field
+        (exported_symbol (identifier) @definition.field)
+        (exported_symbol (accent_quoted) @definition.field)
+      ]))
+  type: (type_expression)? @definition.associated)
 
 ; ==============================================================================
 ; @definition.enum       ; enumerations
@@ -273,9 +266,9 @@
   alternative: (else_branch)? @scope)
 
 (case
-  (of_branch)* @scope
-  (elif_branch)* @scope
-  (else_branch)? @scope)
+  alternative: (of_branch)* @scope
+  alternative: (elif_branch)* @scope
+  alternative: (else_branch)? @scope)
 
 (try
   body: (statement_list) @scope
