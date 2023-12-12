@@ -19,10 +19,17 @@ local M = {}
 -- Returns the mkdir command based on the OS
 ---@param directory string
 ---@param cwd string
----@param info_msg string
+---@param info_msg string|fun(string):string
 ---@return table
 function M.select_mkdir_cmd(directory, cwd, info_msg)
-  if fn.has "win32" == 1 then
+  local is_win = fn.has "win32" == 1
+  if type(info_msg) == "function" then
+    local dir = cwd .. (is_win and "\\" or "/") .. directory
+    info_msg = info_msg(dir)
+    assert(type(info_msg) == "string", "info_msg must return a string")
+  end
+
+  if is_win then
     return {
       cmd = "cmd",
       opts = {
@@ -242,28 +249,34 @@ function M.select_download_commands(repo, project_name, cache_folder, revision, 
       folder_rev = revision:sub(2)
     end
 
+    local archive_url = (
+      is_github and url .. "/archive/" .. revision .. ".tar.gz"
+      or url .. "/-/archive/" .. revision .. "/" .. project_name .. "-" .. revision .. ".tar.gz"
+    )
+
     return {
       M.select_install_rm_cmd(cache_folder, project_name .. "-tmp"),
       {
         cmd = "curl",
-        info = "Downloading " .. project_name .. "...",
+        info = string.format("Downloading %s (%s) ...", project_name, revision),
         err = "Error during download, please verify your internet connection",
         opts = {
           args = {
             "--silent",
             "-L", -- follow redirects
-            is_github and url .. "/archive/" .. revision .. ".tar.gz"
-              or url .. "/-/archive/" .. revision .. "/" .. project_name .. "-" .. revision .. ".tar.gz",
+            archive_url,
             "--output",
             project_name .. ".tar.gz",
           },
           cwd = cache_folder,
         },
       },
-      M.select_mkdir_cmd(project_name .. "-tmp", cache_folder, "Creating temporary directory"),
+      M.select_mkdir_cmd(project_name .. "-tmp", cache_folder, function(dir)
+        return "Creating temporary directory: " .. dir
+      end),
       {
         cmd = "tar",
-        info = "Extracting " .. project_name .. "...",
+        info = "Extracting " .. project_name .. " ...",
         err = "Error during tarball extraction.",
         opts = {
           args = {
@@ -290,7 +303,7 @@ function M.select_download_commands(repo, project_name, cache_folder, revision, 
     return {
       {
         cmd = "git",
-        info = "Downloading " .. project_name .. "...",
+        info = "Downloading " .. project_name .. " ...",
         err = clone_error,
         opts = {
           args = {
