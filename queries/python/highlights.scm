@@ -137,6 +137,12 @@
 (parameters
   (dictionary_splat_pattern ; **kwargs
     (identifier) @parameter))
+(lambda_parameters
+  (list_splat_pattern
+    (identifier) @parameter))
+(lambda_parameters
+  (dictionary_splat_pattern
+    (identifier) @parameter))
 
 
 ;; Literals
