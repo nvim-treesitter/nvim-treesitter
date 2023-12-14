@@ -779,6 +779,7 @@ list.hcl = {
   install_info = {
     url = "https://github.com/MichaHoffmann/tree-sitter-hcl",
     files = { "src/parser.c", "src/scanner.c" },
+    branch = "main",
   },
   maintainers = { "@MichaHoffmann" },
 }
