@@ -129,7 +129,7 @@
 (typed_parameter
   (identifier) @parameter)
 (typed_default_parameter
-  (identifier) @parameter)
+  name: (identifier) @parameter)
 ; Variadic parameters *args, **kwargs
 (parameters
   (list_splat_pattern ; *args
