@@ -378,8 +378,16 @@
 (quoter) @function.call
 
 (quasiquote 
-  (quoter) @_name (#eq? @_name "qq")
+  [
+   (quoter) @_name
+   (_ (variable) @_name)
+  ](#eq? @_name "qq")
   (quasiquote_body) @string)
+
+(quasiquote 
+  ((_ (variable) @_name)) (#eq? @_name "qq")
+  (quasiquote_body) @string)
+
 ;; namespaced quasi-quoter
 (quasiquote
   (_
