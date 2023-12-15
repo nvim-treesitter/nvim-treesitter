@@ -147,7 +147,7 @@
     "revision": "203f7bd3c1bbfbd98fc19add4b8fcb213c059205"
   },
   "erlang": {
-    "revision": "56942778b5791d07949e6c7b6093e01aba5b7ab4"
+    "revision": "08218898824c68fc8439cba1540042081e2da18d"
   },
   "facility": {
     "revision": "a52579670e2b14ec03d410c3c980fafaf6d659c4"
@@ -243,7 +243,7 @@
     "revision": "3d4af179414525a35dd069ba0208c9b71093d8b3"
   },
   "haskell": {
-    "revision": "d70b321b8b702939d722c2c15f4c28d14e91a400"
+    "revision": "23ad72f4b755269004a0a3f3796192705313643d"
   },
   "haskell_persistent": {
     "revision": "577259b4068b2c281c9ebf94c109bd50a74d5857"
@@ -393,7 +393,7 @@
     "revision": "502a8746c82c616ed441e0ab2b8c09772ee7d114"
   },
   "nim": {
-    "revision": "d41fd3e4c1f83a0e6429c2d035209e107e80e6f8"
+    "revision": "0fdb059ce7c1926a0287c3deb80e20186e4451d7"
   },
   "nim_format_string": {
     "revision": "d45f75022d147cda056e98bfba68222c9c8eca3a"
@@ -717,7 +717,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "b2a8767803a50d654e9bfbd90d55cc0414b6ca8f"
+    "revision": "698e645b30e871a58c7de68e0ecd6d2ebbdd0009"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
