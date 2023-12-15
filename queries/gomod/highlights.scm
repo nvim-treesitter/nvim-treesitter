@@ -2,6 +2,7 @@
   "require"
   "replace"
   "go"
+  "toolchain"
   "exclude"
   "retract"
   "module"
