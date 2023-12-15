@@ -2015,7 +2015,7 @@ list.uxntal = {
 list.v = {
   install_info = {
     url = "https://github.com/v-analyzer/v-analyzer",
-    files = { "src/parser.c", "src/scanner.c" },
+    files = { "src/parser.c" },
     location = "tree_sitter_v",
   },
   filetype = "vlang",
