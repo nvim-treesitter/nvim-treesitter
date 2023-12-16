@@ -147,7 +147,7 @@
     "revision": "203f7bd3c1bbfbd98fc19add4b8fcb213c059205"
   },
   "erlang": {
-    "revision": "08218898824c68fc8439cba1540042081e2da18d"
+    "revision": "57e69513efd831f9cc8207d65d96bad917ca4aa4"
   },
   "facility": {
     "revision": "a52579670e2b14ec03d410c3c980fafaf6d659c4"
@@ -393,7 +393,7 @@
     "revision": "502a8746c82c616ed441e0ab2b8c09772ee7d114"
   },
   "nim": {
-    "revision": "0fdb059ce7c1926a0287c3deb80e20186e4451d7"
+    "revision": "482e2f4e1c2520db711c57f1899e926c3e81d4eb"
   },
   "nim_format_string": {
     "revision": "d45f75022d147cda056e98bfba68222c9c8eca3a"
@@ -690,7 +690,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "f7c31c7578ebd35b95cfa85c6461ed6480697a9a"
+    "revision": "7ab132568aa18af0f177d4476079d3c412741a9d"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -717,7 +717,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "698e645b30e871a58c7de68e0ecd6d2ebbdd0009"
+    "revision": "f9ccaffe1f8ef68e56d403451c34429388f966f1"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
