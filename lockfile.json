@@ -135,7 +135,7 @@
     "revision": "11426c5fd20eef360d5ecaf10729191f6bc5d715"
   },
   "elm": {
-    "revision": "0ae8d475281a25e9d7ab1068a952ff9a1615c0df"
+    "revision": "ac2b629b3877ce22b3f171fee4517d8c2e6992e9"
   },
   "elsa": {
     "revision": "0a66b2b3f3c1915e67ad2ef9f7dbd2a84820d9d7"
@@ -243,7 +243,7 @@
     "revision": "3d4af179414525a35dd069ba0208c9b71093d8b3"
   },
   "haskell": {
-    "revision": "23ad72f4b755269004a0a3f3796192705313643d"
+    "revision": "5260f606ec353f156751473a0c203d67167c0ebe"
   },
   "haskell_persistent": {
     "revision": "577259b4068b2c281c9ebf94c109bd50a74d5857"
@@ -633,7 +633,7 @@
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
   },
   "templ": {
-    "revision": "6b9dff614d5bab902cb6989bfcaa180636218159"
+    "revision": "671e9a957acd40088919ca17b30f4a39870784d4"
   },
   "terraform": {
     "revision": "e135399cb31b95fac0760b094556d1d5ce84acf0"
@@ -717,7 +717,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "f9ccaffe1f8ef68e56d403451c34429388f966f1"
+    "revision": "78da69154d39da9f0e3db2f07359e0ffbb5174fa"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
