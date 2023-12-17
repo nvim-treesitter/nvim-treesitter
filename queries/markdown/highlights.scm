@@ -16,6 +16,7 @@
 (info_string) @label
 
 (pipe_table_header (pipe_table_cell) @text.title)
+(pipe_table_cell) @spell
 
 (pipe_table_header "|" @punctuation.special)
 (pipe_table_row "|" @punctuation.special)
