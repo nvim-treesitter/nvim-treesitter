@@ -438,7 +438,7 @@
     "revision": "e01767921df18142055d97407595329d7629e643"
   },
   "perl": {
-    "revision": "3911403cba497196fb867a6f1e286e3e1576f425"
+    "revision": "05a86fe92343c2cda3c6dad0a612abcac9a64254"
   },
   "php": {
     "revision": "0a99deca13c4af1fb9adcb03c958bfc9f4c740a9"
@@ -462,7 +462,7 @@
     "revision": "16f930b250433cfcd4fb4144df92bb98ad344c20"
   },
   "printf": {
-    "revision": "8a3f07c1f620ae46d14873e5b7ee0d3e114c15e8"
+    "revision": "04696305caceab64a78e3a749774718d87ba85a1"
   },
   "prisma": {
     "revision": "eca2596a355b1a9952b4f80f8f9caed300a272b5"
