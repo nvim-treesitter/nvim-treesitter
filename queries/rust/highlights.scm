@@ -172,6 +172,7 @@
 ; Attribute macros
 
 (attribute_item (attribute (identifier) @function.macro))
+(inner_attribute_item (attribute (identifier) @function.macro))
 
 (attribute (scoped_identifier (identifier) @function.macro .))
 
