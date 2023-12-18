@@ -11,7 +11,7 @@
 ; @variable capture.
 
 (type_expression) @type
-; NOTE: has to be after 
+; NOTE: has to be after
 ; ((identifier) @variable (#set! "priority" 99))
 
 ; overrule identifiers in pragmas in (proc_type)s and (pragma_expression)s
@@ -25,9 +25,31 @@
   (pragma_expression
     right:
       (pragma_list) @variable))
-; NOTE: has to be after 
+; NOTE: has to be after
 ; (type_expression) @type
 ; and before @preproc and all literals
+
+; constants/enums in array construction
+(array_construction
+  (colon_expression
+    left: (_) @constant))
+; NOTE: has to be before literals and punctuation etc.
+
+; identifiers in "case" "of" branches have to be enums
+(case
+  alternative:
+    (of_branch
+      values:
+        (expression_list (_) @constant)))
+; NOTE: has to be before literals and punctuation etc.
+
+; in variant objects with "case" "of"
+(variant_declaration
+  alternative:
+    (of_branch
+      values:
+        (expression_list (_) @constant)))
+; NOTE: has to be before literals and punctuation etc.
 
 ; =============================================================================
 ; @comment               ; line and block comments
@@ -239,9 +261,9 @@
 ; function.calls in `varargs[type, routine]`
 (bracket_expression
   left: (identifier) @_varargs
-  right: 
+  right:
     (argument_list
-      . 
+      .
       (_)
       .
       [
@@ -448,6 +470,7 @@
 ; when accessing and directly call elements from an array of routines
 ; eg `array_of_routines[index](arguments), but that is an uncommon case
 
+; dot_generic_call `v.call[:type, type]()
 (dot_generic_call
   generic_arguments: (_) @type)
 
@@ -643,16 +666,6 @@
 ; =============================================================================
 ; @constant         ; constant identifiers
 
-; identifiers in "case" "of" branches have to be enums
-(case
-  (of_branch values:
-    (expression_list (_) @constant)))
-
-; in variant objects with "case" "of"
-(variant_declaration
-  (of_branch values:
-    (expression_list (_) @constant)))
-
 ; enum declaration
 (enum_field_declaration
   (symbol_declaration
@@ -660,11 +673,6 @@
       (identifier) @constant
       (accent_quoted (identifier) @constant)
     ]))
-
-; constants/enums in array construction
-(array_construction
-  (colon_expression
-    left: (_) @constant))
 
 ; constant declaration
 (const_section
@@ -691,10 +699,10 @@
 ; constants x and y in `array[x..y, type]`
 (bracket_expression
   left: (identifier) @_array
-  right: 
+  right:
     (argument_list
-      . 
-      (infix_expression 
+      .
+      (infix_expression
         right: [
           (identifier) @constant
           (accent_quoted (identifier) @constant)
@@ -704,10 +712,10 @@
   (#any-of? @_array "array" "range"))
 (bracket_expression
   left: (identifier) @_array
-  right: 
+  right:
     (argument_list
-      . 
-      (infix_expression 
+      .
+      (infix_expression
         left: [
           (identifier) @constant
           (accent_quoted (identifier) @constant)
