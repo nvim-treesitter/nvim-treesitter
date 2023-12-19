@@ -53,7 +53,7 @@
      (#eq? @_name "styled"))
  arguments: ((template_string) @injection.content
    (#offset! @injection.content 0 1 0 -1)
-   (#set! injection.language "css")))
+   (#set! injection.language "styled")))
 
 ; styled(Component)`<css>`
 (call_expression
@@ -62,7 +62,7 @@
      (#eq? @_name "styled"))
  arguments: ((template_string) @injection.content
    (#offset! @injection.content 0 1 0 -1)
-   (#set! injection.language "css")))
+   (#set! injection.language "styled")))
 
 ; styled.div.attrs({ prop: "foo" })`<css>`
 (call_expression
@@ -73,7 +73,7 @@
         (#eq? @_name "styled"))))
  arguments: ((template_string) @injection.content
    (#offset! @injection.content 0 1 0 -1)
-   (#set! injection.language "css")))
+   (#set! injection.language "styled")))
 
 
 ; styled(Component).attrs({ prop: "foo" })`<css>`
@@ -85,7 +85,7 @@
         (#eq? @_name "styled"))))
  arguments: ((template_string) @injection.content
    (#offset! @injection.content 0 1 0 -1)
-   (#set! injection.language "css")))
+   (#set! injection.language "styled")))
 
 ((regex_pattern) @injection.content
  (#set! injection.language "regex"))
