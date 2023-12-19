@@ -37,6 +37,7 @@ local is_initialized = false
 ---@field enable boolean|string[]|function(string): boolean
 ---@field disable boolean|string[]|function(string): boolean
 ---@field keymaps table<string, string>
+---@field ignore_injections function(bufnr): boolean
 ---@field is_supported function(string): boolean
 ---@field attach function(string)
 ---@field detach function(string)
@@ -64,6 +65,9 @@ local builtin_modules = {
       scope_incremental = "grc",
       node_decremental = "grm",
     },
+    ignore_injections = function()
+      return true
+    end,
     is_supported = function()
       return true
     end,

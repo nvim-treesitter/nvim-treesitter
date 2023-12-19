@@ -160,7 +160,11 @@ function M.attach(bufnr)
         mode = "x"
         -- We need to move to command mode to access marks '< (visual area start) and '> (visual area end) which are not
         -- properly accessible in visual mode.
-        rhs = string.format(":lua require'nvim-treesitter.incremental_selection'.%s()<CR>", funcname)
+        rhs = string.format(
+          ":lua require'nvim-treesitter.incremental_selection'.%s(%s)<CR>",
+          funcname,
+          config.ignore_injections(bufnr)
+        )
       end
       vim.keymap.set(
         mode,
