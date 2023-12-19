@@ -191,6 +191,8 @@ Supported options:
     (as defined in `locals.scm`). Defaults to `grc`.
   - node_decremental: in visual mode, decrement to the previous named node.
     Defaults to `grm`.
+- ignore_injections: a function that takes bufnr and returns boolean. Defaults
+  to `true`.
 
 >
   require'nvim-treesitter.configs'.setup {
