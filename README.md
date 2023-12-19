@@ -375,6 +375,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [ssh_config](https://github.com/ObserverOfTime/tree-sitter-ssh-config) (maintained by @ObserverOfTime)
 - [x] [starlark](https://github.com/amaanq/tree-sitter-starlark) (maintained by @amaanq)
 - [x] [strace](https://github.com/sigmaSd/tree-sitter-strace) (maintained by @amaanq)
+- [x] [styled](https://github.com/mskelton/tree-sitter-styled) (maintained by @mskelton)
 - [x] [supercollider](https://github.com/madskjeldgaard/tree-sitter-supercollider) (maintained by @madskjeldgaard)
 - [x] [surface](https://github.com/connorlay/tree-sitter-surface) (maintained by @connorlay)
 - [x] [svelte](https://github.com/Himujjal/tree-sitter-svelte) (maintained by @elianiva)
