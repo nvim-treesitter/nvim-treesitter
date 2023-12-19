@@ -52,17 +52,29 @@ local function range_matches(node)
 end
 
 ---@param get_parent fun(node: TSNode): TSNode|nil
----@return fun():nil
+---@return fun(ignore_injection: boolean):nil
 local function select_incremental(get_parent)
-  return function()
+  return function(ignore_injections)
     local buf = api.nvim_get_current_buf()
     local nodes = selections[buf]
 
     local csrow, cscol, cerow, cecol = visual_selection_range()
     -- Initialize incremental selection with current selection
     if not nodes or #nodes == 0 or not range_matches(nodes[#nodes]) then
-      local root = parsers.get_parser():parse()[1]:root()
-      local node = root:named_descendant_for_range(csrow - 1, cscol - 1, cerow - 1, cecol)
+      local node = vim.treesitter.get_node { ignore_injections = ignore_injections }
+      while node do
+        local srow, scol, erow, ecol = ts_utils.get_vim_range { node:range() }
+        if
+          ((srow < csrow) or (srow == csrow and scol <= cscol))
+          and ((erow > cerow) or (erow == cerow and ecol >= cecol))
+        then
+          break
+        end
+        node = get_parent(node)
+      end
+      if not node then
+        return
+      end
       ts_utils.update_selection(buf, node)
       if nodes and #nodes > 0 then
         table.insert(selections[buf], node)
