@@ -135,7 +135,7 @@
     "revision": "11426c5fd20eef360d5ecaf10729191f6bc5d715"
   },
   "elm": {
-    "revision": "ac2b629b3877ce22b3f171fee4517d8c2e6992e9"
+    "revision": "44ffae46bb460820c3c3d6fde20378202bd4b0ab"
   },
   "elsa": {
     "revision": "0a66b2b3f3c1915e67ad2ef9f7dbd2a84820d9d7"
@@ -216,7 +216,7 @@
     "revision": "b6ef0768711086a86b3297056f9ffb5cc1d77b4a"
   },
   "gomod": {
-    "revision": "af4270aed18500af1d24e6de5f6e7d243e2c8b05"
+    "revision": "9b86399ab733fbd548ba0e817e732cb3351082d2"
   },
   "gosum": {
     "revision": "e2ac513b2240c7ff1069ae33b2df29ce90777c11"
@@ -690,7 +690,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "7ab132568aa18af0f177d4476079d3c412741a9d"
+    "revision": "eced04c473f3bcb49f9c8ac91744451a9ab40310"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -717,7 +717,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "78da69154d39da9f0e3db2f07359e0ffbb5174fa"
+    "revision": "b5fa0cb75ee96d3ff19df59085d508240f5b0fd5"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
