@@ -198,7 +198,7 @@
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
   },
   "gleam": {
-    "revision": "c9c7f0f01749d301b54e96ed8e0c47c7c415a196"
+    "revision": "2b49c49ef632928b5c52bb0a7269ff797d5d1414"
   },
   "glimmer": {
     "revision": "f9746dc1d0707717fbba84cb5c22a71586af23e1"
@@ -606,7 +606,7 @@
     "revision": "d819cdd5dbe455bd3c859193633c8d91c0df7c36"
   },
   "styled": {
-    "revision": "e51e673efc860373167680b4bcbf418a11e4ed26"
+    "revision": "5e52758b32e02adca16bb93f95b3f9c050c72b56"
   },
   "supercollider": {
     "revision": "3b35bd0fded4423c8fb30e9585c7bacbcd0e8095"
@@ -693,7 +693,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "eced04c473f3bcb49f9c8ac91744451a9ab40310"
+    "revision": "f0336bb8847393ba4d5905a94642acf0dc3d5ebd"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -720,7 +720,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "b5fa0cb75ee96d3ff19df59085d508240f5b0fd5"
+    "revision": "e6e06a05eeb894001d3c24e1db72f5cd2f35bdae"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
