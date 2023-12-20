@@ -249,3 +249,6 @@
 (citation
   keys: _ @nospell)
 (command_name) @nospell
+(label_definition) @nospell
+(label_reference) @nospell
+(label_reference_range) @nospell
