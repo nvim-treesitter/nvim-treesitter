@@ -32,3 +32,19 @@
 
 ((program . (comment)* . (comment) @preproc)
  (#lua-match? @preproc "^;+ *extends *$"))
+
+((predicate
+  name: (identifier) @_name
+  parameters: (parameters (string "\"" @string "\"" @string) @string.regex))
+ (#any-of? @_name
+   "match"
+   "not-match"
+   "vim-match"
+   "not-vim-match"
+   "lua-match"
+   "not-lua-match"))
+
+((predicate
+  name: (identifier) @_name
+  parameters: (parameters (string "\"" @string "\"" @string) @string.regex . (string) .))
+ (#any-of? @_name "gsub" "not-gsub"))
