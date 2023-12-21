@@ -47,6 +47,12 @@
 (broadcast_call_expression
   (field_expression (identifier) @function.call .))
 
+(binary_expression
+  (_)
+  (operator) @pipe
+  (identifier) @function.call
+  (#lua-match? @pipe "|>"))
+
 ;; Builtins
 
 ((identifier) @function.builtin
