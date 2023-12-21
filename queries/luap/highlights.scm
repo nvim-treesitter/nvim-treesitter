@@ -1,9 +1,11 @@
-"." @character
-
 [
   (anchor_begin)
   (anchor_end)
-] @string.escape
+  "."
+] @variable.builtin
+
+(character "." @constant
+ (#has-ancestor? @constant set negated_set))
 
 [
   "[" "]"
@@ -19,7 +21,7 @@
 
 (range
   from: (character) @constant
-  "-" @punctuation.delimiter
+  "-" @operator
   to: (character) @constant)
 
 (set
