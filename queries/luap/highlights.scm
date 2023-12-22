@@ -1,15 +1,10 @@
 [
   (anchor_begin)
   (anchor_end)
-  "."
 ] @variable.builtin
 
-(set
-  (character "." @constant))
-(negated_set
-  (character "." @constant)) 
-(range
-  (character "." @constant))
+(pattern
+  (character "." @variable.builtin))
 
 [
   "[" "]"
