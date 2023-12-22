@@ -4,8 +4,10 @@
   "."
 ] @variable.builtin
 
-((character "." @constant) @_
- (#has-parent? @_ set negated_set))
+(set
+  (character "." @constant))
+(negated_set
+  (character "." @constant)) 
 
 [
   "[" "]"
