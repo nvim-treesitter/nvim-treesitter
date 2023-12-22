@@ -1,7 +1,7 @@
 [
   (anchor_begin)
   (anchor_end)
-] @variable.builtin
+] @punctuation.delimiter
 
 (pattern
   (character "." @variable.builtin))

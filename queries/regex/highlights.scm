@@ -32,7 +32,8 @@
 [ "*" "+" "?" "|" "=" "!" "-"] @operator
 
 [
- (any_character)
  (start_assertion)
  (end_assertion)
-] @variable.builtin
+] @punctuation.delimiter
+
+(any_character) @variable.builtin
