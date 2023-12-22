@@ -47,6 +47,12 @@
 (broadcast_call_expression
   (field_expression (identifier) @function.call .))
 
+(binary_expression
+  (_)
+  (operator) @_pipe
+  (identifier) @function.call
+  (#eq? @_pipe "|>"))
+
 ;; Builtins
 
 ((identifier) @function.builtin
