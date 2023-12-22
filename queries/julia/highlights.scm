@@ -49,9 +49,9 @@
 
 (binary_expression
   (_)
-  (operator) @pipe
+  (operator) @_pipe
   (identifier) @function.call
-  (#lua-match? @pipe "|>"))
+  (#eq? @_pipe "|>"))
 
 ;; Builtins
 
