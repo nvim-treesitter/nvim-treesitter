@@ -8,6 +8,8 @@
   (character "." @constant))
 (negated_set
   (character "." @constant)) 
+(range
+  (character "." @constant))
 
 [
   "[" "]"
@@ -28,12 +30,12 @@
 
 (set
   (character) @constant)
+(negated_set
+  (character) @constant)
 
 (class) @keyword
 
-(negated_set
-  "^" @operator
-  (character) @constant)
+(negated_set "^" @operator)
 
 (balanced_match
   (character) @parameter)
