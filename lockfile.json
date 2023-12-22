@@ -9,7 +9,7 @@
     "revision": "624ff108fe949727217cddb302f20e4f16997b1c"
   },
   "apex": {
-    "revision": "82ee140f4ee7652a4915ac9e9f60c4d66f7637d7"
+    "revision": "ca70b2347a79615cd749517f6c6c2352e50a7ce9"
   },
   "arduino": {
     "revision": "ff1045f5da90344d547022c50f1756be4adaf721"
@@ -552,7 +552,7 @@
     "revision": "79456e6080f50fc1ca7c21845794308fa5d35a51"
   },
   "scala": {
-    "revision": "1b4c2fa5c55c5fd83cbb0d2f818f916aba221a42"
+    "revision": "866f94551cd03f9055d04dba20465b84e7e693f3"
   },
   "scfg": {
     "revision": "6deae0cbb458c849a4d1e2985093e9c9c32d7fd0"
@@ -582,10 +582,10 @@
     "revision": "168020304759ad5d8b4a88a541a699134e3730c5"
   },
   "soql": {
-    "revision": "82ee140f4ee7652a4915ac9e9f60c4d66f7637d7"
+    "revision": "ca70b2347a79615cd749517f6c6c2352e50a7ce9"
   },
   "sosl": {
-    "revision": "82ee140f4ee7652a4915ac9e9f60c4d66f7637d7"
+    "revision": "ca70b2347a79615cd749517f6c6c2352e50a7ce9"
   },
   "sparql": {
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
@@ -651,7 +651,7 @@
     "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
   },
   "tlaplus": {
-    "revision": "c5fae9e4ad9f483fb6232a8688a2c940be6b496b"
+    "revision": "aeb2e8fdc417c32ae7d1149cfa2a8ddc3b293600"
   },
   "todotxt": {
     "revision": "0207f6a4ab6aeafc4b091914d31d8235049a2578"
@@ -720,7 +720,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "55514ae0d9d0d7c4170e98e9ab50a46f0887053f"
+    "revision": "66962f2a87db24bb63fe8282ce76fb64c0a2e20b"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
