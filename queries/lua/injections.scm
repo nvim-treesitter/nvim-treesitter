@@ -114,19 +114,7 @@
 (function_call
   (dot_index_expression
     field: (identifier) @_method
-    (#any-of? @_method "find" "match"))
-  arguments: (arguments
-               . (_)
-               .
-               (string
-                 content: (string_content) @injection.content
-                 (#set! injection.language "luap")
-                 (#set! injection.include-children))))
-
-(function_call
-  (dot_index_expression
-    field: (identifier) @_method
-    (#any-of? @_method "gmatch" "gsub"))
+    (#any-of? @_method "find" "match" "gmatch" "gsub"))
   arguments: (arguments
                . (_)
                .
@@ -140,22 +128,12 @@
 (function_call
   (method_index_expression
     method: (identifier) @_method
-    (#any-of? @_method "find" "match"))
+    (#any-of? @_method "find" "match" "gmatch" "gsub"))
   arguments: (arguments
                . (string
                    content: (string_content) @injection.content
                    (#set! injection.language "luap")
                    (#set! injection.include-children))))
-
-(function_call
-  (method_index_expression
-    method: (identifier) @_method
-    (#any-of? @_method "gmatch" "gsub"))
-  arguments: (arguments
-               . (string
-                 content: (string_content) @injection.content
-                 (#set! injection.language "luap")
-                 (#set! injection.include-children))))
 
 (comment
    content: (_) @injection.content
