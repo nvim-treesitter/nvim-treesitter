@@ -1,9 +1,10 @@
-"." @character
-
 [
   (anchor_begin)
   (anchor_end)
-] @string.escape
+] @punctuation.delimiter
+
+(pattern
+  (character "." @variable.builtin))
 
 [
   "[" "]"
@@ -19,17 +20,17 @@
 
 (range
   from: (character) @constant
-  "-" @punctuation.delimiter
+  "-" @operator
   to: (character) @constant)
 
 (set
   (character) @constant)
+(negated_set
+  (character) @constant)
 
 (class) @keyword
 
-(negated_set
-  "^" @operator
-  (character) @constant)
+(negated_set "^" @operator)
 
 (balanced_match
   (character) @parameter)
