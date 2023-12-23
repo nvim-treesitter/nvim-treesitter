@@ -251,24 +251,12 @@
 (function_call
   (dot_index_expression
     field: (identifier) @_method
-    (#any-of? @_method "find" "format" "match"))
-  arguments: (arguments (_) . (string content: _ @string.regex)))
-
-(function_call
-  (dot_index_expression
-    field: (identifier) @_method
-    (#any-of? @_method "gmatch" "gsub"))
-  arguments: (arguments (_) (string content: _ @string.regex)))
+    (#any-of? @_method "find" "format" "match" "gmatch" "gsub"))
+  arguments: (arguments . (_) . (string content: _ @string.regex)))
 
 ; ("123"):match("%d+")
 (function_call
   (method_index_expression
     method: (identifier) @_method
-    (#any-of? @_method "find" "format" "match"))
+    (#any-of? @_method "find" "format" "match" "gmatch" "gsub"))
     arguments: (arguments . (string content: _ @string.regex)))
-
-(function_call
-  (method_index_expression
-    method: (identifier) @_method
-    (#any-of? @_method "gmatch" "gsub"))
-    arguments: (arguments (string content: _ @string.regex)))
