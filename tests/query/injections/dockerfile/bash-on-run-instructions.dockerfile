@@ -1,6 +1,6 @@
 FROM foo
 RUN bar
-#   ^ bash
+#   ^ @bash
 RUN \
   baz
-# ^ bash
+# ^ @bash

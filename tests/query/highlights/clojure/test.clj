@@ -1,52 +1,52 @@
 (ns test {:clj-kondo/ignore true})
-; <- punctuation.bracket
-; ^ include
-;    ^ namespace
+; <- @punctuation.bracket
+; ^ @include
+;    ^ @namespace
 
  ; asdf
-;^^^^^^ comment
+;^^^^^^ @comment
 
  #_ abc
-;^^^^^^ comment
+;^^^^^^ @comment
 
 (func obj)
-;^^^^ function.call
-;     ^^^ variable
+;^^^^ @function.call
+;     ^^^ @variable
 
  #(+ % %1 %&)
-;^ punctuation.special
-;  ^ function.call
-;    ^ ^^ ^^ variable.builtin
+;^ @punctuation.special
+;  ^ @function.call
+;    ^ ^^ ^^ @variable.builtin
 
  &
-;^ parameter
+;^ @parameter
 
  ->abc
-;^^^^^ constructor
+;^^^^^ @constructor
 
  ->>abc
-;^^^^^^ variable
+;^^^^^^ @variable
 
  *1 *2 *3 *e
-;^^ ^^ ^^ ^^ variable.builtin
+;^^ ^^ ^^ ^^ @variable.builtin
 
 (.method)
-;^^^^^^^ method
+;^^^^^^^ @method
 
 (.-field)
-;^^^^^^^ field
+;^^^^^^^ @field
 
  Abc/method
-;^^^^^^^^^^ field
+;^^^^^^^^^^ @field
 
 (Abc/method)
-;^^^^^^^^^^ method
+;^^^^^^^^^^ @method
 
  Abc
-;^^^ type
+;^^^ @type
 
  abc.
-;^^^^ type
+;^^^^ @type
 
  ^abc
-;^ punctuation.special
+;^ @punctuation.special

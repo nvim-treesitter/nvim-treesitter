@@ -1,9 +1,9 @@
 html`<p></p>`;
-   // ^ html
+   // ^ @html
 html(`<p></p>`);
-   // ^ html
+   // ^ @html
 svg`<p></p>`;
-   // ^ html
+   // ^ @html
 svg(`<p></p>`);
-   // ^ html
+   // ^ @html
 
