@@ -6,7 +6,7 @@ class Foo {
 //    ^   @variable
 //        ^ @punctuation.bracket
   name: str;
-//^    @field
+//^    @variable.member
 //      ^   @type.builtin
 //         ^ @punctuation.delimiter
   new(name:  str) {

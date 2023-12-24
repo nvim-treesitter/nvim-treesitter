@@ -30,8 +30,8 @@
 "_" @constant.builtin ; match wildcard
 
 ((attribute
-    attribute: (identifier) @field)
- (#lua-match? @field "^[%l_].*$"))
+    attribute: (identifier) @variable.member)
+ (#lua-match? @variable.member "^[%l_].*$"))
 
 ((assignment
   left: (identifier) @type.definition
@@ -51,7 +51,7 @@
 
 (call
   function: (attribute
-              attribute: (identifier) @method.call))
+              attribute: (identifier) @function.method.call))
 
 ((call
    function: (identifier) @constructor)
@@ -113,36 +113,36 @@
 
 ;; Normal parameters
 (parameters
-  (identifier) @parameter)
+  (identifier) @variable.parameter)
 ;; Lambda parameters
 (lambda_parameters
-  (identifier) @parameter)
+  (identifier) @variable.parameter)
 (lambda_parameters
   (tuple_pattern
-    (identifier) @parameter))
+    (identifier) @variable.parameter))
 ; Default parameters
 (keyword_argument
-  name: (identifier) @parameter)
+  name: (identifier) @variable.parameter)
 ; Naming parameters on call-site
 (default_parameter
-  name: (identifier) @parameter)
+  name: (identifier) @variable.parameter)
 (typed_parameter
-  (identifier) @parameter)
+  (identifier) @variable.parameter)
 (typed_default_parameter
-  name: (identifier) @parameter)
+  name: (identifier) @variable.parameter)
 ; Variadic parameters *args, **kwargs
 (parameters
   (list_splat_pattern ; *args
-    (identifier) @parameter))
+    (identifier) @variable.parameter))
 (parameters
   (dictionary_splat_pattern ; **kwargs
-    (identifier) @parameter))
+    (identifier) @variable.parameter))
 (lambda_parameters
   (list_splat_pattern
-    (identifier) @parameter))
+    (identifier) @variable.parameter))
 (lambda_parameters
   (dictionary_splat_pattern
-    (identifier) @parameter))
+    (identifier) @variable.parameter))
 
 
 ;; Literals
@@ -155,12 +155,12 @@
  (#eq? @variable.builtin "cls"))
 
 (integer) @number
-(float) @float
+(float) @number.float
 
 (comment) @comment @spell
 
-((module . (comment) @preproc)
-  (#lua-match? @preproc "^#!/"))
+((module . (comment) @keyword.directive)
+  (#lua-match? @keyword.directive "^#!/"))
 
 (string) @string
 [
@@ -267,16 +267,16 @@
 (yield "from" @keyword.return)
 
 (future_import_statement
-  "from" @include
+  "from" @keyword.import
   "__future__" @constant.builtin)
-(import_from_statement "from" @include)
-"import" @include
+(import_from_statement "from" @keyword.import)
+"import" @keyword.import
 
-(aliased_import "as" @include)
+(aliased_import "as" @keyword.import)
 
-["if" "elif" "else" "match" "case"] @conditional
+["if" "elif" "else" "match" "case"] @keyword.conditional
 
-["for" "while" "break" "continue"] @repeat
+["for" "while" "break" "continue"] @keyword.repeat
 
 [
   "try"
@@ -284,13 +284,13 @@
   "except*"
   "raise"
   "finally"
-] @exception
+] @keyword.exception
 
-(raise_statement "from" @exception)
+(raise_statement "from" @keyword.exception)
 
 (try_statement
   (else_clause
-    "else" @exception))
+    "else" @keyword.exception))
 
 ["(" ")" "[" "]" "{" "}"] @punctuation.bracket
 
@@ -309,7 +309,7 @@
 (class_definition
   body: (block
           (function_definition
-            name: (identifier) @method)))
+            name: (identifier) @function.method)))
 
 (class_definition
   superclasses: (argument_list
@@ -319,15 +319,15 @@
   body: (block
           (expression_statement
             (assignment
-              left: (identifier) @field))))
- (#lua-match? @field "^%l.*$"))
+              left: (identifier) @variable.member))))
+ (#lua-match? @variable.member "^%l.*$"))
 ((class_definition
   body: (block
           (expression_statement
             (assignment
               left: (_
-                     (identifier) @field)))))
- (#lua-match? @field "^%l.*$"))
+                     (identifier) @variable.member)))))
+ (#lua-match? @variable.member "^%l.*$"))
 
 ((class_definition
   (block
@@ -358,5 +358,5 @@
 (call
   function: (attribute
               object: (identifier) @_re)
-  arguments: (argument_list . (string (string_content) @string.regex))
+  arguments: (argument_list . (string (string_content) @string.regexp))
   (#eq? @_re "re"))

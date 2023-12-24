@@ -1,11 +1,11 @@
 #include <iostream>
 #include <cstdlib>
-//    ^ @include
+//    ^ @keyword.import
 //       ^ @string
 
 auto main( int argc, char** argv ) -> int
 // ^ @type.builtin
-      //       ^ @parameter
+      //       ^ @variable.parameter
       //    ^ @type.builtin
       //    ^ @type.builtin
       //                  ^ @operator

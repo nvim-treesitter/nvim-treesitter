@@ -1,6 +1,6 @@
 ; Preproc
 
-(hash_bang_line) @preproc
+(hash_bang_line) @keyword.directive
 
 ;; Keywords
 
@@ -23,18 +23,18 @@
   "while"
   "do"
   "end"
-] @repeat)
+] @keyword.repeat)
 
 (repeat_statement
 [
   "repeat"
   "until"
-] @repeat)
+] @keyword.repeat)
 
 [
   (break_statement)
   (continue_statement)
-] @repeat
+] @keyword.repeat
 
 (if_statement
 [
@@ -43,27 +43,27 @@
   "else"
   "then"
   "end"
-] @conditional)
+] @keyword.conditional)
 
 (elseif_statement
 [
   "elseif"
   "then"
   "end"
-] @conditional)
+] @keyword.conditional)
 
 (else_statement
 [
   "else"
   "end"
-] @conditional)
+] @keyword.conditional)
 
 (for_statement
 [
   "for"
   "do"
   "end"
-] @repeat)
+] @keyword.repeat)
 
 (function_declaration
 [
@@ -149,19 +149,19 @@
 ((identifier) @variable.builtin
   (#eq? @variable.builtin "self"))
 
-((identifier) @namespace.builtin
-  (#any-of? @namespace.builtin "_G" "debug" "io" "jit" "math" "os" "package" "string" "table" "utf8"))
+((identifier) @module.builtin
+  (#any-of? @module.builtin "_G" "debug" "io" "jit" "math" "os" "package" "string" "table" "utf8"))
 
 ((identifier) @keyword.coroutine
   (#eq? @keyword.coroutine "coroutine"))
 
 ;; Tables
 
-(field name: (identifier) @field)
+(field name: (identifier) @variable.member)
 
-(dot_index_expression field: (identifier) @field)
+(dot_index_expression field: (identifier) @variable.member)
 
-(object_type (identifier) @field)
+(object_type (identifier) @variable.member)
 
 (table_constructor
 [
@@ -171,8 +171,8 @@
 
 ; Functions
 
-(parameter . (identifier) @parameter)
-(function_type (identifier) @parameter)
+(parameter . (identifier) @variable.parameter)
+(function_type (identifier) @variable.parameter)
 
 (function_call name: (identifier) @function.call)
 (function_declaration name: (identifier) @function)
@@ -180,7 +180,7 @@
 (function_call name: (dot_index_expression field: (identifier) @function.call))
 (function_declaration name: (dot_index_expression field: (identifier) @function))
 
-(method_index_expression method: (identifier) @method.call)
+(method_index_expression method: (identifier) @function.method.call)
 
 (function_call
   (identifier) @function.builtin
@@ -252,11 +252,11 @@
   (dot_index_expression
     field: (identifier) @_method
     (#any-of? @_method "find" "format" "match" "gmatch" "gsub"))
-  arguments: (arguments . (_) . (string content: _ @string.regex)))
+  arguments: (arguments . (_) . (string content: _ @string.regexp)))
 
 ; ("123"):match("%d+")
 (function_call
   (method_index_expression
     method: (identifier) @_method
     (#any-of? @_method "find" "format" "match" "gmatch" "gsub"))
-    arguments: (arguments . (string content: _ @string.regex)))
+    arguments: (arguments . (string content: _ @string.regexp)))

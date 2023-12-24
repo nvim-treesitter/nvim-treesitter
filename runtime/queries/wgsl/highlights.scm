@@ -1,6 +1,6 @@
 (identifier) @variable
 (int_literal) @number
-(float_literal) @float
+(float_literal) @number.float
 (bool_literal) @boolean
 
 (type_declaration) @type
@@ -9,13 +9,13 @@
     (identifier) @function)
 
 (parameter
-    (variable_identifier_declaration (identifier) @parameter))
+    (variable_identifier_declaration (identifier) @variable.parameter))
 
 (struct_declaration
     (identifier) @type)
 
 (struct_declaration
-    (struct_member (variable_identifier_declaration (identifier) @field)))
+    (struct_member (variable_identifier_declaration (identifier) @variable.member)))
 
 (type_constructor_or_function_call_expression
     (type_declaration) @function.call)
@@ -38,7 +38,7 @@
     "storage"
     "uniform"
     "workgroup"
-] @storageclass
+] @keyword.storage
 
 [
     "read"
@@ -61,7 +61,7 @@
     "break"
     "continue"
     "continuing"
-] @repeat
+] @keyword.repeat
 
 [
     "if"
@@ -69,7 +69,7 @@
     "switch"
     "case"
     "default"
-] @conditional
+] @keyword.conditional
 
 [
     "&"

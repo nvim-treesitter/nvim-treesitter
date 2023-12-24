@@ -1,8 +1,8 @@
 (comment) @comment @spell
 
 "@media" @keyword
-"@import" @include
-"@theme" @include
+"@import" @keyword.import
+"@theme" @keyword.import
 
 (string_value) @string
 [
@@ -62,7 +62,7 @@
 [
   (global_selector)
   (id_selector)
- ] @namespace
+ ] @module
 
 (id_selector_view [ "normal" "selected" "alternate" ] @attribute)
 (id_selector_state [ "normal" "urgent" "active" ] @type.qualifier)

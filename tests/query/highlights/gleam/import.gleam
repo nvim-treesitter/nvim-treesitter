@@ -1,18 +1,18 @@
 import gleam/io
-// <- @include
-//     ^ @namespace
+// <- @keyword.import
+//     ^ @module
 //          ^ @operator
-//           ^ @namespace
+//           ^ @module
 
 import cat as kitten
-// <- @include
-//     ^ @namespace
+// <- @keyword.import
+//     ^ @module
 //         ^ @keyword
-//            ^ @namespace
+//            ^ @module
 
 import animal/cat.{Cat, stroke}
-// <- @include
-//     ^ @namespace
+// <- @keyword.import
+//     ^ @module
 //           ^ @operator
 //               ^ @punctuation.delimiter
 //                ^ @punctuation.bracket

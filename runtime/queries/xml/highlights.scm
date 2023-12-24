@@ -8,9 +8,9 @@
 
 ;; Processing instructions
 
-(XmlModelPI "xml-model" @preproc)
+(XmlModelPI "xml-model" @keyword.directive)
 
-(StyleSheetPI "xml-stylesheet" @preproc)
+(StyleSheetPI "xml-stylesheet" @keyword.directive)
 
 (PseudoAtt (Name) @tag.attribute)
 
@@ -18,7 +18,7 @@
 
 ;; Doctype declaration
 
-(doctypedecl "DOCTYPE" @define)
+(doctypedecl "DOCTYPE" @keyword.directive.define)
 
 (doctypedecl (Name) @type.definition)
 
@@ -38,12 +38,12 @@
 
 ;; Text
 
-(CharData) @text @spell
+(CharData) @none @spell
 
 ((CDSect
-  (CDStart) @text.environment
-  (CData) @text.literal
-  "]]>" @text.environment)
+  (CDStart) @markup.environment
+  (CData) @markup.raw
+  "]]>" @markup.environment)
  (#set! "priority" 105))
 
 ;; Delimiters & punctuation

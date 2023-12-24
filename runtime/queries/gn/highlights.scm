@@ -1,17 +1,17 @@
 ; Includes
 
-"import" @include
+"import" @keyword.import
 
 ; Conditionals
 
 [
   "if"
   "else"
-] @conditional
+] @keyword.conditional
 
 ; Repeats
 
-"foreach" @repeat
+"foreach" @keyword.repeat
 
 ; Operators
 
@@ -42,7 +42,7 @@
 
 ; Fields
 
-(scope_access field: (identifier) @field)
+(scope_access field: (identifier) @variable.member)
 
 ; Literals
 

@@ -14,7 +14,7 @@
 (global_type
   (local_var) @type.definition)
 
-(argument) @parameter
+(argument) @variable.parameter
 
 (_ inst_name: _ @keyword.operator)
 
@@ -101,7 +101,7 @@
   "localexec"
   (unnamed_addr)
   (dll_storage_class)
-] @storageclass
+] @keyword.storage
 
 (attribute_name) @attribute
 
@@ -117,7 +117,7 @@
 (cstring) @string
 (label) @label
 (_ inst_name: "ret" @keyword.return)
-(float) @float
+(float) @number.float
 
 [
   (struct_value)

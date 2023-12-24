@@ -27,13 +27,13 @@
 
 ;; Imports and Module Declarations
 
-"import"  @include
+"import"  @keyword.import
 
-(module_name) @namespace
+(module_name) @module
 
 ;; Pragmas and comments
 
-(pragma) @preproc
+(pragma) @keyword.directive
 
 (comment) @comment @spell
 

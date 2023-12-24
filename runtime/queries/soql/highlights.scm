@@ -32,7 +32,7 @@
 (alias_expression
   (identifier) @label)
 
-(storage_identifier) @storageclass
+(storage_identifier) @keyword.storage
 (_ function_name: (identifier) @function)
 (date_literal) @string.special
 
@@ -122,7 +122,7 @@
   "WHEN"
   "ELSE"
   "THEN"
-] @conditional
+] @keyword.conditional
 
 ; Using Scope
 [

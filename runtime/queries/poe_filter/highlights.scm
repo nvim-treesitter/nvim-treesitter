@@ -1,8 +1,8 @@
-["Show" "Hide" "Minimal"] @namespace
+["Show" "Hide" "Minimal"] @module
 
-["Import" "Optional"] @include
+["Import" "Optional"] @keyword.import
 
-(condition (name) @conditional)
+(condition (name) @keyword.conditional)
 (action (name) @keyword)
 (continue) @label
 
@@ -10,7 +10,7 @@
 
 (string) @string
 
-(file) @string.special
+(file) @string.special.path
 
 [
   (quality)

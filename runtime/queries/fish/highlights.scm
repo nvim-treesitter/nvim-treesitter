@@ -35,29 +35,29 @@
 [
  "if"
  "end"
-] @conditional)
+] @keyword.conditional)
 
 (switch_statement
 [
  "switch"
  "end"
-] @conditional)
+] @keyword.conditional)
 
 (case_clause
 [
  "case"
-] @conditional)
+] @keyword.conditional)
 
 (else_clause 
 [
  "else"
-] @conditional)
+] @keyword.conditional)
 
 (else_if_clause 
 [
  "else"
  "if"
-] @conditional)
+] @keyword.conditional)
 
 ;; Loops/Blocks
 
@@ -65,19 +65,19 @@
 [
  "while"
  "end"
-] @repeat)
+] @keyword.repeat)
 
 (for_statement
 [
  "for"
  "end"
-] @repeat)
+] @keyword.repeat)
 
 (begin_statement
 [
  "begin"
  "end"
-] @repeat)
+] @keyword.repeat)
 
 ;; Keywords
 
@@ -106,7 +106,7 @@
 
 (command
   argument: [
-             (word) @parameter (#lua-match? @parameter "^[-]")
+             (word) @variable.parameter (#lua-match? @variable.parameter "^[-]")
             ]
 )
 
@@ -137,7 +137,7 @@
   option: [
           (word)
           (concatenation (word))
-          ] @parameter (#lua-match? @parameter "^[-]")
+          ] @variable.parameter (#lua-match? @variable.parameter "^[-]")
 )
 
 ;; Strings
@@ -159,5 +159,5 @@
 ((word) @boolean
 (#any-of? @boolean "true" "false"))
 
-((program . (comment) @preproc)
-  (#lua-match? @preproc "^#!/"))
+((program . (comment) @keyword.directive)
+  (#lua-match? @keyword.directive "^#!/"))

@@ -84,11 +84,11 @@
 (scoped_identifier
   scope: (identifier) @type)
 (function_signature
-  name: (identifier) @method)
+  name: (identifier) @function.method)
 (getter_signature
-  (identifier) @method)
+  (identifier) @function.method)
 (setter_signature
-  name: (identifier) @method)
+  name: (identifier) @function.method)
 (enum_declaration
   name: (identifier) @type)
 (enum_constant
@@ -131,10 +131,10 @@
 ; Parameters
 ; --------------------
 (formal_parameter
-    name: (identifier) @parameter)
+    name: (identifier) @variable.parameter)
 
 (named_argument
-  (label (identifier) @parameter))
+  (label (identifier) @variable.parameter))
 
 ; Literals
 ; --------------------
@@ -147,7 +147,7 @@
     ; (hex_floating_point_literal)
 ] @number
 
-(symbol_literal) @symbol
+(symbol_literal) @string.special.symbol
 (string_literal) @string
 (true) @boolean
 (false) @boolean
@@ -165,7 +165,7 @@
   "as"
   "show"
   "hide"
-] @include
+] @keyword.import
 
 ; Reserved words (cannot be used as identifiers)
 [
@@ -257,7 +257,7 @@
           "static"
           "typedef"))
 
-["if" "else" "switch" "default"] @conditional
+["if" "else" "switch" "default"] @keyword.conditional
 
 [
   "try"
@@ -265,6 +265,6 @@
   "catch"
   "finally"
   (break_statement)
-] @exception
+] @keyword.exception
 
-["do" "while" "continue" "for"] @repeat
+["do" "while" "continue" "for"] @keyword.repeat

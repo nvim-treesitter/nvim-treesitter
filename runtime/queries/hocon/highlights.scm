@@ -15,12 +15,12 @@
   "required"
 ] @keyword
 
-(include "include" @include)
+(include "include" @keyword.import)
 
 (substitution ["${" "${?" "}"] @punctuation.special)
-(substitution (_) @field)
+(substitution (_) @variable.member)
 
-(path (_) @field)
+(path (_) @variable.member)
 (value [":" "=" "+=" ] @operator)
 
 [

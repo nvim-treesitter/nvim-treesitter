@@ -6,7 +6,7 @@
 (block_comment) @comment @spell
 
 ; Argument definition
-(argument name: (identifier) @parameter)
+(argument name: (identifier) @variable.parameter)
 
 ; Variables
 (local_var name: (identifier) @variable)
@@ -25,17 +25,17 @@
 
 ; Methods
 (method_call
-        name: (method_name) @method)
+        name: (method_name) @function.method)
 
 ; Classes
 (class) @type
 
 ; Literals
 (number) @number
-(float) @float
+(float) @number.float
 
 (string) @string
-(symbol) @string.special
+(symbol) @string.special.symbol
 
 ; Operators
 [
@@ -89,9 +89,9 @@
 ] @punctuation.delimiter
 
 ; control structure
-(control_structure) @conditional
+(control_structure) @keyword.conditional
 
 (escape_sequence) @string.escape
 
 ; SinOsc.ar()!2
-(duplicated_statement) @repeat
+(duplicated_statement) @keyword.repeat

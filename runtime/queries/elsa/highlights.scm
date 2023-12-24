@@ -11,11 +11,11 @@
 
 ; Method
 
-(method) @method
+(method) @function.method
 
 ; Parameter
 
-(parameter) @parameter
+(parameter) @variable.parameter
 
 ; Variables
 

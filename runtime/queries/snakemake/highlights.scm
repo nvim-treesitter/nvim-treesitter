@@ -17,11 +17,11 @@
 
 ;; Rule imports
 (rule_import
-  "use" @include
-  "rule" @include
-  "from" @include
-  "as"? @include
-  "with"? @include
+  "use" @keyword.import
+  "rule" @keyword.import
+  "from" @keyword.import
+  "as"? @keyword.import
+  "with"? @keyword.import
 )
 
 

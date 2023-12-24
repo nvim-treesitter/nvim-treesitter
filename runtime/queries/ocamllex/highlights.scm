@@ -23,7 +23,7 @@
 ; Rules
 
 (lexer_entry_name) @function
-(lexer_argument) @parameter
+(lexer_argument) @variable.parameter
 
 (lexer_entry ["=" "|"] @punctuation.delimiter)
 

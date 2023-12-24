@@ -100,7 +100,7 @@
 [
   (float)
   (json_number)
-] @float
+] @number.float
 
 [ ":" "," ] @punctuation.delimiter
 
@@ -115,13 +115,16 @@
 
 [
   "base64,"
-  "file,"
   "hex,"
-  (file_value)
   (version)
 ] @string.special
 
-(regex) @string.regex
+[
+  "file,"
+  (file_value)
+] @string.special.path
+
+(regex) @string.regexp
 
 (multiline_string_type) @type
 

@@ -3,7 +3,7 @@
 [
   "import"
   "module"
-] @include
+] @keyword.import
 
 ; Keywords
 
@@ -38,14 +38,14 @@
   "else"
   "$else"
   "select"
-] @conditional
+] @keyword.conditional
 
 [
   "for"
   "$for"
   "continue"
   "break"
-] @repeat
+] @keyword.repeat
 
 "fn" @keyword.function
 
@@ -56,7 +56,7 @@
   "shared"
   "static"
   "const"
-] @storageclass
+] @keyword.storage
 
 [
   "pub"
@@ -77,13 +77,13 @@
 ; Namespace
 
 (module_clause
- (identifier) @namespace)
+ (identifier) @module)
 
 (import_path
- (import_name) @namespace)
+ (import_name) @module)
 
 (import_alias
- (import_name) @namespace)
+ (import_name) @module)
 
 ; Literals
 
@@ -115,20 +115,20 @@
 
 ; Fields
 
-(selector_expression field: (reference_expression (identifier) @field))
+(selector_expression field: (reference_expression (identifier) @variable.member))
 
-(field_name) @field
+(field_name) @variable.member
 
 (struct_field_declaration
-  name: (identifier) @field)
+  name: (identifier) @variable.member)
 
 ; Parameters
 
 (parameter_declaration
-  name: (identifier) @parameter)
+  name: (identifier) @variable.parameter)
 
 (receiver
-  name: (identifier) @parameter)
+  name: (identifier) @variable.parameter)
 
 ; Constants
 
@@ -158,11 +158,11 @@
 
 (function_declaration
   receiver: (receiver)
-  name: (identifier) @method)
+  name: (identifier) @function.method)
 
 (call_expression
  name: (selector_expression
-  field: (reference_expression) @method.call))
+  field: (reference_expression) @function.method.call))
 
 (call_expression
  name: (reference_expression) @function.call)
@@ -428,7 +428,7 @@
 
 (int_literal) @number
 
-(float_literal) @float
+(float_literal) @number.float
 
 [
   (c_string_literal)

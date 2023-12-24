@@ -44,7 +44,7 @@
    "aliased"
    "constant"
    "renames"
-] @storageclass
+] @keyword.storage
 [
    "mod"
    "new"
@@ -56,7 +56,7 @@
 [
    "with"
    "use"
-] @include
+] @keyword.import
 [
    "body"
    "function"
@@ -79,7 +79,7 @@
    "parallel"
    "reverse"
    "some"
-] @repeat
+] @keyword.repeat
 [
    "return"
 ] @keyword.return
@@ -90,11 +90,11 @@
    "then"
    "elsif"
    "select"
-] @conditional
+] @keyword.conditional
 [
    "exception"
    "raise"
-] @exception
+] @keyword.exception
 (comment) @comment @spell
 (string_literal) @string
 (character_literal) @string
@@ -109,24 +109,24 @@
 (entry_declaration . (identifier) @function)
 
 ;; Some keywords should take different categories depending on the context
-(use_clause "use"  @include "type" @include)
-(with_clause "private" @include)
-(with_clause "limited" @include)
-(use_clause (_) @namespace)
-(with_clause (_) @namespace)
+(use_clause "use"  @keyword.import "type" @keyword.import)
+(with_clause "private" @keyword.import)
+(with_clause "limited" @keyword.import)
+(use_clause (_) @module)
+(with_clause (_) @module)
 
 (loop_statement "end" @keyword.repeat)
-(if_statement "end" @conditional)
+(if_statement "end" @keyword.conditional)
 (loop_parameter_specification "in" @keyword.repeat)
 (loop_parameter_specification "in" @keyword.repeat)
 (iterator_specification ["in" "of"] @keyword.repeat)
 (range_attribute_designator "range" @keyword.repeat)
 
-(raise_statement "with" @exception)
+(raise_statement "with" @keyword.exception)
 
-(gnatprep_declarative_if_statement)  @preproc
-(gnatprep_if_statement)              @preproc
-(gnatprep_identifier)                @preproc
+(gnatprep_declarative_if_statement)  @keyword.directive
+(gnatprep_if_statement)              @keyword.directive
+(gnatprep_identifier)                @keyword.directive
 
 (subprogram_declaration "is" @keyword.function "abstract"  @keyword.function)
 (aspect_specification "with" @keyword.function)

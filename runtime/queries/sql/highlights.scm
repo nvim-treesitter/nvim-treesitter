@@ -19,7 +19,7 @@
   alias: (identifier) @variable)
 
 (field
-  name: (identifier) @field)
+  name: (identifier) @variable.member)
 
 (term
   alias: (identifier) @variable)
@@ -36,10 +36,10 @@
 ((literal) @number
  (#lua-match? @number "^%d+$"))
 
-((literal) @float
-(#lua-match? @float "^[-]?%d*\.%d*$"))
+((literal) @number.float
+(#lua-match? @number.float "^[-]?%d*\.%d*$"))
 
-(parameter) @parameter
+(parameter) @variable.parameter
 
 [
  (keyword_true)
@@ -92,14 +92,14 @@
  (keyword_jsonfile)
  (keyword_sequencefile)
  (keyword_volatile)
-] @storageclass
+] @keyword.storage
 
 [
  (keyword_case)
  (keyword_when)
  (keyword_then)
  (keyword_else)
-] @conditional
+] @keyword.conditional
 
 [
   (keyword_select)

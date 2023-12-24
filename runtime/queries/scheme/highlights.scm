@@ -76,19 +76,19 @@
   "assert"
   "library" "export" "import" "rename" "only" "except" "prefix"))
 
-((symbol) @conditional
- (#any-of? @conditional "if" "cond" "case" "when" "unless"))
+((symbol) @keyword.conditional
+ (#any-of? @keyword.conditional "if" "cond" "case" "when" "unless"))
 
 ;; quote
 
 (quote
  "'"
- (symbol)) @symbol
+ (symbol)) @string.special.symbol
 
 (list
  .
  (symbol) @_f
- (#eq? @_f "quote")) @symbol
+ (#eq? @_f "quote")) @string.special.symbol
 
 ;; library
 
@@ -96,7 +96,7 @@
  .
  (symbol) @_lib
  .
- (symbol) @namespace
+ (symbol) @module
 
  (#eq? @_lib "library"))
 

@@ -2,13 +2,13 @@
 ;; Literals and comments
 
 (integer) @number
-(float) @float
+(float) @number.float
 (char) @character
 (string) @string
 (attribute_name) @attribute
 (attribute_exclamation_mark) @attribute
 
-(con_unit) @symbol  ; unit, as in ()
+(con_unit) @string.special.symbol  ; unit, as in ()
 
 (comment) @comment @spell
 

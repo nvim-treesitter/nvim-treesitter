@@ -16,7 +16,7 @@
 ] @punctuation.bracket
 
 (property
-  key: (identifier) @field)
+  key: (identifier) @variable.member)
 (value) @string
 (string_literal) @string
 (cap

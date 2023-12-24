@@ -7,8 +7,8 @@
 ; Includes
 
 (list .
-  ((symbol) @include
-    (#eq? @include "include")))
+  ((symbol) @keyword.import
+    (#eq? @keyword.import "include")))
 
 ; Keywords
 
@@ -20,9 +20,9 @@
 
 ; Loop
 
-(loop_widget . "for" @repeat . (symbol) @variable . "in" @keyword.operator)
+(loop_widget . "for" @keyword.repeat . (symbol) @variable . "in" @keyword.operator)
 
-(loop_widget . "for" @repeat . (symbol) @variable . "in" @keyword.operator . (symbol) @variable)
+(loop_widget . "for" @keyword.repeat . (symbol) @variable . "in" @keyword.operator . (symbol) @variable)
 
 ; Builtin widgets
 
@@ -84,7 +84,7 @@
 
 (json_object
   (simplexpr
-    (ident) @field))
+    (ident) @variable.member))
 
 ; Functions
 
@@ -121,13 +121,13 @@
 ; Ternary expression
 
 (ternary_expression
-  ["?" ":"] @conditional.ternary)
+  ["?" ":"] @keyword.conditional.ternary)
 
 ; Literals
 
 (number) @number
 
-(float) @float
+(float) @number.float
 
 (boolean) @boolean
 

@@ -40,7 +40,7 @@
   (quoted_atom)
   (keyword)
   (quoted_keyword)
-] @symbol
+] @string.special.symbol
 
 ; Interpolation
 (interpolation ["#{" "}"] @string.special)
@@ -52,7 +52,7 @@
 (integer) @number
 
 ; Floats
-(float) @float
+(float) @number.float
 
 ; Characters
 [

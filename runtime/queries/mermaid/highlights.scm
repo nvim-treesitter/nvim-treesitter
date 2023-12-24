@@ -99,12 +99,12 @@
  "&"
  ] @operator
 
-(sequence_actor) @field
-(class_name) @field
+(sequence_actor) @variable.member
+(class_name) @variable.member
 
-(state_name) @field
+(state_name) @variable.member
 
-(gantt_task_text) @field
+(gantt_task_text) @variable.member
 
 [
  (class_annotation_line)
@@ -116,10 +116,10 @@
  (state_annotation_choice)
  ] @attribute
 
-(directive) @include
+(directive) @keyword.import
 
 (pie_label) @string
-(pie_value) @float
+(pie_value) @number.float
 
 [
 (flowchart_direction_lr)
@@ -128,7 +128,7 @@
 (flowchart_direction_bt)
  ] @constant
 
-(flow_vertex_id) @field
+(flow_vertex_id) @variable.member
 
 [
  (flow_link_arrow)
@@ -164,10 +164,10 @@
  (er_reltype_identifying)
  ] @operator
 
-(er_entity_name) @field
+(er_entity_name) @variable.member
 
 (er_attribute_type) @type
-(er_attribute_name) @field
+(er_attribute_name) @variable.member
 
 [
  (er_attribute_key_type_pk)

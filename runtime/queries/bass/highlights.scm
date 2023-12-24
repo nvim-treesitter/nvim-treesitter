@@ -21,13 +21,13 @@
 ;; Namespaces
 
 (symbind
-  (symbol) @namespace
+  (symbol) @module
   . (keyword))
 
 ;; Includes
 
-((symbol) @include
-  (#any-of? @include "use" "import" "load"))
+((symbol) @keyword.import
+  (#any-of? @keyword.import "use" "import" "load"))
 
 ;; Keywords
 
@@ -43,13 +43,13 @@
 ((list
   . (symbol) @keyword.function
   . (symbol) @function
-  (symbol)? @parameter)
+  (symbol)? @variable.parameter)
   (#any-of? @keyword.function "def" "defop" "defn" "fn"))
 
 ((cons
   . (symbol) @keyword.function
   . (symbol) @function
-  (symbol)? @parameter)
+  (symbol)? @variable.parameter)
   (#any-of? @keyword.function "def" "defop" "defn" "fn"))
 
 ((symbol) @function.builtin
@@ -60,13 +60,13 @@
 
 ;; Conditionals
 
-((symbol) @conditional
-  (#any-of? @conditional "if" "case" "cond" "when"))
+((symbol) @keyword.conditional
+  (#any-of? @keyword.conditional "if" "case" "cond" "when"))
 
 ;; Repeats
 
-((symbol) @repeat
-  (#any-of? @repeat "each"))
+((symbol) @keyword.repeat
+  (#any-of? @keyword.repeat "each"))
 
 ;; Operators
 
@@ -89,7 +89,7 @@
 
 (escape_sequence) @string.escape
 
-(path) @text.uri @string.special
+(path) @string.special.url
 
 (number) @number
 

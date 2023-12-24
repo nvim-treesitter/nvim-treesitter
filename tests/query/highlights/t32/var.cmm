@@ -34,7 +34,7 @@ Var.Assign (*ap)[2..4] = &a
 Var.Assign sp = &s.n+offset
 ;          ^ @variable
 ;                ^ @variable
-;                  ^ @field
+;                  ^ @variable.member
 ;                    ^ @variable
 Var.Assign padd = (CAddition const * volatile)&d
 ;          ^ @variable

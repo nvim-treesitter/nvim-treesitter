@@ -1,16 +1,16 @@
 ; Includes
 
 (import_statement
-  "import" @include)
+  "import" @keyword.import)
 
 (import_with_statement
-  "import" @include
-  "with" @include)
+  "import" @keyword.import
+  "with" @keyword.import)
 
 ; Namespaces
 
 (module_declaration
-  (identifier) @namespace)
+  (identifier) @module)
 
 ; Builtins
 
@@ -80,16 +80,16 @@
 ; Parameters
 
 (parameter_declaration
-  (identifier) @parameter
+  (identifier) @variable.parameter
   (_))
 
 (call_expression
   function: (_) 
-  (arguments (identifier) @parameter))
+  (arguments (identifier) @variable.parameter))
 
 (call_expression
   function: (_) 
-  (arguments (member_expression object: (identifier) @parameter)))
+  (arguments (member_expression object: (identifier) @variable.parameter)))
 
 ; Variables
 
@@ -118,16 +118,16 @@
 
 ; Conditionals
 
-"if" @conditional
+"if" @keyword.conditional
 
 (ternary_expression
-  "?" @conditional.ternary
-  ":" @conditional.ternary)
+  "?" @keyword.conditional.ternary
+  ":" @keyword.conditional.ternary)
 
 ; Loops
 
 (for_statement
-  "for" @repeat
+  "for" @keyword.repeat
   "in"
   ":" @punctuation.delimiter)
 
@@ -179,8 +179,8 @@
 (string) @string
 (import_string
   "'" @string
-  (import_name) @namespace
-  "@" @symbol
+  (import_name) @module
+  "@" @string.special.symbol
   (import_version) @string.special)
 
 (escape_sequence) @string.escape

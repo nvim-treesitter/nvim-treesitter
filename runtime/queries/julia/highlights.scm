@@ -14,11 +14,11 @@
   name: (identifier) @function.macro)
 
 (quote_expression
-  ":" @symbol
-  [(identifier) (operator)] @symbol)
+  ":" @string.special.symbol
+  [(identifier) (operator)] @string.special.symbol)
 
 (field_expression
-  (identifier) @field .)
+  (identifier) @variable.member .)
 
 
 ;;; Function names
@@ -68,18 +68,18 @@
 ;;; Parameters
 
 (parameter_list
-  (identifier) @parameter)
+  (identifier) @variable.parameter)
 (optional_parameter .
-  (identifier) @parameter)
+  (identifier) @variable.parameter)
 (slurp_parameter
-  (identifier) @parameter)
+  (identifier) @variable.parameter)
 
 (typed_parameter
-  parameter: (identifier)? @parameter
+  parameter: (identifier)? @variable.parameter
   type: (_) @type)
 
 (function_expression
-  . (identifier) @parameter) ; Single parameter arrow functions
+  . (identifier) @variable.parameter) ; Single parameter arrow functions
 
 
 ;;; Types
@@ -362,42 +362,42 @@
   ["let" "end"] @keyword)
 
 (if_statement
-  ["if" "end"] @conditional)
+  ["if" "end"] @keyword.conditional)
 (elseif_clause
-  "elseif" @conditional)
+  "elseif" @keyword.conditional)
 (else_clause
-  "else" @conditional)
+  "else" @keyword.conditional)
 (if_clause
-  "if" @conditional) ; `if` clause in comprehensions
+  "if" @keyword.conditional) ; `if` clause in comprehensions
 (ternary_expression
-  ["?" ":"] @conditional.ternary)
+  ["?" ":"] @keyword.conditional.ternary)
 
 (try_statement
-  ["try" "end"] @exception)
+  ["try" "end"] @keyword.exception)
 (finally_clause
-  "finally" @exception)
+  "finally" @keyword.exception)
 (catch_clause
-  "catch" @exception)
+  "catch" @keyword.exception)
 
 (for_statement
-  ["for" "end"] @repeat)
+  ["for" "end"] @keyword.repeat)
 (while_statement
-  ["while" "end"] @repeat)
+  ["while" "end"] @keyword.repeat)
 (for_clause
-  "for" @repeat)
+  "for" @keyword.repeat)
 [
   (break_statement)
   (continue_statement)
-] @repeat
+] @keyword.repeat
 
 (module_definition
-  ["module" "baremodule" "end"] @include)
+  ["module" "baremodule" "end"] @keyword.import)
 (import_statement
-  ["import" "using"] @include)
+  ["import" "using"] @keyword.import)
 (import_alias
-  "as" @include)
+  "as" @keyword.import)
 (export_statement
-  "export" @include)
+  "export" @keyword.import)
 (selected_import
   ":" @punctuation.delimiter)
 
@@ -458,10 +458,10 @@
 
 (boolean_literal) @boolean
 (integer_literal) @number
-(float_literal) @float
+(float_literal) @number.float
 
-((identifier) @float
-  (#any-of? @float "NaN" "NaN16" "NaN32"
+((identifier) @number.float
+  (#any-of? @number.float "NaN" "NaN16" "NaN32"
                    "Inf" "Inf16" "Inf32"))
 
 ((identifier) @constant.builtin

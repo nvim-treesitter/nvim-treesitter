@@ -13,8 +13,8 @@
 ((identifier) @type
  (#lua-match? @type "^%u"))
 
-((identifier) @symbol
- (#lua-match? @symbol "^%l"))
+((identifier) @string.special.symbol
+ (#lua-match? @string.special.symbol "^%l"))
 
 ((identifier) @constant
  (#lua-match? @constant "^%u[%u%d_]+$"))

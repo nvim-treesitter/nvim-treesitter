@@ -51,7 +51,7 @@
      (constant)
      (operator)
      (setter)
-    ] @method))
+    ] @function.method))
 
 [(ivar_name) (cvar_name)] @property
 
@@ -62,7 +62,7 @@
 (interface_name (interface) @type)
 (alias_name (identifier) @type)
 (type_variable) @constant
-(namespace (constant) @namespace)
+(namespace (constant) @module)
 
 (builtin_type) @type.builtin
 
@@ -70,16 +70,16 @@
 (global_name) @property
 
 ; Standard Arguments
-(parameter (var_name) @parameter)
+(parameter (var_name) @variable.parameter)
 
 ; Keyword Arguments
-(keyword) @parameter
+(keyword) @variable.parameter
 
 ; Self
 (self) @variable.builtin
 
 ; Literal
-(type (symbol_literal) @symbol)
+(type (symbol_literal) @string.special.symbol)
 
 (type (string_literal (escape_sequence) @string.escape))
 (type (string_literal) @string)

@@ -11,10 +11,10 @@
 
 "fun" @keyword.function
 
-"import" @include
+"import" @keyword.import
 
-[ "if" "then" "else" ] @conditional
-"match" @conditional
+[ "if" "then" "else" ] @keyword.conditional
+"match" @keyword.conditional
 
 (types) @type
 "Array" @type.builtin
@@ -46,13 +46,13 @@
 (interpolation_start) @punctuation.bracket
 (interpolation_end) @punctuation.bracket
 
-(record_field) @field
+(record_field) @variable.member
 
 (builtin) @function.builtin
 
 (fun_expr pats:
   (pattern id:
-    (ident) @parameter
+    (ident) @variable.parameter
   )
 )
 

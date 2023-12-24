@@ -27,15 +27,15 @@
 ((parameters (identifier) @number)
  (#match? @number "^[-+]?[0-9]+(.[0-9]+)?$"))
 
-((program . (comment)* . (comment) @include)
- (#lua-match? @include "^;+ *inherits *:"))
+((program . (comment)* . (comment) @keyword.import)
+ (#lua-match? @keyword.import "^;+ *inherits *:"))
 
-((program . (comment)* . (comment) @preproc)
- (#lua-match? @preproc "^;+ *extends *$"))
+((program . (comment)* . (comment) @keyword.directive)
+ (#lua-match? @keyword.directive "^;+ *extends *$"))
 
 ((predicate
   name: (identifier) @_name
-  parameters: (parameters (string "\"" @string "\"" @string) @string.regex))
+  parameters: (parameters (string "\"" @string "\"" @string) @string.regexp))
  (#any-of? @_name
    "match"
    "not-match"
@@ -46,5 +46,5 @@
 
 ((predicate
   name: (identifier) @_name
-  parameters: (parameters (string "\"" @string "\"" @string) @string.regex . (string) .))
+  parameters: (parameters (string "\"" @string "\"" @string) @string.regexp . (string) .))
  (#any-of? @_name "gsub" "not-gsub"))

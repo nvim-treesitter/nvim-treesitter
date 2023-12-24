@@ -72,13 +72,13 @@
 	(kWhile)
 	(kRepeat)
 	(kUntil)
-] @repeat
+] @keyword.repeat
 
 [
 	(kIf)
 	(kThen)
 	(kElse)
-] @conditional
+] @keyword.conditional
 
 [
 	(kPublished)
@@ -95,9 +95,9 @@
 	(kPacked)
 
 	(kAbsolute)
-] @storageclass
+] @keyword.storage
 
-(kUses) @include
+(kUses) @keyword.import
 
 ; -- Attributes
 
@@ -278,7 +278,7 @@
   (comment) @comment.documentation
   . (declVar))
 
-(pp)              @preproc
+(pp)              @keyword.directive
 
 ; -- Type declaration
 
@@ -304,11 +304,11 @@
 
 ; -- Function parameters
 
-(declArg name: (identifier) @parameter)
+(declArg name: (identifier) @variable.parameter)
 
 ; -- Template parameters
 
-(genericArg	name: (identifier) @parameter)
+(genericArg	name: (identifier) @variable.parameter)
 (genericArg	type: (typeref) @type)
 
 (declProc name: (genericDot lhs: (identifier) @type))
@@ -322,7 +322,7 @@
 
 ; -- Exception parameters
 
-(exceptionHandler variable: (identifier) @parameter)
+(exceptionHandler variable: (identifier) @variable.parameter)
 
 ; -- Type usage
 
@@ -394,10 +394,10 @@
  (#lua-match? @keyword.return "^[eE][xX][iI][tT]$")))
 (statement (exprCall entity: ((identifier) @keyword.return
  (#lua-match? @keyword.return "^[eE][xX][iI][tT]$"))))
-(statement ((identifier) @repeat
- (#lua-match? @repeat "^[bB][rR][eE][aA][kK]$")))
-(statement ((identifier) @repeat
- (#lua-match? @repeat "^[cC][oO][nN][tT][iI][nN][uU][eE]$")))
+(statement ((identifier) @keyword.repeat
+ (#lua-match? @keyword.repeat "^[bB][rR][eE][aA][kK]$")))
+(statement ((identifier) @keyword.repeat
+ (#lua-match? @keyword.repeat "^[cC][oO][nN][tT][iI][nN][uU][eE]$")))
 
 ; -- Identifier type inference
 

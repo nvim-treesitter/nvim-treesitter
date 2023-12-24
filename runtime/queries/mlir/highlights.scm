@@ -274,7 +274,7 @@
   (complex_literal)
 ] @number
 
-(float_literal) @float
+(float_literal) @number.float
 (bool_literal) @boolean
 
 [
@@ -328,8 +328,8 @@
 (func_dialect name: (symbol_ref_id) @function)
 (llvm_dialect name: (symbol_ref_id) @function)
 
-(func_arg_list (value_use) @parameter)
-(block_arg_list (value_use) @parameter)
+(func_arg_list (value_use) @variable.parameter)
+(block_arg_list (value_use) @variable.parameter)
 
 (caret_id) @tag
 (value_use) @variable

@@ -59,7 +59,7 @@
 
 (integer_literal) @number
 
-(float_literal) @float
+(float_literal) @number.float
 
 [
   "true"
@@ -88,12 +88,12 @@
 
 (parameter
   (var_declarator
-    (identifier) @parameter
+    (identifier) @variable.parameter
   )
 )
 
 (function_literal
-  (identifier) @parameter
+  (identifier) @variable.parameter
 )
 
 (constructor
@@ -112,7 +112,7 @@
   "else"
   "if"
   "switch"
-] @conditional
+] @keyword.conditional
 
 [
   "break"
@@ -122,7 +122,7 @@
   "foreach"
   "foreach_reverse"
   "while"
-] @repeat
+] @keyword.repeat
 
 [
   "__parameters"
@@ -209,7 +209,7 @@
   "finally"
   "throw"
   "try"
-] @exception
+] @keyword.exception
 
 "null" @constant.builtin
 
@@ -218,7 +218,7 @@
   "const"
   "immutable"
   "shared"
-] @storageclass
+] @keyword.storage
 
 [
   "abstract"
@@ -241,11 +241,11 @@
   . (identifier) @type.definition)
 
 (module_declaration
-  "module" @include
+  "module" @keyword.import
 )
 
 (import_declaration
-  "import" @include
+  "import" @keyword.import
 )
 
 (type) @type
@@ -272,8 +272,8 @@
 
 (fundamental_type) @type.builtin
 
-(module_fully_qualified_name (packages (package_name) @namespace))
-(module_name) @namespace
+(module_fully_qualified_name (packages (package_name) @module))
+(module_name) @module
 
 (at_attribute) @attribute
 

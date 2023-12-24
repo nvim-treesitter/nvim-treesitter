@@ -1,4 +1,4 @@
 (text) @string
 (number) @number
-(float) @float
+(float) @number.float
 (boolean) @boolean

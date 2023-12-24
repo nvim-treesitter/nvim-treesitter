@@ -1,7 +1,7 @@
 (ns test {:clj-kondo/ignore true})
 ; <- @punctuation.bracket
-; ^ @include
-;    ^ @namespace
+; ^ @keyword.import
+;    ^ @module
 
  ; asdf
 ;^^^^^^ @comment
@@ -19,7 +19,7 @@
 ;    ^ ^^ ^^ @variable.builtin
 
  &
-;^ @parameter
+;^ @variable.parameter
 
  ->abc
 ;^^^^^ @constructor
@@ -31,16 +31,16 @@
 ;^^ ^^ ^^ ^^ @variable.builtin
 
 (.method)
-;^^^^^^^ @method
+;^^^^^^^ @function.method
 
 (.-field)
-;^^^^^^^ @field
+;^^^^^^^ @variable.member
 
  Abc/method
-;^^^^^^^^^^ @field
+;^^^^^^^^^^ @variable.member
 
 (Abc/method)
-;^^^^^^^^^^ @method
+;^^^^^^^^^^ @function.method
 
  Abc
 ;^^^ @type

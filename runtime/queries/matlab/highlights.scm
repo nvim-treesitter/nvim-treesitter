@@ -1,7 +1,7 @@
 ; Includes
 
-((command_name) @include
-  (#eq? @include "import"))
+((command_name) @keyword.import
+  (#eq? @keyword.import "import"))
 
 ; Keywords
 
@@ -19,24 +19,24 @@
 
 ; Conditionals
 
-(if_statement [ "if" "end" ] @conditional)
-(elseif_clause "elseif" @conditional)
-(else_clause "else" @conditional)
-(switch_statement [ "switch" "end" ] @conditional)
-(case_clause "case" @conditional)
-(otherwise_clause "otherwise" @conditional)
-(break_statement) @conditional
+(if_statement [ "if" "end" ] @keyword.conditional)
+(elseif_clause "elseif" @keyword.conditional)
+(else_clause "else" @keyword.conditional)
+(switch_statement [ "switch" "end" ] @keyword.conditional)
+(case_clause "case" @keyword.conditional)
+(otherwise_clause "otherwise" @keyword.conditional)
+(break_statement) @keyword.conditional
 
 ; Repeats
 
-(for_statement [ "for" "parfor" "end" ] @repeat)
-(while_statement [ "while" "end" ] @repeat)
-(continue_statement) @repeat
+(for_statement [ "for" "parfor" "end" ] @keyword.repeat)
+(while_statement [ "while" "end" ] @keyword.repeat)
+(continue_statement) @keyword.repeat
 
 ; Exceptions
 
-(try_statement [ "try" "end" ] @exception)
-(catch_clause "catch" @exception)
+(try_statement [ "try" "end" ] @keyword.exception)
+(catch_clause "catch" @keyword.exception)
 
 ; Variables
 
@@ -51,7 +51,7 @@
 
 ; Fields/Properties
 
-(field_expression field: (identifier) @field)
+(field_expression field: (identifier) @variable.member)
 
 (superclass "." (identifier) @property)
 
@@ -87,13 +87,13 @@
 (validation_functions (identifier) @function)
 
 (command (command_name) @function.call)
-(command_argument) @parameter
+(command_argument) @variable.parameter
 
 (return_statement) @keyword.return
 
 ; Parameters
 
-(function_arguments (identifier) @parameter)
+(function_arguments (identifier) @variable.parameter)
 
 ; Punctuation
 

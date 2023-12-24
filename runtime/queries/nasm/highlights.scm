@@ -23,7 +23,7 @@
 "?" @constant.builtin
 
 (conditional_expression
-  [ "?" ":" ] @conditional.ternary)
+  [ "?" ":" ] @keyword.conditional.ternary)
 
 [
   ":"
@@ -58,7 +58,7 @@
 
 (string_literal) @string
 
-(float_literal) @float
+(float_literal) @number.float
 
 [
   (packed_bcd_literal)
@@ -83,18 +83,18 @@
   (preproc_pragma)
   (preproc_line)
   (preproc_clear)
-] @preproc
+] @keyword.directive
 
-(preproc_include) @include
+(preproc_include) @keyword.import
 
-(preproc_rep_loop) @repeat
+(preproc_rep_loop) @keyword.repeat
 
-(preproc_if) @conditional
+(preproc_if) @keyword.conditional
 
 [
   (preproc_def)
   (preproc_undef)
-] @define
+] @keyword.directive.define
 
 (preproc_function_def) @keyword.function
 

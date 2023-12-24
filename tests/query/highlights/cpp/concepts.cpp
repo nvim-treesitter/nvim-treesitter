@@ -7,7 +7,7 @@ concept Derived = std::is_base_of<U, T>::value;
 template<typename T>
 concept Hashable = requires(T a) {
 //                   ^ @keyword
-//                            ^ @parameter
+//                            ^ @variable.parameter
 //                          ^ @type
     { std::hash<T>{}(a) } -> std::convertible_to<std::size_t>;
  typename CommonType<T, U>; // CommonType<T, U> is valid and names a type
