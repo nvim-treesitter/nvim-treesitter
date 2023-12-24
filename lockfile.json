@@ -243,7 +243,7 @@
     "revision": "3d4af179414525a35dd069ba0208c9b71093d8b3"
   },
   "haskell": {
-    "revision": "5260f606ec353f156751473a0c203d67167c0ebe"
+    "revision": "dd924b8df1eb76261f009e149fc6f3291c5081c2"
   },
   "haskell_persistent": {
     "revision": "577259b4068b2c281c9ebf94c109bd50a74d5857"
@@ -636,7 +636,7 @@
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
   },
   "templ": {
-    "revision": "671e9a957acd40088919ca17b30f4a39870784d4"
+    "revision": "8793137e669949e72ac1d877ba9cadfbb5062fc0"
   },
   "terraform": {
     "revision": "e135399cb31b95fac0760b094556d1d5ce84acf0"
