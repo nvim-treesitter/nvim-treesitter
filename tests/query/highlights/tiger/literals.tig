@@ -1,9 +1,9 @@
 nil
-/* <- constant.builtin */
+/* <- @constant.builtin */
 42
-/* <- number */
+/* <- @number */
 "Hello World!\n"
-/* <- string
-             ^ string.escape
+/* <- @string
+             ^ @string.escape
 */
 /* vim: set ft=tiger: */

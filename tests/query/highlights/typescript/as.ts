@@ -1,8 +1,8 @@
 import * as foo from 'foo';
-//       ^ include
+//       ^ @include
 
 export { foo as bar };
-//           ^ include
+//           ^ @include
 
 const n = 5 as number;
-//          ^ keyword.operator
+//          ^ @keyword.operator
