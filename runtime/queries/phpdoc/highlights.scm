@@ -1,7 +1,7 @@
 (tag_name) @attribute @nospell
 (tag
   (tag_name) @_tag (#eq? @_tag "@param")
-  (variable_name) @parameter
+  (variable_name) @variable.parameter
 )
 (tag
   (tag_name) @_tag (#eq? @_tag "@property")
@@ -12,11 +12,11 @@
   (variable_name) @variable
 )
 (tag
-  (tag_name) @_tag (#eq? @_tag "@method")
-  (name) @method
+  (tag_name) @_tag (#eq? @_tag "@function.method")
+  (name) @function.method
 )
 (parameter
-  (variable_name) @parameter)
+  (variable_name) @variable.parameter)
 (type_list
   [
     (array_type)
@@ -27,14 +27,14 @@
 (type_list) @nospell
 (variable_name) @nospell
 (tag
-  (description (text) @text))
+  (description (text) @none @spell))
 (tag
   [
     (author_name)
     (version)
-  ] @text)
+  ] @none)
 (tag
-  (email_address) @text.uri
+  (email_address) @string.special.url
 )
 
 (type_list "|" @keyword)

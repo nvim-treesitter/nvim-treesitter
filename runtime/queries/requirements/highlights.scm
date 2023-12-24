@@ -2,11 +2,11 @@
 
 (package) @variable
 
-(extras (package) @parameter)
+(extras (package) @variable.parameter)
 
-(path) @text.underline @string.special
+(path) @string.special.path
 
-(url) @text.uri
+(url) @string.special.url
 
 ;; versions
 

@@ -1,7 +1,7 @@
 class C extends Superclass implements Iface {
 //      ^ @keyword          ^ @keyword
   use Trait;
-  // <- @include
+  // <- @keyword.import
   const type X = shape(
   // <- @keyword ^ @type.builtin
     "a" => int,

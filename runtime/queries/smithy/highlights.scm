@@ -1,16 +1,16 @@
 ; Preproc
 
-(control_key) @preproc
+(control_key) @keyword.directive
 
 ; Namespace
 
-(namespace) @namespace
+(namespace) @module
 
 ; Includes
 
 [
   "use"
-] @include
+] @keyword.import
 
 ; Builtins
 
@@ -25,13 +25,13 @@
 
 ; Fields (Members)
 
-; (field) @field
+; (field) @variable.member
 
-(key_identifier) @field
+(key_identifier) @variable.member
 (shape_member
-  (field) @field)
-(operation_field) @field
-(operation_error_field) @field
+  (field) @variable.member)
+(operation_field) @variable.member
+(operation_error_field) @variable.member
 
 ; Constants
 
@@ -82,7 +82,7 @@
 
 (number) @number
 
-(float) @float
+(float) @number.float
 
 (boolean) @boolean
 

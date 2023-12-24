@@ -19,7 +19,7 @@
 
 (number) @number
 
-(float) @float
+(float) @number.float
 
 (boolean) @boolean
 
@@ -38,7 +38,7 @@
 
 [ "<" ">" ] @punctuation.bracket
 
-(("\"" @conceal)
+(("\"" @string)
  (#set! conceal ""))
 
 ; Comments

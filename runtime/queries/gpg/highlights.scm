@@ -1,8 +1,8 @@
 (option . _ @keyword)
 
 (option
-  ("no-" @parameter)?
-  (name) @parameter)
+  ("no-" @variable.parameter)?
+  (name) @variable.parameter)
 
 (string (content) @string)
 
@@ -11,7 +11,7 @@
  "clear"
 ] @string.special
 
-(url) @text.uri
+(url) @string.special.url
 
 (key) @constant
 
@@ -25,9 +25,9 @@
 
 "sensitive:" @type.qualifier
 
-(filter_name) @parameter
+(filter_name) @variable.parameter
 
-(filter_scope) @namespace
+(filter_scope) @module
 
 (filter_property) @property
 

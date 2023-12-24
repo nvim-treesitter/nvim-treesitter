@@ -7,30 +7,30 @@
 ; Methods
 
 (method_declaration
-  name: (identifier) @method)
+  name: (identifier) @function.method)
 (method_invocation
-  name: (identifier) @method.call)
+  name: (identifier) @function.method.call)
 
 (super) @function.builtin
 
 ; Parameters
 
 (formal_parameter
-  name: (identifier) @parameter)
+  name: (identifier) @variable.parameter)
 
 (catch_formal_parameter
-  name: (identifier) @parameter)
+  name: (identifier) @variable.parameter)
 
 (spread_parameter
  (variable_declarator
-   name: (identifier) @parameter)) ; int... foo
+   name: (identifier) @variable.parameter)) ; int... foo
 
 ;; Lambda parameter
 
-(inferred_parameters (identifier) @parameter) ; (x,y) -> ...
+(inferred_parameters (identifier) @variable.parameter) ; (x,y) -> ...
 
 (lambda_expression
-    parameters: (identifier) @parameter) ; x -> ...
+    parameters: (identifier) @variable.parameter) ; x -> ...
 
 ; Operators
 
@@ -107,10 +107,10 @@
 
 (field_declaration
   declarator: (variable_declarator
-    name: (identifier) @field))
+    name: (identifier) @variable.member))
 
 (field_access
-  field: (identifier) @field)
+  field: (identifier) @variable.member)
 
 [
   (boolean_type)
@@ -153,7 +153,7 @@
 [
   (decimal_floating_point_literal)
   (hex_floating_point_literal)
-] @float
+] @number.float
 
 [
   (true)
@@ -204,7 +204,7 @@
 [
   "transient"
   "volatile"
-] @storageclass
+] @keyword.storage
 
 [
   "return"
@@ -222,9 +222,9 @@
   "else"
   "switch"
   "case"
-] @conditional
+] @keyword.conditional
 
-(ternary_expression ["?" ":"] @conditional.ternary)
+(ternary_expression ["?" ":"] @keyword.conditional.ternary)
 
 ; Loops
 
@@ -234,7 +234,7 @@
   "do"
   "continue"
   "break"
-] @repeat
+] @keyword.repeat
 
 ; Includes
 
@@ -247,7 +247,7 @@
   "provides"
   "requires"
   "uses"
-] @include
+] @keyword.import
 
 ; Punctuation
 
@@ -277,7 +277,7 @@
   "finally"
   "try"
   "catch"
-] @exception
+] @keyword.exception
 
 ; Labels
 

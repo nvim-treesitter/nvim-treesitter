@@ -3,10 +3,10 @@ class Fields:
 #                                   ^^^ @type.builtin
 #                                            ^^^^ @constant.builtin
         self.fields = fields
-#            ^^^^^^ @field
+#            ^^^^^^ @variable.member
         self.__dunderfield__ = None
-#            ^^^^^^^^^^^^^^^ @field
+#            ^^^^^^^^^^^^^^^ @variable.member
         self._FunKyFielD = 0
-#            ^^^^^^^^^^^ @field
+#            ^^^^^^^^^^^ @variable.member
         self.NOT_A_FIELD = "IM NOT A FIELD"
 #            ^^^^^^^^^^^ @constant

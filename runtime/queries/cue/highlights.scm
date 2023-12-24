@@ -3,18 +3,18 @@
 [
   "package"
   "import"
-] @include
+] @keyword.import
 
 ; Namespaces
 
-(package_identifier) @namespace
+(package_identifier) @module
 
 (import_spec ["." "_"] @punctuation.special)
 
 [
   (attr_path)
   (package_path)
-] @text.uri ;; In attributes
+] @string.special.url ;; In attributes
 
 ; Attributes
 
@@ -22,13 +22,13 @@
 
 ; Conditionals
 
-"if" @conditional
+"if" @keyword.conditional
 
 ; Repeats
 
 [
   "for"
-] @repeat
+] @keyword.repeat
 
 (for_clause "_" @punctuation.special)
 
@@ -69,7 +69,7 @@
 
 (field 
   (label 
-  (identifier) @field))
+  (identifier) @variable.member))
 
 (selector_expression
   (_)
@@ -135,11 +135,11 @@
 
 (number) @number
 
-(float) @float
+(float) @number.float
 
 (si_unit
   (float)
-  (_) @symbol)
+  (_) @string.special.symbol)
 
 (boolean) @boolean
 

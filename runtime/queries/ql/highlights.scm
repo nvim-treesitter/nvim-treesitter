@@ -39,18 +39,18 @@
   "strictsum"
 ] @function.builtin
 
-"import" @include
+"import" @keyword.import
 
 [
   "if"
   "then"
   "else"
-] @conditional
+] @keyword.conditional
 
 [
   "forall"
   "forex"
-] @repeat
+] @keyword.repeat
 
 [
   "asc"
@@ -106,8 +106,8 @@
   "|"
 ] @punctuation.delimiter
 
-(moduleExpr (simpleId) @namespace)
-(module name: (moduleName) @namespace)
+(moduleExpr (simpleId) @module)
+(module name: (moduleName) @module)
 
 (dataclass name: (className) @type)
 (typeExpr name: (className) @type)
@@ -118,7 +118,7 @@
 (varName) @variable
 
 (integer) @number
-(float) @float
+(float) @number.float
 
 (string) @string
 

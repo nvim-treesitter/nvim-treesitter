@@ -22,9 +22,9 @@ var array := int_array[12] of 27;
 /*           ^ @type */
 
 primitive func(a: int, b: string) : array
-/*             ^ @parameter */
+/*             ^ @variable.parameter */
 /*                ^ @type.builtin */
-/*                     ^ @parameter */
+/*                     ^ @variable.parameter */
 /*                        ^ @type.builtin */
 /*                                  ^ @type */
 /* vim: set ft=tiger: */

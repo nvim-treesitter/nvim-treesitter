@@ -2,21 +2,21 @@
 
 (ingredient
   "@" @tag
-  (name)? @text.title
+  (name)? @markup.heading
 	(amount
 	  (quantity)? @number
 		(units)? @tag.attribute)?)
 
 (timer
   "~" @tag
-  (name)? @text.title
+  (name)? @markup.heading
 	(amount
 	  (quantity)? @number
 		(units)? @tag.attribute)?)
 
 (cookware
   "#" @tag
-  (name)? @text.title
+  (name)? @markup.heading
 	(amount
 	  (quantity)? @number
 		(units)? @tag.attribute)?)

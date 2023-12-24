@@ -24,11 +24,11 @@
   "foreach_tiled"
   "foreach_active"
   "foreach_unique"
-] @repeat
+] @keyword.repeat
 
 [
   "cif"
-] @conditional
+] @keyword.conditional
 
 [
   "varying"

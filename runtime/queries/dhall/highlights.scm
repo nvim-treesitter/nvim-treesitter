@@ -2,11 +2,11 @@
 
 ;; Imports
 
-(missing_import) @include
+(missing_import) @keyword.import
 
 (local_import) @string.special.path
 
-(http_import) @string @text.uri
+(http_import) @string.special.url
 
 [
   (env_variable)
@@ -29,7 +29,7 @@
 
 ;; Parameters
 
-(lambda_expression label: (label) @parameter)
+(lambda_expression label: (label) @variable.parameter)
 
 ;; Variables
 
@@ -44,13 +44,13 @@
 
 ; Fields
 
-(record_literal_entry (label) @field)
+(record_literal_entry (label) @variable.member)
 
-(record_type_entry (label) @field)
+(record_type_entry (label) @variable.member)
 
 (selector
   (selector_dot)
-  (_) @field)
+  (_) @variable.member)
 
 ;; Keywords
 
@@ -141,7 +141,7 @@
   "if"
   "then"
   "else"
-] @conditional
+] @keyword.conditional
 
 ;; Literals
 
@@ -157,7 +157,7 @@
   (natural_literal)
 ] @number
 
-(double_literal) @float
+(double_literal) @number.float
 
 (boolean_literal) @boolean
 

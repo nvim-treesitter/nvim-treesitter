@@ -13,10 +13,10 @@
 (keyword) @keyword
 (attribute) @attribute
 (tag) @tag
-(conditional) @conditional
-(repeat) @repeat
-(method) @method
-(parameter) @parameter
+(conditional) @keyword.conditional
+(repeat) @keyword.repeat
+(method) @function.method
+(parameter) @variable.parameter
 
 [
     "{{"

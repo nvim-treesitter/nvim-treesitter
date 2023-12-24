@@ -4,7 +4,7 @@
 
 ; Includes
 
-"include" @include
+"include" @keyword.import
 
 (include_statement (identifier) @type)
 
@@ -31,9 +31,9 @@
   "else"
   "unless"
   "case"
-] @conditional
+] @keyword.conditional
 
-(default_case "default" @conditional)
+(default_case "default" @keyword.conditional)
 
 ; Properties
 
@@ -42,13 +42,13 @@
 
 ; Parameters
 
-(lambda (variable (identifier) @parameter))
+(lambda (variable (identifier) @variable.parameter))
 
-(parameter (variable (identifier) @parameter))
+(parameter (variable (identifier) @variable.parameter))
 
-(function_call (identifier) @parameter)
+(function_call (identifier) @variable.parameter)
 
-(method_call (identifier) @parameter)
+(method_call (identifier) @variable.parameter)
 
 ; Functions
 
@@ -64,16 +64,16 @@
 ; Methods
 
 (function_declaration
-  "function" . (class_identifier (identifier) @method . ))
+  "function" . (class_identifier (identifier) @function.method . ))
 
 (function_call
-  (class_identifier (identifier) @method.call . ))
+  (class_identifier (identifier) @function.method.call . ))
 
 (defined_resource_type
-  "define" . (class_identifier (identifier) @method . ))
+  "define" . (class_identifier (identifier) @function.method . ))
 
 (method_call
-  "." . (identifier) @method.call)
+  "." . (identifier) @function.method.call)
 
 ; Types
 
@@ -104,7 +104,7 @@
 
 ; "Namespaces"
 
-(class_identifier . (identifier) @namespace)
+(class_identifier . (identifier) @module)
 
 ; Operators
 
@@ -171,13 +171,13 @@
 
 (number) @number
 
-(float) @float
+(float) @number.float
 
 (string) @string
 
 (escape_sequence) @string.escape
 
-(regex) @string.regex
+(regex) @string.regexp
 
 (boolean) @boolean
 

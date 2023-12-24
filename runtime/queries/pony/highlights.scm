@@ -2,7 +2,7 @@
 
 [
   "use"
-] @include
+] @keyword.import
 
 ; Keywords
 
@@ -68,13 +68,13 @@
   "else"
   "elseif"
   "match"
-] @conditional
+] @keyword.conditional
 
-(if_statement "end" @conditional)
+(if_statement "end" @keyword.conditional)
 
-(iftype_statement "end" @conditional)
+(iftype_statement "end" @keyword.conditional)
 
-(match_statement "end" @conditional)
+(match_statement "end" @keyword.conditional)
 
 ; Repeats
 
@@ -86,11 +86,11 @@
   "continue"
   "do"
   "break"
-] @repeat
+] @keyword.repeat
 
-(do_block "end" @repeat)
+(do_block "end" @keyword.repeat)
 
-(repeat_statement "end" @repeat)
+(repeat_statement "end" @keyword.repeat)
 
 ; Exceptions
 
@@ -98,11 +98,11 @@
   "try"
   (error)
   "compile_error"
-] @exception
+] @keyword.exception
 
-(try_statement "end" @exception)
+(try_statement "end" @keyword.exception)
 
-(recover_statement "end" @exception)
+(recover_statement "end" @keyword.exception)
 
 ; Attributes
 
@@ -116,9 +116,9 @@
 
 ; Fields
 
-(field name: (identifier) @field)
+(field name: (identifier) @variable.member)
 
-(member_expression "." (identifier) @field)
+(member_expression "." (identifier) @variable.member)
 
 ; Constructors
 
@@ -126,11 +126,11 @@
 
 ; Methods
 
-(method (identifier) @method)
+(method (identifier) @function.method)
 
-(behavior (identifier) @method)
+(behavior (identifier) @function.method)
 
-(ffi_method (identifier) @method)
+(ffi_method (identifier) @function.method)
 
 ((ffi_method (string) @string.special)
   (#set! "priority" 105))
@@ -138,15 +138,15 @@
 (call_expression
   callee:
     [
-      (identifier) @method.call
-      (ffi_identifier (identifier) @method.call)
-      (member_expression "." (identifier) @method.call)
+      (identifier) @function.method.call
+      (ffi_identifier (identifier) @function.method.call)
+      (member_expression "." (identifier) @function.method.call)
     ])
 
 ; Parameters
 
-(parameter name: (identifier) @parameter)
-(lambda_parameter name: (identifier) @parameter)
+(parameter name: (identifier) @variable.parameter)
+(lambda_parameter name: (identifier) @variable.parameter)
 
 ; Types
 
@@ -156,7 +156,7 @@
 
 (generic_parameter (identifier) @type)
 
-(lambda_type (identifier)? @method)
+(lambda_type (identifier)? @function.method)
 
 ((identifier) @type
   (#lua-match? @type "^_*[A-Z][a-zA-Z0-9_]*$"))
@@ -250,7 +250,7 @@
 
 (number) @number
 
-(float) @float
+(float) @number.float
 
 (boolean) @boolean
 

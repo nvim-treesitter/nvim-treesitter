@@ -1,20 +1,20 @@
 ; Include
 
-"#include" @include
+"#include" @keyword.import
 (include_path) @string
 
 ; Preproc
 
 [
   "#pragma"
-] @preproc
+] @keyword.directive
 
 (pragma_directive
   [
     "version"
     "not-version"
     "test-version-set"
-  ] @preproc)
+  ] @keyword.directive)
 
 ; Keywords
 
@@ -40,14 +40,14 @@
   "elseif"
   "elseifnot"
   "until"
-] @conditional
+] @keyword.conditional
 
 ; Exceptions
 
 [
   "try"
   "catch"
-] @exception
+] @keyword.exception
 
 ; Repeats
 
@@ -56,7 +56,7 @@
   "forall"
   "repeat"
   "while"
-] @repeat
+] @keyword.repeat
 
 ; Qualifiers
 [
@@ -83,11 +83,11 @@
   function: (identifier) @function)
 
 (method_call
-  method_name: (identifier) @method.call)
+  method_name: (identifier) @function.method.call)
 
 ; Parameters
 
-(parameter) @parameter
+(parameter) @variable.parameter
 
 ; Types
 

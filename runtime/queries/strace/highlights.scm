@@ -11,7 +11,7 @@
 [
   (errorName)
   (errorDescription)
-] @exception
+] @keyword.exception
 
 (syscall) @function.builtin
 

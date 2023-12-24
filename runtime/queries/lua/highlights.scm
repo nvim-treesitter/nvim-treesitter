@@ -21,13 +21,13 @@
   "while"
   "do"
   "end"
-] @repeat)
+] @keyword.repeat)
 
 (repeat_statement
 [
   "repeat"
   "until"
-] @repeat)
+] @keyword.repeat)
 
 (if_statement
 [
@@ -36,27 +36,27 @@
   "else"
   "then"
   "end"
-] @conditional)
+] @keyword.conditional)
 
 (elseif_statement
 [
   "elseif"
   "then"
   "end"
-] @conditional)
+] @keyword.conditional)
 
 (else_statement
 [
   "else"
   "end"
-] @conditional)
+] @keyword.conditional)
 
 (for_statement
 [
   "for"
   "do"
   "end"
-] @repeat)
+] @keyword.repeat)
 
 (function_declaration
 [
@@ -133,8 +133,8 @@
 ((identifier) @variable.builtin
   (#eq? @variable.builtin "self"))
 
-((identifier) @namespace.builtin
-  (#any-of? @namespace.builtin "_G" "debug" "io" "jit" "math" "os" "package" "string" "table" "utf8"))
+((identifier) @module.builtin
+  (#any-of? @module.builtin "_G" "debug" "io" "jit" "math" "os" "package" "string" "table" "utf8"))
 
 ((identifier) @keyword.coroutine
   (#eq? @keyword.coroutine "coroutine"))
@@ -167,9 +167,9 @@
 
 ;; Tables
 
-(field name: (identifier) @field)
+(field name: (identifier) @variable.member)
 
-(dot_index_expression field: (identifier) @field)
+(dot_index_expression field: (identifier) @variable.member)
 
 (table_constructor
 [
@@ -179,9 +179,9 @@
 
 ;; Functions
 
-(parameters (identifier) @parameter)
+(parameters (identifier) @variable.parameter)
 
-(vararg_expression) @parameter.builtin
+(vararg_expression) @variable.parameter.builtin
 
 (function_declaration
   name: [
@@ -192,7 +192,7 @@
 
 (function_declaration
   name: (method_index_expression
-    method: (identifier) @method))
+    method: (identifier) @function.method))
 
 (assignment_statement
   (variable_list .
@@ -215,7 +215,7 @@
     (dot_index_expression
       field: (identifier) @function.call)
     (method_index_expression
-      method: (identifier) @method.call)
+      method: (identifier) @function.method.call)
   ])
 
 (function_call
@@ -240,7 +240,7 @@
 ((comment) @comment.documentation
   (#lua-match? @comment.documentation "^[-][-](%s?)@"))
 
-(hash_bang_line) @preproc
+(hash_bang_line) @keyword.directive
 
 (number) @number
 
@@ -257,7 +257,7 @@
                . (_)
                .
                (string
-                 content: (string_content) @string.regex)))
+                 content: (string_content) @string.regexp)))
 
 ;("123"):match("%d+")
 (function_call
@@ -266,4 +266,4 @@
     (#any-of? @_method "find" "match" "gmatch" "gsub"))
   arguments: (arguments
                . (string
-                   content: (string_content) @string.regex)))
+                   content: (string_content) @string.regexp)))

@@ -5,7 +5,7 @@
 
 (
     (method_declaration
-        name: (field_identifier) @local.definition.method); @method
+        name: (field_identifier) @local.definition.method); @function.method
 )
 
 (short_var_declaration 

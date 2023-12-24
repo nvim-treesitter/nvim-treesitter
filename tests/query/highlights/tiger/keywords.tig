@@ -10,7 +10,7 @@ let
   /* <- @keyword.function */
 
   import "lib.tih"
-  /* <- @include */
+  /* <- @keyword.import */
 
   type array_of_int = array of int
   /* <- @keyword */
@@ -28,13 +28,13 @@ in
   /*            ^ @keyword */
 
   for i := 12 to 27 do 42;
-  /* <- @repeat */
-  /*          ^ @repeat */
-  /*                ^ @repeat */
+  /* <- @keyword.repeat */
+  /*          ^ @keyword.repeat */
+  /*                ^ @keyword.repeat */
 
   while 12 do break
-  /* <- @repeat */
-  /*       ^ @repeat */
+  /* <- @keyword.repeat */
+  /*       ^ @keyword.repeat */
   /*          ^ @keyword */
 
 end

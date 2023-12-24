@@ -13,13 +13,13 @@
 
 ; Conditionals
 
-(conditional_expression [ "?" ":" ] @conditional.ternary)
+(conditional_expression [ "?" ":" ] @keyword.conditional.ternary)
 
 ; Variables
 
 (symbol) @variable
 
-(filename) @string.special @text.underline
+(filename) @string.special.path
 
 ; Functions
 
@@ -27,8 +27,8 @@
   function: (symbol) @function.call)
 
 ((call_expression
-  function: (symbol) @preproc)
-  (#eq? @preproc "DEFINED"))
+  function: (symbol) @keyword.directive)
+  (#eq? @keyword.directive "DEFINED"))
 
 ((call_expression
   function: (symbol) @function.builtin)
@@ -52,7 +52,7 @@
 [
   "ORIGIN" "org" "o"
   "LENGTH" "len" "l"
-] @field.builtin
+] @variable.member.builtin
 
 ; Constants
 
@@ -80,7 +80,7 @@
 
 ; Exceptions
 
-"ASSERT" @exception
+"ASSERT" @keyword.exception
 
 [
   "/DISCARD/"

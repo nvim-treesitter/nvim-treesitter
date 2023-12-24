@@ -3,11 +3,11 @@ pub fn add(x: Int, y: Int) -> Int {
 //  ^^ @keyword.function
 //     ^^^ @function
 //        ^ @punctuation.bracket
-//         ^ @parameter
+//         ^ @variable.parameter
 //          ^ @punctuation.delimiter
 //            ^^^ @type.builtin
 //               ^ @punctuation.delimiter
-//                 ^ @parameter
+//                 ^ @variable.parameter
 //                  ^ @punctuation.delimiter
 //                    ^^^ @type.builtin
 //                       ^ @punctuation.bracket
@@ -22,7 +22,7 @@ pub fn twice(f: fn(t) -> t, x: t) -> t {
 //  ^ @keyword.function
 //     ^^^^^ @function
 //          ^ @punctuation.bracket
-//           ^ @parameter
+//           ^ @variable.parameter
 //            ^ @punctuation.delimiter
 //              ^^ @keyword.function
 //                ^ @punctuation.bracket
@@ -31,7 +31,7 @@ pub fn twice(f: fn(t) -> t, x: t) -> t {
 //                    ^^ @punctuation.delimiter
 //                       ^ @type
 //                        ^ @punctuation.delimiter
-//                          ^ @parameter
+//                          ^ @variable.parameter
 //                           ^ @punctuation.delimiter
 //                             ^ @type
 //                              ^ @punctuation.bracket
@@ -45,7 +45,7 @@ fn list_of_two(my_value: a) -> List(a) {
 // <- @keyword.function
 // ^ @function
 //            ^ @punctuation.bracket
-//             ^ @parameter
+//             ^ @variable.parameter
 //                     ^ @punctuation.delimiter
 //                       ^ @type
 //                        ^ @punctuation.bracket
@@ -64,19 +64,19 @@ fn replace(
 //        ^ @punctuation.bracket
   in string: String,
   // <- @label
-  // ^^^^^^ @parameter
+  // ^^^^^^ @variable.parameter
   //       ^ @punctuation.delimiter
   //         ^^^^^^ @type.builtin
   //               ^ @punctuation.delimiter
   each pattern: String,
   // <- @label
-  //   ^^^^^^^ @parameter
+  //   ^^^^^^^ @variable.parameter
   //          ^ @punctuation.delimiter
   //            ^^^^^^ @type.builtin
   //                  ^ @punctuation.delimiter
   with replacement: String,
   // <- @label
-  //   ^^^^^^^^^^^ @parameter
+  //   ^^^^^^^^^^^ @variable.parameter
   //              ^ @punctuation.delimiter
   //                ^^^^^^ @type.builtin
   //                      ^ @punctuation.delimiter
@@ -109,7 +109,7 @@ pub external fn random_float() -> Float = "rand" "uniform"
 //                             ^^ @punctuation.delimiter
 //                                ^^^^^ @type.builtin
 //                                      ^ @operator
-//                                        ^^^^^^ @namespace
+//                                        ^^^^^^ @module
 //                                               ^^^^^^^^^ @function
 
 pub external fn inspect(a) -> a = "Elixir.IO" "inspect"
@@ -123,5 +123,5 @@ pub external fn inspect(a) -> a = "Elixir.IO" "inspect"
 //                         ^^ @punctuation.delimiter
 //                            ^ @type
 //                              ^ @operator
-//                                ^^^^^^^^^^^ @namespace
+//                                ^^^^^^^^^^^ @module
 //                                            ^^^^^^^^^ @function

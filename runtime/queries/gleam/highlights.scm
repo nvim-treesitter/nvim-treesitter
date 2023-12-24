@@ -16,18 +16,18 @@
 ; Imports
 [
   "import"
-] @include
+] @keyword.import
 
 ; Conditionals
 [
   "case"
   "if"
-] @conditional
+] @keyword.conditional
 
 ; Exceptions
 [
   "assert"
-] @exception
+] @keyword.exception
 
 ; Punctuation
 [
@@ -99,9 +99,9 @@
 ] @comment
 
 ; Modules & Imports
-(module) @namespace
-(import alias: ((identifier) @namespace)?)
-(remote_type_identifier module: (identifier) @namespace)
+(module) @module
+(import alias: ((identifier) @module)?)
+(remote_type_identifier module: (identifier) @module)
 (unqualified_import name: (identifier) @function)
 
 ; Strings
@@ -113,11 +113,11 @@
 ; Numbers
 (integer) @number
 
-(float) @float
+(float) @number.float
 
 ; Function Parameter Labels
 (function_call arguments: (arguments (argument label: (label) @label)))
-(function_parameter label: (label)? @label name: (identifier) @parameter)
+(function_parameter label: (label)? @label name: (identifier) @variable.parameter)
 
 ; Records
 (record arguments: (arguments (argument label: (label) @property)?))
@@ -154,7 +154,7 @@
 
 ; External Functions
 (external_function name: (identifier) @function)
-(external_function_body (string) @namespace . (string) @function)
+(external_function_body (string) @module . (string) @function)
 
 ; Constructors
 (constructor_name) @type @constructor

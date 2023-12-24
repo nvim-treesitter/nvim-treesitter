@@ -17,14 +17,14 @@
  (dis_expr) @comment
  (#set! "priority" 105) ; Higher priority to mark the whole sexpr as a comment
 )
-(kwd_lit) @symbol
+(kwd_lit) @string.special.symbol
 (str_lit) @string
 (num_lit) @number
 (char_lit) @character
 (bool_lit) @boolean
 (nil_lit) @constant.builtin
 (comment) @comment @spell
-(regex_lit) @string.regex
+(regex_lit) @string.regexp
 
 ["'" "`"] @string.escape
 
@@ -49,13 +49,13 @@
 
 ; Quoted symbols
 (quoting_lit
- (sym_lit) @symbol)
+ (sym_lit) @string.special.symbol)
 (syn_quoting_lit
- (sym_lit) @symbol)
+ (sym_lit) @string.special.symbol)
 
 ; Used in destructure pattern
-((sym_lit) @parameter
- (#lua-match? @parameter "^[&]"))
+((sym_lit) @variable.parameter
+ (#lua-match? @variable.parameter "^[&]"))
 
 ; Inline function variables
 ((sym_lit) @variable.builtin
@@ -102,19 +102,19 @@
 ; Interop
 ; (.instanceMember instance args*)
 ; (.instanceMember Classname args*)
-((sym_lit) @method
- (#lua-match? @method "^%.[^-]"))
+((sym_lit) @function.method
+ (#lua-match? @function.method "^%.[^-]"))
 ; (.-instanceField instance)
-((sym_lit) @field
- (#lua-match? @field "^%.%-.*"))
+((sym_lit) @variable.member
+ (#lua-match? @variable.member "^%.%-.*"))
 ;  Classname/staticField
-((sym_lit) @field
- (#lua-match? @field "^[%u].*/.+"))
+((sym_lit) @variable.member
+ (#lua-match? @variable.member "^[%u].*/.+"))
 ; (Classname/staticMethod args*)
 (list_lit
  .
- (sym_lit) @method
- (#lua-match? @method "^[%u].*/.+"))
+ (sym_lit) @function.method
+ (#lua-match? @function.method "^[%u].*/.+"))
 ;; TODO: Special casing for the `.` macro
 
 ; Operators
@@ -145,29 +145,29 @@
  (#any-of? @comment "comment"))
 
 ; Conditionals
-((sym_lit) @conditional
- (#any-of? @conditional
+((sym_lit) @keyword.conditional
+ (#any-of? @keyword.conditional
   "case" "cond" "cond->" "cond->>" "condp"))
-((sym_lit) @conditional
- (#any-of? @conditional
+((sym_lit) @keyword.conditional
+ (#any-of? @keyword.conditional
   "if" "if-let" "if-not" "if-some"))
-((sym_lit) @conditional
- (#any-of? @conditional
+((sym_lit) @keyword.conditional
+ (#any-of? @keyword.conditional
   "when" "when-first" "when-let" "when-not" "when-some"))
 
 ; Repeats
-((sym_lit) @repeat
- (#any-of? @repeat
+((sym_lit) @keyword.repeat
+ (#any-of? @keyword.repeat
   "doseq" "dotimes" "for" "loop" "recur" "while"))
 
 ; Exception
-((sym_lit) @exception
- (#any-of? @exception
+((sym_lit) @keyword.exception
+ (#any-of? @keyword.exception
   "throw" "try" "catch" "finally"))
 
 ; Includes
-((sym_lit) @include
- (#any-of? @include "ns" "import" "require" "use"))
+((sym_lit) @keyword.import
+ (#any-of? @keyword.import "ns" "import" "require" "use"))
 
 ; Builtin macros
 ;; TODO: Do all these items belong here?
@@ -350,18 +350,18 @@
 ;; TODO: Reproduce bug and file ticket
  ;.
  ;[(vec_lit
- ;  (sym_lit)* @parameter)
+ ;  (sym_lit)* @variable.parameter)
  ; (list_lit
  ;  (vec_lit
- ;   (sym_lit)* @parameter))])
+ ;   (sym_lit)* @variable.parameter))])
   
 ;[((list_lit
 ;   (vec_lit
-;    (sym_lit) @parameter)
+;    (sym_lit) @variable.parameter)
 ;   (_)
 ;  +
 ; ((vec_lit
-;   (sym_lit) @parameter)
+;   (sym_lit) @variable.parameter)
 ;  (_)))
    
 
@@ -378,4 +378,4 @@
  (sym_lit) @_include
  (#eq? @_include "ns")
  .
- (sym_lit) @namespace)
+ (sym_lit) @module)

@@ -7,7 +7,7 @@
 
 (block
   (unit
-    (identifier) @namespace))
+    (identifier) @module))
 
 (func
   (identifier) @function)
@@ -64,8 +64,8 @@
     "private"
     "public"))
 
-((identifier) @exception
-  (#any-of? @exception
+((identifier) @keyword.exception
+  (#any-of? @keyword.exception
     "throw"
     "finally"
     "try"

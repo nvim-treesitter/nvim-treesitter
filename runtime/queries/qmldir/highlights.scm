@@ -1,6 +1,6 @@
 ; Preproc
 
-(command (identifier) @preproc)
+(command (identifier) @keyword.directive)
 
 ; Keywords
 
@@ -10,7 +10,7 @@
 
 (number) @number
 
-(float) @float
+(float) @number.float
 
 ; Variables
 

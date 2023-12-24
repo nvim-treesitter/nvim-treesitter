@@ -1,17 +1,17 @@
 (comment) @comment
 (generated_comment) @comment
-(title) @text.title
-(text) @text
-(branch) @text.reference
+(title) @markup.heading
+; (text) @none
+(branch) @markup.link
 (change) @keyword
-(filepath) @text.uri
+(filepath) @string.special.url
 (arrow) @punctuation.delimiter
 
-(subject) @text.title @spell
-(subject (overflow) @text @spell)
+(subject) @markup.heading @spell
+(subject (overflow) @none @spell)
 (subject (subject_prefix) @function @nospell)
 (prefix (type) @keyword @nospell)
-(prefix (scope) @parameter @nospell)
+(prefix (scope) @variable.parameter @nospell)
 (prefix [
     "("
     ")"
@@ -21,12 +21,12 @@
     "!"
 ] @punctuation.special)
 
-(message) @text @spell
+(message) @spell
 
 (trailer (token) @label)
-(trailer (value) @text)
+; (trailer (value) @none)
 
-(breaking_change (token) @text.warning)
-(breaking_change (value) @text @spell)
+(breaking_change (token) @comment.warning)
+(breaking_change (value) @none @spell)
 
 (scissor) @comment
