@@ -1,4 +1,4 @@
 from __future__ import print_function
-# ^ @include
+# ^ @keyword.import
 #     ^ @constant.builtin
-#                  ^ @include
+#                  ^ @keyword.import

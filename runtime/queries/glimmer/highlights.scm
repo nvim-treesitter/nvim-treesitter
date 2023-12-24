@@ -23,10 +23,10 @@
 (block_statement_end) @tag.delimiter
 
 ; Highlight `if`/`each`/`let`
-(block_statement_start path: (identifier) @conditional)
-(block_statement_end path: (identifier) @conditional)
-((mustache_statement (identifier) @conditional)
- (#lua-match? @conditional "else"))
+(block_statement_start path: (identifier) @keyword.conditional)
+(block_statement_end path: (identifier) @keyword.conditional)
+((mustache_statement (identifier) @keyword.conditional)
+ (#lua-match? @keyword.conditional "else"))
 
 ; == Mustache Statements ===
 
@@ -66,8 +66,8 @@
   (identifier) @function
   ])
   (#not-any-of? @function "if" "yield"))
-((helper_invocation helper: (identifier) @conditional)
-  (#eq? @conditional "if"))
+((helper_invocation helper: (identifier) @keyword.conditional)
+  (#eq? @keyword.conditional "if"))
 ((helper_invocation helper: (identifier) @keyword)
   (#eq? @keyword "yield"))
 

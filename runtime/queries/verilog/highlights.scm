@@ -66,20 +66,20 @@
   "forever"
   "initial"
   "while"
-] @repeat
+] @keyword.repeat
 
 [
   "if"
   "else"
   (case_keyword)
   "endcase"
-] @conditional
+] @keyword.conditional
 
 (comment) @comment @spell
 
 (include_compiler_directive) @constant.macro
 (package_import_declaration
- "import" @include)
+ "import" @keyword.import)
 
 (package_import_declaration
  (package_import_item
@@ -162,14 +162,14 @@
  (simple_identifier) @type)
 
 (method_call_body
-  (method_identifier) @field)
+  (method_identifier) @variable.member)
 
 (interface_identifier
  (simple_identifier) @type)
 
 (modport_identifier
  (modport_identifier
-  (simple_identifier) @field))
+  (simple_identifier) @variable.member))
 
 (net_port_type1
  (simple_identifier) @type)
@@ -182,9 +182,9 @@
 [
   (default_nettype_compiler_directive)
   (timescale_compiler_directive)
-] @preproc
+] @keyword.directive
 
-(include_compiler_directive) @include
+(include_compiler_directive) @keyword.import
 
 ; begin/end label
 (seq_block
@@ -212,7 +212,7 @@
  "new" @constructor)
 
 (parameter_identifier
- (simple_identifier) @parameter)
+ (simple_identifier) @variable.parameter)
 
 [
   (integral_number)
@@ -258,12 +258,12 @@
 
 (task_identifier
  (task_identifier
-  (simple_identifier) @method))
+  (simple_identifier) @function.method))
 
 ;;TODO: fixme
 ;(assignment_pattern_expression
  ;(assignment_pattern
-  ;(parameter_identifier) @field))
+  ;(parameter_identifier) @variable.member))
 
 (type_declaration
   (data_type ["packed"] @type.qualifier))
@@ -290,10 +290,10 @@
 (struct_union_member
  (list_of_variable_decl_assignments
   (variable_decl_assignment
-   (simple_identifier) @field)))
+   (simple_identifier) @variable.member)))
 
 (member_identifier
- (simple_identifier) @field)
+ (simple_identifier) @variable.member)
 
 (struct_union_member
  (data_type_or_void

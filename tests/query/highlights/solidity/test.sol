@@ -3,11 +3,11 @@
 // SPDX-License-Identifier: GPL-3.0
 // ^ @comment
 pragma solidity >=0.7.0 <0.9.0;
-// ^ @preproc
-//     ^ @preproc
+// ^ @keyword.directive
+//     ^ @keyword.directive
 
 import * as something from "anotherFile";
-// ^     ^            ^ @include
+// ^     ^            ^ @keyword.import
 
 /// @title Voting with delegation.
 // <- @comment
@@ -21,7 +21,7 @@ contract Ballot {
 //         ^ @type
         uint weight; // weight is accumulated by delegation
 //      ^ @type.builtin
-//           ^ @field
+//           ^ @variable.member
         bool voted;  // if true, that person already voted
         address delegate; // person delegated to
         uint vote;   // index of the voted proposal
@@ -63,7 +63,7 @@ contract Ballot {
             // appends it to the end of `proposals`.
             proposals.push(Proposal({
                 name: proposalNames[i],
-//              ^ @field
+//              ^ @variable.member
                 voteCount: 0
             }));
         }
@@ -74,7 +74,7 @@ contract Ballot {
     function giveRightToVote(address voter) external {
 //  ^ @keyword.function
 //           ^ @function
-//                                   ^ @parameter
+//                                   ^ @variable.parameter
         // If the first argument of `require` evaluates
         // to `false`, execution terminates and all
         // changes to the state and to Ether balances

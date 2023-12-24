@@ -27,7 +27,7 @@
       (pragma_list) @variable))
 ; NOTE: has to be after
 ; (type_expression) @type
-; and before @preproc and all literals
+; and before @keyword.directive and all literals
 
 ; constants/enums in array construction
 (array_construction
@@ -86,14 +86,14 @@
 [ "(" ")" "[" "[:" "]" "{" "}" ] @punctuation.bracket
 
 ; =============================================================================
-; @preproc               ; various preprocessor directives & shebangs
+; @keyword.directive               ; various preprocessor directives & shebangs
 
 [
   "macro"
   "template"
-] @preproc
+] @keyword.directive
 
-(pragma_list ["{." "}" ".}"] @preproc)
+(pragma_list ["{." "}" ".}"] @keyword.directive)
 ; NOTE: has to come after @punctuation.bracket
 
 ; =============================================================================
@@ -156,9 +156,9 @@
 (custom_numeric_literal) @number
 
 ; =============================================================================
-; @float                ; floating-point number literals
+; @number.float                ; floating-point number literals
 
-(float_literal) @float
+(float_literal) @number.float
 
 ; =============================================================================
 ; @function         ; function definitions
@@ -294,14 +294,14 @@
   ])
 
 ; =============================================================================
-; @method           ; method definitions
+; @function.method           ; method definitions
 
 (method_declaration
   name: [
-    (identifier) @method
-    (accent_quoted (identifier) @method)
-    (exported_symbol (identifier) @method)
-    (exported_symbol (accent_quoted (identifier) @method))
+    (identifier) @function.method
+    (accent_quoted (identifier) @function.method)
+    (exported_symbol (identifier) @function.method)
+    (exported_symbol (accent_quoted (identifier) @function.method))
   ])
 
 ; =============================================================================
@@ -403,7 +403,7 @@
 ] @keyword.return
 
 ; =============================================================================
-; @conditional         ; keywords related to conditionals (e.g. `if` / `else`)
+; @keyword.conditional         ; keywords related to conditionals (e.g. `if` / `else`)
 
 [
   "if"
@@ -411,21 +411,21 @@
   "case"
   "elif"
   "else"
-] @conditional
+] @keyword.conditional
 
-(of_branch "of" @conditional)
+(of_branch "of" @keyword.conditional)
 
 ; =============================================================================
-; @repeat              ; keywords related to loops (e.g. `for` / `while`)
+; @keyword.repeat              ; keywords related to loops (e.g. `for` / `while`)
 
 [
   "for"
   "while"
   "continue"
   "break"
-] @repeat
+] @keyword.repeat
 
-(for "in" @repeat)
+(for "in" @keyword.repeat)
 
 ; =============================================================================
 ; @label               ; GOTO and other labels (e.g. `label:` in C)
@@ -437,27 +437,27 @@
   ])
 
 ; =============================================================================
-; @include             ; keywords for including modules (e.g. `import` / `from` in Python)
+; @keyword.import             ; keywords for including modules (e.g. `import` / `from` in Python)
 
 [
   "import"
   "include"
   "export"
-] @include
+] @keyword.import
 
-(import_from_statement "from" @include)
+(import_from_statement "from" @keyword.import)
 
-(except_clause "except" @include)
+(except_clause "except" @keyword.import)
 
 ; =============================================================================
-; @exception           ; keywords related to exceptions (e.g. `throw` / `catch`)
+; @keyword.exception           ; keywords related to exceptions (e.g. `throw` / `catch`)
 
 [
   "try"
   "except"
   "finally"
   "raise"
-] @exception
+] @keyword.exception
 
 ; =============================================================================
 ; @type            ; type or class definitions and annotations
@@ -505,15 +505,15 @@
 ; where `tuple` is captured as @keyword
 
 ; =============================================================================
-; @parameter        ; parameters of a function
+; @variable.parameter        ; parameters of a function
 
 ; named parameters when calling
 ; call(parameter_name=arg)
 (argument_list
   (equal_expression
     left: [
-      (identifier) @parameter
-      (accent_quoted (identifier) @parameter)
+      (identifier) @variable.parameter
+      (accent_quoted (identifier) @variable.parameter)
     ]))
 
 ; parameters in function declaration
@@ -522,8 +522,8 @@
     (symbol_declaration_list
       (symbol_declaration
         name: [
-          (identifier) @parameter
-          (accent_quoted (identifier) @parameter)
+          (identifier) @variable.parameter
+          (accent_quoted (identifier) @variable.parameter)
         ]))))
 ; NOTE: needs to be after @type
 
@@ -533,8 +533,8 @@
     (symbol_declaration_list
       (symbol_declaration
         name: [
-          (identifier) @parameter
-          (accent_quoted (identifier) @parameter)
+          (identifier) @variable.parameter
+          (accent_quoted (identifier) @variable.parameter)
         ])))))
 
 ; for loop variables
@@ -543,43 +543,43 @@
     (symbol_declaration_list
       (symbol_declaration
         name: [
-          (identifier) @parameter
-          (accent_quoted (identifier) @parameter)
+          (identifier) @variable.parameter
+          (accent_quoted (identifier) @variable.parameter)
         ])))
 
 ((tuple_deconstruct_declaration
   (symbol_declaration
     name: [
-      (identifier) @parameter
-      (accent_quoted (identifier) @parameter)
+      (identifier) @variable.parameter
+      (accent_quoted (identifier) @variable.parameter)
     ])) @_tuple_decons
   (#has-ancestor? @_tuple_decons for))
 
 (concept_declaration
   parameters:
     (parameter_list [
-      (identifier) @parameter
-      (accent_quoted (identifier) @parameter)
+      (identifier) @variable.parameter
+      (accent_quoted (identifier) @variable.parameter)
     ]))
 (var_parameter [
-  (identifier) @parameter
-  (accent_quoted (identifier) @parameter)
+  (identifier) @variable.parameter
+  (accent_quoted (identifier) @variable.parameter)
 ])
 (type_parameter [
-  (identifier) @parameter
-  (accent_quoted (identifier) @parameter)
+  (identifier) @variable.parameter
+  (accent_quoted (identifier) @variable.parameter)
 ])
 (static_parameter [
-  (identifier) @parameter
-  (accent_quoted (identifier) @parameter)
+  (identifier) @variable.parameter
+  (accent_quoted (identifier) @variable.parameter)
 ])
 (ref_parameter [
-  (identifier) @parameter
-  (accent_quoted (identifier) @parameter)
+  (identifier) @variable.parameter
+  (accent_quoted (identifier) @variable.parameter)
 ])
 (pointer_parameter [
-  (identifier) @parameter
-  (accent_quoted (identifier) @parameter)
+  (identifier) @variable.parameter
+  (accent_quoted (identifier) @variable.parameter)
 ])
 
 
@@ -612,17 +612,17 @@
 (pointer_parameter "ptr" @type.qualifier)
 
 ; =============================================================================
-; @field           ; object and struct fields
+; @variable.member           ; object and struct fields
 
 ; fields in object/tuple declaration
 (field_declaration
   (symbol_declaration_list
     (symbol_declaration
       name: [
-        (identifier) @field
-        (accent_quoted (identifier) @field)
-        (exported_symbol (identifier) @field)
-        (exported_symbol (accent_quoted (identifier) @field))
+        (identifier) @variable.member
+        (accent_quoted (identifier) @variable.member)
+        (exported_symbol (identifier) @variable.member)
+        (exported_symbol (accent_quoted (identifier) @variable.member))
       ])))
 
 ; fields in object construction
@@ -630,16 +630,16 @@
   (argument_list
     (colon_expression
       left: [
-        (identifier) @field
-        (accent_quoted (identifier) @field)
+        (identifier) @variable.member
+        (accent_quoted (identifier) @variable.member)
       ])))
 
 ; fields in tuple construction
 (tuple_construction
   (colon_expression
     left: [
-      (identifier) @field
-      (accent_quoted (identifier) @field)
+      (identifier) @variable.member
+      (accent_quoted (identifier) @variable.member)
     ]))
 
 (variant_declaration
@@ -647,10 +647,10 @@
     (symbol_declaration_list
       (symbol_declaration
         name: [
-          (identifier) @field
-          (accent_quoted (identifier) @field)
-          (exported_symbol (identifier) @field)
-          (exported_symbol (accent_quoted (identifier) @field))
+          (identifier) @variable.member
+          (accent_quoted (identifier) @variable.member)
+          (exported_symbol (identifier) @variable.member)
+          (exported_symbol (accent_quoted (identifier) @variable.member))
         ]))))
 
 ; =============================================================================
@@ -732,37 +732,37 @@
 (nil_literal) @constant.builtin
 
 ; =============================================================================
-; @namespace        ; modules or namespaces
+; @module        ; modules or namespaces
 
 (import_statement
   (expression_list
-    (identifier) @namespace))
+    (identifier) @module))
 
 (import_statement
   (expression_list
     (infix_expression
       operator: "as"
-      right: (identifier) @namespace)))
+      right: (identifier) @module)))
 
 (import_statement
   (expression_list
     (infix_expression
       operator: (operator) @_operator
       right: [
-        (identifier) @namespace
-        (array_construction (identifier) @namespace)
+        (identifier) @module
+        (array_construction (identifier) @module)
       ]))
   (#eq? @_operator "/"))
 
 (import_from_statement
   module: (infix_expression
     operator: (operator) @_operator
-    right: (identifier) @namespace)
+    right: (identifier) @module)
   (#eq? @_operator "/"))
 
 (export_statement
   (expression_list
-    (identifier) @namespace))
+    (identifier) @module))
 
 ; =============================================================================
 ; overrule things

@@ -75,7 +75,7 @@
   name: (identifier) @variable)
 
 (method
-  name: (identifier) @method)
+  name: (identifier) @function.method)
 
 (number_literal) @number
 (string_literal) @string

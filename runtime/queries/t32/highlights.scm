@@ -79,7 +79,7 @@
   [
    "?"
    ":"
-] @conditional.ternary)
+] @keyword.conditional.ternary)
 
 
 ; Strings and others literal types
@@ -98,7 +98,7 @@
   (frequency)
   (percentage)
   (time)
-] @float
+] @number.float
 
 [
   (string)
@@ -107,8 +107,8 @@
 
 (hll_escape_sequence) @string.escape
 
-(path) @string.special
-(symbol) @symbol
+(path) @string.special.path
+(symbol) @string.special.symbol
 
 [
   (character)
@@ -138,7 +138,7 @@
 
 ; HLL variables
 (identifier) @variable
-(hll_field_identifier) @field
+(hll_field_identifier) @variable.member
 
 
 ; Commands
@@ -214,19 +214,19 @@
 (parameter_declaration
   command: (identifier) @keyword
   (identifier)? @constant.builtin
-  macro: (macro) @parameter)
+  macro: (macro) @variable.parameter)
 
 
 ; Control flow
 (if_block
-  command: (identifier) @conditional)
+  command: (identifier) @keyword.conditional)
 (else_block
-  command: (identifier) @conditional)
+  command: (identifier) @keyword.conditional)
 
 (while_block
-  command: (identifier) @repeat)
+  command: (identifier) @keyword.repeat)
 (repeat_block
-  command: (identifier) @repeat)
+  command: (identifier) @keyword.repeat)
 
 
 (comment) @comment @spell

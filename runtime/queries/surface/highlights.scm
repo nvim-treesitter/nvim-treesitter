@@ -1,5 +1,5 @@
-; Surface text is highlighted as such
-(text) @text
+; Surface text is not highlighted
+(text) @none
 
 ; Surface has two types of comments, both are highlighted as such
 (comment) @comment @spell

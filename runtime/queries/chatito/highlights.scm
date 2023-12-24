@@ -12,14 +12,14 @@
 
 [":" ","] @punctuation.delimiter
 
-(["\"" "'"] @punctuation.special @conceal
+(["\"" "'"] @punctuation.special
             (#set! conceal ""))
 
 ["%" "?" "#"] @character.special
 
 ;; Entities
 
-(intent) @namespace
+(intent) @module
 
 (slot) @type
 
@@ -37,13 +37,13 @@
 
 ;; Import
 
-"import" @include
+"import" @keyword.import
 
-(file) @string.special
+(file) @string.special.path
 
 ;; Text
 
-(word) @text @spell
+(word) @spell
 
 ;; Comment
 

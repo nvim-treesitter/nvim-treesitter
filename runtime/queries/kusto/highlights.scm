@@ -12,8 +12,8 @@
 ] @function.call
 
 (typed_parameter
-  (identifier) @parameter)
-(function_arguments (identifier) @parameter)
+  (identifier) @variable.parameter)
+(function_arguments (identifier) @variable.parameter)
 
 [
   (binary_operator)

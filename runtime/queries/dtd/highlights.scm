@@ -1,6 +1,6 @@
 ;; XML declaration
 
-(XMLDecl "xml" @preproc)
+(XMLDecl "xml" @keyword.directive)
 
 (XMLDecl [ "version" "encoding" ] @tag.attribute)
 
@@ -10,12 +10,12 @@
 
 ;; Processing instructions
 
-(PI) @preproc
+(PI) @keyword.directive
 
 ;; Element declaration
 
 (elementdecl
-  "ELEMENT" @define
+  "ELEMENT" @keyword.directive.define
   (Name) @tag)
 
 (contentspec
@@ -30,7 +30,7 @@
 ;; Entity declaration
 
 (GEDecl
-  "ENTITY" @define
+  "ENTITY" @keyword.directive.define
   (Name) @constant)
 
 (GEDecl (EntityValue) @string)
@@ -42,7 +42,7 @@
 ;; Parsed entity declaration
 
 (PEDecl
-  "ENTITY" @define
+  "ENTITY" @keyword.directive.define
   "%" @operator
   (Name) @function.macro)
 
@@ -51,18 +51,18 @@
 ;; Notation declaration
 
 (NotationDecl
-  "NOTATION" @preproc
+  "NOTATION" @keyword.directive
   (Name) @label)
 
 ((NotationDecl
   (ExternalID
-    (SystemLiteral (URI) @string.special))
+    (SystemLiteral (URI) @string.special.url))
  (#set! "priority" 105)))
 
 ;; Attlist declaration
 
 (AttlistDecl
-  "ATTLIST" @define
+  "ATTLIST" @keyword.directive.define
   (Name) @tag)
 
 (AttDef (Name) @tag.attribute)
@@ -100,7 +100,7 @@
 
 (PubidLiteral) @string.special
 
-(SystemLiteral (URI) @text.uri)
+(SystemLiteral (URI) @string.special.url)
 
 ;; Delimiters & punctuation
 
@@ -114,6 +114,6 @@
 
 ;; Misc
 
-[ "INCLUDE" "IGNORE" ] @include
+[ "INCLUDE" "IGNORE" ] @keyword.import
 
 (Comment) @comment @spell

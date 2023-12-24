@@ -10,14 +10,14 @@
 
 ((tag
   (tag_name) @_param 
-  (identifier) @parameter)
+  (identifier) @variable.parameter)
   (#any-of? @_param "@param" "\\param"))
 
 (function (identifier) @function)
 
 (function_link) @function
 
-(emphasis) @text.emphasis
+(emphasis) @markup.italic
 
 [
   "\\a"
@@ -30,7 +30,7 @@
   "in"
   "out"
   "inout"
-] @storageclass
+] @keyword.storage
 
 "~" @operator
 

@@ -16,7 +16,7 @@
   "else"
   (case)
   (of)
-] @conditional
+] @keyword.conditional
 
 [
   "let"
@@ -32,7 +32,7 @@
 [
   (import)
   (exposing)
-] @include
+] @keyword.import
 
 
 ; Punctuation
@@ -79,14 +79,14 @@
   (lower_case_identifier) @variable)
 
 (value_qid
-  ((dot) (lower_case_identifier) @field))
+  ((dot) (lower_case_identifier) @variable.member))
 (field_access_expr
-  ((dot) (lower_case_identifier) @field))
+  ((dot) (lower_case_identifier) @variable.member))
 
 (function_declaration_left
-  (anything_pattern (underscore) @parameter))
+  (anything_pattern (underscore) @variable.parameter))
 (function_declaration_left
-  (lower_pattern (lower_case_identifier) @parameter))
+  (lower_pattern (lower_case_identifier) @variable.parameter))
 
 
 ; Functions
@@ -136,13 +136,13 @@
 ;--------
 
 (module_declaration
-  (upper_case_qid (upper_case_identifier) @namespace))
+  (upper_case_qid (upper_case_identifier) @module))
 (import_clause
-  (upper_case_qid (upper_case_identifier) @namespace))
+  (upper_case_qid (upper_case_identifier) @module))
 (as_clause
-  (upper_case_identifier) @namespace)
+  (upper_case_identifier) @module)
 (value_expr
-  (value_qid (upper_case_identifier) @namespace))
+  (value_qid (upper_case_identifier) @module))
 
 
 ; Types

@@ -2,7 +2,7 @@
 
 (string) @string
 
-(pattern) @string.regex
+(pattern) @string.regexp
 
 (token) @character
 
@@ -17,7 +17,7 @@
   (mac)
   (cipher)
   (key_sig)
-] @parameter
+] @variable.parameter
 
 [
   ; generic
@@ -44,7 +44,7 @@
   (authentication)
 ] @constant.builtin
 
-(uri) @text.uri
+(uri) @string.special.url
 
 ; Keywords
 
@@ -52,7 +52,7 @@
 
 (parameter keyword: _ @keyword)
 
-(host_declaration argument: _ @namespace)
+(host_declaration argument: _ @module)
 
 (match_declaration
   (condition criteria: _ @attribute))

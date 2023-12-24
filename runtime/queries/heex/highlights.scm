@@ -30,7 +30,7 @@
 (comment) @comment @spell
 
 ; HEEx text content is treated as markup
-(text) @text
+; (text) @none
 
 ; HEEx tags and slots are highlighted as HTML
 [

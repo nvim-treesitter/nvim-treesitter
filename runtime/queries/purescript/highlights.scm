@@ -5,7 +5,7 @@
   (integer)
   (exp_negation)
 ] @number
- (exp_literal (number)) @float
+ (exp_literal (number)) @number.float
  (char) @character
  [
    (string)
@@ -43,12 +43,12 @@
    "else"
    "case"
    "of"
- ] @conditional
+ ] @keyword.conditional
 
  [
    "import"
    "module"
- ] @include
+ ] @keyword.import
 
  [
    (operator)
@@ -74,10 +74,10 @@
  ] @operator
 
  (qualified_module (module) @constructor)
- (module) @namespace
- (qualified_type (module) @namespace)
- (qualified_variable (module) @namespace)
- (import (module) @namespace)
+ (module) @module
+ (qualified_type (module) @module)
+ (qualified_variable (module) @module)
+ (import (module) @module)
 
  [
    (where)
@@ -111,7 +111,7 @@
 
  ; `_` wildcards in if-then-else and case-of expressions,
  ; as well as record updates and operator sections
- (wildcard) @parameter
+ (wildcard) @variable.parameter
 
 ; ----------------------------------------------------------------------------
 ; Functions and variables
@@ -120,10 +120,10 @@
  (exp_apply . (exp_name (variable) @function))
  (exp_apply . (exp_name (qualified_variable (variable) @function)))
 
- (row_field (field_name) @field)
- (record_field (field_name) @field)
- (record_accessor (variable) @field)
- (exp_record_access (variable) @field)
+ (row_field (field_name) @variable.member)
+ (record_field (field_name) @variable.member)
+ (record_accessor (variable) @variable.member)
+ (exp_record_access (variable) @variable.member)
 
  (signature name: (variable) @type)
  (kind_declaration (class_name) @type)

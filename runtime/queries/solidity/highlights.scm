@@ -3,16 +3,16 @@
 [
   "pragma" 
   "solidity"
-] @preproc
+] @keyword.directive
 
 (solidity_pragma_token
-  "||" @symbol)
+  "||" @string.special.symbol)
 (solidity_pragma_token
-  "-" @symbol)
+  "-" @string.special.symbol)
 
 (solidity_version_comparison_operator) @operator
 
-(solidity_version) @text.underline @string.special
+(solidity_version) @string.special
 
 ; Literals
 
@@ -22,11 +22,11 @@
 ] @string
 
 (hex_string_literal
-  "hex" @symbol
+  "hex" @string.special.symbol
   (_) @string)
 
 (unicode_string_literal
-  "unicode" @symbol
+  "unicode" @string.special.symbol
   (_) @string)
 
 [
@@ -57,7 +57,7 @@
 
 (contract_declaration name: (identifier) @type)
 (struct_declaration name: (identifier) @type)
-(struct_member name: (identifier) @field)
+(struct_member name: (identifier) @variable.member)
 (enum_declaration name: (identifier) @type)
 (emit_statement . (identifier) @type)
 ; Handles ContractA, ContractB in function foo() override(ContractA, contractB) {}
@@ -77,26 +77,26 @@
 (modifier_invocation (identifier) @function)
 
 ; Handles expressions like structVariable.g();
-(call_expression . (member_expression (identifier) @method.call))
+(call_expression . (member_expression (identifier) @function.method.call))
 
 ; Handles expressions like g();
 (call_expression . (identifier) @function.call)
 
 ; Function parameters
-(event_paramater name: (identifier) @parameter)
-(parameter name: (identifier) @parameter)
+(event_paramater name: (identifier) @variable.parameter)
+(parameter name: (identifier) @variable.parameter)
 
 ; Yul functions
 (yul_function_call function: (yul_identifier) @function.call)
 
 ; Yul function parameters
-(yul_function_definition . (yul_identifier) @function (yul_identifier) @parameter)
+(yul_function_definition . (yul_identifier) @function (yul_identifier) @variable.parameter)
 
 (meta_type_expression "type" @keyword)
 
-(member_expression property: (identifier) @field)
-(call_struct_argument name: (identifier) @field)
-(struct_field_assignment name: (identifier) @field)
+(member_expression property: (identifier) @variable.member)
+(call_struct_argument name: (identifier) @variable.member)
+(struct_field_assignment name: (identifier) @variable.member)
 (enum_value) @constant
 
 ; Keywords
@@ -143,7 +143,7 @@
   "storage"
   "calldata"
   "constant"
-] @storageclass
+] @keyword.storage
 
 [
   "for"
@@ -151,7 +151,7 @@
   "do"
   "break"
   "continue"
-] @repeat
+] @keyword.repeat
 
 [
   "if"
@@ -159,17 +159,17 @@
   "switch"
   "case"
   "default"
-] @conditional
+] @keyword.conditional
 
 (ternary_expression
-  "?" @conditional.ternary
-  ":" @conditional.ternary)
+  "?" @keyword.conditional.ternary
+  ":" @keyword.conditional.ternary)
 
 [
   "try"
   "catch"
   "revert"
-] @exception
+] @keyword.exception
 
 [
   "return"
@@ -182,11 +182,11 @@
 [
   "import" 
   "using"
-] @include
-(import_directive "as" @include)
-(import_directive "from" @include)
-((import_directive source: (string) @text.underline)
-  (#offset! @text.underline 0 1 0 -1))
+] @keyword.import
+(import_directive "as" @keyword.import)
+(import_directive "from" @keyword.import)
+((import_directive source: (string) @string.special.path)
+  (#offset! @string.special.path 0 1 0 -1))
 
 ; Punctuation
 

@@ -1,33 +1,33 @@
 ; inherits: c
 
-((identifier) @field
-  (#lua-match? @field "^m_.*$"))
+((identifier) @variable.member
+  (#lua-match? @variable.member "^m_.*$"))
 
 (parameter_declaration
-  declarator: (reference_declarator) @parameter)
+  declarator: (reference_declarator) @variable.parameter)
 
 ; function(Foo ...foo)
 (variadic_parameter_declaration
   declarator: (variadic_declarator
-                (_) @parameter))
+                (_) @variable.parameter))
 ; int foo = 0
 (optional_parameter_declaration
-    declarator: (_) @parameter)
+    declarator: (_) @variable.parameter)
 
-;(field_expression) @parameter ;; How to highlight this?
+;(field_expression) @variable.parameter ;; How to highlight this?
 
 (((field_expression
-     (field_identifier) @method)) @_parent
+     (field_identifier) @function.method)) @_parent
  (#has-parent? @_parent template_method function_declarator))
 
 (field_declaration
-  (field_identifier) @field)
+  (field_identifier) @variable.member)
 
 (field_initializer
  (field_identifier) @property)
 
 (function_declarator
-  declarator: (field_identifier) @method)
+  declarator: (field_identifier) @function.method)
 
 (concept_definition
   name: (identifier) @type.definition)
@@ -37,17 +37,17 @@
 
 (auto) @type.builtin
 
-(namespace_identifier) @namespace
+(namespace_identifier) @module
 ((namespace_identifier) @type
   (#lua-match? @type "^[%u]"))
 
 (case_statement
   value: (qualified_identifier (identifier) @constant))
 
-(using_declaration . "using" . "namespace" . [(qualified_identifier) (identifier)] @namespace)
+(using_declaration . "using" . "namespace" . [(qualified_identifier) (identifier)] @module)
 
 (destructor_name
-  (identifier) @method)
+  (identifier) @function.method)
 
 ; functions
 (function_declarator
@@ -125,10 +125,10 @@
 ; methods
 (function_declarator
   (template_method
-    (field_identifier) @method))
+    (field_identifier) @function.method))
 (call_expression
   (field_expression
-    (field_identifier) @method.call))
+    (field_identifier) @function.method.call))
 
 ; constructors
 
@@ -176,7 +176,7 @@
  "catch"
  "noexcept"
  "throw"
-] @exception
+] @keyword.exception
 
 
 [

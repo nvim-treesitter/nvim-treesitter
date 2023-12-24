@@ -6,7 +6,7 @@
 
 (string) @string
 (integer) @number
-(float) @float
+(float) @number.float
 
 (true) @constant.builtin
 (false) @constant.builtin

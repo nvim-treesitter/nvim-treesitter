@@ -11,32 +11,32 @@
 
 ;; Macros
 (macro
-    "$" @conditional
-    (prev_scope)* @conditional
-    (identifier)* @namespace
+    "$" @keyword.conditional
+    (prev_scope)* @keyword.conditional
+    (identifier)* @module
 )
 
 
 ;; Directives
-"#" @conditional
+"#" @keyword.conditional
 (preproc_call
-    directive: (identifier)* @conditional
-    argument: (identifier)* @namespace
+    directive: (identifier)* @keyword.conditional
+    argument: (identifier)* @module
 )
 ((preproc_call
-  argument: (identifier)* @namespace) @conditional
-  (#eq? @conditional "ifeq"))
-((preproc_call) @conditional
-  (#any-of? @conditional "else" "endif"))
+  argument: (identifier)* @module) @keyword.conditional
+  (#eq? @keyword.conditional "ifeq"))
+((preproc_call) @keyword.conditional
+  (#any-of? @keyword.conditional "else" "endif"))
 
 ;; Literals
-(number_literal) @float
+(number_literal) @number.float
 (string_literal) @string
 (escape_sequence) @string.escape
 (boolean) @boolean
 
 ;; Treat [m^2 s^-2] the same as if it was put in numbers format
-(dimensions dimension: (identifier) @float)
+(dimensions dimension: (identifier) @number.float)
 
 ;; Punctuation
 [

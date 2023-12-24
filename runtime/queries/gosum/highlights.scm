@@ -8,11 +8,11 @@
 ] @keyword
 
 
-(module_path) @string @text.uri
+(module_path) @string.special.url
 (module_version) @string.special
 
 (hash_version) @attribute
-(hash) @symbol
+(hash) @string.special.symbol
 
 [
  (number)

@@ -7,7 +7,7 @@
 
 [
   "until"
-] @repeat
+] @keyword.repeat
 
 [
   "acquire"

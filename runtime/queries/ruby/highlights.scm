@@ -45,10 +45,10 @@
  "unless"
  "when"
  "then"
- ] @conditional
+ ] @keyword.conditional
 
 (if
-  "end" @conditional)
+  "end" @keyword.conditional)
 
 [
  "for"
@@ -58,7 +58,7 @@
  "redo"
  "retry"
  "next"
- ] @repeat
+ ] @keyword.repeat
 
 (constant) @constant
 
@@ -68,10 +68,10 @@
 [
  "rescue"
  "ensure"
- ] @exception
+ ] @keyword.exception
 
-((identifier) @exception
- (#any-of? @exception "fail" "raise"))
+((identifier) @keyword.exception
+ (#any-of? @keyword.exception "fail" "raise"))
 
 ; Function calls
 
@@ -87,8 +87,8 @@
 
 (program
  (call
-  (identifier) @include)
- (#any-of? @include "require" "require_relative" "load"))
+  (identifier) @keyword.import)
+ (#any-of? @keyword.import "require" "require_relative" "load"))
 
 ; Function definitions
 
@@ -126,15 +126,15 @@
  (super)
  ] @variable.builtin
 
-(method_parameters (identifier) @parameter)
-(lambda_parameters (identifier) @parameter)
-(block_parameters (identifier) @parameter)
-(splat_parameter (identifier) @parameter)
-(hash_splat_parameter (identifier) @parameter)
-(optional_parameter (identifier) @parameter)
-(destructured_parameter (identifier) @parameter)
-(block_parameter (identifier) @parameter)
-(keyword_parameter (identifier) @parameter)
+(method_parameters (identifier) @variable.parameter)
+(lambda_parameters (identifier) @variable.parameter)
+(block_parameters (identifier) @variable.parameter)
+(splat_parameter (identifier) @variable.parameter)
+(hash_splat_parameter (identifier) @variable.parameter)
+(optional_parameter (identifier) @variable.parameter)
+(destructured_parameter (identifier) @variable.parameter)
+(block_parameter (identifier) @variable.parameter)
+(keyword_parameter (identifier) @variable.parameter)
 
 ; Literals
 
@@ -155,13 +155,13 @@
  (simple_symbol)
  (delimited_symbol)
  (hash_key_symbol)
- ] @symbol
+ ] @string.special.symbol
 
 (pair key: (hash_key_symbol) ":" @constant)
-(regex) @string.regex
+(regex) @string.regexp
 (escape_sequence) @string.escape
 (integer) @number
-(float) @float
+(float) @number.float
 
 [
  (true)

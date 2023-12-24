@@ -1,8 +1,8 @@
 ; inherits: ecma
 
-"require" @include
+"require" @keyword.import
 
-(import_require_clause source: (string) @text.uri)
+(import_require_clause source: (string) @string.special.url)
 
 [
   "declare"
@@ -96,44 +96,44 @@
 
 (template_type ["${" "}"] @punctuation.special)
 
-(conditional_type ["?" ":"] @conditional.ternary)
+(conditional_type ["?" ":"] @keyword.conditional.ternary)
 
 ;;; Parameters
-(required_parameter (identifier) @parameter)
-(optional_parameter (identifier) @parameter)
+(required_parameter (identifier) @variable.parameter)
+(optional_parameter (identifier) @variable.parameter)
 
 (required_parameter
   (rest_pattern
-    (identifier) @parameter))
+    (identifier) @variable.parameter))
 
 ;; ({ a }) => null
 (required_parameter
   (object_pattern
-    (shorthand_property_identifier_pattern) @parameter))
+    (shorthand_property_identifier_pattern) @variable.parameter))
 
 ;; ({ a = b }) => null
 (required_parameter
   (object_pattern
     (object_assignment_pattern
-      (shorthand_property_identifier_pattern) @parameter)))
+      (shorthand_property_identifier_pattern) @variable.parameter)))
 
 ;; ({ a: b }) => null
 (required_parameter
   (object_pattern
     (pair_pattern
-      value: (identifier) @parameter)))
+      value: (identifier) @variable.parameter)))
 
 ;; ([ a ]) => null
 (required_parameter
   (array_pattern
-    (identifier) @parameter))
+    (identifier) @variable.parameter))
 
 ;; a => null
 (arrow_function
-  parameter: (identifier) @parameter)
+  parameter: (identifier) @variable.parameter)
 
 ;; global declaration
-(ambient_declaration "global" @namespace)
+(ambient_declaration "global" @module)
 
 ;; function signatures
 (ambient_declaration
@@ -141,11 +141,11 @@
     name: (identifier) @function))
 
 ;; method signatures
-(method_signature name: (_) @method)
+(method_signature name: (_) @function.method)
 
 ;; property signatures
 (property_signature
-  name: (property_identifier) @method
+  name: (property_identifier) @function.method
   type: (type_annotation
           [
             (union_type (parenthesized_type (function_type)))

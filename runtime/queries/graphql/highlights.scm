@@ -80,17 +80,17 @@
 
 (input_fields_definition
   (input_value_definition
-    (name) @parameter))
+    (name) @variable.parameter))
 
 (argument
-  (name) @parameter)
+  (name) @variable.parameter)
 
 (arguments_definition
   (input_value_definition
-    (name) @parameter))
+    (name) @variable.parameter))
 
 (variable_definition
-  (variable) @parameter)
+  (variable) @variable.parameter)
 
 (argument
   (value
@@ -103,7 +103,7 @@
 
 (int_value) @number
 
-(float_value) @float
+(float_value) @number.float
 
 (boolean_value) @boolean
 

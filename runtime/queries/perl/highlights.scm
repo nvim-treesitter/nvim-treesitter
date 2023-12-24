@@ -1,13 +1,13 @@
-((source_file . (comment) @preproc)
-  (#lua-match? @preproc "^#!/"))
+((source_file . (comment) @keyword.directive)
+  (#lua-match? @keyword.directive "^#!/"))
 
-[ "use" "no" "require" ] @include
+[ "use" "no" "require" ] @keyword.import
 
-[ "if" "elsif" "unless" "else" ] @conditional
+[ "if" "elsif" "unless" "else" ] @keyword.conditional
 
-(conditional_expression [ "?" ":" ] @conditional.ternary) 
+(conditional_expression [ "?" ":" ] @keyword.conditional.ternary) 
 
-[ "while" "until" "for" "foreach" ] @repeat
+[ "while" "until" "for" "foreach" ] @keyword.repeat
 
 "return" @keyword.return
 
@@ -15,7 +15,7 @@
 
 [ "map" "grep" "sort" ] @function.builtin
 
-"package" @include
+"package" @keyword.import
 
 [
   "do"
@@ -27,7 +27,7 @@
 (_ operator: _ @operator)
 "\\" @operator
 
-(yadayada) @exception
+(yadayada) @keyword.exception
 
 (phaser_statement phase: _ @keyword.phaser)
 
@@ -37,10 +37,10 @@
   "isa"
 ] @keyword.operator
 
-(eof_marker) @preproc
+(eof_marker) @keyword.directive
 (data_section) @comment
 
-(pod) @text
+(pod) @none
 
 [
   (number)
@@ -70,7 +70,7 @@
  (quoted_regexp)
  (match_regexp)
  (regexp_content)
-] @string.regex
+] @string.regexp
 
 (autoquoted_bareword) @string.special
 
@@ -89,7 +89,7 @@
 (relational_expression operator: "isa" right: (bareword) @type)
 
 (function_call_expression (function) @function.call)
-(method_call_expression (method) @method.call)
+(method_call_expression (method) @function.method.call)
 (method_call_expression invocant: (bareword) @type)
 
 (func0op_call_expression function: _ @function.builtin)

@@ -8,6 +8,6 @@
   "__global__"
   "__forceinline__"
   "__noinline__"
-] @storageclass
+] @keyword.storage
 
 "__launch_bounds__" @type.qualifier

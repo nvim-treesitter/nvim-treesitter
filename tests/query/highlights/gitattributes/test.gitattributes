@@ -1,5 +1,5 @@
 [attr]nodiff -diff -merge
-# <- @preproc
+# <- @keyword.directive
 #     ^^^^^^ @property
 #            ^ @operator
 #             ^^^^ @variable.builtin
@@ -9,7 +9,7 @@
 vendor/** linguist-vendored=true
 #     ^ @punctuation.delimiter
 #      ^^ @character.special
-#         ^^^^^^^^^^^^^^^^^ @parameter
+#         ^^^^^^^^^^^^^^^^^ @variable.parameter
 #                          ^ @operator
 #                           ^^^^ @boolean
 
@@ -22,7 +22,7 @@ vendor/** linguist-vendored=true
 #        ^^^^^^^^^ @constant
 #                 ^ @punctuation.bracket
 #                   ^ @operator
-#                    ^^^^^^^^^^ @parameter
+#                    ^^^^^^^^^^ @variable.parameter
 
 "_\u4E00\t\56txt" encoding=UTF-16
 # <- @punctuation.special

@@ -70,7 +70,7 @@
  "case"
  "in"
  "esac"
-] @conditional
+] @keyword.conditional
 
 [
  "for"
@@ -79,7 +79,7 @@
  "select"
  "until"
  "while"
-] @repeat
+] @keyword.repeat
 
 [
   "declare"
@@ -115,7 +115,7 @@
 
 (arithmetic_expansion "," @punctuation.delimiter)
 
-(ternary_expression [ "?" ":" ] @conditional.ternary)
+(ternary_expression [ "?" ":" ] @keyword.conditional.ternary)
 
 (binary_expression operator: _ @operator)
 (unary_expression operator: _ @operator)
@@ -140,8 +140,8 @@
 
 (command
   argument: [
-             (word) @parameter
-             (concatenation (word) @parameter)
+             (word) @variable.parameter
+             (concatenation (word) @variable.parameter)
              ])
 
 (number) @number
@@ -149,7 +149,7 @@
  (#lua-match? @number "^[0-9]+$"))
 
 (file_redirect
-  destination: (word) @parameter)
+  destination: (word) @variable.parameter)
 
 (file_descriptor) @operator
 
@@ -175,12 +175,12 @@
  (#lua-match? @constant "^[A-Z][A-Z_0-9]*$"))
 
 (case_item
-  value: (word) @parameter)
+  value: (word) @variable.parameter)
 
 [
   (regex)
   (extglob_pattern)
-] @string.regex
+] @string.regexp
 
-((program . (comment) @preproc)
- (#lua-match? @preproc "^#!/"))
+((program . (comment) @keyword.directive)
+ (#lua-match? @keyword.directive "^#!/"))

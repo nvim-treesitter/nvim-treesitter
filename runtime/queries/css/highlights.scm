@@ -9,7 +9,7 @@
  (from)
  ] @keyword
 
-"@import" @include
+"@import" @keyword.import
 
 (comment) @comment @spell
 
@@ -57,7 +57,7 @@
  (attribute_name)
  ] @property
 
-(namespace_name) @namespace
+(namespace_name) @module
 
 ((property_name) @type.definition
   (#lua-match? @type.definition "^[-][-]"))

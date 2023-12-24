@@ -2,7 +2,7 @@
 [
   (import) 
   (package)
-] @include
+] @keyword.import
 
 [
   (with)
@@ -43,9 +43,9 @@
 
 (expr_call func_name: (fn_name (var) @function .))
 
-(expr_call func_arguments: (fn_args (expr) @parameter))
+(expr_call func_arguments: (fn_args (expr) @variable.parameter))
 
-(rule_args (term) @parameter)
+(rule_args (term) @variable.parameter)
 
 [
   (open_paren)
@@ -56,9 +56,9 @@
   (close_curly)
 ] @punctuation.bracket
 
-(rule (rule_head (var) @method))
+(rule (rule_head (var) @function.method))
 
 (rule 
-  (rule_head (term (ref (var) @namespace)))
-  (rule_body (query (literal (expr (expr_infix (expr (term (ref (var)) @_output)))))) (#eq? @_output @namespace))
+  (rule_head (term (ref (var) @module)))
+  (rule_body (query (literal (expr (expr_infix (expr (term (ref (var)) @_output)))))) (#eq? @_output @module))
 )
