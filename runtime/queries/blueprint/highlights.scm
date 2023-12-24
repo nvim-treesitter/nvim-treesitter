@@ -9,7 +9,7 @@
 
 (boolean) @boolean
 
-(using) @include
+(using) @keyword.import
 
 (template) @keyword
 
@@ -34,11 +34,11 @@
 
 (template_definition (template_name_qualifier) @type.qualifier)
 
-(import_statement (gobject_library) @namespace)
+(import_statement (gobject_library) @module)
 
-(import_statement (version_number) @float)
+(import_statement (version_number) @number.float)
 
-(float) @float
+(float) @number.float
 (number) @number
 
 [

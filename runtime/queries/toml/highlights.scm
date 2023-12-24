@@ -12,7 +12,7 @@
 (comment) @comment @spell
 (string) @string
 (integer) @number
-(float) @float
+(float) @number.float
 (offset_date_time) @string.special
 (local_date_time) @string.special
 (local_date) @string.special

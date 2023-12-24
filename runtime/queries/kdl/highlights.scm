@@ -29,8 +29,8 @@
 
 (number) @number
 
-(number (decimal) @float)
-(number (exponent) @float)
+(number (decimal) @number.float)
+(number (exponent) @number.float)
 
 (boolean) @boolean
 

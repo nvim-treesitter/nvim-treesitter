@@ -22,7 +22,7 @@
 ] @string.escape
 
 (attribute
-  (attr_name) @parameter)
+  (attr_name) @variable.parameter)
 
 (attribute
   (builtin_attr) @variable.builtin)
@@ -37,15 +37,16 @@
 
 (string_value) @string
 
-(macro_tag) @preproc
+(macro_tag) @keyword.directive
 
 (macro_def
   macro_name: (_) @property)
 
-[
-  (pattern_negation)
-  (redundant_escape)
-  (trailing_slash)
-] @error
+; we do not lint syntax errors
+; [
+;   (pattern_negation)
+;   (redundant_escape)
+;   (trailing_slash)
+; ] @error
 
 (comment) @comment @spell

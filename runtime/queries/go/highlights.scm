@@ -8,10 +8,10 @@
 (type_spec name: (type_identifier) @type.definition)
 (field_identifier) @property
 (identifier) @variable
-(package_identifier) @namespace
+(package_identifier) @module
 
-(parameter_declaration (identifier) @parameter)
-(variadic_parameter_declaration (identifier) @parameter)
+(parameter_declaration (identifier) @variable.parameter)
+(variadic_parameter_declaration (identifier) @variable.parameter)
 
 (label_name) @label
 
@@ -25,7 +25,7 @@
 
 (call_expression
   function: (selector_expression
-    field: (field_identifier) @method.call))
+    field: (field_identifier) @function.method.call))
 
 ; Function definitions
 
@@ -33,10 +33,10 @@
   name: (identifier) @function)
 
 (method_declaration
-  name: (field_identifier) @method)
+  name: (field_identifier) @function.method)
 
 (method_spec
-  name: (field_identifier) @method)
+  name: (field_identifier) @function.method)
 
 ; Constructors
 
@@ -112,19 +112,19 @@
 "return" @keyword.return
 "go" @keyword.coroutine
 
-"for" @repeat
+"for" @keyword.repeat
 
 [
   "import"
   "package"
-] @include
+] @keyword.import
 
 [
   "else"
   "case"
   "switch"
   "if"
- ] @conditional
+ ] @keyword.conditional
 
 
 ;; Builtin types
@@ -204,7 +204,7 @@
 (escape_sequence) @string.escape
 
 (int_literal) @number
-(float_literal) @float
+(float_literal) @number.float
 (imaginary_literal) @number
 
 [
@@ -218,8 +218,8 @@
 ] @constant.builtin
 
 (keyed_element
-  . (literal_element (identifier) @field))
-(field_declaration name: (field_identifier) @field)
+  . (literal_element (identifier) @variable.member))
+(field_declaration name: (field_identifier) @variable.member)
 
 ; Comments
 

@@ -13,7 +13,7 @@ let
 
     method meth() : int = self.a
     /* <- @keyword.function */
-    /*     ^ @method */
+    /*     ^ @function.method */
     /*                    ^ @variable.builtin */
   }
 
@@ -24,6 +24,6 @@ in
   /*     ^ @property */
 
   object.meth()
-  /*     ^ @method */
+  /*     ^ @function.method */
 end
 /* vim: set ft=tiger: */

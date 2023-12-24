@@ -4,8 +4,8 @@
 (comment) @comment @spell
 ((comment) @comment.documentation
   (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
-(symbol) @symbol
-(member_access_expression (_) (identifier) @symbol)
+(symbol) @string.special.symbol
+(member_access_expression (_) (identifier) @string.special.symbol)
 
 ; highlight constants
 (
@@ -14,12 +14,12 @@
 )
 
 (
-  (member_access_expression (member_access_expression) @include (identifier) @constant)
+  (member_access_expression (member_access_expression) @keyword.import (identifier) @constant)
   (#lua-match? @constant "^[%u][%u%d_]*$")
 )
 
 ; highlight types and probable types
-(type (symbol (_)? @namespace (identifier) @type))
+(type (symbol (_)? @module (identifier) @type))
 (
   (member_access_expression . (identifier) @type)
   (#match? @type "^[A-Z][A-Za-z_0-9]{2,}$")
@@ -27,15 +27,15 @@
 
 ; highlight creation methods in object creation expressions
 (
-  (object_creation_expression (type (symbol (symbol (symbol)? @include (identifier) @type) (identifier) @constructor)))
+  (object_creation_expression (type (symbol (symbol (symbol)? @keyword.import (identifier) @type) (identifier) @constructor)))
   (#lua-match? @constructor "^[%l][%l%d_]*$")
 )
 
 (unqualified_type (symbol . (identifier) @type))
-(unqualified_type (symbol (symbol) @namespace (identifier) @type))
+(unqualified_type (symbol (symbol) @module (identifier) @type))
 
 (attribute) @attribute
-(namespace_declaration (symbol) @namespace)
+(namespace_declaration (symbol) @module)
 (method_declaration (symbol (symbol) @type (identifier) @function))
 (method_declaration (symbol (identifier) @function))
 (local_declaration (assignment (identifier) @variable))
@@ -55,10 +55,10 @@
  (method_call_expression (member_access_expression (identifier) @function.macro))
  (#match? @function.macro "^assert[A-Za-z_0-9]*|error|info|debug|print|warning|warning_once$")
 )
-(lambda_expression (identifier) @parameter)
-(parameter (identifier) @parameter)
+(lambda_expression (identifier) @variable.parameter)
+(parameter (identifier) @variable.parameter)
 (property_declaration (symbol (identifier) @property))
-(field_declaration (identifier) @field)
+(field_declaration (identifier) @variable.member)
 [
  (this_access)
  (base_access)
@@ -69,8 +69,8 @@
 (escape_sequence) @string.escape
 (integer) @number
 (null) @constant.builtin
-(real) @float
-(regex) @string.regex
+(real) @number.float
+(regex) @string.regexp
 (string) @string
 (string_formatter) @string.special
 (template_string) @string
@@ -82,10 +82,10 @@
 ] @type.builtin
 
 (if_directive
-  expression: (_) @preproc
+  expression: (_) @keyword.directive
 ) @keyword
 (elif_directive
-  expression: (_) @preproc
+  expression: (_) @keyword.directive
 ) @keyword
 (else_directive) @keyword
 (endif_directive) @keyword
@@ -133,10 +133,10 @@
  "else"
  "if"
  "switch"
-] @conditional
+] @keyword.conditional
 
 ; specially highlight break statements in switch sections
-(switch_section (break_statement "break" @conditional))
+(switch_section (break_statement "break" @keyword.conditional))
 
 [
  "extern"
@@ -145,7 +145,7 @@
  "protected"
  "public"
  "static"
-] @storageclass
+] @keyword.storage
 
 [
  "and"
@@ -160,10 +160,10 @@
  "typeof"
 ] @keyword.operator
 
-"using" @include
-(using_directive (symbol) @namespace)
+"using" @keyword.import
+(using_directive (symbol) @module)
 
-(symbol "global::" @namespace)
+(symbol "global::" @module)
 
 (array_creation_expression "new" @keyword.operator)
 (object_creation_expression "new" @keyword.operator)
@@ -177,7 +177,7 @@
   "for"
   "foreach"
   "while"
-] @repeat
+] @keyword.repeat
 
 [
   "catch"
@@ -185,7 +185,7 @@
   "throw"
   "throws"
   "try"
-] @exception
+] @keyword.exception
 
 [
   "return"

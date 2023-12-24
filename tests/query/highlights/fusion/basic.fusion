@@ -1,12 +1,12 @@
 include: SomeFile.fusion
-//<- @include
-//       ^ @text.uri
+//<- @keyword.import
+//       ^ @string.special.url
 
 namespace: ns = Neos.Fusion.Space
 //<- @keyword
-//         ^ @namespace
+//         ^ @module
 //            ^ @operator
-//              ^ @namespace
+//              ^ @module
 
 prototype(MyType) < prototype(ns:SuperType) {
 //<-keyword
@@ -14,7 +14,7 @@ prototype(MyType) < prototype(ns:SuperType) {
 //        ^ @type
 //              ^ @punctuation.bracket
 //                ^ @operator
-//                            ^ @namespace
+//                            ^ @module
 //                                ^ @type
 
   deleteProp >
@@ -48,12 +48,12 @@ prototype(MyType) < prototype(ns:SuperType) {
 
   property.aliasedType = ns:SomeType
   //<- @property
-  //                     ^ @namespace
+  //                     ^ @module
   //                        ^ @type
 
   property.fullQualifiedType = SomeNamespace:SomeType
   //<- @property
-  //                           ^ @namespace
+  //                           ^ @module
   //                                         ^ @type
 
 }

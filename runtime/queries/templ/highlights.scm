@@ -29,7 +29,7 @@
 [
   (expression)
   (dynamic_class_attribute_value)
-] @method
+] @function.method
 
 (component_import
   name: (component_identifier) @function)

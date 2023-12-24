@@ -35,23 +35,23 @@
   "IN ZIP"
   (break_statement)
   (continue_statement)
-] @repeat
-(for_statement "END" @repeat)
+] @keyword.repeat
+(for_statement "END" @keyword.repeat)
 
-"WHILE" @repeat
-(while_statement "END" @repeat)
+"WHILE" @keyword.repeat
+(while_statement "END" @keyword.repeat)
 
 [
   "IF"
   "ELSE IF"
-] @conditional
-(if_statement "END" @conditional)
-(if_statement (else_statement "ELSE" @conditional))
+] @keyword.conditional
+(if_statement "END" @keyword.conditional)
+(if_statement (else_statement "ELSE" @keyword.conditional))
 
 [
   "TRY"
   "EXCEPT"
   "FINALLY"
-] @exception
-(try_statement "END" @exception)
-(try_statement (else_statement "ELSE" @exception))
+] @keyword.exception
+(try_statement "END" @keyword.exception)
+(try_statement (else_statement "ELSE" @keyword.exception))

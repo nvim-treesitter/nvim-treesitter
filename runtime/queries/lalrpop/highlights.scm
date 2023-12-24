@@ -10,7 +10,7 @@
 [
   "match"
   "else"
-] @conditional
+] @keyword.conditional
 
 [
  "+"
@@ -32,7 +32,7 @@
   ["<" ">"] @punctuation.bracket)
 
 (binding_symbol
-  name: (identifier) @parameter)
+  name: (identifier) @variable.parameter)
 
 (bare_symbol
   (macro
@@ -54,7 +54,7 @@
 
 [";" ":"] @punctuation.delimiter
 
-(lifetime (identifier) @storageclass)
+(lifetime (identifier) @keyword.storage)
 
 (string_literal) @string
 (regex_literal) @string

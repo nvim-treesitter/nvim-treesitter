@@ -7,8 +7,8 @@
   "ifneq"
   "ifdef"
   "ifndef"
- ] @conditional)
- "endif" @conditional)
+ ] @keyword.conditional)
+ "endif" @keyword.conditional)
 
 (rule (targets (word) @function))
 
@@ -41,10 +41,12 @@
 
 (export_directive "export" @keyword)
 (override_directive "override" @keyword)
-(include_directive ["include" "-include"] @include)
+(include_directive
+  ["include" "-include"] @keyword.import
+  filenames: (list (word) @string.special.path))
 
 (variable_assignment
- name: (word) @symbol
+ name: (word) @string.special.symbol
  [
   "?="
   ":="
@@ -55,12 +57,12 @@
  ] @operator)
 
 (shell_assignment
- name: (word) @symbol
+ name: (word) @string.special.symbol
  "!=" @operator)
 
 (define_directive
  "define" @keyword
- name: (word) @symbol
+ name: (word) @string.special.symbol
  [
   "="
   ":="

@@ -23,12 +23,12 @@
 
 (primitive_type) @type.builtin
 
-(field_identifier) @field
+(field_identifier) @variable.member
 
-(shorthand_field_initializer (identifier) @field)
+(shorthand_field_initializer (identifier) @variable.member)
 
 (mod_item
-  name: (identifier) @namespace)
+  name: (identifier) @module)
 
 (self) @variable.builtin
 
@@ -40,9 +40,9 @@
 
 (function_signature_item (identifier) @function)
 
-(parameter (identifier) @parameter)
+(parameter (identifier) @variable.parameter)
 
-(closure_parameters (_) @parameter)
+(closure_parameters (_) @variable.parameter)
 
 ; Function calls
 
@@ -79,14 +79,14 @@
 ; Assume that uppercase names in paths are types
 
 (scoped_identifier
-  path: (identifier) @namespace)
+  path: (identifier) @module)
 
 (scoped_identifier
  (scoped_identifier
-  name: (identifier) @namespace))
+  name: (identifier) @module))
 
 (scoped_type_identifier
-  path: (identifier) @namespace)
+  path: (identifier) @module)
 
 (scoped_type_identifier
   path: (identifier) @type
@@ -94,7 +94,7 @@
 
 (scoped_type_identifier
  (scoped_identifier
-  name: (identifier) @namespace))
+  name: (identifier) @module))
 
 ((scoped_identifier
   path: (identifier) @type)
@@ -123,16 +123,16 @@
 [
   (crate)
   (super)
-] @namespace
+] @module
 
 (scoped_use_list
-  path: (identifier) @namespace)
+  path: (identifier) @module)
 
 (scoped_use_list
   path: (scoped_identifier
-          (identifier) @namespace))
+          (identifier) @module))
 
-(use_list (scoped_identifier (identifier) @namespace . (_)))
+(use_list (scoped_identifier (identifier) @module . (_)))
 
 (use_list (identifier) @type (#lua-match? @type "^[A-Z]"))
 
@@ -216,7 +216,7 @@
 
 (integer_literal) @number
 
-(float_literal) @float
+(float_literal) @number.float
 
 [
   (raw_string_literal)
@@ -232,9 +232,9 @@
 [
   "use"
   "mod"
-] @include
+] @keyword.import
 
-(use_as_clause "as" @include)
+(use_as_clause "as" @keyword.import)
 
 [
   "default"
@@ -266,9 +266,9 @@
   "static"
   "dyn"
   "extern"
-] @storageclass
+] @keyword.storage
 
-(lifetime ["'" (identifier)] @storageclass.lifetime)
+(lifetime ["'" (identifier)] @keyword.storage.lifetime)
 
 "fn" @keyword.function
 
@@ -281,19 +281,19 @@
 
 (qualified_type "as" @keyword.operator)
 
-(use_list (self) @namespace)
+(use_list (self) @module)
 
-(scoped_use_list (self) @namespace)
+(scoped_use_list (self) @module)
 
-(scoped_identifier [(crate) (super) (self)] @namespace)
+(scoped_identifier [(crate) (super) (self)] @module)
 
-(visibility_modifier [(crate) (super) (self)] @namespace)
+(visibility_modifier [(crate) (super) (self)] @module)
 
 [
   "if"
   "else"
   "match"
-] @conditional
+] @keyword.conditional
 
 [
   "break"
@@ -301,10 +301,10 @@
   "in"
   "loop"
   "while"
-] @repeat
+] @keyword.repeat
 
 "for" @keyword
-(for_expression "for" @repeat)
+(for_expression "for" @keyword.repeat)
 
 ; Operators
 
@@ -370,16 +370,16 @@
 (empty_type "!" @type.builtin)
 
 (macro_invocation
-  macro: (identifier) @exception
-  "!" @exception
-  (#eq? @exception "panic"))
+  macro: (identifier) @keyword.exception
+  "!" @keyword.exception
+  (#eq? @keyword.exception "panic"))
 
 (macro_invocation
-  macro: (identifier) @exception
-  "!" @exception
-  (#contains? @exception "assert"))
+  macro: (identifier) @keyword.exception
+  "!" @keyword.exception
+  (#contains? @keyword.exception "assert"))
 
 (macro_invocation
-  macro: (identifier) @debug
-  "!" @debug
-  (#eq? @debug "dbg"))
+  macro: (identifier) @keyword.debug
+  "!" @keyword.debug
+  (#eq? @keyword.debug "dbg"))

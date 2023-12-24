@@ -11,7 +11,7 @@ void foo(Foo f){
     switch ( f ) {
         case Foo::a:
          //  ^ @type
-         //   ^ @namespace
+         //   ^ @module
          //       ^ @constant
             break;
         case Foo::aa:

@@ -1,42 +1,41 @@
-; TODO(clason): use @comment.{error,warning,hint,info,ok} -- cf. Helix
 ((tag
-  (name) @text.todo @nospell
+  (name) @comment.warning @nospell
   ("(" @punctuation.bracket (user) @constant ")" @punctuation.bracket)?
   ":" @punctuation.delimiter)
-  (#any-of? @text.todo "TODO" "WIP"))
+  (#any-of? @comment.warning "TODO" "WIP"))
 
-("text" @text.todo @nospell
- (#any-of? @text.todo "TODO" "WIP"))
-
-((tag
-  (name) @text.note @nospell
-  ("(" @punctuation.bracket (user) @constant ")" @punctuation.bracket)?
-  ":" @punctuation.delimiter)
-  (#any-of? @text.note "NOTE" "XXX" "INFO" "DOCS" "PERF" "TEST"))
-
-("text" @text.note @nospell
- (#any-of? @text.note "NOTE" "XXX" "INFO" "DOCS" "PERF" "TEST"))
+("text" @comment.warning @nospell
+ (#any-of? @comment.warning "TODO" "WIP"))
 
 ((tag
-  (name) @text.warning @nospell
+  (name) @comment.note @nospell
   ("(" @punctuation.bracket (user) @constant ")" @punctuation.bracket)?
   ":" @punctuation.delimiter)
-  (#any-of? @text.warning "HACK" "WARNING" "WARN" "FIX"))
+  (#any-of? @comment.note "NOTE" "XXX" "INFO" "DOCS" "PERF" "TEST"))
 
-("text" @text.warning @nospell
- (#any-of? @text.warning "HACK" "WARNING" "WARN" "FIX"))
+("text" @comment.note @nospell
+ (#any-of? @comment.note "NOTE" "XXX" "INFO" "DOCS" "PERF" "TEST"))
 
 ((tag
-  (name) @text.danger @nospell
+  (name) @comment.warning @nospell
   ("(" @punctuation.bracket (user) @constant ")" @punctuation.bracket)?
   ":" @punctuation.delimiter)
-  (#any-of? @text.danger "FIXME" "BUG" "ERROR"))
+  (#any-of? @comment.warning "HACK" "WARNING" "WARN" "FIX"))
 
-("text" @text.danger @nospell
- (#any-of? @text.danger "FIXME" "BUG" "ERROR"))
+("text" @comment.warning @nospell
+ (#any-of? @comment.warning "HACK" "WARNING" "WARN" "FIX"))
+
+((tag
+  (name) @comment.error @nospell
+  ("(" @punctuation.bracket (user) @constant ")" @punctuation.bracket)?
+  ":" @punctuation.delimiter)
+  (#any-of? @comment.error "FIXME" "BUG" "ERROR"))
+
+("text" @comment.error @nospell
+ (#any-of? @comment.error "FIXME" "BUG" "ERROR"))
 
 ; Issue number (#123)
 ("text" @number
  (#lua-match? @number "^#[0-9]+$"))
 
-((uri) @text.uri @nospell)
+((uri) @string.special.url @nospell)

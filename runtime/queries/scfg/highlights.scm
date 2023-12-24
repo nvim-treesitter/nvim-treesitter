@@ -5,4 +5,4 @@
 
 (comment) @comment @spell
 (directive_name) @type
-(directive_params) @parameter
+(directive_params) @variable.parameter

@@ -8,27 +8,27 @@
 (pat_wildcard) @variable
 
 (function
-  patterns: (patterns (_) @parameter))
+  patterns: (patterns (_) @variable.parameter))
 
-(exp_lambda (_)+ @parameter "->")
+(exp_lambda (_)+ @variable.parameter "->")
 
 (function 
   infix: (infix
-    lhs: (_) @parameter))
+    lhs: (_) @variable.parameter))
 (function 
   infix: (infix
-    rhs: (_) @parameter))
+    rhs: (_) @variable.parameter))
 
 ;; ----------------------------------------------------------------------------
 ;; Literals and comments
 
 (integer) @number
 (exp_negation) @number
-(exp_literal (float)) @float
+(exp_literal (float)) @number.float
 (char) @character
 (string) @string
 
-(con_unit) @symbol  ; unit, as in ()
+(con_unit) @string.special.symbol  ; unit, as in ()
 
 (comment) @comment
 
@@ -82,9 +82,9 @@
 [
   "forall"
   "∀"
-] @repeat
+] @keyword.repeat
 
-(pragma) @preproc
+(pragma) @keyword.directive
 
 [
   "if"
@@ -92,13 +92,13 @@
   "else"
   "case"
   "of"
-] @conditional
+] @keyword.conditional
 
 [
   "import"
   "qualified"
   "module"
-] @include
+] @keyword.import
 
 [
   (operator)
@@ -124,12 +124,12 @@
 ] @operator
 
 
-(module) @namespace
+(module) @module
 ((qualified_module (module) @constructor)
  . (module))
-(qualified_type (module) @namespace)
-(qualified_variable (module) @namespace)
-(import (module) @namespace)
+(qualified_type (module) @module)
+(qualified_variable (module) @module)
+(import (module) @module)
 (import (module) @constructor . (module))
 
 [
@@ -250,7 +250,7 @@
     [
       ((variable) @function.call)
       (qualified_variable (
-        (module) @namespace
+        (module) @module
         (variable) @function.call))
     ])
   . (operator))
@@ -391,7 +391,7 @@
 ;; namespaced quasi-quoter
 (quasiquote
   (_
-    (module) @namespace
+    (module) @module
     . (variable) @function.call
   ))
 
@@ -400,8 +400,8 @@
 ;; ----------------------------------------------------------------------------
 ;; Exceptions/error handling
 
-((variable) @exception
-  (#any-of? @exception 
+((variable) @keyword.exception
+  (#any-of? @keyword.exception 
    "error"
    "undefined"
    "try"
@@ -431,8 +431,8 @@
 
 ;; ----------------------------------------------------------------------------
 ;; Debugging
-((variable) @debug
-  (#any-of? @debug 
+((variable) @keyword.debug
+  (#any-of? @keyword.debug
    "trace"
    "traceId"
    "traceShow"
@@ -453,11 +453,11 @@
 
 ;; ----------------------------------------------------------------------------
 ;; Fields
-(field (variable) @field)
-(pat_field (variable) @field)
-(exp_projection field: (variable) @field)
-(import_item (type) . (import_con_names (variable) @field))
-(exp_field field: [((variable) @field) (qualified_variable (variable) @field)])
+(field (variable) @variable.member)
+(pat_field (variable) @variable.member)
+(exp_projection field: (variable) @variable.member)
+(import_item (type) . (import_con_names (variable) @variable.member))
+(exp_field field: [((variable) @variable.member) (qualified_variable (variable) @variable.member)])
 
 
 ;; ----------------------------------------------------------------------------

@@ -5,14 +5,14 @@
   "re2c"
   "local"
   "rules"
-] @namespace
+] @module
 
 ; Includes
 
 [
   "!use"
   "!include"
-] @include
+] @keyword.import
 
 ; Keywords
 
@@ -49,7 +49,7 @@
   "*"
   "+"
   "?"
-] @repeat
+] @keyword.repeat
 
 ; Constants
 
@@ -116,7 +116,7 @@
 
 ; Literals
 
-(regex) @string.regex
+(regex) @string.regexp
 
 [
   (dstring) ; case   sensitive
@@ -150,7 +150,7 @@
   (#offset! @type 0 1 0 -1))
 
 (set_header
-  value: (dstring) @string.special @text.underline)
+  value: (dstring) @string.special)
 
 (host_lang) @none
 

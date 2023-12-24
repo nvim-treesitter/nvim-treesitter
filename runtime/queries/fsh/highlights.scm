@@ -85,7 +85,7 @@
 (flag) @constant
 
 ; Special Params
-(code_value) @parameter
+(code_value) @variable.parameter
 
 ; Extras
 (fsh_comment) @comment @spell

@@ -21,9 +21,9 @@
 ;; variables
 
 (class_parameter 
-  name: (identifier) @parameter)
+  name: (identifier) @variable.parameter)
 
-(self_type (identifier) @parameter)
+(self_type (identifier) @variable.parameter)
 
 (interpolation (identifier) @none)
 (interpolation (block) @none)
@@ -52,24 +52,24 @@
 ; method definition
 
 (function_declaration
-      name: (identifier) @method)
+      name: (identifier) @function.method)
 
 (function_definition
-      name: (identifier) @method)
+      name: (identifier) @function.method)
 
 ; imports/exports
 
 (import_declaration
-  path: (identifier) @namespace)
-((stable_identifier (identifier) @namespace))
+  path: (identifier) @module)
+((stable_identifier (identifier) @module))
 
 ((import_declaration
   path: (identifier) @type) (#lua-match? @type "^[A-Z]"))
 ((stable_identifier (identifier) @type) (#lua-match? @type "^[A-Z]"))
 
 (export_declaration
-  path: (identifier) @namespace)
-((stable_identifier (identifier) @namespace))
+  path: (identifier) @module)
+((stable_identifier (identifier) @module))
 
 ((export_declaration
   path: (identifier) @type) (#lua-match? @type "^[A-Z]"))
@@ -87,7 +87,7 @@
 
 (call_expression
   function: (field_expression
-    field: (identifier) @method.call))
+    field: (identifier) @function.method.call))
 
 ((call_expression
    function: (identifier) @constructor)
@@ -105,10 +105,10 @@
   name: (identifier) @function)
 
 (parameter
-  name: (identifier) @parameter)
+  name: (identifier) @variable.parameter)
 
 (binding
-  name: (identifier) @parameter)
+  name: (identifier) @variable.parameter)
 
 ; expressions
 
@@ -125,14 +125,15 @@
 
 (boolean_literal) @boolean
 (integer_literal) @number
-(floating_point_literal) @float
+(floating_point_literal) @number.float
 
 [
-  (symbol_literal)
   (string)
   (character_literal)
   (interpolated_string_expression)
 ] @string
+
+(symbol_literal) @string.special.symbol
 
 (interpolation "$" @punctuation.special)
 
@@ -177,11 +178,11 @@
   "protected"
 ] @type.qualifier
 
-(inline_modifier) @storageclass
+(inline_modifier) @keyword.storage
 
 (null_literal) @constant.builtin
 
-(wildcard) @parameter
+(wildcard) @variable.parameter
 
 (annotation) @attribute
 
@@ -194,7 +195,7 @@
   "if"
   "match"
   "then"
-] @conditional
+] @keyword.conditional
 
 [
  "("
@@ -215,7 +216,7 @@
   "for"
   "while"
   "yield"
-] @repeat
+] @keyword.repeat
 
 "def" @keyword.function
 
@@ -225,13 +226,13 @@
  "@"
 ] @operator
 
-["import" "export"] @include
+["import" "export"] @keyword.import
 
 [
   "try"
   "catch"
   "throw"
-] @exception
+] @keyword.exception
 
 "return" @keyword.return
 
@@ -246,7 +247,7 @@
 ;; `case` is a conditional keyword in case_block
 
 (case_block
-  (case_clause ("case") @conditional))
+  (case_clause ("case") @keyword.conditional))
 
 (operator_identifier) @operator
 
@@ -260,5 +261,5 @@
 )
 
 ;; Scala CLI using directives
-(using_directive_key) @parameter
+(using_directive_key) @variable.parameter
 (using_directive_value) @string

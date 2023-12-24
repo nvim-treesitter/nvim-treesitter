@@ -3,7 +3,7 @@
     subLayers = [
     # <- @keyword
         @./model_sub.usda@ (offset = 1)
-        # <- @text.uri
+        # <- @string.special.url
         #                   ^ @keyword
     ]
 )

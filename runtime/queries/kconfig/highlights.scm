@@ -1,4 +1,4 @@
-"source" @include
+"source" @keyword.import
 
 [
   "mainmenu"
@@ -24,7 +24,7 @@
   "select"
   "imply"
   "visible if"
-] @conditional
+] @keyword.conditional
 
 [
   "def_bool"
@@ -70,10 +70,10 @@
 ((symbol) @constant
   (#lua-match? @constant "[A-Z0-9]+"))
 
-(mainmenu name: (prompt) @text.title)
-(comment_entry name: (prompt) @text.title)
-(menu name: (prompt) @text.title)
+(mainmenu name: (prompt) @markup.heading)
+(comment_entry name: (prompt) @markup.heading)
+(menu name: (prompt) @markup.heading)
 
-(source (prompt) @text.uri @string.special)
+(source (prompt) @string.special.url)
 
 (comment) @comment @spell

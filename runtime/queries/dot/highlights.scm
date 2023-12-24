@@ -33,12 +33,12 @@
 
 (subgraph
   id: (id
-    (identifier) @namespace)
+    (identifier) @module)
 )
 
 (attribute
   name: (id
-    (identifier) @field)
+    (identifier) @variable.member)
 )
 
 (attribute
@@ -48,6 +48,6 @@
 
 (comment) @comment
 
-(preproc) @preproc
+(preproc) @keyword.directive
 
 (comment) @spell

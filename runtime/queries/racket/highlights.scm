@@ -11,7 +11,7 @@
 (number) @number
 (character) @character
 (boolean) @boolean
-(keyword) @symbol
+(keyword) @string.special.symbol
 
 ;; string ;;
 
@@ -21,7 +21,7 @@
 
 (escape_sequence) @string.escape
 
-(regex) @string.regex
+(regex) @string.regexp
 
 ;; comment ;;
 
@@ -46,7 +46,7 @@
 
 ;; quote ;;
 
-(quote) @symbol
+(quote) @string.special.symbol
 
 ;; list ;;
 
@@ -125,14 +125,14 @@
 
 (list
  .
- (symbol) @include
- (#eq? @include "require")
+ (symbol) @keyword.import
+ (#eq? @keyword.import "require")
  (#set! "priority" 101))
 
 (quote
   .
   (symbol)
-  (#set! "priority" 105)) @symbol
+  (#set! "priority" 105)) @string.special.symbol
 
 ((sexp_comment) @comment
  (#set! "priority" 110))

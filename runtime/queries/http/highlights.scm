@@ -4,7 +4,7 @@
 
 ; Methods
 
-(method) @method
+(method) @function.method
 
 ; Constants
 
@@ -16,11 +16,11 @@
 
 ; Fields
 
-(pair name: (identifier) @field)
+(pair name: (identifier) @variable.member)
 
 ; Parameters
 
-(query_param (key) @parameter)
+(query_param (key) @variable.parameter)
 
 ; Operators
 
@@ -35,7 +35,7 @@
 
 (string) @string
 
-(target_url) @string @text.uri
+(target_url) @string.special.url
 
 (number) @number
 

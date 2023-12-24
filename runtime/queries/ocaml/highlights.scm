@@ -1,7 +1,7 @@
 ; Modules
 ;--------
 
-[(module_name) (module_type_name)] @namespace
+[(module_name) (module_type_name)] @module
 
 ; Types
 ;------
@@ -23,7 +23,7 @@
 
 [(value_name) (type_variable)] @variable
 
-(value_pattern) @parameter
+(value_pattern) @variable.parameter
 
 ; Functions
 ;----------
@@ -40,7 +40,7 @@
 
 (external (value_name) @function)
 
-(method_name) @method
+(method_name) @function.method
 
 ; Application
 ;------------
@@ -107,13 +107,13 @@
 
 ["fun" "function" "functor"] @keyword.function
 
-["if" "then" "else"] @conditional
+["if" "then" "else"] @keyword.conditional
 
-["exception" "try"] @exception
+["exception" "try"] @keyword.exception
 
-["include" "open"] @include
+["include" "open"] @keyword.import
 
-["for" "to" "downto" "while" "do" "done"] @repeat
+["for" "to" "downto" "while" "do" "done"] @keyword.repeat
 
 ; Punctuation
 ;------------

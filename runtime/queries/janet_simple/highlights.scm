@@ -1,6 +1,6 @@
 ;; >> Literals
 
-(kwd_lit) @symbol
+(kwd_lit) @string.special.symbol
 (str_lit) @string
 (long_str_lit) @string
 (buf_lit) @string
@@ -31,10 +31,10 @@
 ;; Quoted symbols
 
 (quote_lit
- (sym_lit) @symbol)
+ (sym_lit) @string.special.symbol)
 
 (qq_lit
- (sym_lit) @symbol)
+ (sym_lit) @string.special.symbol)
 
 ;; Dynamic variables
 

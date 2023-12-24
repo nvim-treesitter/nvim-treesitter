@@ -8,7 +8,7 @@
 [
   "include"
   "subninja"
-] @include
+] @keyword.import
 
 [
   ":"
@@ -39,7 +39,7 @@
 ;;
 ;; Paths and Text
 ;; ==============
-(path) @string.special
+(path) @string.special.path
 (text) @string
 
 ;;

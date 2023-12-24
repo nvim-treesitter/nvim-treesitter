@@ -1,21 +1,21 @@
 (comment) @comment @spell
 
-["if" "elif"] @conditional
-(if (else "else" @conditional))
+["if" "elif"] @keyword.conditional
+(if (else "else" @keyword.conditional))
 
-["while" "for"] @repeat
-(while (else "else" @repeat))
-(for (else "else" @repeat))
+["while" "for"] @keyword.repeat
+(while (else "else" @keyword.repeat))
+(for (else "else" @keyword.repeat))
 
-["try" "catch" "finally"] @exception
-(try (else "else" @exception))
+["try" "catch" "finally"] @keyword.exception
+(try (else "else" @keyword.exception))
 
-"use" @include
-(import (bareword) @string.special)
+"use" @keyword.import
+(import (bareword) @string.special.path)
 
 (wildcard ["*" "**" "?"] @character.special)
 
-(command argument: (bareword) @parameter)
+(command argument: (bareword) @variable.parameter)
 (command head: (identifier) @function.call)
 ((command head: (identifier) @keyword.return)
  (#eq? @keyword.return "return"))
@@ -34,7 +34,7 @@
   "fn" @keyword.function
   (identifier) @function)
 
-(parameter_list) @parameter
+(parameter_list) @variable.parameter
 (parameter_list "|" @punctuation.bracket)
 
 ["var" "set" "tmp" "del"] @keyword

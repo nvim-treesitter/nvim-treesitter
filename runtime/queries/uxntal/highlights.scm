@@ -1,8 +1,8 @@
 ; Includes
 
 (include
-  "~" @include
-  _ @text.uri @string.special)
+  "~" @keyword.import
+  _ @string.special.url)
 
 ; Variables
 
@@ -35,25 +35,25 @@
 ; Labels
 
 (label
-  "@" @symbol
+  "@" @string.special.symbol
   (identifier) @function)
 
 (sublabel_reference
-  (identifier) @namespace
+  (identifier) @module
   "/" @punctuation.delimiter
   (identifier) @label)
 
 ; Repeats
 
-((identifier) @repeat
-  (#eq? @repeat "while"))
+((identifier) @keyword.repeat
+  (#eq? @keyword.repeat "while"))
 
 ; Literals
 
 (raw_ascii) @string
 
 (hex_literal
-  "#" @symbol
+  "#" @string.special.symbol
   (hex_lit_value) @string.special)
 
 (number) @number

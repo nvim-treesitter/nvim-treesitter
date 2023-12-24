@@ -6,7 +6,7 @@
 (comment) @comment @spell
 (string_name) @string
 (string) @string
-(float) @float
+(float) @number.float
 (integer) @number
 (null) @constant
 (setter) @function
@@ -15,14 +15,14 @@
 (get_body "get" @keyword.function)
 (static_keyword) @type.qualifier
 (tool_statement) @keyword
-(breakpoint_statement) @debug
+(breakpoint_statement) @keyword.debug
 (inferred_type) @operator
 [(true) (false)] @boolean
 
 [
   (get_node)
   (node_path)
-] @text.uri
+] @string.special.url
 
 (class_name_statement
   (name) @type) @keyword
@@ -44,14 +44,14 @@
 
 (function_definition
   (name) @function (parameters
-    (identifier) @parameter)*)
+    (identifier) @variable.parameter)*)
 
-(typed_parameter (identifier) @parameter)
-(default_parameter (identifier) @parameter)
+(typed_parameter (identifier) @variable.parameter)
+(default_parameter (identifier) @variable.parameter)
 
 (call (identifier) @function.call)
-(call (identifier) @include
-      (#any-of? @include "preload" "load"))
+(call (identifier) @keyword.import
+      (#any-of? @keyword.import "preload" "load"))
 
 ;; Properties and Methods
 
@@ -63,9 +63,9 @@
 
 ; Same question but for methods?
 (class_definition
-  (body (function_definition (name) @method)))
+  (body (function_definition (name) @function.method)))
 
-(attribute_call (identifier) @method.call)
+(attribute_call (identifier) @function.method.call)
 (attribute (_) (identifier) @property)
 
 ;; Enums
@@ -90,9 +90,9 @@
 
 ["," "." ":"] @punctuation.delimiter
 
-["if" "elif" "else" "match"] @conditional
+["if" "elif" "else" "match"] @keyword.conditional
 
-["for" "while" "break" "continue"] @repeat
+["for" "while" "break" "continue"] @keyword.repeat
 
 [
   "~"

@@ -1,4 +1,4 @@
-; Lower priority to prefer @parameter when identifier appears in parameter_declaration.
+; Lower priority to prefer @variable.parameter when identifier appears in parameter_declaration.
 ((identifier) @variable (#set! "priority" 95))
 (preproc_def (preproc_arg) @variable)
 
@@ -27,14 +27,14 @@
   "do"
   "continue"
   "break"
-] @repeat
+] @keyword.repeat
 
 [
  "if"
  "else"
  "case"
  "switch"
-] @conditional
+] @keyword.conditional
 
 [
   "#if"
@@ -46,11 +46,11 @@
   "#elifdef"
   "#elifndef"
   (preproc_directive)
-] @preproc
+] @keyword.directive
 
-"#define" @define
+"#define" @keyword.directive.define
 
-"#include" @include
+"#include" @keyword.import
 
 [ ";" ":" "," "::" ] @punctuation.delimiter
 
@@ -111,7 +111,7 @@
   (false)
 ] @boolean
 
-(conditional_expression [ "?" ":" ] @conditional.ternary)
+(conditional_expression [ "?" ":" ] @keyword.conditional.ternary)
 
 (string_literal) @string
 (system_lib_string) @string
@@ -140,7 +140,7 @@
  (type_descriptor)
 ] @type
 
-(storage_class_specifier) @storageclass
+(storage_class_specifier) @keyword.storage
 
 [
   (type_qualifier)
@@ -149,7 +149,7 @@
 ] @type.qualifier
 
 (linkage_specification
-  "extern" @storageclass)
+  "extern" @keyword.storage)
 
 (type_definition
   declarator: (type_identifier) @type.definition)
@@ -236,13 +236,13 @@
 
 ;; Parameters
 (parameter_declaration
-  declarator: (identifier) @parameter)
+  declarator: (identifier) @variable.parameter)
 
 (parameter_declaration
-  declarator: (array_declarator) @parameter)
+  declarator: (array_declarator) @variable.parameter)
 
 (parameter_declaration
-  declarator: (pointer_declarator) @parameter)
+  declarator: (pointer_declarator) @variable.parameter)
 
 ; K&R functions
 ; To enable support for K&R functions,
@@ -250,24 +250,24 @@
 ; They are commented out as they'll conflict with C++
 ; Note that you'll need to have `; extends` at the top of your query file.
 ;
-; (parameter_list (identifier) @parameter)
+; (parameter_list (identifier) @variable.parameter)
 ;
 ; (function_definition
 ;   declarator: _
 ;   (declaration
-;     declarator: (identifier) @parameter))
+;     declarator: (identifier) @variable.parameter))
 ;
 ; (function_definition
 ;   declarator: _
 ;   (declaration
-;     declarator: (array_declarator) @parameter))
+;     declarator: (array_declarator) @variable.parameter))
 ;
 ; (function_definition
 ;   declarator: _
 ;   (declaration
-;     declarator: (pointer_declarator) @parameter))
+;     declarator: (pointer_declarator) @variable.parameter))
 
-(preproc_params (identifier) @parameter)
+(preproc_params (identifier) @variable.parameter)
 
 [
   "__attribute__"

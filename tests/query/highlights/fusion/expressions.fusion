@@ -76,7 +76,7 @@ logic = ${!foo && !(bar || baz) and not 'string'}
 //                              ^operator
 
 ternary = ${ check ? true : false}
-//                 ^@conditional.ternary
-//                        ^@conditional.ternary
+//                 ^@keyword.conditional.ternary
+//                        ^@keyword.conditional.ternary
 
 

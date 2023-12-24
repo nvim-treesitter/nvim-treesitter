@@ -3,15 +3,15 @@ PRIVATE &password
 ;        ^ @variable.builtin
 ENTRY &password
 ; <- @keyword
-;        ^ @parameter
+;        ^ @variable.parameter
 
 ENTRY %LINE &salt
 ; <- @keyword
 ;      ^ @constant.builtin
-;            ^ @parameter
+;            ^ @variable.parameter
 
 IF "&password"==""
-; <- @conditional
+; <- @keyword.conditional
 ;  ^ @string
 ;    ^ @variable.builtin
 ;             ^ @operator
@@ -21,7 +21,7 @@ IF "&password"==""
 ;   ^ @keyword.return
 )
 ELSE
-; <- @conditional
+; <- @keyword.conditional
 (
     PRIVATE &pass
 
@@ -33,9 +33,9 @@ ELSE
         GOSUB verify_password "&password"
 ;             ^ @function.call
         RETURNVALUES &pass
-;                     ^ @parameter
+;                     ^ @variable.parameter
         WAIT 10.ms
-;            ^ @float
+;            ^ @number.float
     )
 
     IF !&pass
@@ -63,7 +63,7 @@ FramePOS ,,,,Maximized
 ;        ^ @punctuation.delimiter
 ;            ^ @constant.builtin
 WinPOS 0% 50% 100% 35%
-;      ^ @float
+;      ^ @number.float
 COVerage.ListFunc
 
 ENDDO
@@ -80,11 +80,11 @@ verify_password:
 ; <- @function
 (
     PARAMETERS &password
-;               ^ @parameter
+;               ^ @variable.parameter
 
     SYStem.Option.KEYCODE "&password"
     SYStem.JtagClock  1kHz
-;                     ^ @float
+;                     ^ @number.float
     SYStem.Mode.Attach
 
     Data.Set N: EAXI:0x34000000 %Long 0x34000100 0x34000021 /verify
@@ -107,7 +107,7 @@ SUBROUTINE start_debug
     COVerage.ListModule %MULTI.OBC \sieve
 ;    ^ @keyword
 ;                        ^ @constant.builtin
-;                                  ^ @symbol
+;                                  ^ @string.special.symbol
 
     Var.DRAW flags[0..16] /Alternate 3
 ;    ^ @keyword

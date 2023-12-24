@@ -11,7 +11,7 @@
 ] @boolean
 
 ; Keywords
-"for" @repeat
+"for" @keyword.repeat
 "in" @keyword.operator
 "function" @keyword.function
 
@@ -19,7 +19,7 @@
   "if"
   "then"
   "else"
-] @conditional
+] @keyword.conditional
 
 [
   (local)
@@ -30,7 +30,7 @@
 [
   "assert"
   "error"
-] @exception
+] @keyword.exception
 
 [
   (dollar)
@@ -84,12 +84,12 @@
 [
   (import)
   (importstr)
-] @include
+] @keyword.import
 
 ; Fields
 
-(fieldname (id) @field)
-(fieldname (string (string_content) @field))
+(fieldname (id) @variable.member)
+(fieldname (string (string_content) @variable.member))
 
 ; Functions
 (field
@@ -98,7 +98,7 @@
   function: (fieldname
               (string (string_content) @function)))
 (param
-  identifier: (id) @parameter)
+  identifier: (id) @variable.parameter)
 
 (bind (id) @variable.local)
 (bind function: (id) @function)
@@ -113,6 +113,6 @@
   "("
   (args
     (named_argument
-      (id) @parameter
+      (id) @variable.parameter
     ))?
   ")")

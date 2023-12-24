@@ -21,9 +21,9 @@
 
 [ "block" "noblock" "rel" ] @attribute
 
-[ "iffull" "ifempty" ] @conditional
+[ "iffull" "ifempty" ] @keyword.conditional
 
-"public" @storageclass
+"public" @keyword.storage
 
 (integer) @number
 
@@ -31,4 +31,4 @@
 (directive (symbol_def (identifier) @variable))
 (value (identifier) @variable)
 
-(directive directive: _ @preproc)
+(directive directive: _ @keyword.directive)

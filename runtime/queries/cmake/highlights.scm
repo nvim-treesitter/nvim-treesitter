@@ -21,7 +21,7 @@
 
 (normal_command (identifier) @function)
 
-["ENV" "CACHE"] @storageclass
+["ENV" "CACHE"] @keyword.storage
 ["$" "{" "}" "<" ">"] @punctuation.special
 ["(" ")"] @punctuation.bracket
 
@@ -37,18 +37,18 @@
  (elseif)
  (else)
  (endif)
-] @conditional
+] @keyword.conditional
 
 [
  (foreach)
  (endforeach)
  (while)
  (endwhile)
-] @repeat
+] @keyword.repeat
 
 (normal_command
-  (identifier) @repeat
-  (#match? @repeat "\\c^(continue|break)$")
+  (identifier) @keyword.repeat
+  (#match? @keyword.repeat "\\c^(continue|break)$")
 )
 (normal_command
   (identifier) @keyword.return
@@ -59,7 +59,7 @@
   (function)
   (argument_list
     . (argument) @function
-    (argument)* @parameter
+    (argument)* @variable.parameter
   )
 )
 
@@ -67,7 +67,7 @@
   (macro)
   (argument_list
     . (argument) @function.macro
-    (argument)* @parameter
+    (argument)* @variable.parameter
   )
 )
 
@@ -134,7 +134,7 @@
   (argument_list
     . (argument)
     (
-    (argument) @_cache @storageclass
+    (argument) @_cache @keyword.storage
     .
     (argument) @_type @type
     (#any-of? @_cache "CACHE")
@@ -148,8 +148,8 @@
   (#match? @_function "\\c^unset$")
   (argument_list
     . (argument)
-    (argument) @storageclass
-    (#any-of? @storageclass "CACHE" "PARENT_SCOPE")
+    (argument) @keyword.storage
+    (#any-of? @keyword.storage "CACHE" "PARENT_SCOPE")
   )
 )
 
@@ -213,5 +213,5 @@
 
 (escape_sequence) @string.escape
 
-((source_file . (line_comment) @preproc)
-  (#lua-match? @preproc "^#!/"))
+((source_file . (line_comment) @keyword.directive)
+  (#lua-match? @keyword.directive "^#!/"))

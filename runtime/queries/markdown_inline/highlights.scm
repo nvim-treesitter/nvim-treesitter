@@ -1,49 +1,36 @@
 ;; From MDeiml/tree-sitter-markdown
-[
-  (code_span)
-  (link_title)
-] @text.literal @nospell
+(code_span) @markup.raw @nospell
 
-[
-  (emphasis_delimiter)
-  (code_span_delimiter)
-] @punctuation.delimiter
+(emphasis) @markup.italic
 
-(emphasis) @text.emphasis
+(strong_emphasis) @markup.strong
 
-(strong_emphasis) @text.strong
-
-(strikethrough) @text.strike
+(strikethrough) @markup.strikethrough
 
 [
   (link_destination)
   (uri_autolink)
-] @text.uri @nospell
+] @markup.link.url @nospell
 
 (shortcut_link (link_text) @nospell)
 
 [
   (link_label)
   (link_text)
+  (link_title)
   (image_description)
-] @text.reference
+] @markup.link.label
 
 [
   (backslash_escape)
   (hard_line_break)
 ] @string.escape
 
-(image "!" @punctuation.special)
-(image ["[" "]" "(" ")"] @punctuation.bracket)
-(inline_link ["[" "]" "(" ")"] @punctuation.bracket)
-(shortcut_link ["[" "]"] @punctuation.bracket)
-
 ; Conceal codeblock and text style markers
-([
-  (code_span_delimiter)
-  (emphasis_delimiter)
-] @conceal
-(#set! conceal ""))
+((code_span_delimiter) @markup.raw
+  (#set! conceal ""))
+((emphasis_delimiter) @markup.strong
+  (#set! conceal ""))
 
 ; Conceal inline links
 (inline_link
@@ -53,7 +40,7 @@
     "("
     (link_destination)
     ")"
-  ] @conceal
+  ] @markup.link
   (#set! conceal ""))
 
 ; Conceal image links
@@ -65,7 +52,7 @@
     "("
     (link_destination)
     ")"
-  ] @conceal
+  ] @markup.link
   (#set! conceal ""))
 
 ; Conceal full reference links
@@ -74,7 +61,7 @@
     "["
     "]"
     (link_label)
-  ] @conceal
+  ] @markup.link
   (#set! conceal ""))
 
 ; Conceal collapsed reference links
@@ -82,7 +69,7 @@
   [
     "["
     "]"
-  ] @conceal
+  ] @markup.link
   (#set! conceal ""))
 
 ; Conceal shortcut links
@@ -90,13 +77,13 @@
   [
     "["
     "]"
-  ] @conceal
+  ] @markup.link
   (#set! conceal ""))
 
 ;; Replace common HTML entities.
-((entity_reference) @conceal (#eq? @conceal "&nbsp;") (#set! conceal ""))
-((entity_reference) @conceal (#eq? @conceal "&lt;") (#set! conceal "<"))
-((entity_reference) @conceal (#eq? @conceal "&gt;") (#set! conceal ">"))
-((entity_reference) @conceal (#eq? @conceal "&amp;") (#set! conceal "&"))
-((entity_reference) @conceal (#eq? @conceal "&quot;") (#set! conceal "\""))
-((entity_reference) @conceal (#any-of? @conceal "&ensp;" "&emsp;") (#set! conceal " "))
+((entity_reference) @character.special (#eq? @character.special "&nbsp;") (#set! conceal ""))
+((entity_reference) @character.special (#eq? @character.special "&lt;") (#set! conceal "<"))
+((entity_reference) @character.special (#eq? @character.special "&gt;") (#set! conceal ">"))
+((entity_reference) @character.special (#eq? @character.special "&amp;") (#set! conceal "&"))
+((entity_reference) @character.special (#eq? @character.special "&quot;") (#set! conceal "\""))
+((entity_reference) @character.special (#any-of? @character.special "&ensp;" "&emsp;") (#set! conceal " "))

@@ -1,8 +1,8 @@
 ; Namespaces
 
-(circuit (identifier) @namespace)
+(circuit (identifier) @module)
 
-(module (identifier) @namespace)
+(module (identifier) @module)
 
 ; Types
 
@@ -52,14 +52,14 @@
 [
   "input"
   "output"
-] @storageclass
+] @keyword.storage
 
 ; Conditionals
 
 [
   "when"
   "else"
-] @conditional
+] @keyword.conditional
 
 ; Annotations
 
@@ -99,31 +99,31 @@
   "reader"
   "writer"
   "readwriter"
-] @field.builtin
+] @variable.member.builtin
 
-((field_id) @field
+((field_id) @variable.member
   (#set! "priority" 105))
 
-(port (identifier) @field)
+(port (identifier) @variable.member)
 
-(wire (identifier) @field)
+(wire (identifier) @variable.member)
 
-(cmem (identifier) @field)
+(cmem (identifier) @variable.member)
 
-(smem (identifier) @field)
+(smem (identifier) @variable.member)
 
-(memory (identifier) @field)
+(memory (identifier) @variable.member)
 
-(register (identifier) @field)
+(register (identifier) @variable.member)
 
 ; Parameters
 
-(primitive_operation (identifier) @parameter)
+(primitive_operation (identifier) @variable.parameter)
 
-(mux (identifier) @parameter)
-(printf (identifier) @parameter)
-(reset (identifier) @parameter)
-(stop (identifier) @parameter)
+(mux (identifier) @variable.parameter)
+(printf (identifier) @variable.parameter)
+(reset (identifier) @variable.parameter)
+(stop (identifier) @variable.parameter)
 
 ; Variables
 
@@ -151,7 +151,7 @@
 
 (number_str) @string.special
 
-(double) @float
+(double) @number.float
 
 (string) @string
 
