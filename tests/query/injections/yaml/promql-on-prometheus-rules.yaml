@@ -3,7 +3,7 @@ groups:
   rules:
   - alert: Node down
     expr: up{job="node_exporter"} == 0
-    #     ^ promql
+    #     ^ @promql
     for: 3m
     labels:
       severity: warning
@@ -13,7 +13,7 @@ groups:
   - alert: Node down
     expr: |
       up{job="node_exporter"} == 0
-    # ^ promql
+    # ^ @promql
     for: 3m
     labels:
       severity: warning

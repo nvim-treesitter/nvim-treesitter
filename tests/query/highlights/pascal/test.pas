@@ -1,39 +1,39 @@
 program foobar;
-// ^ keyword
+// ^ @keyword
 
 var
-// <- keyword
+// <- @keyword
   foo: bar;
-// ^ variable
-//     ^ type
+// ^ @variable
+//     ^ @type
   foo: foo.bar<t>;
-// ^ variable
-//     ^ type
-//         ^ type
-//             ^ type
+// ^ @variable
+//     ^ @type
+//         ^ @type
+//             ^ @type
 begin
-// ^ keyword
+// ^ @keyword
   foo := bar;
-// ^ variable
-//       ^ variable
+// ^ @variable
+//       ^ @variable
   foo;
-// ^ function
+// ^ @function
   foo();
-// ^ function
+// ^ @function
   foo(bar(xyz));
-// ^ function
-//    ^ function
-//        ^ variable
+// ^ @function
+//    ^ @function
+//        ^ @variable
   xx + yy;
-// ^ variable
-//     ^ variable
+// ^ @variable
+//     ^ @variable
   xx := y + z + func(a, b, c);
-// ^ variable
-//      ^ variable
-//          ^ variable
-//              ^ function
-//                   ^ variable
-//                      ^ variable
-//                         ^ variable
+// ^ @variable
+//      ^ @variable
+//          ^ @variable
+//              ^ @function
+//                   ^ @variable
+//                      ^ @variable
+//                         ^ @variable
 end.
-// <- keyword
+// <- @keyword

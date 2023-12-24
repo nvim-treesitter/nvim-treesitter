@@ -1,51 +1,51 @@
 match command.split():
-# ^ conditional
+# ^ @conditional
     case ["quit"]:
-    # ^ conditional
+    # ^ @conditional
         print("Goodbye!")
         quit_game()
     case ["look"]:
-    # ^ conditional
+    # ^ @conditional
         current_room.describe()
     case ["get", obj]:
-    # ^ conditional
+    # ^ @conditional
         character.get(obj, current_room)
     case ["go", direction]:
-    # ^ conditional
+    # ^ @conditional
         current_room = current_room.neighbor(direction)
     # The rest of your commands go here
 
 match command.split():
-# ^ conditional
+# ^ @conditional
     case ["drop", *objects]:
-    # ^ conditional
+    # ^ @conditional
         for obj in objects:
             character.drop(obj, current_room)
 
 match command.split():
-# ^ conditional
+# ^ @conditional
     case ["quit"]: ... # Code omitted for brevity
     case ["go", direction]: pass
     case ["drop", *objects]: pass
     case _:
         print(f"Sorry, I couldn't understand {command!r}")
-                                                   # ^^ @function.macro
+                                                   # ^^ @@function.macro
 
 match command.split():
-# ^ conditional
+# ^ @conditional
     case ["north"] | ["go", "north"]:
-    # ^ conditional
+    # ^ @conditional
         current_room = current_room.neighbor("north")
     case ["get", obj] | ["pick", "up", obj] | ["pick", obj, "up"]:
-    # ^ conditional
+    # ^ @conditional
         pass
 
 match = 2
-#   ^ variable
+#   ^ @variable
 match, a = 2, 3
-#   ^ variable
+#   ^ @variable
 match: int = secret
-#   ^ variable
+#   ^ @variable
 x, match: str = 2, "hey, what's up?"
-# <- variable
-#   ^ variable
+# <- @variable
+#   ^ @variable

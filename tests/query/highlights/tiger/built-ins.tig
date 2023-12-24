@@ -1,21 +1,21 @@
 let
   var a := exit(0)
-  /*       ^ function.builtin */
+  /*       ^ @function.builtin */
 
   primitive exit(ret: int) /* Shadowing the prelude-included built-in */
-  /*                  ^ type.builtin */
+  /*                  ^ @type.builtin */
 
   var b := exit(0)
-  /*       ^ function.builtin */
+  /*       ^ @function.builtin */
 
   type int = string /* Shadowing the built-in type */
-  /*         ^ type.builtin */
+  /*         ^ @type.builtin */
 
   var c : int := "This is an \"int\""
-  /*      ^ type.builtin (not sure why it isn't 'type')*/
+  /*      ^ @type.builtin (not sure why it isn't 'type')*/
 
   var d : Object := nil
-  /*      ^ type.builtin */
+  /*      ^ @type.builtin */
 
   type Object = int
 
@@ -23,22 +23,22 @@ let
 in
   let
     var c : int := "This is an int"
-    /*      ^ type.builtin (not sure why it isn't 'type')*/
+    /*      ^ @type.builtin (not sure why it isn't 'type')*/
     var d : Object := "This is an object"
-    /*      ^ type.builtin (not sure why it isn't 'type')*/
+    /*      ^ @type.builtin (not sure why it isn't 'type')*/
   in
   end;
 
   exit(1);
-  /* <- function.builtin */
+  /* <- @function.builtin */
 
   print("shadowing is fun");
-  /* <- function.builtin */
+  /* <- @function.builtin */
 
   self;
-  /* <- variable.builtin */
+  /* <- @variable.builtin */
 
   b := print
-  /*   ^ variable */
+  /*   ^ @variable */
 end
 /* vim: set ft=tiger: */
