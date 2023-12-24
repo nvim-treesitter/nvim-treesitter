@@ -6,22 +6,22 @@
 
 (custom_type) @type
 (class_field 
-  name: (identifier) @field)
+  name: (identifier) @variable.member)
 (class_definition 
   name: (identifier) @type)
 (method_definition
-  name: (identifier) @method)
+  name: (identifier) @function.method)
 
 ; Functions
 
-(keyword_argument_key) @parameter
+(keyword_argument_key) @variable.parameter
 (call 
   caller: (reference 
   	(nested_identifier 
-    	property: (member_identifier) @method.call)))
+    	property: (member_identifier) @function.method.call)))
 (call 
   caller: (reference 
-  	(reference_identifier) @method.call))
+  	(reference_identifier) @function.method.call))
 
 ; Primitives
 

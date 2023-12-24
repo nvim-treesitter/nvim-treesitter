@@ -33,4 +33,4 @@
 (negated_set "^" @operator)
 
 (balanced_match
-  (character) @parameter)
+  (character) @variable.parameter)

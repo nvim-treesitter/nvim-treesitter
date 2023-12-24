@@ -15,7 +15,7 @@
 (string) @string
 (boolean) @boolean
 (integer) @number
-(float) @float
+(float) @number.float
 (char) @character
 
 

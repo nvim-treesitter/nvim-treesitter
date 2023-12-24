@@ -1,7 +1,7 @@
 init <- 1
 # ^ @variable
 #     ^ @operator
-#       ^ @float
+#       ^ @number.float
 
 r"{(\1\2)}" -> `%r%`
 #  ^ @string
@@ -21,27 +21,27 @@ b <- list(TRUE, FALSE, NA, Inf)
 #                           ^ @constant.builtin
 
 b <- list(name = "r", version = R.version$major)
-#          ^ @parameter
+#          ^ @variable.parameter
 #                 ^ @string
 #                                        ^ @operator
-#                                           ^ @field
+#                                           ^ @variable.member
 
 Lang$new(name = "r")$print()
-#     ^ @method.call
+#     ^ @function.method.call
 
 for(i in 1:10) {
-# <- @repeat
-#      ^ @repeat
+# <- @keyword.repeat
+#      ^ @keyword.repeat
 }
 
 add <- function(a, b = 1, ...) {
 #        ^ @keyword.function
-#               ^ @parameter
-#                  ^ @parameter
+#               ^ @variable.parameter
+#                  ^ @variable.parameter
 #                         ^ @keyword
   return(a + b)
 }
 
 base::letters
-# ^ @namespace
+# ^ @module
 #        ^ @variable

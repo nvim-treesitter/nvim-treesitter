@@ -17,7 +17,7 @@
 
 ;; These are escaped special characters that lost their special meaning
 ;; -> no special highlighting
-(identity_escape) @string.regex
+(identity_escape) @string.regexp
 
 (class_character) @constant
 

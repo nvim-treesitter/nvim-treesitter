@@ -9,7 +9,7 @@
   "else"
   "elseif"
   "endif"
-] @conditional
+] @keyword.conditional
 
 [
   "try"
@@ -17,7 +17,7 @@
   "finally"
   "endtry"
   "throw"
-] @exception
+] @keyword.exception
 
 [
   "for"
@@ -27,7 +27,7 @@
   "endwhile"
   "break"
   "continue"
-] @repeat
+] @keyword.repeat
 
 [
   "function"
@@ -38,8 +38,8 @@
 (function_declaration name: (_) @function)
 (call_expression function: (identifier) @function.call)
 (call_expression function: (scoped_identifier (identifier) @function.call))
-(parameters (identifier) @parameter)
-(default_parameter (identifier) @parameter)
+(parameters (identifier) @variable.parameter)
+(default_parameter (identifier) @variable.parameter)
 
 [ (bang) (spread) ] @punctuation.special
 
@@ -48,7 +48,7 @@
   (scope)
   "a:"
   "$"
-] @namespace
+] @module
 
 ;; Commands and user defined commands
 
@@ -153,7 +153,7 @@
   "<unique>"
 ] @constant.builtin
 
-(augroup_name) @namespace
+(augroup_name) @module
 
 (au_event) @constant
 (normal_statement (commands) @constant)
@@ -203,12 +203,12 @@
 
 (string_literal) @string
 (integer_literal) @number
-(float_literal) @float
+(float_literal) @number.float
 (comment) @comment @spell
 (line_continuation_comment) @comment @spell
 (pattern) @string.special
-(pattern_multi) @string.regex
-(filename) @string
+(pattern_multi) @string.regexp
+(filename) @string.special.path
 (heredoc (body) @string)
 (heredoc (parameter) @keyword)
 [ (marker_definition) (endmarker) ] @label
@@ -277,7 +277,7 @@
   ":"
 ] @punctuation.delimiter
 
-(ternary_expression ["?" ":"] @conditional.ternary)
+(ternary_expression ["?" ":"] @keyword.conditional.ternary)
 
 ; Options
 ((set_value) @number

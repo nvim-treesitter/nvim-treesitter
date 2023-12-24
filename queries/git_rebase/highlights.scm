@@ -1,6 +1,6 @@
 ((command) @keyword
   (label)? @constant
-  (message)? @text @spell)
+  (message)? @none @spell)
 
 (option) @operator
 

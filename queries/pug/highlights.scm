@@ -18,7 +18,7 @@
 (id) @constant
 (class) @property
 
-(doctype) @preproc
+(doctype) @keyword.directive
 
 (content) @none
 
@@ -33,22 +33,22 @@
  (#match? @keyword "^(:|v-bind|v-|\\@)"))
 (quoted_attribute_value) @string
 
-(include (keyword) @include)
-(extends (keyword) @include)
-(filename) @string.special
+(include (keyword) @keyword.import)
+(extends (keyword) @keyword.import)
+(filename) @string.special.path
 
 (block_definition (keyword) @keyword)
 (block_append (keyword)+ @keyword)
 (block_prepend (keyword)+ @keyword)
 (block_name) @type
 
-(conditional (keyword) @conditional)
+(conditional (keyword) @keyword.conditional)
 (case
-  (keyword) @conditional
-  (when (keyword) @conditional)+)
+  (keyword) @keyword.conditional
+  (when (keyword) @keyword.conditional)+)
 
-(each (keyword) @repeat)
-(while (keyword) @repeat)
+(each (keyword) @keyword.repeat)
+(while (keyword) @keyword.repeat)
 
 (mixin_use
   "+" @punctuation.delimiter
@@ -57,14 +57,14 @@
   (keyword) @keyword.function
   (mixin_name) @function)
 (mixin_attributes
-  (attribute_name) @parameter)
+  (attribute_name) @variable.parameter)
 
 (filter
   ":" @punctuation.delimiter
-  (filter_name) @method.call)
+  (filter_name) @function.method.call)
 (filter
   (attributes
-    (attribute (attribute_name) @parameter)))
+    (attribute (attribute_name) @variable.parameter)))
 
 [
  "(" ")"

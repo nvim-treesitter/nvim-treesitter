@@ -84,16 +84,88 @@ you can mark the language as optional (by putting it between parenthesis).
 
 As languages differ quite a lot, here is a set of captures available to you when building a `highlights.scm` query. Note that your colorscheme needs to define (or link) these captures as highlight groups.
 
-#### Misc
+#### Identifiers
 
-```scheme
-@comment               ; line and block comments
-@comment.documentation ; comments documenting code
-@error                 ; syntax/parser errors
-@none                  ; completely disable the highlight
-@preproc               ; various preprocessor directives & shebangs
-@define                ; preprocessor definition directives
-@operator              ; symbolic operators (e.g. `+` / `*`)
+```query
+@variable            ; various variable names
+@variable.builtin    ; built-in variable names (e.g. `this`)
+@variable.parameter  ; parameters of a function
+@variable.member     ; object and struct fields
+
+@constant          ; constant identifiers
+@constant.builtin  ; built-in constant values
+@constant.macro    ; constants defined by the preprocessor
+
+@module            ; modules or namespaces
+@module.builtin    ; built-in modules or namespaces
+@label             ; GOTO and other labels (e.g. `label:` in C), including heredoc labels
+```
+#### Literals
+
+```query
+@string                 ; string literals
+@string.documentation   ; string documenting code (e.g. Python docstrings)
+@string.regexp          ; regular expressions
+@string.escape          ; escape sequences
+@string.special         ; other special strings (e.g. dates)
+@string.special.symbol  ; symbols or atoms
+@string.special.url     ; URIs (e.g. hyperlinks)
+@string.special.path    ; filenames
+
+@character              ; character literals
+@character.special      ; special characters (e.g. wildcards)
+
+@boolean                ; boolean literals
+@number                 ; numeric literals
+@number.float           ; floating-point number literals
+```
+
+#### Types
+
+```query
+@type             ; type or class definitions and annotations
+@type.builtin     ; built-in types
+@type.definition  ; identifiers in type definitions (e.g. `typedef <type> <identifier>` in C)
+@type.qualifier   ; type qualifiers (e.g. `const`)
+
+@attribute        ; attribute annotations (e.g. Python decorators)
+@property         ; the key in key/value pairs
+```
+
+#### Functions
+
+```query
+@function             ; function definitions
+@function.builtin     ; built-in functions
+@function.call        ; function calls
+@function.macro       ; preprocessor macros
+
+@function.method      ; method definitions
+@function.method.call ; method calls
+
+@constructor          ; constructor calls and definitions
+@operator             ; symbolic operators (e.g. `+` / `*`)
+```
+
+#### Keywords
+
+```query
+@keyword                   ; keywords not fitting into specific categories
+@keyword.coroutine         ; keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
+@keyword.function          ; keywords that define a function (e.g. `func` in Go, `def` in Python)
+@keyword.operator          ; operators that are English words (e.g. `and` / `or`)
+@keyword.import            ; keywords for including modules (e.g. `import` / `from` in Python)
+@keyword.storage           ; modifiers that affect storage in memory or life-time
+@keyword.repeat            ; keywords related to loops (e.g. `for` / `while`)
+@keyword.return            ; keywords like `return` and `yield`
+@keyword.debug             ; keywords related to debugging
+@keyword.exception         ; keywords related to exceptions (e.g. `throw` / `catch`)
+
+@keyword.conditional         ; keywords related to conditionals (e.g. `if` / `else`)
+@keyword.conditional.ternary ; ternary operator (e.g. `?` / `:`)
+
+@keyword.directive         ; various preprocessor directives & shebangs
+@keyword.directive.define  ; preprocessor definition directives
 ```
 
 #### Punctuation
@@ -104,119 +176,53 @@ As languages differ quite a lot, here is a set of captures available to you when
 @punctuation.special   ; special symbols (e.g. `{}` in string interpolation)
 ```
 
-#### Literals
+#### Comments
 
-```scheme
-@string               ; string literals
-@string.documentation ; string documenting code (e.g. Python docstrings)
-@string.regex         ; regular expressions
-@string.escape        ; escape sequences
-@string.special       ; other special strings (e.g. dates)
+```query
+@comment               ; line and block comments
+@comment.documentation ; comments documenting code
 
-@character            ; character literals
-@character.special    ; special characters (e.g. wildcards)
-
-@boolean              ; boolean literals
-@number               ; numeric literals
-@float                ; floating-point number literals
+@comment.error         ; error-type comments (e.g., `DEPRECATED:`)
+@comment.warning       ; warning-type comments (e.g., `WARNING:`, `FIX:`)
+@comment.hint          ; note-type comments (e.g., `NOTE:`)
+@comment.info          ; info-type comments
+@comment.todo          ; todo-type comments (e.g-, `TODO:`, `WIP:`)
 ```
 
-#### Functions
-
-```scheme
-@function         ; function definitions
-@function.builtin ; built-in functions
-@function.call    ; function calls
-@function.macro   ; preprocessor macros
-
-@method           ; method definitions
-@method.call      ; method calls
-
-@constructor      ; constructor calls and definitions
-@parameter        ; parameters of a function
-```
-
-#### Keywords
-
-```scheme
-@keyword             ; various keywords
-@keyword.coroutine   ; keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
-@keyword.function    ; keywords that define a function (e.g. `func` in Go, `def` in Python)
-@keyword.operator    ; operators that are English words (e.g. `and` / `or`)
-@keyword.return      ; keywords like `return` and `yield`
-
-@conditional         ; keywords related to conditionals (e.g. `if` / `else`)
-@conditional.ternary ; ternary operator (e.g. `?` / `:`)
-
-@repeat              ; keywords related to loops (e.g. `for` / `while`)
-@debug               ; keywords related to debugging
-@label               ; GOTO and other labels (e.g. `label:` in C)
-@include             ; keywords for including modules (e.g. `import` / `from` in Python)
-@exception           ; keywords related to exceptions (e.g. `throw` / `catch`)
-```
-
-#### Types
-
-```scheme
-@type            ; type or class definitions and annotations
-@type.builtin    ; built-in types
-@type.definition ; identifiers in type definitions (e.g. `typedef <type> <identifier>` in C)
-@type.qualifier  ; type qualifiers (e.g. `const`)
-
-@storageclass    ; modifiers that affect storage in memory or life-time
-@attribute       ; attribute annotations (e.g. Python decorators)
-@field           ; object and struct fields
-@property        ; similar to `@field`
-```
-
-#### Identifiers
-
-```scheme
-@variable         ; various variable names
-@variable.builtin ; built-in variable names (e.g. `this`)
-
-@constant         ; constant identifiers
-@constant.builtin ; built-in constant values
-@constant.macro   ; constants defined by the preprocessor
-
-@namespace        ; modules or namespaces
-@symbol           ; symbols or atoms
-```
-
-#### Text
+#### Markup
 
 Mainly for markup languages.
 
-```scheme
-@text                  ; non-structured text
-@text.strong           ; bold text
-@text.emphasis         ; text with emphasis
-@text.underline        ; underlined text
-@text.strike           ; strikethrough text
-@text.title            ; text that is part of a title
-@text.quote            ; text quotations
-@text.uri              ; URIs (e.g. hyperlinks)
-@text.math             ; math environments (e.g. `$ ... $` in LaTeX)
-@text.environment      ; text environments of markup languages
-@text.environment.name ; text indicating the type of an environment
-@text.reference        ; text references, footnotes, citations, etc.
+```query
+@markup.strong         ; bold text
+@markup.italic         ; text with emphasis
+@markup.strikethrough  ; strikethrough text
+@markup.underline      ; underlined text (only for literal underline markup!)
 
-@text.literal          ; literal or verbatim text (e.g., inline code)
-@text.literal.block    ; literal or verbatim text as a stand-alone block
+@markup.heading        ; headings, titles (including markers)
+
+@markup.quote          ; block quotes
+@markup.math           ; math environments (e.g. `$ ... $` in LaTeX)
+@markup.environment    ; environments (e.g. in LaTeX)
+
+@markup.link           ; text references, footnotes, citations, etc.
+@markup.link.label     ; link, reference descriptions
+@markup.link.url       ; URL-style links
+
+@markup.raw            ; literal or verbatim text (e.g., inline code)
+@markup.raw.block      ; literal or verbatim text as a stand-alone block
                        ; (use priority 90 for blocks with injections)
 
-@text.todo             ; todo notes
-@text.note             ; info notes
-@text.warning          ; warning notes
-@text.danger           ; danger/error notes
-
-@text.diff.add         ; added text (for diff files)
-@text.diff.delete      ; deleted text (for diff files)
+@markup.list           ; list markers
+@markup.list.checked   ; checked todo-style list markers
+@markup.list.unchecked ; unchecked todo-style list markers
 ```
 
-#### Tags
-
-Used for XML-like tags.
+```query
+@diff.plus       ; added text (for diff files)
+@diff.minus      ; deleted text (for diff files)
+@diff.delta      ; changed text (for diff files)
+```
 
 ```scheme
 @tag           ; XML tag names
@@ -224,17 +230,14 @@ Used for XML-like tags.
 @tag.delimiter ; XML tag delimiters
 ```
 
-#### Conceal
+#### Non-highlighting captures
 
-```scheme
-@conceal ; for captures that are only used for concealing
+```query
+@none    ; completely disable the highlight
+@conceal ; captures that are only meant to be concealed
 ```
 
-`@conceal` must be followed by `(#set! conceal "")`.
-
-#### Spell
-
-```scheme
+```query
 @spell   ; for defining regions to be spellchecked
 @nospell ; for defining regions that should NOT be spellchecked
 ```
@@ -242,6 +245,25 @@ Used for XML-like tags.
 The main types of nodes which are spell checked are:
 - Comments
 - Strings; where it makes sense. Strings that have interpolation or are typically used for non text purposes are not spell checked (e.g. bash).
+
+#### Predicates
+
+Captures can be restricted according to node contents using [predicates](https://neovim.io/doc/user/treesitter.html#treesitter-predicates). For performance reasons, prefer earlier predicates in this list:
+
+1. `#eq?` (literal match)
+2. `#any-of?` (one of several literal matches)
+3. `#lua-match?` (match against a [Lua pattern](https://neovim.io/doc/user/luaref.html#lua-pattern))
+4. `#match?`/`#vim-match?` (match against a [Vim regular expression](https://neovim.io/doc/user/pattern.html#regexp)
+
+#### Conceal
+
+Captures can be concealed by setting the [`conceal` metadata](https://neovim.io/doc/user/treesitter.html#treesitter-highlight-conceal), e.g..,
+```query
+    (fenced_code_block_delimiter @markup.raw.block (#set! conceal ""))
+```
+The capture should be meaningful to allow proper highlighting when `set conceallevel=0`. If the unconcealed capture should not be highlighted (e.g., because an earlier pattern handles this), you can use `@conceal`.
+
+A conceal can be restricted to part of the capture via the [`#offset!` directive](https://neovim.io/doc/user/treesitter.html#treesitter-directive-offset%21).
 
 #### Priority
 

@@ -48,7 +48,7 @@
    (identifier) @function)
 
 (funcdefargs
-   (identifier) @parameter)
+   (identifier) @variable.parameter)
 
 [
   "reduce"
@@ -264,7 +264,7 @@
 [
   "import"
   "include"
-] @include
+] @keyword.import
 
 [
   "if"
@@ -272,12 +272,12 @@
   "elif"
   "else"
   "end"
-] @conditional
+] @keyword.conditional
 
 [
   "try"
   "catch"
-] @exception
+] @keyword.exception
 
 [
   "or"

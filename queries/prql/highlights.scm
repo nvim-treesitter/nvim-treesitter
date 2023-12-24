@@ -20,9 +20,9 @@
   (keyword_from_text)
 ] @keyword
 
-(keyword_loop) @repeat
+(keyword_loop) @keyword.repeat
 
-(keyword_case) @conditional
+(keyword_case) @keyword.conditional
 
 [
  (literal_string)
@@ -31,9 +31,9 @@
 ] @string
 
 (assignment
-  alias: (field) @field)
+  alias: (field) @variable.member)
 
-alias: (identifier) @field
+alias: (identifier) @variable.member
 
 (comment) @comment @spell
 
@@ -75,7 +75,7 @@ alias: (identifier) @field
 
 (integer) @number
 
-(decimal_number) @float
+(decimal_number) @number.float
 
 [
   (keyword_min)
@@ -123,7 +123,7 @@ alias: (identifier) @field
   (keyword_full)
   (keyword_csv)
   (keyword_json)
-] @method.call
+] @function.method.call
 
 [
   (keyword_true)
@@ -139,7 +139,7 @@ alias: (identifier) @field
   name: (identifier) @function)
 
 (parameter
-  (identifier) @parameter)
+  (identifier) @variable.parameter)
 
 (variable
   (keyword_let)

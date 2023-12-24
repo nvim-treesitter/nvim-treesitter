@@ -9,7 +9,7 @@ impl Drop for Foo {
 
 fn main() {
     for i in 0..128 {
-    // <- @repeat
+    // <- @keyword.repeat
         println!("{i}");
     }
 }

@@ -1,5 +1,5 @@
 ["%parameter" "%token" "%type" "%start" "%attribute" "%left" "%right" "%nonassoc" "%public" "%inline" "%prec"] @keyword
-["%on_error_reduce"] @exception
+["%on_error_reduce"] @keyword.exception
 
 ["let"] @keyword.function
 
@@ -15,7 +15,7 @@
 (old_rule [(symbol)] @function)
 (new_rule [(lid)] @function)
 
-(precedence [(symbol)] @parameter)
+(precedence [(symbol)] @variable.parameter)
 
 (funcall) @function.call
 

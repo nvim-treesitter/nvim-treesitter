@@ -30,11 +30,11 @@
 
 (multi_symbol
    "." @punctuation.delimiter
-   (symbol) @field)
+   (symbol) @variable.member)
 
 (multi_symbol_method
    ":" @punctuation.delimiter
-   (symbol) @method.call .)
+   (symbol) @function.method.call .)
 
 (list . (symbol) @function.call)
 (list . (multi_symbol (symbol) @function.call .))
@@ -42,7 +42,7 @@
 ((symbol) @variable.builtin
  (#lua-match? @variable.builtin "^[$]"))
 
-(binding) @symbol
+(binding) @string.special.symbol
 
 [
   "fn"
@@ -64,16 +64,16 @@
 [
   "for"
   "each"
-] @repeat
-((symbol) @repeat
- (#any-of? @repeat
+] @keyword.repeat
+((symbol) @keyword.repeat
+ (#any-of? @keyword.repeat
   "while"))
 
 [
   "match"
-] @conditional
-((symbol) @conditional
- (#any-of? @conditional
+] @keyword.conditional
+((symbol) @keyword.conditional
+ (#any-of? @keyword.conditional
   "if" "when"))
 
 [
@@ -89,8 +89,8 @@
  (#any-of? @keyword
   "comment" "do" "doc" "eval-compiler" "lua" "macros" "quote" "tset" "values"))
 
-((symbol) @include
- (#any-of? @include
+((symbol) @keyword.import
+ (#any-of? @keyword.import
   "require" "require-macros" "import-macros" "include"))
 
 [

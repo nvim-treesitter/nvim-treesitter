@@ -12,7 +12,7 @@
 (afx_attribute
   (afx_property_identifier) @tag.attribute)
 
-(afx_text) @text
+(afx_text) @spell
 
 ; identifiers eel
 
@@ -43,13 +43,13 @@
 (include_statement
   [
    "include"
-  ] @include
-  (source_file) @text.uri
+  ] @keyword.import
+  (source_file) @string.special.url
 )
 
 (namespace_declaration
   "namespace" @keyword
-  (alias_namespace) @namespace)
+  (alias_namespace) @module)
 
 (type
   name: (type_name) @type)
@@ -78,7 +78,7 @@
 [
   (package_name)
   (alias_namespace)
-] @namespace
+] @module
 
 (namespace_declaration "=" @operator)
 (assignment "=" @operator)
@@ -117,4 +117,4 @@
 ] @punctuation.delimiter
 
 (eel_ternary_expression
-  ["?" ":"] @conditional.ternary)
+  ["?" ":"] @keyword.conditional.ternary)

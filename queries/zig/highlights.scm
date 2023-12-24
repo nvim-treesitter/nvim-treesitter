@@ -10,12 +10,12 @@
   variable_type_function: (IDENTIFIER)
 ] @variable
 
-parameter: (IDENTIFIER) @parameter
+parameter: (IDENTIFIER) @variable.parameter
 
 [
   field_member: (IDENTIFIER)
   field_access: (IDENTIFIER)
-] @field
+] @variable.member
 
 ;; assume TitleCase is a type
 (
@@ -48,7 +48,7 @@ parameter: (IDENTIFIER) @parameter
 function: (IDENTIFIER) @function
 function_call: (IDENTIFIER) @function.call
 
-exception: "!" @exception
+exception: "!" @keyword.exception
 
 (
   (IDENTIFIER) @variable.builtin
@@ -71,12 +71,12 @@ field_constant: (IDENTIFIER) @constant
 
 (BUILTINIDENTIFIER) @function.builtin
 
-((BUILTINIDENTIFIER) @include
-  (#any-of? @include "@import" "@cImport"))
+((BUILTINIDENTIFIER) @keyword.import
+  (#any-of? @keyword.import "@import" "@cImport"))
 
 (INTEGER) @number
 
-(FLOAT) @float
+(FLOAT) @number.float
 
 [
   "true"
@@ -133,23 +133,23 @@ field_constant: (IDENTIFIER) @constant
   "if"
   "else"
   "switch"
-] @conditional
+] @keyword.conditional
 
 [
   "for"
   "while"
   "break"
   "continue"
-] @repeat
+] @keyword.repeat
 
 [
   "usingnamespace"
-] @include
+] @keyword.import
 
 [
   "try"
   "catch"
-] @exception
+] @keyword.exception
 
 [
   "anytype"
@@ -169,7 +169,7 @@ field_constant: (IDENTIFIER) @constant
   "align"
   "callconv"
   "linksection"
-] @storageclass
+] @keyword.storage
 
 [
   "comptime"

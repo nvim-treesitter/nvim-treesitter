@@ -18,8 +18,8 @@
 
 (variable_name) @variable
 
-(filter_name) @method
-(filter_argument) @parameter
+(filter_name) @function.method
+(filter_argument) @variable.parameter
 
 (keyword) @keyword
 

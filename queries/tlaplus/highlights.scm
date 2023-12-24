@@ -110,14 +110,14 @@
   (pcal_end_if)
   "either"
   (pcal_end_either)
-] @conditional
+] @keyword.conditional
 [ 
   "while" 
   "do" 
   (pcal_end_while) 
   "with" 
   (pcal_end_with)
-] @repeat
+] @keyword.repeat
 ("return") @keyword.return
 ("print") @function.macro
 
@@ -141,10 +141,10 @@
 (string_set) @type
 
 ; Namespaces
-(extends (identifier_ref) @namespace)
-(instance (identifier_ref) @namespace)
-(module name: (identifier) @namespace)
-(pcal_algorithm name: (identifier) @namespace)
+(extends (identifier_ref) @module)
+(instance (identifier_ref) @module)
+(module name: (identifier) @module)
+(pcal_algorithm name: (identifier) @module)
 
 ; Operators, functions, and macros
 (bound_infix_op symbol: (_) @operator)
@@ -155,7 +155,7 @@
 ((infix_op_symbol) @operator)
 ((postfix_op_symbol) @operator)
 (function_definition name: (identifier) @function)
-(module_definition name: (_) @include)
+(module_definition name: (_) @keyword.import)
 (operator_definition name: (_) @function.macro)
 (pcal_macro_decl name: (identifier) @function.macro)
 (pcal_macro_call name: (identifier) @function.macro)
@@ -168,25 +168,25 @@
 (constant_declaration (identifier) @constant)
 (constant_declaration (operator_declaration name: (_) @constant))
 (pcal_var_decl (identifier) @variable)
-(pcal_with (identifier) @parameter)
+(pcal_with (identifier) @variable.parameter)
 ((".") . (identifier) @attribute)
 (record_literal (identifier) @attribute)
 (set_of_records (identifier) @attribute)
 (variable_declaration (identifier) @variable)
 
 ; Parameters
-(choose (identifier) @parameter)
-(choose (tuple_of_identifiers (identifier) @parameter))
-(lambda (identifier) @parameter)
-(module_definition (operator_declaration name: (_) @parameter))
-(module_definition parameter: (identifier) @parameter)
-(operator_definition (operator_declaration name: (_) @parameter))
-(operator_definition parameter: (identifier) @parameter)
-(pcal_macro_decl parameter: (identifier) @parameter)
-(pcal_proc_var_decl (identifier) @parameter)
-(quantifier_bound (identifier) @parameter)
-(quantifier_bound (tuple_of_identifiers (identifier) @parameter))
-(unbounded_quantification (identifier) @parameter)
+(choose (identifier) @variable.parameter)
+(choose (tuple_of_identifiers (identifier) @variable.parameter))
+(lambda (identifier) @variable.parameter)
+(module_definition (operator_declaration name: (_) @variable.parameter))
+(module_definition parameter: (identifier) @variable.parameter)
+(operator_definition (operator_declaration name: (_) @variable.parameter))
+(operator_definition parameter: (identifier) @variable.parameter)
+(pcal_macro_decl parameter: (identifier) @variable.parameter)
+(pcal_proc_var_decl (identifier) @variable.parameter)
+(quantifier_bound (identifier) @variable.parameter)
+(quantifier_bound (tuple_of_identifiers (identifier) @variable.parameter))
+(unbounded_quantification (identifier) @variable.parameter)
 
 ; Delimiters
 [
@@ -214,10 +214,10 @@
 ] @punctuation.delimiter
 
 ; Proofs
-(assume_prove (new (identifier) @parameter))
-(assume_prove (new (operator_declaration name: (_) @parameter)))
+(assume_prove (new (identifier) @variable.parameter))
+(assume_prove (new (operator_declaration name: (_) @variable.parameter)))
 (assumption name: (identifier) @constant)
-(pick_proof_step (identifier) @parameter)
+(pick_proof_step (identifier) @variable.parameter)
 (proof_step_id "<" @punctuation.bracket)
 (proof_step_id (level) @label)
 (proof_step_id (name) @label)
@@ -226,7 +226,7 @@
 (proof_step_ref (level) @label)
 (proof_step_ref (name) @label)
 (proof_step_ref ">" @punctuation.bracket)
-(take_proof_step (identifier) @parameter)
+(take_proof_step (identifier) @variable.parameter)
 (theorem name: (identifier) @constant)
 
 ; Comments and tags

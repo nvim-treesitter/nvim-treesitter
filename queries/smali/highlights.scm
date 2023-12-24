@@ -20,40 +20,40 @@
 ; Methods
 
 (method_definition
-  (method_signature (method_identifier) @method))
+  (method_signature (method_identifier) @function.method))
 
 (expression
   (opcode) @_invoke
 	(body
 	  (full_method_signature
-      (method_signature (method_identifier) @method.call)))
+      (method_signature (method_identifier) @function.method.call)))
   (#lua-match? @_invoke "^invoke"))
 
 (method_handle
   (full_method_signature
-	(method_signature (method_identifier) @method.call)))
+	(method_signature (method_identifier) @function.method.call)))
 
 (custom_invoke
-  . (identifier) @method.call
-  (method_signature (method_identifier) @method.call))
+  . (identifier) @function.method.call
+  (method_signature (method_identifier) @function.method.call))
 
 (annotation_value
   (body
-    (method_signature (method_identifier) @method.call)))
+    (method_signature (method_identifier) @function.method.call)))
 
 (annotation_value
   (body
     (full_method_signature
-      (method_signature (method_identifier) @method.call))))
+      (method_signature (method_identifier) @function.method.call))))
 
 (field_definition
 	(body
-		(method_signature (method_identifier) @method.call)))
+		(method_signature (method_identifier) @function.method.call)))
 
 (field_definition
 	(body
 	  (full_method_signature
-		  (method_signature (method_identifier) @method.call))))
+		  (method_signature (method_identifier) @function.method.call))))
 
 ((method_identifier) @constructor
   (#any-of? @constructor "<init>" "<clinit>"))
@@ -65,7 +65,7 @@
 [
   (field_identifier)
   (annotation_key)
-] @field
+] @variable.member
 
 ((field_identifier) @constant
   (#lua-match? @constant "^[%u_]*$"))
@@ -79,8 +79,8 @@
 
 ; Parameters
 
-(parameter) @parameter.builtin
-(param_identifier) @parameter
+(parameter) @variable.parameter.builtin
+(param_identifier) @variable.parameter
 
 ; Labels
 
@@ -96,14 +96,14 @@
 ((opcode) @keyword.return
   (#lua-match? @keyword.return "^return"))
 
-((opcode) @conditional
-  (#lua-match? @conditional "^if"))
+((opcode) @keyword.conditional
+  (#lua-match? @keyword.conditional "^if"))
 
-((opcode) @conditional
-  (#lua-match? @conditional "^cmp"))
+((opcode) @keyword.conditional
+  (#lua-match? @keyword.conditional "^cmp"))
 
-((opcode) @exception
-  (#lua-match? @exception "^throw"))
+((opcode) @keyword.exception
+  (#lua-match? @keyword.exception "^throw"))
 
 ((opcode) @comment
   (#eq? @comment "nop")) ; haha, anyone get it? ;)
@@ -148,7 +148,7 @@
 
 [
   ".source"
-] @include
+] @keyword.import
 
 [
   ".method"
@@ -158,12 +158,12 @@
 [
   ".catch"
   ".catchall"
-] @exception
+] @keyword.exception
 
 ; Literals
 
 (string) @string
-(source_directive (string "\"" _ @text.uri "\""))
+(source_directive (string "\"" _ @string.special.url "\""))
 (escape_sequence) @string.escape
 
 (character) @character
@@ -176,7 +176,7 @@
  (float)
  (NaN)
  (Infinity)
-] @float
+] @number.float
 
 (boolean) @boolean
 
@@ -184,7 +184,7 @@
 
 ; Misc
 
-(annotation_visibility) @storageclass
+(annotation_visibility) @keyword.storage
 
 (access_modifier) @type.qualifier
 
@@ -204,7 +204,7 @@
   "/"
 ] @punctuation.delimiter
 
-(line_directive (number) @text.underline @text.literal)
+(line_directive (number) @string.special)
 
 ; Comments
 

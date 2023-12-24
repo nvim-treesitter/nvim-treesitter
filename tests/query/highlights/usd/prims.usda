@@ -4,8 +4,8 @@ def Xform "cube" (
         asset[] payloadAssetDependencies = [@fizz.usd@, @buzz.usd@]
         # <- @type
         #       ^ @keyword
-        #                                   ^ @text.uri
-        #                                               ^ @text.uri
+        #                                   ^ @string.special.url
+        #                                               ^ @string.special.url
     }
 )
 {
@@ -13,13 +13,13 @@ def Xform "cube" (
 
 def "root" (
     add references = @foo.usda@</Model> (offset = 1; scale = 2.0)
-                      # <- @text.uri
+                      # <- @string.special.url
                       #        ^ @string.special
                       #                  ^ @keyword
                       #                           ^ @number
                       #                            ^ @punctuation.delimiter
                       #                              ^ @keyword
-                      #                                      ^ @float
+                      #                                      ^ @number.float
 )
 {
 }
@@ -93,7 +93,7 @@ over "Parent" (
     # <- @function.call
     #       ^ @keyword
     #                     ^ @string.special
-    #                                     ^ @text.uri
+    #                                     ^ @string.special.url
     #                                                 ^ @string.special
 )
 {
@@ -107,12 +107,12 @@ def "foo"
     #           ^ @property
       -414: 14.4
       # <- @number
-      #     ^ @float
+      #     ^ @number.float
       10: 201.0,
       # <- @number
-      #   ^ @float
+      #   ^ @number.float
       10.123: 201.0123,
-      # <- @float
-      #       ^ @float
+      # <- @number.float
+      #       ^ @number.float
     }
 }

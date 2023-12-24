@@ -2,13 +2,13 @@
 
 (section_name) @type
 
-((section_name) @include
- (#eq? @include "include"))
+((section_name) @keyword.import
+ (#eq? @keyword.import "include"))
 
 ((section_header
-   (section_name) @include
+   (section_name) @keyword.import
    (subsection_name))
- (#eq? @include "includeIf"))
+ (#eq? @keyword.import "includeIf"))
 
 (variable (name) @property)
 
@@ -28,11 +28,11 @@
 
 (string) @string
 
-((string) @text.uri
- (#lua-match? @text.uri "^[.]?[/]"))
+((string) @string.special.path
+ (#lua-match? @string.special.path "^[.]?[/]"))
 
-((string) @text.uri
- (#lua-match? @text.uri "^[~]"))
+((string) @string.special.path
+ (#lua-match? @string.special.path "^[~]"))
 
 (section_header
   [

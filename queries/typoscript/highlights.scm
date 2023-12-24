@@ -1,4 +1,4 @@
-(identifier) @field
+(identifier) @variable.member
 
 (constant) @constant
 
@@ -9,14 +9,14 @@
   (condition) 
   (condition_end) 
   (condition_else)
-] @conditional
+] @keyword.conditional
 
 (cobject) @type.builtin
 
 [
   "@import"
   "INCLUDE_TYPOSCRIPT"
-] @include
+] @keyword.import
 
 [
   (comment)

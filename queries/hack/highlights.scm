@@ -43,7 +43,7 @@
  "include_once"
  "require"
  "require_once"
-] @include
+] @keyword.import
 
 [
   "new"
@@ -184,10 +184,10 @@
 ] @operator
 
 (integer) @number
-(float) @float
+(float) @number.float
 
 (parameter
-  (variable) @parameter)
+  (variable) @variable.parameter)
 
 (call_expression
   function: (qualified_identifier (identifier) @function.call .))
@@ -197,23 +197,23 @@
 
 (call_expression
   function: (selection_expression
-              (qualified_identifier (identifier) @method.call .)))
+              (qualified_identifier (identifier) @function.method.call .)))
 
 (qualified_identifier
-  (_) @namespace .
+  (_) @module .
   (_))
 
 (use_statement
   (qualified_identifier
-  (_) @namespace .)
+  (_) @module .)
   (use_clause))
 
 (use_statement
   (use_type "namespace")
   (use_clause
     (qualified_identifier
-         (identifier) @namespace .)
-    alias: (identifier)? @namespace))
+         (identifier) @module .)
+    alias: (identifier)? @module))
 
 (use_statement
   (use_type "const")
@@ -239,8 +239,8 @@
 (use_clause
   (use_type "namespace")
   (qualified_identifier
-  (_) @namespace .)
-  alias: (identifier)? @namespace)
+  (_) @module .)
+  alias: (identifier)? @module)
 
 (use_clause
   (use_type "function")
@@ -263,7 +263,7 @@
 (function_declaration
   name: (identifier) @function)
 (method_declaration
-  name: (identifier) @method)
+  name: (identifier) @function.method)
 
 (type_arguments
   [ "<" ">" ] @punctuation.bracket)
@@ -279,7 +279,7 @@
   "\\" @punctuation.delimiter)
 
 (ternary_expression
-  ["?" ":"] @conditional.ternary)
+  ["?" ":"] @keyword.conditional.ternary)
 
 [
   "if"
@@ -287,13 +287,13 @@
   "elseif"
   "switch"
   "case"
-] @conditional
+] @keyword.conditional
 
 [
   "try"
   "catch"
   "finally"
-] @exception
+] @keyword.exception
 
 [
   "for"
@@ -302,7 +302,7 @@
   "do"
   "continue"
   "break"
-] @repeat
+] @keyword.repeat
 
 [
  (string)

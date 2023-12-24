@@ -2,7 +2,7 @@
 (type_identifier) @type
 (comment) @comment @spell
 (int_literal) @number
-(float_literal) @float
+(float_literal) @number.float
 (string_literal) @string
 (function_identifier) @function
 [
@@ -16,33 +16,33 @@
 (call_expression
   function: (field_expression
     field: (identifier) @function.call))
-(vis) @include
+(vis) @keyword.import
 (units) @type
 (array_literal
   (identifier) @type)
-(transition_statement state: (identifier) @field)
-(state_expression state: (identifier) @field)
+(transition_statement state: (identifier) @variable.member)
+(state_expression state: (identifier) @variable.member)
 (struct_block_definition
-  (identifier) @field)
+  (identifier) @variable.member)
 
-; (state_identifier) @field
+; (state_identifier) @variable.member
 
 [
 "in"
 "for"
-] @repeat
+] @keyword.repeat
 
 "@" @keyword
 
 [
 "import"
 "from"
-] @include
+] @keyword.import
 
 [
 "if"
 "else"
-] @conditional
+] @keyword.conditional
 
 [
 "root"
@@ -151,4 +151,4 @@
  "=>"
  ] @operator
 
-(ternary_expression [":" "?"] @conditional.ternary)
+(ternary_expression [":" "?"] @keyword.conditional.ternary)

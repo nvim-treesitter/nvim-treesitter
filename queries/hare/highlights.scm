@@ -23,18 +23,18 @@
 
 [
   "use"
-] @include
+] @keyword.import
 
 (use_statement
   (scoped_type_identifier
-    (identifier) @namespace))
+    (identifier) @module))
 (use_statement
-  (identifier) @namespace  "{")
+  (identifier) @module  "{")
 (use_statement
-  . (identifier) @namespace .)
+  . (identifier) @module .)
 
 ((scoped_type_identifier
-  path: (_) @namespace)
+  path: (_) @module)
   (#set! "priority" 105))
 
 ; Keywords
@@ -103,7 +103,7 @@
 
 (call_expression
   . (scoped_type_identifier
-    . (identifier) . "::" . (identifier) @method.call))
+    . (identifier) . "::" . (identifier) @function.method.call))
 
 ((call_expression
   . (identifier) @function.builtin)
@@ -123,25 +123,25 @@
 ; Parameters
 
 (parameter
-  (_) @parameter . ":")
+  (_) @variable.parameter . ":")
 
 ; Fields
 
 ((member_expression
-  "." (_) @field)
+  "." (_) @variable.member)
   (#set! "priority" 105))
 
 (field
-  . (identifier) @field)
+  . (identifier) @variable.member)
 
 (field_assignment
-  . (identifier) @field)
+  . (identifier) @variable.member)
 
 ; Repeats
 
 [
   "for"
-] @repeat
+] @keyword.repeat
 
 ; Conditionals
 
@@ -152,7 +152,7 @@
   "switch"
   "match"
   "case"
-] @conditional
+] @keyword.conditional
 
 ; Operators
 
@@ -237,7 +237,7 @@
 
 (number) @number
 
-(float) @float
+(float) @number.float
 
 (boolean) @boolean
 

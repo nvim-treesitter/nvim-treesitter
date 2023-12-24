@@ -28,7 +28,7 @@
 [
   "package"
   "import"
-] @include
+] @keyword.import
 
 [
   (key_type)
@@ -51,7 +51,7 @@
 
 (int_lit) @number
 
-(float_lit) @float
+(float_lit) @number.float
 
 [
   (true)

@@ -40,21 +40,21 @@
 ] @operator
 
 (ternaryoperator
-  ["?" ":"] @conditional.ternary)
+  ["?" ":"] @keyword.conditional.ternary)
 
 [
   "if"
   "elif"
   "else"
   "endif"
-] @conditional
+] @keyword.conditional
 
 [
   "foreach"
   "endforeach"
   (keyword_break)
   (keyword_continue)
-] @repeat
+] @keyword.repeat
 
 (string) @string
 

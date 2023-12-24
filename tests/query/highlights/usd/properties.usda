@@ -11,11 +11,11 @@ token[] purpose = ["default", "render"]
 
 rel material:binding:collection:Erasers = None
 # <- @type
-#   ^ @namespace
+#   ^ @module
 #           ^ @punctuation.delimiter
-#            ^ @namespace
+#            ^ @module
 #                   ^ @punctuation.delimiter
-#                    ^ @namespace
+#                    ^ @module
 #                              ^ @punctuation.delimiter
 #                               ^ @variable
 #                                         ^ @constant.builtin

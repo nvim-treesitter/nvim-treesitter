@@ -23,11 +23,11 @@
     (option_value)
     (check_in)
     (check_out)
-] @text.literal
+] @markup.raw
 
-((account) @field)
+((account) @variable.member)
 
-"include" @include
+"include" @keyword.import
 
 [
     "account"

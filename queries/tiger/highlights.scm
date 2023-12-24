@@ -31,11 +31,11 @@
   "for"
   "to"
   "while"
-] @repeat
+] @keyword.repeat
 
 "new" @keyword.operator
 
-"import" @include
+"import" @keyword.import
 
 [
   "array"
@@ -90,17 +90,17 @@
   name: (identifier) @function)
 
 (method_call
-  method: (identifier) @method)
+  method: (identifier) @function.method)
 (method_declaration
-  name: (identifier) @method)
+  name: (identifier) @function.method)
 
 (parameters
-  name: (identifier) @parameter)
+  name: (identifier) @variable.parameter)
 ; }}}
 
 ; Declarations {{{
 (import_declaration
-  file: (string_literal) @string.special)
+  file: (string_literal) @string.special.path)
 ; }}}
 
 ; Literals {{{

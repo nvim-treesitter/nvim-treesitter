@@ -28,8 +28,8 @@
            "license"))
 
 ((attribute
-    attribute: (identifier) @field)
- (#lua-match? @field "^[%l_].*$"))
+    attribute: (identifier) @variable.member)
+ (#lua-match? @variable.member "^[%l_].*$"))
 
 ((assignment
   left: (identifier) @type.definition
@@ -108,30 +108,30 @@
 
 ;; Normal parameters
 (parameters
-  (identifier) @parameter)
+  (identifier) @variable.parameter)
 ;; Lambda parameters
 (lambda_parameters
-  (identifier) @parameter)
+  (identifier) @variable.parameter)
 (lambda_parameters
   (tuple_pattern
-    (identifier) @parameter))
+    (identifier) @variable.parameter))
 ; Default parameters
 (keyword_argument
-  name: (identifier) @parameter)
+  name: (identifier) @variable.parameter)
 ; Naming parameters on call-site
 (default_parameter
-  name: (identifier) @parameter)
+  name: (identifier) @variable.parameter)
 (typed_parameter
-  (identifier) @parameter)
+  (identifier) @variable.parameter)
 (typed_default_parameter
-  (identifier) @parameter)
+  (identifier) @variable.parameter)
 ; Variadic parameters *args, **kwargs
 (parameters
   (list_splat_pattern ; *args
-    (identifier) @parameter))
+    (identifier) @variable.parameter))
 (parameters
   (dictionary_splat_pattern ; **kwargs
-    (identifier) @parameter))
+    (identifier) @variable.parameter))
 
 
 ;; Literals
@@ -143,12 +143,12 @@
  (#eq? @variable.builtin "cls"))
 
 (integer) @number
-(float) @float
+(float) @number.float
 
 (comment) @comment @spell
 
-((module . (comment) @preproc)
-  (#lua-match? @preproc "^#!/"))
+((module . (comment) @keyword.directive)
+  (#lua-match? @keyword.directive "^#!/"))
 
 (string) @string
 [
@@ -243,14 +243,14 @@
 ] @keyword.return
 
 ((call
-  function: (identifier) @include
+  function: (identifier) @keyword.import
   arguments: (argument_list
-	(string) @conceal))
-  (#eq? @include "load"))
+	(string) @string))
+  (#eq? @keyword.import "load"))
 
-["if" "elif" "else" "match" "case"] @conditional
+["if" "elif" "else" "match" "case"] @keyword.conditional
 
-["for" "while" "break" "continue"] @repeat
+["for" "while" "break" "continue"] @keyword.repeat
 
 ["(" ")" "[" "]" "{" "}"] @punctuation.bracket
 
@@ -274,7 +274,7 @@
   function: (identifier) @_func
   arguments: (argument_list
     (keyword_argument
-	  name: (identifier) @field)))
+	  name: (identifier) @variable.member)))
   (#eq? @_func "struct"))
 
 ;; Function calls
@@ -284,7 +284,7 @@
 
 (call
   function: (attribute
-              attribute: (identifier) @method.call))
+              attribute: (identifier) @function.method.call))
 
 ((call
    function: (identifier) @constructor)

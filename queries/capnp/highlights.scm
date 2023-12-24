@@ -3,7 +3,7 @@
 [
   (unique_id)
   (top_level_annotation_body)
-] @preproc
+] @keyword.directive
 
 ; Includes
 
@@ -12,9 +12,9 @@
   "$import"
   "embed"
   "using"
-] @include
+] @keyword.import
 
-(import_path) @string @text.uri
+(import_path) @string.special.path
 
 ; Keywords
 
@@ -53,11 +53,11 @@
 [
   (annotation_definition_identifier)
   (method_identifier)
-] @method
+] @function.method
 
 ; Fields
 
-(field_identifier) @field
+(field_identifier) @variable.member
 
 ; Properties
 
@@ -68,9 +68,9 @@
 [
   (param_identifier)
   (return_identifier)
-] @parameter
+] @variable.parameter
 
-(annotation_target) @parameter.builtin
+(annotation_target) @variable.parameter.builtin
 
 ; Constants
 
@@ -110,7 +110,7 @@
   (namespace)
 ] @string
 
-(namespace) @text.underline
+(namespace) @string.special
 
 (escape_sequence) @string.escape
 
@@ -118,11 +118,11 @@
 
 (number) @number
 
-(float) @float
+(float) @number.float
 
 (boolean) @boolean
 
-(data_hex) @symbol
+(data_hex) @string.special.symbol
 
 ; Punctuation
 

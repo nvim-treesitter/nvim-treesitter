@@ -34,23 +34,23 @@
  "transition"
 ] @keyword.function
 
-"import" @include
+"import" @keyword.import
 
 "return" @keyword.return
 
 (return_arrow) @punctuation.delimiter
 
-"for" @repeat
+"for" @keyword.repeat
 
 [ 
   "else"
   "if"
-] @conditional
+] @keyword.conditional
 
 [
  (ternary_if)
  (ternary_else)
-] @conditional.ternary
+] @keyword.conditional.ternary
 
 [ "(" ")" "{" "}" "[" "]" ] @punctuation.bracket
 
@@ -118,11 +118,11 @@
 ] @string.special
 
 ;record declaration
-(record_declaration (identifier) @field) 
+(record_declaration (identifier) @variable.member) 
 
 ;struct component 
 (struct_component_declaration 
-  (identifier) @field)
+  (identifier) @variable.member)
 
 (type) @type
 
@@ -140,7 +140,7 @@
 
 (record_type
  (locator
-	(identifier) @field))
+	(identifier) @variable.member))
 
 (transition_declaration
   name: (identifier) @function.builtin)
@@ -159,13 +159,13 @@
 
 (method_call
   . (_)
-  . (identifier) @method.call)
+  . (identifier) @function.method.call)
 
 (function_parameter
- (identifier) @parameter)
+ (identifier) @variable.parameter)
 
 (struct_declaration
-  name: (identifier) @field)
+  name: (identifier) @variable.member)
 
 (variable_declaration
 	(identifier_or_identifiers

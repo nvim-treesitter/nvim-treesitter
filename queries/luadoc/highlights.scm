@@ -3,7 +3,7 @@
 [
   "@module"
   "@package"
-] @include
+] @keyword.import
 
 [
   "@class"
@@ -38,8 +38,8 @@
 (function_type ["fun" "function"] @keyword.function)
 
 (source_annotation
-  filename: (identifier) @text.uri @string.special
-  extension: (identifier) @text.uri @string.special)
+  filename: (identifier) @string.special.path
+  extension: (identifier) @string.special.path)
 
 (version_annotation
   version: _ @constant.builtin)
@@ -75,17 +75,17 @@
 
 ; Parameters
 
-(param_annotation (identifier) @parameter)
+(param_annotation (identifier) @variable.parameter)
 
-(parameter (identifier) @parameter)
+(parameter (identifier) @variable.parameter)
 
 ; Fields
 
-(field_annotation (identifier) @field)
+(field_annotation (identifier) @variable.member)
 
-(table_literal_type field: (identifier) @field)
+(table_literal_type field: (identifier) @variable.member)
 
-(member_type ["#" "."] . (identifier) @field)
+(member_type ["#" "."] . (identifier) @variable.member)
 
 ; Types
 
@@ -110,7 +110,7 @@
 
 ; Literals
 
-(string) @namespace ; only used in @module
+(string) @module ; only used in @module
 
 (literal_type) @string
 

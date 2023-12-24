@@ -5,7 +5,7 @@
 
 (text) @string
 
-"include" @include
+"include" @keyword.import
 
 [ (octal) (hex) ] @number
 

@@ -3,15 +3,15 @@
 ; Preprocs
 
 (preproc_undef
-  name: (_) @constant) @preproc
+  name: (_) @constant) @keyword.directive
 
 ; Includes
 
-(module_import "@import" @include path: (identifier) @namespace)
+(module_import "@import" @keyword.import path: (identifier) @module)
 
 ((preproc_include
-  _ @include path: (_))
-  (#any-of? @include "#include" "#import"))
+  _ @keyword.import path: (_))
+  (#any-of? @keyword.import "#include" "#import"))
 
 ; Type Qualifiers
 
@@ -31,7 +31,7 @@
   "@dynamic"
   "volatile"
   (protocol_qualifier)
-] @storageclass
+] @keyword.storage
 
 ; Keywords
 
@@ -74,7 +74,7 @@
   "@finally"
   "__finally"
   "@throw"
-] @exception
+] @keyword.exception
 
 ; Variables
 
@@ -91,13 +91,13 @@
   "asm"
 ] @function.builtin
 
-(method_definition (identifier) @method)
+(method_definition (identifier) @function.method)
 
-(method_declaration (identifier) @method)
+(method_declaration (identifier) @function.method)
 
-(method_identifier (identifier)? @method ":" @method (identifier)? @method)
+(method_identifier (identifier)? @function.method ":" @function.method (identifier)? @function.method)
 
-(message_expression method: (identifier) @method.call)
+(message_expression method: (identifier) @function.method.call)
 
 ; Constructors
 
@@ -154,9 +154,9 @@
 
 (class_declaration (identifier) @type)
 
-(class_interface "@interface" . (identifier) @type superclass: _? @type category: _? @namespace)
+(class_interface "@interface" . (identifier) @type superclass: _? @type category: _? @module)
 
-(class_implementation "@implementation" . (identifier) @type superclass: _? @type category: _? @namespace)
+(class_implementation "@implementation" . (identifier) @type superclass: _? @type category: _? @module)
 
 (protocol_forward_declaration (identifier) @type) ; @interface :(
 
@@ -185,17 +185,17 @@
 
 ; Parameters
 
-(method_parameter ":" @method (identifier) @parameter)
+(method_parameter ":" @function.method (identifier) @variable.parameter)
 
-(method_parameter declarator: (identifier) @parameter)
+(method_parameter declarator: (identifier) @variable.parameter)
 
 (parameter_declaration 
   declarator: (function_declarator 
                 declarator: (parenthesized_declarator 
                               (block_pointer_declarator 
-                                declarator: (identifier) @parameter))))
+                                declarator: (identifier) @variable.parameter))))
 
-"..." @parameter.builtin
+"..." @variable.parameter.builtin
 
 ; Operators
 
@@ -207,7 +207,7 @@
 
 (platform) @string.special
 
-(version_number) @text.uri @number
+(version_number) @string.special
 
 ; Punctuation
 

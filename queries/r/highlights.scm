@@ -3,7 +3,7 @@
 ; Literals
 (integer) @number
 
-(float) @float
+(float) @number.float
 
 (complex) @number
 
@@ -12,29 +12,29 @@
 
 (comment) @comment @spell
 
-((program . (comment) @preproc)
-  (#lua-match? @preproc "^#!/"))
+((program . (comment) @keyword.directive)
+  (#lua-match? @keyword.directive "^#!/"))
 
 (identifier) @variable
 
 ((dollar (identifier) @variable.builtin)
  (#eq? @variable.builtin "self"))
 
-((dollar _ (identifier) @field))
+((dollar _ (identifier) @variable.member))
 
 ; Parameters
 
-(formal_parameters (identifier) @parameter)
+(formal_parameters (identifier) @variable.parameter)
 
 (formal_parameters
- (default_parameter name: (identifier) @parameter))
+ (default_parameter name: (identifier) @variable.parameter))
 
-(default_argument name: (identifier) @parameter)
+(default_argument name: (identifier) @variable.parameter)
 
 ; Namespace
 
-(namespace_get namespace: (identifier) @namespace)
-(namespace_get_internal namespace: (identifier) @namespace)
+(namespace_get namespace: (identifier) @module)
+(namespace_get_internal namespace: (identifier) @module)
 
 ; Operators
 [
@@ -111,14 +111,14 @@
   "if"
   "else"
   "switch"
-] @conditional
+] @keyword.conditional
 
 [
   "while"
   "repeat"
   "for"
   "in"
-] @repeat
+] @keyword.repeat
 
 [
   (true)
@@ -138,4 +138,4 @@
   (namespace_get_internal function: (identifier) @function.call))
 
 (call
-  function: ((dollar _ (identifier) @method.call)))
+  function: ((dollar _ (identifier) @function.method.call)))

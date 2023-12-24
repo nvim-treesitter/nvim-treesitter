@@ -19,7 +19,7 @@
 [
   "_:"
   (namespace)
-] @namespace
+] @module
 
 [
   "UNDEF"
@@ -84,7 +84,7 @@
 [
   (decimal)
   (double)
-] @float
+] @number.float
 (boolean_literal) @boolean
 
 [
@@ -184,12 +184,12 @@
   [
     bound_variable: (var)
     "*"
-  ] @parameter)
-(bind bound_variable: (var) @parameter)
-(data_block bound_variable: (var) @parameter)
-(group_condition bound_variable: (var) @parameter)
+  ] @variable.parameter)
+(bind bound_variable: (var) @variable.parameter)
+(data_block bound_variable: (var) @variable.parameter)
+(group_condition bound_variable: (var) @variable.parameter)
 
-(iri_reference ["<" ">"] @namespace)
+(iri_reference ["<" ">"] @module)
 
 (lang_tag) @type
 (rdf_literal 

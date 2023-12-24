@@ -6,7 +6,7 @@
   name: (identifier) @function)
 (pipe_call
   arguments: (pipe_arguments
-               (identifier) @parameter))
+               (identifier) @variable.parameter))
 
 (structural_assignment
   operator: (identifier) @keyword)

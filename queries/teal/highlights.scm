@@ -6,7 +6,7 @@
   (#lua-match? @comment.documentation "^[-][-][-]"))
 ((comment) @comment.documentation
   (#lua-match? @comment.documentation "^[-][-](%s?)@"))
-(shebang_comment) @preproc
+(shebang_comment) @keyword.directive
 (identifier) @variable
 ((identifier) @variable.builtin
   (#eq? @variable.builtin "self"))
@@ -21,8 +21,8 @@
 (format_specifier) @string.escape
 
 ;; Basic statements/Keywords
-[ "if" "then" "elseif" "else" ] @conditional
-[ "for" "while" "repeat" "until" ] @repeat
+[ "if" "then" "elseif" "else" ] @keyword.conditional
+[ "for" "while" "repeat" "until" ] @keyword.repeat
 "return" @keyword.return
 [ "in" "local" (break) (goto) "do" "end" ] @keyword
 (label) @label
@@ -47,7 +47,7 @@
   "function" @keyword.function)
 (function_body "end" @keyword.function)
 
-(arg name: (identifier) @parameter)
+(arg name: (identifier) @variable.parameter)
 
 (function_signature
   (arguments
@@ -56,8 +56,8 @@
 
 (typeargs
   "<" @punctuation.bracket
-  . (_) @parameter
-  . ("," . (_) @parameter)*
+  . (_) @variable.parameter
+  . ("," . (_) @variable.parameter)*
   . ">" @punctuation.bracket)
 
 (function_call

@@ -36,7 +36,7 @@
 [
  "__exported"
  "import"
-] @include
+] @keyword.import
 
 (property_declaration
   (identifier) @property)
