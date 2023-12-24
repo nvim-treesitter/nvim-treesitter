@@ -59,7 +59,7 @@
 (list_literal "list" @function.builtin)
 
 (method_declaration
-  name: (name) @method)
+  name: (name) @function.method)
 
 (function_call_expression
   function: (qualified_name (name) @function.call))
@@ -71,13 +71,13 @@
   name: (name) @function.call)
 
 (member_call_expression
-  name: (name) @method.call)
+  name: (name) @function.method.call)
 
 (function_definition
   name: (name) @function)
 
 (nullsafe_member_call_expression
-    name: (name) @method)
+    name: (name) @function.method)
 
 (method_declaration
     name: (name) @constructor
@@ -90,10 +90,10 @@
 [
   (simple_parameter)
   (variadic_parameter)
-] @parameter
+] @variable.parameter
 
 (argument
-    (name) @parameter)
+    (name) @variable.parameter)
 
 ; Member
 
@@ -115,18 +115,18 @@
 
 ; Namespace
 (namespace_definition
-  name: (namespace_name (name) @namespace))
+  name: (namespace_name (name) @module))
 (namespace_name_as_prefix
-  (namespace_name (name) @namespace))
+  (namespace_name (name) @module))
 
 ; Attributes
 (attribute_list) @attribute
 
 ; Conditions ( ? : )
-(conditional_expression) @conditional
+(conditional_expression) @keyword.conditional
 
 ; Directives
-(declare_directive ["strict_types" "ticks" "encoding"] @parameter)
+(declare_directive ["strict_types" "ticks" "encoding"] @variable.parameter)
 
 ; Basic tokens
 
@@ -149,7 +149,7 @@
 (boolean) @boolean
 (null) @constant.builtin
 (integer) @number
-(float) @float
+(float) @number.float
 (comment) @comment @spell
 
 (named_label_statement) @label
@@ -215,7 +215,7 @@
  "switch"
  "match"
   "??"
- ] @conditional
+ ] @keyword.conditional
 
 [
  "continue"
@@ -226,14 +226,14 @@
  "for"
  "foreach"
  "while"
- ] @repeat
+ ] @keyword.repeat
 
 [
  "catch"
  "finally"
  "throw"
  "try"
- ] @exception
+ ] @keyword.exception
 
 [
  "include_once"
@@ -241,7 +241,7 @@
  "require_once"
  "require"
  "use"
- ] @include
+ ] @keyword.import
 
 [
  ","

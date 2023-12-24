@@ -1,12 +1,12 @@
-(user) @namespace
+(user) @module
 
-(auth) @symbol
+(auth) @string.special.symbol
 
 (gecos) @string
 
-(home) @text.uri @constant
+(home) @string.special.path
 
-(shell) @text.uri @string.special
+(shell) @string.special.path
 
 [
   (gid)

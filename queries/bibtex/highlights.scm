@@ -23,10 +23,10 @@
 (number) @number
 
 (field
-  name: (identifier) @field)
+  name: (identifier) @variable.member)
 
 (token
-  (identifier) @parameter)
+  (identifier) @variable.parameter)
 
 [
   (brace_word)
@@ -36,7 +36,7 @@
 [
   (key_brace)
   (key_paren)
-] @symbol
+] @string.special.symbol
 
 (string
   name: (identifier) @constant)

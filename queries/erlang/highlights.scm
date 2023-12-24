@@ -3,7 +3,7 @@
 
 (char) @character
 (integer) @number
-(float) @float
+(float) @number.float
 
 (comment) @comment @spell
 
@@ -70,12 +70,12 @@
   "end"
   "maybe"
   "else"
-] @conditional
+] @keyword.conditional
 
 [
   "catch"
   "try"
-] @exception
+] @keyword.exception
 
 ((atom) @boolean (#any-of? @boolean "true" "false"))
 
@@ -86,26 +86,26 @@
 (pp_define
   lhs: _ @constant.macro (#set! "priority" 101)
 )
-(_preprocessor_directive) @preproc (#set! "priority" 99)
+(_preprocessor_directive) @keyword.directive (#set! "priority" 99)
 
 ;; Attributes
-(pp_include) @include
-(pp_include_lib) @include
-(export_attribute) @include
+(pp_include) @keyword.import
+(pp_include_lib) @keyword.import
+(export_attribute) @keyword.import
 (export_type_attribute) @type.definition
 (export_type_attribute types: (fa fun: _ @type (#set! "priority" 101)))
-(behaviour_attribute) @include
-(module_attribute (atom) @namespace) @include
+(behaviour_attribute) @keyword.import
+(module_attribute (atom) @module) @keyword.import
 (wild_attribute name: (attr_name name: _ @attribute)) @attribute
 
 ;; Records
 (record_expr) @type
-(record_field_expr _ @field) @type
-(record_field_name _ @field) @type
+(record_field_expr _ @variable.member) @type
+(record_field_name _ @variable.member) @type
 (record_name "#" @type name: _ @type) @type
 (record_decl name: _ @type) @type.definition
-(record_field name: _ @field)
-(record_field name: _ @field ty: _ @type)
+(record_field name: _ @variable.member)
+(record_field name: _ @variable.member ty: _ @type)
 
 ;; Type alias
 (type_alias name: _ @type) @type.definition
@@ -115,7 +115,7 @@
 
 ;;; expr_function_call
 (call expr: [(atom) (remote) (var)] @function)
-(call (atom) @exception (#any-of? @exception "error" "throw" "exit"))
+(call (atom) @keyword.exception (#any-of? @keyword.exception "error" "throw" "exit"))
 
 ;;; Parenthesized expression: (SomeFunc)(), only highlight the parens
 (call

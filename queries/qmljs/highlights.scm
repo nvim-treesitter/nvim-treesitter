@@ -1,6 +1,6 @@
 ; inherits: ecma
 
-"pragma" @include
+"pragma" @keyword.import
 
 ;;; Annotations
 
@@ -61,7 +61,7 @@
 ;;; namespace
 (nested_identifier
   (nested_identifier
-    (identifier) @namespace)
+    (identifier) @module)
 )
 
 ; Properties
@@ -100,7 +100,7 @@
   (template_string)
 ] @string
 
-(regex) @string.regex
+(regex) @string.regexp
 (number) @number
 
 ; Tokens

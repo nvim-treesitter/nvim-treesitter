@@ -1,6 +1,6 @@
 (string) @string
 
-(field_name) @field
+(field_name) @variable.member
 
 (comment) @comment
 

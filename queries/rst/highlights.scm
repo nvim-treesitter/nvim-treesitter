@@ -7,11 +7,13 @@
   "__"
   ":"
   "::"
-  "bullet"
-  "adornment"
   (transition)
 ] @punctuation.special
 
+[
+  "bullet"
+  "adornment"
+] @markup.list
 ;; Resets for injection
 
 (doctest_block) @none
@@ -22,11 +24,11 @@
   name: (type) @function)
 
 (directive
-  body: (body (arguments) @parameter))
+  body: (body (arguments) @variable.parameter))
 
 ((directive
-  name: (type) @include)
- (#eq? @include "include"))
+  name: (type) @keyword.import)
+ (#eq? @keyword.import "include"))
 
 ((directive
    name: (type) @function.builtin)
@@ -48,10 +50,10 @@
 [
   (literal_block)
   (line_block)
-] @text.literal
+] @markup.raw.block
 
 (block_quote
-  (attribution)? @text.emphasis) @text.literal
+  (attribution)? @markup.italic) @markup.quote
 
 (substitution_definition
   name: (substitution) @constant)
@@ -63,26 +65,26 @@
   name: (label) @constant)
 
 (target
-  name: (name)? @constant
-  link: (_)? @text.literal)
+  name: (name)? @markup.link.label
+  link: (_)? @markup.link)
 
 ;; Lists
 
 ; Definition lists
 (list_item
-  (term) @text.strong
-  (classifier)? @text.emphasis)
+  (term) @markup.strong
+  (classifier)? @markup.italic)
 
 ; Field lists
 (field (field_name) @constant)
 
 ;; Inline markup
 
-(emphasis) @text.emphasis
+(emphasis) @markup.italic
 
-(strong) @text.strong
+(strong) @markup.strong
 
-(standalone_hyperlink) @text.uri @nospell
+(standalone_hyperlink) @string.special.url @nospell
 
 (role) @function
 
@@ -111,17 +113,17 @@
 [
  "interpreted_text"
   (literal)
-] @text.literal
+] @markup.raw
 
 ; Prefix role
 ((interpreted_text
   (role) @_role
-  "interpreted_text" @text.emphasis)
+  "interpreted_text" @markup.italic)
  (#eq? @_role ":emphasis:"))
 
 ((interpreted_text
   (role) @_role
-  "interpreted_text" @text.strong)
+  "interpreted_text" @markup.strong)
  (#eq? @_role ":strong:"))
 
 ((interpreted_text
@@ -131,12 +133,12 @@
 
 ; Suffix role
 ((interpreted_text
-  "interpreted_text" @text.emphasis
+  "interpreted_text" @markup.italic
   (role) @_role)
  (#eq? @_role ":emphasis:"))
 
 ((interpreted_text
-  "interpreted_text" @text.strong
+  "interpreted_text" @markup.strong
   (role) @_role)
  (#eq? @_role ":strong:"))
 
@@ -151,11 +153,11 @@
   (footnote_reference)
   (citation_reference)
   (reference)
-] @text.reference @nospell
+] @markup.link @nospell
 
 ;; Others
 
-(title) @text.title
+(title) @markup.heading
 
 (comment) @comment @spell
 (comment "..") @comment

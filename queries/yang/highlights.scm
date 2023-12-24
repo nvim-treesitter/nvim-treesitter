@@ -6,7 +6,7 @@
 
 ; Keywords
 (statement_keyword) @keyword
-(statement_keyword "import") @include
+(statement_keyword "import") @keyword.import
 (extension_keyword) @function
 
 ; Arguments
@@ -24,7 +24,7 @@
 (string) @string
 (string (escape_sequence) @string.escape)
 (unquoted_string) @string
-(keypath) @string.special
+(keypath) @string.special.path
 
 ; Always highlight the value of an enum statement as a string
 (enum_value) @string
@@ -35,7 +35,7 @@
   (argument (string) @string.special))
 (statement
   (statement_keyword "pattern")
-  (argument (string) @string.regex))
+  (argument (string) @string.regexp))
 
 ; Punctuation
 (plus_symbol) @operator

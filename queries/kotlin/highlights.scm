@@ -97,10 +97,10 @@
 ))
 
 (package_header "package" @keyword
-	. (identifier (simple_identifier) @namespace))
+	. (identifier (simple_identifier) @module))
 
 (import_header
-	"import" @include)
+	"import" @keyword.import)
 
 ; The last `simple_identifier` in a `import_header` will always either be a function
 ; or a type. Classes can appear anywhere in the import path, unlike functions
@@ -142,16 +142,16 @@
 	("init") @constructor)
 
 (parameter
-	(simple_identifier) @parameter)
+	(simple_identifier) @variable.parameter)
 
 (parameter_with_optional_type
-	(simple_identifier) @parameter)
+	(simple_identifier) @variable.parameter)
 
 ; lambda parameters
 (lambda_literal
 	(lambda_parameters
 		(variable_declaration
-			(simple_identifier) @parameter)))
+			(simple_identifier) @variable.parameter)))
 
 ;;; Function calls
 
@@ -227,9 +227,9 @@
 ((multiline_comment) @comment.documentation
   (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
 
-(shebang_line) @preproc
+(shebang_line) @keyword.directive
 
-(real_literal) @float
+(real_literal) @number.float
 [
 	(integer_literal)
 	(long_literal)
@@ -254,7 +254,7 @@
 ;    - "[abc]?".toRegex()
 (call_expression
 	(navigation_expression
-		((string_literal) @string.regex)
+		((string_literal) @string.regexp)
 		(navigation_suffix
 			((simple_identifier) @_function
 			(#eq? @_function "toRegex")))))
@@ -266,7 +266,7 @@
 	(call_suffix
 		(value_arguments
 			(value_argument
-				(string_literal) @string.regex))))
+				(string_literal) @string.regexp))))
 
 ;    - Regex.fromLiteral("[abc]?")
 (call_expression
@@ -279,7 +279,7 @@
 	(call_suffix
 		(value_arguments
 			(value_argument
-				(string_literal) @string.regex))))
+				(string_literal) @string.regexp))))
 
 ;;; Keywords
 
@@ -323,7 +323,7 @@
 	"if"
 	"else"
 	"when"
-] @conditional
+] @keyword.conditional
 
 [
 	"for"
@@ -333,14 +333,14 @@
 	"continue@"
 	"break"
 	"break@"
-] @repeat
+] @keyword.repeat
 
 [
 	"try"
 	"catch"
 	"throw"
 	"finally"
-] @exception
+] @keyword.exception
 
 
 (annotation

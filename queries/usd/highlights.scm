@@ -1,10 +1,10 @@
 (None) @constant.builtin
-(asset_path) @text.uri
+(asset_path) @string.special.url
 (attribute_property) @property
 (bool) @boolean
 (comment) @comment @spell
 (custom) @function.builtin
-(float) @float
+(float) @number.float
 (integer) @number
 (orderer) @function.call
 (prim_path) @string.special
@@ -16,12 +16,12 @@
 ;; Prefer namespace highlighting, if any.
 ;;
 ;; e.g. `rel fizz` - `fizz` uses `@identifier`
-;; e.g. `rel foo:bar:fizz` - `foo` and `bar` use `@namespace` and `fizz` uses `@identifier`
+;; e.g. `rel foo:bar:fizz` - `foo` and `bar` use `@module` and `fizz` uses `@identifier`
 ;;
 (identifier) @variable
-(namespace_identifier) @namespace
+(namespace_identifier) @module
 (namespace_identifier
-  (identifier) @namespace
+  (identifier) @module
 )
 
 [

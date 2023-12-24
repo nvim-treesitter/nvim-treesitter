@@ -7,15 +7,15 @@ class Box<T> {
 
   public function __construct(T $data) {
   //                          ^ @type
-  //                             ^ @parameter
+  //                             ^ @variable.parameter
   //        ^ @keyword.function
   // ^ @type.qualifier
-  //                    ^ @method
+  //                    ^ @function.method
     $this->data = $data;
   }
 
   public function getData(): T {
-                // ^ @method
+                // ^ @function.method
   // ^ @type.qualifier
     return $this->data;
               // ^ @operator

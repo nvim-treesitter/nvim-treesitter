@@ -40,7 +40,7 @@
   "case"
   "default"
   "break"
-] @conditional
+] @keyword.conditional
 
 ; Repeats
 
@@ -50,7 +50,7 @@
   "do"
   "while"
   "continue"
-] @repeat
+] @keyword.repeat
 
 ; Exceptions
 
@@ -58,13 +58,13 @@
   "try"
   "catch"
   "throw"
-] @exception
+] @keyword.exception
 
 ; Storageclasses
 
 [
   "local"
-] @storageclass
+] @keyword.storage
 
 ; Qualifiers
 
@@ -90,7 +90,7 @@
 ; Parameters
 
 (parameter
-  . (identifier) @parameter)
+  . (identifier) @variable.parameter)
 
 ; Properties (Slots)
 
@@ -128,7 +128,7 @@
 
 (member_declaration
   (function_declaration
-    "::"? (_) @method . "(" (_)? ")"))
+    "::"? (_) @function.method . "(" (_)? ")"))
 
 ((function_declaration
    "::"? (_) @function . "(" (_)? ")")
@@ -150,7 +150,7 @@
   (identifier) @function
   "="
   (lambda_expression
-    "@" @symbol))
+    "@" @string.special.symbol))
 
 (call_expression 
   [
@@ -278,8 +278,8 @@
 ; Ternaries
 
 (ternary_expression
-  "?" @conditional.ternary
-  ":" @conditional.ternary)
+  "?" @keyword.conditional.ternary
+  ":" @keyword.conditional.ternary)
 
 ; Literals
 
@@ -293,7 +293,7 @@
 
 (integer) @number
 
-(float) @float
+(float) @number.float
 
 (bool) @boolean
 

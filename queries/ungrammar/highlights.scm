@@ -16,7 +16,7 @@
 [
   "*"
   "?"
-] @repeat
+] @keyword.repeat
 
 [
   ":"

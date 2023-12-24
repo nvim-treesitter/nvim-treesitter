@@ -86,25 +86,25 @@
 (generator_function_declaration
   name: (identifier) @function)
 (method_definition
-  name: [(property_identifier) (private_property_identifier)] @method)
+  name: [(property_identifier) (private_property_identifier)] @function.method)
 (method_definition
   name: (property_identifier) @constructor
   (#eq? @constructor "constructor"))
 
 (pair
-  key: (property_identifier) @method
+  key: (property_identifier) @function.method
   value: (function))
 (pair
-  key: (property_identifier) @method
+  key: (property_identifier) @function.method
   value: (arrow_function))
 
 (assignment_expression
   left: (member_expression
-    property: (property_identifier) @method)
+    property: (property_identifier) @function.method)
   right: (arrow_function))
 (assignment_expression
   left: (member_expression
-    property: (property_identifier) @method)
+    property: (property_identifier) @function.method)
   right: (function))
 
 (variable_declarator
@@ -129,13 +129,13 @@
 
 (call_expression
   function: (member_expression
-    property: [(property_identifier) (private_property_identifier)] @method.call))
+    property: [(property_identifier) (private_property_identifier)] @function.method.call))
 
 ; Builtins
 ;---------
 
-((identifier) @namespace.builtin
- (#eq? @namespace.builtin "Intl"))
+((identifier) @module.builtin
+ (#eq? @module.builtin "Intl"))
 
 ((identifier) @function.builtin
  (#any-of? @function.builtin
@@ -159,7 +159,7 @@
 ; Variables
 ;----------
 (namespace_import
-  (identifier) @namespace)
+  (identifier) @module)
 
 ; Decorators
 ;----------
@@ -192,15 +192,15 @@
 ((comment) @comment.documentation
   (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
 
-(hash_bang_line) @preproc
+(hash_bang_line) @keyword.directive
 
-((string_fragment) @preproc
- (#eq? @preproc "use strict"))
+((string_fragment) @keyword.directive
+ (#eq? @keyword.directive "use strict"))
 
 (string) @string
 (template_string) @string
 (escape_sequence) @string.escape
-(regex_pattern) @string.regex
+(regex_pattern) @string.regexp
 (regex_flags) @character.special
 (regex "/" @punctuation.bracket) ; Regex delimiters
 
@@ -266,7 +266,7 @@
 ] @operator
 
 (binary_expression "/" @operator)
-(ternary_expression ["?" ":"] @conditional.ternary)
+(ternary_expression ["?" ":"] @keyword.conditional.ternary)
 (unary_expression ["!" "~" "-" "+"] @operator)
 (unary_expression ["delete" "void"] @keyword.operator)
 
@@ -289,17 +289,17 @@
   "else"
   "switch"
   "case"
-] @conditional
+] @keyword.conditional
 
 [
   "import"
   "from"
-] @include
+] @keyword.import
 
-(export_specifier "as" @include)
-(import_specifier "as" @include)
-(namespace_export "as" @include)
-(namespace_import "as" @include)
+(export_specifier "as" @keyword.import)
+(import_specifier "as" @keyword.import)
+(namespace_export "as" @keyword.import)
+(namespace_import "as" @keyword.import)
 
 [
   "for"
@@ -307,7 +307,7 @@
   "do"
   "while"
   "continue"
-] @repeat
+] @keyword.repeat
 
 [
   "break"
@@ -352,9 +352,9 @@
   "try"
   "catch"
   "finally"
-] @exception
+] @keyword.exception
 
 (export_statement
   "default" @keyword)
 (switch_default
-  "default" @conditional)
+  "default" @keyword.conditional)

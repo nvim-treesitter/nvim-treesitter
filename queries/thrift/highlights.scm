@@ -8,7 +8,7 @@
 [
   "include"
   "cpp_include"
-] @include
+] @keyword.import
 
 ; Function
 
@@ -17,17 +17,17 @@
 
 ; Fields
 
-(field (identifier) @field)
+(field (identifier) @variable.member)
 
 ; Parameters
 
 (function_definition
   (parameters
-    (parameter (identifier) @parameter)))
+    (parameter (identifier) @variable.parameter)))
 
 (throws
   (parameters
-    (parameter (identifier) @parameter)))
+    (parameter (identifier) @variable.parameter)))
 
 ; Types
 
@@ -82,7 +82,7 @@
 
 (namespace_declaration
   (namespace_scope) @tag
-  [(namespace) @namespace (_ (identifier) @namespace)])
+  [(namespace) @module (_ (identifier) @module)])
 
 ; Attributes
 
@@ -104,7 +104,7 @@
 
 [
   "throws"
-] @exception
+] @keyword.exception
 
 ; Keywords
 
@@ -177,11 +177,11 @@
 (escape_sequence) @string.escape
 
 (namespace_uri
-  (string) @text.uri @string.special)
+  (string) @string.special.url)
 
 (number) @number
 
-(double) @float
+(double) @number.float
 
 (boolean) @boolean
 
@@ -222,5 +222,5 @@
 ((comment) @comment.documentation
   (#lua-match? @comment.documentation "^///$"))
 
-((comment) @preproc
-  (#lua-match? @preproc "#!.*"))
+((comment) @keyword.directive
+  (#lua-match? @keyword.directive "#!.*"))

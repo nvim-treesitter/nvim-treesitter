@@ -1,6 +1,6 @@
 from foo import bar
-# ^ @include
-#           ^ @include
+# ^ @keyword.import
+#           ^ @keyword.import
 def generator():
     yield from bar(42)
     # ^ @keyword.return

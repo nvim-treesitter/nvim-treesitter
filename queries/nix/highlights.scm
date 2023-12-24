@@ -15,8 +15,8 @@
 
 ; exceptions
 (variable_expression
-  name: (identifier) @exception
-  (#any-of? @exception "abort" "throw")
+  name: (identifier) @keyword.exception
+  (#any-of? @keyword.exception "abort" "throw")
   (#set! "priority" 101))
 
 ; if/then/else
@@ -24,7 +24,7 @@
   "if"
   "then"
   "else"
-] @conditional
+] @keyword.conditional
 
 ; field access default (`a.b or c`)
 "or" @keyword.operator
@@ -37,7 +37,8 @@
   (#set! "priority" 99)) @string
 
 ; paths and URLs
-[ (path_expression) (hpath_expression) (spath_expression) (uri_expression) ] @string.special
+[ (path_expression) (hpath_expression) (spath_expression) ] @string.special.path
+(uri_expression) @string.special.url
 
 ; escape sequences
 (escape_sequence) @string.escape
@@ -61,7 +62,7 @@
 
 ; `?` in `{ x ? y }:`, used to set defaults for named function arguments
 (formal
-  name: (identifier) @parameter
+  name: (identifier) @variable.parameter
   "?"? @operator)
 
 ; `...` in `{ ... }`, used to ignore unknown named function arguments (see above)
@@ -70,7 +71,7 @@
 ; universal is the parameter of the function expression
 ; `:` in `x: y`, used to separate function argument from body (see above)
 (function_expression
-  universal: (identifier) @parameter
+  universal: (identifier) @variable.parameter
   ":" @punctuation.special)
 
 ; function calls
@@ -82,8 +83,8 @@
 (variable_expression) @variable
 
 (variable_expression
-  name: (identifier) @include
-  (#eq? @include "import"))
+  name: (identifier) @keyword.import
+  (#eq? @keyword.import "import"))
 
 (variable_expression
   name: (identifier) @boolean
@@ -115,11 +116,11 @@
 
 (select_expression
   expression: (_) @_expr
-  attrpath: (attrpath attr: (identifier) @field)
+  attrpath: (attrpath attr: (identifier) @variable.member)
   (#not-eq? @_expr "builtins")
 )
-(attrset_expression (binding_set (binding . (attrpath (identifier) @field))))
-(rec_attrset_expression (binding_set (binding . (attrpath (identifier) @field))))
+(attrset_expression (binding_set (binding . (attrpath (identifier) @variable.member))))
+(rec_attrset_expression (binding_set (binding . (attrpath (identifier) @variable.member))))
 
 ; function definition
 (binding 
@@ -142,5 +143,5 @@
 [
   (unary_expression "-" (float_expression))
   (float_expression)
-] @float
+] @number.float
 

@@ -1,26 +1,26 @@
 ; Preprocs
 
-(preproc_file_line) @preproc
+(preproc_file_line) @keyword.directive
 
 ; Namespaces
 
 (program_statement
-  (name) @namespace)
+  (name) @module)
 
 (end_program_statement
-  (name) @namespace)
+  (name) @module)
 
 (module_statement
-  (name) @namespace)
+  (name) @module)
 
 (end_module_statement
-  (name) @namespace)
+  (name) @module)
 
 (submodule_statement
-  (name) @namespace)
+  (name) @module)
 
 (end_submodule_statement
-  (name) @namespace)
+  (name) @module)
 
 ; Includes
 
@@ -28,7 +28,7 @@
   "import"
   "include"
   "use"
-] @include
+] @keyword.import
 
 (import_statement
   ","
@@ -147,7 +147,7 @@
   "in"
   "inout"
   "out"
-] @storageclass
+] @keyword.storage
 
 ; Labels
 
@@ -211,7 +211,7 @@
 
 [
   "error"
-] @exception
+] @keyword.exception
 
 ; Conditionals
 
@@ -224,7 +224,7 @@
   "if"
   "then"
   "where"
-] @conditional
+] @keyword.conditional
 
 ; Repeats
 
@@ -238,7 +238,7 @@
   "continue"
   "cycle"
   "exit"
-] @repeat
+] @keyword.repeat
 
 ; Variables
 
@@ -247,10 +247,10 @@
 ; Parameters
 
 (keyword_argument
-  name: (identifier) @parameter)
+  name: (identifier) @variable.parameter)
 
 (parameters
-  (identifier) @parameter)
+  (identifier) @variable.parameter)
 
 ; Properties
 

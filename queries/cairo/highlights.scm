@@ -3,17 +3,17 @@
 [
   "%builtins"
   "%lang"
-] @preproc
+] @keyword.directive
 
 ; Includes
 
-(import_statement [ "from" "import" ] @include module_name: (dotted_name (identifier) @namespace . ))
+(import_statement [ "from" "import" ] @keyword.import module_name: (dotted_name (identifier) @module . ))
 
 [
   "as"
   "use"
   "mod"
-] @include
+] @keyword.import
 
 ; Variables
 
@@ -21,24 +21,24 @@
 
 ; Namespaces
 
-(namespace_definition (identifier) @namespace)
+(namespace_definition (identifier) @module)
 
 (mod_item
-  name: (identifier) @namespace)
+  name: (identifier) @module)
 
-(use_list (self) @namespace)
+(use_list (self) @module)
 
-(scoped_use_list (self) @namespace)
+(scoped_use_list (self) @module)
 
 (scoped_identifier
-  path: (identifier) @namespace)
+  path: (identifier) @module)
 
 (scoped_identifier
  (scoped_identifier
-  name: (identifier) @namespace))
+  name: (identifier) @module))
 
 (scoped_type_identifier
-  path: (identifier) @namespace)
+  path: (identifier) @module)
 
 ((scoped_identifier
   path: (identifier) @type)
@@ -65,13 +65,13 @@
   (#lua-match? @constant "^[A-Z]"))
 
 (scoped_use_list
-  path: (identifier) @namespace)
+  path: (identifier) @module)
 
 (scoped_use_list
   path: (scoped_identifier
-          (identifier) @namespace))
+          (identifier) @module))
 
-(use_list (scoped_identifier (identifier) @namespace . (_)))
+(use_list (scoped_identifier (identifier) @module . (_)))
 
 (use_list (identifier) @type (#lua-match? @type "^[A-Z]"))
 
@@ -125,47 +125,47 @@
 [
   "tempvar"
   "extern"
-] @storageclass
+] @keyword.storage
 
 [
   "if"
   "else"
   "match"
-] @conditional
+] @keyword.conditional
 
 [
   "loop"
-] @repeat
+] @keyword.repeat
 
 [
   "assert"
   "static_assert"
   "nopanic"
-] @exception
+] @keyword.exception
 
 ; Fields
 
-(implicit_arguments (typed_identifier (identifier) @field))
+(implicit_arguments (typed_identifier (identifier) @variable.member))
 
-(member_expression "." (identifier) @field)
+(member_expression "." (identifier) @variable.member)
 
-(call_expression (assignment_expression left: (identifier) @field))
+(call_expression (assignment_expression left: (identifier) @variable.member))
 
-(tuple_expression (assignment_expression left: (identifier) @field))
+(tuple_expression (assignment_expression left: (identifier) @variable.member))
 
-(field_identifier) @field
+(field_identifier) @variable.member
 
-(shorthand_field_initializer (identifier) @field)
+(shorthand_field_initializer (identifier) @variable.member)
 
 ; Parameters
 
-(arguments (typed_identifier (identifier) @parameter))
+(arguments (typed_identifier (identifier) @variable.parameter))
 
-(call_expression (tuple_expression (assignment_expression left: (identifier) @parameter)))
+(call_expression (tuple_expression (assignment_expression left: (identifier) @variable.parameter)))
 
-(return_type (tuple_type (named_type . (identifier) @parameter)))
+(return_type (tuple_type (named_type . (identifier) @variable.parameter)))
 
-(parameter (identifier) @parameter)
+(parameter (identifier) @variable.parameter)
 
 ; Builtins
 
@@ -202,7 +202,7 @@
 
 ; Types
 
-(struct_definition . (identifier) @type (typed_identifier (identifier) @field)?)
+(struct_definition . (identifier) @type (typed_identifier (identifier) @variable.member)?)
 
 (named_type (identifier) @type .)
 

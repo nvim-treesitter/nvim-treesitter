@@ -28,10 +28,10 @@
 ;; Methods
 
 (method_declaration
-  name: (identifier) @method)
+  name: (identifier) @function.method)
 
 (method_invocation
-  name: (identifier) @method.call)
+  name: (identifier) @function.method.call)
 
 (super) @function.builtin
 
@@ -77,7 +77,7 @@
 (method_declaration
   (formal_parameters
     (formal_parameter
-      name: (identifier) @parameter)))
+      name: (identifier) @variable.parameter)))
 
 (constructor_declaration
   name: (identifier) @constructor)
@@ -142,10 +142,10 @@
 
 (field_declaration
   declarator: (variable_declarator
-    name: (identifier) @field))
+    name: (identifier) @variable.member))
 
 (field_access
-  field: (identifier) @field)
+  field: (identifier) @variable.member)
 
 ; Variables
 
@@ -194,14 +194,14 @@
   "if"
   "else"
   "switch"
-] @conditional
+] @keyword.conditional
 
 [
   "for"
   "while"
   "do"
   "break"
-] @repeat
+] @keyword.repeat
 
 [
   "return"
@@ -212,7 +212,7 @@
  "finally"
  "try"
  "catch"
- ] @exception
+ ] @keyword.exception
 
 "new" @keyword.operator
 

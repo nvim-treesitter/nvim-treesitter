@@ -7,7 +7,7 @@
   "<" 
   ">" 
   (namespace)
-] @namespace
+] @module
 
 [
   (iri_reference)
@@ -23,7 +23,7 @@
 [
   (decimal)
   (double)
-] @float
+] @number.float
 
 (boolean_literal) @boolean
 

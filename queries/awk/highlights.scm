@@ -47,21 +47,21 @@
 (number) @number
 
 (string) @string
-(regex) @string.regex
+(regex) @string.regexp
 (escape_sequence) @string.escape
 
 (comment) @comment @spell
 
-((program . (comment) @preproc)
-  (#lua-match? @preproc "^#!/"))
+((program . (comment) @keyword.directive)
+  (#lua-match? @keyword.directive "^#!/"))
 
-(ns_qualified_name (namespace) @namespace)
+(ns_qualified_name (namespace) @module)
 (ns_qualified_name "::" @punctuation.delimiter)
 
 (func_def name: (_ (identifier) @function) @function)
 (func_call name: (_ (identifier) @function) @function)
 
-(func_def (param_list (identifier) @parameter))
+(func_def (param_list (identifier) @variable.parameter))
 
 [
   "print"
@@ -92,7 +92,7 @@
   "while"
   "for"
   "in"
-] @repeat
+] @keyword.repeat
 
 [
   "if"
@@ -100,14 +100,14 @@
   "switch"
   "case"
   "default"
-] @conditional
+] @keyword.conditional
 
 [
   "@include"
   "@load"
-] @include
+] @keyword.import
 
-"@namespace" @preproc
+"@namespace" @keyword.directive
 
 [
  "BEGIN"
@@ -156,7 +156,7 @@
 (ternary_exp [
   "?"
   ":"
-] @conditional.ternary)
+] @keyword.conditional.ternary)
 
 (update_exp [
   "++"

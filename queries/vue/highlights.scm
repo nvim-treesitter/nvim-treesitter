@@ -20,4 +20,4 @@
 [
   (directive_modifier)
   (directive_argument)
-] @method
+] @function.method

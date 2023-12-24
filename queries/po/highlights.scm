@@ -26,4 +26,4 @@
 
 (comment (reference (text) @string.special.path))
 
-(comment (flag (text) @preproc))
+(comment (flag (text) @keyword.directive))

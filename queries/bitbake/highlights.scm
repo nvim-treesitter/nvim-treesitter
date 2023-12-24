@@ -6,7 +6,7 @@
   "require"
   "export"
   "import"
-] @include
+] @keyword.import
 
 ; Keywords
 
@@ -37,16 +37,16 @@
 (yield "from" @keyword.return)
 
 (future_import_statement
-  "from" @include
+  "from" @keyword.import
   "__future__" @constant.builtin)
-(import_from_statement "from" @include)
-"import" @include
+(import_from_statement "from" @keyword.import)
+"import" @keyword.import
 
-(aliased_import "as" @include)
+(aliased_import "as" @keyword.import)
 
-["if" "elif" "else"] @conditional
+["if" "elif" "else"] @keyword.conditional
 
-["for" "while" "break" "continue"] @repeat
+["for" "while" "break" "continue"] @keyword.repeat
 
 [
   "try"
@@ -54,13 +54,13 @@
   "except*"
   "raise"
   "finally"
-] @exception
+] @keyword.exception
 
-(raise_statement "from" @exception)
+(raise_statement "from" @keyword.exception)
 
 (try_statement
   (else_clause
-    "else" @exception))
+    "else" @keyword.exception))
 
 [
   "addtask"
@@ -73,7 +73,7 @@
 [
   "before"
   "after"
-] @storageclass
+] @keyword.storage
 
 [
   "append"
@@ -132,11 +132,11 @@
 
 ; Fields
 
-(flag) @field
+(flag) @variable.member
 
 ((attribute
-    attribute: (python_identifier) @field)
- (#lua-match? @field "^[%l_].*$"))
+    attribute: (python_identifier) @variable.member)
+ (#lua-match? @variable.member "^[%l_].*$"))
 
 ; Functions
 
@@ -145,7 +145,7 @@
 
 (call
   function: (attribute
-              attribute: (python_identifier) @method.call))
+              attribute: (python_identifier) @function.method.call))
 
 ((call
    function: (python_identifier) @constructor)
@@ -200,34 +200,34 @@
 
 ; Namespace
 
-(inherit_path) @namespace
+(inherit_path) @module
 
 ;; Normal parameters
 (parameters
-  (python_identifier) @parameter)
+  (python_identifier) @variable.parameter)
 ;; Lambda parameters
 (lambda_parameters
-  (python_identifier) @parameter)
+  (python_identifier) @variable.parameter)
 (lambda_parameters
   (tuple_pattern
-    (python_identifier) @parameter))
+    (python_identifier) @variable.parameter))
 ; Default parameters
 (keyword_argument
-  name: (python_identifier) @parameter)
+  name: (python_identifier) @variable.parameter)
 ; Naming parameters on call-site
 (default_parameter
-  name: (python_identifier) @parameter)
+  name: (python_identifier) @variable.parameter)
 (typed_parameter
-  (python_identifier) @parameter)
+  (python_identifier) @variable.parameter)
 (typed_default_parameter
-  (python_identifier) @parameter)
+  (python_identifier) @variable.parameter)
 ; Variadic parameters *args, **kwargs
 (parameters
   (list_splat_pattern ; *args
-    (python_identifier) @parameter))
+    (python_identifier) @variable.parameter))
 (parameters
   (dictionary_splat_pattern ; **kwargs
-    (python_identifier) @parameter))
+    (python_identifier) @variable.parameter))
 
 ;; Literals
 
@@ -239,7 +239,7 @@
  (#eq? @variable.builtin "cls"))
 
 (integer) @number
-(float) @float
+(float) @number.float
 
 ; Operators
 
@@ -309,7 +309,7 @@
   "\""
 ] @string
 
-(include_path) @string.special
+(include_path) @string.special.path
 
 [
   (escape_sequence)

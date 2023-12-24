@@ -5,10 +5,10 @@
   (#has-ancestor? @keyword accessor_declaration))
 
 (method_declaration
-  name: (identifier) @method)
+  name: (identifier) @function.method)
 
 (local_function_statement
-  name: (identifier) @method)
+  name: (identifier) @function.method)
 
 (method_declaration
   type: (identifier) @type)
@@ -23,41 +23,41 @@
 
 (invocation_expression
   (member_access_expression
-    name: (identifier) @method.call))
+    name: (identifier) @function.method.call))
 
 (invocation_expression
   function: (conditional_access_expression
     (member_binding_expression
-      name: (identifier) @method.call)))
+      name: (identifier) @function.method.call)))
 
 (namespace_declaration
-  name: [(qualified_name) (identifier)] @namespace)
+  name: [(qualified_name) (identifier)] @module)
 
 (qualified_name
   (identifier) @type)
 
 (invocation_expression
-      (identifier) @method.call)
+      (identifier) @function.method.call)
 
 (field_declaration
   (variable_declaration
     (variable_declarator
-      (identifier) @field)))
+      (identifier) @variable.member)))
 
 (initializer_expression
   (assignment_expression
-    left: (identifier) @field))
+    left: (identifier) @variable.member))
 
 (parameter_list
   (parameter
-   name: (identifier) @parameter))
+   name: (identifier) @variable.parameter))
 
 (parameter_list
   (parameter
    type: (identifier) @type))
 
 (integer_literal) @number
-(real_literal) @float
+(real_literal) @number.float
 
 (null_literal) @constant.builtin
 (character_literal) @character
@@ -154,12 +154,12 @@
 ; Generic Method invocation with generic type
 (invocation_expression
   function: (generic_name
-              . (identifier) @method.call))
+              . (identifier) @function.method.call))
 
 (invocation_expression
   (member_access_expression
     (generic_name
-      (identifier) @method)))
+      (identifier) @function.method)))
 
 (base_list
   (identifier) @type)
@@ -194,10 +194,10 @@
   (identifier) @type)
 
 (name_colon
-  (identifier) @parameter)
+  (identifier) @variable.parameter)
 
-(warning_directive) @text.warning
-(error_directive) @exception
+(warning_directive) @comment.warning
+(error_directive) @keyword.exception
 
 (define_directive
   (identifier) @constant) @constant.macro
@@ -231,7 +231,7 @@
  (elif_directive)
  (else_directive)
  (endif_directive)
-] @conditional
+] @keyword.conditional
 
 (if_directive
   (identifier) @constant)
@@ -245,14 +245,14 @@
  "continue"
  "goto"
  "foreach"
-] @repeat
+] @keyword.repeat
 
 [
  "try"
  "catch"
  "throw"
  "finally"
-] @exception
+] @keyword.exception
 
 [
  "+"
@@ -304,7 +304,7 @@
  ":"
 ] @punctuation.delimiter
 
-(conditional_expression ["?" ":"] @conditional.ternary)
+(conditional_expression ["?" ":"] @keyword.conditional.ternary)
 
 [
  "["
@@ -325,10 +325,10 @@
 [
  "using"
  "as"
-] @include
+] @keyword.import
 
 (alias_qualified_name
-  (identifier "global") @include)
+  (identifier "global") @keyword.import)
 
 [
  "with"
@@ -385,7 +385,7 @@
  "static"
  "volatile"
  "required"
-] @storageclass
+] @keyword.storage
 
 [
  "abstract"

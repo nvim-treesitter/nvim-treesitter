@@ -1,4 +1,4 @@
-(date) @field
+(date) @variable.member
 (txn) @attribute
 (account) @type
 (amount) @number

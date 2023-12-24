@@ -1,10 +1,10 @@
 ; Preprocs
 
-(preprocessor_directive) @preproc
+(preprocessor_directive) @keyword.directive
 
 ; Includes
 
-"include" @include
+"include" @keyword.import
 
 ; Keywords
 
@@ -30,13 +30,13 @@
   "if"
   "else"
   "then"
-] @conditional
+] @keyword.conditional
 
 ; Repeats
 
 [
   "foreach"
-] @repeat
+] @keyword.repeat
 
 ; Variables
 
@@ -46,7 +46,7 @@
 
 ; Parameters
 
-(template_arg (identifier) @parameter)
+(template_arg (identifier) @variable.parameter)
 
 
 ; Types
@@ -85,10 +85,10 @@
 ; Fields
 
 (instruction
-  (identifier) @field)
+  (identifier) @variable.member)
 
 (let_instruction
-  (identifier) @field)
+  (identifier) @variable.member)
 
 ; Functions
 
@@ -148,5 +148,5 @@
 ] @comment @spell
 
 
-((comment) @preproc
-  (#lua-match? @preproc "^.*RUN"))
+((comment) @keyword.directive
+  (#lua-match? @keyword.directive "^.*RUN"))

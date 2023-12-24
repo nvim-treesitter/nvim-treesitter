@@ -10,14 +10,14 @@
 (defun_header
   function_name: (_) @function)
 (defun_header
-  lambda_list: (list_lit (sym_lit) @parameter))
+  lambda_list: (list_lit (sym_lit) @variable.parameter))
 (defun_header
   keyword: (defun_keyword "defmethod")
-  lambda_list: (list_lit (list_lit . (sym_lit) . (sym_lit) @symbol)))
+  lambda_list: (list_lit (list_lit . (sym_lit) . (sym_lit) @string.special.symbol)))
 (defun_header
-  lambda_list: (list_lit (list_lit . (sym_lit) @parameter . (_))))
+  lambda_list: (list_lit (list_lit . (sym_lit) @variable.parameter . (_))))
 (defun_header
-  specifier: (sym_lit) @symbol)
+  specifier: (sym_lit) @string.special.symbol)
 
 [":" "::" "."] @punctuation.special
 
@@ -51,14 +51,14 @@
 ] @function.macro
 "=" @operator
 
-(include_reader_macro) @symbol
+(include_reader_macro) @string.special.symbol
 ["#C" "#c"] @number
 
-[(kwd_lit) (self_referential_reader_macro)] @symbol
+[(kwd_lit) (self_referential_reader_macro)] @string.special.symbol
 
 (package_lit
-  package: (_) @namespace)
-"cl" @namespace
+  package: (_) @module)
+"cl" @module
 
 (str_lit) @string
 
@@ -119,10 +119,10 @@
  (#lua-match? @constant "^[+].+[+]$"))
 
 (var_quoting_lit
-  marker: "#'" @symbol
-  value: (_) @symbol)
+  marker: "#'" @string.special.symbol
+  value: (_) @string.special.symbol)
 
-["#" "#p" "#P"] @symbol
+["#" "#p" "#P"] @string.special.symbol
 
 (list_lit
   .
@@ -137,8 +137,8 @@
  (#match? @operator "^([+*-+=<>]|<=|>=|/=)$"))
 
 
-((sym_lit) @symbol
-(#lua-match? @symbol "^[&]"))
+((sym_lit) @string.special.symbol
+(#lua-match? @string.special.symbol "^[&]"))
 
 [(array_dimension) "#0A" "#0a"] @number
 

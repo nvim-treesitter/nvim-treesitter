@@ -1,33 +1,33 @@
 {-# LANGUAGE QuasiQuotes #-}
--- ^ @preproc
+-- ^ @keyword.directive
 
 module Main 
--- ^ @include
-     -- ^ @namespace
+-- ^ @keyword.import
+     -- ^ @module
   ( main
   ) where
    -- ^ @keyword
 
 import Prelude hiding (show)
--- ^ @include
-      -- ^ @namespace
+-- ^ @keyword.import
+      -- ^ @module
               -- ^ @keyword
                       -- ^ @variable
 import Data.Map (fromList)
-      -- ^ @namespace
+      -- ^ @module
 import qualified Data.Map as Map
                 -- ^ @constructor
-                           -- ^ @namespace
+                           -- ^ @module
 import qualified Chronos
-                -- ^ @namespace
+                -- ^ @module
 import qualified Chronos as C
                 -- ^ @constructor
-                         -- ^ @namespace
+                         -- ^ @module
 import FooMod (BarTy (barField))
-                      -- ^ @field
+                      -- ^ @variable.member
 
 x = mempty { field = 5 }
-           -- ^ @field
+           -- ^ @variable.member
 
 data ADT
 -- ^ @keyword
@@ -62,31 +62,31 @@ newtype Rec
   -- ^ @constructor
     { field :: Double
  -- ^ @punctuation.bracket
-    -- ^ @field
+    -- ^ @variable.member
               -- ^ @type
     }
  -- ^ @punctuation.bracket
     deriving Eq
            -- ^ @type
 recordWildCard Rec { field } = field
-                    -- ^ @field
+                    -- ^ @variable.member
 recordDotSyntax rec = rec.field
-                        -- ^ @field
+                        -- ^ @variable.member
 
 
 main :: IO ()
 -- ^ @function
   -- ^ @operator
      -- ^ @type
-         -- ^ @symbol
+         -- ^ @string.special.symbol
 main = undefined
 -- ^ @function
-      -- ^ @exception
+      -- ^ @keyword.exception
 
 someFunc0 :: Int -> Int
               -- ^ @operator
 someFunc0 x = someFunc1 x
-       -- ^ @parameter
+       -- ^ @variable.parameter
             -- ^ @function.call
   where
   -- ^ @keyword
@@ -94,9 +94,9 @@ someFunc0 x = someFunc1 x
     -- ^ @function
                -- ^ @number
 scopedTypeParam (x :: Int) = someFunc x
-              -- ^ @parameter
+              -- ^ @variable.parameter
 scopedTypeParam (Just x :: Int) = someFunc x
-                   -- ^ @parameter
+                   -- ^ @variable.parameter
 
 someInfix :: Integral a => a -> Double
             -- ^ @type
@@ -118,7 +118,7 @@ someInfix x = fromIntegral x `myAdd` floatVal
     -- ^ @variable
     floatVal = 5.5
     -- ^ @variable
-            -- ^ @float
+            -- ^ @number.float
     intVal :: Int
     -- ^ @variable
     intVal = getInt 5
@@ -138,12 +138,12 @@ someInfix x = fromIntegral x `myAdd` floatVal
     isInt :: Either Double Int -> Bool
     -- ^ @function
     isInt eith@Left{} = False
-        -- ^ @parameter
+        -- ^ @variable.parameter
     isInt eith@(Left x) = False
     -- ^ @function
-                  -- ^ @parameter
+                  -- ^ @variable.parameter
     isInt (Left x) = False
-             -- ^ @parameter
+             -- ^ @variable.parameter
     isInt (Right _) = True
     -- ^ @function
 
@@ -153,19 +153,19 @@ someIOaction = do
             -- ^ @keyword
   foo <- SomeModule.someFun <$> getArgs
 -- ^ @variable
-            -- ^ @namespace
+            -- ^ @module
                    -- ^ @function.call
                           -- ^ @operator
   _ <- someFunc0 =<< someIOAction
         -- ^ @function.call
   let bar = SomeModule.doSomething $ "a" "b"
     -- ^ @variable
-            -- ^ @namespace
+            -- ^ @module
                         -- ^ @function.call
                                 -- ^ @operator
       func x y = x + y - 7
     -- ^ @function
-        -- ^ @parameter
+        -- ^ @variable.parameter
               -- ^ @variable
                   -- ^ @variable
       gunc x y = func x $ y + 7
@@ -216,26 +216,26 @@ condVal = if otherwise
             else True
 
 getLambda x = \y -> x `SomeModule.someInfix` y
-            -- ^ @parameter
-                      -- ^ @namespace
+            -- ^ @variable.parameter
+                      -- ^ @module
                                   -- ^ @operator
 lambdaTyped = \(y :: Int) -> x
-             -- ^ @parameter
+             -- ^ @variable.parameter
 lambdaPattern = \(Just x) -> x
-                    -- ^ @parameter
+                    -- ^ @variable.parameter
 lambdaPatternTyped = \(Just x :: Int) -> x
-                         -- ^ @parameter
+                         -- ^ @variable.parameter
 
 isVowel = (`elem` "AEIOU")
           -- ^ @operator
 isVowelQualified = (`SomeModule.elem` "AEIOU")
-                      -- ^ @namespace
+                      -- ^ @module
                               -- ^ @operator
 
 hasVowels = ("AEIOU" `elem`)
                    -- ^ @operator
 hasVowelsQualified = ("AEIOU" `SomeModule.elem`)
-                            -- ^ @namespace
+                            -- ^ @module
                                        -- ^ @operator
 
 quasiQuotedString = [qq|Some string|]
@@ -243,7 +243,7 @@ quasiQuotedString = [qq|Some string|]
                    -- ^ @function.call
                       -- ^ @string
 quasiQuotedString2 = [SomeModule.qq|Some string|]
-                        -- ^ @namespace
+                        -- ^ @module
                               -- ^ @function.call
 
 composition f g = f . g
@@ -270,42 +270,42 @@ appliedComposition f g var = (NS.f . NS.g) var
                               -- ^ @function.call
                                      -- ^ @function.call
 param1 |*| param2 = Qu $ param1 * param2
--- ^ @parameter
-         -- ^ @parameter
+-- ^ @variable.parameter
+         -- ^ @variable.parameter
 (param1 :: Int) |*| (param2 :: Int) = Qu $ param1 * param2
--- ^ @parameter
-                   -- ^ @parameter
+-- ^ @variable.parameter
+                   -- ^ @variable.parameter
 (Qu a) |/| (SomeModule.Qu b) = a / b
- -- ^ @parameter
-                       -- ^ @parameter
+ -- ^ @variable.parameter
+                       -- ^ @variable.parameter
 (Qu a :: Int) |/| (SomeModule.Qu b :: Int) = a / b
- -- ^ @parameter
-                              -- ^ @parameter
+ -- ^ @variable.parameter
+                              -- ^ @variable.parameter
 (Qu a, b, c :: Int) |/| x = undefined
- -- ^ @parameter
-    -- ^ @parameter
-       -- ^ @parameter
+ -- ^ @variable.parameter
+    -- ^ @variable.parameter
+       -- ^ @variable.parameter
 [Qu a, b, c :: Int] >< x = undefined
- -- ^ @parameter
-    -- ^ @parameter
-       -- ^ @parameter
+ -- ^ @variable.parameter
+    -- ^ @variable.parameter
+       -- ^ @variable.parameter
 listParam [a, b :: Int, Just c] = undefined
-        -- ^ @parameter
-           -- ^ @parameter
-                          -- ^ @parameter
+        -- ^ @variable.parameter
+           -- ^ @variable.parameter
+                          -- ^ @variable.parameter
 tupleParam (a :: Int, b, Just c) = undefined
-         -- ^ @parameter
-                   -- ^ @parameter
-                           -- ^ @parameter
+         -- ^ @variable.parameter
+                   -- ^ @variable.parameter
+                           -- ^ @variable.parameter
 listLambda = \[a, a :: Int, Just c] -> undefined
-            -- ^ @parameter
-               -- ^ @parameter
-                              -- ^ @parameter
+            -- ^ @variable.parameter
+               -- ^ @variable.parameter
+                              -- ^ @variable.parameter
 tupleLambda = \(a, b :: Int, Just c) -> undefined
-             -- ^ @parameter
-                -- ^ @parameter
+             -- ^ @variable.parameter
+                -- ^ @variable.parameter
 nestedDestructure (Left (Just a)) = undefined
-                           -- ^ @parameter
+                           -- ^ @variable.parameter
 typeApplication x y = someFun @ty x y
                                -- ^ @variable
                                  -- ^ @variable
@@ -317,9 +317,9 @@ recordUpdate x y rec = someFun rec {field = 5} (x, x) y
                                                    -- ^ @variable
 viewPattern (func -> var) = 5
            -- ^ @function.call
-                   -- ^ @parameter
+                   -- ^ @variable.parameter
 g (func :: a -> b) x = func y
-  -- ^ @parameter
+  -- ^ @variable.parameter
   -- ^ @function
 lambdaAlias :: LambdaAlias
 lambdaAlias _ _ _ = undefined
