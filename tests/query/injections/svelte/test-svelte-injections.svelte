@@ -1,23 +1,21 @@
 <script> import Button from "./Button.svelte"; </script>
-<!--              ^ javascript -->
+<!--               ^ @javascript -->
 <script lang="ts"> const foo: number = 1 </script>
-<!--                           ^ typescript -->
-<!--                           ^ !javascript -->
+<!--                            ^ @typescript -->
+<!--                            ^ @!javascript -->
 
 <style> main { font-family: sans-serif; text-align: center; } </style>
-<!--                       ^ css  -->
+<!--                        ^ @css  -->
 <style lang="scss"> main { &:hover { } } </style>
-<!--                       ^ scss -->
-<!--                       ^ !css -->
+<!--                        ^ @scss -->
+<!--                        ^ @!css -->
 
 <main>
 	<h1>Test file</h1>
   {#each someItems as someItem}
-<!--          ^ javascript
--->
+<!--          ^ @javascript -->
     <div>{someItem}</div>
-<!--         ^ javascript 
--->
+<!--          ^ @javascript -->
   {/each}
 	<Button />
   <button on:click={() => foo++}></button>

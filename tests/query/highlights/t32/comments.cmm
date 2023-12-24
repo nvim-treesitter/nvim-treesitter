@@ -1,10 +1,10 @@
 // This is a comment
-; <- comment
+; <- @comment
 
 ; Another comment
-; <- comment
+; <- @comment
 
 ECHO &a // This is a trailing comment
-;       ^ comment
+;       ^ @comment
 
 // vim: set ft=t32:

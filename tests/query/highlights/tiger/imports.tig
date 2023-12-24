@@ -1,4 +1,4 @@
 import "lib.tih"
-/* <- include */
-/*      ^ string.special */
+/* <- @include */
+/*      ^ @string.special */
 /* vim: set ft=tiger: */

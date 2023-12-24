@@ -14,10 +14,10 @@ jobs:
           node-version: '16'
       - name: Install dependencies
         run: npm ci
-      #      ^ bash
+      #      ^ @bash
       - name: Run tests
         run: npm test
-      #      ^ bash
+      #      ^ @bash
       - name: Parse Petalisp
         run: |
           git submodule init
@@ -27,6 +27,6 @@ jobs:
           else
             echo "Successfully parsed Petalisp"
           fi
-      #    ^ bash
+      #    ^ @bash
       - name: Run tests
         run: npm test

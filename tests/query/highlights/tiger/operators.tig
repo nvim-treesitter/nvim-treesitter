@@ -1,49 +1,49 @@
 let
   var a : int := 42
-  /*    ^ punctuation.delimiter */
-  /*          ^ operator */
+  /*    ^ @punctuation.delimiter */
+  /*          ^ @operator */
 in
   (
-  /* <- punctuation.bracket */
+  /* <- @punctuation.bracket */
 
     -1 | 2 & 3 + 4 * 5;
-    /* <- operator */
-    /* ^ operator */
-    /*     ^ operator */
-    /*         ^ operator */
-    /*             ^ operator */
-    /*                ^ punctuation.delimiter */
+    /* <- @operator */
+    /* ^ @operator */
+    /*     ^ @operator */
+    /*         ^ @operator */
+    /*             ^ @operator */
+    /*                ^ @punctuation.delimiter */
 
     12 >= 27;
-    /* ^ operator */
+    /* ^ @operator */
     12 <= 27;
-    /* ^ operator */
+    /* ^ @operator */
     12 = 27;
-    /* ^ operator */
+    /* ^ @operator */
     12 <> 27;
-    /* ^ operator */
+    /* ^ @operator */
     12 < 27;
-    /* ^ operator */
+    /* ^ @operator */
     12 > 27;
-    /* ^ operator */
+    /* ^ @operator */
 
     record.field;
-    /*    ^ punctuation.delimiter */
+    /*    ^ @punctuation.delimiter */
 
     func(a, b);
-    /*  ^ punctuation.bracket */
-    /*       ^ punctuation.bracket */
-    /*    ^ punctuation.delimiter */
+    /*  ^ @punctuation.bracket */
+    /*       ^ @punctuation.bracket */
+    /*    ^ @punctuation.delimiter */
 
     record_type { };
-    /*          ^ punctuation.bracket */
-    /*            ^ punctuation.bracket */
+    /*          ^ @punctuation.bracket */
+    /*            ^ @punctuation.bracket */
 
     array[42]
-    /*   ^ punctuation.bracket */
-    /*      ^ punctuation.bracket */
+    /*   ^ @punctuation.bracket */
+    /*      ^ @punctuation.bracket */
 
   )
-  /* <- punctuation.bracket */
+  /* <- @punctuation.bracket */
 end
 /* vim: set ft=tiger: */
