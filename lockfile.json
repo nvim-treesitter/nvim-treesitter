@@ -390,7 +390,7 @@
     "revision": "3bc691d2cfba44bea339a775ad496c8bc552c60d"
   },
   "nickel": {
-    "revision": "502a8746c82c616ed441e0ab2b8c09772ee7d114"
+    "revision": "091b5dcc7d138901bcc162da9409c0bb626c0d27"
   },
   "nim": {
     "revision": "482e2f4e1c2520db711c57f1899e926c3e81d4eb"
@@ -402,7 +402,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "66e3e9ce9180ae08fc57372061006ef83f0abde7"
+    "revision": "763168fa916a333a459434f1424b5d30645f015d"
   },
   "norg": {
     "revision": "014073fe8016d1ac440c51d22c77e3765d8f6855"
@@ -552,7 +552,7 @@
     "revision": "79456e6080f50fc1ca7c21845794308fa5d35a51"
   },
   "scala": {
-    "revision": "866f94551cd03f9055d04dba20465b84e7e693f3"
+    "revision": "2b79741be78858bd65c605b6fc6e9c2641d5be50"
   },
   "scfg": {
     "revision": "6deae0cbb458c849a4d1e2985093e9c9c32d7fd0"
@@ -693,7 +693,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "f0336bb8847393ba4d5905a94642acf0dc3d5ebd"
+    "revision": "583aad0a90da099708607b2aaf7450a1b1801535"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -720,7 +720,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "785c54e35a6a45826ff7228aa9662c19ca92ad57"
+    "revision": "6d98fb7d428c4c2620209f41af8828e87f34c230"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
