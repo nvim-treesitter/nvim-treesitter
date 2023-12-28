@@ -398,6 +398,8 @@
   "as" @include)
 (export_statement
   "export" @include)
+(selected_import
+  ":" @punctuation.delimiter)
 
 (struct_definition
   ["struct" "end"] @keyword)
