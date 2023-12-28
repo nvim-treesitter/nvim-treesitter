@@ -144,6 +144,12 @@
              (concatenation (word) @parameter)
              ])
 
+(command
+  name: (command_name) @_name
+  .
+  argument: (word) @function.call
+  (#eq? @_name "command"))
+
 (number) @number
 ((word) @number
  (#lua-match? @number "^[0-9]+$"))
