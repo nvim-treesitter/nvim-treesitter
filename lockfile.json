@@ -441,7 +441,7 @@
     "revision": "e01767921df18142055d97407595329d7629e643"
   },
   "perl": {
-    "revision": "3911403cba497196fb867a6f1e286e3e1576f425"
+    "revision": "d4e5cb9b3f725aa9598c7eb800966e3a8417b88c"
   },
   "php": {
     "revision": "0a99deca13c4af1fb9adcb03c958bfc9f4c740a9"
@@ -552,7 +552,7 @@
     "revision": "79456e6080f50fc1ca7c21845794308fa5d35a51"
   },
   "scala": {
-    "revision": "2b79741be78858bd65c605b6fc6e9c2641d5be50"
+    "revision": "696965ee3bafd47f4b5204d1e63b4ea4b52d9f9b"
   },
   "scfg": {
     "revision": "6deae0cbb458c849a4d1e2985093e9c9c32d7fd0"
@@ -720,7 +720,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "6d98fb7d428c4c2620209f41af8828e87f34c230"
+    "revision": "d97fa32273e21272cca40af291538ffcf0af082f"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
