@@ -441,7 +441,7 @@
     "revision": "e01767921df18142055d97407595329d7629e643"
   },
   "perl": {
-    "revision": "d4e5cb9b3f725aa9598c7eb800966e3a8417b88c"
+    "revision": "655632fa7f9174acbdbf1ad2abdac90ad3aa57a1"
   },
   "php": {
     "revision": "0a99deca13c4af1fb9adcb03c958bfc9f4c740a9"
@@ -543,7 +543,7 @@
     "revision": "ce6086b2c9e8e71065b8129d6c2289c5f66d1879"
   },
   "rst": {
-    "revision": "3c03a4bb2c27f1fa76f1ca5563c1fc10187e4028"
+    "revision": "3ba9eb9b5a47aadb1f2356a3cab0dd3d2bd00b4b"
   },
   "ruby": {
     "revision": "f257f3f57833d584050336921773738a3fd8ca22"
@@ -693,7 +693,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "583aad0a90da099708607b2aaf7450a1b1801535"
+    "revision": "b59edeac4a819999ebc5a78bbd384bd30bf6fa30"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -720,7 +720,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "d97fa32273e21272cca40af291538ffcf0af082f"
+    "revision": "339fec8a7671f8c4f0ff69adea9e14815616e8dd"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
