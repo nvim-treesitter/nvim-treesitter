@@ -393,7 +393,7 @@
     "revision": "091b5dcc7d138901bcc162da9409c0bb626c0d27"
   },
   "nim": {
-    "revision": "482e2f4e1c2520db711c57f1899e926c3e81d4eb"
+    "revision": "70ceee835e033acbc7092cd7f4f6a251789af121"
   },
   "nim_format_string": {
     "revision": "d45f75022d147cda056e98bfba68222c9c8eca3a"
@@ -636,7 +636,7 @@
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
   },
   "templ": {
-    "revision": "8793137e669949e72ac1d877ba9cadfbb5062fc0"
+    "revision": "14d105789af342f7f0c32bff2fec1a6edec59f60"
   },
   "terraform": {
     "revision": "e135399cb31b95fac0760b094556d1d5ce84acf0"
@@ -720,7 +720,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "339fec8a7671f8c4f0ff69adea9e14815616e8dd"
+    "revision": "d85ef04bb7e75e2627348b45a5f357a2c7fbee91"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
