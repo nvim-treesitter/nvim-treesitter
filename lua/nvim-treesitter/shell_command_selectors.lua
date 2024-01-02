@@ -106,6 +106,7 @@ function M.select_compiler_args(repo, compiler)
     }
   else
     local args = {
+      "--std=c99",
       "-o",
       "parser.so",
       "-I./src",
