@@ -552,7 +552,7 @@
     "revision": "79456e6080f50fc1ca7c21845794308fa5d35a51"
   },
   "scala": {
-    "revision": "696965ee3bafd47f4b5204d1e63b4ea4b52d9f9b"
+    "revision": "7891815f42dca9ed6aeb464c2edc39d479ab965c"
   },
   "scfg": {
     "revision": "6deae0cbb458c849a4d1e2985093e9c9c32d7fd0"
@@ -636,7 +636,7 @@
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
   },
   "templ": {
-    "revision": "14d105789af342f7f0c32bff2fec1a6edec59f60"
+    "revision": "f5c56b4739ea3303d125f6b7363645af631b85a1"
   },
   "terraform": {
     "revision": "e135399cb31b95fac0760b094556d1d5ce84acf0"
@@ -693,7 +693,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "b59edeac4a819999ebc5a78bbd384bd30bf6fa30"
+    "revision": "9ac84e62396bb13c8f1d11f967f0c0f2dec1a448"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -720,7 +720,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "d85ef04bb7e75e2627348b45a5f357a2c7fbee91"
+    "revision": "95006d1c99d597abc7b0264fd9773527031db53a"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
