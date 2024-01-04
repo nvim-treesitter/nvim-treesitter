@@ -51,7 +51,7 @@ local function do_check()
   local configs = require('nvim-treesitter.parsers').configs
 
   local captures = extract_captures()
-  local last_error
+  local errors = {}
 
   io_print('::group::Check parsers')
 
@@ -69,8 +69,7 @@ local function do_check()
         )
         if not ok then
           local err_msg = lang .. ' (' .. query_type .. '): ' .. query
-          io_print(err_msg)
-          last_error = err_msg
+          errors[#errors + 1] = err_msg
         else
           if query then
             for _, capture in ipairs(query.captures) do
@@ -83,8 +82,7 @@ local function do_check()
               if not is_valid then
                 local error =
                   string.format('(x) Invalid capture @%s in %s for %s.', capture, query_type, lang)
-                io_print(error)
-                last_error = error
+                errors[#errors + 1] = error
               end
             end
           end
@@ -95,11 +93,14 @@ local function do_check()
 
   io_print('::endgroup::')
 
-  if last_error then
-    io_print()
-    io_print('Last error: ')
-    error(last_error)
+  if #errors > 0 then
+    io_print('\nCheck failed!\nErrors:')
+    for _, err in ipairs(errors) do
+      print(err)
+    end
+    error()
   end
+
   return timings
 end
 
@@ -122,8 +123,4 @@ if ok then
   end
   io_print('::endgroup::')
   io_print('Check successful!')
-else
-  io_print('Check failed:')
-  io_print(result)
-  io_print('\n')
 end
