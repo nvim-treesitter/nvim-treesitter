@@ -1,6 +1,7 @@
 ;; General syntax
 
 (command_name) @function
+(text_mode "\\text" @function)
 (caption
   command: _ @function)
 
