@@ -2,8 +2,7 @@
 
 (source "source" @keyword)
 
-(exec "exec" @keyword)
-(exec "exec-once" @keyword)
+[ "exec" "exec-once" ] @keyword
 
 (keyword
   (name) @keyword
