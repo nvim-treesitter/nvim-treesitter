@@ -1,8 +1,6 @@
 (comment) @comment
 
-(source "source" @keyword)
-
-[ "exec" "exec-once" ] @keyword
+[ "source" "exec" "exec-once" ] @keyword
 
 (keyword
   (name) @keyword)
