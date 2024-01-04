@@ -49,7 +49,7 @@
 
 (hex) @number
 
-[ "," ] @punctuation
+[ "," ] @punctuation.delimiter
 
 [
   "("
