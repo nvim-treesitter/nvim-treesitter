@@ -67,14 +67,15 @@
       . 
       (string
         content: (_) @injection.content)
-      . (_) .) ; Limiting predicate handling to only functions with 4 arguments
+      . (_) 
+      .) ; Limiting predicate handling to only functions with 4 arguments
   (#eq? @_user_cmd "vim.api.nvim_buf_create_user_command")
   (#set! injection.language "vim"))
 
 ;; rhs highlighting for vim.keymap.set/vim.api.nvim_set_keymap/vim.api.nvim_buf_set_keymap
 ; (function_call
 ;   name: (_) @_map
-;   arguments: 
+;   arguments:
 ;     (arguments
 ;       . (_)
 ;       . (_)
@@ -86,7 +87,7 @@
 ;
 ; (function_call
 ;   name: (_) @_map
-;   arguments: 
+;   arguments:
 ;     (arguments
 ;       . (_)
 ;       . (_)

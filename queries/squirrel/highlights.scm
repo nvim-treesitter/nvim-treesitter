@@ -158,6 +158,7 @@
    function: (global_variable "::" (_) @function.builtin)
    function: (deref_expression "." (_) @function.builtin)
   ]
+  ; format-ignore
   (#any-of? @function.builtin
    ; General Methods
    "assert" "array" "callee" "collectgarbage" "compilestring"

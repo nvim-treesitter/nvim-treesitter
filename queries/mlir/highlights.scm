@@ -23,6 +23,7 @@
   (arith_cmp_predicate)
 ] @keyword
 
+; format-ignore
 [
   "module"
   "unrealized_conversion_cast"
