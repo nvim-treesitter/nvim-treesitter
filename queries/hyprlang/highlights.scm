@@ -11,7 +11,7 @@
   (name) @property)
 
 (section
-  (name) @namespace)
+  (name) @module)
 
 (section
   device: (name) @type)
