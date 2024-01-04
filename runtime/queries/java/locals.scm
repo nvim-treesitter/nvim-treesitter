@@ -70,6 +70,7 @@
   name: (identifier) @local.definition.parameter)
 (catch_formal_parameter
   name: (identifier) @local.definition.parameter)
+
 (inferred_parameters (identifier) @local.definition.parameter) ; (x,y) -> ...
 (lambda_expression
     parameters: (identifier) @local.definition.parameter) ; x -> ...

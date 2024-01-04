@@ -1,3 +1,4 @@
+; format-ignore
 [
   ; ... refers to the section that will get affected by this indent.begin capture
   (protocol_body)               ; protocol Foo { ... }

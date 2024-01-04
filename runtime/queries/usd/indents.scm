@@ -1,3 +1,4 @@
+; format-ignore
 [
   (block)  ; The {}s in `def "foo" { ... Attributes / Prims here ... }`
   (dictionary)  ; The {}s in `dictionary foo = { string "foo" = "bar" }`
