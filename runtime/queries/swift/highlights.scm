@@ -73,7 +73,7 @@
 (call_expression (simple_identifier) @function.call) ; foo()
 (call_expression ; foo.bar.baz(): highlight the baz()
   (navigation_expression
-    (navigation_suffix (simple_identifier) @function.call)))
+    (navigation_suffix (simple_identifier) @function.call))) 
 (call_expression
   (prefix_expression (simple_identifier) @function.call)) ; .foo()
 ((navigation_expression

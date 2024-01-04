@@ -124,12 +124,12 @@
 ((preproc_arg) @function.macro (#set! "priority" 90))
 (preproc_defined) @function.macro
 
-(((field_expression
-     (field_identifier) @property)) @_parent
+((field_expression
+     (field_identifier) @property) @_parent
  (#not-has-parent? @_parent template_method function_declarator call_expression))
 
 (field_designator) @property
-(((field_identifier) @property)
+((field_identifier) @property
  (#has-ancestor? @property field_declaration)
  (#not-has-ancestor? @property function_declarator))
 
@@ -168,6 +168,7 @@
   value: (identifier) @constant)
 
 ((identifier) @constant.builtin
+  ; format-ignore
   (#any-of? @constant.builtin
     "stderr" "stdin" "stdout"
     "__FILE__" "__LINE__" "__DATE__" "__TIME__"
@@ -181,6 +182,7 @@
     "__FUNCTION__" "__func__" "__PRETTY_FUNCTION__"
     "__VA_ARGS__" "__VA_OPT__"))
 (preproc_def (preproc_arg) @constant.builtin
+  ; format-ignore
   (#any-of? @constant.builtin
     "stderr" "stdin" "stdout"
     "__FILE__" "__LINE__" "__DATE__" "__TIME__"

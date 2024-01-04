@@ -52,8 +52,9 @@
   parameter: (identifier) @local.definition.parameter
   (_))
 
+;; Single parameter arrow function
 (function_expression
- . (identifier) @local.definition.parameter) ;; Single parameter arrow function
+ . (identifier) @local.definition.parameter) 
 
 
 ;;; Function/macro definitions

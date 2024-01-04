@@ -1,3 +1,4 @@
+; format-ignore
 [
   ; ... refers to the portion that this indent query will have effects on
   (class_body)                        ; { ... } of `class X`
