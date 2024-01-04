@@ -33,6 +33,9 @@
 ((program . (comment)* . (comment) @keyword.directive)
  (#lua-match? @keyword.directive "^;+ *extends *$"))
 
+((comment) @keyword.directive
+  (#lua-match? @keyword.directive "^;+%s*format%-ignore%s*$"))
+
 ((predicate
   name: (identifier) @_name
   parameters: (parameters (string "\"" @string "\"" @string) @string.regexp))
