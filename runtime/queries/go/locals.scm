@@ -1,11 +1,11 @@
 (
     (function_declaration
-        name: (identifier) @local.definition.function) ;@function 
+        name: (identifier) @local.definition.function) ; @function 
 )
 
 (
     (method_declaration
-        name: (field_identifier) @local.definition.method); @function.method
+        name: (field_identifier) @local.definition.method) ; @function.method
 )
 
 (short_var_declaration 

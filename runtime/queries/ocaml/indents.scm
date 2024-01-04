@@ -1,3 +1,4 @@
+; format-ignore
 [ 
   (let_binding)                 ; let = ...
   (type_binding)

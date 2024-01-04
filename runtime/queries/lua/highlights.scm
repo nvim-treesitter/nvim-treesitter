@@ -220,8 +220,9 @@
 
 (function_call
   (identifier) @function.builtin
+  ; format-ignore
   (#any-of? @function.builtin
-    ;; built-in functions in Lua 5.1
+    ; built-in functions in Lua 5.1
     "assert" "collectgarbage" "dofile" "error" "getfenv" "getmetatable" "ipairs"
     "load" "loadfile" "loadstring" "module" "next" "pairs" "pcall" "print"
     "rawequal" "rawget" "rawlen" "rawset" "require" "select" "setfenv" "setmetatable"
