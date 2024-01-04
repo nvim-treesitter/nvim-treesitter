@@ -127,7 +127,8 @@
 (command_name (word) @function.call)
 
 ((command_name (word) @function.builtin)
- (#any-of? @function.builtin
+  ; format-ignore
+  (#any-of? @function.builtin
     "alias" "bg" "bind" "break" "builtin" "caller" "cd"
     "command" "compgen" "complete" "compopt" "continue"
     "coproc" "dirs" "disown" "echo" "enable" "eval"

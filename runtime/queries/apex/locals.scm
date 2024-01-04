@@ -22,7 +22,7 @@
 ; loops
 
 (for_statement) @local.scope
-(for_statement         ; "for" body in case there are no braces
+(for_statement  ; "for" body in case there are no braces
   body: (_) @local.scope)
 (do_statement
   body: (_) @local.scope)

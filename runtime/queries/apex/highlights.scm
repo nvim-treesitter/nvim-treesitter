@@ -136,7 +136,7 @@
 [
   (boolean_type)
   (void_type)
-] @type.builtin;;
+] @type.builtin
 
 ; Fields
 
