@@ -5,20 +5,16 @@
 [ "exec" "exec-once" ] @keyword
 
 (keyword
-  (name) @keyword
-)
+  (name) @keyword)
 
 (assignment
-  (name) @property
-)
+  (name) @property)
 
 (section
-  (name) @namespace
-)
+  (name) @namespace)
 
 (section
-  device: (name) @type
-)
+  device: (name) @type)
 
 (variable) @variable
 (variable "$" @punctuation.special)
@@ -29,19 +25,13 @@
 
 (mod) @constant
 
-(vec2
-  (number) @number
-  (number) @number
-)
-
 [
   "rgb"
   "rgba"
-] @function
+] @function.builtin
 
 (color
-  (legacy_hex) @number
-)
+  (legacy_hex) @number)
 
 (angle) @number
 (angle "deg" @type)
