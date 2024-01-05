@@ -15,7 +15,7 @@
     "revision": "ff1045f5da90344d547022c50f1756be4adaf721"
   },
   "astro": {
-    "revision": "e122a8fcd07e808a7b873bfadc2667834067daf1"
+    "revision": "a092afa5c330495fdfbc652766c29c66ec6880f4"
   },
   "authzed": {
     "revision": "1dec7e1af96c56924e3322cd85fdce15d0a31d00"
@@ -444,7 +444,7 @@
     "revision": "655632fa7f9174acbdbf1ad2abdac90ad3aa57a1"
   },
   "php": {
-    "revision": "0a99deca13c4af1fb9adcb03c958bfc9f4c740a9"
+    "revision": "594b8bad093abe739c3d2a2cae5abae33c5fb23d"
   },
   "phpdoc": {
     "revision": "915a527d5aafa81b31acf67fab31b0ac6b6319c0"
@@ -546,7 +546,7 @@
     "revision": "3ba9eb9b5a47aadb1f2356a3cab0dd3d2bd00b4b"
   },
   "ruby": {
-    "revision": "f257f3f57833d584050336921773738a3fd8ca22"
+    "revision": "1ba5af1bf41b09c7c0d2630700ba593635581811"
   },
   "rust": {
     "revision": "79456e6080f50fc1ca7c21845794308fa5d35a51"
@@ -636,7 +636,7 @@
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
   },
   "templ": {
-    "revision": "f5c56b4739ea3303d125f6b7363645af631b85a1"
+    "revision": "64f3ded2bbc5cbc83f1b52bae1680a08fda435d5"
   },
   "terraform": {
     "revision": "e135399cb31b95fac0760b094556d1d5ce84acf0"
@@ -720,7 +720,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "6437741d19632ae502fc335441c895cd94729db3"
+    "revision": "8d6b514bdc76dfc96827a62150bf85098c3fe429"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
