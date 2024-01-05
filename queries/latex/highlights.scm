@@ -111,17 +111,7 @@
 ] @text.math
 
 (math_environment
-  (begin
-   command: _ @text.math
-   name: (curly_group_text (text) @text.math)))
-
-(math_environment
   (text) @text.math)
-
-(math_environment
-  (end
-   command: _ @text.math
-   name: (curly_group_text (text) @text.math)))
 
 ;; Sectioning
 (title_declaration
