@@ -54,9 +54,9 @@ jobs:
       NVIM: ${{ matrix.os == 'windows-2022' && 'nvim-win64\\bin\\nvim.exe' || 'nvim' }}
       ALLOWED_INSTALLATION_FAILURES: ${{ matrix.os == 'windows-2022' && 'rnoweb' }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ilammy/msvc-dev-cmd@v1
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
 
       - name: Install tree-sitter CLI
         run: npm i -g tree-sitter-cli
