@@ -11,9 +11,10 @@
   "]"
   "{"
   "}"
-]  @punctuation.bracket
+] @punctuation.bracket
 
 (comment) @comment @spell
+
 (doc_comment) @comment.documentation @spell
 
 "method" @keyword.function
@@ -78,4 +79,5 @@
   name: (identifier) @function.method)
 
 (number_literal) @number
+
 (string_literal) @string

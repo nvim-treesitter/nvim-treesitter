@@ -1,5 +1,4 @@
 ; Scopes
-
 [
   (source_file)
   (field)
@@ -7,17 +6,15 @@
 ] @local.scope
 
 ; References
-
 (identifier) @local.reference
 
 ; Definitions
-
 (import_spec
   path: (string) @local.definition.import)
 
 (field
   (label
-  (identifier) @local.definition.field))
+    (identifier) @local.definition.field))
 
 (package_identifier) @local.definition.namespace
 

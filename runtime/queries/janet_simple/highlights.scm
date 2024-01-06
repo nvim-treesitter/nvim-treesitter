@@ -1,61 +1,71 @@
-;; >> Literals
-
+; >> Literals
 (kwd_lit) @string.special.symbol
+
 (str_lit) @string
+
 (long_str_lit) @string
+
 (buf_lit) @string
+
 (long_buf_lit) @string
+
 (num_lit) @number
+
 (bool_lit) @boolean
+
 (nil_lit) @constant.builtin
+
 (comment) @comment @spell
 
-["{" "@{" "}"
- "[" "@[" "]"
- "(" "@(" ")"] @punctuation.bracket
+[
+  "{"
+  "@{"
+  "}"
+  "["
+  "@["
+  "]"
+  "("
+  "@("
+  ")"
+] @punctuation.bracket
 
-;; >> Symbols
-
-;; General symbol highlighting
+; >> Symbols
+; General symbol highlighting
 (sym_lit) @variable
 
-;; General function calls
+; General function calls
 (par_tup_lit
- .
- (sym_lit) @function.call)
+  .
+  (sym_lit) @function.call)
 
 (short_fn_lit
- .
- (sym_lit) @function.call)
+  .
+  (sym_lit) @function.call)
 
-;; Quoted symbols
-
+; Quoted symbols
 (quote_lit
- (sym_lit) @string.special.symbol)
+  (sym_lit) @string.special.symbol)
 
 (qq_lit
- (sym_lit) @string.special.symbol)
+  (sym_lit) @string.special.symbol)
 
-;; Dynamic variables
-
+; Dynamic variables
 ((sym_lit) @variable.builtin
- (#lua-match? @variable.builtin "^[*].+[*]$"))
+  (#lua-match? @variable.builtin "^[*].+[*]$"))
 
-;; Comment
-
+; Comment
 ((sym_lit) @comment
- (#any-of? @comment "comment"))
+  (#any-of? @comment "comment"))
 
-;; Special forms and builtin macros
-;;
-;; # special forms were manually added at the beginning
-;;
-;; # for macros
-;; (each name (all-bindings)
-;;   (when-let [info (dyn (symbol name))]
-;;     (when (info :macro)
-;;       (print name))))
-
+; Special forms and builtin macros
+;
+; # special forms were manually added at the beginning
+;
+; # for macros
+; (each name (all-bindings)
+;   (when-let [info (dyn (symbol name))]
+;     (when (info :macro)
+;       (print name))))
 ((sym_lit) @function.macro
   ; format-ignore
   (#any-of? @function.macro
@@ -105,15 +115,14 @@
     "when" "when-let" "when-with"
     "with" "with-dyns" "with-syms" "with-vars"))
 
-;; All builtin functions
-;;
-;; (each name (all-bindings)
-;;   (when-let [info (dyn (symbol name))]
-;;     (when (and (nil? (info :macro))
-;;                (or (function? (info :value))
-;;                    (cfunction? (info :value))))
-;;       (print name))))
-
+; All builtin functions
+;
+; (each name (all-bindings)
+;   (when-let [info (dyn (symbol name))]
+;     (when (and (nil? (info :macro))
+;                (or (function? (info :value))
+;                    (cfunction? (info :value))))
+;       (print name))))
 ((sym_lit) @function.builtin
   ; format-ignore
   (#any-of? @function.builtin
@@ -301,4 +310,3 @@
     "xprin" "xprinf" "xprint" "xprintf"
     "yield"
     "zero?" "zipcoll"))
-

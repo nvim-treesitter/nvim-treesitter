@@ -9,6 +9,4 @@
   ">"
 ] @indent.branch
 
-[
-  (comment)
-] @indent.ignore
+(comment) @indent.ignore

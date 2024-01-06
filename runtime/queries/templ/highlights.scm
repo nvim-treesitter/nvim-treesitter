@@ -1,5 +1,4 @@
 ; inherits: go
-
 (component_declaration
   name: (component_identifier) @function)
 
@@ -12,6 +11,7 @@
 
 (attribute
   name: (attribute_name) @tag.attribute)
+
 (attribute
   value: (quoted_attribute_value) @string)
 
@@ -21,8 +21,10 @@
 ] @string.special
 
 (css_identifier) @function
+
 (css_property
   name: (css_property_name) @attribute)
+
 (css_property
   value: (css_property_value) @attribute)
 

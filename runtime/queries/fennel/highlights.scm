@@ -18,29 +18,38 @@
 ] @punctuation.special
 
 (nil) @constant.builtin
+
 (vararg) @punctuation.special
 
 (boolean) @boolean
+
 (number) @number
 
 (string) @string
+
 (escape_sequence) @string.escape
 
 (symbol) @variable
 
 (multi_symbol
-   "." @punctuation.delimiter
-   (symbol) @variable.member)
+  "." @punctuation.delimiter
+  (symbol) @variable.member)
 
 (multi_symbol_method
-   ":" @punctuation.delimiter
-   (symbol) @function.method.call .)
+  ":" @punctuation.delimiter
+  (symbol) @function.method.call .)
 
-(list . (symbol) @function.call)
-(list . (multi_symbol (symbol) @function.call .))
+(list
+  .
+  (symbol) @function.call)
+
+(list
+  .
+  (multi_symbol
+    (symbol) @function.call .))
 
 ((symbol) @variable.builtin
- (#lua-match? @variable.builtin "^[$]"))
+  (#lua-match? @variable.builtin "^[$]"))
 
 (binding) @string.special.symbol
 
@@ -51,30 +60,34 @@
   "#"
 ] @keyword.function
 
-(fn name: [
- (symbol) @function
- (multi_symbol (symbol) @function .)
-])
+(fn
+  name:
+    [
+      (symbol) @function
+      (multi_symbol
+        (symbol) @function .)
+    ])
 
-(lambda name: [
- (symbol) @function
- (multi_symbol (symbol) @function .)
-])
+(lambda
+  name:
+    [
+      (symbol) @function
+      (multi_symbol
+        (symbol) @function .)
+    ])
 
 [
   "for"
   "each"
 ] @keyword.repeat
-((symbol) @keyword.repeat
- (#any-of? @keyword.repeat
-  "while"))
 
-[
-  "match"
-] @keyword.conditional
+((symbol) @keyword.repeat
+  (#any-of? @keyword.repeat "while"))
+
+"match" @keyword.conditional
+
 ((symbol) @keyword.conditional
- (#any-of? @keyword.conditional
-  "if" "when"))
+  (#any-of? @keyword.conditional "if" "when"))
 
 [
   "global"
@@ -85,13 +98,12 @@
   "where"
   "or"
 ] @keyword
+
 ((symbol) @keyword
- (#any-of? @keyword
-  "comment" "do" "doc" "eval-compiler" "lua" "macros" "quote" "tset" "values"))
+  (#any-of? @keyword "comment" "do" "doc" "eval-compiler" "lua" "macros" "quote" "tset" "values"))
 
 ((symbol) @keyword.import
- (#any-of? @keyword.import
-  "require" "require-macros" "import-macros" "include"))
+  (#any-of? @keyword.import "require" "require-macros" "import-macros" "include"))
 
 [
   "collect"
@@ -100,22 +112,14 @@
 ] @function.macro
 
 ((symbol) @function.macro
- (#any-of? @function.macro
-  "->" "->>" "-?>" "-?>>" "?." "doto" "macro" "macrodebug" "partial" "pick-args"
-  "pick-values" "with-open"))
+  (#any-of? @function.macro "->" "->>" "-?>" "-?>>" "?." "doto" "macro" "macrodebug" "partial" "pick-args" "pick-values" "with-open"))
 
 ; Lua builtins
 ((symbol) @constant.builtin
- (#any-of? @constant.builtin
-  "arg" "_ENV" "_G" "_VERSION"))
+  (#any-of? @constant.builtin "arg" "_ENV" "_G" "_VERSION"))
 
 ((symbol) @function.builtin
- (#any-of? @function.builtin
-  "assert" "collectgarbage" "dofile" "error" "getmetatable" "ipairs"
-  "load" "loadfile" "next" "pairs" "pcall" "print" "rawequal" "rawget"
-  "rawlen" "rawset" "require" "select" "setmetatable" "tonumber" "tostring"
-  "type" "warn" "xpcall"))
+  (#any-of? @function.builtin "assert" "collectgarbage" "dofile" "error" "getmetatable" "ipairs" "load" "loadfile" "next" "pairs" "pcall" "print" "rawequal" "rawget" "rawlen" "rawset" "require" "select" "setmetatable" "tonumber" "tostring" "type" "warn" "xpcall"))
 
 ((symbol) @function.builtin
- (#any-of? @function.builtin
-  "loadstring" "module" "setfenv" "unpack"))
+  (#any-of? @function.builtin "loadstring" "module" "setfenv" "unpack"))

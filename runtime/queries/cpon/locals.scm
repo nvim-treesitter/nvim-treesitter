@@ -1,6 +1,5 @@
 [
-  (document) 
-
+  (document)
   (meta_map)
   (map)
   (array)

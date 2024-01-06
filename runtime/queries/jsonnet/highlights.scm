@@ -1,10 +1,14 @@
 (id) @variable
+
 (comment) @comment @spell
 
 ; Literals
 (null) @constant.builtin
+
 (string) @string
+
 (number) @number
+
 [
   (true)
   (false)
@@ -12,7 +16,9 @@
 
 ; Keywords
 "for" @keyword.repeat
+
 "in" @keyword.operator
+
 "function" @keyword.function
 
 [
@@ -37,8 +43,9 @@
   (self)
   (super)
 ] @variable.builtin
+
 ((id) @variable.builtin
- (#eq? @variable.builtin "std"))
+  (#eq? @variable.builtin "std"))
 
 ; Operators
 [
@@ -78,7 +85,8 @@
 ] @punctuation.special
 
 (field
-  (fieldname) "+" @punctuation.special)
+  (fieldname)
+  "+" @punctuation.special)
 
 ; Imports
 [
@@ -87,21 +95,33 @@
 ] @keyword.import
 
 ; Fields
+(fieldname
+  (id) @variable.member)
 
-(fieldname (id) @variable.member)
-(fieldname (string (string_content) @variable.member))
+(fieldname
+  (string
+    (string_content) @variable.member))
 
 ; Functions
 (field
-  function: (fieldname (id) @function))
+  function:
+    (fieldname
+      (id) @function))
+
 (field
-  function: (fieldname
-              (string (string_content) @function)))
+  function:
+    (fieldname
+      (string
+        (string_content) @function)))
+
 (param
   identifier: (id) @variable.parameter)
 
-(bind (id) @variable.local)
-(bind function: (id) @function)
+(bind
+  (id) @variable.local)
+
+(bind
+  function: (id) @function)
 
 ; Function call
 (functioncall
@@ -113,6 +133,5 @@
   "("
   (args
     (named_argument
-      (id) @variable.parameter
-    ))?
+      (id) @variable.parameter))?
   ")")

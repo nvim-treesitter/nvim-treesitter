@@ -41,17 +41,19 @@
     "$"
     "{"
     "}"
-  ] @punctuation.special
-)
+  ] @punctuation.special)
 
 ((variable) @constant
   (#lua-match? @constant "^[A-Z][A-Z_0-9]*$"))
 
 (arg_instruction
-  . (unquoted_string) @property)
+  .
+  (unquoted_string) @property)
 
 (env_instruction
-  (env_pair . (unquoted_string) @property))
+  (env_pair
+    .
+    (unquoted_string) @property))
 
 (expose_instruction
   (expose_port) @number)

@@ -1,20 +1,20 @@
-;; From tree-sitter-python licensed under MIT License
+; From tree-sitter-python licensed under MIT License
 ; Copyright (c) 2016 Max Brunsfeld
-
 ; Variables
 (identifier) @variable
 
 ; Reset highlighting in f-string interpolations
 (interpolation) @none
 
-;; Identifier naming conventions
+; Identifier naming conventions
 ((identifier) @type
- (#lua-match? @type "^[A-Z].*[a-z]"))
+  (#lua-match? @type "^[A-Z].*[a-z]"))
+
 ((identifier) @constant
- (#lua-match? @constant "^[A-Z][A-Z_0-9]*$"))
+  (#lua-match? @constant "^[A-Z][A-Z_0-9]*$"))
 
 ((identifier) @constant.builtin
- (#lua-match? @constant.builtin "^__[a-zA-Z0-9_]*__$"))
+  (#lua-match? @constant.builtin "^__[a-zA-Z0-9_]*__$"))
 
 ((identifier) @constant.builtin
   ; format-ignore
@@ -24,40 +24,48 @@
     "quit" "exit" "copyright" "credits" "license"))
 
 ((attribute
-    attribute: (identifier) @variable.member)
- (#lua-match? @variable.member "^[%l_].*$"))
+  attribute: (identifier) @variable.member)
+  (#lua-match? @variable.member "^[%l_].*$"))
 
 ((assignment
   left: (identifier) @type.definition
-  (type (identifier) @_annotation))
- (#eq? @_annotation "TypeAlias"))
+  (type
+    (identifier) @_annotation))
+  (#eq? @_annotation "TypeAlias"))
 
 ((assignment
   left: (identifier) @type.definition
-  right: (call
-    function: (identifier) @_func))
- (#any-of? @_func "TypeVar" "NewType"))
+  right:
+    (call
+      function: (identifier) @_func))
+  (#any-of? @_func "TypeVar" "NewType"))
 
-;; Decorators
-((decorator "@" @attribute)
- (#set! "priority" 101))
+; Decorators
+((decorator
+  "@" @attribute)
+  (#set! "priority" 101))
 
 (decorator
   (identifier) @attribute)
+
 (decorator
   (attribute
     attribute: (identifier) @attribute))
+
 (decorator
-  (call (identifier) @attribute))
+  (call
+    (identifier) @attribute))
+
 (decorator
-  (call (attribute
-          attribute: (identifier) @attribute)))
+  (call
+    (attribute
+      attribute: (identifier) @attribute)))
 
 ((decorator
   (identifier) @attribute.builtin)
- (#any-of? @attribute.builtin "classmethod" "property"))
+  (#any-of? @attribute.builtin "classmethod" "property"))
 
-;; Builtin functions
+; Builtin functions
 ((call
   function: (identifier) @function.builtin)
   ; format-ignore
@@ -69,21 +77,24 @@
     "print" "property" "range" "repr" "reversed" "round" "set" "setattr" "slice" "sorted" "staticmethod" "str"
     "struct" "sum" "super" "tuple" "type" "vars" "zip" "__import__"))
 
-;; Function definitions
+; Function definitions
 (function_definition
   name: (identifier) @function)
 
-(type (identifier) @type)
+(type
+  (identifier) @type)
+
 (type
   (subscript
     (identifier) @type)) ; type subscript: Tuple[int]
 
 ((call
   function: (identifier) @_isinstance
-  arguments: (argument_list
-    (_)
-    (identifier) @type))
- (#eq? @_isinstance "isinstance"))
+  arguments:
+    (argument_list
+      (_)
+      (identifier) @type))
+  (#eq? @_isinstance "isinstance"))
 
 ((identifier) @type.builtin
   ; format-ignore
@@ -104,67 +115,89 @@
     "bool" "int" "float" "complex" "list" "tuple" "range" "str"
     "bytes" "bytearray" "memoryview" "set" "frozenset" "dict" "type"))
 
-;; Normal parameters
+; Normal parameters
 (parameters
   (identifier) @variable.parameter)
-;; Lambda parameters
+
+; Lambda parameters
 (lambda_parameters
   (identifier) @variable.parameter)
+
 (lambda_parameters
   (tuple_pattern
     (identifier) @variable.parameter))
+
 ; Default parameters
 (keyword_argument
   name: (identifier) @variable.parameter)
+
 ; Naming parameters on call-site
 (default_parameter
   name: (identifier) @variable.parameter)
+
 (typed_parameter
   (identifier) @variable.parameter)
+
 (typed_default_parameter
   (identifier) @variable.parameter)
+
 ; Variadic parameters *args, **kwargs
 (parameters
-  (list_splat_pattern ; *args
+  (list_splat_pattern
+    ; *args
     (identifier) @variable.parameter))
+
 (parameters
-  (dictionary_splat_pattern ; **kwargs
+  (dictionary_splat_pattern
+    ; **kwargs
     (identifier) @variable.parameter))
 
-
-;; Literals
+; Literals
 (none) @constant.builtin
-[(true) (false)] @boolean
+
+[
+  (true)
+  (false)
+] @boolean
+
 ((identifier) @variable.builtin
- (#eq? @variable.builtin "self"))
+  (#eq? @variable.builtin "self"))
+
 ((identifier) @variable.builtin
- (#eq? @variable.builtin "cls"))
+  (#eq? @variable.builtin "cls"))
 
 (integer) @number
+
 (float) @number.float
 
 (comment) @comment @spell
 
-((module . (comment) @keyword.directive)
+((module
+  .
+  (comment) @keyword.directive)
   (#lua-match? @keyword.directive "^#!/"))
 
 (string) @string
+
 [
   (escape_sequence)
   (escape_interpolation)
 ] @string.escape
 
 ; doc-strings
-
-(module . (expression_statement (string) @string.documentation @spell))
+(module
+  .
+  (expression_statement
+    (string) @string.documentation @spell))
 
 (function_definition
   body:
     (block
-      . (expression_statement (string) @string.documentation @spell)))
+      .
+      (expression_statement
+        (string) @string.documentation @spell)))
 
 ; Tokens
-
 [
   "-"
   "-="
@@ -211,7 +244,6 @@
   "in"
   "not"
   "or"
-
   "del"
 ] @keyword.operator
 
@@ -236,21 +268,38 @@
   "await"
 ] @keyword.coroutine
 
-[
-  "return"
-] @keyword.return
+"return" @keyword.return
 
 ((call
   function: (identifier) @keyword.import
-  arguments: (argument_list
-	(string) @string))
+  arguments:
+    (argument_list
+      (string) @string))
   (#eq? @keyword.import "load"))
 
-["if" "elif" "else" "match" "case"] @keyword.conditional
+[
+  "if"
+  "elif"
+  "else"
+  "match"
+  "case"
+] @keyword.conditional
 
-["for" "while" "break" "continue"] @keyword.repeat
+[
+  "for"
+  "while"
+  "break"
+  "continue"
+] @keyword.repeat
 
-["(" ")" "[" "]" "{" "}"] @punctuation.bracket
+[
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+] @punctuation.bracket
 
 (interpolation
   "{" @punctuation.special
@@ -258,39 +307,44 @@
 
 (type_conversion) @function.macro
 
-["," "." ":" ";" (ellipsis)] @punctuation.delimiter
+[
+  ","
+  "."
+  ":"
+  ";"
+  (ellipsis)
+] @punctuation.delimiter
 
-;; Starlark-specific
-
-;; Assertion calls
+; Starlark-specific
+; Assertion calls
 (assert_keyword) @keyword
 
 (assert_builtin) @function.builtin
 
-;; Struct definitions
+; Struct definitions
 ((call
   function: (identifier) @_func
-  arguments: (argument_list
-    (keyword_argument
-	  name: (identifier) @variable.member)))
+  arguments:
+    (argument_list
+      (keyword_argument
+        name: (identifier) @variable.member)))
   (#eq? @_func "struct"))
 
-;; Function calls
-
+; Function calls
 (call
   function: (identifier) @function.call)
 
 (call
-  function: (attribute
-              attribute: (identifier) @function.method.call))
+  function:
+    (attribute
+      attribute: (identifier) @function.method.call))
 
 ((call
-   function: (identifier) @constructor)
- (#lua-match? @constructor "^[A-Z]"))
+  function: (identifier) @constructor)
+  (#lua-match? @constructor "^[A-Z]"))
 
 ((call
-  function: (attribute
-              attribute: (identifier) @constructor))
- (#lua-match? @constructor "^[A-Z]"))
-
-
+  function:
+    (attribute
+      attribute: (identifier) @constructor))
+  (#lua-match? @constructor "^[A-Z]"))

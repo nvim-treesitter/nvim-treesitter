@@ -1,18 +1,23 @@
 ; Scopes
 ;-------
-
 (statement_block) @local.scope
+
 (function) @local.scope
+
 (arrow_function) @local.scope
+
 (function_declaration) @local.scope
+
 (method_definition) @local.scope
+
 (for_statement) @local.scope
+
 (for_in_statement) @local.scope
+
 (catch_clause) @local.scope
 
 ; Definitions
 ;------------
-
 (variable_declarator
   name: (identifier) @local.definition.var)
 
@@ -24,14 +29,14 @@
 
 (function_declaration
   ((identifier) @local.definition.function)
-   (#set! definition.var.scope parent))
+  (#set! definition.var.scope parent))
 
 (method_definition
   ((property_identifier) @local.definition.function)
-   (#set! definition.var.scope parent))
+  (#set! definition.var.scope parent))
 
 ; References
 ;------------
-
 (identifier) @local.reference
+
 (shorthand_property_identifier) @local.reference

@@ -1,4 +1,4 @@
-;; Scopes
+; Scopes
 [
   (command)
   (function_definition)
@@ -9,10 +9,11 @@
   (switch_statement)
 ] @local.scope
 
-;; Definitions
+; Definitions
 (function_definition
   name: (word) @local.definition.function)
 
-;; References
+; References
 (variable_name) @local.reference
+
 (word) @local.reference

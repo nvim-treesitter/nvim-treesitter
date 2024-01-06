@@ -1,61 +1,59 @@
 ; Variables
-
 (variable) @variable
 
 ((variable) @constant.builtin
- (#eq? @constant.builtin "$ENV"))
+  (#eq? @constant.builtin "$ENV"))
 
 ((variable) @constant.macro
- (#eq? @constant.macro "$__loc__"))
+  (#eq? @constant.macro "$__loc__"))
 
 ; Properties
-
 (index
-   (identifier) @property)
+  (identifier) @property)
 
 ; Labels
+(query
+  label: (variable) @label)
 
 (query
-   label: (variable) @label)
-
-(query
-   break_statement: (variable) @label)
+  break_statement: (variable) @label)
 
 ; Literals
-
 (number) @number
 
 (string) @string
 
 [
-   "true"
-   "false"
+  "true"
+  "false"
 ] @boolean
 
 ("null") @type.builtin
 
 ; Interpolation
-
-["\\(" ")"] @character.special
+[
+  "\\("
+  ")"
+] @character.special
 
 ; Format
-
 (format) @attribute
 
 ; Functions
-
 (funcdef
-   (identifier) @function)
+  (identifier) @function)
 
 (funcdefargs
-   (identifier) @variable.parameter)
+  (identifier) @variable.parameter)
 
 [
   "reduce"
   "foreach"
 ] @function.builtin
 
-((funcname) @function.call . "(")
+((funcname) @function.call
+  .
+  "(")
 
 ; jq -n 'builtins | map(split("/")[0]) | unique | .[]'
 ((funcname) @function.builtin
@@ -251,9 +249,7 @@
     "y0"
     "y1"
     "yn"))
-
 ; Keywords
-
 [
   "def"
   "as"
@@ -286,7 +282,6 @@
 ] @keyword.operator
 
 ; Operators
-
 [
   "."
   "=="
@@ -315,7 +310,6 @@
 ] @operator
 
 ; Punctuation
-
 [
   ";"
   ","
@@ -323,11 +317,13 @@
 ] @punctuation.delimiter
 
 [
-  "[" "]"
-  "{" "}"
-  "(" ")"
+  "["
+  "]"
+  "{"
+  "}"
+  "("
+  ")"
 ] @punctuation.bracket
 
 ; Comments
-
 (comment) @comment @spell

@@ -1,7 +1,12 @@
 (var) @variable
 
 (op) @operator
-["and" "or" "not"] @keyword.operator
+
+[
+  "and"
+  "or"
+  "not"
+] @keyword.operator
 
 [
   "def"
@@ -41,7 +46,11 @@
   "try_end"
 ] @keyword.exception
 
-(inline_if [ "?" ":" ] @keyword.conditional.ternary)
+(inline_if
+  [
+    "?"
+    ":"
+  ] @keyword.conditional.ternary)
 
 [
   "%ifdef"
@@ -57,8 +66,11 @@
 
 (encoder_name) @constant.builtin
 
-(anonymous_argument (var) @variable.parameter)
-(labeled_argument label: (var) @variable.parameter)
+(anonymous_argument
+  (var) @variable.parameter)
+
+(labeled_argument
+  label: (var) @variable.parameter)
 
 "." @punctuation.delimiter
 
@@ -69,17 +81,31 @@
   "]"
   "{"
   "}"
-]  @punctuation.bracket
+] @punctuation.bracket
 
-(app name: (var) @function.call)
+(app
+  name: (var) @function.call)
+
 (method) @function.method
+
 (method_app) @function.method.call
 
 (string) @string
-(string_interpolation [ "#{" "}" ] @punctuation.special)
+
+(string_interpolation
+  [
+    "#{"
+    "}"
+  ] @punctuation.special)
+
 (integer) @number
+
 (float) @number.float
+
 (bool) @boolean
+
 (comment) @comment
+
 (regexp) @string.regexp
+
 (type) @type

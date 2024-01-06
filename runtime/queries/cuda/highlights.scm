@@ -1,6 +1,8 @@
 ; inherits: cpp
-
-[ "<<<" ">>>" ] @punctuation.bracket
+[
+  "<<<"
+  ">>>"
+] @punctuation.bracket
 
 [
   "__host__"

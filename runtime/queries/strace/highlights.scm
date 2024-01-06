@@ -16,7 +16,6 @@
 (syscall) @function.builtin
 
 ; Literals
-
 (integer) @number
 
 (pointer) @number.special
@@ -34,7 +33,6 @@
 ] @operator
 
 ; Punctuation
-
 [
   "+++"
   "---"
@@ -42,7 +40,12 @@
   "~"
 ] @punctuation.special
 
-[ "(" ")" "[" "]" ] @punctuation.bracket
+[
+  "("
+  ")"
+  "["
+  "]"
+] @punctuation.bracket
 
 [
   ","

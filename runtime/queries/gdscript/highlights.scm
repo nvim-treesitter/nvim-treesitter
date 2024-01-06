@@ -1,23 +1,44 @@
-;; Basic
-
+; Basic
 (identifier) @variable
+
 (name) @variable
+
 (type) @type
+
 (comment) @comment @spell
+
 (string_name) @string
+
 (string) @string
+
 (float) @number.float
+
 (integer) @number
+
 (null) @constant
+
 (setter) @function
+
 (getter) @function
-(set_body "set" @keyword.function)
-(get_body "get" @keyword.function)
+
+(set_body
+  "set" @keyword.function)
+
+(get_body
+  "get" @keyword.function)
+
 (static_keyword) @type.qualifier
+
 (tool_statement) @keyword
+
 (breakpoint_statement) @keyword.debug
+
 (inferred_type) @operator
-[(true) (false)] @boolean
+
+[
+  (true)
+  (false)
+] @boolean
 
 [
   (get_node)
@@ -31,68 +52,105 @@
   "const" @type.qualifier
   (name) @constant)
 
-(expression_statement (string) @comment @spell)
+(expression_statement
+  (string) @comment @spell)
 
-;; Identifier naming conventions
+; Identifier naming conventions
 ((identifier) @type
   (#lua-match? @type "^[A-Z]"))
+
 ((identifier) @constant
   (#lua-match? @constant "^[A-Z][A-Z_0-9]*$"))
 
-;; Functions
+; Functions
 (constructor_definition) @constructor
 
 (function_definition
-  (name) @function (parameters
+  (name) @function
+  (parameters
     (identifier) @variable.parameter)*)
 
-(typed_parameter (identifier) @variable.parameter)
-(default_parameter (identifier) @variable.parameter)
+(typed_parameter
+  (identifier) @variable.parameter)
 
-(call (identifier) @function.call)
-(call (identifier) @keyword.import
-      (#any-of? @keyword.import "preload" "load"))
+(default_parameter
+  (identifier) @variable.parameter)
 
-;; Properties and Methods
+(call
+  (identifier) @function.call)
 
+(call
+  (identifier) @keyword.import
+  (#any-of? @keyword.import "preload" "load"))
+
+; Properties and Methods
 ; We'll use @property since that's the term Godot uses.
 ; But, should (source (variable_statement (name))) be @property, too? Since a
 ; script file is a class in gdscript.
 (class_definition
-  (body (variable_statement (name) @property)))
+  (body
+    (variable_statement
+      (name) @property)))
 
 ; Same question but for methods?
 (class_definition
-  (body (function_definition (name) @function.method)))
+  (body
+    (function_definition
+      (name) @function.method)))
 
-(attribute_call (identifier) @function.method.call)
-(attribute (_) (identifier) @property)
+(attribute_call
+  (identifier) @function.method.call)
 
-;; Enums
+(attribute
+  (_)
+  (identifier) @property)
 
-(enumerator left: (identifier) @constant)
+; Enums
+(enumerator
+  left: (identifier) @constant)
 
-;; Special Builtins
-
+; Special Builtins
 ((identifier) @variable.builtin
   (#any-of? @variable.builtin "self" "super"))
 
-(attribute_call (identifier) @keyword.operator
- (#eq? @keyword.operator "new"))
+(attribute_call
+  (identifier) @keyword.operator
+  (#eq? @keyword.operator "new"))
 
-;; Match Pattern
+; Match Pattern
+(underscore) @constant ; The "_" pattern.
 
-(underscore) @constant         ; The "_" pattern.
 (pattern_open_ending) @operator ; The ".." pattern.
 
-;; Alternations
-["(" ")" "[" "]" "{" "}"] @punctuation.bracket
+; Alternations
+[
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+] @punctuation.bracket
 
-["," "." ":"] @punctuation.delimiter
+[
+  ","
+  "."
+  ":"
+] @punctuation.delimiter
 
-["if" "elif" "else" "match"] @keyword.conditional
+[
+  "if"
+  "elif"
+  "else"
+  "match"
+] @keyword.conditional
 
-["for" "while" "break" "continue"] @keyword.repeat
+[
+  "for"
+  "while"
+  "break"
+  "continue"
+] @keyword.repeat
 
 [
   "~"
@@ -157,28 +215,24 @@
 
 "func" @keyword.function
 
-[
-  "return"
-] @keyword.return
+"return" @keyword.return
 
-[
-  "await"
-] @keyword.coroutine
+"await" @keyword.coroutine
 
-(call (identifier) @keyword.coroutine
-      (#eq? @keyword.coroutine "yield"))
+(call
+  (identifier) @keyword.coroutine
+  (#eq? @keyword.coroutine "yield"))
 
-
-;; Builtins
+; Builtins
 ; generated from
 ; - https://github.com/godotengine/godot/blob/491ded18983a4ae963ce9c29e8df5d5680873ccb/doc/classes/@GlobalScope.xml
 ; - https://github.com/godotengine/godot/blob/491ded18983a4ae963ce9c29e8df5d5680873ccb/modules/gdscript/doc_classes/@GDScript.xml
 ; some from:
 ; - https://github.com/godotengine/godot-vscode-plugin/blob/0636797c22bf1e23a41fd24d55cdb9be62e0c992/syntaxes/GDScript.tmLanguage.json
-
-;; Built-in Annotations
-
-((annotation "@" @attribute (identifier) @attribute)
+; Built-in Annotations
+((annotation
+  "@" @attribute
+  (identifier) @attribute)
   ; format-ignore
   (#any-of? @attribute
     ; @GDScript
@@ -191,9 +245,11 @@
     "export_placeholder" "export_range" "export_subgroup" "icon" "onready"
     "rpc" "tool" "warning_ignore"))
 
-;; Builtin Types
-
-([(identifier) (type)] @type.builtin
+; Builtin Types
+([
+  (identifier)
+  (type)
+] @type.builtin
   ; format-ignore
   (#any-of? @type.builtin
    ; from godot-vscode-plugin
@@ -220,9 +276,9 @@
    "TranslationServer" "WorkerThreadPool" "XRServer"
   ))
 
-;; Builtin Funcs
-
-(call (identifier) @function.builtin
+; Builtin Funcs
+(call
+  (identifier) @function.builtin
   ; format-ignore
   (#any-of? @function.builtin
     ; @GlobalScope
@@ -248,9 +304,7 @@
     "Color8" "assert" "char" "convert" "dict_to_inst" "get_stack" "inst_to_dict"
     "is_instance_of" "len" "print_debug" "print_stack" "range"
     "type_exists"))
-
-;; Builtin Constants
-
+; Builtin Constants
 ((identifier) @constant.builtin
   ; format-ignore
   (#any-of? @constant.builtin
@@ -341,4 +395,3 @@
     "OP_EQUAL" "OP_NOT_EQUAL" "OP_LESS" "OP_LESS_EQUAL" "OP_GREATER" "OP_GREATER_EQUAL" "OP_ADD" "OP_SUBTRACT"
     "OP_MULTIPLY" "OP_DIVIDE" "OP_NEGATE" "OP_POSITIVE" "OP_MODULE" "OP_POWER" "OP_SHIFT_LEFT" "OP_SHIFT_RIGHT"
     "OP_BIT_AND" "OP_BIT_OR" "OP_BIT_XOR" "OP_BIT_NEGATE" "OP_AND" "OP_OR" "OP_XOR" "OP_NOT" "OP_IN" "OP_MAX"))
-

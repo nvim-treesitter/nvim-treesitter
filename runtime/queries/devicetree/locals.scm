@@ -1,4 +1,4 @@
 [
   (node)
   (integer_cells)
-]@local.scope
+] @local.scope
