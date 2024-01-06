@@ -1,3 +1,1 @@
-[
-    (xact)
-] @fold
+(xact) @fold

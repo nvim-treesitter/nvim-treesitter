@@ -1,3 +1,1 @@
-[
-    (journal_item)
-] @indent.begin
+(journal_item) @indent.begin

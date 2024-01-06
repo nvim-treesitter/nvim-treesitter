@@ -51,9 +51,16 @@
   "string"
 ] @type.builtin
 
-[ "(" ")" ] @punctuation.bracket
+[
+  "("
+  ")"
+] @punctuation.bracket
 
-(macro_variable ["$(" ")"] @punctuation.special)
+(macro_variable
+  [
+    "$("
+    ")"
+  ] @punctuation.special)
 
 (symbol) @variable
 
@@ -63,17 +70,28 @@
   (text)
 ] @string
 
-(config name: (symbol) @constant)
-(menuconfig name: (symbol) @constant)
-(choice name: (symbol) @constant)
+(config
+  name: (symbol) @constant)
+
+(menuconfig
+  name: (symbol) @constant)
+
+(choice
+  name: (symbol) @constant)
 
 ((symbol) @constant
   (#lua-match? @constant "[A-Z0-9]+"))
 
-(mainmenu name: (prompt) @markup.heading)
-(comment_entry name: (prompt) @markup.heading)
-(menu name: (prompt) @markup.heading)
+(mainmenu
+  name: (prompt) @markup.heading)
 
-(source (prompt) @string.special.url)
+(comment_entry
+  name: (prompt) @markup.heading)
+
+(menu
+  name: (prompt) @markup.heading)
+
+(source
+  (prompt) @string.special.url)
 
 (comment) @comment @spell

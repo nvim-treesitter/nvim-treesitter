@@ -3,11 +3,12 @@
 (constant) @constant
 
 (modifier_function) @function
+
 (modifier_predefined) @function.builtin
 
 [
-  (condition) 
-  (condition_end) 
+  (condition)
+  (condition_end)
   (condition_else)
 ] @keyword.conditional
 
@@ -40,7 +41,7 @@
 "," @punctuation.delimiter
 
 [
- "("
- ")"
- (block_punctuation)
- ] @punctuation.bracket
+  "("
+  ")"
+  (block_punctuation)
+] @punctuation.bracket

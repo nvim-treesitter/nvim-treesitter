@@ -5,4 +5,3 @@
 (option) @operator
 
 (comment) @comment
-

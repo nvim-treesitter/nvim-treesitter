@@ -5,8 +5,17 @@
   (struct)
 ] @indent.begin
 
-[ "{" "}" ] @indent.branch
+[
+  "{"
+  "}"
+] @indent.branch
 
-[ "(" ")" ] @indent.branch
+[
+  "("
+  ")"
+] @indent.branch
 
-[ "[" "]" ] @indent.branch
+[
+  "["
+  "]"
+] @indent.branch

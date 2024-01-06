@@ -4,6 +4,7 @@
 
 (function_call
   (identifier) @function.call)
+
 [
   (type_cast_function)
   (to_scalar_function)
@@ -13,7 +14,9 @@
 
 (typed_parameter
   (identifier) @variable.parameter)
-(function_arguments (identifier) @variable.parameter)
+
+(function_arguments
+  (identifier) @variable.parameter)
 
 [
   (binary_operator)
@@ -28,12 +31,17 @@
 ] @keyword.operator
 
 (string) @string
+
 (number) @number
+
 (bool) @boolean
+
 (null) @constant.builtin
+
 (comment) @comment @spell
 
 (type) @type
+
 (join_types) @type.qualifier
 
 [

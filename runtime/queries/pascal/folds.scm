@@ -3,7 +3,6 @@
   (implementation)
   (initialization)
   (finalization)
-
   (if)
   (ifElse)
   (while)
@@ -15,7 +14,6 @@
   (caseCase)
   (asm)
   (with)
-
   (declVar)
   (declConst)
   (declEnum)
@@ -26,8 +24,8 @@
   (defProc)
   (declField)
   (declProp)
-
   (comment)
 ] @fold
 
-(interface (declProc) @fold)
+(interface
+  (declProc) @fold)

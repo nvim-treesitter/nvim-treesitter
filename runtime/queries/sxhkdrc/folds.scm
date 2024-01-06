@@ -1,3 +1,1 @@
-[
- (binding)
-] @fold
+(binding) @fold

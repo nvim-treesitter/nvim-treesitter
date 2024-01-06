@@ -10,13 +10,15 @@
   (const)
   (instance_var)
   (variable_definition)
-  (variable_definition_sequence (variable_definition))
+  (variable_definition_sequence
+    (variable_definition))
   (control_structure)
   (return_statement)
 ] @indent.begin
 
 [
-  (parameter_call_list (argument_calls))
+  (parameter_call_list
+    (argument_calls))
   "("
   ")"
   "{"

@@ -1,6 +1,6 @@
 ((latex) @injection.content
- (#set! injection.language "latex")
- (#set! injection.combined))
+  (#set! injection.language "latex")
+  (#set! injection.combined))
 
 (rchunk
   (renv_content) @injection.content

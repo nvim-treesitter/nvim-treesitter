@@ -2,13 +2,11 @@
   (class_declaration)
   (function_declaration)
   (enum_declaration)
-
   (array)
   (block)
   (table)
   (anonymous_function)
   (parenthesized_expression)
-
   (while_statement)
   (switch_statement)
   (for_statement)
@@ -17,10 +15,9 @@
   (catch_statement)
 ] @indent.begin
 
-(
-  (if_statement)
-  (ERROR "else") @indent.begin
-)
+((if_statement)
+  (ERROR
+    "else") @indent.begin)
 
 (if_statement
   condition: (_) @indent.begin)
@@ -37,11 +34,20 @@
   (_) @indent.begin
   (catch_statement) @indent.begin)
 
-[ "{" "}" ] @indent.branch
+[
+  "{"
+  "}"
+] @indent.branch
 
-[ "(" ")" ] @indent.branch
+[
+  "("
+  ")"
+] @indent.branch
 
-[ "[" "]" ] @indent.branch
+[
+  "["
+  "]"
+] @indent.branch
 
 [
   "}"
@@ -52,7 +58,6 @@
 [
   (ERROR)
   (comment)
-
   (string)
   (verbatim_string)
 ] @indent.auto

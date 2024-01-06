@@ -12,4 +12,4 @@
 (comment) @comment @spell
 
 (member
-    name: (_) @keyword)
+  name: (_) @keyword)

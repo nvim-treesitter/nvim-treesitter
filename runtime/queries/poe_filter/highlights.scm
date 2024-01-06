@@ -1,9 +1,20 @@
-["Show" "Hide" "Minimal"] @module
+[
+  "Show"
+  "Hide"
+  "Minimal"
+] @module
 
-["Import" "Optional"] @keyword.import
+[
+  "Import"
+  "Optional"
+] @keyword.import
 
-(condition (name) @keyword.conditional)
-(action (name) @keyword)
+(condition
+  (name) @keyword.conditional)
+
+(action
+  (name) @keyword)
+
 (continue) @label
 
 (operator) @operator

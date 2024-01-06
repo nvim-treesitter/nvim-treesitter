@@ -1,30 +1,26 @@
 ; Namespaces
+(circuit
+  (identifier) @module)
 
-(circuit (identifier) @module)
-
-(module (identifier) @module)
+(module
+  (identifier) @module)
 
 ; Types
-
 ((identifier) @type
   (#lua-match? @type "^[A-Z][A-Za-z0-9_$]*$"))
 
 ; Keywords
-
 [
   "circuit"
   "module"
   "extmodule"
-
   "flip"
   "parameter"
   "reset"
   "wire"
-
   "cmem"
   "smem"
   "mem"
-
   "reg"
   "with"
   "mport"
@@ -34,39 +30,32 @@
   "is"
   "invalid"
   "skip"
-
   "infer"
   "read"
   "write"
   "rdwr"
-
   "defname"
 ] @keyword
 
 ; Qualifiers
-
 (qualifier) @type.qualifier
 
 ; Storageclasses
-
 [
   "input"
   "output"
 ] @keyword.storage
 
 ; Conditionals
-
 [
   "when"
   "else"
 ] @keyword.conditional
 
 ; Annotations
-
 (info) @attribute
 
 ; Builtins
-
 [
   "stop"
   "printf"
@@ -89,7 +78,6 @@
 ] @type.builtin
 
 ; Fields
-
 [
   "data-type"
   "depth"
@@ -104,33 +92,44 @@
 ((field_id) @variable.member
   (#set! "priority" 105))
 
-(port (identifier) @variable.member)
+(port
+  (identifier) @variable.member)
 
-(wire (identifier) @variable.member)
+(wire
+  (identifier) @variable.member)
 
-(cmem (identifier) @variable.member)
+(cmem
+  (identifier) @variable.member)
 
-(smem (identifier) @variable.member)
+(smem
+  (identifier) @variable.member)
 
-(memory (identifier) @variable.member)
+(memory
+  (identifier) @variable.member)
 
-(register (identifier) @variable.member)
+(register
+  (identifier) @variable.member)
 
 ; Parameters
+(primitive_operation
+  (identifier) @variable.parameter)
 
-(primitive_operation (identifier) @variable.parameter)
+(mux
+  (identifier) @variable.parameter)
 
-(mux (identifier) @variable.parameter)
-(printf (identifier) @variable.parameter)
-(reset (identifier) @variable.parameter)
-(stop (identifier) @variable.parameter)
+(printf
+  (identifier) @variable.parameter)
+
+(reset
+  (identifier) @variable.parameter)
+
+(stop
+  (identifier) @variable.parameter)
 
 ; Variables
-
 (identifier) @variable
 
 ; Operators
-
 (primop) @keyword.operator
 
 [
@@ -143,7 +142,6 @@
 ] @operator
 
 ; Literals
-
 [
   (uint)
   (number)
@@ -164,14 +162,25 @@
 ] @constant.builtin
 
 ; Punctuation
+[
+  "{"
+  "}"
+] @punctuation.bracket
 
-[ "{" "}" ] @punctuation.bracket
+[
+  "["
+  "]"
+] @punctuation.bracket
 
-[ "[" "]" ] @punctuation.bracket
+[
+  "<"
+  ">"
+] @punctuation.bracket
 
-[ "<" ">" ] @punctuation.bracket
-
-[ "(" ")" ] @punctuation.bracket
+[
+  "("
+  ")"
+] @punctuation.bracket
 
 [
   ","
@@ -180,7 +189,10 @@
 ] @punctuation.delimiter
 
 ; Comments
-
 (comment) @comment @spell
 
-["=>" "<=" "="] @operator
+[
+  "=>"
+  "<="
+  "="
+] @operator

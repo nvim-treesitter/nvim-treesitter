@@ -1,5 +1,4 @@
-;; Marks
-
+; Marks
 [
   ".."
   "|"
@@ -14,24 +13,25 @@
   "bullet"
   "adornment"
 ] @markup.list
-;; Resets for injection
 
+; Resets for injection
 (doctest_block) @none
 
-;; Directives
-
+; Directives
 (directive
   name: (type) @function)
 
 (directive
-  body: (body (arguments) @variable.parameter))
+  body:
+    (body
+      (arguments) @variable.parameter))
 
 ((directive
   name: (type) @keyword.import)
- (#eq? @keyword.import "include"))
+  (#eq? @keyword.import "include"))
 
 ((directive
-   name: (type) @function.builtin)
+  name: (type) @function.builtin)
   ; format-ignore
   (#any-of? @function.builtin
     ; https://docutils.sourceforge.io/docs/ref/rst/directives.html
@@ -45,8 +45,7 @@
     "replace" "unicode" "date"
     "raw" "class" "role" "default-role" "title" "restructuredtext-test-directive"))
 
-;; Blocks
-
+; Blocks
 [
   (literal_block)
   (line_block)
@@ -68,18 +67,17 @@
   name: (name)? @markup.link.label
   link: (_)? @markup.link)
 
-;; Lists
-
+; Lists
 ; Definition lists
 (list_item
   (term) @markup.strong
   (classifier)? @markup.italic)
 
 ; Field lists
-(field (field_name) @constant)
+(field
+  (field_name) @constant)
 
-;; Inline markup
-
+; Inline markup
 (emphasis) @markup.italic
 
 (strong) @markup.strong
@@ -111,7 +109,7 @@
     ":raw:"))
 
 [
- "interpreted_text"
+  "interpreted_text"
   (literal)
 ] @markup.raw
 
@@ -119,33 +117,33 @@
 ((interpreted_text
   (role) @_role
   "interpreted_text" @markup.italic)
- (#eq? @_role ":emphasis:"))
+  (#eq? @_role ":emphasis:"))
 
 ((interpreted_text
   (role) @_role
   "interpreted_text" @markup.strong)
- (#eq? @_role ":strong:"))
+  (#eq? @_role ":strong:"))
 
 ((interpreted_text
   (role) @_role
   "interpreted_text" @none)
- (#eq? @_role ":math:"))
+  (#eq? @_role ":math:"))
 
 ; Suffix role
 ((interpreted_text
   "interpreted_text" @markup.italic
   (role) @_role)
- (#eq? @_role ":emphasis:"))
+  (#eq? @_role ":emphasis:"))
 
 ((interpreted_text
   "interpreted_text" @markup.strong
   (role) @_role)
- (#eq? @_role ":strong:"))
+  (#eq? @_role ":strong:"))
 
 ((interpreted_text
   "interpreted_text" @none
   (role) @_role)
- (#eq? @_role ":math:"))
+  (#eq? @_role ":math:"))
 
 [
   (inline_target)
@@ -155,17 +153,19 @@
   (reference)
 ] @markup.link @nospell
 
-;; Others
-
+; Others
 (title) @markup.heading
 
 (comment) @comment @spell
-(comment "..") @comment
+
+(comment
+  "..") @comment
 
 (directive
-    name: (type) @_directive
-    body: (body
-        (content) @spell
-        (#not-any-of? @_directive "code" "code-block" "sourcecode")))
+  name: (type) @_directive
+  body:
+    (body
+      (content) @spell
+      (#not-any-of? @_directive "code" "code-block" "sourcecode")))
 
 (paragraph) @spell

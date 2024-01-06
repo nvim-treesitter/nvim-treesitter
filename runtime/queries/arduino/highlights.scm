@@ -1,5 +1,4 @@
 ; inherits: cpp
-
 ((identifier) @function.builtin
   ; format-ignore
   (#any-of? @function.builtin
@@ -72,25 +71,10 @@
      "noInterrupts"))
 
 ((identifier) @type.builtin
- (#any-of? @type.builtin
-           "Serial"
-           "SPI"
-           "Stream"
-           "Wire"
-           "Keyboard"
-           "Mouse"
-           "String"
-           ))
+  (#any-of? @type.builtin "Serial" "SPI" "Stream" "Wire" "Keyboard" "Mouse" "String"))
 
 ((identifier) @constant.builtin
- (#any-of? @constant.builtin
-           "HIGH"
-           "LOW"
-           "INPUT"
-           "OUTPUT"
-           "INPUT_PULLUP"
-           "LED_BUILTIN"
-           ))
+  (#any-of? @constant.builtin "HIGH" "LOW" "INPUT" "OUTPUT" "INPUT_PULLUP" "LED_BUILTIN"))
 
 (function_definition
   (function_declarator

@@ -1,18 +1,25 @@
 ; Let Binding Definition
-(let pattern: (identifier) @local.definition)
+(let
+  pattern: (identifier) @local.definition)
 
 ; List Pattern Definitions
-(list_pattern (identifier) @local.definition)
-(list_pattern assign: (identifier) @local.definition)
+(list_pattern
+  (identifier) @local.definition)
+
+(list_pattern
+  assign: (identifier) @local.definition)
 
 ; Tuple Pattern Definition
-(tuple_pattern (identifier) @local.definition)
+(tuple_pattern
+  (identifier) @local.definition)
 
 ; Record Pattern Definition
-(record_pattern_argument pattern: (identifier) @local.definition)
+(record_pattern_argument
+  pattern: (identifier) @local.definition)
 
 ; Function Parameter Definition
-(function_parameter name: (identifier) @local.definition)
+(function_parameter
+  name: (identifier) @local.definition)
 
 ; References
 (identifier) @local.reference

@@ -6,7 +6,10 @@
 (range_notation) @string.special
 
 (range_notation
-  [ "[" "]" ] @punctuation.bracket)
+  [
+    "["
+    "]"
+  ] @punctuation.bracket)
 
 (wildcard) @character.special
 
@@ -14,7 +17,8 @@
 
 (character_class) @constant
 
-(class_range ("-" @operator))
+(class_range
+  ("-" @operator))
 
 [
   (ansi_c_escape)
@@ -48,5 +52,4 @@
 ;   (redundant_escape)
 ;   (trailing_slash)
 ; ] @error
-
 (comment) @comment @spell

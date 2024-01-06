@@ -1,3 +1,1 @@
-[
-  (section)
-] @fold
+(section) @fold

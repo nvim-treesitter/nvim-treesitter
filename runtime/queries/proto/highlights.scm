@@ -11,13 +11,9 @@
   "to"
 ] @keyword
 
-[
- "rpc"
-] @keyword.function
+"rpc" @keyword.function
 
-[
- "returns"
-] @keyword.return
+"returns" @keyword.return
 
 [
   "optional"
@@ -75,8 +71,8 @@
 ] @punctuation.bracket
 
 [
- ";"
- ","
+  ";"
+  ","
 ] @punctuation.delimiter
 
 "=" @operator

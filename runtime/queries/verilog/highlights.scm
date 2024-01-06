@@ -1,5 +1,4 @@
 ; Keywords
-
 [
   ; block delimiters
   (module_keyword)
@@ -16,14 +15,12 @@
   "endchecker"
   "config"
   "endconfig"
-
   "pure"
   "virtual"
   "extends"
   "implements"
   "super"
   (class_item_qualifier)
-
   "parameter"
   "localparam"
   "defparam"
@@ -45,7 +42,6 @@
 [
   "function"
   "endfunction"
-
   "task"
   "endtask"
 ] @keyword.function
@@ -78,27 +74,28 @@
 (comment) @comment @spell
 
 (include_compiler_directive) @constant.macro
-(package_import_declaration
- "import" @keyword.import)
 
 (package_import_declaration
- (package_import_item
-  (package_identifier
-   (simple_identifier) @constant)))
+  "import" @keyword.import)
+
+(package_import_declaration
+  (package_import_item
+    (package_identifier
+      (simple_identifier) @constant)))
 
 (text_macro_identifier
- (simple_identifier) @constant.macro)
+  (simple_identifier) @constant.macro)
 
 (package_scope
- (package_identifier
-  (simple_identifier) @constant))
+  (package_identifier
+    (simple_identifier) @constant))
 
 (package_declaration
- (package_identifier
-  (simple_identifier) @constant))
+  (package_identifier
+    (simple_identifier) @constant))
 
 (parameter_port_list
- "#" @constructor)
+  "#" @constructor)
 
 [
   "="
@@ -139,13 +136,18 @@
 ] @keyword.operator
 
 (cast
- ["'" "(" ")"] @operator)
+  [
+    "'"
+    "("
+    ")"
+  ] @operator)
 
 (edge_identifier) @attribute
 
 (port_direction) @label
+
 (port_identifier
- (simple_identifier) @variable)
+  (simple_identifier) @variable)
 
 [
   (net_type)
@@ -159,20 +161,20 @@
 ] @type.qualifier
 
 (data_type
- (simple_identifier) @type)
+  (simple_identifier) @type)
 
 (method_call_body
   (method_identifier) @variable.member)
 
 (interface_identifier
- (simple_identifier) @type)
+  (simple_identifier) @type)
 
 (modport_identifier
- (modport_identifier
-  (simple_identifier) @variable.member))
+  (modport_identifier
+    (simple_identifier) @variable.member))
 
 (net_port_type1
- (simple_identifier) @type)
+  (simple_identifier) @type)
 
 [
   (double_quoted_string)
@@ -188,31 +190,30 @@
 
 ; begin/end label
 (seq_block
- (simple_identifier) @comment)
+  (simple_identifier) @comment)
 
 [
- ";"
- "::"
- ","
- "."
+  ";"
+  "::"
+  ","
+  "."
 ] @punctuation.delimiter
 
-
 (default_nettype_compiler_directive
- (default_nettype_value) @string)
+  (default_nettype_value) @string)
 
 (text_macro_identifier
- (simple_identifier) @constant)
+  (simple_identifier) @constant)
 
 (module_declaration
- (module_header
-  (simple_identifier) @constructor))
+  (module_header
+    (simple_identifier) @constructor))
 
 (class_constructor_declaration
- "new" @constructor)
+  "new" @constructor)
 
 (parameter_identifier
- (simple_identifier) @variable.parameter)
+  (simple_identifier) @variable.parameter)
 
 [
   (integral_number)
@@ -223,63 +224,61 @@
 (time_unit) @attribute
 
 (checker_instantiation
- (checker_identifier
-  (simple_identifier) @constructor))
+  (checker_identifier
+    (simple_identifier) @constructor))
 
 (module_instantiation
- (simple_identifier) @constructor)
+  (simple_identifier) @constructor)
 
 (name_of_instance
- (instance_identifier
-  (simple_identifier) @variable))
+  (instance_identifier
+    (simple_identifier) @variable))
 
 (interface_port_declaration
- (interface_identifier
-  (simple_identifier) @type))
+  (interface_identifier
+    (simple_identifier) @type))
 
 (net_declaration
- (simple_identifier) @type)
+  (simple_identifier) @type)
 
 (lifetime) @label
 
-(function_identifier 
- (function_identifier 
-  (simple_identifier) @function))
+(function_identifier
+  (function_identifier
+    (simple_identifier) @function))
 
-(function_subroutine_call 
- (subroutine_call
-  (tf_call
-   (simple_identifier) @function)))
+(function_subroutine_call
+  (subroutine_call
+    (tf_call
+      (simple_identifier) @function)))
 
-(function_subroutine_call 
- (subroutine_call
-  (system_tf_call
-   (system_tf_identifier) @function.builtin)))
+(function_subroutine_call
+  (subroutine_call
+    (system_tf_call
+      (system_tf_identifier) @function.builtin)))
 
 (task_identifier
- (task_identifier
-  (simple_identifier) @function.method))
+  (task_identifier
+    (simple_identifier) @function.method))
 
-;;TODO: fixme
+;TODO: fixme
 ;(assignment_pattern_expression
- ;(assignment_pattern
-  ;(parameter_identifier) @variable.member))
-
+;(assignment_pattern
+;(parameter_identifier) @variable.member))
 (type_declaration
-  (data_type ["packed"] @type.qualifier))
+  (data_type
+    "packed" @type.qualifier))
 
 (struct_union) @type
 
-[
-  "enum"
-] @type
+"enum" @type
 
 (enum_name_declaration
- (enum_identifier
-  (simple_identifier) @constant))
+  (enum_identifier
+    (simple_identifier) @constant))
 
 (type_declaration
- (simple_identifier) @type)
+  (simple_identifier) @type)
 
 [
   (integer_atom_type)
@@ -288,20 +287,20 @@
 ] @type.builtin
 
 (struct_union_member
- (list_of_variable_decl_assignments
-  (variable_decl_assignment
-   (simple_identifier) @variable.member)))
+  (list_of_variable_decl_assignments
+    (variable_decl_assignment
+      (simple_identifier) @variable.member)))
 
 (member_identifier
- (simple_identifier) @variable.member)
+  (simple_identifier) @variable.member)
 
 (struct_union_member
- (data_type_or_void
-  (data_type
-   (simple_identifier) @type)))
+  (data_type_or_void
+    (data_type
+      (simple_identifier) @type)))
 
 (type_declaration
- (simple_identifier) @type)
+  (simple_identifier) @type)
 
 (generate_block_identifier) @comment
 

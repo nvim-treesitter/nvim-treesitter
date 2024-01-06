@@ -1,5 +1,4 @@
 ; inherits: ecma
-
 [
   (enum_declaration)
   (interface_declaration)

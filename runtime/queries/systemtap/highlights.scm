@@ -8,7 +8,9 @@
 (preprocessor_constant) @constant.macro
 
 (number) @number
+
 (string) @string
+
 (escape_sequence) @string.escape
 
 [
@@ -35,10 +37,8 @@
   function: (identifier) @function.call)
 
 ((call_expression
-    function: (identifier) @function.builtin)
-  (#any-of? @function.builtin
-    "print" "printd" "printdln" "printf" "println"
-    "sprint" "sprintd" "sprintdln" "sprintf" "sprintln"))
+  function: (identifier) @function.builtin)
+  (#any-of? @function.builtin "print" "printd" "printdln" "printf" "println" "sprint" "sprintd" "sprintdln" "sprintf" "sprintln"))
 
 ((identifier) @variable.builtin
   (#lua-match? @variable.builtin "^\$+[0-9A-Z_a-z]+\$*$"))
@@ -117,7 +117,9 @@
 ] @keyword
 
 "function" @keyword.function
+
 "in" @keyword.operator
+
 "return" @keyword.return
 
 [
@@ -150,4 +152,5 @@
 "@define" @keyword.directive.define
 
 "private" @type.qualifier
+
 "global" @keyword.storage

@@ -1,35 +1,33 @@
 ; Preproc
-
 (hash_bang_line) @keyword.directive
 
-;; Keywords
-
+; Keywords
 "return" @keyword.return
 
 [
- "local"
- "type"
- "export"
+  "local"
+  "type"
+  "export"
 ] @keyword
 
 (do_statement
-[
-  "do"
-  "end"
-] @keyword)
+  [
+    "do"
+    "end"
+  ] @keyword)
 
 (while_statement
-[
-  "while"
-  "do"
-  "end"
-] @keyword.repeat)
+  [
+    "while"
+    "do"
+    "end"
+  ] @keyword.repeat)
 
 (repeat_statement
-[
-  "repeat"
-  "until"
-] @keyword.repeat)
+  [
+    "repeat"
+    "until"
+  ] @keyword.repeat)
 
 [
   (break_statement)
@@ -37,48 +35,47 @@
 ] @keyword.repeat
 
 (if_statement
-[
-  "if"
-  "elseif"
-  "else"
-  "then"
-  "end"
-] @keyword.conditional)
+  [
+    "if"
+    "elseif"
+    "else"
+    "then"
+    "end"
+  ] @keyword.conditional)
 
 (elseif_statement
-[
-  "elseif"
-  "then"
-  "end"
-] @keyword.conditional)
+  [
+    "elseif"
+    "then"
+    "end"
+  ] @keyword.conditional)
 
 (else_statement
-[
-  "else"
-  "end"
-] @keyword.conditional)
+  [
+    "else"
+    "end"
+  ] @keyword.conditional)
 
 (for_statement
-[
-  "for"
-  "do"
-  "end"
-] @keyword.repeat)
+  [
+    "for"
+    "do"
+    "end"
+  ] @keyword.repeat)
 
 (function_declaration
-[
-  "function"
-  "end"
-] @keyword.function)
+  [
+    "function"
+    "end"
+  ] @keyword.function)
 
 (function_definition
-[
-  "function"
-  "end"
-] @keyword.function)
+  [
+    "function"
+    "end"
+  ] @keyword.function)
 
-;; Operators
-
+; Operators
 [
   "and"
   "not"
@@ -117,15 +114,16 @@
   "..="
 ] @operator
 
-;; Variables
-
+; Variables
 (identifier) @variable
 
 ; Types
+(type
+  (identifier) @type)
 
-(type (identifier) @type)
-
-(type (generic_type (identifier) @type))
+(type
+  (generic_type
+    (identifier) @type))
 
 (builtin_type) @type.builtin
 
@@ -133,16 +131,17 @@
   (#lua-match? @type "^[A-Z]"))
 
 ; Typedefs
-
-(type_definition "type" . (type) @type.definition "=")
+(type_definition
+  "type"
+  .
+  (type) @type.definition
+  "=")
 
 ; Constants
-
 ((identifier) @constant
- (#lua-match? @constant "^[A-Z][A-Z_0-9]+$"))
+  (#lua-match? @constant "^[A-Z][A-Z_0-9]+$"))
 
 ; Builtins
-
 ((identifier) @constant.builtin
   (#eq? @constant.builtin "_VERSION"))
 
@@ -155,32 +154,48 @@
 ((identifier) @keyword.coroutine
   (#eq? @keyword.coroutine "coroutine"))
 
-;; Tables
+; Tables
+(field
+  name: (identifier) @variable.member)
 
-(field name: (identifier) @variable.member)
+(dot_index_expression
+  field: (identifier) @variable.member)
 
-(dot_index_expression field: (identifier) @variable.member)
-
-(object_type (identifier) @variable.member)
+(object_type
+  (identifier) @variable.member)
 
 (table_constructor
-[
-  "{"
-  "}"
-] @constructor)
+  [
+    "{"
+    "}"
+  ] @constructor)
 
 ; Functions
+(parameter
+  .
+  (identifier) @variable.parameter)
 
-(parameter . (identifier) @variable.parameter)
-(function_type (identifier) @variable.parameter)
+(function_type
+  (identifier) @variable.parameter)
 
-(function_call name: (identifier) @function.call)
-(function_declaration name: (identifier) @function)
+(function_call
+  name: (identifier) @function.call)
 
-(function_call name: (dot_index_expression field: (identifier) @function.call))
-(function_declaration name: (dot_index_expression field: (identifier) @function))
+(function_declaration
+  name: (identifier) @function)
 
-(method_index_expression method: (identifier) @function.method.call)
+(function_call
+  name:
+    (dot_index_expression
+      field: (identifier) @function.call))
+
+(function_declaration
+  name:
+    (dot_index_expression
+      field: (identifier) @function))
+
+(method_index_expression
+  method: (identifier) @function.method.call)
 
 (function_call
   (identifier) @function.builtin
@@ -196,7 +211,6 @@
     "__pairs" "__pow" "__shl" "__shr" "__sub" "__tostring" "__unm"))
 
 ; Literals
-
 (number) @number
 
 (string) @string
@@ -210,8 +224,7 @@
   (true)
 ] @boolean
 
-;; Punctuations
-
+; Punctuations
 [
   ";"
   ":"
@@ -222,24 +235,36 @@
 ] @punctuation.delimiter
 
 [
- "("
- ")"
- "["
- "]"
- "{"
- "}"
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
 ] @punctuation.bracket
 
 (variable_list
-   attribute: (attribute
-     (["<" ">"] @punctuation.bracket
-      (identifier) @attribute)))
+  attribute:
+    (attribute
+      ([
+        "<"
+        ">"
+      ] @punctuation.bracket
+        (identifier) @attribute)))
 
-(generic_type [ "<" ">" ] @punctuation.bracket)
-(generic_type_list [ "<" ">" ] @punctuation.bracket)
+(generic_type
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
+
+(generic_type_list
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
 
 ; Comments
-
 (comment) @comment @spell
 
 ((comment) @comment.documentation
@@ -253,11 +278,23 @@
   (dot_index_expression
     field: (identifier) @_method
     (#any-of? @_method "find" "format" "match" "gmatch" "gsub"))
-  arguments: (arguments . (_) . (string content: _ @string.regexp)))
+  arguments:
+    (arguments
+      .
+      (_)
+      .
+      (string
+        content:
+          _ @string.regexp)))
 
 ; ("123"):match("%d+")
 (function_call
   (method_index_expression
     method: (identifier) @_method
     (#any-of? @_method "find" "format" "match" "gmatch" "gsub"))
-    arguments: (arguments . (string content: _ @string.regexp)))
+  arguments:
+    (arguments
+      .
+      (string
+        content:
+          _ @string.regexp)))

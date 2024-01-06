@@ -1,5 +1,4 @@
 ; Includes
-
 (import_statement
   "import" @keyword.import)
 
@@ -8,12 +7,10 @@
   "with" @keyword.import)
 
 ; Namespaces
-
 (module_declaration
   (identifier) @module)
 
 ; Builtins
-
 (primitive_type) @type.builtin
 
 ((member_expression
@@ -21,12 +18,10 @@
   (#eq? @type.builtin "sys"))
 
 ; Functions
-
 (call_expression
   function: (identifier) @function.call)
 
 ; Properties
-
 (object_property
   (identifier) @property
   ":" @punctuation.delimiter
@@ -40,21 +35,20 @@
 (property_identifier) @property
 
 ; Attributes
-
 (decorator
   "@" @attribute)
 
 (decorator
-  (call_expression (identifier) @attribute))
+  (call_expression
+    (identifier) @attribute))
 
 (decorator
   (call_expression
     (member_expression
-	  object: (identifier) @attribute
-	  property: (property_identifier) @attribute)))
+      object: (identifier) @attribute
+      property: (property_identifier) @attribute)))
 
 ; Types
-
 (type_declaration
   (identifier) @type)
 
@@ -66,7 +60,8 @@
 (type_declaration
   (identifier)
   "="
-  (array_type (identifier) @type))
+  (array_type
+    (identifier) @type))
 
 (type
   (identifier) @type)
@@ -78,21 +73,22 @@
   (identifier) @type)
 
 ; Parameters
-
 (parameter_declaration
   (identifier) @variable.parameter
   (_))
 
 (call_expression
-  function: (_) 
-  (arguments (identifier) @variable.parameter))
+  function: (_)
+  (arguments
+    (identifier) @variable.parameter))
 
 (call_expression
-  function: (_) 
-  (arguments (member_expression object: (identifier) @variable.parameter)))
+  function: (_)
+  (arguments
+    (member_expression
+      object: (identifier) @variable.parameter)))
 
 ; Variables
-
 (variable_declaration
   (identifier) @variable
   (_))
@@ -117,7 +113,6 @@
     (loop_enumerator) @variable))
 
 ; Conditionals
-
 "if" @keyword.conditional
 
 (ternary_expression
@@ -125,14 +120,12 @@
   ":" @keyword.conditional.ternary)
 
 ; Loops
-
 (for_statement
   "for" @keyword.repeat
   "in"
   ":" @punctuation.delimiter)
 
 ; Keywords
-
 [
   "module"
   "metadata"
@@ -146,7 +139,6 @@
 ] @keyword
 
 ; Operators
-
 [
   "+"
   "-"
@@ -169,14 +161,11 @@
   "!"
 ] @operator
 
-[
-  "in"
-] @keyword.operator
-
+"in" @keyword.operator
 
 ; Literals
-
 (string) @string
+
 (import_string
   "'" @string
   (import_name) @module
@@ -192,17 +181,25 @@
 (null) @constant.builtin
 
 ; Misc
-
 (compatible_identifier
   "?" @punctuation.special)
 
 (nullable_return_type) @punctuation.special
 
-["{" "}"] @punctuation.bracket
+[
+  "{"
+  "}"
+] @punctuation.bracket
 
-["[" "]"] @punctuation.bracket
+[
+  "["
+  "]"
+] @punctuation.bracket
 
-["(" ")"] @punctuation.bracket
+[
+  "("
+  ")"
+] @punctuation.bracket
 
 [
   "."
@@ -210,9 +207,7 @@
   "=>"
 ] @punctuation.delimiter
 
-
 ; Interpolation
-
 (interpolation) @none
 
 (interpolation
@@ -223,7 +218,6 @@
   (identifier) @variable)
 
 ; Comments
-
 [
   (comment)
   (diagnostic_comment)

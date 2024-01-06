@@ -1,6 +1,6 @@
 [
- (bartisTall)
- (luslusTall)
- (lusbucTall)
- (barcenTall)
- ] @fold
+  (bartisTall)
+  (luslusTall)
+  (lusbucTall)
+  (barcenTall)
+] @fold

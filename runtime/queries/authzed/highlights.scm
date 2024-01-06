@@ -11,7 +11,8 @@
     (identifier) @type))
 
 ; relations
-(rel_expression (identifier) @property)
+(rel_expression
+  (identifier) @property)
 
 (relation
   (rel_expression
@@ -20,16 +21,18 @@
     (identifier) @constant))
 
 ; permissions
-(perm_expression (identifier) @property)
+(perm_expression
+  (identifier) @property)
 
 (call_expression
-  function: (selector_expression
-    operand: (identifier) @constant
-    field: (field_identifier) @function.method))
+  function:
+    (selector_expression
+      operand: (identifier) @constant
+      field: (field_identifier) @function.method))
 
 (perm_expression
   (stabby) @operator
-  . 
+  .
   (identifier) @function)
 
 ; misc

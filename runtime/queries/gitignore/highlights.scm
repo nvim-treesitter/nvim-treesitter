@@ -19,13 +19,15 @@
   (bracket_char_escaped)
 ] @string.escape
 
-;; bracket expressions
+; bracket expressions
 [
   "["
   "]"
 ] @punctuation.bracket
 
 (bracket_char) @constant
-(bracket_range 
+
+(bracket_range
   "-" @operator)
+
 (bracket_char_class) @constant.builtin
