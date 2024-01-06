@@ -1,12 +1,10 @@
 ; Preproc
-
 [
   (unique_id)
   (top_level_annotation_body)
 ] @keyword.directive
 
 ; Includes
-
 [
   "import"
   "$import"
@@ -17,7 +15,6 @@
 (import_path) @string.special.path
 
 ; Keywords
-
 [
   "annotation"
   "enum"
@@ -30,10 +27,7 @@
 ] @keyword
 
 ; Builtins
-
-[
-  "const"
-] @type.qualifier
+"const" @type.qualifier
 
 [
   (primitive_type)
@@ -41,30 +35,24 @@
 ] @type.builtin
 
 ; Typedefs
-
 (type_definition) @type.definition
 
 ; Labels (@number, @number!)
-
 (field_version) @label
 
 ; Methods
-
 [
   (annotation_definition_identifier)
   (method_identifier)
 ] @function.method
 
 ; Fields
-
 (field_identifier) @variable.member
 
 ; Properties
-
 (property) @property
 
 ; Parameters
-
 [
   (param_identifier)
   (return_identifier)
@@ -73,7 +61,6 @@
 (annotation_target) @variable.parameter.builtin
 
 ; Constants
-
 [
   (const_identifier)
   (local_const)
@@ -83,7 +70,6 @@
 (void) @constant.builtin
 
 ; Types
-
 [
   (enum_identifier)
   (extend_type)
@@ -91,18 +77,15 @@
 ] @type
 
 ; Attributes
-
 [
   (annotation_identifier)
   (attribute)
 ] @attribute
 
 ; Operators
-
 "=" @operator
 
 ; Literals
-
 [
   (string)
   (concatenated_string)
@@ -125,18 +108,26 @@
 (data_hex) @string.special.symbol
 
 ; Punctuation
-
 [
   "*"
   "$"
   ":"
 ] @punctuation.special
 
-["{" "}"] @punctuation.bracket
+[
+  "{"
+  "}"
+] @punctuation.bracket
 
-["(" ")"] @punctuation.bracket
+[
+  "("
+  ")"
+] @punctuation.bracket
 
-["[" "]"] @punctuation.bracket
+[
+  "["
+  "]"
+] @punctuation.bracket
 
 [
   "."
@@ -146,5 +137,4 @@
 ] @punctuation.delimiter
 
 ; Comments
-
 (comment) @comment @spell

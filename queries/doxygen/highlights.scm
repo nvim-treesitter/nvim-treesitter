@@ -9,11 +9,12 @@
 (identifier) @variable
 
 ((tag
-  (tag_name) @_param 
+  (tag_name) @_param
   (identifier) @variable.parameter)
   (#any-of? @_param "@param" "\\param"))
 
-(function (identifier) @function)
+(function
+  (identifier) @function)
 
 (function_link) @function
 
@@ -48,6 +49,13 @@
   (code_block_end)
 ] @punctuation.delimiter
 
-[ "(" ")" "{" "}" "[" "]" ] @punctuation.bracket
+[
+  "("
+  ")"
+  "{"
+  "}"
+  "["
+  "]"
+] @punctuation.bracket
 
 (code_block_content) @none

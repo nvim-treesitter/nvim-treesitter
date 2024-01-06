@@ -47,16 +47,13 @@
   _ @indent.branch
   (#not-has-type? @indent.branch type_parameters parameter))
 
-
 (ERROR
   [
-    "<" 
-    "{" 
-    "(" 
+    "<"
+    "{"
+    "("
     "["
-  ]
-) @indent.begin
-
+  ]) @indent.begin
 
 ; if-elseif
 (if_statement
@@ -65,22 +62,33 @@
 ; case Foo:
 ; default Foo:
 ; @attribute default Foo:
-(switch_entry . _ @indent.branch)
+(switch_entry
+  .
+  _ @indent.branch)
 
-(function_declaration ")" @indent.branch)
+(function_declaration
+  ")" @indent.branch)
 
-(type_parameters ">" @indent.branch @indent.end .)
-(tuple_expression ")" @indent.branch @indent.end)
-(value_arguments ")" @indent.branch @indent.end)
-(tuple_type ")" @indent.branch @indent.end)
+(type_parameters
+  ">" @indent.branch @indent.end .)
+
+(tuple_expression
+  ")" @indent.branch @indent.end)
+
+(value_arguments
+  ")" @indent.branch @indent.end)
+
+(tuple_type
+  ")" @indent.branch @indent.end)
+
 (modifiers
-  (attribute ")" @indent.branch @indent.end))
+  (attribute
+    ")" @indent.branch @indent.end))
 
 [
   "}"
   "]"
 ] @indent.branch @indent.end
-
 
 [
   ; (ERROR)

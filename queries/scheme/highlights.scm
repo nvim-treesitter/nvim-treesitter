@@ -1,108 +1,103 @@
-;; A highlight query can override the highlights queries before it.
-;; So the order is important.
-;; We should highlight general rules, then highlight special forms.
-
+; A highlight query can override the highlights queries before it.
+; So the order is important.
+; We should highlight general rules, then highlight special forms.
 (number) @number
-(character) @character
-(boolean) @boolean
-(string) @string
-[(comment)
- (block_comment)] @comment @spell
 
-;; highlight for datum comment
-;; copied from ../clojure/highlights.scm
-([(comment) (directive)] @comment
- (#set! "priority" 105))
+(character) @character
+
+(boolean) @boolean
+
+(string) @string
+
+[
+  (comment)
+  (block_comment)
+] @comment @spell
+
+; highlight for datum comment
+; copied from ../clojure/highlights.scm
+([
+  (comment)
+  (directive)
+] @comment
+  (#set! "priority" 105))
 
 (escape_sequence) @string.escape
 
-["(" ")" "[" "]" "{" "}"] @punctuation.bracket
+[
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+] @punctuation.bracket
 
-;; variables
-
+; variables
 (symbol) @variable
+
 ((symbol) @variable.builtin
- (#any-of? @variable.builtin "..." "."))
+  (#any-of? @variable.builtin "..." "."))
 
-;; procedure
+; procedure
+(list
+  .
+  (symbol) @function)
+
+; special forms
+(list
+  "["
+  (symbol)+ @variable
+  "]")
 
 (list
- .
- (symbol) @function)
-
-;; special forms
-
-(list
- "["
- (symbol)+ @variable
- "]")
+  .
+  (symbol) @_f
+  .
+  (list
+    (symbol) @variable)
+  (#any-of? @_f "lambda" "λ"))
 
 (list
- .
- (symbol) @_f
- .
- (list
-   (symbol) @variable)
- (#any-of? @_f "lambda" "λ"))
+  .
+  (symbol) @_f
+  .
+  (list
+    (list
+      (symbol) @variable))
+  (#any-of? @_f "let" "let*" "let-syntax" "let-values" "let*-values" "letrec" "letrec*" "letrec-syntax"))
 
-(list
- .
- (symbol) @_f
- .
- (list
-   (list
-     (symbol) @variable))
- (#any-of? @_f
-  "let" "let*" "let-syntax" "let-values" "let*-values" "letrec" "letrec*" "letrec-syntax"))
-
-;; operators
-
+; operators
 ((symbol) @operator
- (#any-of? @operator
-  "+" "-" "*" "/" "=" "<=" ">=" "<" ">"))
+  (#any-of? @operator "+" "-" "*" "/" "=" "<=" ">=" "<" ">"))
 
-;; keyword
-
+; keyword
 ((symbol) @keyword
- (#any-of? @keyword
-  "define" "lambda" "λ" "begin" "do" "define-syntax"
-  "and" "or"
-  "if" "cond" "case" "when" "unless" "else" "=>"
-  "let" "let*" "let-syntax" "let-values" "let*-values" "letrec" "letrec*" "letrec-syntax"
-  "set!"
-  "syntax-rules" "identifier-syntax"
-  "quote" "unquote" "quote-splicing" "quasiquote" "unquote-splicing"
-  "delay"
-  "assert"
-  "library" "export" "import" "rename" "only" "except" "prefix"))
+  (#any-of? @keyword "define" "lambda" "λ" "begin" "do" "define-syntax" "and" "or" "if" "cond" "case" "when" "unless" "else" "=>" "let" "let*" "let-syntax" "let-values" "let*-values" "letrec" "letrec*" "letrec-syntax" "set!" "syntax-rules" "identifier-syntax" "quote" "unquote" "quote-splicing" "quasiquote" "unquote-splicing" "delay" "assert" "library" "export" "import" "rename" "only" "except" "prefix"))
 
 ((symbol) @keyword.conditional
- (#any-of? @keyword.conditional "if" "cond" "case" "when" "unless"))
+  (#any-of? @keyword.conditional "if" "cond" "case" "when" "unless"))
 
-;; quote
-
+; quote
 (quote
- "'"
- (symbol)) @string.special.symbol
+  "'"
+  (symbol)) @string.special.symbol
 
 (list
- .
- (symbol) @_f
- (#eq? @_f "quote")) @string.special.symbol
+  .
+  (symbol) @_f
+  (#eq? @_f "quote")) @string.special.symbol
 
-;; library
-
+; library
 (list
- .
- (symbol) @_lib
- .
- (symbol) @module
+  .
+  (symbol) @_lib
+  .
+  (symbol) @module
+  (#eq? @_lib "library"))
 
- (#eq? @_lib "library"))
-
-;; builtin procedures
-;; procedures in R5RS and R6RS but not in R6RS-lib
-
+; builtin procedures
+; procedures in R5RS and R6RS but not in R6RS-lib
 ((symbol) @function.builtin
   ; format-ignore
   (#any-of? @function.builtin
@@ -180,4 +175,3 @@
     "write" "display" "newline" "write-char"
     ; system
     "load" "transcript-on" "transcript-off"))
-

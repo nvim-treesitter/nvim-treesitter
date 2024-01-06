@@ -40,4 +40,3 @@
 (comment) @indent.auto
 
 (string) @indent.auto
-

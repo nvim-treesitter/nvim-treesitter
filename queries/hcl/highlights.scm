@@ -1,5 +1,4 @@
 ; highlights.scm
-
 [
   "!"
   "\*"
@@ -76,22 +75,45 @@
 ] @punctuation.special
 
 (numeric_lit) @number
+
 (bool_lit) @boolean
+
 (null_lit) @constant
+
 (comment) @comment @spell
+
 (identifier) @variable
 
-(body (block (identifier) @keyword))
-(body (block (body (block (identifier) @type))))
-(function_call (identifier) @function)
-(attribute (identifier) @variable.member)
+(body
+  (block
+    (identifier) @keyword))
+
+(body
+  (block
+    (body
+      (block
+        (identifier) @type))))
+
+(function_call
+  (identifier) @function)
+
+(attribute
+  (identifier) @variable.member)
 
 ; { key: val }
 ;
 ; highlight identifier keys as though they were block attributes
-(object_elem key: (expression (variable_expr (identifier) @variable.member)))
+(object_elem
+  key:
+    (expression
+      (variable_expr
+        (identifier) @variable.member)))
 
 ; var.foo, data.bar
 ;
 ; first element in get_attr is a variable.builtin or a reference to a variable.builtin
-(expression (variable_expr (identifier) @variable.builtin) (get_attr (identifier) @variable.member))
+(expression
+  (variable_expr
+    (identifier) @variable.builtin)
+  (get_attr
+    (identifier) @variable.member))

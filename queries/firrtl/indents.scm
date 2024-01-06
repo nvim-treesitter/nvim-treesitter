@@ -1,9 +1,9 @@
 [
- (circuit)
- (module)
- (memory)
- (when)
- (else)
+  (circuit)
+  (module)
+  (memory)
+  (when)
+  (else)
 ] @indent.begin
 
 [

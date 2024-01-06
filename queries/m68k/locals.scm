@@ -6,17 +6,22 @@
 
 (label
   name: (symbol) @local.definition.constant)
+
 (symbol_definition
   name: (symbol) @local.definition.constant)
+
 (offset_definition
   name: (symbol) @local.definition.constant)
+
 (register_definition
   name: (symbol) @local.definition.constant)
+
 (register_list_definition
   name: (symbol) @local.definition.constant)
 
 (external_reference
-  symbols: (symbol_list
-    (symbol) @local.definition.import))
+  symbols:
+    (symbol_list
+      (symbol) @local.definition.import))
 
 (symbol) @local.reference

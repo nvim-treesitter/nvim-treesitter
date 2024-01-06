@@ -1,5 +1,4 @@
 ; inherits: c
-
 [
   "in"
   "out"
@@ -32,4 +31,4 @@
 (extension_storage_class) @keyword.storage
 
 ((identifier) @variable.builtin
- (#lua-match? @variable.builtin "^gl_"))
+  (#lua-match? @variable.builtin "^gl_"))

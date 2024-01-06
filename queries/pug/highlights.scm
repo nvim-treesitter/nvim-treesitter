@@ -1,6 +1,7 @@
 (comment) @comment @spell
 
 (tag_name) @tag
+
 ((tag_name) @constant.builtin
   ; https://www.script-example.com/html-tag-liste
   ; format-ignore
@@ -17,6 +18,7 @@
     "script" "noscript" "template" "slot" "canvas"))
 
 (id) @constant
+
 (class) @property
 
 (doctype) @keyword.directive
@@ -28,54 +30,89 @@
     (attribute
       (attribute_name) @tag.attribute
       "=" @operator)))
+
 ((tag
-   (attributes
-     (attribute (attribute_name) @keyword)))
- (#match? @keyword "^(:|v-bind|v-|\\@)"))
+  (attributes
+    (attribute
+      (attribute_name) @keyword)))
+  (#match? @keyword "^(:|v-bind|v-|\\@)"))
+
 (quoted_attribute_value) @string
 
-(include (keyword) @keyword.import)
-(extends (keyword) @keyword.import)
+(include
+  (keyword) @keyword.import)
+
+(extends
+  (keyword) @keyword.import)
+
 (filename) @string.special.path
 
-(block_definition (keyword) @keyword)
-(block_append (keyword)+ @keyword)
-(block_prepend (keyword)+ @keyword)
+(block_definition
+  (keyword) @keyword)
+
+(block_append
+  (keyword)+ @keyword)
+
+(block_prepend
+  (keyword)+ @keyword)
+
 (block_name) @type
 
-(conditional (keyword) @keyword.conditional)
+(conditional
+  (keyword) @keyword.conditional)
+
 (case
   (keyword) @keyword.conditional
-  (when (keyword) @keyword.conditional)+)
+  (when
+    (keyword) @keyword.conditional)+)
 
-(each (keyword) @keyword.repeat)
-(while (keyword) @keyword.repeat)
+(each
+  (keyword) @keyword.repeat)
+
+(while
+  (keyword) @keyword.repeat)
 
 (mixin_use
   "+" @punctuation.delimiter
   (mixin_name) @function.call)
+
 (mixin_definition
   (keyword) @keyword.function
   (mixin_name) @function)
+
 (mixin_attributes
   (attribute_name) @variable.parameter)
 
 (filter
   ":" @punctuation.delimiter
   (filter_name) @function.method.call)
+
 (filter
   (attributes
-    (attribute (attribute_name) @variable.parameter)))
+    (attribute
+      (attribute_name) @variable.parameter)))
 
 [
- "(" ")"
- "#{" "}"
- ;; unsupported
- ; "!{"
- ; "#[" "]"
+  "("
+  ")"
+  "#{"
+  "}"
+  ; unsupported
+  ; "!{"
+  ; "#[" "]"
 ] @punctuation.bracket
 
-[ "," "." "|" ] @punctuation.delimiter
-(buffered_code "=" @punctuation.delimiter)
-(unbuffered_code "-" @punctuation.delimiter)
-(unescaped_buffered_code "!=" @punctuation.delimiter)
+[
+  ","
+  "."
+  "|"
+] @punctuation.delimiter
+
+(buffered_code
+  "=" @punctuation.delimiter)
+
+(unbuffered_code
+  "-" @punctuation.delimiter)
+
+(unescaped_buffered_code
+  "!=" @punctuation.delimiter)

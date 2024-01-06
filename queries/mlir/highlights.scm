@@ -22,7 +22,6 @@
   "default"
   (arith_cmp_predicate)
 ] @keyword
-
 ; format-ignore
 [
   "module"
@@ -276,6 +275,7 @@
 ] @number
 
 (float_literal) @number.float
+
 (bool_literal) @boolean
 
 [
@@ -325,13 +325,23 @@
   "->"
 ] @operator
 
-(builtin_dialect name: (symbol_ref_id) @function)
-(func_dialect name: (symbol_ref_id) @function)
-(llvm_dialect name: (symbol_ref_id) @function)
+(builtin_dialect
+  name: (symbol_ref_id) @function)
 
-(func_arg_list (value_use) @variable.parameter)
-(block_arg_list (value_use) @variable.parameter)
+(func_dialect
+  name: (symbol_ref_id) @function)
+
+(llvm_dialect
+  name: (symbol_ref_id) @function)
+
+(func_arg_list
+  (value_use) @variable.parameter)
+
+(block_arg_list
+  (value_use) @variable.parameter)
 
 (caret_id) @tag
+
 (value_use) @variable
+
 (comment) @comment @spell

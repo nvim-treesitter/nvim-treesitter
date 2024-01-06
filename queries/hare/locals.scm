@@ -1,5 +1,4 @@
 ; Scopes
-
 [
   (module)
   (function_declaration)
@@ -10,38 +9,57 @@
 ] @local.scope
 
 ; References
-
 [
   (identifier)
   (scoped_type_identifier)
 ] @local.reference
 
 ; Definitions
-
 (global_binding
-  (identifier) @local.definition.constant . ":" (_))
+  (identifier) @local.definition.constant
+  .
+  ":"
+  (_))
 
 (const_declaration
-  "const" (identifier) @local.definition.constant . "=")
+  "const"
+  (identifier) @local.definition.constant
+  .
+  "=")
 
 (field
-  . (identifier) @local.definition.field)
+  .
+  (identifier) @local.definition.field)
 
 (field_assignment
-  . (identifier) @local.definition.field)
+  .
+  (identifier) @local.definition.field)
 
 (function_declaration
-  "fn" . (identifier) @local.definition.function)
+  "fn"
+  .
+  (identifier) @local.definition.function)
 
 (parameter
-  (_) @local.definition.parameter . ":")
+  (_) @local.definition.parameter
+  .
+  ":")
 
 (type_declaration
-  "type" (identifier) @local.definition.type . "=")
+  "type"
+  (identifier) @local.definition.type
+  .
+  "=")
 
 (type_declaration
-  "type" (identifier) @local.definition.enum . "=" (enum_type))
+  "type"
+  (identifier) @local.definition.enum
+  .
+  "="
+  (enum_type))
 
 (let_declaration
-  "let" . (identifier) @local.definition.variable ","?)
-
+  "let"
+  .
+  (identifier) @local.definition.variable
+  ","?)

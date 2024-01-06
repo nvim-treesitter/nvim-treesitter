@@ -25,14 +25,13 @@
 (keyword_case) @keyword.conditional
 
 [
- (literal_string)
- (f_string)
- (s_string)
+  (literal_string)
+  (f_string)
+  (s_string)
 ] @string
 
 (assignment
   alias: (field) @variable.member)
-
 alias: (identifier) @variable.member
 
 (comment) @comment @spell
@@ -99,18 +98,18 @@ alias: (identifier) @variable.member
 ] @function
 
 [
- (keyword_side)
- (keyword_format)
+  (keyword_side)
+  (keyword_format)
 ] @attribute
 
 [
- (keyword_version)
- (keyword_target)
+  (keyword_version)
+  (keyword_target)
 ] @type.qualifier
 
 (target) @function.builtin
 
- [
+[
   (date)
   (time)
   (timestamp)
@@ -130,9 +129,7 @@ alias: (identifier) @variable.member
   (keyword_false)
 ] @boolean
 
-[
- (keyword_in)
-] @keyword.operator
+(keyword_in) @keyword.operator
 
 (function_definition
   (keyword_let)
@@ -145,7 +142,4 @@ alias: (identifier) @variable.member
   (keyword_let)
   name: (identifier) @constant)
 
-
- (keyword_null) @constant.builtin
-
-
+(keyword_null) @constant.builtin

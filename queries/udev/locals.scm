@@ -1,15 +1,15 @@
-;; labels
-
+; labels
 (assignment
   key: "LABEL"
-  (value (content) @local.definition))
+  (value
+    (content) @local.definition))
 
 (assignment
   key: "GOTO"
-  (value (content) @local.reference))
+  (value
+    (content) @local.reference))
 
-;; env vars
-
+; env vars
 (assignment
   key: "ENV"
   (env_var) @local.definition.var)
@@ -18,10 +18,10 @@
   key: "ENV"
   (env_var) @local.reference)
 
-(var_sub (env_var) @local.reference)
+(var_sub
+  (env_var) @local.reference)
 
-;; misc
-
+; misc
 [
   (attribute)
   (kernel_param)

@@ -1,5 +1,4 @@
 ; inherits: c
-
 [
   (foreach_statement)
   (foreach_instance_statement)

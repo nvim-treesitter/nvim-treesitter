@@ -7,13 +7,12 @@
   ")"
   "["
   "]"
-]  @punctuation.bracket
+] @punctuation.bracket
 
 [
   (coreTerminator)
   (seriesTerminator)
 ] @punctuation.delimiter
-
 
 (rune) @operator
 
@@ -28,6 +27,9 @@
 (date) @string.special
 
 (mold) @string.special.symbol
+
 (specialIndex) @number.builtin
+
 (lark) @operator
+
 (fullContext) @string.special.symbol

@@ -1,50 +1,52 @@
-;;; Variables
+; Variables
 (assignment
   (identifier) @local.definition.var)
+
 (assignment
   (tuple_expression
     (identifier) @local.definition.var))
 
-;;; let/const bindings
+; let/const bindings
 (let_binding
- (identifier) @local.definition.var)
+  (identifier) @local.definition.var)
+
 (let_binding
- (tuple_expression
-  (identifier) @local.definition.var))
+  (tuple_expression
+    (identifier) @local.definition.var))
 
-
-;;; For bindings
+; For bindings
 (for_binding
   (identifier) @local.definition.var)
+
 (for_binding
   (tuple_expression
     (identifier) @local.definition.var))
 
-
-;;; Types
-
+; Types
 (struct_definition
   name: (identifier) @local.definition.type)
+
 (abstract_definition
   name: (identifier) @local.definition.type)
+
 (abstract_definition
   name: (identifier) @local.definition.type)
 
 (type_parameter_list
   (identifier) @local.definition.type)
 
-;;; Module imports
-
+; Module imports
 (import_statement
   (identifier) @local.definition.import)
 
-
-;;; Parameters
-
+; Parameters
 (parameter_list
   (identifier) @local.definition.parameter)
-(optional_parameter .
+
+(optional_parameter
+  .
   (identifier) @local.definition.parameter)
+
 (slurp_parameter
   (identifier) @local.definition.parameter)
 
@@ -52,18 +54,19 @@
   parameter: (identifier) @local.definition.parameter
   (_))
 
-;; Single parameter arrow function
+; Single parameter arrow function
 (function_expression
- . (identifier) @local.definition.parameter) 
+  .
+  (identifier) @local.definition.parameter)
 
-
-;;; Function/macro definitions
-
+; Function/macro definitions
 (function_definition
   name: (identifier) @local.definition.function) @local.scope
+
 (short_function_definition
   name: (identifier) @local.definition.function) @local.scope
-(macro_definition 
+
+(macro_definition
   name: (identifier) @local.definition.macro) @local.scope
 
 (identifier) @local.reference

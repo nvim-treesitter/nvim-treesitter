@@ -1,5 +1,5 @@
 ((comment) @injection.content
- (#set! injection.language "comment"))
+  (#set! injection.language "comment"))
 
 ((verbatim_string) @injection.content
   (#lua-match? @injection.content "^@\"<html")

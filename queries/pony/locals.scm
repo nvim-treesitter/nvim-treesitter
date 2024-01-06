@@ -1,18 +1,15 @@
 ; Scopes
-
 [
-  (use_statement) 
+  (use_statement)
   (actor_definition)
   (class_definition)
   (primitive_definition)
   (interface_definition)
   (trait_definition)
   (struct_definition)
-
   (constructor)
   (method)
   (behavior)
-
   (if_statement)
   (iftype_statement)
   (elseif_block)
@@ -28,17 +25,14 @@
   (case_statement)
   (parenthesized_expression)
   (tuple_expression)
-
   (array_literal)
-  (object_literal) 
+  (object_literal)
 ] @local.scope
 
 ; References
-
 (identifier) @local.reference
 
 ; Definitions
-
 (field
   name: (identifier) @local.definition.field)
 
@@ -84,8 +78,9 @@
 (for_statement
   [
     (identifier) @local.definition.var
-    (tuple_expression (identifier) @local.definition.var)
+    (tuple_expression
+      (identifier) @local.definition.var)
   ])
 
-(with_elem 
+(with_elem
   (identifier) @local.definition.var)

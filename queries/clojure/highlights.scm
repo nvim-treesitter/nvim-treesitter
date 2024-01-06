@@ -1,69 +1,87 @@
-;; >> Explanation
-;; Parsers for lisps are a bit weird in that they just return the raw forms.
-;; This means we have to do a bit of extra work in the queries to get things
-;; highlighted as they should be.
-;;
-;; For the most part this means that some things have to be assigned multiple
-;; groups.
-;; By doing this we can add a basic capture and then later refine it with more
-;; specialized captures.
-;; This can mean that sometimes things are highlighted weirdly because they
-;; have multiple highlight groups applied to them.
+; >> Explanation
+; Parsers for lisps are a bit weird in that they just return the raw forms.
+; This means we have to do a bit of extra work in the queries to get things
+; highlighted as they should be.
+;
+; For the most part this means that some things have to be assigned multiple
+; groups.
+; By doing this we can add a basic capture and then later refine it with more
+; specialized captures.
+; This can mean that sometimes things are highlighted weirdly because they
+; have multiple highlight groups applied to them.
+; >> Literals
+((dis_expr) @comment
+  (#set! "priority" 105)
+  ; Higher priority to mark the whole sexpr as a comment
+  )
 
-
-;; >> Literals
-
-(
- (dis_expr) @comment
- (#set! "priority" 105) ; Higher priority to mark the whole sexpr as a comment
-)
 (kwd_lit) @string.special.symbol
+
 (str_lit) @string
+
 (num_lit) @number
+
 (char_lit) @character
+
 (bool_lit) @boolean
+
 (nil_lit) @constant.builtin
+
 (comment) @comment @spell
+
 (regex_lit) @string.regexp
 
-["'" "`"] @string.escape
+[
+  "'"
+  "`"
+] @string.escape
 
-["~" "~@" "#"] @punctuation.special
+[
+  "~"
+  "~@"
+  "#"
+] @punctuation.special
 
-["{" "}" "[" "]" "(" ")"] @punctuation.bracket
+[
+  "{"
+  "}"
+  "["
+  "]"
+  "("
+  ")"
+] @punctuation.bracket
 
-
-
-;; >> Symbols
-
+; >> Symbols
 ; General symbol highlighting
 (sym_lit) @variable
 
 ; General function calls
 (list_lit
- .
- (sym_lit) @function.call)
+  .
+  (sym_lit) @function.call)
+
 (anon_fn_lit
- .
- (sym_lit) @function.call)
+  .
+  (sym_lit) @function.call)
 
 ; Quoted symbols
 (quoting_lit
- (sym_lit) @string.special.symbol)
+  (sym_lit) @string.special.symbol)
+
 (syn_quoting_lit
- (sym_lit) @string.special.symbol)
+  (sym_lit) @string.special.symbol)
 
 ; Used in destructure pattern
 ((sym_lit) @variable.parameter
- (#lua-match? @variable.parameter "^[&]"))
+  (#lua-match? @variable.parameter "^[&]"))
 
 ; Inline function variables
 ((sym_lit) @variable.builtin
- (#lua-match? @variable.builtin "^%%"))
+  (#lua-match? @variable.builtin "^%%"))
 
 ; Constructor
 ((sym_lit) @constructor
- (#lua-match? @constructor "^-%>[^>].*"))
+  (#lua-match? @constructor "^-%>[^>].*"))
 
 ; Builtin dynamic variables
 ((sym_lit) @variable.builtin
@@ -84,94 +102,91 @@
 
 ; Builtin repl variables
 ((sym_lit) @variable.builtin
- (#any-of? @variable.builtin
-  "*1" "*2" "*3" "*e"))
+  (#any-of? @variable.builtin "*1" "*2" "*3" "*e"))
 
 ; Gensym
-;; Might not be needed
+; Might not be needed
 ((sym_lit) @variable
- (#lua-match? @variable "^.*#$"))
+  (#lua-match? @variable "^.*#$"))
 
 ; Types
-;; TODO: improve?
+; TODO: improve?
 ((sym_lit) @type
- (#lua-match? @type "^[%u][^/]*$"))
-;; Symbols with `.` but not `/`
+  (#lua-match? @type "^[%u][^/]*$"))
+
+; Symbols with `.` but not `/`
 ((sym_lit) @type
- (#lua-match? @type "^[^/]+[.][^/]*$"))
+  (#lua-match? @type "^[^/]+[.][^/]*$"))
 
 ; Interop
 ; (.instanceMember instance args*)
 ; (.instanceMember Classname args*)
 ((sym_lit) @function.method
- (#lua-match? @function.method "^%.[^-]"))
+  (#lua-match? @function.method "^%.[^-]"))
+
 ; (.-instanceField instance)
 ((sym_lit) @variable.member
- (#lua-match? @variable.member "^%.%-.*"))
+  (#lua-match? @variable.member "^%.%-.*"))
+
 ;  Classname/staticField
 ((sym_lit) @variable.member
- (#lua-match? @variable.member "^[%u].*/.+"))
+  (#lua-match? @variable.member "^[%u].*/.+"))
+
 ; (Classname/staticMethod args*)
 (list_lit
- .
- (sym_lit) @function.method
- (#lua-match? @function.method "^[%u].*/.+"))
-;; TODO: Special casing for the `.` macro
+  .
+  (sym_lit) @function.method
+  (#lua-match? @function.method "^[%u].*/.+"))
 
+; TODO: Special casing for the `.` macro
 ; Operators
 ((sym_lit) @operator
- (#any-of? @operator
-  "*" "*'" "+" "+'" "-" "-'" "/"
-  "<" "<=" ">" ">=" "=" "=="))
+  (#any-of? @operator "*" "*'" "+" "+'" "-" "-'" "/" "<" "<=" ">" ">=" "=" "=="))
+
 ((sym_lit) @keyword.operator
- (#any-of? @keyword.operator
-  "not" "not=" "and" "or"))
+  (#any-of? @keyword.operator "not" "not=" "and" "or"))
 
 ; Definition functions
 ((sym_lit) @keyword
- (#any-of? @keyword
-  "def" "defonce" "defrecord" "defmacro" "definline" "definterface"
-  "defmulti" "defmethod" "defstruct" "defprotocol"
-  "deftype"))
+  (#any-of? @keyword "def" "defonce" "defrecord" "defmacro" "definline" "definterface" "defmulti" "defmethod" "defstruct" "defprotocol" "deftype"))
+
 ((sym_lit) @keyword
- (#eq? @keyword "declare"))
+  (#eq? @keyword "declare"))
+
 ((sym_name) @keyword.coroutine
- (#any-of? @keyword.coroutine
-  "alts!" "alts!!" "await" "await-for" "await1" "chan" "close!" "future" "go" "sync" "thread" "timeout" "<!" "<!!" ">!" ">!!"))
+  (#any-of? @keyword.coroutine "alts!" "alts!!" "await" "await-for" "await1" "chan" "close!" "future" "go" "sync" "thread" "timeout" "<!" "<!!" ">!" ">!!"))
+
 ((sym_lit) @keyword.function
- (#any-of? @keyword.function "defn" "defn-" "fn" "fn*"))
+  (#any-of? @keyword.function "defn" "defn-" "fn" "fn*"))
 
 ; Comment
 ((sym_lit) @comment
- (#any-of? @comment "comment"))
+  (#any-of? @comment "comment"))
 
 ; Conditionals
 ((sym_lit) @keyword.conditional
- (#any-of? @keyword.conditional
-  "case" "cond" "cond->" "cond->>" "condp"))
+  (#any-of? @keyword.conditional "case" "cond" "cond->" "cond->>" "condp"))
+
 ((sym_lit) @keyword.conditional
- (#any-of? @keyword.conditional
-  "if" "if-let" "if-not" "if-some"))
+  (#any-of? @keyword.conditional "if" "if-let" "if-not" "if-some"))
+
 ((sym_lit) @keyword.conditional
- (#any-of? @keyword.conditional
-  "when" "when-first" "when-let" "when-not" "when-some"))
+  (#any-of? @keyword.conditional "when" "when-first" "when-let" "when-not" "when-some"))
 
 ; Repeats
 ((sym_lit) @keyword.repeat
- (#any-of? @keyword.repeat
-  "doseq" "dotimes" "for" "loop" "recur" "while"))
+  (#any-of? @keyword.repeat "doseq" "dotimes" "for" "loop" "recur" "while"))
 
 ; Exception
 ((sym_lit) @keyword.exception
- (#any-of? @keyword.exception
-  "throw" "try" "catch" "finally"))
+  (#any-of? @keyword.exception "throw" "try" "catch" "finally"))
 
 ; Includes
 ((sym_lit) @keyword.import
- (#any-of? @keyword.import "ns" "import" "require" "use"))
+  (#any-of? @keyword.import "ns" "import" "require" "use"))
 
 ; Builtin macros
-;; TODO: Do all these items belong here?
+; TODO: Do all these items belong here?
 ((sym_lit) @function.macro
   ; format-ignore
   (#any-of? @function.macro
@@ -191,7 +206,7 @@
 ;      (keep (fn [[s v]] (when-not (:macro (meta v)) s)))
 ;      sort
 ;      clojure.pprint/pprint))
-;; ...and then lots of manual filtering...
+; ...and then lots of manual filtering...
 ((sym_lit) @function.builtin
   ; format-ignore
   (#any-of? @function.builtin
@@ -316,48 +331,43 @@
     "seq-to-map-for-destructuring" "update-keys" "update-vals"
     ;; 1.12
     "partitionv" "partitionv-all" "splitv-at"))
-
-
-
-;; >> Context based highlighting
-
-;; def-likes
-;; Correctly highlight docstrings
+; >> Context based highlighting
+; def-likes
+; Correctly highlight docstrings
 ;(list_lit
- ;.
- ;(sym_lit) @_keyword ; Don't really want to highlight twice
- ;(#any-of? @_keyword
-   ;"def" "defonce" "defrecord" "defmacro" "definline"
-   ;"defmulti" "defmethod" "defstruct" "defprotocol"
-   ;"deftype")
- ;.
- ;(sym_lit)
- ;.
- ;;; TODO: Add @comment highlight
- ;(str_lit)?
- ;.
- ;(_))
-
+;.
+;(sym_lit) @_keyword ; Don't really want to highlight twice
+;(#any-of? @_keyword
+;"def" "defonce" "defrecord" "defmacro" "definline"
+;"defmulti" "defmethod" "defstruct" "defprotocol"
+;"deftype")
+;.
+;(sym_lit)
+;.
+; TODO: Add @comment highlight
+;(str_lit)?
+;.
+;(_))
 ; Function definitions
 (list_lit
- .
- (sym_lit) @_keyword.function
- (#any-of? @_keyword.function "fn" "fn*" "defn" "defn-")
- .
- (sym_lit)? @function
- .
- ;; TODO: Add @comment highlight
- (str_lit)?)
-;; TODO: Fix parameter highlighting
-;;       I think there's a bug here in nvim-treesitter
-;; TODO: Reproduce bug and file ticket
- ;.
- ;[(vec_lit
- ;  (sym_lit)* @variable.parameter)
- ; (list_lit
- ;  (vec_lit
- ;   (sym_lit)* @variable.parameter))])
-  
+  .
+  (sym_lit) @_keyword.function
+  (#any-of? @_keyword.function "fn" "fn*" "defn" "defn-")
+  .
+  (sym_lit)? @function
+  .
+  ; TODO: Add @comment highlight
+  (str_lit)?)
+
+; TODO: Fix parameter highlighting
+;       I think there's a bug here in nvim-treesitter
+; TODO: Reproduce bug and file ticket
+;.
+;[(vec_lit
+;  (sym_lit)* @variable.parameter)
+; (list_lit
+;  (vec_lit
+;   (sym_lit)* @variable.parameter))])
 ;[((list_lit
 ;   (vec_lit
 ;    (sym_lit) @variable.parameter)
@@ -366,19 +376,17 @@
 ; ((vec_lit
 ;   (sym_lit) @variable.parameter)
 ;  (_)))
-   
-
 ; Meta punctuation
-;; NOTE: When the above `Function definitions` query captures the
-;;       the @function it also captures the child meta_lit
-;;       We capture the meta_lit symbol (^) after so that the later
-;;       highlighting overrides the former
+; NOTE: When the above `Function definitions` query captures the
+;       the @function it also captures the child meta_lit
+;       We capture the meta_lit symbol (^) after so that the later
+;       highlighting overrides the former
 "^" @punctuation.special
 
-;; namespaces
+; namespaces
 (list_lit
- .
- (sym_lit) @_include
- (#eq? @_include "ns")
- .
- (sym_lit) @module)
+  .
+  (sym_lit) @_include
+  (#eq? @_include "ns")
+  .
+  (sym_lit) @module)

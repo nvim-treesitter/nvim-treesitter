@@ -1,7 +1,8 @@
 [
-    (comment)
-    (list)
-    (dict_core)
+  (comment)
+  (list)
+  (dict_core)
 ] @fold
 
-(code (code_body)* @fold)
+(code
+  (code_body)* @fold)

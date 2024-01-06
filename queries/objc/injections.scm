@@ -1,5 +1,4 @@
 ; inherits: c
-
 ; TODO(amaanq): uncomment/add when I add asm support
 ; (ms_asm_block "{" _ @asm "}")
 ;
