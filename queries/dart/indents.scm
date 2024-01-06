@@ -2,7 +2,8 @@
   (class_body)
   (function_body)
   (function_expression_body)
-  (declaration (initializers))
+  (declaration
+    (initializers))
   (switch_block)
   (if_statement)
   (formal_parameter_list)
@@ -32,14 +33,16 @@
   "]"
 ] @indent.branch
 
-[
- "}"
-] @indent.end
+"}" @indent.end
 
-(return_statement ";" @indent.end)
-(break_statement ";" @indent.end)
+(return_statement
+  ";" @indent.end)
+
+(break_statement
+  ";" @indent.end)
 
 ; this one is for dedenting the else block
-(if_statement (block) @indent.branch)
+(if_statement
+  (block) @indent.branch)
 
 (comment) @indent.ignore

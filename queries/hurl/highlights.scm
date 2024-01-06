@@ -1,6 +1,5 @@
 ; highlights.scm
-
-[ 
+[
   "[QueryStringParams]"
   "[FormParams]"
   "[MultipartFormData]"
@@ -13,7 +12,7 @@
   (json_key_string)
 ] @property
 
-[ 
+[
   "\\"
   (regex_escaped_char)
   (quoted_string_escaped_char)
@@ -53,7 +52,8 @@
   "retry"
   "retry-interval"
   "retry-max-count"
-  (variable_option "variable")
+  (variable_option
+    "variable")
   "verbose"
   "very-verbose"
 ] @constant.builtin
@@ -102,16 +102,25 @@
   (json_number)
 ] @number.float
 
-[ ":" "," ] @punctuation.delimiter
+[
+  ":"
+  ","
+] @punctuation.delimiter
 
-[ "[" "]" "{" "}" "{{" "}}" ] @punctuation.bracket
+[
+  "["
+  "]"
+  "{"
+  "}"
+  "{{"
+  "}}"
+] @punctuation.bracket
 
-[ 
+[
   (value_string)
   (quoted_string)
   (json_string)
 ] @string
-
 
 [
   "base64,"
@@ -133,4 +142,3 @@
 (filter) @attribute
 
 (method) @type.builtin
-

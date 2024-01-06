@@ -1,5 +1,4 @@
 ; Scopes
-
 [
   (class)
   (multiclass)
@@ -13,14 +12,12 @@
 ] @local.scope
 
 ; References
-
 [
   (var)
   (identifier)
 ] @local.reference
 
 ; Definitions
-
 (instruction
   (identifier) @local.definition.field)
 
@@ -30,7 +27,8 @@
 (include_directive
   (string) @local.definition.import)
 
-(template_arg (identifier) @local.definition.parameter)
+(template_arg
+  (identifier) @local.definition.parameter)
 
 (class
   name: (identifier) @local.definition.type)
@@ -39,10 +37,14 @@
   name: (identifier) @local.definition.type)
 
 (def
-  name: (value (_) @local.definition.type))
+  name:
+    (value
+      (_) @local.definition.type))
 
 (defm
-  name: (value (_) @local.definition.type))
+  name:
+    (value
+      (_) @local.definition.type))
 
 (defset
   name: (identifier) @local.definition.type)

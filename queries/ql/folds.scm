@@ -1,7 +1,7 @@
 [
- (module)
- (classlessPredicate)
- (dataclass)
- (charpred)
- (memberPredicate)
+  (module)
+  (classlessPredicate)
+  (dataclass)
+  (charpred)
+  (memberPredicate)
 ] @fold

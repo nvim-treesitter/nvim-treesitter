@@ -9,14 +9,10 @@
 ] @keyword
 
 ; Function Keywords
-[
-  "fn"
-] @keyword.function
+"fn" @keyword.function
 
 ; Imports
-[
-  "import"
-] @keyword.import
+"import" @keyword.import
 
 ; Conditionals
 [
@@ -25,9 +21,7 @@
 ] @keyword.conditional
 
 ; Exceptions
-[
-  "assert"
-] @keyword.exception
+"assert" @keyword.exception
 
 ; Punctuation
 [
@@ -48,9 +42,7 @@
   "->"
 ] @punctuation.delimiter
 
-[
-  "#"
-] @punctuation.special
+"#" @punctuation.special
 
 ; Operators
 [
@@ -83,9 +75,7 @@
 (identifier) @variable
 
 ; Comments
-[
-  (comment)
-] @comment @spell
+(comment) @comment @spell
 
 [
   (module_comment)
@@ -100,9 +90,16 @@
 
 ; Modules & Imports
 (module) @module
-(import alias: ((identifier) @module)?)
-(remote_type_identifier module: (identifier) @module)
-(unqualified_import name: (identifier) @function)
+
+(import
+  alias:
+    ((identifier) @module)?)
+
+(remote_type_identifier
+  module: (identifier) @module)
+
+(unqualified_import
+  name: (identifier) @function)
 
 ; Strings
 (string) @string
@@ -116,15 +113,35 @@
 (float) @number.float
 
 ; Function Parameter Labels
-(function_call arguments: (arguments (argument label: (label) @label)))
-(function_parameter label: (label)? @label name: (identifier) @variable.parameter)
+(function_call
+  arguments:
+    (arguments
+      (argument
+        label: (label) @label)))
+
+(function_parameter
+  label: (label)? @label
+  name: (identifier) @variable.parameter)
 
 ; Records
-(record arguments: (arguments (argument label: (label) @property)?))
-(record_pattern_argument  label: (label) @property)
-(record_update_argument label: (label) @property)
-(field_access record: (identifier) @variable field: (label) @property)
-(data_constructor_argument (label) @property)
+(record
+  arguments:
+    (arguments
+      (argument
+        label: (label) @property)?))
+
+(record_pattern_argument
+  label: (label) @property)
+
+(record_update_argument
+  label: (label) @property)
+
+(field_access
+  record: (identifier) @variable
+  field: (label) @property)
+
+(data_constructor_argument
+  (label) @property)
 
 ; Types
 [
@@ -145,25 +162,44 @@
 ] @type.qualifier
 
 ; Tuples
-(tuple_access index: (integer) @operator)
+(tuple_access
+  index: (integer) @operator)
 
 ; Functions
-(function name: (identifier) @function)
-(function_call function: (identifier) @function.call)
-(function_call function: (field_access field: (label) @function.call))
+(function
+  name: (identifier) @function)
+
+(function_call
+  function: (identifier) @function.call)
+
+(function_call
+  function:
+    (field_access
+      field: (label) @function.call))
 
 ; External Functions
-(external_function name: (identifier) @function)
-(external_function_body (string) @module . (string) @function)
+(external_function
+  name: (identifier) @function)
+
+(external_function_body
+  (string) @module
+  .
+  (string) @function)
 
 ; Constructors
 (constructor_name) @type @constructor
 
-([(type_identifier) (constructor_name)] @constant.builtin
+([
+  (type_identifier)
+  (constructor_name)
+] @constant.builtin
   (#any-of? @constant.builtin "Ok" "Error"))
 
 ; Booleans
-((constructor_name) @boolean (#any-of? @boolean "True" "False"))
+((constructor_name) @boolean
+  (#any-of? @boolean "True" "False"))
 
 ; Pipe Operator
-(binary_expression operator: "|>" right: (identifier) @function)
+(binary_expression
+  operator: "|>"
+  right: (identifier) @function)

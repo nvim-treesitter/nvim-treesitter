@@ -1,3 +1,1 @@
-[
-  (block)
-] @fold
+(block) @fold

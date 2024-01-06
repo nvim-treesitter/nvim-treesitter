@@ -1,4 +1,4 @@
-;; From MDeiml/tree-sitter-markdown
+; From MDeiml/tree-sitter-markdown
 (code_span) @markup.raw @nospell
 
 (emphasis) @markup.italic
@@ -12,7 +12,8 @@
   (uri_autolink)
 ] @markup.link.url @nospell
 
-(shortcut_link (link_text) @nospell)
+(shortcut_link
+  (link_text) @nospell)
 
 [
   (link_label)
@@ -29,6 +30,7 @@
 ; Conceal codeblock and text style markers
 ((code_span_delimiter) @markup.raw
   (#set! conceal ""))
+
 ((emphasis_delimiter) @markup.strong
   (#set! conceal ""))
 
@@ -80,10 +82,27 @@
   ] @markup.link
   (#set! conceal ""))
 
-;; Replace common HTML entities.
-((entity_reference) @character.special (#eq? @character.special "&nbsp;") (#set! conceal ""))
-((entity_reference) @character.special (#eq? @character.special "&lt;") (#set! conceal "<"))
-((entity_reference) @character.special (#eq? @character.special "&gt;") (#set! conceal ">"))
-((entity_reference) @character.special (#eq? @character.special "&amp;") (#set! conceal "&"))
-((entity_reference) @character.special (#eq? @character.special "&quot;") (#set! conceal "\""))
-((entity_reference) @character.special (#any-of? @character.special "&ensp;" "&emsp;") (#set! conceal " "))
+; Replace common HTML entities.
+((entity_reference) @character.special
+  (#eq? @character.special "&nbsp;")
+  (#set! conceal ""))
+
+((entity_reference) @character.special
+  (#eq? @character.special "&lt;")
+  (#set! conceal "<"))
+
+((entity_reference) @character.special
+  (#eq? @character.special "&gt;")
+  (#set! conceal ">"))
+
+((entity_reference) @character.special
+  (#eq? @character.special "&amp;")
+  (#set! conceal "&"))
+
+((entity_reference) @character.special
+  (#eq? @character.special "&quot;")
+  (#set! conceal "\""))
+
+((entity_reference) @character.special
+  (#any-of? @character.special "&ensp;" "&emsp;")
+  (#set! conceal " "))

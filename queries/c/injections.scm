@@ -1,8 +1,8 @@
 ((preproc_arg) @injection.content
- (#set! injection.language "c"))
+  (#set! injection.language "c"))
 
 ((comment) @injection.content
- (#set! injection.language "comment"))
+  (#set! injection.language "comment"))
 
 ((comment) @injection.content
   (#match? @injection.content "/\\*!([a-zA-Z]+:)?re2c")
@@ -14,8 +14,11 @@
 
 ((call_expression
   function: (identifier) @_function
-  arguments: (argument_list
-               . (string_literal (string_content) @injection.content)))
+  arguments:
+    (argument_list
+      .
+      (string_literal
+        (string_content) @injection.content)))
   ; format-ignore
   (#any-of? @_function 
     "printf" "printf_s"
@@ -29,12 +32,16 @@
     "cscanf" "_cscanf"
     "printw"
     "scanw")
- (#set! injection.language "printf"))
+  (#set! injection.language "printf"))
 
 ((call_expression
   function: (identifier) @_function
-  arguments: (argument_list
-               (_) . (string_literal (string_content) @injection.content)))
+  arguments:
+    (argument_list
+      (_)
+      .
+      (string_literal
+        (string_content) @injection.content)))
   ; format-ignore
   (#any-of? @_function 
     "fprintf" "fprintf_s"
@@ -57,12 +64,18 @@
     "vw_printw" "vwprintw"
     "wscanw"
     "vw_scanw" "vwscanw")
- (#set! injection.language "printf"))
+  (#set! injection.language "printf"))
 
 ((call_expression
   function: (identifier) @_function
-  arguments: (argument_list
-               (_) . (_) . (string_literal (string_content) @injection.content)))
+  arguments:
+    (argument_list
+      (_)
+      .
+      (_)
+      .
+      (string_literal
+        (string_content) @injection.content)))
   ; format-ignore
   (#any-of? @_function 
     "sprintf_s"
@@ -75,15 +88,22 @@
     "vsnwprintf_s"
     "mvprintw"
     "mvscanw")
- (#set! injection.language "printf"))
+  (#set! injection.language "printf"))
 
 ((call_expression
   function: (identifier) @_function
-  arguments: (argument_list
-               (_) . (_) . (_) . (string_literal (string_content) @injection.content)))
- (#any-of? @_function "mvwprintw"
-                      "mvwscanw")
- (#set! injection.language "printf"))
+  arguments:
+    (argument_list
+      (_)
+      .
+      (_)
+      .
+      (_)
+      .
+      (string_literal
+        (string_content) @injection.content)))
+  (#any-of? @_function "mvwprintw" "mvwscanw")
+  (#set! injection.language "printf"))
 
 ; TODO: add when asm is added
 ; (gnu_asm_expression assembly_code: (string_literal) @injection.content

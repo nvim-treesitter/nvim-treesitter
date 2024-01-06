@@ -22,14 +22,18 @@
   "catch"
 ] @indent.branch
 
-((matrix (row) @indent.align)
- (#set! indent.open_delimiter "[")
- (#set! indent.close_delimiter "]"))
-((cell (row) @indent.align)
- (#set! indent.open_delimiter "{")
- (#set! indent.close_delimiter "}"))
+((matrix
+  (row) @indent.align)
+  (#set! indent.open_delimiter "[")
+  (#set! indent.close_delimiter "]"))
+
+((cell
+  (row) @indent.align)
+  (#set! indent.open_delimiter "{")
+  (#set! indent.close_delimiter "}"))
+
 ((parenthesis) @indent.align
- (#set! indent.open_delimiter "(")
- (#set! indent.close_delimiter ")"))
+  (#set! indent.open_delimiter "(")
+  (#set! indent.close_delimiter ")"))
 
 (comment) @indent.auto

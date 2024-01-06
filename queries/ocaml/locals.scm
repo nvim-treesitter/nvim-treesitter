@@ -1,6 +1,5 @@
 ; Scopes
 ;-------
-
 [
   (compilation_unit)
   (structure)
@@ -22,7 +21,6 @@
 
 ; Definitions
 ;------------
-
 (value_pattern) @local.definition.var
 
 (let_binding
@@ -30,37 +28,49 @@
   (#set! definition.var.scope "parent"))
 
 (let_binding
-  pattern: (tuple_pattern (value_name) @local.definition.var)
+  pattern:
+    (tuple_pattern
+      (value_name) @local.definition.var)
   (#set! definition.var.scope "parent"))
 
 (let_binding
-  pattern: (record_pattern (field_pattern (value_name) @local.definition.var))
+  pattern:
+    (record_pattern
+      (field_pattern
+        (value_name) @local.definition.var))
   (#set! definition.var.scope "parent"))
 
-(external (value_name) @local.definition.var)
+(external
+  (value_name) @local.definition.var)
 
-(type_binding (type_constructor) @local.definition.type)
+(type_binding
+  (type_constructor) @local.definition.type)
 
-(abstract_type (type_constructor) @local.definition.type)
+(abstract_type
+  (type_constructor) @local.definition.type)
 
-(method_definition (method_name) @local.definition.method)
+(method_definition
+  (method_name) @local.definition.method)
 
 (module_binding
   (module_name) @local.definition.namespace
   (#set! definition.namespace.scope "parent"))
 
-(module_parameter (module_name) @local.definition.namespace)
+(module_parameter
+  (module_name) @local.definition.namespace)
 
-(module_type_definition (module_type_name) @local.definition.type)
+(module_type_definition
+  (module_type_name) @local.definition.type)
 
 ; References
 ;------------
-
-(value_path .
+(value_path
+  .
   (value_name) @local.reference
   (#set! reference.kind "var"))
 
-(type_constructor_path .
+(type_constructor_path
+  .
   (type_constructor) @local.reference
   (#set! reference.kind "type"))
 
@@ -68,10 +78,12 @@
   (method_name) @local.reference
   (#set! reference.kind "method"))
 
-(module_path .
+(module_path
+  .
   (module_name) @local.reference
   (#set! reference.kind "type"))
 
-(module_type_path .
+(module_type_path
+  .
   (module_type_name) @local.reference
   (#set! reference.kind "type"))

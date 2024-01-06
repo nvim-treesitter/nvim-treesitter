@@ -1,1 +1,2 @@
-(source (list_lit) @fold)
+(source
+  (list_lit) @fold)

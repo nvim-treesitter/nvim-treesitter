@@ -1,5 +1,4 @@
 ; Scopes
-
 [
   (template_body)
   (lambda_expression)
@@ -9,16 +8,15 @@
 ] @local.scope
 
 ; References
-
 (identifier) @local.reference
 
 ; Definitions
-
 (function_declaration
   name: (identifier) @local.definition.function)
 
 (function_definition
-  name: ((identifier) @local.definition.function)
+  name:
+    ((identifier) @local.definition.function)
   (#set! definition.var.scope parent))
 
 (parameter
@@ -46,7 +44,8 @@
   name: (identifier) @local.definition.var)
 
 (for_expression
-  enumerators: (enumerators
-    (enumerator
-      (tuple_pattern
-        (identifier) @local.definition.var))))
+  enumerators:
+    (enumerators
+      (enumerator
+        (tuple_pattern
+          (identifier) @local.definition.var))))

@@ -1,6 +1,5 @@
 ; Types
 ;------
-
 (scalar_type_definition
   (name) @type)
 
@@ -42,7 +41,6 @@
 
 ; Directives
 ;-----------
-
 (directive_definition
   "@" @attribute
   (name) @attribute)
@@ -51,7 +49,6 @@
 
 ; Properties
 ;-----------
-
 (field
   (name) @property)
 
@@ -69,9 +66,8 @@
 (enum_value
   (name) @property)
 
-; Variable Definitions and Arguments 
+; Variable Definitions and Arguments
 ;-----------------------------------
-
 (operation_definition
   (name) @variable)
 
@@ -98,7 +94,6 @@
 
 ; Constants
 ;----------
-
 (string_value) @string
 
 (int_value) @number
@@ -109,7 +104,6 @@
 
 ; Literals
 ;---------
-
 (description
   (string_value) @string.documentation @spell)
 
@@ -123,7 +117,6 @@
 
 ; Keywords
 ;----------
-
 [
   "query"
   "mutation"
@@ -145,21 +138,23 @@
 
 ; Punctuation
 ;------------
-
 [
- "("
- ")"
- "["
- "]"
- "{"
- "}"
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
 ] @punctuation.bracket
 
 "=" @operator
 
 "|" @punctuation.delimiter
+
 "&" @punctuation.delimiter
+
 ":" @punctuation.delimiter
 
 "..." @punctuation.special
+
 "!" @punctuation.special

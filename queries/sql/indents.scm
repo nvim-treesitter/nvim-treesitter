@@ -1,27 +1,29 @@
 [
- (select)
- (cte)
- (column_definitions)
- (case)
- (subquery)
- (insert)
- (when_clause)
+  (select)
+  (cte)
+  (column_definitions)
+  (case)
+  (subquery)
+  (insert)
+  (when_clause)
 ] @indent.begin
 
 (block
-  (keyword_begin)
-) @indent.begin
+  (keyword_begin)) @indent.begin
 
-(column_definitions ")" @indent.branch)
+(column_definitions
+  ")" @indent.branch)
 
-(subquery ")" @indent.branch)
+(subquery
+  ")" @indent.branch)
 
-(cte ")" @indent.branch)
+(cte
+  ")" @indent.branch)
 
 [
- (keyword_end)
- (keyword_values)
- (keyword_into)
+  (keyword_end)
+  (keyword_values)
+  (keyword_into)
 ] @indent.branch
 
 (keyword_end) @indent.end

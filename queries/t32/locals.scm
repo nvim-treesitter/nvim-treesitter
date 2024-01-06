@@ -1,5 +1,4 @@
 (block) @local.scope
-
 ; Parameter definitions
 (parameter_declaration
   command: (identifier)
@@ -12,8 +11,9 @@
 
 (command_expression
   command: (identifier)
-  arguments: (argument_list
-    declarator: (trace32_hll_variable) @local.definition.var))
+  arguments:
+    (argument_list
+      declarator: (trace32_hll_variable) @local.definition.var))
 
 ; Function definitions
 (subroutine_block
@@ -25,12 +25,10 @@
   (block))
 
 ; References
-(
-  (subroutine_call_expression
-    command: (identifier)
-    subroutine: (identifier) @local.reference)
-  (#set! reference.kind "function")
-)
+((subroutine_call_expression
+  command: (identifier)
+  subroutine: (identifier) @local.reference)
+  (#set! reference.kind "function"))
 
 [
   (macro)

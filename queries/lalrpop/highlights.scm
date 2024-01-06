@@ -13,23 +13,32 @@
 ] @keyword.conditional
 
 [
- "+"
- "*"
- "?"
- ; TODO: inaccessible node
- ; =>
- "=>@L"
- "=>@R"
+  "+"
+  "*"
+  "?"
+  ; TODO: inaccessible node
+  ; =>
+  "=>@L"
+  "=>@R"
 ] @operator
 
 (grammar_type_params
-  ["<" ">"] @punctuation.bracket)
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
 
 (symbol
-  ["<" ">"] @punctuation.bracket)
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
 
 (binding_symbol
-  ["<" ">"] @punctuation.bracket)
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
 
 (binding_symbol
   name: (identifier) @variable.parameter)
@@ -50,11 +59,21 @@
 (nonterminal
   (type_ref) @type.builtin)
 
-["(" ")" "[" "]"] @punctuation.bracket
+[
+  "("
+  ")"
+  "["
+  "]"
+] @punctuation.bracket
 
-[";" ":"] @punctuation.delimiter
+[
+  ";"
+  ":"
+] @punctuation.delimiter
 
-(lifetime (identifier) @keyword.storage)
+(lifetime
+  (identifier) @keyword.storage)
 
 (string_literal) @string
+
 (regex_literal) @string

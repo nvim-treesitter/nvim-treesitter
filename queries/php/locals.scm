@@ -1,17 +1,16 @@
 ; Scopes
 ;-------
-
 ((class_declaration
   name: (name) @local.definition.type) @local.scope
-    (#set! definition.type.scope "parent"))
+  (#set! definition.type.scope "parent"))
 
 ((method_declaration
   name: (name) @local.definition.method) @local.scope
-    (#set! definition.method.scope "parent"))
+  (#set! definition.method.scope "parent"))
 
 ((function_definition
   name: (name) @local.definition.function) @local.scope
-    (#set! definition.function.scope "parent"))
+  (#set! definition.function.scope "parent"))
 
 (anonymous_function_creation_expression
   (anonymous_function_use_clause
@@ -20,7 +19,6 @@
 
 ; Definitions
 ;------------
-
 (simple_parameter
   (variable_name
     (name) @local.definition.var))
@@ -33,7 +31,7 @@
 (foreach_statement
   (variable_name
     (name) @local.reference
-      (#set! reference.kind "var"))
+    (#set! reference.kind "var"))
   (variable_name
     (name) @local.definition.var))
 
@@ -48,40 +46,41 @@
 
 ; References
 ;------------
-
 (named_type
   (name) @local.reference
-    (#set! reference.kind "type"))
+  (#set! reference.kind "type"))
 
 (named_type
   (qualified_name) @local.reference
-    (#set! reference.kind "type"))
+  (#set! reference.kind "type"))
 
 (variable_name
   (name) @local.reference
-    (#set! reference.kind "var"))
+  (#set! reference.kind "var"))
 
 (member_access_expression
   name: (name) @local.reference
-    (#set! reference.kind "field"))
+  (#set! reference.kind "field"))
 
 (member_call_expression
   name: (name) @local.reference
-    (#set! reference.kind "method"))
+  (#set! reference.kind "method"))
 
 (function_call_expression
-  function: (qualified_name
-    (name) @local.reference
+  function:
+    (qualified_name
+      (name) @local.reference
       (#set! reference.kind "function")))
 
 (object_creation_expression
   (qualified_name
     (name) @local.reference
-      (#set! reference.kind "type")))
+    (#set! reference.kind "type")))
 
 (scoped_call_expression
-  scope: (qualified_name
-    (name) @local.reference
+  scope:
+    (qualified_name
+      (name) @local.reference
       (#set! reference.kind "type"))
   name: (name) @local.reference
-    (#set! reference.kind "method"))
+  (#set! reference.kind "method"))

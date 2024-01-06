@@ -1,5 +1,4 @@
 ; Folds
-
 [
   (node)
   (node_children)

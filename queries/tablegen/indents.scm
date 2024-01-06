@@ -7,7 +7,7 @@
   (defvar)
   (foreach)
   (if)
-  (let) 
+  (let)
   (value_suffix)
 ] @indent.begin
 
@@ -18,10 +18,22 @@
   ">"
 ] @indent.end
 
-[ "{" "}" ] @indent.branch
+[
+  "{"
+  "}"
+] @indent.branch
 
-[ "[" "]" ] @indent.branch
+[
+  "["
+  "]"
+] @indent.branch
 
-[ "(" ")" ] @indent.branch
+[
+  "("
+  ")"
+] @indent.branch
 
-[ "<" ">" ] @indent.branch
+[
+  "<"
+  ">"
+] @indent.branch

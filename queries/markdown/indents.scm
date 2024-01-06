@@ -1,3 +1,1 @@
-[
-  (list_item)
-] @indent.auto
+(list_item) @indent.auto

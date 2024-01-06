@@ -1,1 +1,2 @@
-(program (list) @fold)
+(program
+  (list) @fold)

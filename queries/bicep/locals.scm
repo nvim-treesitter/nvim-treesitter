@@ -1,22 +1,17 @@
 ; Scopes
-
 [
   (infrastructure)
   (call_expression)
-
   (lambda_expression)
   (subscript_expression)
-
   (if_statement)
   (for_statement)
-
   (array)
   (object)
   (interpolation)
 ] @local.scope
 
 ; References
-
 (property_identifier) @local.reference
 
 (call_expression
@@ -31,7 +26,6 @@
   (identifier) @local.reference)
 
 ; Definitions
-
 (type) @local.definition.associated
 
 (object_property

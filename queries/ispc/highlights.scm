@@ -1,5 +1,4 @@
 ; inherits: c
-
 [
   "soa"
   "task"
@@ -26,9 +25,7 @@
   "foreach_unique"
 ] @keyword.repeat
 
-[
-  "cif"
-] @keyword.conditional
+"cif" @keyword.conditional
 
 [
   "varying"
@@ -37,56 +34,45 @@
 
 "__regcall" @attribute
 
-(overload_declarator name: _ @function)
-(foreach_statement range_operator: _ @operator)
+(overload_declarator
+  name: _ @function)
 
-(short_vector ["<" ">"] @punctuation.bracket)
-(soa_qualifier ["<" ">"] @punctuation.bracket)
-(template_argument_list ["<" ">"] @punctuation.bracket)
-(template_parameter_list ["<" ">"] @punctuation.bracket)
+(foreach_statement
+  range_operator: _ @operator)
+
+(short_vector
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
+
+(soa_qualifier
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
+
+(template_argument_list
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
+
+(template_parameter_list
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
 
 (llvm_identifier) @function.builtin
 
 ; built-in variables
 ((identifier) @variable.builtin
-  (#any-of? @variable.builtin
-   "programCount"
-   "programIndex"
-   "taskCount"
-   "taskCount0"
-   "taskCount1"
-   "taskCount2"
-   "taskIndex"
-   "taskIndex0"
-   "taskIndex1"
-   "taskIndex2"
-   "threadCount"
-   "threadIndex"
-   ))
+  (#any-of? @variable.builtin "programCount" "programIndex" "taskCount" "taskCount0" "taskCount1" "taskCount2" "taskIndex" "taskIndex0" "taskIndex1" "taskIndex2" "threadCount" "threadIndex"))
 
 ; preprocessor constants
 ((identifier) @constant.builtin
-  (#any-of? @constant.builtin
-   "ISPC"
-   "ISPC_FP16_SUPPORTED"
-   "ISPC_FP64_SUPPORTED"
-   "ISPC_LLVM_INTRINSICS_ENABLED"
-   "ISPC_MAJOR_VERSION"
-   "ISPC_MINOR_VERSION"
-   "ISPC_POINTER_SIZE"
-   "ISPC_TARGET_AVX"
-   "ISPC_TARGET_AVX2"
-   "ISPC_TARGET_AVX512KNL"
-   "ISPC_TARGET_AVX512SKX"
-   "ISPC_TARGET_AVX512SPR"
-   "ISPC_TARGET_NEON"
-   "ISPC_TARGET_SSE2"
-   "ISPC_TARGET_SSE4"
-   "ISPC_UINT_IS_DEFINED"
-   "PI"
-   "TARGET_ELEMENT_WIDTH"
-   "TARGET_WIDTH"
-   ))
+  (#any-of? @constant.builtin "ISPC" "ISPC_FP16_SUPPORTED" "ISPC_FP64_SUPPORTED" "ISPC_LLVM_INTRINSICS_ENABLED" "ISPC_MAJOR_VERSION" "ISPC_MINOR_VERSION" "ISPC_POINTER_SIZE" "ISPC_TARGET_AVX" "ISPC_TARGET_AVX2" "ISPC_TARGET_AVX512KNL" "ISPC_TARGET_AVX512SKX" "ISPC_TARGET_AVX512SPR" "ISPC_TARGET_NEON" "ISPC_TARGET_SSE2" "ISPC_TARGET_SSE4" "ISPC_UINT_IS_DEFINED" "PI" "TARGET_ELEMENT_WIDTH" "TARGET_WIDTH"))
 
 ; standard library built-in
 ((type_identifier) @type.builtin

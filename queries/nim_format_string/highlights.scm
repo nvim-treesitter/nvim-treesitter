@@ -1,6 +1,7 @@
 (string_literal)
-(matching_curlies 
-  opening_curly: (opening_curly) @punctuation.special 
+
+(matching_curlies
+  opening_curly: (opening_curly) @punctuation.special
   equals: (equals)? @punctuation.special
   closing_curly: (closing_curly) @punctuation.special)
 
@@ -14,6 +15,7 @@
   precision: (precision)? @number
   type: (type)? @type)
 
-(matching_curlies 
-  nim_expression: (nim_expression 
-    escaped_curly: (escaped_curly)+ @string.escape) @none)
+(matching_curlies
+  nim_expression:
+    (nim_expression
+      escaped_curly: (escaped_curly)+ @string.escape) @none)

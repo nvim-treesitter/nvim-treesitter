@@ -1,5 +1,4 @@
 ; fold.scm
-
 [
   (comment)
   (entry)

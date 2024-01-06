@@ -4,11 +4,14 @@
 ] @punctuation.delimiter
 
 (pattern
-  (character "." @variable.builtin))
+  (character
+    "." @variable.builtin))
 
 [
-  "[" "]"
-  "(" ")"
+  "["
+  "]"
+  "("
+  ")"
 ] @punctuation.bracket
 
 [
@@ -25,12 +28,14 @@
 
 (set
   (character) @constant)
+
 (negated_set
   (character) @constant)
 
 (class) @keyword
 
-(negated_set "^" @operator)
+(negated_set
+  "^" @operator)
 
 (balanced_match
   (character) @variable.parameter)
