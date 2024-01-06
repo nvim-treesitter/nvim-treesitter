@@ -1994,6 +1994,14 @@ list.typoscript = {
   maintainers = { "@Teddytrombone" },
 }
 
+list.typst = {
+  install_info = {
+    url = "https://github.com/uben0/tree-sitter-typst.git",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@uben0" },
+}
+
 list.udev = {
   install_info = {
     url = "https://github.com/ObserverOfTime/tree-sitter-udev",
