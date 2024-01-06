@@ -1,5 +1,4 @@
 ; CREDITS @pfoerster (adapted from https://github.com/latex-lsp/tree-sitter-bibtex)
-
 [
   (string_type)
   (preamble_type)

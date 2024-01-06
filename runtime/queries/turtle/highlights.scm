@@ -4,8 +4,8 @@
 
 [
   "_:"
-  "<" 
-  ">" 
+  "<"
+  ">"
   (namespace)
 ] @module
 
@@ -52,7 +52,12 @@
 
 (echar) @string.escape
 
-
-(rdf_literal 
+(rdf_literal
   "^^" @type
-	datatype: (_ ["<" ">" (namespace)] @type) @type)
+  datatype:
+    (_
+      [
+        "<"
+        ">"
+        (namespace)
+      ] @type) @type)

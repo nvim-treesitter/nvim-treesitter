@@ -1,6 +1,7 @@
-;; Definitions
+; Definitions
 (variable_declarator
-  . (identifier) @local.definition.var)
+  .
+  (identifier) @local.definition.var)
 
 (variable_declarator
   (tuple_pattern
@@ -13,8 +14,9 @@
   left: (identifier) @local.definition.var)
 
 (for_each_statement
-  left: (tuple_pattern
-    (identifier) @local.definition.var))
+  left:
+    (tuple_pattern
+      (identifier) @local.definition.var))
 
 (parameter
   (identifier) @local.definition.parameter)
@@ -34,8 +36,8 @@
 (class_declaration
   name: (identifier) @local.definition)
 
-;; References
+; References
 (identifier) @local.reference
 
-;; Scope
+; Scope
 (block) @local.scope

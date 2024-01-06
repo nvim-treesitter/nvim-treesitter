@@ -1,28 +1,42 @@
 (None) @constant.builtin
+
 (asset_path) @string.special.url
+
 (attribute_property) @property
+
 (bool) @boolean
+
 (comment) @comment @spell
+
 (custom) @function.builtin
+
 (float) @number.float
+
 (integer) @number
+
 (orderer) @function.call
+
 (prim_path) @string.special
+
 (relationship_type) @type
+
 (string) @string
+
 (uniform) @function.builtin
+
 (variant_set_definition) @keyword
 
-;; Prefer namespace highlighting, if any.
-;;
-;; e.g. `rel fizz` - `fizz` uses `@identifier`
-;; e.g. `rel foo:bar:fizz` - `foo` and `bar` use `@module` and `fizz` uses `@identifier`
-;;
+; Prefer namespace highlighting, if any.
+;
+; e.g. `rel fizz` - `fizz` uses `@identifier`
+; e.g. `rel foo:bar:fizz` - `foo` and `bar` use `@module` and `fizz` uses `@identifier`
+;
 (identifier) @variable
+
 (namespace_identifier) @module
+
 (namespace_identifier
-  (identifier) @module
-)
+  (identifier) @module)
 
 [
   "class"
@@ -30,16 +44,26 @@
   "over"
 ] @keyword.function
 
-["(" ")" "[" "]" "{" "}"] @punctuation.bracket
-[":" ";" "."] @punctuation.delimiter
+[
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+] @punctuation.bracket
 
 [
-  "="
-] @operator
+  ":"
+  ";"
+  "."
+] @punctuation.delimiter
+
+"=" @operator
 
 (attribute_type) @type
-(
- (attribute_type) @type.builtin
+
+((attribute_type) @type.builtin
   ;format-ignore
   (#any-of? @type.builtin
     ;; Reference: https://openusd.org/release/api/sdf_page_front.html
@@ -98,8 +122,7 @@
     "Transform" "Transform[]"
     "Vec3f" "Vec3f[]"))
 
-(
- (identifier) @keyword
+((identifier) @keyword
   ; format-ignore
   (#any-of? @keyword
     ; Reference: https://openusd.org/release/api/sdf_page_front.html
@@ -159,20 +182,12 @@
     ; Prim metadata
     "instanceable"))
 
-;; Common attribute metadata
-(
- (layer_offset
+; Common attribute metadata
+((layer_offset
   (identifier) @keyword
-  (#any-of? @keyword
+  (#any-of? @keyword "offset" "scale")))
 
-   "offset"
-   "scale"
-  )
- )
-)
-
-;; Docstrings in USD
+; Docstrings in USD
 (metadata
- (comment)*
- (string) @comment.documentation
-)
+  (comment)*
+  (string) @comment.documentation)

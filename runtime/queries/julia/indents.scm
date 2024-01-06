@@ -2,7 +2,6 @@
   (struct_definition)
   (macro_definition)
   (function_definition)
-
   (compound_statement)
   (if_statement)
   (try_statement)
@@ -11,13 +10,10 @@
   (let_statement)
   (quote_statement)
   (do_clause)
-
   (assignment)
   (for_binding)
-
   (call_expression)
   (parenthesized_expression)
-
   (tuple_expression)
   (comprehension_expression)
   (matrix_expression)

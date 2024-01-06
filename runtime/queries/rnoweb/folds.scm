@@ -1,3 +1,1 @@
-[
- (rchunk)
-] @fold
+(rchunk) @fold

@@ -1,5 +1,5 @@
 [
- (object)
- (array)
- (assign_block)
+  (object)
+  (array)
+  (assign_block)
 ] @fold

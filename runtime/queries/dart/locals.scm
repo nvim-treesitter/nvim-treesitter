@@ -1,5 +1,4 @@
-;; Definitions
-
+; Definitions
 (function_signature
   name: (identifier) @local.definition.function)
 
@@ -15,20 +14,19 @@
 (static_final_declaration
   (identifier) @local.definition.var)
 
-;; References
-
+; References
 (identifier) @local.reference
 
-;; Scopes
-
+; Scopes
 (class_definition
   body: (_) @local.scope)
+
 [
- (block)
- (if_statement)
- (for_statement)
- (while_statement)
- (try_statement)
- (catch_clause)
- (finally_clause)
+  (block)
+  (if_statement)
+  (for_statement)
+  (while_statement)
+  (try_statement)
+  (catch_clause)
+  (finally_clause)
 ] @local.scope

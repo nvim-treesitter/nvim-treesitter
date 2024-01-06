@@ -1,4 +1,5 @@
 (block) @local.scope
+
 (variable_definition_statement
   name: (identifier) @local.definition)
 

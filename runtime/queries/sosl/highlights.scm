@@ -1,10 +1,12 @@
 (find_clause
-          (term) @string )
+  (term) @string)
 
 (sobject_return
-        (identifier) @type )
+  (identifier) @type)
 
-(with_type (_ "=" @operator))
+(with_type
+  (_
+    "=" @operator))
 
 [
   "ALL"

@@ -1,14 +1,17 @@
-(option . _ @keyword)
+(option
+  .
+  _ @keyword)
 
 (option
   ("no-" @variable.parameter)?
   (name) @variable.parameter)
 
-(string (content) @string)
+(string
+  (content) @string)
 
 [
- (value)
- "clear"
+  (value)
+  "clear"
 ] @string.special
 
 (url) @string.special.url
@@ -16,9 +19,9 @@
 (key) @constant
 
 [
- (number)
- (expire_time)
- (iso_time)
+  (number)
+  (expire_time)
+  (iso_time)
 ] @number
 
 (format) @character.special
@@ -34,14 +37,18 @@
 (filter_value) @string
 
 [
- (filter_op0)
- (filter_op1)
- (filter_lc)
- "="
+  (filter_op0)
+  (filter_op1)
+  (filter_lc)
+  "="
 ] @operator
 
 "!" @punctuation.special
 
-[ "\"" "'" "," ] @punctuation.delimiter
+[
+  "\""
+  "'"
+  ","
+] @punctuation.delimiter
 
 (comment) @comment @spell

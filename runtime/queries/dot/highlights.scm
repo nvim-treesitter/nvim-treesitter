@@ -10,6 +10,7 @@
 ] @keyword
 
 (string_literal) @string
+
 (number_literal) @number
 
 [
@@ -32,19 +33,19 @@
 ] @punctuation.bracket
 
 (subgraph
-  id: (id
-    (identifier) @module)
-)
+  id:
+    (id
+      (identifier) @module))
 
 (attribute
-  name: (id
-    (identifier) @variable.member)
-)
+  name:
+    (id
+      (identifier) @variable.member))
 
 (attribute
-  value: (id
-    (identifier) @constant)
-)
+  value:
+    (id
+      (identifier) @constant))
 
 (comment) @comment
 

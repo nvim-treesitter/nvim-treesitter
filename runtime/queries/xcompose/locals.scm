@@ -1,3 +1,5 @@
-(result (keysym) @local.definition)
+(result
+  (keysym) @local.definition)
 
-(event (keysym) @local.reference)
+(event
+  (keysym) @local.reference)

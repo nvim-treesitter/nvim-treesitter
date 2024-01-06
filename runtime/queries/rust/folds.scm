@@ -8,10 +8,8 @@
   (impl_item)
   (type_item)
   (union_item)
-
   (use_declaration)
   (let_declaration)
-
   (loop_expression)
   (for_expression)
   (while_expression)
@@ -19,9 +17,7 @@
   (match_expression)
   (call_expression)
   (array_expression)
-
   (macro_definition)
   (macro_invocation)
-
   (attribute_item)
 ] @fold

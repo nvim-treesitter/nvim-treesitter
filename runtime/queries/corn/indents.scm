@@ -1,14 +1,24 @@
 [
- (assign_block "{")
- (object)
- (array)
+  (assign_block
+    "{")
+  (object)
+  (array)
 ] @indent.begin
 
-(assign_block "}" @indent.branch)
-(assign_block "}" @indent.end)
+(assign_block
+  "}" @indent.branch)
 
-(object "}" @indent.branch)
-(object "}" @indent.end)
+(assign_block
+  "}" @indent.end)
 
-(array "]" @indent.branch)
-(array "]" @indent.end)
+(object
+  "}" @indent.branch)
+
+(object
+  "}" @indent.end)
+
+(array
+  "]" @indent.branch)
+
+(array
+  "]" @indent.end)

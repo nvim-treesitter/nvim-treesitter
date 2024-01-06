@@ -1,12 +1,14 @@
 ; inherits: c
-
-;; Parameters
+; Parameters
 (variadic_parameter_declaration
-  declarator: (variadic_declarator
-                (identifier) @local.definition.parameter))
+  declarator:
+    (variadic_declarator
+      (identifier) @local.definition.parameter))
+
 (optional_parameter_declaration
   declarator: (identifier) @local.definition.parameter)
-;; Class / struct definitions
+
+; Class / struct definitions
 (class_specifier) @local.scope
 
 (reference_declarator
@@ -16,8 +18,9 @@
   (identifier) @local.definition.var)
 
 (struct_specifier
-  name: (qualified_identifier
-          name: (type_identifier) @local.definition.type))
+  name:
+    (qualified_identifier
+      name: (type_identifier) @local.definition.type))
 
 (class_specifier
   name: (type_identifier) @local.definition.type)
@@ -26,8 +29,9 @@
   name: (identifier) @local.definition.type)
 
 (class_specifier
-  name: (qualified_identifier
-          name: (type_identifier) @local.definition.type))
+  name:
+    (qualified_identifier
+      name: (type_identifier) @local.definition.type))
 
 (alias_declaration
   name: (type_identifier) @local.definition.type)
@@ -35,9 +39,10 @@
 ;template <typename T>
 (type_parameter_declaration
   (type_identifier) @local.definition.type)
+
 (template_declaration) @local.scope
 
-;; Namespaces
+; Namespaces
 (namespace_definition
   name: (namespace_identifier) @local.definition.namespace
   body: (_) @local.scope)
@@ -47,9 +52,9 @@
   body: (_) @local.scope)
 
 ((namespace_identifier) @local.reference
-                        (#set! reference.kind "namespace"))
+  (#set! reference.kind "namespace"))
 
-;; Function definitions
+; Function definitions
 (template_function
   name: (identifier) @local.definition.function) @local.scope
 
@@ -57,16 +62,18 @@
   name: (field_identifier) @local.definition.method) @local.scope
 
 (function_declarator
-  declarator: (qualified_identifier
-                name: (identifier) @local.definition.function)) @local.scope
+  declarator:
+    (qualified_identifier
+      name: (identifier) @local.definition.function)) @local.scope
 
 (field_declaration
-  declarator: (function_declarator
-                (field_identifier) @local.definition.method))
+  declarator:
+    (function_declarator
+      (field_identifier) @local.definition.method))
 
 (lambda_expression) @local.scope
 
-;; Control structures
+; Control structures
 (try_statement
   body: (_) @local.scope)
 

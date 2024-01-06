@@ -1,5 +1,4 @@
 ; Namespaces
-
 [
   "re2c"
   "re2c"
@@ -8,14 +7,12 @@
 ] @module
 
 ; Includes
-
 [
   "!use"
   "!include"
 ] @keyword.import
 
 ; Keywords
-
 [
   "flags"
   "define"
@@ -52,7 +49,6 @@
 ] @keyword.repeat
 
 ; Constants
-
 [
   "ignore"
   "substitute"
@@ -71,7 +67,6 @@
 (linedir) @constant.macro
 
 ; Operators
-
 [
   "="
   "=>"
@@ -95,9 +90,7 @@
 (condition
   (any) @constant.macro)
 
-
 ; Names
-
 (name) @type
 
 (block_name) @constant
@@ -107,7 +100,7 @@
 (option_name) @constant.builtin
 
 ((option_name) @constant.macro
- (#match? @constant.macro "^YY"))
+  (#match? @constant.macro "^YY"))
 
 (field_expression
   argument: (identifier) @variable)
@@ -115,7 +108,6 @@
 (field_identifier) @property
 
 ; Literals
-
 (regex) @string.regexp
 
 [
@@ -142,7 +134,6 @@
 ] @property
 
 ; Configurations
-
 (define
   option: (option_name) @_yy
   value: (dstring) @type
@@ -155,7 +146,6 @@
 (host_lang) @none
 
 ; Punctuation
-
 [
   ":"
   ";"
@@ -164,15 +154,22 @@
 ] @punctuation.delimiter
 
 [
-  "{" "}"
-  "[" "]"
-  "(" ")"
-  "<" ">"
+  "{"
+  "}"
+  "["
+  "]"
+  "("
+  ")"
+  "<"
+  ">"
 ] @punctuation.bracket
 
 (repetition
   (limits
-    ["{" "}"] @punctuation.bracket))
+    [
+      "{"
+      "}"
+    ] @punctuation.bracket))
 
 [
   "!"
@@ -181,7 +178,6 @@
 ] @punctuation.special
 
 ; Comments and error
-
 [
   (comment)
   (ignore_block)

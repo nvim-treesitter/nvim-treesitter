@@ -1,7 +1,5 @@
-(
-  [
-    (conditional)
-    (rule)
-  ] @fold
-  (#trim! @fold)
-)
+([
+  (conditional)
+  (rule)
+] @fold
+  (#trim! @fold))

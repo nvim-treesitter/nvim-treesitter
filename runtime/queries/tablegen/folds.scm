@@ -8,6 +8,6 @@
   (defvar)
   (foreach)
   (if)
-  (let) 
+  (let)
   (value_suffix)
 ] @fold

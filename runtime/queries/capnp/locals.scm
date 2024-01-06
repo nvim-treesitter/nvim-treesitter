@@ -18,17 +18,21 @@
   (extend_type)
   (field_type)
 ] @local.reference
-(custom_type (type_identifier) @local.reference)
+
+(custom_type
+  (type_identifier) @local.reference)
+
 (custom_type
   (generics
-    (generic_parameters 
+    (generic_parameters
       (generic_identifier) @local.reference)))
 
 (annotation_definition_identifier) @local.definition
 
 (const_identifier) @local.definition.constant
 
-(enum (enum_identifier) @local.definition.enum)
+(enum
+  (enum_identifier) @local.definition.enum)
 
 [
   (enum_member)
@@ -44,16 +48,19 @@
   (return_identifier)
 ] @local.definition.parameter
 
-(group (type_identifier) @local.definition.type)
+(group
+  (type_identifier) @local.definition.type)
 
-(struct (type_identifier) @local.definition.type)
+(struct
+  (type_identifier) @local.definition.type)
 
-(union (type_identifier) @local.definition.type)
+(union
+  (type_identifier) @local.definition.type)
 
-(interface (type_identifier) @local.definition.type)
+(interface
+  (type_identifier) @local.definition.type)
 
 ; Generics Related (don't know how to combine these)
-
 (struct
   (generics
     (generic_parameters

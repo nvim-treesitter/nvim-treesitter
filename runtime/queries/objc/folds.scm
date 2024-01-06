@@ -1,5 +1,4 @@
 ; inherits: c
-
 [
   (class_declaration)
   (class_interface)

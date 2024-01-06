@@ -5,7 +5,7 @@
 
 ; Module Definitions
 (call
-  target: 
+  target:
     ((identifier) @_identifier
       (#eq? @_identifier "defmodule"))
   (arguments

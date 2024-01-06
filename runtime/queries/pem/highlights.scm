@@ -1,4 +1,7 @@
-["BEGIN" "END"] @keyword
+[
+  "BEGIN"
+  "END"
+] @keyword
 
 (dashes) @punctuation.delimiter
 
