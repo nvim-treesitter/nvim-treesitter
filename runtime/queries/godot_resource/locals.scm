@@ -1,3 +1,1 @@
-[
-  (section)
-] @local.scope
+(section) @local.scope

@@ -1,4 +1,5 @@
-(help_text (text) @indent.auto)
+(help_text
+  (text) @indent.auto)
 
 [
   (config)

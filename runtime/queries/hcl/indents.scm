@@ -12,4 +12,5 @@
 ] @indent.branch @indent.end
 
 (comment) @indent.auto
+
 (ERROR) @indent.auto

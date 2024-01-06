@@ -27,4 +27,4 @@
 
 ; HEEx comments
 ((comment) @injection.content
- (#set! injection.language "comment"))
+  (#set! injection.language "comment"))

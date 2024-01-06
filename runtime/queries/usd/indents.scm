@@ -11,14 +11,29 @@
   (variant_set_definition)  ; The {}s in `variantSet "foo" = { "vr1" { ... } "vr2" { ... } }`
 ] @indent.begin
 
-(block "}" @indent.end)
-(dictionary "}" @indent.end)
-(list "]" @indent.end)
-(list_proxy "]" @indent.end)
-(metadata ")" @indent.end)
-(timeSamples "}" @indent.end)
-(tuple ")" @indent.end)
-(variant_set_definition "}" @indent.end)
+(block
+  "}" @indent.end)
+
+(dictionary
+  "}" @indent.end)
+
+(list
+  "]" @indent.end)
+
+(list_proxy
+  "]" @indent.end)
+
+(metadata
+  ")" @indent.end)
+
+(timeSamples
+  "}" @indent.end)
+
+(tuple
+  ")" @indent.end)
+
+(variant_set_definition
+  "}" @indent.end)
 
 [
   ")"

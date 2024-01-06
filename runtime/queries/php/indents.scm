@@ -18,19 +18,21 @@
   "]"
 ] @indent.branch
 
-[
-  (comment)
-] @indent.auto
+(comment) @indent.auto
 
-(compound_statement "}" @indent.end)
+(compound_statement
+  "}" @indent.end)
 
 (ERROR
   "(" @indent.align
-  . (_)
+  .
+  (_)
   (#set! indent.open_delimiter "(")
   (#set! indent.close_delimiter ")"))
+
 (ERROR
   "[" @indent.align
-  . (_)
+  .
+  (_)
   (#set! indent.open_delimiter "[")
   (#set! indent.close_delimiter "]"))

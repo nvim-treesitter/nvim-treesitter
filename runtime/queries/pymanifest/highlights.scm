@@ -9,11 +9,16 @@
 (char_sequence) @string.special
 
 (char_sequence
-  [ "[" "]" ] @punctuation.bracket)
+  [
+    "["
+    "]"
+  ] @punctuation.bracket)
 
-(char_sequence "!" @operator)
+(char_sequence
+  "!" @operator)
 
-(char_range "-" @operator)
+(char_range
+  "-" @operator)
 
 (escaped_char) @string.escape
 

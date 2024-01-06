@@ -1,7 +1,13 @@
 (program) @local.scope
-(program (named_node) @local.scope)
-(program (anonymous_node) @local.scope)
-(program (grouping) @local.scope)
+
+(program
+  (named_node) @local.scope)
+
+(program
+  (anonymous_node) @local.scope)
+
+(program
+  (grouping) @local.scope)
 
 (identifier) @local.reference
 

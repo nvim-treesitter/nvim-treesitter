@@ -1,5 +1,4 @@
 ; Use directive
-
 (use_clause
   [
     (type_name)
@@ -7,7 +6,6 @@
   ] @type)
 
 ; Buitin constants and Keywords
-
 [
   "true"
   "false"
@@ -33,11 +31,10 @@
 "def" @keyword.function
 
 ; Members of declaration
-
 [
- "include"
- "extend"
- "prepend"
+  "include"
+  "extend"
+  "prepend"
 ] @function.method
 
 (visibility) @type.qualifier
@@ -47,30 +44,47 @@
 (method_member
   (method_name
     [
-     (identifier)
-     (constant)
-     (operator)
-     (setter)
+      (identifier)
+      (constant)
+      (operator)
+      (setter)
     ] @function.method))
 
-[(ivar_name) (cvar_name)] @property
+[
+  (ivar_name)
+  (cvar_name)
+] @property
 
-(alias_member (method_name) @function)
+(alias_member
+  (method_name) @function)
 
-(class_name (constant) @type)
-(module_name (constant) @type)
-(interface_name (interface) @type)
-(alias_name (identifier) @type)
+(class_name
+  (constant) @type)
+
+(module_name
+  (constant) @type)
+
+(interface_name
+  (interface) @type)
+
+(alias_name
+  (identifier) @type)
+
 (type_variable) @constant
-(namespace (constant) @module)
+
+(namespace
+  (constant) @module)
 
 (builtin_type) @type.builtin
 
-(const_name (constant) @constant)
+(const_name
+  (constant) @constant)
+
 (global_name) @property
 
 ; Standard Arguments
-(parameter (var_name) @variable.parameter)
+(parameter
+  (var_name) @variable.parameter)
 
 ; Keyword Arguments
 (keyword) @variable.parameter
@@ -79,39 +93,42 @@
 (self) @variable.builtin
 
 ; Literal
-(type (symbol_literal) @string.special.symbol)
+(type
+  (symbol_literal) @string.special.symbol)
 
-(type (string_literal (escape_sequence) @string.escape))
-(type (string_literal) @string)
+(type
+  (string_literal
+    (escape_sequence) @string.escape))
 
-(type (integer_literal) @number)
+(type
+  (string_literal) @string)
+
+(type
+  (integer_literal) @number)
 
 ; Operators
-
 [
- "="
- "->"
- "<"
- "**"
- "*"
- "&"
- "|"
- "^"
- ] @operator
+  "="
+  "->"
+  "<"
+  "**"
+  "*"
+  "&"
+  "|"
+  "^"
+] @operator
 
 ; Punctuation
+[
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+] @punctuation.bracket
 
 [
- "("
- ")"
- "["
- "]"
- "{"
- "}"
- ] @punctuation.bracket
-
-
-[
- ","
- "."
- ] @punctuation.delimiter
+  ","
+  "."
+] @punctuation.delimiter

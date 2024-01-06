@@ -1,5 +1,4 @@
 ; inherits: cpp
-
 [
   "in"
   "out"
@@ -26,10 +25,13 @@
   "triangle"
 ] @type.qualifier
 
-(
-  (identifier) @variable.builtin
-  (#lua-match? @variable.builtin "^SV_")
-)
+((identifier) @variable.builtin
+  (#lua-match? @variable.builtin "^SV_"))
 
 (hlsl_attribute) @attribute
-(hlsl_attribute ["[" "]"] @attribute)
+
+(hlsl_attribute
+  [
+    "["
+    "]"
+  ] @attribute)

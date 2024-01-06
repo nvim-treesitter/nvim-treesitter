@@ -18,22 +18,25 @@
 (when_expression
   (field_list
     (dotted_identifier
-      (identifier) @property )))
+      (identifier) @property)))
 
 (else_expression
   (field_list
-    (identifier) @property ))
+    (identifier) @property))
 
 (else_expression
   (field_list
     (dotted_identifier
-      (identifier) @property )))
+      (identifier) @property)))
 
 (alias_expression
   (identifier) @label)
 
 (storage_identifier) @keyword.storage
-(_ function_name: (identifier) @function)
+
+(_
+  function_name: (identifier) @function)
+
 (date_literal) @string.special
 
 [
@@ -62,17 +65,25 @@
   ">="
 ] @operator
 
-(value_comparison_operator  [ "<" ">" ] @operator)
+(value_comparison_operator
+  [
+    "<"
+    ">"
+  ] @operator)
 
-(set_comparison_operator "IN" @keyword.operator)
+(set_comparison_operator
+  "IN" @keyword.operator)
 
 [
   (int)
   (decimal)
   (currency_literal)
 ] @number
+
 (string_literal) @string
+
 (date) @variable.readonly
+
 (date_time) @variable.readonly
 
 [
@@ -146,5 +157,3 @@
   "User_Mode"
   "UserId"
 ] @keyword
-
-

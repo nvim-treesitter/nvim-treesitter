@@ -1,11 +1,9 @@
-;; Scopes
-
+; Scopes
 (document) @local.scope
 
 (directive) @local.scope
 
-;; Definitions
-
+; Definitions
 (title) @local.definition
 
 (substitution_definition
@@ -26,15 +24,16 @@
 ; The role directive can define a new role
 ((directive
   name: (type) @_type
-  body: (body (arguments) @local.definition))
- (#eq? @_type "role"))
+  body:
+    (body
+      (arguments) @local.definition))
+  (#eq? @_type "role"))
 
-;; References
-
+; References
 [
- (substitution_reference)
- (footnote_reference)
- (citation_reference)
- (reference)
- (role)
+  (substitution_reference)
+  (footnote_reference)
+  (citation_reference)
+  (reference)
+  (role)
 ] @local.reference

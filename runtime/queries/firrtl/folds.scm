@@ -1,6 +1,6 @@
 [
- (circuit)
- (module)
- (when)
- (else)
+  (circuit)
+  (module)
+  (when)
+  (else)
 ] @fold

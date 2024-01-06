@@ -1,5 +1,4 @@
 ; Keywords
-
 [
   "@module"
   "@package"
@@ -29,13 +28,17 @@
   (diagnostic_identifier)
 ] @keyword
 
-[
-  "@async"
-] @keyword.coroutine
+"@async" @keyword.coroutine
 
-(language_injection "@language" (identifier) @keyword)
+(language_injection
+  "@language"
+  (identifier) @keyword)
 
-(function_type ["fun" "function"] @keyword.function)
+(function_type
+  [
+    "fun"
+    "function"
+  ] @keyword.function)
 
 (source_annotation
   filename: (identifier) @string.special.path
@@ -44,12 +47,9 @@
 (version_annotation
   version: _ @constant.builtin)
 
-[
-  "@return"
-] @keyword.return
+"@return" @keyword.return
 
 ; Qualifiers
-
 [
   "public"
   "protected"
@@ -59,9 +59,7 @@
   "@private"
 ] @type.qualifier
 
-
 ; Variables
-
 (identifier) @variable
 
 [
@@ -70,46 +68,56 @@
 ] @variable.builtin
 
 ; Macros
-
-(alias_annotation (identifier) @function.macro)
+(alias_annotation
+  (identifier) @function.macro)
 
 ; Parameters
+(param_annotation
+  (identifier) @variable.parameter)
 
-(param_annotation (identifier) @variable.parameter)
-
-(parameter (identifier) @variable.parameter)
+(parameter
+  (identifier) @variable.parameter)
 
 ; Fields
+(field_annotation
+  (identifier) @variable.member)
 
-(field_annotation (identifier) @variable.member)
+(table_literal_type
+  field: (identifier) @variable.member)
 
-(table_literal_type field: (identifier) @variable.member)
-
-(member_type ["#" "."] . (identifier) @variable.member)
+(member_type
+  [
+    "#"
+    "."
+  ]
+  .
+  (identifier) @variable.member)
 
 ; Types
-
-(table_type "table" @type.builtin)
+(table_type
+  "table" @type.builtin)
 
 (builtin_type) @type.builtin
 
-(class_annotation (identifier) @type)
+(class_annotation
+  (identifier) @type)
 
-(enum_annotation (identifier) @type)
+(enum_annotation
+  (identifier) @type)
 
-((array_type ["[" "]"] @type)
+((array_type
+  [
+    "["
+    "]"
+  ] @type)
   (#set! "priority" 105))
 
 (type) @type
 
 ; Operators
-
-[
-  "|"
-] @operator
+"|" @operator
 
 ; Literals
-
 (string) @module ; only used in @module
 
 (literal_type) @string
@@ -117,14 +125,25 @@
 (number) @number
 
 ; Punctuation
+[
+  "["
+  "]"
+] @punctuation.bracket
 
-[ "[" "]" ] @punctuation.bracket
+[
+  "{"
+  "}"
+] @punctuation.bracket
 
-[ "{" "}" ] @punctuation.bracket
+[
+  "("
+  ")"
+] @punctuation.bracket
 
-[ "(" ")" ] @punctuation.bracket
-
-[ "<" ">" ] @punctuation.bracket
+[
+  "<"
+  ">"
+] @punctuation.bracket
 
 [
   ","
@@ -139,7 +158,6 @@
 ] @punctuation.special
 
 ; Comments
-
 (comment) @comment @spell
 
 (at_comment
@@ -148,5 +166,6 @@
 
 (class_at_comment
   (identifier) @type
-  ("extends"? (identifier)? @type)
+  ("extends"?
+    (identifier)? @type)
   (_) @comment @spell)

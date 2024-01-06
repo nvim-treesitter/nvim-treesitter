@@ -12,7 +12,7 @@
 
 ; Surface blocks are highlighted as keywords
 [
-  (start_block) 
+  (start_block)
   (end_block)
   (subblock)
 ] @keyword
@@ -41,4 +41,4 @@
 (directive_name) @keyword
 
 ; Surface operators
-["="] @operator
+"=" @operator

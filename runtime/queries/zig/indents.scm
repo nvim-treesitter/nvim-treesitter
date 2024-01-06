@@ -5,7 +5,8 @@
   (InitList)
 ] @indent.begin
 
-(Block "}" @indent.end)
+(Block
+  "}" @indent.end)
 
 [
   "("

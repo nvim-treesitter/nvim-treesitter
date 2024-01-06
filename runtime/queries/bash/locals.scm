@@ -2,7 +2,7 @@
 (function_definition) @local.scope
 
 ; Definitions
-(variable_assignment 
+(variable_assignment
   name: (variable_name) @local.definition.var)
 
 (function_definition
@@ -10,4 +10,5 @@
 
 ; References
 (variable_name) @local.reference
+
 (word) @local.reference

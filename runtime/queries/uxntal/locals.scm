@@ -1,5 +1,4 @@
 ; Scopes
-
 [
   (program)
   (macro)
@@ -8,15 +7,15 @@
 ] @local.scope
 
 ; References
-
 (identifier) @local.reference
 
 ; Definitions
-
 (label
   "@"
-  . (identifier) @local.definition.function)
+  .
+  (identifier) @local.definition.function)
 
 (macro
   "%"
-  . (identifier) @local.definition.macro)
+  .
+  (identifier) @local.definition.macro)

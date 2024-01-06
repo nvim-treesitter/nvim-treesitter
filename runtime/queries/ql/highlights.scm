@@ -11,7 +11,6 @@
   "order"
   "select"
   "where"
-
   (predicate)
   (result)
   (specialId)
@@ -106,26 +105,43 @@
   "|"
 ] @punctuation.delimiter
 
-(moduleExpr (simpleId) @module)
-(module name: (moduleName) @module)
+(moduleExpr
+  (simpleId) @module)
 
-(dataclass name: (className) @type)
-(typeExpr name: (className) @type)
+(module
+  name: (moduleName) @module)
 
-(datatype name: (className) @type.definition)
+(dataclass
+  name: (className) @type)
 
-(importModuleExpr qualName: (simpleId) @variable)
+(typeExpr
+  name: (className) @type)
+
+(datatype
+  name: (className) @type.definition)
+
+(importModuleExpr
+  qualName: (simpleId) @variable)
+
 (varName) @variable
 
 (integer) @number
+
 (float) @number.float
 
 (string) @string
 
-(aritylessPredicateExpr (literalId) @function)
-(memberPredicate name: (predicateName) @function)
-(classlessPredicate name: (predicateName) @function)
-(charpred (className) @function)
+(aritylessPredicateExpr
+  (literalId) @function)
+
+(memberPredicate
+  name: (predicateName) @function)
+
+(classlessPredicate
+  name: (predicateName) @function)
+
+(charpred
+  (className) @function)
 
 [
   (line_comment)

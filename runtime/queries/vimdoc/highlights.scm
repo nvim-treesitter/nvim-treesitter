@@ -1,31 +1,58 @@
 (h1) @markup.heading.1
+
 (h2) @markup.heading.2
+
 (h3) @markup.heading.3
+
 (column_heading) @markup.heading.4
+
 (column_heading
-   "~" @markup.heading.4.marker (#set! conceal ""))
+  "~" @markup.heading.4.marker
+  (#set! conceal ""))
+
 (tag
-   "*" @markup.heading.5.marker (#set! conceal "")
-   text: (_) @label)
+  "*" @markup.heading.5.marker
+  (#set! conceal "")
+  text: (_) @label)
+
 (taglink
-   "|" @markup.link (#set! conceal "")
-   text: (_) @markup.link)
+  "|" @markup.link
+  (#set! conceal "")
+  text: (_) @markup.link)
+
 (optionlink
-   text: (_) @markup.link)
+  text: (_) @markup.link)
+
 (codespan
-   "`" @markup.raw (#set! conceal "")
-   text: (_) @markup.raw)
-((codeblock) @markup.raw.block (#set! "priority" 90))
+  "`" @markup.raw
+  (#set! conceal "")
+  text: (_) @markup.raw)
+
+((codeblock) @markup.raw.block
+  (#set! "priority" 90))
+
 (codeblock
-   [">" (language)] @markup.raw.block (#set! conceal ""))
+  [
+    ">"
+    (language)
+  ] @markup.raw.block
+  (#set! conceal ""))
+
 (block
-   "<" @markup.raw.block (#set! conceal ""))
+  "<" @markup.raw.block
+  (#set! conceal ""))
+
 (argument) @variable.parameter
+
 (keycode) @string.special
+
 (url) @string.special.url
+
 ((note) @comment.hint
-   (#any-of? @comment.hint "Note:" "NOTE:" "Notes:"))
+  (#any-of? @comment.hint "Note:" "NOTE:" "Notes:"))
+
 ((note) @comment.warning
-   (#any-of? @comment.warning "Warning:" "WARNING:"))
+  (#any-of? @comment.warning "Warning:" "WARNING:"))
+
 ((note) @comment.error
-   (#any-of? @comment.error "Deprecated:" "DEPRECATED:"))
+  (#any-of? @comment.error "Deprecated:" "DEPRECATED:"))

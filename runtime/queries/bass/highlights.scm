@@ -1,54 +1,56 @@
-;; Variables
+; Variables
+(list
+  (symbol) @variable)
 
-(list (symbol) @variable)
+(cons
+  (symbol) @variable)
 
-(cons (symbol) @variable)
+(scope
+  (symbol) @variable)
 
-(scope (symbol) @variable)
+(symbind
+  (symbol) @variable)
 
-(symbind (symbol) @variable)
-
-;; Constants
-
+; Constants
 ((symbol) @constant
   (#lua-match? @constant "^_*[A-Z][A-Z0-9_]*$"))
 
-;; Functions
+; Functions
+(list
+  .
+  (symbol) @function)
 
-(list 
-  . (symbol) @function)
-
-;; Namespaces
-
+; Namespaces
 (symbind
   (symbol) @module
-  . (keyword))
+  .
+  (keyword))
 
-;; Includes
-
+; Includes
 ((symbol) @keyword.import
   (#any-of? @keyword.import "use" "import" "load"))
 
-;; Keywords
-
+; Keywords
 ((symbol) @keyword
   (#any-of? @keyword "do" "doc"))
 
-;; Special Functions
-
+; Special Functions
 ; Keywords construct a symbol
-
 (keyword) @constructor
 
 ((list
-  . (symbol) @keyword.function
-  . (symbol) @function
+  .
+  (symbol) @keyword.function
+  .
+  (symbol) @function
   (symbol)? @variable.parameter)
   (#any-of? @keyword.function "def" "defop" "defn" "fn"))
 
 ((cons
-  . (symbol) @keyword.function
-  . (symbol) @function
+  .
+  (symbol) @keyword.function
+  .
+  (symbol) @function
   (symbol)? @variable.parameter)
   (#any-of? @keyword.function "def" "defop" "defn" "fn"))
 
@@ -58,33 +60,38 @@
 ((symbol) @function.macro
   (#any-of? @function.macro "op" "current-scope" "quote" "let" "provide" "module" "or" "and" "curryfn" "for" "$" "linux"))
 
-;; Conditionals
-
+; Conditionals
 ((symbol) @keyword.conditional
   (#any-of? @keyword.conditional "if" "case" "cond" "when"))
 
-;; Repeats
-
+; Repeats
 ((symbol) @keyword.repeat
   (#any-of? @keyword.repeat "each"))
 
-;; Operators
+; Operators
+((symbol) @operator
+  (#any-of? @operator "&" "*" "+" "-" "<" "<=" "=" ">" ">="))
 
-((symbol) @operator (#any-of? @operator "&" "*" "+" "-" "<" "<=" "=" ">" ">="))
+; Punctuation
+[
+  "("
+  ")"
+] @punctuation.bracket
 
-;; Punctuation
+[
+  "{"
+  "}"
+] @punctuation.bracket
 
-[ "(" ")" ] @punctuation.bracket
-
-[ "{" "}" ] @punctuation.bracket
-
-[ "[" "]" ] @punctuation.bracket
+[
+  "["
+  "]"
+] @punctuation.bracket
 
 ((symbol) @punctuation.delimiter
   (#eq? @punctuation.delimiter "->"))
 
-;; Literals
-
+; Literals
 (string) @string
 
 (escape_sequence) @string.escape
@@ -100,10 +107,7 @@
   (null)
 ] @constant.builtin
 
-[
-  "^"
-] @character.special
+"^" @character.special
 
-;; Comments
-
+; Comments
 (comment) @comment @spell
