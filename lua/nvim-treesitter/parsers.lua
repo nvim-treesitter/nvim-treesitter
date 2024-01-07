@@ -1326,6 +1326,7 @@ list.perl = {
 list.php = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-php",
+    location = "php",
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@tk-shirasaka" },
