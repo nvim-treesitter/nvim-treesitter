@@ -9,19 +9,6 @@ The main goal of `nvim-treesitter` is to provide a framework to easily install p
 
 Depending on which part of the plugin you want to contribute to, please read the appropriate section.
 
-## Style Checks and Tests
-
-We haven't implemented any functional tests yet. Feel free to contribute.
-However, we check code style with `luacheck` and `stylua`!
-Please install `luacheck` and activate our `pre-push` hook to automatically check style before
-every push:
-
-```bash
-luarocks install luacheck
-cargo install stylua
-ln -s ../../scripts/pre-push .git/hooks/pre-push
-```
-
 ## Parsers
 
 To add a new parser, edit the following files:
@@ -40,13 +27,15 @@ zimbu = {
     requires_generate_from_grammar = true, -- only needed if repo does not contain pre-generated src/parser.c
     generate_requires_npm = true, -- only needed if parser has npm dependencies
   },
-  maintainers = { '@me' }, -- the person who will be pinged about any issues with the parser or queries
+  maintainers = { '@me' }, -- the _query_ maintainers
   tier = 3, -- community-contributed parser
   -- optional entries:
   requires = { 'vim' }, -- if the queries inherit from another language
   readme_note = "an example language", -- if the 
 }
 ```
+
+**Note:** The "maintainers" here refers to the person maintaining the **queries** in `nvim-treesitter`, not the parser maintainers (who likely don't use Neovim). The maintainers' duty is to review issues and PRs related to the query and to keep them updated with respect to parser changes.
 
 2. In `lockfile.json`, add an entry for the current commit your queries are compatible with:
 
@@ -82,19 +71,15 @@ For now these are the types of queries used by `nvim-treesitter`:
 For these types there is a _norm_ you will have to follow so that features work fine.
 Here are some global advices:
 
-- If your language is listed [here](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages),
-  you can debug and experiment with your queries there.
-- If not, you should consider installing the [tree-sitter cli](https://github.com/tree-sitter/tree-sitter/tree/master/cli),
-  you should then be able to open a local playground using `tree-sitter build-wasm && tree-sitter web-ui` within the
-  parsers repo.
 - Examples of queries can be found in [runtime/queries/](runtime/queries/)
-- Matches in the bottom will override queries that are above of them.
+- Note that (unlike tree-sitter) all matching patterns are applied, with the last one determining the visible highlight.
+- If the [parser is included in `nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter/SUPPORTED_LANGUAGES.md`) and installed with `:TSInstall`, you can use Neovim's developer tools (`:checkhealth`, `:InspectTree`, `:EditQuery`, `:Inspect`) to test your queries.
 
-If the parser and queries are added to (a local checkout) of `nvim-treesitter` and installed via `:TSInstall`, you can test whether the queries are compatible by running `./scripts/check-queries.lua`.
+#### Inheriting languages
 
 If your language is an extension of a language (TypeScript is an extension of JavaScript for
 example), you can include the queries from your base language by adding the following _as the first
-line of your file_.
+line of your file_:
 
 ```query
 ; inherits: lang1,(optionallang)
@@ -102,6 +87,15 @@ line of your file_.
 
 If you want to inherit a language, but don't want the languages inheriting from yours to inherit it,
 you can mark the language as optional (by putting it between parenthesis).
+
+#### Formatting
+
+All queries are expected to follow a standard format, with every node on a single line and indented by two spaces for each level of nesting. You can automatically format the bundled queries by running the provided formatter `./scripts/format-queries.lua` on a single file (ending in `.scm`) or directory to format.
+
+Should you need to preserve a specific format for a node, you can exempt it (and all contained nodes) by placing before it
+```query
+; format-ignore
+```
 
 ### Highlights
 
@@ -322,7 +316,7 @@ Note that nvim-treesitter uses more specific subcaptures for definitions and
 @local.reference             ; identifier reference
 ```
 
-#### Definition Scope
+#### Definition scope
 
 You can set the scope of a definition by setting the `scope` property on the definition.
 
