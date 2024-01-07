@@ -1,5 +1,5 @@
 (raw_blck
-  (blob) @injection.shebang @injection.content)
+  (blob) @injection.content)
 
 (raw_blck
 	lang: (ident) @injection.language

@@ -1,82 +1,79 @@
-(call
-  item: (ident) @function)
-(call
-  item: (field field: (ident) @function.method))
-(tagged field: (ident) @tag)
-(field field: (ident) @tag)
-(comment) @comment
+;; All scopes: comments
+(comment) @comment @spell
 
-; CONTROL
-(let "let" @keyword.storage.type)
-(branch ["if" "else"] @keyword.control.conditional)
-(while "while" @keyword.control.repeat)
-(for ["for" "in"] @keyword.control.repeat)
-(import "import" @keyword.control.import)
-(as "as" @keyword.operator)
-(include "include" @keyword.control.import)
-(show "show" @keyword.control)
-(set "set" @keyword.control)
-(return "return" @keyword.control)
-(flow ["break" "continue"] @keyword.control)
-
-; OPERATOR
-(in ["in" "not"] @keyword.operator)
-(and "and" @keyword.operator)
-(or "or" @keyword.operator)
-(not "not" @keyword.operator)
-(sign ["+" "-"] @operator)
-(add "+" @operator)
-(sub "-" @operator)
-(mul "*" @operator)
-(div "/" @operator)
-(cmp ["==" "<=" ">=" "!=" "<" ">"] @operator)
-(fraction "/" @operator)
-(fac "!" @operator)
-(attach ["^" "_"] @operator)
-(wildcard) @operator
-
-; VALUE
-(raw_blck "```" @operator) @markup.raw.block
-(raw_span "`" @operator) @markup.raw.block
-(raw_blck lang: (ident) @tag)
-(label) @tag
-(ref) @tag
-(number) @constant.numeric
-(string) @string
-(content ["[" "]"] @operator)
-(bool) @constant.builtin.boolean
-(builtin) @constant.builtin
-(none) @constant.builtin
-(auto) @constant.builtin
-(ident) @variable
-(call
-  item: (builtin) @function.builtin)
-
-; MARKUP
-(item "-" @markup.list)
-(term ["/" ":"] @markup.list)
-(heading "=" @markup.heading.marker) @markup.heading.1
-(heading "==" @markup.heading.marker) @markup.heading.2
-(heading "===" @markup.heading.marker) @markup.heading.3
-(heading "====" @markup.heading.marker) @markup.heading.4
-(heading "=====" @markup.heading.marker) @markup.heading.5
-(heading "======" @markup.heading.marker) @markup.heading.6
-(url) @tag
-(emph) @markup.italic
-(strong) @markup.bold
-(symbol) @constant.character
-(shorthand) @constant.builtin
-(quote) @markup.quote
-(align) @operator
-(letter) @constant.character
-(linebreak) @constant.builtin
-
-(math "$" @operator)
-"#" @operator
-"end" @operator
-
-(escape) @constant.character.escape
+;; Code
+;; punctuation
+["#"] @punctuation.special
+[":" ";" ","] @punctuation.delimiter
 ["(" ")" "{" "}"] @punctuation.bracket
-["," ";" ".." ":" "sep"] @punctuation.delimiter
-"assign" @punctuation
-(field "." @punctuation)
+;; TODO: context blocks?
+[ "[" "]" ] @punctuation.bracket
+;; operators
+[
+ "-"
+ "+"
+ "*"
+ "/"
+
+ "=="
+ "!="
+ "<"
+ "<="
+ ">"
+ ">="
+
+ "="
+
+ "in"
+ "and"
+ "or"
+ "not"
+] @operator
+;; keywords
+[ "import" "include" ] @include
+[ "let" "set" "show" ] @keyword
+;; control flow
+[ "for" "while" "break" "continue" ] @repeat
+[ "if" "else" ] @conditional
+;; special case: #for (ident) in (expr)
+(for "in" @repeat)
+;; type literals
+(number) @number
+(string) @string
+(bool) @boolean
+;; identifiers
+(builtin) @namespace
+(ident) @identifier
+;; name-value pairs
+(tagged
+  field: (ident)) @field
+;; function definitions, calls, etc.
+;; TODO: support for functions such as #calc.cos, tree view appears as
+;; (call)
+;;  item: (field)
+;;   (builtin)
+;    field: (ident)
+(call
+  item: (builtin)) @function.builtin
+(call
+  item: (ident)) @function.call
+
+;; Text
+(heading) @text.title
+(text) @text
+(strong) @text.strong
+(emph) @text.emph
+(url) @text.uri
+;; code blocks
+(raw_span) @text.literal
+(raw_span
+  (blob)) @text.literal
+(raw_blck) @text.literal
+(raw_blck
+  (blob)) @text.literal.block
+;; refs and labels
+(label) @text.reference
+(ref) @text.reference
+
+;; Math
+(math) @text.math
