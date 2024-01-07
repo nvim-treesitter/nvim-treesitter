@@ -69,6 +69,8 @@ Here are some global advices:
 - Examples of queries can be found in [queries/](queries/)
 - Matches in the bottom will override queries that are above of them.
 
+#### Inheriting languages
+
 If your language is an extension of a language (TypeScript is an extension of JavaScript for
 example), you can include the queries from your base language by adding the following _as the first
 line of your file_.
@@ -79,6 +81,15 @@ line of your file_.
 
 If you want to inherit a language, but don't want the languages inheriting from yours to inherit it,
 you can mark the language as optional (by putting it between parenthesis).
+
+#### Formatting
+
+All queries are expected to follow a standard format, with every node on a single line and indented by two spaces for each level of nesting. You can automatically format the bundled queries by running the provided formatter `./scripts/format-queries.lua` on a single file (ending in `.scm`) or directory to format.
+
+Should you need to preserve a specific format for a node, you can exempt it (and all contained nodes) by placing before it
+```query
+; format-ignore
+```
 
 ### Highlights
 
@@ -170,7 +181,7 @@ As languages differ quite a lot, here is a set of captures available to you when
 
 #### Punctuation
 
-```scheme
+```query
 @punctuation.delimiter ; delimiters (e.g. `;` / `.` / `,`)
 @punctuation.bracket   ; brackets (e.g. `()` / `{}` / `[]`)
 @punctuation.special   ; special symbols (e.g. `{}` in string interpolation)
@@ -224,7 +235,7 @@ Mainly for markup languages.
 @diff.delta      ; changed text (for diff files)
 ```
 
-```scheme
+```query
 @tag           ; XML tag names
 @tag.attribute ; XML tag attributes
 @tag.delimiter ; XML tag delimiters
@@ -281,7 +292,7 @@ documentation](https://tree-sitter.github.io/tree-sitter/syntax-highlighting#loc
 Note that nvim-treesitter uses more specific subcaptures for definitions and
 **does not use locals for highlighting**.
 
-```scheme
+```query
 @local.definition            ; various definitions
 @local.definition.constant   ; constants
 @local.definition.function   ; functions
@@ -330,7 +341,7 @@ Possible scope values are:
 
 You can define folds for a given language by adding a `folds.scm` query :
 
-```scheme
+```query
 @fold ; fold this node
 ```
 
@@ -344,7 +355,7 @@ Some captures are related to language injection (like markdown code blocks). The
 If you want to dynamically detect the language (e.g. for Markdown blocks) use the `@injection.language` to capture
 the node describing the language and `@injection.content` to describe the injection region.
 
-```scheme
+```query
 @injection.language ; dynamic detection of the injection language (i.e. the text of the captured node describes the language)
 @injection.content  ; region for the dynamically detected language
 ```
@@ -368,7 +379,7 @@ To combine all matches of a pattern as one single block of content, add `(#set! 
 
 ### Indents
 
-```scheme
+```query
 @indent.begin       ; indent children when matching this node
 @indent.end         ; marks the end of indented block
 @indent.align       ; behaves like python aligned/hanging indent
