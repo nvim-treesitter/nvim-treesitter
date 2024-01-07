@@ -636,7 +636,7 @@
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
   },
   "templ": {
-    "revision": "64f3ded2bbc5cbc83f1b52bae1680a08fda435d5"
+    "revision": "f8fbc1558e45b72c05cd55a02907ba9bc0df505a"
   },
   "terraform": {
     "revision": "e135399cb31b95fac0760b094556d1d5ce84acf0"
@@ -651,7 +651,7 @@
     "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
   },
   "tlaplus": {
-    "revision": "aeb2e8fdc417c32ae7d1149cfa2a8ddc3b293600"
+    "revision": "aaf5bb5c1df0a6e583bb51efa519a9ac788b2ad8"
   },
   "todotxt": {
     "revision": "0207f6a4ab6aeafc4b091914d31d8235049a2578"
