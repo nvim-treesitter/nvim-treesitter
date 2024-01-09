@@ -266,10 +266,7 @@
 ] @boolean
 
 ((python_identifier) @variable.builtin
-  (#eq? @variable.builtin "self"))
-
-((python_identifier) @variable.builtin
-  (#eq? @variable.builtin "cls"))
+  (#any-of? @variable.builtin "self" "cls"))
 
 (integer) @number
 

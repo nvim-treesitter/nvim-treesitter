@@ -71,10 +71,9 @@
 "constructor" @constructor
 
 ; Fields
-[
-  (field_identifier)
-  (annotation_key)
-] @variable.member
+(field_identifier) @variable.member
+
+(annotation_key) @attribute
 
 ((field_identifier) @constant
   (#lua-match? @constant "^[%u_]*$"))

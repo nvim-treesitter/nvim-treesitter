@@ -1,5 +1,5 @@
-; Keywords
-(scheme) @keyword
+; Schemes
+(scheme) @type
 
 ; Methods
 (method) @function.method

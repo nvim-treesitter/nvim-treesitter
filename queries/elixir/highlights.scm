@@ -31,7 +31,7 @@
 (string) @string
 
 ; Modules
-(alias) @type
+(alias) @module
 
 ; Atoms & Keywords
 [

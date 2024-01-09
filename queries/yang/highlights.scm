@@ -51,8 +51,8 @@
 
 (keypath) @string.special.path
 
-; Always highlight the value of an enum statement as a string
-(enum_value) @string
+; Always highlight the value of an enum statement as a constant
+(enum_value) @constant
 
 ; Highlight xpath and pattern strings differently from plain strings
 (statement

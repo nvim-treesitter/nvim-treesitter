@@ -340,7 +340,7 @@
 (block_arg_list
   (value_use) @variable.parameter)
 
-(caret_id) @tag
+(caret_id) @string.special
 
 (value_use) @variable
 
