@@ -13,6 +13,7 @@
   "array"
   "at"
   "begin"
+  "body"
   "declare"
   "delay"
   "delta"
@@ -25,17 +26,26 @@
   "interface"
   "is"
   "limited"
+  "mod"
+  "new"
   "null"
   "of"
   "others"
   "out"
+  "overriding"
+  "package"
   "pragma"
   "private"
+  "protected"
   "range"
+  "record"
+  "separate"
+  "subtype"
   "synchronized"
   "tagged"
   "task"
   "terminate"
+  "type"
   "until"
   "when"
 ] @keyword
@@ -47,26 +57,13 @@
 ] @keyword.storage
 
 [
-  "mod"
-  "new"
-  "protected"
-  "record"
-  "subtype"
-  "type"
-] @keyword.type
-
-[
   "with"
   "use"
 ] @keyword.import
 
 [
-  "body"
   "function"
-  "overriding"
   "procedure"
-  "package"
-  "separate"
 ] @keyword.function
 
 [

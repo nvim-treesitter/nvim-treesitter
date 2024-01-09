@@ -25,7 +25,7 @@
 [
   "ENV"
   "CACHE"
-] @keyword.storage
+] @module
 
 [
   "$"

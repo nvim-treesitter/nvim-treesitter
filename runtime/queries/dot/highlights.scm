@@ -47,8 +47,6 @@
     (id
       (identifier) @constant))
 
-(comment) @comment
+(comment) @comment @spell
 
 (preproc) @keyword.directive
-
-(comment) @spell

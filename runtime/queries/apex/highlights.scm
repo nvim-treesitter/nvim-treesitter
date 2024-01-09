@@ -256,4 +256,4 @@
   "inherited_sharing"
 ] @keyword
 
-"System.runAs" @type.builtin
+"System.runAs" @function.builtin
