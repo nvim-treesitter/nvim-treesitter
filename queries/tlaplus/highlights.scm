@@ -1,7 +1,3 @@
-; ; Intended for consumption by nvim-treesitter
-; ; Default capture names for nvim-treesitter found here:
-; ; https://github.com/nvim-treesitter/nvim-treesitter/blob/e473630fe0872cb0ed97cd7085e724aa58bc1c84/lua/nvim-treesitter/highlight.lua#L14-L104
-; ; In this file, captures defined later take precedence over captures defined earlier
 ; Keywords
 [
   "ACTION"

@@ -314,5 +314,6 @@
   (comment)
   (line_number_directive)
   (directive)
-  (shebang)
 ] @comment @spell
+
+(shebang) @keyword.directive

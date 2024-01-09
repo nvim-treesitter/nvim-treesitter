@@ -150,9 +150,10 @@
 
 [
   (string)
-  (character_literal)
   (interpolated_string_expression)
 ] @string
+
+(character_literal) @character
 
 (symbol_literal) @string.special.symbol
 

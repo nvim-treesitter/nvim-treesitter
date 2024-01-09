@@ -37,6 +37,16 @@
     (subsection_name)
   ] @string.special)
 
+((section_header
+  (section_name) @_name
+  (subsection_name) @string.special.url)
+  (#any-of? @_name "credential" "url"))
+
+((variable
+  (name) @_name
+  value: (string) @string.special.url)
+  (#eq? @_name "insteadOf"))
+
 ; Punctuation
 [
   "["
