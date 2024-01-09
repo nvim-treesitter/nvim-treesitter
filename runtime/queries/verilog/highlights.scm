@@ -1,6 +1,7 @@
 ; Keywords
 [
-  ; block delimiters
+  "begin"
+  "end"
   (module_keyword)
   "endmodule"
   "program"
@@ -47,11 +48,6 @@
 ] @keyword.function
 
 "return" @keyword.return
-
-[
-  "begin"
-  "end"
-] @label
 
 [
   (always_keyword)
@@ -144,7 +140,7 @@
 
 (edge_identifier) @attribute
 
-(port_direction) @label
+(port_direction) @keyword.storage
 
 (port_identifier
   (simple_identifier) @variable)

@@ -82,12 +82,19 @@
   "as"
   "bring"
   "class"
-  "else"
-  "for"
-  "if"
-  "in"
   "let"
   "new"
-  "return"
   (inflight_specifier)
 ] @keyword
+
+[
+  "for"
+  "in"
+] @keyword.repeat
+
+[
+  "if"
+  "else"
+] @keyword.conditional
+
+"return" @keyword.return
