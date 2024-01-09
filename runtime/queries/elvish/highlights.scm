@@ -128,7 +128,7 @@
 
 ((variable
   (identifier) @function)
-  (#match? @function ".+\\~$"))
+  (#lua-match? @function ".+[~]$"))
 
 ((variable
   (identifier) @boolean)

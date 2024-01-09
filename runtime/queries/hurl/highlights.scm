@@ -52,11 +52,12 @@
   "retry"
   "retry-interval"
   "retry-max-count"
-  (variable_option
-    "variable")
   "verbose"
   "very-verbose"
 ] @constant.builtin
+
+(variable_option
+  "variable" @constant.builtin)
 
 (boolean) @boolean
 

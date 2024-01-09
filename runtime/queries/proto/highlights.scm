@@ -39,11 +39,12 @@
 (enum_field
   (identifier) @constant)
 
+(string) @string
+
 [
-  (string)
   "\"proto3\""
   "\"proto2\""
-] @string
+] @string.special
 
 (int_lit) @number
 

@@ -25,11 +25,11 @@
 
 ; For function calls
 (named_argument
-  name: (identifier) @property)
+  name: (identifier) @function.call)
 
 ; Methods
 (method_call
-  name: (method_name) @function.method)
+  name: (method_name) @function.method.call)
 
 ; Classes
 (class) @type
