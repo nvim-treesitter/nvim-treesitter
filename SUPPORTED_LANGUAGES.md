@@ -74,7 +74,7 @@ ecma (queries only)[^ecma] | core | `HFIJL` |  |  | @steelsojka
 [func](https://github.com/amaanq/tree-sitter-func) | core | `H    ` |  |  | @amaanq
 [fusion](https://gitlab.com/jirgn/tree-sitter-fusion.git) | community | `HFI L` |  |  | @jirgn
 [gdscript](https://github.com/PrestonKnopp/tree-sitter-gdscript)[^gdscript] | community | `HFIJL` |  |  | @PrestonKnopp
-[git_config](https://github.com/the-mikedavis/tree-sitter-git-config) | core | `HF   ` |  |  | @amaanq
+[git_config](https://github.com/the-mikedavis/tree-sitter-git-config) | core | `HF J ` |  |  | @amaanq
 [git_rebase](https://github.com/the-mikedavis/tree-sitter-git-rebase) | community | `H  J ` |  |  | @gbprod
 [gitattributes](https://github.com/ObserverOfTime/tree-sitter-gitattributes) | core | `H  JL` |  |  | @ObserverOfTime
 [gitcommit](https://github.com/gbprod/tree-sitter-gitcommit) | community | `H  J ` |  |  | @gbprod
