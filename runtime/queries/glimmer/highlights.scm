@@ -8,7 +8,7 @@
 ((tag_name) @constructor
   (#lua-match? @constructor "^%u"))
 
-(attribute_name) @property
+(attribute_name) @attribute
 
 (string_literal) @string
 

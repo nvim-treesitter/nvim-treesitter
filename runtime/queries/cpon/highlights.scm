@@ -16,7 +16,7 @@
   (_) @string.special)
 
 (_
-  key: (_) @label)
+  key: (_) @property)
 
 (number) @number
 

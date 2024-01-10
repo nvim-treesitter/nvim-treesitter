@@ -25,17 +25,17 @@
   "@" @variable.builtin)
 
 (class_parameter
-  (simple_identifier) @property)
+  (simple_identifier) @variable.member)
 
 (class_body
   (property_declaration
     (variable_declaration
-      (simple_identifier) @property)))
+      (simple_identifier) @variable.member)))
 
 ; id_1.id_2.id_3: `id_2` and `id_3` are assumed as object properties
 (_
   (navigation_suffix
-    (simple_identifier) @property))
+    (simple_identifier) @variable.member))
 
 ; SCREAMING CASE identifiers are assumed to be constants
 ((simple_identifier) @constant

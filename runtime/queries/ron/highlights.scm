@@ -3,7 +3,7 @@
 (enum_variant) @constant
 
 (struct_entry
-  (identifier) @property)
+  (identifier) @variable.member)
 
 (struct_entry
   (enum_variant

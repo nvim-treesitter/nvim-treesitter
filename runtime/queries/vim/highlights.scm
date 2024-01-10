@@ -257,7 +257,7 @@
 ] @label
 
 (literal_dictionary
-  (literal_key) @label)
+  (literal_key) @property)
 
 ((scoped_identifier
   (scope) @_scope
