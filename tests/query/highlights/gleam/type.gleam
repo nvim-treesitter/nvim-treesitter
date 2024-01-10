@@ -6,11 +6,11 @@ pub type Cat {
   Cat(name: String, cuteness: Int)
   // <- @constructor
   // ^ @punctuation.bracket
-  //  ^^^^ @property
+  //  ^^^^ @variable.member
   //      ^ @punctuation.delimiter
   //        ^^^^^^ @type.builtin
   //              ^ @punctuation.delimiter
-  //                ^^^^^^^^ @property
+  //                ^^^^^^^^ @variable.member
   //                        ^ @punctuation.delimiter
   //                          ^^^ @type.builtin
   //                             ^ @punctuation.bracket
@@ -20,11 +20,11 @@ fn cats() {
   Cat(name: "Nubi", cuteness: 2001)
   // <- @type
   // ^ @punctuation.bracket
-  //  ^^^^ @property
+  //  ^^^^ @variable.member
   //      ^ @punctuation.delimiter
   //        ^^^^^^ @string
   //              ^ @punctuation.delimiter
-  //                ^^^^^^^^ @property
+  //                ^^^^^^^^ @variable.member
   //                        ^ @punctuation.delimiter
   //                          ^^^^ @number
   //                              ^ @punctuation.bracket
@@ -47,7 +47,7 @@ type Box(inner_type) {
   Box(inner: inner_type)
   // <- @constructor
   // ^ @punctuation.bracket
-  //  ^^^^^ @property
+  //  ^^^^^ @variable.member
   //       ^ @punctuation.delimiter
   //         ^^^^^^^^^^ @type
   //                   ^ @punctuation.bracket
@@ -69,15 +69,15 @@ pub fn have_birthday(person) {
   //     ^^ @operator
   //       ^^^^^^ @variable
   //             ^ @punctuation.delimiter
-  //               ^^^ @property
+  //               ^^^ @variable.member
   //                  ^ @punctuation.delimiter
   //                    ^^^^^^ @variable
   //                          ^ @punctuation.delimiter
-  //                           ^^^ @property
+  //                           ^^^ @variable.member
   //                               ^ @operator
   //                                 ^ @number
   //                                  ^ @punctuation.delimiter
-  //                                    ^^^^^^^^ @property
+  //                                    ^^^^^^^^ @variable.member
   //                                            ^ @punctuation.delimiter
   //                                              ^^^^ @boolean
   //                                                  ^ @punctuation.bracket

@@ -6,11 +6,11 @@
 
 ; Properties
 ;-----------
-(property_identifier) @property
+(property_identifier) @variable.member
 
-(shorthand_property_identifier) @property
+(shorthand_property_identifier) @variable.member
 
-(private_property_identifier) @property
+(private_property_identifier) @variable.member
 
 (variable_declarator
   name:

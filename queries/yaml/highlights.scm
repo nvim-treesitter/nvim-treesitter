@@ -19,9 +19,10 @@
 
 (comment) @comment @spell
 
-(anchor_name) @type
-
-(alias_name) @type
+[
+  (anchor_name)
+  (alias_name)
+] @label
 
 (tag) @type
 
@@ -37,13 +38,13 @@
       [
         (double_quote_scalar)
         (single_quote_scalar)
-      ] @variable.member))
+      ] @property))
 
 (block_mapping_pair
   key:
     (flow_node
       (plain_scalar
-        (string_scalar) @variable.member)))
+        (string_scalar) @property)))
 
 (flow_mapping
   (_
@@ -52,14 +53,14 @@
         [
           (double_quote_scalar)
           (single_quote_scalar)
-        ] @variable.member)))
+        ] @property)))
 
 (flow_mapping
   (_
     key:
       (flow_node
         (plain_scalar
-          (string_scalar) @variable.member))))
+          (string_scalar) @property))))
 
 [
   ","

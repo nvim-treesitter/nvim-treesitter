@@ -110,7 +110,7 @@
 
 (type_identifier) @type
 
-(field_identifier) @property
+(field_identifier) @variable.member
 
 (identifier) @variable
 

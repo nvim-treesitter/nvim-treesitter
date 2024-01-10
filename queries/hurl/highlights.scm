@@ -1,5 +1,10 @@
 ; highlights.scm
 [
+  (key_string)
+  (json_key_string)
+] @property
+
+[
   "[QueryStringParams]"
   "[FormParams]"
   "[MultipartFormData]"
@@ -8,9 +13,7 @@
   "[Asserts]"
   "[Options]"
   "[BasicAuth]"
-  (key_string)
-  (json_key_string)
-] @property
+] @module
 
 [
   "\\"

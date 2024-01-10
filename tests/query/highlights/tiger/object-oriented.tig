@@ -21,7 +21,7 @@ let
   /*            ^ @keyword.operator */
 in
   object.a := 27;
-  /*     ^ @property */
+  /*     ^ @variable.member */
 
   object.meth()
   /*     ^ @function.method */

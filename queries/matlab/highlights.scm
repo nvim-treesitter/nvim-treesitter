@@ -86,14 +86,14 @@
 
 (superclass
   "."
-  (identifier) @property)
+  (identifier) @variable.member)
 
 (property_name
   "."
-  (identifier) @property)
+  (identifier) @variable.member)
 
 (property
-  name: (identifier) @property)
+  name: (identifier) @variable.member)
 
 ; Types
 (class_definition

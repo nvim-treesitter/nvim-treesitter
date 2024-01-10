@@ -229,10 +229,10 @@
 ; Properties
 (property_implementation
   "@synthesize"
-  (identifier) @property)
+  (identifier) @variable.member)
 
-((identifier) @property
-  (#has-ancestor? @property struct_declaration))
+((identifier) @variable.member
+  (#has-ancestor? @variable.member struct_declaration))
 
 ; Parameters
 (method_parameter

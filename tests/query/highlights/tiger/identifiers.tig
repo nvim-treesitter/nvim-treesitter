@@ -6,16 +6,16 @@ type int_array = array of int
 /*                        ^ @type.builtin */
 
 type record = {a: int, b: string}
-/*             ^ @property */
+/*             ^ @variable.member */
 /*                ^ @type.builtin */
-/*                     ^ @property */
+/*                     ^ @variable.member */
 /*                        ^ @type.builtin */
 
 var record := record {a = 12, b = "27"}
 /*  ^ @variable */
 /*            ^ @type */
-/*                    ^ @property */
-/*                            ^ @property */
+/*                    ^ @variable.member */
+/*                            ^ @variable.member */
 
 var array := int_array[12] of 27;
 /*  ^ @variable */
