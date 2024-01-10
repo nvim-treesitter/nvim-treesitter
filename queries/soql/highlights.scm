@@ -1,33 +1,33 @@
 (field_identifier
-  (identifier) @property)
+  (identifier) @variable.member)
 
 (field_identifier
   (dotted_identifier
-    (identifier) @property))
+    (identifier) @variable.member))
 
 (type_of_clause
-  (identifier) @property)
+  (identifier) @variable.member)
 
 (when_expression
   (identifier) @type)
 
 (when_expression
   (field_list
-    (identifier) @property))
+    (identifier) @variable.member))
 
 (when_expression
   (field_list
     (dotted_identifier
-      (identifier) @property)))
+      (identifier) @variable.member)))
 
 (else_expression
   (field_list
-    (identifier) @property))
+    (identifier) @variable.member))
 
 (else_expression
   (field_list
     (dotted_identifier
-      (identifier) @property)))
+      (identifier) @variable.member)))
 
 (alias_expression
   (identifier) @label)

@@ -85,16 +85,16 @@
 (deref_expression
   "."
   .
-  (identifier) @property)
+  (identifier) @variable.member)
 
 (member_declaration
-  (identifier) @property
+  (identifier) @variable.member
   .
   "=")
 
 ((table_slot
   .
-  (identifier) @property
+  (identifier) @variable.member
   .
   [
     "="

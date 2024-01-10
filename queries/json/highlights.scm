@@ -8,7 +8,7 @@
 (number) @number
 
 (pair
-  key: (string) @label)
+  key: (string) @property)
 
 (pair
   value: (string) @string)

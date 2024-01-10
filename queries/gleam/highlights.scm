@@ -128,20 +128,20 @@
   arguments:
     (arguments
       (argument
-        label: (label) @property)?))
+        label: (label) @variable.member)?))
 
 (record_pattern_argument
-  label: (label) @property)
+  label: (label) @variable.member)
 
 (record_update_argument
-  label: (label) @property)
+  label: (label) @variable.member)
 
 (field_access
   record: (identifier) @variable
-  field: (label) @property)
+  field: (label) @variable.member)
 
 (data_constructor_argument
-  (label) @property)
+  (label) @variable.member)
 
 ; Types
 [

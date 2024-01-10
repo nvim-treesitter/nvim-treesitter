@@ -76,13 +76,16 @@
 ((value_name) @function.builtin
   (#any-of? @function.builtin "raise" "raise_notrace" "failwith" "invalid_arg"))
 
-; Properties
-;-----------
+; Fields
+;-------
 [
-  (label_name)
   (field_name)
   (instance_variable_name)
-] @property
+] @variable.member
+
+; Labels
+; ------
+(label_name) @label
 
 ; Constants
 ;----------
@@ -306,7 +309,7 @@
 
 ; Attributes
 ;-----------
-(attribute_id) @property
+(attribute_id) @attribute
 
 ; Comments
 ;---------

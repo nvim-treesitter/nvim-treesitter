@@ -1,15 +1,15 @@
 class H {
   pub_field = "Hello";
-  //  ^ @property
+  //  ^ @variable.member
 
   #priv_field = "World!";
-  //   ^ @property
+  //   ^ @variable.member
 
   #private_method() {
     //  ^ @function.method
     return `${this.pub_field} -- ${this.#priv_field}`;
-    //                                      ^ @property
-    //                ^ @property
+    //                                      ^ @variable.member
+    //                ^ @variable.member
   }
 
   public_method() {

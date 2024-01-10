@@ -235,7 +235,7 @@
 
 ; Properties
 (derived_type_member_expression
-  (type_member) @property)
+  (type_member) @variable.member)
 
 ; Operators
 [

@@ -36,14 +36,14 @@
 (default_case
   "default" @keyword.conditional)
 
-; Properties
+; Attributes
 (attribute
-  name: (identifier) @property)
+  name: (identifier) @attribute)
 
 (attribute
   name:
     (variable
-      (identifier) @property))
+      (identifier) @attribute))
 
 ; Parameters
 (lambda

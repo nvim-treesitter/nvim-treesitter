@@ -2,7 +2,7 @@
 
 (reference_identifier) @variable
 
-(member_identifier) @property
+(member_identifier) @variable.member
 
 ; Classes
 (custom_type) @type
