@@ -9,16 +9,14 @@
 ; Top level directives (eg. configfile, include)
 (module
   (directive
-    name:
-      _ @keyword))
+    name: _ @keyword))
 
 ; Subordinate directives (eg. input, output)
 (_
   body:
     (_
       (directive
-        name:
-          _ @label)))
+        name: _ @label)))
 
 ; rule/module/checkpoint names
 (rule_definition

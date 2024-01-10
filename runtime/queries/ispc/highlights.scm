@@ -35,12 +35,10 @@
 "__regcall" @attribute
 
 (overload_declarator
-  name:
-    _ @function)
+  name: _ @function)
 
 (foreach_statement
-  range_operator:
-    _ @operator)
+  range_operator: _ @operator)
 
 (short_vector
   [

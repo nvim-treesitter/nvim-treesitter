@@ -64,8 +64,7 @@
   (word) @string)
 
 (command
-  argument:
-    "$" @string) ; bare dollar
+  argument: "$" @string) ; bare dollar
 
 [
   "if"
@@ -135,16 +134,13 @@
   ] @keyword.conditional.ternary)
 
 (binary_expression
-  operator:
-    _ @operator)
+  operator: _ @operator)
 
 (unary_expression
-  operator:
-    _ @operator)
+  operator: _ @operator)
 
 (postfix_expression
-  operator:
-    _ @operator)
+  operator: _ @operator)
 
 (function_definition
   name: (word) @function)
@@ -192,14 +188,12 @@
   "}" @punctuation.special) @none
 
 (expansion
-  operator:
-    _ @punctuation.special)
+  operator: _ @punctuation.special)
 
 (expansion
   "@"
   .
-  operator:
-    _ @character.special)
+  operator: _ @character.special)
 
 ((expansion
   (subscript

@@ -1,10 +1,8 @@
 (match
-  key:
-    _ @keyword)
+  key: _ @keyword)
 
 (assignment
-  key:
-    _ @property)
+  key: _ @property)
 
 (value) @string
 

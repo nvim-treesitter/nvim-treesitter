@@ -21,6 +21,5 @@
 
 ; Elixir pipelines are not indented, but other binary operator chains are
 ((binary_operator
-  operator:
-    _ @_operator) @indent.begin
+  operator: _ @_operator) @indent.begin
   (#not-eq? @_operator "|>"))

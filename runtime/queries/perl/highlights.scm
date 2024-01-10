@@ -55,16 +55,14 @@
 ] @keyword
 
 (_
-  operator:
-    _ @operator)
+  operator: _ @operator)
 
 "\\" @operator
 
 (yadayada) @keyword.exception
 
 (phaser_statement
-  phase:
-    _ @keyword.phaser)
+  phase: _ @keyword.phaser)
 
 [
   "or"
@@ -112,8 +110,7 @@
 ] @string.escape
 
 (_
-  modifiers:
-    _ @character.special)
+  modifiers: _ @character.special)
 
 [
   (quoted_regexp)
@@ -142,8 +139,7 @@
 (label) @label
 
 (statement_label
-  label:
-    _ @label)
+  label: _ @label)
 
 (relational_expression
   operator: "isa"
@@ -159,12 +155,10 @@
   invocant: (bareword) @type)
 
 (func0op_call_expression
-  function:
-    _ @function.builtin)
+  function: _ @function.builtin)
 
 (func1op_call_expression
-  function:
-    _ @function.builtin)
+  function: _ @function.builtin)
 
 ; this was a regex for the CLI
 ([

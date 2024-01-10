@@ -90,8 +90,7 @@
 
 ; Preprocessor
 (pp_define
-  lhs:
-    _ @constant.macro
+  lhs: _ @constant.macro
   (#set! "priority" 101))
 
 (_preprocessor_directive) @keyword.directive
@@ -109,8 +108,7 @@
 (export_type_attribute
   types:
     (fa
-      fun:
-        _ @type
+      fun: _ @type
       (#set! "priority" 101)))
 
 (behaviour_attribute) @keyword.import
@@ -121,8 +119,7 @@
 (wild_attribute
   name:
     (attr_name
-      name:
-        _ @attribute)) @attribute
+      name: _ @attribute)) @attribute
 
 ; Records
 (record_expr) @type
@@ -135,27 +132,21 @@
 
 (record_name
   "#" @type
-  name:
-    _ @type) @type
+  name: _ @type) @type
 
 (record_decl
-  name:
-    _ @type) @type.definition
+  name: _ @type) @type.definition
 
 (record_field
-  name:
-    _ @variable.member)
+  name: _ @variable.member)
 
 (record_field
-  name:
-    _ @variable.member
-  ty:
-    _ @type)
+  name: _ @variable.member
+  ty: _ @type)
 
 ; Type alias
 (type_alias
-  name:
-    _ @type) @type.definition
+  name: _ @type) @type.definition
 
 (spec) @type.definition
 

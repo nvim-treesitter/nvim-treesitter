@@ -22,12 +22,10 @@
   (word) @label)
 
 (unary_expression
-  operator:
-    _ @operator)
+  operator: _ @operator)
 
 (binary_expression
-  operator:
-    _ @operator)
+  operator: _ @operator)
 
 "?" @constant.builtin
 
@@ -68,12 +66,10 @@
   name: (word) @type)
 
 (effective_address
-  hint:
-    _ @type)
+  hint: _ @type)
 
 (effective_address
-  segment:
-    _ @constant.builtin)
+  segment: _ @constant.builtin)
 
 (register) @variable.builtin
 

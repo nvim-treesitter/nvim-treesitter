@@ -40,8 +40,7 @@ parameter: (IDENTIFIER) @variable.parameter
   (#lua-match? @constant "^%u[%u%d_]+$"))
 function: (IDENTIFIER) @function
 function_call: (IDENTIFIER) @function.call
-exception:
-  "!" @keyword.exception
+exception: "!" @keyword.exception
 
 ((IDENTIFIER) @variable.builtin
   (#eq? @variable.builtin "_"))

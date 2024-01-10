@@ -284,8 +284,7 @@
       (_)
       .
       (string
-        content:
-          _ @string.regexp)))
+        content: _ @string.regexp)))
 
 ; ("123"):match("%d+")
 (function_call
@@ -296,5 +295,4 @@
     (arguments
       .
       (string
-        content:
-          _ @string.regexp)))
+        content: _ @string.regexp)))

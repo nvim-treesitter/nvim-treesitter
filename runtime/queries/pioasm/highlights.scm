@@ -8,8 +8,7 @@
 (string) @string
 
 (instruction
-  opcode:
-    _ @function.call)
+  opcode: _ @function.call)
 
 [
   "pins"
@@ -91,5 +90,4 @@
   (identifier) @variable)
 
 (directive
-  directive:
-    _ @keyword.directive)
+  directive: _ @keyword.directive)

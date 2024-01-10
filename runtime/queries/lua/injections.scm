@@ -9,8 +9,7 @@
   arguments:
     (arguments
       (string
-        content:
-          _ @injection.content)))
+        content: _ @injection.content)))
   (#set! injection.language "c")
   (#eq? @_cdef_identifier "cdef"))
 
@@ -19,8 +18,7 @@
   arguments:
     (arguments
       (string
-        content:
-          _ @injection.content)))
+        content: _ @injection.content)))
   (#set! injection.language "vim")
   (#any-of? @_vimcmd_identifier "vim.cmd" "vim.api.nvim_command" "vim.api.nvim_command" "vim.api.nvim_exec2"))
 
@@ -29,8 +27,7 @@
   arguments:
     (arguments
       (string
-        content:
-          _ @injection.content) .))
+        content: _ @injection.content) .))
   (#set! injection.language "query")
   (#any-of? @_vimcmd_identifier "vim.treesitter.query.set" "vim.treesitter.query.parse"))
 
@@ -42,12 +39,10 @@
       (_)
       .
       (string
-        content:
-          _ @_method)
+        content: _ @_method)
       .
       (string
-        content:
-          _ @injection.content)))
+        content: _ @injection.content)))
   (#any-of? @_vimcmd_identifier "vim.rpcrequest" "vim.rpcnotify")
   (#eq? @_method "nvim_exec_lua")
   (#set! injection.language "lua"))
@@ -130,8 +125,7 @@
 ;   (#set! injection.language "vim"))
 ; highlight string as query if starts with `;; query`
 (string
-  content:
-    _ @injection.content
+  content: _ @injection.content
   (#lua-match? @injection.content "^%s*;+%s?query")
   (#set! injection.language "query"))
 

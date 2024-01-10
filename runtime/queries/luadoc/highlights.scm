@@ -45,8 +45,7 @@
   extension: (identifier) @string.special.path)
 
 (version_annotation
-  version:
-    _ @constant.builtin)
+  version: _ @constant.builtin)
 
 "@return" @keyword.return
 

@@ -162,8 +162,7 @@
   (#lua-match? @constant "^[+].+[+]$"))
 
 (var_quoting_lit
-  marker:
-    "#'" @string.special.symbol
+  marker: "#'" @string.special.symbol
   value: (_) @string.special.symbol)
 
 [

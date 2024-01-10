@@ -90,8 +90,7 @@
 (deletion) @operator
 
 (eel_binary_expression
-  operator:
-    _ @operator)
+  operator: _ @operator)
 
 (eel_not_expression
   [
@@ -108,10 +107,8 @@
 (null) @constant.builtin
 
 (value_expression
-  start:
-    _ @punctuation.special
-  end:
-    _ @punctuation.special)
+  start: _ @punctuation.special
+  end: _ @punctuation.special)
 
 [
   "("

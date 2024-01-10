@@ -9,8 +9,7 @@
   arguments:
     (arguments
       (string
-        content:
-          _ @injection.content)))
+        content: _ @injection.content)))
   (#eq? @_cdef_identifier "cdef")
   (#set! injection.language "c"))
 
@@ -30,8 +29,7 @@
       (_)
       .
       (string
-        content:
-          _ @injection.content))
+        content: _ @injection.content))
   (#set! injection.language "luap"))
 
 ; ("123"):match("%d+")
@@ -43,8 +41,7 @@
     (arguments
       .
       (string
-        content:
-          _ @injection.content))
+        content: _ @injection.content))
   (#set! injection.language "luap"))
 
 ((comment) @injection.content

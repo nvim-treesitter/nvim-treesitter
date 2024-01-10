@@ -163,13 +163,11 @@
 
 ; unary operators
 (unary_expression
-  operator:
-    _ @operator)
+  operator: _ @operator)
 
 ; binary operators
 (binary_expression
-  operator:
-    _ @operator)
+  operator: _ @operator)
 
 ; integers, also highlight a unary -
 [

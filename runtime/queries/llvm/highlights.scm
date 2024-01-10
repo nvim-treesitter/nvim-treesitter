@@ -19,8 +19,7 @@
 (argument) @variable.parameter
 
 (_
-  inst_name:
-    _ @keyword.operator)
+  inst_name: _ @keyword.operator)
 
 [
   "catch"
@@ -48,12 +47,10 @@
 (fast_math) @keyword
 
 (_
-  callee:
-    _ @function)
+  callee: _ @function)
 
 (function_header
-  name:
-    _ @function)
+  name: _ @function)
 
 [
   "declare"
@@ -134,8 +131,7 @@
 (label) @label
 
 (_
-  inst_name:
-    "ret" @keyword.return)
+  inst_name: "ret" @keyword.return)
 
 (float) @number.float
 

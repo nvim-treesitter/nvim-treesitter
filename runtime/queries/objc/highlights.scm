@@ -192,19 +192,15 @@
   "@interface"
   .
   (identifier) @type
-  superclass:
-    _? @type
-  category:
-    _? @module)
+  superclass: _? @type
+  category: _? @module)
 
 (class_implementation
   "@implementation"
   .
   (identifier) @type
-  superclass:
-    _? @type
-  category:
-    _? @module)
+  superclass: _? @type
+  category: _? @module)
 
 (protocol_forward_declaration
   (identifier) @type) ; @interface :(

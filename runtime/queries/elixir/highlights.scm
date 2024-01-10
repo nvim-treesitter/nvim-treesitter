@@ -73,12 +73,10 @@
 (operator_identifier) @operator
 
 (unary_operator
-  operator:
-    _ @operator)
+  operator: _ @operator)
 
 (binary_operator
-  operator:
-    _ @operator)
+  operator: _ @operator)
 
 ; Pipe Operator
 (binary_operator
@@ -86,12 +84,10 @@
   right: (identifier) @function)
 
 (dot
-  operator:
-    _ @operator)
+  operator: _ @operator)
 
 (stab_clause
-  operator:
-    _ @operator)
+  operator: _ @operator)
 
 ; Local Function Calls
 (call
@@ -181,10 +177,8 @@
 (sigil
   "~" @string.special
   ((sigil_name) @string.special) @_sigil_name
-  quoted_start:
-    _ @string.special
-  quoted_end:
-    _ @string.special
+  quoted_start: _ @string.special
+  quoted_end: _ @string.special
   ((sigil_modifiers) @string.special)?
   (#not-any-of? @_sigil_name "s" "S"))
 
@@ -192,11 +186,9 @@
 (sigil
   "~" @string
   ((sigil_name) @string) @_sigil_name
-  quoted_start:
-    _ @string
+  quoted_start: _ @string
   (quoted_content) @string
-  quoted_end:
-    _ @string
+  quoted_end: _ @string
   ((sigil_modifiers) @string)?
   (#any-of? @_sigil_name "s" "S"))
 
@@ -226,9 +218,7 @@
           (sigil
             "~" @comment.documentation
             ((sigil_name) @comment.documentation)
-            quoted_start:
-              _ @comment.documentation
+            quoted_start: _ @comment.documentation
             (quoted_content) @comment.documentation
-            quoted_end:
-              _ @comment.documentation)
+            quoted_end: _ @comment.documentation)
         ] @comment.documentation))) @comment.documentation

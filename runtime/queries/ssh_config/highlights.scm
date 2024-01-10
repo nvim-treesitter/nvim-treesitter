@@ -60,17 +60,14 @@
 ] @keyword
 
 (parameter
-  keyword:
-    _ @keyword)
+  keyword: _ @keyword)
 
 (host_declaration
-  argument:
-    _ @module)
+  argument: _ @module)
 
 (match_declaration
   (condition
-    criteria:
-      _ @attribute))
+    criteria: _ @attribute))
 
 "all" @attribute
 

@@ -130,8 +130,7 @@
 ] @keyword
 
 (map_statement
-  cmd:
-    _ @keyword)
+  cmd: _ @keyword)
 
 (command_name) @function.macro
 
@@ -168,8 +167,7 @@
   ] @keyword)
 
 (syntax_argument
-  name:
-    _ @keyword)
+  name: _ @keyword)
 
 [
   "<buffer>"
@@ -189,10 +187,8 @@
 
 ; Highlight command
 (hl_attribute
-  key:
-    _ @property
-  val:
-    _ @constant)
+  key: _ @property
+  val: _ @constant)
 
 (hl_group) @type
 
@@ -207,18 +203,15 @@
 (command) @string
 
 (command_attribute
-  name:
-    _ @property
+  name: _ @property
   val:
     (behavior
-      name:
-        _ @constant
+      name: _ @constant
       val: (identifier)? @function)?)
 
 ; Edit command
 (plus_plus_opt
-  val:
-    _? @constant) @property
+  val: _? @constant) @property
 
 (plus_cmd
   "+" @property) @property
