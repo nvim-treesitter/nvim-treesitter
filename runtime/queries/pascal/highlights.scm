@@ -325,10 +325,10 @@
   name: (identifier) @function)
 
 (declProp
-  getter: (identifier) @property)
+  getter: (identifier) @variable.member)
 
 (declProp
-  setter: (identifier) @property)
+  setter: (identifier) @variable.member)
 
 ; -- Function parameters
 (declArg
@@ -399,26 +399,26 @@
 
 ; -- Fields
 (exprDot
-  rhs: (identifier) @property)
+  rhs: (identifier) @variable.member)
 
 (exprDot
-  rhs: (exprDot) @property)
+  rhs: (exprDot) @variable.member)
 
 (declClass
   (declField
-    name: (identifier) @property))
+    name: (identifier) @variable.member))
 
 (declSection
   (declField
-    name: (identifier) @property))
+    name: (identifier) @variable.member))
 
 (declSection
   (declVars
     (declVar
-      name: (identifier) @property)))
+      name: (identifier) @variable.member)))
 
 (recInitializerField
-  name: (identifier) @property)
+  name: (identifier) @variable.member)
 
 ; ---------------------------------------------- ;;;
 ; EVERYTHING BELOW THIS IS OF QUESTIONABLE VALUE ;;;

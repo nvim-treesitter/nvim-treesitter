@@ -123,7 +123,7 @@
 
 ; expressions
 (field_expression
-  field: (identifier) @property)
+  field: (identifier) @variable.member)
 
 (field_expression
   value: (identifier) @type

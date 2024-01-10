@@ -8,7 +8,7 @@
 (tag
   (tag_name) @_tag
   (#eq? @_tag "@property")
-  (variable_name) @property)
+  (variable_name) @variable.member)
 
 (tag
   (tag_name) @_tag

@@ -33,12 +33,12 @@
 
 (variation) @type.qualifier
 
-(alias) @property
+(alias) @keyword.directive
 
 (number) @number
 
 (argument
-  key: (string) @label
+  key: (string) @property
   value: (string) @string)
 
 (escape) @string.escape

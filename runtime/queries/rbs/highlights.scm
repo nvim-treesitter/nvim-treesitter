@@ -53,7 +53,7 @@
 [
   (ivar_name)
   (cvar_name)
-] @property
+] @variable.member
 
 (alias_member
   (method_name) @function)
@@ -80,7 +80,7 @@
 (const_name
   (constant) @constant)
 
-(global_name) @property
+(global_name) @variable.global
 
 ; Standard Arguments
 (parameter

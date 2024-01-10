@@ -1,4 +1,4 @@
 test1.test2.test3();
 // <- @variable
-//    ^ @property
+//    ^ @variable.member
 //          ^ @function.method.call
