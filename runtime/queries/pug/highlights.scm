@@ -19,7 +19,7 @@
 
 (id) @constant
 
-(class) @property
+(class) @type
 
 (doctype) @keyword.directive
 
@@ -56,7 +56,7 @@
 (block_prepend
   (keyword)+ @keyword)
 
-(block_name) @type
+(block_name) @module
 
 (conditional
   (keyword) @keyword.conditional)
