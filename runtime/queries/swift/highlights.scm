@@ -95,18 +95,18 @@
 (class_body
   (property_declaration
     (pattern
-      (simple_identifier) @property)))
+      (simple_identifier) @variable.member)))
 
 (protocol_property_declaration
   (pattern
-    (simple_identifier) @property))
+    (simple_identifier) @variable.member))
 
 (navigation_expression
   (navigation_suffix
-    (simple_identifier) @property))
+    (simple_identifier) @variable.member))
 
 (value_argument
-  name: (value_argument_label) @property)
+  name: (value_argument_label) @variable.member)
 
 (import_declaration
   "import" @keyword.import)

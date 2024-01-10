@@ -73,7 +73,7 @@
 ; Fields
 (field_identifier) @variable.member
 
-(annotation_key) @attribute
+(annotation_key) @variable.member
 
 ((field_identifier) @constant
   (#lua-match? @constant "^[%u_]*$"))

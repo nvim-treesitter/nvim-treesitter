@@ -122,7 +122,7 @@
 [
   (class_variable)
   (instance_variable)
-] @label
+] @variable.member
 
 ((identifier) @constant.builtin
   (#any-of? @constant.builtin "__callee__" "__dir__" "__id__" "__method__" "__send__" "__ENCODING__" "__FILE__" "__LINE__"))
@@ -173,7 +173,7 @@
 [
   (heredoc_beginning)
   (heredoc_end)
-] @constant
+] @label
 
 [
   (bare_symbol)
