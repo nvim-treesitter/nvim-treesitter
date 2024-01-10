@@ -147,7 +147,7 @@
     "revision": "203f7bd3c1bbfbd98fc19add4b8fcb213c059205"
   },
   "erlang": {
-    "revision": "57e69513efd831f9cc8207d65d96bad917ca4aa4"
+    "revision": "54b6f814f43c4eac81eeedefaa7cc8762fec6683"
   },
   "facility": {
     "revision": "a52579670e2b14ec03d410c3c980fafaf6d659c4"
@@ -555,7 +555,7 @@
     "revision": "7891815f42dca9ed6aeb464c2edc39d479ab965c"
   },
   "scfg": {
-    "revision": "6deae0cbb458c849a4d1e2985093e9c9c32d7fd0"
+    "revision": "fatal: unable to access 'https://git.sr.ht/~rockorager/tree-sitter-scfg/': Failed to connect to git.sr.ht port 443 after 135407 ms: Connection timed out"
   },
   "scheme": {
     "revision": "85b6188fb77c03dfb01d13e58e2844450506860c"
@@ -570,7 +570,7 @@
     "revision": "00c8a2d3645766f68c0d0460086c0a994e5b0d85"
   },
   "smali": {
-    "revision": "72e334b2630f5852825ba5ff9dfd872447175eb5"
+    "revision": "fatal: unable to access 'https://git.sr.ht/~yotam/tree-sitter-smali/': Failed to connect to git.sr.ht port 443 after 130389 ms: Connection timed out"
   },
   "smithy": {
     "revision": "8327eb84d55639ffbe08c9dc82da7fff72a1ad07"
@@ -636,7 +636,7 @@
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
   },
   "templ": {
-    "revision": "f8fbc1558e45b72c05cd55a02907ba9bc0df505a"
+    "revision": "c3baaab33f1f1032eedd3613cd932284975bd21f"
   },
   "terraform": {
     "revision": "e135399cb31b95fac0760b094556d1d5ce84acf0"
