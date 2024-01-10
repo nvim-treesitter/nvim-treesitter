@@ -201,7 +201,6 @@ local format_queries = [[
   name: (_)
   ":" @format.indent.begin @format.append-newline ; surpress trailing whitespaces with forced newlines
   [
-    (anonymous_node (capture))
     (named_node [ (named_node) (list) (grouping) (anonymous_node) (field_definition) ])
     (list "[" . (_) . (_) "]")
     (grouping)
