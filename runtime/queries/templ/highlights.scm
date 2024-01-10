@@ -23,10 +23,10 @@
 (css_identifier) @function
 
 (css_property
-  name: (css_property_name) @attribute)
+  name: (css_property_name) @property)
 
 (css_property
-  value: (css_property_value) @attribute)
+  value: (css_property_value) @string)
 
 [
   (expression)
