@@ -51,7 +51,7 @@
   (_)
   (operator) @_pipe
   (identifier) @function.call
-  (#eq? @_pipe "|>"))
+  (#lua-match? @_pipe "\.?|>"))
 
 ;; Builtins
 
