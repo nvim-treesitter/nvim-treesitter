@@ -13,6 +13,9 @@
 (method_declaration
   type: (identifier) @type)
 
+(declaration_pattern
+  type: (identifier) @type)
+
 (local_function_statement
   type: (identifier) @type)
 
