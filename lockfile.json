@@ -147,7 +147,7 @@
     "revision": "203f7bd3c1bbfbd98fc19add4b8fcb213c059205"
   },
   "erlang": {
-    "revision": "57e69513efd831f9cc8207d65d96bad917ca4aa4"
+    "revision": "54b6f814f43c4eac81eeedefaa7cc8762fec6683"
   },
   "facility": {
     "revision": "a52579670e2b14ec03d410c3c980fafaf6d659c4"
@@ -444,7 +444,7 @@
     "revision": "655632fa7f9174acbdbf1ad2abdac90ad3aa57a1"
   },
   "php": {
-    "revision": "2f791d9d83c35b11e9a14daf9a58dd7e23566041"
+    "revision": "b569a5f2c0d592e67430520d1a0e1f765d83ceb0"
   },
   "phpdoc": {
     "revision": "915a527d5aafa81b31acf67fab31b0ac6b6319c0"
@@ -636,7 +636,7 @@
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
   },
   "templ": {
-    "revision": "f8fbc1558e45b72c05cd55a02907ba9bc0df505a"
+    "revision": "c3baaab33f1f1032eedd3613cd932284975bd21f"
   },
   "terraform": {
     "revision": "e135399cb31b95fac0760b094556d1d5ce84acf0"
@@ -720,7 +720,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "8d6b514bdc76dfc96827a62150bf85098c3fe429"
+    "revision": "7624e16278478db4499e3b439e0c70e4ba98a1b0"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
