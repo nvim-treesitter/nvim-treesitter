@@ -50,14 +50,16 @@
 ; Code blocks (conceal backticks and language annotation)
 (indented_code_block) @markup.raw.block
 
+((fenced_code_block) @markup.raw.block
+  (#set! "priority" 90))
+
 (fenced_code_block
-  (fenced_code_block_delimiter) @markup.raw.block
-  (#set! "priority" 90)
+  (fenced_code_block_delimiter) @conceal
   (#set! conceal ""))
 
 (fenced_code_block
   (info_string
-    (language) @markup.raw.block
+    (language) @conceal
     (#set! conceal "")))
 
 (link_destination) @markup.link.url
