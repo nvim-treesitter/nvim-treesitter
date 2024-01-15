@@ -347,6 +347,17 @@ Perform the |:TSInstall| operation synchronously.
 
 List information about currently installed parsers
 
+								   *:TSEnsure*
+:TSEnsure {language} ...~
+
+Install {language} like with |:TSInstall|, but without need for confirmation.
+If the parser is already installed it will be skipped.
+
+							       *:TSEnsureSync*
+:TSEnsureSync {language} ...~
+
+Perform the |:TSEnsure| operation synchronously.
+
 								   *:TSUpdate*
 :TSUpdate {language} ...~
 

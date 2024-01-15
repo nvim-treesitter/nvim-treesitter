@@ -747,6 +747,22 @@ M.commands = {
       "-complete=custom,nvim_treesitter#installable_parsers",
     },
   },
+  TSEnsure = {
+    run = install { ask_reinstall = false },
+    args = {
+      "-nargs=+",
+      "-bang",
+      "-complete=custom,nvim_treesitter#installable_parsers",
+    },
+  },
+  TSEnsureSync = {
+    run = install { with_sync = true, ask_reinstall = false },
+    args = {
+      "-nargs=+",
+      "-bang",
+      "-complete=custom,nvim_treesitter#installable_parsers",
+    },
+  },
   TSUpdate = {
     run = M.update {},
     args = {
