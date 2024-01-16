@@ -421,7 +421,9 @@ function M.setup(user_data)
   end
 
   local ensure_installed = user_data.ensure_installed or {}
-  vim.list_extend(ensure_installed, config.ensure_installed)
+  if type(ensure_installed) == "table" then
+    vim.list_extend(ensure_installed, config.ensure_installed)
+  end
   if #ensure_installed > 0 then
     if user_data.sync_install then
       require("nvim-treesitter.install").ensure_installed_sync(ensure_installed)
