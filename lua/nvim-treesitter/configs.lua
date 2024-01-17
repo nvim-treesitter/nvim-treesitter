@@ -420,7 +420,7 @@ function M.setup(user_data)
     require("nvim-treesitter.install").setup_auto_install()
   end
 
-  local ensure_installed = user_data.ensure_installed or {}
+  local ensure_installed = user_data.ensure_installed or config.ensure_installed
   if type(ensure_installed) == "table" and type(config.ensure_installed) == "table" then
     vim.list_extend(ensure_installed, config.ensure_installed)
   end
