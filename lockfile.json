@@ -198,7 +198,7 @@
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
   },
   "gleam": {
-    "revision": "2b49c49ef632928b5c52bb0a7269ff797d5d1414"
+    "revision": "62c5388a7badb4e29315690358267a76a734bf83"
   },
   "glimmer": {
     "revision": "f9746dc1d0707717fbba84cb5c22a71586af23e1"
@@ -216,7 +216,7 @@
     "revision": "b6ef0768711086a86b3297056f9ffb5cc1d77b4a"
   },
   "gomod": {
-    "revision": "9b86399ab733fbd548ba0e817e732cb3351082d2"
+    "revision": "bbe2fe3be4b87e06a613e685250f473d2267f430"
   },
   "gosum": {
     "revision": "e2ac513b2240c7ff1069ae33b2df29ce90777c11"
@@ -720,7 +720,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "7624e16278478db4499e3b439e0c70e4ba98a1b0"
+    "revision": "fd7adb7c776f2f3656b8a1839d8ee1e6636412f3"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
