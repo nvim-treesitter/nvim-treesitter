@@ -12,6 +12,11 @@
   (case_statement)
 ] @indent.begin
 
+(
+ if_statement
+  condition: (_) @indent.begin
+)
+
 [
   ")"
   "}"
