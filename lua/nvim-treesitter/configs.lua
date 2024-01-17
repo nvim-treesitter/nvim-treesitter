@@ -421,6 +421,9 @@ function M.setup(user_data)
   end
 
   local ensure_installed = user_data.ensure_installed or {}
+  if type(config.ensure_installed) ~= "table" then
+    ensure_installed = config.ensure_installed
+  end
   if type(ensure_installed) == "table" then
     vim.list_extend(ensure_installed, config.ensure_installed)
   end
