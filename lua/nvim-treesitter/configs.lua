@@ -421,10 +421,8 @@ function M.setup(user_data)
     require("nvim-treesitter.install").setup_auto_install()
   end
 
-  local ensure_installed = user_data.ensure_installed or config.ensure_installed
-  if type(ensure_installed) == "table" and type(config.ensure_installed) == "table" then
-    union(ensure_installed, config.ensure_installed)
-  end
+local ensure_installed = user_data.ensure_installed or {}
+ 
   if #ensure_installed > 0 then
     if user_data.sync_install then
       require("nvim-treesitter.install").ensure_installed_sync(ensure_installed)
