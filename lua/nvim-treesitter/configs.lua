@@ -405,17 +405,6 @@ function M.is_enabled(mod, lang, bufnr)
   return true
 end
 
----Combine two list-like tables without duplicates
-local union = function(x, y)
-  local map = {}
-  for _, v in ipairs(x) do
-    map[v] = true
-  end
-  for _, v in ipairs(y) do
-    map[v] = true
-  end
-  return vim.tbl_keys(map)
-end
 
 ---Setup call for users to override module configurations.
 ---@param user_data TSConfig module overrides
