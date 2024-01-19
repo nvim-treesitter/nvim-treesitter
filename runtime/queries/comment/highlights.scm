@@ -1,13 +1,13 @@
 ((tag
-  (name) @comment.warning @nospell
+  (name) @comment.todo @nospell
   ("(" @punctuation.bracket
     (user) @constant
     ")" @punctuation.bracket)?
   ":" @punctuation.delimiter)
-  (#any-of? @comment.warning "TODO" "WIP"))
+  (#any-of? @comment.todo "TODO" "WIP"))
 
-("text" @comment.warning @nospell
-  (#any-of? @comment.warning "TODO" "WIP"))
+("text" @comment.todo @nospell
+  (#any-of? @comment.todo "TODO" "WIP"))
 
 ((tag
   (name) @comment.note @nospell
