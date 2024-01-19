@@ -1,0 +1,13 @@
+# vim: ft=meson
+
+executable('progname',
+)
+
+executable('progname',
+  sources: 'prog.c',
+  c_args: '-DFOO=1'
+)
+
+executable('progname',
+  sources: 'prog.c',
+  c_args: '-DFOO=1')

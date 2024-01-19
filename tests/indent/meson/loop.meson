@@ -1,0 +1,8 @@
+# vim: ft=meson
+
+foreach elem : list
+endforeach
+
+foreach elem : list
+  foo()
+endforeach
