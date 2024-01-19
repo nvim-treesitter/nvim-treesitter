@@ -465,7 +465,7 @@
     "revision": "16f930b250433cfcd4fb4144df92bb98ad344c20"
   },
   "printf": {
-    "revision": "8a3f07c1f620ae46d14873e5b7ee0d3e114c15e8"
+    "revision": "04696305caceab64a78e3a749774718d87ba85a1"
   },
   "prisma": {
     "revision": "eca2596a355b1a9952b4f80f8f9caed300a272b5"
@@ -555,7 +555,7 @@
     "revision": "79456e6080f50fc1ca7c21845794308fa5d35a51"
   },
   "scala": {
-    "revision": "0c63ada18d34ac83eec6c7a2fba9a47e65cda48a"
+    "revision": "45b5ba0e749a8477a8fd2666f082f352859bdc3c"
   },
   "scfg": {
     "revision": "6deae0cbb458c849a4d1e2985093e9c9c32d7fd0"
