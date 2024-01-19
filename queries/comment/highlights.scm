@@ -10,15 +10,26 @@
   (#any-of? @comment.todo "TODO" "WIP"))
 
 ((tag
-  (name) @comment.note @nospell
+  (name) @comment.info @nospell
   ("(" @punctuation.bracket
     (user) @constant
     ")" @punctuation.bracket)?
   ":" @punctuation.delimiter)
-  (#any-of? @comment.note "NOTE" "XXX" "INFO" "DOCS" "PERF" "TEST"))
+  (#any-of? @comment.info "XXX" "INFO" "DOCS" "PERF" "TEST"))
 
-("text" @comment.note @nospell
-  (#any-of? @comment.note "NOTE" "XXX" "INFO" "DOCS" "PERF" "TEST"))
+("text" @comment.info @nospell
+  (#any-of? @comment.info "XXX" "INFO" "DOCS" "PERF" "TEST"))
+
+((tag
+  (name) @comment.hint @nospell
+  ("(" @punctuation.bracket
+    (user) @constant
+    ")" @punctuation.bracket)?
+  ":" @punctuation.delimiter)
+  (#any-of? @comment.hint "NOTE"))
+
+("text" @comment.hint @nospell
+  (#any-of? @comment.hint "NOTE"))
 
 ((tag
   (name) @comment.warning @nospell
