@@ -138,15 +138,25 @@
 
 ; Variadic parameters *args, **kwargs
 (parameters
-  (list_splat_pattern
-    ; *args
+  (list_splat_pattern ; *args
     (identifier) @variable.parameter))
 
 (parameters
-  (dictionary_splat_pattern
-    ; **kwargs
+  (dictionary_splat_pattern ; **kwargs
     (identifier) @variable.parameter))
 
+; Typed variadic parameters
+(parameters
+  (typed_parameter
+    (list_splat_pattern ; *args: type
+      (identifier) @variable.parameter)))
+
+(parameters
+  (typed_parameter
+    (dictionary_splat_pattern ; *kwargs: type
+      (identifier) @variable.parameter)))
+
+; Lambda parameters
 (lambda_parameters
   (list_splat_pattern
     (identifier) @variable.parameter))
