@@ -1,0 +1,14 @@
+# vim: ft=meson
+
+foo = [
+  'a',
+  'b',
+]
+
+bar = [
+  'a',
+  'b']
+
+baz = ['a',
+  'b'
+]
