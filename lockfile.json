@@ -552,7 +552,7 @@
     "revision": "79456e6080f50fc1ca7c21845794308fa5d35a51"
   },
   "scala": {
-    "revision": "7891815f42dca9ed6aeb464c2edc39d479ab965c"
+    "revision": "0c63ada18d34ac83eec6c7a2fba9a47e65cda48a"
   },
   "scfg": {
     "revision": "6deae0cbb458c849a4d1e2985093e9c9c32d7fd0"
@@ -720,7 +720,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "40b84b0c8e27df07c9ca8fad97b36820e3e9ce12"
+    "revision": "ee58533169c654b8d7fd47fde01241e528674d8a"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
