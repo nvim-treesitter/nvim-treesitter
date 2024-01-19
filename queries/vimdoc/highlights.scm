@@ -24,7 +24,7 @@
   text: (_) @markup.link)
 
 (codespan
-  "`" @markup.raw
+  "`" @markup.raw.delimiter
   (#set! conceal "")
   text: (_) @markup.raw)
 
@@ -35,11 +35,11 @@
   [
     ">"
     (language)
-  ] @markup.raw.block
+  ] @markup.raw.delimiter
   (#set! conceal ""))
 
 (block
-  "<" @markup.raw.block
+  "<" @markup.raw.delimiter
   (#set! conceal ""))
 
 (argument) @variable.parameter

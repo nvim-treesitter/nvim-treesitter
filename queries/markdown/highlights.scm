@@ -54,7 +54,7 @@
   (#set! "priority" 90))
 
 (fenced_code_block
-  (fenced_code_block_delimiter) @conceal
+  (fenced_code_block_delimiter) @markup.raw.delimiter
   (#set! conceal ""))
 
 (fenced_code_block
