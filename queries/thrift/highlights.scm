@@ -88,7 +88,7 @@
 
 ; Namespace
 (namespace_declaration
-  (namespace_scope) @tag
+  (namespace_scope) @string.special
   [
     (namespace) @module
     (_
