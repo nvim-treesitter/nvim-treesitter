@@ -142,7 +142,7 @@ jsx (queries only)[^jsx] | core | `HFIJ ` |  |  | @steelsojka
 [matlab](https://github.com/acristoffers/tree-sitter-matlab) | community | `HFIJL` |  |  | @acristoffers
 [menhir](https://github.com/Kerl13/tree-sitter-menhir) | community | `H  J ` |  |  | @Kerl13
 [mermaid](https://github.com/monaqa/tree-sitter-mermaid) | unsupported | `H    ` |  |  | 
-[meson](https://github.com/Decodetalkers/tree-sitter-meson) | community | `HF J ` |  |  | @Decodetalkers
+[meson](https://github.com/Decodetalkers/tree-sitter-meson) | community | `HFIJ ` |  |  | @Decodetalkers
 [mlir](https://github.com/artagnon/tree-sitter-mlir) | unsupported | `H   L` | ✓ |  | @artagnon
 [nasm](https://github.com/naclsn/tree-sitter-nasm) | core | `H  J ` |  |  | @ObserverOfTime
 [nickel](https://github.com/nickel-lang/tree-sitter-nickel) | unsupported | `H I  ` |  |  | 
