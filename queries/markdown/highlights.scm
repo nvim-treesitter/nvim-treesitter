@@ -98,8 +98,6 @@
 ;   @punctuation.special
 ;   (#eq? @punctuation.special "-")
 ;   (#set! conceal "—"))
-(code_fence_content) @none
-
 (thematic_break) @punctuation.special
 
 (task_list_marker_unchecked) @markup.list.unchecked
