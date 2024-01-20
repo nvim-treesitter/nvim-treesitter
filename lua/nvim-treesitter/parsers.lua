@@ -1332,6 +1332,15 @@ list.php = {
   maintainers = { "@tk-shirasaka" },
 }
 
+list.php_only = {
+  install_info = {
+    url = "https://github.com/tree-sitter/tree-sitter-php",
+    location = "php_only",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@tk-shirasaka" },
+}
+
 -- Parsers for injections
 list.phpdoc = {
   install_info = {
