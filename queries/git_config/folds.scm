@@ -1,1 +1,2 @@
-
+((section) @fold
+  (#trim! @fold))
