@@ -29,6 +29,9 @@
   "foreach"
 ] @keyword.repeat
 
+("continue" @keyword.repeat
+  (block))
+
 "return" @keyword.return
 
 "sub" @keyword.function
