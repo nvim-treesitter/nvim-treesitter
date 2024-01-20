@@ -48,8 +48,8 @@
 
 (url) @string.special.url
 
-((note) @comment.hint
-  (#any-of? @comment.hint "Note:" "NOTE:" "Notes:"))
+((note) @comment.note
+  (#any-of? @comment.note "Note:" "NOTE:" "Notes:"))
 
 ((note) @comment.warning
   (#any-of? @comment.warning "Warning:" "WARNING:"))

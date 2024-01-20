@@ -4,10 +4,10 @@
     (user) @constant
     ")" @punctuation.bracket)?
   ":" @punctuation.delimiter)
-  (#any-of? @comment.todo "TODO" "WIP"))
+  (#any-of? @comment.todo "TODO" "WIP" "FIXME"))
 
 ("text" @comment.todo @nospell
-  (#any-of? @comment.todo "TODO" "WIP"))
+  (#any-of? @comment.todo "TODO" "WIP" "FIXME"))
 
 ((tag
   (name) @comment.note @nospell

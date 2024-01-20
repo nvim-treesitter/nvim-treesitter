@@ -44,7 +44,7 @@
 
 ; (trailer (value) @none)
 (breaking_change
-  (token) @comment.warning)
+  (token) @comment.error)
 
 (breaking_change
   (value) @none @spell)

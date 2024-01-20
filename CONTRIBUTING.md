@@ -193,11 +193,10 @@ As languages differ quite a lot, here is a set of captures available to you when
 @comment               ; line and block comments
 @comment.documentation ; comments documenting code
 
-@comment.error         ; error-type comments (e.g., `DEPRECATED:`)
-@comment.warning       ; warning-type comments (e.g., `WARNING:`, `FIX:`)
-@comment.hint          ; note-type comments (e.g., `NOTE:`)
-@comment.info          ; info-type comments
-@comment.todo          ; todo-type comments (e.g-, `TODO:`, `WIP:`)
+@comment.error         ; error-type comments (e.g. `ERROR`, `FIXME`, `DEPRECATED:`)
+@comment.warning       ; warning-type comments (e.g. `WARNING:`, `FIX:`, `HACK:`)
+@comment.todo          ; todo-type comments (e.g. `TODO:`, `WIP:`, `FIXME:`)
+@comment.note          ; note-type comments (e.g. `NOTE:`, `INFO:`, `XXX`)
 ```
 
 #### Markup
