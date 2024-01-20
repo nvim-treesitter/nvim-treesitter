@@ -7,20 +7,8 @@
 
 (strikethrough) @markup.strikethrough
 
-[
-  (link_destination)
-  (uri_autolink)
-] @markup.link.url @nospell
-
 (shortcut_link
   (link_text) @nospell)
-
-[
-  (link_label)
-  (link_text)
-  (link_title)
-  (image_description)
-] @markup.link.label
 
 [
   (backslash_escape)
@@ -81,6 +69,18 @@
     "]"
   ] @markup.link
   (#set! conceal ""))
+
+[
+  (link_destination)
+  (uri_autolink)
+] @markup.link.url @nospell
+
+[
+  (link_label)
+  (link_text)
+  (link_title)
+  (image_description)
+] @markup.link.label
 
 ; Replace common HTML entities.
 ((entity_reference) @character.special
