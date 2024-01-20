@@ -9,6 +9,7 @@
   variable: (IDENTIFIER)
   variable_type_function: (IDENTIFIER)
 ] @variable
+
 parameter: (IDENTIFIER) @variable.parameter
 
 [
@@ -38,8 +39,11 @@ parameter: (IDENTIFIER) @variable.parameter
   field_access: (IDENTIFIER)
 ] @constant
   (#lua-match? @constant "^%u[%u%d_]+$"))
+
 function: (IDENTIFIER) @function
+
 function_call: (IDENTIFIER) @function.call
+
 exception: "!" @keyword.exception
 
 ((IDENTIFIER) @variable.builtin
@@ -55,6 +59,7 @@ exception: "!" @keyword.exception
   ])
   (ContainerField
     (IDENTIFIER) @constant))
+
 field_constant: (IDENTIFIER) @constant
 
 (BUILTINIDENTIFIER) @function.builtin

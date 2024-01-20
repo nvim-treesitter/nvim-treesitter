@@ -3,6 +3,7 @@
   (multiline_comment)
 ] @injection.content
   (#set! injection.language "comment"))
+
 ; There are 3 ways to define a regex
 ;    - "[abc]?".toRegex()
 (call_expression

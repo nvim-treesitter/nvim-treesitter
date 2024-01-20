@@ -1,5 +1,6 @@
 ((comment) @injection.content
   (#set! injection.language "comment"))
+
 ; Github actions ("run") / Gitlab CI ("scripts")
 (block_mapping_pair
   key: (flow_node) @_run

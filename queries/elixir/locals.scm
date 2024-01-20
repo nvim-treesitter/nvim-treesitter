@@ -39,6 +39,7 @@
       (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (_ (identifier) @local.definition.var))))))))))))))))))))
     ]
   operator: "=")
+
 ; Stab Clause Definitions
 ; format-ignore
 (stab_clause
@@ -98,6 +99,7 @@
           ])
       operator: "when")
     ])
+
 ; Aliases
 ; format-ignore
 (call
@@ -155,6 +157,7 @@
           ]))
     ]?)
   (#set! definition.function.scope parent)(do_block)?) @local.scope
+
 ; ExUnit Test Definitions & Scopes
 ; format-ignore
 (call
@@ -193,5 +196,6 @@
         ])
     ])
   (do_block)?) @local.scope
+
 ; Stab Clause Scopes
 (stab_clause) @local.scope

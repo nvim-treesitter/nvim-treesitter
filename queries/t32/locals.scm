@@ -1,4 +1,5 @@
 (block) @local.scope
+
 ; Parameter definitions
 (parameter_declaration
   command: (identifier)

@@ -1,4 +1,5 @@
 (dotted_identifier_list) @string
+
 ; Methods
 ; --------------------
 (super) @function

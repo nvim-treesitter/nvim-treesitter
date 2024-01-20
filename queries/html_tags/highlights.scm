@@ -1,4 +1,5 @@
 (tag_name) @tag
+
 ; (erroneous_end_tag_name) @error ; we do not lint syntax errors
 (comment) @comment @spell
 

@@ -1,5 +1,6 @@
 ((doctest_block) @injection.content
   (#set! injection.language "python"))
+
 ; Directives with nested content without arguments nor options
 ((directive
   name: (type) @_type

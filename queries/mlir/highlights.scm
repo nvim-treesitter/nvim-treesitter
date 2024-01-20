@@ -22,6 +22,7 @@
   "default"
   (arith_cmp_predicate)
 ] @keyword
+
 ; format-ignore
 [
   "module"

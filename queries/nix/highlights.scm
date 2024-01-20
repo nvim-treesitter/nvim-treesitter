@@ -119,6 +119,7 @@
     ; primops, `__<tab>` in `nix repl`
    "__add" "__filter" "__isFunction" "__split" "__addErrorContext" "__filterSource" "__isInt" "__splitVersion" "__all" "__findFile" "__isList" "__storeDir" "__any" "__floor" "__isPath" "__storePath" "__appendContext" "__foldl'" "__isString" "__stringLength" "__attrNames" "__fromJSON" "__langVersion" "__sub" "__attrValues" "__functionArgs" "__length" "__substring" "__bitAnd" "__genList" "__lessThan" "__tail" "__bitOr" "__genericClosure" "__listToAttrs" "__toFile" "__bitXor" "__getAttr" "__mapAttrs" "__toJSON" "__catAttrs" "__getContext" "__match" "__toPath" "__ceil" "__getEnv" "__mul" "__toXML" "__compareVersions" "__getFlake" "__nixPath" "__trace" "__concatLists" "__groupBy" "__nixVersion" "__traceVerbose" "__concatMap" "__hasAttr" "__parseDrvName" "__tryEval" "__concatStringsSep" "__hasContext" "__partition" "__typeOf" "__currentSystem" "__hashFile" "__path" "__unsafeDiscardOutputDependency" "__currentTime" "__hashString" "__pathExists" "__unsafeDiscardStringContext" "__deepSeq" "__head" "__readDir" "__unsafeGetAttrPos" "__div" "__intersectAttrs" "__readFile" "__zipAttrsWith" "__elem" "__isAttrs" "__replaceStrings" "__elemAt" "__isBool" "__seq" "__fetchurl" "__isFloat" "__sort")
   )
+
 ; constants
 (variable_expression
   name: (identifier) @constant.builtin

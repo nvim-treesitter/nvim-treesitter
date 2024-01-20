@@ -4,6 +4,7 @@
   ":"
   ","
 ] @punctuation.delimiter
+
 ; TODO: "\\(" ")" in interpolations should be @punctuation.special
 [
   "\\("

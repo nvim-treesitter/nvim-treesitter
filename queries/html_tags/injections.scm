@@ -1,5 +1,6 @@
 ((comment) @injection.content
   (#set! injection.language "comment"))
+
 ; <style>...</style>
 ; <style blocking> ...</style>
 ; Add "lang" to predicate check so that vue/svelte can inherit this

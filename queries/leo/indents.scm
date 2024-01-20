@@ -16,6 +16,7 @@
   (items_block)
   (block)
 ] @indent.begin
+
 ; if "if" statement and conditional statement are in separate lines
 ; conditional should be indented and when the conditional block
 ; starts dedented
