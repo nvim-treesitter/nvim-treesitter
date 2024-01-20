@@ -446,6 +446,9 @@
   "php": {
     "revision": "b569a5f2c0d592e67430520d1a0e1f765d83ceb0"
   },
+  "php_only": {
+    "revision": "b569a5f2c0d592e67430520d1a0e1f765d83ceb0"
+  },
   "phpdoc": {
     "revision": "915a527d5aafa81b31acf67fab31b0ac6b6319c0"
   },
