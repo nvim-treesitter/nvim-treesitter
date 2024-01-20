@@ -1,5 +1,6 @@
 ((comment) @injection.content
   (#set! injection.language "comment"))
+
 ; test(val)
 (query
   ((funcname) @_function

@@ -1,5 +1,6 @@
 ((comment) @injection.content
   (#set! injection.language "comment"))
+
 ; asm_statement if asm ever highlighted :)
 ; #include <...>
 ((hash_statement) @injection.content

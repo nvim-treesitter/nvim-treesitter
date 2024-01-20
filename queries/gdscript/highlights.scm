@@ -304,6 +304,7 @@
     "Color8" "assert" "char" "convert" "dict_to_inst" "get_stack" "inst_to_dict"
     "is_instance_of" "len" "print_debug" "print_stack" "range"
     "type_exists"))
+
 ; Builtin Constants
 ((identifier) @constant.builtin
   ; format-ignore

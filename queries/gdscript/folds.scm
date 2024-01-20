@@ -15,6 +15,7 @@
   (lambda)
   (constructor_definition)
 ] @fold
+
 ; It's nice to be able to fold the if/elif/else clauses and the entire
 ; if_statement.
 (if_statement

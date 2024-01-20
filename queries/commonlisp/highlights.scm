@@ -1,4 +1,5 @@
 (sym_lit) @variable
+
 ; A highlighting for functions/macros in th cl namespace is available in theHamsta/nvim-treesitter-commonlisp
 ;(list_lit . (sym_lit) @function.builtin (#cl-standard-function? @function.builtin))
 ;(list_lit . (sym_lit) @function.builtin (#cl-standard-macro? @function.macro))

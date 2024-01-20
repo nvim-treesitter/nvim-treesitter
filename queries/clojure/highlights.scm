@@ -331,6 +331,7 @@
     "seq-to-map-for-destructuring" "update-keys" "update-vals"
     ;; 1.12
     "partitionv" "partitionv-all" "splitv-at"))
+
 ; >> Context based highlighting
 ; def-likes
 ; Correctly highlight docstrings
