@@ -52,10 +52,7 @@ local format_queries = [[
 ;; Preserve inline comments
 (program
   . (_)
-  (_) @_comment
-  .
   (comment) @format.prepend-newline
-  (#not-has-type? @_comment comment)
   (#is-start-of-line? @format.prepend-newline))
 (program
   . (_)
@@ -79,11 +76,6 @@ local format_queries = [[
     (anonymous_node)
     (field_definition)
   ] @format.prepend-newline)
-
-(program
-  . (_)
-  (comment) @format.prepend-newline
-  (#is-start-of-line? @format.prepend-newline))
 
 (program
   (comment) @_comment
