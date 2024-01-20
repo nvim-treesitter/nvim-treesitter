@@ -8,7 +8,7 @@ If you haven't already, you should really come and reach out to us on our
 As you know, `nvim-treesitter` is roughly split in two parts:
 
 - Parser configurations : for various things like `locals`, `highlights`
-- What we like to call _modules_ : tiny lua modules that provide a given feature, based on parser configurations
+- What we like to call _modules_ : tiny Lua modules that provide a given feature, based on parser configurations
 
 Depending on which part of the plugin you want to contribute to, please read the appropriate section.
 
@@ -63,7 +63,7 @@ Here are some global advices:
   you can install the [playground plugin](https://github.com/nvim-treesitter/playground).
 - If your language is listed [here](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages),
   you can debug and experiment with your queries there.
-- If not, you should consider installing the [tree-sitter cli](https://github.com/tree-sitter/tree-sitter/tree/master/cli),
+- If not, you should consider installing the [tree-sitter CLI](https://github.com/tree-sitter/tree-sitter/tree/master/cli),
   you should then be able to open a local playground using `tree-sitter build-wasm && tree-sitter web-ui` within the
   parsers repo.
 - Examples of queries can be found in [queries/](queries/)
@@ -93,7 +93,7 @@ Should you need to preserve a specific format for a node, you can exempt it (and
 
 ### Highlights
 
-As languages differ quite a lot, here is a set of captures available to you when building a `highlights.scm` query. Note that your colorscheme needs to define (or link) these captures as highlight groups.
+As languages differ quite a lot, here is a set of captures available to you when building a `highlights.scm` query. Note that your color scheme needs to define (or link) these captures as highlight groups.
 
 #### Identifiers
 
@@ -205,8 +205,8 @@ Mainly for markup languages.
 
 ```query
 @markup.strong         ; bold text
-@markup.italic         ; text with emphasis
-@markup.strikethrough  ; strikethrough text
+@markup.italic         ; italic text
+@markup.strikethrough  ; struck-through text
 @markup.underline      ; underlined text (only for literal underline markup!)
 
 @markup.heading        ; headings, titles (including markers)
@@ -219,7 +219,7 @@ Mainly for markup languages.
 @markup.link.label     ; link, reference descriptions
 @markup.link.url       ; URL-style links
 
-@markup.raw            ; literal or verbatim text (e.g., inline code)
+@markup.raw            ; literal or verbatim text (e.g. inline code)
 @markup.raw.block      ; literal or verbatim text as a stand-alone block
                        ; (use priority 90 for blocks with injections)
 
@@ -235,9 +235,9 @@ Mainly for markup languages.
 ```
 
 ```query
-@tag           ; XML tag names
-@tag.attribute ; XML tag attributes
-@tag.delimiter ; XML tag delimiters
+@tag           ; XML-style tag names (and similar)
+@tag.attribute ; XML-style tag attributes
+@tag.delimiter ; XML-style tag delimiters
 ```
 
 #### Non-highlighting captures
