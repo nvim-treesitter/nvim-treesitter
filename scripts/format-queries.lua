@@ -77,6 +77,7 @@ local format_queries = [[
     (grouping)
     (named_node)
     (anonymous_node)
+    (field_definition)
   ] @format.prepend-newline)
 (program
   (comment) @_comment
@@ -86,6 +87,7 @@ local format_queries = [[
     (grouping)
     (named_node)
     (anonymous_node)
+    (field_definition)
   ] @format.cancel-prepend
   (#is-start-of-line? @_comment))
 ;; }}}

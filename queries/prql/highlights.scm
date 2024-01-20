@@ -32,6 +32,7 @@
 
 (assignment
   alias: (field) @variable.member)
+
 alias: (identifier) @variable.member
 
 (comment) @comment @spell
