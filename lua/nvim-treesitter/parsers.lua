@@ -2167,6 +2167,14 @@ list.yuck = {
   maintainers = { "@Philipp-M", "@amaanq" },
 }
 
+list.zathurarc = {
+  install_info = {
+    url = "https://github.com/Freed-Wu/tree-sitter-zathurarc",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@Freed-Wu" },
+}
+
 list.zig = {
   install_info = {
     url = "https://github.com/maxxnino/tree-sitter-zig",
