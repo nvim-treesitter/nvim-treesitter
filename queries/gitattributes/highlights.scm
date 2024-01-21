@@ -1,7 +1,7 @@
 (dir_sep) @punctuation.delimiter
 
 (quoted_pattern
-  ("\"" @punctuation.special))
+  "\"" @punctuation.special)
 
 (range_notation) @string.special
 
@@ -18,7 +18,7 @@
 (character_class) @constant
 
 (class_range
-  ("-" @operator))
+  "-" @operator)
 
 [
   (ansi_c_escape)

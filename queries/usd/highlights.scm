@@ -183,9 +183,9 @@
     "instanceable"))
 
 ; Common attribute metadata
-((layer_offset
+(layer_offset
   (identifier) @keyword
-  (#any-of? @keyword "offset" "scale")))
+  (#any-of? @keyword "offset" "scale"))
 
 ; Docstrings in USD
 (metadata

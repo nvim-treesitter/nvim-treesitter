@@ -277,7 +277,7 @@
 (pat_view
   (exp_name
     [
-      ((variable) @function.call)
+      (variable) @function.call
       (qualified_variable
         (variable) @function.call)
     ]))
@@ -293,14 +293,14 @@
 ; partially applied infix functions (sections) also get highlighted as operators
 (exp_section_right
   [
-    ((variable) @operator)
+    (variable) @operator
     (qualified_variable
       (variable) @operator)
   ])
 
 (exp_section_left
   [
-    ((variable) @operator)
+    (variable) @operator
     (qualified_variable
       (variable) @operator)
   ])
@@ -310,7 +310,7 @@
 (exp_infix
   (exp_name
     [
-      ((variable) @function.call)
+      (variable) @function.call
       (qualified_variable
         ((module) @module
           (variable) @function.call))
@@ -328,7 +328,7 @@
   .
   (exp_name
     [
-      ((variable) @variable)
+      (variable) @variable
       (qualified_variable
         (variable) @variable)
     ]))
@@ -336,7 +336,7 @@
 ; function calls with infix operators
 ((exp_name
   [
-    ((variable) @function.call)
+    (variable) @function.call
     (qualified_variable
       (variable) @function.call)
   ])
@@ -353,7 +353,7 @@
   .
   (exp_name
     [
-      ((variable) @function.call)
+      (variable) @function.call
       (qualified_variable
         (variable) @function.call)
     ]))
@@ -364,7 +364,7 @@
 ; function composition, arrows, monadic composition (lhs)
 ((exp_name
   [
-    ((variable) @function)
+    (variable) @function
     (qualified_variable
       (variable) @function)
   ])
@@ -381,7 +381,7 @@
   .
   (exp_name
     [
-      ((variable) @function)
+      (variable) @function
       (qualified_variable
         (variable) @function)
     ]))
@@ -394,7 +394,7 @@
   .
   (exp_name
     [
-      ((variable) @function)
+      (variable) @function
       (qualified_variable
         (variable) @function)
     ])
@@ -415,7 +415,7 @@
 (exp_apply
   (exp_name
     [
-      ((variable) @function.call)
+      (variable) @function.call
       (qualified_variable
         (variable) @function.call)
     ]))
@@ -428,7 +428,7 @@
     (exp_infix
       (exp_name
         [
-          ((variable) @function.call)
+          (variable) @function.call
           (qualified_variable
             (variable) @function.call)
         ])
@@ -444,7 +444,7 @@
       .
       (exp_name
         [
-          ((variable) @function.call)
+          (variable) @function.call
           (qualified_variable
             (variable) @function.call)
         ]))))
@@ -455,7 +455,7 @@
   .
   (exp_name
     [
-      ((variable) @variable)
+      (variable) @variable
       (qualified_variable
         (variable) @variable)
     ]))
@@ -493,9 +493,9 @@
 
 ; signatures that have a function type
 ; + functions that follow them
-((signature
+(signature
   (variable) @function
-  (fun)))
+  (fun))
 
 ((signature
   (variable) @_type
@@ -505,10 +505,10 @@
     (variable) @function)
   (#eq? @function @_type))
 
-((signature
+(signature
   (variable) @function
   (context
-    (fun))))
+    (fun)))
 
 ((signature
   (variable) @_type
@@ -570,8 +570,8 @@
   (quasiquote_body) @string)
 
 (quasiquote
-  ((_
-    (variable) @_name))
+  (_
+    (variable) @_name)
   (#eq? @_name "qq")
   (quasiquote_body) @string)
 
@@ -613,7 +613,7 @@
 (exp_field
   field:
     [
-      ((variable) @variable.member)
+      (variable) @variable.member
       (qualified_variable
         (variable) @variable.member)
     ])

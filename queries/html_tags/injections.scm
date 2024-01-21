@@ -35,11 +35,11 @@
 ; <script type="mimetype-or-well-known-script-type">
 (script_element
   (start_tag
-    ((attribute
+    (attribute
       (attribute_name) @_attr
       (#eq? @_attr "type")
       (quoted_attribute_value
-        (attribute_value) @_type))))
+        (attribute_value) @_type)))
   (raw_text) @injection.content
   (#set-lang-from-mimetype! @_type))
 
@@ -72,14 +72,14 @@
   (_
     (tag_name) @_tagname
     (#eq? @_tagname "input")
-    ((attribute
+    (attribute
       (attribute_name) @_attr
       [
         (quoted_attribute_value
           (attribute_value) @injection.content)
         (attribute_value) @injection.content
       ]
-      (#eq? @_attr "pattern")))
+      (#eq? @_attr "pattern"))
     (#set! injection.language "regex")))
 
 ; <input type="checkbox" onchange="this.closest('form').elements.output.value = this.checked">
@@ -101,7 +101,7 @@
   ((attribute_name) @_name
     (#lua-match? @_name "^%*"))
   (quoted_attribute_value
-    ((attribute_value) @injection.content))
+    (attribute_value) @injection.content)
   (#set! injection.language "angular"))
 
 (element

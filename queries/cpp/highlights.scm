@@ -16,8 +16,8 @@
   declarator: (_) @variable.parameter)
 
 ;(field_expression) @variable.parameter ;; How to highlight this?
-(((field_expression
-  (field_identifier) @function.method)) @_parent
+((field_expression
+  (field_identifier) @function.method) @_parent
   (#has-parent? @_parent template_method function_declarator))
 
 (field_declaration

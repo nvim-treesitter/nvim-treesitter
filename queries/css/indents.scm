@@ -4,8 +4,8 @@
 ] @indent.begin
 
 (block
-  ("}") @indent.branch)
+  "}" @indent.branch)
 
-("}") @indent.dedent
+"}" @indent.dedent
 
 (comment) @indent.ignore

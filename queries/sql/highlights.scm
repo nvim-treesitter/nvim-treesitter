@@ -24,11 +24,11 @@
 (term
   alias: (identifier) @variable)
 
-((term
+(term
   value:
     (cast
       name: (keyword_cast) @function.call
-      parameter: (literal)?)))
+      parameter: (literal)?))
 
 (literal) @string
 

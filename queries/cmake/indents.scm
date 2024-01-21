@@ -19,8 +19,8 @@
   (endblock_command)
 ] @indent.branch
 
-(")" @indent.branch)
+")" @indent.branch
 
-(")" @indent.end)
+")" @indent.end
 
 (argument_list) @indent.auto

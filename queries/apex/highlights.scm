@@ -57,8 +57,8 @@
 (type_arguments
   ">" @punctuation.delimiter)
 
-((field_access
-  object: (identifier) @type))
+(field_access
+  object: (identifier) @type)
 
 (field_access
   field: (identifier) @property)

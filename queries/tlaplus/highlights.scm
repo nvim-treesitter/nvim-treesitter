@@ -96,10 +96,10 @@
 "await" @keyword.coroutine
 
 (pcal_with
-  ("=") @keyword)
+  "=" @keyword)
 
 (pcal_process
-  ("=") @keyword)
+  "=" @keyword)
 
 [
   "if"
@@ -119,9 +119,9 @@
   (pcal_end_with)
 ] @keyword.repeat
 
-("return") @keyword.return
+"return" @keyword.return
 
-("print") @function.macro
+"print" @function.macro
 
 ; Literals
 (binary_number
@@ -188,11 +188,11 @@
 (bound_prefix_op
   symbol: (_) @operator)
 
-((prefix_op_symbol) @operator)
+(prefix_op_symbol) @operator
 
-((infix_op_symbol) @operator)
+(infix_op_symbol) @operator
 
-((postfix_op_symbol) @operator)
+(postfix_op_symbol) @operator
 
 (function_definition
   name: (identifier) @function)
@@ -236,7 +236,7 @@
 (pcal_with
   (identifier) @variable.parameter)
 
-((".")
+("."
   .
   (identifier) @attribute)
 

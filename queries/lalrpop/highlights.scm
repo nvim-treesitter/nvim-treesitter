@@ -45,7 +45,7 @@
 
 (bare_symbol
   (macro
-    ((macro_id) @type.definition)))
+    (macro_id) @type.definition))
 
 (bare_symbol
   (identifier) @type.definition)

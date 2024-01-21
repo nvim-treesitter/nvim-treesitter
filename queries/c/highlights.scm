@@ -232,10 +232,10 @@
   (argument_list
     (identifier) @variable.builtin))
 
-((attribute_specifier
+(attribute_specifier
   (argument_list
     (call_expression
-      function: (identifier) @variable.builtin))))
+      function: (identifier) @variable.builtin)))
 
 ((call_expression
   function: (identifier) @function.builtin)

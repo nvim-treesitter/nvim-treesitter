@@ -24,12 +24,12 @@
 (import_statement
   name:
     (dotted_name
-      ((identifier) @local.definition.import)))
+      (identifier) @local.definition.import))
 
 (import_from_statement
   name:
     (dotted_name
-      ((identifier) @local.definition.import)))
+      (identifier) @local.definition.import))
 
 ; Function with parameters, defines parameters
 (parameters

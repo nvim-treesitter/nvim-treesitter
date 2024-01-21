@@ -15,8 +15,7 @@
   name: (identifier) @local.definition.function)
 
 (function_definition
-  name:
-    ((identifier) @local.definition.function)
+  name: (identifier) @local.definition.function
   (#set! definition.var.scope parent))
 
 (parameter

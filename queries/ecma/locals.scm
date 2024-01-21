@@ -28,11 +28,11 @@
   (identifier) @local.definition.import)
 
 (function_declaration
-  ((identifier) @local.definition.function)
+  (identifier) @local.definition.function
   (#set! definition.var.scope parent))
 
 (method_definition
-  ((property_identifier) @local.definition.function)
+  (property_identifier) @local.definition.function
   (#set! definition.var.scope parent))
 
 ; References

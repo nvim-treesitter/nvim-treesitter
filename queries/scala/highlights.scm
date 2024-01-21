@@ -60,8 +60,8 @@
 (import_declaration
   path: (identifier) @module)
 
-((stable_identifier
-  (identifier) @module))
+(stable_identifier
+  (identifier) @module)
 
 ((import_declaration
   path: (identifier) @type)
@@ -74,8 +74,8 @@
 (export_declaration
   path: (identifier) @module)
 
-((stable_identifier
-  (identifier) @module))
+(stable_identifier
+  (identifier) @module)
 
 ((export_declaration
   path: (identifier) @type)
@@ -274,7 +274,7 @@
 ; `case` is a conditional keyword in case_block
 (case_block
   (case_clause
-    ("case") @keyword.conditional))
+    "case" @keyword.conditional))
 
 (operator_identifier) @operator
 

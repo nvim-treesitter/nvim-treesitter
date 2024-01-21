@@ -38,9 +38,9 @@
 
 ; Handle the dot operator effectively - <My.Component>
 (jsx_opening_element
-  ((member_expression
+  (member_expression
     (identifier) @tag
-    (property_identifier) @constructor)))
+    (property_identifier) @constructor))
 
 (jsx_closing_element
   ((identifier) @constructor
@@ -48,9 +48,9 @@
 
 ; Handle the dot operator effectively - </My.Component>
 (jsx_closing_element
-  ((member_expression
+  (member_expression
     (identifier) @tag
-    (property_identifier) @constructor)))
+    (property_identifier) @constructor))
 
 (jsx_self_closing_element
   ((identifier) @constructor
@@ -58,8 +58,8 @@
 
 ; Handle the dot operator effectively - <My.Component />
 (jsx_self_closing_element
-  ((member_expression
+  (member_expression
     (identifier) @tag
-    (property_identifier) @constructor)))
+    (property_identifier) @constructor))
 
 (jsx_text) @none

@@ -176,7 +176,7 @@
 ; Non-String Sigils
 (sigil
   "~" @string.special
-  ((sigil_name) @string.special) @_sigil_name
+  (sigil_name) @string.special @_sigil_name
   quoted_start: _ @string.special
   quoted_end: _ @string.special
   ((sigil_modifiers) @string.special)?
@@ -185,7 +185,7 @@
 ; String Sigils
 (sigil
   "~" @string
-  ((sigil_name) @string) @_sigil_name
+  (sigil_name) @string @_sigil_name
   quoted_start: _ @string
   (quoted_content) @string
   quoted_end: _ @string
@@ -217,7 +217,7 @@
           (charlist)
           (sigil
             "~" @comment.documentation
-            ((sigil_name) @comment.documentation)
+            (sigil_name) @comment.documentation
             quoted_start: _ @comment.documentation
             (quoted_content) @comment.documentation
             quoted_end: _ @comment.documentation)

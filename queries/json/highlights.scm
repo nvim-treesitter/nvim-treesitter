@@ -28,7 +28,7 @@
   "}"
 ] @punctuation.bracket
 
-(("\"" @conceal)
+("\"" @conceal
   (#set! conceal ""))
 
 (escape_sequence) @string.escape

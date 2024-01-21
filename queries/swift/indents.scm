@@ -35,8 +35,8 @@
 ] @indent.begin
 
 ; @something(...)
-((modifiers
-  (attribute) @indent.begin))
+(modifiers
+  (attribute) @indent.begin)
 
 (function_declaration
   (modifiers

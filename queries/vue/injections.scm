@@ -12,7 +12,7 @@
 
 ; TODO: When nvim-treesitter has postcss and less parsers, use @injection.language and @injection.content instead
 ; <script lang="scss">
-((style_element
+(style_element
   (start_tag
     (attribute
       (attribute_name) @_lang
@@ -21,7 +21,7 @@
   (raw_text) @injection.content
   (#eq? @_lang "lang")
   (#any-of? @_scss "less" "postcss")
-  (#set! injection.language "scss")))
+  (#set! injection.language "scss"))
 
 ; <script lang="js">
 ((script_element
@@ -49,7 +49,7 @@
 
 ; <script lang="tsx">
 ; <script lang="jsx">
-((script_element
+(script_element
   (start_tag
     (attribute
       (attribute_name) @_attr
@@ -57,7 +57,7 @@
         (attribute_value) @injection.language)))
   (#eq? @_attr "lang")
   (#any-of? @injection.language "tsx" "jsx")
-  (raw_text) @injection.content))
+  (raw_text) @injection.content)
 
 ((interpolation
   (raw_text) @injection.content)
