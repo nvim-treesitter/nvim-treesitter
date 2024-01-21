@@ -119,6 +119,14 @@ list.arduino = {
   maintainers = { "@ObserverOfTime" },
 }
 
+list.asm = {
+  install_info = {
+    url = "https://github.com/RubixDev/tree-sitter-asm",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@RubixDev" },
+}
+
 list.astro = {
   install_info = {
     url = "https://github.com/virchau13/tree-sitter-astro",

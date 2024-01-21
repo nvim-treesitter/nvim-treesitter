@@ -14,6 +14,9 @@
   "arduino": {
     "revision": "ff1045f5da90344d547022c50f1756be4adaf721"
   },
+  "asm": {
+    "revision": "c7b1167ac0b4ded65850d0751bbbb107ed527566"
+  },
   "astro": {
     "revision": "a092afa5c330495fdfbc652766c29c66ec6880f4"
   },
