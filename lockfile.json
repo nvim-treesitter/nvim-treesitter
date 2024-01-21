@@ -743,6 +743,9 @@
   "yuck": {
     "revision": "c348825d3f86dec71dee0e1223c6bd73114e3579"
   },
+  "zathurarc": {
+    "revision": "0086e9ee0bc306276964ae088957b77935b846fd"
+  },
   "zig": {
     "revision": "0d08703e4c3f426ec61695d7617415fff97029bd"
   }
