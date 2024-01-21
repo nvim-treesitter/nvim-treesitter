@@ -204,7 +204,9 @@ local format_queries = [[
   [
     (named_node [ (named_node) (list) (grouping) (anonymous_node) (field_definition) ])
     (list "[" . (_) . (_) "]")
-    (grouping)
+    (grouping "(" . (_) . (_) ")")
+    (grouping
+      quantifier: (quantifier))
   ])
 
 ; ( (_) ) handler
@@ -240,6 +242,29 @@ local format_queries = [[
   (#not-has-type? @format.cancel-append comment))
 (grouping
   (capture) @format.prepend-space)
+;; Remove unnecessary parens
+(grouping
+  "(" @format.remove
+  .
+  (_)
+  .
+  ")" @format.remove .)
+(grouping
+  "(" @format.remove
+  .
+  [
+    (anonymous_node
+      name: (identifier) .)
+    (named_node
+      [
+        "_"
+        name: (identifier)
+      ] .)
+  ]
+  .
+  ")" @format.remove
+  .
+  (capture))
 
 (predicate
   (parameters
