@@ -28,7 +28,7 @@
   "false"
 ] @boolean
 
-("null") @type.builtin
+"null" @type.builtin
 
 ; Interpolation
 [

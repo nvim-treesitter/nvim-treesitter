@@ -105,8 +105,8 @@
   (#set! "definition.method.scope" "parent"))
 
 ; Enum
-((enum_definition
-  (name) @local.definition.enum))
+(enum_definition
+  (name) @local.definition.enum)
 
 ; Repeat
 (for_statement

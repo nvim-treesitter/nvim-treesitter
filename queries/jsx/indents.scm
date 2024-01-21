@@ -5,7 +5,7 @@
 ] @indent.begin
 
 (jsx_closing_element
-  (">" @indent.end))
+  ">" @indent.end)
 
 (jsx_self_closing_element
   "/>" @indent.end)

@@ -11,12 +11,12 @@
 (import_statement
   name:
     (dotted_name
-      ((python_identifier) @local.definition.import)))
+      (python_identifier) @local.definition.import))
 
 (import_from_statement
   name:
     (dotted_name
-      ((python_identifier) @local.definition.import)))
+      (python_identifier) @local.definition.import))
 
 ; Function with parameters, defines parameters
 (parameters

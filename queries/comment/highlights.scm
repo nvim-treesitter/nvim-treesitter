@@ -46,4 +46,4 @@
 ("text" @number
   (#lua-match? @number "^#[0-9]+$"))
 
-((uri) @string.special.url @nospell)
+(uri) @string.special.url @nospell

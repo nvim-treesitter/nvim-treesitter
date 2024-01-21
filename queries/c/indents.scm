@@ -42,7 +42,7 @@
   condition: (_) @indent.begin)
 
 ; Supports if without braces (but not both if-else without braces)
-((if_statement
+(if_statement
   consequence:
     (_
       ";" @indent.end) @_consequence
@@ -55,7 +55,7 @@
           (compound_statement) @indent.dedent)? @indent.dedent
         (compound_statement)? @indent.dedent
         (_)? @indent.dedent
-      ])?) @indent.begin)
+      ])?) @indent.begin
 
 (else_clause
   (_

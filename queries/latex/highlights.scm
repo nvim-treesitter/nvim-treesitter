@@ -193,7 +193,7 @@
   command: _ @module
   authors:
     (curly_group_author_list
-      ((author)+ @markup.heading.1)))
+      (author)+ @markup.heading.1))
 
 (chapter
   command: _ @module

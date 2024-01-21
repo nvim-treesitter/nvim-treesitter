@@ -150,17 +150,17 @@
 ; References
 (identifier_ref) @local.reference
 
-((prefix_op_symbol) @local.reference)
+(prefix_op_symbol) @local.reference
 
 (bound_prefix_op
   symbol: (_) @local.reference)
 
-((infix_op_symbol) @local.reference)
+(infix_op_symbol) @local.reference
 
 (bound_infix_op
   symbol: (_) @local.reference)
 
-((postfix_op_symbol) @local.reference)
+(postfix_op_symbol) @local.reference
 
 (bound_postfix_op
   symbol: (_) @local.reference)

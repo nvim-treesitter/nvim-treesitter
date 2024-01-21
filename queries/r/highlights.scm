@@ -24,9 +24,9 @@
   (identifier) @variable.builtin)
   (#eq? @variable.builtin "self"))
 
-((dollar
+(dollar
   _
-  (identifier) @variable.member))
+  (identifier) @variable.member)
 
 ; Parameters
 (formal_parameters
@@ -158,6 +158,6 @@
 
 (call
   function:
-    ((dollar
+    (dollar
       _
-      (identifier) @function.method.call)))
+      (identifier) @function.method.call))

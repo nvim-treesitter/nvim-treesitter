@@ -7,8 +7,7 @@
 
 ; html(`...`), html`...`, sql(...) etc
 (call_expression
-  function:
-    ((identifier) @injection.language)
+  function: (identifier) @injection.language
   arguments:
     [
       (arguments

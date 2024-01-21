@@ -50,8 +50,8 @@
   "type"
   (import_clause
     (named_imports
-      ((import_specifier
-        name: (identifier) @type)))))
+      (import_specifier
+        name: (identifier) @type))))
 
 (template_literal_type) @string
 

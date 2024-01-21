@@ -1,5 +1,5 @@
-((function_declaration
-  name: (identifier) @local.definition.function)) ;@function
+(function_declaration
+  name: (identifier) @local.definition.function) ;@function
 
 (var_declaration
   var_list:
@@ -7,8 +7,8 @@
       (reference_expression
         (identifier) @local.definition.var)))
 
-((function_declaration
-  name: (identifier) @local.definition.function))
+(function_declaration
+  name: (identifier) @local.definition.function)
 
 (const_declaration
   (const_definition

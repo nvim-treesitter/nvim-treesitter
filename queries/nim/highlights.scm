@@ -629,7 +629,7 @@
 
 ; NOTE: needs to be after @type
 ; generic types when declaring
-((generic_parameter_list
+(generic_parameter_list
   (parameter_declaration
     (symbol_declaration_list
       (symbol_declaration
@@ -638,7 +638,7 @@
             (identifier) @variable.parameter
             (accent_quoted
               (identifier) @variable.parameter)
-          ])))))
+          ]))))
 
 ; for loop variables
 (for

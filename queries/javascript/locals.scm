@@ -58,10 +58,10 @@
 ;     baz(y) { y }
 ;   }
 (method_definition
-  ([
+  [
     (property_identifier)
     (private_property_identifier)
-  ] @local.definition.function)
+  ] @local.definition.function
   (#set! definition.var.scope parent))
 
 ; this.foo()

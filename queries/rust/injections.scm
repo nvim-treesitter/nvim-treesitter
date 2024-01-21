@@ -19,8 +19,7 @@
   (#set! injection.language "comment"))
 
 ((macro_invocation
-  macro:
-    ((identifier) @injection.language)
+  macro: (identifier) @injection.language
   (token_tree) @injection.content)
   (#any-of? @injection.language "html" "json"))
 

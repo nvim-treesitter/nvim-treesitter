@@ -123,7 +123,7 @@
 ((identifier) @type
   (#lua-match? @type "^_?[%u].*[%l]")) ; catch Classes or IClasses not CLASSES
 
-("Function" @type)
+"Function" @type
 
 ; properties
 (unconditional_assignable_selector

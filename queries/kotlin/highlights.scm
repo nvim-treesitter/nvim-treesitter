@@ -92,22 +92,22 @@
   (simple_identifier) @function)
 
 (getter
-  ("get") @function.builtin)
+  "get" @function.builtin)
 
 (setter
-  ("set") @function.builtin)
+  "set" @function.builtin)
 
 (primary_constructor) @constructor
 
 (secondary_constructor
-  ("constructor") @constructor)
+  "constructor" @constructor)
 
 (constructor_invocation
   (user_type
     (type_identifier) @constructor))
 
 (anonymous_initializer
-  ("init") @constructor)
+  "init" @constructor)
 
 (parameter
   (simple_identifier) @variable.parameter)
@@ -182,7 +182,7 @@
 ;    - "[abc]?".toRegex()
 (call_expression
   (navigation_expression
-    ((string_literal) @string.regexp)
+    (string_literal) @string.regexp
     (navigation_suffix
       ((simple_identifier) @_function
         (#eq? @_function "toRegex")))))

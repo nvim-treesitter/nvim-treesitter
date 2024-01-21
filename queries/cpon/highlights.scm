@@ -47,7 +47,7 @@
   ">"
 ] @punctuation.bracket
 
-(("\"" @string)
+("\"" @string
   (#set! conceal ""))
 
 ; Comments

@@ -25,7 +25,7 @@
   (check_out)
 ] @markup.raw
 
-((account) @variable.member)
+(account) @variable.member
 
 "include" @keyword.import
 

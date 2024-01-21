@@ -12,8 +12,8 @@
   "for"
 ] @indent.begin
 
-((binary
-  operator: (special)) @indent.begin)
+(binary
+  operator: (special)) @indent.begin
 
 [
   "}"
