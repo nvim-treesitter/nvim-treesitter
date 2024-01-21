@@ -14,7 +14,7 @@
 
 (function_declaration
   (import_path
-    (identifier) @function.))
+    (identifier) @function .))
 
 (import_path
   (identifier) @module
