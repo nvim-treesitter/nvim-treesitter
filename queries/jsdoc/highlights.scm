@@ -1,3 +1,3 @@
-(tag_name) @keyword
+(tag_name) @keyword @nospell
 
-(type) @type
+(type) @type @nospell
