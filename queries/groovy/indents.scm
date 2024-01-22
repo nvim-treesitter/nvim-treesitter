@@ -8,16 +8,28 @@
 ] @indent.begin
 
 ; (function_definition "(" @indent.begin)
+(closure
+  "}" @indent.end)
 
-(closure "}" @indent.end)
-(argument_list ")" @indent.end)
-(for_parameters ")" @indent.end)
+(argument_list
+  ")" @indent.end)
+
+(for_parameters
+  ")" @indent.end)
+
 ((for_loop
   body: (_) @_body) @indent.begin
   (#not-has-type? @_body closure))
+
 ; TODO: while, try
+(list
+  "]" @indent.end)
 
-(list "]" @indent.end)
-(map "]" @indent.end)
+(map
+  "]" @indent.end)
 
-[ "}" ")" "]" ] @indent.branch
+[
+  "}"
+  ")"
+  "]"
+] @indent.branch
