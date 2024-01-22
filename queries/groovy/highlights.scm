@@ -1,70 +1,149 @@
-(unit
-  (identifier) @variable)
+[
+  "!in"
+  "!instanceof"
+  "as"
+  "assert"
+  "case"
+  "catch"
+  "class"
+  "def"
+  "default"
+  "else"
+  "extends"
+  "finally"
+  "for"
+  "if"
+  "import"
+  "in"
+  "instanceof"
+  "package"
+  "pipeline"
+  "return"
+  "switch"
+  "try"
+  "while"
+  (break)
+  (continue)
+] @keyword
 
-(string
-  (identifier) @variable)
+[
+  "true"
+  "false"
+] @boolean
 
-(escape_sequence) @string.escape
+(null) @constant
+"this" @variable.builtin
 
-(block
-  (unit
-    (identifier) @module))
+[ 
+  "int"
+  "char"
+  "short"
+  "long"
+  "boolean"
+  "float"
+  "double"
+  "void"
+] @type.builtin
 
-(func
-  (identifier) @function)
+[ 
+  "final"
+  "private"
+  "protected"
+  "public"
+  "static"
+  "synchronized"
+] @type.qualifier
 
-(number) @number
-
-((identifier) @boolean
-  (#any-of? @boolean "true" "false" "True" "False"))
-
-((identifier) @constant
-  (#lua-match? @constant "^[A-Z][A-Z%d_]*$"))
-
-((identifier) @constant.builtin
-  (#eq? @constant.builtin "null"))
-
-((identifier) @type
-  (#any-of? @type "String" "Map" "Object" "Boolean" "Integer" "List"))
-
-((identifier) @function.builtin
-  (#any-of? @function.builtin "void" "id" "version" "apply" "implementation" "testImplementation" "androidTestImplementation" "debugImplementation"))
-
-((identifier) @keyword
-  (#any-of? @keyword "static" "class" "def" "import" "package" "assert" "extends" "implements" "instanceof" "interface" "new"))
-
-((identifier) @type.qualifier
-  (#any-of? @type.qualifier "abstract" "protected" "private" "public"))
-
-((identifier) @keyword.exception
-  (#any-of? @keyword.exception "throw" "finally" "try" "catch"))
+(comment) @comment
+(shebang) @comment
 
 (string) @string
+(string (escape_sequence) @operator)
+(string (interpolation ([ "$" ]) @operator))
 
-[
-  (line_comment)
-  (block_comment)
-] @comment @spell
+("(") @punctuation.bracket
+(")") @punctuation.bracket
+("[") @punctuation.bracket
+("]") @punctuation.bracket
+("{") @punctuation.bracket
+("}") @punctuation.bracket
+(":") @punctuation.delimiter
+(",") @punctuation.delimiter
+(".") @punctuation.delimiter
 
-((block_comment) @comment.documentation
-  (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
+(number_literal) @number
+(identifier) @variable
+((identifier) @parameter
+  (#is? @parameter "parameter"))
 
-((line_comment) @comment.documentation
-  (#lua-match? @comment.documentation "^///[^/]"))
+((identifier) @constant
+  (#match? @constant "^[A-Z][A-Z_]+"))
 
-((line_comment) @comment.documentation
-  (#lua-match? @comment.documentation "^///$"))
-
-[
-  (operators)
-  (leading_key)
+[ 
+  "%" "*" "/" "+" "-" "<<" ">>" ">>>" ".." "..<" "<..<" "<.." "<"
+  "<=" ">" ">=" "==" "!=" "<=>" "===" "!==" "=~" "==~" "&" "^" "|"
+  "&&" "||" "?:" "+" "*" ".&" ".@" "?." "*." "*" "*:" "++" "--" "!"
 ] @operator
 
-[
-  "("
-  ")"
-  "["
-  "]"
-  "{"
-  "}"
-] @punctuation.bracket
+(string ("/") @string)
+
+(ternary_op ([ "?" ":" ]) @operator)
+
+(map (map_item key: (identifier) @parameter))
+
+(parameter type: (identifier) @type name: (identifier) @parameter)
+(generic_param name: (identifier) @parameter)
+
+(declaration type: (identifier) @type)
+(function_definition type: (identifier) @type)
+(function_declaration type: (identifier) @type)
+(class_definition name: (identifier) @type)
+(class_definition superclass: (identifier) @type)
+(generic_param superclass: (identifier) @type)
+
+(type_with_generics (identifier) @type)
+(type_with_generics (generics (identifier) @type))
+(generics [ "<" ">" ] @punctuation.bracket)
+(generic_parameters [ "<" ">" ] @punctuation.bracket)
+; TODO: Class literals with PascalCase
+
+(declaration ("=") @operator)
+(assignment ("=") @operator)
+
+
+(function_call 
+  function: (identifier) @function)
+(function_call
+  function: (dotted_identifier
+	  (identifier) @function . ))
+(function_call (argument_list
+		 (map_item key: (identifier) @parameter)))
+(juxt_function_call 
+  function: (identifier) @function)
+(juxt_function_call
+  function: (dotted_identifier
+	  (identifier) @function . ))
+(juxt_function_call (argument_list 
+		      (map_item key: (identifier) @parameter)))
+
+(function_definition 
+  function: (identifier) @function)
+(function_declaration 
+  function: (identifier) @function)
+
+(annotation) @function.macro
+(annotation (identifier) @function.macro)
+"@interface" @function.macro
+
+"pipeline" @keyword
+
+(groovy_doc) @comment.documentation
+(groovy_doc 
+  [
+    (groovy_doc_param)
+    (groovy_doc_throws)
+    (groovy_doc_tag)
+  ] @string.special)
+(groovy_doc (groovy_doc_param (identifier) @parameter))
+(groovy_doc (groovy_doc_throws (identifier) @type))
+(groovy_doc (first_line) @text)
