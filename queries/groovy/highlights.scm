@@ -90,9 +90,6 @@
 
 (identifier) @variable
 
-((identifier) @variable.parameter
-  (#is? @variable.parameter "local.parameter"))
-
 ((identifier) @constant
   (#match? @constant "^[A-Z][A-Z_]+"))
 
@@ -153,7 +150,9 @@
     key: (identifier) @variable.parameter))
 
 (parameter
-  type: (identifier) @type
+  type: (identifier) @type)
+
+(parameter
   name: (identifier) @variable.parameter)
 
 (generic_param
