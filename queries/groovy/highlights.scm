@@ -66,7 +66,7 @@
 
 (string
   (interpolation
-    ("$") @operator))
+    "$" @operator))
 
 "(" @punctuation.bracket
 
