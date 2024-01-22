@@ -73,8 +73,8 @@
 
 (number_literal) @number
 (identifier) @variable
-((identifier) @parameter
-  (#is? @parameter "parameter"))
+((identifier) @variable.parameter
+  (#is? @variable.parameter "local.parameter"))
 
 ((identifier) @constant
   (#match? @constant "^[A-Z][A-Z_]+"))
@@ -89,10 +89,10 @@
 
 (ternary_op ([ "?" ":" ]) @operator)
 
-(map (map_item key: (identifier) @parameter))
+(map (map_item key: (identifier) @variable.parameter))
 
-(parameter type: (identifier) @type name: (identifier) @parameter)
-(generic_param name: (identifier) @parameter)
+(parameter type: (identifier) @type name: (identifier) @variable.parameter)
+(generic_param name: (identifier) @variable.parameter)
 
 (declaration type: (identifier) @type)
 (function_definition type: (identifier) @type)
@@ -117,14 +117,14 @@
   function: (dotted_identifier
 	  (identifier) @function . ))
 (function_call (argument_list
-		 (map_item key: (identifier) @parameter)))
+		 (map_item key: (identifier) @variable.parameter)))
 (juxt_function_call 
   function: (identifier) @function)
 (juxt_function_call
   function: (dotted_identifier
 	  (identifier) @function . ))
 (juxt_function_call (argument_list 
-		      (map_item key: (identifier) @parameter)))
+		      (map_item key: (identifier) @variable.parameter)))
 
 (function_definition 
   function: (identifier) @function)
@@ -144,6 +144,5 @@
     (groovy_doc_throws)
     (groovy_doc_tag)
   ] @string.special)
-(groovy_doc (groovy_doc_param (identifier) @parameter))
+(groovy_doc (groovy_doc_param (identifier) @variable.parameter))
 (groovy_doc (groovy_doc_throws (identifier) @type))
-(groovy_doc (first_line) @text)

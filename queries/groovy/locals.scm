@@ -1,6 +1,6 @@
 [
   (function_definition)
-] @scope
-(parameter name: (identifier) @definition.parameter)
+] @local.scope
+(parameter name: (identifier) @local.definition.parameter)
 
-(identifier) @reference
+(identifier) @local.reference
