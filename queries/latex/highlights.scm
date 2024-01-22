@@ -156,6 +156,12 @@
     (curly_group_text
       (_) @markup.link))
 
+; Formatting
+(text_mode
+  content:
+    (curly_group
+      (_) @none @spell))
+
 ; Math
 [
   (displayed_equation)
@@ -167,17 +173,17 @@
     command: _ @markup.math
     name:
       (curly_group_text
-        (text) @markup.math)))
+        (_) @markup.math)))
 
 (math_environment
-  (text) @markup.math)
+  (_) @markup.math)
 
 (math_environment
   (end
     command: _ @markup.math
     name:
       (curly_group_text
-        (text) @markup.math)))
+        (_) @markup.math)))
 
 ; Sectioning
 (title_declaration
@@ -275,12 +281,6 @@
     (curly_group
       (text) @markup.heading))
   (#eq? @_name "\\frametitle"))
-
-; Formatting
-(text_mode
-  content:
-    (curly_group
-      (_) @none @spell))
 
 ((generic_command
   command: (command_name) @_name
