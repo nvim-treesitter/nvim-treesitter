@@ -13,22 +13,22 @@
 (pipe_call
   arguments:
     (pipe_arguments
-      (identifier) @parameter))
+      (identifier) @variable.parameter))
 
 (structural_directive
   "*" @keyword
   (identifier) @keyword)
 
 (attribute
-  (attribute_name) @variable.template
-  (#lua-match? @variable.template "#.*"))
+  (attribute_name) @variable.member
+  (#lua-match? @variable.member "#.*"))
 
 (binding_name
   (identifier) @keyword)
 
 (event_binding
   (binding_name
-    (identifier) @keyword.event))
+    (identifier) @keyword))
 
 (event_binding
   "\"" @punctuation.delimiter)
@@ -55,17 +55,17 @@
     ((identifier) @variable.builtin
       (#eq? @variable.builtin "$implicit")))
 
-((control_keyword) @repeat
-  (#any-of? @repeat "for" "empty"))
+((control_keyword) @keyword.repeat
+  (#any-of? @keyword.repeat "for" "empty"))
 
-((control_keyword) @conditional
-  (#any-of? @conditional "if" "else" "switch" "case" "default"))
+((control_keyword) @keyword.conditional
+  (#any-of? @keyword.conditional "if" "else" "switch" "case" "default"))
 
 ((control_keyword) @keyword.coroutine
   (#any-of? @keyword.coroutine "defer" "placeholder" "loading"))
 
-((control_keyword) @exception
-  (#eq? @exception "error"))
+((control_keyword) @keyword.exception
+  (#eq? @keyword.exception "error"))
 
 (special_keyword) @keyword
 
@@ -78,7 +78,7 @@
 [
   (ternary_operator)
   (conditional_operator)
-] @conditional.ternary
+] @keyword.conditional.ternary
 
 [
   "("
@@ -87,8 +87,6 @@
   "]"
   "{"
   "}"
-  "{{"
-  "}}"
   "@"
   "} @"
   (if_end_expression)
@@ -98,6 +96,11 @@
   (default_end_expression)
   (defer_end_expression)
 ] @punctuation.bracket
+
+[
+  "{{"
+  "}}"
+] @punctuation.special
 
 [
   ";"
