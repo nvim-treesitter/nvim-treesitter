@@ -28,6 +28,8 @@
 [
   (operator)
   "="
+  "_"
+  "^"
 ] @operator
 
 "\\item" @punctuation.special
