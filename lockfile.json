@@ -450,7 +450,7 @@
     "revision": "b569a5f2c0d592e67430520d1a0e1f765d83ceb0"
   },
   "phpdoc": {
-    "revision": "915a527d5aafa81b31acf67fab31b0ac6b6319c0"
+    "revision": "eb9ef97a1a9a6489d003a45a36a9edbcc8177087"
   },
   "pioasm": {
     "revision": "924aadaf5dea2a6074d72027b064f939acf32e20"
@@ -642,7 +642,7 @@
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
   },
   "templ": {
-    "revision": "d7d19f10e50c41bce569ffef8b2ff38452594016"
+    "revision": "a3ef3d8e73515b196d30adf9ee5115f057f7a2c6"
   },
   "terraform": {
     "revision": "e135399cb31b95fac0760b094556d1d5ce84acf0"
@@ -726,7 +726,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "7c4c3551206f737bc4bfb51fbcc2344311984203"
+    "revision": "e18f14eaf817cba0d2f782ed4a2d51273faf1d44"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
@@ -744,7 +744,7 @@
     "revision": "c348825d3f86dec71dee0e1223c6bd73114e3579"
   },
   "zathurarc": {
-    "revision": "0086e9ee0bc306276964ae088957b77935b846fd"
+    "revision": "b47016df5688ef91ad4532138b6210c7944d6483"
   },
   "zig": {
     "revision": "0d08703e4c3f426ec61695d7617415fff97029bd"
