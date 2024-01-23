@@ -162,12 +162,18 @@ end
 
 function M.detach(bufnr)
   local config = configs.get_module "incremental_selection"
+  ---@type string
+  local mode
   for f, mapping in pairs(config.keymaps) do
     if mapping then
       if f == "init_selection" then
-        vim.keymap.del("n", mapping, { buffer = bufnr })
+        mode = "n"
       else
-        vim.keymap.del("x", mapping, { buffer = bufnr })
+        mode = "x"
+      end
+      local ok, err = pcall(vim.keymap.del, mode, mapping, { buffer = bufnr })
+      if not ok then
+        vim.notify(('%s "%s" for mode "%s"'):format(err, mapping, mode), vim.log.levels.DEBUG, {title = "nvim-treesitter"})
       end
     end
   end
