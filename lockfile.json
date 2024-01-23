@@ -45,7 +45,7 @@
     "revision": "863cea9f83ad5637300478e0559262f1e791684b"
   },
   "c": {
-    "revision": "212a80f86452bb1316324fa0db730cf52f29e05a"
+    "revision": "34f4c7e751f4d661be3e23682fe2631d6615141d"
   },
   "c_sharp": {
     "revision": "dd5e59721a5f8dae34604060833902b882023aaf"
@@ -267,7 +267,7 @@
     "revision": "0135187126370cbf112d759a50eab4a5c913a827"
   },
   "html": {
-    "revision": "d742025fa2d8e6100f134a6ea990443aa1f074b3"
+    "revision": "949b78051835564bca937565241e5e337d838502"
   },
   "htmldjango": {
     "revision": "8873e3df89f9ea1d33f6235e516b600009288557"
@@ -351,7 +351,7 @@
     "revision": "9668709211b2e683f27f414454a8b51bf0a6bda1"
   },
   "luadoc": {
-    "revision": "990926b13488a4bc0fc0804fc0f8400b5b0a1fb4"
+    "revision": "6ebdac83b4789069c4939713efae7176cc3126de"
   },
   "luap": {
     "revision": "31461ae9bd0866cb5117cfe5de71189854fd0f3e"
@@ -444,10 +444,10 @@
     "revision": "a30394f61b607f48c841c6e085d5219f23872816"
   },
   "php": {
-    "revision": "b569a5f2c0d592e67430520d1a0e1f765d83ceb0"
+    "revision": "e3002a11a72773bbaf3bab0e59fb64e6992b79ab"
   },
   "php_only": {
-    "revision": "b569a5f2c0d592e67430520d1a0e1f765d83ceb0"
+    "revision": "e3002a11a72773bbaf3bab0e59fb64e6992b79ab"
   },
   "phpdoc": {
     "revision": "eb9ef97a1a9a6489d003a45a36a9edbcc8177087"
@@ -555,7 +555,7 @@
     "revision": "4d9ad3f010fdc47a8433adcf9ae30c8eb8475ae7"
   },
   "rust": {
-    "revision": "79456e6080f50fc1ca7c21845794308fa5d35a51"
+    "revision": "e0e8b6de6e4aa354749c794f5f36a906dcccda74"
   },
   "scala": {
     "revision": "45b5ba0e749a8477a8fd2666f082f352859bdc3c"
@@ -624,7 +624,7 @@
     "revision": "697bb515471871e85ff799ea57a76298a71a9cca"
   },
   "swift": {
-    "revision": "f1a48a33a7ceaf8817f7a340ea4ef1b549ffa176"
+    "revision": "1c586339fb00014b23d6933f2cc32b588a226f3b"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -726,7 +726,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "e18f14eaf817cba0d2f782ed4a2d51273faf1d44"
+    "revision": "fcef888d09f5064a16e3648d48bd628726c766d3"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
