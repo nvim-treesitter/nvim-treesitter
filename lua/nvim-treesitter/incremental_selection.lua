@@ -173,7 +173,11 @@ function M.detach(bufnr)
       end
       local ok, err = pcall(vim.keymap.del, mode, mapping, { buffer = bufnr })
       if not ok then
-        vim.notify(('%s "%s" for mode "%s"'):format(err, mapping, mode), vim.log.levels.DEBUG, {title = "nvim-treesitter"})
+        vim.notify(
+          ('%s "%s" for mode "%s"'):format(err, mapping, mode),
+          vim.log.levels.DEBUG,
+          {title = "nvim-treesitter"}
+        )
       end
     end
   end
