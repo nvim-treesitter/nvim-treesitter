@@ -176,7 +176,7 @@ function M.detach(bufnr)
         vim.notify(
           ('%s "%s" for mode "%s"'):format(err, mapping, mode),
           vim.log.levels.DEBUG,
-          {title = "nvim-treesitter"}
+          { title = "nvim-treesitter" }
         )
       end
     end
