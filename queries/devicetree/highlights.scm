@@ -30,8 +30,8 @@
 (property
   (identifier) @property)
 
-(labeled_item
-  (identifier) @label)
+(node
+  label: (_) @label)
 
 (call_expression
   (identifier) @function.macro)
