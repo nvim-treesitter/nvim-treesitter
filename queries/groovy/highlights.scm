@@ -4,34 +4,45 @@
   "as"
   "assert"
   "case"
-  "catch"
   "class"
-  "def"
   "default"
-  "else"
   "extends"
-  "finally"
-  "for"
-  "if"
-  "import"
   "in"
   "instanceof"
   "package"
-  "pipeline"
-  "return"
   "switch"
+] @keyword
+
+[
+  "else"
+  "if"
+] @keyword.conditional
+
+[
+  "catch"
+  "finally"
   "try"
+] @keyword.exception
+
+"def" @keyword.function
+
+"import" @keyword.import
+
+[
+  "for"
   "while"
   (break)
   (continue)
-] @keyword
+] @keyword.repeat
+
+"return" @keyword.return
 
 [
   "true"
   "false"
 ] @boolean
 
-(null) @constant
+(null) @constant.builtin
 
 "this" @variable.builtin
 
@@ -55,9 +66,9 @@
   "synchronized"
 ] @type.qualifier
 
-(comment) @comment
+(comment) @comment @spell
 
-(shebang) @comment
+(shebang) @keyword.directive
 
 (string) @string
 
@@ -68,23 +79,20 @@
   (interpolation
     "$" @operator))
 
-"(" @punctuation.bracket
+[
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+] @punctuation.bracket
 
-")" @punctuation.bracket
-
-"[" @punctuation.bracket
-
-"]" @punctuation.bracket
-
-"{" @punctuation.bracket
-
-"}" @punctuation.bracket
-
-":" @punctuation.delimiter
-
-"," @punctuation.delimiter
-
-"." @punctuation.delimiter
+[
+  ":"
+  ","
+  "."
+] @punctuation.delimiter
 
 (number_literal) @number
 
@@ -150,9 +158,7 @@
     key: (identifier) @variable.parameter))
 
 (parameter
-  type: (identifier) @type)
-
-(parameter
+  type: (identifier) @type
   name: (identifier) @variable.parameter)
 
 (generic_param
@@ -241,21 +247,19 @@
 
 "@interface" @function.macro
 
-"pipeline" @keyword
-
-(groovy_doc) @comment.documentation
+(groovy_doc) @comment.documentation @spell
 
 (groovy_doc
   [
     (groovy_doc_param)
     (groovy_doc_throws)
     (groovy_doc_tag)
-  ] @string.special)
+  ] @string.special @nospell)
 
 (groovy_doc
   (groovy_doc_param
-    (identifier) @variable.parameter))
+    (identifier) @variable.parameter) @nospell)
 
 (groovy_doc
   (groovy_doc_throws
-    (identifier) @type))
+    (identifier) @type @nospell))
