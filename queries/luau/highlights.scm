@@ -43,6 +43,12 @@
     "end"
   ] @keyword.conditional)
 
+(if_expression
+  [
+    "if"
+    "then"
+  ] @keyword.conditional)
+
 (elseif_statement
   [
     "elseif"
@@ -50,11 +56,20 @@
     "end"
   ] @keyword.conditional)
 
+(elseif_clause
+  [
+    "elseif"
+    "then"
+  ] @keyword.conditional)
+
 (else_statement
   [
     "else"
     "end"
   ] @keyword.conditional)
+
+(else_clause
+  "else" @keyword.conditional)
 
 (for_statement
   [
@@ -100,7 +115,6 @@
   ">"
   "="
   "&"
-  "~"
   "|"
   "?"
   "//"
