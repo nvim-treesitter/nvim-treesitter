@@ -84,7 +84,7 @@ ecma (queries only)[^ecma] | core | `HFIJL` |  |  | @steelsojka
 [glsl](https://github.com/theHamsta/tree-sitter-glsl) | core | `HFIJL` |  | ✓ | @theHamsta
 [gn](https://github.com/amaanq/tree-sitter-gn) | core | `HFIJL` |  |  | @amaanq
 [go](https://github.com/tree-sitter/tree-sitter-go) | stable | `HFIJL` |  |  | @theHamsta, @WinWisely268
-[godot_resource](https://github.com/PrestonKnopp/tree-sitter-godot-resource)[^godot_resource] | community | `HF  L` |  |  | @pierpo
+[godot_resource](https://github.com/PrestonKnopp/tree-sitter-godot-resource)[^godot_resource] | community | `HF JL` |  |  | @pierpo
 [gomod](https://github.com/camdencheek/tree-sitter-go-mod) | community | `H  J ` |  |  | @camdencheek
 [gosum](https://github.com/amaanq/tree-sitter-go-sum) | core | `H    ` |  |  | @amaanq
 [gowork](https://github.com/omertuc/tree-sitter-go-work) | community | `H  J ` |  |  | @omertuc
