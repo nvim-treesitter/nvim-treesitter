@@ -4,6 +4,9 @@
   (#eq? @keyword "value")
   (#has-ancestor? @keyword accessor_declaration))
 
+((identifier) @variable.builtin
+  (#eq? @variable.builtin "_"))
+
 (method_declaration
   name: (identifier) @function.method)
 
@@ -20,6 +23,9 @@
   type: (identifier) @type)
 
 (interpolation) @none
+
+(member_access_expression
+  name: (identifier) @variable.member)
 
 (invocation_expression
   (member_access_expression
@@ -41,6 +47,14 @@
 (qualified_name
   (identifier) @type)
 
+(namespace_declaration
+  name:
+    [
+      (qualified_name
+        (identifier) @module)
+      (identifier) @module
+    ])
+
 (invocation_expression
   (identifier) @function.method.call)
 
@@ -54,6 +68,10 @@
     left: (identifier) @variable.member))
 
 (parameter_list
+  (parameter
+    name: (identifier) @variable.parameter))
+
+(implicit_parameter_list
   (parameter
     name: (identifier) @variable.parameter))
 
@@ -349,6 +367,7 @@
 [
   (this_expression)
   (base_expression)
+  "this"
 ] @variable.builtin
 
 [
