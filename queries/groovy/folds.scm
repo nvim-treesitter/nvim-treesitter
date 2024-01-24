@@ -1,4 +1,4 @@
 [
- (closure)
- (argument_list)
+  (closure)
+  (argument_list)
 ] @fold
