@@ -2,6 +2,8 @@
 ; Copyright (c) 2017 Maxim Sokolov
 ; Licensed under the MIT license.
 ; Identifier conventions
+(shebang) @keyword.directive
+
 (identifier) @variable
 
 ((identifier) @type
@@ -277,6 +279,8 @@
   "await"
 ] @keyword.coroutine
 
+"try" @keyword.exception
+
 [
   "ref"
   (mutable_specifier)
@@ -364,6 +368,7 @@
   "-="
   ".."
   "..="
+  "..."
   "/"
   "/="
   "<"
