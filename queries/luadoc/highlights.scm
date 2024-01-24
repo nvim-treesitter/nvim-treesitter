@@ -13,6 +13,7 @@
   "@generic"
   "@vararg"
   "@diagnostic"
+  "@cast"
   "@deprecated"
   "@meta"
   "@source"
@@ -24,6 +25,7 @@
   "@enum"
   "@language"
   "@see"
+  "@as"
   "extends"
   (diagnostic_identifier)
 ] @keyword
@@ -54,9 +56,12 @@
   "public"
   "protected"
   "private"
+  "package"
   "@public"
   "@protected"
   "@private"
+  "(exact)"
+  "(key)"
 ] @type.qualifier
 
 ; Variables
@@ -93,6 +98,12 @@
   .
   (identifier) @variable.member)
 
+(member_type
+  (identifier) @module)
+
+(member_type
+  (identifier) @type .)
+
 ; Types
 (table_type
   "table" @type.builtin)
@@ -115,19 +126,35 @@
 (type) @type
 
 ; Operators
-"|" @operator
+[
+  "|"
+  "+"
+  "-"
+] @operator
 
 ; Literals
-(string) @module ; only used in @module
+[
+  (string)
+  (literal_type)
+  "`"
+] @string
 
-(literal_type) @string
+(module_annotation
+  (string) @module)
 
-(number) @number
+[
+  (number)
+  (numeric_literal_type)
+] @number
 
 ; Punctuation
 [
   "["
   "]"
+  "[["
+  "]]"
+  "[=["
+  "]=]"
 ] @punctuation.bracket
 
 [
