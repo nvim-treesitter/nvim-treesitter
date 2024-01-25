@@ -23,7 +23,7 @@
 (parameter
   (variable_name) @variable.parameter)
 
-(type_list
+(union_type
   [
     (array_type)
     (primitive_type)
@@ -31,7 +31,7 @@
     (optional_type)
   ] @type)
 
-(type_list) @nospell
+(union_type) @nospell
 
 (variable_name) @nospell
 
@@ -48,7 +48,7 @@
 (tag
   (email_address) @string.special.url)
 
-(type_list
+(union_type
   "|" @keyword)
 
 (variable_name
