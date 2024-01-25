@@ -1,6 +1,10 @@
 (comment) @comment
 
-[ "source" "exec" "exec-once" ] @keyword
+[
+  "source"
+  "exec"
+  "exec-once"
+] @keyword
 
 (keyword
   (name) @keyword)
@@ -15,7 +19,9 @@
   device: (name) @type)
 
 (variable) @variable
-(variable "$" @punctuation.special)
+
+(variable
+  "$" @punctuation.special)
 
 (number) @number
 
@@ -32,11 +38,13 @@
   (legacy_hex) @number)
 
 (angle) @number
-(angle "deg" @type)
+
+(angle
+  "deg" @type)
 
 (hex) @number
 
-[ "," ] @punctuation.delimiter
+"," @punctuation.delimiter
 
 [
   "("
