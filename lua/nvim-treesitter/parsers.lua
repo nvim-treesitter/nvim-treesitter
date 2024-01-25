@@ -1734,10 +1734,10 @@ list.slang = {
 
 list.slint = {
   install_info = {
-    url = "https://github.com/jrmoulton/tree-sitter-slint",
+    url = "https://github.com/slint-ui/tree-sitter-slint",
     files = { "src/parser.c" },
   },
-  maintainers = { "@jrmoulton" },
+  maintainers = { "@hunger" },
   experimental = true,
 }
 

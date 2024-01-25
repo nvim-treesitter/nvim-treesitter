@@ -1,14 +1,26 @@
 [
-  (comp_body)
-  (state_statement)
-  (transition_statement)
-  (handler_body)
-  (consequence_body)
-  (global_single)
+  (arguments)
+  (block)
+  (enum_block)
+  (global_block)
+  (imperative_block)
+  (struct_block)
+  (typed_identifier)
 ] @indent.begin
 
-"}" @indent.end
+([
+  (block)
+  (enum_block)
+  (global_block)
+  (imperative_block)
+  (struct_block)
+]
+  "}" @indent.end)
 
-(comment) @indent.auto
+([
+  (arguments)
+  (typed_identifier)
+]
+  ")" @indent.end)
 
-(string_literal) @indent.auto
+(string_value) @indent.auto
