@@ -5,7 +5,6 @@
   (declaration
     (initializers))
   (switch_block)
-  (if_statement)
   (formal_parameter_list)
   (formal_parameter)
   (list_literal)
@@ -41,8 +40,10 @@
 (break_statement
   ";" @indent.end)
 
-; this one is for dedenting the else block
-(if_statement
-  (block) @indent.branch)
-
 (comment) @indent.ignore
+
+; dedenting the else block is painfully slow; replace with simpler strategy
+; (if_statement) @indent.begin
+; (if_statement
+;   (block) @indent.branch)
+(if_statement) @indent.auto
