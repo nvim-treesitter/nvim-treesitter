@@ -254,6 +254,7 @@ function M.find_usages(node, scope_node, bufnr)
   local usages = {}
 
   for match in M.iter_locals(bufnr, scope_node) do
+    match = match["local"]
     if match.reference and match.reference.node and ts.get_node_text(match.reference.node, bufnr) == node_text then
       local def_node, _, kind = M.find_definition(match.reference.node, bufnr)
 
