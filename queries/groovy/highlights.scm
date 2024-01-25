@@ -73,11 +73,11 @@
 (string) @string
 
 (string
-  (escape_sequence) @operator)
+  (escape_sequence) @string.escape)
 
 (string
   (interpolation
-    "$" @operator))
+    "$" @punctuation.special))
 
 [
   "("
@@ -151,7 +151,7 @@
   ([
     "?"
     ":"
-  ]) @operator)
+  ]) @keyword.conditional.ternary)
 
 (map
   (map_item
