@@ -73,7 +73,7 @@
 
 (c_pause
   "pause" @keyword
-  "mouse" @field
+  "mouse" @variable.member
   _? @attribute
   (","
     _ @attribute)?)
@@ -88,7 +88,7 @@
 (c_stats
   "stats" @keyword
   ("name"
-    (_))? @field)
+    (_))? @variable.member)
 
 [
   "via"
@@ -102,7 +102,7 @@
 ] @conditional
 
 (plot_element
-  "axes"? @field)
+  "axes"? @variable.member)
 
 (cntrparam
   "auto"? @property)
@@ -111,7 +111,7 @@
   "origin"? @attribute)
 
 (contourfill
-  "auto"? @field)
+  "auto"? @variable.member)
 
 (format
   _? @attribute
@@ -285,7 +285,7 @@
   "filetype"
   "center"
   "record"
-] @field
+] @variable.member
 
 [(angles)
 (clip)
@@ -592,7 +592,7 @@
   "palette" @attribute)
 
 (datafile_modifiers
-  "origin"? @field)
+  "origin"? @variable.member)
 
 ((datafile_modifiers
   filetype: (identifier) @property)
