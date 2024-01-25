@@ -1697,7 +1697,8 @@ list.slang = {
 list.slint = {
   install_info = {
     url = "https://github.com/slint-ui/slint",
-    files = { "editors/tree-sitter-slint/src/parser.c" },
+    files = { "src/parser.c" },
+    location = "editors/tree-sitter-slint",
   },
   maintainers = { "@hunger" },
   experimental = true,
