@@ -200,6 +200,8 @@
 ; doc-strings
 (module
   .
+  (comment)*
+  .
   (expression_statement
     (string) @string.documentation @spell))
 
