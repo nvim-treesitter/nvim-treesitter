@@ -26,7 +26,7 @@
 (string) @string
 
 ((string) @string.special.path
-  (#lua-match? @string.special.path "^[.]?[/]"))
+  (#lua-match? @string.special.path "^[.]?[.]?[/]"))
 
 ((string) @string.special.path
   (#lua-match? @string.special.path "^[~]"))
