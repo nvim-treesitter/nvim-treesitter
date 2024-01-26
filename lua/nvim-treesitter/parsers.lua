@@ -33,6 +33,8 @@ for ft, lang in pairs {
   py = "python",
   erl = "erlang",
   typ = "typst",
+  pl = "perl",
+  uxn = "uxntal",
 } do
   ts.language.register(lang, ft)
 end
