@@ -1,21 +1,317 @@
-; Misc
+; Keywords
 [
-  (line_comment)
-  (block_comment)
-  (nesting_block_comment)
-] @comment @spell
+  (directive)
+  (shebang)
+] @keyword.directive
 
-((line_comment) @comment.documentation
-  (#lua-match? @comment.documentation "^///[^/]"))
+[
+  (import)
+  (module)
+] @keyword.import
 
-((line_comment) @comment.documentation
-  (#lua-match? @comment.documentation "^///$"))
+[
+  (alias)
+  (asm)
+  (class)
+  (delegate)
+  (delete)
+  (enum)
+  (interface)
+  (invariant)
+  (mixin)
+  (pragma)
+  (struct)
+  (template)
+  (union)
+  (unittest)
+  (version)
+  (with)
+  (traits)
+  (vector)
+  (parameters_)
+  (default)
+  (goto)
+] @keyword
 
-((block_comment) @comment.documentation
-  (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
+(function) @keyword.function
 
-((nesting_block_comment) @comment.documentation
-  (#lua-match? @comment.documentation "^/[+][+][^+].*[+]/$"))
+(synchronized) @keyword.coroutine
+
+[
+  (if)
+  (else)
+  (switch)
+  (case)
+  (break)
+] @keyword.conditional
+
+[
+  (do)
+  (for)
+  (foreach)
+  (foreach_reverse)
+  (while)
+  (continue)
+] @keyword.repeat
+
+(return) @keyword.return
+
+[
+  (abstract)
+  (deprecated)
+  (private)
+  (protected)
+  (public)
+  (package)
+  (immutable)
+  (final)
+  (const)
+  (override)
+  (static)
+] @type.qualifier
+
+[
+  (assert)
+  (try)
+  (catch)
+  (finally)
+  (throw)
+  (nothrow)
+] @keyword.exception
+
+[
+  (cast)
+  (new)
+  (in)
+  (is)
+  (not_in)
+  (not_is)
+  (typeid)
+  (typeof)
+] @keyword.operator
+
+[
+  (lazy)
+  (align)
+  (extern)
+  (scope)
+  (ref)
+  (pure)
+  (export)
+  (shared)
+  (gshared)
+  (out)
+  (inout)
+] @keyword.storage
+
+(parameter_attribute
+  (return) @keyword.storage)
+
+(parameter_attribute
+  (in) @keyword.storage)
+
+(parameter_attribute
+  (out) @keyword.storage)
+
+(debug) @keyword.debug
+
+; Operators
+[
+  "/="
+  "/"
+  ".."
+  "&"
+  "&="
+  "&&"
+  "|"
+  "|="
+  "||"
+  "-"
+  "-="
+  "--"
+  "+"
+  "+="
+  "++"
+  "<"
+  "<="
+  "<<"
+  "<<="
+  ">"
+  ">="
+  ">>="
+  ">>>="
+  ">>"
+  ">>>"
+  "!"
+  "!="
+  "$"
+  "="
+  "=="
+  "*"
+  "*="
+  "%"
+  "%="
+  "^"
+  "^="
+  "^^"
+  "^^="
+  "~"
+  "~="
+  "@"
+] @operator
+
+; Variables
+(identifier) @variable
+
+[
+  "exit"
+  "success"
+  "failure"
+  (this)
+  (super)
+] @variable.builtin
+
+(linkage_attribute
+  "("
+  _ @variable.builtin
+  ")")
+
+; Modules
+(module_fqn
+  (identifier) @module)
+
+; Attributes
+(at_attribute
+  (identifier) @attribute)
+
+; Constants
+(enum_member
+  (identifier) @constant)
+
+(manifest_declarator
+  .
+  (identifier) @constant)
+
+; Members
+(aggregate_body
+  (variable_declaration
+    (declarator
+      (identifier) @variable.member)))
+
+(property_expression
+  "."
+  (identifier) @variable.member)
+
+(type
+  "."
+  (identifier) @variable.member)
+
+; Types
+(class_declaration
+  (class)
+  .
+  (identifier) @type)
+
+(struct_declaration
+  (struct)
+  .
+  (identifier) @type)
+
+(union_declaration
+  (union)
+  .
+  (identifier) @type)
+
+(enum_declaration
+  (enum)
+  .
+  (identifier) @type)
+
+(alias_declaration
+  (alias)
+  .
+  (identifier) @type)
+
+((identifier) @type
+  (#lua-match? @type "^[A-Z].*"))
+
+(type
+  .
+  (identifier) @type .)
+
+[
+  (auto)
+  (void)
+  (bool)
+  (byte)
+  (ubyte)
+  (char)
+  (short)
+  (ushort)
+  (wchar)
+  (dchar)
+  (int)
+  (uint)
+  (long)
+  (ulong)
+  (real)
+  (double)
+  (float)
+  (cent)
+  (ucent)
+  (ireal)
+  (idouble)
+  (ifloat)
+  (creal)
+  (double)
+  (cfloat)
+] @type.builtin
+
+; Functions
+(function_declaration
+  (identifier) @function)
+
+(call_expression
+  (identifier) @function)
+
+(call_expression
+  (type
+    (identifier) @function .))
+
+(call_expression
+  (property_expression
+    (call_expression)
+    (identifier) @function .))
+
+; Parameters
+(parameter
+  (_)
+  (identifier) @variable.parameter)
+
+(function_literal
+  "("
+  (type
+    (identifier) @variable.parameter))
+
+; Constructors
+(constructor
+  (this) @constructor)
+
+(destructor
+  (this) @constructor)
+
+(postblit
+  .
+  (this) @constructor)
+
+; Punctuation
+[
+  ";"
+  "."
+  ":"
+  ","
+  "=>"
+] @punctuation.delimiter
 
 [
   "("
@@ -26,250 +322,53 @@
   "}"
 ] @punctuation.bracket
 
-[
-  ","
-  ";"
-  "."
-  ":"
-] @punctuation.delimiter
+"..." @punctuation.special
+
+; Ternaries
+(ternary_expression
+  [
+    "?"
+    ":"
+  ] @keyword.conditional.ternary)
+
+; Labels
+(label
+  (identifier) @label)
+
+(goto_statement
+  (identifier) @label)
+
+; Literals
+(string_literal) @string
 
 [
-  ".."
-  "$"
-] @punctuation.special
+  (int_literal)
+  (float_literal)
+] @number
 
-; Constants
-[
-  "__FILE_FULL_PATH__"
-  "__FILE__"
-  "__FUNCTION__"
-  "__LINE__"
-  "__MODULE__"
-  "__PRETTY_FUNCTION__"
-] @constant.macro
+(char_literal) @character
 
 [
-  (wysiwyg_string)
-  (alternate_wysiwyg_string)
-  (double_quoted_string)
-  (hex_string)
-  (delimited_string)
-  (token_string)
-] @string
-
-(character_literal) @character
-
-(integer_literal) @number
-
-(float_literal) @number.float
-
-[
-  "true"
-  "false"
+  (true)
+  (false)
 ] @boolean
 
-; Functions
-(func_declarator
-  (identifier) @function)
-
 [
-  "__traits"
-  "__vector"
-  "assert"
-  "is"
-  "mixin"
-  "pragma"
-  "typeid"
-] @function.builtin
+  (null)
+  (special_keyword)
+] @constant.builtin
 
-(import_expression
-  "import" @function.builtin)
+; Comments
+(comment) @comment @spell
 
-(parameter
-  (var_declarator
-    (identifier) @variable.parameter))
+((comment) @comment.documentation
+  (#lua-match? @comment.documentation "^///[^/]"))
 
-(function_literal
-  (identifier) @variable.parameter)
+((comment) @comment.documentation
+  (#lua-match? @comment.documentation "^///$"))
 
-(constructor
-  "this" @constructor)
+((comment) @comment.documentation
+  (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
 
-(destructor
-  "this" @constructor)
-
-; Keywords
-[
-  "case"
-  "default"
-  "else"
-  "if"
-  "switch"
-] @keyword.conditional
-
-[
-  "break"
-  "continue"
-  "do"
-  "for"
-  "foreach"
-  "foreach_reverse"
-  "while"
-] @keyword.repeat
-
-[
-  "__parameters"
-  "alias"
-  "align"
-  "asm"
-  "auto"
-  "body"
-  "class"
-  "debug"
-  "enum"
-  "export"
-  "goto"
-  "interface"
-  "invariant"
-  "macro"
-  "out"
-  "override"
-  "package"
-  "static"
-  "struct"
-  "template"
-  "union"
-  "unittest"
-  "version"
-  "with"
-] @keyword
-
-[
-  "delegate"
-  "function"
-] @keyword.function
-
-"return" @keyword.return
-
-[
-  "cast"
-  "new"
-] @keyword.operator
-
-[
-  "+"
-  "++"
-  "+="
-  "-"
-  "--"
-  "-="
-  "*"
-  "*="
-  "%"
-  "%="
-  "^"
-  "^="
-  "^^"
-  "^^="
-  "/"
-  "/="
-  "|"
-  "|="
-  "||"
-  "~"
-  "~="
-  "="
-  "=="
-  "=>"
-  "<"
-  "<="
-  "<<"
-  "<<="
-  ">"
-  ">="
-  ">>"
-  ">>="
-  ">>>"
-  ">>>="
-  "!"
-  "!="
-  "&"
-  "&&"
-] @operator
-
-[
-  "catch"
-  "finally"
-  "throw"
-  "try"
-] @keyword.exception
-
-"null" @constant.builtin
-
-[
-  "__gshared"
-  "const"
-  "immutable"
-  "shared"
-] @keyword.storage
-
-[
-  "abstract"
-  "deprecated"
-  "extern"
-  "final"
-  "inout"
-  "lazy"
-  "nothrow"
-  "private"
-  "protected"
-  "public"
-  "pure"
-  "ref"
-  "scope"
-  "synchronized"
-] @type.qualifier
-
-(alias_assignment
-  .
-  (identifier) @type.definition)
-
-(module_declaration
-  "module" @keyword.import)
-
-(import_declaration
-  "import" @keyword.import)
-
-(type) @type
-
-(catch_parameter
-  (qualified_identifier) @type)
-
-(var_declarations
-  (qualified_identifier) @type)
-
-(func_declaration
-  (qualified_identifier) @type)
-
-(parameter
-  (qualified_identifier) @type)
-
-(class_declaration
-  (identifier) @type)
-
-(fundamental_type) @type.builtin
-
-(module_fully_qualified_name
-  (packages
-    (package_name) @module))
-
-(module_name) @module
-
-(at_attribute) @attribute
-
-(user_defined_attribute
-  "@" @attribute)
-
-; Variables
-(primary_expression
-  "this" @variable.builtin)
+((comment) @comment.documentation
+  (#lua-match? @comment.documentation "^/[+][+][^+].*[+]/$"))

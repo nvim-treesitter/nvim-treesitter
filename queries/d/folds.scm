@@ -1,1 +1,4 @@
-(block_statement) @fold
+[
+  (block_statement)
+  (aggregate_body)
+] @fold

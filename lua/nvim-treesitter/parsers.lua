@@ -346,13 +346,10 @@ list.cue = {
 
 list.d = {
   install_info = {
-    url = "https://github.com/CyberShadow/tree-sitter-d",
-    files = { "src/parser.c", "src/scanner.cc" },
-    requires_generate_from_grammar = true,
+    url = "https://github.com/gdamore/tree-sitter-d",
+    files = { "src/parser.c", "src/scanner.c" },
   },
-  -- Generating grammar takes ~60s
-  experimental = true,
-  maintainers = { "@nawordar" },
+  maintainers = { "@amaanq" },
 }
 
 list.dart = {
