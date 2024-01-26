@@ -46,8 +46,8 @@ end
 
 local function do_check()
   local timings = {}
-  local parsers = require("nvim-treesitter.info").installed_parsers()
   local queries = require "nvim-treesitter.query"
+  local parsers = #_G.arg > 0 and { unpack(_G.arg) } or require("nvim-treesitter.info").installed_parsers()
   local query_types = queries.built_in_query_groups
 
   local captures = extract_captures()
