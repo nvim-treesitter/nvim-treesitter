@@ -1,18 +1,15 @@
 #!/usr/bin/env -S nvim -l
 vim.opt.runtimepath:append('.')
 
--- Equivalent to print(), but this will ensure consistent output regardless of
--- operating system.
-local function io_print(text)
-  if not text then
-    text = ''
-  end
-  io.write(text, '\n')
-end
+local query_types = require('nvim-treesitter.health').bundled_queries
+local configs = require('nvim-treesitter.parsers').configs
+local parsers = #_G.arg > 0 and { unpack(_G.arg) }
+  or require('nvim-treesitter.config').installed_parsers()
 
-local function extract_captures()
-  local captures = {}
-  local current_query
+-- Extract captures from documentation for validation
+local captures = {}
+do
+  local current_query ---@type string
 
   for line in io.lines('CONTRIBUTING.md') do
     if vim.startswith(line, '### ') then
@@ -22,67 +19,45 @@ local function extract_captures()
         captures[current_query] = {}
       end
 
-      table.insert(captures[current_query], vim.split(line:sub(2), ' ', true)[1])
+      table.insert(captures[current_query], vim.split(line:sub(2), ' ')[1])
     end
   end
 
   -- Complete captures for injections.
-  local parsers = vim.tbl_keys(require('nvim-treesitter.parsers').configs)
-  for _, lang in pairs(parsers) do
+  for _, lang in pairs(vim.tbl_keys(configs)) do
     table.insert(captures['injections'], lang)
   end
-
-  return captures
 end
 
-local function list_any(list, predicate)
-  for _, v in pairs(list) do
-    if predicate(v) then
-      return true
-    end
-  end
-  return false
-end
-
-local function do_check()
-  local timings = {}
-  local parsers = require('nvim-treesitter.config').installed_parsers()
-  local query_types = require('nvim-treesitter.health').bundled_queries
-  local configs = require('nvim-treesitter.parsers').configs
-
-  local captures = extract_captures()
-  local errors = {}
-
-  io_print('::group::Check parsers')
+-- Check queries for each installed parser in parsers
+local errors = {} ---@type string[]
+local timings = {} ---@type number[][]
+do
+  print('::group::Check parsers')
 
   for _, lang in pairs(parsers) do
-    if configs[lang].install_info then
+    if configs[lang] and configs[lang].install_info then
       timings[lang] = {}
       for _, query_type in pairs(query_types) do
         local before = vim.uv.hrtime()
         local ok, query = pcall(vim.treesitter.query.get, lang, query_type)
-        local after = vim.uv.hrtime()
-        local duration = after - before
+        local duration = vim.uv.hrtime() - before
         table.insert(timings, { duration = duration, lang = lang, query_type = query_type })
-        io_print(
-          'Checking ' .. lang .. ' ' .. query_type .. string.format(' (%.02fms)', duration * 1e-6)
-        )
+        print(string.format('Checking %s %s (%.02fms)', lang, query_type, duration * 1e-6))
         if not ok then
-          local err_msg = lang .. ' (' .. query_type .. '): ' .. query
-          errors[#errors + 1] = err_msg
+          errors[#errors + 1] = string.format('%s (%s): %s', lang, query_type, query)
         else
           if query then
             for _, capture in ipairs(query.captures) do
               local is_valid = (
                 vim.startswith(capture, '_') -- Helpers.
-                or list_any(captures[query_type], function(documented_capture)
+                or vim.tbl_contains(captures[query_type], function(documented_capture)
                   return vim.startswith(capture, documented_capture)
-                end)
+                end, { predicate = true })
               )
               if not is_valid then
-                local error =
-                  string.format('(x) Invalid capture @%s in %s for %s.', capture, query_type, lang)
-                errors[#errors + 1] = error
+                errors[#errors + 1] =
+                  string.format('%s (%s): invalid capture "@%s"', lang, query_type, capture)
               end
             end
           end
@@ -91,37 +66,34 @@ local function do_check()
     end
   end
 
-  io_print('::endgroup::')
-
-  if #errors > 0 then
-    io_print('\nCheck failed!\nErrors:')
-    for _, err in ipairs(errors) do
-      print(err)
-    end
-    error()
-  end
-  return timings
+  print('::endgroup::')
 end
 
-local ok, result = pcall(do_check)
-if ok then
-  io_print('::group::Timings')
-  table.sort(result, function(a, b)
+-- Output
+if #errors > 0 then
+  print('::group::Errors')
+  for _, err in ipairs(errors) do
+    print(err)
+  end
+  print('::endgroup::')
+  print('Check failed!\n')
+  vim.cmd.cq()
+else
+  print('::group::Timings')
+  table.sort(timings, function(a, b)
     return a.duration < b.duration
   end)
-  for i, val in ipairs(result) do
-    io_print(
+  for i, val in ipairs(timings) do
+    print(
       string.format(
         '%i. %.02fms %s %s',
-        #result - i + 1,
+        #timings - i + 1,
         val.duration * 1e-6,
         val.lang,
         val.query_type
       )
     )
   end
-  io_print('::endgroup::')
-  io_print('Check successful!')
-else
-  vim.cmd('cq')
+  print('::endgroup::')
+  print('Check successful!')
 end
