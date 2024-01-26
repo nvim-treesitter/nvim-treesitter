@@ -40,7 +40,7 @@
   [
     "?"
     ":"
-  ] @conditional.ternary)
+  ] @keyword.conditional.ternary)
 
 "sum" @function.builtin
 
@@ -49,7 +49,7 @@
   "in"
   "do"
   "while"
-] @repeat
+] @keyword.repeat
 
 [
   (c_break)
@@ -99,13 +99,13 @@
 [
   "if"
   "else"
-] @conditional
+] @keyword.conditional
 
 (plot_element
   "axes"? @variable.member)
 
 (cntrparam
-  "auto"? @property)
+  "auto"? @variable.member)
 
 (colorbox
   "origin"? @attribute)
@@ -119,7 +119,7 @@
   _? @attribute)
 
 (key
-  "auto"? @property)
+  "auto"? @variable.member)
 
 (style ; TODO: complete
   [
@@ -142,10 +142,10 @@
     ("watchpoint"
       "labels" @attribute
       (_)?)
-  ] @property)
+  ] @variable.member)
 
 (terminal
-  "name" @property)
+  "name" @variable.member)
 
 ; TODO: complete terminals in grammar and then simplify its options here
 (t_cairolatex
@@ -586,7 +586,7 @@
   "flipx"
   "flipy"
   "flipz"
-] @property
+] @variable.member
 
 (colorspec
   "palette" @attribute)
@@ -595,8 +595,8 @@
   "origin"? @variable.member)
 
 ((datafile_modifiers
-  filetype: (identifier) @property)
-  (#any-of? @property "avs" "bin" "edf" "ehf" "gif" "gpbin" "jpeg" "jpg" "png" "raw" "rgb" "auto"))
+  filetype: (identifier) @variable.member)
+  (#any-of? @variable.member "avs" "bin" "edf" "ehf" "gif" "gpbin" "jpeg" "jpg" "png" "raw" "rgb" "auto"))
 
 (macro) @function.macro
 
