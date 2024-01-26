@@ -31,6 +31,7 @@
     "&:"
     ":"
     "::"
+    "|"
   ] @operator)
 
 (export_directive
