@@ -318,7 +318,7 @@
     "revision": "0c088d1ad270f02c4e84189247ac7001e86fe342"
   },
   "kconfig": {
-    "revision": "2ba709d40caa6c1f68b26e55ff7a53e343154cfd"
+    "revision": "7230f0618348d9289a24ee8cf90c9ab90acd76b1"
   },
   "kdl": {
     "revision": "e180e05132c4cb229a8ba679b298790ef1eca77c"
@@ -447,10 +447,10 @@
     "revision": "a30394f61b607f48c841c6e085d5219f23872816"
   },
   "php": {
-    "revision": "dc8bd4150401f6c08591414f2a5480b7f2a874c8"
+    "revision": "cd59e54aded87f9157dc2114060d33dd0f202658"
   },
   "php_only": {
-    "revision": "dc8bd4150401f6c08591414f2a5480b7f2a874c8"
+    "revision": "cd59e54aded87f9157dc2114060d33dd0f202658"
   },
   "phpdoc": {
     "revision": "67db260cf4e99a02283ae26b808d59b86d42dc0f"
@@ -729,7 +729,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "9c3a40d7e51c2963b19d1f7614f9b551cad66bb6"
+    "revision": "77a9b6a41a1a188168cd0a750ce9e5bf6a40cfe2"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
