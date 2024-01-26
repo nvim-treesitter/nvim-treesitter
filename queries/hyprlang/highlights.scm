@@ -1,4 +1,4 @@
-(comment) @comment
+(comment) @comment @spell
 
 [
   "source"
@@ -20,10 +20,7 @@
 
 (variable) @variable
 
-(variable
-  "$" @punctuation.special)
-
-(number) @number
+"$" @punctuation.special
 
 (boolean) @boolean
 
@@ -34,15 +31,14 @@
   "rgba"
 ] @function.builtin
 
-(color
-  (legacy_hex) @number)
+[
+  (number)
+  (legacy_hex)
+  (angle)
+  (hex)
+] @number
 
-(angle) @number
-
-(angle
-  "deg" @type)
-
-(hex) @number
+"deg" @type
 
 "," @punctuation.delimiter
 
