@@ -47,6 +47,8 @@
   "case"
   "where"
   "break"
+  "or_break"
+  "or_continue"
   (fallthrough_statement)
 ] @keyword.conditional
 
