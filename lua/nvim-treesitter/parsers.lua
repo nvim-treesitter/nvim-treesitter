@@ -1699,6 +1699,7 @@ list.slint = {
     url = "https://github.com/slint-ui/slint",
     files = { "src/parser.c" },
     location = "editors/tree-sitter-slint",
+    requires_generate_from_grammar = true,
   },
   maintainers = { "@hunger" },
   experimental = true,
