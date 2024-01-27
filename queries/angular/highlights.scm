@@ -73,7 +73,10 @@
   (#any-of? @boolean "true" "false"))
 
 ((identifier) @variable.builtin
-  (#any-of? @variable.builtin "this" "$event" "null"))
+  (#any-of? @variable.builtin "this" "$event"))
+
+((identifier) @constant.builtin
+  (#eq? @constant.builtin "null"))
 
 [
   (ternary_operator)
