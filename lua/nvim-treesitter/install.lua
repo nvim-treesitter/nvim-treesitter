@@ -39,7 +39,7 @@ local function reset_progress_counter()
 end
 
 local function get_job_status()
-  return "[nvim-treesitter] ["
+  return "["
     .. finished_commands
     .. "/"
     .. started_commands
@@ -197,12 +197,12 @@ function M.iter_cmd(cmd_list, i, lang, success_message)
   end
   if i == #cmd_list + 1 then
     finished_commands = finished_commands + 1
-    return print(get_job_status() .. " " .. success_message)
+    return utils.notify(get_job_status() .. " " .. success_message)
   end
 
   local attr = cmd_list[i]
   if attr.info then
-    print(get_job_status() .. " " .. attr.info)
+    utils.notify(get_job_status() .. " " .. attr.info)
   end
 
   if attr.opts and attr.opts.args and M.command_extra_args[attr.cmd] then
