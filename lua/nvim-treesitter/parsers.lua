@@ -931,7 +931,7 @@ list.jq = {
 list.jsdoc = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-jsdoc",
-    files = { "src/parser.c" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@steelsojka" },
 }
