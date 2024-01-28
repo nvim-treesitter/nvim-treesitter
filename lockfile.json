@@ -21,7 +21,7 @@
     "revision": "1dec7e1af96c56924e3322cd85fdce15d0a31d00"
   },
   "awk": {
-    "revision": "dcf4ac4eaff601d87cc15604765a7ae329c1b2ee"
+    "revision": "207b04974c83d8d25a947e4d09763675c4617da7"
   },
   "bash": {
     "revision": "f7239f638d3dc16762563a9027faeee518ce1bd9"
@@ -249,7 +249,7 @@
     "revision": "3d4af179414525a35dd069ba0208c9b71093d8b3"
   },
   "haskell": {
-    "revision": "dd924b8df1eb76261f009e149fc6f3291c5081c2"
+    "revision": "cf98de23e4285b8e6bcb57b050ef2326e2cc284b"
   },
   "haskell_persistent": {
     "revision": "577259b4068b2c281c9ebf94c109bd50a74d5857"
@@ -450,10 +450,10 @@
     "revision": "a30394f61b607f48c841c6e085d5219f23872816"
   },
   "php": {
-    "revision": "3797c41da338e500e1e41c410c2244492aaa1860"
+    "revision": "29a49d3a53353444ee2226e2efa140fec69dd3e0"
   },
   "php_only": {
-    "revision": "3797c41da338e500e1e41c410c2244492aaa1860"
+    "revision": "29a49d3a53353444ee2226e2efa140fec69dd3e0"
   },
   "phpdoc": {
     "revision": "67db260cf4e99a02283ae26b808d59b86d42dc0f"
