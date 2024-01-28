@@ -1,21 +1,24 @@
 [
-  "!in"
   "!instanceof"
-  "as"
   "assert"
-  "case"
   "class"
-  "default"
   "extends"
-  "in"
   "instanceof"
   "package"
-  "switch"
 ] @keyword
 
 [
+  "!in"
+  "as"
+  "in"
+] @keyword.operator
+
+[
+  "case"
+  "default"
   "else"
   "if"
+  "switch"
 ] @keyword.conditional
 
 [
