@@ -14,6 +14,12 @@ jobs:
         with:
           ref: master
 
+      - uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ vars.TOKEN_ID }}
+          private-key: ${{ secrets.TOKEN_PRIVATE_KEY }}
+
       - name: Prepare
         env:
           NVIM_TAG: stable
@@ -32,21 +38,20 @@ jobs:
           # Pretty print
           cp lockfile.json /tmp/lockfile.json
           cat /tmp/lockfile.json | jq --sort-keys > lockfile.json
-
-      - name: Commit changes
-        run: |
-          git config user.name 'GitHub'
-          git config user.email 'noreply@github.com'
-          git add lockfile.json
           UPDATED_PARSERS=$(/tmp/jd -f merge /tmp/old_lockfile.json lockfile.json | jq -r 'keys | join(", ")')
           echo "UPDATED_PARSERS=$UPDATED_PARSERS" >> $GITHUB_ENV
-          git commit -m "Update parsers: $UPDATED_PARSERS" || echo 'No commit necessary!'
-          git clean -xf
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
+          token: ${{ steps.app-token.outputs.token }}
+          commit-message: "Update parsers: ${{ env.UPDATED_PARSERS }}"
           title: "Update lockfile.json: ${{ env.UPDATED_PARSERS }}"
+          body: "[beep boop](https://github.com/peter-evans/create-pull-request)"
           branch: update-lockfile-pr
           base: ${{ github.head_ref }}
-          draft: true
+
+      - name: Enable Pull Request Automerge
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: gh pr merge --rebase --auto update-lockfile-pr

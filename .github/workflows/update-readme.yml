@@ -13,6 +13,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ vars.TOKEN_ID }}
+          private-key: ${{ secrets.TOKEN_PRIVATE_KEY }}
+
       - name: Prepare
         env:
           NVIM_TAG: stable
@@ -21,18 +27,19 @@ jobs:
 
       - name: Check README
         run: |
-          git config user.email 'actions@github'
-          git config user.name 'Github Actions'
           nvim -l scripts/update-readme.lua || echo 'Needs update'
-          git add README.md
-          git commit -m 'Update README' || echo 'No commit necessary!'
-          git clean -xf
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
+          token: ${{ steps.app-token.outputs.token }}
           commit-message: Update README
           title: Update README
+          body: "[beep boop](https://github.com/peter-evans/create-pull-request)"
           branch: update-readme-pr
           base: ${{ github.head_ref }}
-          draft: true
+
+      - name: Enable Pull Request Automerge
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: gh pr merge --rebase --auto update-readme-pr
