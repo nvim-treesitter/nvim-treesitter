@@ -1,17 +1,15 @@
 #!/usr/bin/env -S nvim -l
 vim.opt.runtimepath:append('.')
 local util = require('nvim-treesitter.util')
+local parsers = require('nvim-treesitter.parsers').configs
 
 -- Load previous lockfile
 local filename = require('nvim-treesitter.install').get_package_path('lockfile.json')
 local old_lockfile = vim.json.decode(util.read_file(filename)) --[[@as table<string,{revision:string}>]]
 
----@type table<string,{revision:string}>
-local new_lockfile = {}
-
-local parsers = require('nvim-treesitter.parsers').configs
-
-local jobs = {} --- @type table<string,SystemObj>
+local jobs = {} ---@type table<string,vim.SystemObj>
+local new_lockfile = {} ---@type table<string,{revision:string}>
+local updates = {} ---@type string[]
 
 -- check for new revisions
 for k, p in pairs(parsers) do
@@ -19,6 +17,7 @@ for k, p in pairs(parsers) do
     new_lockfile[k] = old_lockfile[k]
     print('Skipping ' .. k)
   elseif p.install_info then
+    print('Updating ' .. k)
     jobs[k] = vim.system({ 'git', 'ls-remote', p.install_info.url })
   end
 
@@ -41,17 +40,25 @@ for k, p in pairs(parsers) do
 
       local sha = vim.split(stdout[line], '\t')[1]
       new_lockfile[name] = { revision = sha }
-      print(name .. ': ' .. sha)
+      if new_lockfile[name].revision ~= old_lockfile[name].revision then
+        updates[#updates + 1] = name
+      end
     end
   end
 end
 
 assert(#vim.tbl_keys(jobs) == 0)
 
-local lockfile_json = vim.json.encode(new_lockfile) --[[@as string]]
-if vim.fn.executable('jq') == 1 then
-  lockfile_json =
-    assert(vim.system({ 'jq', '--sort-keys' }, { stdin = lockfile_json }):wait().stdout)
-end
+if #updates > 0 then
+  -- write new lockfile
+  local lockfile_json = vim.json.encode(new_lockfile) --[[@as string]]
+  if vim.fn.executable('jq') == 1 then
+    lockfile_json =
+      assert(vim.system({ 'jq', '--sort-keys' }, { stdin = lockfile_json }):wait().stdout)
+  end
+  util.write_file(filename, lockfile_json)
 
-util.write_file(filename, lockfile_json)
+  print(string.format('\nUpdated parsers: %s', table.concat(updates, ', ')))
+else
+  print('\nAll parsers up to date!')
+end
