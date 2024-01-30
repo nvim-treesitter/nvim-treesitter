@@ -116,8 +116,7 @@
   [
     "end"
     "endfunction"
-  ]?
-     @keyword.function)
+  ]? @keyword.function)
 
 (function_signature
   name: (identifier) @function)
