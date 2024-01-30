@@ -74,8 +74,7 @@
     ; ":::="
     "?="
     "!="
-  ]?
-     @operator
+  ]? @operator
   "endef" @keyword)
 
 (variable_assignment

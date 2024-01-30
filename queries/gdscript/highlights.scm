@@ -277,9 +277,9 @@
   ))
 
 ; Builtin Funcs
+; format-ignore
 (call
   (identifier) @function.builtin
-  ; format-ignore
   (#any-of? @function.builtin
     ; @GlobalScope
     "abs" "absf" "absi" "acos" "asin" "atan" "atan2" "bezier_derivative"

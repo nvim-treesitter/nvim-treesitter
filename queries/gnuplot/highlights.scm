@@ -165,8 +165,7 @@
     "background"
     "rounded"
     "butt"
-  ]*
-     @attribute)
+  ]* @attribute)
 
 ; (t_canvas)
 ; (t_cgm)
@@ -288,7 +287,6 @@
 ] @variable.member
 
 ; Workaround because formatter cannot handle 300 list nodes
-; format-ignore
 [
   (angles)
   (clip)
