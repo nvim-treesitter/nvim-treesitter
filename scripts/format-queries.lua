@@ -7,7 +7,8 @@ local get_node_text = ts.get_node_text
 local files
 
 if not _G.arg[1] then
-  error "Must specify specify file or directory to format!"
+  print "Must specify file or directory to format!"
+  return
 elseif _G.arg[1]:match ".*%.scm$" then
   files = { _G.arg[1] }
 else
