@@ -23,8 +23,8 @@ end
 -- The range starts with 1 and the ending is inclusive.
 ---@return integer, integer, integer, integer
 local function visual_selection_range()
-  local _, csrow, cscol, _ = unpack(vim.fn.getpos "'<") ---@type integer, integer, integer, integer
-  local _, cerow, cecol, _ = unpack(vim.fn.getpos "'>") ---@type integer, integer, integer, integer
+  local _, csrow, cscol, _ = unpack(vim.fn.getpos "v") ---@type integer, integer, integer, integer
+  local _, cerow, cecol, _ = unpack(vim.fn.getpos ".") ---@type integer, integer, integer, integer
 
   local start_row, start_col, end_row, end_col ---@type integer, integer, integer, integer
 
@@ -146,9 +146,7 @@ function M.attach(bufnr)
         rhs = M[funcname]
       else
         mode = "x"
-        -- We need to move to command mode to access marks '< (visual area start) and '> (visual area end) which are not
-        -- properly accessible in visual mode.
-        rhs = string.format(":lua require'nvim-treesitter.incremental_selection'.%s()<CR>", funcname)
+        rhs = M[funcname] ---@type function
       end
       vim.keymap.set(
         mode,
