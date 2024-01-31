@@ -36,7 +36,7 @@
 
 ; Function and method definitions
 ;--------------------------------
-(function
+(function_expression
   name: (identifier) @function)
 
 (function_declaration
@@ -61,7 +61,7 @@
 
 (pair
   key: (property_identifier) @function.method
-  value: (function))
+  value: (function_expression))
 
 (pair
   key: (property_identifier) @function.method
@@ -77,7 +77,7 @@
   left:
     (member_expression
       property: (property_identifier) @function.method)
-  right: (function))
+  right: (function_expression))
 
 (variable_declarator
   name: (identifier) @function
@@ -85,7 +85,7 @@
 
 (variable_declarator
   name: (identifier) @function
-  value: (function))
+  value: (function_expression))
 
 (assignment_expression
   left: (identifier) @function
@@ -93,7 +93,7 @@
 
 (assignment_expression
   left: (identifier) @function
-  right: (function))
+  right: (function_expression))
 
 ; Function and method calls
 ;--------------------------
@@ -158,7 +158,10 @@
   (undefined)
 ] @constant.builtin
 
-(comment) @comment @spell
+[
+  (comment)
+  (html_comment)
+] @comment @spell
 
 ((comment) @comment.documentation
   (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
