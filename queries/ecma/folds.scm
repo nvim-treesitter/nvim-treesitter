@@ -3,7 +3,7 @@
   (for_statement)
   (while_statement)
   (arrow_function)
-  (function)
+  (function_expression)
   (function_declaration)
   (class_declaration)
   (method_definition)

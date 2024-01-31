@@ -2,7 +2,7 @@
 ;-------
 (statement_block) @local.scope
 
-(function) @local.scope
+(function_expression) @local.scope
 
 (arrow_function) @local.scope
 

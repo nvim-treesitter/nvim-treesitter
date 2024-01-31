@@ -16,6 +16,7 @@
     ]
   (#lua-match? @injection.language "^[a-zA-Z][a-zA-Z0-9]*$")
   (#offset! @injection.content 0 1 0 -1)
+  (#set! injection.include-children)
   (#not-eq? @injection.language "svg"))
 
 ; svg`...` or svg(`...`), which uses the html parser, so is not included in the previous query
@@ -30,6 +31,7 @@
       (template_string) @injection.content
     ]
   (#offset! @injection.content 0 1 0 -1)
+  (#set! injection.include-children)
   (#set! injection.language "html"))
 
 (call_expression
@@ -39,6 +41,7 @@
   arguments:
     ((template_string) @injection.content
       (#offset! @injection.content 0 1 0 -1)
+      (#set! injection.include-children)
       (#set! injection.language "graphql")))
 
 (call_expression
@@ -48,6 +51,7 @@
   arguments:
     ((template_string) @injection.content
       (#offset! @injection.content 0 1 0 -1)
+      (#set! injection.include-children)
       (#set! injection.language "glimmer")))
 
 ((glimmer_template) @injection.content
@@ -62,6 +66,7 @@
   arguments:
     ((template_string) @injection.content
       (#offset! @injection.content 0 1 0 -1)
+      (#set! injection.include-children)
       (#set! injection.language "styled")))
 
 ; styled(Component)`<css>`
@@ -73,6 +78,7 @@
   arguments:
     ((template_string) @injection.content
       (#offset! @injection.content 0 1 0 -1)
+      (#set! injection.include-children)
       (#set! injection.language "styled")))
 
 ; styled.div.attrs({ prop: "foo" })`<css>`
@@ -88,6 +94,7 @@
   arguments:
     ((template_string) @injection.content
       (#offset! @injection.content 0 1 0 -1)
+      (#set! injection.include-children)
       (#set! injection.language "styled")))
 
 ; styled(Component).attrs({ prop: "foo" })`<css>`
@@ -103,6 +110,7 @@
   arguments:
     ((template_string) @injection.content
       (#offset! @injection.content 0 1 0 -1)
+      (#set! injection.include-children)
       (#set! injection.language "styled")))
 
 ((regex_pattern) @injection.content
@@ -115,6 +123,7 @@
 ((template_string) @injection.content
   (#lua-match? @injection.content "^`#graphql")
   (#offset! @injection.content 0 1 0 -1)
+  (#set! injection.include-children)
   (#set! injection.language "graphql"))
 
 ; el.innerHTML = `<html>`
@@ -125,6 +134,7 @@
       (#any-of? @_prop "outerHTML" "innerHTML"))
   right: (template_string) @injection.content
   (#offset! @injection.content 0 1 0 -1)
+  (#set! injection.include-children)
   (#set! injection.language "html"))
 
 ; el.innerHTML = '<html>'
@@ -157,6 +167,7 @@
             value:
               ((template_string) @injection.content
                 (#offset! @injection.content 0 1 0 -1)
+                (#set! injection.include-children)
                 (#set! injection.language "angular")))))))
 
 ; @Component({
@@ -178,6 +189,7 @@
               (array
                 ((template_string) @injection.content
                   (#offset! @injection.content 0 1 0 -1)
+                  (#set! injection.include-children)
                   (#set! injection.language "css"))))))))
 
 ; @Component({
@@ -197,5 +209,6 @@
                 (#eq? @_prop "styles"))
             value:
               ((template_string) @injection.content
+                (#set! injection.include-children)
                 (#offset! @injection.content 0 1 0 -1)
                 (#set! injection.language "css")))))))
