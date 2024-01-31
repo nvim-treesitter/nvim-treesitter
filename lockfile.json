@@ -9,7 +9,7 @@
     "revision": "dfdce7ec26fb23f6f3fd83d4c79370759d5286b5"
   },
   "apex": {
-    "revision": "ca70b2347a79615cd749517f6c6c2352e50a7ce9"
+    "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
   },
   "arduino": {
     "revision": "ff1045f5da90344d547022c50f1756be4adaf721"
@@ -456,7 +456,7 @@
     "revision": "3854d1cafab8dc02780d0eada9ed99c344b4a3db"
   },
   "phpdoc": {
-    "revision": "67db260cf4e99a02283ae26b808d59b86d42dc0f"
+    "revision": "f285e338d328a03920a9bfd8dda78585c7ddcca3"
   },
   "pioasm": {
     "revision": "924aadaf5dea2a6074d72027b064f939acf32e20"
@@ -531,7 +531,7 @@
     "revision": "371dac6bcce0df5566c1cfebde69d90ecbeefd2d"
   },
   "rbs": {
-    "revision": "b28e1819d434e95916d11fe48ee6e8959b69197b"
+    "revision": "519a61132a51222e3ce73d3b7ef07465f587f346"
   },
   "re2c": {
     "revision": "47aa19cf5f7aba2ed30e2b377f7172df76e819a6"
@@ -594,10 +594,10 @@
     "revision": "168020304759ad5d8b4a88a541a699134e3730c5"
   },
   "soql": {
-    "revision": "ca70b2347a79615cd749517f6c6c2352e50a7ce9"
+    "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
   },
   "sosl": {
-    "revision": "ca70b2347a79615cd749517f6c6c2352e50a7ce9"
+    "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
   },
   "sparql": {
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
@@ -732,7 +732,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "f75d1e842021b051e24303eb637396ec6f0bba60"
+    "revision": "6c454c09c37d0fe4e4870c9a0d157e49a90edf75"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
