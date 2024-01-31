@@ -17,6 +17,7 @@
   "asserts"
   "infer"
   "is"
+  "using"
 ] @keyword
 
 [
@@ -94,6 +95,9 @@
 
 (omitting_type_annotation
   "-?:" @punctuation.delimiter)
+
+(adding_type_annotation
+  "+?:" @punctuation.delimiter)
 
 (opting_type_annotation
   "?:" @punctuation.delimiter)
