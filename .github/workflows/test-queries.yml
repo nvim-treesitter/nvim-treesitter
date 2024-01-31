@@ -22,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-2022, macos-latest]
+        os: [ubuntu-latest, windows-2022, macos-14]
         cc: [gcc, clang]
         nvim_tag: [stable]
         exclude:
@@ -30,7 +30,7 @@ jobs:
             cc: clang
             nvim_tag: stable
 
-          - os: macos-latest
+          - os: macos-14
             cc: gcc
             nvim_tag: stable
 
