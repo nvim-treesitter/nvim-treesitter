@@ -1,10 +1,11 @@
 ; Includes
-(import_statement
-  "import" @keyword.import)
-
-(import_with_statement
-  "import" @keyword.import
-  "with" @keyword.import)
+[
+  "import"
+  "provider"
+  "with"
+  "as"
+  "from"
+] @keyword.import
 
 ; Namespaces
 (module_declaration
