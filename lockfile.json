@@ -39,7 +39,7 @@
     "revision": "3604d8c961ab129d2bfc6dfca56419c236ccdb83"
   },
   "bitbake": {
-    "revision": "01ead542b1e6f52cc9a2c9c1c95e079702122161"
+    "revision": "7e0e2ac6f1d0da1a91ab84f35edddfdfece54f1a"
   },
   "blueprint": {
     "revision": "863cea9f83ad5637300478e0559262f1e791684b"
@@ -237,7 +237,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "groovy": {
-    "revision": "f723c6ee51f342e7ff29039d8771cd0b2f39ee5c"
+    "revision": "fdc03a7040945d551c009c0d2b39aa1d42894437"
   },
   "gstlaunch": {
     "revision": "2c0d9c94d35e37aa63fa5002163c8480985b3e5b"
@@ -249,7 +249,7 @@
     "revision": "3d4af179414525a35dd069ba0208c9b71093d8b3"
   },
   "haskell": {
-    "revision": "cf98de23e4285b8e6bcb57b050ef2326e2cc284b"
+    "revision": "9527ab807f8141fbfe5b48bf6a5878a05fb971fe"
   },
   "haskell_persistent": {
     "revision": "577259b4068b2c281c9ebf94c109bd50a74d5857"
@@ -321,7 +321,7 @@
     "revision": "0c088d1ad270f02c4e84189247ac7001e86fe342"
   },
   "kconfig": {
-    "revision": "5fefd45628a32fc999aa9f4aebcc5ddcd071bcf2"
+    "revision": "486fea71f61ad9f3fd4072a118402e97fe88d26c"
   },
   "kdl": {
     "revision": "e180e05132c4cb229a8ba679b298790ef1eca77c"
@@ -357,7 +357,7 @@
     "revision": "9668709211b2e683f27f414454a8b51bf0a6bda1"
   },
   "luadoc": {
-    "revision": "d82b43018a6b22d70b264ed8713be1c4daf9b0e0"
+    "revision": "bb310813b2661e5add6a79c11f63b05db52c1045"
   },
   "luap": {
     "revision": "31461ae9bd0866cb5117cfe5de71189854fd0f3e"
@@ -612,7 +612,7 @@
     "revision": "096981397385f49833dfd66037fa98081bbd9ef9"
   },
   "starlark": {
-    "revision": "c45ce2b39062bbd12ea1c210bd200db250efb24a"
+    "revision": "b31a616aac5d05f927f3f9dd809789db7805b632"
   },
   "strace": {
     "revision": "d819cdd5dbe455bd3c859193633c8d91c0df7c36"
@@ -732,7 +732,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "6c454c09c37d0fe4e4870c9a0d157e49a90edf75"
+    "revision": "0e25cada0e946c4710f6526f6116798c37177647"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
