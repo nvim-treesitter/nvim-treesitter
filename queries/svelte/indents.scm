@@ -1,5 +1,4 @@
 ; inherits: html_tags
-
 [
   (if_statement)
   (each_statement)
@@ -7,11 +6,17 @@
   (key_statement)
 ] @indent.begin
 
+(if_end_expr
+  "}" @indent.end)
 
-(if_end_expr "}" @indent.end)
-(each_end_expr "}" @indent.end)
-(await_end_expr "}" @indent.end)
-(key_end_expr "}" @indent.end)
+(each_end_expr
+  "}" @indent.end)
+
+(await_end_expr
+  "}" @indent.end)
+
+(key_end_expr
+  "}" @indent.end)
 
 [
   (if_end_expr)
