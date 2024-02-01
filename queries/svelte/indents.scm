@@ -1,20 +1,23 @@
+; inherits: html_tags
+
 [
-  (element)
   (if_statement)
   (each_statement)
   (await_statement)
-  (script_element)
-  (style_element)
+  (key_statement)
 ] @indent.begin
 
+
+(if_end_expr "}" @indent.end)
+(each_end_expr "}" @indent.end)
+(await_end_expr "}" @indent.end)
+(key_end_expr "}" @indent.end)
+
 [
-  (end_tag)
-  (else_statement)
   (if_end_expr)
+  (else_if_statement)
+  (else_statement)
   (each_end_expr)
   (await_end_expr)
-  ">"
-  "/>"
+  (key_end_expr)
 ] @indent.branch
-
-(comment) @indent.ignore
