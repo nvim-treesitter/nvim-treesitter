@@ -25,7 +25,7 @@
     (argument_list
       .
       (interpreted_string_literal) @injection.content))
-  (#any-of? @_method "Printf" "Sprintf" "Fatalf" "Scanf")
+  (#any-of? @_method "Printf" "Sprintf" "Fatalf" "Scanf" "Errorf" "Skipf" "Logf")
   (#set! injection.language "printf"))
 
 ((call_expression
@@ -37,5 +37,5 @@
       (_)
       .
       (interpreted_string_literal) @injection.content))
-  (#eq? @_method "Fprintf")
+  (#eq? @_method "Fprintf" "Fscanf" "Appendf" "Sscanf")
   (#set! injection.language "printf"))
