@@ -37,5 +37,5 @@
       (_)
       .
       (interpreted_string_literal) @injection.content))
-  (#eq? @_method "Fprintf" "Fscanf" "Appendf" "Sscanf")
+  (#any-of? @_method "Fprintf" "Fscanf" "Appendf" "Sscanf")
   (#set! injection.language "printf"))
