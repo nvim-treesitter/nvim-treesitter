@@ -18,15 +18,6 @@
   (ternary_expression)
 ] @indent.begin
 
-(arguments
-  (call_expression) @indent.begin)
-
-(binary_expression
-  (call_expression) @indent.begin)
-
-(expression_statement
-  (call_expression) @indent.begin)
-
 (arrow_function
   body: (_) @_body
   (#not-has-type? @_body statement_block)) @indent.begin
@@ -49,8 +40,6 @@
   "}" @indent.end)
 
 [
-  (arguments
-    (object))
   ")"
   "}"
   "]"
