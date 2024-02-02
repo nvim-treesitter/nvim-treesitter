@@ -1,22 +1,13 @@
 ; Identifiers
+(identifier) @variable
+
 (process) @variable.builtin
 
 (parameters
-  (identifier) @variable.parameter)
-
-(identifier) @variable
+  (identifier)) @variable.parameter
 
 ; Literals
-(file_import
-  filename: (string)) @string.special.path
-
-(soundfile
-  filename: (string)) @string.special.path
-
-(component
-  filename: (string)) @string.special.path
-
-(library
+(_
   filename: (string)) @string.special.path
 
 (function_names) @string.special
@@ -42,33 +33,13 @@
 (function_metadata
   key: (identifier)) @property
 
-(fconst
+(_
   type:
     [
       (int)
       (float)
+      (any)
     ]) @type.builtin
-
-(fvariable
-  type:
-    [
-      (int)
-      (float)
-    ]) @type.builtin
-
-(signature
-  type:
-    [
-      (int)
-      (float)
-    ]) @type.builtin
-
-(parameter_types
-  [
-    (int)
-    (float)
-    (any)
-  ]) @type.builtin
 
 [
   (single_precision)
@@ -78,7 +49,8 @@
 ] @attribute
 
 ; Functions
-(function_definition) @function
+(function_definition
+  name: (identifier) @function)
 
 [
   (lambda)
@@ -148,6 +120,7 @@
   "route"
 ] @function.builtin
 
+; xor is a @keyword.operator
 [
   (add)
   (sub)
@@ -157,7 +130,6 @@
   (pow)
   (or)
   (and)
-  (xor)
   (lshift)
   (rshift)
   (lt)
@@ -210,6 +182,9 @@
   "fvariable"
 ] @keyword
 
+(xor) @keyword.operator
+
+; Punctuation
 [
   ","
   ";"
