@@ -10,8 +10,6 @@
 (_
   filename: (string)) @string.special.path
 
-(function_names) @string.special
-
 (documentation) @string.documentation @spell
 
 [
@@ -19,12 +17,9 @@
   (fstring)
 ] @string
 
-(real) @number.float
+(int) @number
 
-[
-  (int)
-  (real)
-] @number
+(real) @number.float
 
 ; Types
 (global_metadata
@@ -51,6 +46,8 @@
 ; Functions
 (function_definition
   name: (identifier) @function)
+
+(function_names) @function
 
 [
   (lambda)
