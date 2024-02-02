@@ -145,18 +145,20 @@
   "->"
 ] @operator
 
-[
-  (recursive
-    "~")
-  (sequential
-    ":")
-  (split
-    "<:")
-  (merge
-    ":>")
-  (parallel
-    ",")
-] @operator
+(recursive
+  "~" @operator)
+
+(sequential
+  ":" @operator)
+
+(split
+  "<:" @operator)
+
+(merge
+  ":>" @operator)
+
+(parallel
+  "," @operator)
 
 ; Keywords
 [
@@ -167,7 +169,7 @@
 ] @keyword.repeat
 
 (file_import
-  "import") @keyword.import
+  "import" @keyword.import)
 
 [
   (wire)
