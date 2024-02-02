@@ -36,7 +36,7 @@
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
   },
   "bicep": {
-    "revision": "b33f29563e102f5cdf70c3bb5fd65a1bf4cc2456"
+    "revision": "c3451d1049c80074b18078ba50007b7c00e063f8"
   },
   "bitbake": {
     "revision": "7e0e2ac6f1d0da1a91ab84f35edddfdfece54f1a"
@@ -81,7 +81,7 @@
     "revision": "f4b3cbc8b0bd4e13035d39940fef09f1392e8739"
   },
   "cpp": {
-    "revision": "4ca37be8e70e5a40ae95688bec56b886ba945888"
+    "revision": "2e4d27f7728a4f90f292e3d9fe27e51ce51ca426"
   },
   "css": {
     "revision": "98c7b3dceb24f1ee17f1322f3947e55638251c37"
@@ -195,7 +195,7 @@
     "revision": "19d554d39e4a8491f7a77abcdb75bfbc1c19d0b5"
   },
   "gitcommit": {
-    "revision": "e8d9eda4e5ea0b08aa39d48dab0f6553058fbe0f"
+    "revision": "dc8f5dea7fb2284cc51a4781977b5939416cdfd8"
   },
   "gitignore": {
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
@@ -324,7 +324,7 @@
     "revision": "486fea71f61ad9f3fd4072a118402e97fe88d26c"
   },
   "kdl": {
-    "revision": "e180e05132c4cb229a8ba679b298790ef1eca77c"
+    "revision": "49fb89a854d93b58a65a19724ac307195ca11941"
   },
   "kotlin": {
     "revision": "0ef87892401bb01c84b40916e1f150197bc134b1"
@@ -450,10 +450,10 @@
     "revision": "a30394f61b607f48c841c6e085d5219f23872816"
   },
   "php": {
-    "revision": "3854d1cafab8dc02780d0eada9ed99c344b4a3db"
+    "revision": "71f56a90e75f954d7b701c1e9fc71d22fcc2080b"
   },
   "php_only": {
-    "revision": "3854d1cafab8dc02780d0eada9ed99c344b4a3db"
+    "revision": "71f56a90e75f954d7b701c1e9fc71d22fcc2080b"
   },
   "phpdoc": {
     "revision": "f285e338d328a03920a9bfd8dda78585c7ddcca3"
@@ -732,7 +732,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "0e25cada0e946c4710f6526f6116798c37177647"
+    "revision": "3b77e233eb3d2b85986f4daeffb4d21f0ed3eeba"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
