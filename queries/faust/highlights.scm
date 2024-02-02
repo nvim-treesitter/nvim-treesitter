@@ -6,6 +6,12 @@
 (parameters
   (identifier)) @variable.parameter
 
+(global_metadata
+  key: (identifier) @variable.member)
+
+(function_metadata
+  function_name: (identifier) @variable.member)
+
 ; Literals
 (_
   filename: (string)) @string.special.path
@@ -22,12 +28,6 @@
 (real) @number.float
 
 ; Types
-(global_metadata
-  key: (identifier)) @property
-
-(function_metadata
-  key: (identifier)) @property
-
 (_
   type:
     [
@@ -201,13 +201,3 @@
 
 ; Comments
 (comment) @comment @spell
-
-[
-  (doc_metadata)
-  (doc_equation)
-  (doc_diagram)
-  (doc_listing)
-  (doc_notice)
-] @tag
-
-(doc_attribute) @tag.attribute
