@@ -180,7 +180,7 @@ list.bibtex = {
 list.bicep = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-bicep",
-    files = { "src/parser.c" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@amaanq" },
 }
