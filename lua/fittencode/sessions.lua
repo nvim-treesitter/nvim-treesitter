@@ -231,6 +231,7 @@ function M.chaining_complete()
     local s = string.len(M.complete_lines[1])
     vim.api.nvim_win_set_cursor(0, { row, col + s })
   else
+    local s = string.len(M.complete_lines[count])
     local erow = row + count - 1
     if erow < vim.api.nvim_buf_line_count(0) then
       vim.api.nvim_win_set_cursor(0, { erow, s - 1 })
