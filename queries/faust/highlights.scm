@@ -12,7 +12,7 @@
 
 (function_names) @string.special
 
-(documentation) @string.documentation
+(documentation) @string.documentation @spell
 
 [
   (string)
@@ -203,7 +203,7 @@
 ] @punctuation.bracket
 
 ; Comments
-(comment) @comment
+(comment) @comment @spell
 
 [
   (doc_metadata)
