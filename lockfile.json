@@ -36,7 +36,7 @@
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
   },
   "bicep": {
-    "revision": "48a00c254671b5e847e615442678f4f3f5aa1e43"
+    "revision": "c3451d1049c80074b18078ba50007b7c00e063f8"
   },
   "bitbake": {
     "revision": "7e0e2ac6f1d0da1a91ab84f35edddfdfece54f1a"
@@ -81,7 +81,7 @@
     "revision": "f4b3cbc8b0bd4e13035d39940fef09f1392e8739"
   },
   "cpp": {
-    "revision": "4ca37be8e70e5a40ae95688bec56b886ba945888"
+    "revision": "2e4d27f7728a4f90f292e3d9fe27e51ce51ca426"
   },
   "css": {
     "revision": "98c7b3dceb24f1ee17f1322f3947e55638251c37"
@@ -147,7 +147,7 @@
     "revision": "5e7210d945425b77f82cbaebc5af4dd3e1ad40f5"
   },
   "embedded_template": {
-    "revision": "203f7bd3c1bbfbd98fc19add4b8fcb213c059205"
+    "revision": "d04a1e82b368bd3b2c2d9bc8ed38c1a1f01b337f"
   },
   "erlang": {
     "revision": "54b6f814f43c4eac81eeedefaa7cc8762fec6683"
@@ -156,7 +156,7 @@
     "revision": "a52579670e2b14ec03d410c3c980fafaf6d659c4"
   },
   "fennel": {
-    "revision": "517195970428aacca60891b050aa53eabf4ba78d"
+    "revision": "15e4f8c417281768db17080c4447297f8ff5343a"
   },
   "firrtl": {
     "revision": "2b5adae629c8cba528c7b1e4aa67a8ae28934ea5"
@@ -195,7 +195,7 @@
     "revision": "19d554d39e4a8491f7a77abcdb75bfbc1c19d0b5"
   },
   "gitcommit": {
-    "revision": "e8d9eda4e5ea0b08aa39d48dab0f6553058fbe0f"
+    "revision": "dc8f5dea7fb2284cc51a4781977b5939416cdfd8"
   },
   "gitignore": {
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
@@ -297,7 +297,7 @@
     "revision": "2b57cd9541f9fd3a89207d054ce8fbe72657c444"
   },
   "javascript": {
-    "revision": "6d84193ae2395e54b699d9b7358bcf66cbcc19f5"
+    "revision": "24b9885a211bed50415acabe9a30e2d0f6896e6d"
   },
   "jq": {
     "revision": "13990f530e8e6709b7978503da9bc8701d366791"
@@ -324,7 +324,7 @@
     "revision": "486fea71f61ad9f3fd4072a118402e97fe88d26c"
   },
   "kdl": {
-    "revision": "e180e05132c4cb229a8ba679b298790ef1eca77c"
+    "revision": "49fb89a854d93b58a65a19724ac307195ca11941"
   },
   "kotlin": {
     "revision": "0ef87892401bb01c84b40916e1f150197bc134b1"
@@ -450,10 +450,10 @@
     "revision": "a30394f61b607f48c841c6e085d5219f23872816"
   },
   "php": {
-    "revision": "3854d1cafab8dc02780d0eada9ed99c344b4a3db"
+    "revision": "c7fb0aab36320fff216b514868694427ad7868f6"
   },
   "php_only": {
-    "revision": "3854d1cafab8dc02780d0eada9ed99c344b4a3db"
+    "revision": "c7fb0aab36320fff216b514868694427ad7868f6"
   },
   "phpdoc": {
     "revision": "f285e338d328a03920a9bfd8dda78585c7ddcca3"
@@ -516,7 +516,7 @@
     "revision": "6b2b5e41734bd6f07ea4c36ac20fb6f14061c841"
   },
   "qmljs": {
-    "revision": "259133077f2fd854bcaa6f0149d3fc281fc8070b"
+    "revision": "9fa49ff3315987f715ce5666ff979a7742fa8a98"
   },
   "query": {
     "revision": "67e9e009436c8c1f2de9f4c654ee3e7674675769"
@@ -558,7 +558,7 @@
     "revision": "3ba9eb9b5a47aadb1f2356a3cab0dd3d2bd00b4b"
   },
   "ruby": {
-    "revision": "4d9ad3f010fdc47a8433adcf9ae30c8eb8475ae7"
+    "revision": "9061b0afbe4f19f58f4ac9cb7834b72648759cdb"
   },
   "rust": {
     "revision": "e0e8b6de6e4aa354749c794f5f36a906dcccda74"
@@ -732,7 +732,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "0e25cada0e946c4710f6526f6116798c37177647"
+    "revision": "3b77e233eb3d2b85986f4daeffb4d21f0ed3eeba"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"

@@ -22,6 +22,9 @@
 (call_expression
   function: (identifier) @function.call)
 
+(user_defined_function
+  name: (identifier) @function)
+
 ; Properties
 (object_property
   (identifier) @property
@@ -58,12 +61,6 @@
   "="
   (identifier) @type)
 
-(type_declaration
-  (identifier)
-  "="
-  (array_type
-    (identifier) @type))
-
 (type
   (identifier) @type)
 
@@ -88,6 +85,10 @@
   (arguments
     (member_expression
       object: (identifier) @variable.parameter)))
+
+(parameter
+  .
+  (identifier) @variable.parameter)
 
 ; Variables
 (variable_declaration
@@ -137,7 +138,13 @@
   "targetScope"
   "type"
   "var"
+  "using"
+  "test"
 ] @keyword
+
+"func" @keyword.function
+
+"assert" @keyword.exception
 
 ; Operators
 [
@@ -160,18 +167,19 @@
   "??"
   "="
   "!"
+  ".?"
 ] @operator
+
+(subscript_expression
+  "?" @operator)
+
+(nullable_type
+  "?" @operator)
 
 "in" @keyword.operator
 
 ; Literals
 (string) @string
-
-(import_string
-  "'" @string
-  (import_name) @module
-  "@" @string.special.symbol
-  (import_version) @string.special)
 
 (escape_sequence) @string.escape
 
@@ -204,6 +212,7 @@
 
 [
   "."
+  ":"
   "::"
   "=>"
 ] @punctuation.delimiter
