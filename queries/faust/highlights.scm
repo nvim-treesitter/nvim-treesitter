@@ -203,22 +203,16 @@
 (comment) @comment @spell
 
 ; Tags
-(documentation
-  [
-    "<mdoc>"
-    "</mdoc>"
-  ] @tag)
-
-(documentation
-  (_
-    [
-      "<metadata>"
-      "</metadata>"
-      "<equation>"
-      "</equation>"
-      "<diagram>"
-      "</diagram>"
-      "<listing"
-      "<notice"
-      "/>"
-    ] @tag))
+[
+  "<mdoc>"
+  "</mdoc>"
+  "<metadata>"
+  "</metadata>"
+  "<equation>"
+  "</equation>"
+  "<diagram>"
+  "</diagram>"
+  "<listing"
+  "<notice"
+  "/>"
+] @tag
