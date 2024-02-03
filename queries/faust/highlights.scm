@@ -31,9 +31,9 @@
 (_
   type:
     [
-      (int)
-      (float)
-      (any)
+      (int_type)
+      (float_type)
+      (any_type)
     ]) @type.builtin
 
 [
@@ -61,46 +61,46 @@
 ] @function.call
 
 [
-  (exp)
-  (log)
-  (log10)
-  (sqrt)
-  (abs)
-  (floor)
-  (ceil)
-  (rint)
-  (round)
-  (acos)
-  (asin)
-  (atan)
-  (cos)
-  (sin)
-  (tan)
-  (atan2)
-  (int_cast)
-  (float_cast)
-  (pow_fun)
-  (min)
-  (max)
-  (fmod)
-  (remainder)
-  (prefix_prim)
-  (attach)
-  (enable)
-  (control)
-  (rdtable)
-  (rwtable)
-  (select2)
-  (select3)
-  (component)
-  (library)
-  (lowest)
-  (highest)
-  (assertbounds)
+  "exp"
+  "log"
+  "log10"
+  "sqrt"
+  "abs"
+  "floor"
+  "ceil"
+  "rint"
+  "round"
+  "acos"
+  "asin"
+  "atan"
+  "cos"
+  "sin"
+  "tan"
+  "atan2"
+  "int"
+  "float"
+  "pow"
+  "min"
+  "max"
+  "fmod"
+  "remainder"
+  "prefix"
+  "attach"
+  "enable"
+  "control"
+  "rdtable"
+  "rwtable"
+  "select2"
+  "select3"
+  "lowest"
+  "highest"
+  "assertbounds"
   (par)
   (seq)
   (sum)
   (prod)
+  (component)
+  (library)
   (vslider_type)
   (hslider_type)
   (nentry_type)
