@@ -37,7 +37,7 @@ function M.setup_autocmds()
     callback = function(args)
       Base.debounce(function()
         Sessions.completion_request()
-      end, 80)
+      end, 75)
     end,
     desc = 'Triggered when the cursor is held for a period of time without moving the cursor.',
   })

@@ -23,7 +23,7 @@ local function read_local_api_key_file()
 end
 
 local function on_curl_signal_callback(signal, output)
-  print(signal)
+  error(string.format('Curl throw signal: %d', signal))
 end
 
 local function write_api_key(api_key)
@@ -110,6 +110,13 @@ function M.logout()
   end)
 end
 
+local function calculate_needed_lines(virt_lines)
+  local remaining_count = api.nvim_buf_line_count(0) - (fn.line('.') - 1)
+  local virt_lines_count = vim.tbl_count(virt_lines)
+  local needed_lines = virt_lines_count - remaining_count
+  return needed_lines
+end
+
 local function on_completion_callback(exit_code, response)
   local completion_data = fn.json_decode(response)
   if completion_data.generated_text == nil then
@@ -123,36 +130,47 @@ local function on_completion_callback(exit_code, response)
 
   local generated_text = fn.substitute(completion_data.generated_text, '<.endoftext.>', '', 'g')
   local lines = vim.split(generated_text, '\n')
-  M.complete_lines = lines
+  if vim.tbl_count(lines) > 0 and string.len(lines[#lines]) == 0 then
+    local removed = table.remove(lines)
+  end
 
   local virt_lines = {}
   for _, line in ipairs(lines) do
     table.insert(virt_lines, { { line, 'Comment' } })
   end
 
-  local count = vim.tbl_count(virt_lines)
-  print(count)
-  if count > 0 then
-    if count == 1 then
+  -- virtual line not rendering if it's beyond the last line · Issue #20179 · neovim/neovim
+  -- https://github.com/neovim/neovim/issues/20179
+  local needed_lines = calculate_needed_lines(virt_lines)
+  if needed_lines > 0 then
+    for i = 1, needed_lines do
+      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', true)
+      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('O', true, false, true), 'n', true)
+    end
+  end
+
+  local first_line = true
+  for i, line in ipairs(virt_lines) do
+    if first_line then
+      first_line = false
       api.nvim_buf_set_extmark(0, M.namespace, fn.line('.') - 1, fn.col('.') - 1, {
-        virt_text = virt_lines[1],
-        virt_text_pos = 'overlay',
+        virt_text = line,
+        virt_text_pos = 'inline',
         hl_mode = 'combine',
       })
     else
-      local row = fn.line('.') - 1
-      for _, line in ipairs(virt_lines) do
-        if row < vim.api.nvim_buf_line_count(0) then
-          api.nvim_buf_set_extmark(0, M.namespace, row, 0, {
-            virt_text = virt_lines[1],
-            virt_text_pos = 'overlay',
-            hl_mode = 'combine',
-          })
-        end
-        row = row + 1
+      local row = fn.line('.') - 2 + i
+      if row < api.nvim_buf_line_count(0) then
+        api.nvim_buf_set_extmark(0, M.namespace, row, 0, {
+          virt_text = line,
+          virt_text_pos = 'inline',
+          hl_mode = 'combine',
+        })
       end
     end
   end
+
+  M.complete_lines = lines
 end
 
 local function on_completion_delete_tempfile_callback(path)
@@ -212,6 +230,18 @@ function M.clear()
   Base.hide(M.namespace, 0)
 end
 
+local function local_fmt_clear()
+  vim.bo.autoindent = false
+  vim.bo.smartindent = false
+  vim.bo.formatoptions = ''
+end
+
+local function local_fmt_recover()
+  vim.bo.autoindent = vim.o.autoindent
+  vim.bo.smartindent = vim.o.smartindent
+  vim.bo.formatoptions = vim.o.formatoptions
+end
+
 function M.chaining_complete()
   if vim.tbl_count(M.complete_lines) == 0 then
     return
@@ -219,27 +249,14 @@ function M.chaining_complete()
 
   M.clear()
 
-  local cursor = api.nvim_win_get_cursor(0)
-  local row = cursor[1]
-  local col = cursor[2]
-
-  local line_number = line_num
-  vim.cmd([[silent! undojoin]])
-  vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, M.complete_lines)
-  local count = vim.tbl_count(M.complete_lines)
-  if count == 1 then
-    local s = string.len(M.complete_lines[1])
-    vim.api.nvim_win_set_cursor(0, { row, col + s })
-  else
-    local s = string.len(M.complete_lines[count])
-    local erow = row + count - 1
-    if erow < vim.api.nvim_buf_line_count(0) then
-      vim.api.nvim_win_set_cursor(0, { erow, s - 1 })
-    end
+  local_fmt_clear()
+  for i = #M.complete_lines, 1, -1 do
+    local line = M.complete_lines[i] .. '\n'
+    vim.api.nvim_feedkeys(line, 'i', true)
   end
+  local_fmt_recover()
 
   M.complete_lines = {}
-  M.completion_request()
 end
 
 return M
