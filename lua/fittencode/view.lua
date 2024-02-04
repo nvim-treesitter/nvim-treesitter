@@ -87,15 +87,15 @@ local function local_fmt_recover()
   vim.bo.textwidth = vim.o.textwidth
 end
 
-function M.set_text(complete_lines)
+function M.set_text(lines)
   local_fmt_clear()
 
   local row = fn.line('.') - 1
   local col = fn.col('.')
-  local count = vim.tbl_count(complete_lines)
+  local count = vim.tbl_count(lines)
 
   for i = 1, count, 1 do
-    local line = complete_lines[i]
+    local line = lines[i]
     local len = string.len(line)
     if i == 1 then
       if len ~= 0 then
@@ -111,11 +111,11 @@ function M.set_text(complete_lines)
     end
   end
 
-  local first_len = string.len(complete_lines[1])
+  local first_len = string.len(lines[1])
   if count == 1 and first_len ~= 0 then
     api.nvim_win_set_cursor(0, { row + 1, col + first_len - 1 })
   else
-    local last_len = string.len(complete_lines[count])
+    local last_len = string.len(lines[count])
     api.nvim_win_set_cursor(0, { row + count, last_len })
   end
 

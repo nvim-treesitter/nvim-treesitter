@@ -10,6 +10,8 @@ local View = require('fittencode.view')
 
 local M = {}
 
+M.fitten_suggestion = {}
+
 local function read_api_key(data)
   M.api_key = data:gsub('\n', '')
 end
@@ -85,7 +87,7 @@ function M.login(name, password)
     username = name,
     password = password,
   }
-  local json_data = fn.json_encode(data)
+  local encoded_data = fn.json_encode(data)
   local login_args = {
     '-s',
     '-X',
@@ -93,7 +95,7 @@ function M.login(name, password)
     '-H',
     'Content-Type: application/json',
     '-d',
-    json_data,
+    encoded_data,
     login_url,
   }
   Rest.send({
@@ -117,16 +119,12 @@ local function calculate_text(generated_text)
   local virt_text = {}
 
   local lines = vim.split(fn.substitute(generated_text, '<.endoftext.>', '', 'g'), '\r')
-  if vim.tbl_count(lines) == 0 then
+  if vim.tbl_count(lines) == 0 or (vim.tbl_count(lines) == 1 and string.len(lines[1]) == 0) then
     return
   end
 
-  if lines[#lines] == '' then
+  if string.len(lines[#lines]) == 0 then
     table.remove(lines, #lines)
-  end
-
-  if vim.tbl_count(lines) == 0 then
-    return
   end
 
   local virt_text = {}
@@ -210,7 +208,7 @@ function M.do_completion_request()
 end
 
 function M.chaining_complete()
-  if M.fitten_suggestion == nil or vim.tbl_count(M.fitten_suggestion) == 0 then
+  if vim.tbl_count(M.fitten_suggestion) == 0 then
     return
   end
 
