@@ -65,6 +65,9 @@ local function reset_ns()
 end
 
 function M.render_virt_text(virt_text)
+  if virt_text == nil then
+    return
+  end
   reset_ns()
   make_rooms_for_virt_text(virt_text)
   draw_virt_text(virt_text)

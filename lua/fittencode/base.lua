@@ -23,6 +23,10 @@ function M.map(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
+function M.augroup(name)
+  return api.nvim_create_augroup('Fittencode_' .. name, { clear = true })
+end
+
 local timer = nil
 
 local function destroy_timer()
@@ -53,7 +57,7 @@ function M.debounce(callback, wait)
   end
 end
 
-function M.write_file(data, path, callback)
+function M.write(data, path, callback)
   uv.fs_open(path, 'w', 438, function(_, fd)
     if fd ~= nil then
       uv.fs_write(fd, data, -1, function(_, _)
@@ -68,10 +72,14 @@ function M.write_file(data, path, callback)
   end)
 end
 
-function M.write(data, dir, path, callback)
+function M.write_mkdir(data, dir, path, callback)
   uv.fs_mkdir(dir, 448, function(_, _)
-    M.write_file(data, path, callback)
+    M.write(data, path, callback)
   end)
+end
+
+function M.write_temp_file(data, callback)
+  M.write(data, fn.tempname(), callback)
 end
 
 function M.read(path, callback)
@@ -81,22 +89,16 @@ function M.read(path, callback)
         if stat ~= nil then
           uv.fs_read(fd, stat.size, -1, function(_, data)
             uv.fs_close(fd, function(_, _) end)
-            vim.schedule(function()
-              callback(data)
-            end)
+            if callback then
+              vim.schedule(function()
+                callback(data)
+              end)
+            end
           end)
         end
       end)
     end
   end)
-end
-
-function M.write_temp_file(data, callback)
-  M.write_file(data, fn.tempname(), callback)
-end
-
-function M.augroup(name)
-  return api.nvim_create_augroup('Fittencode_' .. name, { clear = true })
 end
 
 function M.nt_sep()

@@ -26,12 +26,12 @@ local function read_local_api_key_file()
 end
 
 local function on_curl_signal_callback(signal, output)
-  error(string.format('Curl throw signal: %d', signal))
+  Log.error('Curl throw signal: %s', signal)
 end
 
 local function write_api_key(api_key)
   local dir, path = get_api_key_store_path()
-  Base.write(api_key, dir, path)
+  Base.write_mkdir(api_key, dir, path)
 end
 
 local function on_login_api_key_callback(exit_code, output)
@@ -113,17 +113,10 @@ function M.logout()
   end)
 end
 
-local function on_completion_callback(exit_code, response)
-  local completion_data = fn.json_decode(response)
-  if completion_data.generated_text == nil then
-    return
-  end
+local function calculate_text(generated_text)
+  local virt_text = {}
 
-  M.complete_lines = {}
-
-  local generated_text = fn.substitute(completion_data.generated_text, '<.endoftext.>', '', 'g')
-  local lines = vim.split(generated_text, '\r')
-
+  local lines = vim.split(fn.substitute(generated_text, '<.endoftext.>', '', 'g'), '\r')
   if vim.tbl_count(lines) == 0 then
     return
   end
@@ -136,16 +129,26 @@ local function on_completion_callback(exit_code, response)
     return
   end
 
-  local virt_lines = {}
+  local virt_text = {}
   for _, line in ipairs(lines) do
     local parts = vim.split(line, '\n')
     for _, part in ipairs(parts) do
-      table.insert(virt_lines, { { part, 'Comment' } })
-      table.insert(M.complete_lines, part)
+      table.insert(virt_text, { { part, 'Comment' } })
+      table.insert(M.fitten_suggestion, part)
     end
   end
 
-  View.render_virt_text(virt_lines)
+  return virt_text
+end
+
+local function on_completion_callback(exit_code, response)
+  local completion_data = fn.json_decode(response)
+  if completion_data.generated_text == nil then
+    return
+  end
+
+  local virt_text = calculate_text(completion_data.generated_text)
+  View.render_virt_text(virt_text)
 end
 
 local function on_completion_delete_tempfile_callback(path)
@@ -163,6 +166,8 @@ function M.completion_request()
     return
   end
 
+  M.fitten_suggestion = {}
+
   if not Lsp.is_active() then
     M.do_completion_request()
   end
@@ -173,11 +178,8 @@ function M.do_completion_request()
   if filename == nil or filename == '' then
     filename = 'NONAME'
   end
-  local prefix_table = api.nvim_buf_get_text(0, 0, 0, fn.line('.') - 1, fn.col('.') - 1, {})
-  local prefix = table.concat(prefix_table, '\n')
-  local suffix_table = api.nvim_buf_get_text(0, fn.line('.') - 1, fn.col('.') - 1, fn.line('$') - 1, fn.col('$,$') - 1, {})
-  local suffix = table.concat(suffix_table, '\n')
-
+  local prefix = table.concat(api.nvim_buf_get_text(0, 0, 0, fn.line('.') - 1, fn.col('.') - 1, {}), '\n')
+  local suffix = table.concat(api.nvim_buf_get_text(0, fn.line('.') - 1, fn.col('.') - 1, fn.line('$') - 1, fn.col('$,$') - 1, {}), '\n')
   local prompt = '!FCPREFIX!' .. prefix .. '!FCSUFFIX!' .. suffix .. '!FCMIDDLE!'
   local escaped_prompt = string.gsub(prompt, '"', '\\"')
   local params = {
@@ -208,14 +210,12 @@ function M.do_completion_request()
 end
 
 function M.chaining_complete()
-  if M.complete_lines == nil or vim.tbl_count(M.complete_lines) == 0 then
+  if M.fitten_suggestion == nil or vim.tbl_count(M.fitten_suggestion) == 0 then
     return
   end
 
   View.clear_virt_text()
-  View.set_text(M.complete_lines)
-
-  M.complete_lines = {}
+  View.set_text(M.fitten_suggestion)
 
   M.completion_request()
 end
