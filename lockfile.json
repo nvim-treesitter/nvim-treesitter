@@ -242,6 +242,9 @@
   "gowork": {
     "revision": "949a8a470559543857a62102c84700d291fc984c"
   },
+  "gotmpl": {
+    "revision": "17144a77be0acdecebd9d557398883569fed41de"
+  },
   "gpg": {
     "revision": "f99323fb8f3f10b6c69db0c2f6d0a14bd7330675"
   },
@@ -271,6 +274,9 @@
   },
   "heex": {
     "revision": "4a36c9a388505180da6ee0eda1d8afb8c83481c8"
+  },
+  "helm": {
+    "revision": "17144a77be0acdecebd9d557398883569fed41de"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"

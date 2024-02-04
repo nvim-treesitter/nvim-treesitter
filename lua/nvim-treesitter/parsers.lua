@@ -758,6 +758,14 @@ list.gowork = {
   maintainers = { "@omertuc" },
 }
 
+list.gotmpl = {
+  install_info = {
+    url = "https://github.com/ngalaiko/tree-sitter-go-template",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@qvalentin" },
+}
+
 list.gpg = {
   install_info = {
     url = "https://github.com/ObserverOfTime/tree-sitter-gpg-config",
@@ -836,6 +844,15 @@ list.heex = {
     files = { "src/parser.c" },
   },
   maintainers = { "@connorlay" },
+}
+
+list.helm = {
+  install_info = {
+    url = "https://github.com/ngalaiko/tree-sitter-go-template",
+    location = "dialects/helm",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@qvalentin" },
 }
 
 list.hjson = {
