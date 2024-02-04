@@ -6,7 +6,6 @@ local WARN = 'warn'
 local ERROR = 'error'
 local FATAL = 'fatal'
 
-M.type = 'message' -- 'file' 'both'
 M.enabled = true
 
 function M.log(level, msg, ...)

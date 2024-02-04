@@ -3,9 +3,7 @@ local Bindings = require('fittencode.bindings')
 
 local M = {}
 
-M.config = {}
-
-function M.setup(cfg)
+function M.setup()
   Sessions.load_last_session()
   Bindings.setup_autocmds()
   Bindings.setup_commands()

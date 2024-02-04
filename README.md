@@ -9,7 +9,7 @@ Fitten Code AI Programming Assistant for Neovim, helps you to use AI for automat
 - 🐛 Asynchronous I/O
 
 ## ⚡️ Requirements
-- Neovim >= 0.9.0
+- Neovim >= 0.10.0
 - curl
 
 ## 📦 Installation
@@ -25,7 +25,7 @@ For example with lazy.nvim:
 
 ## ⚙️ Configuration
 
-Will be added in the future.
+Out of box.
 
 ## 🚀 Usage
 

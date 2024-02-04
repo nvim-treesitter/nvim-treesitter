@@ -4,22 +4,21 @@ local fn = vim.fn
 local M = {}
 
 local function make_rooms_for_virt_text(virt_text)
-  -- virtual line not rendering if it's beyond the last line · Issue #20179 · neovim/neovim
-  -- https://github.com/neovim/neovim/issues/20179
+  -- Virtual line not rendering if it's beyond the last line (https://github.com/neovim/neovim/issues/20179)
   local current_line = fn.line('.') + 1
-  local max_line = api.nvim_buf_line_count(0)
-  local unused_line = 0
-  for i = current_line, max_line do
+  local max_lines = api.nvim_buf_line_count(0)
+  local unused_lines = 0
+  for i = current_line, max_lines do
     local curline = vim.api.nvim_buf_get_lines(0, current_line - 1, current_line, false)[1]
     if string.len(curline) == 0 then
-      unused_line = unused_line + 1
+      unused_lines = unused_lines + 1
     else
       break
     end
   end
 
-  local virt_text_count = vim.tbl_count(virt_text)
-  local needed_lines = virt_text_count - unused_line
+  local virt_text_lines = vim.tbl_count(virt_text)
+  local needed_lines = virt_text_lines - unused_lines
   if needed_lines > 0 then
     for i = 1, needed_lines do
       api.nvim_buf_set_lines(0, current_line + i - 1, current_line + i - 1, false, { '' })
@@ -51,7 +50,7 @@ local function draw_virt_text(virt_text)
 end
 
 local function clear_ns(namespace, bufnr)
-  if namespace ~= nil then
+  if namespace ~= nil and bufnr ~= nil then
     api.nvim_buf_clear_namespace(bufnr, namespace, 0, -1)
   end
 end
@@ -62,6 +61,10 @@ local function reset_ns()
   else
     M.namespace = api.nvim_create_namespace('Fittencode')
   end
+end
+
+function M.clear_virt_text()
+  clear_ns(M.namespace, 0)
 end
 
 function M.render_virt_text(virt_text)
@@ -120,10 +123,6 @@ function M.set_text(lines)
   end
 
   local_fmt_recover()
-end
-
-function M.clear_virt_text()
-  clear_ns(M.namespace, 0)
 end
 
 return M
