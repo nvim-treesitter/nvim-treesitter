@@ -37,12 +37,12 @@ function M.setup_autocmds()
     callback = function(args)
       Base.debounce(function()
         Sessions.completion_request()
-      end, 75)
+      end, 800)
     end,
     desc = 'Triggered when the cursor is held for a period of time without moving the cursor.',
   })
 
-  api.nvim_create_autocmd({ 'CursorMovedI', 'CursorMoved' }, {
+  api.nvim_create_autocmd({ 'CursorMovedI', 'CursorMoved', 'BufWinLeave', 'BufHidden', 'InsertLeave' }, {
     group = Base.augroup('Clear'),
     pattern = '*',
     callback = function(args)
