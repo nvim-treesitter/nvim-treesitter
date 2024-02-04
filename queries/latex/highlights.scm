@@ -12,15 +12,6 @@
   value: (_))
 
 [
-  (line_comment)
-  (block_comment)
-  (comment_environment)
-] @comment @spell
-
-((line_comment) @keyword.directive
-  (#lua-match? @keyword.directive "^%% !TeX"))
-
-[
   (brack_group)
   (brack_group_argc)
 ] @variable.parameter
@@ -163,12 +154,6 @@
   content:
     (curly_group
       (_) @none @spell))
-
-; Math
-[
-  (displayed_equation)
-  (inline_formula)
-] @markup.math
 
 (math_environment
   (begin
@@ -313,6 +298,15 @@
       (_) @markup.link.url))
   (#any-of? @_name "\\url" "\\href"))
 
+[
+  (line_comment)
+  (block_comment)
+  (comment_environment)
+] @comment @spell
+
+((line_comment) @keyword.directive
+  (#lua-match? @keyword.directive "^%% !TeX"))
+
 ; File inclusion commands
 (class_include
   command: _ @keyword.import
@@ -369,3 +363,9 @@
 (label_reference) @nospell
 
 (label_reference_range) @nospell
+
+; Math
+[
+  (displayed_equation)
+  (inline_formula)
+] @markup.math
