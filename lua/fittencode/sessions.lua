@@ -123,6 +123,8 @@ local function calculate_text(generated_text)
     return
   end
 
+  M.fitten_suggestion = {}
+
   if string.len(lines[#lines]) == 0 then
     table.remove(lines, #lines)
   end
@@ -163,8 +165,6 @@ function M.completion_request()
   if M.api_key == nil or M.api_key == '' then
     return
   end
-
-  M.fitten_suggestion = {}
 
   if not Lsp.is_active() then
     M.do_completion_request()
@@ -215,6 +215,7 @@ function M.chaining_complete()
   View.clear_virt_text()
   View.set_text(M.fitten_suggestion)
 
+  M.fitten_suggestion = {}
   M.completion_request()
 end
 
