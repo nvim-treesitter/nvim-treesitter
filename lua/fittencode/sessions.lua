@@ -5,6 +5,7 @@ local uv = vim.uv
 local Base = require('fittencode.base')
 local Rest = require('fittencode.rest')
 local Log = require('fittencode.log')
+local Lsp = require('fittencode.lsp')
 
 local M = {}
 
@@ -117,20 +118,15 @@ local function make_rooms_for_completion_lines(virt_lines)
   local current_line = fn.line('.') + 1
   local max_line = api.nvim_buf_line_count(0)
   local unused_line = 0
-  -- Log.info('current_line %s', current_line)
-  -- Log.info('max_line %s', max_line)
   for i = current_line, max_line do
     local curline = vim.api.nvim_buf_get_lines(0, current_line - 1, current_line, false)[1]
-    -- Log.info('curline %s', curline)
     if string.len(curline) == 0 then
-      -- Log.info('empty line')
       unused_line = unused_line + 1
     else
       break
     end
   end
 
-  -- Log.info('unused_line %s', unused_line)
   local virt_lines_count = vim.tbl_count(virt_lines)
   local needed_lines = virt_lines_count - unused_line
   if needed_lines > 0 then
@@ -160,8 +156,6 @@ local function on_completion_callback(exit_code, response)
     return
   end
 
-  -- Log.info('line %s', lines)
-
   if lines[#lines] == '' then
     table.remove(lines, #lines)
   end
@@ -169,8 +163,6 @@ local function on_completion_callback(exit_code, response)
   if vim.tbl_count(lines) == 0 then
     return
   end
-
-  -- Log.info('line after %s', lines)
 
   local virt_lines = {}
   for _, line in ipairs(lines) do
@@ -182,8 +174,6 @@ local function on_completion_callback(exit_code, response)
   end
 
   make_rooms_for_completion_lines(virt_lines)
-
-  -- Log.info('virt_lines %s', virt_lines)
 
   local first_line = true
   for i, line in ipairs(virt_lines) do
@@ -222,6 +212,12 @@ function M.completion_request()
     return
   end
 
+  if not Lsp.is_active() then
+    M.do_completion_request()
+  end
+end
+
+function M.do_completion_request()
   local filename = api.nvim_buf_get_name(api.nvim_get_current_buf())
   if filename == nil or filename == '' then
     filename = 'NONAME'
@@ -279,11 +275,9 @@ local function local_fmt_recover()
 end
 
 function M.chaining_complete()
-  if vim.tbl_count(M.complete_lines) == 0 then
+  if M.complete_lines == nil or vim.tbl_count(M.complete_lines) == 0 then
     return
   end
-
-  -- Log.info('complete_lines %s', M.complete_lines)
 
   M.clear()
 

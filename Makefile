@@ -5,6 +5,3 @@ fmt:
 .PHONY: lint
 lint:
 	luacheck .
-
-update:
-	python update_neovim.py
