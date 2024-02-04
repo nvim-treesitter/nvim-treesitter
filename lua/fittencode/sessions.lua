@@ -111,6 +111,35 @@ function M.logout()
   end)
 end
 
+local function make_rooms_for_completion_lines(virt_lines)
+  -- virtual line not rendering if it's beyond the last line · Issue #20179 · neovim/neovim
+  -- https://github.com/neovim/neovim/issues/20179
+  local current_line = fn.line('.') + 1
+  local max_line = api.nvim_buf_line_count(0)
+  local unused_line = 0
+  -- Log.info('current_line %s', current_line)
+  -- Log.info('max_line %s', max_line)
+  for i = current_line, max_line do
+    local curline = vim.api.nvim_buf_get_lines(0, current_line - 1, current_line, false)[1]
+    -- Log.info('curline %s', curline)
+    if string.len(curline) == 0 then
+      -- Log.info('empty line')
+      unused_line = unused_line + 1
+    else
+      break
+    end
+  end
+
+  -- Log.info('unused_line %s', unused_line)
+  local virt_lines_count = vim.tbl_count(virt_lines)
+  local needed_lines = virt_lines_count - unused_line
+  if needed_lines > 0 then
+    for i = 1, needed_lines do
+      api.nvim_buf_set_lines(0, current_line + i - 1, current_line + i - 1, false, { '' })
+    end
+  end
+end
+
 local function on_completion_callback(exit_code, response)
   local completion_data = fn.json_decode(response)
   if completion_data.generated_text == nil then
@@ -131,7 +160,7 @@ local function on_completion_callback(exit_code, response)
     return
   end
 
-  Log.info('line %s', lines)
+  -- Log.info('line %s', lines)
 
   if lines[#lines] == '' then
     table.remove(lines, #lines)
@@ -141,7 +170,7 @@ local function on_completion_callback(exit_code, response)
     return
   end
 
-  Log.info('line after %s', lines)
+  -- Log.info('line after %s', lines)
 
   local virt_lines = {}
   for _, line in ipairs(lines) do
@@ -152,19 +181,9 @@ local function on_completion_callback(exit_code, response)
     end
   end
 
-  -- virtual line not rendering if it's beyond the last line · Issue #20179 · neovim/neovim
-  -- https://github.com/neovim/neovim/issues/20179
-  local max = api.nvim_buf_line_count(0)
-  local remaining_count = max - (fn.line('.') - 1)
-  local virt_lines_count = vim.tbl_count(virt_lines)
-  local needed_lines = virt_lines_count - remaining_count
-  if needed_lines > 0 then
-    for i = 1, needed_lines do
-      api.nvim_buf_set_lines(0, max + i - 1, max + i - 1, false, { '' })
-    end
-  end
+  make_rooms_for_completion_lines(virt_lines)
 
-  Log.info('virt_lines %s', virt_lines)
+  -- Log.info('virt_lines %s', virt_lines)
 
   local first_line = true
   for i, line in ipairs(virt_lines) do
@@ -264,7 +283,7 @@ function M.chaining_complete()
     return
   end
 
-  Log.info('complete_lines %s', M.complete_lines)
+  -- Log.info('complete_lines %s', M.complete_lines)
 
   M.clear()
 

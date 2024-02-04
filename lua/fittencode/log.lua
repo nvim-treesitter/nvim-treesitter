@@ -7,7 +7,7 @@ local ERROR = 'error'
 local FATAL = 'fatal'
 
 M.type = 'message' -- 'file' 'both'
-M.enabled = false
+M.enabled = true
 
 function M.log(level, msg, ...)
   if not M.enabled then
@@ -17,7 +17,7 @@ function M.log(level, msg, ...)
   if #args > 0 then
     msg = string.format(msg, unpack(vim.tbl_map(vim.inspect, { ... })))
   end
-  print('[' .. M.level .. '] ' .. '[' .. os.date('%Y-%m-%d %H:%M:%S') .. '] ' .. msg)
+  print('[' .. level .. '] ' .. '[' .. os.date('%Y-%m-%d %H:%M:%S') .. '] ' .. msg)
 end
 
 function M.info(...)
