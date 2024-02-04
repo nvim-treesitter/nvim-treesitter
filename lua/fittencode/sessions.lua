@@ -4,6 +4,7 @@ local uv = vim.uv
 
 local Base = require('fittencode.base')
 local Rest = require('fittencode.rest')
+local Log = require('fittencode.log')
 
 local M = {}
 
@@ -110,13 +111,6 @@ function M.logout()
   end)
 end
 
-local function calculate_needed_lines(virt_lines)
-  local remaining_count = api.nvim_buf_line_count(0) - (fn.line('.') - 1)
-  local virt_lines_count = vim.tbl_count(virt_lines)
-  local needed_lines = virt_lines_count - remaining_count
-  return needed_lines
-end
-
 local function on_completion_callback(exit_code, response)
   local completion_data = fn.json_decode(response)
   if completion_data.generated_text == nil then
@@ -128,26 +122,49 @@ local function on_completion_callback(exit_code, response)
     M.namespace = api.nvim_create_namespace('Fittencode')
   end
 
+  M.complete_lines = {}
+
   local generated_text = fn.substitute(completion_data.generated_text, '<.endoftext.>', '', 'g')
-  local lines = vim.split(generated_text, '\n')
-  if vim.tbl_count(lines) > 0 and string.len(lines[#lines]) == 0 then
-    local removed = table.remove(lines)
+  local lines = vim.split(generated_text, '\r')
+
+  if vim.tbl_count(lines) == 0 then
+    return
   end
+
+  Log.info('line %s', lines)
+
+  if lines[#lines] == '' then
+    table.remove(lines, #lines)
+  end
+
+  if vim.tbl_count(lines) == 0 then
+    return
+  end
+
+  Log.info('line after %s', lines)
 
   local virt_lines = {}
   for _, line in ipairs(lines) do
-    table.insert(virt_lines, { { line, 'Comment' } })
+    local parts = vim.split(line, '\n')
+    for _, part in ipairs(parts) do
+      table.insert(virt_lines, { { part, 'Comment' } })
+      table.insert(M.complete_lines, part)
+    end
   end
 
   -- virtual line not rendering if it's beyond the last line · Issue #20179 · neovim/neovim
   -- https://github.com/neovim/neovim/issues/20179
-  local needed_lines = calculate_needed_lines(virt_lines)
+  local max = api.nvim_buf_line_count(0)
+  local remaining_count = max - (fn.line('.') - 1)
+  local virt_lines_count = vim.tbl_count(virt_lines)
+  local needed_lines = virt_lines_count - remaining_count
   if needed_lines > 0 then
     for i = 1, needed_lines do
-      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', true)
-      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('O', true, false, true), 'n', true)
+      api.nvim_buf_set_lines(0, max + i - 1, max + i - 1, false, { '' })
     end
   end
+
+  Log.info('virt_lines %s', virt_lines)
 
   local first_line = true
   for i, line in ipairs(virt_lines) do
@@ -169,8 +186,6 @@ local function on_completion_callback(exit_code, response)
       end
     end
   end
-
-  M.complete_lines = lines
 end
 
 local function on_completion_delete_tempfile_callback(path)
@@ -234,12 +249,14 @@ local function local_fmt_clear()
   vim.bo.autoindent = false
   vim.bo.smartindent = false
   vim.bo.formatoptions = ''
+  vim.bo.textwidth = 0
 end
 
 local function local_fmt_recover()
   vim.bo.autoindent = vim.o.autoindent
   vim.bo.smartindent = vim.o.smartindent
   vim.bo.formatoptions = vim.o.formatoptions
+  vim.bo.textwidth = vim.o.textwidth
 end
 
 function M.chaining_complete()
@@ -247,16 +264,46 @@ function M.chaining_complete()
     return
   end
 
+  Log.info('complete_lines %s', M.complete_lines)
+
   M.clear()
 
   local_fmt_clear()
-  for i = #M.complete_lines, 1, -1 do
-    local line = M.complete_lines[i] .. '\n'
-    vim.api.nvim_feedkeys(line, 'i', true)
+
+  local row = fn.line('.') - 1
+  local col = fn.col('.')
+  local count = vim.tbl_count(M.complete_lines)
+
+  for i = 1, count, 1 do
+    local line = M.complete_lines[i]
+    local len = string.len(line)
+    if i == 1 then
+      if len ~= 0 then
+        api.nvim_buf_set_text(0, row, col - 1, row, col - 1, { line })
+      end
+    else
+      local max = api.nvim_buf_line_count(0)
+      if row + i - 1 >= max then
+        api.nvim_buf_set_lines(0, max, max, false, { line })
+      else
+        api.nvim_buf_set_text(0, row + i - 1, 0, row + i - 1, 0, { line })
+      end
+    end
   end
+
+  local first_len = string.len(M.complete_lines[1])
+  if count == 1 and first_len ~= 0 then
+    api.nvim_win_set_cursor(0, { row + 1, col + first_len - 1 })
+  else
+    local last_len = string.len(M.complete_lines[count])
+    api.nvim_win_set_cursor(0, { row + count, last_len })
+  end
+
   local_fmt_recover()
 
   M.complete_lines = {}
+
+  M.completion_request()
 end
 
 return M
