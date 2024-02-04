@@ -3,18 +3,22 @@ local fn = vim.fn
 
 local M = {}
 
-local function make_rooms_for_virt_text(virt_text)
+local function make_rooms_for_virt_text(virt_text, set_text)
   -- Virtual line not rendering if it's beyond the last line (https://github.com/neovim/neovim/issues/20179)
   local current_line = fn.line('.') + 1
   local max_lines = api.nvim_buf_line_count(0)
   local unused_lines = 0
-  for i = current_line, max_lines do
-    local curline = vim.api.nvim_buf_get_lines(0, current_line - 1, current_line, false)[1]
-    if string.len(curline) == 0 then
-      unused_lines = unused_lines + 1
-    else
-      break
+  if set_text == true then
+    for i = current_line, max_lines do
+      local curline = vim.api.nvim_buf_get_lines(0, current_line - 1, current_line, false)[1]
+      if string.len(curline) == 0 then
+        unused_lines = unused_lines + 1
+      else
+        break
+      end
     end
+  else
+    unused_lines = max_lines - current_line + 1
   end
 
   local virt_text_lines = vim.tbl_count(virt_text)
@@ -41,7 +45,7 @@ local function draw_virt_text(virt_text)
       if row < api.nvim_buf_line_count(0) then
         api.nvim_buf_set_extmark(0, M.namespace, row, 0, {
           virt_text = line,
-          virt_text_pos = 'inline',
+          virt_text_pos = 'overlay',
           hl_mode = 'combine',
         })
       end
@@ -92,6 +96,7 @@ end
 
 function M.set_text(lines)
   local_fmt_clear()
+  make_rooms_for_virt_text(lines, true)
 
   local row = fn.line('.') - 1
   local col = fn.col('.')
