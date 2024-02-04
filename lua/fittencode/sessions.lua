@@ -6,6 +6,7 @@ local Base = require('fittencode.base')
 local Rest = require('fittencode.rest')
 local Log = require('fittencode.log')
 local Lsp = require('fittencode.lsp')
+local View = require('fittencode.view')
 
 local M = {}
 
@@ -112,39 +113,10 @@ function M.logout()
   end)
 end
 
-local function make_rooms_for_completion_lines(virt_lines)
-  -- virtual line not rendering if it's beyond the last line · Issue #20179 · neovim/neovim
-  -- https://github.com/neovim/neovim/issues/20179
-  local current_line = fn.line('.') + 1
-  local max_line = api.nvim_buf_line_count(0)
-  local unused_line = 0
-  for i = current_line, max_line do
-    local curline = vim.api.nvim_buf_get_lines(0, current_line - 1, current_line, false)[1]
-    if string.len(curline) == 0 then
-      unused_line = unused_line + 1
-    else
-      break
-    end
-  end
-
-  local virt_lines_count = vim.tbl_count(virt_lines)
-  local needed_lines = virt_lines_count - unused_line
-  if needed_lines > 0 then
-    for i = 1, needed_lines do
-      api.nvim_buf_set_lines(0, current_line + i - 1, current_line + i - 1, false, { '' })
-    end
-  end
-end
-
 local function on_completion_callback(exit_code, response)
   local completion_data = fn.json_decode(response)
   if completion_data.generated_text == nil then
     return
-  end
-  if M.namespace ~= nil then
-    Base.hide(M.namespace, 0)
-  else
-    M.namespace = api.nvim_create_namespace('Fittencode')
   end
 
   M.complete_lines = {}
@@ -173,28 +145,7 @@ local function on_completion_callback(exit_code, response)
     end
   end
 
-  make_rooms_for_completion_lines(virt_lines)
-
-  local first_line = true
-  for i, line in ipairs(virt_lines) do
-    if first_line then
-      first_line = false
-      api.nvim_buf_set_extmark(0, M.namespace, fn.line('.') - 1, fn.col('.') - 1, {
-        virt_text = line,
-        virt_text_pos = 'inline',
-        hl_mode = 'combine',
-      })
-    else
-      local row = fn.line('.') - 2 + i
-      if row < api.nvim_buf_line_count(0) then
-        api.nvim_buf_set_extmark(0, M.namespace, row, 0, {
-          virt_text = line,
-          virt_text_pos = 'inline',
-          hl_mode = 'combine',
-        })
-      end
-    end
-  end
+  View.render_virt_text(virt_lines)
 end
 
 local function on_completion_delete_tempfile_callback(path)
@@ -256,63 +207,13 @@ function M.do_completion_request()
   end)
 end
 
-function M.clear()
-  Base.hide(M.namespace, 0)
-end
-
-local function local_fmt_clear()
-  vim.bo.autoindent = false
-  vim.bo.smartindent = false
-  vim.bo.formatoptions = ''
-  vim.bo.textwidth = 0
-end
-
-local function local_fmt_recover()
-  vim.bo.autoindent = vim.o.autoindent
-  vim.bo.smartindent = vim.o.smartindent
-  vim.bo.formatoptions = vim.o.formatoptions
-  vim.bo.textwidth = vim.o.textwidth
-end
-
 function M.chaining_complete()
   if M.complete_lines == nil or vim.tbl_count(M.complete_lines) == 0 then
     return
   end
 
-  M.clear()
-
-  local_fmt_clear()
-
-  local row = fn.line('.') - 1
-  local col = fn.col('.')
-  local count = vim.tbl_count(M.complete_lines)
-
-  for i = 1, count, 1 do
-    local line = M.complete_lines[i]
-    local len = string.len(line)
-    if i == 1 then
-      if len ~= 0 then
-        api.nvim_buf_set_text(0, row, col - 1, row, col - 1, { line })
-      end
-    else
-      local max = api.nvim_buf_line_count(0)
-      if row + i - 1 >= max then
-        api.nvim_buf_set_lines(0, max, max, false, { line })
-      else
-        api.nvim_buf_set_text(0, row + i - 1, 0, row + i - 1, 0, { line })
-      end
-    end
-  end
-
-  local first_len = string.len(M.complete_lines[1])
-  if count == 1 and first_len ~= 0 then
-    api.nvim_win_set_cursor(0, { row + 1, col + first_len - 1 })
-  else
-    local last_len = string.len(M.complete_lines[count])
-    api.nvim_win_set_cursor(0, { row + count, last_len })
-  end
-
-  local_fmt_recover()
+  View.clear_virt_text()
+  View.set_text(M.complete_lines)
 
   M.complete_lines = {}
 

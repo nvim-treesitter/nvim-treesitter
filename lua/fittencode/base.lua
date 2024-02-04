@@ -23,12 +23,6 @@ function M.map(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
-function M.hide(namespace, bufnr)
-  if namespace ~= nil then
-    api.nvim_buf_clear_namespace(bufnr, namespace, 0, -1)
-  end
-end
-
 local timer = nil
 
 local function destroy_timer()

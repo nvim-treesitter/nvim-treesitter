@@ -4,6 +4,7 @@ local uv = vim.uv
 
 local Base = require('fittencode.base')
 local Sessions = require('fittencode.sessions')
+local View = require('fittencode.view')
 
 local M = {}
 
@@ -43,12 +44,12 @@ function M.setup_autocmds()
   })
 
   api.nvim_create_autocmd({ 'CursorMovedI', 'CursorMoved', 'BufWinLeave', 'BufHidden', 'InsertLeave' }, {
-    group = Base.augroup('Clear'),
+    group = Base.augroup('ResetCompletion'),
     pattern = '*',
     callback = function(args)
-      Sessions.clear()
+      View.clear_virt_text()
     end,
-    desc = 'Clear virtual text.',
+    desc = 'Reset completion status',
   })
 end
 
