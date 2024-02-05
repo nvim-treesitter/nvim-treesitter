@@ -10,34 +10,6 @@ local M = {}
 
 local DEFAULT_DEBOUNCE_TIME = 75
 
-local fittencode_commands = {
-  { 'login', Sessions.login },
-  { 'logout', Sessions.logout },
-}
-
-local function fittencode_varg(line)
-  local actions = line.fargs
-  for _, cmd in ipairs(fittencode_commands) do
-    if actions[1] == cmd[1] then
-      table.remove(actions, 1)
-      return cmd[2](unpack(actions))
-    end
-  end
-  Log.error('Invalid command, fargs is %s', line.fargs)
-end
-
-local function fittencode_complete(_, line)
-  local args = vim.split(vim.trim(line), '%s+')
-  if vim.tbl_count(args) ~= 2 then
-    return
-  end
-  local entries = {}
-  for _, cmd in ipairs(fittencode_commands) do
-    table.insert(entries, cmd[1])
-  end
-  return entries
-end
-
 function M.setup_autocmds()
   api.nvim_create_autocmd({ 'CursorHoldI' }, {
     group = Base.augroup('Completion'),
@@ -63,7 +35,38 @@ function M.setup_autocmds()
 end
 
 function M.setup_commands()
-  Base.command('Fitten', fittencode_varg, { complete = fittencode_complete, bang = true, nargs = '*', desc = 'Fitten Command' })
+  local commands = {
+    login = Sessions.login,
+    logout = Sessions.logout,
+  }
+  Base.command('Fitten', function(line)
+    local actions = line.fargs
+    local cmd = commands[actions[1]]
+    if cmd then
+      table.remove(actions, 1)
+      return cmd(unpack(actions))
+    end
+    Log.error('Invalid command, fargs is %s', line.fargs)
+  end, {
+    complete = function(_, line)
+      local args = vim.split(vim.trim(line), '%s+')
+      table.remove(args, 1)
+      local prefix = table.remove(args, 1)
+      if prefix and line:sub(-1) == ' ' then
+        return
+      end
+      local entries = {}
+      for name, cmd in pairs(commands) do
+        if prefix == nil or string.sub(name, 1, #prefix) == prefix then
+          table.insert(entries, name)
+        end
+      end
+      return entries
+    end,
+    bang = true,
+    nargs = '*',
+    desc = 'Fitten Command',
+  })
 end
 
 function M.setup_keymaps()
