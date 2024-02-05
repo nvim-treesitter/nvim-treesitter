@@ -18,7 +18,7 @@ end
 
 function M.create(row, col)
   local timestamp = uv.hrtime()
-  Log.debug('Creating task at row: ' .. row .. ', col: ' .. col .. ', timestamp: ' .. timestamp)
+  -- Log.debug('Creating task at row: ' .. row .. ', col: ' .. col .. ', timestamp: ' .. timestamp)
   table.insert(M.tasks_list, #M.tasks_list, { row = row, col = col, timestamp = timestamp })
   return timestamp
 end

@@ -20,7 +20,7 @@ end
 local function get_api_key_store_path()
   local dir = fn.stdpath('data') .. '/fittencode'
   local path = dir .. '/api_key'
-  return root, path
+  return dir, path
 end
 
 local function read_local_api_key_file()
@@ -34,7 +34,12 @@ end
 
 local function write_api_key(api_key)
   local dir, path = get_api_key_store_path()
-  Base.write_mkdir(api_key, dir, path)
+  Base.write_mkdir(api_key, dir, path, function()
+    vim.schedule(function()
+      Log.info('Login successful')
+      Log.info('API key saved to %s', path)
+    end)
+  end)
 end
 
 local function on_login_api_key_callback(exit_code, output)
@@ -112,6 +117,10 @@ function M.logout()
       -- TODO: Handle errors
     else
       M.user_token = nil
+      vim.schedule(function()
+        Log.info('Delete API key file %s', path)
+        Log.info('Logout successful')
+      end)
     end
   end)
 end
