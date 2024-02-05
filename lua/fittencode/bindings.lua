@@ -1,9 +1,11 @@
 local api = vim.api
+local fn = vim.fn
 
 local Base = require('fittencode.base')
 local Sessions = require('fittencode.sessions')
 local View = require('fittencode.view')
 local Log = require('fittencode.log')
+local Task = require('fittencode.tasks')
 
 local M = {}
 
@@ -35,8 +37,10 @@ function M.setup_autocmds()
     group = Base.augroup('Completion'),
     pattern = '*',
     callback = function(args)
+      Log.debug('CursorHoldI triggered')
+      local task_id = Task.create(fn.line('.'), fn.col('.'))
       Base.debounce(function()
-        Sessions.completion_request()
+        Sessions.completion_request(task_id)
       end, 75)
     end,
     desc = 'Triggered when the cursor is held for a period of time without moving the cursor.',

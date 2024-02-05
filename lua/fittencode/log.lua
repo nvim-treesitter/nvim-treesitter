@@ -6,7 +6,7 @@ local WARN = 'warn'
 local ERROR = 'error'
 local FATAL = 'fatal'
 
-M.enabled = true
+M.enabled = false
 
 function M.log(level, msg, ...)
   if not M.enabled then

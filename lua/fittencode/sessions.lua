@@ -7,6 +7,7 @@ local Rest = require('fittencode.rest')
 local Log = require('fittencode.log')
 local Lsp = require('fittencode.lsp')
 local View = require('fittencode.view')
+local Tasks = require('fittencode.tasks')
 
 local M = {}
 
@@ -159,17 +160,23 @@ local function on_completion_delete_tempfile_callback(path)
   end)
 end
 
-function M.completion_request()
+function M.completion_request(task_id)
   if M.api_key == nil or M.api_key == '' then
     return
   end
 
   if not Lsp.is_active() then
-    M.do_completion_request()
+    M.do_completion_request(task_id)
   end
 end
 
-function M.do_completion_request()
+function M.do_completion_request(task_id)
+  Log.debug('Completion request')
+
+  if not Tasks.match(task_id, fn.line('.'), fn.col('.')) then
+    return
+  end
+
   local filename = api.nvim_buf_get_name(api.nvim_get_current_buf())
   if filename == nil or filename == '' then
     filename = 'NONAME'
