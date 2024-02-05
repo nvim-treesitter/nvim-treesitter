@@ -298,15 +298,6 @@
       (_) @markup.link.url))
   (#any-of? @_name "\\url" "\\href"))
 
-[
-  (line_comment)
-  (block_comment)
-  (comment_environment)
-] @comment @spell
-
-((line_comment) @keyword.directive
-  (#lua-match? @keyword.directive "^%% !TeX"))
-
 ; File inclusion commands
 (class_include
   command: _ @keyword.import
@@ -369,3 +360,15 @@
   (displayed_equation)
   (inline_formula)
 ] @markup.math
+
+[
+  (line_comment)
+  (block_comment)
+  (comment_environment)
+] @comment @spell
+
+((line_comment) @keyword.directive
+  (#lua-match? @keyword.directive "^%% !TeX"))
+
+((line_comment) @keyword.directive
+  (#lua-match? @keyword.directive "^%%&"))

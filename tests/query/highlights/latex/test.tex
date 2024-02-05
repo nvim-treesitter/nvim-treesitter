@@ -1,0 +1,33 @@
+% vim:ft=latex
+% !TeX
+% ^ @keyword.directive
+%& filename
+%  ^ @keyword.directive
+      \begin{equation} \frac{4}{2} + 128 \text{hello} \sum_{n=1}^{\text{hi\_hi\^hi}} n \end{equation}
+%                            ^ @markup.math    ^ @none             ^ @function
+
+\begin{equation} 
+  a = b % Comment here
+%         ^ @comment
+% ^ @markup.math
+\end{equation}
+\begin{equation} 
+  a = b % Comment here
+%         ^ @comment
+  b = c
+\end{equation}
+\text{
+hi $here$ is some text % with a comment
+%                        ^ @comment
+%   ^ @markup.math
+}
+\textbf{
+here is some text $5 + 2$ % with a comment
+%                           ^ @comment
+%                  ^ @markup.math
+}
+\textit{
+here is some text $5 + 2$ % with a comment
+%                           ^ @comment
+%                  ^ @markup.math
+}
