@@ -112,6 +112,9 @@
   "?."
 ] @punctuation.delimiter
 
+(nullish_coalescing_expression
+  (coalesing_operator) @operator)
+
 (concatination_expression
   "+" @operator)
 
