@@ -57,46 +57,64 @@ function M.debounce(callback, wait)
   end
 end
 
-function M.write(data, path, callback)
-  uv.fs_open(path, 'w', 438, function(_, fd)
+local function call_wraped(func, ...)
+  if func then
+    vim.schedule(function(...)
+      func(...)
+    end)
+  end
+end
+
+function M.write(data, path, on_success, on_error)
+  uv.fs_open(path, 'w', 438, function(err, fd)
     if fd ~= nil then
-      uv.fs_write(fd, data, -1, function(_, _)
-        uv.fs_close(fd, function(_, _) end)
-        if callback then
-          vim.schedule(function()
-            callback(path)
-          end)
+      uv.fs_write(fd, data, -1, function(err, written)
+        if err then
+          call_wraped(on_error, err, path)
+        else
+          uv.fs_close(fd, function(_, _) end)
+          call_wraped(on_success, path)
         end
       end)
+    else
+      call_wraped(on_error, err, path)
     end
   end)
 end
 
-function M.write_mkdir(data, dir, path, callback)
-  uv.fs_mkdir(dir, 448, function(_, _)
-    M.write(data, path, callback)
+function M.write_mkdir(data, dir, path, on_success, on_error)
+  uv.fs_mkdir(dir, 448, function(err, success)
+    if success or string.sub(err, 1, 6) == 'EEXIST' then
+      M.write(data, path, on_success, on_error)
+    else
+      call_wraped(on_error, err, path)
+    end
   end)
 end
 
-function M.write_temp_file(data, callback)
-  M.write(data, fn.tempname(), callback)
+function M.write_temp_file(data, on_success, on_error)
+  M.write(data, fn.tempname(), on_success, on_error)
 end
 
-function M.read(path, callback)
-  uv.fs_open(path, 'r', 438, function(_, fd)
+function M.read(path, on_success, on_error)
+  uv.fs_open(path, 'r', 438, function(err, fd)
     if fd ~= nil then
-      uv.fs_fstat(fd, function(_, stat)
+      uv.fs_fstat(fd, function(err, stat)
         if stat ~= nil then
           uv.fs_read(fd, stat.size, -1, function(_, data)
             uv.fs_close(fd, function(_, _) end)
-            if callback then
-              vim.schedule(function()
-                callback(data)
-              end)
+            if data ~= nil then
+              call_wraped(on_success, path)
+            else
+              call_wraped(on_error, err, path)
             end
           end)
+        else
+          call_wraped(on_error, err, path)
         end
       end)
+    else
+      call_wraped(on_error, err, path)
     end
   end)
 end
