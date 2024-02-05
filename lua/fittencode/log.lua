@@ -1,12 +1,20 @@
 local M = {}
 
-local INFO = 'info'
-local DEBUG = 'debug'
-local WARN = 'warn'
-local ERROR = 'error'
-local FATAL = 'fatal'
+M.enabled = true
 
-M.enabled = false
+local function to_string(vim_log_level)
+  if vim_log_level == vim.log.levels.ERROR then
+    return 'ERROR'
+  elseif vim_log_level == vim.log.levels.WARN then
+    return 'WARN'
+  elseif vim_log_level == vim.log.levels.INFO then
+    return 'INFO'
+  elseif vim_log_level == vim.log.levels.DEBUG then
+    return 'DEBUG'
+  else
+    return 'UNKNOWN'
+  end
+end
 
 function M.log(level, msg, ...)
   if not M.enabled then
@@ -16,27 +24,24 @@ function M.log(level, msg, ...)
   if #args > 0 then
     msg = string.format(msg, unpack(vim.tbl_map(vim.inspect, { ... })))
   end
-  print('[' .. level .. '] ' .. '[' .. os.date('%Y-%m-%d %H:%M:%S') .. '] ' .. msg)
+  msg = '[' .. to_string(level) .. '] ' .. '[' .. os.date('%Y-%m-%d %H:%M:%S') .. '] ' .. msg
+  vim.notify(msg, level)
 end
 
 function M.info(...)
-  M.log(INFO, ...)
+  M.log(vim.log.levels.INFO, ...)
 end
 
 function M.debug(...)
-  M.log(DEBUG, ...)
+  M.log(vim.log.levels.DEBUG, ...)
 end
 
 function M.warn(...)
-  M.log(WARN, ...)
+  M.log(vim.log.levels.WARN, ...)
 end
 
 function M.error(...)
-  M.log(ERROR, ...)
-end
-
-function M.fatal(...)
-  M.log(FATAL, ...)
+  M.log(vim.log.levels.ERROR, ...)
 end
 
 return M
