@@ -24,7 +24,7 @@ end
 local function get_api_key_store_path()
   local dir = fn.stdpath('data') .. '/fittencode'
   local path = dir .. '/api_key'
-  return dir, path
+  return Base.to_native(dir), Base.to_native(path)
 end
 
 local function read_local_api_key_file()
