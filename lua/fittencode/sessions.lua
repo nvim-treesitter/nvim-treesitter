@@ -16,7 +16,6 @@ local URL_GET_FT_TOKEN = 'https://codeuser.fittentech.cn:14443/get_ft_token'
 local URL_GENERATE_ONE_STAGE = 'https://codeapi.fittentech.cn:13443/generate_one_stage/'
 
 M.fitten_suggestion = {}
-M.user_token = nil
 
 local function read_api_key(data)
   M.api_key = data:gsub('\n', '')
@@ -58,7 +57,7 @@ local function on_login_api_key_callback(exit_code, output)
   local fico_data = fn.json_decode(output)
   if fico_data.data == nil or fico_data.data.fico_token == nil then
     vim.schedule(function()
-      Log.error('Login failed: Server response without fico_token field')
+      Log.error('Login failed: Server response without fico_token field, decoded response is %s', fico_data)
     end)
     return
   end
@@ -75,8 +74,6 @@ local function login_with_api_key(user_token)
     end)
     return
   end
-
-  M.user_token = user_token
 
   local fico_url = URL_GET_FT_TOKEN
   local fico_args = {
@@ -100,9 +97,9 @@ local function on_login_callback(exit_code, output)
   end
 
   local login_data = fn.json_decode(output)
-  if login_data.code == nil or login_data.code ~= 200 then
+  if login_data.status_code == nil or login_data.status_code ~= 200 then
     vim.schedule(function()
-      Log.error('Login failed: HTTP code is %s', login_data.code)
+      Log.error('Login failed: HTTP status_code is %s, response is %s', login_data.status_code, login_data)
     end)
     return
   end
@@ -118,6 +115,12 @@ end
 function M.login(name, password)
   if name == nil or name == '' or password == nil or password == '' then
     Log.error('Invalid username or password')
+    return
+  end
+
+  local _, path = get_api_key_store_path()
+  if Base.exists(path) then
+    Log.info('You are already logged in')
     return
   end
 
@@ -145,6 +148,11 @@ end
 
 function M.logout()
   local _, path = get_api_key_store_path()
+  if not Base.exists(path) then
+    Log.info('You are already logged out')
+    return
+  end
+
   uv.fs_unlink(path, function(err)
     if err then
       vim.schedule(function()
@@ -152,7 +160,6 @@ function M.logout()
         Log.error('Logout failed')
       end)
     else
-      M.user_token = nil
       vim.schedule(function()
         Log.info('Delete API key file %s successful', path)
         Log.info('Logout successful')

@@ -101,6 +101,10 @@ function M.read(path, callback)
   end)
 end
 
+function M.exists(file)
+  return uv.fs_stat(file) ~= nil
+end
+
 function M.nt_sep()
   return '\\'
 end
