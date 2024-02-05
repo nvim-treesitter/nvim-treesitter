@@ -116,8 +116,6 @@ function M.logout()
 end
 
 local function calculate_text(generated_text)
-  local virt_text = {}
-
   local lines = vim.split(fn.substitute(generated_text, '<.endoftext.>', '', 'g'), '\r')
   if vim.tbl_count(lines) == 0 or (vim.tbl_count(lines) == 1 and string.len(lines[1]) == 0) then
     return
