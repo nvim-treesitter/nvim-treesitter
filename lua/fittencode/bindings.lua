@@ -11,26 +11,31 @@ local M = {}
 local DEFAULT_DEBOUNCE_TIME = 75
 
 local fittencode_commands = {
-  { 'logout', Sessions.logout },
   { 'login', Sessions.login },
+  { 'logout', Sessions.logout },
 }
 
-local function fittencode_varg(args)
-  local actions = vim.split(args.args, ' ')
-  for _, c in ipairs(fittencode_commands) do
-    if actions[1] == c[1] then
-      return c[2](actions[2], actions[3])
+local function fittencode_varg(line)
+  local actions = line.fargs
+  for _, cmd in ipairs(fittencode_commands) do
+    if actions[1] == cmd[1] then
+      table.remove(actions, 1)
+      return cmd[2](unpack(actions))
     end
   end
-  Log.error('Invalid command %s', args.args)
+  Log.error('Invalid command, fargs is %s', line.fargs)
 end
 
-local function fittencode_complete()
-  local names = {}
-  for _, c in ipairs(fittencode_commands) do
-    table.insert(names, c[1])
+local function fittencode_complete(_, line)
+  local args = vim.split(vim.trim(line), '%s+')
+  if vim.tbl_count(args) ~= 2 then
+    return
   end
-  return names
+  local entries = {}
+  for _, cmd in ipairs(fittencode_commands) do
+    table.insert(entries, cmd[1])
+  end
+  return entries
 end
 
 function M.setup_autocmds()

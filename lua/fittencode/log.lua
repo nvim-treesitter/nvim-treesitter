@@ -24,7 +24,7 @@ function M.log(level, msg, ...)
   if #args > 0 then
     msg = string.format(msg, unpack(vim.tbl_map(vim.inspect, { ... })))
   end
-  msg = '[' .. to_string(level) .. '] ' .. '[' .. os.date('%Y-%m-%d %H:%M:%S') .. '] ' .. '[fittencode.nvim]' .. msg
+  msg = '[' .. to_string(level) .. '] ' .. '[' .. os.date('%Y-%m-%d %H:%M:%S') .. '] ' .. '[fittencode.nvim] ' .. msg
   vim.notify(msg, level)
 end
 
