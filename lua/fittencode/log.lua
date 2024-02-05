@@ -2,14 +2,14 @@ local M = {}
 
 M.enabled = true
 
-local function to_string(vim_log_level)
-  if vim_log_level == vim.log.levels.ERROR then
+local function to_string(level)
+  if level == vim.log.levels.ERROR then
     return 'ERROR'
-  elseif vim_log_level == vim.log.levels.WARN then
+  elseif level == vim.log.levels.WARN then
     return 'WARN'
-  elseif vim_log_level == vim.log.levels.INFO then
+  elseif level == vim.log.levels.INFO then
     return 'INFO'
-  elseif vim_log_level == vim.log.levels.DEBUG then
+  elseif level == vim.log.levels.DEBUG then
     return 'DEBUG'
   else
     return 'UNKNOWN'
@@ -24,7 +24,7 @@ function M.log(level, msg, ...)
   if #args > 0 then
     msg = string.format(msg, unpack(vim.tbl_map(vim.inspect, { ... })))
   end
-  msg = '[' .. to_string(level) .. '] ' .. '[' .. os.date('%Y-%m-%d %H:%M:%S') .. '] ' .. msg
+  msg = '[' .. to_string(level) .. '] ' .. '[' .. os.date('%Y-%m-%d %H:%M:%S') .. '] ' .. '[fittencode.nvim]' .. msg
   vim.notify(msg, level)
 end
 

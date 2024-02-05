@@ -44,10 +44,14 @@ local function to_ms(ns)
   return ns / 1e6
 end
 
+local function is_timeout(timestamp)
+  return to_ms(uv.hrtime() - timestamp) > DEFAULT_TIMEOUT
+end
+
 function M.timeout_recycling()
   -- Log.debug('Timeout recycling tasks')
   for i, task in ipairs(M.tasks_list) do
-    if to_ms(uv.hrtime() - task.timestamp) > DEFAULT_TIMEOUT then
+    if is_timeout(task.timestamp) then
       table.remove(M.tasks_list, i)
     end
   end

@@ -17,10 +17,6 @@ local URL_GENERATE_ONE_STAGE = 'https://codeapi.fittentech.cn:13443/generate_one
 
 M.fitten_suggestion = {}
 
-local function read_api_key(data)
-  M.api_key = data:gsub('\n', '')
-end
-
 local function get_api_key_store_path()
   local dir = fn.stdpath('data') .. '/fittencode'
   local path = dir .. '/api_key'
@@ -29,7 +25,9 @@ end
 
 local function read_local_api_key_file()
   local _, path = get_api_key_store_path()
-  Base.read(path, read_api_key)
+  Base.read(path, function(data)
+    M.api_key = data:gsub('\n', '')
+  end)
 end
 
 local function on_curl_signal_callback(signal, output)
@@ -226,13 +224,7 @@ function M.completion_request(task_id)
   end
 end
 
-function M.do_completion_request(task_id)
-  -- Log.debug('Completion request')
-
-  if not Tasks.match(task_id, fn.line('.'), fn.col('.')) then
-    return
-  end
-
+local function make_completion_request_params()
   local filename = api.nvim_buf_get_name(api.nvim_get_current_buf())
   if filename == nil or filename == '' then
     filename = 'NONAME'
@@ -247,7 +239,17 @@ function M.do_completion_request(task_id)
       filename = filename,
     },
   }
-  local encoded_params = fn.json_encode(params)
+  return params
+end
+
+function M.do_completion_request(task_id)
+  -- Log.debug('Completion request')
+
+  if not Tasks.match(task_id, fn.line('.'), fn.col('.')) then
+    return
+  end
+
+  local encoded_params = fn.json_encode(make_completion_request_params())
   Base.write_temp_file(encoded_params, function(path)
     local server_addr = URL_GENERATE_ONE_STAGE
     local completion_args = {
