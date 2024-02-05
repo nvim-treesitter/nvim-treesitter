@@ -1,5 +1,7 @@
 local uv = vim.uv
 
+local Log = require('fittencode.log')
+
 local M = {}
 
 function M.send(params, on_success, on_error, on_exit)
@@ -18,7 +20,7 @@ function M.send(params, on_success, on_error, on_exit)
     args = args,
   }, function(exit_code, signal)
     if handle == nil then
-      print('handle is nil')
+      Log.error('handle is nil, cmd: %s, args: %s', cmd, args)
       return
     end
     handle:close()
@@ -31,7 +33,7 @@ function M.send(params, on_success, on_error, on_exit)
       end
       check:stop()
       if signal ~= 0 then
-        -- TODO: Handle error
+        Log.error('cmd: %s, args: %s, signal: %s', cmd, args, signal)
         if on_error then
           vim.schedule(function()
             on_error(signal, output)

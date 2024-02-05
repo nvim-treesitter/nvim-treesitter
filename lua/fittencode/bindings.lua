@@ -3,7 +3,6 @@ local fn = vim.fn
 
 local Base = require('fittencode.base')
 local Sessions = require('fittencode.sessions')
-local View = require('fittencode.view')
 local Log = require('fittencode.log')
 local Task = require('fittencode.tasks')
 
@@ -23,7 +22,7 @@ local function fittencode_varg(args)
       return c[2](actions[2], actions[3])
     end
   end
-  -- TODO: Handle errors
+  Log.error('Invalid command %s', args.args)
 end
 
 local function fittencode_complete()

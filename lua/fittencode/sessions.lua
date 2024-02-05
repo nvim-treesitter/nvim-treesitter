@@ -36,20 +36,18 @@ local function write_api_key(api_key)
   local dir, path = get_api_key_store_path()
   Base.write_mkdir(api_key, dir, path, function()
     vim.schedule(function()
-      Log.info('Login successful')
       Log.info('API key saved to %s', path)
+      Log.info('Login successful')
     end)
   end)
 end
 
 local function on_login_api_key_callback(exit_code, output)
   local fico_data = fn.json_decode(output)
-  if fico_data.status_code == nil or fico_data.status_code ~= 0 then
-    -- TODO: Handle errors
-    return
-  end
   if fico_data.data == nil or fico_data.data.fico_token == nil then
-    -- TODO: Handle errors
+    vim.schedule(function()
+      Log.error('Login failed: Server response without fico_token')
+    end)
     return
   end
   local api_key = fico_data.data.fico_token
@@ -74,9 +72,11 @@ local function login_with_api_key(user_token)
 end
 
 local function on_login_callback(exit_code, output)
-  -- TODO: Handle exit_code
   local login_data = fn.json_decode(output)
   if login_data.code == nil or login_data.code ~= 200 then
+    vim.schedule(function()
+      Log.error('Login failed: HTTP code is %s', login_data.code)
+    end)
     return
   end
   local api_key = login_data.data.token
@@ -88,6 +88,11 @@ function M.load_last_session()
 end
 
 function M.login(name, password)
+  if name == nil or name == '' or password == nil or password == '' then
+    Log.error('Invalid username or password')
+    return
+  end
+
   local login_url = 'https://codeuser.fittentech.cn:14443/login'
   local data = {
     username = name,
@@ -114,7 +119,10 @@ function M.logout()
   local _, path = get_api_key_store_path()
   uv.fs_unlink(path, function(err)
     if err then
-      -- TODO: Handle errors
+      vim.schedule(function()
+        Log.error('Failed to delete API key file %s: %s')
+        Log.error('Logout failed: %s', err)
+      end)
     else
       M.user_token = nil
       vim.schedule(function()
@@ -160,9 +168,9 @@ end
 local function on_completion_delete_tempfile_callback(path)
   uv.fs_unlink(path, function(err)
     if err then
-      -- TODO: Handle errors
-    else
-      -- TODO:
+      vim.schedule(function()
+        Log.error('Failed to delete temporary file %s: %s', path, err)
+      end)
     end
   end)
 end
