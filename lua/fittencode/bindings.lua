@@ -55,13 +55,9 @@ function M.setup_commands()
       if prefix and line:sub(-1) == ' ' then
         return
       end
-      local entries = {}
-      for name, cmd in pairs(commands) do
-        if prefix == nil or string.sub(name, 1, #prefix) == prefix then
-          table.insert(entries, name)
-        end
-      end
-      return entries
+      return vim.tbl_filter(function(key)
+        return not prefix or key:find(prefix, 1, true) == 1
+      end, vim.tbl_keys(commands))      
     end,
     bang = true,
     nargs = '*',
