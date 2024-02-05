@@ -58,7 +58,7 @@ function M.setup_autocmds()
 end
 
 function M.setup_commands()
-  Base.command('Fittencode', fittencode_varg, { complete = fittencode_complete, bang = true, nargs = '*', desc = 'Fittencode Command' })
+  Base.command('Fitten', fittencode_varg, { complete = fittencode_complete, bang = true, nargs = '*', desc = 'Fitten Command' })
 end
 
 function M.setup_keymaps()

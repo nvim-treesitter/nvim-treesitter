@@ -46,10 +46,10 @@ Out of box.
 
 ## 🚀 Usage
 
-| Command             | Description                                                    |
-|---------------------|----------------------------------------------------------------|
-| `Fittencode login`  | Try the command `Fittencode login <user> <password>` to login. |
-| `Fittencode logout` | Logout account                                                 |
+| Command         | Description                                                |
+|-----------------|------------------------------------------------------------|
+| `Fitten login`  | Try the command `Fitten login <user> <password>` to login. |
+| `Fitten logout` | Logout account                                             |
 
 ### Default Mappings
 
