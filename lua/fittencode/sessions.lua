@@ -11,6 +11,10 @@ local Tasks = require('fittencode.tasks')
 
 local M = {}
 
+local URL_LOGIN = 'https://codeuser.fittentech.cn:14443/login'
+local URL_GET_FT_TOKEN = 'https://codeuser.fittentech.cn:14443/get_ft_token'
+local URL_GENERATE_ONE_STAGE = 'https://codeapi.fittentech.cn:13443/generate_one_stage/'
+
 M.fitten_suggestion = {}
 
 local function read_api_key(data)
@@ -58,7 +62,7 @@ end
 local function login_with_api_key(user_token)
   M.user_token = user_token
 
-  local fico_url = 'https://codeuser.fittentech.cn:14443/get_ft_token'
+  local fico_url = URL_GET_FT_TOKEN
   local fico_args = {
     '-s',
     '-H',
@@ -93,7 +97,7 @@ function M.login(name, password)
     return
   end
 
-  local login_url = 'https://codeuser.fittentech.cn:14443/login'
+  local login_url = URL_LOGIN
   local data = {
     username = name,
     password = password,
@@ -210,7 +214,7 @@ function M.do_completion_request(task_id)
   }
   local encoded_params = fn.json_encode(params)
   Base.write_temp_file(encoded_params, function(path)
-    local server_addr = 'https://codeapi.fittentech.cn:13443/generate_one_stage/'
+    local server_addr = URL_GENERATE_ONE_STAGE
     local completion_args = {
       '-s',
       '-X',
