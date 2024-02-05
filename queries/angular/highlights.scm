@@ -113,7 +113,7 @@
 ] @punctuation.delimiter
 
 (nullish_coalescing_expression
-  (coalesing_operator) @operator)
+  (coalescing_operator) @operator)
 
 (concatination_expression
   "+" @operator)
