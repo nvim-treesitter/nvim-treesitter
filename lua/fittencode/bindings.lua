@@ -11,8 +11,8 @@ local M = {}
 local DEFAULT_DEBOUNCE_TIME = 75
 
 local fittencode_commands = {
-  { 'login', Sessions.login },
   { 'logout', Sessions.logout },
+  { 'login', Sessions.login },
 }
 
 local function fittencode_varg(args)
