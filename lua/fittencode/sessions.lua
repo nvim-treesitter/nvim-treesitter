@@ -144,8 +144,6 @@ local function on_completion_callback(exit_code, response)
     return
   end
 
-  M.fitten_suggestion = {}
-
   local virt_text = calculate_text(completion_data.generated_text)
   View.render_virt_text(virt_text)
 end
@@ -165,13 +163,15 @@ function M.completion_request(task_id)
     return
   end
 
+  M.fitten_suggestion = {}
+
   if not Lsp.is_active() then
     M.do_completion_request(task_id)
   end
 end
 
 function M.do_completion_request(task_id)
-  Log.debug('Completion request')
+  -- Log.debug('Completion request')
 
   if not Tasks.match(task_id, fn.line('.'), fn.col('.')) then
     return
@@ -220,7 +220,6 @@ function M.chaining_complete()
   View.clear_virt_text()
   View.set_text(M.fitten_suggestion)
 
-  M.fitten_suggestion = {}
   M.completion_request()
 end
 
