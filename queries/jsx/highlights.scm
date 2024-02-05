@@ -63,3 +63,5 @@
     (property_identifier) @constructor))
 
 (jsx_text) @none
+
+(html_character_reference) @character.special
