@@ -53,7 +53,16 @@ function M.render_virt_text(virt_text)
   draw_virt_text(virt_text)
 end
 
+local autoindent = nil
+local smartindent = nil
+local formatoptions = nil
+local textwidth = nil
+
 local function local_fmt_clear()
+  autoindent = vim.bo.autoindent
+  smartindent = vim.bo.smartindent
+  formatoptions = vim.bo.formatoptions
+  textwidth = vim.bo.textwidth 
   vim.bo.autoindent = false
   vim.bo.smartindent = false
   vim.bo.formatoptions = ''
@@ -61,10 +70,10 @@ local function local_fmt_clear()
 end
 
 local function local_fmt_recover()
-  vim.bo.autoindent = vim.o.autoindent
-  vim.bo.smartindent = vim.o.smartindent
-  vim.bo.formatoptions = vim.o.formatoptions
-  vim.bo.textwidth = vim.o.textwidth
+  vim.bo.autoindent = autoindent
+  vim.bo.smartindent = smartindent
+  vim.bo.formatoptions = formatoptions
+  vim.bo.textwidth = textwidth
 end
 
 function M.set_text(lines)
