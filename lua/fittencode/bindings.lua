@@ -50,6 +50,9 @@ function M.setup_commands()
   end, {
     complete = function(_, line)
       local args = vim.split(vim.trim(line), '%s+')
+      if vim.tbl_count(args) > 2 then
+        return
+      end
       table.remove(args, 1)
       local prefix = table.remove(args, 1)
       if prefix and line:sub(-1) == ' ' then
