@@ -3,6 +3,7 @@ local api = vim.api
 local Base = require('fittencode.base')
 local Sessions = require('fittencode.sessions')
 local View = require('fittencode.view')
+local Log = require('fittencode.log')
 
 local M = {}
 
@@ -36,7 +37,7 @@ function M.setup_autocmds()
     callback = function(args)
       Base.debounce(function()
         Sessions.completion_request()
-      end, 800)
+      end, 75)
     end,
     desc = 'Triggered when the cursor is held for a period of time without moving the cursor.',
   })
@@ -45,9 +46,9 @@ function M.setup_autocmds()
     group = Base.augroup('ResetCompletion'),
     pattern = '*',
     callback = function(args)
-      View.clear_virt_text()
+      Sessions.reset_completion()
     end,
-    desc = 'Reset completion status',
+    desc = 'Reset completion',
   })
 end
 

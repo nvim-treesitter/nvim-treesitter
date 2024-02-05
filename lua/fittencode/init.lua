@@ -6,7 +6,7 @@ local M = {}
 
 function M.setup()
   if not vim.fn.has('nvim-0.10') then
-    Log.error("fittencode.nvim need version of Neovim >= 0.10.0 with support for inline virtual text.")
+    Log.error('fittencode.nvim need version of Neovim >= 0.10.0 with support for inline virtual text.')
     return
   end
   Sessions.load_last_session()

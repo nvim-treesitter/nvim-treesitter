@@ -20,7 +20,7 @@ local function draw_virt_text(virt_text)
 
   if vim.tbl_count(virt_text) > 0 then
     api.nvim_buf_set_extmark(0, M.namespace, fn.line('.') - 1, 0, {
-      virt_lines = virt_text
+      virt_lines = virt_text,
     })
   end
 end
@@ -47,7 +47,6 @@ function M.render_virt_text(virt_text)
   if virt_text == nil then
     return
   end
-  -- Log.info('virt_text: %s', virt_text)
   reset_ns()
   draw_virt_text(virt_text)
 end

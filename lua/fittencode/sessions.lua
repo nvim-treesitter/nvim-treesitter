@@ -219,4 +219,9 @@ function M.chaining_complete()
   M.completion_request()
 end
 
+function M.reset_completion()
+  M.fitten_suggestion = {}
+  View.clear_virt_text()
+end
+
 return M
