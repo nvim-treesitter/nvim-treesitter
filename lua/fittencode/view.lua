@@ -5,6 +5,8 @@ local Log = require('fittencode.log')
 
 local M = {}
 
+M.highlight = 'FittenSuggestion'
+
 local function draw_virt_text(virt_text)
   if vim.tbl_count(virt_text) == 0 then
     return
@@ -62,7 +64,7 @@ local function local_fmt_clear()
   autoindent = vim.bo.autoindent
   smartindent = vim.bo.smartindent
   formatoptions = vim.bo.formatoptions
-  textwidth = vim.bo.textwidth 
+  textwidth = vim.bo.textwidth
   vim.bo.autoindent = false
   vim.bo.smartindent = false
   vim.bo.formatoptions = ''
@@ -109,6 +111,13 @@ function M.set_text(lines)
   end
 
   local_fmt_recover()
+end
+
+function M.setup_highlight()
+  vim.api.nvim_set_hl(0, M.highlight, {
+    link = 'Comment',
+    default = true,
+  })
 end
 
 return M

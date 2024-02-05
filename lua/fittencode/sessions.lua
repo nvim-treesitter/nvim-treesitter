@@ -180,7 +180,7 @@ local function calculate_text(generated_text)
   for _, line in ipairs(lines) do
     local parts = vim.split(line, '\n')
     for _, part in ipairs(parts) do
-      table.insert(virt_text, { { part, 'Comment' } })
+      table.insert(virt_text, { { part, View.highlight } })
       table.insert(M.fitten_suggestion, part)
     end
   end
