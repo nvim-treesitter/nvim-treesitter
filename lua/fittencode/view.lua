@@ -1,51 +1,27 @@
 local api = vim.api
 local fn = vim.fn
 
+local Log = require('fittencode.log')
+
 local M = {}
 
-local function make_rooms_for_virt_text(virt_text)
-  -- Virtual line not rendering if it's beyond the last line (https://github.com/neovim/neovim/issues/20179)
-  local current_line = fn.line('.') + 1
-  local max_lines = api.nvim_buf_line_count(0)
-  local unused_lines = 0
-  for i = current_line, max_lines do
-    local curline = vim.api.nvim_buf_get_lines(0, current_line - 1, current_line, false)[1]
-    if string.len(curline) == 0 then
-      unused_lines = unused_lines + 1
-    else
-      break
-    end
-  end
-
-  local virt_text_lines = vim.tbl_count(virt_text)
-  local needed_lines = virt_text_lines - unused_lines
-  if needed_lines > 0 then
-    for i = 1, needed_lines do
-      api.nvim_buf_set_lines(0, current_line + i - 1, current_line + i - 1, false, { '' })
-    end
-  end
-end
-
 local function draw_virt_text(virt_text)
-  local first_line = true
-  for i, line in ipairs(virt_text) do
-    if first_line then
-      first_line = false
-      api.nvim_buf_set_extmark(0, M.namespace, fn.line('.') - 1, fn.col('.') - 1, {
-        virt_text = line,
-        virt_text_pos = 'inline',
-        hl_mode = 'combine',
-      })
-    else
-      local row = fn.line('.') - 2 + i
-      if row < api.nvim_buf_line_count(0) then
-        api.nvim_buf_set_extmark(0, M.namespace, row, 0, {
-          virt_text = line,
-          virt_text_pos = 'inline',
-          hl_mode = 'combine',
-        })
-      end
-    end
+  if vim.tbl_count(virt_text) == 0 then
+    return
+  end
+
+  api.nvim_buf_set_extmark(0, M.namespace, fn.line('.') - 1, fn.col('.') - 1, {
+    virt_text = virt_text[1],
+    virt_text_pos = 'inline',
+    hl_mode = 'combine',
+  })
+
+  table.remove(virt_text, 1)
+
+  if vim.tbl_count(virt_text) > 0 then
+    api.nvim_buf_set_extmark(0, M.namespace, fn.line('.') - 1, 0, {
+      virt_lines = virt_text
+    })
   end
 end
 
@@ -71,8 +47,8 @@ function M.render_virt_text(virt_text)
   if virt_text == nil then
     return
   end
+  -- Log.info('virt_text: %s', virt_text)
   reset_ns()
-  make_rooms_for_virt_text(virt_text)
   draw_virt_text(virt_text)
 end
 

@@ -123,8 +123,6 @@ local function calculate_text(generated_text)
     return
   end
 
-  M.fitten_suggestion = {}
-
   if string.len(lines[#lines]) == 0 then
     table.remove(lines, #lines)
   end
@@ -146,6 +144,8 @@ local function on_completion_callback(exit_code, response)
   if completion_data.generated_text == nil then
     return
   end
+
+  M.fitten_suggestion = {}
 
   local virt_text = calculate_text(completion_data.generated_text)
   View.render_virt_text(virt_text)
