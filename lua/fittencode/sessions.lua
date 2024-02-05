@@ -16,6 +16,7 @@ local URL_GET_FT_TOKEN = 'https://codeuser.fittentech.cn:14443/get_ft_token'
 local URL_GENERATE_ONE_STAGE = 'https://codeapi.fittentech.cn:13443/generate_one_stage/'
 
 M.fitten_suggestion = {}
+M.user_token = nil
 
 local function read_api_key(data)
   M.api_key = data:gsub('\n', '')
@@ -40,26 +41,41 @@ local function write_api_key(api_key)
   local dir, path = get_api_key_store_path()
   Base.write_mkdir(api_key, dir, path, function()
     vim.schedule(function()
-      Log.info('API key saved to %s', path)
+      Log.info('API key saved to %s successful', path)
       Log.info('Login successful')
     end)
   end)
 end
 
 local function on_login_api_key_callback(exit_code, output)
-  local fico_data = fn.json_decode(output)
-  if fico_data.data == nil or fico_data.data.fico_token == nil then
+  if output == nil or output == '' then
     vim.schedule(function()
-      Log.error('Login failed: Server response without fico_token')
+      Log.error('Login failed: Server response without data')
     end)
     return
   end
+
+  local fico_data = fn.json_decode(output)
+  if fico_data.data == nil or fico_data.data.fico_token == nil then
+    vim.schedule(function()
+      Log.error('Login failed: Server response without fico_token field')
+    end)
+    return
+  end
+
   local api_key = fico_data.data.fico_token
   M.api_key = api_key
   write_api_key(api_key)
 end
 
 local function login_with_api_key(user_token)
+  if user_token == nil or user_token == '' then
+    vim.schedule(function()
+      Log.error('Login failed: Invalid user token')
+    end)
+    return
+  end
+
   M.user_token = user_token
 
   local fico_url = URL_GET_FT_TOKEN
@@ -76,6 +92,13 @@ local function login_with_api_key(user_token)
 end
 
 local function on_login_callback(exit_code, output)
+  if output == nil or output == '' then
+    vim.schedule(function()
+      Log.error('Login failed: Server response without data')
+    end)
+    return
+  end
+
   local login_data = fn.json_decode(output)
   if login_data.code == nil or login_data.code ~= 200 then
     vim.schedule(function()
@@ -83,6 +106,7 @@ local function on_login_callback(exit_code, output)
     end)
     return
   end
+
   local api_key = login_data.data.token
   login_with_api_key(api_key)
 end
@@ -124,13 +148,13 @@ function M.logout()
   uv.fs_unlink(path, function(err)
     if err then
       vim.schedule(function()
-        Log.error('Failed to delete API key file %s: %s')
-        Log.error('Logout failed: %s', err)
+        Log.error('Failed to delete API key file %s: %s', path, err)
+        Log.error('Logout failed')
       end)
     else
       M.user_token = nil
       vim.schedule(function()
-        Log.info('Delete API key file %s', path)
+        Log.info('Delete API key file %s successful', path)
         Log.info('Logout successful')
       end)
     end
@@ -160,6 +184,10 @@ local function calculate_text(generated_text)
 end
 
 local function on_completion_callback(exit_code, response)
+  if response == nil or response == '' then
+    return
+  end
+
   local completion_data = fn.json_decode(response)
   if completion_data.generated_text == nil then
     return
@@ -173,7 +201,7 @@ local function on_completion_delete_tempfile_callback(path)
   uv.fs_unlink(path, function(err)
     if err then
       vim.schedule(function()
-        Log.error('Failed to delete temporary file %s: %s', path, err)
+        Log.error('Failed to delete HTTP temporary file %s: %s', path, err)
       end)
     end
   end)
