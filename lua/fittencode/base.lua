@@ -110,11 +110,11 @@ function M.kernel_sep()
 end
 
 function M.is_windows()
-  return vim.loop.os_uname().sysname == 'Windows_NT'
+  return uv.os_uname().sysname == 'Windows_NT'
 end
 
 function M.is_kernel()
-  return vim.loop.os_uname().sysname == 'Linux'
+  return uv.os_uname().sysname == 'Linux'
 end
 
 function M.to_nt(s)

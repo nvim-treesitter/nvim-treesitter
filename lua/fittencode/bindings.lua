@@ -9,6 +9,8 @@ local Task = require('fittencode.tasks')
 
 local M = {}
 
+local DEFAULT_DEBOUNCE_TIME = 75
+
 local fittencode_commands = {
   { 'login', Sessions.login },
   { 'logout', Sessions.logout },
@@ -37,11 +39,11 @@ function M.setup_autocmds()
     group = Base.augroup('Completion'),
     pattern = '*',
     callback = function(args)
-      Log.debug('CursorHoldI triggered')
+      -- Log.debug('CursorHoldI triggered')
       local task_id = Task.create(fn.line('.'), fn.col('.'))
       Base.debounce(function()
         Sessions.completion_request(task_id)
-      end, 75)
+      end, DEFAULT_DEBOUNCE_TIME)
     end,
     desc = 'Triggered when the cursor is held for a period of time without moving the cursor.',
   })
