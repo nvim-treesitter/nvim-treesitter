@@ -129,6 +129,10 @@ local function append_text_at_pos(row, col, count, lines)
   end
 end
 
+local function undojoin()
+  Base.feedkeys('<C-g>u')
+end
+
 function M.set_text(lines)
   local_fmt_clear()
 
@@ -136,6 +140,7 @@ function M.set_text(lines)
   local col = fn.col('.')
   local count = vim.tbl_count(lines)
 
+  undojoin()
   append_text_at_pos(row, col, count, lines)
   move_cursor_text_end(row, col, count, lines)
   silence_lsp()
