@@ -299,7 +299,6 @@ function M.accept_line()
     return
   end
   local line = table.remove(M.fitten_suggestion, 1)
-  Log.debug('line: {}', line)
   if string.len(line) == 0 then
     View.set_text({ '', '' })
   else
@@ -318,12 +317,20 @@ local function is_space(char)
 end
 
 local function next_indices(line)
+  local pa = nil
   for i = 1, string.len(line) do
     local char = string.sub(line, i, i)
-    if not (is_alpha(char) or is_space(char)) then
+    local a = is_alpha(char)
+    local s = is_space(char)
+    if i == 1 and not a and not s then
       return i
     end
+    if pa ~= nil and ((not pa and a) or (pa and s) or (not a and not s)) then
+      return i - 1
+    end
+    pa = a
   end
+  return string.len(line)
 end
 
 function M.accept_word()
@@ -340,6 +347,7 @@ function M.accept_word()
     table.remove(M.fitten_suggestion, 1)
     View.set_text({ '', '' })
   else
+    M.fitten_suggestion[1] = line
     View.set_text({ word })
   end
 end
