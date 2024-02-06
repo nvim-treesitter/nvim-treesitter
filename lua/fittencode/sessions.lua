@@ -95,10 +95,17 @@ local function on_login_callback(exit_code, output)
   end
 
   local login_data = fn.json_decode(output)
-  if login_data.code == nil or login_data.code ~= 200 then
-    vim.schedule(function()
-      Log.error('Login failed: HTTP code is %s, response is %s', login_data.code, login_data)
-    end)
+  if login_data.code ~= 200 then
+    if login_data.code == nil then
+      vim.schedule(function()
+        Log.error('Login failed: Server status code is %s, response is %s', login_data.status_code, login_data)
+      end)
+      return
+    else
+      vim.schedule(function()
+        Log.error('Login failed: HTTP code is %s, response is %s', login_data.code, login_data)
+      end)
+    end
     return
   end
 

@@ -60,7 +60,7 @@ function M.setup_commands()
       end
       return vim.tbl_filter(function(key)
         return not prefix or key:find(prefix, 1, true) == 1
-      end, vim.tbl_keys(commands))      
+      end, vim.tbl_keys(commands))
     end,
     bang = true,
     nargs = '*',
