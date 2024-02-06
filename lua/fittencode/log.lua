@@ -27,7 +27,7 @@ function M.log(level, msg, ...)
     msg = fn.substitute(msg, '{}', '%s', 'g')
     msg = string.format(msg, unpack(vim.tbl_map(vim.inspect, { ... })))
   end
-  msg = '[' .. to_string(level) .. '] ' .. '[' .. os.date('%Y-%m-%d %H:%M:%S') .. '] ' .. '[fittencode.nvim] ' .. msg
+  msg = '[' .. to_string(level) .. '] ' .. '[' .. os.date('%Y-%m-%d %H:%M:%S') .. '] ' .. '[fittencode.nvim] ' .. (msg or '')
   vim.notify(msg, level)
 end
 
