@@ -107,7 +107,7 @@ local function draw_text(lines)
       if try_row >= max then
         api.nvim_buf_set_lines(0, max, max, false, { line })
       else
-        if string.len(api.nvim_buf_get_lines(0, try_row - 1, try_row, false)[1]) ~= 0 then
+        if string.len(api.nvim_buf_get_lines(0, try_row, try_row + 1, false)[1]) ~= 0 then
           api.nvim_buf_set_lines(0, try_row, try_row, false, { line })
         else
           api.nvim_buf_set_text(0, try_row, 0, try_row, 0, { line })
@@ -115,10 +115,12 @@ local function draw_text(lines)
       end
     end
   end
-
-  local first_len = string.len(lines[1])
-  if count == 1 and first_len ~= 0 then
-    api.nvim_win_set_cursor(0, { row + 1, col + first_len - 1 })
+  
+  if count == 1 then
+    local first_len = string.len(lines[1])
+    if first_len ~= 0 then
+      api.nvim_win_set_cursor(0, { row + 1, col + first_len - 1 })
+    end
   else
     local last_len = string.len(lines[count])
     api.nvim_win_set_cursor(0, { row + count, last_len })
