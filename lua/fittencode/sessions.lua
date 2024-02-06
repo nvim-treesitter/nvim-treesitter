@@ -294,6 +294,56 @@ function M.chaining_complete()
   M.completion_request()
 end
 
+function M.accept_line()
+  if not M.has_suggestion() then
+    return
+  end
+  local line = table.remove(M.fitten_suggestion, 1)
+  Log.debug('line: {}', line)
+  if string.len(line) == 0 then
+    View.set_text({ '', '' })
+  else
+    View.set_text({ line })
+  end
+end
+
+local function is_alpha(char)
+  local byte = char:byte()
+  return (byte >= 65 and byte <= 90) or (byte >= 97 and byte <= 122)
+end
+
+local function is_space(char)
+  local byte = string.byte(char)
+  return byte == 32 or byte == 9
+end
+
+local function next_indices(line)
+  for i = 1, string.len(line) do
+    local char = string.sub(line, i, i)
+    if not (is_alpha(char) or is_space(char)) then
+      return i
+    end
+  end
+end
+
+function M.accept_word()
+  if not M.has_suggestion() then
+    return
+  end
+
+  local line = M.fitten_suggestion[1]
+  local indices = next_indices(line)
+  local word = string.sub(line, 1, indices)
+  line = string.sub(line, string.len(word))
+
+  if string.len(line) == 0 then
+    table.remove(M.fitten_suggestion, 1)
+    View.set_text({ '', '' })
+  else
+    View.set_text({ word })
+  end
+end
+
 function M.reset_completion()
   M.fitten_suggestion = {}
   View.clear_virt_text()

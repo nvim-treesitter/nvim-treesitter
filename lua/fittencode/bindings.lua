@@ -69,11 +69,25 @@ function M.setup_commands()
 end
 
 function M.setup_keymaps()
-  Base.map('i', '<tab>', function()
+  Base.map('i', '<Tab>', function()
     if Sessions.has_suggestion() then
       Sessions.chaining_complete()
     else
       View.feed_tab()
+    end
+  end)
+  Base.map('i', '<C-Down>', function()
+    if Sessions.has_suggestion() then
+      Sessions.accept_line()
+    else
+      View.feed_down()
+    end
+  end)
+  Base.map('i', '<C-Right>', function()
+    if Sessions.has_suggestion() then
+      Sessions.accept_word()
+    else
+      View.feed_right()
     end
   end)
 end

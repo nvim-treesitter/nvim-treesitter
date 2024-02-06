@@ -159,4 +159,12 @@ function M.feed_tab()
   Base.feedkeys('<Tab>')
 end
 
+function M.feed_down()
+  Base.feedkeys('<Down>')
+end
+
+function M.feed_up()
+  Base.feedkeys('<Up>')
+end
+
 return M
