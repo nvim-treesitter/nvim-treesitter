@@ -89,9 +89,7 @@ local function local_fmt_recover()
   vim.bo.textwidth = textwidth
 end
 
-function M.set_text(lines)
-  local_fmt_clear()
-
+local function draw_text(lines)
   local row = fn.line('.') - 1
   local col = fn.col('.')
   local count = vim.tbl_count(lines)
@@ -123,6 +121,34 @@ function M.set_text(lines)
 
   local keys = api.nvim_replace_termcodes('<Esc>a', true, false, true)
   api.nvim_feedkeys(keys, 'in', true)
+end
+
+local function make_rooms_for_text(text_height)
+  local current_line = fn.line('.') + 1
+  local max_line = api.nvim_buf_line_count(0)
+  local unused_line = 0
+  for i = current_line, max_line do
+    local content = api.nvim_buf_get_lines(0, i - 1, i, false)[1]
+    if string.len(content) == 0 then
+      unused_line = unused_line + 1
+    else
+      break
+    end
+  end
+
+  local needed_lines = text_height - unused_line
+  if needed_lines > 0 then
+    for i = 1, needed_lines do
+      api.nvim_buf_set_lines(0, current_line + i - 1, current_line + i - 1, false, { '' })
+    end
+  end
+end
+
+function M.set_text(lines)
+  local_fmt_clear()
+
+  make_rooms_for_text(vim.tbl_count(lines))
+  draw_text(lines)
 
   local_fmt_recover()
 end
