@@ -108,6 +108,9 @@ function M.set_text(lines)
     api.nvim_win_set_cursor(0, { row + count, last_len })
   end
 
+  local keys = vim.api.nvim_replace_termcodes('<Esc>a', true, false, true)
+  vim.api.nvim_feedkeys(keys, 'i', true)
+
   local_fmt_recover()
 end
 
