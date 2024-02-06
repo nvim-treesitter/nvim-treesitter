@@ -6,7 +6,7 @@
     "revision": "c21c3a0f996363ed17b8ac99d827fe5a4821f217"
   },
   "angular": {
-    "revision": "dfdce7ec26fb23f6f3fd83d4c79370759d5286b5"
+    "revision": "3946b1040b98a12458beef2763ce4780a523e3c6"
   },
   "apex": {
     "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
@@ -24,7 +24,7 @@
     "revision": "207b04974c83d8d25a947e4d09763675c4617da7"
   },
   "bash": {
-    "revision": "f7239f638d3dc16762563a9027faeee518ce1bd9"
+    "revision": "270c06b20567af619da1272dcd32ced9f42951d7"
   },
   "bass": {
     "revision": "27f110dfe79620993f5493ffa0d0f2fe12d250ed"
@@ -195,7 +195,7 @@
     "revision": "19d554d39e4a8491f7a77abcdb75bfbc1c19d0b5"
   },
   "gitcommit": {
-    "revision": "dc8f5dea7fb2284cc51a4781977b5939416cdfd8"
+    "revision": "7c01af8d227b5344f62aade2ff00f19bd0c458ca"
   },
   "gitignore": {
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
@@ -207,7 +207,7 @@
     "revision": "f9746dc1d0707717fbba84cb5c22a71586af23e1"
   },
   "glsl": {
-    "revision": "5bb58a6a5b0941d4e1256c6335e50d9780e74dde"
+    "revision": "c15d4e8b2599234745d5f3454695067e61092c20"
   },
   "gn": {
     "revision": "bc06955bc1e3c9ff8e9b2b2a55b38b94da923c05"
@@ -264,7 +264,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "8b10faba024b536dc85f76e0c678f573b1776034"
+    "revision": "3ade6d065c69cd72c4da966d0c0af98bfb512f16"
   },
   "hocon": {
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
@@ -450,10 +450,10 @@
     "revision": "a30394f61b607f48c841c6e085d5219f23872816"
   },
   "php": {
-    "revision": "c7fb0aab36320fff216b514868694427ad7868f6"
+    "revision": "5ceb92397f68b4aad73b09dee3c63639cb4611e7"
   },
   "php_only": {
-    "revision": "c7fb0aab36320fff216b514868694427ad7868f6"
+    "revision": "5ceb92397f68b4aad73b09dee3c63639cb4611e7"
   },
   "phpdoc": {
     "revision": "f285e338d328a03920a9bfd8dda78585c7ddcca3"
@@ -648,7 +648,7 @@
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
   },
   "templ": {
-    "revision": "a3ef3d8e73515b196d30adf9ee5115f057f7a2c6"
+    "revision": "b3e9f7c98e999f831fe1292166fcfc82cbb10f31"
   },
   "terraform": {
     "revision": "e135399cb31b95fac0760b094556d1d5ce84acf0"
@@ -732,7 +732,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "3b77e233eb3d2b85986f4daeffb4d21f0ed3eeba"
+    "revision": "d2c60c4caebec98ef080391b2f27adebc4c5d5a8"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
