@@ -135,10 +135,8 @@ function M.setup_highlight()
 end
 
 function M.feed_tab()
-  local row = fn.line('.') - 1
-  local col = fn.col('.') - 1
-  api.nvim_buf_set_text(0, row, col, row, col, { '\t' })
-  api.nvim_win_set_cursor(0, { row + 1, col + 2 })
+  local keys = vim.api.nvim_replace_termcodes('<Tab>', true, false, true)
+  vim.api.nvim_feedkeys(keys, 'in', true)
 end
 
 return M
