@@ -103,10 +103,15 @@ local function draw_text(lines)
       end
     else
       local max = api.nvim_buf_line_count(0)
-      if row + i - 1 >= max then
+      local try_row = row + i - 1
+      if try_row >= max then
         api.nvim_buf_set_lines(0, max, max, false, { line })
       else
-        api.nvim_buf_set_text(0, row + i - 1, 0, row + i - 1, 0, { line })
+        if string.len(api.nvim_buf_get_lines(0, try_row - 1, try_row, false)[1]) ~= 0 then
+          api.nvim_buf_set_lines(0, try_row, try_row, false, { line })
+        else
+          api.nvim_buf_set_text(0, try_row, 0, try_row, 0, { line })
+        end
       end
     end
   end
@@ -123,31 +128,9 @@ local function draw_text(lines)
   api.nvim_feedkeys(keys, 'in', true)
 end
 
-local function make_rooms_for_text(text_height)
-  local current_line = fn.line('.')
-  local max_line = api.nvim_buf_line_count(0)
-  local unused_line = 0
-  for i = current_line, max_line do
-    local content = api.nvim_buf_get_lines(0, i - 1, i, false)[1]
-    if string.len(content) == 0 then
-      unused_line = unused_line + 1
-    else
-      break
-    end
-  end
-
-  local needed_lines = text_height - 1 - unused_line
-  if needed_lines > 0 then
-    for i = 1, needed_lines do
-      api.nvim_buf_set_lines(0, current_line + i - 1, current_line + i - 1, false, { '' })
-    end
-  end
-end
-
 function M.set_text(lines)
   local_fmt_clear()
 
-  make_rooms_for_text(vim.tbl_count(lines))
   draw_text(lines)
 
   local_fmt_recover()
