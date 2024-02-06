@@ -89,11 +89,24 @@ local function local_fmt_recover()
   vim.bo.textwidth = textwidth
 end
 
-local function draw_text(lines)
-  local row = fn.line('.') - 1
-  local col = fn.col('.')
-  local count = vim.tbl_count(lines)
+local function silence_lsp()
+  local keys = api.nvim_replace_termcodes('<Esc>a', true, false, true)
+  api.nvim_feedkeys(keys, 'in', true)  
+end
 
+local function move_cursor_text_end(row, col, count, lines)
+  if count == 1 then
+    local first_len = string.len(lines[1])
+    if first_len ~= 0 then
+      api.nvim_win_set_cursor(0, { row + 1, col + first_len - 1 })
+    end
+  else
+    local last_len = string.len(lines[count])
+    api.nvim_win_set_cursor(0, { row + count, last_len })
+  end
+end
+
+local function append_text_at_pos(row, col, count, lines)
   for i = 1, count, 1 do
     local line = lines[i]
     local len = string.len(line)
@@ -114,26 +127,19 @@ local function draw_text(lines)
         end
       end
     end
-  end
-  
-  if count == 1 then
-    local first_len = string.len(lines[1])
-    if first_len ~= 0 then
-      api.nvim_win_set_cursor(0, { row + 1, col + first_len - 1 })
-    end
-  else
-    local last_len = string.len(lines[count])
-    api.nvim_win_set_cursor(0, { row + count, last_len })
-  end
-
-  local keys = api.nvim_replace_termcodes('<Esc>a', true, false, true)
-  api.nvim_feedkeys(keys, 'in', true)
+  end  
 end
 
 function M.set_text(lines)
   local_fmt_clear()
 
-  draw_text(lines)
+  local row = fn.line('.') - 1
+  local col = fn.col('.')
+  local count = vim.tbl_count(lines)
+
+  append_text_at_pos(row, col, count, lines)
+  move_cursor_text_end(row, col, count, lines)
+  silence_lsp()
 
   local_fmt_recover()
 end
