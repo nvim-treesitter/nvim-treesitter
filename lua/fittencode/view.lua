@@ -124,7 +124,7 @@ local function draw_text(lines)
 end
 
 local function make_rooms_for_text(text_height)
-  local current_line = fn.line('.') + 1
+  local current_line = fn.line('.')
   local max_line = api.nvim_buf_line_count(0)
   local unused_line = 0
   for i = current_line, max_line do
@@ -136,7 +136,7 @@ local function make_rooms_for_text(text_height)
     end
   end
 
-  local needed_lines = text_height - unused_line
+  local needed_lines = text_height - 1 - unused_line
   if needed_lines > 0 then
     for i = 1, needed_lines do
       api.nvim_buf_set_lines(0, current_line + i - 1, current_line + i - 1, false, { '' })
