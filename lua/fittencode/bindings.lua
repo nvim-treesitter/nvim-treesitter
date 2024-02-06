@@ -5,6 +5,7 @@ local Base = require('fittencode.base')
 local Sessions = require('fittencode.sessions')
 local Log = require('fittencode.log')
 local Task = require('fittencode.tasks')
+local View = require('fittencode.view')
 
 local M = {}
 
@@ -68,7 +69,13 @@ function M.setup_commands()
 end
 
 function M.setup_keymaps()
-  Base.map('i', '<tab>', Sessions.chaining_complete)
+  Base.map('i', '<tab>', function()
+    if Sessions.has_suggestion() then
+      Sessions.chaining_complete()
+    else
+      View.feed_tab()
+    end
+  end)
 end
 
 return M

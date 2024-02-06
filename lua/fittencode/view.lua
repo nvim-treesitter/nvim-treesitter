@@ -53,7 +53,7 @@ local function move_to_center(virt_height)
   local center = math.floor(height / 2)
   if relative_row + virt_height > height and math.abs(relative_row - center) > 2 and row > center then
     local keys = vim.api.nvim_replace_termcodes('<Esc>zza', true, false, true)
-    vim.api.nvim_feedkeys(keys, 'i', true)
+    vim.api.nvim_feedkeys(keys, 'in', true)
   end
 end
 
@@ -122,7 +122,7 @@ function M.set_text(lines)
   end
 
   local keys = vim.api.nvim_replace_termcodes('<Esc>a', true, false, true)
-  vim.api.nvim_feedkeys(keys, 'i', true)
+  vim.api.nvim_feedkeys(keys, 'in', true)
 
   local_fmt_recover()
 end
@@ -132,6 +132,13 @@ function M.setup_highlight()
     link = 'Comment',
     default = true,
   })
+end
+
+function M.feed_tab()
+  local row = fn.line('.') - 1
+  local col = fn.col('.') - 1
+  api.nvim_buf_set_text(0, row, col, row, col, { '\t' })
+  api.nvim_win_set_cursor(0, { row + 1, col + 2 })
 end
 
 return M

@@ -279,6 +279,10 @@ function M.do_completion_request(task_id)
   end)
 end
 
+function M.has_suggestion()
+  return vim.tbl_count(M.fitten_suggestion) ~= 0
+end
+
 function M.chaining_complete()
   if vim.tbl_count(M.fitten_suggestion) == 0 then
     return
