@@ -284,7 +284,7 @@ function M.has_suggestion()
 end
 
 function M.chaining_complete()
-  if vim.tbl_count(M.fitten_suggestion) == 0 then
+  if not M.has_suggestion() then
     return
   end
 
