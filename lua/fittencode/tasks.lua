@@ -18,12 +18,13 @@ end
 
 function M.create(row, col)
   local timestamp = uv.hrtime()
-  table.insert(M.tasks_list, #M.tasks_list, { row = row, col = col, timestamp = timestamp })
+  table.insert(M.tasks_list, #M.tasks_list + 1, { row = row, col = col, timestamp = timestamp })
   return timestamp
 end
 
 function M.match(task_id, row, col)
-  for i, task in ipairs(M.tasks_list) do
+  for i = #M.tasks_list, 1, -1 do
+    local task = M.tasks_list[i]
     if task.timestamp == task_id and task.row == row and task.col == col then
       return true
     end
@@ -32,7 +33,8 @@ function M.match(task_id, row, col)
 end
 
 function M.query(task_id)
-  for i, task in ipairs(M.tasks_list) do
+  for i = #M.tasks_list, 1, -1 do
+    local task = M.tasks_list[i]
     if task.timestamp == task_id then
       return task
     end
