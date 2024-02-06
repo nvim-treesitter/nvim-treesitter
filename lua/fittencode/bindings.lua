@@ -15,7 +15,6 @@ function M.setup_autocmds()
     group = Base.augroup('Completion'),
     pattern = '*',
     callback = function(args)
-      -- Log.debug('CursorHoldI triggered')
       local task_id = Task.create(fn.line('.'), fn.col('.'))
       Base.debounce(function()
         Sessions.completion_request(task_id)
@@ -46,7 +45,7 @@ function M.setup_commands()
       table.remove(actions, 1)
       return cmd(unpack(actions))
     end
-    Log.error('Invalid command, fargs is %s', line.fargs)
+    Log.error('Invalid command, fargs: {}', line.fargs)
   end, {
     complete = function(_, line)
       local args = vim.split(vim.trim(line), '%s+')

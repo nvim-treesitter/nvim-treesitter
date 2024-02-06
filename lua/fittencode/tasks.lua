@@ -18,7 +18,6 @@ end
 
 function M.create(row, col)
   local timestamp = uv.hrtime()
-  -- Log.debug('Creating task at row: ' .. row .. ', col: ' .. col .. ', timestamp: ' .. timestamp)
   table.insert(M.tasks_list, #M.tasks_list, { row = row, col = col, timestamp = timestamp })
   return timestamp
 end
@@ -49,7 +48,6 @@ local function is_timeout(timestamp)
 end
 
 function M.timeout_recycling()
-  -- Log.debug('Timeout recycling tasks')
   for i, task in ipairs(M.tasks_list) do
     if is_timeout(task.timestamp) then
       table.remove(M.tasks_list, i)

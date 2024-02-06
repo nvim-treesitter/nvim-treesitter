@@ -1,3 +1,5 @@
+local fn = vim.fn
+
 local M = {}
 
 M.enabled = true
@@ -22,6 +24,7 @@ function M.log(level, msg, ...)
   end
   local args = { ... }
   if #args > 0 then
+    msg = fn.substitute(msg, '{}', '%s', 'g')
     msg = string.format(msg, unpack(vim.tbl_map(vim.inspect, { ... })))
   end
   msg = '[' .. to_string(level) .. '] ' .. '[' .. os.date('%Y-%m-%d %H:%M:%S') .. '] ' .. '[fittencode.nvim] ' .. msg

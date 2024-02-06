@@ -12,8 +12,6 @@ local function draw_virt_text(virt_text)
     return
   end
 
-  -- Log.debug('draw_virt_text: %s', virt_text)
-
   api.nvim_buf_set_extmark(0, M.namespace, fn.line('.') - 1, fn.col('.') - 1, {
     virt_text = virt_text[1],
     virt_text_pos = 'inline',
