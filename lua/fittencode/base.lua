@@ -23,6 +23,11 @@ function M.map(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
+function M.feedkeys(chars)
+  local keys = api.nvim_replace_termcodes(chars, true, false, true)
+  api.nvim_feedkeys(keys, 'in', true)
+end
+
 function M.augroup(name)
   return api.nvim_create_augroup('Fittencode_' .. name, { clear = true })
 end

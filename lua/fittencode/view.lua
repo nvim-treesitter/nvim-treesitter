@@ -2,6 +2,7 @@ local api = vim.api
 local fn = vim.fn
 
 local Log = require('fittencode.log')
+local Base = require('fittencode.base')
 
 local M = {}
 
@@ -52,8 +53,7 @@ local function move_to_center(virt_height)
   local height = api.nvim_win_get_height(0)
   local center = math.floor(height / 2)
   if relative_row + virt_height > height and math.abs(relative_row - center) > 2 and row > center then
-    local keys = api.nvim_replace_termcodes('<Esc>zza', true, false, true)
-    api.nvim_feedkeys(keys, 'in', true)
+    Base.feedkeys('<Esc>zza')
   end
 end
 
@@ -90,8 +90,7 @@ local function local_fmt_recover()
 end
 
 local function silence_lsp()
-  local keys = api.nvim_replace_termcodes('<Esc>a', true, false, true)
-  api.nvim_feedkeys(keys, 'in', true)  
+  Base.feedkeys('<Esc>a')
 end
 
 local function move_cursor_text_end(row, col, count, lines)
@@ -127,7 +126,7 @@ local function append_text_at_pos(row, col, count, lines)
         end
       end
     end
-  end  
+  end
 end
 
 function M.set_text(lines)
@@ -152,8 +151,7 @@ function M.setup_highlight()
 end
 
 function M.feed_tab()
-  local keys = api.nvim_replace_termcodes('<Tab>', true, false, true)
-  api.nvim_feedkeys(keys, 'in', true)
+  Base.feedkeys('<Tab>')
 end
 
 return M
