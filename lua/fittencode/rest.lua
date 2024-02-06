@@ -36,13 +36,13 @@ function M.send(params, on_success, on_error, on_exit)
         Log.error('uv.spawn signal, cmd: {}, args: {}, signal: {}', cmd, args, signal)
         if on_error then
           vim.schedule(function()
-            on_error(signal, output)
+            on_error(signal, output, data)
           end)
         end
       else
         if on_success then
           vim.schedule(function()
-            on_success(exit_code, output)
+            on_success(exit_code, output, data)
           end)
         end
       end

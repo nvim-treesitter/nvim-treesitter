@@ -195,8 +195,12 @@ local function calculate_text(generated_text)
   return virt_text
 end
 
-local function on_completion_callback(exit_code, response)
+local function on_completion_callback(exit_code, response, data)
   if response == nil or response == '' then
+    return
+  end
+
+  if not Tasks.match(data.task_id, fn.line('.'), fn.col('.')) then
     return
   end
 
@@ -209,7 +213,8 @@ local function on_completion_callback(exit_code, response)
   View.render_virt_text(virt_text)
 end
 
-local function on_completion_delete_tempfile_callback(path)
+local function on_completion_delete_tempfile_callback(data)
+  local path = data.path
   uv.fs_unlink(path, function(err)
     if err then
       vim.schedule(function()
@@ -250,10 +255,6 @@ local function make_completion_request_params()
 end
 
 function M.do_completion_request(task_id)
-  if not Tasks.match(task_id, fn.line('.'), fn.col('.')) then
-    return
-  end
-
   local encoded_params = fn.json_encode(make_completion_request_params())
   Base.write_temp_file(encoded_params, function(path)
     local server_addr = URL_GENERATE_ONE_STAGE
@@ -270,7 +271,10 @@ function M.do_completion_request(task_id)
     Rest.send({
       cmd = 'curl',
       args = completion_args,
-      data = path,
+      data = {
+        path = path,
+        task_id = task_id,
+      },
     }, on_completion_callback, on_curl_signal_callback, on_completion_delete_tempfile_callback)
   end)
 end

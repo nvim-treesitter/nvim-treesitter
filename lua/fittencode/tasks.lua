@@ -4,8 +4,8 @@ local Log = require('fittencode.log')
 
 local M = {}
 
-local DEFAULT_TIMEOUT = 1200
-local DEFAULT_RECYCLING = 5000
+local DEFAULT_TIMEOUT = 2000
+local DEFAULT_RECYCLING = 1000
 
 M.tasks_list = {}
 M.timeout_recycling_timer = nil
