@@ -32,11 +32,11 @@
     (variable_declaration
       (simple_identifier) @local.definition.parameter)))
 
-(class_body
-  (property_declaration
-    (variable_declaration
-      (simple_identifier) @local.definition.field)))
-
+; NOTE: temporary fix for treesitter bug that causes delay in file opening
+;(class_body
+;  (property_declaration
+;    (variable_declaration
+;      (simple_identifier) @local.definition.field)))
 (class_declaration
   (primary_constructor
     (class_parameter
