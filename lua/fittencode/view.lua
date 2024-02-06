@@ -45,14 +45,13 @@ function M.clear_virt_text()
   clear_ns(M.namespace, 0)
 end
 
-local function move_center(virt_height)
+local function move_to_center(virt_height)
   local cursor = api.nvim_win_get_cursor(0)
   local row = cursor[1]
   local relative_row = row - fn.line('w0') + 1
   local height = api.nvim_win_get_height(0)
   local center = math.floor(height / 2)
-  if relative_row + virt_height > height and math.abs(relative_row - center) > 2 then
-    -- Log.debug('relative_row: {}, virt_height: {}, height: {}, center: {}', relative_row, virt_height, height, center)
+  if relative_row + virt_height > height and math.abs(relative_row - center) > 2 and row > center then
     local keys = vim.api.nvim_replace_termcodes('<Esc>zza', true, false, true)
     vim.api.nvim_feedkeys(keys, 'i', true)
   end
@@ -63,7 +62,7 @@ function M.render_virt_text(virt_text)
     return
   end
   reset_ns()
-  move_center(vim.tbl_count(virt_text))
+  move_to_center(vim.tbl_count(virt_text))
   draw_virt_text(virt_text)
 end
 
