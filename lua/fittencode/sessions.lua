@@ -180,7 +180,7 @@ function M.logout()
   end)
 end
 
-local function calculate_text(generated_text)
+local function generate_suggestion(generated_text)
   local lines = vim.split(fn.substitute(generated_text, '<.endoftext.>', '', 'g'), '\r')
   if vim.tbl_count(lines) == 0 or (vim.tbl_count(lines) == 1 and string.len(lines[1]) == 0) then
     return
@@ -190,18 +190,14 @@ local function calculate_text(generated_text)
     table.remove(lines, #lines)
   end
 
-  local virt_text = {}
+  local suggestion
   for _, line in ipairs(lines) do
     local parts = vim.split(line, '\n')
     for _, part in ipairs(parts) do
-      table.insert(virt_text, { { part, View.highlight } })
-      table.insert(M.fitten_suggestion, part)
+      table.insert(suggestion, part)
     end
   end
-
-  M.fitten_suggestion_stage = vim.tbl_count(M.fitten_suggestion)
-
-  return virt_text
+  return suggestion
 end
 
 local function generate_virt_text(suggestion)
@@ -226,7 +222,9 @@ local function on_completion_callback(exit_code, response, data)
     return
   end
 
-  local virt_text = calculate_text(completion_data.generated_text)
+  local suggestion = generate_suggestion(completion_data.generated_text)
+  record_fitten_suggestion(suggestion)
+  local virt_text = generate_virt_text(suggestion)
   View.render_virt_text(virt_text)
 end
 
