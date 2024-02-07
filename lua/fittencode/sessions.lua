@@ -19,7 +19,7 @@ M.fitten_suggestion = {}
 M.fitten_suggestion_stage = 0
 M.lock_accept = false
 
-local function record_fitten_suggestion(suggestion)
+local function record_suggestion(suggestion)
   M.fitten_suggestion = suggestion or {}
   M.fitten_suggestion_stage = vim.tbl_count(M.fitten_suggestion)
 end
@@ -223,7 +223,7 @@ local function on_completion_callback(exit_code, response, data)
   end
 
   local suggestion = generate_suggestion(completion_data.generated_text)
-  record_fitten_suggestion(suggestion)
+  record_suggestion(suggestion)
   local virt_text = generate_virt_text(suggestion)
   View.render_virt_text(virt_text)
 end
@@ -244,7 +244,7 @@ function M.completion_request(task_id)
     return
   end
 
-  record_fitten_suggestion()
+  record_suggestion()
 
   if not Lsp.is_active() then
     M.do_completion_request(task_id)
@@ -398,7 +398,7 @@ end
 
 function M.reset_completion()
   M.lock_accept = false
-  record_fitten_suggestion()
+  record_suggestion()
   View.clear_virt_text()
 end
 
