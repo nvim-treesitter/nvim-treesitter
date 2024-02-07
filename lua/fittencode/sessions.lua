@@ -16,6 +16,7 @@ local URL_GET_FT_TOKEN = 'https://codeuser.fittentech.cn:14443/get_ft_token'
 local URL_GENERATE_ONE_STAGE = 'https://codeapi.fittentech.cn:13443/generate_one_stage/'
 
 M.fitten_suggestion = {}
+M.fitten_suggestion_stage = 0
 M.lock_accept = false
 
 local function get_api_key_store_path()
@@ -193,6 +194,8 @@ local function calculate_text(generated_text)
     end
   end
 
+  M.fitten_suggestion_stage = vim.tbl_count(M.fitten_suggestion)
+
   return virt_text
 end
 
@@ -231,6 +234,7 @@ function M.completion_request(task_id)
   end
 
   M.fitten_suggestion = {}
+  M.fitten_suggestion_stage = 0
 
   if not Lsp.is_active() then
     M.do_completion_request(task_id)
@@ -303,12 +307,29 @@ function M.accept_line()
   end
 
   M.lock_accept = true
+  View.clear_virt_text()
+
   local line = table.remove(M.fitten_suggestion, 1)
-  if string.len(line) == 0 then
+  local cur = vim.tbl_count(M.fitten_suggestion)
+  local stage = M.fitten_suggestion_stage - 1
+
+  if cur == stage then
+    View.set_text({ line })
     View.set_text({ '', '' })
   else
-    View.set_text({ line })
+    if cur == 0 then
+      View.set_text({ line })
+    else
+      View.set_text({ line, '' })
+    end
   end
+
+  local virt_text = {}
+  for _, part in ipairs(M.fitten_suggestion) do
+    table.insert(virt_text, { { part, View.highlight } })
+  end
+
+  View.render_virt_text(virt_text)
 end
 
 local function is_alpha(char)
@@ -344,18 +365,31 @@ function M.accept_word()
   end
 
   M.lock_accept = true
+  View.clear_virt_text()
+
   local line = M.fitten_suggestion[1]
   local indices = next_indices(line)
   local word = string.sub(line, 1, indices)
-  line = string.sub(line, string.len(word))
+  line = string.sub(line, string.len(word) + 1)
 
   if string.len(line) == 0 then
     table.remove(M.fitten_suggestion, 1)
-    View.set_text({ '', '' })
+    if M.has_suggestion() then
+      View.set_text({ word, '' })
+    end
   else
     M.fitten_suggestion[1] = line
     View.set_text({ word })
   end
+
+  local virt_text = {}
+  for _, part in ipairs(M.fitten_suggestion) do
+    table.insert(virt_text, { { part, View.highlight } })
+  end
+
+  View.render_virt_text(virt_text)
+end
+
 function M.is_lock()
   return M.lock_accept
 end
@@ -363,6 +397,7 @@ end
 function M.reset_completion()
   M.lock_accept = false
   M.fitten_suggestion = {}
+  M.fitten_suggestion_stage = 0
   View.clear_virt_text()
 end
 
