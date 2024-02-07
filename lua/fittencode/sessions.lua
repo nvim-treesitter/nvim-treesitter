@@ -313,6 +313,8 @@ function M.chaining_complete()
   M.event_filter_count = 0
   View.clear_virt_text()
   View.set_text(M.fitten_suggestion)
+
+  M.reset_completion()
 end
 
 function M.accept_line()
@@ -338,8 +340,12 @@ function M.accept_line()
     end
   end
 
-  local virt_text = generate_virt_text(M.fitten_suggestion)
-  View.render_virt_text(virt_text)
+  if vim.tbl_count(M.fitten_suggestion) > 0 then
+    local virt_text = generate_virt_text(M.fitten_suggestion)
+    View.render_virt_text(virt_text)
+  else
+    M.reset_completion()
+  end
 end
 
 local function is_alpha(char)
@@ -392,8 +398,12 @@ function M.accept_word()
     View.set_text({ word })
   end
 
-  local virt_text = generate_virt_text(M.fitten_suggestion)
-  View.render_virt_text(virt_text)
+  if vim.tbl_count(M.fitten_suggestion) > 0 then
+    local virt_text = generate_virt_text(M.fitten_suggestion)
+    View.render_virt_text(virt_text)
+  else
+    M.reset_completion()
+  end
 end
 
 function M.fetch_sub()
