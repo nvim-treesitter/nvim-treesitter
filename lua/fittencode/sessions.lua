@@ -204,6 +204,14 @@ local function calculate_text(generated_text)
   return virt_text
 end
 
+local function generate_virt_text(suggestion)
+  local virt_text = {}
+  for _, line in ipairs(suggestion) do
+    table.insert(virt_text, { { line, View.highlight } })
+  end
+  return virt_text
+end
+
 local function on_completion_callback(exit_code, response, data)
   if response == nil or response == '' then
     return
@@ -328,11 +336,7 @@ function M.accept_line()
     end
   end
 
-  local virt_text = {}
-  for _, part in ipairs(M.fitten_suggestion) do
-    table.insert(virt_text, { { part, View.highlight } })
-  end
-
+  local virt_text = generate_virt_text(M.fitten_suggestion)
   View.render_virt_text(virt_text)
 end
 
@@ -386,11 +390,7 @@ function M.accept_word()
     View.set_text({ word })
   end
 
-  local virt_text = {}
-  for _, part in ipairs(M.fitten_suggestion) do
-    table.insert(virt_text, { { part, View.highlight } })
-  end
-
+  local virt_text = generate_virt_text(M.fitten_suggestion)
   View.render_virt_text(virt_text)
 end
 
@@ -400,7 +400,7 @@ end
 
 function M.reset_completion()
   M.lock_accept = false
-  record_fitten_suggestion()  
+  record_fitten_suggestion()
   View.clear_virt_text()
 end
 
