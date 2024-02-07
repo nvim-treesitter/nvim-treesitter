@@ -7,8 +7,21 @@ local Color = require('fittencode.color')
 
 local M = {}
 
-local function draw_virt_text(virt_text)
-  if vim.tbl_count(virt_text) == 0 then
+local function generate_virt_text(suggestion)
+  if suggestion == nil then
+    return
+  end
+  local virt_text = {}
+  for _, line in ipairs(suggestion) do
+    table.insert(virt_text, { { line, Color.FittenSuggestion } })
+  end
+  return virt_text
+end
+
+local function draw_virt_text(suggestion)
+  local virt_text = generate_virt_text(suggestion)
+
+  if virt_text == nil or vim.tbl_count(virt_text) == 0 then
     return
   end
 

@@ -8,7 +8,6 @@ local Log = require('fittencode.log')
 local Lsp = require('fittencode.lsp')
 local View = require('fittencode.view')
 local Tasks = require('fittencode.tasks')
-local Color = require('fittencode.color')
 
 local M = {}
 
@@ -205,17 +204,6 @@ local function generate_suggestion(generated_text)
   return suggestion
 end
 
-local function generate_virt_text(suggestion)
-  if suggestion == nil then
-    return
-  end
-  local virt_text = {}
-  for _, line in ipairs(suggestion) do
-    table.insert(virt_text, { { line, Color.FittenSuggestion } })
-  end
-  return virt_text
-end
-
 local function on_completion_callback(exit_code, response, data)
   if response == nil or response == '' then
     return
@@ -232,8 +220,7 @@ local function on_completion_callback(exit_code, response, data)
 
   local suggestion = generate_suggestion(completion_data.generated_text)
   record_suggestion(suggestion)
-  local virt_text = generate_virt_text(suggestion)
-  View.render_virt_text(virt_text)
+  View.render_virt_text(suggestion)
 end
 
 local function on_completion_delete_tempfile_callback(data)
@@ -342,8 +329,7 @@ function M.accept_line()
   end
 
   if vim.tbl_count(M.fitten_suggestion) > 0 then
-    local virt_text = generate_virt_text(M.fitten_suggestion)
-    View.render_virt_text(virt_text)
+    View.render_virt_text(M.fitten_suggestion)
   else
     M.reset_completion()
   end
@@ -400,8 +386,7 @@ function M.accept_word()
   end
 
   if vim.tbl_count(M.fitten_suggestion) > 0 then
-    local virt_text = generate_virt_text(M.fitten_suggestion)
-    View.render_virt_text(virt_text)
+    View.render_virt_text(M.fitten_suggestion)
   else
     M.reset_completion()
   end
