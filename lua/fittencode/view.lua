@@ -93,7 +93,7 @@ local function silence_lsp()
   Base.feedkeys('<Esc>a')
 end
 
-local function move_cursor_text_end(row, col, count, lines)
+local function move_cursor_to_text_end(row, col, count, lines)
   if count == 1 then
     local first_len = string.len(lines[1])
     if first_len ~= 0 then
@@ -142,7 +142,7 @@ function M.set_text(lines)
 
   undojoin()
   append_text_at_pos(row, col, count, lines)
-  move_cursor_text_end(row, col, count, lines)
+  move_cursor_to_text_end(row, col, count, lines)
   silence_lsp()
 
   local_fmt_recover()
