@@ -190,7 +190,7 @@ local function generate_suggestion(generated_text)
     table.remove(lines, #lines)
   end
 
-  local suggestion
+  local suggestion = {}
   for _, line in ipairs(lines) do
     local parts = vim.split(line, '\n')
     for _, part in ipairs(parts) do
@@ -201,6 +201,9 @@ local function generate_suggestion(generated_text)
 end
 
 local function generate_virt_text(suggestion)
+  if suggestion == nil then
+    return
+  end
   local virt_text = {}
   for _, line in ipairs(suggestion) do
     table.insert(virt_text, { { line, View.highlight } })
@@ -304,11 +307,8 @@ function M.chaining_complete()
   end
 
   M.lock_accept = false
-
   View.clear_virt_text()
   View.set_text(M.fitten_suggestion)
-
-  M.completion_request()
 end
 
 function M.accept_line()
