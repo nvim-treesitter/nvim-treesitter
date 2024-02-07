@@ -24,6 +24,10 @@ local function record_suggestion(suggestion)
   M.fitten_suggestion_stage = vim.tbl_count(M.fitten_suggestion)
 end
 
+local function flush_suggestion()
+  record_suggestion()
+end
+
 local function get_api_key_store_path()
   local dir = fn.stdpath('data') .. '/fittencode'
   local path = dir .. '/api_key'
@@ -247,7 +251,7 @@ function M.completion_request(task_id)
     return
   end
 
-  record_suggestion()
+  flush_suggestion()
 
   if not Lsp.is_active() then
     M.do_completion_request(task_id)
@@ -398,7 +402,7 @@ end
 
 function M.reset_completion()
   M.lock_accept = false
-  record_suggestion()
+  flush_suggestion()
   View.clear_virt_text()
 end
 
