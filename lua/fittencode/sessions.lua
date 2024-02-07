@@ -19,6 +19,11 @@ M.fitten_suggestion = {}
 M.fitten_suggestion_stage = 0
 M.lock_accept = false
 
+local function record_fitten_suggestion(suggestion)
+  M.fitten_suggestion = suggestion or {}
+  M.fitten_suggestion_stage = vim.tbl_count(M.fitten_suggestion)
+end
+
 local function get_api_key_store_path()
   local dir = fn.stdpath('data') .. '/fittencode'
   local path = dir .. '/api_key'
@@ -233,8 +238,7 @@ function M.completion_request(task_id)
     return
   end
 
-  M.fitten_suggestion = {}
-  M.fitten_suggestion_stage = 0
+  record_fitten_suggestion()
 
   if not Lsp.is_active() then
     M.do_completion_request(task_id)
@@ -396,8 +400,7 @@ end
 
 function M.reset_completion()
   M.lock_accept = false
-  M.fitten_suggestion = {}
-  M.fitten_suggestion_stage = 0
+  record_fitten_suggestion()  
   View.clear_virt_text()
 end
 
