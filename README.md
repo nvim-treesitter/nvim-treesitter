@@ -9,8 +9,8 @@ Fitten Code AI Programming Assistant for Neovim, helps you to use AI for automat
 - 🚀 Fast completion thanks to `Fitten Code` and `curl`
 - 🐛 Asynchronous I/O for improved performance
 - 🚀 Accept all suggestions with `Tab`
-- 🧪 Accept line with `Ctrl+⬇️`
-- 🔎 Accept word with `Ctrl+➡️`
+- 🧪 Accept line with `Ctrl + ⬇️`
+- 🔎 Accept word with `Ctrl + ➡️`
 
 ## ⚡️ Requirements
 
@@ -49,6 +49,8 @@ Out of box.
 
 ## 🚀 Usage
 
+### Default Command
+
 | Command         | Description                                                |
 |-----------------|------------------------------------------------------------|
 | `Fitten login`  | Try the command `Fitten login <user> <password>` to login. |
@@ -56,11 +58,11 @@ Out of box.
 
 ### Default Mappings
 
-| Mappings  | Action                 |
-|-----------|------------------------|
-| `Tab`     | Accept all suggestions |
-| `Ctrl+⬇️` | Accept line            |
-| `Ctrl+➡️` | Accept word            |
+| Mappings    | Action                 |
+|-------------|------------------------|
+| `Tab`       | Accept all suggestions |
+| `Ctrl + ⬇️` | Accept line            |
+| `Ctrl + ➡️` | Accept word            |
 
 ## 🎉 Special Thanks
 
