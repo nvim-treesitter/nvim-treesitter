@@ -16,6 +16,7 @@ local URL_GET_FT_TOKEN = 'https://codeuser.fittentech.cn:14443/get_ft_token'
 local URL_GENERATE_ONE_STAGE = 'https://codeapi.fittentech.cn:13443/generate_one_stage/'
 
 M.fitten_suggestion = {}
+M.lock_accept = false
 
 local function get_api_key_store_path()
   local dir = fn.stdpath('data') .. '/fittencode'
@@ -288,6 +289,8 @@ function M.chaining_complete()
     return
   end
 
+  M.lock_accept = false
+
   View.clear_virt_text()
   View.set_text(M.fitten_suggestion)
 
@@ -298,6 +301,8 @@ function M.accept_line()
   if not M.has_suggestion() then
     return
   end
+
+  M.lock_accept = true
   local line = table.remove(M.fitten_suggestion, 1)
   if string.len(line) == 0 then
     View.set_text({ '', '' })
@@ -338,6 +343,7 @@ function M.accept_word()
     return
   end
 
+  M.lock_accept = true
   local line = M.fitten_suggestion[1]
   local indices = next_indices(line)
   local word = string.sub(line, 1, indices)
@@ -350,9 +356,12 @@ function M.accept_word()
     M.fitten_suggestion[1] = line
     View.set_text({ word })
   end
+function M.is_lock()
+  return M.lock_accept
 end
 
 function M.reset_completion()
+  M.lock_accept = false
   M.fitten_suggestion = {}
   View.clear_virt_text()
 end

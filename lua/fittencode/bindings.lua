@@ -16,6 +16,9 @@ function M.setup_autocmds()
     group = Base.augroup('Completion'),
     pattern = '*',
     callback = function(args)
+      if Sessions.is_lock() then
+        return
+      end
       local task_id = Task.create(fn.line('.'), fn.col('.'))
       Base.debounce(function()
         Sessions.completion_request(task_id)
@@ -28,6 +31,9 @@ function M.setup_autocmds()
     group = Base.augroup('ResetCompletion'),
     pattern = '*',
     callback = function(args)
+      if Sessions.is_lock() and vim.tbl_contains({ 'CursorMovedI', 'InsertLeave', 'CursorMoved' }, args.event) then
+        return
+      end
       Sessions.reset_completion()
     end,
     desc = 'Reset completion',
