@@ -18,9 +18,7 @@ local function generate_virt_text(suggestion)
   return virt_text
 end
 
-local function draw_virt_text(suggestion)
-  local virt_text = generate_virt_text(suggestion)
-
+local function draw_virt_text(virt_text)
   if virt_text == nil or vim.tbl_count(virt_text) == 0 then
     return
   end
@@ -69,7 +67,8 @@ local function move_to_center(virt_height)
   end
 end
 
-function M.render_virt_text(virt_text)
+function M.render_virt_text(suggestion)
+  local virt_text = generate_virt_text(suggestion)
   if virt_text == nil then
     return
   end
