@@ -82,7 +82,7 @@ local function local_fmt_clear()
   vim.bo.textwidth = 0
 end
 
-local function local_fmt_recover()
+local function local_fmt_recovery()
   vim.bo.autoindent = autoindent
   vim.bo.smartindent = smartindent
   vim.bo.formatoptions = formatoptions
@@ -145,7 +145,7 @@ function M.set_text(lines)
   move_cursor_to_text_end(row, col, count, lines)
   silence_lsp()
 
-  local_fmt_recover()
+  local_fmt_recovery()
 end
 
 function M.setup_highlight()
