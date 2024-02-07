@@ -1,13 +1,16 @@
 # fittencode.nvim
 
-Fitten Code AI Programming Assistant for Neovim, helps you to use AI for automatic completion in vim, with support for functions like login, logout, shortcut key completion.
+Fitten Code AI Programming Assistant for Neovim, helps you to use AI for automatic completion in Neovim, with support for functions like login, logout, shortcut key completion.
 
 ![fittencode-KMP-demo](https://github.com/luozhiya/fittencode.nvim/assets/90168447/d6fa4c66-f64b-4880-b7a9-4245226be0ac)
 
 ## ✨ Features
 
 - 🚀 Fast completion thanks to `Fitten Code` and `curl`
-- 🐛 Asynchronous I/O
+- 🐛 Asynchronous I/O for improved performance
+- 🚀 Accept all suggestions with `Tab`
+- 🧪 Accept line with `Ctrl+⬇️`
+- 🔎 Accept word with `Ctrl+➡️`
 
 ## ⚡️ Requirements
 
@@ -53,9 +56,11 @@ Out of box.
 
 ### Default Mappings
 
-| Mappings | Action            |
-|----------|-------------------|
-| `<Tab>`  | Accept completion |
+| Mappings  | Action                 |
+|-----------|------------------------|
+| `Tab`     | Accept all suggestions |
+| `Ctrl+⬇️` | Accept line            |
+| `Ctrl+➡️` | Accept word            |
 
 ## 🎉 Special Thanks
 
