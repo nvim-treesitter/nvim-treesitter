@@ -17,7 +17,7 @@ local URL_GENERATE_ONE_STAGE = 'https://codeapi.fittentech.cn:13443/generate_one
 
 M.fitten_suggestion = {}
 M.fitten_suggestion_stage = 0
-M.lock_accept = false
+M.event_filter_count = 0
 
 local function record_suggestion(suggestion)
   M.fitten_suggestion = suggestion or {}
@@ -310,7 +310,7 @@ function M.chaining_complete()
     return
   end
 
-  M.lock_accept = false
+  M.event_filter_count = 0
   View.clear_virt_text()
   View.set_text(M.fitten_suggestion)
 end
@@ -320,7 +320,7 @@ function M.accept_line()
     return
   end
 
-  M.lock_accept = true
+  M.event_filter_count = 3
   View.clear_virt_text()
 
   local line = table.remove(M.fitten_suggestion, 1)
@@ -374,7 +374,7 @@ function M.accept_word()
     return
   end
 
-  M.lock_accept = true
+  M.event_filter_count = 4
   View.clear_virt_text()
 
   local line = M.fitten_suggestion[1]
@@ -396,12 +396,14 @@ function M.accept_word()
   View.render_virt_text(virt_text)
 end
 
-function M.is_lock()
-  return M.lock_accept
+function M.fetch_sub()
+  local v = M.event_filter_count
+  M.event_filter_count = M.event_filter_count > 0 and M.event_filter_count - 1 or 0
+  return v
 end
 
 function M.reset_completion()
-  M.lock_accept = false
+  M.event_filter_count = 0
   flush_suggestion()
   View.clear_virt_text()
 end
