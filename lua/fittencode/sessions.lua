@@ -8,6 +8,7 @@ local Log = require('fittencode.log')
 local Lsp = require('fittencode.lsp')
 local View = require('fittencode.view')
 local Tasks = require('fittencode.tasks')
+local Color = require('fittencode.color')
 
 local M = {}
 
@@ -210,7 +211,7 @@ local function generate_virt_text(suggestion)
   end
   local virt_text = {}
   for _, line in ipairs(suggestion) do
-    table.insert(virt_text, { { line, View.highlight } })
+    table.insert(virt_text, { { line, Color.FittenSuggestion } })
   end
   return virt_text
 end
@@ -406,7 +407,7 @@ function M.accept_word()
   end
 end
 
-function M.fetch_sub()
+function M.fetch_sub_efc()
   local v = M.event_filter_count
   M.event_filter_count = M.event_filter_count > 0 and M.event_filter_count - 1 or 0
   return v

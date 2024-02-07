@@ -9,14 +9,14 @@ local View = require('fittencode.view')
 
 local M = {}
 
-local DEFAULT_DEBOUNCE_TIME = 75
+local DEFAULT_DEBOUNCE_TIME = 80
 
 function M.setup_autocmds()
   api.nvim_create_autocmd({ 'CursorHoldI' }, {
     group = Base.augroup('Completion'),
     pattern = '*',
     callback = function(args)
-      if Sessions.fetch_sub() ~= 0 then
+      if Sessions.fetch_sub_efc() ~= 0 then
         return
       end
       local task_id = Task.create(fn.line('.'), fn.col('.'))
@@ -24,14 +24,14 @@ function M.setup_autocmds()
         Sessions.completion_request(task_id)
       end, DEFAULT_DEBOUNCE_TIME)
     end,
-    desc = 'Triggered when the cursor is held for a period of time without moving the cursor.',
+    desc = 'Triggered Completion',
   })
 
   api.nvim_create_autocmd({ 'CursorMovedI', 'CursorMoved', 'BufWinLeave', 'BufHidden', 'InsertLeave' }, {
     group = Base.augroup('ResetCompletion'),
     pattern = '*',
     callback = function(args)
-      if Sessions.fetch_sub() ~= 0 and vim.tbl_contains({ 'CursorMovedI', 'InsertLeave', 'CursorMoved' }, args.event) then
+      if Sessions.fetch_sub_efc() ~= 0 and vim.tbl_contains({ 'CursorMovedI', 'InsertLeave', 'CursorMoved' }, args.event) then
         return
       end
       Sessions.reset_completion()

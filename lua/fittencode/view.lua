@@ -3,10 +3,9 @@ local fn = vim.fn
 
 local Log = require('fittencode.log')
 local Base = require('fittencode.base')
+local Color = require('fittencode.color')
 
 local M = {}
-
-M.highlight = 'FittenSuggestion'
 
 local function draw_virt_text(virt_text)
   if vim.tbl_count(virt_text) == 0 then
@@ -146,13 +145,6 @@ function M.set_text(lines)
   silence_lsp()
 
   local_fmt_recovery()
-end
-
-function M.setup_highlight()
-  api.nvim_set_hl(0, M.highlight, {
-    link = 'Comment',
-    default = true,
-  })
 end
 
 function M.feed_tab()

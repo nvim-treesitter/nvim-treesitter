@@ -3,6 +3,7 @@ local Bindings = require('fittencode.bindings')
 local Log = require('fittencode.log')
 local Tasks = require('fittencode.tasks')
 local View = require('fittencode.view')
+local Color = require('fittencode.color')
 
 local M = {}
 
@@ -13,7 +14,7 @@ function M.setup()
   end
 
   Tasks.setup()
-  View.setup_highlight()
+  Color.setup_highlight()
   Bindings.setup_autocmds()
   Bindings.setup_commands()
   Bindings.setup_keymaps()
