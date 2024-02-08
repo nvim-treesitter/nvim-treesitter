@@ -1586,6 +1586,14 @@ list.re2c = {
   maintainers = { "@amaanq" },
 }
 
+list.readline = {
+  install_info = {
+    url = "https://github.com/ribru17/tree-sitter-readline",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@ribru17" },
+}
+
 list.regex = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-regex",

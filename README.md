@@ -352,6 +352,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [rasi](https://github.com/Fymyte/tree-sitter-rasi) (maintained by @Fymyte)
 - [x] [rbs](https://github.com/joker1007/tree-sitter-rbs) (maintained by @joker1007)
 - [x] [re2c](https://github.com/amaanq/tree-sitter-re2c) (maintained by @amaanq)
+- [x] [readline](https://github.com/ribru17/tree-sitter-readline) (maintained by @ribru17)
 - [x] [regex](https://github.com/tree-sitter/tree-sitter-regex) (maintained by @theHamsta)
 - [x] [rego](https://github.com/FallenAngel97/tree-sitter-rego) (maintained by @FallenAngel97)
 - [x] [pip requirements](https://github.com/ObserverOfTime/tree-sitter-requirements) (maintained by @ObserverOfTime)
