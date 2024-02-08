@@ -4,8 +4,9 @@ local Log = require('fittencode.log')
 
 local M = {}
 
-local DEFAULT_TIMEOUT = 5000
-local DEFAULT_RECYCLING = 1000
+local MS_TO_NS = 1000000
+local DEFAULT_TIMEOUT = 5000 * MS_TO_NS
+local DEFAULT_RECYCLING = 1000 * MS_TO_NS
 
 M.tasks_list = {}
 M.timeout_recycling_timer = nil
@@ -41,12 +42,8 @@ function M.query(task_id)
   end
 end
 
-local function to_ms(ns)
-  return ns / 1e6
-end
-
 local function is_timeout(timestamp)
-  return to_ms(uv.hrtime() - timestamp) > DEFAULT_TIMEOUT
+  return uv.hrtime() - timestamp > DEFAULT_TIMEOUT
 end
 
 function M.timeout_recycling()
