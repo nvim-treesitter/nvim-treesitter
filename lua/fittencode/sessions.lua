@@ -395,7 +395,7 @@ end
 
 function M.fetch_sub_efc()
   local v = event_filter_count
-  event_filter_count = event_filter_count > 0 and event_filter_count - 1 or 0
+  event_filter_count = math.max(event_filter_count - 1, 0)
   return v
 end
 
