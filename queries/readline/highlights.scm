@@ -38,9 +38,9 @@
 
 (escape_sequence) @string.escape
 
-(symbolic_character_name) @constant.builtin
+(symbolic_character_name) @character.special
 
-(key_literal) @character.special
+(key_literal) @character
 
 (function_name) @function
 
