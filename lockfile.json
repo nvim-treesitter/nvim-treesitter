@@ -539,6 +539,9 @@
   "re2c": {
     "revision": "47aa19cf5f7aba2ed30e2b377f7172df76e819a6"
   },
+  "readline": {
+    "revision": "221edd74cdca24bd5e54b39a0d73b7a1bd11d8cd"
+  },
   "regex": {
     "revision": "2354482d7e2e8f8ff33c1ef6c8aa5690410fbc96"
   },
