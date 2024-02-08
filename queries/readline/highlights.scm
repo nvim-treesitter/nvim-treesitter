@@ -64,6 +64,6 @@
 
 (number_value) @number
 
-(version_number) @number.float
+(version_number) @string.special
 
 (bool_value) @boolean
