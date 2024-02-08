@@ -237,7 +237,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "groovy": {
-    "revision": "fdc03a7040945d551c009c0d2b39aa1d42894437"
+    "revision": "235009aad0f580211fc12014bb0846c3910130c1"
   },
   "gstlaunch": {
     "revision": "2c0d9c94d35e37aa63fa5002163c8480985b3e5b"
@@ -249,7 +249,7 @@
     "revision": "3d4af179414525a35dd069ba0208c9b71093d8b3"
   },
   "haskell": {
-    "revision": "9527ab807f8141fbfe5b48bf6a5878a05fb971fe"
+    "revision": "1da347c88599faad7964e63facead5d163ac7dba"
   },
   "haskell_persistent": {
     "revision": "577259b4068b2c281c9ebf94c109bd50a74d5857"
@@ -297,7 +297,7 @@
     "revision": "2b57cd9541f9fd3a89207d054ce8fbe72657c444"
   },
   "javascript": {
-    "revision": "24b9885a211bed50415acabe9a30e2d0f6896e6d"
+    "revision": "098bd31b7f838a31cce08db4091e989ea42f3ef6"
   },
   "jq": {
     "revision": "13990f530e8e6709b7978503da9bc8701d366791"
@@ -627,7 +627,7 @@
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
   },
   "svelte": {
-    "revision": "697bb515471871e85ff799ea57a76298a71a9cca"
+    "revision": "bd60db7d3d06f89b6ec3b287c9a6e9190b5564bd"
   },
   "swift": {
     "revision": "1c586339fb00014b23d6933f2cc32b588a226f3b"
@@ -648,7 +648,7 @@
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
   },
   "templ": {
-    "revision": "b3e9f7c98e999f831fe1292166fcfc82cbb10f31"
+    "revision": "592faa3186ef857c92e4bd1c31d73c07a4a334db"
   },
   "terraform": {
     "revision": "e135399cb31b95fac0760b094556d1d5ce84acf0"
@@ -732,7 +732,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "d2c60c4caebec98ef080391b2f27adebc4c5d5a8"
+    "revision": "2bb829b8b4682d7733a0bff926397641fd2af6a1"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
