@@ -1,4 +1,5 @@
 local fn = vim.fn
+local uv = vim.loop
 
 local M = {}
 
@@ -27,7 +28,8 @@ function M.log(level, msg, ...)
     msg = fn.substitute(msg, '{}', '%s', 'g')
     msg = string.format(msg, unpack(vim.tbl_map(vim.inspect, { ... })))
   end
-  msg = '[' .. to_string(level) .. '] ' .. '[' .. os.date('%Y-%m-%d %H:%M:%S') .. '] ' .. '[fittencode.nvim] ' .. (msg or '')
+  local ms = math.floor((uv.hrtime() / 1e6) % 1000)
+  msg = '[' .. to_string(level) .. '] ' .. '[' .. os.date('%Y-%m-%d %H:%M:%S') .. '.' .. ms .. '] ' .. '[fittencode.nvim] ' .. (msg or '')
   vim.notify(msg, level)
 end
 
