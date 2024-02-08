@@ -9,12 +9,13 @@ local DEFAULT_TIMEOUT = 5000 * MS_TO_NS
 local DEFAULT_RECYCLING = 1000 * MS_TO_NS
 
 M.tasks_list = {}
-M.timeout_recycling_timer = nil
+
+local timeout_recycling_timer = nil
 
 function M.setup()
   M.tasks_list = {}
-  M.timeout_recycling_timer = uv.new_timer()
-  M.timeout_recycling_timer:start(DEFAULT_RECYCLING, DEFAULT_RECYCLING, M.timeout_recycling)
+  timeout_recycling_timer = uv.new_timer()
+  timeout_recycling_timer:start(DEFAULT_RECYCLING, DEFAULT_RECYCLING, M.timeout_recycling)
 end
 
 function M.create(row, col)

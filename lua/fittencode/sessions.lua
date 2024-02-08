@@ -16,12 +16,13 @@ local URL_GET_FT_TOKEN = 'https://codeuser.fittentech.cn:14443/get_ft_token'
 local URL_GENERATE_ONE_STAGE = 'https://codeapi.fittentech.cn:13443/generate_one_stage/'
 
 M.fitten_suggestion = {}
-M.fitten_suggestion_stage = 0
-M.event_filter_count = 0
+
+local fitten_suggestion_stage = 0
+local event_filter_count = 0
 
 local function record_suggestion(suggestion)
   M.fitten_suggestion = suggestion or {}
-  M.fitten_suggestion_stage = vim.tbl_count(M.fitten_suggestion)
+  fitten_suggestion_stage = vim.tbl_count(M.fitten_suggestion)
 end
 
 local function flush_suggestion()
@@ -298,7 +299,7 @@ function M.chaining_complete()
     return
   end
 
-  M.event_filter_count = 0
+  event_filter_count = 0
   View.clear_virt_text()
   View.set_text(M.fitten_suggestion)
 
@@ -310,12 +311,12 @@ function M.accept_line()
     return
   end
 
-  M.event_filter_count = 3
+  event_filter_count = 3
   View.clear_virt_text()
 
   local line = table.remove(M.fitten_suggestion, 1)
   local cur = vim.tbl_count(M.fitten_suggestion)
-  local stage = M.fitten_suggestion_stage - 1
+  local stage = fitten_suggestion_stage - 1
 
   if cur == stage then
     View.set_text({ line })
@@ -367,7 +368,7 @@ function M.accept_word()
     return
   end
 
-  M.event_filter_count = 4
+  event_filter_count = 4
   View.clear_virt_text()
 
   local line = M.fitten_suggestion[1]
@@ -393,13 +394,13 @@ function M.accept_word()
 end
 
 function M.fetch_sub_efc()
-  local v = M.event_filter_count
-  M.event_filter_count = M.event_filter_count > 0 and M.event_filter_count - 1 or 0
+  local v = event_filter_count
+  event_filter_count = event_filter_count > 0 and event_filter_count - 1 or 0
   return v
 end
 
 function M.reset_completion()
-  M.event_filter_count = 0
+  event_filter_count = 0
   flush_suggestion()
   View.clear_virt_text()
 end
