@@ -514,6 +514,15 @@ list.facility = {
   maintainers = { "@bryankenote" },
 }
 
+list.faust = {
+  install_info = {
+    url = "https://github.com/khiner/tree-sitter-faust",
+    files = { "src/parser.c" },
+  },
+  filetype = "dsp",
+  maintainers = { "@khiner" },
+}
+
 list.fennel = {
   install_info = {
     url = "https://github.com/travonted/tree-sitter-fennel",

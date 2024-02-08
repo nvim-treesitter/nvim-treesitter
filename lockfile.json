@@ -155,6 +155,9 @@
   "facility": {
     "revision": "a52579670e2b14ec03d410c3c980fafaf6d659c4"
   },
+  "faust": {
+    "revision": "4609dd2c126a4803139db03eed784d26effe9844"
+  },
   "fennel": {
     "revision": "15e4f8c417281768db17080c4447297f8ff5343a"
   },

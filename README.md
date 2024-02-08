@@ -225,6 +225,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [ ] [embedded_template](https://github.com/tree-sitter/tree-sitter-embedded-template)
 - [x] [erlang](https://github.com/WhatsApp/tree-sitter-erlang) (maintained by @filmor)
 - [x] [facility](https://github.com/FacilityApi/tree-sitter-facility) (maintained by @bryankenote)
+- [x] [faust](https://github.com/khiner/tree-sitter-faust) (maintained by @khiner)
 - [x] [fennel](https://github.com/travonted/tree-sitter-fennel) (maintained by @TravonteD)
 - [x] [firrtl](https://github.com/amaanq/tree-sitter-firrtl) (maintained by @amaanq)
 - [x] [fish](https://github.com/ram02z/tree-sitter-fish) (maintained by @ram02z)
