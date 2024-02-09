@@ -113,8 +113,6 @@
   arguments: (call_arguments) @constructor)
 
 ; Methodmaps
-(methodmap) @type.definition
-
 (methodmap
   name: (identifier) @type)
 
@@ -139,8 +137,6 @@
 ] @function.method
 
 ; Enum structs
-(enum_struct) @type.definition
-
 (enum_struct
   name: (identifier) @type)
 
@@ -215,13 +211,6 @@
   name: (identifier) @variable.builtin)
 
 ; Typedef/Typedef
-[
-  (typedef)
-  (functag)
-  (funcenum)
-  (typeset)
-] @type.definition
-
 (typedef
   name: (identifier) @type)
 
@@ -237,8 +226,6 @@
 (typedef_expression) @keyword.function ; function void(int x)
 
 ; Enums
-(enum) @type.definition
-
 (enum
   name: (identifier) @type)
 
