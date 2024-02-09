@@ -43,22 +43,16 @@
 (old_variable_declaration
   name: (identifier) @variable)
 
-; Preprocessor
-[
-  (preproc_include)
-  (preproc_tryinclude)
-] @keyword.import
-
 [
   (system_lib_string)
   (string_literal)
 ] @string
 
-(preproc_arg) @constant
-
-(preproc_macro) @function.macro
-
-(macro_param) @variable.parameter
+; Preprocessor
+[
+  "#include"
+  "#tryinclude"
+] @keyword.import
 
 [
   (preproc_assert)
@@ -66,19 +60,24 @@
   (preproc_if)
   (preproc_else)
   (preproc_elseif)
-  (preproc_endif)
   (preproc_endinput)
+  (preproc_endif)
   (preproc_error)
   (preproc_warning)
 ] @keyword.directive
 
 [
-  (preproc_define)
-  (preproc_undefine)
+  "#define"
+  "#undef"
 ] @keyword.directive.define
+
+(macro_param) @variable.parameter
 
 (preproc_define
   name: (identifier) @constant)
+
+(preproc_macro
+  name: (identifier) @function.macro)
 
 (preproc_undefine
   name: (identifier) @constant)
@@ -95,7 +94,7 @@
 ] @variable.builtin
 
 ; Comments
-(comment) @comment
+(comment) @comment @spell
 
 ; General
 (parameter_declaration
@@ -104,7 +103,6 @@
 [
   (fixed_dimension)
   (dimension)
-  (array_indexed_access)
 ] @punctuation.bracket
 
 (escape_sequence) @string.escape
@@ -153,11 +151,9 @@
   name: (identifier) @function.method)
 
 ; Non-type Keywords
-[
-  (variable_storage_class)
-  (visibility)
-  (variable_storage_class)
-] @keyword.storage
+(variable_storage_class) @keyword.storage
+
+(visibility) @type.qualifier
 
 (assertion) @function.builtin
 
@@ -226,6 +222,18 @@
   (typeset)
 ] @type.definition
 
+(typedef
+  name: (identifier) @type)
+
+(functag
+  name: (identifier) @type)
+
+(funcenum
+  name: (identifier) @type)
+
+(typeset
+  name: (identifier) @type)
+
 (typedef_expression) @keyword.function ; function void(int x)
 
 ; Enums
@@ -257,8 +265,8 @@
 
 (null) @constant.builtin
 
-((identifier) @constant
-  (#eq? @constant "INVALID_HANDLE"))
+((identifier) @constant.builtin
+  (#eq? @constant.builtin "INVALID_HANDLE"))
 
 ; Keywords
 "return" @keyword.return
@@ -281,6 +289,7 @@
 
 [
   "__nullable__"
+  "defined"
   "delete"
   "enum"
   "funcenum"
