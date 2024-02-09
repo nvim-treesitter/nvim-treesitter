@@ -15,7 +15,7 @@
     "revision": "ff1045f5da90344d547022c50f1756be4adaf721"
   },
   "asm": {
-    "revision": "c7b1167ac0b4ded65850d0751bbbb107ed527566"
+    "revision": "6ace266be7ad6bf486a95427ca3fc949aff66211"
   },
   "astro": {
     "revision": "e924787e12e8a03194f36a113290ac11d6dc10f3"
@@ -159,7 +159,7 @@
     "revision": "a52579670e2b14ec03d410c3c980fafaf6d659c4"
   },
   "faust": {
-    "revision": "4609dd2c126a4803139db03eed784d26effe9844"
+    "revision": "9e514af33bfe061d0ccf1999dbcc93fca91f133c"
   },
   "fennel": {
     "revision": "15e4f8c417281768db17080c4447297f8ff5343a"
@@ -546,7 +546,7 @@
     "revision": "47aa19cf5f7aba2ed30e2b377f7172df76e819a6"
   },
   "readline": {
-    "revision": "221edd74cdca24bd5e54b39a0d73b7a1bd11d8cd"
+    "revision": "f2f98d4263949d696e69a425f65326c59d1ceedc"
   },
   "regex": {
     "revision": "2354482d7e2e8f8ff33c1ef6c8aa5690410fbc96"
@@ -570,7 +570,7 @@
     "revision": "3ba9eb9b5a47aadb1f2356a3cab0dd3d2bd00b4b"
   },
   "ruby": {
-    "revision": "863e4e9774ffcae8693611488eeb7194c86f265f"
+    "revision": "bb0eb0fe5f19eeae9a72e78978b533bf161a1509"
   },
   "rust": {
     "revision": "e0e8b6de6e4aa354749c794f5f36a906dcccda74"
@@ -744,7 +744,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "2bb829b8b4682d7733a0bff926397641fd2af6a1"
+    "revision": "3d3bbcb7cb33709ec992e115e894500276753e22"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
