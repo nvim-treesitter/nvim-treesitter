@@ -1762,6 +1762,15 @@ list.sosl = {
   maintainers = { "@aheber" },
 }
 
+list.sourcepawn = {
+  install_info = {
+    url = "https://github.com/nilshelmig/tree-sitter-sourcepawn",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@Sarrus1" },
+  tier = 3,
+}
+
 list.sparql = {
   install_info = {
     url = "https://github.com/BonaBeavis/tree-sitter-sparql",
