@@ -12,10 +12,12 @@
 
 (private_property_identifier) @variable.member
 
-(variable_declarator
-  name:
-    (object_pattern
-      (shorthand_property_identifier_pattern))) @variable
+(object_pattern
+  (shorthand_property_identifier_pattern) @variable)
+
+(object_pattern
+  (object_assignment_pattern
+    (shorthand_property_identifier_pattern) @variable))
 
 ; Special identifiers
 ;--------------------
@@ -137,6 +139,17 @@
   "@" @attribute
   (call_expression
     (identifier) @attribute))
+
+(decorator
+  "@" @attribute
+  (member_expression
+    (property_identifier) @attribute))
+
+(decorator
+  "@" @attribute
+  (call_expression
+    (member_expression
+      (property_identifier) @attribute)))
 
 ; Literals
 ;---------
