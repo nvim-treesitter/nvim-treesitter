@@ -1738,7 +1738,6 @@ list.slint = {
     files = { "src/parser.c" },
   },
   maintainers = { "@hunger" },
-  experimental = true,
 }
 
 list.smali = {
