@@ -59,7 +59,7 @@ jobs:
       - uses: actions/setup-node@v4
 
       - name: Install tree-sitter CLI
-        run: npm i -g tree-sitter-cli
+        run: npm i -g tree-sitter-cli@0.20.9
 
       - name: Install and prepare Neovim
         env:

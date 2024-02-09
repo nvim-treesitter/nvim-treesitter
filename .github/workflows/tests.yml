@@ -30,7 +30,7 @@ jobs:
       - uses: actions/setup-node@v4
 
       - name: Install tree-sitter CLI
-        run: npm i -g tree-sitter-cli
+        run: npm i -g tree-sitter-cli@0.20.9
 
       - name: Test Dependencies
         run: |
@@ -43,7 +43,6 @@ jobs:
       - name: Install and prepare Neovim
         env:
           NVIM_TAG: stable
-          TREE_SITTER_CLI_TAG: v0.20.8
         run: |
           bash ./scripts/ci-install-${{ matrix.os }}.sh
 
