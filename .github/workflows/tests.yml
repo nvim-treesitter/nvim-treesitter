@@ -30,7 +30,7 @@ jobs:
       - uses: actions/setup-node@v4
 
       - name: Install tree-sitter CLI
-        run: npm i -g tree-sitter-cli@0.20.9
+        run: npm i -g tree-sitter-cli
 
       - name: Test Dependencies
         run: |
