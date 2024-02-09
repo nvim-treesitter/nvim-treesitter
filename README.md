@@ -178,7 +178,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [angular](https://github.com/dlvandenberg/tree-sitter-angular) (experimental, maintained by @dlvandenberg)
 - [x] [apex](https://github.com/aheber/tree-sitter-sfapex) (maintained by @aheber)
 - [x] [arduino](https://github.com/ObserverOfTime/tree-sitter-arduino) (maintained by @ObserverOfTime)
-- [x] [asm](https://github.com/rush-rs/tree-sitter-asm) (maintained by @RubixDev)
+- [x] [asm](https://github.com/RubixDev/tree-sitter-asm) (maintained by @RubixDev)
 - [x] [astro](https://github.com/virchau13/tree-sitter-astro) (maintained by @virchau13)
 - [x] [authzed](https://github.com/mleonidas/tree-sitter-authzed) (maintained by @mattpolzin)
 - [ ] [awk](https://github.com/Beaglefoot/tree-sitter-awk)
