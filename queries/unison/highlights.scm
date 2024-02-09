@@ -14,7 +14,7 @@
 ; Keywords
 [
   (kw_forall)
-  (unique_kw)
+  (unique)
   (type_kw)
   (do)
   (kw_let)
@@ -24,7 +24,7 @@
 
 (kw_equals) @keyword.operator
 
-(structural_kw) @type.qualifier
+(structural) @type.qualifier
 
 (unique) @type.qualifier
 
