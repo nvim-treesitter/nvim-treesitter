@@ -290,6 +290,9 @@
   "hurl": {
     "revision": "cd1a0ada92cc73dd0f4d7eedc162be4ded758591"
   },
+  "hyprlang": {
+    "revision": "e60fc858e6327a15c0b26f99ec96945fecd1e4ee"
+  },
   "ini": {
     "revision": "bcb84a2d4bcd6f55b911c42deade75c8f90cb0c5"
   },

@@ -891,6 +891,14 @@ list.hurl = {
   maintainers = { "@pfeiferj" },
 }
 
+list.hyprlang = {
+  install_info = {
+    url = "https://github.com/luckasRanarison/tree-sitter-hyprlang",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@luckasRanarison" },
+}
+
 list.ini = {
   install_info = {
     url = "https://github.com/justinmk/tree-sitter-ini",
