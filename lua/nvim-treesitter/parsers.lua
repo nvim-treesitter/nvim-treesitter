@@ -2146,8 +2146,8 @@ list.vimdoc = {
 
 list.vue = {
   install_info = {
-    url = "https://github.com/ikatyang/tree-sitter-vue",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = "https://github.com/tree-sitter-grammars/tree-sitter-vue",
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@WhyNotHugo" },
 }
