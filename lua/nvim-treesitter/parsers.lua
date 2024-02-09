@@ -1934,6 +1934,14 @@ list.teal = {
   maintainers = { "@euclidianAce" },
 }
 
+list.tcl = {
+  install_info = {
+    url = "https://github.com/tree-sitter-grammars/tree-sitter-tcl",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@lewis6991" },
+}
+
 list.terraform = {
   install_info = {
     url = "https://github.com/MichaHoffmann/tree-sitter-hcl",
