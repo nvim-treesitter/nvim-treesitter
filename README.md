@@ -370,7 +370,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [ ] [scheme](https://github.com/6cdh/tree-sitter-scheme)
 - [x] [scss](https://github.com/serenadeai/tree-sitter-scss) (maintained by @elianiva)
 - [x] [slang](https://github.com/theHamsta/tree-sitter-slang) (experimental, maintained by @theHamsta)
-- [x] [slint](https://github.com/slint-ui/slint) (maintained by @hunger)
+- [x] [slint](https://github.com/slint-ui/tree-sitter-slint) (maintained by @hunger)
 - [x] [smali](https://git.sr.ht/~yotam/tree-sitter-smali) (maintained by @amaanq)
 - [x] [smithy](https://github.com/indoorvivants/tree-sitter-smithy) (maintained by @amaanq, @keynmol)
 - [ ] [snakemake](https://github.com/osthomas/tree-sitter-snakemake) (experimental)
