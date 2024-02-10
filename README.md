@@ -8,9 +8,10 @@ Fitten Code AI Programming Assistant for Neovim, helps you to use AI for automat
 
 - 🚀 Fast completion thanks to `Fitten Code` and `curl`
 - 🐛 Asynchronous I/O for improved performance
-- 🚀 Accept all suggestions with `Tab`
+- ⭐️ Accept all suggestions with `Tab`
 - 🧪 Accept line with `Ctrl + ⬇️`
 - 🔎 Accept word with `Ctrl + ➡️`
+- ❄️ Undo accepted text
 
 ## ⚡️ Requirements
 
