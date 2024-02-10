@@ -291,7 +291,8 @@ function M.accept_line()
     return
   end
 
-  event_filter_count = 3
+  -- InsertLeave CursorMoved InsertLeave CursorHoldI
+  event_filter_count = 4
   View.clear_virt_text()
 
   local line = table.remove(M.fitten_suggestion, 1)
@@ -348,6 +349,7 @@ function M.accept_word()
     return
   end
 
+  -- InsertLeave CursorMoved CursorMovedI CursorHoldI
   event_filter_count = 4
   View.clear_virt_text()
 
@@ -375,7 +377,7 @@ function M.accept_word()
   end
 end
 
-function M.fetch_sub_efc()
+function M.fetch_sub_efc(event)
   local v = event_filter_count
   event_filter_count = math.max(event_filter_count - 1, 0)
   return v
