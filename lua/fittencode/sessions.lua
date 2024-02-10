@@ -380,6 +380,8 @@ function M.accept_word()
     table.remove(M.fitten_suggestion, 1)
     if M.has_suggestion() then
       View.set_text({ word, '' })
+    else
+      View.set_text({ word })
     end
   else
     M.fitten_suggestion[1] = line
