@@ -10,9 +10,7 @@ function M.setup()
 
   local Sessions = require('fittencode.sessions')
   local Bindings = require('fittencode.bindings')
-  local Log = require('fittencode.log')
   local Tasks = require('fittencode.tasks')
-  local View = require('fittencode.view')
   local Color = require('fittencode.color')
 
   Tasks.setup()

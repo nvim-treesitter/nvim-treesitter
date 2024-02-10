@@ -30,7 +30,9 @@ function M.log(level, msg, ...)
   end
   local ms = math.floor((uv.hrtime() / 1e6) % 1000)
   msg = '[' .. to_string(level) .. '] ' .. '[' .. os.date('%Y-%m-%d %H:%M:%S') .. '.' .. ms .. '] ' .. '[fittencode.nvim] ' .. (msg or '')
-  vim.notify(msg, level)
+  vim.schedule(function()
+    vim.notify(msg, level)
+  end)
 end
 
 function M.info(...)

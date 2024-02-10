@@ -49,26 +49,20 @@ end
 local function write_api_key(api_key)
   local dir, path = get_api_key_store_path()
   Base.write_mkdir(api_key, dir, path, function()
-    vim.schedule(function()
-      Log.info('Login successful')
-      Log.info('API key saved successful, path: {}', path)
-    end)
+    Log.info('Login successful')
+    Log.info('API key saved successful, path: {}', path)
   end)
 end
 
 local function on_login_api_key_callback(exit_code, output)
   if output == nil or output == '' then
-    vim.schedule(function()
-      Log.error('Login failed: Server response without data')
-    end)
+    Log.error('Login failed: Server response without data')
     return
   end
 
   local fico_data = fn.json_decode(output)
   if fico_data.data == nil or fico_data.data.fico_token == nil then
-    vim.schedule(function()
-      Log.error('Login failed: Server response without fico_token field, decoded response: {}', fico_data)
-    end)
+    Log.error('Login failed: Server response without fico_token field, decoded response: {}', fico_data)
     return
   end
 
@@ -79,9 +73,7 @@ end
 
 local function login_with_api_key(user_token)
   if user_token == nil or user_token == '' then
-    vim.schedule(function()
-      Log.error('Login failed: Invalid user token')
-    end)
+    Log.error('Login failed: Invalid user token')
     return
   end
 
@@ -100,23 +92,17 @@ end
 
 local function on_login_callback(exit_code, output)
   if output == nil or output == '' then
-    vim.schedule(function()
-      Log.error('Login failed: Server response without data')
-    end)
+    Log.error('Login failed: Server response without data')
     return
   end
 
   local login_data = fn.json_decode(output)
   if login_data.code ~= 200 then
     if login_data.code == nil then
-      vim.schedule(function()
-        Log.error('Login failed: Server status code: {}, response: {}', login_data.status_code, login_data)
-      end)
+      Log.error('Login failed: Server status code: {}, response: {}', login_data.status_code, login_data)
       return
     else
-      vim.schedule(function()
-        Log.error('Login failed: HTTP code: {}, response: {}', login_data.code, login_data)
-      end)
+      Log.error('Login failed: HTTP code: {}, response: {}', login_data.code, login_data)
     end
     return
   end
@@ -172,15 +158,11 @@ function M.logout()
 
   uv.fs_unlink(path, function(err)
     if err then
-      vim.schedule(function()
-        Log.error('Failed to delete API key file, path: {}, error: {}', path, err)
-        Log.error('Logout failed')
-      end)
+      Log.error('Failed to delete API key file, path: {}, error: {}', path, err)
+      Log.error('Logout failed')
     else
-      vim.schedule(function()
-        Log.info('Delete API key file successful, path: {}', path)
-        Log.info('Logout successful')
-      end)
+      Log.info('Delete API key file successful, path: {}', path)
+      Log.info('Logout successful')
     end
   end)
 end
@@ -228,9 +210,7 @@ local function on_completion_delete_tempfile_callback(data)
   local path = data.path
   uv.fs_unlink(path, function(err)
     if err then
-      vim.schedule(function()
-        Log.error('Failed to delete HTTP temporary file, path: {}, error: {}', path, err)
-      end)
+      Log.error('Failed to delete HTTP temporary file, path: {}, error: {}', path, err)
     end
   end)
 end
