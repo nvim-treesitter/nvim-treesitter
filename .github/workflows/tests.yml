@@ -44,7 +44,7 @@ jobs:
         env:
           NVIM_TAG: stable
         run: |
-          bash ./scripts/ci-install-${{ matrix.os }}.sh
+          bash ./scripts/ci-install.sh
 
       - name: Setup Parsers Cache
         id: parsers-cache

@@ -51,8 +51,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       CC: ${{ matrix.cc }}
-      NVIM: ${{ runner.os == 'Windows' && 'nvim-win64\\bin\\nvim.exe' || 'nvim' }}
-      ALLOWED_INSTALLATION_FAILURES: ${{ runner.os == 'Windows' && 'rnoweb' }}
+      NVIM: ${{ matrix.os == 'windows-latest' && 'nvim-win64\\bin\\nvim.exe' || 'nvim' }}
+      ALLOWED_INSTALLATION_FAILURES: ${{ matrix.os == 'windows-latest' && 'rnoweb' }}
     steps:
       - uses: actions/checkout@v4
       - uses: ilammy/msvc-dev-cmd@v1
@@ -65,7 +65,7 @@ jobs:
         env:
           NVIM_TAG: ${{ matrix.nvim_tag }}
         run: |
-          bash ./scripts/ci-install-${{ matrix.os }}.sh
+          bash ./scripts/ci-install.sh
 
       - name: Setup Parsers Cache
         id: parsers-cache
