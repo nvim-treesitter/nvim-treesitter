@@ -56,7 +56,7 @@ jobs:
           key: ${{ matrix.os }}-${{ matrix.cc }}-parsers-v1-${{ hashFiles('./lockfile.json', './lua/nvim-treesitter/parsers.lua', './lua/nvim-treesitter/install.lua', './lua/nvim-treesitter/shell_selectors.lua') }}
 
       - name: Compile parsers Unix like
-        if: ${{ matrix.os != 'windows-latest' && steps.parsers-cache.outputs.cache-hit != 'true' }}
+        if: ${{ runner.os != 'Windows' && steps.parsers-cache.outputs.cache-hit != 'true' }}
         run: |
           nvim --headless -c "TSInstallSync all" -c "q"
 
