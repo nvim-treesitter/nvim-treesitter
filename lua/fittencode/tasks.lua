@@ -6,7 +6,7 @@ local M = {}
 
 local MS_TO_NS = 1000000
 local DEFAULT_TIMEOUT = 5000 * MS_TO_NS
-local DEFAULT_RECYCLING = 1000 * MS_TO_NS
+local DEFAULT_RECYCLING = 1000
 
 M.tasks_list = {}
 
