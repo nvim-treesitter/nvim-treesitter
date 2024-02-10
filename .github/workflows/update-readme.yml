@@ -23,7 +23,7 @@ jobs:
         env:
           NVIM_TAG: stable
         run: |
-          bash ./scripts/ci-install-ubuntu-latest.sh
+          bash ./scripts/ci-install.sh
 
       - name: Check README
         run: |

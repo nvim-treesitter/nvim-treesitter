@@ -27,7 +27,7 @@ jobs:
           wget https://github.com/josephburnett/jd/releases/download/v1.7.1/jd-amd64-linux
           mv jd-amd64-linux /tmp/jd
           chmod +x /tmp/jd
-          bash scripts/ci-install-ubuntu-latest.sh
+          bash scripts/ci-install.sh
 
       - name: Update parsers
         env:
