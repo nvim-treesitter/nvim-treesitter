@@ -12,7 +12,7 @@
     "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
   },
   "arduino": {
-    "revision": "ff1045f5da90344d547022c50f1756be4adaf721"
+    "revision": "2fd27792dbd1c1995f088dc632497466a2c9c630"
   },
   "asm": {
     "revision": "6ace266be7ad6bf486a95427ca3fc949aff66211"
@@ -27,13 +27,13 @@
     "revision": "207b04974c83d8d25a947e4d09763675c4617da7"
   },
   "bash": {
-    "revision": "270c06b20567af619da1272dcd32ced9f42951d7"
+    "revision": "f25440a0c089989200d07260d4d0d447c26eaa3e"
   },
   "bass": {
     "revision": "27f110dfe79620993f5493ffa0d0f2fe12d250ed"
   },
   "beancount": {
-    "revision": "da1bf8c6eb0ae7a97588affde7227630bcd678b6"
+    "revision": "dd6f4ec9b01dd18cc4aa8c8517738414fb98cd63"
   },
   "bibtex": {
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
@@ -84,7 +84,7 @@
     "revision": "f4b3cbc8b0bd4e13035d39940fef09f1392e8739"
   },
   "cpp": {
-    "revision": "2e4d27f7728a4f90f292e3d9fe27e51ce51ca426"
+    "revision": "51da29228ea1d137d196edd1b41149f325cc6ecb"
   },
   "css": {
     "revision": "98c7b3dceb24f1ee17f1322f3947e55638251c37"
@@ -126,7 +126,7 @@
     "revision": "a750758da90955c86fcc22fcbb6fa44a7d009865"
   },
   "dtd": {
-    "revision": "b1b5a3e48484bdc755f51e1f86cafa330dd52f82"
+    "revision": "54411b29e115d45214dca1bc4c8a3d7493530f0e"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -366,7 +366,7 @@
     "revision": "9668709211b2e683f27f414454a8b51bf0a6bda1"
   },
   "luadoc": {
-    "revision": "bb310813b2661e5add6a79c11f63b05db52c1045"
+    "revision": "873612aadd3f684dd4e631bdf42ea8990c57634e"
   },
   "luap": {
     "revision": "31461ae9bd0866cb5117cfe5de71189854fd0f3e"
@@ -591,7 +591,7 @@
     "revision": "ac07aa2c875ef6ada2ec468d8a4d0c7c5efd96d7"
   },
   "slint": {
-    "revision": "15618215b79b9db08f824a5c97a12d073dcc1c00"
+    "revision": "aae884b79f0e100576eea71fd8d5ac12601949a2"
   },
   "smali": {
     "revision": "72e334b2630f5852825ba5ff9dfd872447175eb5"
@@ -659,11 +659,11 @@
   "tablegen": {
     "revision": "300f6a490e71f895e644ed2deec6920860a2e107"
   },
-  "teal": {
-    "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
-  },
   "tcl": {
     "revision": "ca2643e3cd818771635a152899fb70b6b37d648a"
+  },
+  "teal": {
+    "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
   },
   "templ": {
     "revision": "592faa3186ef857c92e4bd1c31d73c07a4a334db"
@@ -750,13 +750,13 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "3d3bbcb7cb33709ec992e115e894500276753e22"
+    "revision": "4ef6455bc3fa09db11833720278045c2b7621624"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
   },
   "xml": {
-    "revision": "b1b5a3e48484bdc755f51e1f86cafa330dd52f82"
+    "revision": "54411b29e115d45214dca1bc4c8a3d7493530f0e"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
