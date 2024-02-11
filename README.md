@@ -414,7 +414,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [unison](https://github.com/kylegoetz/tree-sitter-unison) (maintained by @tapegram)
 - [x] [usd](https://github.com/ColinKennedy/tree-sitter-usd) (maintained by @ColinKennedy)
 - [x] [uxn tal](https://github.com/amaanq/tree-sitter-uxntal) (maintained by @amaanq)
-- [x] [v](https://github.com/v-analyzer/v-analyzer) (maintained by @kkharji, @amaanq)
+- [x] [v](https://github.com/vlang/v-analyzer) (maintained by @kkharji, @amaanq)
 - [x] [vala](https://github.com/vala-lang/tree-sitter-vala) (maintained by @Prince781)
 - [x] [verilog](https://github.com/tree-sitter/tree-sitter-verilog) (maintained by @zegervdv)
 - [x] [vhs](https://github.com/charmbracelet/tree-sitter-vhs) (maintained by @caarlos0)

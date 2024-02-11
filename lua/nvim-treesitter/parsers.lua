@@ -2102,7 +2102,7 @@ list.uxntal = {
 
 list.v = {
   install_info = {
-    url = "https://github.com/v-analyzer/v-analyzer",
+    url = "https://github.com/vlang/v-analyzer",
     files = { "src/parser.c" },
     location = "tree_sitter_v",
   },
