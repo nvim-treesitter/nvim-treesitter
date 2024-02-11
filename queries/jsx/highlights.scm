@@ -64,6 +64,6 @@
 
 (html_character_reference) @tag
 
-(jsx_text) @none
+(jsx_text) @none @spell
 
 (html_character_reference) @character.special
