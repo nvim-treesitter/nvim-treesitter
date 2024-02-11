@@ -27,7 +27,7 @@
     "revision": "207b04974c83d8d25a947e4d09763675c4617da7"
   },
   "bash": {
-    "revision": "d1a1a3fe7189fdab5bd29a54d1df4a5873db5cb1"
+    "revision": "1c6ebd1ae1d4afb140df094b2ac443a52bf7ff95"
   },
   "bass": {
     "revision": "27f110dfe79620993f5493ffa0d0f2fe12d250ed"
@@ -84,7 +84,7 @@
     "revision": "f4b3cbc8b0bd4e13035d39940fef09f1392e8739"
   },
   "cpp": {
-    "revision": "51da29228ea1d137d196edd1b41149f325cc6ecb"
+    "revision": "ef61cb57bd10838e90957672e6b4c129fcbe3a25"
   },
   "css": {
     "revision": "98c7b3dceb24f1ee17f1322f3947e55638251c37"
@@ -102,7 +102,7 @@
     "revision": "d9a1a2ed77017c23f715643f4739433a5ea7ab6f"
   },
   "dart": {
-    "revision": "f71e310a93010863f4b17a2a501ea8e2032c345b"
+    "revision": "1a31399a08aefc93bc4cdbfadc0cb619136f86c1"
   },
   "devicetree": {
     "revision": "6b53bfdb20a54727bfe344aa40907351a298f75c"
@@ -198,7 +198,7 @@
     "revision": "d8a4207ebbc47bd78bacdf48f883db58283f9fd8"
   },
   "gitattributes": {
-    "revision": "19d554d39e4a8491f7a77abcdb75bfbc1c19d0b5"
+    "revision": "f682b3a5c5b5da7ac3577476eedf90b151294618"
   },
   "gitcommit": {
     "revision": "7c01af8d227b5344f62aade2ff00f19bd0c458ca"
@@ -291,7 +291,7 @@
     "revision": "cd1a0ada92cc73dd0f4d7eedc162be4ded758591"
   },
   "hyprlang": {
-    "revision": "e60fc858e6327a15c0b26f99ec96945fecd1e4ee"
+    "revision": "86025136c12cd1058985479a6b1935829077f1af"
   },
   "ini": {
     "revision": "bcb84a2d4bcd6f55b911c42deade75c8f90cb0c5"
@@ -570,7 +570,7 @@
     "revision": "3ba9eb9b5a47aadb1f2356a3cab0dd3d2bd00b4b"
   },
   "ruby": {
-    "revision": "bdaab7da01967a68d0f5a6779a49b30ad3f28e3b"
+    "revision": "7a010836b74351855148818d5cb8170dc4df8e6a"
   },
   "rust": {
     "revision": "e0e8b6de6e4aa354749c794f5f36a906dcccda74"
@@ -750,7 +750,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "4ef6455bc3fa09db11833720278045c2b7621624"
+    "revision": "2c2fa59e7f7077790f55bffaae4aae9e35b702fe"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
@@ -768,7 +768,7 @@
     "revision": "c348825d3f86dec71dee0e1223c6bd73114e3579"
   },
   "zathurarc": {
-    "revision": "b47016df5688ef91ad4532138b6210c7944d6483"
+    "revision": "0162354dd343d13816569553f8d01d51b4912ad3"
   },
   "zig": {
     "revision": "0d08703e4c3f426ec61695d7617415fff97029bd"
