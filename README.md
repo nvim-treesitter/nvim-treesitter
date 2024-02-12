@@ -12,6 +12,7 @@ Fitten Code AI Programming Assistant for Neovim, helps you to use AI for automat
 - 🧪 Accept line with `Ctrl + ⬇️`
 - 🔎 Accept word with `Ctrl + ➡️`
 - ❄️ Undo accepted text
+- 🧨 Automatic scrolling when previewing or completing code
 
 ## ⚡️ Requirements
 
