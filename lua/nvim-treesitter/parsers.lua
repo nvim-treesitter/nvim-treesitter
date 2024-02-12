@@ -1123,6 +1123,14 @@ list.luau = {
   maintainers = { "@amaanq" },
 }
 
+list.hlsplaylist = {
+  install_info = {
+    url = "https://github.com/Freed-Wu/tree-sitter-hlsplaylist",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@Freed-Wu" },
+}
+
 list.m68k = {
   install_info = {
     url = "https://github.com/grahambates/tree-sitter-m68k",

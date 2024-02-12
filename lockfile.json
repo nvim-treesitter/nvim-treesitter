@@ -272,6 +272,9 @@
   "hlsl": {
     "revision": "3ade6d065c69cd72c4da966d0c0af98bfb512f16"
   },
+  "hlsplaylist": {
+    "revision": "be3a18abfa9cef1f792324beb1f1e1c9ddba2748"
+  },
   "hocon": {
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
   },
