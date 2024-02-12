@@ -233,10 +233,9 @@ local function make_completion_request_params()
     filename = 'NONAME'
   end
 
-  local content = table.concat(api.nvim_buf_get_lines(0, 0, -1, false), '\n')
-  local cursor_pos = api.nvim_win_get_cursor(0)
-  local line = cursor_pos[1] - 1
-  local col = cursor_pos[2]
+  local cursor = api.nvim_win_get_cursor(0)
+  local line = cursor[1] - 1
+  local col = cursor[2]
   local prefix = table.concat(api.nvim_buf_get_text(0, 0, 0, line, col, {}), '\n')
   local suffix = table.concat(api.nvim_buf_get_text(0, line, col, -1, -1, {}), '\n')
   local prompt = '!FCPREFIX!' .. prefix .. '!FCSUFFIX!' .. suffix .. '!FCMIDDLE!'
