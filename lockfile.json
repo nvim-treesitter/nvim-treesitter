@@ -492,7 +492,7 @@
     "revision": "77625d78eebc3ffc44d114a07b2f348dff3061b0"
   },
   "properties": {
-    "revision": "97253273bdf8b63546c8006e71ba155ecc27069e"
+    "revision": "8cf6e5f02dac7e6a0c45a27d7e2a1afb6de87642"
   },
   "proto": {
     "revision": "e9f6b43f6844bd2189b50a422d4e2094313f6aa3"
@@ -576,7 +576,7 @@
     "revision": "e0e8b6de6e4aa354749c794f5f36a906dcccda74"
   },
   "scala": {
-    "revision": "45b5ba0e749a8477a8fd2666f082f352859bdc3c"
+    "revision": "310f87253bbc467e87ccf041b1d3e8649711d2f9"
   },
   "scfg": {
     "revision": "6deae0cbb458c849a4d1e2985093e9c9c32d7fd0"
@@ -588,7 +588,7 @@
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
   },
   "slang": {
-    "revision": "ac07aa2c875ef6ada2ec468d8a4d0c7c5efd96d7"
+    "revision": "d8f845c7f39cc1bbd7cc6d9191dac186e6bc6369"
   },
   "slint": {
     "revision": "aae884b79f0e100576eea71fd8d5ac12601949a2"
@@ -750,7 +750,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "2c2fa59e7f7077790f55bffaae4aae9e35b702fe"
+    "revision": "f647945b1619b34c172825c43408ffc9dc5db2ea"
   },
   "xcompose": {
     "revision": "01344fed31a3cd37a63f03357ec80cbc592a93b5"
@@ -768,7 +768,7 @@
     "revision": "c348825d3f86dec71dee0e1223c6bd73114e3579"
   },
   "zathurarc": {
-    "revision": "0162354dd343d13816569553f8d01d51b4912ad3"
+    "revision": "0f93bfe8ecb104f60e42c3c8854bee78c54738c5"
   },
   "zig": {
     "revision": "0d08703e4c3f426ec61695d7617415fff97029bd"
