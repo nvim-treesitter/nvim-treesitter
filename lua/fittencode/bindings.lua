@@ -4,36 +4,46 @@ local fn = vim.fn
 local Base = require('fittencode.base')
 local Sessions = require('fittencode.sessions')
 local Log = require('fittencode.log')
-local Task = require('fittencode.tasks')
 local View = require('fittencode.view')
 
 local M = {}
 
-local DEFAULT_DEBOUNCE_TIME = 80
+local DEFAULT_DEBOUNCE_TIME = 100
+local DEFAULT_RESET_DEBOUNCE_TIME = 800
+
+local completion_timer = nil
+local reset_completion_timer = nil
 
 function M.setup_autocmds()
   api.nvim_create_autocmd({ 'CursorHoldI' }, {
     group = Base.augroup('Completion'),
     pattern = '*',
     callback = function(args)
-      if Sessions.fetch_sub_efc(args.event) ~= 0 then
-        return
-      end
-      local task_id = Task.create(fn.line('.'), fn.col('.'))
-      Base.debounce(function()
-        Sessions.completion_request(task_id)
+      local cursor = api.nvim_win_get_cursor(0)
+      local line = cursor[1] - 1
+      local col = cursor[2]
+      Base.debounce(completion_timer, function()
+        Sessions.completion_request(line, col)
       end, DEFAULT_DEBOUNCE_TIME)
     end,
     desc = 'Triggered Completion',
   })
 
-  api.nvim_create_autocmd({ 'CursorMovedI', 'CursorMoved', 'BufWinLeave', 'BufHidden', 'InsertLeave' }, {
+  api.nvim_create_autocmd({ 'CursorMovedI', 'CursorMoved', 'InsertLeave' }, {
+    group = Base.augroup('StageCompletion'),
+    pattern = '*',
+    callback = function(args)
+      Base.debounce(reset_completion_timer, function()
+        Sessions.stage_completion()
+      end, DEFAULT_RESET_DEBOUNCE_TIME)
+    end,
+    desc = 'Stage completion',
+  })
+
+  api.nvim_create_autocmd({ 'BufWinLeave', 'BufHidden' }, {
     group = Base.augroup('ResetCompletion'),
     pattern = '*',
     callback = function(args)
-      if vim.tbl_contains({ 'InsertLeave', 'CursorMoved', 'CursorMovedI' }, args.event) and Sessions.fetch_sub_efc(args.event) ~= 0 then
-        return
-      end
       Sessions.reset_completion()
     end,
     desc = 'Reset completion',

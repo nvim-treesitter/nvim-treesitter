@@ -17,8 +17,8 @@ local URL_GENERATE_ONE_STAGE = 'https://codeapi.fittentech.cn:13443/generate_one
 
 M.fitten_suggestion = {}
 
+local suggestion_cache = {}
 local fitten_suggestion_stage = 0
-local event_filter_count = 0
 
 local function record_suggestion(suggestion)
   M.fitten_suggestion = suggestion or {}
@@ -27,6 +27,7 @@ end
 
 local function flush_suggestion()
   record_suggestion()
+  suggestion_cache = {}
 end
 
 local function get_api_key_store_path()
@@ -188,22 +189,38 @@ local function generate_suggestion(generated_text)
 end
 
 local function on_completion_callback(exit_code, response, data)
+  Log.debug('on_completion_callback 1')
+
   if response == nil or response == '' then
+    Log.debug('response nil')
     return
   end
 
-  if not Tasks.match(data.task_id, fn.line('.'), fn.col('.')) then
+  local cursor = api.nvim_win_get_cursor(0)
+  local line = cursor[1] - 1
+  local col = cursor[2]
+  if not Tasks.match(data.task_id, line, col) then
+    Log.debug('completion_request not match, task_id: {}, line: {}, col: {}', data.task_id, line, col)
     return
   end
 
   local completion_data = fn.json_decode(response)
   if completion_data.generated_text == nil then
+    Log.debug('generated_text nil')
     return
   end
+
+  suggestion_cache = {
+    line = line,
+    col = col,
+  }
+  Log.debug('on_completion_callback suggestion_cache {}, line {}, col {}', suggestion_cache, line, col)
 
   local suggestion = generate_suggestion(completion_data.generated_text)
   record_suggestion(suggestion)
   View.render_virt_text(suggestion)
+
+  Log.debug('on_completion_callback 2')
 end
 
 local function on_completion_delete_tempfile_callback(data)
@@ -215,16 +232,27 @@ local function on_completion_delete_tempfile_callback(data)
   end)
 end
 
-function M.completion_request(task_id)
+function M.completion_request(line, col, force)
+  Log.debug('completion_request 1')
+
   if M.api_key == nil or M.api_key == '' then
     return
   end
 
+  Log.debug('completion_request suggestion_cache {}, line {}, col {}', suggestion_cache, line, col)
+
+  if not force and suggestion_cache.line == line and suggestion_cache.col == col then
+    return
+  end
+
+  local task_id = Tasks.create(line, col)
   flush_suggestion()
 
   if not Lsp.is_active() then
     M.do_completion_request(task_id)
   end
+
+  Log.debug('completion_request 2')
 end
 
 local function make_completion_request_params()
@@ -250,6 +278,8 @@ local function make_completion_request_params()
 end
 
 function M.do_completion_request(task_id)
+  Log.debug('do_completion_request 1')
+
   local encoded_params = fn.json_encode(make_completion_request_params())
   Base.write_temp_file(encoded_params, function(path)
     local server_addr = URL_GENERATE_ONE_STAGE
@@ -272,10 +302,21 @@ function M.do_completion_request(task_id)
       },
     }, on_completion_callback, on_curl_signal_callback, on_completion_delete_tempfile_callback)
   end)
+
+  Log.debug('do_completion_request 2')
 end
 
 function M.has_suggestion()
   return vim.tbl_count(M.fitten_suggestion) ~= 0
+end
+
+function M.completion_request_at_cursor()
+  M.reset_completion()
+
+  local cursor = api.nvim_win_get_cursor(0)
+  local line = cursor[1] - 1
+  local col = cursor[2]
+  M.completion_request(line, col, true)
 end
 
 function M.chaining_complete()
@@ -283,7 +324,6 @@ function M.chaining_complete()
     return
   end
 
-  event_filter_count = 0
   View.clear_virt_text()
   View.set_text(M.fitten_suggestion)
 
@@ -295,8 +335,6 @@ function M.accept_line()
     return
   end
 
-  -- InsertLeave CursorMoved InsertLeave CursorHoldI
-  event_filter_count = 4
   View.clear_virt_text()
 
   local line = table.remove(M.fitten_suggestion, 1)
@@ -317,8 +355,17 @@ function M.accept_line()
   if vim.tbl_count(M.fitten_suggestion) > 0 then
     View.render_virt_text(M.fitten_suggestion)
   else
-    M.reset_completion()
+    M.completion_request_at_cursor()
   end
+
+  local cursor = api.nvim_win_get_cursor(0)
+  local line = cursor[1] - 1
+  local col = cursor[2]
+
+  suggestion_cache = {
+    line = line,
+    col = col,
+  }
 end
 
 local function is_alpha(char)
@@ -353,8 +400,8 @@ function M.accept_word()
     return
   end
 
-  -- InsertLeave CursorMoved CursorMovedI CursorHoldI
-  event_filter_count = 4
+  Log.debug('accept_word 1')
+
   View.clear_virt_text()
 
   local line = M.fitten_suggestion[1]
@@ -377,20 +424,61 @@ function M.accept_word()
   if vim.tbl_count(M.fitten_suggestion) > 0 then
     View.render_virt_text(M.fitten_suggestion)
   else
-    M.reset_completion()
+    M.completion_request_at_cursor()
   end
+
+  local cursor = api.nvim_win_get_cursor(0)
+  local line = cursor[1] - 1
+  local col = cursor[2]
+
+  suggestion_cache = {
+    line = line,
+    col = col,
+  }
+
+  Log.debug('accept_word suggestion_cache {}', suggestion_cache)
+
+  Log.debug('accept_word 2')
 end
 
-function M.fetch_sub_efc(event)
-  local v = event_filter_count
-  event_filter_count = math.max(event_filter_count - 1, 0)
-  return v
-end
+function M.reset_completion(line, col)
+  Log.debug('reset_completion 1')
 
-function M.reset_completion()
-  event_filter_count = 0
-  flush_suggestion()
   View.clear_virt_text()
+  flush_suggestion()
+
+  Log.debug('reset_completion 2')
+end
+
+function M.stage_completion()
+  Log.debug('stage_completion 1')
+
+  if not M.has_suggestion() then
+    return
+  end
+
+  api.nvim_command('redraw!')
+  
+  local cursor = api.nvim_win_get_cursor(0)
+  local line = cursor[1] - 1
+  local col = cursor[2]
+
+  Log.debug('stage_completion suggestion_cache {}, line {}, col {}', suggestion_cache, line, col)
+
+  if suggestion_cache == {} then
+    return
+  end
+
+  View.clear_virt_text()
+  if suggestion_cache.line ~= line or suggestion_cache.col ~= col then
+    -- View.clear_virt_text()
+    flush_suggestion()
+  else
+    -- View.clear_virt_text()
+    View.render_virt_text(M.fitten_suggestion)
+  end
+
+  Log.debug('stage_completion 2')
 end
 
 return M

@@ -153,9 +153,12 @@ function M.set_text(lines)
   local count = vim.tbl_count(lines)
 
   undojoin()
+  -- CursorMovedI CursorHoldI
   append_text_at_pos(row, col, count, lines)
   move_cursor_to_text_end(row, col, count, lines)
+  -- InsertLeave CursorMoved
   silence_lsp()
+  api.nvim_command('redraw!')
 
   local_fmt_recovery()
 end

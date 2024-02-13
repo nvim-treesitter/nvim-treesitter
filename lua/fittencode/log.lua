@@ -3,7 +3,7 @@ local uv = vim.uv
 
 local M = {}
 
-M.enabled = true
+M.enabled = false
 
 local function to_string(level)
   if level == vim.log.levels.ERROR then
@@ -28,7 +28,7 @@ function M.log(level, msg, ...)
     msg = fn.substitute(msg, '{}', '%s', 'g')
     msg = string.format(msg, unpack(vim.tbl_map(vim.inspect, { ... })))
   end
-  local ms = math.floor((uv.hrtime() / 1e6) % 1000)
+  local ms = string.format('%03d', math.floor((uv.hrtime() / 1e6) % 1000))
   msg = '[' .. to_string(level) .. '] ' .. '[' .. os.date('%Y-%m-%d %H:%M:%S') .. '.' .. ms .. '] ' .. '[fittencode.nvim] ' .. (msg or '')
   vim.schedule(function()
     vim.notify(msg, level)

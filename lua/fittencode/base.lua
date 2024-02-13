@@ -32,21 +32,18 @@ function M.augroup(name)
   return api.nvim_create_augroup('Fittencode_' .. name, { clear = true })
 end
 
-local timer = nil
-
-local function destroy_timer()
-  if timer then
-    if timer:has_ref() then
-      timer:stop()
-      if not timer:is_closing() then
-        timer:close()
+function M.debounce(timer, callback, wait)
+  local function destroy_timer()
+    if timer then
+      if timer:has_ref() then
+        timer:stop()
+        if not timer:is_closing() then
+          timer:close()
+        end
       end
+      timer = nil
     end
-    timer = nil
   end
-end
-
-function M.debounce(callback, wait)
   if not timer then
     timer = uv.new_timer()
     timer:start(
