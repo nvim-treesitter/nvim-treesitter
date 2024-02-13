@@ -15,23 +15,15 @@
   ")"
   "}"
   "]"
-] @indent.end
+] @indent.end @indent.branch
 
-[
-  "{"
-  "}"
-] @indent.branch
-
-[
-  "("
-  ")"
-] @indent.branch
-
-[
-  "["
-  "]"
-] @indent.branch
-
+; I do not know what/when this should be added.
+; Commenting this out for now
+; [
+;   "("
+;   "{"
+;   "["
+; ] @indent.branch
 [
   (ERROR)
   (comment)
