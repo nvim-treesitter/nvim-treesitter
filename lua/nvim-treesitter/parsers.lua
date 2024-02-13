@@ -428,9 +428,9 @@ list.doxygen = {
 
 list.dtd = {
   install_info = {
-    url = "https://github.com/ObserverOfTime/tree-sitter-xml",
+    url = "https://github.com/tree-sitter-grammars/tree-sitter-xml",
     files = { "src/parser.c", "src/scanner.c" },
-    location = "tree-sitter-dtd",
+    location = "dtd",
   },
   maintainers = { "@ObserverOfTime" },
 }
@@ -2198,9 +2198,9 @@ list.xcompose = {
 
 list.xml = {
   install_info = {
-    url = "https://github.com/ObserverOfTime/tree-sitter-xml",
+    url = "https://github.com/tree-sitter-grammars/tree-sitter-xml",
     files = { "src/parser.c", "src/scanner.c" },
-    location = "tree-sitter-xml",
+    location = "xml",
   },
   maintainers = { "@ObserverOfTime" },
 }
