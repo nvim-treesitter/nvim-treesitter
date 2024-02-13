@@ -48,7 +48,7 @@
     "revision": "863cea9f83ad5637300478e0559262f1e791684b"
   },
   "c": {
-    "revision": "ecdd500806cf8154d944344f1df6418b32e0e9a7"
+    "revision": "25ca2718aacaf0feda8b0709471332f303a0cef5"
   },
   "c_sharp": {
     "revision": "dd5e59721a5f8dae34604060833902b882023aaf"
@@ -60,7 +60,7 @@
     "revision": "dc28c9f4212809eab74d10996086297853eb34e5"
   },
   "chatito": {
-    "revision": "1be833b20d495110b0c1a5ff47d2b08d0dd0ed3b"
+    "revision": "308b5913fd2ae6b527183ba1b3a490f90da32012"
   },
   "clojure": {
     "revision": "6e41628e9d18b19caea1cb1d72aae4ccff5bdfe9"
@@ -126,7 +126,7 @@
     "revision": "a750758da90955c86fcc22fcbb6fa44a7d009865"
   },
   "dtd": {
-    "revision": "d52bc148b3f75677ab50c9b17bdda7b910cb4245"
+    "revision": "049c8d708b0627b03c47994c436693e25af4354d"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -342,7 +342,7 @@
     "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
   },
   "lalrpop": {
-    "revision": "06ae1b6c26e23c77c7fb86d51dddad62b42e66b0"
+    "revision": "456dec2990ed7e9595eca82f85db14a1db46e126"
   },
   "latex": {
     "revision": "2ae2021d7b224fb6aa57b760e0d146059f943bb8"
@@ -492,7 +492,7 @@
     "revision": "77625d78eebc3ffc44d114a07b2f348dff3061b0"
   },
   "properties": {
-    "revision": "42b09c5ceeb11ae68cb235d2f446688d7940a07b"
+    "revision": "74e5d3c63d0da17c0800b3cf9090b24637ef6b59"
   },
   "proto": {
     "revision": "e9f6b43f6844bd2189b50a422d4e2094313f6aa3"
@@ -528,7 +528,7 @@
     "revision": "9fa49ff3315987f715ce5666ff979a7742fa8a98"
   },
   "query": {
-    "revision": "67e9e009436c8c1f2de9f4c654ee3e7674675769"
+    "revision": "a49ed4fd541da90680d57cad760f9a4c9f128d9c"
   },
   "r": {
     "revision": "c55f8b4dfaa32c80ddef6c0ac0e79b05cb0cbf57"
@@ -591,7 +591,7 @@
     "revision": "d8f845c7f39cc1bbd7cc6d9191dac186e6bc6369"
   },
   "slint": {
-    "revision": "aae884b79f0e100576eea71fd8d5ac12601949a2"
+    "revision": "68405a45f7a5311cd1f77e40ba84199573303f52"
   },
   "smali": {
     "revision": "72e334b2630f5852825ba5ff9dfd872447175eb5"
@@ -750,13 +750,13 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "0911d0938af3726399af7f42c58da0152c5f1205"
+    "revision": "870a1824cf95ed4774b1b282a9d7dac8f846ef06"
   },
   "xcompose": {
     "revision": "8898238fca7e143760386448093392b87e58002e"
   },
   "xml": {
-    "revision": "d52bc148b3f75677ab50c9b17bdda7b910cb4245"
+    "revision": "049c8d708b0627b03c47994c436693e25af4354d"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
@@ -768,7 +768,7 @@
     "revision": "c348825d3f86dec71dee0e1223c6bd73114e3579"
   },
   "zathurarc": {
-    "revision": "5ce0c93b3738b3b0b1b02a6610a4f45f97cf9673"
+    "revision": "db40fc0a2d4a65f56530163a3217a8dabfc08842"
   },
   "zig": {
     "revision": "0d08703e4c3f426ec61695d7617415fff97029bd"
