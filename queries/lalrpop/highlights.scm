@@ -77,3 +77,6 @@
 (string_literal) @string
 
 (regex_literal) @string
+
+(annotation
+  (id) @function.macro)
