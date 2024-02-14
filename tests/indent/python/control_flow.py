@@ -26,3 +26,10 @@ while (a > 4 and
     pass
 
 try:
+
+def foo():
+    print('indentme')
+
+    # comment
+    if True:
+        pass
