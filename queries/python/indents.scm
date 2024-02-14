@@ -38,8 +38,19 @@
 
 (ERROR
   "try"
-  ":" @indent.begin
-  (#set! indent.immediate 1))
+  .
+  ":"
+  (#set! indent.immediate 1)) @indent.begin
+
+(ERROR
+  "try"
+  .
+  ":"
+  (ERROR
+    (block
+      (expression_statement
+        (identifier) @_except) @indent.branch))
+  (#eq? @_except "except"))
 
 ((function_definition) @indent.begin
   (#set! indent.immediate 1))
