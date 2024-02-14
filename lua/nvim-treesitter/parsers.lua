@@ -30,14 +30,10 @@ for ft, lang in pairs {
   ecma = "javascript",
   jsx = "javascript",
   sh = "bash",
-  apkbuild = "bash",
-  PKGBUILD = "bash",
   html_tags = "html",
   ["typescript.tsx"] = "tsx",
   ["html.handlebars"] = "glimmer",
   systemverilog = "verilog",
-  cls = "latex",
-  sty = "latex",
   pandoc = "markdown",
   rmd = "markdown",
   quarto = "markdown",
@@ -46,6 +42,8 @@ for ft, lang in pairs {
   svg = "xml",
   xsd = "xml",
   xslt = "xml",
+  expect = "tcl",
+  mysql = "sql",
   sbt = "scala",
 } do
   register_lang(lang, ft)
