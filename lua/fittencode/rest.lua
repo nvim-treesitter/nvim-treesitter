@@ -20,7 +20,7 @@ function M.send(params, on_success, on_error, on_exit)
     args = args,
   }, function(exit_code, signal)
     if handle == nil then
-      Log.error('uv.spawn handle is nil, cmd: {}, args: {}', cmd, args)
+      Log.error('uv.spawn handle is nil; cmd: {}; args: {}', cmd, args)
       return
     end
     handle:close()
@@ -33,7 +33,7 @@ function M.send(params, on_success, on_error, on_exit)
       end
       check:stop()
       if signal ~= 0 then
-        Log.error('uv.spawn signal, cmd: {}, args: {}, signal: {}', cmd, args, signal)
+        Log.error('uv.spawn signal; cmd: {}; args: {}; signal: {}', cmd, args, signal)
         if on_error then
           vim.schedule(function()
             on_error(signal, output, data)

@@ -3,7 +3,12 @@ local uv = vim.uv
 
 local M = {}
 
-M.enabled = false
+M.enabled = true
+M.file = true
+
+local first_log = true
+local cpu = 0
+local environ = 0
 
 local function to_string(level)
   if level == vim.log.levels.ERROR then
@@ -19,6 +24,34 @@ local function to_string(level)
   end
 end
 
+local function log_file(msg)
+  local path = fn.stdpath('log') .. '/fittencode.nvim.log'
+  local f = io.open(path, 'a')
+  if f then
+    if first_log then
+      local fixed = '\
+================================================================================\
+Verbose logging started: %s\
+Calling process: %s\
+Process ID: %d\
+Parent process ID: %d\
+OS: %s'
+      f:write(string.format(fixed, os.date('%Y-%m-%d %H:%M:%S'), uv.exepath(), uv.os_getpid(), uv.os_getppid(), vim.inspect(uv.os_uname())))
+      if cpu ~= 0 then
+        f:write(string.format('\nCPU: %s', vim.inspect(uv.cpu_info())))
+      end
+      if environ ~= 0 then
+        f:write(string.format('\nEnvironment: %s', vim.inspect(uv.os_environ())))
+      end
+      f:write('\
+================================================================================\n')
+      first_log = false
+    end
+    f:write(string.format('%s\n', msg))
+    f:close()
+  end
+end
+
 function M.log(level, msg, ...)
   if not M.enabled then
     return
@@ -31,7 +64,11 @@ function M.log(level, msg, ...)
   local ms = string.format('%03d', math.floor((uv.hrtime() / 1e6) % 1000))
   msg = '[' .. to_string(level) .. '] ' .. '[' .. os.date('%Y-%m-%d %H:%M:%S') .. '.' .. ms .. '] ' .. '[fittencode.nvim] ' .. (msg or '')
   vim.schedule(function()
-    vim.notify(msg, level)
+    if M.file then
+      log_file(msg)
+    else
+      vim.notify(msg, level)
+    end
   end)
 end
 

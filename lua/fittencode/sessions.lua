@@ -5,9 +5,6 @@ local uv = vim.uv
 local Base = require('fittencode.base')
 local Rest = require('fittencode.rest')
 local Log = require('fittencode.log')
-local Lsp = require('fittencode.lsp')
-local View = require('fittencode.view')
-local Tasks = require('fittencode.tasks')
 
 local M = {}
 
@@ -15,19 +12,16 @@ local URL_LOGIN = 'https://codeuser.fittentech.cn:14443/login'
 local URL_GET_FT_TOKEN = 'https://codeuser.fittentech.cn:14443/get_ft_token'
 local URL_GENERATE_ONE_STAGE = 'https://codeapi.fittentech.cn:13443/generate_one_stage/'
 
-M.fitten_suggestion = {}
-
-local last_suggestion_info = {}
-local last_suggestion_count = 0
-
-local function record_suggestion(suggestion)
-  M.fitten_suggestion = suggestion or {}
-  last_suggestion_count = vim.tbl_count(M.fitten_suggestion)
+local function validate_api_key(api_key)
+  if api_key == nil or api_key == '' then
+    Log.error('API key is invalid, Please login again')
+    return false
+  end
+  return true
 end
 
-local function flush_suggestion()
-  record_suggestion()
-  last_suggestion_info = {}
+function M.validate_current_api_key()
+  return validate_api_key(M.api_key)
 end
 
 local function get_api_key_store_path()
@@ -38,20 +32,28 @@ end
 
 local function read_local_api_key_file()
   local _, path = get_api_key_store_path()
+  if not Base.exists(path) then
+    Log.info('API key file not found; path: {}', path)
+    return
+  end
   Base.read(path, function(data)
-    M.api_key = data:gsub('\n', '')
+    local api_key = data:gsub('\n', '')
+    if validate_api_key(api_key) then
+      M.api_key = api_key
+    else
+      M.logout()
+    end
   end)
 end
 
 local function on_curl_signal_callback(signal, output)
-  Log.error('curl throw signal {}', signal)
+  Log.error('curl throw; signal: {}', signal)
 end
 
 local function write_api_key(api_key)
   local dir, path = get_api_key_store_path()
   Base.write_mkdir(api_key, dir, path, function()
-    Log.info('Login successful')
-    Log.info('API key saved successful, path: {}', path)
+    Log.info('API key file saved successful; path: {}', path)
   end)
 end
 
@@ -63,17 +65,20 @@ local function on_login_api_key_callback(exit_code, output)
 
   local fico_data = fn.json_decode(output)
   if fico_data.data == nil or fico_data.data.fico_token == nil then
-    Log.error('Login failed: Server response without fico_token field, decoded response: {}', fico_data)
+    Log.error('Login failed: Server response without fico_token field; decoded response: {}', fico_data)
     return
   end
 
   local api_key = fico_data.data.fico_token
-  M.api_key = api_key
-  write_api_key(api_key)
+  if validate_api_key(api_key) then
+    M.api_key = api_key
+    Log.info('Login successful')
+    write_api_key(api_key)
+  end
 end
 
-local function login_with_api_key(user_token)
-  if user_token == nil or user_token == '' then
+local function login_with_token(token)
+  if token == nil or token == '' then
     Log.error('Login failed: Invalid user token')
     return
   end
@@ -82,7 +87,7 @@ local function login_with_api_key(user_token)
   local fico_args = {
     '-s',
     '-H',
-    'Authorization: Bearer ' .. user_token,
+    'Authorization: Bearer ' .. token,
     fico_url,
   }
   Rest.send({
@@ -100,16 +105,16 @@ local function on_login_callback(exit_code, output)
   local login_data = fn.json_decode(output)
   if login_data.code ~= 200 then
     if login_data.code == nil then
-      Log.error('Login failed: Server status code: {}, response: {}', login_data.status_code, login_data)
+      Log.error('Login failed: Server status code: {}; response: {}', login_data.status_code, login_data)
       return
     else
-      Log.error('Login failed: HTTP code: {}, response: {}', login_data.code, login_data)
+      Log.error('Login failed: HTTP code: {}; response: {}', login_data.code, login_data)
     end
     return
   end
 
-  local api_key = login_data.data.token
-  login_with_api_key(api_key)
+  local token = login_data.data.token
+  login_with_token(token)
 end
 
 function M.load_last_session()
@@ -159,10 +164,10 @@ function M.logout()
 
   uv.fs_unlink(path, function(err)
     if err then
-      Log.error('Failed to delete API key file, path: {}, error: {}', path, err)
+      Log.error('Failed to delete API key file; path: {}; error: {}', path, err)
       Log.error('Logout failed')
     else
-      Log.info('Delete API key file successful, path: {}', path)
+      Log.info('Delete API key file successful; path: {}', path)
       Log.info('Logout successful')
     end
   end)
@@ -189,70 +194,29 @@ local function generate_suggestion(generated_text)
 end
 
 local function on_completion_callback(exit_code, response, data)
-  Log.debug('on_completion_callback 1')
-
   if response == nil or response == '' then
-    Log.debug('response nil')
-    return
-  end
-
-  local cursor = api.nvim_win_get_cursor(0)
-  local line = cursor[1] - 1
-  local col = cursor[2]
-  if not Tasks.match(data.task_id, line, col) then
-    Log.debug('completion_request not match, task_id: {}, line: {}, col: {}', data.task_id, line, col)
     return
   end
 
   local completion_data = fn.json_decode(response)
   if completion_data.generated_text == nil then
-    Log.debug('generated_text nil')
     return
   end
 
-  last_suggestion_info = {
-    line = line,
-    col = col,
-  }
-  Log.debug('on_completion_callback last_suggestion_info {}, line {}, col {}', last_suggestion_info, line, col)
-
   local suggestion = generate_suggestion(completion_data.generated_text)
-  record_suggestion(suggestion)
-  View.render_virt_text(suggestion)
 
-  Log.debug('on_completion_callback 2')
+  if data.on_completion_request_done ~= nil then
+    data.on_completion_request_done(data.task_id, suggestion)
+  end
 end
 
 local function on_completion_delete_tempfile_callback(data)
   local path = data.path
   uv.fs_unlink(path, function(err)
     if err then
-      Log.error('Failed to delete HTTP temporary file, path: {}, error: {}', path, err)
+      Log.error('Failed to delete HTTP temporary file; path: {}; error: {}', path, err)
     end
   end)
-end
-
-function M.completion_request(line, col, force)
-  Log.debug('completion_request 1')
-
-  if M.api_key == nil or M.api_key == '' then
-    return
-  end
-
-  Log.debug('completion_request last_suggestion_info {}, line {}, col {}', last_suggestion_info, line, col)
-
-  if not force and last_suggestion_info.line == line and last_suggestion_info.col == col then
-    return
-  end
-
-  local task_id = Tasks.create(line, col)
-  flush_suggestion()
-
-  if not Lsp.is_active() then
-    M.do_completion_request(task_id)
-  end
-
-  Log.debug('completion_request 2')
 end
 
 local function make_completion_request_params()
@@ -261,11 +225,9 @@ local function make_completion_request_params()
     filename = 'NONAME'
   end
 
-  local cursor = api.nvim_win_get_cursor(0)
-  local line = cursor[1] - 1
-  local col = cursor[2]
-  local prefix = table.concat(api.nvim_buf_get_text(0, 0, 0, line, col, {}), '\n')
-  local suffix = table.concat(api.nvim_buf_get_text(0, line, col, -1, -1, {}), '\n')
+  local row, col = Base.get_cursor()
+  local prefix = table.concat(api.nvim_buf_get_text(0, 0, 0, row, col, {}), '\n')
+  local suffix = table.concat(api.nvim_buf_get_text(0, row, col, -1, -1, {}), '\n')
   local prompt = '!FCPREFIX!' .. prefix .. '!FCSUFFIX!' .. suffix .. '!FCMIDDLE!'
   local escaped_prompt = string.gsub(prompt, '"', '\\"')
   local params = {
@@ -277,9 +239,7 @@ local function make_completion_request_params()
   return params
 end
 
-function M.do_completion_request(task_id)
-  Log.debug('do_completion_request 1')
-
+function M.do_completion_request(task_id, on_completion_request_done)
   local encoded_params = fn.json_encode(make_completion_request_params())
   Base.write_temp_file(encoded_params, function(path)
     local server_addr = URL_GENERATE_ONE_STAGE
@@ -299,186 +259,10 @@ function M.do_completion_request(task_id)
       data = {
         path = path,
         task_id = task_id,
+        on_completion_request_done = on_completion_request_done,
       },
     }, on_completion_callback, on_curl_signal_callback, on_completion_delete_tempfile_callback)
   end)
-
-  Log.debug('do_completion_request 2')
-end
-
-function M.has_suggestion()
-  return vim.tbl_count(M.fitten_suggestion) ~= 0
-end
-
-function M.completion_request_at_cursor()
-  M.reset_completion()
-
-  local cursor = api.nvim_win_get_cursor(0)
-  local line = cursor[1] - 1
-  local col = cursor[2]
-  M.completion_request(line, col, true)
-end
-
-function M.chaining_complete()
-  if not M.has_suggestion() then
-    return
-  end
-
-  View.clear_virt_text()
-  View.set_text(M.fitten_suggestion)
-
-  M.reset_completion()
-end
-
-function M.accept_line()
-  if not M.has_suggestion() then
-    return
-  end
-
-  View.clear_virt_text()
-
-  local line = table.remove(M.fitten_suggestion, 1)
-  local cur = vim.tbl_count(M.fitten_suggestion)
-  local stage = last_suggestion_count - 1
-
-  if cur == stage then
-    View.set_text({ line })
-    View.set_text({ '', '' })
-  else
-    if cur == 0 then
-      View.set_text({ line })
-    else
-      View.set_text({ line, '' })
-    end
-  end
-
-  if vim.tbl_count(M.fitten_suggestion) > 0 then
-    View.render_virt_text(M.fitten_suggestion)
-  else
-    M.completion_request_at_cursor()
-  end
-
-  local cursor = api.nvim_win_get_cursor(0)
-  local line = cursor[1] - 1
-  local col = cursor[2]
-
-  last_suggestion_info = {
-    line = line,
-    col = col,
-  }
-end
-
-local function is_alpha(char)
-  local byte = char:byte()
-  return (byte >= 65 and byte <= 90) or (byte >= 97 and byte <= 122)
-end
-
-local function is_space(char)
-  local byte = string.byte(char)
-  return byte == 32 or byte == 9
-end
-
-local function next_indices(line)
-  local pa = nil
-  for i = 1, string.len(line) do
-    local char = string.sub(line, i, i)
-    local a = is_alpha(char)
-    local s = is_space(char)
-    if i == 1 and not a and not s then
-      return i
-    end
-    if pa ~= nil and ((not pa and a) or (pa and s) or (not a and not s)) then
-      return i - 1
-    end
-    pa = a
-  end
-  return string.len(line)
-end
-
-function M.accept_word()
-  if not M.has_suggestion() then
-    return
-  end
-
-  Log.debug('accept_word 1')
-
-  View.clear_virt_text()
-
-  local line = M.fitten_suggestion[1]
-  local indices = next_indices(line)
-  local word = string.sub(line, 1, indices)
-  line = string.sub(line, string.len(word) + 1)
-
-  if string.len(line) == 0 then
-    table.remove(M.fitten_suggestion, 1)
-    if M.has_suggestion() then
-      View.set_text({ word, '' })
-    else
-      View.set_text({ word })
-    end
-  else
-    M.fitten_suggestion[1] = line
-    View.set_text({ word })
-  end
-
-  if vim.tbl_count(M.fitten_suggestion) > 0 then
-    View.render_virt_text(M.fitten_suggestion)
-  else
-    M.completion_request_at_cursor()
-  end
-
-  local cursor = api.nvim_win_get_cursor(0)
-  local line = cursor[1] - 1
-  local col = cursor[2]
-
-  last_suggestion_info = {
-    line = line,
-    col = col,
-  }
-
-  Log.debug('accept_word last_suggestion_info {}', last_suggestion_info)
-
-  Log.debug('accept_word 2')
-end
-
-function M.reset_completion(line, col)
-  Log.debug('reset_completion 1')
-
-  View.clear_virt_text()
-  flush_suggestion()
-
-  Log.debug('reset_completion 2')
-end
-
-function M.stage_completion()
-  Log.debug('stage_completion 1')
-
-  if not M.has_suggestion() then
-    return
-  end
-
-  api.nvim_command('redraw!')
-
-  local cursor = api.nvim_win_get_cursor(0)
-  local line = cursor[1] - 1
-  local col = cursor[2]
-
-  Log.debug('stage_completion last_suggestion_info {}, line {}, col {}', last_suggestion_info, line, col)
-
-  if last_suggestion_info == {} then
-    return
-  end
-
-  View.clear_virt_text()
-  if last_suggestion_info.line ~= line or last_suggestion_info.col ~= col then
-    -- View.clear_virt_text()
-    flush_suggestion()
-  else
-    -- View.clear_virt_text()
-    View.render_virt_text(M.fitten_suggestion)
-  end
-
-  Log.debug('stage_completion 2')
 end
 
 return M

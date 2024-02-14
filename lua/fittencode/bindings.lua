@@ -2,6 +2,7 @@ local api = vim.api
 local fn = vim.fn
 
 local Base = require('fittencode.base')
+local Engine = require('fittencode.engine')
 local Sessions = require('fittencode.sessions')
 local Log = require('fittencode.log')
 local View = require('fittencode.view')
@@ -20,11 +21,9 @@ function M.setup_autocmds()
     group = group,
     pattern = '*',
     callback = function(args)
-      local cursor = api.nvim_win_get_cursor(0)
-      local line = cursor[1] - 1
-      local col = cursor[2]
+      local row, col = Base.get_cursor()
       Base.debounce(completion_timer, function()
-        Sessions.completion_request(line, col)
+        Engine.completion_request(row, col)
       end, COMPLETION_DEBOUNCE_TIME)
     end,
     desc = 'Triggered Completion',
@@ -35,7 +34,7 @@ function M.setup_autocmds()
     pattern = '*',
     callback = function(args)
       Base.debounce(reset_completion_timer, function()
-        Sessions.stage_completion()
+        Engine.stage_completion()
       end, REST_DEBOUNCE_TIME)
     end,
     desc = 'Stage completion',
@@ -45,7 +44,7 @@ function M.setup_autocmds()
     group = group,
     pattern = '*',
     callback = function(args)
-      Sessions.reset_completion()
+      Engine.reset_completion()
     end,
     desc = 'Reset completion',
   })
@@ -63,7 +62,7 @@ function M.setup_commands()
       table.remove(actions, 1)
       return cmd(unpack(actions))
     end
-    Log.error('Invalid command, fargs: {}', line.fargs)
+    Log.error('Invalid command; fargs: {}', line.fargs)
   end, {
     complete = function(_, line)
       local args = vim.split(vim.trim(line), '%s+')
@@ -87,20 +86,20 @@ end
 
 function M.setup_keymaps()
   Base.map('i', '<Tab>', function()
-    if Sessions.has_suggestion() then
-      Sessions.chaining_complete()
+    if Engine.has_suggestion() then
+      Engine.chaining_complete()
     else
       View.feed_tab()
     end
   end)
   Base.map('i', '<C-Down>', function()
-    if Sessions.has_suggestion() then
-      Sessions.accept_line()
+    if Engine.has_suggestion() then
+      Engine.accept_line()
     end
   end)
   Base.map('i', '<C-Right>', function()
-    if Sessions.has_suggestion() then
-      Sessions.accept_word()
+    if Engine.has_suggestion() then
+      Engine.accept_word()
     end
   end)
 end

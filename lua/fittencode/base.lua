@@ -32,6 +32,13 @@ function M.augroup(name)
   return api.nvim_create_augroup('Fittencode_' .. name, { clear = true })
 end
 
+function M.get_cursor()
+  local cursor = api.nvim_win_get_cursor(0)
+  local row = cursor[1] - 1
+  local col = cursor[2]
+  return row, col
+end
+
 function M.debounce(timer, callback, wait)
   local function destroy_timer()
     if timer then
@@ -133,6 +140,16 @@ end
 
 function M.to_native(s)
   return M.is_windows() and M.to_nt(s) or M.to_kernel(s)
+end
+
+function M.is_alpha(char)
+  local byte = char:byte()
+  return (byte >= 65 and byte <= 90) or (byte >= 97 and byte <= 122)
+end
+
+function M.is_space(char)
+  local byte = string.byte(char)
+  return byte == 32 or byte == 9
 end
 
 return M

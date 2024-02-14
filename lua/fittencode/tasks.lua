@@ -11,6 +11,7 @@ local DEFAULT_RECYCLING = 1000
 M.tasks_list = {}
 
 local timeout_recycling_timer = nil
+local fast_clean_stamp = nil
 
 function M.setup()
   M.tasks_list = {}
@@ -31,6 +32,7 @@ function M.match(task_id, row, col)
       return true
     end
   end
+  fast_clean_stamp = task_id
   return false
 end
 
@@ -49,10 +51,11 @@ end
 
 function M.timeout_recycling()
   for i, task in ipairs(M.tasks_list) do
-    if is_timeout(task.timestamp) then
+    if is_timeout(task.timestamp) or (fast_clean_stamp and task.timestamp <= fast_clean_stamp) then
       table.remove(M.tasks_list, i)
     end
   end
+  fast_clean_stamp = nil
 end
 
 return M
