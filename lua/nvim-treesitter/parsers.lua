@@ -47,6 +47,7 @@ for ft, lang in pairs {
   xsd = "xml",
   xslt = "xml",
   sbt = "scala",
+  neomuttrc = "muttrc",
 } do
   register_lang(lang, ft)
 end
@@ -1210,6 +1211,14 @@ list.mlir = {
   },
   experimental = true,
   maintainers = { "@artagnon" },
+}
+
+list.muttrc = {
+  install_info = {
+    url = "https://github.com/neomutt/tree-sitter-muttrc",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@Freed-Wu" },
 }
 
 list.nasm = {

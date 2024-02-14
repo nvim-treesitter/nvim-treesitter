@@ -404,6 +404,9 @@
   "mlir": {
     "revision": "650a8fb72013ba8d169bdb458e480d640fc545c9"
   },
+  "muttrc": {
+    "revision": "9d4e1774e754f55a867638ab6a81335cf1078c23"
+  },
   "nasm": {
     "revision": "3bc691d2cfba44bea339a775ad496c8bc552c60d"
   },
