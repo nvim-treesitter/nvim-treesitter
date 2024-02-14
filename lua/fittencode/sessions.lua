@@ -17,17 +17,17 @@ local URL_GENERATE_ONE_STAGE = 'https://codeapi.fittentech.cn:13443/generate_one
 
 M.fitten_suggestion = {}
 
-local suggestion_cache = {}
-local fitten_suggestion_stage = 0
+local last_suggestion_info = {}
+local last_suggestion_count = 0
 
 local function record_suggestion(suggestion)
   M.fitten_suggestion = suggestion or {}
-  fitten_suggestion_stage = vim.tbl_count(M.fitten_suggestion)
+  last_suggestion_count = vim.tbl_count(M.fitten_suggestion)
 end
 
 local function flush_suggestion()
   record_suggestion()
-  suggestion_cache = {}
+  last_suggestion_info = {}
 end
 
 local function get_api_key_store_path()
@@ -210,11 +210,11 @@ local function on_completion_callback(exit_code, response, data)
     return
   end
 
-  suggestion_cache = {
+  last_suggestion_info = {
     line = line,
     col = col,
   }
-  Log.debug('on_completion_callback suggestion_cache {}, line {}, col {}', suggestion_cache, line, col)
+  Log.debug('on_completion_callback last_suggestion_info {}, line {}, col {}', last_suggestion_info, line, col)
 
   local suggestion = generate_suggestion(completion_data.generated_text)
   record_suggestion(suggestion)
@@ -239,9 +239,9 @@ function M.completion_request(line, col, force)
     return
   end
 
-  Log.debug('completion_request suggestion_cache {}, line {}, col {}', suggestion_cache, line, col)
+  Log.debug('completion_request last_suggestion_info {}, line {}, col {}', last_suggestion_info, line, col)
 
-  if not force and suggestion_cache.line == line and suggestion_cache.col == col then
+  if not force and last_suggestion_info.line == line and last_suggestion_info.col == col then
     return
   end
 
@@ -339,7 +339,7 @@ function M.accept_line()
 
   local line = table.remove(M.fitten_suggestion, 1)
   local cur = vim.tbl_count(M.fitten_suggestion)
-  local stage = fitten_suggestion_stage - 1
+  local stage = last_suggestion_count - 1
 
   if cur == stage then
     View.set_text({ line })
@@ -362,7 +362,7 @@ function M.accept_line()
   local line = cursor[1] - 1
   local col = cursor[2]
 
-  suggestion_cache = {
+  last_suggestion_info = {
     line = line,
     col = col,
   }
@@ -431,12 +431,12 @@ function M.accept_word()
   local line = cursor[1] - 1
   local col = cursor[2]
 
-  suggestion_cache = {
+  last_suggestion_info = {
     line = line,
     col = col,
   }
 
-  Log.debug('accept_word suggestion_cache {}', suggestion_cache)
+  Log.debug('accept_word last_suggestion_info {}', last_suggestion_info)
 
   Log.debug('accept_word 2')
 end
@@ -458,19 +458,19 @@ function M.stage_completion()
   end
 
   api.nvim_command('redraw!')
-  
+
   local cursor = api.nvim_win_get_cursor(0)
   local line = cursor[1] - 1
   local col = cursor[2]
 
-  Log.debug('stage_completion suggestion_cache {}, line {}, col {}', suggestion_cache, line, col)
+  Log.debug('stage_completion last_suggestion_info {}, line {}, col {}', last_suggestion_info, line, col)
 
-  if suggestion_cache == {} then
+  if last_suggestion_info == {} then
     return
   end
 
   View.clear_virt_text()
-  if suggestion_cache.line ~= line or suggestion_cache.col ~= col then
+  if last_suggestion_info.line ~= line or last_suggestion_info.col ~= col then
     -- View.clear_virt_text()
     flush_suggestion()
   else
