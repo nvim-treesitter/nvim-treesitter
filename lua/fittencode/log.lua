@@ -14,13 +14,13 @@ local function to_string(level)
   if level == vim.log.levels.ERROR then
     return 'ERROR'
   elseif level == vim.log.levels.WARN then
-    return 'WARN'
+    return ' WARN'
   elseif level == vim.log.levels.INFO then
-    return 'INFO'
+    return ' INFO'
   elseif level == vim.log.levels.DEBUG then
     return 'DEBUG'
   else
-    return 'UNKNOWN'
+    return 'INFO'
   end
 end
 
