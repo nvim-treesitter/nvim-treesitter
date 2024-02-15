@@ -1,3 +1,5 @@
+local Log = require('fittencode.log')
+
 ---@class SuggestionPos
 ---@field row? integer
 ---@field col? integer
@@ -23,11 +25,14 @@ end
 
 function SuggestionCache:update_lines(lines)
   lines = lines or {}
+  -- Log.debug("SuggestionCache:update_lines; lines: {}", lines)
+
   self.lines = lines
   self.count = vim.tbl_count(lines)
 end
 
 function SuggestionCache:update_pos(row, col)
+  -- Log.debug("SuggestionCache:update_pos; row: {}, col: {}", row, col)
   self.pos.row = row
   self.pos.col = col
 end

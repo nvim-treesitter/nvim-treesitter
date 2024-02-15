@@ -66,7 +66,10 @@ function M.chaining_complete()
 end
 
 function M.accept_line()
+  Log.debug('accept_line')
+
   if not M.has_suggestion() then
+    Log.debug('no suggestion')
     return
   end
 
@@ -90,7 +93,7 @@ function M.accept_line()
     end
   end
 
-  api.nvim_command('redraw!')
+  Log.debug('cache.lines: {}', cache.lines)
 
   if vim.tbl_count(cache.lines) > 0 then
     View.render_virt_text(cache.lines)
@@ -122,7 +125,10 @@ local function next_indices(line)
 end
 
 function M.accept_word()
+  Log.debug('accept_word')
+
   if not M.has_suggestion() then
+    Log.debug('no suggestion')
     return
   end
 
@@ -132,23 +138,31 @@ function M.accept_word()
   vim.o.eventignore = 'all'
 
   local line = cache.lines[1]
-  local indices = next_indices(line)
-  local word = string.sub(line, 1, indices)
-  line = string.sub(line, string.len(word) + 1)
-
   if string.len(line) == 0 then
-    table.remove(cache.lines, 1)
-    if M.has_suggestion() then
-      View.set_text({ word, '' })
+    if #cache.lines == 1 then
+      View.set_text({ '' })
     else
+      View.set_text({ '', '' })
+    end
+    table.remove(cache.lines, 1)
+  else
+    local indices = next_indices(line)
+    local word = string.sub(line, 1, indices)
+    line = string.sub(line, string.len(word) + 1)
+    if string.len(line) == 0 then
+      table.remove(cache.lines, 1)
+      if M.has_suggestion() then
+        View.set_text({ word, '' })
+      else
+        View.set_text({ word })
+      end
+    else
+      cache.lines[1] = line
       View.set_text({ word })
     end
-  else
-    cache.lines[1] = line
-    View.set_text({ word })
   end
 
-  api.nvim_command('redraw!')
+  Log.debug('cache.lines: {}', cache.lines)
 
   if vim.tbl_count(cache.lines) > 0 then
     View.render_virt_text(cache.lines)
