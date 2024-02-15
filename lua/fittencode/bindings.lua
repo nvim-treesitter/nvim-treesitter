@@ -10,7 +10,7 @@ local View = require('fittencode.view')
 local M = {}
 
 local COMPLETION_DEBOUNCE_TIME = 80
-local REST_DEBOUNCE_TIME = 80
+local STAGE_DEBOUNCE_TIME = 80
 
 local completion_timer = nil
 local stage_completion_timer = nil
@@ -34,7 +34,7 @@ function M.setup_autocmds()
     callback = function(args)
       Base.debounce(stage_completion_timer, function()
         Engine.stage_completion()
-      end, REST_DEBOUNCE_TIME)
+      end, STAGE_DEBOUNCE_TIME)
     end,
     desc = 'Stage completion',
   })

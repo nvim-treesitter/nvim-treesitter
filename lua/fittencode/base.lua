@@ -32,6 +32,12 @@ function M.augroup(name)
   return api.nvim_create_augroup('Fittencode_' .. name, { clear = true })
 end
 
+function M.set_hi(name, hi)
+  hi.force = true
+  hi.cterm = hi.cterm or {}
+  vim.api.nvim_set_hl(0, name, hi)
+end
+
 function M.get_cursor()
   local cursor = api.nvim_win_get_cursor(0)
   local row = cursor[1] - 1
