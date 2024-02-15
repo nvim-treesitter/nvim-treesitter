@@ -72,6 +72,9 @@ function M.accept_line()
 
   View.clear_virt_text()
 
+  local eventignore = vim.o.eventignore
+  vim.o.eventignore = 'all'
+
   local line = table.remove(cache.lines, 1)
   local cur = vim.tbl_count(cache.lines)
   local stage = cache.count - 1
@@ -87,11 +90,15 @@ function M.accept_line()
     end
   end
 
+  api.nvim_command('redraw!')
+
   if vim.tbl_count(cache.lines) > 0 then
     View.render_virt_text(cache.lines)
   else
     M.completion_request_at_cursor()
   end
+
+  vim.o.eventignore = eventignore
 
   local row, col = Base.get_cursor()
   cache:update_pos(row, col)
@@ -121,6 +128,9 @@ function M.accept_word()
 
   View.clear_virt_text()
 
+  local eventignore = vim.o.eventignore
+  vim.o.eventignore = 'all'
+
   local line = cache.lines[1]
   local indices = next_indices(line)
   local word = string.sub(line, 1, indices)
@@ -138,11 +148,15 @@ function M.accept_word()
     View.set_text({ word })
   end
 
+  api.nvim_command('redraw!')
+
   if vim.tbl_count(cache.lines) > 0 then
     View.render_virt_text(cache.lines)
   else
     M.completion_request_at_cursor()
   end
+
+  vim.o.eventignore = eventignore
 
   local row, col = Base.get_cursor()
   cache:update_pos(row, col)
