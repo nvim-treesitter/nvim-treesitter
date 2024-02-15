@@ -9,6 +9,7 @@
   "interface"
   "extension"
   "property"
+  "associatedtype"
 ] @keyword
 
 "__init" @constructor
