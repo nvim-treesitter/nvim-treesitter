@@ -27,6 +27,9 @@ local function to_string(level)
   end
 end
 
+-- NVIM v0.10.0-dev-2315+g32b49448b
+-- Build type: RelWithDebInfo
+-- LuaJIT 2.1.1707061634
 local function get_version()
   local version = fn.execute('version')
 
@@ -46,9 +49,7 @@ local function get_version()
   local _, end_, nvim = find_part(0, 'NVIM ')
   local _, end_, buildtype = find_part(end_, 'Build type: ')
   local _, end_, luajit = find_part(end_, 'LuaJIT ')
-  -- NVIM v0.10.0-dev-2315+g32b49448b
-  -- Build type: RelWithDebInfo
-  -- LuaJIT 2.1.1707061634
+
   return {
     nvim = nvim,
     buildtype = buildtype,
@@ -57,7 +58,9 @@ local function get_version()
 end
 
 local function log_file(msg)
-  local path = fn.stdpath('log') .. '/fittencode.nvim.log'
+  local dir = fn.stdpath('log') .. '/fittencode'
+  fn.mkdir(dir, 'p')
+  local path = dir .. '/fittencode.log'
   local f = io.open(path, 'a')
   if f then
     if first_log then
