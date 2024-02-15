@@ -12,13 +12,12 @@ local M = {}
 local COMPLETION_DEBOUNCE_TIME = 80
 local REST_DEBOUNCE_TIME = 80
 
-local group = Base.augroup('Completion')
 local completion_timer = nil
-local reset_completion_timer = nil
+local stage_completion_timer = nil
 
 function M.setup_autocmds()
   api.nvim_create_autocmd({ 'CursorHoldI' }, {
-    group = group,
+    group = Base.augroup('TriggeredCompletion'),
     pattern = '*',
     callback = function(args)
       local row, col = Base.get_cursor()
@@ -30,10 +29,10 @@ function M.setup_autocmds()
   })
 
   api.nvim_create_autocmd({ 'CursorMovedI', 'CursorMoved', 'InsertLeave' }, {
-    group = group,
+    group = Base.augroup('StageCompletion'),
     pattern = '*',
     callback = function(args)
-      Base.debounce(reset_completion_timer, function()
+      Base.debounce(stage_completion_timer, function()
         Engine.stage_completion()
       end, REST_DEBOUNCE_TIME)
     end,
@@ -41,7 +40,7 @@ function M.setup_autocmds()
   })
 
   api.nvim_create_autocmd({ 'BufWinLeave', 'BufHidden' }, {
-    group = group,
+    group = Base.augroup('ResetCompletion'),
     pattern = '*',
     callback = function(args)
       Engine.reset_completion()

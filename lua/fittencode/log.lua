@@ -1,6 +1,8 @@
 local fn = vim.fn
 local uv = vim.uv
 
+local Base = require('fittencode.base')
+
 local M = {}
 
 M.enabled = true
@@ -27,36 +29,6 @@ local function to_string(level)
   end
 end
 
--- NVIM v0.10.0-dev-2315+g32b49448b
--- Build type: RelWithDebInfo
--- LuaJIT 2.1.1707061634
-local function get_version()
-  local version = fn.execute('version')
-
-  local function find_part(offset, part)
-    local start = version:find(part, offset)
-    if start == nil then
-      return nil
-    end
-    start = start + #part
-    local end_ = version:find('\n', start)
-    if end_ == nil then
-      end_ = #version
-    end
-    return start, end_, version:sub(start, end_ - 1)
-  end
-
-  local _, end_, nvim = find_part(0, 'NVIM ')
-  local _, end_, buildtype = find_part(end_, 'Build type: ')
-  local _, end_, luajit = find_part(end_, 'LuaJIT ')
-
-  return {
-    nvim = nvim,
-    buildtype = buildtype,
-    luajit = luajit,
-  }
-end
-
 local function log_file(msg)
   local dir = fn.stdpath('log') .. '/fittencode'
   fn.mkdir(dir, 'p')
@@ -72,7 +44,7 @@ Neovim version: %s\
 Process ID: %d\
 Parent process ID: %d\
 OS: %s'
-      f:write(string.format(fixed, os.date('%Y-%m-%d %H:%M:%S'), uv.exepath(), vim.inspect(get_version()), uv.os_getpid(), uv.os_getppid(), vim.inspect(uv.os_uname())))
+      f:write(string.format(fixed, os.date('%Y-%m-%d %H:%M:%S'), uv.exepath(), vim.inspect(Base.get_version()), uv.os_getpid(), uv.os_getppid(), vim.inspect(uv.os_uname())))
       if cpu ~= 0 then
         f:write(string.format('\nCPU: %s', vim.inspect(uv.cpu_info())))
       end

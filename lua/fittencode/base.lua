@@ -152,4 +152,34 @@ function M.is_space(char)
   return byte == 32 or byte == 9
 end
 
+-- NVIM v0.10.0-dev-2315+g32b49448b
+-- Build type: RelWithDebInfo
+-- LuaJIT 2.1.1707061634
+function M.get_version()
+  local version = fn.execute('version')
+
+  local function find_part(offset, part)
+    local start = version:find(part, offset)
+    if start == nil then
+      return nil
+    end
+    start = start + #part
+    local end_ = version:find('\n', start)
+    if end_ == nil then
+      end_ = #version
+    end
+    return start, end_, version:sub(start, end_ - 1)
+  end
+
+  local _, end_, nvim = find_part(0, 'NVIM ')
+  local _, end_, buildtype = find_part(end_, 'Build type: ')
+  local _, _, luajit = find_part(end_, 'LuaJIT ')
+
+  return {
+    nvim = nvim,
+    buildtype = buildtype,
+    luajit = luajit,
+  }
+end
+
 return M

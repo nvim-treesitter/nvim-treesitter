@@ -39,6 +39,7 @@ local function read_local_api_key_file()
   Base.read(path, function(data)
     local api_key = data:gsub('\n', '')
     if validate_api_key(api_key) then
+      Log.info('API key loaded successful')
       M.api_key = api_key
     else
       M.logout()
@@ -118,6 +119,7 @@ local function on_login_callback(exit_code, output)
 end
 
 function M.load_last_session()
+  Log.info('Loading last session')
   read_local_api_key_file()
 end
 
