@@ -10,17 +10,20 @@ local first_log = true
 local cpu = 0
 local environ = 0
 
+-- See `help vim.log.levels`
 local function to_string(level)
   if level == vim.log.levels.ERROR then
     return 'ERROR'
   elseif level == vim.log.levels.WARN then
-    return ' WARN'
+    return 'WARN'
   elseif level == vim.log.levels.INFO then
-    return ' INFO'
+    return 'INFO'
   elseif level == vim.log.levels.DEBUG then
     return 'DEBUG'
+  elseif level == vim.log.levels.TRACE then
+    return 'TRACE'
   else
-    return 'INFO'
+    return '????'
   end
 end
 
@@ -92,7 +95,7 @@ function M.log(level, msg, ...)
     msg = string.format(msg, unpack(vim.tbl_map(vim.inspect, { ... })))
   end
   local ms = string.format('%03d', math.floor((uv.hrtime() / 1e6) % 1000))
-  msg = '[' .. to_string(level) .. '] ' .. '[' .. os.date('%Y-%m-%d %H:%M:%S') .. '.' .. ms .. '] ' .. '[fittencode.nvim] ' .. (msg or '')
+  msg = '[' .. string.format('%5s', to_string(level)) .. '] ' .. '[' .. os.date('%Y-%m-%d %H:%M:%S') .. '.' .. ms .. '] ' .. '[fittencode.nvim] ' .. (msg or '')
   vim.schedule(function()
     if M.file then
       log_file(msg)
@@ -100,6 +103,14 @@ function M.log(level, msg, ...)
       vim.notify(msg, level)
     end
   end)
+end
+
+function M.error(...)
+  M.log(vim.log.levels.ERROR, ...)
+end
+
+function M.warn(...)
+  M.log(vim.log.levels.WARN, ...)
 end
 
 function M.info(...)
@@ -110,12 +121,8 @@ function M.debug(...)
   M.log(vim.log.levels.DEBUG, ...)
 end
 
-function M.warn(...)
-  M.log(vim.log.levels.WARN, ...)
-end
-
-function M.error(...)
-  M.log(vim.log.levels.ERROR, ...)
+function M.trace(...)
+  M.log(vim.log.levels.TRACE, ...)
 end
 
 return M
