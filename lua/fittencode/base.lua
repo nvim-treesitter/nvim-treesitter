@@ -228,7 +228,7 @@ end
 --   LuaJIT 2.1.1707061634
 -- Strucutred as:
 --   {
---     nvim = '0.10.0-dev-2315+g32b49448b',
+--     nvim = 'v0.10.0-dev-2315+g32b49448b',
 --     buildtype = 'RelWithDebInfo',
 --     luajit = '2.1.1707061634',
 --   }
