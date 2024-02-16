@@ -7,6 +7,14 @@ local Color = require('fittencode.color')
 
 local M = {}
 
+---@class VirtLine
+--@field text string
+--@field hl string
+
+---@alias VirtText VirtLine[]|nil
+
+---@param suggestion Suggestion
+---@return VirtText
 local function generate_virt_text(suggestion)
   if suggestion == nil then
     return
@@ -18,6 +26,7 @@ local function generate_virt_text(suggestion)
   return virt_text
 end
 
+---@param virt_text VirtText
 local function draw_virt_text(virt_text)
   if virt_text == nil or vim.tbl_count(virt_text) == 0 then
     return
@@ -38,6 +47,8 @@ local function draw_virt_text(virt_text)
   end
 end
 
+---@param namespace number|nil
+---@param bufnr number|nil
 local function clear_ns(namespace, bufnr)
   if namespace ~= nil and bufnr ~= nil then
     api.nvim_buf_clear_namespace(bufnr, namespace, 0, -1)
@@ -56,6 +67,7 @@ function M.clear_virt_text()
   clear_ns(M.namespace, 0)
 end
 
+---@param virt_height number
 local function move_to_center_vertical(virt_height)
   local cursor = api.nvim_win_get_cursor(0)
   local row = cursor[1]
@@ -68,6 +80,7 @@ local function move_to_center_vertical(virt_height)
   end
 end
 
+---@param suggestion Suggestion
 function M.render_virt_text(suggestion)
   local virt_text = generate_virt_text(suggestion)
   if virt_text == nil then
@@ -105,6 +118,10 @@ local function silence_lsp()
   Base.feedkeys('<Esc>a')
 end
 
+---@param row number
+---@param col number
+---@param count number
+---@param lines string[]
 local function move_cursor_to_text_end(row, col, count, lines)
   if count == 1 then
     local first_len = string.len(lines[1])
@@ -117,6 +134,10 @@ local function move_cursor_to_text_end(row, col, count, lines)
   end
 end
 
+---@param row number
+---@param col number
+---@param count number
+---@param lines string[]
 local function append_text_at_pos(row, col, count, lines)
   for i = 1, count, 1 do
     local line = lines[i]
@@ -145,6 +166,7 @@ local function undojoin()
   Base.feedkeys('<C-g>u')
 end
 
+---@param lines string[]
 function M.set_text(lines)
   local_fmt_clear()
 
