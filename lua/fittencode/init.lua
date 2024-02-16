@@ -8,7 +8,6 @@ function M.setup()
     return
   end
 
-  local Log = require('fittencode.log')
   local Sessions = require('fittencode.sessions')
   local Bindings = require('fittencode.bindings')
   local Tasks = require('fittencode.tasks')
