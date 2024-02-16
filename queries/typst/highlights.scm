@@ -86,9 +86,9 @@
 ;;   (builtin)
 ;    field: (ident)
 (call
-  item: (builtin)) @function.builtin
+  item: (builtin) @function.builtin)
 (call
-  item: (ident)) @function.call
+  item: (ident) @function.call)
 
 ;; text
 (text) @spell
