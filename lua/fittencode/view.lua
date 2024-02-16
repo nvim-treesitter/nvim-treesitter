@@ -126,7 +126,7 @@ local function move_cursor_to_text_end(row, col, count, lines)
   if count == 1 then
     local first_len = string.len(lines[1])
     if first_len ~= 0 then
-      api.nvim_win_set_cursor(0, { row + 1, col + first_len - 1 })
+      api.nvim_win_set_cursor(0, { row + 1, col + first_len })
     end
   else
     local last_len = string.len(lines[count])
@@ -144,7 +144,7 @@ local function append_text_at_pos(row, col, count, lines)
     local len = string.len(line)
     if i == 1 then
       if len ~= 0 then
-        api.nvim_buf_set_text(0, row, col - 1, row, col - 1, { line })
+        api.nvim_buf_set_text(0, row, col, row, col, { line })
       end
     else
       local max = api.nvim_buf_line_count(0)
@@ -170,8 +170,7 @@ end
 function M.set_text(lines)
   local_fmt_clear()
 
-  local row = fn.line('.') - 1
-  local col = fn.col('.')
+  local row, col = Base.get_cursor()
   local count = vim.tbl_count(lines)
 
   undojoin()
