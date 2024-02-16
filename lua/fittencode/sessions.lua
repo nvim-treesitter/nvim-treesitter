@@ -8,10 +8,17 @@ local Log = require('fittencode.log')
 
 local M = {}
 
+---@alias Suggestion string[]
+
+---@type string|nil
+M.api_key = nil
+
 local URL_LOGIN = 'https://codeuser.fittentech.cn:14443/login'
 local URL_GET_FT_TOKEN = 'https://codeuser.fittentech.cn:14443/get_ft_token'
 local URL_GENERATE_ONE_STAGE = 'https://codeapi.fittentech.cn:13443/generate_one_stage/'
 
+---@param api_key string
+---@return boolean
 local function validate_api_key(api_key)
   if api_key == nil or api_key == '' then
     Log.error('API key is invalid, Please login again')
@@ -24,6 +31,7 @@ function M.validate_current_api_key()
   return validate_api_key(M.api_key)
 end
 
+---@return string, string
 local function get_api_key_store_path()
   local dir = fn.stdpath('data') .. '/fittencode'
   local path = dir .. '/api_key'
@@ -32,11 +40,13 @@ end
 
 local function read_local_api_key_file()
   local _, path = get_api_key_store_path()
+  Log.debug('Reading API key file; path: {}', path)
   if not Base.exists(path) then
     Log.info('API key file not found; path: {}', path)
     return
   end
   Base.read(path, function(data)
+    ---@type string
     local api_key = data:gsub('\n', '')
     if validate_api_key(api_key) then
       Log.info('API key loaded successful')
@@ -47,10 +57,13 @@ local function read_local_api_key_file()
   end)
 end
 
-local function on_curl_signal_callback(signal, output)
+---@param signal number
+---@param _ string
+local function on_curl_signal_callback(signal, _)
   Log.error('curl throw; signal: {}', signal)
 end
 
+---@param api_key string
 local function write_api_key(api_key)
   local dir, path = get_api_key_store_path()
   Base.write_mkdir(api_key, dir, path, function()
@@ -58,6 +71,8 @@ local function write_api_key(api_key)
   end)
 end
 
+---@param exit_code number
+---@param output string
 local function on_login_api_key_callback(exit_code, output)
   if output == nil or output == '' then
     Log.error('Login failed: Server response without data')
@@ -70,6 +85,7 @@ local function on_login_api_key_callback(exit_code, output)
     return
   end
 
+  ---@type string
   local api_key = fico_data.data.fico_token
   if validate_api_key(api_key) then
     M.api_key = api_key
@@ -78,6 +94,7 @@ local function on_login_api_key_callback(exit_code, output)
   end
 end
 
+---@param token string|nil
 local function login_with_token(token)
   if token == nil or token == '' then
     Log.error('Login failed: Invalid user token')
@@ -97,6 +114,8 @@ local function login_with_token(token)
   }, on_login_api_key_callback, on_curl_signal_callback)
 end
 
+---@param exit_code number
+---@param output string
 local function on_login_callback(exit_code, output)
   if output == nil or output == '' then
     Log.error('Login failed: Server response without data')
@@ -114,6 +133,7 @@ local function on_login_callback(exit_code, output)
     return
   end
 
+  ---@type string
   local token = login_data.data.token
   login_with_token(token)
 end
@@ -123,6 +143,8 @@ function M.load_last_session()
   read_local_api_key_file()
 end
 
+---@param name string
+---@param password string
 function M.login(name, password)
   if name == nil or name == '' or password == nil or password == '' then
     Log.error('Invalid username or password')
@@ -175,8 +197,14 @@ function M.logout()
   end)
 end
 
+---@param generated_text string
+---@return Suggestion|nil
 local function generate_suggestion(generated_text)
-  local lines = vim.split(fn.substitute(generated_text, '<.endoftext.>', '', 'g'), '\r')
+  local replaced_text = fn.substitute(generated_text, '<.endoftext.>', '', 'g')
+  if not replaced_text then
+    return
+  end
+  local lines = vim.split(replaced_text, '\r')
   if vim.tbl_count(lines) == 0 or (vim.tbl_count(lines) == 1 and string.len(lines[1]) == 0) then
     return
   end
@@ -185,6 +213,7 @@ local function generate_suggestion(generated_text)
     table.remove(lines, #lines)
   end
 
+  ---@type Suggestion
   local suggestion = {}
   for _, line in ipairs(lines) do
     local parts = vim.split(line, '\n')
@@ -195,6 +224,9 @@ local function generate_suggestion(generated_text)
   return suggestion
 end
 
+---@param exit_code number
+---@param response string
+---@param data RestData
 local function on_completion_callback(exit_code, response, data)
   if response == nil or response == '' then
     return
@@ -212,15 +244,21 @@ local function on_completion_callback(exit_code, response, data)
   end
 end
 
+---@param data RestData
 local function on_completion_delete_tempfile_callback(data)
   local path = data.path
-  uv.fs_unlink(path, function(err)
-    if err then
-      Log.error('Failed to delete HTTP temporary file; path: {}; error: {}', path, err)
-    end
-  end)
+  if path then
+    uv.fs_unlink(path, function(err)
+      if err then
+        Log.error('Failed to delete HTTP temporary file; path: {}; error: {}', path, err)
+      end
+    end)
+  else
+    Log.error('Failed to delete HTTP temporary file; path is nil')
+  end
 end
 
+---@return table
 local function make_completion_request_params()
   local filename = api.nvim_buf_get_name(api.nvim_get_current_buf())
   if filename == nil or filename == '' then
@@ -241,6 +279,8 @@ local function make_completion_request_params()
   return params
 end
 
+---@param task_id number
+---@param on_completion_request_done function|nil
 function M.do_completion_request(task_id, on_completion_request_done)
   local encoded_params = fn.json_encode(make_completion_request_params())
   Base.write_temp_file(encoded_params, function(path)
