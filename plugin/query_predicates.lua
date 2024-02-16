@@ -55,7 +55,7 @@ local mimetype_aliases = {
   ['text/ecmascript'] = 'javascript',
 }
 
----@param match (TSNode|nil)[]
+---@param match TSMatch
 ---@param _ string
 ---@param bufnr integer
 ---@param pred string[]
@@ -63,10 +63,6 @@ local mimetype_aliases = {
 query.add_directive('set-lang-from-mimetype!', function(match, _, bufnr, pred, metadata)
   local id = pred[2]
   local nodes = match[id]
-  if type(nodes) ~= 'table' then
-    nodes = { nodes }
-  end
-
   if not nodes or #nodes == 0 then
     return
   end
