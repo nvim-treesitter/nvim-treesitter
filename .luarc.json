@@ -11,15 +11,12 @@
       "${3rd}/luv/library"
     ],
     "ignoreDir": [
-      "test"
+      "runtime",
+      "nightly"
     ],
     "checkThirdParty": "Disable"
   },
   "diagnostics": {
-    "ignoreDir": [
-      "runtime",
-      "nightly"
-    ],
     "groupFileStatus": {
       "strict": "Opened",
       "strong": "Opened"

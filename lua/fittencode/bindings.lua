@@ -1,5 +1,4 @@
 local api = vim.api
-local fn = vim.fn
 
 local Base = require('fittencode.base')
 local Engine = require('fittencode.engine')

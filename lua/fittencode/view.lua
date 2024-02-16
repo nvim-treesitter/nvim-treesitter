@@ -1,7 +1,6 @@
 local api = vim.api
 local fn = vim.fn
 
-local Log = require('fittencode.log')
 local Base = require('fittencode.base')
 local Color = require('fittencode.color')
 

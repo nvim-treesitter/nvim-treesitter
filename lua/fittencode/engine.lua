@@ -1,7 +1,3 @@
-local fn = vim.fn
-local api = vim.api
-local uv = vim.uv
-
 local Base = require('fittencode.base')
 local Log = require('fittencode.log')
 local Lsp = require('fittencode.lsp')
