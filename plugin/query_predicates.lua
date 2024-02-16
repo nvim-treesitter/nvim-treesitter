@@ -1,21 +1,22 @@
 local query = vim.treesitter.query
 
 local predicates = {
-  ---@param nodes TSNode[]
+  ---@param match TSMatch
   ---@param pred string[]
   ---@param any boolean
   ---@return boolean
-  ['has-type'] = function(nodes, pred, any)
+  ['has-type'] = function(match, pred, any)
+    local nodes = match[pred[2]]
     if not nodes or #nodes == 0 then
       return true
     end
 
     local types = { unpack(pred, 3) }
     for _, node in ipairs(nodes) do
-      local match = vim.list_contains(types, node:type())
-      if any and match then
+      local res = vim.list_contains(types, node:type())
+      if any and res then
         return true
-      elseif not any and not match then
+      elseif not any and not res then
         return false
       end
     end
@@ -29,12 +30,7 @@ local predicates = {
 ---@param pred string[]
 ---@return boolean|nil
 query.add_predicate('has-type?', function(match, _, _, pred)
-  local nodes = match[pred[2]]
-  if type(nodes) ~= 'table' then
-    -- Check for old versions of Nvim that map capture IDs to a single node
-    nodes = { nodes }
-  end
-  return predicates['has-type'](nodes, pred, false)
+  return predicates['has-type'](match, pred, false)
 end, {
   force = true,
   correct = true,
@@ -44,12 +40,7 @@ end, {
 ---@param pred string[]
 ---@return boolean|nil
 query.add_predicate('any-has-type?', function(match, _, _, pred)
-  local nodes = match[pred[2]]
-  if type(nodes) ~= 'table' then
-    -- Check for old versions of Nvim that map capture IDs to a single node
-    nodes = { nodes }
-  end
-  return predicates['has-type'](nodes, pred, true)
+  return predicates['has-type'](match, pred, true)
 end, {
   force = true,
   correct = true,
