@@ -5,8 +5,9 @@ local Base = require('fittencode.base')
 
 local M = {}
 
+local MODULE_NAME = 'fittencode.nvim'
+
 M.enabled = true
-M.file = true
 
 local first_log = true
 local cpu = 0
@@ -63,9 +64,10 @@ OS: %s'
   end
 end
 
+---@param notify boolean
 ---@param level integer
 ---@param msg string|nil
-function M.log(level, msg, ...)
+local function do_log(notify, level, msg, ...)
   if not M.enabled then
     return
   end
@@ -76,35 +78,66 @@ function M.log(level, msg, ...)
     ---@diagnostic disable-next-line: param-type-mismatch
     msg = string.format(msg, unpack(vim.tbl_map(vim.inspect, { ... })))
   end
-  local ms = string.format('%03d', math.floor((uv.hrtime() / 1e6) % 1000))
-  msg = '[' .. string.format('%5s', to_string(level)) .. '] ' .. '[' .. os.date('%Y-%m-%d %H:%M:%S') .. '.' .. ms .. '] ' .. '[fittencode.nvim] ' .. (msg or '')
   vim.schedule(function()
-    if M.file then
-      log_file(msg)
-    else
-      vim.notify(msg, level)
+    if notify then
+      vim.notify(msg, level, { title = MODULE_NAME })
     end
+    local ms = string.format('%03d', math.floor((uv.hrtime() / 1e6) % 1000))
+    msg = '[' .. string.format('%5s', to_string(level)) .. '] ' .. '[' .. os.date('%Y-%m-%d %H:%M:%S') .. '.' .. ms .. '] ' .. '[' .. MODULE_NAME .. '] ' .. msg
+    log_file(msg)
   end)
+end
+
+---@param level integer
+---@param msg string|nil
+function M.log(level, msg, ...)
+  do_log(false, level, msg, ...)
+end
+
+---@param level integer
+---@param msg string|nil
+function M.notify(level, msg, ...)
+  do_log(true, level, msg, ...)
 end
 
 function M.error(...)
   M.log(vim.log.levels.ERROR, ...)
 end
 
+function M.e(...)
+  M.notify(vim.log.levels.ERROR, ...)
+end
+
 function M.warn(...)
   M.log(vim.log.levels.WARN, ...)
+end
+
+function M.w(...)
+  M.notify(vim.log.levels.WARN, ...)
 end
 
 function M.info(...)
   M.log(vim.log.levels.INFO, ...)
 end
 
+function M.i(...)
+  M.notify(vim.log.levels.INFO, ...)
+end
+
 function M.debug(...)
   M.log(vim.log.levels.DEBUG, ...)
 end
 
+function M.d(...)
+  M.notify(vim.log.levels.DEBUG, ...)
+end
+
 function M.trace(...)
   M.log(vim.log.levels.TRACE, ...)
+end
+
+function M.t(...)
+  M.notify(vim.log.levels.TRACE, ...)
 end
 
 return M
