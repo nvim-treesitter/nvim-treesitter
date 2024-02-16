@@ -33,7 +33,7 @@ query.add_predicate('has-type?', function(match, _, _, pred)
   return predicates['has-type'](match, pred, false)
 end, {
   force = true,
-  correct = true,
+  all = true,
 })
 
 ---@param match TSMatch
@@ -43,7 +43,7 @@ query.add_predicate('any-has-type?', function(match, _, _, pred)
   return predicates['has-type'](match, pred, true)
 end, {
   force = true,
-  correct = true,
+  all = true,
 })
 
 -- register custom directives
@@ -79,5 +79,5 @@ query.add_directive('set-lang-from-mimetype!', function(match, _, bufnr, pred, m
   end
 end, {
   force = true,
-  correct = true,
+  all = true,
 })
