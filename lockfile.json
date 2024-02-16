@@ -213,7 +213,7 @@
     "revision": "f9746dc1d0707717fbba84cb5c22a71586af23e1"
   },
   "glsl": {
-    "revision": "c15d4e8b2599234745d5f3454695067e61092c20"
+    "revision": "284bed0e2f1d9f700756b96512baf33483642ff0"
   },
   "gn": {
     "revision": "bc06955bc1e3c9ff8e9b2b2a55b38b94da923c05"
@@ -270,10 +270,10 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "3ade6d065c69cd72c4da966d0c0af98bfb512f16"
+    "revision": "840fd07f09304bca415b93a15483e9ab1e44bc3f"
   },
   "hlsplaylist": {
-    "revision": "be3a18abfa9cef1f792324beb1f1e1c9ddba2748"
+    "revision": "ff121d397cf7cc709e3bbc928107fc25529e11e0"
   },
   "hocon": {
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
@@ -405,7 +405,7 @@
     "revision": "650a8fb72013ba8d169bdb458e480d640fc545c9"
   },
   "muttrc": {
-    "revision": "9d4e1774e754f55a867638ab6a81335cf1078c23"
+    "revision": "0af0e0d8c8cf59dc21cfe565489da0c247374b9f"
   },
   "nasm": {
     "revision": "3bc691d2cfba44bea339a775ad496c8bc552c60d"
@@ -516,7 +516,7 @@
     "revision": "9ce9a5f7d64528572aaa8d59459ba869e634086b"
   },
   "purescript": {
-    "revision": "cfd217d32aa0266401ec5bf3d929697fdeb835ba"
+    "revision": "2517b1ee2236353af761edbd22570f740f1603f1"
   },
   "pymanifest": {
     "revision": "41a15c43252baa083729c25646cde83ee5c88277"
@@ -534,7 +534,7 @@
     "revision": "9fa49ff3315987f715ce5666ff979a7742fa8a98"
   },
   "query": {
-    "revision": "a49ed4fd541da90680d57cad760f9a4c9f128d9c"
+    "revision": "a0ccc351e5e868ec1f8135e97aa3b53c663cf2df"
   },
   "r": {
     "revision": "c55f8b4dfaa32c80ddef6c0ac0e79b05cb0cbf57"
@@ -756,7 +756,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "992e76b445311e13ff18470542f5ca972fb28567"
+    "revision": "252c31021fe86337294bef8f657e4d4c140b1f43"
   },
   "xcompose": {
     "revision": "8898238fca7e143760386448093392b87e58002e"
@@ -774,7 +774,7 @@
     "revision": "c348825d3f86dec71dee0e1223c6bd73114e3579"
   },
   "zathurarc": {
-    "revision": "d6ad85f7791a8a5a40f6be51b31f20d6a8472457"
+    "revision": "fe37e85db355c737573315f278672534c40fe140"
   },
   "zig": {
     "revision": "0d08703e4c3f426ec61695d7617415fff97029bd"
