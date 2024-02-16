@@ -13,6 +13,8 @@ local cpu = 0
 local environ = 0
 
 -- See `help vim.log.levels`
+---@param level number
+---@return string
 local function to_string(level)
   if level == vim.log.levels.ERROR then
     return 'ERROR'
@@ -29,6 +31,7 @@ local function to_string(level)
   end
 end
 
+---@param msg string
 local function log_file(msg)
   local dir = fn.stdpath('log') .. '/fittencode'
   fn.mkdir(dir, 'p')
@@ -60,13 +63,17 @@ OS: %s'
   end
 end
 
+---@param level number
+---@param msg string|nil
 function M.log(level, msg, ...)
   if not M.enabled then
     return
   end
+  msg = msg or ''
   local args = { ... }
   if #args > 0 then
     msg = fn.substitute(msg, '{}', '%s', 'g')
+    ---@diagnostic disable-next-line: param-type-mismatch
     msg = string.format(msg, unpack(vim.tbl_map(vim.inspect, { ... })))
   end
   local ms = string.format('%03d', math.floor((uv.hrtime() / 1e6) % 1000))
