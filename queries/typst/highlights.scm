@@ -1,13 +1,25 @@
-;; All scopes: comments
+;; comments
 (comment) @comment @spell
 
-;; Code
 ;; punctuation
-["#"] @punctuation.special
-[":" ";" ","] @punctuation.delimiter
-["(" ")" "{" "}"] @punctuation.bracket
-;; TODO: context blocks?
-[ "[" "]" ] @punctuation.bracket
+[
+ "#"
+ ] @punctuation.special
+[
+ ":"
+ ";"
+ ","
+ ] @punctuation.delimiter
+[
+ "(" ")"
+ "{" "}"
+ ] @punctuation.bracket
+; TODO: context blocks?
+[
+ "["
+ "]"
+ ] @punctuation.bracket
+
 ;; operators
 [
  "-"
@@ -28,25 +40,45 @@
  "and"
  "or"
  "not"
-] @operator
+ ] @operator
+
 ;; keywords
-[ "import" "include" ] @include
-[ "let" "set" "show" ] @keyword
+[
+ "import"
+ "include"
+ ] @keyword.import
+[
+ "let"
+ "set"
+ "show"
+ ] @keyword
+
 ;; control flow
-[ "for" "while" "break" "continue" ] @repeat
-[ "if" "else" ] @conditional
-;; special case: #for (ident) in (expr)
-(for "in" @repeat)
+[
+  "for"
+  "while"
+  "break"
+  "continue"
+] @keyword.repeat
+[
+  "if"
+  "else"
+] @keyword.conditional
+; special case: #for (ident) in (expr)
+(for "in" @keyword.repeat)
+
 ;; type literals
 (number) @number
 (string) @string
 (bool) @boolean
+
 ;; identifiers
-(builtin) @namespace
-(ident) @identifier
+(builtin) @module.builtin
+(ident) @constant
+
 ;; name-value pairs
 (tagged
-  field: (ident)) @field
+  field: (ident)) @variable.member
 ;; function definitions, calls, etc.
 ;; TODO: support for functions such as #calc.cos, tree view appears as
 ;; (call)
@@ -58,22 +90,25 @@
 (call
   item: (ident)) @function.call
 
-;; Text
-(heading) @text.title
-(text) @text
-(strong) @text.strong
-(emph) @text.emph
-(url) @text.uri
-;; code blocks
-(raw_span) @text.literal
-(raw_span
-  (blob)) @text.literal
-(raw_blck) @text.literal
-(raw_blck
-  (blob)) @text.literal.block
-;; refs and labels
-(label) @text.reference
-(ref) @text.reference
+;; text
+(text) @spell
+; TODO: use multi level headings
+(heading) @markup.heading
+(strong) @markup.strong
+(emph) @markup.italic
+(url) @markup.link.url
 
-;; Math
-(math) @text.math
+;; code blocks
+(raw_span) @markup.raw
+(raw_span
+  (blob)) @markup.raw
+(raw_blck) @markup.raw
+(raw_blck
+  (blob)) @markup.raw.block
+
+;; refs and labels
+(label) @markup.link.label
+(ref) @markup.link
+
+;; math
+(math) @markup.math
