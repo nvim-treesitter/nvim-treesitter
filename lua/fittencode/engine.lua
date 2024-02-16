@@ -20,6 +20,7 @@ local cache = SuggestionCache:new()
 local function on_completion_request_success(task_id, suggestion)
   local row, col = Base.get_cursor()
   if not Tasks.match_clean(task_id, row, col) then
+    Log.debug('Completion request is outdated, discarding; task_id: {}, row: {}, col: {}', task_id, row, col)
     return
   end
 
