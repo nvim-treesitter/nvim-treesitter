@@ -40,23 +40,26 @@ local function log_file(msg)
   local f = io.open(path, 'a')
   if f then
     if first_log then
-      local fixed = '\
-================================================================================\
-Verbose logging started: %s\
-Calling process: %s\
-Neovim version: %s\
-Process ID: %d\
-Parent process ID: %d\
-OS: %s'
-      f:write(string.format(fixed, os.date('%Y-%m-%d %H:%M:%S'), uv.exepath(), vim.inspect(Base.get_version()), uv.os_getpid(), uv.os_getppid(), vim.inspect(uv.os_uname())))
+      local EDGE = '================================================================================\n'
+      f:write(EDGE)
+      ---@type table<string,any>
+      local mat = {}
+      mat['Verbose logging started'] = os.date('%Y-%m-%d %H:%M:%S')
+      mat['Calling process'] = uv.exepath()
+      mat['Neovim version'] = vim.inspect(Base.get_version())
+      mat['Process ID'] = uv.os_getpid()
+      mat['Parent process ID'] = uv.os_getppid()
+      mat['OS'] = vim.inspect(uv.os_uname())
       if cpu ~= 0 then
-        f:write(string.format('\nCPU: %s', vim.inspect(uv.cpu_info())))
+        mat['CPU'] = vim.inspect(uv.cpu_info())
       end
       if environ ~= 0 then
-        f:write(string.format('\nEnvironment: %s', vim.inspect(uv.os_environ())))
+        mat['Environment'] = vim.inspect(uv.os_environ())
       end
-      f:write('\
-================================================================================\n')
+      for k, v in pairs(mat) do
+        f:write(string.format('%s: %s\n', k, v))
+      end
+      f:write(EDGE)
       first_log = false
     end
     f:write(string.format('%s\n', msg))
@@ -82,8 +85,17 @@ local function do_log(notify, level, msg, ...)
     if notify then
       vim.notify(msg, level, { title = MODULE_NAME })
     end
+    ---@type table<string,string>
+    local mat = {}
     local ms = string.format('%03d', math.floor((uv.hrtime() / 1e6) % 1000))
-    msg = '[' .. string.format('%5s', to_string(level)) .. '] ' .. '[' .. os.date('%Y-%m-%d %H:%M:%S') .. '.' .. ms .. '] ' .. '[' .. MODULE_NAME .. '] ' .. msg
+    table.insert(mat, string.format('%5s', to_string(level)))
+    table.insert(mat, os.date('%Y-%m-%d %H:%M:%S') .. '.' .. ms)
+    table.insert(mat, MODULE_NAME)
+    local tags = ''
+    for i in ipairs(mat) do
+      tags = tags .. string.format('[%s]', mat[i]) .. ' '
+    end
+    msg = tags .. msg
     log_file(msg)
   end)
 end
