@@ -32,7 +32,9 @@ local function draw_virt_text(virt_text)
     return
   end
 
-  api.nvim_buf_set_extmark(0, M.namespace, fn.line('.') - 1, fn.col('.') - 1, {
+  local row, col = Base.get_cursor()
+
+  api.nvim_buf_set_extmark(0, M.namespace, row, col, {
     virt_text = virt_text[1],
     virt_text_pos = 'inline',
     hl_mode = 'combine',
@@ -41,7 +43,7 @@ local function draw_virt_text(virt_text)
   table.remove(virt_text, 1)
 
   if vim.tbl_count(virt_text) > 0 then
-    api.nvim_buf_set_extmark(0, M.namespace, fn.line('.') - 1, 0, {
+    api.nvim_buf_set_extmark(0, M.namespace, row, 0, {
       virt_lines = virt_text,
     })
   end
@@ -69,8 +71,7 @@ end
 
 ---@param virt_height integer
 local function move_to_center_vertical(virt_height)
-  local cursor = api.nvim_win_get_cursor(0)
-  local row = cursor[1]
+  local row, _ = Base.get_cursor()
   local relative_row = row - fn.line('w0')
   local height = api.nvim_win_get_height(0)
   local center = math.ceil(height / 2)
