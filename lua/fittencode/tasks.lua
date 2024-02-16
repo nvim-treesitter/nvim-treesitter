@@ -9,11 +9,11 @@ local DEFAULT_TIMEOUT = 6000 * MS_TO_NS
 local DEFAULT_RECYCLING = 1000
 
 ---@class Task
----@field row number
----@field col number
----@field timestamp number
+---@field row integer
+---@field col integer
+---@field timestamp integer
 
----@type table<number, Task>
+---@type table<integer, Task>
 M.tasks_list = {}
 
 local timeout_recycling_timer = nil
@@ -29,8 +29,8 @@ function M.setup()
   end
 end
 
----@param row number
----@param col number
+---@param row integer
+---@param col integer
 function M.create(row, col)
   local timestamp = uv.hrtime()
   table.insert(M.tasks_list, #M.tasks_list + 1, { row = row, col = col, timestamp = timestamp })
@@ -38,7 +38,7 @@ function M.create(row, col)
   return timestamp
 end
 
----@param task_id number
+---@param task_id integer
 local function schedule_clean(task_id)
   fast_clean_stamp = task_id
   if not timeout_recycling_timer then
@@ -46,9 +46,9 @@ local function schedule_clean(task_id)
   end
 end
 
----@param task_id number
----@param row number
----@param col number
+---@param task_id integer
+---@param row integer
+---@param col integer
 ---@return boolean
 function M.match_clean(task_id, row, col)
   local match_found = false
@@ -65,7 +65,7 @@ function M.match_clean(task_id, row, col)
   return match_found
 end
 
----@param timestamp number
+---@param timestamp integer
 ---@return boolean
 local function is_timeout(timestamp)
   return uv.hrtime() - timestamp > DEFAULT_TIMEOUT

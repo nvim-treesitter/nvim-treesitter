@@ -15,7 +15,7 @@ local M = {}
 ---@class SuggestionCache
 local cache = SuggestionCache:new()
 
----@param task_id number
+---@param task_id integer
 ---@param suggestion Suggestion
 local function on_completion_request_done(task_id, suggestion)
   local row, col = Base.get_cursor()
@@ -28,8 +28,8 @@ local function on_completion_request_done(task_id, suggestion)
   View.render_virt_text(suggestion)
 end
 
----@param row number
----@param col number
+---@param row integer
+---@param col integer
 ---@param force boolean|nil
 function M.completion_request(row, col, force)
   if not Sessions.validate_current_api_key() then

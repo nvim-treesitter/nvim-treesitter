@@ -47,8 +47,8 @@ local function draw_virt_text(virt_text)
   end
 end
 
----@param namespace number|nil
----@param bufnr number|nil
+---@param namespace integer|nil
+---@param bufnr integer|nil
 local function clear_ns(namespace, bufnr)
   if namespace ~= nil and bufnr ~= nil then
     api.nvim_buf_clear_namespace(bufnr, namespace, 0, -1)
@@ -67,7 +67,7 @@ function M.clear_virt_text()
   clear_ns(M.namespace, 0)
 end
 
----@param virt_height number
+---@param virt_height integer
 local function move_to_center_vertical(virt_height)
   local cursor = api.nvim_win_get_cursor(0)
   local row = cursor[1]
@@ -118,9 +118,9 @@ local function silence_lsp()
   Base.feedkeys('<Esc>a')
 end
 
----@param row number
----@param col number
----@param count number
+---@param row integer
+---@param col integer
+---@param count integer
 ---@param lines string[]
 local function move_cursor_to_text_end(row, col, count, lines)
   if count == 1 then
@@ -134,9 +134,9 @@ local function move_cursor_to_text_end(row, col, count, lines)
   end
 end
 
----@param row number
----@param col number
----@param count number
+---@param row integer
+---@param col integer
+---@param count integer
 ---@param lines string[]
 local function append_text_at_pos(row, col, count, lines)
   for i = 1, count, 1 do

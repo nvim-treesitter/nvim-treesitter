@@ -59,7 +59,7 @@ end
 
 ---@param timer uv_timer_t|nil
 ---@param callback function
----@param wait number
+---@param wait integer
 ---@param on_error function|nil
 function M.debounce(timer, callback, wait, on_error)
   local function destroy_timer()
@@ -205,7 +205,7 @@ end
 ---@param char string
 ---@return boolean
 function M.is_alpha(char)
-  ---@type number
+  ---@type integer
   local byte = char:byte()
   return (byte >= 65 and byte <= 90) or (byte >= 97 and byte <= 122)
 end

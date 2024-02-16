@@ -6,7 +6,7 @@ local M = {}
 
 ---@class RestCallbackData
 ---@field on_completion_request_done function|nil
----@field task_id number|nil
+---@field task_id integer|nil
 ---@field path string|nil
 
 ---@class RestParams

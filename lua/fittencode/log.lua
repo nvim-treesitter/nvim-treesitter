@@ -13,7 +13,7 @@ local cpu = 0
 local environ = 0
 
 -- See `help vim.log.levels`
----@param level number
+---@param level integer
 ---@return string
 local function to_string(level)
   if level == vim.log.levels.ERROR then
@@ -63,7 +63,7 @@ OS: %s'
   end
 end
 
----@param level number
+---@param level integer
 ---@param msg string|nil
 function M.log(level, msg, ...)
   if not M.enabled then

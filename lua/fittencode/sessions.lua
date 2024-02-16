@@ -17,7 +17,7 @@ local URL_LOGIN = 'https://codeuser.fittentech.cn:14443/login'
 local URL_GET_FT_TOKEN = 'https://codeuser.fittentech.cn:14443/get_ft_token'
 local URL_GENERATE_ONE_STAGE = 'https://codeapi.fittentech.cn:13443/generate_one_stage/'
 
----@param api_key string
+---@param api_key string|nil
 ---@return boolean
 local function validate_api_key(api_key)
   if api_key == nil or api_key == '' then
@@ -57,7 +57,7 @@ local function read_local_api_key_file()
   end)
 end
 
----@param signal number
+---@param signal integer
 ---@param _ string
 local function on_curl_signal_callback(signal, _)
   Log.error('curl throw; signal: {}', signal)
@@ -71,7 +71,7 @@ local function write_api_key(api_key)
   end)
 end
 
----@param exit_code number
+---@param exit_code integer
 ---@param output string
 local function on_login_api_key_callback(exit_code, output)
   if output == nil or output == '' then
@@ -114,7 +114,7 @@ local function login_with_token(token)
   }, on_login_api_key_callback, on_curl_signal_callback)
 end
 
----@param exit_code number
+---@param exit_code integer
 ---@param output string
 local function on_login_callback(exit_code, output)
   if output == nil or output == '' then
@@ -224,7 +224,7 @@ local function generate_suggestion(generated_text)
   return suggestion
 end
 
----@param exit_code number
+---@param exit_code integer
 ---@param response string
 ---@param data RestCallbackData
 local function on_completion_callback(exit_code, response, data)
@@ -279,7 +279,7 @@ local function make_completion_request_params()
   return params
 end
 
----@param task_id number
+---@param task_id integer
 ---@param on_completion_request_done function|nil
 function M.do_completion_request(task_id, on_completion_request_done)
   local encoded_params = fn.json_encode(make_completion_request_params())
