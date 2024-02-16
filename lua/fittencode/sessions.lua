@@ -226,7 +226,7 @@ end
 
 ---@param exit_code number
 ---@param response string
----@param data RestData
+---@param data RestCallbackData
 local function on_completion_callback(exit_code, response, data)
   if response == nil or response == '' then
     return
@@ -244,7 +244,7 @@ local function on_completion_callback(exit_code, response, data)
   end
 end
 
----@param data RestData
+---@param data RestCallbackData
 local function on_completion_delete_tempfile_callback(data)
   local path = data.path
   if path then
