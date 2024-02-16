@@ -1,11 +1,11 @@
 [
- (set)
- (let)
- (call)
+  (set)
+  (let)
+  (call)
 ] @indent.begin
 
 [
- "]"
- "}"
- ")"
+  "]"
+  "}"
+  ")"
 ] @indent.branch @indent.end
