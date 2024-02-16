@@ -2,7 +2,11 @@
 (command_name) @function
 
 (text_mode
-  "\\text" @function)
+  [
+    "\\text"
+    "\\intertext"
+    "\\shortintertext"
+  ] @function)
 
 (caption
   command: _ @function)
