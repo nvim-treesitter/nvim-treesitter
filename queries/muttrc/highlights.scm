@@ -20,10 +20,12 @@
 
 (regex) @string.regexp
 
-[
-  (option)
-  (command_line_option)
-] @variable.builtin
+(option) @variable
+
+(command_line_option) @variable.builtin
+
+((option) @variable.builtin
+  (#not-lua-match? @variable.builtin "^my_"))
 
 (command) @keyword
 
