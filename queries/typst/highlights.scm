@@ -7,15 +7,12 @@
   ","
 ] @punctuation.delimiter
 
+; TODO: context blocks for "[" "]"?
 [
   "("
   ")"
   "{"
   "}"
-] @punctuation.bracket
-
-; TODO: context blocks?
-[
   "["
   "]"
 ] @punctuation.bracket
