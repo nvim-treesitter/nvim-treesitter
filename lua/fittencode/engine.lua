@@ -15,6 +15,8 @@ local M = {}
 ---@class SuggestionCache
 local cache = SuggestionCache:new()
 
+---@param task_id number
+---@param suggestion Suggestion
 local function on_completion_request_done(task_id, suggestion)
   local row, col = Base.get_cursor()
   if not Tasks.match_clean(task_id, row, col) then
@@ -26,6 +28,9 @@ local function on_completion_request_done(task_id, suggestion)
   View.render_virt_text(suggestion)
 end
 
+---@param row number
+---@param col number
+---@param force boolean|nil
 function M.completion_request(row, col, force)
   if not Sessions.validate_current_api_key() then
     return
@@ -107,6 +112,7 @@ function M.accept_line()
   cache:update_pos(row, col)
 end
 
+---@param line string
 local function next_indices(line)
   local pa = nil
   for i = 1, string.len(line) do
@@ -137,7 +143,7 @@ function M.accept_word()
   local eventignore = vim.o.eventignore
   vim.o.eventignore = 'all'
 
-  Log.debug('Peraprocessing cache.lines: {}', cache.lines)
+  Log.debug('Pretreatment cache.lines: {}', cache.lines)
 
   local line = cache.lines[1]
 
@@ -176,7 +182,7 @@ function M.accept_word()
   cache:update_pos(row, col)
 end
 
-function M.reset_completion(row, col)
+function M.reset_completion()
   View.clear_virt_text()
   cache:flush()
 end
