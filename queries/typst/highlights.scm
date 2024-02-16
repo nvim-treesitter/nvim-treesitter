@@ -1,6 +1,3 @@
-; comments
-(comment) @comment @spell
-
 ; punctuation
 "#" @punctuation.special
 
@@ -129,3 +126,6 @@
 
 ; math
 (math) @markup.math
+
+; comments
+(comment) @comment @spell
