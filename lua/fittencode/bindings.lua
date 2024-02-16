@@ -12,7 +12,9 @@ local M = {}
 local COMPLETION_DEBOUNCE_TIME = 80
 local STAGE_DEBOUNCE_TIME = 80
 
+---@type uv_timer_t
 local completion_timer = nil
+---@type uv_timer_t
 local stage_completion_timer = nil
 
 function M.setup_autocmds()
@@ -49,12 +51,18 @@ function M.setup_autocmds()
   })
 end
 
+---@class FittenCommands
+---@field login function
+---@field logout function
+
 function M.setup_commands()
+  ---@type FittenCommands
   local commands = {
     login = Sessions.login,
     logout = Sessions.logout,
   }
   Base.command('Fitten', function(line)
+    ---@type string[]
     local actions = line.fargs
     local cmd = commands[actions[1]]
     if cmd then
@@ -69,13 +77,19 @@ function M.setup_commands()
         return
       end
       table.remove(args, 1)
+      ---@type string
       local prefix = table.remove(args, 1)
       if prefix and line:sub(-1) == ' ' then
         return
       end
-      return vim.tbl_filter(function(key)
-        return not prefix or key:find(prefix, 1, true) == 1
-      end, vim.tbl_keys(commands))
+      return vim.tbl_filter(
+        ---@param key string
+        ---@return boolean
+        function(key)
+          return not prefix or key:find(prefix, 1, true) == 1
+        end,
+        vim.tbl_keys(commands)
+      )
     end,
     bang = true,
     nargs = '*',
