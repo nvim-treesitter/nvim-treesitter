@@ -36,6 +36,8 @@
 ((identifier) @type.builtin
   (#any-of? @type.builtin "Object" "Function" "Boolean" "Symbol" "Number" "Math" "Date" "String" "RegExp" "Map" "Set" "WeakMap" "WeakSet" "Promise" "Array" "Int8Array" "Uint8Array" "Uint8ClampedArray" "Int16Array" "Uint16Array" "Int32Array" "Uint32Array" "Float32Array" "Float64Array" "ArrayBuffer" "DataView" "Error" "EvalError" "InternalError" "RangeError" "ReferenceError" "SyntaxError" "TypeError" "URIError"))
 
+(statement_identifier) @label
+
 ; Function and method definitions
 ;--------------------------------
 (function_expression
