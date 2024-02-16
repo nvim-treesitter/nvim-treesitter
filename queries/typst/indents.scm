@@ -1,6 +1,7 @@
 [
   (set)
   (let)
+  (show)
   (call)
 ] @indent.begin
 
