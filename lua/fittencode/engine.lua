@@ -17,7 +17,7 @@ local cache = SuggestionCache:new()
 
 local function on_completion_request_done(task_id, suggestion)
   local row, col = Base.get_cursor()
-  if not Tasks.match(task_id, row, col, true) then
+  if not Tasks.match_clean(task_id, row, col) then
     return
   end
 

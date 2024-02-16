@@ -8,6 +8,12 @@ local MS_TO_NS = 1000000
 local DEFAULT_TIMEOUT = 6000 * MS_TO_NS
 local DEFAULT_RECYCLING = 1000
 
+---@class Task
+---@field row number
+---@field col number
+---@field timestamp number
+
+---@type table<number, Task>
 M.tasks_list = {}
 
 local timeout_recycling_timer = nil
@@ -16,52 +22,57 @@ local fast_clean_stamp = nil
 function M.setup()
   M.tasks_list = {}
   timeout_recycling_timer = uv.new_timer()
-  timeout_recycling_timer:start(DEFAULT_RECYCLING, DEFAULT_RECYCLING, M.timeout_recycling)
+  if timeout_recycling_timer then
+    timeout_recycling_timer:start(DEFAULT_RECYCLING, DEFAULT_RECYCLING, M.timeout_recycling)
+  else
+    Log.error('Failed to create timeout recycling timer')
+  end
 end
 
+---@param row number
+---@param col number
 function M.create(row, col)
   local timestamp = uv.hrtime()
   table.insert(M.tasks_list, #M.tasks_list + 1, { row = row, col = col, timestamp = timestamp })
-  Log.info('Task created; row: ' .. row .. '; col: ' .. col)
+  Log.debug('Task created; row: ' .. row .. '; col: ' .. col)
   return timestamp
 end
 
-function M.mark_clean(task_id)
+---@param task_id number
+local function schedule_clean(task_id)
   fast_clean_stamp = task_id
+  if not timeout_recycling_timer then
+    M.timeout_recycling()
+  end
 end
 
-function M.match(task_id, row, col, clean)
+---@param task_id number
+---@param row number
+---@param col number
+---@return boolean
+function M.match_clean(task_id, row, col)
   local match_found = false
   for i = #M.tasks_list, 1, -1 do
     local task = M.tasks_list[i]
     if task.timestamp == task_id and task.row == row and task.col == col then
       local ms = string.format('%4d', math.floor((uv.hrtime() - task.timestamp) / MS_TO_NS))
-      Log.info('Task matched; time elapsed: [ ' .. ms .. ' ms ]' .. '; row: ' .. row .. '; col: ' .. col)
+      Log.debug('Task matched; time elapsed: [ ' .. ms .. ' ms ]' .. '; row: ' .. row .. '; col: ' .. col)
       match_found = true
       break
     end
   end
-  if clean then
-    M.mark_clean(task_id)
-  end
+  schedule_clean(task_id)
   return match_found
 end
 
-function M.query(task_id)
-  for i = #M.tasks_list, 1, -1 do
-    local task = M.tasks_list[i]
-    if task.timestamp == task_id then
-      return task
-    end
-  end
-end
-
+---@param timestamp number
+---@return boolean
 local function is_timeout(timestamp)
   return uv.hrtime() - timestamp > DEFAULT_TIMEOUT
 end
 
 function M.timeout_recycling()
-  -- Log.info('Timeout recycling; tasks count: [ ' .. #M.tasks_list .. ' ]')
+  -- Log.debug('Timeout recycling; tasks count: [ ' .. #M.tasks_list .. ' ]')
   for i, task in ipairs(M.tasks_list) do
     if is_timeout(task.timestamp) or (fast_clean_stamp and task.timestamp <= fast_clean_stamp) then
       table.remove(M.tasks_list, i)
