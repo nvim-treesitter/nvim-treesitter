@@ -16,6 +16,10 @@
     "checkThirdParty": "Disable"
   },
   "diagnostics": {
+    "ignoreDir": [
+      "runtime",
+      "nightly"
+    ],
     "groupFileStatus": {
       "strict": "Opened",
       "strong": "Opened"
