@@ -125,10 +125,10 @@ local function next_indices(line)
 end
 
 function M.accept_word()
-  Log.debug('accept_word')
+  Log.debug('Accept word')
 
   if not M.has_suggestion() then
-    Log.debug('no suggestion')
+    Log.debug('No suggestion')
     return
   end
 
@@ -137,32 +137,32 @@ function M.accept_word()
   local eventignore = vim.o.eventignore
   vim.o.eventignore = 'all'
 
+  Log.debug('Peraprocessing cache.lines: {}', cache.lines)
+
   local line = cache.lines[1]
+
+  -- Calculate the next word index
+  local next_index = next_indices(line)
+
+  -- Set text
+  local word = string.sub(line, 1, next_index)
+  line = string.sub(line, string.len(word) + 1)
   if string.len(line) == 0 then
-    if #cache.lines == 1 then
-      View.set_text({ '' })
-    else
-      View.set_text({ '', '' })
-    end
     table.remove(cache.lines, 1)
-  else
-    local indices = next_indices(line)
-    local word = string.sub(line, 1, indices)
-    line = string.sub(line, string.len(word) + 1)
-    if string.len(line) == 0 then
-      table.remove(cache.lines, 1)
-      if M.has_suggestion() then
-        View.set_text({ word, '' })
-      else
-        View.set_text({ word })
-      end
+    if M.has_suggestion() then
+      View.set_text({ word, '' })
+      Log.debug('Set word and empty line; word: {}', word)
     else
-      cache.lines[1] = line
       View.set_text({ word })
+      Log.debug('Set word; word: {}', word)
     end
+  else
+    cache.lines[1] = line
+    View.set_text({ word })
+    Log.debug('Set word; word: {}', word)
   end
 
-  Log.debug('cache.lines: {}', cache.lines)
+  Log.debug('Remaining cache.lines: {}', cache.lines)
 
   if vim.tbl_count(cache.lines) > 0 then
     View.render_virt_text(cache.lines)
