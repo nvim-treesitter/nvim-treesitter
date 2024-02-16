@@ -5,7 +5,7 @@ local Log = require('fittencode.log')
 local M = {}
 
 ---@class RestCallbackData
----@field on_completion_request_done function|nil
+---@field on_completion_request_success function|nil
 ---@field task_id integer|nil
 ---@field path string|nil
 

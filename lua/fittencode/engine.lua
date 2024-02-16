@@ -17,7 +17,7 @@ local cache = SuggestionCache:new()
 
 ---@param task_id integer
 ---@param suggestion Suggestion
-local function on_completion_request_done(task_id, suggestion)
+local function on_completion_request_success(task_id, suggestion)
   local row, col = Base.get_cursor()
   if not Tasks.match_clean(task_id, row, col) then
     return
@@ -44,7 +44,7 @@ function M.completion_request(row, col, force)
   cache:flush()
 
   if not Lsp.is_active() then
-    Sessions.do_completion_request(task_id, on_completion_request_done)
+    Sessions.do_completion_request(task_id, on_completion_request_success)
   end
 end
 
