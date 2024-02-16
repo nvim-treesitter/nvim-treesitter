@@ -4,6 +4,20 @@ local Log = require('fittencode.log')
 
 local M = {}
 
+---@class RestCallbackData
+---@field on_completion_request_done function|nil
+---@field task_id number|nil
+---@field path string|nil
+
+---@class RestParams
+---@field cmd string
+---@field args table
+---@field data RestCallbackData|nil
+
+---@param params RestParams
+---@param on_success function|nil
+---@param on_error function|nil
+---@param on_exit function|nil
 function M.send(params, on_success, on_error, on_exit)
   local cmd = params.cmd
   local args = params.args
@@ -54,15 +68,17 @@ function M.send(params, on_success, on_error, on_exit)
     end)
   end)
 
-  local function on_output(err, data)
+  ---@param err any
+  ---@param trunk string|nil
+  local function on_trunk(err, trunk)
     assert(not err, err)
-    if data then
-      output = output .. data:gsub('\r\n', '\n')
+    if trunk then
+      output = output .. trunk:gsub('\r\n', '\n')
     end
   end
 
-  uv.read_start(stdout, on_output)
-  uv.read_start(stderr, on_output)
+  uv.read_start(stdout, on_trunk)
+  uv.read_start(stderr, on_trunk)
 end
 
 return M
