@@ -2,20 +2,29 @@ local Base = require('fittencode.base')
 local Log = require('fittencode.log')
 local Lsp = require('fittencode.lsp')
 local View = require('fittencode.view')
-local Tasks = require('fittencode.tasks')
+local TaskScheduler = require('fittencode.tasks')
 local Sessions = require('fittencode.sessions')
 local SuggestionCache = require('fittencode.suggestion_cache')
 
 local M = {}
 
 ---@class SuggestionCache
-local cache = SuggestionCache:new()
+local cache = nil
+
+---@class TaskScheduler
+local tasks = nil
+
+function M.setup()
+  cache = SuggestionCache:new()
+  tasks = TaskScheduler:new()
+  tasks:setup()
+end
 
 ---@param task_id integer
 ---@param suggestion Suggestion
 local function on_completion_request_success(task_id, suggestion)
   local row, col = Base.get_cursor()
-  if not Tasks.match_clean(task_id, row, col) then
+  if not tasks:match_clean(task_id, row, col) then
     Log.debug('Completion request is outdated, discarding; task_id: {}, row: {}, col: {}', task_id, row, col)
     return
   end
@@ -37,7 +46,7 @@ function M.completion_request(row, col, force)
     return
   end
 
-  local task_id = Tasks.create(row, col)
+  local task_id = tasks:create(row, col)
   cache:flush()
 
   if not Lsp.is_active() then
