@@ -69,16 +69,16 @@ function M.send(params, on_success, on_error, on_exit)
   end)
 
   ---@param err any
-  ---@param trunk string|nil
-  local function on_trunk(err, trunk)
+  ---@param chunk string|nil
+  local function on_chunk(err, chunk)
     assert(not err, err)
-    if trunk then
-      output = output .. trunk:gsub('\r\n', '\n')
+    if chunk then
+      output = output .. chunk:gsub('\r\n', '\n')
     end
   end
 
-  uv.read_start(stdout, on_trunk)
-  uv.read_start(stderr, on_trunk)
+  uv.read_start(stdout, on_chunk)
+  uv.read_start(stderr, on_chunk)
 end
 
 return M
