@@ -9,8 +9,9 @@ local MODULE_NAME = 'fittencode.nvim'
 local LOG_PATH = fn.stdpath('log') .. '/fittencode' .. '/fittencode.log'
 
 -- See `help vim.log.levels`
--- Refs: neovim/runtime/lua/vim/_editor.lua
+-- Refs: `neovim/runtime/lua/vim/_editor.lua`
 --[[
+  ```lua
   vim.log = {
     levels = {
       TRACE = 0,
@@ -21,6 +22,7 @@ local LOG_PATH = fn.stdpath('log') .. '/fittencode' .. '/fittencode.log'
       OFF = 5,
     },
   }
+  ```
 ]]
 local levels = vim.deepcopy(vim.log.levels)
 local current = levels.TRACE

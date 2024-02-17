@@ -20,7 +20,7 @@ function M.setup_autocmds()
   api.nvim_create_autocmd({ 'CursorHoldI' }, {
     group = Base.augroup('GenerateOneStage'),
     pattern = '*',
-    callback = function(args)
+    callback = function()
       local row, col = Base.get_cursor()
       Base.debounce(generate_one_stage_timer, function()
         Engine.generate_one_stage(row, col)
@@ -32,7 +32,7 @@ function M.setup_autocmds()
   api.nvim_create_autocmd({ 'CursorMovedI', 'CursorMoved', 'InsertLeave' }, {
     group = Base.augroup('Advance'),
     pattern = '*',
-    callback = function(args)
+    callback = function()
       Base.debounce(advance_completion_timer, function()
         Engine.advance()
       end, ADVANCE_DEBOUNCE_TIME)
@@ -43,7 +43,7 @@ function M.setup_autocmds()
   api.nvim_create_autocmd({ 'BufWinLeave', 'BufHidden' }, {
     group = Base.augroup('Reset'),
     pattern = '*',
-    callback = function(args)
+    callback = function()
       Engine.reset()
     end,
     desc = 'Reset',
