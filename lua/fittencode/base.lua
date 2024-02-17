@@ -96,15 +96,15 @@ end
 
 ---@param data string
 ---@param path string
----@param callback function|nil
-function M.write(data, path, callback)
+---@param on_success function|nil
+function M.write(data, path, on_success)
   uv.fs_open(path, 'w', 438, function(_, fd)
     if fd ~= nil then
       uv.fs_write(fd, data, -1, function(_, _)
         uv.fs_close(fd, function(_, _) end)
-        if callback then
+        if on_success then
           vim.schedule(function()
-            callback(path)
+            on_success(path)
           end)
         end
       end)
@@ -115,19 +115,19 @@ end
 ---@param data string
 ---@param dir string
 ---@param path string
----@param callback function|nil
-function M.write_mkdir(data, dir, path, callback)
+---@param on_success function|nil
+function M.write_mkdir(data, dir, path, on_success)
   uv.fs_mkdir(dir, 448, function(_, _)
-    M.write(data, path, callback)
+    M.write(data, path, on_success)
   end)
 end
 
 ---@param data string
----@param callback function|nil
-function M.write_temp_file(data, callback, on_error)
+---@param on_success function|nil
+function M.write_temp_file(data, on_success, on_error)
   local path = fn.tempname()
   if path then
-    M.write(data, path, callback)
+    M.write(data, path, on_success)
   else
     if on_error then
       on_error()
@@ -136,17 +136,17 @@ function M.write_temp_file(data, callback, on_error)
 end
 
 ---@param path string
----@param callback function|nil
-function M.read(path, callback)
+---@param on_success function|nil
+function M.read(path, on_success)
   uv.fs_open(path, 'r', 438, function(_, fd)
     if fd ~= nil then
       uv.fs_fstat(fd, function(_, stat)
         if stat ~= nil then
           uv.fs_read(fd, stat.size, -1, function(_, data)
             uv.fs_close(fd, function(_, _) end)
-            if callback then
+            if on_success then
               vim.schedule(function()
-                callback(data)
+                on_success(data)
               end)
             end
           end)
