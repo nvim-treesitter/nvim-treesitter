@@ -63,7 +63,7 @@ local function on_fico(_, output)
   Log.i('Login successful')
 end
 
----@param token string|nil
+---@param token string
 local function request_fico(token)
   if token == nil or token == '' then
     Log.e('Login failed: Invalid user token')
@@ -110,7 +110,9 @@ end
 ---@param output string
 local function on_login(_, output)
   local token = decode_token(output)
-  request_fico(token)
+  if token ~= nil then
+    request_fico(token)
+  end
 end
 
 ---@param name string
@@ -126,6 +128,7 @@ function M.request_login(name, password)
   local api_key = key_storage:get_key_by_name(username)
   if api_key ~= nil then
     Log.i('You are already logged in')
+    return
   end
 
   local login_url = URL_LOGIN
