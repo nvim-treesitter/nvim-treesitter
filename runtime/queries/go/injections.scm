@@ -39,3 +39,15 @@
       (interpreted_string_literal) @injection.content))
   (#any-of? @_method "Fprintf" "Fscanf" "Appendf" "Sscanf")
   (#set! injection.language "printf"))
+
+(
+  (comment)+ @injection.content 
+  .
+  (import_declaration
+    (import_spec 
+      path: (interpreted_string_literal) @_import_c))
+  (#eq? @_import_c "\"C\"")
+  (#lua-match? @injection.content "^//")
+  (#set! injection.language "c")
+  (#offset! @injection.content 0 2 0 0)
+  (#set! injection.combined))
