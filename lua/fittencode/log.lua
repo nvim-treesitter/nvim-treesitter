@@ -8,25 +8,39 @@ local M = {}
 local MODULE_NAME = 'fittencode.nvim'
 local LOG_PATH = fn.stdpath('log') .. '/fittencode' .. '/fittencode.log'
 
-M.enabled = true
+-- See `help vim.log.levels`
+-- Refs: neovim/runtime/lua/vim/_editor.lua
+--[[
+  vim.log = {
+    levels = {
+      TRACE = 0,
+      DEBUG = 1,
+      INFO = 2,
+      WARN = 3,
+      ERROR = 4,
+      OFF = 5,
+    },
+  }
+]]
+local levels = vim.deepcopy(vim.log.levels)
+local current = levels.TRACE
 
 local first_log = true
 local cpu = 0
 local environ = 0
 
--- See `help vim.log.levels`
 ---@param level integer
 ---@return string
 local function to_string(level)
-  if level == vim.log.levels.ERROR then
+  if level == levels.ERROR then
     return 'ERROR'
-  elseif level == vim.log.levels.WARN then
+  elseif level == levels.WARN then
     return 'WARN'
-  elseif level == vim.log.levels.INFO then
+  elseif level == levels.INFO then
     return 'INFO'
-  elseif level == vim.log.levels.DEBUG then
+  elseif level == levels.DEBUG then
     return 'DEBUG'
-  elseif level == vim.log.levels.TRACE then
+  elseif level == levels.TRACE then
     return 'TRACE'
   else
     return '????'
@@ -71,7 +85,7 @@ end
 ---@param level integer
 ---@param msg string|nil
 local function do_log(notify, level, msg, ...)
-  if not M.enabled then
+  if level < current or current == levels.OFF then
     return
   end
   msg = msg or ''
@@ -113,43 +127,43 @@ function M.notify(level, msg, ...)
 end
 
 function M.error(...)
-  M.log(vim.log.levels.ERROR, ...)
+  M.log(levels.ERROR, ...)
 end
 
 function M.e(...)
-  M.notify(vim.log.levels.ERROR, ...)
+  M.notify(levels.ERROR, ...)
 end
 
 function M.warn(...)
-  M.log(vim.log.levels.WARN, ...)
+  M.log(levels.WARN, ...)
 end
 
 function M.w(...)
-  M.notify(vim.log.levels.WARN, ...)
+  M.notify(levels.WARN, ...)
 end
 
 function M.info(...)
-  M.log(vim.log.levels.INFO, ...)
+  M.log(levels.INFO, ...)
 end
 
 function M.i(...)
-  M.notify(vim.log.levels.INFO, ...)
+  M.notify(levels.INFO, ...)
 end
 
 function M.debug(...)
-  M.log(vim.log.levels.DEBUG, ...)
+  M.log(levels.DEBUG, ...)
 end
 
 function M.d(...)
-  M.notify(vim.log.levels.DEBUG, ...)
+  M.notify(levels.DEBUG, ...)
 end
 
 function M.trace(...)
-  M.log(vim.log.levels.TRACE, ...)
+  M.log(levels.TRACE, ...)
 end
 
 function M.t(...)
-  M.notify(vim.log.levels.TRACE, ...)
+  M.notify(levels.TRACE, ...)
 end
 
 return M
