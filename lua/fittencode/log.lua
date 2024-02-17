@@ -44,20 +44,20 @@ local function log_file(msg)
       f:write(EDGE)
       ---@type table<string,any>
       local mat = {}
-      mat['Verbose logging started'] = os.date('%Y-%m-%d %H:%M:%S')
-      mat['Calling process'] = uv.exepath()
-      mat['Neovim version'] = vim.inspect(Base.get_version())
-      mat['Process ID'] = uv.os_getpid()
-      mat['Parent process ID'] = uv.os_getppid()
-      mat['OS'] = vim.inspect(uv.os_uname())
+      table.insert(mat, { 'Verbose logging started', os.date('%Y-%m-%d %H:%M:%S') })
+      table.insert(mat, { 'Calling process', uv.exepath() })
+      table.insert(mat, { 'Neovim version', vim.inspect(Base.get_version()) })
+      table.insert(mat, { 'Process ID', uv.os_getpid() })
+      table.insert(mat, { 'Parent process ID', uv.os_getppid() })
+      table.insert(mat, { 'OS', vim.inspect(uv.os_uname()) })
       if cpu ~= 0 then
-        mat['CPU'] = vim.inspect(uv.cpu_info())
+        table.insert(mat, { 'CPU', vim.inspect(uv.cpu_info()) })
       end
       if environ ~= 0 then
-        mat['Environment'] = vim.inspect(uv.os_environ())
+        table.insert(mat, { 'Environment', vim.inspect(uv.os_environ()) })
       end
-      for k, v in pairs(mat) do
-        f:write(string.format('%s: %s\n', k, v))
+      for i in ipairs(mat) do
+        f:write(string.format('%s: %s\n', mat[i][1], mat[i][2]))
       end
       f:write(EDGE)
       first_log = false

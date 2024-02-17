@@ -30,8 +30,8 @@ function TaskScheduler:setup()
   self.timeout_recycling_timer = uv.new_timer()
   if self.timeout_recycling_timer then
     self.timeout_recycling_timer:start(DEFAULT_RECYCLING, DEFAULT_RECYCLING, function()
-     self:timeout_recycling()
-  end)
+      self:timeout_recycling()
+    end)
   else
     Log.error('Failed to create timeout recycling timer')
   end
