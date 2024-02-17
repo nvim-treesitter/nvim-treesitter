@@ -83,6 +83,7 @@ function TaskScheduler:timeout_recycling()
   for i, task in ipairs(self.list) do
     if is_timeout(task.timestamp) or (self.threshold and task.timestamp <= self.threshold) then
       table.remove(self.list, i)
+      -- Log.debug('Task removed; row: ' .. task.row .. '; col: ' .. task.col)
     end
   end
   self.threshold = nil

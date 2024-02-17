@@ -95,23 +95,23 @@ local function do_log(notify, level, msg, ...)
     ---@diagnostic disable-next-line: param-type-mismatch
     msg = string.format(msg, unpack(vim.tbl_map(vim.inspect, { ... })))
   end
-  vim.schedule(function()
-    if notify then
+  if notify then
+    vim.schedule(function()
       vim.notify(msg, level, { title = MODULE_NAME })
-    end
-    ---@type table<string,string>
-    local mat = {}
-    local ms = string.format('%03d', math.floor((uv.hrtime() / 1e6) % 1000))
-    table.insert(mat, string.format('%5s', to_string(level)))
-    table.insert(mat, os.date('%Y-%m-%d %H:%M:%S') .. '.' .. ms)
-    table.insert(mat, MODULE_NAME)
-    local tags = ''
-    for i in ipairs(mat) do
-      tags = tags .. string.format('[%s]', mat[i]) .. ' '
-    end
-    msg = tags .. msg
-    log_file(msg)
-  end)
+    end)
+  end
+  ---@type table<string,string>
+  local mat = {}
+  local ms = string.format('%03d', math.floor((uv.hrtime() / 1e6) % 1000))
+  table.insert(mat, string.format('%5s', to_string(level)))
+  table.insert(mat, os.date('%Y-%m-%d %H:%M:%S') .. '.' .. ms)
+  table.insert(mat, MODULE_NAME)
+  local tags = ''
+  for i in ipairs(mat) do
+    tags = tags .. string.format('[%s]', mat[i]) .. ' '
+  end
+  msg = tags .. msg
+  log_file(msg)
 end
 
 function M.setup()
