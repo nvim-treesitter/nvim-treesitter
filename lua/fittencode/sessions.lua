@@ -13,7 +13,6 @@ local URL_LOGIN = 'https://codeuser.fittentech.cn:14443/login'
 local URL_GET_FT_TOKEN = 'https://codeuser.fittentech.cn:14443/get_ft_token'
 local URL_GENERATE_ONE_STAGE = 'https://codeapi.fittentech.cn:13443/generate_one_stage/'
 local CMD = 'curl'
-
 local KEY_STORE_PATH = fn.stdpath('data') .. '/fittencode' .. '/api_key.json'
 
 ---@alias Suggestion string[]
@@ -34,7 +33,7 @@ end
 
 ---@param exit_code integer
 ---@param output string
-local function on_login_api_key_callback(exit_code, output)
+local function on_login_api_key(exit_code, output)
   if output == nil or output == '' then
     Log.e('Login failed: Server response without data')
     return
@@ -48,7 +47,7 @@ local function on_login_api_key_callback(exit_code, output)
 
   ---@type string
   local api_key = fico_data.data.fico_token
-  key_storage:set_key_by_name(M.username, api_key)
+  key_storage:set_key_by_name(username, api_key)
   Log.i('Login successful')
 end
 
@@ -69,7 +68,7 @@ local function login_with_token(token)
   Rest.send({
     cmd = CMD,
     args = fico_args,
-  }, on_login_api_key_callback, on_curl_signal)
+  }, on_login_api_key, on_curl_signal)
 end
 
 ---@param exit_code integer
