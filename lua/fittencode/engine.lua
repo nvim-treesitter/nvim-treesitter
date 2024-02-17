@@ -37,11 +37,7 @@ end
 ---@param row integer
 ---@param col integer
 ---@param force boolean|nil
-function M.completion_request(row, col, force)
-  if not Sessions.validate_current_api_key() then
-    return
-  end
-
+function M.generate_one_stage(row, col, force)
   if not force and cache:equal_pos(row, col) then
     return
   end
@@ -58,14 +54,14 @@ function M.has_suggestion()
   return vim.tbl_count(cache.lines or {}) ~= 0
 end
 
-function M.completion_request_at_cursor()
-  M.reset_completion()
+local function generate_one_stage_at_cursor()
+  M.reset()
 
   local row, col = Base.get_cursor()
-  M.completion_request(row, col, true)
+  M.generate_one_stage(row, col, true)
 end
 
-function M.chaining_complete()
+function M.accept_all_suggestion()
   if not M.has_suggestion() then
     return
   end
@@ -73,7 +69,7 @@ function M.chaining_complete()
   View.clear_virt_text()
   View.set_text(cache.lines)
 
-  M.reset_completion()
+  M.reset()
 end
 
 function M.accept_line()
@@ -109,7 +105,7 @@ function M.accept_line()
   if vim.tbl_count(cache.lines) > 0 then
     View.render_virt_text(cache.lines)
   else
-    M.completion_request_at_cursor()
+    generate_one_stage_at_cursor()
   end
 
   vim.o.eventignore = eventignore
@@ -179,7 +175,7 @@ function M.accept_word()
   if vim.tbl_count(cache.lines) > 0 then
     View.render_virt_text(cache.lines)
   else
-    M.completion_request_at_cursor()
+    generate_one_stage_at_cursor()
   end
 
   vim.o.eventignore = eventignore
@@ -188,12 +184,12 @@ function M.accept_word()
   cache:update_pos(row, col)
 end
 
-function M.reset_completion()
+function M.reset()
   View.clear_virt_text()
   cache:flush()
 end
 
-function M.stage_completion()
+function M.advance()
   if not M.has_suggestion() then
     return
   end

@@ -23,7 +23,7 @@ function M.setup_autocmds()
     callback = function(args)
       local row, col = Base.get_cursor()
       Base.debounce(completion_timer, function()
-        Engine.completion_request(row, col)
+        Engine.generate_one_stage(row, col)
       end, COMPLETION_DEBOUNCE_TIME)
     end,
     desc = 'Triggered Completion',
@@ -34,7 +34,7 @@ function M.setup_autocmds()
     pattern = '*',
     callback = function(args)
       Base.debounce(stage_completion_timer, function()
-        Engine.stage_completion()
+        Engine.advance()
       end, STAGE_DEBOUNCE_TIME)
     end,
     desc = 'Stage completion',
@@ -44,7 +44,7 @@ function M.setup_autocmds()
     group = Base.augroup('ResetCompletion'),
     pattern = '*',
     callback = function(args)
-      Engine.reset_completion()
+      Engine.reset()
     end,
     desc = 'Reset completion',
   })
@@ -99,7 +99,7 @@ end
 function M.setup_keymaps()
   Base.map('i', '<Tab>', function()
     if Engine.has_suggestion() then
-      Engine.chaining_complete()
+      Engine.accept_all_suggestion()
     else
       View.feed_tab()
     end
