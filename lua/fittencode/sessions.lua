@@ -12,22 +12,23 @@ local M = {}
 local URL_LOGIN = 'https://codeuser.fittentech.cn:14443/login'
 local URL_GET_FT_TOKEN = 'https://codeuser.fittentech.cn:14443/get_ft_token'
 local URL_GENERATE_ONE_STAGE = 'https://codeapi.fittentech.cn:13443/generate_one_stage/'
+local CMD = 'curl'
 
 local KEY_STORE_PATH = fn.stdpath('data') .. '/fittencode' .. '/api_key.json'
 
 ---@alias Suggestion string[]
 
 ---@type KeyStorage
-M.key_storage = KeyStorage:new({
+local key_storage = KeyStorage:new({
   path = KEY_STORE_PATH,
 })
 
 ---@type string
-M.username = nil
+local username = nil
 
 ---@param signal integer
 ---@param _ string
-local function on_curl_signal_callback(signal, _)
+local function on_curl_signal(signal, _)
   Log.error('curl throw; signal: {}', signal)
 end
 
@@ -47,7 +48,7 @@ local function on_login_api_key_callback(exit_code, output)
 
   ---@type string
   local api_key = fico_data.data.fico_token
-  M.key_storage:set_key_by_name(M.username, api_key)
+  key_storage:set_key_by_name(M.username, api_key)
   Log.i('Login successful')
 end
 
@@ -68,7 +69,7 @@ local function login_with_token(token)
   Rest.send({
     cmd = 'curl',
     args = fico_args,
-  }, on_login_api_key_callback, on_curl_signal_callback)
+  }, on_login_api_key_callback, on_curl_signal)
 end
 
 ---@param exit_code integer
@@ -97,8 +98,9 @@ end
 
 function M.load_last_session()
   Log.info('Loading last session')
-  M.key_storage:load(function()
-    Log.i('Last session loaded successful')
+  key_storage:load(function(name)
+    username = name
+    Log.i('Last session for user {} loaded successful', name)
   end, function()
     Log.i('Last session not found or invalid, please login again')
   end)
@@ -112,9 +114,9 @@ function M.login(name, password)
     return
   end
 
-  M.username = name
+  username = name
 
-  local api_key = M.key_storage:get_key_by_name(M.username)
+  local api_key = key_storage:get_key_by_name(username)
   if api_key ~= nil then
     Log.i('You are already logged in')
   end
@@ -138,16 +140,16 @@ function M.login(name, password)
   Rest.send({
     cmd = 'curl',
     args = login_args,
-  }, on_login_callback, on_curl_signal_callback)
+  }, on_login_callback, on_curl_signal)
 end
 
 function M.logout()
-  local api_key = M.key_storage:get_key_by_name(M.username)
+  local api_key = key_storage:get_key_by_name(username)
   if api_key == nil then
     Log.i('You are already logged out')
     return
   end
-  M.key_storage:clear()
+  key_storage:clear()
   Log.i('Logout successful')
 end
 
@@ -181,7 +183,7 @@ end
 ---@param exit_code integer
 ---@param response string
 ---@param data RestCallbackData
-local function on_completion_callback(exit_code, response, data)
+local function on_completion(exit_code, response, data)
   if response == nil or response == '' then
     return
   end
@@ -199,7 +201,7 @@ local function on_completion_callback(exit_code, response, data)
 end
 
 ---@param data RestCallbackData
-local function on_completion_delete_tempfile_callback(data)
+local function on_completion_delete_tempfile(data)
   local path = data.path
   if path then
     uv.fs_unlink(path, function(err)
@@ -235,8 +237,8 @@ end
 
 ---@param task_id integer
 ---@param on_completion_request_success function|nil
-function M.do_completion_request(task_id, on_completion_request_success)
-  local api_key = M.key_storage:get_key_by_name(M.username)
+function M.request_completion(task_id, on_completion_request_success)
+  local api_key = key_storage:get_key_by_name(username)
   local encoded_params = fn.json_encode(make_completion_request_params())
   Base.write_temp_file(encoded_params, function(path)
     local server_addr = URL_GENERATE_ONE_STAGE
@@ -258,7 +260,7 @@ function M.do_completion_request(task_id, on_completion_request_success)
         task_id = task_id,
         on_completion_request_success = on_completion_request_success,
       },
-    }, on_completion_callback, on_curl_signal_callback, on_completion_delete_tempfile_callback)
+    }, on_completion, on_curl_signal, on_completion_delete_tempfile)
   end)
 end
 

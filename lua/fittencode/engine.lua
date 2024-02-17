@@ -50,7 +50,7 @@ function M.completion_request(row, col, force)
   cache:flush()
 
   if not Lsp.is_active() then
-    Sessions.do_completion_request(task_id, on_completion_request_success)
+    Sessions.request_completion(task_id, on_completion_request_success)
   end
 end
 

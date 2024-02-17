@@ -4,12 +4,16 @@ local uv = vim.uv
 
 local Log = require('fittencode.log')
 
+---@class Key
+---@field name string|nil
+---@field key string|nil
+
 ---@class KeyStorageOptions
 ---@field path string
 
 -- API Key Storage Service
 ---@class KeyStorage
----@field keys table<string, string>
+---@field keys Key
 ---@field path string
 local KeyStorage = {}
 
@@ -35,7 +39,7 @@ function KeyStorage:load(on_success, on_error)
     file:close()
     self.keys = vim.fn.json_decode(json_str)
     if on_success ~= nil then
-      on_success()
+      on_success(self.keys.name)
     end
   else
     self.keys = {}
@@ -65,21 +69,25 @@ function KeyStorage:clear()
   end
 end
 
+---@param name string
+---@return string|nil
 function KeyStorage:get_key_by_name(name)
   if name == nil then
-    name, _ = next(self.keys)
+    return nil
   end
-  if self.keys[name] ~= nil then
-    return self.keys[name]
+  if self.keys.name == name then
+    return self.keys.key
   end
   return nil
 end
 
+---@param name string
+---@param key string
 function KeyStorage:set_key_by_name(name, key)
   if name == nil or key == nil then
     return
   end
-  self.keys[name] = key
+  self.keys = { name = name, key = key }
   self:save()
 end
 
