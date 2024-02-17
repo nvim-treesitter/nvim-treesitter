@@ -16,7 +16,20 @@ local Rest = require('fittencode.rest')
 local Log = require('fittencode.log')
 local KeyStorage = require('fittencode.key_storage')
 
-local M = {}
+-------------------------------------------------------------------------------
+-- Type definitions
+-------------------------------------------------------------------------------
+
+---@alias Suggestion string[]
+
+---@class OnGenerateOneStageData
+---@field path string|nil
+---@field task_id integer
+---@field on_suggestion function|nil
+
+-------------------------------------------------------------------------------
+-- Constants
+-------------------------------------------------------------------------------
 
 local URL_LOGIN = 'https://codeuser.fittentech.cn:14443/login'
 local URL_GET_FT_TOKEN = 'https://codeuser.fittentech.cn:14443/get_ft_token'
@@ -24,7 +37,11 @@ local URL_GENERATE_ONE_STAGE = 'https://codeapi.fittentech.cn:13443/generate_one
 local CMD = 'curl'
 local KEY_STORE_PATH = fn.stdpath('data') .. '/fittencode' .. '/api_key.json'
 
----@alias Suggestion string[]
+-------------------------------------------------------------------------------
+-- Local variables
+-------------------------------------------------------------------------------
+
+local M = {}
 
 ---@type KeyStorage
 local key_storage = KeyStorage:new({
@@ -34,10 +51,14 @@ local key_storage = KeyStorage:new({
 ---@type string
 local username = nil
 
+-------------------------------------------------------------------------------
+-- Common functions
+-------------------------------------------------------------------------------
+
 ---@param signal integer
 ---@param _ string
 local function on_curl_signal(signal, _)
-  Log.error('curl throw; signal: {}', signal)
+  Log.error('curl throwed signal: {}', signal)
 end
 
 -------------------------------------------------------------------------------
@@ -211,11 +232,6 @@ local function generate_suggestion(generated_text)
   end
   return suggestion
 end
-
----@class OnGenerateOneStageData
----@field path string|nil
----@field task_id integer
----@field on_suggestion function|nil
 
 ---@param response string
 ---@param data OnGenerateOneStageData
