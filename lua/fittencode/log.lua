@@ -49,8 +49,6 @@ end
 
 ---@param msg string
 local function log_file(msg)
-  local LOG_HOME = fn.fnamemodify(LOG_PATH, ':h')
-  fn.mkdir(LOG_HOME, 'p')
   local f = io.open(LOG_PATH, 'a')
   if f then
     if first_log then
@@ -112,6 +110,15 @@ local function do_log(notify, level, msg, ...)
     msg = tags .. msg
     log_file(msg)
   end)
+end
+
+function M.setup()
+  local LOG_HOME = fn.fnamemodify(LOG_PATH, ':h')
+  fn.mkdir(LOG_HOME, 'p')
+end
+
+function M.set_level(level)
+  current = level
 end
 
 ---@param level integer

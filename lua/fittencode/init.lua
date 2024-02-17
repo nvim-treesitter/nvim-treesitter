@@ -8,11 +8,13 @@ function M.setup()
     return
   end
 
+  local Log = require('fittencode.log')
   local Engine = require('fittencode.engine')
   local Sessions = require('fittencode.sessions')
   local Bindings = require('fittencode.bindings')
   local Color = require('fittencode.color')
 
+  Log.setup()
   Engine.setup()
   Color.setup_highlight()
   Bindings.setup_autocmds()
