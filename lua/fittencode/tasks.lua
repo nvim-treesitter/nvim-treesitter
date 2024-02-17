@@ -14,10 +14,10 @@ local Log = require('fittencode.log')
 local TaskScheduler = {}
 
 local MS_TO_NS = 1000000
-local DEFAULT_TIMEOUT = 6000 * MS_TO_NS
-local DEFAULT_RECYCLING = 1000
+local TASK_TIMEOUT = 6000 * MS_TO_NS
+local RECYCLING_CYCLE = 1000
 
-function TaskScheduler:new()
+function TaskScheduler.new()
   local self = setmetatable({}, { __index = TaskScheduler })
   self.list = {}
   self.threshold = nil
@@ -29,7 +29,7 @@ function TaskScheduler:setup()
   self.list = {}
   self.timeout_recycling_timer = uv.new_timer()
   if self.timeout_recycling_timer then
-    self.timeout_recycling_timer:start(DEFAULT_RECYCLING, DEFAULT_RECYCLING, function()
+    self.timeout_recycling_timer:start(RECYCLING_CYCLE, RECYCLING_CYCLE, function()
       self:timeout_recycling()
     end)
   else
@@ -76,7 +76,7 @@ end
 ---@param timestamp integer
 ---@return boolean
 local function is_timeout(timestamp)
-  return uv.hrtime() - timestamp > DEFAULT_TIMEOUT
+  return uv.hrtime() - timestamp > TASK_TIMEOUT
 end
 
 function TaskScheduler:timeout_recycling()
