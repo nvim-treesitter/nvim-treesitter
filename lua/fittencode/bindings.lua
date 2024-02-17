@@ -8,45 +8,45 @@ local View = require('fittencode.view')
 
 local M = {}
 
-local COMPLETION_DEBOUNCE_TIME = 80
-local STAGE_DEBOUNCE_TIME = 80
+local GENERATEONESTAGE_DEBOUNCE_TIME = 80
+local ADVANCE_DEBOUNCE_TIME = 80
 
 ---@type uv_timer_t
-local completion_timer = nil
+local generate_one_stage_timer = nil
 ---@type uv_timer_t
-local stage_completion_timer = nil
+local advance_completion_timer = nil
 
 function M.setup_autocmds()
   api.nvim_create_autocmd({ 'CursorHoldI' }, {
-    group = Base.augroup('TriggeredCompletion'),
+    group = Base.augroup('GenerateOneStage'),
     pattern = '*',
     callback = function(args)
       local row, col = Base.get_cursor()
-      Base.debounce(completion_timer, function()
+      Base.debounce(generate_one_stage_timer, function()
         Engine.generate_one_stage(row, col)
-      end, COMPLETION_DEBOUNCE_TIME)
+      end, GENERATEONESTAGE_DEBOUNCE_TIME)
     end,
-    desc = 'Triggered Completion',
+    desc = 'Generate one stage',
   })
 
   api.nvim_create_autocmd({ 'CursorMovedI', 'CursorMoved', 'InsertLeave' }, {
-    group = Base.augroup('StageCompletion'),
+    group = Base.augroup('Advance'),
     pattern = '*',
     callback = function(args)
-      Base.debounce(stage_completion_timer, function()
+      Base.debounce(advance_completion_timer, function()
         Engine.advance()
-      end, STAGE_DEBOUNCE_TIME)
+      end, ADVANCE_DEBOUNCE_TIME)
     end,
-    desc = 'Stage completion',
+    desc = 'Advance',
   })
 
   api.nvim_create_autocmd({ 'BufWinLeave', 'BufHidden' }, {
-    group = Base.augroup('ResetCompletion'),
+    group = Base.augroup('Reset'),
     pattern = '*',
     callback = function(args)
       Engine.reset()
     end,
-    desc = 'Reset completion',
+    desc = 'Reset',
   })
 end
 
