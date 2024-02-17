@@ -276,7 +276,7 @@ list.comment = {
 
 list.commonlisp = {
   install_info = {
-    url = "https://github.com/theHamsta/tree-sitter-commonlisp",
+    url = "https://github.com/tree-sitter-grammars/tree-sitter-commonlisp",
     files = { "src/parser.c" },
     generate_requires_npm = true,
   },
@@ -336,7 +336,7 @@ list.csv = {
 
 list.cuda = {
   install_info = {
-    url = "https://github.com/theHamsta/tree-sitter-cuda",
+    url = "https://github.com/tree-sitter-grammars/tree-sitter-cuda",
     files = { "src/parser.c", "src/scanner.c" },
     generate_requires_npm = true,
   },
@@ -674,7 +674,7 @@ list.glimmer = {
 
 list.glsl = {
   install_info = {
-    url = "https://github.com/theHamsta/tree-sitter-glsl",
+    url = "https://github.com/tree-sitter-grammars/tree-sitter-glsl",
     files = { "src/parser.c" },
     generate_requires_npm = true,
   },
@@ -831,7 +831,7 @@ list.hjson = {
 
 list.hlsl = {
   install_info = {
-    url = "https://github.com/theHamsta/tree-sitter-hlsl",
+    url = "https://github.com/tree-sitter-grammars/tree-sitter-hlsl",
     files = { "src/parser.c", "src/scanner.c" },
     generate_requires_npm = true,
   },
@@ -1738,7 +1738,7 @@ list.scss = {
 
 list.slang = {
   install_info = {
-    url = "https://github.com/theHamsta/tree-sitter-slang",
+    url = "https://github.com/tree-sitter-grammars/tree-sitter-slang",
     files = { "src/parser.c", "src/scanner.c" },
     generate_requires_npm = true,
   },
@@ -2185,7 +2185,7 @@ list.wgsl = {
 
 list.wgsl_bevy = {
   install_info = {
-    url = "https://github.com/theHamsta/tree-sitter-wgsl-bevy",
+    url = "https://github.com/tree-sitter-grammars/tree-sitter-wgsl-bevy",
     files = { "src/parser.c", "src/scanner.c" },
     generate_requires_npm = true,
   },
