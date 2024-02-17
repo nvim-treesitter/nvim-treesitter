@@ -57,8 +57,8 @@ end
 function M.setup_commands()
   ---@type FittenCommands
   local commands = {
-    login = Sessions.login,
-    logout = Sessions.logout,
+    login = Sessions.request_login,
+    logout = Sessions.request_logout,
   }
   Base.command('Fitten', function(line)
     ---@type string[]

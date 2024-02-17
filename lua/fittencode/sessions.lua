@@ -1,3 +1,12 @@
+-------------------------------------------------------------------------------
+-- Description: Sessions module for fittencode.nvim
+-- Functionality:
+--   Login
+--   Logout
+--   Load last session
+--   Generate one stage
+-------------------------------------------------------------------------------
+
 local fn = vim.fn
 local api = vim.api
 local uv = vim.uv
@@ -30,6 +39,10 @@ local username = nil
 local function on_curl_signal(signal, _)
   Log.error('curl throw; signal: {}', signal)
 end
+
+-------------------------------------------------------------------------------
+-- Login
+-------------------------------------------------------------------------------
 
 ---@param output string
 local function on_fico(_, output)
@@ -100,19 +113,9 @@ local function on_login(_, output)
   request_fico(token)
 end
 
-function M.load_last_session()
-  Log.info('Loading last session')
-  key_storage:load(function(name)
-    username = name
-    Log.i('Last session for user {} loaded successful', name)
-  end, function()
-    Log.i('Last session not found or invalid, please login again')
-  end)
-end
-
 ---@param name string
 ---@param password string
-function M.login(name, password)
+function M.request_login(name, password)
   if name == nil or name == '' or password == nil or password == '' then
     Log.e('Invalid username or password')
     return
@@ -147,7 +150,11 @@ function M.login(name, password)
   }, on_login, on_curl_signal)
 end
 
-function M.logout()
+-------------------------------------------------------------------------------
+-- Logout
+-------------------------------------------------------------------------------
+
+function M.request_logout()
   local api_key = key_storage:get_key_by_name(username)
   if api_key == nil then
     Log.i('You are already logged out')
@@ -156,6 +163,24 @@ function M.logout()
   key_storage:clear()
   Log.i('Logout successful')
 end
+
+-------------------------------------------------------------------------------
+-- Load last session
+-------------------------------------------------------------------------------
+
+function M.request_load_last_session()
+  Log.info('Loading last session')
+  key_storage:load(function(name)
+    username = name
+    Log.i('Last session for user {} loaded successful', name)
+  end, function()
+    Log.i('Last session not found or invalid, please login again')
+  end)
+end
+
+-------------------------------------------------------------------------------
+-- Generate one stage
+-------------------------------------------------------------------------------
 
 ---@param generated_text string
 ---@return Suggestion|nil
@@ -191,7 +216,7 @@ end
 
 ---@param response string
 ---@param data OnRequestCompletionData
-local function on_completion(_, response, data)
+local function on_generate_one_stage(_, response, data)
   if response == nil or response == '' then
     return
   end
@@ -209,7 +234,7 @@ local function on_completion(_, response, data)
 end
 
 ---@param data OnRequestCompletionData
-local function on_completion_exit(data)
+local function on_generate_one_stage_exit(data)
   local path = data.path
   if path then
     uv.fs_unlink(path, function(err)
@@ -223,7 +248,7 @@ local function on_completion_exit(data)
 end
 
 ---@return table
-local function make_params()
+local function make_generate_one_stage_params()
   local filename = api.nvim_buf_get_name(0)
   if filename == nil or filename == '' then
     filename = 'NONAME'
@@ -245,12 +270,12 @@ end
 
 ---@param task_id integer
 ---@param on_suggestion function|nil
-function M.request_completion(task_id, on_suggestion)
+function M.request_generate_one_stage(task_id, on_suggestion)
   local api_key = key_storage:get_key_by_name(username)
-  local encoded_params = fn.json_encode(make_params())
+  local encoded_params = fn.json_encode(make_generate_one_stage_params())
   Base.write_temp_file(encoded_params, function(path)
-    local server_addr = URL_GENERATE_ONE_STAGE
-    local completion_args = {
+    local server = URL_GENERATE_ONE_STAGE
+    local args = {
       '-s',
       '-X',
       'POST',
@@ -258,18 +283,18 @@ function M.request_completion(task_id, on_suggestion)
       'Content-Type: application/json',
       '-d',
       '@' .. Base.to_native(path),
-      server_addr .. api_key .. '?ide=vim&v=0.1.0',
+      server .. api_key .. '?ide=vim&v=0.1.0',
     }
     Rest.send({
       cmd = CMD,
-      args = completion_args,
+      args = args,
       ---@type OnRequestCompletionData
       data = {
         path = path,
         task_id = task_id,
         on_suggestion = on_suggestion,
       },
-    }, on_completion, on_curl_signal, on_completion_exit)
+    }, on_generate_one_stage, on_curl_signal, on_generate_one_stage_exit)
   end)
 end
 

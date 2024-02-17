@@ -19,7 +19,7 @@ function M.setup()
   Bindings.setup_commands()
   Bindings.setup_keymaps()
 
-  Sessions.load_last_session()
+  Sessions.request_load_last_session()
 end
 
 return M

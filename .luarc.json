@@ -10,10 +10,6 @@
       "${3rd}/busted/library",
       "${3rd}/luv/library"
     ],
-    "ignoreDir": [
-      "runtime",
-      "nightly"
-    ],
     "checkThirdParty": "Disable"
   },
   "diagnostics": {

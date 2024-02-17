@@ -50,7 +50,7 @@ function M.completion_request(row, col, force)
   cache:flush()
 
   if not Lsp.is_active() then
-    Sessions.request_completion(task_id, on_suggestion)
+    Sessions.request_generate_one_stage(task_id, on_suggestion)
   end
 end
 
