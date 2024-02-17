@@ -6,6 +6,7 @@ local Base = require('fittencode.base')
 local M = {}
 
 local MODULE_NAME = 'fittencode.nvim'
+local LOG_PATH = fn.stdpath('log') .. '/fittencode' .. '/fittencode.log'
 
 M.enabled = true
 
@@ -34,10 +35,9 @@ end
 
 ---@param msg string
 local function log_file(msg)
-  local dir = fn.stdpath('log') .. '/fittencode'
-  fn.mkdir(dir, 'p')
-  local path = dir .. '/fittencode.log'
-  local f = io.open(path, 'a')
+  local LOG_HOME = fn.fnamemodify(LOG_PATH, ':h')
+  fn.mkdir(LOG_HOME, 'p')
+  local f = io.open(LOG_PATH, 'a')
   if f then
     if first_log then
       local EDGE = '================================================================================\n'
