@@ -67,7 +67,7 @@ local function login_with_token(token)
     fico_url,
   }
   Rest.send({
-    cmd = 'curl',
+    cmd = CMD,
     args = fico_args,
   }, on_login_api_key_callback, on_curl_signal)
 end
@@ -138,7 +138,7 @@ function M.login(name, password)
     login_url,
   }
   Rest.send({
-    cmd = 'curl',
+    cmd = CMD,
     args = login_args,
   }, on_login_callback, on_curl_signal)
 end
@@ -253,7 +253,7 @@ function M.request_completion(task_id, on_completion_request_success)
       server_addr .. api_key .. '?ide=vim&v=0.1.0',
     }
     Rest.send({
-      cmd = 'curl',
+      cmd = CMD,
       args = completion_args,
       data = {
         path = path,
