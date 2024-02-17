@@ -209,13 +209,13 @@ local function generate_suggestion(generated_text)
   return suggestion
 end
 
----@class OnRequestCompletionData
+---@class OnGenerateOneStageData
 ---@field path string|nil
 ---@field task_id integer
 ---@field on_suggestion function|nil
 
 ---@param response string
----@param data OnRequestCompletionData
+---@param data OnGenerateOneStageData
 local function on_generate_one_stage(_, response, data)
   if response == nil or response == '' then
     return
@@ -233,7 +233,7 @@ local function on_generate_one_stage(_, response, data)
   end
 end
 
----@param data OnRequestCompletionData
+---@param data OnGenerateOneStageData
 local function on_generate_one_stage_exit(data)
   local path = data.path
   if path then
@@ -288,7 +288,7 @@ function M.request_generate_one_stage(task_id, on_suggestion)
     Rest.send({
       cmd = CMD,
       args = args,
-      ---@type OnRequestCompletionData
+      ---@type OnGenerateOneStageData
       data = {
         path = path,
         task_id = task_id,

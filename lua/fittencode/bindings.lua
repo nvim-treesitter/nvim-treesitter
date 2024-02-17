@@ -13,8 +13,9 @@ local ADVANCE_DEBOUNCE_TIME = 80
 
 ---@type uv_timer_t
 local generate_one_stage_timer = nil
+
 ---@type uv_timer_t
-local advance_completion_timer = nil
+local advance_timer = nil
 
 function M.setup_autocmds()
   api.nvim_create_autocmd({ 'CursorHoldI' }, {
@@ -33,7 +34,7 @@ function M.setup_autocmds()
     group = Base.augroup('Advance'),
     pattern = '*',
     callback = function()
-      Base.debounce(advance_completion_timer, function()
+      Base.debounce(advance_timer, function()
         Engine.advance()
       end, ADVANCE_DEBOUNCE_TIME)
     end,
