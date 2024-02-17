@@ -48,7 +48,7 @@
     "revision": "863cea9f83ad5637300478e0559262f1e791684b"
   },
   "c": {
-    "revision": "b20f858322c8cd9d55d057dc19113e556cd500c2"
+    "revision": "72a60ea888fb59a8e143883661f021139c905b74"
   },
   "c_sharp": {
     "revision": "4b4e82ca0a30376ae605e77a0d8a3c803c9f9327"
@@ -309,7 +309,7 @@
     "revision": "99b29f1ed957b3b424b6e21f57bd21a9732a622a"
   },
   "javascript": {
-    "revision": "6e9cd56ebdf3d8dc08ef045b6d183bf2073c4395"
+    "revision": "9802cc5812a19cd28168076af36e88b463dd3a18"
   },
   "jq": {
     "revision": "13990f530e8e6709b7978503da9bc8701d366791"
@@ -579,7 +579,7 @@
     "revision": "22a0bb2678755a3714e194609862ea7f4516e807"
   },
   "rust": {
-    "revision": "836903cc72c6dd2a53cd0947a07d229fd6291cc6"
+    "revision": "a70daac064145c84e9d51767c2575bb68d51df58"
   },
   "scala": {
     "revision": "e02f003d78dc269fef287b9b7b9963dc1f26bd7e"
@@ -756,7 +756,7 @@
     "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
   },
   "wing": {
-    "revision": "252c31021fe86337294bef8f657e4d4c140b1f43"
+    "revision": "f7965a947d2eaa8b5b9bba1c42a0e1891f1a0b2a"
   },
   "xcompose": {
     "revision": "8898238fca7e143760386448093392b87e58002e"
