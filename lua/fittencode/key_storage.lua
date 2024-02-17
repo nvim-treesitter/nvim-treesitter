@@ -1,7 +1,7 @@
 local fn = vim.fn
-local api = vim.api
 local uv = vim.uv
 
+local Base = require('fittencode.base')
 local Log = require('fittencode.log')
 
 ---@class Key
@@ -27,46 +27,56 @@ function KeyStorage:new(o)
 end
 
 function KeyStorage:load(on_success, on_error)
-  if fn.filereadable(self.path) == 1 then
-    local file = io.open(self.path, 'r')
-    if file == nil then
-      if on_error ~= nil then
-        on_error()
-      end
-      return
+  Log.debug('Prepare reading API key file; path: {}', self.path)
+  if not Base.exists(self.path) then
+    Log.error('API key file not found; path: {}', self.path)
+    if on_error then
+      on_error()
     end
-    local json_str = file:read('*all')
-    file:close()
-    self.keys = vim.fn.json_decode(json_str)
+    return
+  end
+  Base.read(self.path, function(data)
+    self.keys = vim.fn.json_decode(data)
+    Log.debug('API key file loaded successful; path: {}', self.path)
     if on_success ~= nil then
       on_success(self.keys.name)
     end
-  else
-    self.keys = {}
+  end)
+end
+
+function KeyStorage:save(on_success, on_error)
+  local encode_keys = fn.json_encode(self.keys)
+  local home = fn.fnamemodify(self.path, ':h')
+  if home == nil or home == '' then
+    Log.error('Failed to save API key file; path: {}', self.path)
     if on_error ~= nil then
       on_error()
     end
-  end
-end
-
-function KeyStorage:save()
-  local json_str = vim.fn.json_encode(self.keys)
-  local home = fn.fnamemodify(self.path, ':h')
-  fn.mkdir(home, 'p')
-  local file = io.open(self.path, 'w')
-  if file == nil then
-    Log:error('Failed to save API key file')
     return
   end
-  file:write(json_str)
-  file:close()
+  Base.write_mkdir(encode_keys, home, self.path, function()
+    Log.info('API key file saved successful; path: {}', self.path)
+    if on_success ~= nil then
+      on_success()
+    end
+  end)
 end
 
-function KeyStorage:clear()
+function KeyStorage:clear(on_success, on_error)
   self.keys = {}
-  if fn.filereadable(self.path) == 1 then
-    fn.delete(self.path)
-  end
+  uv.fs_unlink(self.path, function(err)
+    if err then
+      Log.error('Failed to delete API key file; path: {}; error: {}', self.path, err)
+      if on_error then
+        on_error()
+      end
+    else
+      Log.info('Delete API key file successful; path: {}', self.path)
+      if on_success then
+        on_success()
+      end
+    end
+  end)
 end
 
 ---@param name string
