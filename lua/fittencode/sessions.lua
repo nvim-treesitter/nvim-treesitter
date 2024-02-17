@@ -31,9 +31,8 @@ local function on_curl_signal(signal, _)
   Log.error('curl throw; signal: {}', signal)
 end
 
----@param exit_code integer
 ---@param output string
-local function on_login_api_key(exit_code, output)
+local function on_fico(_, output)
   if output == nil or output == '' then
     Log.e('Login failed: Server response without data')
     return
@@ -52,7 +51,7 @@ local function on_login_api_key(exit_code, output)
 end
 
 ---@param token string|nil
-local function login_with_token(token)
+local function request_fico(token)
   if token == nil or token == '' then
     Log.e('Login failed: Invalid user token')
     return
@@ -68,12 +67,12 @@ local function login_with_token(token)
   Rest.send({
     cmd = CMD,
     args = fico_args,
-  }, on_login_api_key, on_curl_signal)
+  }, on_fico, on_curl_signal)
 end
 
----@param exit_code integer
 ---@param output string
-local function on_login_callback(exit_code, output)
+---@return string|nil
+local function decode_token(output)
   if output == nil or output == '' then
     Log.e('Login failed: Server response without data')
     return
@@ -92,7 +91,13 @@ local function on_login_callback(exit_code, output)
 
   ---@type string
   local token = login_data.data.token
-  login_with_token(token)
+  return token
+end
+
+---@param output string
+local function on_login(_, output)
+  local token = decode_token(output)
+  request_fico(token)
 end
 
 function M.load_last_session()
@@ -139,7 +144,7 @@ function M.login(name, password)
   Rest.send({
     cmd = CMD,
     args = login_args,
-  }, on_login_callback, on_curl_signal)
+  }, on_login, on_curl_signal)
 end
 
 function M.logout()
@@ -179,10 +184,14 @@ local function generate_suggestion(generated_text)
   return suggestion
 end
 
----@param exit_code integer
+---@class OnRequestCompletionData
+---@field path string|nil
+---@field task_id integer
+---@field on_suggestion function|nil
+
 ---@param response string
----@param data RestCallbackData
-local function on_completion(exit_code, response, data)
+---@param data OnRequestCompletionData
+local function on_completion(_, response, data)
   if response == nil or response == '' then
     return
   end
@@ -194,13 +203,13 @@ local function on_completion(exit_code, response, data)
 
   local suggestion = generate_suggestion(completion_data.generated_text)
 
-  if data.on_completion_request_success ~= nil then
-    data.on_completion_request_success(data.task_id, suggestion)
+  if data.on_suggestion ~= nil then
+    data.on_suggestion(data.task_id, suggestion)
   end
 end
 
----@param data RestCallbackData
-local function on_completion_delete_tempfile(data)
+---@param data OnRequestCompletionData
+local function on_completion_exit(data)
   local path = data.path
   if path then
     uv.fs_unlink(path, function(err)
@@ -214,8 +223,8 @@ local function on_completion_delete_tempfile(data)
 end
 
 ---@return table
-local function make_completion_request_params()
-  local filename = api.nvim_buf_get_name(api.nvim_get_current_buf())
+local function make_params()
+  local filename = api.nvim_buf_get_name(0)
   if filename == nil or filename == '' then
     filename = 'NONAME'
   end
@@ -235,10 +244,10 @@ local function make_completion_request_params()
 end
 
 ---@param task_id integer
----@param on_completion_request_success function|nil
-function M.request_completion(task_id, on_completion_request_success)
+---@param on_suggestion function|nil
+function M.request_completion(task_id, on_suggestion)
   local api_key = key_storage:get_key_by_name(username)
-  local encoded_params = fn.json_encode(make_completion_request_params())
+  local encoded_params = fn.json_encode(make_params())
   Base.write_temp_file(encoded_params, function(path)
     local server_addr = URL_GENERATE_ONE_STAGE
     local completion_args = {
@@ -254,12 +263,13 @@ function M.request_completion(task_id, on_completion_request_success)
     Rest.send({
       cmd = CMD,
       args = completion_args,
+      ---@type OnRequestCompletionData
       data = {
         path = path,
         task_id = task_id,
-        on_completion_request_success = on_completion_request_success,
+        on_suggestion = on_suggestion,
       },
-    }, on_completion, on_curl_signal, on_completion_delete_tempfile)
+    }, on_completion, on_curl_signal, on_completion_exit)
   end)
 end
 
