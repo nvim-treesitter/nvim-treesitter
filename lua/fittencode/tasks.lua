@@ -11,6 +11,8 @@ local Log = require('fittencode.log')
 ---@field list table<integer, Task>
 ---@field threshold? integer
 ---@field timeout_recycling_timer? uv_timer_t
+
+---@class TaskScheduler
 local TaskScheduler = {}
 
 local MS_TO_NS = 1000000
