@@ -5,100 +5,30 @@ local uv = vim.uv
 local Base = require('fittencode.base')
 local Rest = require('fittencode.rest')
 local Log = require('fittencode.log')
+local KeyStorage = require('fittencode.key_storage')
 
 local M = {}
-
----@alias Suggestion string[]
-
----@type string|nil
-M.api_key = nil
 
 local URL_LOGIN = 'https://codeuser.fittentech.cn:14443/login'
 local URL_GET_FT_TOKEN = 'https://codeuser.fittentech.cn:14443/get_ft_token'
 local URL_GENERATE_ONE_STAGE = 'https://codeapi.fittentech.cn:13443/generate_one_stage/'
 
----@param api_key string|nil
----@return boolean
-local function validate_api_key(api_key)
-  if api_key == nil or api_key == '' then
-    Log.error('API key is invalid')
-    return false
-  end
-  return true
-end
+local KEY_STORE_PATH = fn.stdpath('data') .. '/fittencode' .. '/api_key.json'
 
-function M.validate_current_api_key()
-  return validate_api_key(M.api_key)
-end
+---@alias Suggestion string[]
 
----@return string, string
-local function get_api_key_store_path()
-  local dir = fn.stdpath('data') .. '/fittencode'
-  local path = dir .. '/api_key'
-  return Base.to_native(dir), Base.to_native(path)
-end
+---@type KeyStorage
+M.key_storage = KeyStorage:new({
+  path = KEY_STORE_PATH,
+})
 
----@param path string
----@param on_success function|nil
----@param on_error function|nil
-local function delete_api_key_file(path, on_success, on_error)
-  uv.fs_unlink(path, function(err)
-    if err then
-      Log.error('Failed to delete API key file; path: {}; error: {}', path, err)
-      if on_error then
-        on_error()
-      end
-    else
-      Log.info('Delete API key file successful; path: {}', path)
-      if on_success then
-        on_success()
-      end
-    end
-  end)
-end
-
----@param on_success function|nil
----@param on_error function|nil
-local function read_local_api_key_file(on_success, on_error)
-  local _, path = get_api_key_store_path()
-  Log.debug('Reading API key file; path: {}', path)
-  if not Base.exists(path) then
-    Log.error('API key file not found; path: {}', path)
-    if on_error then
-      on_error()
-    end
-    return
-  end
-  Base.read(path, function(data)
-    ---@type string
-    local api_key = data:gsub('\n', '')
-    if validate_api_key(api_key) then
-      M.api_key = api_key
-      Log.info('API key loaded successful')
-      if on_success then
-        on_success()
-      end
-    else
-      delete_api_key_file(path)
-      if on_error then
-        on_error()
-      end
-    end
-  end)
-end
+---@type string
+M.username = nil
 
 ---@param signal integer
 ---@param _ string
 local function on_curl_signal_callback(signal, _)
   Log.error('curl throw; signal: {}', signal)
-end
-
----@param api_key string
-local function write_api_key(api_key)
-  local dir, path = get_api_key_store_path()
-  Base.write_mkdir(api_key, dir, path, function()
-    Log.info('API key file saved successful; path: {}', path)
-  end)
 end
 
 ---@param exit_code integer
@@ -117,11 +47,8 @@ local function on_login_api_key_callback(exit_code, output)
 
   ---@type string
   local api_key = fico_data.data.fico_token
-  if validate_api_key(api_key) then
-    M.api_key = api_key
-    Log.i('Login successful')
-    write_api_key(api_key)
-  end
+  M.key_storage:set_key_by_name(M.username, api_key)
+  Log.i('Login successful')
 end
 
 ---@param token string|nil
@@ -170,7 +97,7 @@ end
 
 function M.load_last_session()
   Log.info('Loading last session')
-  read_local_api_key_file(function()
+  M.key_storage:load(function()
     Log.i('Last session loaded successful')
   end, function()
     Log.i('Last session not found or invalid, please login again')
@@ -185,10 +112,11 @@ function M.login(name, password)
     return
   end
 
-  local _, path = get_api_key_store_path()
-  if Base.exists(path) then
+  M.username = name
+
+  local api_key = M.key_storage:get_key_by_name(M.username)
+  if api_key ~= nil then
     Log.i('You are already logged in')
-    return
   end
 
   local login_url = URL_LOGIN
@@ -214,16 +142,13 @@ function M.login(name, password)
 end
 
 function M.logout()
-  local _, path = get_api_key_store_path()
-  if not Base.exists(path) then
+  local api_key = M.key_storage:get_key_by_name(M.username)
+  if api_key == nil then
     Log.i('You are already logged out')
     return
   end
-  delete_api_key_file(path, function()
-    Log.i('Logout successful')
-  end, function()
-    Log.e('Logout failed')
-  end)
+  M.key_storage:clear()
+  Log.i('Logout successful')
 end
 
 ---@param generated_text string
@@ -311,6 +236,7 @@ end
 ---@param task_id integer
 ---@param on_completion_request_success function|nil
 function M.do_completion_request(task_id, on_completion_request_success)
+  local api_key = M.key_storage:get_key_by_name(M.username)
   local encoded_params = fn.json_encode(make_completion_request_params())
   Base.write_temp_file(encoded_params, function(path)
     local server_addr = URL_GENERATE_ONE_STAGE
@@ -322,7 +248,7 @@ function M.do_completion_request(task_id, on_completion_request_success)
       'Content-Type: application/json',
       '-d',
       '@' .. Base.to_native(path),
-      server_addr .. M.api_key .. '?ide=vim&v=0.1.0',
+      server_addr .. api_key .. '?ide=vim&v=0.1.0',
     }
     Rest.send({
       cmd = 'curl',
