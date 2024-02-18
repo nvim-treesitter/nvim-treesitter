@@ -6,6 +6,9 @@ local Color = require('fittencode.color')
 
 local M = {}
 
+---@type integer
+local namespace = nil
+
 ---@class VirtLine
 ---@field text string @The text of the virtual line
 ---@field hl string @The highlight group of the virtual line
@@ -36,7 +39,7 @@ local function draw_virt_text(virt_text)
 
   local row, col = Base.get_cursor()
 
-  api.nvim_buf_set_extmark(0, M.namespace, row, col, {
+  api.nvim_buf_set_extmark(0, namespace, row, col, {
     virt_text = virt_text[1],
     virt_text_pos = 'inline',
     hl_mode = 'combine',
@@ -45,32 +48,33 @@ local function draw_virt_text(virt_text)
   table.remove(virt_text, 1)
 
   if vim.tbl_count(virt_text) > 0 then
-    api.nvim_buf_set_extmark(0, M.namespace, row, 0, {
+    api.nvim_buf_set_extmark(0, namespace, row, 0, {
       virt_lines = virt_text,
     })
   end
 end
 
 -- Clear virtual text on buffer
+---@param ns integer|nil
 ---@param bufnr integer|nil
-local function clear_ns(namespace, bufnr)
-  if namespace ~= nil and bufnr ~= nil then
-    api.nvim_buf_clear_namespace(bufnr, namespace, 0, -1)
+local function clear_ns(ns, bufnr)
+  if ns ~= nil and bufnr ~= nil then
+    api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
   end
 end
 
 -- Reset the namespace for virtual text
 local function reset_ns()
-  if M.namespace ~= nil then
-    clear_ns(M.namespace, 0)
+  if namespace ~= nil then
+    clear_ns(namespace, 0)
   else
-    M.namespace = api.nvim_create_namespace('Fittencode')
+    namespace = api.nvim_create_namespace('Fittencode')
   end
 end
 
 -- Clear virtual text on buffer
 function M.clear_virt_text()
-  clear_ns(M.namespace, 0)
+  clear_ns(namespace, 0)
 end
 
 -- Move the cursor to the center of the window
