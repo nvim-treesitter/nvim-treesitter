@@ -126,13 +126,14 @@ end
 ---@param on_success function|nil
 function M.write_temp_file(data, on_success, on_error)
   local path = fn.tempname()
-  if path then
-    M.write(data, path, on_success)
-  else
+  if not path then
     if on_error then
       on_error()
     end
+    return
   end
+  path = M.to_native(path)
+  M.write(data, path, on_success)
 end
 
 ---@param path string

@@ -13,7 +13,7 @@ local URL_LOGIN = 'https://codeuser.fittentech.cn:14443/login'
 local URL_GET_FT_TOKEN = 'https://codeuser.fittentech.cn:14443/get_ft_token'
 local URL_GENERATE_ONE_STAGE = 'https://codeapi.fittentech.cn:13443/generate_one_stage/'
 local CMD = 'curl'
-local KEY_STORE_PATH = fn.stdpath('data') .. '/fittencode' .. '/api_key.json'
+local KEY_STORE_PATH = Base.to_native(fn.stdpath('data') .. '/fittencode' .. '/api_key.json')
 
 ---@type KeyStorage
 local key_storage = KeyStorage:new({
@@ -260,7 +260,7 @@ function M.request_generate_one_stage(task_id, on_suggestion)
       '-H',
       'Content-Type: application/json',
       '-d',
-      '@' .. Base.to_native(path),
+      '@' .. path,
       server .. api_key .. '?ide=vim&v=0.1.0',
     }
     Rest.send({

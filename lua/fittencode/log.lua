@@ -6,7 +6,7 @@ local Base = require('fittencode.base')
 local M = {}
 
 local MODULE_NAME = 'fittencode.nvim'
-local LOG_PATH = fn.stdpath('log') .. '/fittencode' .. '/fittencode.log'
+local LOG_PATH = Base.to_native(fn.stdpath('log') .. '/fittencode' .. '/fittencode.log')
 
 -- See `help vim.log.levels`
 -- Refs: `neovim/runtime/lua/vim/_editor.lua`
