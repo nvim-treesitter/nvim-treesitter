@@ -46,11 +46,14 @@
 ((symbol) @punctuation.special
   (#eq? @punctuation.special "&"))
 
-; BUG: It should only be valid if inside hashfn of any depth, but
+; BUG: $ arguments should only be valid inside hashfn of any depth, but
 ; it's impossible to express such query at the moment of writing.
 ; See tree-sitter/tree-sitter#880
 ((symbol) @variable.parameter
-  (#vim-match? @variable.parameter "^\\$(...|[1-9])$"))
+  (#eq? @variable.parameter "$..."))
+
+((symbol) @variable.parameter
+  (#lua-match? @variable.parameter "^%$[1-9]$"))
 
 ((symbol) @operator
   ; format-ignore
