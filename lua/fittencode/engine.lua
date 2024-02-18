@@ -38,6 +38,11 @@ end
 ---@param col integer
 ---@param force boolean|nil
 function M.generate_one_stage(row, col, force)
+  if not Sessions.ready_for_generate() then
+    Log.debug('Not ready for generate')
+    return
+  end
+
   if not force and cache:equal_pos(row, col) then
     return
   end

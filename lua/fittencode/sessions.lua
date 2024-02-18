@@ -246,10 +246,18 @@ local function make_generate_one_stage_params()
   return params
 end
 
+function M.ready_for_generate()
+  return key_storage:get_key_by_name(username) ~= nil
+end
+
 ---@param task_id integer
 ---@param on_suggestion function|nil
 function M.request_generate_one_stage(task_id, on_suggestion)
   local api_key = key_storage:get_key_by_name(username)
+  if api_key == nil then
+    Log.debug('API key is nil')
+    return
+  end
   local encoded_params = fn.json_encode(make_generate_one_stage_params())
   Base.write_temp_file(encoded_params, function(path)
     local server = URL_GENERATE_ONE_STAGE
