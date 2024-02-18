@@ -1,4 +1,5 @@
 ; inherits: dtd
+
 ; XML declaration
 (XMLDecl
   "standalone" @tag.attribute)

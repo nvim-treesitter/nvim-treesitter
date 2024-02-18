@@ -1,4 +1,5 @@
 ; inherits: ecma,jsx
+
 ; Both properties are matched here.
 ;
 ;   class Foo {

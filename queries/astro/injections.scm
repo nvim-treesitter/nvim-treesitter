@@ -1,4 +1,5 @@
 ; inherits: html_tags
+
 (frontmatter
   (raw_text) @injection.content
   (#set! injection.language "typescript"))

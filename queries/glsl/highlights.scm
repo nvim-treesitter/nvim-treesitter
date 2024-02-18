@@ -1,4 +1,5 @@
 ; inherits: c
+
 [
   "in"
   "out"

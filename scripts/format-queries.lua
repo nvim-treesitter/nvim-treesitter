@@ -61,6 +61,19 @@ local format_queries = [[
   (comment) @format.prepend-newline
   (#not-is-start-of-line? @_comment)
   (#is-start-of-line? @format.prepend-newline))
+; Extra newline for modelines
+(program
+  (comment) @_modeline
+  .
+  (_) @format.prepend-newline
+  (#is-start-of-line? @_modeline)
+  (#contains? @_modeline "^;+%s*inherits:"))
+(program
+  (comment) @_modeline
+  .
+  (_) @format.prepend-newline
+  (#is-start-of-line? @_modeline)
+  (#contains? @_modeline "^;+%s*extends%s*$"))
 ;; }}}
 ;; Making sure all top-level patterns are separated
 (program
@@ -88,7 +101,9 @@ local format_queries = [[
     (field_definition)
     (comment)
   ] @format.cancel-prepend
-  (#is-start-of-line? @_comment))
+  (#is-start-of-line? @_comment)
+  (#not-lua-match? @_comment "^;+%s*inherits:")
+  (#not-lua-match? @_comment "^;+%s*extends%s*$"))
 ;; }}}
 
 ;; delims

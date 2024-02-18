@@ -1,4 +1,5 @@
 ; inherits: html_tags
+
 (identifier) @variable
 
 (pipe_operator) @operator

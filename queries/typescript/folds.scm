@@ -1,4 +1,5 @@
 ; inherits: ecma
+
 [
   (interface_declaration)
   (internal_module)

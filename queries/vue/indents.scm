@@ -1,4 +1,5 @@
 ; inherits: html_tags
+
 (template_element) @indent.begin
 
 (template_element

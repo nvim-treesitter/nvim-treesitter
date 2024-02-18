@@ -1,4 +1,5 @@
 ; inherits: cpp
+
 ((identifier) @function.builtin
   (#any-of? @function.builtin
     ; Digital I/O

@@ -1,4 +1,5 @@
 ; inherits: go
+
 (component_declaration
   name: (component_identifier) @function)
 

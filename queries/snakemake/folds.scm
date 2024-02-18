@@ -1,4 +1,5 @@
 ; inherits: python
+
 [
   (rule_definition)
   (module_definition)
