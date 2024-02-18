@@ -411,6 +411,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [twig](https://github.com/gbprod/tree-sitter-twig) (maintained by @gbprod)
 - [x] [typescript](https://github.com/tree-sitter/tree-sitter-typescript) (maintained by @steelsojka)
 - [x] [typoscript](https://github.com/Teddytrombone/tree-sitter-typoscript) (maintained by @Teddytrombone)
+- [x] [typst](https://github.com/uben0/tree-sitter-typst) (maintained by @uben0, @RaafatTurki)
 - [x] [udev](https://github.com/ObserverOfTime/tree-sitter-udev) (maintained by @ObserverOfTime)
 - [x] [ungrammar](https://github.com/Philipp-M/tree-sitter-ungrammar) (maintained by @Philipp-M, @amaanq)
 - [x] [unison](https://github.com/kylegoetz/tree-sitter-unison) (maintained by @tapegram)
