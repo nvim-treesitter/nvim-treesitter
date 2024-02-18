@@ -1,12 +1,3 @@
--------------------------------------------------------------------------------
--- Description: Sessions module for fittencode.nvim
--- Functionality:
---   Login
---   Logout
---   Load last session
---   Generate one stage
--------------------------------------------------------------------------------
-
 local fn = vim.fn
 local api = vim.api
 local uv = vim.uv
@@ -16,32 +7,13 @@ local Rest = require('fittencode.rest')
 local Log = require('fittencode.log')
 local KeyStorage = require('fittencode.key_storage')
 
--------------------------------------------------------------------------------
--- Type definitions
--------------------------------------------------------------------------------
-
----@alias Suggestion string[]
-
----@class OnGenerateOneStageData
----@field path string|nil
----@field task_id integer
----@field on_suggestion function|nil
-
--------------------------------------------------------------------------------
--- Constants
--------------------------------------------------------------------------------
+local M = {}
 
 local URL_LOGIN = 'https://codeuser.fittentech.cn:14443/login'
 local URL_GET_FT_TOKEN = 'https://codeuser.fittentech.cn:14443/get_ft_token'
 local URL_GENERATE_ONE_STAGE = 'https://codeapi.fittentech.cn:13443/generate_one_stage/'
 local CMD = 'curl'
 local KEY_STORE_PATH = fn.stdpath('data') .. '/fittencode' .. '/api_key.json'
-
--------------------------------------------------------------------------------
--- Local variables
--------------------------------------------------------------------------------
-
-local M = {}
 
 ---@type KeyStorage
 local key_storage = KeyStorage:new({
@@ -51,19 +23,11 @@ local key_storage = KeyStorage:new({
 ---@type string
 local username = nil
 
--------------------------------------------------------------------------------
--- Common functions
--------------------------------------------------------------------------------
-
 ---@param signal integer
 ---@param _ string
 local function on_curl_signal(signal, _)
   Log.error('curl throwed signal: {}', signal)
 end
-
--------------------------------------------------------------------------------
--- Login
--------------------------------------------------------------------------------
 
 ---@param output string
 local function on_fico(_, output)
@@ -174,10 +138,6 @@ function M.request_login(name, password)
   }, on_login, on_curl_signal)
 end
 
--------------------------------------------------------------------------------
--- Logout
--------------------------------------------------------------------------------
-
 function M.request_logout()
   local api_key = key_storage:get_key_by_name(username)
   if api_key == nil then
@@ -187,10 +147,6 @@ function M.request_logout()
   key_storage:clear()
   Log.i('Logout successful')
 end
-
--------------------------------------------------------------------------------
--- Load last session
--------------------------------------------------------------------------------
 
 function M.request_load_last_session()
   Log.info('Loading last session')
@@ -202,9 +158,7 @@ function M.request_load_last_session()
   end)
 end
 
--------------------------------------------------------------------------------
--- Generate one stage
--------------------------------------------------------------------------------
+---@alias Suggestion string[]
 
 ---@param generated_text string
 ---@return Suggestion|nil
@@ -232,6 +186,11 @@ local function generate_suggestion(generated_text)
   end
   return suggestion
 end
+
+---@class OnGenerateOneStageData
+---@field path string|nil
+---@field task_id integer
+---@field on_suggestion function|nil
 
 ---@param response string
 ---@param data OnGenerateOneStageData
