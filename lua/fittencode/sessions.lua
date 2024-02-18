@@ -20,7 +20,8 @@ local key_storage = KeyStorage:new({
   path = KEY_STORE_PATH,
 })
 
----@type string
+-- Current user name, used for mapping to API key
+---@type string|nil
 local username = nil
 
 ---@param signal integer
@@ -29,14 +30,15 @@ local function on_curl_signal(signal, _)
   Log.error('curl throwed signal: {}', signal)
 end
 
----@param output string
-local function on_fico(_, output)
-  if output == nil or output == '' then
+-- Callback for request_fico when HTTP request is successful
+---@param response string
+local function on_fico(_, response)
+  if response == nil or response == '' then
     Log.e('Login failed: Server response without data')
     return
   end
 
-  local fico_data = fn.json_decode(output)
+  local fico_data = fn.json_decode(response)
   if fico_data.data == nil or fico_data.data.fico_token == nil then
     Log.e('Login failed: Server response without fico_token field; decoded response: {}', fico_data)
     return
@@ -48,6 +50,7 @@ local function on_fico(_, output)
   Log.i('Login successful')
 end
 
+-- User token is required for getting fico token
 ---@param token string
 local function request_fico(token)
   if token == nil or token == '' then
@@ -68,15 +71,16 @@ local function request_fico(token)
   }, on_fico, on_curl_signal)
 end
 
----@param output string
+-- Decode login response and get token
+---@param response string
 ---@return string|nil
-local function decode_token(output)
-  if output == nil or output == '' then
+local function decode_token(response)
+  if response == nil or response == '' then
     Log.e('Login failed: Server response without data')
     return
   end
 
-  local login_data = fn.json_decode(output)
+  local login_data = fn.json_decode(response)
   if login_data.code ~= 200 then
     if login_data.code == nil then
       Log.e('Login failed: Server status code: {}; response: {}', login_data.status_code, login_data)
@@ -92,14 +96,16 @@ local function decode_token(output)
   return token
 end
 
----@param output string
-local function on_login(_, output)
-  local token = decode_token(output)
+-- Callback for request_login when HTTP request is successful
+---@param response string
+local function on_login(_, response)
+  local token = decode_token(response)
   if token ~= nil then
     request_fico(token)
   end
 end
 
+-- Request login with given username and password
 ---@param name string
 ---@param password string
 function M.request_login(name, password)
@@ -122,7 +128,7 @@ function M.request_login(name, password)
     password = password,
   }
   local encoded_data = fn.json_encode(data)
-  local login_args = {
+  local args = {
     '-s',
     '-X',
     'POST',
@@ -134,10 +140,11 @@ function M.request_login(name, password)
   }
   Rest.send({
     cmd = CMD,
-    args = login_args,
+    args = args,
   }, on_login, on_curl_signal)
 end
 
+-- Request logout and clear API key
 function M.request_logout()
   local api_key = key_storage:get_key_by_name(username)
   if api_key == nil then
@@ -145,9 +152,11 @@ function M.request_logout()
     return
   end
   key_storage:clear()
+  username = nil
   Log.i('Logout successful')
 end
 
+-- Load last session from key storage and set username
 function M.request_load_last_session()
   Log.info('Loading last session')
   key_storage:load(function(name)
@@ -158,8 +167,9 @@ function M.request_load_last_session()
   end)
 end
 
----@alias Suggestion string[]
+---@alias Suggestion string[] Formated suggesion
 
+-- Generate suggestion from generated text
 ---@param generated_text string
 ---@return Suggestion|nil
 local function generate_suggestion(generated_text)
@@ -187,20 +197,23 @@ local function generate_suggestion(generated_text)
   return suggestion
 end
 
----@class OnGenerateOneStageData
----@field path string|nil
----@field task_id integer
----@field on_suggestion function|nil
+---@class OnGenerateOneStageData User data for GenerateOneStage request
+---@field path string|nil Temporary file path for HTTP request data
+---@field task_id integer Task ID
+---@field on_suggestion function|nil Callback when suggestion is generated
 
+-- Callback for request_generate_one_stage when HTTP request is successful
 ---@param response string
 ---@param data OnGenerateOneStageData
 local function on_generate_one_stage(_, response, data)
   if response == nil or response == '' then
+    Log.error('Generate one stage failed: Server response without data')
     return
   end
 
   local completion_data = fn.json_decode(response)
   if completion_data.generated_text == nil then
+    Log.error('Generate one stage failed: Server response without generated_text field; decoded response: {}', completion_data)
     return
   end
 
@@ -211,6 +224,7 @@ local function on_generate_one_stage(_, response, data)
   end
 end
 
+-- Callback for request_generate_one_stage when HTTP request is done
 ---@param data OnGenerateOneStageData
 local function on_generate_one_stage_exit(data)
   local path = data.path
@@ -246,6 +260,7 @@ local function make_generate_one_stage_params()
   return params
 end
 
+-- Check if the user is ready for generating one stage
 function M.ready_for_generate()
   return key_storage:get_key_by_name(username) ~= nil
 end
@@ -258,8 +273,8 @@ function M.request_generate_one_stage(task_id, on_suggestion)
     Log.debug('API key is nil')
     return
   end
-  local encoded_params = fn.json_encode(make_generate_one_stage_params())
-  Base.write_temp_file(encoded_params, function(_, path)
+  local params = fn.json_encode(make_generate_one_stage_params())
+  Base.write_temp_file(params, function(_, path)
     local server = URL_GENERATE_ONE_STAGE
     local args = {
       '-s',
