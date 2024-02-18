@@ -19,13 +19,20 @@ local KeyStorage = {}
 
 ---@param o KeyStorageOptions
 function KeyStorage:new(o)
-  local obj = {}
-  obj.keys = {}
-  obj.path = o.path
+  ---@type KeyStorage
+  local obj = {
+    keys = {},
+    path = o.path,
+  }
   self.__index = self
   return setmetatable(obj, self)
 end
 
+-- Load API key file
+-- * if load successful, call `on_success` with API key name
+-- * if load failed, call `on_error`
+---@param on_success function|nil
+---@param on_error function|nil
 function KeyStorage:load(on_success, on_error)
   Log.debug('Prepare reading API key file; path: {}', self.path)
   if not Base.exists(self.path) then
@@ -49,6 +56,11 @@ function KeyStorage:load(on_success, on_error)
   end)
 end
 
+-- Save API key file
+-- * if save successful, call `on_success`
+-- * if save failed, call `on_error`
+---@param on_success function|nil
+---@param on_error function|nil
 function KeyStorage:save(on_success, on_error)
   local encode_keys = fn.json_encode(self.keys)
   Base.write_mkdir(encode_keys, self.path, function()
@@ -64,6 +76,11 @@ function KeyStorage:save(on_success, on_error)
   end)
 end
 
+-- Delete API key file and clear keys
+-- * if successful, call `on_success`
+-- * if failed, call `on_error`
+---@param on_success function|nil
+---@param on_error function|nil
 function KeyStorage:clear(on_success, on_error)
   self.keys = {}
   uv.fs_unlink(self.path, function(err)
@@ -81,6 +98,9 @@ function KeyStorage:clear(on_success, on_error)
   end)
 end
 
+-- Get API key by name
+-- * if `name == nil`, return `nil`
+-- * if name not found, return `nil`
 ---@param name string|nil
 ---@return string|nil
 function KeyStorage:get_key_by_name(name)
@@ -90,7 +110,9 @@ function KeyStorage:get_key_by_name(name)
   return nil
 end
 
----@param name string
+-- Set API key by name
+-- * if `name == nil` or `key == nil`, do nothing
+---@param name string|nil
 ---@param key string
 function KeyStorage:set_key_by_name(name, key)
   if name == nil or key == nil then
