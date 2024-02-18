@@ -20,6 +20,7 @@ function M.setup()
   tasks:setup()
 end
 
+-- Callback function for when suggestion is ready
 ---@param task_id integer
 ---@param suggestion Suggestion
 local function on_suggestion(task_id, suggestion)
@@ -34,6 +35,10 @@ local function on_suggestion(task_id, suggestion)
   View.render_virt_text(suggestion)
 end
 
+-- Generate one stage completion
+-- If force is true, generate completion even if cursor position is not changed
+-- If force is false, generate completion only if cursor position is changed
+-- If LSP is active, stop request generate one stage
 ---@param row integer
 ---@param col integer
 ---@param force boolean|nil
@@ -55,10 +60,12 @@ function M.generate_one_stage(row, col, force)
   end
 end
 
+-- Check if there is any suggestion
 function M.has_suggestion()
   return vim.tbl_count(cache.lines or {}) ~= 0
 end
 
+-- Generate one stage completion at cursor position
 local function generate_one_stage_at_cursor()
   M.reset()
 
@@ -67,14 +74,21 @@ local function generate_one_stage_at_cursor()
 end
 
 function M.accept_all_suggestion()
+  Log.debug('Accept all suggestion')
+
   if not M.has_suggestion() then
+    Log.debug('No suggestion')
     return
   end
+
+  Log.debug('Pretreatment cache.lines: {}', cache.lines)
 
   View.clear_virt_text()
   View.set_text(cache.lines)
 
   M.reset()
+
+  Log.debug('Remaining cache.lines: {}', cache.lines)
 end
 
 function M.accept_line()
@@ -125,6 +139,7 @@ function M.accept_line()
   vim.o.eventignore = eventignore
 end
 
+-- Calculate the next word index, split by word boundary
 ---@param line string
 local function next_indices(line)
   local pa = nil
@@ -195,11 +210,13 @@ function M.accept_word()
   vim.o.eventignore = eventignore
 end
 
+-- Reset suggestion cache and view
 function M.reset()
   View.clear_virt_text()
   cache:flush()
 end
 
+-- Advance to next suggestion
 function M.advance()
   if not M.has_suggestion() then
     return
