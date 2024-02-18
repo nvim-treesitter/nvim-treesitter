@@ -114,7 +114,7 @@
 (raw_blck) @markup.raw
 
 (raw_blck
-  (blob)) @markup.raw.block
+  (blob) @markup.raw.block)
 
 ; refs and labels
 (label) @markup.link.label
