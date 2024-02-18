@@ -111,6 +111,36 @@ local function parse_err(err)
   return { name = name, message = message }
 end
 
+---@param dir string
+---@param on_success function|nil
+---@param on_error function|nil
+function M.mkdir(dir, on_success, on_error)
+  uv.fs_mkdir(
+    dir,
+    448, -- decimal 448 = octal 0700
+    ---@param err string|nil
+    ---@param success boolean|nil
+    function(err, success)
+      if err then
+        local parsed = parse_err(err)
+        if parsed.name ~= 'EEXIST' then
+          if on_error then
+            vim.schedule(function()
+              on_error(parsed)
+            end)
+          end
+          return
+        end
+      end
+      if on_success then
+        vim.schedule(function()
+          on_success(dir)
+        end)
+      end
+    end
+  )
+end
+
 ---@param data string
 ---@param path string
 ---@param on_success function|nil
@@ -155,31 +185,22 @@ end
 
 -- Write data to a file, creating the directory if it doesn't exist.
 ---@param data string
----@param dir string
 ---@param path string
 ---@param on_success function|nil
 ---@param on_error function|nil
-function M.write_mkdir(data, dir, path, on_success, on_error)
-  uv.fs_mkdir(
-    dir,
-    448, -- decimal 448 = octal 0700
-    ---@param err string|nil
-    ---@param success boolean|nil
-    function(err, success)
-      if err then
-        local parsed = parse_err(err)
-        if parsed.name ~= 'EEXIST' then
-          if on_error then
-            vim.schedule(function()
-              on_error(parsed)
-            end)
-          end
-          return
-        end
-      end
-      M.write(data, path, on_success, on_error)
+function M.write_mkdir(data, path, on_success, on_error)
+  local home = fn.fnamemodify(path, ':h')
+  if home == nil or home == '' then
+    if on_error ~= nil then
+      vim.schedule(function()
+        on_error({ name = 'fn.fnamemodify', message = 'Failed to get the head of the file name' })
+      end)
     end
-  )
+    return
+  end
+  M.mkdir(home, function()
+    M.write(data, path, on_success, on_error)
+  end, on_error)
 end
 
 ---@param data string

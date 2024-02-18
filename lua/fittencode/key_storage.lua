@@ -51,15 +51,7 @@ end
 
 function KeyStorage:save(on_success, on_error)
   local encode_keys = fn.json_encode(self.keys)
-  local home = fn.fnamemodify(self.path, ':h')
-  if home == nil or home == '' then
-    Log.error('Failed to save API key file; path: {}', self.path)
-    if on_error ~= nil then
-      on_error()
-    end
-    return
-  end
-  Base.write_mkdir(encode_keys, home, self.path, function()
+  Base.write_mkdir(encode_keys, self.path, function()
     Log.info('API key file saved successful; path: {}', self.path)
     if on_success ~= nil then
       on_success()
