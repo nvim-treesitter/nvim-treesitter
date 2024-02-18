@@ -14,23 +14,40 @@ else
 end
 
 ts.query.add_predicate('has-type?', function(match, _, _, pred)
-  local node = match[pred[2]]
-  if not node then
+  local nodes = match[pred[2]]
+  local types = { unpack(pred, 3) }
+
+  if not nodes or #nodes == 0 then
     return true
   end
 
-  local types = { unpack(pred, 3) }
-  return vim.tbl_contains(types, node:type())
-end, true)
+  for _, node in pairs(nodes) do
+    if not vim.tbl_contains(types, node:type()) then
+      return false
+    end
+  end
+  return true
+end, {
+  force = true,
+  all = true,
+})
 
 ts.query.add_predicate('is-start-of-line?', function(match, _, _, pred)
-  local node = match[pred[2]]
-  if not node then
+  local nodes = match[pred[2]]
+  if not nodes or #nodes == 0 then
     return true
   end
-  local start_row, start_col = node:start()
-  return vim.fn.indent(start_row + 1) == start_col
-end)
+  for _, node in pairs(nodes) do
+    local start_row, start_col = node:start()
+    if vim.fn.indent(start_row + 1) ~= start_col then
+      return false
+    end
+  end
+  return true
+end, {
+  force = true,
+  all = true,
+})
 
 --- Control the indent here. Change to \t if uses tab instead
 local indent_str = '  '
