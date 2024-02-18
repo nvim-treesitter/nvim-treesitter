@@ -9,6 +9,10 @@ local M = {}
 ---@field args table
 ---@field data any
 
+-- Rest API, send request to server and get response
+-- * If success, call on_success with exit_code, output, and data
+-- * If error, call on_error with signal, output, and data
+-- * If exit, call on_exit with data
 ---@param params RestParams
 ---@param on_success function|nil
 ---@param on_error function|nil
@@ -63,6 +67,7 @@ function M.send(params, on_success, on_error, on_exit)
     end)
   end)
 
+  -- Process stdout and stderr chunks
   ---@param err any
   ---@param chunk string|nil
   local function on_chunk(err, chunk)
