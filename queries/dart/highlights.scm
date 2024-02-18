@@ -13,10 +13,11 @@
 ; NOTE: This query is a bit of a work around for the fact that the dart grammar doesn't
 ; specifically identify a node as a function call
 (((identifier) @function
-  (#lua-match? @function "^_?[%l]")).
-(selector
+  (#lua-match? @function "^_?[%l]"))
   .
-  (argument_part))) @function
+  (selector
+    .
+    (argument_part))) @function
 
 ; Annotations
 ; --------------------

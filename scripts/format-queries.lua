@@ -206,8 +206,13 @@ local format_queries = [[
     (named_node)                  ; ((foo))
     (list)                        ; ([foo] (...))
     (anonymous_node)              ; ("foo")
-    (grouping . (anonymous_node)) ; (("foo"))
   ] @format.indent.begin
+  .
+  (_))
+(grouping
+  "("
+  .
+  (grouping . (_)) @format.indent.begin
   .
   (_))
 (grouping
