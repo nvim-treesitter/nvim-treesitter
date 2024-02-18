@@ -7,17 +7,19 @@ local Color = require('fittencode.color')
 local M = {}
 
 ---@class VirtLine
---@field text string
---@field hl string
+---@field text string @The text of the virtual line
+---@field hl string @The highlight group of the virtual line
 
----@alias VirtText VirtLine[]|nil
+---@alias VirtText VirtLine[] @The virtual text to be displayed
 
----@param suggestion Suggestion
----@return VirtText
+-- Generate virtual text for suggestion
+---@param suggestion Suggestion @The suggestion to be displayed
+---@return VirtText|nil @The virtual text to be displayed
 local function generate_virt_text(suggestion)
   if suggestion == nil then
     return
   end
+  ---@type VirtText
   local virt_text = {}
   for _, line in ipairs(suggestion) do
     table.insert(virt_text, { { line, Color.FittenSuggestion } })
@@ -25,7 +27,8 @@ local function generate_virt_text(suggestion)
   return virt_text
 end
 
----@param virt_text VirtText
+-- Draw virtual text on buffer
+---@param virt_text VirtText @The virtual text to be displayed
 local function draw_virt_text(virt_text)
   if virt_text == nil or vim.tbl_count(virt_text) == 0 then
     return
@@ -48,7 +51,7 @@ local function draw_virt_text(virt_text)
   end
 end
 
----@param namespace integer|nil
+-- Clear virtual text on buffer
 ---@param bufnr integer|nil
 local function clear_ns(namespace, bufnr)
   if namespace ~= nil and bufnr ~= nil then
@@ -56,6 +59,7 @@ local function clear_ns(namespace, bufnr)
   end
 end
 
+-- Reset the namespace for virtual text
 local function reset_ns()
   if M.namespace ~= nil then
     clear_ns(M.namespace, 0)
@@ -64,11 +68,13 @@ local function reset_ns()
   end
 end
 
+-- Clear virtual text on buffer
 function M.clear_virt_text()
   clear_ns(M.namespace, 0)
 end
 
----@param virt_height integer
+-- Move the cursor to the center of the window
+---@param virt_height integer @The height of the virtual text
 local function move_to_center_vertical(virt_height)
   local row, _ = Base.get_cursor()
   local relative_row = row - fn.line('w0')
@@ -80,7 +86,8 @@ local function move_to_center_vertical(virt_height)
   end
 end
 
----@param suggestion Suggestion
+-- Render virtual text on buffer
+---@param suggestion Suggestion @The suggestion to be displayed
 function M.render_virt_text(suggestion)
   local virt_text = generate_virt_text(suggestion)
   if virt_text == nil then
@@ -96,6 +103,7 @@ local smartindent = nil
 local formatoptions = nil
 local textwidth = nil
 
+-- Disable autoindent, smartindent, formatoptions, textwidth for local formatting
 local function local_fmt_clear()
   autoindent = vim.bo.autoindent
   smartindent = vim.bo.smartindent
@@ -107,6 +115,7 @@ local function local_fmt_clear()
   vim.bo.textwidth = 0
 end
 
+-- Recovery autoindent, smartindent, formatoptions, textwidth for local formatting
 local function local_fmt_recovery()
   vim.bo.autoindent = autoindent
   vim.bo.smartindent = smartindent
@@ -114,14 +123,16 @@ local function local_fmt_recovery()
   vim.bo.textwidth = textwidth
 end
 
+-- Silence LSP
 local function silence_lsp()
   Base.feedkeys('<Esc>a')
 end
 
----@param row integer
----@param col integer
----@param count integer
----@param lines string[]
+-- Move the cursor to the end of the text
+---@param row integer @The row of the cursor
+---@param col integer @The column of the cursor
+---@param count integer @The count of the lines
+---@param lines string[] @The lines have been appended
 local function move_cursor_to_text_end(row, col, count, lines)
   if count == 1 then
     local first_len = string.len(lines[1])
@@ -134,10 +145,11 @@ local function move_cursor_to_text_end(row, col, count, lines)
   end
 end
 
----@param row integer
----@param col integer
----@param count integer
----@param lines string[]
+-- Append text at position
+---@param row integer @The row of the cursor
+---@param col integer @The column of the cursor
+---@param count integer @The count of the lines
+---@param lines string[] @The lines to be appended
 local function append_text_at_pos(row, col, count, lines)
   for i = 1, count, 1 do
     local line = lines[i]
@@ -162,11 +174,13 @@ local function append_text_at_pos(row, col, count, lines)
   end
 end
 
+-- Undojoin
 local function undojoin()
   Base.feedkeys('<C-g>u')
 end
 
----@param lines string[]
+-- Set text to buffer
+---@param lines string[] @The lines to be set to buffer
 function M.set_text(lines)
   local_fmt_clear()
 
@@ -184,6 +198,7 @@ function M.set_text(lines)
   local_fmt_recovery()
 end
 
+-- Feed tab key
 function M.feed_tab()
   Base.feedkeys('<Tab>')
 end
