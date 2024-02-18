@@ -154,7 +154,7 @@ function M.request_load_last_session()
     username = name
     Log.i('Last session for user {} loaded successful', name)
   end, function()
-    Log.info('Last session not found or invalid, please login again')
+    Log.i('Last session not found or invalid, please login again')
   end)
 end
 
