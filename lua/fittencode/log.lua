@@ -108,6 +108,7 @@ function M.setup()
   fn.mkdir(LOG_HOME, 'p')
 end
 
+---@param level integer
 function M.set_level(level)
   current = level
 end
