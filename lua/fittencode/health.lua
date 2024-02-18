@@ -5,6 +5,7 @@ local M = {}
 function M.check()
   vim.health.start('Installation')
 
+  -- Check for `curl`
   if fn.executable('curl') == 1 then
     local handle = io.popen('curl --version')
     if handle then
