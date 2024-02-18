@@ -94,67 +94,163 @@ function M.debounce(timer, callback, wait, on_error)
   end
 end
 
+-- Refs:`3rd\luv\library\uv.lua`
+---@class UvError
+---@field name uv.error.name
+---@field message uv.error.message
+
+---@param err string
+---@return UvError
+local function parse_err(err)
+  if not err then
+    return { name = 'parse_err', message = 'Error is nil' }
+  end
+  local pos = err:find(':', 1, true)
+  local name = err:sub(1, pos - 1)
+  local message = err:sub(pos + 2)
+  return { name = name, message = message }
+end
+
 ---@param data string
 ---@param path string
 ---@param on_success function|nil
-function M.write(data, path, on_success)
-  uv.fs_open(path, 'w', 438, function(_, fd)
-    if fd ~= nil then
-      uv.fs_write(fd, data, -1, function(_, _)
-        uv.fs_close(fd, function(_, _) end)
-        if on_success then
+---@param on_error function|nil
+function M.write(data, path, on_success, on_error)
+  uv.fs_open(
+    path,
+    'w',
+    438, -- decimal 438 = octal 0666
+    ---@param e_open string|nil
+    function(e_open, fd)
+      if e_open then
+        if on_error then
           vim.schedule(function()
-            on_success(path)
+            on_error(parse_err(e_open))
           end)
         end
-      end)
+        return
+      end
+      if fd ~= nil then
+        ---@param e_write string|nil
+        uv.fs_write(fd, data, -1, function(e_write, _)
+          if e_write then
+            if on_error then
+              vim.schedule(function()
+                on_error(parse_err(e_write))
+              end)
+            end
+            return
+          end
+          uv.fs_close(fd, function(_, _) end)
+          if on_success then
+            vim.schedule(function()
+              on_success(path)
+            end)
+          end
+        end)
+      end
     end
-  end)
+  )
 end
 
+-- Write data to a file, creating the directory if it doesn't exist.
 ---@param data string
 ---@param dir string
 ---@param path string
 ---@param on_success function|nil
-function M.write_mkdir(data, dir, path, on_success)
-  uv.fs_mkdir(dir, 448, function(_, _)
-    M.write(data, path, on_success)
-  end)
+---@param on_error function|nil
+function M.write_mkdir(data, dir, path, on_success, on_error)
+  uv.fs_mkdir(
+    dir,
+    448, -- decimal 448 = octal 0700
+    ---@param err string|nil
+    ---@param success boolean|nil
+    function(err, success)
+      if err then
+        local parsed = parse_err(err)
+        if parsed.name ~= 'EEXIST' then
+          if on_error then
+            vim.schedule(function()
+              on_error(parsed)
+            end)
+          end
+          return
+        end
+      end
+      M.write(data, path, on_success, on_error)
+    end
+  )
 end
 
 ---@param data string
 ---@param on_success function|nil
+---@param on_error function|nil
 function M.write_temp_file(data, on_success, on_error)
   local path = fn.tempname()
   if not path then
     if on_error then
-      on_error()
+      vim.schedule(function()
+        on_error({ name = 'fn.tempname', message = 'Failed to generate temporary file name' })
+      end)
     end
     return
   end
   path = M.to_native(path)
-  M.write(data, path, on_success)
+  M.write(data, path, on_success, on_error)
 end
 
 ---@param path string
 ---@param on_success function|nil
-function M.read(path, on_success)
-  uv.fs_open(path, 'r', 438, function(_, fd)
-    if fd ~= nil then
-      uv.fs_fstat(fd, function(_, stat)
-        if stat ~= nil then
-          uv.fs_read(fd, stat.size, -1, function(_, data)
-            uv.fs_close(fd, function(_, _) end)
-            if on_success then
-              vim.schedule(function()
-                on_success(data)
-              end)
-            end
+---@param on_error function|nil
+function M.read(path, on_success, on_error)
+  uv.fs_open(
+    path,
+    'r',
+    438, -- decimal 438 = octal 0666
+    ---@param e_open string|nil
+    function(e_open, fd)
+      if e_open then
+        if on_error then
+          vim.schedule(function()
+            on_error(parse_err(e_open))
           end)
         end
-      end)
+        return
+      end
+      if fd ~= nil then
+        ---@param e_stat string|nil
+        uv.fs_fstat(fd, function(e_stat, stat)
+          if e_stat then
+            if on_error then
+              vim.schedule(function()
+                on_error(parse_err(e_stat))
+              end)
+            end
+            return
+          end
+          if stat ~= nil then
+            ---@param e_read string|nil
+            uv.fs_read(fd, stat.size, -1, function(e_read, data)
+              if e_read then
+                if on_error then
+                  vim.schedule(function()
+                    on_error(parse_err(e_read))
+                  end)
+                end
+                return
+              end
+              uv.fs_close(fd, function(_, _) end)
+              if on_success then
+                vim.schedule(function()
+                  on_success(data)
+                end)
+              end
+            end)
+          end
+        end)
+      end
     end
-  end)
+  )
 end
 
 ---@param file string

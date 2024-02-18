@@ -41,6 +41,11 @@ function KeyStorage:load(on_success, on_error)
     if on_success ~= nil then
       on_success(self.keys.name)
     end
+  end, function(err)
+    Log.error('Failed to load API key file; path: {}; error: {}', self.path, err)
+    if on_error then
+      on_error()
+    end
   end)
 end
 
@@ -58,6 +63,11 @@ function KeyStorage:save(on_success, on_error)
     Log.info('API key file saved successful; path: {}', self.path)
     if on_success ~= nil then
       on_success()
+    end
+  end, function(err)
+    Log.error('Failed to save API key file; path: {}; error: {}', self.path, err)
+    if on_error then
+      on_error()
     end
   end)
 end
