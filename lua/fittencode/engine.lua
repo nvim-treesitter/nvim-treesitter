@@ -52,12 +52,14 @@ function M.generate_one_stage(row, col, force)
     return
   end
 
+  if Lsp.is_active() then
+    Log.debug('LSP is active, cancel request generate one stage')
+    return
+  end
+
   local task_id = tasks:create(row, col)
   cache:flush()
-
-  if not Lsp.is_active() then
-    Sessions.request_generate_one_stage(task_id, on_suggestion)
-  end
+  Sessions.request_generate_one_stage(task_id, on_suggestion)
 end
 
 -- Check if there is any suggestion
