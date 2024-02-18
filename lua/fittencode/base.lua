@@ -111,6 +111,9 @@ local function parse_err(err)
   return { name = name, message = message }
 end
 
+-- Create a directory if it doesn't exist.
+-- - If successful, call `on_success` with the directory path.
+-- - If an error occurs, call `on_error` with the error message.
 ---@param dir string
 ---@param on_success function|nil
 ---@param on_error function|nil
@@ -141,6 +144,9 @@ function M.mkdir(dir, on_success, on_error)
   )
 end
 
+-- Write data to a file. Assumes the directory already exists.
+-- - If successful, call `on_success` with the data and file path.
+-- - If an error occurs, call `on_error` with the error message.
 ---@param data string
 ---@param path string
 ---@param on_success function|nil
@@ -174,7 +180,7 @@ function M.write(data, path, on_success, on_error)
           uv.fs_close(fd, function(_, _) end)
           if on_success then
             vim.schedule(function()
-              on_success(path)
+              on_success(data, path)
             end)
           end
         end)
@@ -184,13 +190,15 @@ function M.write(data, path, on_success, on_error)
 end
 
 -- Write data to a file, creating the directory if it doesn't exist.
+-- - If successful, call `on_success` with the data, file path, and directory path.
+-- - If an error occurs, call `on_error` with the error message.
 ---@param data string
 ---@param path string
 ---@param on_success function|nil
 ---@param on_error function|nil
 function M.write_mkdir(data, path, on_success, on_error)
-  local home = fn.fnamemodify(path, ':h')
-  if home == nil or home == '' then
+  local head = fn.fnamemodify(path, ':h')
+  if head == nil or head == '' then
     if on_error ~= nil then
       vim.schedule(function()
         on_error({ name = 'fn.fnamemodify', message = 'Failed to get the head of the file name' })
@@ -198,11 +206,20 @@ function M.write_mkdir(data, path, on_success, on_error)
     end
     return
   end
-  M.mkdir(home, function()
-    M.write(data, path, on_success, on_error)
+  M.mkdir(head, function(h)
+    M.write(data, path, function(d, p)
+      if on_success then
+        vim.schedule(function()
+          on_success(d, p, h)
+        end)
+      end
+    end, on_error)
   end, on_error)
 end
 
+-- Write data to a temporary file.
+--   If successful, call `on_success` with the temporary file path.
+--   If an error occurs, call `on_error` with the error message.
 ---@param data string
 ---@param on_success function|nil
 ---@param on_error function|nil
@@ -217,9 +234,18 @@ function M.write_temp_file(data, on_success, on_error)
     return
   end
   path = M.to_native(path)
-  M.write(data, path, on_success, on_error)
+  M.write(data, path, function(_, p)
+    if on_success then
+      vim.schedule(function()
+        on_success(p)
+      end)
+    end
+  end, on_error)
 end
 
+-- Read data from a file.
+-- - If successful, call `on_success` with the data.
+-- - If an error occurs, call `on_error` with the error message.
 ---@param path string
 ---@param on_success function|nil
 ---@param on_error function|nil
@@ -274,6 +300,7 @@ function M.read(path, on_success, on_error)
   )
 end
 
+-- Check if a file exists.
 ---@param file string
 ---@return boolean
 function M.exists(file)
