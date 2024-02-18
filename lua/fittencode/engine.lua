@@ -110,15 +110,14 @@ function M.accept_line()
 
   if vim.tbl_count(cache.lines) > 0 then
     View.render_virt_text(cache.lines)
+    local row, col = Base.get_cursor()
+    cache:update_pos(row, col)
   else
     Log.debug('No more suggestion, generate one stage')
     generate_one_stage_at_cursor()
   end
 
   vim.o.eventignore = eventignore
-
-  local row, col = Base.get_cursor()
-  cache:update_pos(row, col)
 end
 
 ---@param line string
@@ -181,15 +180,14 @@ function M.accept_word()
 
   if vim.tbl_count(cache.lines) > 0 then
     View.render_virt_text(cache.lines)
+    local row, col = Base.get_cursor()
+    cache:update_pos(row, col)
   else
     Log.debug('No more suggestion, generate one stage')
     generate_one_stage_at_cursor()
   end
 
   vim.o.eventignore = eventignore
-
-  local row, col = Base.get_cursor()
-  cache:update_pos(row, col)
 end
 
 function M.reset()
