@@ -31,24 +31,6 @@ local first_log = true
 local cpu = 0
 local environ = 0
 
----@param level integer
----@return string
-local function to_string(level)
-  if level == levels.ERROR then
-    return 'ERROR'
-  elseif level == levels.WARN then
-    return 'WARN'
-  elseif level == levels.INFO then
-    return 'INFO'
-  elseif level == levels.DEBUG then
-    return 'DEBUG'
-  elseif level == levels.TRACE then
-    return 'TRACE'
-  else
-    return '????'
-  end
-end
-
 ---@param msg string
 local function log_file(msg)
   local f = io.open(LOG_PATH, 'a')
@@ -102,8 +84,16 @@ local function do_log(notify, level, msg, ...)
   end
   ---@type table<string,string>
   local mat = {}
+  local function name(x)
+    for k, v in pairs(levels) do
+      if v == x then
+        return k
+      end
+    end
+    return '????'
+  end
   local ms = string.format('%03d', math.floor((uv.hrtime() / 1e6) % 1000))
-  table.insert(mat, string.format('%5s', to_string(level)))
+  table.insert(mat, string.format('%5s', name(level)))
   table.insert(mat, os.date('%Y-%m-%d %H:%M:%S') .. '.' .. ms)
   table.insert(mat, MODULE_NAME)
   local tags = ''
