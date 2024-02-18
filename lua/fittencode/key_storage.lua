@@ -79,12 +79,9 @@ function KeyStorage:clear(on_success, on_error)
   end)
 end
 
----@param name string
+---@param name string|nil
 ---@return string|nil
 function KeyStorage:get_key_by_name(name)
-  if name == nil then
-    return nil
-  end
   if self.keys.name == name then
     return self.keys.key
   end
