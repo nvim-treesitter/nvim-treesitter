@@ -79,7 +79,7 @@
 
 ; name-value pairs
 (tagged
-  field: (ident)) @variable.member
+  field: (ident) @variable.member)
 
 ; function definitions, calls, etc.
 ; TODO: support for functions such as #calc.cos, tree view appears as
