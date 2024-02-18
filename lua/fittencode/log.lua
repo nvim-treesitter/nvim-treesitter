@@ -31,7 +31,8 @@ local first_log = true
 local cpu = 0
 local environ = 0
 
----@param msg string
+-- Log a message to a file.
+---@param msg string @the message to log
 local function log_file(msg)
   local f = io.open(LOG_PATH, 'a')
   if f then
@@ -63,9 +64,10 @@ local function log_file(msg)
   end
 end
 
----@param notify boolean
----@param level integer
----@param msg string|nil
+-- Log a message with a given level.
+---@param notify boolean @if true, use `vim.notify` to display the message also
+---@param level integer @one of the `vim.log.levels` values
+---@param msg string|nil @can be a format string with {} placeholders
 local function do_log(notify, level, msg, ...)
   if level < current or current == levels.OFF then
     return
@@ -108,19 +110,19 @@ function M.setup()
   fn.mkdir(LOG_HOME, 'p')
 end
 
----@param level integer
+---@param level integer @one of the `vim.log.levels` values
 function M.set_level(level)
   current = level
 end
 
----@param level integer
----@param msg string|nil
+---@param level integer @one of the `vim.log.levels` values
+---@param msg string|nil @can be a format string with {} placeholders
 function M.log(level, msg, ...)
   do_log(false, level, msg, ...)
 end
 
----@param level integer
----@param msg string|nil
+---@param level integer @one of the `vim.log.levels` values
+---@param msg string|nil @can be a format string with {} placeholders
 function M.notify(level, msg, ...)
   do_log(true, level, msg, ...)
 end
