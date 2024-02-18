@@ -5,12 +5,12 @@ local Log = require('fittencode.log')
 ---@class Task
 ---@field row integer
 ---@field col integer
----@field timestamp integer
+---@field timestamp integer @timestamp of the task when it was created, in nanoseconds, since the Unix epoch
 
 ---@class TaskScheduler
----@field list table<integer, Task>
----@field threshold? integer
----@field timeout_recycling_timer? uv_timer_t
+---@field list table<integer, Task> @list of tasks
+---@field threshold? integer @threshold for clean up
+---@field timeout_recycling_timer? uv_timer_t @timer for recycling timeout tasks
 
 ---@class TaskScheduler
 local TaskScheduler = {}
@@ -41,6 +41,7 @@ end
 
 ---@param row integer
 ---@param col integer
+---@return integer
 function TaskScheduler:create(row, col)
   local timestamp = uv.hrtime()
   table.insert(self.list, #self.list + 1, { row = row, col = col, timestamp = timestamp })
