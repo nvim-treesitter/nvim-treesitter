@@ -73,10 +73,10 @@ function M.accept_all_suggestion()
 end
 
 function M.accept_line()
-  Log.debug('accept_line')
+  Log.debug('Accept line')
 
   if not M.has_suggestion() then
-    Log.debug('no suggestion')
+    Log.debug('No suggestion')
     return
   end
 
@@ -85,26 +85,33 @@ function M.accept_line()
   local eventignore = vim.o.eventignore
   vim.o.eventignore = 'all'
 
+  Log.debug('Pretreatment cache.lines: {}', cache.lines)
+
   local line = table.remove(cache.lines, 1)
   local cur = vim.tbl_count(cache.lines)
   local stage = cache.count - 1
 
   if cur == stage then
     View.set_text({ line })
+    Log.debug('Set line; line: {}', line)
     View.set_text({ '', '' })
+    Log.debug('Set empty new line')
   else
     if cur == 0 then
       View.set_text({ line })
+      Log.debug('Set line; line: {}', line)
     else
       View.set_text({ line, '' })
+      Log.debug('Set line and empty new line; line: {}', line)
     end
   end
 
-  Log.debug('cache.lines: {}', cache.lines)
+  Log.debug('Remaining cache.lines: {}', cache.lines)
 
   if vim.tbl_count(cache.lines) > 0 then
     View.render_virt_text(cache.lines)
   else
+    Log.debug('No more suggestion, generate one stage')
     generate_one_stage_at_cursor()
   end
 
@@ -159,7 +166,7 @@ function M.accept_word()
     table.remove(cache.lines, 1)
     if M.has_suggestion() then
       View.set_text({ word, '' })
-      Log.debug('Set word and empty line; word: {}', word)
+      Log.debug('Set word and empty new line; word: {}', word)
     else
       View.set_text({ word })
       Log.debug('Set word; word: {}', word)
@@ -175,6 +182,7 @@ function M.accept_word()
   if vim.tbl_count(cache.lines) > 0 then
     View.render_virt_text(cache.lines)
   else
+    Log.debug('No more suggestion, generate one stage')
     generate_one_stage_at_cursor()
   end
 
