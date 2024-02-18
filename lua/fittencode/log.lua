@@ -110,8 +110,7 @@ local function do_log(notify, level, msg, ...)
   for i in ipairs(mat) do
     tags = tags .. string.format('[%s]', mat[i]) .. ' '
   end
-  msg = tags .. msg
-  log_file(msg)
+  log_file(tags .. msg)
 end
 
 function M.setup()
