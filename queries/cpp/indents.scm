@@ -1,4 +1,5 @@
 ; inherits: c
+
 (condition_clause) @indent.begin
 
 ((field_initializer_list) @indent.begin

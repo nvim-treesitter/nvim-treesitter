@@ -1,4 +1,5 @@
 ; inherits: python
+
 ; Compound directives
 [
   "rule"

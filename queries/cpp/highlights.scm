@@ -1,4 +1,5 @@
 ; inherits: c
+
 ((identifier) @variable.member
   (#lua-match? @variable.member "^m_.*$"))
 

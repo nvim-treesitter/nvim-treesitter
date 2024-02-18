@@ -1,4 +1,5 @@
 ; inherits: ecma
+
 "require" @keyword.import
 
 (import_require_clause

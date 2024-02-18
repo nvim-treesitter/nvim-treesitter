@@ -1,4 +1,5 @@
 ; inherits: ecma,jsx
+
 ; Parameters
 (formal_parameters
   (identifier) @variable.parameter)

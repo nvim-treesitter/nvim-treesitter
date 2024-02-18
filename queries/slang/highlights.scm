@@ -1,4 +1,5 @@
 ; inherits: hlsl
+
 [
   "var"
   "let"

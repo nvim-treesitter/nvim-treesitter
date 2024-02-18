@@ -1,4 +1,5 @@
 ; inherits: c
+
 ; Preprocs
 (preproc_undef
   name: (_) @constant) @keyword.directive

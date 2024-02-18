@@ -1,4 +1,5 @@
 ; inherits: c
+
 [
   (for_range_loop)
   (class_specifier)

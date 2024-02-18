@@ -1,4 +1,5 @@
 ; inherits: ecma
+
 (required_parameter
   (identifier) @local.definition)
 

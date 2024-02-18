@@ -1,4 +1,5 @@
 ; inherits: soql
+
 ; Apex + SOQL
 [
   "["
