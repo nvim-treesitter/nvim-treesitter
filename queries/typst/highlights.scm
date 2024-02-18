@@ -108,9 +108,6 @@
 ; code blocks
 (raw_span) @markup.raw
 
-(raw_span
-  (blob)) @markup.raw
-
 (raw_blck) @markup.raw
 
 (raw_blck
