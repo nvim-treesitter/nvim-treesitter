@@ -49,6 +49,9 @@ function M.set_hi(name, hi)
   vim.api.nvim_set_hl(0, name, hi)
 end
 
+-- Get current cursor position.
+-- * Returns a tuple of row and column.
+-- * Row and column are 0-based.
 ---@return integer, integer
 function M.get_cursor()
   local cursor = api.nvim_win_get_cursor(0)
@@ -57,6 +60,11 @@ function M.get_cursor()
   return row, col
 end
 
+-- Debounce a function call.
+-- * If a timer is already running, reset it.
+-- * If a timer is not running, start a new timer with the given `wait` time.
+-- * When the timer expires, call the `callback` function.
+-- * If an error occurs, call `on_error` with the error message.
 ---@param timer uv_timer_t|nil
 ---@param callback function
 ---@param wait integer
@@ -95,6 +103,9 @@ function M.debounce(timer, callback, wait, on_error)
 end
 
 -- Refs:`3rd\luv\library\uv.lua`
+---@alias uv.error.name string
+---@alias uv.error.message string
+
 ---@class UvError
 ---@field name uv.error.name
 ---@field message uv.error.message
