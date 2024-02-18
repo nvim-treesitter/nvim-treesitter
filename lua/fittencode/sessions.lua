@@ -259,7 +259,7 @@ function M.request_generate_one_stage(task_id, on_suggestion)
     return
   end
   local encoded_params = fn.json_encode(make_generate_one_stage_params())
-  Base.write_temp_file(encoded_params, function(path)
+  Base.write_temp_file(encoded_params, function(_, path)
     local server = URL_GENERATE_ONE_STAGE
     local args = {
       '-s',
