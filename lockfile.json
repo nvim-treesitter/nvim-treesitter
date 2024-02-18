@@ -713,6 +713,9 @@
   "typoscript": {
     "revision": "43b221c0b76e77244efdaa9963e402a17c930fbc"
   },
+  "typst": {
+    "revision": "3a6c81bb56082604f5e63834cb2f946beeda1e76"
+  },
   "udev": {
     "revision": "15d89be59a3802dcbe2e97e0f9d32b52f3aeda3f"
   },
