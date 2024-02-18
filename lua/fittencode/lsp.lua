@@ -1,5 +1,6 @@
 local M = {}
 
+-- Check if the current buffer is active in the completion menu
 ---@return boolean
 function M.is_active()
   ---@type boolean, any
