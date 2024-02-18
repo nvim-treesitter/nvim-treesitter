@@ -99,7 +99,7 @@
     "revision": "2df92e6755337e9234ad18ffef37f35d95e2ba9d"
   },
   "d": {
-    "revision": "d9a1a2ed77017c23f715643f4739433a5ea7ab6f"
+    "revision": "a33d400f025d6bbd37b4c681c93054976f579890"
   },
   "dart": {
     "revision": "1a31399a08aefc93bc4cdbfadc0cb619136f86c1"
@@ -651,7 +651,7 @@
     "revision": "bd60db7d3d06f89b6ec3b287c9a6e9190b5564bd"
   },
   "swift": {
-    "revision": "dabbcf9a2311e08c1b020e1258849b8359e9de1a"
+    "revision": "bd81fff1453a5512e554bea3b163d95a5bef4c4e"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -753,7 +753,7 @@
     "revision": "40259f3c77ea856841a4e0c4c807705f3e4a2b65"
   },
   "wgsl_bevy": {
-    "revision": "a041228ae64632f59b9bd37346a0dbcb7817f36b"
+    "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
     "revision": "f7965a947d2eaa8b5b9bba1c42a0e1891f1a0b2a"
