@@ -2,9 +2,9 @@ local api = vim.api
 
 local Base = require('fittencode.base')
 local Engine = require('fittencode.engine')
-local Sessions = require('fittencode.sessions')
 local Log = require('fittencode.log')
 local View = require('fittencode.view')
+local API = require('fittencode.api')
 
 local M = {}
 
@@ -58,8 +58,8 @@ end
 function M.setup_commands()
   ---@type FittenCommands
   local commands = {
-    login = Sessions.request_login,
-    logout = Sessions.request_logout,
+    login = API.api.login,
+    logout = API.api.logout,
   }
   Base.command('Fitten', function(line)
     ---@type string[]
