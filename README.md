@@ -576,6 +576,7 @@ parser_config.zimbu = {
     branch = "main", -- default branch in case of git repo if different from master
     generate_requires_npm = false, -- if stand-alone parser without npm dependencies
     requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+    env = {}  -- add any environment variables you may need when requires_generate_from_grammar is true
   },
   filetype = "zu", -- if filetype does not match the parser name
 }
@@ -592,6 +593,20 @@ Note this requires Nvim v0.9.
 4. Start `nvim` and `:TSInstall zimbu`.
 
 You can also skip step 2 and use `:TSInstallFromGrammar zimbu` to install directly from a `grammar.js` in the top-level directory specified by `url`.
+You may define environment variables to modify options for grammar generation
+using `install_info.env`. For example, if you wanted to add support for *tags*
+and *wiki-links* in the markdown parser:
+
+```lua
+-- keep default options and modify `requires_generate_from_grammar` and `env`
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.markdown_inline.install_info.requires_generate_from_grammar = true
+parser_config.markdown_inline.install_info.env = {
+  EXTENSION_TAGS = 1,
+  EXTENSION_WIKI_LINK = 1
+}
+```
+
 Once the parser is installed, you can update it (from the latest revision of the `main` branch if `url` is a Github repository) with `:TSUpdate zimbu`.
 
 Note that neither `:TSInstall` nor `:TSInstallFromGrammar` copy query files from the grammar repository.

@@ -57,6 +57,7 @@ end
 ---@field files string[]
 ---@field generate_requires_npm boolean|nil
 ---@field requires_generate_from_grammar boolean|nil
+---@field env table|nil
 ---@field location string|nil
 ---@field use_makefile boolean|nil
 ---@field cxx_standard string|nil

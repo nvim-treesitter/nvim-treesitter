@@ -423,6 +423,24 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
         },
       })
     end
+    --- uv.spawn will completely overwrite the environment
+    --- when we just want to modify the existing one, so
+    --- make sure to prepopulate it with the current env.
+    --- @param env? table<string,string|number>
+    --- @return string[]?
+    local function add_to_env(env)
+      --- @type table<string,string|number>
+      env = vim.tbl_extend('force', vim.fn.environ(), env or {})
+
+      local renv = {} --- @type string[]
+      for k, v in pairs(env) do
+        renv[#renv + 1] = string.format('%s=%s', k, tostring(v))
+      end
+
+      return renv
+    end
+    local env = add_to_env(parsers.list[lang].install_info.env)
+
     vim.list_extend(command_list, {
       {
         cmd = vim.fn.exepath "tree-sitter",
@@ -431,6 +449,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
         opts = {
           args = M.ts_generate_args,
           cwd = compile_location,
+          env = env
         },
       },
     })
