@@ -12,8 +12,6 @@
   "]"
 ] @punctuation.bracket
 
-"." @punctuation.delimiter
-
 (nil) @constant.builtin
 
 (boolean) @boolean
@@ -27,6 +25,7 @@
 (symbol) @variable
 
 (multi_symbol
+  "." @punctuation.delimiter
   member: (symbol_fragment) @variable.member)
 
 (list
@@ -59,20 +58,11 @@
   ; format-ignore
   (#any-of? @operator
     ; arithmetic
-    "+"
-    "-"
-    "*"
-    "/"
-    "//"
-    "%"
-    "^"
+    "+" "-" "*" "/" "//" "%" "^"
     ; comparison
-    ">"
-    "<"
-    ">="
-    "<="
-    "="
-    "~="))
+    ">" "<" ">=" "<=" "=" "~="
+    ; other
+    "#" "." "?." ".."))
 
 ((symbol) @keyword.operator
   ; format-ignore
@@ -80,9 +70,11 @@
     ; comparison
     "not="
     ; boolean
-    "length" "and" "or" "not"
+    "and" "or" "not"
     ; bitwise
-    "lshift" "rshift" "band" "bor" "bxor" "bnot"))
+    "lshift" "rshift" "band" "bor" "bxor" "bnot"
+    ; other
+    "length"))
 
 ((symbol) @keyword.function
   (#any-of? @keyword.function "fn" "lambda" "λ" "hashfn"))
@@ -109,7 +101,8 @@
     "macros"
     "quote"
     "tset"
-    "values"))
+    "values"
+    "tail!"))
 
 ((symbol) @keyword.import
   (#any-of? @keyword.import "require" "require-macros" "import-macros" "include"))
