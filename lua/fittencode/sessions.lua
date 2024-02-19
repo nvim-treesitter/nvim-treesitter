@@ -167,11 +167,11 @@ function M.request_load_last_session()
   end)
 end
 
----@alias Suggestion string[] Formated suggesion
+---@alias Suggestions string[] Formated suggesion
 
--- Generate suggestion from generated text
+-- Generate suggestions from generated text
 ---@param generated_text string
----@return Suggestion|nil
+---@return Suggestions|nil
 local function generate_suggestion(generated_text)
   local replaced_text = fn.substitute(generated_text, '<.endoftext.>', '', 'g')
   if not replaced_text then
@@ -186,21 +186,21 @@ local function generate_suggestion(generated_text)
     table.remove(lines, #lines)
   end
 
-  ---@type Suggestion
-  local suggestion = {}
+  ---@type Suggestions
+  local suggestions = {}
   for _, line in ipairs(lines) do
     local parts = vim.split(line, '\n')
     for _, part in ipairs(parts) do
-      table.insert(suggestion, part)
+      table.insert(suggestions, part)
     end
   end
-  return suggestion
+  return suggestions
 end
 
 ---@class OnGenerateOneStageData User data for GenerateOneStage request
 ---@field path string|nil Temporary file path for HTTP request data
 ---@field task_id integer Task ID
----@field on_suggestion function|nil Callback when suggestion is generated
+---@field on_suggestion function|nil Callback when suggestions is generated
 
 -- Callback for request_generate_one_stage when HTTP request is successful
 ---@param response string
@@ -217,10 +217,10 @@ local function on_generate_one_stage(_, response, data)
     return
   end
 
-  local suggestion = generate_suggestion(completion_data.generated_text)
+  local suggestions = generate_suggestion(completion_data.generated_text)
 
   if data.on_suggestion ~= nil then
-    data.on_suggestion(data.task_id, suggestion)
+    data.on_suggestion(data.task_id, suggestions)
   end
 end
 

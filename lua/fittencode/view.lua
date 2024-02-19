@@ -15,16 +15,16 @@ local namespace = nil
 
 ---@alias VirtText VirtLine[] @The virtual text to be displayed
 
--- Generate virtual text for suggestion
----@param suggestion Suggestion @The suggestion to be displayed
+-- Generate virtual text for suggestions
+---@param suggestions Suggestions @The suggestions to be displayed
 ---@return VirtText|nil @The virtual text to be displayed
-local function generate_virt_text(suggestion)
-  if suggestion == nil then
+local function generate_virt_text(suggestions)
+  if suggestions == nil then
     return
   end
   ---@type VirtText
   local virt_text = {}
-  for _, line in ipairs(suggestion) do
+  for _, line in ipairs(suggestions) do
     table.insert(virt_text, { { line, Color.FittenSuggestion } })
   end
   return virt_text
@@ -91,9 +91,9 @@ local function move_to_center_vertical(virt_height)
 end
 
 -- Render virtual text on buffer
----@param suggestion Suggestion @The suggestion to be displayed
-function M.render_virt_text(suggestion)
-  local virt_text = generate_virt_text(suggestion)
+---@param suggestions Suggestions @The suggestions to be displayed
+function M.render_virt_text(suggestions)
+  local virt_text = generate_virt_text(suggestions)
   if virt_text == nil then
     return
   end

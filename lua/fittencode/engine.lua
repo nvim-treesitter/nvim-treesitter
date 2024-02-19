@@ -4,26 +4,26 @@ local Lsp = require('fittencode.lsp')
 local View = require('fittencode.view')
 local TaskScheduler = require('fittencode.tasks')
 local Sessions = require('fittencode.sessions')
-local SuggestionCache = require('fittencode.suggestion_cache')
+local SuggestionsCache = require('fittencode.suggestions_cache')
 
 local M = {}
 
----@class SuggestionCache
+---@class SuggestionsCache
 local cache = nil
 
 ---@class TaskScheduler
 local tasks = nil
 
 function M.setup()
-  cache = SuggestionCache:new()
+  cache = SuggestionsCache:new()
   tasks = TaskScheduler:new()
   tasks:setup()
 end
 
--- Callback function for when suggestion is ready
+-- Callback function for when suggestions is ready
 ---@param task_id integer
----@param suggestion Suggestion
-local function on_suggestion(task_id, suggestion)
+---@param suggestions Suggestions
+local function on_suggestion(task_id, suggestions)
   local row, col = Base.get_cursor()
   if not tasks:match_clean(task_id, row, col) then
     Log.debug('Completion request is outdated, discarding; task_id: {}, row: {}, col: {}', task_id, row, col)
@@ -31,8 +31,8 @@ local function on_suggestion(task_id, suggestion)
   end
 
   cache:update_pos(row, col)
-  cache:update_lines(suggestion)
-  View.render_virt_text(suggestion)
+  cache:update_lines(suggestions)
+  View.render_virt_text(suggestions)
 end
 
 -- Generate one stage completion
@@ -62,7 +62,7 @@ function M.generate_one_stage(row, col, force)
   Sessions.request_generate_one_stage(task_id, on_suggestion)
 end
 
--- Check if there is any suggestion
+-- Check if there is any suggestions
 function M.has_suggestion()
   return vim.tbl_count(cache.lines or {}) ~= 0
 end
@@ -76,10 +76,10 @@ local function generate_one_stage_at_cursor()
 end
 
 function M.accept_all_suggestion()
-  Log.debug('Accept all suggestion')
+  Log.debug('Accept all suggestions')
 
   if not M.has_suggestion() then
-    Log.debug('No suggestion')
+    Log.debug('No suggestions')
     return
   end
 
@@ -97,7 +97,7 @@ function M.accept_line()
   Log.debug('Accept line')
 
   if not M.has_suggestion() then
-    Log.debug('No suggestion')
+    Log.debug('No suggestions')
     return
   end
 
@@ -134,7 +134,7 @@ function M.accept_line()
     local row, col = Base.get_cursor()
     cache:update_pos(row, col)
   else
-    Log.debug('No more suggestion, generate one stage')
+    Log.debug('No more suggestions, generate one stage')
     generate_one_stage_at_cursor()
   end
 
@@ -164,7 +164,7 @@ function M.accept_word()
   Log.debug('Accept word')
 
   if not M.has_suggestion() then
-    Log.debug('No suggestion')
+    Log.debug('No suggestions')
     return
   end
 
@@ -205,20 +205,20 @@ function M.accept_word()
     local row, col = Base.get_cursor()
     cache:update_pos(row, col)
   else
-    Log.debug('No more suggestion, generate one stage')
+    Log.debug('No more suggestions, generate one stage')
     generate_one_stage_at_cursor()
   end
 
   vim.o.eventignore = eventignore
 end
 
--- Reset suggestion cache and view
+-- Reset suggestions cache and view
 function M.reset()
   View.clear_virt_text()
   cache:flush()
 end
 
--- Advance to next suggestion
+-- Advance to next suggestions
 function M.advance()
   if not M.has_suggestion() then
     return
