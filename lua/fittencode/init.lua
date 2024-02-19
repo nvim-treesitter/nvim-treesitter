@@ -3,9 +3,8 @@ local M = {}
 function M.setup()
   -- Check if Neovim >= 0.10.0 is installed
   if vim.fn.has('nvim-0.10') == 0 then
-    vim.api.nvim_echo({
-      { 'fittencode.nvim requires Neovim >= 0.10.0 with support for inline virtual text.', 'ErrorMsg' },
-    }, true, {})
+    local msg = 'fittencode.nvim requires Neovim >= 0.10.0 with support for inline virtual text.'
+    vim.api.nvim_err_writeln(msg)
     return
   end
 
