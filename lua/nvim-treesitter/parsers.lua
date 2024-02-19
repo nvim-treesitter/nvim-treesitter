@@ -1999,6 +1999,14 @@ list.tlaplus = {
   maintainers = { "@ahelwer", "@susliko" },
 }
 
+list.tmux = {
+  install_info = {
+    url = "https://github.com/Freed-Wu/tree-sitter-tmux",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@Freed-Wu" },
+}
+
 list.todotxt = {
   install_info = {
     url = "https://github.com/arnarg/tree-sitter-todotxt.git",

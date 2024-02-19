@@ -403,6 +403,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [thrift](https://github.com/duskmoon314/tree-sitter-thrift) (maintained by @amaanq, @duskmoon314)
 - [x] [tiger](https://github.com/ambroisie/tree-sitter-tiger) (maintained by @ambroisie)
 - [x] [tlaplus](https://github.com/tlaplus-community/tree-sitter-tlaplus) (maintained by @ahelwer, @susliko)
+- [x] [tmux](https://github.com/Freed-Wu/tree-sitter-tmux) (maintained by @Freed-Wu)
 - [x] [todotxt](https://github.com/arnarg/tree-sitter-todotxt.git) (experimental, maintained by @arnarg)
 - [x] [toml](https://github.com/ikatyang/tree-sitter-toml) (maintained by @tk-shirasaka)
 - [x] [tsv](https://github.com/amaanq/tree-sitter-csv) (maintained by @amaanq)
