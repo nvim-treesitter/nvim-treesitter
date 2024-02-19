@@ -689,6 +689,9 @@
   "tlaplus": {
     "revision": "aaf5bb5c1df0a6e583bb51efa519a9ac788b2ad8"
   },
+  "tmux": {
+    "revision": "10737f5dc4d8e68c9667f11a6996688a1185755f"
+  },
   "todotxt": {
     "revision": "3937c5cd105ec4127448651a21aef45f52d19609"
   },
