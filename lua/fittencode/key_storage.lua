@@ -12,6 +12,7 @@ local Log = require('fittencode.log')
 ---@field path string
 
 -- API Key Storage Service
+-- Currently only support single user and single API key
 ---@class KeyStorage
 ---@field keys Key
 ---@field path string
