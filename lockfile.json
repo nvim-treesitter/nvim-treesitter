@@ -48,7 +48,7 @@
     "revision": "863cea9f83ad5637300478e0559262f1e791684b"
   },
   "c": {
-    "revision": "72a60ea888fb59a8e143883661f021139c905b74"
+    "revision": "f64a422d4e46a44315abe75295035554d334bdab"
   },
   "c_sharp": {
     "revision": "4b4e82ca0a30376ae605e77a0d8a3c803c9f9327"
@@ -84,7 +84,7 @@
     "revision": "f4b3cbc8b0bd4e13035d39940fef09f1392e8739"
   },
   "cpp": {
-    "revision": "3d988327a1cfd724c0d195b37a1056174fae99bc"
+    "revision": "e0c1678a78731e78655b7d953efb4daecf58be46"
   },
   "css": {
     "revision": "02b4ee757654b7d54fe35352fd8e53a8a4385d42"
@@ -141,7 +141,7 @@
     "revision": "511ea5e0088779e4bdd76e12963ab9a5fe99983a"
   },
   "elm": {
-    "revision": "c26afd7f2316f689410a1622f1780eff054994b1"
+    "revision": "09dbf221d7491dc8d8839616b27c21b9c025c457"
   },
   "elsa": {
     "revision": "0a66b2b3f3c1915e67ad2ef9f7dbd2a84820d9d7"
@@ -282,7 +282,7 @@
     "revision": "0135187126370cbf112d759a50eab4a5c913a827"
   },
   "html": {
-    "revision": "438d694a1f51e1704cb779ad4fec2517523b1d7f"
+    "revision": "74cab04e10b71811a32dfdde10fd0162d55c54cc"
   },
   "htmldjango": {
     "revision": "8873e3df89f9ea1d33f6235e516b600009288557"
@@ -384,10 +384,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "23d9cb2ce2f4d0914e7609b500c5fc8dfae0176f"
+    "revision": "2821521a4e6eab37b63dff6a8e169cd88554047d"
   },
   "markdown_inline": {
-    "revision": "23d9cb2ce2f4d0914e7609b500c5fc8dfae0176f"
+    "revision": "2821521a4e6eab37b63dff6a8e169cd88554047d"
   },
   "matlab": {
     "revision": "79d8b25f57b48f83ae1333aff6723b83c9532e37"
@@ -651,7 +651,7 @@
     "revision": "bd60db7d3d06f89b6ec3b287c9a6e9190b5564bd"
   },
   "swift": {
-    "revision": "bd81fff1453a5512e554bea3b163d95a5bef4c4e"
+    "revision": "e1ac0c3b48f4c42c40f92f400f14c6561369d4dd"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -747,7 +747,7 @@
     "revision": "32c76f150347c1cd044e90b8e2bc73c00677fa55"
   },
   "vimdoc": {
-    "revision": "ed8695ad8de39c3f073da130156f00b1148e2891"
+    "revision": "40fcd50a2c7b5a3ef98294795116773b24fb61ab"
   },
   "vue": {
     "revision": "7e48557b903a9db9c38cea3b7839ef7e1f36c693"
