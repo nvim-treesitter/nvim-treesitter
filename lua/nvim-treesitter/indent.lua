@@ -249,9 +249,9 @@ function M.get_indent(lnum)
     if is_in_err and not q["indent.align"][node:id()] then
       -- only when the node is in error, promote the
       -- first child's aligned indent to the error node
-      -- to work around ((ERROR "X" . (_)) @aligned_indent (#set! "delimeter" "AB"))
+      -- to work around ((ERROR "X" . (_)) @aligned_indent (#set! "delimiter" "AB"))
       -- matching for all X, instead set do
-      -- (ERROR "X" @aligned_indent (#set! "delimeter" "AB") . (_))
+      -- (ERROR "X" @aligned_indent (#set! "delimiter" "AB") . (_))
       -- and we will fish it out here.
       for c in node:iter_children() do
         if q["indent.align"][c:id()] then

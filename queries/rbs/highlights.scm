@@ -5,7 +5,7 @@
     (simple_type_name)
   ] @type)
 
-; Buitin constants and Keywords
+; Builtin constants and Keywords
 [
   "true"
   "false"
