@@ -1,20 +1,32 @@
-; inherits: html_tags
-(raw_text_expr) @none
+; inherits: html
+(raw_text) @none
 
 [
-  (special_block_keyword)
-  (then)
-  (as)
+  "as"
+  "key"
+  "html"
+  "snippet"
+  "render"
 ] @keyword
 
-((special_block_keyword) @keyword.coroutine
-  (#eq? @keyword.coroutine "await"))
+"const" @type.qualifier
 
-((special_block_keyword) @keyword.exception
-  (#eq? @keyword.exception "catch"))
+[
+  "if"
+  "else"
+  "then"
+] @keyword.conditional
 
-((special_block_keyword) @keyword.conditional
-  (#any-of? @keyword.conditional "if" "else"))
+"each" @keyword.repeat
+
+[
+  "await"
+  "then"
+] @keyword.coroutine
+
+"catch" @keyword.exception
+
+"debug" @keyword.debug
 
 [
   "{"
