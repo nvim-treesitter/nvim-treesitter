@@ -103,6 +103,7 @@ end
 -- * if name not found, return `nil`
 ---@param name string|nil
 ---@return string|nil
+---@nodiscard
 function KeyStorage:get_key_by_name(name)
   if self.keys.name == name then
     return self.keys.key

@@ -102,13 +102,14 @@ function M.debounce(timer, callback, wait, on_error)
   end
 end
 
--- Refs:`3rd\luv\library\uv.lua`
----@alias uv.error.name string
----@alias uv.error.message string
-
+-- Refs:
+-- * `3rd\luv\library\uv.lua`
+---* `3rd\luv\library\errors.lua`
+-- * uv.error.name
+-- * uv.error.message
 ---@class UvError
----@field name uv.error.name
----@field message uv.error.message
+---@field name string
+---@field message string
 
 ---@param err string
 ---@return UvError

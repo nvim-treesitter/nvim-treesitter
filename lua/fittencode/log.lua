@@ -6,7 +6,7 @@ local Base = require('fittencode.base')
 local M = {}
 
 ---@class LogOptions
----@field level integer @one of the `vim.log.levels` values
+---@field level? integer @one of the `vim.log.levels` values
 
 local MODULE_NAME = 'fittencode.nvim'
 local LOG_PATH = Base.to_native(fn.stdpath('log') .. '/fittencode' .. '/fittencode.log')

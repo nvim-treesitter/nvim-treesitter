@@ -1,9 +1,9 @@
 local M = {}
 
 ---@class FittencodeOptions @Options for fittencode.nvim
----@field log LogOptions @Options for logging
+---@field log? LogOptions @Options for logging
 
----@param opts FittencodeOptions
+---@param opts? FittencodeOptions
 function M.setup(opts)
   -- Check if Neovim >= 0.10.0 is installed
   if vim.fn.has('nvim-0.10') == 0 then
