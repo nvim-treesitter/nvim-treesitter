@@ -25,4 +25,12 @@ function M.setup()
   Sessions.request_load_last_session()
 end
 
+setmetatable(M, {
+  __index = function(_, k)
+    return function(...)
+      return require('fittencode.api').api[k](...)
+    end
+  end,
+})
+
 return M
