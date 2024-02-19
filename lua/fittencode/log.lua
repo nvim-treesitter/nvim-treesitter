@@ -5,6 +5,9 @@ local Base = require('fittencode.base')
 
 local M = {}
 
+---@class LogOptions
+---@field level integer @one of the `vim.log.levels` values
+
 local MODULE_NAME = 'fittencode.nvim'
 local LOG_PATH = Base.to_native(fn.stdpath('log') .. '/fittencode' .. '/fittencode.log')
 
@@ -25,11 +28,22 @@ local LOG_PATH = Base.to_native(fn.stdpath('log') .. '/fittencode' .. '/fittenco
   ```
 ]]
 local levels = vim.deepcopy(vim.log.levels)
-local current = levels.TRACE
+-- Default log level is WARN.
+-- If you want to change it, use `require('fittencode').set_log_level(level)`
+local current = levels.WARN
 
 local first_log = true
 local cpu = 0
 local environ = 0
+
+local function level_name(x)
+  for k, v in pairs(levels) do
+    if v == x then
+      return k
+    end
+  end
+  return '????'
+end
 
 -- Log a message to a file.
 ---@param msg string @the message to log
@@ -42,6 +56,7 @@ local function log_file(msg)
       ---@type table<string,any>
       local mat = {}
       table.insert(mat, { 'Verbose logging started', os.date('%Y-%m-%d %H:%M:%S') })
+      table.insert(mat, { 'Log level', level_name(current) })
       table.insert(mat, { 'Calling process', uv.exepath() })
       table.insert(mat, { 'Neovim version', vim.inspect(Base.get_version()) })
       table.insert(mat, { 'Process ID', uv.os_getpid() })
@@ -86,16 +101,8 @@ local function do_log(notify, level, msg, ...)
   end
   ---@type table<string,string>
   local mat = {}
-  local function name(x)
-    for k, v in pairs(levels) do
-      if v == x then
-        return k
-      end
-    end
-    return '????'
-  end
   local ms = string.format('%03d', math.floor((uv.hrtime() / 1e6) % 1000))
-  table.insert(mat, string.format('%5s', name(level)))
+  table.insert(mat, string.format('%5s', level_name(level)))
   table.insert(mat, os.date('%Y-%m-%d %H:%M:%S') .. '.' .. ms)
   table.insert(mat, MODULE_NAME)
   local tags = ''
@@ -105,7 +112,13 @@ local function do_log(notify, level, msg, ...)
   log_file(tags .. msg)
 end
 
-function M.setup()
+---@param opts LogOptions
+function M.setup(opts)
+  -- Parse options.
+  if opts and type(opts.level) == 'number' then
+    current = opts.level
+  end
+
   local LOG_HOME = fn.fnamemodify(LOG_PATH, ':h')
   fn.mkdir(LOG_HOME, 'p')
 end

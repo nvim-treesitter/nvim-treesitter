@@ -1,6 +1,10 @@
 local M = {}
 
-function M.setup()
+---@class FittencodeOptions @Options for fittencode.nvim
+---@field log LogOptions @Options for logging
+
+---@param opts FittencodeOptions
+function M.setup(opts)
   -- Check if Neovim >= 0.10.0 is installed
   if vim.fn.has('nvim-0.10') == 0 then
     local msg = 'fittencode.nvim requires Neovim >= 0.10.0 with support for inline virtual text.'
@@ -14,8 +18,10 @@ function M.setup()
   local Bindings = require('fittencode.bindings')
   local Color = require('fittencode.color')
 
+  opts = opts or {}
+
   -- Initialize modules
-  Log.setup()
+  Log.setup(opts.log)
   Engine.setup()
   Color.setup_highlight()
   Bindings.setup_autocmds()
