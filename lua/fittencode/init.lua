@@ -22,7 +22,11 @@ function M.setup(opts)
   Bindings.setup_autocmds()
   Bindings.setup_commands()
   Bindings.setup_keymaps()
-  require('fittencode.sessions').request_load_last_session()
+
+  -- Defer loading last session to avoid blocking initialization
+  vim.defer_fn(function()
+    require('fittencode.sessions').request_load_last_session()
+  end, 100)
 end
 
 setmetatable(M, {
