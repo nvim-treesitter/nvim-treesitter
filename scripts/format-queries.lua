@@ -6,13 +6,11 @@ local get_node_text = ts.get_node_text
 ---@type string[]
 local files
 
-if not _G.arg[1] then
-  print "Must specify file or directory to format!"
-  return
-elseif _G.arg[1]:match ".*%.scm$" then
-  files = { _G.arg[1] }
+local arg = _G.arg[1] or "."
+if arg:match ".*%.scm$" then
+  files = { arg }
 else
-  files = vim.fn.split(vim.fn.glob(_G.arg[1] .. "/**/*.scm"))
+  files = vim.fn.split(vim.fn.glob(arg .. "/**/*.scm"))
 end
 
 ts.query.add_predicate("has-type?", function(match, _, _, pred)
