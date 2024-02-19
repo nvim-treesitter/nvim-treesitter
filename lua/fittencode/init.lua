@@ -12,23 +12,17 @@ function M.setup(opts)
     return
   end
 
-  local Log = require('fittencode.log')
-  local Engine = require('fittencode.engine')
-  local Sessions = require('fittencode.sessions')
-  local Bindings = require('fittencode.bindings')
-  local Color = require('fittencode.color')
-
   opts = opts or {}
 
   -- Initialize modules
-  Log.setup(opts.log)
-  Engine.setup()
-  Color.setup_highlight()
+  require('fittencode.log').setup(opts.log)
+  require('fittencode.engine').setup()
+  require('fittencode.color').setup_highlight()
+  local Bindings = require('fittencode.bindings')
   Bindings.setup_autocmds()
   Bindings.setup_commands()
   Bindings.setup_keymaps()
-
-  Sessions.request_load_last_session()
+  require('fittencode.sessions').request_load_last_session()
 end
 
 setmetatable(M, {
