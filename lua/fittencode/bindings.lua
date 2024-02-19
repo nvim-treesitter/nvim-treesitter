@@ -99,19 +99,19 @@ end
 
 function M.setup_keymaps()
   Base.map('i', '<Tab>', function()
-    if Engine.has_suggestion() then
-      Engine.accept_all_suggestion()
+    if Engine.has_suggestions() then
+      Engine.accept_all_suggestions()
     else
       View.feed_tab()
     end
   end)
   Base.map('i', '<C-Down>', function()
-    if Engine.has_suggestion() then
+    if Engine.has_suggestions() then
       Engine.accept_line()
     end
   end)
   Base.map('i', '<C-Right>', function()
-    if Engine.has_suggestion() then
+    if Engine.has_suggestions() then
       Engine.accept_word()
     end
   end)

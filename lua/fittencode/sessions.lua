@@ -172,7 +172,7 @@ end
 -- Generate suggestions from generated text
 ---@param generated_text string
 ---@return Suggestions|nil
-local function generate_suggestion(generated_text)
+local function generate_suggestions(generated_text)
   local replaced_text = fn.substitute(generated_text, '<.endoftext.>', '', 'g')
   if not replaced_text then
     return
@@ -200,7 +200,7 @@ end
 ---@class OnGenerateOneStageData User data for GenerateOneStage request
 ---@field path string|nil Temporary file path for HTTP request data
 ---@field task_id integer Task ID
----@field on_suggestion function|nil Callback when suggestions is generated
+---@field on_suggestions function|nil Callback when suggestions is generated
 
 -- Callback for request_generate_one_stage when HTTP request is successful
 ---@param response string
@@ -217,10 +217,10 @@ local function on_generate_one_stage(_, response, data)
     return
   end
 
-  local suggestions = generate_suggestion(completion_data.generated_text)
+  local suggestions = generate_suggestions(completion_data.generated_text)
 
-  if data.on_suggestion ~= nil then
-    data.on_suggestion(data.task_id, suggestions)
+  if data.on_suggestions ~= nil then
+    data.on_suggestions(data.task_id, suggestions)
   end
 end
 
@@ -266,8 +266,8 @@ function M.ready_for_generate()
 end
 
 ---@param task_id integer
----@param on_suggestion function|nil
-function M.request_generate_one_stage(task_id, on_suggestion)
+---@param on_suggestions function|nil
+function M.request_generate_one_stage(task_id, on_suggestions)
   local api_key = key_storage:get_key_by_name(username)
   if api_key == nil then
     Log.debug('API key is nil')
@@ -293,7 +293,7 @@ function M.request_generate_one_stage(task_id, on_suggestion)
       data = {
         path = path,
         task_id = task_id,
-        on_suggestion = on_suggestion,
+        on_suggestions = on_suggestions,
       },
     }, on_generate_one_stage, on_curl_signal, on_generate_one_stage_exit)
   end)

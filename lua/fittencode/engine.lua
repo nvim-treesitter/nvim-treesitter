@@ -23,7 +23,7 @@ end
 -- Callback function for when suggestions is ready
 ---@param task_id integer
 ---@param suggestions Suggestions
-local function on_suggestion(task_id, suggestions)
+local function on_suggestions(task_id, suggestions)
   local row, col = Base.get_cursor()
   if not tasks:match_clean(task_id, row, col) then
     Log.debug('Completion request is outdated, discarding; task_id: {}, row: {}, col: {}', task_id, row, col)
@@ -59,11 +59,11 @@ function M.generate_one_stage(row, col, force)
 
   local task_id = tasks:create(row, col)
   cache:flush()
-  Sessions.request_generate_one_stage(task_id, on_suggestion)
+  Sessions.request_generate_one_stage(task_id, on_suggestions)
 end
 
 -- Check if there is any suggestions
-function M.has_suggestion()
+function M.has_suggestions()
   return vim.tbl_count(cache.lines or {}) ~= 0
 end
 
@@ -75,10 +75,10 @@ local function generate_one_stage_at_cursor()
   M.generate_one_stage(row, col, true)
 end
 
-function M.accept_all_suggestion()
+function M.accept_all_suggestions()
   Log.debug('Accept all suggestions')
 
-  if not M.has_suggestion() then
+  if not M.has_suggestions() then
     Log.debug('No suggestions')
     return
   end
@@ -96,7 +96,7 @@ end
 function M.accept_line()
   Log.debug('Accept line')
 
-  if not M.has_suggestion() then
+  if not M.has_suggestions() then
     Log.debug('No suggestions')
     return
   end
@@ -163,7 +163,7 @@ end
 function M.accept_word()
   Log.debug('Accept word')
 
-  if not M.has_suggestion() then
+  if not M.has_suggestions() then
     Log.debug('No suggestions')
     return
   end
@@ -185,7 +185,7 @@ function M.accept_word()
   line = string.sub(line, string.len(word) + 1)
   if string.len(line) == 0 then
     table.remove(cache.lines, 1)
-    if M.has_suggestion() then
+    if M.has_suggestions() then
       View.set_text({ word, '' })
       Log.debug('Set word and empty new line; word: {}', word)
     else
@@ -220,7 +220,7 @@ end
 
 -- Advance to next suggestions
 function M.advance()
-  if not M.has_suggestion() then
+  if not M.has_suggestions() then
     return
   end
 
