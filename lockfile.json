@@ -189,7 +189,7 @@
     "revision": "19db2f47ba4c3a0f6238d4ae0e2abfca16e61dd6"
   },
   "gdscript": {
-    "revision": "03f20b94707a21bed90bb95101684bc4036139ce"
+    "revision": "645d7616cad9279d8d06684c7d7a356176174ebb"
   },
   "git_config": {
     "revision": "9c2a1b7894e6d9eedfe99805b829b4ecd871375e"
@@ -273,7 +273,7 @@
     "revision": "840fd07f09304bca415b93a15483e9ab1e44bc3f"
   },
   "hlsplaylist": {
-    "revision": "ff121d397cf7cc709e3bbc928107fc25529e11e0"
+    "revision": "5be34b0f6ea01b24f017c2c715729a3a919f57fd"
   },
   "hocon": {
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
@@ -282,7 +282,7 @@
     "revision": "0135187126370cbf112d759a50eab4a5c913a827"
   },
   "html": {
-    "revision": "74cab04e10b71811a32dfdde10fd0162d55c54cc"
+    "revision": "5760f521fac79263de4ca71a590ef516594c9f37"
   },
   "htmldjango": {
     "revision": "8873e3df89f9ea1d33f6235e516b600009288557"
@@ -399,13 +399,13 @@
     "revision": "e26a5f8898a8174f02b4cc9a9050eb3ccfb799f3"
   },
   "meson": {
-    "revision": "3d6dfbdb2432603bc84ca7dc009bb39ed9a8a7b1"
+    "revision": "d6ec8ce0963c3c8180161391f15d8f7d415f650d"
   },
   "mlir": {
     "revision": "650a8fb72013ba8d169bdb458e480d640fc545c9"
   },
   "muttrc": {
-    "revision": "0af0e0d8c8cf59dc21cfe565489da0c247374b9f"
+    "revision": "67d9e23ca7aa22d9bce9d16c53d2c927dff5159a"
   },
   "nasm": {
     "revision": "3bc691d2cfba44bea339a775ad496c8bc552c60d"
@@ -762,7 +762,7 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "f7965a947d2eaa8b5b9bba1c42a0e1891f1a0b2a"
+    "revision": "d4e159eceffb7ae870f750aa4bc9d50a173e05e0"
   },
   "xcompose": {
     "revision": "8898238fca7e143760386448093392b87e58002e"
@@ -780,7 +780,7 @@
     "revision": "c348825d3f86dec71dee0e1223c6bd73114e3579"
   },
   "zathurarc": {
-    "revision": "fe37e85db355c737573315f278672534c40fe140"
+    "revision": "353bdf25e7af9c2830e254977fd3fb57ccaa8203"
   },
   "zig": {
     "revision": "0d08703e4c3f426ec61695d7617415fff97029bd"
