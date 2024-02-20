@@ -204,13 +204,8 @@ local format_queries = [[
     (named_node)                  ; ((foo))
     (list)                        ; ([foo] (...))
     (anonymous_node)              ; ("foo")
+    (grouping . (_))
   ] @format.indent.begin
-  .
-  (_))
-(grouping
-  "("
-  .
-  (grouping . (_)) @format.indent.begin
   .
   (_))
 (grouping
@@ -225,6 +220,7 @@ local format_queries = [[
     (named_node)
     (list)
     (predicate)
+    (grouping . (_))
     "."
   ] @format.append-newline
   (_) .)
