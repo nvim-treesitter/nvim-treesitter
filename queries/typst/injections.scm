@@ -3,5 +3,4 @@
 
 (raw_blck
   (ident) @injection.language
-  (blob) @injection.content
-)
+  (blob) @injection.content)
