@@ -75,7 +75,7 @@
   "]"
   "{"
   "}"
-] @punctuation
+] @punctuation.delimiter
 
 (builtin_type) @type
 
@@ -86,8 +86,6 @@
   (render_mode)
   (hint_name)
 ] @property
-
-(ident) @identifier
 
 (builtin_variable) @constant
 
@@ -107,7 +105,7 @@
   name: (ident) @function)
 
 (parameter
-  name: (ident) @parameter)
+  name: (ident) @variable.parameter)
 
 (member_expr
   member: (ident) @property)
