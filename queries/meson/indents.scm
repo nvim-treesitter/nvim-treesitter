@@ -19,7 +19,7 @@
   "endforeach"
 ] @indent.branch @indent.end
 
-(experession_statement
+(expression_statement
   object: (_)) @indent.begin
 
 (comment) @indent.auto
