@@ -37,7 +37,7 @@
   "-="
   "!"
   "~"
-  "+" 
+  "+"
   "-"
   "*"
   "/"
@@ -68,18 +68,16 @@
 [
   "."
   ","
-  ";" 
-  "(" 
-  ")" 
-  "[" 
-  "]" 
-  "{" 
-  "}" 
+  ";"
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
 ] @punctuation
 
-[
-  (builtin_type)
-] @type
+(builtin_type) @type
 
 (ident_type) @type.definition
 
@@ -92,6 +90,7 @@
 (ident) @identifier
 
 (builtin_variable) @constant
+
 (builtin_function) @function
 
 (group_uniforms_declaration
@@ -100,21 +99,27 @@
 
 (struct_declaration
   name: (ident) @type)
+
 (struct_member
   name: (ident) @property)
+
 (function_declaration
   name: (ident) @function)
+
 (parameter
   name: (ident) @parameter)
+
 (member_expr
-  member: (ident) @property) 
+  member: (ident) @property)
+
 (call_expr
-  function: [
-    (ident)
-    (builtin_type)] @function)
+  function:
+    [
+      (ident)
+      (builtin_type)
+    ] @function)
+
 (call_expr
   function: (builtin_type) @function)
 
 (comment) @comment
-
-

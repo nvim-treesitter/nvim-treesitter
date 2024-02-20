@@ -616,7 +616,7 @@ list.gdshader = {
     url = "https://github.com/GodOfAvacyn/tree-sitter-gdshader",
     files = { "src/parser.c" },
   },
-  filetype = "gdshader",
+  filetype = "gdshaderinc",
   maintainers = { "@godofavacyn" },
 }
 
