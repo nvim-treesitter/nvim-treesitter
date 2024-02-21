@@ -83,7 +83,7 @@ local function compare_indent(before, after, xfail)
 end
 
 local function set_buf_indent_opts(opts)
-  local optnames = { "tabstop", "shiftwidth", "softtabstop", "expandtab", "filetype" }
+  local optnames = { "tabstop", "shiftwidth", "softtabstop", "expandtab", "filetype", "lispoptions" }
   for _, opt in ipairs(optnames) do
     if opts[opt] ~= nil then
       vim.bo[opt] = opts[opt]
