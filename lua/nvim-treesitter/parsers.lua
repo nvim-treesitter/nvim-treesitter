@@ -537,11 +537,10 @@ list.fennel = {
 
 list.fidl = {
   install_info = {
-    url = "path/to/tree-sitter-fidl",
+    url = "https://github.com/google/tree-sitter-fidl",
     files = { "src/parser.c" },
     requires_generate_from_grammar = true,
   },
-  filetype = "fidl",
   maintainers = { "@chaopeng" },
 }
 
