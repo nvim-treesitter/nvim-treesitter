@@ -145,6 +145,9 @@
   "match"
 ] @keyword.conditional
 
+(pattern_guard
+  "when" @keyword.conditional)
+
 [
   "for"
   "while"
