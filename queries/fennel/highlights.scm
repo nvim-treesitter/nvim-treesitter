@@ -76,6 +76,9 @@
     ; other
     "length"))
 
+(reader_macro
+  macro: "#" @keyword.function)
+
 ((symbol) @keyword.function
   (#any-of? @keyword.function "fn" "lambda" "λ" "hashfn"))
 
@@ -99,6 +102,7 @@
     "eval-compiler"
     "lua"
     "macros"
+    "unquote"
     "quote"
     "tset"
     "values"
