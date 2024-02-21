@@ -227,7 +227,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [erlang](https://github.com/WhatsApp/tree-sitter-erlang) (maintained by @filmor)
 - [x] [facility](https://github.com/FacilityApi/tree-sitter-facility) (maintained by @bryankenote)
 - [x] [faust](https://github.com/khiner/tree-sitter-faust) (maintained by @khiner)
-- [x] [fennel](https://github.com/travonted/tree-sitter-fennel) (maintained by @TravonteD)
+- [x] [fennel](https://github.com/alexmozaidze/tree-sitter-fennel) (maintained by @alexmozaidze)
 - [x] [firrtl](https://github.com/amaanq/tree-sitter-firrtl) (maintained by @amaanq)
 - [x] [fish](https://github.com/ram02z/tree-sitter-fish) (maintained by @ram02z)
 - [x] [foam](https://github.com/FoamScience/tree-sitter-foam) (experimental, maintained by @FoamScience)
