@@ -1,6 +1,6 @@
-; vim: ft=query
-(fenced_code_block
-  (fenced_code_block_delimiter) @label
+; vim:ft=query
+; format-ignore
+(fenced_code_block (fenced_code_block_delimiter) @label
   (info_string
     (language) @_lang)
   (#offset! @label 0 1 0 -1)
@@ -38,3 +38,4 @@
   "toplevel"
   "list"
 ] @variable
+((

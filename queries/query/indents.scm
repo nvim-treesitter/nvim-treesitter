@@ -2,17 +2,19 @@
   (list)
   (named_node)
   (grouping)
+  (predicate) ; WIP to newline wrap any-of?
   "["
 ] @indent.begin
 
-"]" @indent.branch
+; ERROR node indents
+(ERROR
+  "(") @indent.begin
+
+"]" @indent.branch @indent.end
 
 ")" @indent.end
 
-((list
-  (capture) @indent.dedent) @_list
-  (#not-has-parent? @_list grouping))
-
-(program
-  (named_node
-    (capture) @indent.dedent .))
+; Captures always mark the end of a node
+; Because of that, mark it as indent.end
+(capture
+  name: (identifier) @indent.end)
