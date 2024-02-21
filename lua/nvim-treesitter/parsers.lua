@@ -529,10 +529,10 @@ list.faust = {
 
 list.fennel = {
   install_info = {
-    url = "https://github.com/travonted/tree-sitter-fennel",
+    url = "https://github.com/alexmozaidze/tree-sitter-fennel",
     files = { "src/parser.c" },
   },
-  maintainers = { "@TravonteD" },
+  maintainers = { "@alexmozaidze" },
 }
 
 list.firrtl = {
