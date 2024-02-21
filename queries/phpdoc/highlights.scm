@@ -23,6 +23,13 @@
 (parameter
   (variable_name) @variable.parameter)
 
+[
+  (array_type)
+  (primitive_type)
+  (named_type)
+  (optional_type)
+] @type
+
 (union_type
   [
     (array_type)
