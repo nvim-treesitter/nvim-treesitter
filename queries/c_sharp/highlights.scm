@@ -141,6 +141,9 @@
 (enum_declaration
   name: (identifier) @type)
 
+(enum_member_declaration
+  name: (identifier) @variable.member)
+
 (constructor_declaration
   name: (identifier) @constructor)
 
