@@ -9,10 +9,9 @@
   ")"
 ] @punctuation.bracket
 
-[
-  ":"
-  ","
-] @punctuation.delimiter
+"," @punctuation.delimiter
+
+(eq) @operator
 
 ([
   "\""
