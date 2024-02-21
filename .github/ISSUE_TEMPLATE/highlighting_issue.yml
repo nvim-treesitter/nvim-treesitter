@@ -11,10 +11,10 @@ body:
         - I have updated my neovim version to latest _master_.
         - I have updated my plugin to the latest version.
         - I have run `:TSUpdate`.
-        - I have inspected the syntax tree using https://github.com/nvim-treesitter/playground and made sure
+        - I have inspected the syntax tree using `:InspectTree` and made sure
           that no `ERROR` nodes are in the syntax tree. nvim-treesitter can not guarantee correct highlighting in the
           presence of `ERROR`s -- in this case, please report the bug directly at corresponding parser's repository. (You can find all repository URLs in [README.md](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages).)
-        - I have used `:TSHighlightCapturesUnderCursor` from https://github.com/nvim-treesitter/playground to inspect which highlight groups Neovim is using and that legacy syntax highlighting is not interfering (i.e., what you are observing is actual tree-sitter highlighting).
+        - I have used `:Inspect` to inspect which highlight groups Neovim is using and that legacy syntax highlighting is not interfering (i.e., what you are observing is actual tree-sitter highlighting).
 
   - type: textarea
     attributes:
@@ -34,8 +34,8 @@ body:
     attributes:
       label: Tree-sitter parsing result
       description: |
-        Please provide the output of `:TSPlaygroundToggle` from https://github.com/nvim-treesitter/playground
-        (screenshot or plain text) with the following options enabled (pressing the key):
+        Please provide the output of `:InspectTree` (screenshot or plain text)
+        with the following options enabled (pressing the key):
         - `I` (name of the parsed language)
         - `t` (toggle injected languages)
         - `a` (show anonymous nodes)
@@ -66,7 +66,7 @@ body:
       description: |
         Please provide a screenshot of the current highlighting. Please also tell us the `:h colorscheme` you are using
         and how to install it. If applicable, you can also upload a screenshot with the contents of
-        `:TSHighlightCapturesUnderCursor`.
+        `:Inspect`.
     validations:
       required: true
 
