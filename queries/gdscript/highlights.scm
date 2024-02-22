@@ -61,9 +61,10 @@
   "_init" @constructor)
 
 (function_definition
-  (name) @function
-  (parameters
-    (identifier) @variable.parameter)*)
+  (name) @function)
+
+(parameters
+  (identifier) @variable.parameter)
 
 (typed_parameter
   (identifier) @variable.parameter)
