@@ -1,6 +1,7 @@
 [
   (lambda)
   (function_definition)
+  (constructor_definition)
   (for_statement)
   (while_statement)
   (if_statement)
