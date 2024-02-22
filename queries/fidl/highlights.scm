@@ -26,9 +26,11 @@
 ] @keyword
 
 (primitives_type) @type
+
 (builtin_complex_type) @type
 
-(const_declaration (identifier) @constant )
+(const_declaration
+  (identifier) @constant)
 
 [
   "="
@@ -37,8 +39,11 @@
   "->"
 ] @operator
 
-(attribute (identifier) @attribute)
-(attribute ("@") @attribute)
+(attribute
+  (identifier) @attribute)
+
+(attribute
+  "@" @attribute)
 
 (string_literal) @string
 
