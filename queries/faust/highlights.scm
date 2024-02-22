@@ -1,10 +1,16 @@
 ; Identifiers
 (identifier) @variable
 
-(process) @variable.builtin
+[
+  "process"
+  "effect"
+] @variable.builtin
 
 (parameters
   (identifier)) @variable.parameter
+
+(access
+  definition: (identifier) @variable.member)
 
 (global_metadata
   key: (identifier) @variable.member)
@@ -49,16 +55,12 @@
 
 (function_names) @function
 
-[
-  (lambda)
-  (prefix)
-  (prim1)
-  (prim2)
-  (prim3)
-  (prim4)
-  (prim5)
-  (function_call)
-] @function.call
+(function_call
+  (identifier) @function.call)
+
+(function_call
+  (access
+    definition: (identifier) @function.call))
 
 [
   "exp"
