@@ -57,7 +57,8 @@
   (string) @comment @spell)
 
 ; Functions
-(constructor_definition) @constructor
+(constructor_definition
+  "_init" @constructor)
 
 (function_definition
   (name) @function
