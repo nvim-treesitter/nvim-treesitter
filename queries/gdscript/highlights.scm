@@ -72,6 +72,9 @@
 (default_parameter
   (identifier) @variable.parameter)
 
+(typed_default_parameter
+  (identifier) @variable.parameter)
+
 (call
   (identifier) @function.call)
 
