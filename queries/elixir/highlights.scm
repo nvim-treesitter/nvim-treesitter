@@ -109,7 +109,9 @@
 (call
   target:
     ((identifier) @keyword.function
-      (#any-of? @keyword.function "def" "defdelegate" "defexception" "defguard" "defguardp" "defimpl" "defmacro" "defmacrop" "defmodule" "defn" "defnp" "defoverridable" "defp" "defprotocol" "defstruct"))
+      (#any-of? @keyword.function
+        "def" "defdelegate" "defexception" "defguard" "defguardp" "defimpl" "defmacro" "defmacrop"
+        "defmodule" "defn" "defnp" "defoverridable" "defp" "defprotocol" "defstruct"))
   (arguments
     [
       (call
@@ -126,7 +128,9 @@
 (call
   target:
     ((identifier) @keyword
-      (#any-of? @keyword "alias" "case" "catch" "cond" "else" "for" "if" "import" "quote" "raise" "receive" "require" "reraise" "super" "throw" "try" "unless" "unquote" "unquote_splicing" "use" "with")))
+      (#any-of? @keyword
+        "alias" "case" "catch" "cond" "else" "for" "if" "import" "quote" "raise" "receive" "require"
+        "reraise" "super" "throw" "try" "unless" "unquote" "unquote_splicing" "use" "with")))
 
 ; Special Constants
 ((identifier) @constant.builtin

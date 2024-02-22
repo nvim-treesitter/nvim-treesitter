@@ -2,7 +2,7 @@
   (list)
   (named_node)
   (grouping)
-  (predicate) ; WIP to newline wrap any-of?
+  (predicate)
   "["
 ] @indent.begin
 

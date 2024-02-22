@@ -55,7 +55,6 @@
   (#lua-match? @variable.parameter "^%$[1-9]$"))
 
 ((symbol) @operator
-  ; format-ignore
   (#any-of? @operator
     ; arithmetic
     "+" "-" "*" "/" "//" "%" "^"
@@ -65,7 +64,6 @@
     "#" "." "?." ".."))
 
 ((symbol) @keyword.operator
-  ; format-ignore
   (#any-of? @keyword.operator
     ; comparison
     "not="
@@ -89,48 +87,17 @@
   (#any-of? @keyword.conditional "if" "when" "match" "case"))
 
 ((symbol) @keyword
-  ; format-ignore
   (#any-of? @keyword
-    "global"
-    "local"
-    "let"
-    "set"
-    "var"
-    "comment"
-    "do"
-    "doc"
-    "eval-compiler"
-    "lua"
-    "macros"
-    "unquote"
-    "quote"
-    "tset"
-    "values"
-    "tail!"))
+    "global" "local" "let" "set" "var" "comment" "do" "doc" "eval-compiler" "lua" "macros" "unquote"
+    "quote" "tset" "values" "tail!"))
 
 ((symbol) @keyword.import
   (#any-of? @keyword.import "require" "require-macros" "import-macros" "include"))
 
 ((symbol) @function.macro
-  ; format-ignore
   (#any-of? @function.macro
-    "collect"
-    "icollect"
-    "fcollect"
-    "accumulate"
-    "faccumulate"
-    "->"
-    "->>"
-    "-?>"
-    "-?>>"
-    "?."
-    "doto"
-    "macro"
-    "macrodebug"
-    "partial"
-    "pick-args"
-    "pick-values"
-    "with-open"))
+    "collect" "icollect" "fcollect" "accumulate" "faccumulate" "->" "->>" "-?>" "-?>>" "?." "doto"
+    "macro" "macrodebug" "partial" "pick-args" "pick-values" "with-open"))
 
 ; TODO: Highlight builtin methods (`table.unpack`, etc) as @function.builtin
 ([
@@ -138,7 +105,8 @@
   (multi_symbol
     base: (symbol_fragment) @module.builtin)
 ]
-  (#any-of? @module.builtin "vim" "_G" "debug" "io" "jit" "math" "os" "package" "string" "table" "utf8"))
+  (#any-of? @module.builtin
+    "vim" "_G" "debug" "io" "jit" "math" "os" "package" "string" "table" "utf8"))
 
 ([
   (symbol) @variable.builtin
@@ -155,36 +123,10 @@
   (#eq? @constant.builtin "_VERSION"))
 
 ((symbol) @function.builtin
-  ; format-ignore
   (#any-of? @function.builtin
-    "assert"
-    "collectgarbage"
-    "dofile"
-    "error"
-    "getmetatable"
-    "ipairs"
-    "load"
-    "loadfile"
-    "next"
-    "pairs"
-    "pcall"
-    "print"
-    "rawequal"
-    "rawget"
-    "rawlen"
-    "rawset"
-    "require"
-    "select"
-    "setmetatable"
-    "tonumber"
-    "tostring"
-    "type"
-    "warn"
-    "xpcall"
-    "module"
-    "setfenv"
-    "loadstring"
-    "unpack"))
+    "assert" "collectgarbage" "dofile" "error" "getmetatable" "ipairs" "load" "loadfile" "next"
+    "pairs" "pcall" "print" "rawequal" "rawget" "rawlen" "rawset" "require" "select" "setmetatable"
+    "tonumber" "tostring" "type" "warn" "xpcall" "module" "setfenv" "loadstring" "unpack"))
 
 (table
   (table_pair

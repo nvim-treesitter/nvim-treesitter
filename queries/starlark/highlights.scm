@@ -17,11 +17,9 @@
   (#lua-match? @constant.builtin "^__[a-zA-Z0-9_]*__$"))
 
 ((identifier) @constant.builtin
-  ; format-ignore
-  (#any-of? @constant.builtin 
+  (#any-of? @constant.builtin
     ; https://docs.python.org/3/library/constants.html
-    "NotImplemented" "Ellipsis" 
-    "quit" "exit" "copyright" "credits" "license"))
+    "NotImplemented" "Ellipsis" "quit" "exit" "copyright" "credits" "license"))
 
 ((attribute
   attribute: (identifier) @variable.member)
@@ -68,14 +66,14 @@
 ; Builtin functions
 ((call
   function: (identifier) @function.builtin)
-  ; format-ignore
   (#any-of? @function.builtin
-    "abs" "all" "any" "ascii" "bin" "bool" "breakpoint" "bytearray" "bytes" "callable" "chr" "classmethod"
-    "compile" "complex" "delattr" "dict" "dir" "divmod" "enumerate" "eval" "exec" "fail" "filter" "float" "format"
-    "frozenset" "getattr" "globals" "hasattr" "hash" "help" "hex" "id" "input" "int" "isinstance" "issubclass"
-    "iter" "len" "list" "locals" "map" "max" "memoryview" "min" "next" "object" "oct" "open" "ord" "pow"
-    "print" "property" "range" "repr" "reversed" "round" "set" "setattr" "slice" "sorted" "staticmethod" "str"
-    "struct" "sum" "super" "tuple" "type" "vars" "zip" "__import__"))
+    "abs" "all" "any" "ascii" "bin" "bool" "breakpoint" "bytearray" "bytes" "callable" "chr"
+    "classmethod" "compile" "complex" "delattr" "dict" "dir" "divmod" "enumerate" "eval" "exec"
+    "fail" "filter" "float" "format" "frozenset" "getattr" "globals" "hasattr" "hash" "help" "hex"
+    "id" "input" "int" "isinstance" "issubclass" "iter" "len" "list" "locals" "map" "max"
+    "memoryview" "min" "next" "object" "oct" "open" "ord" "pow" "print" "property" "range" "repr"
+    "reversed" "round" "set" "setattr" "slice" "sorted" "staticmethod" "str" "struct" "sum" "super"
+    "tuple" "type" "vars" "zip" "__import__"))
 
 ; Function definitions
 (function_definition
@@ -97,23 +95,24 @@
   (#eq? @_isinstance "isinstance"))
 
 ((identifier) @type.builtin
-  ; format-ignore
   (#any-of? @type.builtin
     ; https://docs.python.org/3/library/exceptions.html
-    "ArithmeticError" "BufferError" "LookupError" "AssertionError" "AttributeError"
-    "EOFError" "FloatingPointError" "ModuleNotFoundError" "IndexError" "KeyError"
-    "KeyboardInterrupt" "MemoryError" "NameError" "NotImplementedError" "OSError" "OverflowError" "RecursionError"
-    "ReferenceError" "RuntimeError" "StopIteration" "StopAsyncIteration" "SyntaxError" "IndentationError" "TabError"
-    "SystemError" "SystemExit" "TypeError" "UnboundLocalError" "UnicodeError" "UnicodeEncodeError" "UnicodeDecodeError"
-    "UnicodeTranslateError" "ValueError" "ZeroDivisionError" "EnvironmentError" "IOError" "WindowsError"
-    "BlockingIOError" "ChildProcessError" "ConnectionError" "BrokenPipeError" "ConnectionAbortedError"
-    "ConnectionRefusedError" "ConnectionResetError" "FileExistsError" "FileNotFoundError" "InterruptedError"
-    "IsADirectoryError" "NotADirectoryError" "PermissionError" "ProcessLookupError" "TimeoutError" "Warning"
-    "UserWarning" "DeprecationWarning" "PendingDeprecationWarning" "SyntaxWarning" "RuntimeWarning"
-    "FutureWarning" "UnicodeWarning" "BytesWarning" "ResourceWarning"
+    "ArithmeticError" "BufferError" "LookupError" "AssertionError" "AttributeError" "EOFError"
+    "FloatingPointError" "ModuleNotFoundError" "IndexError" "KeyError" "KeyboardInterrupt"
+    "MemoryError" "NameError" "NotImplementedError" "OSError" "OverflowError" "RecursionError"
+    "ReferenceError" "RuntimeError" "StopIteration" "StopAsyncIteration" "SyntaxError"
+    "IndentationError" "TabError" "SystemError" "SystemExit" "TypeError" "UnboundLocalError"
+    "UnicodeError" "UnicodeEncodeError" "UnicodeDecodeError" "UnicodeTranslateError" "ValueError"
+    "ZeroDivisionError" "EnvironmentError" "IOError" "WindowsError" "BlockingIOError"
+    "ChildProcessError" "ConnectionError" "BrokenPipeError" "ConnectionAbortedError"
+    "ConnectionRefusedError" "ConnectionResetError" "FileExistsError" "FileNotFoundError"
+    "InterruptedError" "IsADirectoryError" "NotADirectoryError" "PermissionError"
+    "ProcessLookupError" "TimeoutError" "Warning" "UserWarning" "DeprecationWarning"
+    "PendingDeprecationWarning" "SyntaxWarning" "RuntimeWarning" "FutureWarning" "UnicodeWarning"
+    "BytesWarning" "ResourceWarning"
     ; https://docs.python.org/3/library/stdtypes.html
-    "bool" "int" "float" "complex" "list" "tuple" "range" "str"
-    "bytes" "bytearray" "memoryview" "set" "frozenset" "dict" "type"))
+    "bool" "int" "float" "complex" "list" "tuple" "range" "str" "bytes" "bytearray" "memoryview"
+    "set" "frozenset" "dict" "type"))
 
 ; Normal parameters
 (parameters

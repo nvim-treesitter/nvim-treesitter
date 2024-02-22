@@ -5,7 +5,9 @@
 ((list
   .
   (symbol) @_call) @local.scope
-  (#any-of? @_call "let" "fn" "lambda" "λ" "while" "each" "for" "if" "when" "do" "collect" "icollect" "accumulate" "case" "match"))
+  (#any-of? @_call
+    "let" "fn" "lambda" "λ" "while" "each" "for" "if" "when" "do" "collect" "icollect" "accumulate"
+    "case" "match"))
 
 (symbol) @local.reference
 

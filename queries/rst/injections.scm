@@ -6,7 +6,10 @@
   name: (type) @_type
   body: (body) @injection.content)
   (#set! injection.language "rst")
-  (#any-of? @_type "attention" "caution" "danger" "error" "hint" "important" "note" "tip" "warning" "admonition" "line-block" "parsed-literal" "epigraph" "highlights" "pull-quote" "compound" "header" "footer" "meta" "replace"))
+  (#any-of? @_type
+    "attention" "caution" "danger" "error" "hint" "important" "note" "tip" "warning" "admonition"
+    "line-block" "parsed-literal" "epigraph" "highlights" "pull-quote" "compound" "header" "footer"
+    "meta" "replace"))
 
 ; Directives with nested content without arguments, but with options
 ((directive
@@ -16,7 +19,9 @@
       (options)
       (content) @injection.content))
   (#set! injection.language "rst")
-  (#any-of? @_type "attention" "caution" "danger" "error" "hint" "important" "note" "tip" "warning" "admonition" "line-block" "parsed-literal" "compound"))
+  (#any-of? @_type
+    "attention" "caution" "danger" "error" "hint" "important" "note" "tip" "warning" "admonition"
+    "line-block" "parsed-literal" "compound"))
 
 ; Directives with nested content with arguments and options
 ((directive
@@ -25,7 +30,9 @@
     (body
       (content) @injection.content))
   (#set! injection.language "rst")
-  (#any-of? @_type "figure" "topic" "sidebar" "container" "table" "list-table" "class" "role" "restructuredtext-test-directive"))
+  (#any-of? @_type
+    "figure" "topic" "sidebar" "container" "table" "list-table" "class" "role"
+    "restructuredtext-test-directive"))
 
 ; Special directives
 ((directive

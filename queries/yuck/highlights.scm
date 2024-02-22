@@ -13,7 +13,8 @@
 (list
   .
   (symbol) @keyword
-  (#any-of? @keyword "defwindow" "defwidget" "defvar" "defpoll" "deflisten" "geometry" "children" "struts"))
+  (#any-of? @keyword
+    "defwindow" "defwidget" "defvar" "defpoll" "deflisten" "geometry" "children" "struts"))
 
 ; Loop
 (loop_widget
@@ -38,7 +39,10 @@
 (list
   .
   (symbol) @tag.builtin
-  (#any-of? @tag.builtin "box" "button" "calendar" "centerbox" "checkbox" "circular-progress" "color-button" "color-chooser" "combo-box-text" "eventbox" "expander" "graph" "image" "input" "label" "literal" "overlay" "progress" "revealer" "scale" "scroll" "transform"))
+  (#any-of? @tag.builtin
+    "box" "button" "calendar" "centerbox" "checkbox" "circular-progress" "color-button"
+    "color-chooser" "combo-box-text" "eventbox" "expander" "graph" "image" "input" "label" "literal"
+    "overlay" "progress" "revealer" "scale" "scroll" "transform"))
 
 ; Variables
 (ident) @variable
@@ -47,7 +51,9 @@
   (symbol) @variable)
 
 ((ident) @variable.builtin
-  (#any-of? @variable.builtin "EWW_TEMPS" "EWW_RAM" "EWW_DISK" "EWW_BATTERY" "EWW_CPU" "EWW_NET" "EWW_TIME" "EWW_CONFIG_DIR" "EWW_CMD" "EWW_EXECUTABLE"))
+  (#any-of? @variable.builtin
+    "EWW_TEMPS" "EWW_RAM" "EWW_DISK" "EWW_BATTERY" "EWW_CPU" "EWW_NET" "EWW_TIME" "EWW_CONFIG_DIR"
+    "EWW_CMD" "EWW_EXECUTABLE"))
 
 ; Properties
 (keyword) @property
