@@ -95,6 +95,9 @@
 (attribute_call
   (identifier) @function.method.call)
 
+(attribute_subscript
+  (identifier) @property)
+
 (attribute
   (_)
   (identifier) @property)
