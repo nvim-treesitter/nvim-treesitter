@@ -3,7 +3,8 @@
 
 (name) @variable
 
-(type) @type
+(type
+  (identifier) @type)
 
 (comment) @comment @spell
 
@@ -55,13 +56,6 @@
 (expression_statement
   (string) @comment @spell)
 
-; Identifier naming conventions
-((identifier) @type
-  (#lua-match? @type "^[A-Z]"))
-
-((identifier) @constant
-  (#lua-match? @constant "^[A-Z][A-Z_0-9]*$"))
-
 ; Functions
 (constructor_definition) @constructor
 
@@ -104,6 +98,15 @@
 (attribute
   (_)
   (identifier) @property)
+
+; Identifier naming conventions
+; - Make sure the following query is below the attribute queries so that it
+;   takes precedence on a `(type (attribute (identifier)))`
+((identifier) @type
+  (#lua-match? @type "^[A-Z]"))
+
+((identifier) @constant
+  (#lua-match? @constant "^[A-Z][A-Z_0-9]*$"))
 
 ; Enums
 (enumerator
@@ -246,10 +249,7 @@
     "export_subgroup" "icon" "onready" "rpc" "tool" "warning_ignore"))
 
 ; Builtin Types
-([
-  (identifier)
-  (type)
-] @type.builtin
+((identifier) @type.builtin
   (#any-of? @type.builtin
     ; from godot-vscode-plugin
     "Vector2" "Vector2i" "Vector3" "Vector3i" "Color" "Rect2" "Rect2i" "Array" "Basis" "Dictionary"
