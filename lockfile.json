@@ -66,7 +66,7 @@
     "revision": "6e41628e9d18b19caea1cb1d72aae4ccff5bdfe9"
   },
   "cmake": {
-    "revision": "73ab4b8e9522f014a67f87f585e820d36fa47408"
+    "revision": "3175c3f5fdccfec8d3e506f6d95b485cbd6f93fb"
   },
   "comment": {
     "revision": "aefcc2813392eb6ffe509aa0fc8b4e9b57413ee1"
@@ -126,7 +126,7 @@
     "revision": "a750758da90955c86fcc22fcbb6fa44a7d009865"
   },
   "dtd": {
-    "revision": "851ff145b12313382f49f56a3f9a399ba2bf0232"
+    "revision": "d747bcff8af333fa35b93620f2689406ec5b55b2"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -159,10 +159,10 @@
     "revision": "a52579670e2b14ec03d410c3c980fafaf6d659c4"
   },
   "faust": {
-    "revision": "9e514af33bfe061d0ccf1999dbcc93fca91f133c"
+    "revision": "4a8ada6eb1ac2ade8f310e3822b86301f439e463"
   },
   "fennel": {
-    "revision": "389e9ec34d9a56ecf3dd74232de8675b3c4b5487"
+    "revision": "9265a7d635d2f82a10738b9ad65ba8dd8bd4a84a"
   },
   "firrtl": {
     "revision": "2b5adae629c8cba528c7b1e4aa67a8ae28934ea5"
@@ -189,7 +189,7 @@
     "revision": "19db2f47ba4c3a0f6238d4ae0e2abfca16e61dd6"
   },
   "gdscript": {
-    "revision": "73fd7c540a57da01c7e099ca5d5fc434f5273bcd"
+    "revision": "b5dea4d852db65f0872d849c24533eb121e03c76"
   },
   "git_config": {
     "revision": "9c2a1b7894e6d9eedfe99805b829b4ecd871375e"
@@ -282,7 +282,7 @@
     "revision": "0135187126370cbf112d759a50eab4a5c913a827"
   },
   "html": {
-    "revision": "5760f521fac79263de4ca71a590ef516594c9f37"
+    "revision": "b5d9758e22b4d3d25704b72526670759a9e4d195"
   },
   "htmldjango": {
     "revision": "8873e3df89f9ea1d33f6235e516b600009288557"
@@ -366,7 +366,7 @@
     "revision": "1b96e58faf558ce057d4dc664b904528aee743cb"
   },
   "lua": {
-    "revision": "9668709211b2e683f27f414454a8b51bf0a6bda1"
+    "revision": "04c9579dcb917255b2e5f8199df4ae7f587d472f"
   },
   "luadoc": {
     "revision": "873612aadd3f684dd4e631bdf42ea8990c57634e"
@@ -465,10 +465,10 @@
     "revision": "a30394f61b607f48c841c6e085d5219f23872816"
   },
   "php": {
-    "revision": "caf4d67d55386d3e4f85d29450b8d9cacbb02d19"
+    "revision": "710754c879435178b7643e525c84cd53f32c510c"
   },
   "php_only": {
-    "revision": "caf4d67d55386d3e4f85d29450b8d9cacbb02d19"
+    "revision": "710754c879435178b7643e525c84cd53f32c510c"
   },
   "phpdoc": {
     "revision": "f285e338d328a03920a9bfd8dda78585c7ddcca3"
@@ -579,7 +579,7 @@
     "revision": "22a0bb2678755a3714e194609862ea7f4516e807"
   },
   "rust": {
-    "revision": "a70daac064145c84e9d51767c2575bb68d51df58"
+    "revision": "85a21c96d31b2a5c4369e5836a7f4ab059268fea"
   },
   "scala": {
     "revision": "e02f003d78dc269fef287b9b7b9963dc1f26bd7e"
@@ -618,7 +618,7 @@
     "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
   },
   "sourcepawn": {
-    "revision": "bc1f7348b42b8eeec5c3053865d8d36217504d13"
+    "revision": "cea67796eb919322785172c1bc7b11dc6c2d52b7"
   },
   "sparql": {
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
@@ -717,7 +717,7 @@
     "revision": "43b221c0b76e77244efdaa9963e402a17c930fbc"
   },
   "typst": {
-    "revision": "3a6c81bb56082604f5e63834cb2f946beeda1e76"
+    "revision": "c757be0898e2a58f4e9761aa164dc413bf5beaf8"
   },
   "udev": {
     "revision": "15d89be59a3802dcbe2e97e0f9d32b52f3aeda3f"
@@ -747,7 +747,7 @@
     "revision": "9534865e614c95eb9418e5e73f061c32fa4d9540"
   },
   "vim": {
-    "revision": "32c76f150347c1cd044e90b8e2bc73c00677fa55"
+    "revision": "bc1364d922952138957a62105171ed68e73fbb6c"
   },
   "vimdoc": {
     "revision": "40fcd50a2c7b5a3ef98294795116773b24fb61ab"
@@ -762,13 +762,13 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "e621578ce680afce92090392367d0eda9d6c0c7f"
+    "revision": "e8a5f3ade226509f422dbd4c5900288df3729a62"
   },
   "xcompose": {
     "revision": "8898238fca7e143760386448093392b87e58002e"
   },
   "xml": {
-    "revision": "851ff145b12313382f49f56a3f9a399ba2bf0232"
+    "revision": "d747bcff8af333fa35b93620f2689406ec5b55b2"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
