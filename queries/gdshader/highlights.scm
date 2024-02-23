@@ -21,7 +21,7 @@
 ] @keyword.storage
 
 [
-  "while"  
+  "while"
   "for"
   "switch"
 ] @keyword.repeat
