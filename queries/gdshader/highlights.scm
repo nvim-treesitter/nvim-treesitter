@@ -118,6 +118,6 @@
     ] @function)
 
 (call_expr
-  function: (builtin_type) @function)
+  function: (builtin_type) @function.call)
 
 (comment) @comment @spell
