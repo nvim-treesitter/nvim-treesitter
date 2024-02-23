@@ -12,7 +12,7 @@
     "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
   },
   "arduino": {
-    "revision": "2372f163b8416eeea674686fe0222e39fa06bad5"
+    "revision": "a282270857b7be447b8be91411468349a31d73b7"
   },
   "asm": {
     "revision": "6ace266be7ad6bf486a95427ca3fc949aff66211"
@@ -66,7 +66,7 @@
     "revision": "6e41628e9d18b19caea1cb1d72aae4ccff5bdfe9"
   },
   "cmake": {
-    "revision": "3175c3f5fdccfec8d3e506f6d95b485cbd6f93fb"
+    "revision": "f8de25f30757a2def006a7c144354710fe63dcf3"
   },
   "comment": {
     "revision": "aefcc2813392eb6ffe509aa0fc8b4e9b57413ee1"
@@ -126,7 +126,7 @@
     "revision": "a750758da90955c86fcc22fcbb6fa44a7d009865"
   },
   "dtd": {
-    "revision": "d747bcff8af333fa35b93620f2689406ec5b55b2"
+    "revision": "52b3783d0c89a69ec64b2d49eee95f44a7fdcd2a"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -165,7 +165,7 @@
     "revision": "9265a7d635d2f82a10738b9ad65ba8dd8bd4a84a"
   },
   "fidl": {
-    "revision": "0e1180bb126f280711a62f2a21e3609923fd8b0c"
+    "revision": "cdb35101270f2da3f0b151d11283a7965a09bf98"
   },
   "firrtl": {
     "revision": "2b5adae629c8cba528c7b1e4aa67a8ae28934ea5"
@@ -405,7 +405,7 @@
     "revision": "d6ec8ce0963c3c8180161391f15d8f7d415f650d"
   },
   "mlir": {
-    "revision": "650a8fb72013ba8d169bdb458e480d640fc545c9"
+    "revision": "117cbbc46bbf82ae30b24f8939573655017226da"
   },
   "muttrc": {
     "revision": "67d9e23ca7aa22d9bce9d16c53d2c927dff5159a"
@@ -465,7 +465,7 @@
     "revision": "7905a168036e23605160a0d32a142f58ab5eaa06"
   },
   "perl": {
-    "revision": "a30394f61b607f48c841c6e085d5219f23872816"
+    "revision": "fd8b951cf6f72d48dfd07679de8cf0260836b231"
   },
   "php": {
     "revision": "710754c879435178b7643e525c84cd53f32c510c"
@@ -600,7 +600,7 @@
     "revision": "0cdfb1741323f38e9a33798674145c22cfc0092b"
   },
   "slint": {
-    "revision": "68405a45f7a5311cd1f77e40ba84199573303f52"
+    "revision": "3c82235f41b63f35a01ae3888206e93585cbb84a"
   },
   "smali": {
     "revision": "72e334b2630f5852825ba5ff9dfd872447175eb5"
@@ -621,7 +621,7 @@
     "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
   },
   "sourcepawn": {
-    "revision": "cea67796eb919322785172c1bc7b11dc6c2d52b7"
+    "revision": "4cf55de594d8029e1034726aacac80dfd0e9010c"
   },
   "sparql": {
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
@@ -765,13 +765,13 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "e8a5f3ade226509f422dbd4c5900288df3729a62"
+    "revision": "3e74a6215e9b931ced84e9b059924dd7cfa3573e"
   },
   "xcompose": {
     "revision": "8898238fca7e143760386448093392b87e58002e"
   },
   "xml": {
-    "revision": "d747bcff8af333fa35b93620f2689406ec5b55b2"
+    "revision": "52b3783d0c89a69ec64b2d49eee95f44a7fdcd2a"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
