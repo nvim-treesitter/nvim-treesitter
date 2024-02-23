@@ -50,7 +50,7 @@
 [
   (true)
   (false)
-] @constant.builtin
+] @boolean
 
 (comment) @comment
 
