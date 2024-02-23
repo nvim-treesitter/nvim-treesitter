@@ -8,11 +8,10 @@
   (diagram_flow)
   (flow_stmt_subgraph)
 ] @indent.begin
-(#set! indent.immediate 1))
+  (#set! indent.immediate 1))
 
-[
-  "end"
-] @indent.branch
+
+"end" @indent.branch
 
 [
   (ERROR)
