@@ -13,7 +13,17 @@
 ((value) @number
   (#lua-match? @number "^%d+$"))
 
-(index) @number
+((index) @number
+  (#lua-match? @number "^%d+$"))
+
+((substitution
+  (key) @constant)
+  (#lua-match? @constant "^[A-Z_][A-Z0-9_]*$"))
+
+(substitution
+  (key) @function
+  "::" @punctuation.special
+  (secret) @constant.macro)
 
 (property
   [
@@ -38,7 +48,3 @@
   "."
   "\\"
 ] @punctuation.delimiter
-
-((substitution
-  (key) @constant)
-  (#lua-match? @constant "^[A-Z_][A-Z0-9_]*$"))
