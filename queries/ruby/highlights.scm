@@ -125,7 +125,8 @@
 ] @variable.member
 
 ((identifier) @constant.builtin
-  (#any-of? @constant.builtin "__callee__" "__dir__" "__id__" "__method__" "__send__" "__ENCODING__" "__FILE__" "__LINE__"))
+  (#any-of? @constant.builtin
+    "__callee__" "__dir__" "__id__" "__method__" "__send__" "__ENCODING__" "__FILE__" "__LINE__"))
 
 ((constant) @type
   (#not-lua-match? @type "^[A-Z0-9_]+$"))

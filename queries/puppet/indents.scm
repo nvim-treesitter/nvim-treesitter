@@ -5,7 +5,6 @@
   (attribute_type_entry)
   (resource_declaration)
   (selector)
-  (method_call)
   (case_statement)
   (hash)
   (array)

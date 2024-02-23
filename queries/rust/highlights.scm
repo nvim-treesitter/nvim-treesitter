@@ -220,20 +220,11 @@
   (block_comment)
 ] @comment @spell
 
-((line_comment) @comment.documentation
-  (#lua-match? @comment.documentation "^///[^/]"))
+(line_comment
+  (doc_comment)) @comment.documentation
 
-((line_comment) @comment.documentation
-  (#lua-match? @comment.documentation "^///$"))
-
-((line_comment) @comment.documentation
-  (#lua-match? @comment.documentation "^//!"))
-
-((block_comment) @comment.documentation
-  (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
-
-((block_comment) @comment.documentation
-  (#lua-match? @comment.documentation "^/[*][!]"))
+(block_comment
+  (doc_comment)) @comment.documentation
 
 (boolean_literal) @boolean
 

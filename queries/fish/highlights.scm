@@ -116,7 +116,11 @@
   name:
     [
       (word) @function.builtin
-      (#any-of? @function.builtin "." ":" "_" "alias" "argparse" "bg" "bind" "block" "breakpoint" "builtin" "cd" "command" "commandline" "complete" "contains" "count" "disown" "echo" "emit" "eval" "exec" "exit" "fg" "functions" "history" "isatty" "jobs" "math" "printf" "pwd" "random" "read" "realpath" "set" "set_color" "source" "status" "string" "test" "time" "type" "ulimit" "wait")
+      (#any-of? @function.builtin
+        "." ":" "_" "alias" "argparse" "bg" "bind" "block" "breakpoint" "builtin" "cd" "command"
+        "commandline" "complete" "contains" "count" "disown" "echo" "emit" "eval" "exec" "exit" "fg"
+        "functions" "history" "isatty" "jobs" "math" "printf" "pwd" "random" "read" "realpath" "set"
+        "set_color" "source" "status" "string" "test" "time" "type" "ulimit" "wait")
     ])
 
 ; Functions

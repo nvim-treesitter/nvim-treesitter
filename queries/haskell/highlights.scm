@@ -87,7 +87,7 @@
 ; Keywords, operators, includes
 [
   "forall"
-  "∀"
+  ; "∀" ; utf-8 is not cross-platform safe
 ] @keyword.repeat
 
 (pragma) @keyword.directive
@@ -586,12 +586,19 @@
 ; ----------------------------------------------------------------------------
 ; Exceptions/error handling
 ((variable) @keyword.exception
-  (#any-of? @keyword.exception "error" "undefined" "try" "tryJust" "tryAny" "catch" "catches" "catchJust" "handle" "handleJust" "throw" "throwIO" "throwTo" "throwError" "ioError" "mask" "mask_" "uninterruptibleMask" "uninterruptibleMask_" "bracket" "bracket_" "bracketOnErrorSource" "finally" "fail" "onException" "expectationFailure"))
+  (#any-of? @keyword.exception
+    "error" "undefined" "try" "tryJust" "tryAny" "catch" "catches" "catchJust" "handle" "handleJust"
+    "throw" "throwIO" "throwTo" "throwError" "ioError" "mask" "mask_" "uninterruptibleMask"
+    "uninterruptibleMask_" "bracket" "bracket_" "bracketOnErrorSource" "finally" "fail"
+    "onException" "expectationFailure"))
 
 ; ----------------------------------------------------------------------------
 ; Debugging
 ((variable) @keyword.debug
-  (#any-of? @keyword.debug "trace" "traceId" "traceShow" "traceShowId" "traceWith" "traceShowWith" "traceStack" "traceIO" "traceM" "traceShowM" "traceEvent" "traceEventWith" "traceEventIO" "flushEventLog" "traceMarker" "traceMarkerIO"))
+  (#any-of? @keyword.debug
+    "trace" "traceId" "traceShow" "traceShowId" "traceWith" "traceShowWith" "traceStack" "traceIO"
+    "traceM" "traceShowM" "traceEvent" "traceEventWith" "traceEventIO" "flushEventLog" "traceMarker"
+    "traceMarkerIO"))
 
 ; ----------------------------------------------------------------------------
 ; Fields

@@ -8,7 +8,7 @@
   (node_definition)
   (resource_declaration)
   (selector)
-  (method_call)
+  (iterator_statement)
   (case_statement)
   (hash)
   (array)

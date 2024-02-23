@@ -10,10 +10,7 @@
   (#any-of? @_lang "scss" "postcss" "less")
   (#set! injection.language "scss"))
 
-([
-  (raw_text_expr)
-  (raw_text_each)
-] @injection.content
+((svelte_raw_text) @injection.content
   (#set! injection.language "javascript"))
 
 ((script_element

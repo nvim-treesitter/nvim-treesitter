@@ -6,13 +6,11 @@ local get_node_text = ts.get_node_text
 ---@type string[]
 local files
 
-if not _G.arg[1] then
-  print "Must specify file or directory to format!"
-  return
-elseif _G.arg[1]:match ".*%.scm$" then
-  files = { _G.arg[1] }
+local arg = _G.arg[1] or "."
+if arg:match ".*%.scm$" then
+  files = { arg }
 else
-  files = vim.fn.split(vim.fn.glob(_G.arg[1] .. "/**/*.scm"))
+  files = vim.fn.split(vim.fn.glob(arg .. "/**/*.scm"))
 end
 
 ts.query.add_predicate("has-type?", function(match, _, _, pred)
@@ -36,6 +34,7 @@ end)
 
 --- Control the indent here. Change to \t if uses tab instead
 local indent_str = "  "
+local textwidth = 100
 
 -- Query to control the formatter
 local format_queries = [[
@@ -176,8 +175,8 @@ local format_queries = [[
   [
     "_"
     name: (identifier)
-  ]
-  (_) @format.cancel-append
+    (_)
+  ] @format.cancel-append
   .
   ")"
   (#not-has-type? @format.cancel-append comment))
@@ -189,7 +188,7 @@ local format_queries = [[
 (anonymous_node (identifier) @format.keep)
 (field_definition
   name: (_)
-  ":" @format.indent.begin @format.append-newline ; surpress trailing whitespaces with forced newlines
+  ":" @format.indent.begin @format.append-newline ; suppress trailing whitespaces with forced newlines
   [
     (named_node [ (named_node) (list) (grouping) (anonymous_node) (field_definition) ])
     (list "[" . (_) . (_) "]")
@@ -206,7 +205,7 @@ local format_queries = [[
     (named_node)                  ; ((foo))
     (list)                        ; ([foo] (...))
     (anonymous_node)              ; ("foo")
-    (grouping . (anonymous_node)) ; (("foo"))
+    (grouping . (_))
   ] @format.indent.begin
   .
   (_))
@@ -222,6 +221,7 @@ local format_queries = [[
     (named_node)
     (list)
     (predicate)
+    (grouping . (_))
     "."
   ] @format.append-newline
   (_) .)
@@ -255,9 +255,26 @@ local format_queries = [[
   .
   (capture))
 
+; Separate this query to avoid capture duplication
+(predicate
+  "(" @format.indent.begin @format.cancel-append)
 (predicate
   (parameters
-    (_) @format.prepend-space))
+    (comment) @format.prepend-newline
+    .
+    (_) @format.cancel-prepend)
+  (#is-start-of-line? @format.prepend-newline))
+(predicate
+  (parameters
+    (_) @format.prepend-space)
+  (#set! conditional-newline))
+(predicate
+  (parameters
+    .
+    (capture)
+    . (_) @format.prepend-space)
+  (#set! lookahead-newline)
+  (#set! conditional-newline))
 ;; Workaround to keep the string's content
 (string) @format.keep
 
@@ -323,7 +340,24 @@ local function iter(bufnr, node, lines, q, level)
         if q["format.prepend-newline"][id] then
           lines[#lines + 1] = string.rep(indent_str, level)
         elseif q["format.prepend-space"][id] then
-          lines[#lines] = lines[#lines] .. " "
+          if not q["format.prepend-space"][id]["conditional-newline"] then
+            lines[#lines] = lines[#lines] .. " "
+          elseif child:byte_length() + 1 + #lines[#lines] > textwidth then
+            lines[#lines + 1] = string.rep(indent_str, level)
+          else
+            -- Do a rough guess of the actual byte length. If it's larger than `columns` then add a newline first
+            -- column - byte_end + byte_start
+            local _, _, byte_start = child:start()
+            local _, _, byte_end = node:end_()
+            if
+              q["format.prepend-space"][id]["lookahead-newline"]
+              and textwidth - (byte_end - byte_start) - #lines[#lines] < 0
+            then
+              lines[#lines + 1] = string.rep(indent_str, level)
+            else
+              lines[#lines] = lines[#lines] .. " "
+            end
+          end
         end
       end
       if q["format.replace"][id] then

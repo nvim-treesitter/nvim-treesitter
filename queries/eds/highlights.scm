@@ -6,7 +6,8 @@
 ] @punctuation.bracket
 
 ((section_name) @variable.builtin
-  (#match? @variable.builtin "\\c^(FileInfo|DeviceInfo|DummyUsage|MandatoryObjects|OptionalObjects)$"))
+  (#match? @variable.builtin
+    "\\c^(FileInfo|DeviceInfo|DummyUsage|MandatoryObjects|OptionalObjects)$"))
 
 ((section_name) @variable.builtin
   (#lua-match? @variable.builtin "^1"))

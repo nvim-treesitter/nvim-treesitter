@@ -9,6 +9,8 @@
   "interface"
   "extension"
   "property"
+  "associatedtype"
+  "where"
 ] @keyword
 
 "__init" @constructor

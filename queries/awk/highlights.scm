@@ -9,11 +9,15 @@
 
 ; https://www.gnu.org/software/gawk/manual/html_node/Auto_002dset.html
 ((identifier) @constant.builtin
-  (#any-of? @constant.builtin "ARGC" "ARGV" "ARGIND" "ENVIRON" "ERRNO" "FILENAME" "FNR" "NF" "FUNCTAB" "NR" "PROCINFO" "RLENGTH" "RSTART" "RT" "SYMTAB"))
+  (#any-of? @constant.builtin
+    "ARGC" "ARGV" "ARGIND" "ENVIRON" "ERRNO" "FILENAME" "FNR" "NF" "FUNCTAB" "NR" "PROCINFO"
+    "RLENGTH" "RSTART" "RT" "SYMTAB"))
 
 ; https://www.gnu.org/software/gawk/manual/html_node/User_002dmodified.html
 ((identifier) @variable.builtin
-  (#any-of? @variable.builtin "BINMODE" "CONVFMT" "FIELDWIDTHS" "FPAT" "FS" "IGNORECASE" "LINT" "OFMT" "OFS" "ORS" "PREC" "ROUNDMODE" "RS" "SUBSEP" "TEXTDOMAIN"))
+  (#any-of? @variable.builtin
+    "BINMODE" "CONVFMT" "FIELDWIDTHS" "FPAT" "FS" "IGNORECASE" "LINT" "OFMT" "OFS" "ORS" "PREC"
+    "ROUNDMODE" "RS" "SUBSEP" "TEXTDOMAIN"))
 
 (number) @number
 

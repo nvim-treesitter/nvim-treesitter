@@ -17,7 +17,7 @@
   ";"
 ] @punctuation.delimiter
 
-; Default general color defination
+; Default general color definition
 (identifier) @variable
 
 (type_identifier) @type

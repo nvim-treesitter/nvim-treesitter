@@ -2,7 +2,11 @@
 (command_name) @function
 
 (text_mode
-  "\\text" @function)
+  [
+    "\\text"
+    "\\intertext"
+    "\\shortintertext"
+  ] @function)
 
 (caption
   command: _ @function)
@@ -316,9 +320,13 @@
   directory: (curly_group_path) @string
   file: (curly_group_path) @string)
 
-(bibtex_include
+(bibstyle_include
   command: _ @keyword.import
   path: (curly_group_path) @string)
+
+(bibtex_include
+  command: _ @keyword.import
+  paths: (curly_group_path_list) @string)
 
 (biblatex_include
   "\\addbibresource" @keyword.import
