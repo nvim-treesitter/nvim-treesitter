@@ -340,7 +340,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [printf](https://github.com/ObserverOfTime/tree-sitter-printf) (maintained by @ObserverOfTime)
 - [x] [prisma](https://github.com/victorhqc/tree-sitter-prisma) (maintained by @elianiva)
 - [x] [promql](https://github.com/MichaHoffmann/tree-sitter-promql) (maintained by @MichaHoffmann)
-- [x] [properties](https://github.com/ObserverOfTime/tree-sitter-properties) (maintained by @ObserverOfTime)
+- [x] [properties](https://github.com/tree-sitter-grammars/tree-sitter-properties) (maintained by @ObserverOfTime)
 - [x] [proto](https://github.com/treywood/tree-sitter-proto) (maintained by @treywood)
 - [x] [prql](https://github.com/PRQL/tree-sitter-prql) (maintained by @matthias-Q)
 - [x] [psv](https://github.com/amaanq/tree-sitter-csv) (maintained by @amaanq)

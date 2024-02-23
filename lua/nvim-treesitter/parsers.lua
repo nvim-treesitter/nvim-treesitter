@@ -1484,8 +1484,8 @@ list.promql = {
 
 list.properties = {
   install_info = {
-    url = "https://github.com/ObserverOfTime/tree-sitter-properties",
-    files = { "src/parser.c" },
+    url = "https://github.com/tree-sitter-grammars/tree-sitter-properties",
+    files = { "src/parser.c", "src/scanner.c" },
   },
   filetype = "jproperties",
   maintainers = { "@ObserverOfTime" },
