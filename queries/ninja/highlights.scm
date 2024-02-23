@@ -75,7 +75,9 @@
   (body
     (let
       name: (identifier) @constant.builtin
-      (#not-any-of? @constant.builtin "command" "depfile" "deps" "msvc_deps_prefix" "description" "dyndep" "generator" "in" "in_newline" "out" "restat" "rspfile" "rspfile_content" "pool"))))
+      (#not-any-of? @constant.builtin
+        "command" "depfile" "deps" "msvc_deps_prefix" "description" "dyndep" "generator" "in"
+        "in_newline" "out" "restat" "rspfile" "rspfile_content" "pool"))))
 
 ;
 ; Expansion

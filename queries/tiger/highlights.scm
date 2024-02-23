@@ -1,7 +1,9 @@
 ; Built-ins {{{
 ((function_call
   function: (identifier) @function.builtin)
-  (#any-of? @function.builtin "chr" "concat" "exit" "flush" "getchar" "not" "ord" "print" "print_err" "print_int" "size" "strcmp" "streq" "substring"))
+  (#any-of? @function.builtin
+    "chr" "concat" "exit" "flush" "getchar" "not" "ord" "print" "print_err" "print_int" "size"
+    "strcmp" "streq" "substring"))
 
 ((type_identifier) @type.builtin
   (#any-of? @type.builtin "int" "string" "Object"))

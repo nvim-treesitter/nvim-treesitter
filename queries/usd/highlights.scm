@@ -123,62 +123,22 @@
     "Vec3f" "Vec3f[]"))
 
 ((identifier) @keyword
-  ; format-ignore
   (#any-of? @keyword
     ; Reference: https://openusd.org/release/api/sdf_page_front.html
     ; LIVRPS names
-    "inherits"
-    "payload"
-    "references"
-    "specializes"
-    "variantSets"
-    "variants"
-
+    "inherits" "payload" "references" "specializes" "variantSets" "variants"
     ; assetInfo names
-    "assetInfo"
-    "identifier"
-    "name"
-    "payloadAssetDependencies"
-    "version"
-
+    "assetInfo" "identifier" "name" "payloadAssetDependencies" "version"
     ; clips names
-    "clips"
-
-    "active"
-    "assetPaths"
-    "manifestAssetPath"
-    "primPath"
-    "templateAssetPath"
-    "templateEndTime"
-    "templateStartTime"
-    "templateStride"
-    "times"
-
+    "clips" "active" "assetPaths" "manifestAssetPath" "primPath" "templateAssetPath"
+    "templateEndTime" "templateStartTime" "templateStride" "times"
     ; customData names
-    "customData"
-
-    "apiSchemaAutoApplyTo"
-    "apiSchemaOverridePropertyNames"
-    "className"
-    "extraPlugInfo"
-    "isUsdShadeContainer"
-    "libraryName"
-    "providesUsdShadeConnectableAPIBehavior"
-    "requiresUsdShadeEncapsulation"
-    "skipCodeGeneration"
-
+    "customData" "apiSchemaAutoApplyTo" "apiSchemaOverridePropertyNames" "className" "extraPlugInfo"
+    "isUsdShadeContainer" "libraryName" "providesUsdShadeConnectableAPIBehavior"
+    "requiresUsdShadeEncapsulation" "skipCodeGeneration"
     ; Layer metadata names
-    "colorConfiguration"
-    "colorManagementSystem"
-    "customLayerData"
-    "defaultPrim"
-    "doc"
-    "endTimeCode"
-    "framesPerSecond"
-    "owner"
-    "startTimeCode"
-    "subLayers"
-
+    "colorConfiguration" "colorManagementSystem" "customLayerData" "defaultPrim" "doc" "endTimeCode"
+    "framesPerSecond" "owner" "startTimeCode" "subLayers"
     ; Prim metadata
     "instanceable"))
 

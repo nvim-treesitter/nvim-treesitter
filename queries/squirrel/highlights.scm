@@ -171,49 +171,35 @@
         "."
         (_) @function.builtin)
   ]
-  ; format-ignore
   (#any-of? @function.builtin
-   ; General Methods
-   "assert" "array" "callee" "collectgarbage" "compilestring"
-   "enabledebughook" "enabledebuginfo" "error" "getconsttable"
-   "getroottable" "print" "resurrectunreachable" "setconsttable"
-   "setdebughook" "seterrorhandler" "setroottable" "type"
-
-   ; Hidden Methods
-   "_charsize_" "_intsize_" "_floatsize_" "_version_" "_versionnumber_"
-
-   ; Number Methods
-   "tofloat" "tostring" "tointeger" "tochar"
-
-   ; String Methods
-   "len" "slice" "find" "tolower" "toupper"
-
-   ; Table Methods
-   "rawget" "rawset" "rawdelete" "rawin" "clear" 
-   "setdelegate" "getdelegate" "filter" "keys" "values"
-
-   ; Array Methods
-   "append" "push" "extend" "pop" "top" "insert" "remove" "resize" "sort"
-   "reverse" "map" "apply" "reduce"
-
-   ; Function Methods
-   "call" "pcall" "acall" "pacall" "setroot" "getroot" "bindenv" "getinfos"
-
-   ; Class Methods
-   "instance" "getattributes" "setattributes" "newmember" "rawnewmember"
-
-   ; Class Instance Methods
-   "getclass"
-
-   ; Generator Methods
-   "getstatus"
-
-   ; Thread Methods
-   "call" "wakeup" "wakeupthrow" "getstackinfos"
-
-   ; Weak Reference Methods
-   "ref" "weakref"
-))
+    ; General Methods
+    "assert" "array" "callee" "collectgarbage" "compilestring" "enabledebughook" "enabledebuginfo"
+    "error" "getconsttable" "getroottable" "print" "resurrectunreachable" "setconsttable"
+    "setdebughook" "seterrorhandler" "setroottable" "type"
+    ; Hidden Methods
+    "_charsize_" "_intsize_" "_floatsize_" "_version_" "_versionnumber_"
+    ; Number Methods
+    "tofloat" "tostring" "tointeger" "tochar"
+    ; String Methods
+    "len" "slice" "find" "tolower" "toupper"
+    ; Table Methods
+    "rawget" "rawset" "rawdelete" "rawin" "clear" "setdelegate" "getdelegate" "filter" "keys"
+    "values"
+    ; Array Methods
+    "append" "push" "extend" "pop" "top" "insert" "remove" "resize" "sort" "reverse" "map" "apply"
+    "reduce"
+    ; Function Methods
+    "call" "pcall" "acall" "pacall" "setroot" "getroot" "bindenv" "getinfos"
+    ; Class Methods
+    "instance" "getattributes" "setattributes" "newmember" "rawnewmember"
+    ; Class Instance Methods
+    "getclass"
+    ; Generator Methods
+    "getstatus"
+    ; Thread Methods
+    "call" "wakeup" "wakeupthrow" "getstackinfos"
+    ; Weak Reference Methods
+    "ref" "weakref"))
 
 (member_declaration
   "constructor" @constructor)
