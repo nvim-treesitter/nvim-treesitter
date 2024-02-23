@@ -10,9 +10,12 @@
   "struct"
   "case"
   "default"
+] @keyword
+
+[
   (precision_qualifier)
   (interpolation_qualifier)
-] @keyword
+] @type.qualifier
 
 [
   "in"
@@ -23,7 +26,6 @@
 [
   "while"
   "for"
-  "switch"
 ] @keyword.repeat
 
 [
@@ -35,6 +37,7 @@
 [
   "if"
   "else"
+  "switch"
 ] @keyword.conditional
 
 [
