@@ -8,26 +8,39 @@
   "varying"
   "uniform"
   "struct"
-  "for"
-  "in"
-  "out"
-  "inout"
-  "while"
-  "do"
-  "switch"
   "case"
   "default"
-  "if"
-  "else"
-  "elif"
-  "continue"
-  "break"
-  "return"
-  "include"
-  "#"
   (precision_qualifier)
   (interpolation_qualifier)
 ] @keyword
+
+[
+  "in"
+  "out"
+  "inout"
+] @keyword.storage
+
+[
+  "while"  
+  "for"
+  "switch"
+] @keyword.repeat
+
+[
+  "continue"
+  "break"
+  "return"
+] @keyword.return
+
+[
+  "if"
+  "else"
+] @keyword.conditional
+
+[
+  "#"
+  "include"
+] @keyword.directive
 
 (string) @string
 
@@ -69,13 +82,16 @@
   "."
   ","
   ";"
+] @punctuation.delimiter
+
+[
   "("
   ")"
   "["
   "]"
   "{"
   "}"
-] @punctuation.delimiter
+] @punctuation.bracket
 
 (builtin_type) @type.builtin
 
