@@ -59,11 +59,11 @@
   "--"
 ] @operator
 
-[
-  (boolean)
-  (integer)
-  (float)
-] @number
+(boolean) @boolean
+
+(integer) @number
+
+(float) @number.float
 
 [
   "."
