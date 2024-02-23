@@ -120,4 +120,4 @@
 (call_expr
   function: (builtin_type) @function)
 
-(comment) @comment
+(comment) @comment @spell
