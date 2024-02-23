@@ -87,7 +87,7 @@
   (hint_name)
 ] @property
 
-(builtin_variable) @constant
+(builtin_variable) @constant.builtin
 
 (builtin_function) @function.builtin
 
