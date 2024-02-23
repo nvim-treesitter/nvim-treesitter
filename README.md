@@ -228,6 +228,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [facility](https://github.com/FacilityApi/tree-sitter-facility) (maintained by @bryankenote)
 - [x] [faust](https://github.com/khiner/tree-sitter-faust) (maintained by @khiner)
 - [x] [fennel](https://github.com/alexmozaidze/tree-sitter-fennel) (maintained by @alexmozaidze)
+- [x] [fidl](https://github.com/google/tree-sitter-fidl) (maintained by @chaopeng)
 - [x] [firrtl](https://github.com/amaanq/tree-sitter-firrtl) (maintained by @amaanq)
 - [x] [fish](https://github.com/ram02z/tree-sitter-fish) (maintained by @ram02z)
 - [x] [foam](https://github.com/FoamScience/tree-sitter-foam) (experimental, maintained by @FoamScience)
