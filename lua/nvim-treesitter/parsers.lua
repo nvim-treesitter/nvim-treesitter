@@ -539,7 +539,6 @@ list.fidl = {
   install_info = {
     url = "https://github.com/google/tree-sitter-fidl",
     files = { "src/parser.c" },
-    requires_generate_from_grammar = true,
   },
   maintainers = { "@chaopeng" },
 }
