@@ -164,6 +164,9 @@
   "fennel": {
     "revision": "9265a7d635d2f82a10738b9ad65ba8dd8bd4a84a"
   },
+  "fidl": {
+    "revision": "0e1180bb126f280711a62f2a21e3609923fd8b0c"
+  },
   "firrtl": {
     "revision": "2b5adae629c8cba528c7b1e4aa67a8ae28934ea5"
   },

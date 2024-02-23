@@ -535,6 +535,15 @@ list.fennel = {
   maintainers = { "@alexmozaidze" },
 }
 
+list.fidl = {
+  install_info = {
+    url = "https://github.com/google/tree-sitter-fidl",
+    files = { "src/parser.c" },
+    requires_generate_from_grammar = true,
+  },
+  maintainers = { "@chaopeng" },
+}
+
 list.firrtl = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-firrtl",
