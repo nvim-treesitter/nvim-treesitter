@@ -77,7 +77,7 @@
   "}"
 ] @punctuation.delimiter
 
-(builtin_type) @type
+(builtin_type) @type.builtin
 
 (ident_type) @type.definition
 
