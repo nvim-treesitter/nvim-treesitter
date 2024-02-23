@@ -89,7 +89,7 @@
 
 (builtin_variable) @constant
 
-(builtin_function) @function
+(builtin_function) @function.builtin
 
 (group_uniforms_declaration
   group_name: (ident) @property
