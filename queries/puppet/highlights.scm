@@ -18,6 +18,7 @@
   "node"
   "type"
   "tag"
+  "require"
 ] @keyword
 
 [
@@ -57,8 +58,8 @@
 (function_call
   (identifier) @variable.parameter)
 
-(method_call
-  (identifier) @variable.parameter)
+(iterator_statement
+  (variable) @variable.parameter)
 
 ; Functions
 (function_declaration
@@ -92,10 +93,11 @@
   (class_identifier
     (identifier) @function.method .))
 
-(method_call
-  "."
-  .
-  (identifier) @function.method.call)
+(function_call
+  (field_expression
+    "."
+    (identifier) @function.method.call)
+  "(")
 
 ; Types
 (type) @type
@@ -131,7 +133,9 @@
   (#lua-match? @type "^[A-Z]"))
 
 ((identifier) @type.builtin
-  (#any-of? @type.builtin "Boolean" "Integer" "Float" "String" "Array" "Hash" "Regexp" "Variant" "Data" "Undef" "Default" "File"))
+  (#any-of? @type.builtin
+    "Boolean" "Integer" "Float" "String" "Array" "Hash" "Regexp" "Variant" "Data" "Undef" "Default"
+    "File"))
 
 ; "Namespaces"
 (class_identifier

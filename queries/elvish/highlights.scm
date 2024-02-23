@@ -136,7 +136,9 @@
 
 ((variable
   (identifier) @constant.builtin)
-  (#any-of? @constant.builtin "_" "after-chdir" "args" "before-chdir" "buildinfo" "nil" "notify-bg-job-success" "num-bg-jobs" "ok" "paths" "pid" "pwd" "value-out-indicator" "version"))
+  (#any-of? @constant.builtin
+    "_" "after-chdir" "args" "before-chdir" "buildinfo" "nil" "notify-bg-job-success" "num-bg-jobs"
+    "ok" "paths" "pid" "pwd" "value-out-indicator" "version"))
 
 [
   "$"
