@@ -372,7 +372,6 @@
   ">="
   ">>"
   ">>="
-  "?"
   "@"
   "^"
   "^="
@@ -380,6 +379,8 @@
   "|="
   "||"
 ] @operator
+
+"?" @operator.controlFlow
 
 ; Punctuation
 [
