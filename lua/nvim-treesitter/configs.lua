@@ -584,7 +584,7 @@ end
 function M.get_parser_install_dir(folder_name)
   folder_name = folder_name or "parser"
 
-  local install_dir = config.parser_install_dir or utils.get_package_path()
+  local install_dir = config.parser_install_dir or utils.get_default_parser_install_dir()
   local parser_dir = utils.join_path(install_dir, folder_name)
 
   return utils.create_or_reuse_writable_dir(

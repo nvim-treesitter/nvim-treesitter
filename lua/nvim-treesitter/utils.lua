@@ -128,6 +128,18 @@ function M.get_package_path()
   return fn.fnamemodify(source, ":p:h:h:h")
 end
 
+--- Get the default parser install directory, which is:
+--- - The package dir of the nvim-treesitter plugin, if it exists and contains a writable "parser" dir
+--- - The "site" dir from the "runtimepath" (fallback)
+--- @return string
+function M.get_default_parser_install_dir()
+  local package_path = M.get_package_path()
+  if luv.fs_access(M.join_path(package_path, "parser"), "RW") then
+    return package_path
+  end
+  return M.get_site_dir()
+end
+
 function M.get_cache_dir()
   local cache_dir = fn.stdpath "data"
 
