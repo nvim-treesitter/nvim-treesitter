@@ -240,7 +240,7 @@
     "revision": "949a8a470559543857a62102c84700d291fc984c"
   },
   "gpg": {
-    "revision": "e8a95ae3deed7d7637c33f635fc5b9fc9dbb3216"
+    "revision": "7fd855d7b5442d6eb4b3f2f8797b572b78d4afe6"
   },
   "graphql": {
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
@@ -501,7 +501,7 @@
     "revision": "77625d78eebc3ffc44d114a07b2f348dff3061b0"
   },
   "properties": {
-    "revision": "189b3cc18d36871c27ebb0adcf0cddd123b0cbba"
+    "revision": "ce2f4f66454edb69f66bfa3a1884f601fccd9e08"
   },
   "proto": {
     "revision": "e9f6b43f6844bd2189b50a422d4e2094313f6aa3"
@@ -522,7 +522,7 @@
     "revision": "2517b1ee2236353af761edbd22570f740f1603f1"
   },
   "pymanifest": {
-    "revision": "41a15c43252baa083729c25646cde83ee5c88277"
+    "revision": "69ad424b5dd41088206bd74ebcdd61d987b7825c"
   },
   "python": {
     "revision": "deba2badc88afd18e6cbd4341ee3c18c3a9bb4ed"
@@ -564,7 +564,7 @@
     "revision": "9ac75e71b2d791e0aadeef68098319d86a2a14cf"
   },
   "requirements": {
-    "revision": "00084464ccad32dd71da60771c25554eeedb213c"
+    "revision": "d43b6ec982902df01ce00df85a0cdb6ec8d3e81f"
   },
   "rnoweb": {
     "revision": "502c1126dc6777f09af5bef16e72a42f75bd081e"
@@ -582,7 +582,7 @@
     "revision": "22a0bb2678755a3714e194609862ea7f4516e807"
   },
   "rust": {
-    "revision": "85a21c96d31b2a5c4369e5836a7f4ab059268fea"
+    "revision": "2d7bac5164c344c95530c16dd5c8fa1319e34308"
   },
   "scala": {
     "revision": "e02f003d78dc269fef287b9b7b9963dc1f26bd7e"
@@ -633,7 +633,7 @@
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
   },
   "ssh_config": {
-    "revision": "b8595820fa331977a5a44f5f9e0a445c456b5cbf"
+    "revision": "3a1a5e139514a0e2789d1d7c5065c01bb71756f2"
   },
   "starlark": {
     "revision": "b31a616aac5d05f927f3f9dd809789db7805b632"
@@ -654,7 +654,7 @@
     "revision": "04a126d9210def99f06d9ab84a255110b862d47c"
   },
   "swift": {
-    "revision": "e1ac0c3b48f4c42c40f92f400f14c6561369d4dd"
+    "revision": "fc00cbb460b40228b30f322b5a34ea0e8f35a9f8"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -723,7 +723,7 @@
     "revision": "c757be0898e2a58f4e9761aa164dc413bf5beaf8"
   },
   "udev": {
-    "revision": "15d89be59a3802dcbe2e97e0f9d32b52f3aeda3f"
+    "revision": "caa721ff38704c1186c2afeb467bead8c27ea382"
   },
   "ungrammar": {
     "revision": "debd26fed283d80456ebafa33a06957b0c52e451"
@@ -738,7 +738,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "56d7905f423b82dff4b23c86e2869ddc06f6e419"
+    "revision": "46b8341458bb620a82ef1d8009a3e2f00bc0dad9"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
