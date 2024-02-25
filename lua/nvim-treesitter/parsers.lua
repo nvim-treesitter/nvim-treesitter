@@ -287,7 +287,7 @@ list.commonlisp = {
 list.cooklang = {
   install_info = {
     url = "https://github.com/addcninblue/tree-sitter-cooklang",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@addcninblue" },
 }
