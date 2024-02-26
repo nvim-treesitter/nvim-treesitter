@@ -12,7 +12,7 @@
     "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
   },
   "arduino": {
-    "revision": "a282270857b7be447b8be91411468349a31d73b7"
+    "revision": "7722d4398d87ea22c4877264f88b45bd7ce0cba5"
   },
   "asm": {
     "revision": "6ace266be7ad6bf486a95427ca3fc949aff66211"
@@ -468,10 +468,10 @@
     "revision": "fd8b951cf6f72d48dfd07679de8cf0260836b231"
   },
   "php": {
-    "revision": "710754c879435178b7643e525c84cd53f32c510c"
+    "revision": "78a78df5e06b4c13173af2a1f607c9a853d0f240"
   },
   "php_only": {
-    "revision": "710754c879435178b7643e525c84cd53f32c510c"
+    "revision": "78a78df5e06b4c13173af2a1f607c9a853d0f240"
   },
   "phpdoc": {
     "revision": "f285e338d328a03920a9bfd8dda78585c7ddcca3"
@@ -765,7 +765,7 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "52ef462f76e199845a5df4834b838339e0a6efdb"
+    "revision": "745df1efa28a64514cb0d5b0d853a0d25392a22d"
   },
   "xcompose": {
     "revision": "7fd14940e0478fce79ea195067ed14a2c42c654a"
