@@ -159,6 +159,11 @@
 
 (statement_identifier) @label
 
+(declaration
+  type: (type_identifier) @_type
+  declarator: (identifier) @label
+  (#eq? @_type "__label__"))
+
 [
   (type_identifier)
   (type_descriptor)
