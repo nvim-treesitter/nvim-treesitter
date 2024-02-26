@@ -72,7 +72,8 @@ For these types there is a _norm_ you will have to follow so that features work 
 Here are some global advices:
 
 - Examples of queries can be found in [runtime/queries/](runtime/queries/)
-- Note that (unlike tree-sitter) all matching patterns are applied, with the last one determining the visible highlight.
+- For highlights, all matching patterns are applied, with the last one determining the visible capture & highlight.
+- For injections, try your best to ensure that each captured node is only matched by a single pattern.
 - If the [parser is included in `nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter/SUPPORTED_LANGUAGES.md`) and installed with `:TSInstall`, you can use Neovim's developer tools (`:checkhealth`, `:InspectTree`, `:EditQuery`, `:Inspect`) to test your queries.
 
 #### Inheriting languages
