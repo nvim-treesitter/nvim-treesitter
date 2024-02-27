@@ -165,7 +165,7 @@
     "revision": "215e3913524abc119daa9db7cf6ad2f2f5620189"
   },
   "fidl": {
-    "revision": "bdbb635a7f5035e424f6173f2f11b9cd79703f8d"
+    "revision": "0a8910f293268e27ff554357c229ba172b0eaed2"
   },
   "firrtl": {
     "revision": "2b5adae629c8cba528c7b1e4aa67a8ae28934ea5"
@@ -258,7 +258,7 @@
     "revision": "3d4af179414525a35dd069ba0208c9b71093d8b3"
   },
   "haskell": {
-    "revision": "8a99848fc734f9c4ea523b3f2a07df133cbbcec2"
+    "revision": "6b5ec205c9d4f23eb36a163f1edc4f2db8c98e4a"
   },
   "haskell_persistent": {
     "revision": "577259b4068b2c281c9ebf94c109bd50a74d5857"
@@ -414,7 +414,7 @@
     "revision": "3bc691d2cfba44bea339a775ad496c8bc552c60d"
   },
   "nickel": {
-    "revision": "19fb551196d18b75160631f5e3a8a006b3875276"
+    "revision": "33a64ec9a27058c52e4195f1030235dcdfc04747"
   },
   "nim": {
     "revision": "c5f0ce3b65222f5dbb1a12f9fe894524881ad590"
@@ -525,7 +525,7 @@
     "revision": "69ad424b5dd41088206bd74ebcdd61d987b7825c"
   },
   "python": {
-    "revision": "deba2badc88afd18e6cbd4341ee3c18c3a9bb4ed"
+    "revision": "64619c41cbed4c144f551a51939622ec0d5d5dca"
   },
   "ql": {
     "revision": "ff04ba61857ba05b80221e71b423b2728dbebe1e"
@@ -612,7 +612,7 @@
     "revision": "65a6c3b4671877821082164da0a310851b211953"
   },
   "solidity": {
-    "revision": "168020304759ad5d8b4a88a541a699134e3730c5"
+    "revision": "5cb506ae419c4ad620c77210fd47500d3d169dbc"
   },
   "soql": {
     "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
@@ -765,7 +765,7 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "745df1efa28a64514cb0d5b0d853a0d25392a22d"
+    "revision": "7020d597caf5136d9ef7c68bd99e0538ae4addce"
   },
   "xcompose": {
     "revision": "7fd14940e0478fce79ea195067ed14a2c42c654a"
