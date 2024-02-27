@@ -79,14 +79,12 @@ local function log_file(msg)
   end
 end
 
--- Log a message with a given level.
----@param notify boolean @if true, use `vim.notify` to display the message also
+-- Expand a message with optional arguments.
 ---@param level integer @one of the `vim.log.levels` values
 ---@param msg string|nil @can be a format string with {} placeholders
-local function do_log(notify, level, msg, ...)
-  if level < current or current == levels.OFF then
-    return
-  end
+---@param... any @optional arguments to substitute into the message
+---@return string
+local function expand_msg(level, msg, ...)
   msg = msg or ''
   local args = { ... }
   if #args > 0 then
@@ -94,11 +92,13 @@ local function do_log(notify, level, msg, ...)
     ---@diagnostic disable-next-line: param-type-mismatch
     msg = string.format(msg, unpack(vim.tbl_map(vim.inspect, { ... })))
   end
-  if notify then
-    vim.schedule(function()
-      vim.notify(msg, level, { title = MODULE_NAME })
-    end)
-  end
+  return msg
+end
+
+-- Log a message with a given level.
+---@param level integer @one of the `vim.log.levels` values
+---@param msg string|nil @can be a format string with {} placeholders
+local function do_log(level, msg, ...)
   ---@type table<string,string>
   local mat = {}
   local ms = string.format('%03d', math.floor((uv.hrtime() / 1e6) % 1000))
@@ -109,7 +109,8 @@ local function do_log(notify, level, msg, ...)
   for i in ipairs(mat) do
     tags = tags .. string.format('[%s]', mat[i]) .. ' '
   end
-  log_file(tags .. msg)
+  msg = tags .. msg
+  log_file(msg)
 end
 
 ---@param opts LogOptions
@@ -131,13 +132,20 @@ end
 ---@param level integer @one of the `vim.log.levels` values
 ---@param msg string|nil @can be a format string with {} placeholders
 function M.log(level, msg, ...)
-  do_log(false, level, msg, ...)
+  if level < current or current == levels.OFF then
+    return
+  end
+  do_log(level, msg, ...)
 end
 
+-- Notify the user of a message.
 ---@param level integer @one of the `vim.log.levels` values
 ---@param msg string|nil @can be a format string with {} placeholders
 function M.notify(level, msg, ...)
-  do_log(true, level, msg, ...)
+  msg = expand_msg(level, msg, ...)
+  vim.schedule(function()
+    vim.notify(msg, level, { title = MODULE_NAME })
+  end)
 end
 
 function M.error(...)
