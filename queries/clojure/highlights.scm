@@ -77,7 +77,10 @@
 
 ; Inline function variables
 ((sym_lit) @variable.builtin
-  (#lua-match? @variable.builtin "^%%"))
+  (#lua-match? @variable.builtin "^%%%d*$"))
+
+((sym_lit) @variable.builtin
+  (#eq? @variable.builtin "%&"))
 
 ; Constructor
 ((sym_lit) @constructor
@@ -98,39 +101,39 @@
 ((sym_lit) @variable.builtin
   (#any-of? @variable.builtin "*1" "*2" "*3" "*e"))
 
-; Gensym
-; Might not be needed
-((sym_lit) @variable
-  (#lua-match? @variable "^.*#$"))
-
 ; Types
-; TODO: improve?
-((sym_lit) @type
-  (#lua-match? @type "^[%u][^/]*$"))
+(sym_lit
+  name: (sym_name) @_name
+  (#lua-match? @_name "^[%u][^/%s]*$")) @type
 
 ; Symbols with `.` but not `/`
-((sym_lit) @type
-  (#lua-match? @type "^[^/]+[.][^/]*$"))
+(sym_lit
+  !namespace
+  name: (sym_name) @_name
+  (#lua-match? @_name "^[^.]+[.]")) @type
 
 ; Interop
 ; (.instanceMember instance args*)
 ; (.instanceMember Classname args*)
-((sym_lit) @function.method
-  (#lua-match? @function.method "^%.[^-]"))
+((sym_lit
+  name: (sym_name) @_name) @function.method
+  (#lua-match? @_name "^%.[^-]"))
 
 ; (.-instanceField instance)
-((sym_lit) @variable.member
-  (#lua-match? @variable.member "^%.%-.*"))
+((sym_name) @variable.member
+  (#lua-match? @variable.member "^%.%-%S*"))
 
 ;  Classname/staticField
-((sym_lit) @variable.member
-  (#lua-match? @variable.member "^[%u].*/.+"))
+(sym_lit
+  namespace: (sym_ns) @_namespace
+  (#lua-match? @_namespace "^[%u]%S*$")) @variable.member
 
 ; (Classname/staticMethod args*)
 (list_lit
   .
-  (sym_lit) @function.method
-  (#lua-match? @function.method "^[%u].*/.+"))
+  (sym_lit
+    namespace: (sym_ns) @_namespace
+    (#lua-match? @_namespace "^%u")) @function.method)
 
 ; TODO: Special casing for the `.` macro
 ; Operators
@@ -154,12 +157,13 @@
     "alts!" "alts!!" "await" "await-for" "await1" "chan" "close!" "future" "go" "sync" "thread"
     "timeout" "<!" "<!!" ">!" ">!!"))
 
-((sym_lit) @keyword.function
-  (#any-of? @keyword.function "defn" "defn-" "fn" "fn*"))
+((sym_lit
+  name: (sym_name) @_keyword.function.name) @keyword.function
+  (#any-of? @_keyword.function.name "defn" "defn-" "fn" "fn*"))
 
 ; Comment
 ((sym_lit) @comment
-  (#any-of? @comment "comment"))
+  (#eq? @comment "comment"))
 
 ; Conditionals
 ((sym_lit) @keyword.conditional
@@ -185,7 +189,8 @@
 
 ; Builtin macros
 ; TODO: Do all these items belong here?
-((sym_lit) @function.macro
+((sym_lit
+  name: (sym_name) @function.macro)
   (#any-of? @function.macro
     "." ".." "->" "->>" "amap" "areduce" "as->" "assert" "binding" "bound-fn" "delay" "do" "dosync"
     "doto" "extend-protocol" "extend-type" "gen-class" "gen-interface" "io!" "lazy-cat" "lazy-seq"
@@ -200,7 +205,8 @@
 ;      sort
 ;      clojure.pprint/pprint))
 ; ...and then lots of manual filtering...
-((sym_lit) @function.builtin
+((sym_lit
+  name: (sym_name) @function.builtin)
   (#any-of? @function.builtin
     "->ArrayChunk" "->Eduction" "->Vec" "->VecNode" "->VecSeq" "-cache-protocol-fn" "-reset-methods"
     "PrintWriter-on" "StackTraceElement->vec" "Throwable->map" "accessor" "aclone" "add-classpath"
@@ -299,8 +305,9 @@
 ; Function definitions
 (list_lit
   .
-  (sym_lit) @_keyword.function
-  (#any-of? @_keyword.function "fn" "fn*" "defn" "defn-")
+  ((sym_lit
+    name: (sym_name) @_keyword.function.name)
+    (#any-of? @_keyword.function.name "defn" "defn-" "fn" "fn*"))
   .
   (sym_lit)? @function
   .
