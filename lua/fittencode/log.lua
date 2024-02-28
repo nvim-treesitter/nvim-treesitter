@@ -80,11 +80,10 @@ local function log_file(msg)
 end
 
 -- Expand a message with optional arguments.
----@param level integer @one of the `vim.log.levels` values
 ---@param msg string|nil @can be a format string with {} placeholders
 ---@param... any @optional arguments to substitute into the message
 ---@return string
-local function expand_msg(level, msg, ...)
+local function expand_msg(msg, ...)
   msg = msg or ''
   local args = { ... }
   if #args > 0 then
@@ -98,7 +97,7 @@ end
 -- Log a message with a given level.
 ---@param level integer @one of the `vim.log.levels` values
 ---@param msg string|nil @can be a format string with {} placeholders
-local function do_log(level, msg, ...)
+local function do_log(level, msg)
   ---@type table<string,string>
   local mat = {}
   local ms = string.format('%03d', math.floor((uv.hrtime() / 1e6) % 1000))
@@ -135,14 +134,15 @@ function M.log(level, msg, ...)
   if level < current or current == levels.OFF then
     return
   end
-  do_log(level, msg, ...)
+  msg = expand_msg(msg, ...)
+  do_log(level, msg)
 end
 
 -- Notify the user of a message.
 ---@param level integer @one of the `vim.log.levels` values
 ---@param msg string|nil @can be a format string with {} placeholders
 function M.notify(level, msg, ...)
-  msg = expand_msg(level, msg, ...)
+  msg = expand_msg(msg, ...)
   vim.schedule(function()
     vim.notify(msg, level, { title = MODULE_NAME })
   end)
