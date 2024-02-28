@@ -72,23 +72,11 @@
 
 (bool) @boolean
 
-; identifiers
-(builtin) @module.builtin
-
 (ident) @constant
 
 ; name-value pairs
 (tagged
   field: (ident) @variable.member)
-
-; function definitions, calls, etc.
-; TODO: support for functions such as #calc.cos, tree view appears as
-; (call)
-;  item: (field)
-;   (builtin)
-;    field: (ident)
-(call
-  item: (builtin) @function.builtin)
 
 (call
   item: (ident) @function.call)
