@@ -126,7 +126,7 @@
     "revision": "a750758da90955c86fcc22fcbb6fa44a7d009865"
   },
   "dtd": {
-    "revision": "52b3783d0c89a69ec64b2d49eee95f44a7fdcd2a"
+    "revision": "c23bd31d0aa72bfc01238b2546d5e823d8006709"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -201,7 +201,7 @@
     "revision": "d8a4207ebbc47bd78bacdf48f883db58283f9fd8"
   },
   "gitattributes": {
-    "revision": "0750b5904f37d6b2f47f6e4655001c2c35a172ec"
+    "revision": "e4f5a2c843b59e6299bbb746777cd7395d0f62ee"
   },
   "gitcommit": {
     "revision": "7c01af8d227b5344f62aade2ff00f19bd0c458ca"
@@ -297,7 +297,7 @@
     "revision": "cd1a0ada92cc73dd0f4d7eedc162be4ded758591"
   },
   "hyprlang": {
-    "revision": "86025136c12cd1058985479a6b1935829077f1af"
+    "revision": "fc1d331586e4da2b5f5bcfa89d630ebafe66458b"
   },
   "ini": {
     "revision": "bcb84a2d4bcd6f55b911c42deade75c8f90cb0c5"
@@ -669,7 +669,7 @@
     "revision": "300f6a490e71f895e644ed2deec6920860a2e107"
   },
   "tcl": {
-    "revision": "78c71201c1b0939239e779a837dd35370c308948"
+    "revision": "56ad1fa6a34ba800e5495d1025a9b0fda338d5b8"
   },
   "teal": {
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
@@ -765,13 +765,13 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "77327e10402194009d8d65574454c7bb101b54ca"
+    "revision": "508bd430e78e9d2a8509948c4e42dbeb3ecc3265"
   },
   "xcompose": {
     "revision": "7fd14940e0478fce79ea195067ed14a2c42c654a"
   },
   "xml": {
-    "revision": "52b3783d0c89a69ec64b2d49eee95f44a7fdcd2a"
+    "revision": "c23bd31d0aa72bfc01238b2546d5e823d8006709"
   },
   "yaml": {
     "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
