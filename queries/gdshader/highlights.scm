@@ -8,8 +8,6 @@
   "varying"
   "uniform"
   "struct"
-  "case"
-  "default"
 ] @keyword
 
 [
@@ -38,6 +36,8 @@
   "if"
   "else"
   "switch"
+  "case"
+  "default"
 ] @keyword.conditional
 
 [
@@ -104,7 +104,7 @@
   (shader_type)
   (render_mode)
   (hint_name)
-] @property
+] @attribute
 
 (builtin_variable) @constant.builtin
 
