@@ -619,6 +619,15 @@ list.gdscript = {
   readme_name = "Godot (gdscript)",
 }
 
+list.gdshader = {
+  install_info = {
+    url = "https://github.com/GodOfAvacyn/tree-sitter-gdshader",
+    files = { "src/parser.c" },
+  },
+  filetype = "gdshaderinc",
+  maintainers = { "@godofavacyn" },
+}
+
 list.git_rebase = {
   install_info = {
     url = "https://github.com/the-mikedavis/tree-sitter-git-rebase",

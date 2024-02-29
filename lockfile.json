@@ -194,6 +194,9 @@
   "gdscript": {
     "revision": "b5dea4d852db65f0872d849c24533eb121e03c76"
   },
+  "gdshader": {
+    "revision": "ffd9f958df13cae04593781d7d2562295a872455"
+  },
   "git_config": {
     "revision": "9c2a1b7894e6d9eedfe99805b829b4ecd871375e"
   },
