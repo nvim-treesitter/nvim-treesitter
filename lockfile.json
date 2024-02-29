@@ -60,7 +60,7 @@
     "revision": "dc28c9f4212809eab74d10996086297853eb34e5"
   },
   "chatito": {
-    "revision": "7162ec1e8e9154fb334e84aa7637a4af051dfe42"
+    "revision": "fe7a2a75d3d74c1215141b7a7ebebb57ae17a370"
   },
   "clojure": {
     "revision": "6e41628e9d18b19caea1cb1d72aae4ccff5bdfe9"
@@ -201,10 +201,10 @@
     "revision": "d8a4207ebbc47bd78bacdf48f883db58283f9fd8"
   },
   "gitattributes": {
-    "revision": "e4f5a2c843b59e6299bbb746777cd7395d0f62ee"
+    "revision": "41940e199ba5763abea1d21b4f717014b45f01ea"
   },
   "gitcommit": {
-    "revision": "7c01af8d227b5344f62aade2ff00f19bd0c458ca"
+    "revision": "7fe4245d5095f195ddfb3e981e7c42d5e0d6c5f1"
   },
   "gitignore": {
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
@@ -240,13 +240,13 @@
     "revision": "949a8a470559543857a62102c84700d291fc984c"
   },
   "gpg": {
-    "revision": "7fd855d7b5442d6eb4b3f2f8797b572b78d4afe6"
+    "revision": "d4c9cc0060cd4d1b8ca6d7add9f34352ad310a09"
   },
   "graphql": {
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "groovy": {
-    "revision": "235009aad0f580211fc12014bb0846c3910130c1"
+    "revision": "3c25d1ce6c1eb9da34215060372792dc9f439b0c"
   },
   "gstlaunch": {
     "revision": "2c0d9c94d35e37aa63fa5002163c8480985b3e5b"
@@ -273,7 +273,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "f820ee8417451f69020791cf691904ec1b63f20d"
+    "revision": "ee24be127560f0de0c4741e382416f45ab47eb76"
   },
   "hlsplaylist": {
     "revision": "5be34b0f6ea01b24f017c2c715729a3a919f57fd"
@@ -399,7 +399,7 @@
     "revision": "be8866a6bcc2b563ab0de895af69daeffa88fe70"
   },
   "mermaid": {
-    "revision": "e26a5f8898a8174f02b4cc9a9050eb3ccfb799f3"
+    "revision": "e8dac87a9f789b23a2c7ab8e55b485a2f5927b98"
   },
   "meson": {
     "revision": "d6ec8ce0963c3c8180161391f15d8f7d415f650d"
@@ -462,7 +462,7 @@
     "revision": "20239395eacdc2e0923a7e5683ad3605aee7b716"
   },
   "pem": {
-    "revision": "db307bbb7dc4f721bf2f5ba7fcedaf58feeb59e0"
+    "revision": "217ff2af3f2db15a79ab7e3d21ea1e0c17e71a1a"
   },
   "perl": {
     "revision": "6526e5d5bf31501de0dc51c42ac3583078a8fdab"
@@ -486,7 +486,7 @@
     "revision": "39da859947b94abdee43e431368e1ae975c0a424"
   },
   "poe_filter": {
-    "revision": "bf912df70f60b356c70631d9cbb317b41c1ea319"
+    "revision": "592476d81f95d2451f2ca107dc872224c76fecdf"
   },
   "pony": {
     "revision": "16f930b250433cfcd4fb4144df92bb98ad344c20"
@@ -501,7 +501,7 @@
     "revision": "77625d78eebc3ffc44d114a07b2f348dff3061b0"
   },
   "properties": {
-    "revision": "ce2f4f66454edb69f66bfa3a1884f601fccd9e08"
+    "revision": "9d09f5f200c356c50c4103d36441309fd61b48d1"
   },
   "proto": {
     "revision": "e9f6b43f6844bd2189b50a422d4e2094313f6aa3"
@@ -522,7 +522,7 @@
     "revision": "daf9b3e2be18b0b2996a1281f7783e0d041d8b80"
   },
   "pymanifest": {
-    "revision": "69ad424b5dd41088206bd74ebcdd61d987b7825c"
+    "revision": "e3b82b78721aee07f676dac8473ae69db51debcf"
   },
   "python": {
     "revision": "22d3f87bdafac2782e907330babe4af574f5d0b4"
@@ -564,7 +564,7 @@
     "revision": "9ac75e71b2d791e0aadeef68098319d86a2a14cf"
   },
   "requirements": {
-    "revision": "d43b6ec982902df01ce00df85a0cdb6ec8d3e81f"
+    "revision": "2764b6b219b2576577b0ce55c27e9d772e6f64c2"
   },
   "rnoweb": {
     "revision": "502c1126dc6777f09af5bef16e72a42f75bd081e"
@@ -633,7 +633,7 @@
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
   },
   "ssh_config": {
-    "revision": "3a1a5e139514a0e2789d1d7c5065c01bb71756f2"
+    "revision": "4fab1c9116cb7890885508e4630cc8e6a8373a41"
   },
   "starlark": {
     "revision": "b31a616aac5d05f927f3f9dd809789db7805b632"
@@ -723,7 +723,7 @@
     "revision": "3c3e5f8e0caeba6157e26a1bedf8321e1da62799"
   },
   "udev": {
-    "revision": "caa721ff38704c1186c2afeb467bead8c27ea382"
+    "revision": "8f58696e79092b4ad6bf197415bbd0970acf15cd"
   },
   "ungrammar": {
     "revision": "debd26fed283d80456ebafa33a06957b0c52e451"
@@ -765,10 +765,10 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "508bd430e78e9d2a8509948c4e42dbeb3ecc3265"
+    "revision": "749aa08e4aaa73ca5818d4e5200cf640668b0519"
   },
   "xcompose": {
-    "revision": "7fd14940e0478fce79ea195067ed14a2c42c654a"
+    "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
   },
   "xml": {
     "revision": "c23bd31d0aa72bfc01238b2546d5e823d8006709"
