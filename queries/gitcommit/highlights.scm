@@ -15,8 +15,7 @@
 
 (subject) @markup.heading @spell
 
-(subject
-  (overflow) @none @spell)
+(overflow) @comment.warning @spell
 
 (subject
   (subject_prefix) @function @nospell)
