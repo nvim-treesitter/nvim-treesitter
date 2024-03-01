@@ -18,7 +18,7 @@ Language | Tier | Queries | CLI | NPM | Maintainer
 [apex](https://github.com/aheber/tree-sitter-sfapex) | community | `HF  L` |  |  | @aheber
 [arduino](https://github.com/ObserverOfTime/tree-sitter-arduino) | core | `HFIJL` |  |  | @ObserverOfTime
 [asm](https://github.com/RubixDev/tree-sitter-asm) | community | `H  J ` |  |  | @RubixDev
-[astro](https://github.com/virchau13/tree-sitter-astro) | unsupported | `HFIJL` |  |  | @virchau13
+[astro](https://github.com/virchau13/tree-sitter-astro) | community | `HFIJL` |  |  | @virchau13
 [authzed](https://github.com/mleonidas/tree-sitter-authzed) | community | `H  J ` |  |  | @mattpolzin
 [awk](https://github.com/Beaglefoot/tree-sitter-awk) | unsupported | `H  J ` |  |  | 
 [bash](https://github.com/tree-sitter/tree-sitter-bash) | community | `HF JL` |  |  | @TravonteD
