@@ -26,6 +26,7 @@ local function register_lang(lang, ft)
 end
 
 for ft, lang in pairs {
+  automake = "make",
   javascriptreact = "javascript",
   ecma = "javascript",
   jsx = "javascript",
