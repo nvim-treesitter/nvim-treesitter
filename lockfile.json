@@ -33,7 +33,7 @@
     "revision": "c9ba4568af24cd3403029730687c0a43d1350a43"
   },
   "beancount": {
-    "revision": "b2c12eb49e308f33312269da1e31469f40c7b3c1"
+    "revision": "1f19abf1e162e1828013cb5434c6cf30f4054e80"
   },
   "bibtex": {
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
@@ -567,7 +567,7 @@
     "revision": "9ac75e71b2d791e0aadeef68098319d86a2a14cf"
   },
   "requirements": {
-    "revision": "2764b6b219b2576577b0ce55c27e9d772e6f64c2"
+    "revision": "8666a4dfeb3107144398158bc3dd7a3f59d89ccb"
   },
   "rnoweb": {
     "revision": "502c1126dc6777f09af5bef16e72a42f75bd081e"
@@ -741,7 +741,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "46b8341458bb620a82ef1d8009a3e2f00bc0dad9"
+    "revision": "be121f724e4f3e2159dfa193c876be605c1de7fa"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -768,7 +768,7 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "1fc9b789267f751ec7a9163882da3aa786a45798"
+    "revision": "13b79ea3f343b15f233c6e7ac930797748191615"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
