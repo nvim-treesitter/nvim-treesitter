@@ -30,7 +30,7 @@ jobs:
           nvim -l scripts/update-readme.lua || echo 'Needs update'
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ steps.app-token.outputs.token }}
           author: "nvim-treesitter-bot[bot] <157957100+nvim-treesitter-bot[bot]@users.noreply.github.com>"
