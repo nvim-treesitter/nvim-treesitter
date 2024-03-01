@@ -130,7 +130,7 @@ list.asm = {
 list.astro = {
   install_info = {
     url = "https://github.com/virchau13/tree-sitter-astro",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@virchau13" },
 }
