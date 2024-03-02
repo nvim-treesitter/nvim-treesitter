@@ -10,6 +10,8 @@
 (interpolation
   (raw_text) @none)
 
+(dynamic_directive_inner_value) @variable
+
 (directive_name) @tag.attribute
 
 ; Accessing a component object's field
@@ -38,7 +40,4 @@
   (quoted_attribute_value
     (attribute_value) @none))
 
-[
-  (directive_modifier)
-  (directive_value)
-] @function.method
+(directive_modifier) @function.method
