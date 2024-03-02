@@ -303,6 +303,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [luau](https://github.com/amaanq/tree-sitter-luau) (maintained by @amaanq)
 - [x] [m68k](https://github.com/grahambates/tree-sitter-m68k) (maintained by @grahambates)
 - [x] [make](https://github.com/alemuller/tree-sitter-make) (maintained by @lewis6991)
+- [x] [man](https://github.com/ribru17/tree-sitter-man) (maintained by @ribru17)
 - [x] [markdown (basic highlighting)](https://github.com/MDeiml/tree-sitter-markdown) (experimental, maintained by @MDeiml)
 - [x] [markdown_inline (needed for full highlighting)](https://github.com/MDeiml/tree-sitter-markdown) (experimental, maintained by @MDeiml)
 - [x] [matlab](https://github.com/acristoffers/tree-sitter-matlab) (maintained by @acristoffers)

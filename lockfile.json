@@ -389,6 +389,9 @@
   "make": {
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
+  "man": {
+    "revision": "27ce854917bc130e5c40565f8f514c4ab2451b6a"
+  },
   "markdown": {
     "revision": "2821521a4e6eab37b63dff6a8e169cd88554047d"
   },

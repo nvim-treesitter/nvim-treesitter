@@ -1164,6 +1164,14 @@ list.make = {
   maintainers = { "@lewis6991" },
 }
 
+list.man = {
+  install_info = {
+    url = "https://github.com/ribru17/tree-sitter-man.git",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@ribru17" },
+}
+
 list.markdown = {
   install_info = {
     url = "https://github.com/MDeiml/tree-sitter-markdown",
