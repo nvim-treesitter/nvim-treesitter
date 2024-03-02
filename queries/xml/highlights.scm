@@ -51,9 +51,9 @@
 (CharData) @none @spell
 
 ((CDSect
-  (CDStart) @markup.environment
+  (CDStart) @module
   (CData) @markup.raw
-  "]]>" @markup.environment)
+  "]]>" @module)
   (#set! "priority" 105))
 
 ; Delimiters & punctuation

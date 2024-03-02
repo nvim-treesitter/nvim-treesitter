@@ -288,7 +288,7 @@
   [
     "'"
     (identifier)
-  ] @keyword.storage.lifetime)
+  ] @keyword.storage)
 
 "fn" @keyword.function
 

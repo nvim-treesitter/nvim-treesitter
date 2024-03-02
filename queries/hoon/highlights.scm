@@ -28,7 +28,7 @@
 
 (mold) @string.special.symbol
 
-(specialIndex) @number.builtin
+(specialIndex) @number
 
 (lark) @operator
 

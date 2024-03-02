@@ -67,9 +67,9 @@
 (var_statement
   "var"
   .
-  (identifier) @local.definition.variable)
+  (identifier) @local.definition.var)
 
 (local_declaration
-  (identifier) @local.definition.variable
+  (identifier) @local.definition.var
   .
   "=")

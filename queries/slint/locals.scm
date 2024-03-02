@@ -16,7 +16,7 @@
 (argument) @local.definition.var
 
 (callback
-  name: (_) @local.definition.member)
+  name: (_) @local.definition.field)
 
 (component_definition
   name: (_) @local.definition.type)

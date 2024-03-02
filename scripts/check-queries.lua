@@ -1,4 +1,5 @@
 #!/usr/bin/env -S nvim -l
+vim.opt.rtp:prepend "./"
 
 -- Equivalent to print(), but this will ensure consistent output regardless of
 -- operating system.
@@ -35,15 +36,6 @@ local function extract_captures()
   return captures
 end
 
-local function list_any(list, predicate)
-  for _, v in pairs(list) do
-    if predicate(v) then
-      return true
-    end
-  end
-  return false
-end
-
 local function do_check()
   local timings = {}
   local queries = require "nvim-treesitter.query"
@@ -72,9 +64,7 @@ local function do_check()
           for _, capture in ipairs(query.captures) do
             local is_valid = (
               vim.startswith(capture, "_") -- Helpers.
-              or list_any(captures[query_type], function(documented_capture)
-                return vim.startswith(capture, documented_capture)
-              end)
+              or vim.tbl_contains(captures[query_type], capture)
             )
             if not is_valid then
               local error = string.format("(x) Invalid capture @%s in %s for %s.", capture, query_type, lang)

@@ -118,7 +118,7 @@
   identifier: (id) @variable.parameter)
 
 (bind
-  (id) @variable.local)
+  (id) @variable)
 
 (bind
   function: (id) @function)

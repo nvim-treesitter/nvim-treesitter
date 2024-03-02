@@ -65,7 +65,7 @@
 (yadayada) @keyword.exception
 
 (phaser_statement
-  phase: _ @keyword.phaser)
+  phase: _ @keyword)
 
 [
   "or"
@@ -207,50 +207,50 @@
   ; highlights punc vars and also numeric only like $11
   (#lua-match? @variable.builtin "^%A+$"))
 
-(scalar) @variable.scalar
+(scalar) @variable
 
 (scalar_deref_expression
   [
     "$"
     "*"
-  ] @variable.scalar)
+  ] @variable)
 
 [
   (array)
   (arraylen)
-] @variable.array
+] @variable
 
 (array_deref_expression
   [
     "@"
     "*"
-  ] @variable.array)
+  ] @variable)
 
-(hash) @variable.hash
+(hash) @variable
 
 (hash_deref_expression
   [
     "%"
     "*"
-  ] @variable.hash)
+  ] @variable)
 
 (array_element_expression
-  array: (_) @variable.array)
+  array: (_) @variable)
 
 (slice_expression
-  array: (_) @variable.array)
+  array: (_) @variable)
 
 (keyval_expression
-  array: (_) @variable.array)
+  array: (_) @variable)
 
 (hash_element_expression
-  hash: (_) @variable.hash)
+  hash: (_) @variable)
 
 (slice_expression
-  hash: (_) @variable.hash)
+  hash: (_) @variable)
 
 (keyval_expression
-  hash: (_) @variable.hash)
+  hash: (_) @variable)
 
 (comment) @comment
 

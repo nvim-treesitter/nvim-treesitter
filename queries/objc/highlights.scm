@@ -174,12 +174,12 @@
     "__unsafe_unretained"
     "__unused"
     "__weak"
-  ]) @function.macro.builtin
+  ]) @function.macro
 
 [
   "__real"
   "__imag"
-] @function.macro.builtin
+] @function.macro
 
 ((call_expression
   function: (identifier) @function.macro)

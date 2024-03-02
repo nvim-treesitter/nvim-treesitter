@@ -64,14 +64,15 @@
 ] @type.qualifier
 
 ; Variables
-(identifier) @variable
+[
+  (identifier)
+  (global_variable)
+] @variable
 
 (local_declaration
-  (identifier) @variable.local
+  (identifier) @variable
   .
   "=")
-
-(global_variable) @variable.global
 
 ((identifier) @variable.builtin
   (#any-of? @variable.builtin "base" "this" "vargv"))

@@ -80,7 +80,7 @@
 (const_name
   (constant) @constant)
 
-(global_name) @variable.global
+(global_name) @variable
 
 ; Standard Arguments
 (parameter

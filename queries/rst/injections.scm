@@ -41,15 +41,7 @@
     (body
       (arguments) @injection.language
       (content) @injection.content))
-  (#any-of? @_type "code" "code-block" "sourcecode"))
-
-((directive
-  name: (type) @_type
-  body:
-    (body
-      (arguments) @injection.language
-      (content) @injection.content))
-  (#eq? @_type "raw"))
+  (#any-of? @_type "raw" "code" "code-block" "sourcecode"))
 
 ((directive
   name: (type) @_type
@@ -59,7 +51,6 @@
   (#set! injection.language "latex")
   (#eq? @_type "math"))
 
-; TODO: re-add when a parser for csv is added.
 ((directive
   name: (type) @_type
   body:
