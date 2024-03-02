@@ -93,6 +93,8 @@
   (interpolated_string_expression)
 ] @string
 
+(escape_sequence) @string.escape
+
 (boolean_literal) @boolean
 
 (predefined_type) @type.builtin
