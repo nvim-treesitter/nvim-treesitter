@@ -2206,7 +2206,7 @@ list.vue = {
     files = { "src/parser.c", "src/scanner.c" },
     branch = "main",
   },
-  maintainers = { "@WhyNotHugo" },
+  maintainers = { "@WhyNotHugo", "@lucario387" },
 }
 
 list.wgsl = {
