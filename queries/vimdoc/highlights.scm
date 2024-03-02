@@ -33,6 +33,9 @@
 
 (codeblock
   ">" @markup.raw
+  (#set! conceal ""))
+
+(codeblock
   (language) @label
   (#set! conceal ""))
 
