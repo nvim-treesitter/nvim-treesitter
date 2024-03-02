@@ -125,7 +125,7 @@ language and buffer number as arguments:
 <
 
 Options that define or accept a keymap use the same format you use to define
-keymaps in Neovim, so you can write keymaps as  `gd`, `<space>a`, `<leader>a`
+keymaps in Neovim, so you can write keymaps as `gd`, `<space>a`, `<leader>a`
 `<C-a>` (control + a), `<A-n>` (alt + n), `<CR>` (enter), etc.
 
 External plugins can provide their own modules with their own options,
@@ -163,6 +163,7 @@ Supported options:
 <
 
 You can also set custom highlight captures
+
 >
   lua <<EOF
     require"nvim-treesitter.highlight".set_custom_captures {
@@ -171,6 +172,7 @@ You can also set custom highlight captures
     }
   EOF
 <
+
 Note: The api is not stable yet.
 
 ------------------------------------------------------------------------------
@@ -216,21 +218,23 @@ Query files: `indents.scm`.
 Supported options:
 - enable: `true` or `false`.
 - disable: list of languages.
+
 >
   require'nvim-treesitter.configs'.setup {
     indent = {
       enable = true
     },
   }
+<
 
 `@indent`				    *nvim-treesitter-indentation-queries*
 Queries can use the following captures: `@indent.begin` and `@indent.dedent`,
 `@indent.branch`, `@indent.end` or `@indent.align`. An `@indent.ignore` capture tells
-treesitter to ignore indentation and a `@indent.zero` capture sets
+treesitter to ignore indentation and an `@indent.zero` capture sets
 the indentation to 0.
 
 `@indent.begin`			    *nvim-treesitter-indentation-indent.begin*
-The `@indent.begin` specifies that the next line should be indented.  Multiple
+The `@indent.begin` specifies that the next line should be indented. Multiple
 indents on the same line get collapsed. Eg.
 
 >
@@ -239,20 +243,22 @@ indents on the same line get collapsed. Eg.
    (ERROR "else") @indent.begin
   )
 <
+
 Indent can also have `indent.immediate` set using a `#set!` directive, which
 permits the next line to indent even when the block intended to be indented
 has no content yet, improving interactive typing.
 
-eg for python:
+Eg for python:
+
 >
  ((if_statement) @indent.begin
    (#set! indent.immediate 1))
 <
-
 Will allow:
 >
   if True:<CR>
       # Auto indent to here
+
 
 `@indent.end`				*nvim-treesitter-indentation-indent.end*
 An `@indent.end` capture is used to specify that the indented region ends and
@@ -263,7 +269,7 @@ An `@indent.branch` capture is used to specify that a dedented region starts
 at the line including the captured nodes.
 
 `@indent.dedent`		    *nvim-treesitter-indentation-indent.dedent*
-A `@indent.dedent` capture specifies dedenting starting on the next line.
+An `@indent.dedent` capture specifies dedenting starting on the next line.
 >
 `@indent.align`		    *nvim-treesitter-indentation-aligned_indent.align*
 Aligned indent blocks may be specified with the `@indent.align` capture.
@@ -289,8 +295,10 @@ and finally
     c
   )
 <
+
 To specify the delimiters to use `indent.open_delimiter` and
-`indent.close_delimiter` should be used.  Eg.
+`indent.close_delimiter` should be used. Eg.
+
 >
  ((argument_list) @indent.align
   (#set! indent.open_delimiter "(")
@@ -312,9 +320,10 @@ Is not correct, whereas
   if (a > b and
 	c < d):
       pass
+<
 
-Would be correctly indented.  This behavior may be chosen using
-`indent.avoid_last_matching_next`.  Eg.
+Would be correctly indented. This behavior may be chosen using
+`indent.avoid_last_matching_next`. Eg.
 
 >
  (if_statement
@@ -324,6 +333,7 @@ Would be correctly indented.  This behavior may be chosen using
   (#set! indent.avoid_last_matching_next 1)
  )
 <
+
 Could be used to specify that the last line of an `@indent.align` capture
 should be additionally indented to avoid clashing with the indent of the first
 line of the block inside an if.
@@ -362,7 +372,7 @@ Perform the |:TSUpdate| operation synchronously.
 								*:TSUninstall*
 :TSUninstall {language} ...~
 
-Deletes the parser for one or more {language}. You can use 'all' for language
+Delete the parser for one or more {language}. You can use 'all' for language
 to uninstall all parsers.
 
 								*:TSBufEnable*
@@ -418,6 +428,7 @@ List the state for the given module or all modules for the current session in
 a new buffer.
 
 These highlight groups are used by default:
+
 >
     highlight default TSModuleInfoGood guifg=LightGreen gui=bold
     highlight default TSModuleInfoBad  guifg=Crimson
@@ -445,10 +456,12 @@ provided by a plugin.
 ==============================================================================
 UTILS                                                  *nvim-treesitter-utils*
 
-Nvim treesitter has some wrapper functions that you can retrieve with:
+`nvim-treesitter` has some wrapper functions that you can retrieve with:
+
 >
     local ts_utils = require 'nvim-treesitter.ts_utils'
 <
+
 Methods
 						 *ts_utils.get_node_at_cursor*
 get_node_at_cursor(winnr)~
@@ -496,7 +509,7 @@ to the jump list.
 swap_nodes(node_or_range1, node_or_range2, bufnr, cursor_to_second)~
 
 Swaps the nodes or ranges.
-set `cursor_to_second`  to true to move the cursor to the second node
+Set `cursor_to_second` to true to move the cursor to the second node.
 
 						*ts_utils.memoize_by_buf_tick*
 memoize_by_buf_tick(fn, options)~
@@ -504,38 +517,37 @@ memoize_by_buf_tick(fn, options)~
 Caches the return value for a function and returns the cache value if the tick
 of the buffer has not changed from the previous.
 
-		`fn`: a function that takes any arguments
-		and returns a value to store.
-		`options?`: <table>
-                 - `bufnr`: a function/value that extracts the bufnr from the given arguments.
-                 - `key`: a function/value that extracts the cache key from the given arguments.
-		`returns`: a function to call with bufnr as argument to
-		retrieve the value from the cache
+- `fn`: a function that takes any arguments and returns a value to store.
+- `options?`: <table>
+  - `bufnr`: a function/value that extracts the bufnr from the given arguments.
+  - `key`: a function/value that extracts the cache key from the given arguments.
+- `returns`: a function to call with bufnr as argument to retrieve the value 
+  from the cache. 
 
 						  *ts_utils.node_to_lsp_range*
 node_to_lsp_range(node)~
 
-Get an lsp formatted range from a node range
+Gets an lsp formatted range from a node range.
 
 							*ts_utils.node_length*
 node_length(node)~
 
-Get the byte length of node range
+Gets the byte length of node range.
 
 						   *ts_utils.update_selection*
 update_selection(buf, node)~
 
-Set the selection to the node range
+Sets the selection to the node range.
 
 						    *ts_utils.highlight_range*
 highlight_range(range, buf, hl_namespace, hl_group)~
 
-Set a highlight that spans the given range
+Sets a highlight that spans the given range.
 
 						     *ts_utils.highlight_node*
 highlight_node(node, buf, hl_namespace, hl_group)~
 
-Set a highlight that spans the given node's range
+Sets a highlight that spans the given node's range.
 
 ==============================================================================
 FUNCTIONS                                          *nvim-treesitter-functions*
@@ -546,6 +558,7 @@ nvim_treesitter#statusline(opts)~
 Returns a string describing the current position in the file. This
 could be used as a statusline indicator.
 Default options (lua syntax):
+
 >
   {
     indicator_size = 100,
@@ -555,6 +568,7 @@ Default options (lua syntax):
     allow_duplicates = false
   }
 <
+
 - `indicator_size` - How long should the string be. If longer, it is cut from
   the beginning.
 - `type_patterns` - Which node type patterns to match.
@@ -568,7 +582,9 @@ Default options (lua syntax):
 nvim_treesitter#foldexpr()~
 
 Functions to be used to determine the fold level at a given line number.
-To use it: >
+To use it: 
+
+>
   set foldmethod=expr
   set foldexpr=nvim_treesitter#foldexpr()
 <
