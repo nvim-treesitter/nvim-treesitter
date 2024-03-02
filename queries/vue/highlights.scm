@@ -1,9 +1,11 @@
 ; inherits: html_tags
 
+(dynamic_directive_inner_value) @tag
+
 [
-  (directive_dynamic_argument)
-  (directive_dynamic_argument_value)
-] @tag
+  "["
+  "]"
+] @punctuation.bracket
 
 (interpolation) @punctuation.special
 
@@ -21,5 +23,5 @@
 
 [
   (directive_modifier)
-  (directive_argument)
+  (directive_value)
 ] @function.method

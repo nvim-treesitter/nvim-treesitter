@@ -2204,6 +2204,7 @@ list.vue = {
   install_info = {
     url = "https://github.com/tree-sitter-grammars/tree-sitter-vue",
     files = { "src/parser.c", "src/scanner.c" },
+    branch = "main",
   },
   maintainers = { "@WhyNotHugo" },
 }
