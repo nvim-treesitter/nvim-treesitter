@@ -46,7 +46,7 @@ jobs:
         with:
           token: ${{ steps.app-token.outputs.token }}
           author: "nvim-treesitter-bot[bot] <157957100+nvim-treesitter-bot[bot]@users.noreply.github.com>"
-          commit-message: "Update parsers: ${{ env.UPDATED_PARSERS }}"
+          commit-message: "bot(lockfile): update ${{ env.UPDATED_PARSERS }}"
           title: "Update lockfile.json: ${{ env.UPDATED_PARSERS }}"
           body: "[beep boop](https://github.com/peter-evans/create-pull-request)"
           branch: update-lockfile-pr
