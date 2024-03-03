@@ -1033,6 +1033,14 @@ list.julia = {
   maintainers = { "@theHamsta" },
 }
 
+list.just = {
+  install_info = {
+    url = "https://github.com/IndianBoy42/tree-sitter-just",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@Hubro" },
+}
+
 list.kconfig = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-kconfig",
