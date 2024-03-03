@@ -16,6 +16,9 @@ class EquilateralTriangle: NamedShape {
   var perimeter: Double {
     willSet {
     }
+    didSet {
+
+    }
   }
 
   @funcattr
