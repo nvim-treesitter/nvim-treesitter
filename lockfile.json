@@ -12,7 +12,7 @@
     "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
   },
   "arduino": {
-    "revision": "7722d4398d87ea22c4877264f88b45bd7ce0cba5"
+    "revision": "72eee09b501f42a039b757c969a9f32e2b61d2a7"
   },
   "asm": {
     "revision": "6ace266be7ad6bf486a95427ca3fc949aff66211"
@@ -243,7 +243,7 @@
     "revision": "949a8a470559543857a62102c84700d291fc984c"
   },
   "gpg": {
-    "revision": "d4c9cc0060cd4d1b8ca6d7add9f34352ad310a09"
+    "revision": "f99323fb8f3f10b6c69db0c2f6d0a14bd7330675"
   },
   "graphql": {
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
@@ -624,7 +624,7 @@
     "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
   },
   "sourcepawn": {
-    "revision": "b1ae9e3c4a41ebf666582da24fcce316f38a0613"
+    "revision": "a08f8b5c1ebbce93cf5d751ff4bd03b75179f3a9"
   },
   "sparql": {
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
@@ -636,7 +636,7 @@
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
   },
   "ssh_config": {
-    "revision": "4fab1c9116cb7890885508e4630cc8e6a8373a41"
+    "revision": "514695df4985f56455b8f139a319453a2325cdcf"
   },
   "starlark": {
     "revision": "b31a616aac5d05f927f3f9dd809789db7805b632"
@@ -759,7 +759,7 @@
     "revision": "016ad75faa854e4e13bc40c517015183b795eed9"
   },
   "vue": {
-    "revision": "085e99bcc46b2e63ff06a830a31a55132ce95aa5"
+    "revision": "3b9d52087100bdfce43dad2ca46d75b0e21613f6"
   },
   "wgsl": {
     "revision": "40259f3c77ea856841a4e0c4c807705f3e4a2b65"
@@ -768,7 +768,7 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "13b79ea3f343b15f233c6e7ac930797748191615"
+    "revision": "365827a3aa52a1a8093281d204e59ef80e4a210b"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
