@@ -1,34 +1,34 @@
 ;From MDeiml/tree-sitter-markdown & Helix
 (setext_heading
   (paragraph) @markup.heading.1
-  (setext_h1_underline) @markup.heading.1.marker)
+  (setext_h1_underline) @markup.heading.1)
 
 (setext_heading
   (paragraph) @markup.heading.2
-  (setext_h2_underline) @markup.heading.2.marker)
+  (setext_h2_underline) @markup.heading.2)
 
 (atx_heading
-  (atx_h1_marker) @markup.heading.1.marker
+  (atx_h1_marker) @markup.heading.1
   (inline) @markup.heading.1)
 
 (atx_heading
-  (atx_h2_marker) @markup.heading.2.marker
+  (atx_h2_marker) @markup.heading.2
   (inline) @markup.heading.2)
 
 (atx_heading
-  (atx_h3_marker) @markup.heading.3.marker
+  (atx_h3_marker) @markup.heading.3
   (inline) @markup.heading.3)
 
 (atx_heading
-  (atx_h4_marker) @markup.heading.4.marker
+  (atx_h4_marker) @markup.heading.4
   (inline) @markup.heading.4)
 
 (atx_heading
-  (atx_h5_marker) @markup.heading.5.marker
+  (atx_h5_marker) @markup.heading.5
   (inline) @markup.heading.5)
 
 (atx_heading
-  (atx_h6_marker) @markup.heading.6.marker
+  (atx_h6_marker) @markup.heading.6
   (inline) @markup.heading.6)
 
 (info_string) @label
@@ -54,12 +54,12 @@
   (#set! "priority" 90))
 
 (fenced_code_block
-  (fenced_code_block_delimiter) @markup.raw.delimiter
+  (fenced_code_block_delimiter) @markup.raw.block
   (#set! conceal ""))
 
 (fenced_code_block
   (info_string
-    (language) @conceal
+    (language) @label
     (#set! conceal "")))
 
 (link_destination) @markup.link.url

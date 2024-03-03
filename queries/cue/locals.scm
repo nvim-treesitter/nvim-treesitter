@@ -19,13 +19,13 @@
 (package_identifier) @local.definition.namespace
 
 (for_clause
-  (identifier) @local.definition.variable
+  (identifier) @local.definition.var
   (expression))
 
 (for_clause
   (identifier)
-  (identifier) @local.definition.variable
+  (identifier) @local.definition.var
   (expression))
 
 (let_clause
-  (identifier) @local.definition.variable)
+  (identifier) @local.definition.var)

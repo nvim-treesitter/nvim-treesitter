@@ -1,8 +1,8 @@
 # H1
-<!-- <- @markup.heading.1.marker -->
+<!-- <- @markup.heading.1 -->
 
 ## H2
-<!-- <- @markup.heading.2.marker -->
+<!-- <- @markup.heading.2 -->
 
 - Item 1
 - Item 2

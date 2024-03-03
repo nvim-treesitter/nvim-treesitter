@@ -98,10 +98,11 @@ As languages differ quite a lot, here is a set of captures available to you when
 #### Identifiers
 
 ```query
-@variable            ; various variable names
-@variable.builtin    ; built-in variable names (e.g. `this`)
-@variable.parameter  ; parameters of a function
-@variable.member     ; object and struct fields
+@variable                    ; various variable names
+@variable.builtin            ; built-in variable names (e.g. `this`)
+@variable.parameter          ; parameters of a function
+@variable.parameter.builtin  ; special parameters (e.g. `_`, `it`)
+@variable.member             ; object and struct fields
 
 @constant          ; constant identifiers
 @constant.builtin  ; built-in constant values
@@ -111,6 +112,7 @@ As languages differ quite a lot, here is a set of captures available to you when
 @module.builtin    ; built-in modules or namespaces
 @label             ; GOTO and other labels (e.g. `label:` in C), including heredoc labels
 ```
+
 #### Literals
 
 ```query
@@ -139,8 +141,9 @@ As languages differ quite a lot, here is a set of captures available to you when
 @type.definition  ; identifiers in type definitions (e.g. `typedef <type> <identifier>` in C)
 @type.qualifier   ; type qualifiers (e.g. `const`)
 
-@attribute        ; attribute annotations (e.g. Python decorators)
-@property         ; the key in key/value pairs
+@attribute          ; attribute annotations (e.g. Python decorators)
+@attribute.builtin  ; builtin annotations (e.g. `@property` in Python)
+@property           ; the key in key/value pairs
 ```
 
 #### Functions
@@ -167,6 +170,7 @@ As languages differ quite a lot, here is a set of captures available to you when
 @keyword.operator          ; operators that are English words (e.g. `and` / `or`)
 @keyword.import            ; keywords for including modules (e.g. `import` / `from` in Python)
 @keyword.storage           ; modifiers that affect storage in memory or life-time
+@keyword.type              ; keywords describing composite types (e.g. `struct`, `enum`)
 @keyword.repeat            ; keywords related to loops (e.g. `for` / `while`)
 @keyword.return            ; keywords like `return` and `yield`
 @keyword.debug             ; keywords related to debugging
@@ -210,10 +214,15 @@ Mainly for markup languages.
 @markup.underline      ; underlined text (only for literal underline markup!)
 
 @markup.heading        ; headings, titles (including markers)
+@markup.heading.1      ; top-level heading
+@markup.heading.2      ; section heading
+@markup.heading.3      ; subsection heading
+@markup.heading.4      ; and so on
+@markup.heading.5      ; and so forth
+@markup.heading.6      ; six levels ought to be enough for anybody
 
 @markup.quote          ; block quotes
 @markup.math           ; math environments (e.g. `$ ... $` in LaTeX)
-@markup.environment    ; environments (e.g. in LaTeX)
 
 @markup.link           ; text references, footnotes, citations, etc.
 @markup.link.label     ; link, reference descriptions
@@ -236,6 +245,7 @@ Mainly for markup languages.
 
 ```query
 @tag           ; XML-style tag names (and similar)
+@tag.builtin   ; builtin tag names (e.g. HTML5 tags)
 @tag.attribute ; XML-style tag attributes
 @tag.delimiter ; XML-style tag delimiters
 ```

@@ -87,7 +87,7 @@
   "reader"
   "writer"
   "readwriter"
-] @variable.member.builtin
+] @variable.member
 
 ((field_id) @variable.member
   (#set! "priority" 105))

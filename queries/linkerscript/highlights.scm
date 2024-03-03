@@ -63,7 +63,7 @@
   "LENGTH"
   "len"
   "l"
-] @variable.member.builtin
+] @variable.member
 
 ; Constants
 ((symbol) @constant

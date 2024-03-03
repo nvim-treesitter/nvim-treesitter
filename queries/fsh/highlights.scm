@@ -86,7 +86,7 @@
 ; Constants
 (strength_value) @constant
 
-(bool) @constant.boolean
+(bool) @boolean
 
 (flag) @constant
 

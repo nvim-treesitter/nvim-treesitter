@@ -82,9 +82,10 @@
 
 (string_literal) @string
 
-(date) @variable.readonly
-
-(date_time) @variable.readonly
+[
+  (date)
+  (date_time)
+] @string.special
 
 [
   "TRUE"

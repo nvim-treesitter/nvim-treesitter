@@ -1,7 +1,7 @@
 ; Simple tokens ;;;;
-(terminal) @string.grammar
+(terminal) @string
 
-(special_sequence) @string.special.grammar
+(special_sequence) @string.special
 
 (integer) @number
 

@@ -1,7 +1,8 @@
 ; Variables
-(identifier) @variable
-
-(global_variable) @variable.global
+[
+  (identifier)
+  (global_variable)
+] @variable
 
 ; Keywords
 [

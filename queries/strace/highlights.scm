@@ -16,9 +16,10 @@
 (syscall) @function.builtin
 
 ; Literals
-(integer) @number
-
-(pointer) @number.special
+[
+  (integer)
+  (pointer)
+] @number
 
 (value) @label
 

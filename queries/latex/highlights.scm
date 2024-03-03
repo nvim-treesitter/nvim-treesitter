@@ -41,16 +41,16 @@
 
 ; General environments
 (begin
-  command: _ @markup.environment
+  command: _ @module
   name:
     (curly_group_text
-      (text) @markup.environment.name))
+      (text) @label))
 
 (end
-  command: _ @markup.environment
+  command: _ @module
   name:
     (curly_group_text
-      (text) @markup.environment.name))
+      (text) @label))
 
 ; Definitions and references
 (new_command_definition
@@ -77,7 +77,7 @@
   command: _ @function.macro
   name:
     (curly_group_text
-      (_) @markup.environment.name))
+      (_) @label))
 
 (paired_delimiter_definition
   command: _ @function.macro
@@ -260,8 +260,8 @@
   (begin
     name:
       (curly_group_text
-        (text) @markup.environment.name)
-    (#any-of? @markup.environment.name "frame"))
+        (text) @label)
+    (#any-of? @label "frame"))
   .
   (curly_group
     (_) @markup.heading))

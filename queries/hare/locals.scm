@@ -61,5 +61,5 @@
 (let_declaration
   "let"
   .
-  (identifier) @local.definition.variable
+  (identifier) @local.definition.var
   ","?)

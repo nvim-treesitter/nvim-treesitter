@@ -7,11 +7,11 @@
 (column_heading) @markup.heading.4
 
 (column_heading
-  "~" @markup.heading.4.marker
+  "~" @markup.heading.4
   (#set! conceal ""))
 
 (tag
-  "*" @markup.heading.5.marker
+  "*" @label
   (#set! conceal "")
   text: (_) @label)
 
@@ -24,7 +24,7 @@
   text: (_) @markup.link)
 
 (codespan
-  "`" @markup.raw.delimiter
+  "`" @markup.raw
   (#set! conceal "")
   text: (_) @markup.raw)
 
@@ -32,14 +32,15 @@
   (#set! "priority" 90))
 
 (codeblock
-  [
-    ">"
-    (language)
-  ] @markup.raw.delimiter
+  ">" @markup.raw
+  (#set! conceal ""))
+
+(codeblock
+  (language) @label
   (#set! conceal ""))
 
 (block
-  "<" @markup.raw.delimiter
+  "<" @markup.raw
   (#set! conceal ""))
 
 (argument) @variable.parameter
