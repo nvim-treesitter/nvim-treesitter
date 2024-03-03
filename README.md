@@ -392,6 +392,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [supercollider](https://github.com/madskjeldgaard/tree-sitter-supercollider) (maintained by @madskjeldgaard)
 - [x] [surface](https://github.com/connorlay/tree-sitter-surface) (maintained by @connorlay)
 - [x] [svelte](https://github.com/tree-sitter-grammars/tree-sitter-svelte) (maintained by @amaanq)
+- [x] [sway](https://github.com/FuelLabs/tree-sitter-sway) (maintained by @sdankel)
 - [x] [swift](https://github.com/alex-pinkus/tree-sitter-swift) (maintained by @alex-pinkus)
 - [x] [sxhkdrc](https://github.com/RaafatTurki/tree-sitter-sxhkdrc) (maintained by @RaafatTurki)
 - [x] [systemtap](https://github.com/ok-ryoko/tree-sitter-systemtap) (maintained by @ok-ryoko)

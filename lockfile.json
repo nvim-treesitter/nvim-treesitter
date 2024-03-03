@@ -656,6 +656,9 @@
   "svelte": {
     "revision": "04a126d9210def99f06d9ab84a255110b862d47c"
   },
+  "sway": {
+    "revision": "03d97aad336ecc6b302f23bdd9b695ddc937160b"
+  },
   "swift": {
     "revision": "fc00cbb460b40228b30f322b5a34ea0e8f35a9f8"
   },
