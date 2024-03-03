@@ -32,6 +32,9 @@
   (array_literal)               ; [ foo, bar ]
   (dictionary_literal)          ; [ foo: bar, x: y ]
   (lambda_literal) 
+  (willset_didset_block)
+  (willset_clause)
+  (didset_clause)
 ] @indent.begin
 
 ; @something(...)
