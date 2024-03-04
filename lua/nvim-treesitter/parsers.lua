@@ -1902,7 +1902,7 @@ list.supercollider = {
 list.surface = {
   install_info = {
     url = "https://github.com/connorlay/tree-sitter-surface",
-    files = { "src/parser.c" }
+    files = { "src/parser.c" },
   },
   filetype = "sface",
   maintainers = { "@connorlay" },
