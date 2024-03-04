@@ -201,6 +201,7 @@
   "~="
   "<<="
   ">>="
+  "..."
   (ignore_argument)
   (scope_access)
   (rest_operator)
@@ -245,8 +246,6 @@
 (string_literal) @string
 
 (array_literal) @punctuation.bracket
-
-(concatenated_string) @punctuation.delimiter
 
 (bool_literal) @boolean
 
