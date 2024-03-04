@@ -239,11 +239,11 @@
   "gosum": {
     "revision": "e2ac513b2240c7ff1069ae33b2df29ce90777c11"
   },
-  "gowork": {
-    "revision": "949a8a470559543857a62102c84700d291fc984c"
-  },
   "gotmpl": {
     "revision": "17144a77be0acdecebd9d557398883569fed41de"
+  },
+  "gowork": {
+    "revision": "949a8a470559543857a62102c84700d291fc984c"
   },
   "gpg": {
     "revision": "f99323fb8f3f10b6c69db0c2f6d0a14bd7330675"
@@ -525,7 +525,7 @@
     "revision": "a7ff31a38908df9b9f34828d21d6ca5e12413e18"
   },
   "puppet": {
-    "revision": "3641b9e854ac9c84c7576e71c4c9a357bcfd9550"
+    "revision": "5849f9694197a6e822872945b415429c285fdd54"
   },
   "purescript": {
     "revision": "daf9b3e2be18b0b2996a1281f7783e0d041d8b80"
@@ -663,7 +663,7 @@
     "revision": "04a126d9210def99f06d9ab84a255110b862d47c"
   },
   "swift": {
-    "revision": "8a87eebcc3ca249e1eeb65b226e81b7e711eea7a"
+    "revision": "f99631b21e3b6a3b30ee86558e1091a54d61a430"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -672,7 +672,7 @@
     "revision": "1af543a96d060b1f808982037bfc54cc02218edd"
   },
   "t32": {
-    "revision": "b904af353fb2f1df6ac45d8d3e3a5ee85a6cc306"
+    "revision": "0a457a557be7779336bc8ac2b396e73797bc68f7"
   },
   "tablegen": {
     "revision": "300f6a490e71f895e644ed2deec6920860a2e107"
@@ -774,7 +774,7 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "365827a3aa52a1a8093281d204e59ef80e4a210b"
+    "revision": "e3d2cde3d6989d7f3cf97e269dcd1cc40466bd5b"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
