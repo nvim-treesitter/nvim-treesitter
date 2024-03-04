@@ -144,7 +144,7 @@ function M.attach(bufnr)
 
       if not rhs then
         local traceback = debug.traceback()
-        utils.notify(string.format('Unknown keybinding: %s %s %s', mapping, funcname, traceback), vim.log.levels.ERROR)
+        utils.notify(string.format("Unknown keybinding: %s %s %s", mapping, funcname, traceback), vim.log.levels.ERROR)
       else
         vim.keymap.set(mode, mapping, rhs, { buffer = bufnr, silent = true, desc = FUNCTION_DESCRIPTIONS[funcname] })
       end
