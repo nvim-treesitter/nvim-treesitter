@@ -69,6 +69,10 @@
   (link_label)
 ] @markup.link.label
 
+((link_label)
+  .
+  ":" @punctuation.delimiter)
+
 [
   (list_marker_plus)
   (list_marker_minus)
