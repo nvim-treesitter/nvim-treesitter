@@ -213,7 +213,7 @@
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
   },
   "gleam": {
-    "revision": "58b7cac8fc14c92b0677c542610d8738c373fa81"
+    "revision": "2012f294baacf30e7a62414754021284377366c6"
   },
   "glimmer": {
     "revision": "f9746dc1d0707717fbba84cb5c22a71586af23e1"
@@ -477,10 +477,10 @@
     "revision": "6526e5d5bf31501de0dc51c42ac3583078a8fdab"
   },
   "php": {
-    "revision": "78a78df5e06b4c13173af2a1f607c9a853d0f240"
+    "revision": "365fd18542aaba90466580f8400e4ba3fb71c5fb"
   },
   "php_only": {
-    "revision": "78a78df5e06b4c13173af2a1f607c9a853d0f240"
+    "revision": "365fd18542aaba90466580f8400e4ba3fb71c5fb"
   },
   "phpdoc": {
     "revision": "f285e338d328a03920a9bfd8dda78585c7ddcca3"
@@ -663,7 +663,7 @@
     "revision": "04a126d9210def99f06d9ab84a255110b862d47c"
   },
   "swift": {
-    "revision": "f99631b21e3b6a3b30ee86558e1091a54d61a430"
+    "revision": "eebf8bc3f8d4204124c59ff48b1a19417bbf99df"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -774,7 +774,7 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "e3d2cde3d6989d7f3cf97e269dcd1cc40466bd5b"
+    "revision": "1b3e8be7035a43e8fccd8ca0ab9c93cbd1500092"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
