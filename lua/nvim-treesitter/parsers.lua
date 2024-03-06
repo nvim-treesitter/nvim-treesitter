@@ -100,6 +100,7 @@ list.angular = {
     generate_requires_npm = true,
   },
   maintainers = { "@dlvandenberg" },
+  filetype = "angular.html",
   experimental = true,
 }
 
