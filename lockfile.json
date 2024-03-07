@@ -752,6 +752,9 @@
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
   },
+  "vento": {
+    "revision": "c1eb14b130c37267be7c6bb38ce949c3077dd4b3"
+  },
   "verilog": {
     "revision": "2dfddfcb891f74a1cdb9d8ce480a997d11846e17"
   },
