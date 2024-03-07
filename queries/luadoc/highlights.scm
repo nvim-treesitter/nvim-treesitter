@@ -2,7 +2,7 @@
 [
   "@module"
   "@package"
-] @keyword.import
+] @keyword.import @nospell
 
 [
   "@class"
@@ -28,28 +28,28 @@
   "@as"
   "extends"
   (diagnostic_identifier)
-] @keyword
+] @keyword @nospell
 
-"@async" @keyword.coroutine
+"@async" @keyword.coroutine @nospell
 
 (language_injection
   "@language"
-  (identifier) @keyword)
+  (identifier) @keyword @nospell)
 
 (function_type
   [
     "fun"
     "function"
-  ] @keyword.function)
+  ] @keyword.function @nospell)
 
 (source_annotation
-  filename: (identifier) @string.special.path
-  extension: (identifier) @string.special.path)
+  filename: (identifier) @string.special.path @nospell
+  extension: (identifier) @string.special.path @nospell)
 
 (version_annotation
-  version: _ @constant.builtin)
+  version: _ @constant.builtin @nospell)
 
-"@return" @keyword.return
+"@return" @keyword.return @nospell
 
 ; Qualifiers
 [
@@ -62,33 +62,33 @@
   "@private"
   "(exact)"
   "(key)"
-] @type.qualifier
+] @type.qualifier @nospell
 
 ; Variables
-(identifier) @variable
+(identifier) @variable @nospell
 
 [
   "..."
   "self"
-] @variable.builtin
+] @variable.builtin @nospell
 
 ; Macros
 (alias_annotation
-  (identifier) @function.macro)
+  (identifier) @function.macro @nospell)
 
 ; Parameters
 (param_annotation
-  (identifier) @variable.parameter)
+  (identifier) @variable.parameter @nospell)
 
 (parameter
-  (identifier) @variable.parameter)
+  (identifier) @variable.parameter @nospell)
 
 ; Fields
 (field_annotation
-  (identifier) @variable.member)
+  (identifier) @variable.member @nospell)
 
 (table_literal_type
-  field: (identifier) @variable.member)
+  field: (identifier) @variable.member @nospell)
 
 (member_type
   [
@@ -96,25 +96,25 @@
     "."
   ]
   .
-  (identifier) @variable.member)
+  (identifier) @variable.member @nospell)
 
 (member_type
-  (identifier) @module)
+  (identifier) @module @nospell)
 
 (member_type
-  (identifier) @type .)
+  (identifier) @type @nospell .)
 
 ; Types
 (table_type
-  "table" @type.builtin)
+  "table" @type.builtin @nospell)
 
-(builtin_type) @type.builtin
+(builtin_type) @type.builtin @nospell
 
 (class_annotation
-  (identifier) @type)
+  (identifier) @type @nospell)
 
 (enum_annotation
-  (identifier) @type)
+  (identifier) @type @nospell)
 
 ((array_type
   [
@@ -140,7 +140,7 @@
 ] @string
 
 (module_annotation
-  (string) @module)
+  (string) @module @nospell)
 
 [
   (number)
@@ -188,11 +188,11 @@
 (comment) @comment @spell
 
 (at_comment
-  (identifier) @type
+  (identifier) @type @nospell
   (_) @comment @spell)
 
 (class_at_comment
-  (identifier) @type
+  (identifier) @type @nospell
   ("extends"?
-    (identifier)? @type)
+    (identifier)? @type @nospell)
   (_) @comment @spell)
