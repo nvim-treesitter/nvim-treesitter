@@ -2188,6 +2188,7 @@ list.vento = {
   install_info = {
     url = "https://github.com/ventojs/tree-sitter-vento",
     files = { "src/parser.c" },
+    branch = "main",
   },
   filetype = "vto",
   maintainers = { "@wrapperup", "@oscarotero" },
