@@ -2184,6 +2184,15 @@ list.vala = {
   maintainers = { "@Prince781" },
 }
 
+list.vento = {
+  install_info = {
+    url = "https://github.com/ventojs/tree-sitter-vento",
+    files = { "src/parser.c" },
+  },
+  filetype = "vto",
+  maintainers = { "@wrapperup", "@oscarotero" },
+}
+
 list.verilog = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-verilog",
