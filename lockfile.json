@@ -414,7 +414,7 @@
     "revision": "d6ec8ce0963c3c8180161391f15d8f7d415f650d"
   },
   "mlir": {
-    "revision": "117cbbc46bbf82ae30b24f8939573655017226da"
+    "revision": "a56445f841ae7246e4aa3fdf7b4ef0bccdc82e7c"
   },
   "muttrc": {
     "revision": "67d9e23ca7aa22d9bce9d16c53d2c927dff5159a"
@@ -774,7 +774,7 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "845360a7877629185cac62ac9464b21a91c12608"
+    "revision": "4a9f8210586aa2903dd839538cf5dccc614e6f94"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
