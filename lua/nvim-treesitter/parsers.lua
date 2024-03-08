@@ -798,6 +798,14 @@ list.gstlaunch = {
   maintainers = { "@theHamsta" },
 }
 
+list.gularen = {
+   install_info = {
+     url = "https://github.com/noorwachid/tree-sitter-gularen",
+     files = { "src/parser.c", "src/scanner.c" },
+   },
+   maintainers = { "@noorwachid" },
+ }
+
 list.hack = {
   install_info = {
     url = "https://github.com/slackhq/tree-sitter-hack",
