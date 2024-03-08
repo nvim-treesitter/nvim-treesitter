@@ -177,7 +177,7 @@
   "server"
   "stateful"
   "transient"
-] @type.qualifier
+] @keyword.modifier
 
 ; Literals
 (string) @string

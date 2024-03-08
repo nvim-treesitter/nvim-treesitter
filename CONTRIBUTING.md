@@ -171,6 +171,7 @@ As languages differ quite a lot, here is a set of captures available to you when
 @keyword.import            ; keywords for including modules (e.g. `import` / `from` in Python)
 @keyword.storage           ; modifiers that affect storage in memory or life-time
 @keyword.type              ; keywords describing composite types (e.g. `struct`, `enum`)
+@keyword.modifier          ; keywords modifying other constructs (e.g. `const`, `static`, `public`)
 @keyword.repeat            ; keywords related to loops (e.g. `for` / `while`)
 @keyword.return            ; keywords like `return` and `yield`
 @keyword.debug             ; keywords related to debugging

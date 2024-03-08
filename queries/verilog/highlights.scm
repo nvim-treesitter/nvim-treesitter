@@ -154,7 +154,7 @@
 [
   "signed"
   "unsigned"
-] @type.qualifier
+] @keyword.modifier
 
 (data_type
   (simple_identifier) @type)
@@ -263,7 +263,7 @@
 ;(parameter_identifier) @variable.member))
 (type_declaration
   (data_type
-    "packed" @type.qualifier))
+    "packed" @keyword.modifier))
 
 (struct_union) @type
 

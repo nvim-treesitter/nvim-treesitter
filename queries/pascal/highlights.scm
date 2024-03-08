@@ -79,7 +79,7 @@
   (kStrict)
   (kRequired)
   (kOptional)
-] @type.qualifier
+] @keyword.modifier
 
 [
   (kPacked)

@@ -5,8 +5,8 @@ use type Facebook\XHP\HTML\{XHPHTMLHelpers, a, form};
 
 
 final xhp class a_post extends x\element {
-// ^ @type.qualifier
-//     ^ @type.qualifier
+// ^ @keyword.modifier
+//     ^ @keyword.modifier
 //                        ^ @keyword
   use XHPHTMLHelpers;
 

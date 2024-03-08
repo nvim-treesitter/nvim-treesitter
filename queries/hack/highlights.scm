@@ -64,7 +64,7 @@
   (static_modifier)
   (visibility_modifier)
   (xhp_modifier)
-] @type.qualifier
+] @keyword.modifier
 
 [
   "shape"

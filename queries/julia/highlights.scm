@@ -309,7 +309,7 @@
 [
   "const"
   "mutable"
-] @type.qualifier
+] @keyword.modifier
 
 ; Operators & Punctuation
 [

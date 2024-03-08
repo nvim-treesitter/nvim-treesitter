@@ -13,4 +13,4 @@
   "__noinline__"
 ] @keyword.storage
 
-"__launch_bounds__" @type.qualifier
+"__launch_bounds__" @keyword.modifier

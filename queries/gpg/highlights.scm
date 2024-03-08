@@ -26,7 +26,7 @@
 
 (format) @character.special
 
-"sensitive:" @type.qualifier
+"sensitive:" @keyword.modifier
 
 (filter_name) @variable.parameter
 

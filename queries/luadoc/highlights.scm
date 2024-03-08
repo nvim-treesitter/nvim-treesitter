@@ -62,7 +62,7 @@
   "@private"
   "(exact)"
   "(key)"
-] @type.qualifier @nospell
+] @keyword.modifier @nospell
 
 ; Variables
 (identifier) @variable @nospell

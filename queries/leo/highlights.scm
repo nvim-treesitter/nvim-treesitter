@@ -24,7 +24,7 @@
   "constant"
   "private"
   "public"
-] @type.qualifier
+] @keyword.modifier
 
 "self" @variable.builtin
 

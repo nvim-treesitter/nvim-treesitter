@@ -74,7 +74,7 @@
   "const"
   "static"
   "nullable"
-] @type.qualifier
+] @keyword.modifier
 
 ; Attributes
 [

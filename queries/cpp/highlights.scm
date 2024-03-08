@@ -232,7 +232,7 @@
   "protected"
   "virtual"
   "final"
-] @type.qualifier
+] @keyword.modifier
 
 [
   "new"

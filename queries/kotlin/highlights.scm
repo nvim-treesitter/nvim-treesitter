@@ -237,7 +237,7 @@
   (visibility_modifier)
   (reification_modifier)
   (inheritance_modifier)
-] @type.qualifier
+] @keyword.modifier
 
 [
   "val"

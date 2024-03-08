@@ -116,7 +116,7 @@
   "default"
   "readonly"
   "required"
-] @type.qualifier
+] @keyword.modifier
 
 ; from typescript
 (type_identifier) @type

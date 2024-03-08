@@ -61,7 +61,7 @@
 [
   "static"
   "const"
-] @type.qualifier
+] @keyword.modifier
 
 ; Variables
 [

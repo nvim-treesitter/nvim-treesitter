@@ -275,7 +275,7 @@
 [
   "ref"
   (mutable_specifier)
-] @type.qualifier
+] @keyword.modifier
 
 [
   "const"

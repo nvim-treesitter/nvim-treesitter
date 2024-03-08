@@ -54,7 +54,7 @@
 [
   "asc"
   "desc"
-] @type.qualifier
+] @keyword.modifier
 
 [
   (true)

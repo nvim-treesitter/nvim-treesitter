@@ -68,7 +68,7 @@
 [
   "const"
   "volatile"
-] @type.qualifier
+] @keyword.modifier
 
 ; Operators in comma and conditional HLL expressions
 (hll_comma_expression
@@ -120,7 +120,7 @@
   (hll_type_descriptor)
 ] @type
 
-(hll_type_qualifier) @type.qualifier
+(hll_type_qualifier) @keyword.modifier
 
 (hll_primitive_type) @type.builtin
 

@@ -244,6 +244,6 @@
 [
   (er_attribute_key_type_pk)
   (er_attribute_key_type_fk)
-] @type.qualifier
+] @keyword.modifier
 
 (er_attribute_comment) @string @spell

@@ -202,7 +202,7 @@
   "protected"
   "public"
   "static"
-] @type.qualifier
+] @keyword.modifier
 
 [
   "if"

@@ -1,5 +1,5 @@
 pub fn add(x: Int, y: Int) -> Int {
-// <- @type.qualifier
+// <- @keyword.modifier
 //  ^^ @keyword.function
 //     ^^^ @function
 //        ^ @punctuation.bracket
@@ -18,7 +18,7 @@ pub fn add(x: Int, y: Int) -> Int {
 // <- @punctuation.bracket
 
 pub fn twice(f: fn(t) -> t, x: t) -> t {
-// <- @type.qualifier
+// <- @keyword.modifier
 //  ^ @keyword.function
 //     ^^^^^ @function
 //          ^ @punctuation.bracket
@@ -100,8 +100,8 @@ fn replace(
 // <- @punctuation.bracket
 
 pub external fn random_float() -> Float = "rand" "uniform"
-// <- @type.qualifier
-//  ^^^^^^^^ @type.qualifier
+// <- @keyword.modifier
+//  ^^^^^^^^ @keyword.modifier
 //           ^^ @keyword.function
 //              ^^^^^^^^^^^^ @function
 //                          ^ @punctuation.bracket
@@ -113,8 +113,8 @@ pub external fn random_float() -> Float = "rand" "uniform"
 //                                               ^^^^^^^^^ @function
 
 pub external fn inspect(a) -> a = "Elixir.IO" "inspect"
-// <- @type.qualifier
-//  ^^^^^^^^ @type.qualifier
+// <- @keyword.modifier
+//  ^^^^^^^^ @keyword.modifier
 //           ^^ @keyword.function
 //              ^^^^^^^ @function
 //                     ^ @punctuation.bracket

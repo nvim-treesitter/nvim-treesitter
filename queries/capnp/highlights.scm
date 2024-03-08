@@ -27,7 +27,7 @@
 ] @keyword
 
 ; Builtins
-"const" @type.qualifier
+"const" @keyword.modifier
 
 [
   (primitive_type)

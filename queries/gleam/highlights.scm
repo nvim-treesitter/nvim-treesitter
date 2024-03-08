@@ -159,7 +159,7 @@
   "external"
   (opacity_modifier)
   (visibility_modifier)
-] @type.qualifier
+] @keyword.modifier
 
 ; Tuples
 (tuple_access

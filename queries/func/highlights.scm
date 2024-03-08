@@ -54,7 +54,7 @@
   "const"
   "global"
   (var)
-] @type.qualifier
+] @keyword.modifier
 
 ; Variables
 (identifier) @variable

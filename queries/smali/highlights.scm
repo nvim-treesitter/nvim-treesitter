@@ -192,7 +192,7 @@
 ; Misc
 (annotation_visibility) @keyword.storage
 
-(access_modifier) @type.qualifier
+(access_modifier) @keyword.modifier
 
 (array_type
   "[" @punctuation.special)

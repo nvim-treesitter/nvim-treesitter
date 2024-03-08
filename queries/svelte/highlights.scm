@@ -10,7 +10,7 @@
   "render"
 ] @keyword
 
-"const" @type.qualifier
+"const" @keyword.modifier
 
 [
   "if"

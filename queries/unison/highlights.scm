@@ -24,9 +24,9 @@
 
 (kw_equals) @keyword.operator
 
-(structural) @type.qualifier
+(structural) @keyword.modifier
 
-(unique) @type.qualifier
+(unique) @keyword.modifier
 
 (type_constructor) @constructor
 
