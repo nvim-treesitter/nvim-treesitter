@@ -74,7 +74,7 @@
 
 (annotation) @comment
 
-(annotation_key) @annotation
+(annotation_key) @attribute
 
 (annotation_colon) @operator
 
