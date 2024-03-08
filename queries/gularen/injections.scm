@@ -7,7 +7,6 @@
   (label) @injection.language)
 
 ; common aliases
-
 (code_block_lang
   (code_lang) @_language
   (#any-of? @_language "js")
