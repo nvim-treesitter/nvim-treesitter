@@ -804,7 +804,7 @@ list.gularen = {
      files = { "src/parser.c", "src/scanner.c" },
    },
    maintainers = { "@noorwachid" },
- }
+}
 
 list.hack = {
   install_info = {
