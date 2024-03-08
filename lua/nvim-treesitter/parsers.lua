@@ -799,11 +799,11 @@ list.gstlaunch = {
 }
 
 list.gularen = {
-   install_info = {
-     url = "https://github.com/noorwachid/tree-sitter-gularen",
-     files = { "src/parser.c", "src/scanner.c" },
-   },
-   maintainers = { "@noorwachid" },
+  install_info = {
+    url = "https://github.com/noorwachid/tree-sitter-gularen",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@noorwachid" },
 }
 
 list.hack = {
