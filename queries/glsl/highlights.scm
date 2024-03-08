@@ -25,7 +25,7 @@
   "noperspective"
   "invariant"
   "precise"
-] @type.qualifier
+] @keyword.modifier
 
 "subroutine" @keyword.function
 

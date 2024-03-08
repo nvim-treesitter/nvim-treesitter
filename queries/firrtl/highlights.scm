@@ -38,7 +38,7 @@
 ] @keyword
 
 ; Qualifiers
-(qualifier) @type.qualifier
+(qualifier) @keyword.modifier
 
 ; Storageclasses
 [

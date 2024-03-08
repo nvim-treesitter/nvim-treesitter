@@ -31,7 +31,7 @@
 [
   "EMPTY"
   "ANY"
-] @type.qualifier
+] @keyword.modifier
 
 [
   "*"

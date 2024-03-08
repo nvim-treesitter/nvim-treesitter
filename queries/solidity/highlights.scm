@@ -172,7 +172,7 @@
   "view"
   "payable"
   (immutable)
-] @type.qualifier
+] @keyword.modifier
 
 [
   "memory"

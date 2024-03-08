@@ -175,7 +175,7 @@
   (type_qualifier)
   (gnu_asm_qualifier)
   "__extension__"
-] @type.qualifier
+] @keyword.modifier
 
 (linkage_specification
   "extern" @keyword.storage)

@@ -62,7 +62,7 @@
 [
   (optional)
   (irq_modifiers)
-] @type.qualifier
+] @keyword.modifier
 
 [
   "block"

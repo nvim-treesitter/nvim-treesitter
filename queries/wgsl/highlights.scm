@@ -50,7 +50,7 @@
   "read"
   "read_write"
   "write"
-] @type.qualifier
+] @keyword.modifier
 
 "fn" @keyword.function
 

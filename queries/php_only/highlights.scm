@@ -266,7 +266,7 @@
   "public"
   "readonly"
   "static"
-] @type.qualifier
+] @keyword.modifier
 
 [
   "return"

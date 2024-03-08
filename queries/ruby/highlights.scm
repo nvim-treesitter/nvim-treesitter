@@ -62,8 +62,8 @@
 
 (constant) @constant
 
-((identifier) @type.qualifier
-  (#any-of? @type.qualifier "private" "protected" "public"))
+((identifier) @keyword.modifier
+  (#any-of? @keyword.modifier "private" "protected" "public"))
 
 [
   "rescue"

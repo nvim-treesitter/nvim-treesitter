@@ -208,7 +208,7 @@
   "owned"
   "weak"
   "unowned"
-] @type.qualifier
+] @keyword.modifier
 
 [
   "case"

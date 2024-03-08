@@ -153,6 +153,6 @@
 
 "@define" @keyword.directive.define
 
-"private" @type.qualifier
+"private" @keyword.modifier
 
 "global" @keyword.storage

@@ -31,7 +31,7 @@
 [
   "varying"
   "uniform"
-] @type.qualifier
+] @keyword.modifier
 
 "__regcall" @attribute
 

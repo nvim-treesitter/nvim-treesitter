@@ -106,7 +106,7 @@ alias: (identifier) @variable.member
 [
   (keyword_version)
   (keyword_target)
-] @type.qualifier
+] @keyword.modifier
 
 (target) @function.builtin
 

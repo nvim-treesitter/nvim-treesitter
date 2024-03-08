@@ -104,7 +104,7 @@
     "normal"
     "urgent"
     "active"
-  ] @type.qualifier)
+  ] @keyword.modifier)
 
 (hex_color) @number
 

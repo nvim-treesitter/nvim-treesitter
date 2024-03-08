@@ -130,7 +130,7 @@
   "value"
   "volatile"
   (procedure_qualifier)
-] @type.qualifier
+] @keyword.modifier
 
 [
   "common"

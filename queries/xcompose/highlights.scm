@@ -15,7 +15,7 @@
 [
   (modifier)
   "None"
-] @type.qualifier
+] @keyword.modifier
 
 [
   "%L"

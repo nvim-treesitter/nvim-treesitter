@@ -28,11 +28,11 @@
   (relative_font_size_value)
 ] @number.float
 
-(purity) @type.qualifier
+(purity) @keyword.modifier
 
-(function_visibility) @type.qualifier
+(function_visibility) @keyword.modifier
 
-(property_visibility) @type.qualifier
+(property_visibility) @keyword.modifier
 
 (builtin_type_identifier) @type.builtin
 

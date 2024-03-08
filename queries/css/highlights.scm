@@ -56,7 +56,7 @@
   "only"
 ] @keyword.operator
 
-(important) @type.qualifier
+(important) @keyword.modifier
 
 (attribute_selector
   (plain_value) @string)

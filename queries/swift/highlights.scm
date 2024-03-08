@@ -34,7 +34,7 @@
   (parameter_modifier)
   (inheritance_modifier)
   (mutation_modifier)
-] @type.qualifier
+] @keyword.modifier
 
 (function_declaration
   (simple_identifier) @function.method)

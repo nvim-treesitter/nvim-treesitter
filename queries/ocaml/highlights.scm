@@ -153,7 +153,7 @@
   "rec"
   "private"
   "virtual"
-] @type.qualifier
+] @keyword.modifier
 
 [
   "fun"

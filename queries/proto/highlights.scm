@@ -19,7 +19,7 @@
   "optional"
   "repeated"
   "required"
-] @type.qualifier
+] @keyword.modifier
 
 [
   "package"

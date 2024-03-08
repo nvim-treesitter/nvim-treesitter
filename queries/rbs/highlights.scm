@@ -37,7 +37,7 @@
   "prepend"
 ] @function.method
 
-(visibility) @type.qualifier
+(visibility) @keyword.modifier
 
 (comment) @comment @spell
 

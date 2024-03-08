@@ -59,7 +59,7 @@
 [
   "pub"
   "mut"
-] @type.qualifier
+] @keyword.modifier
 
 [
   "go"

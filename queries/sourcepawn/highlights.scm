@@ -149,7 +149,7 @@
 ; Non-type Keywords
 (variable_storage_class) @keyword.storage
 
-(visibility) @type.qualifier
+(visibility) @keyword.modifier
 
 (assertion) @function.builtin
 
@@ -298,4 +298,4 @@
   "static"
   "stock"
   "forward"
-] @type.qualifier
+] @keyword.modifier

@@ -333,7 +333,7 @@
   (keyword_statistics)
   (keyword_maxvalue)
   (keyword_minvalue)
-] @type.qualifier
+] @keyword.modifier
 
 [
   (keyword_int)

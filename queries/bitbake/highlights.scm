@@ -92,7 +92,7 @@
   "append"
   "prepend"
   "remove"
-] @type.qualifier
+] @keyword.modifier
 
 ; Variables
 [

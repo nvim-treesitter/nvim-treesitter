@@ -21,7 +21,7 @@
   "__covariant"
   "__contravariant"
   (visibility_specification)
-] @type.qualifier
+] @keyword.modifier
 
 ; Storageclasses
 [

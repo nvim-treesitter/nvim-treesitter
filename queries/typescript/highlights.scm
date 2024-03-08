@@ -41,7 +41,7 @@
   "protected"
   "public"
   "readonly"
-] @type.qualifier
+] @keyword.modifier
 
 ; types
 (type_identifier) @type

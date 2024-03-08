@@ -450,7 +450,7 @@
   "partial"
   "sealed"
   "virtual"
-] @type.qualifier
+] @keyword.modifier
 
 (parameter_modifier) @operator
 

@@ -724,36 +724,36 @@
         ])))
 
 ; =============================================================================
-; @type.qualifier  ; type qualifiers (e.g. `const`)
+; @keyword.modifier  ; type qualifier keywords (e.g. `const`)
 (var_type
-  "var" @type.qualifier)
+  "var" @keyword.modifier)
 
 (out_type
-  "out" @type.qualifier)
+  "out" @keyword.modifier)
 
 (distinct_type
-  "distinct" @type.qualifier)
+  "distinct" @keyword.modifier)
 
 (ref_type
-  "ref" @type.qualifier)
+  "ref" @keyword.modifier)
 
 (pointer_type
-  "ptr" @type.qualifier)
+  "ptr" @keyword.modifier)
 
 (var_parameter
-  "var" @type.qualifier)
+  "var" @keyword.modifier)
 
 (type_parameter
-  "type" @type.qualifier)
+  "type" @keyword.modifier)
 
 (static_parameter
-  "static" @type.qualifier)
+  "static" @keyword.modifier)
 
 (ref_parameter
-  "ref" @type.qualifier)
+  "ref" @keyword.modifier)
 
 (pointer_parameter
-  "ptr" @type.qualifier)
+  "ptr" @keyword.modifier)
 
 ; =============================================================================
 ; @variable.member           ; object and struct fields

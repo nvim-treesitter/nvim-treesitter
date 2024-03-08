@@ -245,7 +245,7 @@
   "final"
   "base"
   "sealed"
-] @type.qualifier
+] @keyword.modifier
 
 ; when used as an identifier:
 ((identifier) @variable.builtin

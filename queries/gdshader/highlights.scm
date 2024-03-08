@@ -13,7 +13,7 @@
 [
   (precision_qualifier)
   (interpolation_qualifier)
-] @type.qualifier
+] @keyword.modifier
 
 [
   "in"

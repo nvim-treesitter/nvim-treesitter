@@ -28,7 +28,7 @@
 (get_body
   "get" @keyword.function)
 
-(static_keyword) @type.qualifier
+(static_keyword) @keyword.modifier
 
 (tool_statement) @keyword
 
@@ -50,7 +50,7 @@
   (name) @type) @keyword
 
 (const_statement
-  "const" @type.qualifier
+  "const" @keyword.modifier
   (name) @constant)
 
 (expression_statement

@@ -42,7 +42,7 @@
 
 (type) @type
 
-(join_types) @type.qualifier
+(join_types) @keyword.modifier
 
 [
   "("

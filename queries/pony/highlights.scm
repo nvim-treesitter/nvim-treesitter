@@ -45,7 +45,7 @@
   "#share"
   "#alias"
   "#any"
-] @type.qualifier
+] @keyword.modifier
 
 ; Conditionals
 [

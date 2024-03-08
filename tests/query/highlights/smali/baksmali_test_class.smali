@@ -1,6 +1,6 @@
 .class public Lbaksmali/test/class;
 # <- @keyword
-#      ^^^^^^ @type.qualifier
+#      ^^^^^^ @keyword.modifier
 .super Ljava/lang/Object;
 #      ^ @character.special
 #       ^^^^ @type.builtin

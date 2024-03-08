@@ -100,7 +100,7 @@
   (dso_local)
   (linkage_aux)
   (visibility)
-] @type.qualifier
+] @keyword.modifier
 
 [
   "thread_local"

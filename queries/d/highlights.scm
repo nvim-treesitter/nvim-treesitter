@@ -68,7 +68,7 @@
   (const)
   (override)
   (static)
-] @type.qualifier
+] @keyword.modifier
 
 [
   (assert)
