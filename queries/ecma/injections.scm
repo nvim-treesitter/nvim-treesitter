@@ -17,9 +17,12 @@
   (#lua-match? @injection.language "^[a-zA-Z][a-zA-Z0-9]*$")
   (#offset! @injection.content 0 1 0 -1)
   (#set! injection.include-children)
-  (#not-eq? @injection.language "svg"))
+  ; Languages excluded from auto-injection due to special rules
+  ; - svg uses the html parser
+  ; - css uses the styled parser
+  (#not-any-of? @injection.language "svg" "css"))
 
-; svg`...` or svg(`...`), which uses the html parser, so is not included in the previous query
+; svg`...` or svg(`...`)
 (call_expression
   function:
     ((identifier) @_name
