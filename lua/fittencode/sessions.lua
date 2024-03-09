@@ -1,11 +1,12 @@
 local fn = vim.fn
 local api = vim.api
-local uv = vim.uv
+local uv = vim.uv or vim.loop
 
 local Base = require('fittencode.base')
 local Rest = require('fittencode.rest')
 local Log = require('fittencode.log')
 local KeyStorage = require('fittencode.key_storage')
+local Config = require('fittencode.config')
 
 local M = {}
 
@@ -177,6 +178,9 @@ local function generate_suggestions(generated_text)
   if not replaced_text then
     return
   end
+
+  Log.debug('Generated text: {}', replaced_text)
+
   local lines = vim.split(replaced_text, '\r')
   if vim.tbl_count(lines) == 0 or (vim.tbl_count(lines) == 1 and string.len(lines[1]) == 0) then
     return
@@ -219,7 +223,7 @@ local function on_generate_one_stage(_, response, data)
 
   local suggestions = generate_suggestions(completion_data.generated_text)
 
-  if data.on_suggestions ~= nil then
+  if data.on_suggestions ~= nil and suggestions ~= nil then
     data.on_suggestions(data.task_id, suggestions)
   end
 end
@@ -239,7 +243,7 @@ local function on_generate_one_stage_exit(data)
   end
 end
 
----@return table
+---@return table|nil
 local function make_generate_one_stage_params()
   local filename = api.nvim_buf_get_name(0)
   if filename == nil or filename == '' then
@@ -247,6 +251,17 @@ local function make_generate_one_stage_params()
   end
 
   local row, col = Base.get_cursor()
+
+  if not Config.options.inline then
+    local line = api.nvim_buf_get_lines(0, row, row + 1, false)[1]
+    local len = string.len(line)
+    Log.debug('Inline mode is disabled; col: {}, line: {}, length of line: {}', col, line, len)
+    if col ~= len then
+      Log.debug('Cursor is not at the end of the line, aborting')
+      return
+    end
+  end
+
   local prefix = table.concat(api.nvim_buf_get_text(0, 0, 0, row, col, {}), '\n')
   local suffix = table.concat(api.nvim_buf_get_text(0, row, col, -1, -1, {}), '\n')
   local prompt = '!FCPREFIX!' .. prefix .. '!FCSUFFIX!' .. suffix .. '!FCMIDDLE!'
@@ -273,8 +288,11 @@ function M.request_generate_one_stage(task_id, on_suggestions)
     Log.debug('API key is nil')
     return
   end
-  local params = fn.json_encode(make_generate_one_stage_params())
-  Base.write_temp_file(params, function(_, path)
+  local params = make_generate_one_stage_params()
+  if params == nil then
+    return
+  end
+  Base.write_temp_file(fn.json_encode(params), function(_, path)
     local server = URL_GENERATE_ONE_STAGE
     local args = {
       '-s',

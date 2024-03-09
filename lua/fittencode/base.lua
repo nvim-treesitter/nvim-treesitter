@@ -1,6 +1,6 @@
 local fn = vim.fn
 local api = vim.api
-local uv = vim.uv
+local uv = vim.uv or vim.loop
 
 local M = {}
 
@@ -44,7 +44,9 @@ end
 ---@param name string
 ---@param hi table
 function M.set_hi(name, hi)
-  hi.force = true
+  if vim.fn.has('nvim-0.10') == 1 then
+    hi.force = true
+  end
   hi.cterm = hi.cterm or {}
   vim.api.nvim_set_hl(0, name, hi)
 end

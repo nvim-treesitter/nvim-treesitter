@@ -30,6 +30,8 @@ local function on_suggestions(task_id, suggestions)
     return
   end
 
+  Log.debug('Suggestions received; task_id: {}, suggestions: {}', task_id, suggestions)
+
   cache:update_pos(row, col)
   cache:update_lines(suggestions)
   View.render_virt_text(suggestions)
@@ -103,6 +105,8 @@ function M.accept_line()
 
   View.clear_virt_text()
 
+  -- Out-of-order execution about eventignore and CursorMoved.
+  -- https://github.com/vim/vim/issues/8641
   local eventignore = vim.o.eventignore
   vim.o.eventignore = 'all'
 

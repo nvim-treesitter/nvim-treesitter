@@ -3,6 +3,8 @@ local fn = vim.fn
 
 local Base = require('fittencode.base')
 local Color = require('fittencode.color')
+local Config = require('fittencode.config')
+local Log = require('fittencode.log')
 
 local M = {}
 
@@ -39,11 +41,22 @@ local function draw_virt_text(virt_text)
 
   local row, col = Base.get_cursor()
 
-  api.nvim_buf_set_extmark(0, namespace, row, col, {
-    virt_text = virt_text[1],
-    virt_text_pos = 'inline',
-    hl_mode = 'combine',
-  })
+  Log.debug('Draw virtual text on buffer, text: {}', virt_text)
+
+  if Config.options.inline then
+    api.nvim_buf_set_extmark(0, namespace, row, col, {
+      virt_text = virt_text[1],
+      virt_text_pos = 'inline',
+      hl_mode = 'combine',
+    })
+  else
+    api.nvim_buf_set_extmark(0, namespace, row, col, {
+      virt_text = virt_text[1],
+      -- eol will added space to the end of the line
+      virt_text_pos = 'overlay',
+      hl_mode = 'combine',
+    })
+  end
 
   table.remove(virt_text, 1)
 

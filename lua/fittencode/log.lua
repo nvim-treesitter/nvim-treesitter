@@ -1,5 +1,5 @@
 local fn = vim.fn
-local uv = vim.uv
+local uv = vim.uv or vim.loop
 
 local Base = require('fittencode.base')
 

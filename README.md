@@ -16,7 +16,7 @@ Fitten Code AI Programming Assistant for Neovim, helps you to use AI for automat
 
 ## ⚡️ Requirements
 
-- Neovim >= 0.10.0 (with support for inline virtual text)
+- Neovim >= 0.8.0
 - curl
 
 ## 📦 Installation

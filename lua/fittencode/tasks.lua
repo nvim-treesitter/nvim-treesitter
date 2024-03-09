@@ -1,4 +1,4 @@
-local uv = vim.uv
+local uv = vim.uv or vim.loop
 
 local Log = require('fittencode.log')
 
