@@ -9,7 +9,7 @@ M.options = {
   },
 }
 
----@param opts FittencodeOptions
+---@param opts? FittencodeOptions
 function M.setup(opts)
   M.options = vim.tbl_deep_extend('force', M.options, opts or {})
   if vim.fn.has('nvim-0.10') == 0 then

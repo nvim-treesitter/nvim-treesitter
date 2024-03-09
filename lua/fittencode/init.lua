@@ -2,6 +2,13 @@ local M = {}
 
 ---@param opts? FittencodeOptions
 function M.setup(opts)
+  -- Check if Neovim >= 0.8.0 is installed
+  if vim.fn.has('nvim-0.8.0') == 0 then
+    local msg = 'fittencode.nvim requires Neovim >= 0.8.0.'
+    vim.api.nvim_err_writeln(msg)
+    return
+  end
+
   local Config = require('fittencode.config')
   Config.setup(opts)
 
