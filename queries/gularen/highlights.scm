@@ -12,7 +12,7 @@
 
 (v) @markup.list.checked
 
-(x) @markup.list.unchecked.cancelled
+(x) @markup.list.unchecked
 
 (bold) @markup.strong
 
@@ -23,16 +23,15 @@
 [
   (line_break)
   (page_break)
-] @punctuation.special.break
+  (dinkus)
+] @punctuation.special
 
-(dinkus) @punctuation.special.thematic
-
-(code_inline) @markup.raw.inline
+(code_inline) @markup.raw
 
 (code_block
   (code_content) @markup.raw.block)
 
-(code_lang) @label.lang
+(code_lang) @label
 
 ([
   (fence_open)
