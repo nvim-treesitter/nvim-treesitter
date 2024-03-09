@@ -85,12 +85,16 @@ end
 ---@return string
 local function expand_msg(msg, ...)
   msg = msg or ''
-  local args = { ... }
-  if #args > 0 then
-    msg = fn.substitute(msg, '{}', '%s', 'g')
-    ---@diagnostic disable-next-line: param-type-mismatch
-    msg = string.format(msg, unpack(vim.tbl_map(vim.inspect, { ... })))
+  local count = 0
+  msg, count = msg:gsub('{}', '%%s')
+  local args = vim.tbl_map(vim.inspect, { ... })
+  if #args < count then
+    for i = #args + 1, count do
+      args[i] = vim.inspect(nil)
+    end
   end
+  ---@diagnostic disable-next-line: param-type-mismatch
+  msg = string.format(msg, unpack(args))
   return msg
 end
 
