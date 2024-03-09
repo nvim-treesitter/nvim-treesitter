@@ -10,17 +10,17 @@
 ; ---
 ; Primitives
 ; ---
-(escape_sequence) @constant.character.escape
+(escape_sequence) @string.escape
 
 (primitive_type) @type.builtin
 
-(boolean_literal) @constant.builtin.boolean
+(boolean_literal) @boolean
 
-(integer_literal) @constant.numeric.integer
+(integer_literal) @integer
 
-(float_literal) @constant.numeric.float
+(float_literal) @float
 
-(char_literal) @constant.character
+(char_literal) @character
 
 [
   (string_literal)
@@ -41,12 +41,12 @@
   (identifier) @type.enum.variant)
 
 (field_initializer
-  (field_identifier) @variable.other.member)
+  (field_identifier) @variable.member)
 
 (shorthand_field_initializer
-  (identifier) @variable.other.member)
+  (identifier) @variable.member)
 
-(shorthand_field_identifier) @variable.other.member
+(shorthand_field_identifier) @variable.member
 
 (loop_label
   "'" @label
@@ -103,7 +103,7 @@
   value:
     (field_expression
       value: (identifier)? @variable
-      field: (field_identifier) @variable.other.member))
+      field: (field_identifier) @variable.member))
 
 (parameter
   pattern: (identifier) @variable.parameter)
@@ -359,4 +359,4 @@
 
 (identifier) @variable
 
-(field_identifier) @variable.other.member
+(field_identifier) @variable.member
