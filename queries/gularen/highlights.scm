@@ -46,14 +46,6 @@
 
 (datetime_content) @string.special
 
-(exclamation) @operator
-
-(question) @operator
-
-(caret) @operator
-
-(equal) @operator
-
 [
   (exclamation)
   (question)
