@@ -4,45 +4,48 @@
 
 (subsection) @markup.heading.3
 
-(subtitle) @operator
+(subtitle) @markup.heading.4
 
-(bullet) @keyword
+(bullet) @markup.list
 
 (index) @number
 
-(v) @diff.plus
+(v) @markup.list.checked
 
-(x) @diff.minus
+(x) @markup.list.unchecked.cancelled
 
 (bold) @markup.strong
 
 (italic) @markup.italic
 
-(monospaced) @string
+(monospaced) @markup.raw
 
-(line_break) @diff.minus
+[
+  (line_break)
+  (page_break)
+] @punctuation.special.break
 
-(page_break) @diff.minus
+(dinkus) @punctuation.special.thematic
 
-(dinkus) @keyword
-
-(code_inline) @markup.raw
+(code_inline) @markup.raw.inline
 
 (code_block
   (code_content) @markup.raw.block)
 
-(code_lang) @operator
+(code_lang) @label.lang
 
-(fence_open) @operator
-
-(fence_close) @operator
+([
+  (fence_open)
+  (fence_close)
+] @markup.raw.block
+  (#set! conceal ""))
 
 (link_label
   (label) @markup.link.url)
 
-(admon_label) @function
+(admon_label) @function.builtin
 
-(datetime_content) @string.escape
+(datetime_content) @string.special
 
 (exclamation) @operator
 
@@ -52,31 +55,33 @@
 
 (equal) @operator
 
-(angle_open) @operator
+[
+  (exclamation)
+  (question)
+  (caret)
+  (equal)
+] @punctuation.special
 
-(angle_close) @operator
+[
+  (angle_open)
+  (angle_close)
+  (square_open)
+  (square_close)
+  (curly_open)
+  (curly_close)
+  (paren_open)
+  (paren_close)
+] @punctuation.bracket
 
-(square_open) @operator
+(slash) @punctuation.delimiter
 
-(square_close) @operator
+(comment) @comment @spell
 
-(curly_open) @operator
-
-(curly_close) @operator
-
-(paren_open) @operator
-
-(paren_close) @operator
-
-(slash) @operator
-
-(comment) @comment
-
-(annotation) @comment
+(annotation) @comment.documentation @spell
 
 (annotation_key) @attribute
 
-(annotation_colon) @operator
+(annotation_colon) @punctuation.delimiter
 
 (annotation_value) @string
 
