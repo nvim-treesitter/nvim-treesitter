@@ -43,7 +43,7 @@ local function draw_virt_text(virt_text)
 
   Log.debug('Draw virtual text on buffer, text: {}', virt_text)
 
-  if Config.options.inline then
+  if Config.internal.extmark.inline then
     api.nvim_buf_set_extmark(0, namespace, row, col, {
       virt_text = virt_text[1],
       virt_text_pos = 'inline',
