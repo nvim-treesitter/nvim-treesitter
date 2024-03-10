@@ -5,6 +5,7 @@ local View = require('fittencode.view')
 local TaskScheduler = require('fittencode.tasks')
 local Sessions = require('fittencode.sessions')
 local SuggestionsCache = require('fittencode.suggestions_cache')
+local Config = require('fittencode.config')
 
 local M = {}
 
@@ -234,6 +235,20 @@ function M.advance()
   else
     cache:flush()
   end
+end
+
+-- Preflight checking
+-- Check if the environment is ready for completion
+---@return boolean
+function M.preflight()
+  if not Config.options.inline_completion.enable then
+    return false
+  end
+  local filetype = vim.bo.filetype
+  if vim.tbl_contains(Config.options.disable_specific_inline_completion.suffixes, filetype) then
+    return false
+  end
+  return true
 end
 
 return M

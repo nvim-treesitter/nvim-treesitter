@@ -22,6 +22,9 @@ function M.setup_autocmds()
     group = Base.augroup('GenerateOneStage'),
     pattern = '*',
     callback = function()
+      if not Engine.preflight() then
+        return
+      end
       local row, col = Base.get_cursor()
       Base.debounce(generate_one_stage_timer, function()
         Engine.generate_one_stage(row, col)
@@ -34,6 +37,9 @@ function M.setup_autocmds()
     group = Base.augroup('Advance'),
     pattern = '*',
     callback = function()
+      if not Engine.preflight() then
+        return
+      end
       Base.debounce(advance_timer, function()
         Engine.advance()
       end, ADVANCE_DEBOUNCE_TIME)
@@ -45,6 +51,9 @@ function M.setup_autocmds()
     group = Base.augroup('Reset'),
     pattern = '*',
     callback = function()
+      if not Engine.preflight() then
+        return
+      end
       Engine.reset()
     end,
     desc = 'Reset',
