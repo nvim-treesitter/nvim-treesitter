@@ -47,7 +47,22 @@ use {
 
 ## ⚙️ Configuration
 
-Out of box.
+Set `updatetime` to a lower value to improve performance:
+
+```lua
+-- Neovim default updatetime is 4000
+vim.opt.updatetime = 200
+```
+
+**fittencode.nvim** comes with the following defaults:
+
+```lua
+{
+  log = {
+    level = vim.log.levels.WARN,
+  },
+}
+```
 
 ## 🚀 Usage
 
