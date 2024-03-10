@@ -12,7 +12,7 @@
     "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
   },
   "arduino": {
-    "revision": "72eee09b501f42a039b757c969a9f32e2b61d2a7"
+    "revision": "e3a0a7f60e544afc478b72cdda7ffc0f2f889db0"
   },
   "asm": {
     "revision": "6ace266be7ad6bf486a95427ca3fc949aff66211"
@@ -33,7 +33,7 @@
     "revision": "c9ba4568af24cd3403029730687c0a43d1350a43"
   },
   "beancount": {
-    "revision": "1f19abf1e162e1828013cb5434c6cf30f4054e80"
+    "revision": "6c665e7cf15d76a1687959643868a78fb381458d"
   },
   "bibtex": {
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
@@ -450,10 +450,10 @@
     "revision": "28d3b2e25a0b1881d1b47ed1924ca276c7003d45"
   },
   "ocaml": {
-    "revision": "9965d208337d88bbf1a38ad0b0fe49e5f5ec9677"
+    "revision": "712d9bfa1d537c5899dde5538767ed2d8bb37a93"
   },
   "ocaml_interface": {
-    "revision": "9965d208337d88bbf1a38ad0b0fe49e5f5ec9677"
+    "revision": "712d9bfa1d537c5899dde5538767ed2d8bb37a93"
   },
   "ocamllex": {
     "revision": "4b9898ccbf198602bb0dec9cd67cc1d2c0a4fad2"
