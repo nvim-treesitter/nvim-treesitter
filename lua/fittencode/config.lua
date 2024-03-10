@@ -50,7 +50,7 @@ M.options = {
 
 -- Private options
 M.internal = {
-  extmark = {
+  virtual_text = {
     inline = vim.fn.has('nvim-0.10') == 1,
   },
 }
