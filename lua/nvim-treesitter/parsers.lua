@@ -1920,7 +1920,6 @@ list.sway = {
   install_info = {
     url = "https://github.com/FuelLabs/tree-sitter-sway",
     files = { "src/parser.c", "src/scanner.c" },
-    requires_generate_from_grammar = true,
   },
   maintainers = { "@sdankel" },
 }
