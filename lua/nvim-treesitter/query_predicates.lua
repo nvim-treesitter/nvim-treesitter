@@ -175,6 +175,26 @@ query.add_directive("set-lang-from-info-string!", function(match, _, bufnr, pred
   metadata["injection.language"] = get_parser_from_markdown_info_string(injection_alias)
 end, true)
 
+---@param _ (TSNode|nil)[]
+---@param _ string
+---@param bufnr integer
+---@param pred string[]
+---@param metadata table
+---@return boolean|nil
+query.add_directive("set-lang-by-filetype!", function(_, _, bufnr, pred, metadata)
+  if not valid_args("set-lang-by-filetype!", pred, 2, true) then
+    return
+  end
+  local filename = vim.fn.expand("#" .. bufnr .. ":t")
+  local extension_index = filename:find "%."
+  if not extension_index then
+    return
+  end
+  if pred[2] == filename:sub(extension_index + 1) then
+    metadata["injection.language"] = pred[3]
+  end
+end, true)
+
 -- Just avoid some annoying warnings for this directive
 query.add_directive("make-range!", function() end, true)
 
