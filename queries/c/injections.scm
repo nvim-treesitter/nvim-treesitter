@@ -9,7 +9,7 @@
   (#set! injection.language "re2c"))
 
 ((comment) @injection.content
-  (#lua-match? @injection.content "/[*][!<*][^a-zA-Z]")
+  (#lua-match? @injection.content "/[*\/][!*\/]<?[^a-zA-Z]")
   (#set! injection.language "doxygen"))
 
 ((call_expression
