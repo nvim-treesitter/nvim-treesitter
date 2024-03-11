@@ -148,10 +148,18 @@
 (member_access_expression
   name:
     (variable_name
-      (name)) @property)
+      (name)) @variable.member)
 
 (member_access_expression
-  name: (name) @property)
+  name: (name) @variable.member)
+
+(nullsafe_member_access_expression
+  name:
+    (variable_name
+      (name)) @variable.member)
+
+(nullsafe_member_access_expression
+  name: (name) @variable.member)
 
 ; Variables
 (relative_scope) @variable.builtin
