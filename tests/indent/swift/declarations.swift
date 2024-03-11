@@ -12,6 +12,8 @@ class EquilateralTriangle: NamedShape {
   ) {
     self.sideLength = sideLength
   }
+  deinit {
+  }
 
   var perimeter: Double {
     willSet {
