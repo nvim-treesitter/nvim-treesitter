@@ -10,6 +10,5 @@ else
   skip_langs = vim.fn.split(skip_langs, ",")
 end
 
-print("Skipping languages: " .. vim.inspect(skip_langs))
 require("nvim-treesitter.install").write_lockfile("verbose", skip_langs)
 vim.cmd "q"
