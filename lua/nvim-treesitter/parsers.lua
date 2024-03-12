@@ -47,6 +47,7 @@ for ft, lang in pairs {
   mysql = "sql",
   sbt = "scala",
   neomuttrc = "muttrc",
+  nuon = "nu",
 } do
   register_lang(lang, ft)
 end
@@ -1317,6 +1318,14 @@ list.nqc = {
     files = { "src/parser.c" },
   },
   maintainers = { "@amaanq" },
+}
+
+list.nu = {
+  install_info = {
+    url = "https://github.com/nushell/tree-sitter-nu",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "fncred" },
 }
 
 list.objc = {
