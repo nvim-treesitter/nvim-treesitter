@@ -302,7 +302,7 @@ function M.request_generate_one_stage(task_id, on_suggestions)
       'Content-Type: application/json',
       '-d',
       '@' .. path,
-      server .. api_key .. '?ide=vim&v=0.1.0',
+      server .. api_key .. '?ide=neovim&v=0.1.0',
     }
     Rest.send({
       cmd = CMD,
