@@ -101,6 +101,12 @@
   (defer_end_expression)
 ] @punctuation.bracket
 
+(two_way_binding
+  [
+    "[("
+    ")]"
+  ] @punctuation.bracket)
+
 [
   "{{"
   "}}"
@@ -118,6 +124,10 @@
 
 (concatenation_expression
   "+" @operator)
+
+(icu_clause) @keyword.operator
+
+(icu_category) @keyword.conditional
 
 (binary_expression
   [
