@@ -351,7 +351,7 @@
     "revision": "49fb89a854d93b58a65a19724ac307195ca11941"
   },
   "kotlin": {
-    "revision": "d84fcd3236f120965f4fdd6f004151911e1c5cab"
+    "revision": "aa1130ebfde68ed70366c58d9d318e6656220111"
   },
   "kusto": {
     "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
@@ -594,7 +594,7 @@
     "revision": "3a56481f8d13b6874a28752502a58520b9139dc7"
   },
   "scala": {
-    "revision": "b3ac6a5d959d3137e7f3146d4d9f7899872177de"
+    "revision": "70b4fe63c4973b04cc7bd40c6b7646d9c2430db8"
   },
   "scfg": {
     "revision": "6deae0cbb458c849a4d1e2985093e9c9c32d7fd0"
