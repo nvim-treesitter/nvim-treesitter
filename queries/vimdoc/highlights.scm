@@ -12,12 +12,16 @@
 
 (tag
   "*" @label
-  (#set! conceal "")
+  (#set! conceal ""))
+
+(tag
   text: (_) @label)
 
 (taglink
   "|" @markup.link
-  (#set! conceal "")
+  (#set! conceal ""))
+
+(taglink
   text: (_) @markup.link)
 
 (optionlink
@@ -25,7 +29,9 @@
 
 (codespan
   "`" @markup.raw
-  (#set! conceal "")
+  (#set! conceal ""))
+
+(codespan
   text: (_) @markup.raw)
 
 ((codeblock) @markup.raw.block
