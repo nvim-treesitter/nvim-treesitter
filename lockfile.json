@@ -6,7 +6,7 @@
     "revision": "d3dc807692e6bca671d4491b3bf5c67eeca8c016"
   },
   "angular": {
-    "revision": "52594e26562a8af8fa73234678e600575c5388ee"
+    "revision": "62179d7bbfb5fd8a8f7298495ac654d252a1bd52"
   },
   "apex": {
     "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
@@ -24,7 +24,7 @@
     "revision": "1dec7e1af96c56924e3322cd85fdce15d0a31d00"
   },
   "awk": {
-    "revision": "207b04974c83d8d25a947e4d09763675c4617da7"
+    "revision": "ba7472152d79a8c916550c80fdbfd5724d07a0c9"
   },
   "bash": {
     "revision": "f3f26f47a126797c011c311cec9d449d855c3eab"
@@ -273,7 +273,7 @@
     "revision": "e936d3fef8bac884661472dce71ad82284761eb1"
   },
   "heex": {
-    "revision": "4a36c9a388505180da6ee0eda1d8afb8c83481c8"
+    "revision": "b5ad6e34eea18a15bbd1466ca707a17f9bff7b93"
   },
   "helm": {
     "revision": "17144a77be0acdecebd9d557398883569fed41de"
@@ -294,7 +294,7 @@
     "revision": "0135187126370cbf112d759a50eab4a5c913a827"
   },
   "html": {
-    "revision": "b5d9758e22b4d3d25704b72526670759a9e4d195"
+    "revision": "b285e25c1ba8729399ce4f15ac5375cf6c3aa5be"
   },
   "htmldjango": {
     "revision": "8873e3df89f9ea1d33f6235e516b600009288557"
@@ -351,7 +351,7 @@
     "revision": "49fb89a854d93b58a65a19724ac307195ca11941"
   },
   "kotlin": {
-    "revision": "aa1130ebfde68ed70366c58d9d318e6656220111"
+    "revision": "260afd9a92bac51b3a4546303103c3d40a430639"
   },
   "kusto": {
     "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
@@ -396,10 +396,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "2821521a4e6eab37b63dff6a8e169cd88554047d"
+    "revision": "b2f01981a76e3251f5b660378136c248ed106b81"
   },
   "markdown_inline": {
-    "revision": "2821521a4e6eab37b63dff6a8e169cd88554047d"
+    "revision": "b2f01981a76e3251f5b660378136c248ed106b81"
   },
   "matlab": {
     "revision": "79d8b25f57b48f83ae1333aff6723b83c9532e37"
@@ -636,7 +636,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "da2d1eff425b146d3c8cab7be8dfa98b11d896dc"
+    "revision": "cdb7cde9bf70b194ab8beb5069fbbc3c9640284e"
   },
   "squirrel": {
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
@@ -663,7 +663,7 @@
     "revision": "04a126d9210def99f06d9ab84a255110b862d47c"
   },
   "swift": {
-    "revision": "78f2d72e375f83b2ba6cfb5cc7750db3c94e9785"
+    "revision": "505bd4ce213ecceb3670adf0f74ff2b25c43916a"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -774,7 +774,7 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "f3344cc9ce289be07108df79262df74afa265544"
+    "revision": "06128477ae1f875e832493ada7c93170af822a9f"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
