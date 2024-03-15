@@ -434,7 +434,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [wing](https://github.com/winglang/wing) (experimental, maintained by @gshpychka, @MarkMcCulloh)
 - [x] [xcompose](https://github.com/ObserverOfTime/tree-sitter-xcompose) (maintained by @ObserverOfTime)
 - [x] [xml](https://github.com/tree-sitter-grammars/tree-sitter-xml) (maintained by @ObserverOfTime)
-- [x] [yaml](https://github.com/ikatyang/tree-sitter-yaml) (maintained by @stsewd)
+- [x] [yaml](https://github.com/tree-sitter-grammars/tree-sitter-yaml) (maintained by @amaanq)
 - [x] [yang](https://github.com/Hubro/tree-sitter-yang) (maintained by @Hubro)
 - [x] [yuck](https://github.com/Philipp-M/tree-sitter-yuck) (maintained by @Philipp-M, @amaanq)
 - [x] [zathurarc](https://github.com/Freed-Wu/tree-sitter-zathurarc) (maintained by @Freed-Wu)

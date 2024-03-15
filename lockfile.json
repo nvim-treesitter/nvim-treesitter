@@ -6,7 +6,7 @@
     "revision": "d3dc807692e6bca671d4491b3bf5c67eeca8c016"
   },
   "angular": {
-    "revision": "dd1df77c39a5470c9f6b40476a21b678895ce125"
+    "revision": "62179d7bbfb5fd8a8f7298495ac654d252a1bd52"
   },
   "apex": {
     "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
@@ -24,7 +24,7 @@
     "revision": "1dec7e1af96c56924e3322cd85fdce15d0a31d00"
   },
   "awk": {
-    "revision": "207b04974c83d8d25a947e4d09763675c4617da7"
+    "revision": "ba7472152d79a8c916550c80fdbfd5724d07a0c9"
   },
   "bash": {
     "revision": "f3f26f47a126797c011c311cec9d449d855c3eab"
@@ -207,7 +207,7 @@
     "revision": "41940e199ba5763abea1d21b4f717014b45f01ea"
   },
   "gitcommit": {
-    "revision": "247406593c835065828230bdcecd933138691f68"
+    "revision": "523a1a4f0f674eff7fbf46addfa6ef7644151aae"
   },
   "gitignore": {
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
@@ -273,7 +273,7 @@
     "revision": "e936d3fef8bac884661472dce71ad82284761eb1"
   },
   "heex": {
-    "revision": "4a36c9a388505180da6ee0eda1d8afb8c83481c8"
+    "revision": "b5ad6e34eea18a15bbd1466ca707a17f9bff7b93"
   },
   "helm": {
     "revision": "17144a77be0acdecebd9d557398883569fed41de"
@@ -294,7 +294,7 @@
     "revision": "0135187126370cbf112d759a50eab4a5c913a827"
   },
   "html": {
-    "revision": "b5d9758e22b4d3d25704b72526670759a9e4d195"
+    "revision": "b285e25c1ba8729399ce4f15ac5375cf6c3aa5be"
   },
   "htmldjango": {
     "revision": "8873e3df89f9ea1d33f6235e516b600009288557"
@@ -351,7 +351,7 @@
     "revision": "49fb89a854d93b58a65a19724ac307195ca11941"
   },
   "kotlin": {
-    "revision": "aa1130ebfde68ed70366c58d9d318e6656220111"
+    "revision": "260afd9a92bac51b3a4546303103c3d40a430639"
   },
   "kusto": {
     "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
@@ -396,10 +396,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "2821521a4e6eab37b63dff6a8e169cd88554047d"
+    "revision": "b2f01981a76e3251f5b660378136c248ed106b81"
   },
   "markdown_inline": {
-    "revision": "2821521a4e6eab37b63dff6a8e169cd88554047d"
+    "revision": "b2f01981a76e3251f5b660378136c248ed106b81"
   },
   "matlab": {
     "revision": "79d8b25f57b48f83ae1333aff6723b83c9532e37"
@@ -414,7 +414,7 @@
     "revision": "d6ec8ce0963c3c8180161391f15d8f7d415f650d"
   },
   "mlir": {
-    "revision": "a56445f841ae7246e4aa3fdf7b4ef0bccdc82e7c"
+    "revision": "992c756686eb968af752ce75a874591042a8e24c"
   },
   "muttrc": {
     "revision": "67d9e23ca7aa22d9bce9d16c53d2c927dff5159a"
@@ -576,7 +576,7 @@
     "revision": "8666a4dfeb3107144398158bc3dd7a3f59d89ccb"
   },
   "rnoweb": {
-    "revision": "502c1126dc6777f09af5bef16e72a42f75bd081e"
+    "revision": "1a74dc0ed731ad07db39f063e2c5a6fe528cae7f"
   },
   "robot": {
     "revision": "322e4cc65754d2b3fdef4f2f8a71e0762e3d13af"
@@ -636,7 +636,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "da2d1eff425b146d3c8cab7be8dfa98b11d896dc"
+    "revision": "cdb7cde9bf70b194ab8beb5069fbbc3c9640284e"
   },
   "squirrel": {
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
@@ -663,7 +663,7 @@
     "revision": "04a126d9210def99f06d9ab84a255110b862d47c"
   },
   "swift": {
-    "revision": "78f2d72e375f83b2ba6cfb5cc7750db3c94e9785"
+    "revision": "78a736d77094b0b3c35e811e6765c4d38a72724e"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -762,7 +762,7 @@
     "revision": "052279cd5e1d73b075640c64cef97e7bdcd32611"
   },
   "vimdoc": {
-    "revision": "90a396267e117835c778bdbda6f7db86b601d829"
+    "revision": "f431bfa7d433f4d629943147817193a4fccbd303"
   },
   "vue": {
     "revision": "3b9d52087100bdfce43dad2ca46d75b0e21613f6"
@@ -774,7 +774,7 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "f3344cc9ce289be07108df79262df74afa265544"
+    "revision": "07f6740ab9f4f74c49413b9056154cac51f4b2d7"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
@@ -783,7 +783,7 @@
     "revision": "c23bd31d0aa72bfc01238b2546d5e823d8006709"
   },
   "yaml": {
-    "revision": "0e36bed171768908f331ff7dff9d956bae016efb"
+    "revision": "9e59b9bbf839ba231fbcb953617d8b9b9a059e38"
   },
   "yang": {
     "revision": "2c0e6be8dd4dcb961c345fa35c309ad4f5bd3502"
