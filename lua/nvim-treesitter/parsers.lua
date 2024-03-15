@@ -2171,6 +2171,7 @@ list.v = {
     url = "https://github.com/vlang/v-analyzer",
     files = { "src/parser.c" },
     location = "tree_sitter_v",
+    requires_generate_from_grammar = true,
   },
   filetype = "vlang",
   maintainers = { "@kkharji", "@amaanq" },
