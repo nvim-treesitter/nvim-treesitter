@@ -3,6 +3,7 @@
   (parenthesized_expression)
   (compound_statement)
   (declaration_list)
+  (member_call_expression)
   (binary_expression)
   (return_statement)
   (arguments)
@@ -21,6 +22,9 @@
     (match_expression)
   ]) @indent.dedent
 
+(member_call_expression
+  object: (member_call_expression) @indent.branch)
+
 [
   ")"
   "}"
@@ -28,6 +32,12 @@
 ] @indent.branch
 
 (comment) @indent.auto
+
+(arguments
+  ")" @indent.end)
+
+(formal_parameters
+  ")" @indent.end)
 
 (compound_statement
   "}" @indent.end)

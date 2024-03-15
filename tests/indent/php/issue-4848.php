@@ -41,3 +41,26 @@ return new class
     ) {
     }
 };
+
+$this->foo()
+    ->bar(
+    )
+    ->baz();
+
+$this->get()
+    ->each(function () {
+    })
+    ->each(
+        function (
+        ) {
+        },
+    );
+
+return $this->get()
+    ->each(function () {
+    })
+    ->each(
+        function (
+        ) {
+        },
+    );
