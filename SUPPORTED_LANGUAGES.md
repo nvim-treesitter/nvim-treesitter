@@ -52,7 +52,7 @@ Language | Tier | Queries | CLI | NPM | Maintainer
 [diff](https://github.com/the-mikedavis/tree-sitter-diff) | community | `H    ` |  |  | @gbprod
 [disassembly](https://github.com/ColinKennedy/tree-sitter-disassembly) | community | `H  J ` |  |  | @ColinKennedy
 [dockerfile](https://github.com/camdencheek/tree-sitter-dockerfile) | community | `H  J ` |  |  | @camdencheek
-[dot](https://github.com/rydesun/tree-sitter-dot) | community | `H  J ` |  |  | @rydesun
+[dot](https://github.com/rydesun/tree-sitter-dot) | community | `H IJ ` |  |  | @rydesun
 [doxygen](https://github.com/amaanq/tree-sitter-doxygen) | core | `H IJ ` |  |  | @amaanq
 [dtd](https://github.com/tree-sitter-grammars/tree-sitter-xml) | core | `HF JL` |  |  | @ObserverOfTime
 [ebnf](https://github.com/RubixDev/ebnf) | unsupported | `H    ` |  |  | @RubixDev
