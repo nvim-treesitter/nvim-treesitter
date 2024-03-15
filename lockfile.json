@@ -207,7 +207,7 @@
     "revision": "41940e199ba5763abea1d21b4f717014b45f01ea"
   },
   "gitcommit": {
-    "revision": "247406593c835065828230bdcecd933138691f68"
+    "revision": "523a1a4f0f674eff7fbf46addfa6ef7644151aae"
   },
   "gitignore": {
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
@@ -414,7 +414,7 @@
     "revision": "d6ec8ce0963c3c8180161391f15d8f7d415f650d"
   },
   "mlir": {
-    "revision": "a56445f841ae7246e4aa3fdf7b4ef0bccdc82e7c"
+    "revision": "992c756686eb968af752ce75a874591042a8e24c"
   },
   "muttrc": {
     "revision": "67d9e23ca7aa22d9bce9d16c53d2c927dff5159a"
@@ -576,7 +576,7 @@
     "revision": "8666a4dfeb3107144398158bc3dd7a3f59d89ccb"
   },
   "rnoweb": {
-    "revision": "502c1126dc6777f09af5bef16e72a42f75bd081e"
+    "revision": "1a74dc0ed731ad07db39f063e2c5a6fe528cae7f"
   },
   "robot": {
     "revision": "322e4cc65754d2b3fdef4f2f8a71e0762e3d13af"
@@ -663,7 +663,7 @@
     "revision": "04a126d9210def99f06d9ab84a255110b862d47c"
   },
   "swift": {
-    "revision": "505bd4ce213ecceb3670adf0f74ff2b25c43916a"
+    "revision": "78a736d77094b0b3c35e811e6765c4d38a72724e"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -762,7 +762,7 @@
     "revision": "052279cd5e1d73b075640c64cef97e7bdcd32611"
   },
   "vimdoc": {
-    "revision": "90a396267e117835c778bdbda6f7db86b601d829"
+    "revision": "f431bfa7d433f4d629943147817193a4fccbd303"
   },
   "vue": {
     "revision": "3b9d52087100bdfce43dad2ca46d75b0e21613f6"
@@ -774,7 +774,7 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "06128477ae1f875e832493ada7c93170af822a9f"
+    "revision": "07f6740ab9f4f74c49413b9056154cac51f4b2d7"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
