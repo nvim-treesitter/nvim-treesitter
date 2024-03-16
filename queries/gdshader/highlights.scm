@@ -19,7 +19,7 @@
   "in"
   "out"
   "inout"
-] @keyword.storage
+] @keyword.modifier
 
 [
   "while"

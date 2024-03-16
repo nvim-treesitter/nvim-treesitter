@@ -54,7 +54,7 @@
   "aliased"
   "constant"
   "renames"
-] @keyword.storage
+] @keyword.modifier
 
 [
   "with"

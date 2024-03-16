@@ -179,7 +179,7 @@
   "storage"
   "calldata"
   "constant"
-] @keyword.storage
+] @keyword.modifier
 
 [
   "for"

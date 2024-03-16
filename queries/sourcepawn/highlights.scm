@@ -147,7 +147,7 @@
   name: (identifier) @function.method)
 
 ; Non-type Keywords
-(variable_storage_class) @keyword.storage
+(variable_storage_class) @keyword.modifier
 
 (visibility) @keyword.modifier
 

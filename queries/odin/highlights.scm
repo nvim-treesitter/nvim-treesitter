@@ -36,7 +36,7 @@
 [
   "distinct"
   "dynamic"
-] @keyword.storage
+] @keyword.modifier
 
 ; Conditionals
 [

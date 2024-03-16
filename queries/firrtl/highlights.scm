@@ -44,7 +44,7 @@
 [
   "input"
   "output"
-] @keyword.storage
+] @keyword.modifier
 
 ; Conditionals
 [

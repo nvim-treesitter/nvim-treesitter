@@ -282,13 +282,13 @@
   "static"
   "dyn"
   "extern"
-] @keyword.storage
+] @keyword.modifier
 
 (lifetime
   [
     "'"
     (identifier)
-  ] @keyword.storage)
+  ] @keyword.modifier)
 
 "fn" @keyword.function
 

@@ -203,7 +203,7 @@
   "protected"
 ] @keyword.modifier
 
-(inline_modifier) @keyword.storage
+(inline_modifier) @keyword.modifier
 
 (null_literal) @constant.builtin
 

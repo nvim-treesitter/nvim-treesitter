@@ -109,7 +109,7 @@
   "localexec"
   (unnamed_addr)
   (dll_storage_class)
-] @keyword.storage
+] @keyword.modifier
 
 (attribute_name) @attribute
 

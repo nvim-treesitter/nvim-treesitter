@@ -30,7 +30,7 @@
   "@dynamic"
   "volatile"
   (protocol_qualifier)
-] @keyword.storage
+] @keyword.modifier
 
 ; Keywords
 [

@@ -161,7 +161,7 @@ field_constant: (IDENTIFIER) @constant
   "align"
   "callconv"
   "linksection"
-] @keyword.storage
+] @keyword.modifier
 
 [
   "comptime"

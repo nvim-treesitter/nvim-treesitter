@@ -439,7 +439,7 @@
   "static"
   "volatile"
   "required"
-] @keyword.storage
+] @keyword.modifier
 
 [
   "abstract"

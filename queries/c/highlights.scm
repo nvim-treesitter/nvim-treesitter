@@ -169,7 +169,7 @@
   (type_descriptor)
 ] @type
 
-(storage_class_specifier) @keyword.storage
+(storage_class_specifier) @keyword.modifier
 
 [
   (type_qualifier)
@@ -178,7 +178,7 @@
 ] @keyword.modifier
 
 (linkage_specification
-  "extern" @keyword.storage)
+  "extern" @keyword.modifier)
 
 (type_definition
   declarator: (type_identifier) @type.definition)

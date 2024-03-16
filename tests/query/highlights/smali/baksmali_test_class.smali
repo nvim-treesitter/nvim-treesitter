@@ -14,7 +14,7 @@
 
 
 .annotation build Lsome/annotation;
-#           ^^^^^ @keyword.storage
+#           ^^^^^ @keyword.modifier
 #                  ^^^^ @type
 #                                 ^ @punctuation.delimiter
     value1 = "test"
@@ -93,7 +93,7 @@
 
 .field public static staticFieldWithAnnotation:I
     .annotation runtime La/field/annotation;
-#               ^^^^^^^ @keyword.storage
+#               ^^^^^^^ @keyword.modifier
         this = "is"
         a = "test"
     .end annotation

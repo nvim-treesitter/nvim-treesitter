@@ -138,7 +138,7 @@
 [
   "tempvar"
   "extern"
-] @keyword.storage
+] @keyword.modifier
 
 [
   "if"

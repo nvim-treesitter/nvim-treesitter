@@ -31,7 +31,7 @@
   "in"
   "out"
   "inout"
-] @keyword.storage
+] @keyword.modifier
 
 "~" @operator
 

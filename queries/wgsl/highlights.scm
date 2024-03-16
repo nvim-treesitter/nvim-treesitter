@@ -44,7 +44,7 @@
   "storage"
   "uniform"
   "workgroup"
-] @keyword.storage
+] @keyword.modifier
 
 [
   "read"

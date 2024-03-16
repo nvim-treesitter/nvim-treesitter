@@ -55,7 +55,7 @@
 ] @keyword.exception
 
 ; Storageclasses
-"local" @keyword.storage
+"local" @keyword.modifier
 
 ; Qualifiers
 [

@@ -190,7 +190,7 @@
 (null) @constant.builtin
 
 ; Misc
-(annotation_visibility) @keyword.storage
+(annotation_visibility) @keyword.modifier
 
 (access_modifier) @keyword.modifier
 

@@ -32,7 +32,7 @@
 (alias_expression
   (identifier) @label)
 
-(storage_identifier) @keyword.storage
+(storage_identifier) @keyword.modifier
 
 (_
   function_name: (identifier) @function)

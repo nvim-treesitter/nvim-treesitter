@@ -137,7 +137,7 @@
   "in"
   "inout"
   "out"
-] @keyword.storage
+] @keyword.modifier
 
 ; Labels
 [
