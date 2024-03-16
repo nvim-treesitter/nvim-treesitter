@@ -237,7 +237,7 @@
 (net_declaration
   (simple_identifier) @type)
 
-(lifetime) @label
+(lifetime) @keyword.modifier
 
 (function_identifier
   (function_identifier
