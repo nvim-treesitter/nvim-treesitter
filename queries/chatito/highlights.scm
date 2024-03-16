@@ -30,7 +30,7 @@
 
 (slot) @type
 
-(variation) @type.qualifier
+(variation) @attribute
 
 (alias) @keyword.directive
 

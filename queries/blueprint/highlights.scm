@@ -49,9 +49,6 @@
 (menu_item
   "item" @function.macro)
 
-(template_definition
-  (template_name_qualifier) @type.qualifier)
-
 (import_statement
   (gobject_library) @module)
 
