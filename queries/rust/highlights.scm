@@ -285,10 +285,14 @@
 ] @keyword.modifier
 
 (lifetime
-  [
-    "'"
-    (identifier)
-  ] @keyword.modifier)
+  "'" @keyword.modifier)
+
+(lifetime
+  (identifier) @attribute)
+
+(lifetime
+  (identifier) @attribute.builtin
+  (#any-of? @attribute.builtin "static" "_"))
 
 "fn" @keyword.function
 
