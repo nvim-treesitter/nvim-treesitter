@@ -21,6 +21,9 @@
 (field
   name: (identifier) @variable.member)
 
+(column_definition
+  name: (identifier) @variable.member)
+
 (term
   alias: (identifier) @variable)
 
