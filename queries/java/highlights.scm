@@ -207,7 +207,7 @@
 [
   "transient"
   "volatile"
-] @keyword.storage
+] @keyword.modifier
 
 [
   "return"

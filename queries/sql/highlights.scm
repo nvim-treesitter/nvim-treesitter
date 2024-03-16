@@ -95,7 +95,7 @@
   (keyword_jsonfile)
   (keyword_sequencefile)
   (keyword_volatile)
-] @keyword.storage
+] @keyword.modifier
 
 [
   (keyword_case)

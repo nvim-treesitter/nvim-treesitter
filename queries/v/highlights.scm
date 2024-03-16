@@ -54,7 +54,7 @@
   "shared"
   "static"
   "const"
-] @keyword.storage
+] @keyword.modifier
 
 [
   "pub"

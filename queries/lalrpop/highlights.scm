@@ -72,7 +72,7 @@
 ] @punctuation.delimiter
 
 (lifetime
-  (identifier) @keyword.storage)
+  (identifier) @keyword.modifier)
 
 (string_literal) @string
 

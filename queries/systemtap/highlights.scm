@@ -155,4 +155,4 @@
 
 "private" @keyword.modifier
 
-"global" @keyword.storage
+"global" @keyword.modifier

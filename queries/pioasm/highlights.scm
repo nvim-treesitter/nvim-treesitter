@@ -75,7 +75,7 @@
   "ifempty"
 ] @keyword.conditional
 
-"public" @keyword.storage
+"public" @keyword.modifier
 
 (integer) @number
 

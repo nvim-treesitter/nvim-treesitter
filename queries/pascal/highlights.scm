@@ -84,7 +84,7 @@
 [
   (kPacked)
   (kAbsolute)
-] @keyword.storage
+] @keyword.modifier
 
 (kUses) @keyword.import
 

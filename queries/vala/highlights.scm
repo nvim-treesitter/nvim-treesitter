@@ -229,7 +229,7 @@
   "protected"
   "public"
   "static"
-] @keyword.storage
+] @keyword.modifier
 
 [
   "and"

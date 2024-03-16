@@ -140,7 +140,7 @@
 
 (edge_identifier) @attribute
 
-(port_direction) @keyword.storage
+(port_direction) @keyword.modifier
 
 (port_identifier
   (simple_identifier) @variable)

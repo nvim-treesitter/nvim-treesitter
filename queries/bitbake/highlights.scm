@@ -86,7 +86,7 @@
 [
   "before"
   "after"
-] @keyword.storage
+] @keyword.modifier
 
 [
   "append"
