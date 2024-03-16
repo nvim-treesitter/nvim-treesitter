@@ -143,6 +143,7 @@ function M.log(level, msg, ...)
 end
 
 -- Notify the user of a message.
+-- Also logs the message if nescessary.
 ---@param level integer @one of the `vim.log.levels` values
 ---@param msg string|nil @can be a format string with {} placeholders
 function M.notify(level, msg, ...)
@@ -150,6 +151,7 @@ function M.notify(level, msg, ...)
   vim.schedule(function()
     vim.notify(msg, level, { title = MODULE_NAME })
   end)
+  M.log(level, msg)
 end
 
 function M.error(...)
