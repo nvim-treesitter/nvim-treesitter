@@ -12,10 +12,13 @@
   (end_paired_statement)
 ] @punctuation.bracket
 
-[
-  "end"
-  (tag_name)
-] @function
+(tag_name) @function
+
+((tag_name) @keyword.conditional
+  (#any-of? @keyword.conditional "if" "elif" "else" "endif"))
+
+((tag_name) @keyword.repeat
+  (#any-of? @keyword.repeat "for" "endfor"))
 
 (variable_name) @variable
 
