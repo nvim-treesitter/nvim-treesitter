@@ -139,7 +139,6 @@ As languages differ quite a lot, here is a set of captures available to you when
 @type             ; type or class definitions and annotations
 @type.builtin     ; built-in types
 @type.definition  ; identifiers in type definitions (e.g. `typedef <type> <identifier>` in C)
-@type.qualifier   ; type qualifiers (e.g. `const`)
 
 @attribute          ; attribute annotations (e.g. Python decorators)
 @attribute.builtin  ; builtin annotations (e.g. `@property` in Python)
