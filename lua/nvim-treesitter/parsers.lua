@@ -961,7 +961,6 @@ M.configs = {
     install_info = {
       url = 'https://github.com/rest-nvim/tree-sitter-http',
       files = { 'src/parser.c' },
-      branch = 'main',
     },
     maintainers = { '@amaanq', '@NTBBloodbath' },
     tier = 2,
