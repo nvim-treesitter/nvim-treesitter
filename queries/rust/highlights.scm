@@ -256,7 +256,6 @@
   "impl"
   "let"
   "move"
-  "pub"
   "struct"
   "trait"
   "type"
@@ -274,10 +273,8 @@
 
 [
   "ref"
+  "pub"
   (mutable_specifier)
-] @keyword.modifier
-
-[
   "const"
   "static"
   "dyn"
