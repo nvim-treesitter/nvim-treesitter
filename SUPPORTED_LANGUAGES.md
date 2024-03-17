@@ -116,7 +116,7 @@ html_tags (queries only)[^html_tags] | community | `H IJ ` |  |  | @TravonteD
 [htmldjango](https://github.com/interdependence/tree-sitter-htmldjango) | unsupported | `HFIJ ` |  |  | @ObserverOfTime
 [http](https://github.com/rest-nvim/tree-sitter-http) | core | `H  J ` |  | ✓ | @amaanq
 [hurl](https://github.com/pfeiferj/tree-sitter-hurl) | community | `HFIJ ` |  |  | @pfeiferj
-[hyprlang](https://github.com/luckasRanarison/tree-sitter-hyprlang) | community | `HFI  ` |  |  | @luckasRanarison
+[hyprlang](https://github.com/luckasRanarison/tree-sitter-hyprlang) | community | `HFIJ ` |  |  | @luckasRanarison
 [ini](https://github.com/justinmk/tree-sitter-ini) | unsupported | `HF   ` |  |  | @theHamsta
 [ispc](https://github.com/fab4100/tree-sitter-ispc) | community | `HFIJL` |  | ✓ | @fab4100
 [janet_simple](https://github.com/sogaiu/tree-sitter-janet-simple) | community | `HF JL` |  |  | @sogaiu
