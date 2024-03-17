@@ -51,7 +51,7 @@
     "revision": "371fd0bf0650581b6e49f06f438c88c419859696"
   },
   "c_sharp": {
-    "revision": "4b4e82ca0a30376ae605e77a0d8a3c803c9f9327"
+    "revision": "92c0a9431400cd8b6b6ee7503f81da3ae83fc830"
   },
   "cairo": {
     "revision": "6216c6ee5e9fc0649c4bd7b1aedd884a55bdd9ef"
@@ -216,7 +216,7 @@
     "revision": "2012f294baacf30e7a62414754021284377366c6"
   },
   "glimmer": {
-    "revision": "f9746dc1d0707717fbba84cb5c22a71586af23e1"
+    "revision": "5dc6d1040e8ff8978ff3680e818d85447bbc10aa"
   },
   "glsl": {
     "revision": "284bed0e2f1d9f700756b96512baf33483642ff0"
@@ -306,7 +306,7 @@
     "revision": "cd1a0ada92cc73dd0f4d7eedc162be4ded758591"
   },
   "hyprlang": {
-    "revision": "fc1d331586e4da2b5f5bcfa89d630ebafe66458b"
+    "revision": "27af9b74acf89fa6bed4fb8cb8631994fcb2e6f3"
   },
   "ini": {
     "revision": "bcb84a2d4bcd6f55b911c42deade75c8f90cb0c5"
@@ -411,10 +411,10 @@
     "revision": "e8dac87a9f789b23a2c7ab8e55b485a2f5927b98"
   },
   "meson": {
-    "revision": "d6ec8ce0963c3c8180161391f15d8f7d415f650d"
+    "revision": "3ebd060b1a2eec450ff46b73428c63f9148a07ff"
   },
   "mlir": {
-    "revision": "992c756686eb968af752ce75a874591042a8e24c"
+    "revision": "c8629729bebfa23023c2d7a14ed1a7eec3042a1a"
   },
   "muttrc": {
     "revision": "67d9e23ca7aa22d9bce9d16c53d2c927dff5159a"
@@ -450,10 +450,10 @@
     "revision": "28d3b2e25a0b1881d1b47ed1924ca276c7003d45"
   },
   "ocaml": {
-    "revision": "712d9bfa1d537c5899dde5538767ed2d8bb37a93"
+    "revision": "d33ad2685500008cb89a93714e2f867dd8af8fe3"
   },
   "ocaml_interface": {
-    "revision": "712d9bfa1d537c5899dde5538767ed2d8bb37a93"
+    "revision": "d33ad2685500008cb89a93714e2f867dd8af8fe3"
   },
   "ocamllex": {
     "revision": "4b9898ccbf198602bb0dec9cd67cc1d2c0a4fad2"
@@ -663,7 +663,7 @@
     "revision": "04a126d9210def99f06d9ab84a255110b862d47c"
   },
   "swift": {
-    "revision": "78a736d77094b0b3c35e811e6765c4d38a72724e"
+    "revision": "071b7cc9a4a4e978c08069fcc6c61f811730395c"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -747,7 +747,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "0cf2108de92d043a684a963199d772899486089b"
+    "revision": "59d104a4f3a860c71bdd93f6c897a2139b0f369b"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
