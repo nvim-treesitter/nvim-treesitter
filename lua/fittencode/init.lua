@@ -17,9 +17,14 @@ function M.setup(opts)
   require('fittencode.engine').setup()
   require('fittencode.color').setup_highlight()
   local Bindings = require('fittencode.bindings')
-  Bindings.setup_autocmds()
   Bindings.setup_commands()
-  Bindings.setup_keymaps()
+
+  if Config.options.completion_mode == 'inline' then
+    Bindings.setup_autocmds()
+    Bindings.setup_keymaps()
+  else
+    require('fittencode.lsp').resiter_source()
+  end
 
   -- Defer loading last session to avoid blocking initialization
   vim.defer_fn(function()

@@ -172,7 +172,7 @@ end
 
 -- Generate suggestions from generated text
 ---@param generated_text string
----@return Suggestions|nil
+---@return Suggestions?, string?
 local function generate_suggestions(generated_text)
   local replaced_text = fn.substitute(generated_text, '<.endoftext.>', '', 'g')
   if not replaced_text then
@@ -198,7 +198,7 @@ local function generate_suggestions(generated_text)
       table.insert(suggestions, part)
     end
   end
-  return suggestions
+  return suggestions, replaced_text
 end
 
 ---@class OnGenerateOneStageData User data for GenerateOneStage request
@@ -221,10 +221,10 @@ local function on_generate_one_stage(_, response, data)
     return
   end
 
-  local suggestions = generate_suggestions(completion_data.generated_text)
+  local suggestions, replaced_text = generate_suggestions(completion_data.generated_text)
 
   if data.on_suggestions ~= nil and suggestions ~= nil then
-    data.on_suggestions(data.task_id, suggestions)
+    data.on_suggestions(data.task_id, suggestions, replaced_text)
   end
 end
 
@@ -263,7 +263,9 @@ local function make_generate_one_stage_params()
   end
 
   local prefix = table.concat(api.nvim_buf_get_text(0, 0, 0, row, col, {}), '\n')
+  Log.debug('Prefix: {}', prefix)
   local suffix = table.concat(api.nvim_buf_get_text(0, row, col, -1, -1, {}), '\n')
+  Log.debug('Suffix: {}', suffix)
   local prompt = '!FCPREFIX!' .. prefix .. '!FCSUFFIX!' .. suffix .. '!FCMIDDLE!'
   local escaped_prompt = string.gsub(prompt, '"', '\\"')
   local params = {

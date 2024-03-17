@@ -15,16 +15,19 @@ local cache = nil
 ---@class TaskScheduler
 local tasks = nil
 
+local inline_mode = true
+
 function M.setup()
   cache = SuggestionsCache:new()
   tasks = TaskScheduler:new()
   tasks:setup()
+  inline_mode = Config.options.completion_mode == 'inline'
 end
 
 -- Callback function for when suggestions is ready
 ---@param task_id integer
 ---@param suggestions Suggestions
-local function on_suggestions(task_id, suggestions)
+local function on_suggestions(task_id, suggestions, replaced_text)
   local row, col = Base.get_cursor()
   if not tasks:match_clean(task_id, row, col) then
     Log.debug('Completion request is outdated, discarding; task_id: {}, row: {}, col: {}', task_id, row, col)
@@ -34,8 +37,11 @@ local function on_suggestions(task_id, suggestions)
   Log.debug('Suggestions received; task_id: {}, suggestions: {}', task_id, suggestions)
 
   cache:update_pos(row, col)
-  cache:update_lines(suggestions)
-  View.render_virt_text(suggestions)
+  cache:update_lines(suggestions, replaced_text)
+
+  if inline_mode then
+    View.render_virt_text(suggestions)
+  end
 end
 
 -- Generate one stage completion
@@ -45,7 +51,7 @@ end
 ---@param row integer
 ---@param col integer
 ---@param force boolean|nil
-function M.generate_one_stage(row, col, force)
+function M.generate_one_stage(row, col, force, on_suggestions_ready)
   if not Sessions.ready_for_generate() then
     Log.debug('Not ready for generate')
     return
@@ -55,14 +61,19 @@ function M.generate_one_stage(row, col, force)
     return
   end
 
-  if Lsp.is_active() then
+  if inline_mode and Lsp.is_active() then
     Log.debug('LSP is active, cancel request generate one stage')
     return
   end
 
   local task_id = tasks:create(row, col)
   cache:flush()
-  Sessions.request_generate_one_stage(task_id, on_suggestions)
+  Sessions.request_generate_one_stage(task_id, function(id, suggestions, replaced_text)
+    on_suggestions(id, suggestions, replaced_text)
+    if on_suggestions_ready then
+      on_suggestions_ready(replaced_text)
+    end
+  end)
 end
 
 -- Check if there is any suggestions
@@ -219,7 +230,9 @@ end
 
 -- Reset suggestions cache and view
 function M.reset()
-  View.clear_virt_text()
+  if inline_mode then
+    View.clear_virt_text()
+  end
   cache:flush()
 end
 
@@ -249,6 +262,41 @@ function M.preflight()
     return false
   end
   return true
+end
+
+---@alias lsp.CompletionResponse lsp.CompletionList|lsp.CompletionItem[]
+
+local function is_spaces(line)
+  return line:find('^%s*$') ~= nil
+end
+
+local function is_last_char_space(line)
+  return string.sub(line, -1) == ' '
+end
+
+-- Convert suggestions to LSP items
+---@param suggestions string
+---@return lsp.CompletionResponse|nil
+function M.convert_to_lsp_completion_response(line, character, cursor_before_line, suggestions)
+  Log.debug('Need to convert suggestions to LSP items, suggestions: {}', suggestions)
+  suggestions = suggestions or cache.replaced_lines or ''
+  cursor_before_line = cursor_before_line or ''
+  local label = ''
+  if not is_last_char_space(cursor_before_line) then
+    suggestions = cursor_before_line .. suggestions
+  end
+  if #suggestions > 30 then
+    label = string.sub(suggestions, 1, 30)
+  else
+    label = suggestions
+  end
+  local items = {}
+  table.insert(items, {
+    label = label,
+    insertText = suggestions,
+    documentation = suggestions,
+  })
+  return { items = items, isIncomplete = false }
 end
 
 return M
