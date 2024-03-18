@@ -10,6 +10,7 @@ local SuggestionsCache = {}
 
 function SuggestionsCache.new()
   local self = setmetatable({}, { __index = SuggestionsCache })
+  self.replaced_lines = {}
   self.lines = {}
   self.pos = {}
   self.count = 0
@@ -24,10 +25,11 @@ end
 
 -- Update suggestions lines
 ---@param lines string[]|nil @suggestions lines
-function SuggestionsCache:update_lines(lines)
+function SuggestionsCache:update_lines(lines, replaced_lines)
   lines = lines or {}
   self.lines = lines
   self.count = vim.tbl_count(lines)
+  self.replaced_lines = replaced_lines or {}
 end
 
 -- Update suggestions start position

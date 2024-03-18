@@ -42,6 +42,11 @@ M.options = {
     -- Use the Neovim Theme colors for syntax highlighting in the diff viewer.
     use_neovim_colors = false,
   },
+  -- Set the mode of the completion.
+  -- Available options:
+  -- - 'inline' (default)
+  -- - 'source'
+  completion_mode = 'inline',
   ---@class LogOptions
   log = {
     level = vim.log.levels.WARN,
