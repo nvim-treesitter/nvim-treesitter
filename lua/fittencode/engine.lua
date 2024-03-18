@@ -45,12 +45,10 @@ local function on_suggestions(task_id, suggestions, replaced_text)
 end
 
 -- Generate one stage completion
--- If force is true, generate completion even if cursor position is not changed
--- If force is false, generate completion only if cursor position is changed
--- If LSP is active, stop request generate one stage
 ---@param row integer
 ---@param col integer
 ---@param force boolean|nil
+---@param on_suggestions_ready function|nil
 function M.generate_one_stage(row, col, force, on_suggestions_ready)
   if not Sessions.ready_for_generate() then
     Log.debug('Not ready for generate')
@@ -275,26 +273,36 @@ local function is_last_char_space(line)
 end
 
 -- Convert suggestions to LSP items
+-- `nvim-cmp`: lua\cmp\core.lua
 ---@param suggestions string
 ---@return lsp.CompletionResponse|nil
 function M.convert_to_lsp_completion_response(line, character, cursor_before_line, suggestions)
-  Log.debug('Need to convert suggestions to LSP items, suggestions: {}', suggestions)
+  Log.debug('Suggestions: {}', suggestions)
   suggestions = suggestions or cache.replaced_lines or ''
   cursor_before_line = cursor_before_line or ''
-  local label = ''
-  if not is_last_char_space(cursor_before_line) then
-    suggestions = cursor_before_line .. suggestions
+  local LABEL_LIMIT = 30
+  local label = cursor_before_line .. suggestions
+  if #label > LABEL_LIMIT then
+    label = string.sub(label, 1, LABEL_LIMIT)
   end
-  if #suggestions > 30 then
-    label = string.sub(suggestions, 1, 30)
-  else
-    label = suggestions
-  end
+  label = label:gsub('\n', '<\\n>')
   local items = {}
   table.insert(items, {
     label = label,
-    insertText = suggestions,
-    documentation = suggestions,
+    -- word = cursor_before_line .. suggestions,
+    word = '',
+    textEdit = {
+      range = {
+        start = { line = line, character = character },
+        ['end'] = { line = line, character = character },
+      },
+      newText = suggestions,
+    },
+    documentation = {
+      kind = 'markdown',
+      value = '```' .. vim.bo.ft .. '\n' .. cursor_before_line .. suggestions .. '\n```',
+    },
+    insertTextMode = 1,
   })
   return { items = items, isIncomplete = false }
 end
