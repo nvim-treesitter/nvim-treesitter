@@ -12,7 +12,7 @@
     "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
   },
   "arduino": {
-    "revision": "e3a0a7f60e544afc478b72cdda7ffc0f2f889db0"
+    "revision": "94219a5ac207a0fadd680b285378d08669d5bbc8"
   },
   "asm": {
     "revision": "6ace266be7ad6bf486a95427ca3fc949aff66211"
@@ -66,7 +66,7 @@
     "revision": "6e41628e9d18b19caea1cb1d72aae4ccff5bdfe9"
   },
   "cmake": {
-    "revision": "7dc15823107831729c64a917c796a93cf5c6a7e3"
+    "revision": "ce71cae5e022f0fa9031f067673d139d8e9dd63e"
   },
   "comment": {
     "revision": "aefcc2813392eb6ffe509aa0fc8b4e9b57413ee1"
@@ -126,7 +126,7 @@
     "revision": "a750758da90955c86fcc22fcbb6fa44a7d009865"
   },
   "dtd": {
-    "revision": "29485b6587cacb99555c19ca53bea78b9e54ffd4"
+    "revision": "ab85469fedbf4f32da9310dd76dcedba059fc482"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -300,7 +300,7 @@
     "revision": "ea71012d3fe14dd0b69f36be4f96bdfe9155ebae"
   },
   "http": {
-    "revision": "e1c1085f1b36a19e82892cc1fc912cc9c968bb26"
+    "revision": "c98247ff34ae690629c4754add1d6daecfcd9388"
   },
   "hurl": {
     "revision": "cd1a0ada92cc73dd0f4d7eedc162be4ded758591"
@@ -414,7 +414,7 @@
     "revision": "3ebd060b1a2eec450ff46b73428c63f9148a07ff"
   },
   "mlir": {
-    "revision": "c8629729bebfa23023c2d7a14ed1a7eec3042a1a"
+    "revision": "3da76a44a6a5db05aef03966a2045c7c73571d77"
   },
   "muttrc": {
     "revision": "67d9e23ca7aa22d9bce9d16c53d2c927dff5159a"
@@ -450,10 +450,10 @@
     "revision": "28d3b2e25a0b1881d1b47ed1924ca276c7003d45"
   },
   "ocaml": {
-    "revision": "d33ad2685500008cb89a93714e2f867dd8af8fe3"
+    "revision": "dabe60a96553fbbda0a58b6ccda12b7d44047cb5"
   },
   "ocaml_interface": {
-    "revision": "d33ad2685500008cb89a93714e2f867dd8af8fe3"
+    "revision": "dabe60a96553fbbda0a58b6ccda12b7d44047cb5"
   },
   "ocamllex": {
     "revision": "4b9898ccbf198602bb0dec9cd67cc1d2c0a4fad2"
@@ -609,7 +609,7 @@
     "revision": "0cdfb1741323f38e9a33798674145c22cfc0092b"
   },
   "slint": {
-    "revision": "f5fa844d2adbcfdc7a0ec4daae4539887959d9ff"
+    "revision": "acc77c93ef4b73ba8c3a581b8c99d95b55f7178b"
   },
   "smali": {
     "revision": "72e334b2630f5852825ba5ff9dfd872447175eb5"
@@ -663,7 +663,7 @@
     "revision": "04a126d9210def99f06d9ab84a255110b862d47c"
   },
   "swift": {
-    "revision": "071b7cc9a4a4e978c08069fcc6c61f811730395c"
+    "revision": "a8cf05cd49b3b97d70a03fd65c9c279fc76662f7"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -762,7 +762,7 @@
     "revision": "052279cd5e1d73b075640c64cef97e7bdcd32611"
   },
   "vimdoc": {
-    "revision": "f431bfa7d433f4d629943147817193a4fccbd303"
+    "revision": "cee98887944bfe979c95386785ae388d8ecb3715"
   },
   "vue": {
     "revision": "3b9d52087100bdfce43dad2ca46d75b0e21613f6"
@@ -774,13 +774,13 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "d9beaf168149dff81314631f6def484869a63e2e"
+    "revision": "8f3d8031b47ee95b9d1ca1e1562c4da74b1d3e2d"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
   },
   "xml": {
-    "revision": "29485b6587cacb99555c19ca53bea78b9e54ffd4"
+    "revision": "ab85469fedbf4f32da9310dd76dcedba059fc482"
   },
   "yaml": {
     "revision": "9e59b9bbf839ba231fbcb953617d8b9b9a059e38"
