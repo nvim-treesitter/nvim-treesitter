@@ -13,6 +13,7 @@ Fitten Code AI Programming Assistant for Neovim, helps you to use AI for automat
 - 🔎 Accept word with `Ctrl + ➡️`
 - ❄️ Undo accepted text
 - 🧨 Automatic scrolling when previewing or completing code
+- 🛰️ Run as a `nvim-cmp` source
 
 ## ⚡️ Requirements
 
@@ -47,12 +48,16 @@ use {
 
 ## ⚙️ Configuration
 
+### `updatetime`
+
 Set `updatetime` to a lower value to improve performance:
 
 ```lua
 -- Neovim default updatetime is 4000
 vim.opt.updatetime = 200
 ```
+
+### `defaults`
 
 **fittencode.nvim** comes with the following defaults:
 
@@ -67,10 +72,32 @@ vim.opt.updatetime = 200
     -- Enable inline code completion.
     enable = true,
   },
+  -- Set the mode of the completion.
+  -- Available options:
+  -- - 'inline' (default)
+  -- - 'source'
+  completion_mode = 'inline',
   log = {
     level = vim.log.levels.WARN,
   },
 }
+```
+
+### `source` mode
+
+- `inline` (default): Inline completion is enabled.
+- `source`: Run as a `nvim-cmp` source.
+
+```lua
+require('fittencode').setup({
+  completion_mode ='source',
+})
+require('cmp').setup({
+  sources = { name = 'fittencode', group_index = 1 },
+  mapping = {
+    ['<cr>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true }),
+  }
+})
 ```
 
 ## 🚀 Usage
