@@ -289,8 +289,7 @@ function M.convert_to_lsp_completion_response(line, character, cursor_before_lin
   local items = {}
   table.insert(items, {
     label = label,
-    -- word = cursor_before_line .. suggestions,
-    word = '',
+    word = label,
     textEdit = {
       range = {
         start = { line = line, character = character },
