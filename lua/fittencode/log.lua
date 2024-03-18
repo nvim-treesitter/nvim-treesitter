@@ -87,6 +87,9 @@ local function expand_msg(msg, ...)
   msg = msg or ''
   local count = 0
   msg, count = msg:gsub('{}', '%%s')
+  if count == 0 and select('#', ...) == 0 then
+    return msg
+  end
   local args = vim.tbl_map(vim.inspect, { ... })
   if #args < count then
     for i = #args + 1, count do
