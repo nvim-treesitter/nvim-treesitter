@@ -176,15 +176,17 @@ end
 local function generate_suggestions(generated_text)
   local replaced_text = fn.substitute(generated_text, '<.endoftext.>', '', 'g')
   if not replaced_text then
+    Log.debug('Generated text is empty')
+    return
+  end
+
+  local lines = vim.split(replaced_text, '\r')
+  if vim.tbl_count(lines) == 0 or (vim.tbl_count(lines) == 1 and string.len(lines[1]) == 0) then
+    Log.debug('Generated text is empty')
     return
   end
 
   Log.debug('Generated text: {}', replaced_text)
-
-  local lines = vim.split(replaced_text, '\r')
-  if vim.tbl_count(lines) == 0 or (vim.tbl_count(lines) == 1 and string.len(lines[1]) == 0) then
-    return
-  end
 
   if string.len(lines[#lines]) == 0 then
     table.remove(lines, #lines)
@@ -287,11 +289,13 @@ end
 function M.request_generate_one_stage(task_id, on_suggestions)
   local api_key = key_storage:get_key_by_name(username)
   if api_key == nil then
-    Log.debug('API key is nil')
+    Log.debug('API key is nil, skip request')
     return
   end
   local params = make_generate_one_stage_params()
+  Log.debug('Request generate one stage params: {}', params)
   if params == nil then
+    Log.debug('Invalid params, skip request')
     return
   end
   Base.write_temp_file(fn.json_encode(params), function(_, path)

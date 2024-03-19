@@ -56,6 +56,7 @@ function M.generate_one_stage(row, col, force, on_suggestions_ready)
   end
 
   if not force and cache:equal_pos(row, col) then
+    Log.debug('Equal position, skip request generate one stage')
     return
   end
 
