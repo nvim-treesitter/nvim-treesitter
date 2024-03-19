@@ -1,3 +1,170 @@
+; Keywords
+[
+  "and"
+  "as"
+  "instanceof"
+  "or"
+  "xor"
+] @keyword.operator
+
+[
+  "fn"
+  "function"
+] @keyword.function
+
+[
+  "break"
+  "class"
+  "clone"
+  "declare"
+  "default"
+  "echo"
+  "enddeclare"
+  "enum"
+  "extends"
+  "global"
+  "goto"
+  "implements"
+  "insteadof"
+  "interface"
+  "print"
+  "namespace"
+  "new"
+  "trait"
+  "unset"
+] @keyword
+
+[
+  "abstract"
+  "const"
+  "final"
+  "private"
+  "protected"
+  "public"
+  "readonly"
+  (static_modifier)
+] @keyword.modifier
+
+(function_static_declaration
+  "static" @keyword.modifier)
+
+[
+  "return"
+  "exit"
+  "yield"
+] @keyword.return
+
+(yield_expression
+  "from" @keyword.return)
+
+[
+  "case"
+  "else"
+  "elseif"
+  "endif"
+  "endswitch"
+  "if"
+  "switch"
+  "match"
+  "??"
+] @keyword.conditional
+
+[
+  "continue"
+  "do"
+  "endfor"
+  "endforeach"
+  "endwhile"
+  "for"
+  "foreach"
+  "while"
+] @keyword.repeat
+
+[
+  "catch"
+  "finally"
+  "throw"
+  "try"
+] @keyword.exception
+
+[
+  "include_once"
+  "include"
+  "require_once"
+  "require"
+  "use"
+] @keyword.import
+
+[
+  ","
+  ";"
+  ":"
+  "\\"
+] @punctuation.delimiter
+
+[
+  (php_tag)
+  "?>"
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+  "#["
+] @punctuation.bracket
+
+[
+  "="
+  "."
+  "-"
+  "*"
+  "/"
+  "+"
+  "%"
+  "**"
+  "~"
+  "|"
+  "^"
+  "&"
+  "<<"
+  ">>"
+  "<<<"
+  "->"
+  "?->"
+  "=>"
+  "<"
+  "<="
+  ">="
+  ">"
+  "<>"
+  "<=>"
+  "=="
+  "!="
+  "==="
+  "!=="
+  "!"
+  "&&"
+  "||"
+  ".="
+  "-="
+  "+="
+  "*="
+  "/="
+  "%="
+  "**="
+  "&="
+  "|="
+  "^="
+  "<<="
+  ">>="
+  "??="
+  "--"
+  "++"
+  "@"
+  "::"
+] @operator
+
 ; Variables
 (variable_name) @variable
 
@@ -235,170 +402,3 @@
 (comment) @comment @spell
 
 (named_label_statement) @label
-
-; Keywords
-[
-  "and"
-  "as"
-  "instanceof"
-  "or"
-  "xor"
-] @keyword.operator
-
-[
-  "fn"
-  "function"
-] @keyword.function
-
-[
-  "break"
-  "class"
-  "clone"
-  "declare"
-  "default"
-  "echo"
-  "enddeclare"
-  "enum"
-  "extends"
-  "global"
-  "goto"
-  "implements"
-  "insteadof"
-  "interface"
-  "print"
-  "namespace"
-  "new"
-  "trait"
-  "unset"
-] @keyword
-
-[
-  "abstract"
-  "const"
-  "final"
-  "private"
-  "protected"
-  "public"
-  "readonly"
-  (static_modifier)
-] @keyword.modifier
-
-(function_static_declaration
-  "static" @keyword.modifier)
-
-[
-  "return"
-  "exit"
-  "yield"
-] @keyword.return
-
-(yield_expression
-  "from" @keyword.return)
-
-[
-  "case"
-  "else"
-  "elseif"
-  "endif"
-  "endswitch"
-  "if"
-  "switch"
-  "match"
-  "??"
-] @keyword.conditional
-
-[
-  "continue"
-  "do"
-  "endfor"
-  "endforeach"
-  "endwhile"
-  "for"
-  "foreach"
-  "while"
-] @keyword.repeat
-
-[
-  "catch"
-  "finally"
-  "throw"
-  "try"
-] @keyword.exception
-
-[
-  "include_once"
-  "include"
-  "require_once"
-  "require"
-  "use"
-] @keyword.import
-
-[
-  ","
-  ";"
-  ":"
-  "\\"
-] @punctuation.delimiter
-
-[
-  (php_tag)
-  "?>"
-  "("
-  ")"
-  "["
-  "]"
-  "{"
-  "}"
-  "#["
-] @punctuation.bracket
-
-[
-  "="
-  "."
-  "-"
-  "*"
-  "/"
-  "+"
-  "%"
-  "**"
-  "~"
-  "|"
-  "^"
-  "&"
-  "<<"
-  ">>"
-  "<<<"
-  "->"
-  "?->"
-  "=>"
-  "<"
-  "<="
-  ">="
-  ">"
-  "<>"
-  "<=>"
-  "=="
-  "!="
-  "==="
-  "!=="
-  "!"
-  "&&"
-  "||"
-  ".="
-  "-="
-  "+="
-  "*="
-  "/="
-  "%="
-  "**="
-  "&="
-  "|="
-  "^="
-  "<<="
-  ">>="
-  "??="
-  "--"
-  "++"
-  "@"
-  "::"
-] @operator
