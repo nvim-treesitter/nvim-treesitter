@@ -2,7 +2,7 @@ local Base = require('fittencode.base')
 local Engine = require('fittencode.engine')
 local Log = require('fittencode.log')
 
--- types from nvim-cmp: `lua\cmp\types\cmp.lua`
+-- Types from nvim-cmp: `lua\cmp\types\cmp.lua`
 
 ---@class FittenSource
 ---@field trigger_characters string[]
@@ -47,11 +47,13 @@ function source:get_trigger_characters()
 end
 
 local SOURCE_GENERATEONESTAGE_DEBOUNCE_TIME = 80
+local SOURCE_TIMEOUT_TIME = 1000
 
 ---@type uv_timer_t
 local source_generate_one_stage_timer = nil
 
----Invoke completion (required).
+-- Invoke completion (required).
+-- The `callback` function must always be called.
 ---@param request cmp.SourceCompletionApiParams
 ---@param callback fun(response:lsp.CompletionResponse|nil)
 function source:complete(request, callback)
@@ -59,6 +61,7 @@ function source:complete(request, callback)
     callback()
     return
   end
+
   local row, col = Base.get_cursor()
   Base.debounce(source_generate_one_stage_timer, function()
     Engine.generate_one_stage(row, col, true, function(suggestions)
@@ -71,6 +74,12 @@ function source:complete(request, callback)
       callback(response)
     end)
   end, SOURCE_GENERATEONESTAGE_DEBOUNCE_TIME)
+
+  vim.defer_fn(function()
+    if not Engine.has_suggestions() then
+      callback()
+    end
+  end, SOURCE_TIMEOUT_TIME)
 end
 
 return source
