@@ -10,16 +10,16 @@ local source = {}
 
 ---@return string[]
 local function get_trigger_characters()
-  local characters = {}
+  local chars = {}
   for i = 32, 126 do
-    characters[#characters + 1] = string.char(i)
+    chars[#chars + 1] = string.char(i)
   end
-  characters[#characters + 1] = ' '
-  characters[#characters + 1] = '\n'
-  characters[#characters + 1] = '\r'
-  characters[#characters + 1] = '\r\n'
-  characters[#characters + 1] = '\t'
-  return characters
+  chars[#chars + 1] = ' '
+  chars[#chars + 1] = '\n'
+  chars[#chars + 1] = '\r'
+  chars[#chars + 1] = '\r\n'
+  chars[#chars + 1] = '\t'
+  return chars
 end
 
 ---@param o FittenSource
