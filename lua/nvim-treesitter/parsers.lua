@@ -31,6 +31,7 @@ for ft, lang in pairs {
   ecma = "javascript",
   jsx = "javascript",
   sh = "bash",
+  gyp = "python",
   html_tags = "html",
   ["typescript.tsx"] = "tsx",
   ["html.handlebars"] = "glimmer",
