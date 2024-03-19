@@ -75,8 +75,16 @@ function M.generate_one_stage(row, col, force, on_suggestions_ready)
 end
 
 -- Check if there is any suggestions
+---@return boolean
 function M.has_suggestions()
   return vim.tbl_count(cache.lines or {}) ~= 0
+end
+
+---@param row integer
+---@param col integer
+---@return boolean
+function M.equal_cached_pos(row, col)
+  return cache:equal_pos(row, col)
 end
 
 -- Generate one stage completion at cursor position
