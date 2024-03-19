@@ -27,7 +27,7 @@ end
 -- Callback function for when suggestions is ready
 ---@param task_id integer
 ---@param suggestions Suggestions
-local function on_suggestions(task_id, suggestions, replaced_text)
+local function on_suggestions(task_id, suggestions, generated_text)
   local row, col = Base.get_cursor()
   if not tasks:match_clean(task_id, row, col) then
     Log.debug('Completion request is outdated, discarding; task_id: {}, row: {}, col: {}', task_id, row, col)
@@ -37,7 +37,7 @@ local function on_suggestions(task_id, suggestions, replaced_text)
   Log.debug('Suggestions received; task_id: {}, suggestions: {}', task_id, suggestions)
 
   cache:update_pos(row, col)
-  cache:update_lines(suggestions, replaced_text)
+  cache:update_lines(suggestions, generated_text)
 
   if inline_mode then
     View.render_virt_text(suggestions)
@@ -56,6 +56,7 @@ function M.generate_one_stage(row, col, force, on_suggestions_ready)
   end
 
   if not force and cache:equal_pos(row, col) then
+    Log.debug('Equal position, skip request generate one stage')
     return
   end
 
@@ -66,10 +67,10 @@ function M.generate_one_stage(row, col, force, on_suggestions_ready)
 
   local task_id = tasks:create(row, col)
   cache:flush()
-  Sessions.request_generate_one_stage(task_id, function(id, suggestions, replaced_text)
-    on_suggestions(id, suggestions, replaced_text)
+  Sessions.request_generate_one_stage(task_id, function(id, suggestions, generated_text)
+    on_suggestions(id, suggestions, generated_text)
     if on_suggestions_ready then
-      on_suggestions_ready(replaced_text)
+      on_suggestions_ready(generated_text)
     end
   end)
 end
@@ -286,7 +287,7 @@ end
 ---@return lsp.CompletionResponse|nil
 function M.convert_to_lsp_completion_response(line, character, cursor_before_line, suggestions)
   Log.debug('Suggestions: {}', suggestions)
-  suggestions = suggestions or cache.replaced_lines or ''
+  suggestions = suggestions or cache.generated_text or ''
   cursor_before_line = cursor_before_line or ''
   local LABEL_LIMIT = 30
   local label = cursor_before_line .. suggestions

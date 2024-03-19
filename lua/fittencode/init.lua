@@ -27,9 +27,10 @@ function M.setup(opts)
   end
 
   -- Defer loading last session to avoid blocking initialization
+  local DEFER_LOAD_TIME = 100
   vim.defer_fn(function()
     require('fittencode.sessions').request_load_last_session()
-  end, 100)
+  end, DEFER_LOAD_TIME)
 end
 
 setmetatable(M, {

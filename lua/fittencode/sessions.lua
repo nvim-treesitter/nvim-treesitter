@@ -174,17 +174,14 @@ end
 ---@param generated_text string
 ---@return Suggestions?, string?
 local function generate_suggestions(generated_text)
-  local replaced_text = fn.substitute(generated_text, '<.endoftext.>', '', 'g')
-  if not replaced_text then
-    return
-  end
-
-  Log.debug('Generated text: {}', replaced_text)
-
-  local lines = vim.split(replaced_text, '\r')
+  local generated_text = fn.substitute(generated_text, '<.endoftext.>', '', 'g') or ''
+  local lines = vim.split(generated_text, '\r')
   if vim.tbl_count(lines) == 0 or (vim.tbl_count(lines) == 1 and string.len(lines[1]) == 0) then
+    Log.debug('No more suggestions')
     return
   end
+
+  Log.debug('Generated text: {}', generated_text)
 
   if string.len(lines[#lines]) == 0 then
     table.remove(lines, #lines)
@@ -198,7 +195,7 @@ local function generate_suggestions(generated_text)
       table.insert(suggestions, part)
     end
   end
-  return suggestions, replaced_text
+  return suggestions, generated_text
 end
 
 ---@class OnGenerateOneStageData User data for GenerateOneStage request
@@ -221,10 +218,10 @@ local function on_generate_one_stage(_, response, data)
     return
   end
 
-  local suggestions, replaced_text = generate_suggestions(completion_data.generated_text)
+  local suggestions, generated_text = generate_suggestions(completion_data.generated_text)
 
   if data.on_suggestions ~= nil and suggestions ~= nil then
-    data.on_suggestions(data.task_id, suggestions, replaced_text)
+    data.on_suggestions(data.task_id, suggestions, generated_text)
   end
 end
 
@@ -287,11 +284,13 @@ end
 function M.request_generate_one_stage(task_id, on_suggestions)
   local api_key = key_storage:get_key_by_name(username)
   if api_key == nil then
-    Log.debug('API key is nil')
+    Log.debug('API key is nil, skip request')
     return
   end
   local params = make_generate_one_stage_params()
+  Log.debug('Request generate one stage params: {}', params)
   if params == nil then
+    Log.debug('Invalid params, skip request')
     return
   end
   Base.write_temp_file(fn.json_encode(params), function(_, path)

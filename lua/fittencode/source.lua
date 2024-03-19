@@ -10,16 +10,16 @@ local source = {}
 
 ---@return string[]
 local function get_trigger_characters()
-  local characters = {}
+  local chars = {}
   for i = 32, 126 do
-    characters[#characters + 1] = string.char(i)
+    chars[#chars + 1] = string.char(i)
   end
-  characters[#characters + 1] = ' '
-  characters[#characters + 1] = '\n'
-  characters[#characters + 1] = '\r'
-  characters[#characters + 1] = '\r\n'
-  characters[#characters + 1] = '\t'
-  return characters
+  chars[#chars + 1] = ' '
+  chars[#chars + 1] = '\n'
+  chars[#chars + 1] = '\r'
+  chars[#chars + 1] = '\r\n'
+  chars[#chars + 1] = '\t'
+  return chars
 end
 
 ---@param o FittenSource
@@ -68,7 +68,7 @@ function source:complete(request, callback)
       local cursor_before_line = request.context.cursor_before_line:sub(request.offset)
       local line = request.context.cursor.line
       local character = request.context.cursor.character
-      Log.debug('Request: {}', request)
+      Log.debug('Source request: {}', request)
       local response = Engine.convert_to_lsp_completion_response(line, character, cursor_before_line, suggestions)
       Log.debug('LSP CompletionResponse: {}', response)
       callback(response)
