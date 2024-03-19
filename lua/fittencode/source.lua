@@ -76,7 +76,7 @@ function source:complete(request, callback)
   end, SOURCE_GENERATEONESTAGE_DEBOUNCE_TIME)
 
   vim.defer_fn(function()
-    if not Engine.has_suggestions() then
+    if not Engine.has_suggestions() or (Engine.has_suggestions() and not Engine.equal_cached_pos(row, col)) then
       callback()
     end
   end, SOURCE_TIMEOUT_TIME)
