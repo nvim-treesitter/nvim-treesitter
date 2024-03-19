@@ -96,9 +96,20 @@ class B extends A implements T
     U::small insteadof T;
 //  ^ @type
 //   ^^ @operator
-//     ^^^^^ @constant
+//     ^^^^^ @function.method
 //           ^^^^^^^^^ @keyword
 //                     ^ @type
+    T::big as protected tBig;
+//  ^ @type
+//     ^^^ @function.method
+//         ^^ @keyword.operator
+//            ^^^^^^^^^ @keyword.modifier
+//                      ^^^^ @function.method
+    big as private tBig;
+//  ^^^ @function.method
+//      ^^ @keyword.operator
+//         ^^^^^^^^^ @keyword.modifier
+//                 ^^^^ @function.method
   }
   public function foo(callable $call): self
 //                    ^^^^^^^^ @type.builtin
@@ -106,7 +117,7 @@ class B extends A implements T
   {
     $call instanceof Closure;
 //  ^^^^^ @variable
-//        ^^^^^^^^^^ @keyword
+//        ^^^^^^^^^^ @keyword.operator
 //                   ^^^^^^^ @type
     fn ($a, $b) => $a + $b;
 //  ^^ @keyword.function
@@ -147,7 +158,7 @@ class B extends A implements T
     print("a");
 //  ^^^^^ @keyword
     exit;
-//  ^^^^ @keyword
+//  ^^^^ @keyword.return
     exit();
 //  ^^^^ @function.builtin
     exit(1);
