@@ -6,6 +6,7 @@ for ft, lang in pairs {
   javascriptreact = "javascript",
   ecma = "javascript",
   jsx = "javascript",
+  gyp = "python",
   html_tags = "html",
   ["typescript.tsx"] = "tsx",
   ["terraform-vars"] = "terraform",
