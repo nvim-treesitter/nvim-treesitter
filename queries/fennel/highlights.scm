@@ -104,7 +104,10 @@
   call: (_) @keyword)
 
 ((symbol) @variable.parameter
-  (#vim-match? @variable.parameter "^\\$([1-9]|\\.\\.\\.)?$"))
+  (#any-of? @variable.parameter "$" "$..."))
+
+((symbol) @variable.parameter
+  (#lua-match? @variable.parameter "^%$[1-9]$"))
 
 ((symbol) @operator
   (#any-of? @operator
