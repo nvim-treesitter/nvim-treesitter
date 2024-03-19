@@ -11,7 +11,6 @@ class A {
 //      ^^^^^^ @constructor
     $this->foo();
 //   ^^^^ @variable.builtin
-//       ^^ @operator
 //         ^^^ @function.method.call
     self::foo();
 //  ^^^^ @variable.builtin
