@@ -42,5 +42,6 @@
 ; reader macros
 (quote_reader_macro
   expression: (_) @fold)
+
 (quasi_quote_reader_macro
   expression: (_) @fold)
