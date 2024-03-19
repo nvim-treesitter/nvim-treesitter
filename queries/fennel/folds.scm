@@ -1,14 +1,14 @@
 ; compounds
 [
   (list)
-  (list_binding)
   (table)
+  (sequence)
 ] @fold
 
 ; sub-forms / special compounds
 [
+  (list_binding)
   (table_binding)
-  (sequence)
   (sequence_binding)
   (table_metadata)
   (sequence_arguments)
