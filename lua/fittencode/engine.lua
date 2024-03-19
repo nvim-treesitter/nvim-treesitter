@@ -36,6 +36,7 @@ local function on_suggestions(task_id, suggestions, generated_text)
 
   Log.debug('Suggestions received; task_id: {}, suggestions: {}', task_id, suggestions)
 
+  cache:update_task_id(task_id)
   cache:update_pos(row, col)
   cache:update_lines(suggestions, generated_text)
 
@@ -48,8 +49,9 @@ end
 ---@param row integer
 ---@param col integer
 ---@param force boolean|nil
+---@param task_id integer|nil
 ---@param on_suggestions_ready function|nil
-function M.generate_one_stage(row, col, force, on_suggestions_ready)
+function M.generate_one_stage(row, col, force, task_id, on_suggestions_ready)
   if not Sessions.ready_for_generate() then
     Log.debug('Not ready for generate')
     return
@@ -65,7 +67,7 @@ function M.generate_one_stage(row, col, force, on_suggestions_ready)
     return
   end
 
-  local task_id = tasks:create(row, col)
+  task_id = task_id or tasks:create(row, col)
   cache:flush()
   Sessions.request_generate_one_stage(task_id, function(id, suggestions, generated_text)
     on_suggestions(id, suggestions, generated_text)
@@ -75,20 +77,16 @@ function M.generate_one_stage(row, col, force, on_suggestions_ready)
   end)
 end
 
--- Check if there is any suggestions
 ---@return boolean
 function M.has_suggestions()
   return vim.tbl_count(cache.lines or {}) ~= 0
 end
 
----@param row integer
----@param col integer
----@return boolean
-function M.equal_cached_pos(row, col)
-  return cache:equal_pos(row, col)
+---@return SuggestionsCache
+function M.get_suggestions()
+  return cache
 end
 
--- Generate one stage completion at cursor position
 local function generate_one_stage_at_cursor()
   M.reset()
 
@@ -279,6 +277,13 @@ end
 
 local function is_last_char_space(line)
   return string.sub(line, -1) == ' '
+end
+
+---@param row integer
+---@param col integer
+---@return integer
+function M.create_task(row, col)
+  return tasks:create(row, col)
 end
 
 -- Convert suggestions to LSP items
