@@ -26,6 +26,9 @@
       (name) @type)
   ])
 
+(named_type (name) @type.builtin
+  (#any-of? @type.builtin "static" "self"))
+
 (class_declaration
   name: (name) @type)
 
@@ -95,6 +98,8 @@
 
 (list_literal
   "list" @function.builtin)
+
+(exit_statement "exit" @function.builtin "(")
 
 (method_declaration
   name: (name) @function.method)
@@ -216,7 +221,6 @@
 
 (named_label_statement) @label
 
-
 ; Keywords
 [
   "and"
@@ -246,6 +250,7 @@
   "implements"
   "insteadof"
   "interface"
+  "print"
   "namespace"
   "new"
   "trait"
@@ -260,13 +265,21 @@
   "protected"
   "public"
   "readonly"
-  "static"
+  (static_modifier)
 ] @keyword.modifier
+
+(function_static_declaration
+  "static" @keyword.modifier)
 
 [
   "return"
+  "exit"
   "yield"
 ] @keyword.return
+
+(yield_expression
+  "from" @keyword.return)
+
 
 [
   "case"
