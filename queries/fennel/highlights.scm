@@ -104,8 +104,7 @@
   call: (_) @keyword)
 
 ((symbol) @variable.parameter
-  (#vim-match? @variable.parameter "^\\$([1-9]|\\.\\.\\.)?$")
-  (#has-ancestor? @variable.parameter hashfn_reader_macro hashfn_form))
+  (#vim-match? @variable.parameter "^\\$([1-9]|\\.\\.\\.)?$"))
 
 ((symbol) @operator
   (#any-of? @operator
