@@ -174,15 +174,10 @@ end
 ---@param generated_text string
 ---@return Suggestions?, string?
 local function generate_suggestions(generated_text)
-  local generated_text = fn.substitute(generated_text, '<.endoftext.>', '', 'g')
-  if not generated_text then
-    Log.debug('Generated text is empty')
-    return
-  end
-
+  local generated_text = fn.substitute(generated_text, '<.endoftext.>', '', 'g') or ''
   local lines = vim.split(generated_text, '\r')
   if vim.tbl_count(lines) == 0 or (vim.tbl_count(lines) == 1 and string.len(lines[1]) == 0) then
-    Log.debug('Generated text is empty')
+    Log.debug('No more suggestions')
     return
   end
 
