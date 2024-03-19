@@ -48,15 +48,6 @@ use {
 
 ## ⚙️ Configuration
 
-### `updatetime`
-
-Set `updatetime` to a lower value to improve performance:
-
-```lua
--- Neovim default updatetime is 4000
-vim.opt.updatetime = 200
-```
-
 ### `defaults`
 
 **fittencode.nvim** comes with the following defaults:
@@ -83,10 +74,16 @@ vim.opt.updatetime = 200
 }
 ```
 
-### `source` mode
+### `inline` mode
 
-- `inline` (default): Inline completion is enabled.
-- `source`: Run as a `nvim-cmp` source.
+Set `updatetime` to a lower value to improve performance:
+
+```lua
+-- Neovim default updatetime is 4000
+vim.opt.updatetime = 200
+```
+
+### `source` mode
 
 ```lua
 require('fittencode').setup({
