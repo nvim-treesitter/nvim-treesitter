@@ -26,7 +26,8 @@
       (name) @type)
   ])
 
-(named_type (name) @type.builtin
+(named_type
+  (name) @type.builtin
   (#any-of? @type.builtin "static" "self"))
 
 (class_declaration
@@ -99,7 +100,9 @@
 (list_literal
   "list" @function.builtin)
 
-(exit_statement "exit" @function.builtin "(")
+(exit_statement
+  "exit" @function.builtin
+  "(")
 
 (method_declaration
   name: (name) @function.method)
@@ -122,6 +125,18 @@
 
 (nullsafe_member_call_expression
   name: (name) @function.method)
+
+(use_instead_of_clause
+  (class_constant_access_expression
+    (_)
+    (name) @function.method)
+  (name) @type)
+
+(use_as_clause
+  (class_constant_access_expression
+    (_)
+    (name) @function.method)*
+  (name) @function.method)
 
 (method_declaration
   name: (name) @constructor
@@ -279,7 +294,6 @@
 
 (yield_expression
   "from" @keyword.return)
-
 
 [
   "case"
