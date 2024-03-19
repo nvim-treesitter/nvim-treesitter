@@ -3,6 +3,8 @@
 ---@field col? integer
 
 ---@class SuggestionsCache
+---@field task_id integer|nil
+---@field generated_text? string[]
 ---@field lines? string[]
 ---@field pos? SuggestionsPos
 ---@field count? integer
@@ -10,6 +12,7 @@ local SuggestionsCache = {}
 
 function SuggestionsCache.new()
   local self = setmetatable({}, { __index = SuggestionsCache })
+  self.task_id = nil
   self.generated_text = {}
   self.lines = {}
   self.pos = {}
@@ -20,6 +23,12 @@ end
 function SuggestionsCache:flush()
   self:update_lines()
   self:update_pos()
+  self.task_id = nil
+end
+
+---@param task_id integer
+function SuggestionsCache:update_task_id(task_id)
+  self.task_id = task_id
 end
 
 ---@param lines string[]|nil
