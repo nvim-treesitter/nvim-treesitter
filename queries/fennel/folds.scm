@@ -12,7 +12,7 @@
   (sequence_binding)
   (table_metadata)
   (sequence_arguments)
-  (let_form_vars)
+  (let_vars)
   (case_guard_or_special)
   (case_guard)
   (case_catch)
