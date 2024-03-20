@@ -7,3 +7,5 @@
   "{"
   "}"
 ] @indent.branch
+
+"}" @indent.end
