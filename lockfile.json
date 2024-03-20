@@ -15,7 +15,7 @@
     "revision": "94219a5ac207a0fadd680b285378d08669d5bbc8"
   },
   "asm": {
-    "revision": "f4032c9dbcc10dfbf9b302b2a449148483293593"
+    "revision": "f7158e1c22bdb4bf2c3e139c0ec3050d142cde6d"
   },
   "astro": {
     "revision": "dfa0893bdc4bdfada102043404758c66e3580568"
@@ -66,7 +66,7 @@
     "revision": "6e41628e9d18b19caea1cb1d72aae4ccff5bdfe9"
   },
   "cmake": {
-    "revision": "ce71cae5e022f0fa9031f067673d139d8e9dd63e"
+    "revision": "20ffd6d3b4da1acdbf2d08204b2130a5b2f7c4b3"
   },
   "comment": {
     "revision": "aefcc2813392eb6ffe509aa0fc8b4e9b57413ee1"
@@ -216,7 +216,7 @@
     "revision": "bcf9c45b56cbe46e9dac5eee0aee75df270000ac"
   },
   "glimmer": {
-    "revision": "5dc6d1040e8ff8978ff3680e818d85447bbc10aa"
+    "revision": "6b25d265c990139353e1f7f97baf84987ebb7bf0"
   },
   "glsl": {
     "revision": "284bed0e2f1d9f700756b96512baf33483642ff0"
@@ -477,10 +477,10 @@
     "revision": "fd7b2fe5b967d5eee8ce17938052886e2d5987ed"
   },
   "php": {
-    "revision": "ad414fa5497328e96ef992d80896f19c77584f7c"
+    "revision": "b1eb65e04cf31a5df611fea139ad54d611599dc4"
   },
   "php_only": {
-    "revision": "ad414fa5497328e96ef992d80896f19c77584f7c"
+    "revision": "b1eb65e04cf31a5df611fea139ad54d611599dc4"
   },
   "phpdoc": {
     "revision": "f285e338d328a03920a9bfd8dda78585c7ddcca3"
@@ -729,7 +729,7 @@
     "revision": "43b221c0b76e77244efdaa9963e402a17c930fbc"
   },
   "typst": {
-    "revision": "3c3e5f8e0caeba6157e26a1bedf8321e1da62799"
+    "revision": "f457c77edffd4b93190794355ff5acf7acfb99c6"
   },
   "udev": {
     "revision": "8f58696e79092b4ad6bf197415bbd0970acf15cd"
@@ -765,7 +765,7 @@
     "revision": "052279cd5e1d73b075640c64cef97e7bdcd32611"
   },
   "vimdoc": {
-    "revision": "cee98887944bfe979c95386785ae388d8ecb3715"
+    "revision": "66f4fee37b07cff0dd3400089eebccd02e61e5c2"
   },
   "vue": {
     "revision": "3b9d52087100bdfce43dad2ca46d75b0e21613f6"
@@ -777,7 +777,7 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "ed54e0cd92ba1b9325e1e96f39c4b8babfbe9fa5"
+    "revision": "9a77bb6c1f4d65a9e8cd19585361b9a0786d5565"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
