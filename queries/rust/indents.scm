@@ -30,9 +30,20 @@
 (ERROR
   .
   "macro_rules!"
-  "(" @indent.begin
+  [
+    "("
+    "{"
+    "["
+  ] @indent.begin
   (#set! indent.immediate)
   (#set! indent.start_at_same_line))
+
+(macro_definition
+  [
+    ")"
+    "}"
+    "]"
+  ] @indent.end)
 
 (trait_item
   body: (_) @indent.begin)
