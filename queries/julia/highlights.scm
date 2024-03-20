@@ -59,7 +59,7 @@
   (_)
   (operator) @_pipe
   (identifier) @function.call
-  (#eq? @_pipe "|>"))
+  (#any-of? @_pipe "|>" ".|>"))
 
 ; Builtins
 ((identifier) @function.builtin
