@@ -15,7 +15,7 @@
     "revision": "94219a5ac207a0fadd680b285378d08669d5bbc8"
   },
   "asm": {
-    "revision": "f7158e1c22bdb4bf2c3e139c0ec3050d142cde6d"
+    "revision": "62e49328113ff318128c640bf0cf6dd3d3d51553"
   },
   "astro": {
     "revision": "dfa0893bdc4bdfada102043404758c66e3580568"
@@ -48,7 +48,7 @@
     "revision": "863cea9f83ad5637300478e0559262f1e791684b"
   },
   "c": {
-    "revision": "371fd0bf0650581b6e49f06f438c88c419859696"
+    "revision": "72084f447c2051e01a7cd6c6e0477ec71a9297ed"
   },
   "c_sharp": {
     "revision": "92c0a9431400cd8b6b6ee7503f81da3ae83fc830"
@@ -99,7 +99,7 @@
     "revision": "8a5f273bfa281c66354da562f2307c2d394b6c81"
   },
   "d": {
-    "revision": "a33d400f025d6bbd37b4c681c93054976f579890"
+    "revision": "322d119d50ebe6d0a323dfb00c4aeba31a44fb6f"
   },
   "dart": {
     "revision": "1a31399a08aefc93bc4cdbfadc0cb619136f86c1"
@@ -294,7 +294,7 @@
     "revision": "0135187126370cbf112d759a50eab4a5c913a827"
   },
   "html": {
-    "revision": "4e5f3345f74cda667ee8dd94b17184a592ce0374"
+    "revision": "cc53b6878a003cf26d213025af49c78388cebe21"
   },
   "htmldjango": {
     "revision": "ea71012d3fe14dd0b69f36be4f96bdfe9155ebae"
@@ -660,7 +660,7 @@
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
   },
   "svelte": {
-    "revision": "04a126d9210def99f06d9ab84a255110b862d47c"
+    "revision": "b974719d47447666687d49c68a51b278b2320e99"
   },
   "swift": {
     "revision": "a8cf05cd49b3b97d70a03fd65c9c279fc76662f7"
@@ -747,7 +747,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "46f809776e90ef6f039c8a45008644822dc292e2"
+    "revision": "366d30c2438ca396f2f8304d891ca22e7c14b922"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -777,7 +777,7 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "9a77bb6c1f4d65a9e8cd19585361b9a0786d5565"
+    "revision": "1bb6a572d5e3ced0012a4f6702c6f5662187b901"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
