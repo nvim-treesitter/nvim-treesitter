@@ -84,9 +84,8 @@
 
 ; function calls
 (apply_expression
-  function:
-    (variable_expression
-      name: (identifier) @function.call))
+  function: (variable_expression
+    name: (identifier) @function.call))
 
 ; basic identifiers
 (variable_expression) @variable
@@ -101,12 +100,10 @@
 
 ; builtin functions (with builtins prefix)
 (select_expression
-  expression:
-    (variable_expression
-      name: (identifier) @_id)
-  attrpath:
-    (attrpath
-      attr: (identifier) @function.builtin)
+  expression: (variable_expression
+    name: (identifier) @_id)
+  attrpath: (attrpath
+    attr: (identifier) @function.builtin)
   (#eq? @_id "builtins"))
 
 ; builtin functions (without builtins prefix)
@@ -158,9 +155,8 @@
 
 (select_expression
   expression: (_) @_expr
-  attrpath:
-    (attrpath
-      attr: (identifier) @variable.member)
+  attrpath: (attrpath
+    attr: (identifier) @variable.member)
   (#not-eq? @_expr "builtins"))
 
 (attrset_expression
@@ -179,9 +175,8 @@
 
 ; function definition
 (binding
-  attrpath:
-    (attrpath
-      attr: (identifier) @function)
+  attrpath: (attrpath
+    attr: (identifier) @function)
   expression: (function_expression))
 
 ; unary operators

@@ -35,8 +35,7 @@
   (#any-of? @type.builtin "bool" "string" "number" "object" "tuple" "list" "map" "set" "any"))
 
 (object_elem
-  val:
-    (expression
-      (variable_expr
-        (identifier) @type.builtin
-        (#any-of? @type.builtin "bool" "string" "number" "object" "tuple" "list" "map" "set" "any"))))
+  val: (expression
+    (variable_expr
+      (identifier) @type.builtin
+      (#any-of? @type.builtin "bool" "string" "number" "object" "tuple" "list" "map" "set" "any"))))

@@ -5,19 +5,17 @@
 ; Documentation
 (unary_operator
   operator: "@"
-  operand:
-    (call
-      target:
-        ((identifier) @_identifier
-          (#any-of? @_identifier "moduledoc" "typedoc" "shortdoc" "doc"))
-      (arguments
-        [
-          (string
-            (quoted_content) @injection.content)
-          (sigil
-            (quoted_content) @injection.content)
-        ])
-      (#set! injection.language "markdown")))
+  operand: (call
+    target: ((identifier) @_identifier
+      (#any-of? @_identifier "moduledoc" "typedoc" "shortdoc" "doc"))
+    (arguments
+      [
+        (string
+          (quoted_content) @injection.content)
+        (sigil
+          (quoted_content) @injection.content)
+      ])
+    (#set! injection.language "markdown")))
 
 ; HEEx
 (sigil

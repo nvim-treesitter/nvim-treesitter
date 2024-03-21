@@ -21,10 +21,9 @@
   (section_header
     (section_name) @_alias)
   (variable
-    value:
-      (string
-        "\""
-        "\"") @injection.content)
+    value: (string
+      "\""
+      "\"") @injection.content)
   (#eq? @_alias "alias")
   (#lua-match? @injection.content "^\"!")
   (#offset! @injection.content 0 2 0 -1)

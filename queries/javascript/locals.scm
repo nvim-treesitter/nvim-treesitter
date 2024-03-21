@@ -7,18 +7,16 @@
 ;     this.quuz = "qux";
 ;   }
 (field_definition
-  property:
-    [
-      (property_identifier)
-      (private_property_identifier)
-    ] @local.definition.var)
+  property: [
+    (property_identifier)
+    (private_property_identifier)
+  ] @local.definition.var)
 
 ; this.foo = "bar"
 (assignment_expression
-  left:
-    (member_expression
-      object: (this)
-      property: (property_identifier) @local.definition.var))
+  left: (member_expression
+    object: (this)
+    property: (property_identifier) @local.definition.var))
 
 (formal_parameters
   (identifier) @local.definition.parameter)

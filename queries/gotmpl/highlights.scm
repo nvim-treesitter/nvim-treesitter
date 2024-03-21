@@ -11,9 +11,8 @@
   function: (identifier) @function)
 
 (method_call
-  method:
-    (selector_expression
-      field: (field_identifier) @function))
+  method: (selector_expression
+    field: (field_identifier) @function))
 
 ; Builtin functions
 (function_call

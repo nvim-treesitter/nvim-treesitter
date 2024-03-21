@@ -129,9 +129,8 @@
   function: (identifier) @function.call)
 
 (hll_call_expression
-  function:
-    (hll_field_expression
-      field: (hll_field_identifier) @function.call))
+  function: (hll_field_expression
+    field: (hll_field_identifier) @function.call))
 
 ; HLL variables
 (identifier) @variable
@@ -176,10 +175,9 @@
 
 ((command_expression
   command: (identifier) @keyword
-  arguments:
-    (argument_list
-      .
-      (identifier) @label))
+  arguments: (argument_list
+    .
+    (identifier) @label))
   (#lua-match? @keyword "^[gG][oO][tT][oO]$"))
 
 (labeled_expression

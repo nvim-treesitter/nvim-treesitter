@@ -104,15 +104,13 @@
 
 ; Functions
 (field
-  function:
-    (fieldname
-      (id) @function))
+  function: (fieldname
+    (id) @function))
 
 (field
-  function:
-    (fieldname
-      (string
-        (string_content) @function)))
+  function: (fieldname
+    (string
+      (string_content) @function)))
 
 (param
   identifier: (id) @variable.parameter)

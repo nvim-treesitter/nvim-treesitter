@@ -1,18 +1,16 @@
 (jsx_element
-  open_tag:
-    (jsx_opening_element
-      [
-        "<"
-        ">"
-      ] @tag.delimiter))
+  open_tag: (jsx_opening_element
+    [
+      "<"
+      ">"
+    ] @tag.delimiter))
 
 (jsx_element
-  close_tag:
-    (jsx_closing_element
-      [
-        "</"
-        ">"
-      ] @tag.delimiter))
+  close_tag: (jsx_closing_element
+    [
+      "</"
+      ">"
+    ] @tag.delimiter))
 
 (jsx_self_closing_element
   [

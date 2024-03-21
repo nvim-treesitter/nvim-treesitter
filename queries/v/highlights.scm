@@ -112,9 +112,8 @@
 
 ; Fields
 (selector_expression
-  field:
-    (reference_expression
-      (identifier) @variable.member))
+  field: (reference_expression
+    (identifier) @variable.member))
 
 (field_name) @variable.member
 
@@ -156,9 +155,8 @@
   name: (identifier) @function.method)
 
 (call_expression
-  name:
-    (selector_expression
-      field: (reference_expression) @function.method.call))
+  name: (selector_expression
+    field: (reference_expression) @function.method.call))
 
 (call_expression
   name: (reference_expression) @function.call)

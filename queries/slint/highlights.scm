@@ -162,9 +162,8 @@
   (simple_identifier) @variable)
 
 (member_access
-  member:
-    (expression
-      (simple_identifier) @property))
+  member: (expression
+    (simple_identifier) @property))
 
 (states_definition
   name: (simple_identifier) @constant)

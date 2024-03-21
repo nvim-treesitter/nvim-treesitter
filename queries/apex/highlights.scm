@@ -106,36 +106,34 @@
 ] @operator
 
 (binary_expression
-  operator:
-    [
-      ">"
-      "<"
-      "=="
-      "==="
-      "!=="
-      "&&"
-      "||"
-      "+"
-      "-"
-      "*"
-      "/"
-      "&"
-      "|"
-      "^"
-      "%"
-      "<<"
-      ">>"
-      ">>>"
-    ] @operator)
+  operator: [
+    ">"
+    "<"
+    "=="
+    "==="
+    "!=="
+    "&&"
+    "||"
+    "+"
+    "-"
+    "*"
+    "/"
+    "&"
+    "|"
+    "^"
+    "%"
+    "<<"
+    ">>"
+    ">>>"
+  ] @operator)
 
 (unary_expression
-  operator:
-    [
-      "+"
-      "-"
-      "!"
-      "~"
-    ]) @operator
+  operator: [
+    "+"
+    "-"
+    "!"
+    "~"
+  ]) @operator
 
 (map_initializer
   "=>" @operator)
@@ -147,9 +145,8 @@
 
 ; Fields
 (field_declaration
-  declarator:
-    (variable_declarator
-      name: (identifier) @variable.member))
+  declarator: (variable_declarator
+    name: (identifier) @variable.member))
 
 (field_access
   field: (identifier) @variable.member)

@@ -9,14 +9,12 @@
   alias: (python_identifier) @local.definition.import)
 
 (import_statement
-  name:
-    (dotted_name
-      (python_identifier) @local.definition.import))
+  name: (dotted_name
+    (python_identifier) @local.definition.import))
 
 (import_from_statement
-  name:
-    (dotted_name
-      (python_identifier) @local.definition.import))
+  name: (dotted_name
+    (python_identifier) @local.definition.import))
 
 ; Function with parameters, defines parameters
 (parameters
@@ -55,14 +53,12 @@
 ; Loops
 ; not a scope!
 (for_statement
-  left:
-    (pattern_list
-      (python_identifier) @local.definition.var))
+  left: (pattern_list
+    (python_identifier) @local.definition.var))
 
 (for_statement
-  left:
-    (tuple_pattern
-      (python_identifier) @local.definition.var))
+  left: (tuple_pattern
+    (python_identifier) @local.definition.var))
 
 (for_statement
   left: (python_identifier) @local.definition.var)
@@ -74,14 +70,12 @@
   left: (python_identifier) @local.definition.var)
 
 (for_in_clause
-  left:
-    (tuple_pattern
-      (python_identifier) @local.definition.var))
+  left: (tuple_pattern
+    (python_identifier) @local.definition.var))
 
 (for_in_clause
-  left:
-    (pattern_list
-      (python_identifier) @local.definition.var))
+  left: (pattern_list
+    (python_identifier) @local.definition.var))
 
 (dictionary_comprehension) @local.scope
 
@@ -94,30 +88,26 @@
   left: (python_identifier) @local.definition.var)
 
 (assignment
-  left:
-    (pattern_list
-      (python_identifier) @local.definition.var))
+  left: (pattern_list
+    (python_identifier) @local.definition.var))
 
 (assignment
-  left:
-    (tuple_pattern
-      (python_identifier) @local.definition.var))
+  left: (tuple_pattern
+    (python_identifier) @local.definition.var))
 
 (assignment
-  left:
-    (attribute
-      (python_identifier)
-      (python_identifier) @local.definition.field))
+  left: (attribute
+    (python_identifier)
+    (python_identifier) @local.definition.field))
 
 (variable_assignment
   (identifier)
-  operator:
-    [
-      "="
-      "?="
-      "??="
-      ":="
-    ] @local.definition.var)
+  operator: [
+    "="
+    "?="
+    "??="
+    ":="
+  ] @local.definition.var)
 
 ; Walrus operator  x := 1
 (named_expression

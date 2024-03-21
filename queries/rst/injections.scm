@@ -14,10 +14,9 @@
 ; Directives with nested content without arguments, but with options
 ((directive
   name: (type) @_type
-  body:
-    (body
-      (options)
-      (content) @injection.content))
+  body: (body
+    (options)
+    (content) @injection.content))
   (#set! injection.language "rst")
   (#any-of? @_type
     "attention" "caution" "danger" "error" "hint" "important" "note" "tip" "warning" "admonition"
@@ -26,9 +25,8 @@
 ; Directives with nested content with arguments and options
 ((directive
   name: (type) @_type
-  body:
-    (body
-      (content) @injection.content))
+  body: (body
+    (content) @injection.content))
   (#set! injection.language "rst")
   (#any-of? @_type
     "figure" "topic" "sidebar" "container" "table" "list-table" "class" "role"
@@ -37,25 +35,22 @@
 ; Special directives
 ((directive
   name: (type) @_type
-  body:
-    (body
-      (arguments) @injection.language
-      (content) @injection.content))
+  body: (body
+    (arguments) @injection.language
+    (content) @injection.content))
   (#any-of? @_type "raw" "code" "code-block" "sourcecode"))
 
 ((directive
   name: (type) @_type
-  body:
-    (body
-      (content) @injection.content))
+  body: (body
+    (content) @injection.content))
   (#set! injection.language "latex")
   (#eq? @_type "math"))
 
 ((directive
   name: (type) @_type
-  body:
-    (body
-      (content) @injection.content))
+  body: (body
+    (content) @injection.content))
   (#set! injection.language "csv")
   (#eq? @_type "csv-table"))
 

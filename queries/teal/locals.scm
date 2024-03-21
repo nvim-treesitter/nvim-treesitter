@@ -1,14 +1,12 @@
 (var_declaration
-  declarators:
-    (var_declarators
-      (var
-        (identifier)) @local.definition.var))
+  declarators: (var_declarators
+    (var
+      (identifier)) @local.definition.var))
 
 (var_assignment
-  variables:
-    (assignment_variables
-      (var
-        (identifier) @local.definition.var) @local.definition.associated))
+  variables: (assignment_variables
+    (var
+      (identifier) @local.definition.var) @local.definition.associated))
 
 (arg
   name: (identifier) @local.definition.parameter)

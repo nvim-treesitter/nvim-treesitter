@@ -35,12 +35,11 @@
 
 ; Types
 (_
-  type:
-    [
-      (int_type)
-      (float_type)
-      (any_type)
-    ]) @type.builtin
+  type: [
+    (int_type)
+    (float_type)
+    (any_type)
+  ]) @type.builtin
 
 [
   (single_precision)

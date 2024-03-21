@@ -7,9 +7,8 @@
   )
 
 (short_var_declaration
-  left:
-    (expression_list
-      (identifier) @local.definition.var))
+  left: (expression_list
+    (identifier) @local.definition.var))
 
 (var_spec
   name: (identifier) @local.definition.var)
@@ -22,9 +21,8 @@
 
 (for_statement
   (range_clause
-    left:
-      (expression_list
-        (identifier) @local.definition.var)))
+    left: (expression_list
+      (identifier) @local.definition.var)))
 
 (const_declaration
   (const_spec
@@ -57,22 +55,19 @@
   (#set! reference.kind "call"))
 
 ((call_expression
-  function:
+  function: (selector_expression
+    field: (field_identifier) @local.reference))
+  (#set! reference.kind "call"))
+
+((call_expression
+  function: (parenthesized_expression
+    (identifier) @local.reference))
+  (#set! reference.kind "call"))
+
+((call_expression
+  function: (parenthesized_expression
     (selector_expression
-      field: (field_identifier) @local.reference))
-  (#set! reference.kind "call"))
-
-((call_expression
-  function:
-    (parenthesized_expression
-      (identifier) @local.reference))
-  (#set! reference.kind "call"))
-
-((call_expression
-  function:
-    (parenthesized_expression
-      (selector_expression
-        field: (field_identifier) @local.reference)))
+      field: (field_identifier) @local.reference)))
   (#set! reference.kind "call"))
 
 ; Scopes

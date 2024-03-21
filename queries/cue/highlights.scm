@@ -71,10 +71,9 @@
   function: (identifier) @function.call)
 
 (call_expression
-  function:
-    (selector_expression
-      (_)
-      (identifier) @function.call))
+  function: (selector_expression
+    (_)
+    (identifier) @function.call))
 
 (call_expression
   function: (builtin_function) @function.call)

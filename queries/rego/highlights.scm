@@ -44,14 +44,12 @@
 (number) @number
 
 (expr_call
-  func_name:
-    (fn_name
-      (var) @function .))
+  func_name: (fn_name
+    (var) @function .))
 
 (expr_call
-  func_arguments:
-    (fn_args
-      (expr) @variable.parameter))
+  func_arguments: (fn_args
+    (expr) @variable.parameter))
 
 (rule_args
   (term) @variable.parameter)

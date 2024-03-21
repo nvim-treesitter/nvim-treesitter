@@ -25,10 +25,9 @@
   (identifier) @property)
 
 (call_expression
-  function:
-    (selector_expression
-      operand: (identifier) @constant
-      field: (field_identifier) @function.method))
+  function: (selector_expression
+    operand: (identifier) @constant
+    field: (field_identifier) @function.method))
 
 (perm_expression
   (stabby) @operator

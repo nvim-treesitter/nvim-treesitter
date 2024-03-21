@@ -14,9 +14,8 @@
   left: (identifier) @local.definition.var)
 
 (for_each_statement
-  left:
-    (tuple_pattern
-      (identifier) @local.definition.var))
+  left: (tuple_pattern
+    (identifier) @local.definition.var))
 
 (parameter
   (identifier) @local.definition.parameter)

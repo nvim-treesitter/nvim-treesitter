@@ -13,11 +13,10 @@
 ((command
   name: (command_name) @_command
   .
-  argument:
-    [
-      (string)
-      (raw_string)
-    ] @injection.content)
+  argument: [
+    (string)
+    (raw_string)
+  ] @injection.content)
   (#eq? @_command "printf")
   (#set! injection.language "printf"))
 
@@ -28,11 +27,10 @@
   .
   (_)
   .
-  argument:
-    [
-      (string)
-      (raw_string)
-    ] @injection.content)
+  argument: [
+    (string)
+    (raw_string)
+  ] @injection.content)
   (#eq? @_command "printf")
   (#eq? @_arg "-v")
   (#set! injection.language "printf"))
@@ -42,11 +40,10 @@
   name: (command_name) @_command
   argument: (word) @_arg
   .
-  argument:
-    [
-      (string)
-      (raw_string)
-    ] @injection.content)
+  argument: [
+    (string)
+    (raw_string)
+  ] @injection.content)
   (#eq? @_command "printf")
   (#eq? @_arg "--")
   (#set! injection.language "printf"))

@@ -66,11 +66,9 @@
 (builtin) @function.builtin
 
 (fun_expr
-  pats:
-    (pattern_fun
-      (ident) @variable.parameter))
+  pats: (pattern_fun
+    (ident) @variable.parameter))
 
 (applicative
-  t1:
-    (applicative
-      (record_operand) @function))
+  t1: (applicative
+    (record_operand) @function))

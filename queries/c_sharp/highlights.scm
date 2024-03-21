@@ -32,28 +32,25 @@
     name: (identifier) @function.method.call))
 
 (invocation_expression
-  function:
-    (conditional_access_expression
-      (member_binding_expression
-        name: (identifier) @function.method.call)))
+  function: (conditional_access_expression
+    (member_binding_expression
+      name: (identifier) @function.method.call)))
 
 (namespace_declaration
-  name:
-    [
-      (qualified_name)
-      (identifier)
-    ] @module)
+  name: [
+    (qualified_name)
+    (identifier)
+  ] @module)
 
 (qualified_name
   (identifier) @type)
 
 (namespace_declaration
-  name:
-    [
-      (qualified_name
-        (identifier) @module)
-      (identifier) @module
-    ])
+  name: [
+    (qualified_name
+      (identifier) @module)
+    (identifier) @module
+  ])
 
 (invocation_expression
   (identifier) @function.method.call)
@@ -184,16 +181,14 @@
     (identifier) @type))
 
 (_
-  type:
-    (generic_name
-      (identifier) @type))
+  type: (generic_name
+    (identifier) @type))
 
 ; Generic Method invocation with generic type
 (invocation_expression
-  function:
-    (generic_name
-      .
-      (identifier) @function.method.call))
+  function: (generic_name
+    .
+    (identifier) @function.method.call))
 
 (invocation_expression
   (member_access_expression

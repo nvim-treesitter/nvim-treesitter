@@ -12,9 +12,8 @@
   name: (identifier) @function)
 
 (pipe_call
-  arguments:
-    (pipe_arguments
-      (identifier) @variable.parameter))
+  arguments: (pipe_arguments
+    (identifier) @variable.parameter))
 
 (structural_directive
   "*" @keyword
@@ -47,14 +46,12 @@
   function: (identifier) @function)
 
 (call_expression
-  function:
-    ((identifier) @function.builtin
-      (#eq? @function.builtin "$any")))
+  function: ((identifier) @function.builtin
+    (#eq? @function.builtin "$any")))
 
 (pair
-  key:
-    ((identifier) @variable.builtin
-      (#eq? @variable.builtin "$implicit")))
+  key: ((identifier) @variable.builtin
+    (#eq? @variable.builtin "$implicit")))
 
 ((control_keyword) @keyword.repeat
   (#any-of? @keyword.repeat "for" "empty"))

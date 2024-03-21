@@ -199,14 +199,12 @@
   name: (identifier) @function)
 
 (function_call
-  name:
-    (dot_index_expression
-      field: (identifier) @function.call))
+  name: (dot_index_expression
+    field: (identifier) @function.call))
 
 (function_declaration
-  name:
-    (dot_index_expression
-      field: (identifier) @function))
+  name: (dot_index_expression
+    field: (identifier) @function))
 
 (method_index_expression
   method: (identifier) @function.method.call)
@@ -256,13 +254,12 @@
 ] @punctuation.bracket
 
 (variable_list
-  attribute:
-    (attribute
-      ([
-        "<"
-        ">"
-      ] @punctuation.bracket
-        (identifier) @attribute)))
+  attribute: (attribute
+    ([
+      "<"
+      ">"
+    ] @punctuation.bracket
+      (identifier) @attribute)))
 
 (generic_type
   [
@@ -290,21 +287,19 @@
   (dot_index_expression
     field: (identifier) @_method
     (#any-of? @_method "find" "format" "match" "gmatch" "gsub"))
-  arguments:
-    (arguments
-      .
-      (_)
-      .
-      (string
-        content: _ @string.regexp)))
+  arguments: (arguments
+    .
+    (_)
+    .
+    (string
+      content: _ @string.regexp)))
 
 ; ("123"):match("%d+")
 (function_call
   (method_index_expression
     method: (identifier) @_method
     (#any-of? @_method "find" "format" "match" "gmatch" "gsub"))
-  arguments:
-    (arguments
-      .
-      (string
-        content: _ @string.regexp)))
+  arguments: (arguments
+    .
+    (string
+      content: _ @string.regexp)))

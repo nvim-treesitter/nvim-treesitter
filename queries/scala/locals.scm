@@ -43,8 +43,7 @@
   name: (identifier) @local.definition.var)
 
 (for_expression
-  enumerators:
-    (enumerators
-      (enumerator
-        (tuple_pattern
-          (identifier) @local.definition.var))))
+  enumerators: (enumerators
+    (enumerator
+      (tuple_pattern
+        (identifier) @local.definition.var))))

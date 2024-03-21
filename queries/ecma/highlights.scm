@@ -58,11 +58,10 @@
   name: (identifier) @function)
 
 (method_definition
-  name:
-    [
-      (property_identifier)
-      (private_property_identifier)
-    ] @function.method)
+  name: [
+    (property_identifier)
+    (private_property_identifier)
+  ] @function.method)
 
 (method_definition
   name: (property_identifier) @constructor
@@ -77,15 +76,13 @@
   value: (arrow_function))
 
 (assignment_expression
-  left:
-    (member_expression
-      property: (property_identifier) @function.method)
+  left: (member_expression
+    property: (property_identifier) @function.method)
   right: (arrow_function))
 
 (assignment_expression
-  left:
-    (member_expression
-      property: (property_identifier) @function.method)
+  left: (member_expression
+    property: (property_identifier) @function.method)
   right: (function_expression))
 
 (variable_declarator
@@ -110,13 +107,11 @@
   function: (identifier) @function.call)
 
 (call_expression
-  function:
-    (member_expression
-      property:
-        [
-          (property_identifier)
-          (private_property_identifier)
-        ] @function.method.call))
+  function: (member_expression
+    property: [
+      (property_identifier)
+      (private_property_identifier)
+    ] @function.method.call))
 
 ; Builtins
 ;---------

@@ -31,14 +31,12 @@
   name: (identifier) @function)
 
 (function_definition
-  name:
-    (field_expression
-      (identifier) @function .))
+  name: (field_expression
+    (identifier) @function .))
 
 (short_function_definition
-  name:
-    (field_expression
-      (identifier) @function .))
+  name: (field_expression
+    (identifier) @function .))
 
 ; calls
 (call_expression

@@ -97,9 +97,8 @@
   function: (operator_identifier) @function.call)
 
 (call_expression
-  function:
-    (field_expression
-      field: (identifier) @function.method.call))
+  function: (field_expression
+    field: (identifier) @function.method.call))
 
 ((call_expression
   function: (identifier) @constructor)

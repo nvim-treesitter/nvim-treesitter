@@ -8,11 +8,10 @@
   "END" @indent.branch)
 
 (for_statement
-  right:
-    (_
-      (arguments
-        (continuation
-          (ellipses) @indent.branch))))
+  right: (_
+    (arguments
+      (continuation
+        (ellipses) @indent.branch))))
 
 (while_statement) @indent.begin
 

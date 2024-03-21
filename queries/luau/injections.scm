@@ -1,15 +1,13 @@
 ((function_call
-  name:
-    [
-      (identifier) @_cdef_identifier
-      (_
-        _
-        (identifier) @_cdef_identifier)
-    ]
-  arguments:
-    (arguments
-      (string
-        content: _ @injection.content)))
+  name: [
+    (identifier) @_cdef_identifier
+    (_
+      _
+      (identifier) @_cdef_identifier)
+  ]
+  arguments: (arguments
+    (string
+      content: _ @injection.content)))
   (#eq? @_cdef_identifier "cdef")
   (#set! injection.language "c"))
 
@@ -23,13 +21,12 @@
   (dot_index_expression
     field: (identifier) @_method
     (#any-of? @_method "find" "format" "match" "gmatch" "gsub"))
-  arguments:
-    (arguments
-      .
-      (_)
-      .
-      (string
-        content: _ @injection.content))
+  arguments: (arguments
+    .
+    (_)
+    .
+    (string
+      content: _ @injection.content))
   (#set! injection.language "luap"))
 
 ; ("123"):match("%d+")
@@ -37,11 +34,10 @@
   (method_index_expression
     method: (identifier) @_method
     (#any-of? @_method "find" "format" "match" "gmatch" "gsub"))
-  arguments:
-    (arguments
-      .
-      (string
-        content: _ @injection.content))
+  arguments: (arguments
+    .
+    (string
+      content: _ @injection.content))
   (#set! injection.language "luap"))
 
 ((comment) @injection.content

@@ -43,19 +43,17 @@
 
 ; Supports if without braces (but not both if-else without braces)
 (if_statement
-  consequence:
-    (_
-      ";" @indent.end) @_consequence
+  consequence: (_
+    ";" @indent.end) @_consequence
   (#not-has-type? @_consequence compound_statement)
-  alternative:
-    (else_clause
-      "else" @indent.branch
-      [
-        (if_statement
-          (compound_statement) @indent.dedent)? @indent.dedent
-        (compound_statement)? @indent.dedent
-        (_)? @indent.dedent
-      ])?) @indent.begin
+  alternative: (else_clause
+    "else" @indent.branch
+    [
+      (if_statement
+        (compound_statement) @indent.dedent)? @indent.dedent
+      (compound_statement)? @indent.dedent
+      (_)? @indent.dedent
+    ])?) @indent.begin
 
 (else_clause
   (_

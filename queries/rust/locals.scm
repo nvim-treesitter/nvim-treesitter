@@ -3,9 +3,8 @@
   name: (identifier) @local.definition.import)
 
 (use_declaration
-  argument:
-    (scoped_identifier
-      name: (identifier) @local.definition.import))
+  argument: (scoped_identifier
+    name: (identifier) @local.definition.import))
 
 (use_as_clause
   alias: (identifier) @local.definition.import)
@@ -19,9 +18,8 @@
 
 (function_item
   name: (identifier) @local.definition.method
-  parameters:
-    (parameters
-      (self_parameter)))
+  parameters: (parameters
+    (self_parameter)))
 
 ; Variables
 (parameter
@@ -37,9 +35,8 @@
   (identifier) @local.definition.var)
 
 (let_condition
-  pattern:
-    (_
-      (identifier) @local.definition.var))
+  pattern: (_
+    (identifier) @local.definition.var))
 
 (tuple_struct_pattern
   (identifier) @local.definition.var)

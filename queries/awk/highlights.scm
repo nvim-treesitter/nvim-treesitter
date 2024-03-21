@@ -41,14 +41,12 @@
   "::" @punctuation.delimiter)
 
 (func_def
-  name:
-    (_
-      (identifier) @function) @function)
+  name: (_
+    (identifier) @function) @function)
 
 (func_call
-  name:
-    (_
-      (identifier) @function) @function)
+  name: (_
+    (identifier) @function) @function)
 
 (func_def
   (param_list

@@ -30,19 +30,17 @@
   (#set! definition.function.scope "parent"))
 
 ((function_declaration
-  name:
-    (dot_index_expression
-      .
-      (_) @local.definition.associated
-      (identifier) @local.definition.function))
+  name: (dot_index_expression
+    .
+    (_) @local.definition.associated
+    (identifier) @local.definition.function))
   (#set! definition.method.scope "parent"))
 
 ((function_declaration
-  name:
-    (method_index_expression
-      .
-      (_) @local.definition.associated
-      (identifier) @local.definition.method))
+  name: (method_index_expression
+    .
+    (_) @local.definition.associated
+    (identifier) @local.definition.method))
   (#set! definition.method.scope "parent"))
 
 (for_generic_clause

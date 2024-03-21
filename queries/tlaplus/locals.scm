@@ -43,9 +43,8 @@
   parameter: (identifier) @local.definition.parameter)
 
 (module_definition
-  parameter:
-    (operator_declaration
-      name: (_) @local.definition.parameter))
+  parameter: (operator_declaration
+    name: (_) @local.definition.parameter))
 
 (operator_definition
   name: (_) @local.definition.macro
@@ -55,9 +54,8 @@
   parameter: (identifier) @local.definition.parameter)
 
 (operator_definition
-  parameter:
-    (operator_declaration
-      name: (_) @local.definition.parameter))
+  parameter: (operator_declaration
+    name: (_) @local.definition.parameter))
 
 (quantifier_bound
   (identifier) @local.definition.parameter)

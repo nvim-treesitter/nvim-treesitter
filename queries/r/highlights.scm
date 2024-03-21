@@ -55,36 +55,34 @@
 ] @operator
 
 (unary
-  operator:
-    [
-      "-"
-      "+"
-      "!"
-      "~"
-      "?"
-    ] @operator)
+  operator: [
+    "-"
+    "+"
+    "!"
+    "~"
+    "?"
+  ] @operator)
 
 (binary
-  operator:
-    [
-      "-"
-      "+"
-      "*"
-      "/"
-      "^"
-      "<"
-      ">"
-      "<="
-      ">="
-      "=="
-      "!="
-      "||"
-      "|"
-      "&&"
-      "&"
-      ":"
-      "~"
-    ] @operator)
+  operator: [
+    "-"
+    "+"
+    "*"
+    "/"
+    "^"
+    "<"
+    ">"
+    "<="
+    ">="
+    "=="
+    "!="
+    "||"
+    "|"
+    "&&"
+    "&"
+    ":"
+    "~"
+  ] @operator)
 
 [
   "|>"
@@ -157,7 +155,6 @@
     function: (identifier) @function.call))
 
 (call
-  function:
-    (dollar
-      _
-      (identifier) @function.method.call))
+  function: (dollar
+    _
+    (identifier) @function.method.call))

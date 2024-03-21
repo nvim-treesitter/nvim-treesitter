@@ -67,9 +67,8 @@
   name: (identifier) @local.definition.method)
 
 (local_variable_declaration
-  declarator:
-    (variable_declarator
-      name: (identifier) @local.definition.var))
+  declarator: (variable_declarator
+    name: (identifier) @local.definition.var))
 
 (enhanced_for_statement
   ; for (var item : items) {
@@ -92,9 +91,8 @@
   (#has-ancestor? @local.definition.import import_declaration))
 
 (field_declaration
-  declarator:
-    (variable_declarator
-      name: (identifier) @local.definition.field))
+  declarator: (variable_declarator
+    name: (identifier) @local.definition.field))
 
 ; REFERENCES
 (identifier) @local.reference

@@ -16,17 +16,15 @@
 
 (rune
   .
-  rune_start:
-    (rune_char
-      ",")
+  rune_start: (rune_char
+    ",")
   .
   (identifier) @function.call)
 
 (rune
   .
-  rune_start:
-    (rune_char
-      ";")
+  rune_start: (rune_char
+    ";")
   .
   (identifier) @function.call)
 

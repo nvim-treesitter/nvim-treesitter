@@ -22,9 +22,8 @@
 ] @local.scope
 
 (use_declaration
-  argument:
-    (scoped_identifier
-      name: (identifier) @local.definition.import))
+  argument: (scoped_identifier
+    name: (identifier) @local.definition.import))
 
 (use_as_clause
   alias: (identifier) @local.definition.import)

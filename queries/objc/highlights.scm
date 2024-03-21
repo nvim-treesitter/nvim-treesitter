@@ -244,12 +244,10 @@
   declarator: (identifier) @variable.parameter)
 
 (parameter_declaration
-  declarator:
-    (function_declarator
-      declarator:
-        (parenthesized_declarator
-          (block_pointer_declarator
-            declarator: (identifier) @variable.parameter))))
+  declarator: (function_declarator
+    declarator: (parenthesized_declarator
+      (block_pointer_declarator
+        declarator: (identifier) @variable.parameter))))
 
 "..." @variable.parameter.builtin
 

@@ -28,10 +28,9 @@
   alias: (identifier) @variable)
 
 (term
-  value:
-    (cast
-      name: (keyword_cast) @function.call
-      parameter: (literal)?))
+  value: (cast
+    name: (keyword_cast) @function.call
+    parameter: (literal)?))
 
 (literal) @string
 

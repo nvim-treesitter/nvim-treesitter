@@ -7,23 +7,20 @@
 (pat_wildcard) @variable
 
 (function
-  patterns:
-    (patterns
-      (_) @variable.parameter))
+  patterns: (patterns
+    (_) @variable.parameter))
 
 (exp_lambda
   (_)+ @variable.parameter
   "->")
 
 (function
-  infix:
-    (infix
-      lhs: (_) @variable.parameter))
+  infix: (infix
+    lhs: (_) @variable.parameter))
 
 (function
-  infix:
-    (infix
-      rhs: (_) @variable.parameter))
+  infix: (infix
+    rhs: (_) @variable.parameter))
 
 ; ----------------------------------------------------------------------------
 ; Literals and comments
@@ -185,7 +182,24 @@
 
 (function
   name: (variable) @variable
-  rhs:
+  rhs: [
+    (exp_literal)
+    (exp_apply
+      (exp_name
+        [
+          (constructor)
+          (variable)
+          (qualified_variable)
+        ]))
+    (quasiquote)
+    ((exp_name)
+      .
+      (operator))
+  ])
+
+(function
+  name: (variable) @variable
+  rhs: (exp_infix
     [
       (exp_literal)
       (exp_apply
@@ -199,26 +213,7 @@
       ((exp_name)
         .
         (operator))
-    ])
-
-(function
-  name: (variable) @variable
-  rhs:
-    (exp_infix
-      [
-        (exp_literal)
-        (exp_apply
-          (exp_name
-            [
-              (constructor)
-              (variable)
-              (qualified_variable)
-            ]))
-        (quasiquote)
-        ((exp_name)
-          .
-          (operator))
-      ]))
+    ]))
 
 ; Consider signatures (and accompanying functions)
 ; with only one value on the rhs as variables
@@ -403,14 +398,13 @@
 ; function defined in terms of a function composition
 (function
   name: (variable) @function
-  rhs:
-    (exp_infix
-      (_)
-      .
-      (operator) @_op
-      .
-      (_)
-      (#any-of? @_op "." ">>>" "***" ">=>" "<=<")))
+  rhs: (exp_infix
+    (_)
+    .
+    (operator) @_op
+    .
+    (_)
+    (#any-of? @_op "." ">>>" "***" ">=>" "<=<")))
 
 (exp_apply
   (exp_name
@@ -486,9 +480,8 @@
 
 ; scoped function types (func :: a -> b)
 (pat_typed
-  pattern:
-    (pat_name
-      (variable) @function)
+  pattern: (pat_name
+    (variable) @function)
   type: (fun))
 
 ; signatures that have a function type
@@ -618,12 +611,11 @@
     (variable) @variable.member))
 
 (exp_field
-  field:
-    [
-      (variable) @variable.member
-      (qualified_variable
-        (variable) @variable.member)
-    ])
+  field: [
+    (variable) @variable.member
+    (qualified_variable
+      (variable) @variable.member)
+  ])
 
 ; ----------------------------------------------------------------------------
 ; Spell checking

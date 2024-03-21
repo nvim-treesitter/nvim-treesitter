@@ -65,9 +65,8 @@
 ; ------------------
 (manifest
   (let
-    name:
-      ((identifier) @constant.builtin
-        (#any-of? @constant.builtin "builddir" "ninja_required_version"))))
+    name: ((identifier) @constant.builtin
+      (#any-of? @constant.builtin "builddir" "ninja_required_version"))))
 
 ; Rules bindings
 ; -----------------

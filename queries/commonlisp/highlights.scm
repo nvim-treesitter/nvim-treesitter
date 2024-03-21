@@ -11,30 +11,26 @@
   function_name: (_) @function)
 
 (defun_header
-  lambda_list:
-    (list_lit
-      (sym_lit) @variable.parameter))
+  lambda_list: (list_lit
+    (sym_lit) @variable.parameter))
 
 (defun_header
-  keyword:
-    (defun_keyword
-      "defmethod")
-  lambda_list:
+  keyword: (defun_keyword
+    "defmethod")
+  lambda_list: (list_lit
     (list_lit
-      (list_lit
-        .
-        (sym_lit)
-        .
-        (sym_lit) @string.special.symbol)))
+      .
+      (sym_lit)
+      .
+      (sym_lit) @string.special.symbol)))
 
 (defun_header
-  lambda_list:
+  lambda_list: (list_lit
     (list_lit
-      (list_lit
-        .
-        (sym_lit) @variable.parameter
-        .
-        (_))))
+      .
+      (sym_lit) @variable.parameter
+      .
+      (_))))
 
 (defun_header
   specifier: (sym_lit) @string.special.symbol)

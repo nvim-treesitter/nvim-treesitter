@@ -31,11 +31,10 @@
 
 ; {{ .Values.test }}
 (selector_expression
-  operand:
-    (field
-      name: (identifier) @constant.builtin
-      (#any-of? @constant.builtin
-        "Values" "Chart" "Release" "Capabilities" "Files" "Subcharts" "Template"))
+  operand: (field
+    name: (identifier) @constant.builtin
+    (#any-of? @constant.builtin
+      "Values" "Chart" "Release" "Capabilities" "Files" "Subcharts" "Template"))
   (field_identifier))
 
 ; {{ $.Values.test }}

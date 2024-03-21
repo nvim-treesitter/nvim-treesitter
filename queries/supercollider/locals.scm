@@ -12,16 +12,14 @@
   (#set! "definition.var.scope" "local"))
 
 (variable_definition
-  name:
-    (variable
-      (local_var
-        (identifier) @local.definition.var)))
+  name: (variable
+    (local_var
+      (identifier) @local.definition.var)))
 
 (variable_definition
-  name:
-    (variable
-      (environment_var
-        (identifier) @local.definition.var))
+  name: (variable
+    (environment_var
+      (identifier) @local.definition.var))
   (#set! "definition.var.scope" "global"))
 
 (function_definition

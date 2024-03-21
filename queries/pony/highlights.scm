@@ -133,15 +133,14 @@
   (#set! "priority" 105))
 
 (call_expression
-  callee:
-    [
-      (identifier) @function.method.call
-      (ffi_identifier
-        (identifier) @function.method.call)
-      (member_expression
-        "."
-        (identifier) @function.method.call)
-    ])
+  callee: [
+    (identifier) @function.method.call
+    (ffi_identifier
+      (identifier) @function.method.call)
+    (member_expression
+      "."
+      (identifier) @function.method.call)
+  ])
 
 ; Parameters
 (parameter
@@ -168,22 +167,20 @@
 
 ; Operators
 (unary_expression
-  operator:
-    [
-      "not"
-      "addressof"
-      "digestof"
-    ] @keyword.operator)
+  operator: [
+    "not"
+    "addressof"
+    "digestof"
+  ] @keyword.operator)
 
 (binary_expression
-  operator:
-    [
-      "and"
-      "or"
-      "xor"
-      "is"
-      "isnt"
-    ] @keyword.operator)
+  operator: [
+    "and"
+    "or"
+    "xor"
+    "is"
+    "isnt"
+  ] @keyword.operator)
 
 [
   "="

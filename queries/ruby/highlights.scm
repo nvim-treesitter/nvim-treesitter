@@ -78,11 +78,10 @@
 
 (call
   receiver: (constant)? @type
-  method:
-    [
-      (identifier)
-      (constant)
-    ] @function.call)
+  method: [
+    (identifier)
+    (constant)
+  ] @function.call)
 
 (program
   (call
@@ -97,18 +96,16 @@
   (identifier) @function)
 
 (method
-  name:
-    [
-      (identifier) @function
-      (constant) @type
-    ])
+  name: [
+    (identifier) @function
+    (constant) @type
+  ])
 
 (singleton_method
-  name:
-    [
-      (identifier) @function
-      (constant) @type
-    ])
+  name: [
+    (identifier) @function
+    (constant) @type
+  ])
 
 (class
   name: (constant) @type)

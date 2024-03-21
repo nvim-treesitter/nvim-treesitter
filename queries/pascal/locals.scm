@@ -45,9 +45,8 @@
   name: (identifier) @local.definition)
 
 (declType
-  name:
-    (genericTpl
-      entity: (identifier) @local.definition))
+  name: (genericTpl
+    entity: (identifier) @local.definition))
 
 (declProc
   name: (identifier) @local.definition)

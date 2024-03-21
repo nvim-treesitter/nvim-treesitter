@@ -164,9 +164,8 @@
     (attribute
       attribute: (_) @indent.end)
     (call
-      arguments:
-        (_
-          ")" @indent.end))
+      arguments: (_
+        ")" @indent.end))
     "return" @indent.end
   ] .)
 

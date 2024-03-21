@@ -28,16 +28,14 @@
   (#set! definition.var.scope "parent"))
 
 (let_binding
-  pattern:
-    (tuple_pattern
-      (value_name) @local.definition.var)
+  pattern: (tuple_pattern
+    (value_name) @local.definition.var)
   (#set! definition.var.scope "parent"))
 
 (let_binding
-  pattern:
-    (record_pattern
-      (field_pattern
-        (value_name) @local.definition.var))
+  pattern: (record_pattern
+    (field_pattern
+      (value_name) @local.definition.var))
   (#set! definition.var.scope "parent"))
 
 (external

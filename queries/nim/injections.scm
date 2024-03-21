@@ -52,9 +52,8 @@
       (colon_expression
         left: (identifier) @_emit_keyword
         (#eq? @_emit_keyword "emit")
-        right:
-          (_
-            (string_content) @injection.content)))))
+        right: (_
+          (string_content) @injection.content)))))
 
 ; =============================================================================
 ; asm statement
