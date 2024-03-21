@@ -3,6 +3,7 @@ local ts = vim.treesitter
 
 local new_lang_api = ts.language.register ~= nil
 
+---@type table<string,string>
 local filetype_to_parsername = {}
 
 if new_lang_api then
@@ -17,6 +18,8 @@ if new_lang_api then
   })
 end
 
+---@param lang string
+---@param ft string
 local function register_lang(lang, ft)
   if new_lang_api then
     ts.language.register(lang, ft)
@@ -26,27 +29,8 @@ local function register_lang(lang, ft)
 end
 
 for ft, lang in pairs {
-  automake = "make",
-  javascriptreact = "javascript",
-  ecma = "javascript",
-  jsx = "javascript",
-  sh = "bash",
-  html_tags = "html",
   ["typescript.tsx"] = "tsx",
   ["html.handlebars"] = "glimmer",
-  systemverilog = "verilog",
-  pandoc = "markdown",
-  rmd = "markdown",
-  quarto = "markdown",
-  dosini = "ini",
-  confini = "ini",
-  svg = "xml",
-  xsd = "xml",
-  xslt = "xml",
-  expect = "tcl",
-  mysql = "sql",
-  sbt = "scala",
-  neomuttrc = "muttrc",
 } do
   register_lang(lang, ft)
 end
@@ -64,16 +48,26 @@ end
 
 ---@class ParserInfo
 ---@field install_info InstallInfo
----@field filetype string
+---@field filetype string|nil
+---@field filetypes string[]|nil
 ---@field maintainers string[]
 ---@field experimental boolean|nil
 ---@field readme_name string|nil
 
----@type ParserInfo[]
+---@type table<string, ParserInfo>
 local list = setmetatable({}, {
+  ---@param table ParserInfo[]
+  ---@param parsername string
+  ---@param parserconfig ParserInfo
   __newindex = function(table, parsername, parserconfig)
     rawset(table, parsername, parserconfig)
-    register_lang(parsername, parserconfig.filetype or parsername)
+    if parserconfig.filetypes then
+      for _, ft in ipairs(parserconfig.filetypes) do
+        register_lang(parsername, ft)
+      end
+    else
+      register_lang(parsername, parserconfig.filetype or parsername)
+    end
   end,
 })
 
@@ -156,7 +150,7 @@ list.bash = {
     url = "https://github.com/tree-sitter/tree-sitter-bash",
     files = { "src/parser.c", "src/scanner.c" },
   },
-  filetype = "sh",
+  filetypes = { "bash", "sh" },
   maintainers = { "@TravonteD" },
 }
 
@@ -896,6 +890,7 @@ list.html = {
     url = "https://github.com/tree-sitter/tree-sitter-html",
     files = { "src/parser.c", "src/scanner.c" },
   },
+  filetypes = { "html", "htmltags" },
   maintainers = { "@TravonteD" },
 }
 
@@ -937,6 +932,7 @@ list.ini = {
     url = "https://github.com/justinmk/tree-sitter-ini",
     files = { "src/parser.c" },
   },
+  filetypes = { "ini", "dosini", "confini" },
   maintainers = { "@theHamsta" },
   experimental = true,
 }
@@ -972,6 +968,7 @@ list.javascript = {
     url = "https://github.com/tree-sitter/tree-sitter-javascript",
     files = { "src/parser.c", "src/scanner.c" },
   },
+  filetypes = { "javascript", "javascriptreact", "ecma", "jsx" },
   maintainers = { "@steelsojka" },
 }
 
@@ -1186,6 +1183,7 @@ list.make = {
     url = "https://github.com/alemuller/tree-sitter-make",
     files = { "src/parser.c" },
   },
+  filetypes = { "make", "automake" },
   maintainers = { "@lewis6991" },
 }
 
@@ -1195,6 +1193,7 @@ list.markdown = {
     location = "tree-sitter-markdown",
     files = { "src/parser.c", "src/scanner.c" },
   },
+  filetypes = { "markdown", "pandoc", "rmd", "quarto" },
   maintainers = { "@MDeiml" },
   readme_name = "markdown (basic highlighting)",
   experimental = true,
@@ -1258,6 +1257,7 @@ list.muttrc = {
     url = "https://github.com/neomutt/tree-sitter-muttrc",
     files = { "src/parser.c" },
   },
+  filetypes = { "muttrc", "neomuttrc" },
   maintainers = { "@Freed-Wu" },
 }
 
@@ -1751,6 +1751,7 @@ list.scala = {
     url = "https://github.com/tree-sitter/tree-sitter-scala",
     files = { "src/parser.c", "src/scanner.c" },
   },
+  filetypes = { "scala", "sbt" },
   maintainers = { "@stevanmilic" },
 }
 
@@ -1871,6 +1872,7 @@ list.sql = {
     files = { "src/parser.c", "src/scanner.c" },
     branch = "gh-pages",
   },
+  filetypes = { "sql", "mysql" },
   maintainers = { "@derekstride" },
 }
 
@@ -1996,6 +1998,7 @@ list.tcl = {
     url = "https://github.com/tree-sitter-grammars/tree-sitter-tcl",
     files = { "src/parser.c", "src/scanner.c" },
   },
+  filetypes = { "tcl", "expect" },
   maintainers = { "@lewis6991" },
 }
 
@@ -2005,6 +2008,7 @@ list.terraform = {
     files = { "src/parser.c", "src/scanner.c" },
     location = "dialects/terraform",
   },
+  filetypes = { "terraform", "terraform-vars" },
   maintainers = { "@MichaHoffmann" },
 }
 
@@ -2205,6 +2209,7 @@ list.verilog = {
     url = "https://github.com/tree-sitter/tree-sitter-verilog",
     files = { "src/parser.c" },
   },
+  filetypes = { "verilog", "systemverilog" },
   maintainers = { "@zegervdv" },
 }
 
@@ -2285,6 +2290,7 @@ list.xml = {
     files = { "src/parser.c", "src/scanner.c" },
     location = "xml",
   },
+  filetypes = { "xml", "svg", "xsd", "xslt" },
   maintainers = { "@ObserverOfTime" },
 }
 
@@ -2341,6 +2347,8 @@ local M = {
   filetype_to_parsername = filetype_to_parsername,
 }
 
+---@param ft string
+---@return string|nil
 local function get_lang(ft)
   if new_lang_api then
     return ts.language.get_lang(ft)
@@ -2348,6 +2356,8 @@ local function get_lang(ft)
   return filetype_to_parsername[ft]
 end
 
+---@param ft string
+---@return string
 function M.ft_to_lang(ft)
   local result = get_lang(ft)
   if result then
@@ -2376,6 +2386,7 @@ function M.get_parser_configs()
   return M.list
 end
 
+---@type table
 local parser_files
 
 function M.reset_cache()
