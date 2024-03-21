@@ -5,9 +5,8 @@
   (impl_item)
   (for_expression)
   (struct_expression)
-  (match_expression)
+  (struct_pattern)
   (tuple_expression)
-  (match_arm)
   (match_block)
   (call_expression)
   (assignment_expression)
@@ -21,6 +20,7 @@
   (enum_variant_list)
   (parameters)
   (token_tree)
+  (token_repetition)
   (macro_definition)
 ] @indent.begin
 
@@ -78,6 +78,14 @@
   body:
     (field_declaration_list
       "}" @indent.end))
+
+(struct_expression
+  body:
+    (field_initializer_list
+      "}" @indent.end))
+
+(struct_pattern
+  "}" @indent.end)
 
 (trait_item
   body:
