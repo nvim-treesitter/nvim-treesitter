@@ -130,11 +130,10 @@
   member: (ident) @property)
 
 (call_expr
-  function:
-    [
-      (ident)
-      (builtin_type)
-    ] @function)
+  function: [
+    (ident)
+    (builtin_type)
+  ] @function)
 
 (call_expr
   function: (builtin_type) @function.call)

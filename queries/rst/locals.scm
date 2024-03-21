@@ -24,9 +24,8 @@
 ; The role directive can define a new role
 ((directive
   name: (type) @_type
-  body:
-    (body
-      (arguments) @local.definition))
+  body: (body
+    (arguments) @local.definition))
   (#eq? @_type "role"))
 
 ; References

@@ -27,9 +27,8 @@
   (#any-of? @_fn "fn" "lambda" "λ" "hashfn")) @fold
 
 (reader_macro
-  macro:
-    [
-      "'"
-      "`"
-    ]
+  macro: [
+    "'"
+    "`"
+  ]
   expression: (_) @fold)

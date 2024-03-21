@@ -48,9 +48,8 @@
     "include"
     "-include"
   ] @keyword.import
-  filenames:
-    (list
-      (word) @string.special.path))
+  filenames: (list
+    (word) @string.special.path))
 
 (variable_assignment
   name: (word) @string.special.symbol

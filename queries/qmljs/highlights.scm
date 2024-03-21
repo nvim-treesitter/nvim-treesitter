@@ -4,12 +4,11 @@
 ; Annotations
 (ui_annotation
   "@" @operator
-  type_name:
-    [
-      (identifier) @attribute
-      (nested_identifier
-        (identifier) @attribute)
-    ])
+  type_name: [
+    (identifier) @attribute
+    (nested_identifier
+      (identifier) @attribute)
+  ])
 
 ; type
 (ui_property
@@ -17,28 +16,25 @@
 
 ; Properties
 (ui_object_definition_binding
-  name:
-    [
-      (identifier) @property
-      (nested_identifier
-        (identifier) @property)
-    ])
+  name: [
+    (identifier) @property
+    (nested_identifier
+      (identifier) @property)
+  ])
 
 (ui_binding
-  name:
-    [
-      (identifier) @property
-      (nested_identifier
-        (identifier) @property)
-    ])
+  name: [
+    (identifier) @property
+    (nested_identifier
+      (identifier) @property)
+  ])
 
 ; locals query appears not working unless id: <ref> isn't a parameter.
 (ui_binding
   name: (identifier) @property
   (#eq? @property "id")
-  value:
-    (expression_statement
-      (identifier) @variable))
+  value: (expression_statement
+    (identifier) @variable))
 
 (ui_property
   name: (identifier) @property)
@@ -77,10 +73,9 @@
 
 ; function
 (call_expression
-  function:
-    (member_expression
-      object: (identifier) @variable
-      property: (property_identifier) @function))
+  function: (member_expression
+    object: (identifier) @variable
+    property: (property_identifier) @function))
 
 ; js
 ; Literals

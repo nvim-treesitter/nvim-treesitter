@@ -48,9 +48,8 @@
   name: (identifier) @local.definition.method)
 
 (local_variable_declaration
-  declarator:
-    (variable_declarator
-      name: (identifier) @local.definition.var))
+  declarator: (variable_declarator
+    name: (identifier) @local.definition.var))
 
 (enhanced_for_statement
   name: (identifier) @local.definition.var)
@@ -62,9 +61,8 @@
   name: (identifier) @local.definition.parameter)
 
 (field_declaration
-  declarator:
-    (variable_declarator
-      name: (identifier) @local.definition.field))
+  declarator: (variable_declarator
+    name: (identifier) @local.definition.field))
 
 ; REFERENCES
 (identifier) @local.reference

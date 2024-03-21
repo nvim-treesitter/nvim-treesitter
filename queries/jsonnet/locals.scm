@@ -9,9 +9,8 @@
 (local_bind) @local.scope
 
 (field
-  function:
-    (fieldname
-      (id) @local.definition.function)
+  function: (fieldname
+    (id) @local.definition.function)
   (#set! "definition.function.scope" "parent"))
 
 (bind

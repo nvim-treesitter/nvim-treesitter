@@ -50,12 +50,11 @@
 
 ; As are arguments in a block statement
 (block_statement_start
-  argument:
-    [
-      (path_expression
-        (identifier) @variable)
-      (identifier) @variable
-    ])
+  argument: [
+    (path_expression
+      (identifier) @variable)
+    (identifier) @variable
+  ])
 
 ; As is an identifier in a block param
 (block_params
@@ -63,12 +62,11 @@
 
 ; As are helper arguments
 ((helper_invocation
-  argument:
-    [
-      (path_expression
-        (identifier) @variable)
-      (identifier) @variable
-    ])
+  argument: [
+    (path_expression
+      (identifier) @variable)
+    (identifier) @variable
+  ])
   (#not-eq? @variable "this"))
 
 ; `this` should be highlighted as a built-in variable
@@ -82,12 +80,11 @@
 
 ; Helpers are functions
 ((helper_invocation
-  helper:
-    [
-      (path_expression
-        (identifier) @function)
-      (identifier) @function
-    ])
+  helper: [
+    (path_expression
+      (identifier) @function)
+    (identifier) @function
+  ])
   (#not-any-of? @function "if" "yield"))
 
 ((helper_invocation

@@ -60,12 +60,11 @@
   ])
 
 (scoped_call_expression
-  scope:
-    [
-      (name) @type
-      (qualified_name
-        (name) @type)
-    ])
+  scope: [
+    (name) @type
+    (qualified_name
+      (name) @type)
+  ])
 
 (class_constant_access_expression
   .
@@ -84,12 +83,11 @@
 
 (binary_expression
   operator: "instanceof"
-  right:
-    [
-      (name) @type
-      (qualified_name
-        (name) @type)
-    ])
+  right: [
+    (name) @type
+    (qualified_name
+      (name) @type)
+  ])
 
 ; Functions, methods, constructors
 (array_creation_expression
@@ -102,9 +100,8 @@
   name: (name) @function.method)
 
 (function_call_expression
-  function:
-    (qualified_name
-      (name) @function.call))
+  function: (qualified_name
+    (name) @function.call))
 
 (function_call_expression
   (name) @function.call)
@@ -146,17 +143,15 @@
   (variable_name) @property)
 
 (member_access_expression
-  name:
-    (variable_name
-      (name)) @variable.member)
+  name: (variable_name
+    (name)) @variable.member)
 
 (member_access_expression
   name: (name) @variable.member)
 
 (nullsafe_member_access_expression
-  name:
-    (variable_name
-      (name)) @variable.member)
+  name: (variable_name
+    (name)) @variable.member)
 
 (nullsafe_member_access_expression
   name: (name) @variable.member)
@@ -169,9 +164,8 @@
 
 ; Namespace
 (namespace_definition
-  name:
-    (namespace_name
-      (name) @module))
+  name: (namespace_name
+    (name) @module))
 
 (namespace_name_as_prefix
   (namespace_name

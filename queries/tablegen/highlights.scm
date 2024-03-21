@@ -58,14 +58,12 @@
   name: (identifier) @type)
 
 (def
-  name:
-    (value
-      (_) @type))
+  name: (value
+    (_) @type))
 
 (defm
-  name:
-    (value
-      (_) @type))
+  name: (value
+    (_) @type))
 
 (defset
   name: (identifier) @type)

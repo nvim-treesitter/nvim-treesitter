@@ -54,10 +54,9 @@
 
 (rdf_literal
   "^^" @type
-  datatype:
-    (_
-      [
-        "<"
-        ">"
-        (namespace)
-      ] @type) @type)
+  datatype: (_
+    [
+      "<"
+      ">"
+      (namespace)
+    ] @type) @type)

@@ -214,20 +214,18 @@
 
 ; The rest of it
 (var_declaration
-  declarators:
-    (var_declarators
-      (var
-        name: (identifier) @variable)))
+  declarators: (var_declarators
+    (var
+      name: (identifier) @variable)))
 
 (var_declaration
-  declarators:
-    (var_declarators
-      (var
-        "<" @punctuation.bracket
-        .
-        attribute: (attribute) @attribute
-        .
-        ">" @punctuation.bracket)))
+  declarators: (var_declarators
+    (var
+      "<" @punctuation.bracket
+      .
+      attribute: (attribute) @attribute
+      .
+      ">" @punctuation.bracket)))
 
 [
   "("

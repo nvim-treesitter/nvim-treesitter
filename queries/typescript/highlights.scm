@@ -197,11 +197,10 @@
 ; property signatures
 (property_signature
   name: (property_identifier) @function.method
-  type:
-    (type_annotation
-      [
-        (union_type
-          (parenthesized_type
-            (function_type)))
-        (function_type)
-      ]))
+  type: (type_annotation
+    [
+      (union_type
+        (parenthesized_type
+          (function_type)))
+      (function_type)
+    ]))

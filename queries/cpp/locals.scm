@@ -2,9 +2,8 @@
 
 ; Parameters
 (variadic_parameter_declaration
-  declarator:
-    (variadic_declarator
-      (identifier) @local.definition.parameter))
+  declarator: (variadic_declarator
+    (identifier) @local.definition.parameter))
 
 (optional_parameter_declaration
   declarator: (identifier) @local.definition.parameter)
@@ -19,9 +18,8 @@
   (identifier) @local.definition.var)
 
 (struct_specifier
-  name:
-    (qualified_identifier
-      name: (type_identifier) @local.definition.type))
+  name: (qualified_identifier
+    name: (type_identifier) @local.definition.type))
 
 (class_specifier
   name: (type_identifier) @local.definition.type)
@@ -30,9 +28,8 @@
   name: (identifier) @local.definition.type)
 
 (class_specifier
-  name:
-    (qualified_identifier
-      name: (type_identifier) @local.definition.type))
+  name: (qualified_identifier
+    name: (type_identifier) @local.definition.type))
 
 (alias_declaration
   name: (type_identifier) @local.definition.type)
@@ -63,14 +60,12 @@
   name: (field_identifier) @local.definition.method) @local.scope
 
 (function_declarator
-  declarator:
-    (qualified_identifier
-      name: (identifier) @local.definition.function)) @local.scope
+  declarator: (qualified_identifier
+    name: (identifier) @local.definition.function)) @local.scope
 
 (field_declaration
-  declarator:
-    (function_declarator
-      (field_identifier) @local.definition.method))
+  declarator: (function_declarator
+    (field_identifier) @local.definition.method))
 
 (lambda_expression) @local.scope
 

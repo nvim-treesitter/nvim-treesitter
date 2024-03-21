@@ -111,9 +111,8 @@
 
 ; Fields
 (field_declaration
-  declarator:
-    (variable_declarator
-      name: (identifier) @variable.member))
+  declarator: (variable_declarator
+    name: (identifier) @variable.member))
 
 (field_access
   field: (identifier) @variable.member)

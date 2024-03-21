@@ -170,12 +170,11 @@
     "trap" "type" "typeset" "ulimit" "umask" "unalias" "wait"))
 
 (command
-  argument:
-    [
-      (word) @variable.parameter
-      (concatenation
-        (word) @variable.parameter)
-    ])
+  argument: [
+    (word) @variable.parameter
+    (concatenation
+      (word) @variable.parameter)
+  ])
 
 (number) @number
 

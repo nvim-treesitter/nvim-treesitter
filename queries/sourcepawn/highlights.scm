@@ -23,9 +23,8 @@
   function: (identifier) @function)
 
 (call_expression
-  function:
-    (field_access
-      field: (identifier) @function.method.call))
+  function: (field_access
+    field: (identifier) @function.method.call))
 
 ; Types
 [

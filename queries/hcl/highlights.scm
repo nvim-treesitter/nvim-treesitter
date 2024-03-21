@@ -104,10 +104,9 @@
 ;
 ; highlight identifier keys as though they were block attributes
 (object_elem
-  key:
-    (expression
-      (variable_expr
-        (identifier) @variable.member)))
+  key: (expression
+    (variable_expr
+      (identifier) @variable.member)))
 
 ; var.foo, data.bar
 ;

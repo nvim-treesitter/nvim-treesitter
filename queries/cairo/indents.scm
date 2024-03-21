@@ -25,29 +25,24 @@
   "}" @indent.end)
 
 (enum_item
-  body:
-    (enum_variant_list
-      "}" @indent.end))
+  body: (enum_variant_list
+    "}" @indent.end))
 
 (match_expression
-  body:
-    (match_block
-      "}" @indent.end))
+  body: (match_block
+    "}" @indent.end))
 
 (mod_item
-  body:
-    (declaration_list
-      "}" @indent.end))
+  body: (declaration_list
+    "}" @indent.end))
 
 (struct_item
-  body:
-    (field_declaration_list
-      "}" @indent.end))
+  body: (field_declaration_list
+    "}" @indent.end))
 
 (trait_item
-  body:
-    (declaration_list
-      "}" @indent.end))
+  body: (declaration_list
+    "}" @indent.end))
 
 [
   ")"

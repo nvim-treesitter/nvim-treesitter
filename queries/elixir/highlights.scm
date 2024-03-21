@@ -95,42 +95,37 @@
 
 ; Remote Function Calls
 (call
-  target:
-    (dot
-      left:
-        [
-          (atom) @type
-          (_)
-        ]
-      right: (identifier) @function.call)
+  target: (dot
+    left: [
+      (atom) @type
+      (_)
+    ]
+    right: (identifier) @function.call)
   (arguments))
 
 ; Definition Function Calls
 (call
-  target:
-    ((identifier) @keyword.function
-      (#any-of? @keyword.function
-        "def" "defdelegate" "defexception" "defguard" "defguardp" "defimpl" "defmacro" "defmacrop"
-        "defmodule" "defn" "defnp" "defoverridable" "defp" "defprotocol" "defstruct"))
+  target: ((identifier) @keyword.function
+    (#any-of? @keyword.function
+      "def" "defdelegate" "defexception" "defguard" "defguardp" "defimpl" "defmacro" "defmacrop"
+      "defmodule" "defn" "defnp" "defoverridable" "defp" "defprotocol" "defstruct"))
   (arguments
     [
       (call
         (identifier) @function)
       (identifier) @function
       (binary_operator
-        left:
-          (call
-            target: (identifier) @function)
+        left: (call
+          target: (identifier) @function)
         operator: "when")
     ])?)
 
 ; Kernel Keywords & Special Forms
 (call
-  target:
-    ((identifier) @keyword
-      (#any-of? @keyword
-        "alias" "case" "catch" "cond" "else" "for" "if" "import" "quote" "raise" "receive" "require"
-        "reraise" "super" "throw" "try" "unless" "unquote" "unquote_splicing" "use" "with")))
+  target: ((identifier) @keyword
+    (#any-of? @keyword
+      "alias" "case" "catch" "cond" "else" "for" "if" "import" "quote" "raise" "receive" "require"
+      "reraise" "super" "throw" "try" "unless" "unquote" "unquote_splicing" "use" "with")))
 
 ; Special Constants
 ((identifier) @constant.builtin
@@ -160,22 +155,19 @@
 ; Capture Operator
 (unary_operator
   operator: "&"
-  operand:
-    [
-      (integer) @operator
-      (binary_operator
-        left:
-          [
-            (call
-              target:
-                (dot
-                  left: (_)
-                  right: (identifier) @function))
-            (identifier) @function
-          ]
-        operator: "/"
-        right: (integer) @operator)
-    ])
+  operand: [
+    (integer) @operator
+    (binary_operator
+      left: [
+        (call
+          target: (dot
+            left: (_)
+            right: (identifier) @function))
+        (identifier) @function
+      ]
+      operator: "/"
+      right: (integer) @operator)
+  ])
 
 ; Non-String Sigils
 (sigil
@@ -199,30 +191,27 @@
 ; Module attributes
 (unary_operator
   operator: "@"
-  operand:
-    [
-      (identifier)
-      (call
-        target: (identifier))
-    ] @constant) @constant
+  operand: [
+    (identifier)
+    (call
+      target: (identifier))
+  ] @constant) @constant
 
 ; Documentation
 (unary_operator
   operator: "@"
-  operand:
-    (call
-      target:
-        ((identifier) @_identifier
-          (#any-of? @_identifier "moduledoc" "typedoc" "shortdoc" "doc")) @comment.documentation
-      (arguments
-        [
-          (string)
-          (boolean)
-          (charlist)
-          (sigil
-            "~" @comment.documentation
-            (sigil_name) @comment.documentation
-            quoted_start: _ @comment.documentation
-            (quoted_content) @comment.documentation
-            quoted_end: _ @comment.documentation)
-        ] @comment.documentation))) @comment.documentation
+  operand: (call
+    target: ((identifier) @_identifier
+      (#any-of? @_identifier "moduledoc" "typedoc" "shortdoc" "doc")) @comment.documentation
+    (arguments
+      [
+        (string)
+        (boolean)
+        (charlist)
+        (sigil
+          "~" @comment.documentation
+          (sigil_name) @comment.documentation
+          quoted_start: _ @comment.documentation
+          (quoted_content) @comment.documentation
+          quoted_end: _ @comment.documentation)
+      ] @comment.documentation))) @comment.documentation

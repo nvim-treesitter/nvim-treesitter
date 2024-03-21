@@ -42,14 +42,12 @@
   .
   (table
     (table_pair
-      key:
-        (string
-          (string_content) @_command
-          (#eq? @_command "command"))
-      value:
-        (string
-          (string_content) @injection.content
-          (#set! injection.language "vim")))))
+      key: (string
+        (string_content) @_command
+        (#eq? @_command "command"))
+      value: (string
+        (string_content) @injection.content
+        (#set! injection.language "vim")))))
 
 (list
   .

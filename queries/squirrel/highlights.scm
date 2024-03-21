@@ -143,11 +143,10 @@
   function: (identifier) @function.call)
 
 (call_expression
-  function:
-    (deref_expression
-      "."
-      .
-      (identifier) @function.call))
+  function: (deref_expression
+    "."
+    .
+    (identifier) @function.call))
 
 (call_expression
   (global_variable
@@ -163,14 +162,12 @@
 (call_expression
   [
     function: (identifier) @function.builtin
-    function:
-      (global_variable
-        "::"
-        (_) @function.builtin)
-    function:
-      (deref_expression
-        "."
-        (_) @function.builtin)
+    function: (global_variable
+      "::"
+      (_) @function.builtin)
+    function: (deref_expression
+      "."
+      (_) @function.builtin)
   ]
   (#any-of? @function.builtin
     ; General Methods

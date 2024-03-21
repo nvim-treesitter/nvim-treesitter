@@ -42,18 +42,16 @@
   name: (constant) @local.definition.type)
 
 (method
-  name:
-    [
-      (identifier)
-      (constant)
-    ] @local.definition.function)
+  name: [
+    (identifier)
+    (constant)
+  ] @local.definition.function)
 
 (singleton_method
-  name:
-    [
-      (identifier)
-      (constant)
-    ] @local.definition.function)
+  name: [
+    (identifier)
+    (constant)
+  ] @local.definition.function)
 
 (method_parameters
   (identifier) @local.definition.var)

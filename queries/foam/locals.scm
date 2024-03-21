@@ -7,6 +7,5 @@
   keyword: (_) @local.definition.parameter)
 
 (key_value
-  value:
-    (macro
-      (identifier)*)* @local.reference)
+  value: (macro
+    (identifier)*)* @local.reference)

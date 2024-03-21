@@ -67,10 +67,9 @@
   (#set! reference.kind "method"))
 
 (function_call_expression
-  function:
-    (qualified_name
-      (name) @local.reference
-      (#set! reference.kind "function")))
+  function: (qualified_name
+    (name) @local.reference
+    (#set! reference.kind "function")))
 
 (object_creation_expression
   (qualified_name
@@ -78,9 +77,8 @@
     (#set! reference.kind "type")))
 
 (scoped_call_expression
-  scope:
-    (qualified_name
-      (name) @local.reference
-      (#set! reference.kind "type"))
+  scope: (qualified_name
+    (name) @local.reference
+    (#set! reference.kind "type"))
   name: (name) @local.reference
   (#set! reference.kind "method"))

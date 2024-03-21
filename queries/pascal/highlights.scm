@@ -291,9 +291,8 @@
   name: (identifier) @type)
 
 (declType
-  name:
-    (genericTpl
-      entity: (identifier) @type))
+  name: (genericTpl
+    entity: (identifier) @type))
 
 ; -- Procedure & function declarations
 ; foobar
@@ -302,23 +301,19 @@
 
 ; foobar<t>
 (declProc
-  name:
-    (genericTpl
-      entity: (identifier) @function))
+  name: (genericTpl
+    entity: (identifier) @function))
 
 ; foo.bar
 (declProc
-  name:
-    (genericDot
-      rhs: (identifier) @function))
+  name: (genericDot
+    rhs: (identifier) @function))
 
 ; foo.bar<t>
 (declProc
-  name:
-    (genericDot
-      rhs:
-        (genericTpl
-          entity: (identifier) @function)))
+  name: (genericDot
+    rhs: (genericTpl
+      entity: (identifier) @function)))
 
 ; Treat property declarations like functions
 (declProp
@@ -342,9 +337,8 @@
   type: (typeref) @type)
 
 (declProc
-  name:
-    (genericDot
-      lhs: (identifier) @type))
+  name: (genericDot
+    lhs: (identifier) @type))
 
 (declType
   (genericDot
@@ -362,9 +356,8 @@
   entity: (identifier) @type)
 
 (genericTpl
-  entity:
-    (genericDot
-      (identifier) @type))
+  entity: (genericDot
+    (identifier) @type))
 
 ; -- Exception parameters
 (exceptionHandler
@@ -432,23 +425,19 @@
 
 ; foobar<t>
 (exprCall
-  entity:
-    (exprTpl
-      entity: (identifier) @function))
+  entity: (exprTpl
+    entity: (identifier) @function))
 
 ; foo.bar
 (exprCall
-  entity:
-    (exprDot
-      rhs: (identifier) @function))
+  entity: (exprDot
+    rhs: (identifier) @function))
 
 ; foo.bar<t>
 (exprCall
-  entity:
-    (exprDot
-      rhs:
-        (exprTpl
-          entity: (identifier) @function)))
+  entity: (exprDot
+    rhs: (exprTpl
+      entity: (identifier) @function)))
 
 (inherited) @function
 
@@ -469,9 +458,8 @@
 
 (statement
   (exprDot
-    rhs:
-      (exprTpl
-        entity: (identifier) @function)))
+    rhs: (exprTpl
+      entity: (identifier) @function)))
 
 ; -- Break, Continue & Exit
 ; (Not ideal: ideally, there would be a way to check if these special
@@ -482,9 +470,8 @@
 
 (statement
   (exprCall
-    entity:
-      ((identifier) @keyword.return
-        (#lua-match? @keyword.return "^[eE][xX][iI][tT]$"))))
+    entity: ((identifier) @keyword.return
+      (#lua-match? @keyword.return "^[eE][xX][iI][tT]$"))))
 
 (statement
   ((identifier) @keyword.repeat
@@ -505,9 +492,8 @@
     (#match? @constant "^[A-Z][A-Z0-9_]+$|^[a-z]{2,3}[A-Z].+$")))
 
 (assignment
-  rhs:
-    ((identifier) @constant
-      (#match? @constant "^[A-Z][A-Z0-9_]+$|^[a-z]{2,3}[A-Z].+$")))
+  rhs: ((identifier) @constant
+    (#match? @constant "^[A-Z][A-Z0-9_]+$|^[a-z]{2,3}[A-Z].+$")))
 
 (exprBrackets
   ((identifier) @constant
@@ -518,14 +504,12 @@
     (#match? @constant "^[A-Z][A-Z0-9_]+$|^[a-z]{2,3}[A-Z].+$")))
 
 (exprDot
-  rhs:
-    ((identifier) @constant
-      (#match? @constant "^[A-Z][A-Z0-9_]+$|^[a-z]{2,3}[A-Z].+$")))
+  rhs: ((identifier) @constant
+    (#match? @constant "^[A-Z][A-Z0-9_]+$|^[a-z]{2,3}[A-Z].+$")))
 
 (exprTpl
-  args:
-    ((identifier) @constant
-      (#match? @constant "^[A-Z][A-Z0-9_]+$|^[a-z]{2,3}[A-Z].+$")))
+  args: ((identifier) @constant
+    (#match? @constant "^[A-Z][A-Z0-9_]+$|^[a-z]{2,3}[A-Z].+$")))
 
 (exprArgs
   ((identifier) @constant

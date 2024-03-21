@@ -206,29 +206,26 @@
 
 (rdf_literal
   "^^" @type
-  datatype:
-    (_
-      [
-        "<"
-        ">"
-        (namespace)
-      ] @type) @type)
+  datatype: (_
+    [
+      "<"
+      ">"
+      (namespace)
+    ] @type) @type)
 
 (function_call
   identifier: (_) @function)
 
 (function_call
-  identifier:
-    (iri_reference
-      [
-        "<"
-        ">"
-      ] @function))
+  identifier: (iri_reference
+    [
+      "<"
+      ">"
+    ] @function))
 
 (function_call
-  identifier:
-    (prefixed_name
-      (namespace) @function))
+  identifier: (prefixed_name
+    (namespace) @function))
 
 (base_declaration
   (iri_reference

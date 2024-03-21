@@ -3,30 +3,26 @@
   (#set! definition.function.scope "parent"))
 
 (defun_header
-  lambda_list:
-    (list_lit
-      (sym_lit) @local.definition.parameter))
+  lambda_list: (list_lit
+    (sym_lit) @local.definition.parameter))
 
 (defun_header
-  keyword:
-    (defun_keyword
-      "defmethod")
-  lambda_list:
+  keyword: (defun_keyword
+    "defmethod")
+  lambda_list: (list_lit
     (list_lit
-      (list_lit
-        .
-        (sym_lit)
-        .
-        (sym_lit) @local.definition.type)))
+      .
+      (sym_lit)
+      .
+      (sym_lit) @local.definition.type)))
 
 (defun_header
-  lambda_list:
+  lambda_list: (list_lit
     (list_lit
-      (list_lit
-        .
-        (sym_lit) @local.definition.parameter
-        .
-        (_))))
+      .
+      (sym_lit) @local.definition.parameter
+      .
+      (_))))
 
 (sym_lit) @local.reference
 

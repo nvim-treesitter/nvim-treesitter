@@ -5,9 +5,8 @@
 
 ; Module Definitions
 (call
-  target:
-    ((identifier) @_identifier
-      (#eq? @_identifier "defmodule"))
+  target: ((identifier) @_identifier
+    (#eq? @_identifier "defmodule"))
   (arguments
     (alias) @local.definition.type))
 

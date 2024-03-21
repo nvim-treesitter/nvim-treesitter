@@ -22,9 +22,8 @@
   name: (type) @function)
 
 (directive
-  body:
-    (body
-      (arguments) @variable.parameter))
+  body: (body
+    (arguments) @variable.parameter))
 
 ((directive
   name: (type) @keyword.import)
@@ -143,9 +142,8 @@
 
 (directive
   name: (type) @_directive
-  body:
-    (body
-      (content) @spell
-      (#not-any-of? @_directive "code" "code-block" "sourcecode")))
+  body: (body
+    (content) @spell
+    (#not-any-of? @_directive "code" "code-block" "sourcecode")))
 
 (paragraph) @spell

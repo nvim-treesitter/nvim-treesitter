@@ -35,20 +35,16 @@
 ; NOTE: has to be before literals and punctuation etc.
 ; identifiers in "case" "of" branches have to be enums
 (case
-  alternative:
-    (of_branch
-      values:
-        (expression_list
-          (_) @constant)))
+  alternative: (of_branch
+    values: (expression_list
+      (_) @constant)))
 
 ; NOTE: has to be before literals and punctuation etc.
 ; in variant objects with "case" "of"
 (variant_declaration
-  alternative:
-    (of_branch
-      values:
-        (expression_list
-          (_) @constant)))
+  alternative: (of_branch
+    values: (expression_list
+      (_) @constant)))
 
 ; NOTE: has to be before literals and punctuation etc.
 ; =============================================================================
@@ -154,9 +150,8 @@
     (colon_expression
       left: (identifier) @_emit_keyword
       (#eq? @_emit_keyword "emit")
-      right:
-        (_
-          (string_content) @none))))
+      right: (_
+        (string_content) @none))))
 
 ; =============================================================================
 ; @string.escape        ; escape sequences
@@ -184,240 +179,215 @@
 ; =============================================================================
 ; @function         ; function definitions
 (proc_declaration
-  name:
-    [
-      (identifier) @function
+  name: [
+    (identifier) @function
+    (accent_quoted
+      (identifier) @function)
+    (exported_symbol
+      (identifier) @function)
+    (exported_symbol
       (accent_quoted
-        (identifier) @function)
-      (exported_symbol
-        (identifier) @function)
-      (exported_symbol
-        (accent_quoted
-          (identifier) @function))
-    ])
+        (identifier) @function))
+  ])
 
 (func_declaration
-  name:
-    [
-      (identifier) @function
+  name: [
+    (identifier) @function
+    (accent_quoted
+      (identifier) @function)
+    (exported_symbol
+      (identifier) @function)
+    (exported_symbol
       (accent_quoted
-        (identifier) @function)
-      (exported_symbol
-        (identifier) @function)
-      (exported_symbol
-        (accent_quoted
-          (identifier) @function))
-    ])
+        (identifier) @function))
+  ])
 
 (iterator_declaration
-  name:
-    [
-      (identifier) @function
+  name: [
+    (identifier) @function
+    (accent_quoted
+      (identifier) @function)
+    (exported_symbol
+      (identifier) @function)
+    (exported_symbol
       (accent_quoted
-        (identifier) @function)
-      (exported_symbol
-        (identifier) @function)
-      (exported_symbol
-        (accent_quoted
-          (identifier) @function))
-    ])
+        (identifier) @function))
+  ])
 
 (converter_declaration
-  name:
-    [
-      (identifier) @function
+  name: [
+    (identifier) @function
+    (accent_quoted
+      (identifier) @function)
+    (exported_symbol
+      (identifier) @function)
+    (exported_symbol
       (accent_quoted
-        (identifier) @function)
-      (exported_symbol
-        (identifier) @function)
-      (exported_symbol
-        (accent_quoted
-          (identifier) @function))
-    ])
+        (identifier) @function))
+  ])
 
 ; =============================================================================
 ; @function.call    ; function calls
 (call
-  function:
-    [
-      (identifier) @function.call
-      (accent_quoted
-        (identifier) @function.call)
-      ; generic types
-      (bracket_expression
-        left: (identifier) @function.call)
-      (bracket_expression
-        left:
-          (accent_quoted
-            (identifier) @function.call))
-      ; dot accessor
-      (dot_expression
-        right: (identifier) @function.call)
-      (dot_expression
-        right:
-          (accent_quoted
-            (identifier) @function.call))
-      ; both
-      (bracket_expression
-        left:
-          (dot_expression
-            right: (identifier) @function.call))
-      (bracket_expression
-        left:
-          (dot_expression
-            right:
-              (accent_quoted
-                (identifier) @function.call)))
-    ])
+  function: [
+    (identifier) @function.call
+    (accent_quoted
+      (identifier) @function.call)
+    ; generic types
+    (bracket_expression
+      left: (identifier) @function.call)
+    (bracket_expression
+      left: (accent_quoted
+        (identifier) @function.call))
+    ; dot accessor
+    (dot_expression
+      right: (identifier) @function.call)
+    (dot_expression
+      right: (accent_quoted
+        (identifier) @function.call))
+    ; both
+    (bracket_expression
+      left: (dot_expression
+        right: (identifier) @function.call))
+    (bracket_expression
+      left: (dot_expression
+        right: (accent_quoted
+          (identifier) @function.call)))
+  ])
 
 (dot_generic_call
-  function:
-    [
-      (identifier) @function.call
-      (accent_quoted
-        (identifier) @function.call)
-    ])
+  function: [
+    (identifier) @function.call
+    (accent_quoted
+      (identifier) @function.call)
+  ])
 
 ; generalized_string is a function call
 ; `identifier"string literal"`
 ; is short for
 ; `identifier(r"string literal")`
 (generalized_string
-  function:
-    [
-      (identifier) @function.call
-      (accent_quoted
-        (identifier) @function.call)
-    ])
+  function: [
+    (identifier) @function.call
+    (accent_quoted
+      (identifier) @function.call)
+  ])
 
 ; call with leading literal
 (dot_expression
-  left:
-    [
-      (nil_literal)
-      (integer_literal)
-      (float_literal)
-      (custom_numeric_literal)
-      (char_literal)
-      (interpreted_string_literal)
-      (long_string_literal)
-      (raw_string_literal)
-      (generalized_string)
+  left: [
+    (nil_literal)
+    (integer_literal)
+    (float_literal)
+    (custom_numeric_literal)
+    (char_literal)
+    (interpreted_string_literal)
+    (long_string_literal)
+    (raw_string_literal)
+    (generalized_string)
+    (array_construction)
+    ; for sequences
+    (prefix_expression
+      operator: (operator) @_at
       (array_construction)
-      ; for sequences
-      (prefix_expression
-        operator: (operator) @_at
-        (array_construction)
-        (#eq? @_at "@"))
-      (tuple_construction)
-      (curly_construction)
-    ]
-  right:
-    [
-      (identifier) @function.call
-      (accent_quoted
-        (identifier) @function.call)
-    ])
+      (#eq? @_at "@"))
+    (tuple_construction)
+    (curly_construction)
+  ]
+  right: [
+    (identifier) @function.call
+    (accent_quoted
+      (identifier) @function.call)
+  ])
 
 ; NOTE: will double capture as @function.call if it also has argument_list
 ; function.calls in `varargs[type, routine]`
 (bracket_expression
   left: (identifier) @_varargs
-  right:
-    (argument_list
-      .
-      (_)
-      .
-      [
-        (identifier) @function.call
-        (accent_quoted
-          (identifier) @function.call)
-        (dot_expression
-          right: (identifier) @function.call)
-        (dot_expression
-          right:
-            (accent_quoted
-              (identifier) @function.call))
-      ])
+  right: (argument_list
+    .
+    (_)
+    .
+    [
+      (identifier) @function.call
+      (accent_quoted
+        (identifier) @function.call)
+      (dot_expression
+        right: (identifier) @function.call)
+      (dot_expression
+        right: (accent_quoted
+          (identifier) @function.call))
+    ])
   (#eq? @_varargs "varargs"))
 
 ; =============================================================================
 ; @function.macro   ; preprocessor macros
 (template_declaration
-  name:
-    [
-      (identifier) @function.macro
+  name: [
+    (identifier) @function.macro
+    (accent_quoted
+      (identifier) @function.macro)
+    (exported_symbol
+      (identifier) @function.macro)
+    (exported_symbol
       (accent_quoted
-        (identifier) @function.macro)
-      (exported_symbol
-        (identifier) @function.macro)
-      (exported_symbol
-        (accent_quoted
-          (identifier) @function.macro))
-    ])
+        (identifier) @function.macro))
+  ])
 
 (macro_declaration
-  name:
-    [
-      (identifier) @function.macro
+  name: [
+    (identifier) @function.macro
+    (accent_quoted
+      (identifier) @function.macro)
+    (exported_symbol
+      (identifier) @function.macro)
+    (exported_symbol
       (accent_quoted
-        (identifier) @function.macro)
-      (exported_symbol
-        (identifier) @function.macro)
-      (exported_symbol
-        (accent_quoted
-          (identifier) @function.macro))
-    ])
+        (identifier) @function.macro))
+  ])
 
 ; =============================================================================
 ; @function.method           ; method definitions
 (method_declaration
-  name:
-    [
-      (identifier) @function.method
+  name: [
+    (identifier) @function.method
+    (accent_quoted
+      (identifier) @function.method)
+    (exported_symbol
+      (identifier) @function.method)
+    (exported_symbol
       (accent_quoted
-        (identifier) @function.method)
-      (exported_symbol
-        (identifier) @function.method)
-      (exported_symbol
-        (accent_quoted
-          (identifier) @function.method))
-    ])
+        (identifier) @function.method))
+  ])
 
 ; =============================================================================
 ; @constructor      ; constructor calls and definitions
 (call
-  function:
-    [
-      (identifier) @constructor
-      (accent_quoted
-        (identifier) @constructor)
-      ; generic types
-      (bracket_expression
-        left: (identifier) @constructor)
-      (bracket_expression
-        left:
-          (accent_quoted
-            (identifier) @constructor))
-      ; dot accessor
-      (dot_expression
-        right: (identifier) @constructor)
-      (dot_expression
-        right:
-          (accent_quoted
-            (identifier) @constructor))
-      ; both
-      (bracket_expression
-        left:
-          (dot_expression
-            right: (identifier) @constructor))
-      (bracket_expression
-        left:
-          (dot_expression
-            right:
-              (accent_quoted
-                (identifier) @constructor)))
-    ]
+  function: [
+    (identifier) @constructor
+    (accent_quoted
+      (identifier) @constructor)
+    ; generic types
+    (bracket_expression
+      left: (identifier) @constructor)
+    (bracket_expression
+      left: (accent_quoted
+        (identifier) @constructor))
+    ; dot accessor
+    (dot_expression
+      right: (identifier) @constructor)
+    (dot_expression
+      right: (accent_quoted
+        (identifier) @constructor))
+    ; both
+    (bracket_expression
+      left: (dot_expression
+        right: (identifier) @constructor))
+    (bracket_expression
+      left: (dot_expression
+        right: (accent_quoted
+          (identifier) @constructor)))
+  ]
   (argument_list
     (colon_expression)+))
 
@@ -520,12 +490,11 @@
 ; =============================================================================
 ; @label               ; GOTO and other labels (e.g. `label:` in C)
 (block
-  label:
-    [
-      (identifier) @label
-      (accent_quoted
-        (identifier) @label)
-    ])
+  label: [
+    (identifier) @label
+    (accent_quoted
+      (identifier) @label)
+  ])
 
 ; =============================================================================
 ; @keyword.import             ; keywords for including modules (e.g. `import` / `from` in Python)
@@ -554,9 +523,8 @@
 ; @type            ; type or class definitions and annotations
 ; generic types when calling
 (call
-  function:
-    (bracket_expression
-      right: (argument_list) @type))
+  function: (bracket_expression
+    right: (argument_list) @type))
 
 ; NOTE: this also falsely matches
 ; when accessing and directly call elements from an array of routines
@@ -567,11 +535,10 @@
 
 ; right side of `is` operator is always type
 (infix_expression
-  operator:
-    [
-      "is"
-      "isnot"
-    ]
+  operator: [
+    "is"
+    "isnot"
+  ]
   right: (_) @type)
 
 ; except branch always contains types of errors
@@ -582,16 +549,14 @@
 ; overrule special case in (except_branch) with "as" operator
 ; `except module.exception[gen_type] as variable:`
 (except_branch
-  values:
-    (expression_list
-      (infix_expression
-        operator: "as"
-        right:
-          [
-            (identifier) @variable
-            (accent_quoted
-              (identifier) @variable)
-          ])))
+  values: (expression_list
+    (infix_expression
+      operator: "as"
+      right: [
+        (identifier) @variable
+        (accent_quoted
+          (identifier) @variable)
+      ])))
 
 ; for inline tuple types
 ; `type a = tuple[a: int]`
@@ -608,24 +573,22 @@
 ; call(parameter_name=arg)
 (argument_list
   (equal_expression
-    left:
-      [
-        (identifier) @variable.parameter
-        (accent_quoted
-          (identifier) @variable.parameter)
-      ]))
+    left: [
+      (identifier) @variable.parameter
+      (accent_quoted
+        (identifier) @variable.parameter)
+    ]))
 
 ; parameters in function declaration
 (parameter_declaration_list
   (parameter_declaration
     (symbol_declaration_list
       (symbol_declaration
-        name:
-          [
-            (identifier) @variable.parameter
-            (accent_quoted
-              (identifier) @variable.parameter)
-          ]))))
+        name: [
+          (identifier) @variable.parameter
+          (accent_quoted
+            (identifier) @variable.parameter)
+        ]))))
 
 ; NOTE: needs to be after @type
 ; generic types when declaring
@@ -633,43 +596,38 @@
   (parameter_declaration
     (symbol_declaration_list
       (symbol_declaration
-        name:
-          [
-            (identifier) @variable.parameter
-            (accent_quoted
-              (identifier) @variable.parameter)
-          ]))))
+        name: [
+          (identifier) @variable.parameter
+          (accent_quoted
+            (identifier) @variable.parameter)
+        ]))))
 
 ; for loop variables
 (for
-  left:
-    (symbol_declaration_list
-      (symbol_declaration
-        name:
-          [
-            (identifier) @variable.parameter
-            (accent_quoted
-              (identifier) @variable.parameter)
-          ])))
+  left: (symbol_declaration_list
+    (symbol_declaration
+      name: [
+        (identifier) @variable.parameter
+        (accent_quoted
+          (identifier) @variable.parameter)
+      ])))
 
 ((tuple_deconstruct_declaration
   (symbol_declaration
-    name:
-      [
-        (identifier) @variable.parameter
-        (accent_quoted
-          (identifier) @variable.parameter)
-      ])) @_tuple_decons
+    name: [
+      (identifier) @variable.parameter
+      (accent_quoted
+        (identifier) @variable.parameter)
+    ])) @_tuple_decons
   (#has-ancestor? @_tuple_decons for))
 
 (concept_declaration
-  parameters:
-    (parameter_list
-      [
-        (identifier) @variable.parameter
-        (accent_quoted
-          (identifier) @variable.parameter)
-      ]))
+  parameters: (parameter_list
+    [
+      (identifier) @variable.parameter
+      (accent_quoted
+        (identifier) @variable.parameter)
+    ]))
 
 (var_parameter
   [
@@ -711,17 +669,16 @@
 (type_section
   (type_declaration
     (type_symbol_declaration
-      name:
-        [
-          (identifier) @type.definition
+      name: [
+        (identifier) @type.definition
+        (accent_quoted
+          (identifier) @type.definition)
+        (exported_symbol
+          (identifier) @type.definition)
+        (exported_symbol
           (accent_quoted
-            (identifier) @type.definition)
-          (exported_symbol
-            (identifier) @type.definition)
-          (exported_symbol
-            (accent_quoted
-              (identifier) @type.definition))
-        ])))
+            (identifier) @type.definition))
+      ])))
 
 ; =============================================================================
 ; @keyword.modifier  ; type qualifier keywords (e.g. `const`)
@@ -761,8 +718,41 @@
 (field_declaration
   (symbol_declaration_list
     (symbol_declaration
-      name:
-        [
+      name: [
+        (identifier) @variable.member
+        (accent_quoted
+          (identifier) @variable.member)
+        (exported_symbol
+          (identifier) @variable.member)
+        (exported_symbol
+          (accent_quoted
+            (identifier) @variable.member))
+      ])))
+
+; fields in object construction
+(call
+  (argument_list
+    (colon_expression
+      left: [
+        (identifier) @variable.member
+        (accent_quoted
+          (identifier) @variable.member)
+      ])))
+
+; fields in tuple construction
+(tuple_construction
+  (colon_expression
+    left: [
+      (identifier) @variable.member
+      (accent_quoted
+        (identifier) @variable.member)
+    ]))
+
+(variant_declaration
+  (variant_discriminator_declaration
+    (symbol_declaration_list
+      (symbol_declaration
+        name: [
           (identifier) @variable.member
           (accent_quoted
             (identifier) @variable.member)
@@ -771,44 +761,7 @@
           (exported_symbol
             (accent_quoted
               (identifier) @variable.member))
-        ])))
-
-; fields in object construction
-(call
-  (argument_list
-    (colon_expression
-      left:
-        [
-          (identifier) @variable.member
-          (accent_quoted
-            (identifier) @variable.member)
-        ])))
-
-; fields in tuple construction
-(tuple_construction
-  (colon_expression
-    left:
-      [
-        (identifier) @variable.member
-        (accent_quoted
-          (identifier) @variable.member)
-      ]))
-
-(variant_declaration
-  (variant_discriminator_declaration
-    (symbol_declaration_list
-      (symbol_declaration
-        name:
-          [
-            (identifier) @variable.member
-            (accent_quoted
-              (identifier) @variable.member)
-            (exported_symbol
-              (identifier) @variable.member)
-            (exported_symbol
-              (accent_quoted
-                (identifier) @variable.member))
-          ]))))
+        ]))))
 
 ; =============================================================================
 ; @variable.builtin ; built-in variable names (e.g. `this`)
@@ -824,84 +777,75 @@
 ; enum declaration
 (enum_field_declaration
   (symbol_declaration
-    name:
-      [
-        (identifier) @constant
-        (accent_quoted
-          (identifier) @constant)
-      ]))
+    name: [
+      (identifier) @constant
+      (accent_quoted
+        (identifier) @constant)
+    ]))
 
 ; constant declaration
 (const_section
   (variable_declaration
     (symbol_declaration_list
       (symbol_declaration
-        name:
-          [
-            (identifier) @constant
+        name: [
+          (identifier) @constant
+          (accent_quoted
+            (identifier) @constant)
+          (exported_symbol
+            (identifier) @constant)
+          (exported_symbol
             (accent_quoted
-              (identifier) @constant)
-            (exported_symbol
-              (identifier) @constant)
-            (exported_symbol
-              (accent_quoted
-                (identifier) @constant))
-          ]))))
+              (identifier) @constant))
+        ]))))
 
 ((tuple_deconstruct_declaration
   (symbol_declaration
-    name:
-      [
-        (identifier) @constant
+    name: [
+      (identifier) @constant
+      (accent_quoted
+        (identifier) @constant)
+      (exported_symbol
+        (identifier) @constant)
+      (exported_symbol
         (accent_quoted
-          (identifier) @constant)
-        (exported_symbol
-          (identifier) @constant)
-        (exported_symbol
-          (accent_quoted
-            (identifier) @constant))
-      ])) @_tuple_decons
+          (identifier) @constant))
+    ])) @_tuple_decons
   (#has-ancestor? @_tuple_decons const_section))
 
 ; constants x and y in `array[x..y, type]`
 (bracket_expression
   left: (identifier) @_array
-  right:
-    (argument_list
-      .
-      (infix_expression
-        right:
-          [
-            (identifier) @constant
-            (accent_quoted
-              (identifier) @constant)
-            (dot_expression
-              right: (identifier) @constant)
-            (dot_expression
-              right:
-                (accent_quoted
-                  (identifier) @constant))
-          ]))
+  right: (argument_list
+    .
+    (infix_expression
+      right: [
+        (identifier) @constant
+        (accent_quoted
+          (identifier) @constant)
+        (dot_expression
+          right: (identifier) @constant)
+        (dot_expression
+          right: (accent_quoted
+            (identifier) @constant))
+      ]))
   (#any-of? @_array "array" "range"))
 
 (bracket_expression
   left: (identifier) @_array
-  right:
-    (argument_list
-      .
-      (infix_expression
-        left:
-          [
-            (identifier) @constant
-            (accent_quoted
-              (identifier) @constant)
-            (dot_expression
-              right: (identifier) @constant)
-            (dot_expression
-              right:
-                (accent_quoted
-                  (identifier) @constant))
-          ]))
+  right: (argument_list
+    .
+    (infix_expression
+      left: [
+        (identifier) @constant
+        (accent_quoted
+          (identifier) @constant)
+        (dot_expression
+          right: (identifier) @constant)
+        (dot_expression
+          right: (accent_quoted
+            (identifier) @constant))
+      ]))
   (#any-of? @_array "array" "range"))
 
 ; NOTE: can only do this for (infix_expression)s, since standalone identifiers
@@ -926,19 +870,17 @@
   (expression_list
     (infix_expression
       operator: (operator) @_operator
-      right:
-        [
-          (identifier) @module
-          (array_construction
-            (identifier) @module)
-        ]))
+      right: [
+        (identifier) @module
+        (array_construction
+          (identifier) @module)
+      ]))
   (#eq? @_operator "/"))
 
 (import_from_statement
-  module:
-    (infix_expression
-      operator: (operator) @_operator
-      right: (identifier) @module)
+  module: (infix_expression
+    operator: (operator) @_operator
+    right: (identifier) @module)
   (#eq? @_operator "/"))
 
 (export_statement
@@ -949,12 +891,11 @@
 ; overrule things
 ; left identifier in dot_expression
 (dot_expression
-  left:
-    [
-      (identifier) @none
-      (accent_quoted
-        (identifier) @none)
-    ])
+  left: [
+    (identifier) @none
+    (accent_quoted
+      (identifier) @none)
+  ])
 
 ; NOTE: we can't know what the left identifier is, so better leave it alone
 ; for consistency

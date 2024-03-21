@@ -37,14 +37,12 @@
   name: (identifier) @local.definition.type)
 
 (def
-  name:
-    (value
-      (_) @local.definition.type))
+  name: (value
+    (_) @local.definition.type))
 
 (defm
-  name:
-    (value
-      (_) @local.definition.type))
+  name: (value
+    (_) @local.definition.type))
 
 (defset
   name: (identifier) @local.definition.type)

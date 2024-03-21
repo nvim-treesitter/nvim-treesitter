@@ -42,9 +42,8 @@
   name: (identifier) @attribute)
 
 (attribute
-  name:
-    (variable
-      (identifier) @attribute))
+  name: (variable
+    (identifier) @attribute))
 
 ; Parameters
 (lambda

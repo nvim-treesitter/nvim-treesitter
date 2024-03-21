@@ -12,9 +12,8 @@
 
 (command_expression
   command: (identifier)
-  arguments:
-    (argument_list
-      declarator: (trace32_hll_variable) @local.definition.var))
+  arguments: (argument_list
+    declarator: (trace32_hll_variable) @local.definition.var))
 
 ; Function definitions
 (subroutine_block

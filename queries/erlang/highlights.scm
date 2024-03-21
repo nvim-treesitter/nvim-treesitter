@@ -106,10 +106,9 @@
 (export_type_attribute) @type.definition
 
 (export_type_attribute
-  types:
-    (fa
-      fun: _ @type
-      (#set! "priority" 101)))
+  types: (fa
+    fun: _ @type
+    (#set! "priority" 101)))
 
 (behaviour_attribute) @keyword.import
 
@@ -117,9 +116,8 @@
   (atom) @module) @keyword.import
 
 (wild_attribute
-  name:
-    (attr_name
-      name: _ @attribute)) @attribute
+  name: (attr_name
+    name: _ @attribute)) @attribute
 
 ; Records
 (record_expr) @type
@@ -157,12 +155,11 @@
 
 ; expr_function_call
 (call
-  expr:
-    [
-      (atom)
-      (remote)
-      (var)
-    ] @function)
+  expr: [
+    (atom)
+    (remote)
+    (var)
+  ] @function)
 
 (call
   (atom) @keyword.exception
@@ -170,10 +167,9 @@
 
 ; Parenthesized expression: (SomeFunc)(), only highlight the parens
 (call
-  expr:
-    (paren_expr
-      "(" @function.call
-      ")" @function.call))
+  expr: (paren_expr
+    "(" @function.call
+    ")" @function.call))
 
 ; function
 (external_fun) @function.call

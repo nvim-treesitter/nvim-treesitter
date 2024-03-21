@@ -263,18 +263,16 @@
   function: (identifier) @function.call)
 
 (call_expression
-  function:
-    (field_expression
-      field: (field_identifier) @function.call))
+  function: (field_expression
+    field: (field_identifier) @function.call))
 
 (function_declarator
   declarator: (identifier) @function)
 
 (function_declarator
-  declarator:
-    (parenthesized_declarator
-      (pointer_declarator
-        declarator: (field_identifier) @function)))
+  declarator: (parenthesized_declarator
+    (pointer_declarator
+      declarator: (field_identifier) @function)))
 
 (preproc_function_def
   name: (identifier) @function.macro)

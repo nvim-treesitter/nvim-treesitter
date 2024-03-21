@@ -33,9 +33,8 @@
 
 ((assignment
   left: (identifier) @type.definition
-  right:
-    (call
-      function: (identifier) @_func))
+  right: (call
+    function: (identifier) @_func))
   (#any-of? @_func "TypeVar" "NewType"))
 
 ; Decorators
@@ -88,10 +87,9 @@
 
 ((call
   function: (identifier) @_isinstance
-  arguments:
-    (argument_list
-      (_)
-      (identifier) @type))
+  arguments: (argument_list
+    (_)
+    (identifier) @type))
   (#eq? @_isinstance "isinstance"))
 
 ((identifier) @type.builtin
@@ -190,11 +188,10 @@
     (string) @string.documentation @spell))
 
 (function_definition
-  body:
-    (block
-      .
-      (expression_statement
-        (string) @string.documentation @spell)))
+  body: (block
+    .
+    (expression_statement
+      (string) @string.documentation @spell)))
 
 ; Tokens
 [
@@ -271,9 +268,8 @@
 
 ((call
   function: (identifier) @keyword.import
-  arguments:
-    (argument_list
-      (string) @string))
+  arguments: (argument_list
+    (string) @string))
   (#eq? @keyword.import "load"))
 
 [
@@ -323,10 +319,9 @@
 ; Struct definitions
 ((call
   function: (identifier) @_func
-  arguments:
-    (argument_list
-      (keyword_argument
-        name: (identifier) @variable.member)))
+  arguments: (argument_list
+    (keyword_argument
+      name: (identifier) @variable.member)))
   (#eq? @_func "struct"))
 
 ; Function calls
@@ -334,16 +329,14 @@
   function: (identifier) @function.call)
 
 (call
-  function:
-    (attribute
-      attribute: (identifier) @function.method.call))
+  function: (attribute
+    attribute: (identifier) @function.method.call))
 
 ((call
   function: (identifier) @constructor)
   (#lua-match? @constructor "^[A-Z]"))
 
 ((call
-  function:
-    (attribute
-      attribute: (identifier) @constructor))
+  function: (attribute
+    attribute: (identifier) @constructor))
   (#lua-match? @constructor "^[A-Z]"))

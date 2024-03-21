@@ -40,11 +40,10 @@
 
 (let_binding
   pattern: (value_name) @function
-  body:
-    [
-      (fun_expression)
-      (function_expression)
-    ])
+  body: [
+    (fun_expression)
+    (function_expression)
+  ])
 
 (value_specification
   (value_name) @function)
@@ -57,23 +56,20 @@
 ; Application
 ;------------
 (infix_expression
-  left:
-    (value_path
-      (value_name) @function.call)
+  left: (value_path
+    (value_name) @function.call)
   operator: (concat_operator) @_operator
   (#eq? @_operator "@@"))
 
 (infix_expression
   operator: (rel_operator) @_operator
-  right:
-    (value_path
-      (value_name) @function.call)
+  right: (value_path
+    (value_name) @function.call)
   (#eq? @_operator "|>"))
 
 (application_expression
-  function:
-    (value_path
-      (value_name) @function.call))
+  function: (value_path
+    (value_name) @function.call))
 
 ((value_name) @function.builtin
   (#any-of? @function.builtin "raise" "raise_notrace" "failwith" "invalid_arg"))

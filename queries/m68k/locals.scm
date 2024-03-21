@@ -20,8 +20,7 @@
   name: (symbol) @local.definition.constant)
 
 (external_reference
-  symbols:
-    (symbol_list
-      (symbol) @local.definition.import))
+  symbols: (symbol_list
+    (symbol) @local.definition.import))
 
 (symbol) @local.reference
