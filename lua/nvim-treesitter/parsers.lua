@@ -531,7 +531,8 @@ list.faust = {
 list.fennel = {
   install_info = {
     url = "https://github.com/alexmozaidze/tree-sitter-fennel",
-    files = { "src/parser.c" },
+    files = { "src/parser.c", "src/scanner.c" },
+    branch = "dev",
   },
   maintainers = { "@alexmozaidze" },
 }
