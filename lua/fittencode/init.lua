@@ -25,7 +25,7 @@ function M.setup(opts)
       Bindings.setup_keymaps()
     end
   else
-    require('fittencode.lsp').resiter_source()
+    require('fittencode.lsp').register_source()
   end
 
   -- Defer loading last session to avoid blocking initialization
