@@ -116,6 +116,9 @@
   "disassembly": {
     "revision": "0229c0211dba909c5d45129ac784a3f4d49c243a"
   },
+  "djot": {
+    "revision": "e1cfe895a9984f09045f6a2462ade0ee131aa7a0"
+  },
   "dockerfile": {
     "revision": "33e22c33bcdbfc33d42806ee84cfd0b1248cc392"
   },
@@ -360,7 +363,7 @@
     "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
   },
   "lalrpop": {
-    "revision": "456dec2990ed7e9595eca82f85db14a1db46e126"
+    "revision": "123d8b472e949b59f348c32e245107a34a3d8945"
   },
   "latex": {
     "revision": "841f89ffbba9650529a40fb867f3456bf92bf9b1"
@@ -399,10 +402,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "b2f01981a76e3251f5b660378136c248ed106b81"
+    "revision": "d427744e2128668f3b4bac3dc63f840ebb7e87c3"
   },
   "markdown_inline": {
-    "revision": "b2f01981a76e3251f5b660378136c248ed106b81"
+    "revision": "d427744e2128668f3b4bac3dc63f840ebb7e87c3"
   },
   "matlab": {
     "revision": "79d8b25f57b48f83ae1333aff6723b83c9532e37"
@@ -780,7 +783,7 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "55c0ea5356b627dcdbe4882c6e10052dd2417b3f"
+    "revision": "f11359345a2475b434a8e1dd3cfa02f2bc9b7e21"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
