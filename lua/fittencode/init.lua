@@ -21,7 +21,9 @@ function M.setup(opts)
 
   if Config.options.completion_mode == 'inline' then
     Bindings.setup_autocmds()
-    Bindings.setup_keymaps()
+    if Config.options.use_default_keymaps then
+      Bindings.setup_keymaps()
+    end
   else
     require('fittencode.lsp').resiter_source()
   end
