@@ -68,6 +68,7 @@ use {
   -- - 'inline' (default)
   -- - 'source'
   completion_mode = 'inline',
+  use_default_keymaps = true,
   log = {
     level = vim.log.levels.WARN,
   },
