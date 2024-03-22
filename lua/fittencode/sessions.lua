@@ -202,6 +202,7 @@ end
 ---@field path string|nil Temporary file path for HTTP request data
 ---@field task_id integer Task ID
 ---@field on_suggestions function|nil Callback when suggestions is generated
+---@field on_error function|nil Callback when request is failed
 
 -- Callback for request_generate_one_stage when HTTP request is successful
 ---@param response string
@@ -209,18 +210,24 @@ end
 local function on_generate_one_stage(_, response, data)
   if response == nil or response == '' then
     Log.error('Generate one stage failed: Server response without data')
+    if data.on_error then
+      data.on_error()
+    end
     return
   end
 
   local completion_data = fn.json_decode(response)
   if completion_data.generated_text == nil then
     Log.error('Generate one stage failed: Server response without generated_text field; decoded response: {}', completion_data)
+    if data.on_error then
+      data.on_error()
+    end
     return
   end
 
   local suggestions, generated_text = generate_suggestions(completion_data.generated_text)
 
-  if data.on_suggestions ~= nil and suggestions ~= nil then
+  if data.on_suggestions then
     data.on_suggestions(data.task_id, suggestions, generated_text)
   end
 end
@@ -281,16 +288,23 @@ end
 
 ---@param task_id integer
 ---@param on_suggestions function|nil
-function M.request_generate_one_stage(task_id, on_suggestions)
+---@param on_error function|nil
+function M.request_generate_one_stage(task_id, on_suggestions, on_error)
   local api_key = key_storage:get_key_by_name(username)
   if api_key == nil then
     Log.debug('API key is nil, skip request')
+    if on_error then
+      on_error()
+    end
     return
   end
   local params = make_generate_one_stage_params()
   Log.debug('Request generate one stage params: {}', params)
   if params == nil then
     Log.debug('Invalid params, skip request')
+    if on_error then
+      on_error()
+    end
     return
   end
   Base.write_temp_file(fn.json_encode(params), function(_, path)
@@ -305,16 +319,31 @@ function M.request_generate_one_stage(task_id, on_suggestions)
       '@' .. path,
       server .. api_key .. '?ide=neovim&v=0.1.0',
     }
-    Rest.send({
-      cmd = CMD,
-      args = args,
-      ---@type OnGenerateOneStageData
-      data = {
-        path = path,
-        task_id = task_id,
-        on_suggestions = on_suggestions,
+    Rest.send(
+      {
+        cmd = CMD,
+        args = args,
+        ---@type OnGenerateOneStageData
+        data = {
+          path = path,
+          task_id = task_id,
+          on_suggestions = on_suggestions,
+          on_error = on_error,
+        },
       },
-    }, on_generate_one_stage, on_curl_signal, on_generate_one_stage_exit)
+      on_generate_one_stage,
+      function(signal, ...)
+        on_curl_signal(signal, ...)
+        if on_error then
+          on_error()
+        end
+      end,
+      on_generate_one_stage_exit
+    )
+  end, function()
+    if on_error then
+      on_error()
+    end
   end)
 end
 

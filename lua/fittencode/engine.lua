@@ -26,8 +26,13 @@ end
 
 -- Callback function for when suggestions is ready
 ---@param task_id integer
----@param suggestions Suggestions
+---@param suggestions? Suggestions
+---@param generated_text? string
 local function on_suggestions(task_id, suggestions, generated_text)
+  if not suggestions then
+    Log.debug('No suggestions received; task_id: {}, suggestions: {}', task_id, suggestions)
+    return
+  end
   local row, col = Base.get_cursor()
   if not tasks:match_clean(task_id, row, col) then
     Log.debug('Completion request is outdated, discarding; task_id: {}, row: {}, col: {}', task_id, row, col)
@@ -51,25 +56,34 @@ end
 ---@param force boolean|nil
 ---@param task_id integer|nil
 ---@param on_suggestions_ready function|nil
-function M.generate_one_stage(row, col, force, task_id, on_suggestions_ready)
+---@param on_error function|nil
+function M.generate_one_stage(row, col, force, task_id, on_suggestions_ready, on_error)
   if not Sessions.ready_for_generate() then
     Log.debug('Not ready for generate')
+    if on_error then
+      on_error()
+    end
     return
   end
 
   if not force and cache:equal_pos(row, col) then
     Log.debug('Equal position, skip request generate one stage')
+    if on_error then
+      on_error()
+    end
     return
   end
 
   if inline_mode then
     if Lsp.is_active() then
       Log.debug('LSP is active, cancel request generate one stage')
+      if on_error then
+        on_error()
+      end
       return
     else
       -- TODO: Silence LSP temporarily to avoid completion conflicts
       -- Lsp.silence()
-      Log.debug('Silence LSP temporarily to avoid completion conflicts')
     end
   end
 
@@ -79,6 +93,10 @@ function M.generate_one_stage(row, col, force, task_id, on_suggestions_ready)
     on_suggestions(id, suggestions, generated_text)
     if on_suggestions_ready then
       on_suggestions_ready(generated_text)
+    end
+  end, function()
+    if on_error then
+      on_error()
     end
   end)
 end
@@ -285,14 +303,6 @@ function M.preflight()
 end
 
 ---@alias lsp.CompletionResponse lsp.CompletionList|lsp.CompletionItem[]
-
-local function is_spaces(line)
-  return line:find('^%s*$') ~= nil
-end
-
-local function is_last_char_space(line)
-  return string.sub(line, -1) == ' '
-end
 
 ---@param row integer
 ---@param col integer

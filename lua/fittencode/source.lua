@@ -37,17 +37,12 @@ function source:get_position_encoding_kind()
   return 'utf-8'
 end
 
--- function source:get_keyword_pattern()
---   return '.*'
--- end
-
 ---@return string[]
 function source:get_trigger_characters()
   return self.trigger_characters
 end
 
 local SOURCE_GENERATEONESTAGE_DEBOUNCE_TIME = 80
-local SOURCE_TIMEOUT_TIME = 1000
 
 ---@type uv_timer_t
 local source_generate_one_stage_timer = nil
@@ -66,6 +61,10 @@ function source:complete(request, callback)
   local task_id = Engine.create_task(row, col)
   Base.debounce(source_generate_one_stage_timer, function()
     Engine.generate_one_stage(row, col, true, task_id, function(suggestions)
+      if not suggestions then
+        callback()
+        return
+      end
       local cursor_before_line = request.context.cursor_before_line:sub(request.offset)
       local line = request.context.cursor.line
       local character = request.context.cursor.character
@@ -73,15 +72,10 @@ function source:complete(request, callback)
       local response = Engine.convert_to_lsp_completion_response(line, character, cursor_before_line, suggestions)
       Log.debug('LSP CompletionResponse: {}', response)
       callback(response)
+    end, function()
+      callback()
     end)
   end, SOURCE_GENERATEONESTAGE_DEBOUNCE_TIME)
-
-  vim.defer_fn(function()
-    if not Engine.has_suggestions() or (Engine.has_suggestions() and Engine.get_suggestions().task_id ~= task_id) then
-      Log.debug('Source timeout; task_id: {}', task_id)
-      callback()
-    end
-  end, SOURCE_TIMEOUT_TIME)
 end
 
 return source
