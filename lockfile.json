@@ -291,7 +291,7 @@
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
   },
   "hoon": {
-    "revision": "0135187126370cbf112d759a50eab4a5c913a827"
+    "revision": "a24c5a39d1d7e993a8bee913c8e8b6a652ca5ae8"
   },
   "html": {
     "revision": "cc53b6878a003cf26d213025af49c78388cebe21"
@@ -345,7 +345,7 @@
     "revision": "e84f10db8eeb8b9807786bfc658808edaa1b4fa2"
   },
   "just": {
-    "revision": "5fe40d3622042c66465c4673b209a71e8376f902"
+    "revision": "442538ab5ae0913b05e0269a988b4d452dfa5361"
   },
   "kconfig": {
     "revision": "486fea71f61ad9f3fd4072a118402e97fe88d26c"
@@ -750,7 +750,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "366d30c2438ca396f2f8304d891ca22e7c14b922"
+    "revision": "3439620ad96aa540f8dc454a332bc2d59314178f"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -780,7 +780,7 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "1bb6a572d5e3ced0012a4f6702c6f5662187b901"
+    "revision": "55c0ea5356b627dcdbe4882c6e10052dd2417b3f"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
