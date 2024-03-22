@@ -2043,7 +2043,7 @@ list.tiger = {
 list.tlaplus = {
   install_info = {
     url = "https://github.com/tlaplus-community/tree-sitter-tlaplus",
-    files = { "src/parser.c", "src/scanner.cc" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   filetype = "tla",
   maintainers = { "@ahelwer", "@susliko" },
