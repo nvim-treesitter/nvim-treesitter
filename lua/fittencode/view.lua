@@ -43,6 +43,8 @@ local function draw_virt_text(virt_text)
 
   Log.debug('Draw virtual text on buffer, text: {}', virt_text)
 
+  -- TODO: Supports drawing virutal lines with only spaces and newline in highlighted mode
+
   if Config.internal.virtual_text.inline then
     api.nvim_buf_set_extmark(0, namespace, row, col, {
       virt_text = virt_text[1],
