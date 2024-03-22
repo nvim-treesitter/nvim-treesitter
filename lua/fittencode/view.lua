@@ -17,6 +17,13 @@ local namespace = nil
 
 ---@alias VirtText VirtLine[] @The virtual text to be displayed
 
+---@param line string
+---@return boolean
+local function is_space_line(line)
+  -- If the line is empty or only contains spaces and newline, it is a space line
+  return string.len(line) == 0 or line:match('^%s*$') ~= nil
+end
+
 -- Generate virtual text for suggestions
 ---@param suggestions Suggestions @The suggestions to be displayed
 ---@return VirtText|nil @The virtual text to be displayed
@@ -27,7 +34,12 @@ local function generate_virt_text(suggestions)
   ---@type VirtText
   local virt_text = {}
   for _, line in ipairs(suggestions) do
-    table.insert(virt_text, { { line, Color.FittenSuggestion } })
+    local color = Color.FittenSuggestion
+    if is_space_line(line) then
+      color = Color.FittenSuggestionWhitespace
+      Log.debug('Virtual line is space line, text: {}', line)
+    end
+    table.insert(virt_text, { { line, color } })
   end
   return virt_text
 end
@@ -42,8 +54,6 @@ local function draw_virt_text(virt_text)
   local row, col = Base.get_cursor()
 
   Log.debug('Draw virtual text on buffer, text: {}', virt_text)
-
-  -- TODO: Supports drawing virutal lines with only spaces and newline in highlighted mode
 
   if Config.internal.virtual_text.inline then
     api.nvim_buf_set_extmark(0, namespace, row, col, {
@@ -65,6 +75,7 @@ local function draw_virt_text(virt_text)
   if vim.tbl_count(virt_text) > 0 then
     api.nvim_buf_set_extmark(0, namespace, row, 0, {
       virt_lines = virt_text,
+      hl_mode = 'combine',
     })
   end
 end
