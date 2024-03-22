@@ -8,7 +8,10 @@ local API = require('fittencode.api')
 
 local M = {}
 
+-- 1. Reduce the emitting of events
+-- 2. Wait for the LSP to provide the completion response
 local GENERATEONESTAGE_DEBOUNCE_TIME = 80
+
 local ADVANCE_DEBOUNCE_TIME = 80
 
 ---@type uv_timer_t
@@ -33,7 +36,7 @@ function M.setup_autocmds()
     desc = 'Generate one stage',
   })
 
-  api.nvim_create_autocmd({ 'CursorMovedI', 'CursorMoved', 'InsertLeave' }, {
+  api.nvim_create_autocmd({ 'CursorMovedI' }, {
     group = Base.augroup('Advance'),
     pattern = '*',
     callback = function()
@@ -47,14 +50,14 @@ function M.setup_autocmds()
     desc = 'Advance',
   })
 
-  api.nvim_create_autocmd({ 'BufWinLeave', 'BufHidden' }, {
+  api.nvim_create_autocmd({ 'BufWinLeave', 'BufHidden', 'InsertLeave', 'CursorMoved' }, {
     group = Base.augroup('Reset'),
     pattern = '*',
     callback = function()
       if not Engine.preflight() then
         return
       end
-      Engine.reset()
+      Engine.reset(true)
     end,
     desc = 'Reset',
   })

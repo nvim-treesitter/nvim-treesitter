@@ -140,11 +140,6 @@ local function local_fmt_recovery()
   vim.bo.textwidth = textwidth
 end
 
--- Silence LSP
-local function silence_lsp()
-  Base.feedkeys('<Esc>a')
-end
-
 -- Move the cursor to the end of the text
 ---@param row integer @The row of the cursor
 ---@param col integer @The column of the cursor
@@ -205,12 +200,12 @@ function M.set_text(lines)
   local count = vim.tbl_count(lines)
 
   undojoin()
-  -- CursorMovedI CursorHoldI
+
+  -- Emit events `CursorMovedI` `CursorHoldI`
   append_text_at_pos(row, col, count, lines)
   move_cursor_to_text_end(row, col, count, lines)
-  -- InsertLeave CursorMoved
-  silence_lsp()
-  api.nvim_command('redraw!')
+
+  -- api.nvim_command('redraw!')
 
   local_fmt_recovery()
 end

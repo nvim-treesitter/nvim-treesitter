@@ -62,9 +62,15 @@ function M.generate_one_stage(row, col, force, task_id, on_suggestions_ready)
     return
   end
 
-  if inline_mode and Lsp.is_active() then
-    Log.debug('LSP is active, cancel request generate one stage')
-    return
+  if inline_mode then
+    if Lsp.is_active() then
+      Log.debug('LSP is active, cancel request generate one stage')
+      return
+    else
+      -- TODO: Silence LSP temporarily to avoid completion conflicts
+      -- Lsp.silence()
+      Log.debug('Silence LSP temporarily to avoid completion conflicts')
+    end
   end
 
   task_id = task_id or tasks:create(row, col)
@@ -102,14 +108,16 @@ function M.accept_all_suggestions()
     return
   end
 
+  Lsp.silence()
+
   Log.debug('Pretreatment cache.lines: {}', cache.lines)
 
   View.clear_virt_text()
   View.set_text(cache.lines)
 
-  M.reset()
-
   Log.debug('Remaining cache.lines: {}', cache.lines)
+
+  M.reset()
 end
 
 function M.accept_line()
@@ -119,6 +127,8 @@ function M.accept_line()
     Log.debug('No suggestions')
     return
   end
+
+  Lsp.silence()
 
   View.clear_virt_text()
 
@@ -189,6 +199,8 @@ function M.accept_word()
     return
   end
 
+  Lsp.silence()
+
   View.clear_virt_text()
 
   local eventignore = vim.o.eventignore
@@ -234,11 +246,14 @@ function M.accept_word()
 end
 
 -- Reset suggestions cache and view
-function M.reset()
+function M.reset(reset_lsp)
   if inline_mode then
     View.clear_virt_text()
   end
   cache:flush()
+  if inline_mode and reset_lsp then
+    Lsp.silence(false)
+  end
 end
 
 -- Advance to next suggestions

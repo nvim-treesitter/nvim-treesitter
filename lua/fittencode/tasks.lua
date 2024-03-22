@@ -45,7 +45,7 @@ end
 function TaskScheduler:create(row, col)
   local timestamp = uv.hrtime()
   table.insert(self.list, #self.list + 1, { row = row, col = col, timestamp = timestamp })
-  Log.debug('Task created; row: ' .. row .. '; col: ' .. col)
+  Log.debug('New task created; task_id: {}, row: {}, col: {}', timestamp, row, col)
   return timestamp
 end
 
