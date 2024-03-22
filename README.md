@@ -212,6 +212,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [dhall](https://github.com/jbellerb/tree-sitter-dhall) (maintained by @amaanq)
 - [x] [diff](https://github.com/the-mikedavis/tree-sitter-diff) (maintained by @gbprod)
 - [x] [disassembly](https://github.com/ColinKennedy/tree-sitter-disassembly) (maintained by @ColinKennedy)
+- [x] [djot](https://github.com/treeman/tree-sitter-djot) (maintained by @NoahTheDuke)
 - [x] [dockerfile](https://github.com/camdencheek/tree-sitter-dockerfile) (maintained by @camdencheek)
 - [x] [dot](https://github.com/rydesun/tree-sitter-dot) (maintained by @rydesun)
 - [x] [doxygen](https://github.com/amaanq/tree-sitter-doxygen) (maintained by @amaanq)
