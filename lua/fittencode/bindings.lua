@@ -3,8 +3,7 @@ local api = vim.api
 local Base = require('fittencode.base')
 local Engine = require('fittencode.engine')
 local Log = require('fittencode.log')
-local View = require('fittencode.view')
-local API = require('fittencode.api')
+local API = require('fittencode.api').api
 
 local M = {}
 
@@ -70,8 +69,8 @@ end
 function M.setup_commands()
   ---@type FittenCommands
   local commands = {
-    login = API.api.login,
-    logout = API.api.logout,
+    login = API.login,
+    logout = API.logout,
   }
   Base.command('Fitten', function(line)
     ---@type string[]
@@ -111,21 +110,13 @@ end
 
 function M.setup_keymaps()
   Base.map('i', '<Tab>', function()
-    if Engine.has_suggestions() then
-      Engine.accept_all_suggestions()
-    else
-      View.feed_tab()
-    end
+    API.accept_all_suggestions()
   end)
   Base.map('i', '<C-Down>', function()
-    if Engine.has_suggestions() then
-      Engine.accept_line()
-    end
+    API.accept_line()
   end)
   Base.map('i', '<C-Right>', function()
-    if Engine.has_suggestions() then
-      Engine.accept_word()
-    end
+    API.accept_word()
   end)
 end
 
