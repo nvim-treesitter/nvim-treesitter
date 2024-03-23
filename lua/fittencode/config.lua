@@ -1,6 +1,6 @@
 local M = {}
 
----@class FittencodeOptions
+---@class FittenCodeOptions
 M.options = {
   -- Same options as `fittentech.fitten-code` in vscode
   action = {
@@ -61,7 +61,7 @@ M.internal = {
   },
 }
 
----@param opts? FittencodeOptions
+---@param opts? FittenCodeOptions
 function M.setup(opts)
   M.options = vim.tbl_deep_extend('force', M.options, opts or {})
 end

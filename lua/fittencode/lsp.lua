@@ -1,5 +1,3 @@
-local Log = require('fittencode.log')
-
 local M = {}
 
 -- Check if the current buffer is active in the completion menu
