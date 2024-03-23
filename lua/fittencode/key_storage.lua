@@ -44,7 +44,15 @@ function KeyStorage:load(on_success, on_error)
     return
   end
   Base.read(self.path, function(data)
-    self.keys = vim.fn.json_decode(data)
+    local success, result = pcall(fn.json_decode, data)
+    if success == false then
+      Log.error('Failed to parse API key file; path: {}; error: {}', self.path, result)
+      if on_error then
+        on_error()
+      end
+      return
+    end
+    self.keys = result
     Log.debug('API key file loaded successful; path: {}', self.path)
     if on_success ~= nil then
       on_success(self.keys.name)
