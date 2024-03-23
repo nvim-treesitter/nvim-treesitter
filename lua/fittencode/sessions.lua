@@ -13,7 +13,17 @@ local M = {}
 local URL_LOGIN = 'https://codeuser.fittentech.cn:14443/login'
 local URL_GET_FT_TOKEN = 'https://codeuser.fittentech.cn:14443/get_ft_token'
 local URL_GENERATE_ONE_STAGE = 'https://codeapi.fittentech.cn:13443/generate_one_stage/'
+
 local CMD = 'curl'
+local CMD_TIMEOUT = 5 -- 5 seconds
+local CMD_DEFAULT_ARGS = {
+  '--connect-timeout',
+  CMD_TIMEOUT,
+  -- For debug purposes only, `-v, Make the operation more talkative`
+  -- '-v',
+}
+local CMD_EXIT_CODE_SUCCESS = 0
+
 local KEY_STORE_PATH = Base.to_native(fn.stdpath('data') .. '/fittencode' .. '/api_key.json')
 
 ---@type KeyStorage
@@ -60,15 +70,16 @@ local function request_fico(token)
   end
 
   local fico_url = URL_GET_FT_TOKEN
-  local fico_args = {
+  local args = {
     '-s',
     '-H',
     'Authorization: Bearer ' .. token,
     fico_url,
   }
+  vim.list_extend(args, CMD_DEFAULT_ARGS)
   Rest.send({
     cmd = CMD,
-    args = fico_args,
+    args = args,
   }, on_fico, on_curl_signal)
 end
 
@@ -139,6 +150,7 @@ function M.request_login(name, password)
     encoded_data,
     login_url,
   }
+  vim.list_extend(args, CMD_DEFAULT_ARGS)
   Rest.send({
     cmd = CMD,
     args = args,
@@ -204,12 +216,17 @@ end
 ---@field on_suggestions function|nil Callback when suggestions is generated
 ---@field on_error function|nil Callback when request is failed
 
--- Callback for request_generate_one_stage when HTTP request is successful
+-- Callback for request_generate_one_stage when CMD is successful
+---@param exit_code integer
 ---@param response string
 ---@param data OnGenerateOneStageData
-local function on_generate_one_stage(_, response, data)
+local function on_generate_one_stage(exit_code, response, error, data)
+  if exit_code ~= CMD_EXIT_CODE_SUCCESS then
+    Log.error('Generate one stage: request failed; exit_code: {}; error: {}', exit_code, vim.split(error, '\n'))
+    return
+  end
   if response == nil or response == '' then
-    Log.error('Generate one stage failed: Server response without data')
+    Log.error('Generate one stage: Server response without data')
     if data.on_error then
       data.on_error()
     end
@@ -218,7 +235,7 @@ local function on_generate_one_stage(_, response, data)
 
   local completion_data = fn.json_decode(response)
   if completion_data.generated_text == nil then
-    Log.error('Generate one stage failed: Server response without generated_text field; decoded response: {}', completion_data)
+    Log.error('Generate one stage: Server response without generated_text field; decoded response: {}', completion_data)
     if data.on_error then
       data.on_error()
     end
@@ -232,7 +249,7 @@ local function on_generate_one_stage(_, response, data)
   end
 end
 
--- Callback for request_generate_one_stage when HTTP request is done
+-- Callback for request_generate_one_stage when CMD is exited
 ---@param data OnGenerateOneStageData
 local function on_generate_one_stage_exit(data)
   local path = data.path
@@ -259,7 +276,7 @@ local function make_generate_one_stage_params()
   if not Config.internal.virtual_text.inline then
     local line = api.nvim_buf_get_lines(0, row, row + 1, false)[1]
     local len = string.len(line)
-    Log.debug('Inline mode is disabled; col: {}, line: {}, length of line: {}', col, line, len)
+    Log.debug('Inline mode is disabled; col: {}; line: {}; length of line: {}', col, line, len)
     if col ~= len then
       Log.debug('Cursor is not at the end of the line, aborting')
       return
@@ -319,6 +336,7 @@ function M.request_generate_one_stage(task_id, on_suggestions, on_error)
       '@' .. path,
       server .. api_key .. '?ide=neovim&v=0.1.0',
     }
+    vim.list_extend(args, CMD_DEFAULT_ARGS)
     Rest.send(
       {
         cmd = CMD,

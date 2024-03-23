@@ -23,6 +23,7 @@ function M.send(params, on_success, on_error, on_exit)
   local data = params.data
 
   local output = ''
+  local error = ''
   local handle = nil
 
   local stdout = assert(uv.new_pipe())
@@ -33,7 +34,7 @@ function M.send(params, on_success, on_error, on_exit)
     args = args,
   }, function(exit_code, signal)
     if handle == nil then
-      Log.error('uv.spawn handle is nil; cmd: {}; args: {}', cmd, args)
+      Log.error('RESTAPI uv.spawn handle is nil; cmd: {}; args: {}', cmd, args)
       return
     end
     handle:close()
@@ -46,16 +47,17 @@ function M.send(params, on_success, on_error, on_exit)
       end
       check:stop()
       if signal ~= 0 then
-        Log.error('uv.spawn signal; cmd: {}; args: {}; signal: {}', cmd, args, signal)
+        Log.error('RESTAPI uv.spawn signal; cmd: {}; args: {}; signal: {}; error: {}', cmd, args, signal, error)
         if on_error then
           vim.schedule(function()
-            on_error(signal, output, data)
+            on_error(signal, error, data)
           end)
         end
       else
         if on_success then
+          Log.debug('RESTAPI uv.spawn exit; code: {}', exit_code)
           vim.schedule(function()
-            on_success(exit_code, output, data)
+            on_success(exit_code, output, error, data)
           end)
         end
       end
@@ -70,15 +72,26 @@ function M.send(params, on_success, on_error, on_exit)
   -- Process stdout and stderr chunks
   ---@param err any
   ---@param chunk string|nil
-  local function on_chunk(err, chunk)
+  local function on_chunk(err, chunk, is_stderr)
     assert(not err, err)
+    local process_chunk = function(c)
+      return c:gsub('\r\n', '\n')
+    end
     if chunk then
-      output = output .. chunk:gsub('\r\n', '\n')
+      if is_stderr then
+        error = error .. process_chunk(chunk)
+      else
+        output = output .. process_chunk(chunk)
+      end
     end
   end
 
-  uv.read_start(stdout, on_chunk)
-  uv.read_start(stderr, on_chunk)
+  uv.read_start(stdout, function(err, chunk)
+    on_chunk(err, chunk)
+  end)
+  uv.read_start(stderr, function(err, chunk)
+    on_chunk(err, chunk, true)
+  end)
 end
 
 return M
