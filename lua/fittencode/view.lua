@@ -9,7 +9,14 @@ local Log = require('fittencode.log')
 local M = {}
 
 ---@type integer
-local namespace = nil
+local namespace = api.nvim_create_namespace('FittenCode/InlineCompletion')
+
+---@type integer
+local extmark_ids = {}
+local INLINE = 1
+local LINES = 2
+
+local cached_virt_text = nil
 
 ---@class VirtLine
 ---@field text string @The text of the virtual line
@@ -19,8 +26,7 @@ local namespace = nil
 
 ---@param line string
 ---@return boolean
-local function is_space_line(line)
-  -- If the line is empty or only contains spaces and newline, it is a space line
+local function is_whitespace_line(line)
   return string.len(line) == 0 or line:match('^%s*$') ~= nil
 end
 
@@ -35,9 +41,8 @@ local function generate_virt_text(suggestions)
   local virt_text = {}
   for _, line in ipairs(suggestions) do
     local color = Color.FittenSuggestion
-    if is_space_line(line) then
+    if is_whitespace_line(line) then
       color = Color.FittenSuggestionWhitespace
-      Log.debug('Virtual line is space line, text: {}', line)
     end
     table.insert(virt_text, { { line, color } })
   end
@@ -45,7 +50,7 @@ local function generate_virt_text(suggestions)
 end
 
 -- Draw virtual text on buffer
----@param virt_text VirtText @The virtual text to be displayed
+---@param virt_text? VirtText @The virtual text to be displayed
 local function draw_virt_text(virt_text)
   if virt_text == nil or vim.tbl_count(virt_text) == 0 then
     return
@@ -56,51 +61,46 @@ local function draw_virt_text(virt_text)
   Log.debug('Draw virtual text on buffer, text: {}', virt_text)
 
   if Config.internal.virtual_text.inline then
-    api.nvim_buf_set_extmark(0, namespace, row, col, {
+    extmark_ids[INLINE] = api.nvim_buf_set_extmark(0, namespace, row, col, {
       virt_text = virt_text[1],
       virt_text_pos = 'inline',
       hl_mode = 'combine',
+      id = extmark_ids[INLINE],
     })
   else
-    api.nvim_buf_set_extmark(0, namespace, row, col, {
+    extmark_ids[INLINE] = api.nvim_buf_set_extmark(0, namespace, row, col, {
       virt_text = virt_text[1],
       -- eol will added space to the end of the line
       virt_text_pos = 'overlay',
       hl_mode = 'combine',
+      id = extmark_ids[INLINE],
     })
   end
 
   table.remove(virt_text, 1)
 
   if vim.tbl_count(virt_text) > 0 then
-    api.nvim_buf_set_extmark(0, namespace, row, 0, {
+    extmark_ids[LINES] = api.nvim_buf_set_extmark(0, namespace, row, 0, {
       virt_lines = virt_text,
       hl_mode = 'combine',
+      id = extmark_ids[LINES],
     })
   end
 end
 
--- Clear virtual text on buffer
----@param ns integer|nil
----@param bufnr integer|nil
-local function clear_ns(ns, bufnr)
-  if ns ~= nil and bufnr ~= nil then
-    api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
+local function remove_extmarks()
+  if extmark_ids[INLINE] ~= nil then
+    api.nvim_buf_del_extmark(0, namespace, extmark_ids[INLINE])
   end
-end
-
--- Reset the namespace for virtual text
-local function reset_ns()
-  if namespace ~= nil then
-    clear_ns(namespace, 0)
-  else
-    namespace = api.nvim_create_namespace('Fittencode')
+  if extmark_ids[LINES] ~= nil then
+    api.nvim_buf_del_extmark(0, namespace, extmark_ids[LINES])
   end
 end
 
 -- Clear virtual text on buffer
 function M.clear_virt_text()
-  clear_ns(namespace, 0)
+  cached_virt_text = nil
+  api.nvim_command('redraw!')
 end
 
 -- Move the cursor to the center of the window
@@ -123,9 +123,9 @@ function M.render_virt_text(suggestions)
   if virt_text == nil then
     return
   end
-  reset_ns()
+  cached_virt_text = virt_text
   move_to_center_vertical(vim.tbl_count(virt_text))
-  draw_virt_text(virt_text)
+  api.nvim_command('redraw!')
 end
 
 local autoindent = nil
@@ -218,8 +218,6 @@ function M.set_text(lines)
   append_text_at_pos(row, col, count, lines)
   move_cursor_to_text_end(row, col, count, lines)
 
-  -- api.nvim_command('redraw!')
-
   local_fmt_recovery()
 end
 
@@ -227,5 +225,12 @@ end
 function M.feed_tab()
   Base.feedkeys('<Tab>')
 end
+
+api.nvim_set_decoration_provider(namespace, {
+  on_win = function()
+    remove_extmarks()
+    draw_virt_text(cached_virt_text)
+  end,
+})
 
 return M
