@@ -1,6 +1,6 @@
 local M = {}
 
----@param opts? FittencodeOptions
+---@param opts? FittenCodeOptions
 function M.setup(opts)
   -- Check if Neovim >= 0.8.0 is installed
   if vim.fn.has('nvim-0.8.0') == 0 then

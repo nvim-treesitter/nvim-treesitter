@@ -49,7 +49,14 @@ local function on_fico(_, response)
     return
   end
 
-  local fico_data = fn.json_decode(response)
+  local success, result = pcall(fn.json_decode, response)
+  if success == false then
+    Log.e('Login failed: Server response is not a valid JSON')
+    Log.error('Server response: {}; error: {}', response, result)
+    return
+  end
+
+  local fico_data = result
   if fico_data.data == nil or fico_data.data.fico_token == nil then
     Log.e('Login failed: Server response without fico_token field; decoded response: {}', fico_data)
     return
@@ -92,7 +99,14 @@ local function decode_token(response)
     return
   end
 
-  local login_data = fn.json_decode(response)
+  local success, result = pcall(fn.json_decode, response)
+  if success == false then
+    Log.e('Login failed: Server response is not a valid JSON')
+    Log.error('Server response: {}; error: {}', response, result)
+    return
+  end
+
+  local login_data = result
   if login_data.code ~= 200 then
     if login_data.code == nil then
       Log.e('Login failed: Server status code: {}; response: {}', login_data.status_code, login_data)
@@ -223,8 +237,12 @@ end
 local function on_generate_one_stage(exit_code, response, error, data)
   if exit_code ~= CMD_EXIT_CODE_SUCCESS then
     Log.error('Generate one stage: request failed; exit_code: {}; error: {}', exit_code, vim.split(error, '\n'))
+    if data.on_error then
+      data.on_error()
+    end
     return
   end
+
   if response == nil or response == '' then
     Log.error('Generate one stage: Server response without data')
     if data.on_error then
@@ -233,7 +251,16 @@ local function on_generate_one_stage(exit_code, response, error, data)
     return
   end
 
-  local completion_data = fn.json_decode(response)
+  local success, result = pcall(fn.json_decode, response)
+  if success == false then
+    Log.error('Generate one stage: Server response is not a valid JSON; response: {}; error: {}', response, result)
+    if data.on_error then
+      data.on_error()
+    end
+    return
+  end
+
+  local completion_data = result
   if completion_data.generated_text == nil then
     Log.error('Generate one stage: Server response without generated_text field; decoded response: {}', completion_data)
     if data.on_error then

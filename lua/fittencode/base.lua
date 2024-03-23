@@ -38,7 +38,7 @@ end
 
 ---@param name string
 function M.augroup(name)
-  return api.nvim_create_augroup('Fittencode_' .. name, { clear = true })
+  return api.nvim_create_augroup('FittenCode/' .. name, { clear = true })
 end
 
 ---@param name string

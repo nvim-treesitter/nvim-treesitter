@@ -66,7 +66,7 @@ function TaskScheduler:match_clean(task_id, row, col)
   for i = #self.list, 1, -1 do
     local task = self.list[i]
     if task.timestamp == task_id and task.row == row and task.col == col then
-      local ms = string.format('%4d', math.floor((uv.hrtime() - task.timestamp) / MS_TO_NS))
+      local ms = string.format('%3d', math.floor((uv.hrtime() - task.timestamp) / MS_TO_NS))
       Log.debug('Task matched; time elapsed: [ ' .. ms .. ' ms ]' .. '; row: ' .. row .. '; col: ' .. col)
       match_found = true
       break
