@@ -19,10 +19,10 @@ local LINES = 2
 local cached_virt_text = nil
 
 ---@class VirtLine
----@field text string @The text of the virtual line
----@field hl string @The highlight group of the virtual line
+---@field text string
+---@field hl string
 
----@alias VirtText VirtLine[] @The virtual text to be displayed
+---@alias VirtText VirtLine[]
 
 ---@param line string
 ---@return boolean
@@ -114,8 +114,7 @@ function M.clear_virt_text()
   redraw_screen()
 end
 
--- Move the cursor to the center of the window
----@param virt_height integer @The height of the virtual text
+---@param virt_height integer
 local function move_to_center_vertical(virt_height)
   local row, _ = Base.get_cursor()
   local relative_row = row - fn.line('w0')
@@ -139,7 +138,6 @@ local smartindent = nil
 local formatoptions = nil
 local textwidth = nil
 
--- Disable autoindent, smartindent, formatoptions, textwidth for local formatting
 local function local_fmt_clear()
   autoindent = vim.bo.autoindent
   smartindent = vim.bo.smartindent
@@ -151,7 +149,6 @@ local function local_fmt_clear()
   vim.bo.textwidth = 0
 end
 
--- Recovery autoindent, smartindent, formatoptions, textwidth for local formatting
 local function local_fmt_recovery()
   vim.bo.autoindent = autoindent
   vim.bo.smartindent = smartindent
@@ -159,9 +156,8 @@ local function local_fmt_recovery()
   vim.bo.textwidth = textwidth
 end
 
--- Move the cursor to the end of the text
----@param row integer @The row of the cursor
----@param col integer @The column of the cursor
+---@param row integer
+---@param col integer
 ---@param count integer @The count of the lines
 ---@param lines string[] @The lines have been appended
 local function move_cursor_to_text_end(row, col, count, lines)
@@ -176,9 +172,8 @@ local function move_cursor_to_text_end(row, col, count, lines)
   end
 end
 
--- Append text at position
----@param row integer @The row of the cursor
----@param col integer @The column of the cursor
+---@param row integer
+---@param col integer
 ---@param count integer @The count of the lines
 ---@param lines string[] @The lines to be appended
 local function append_text_at_pos(row, col, count, lines)
@@ -205,13 +200,11 @@ local function append_text_at_pos(row, col, count, lines)
   end
 end
 
--- Undojoin
 local function undojoin()
   Base.feedkeys('<C-g>u')
 end
 
--- Set text to buffer
----@param lines string[] @The lines to be set to buffer
+---@param lines string[]
 function M.set_text(lines)
   local_fmt_clear()
 
@@ -227,7 +220,6 @@ function M.set_text(lines)
   local_fmt_recovery()
 end
 
--- Feed tab key
 function M.feed_tab()
   Base.feedkeys('<Tab>')
 end

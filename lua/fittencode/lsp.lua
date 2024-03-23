@@ -1,6 +1,5 @@
 local M = {}
 
--- Check if the current buffer is active in the completion menu
 ---@return boolean
 function M.is_active()
   ---@type boolean, any
@@ -22,7 +21,6 @@ function M.register_source()
   cmp.register_source('fittencode', require('fittencode.source'):new())
 end
 
--- See `nvim-cmp\lua\cmp\config.lua`
 ---@param value? boolean
 function M.silence(value)
   local ok, config = pcall(require, 'cmp.config')

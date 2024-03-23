@@ -26,7 +26,6 @@ function M.setup()
   inline_mode = Config.options.completion_mode == 'inline'
 end
 
--- Callback function for when suggestions is ready
 ---@param task_id integer
 ---@param suggestions? Suggestions
 ---@param generated_text? string
@@ -79,7 +78,6 @@ local function lazy_inline_completion()
   return false
 end
 
--- Generate one stage completion
 ---@param row integer
 ---@param col integer
 ---@param force boolean|nil
@@ -247,7 +245,6 @@ function M.accept_word()
   end
 
   Lsp.silence()
-
   View.clear_virt_text()
 
   local eventignore = vim.o.eventignore
@@ -256,11 +253,7 @@ function M.accept_word()
   Log.debug('Pretreatment cache.lines: {}', cache.lines)
 
   local line = cache.lines[1]
-
-  -- Calculate the next word index
   local next_index = next_indices(line)
-
-  -- Set text
   local word = string.sub(line, 1, next_index)
   line = string.sub(line, string.len(word) + 1)
   if string.len(line) == 0 then
@@ -292,7 +285,6 @@ function M.accept_word()
   vim.o.eventignore = eventignore
 end
 
--- Reset suggestions cache and view
 function M.reset(reset_lsp)
   if inline_mode then
     View.clear_virt_text()
@@ -303,7 +295,6 @@ function M.reset(reset_lsp)
   end
 end
 
--- Advance to next suggestions
 function M.advance()
   if not M.has_suggestions() then
     return
@@ -322,8 +313,6 @@ function M.advance()
   end
 end
 
--- Preflight checking
--- Check if the environment is ready for completion
 ---@return boolean
 function M.preflight()
   if not Config.options.inline_completion.enable then
@@ -345,8 +334,6 @@ function M.create_task(row, col)
   return tasks:create(row, col)
 end
 
--- Convert suggestions to LSP items
--- `nvim-cmp`: lua\cmp\core.lua
 ---@param suggestions string
 ---@return lsp.CompletionResponse|nil
 function M.convert_to_lsp_completion_response(line, character, cursor_before_line, suggestions)

@@ -41,7 +41,6 @@ local function on_curl_signal(signal, _)
   Log.error('curl throwed signal: {}', signal)
 end
 
--- Callback for request_fico when HTTP request is successful
 ---@param response string
 local function on_fico(_, response)
   if response == nil or response == '' then
@@ -68,7 +67,6 @@ local function on_fico(_, response)
   Log.i('Login successful')
 end
 
--- User token is required for getting fico token
 ---@param token string
 local function request_fico(token)
   if token == nil or token == '' then
@@ -90,7 +88,6 @@ local function request_fico(token)
   }, on_fico, on_curl_signal)
 end
 
--- Decode login response and get token
 ---@param response string
 ---@return string|nil
 local function decode_token(response)
@@ -122,7 +119,6 @@ local function decode_token(response)
   return token
 end
 
--- Callback for request_login when HTTP request is successful
 ---@param response string
 local function on_login(_, response)
   local token = decode_token(response)
@@ -131,7 +127,6 @@ local function on_login(_, response)
   end
 end
 
--- Request login with given username and password
 ---@param name string
 ---@param password string
 function M.request_login(name, password)
@@ -171,7 +166,6 @@ function M.request_login(name, password)
   }, on_login, on_curl_signal)
 end
 
--- Request logout and clear API key
 function M.request_logout()
   local api_key = key_storage:get_key_by_name(username)
   if api_key == nil then
@@ -183,7 +177,6 @@ function M.request_logout()
   Log.i('Logout successful')
 end
 
--- Load last session from key storage and set username
 function M.request_load_last_session()
   Log.info('Loading last session')
   key_storage:load(function(name)
@@ -196,7 +189,6 @@ end
 
 ---@alias Suggestions string[] Formated suggesion
 
--- Generate suggestions from generated text
 ---@param generated_text string
 ---@return Suggestions?, string?
 local function generate_suggestions(generated_text)
@@ -325,7 +317,6 @@ local function make_generate_one_stage_params()
   return params
 end
 
--- Check if the user is ready for generating one stage
 function M.ready_for_generate()
   return key_storage:get_key_by_name(username) ~= nil
 end

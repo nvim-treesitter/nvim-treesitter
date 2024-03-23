@@ -121,15 +121,9 @@ function M.setup_commands()
 end
 
 function M.setup_keymaps()
-  Base.map('i', '<Tab>', function()
-    API.accept_all_suggestions()
-  end)
-  Base.map('i', '<C-Down>', function()
-    API.accept_line()
-  end)
-  Base.map('i', '<C-Right>', function()
-    API.accept_word()
-  end)
+  Base.map('i', '<Tab>', API.accept_all_suggestions)
+  Base.map('i', '<C-Down>', API.accept_line)
+  Base.map('i', '<C-Right>', API.accept_word)
 end
 
 return M

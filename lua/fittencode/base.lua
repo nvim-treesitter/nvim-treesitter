@@ -314,7 +314,6 @@ function M.read(path, on_success, on_error)
   )
 end
 
--- Check if a file exists.
 ---@param file string
 ---@return boolean
 function M.exists(file)

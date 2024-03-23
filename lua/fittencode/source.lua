@@ -2,8 +2,6 @@ local Base = require('fittencode.base')
 local Engine = require('fittencode.engine')
 local Log = require('fittencode.log')
 
--- Types from nvim-cmp: `lua\cmp\types\cmp.lua`
-
 ---@class FittenSource
 ---@field trigger_characters string[]
 local source = {}
