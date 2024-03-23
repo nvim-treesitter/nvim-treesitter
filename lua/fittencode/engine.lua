@@ -1,3 +1,5 @@
+local api = vim.api
+
 local Base = require('fittencode.base')
 local Log = require('fittencode.log')
 local Lsp = require('fittencode.lsp')
@@ -16,11 +18,6 @@ local cache = nil
 local tasks = nil
 
 local inline_mode = true
-
-local LAZY_STATE_DEFAULT = 0
-local LAZY_STATE_TEXT_CHANGED = 1
-local LAZY_STATE_ADVANCE = 2
-local lazy_state = LAZY_STATE_DEFAULT
 
 function M.setup()
   cache = SuggestionsCache:new()
@@ -55,12 +52,8 @@ local function on_suggestions(task_id, suggestions, generated_text)
   end
 end
 
-local function lazy_inline_completion(row, col)
-  if lazy_state ~= LAZY_STATE_ADVANCE then
-    lazy_state = LAZY_STATE_DEFAULT
-    return false
-  end
-  lazy_state = LAZY_STATE_DEFAULT
+local function lazy_inline_completion()
+  local row, col = Base.get_cursor()
   if cache.pos.row == nil or cache.pos.col == nil then
     return false
   end
@@ -75,6 +68,7 @@ local function lazy_inline_completion(row, col)
     local cur_char = string.sub(cur_line, col, col)
     local cache_char = string.sub(cache_line, 1, 1)
     if cur_char == cache_char then
+      Lsp.silence()
       cache_line = string.sub(cache_line, 2)
       cache.lines[1] = cache_line
       cache.pos.col = col
@@ -119,10 +113,6 @@ function M.generate_one_stage(row, col, force, task_id, on_suggestions_ready, on
     else
       -- TODO: Silence LSP temporarily to avoid completion conflicts
       -- Lsp.silence()
-    end
-
-    if lazy_inline_completion(row, col) then
-      return
     end
   end
 
@@ -323,21 +313,13 @@ function M.advance()
     return
   end
 
-  View.clear_virt_text()
-
   local row, col = Base.get_cursor()
   if cache:equal_pos(row, col) then
     View.render_virt_text(cache.lines)
-  elseif cache:is_advance_pos(row, col) then
-    if lazy_state == LAZY_STATE_TEXT_CHANGED then
-      lazy_state = LAZY_STATE_ADVANCE
-      return
-    end
   else
+    View.clear_virt_text()
     cache:flush()
   end
-
-  lazy_state = LAZY_STATE_DEFAULT
 end
 
 -- Preflight checking
@@ -399,7 +381,9 @@ end
 
 function M.on_text_changed()
   if inline_mode then
-    lazy_state = LAZY_STATE_TEXT_CHANGED
+    if lazy_inline_completion() then
+      return
+    end
   end
 end
 

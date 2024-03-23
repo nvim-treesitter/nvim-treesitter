@@ -30,9 +30,8 @@ local function is_whitespace_line(line)
   return string.len(line) == 0 or line:match('^%s*$') ~= nil
 end
 
--- Generate virtual text for suggestions
----@param suggestions Suggestions @The suggestions to be displayed
----@return VirtText|nil @The virtual text to be displayed
+---@param suggestions? Suggestions
+---@return VirtText|nil
 local function generate_virt_text(suggestions)
   if suggestions == nil then
     return
@@ -49,9 +48,10 @@ local function generate_virt_text(suggestions)
   return virt_text
 end
 
--- Draw virtual text on buffer
----@param virt_text? VirtText @The virtual text to be displayed
-local function draw_virt_text(virt_text)
+---@param suggestions? Suggestions
+local function draw_virt_text(suggestions)
+  ---@type VirtText?
+  local virt_text = generate_virt_text(suggestions)
   if virt_text == nil or vim.tbl_count(virt_text) == 0 then
     return
   end
@@ -97,10 +97,21 @@ local function remove_extmarks()
   end
 end
 
--- Clear virtual text on buffer
+local drawing = false
+local function redraw_screen()
+  if drawing then
+    return
+  end
+  drawing = true
+  vim.schedule(function()
+    api.nvim_command('redraw!')
+    drawing = false
+  end)
+end
+
 function M.clear_virt_text()
   cached_virt_text = nil
-  api.nvim_command('redraw!')
+  redraw_screen()
 end
 
 -- Move the cursor to the center of the window
@@ -116,16 +127,11 @@ local function move_to_center_vertical(virt_height)
   end
 end
 
--- Render virtual text on buffer
----@param suggestions Suggestions @The suggestions to be displayed
+---@param suggestions Suggestions
 function M.render_virt_text(suggestions)
-  local virt_text = generate_virt_text(suggestions)
-  if virt_text == nil then
-    return
-  end
-  cached_virt_text = virt_text
-  move_to_center_vertical(vim.tbl_count(virt_text))
-  api.nvim_command('redraw!')
+  cached_virt_text = suggestions
+  move_to_center_vertical(vim.tbl_count(suggestions))
+  redraw_screen()
 end
 
 local autoindent = nil
