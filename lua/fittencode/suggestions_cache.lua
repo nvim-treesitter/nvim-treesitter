@@ -53,4 +53,8 @@ function SuggestionsCache:equal_pos(row, col)
   return self.pos.row == row and self.pos.col == col
 end
 
+function SuggestionsCache:is_advance_pos(row, col)
+  return self.pos.row == row and self.pos.col + 1 == col
+end
+
 return SuggestionsCache

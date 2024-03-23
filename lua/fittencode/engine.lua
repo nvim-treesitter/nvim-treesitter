@@ -17,6 +17,11 @@ local tasks = nil
 
 local inline_mode = true
 
+local LAZY_STATE_DEFAULT = 0
+local LAZY_STATE_TEXT_CHANGED = 1
+local LAZY_STATE_ADVANCE = 2
+local lazy_state = LAZY_STATE_DEFAULT
+
 function M.setup()
   cache = SuggestionsCache:new()
   tasks = TaskScheduler:new()
@@ -48,6 +53,36 @@ local function on_suggestions(task_id, suggestions, generated_text)
   if inline_mode then
     View.render_virt_text(suggestions)
   end
+end
+
+local function lazy_inline_completion(row, col)
+  if lazy_state ~= LAZY_STATE_ADVANCE then
+    lazy_state = LAZY_STATE_DEFAULT
+    return false
+  end
+  lazy_state = LAZY_STATE_DEFAULT
+  if cache.pos.row == nil or cache.pos.col == nil then
+    return false
+  end
+  local pre_pos = cache.pos
+  ---@diagnostic disable-next-line: need-check-nil
+  Log.debug('Previous position, row: {}, col: {}', pre_pos.row, pre_pos.col)
+  Log.debug('Current position, row: {}, col: {}', row, col)
+  ---@diagnostic disable-next-line: need-check-nil
+  if pre_pos.row == row and pre_pos.col + 1 == col then
+    local cur_line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
+    local cache_line = cache.lines[1]
+    local cur_char = string.sub(cur_line, col, col)
+    local cache_char = string.sub(cache_line, 1, 1)
+    if cur_char == cache_char then
+      cache_line = string.sub(cache_line, 2)
+      cache.lines[1] = cache_line
+      cache.pos.col = col
+      View.render_virt_text(cache.lines)
+      return true
+    end
+  end
+  return false
 end
 
 -- Generate one stage completion
@@ -84,6 +119,10 @@ function M.generate_one_stage(row, col, force, task_id, on_suggestions_ready, on
     else
       -- TODO: Silence LSP temporarily to avoid completion conflicts
       -- Lsp.silence()
+    end
+
+    if lazy_inline_completion(row, col) then
+      return
     end
   end
 
@@ -280,12 +319,25 @@ function M.advance()
     return
   end
 
+  if not inline_mode then
+    return
+  end
+
   View.clear_virt_text()
-  if cache:equal_pos(Base.get_cursor()) then
+
+  local row, col = Base.get_cursor()
+  if cache:equal_pos(row, col) then
     View.render_virt_text(cache.lines)
+  elseif cache:is_advance_pos(row, col) then
+    if lazy_state == LAZY_STATE_TEXT_CHANGED then
+      lazy_state = LAZY_STATE_ADVANCE
+      return
+    end
   else
     cache:flush()
   end
+
+  lazy_state = LAZY_STATE_DEFAULT
 end
 
 -- Preflight checking
@@ -343,6 +395,12 @@ function M.convert_to_lsp_completion_response(line, character, cursor_before_lin
     insertTextMode = 1,
   })
   return { items = items, isIncomplete = false }
+end
+
+function M.on_text_changed()
+  if inline_mode then
+    lazy_state = LAZY_STATE_TEXT_CHANGED
+  end
 end
 
 return M

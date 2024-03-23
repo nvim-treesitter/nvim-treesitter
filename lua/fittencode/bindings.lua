@@ -49,7 +49,19 @@ function M.setup_autocmds()
     desc = 'Advance',
   })
 
-  api.nvim_create_autocmd({ 'BufWinLeave', 'BufHidden', 'InsertLeave', 'CursorMoved' }, {
+  api.nvim_create_autocmd({ 'TextChangedI' }, {
+    group = Base.augroup('TextChanged'),
+    pattern = '*',
+    callback = function()
+      if not Engine.preflight() then
+        return
+      end
+      Engine.on_text_changed()
+    end,
+    desc = 'TextChanged',
+  })
+
+  api.nvim_create_autocmd({ 'BufLeave', 'InsertLeave', 'CursorMoved' }, {
     group = Base.augroup('Reset'),
     pattern = '*',
     callback = function()
