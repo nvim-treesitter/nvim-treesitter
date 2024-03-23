@@ -117,7 +117,7 @@
     "revision": "0229c0211dba909c5d45129ac784a3f4d49c243a"
   },
   "djot": {
-    "revision": "e1cfe895a9984f09045f6a2462ade0ee131aa7a0"
+    "revision": "cb109f52e85da90893e4c65e51314dd56a3ee3d4"
   },
   "dockerfile": {
     "revision": "33e22c33bcdbfc33d42806ee84cfd0b1248cc392"
@@ -210,7 +210,7 @@
     "revision": "41940e199ba5763abea1d21b4f717014b45f01ea"
   },
   "gitcommit": {
-    "revision": "523a1a4f0f674eff7fbf46addfa6ef7644151aae"
+    "revision": "a427a79653b6829aa5b663b5b9a6b39e954858b7"
   },
   "gitignore": {
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
@@ -228,7 +228,7 @@
     "revision": "bc06955bc1e3c9ff8e9b2b2a55b38b94da923c05"
   },
   "gnuplot": {
-    "revision": "7549f6faf5cc9fb8cf78054a7af356a6b003c6f3"
+    "revision": "3c895f5d9c0b3a3c7e02383766b462c21913c000"
   },
   "go": {
     "revision": "fd577c4358c28cbcb6748bbf65354cc85f1cf7a4"
@@ -348,7 +348,7 @@
     "revision": "e84f10db8eeb8b9807786bfc658808edaa1b4fa2"
   },
   "just": {
-    "revision": "442538ab5ae0913b05e0269a988b4d452dfa5361"
+    "revision": "6c2f018ab1d90946c0ce029bb2f7d57f56895dff"
   },
   "kconfig": {
     "revision": "486fea71f61ad9f3fd4072a118402e97fe88d26c"
@@ -366,7 +366,7 @@
     "revision": "123d8b472e949b59f348c32e245107a34a3d8945"
   },
   "latex": {
-    "revision": "841f89ffbba9650529a40fb867f3456bf92bf9b1"
+    "revision": "6d764f17f4d28c9db736009fb0e10ffe04866661"
   },
   "ledger": {
     "revision": "8a841fb20ce683bfbb3469e6ba67f2851cfdf94a"
@@ -483,10 +483,10 @@
     "revision": "fd7b2fe5b967d5eee8ce17938052886e2d5987ed"
   },
   "php": {
-    "revision": "b1eb65e04cf31a5df611fea139ad54d611599dc4"
+    "revision": "29838ad107f50b1f5f51a0beefa9c9d834fce2b3"
   },
   "php_only": {
-    "revision": "b1eb65e04cf31a5df611fea139ad54d611599dc4"
+    "revision": "29838ad107f50b1f5f51a0beefa9c9d834fce2b3"
   },
   "phpdoc": {
     "revision": "f285e338d328a03920a9bfd8dda78585c7ddcca3"
@@ -753,7 +753,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "3439620ad96aa540f8dc454a332bc2d59314178f"
+    "revision": "a50fc40276aded4b422bdf9f092aa7c8db6c33d3"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
