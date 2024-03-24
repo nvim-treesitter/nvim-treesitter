@@ -99,7 +99,7 @@
     "revision": "8a5f273bfa281c66354da562f2307c2d394b6c81"
   },
   "d": {
-    "revision": "322d119d50ebe6d0a323dfb00c4aeba31a44fb6f"
+    "revision": "750dde90ed9cdbd82493bc28478d8ab1976b0e9f"
   },
   "dart": {
     "revision": "1a31399a08aefc93bc4cdbfadc0cb619136f86c1"
@@ -117,7 +117,7 @@
     "revision": "0229c0211dba909c5d45129ac784a3f4d49c243a"
   },
   "djot": {
-    "revision": "cb109f52e85da90893e4c65e51314dd56a3ee3d4"
+    "revision": "4dd87f88df82c3a77bab3929ec0b37d11e2721b7"
   },
   "dockerfile": {
     "revision": "33e22c33bcdbfc33d42806ee84cfd0b1248cc392"
@@ -306,7 +306,7 @@
     "revision": "86ad05ac2de3c63c69f65e58f0182a76c1658d1e"
   },
   "hurl": {
-    "revision": "cd1a0ada92cc73dd0f4d7eedc162be4ded758591"
+    "revision": "ad705af8c44c737bdb965fc081329c50716d2d03"
   },
   "hyprlang": {
     "revision": "27af9b74acf89fa6bed4fb8cb8631994fcb2e6f3"
@@ -321,7 +321,7 @@
     "revision": "51271e260346878e1a1aa6c506ce6a797b7c25e2"
   },
   "java": {
-    "revision": "5e62fbb519b608dfd856000fdc66536304c414de"
+    "revision": "2aae502017d3aed587ba85e3c7e0cbc138f3e07a"
   },
   "javascript": {
     "revision": "de1e682289a417354df5b4437a3e4f92e0722a0f"
@@ -402,10 +402,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "d427744e2128668f3b4bac3dc63f840ebb7e87c3"
+    "revision": "44017499c51cb6431635ed51d5080e1fd05c2c21"
   },
   "markdown_inline": {
-    "revision": "d427744e2128668f3b4bac3dc63f840ebb7e87c3"
+    "revision": "44017499c51cb6431635ed51d5080e1fd05c2c21"
   },
   "matlab": {
     "revision": "79d8b25f57b48f83ae1333aff6723b83c9532e37"
@@ -456,10 +456,10 @@
     "revision": "28d3b2e25a0b1881d1b47ed1924ca276c7003d45"
   },
   "ocaml": {
-    "revision": "dabe60a96553fbbda0a58b6ccda12b7d44047cb5"
+    "revision": "f7e63111ed1bc1908eacafe6af1ee8d01bfcf7ae"
   },
   "ocaml_interface": {
-    "revision": "dabe60a96553fbbda0a58b6ccda12b7d44047cb5"
+    "revision": "f7e63111ed1bc1908eacafe6af1ee8d01bfcf7ae"
   },
   "ocamllex": {
     "revision": "4b9898ccbf198602bb0dec9cd67cc1d2c0a4fad2"
@@ -669,7 +669,7 @@
     "revision": "b974719d47447666687d49c68a51b278b2320e99"
   },
   "swift": {
-    "revision": "a8cf05cd49b3b97d70a03fd65c9c279fc76662f7"
+    "revision": "bb3fe96bb65d9b71e2d04b7ebe27dc1947f2cd5d"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -678,7 +678,7 @@
     "revision": "1af543a96d060b1f808982037bfc54cc02218edd"
   },
   "t32": {
-    "revision": "0a457a557be7779336bc8ac2b396e73797bc68f7"
+    "revision": "95caba87f00c51177b254e95be55b2dc46d2ac78"
   },
   "tablegen": {
     "revision": "300f6a490e71f895e644ed2deec6920860a2e107"
@@ -753,7 +753,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "a50fc40276aded4b422bdf9f092aa7c8db6c33d3"
+    "revision": "b21db154e8be920277c494b1cb81367d4da40a98"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -771,7 +771,7 @@
     "revision": "052279cd5e1d73b075640c64cef97e7bdcd32611"
   },
   "vimdoc": {
-    "revision": "66f4fee37b07cff0dd3400089eebccd02e61e5c2"
+    "revision": "a75a932449675bbd260213a95f4cd8b3193286f0"
   },
   "vue": {
     "revision": "3b9d52087100bdfce43dad2ca46d75b0e21613f6"
