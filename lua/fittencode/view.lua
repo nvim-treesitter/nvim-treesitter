@@ -80,25 +80,15 @@ local function draw_virt_text(suggestions)
   end
 end
 
-local drawing = false
-local function redraw_screen()
-  if drawing then
-    return
-  end
-  drawing = true
-  vim.schedule(function()
-    api.nvim_command('redraw!')
-    drawing = false
-  end)
-end
-
 function M.clear_virt_text()
-  cached_virt_text = nil
-  redraw_screen()
+  M.render_virt_text()
 end
 
 ---@param virt_height integer
 local function move_to_center_vertical(virt_height)
+  if virt_height == 0 then
+    return
+  end
   local row, _ = Base.get_cursor()
   local relative_row = row - fn.line('w0')
   local height = api.nvim_win_get_height(0)
@@ -109,11 +99,11 @@ local function move_to_center_vertical(virt_height)
   end
 end
 
----@param suggestions Suggestions
+---@param suggestions? Suggestions
 function M.render_virt_text(suggestions)
   cached_virt_text = suggestions
-  move_to_center_vertical(vim.tbl_count(suggestions))
-  redraw_screen()
+  move_to_center_vertical(vim.tbl_count(suggestions or {}))
+  api.nvim_command('redraw!')
 end
 
 local autoindent = nil
