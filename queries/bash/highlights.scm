@@ -124,10 +124,15 @@
 (test_operator) @operator
 
 (command_substitution
-  "$(" @punctuation.bracket)
+  "$(" @punctuation.special
+  ")" @punctuation.special)
 
 (process_substitution
-  "<(" @punctuation.bracket)
+  [
+    "<("
+    ">("
+  ] @punctuation.special
+  ")" @punctuation.special)
 
 (arithmetic_expansion
   [
