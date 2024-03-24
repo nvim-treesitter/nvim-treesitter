@@ -142,9 +142,6 @@
 
 (char_literal) @character
 
-((preproc_arg) @function.macro
-  (#set! "priority" 90))
-
 (preproc_defined) @function.macro
 
 ((field_expression
