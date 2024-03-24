@@ -11,11 +11,6 @@ local M = {}
 ---@type integer
 local namespace = api.nvim_create_namespace('FittenCode/InlineCompletion')
 
----@type integer
-local extmark_ids = {}
-local INLINE = 1
-local LINES = 2
-
 local cached_virt_text = nil
 
 ---@class VirtLine
@@ -61,39 +56,27 @@ local function draw_virt_text(suggestions)
   Log.debug('Draw virtual text on buffer, text: {}', virt_text)
 
   if Config.internal.virtual_text.inline then
-    extmark_ids[INLINE] = api.nvim_buf_set_extmark(0, namespace, row, col, {
+    api.nvim_buf_set_extmark(0, namespace, row, col, {
       virt_text = virt_text[1],
       virt_text_pos = 'inline',
       hl_mode = 'combine',
-      id = extmark_ids[INLINE],
     })
   else
-    extmark_ids[INLINE] = api.nvim_buf_set_extmark(0, namespace, row, col, {
+    api.nvim_buf_set_extmark(0, namespace, row, col, {
       virt_text = virt_text[1],
       -- eol will added space to the end of the line
       virt_text_pos = 'overlay',
       hl_mode = 'combine',
-      id = extmark_ids[INLINE],
     })
   end
 
   table.remove(virt_text, 1)
 
   if vim.tbl_count(virt_text) > 0 then
-    extmark_ids[LINES] = api.nvim_buf_set_extmark(0, namespace, row, 0, {
+    api.nvim_buf_set_extmark(0, namespace, row, 0, {
       virt_lines = virt_text,
       hl_mode = 'combine',
-      id = extmark_ids[LINES],
     })
-  end
-end
-
-local function remove_extmarks()
-  if extmark_ids[INLINE] ~= nil then
-    api.nvim_buf_del_extmark(0, namespace, extmark_ids[INLINE])
-  end
-  if extmark_ids[LINES] ~= nil then
-    api.nvim_buf_del_extmark(0, namespace, extmark_ids[LINES])
   end
 end
 
@@ -226,7 +209,7 @@ end
 
 api.nvim_set_decoration_provider(namespace, {
   on_win = function()
-    remove_extmarks()
+    api.nvim_buf_clear_namespace(0, namespace, 0, -1)
     draw_virt_text(cached_virt_text)
   end,
 })
