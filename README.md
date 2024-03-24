@@ -135,7 +135,7 @@ local parser_config = require('nvim-treesitter.parsers').configs
 parser_config.zimbu = {
   install_info = {
     url = '~/projects/tree-sitter-zimbu', -- local path or git repo
-    files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c or src/scanner.cc
+    files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c
     -- optional entries:
     branch = 'develop', -- only needed if different from default branch
     location= 'parser', -- only needed if the parser is in subdirectory of a "monorepo"
