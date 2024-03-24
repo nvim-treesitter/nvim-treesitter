@@ -19,7 +19,7 @@ To add a new parser, edit the following files:
 zimbu = {
   install_info = {
     url = 'https://github.com/zimbulang/tree-sitter-zimbu', -- local path or git repo
-    files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c or src/scanner.cc
+    files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c
     -- optional entries:
     branch = 'develop', -- only needed if different from default branch
     location = 'parser', -- only needed if the parser is in subdirectory of a "monorepo"
@@ -51,7 +51,7 @@ zimbu = {
   zimbu = { 'zu' },
 ```
 
-**Note: We only support external scanners written in C (preferably) and C++03 for portability reasons.**
+**Note: We only support external scanners written in C for portability reasons.**
 
 ## Queries
 
