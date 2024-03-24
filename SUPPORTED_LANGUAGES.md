@@ -225,7 +225,7 @@ jsx (queries only)[^jsx] | core | `HFIJ ` |  |  | @steelsojka
 [snakemake](https://github.com/osthomas/tree-sitter-snakemake) | unsupported | `HF JL` |  |  | 
 [solidity](https://github.com/JoranHonig/tree-sitter-solidity) | core | `HF   ` |  |  | @amaanq
 [soql](https://github.com/aheber/tree-sitter-sfapex) | community | `H    ` |  |  | @aheber
-[sosl](https://github.com/aheber/tree-sitter-sfapex) |  | `H    ` |  |  | @aheber
+[sosl](https://github.com/aheber/tree-sitter-sfapex) | community | `H    ` |  |  | @aheber
 [sourcepawn](https://github.com/nilshelmig/tree-sitter-sourcepawn) | community | `H  JL` |  |  | @Sarrus1
 [sparql](https://github.com/BonaBeavis/tree-sitter-sparql) | community | `HFIJL` |  |  | @BonaBeavis
 [sql](https://github.com/derekstride/tree-sitter-sql) | community | `H IJ ` |  |  | @derekstride
