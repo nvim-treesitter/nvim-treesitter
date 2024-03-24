@@ -29,15 +29,16 @@ end
 ---@param task_id integer
 ---@param suggestions? Suggestions
 ---@param generated_text? string
+---@return boolean
 local function on_suggestions(task_id, suggestions, generated_text)
   if not suggestions then
     Log.debug('No suggestions received; task_id: {}, suggestions: {}', task_id, suggestions)
-    return
+    return false
   end
   local row, col = Base.get_cursor()
   if not tasks:match_clean(task_id, row, col) then
     Log.debug('Completion request is outdated, discarding; task_id: {}, row: {}, col: {}', task_id, row, col)
-    return
+    return false
   end
 
   Log.debug('Suggestions received; task_id: {}, suggestions: {}', task_id, suggestions)
@@ -47,8 +48,18 @@ local function on_suggestions(task_id, suggestions, generated_text)
   cache:update_lines(suggestions, generated_text)
 
   if inline_mode then
-    View.render_virt_text(suggestions)
+    if Lsp.is_active() then
+      Log.debug('LSP is active, discarding completion suggestions')
+      cache:flush()
+      return false
+    else
+      -- TODO: Silence LSP temporarily to avoid completion conflicts
+      -- Lsp.silence()
+      View.render_virt_text(suggestions)
+    end
   end
+
+  return true
 end
 
 local function lazy_inline_completion()
@@ -108,18 +119,20 @@ function M.generate_one_stage(row, col, force, task_id, on_suggestions_ready, on
         on_error()
       end
       return
-    else
-      -- TODO: Silence LSP temporarily to avoid completion conflicts
-      -- Lsp.silence()
     end
   end
 
   task_id = task_id or tasks:create(row, col)
   cache:flush()
   Sessions.request_generate_one_stage(task_id, function(id, suggestions, generated_text)
-    on_suggestions(id, suggestions, generated_text)
-    if on_suggestions_ready then
-      on_suggestions_ready(generated_text)
+    if on_suggestions(id, suggestions, generated_text) then
+      if on_suggestions_ready then
+        on_suggestions_ready(generated_text)
+      end
+    else
+      if on_error then
+        on_error()
+      end
     end
   end, function()
     if on_error then
