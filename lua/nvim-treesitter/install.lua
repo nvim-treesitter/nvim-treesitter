@@ -347,7 +347,7 @@ local function select_compiler_args(repo, compiler)
 
   if compiler:find('zig$') or compiler:find('zig.exe$') then
     return {
-      'c++',
+      'cc',
       '-o',
       'parser.so',
       repo.files,
@@ -372,20 +372,6 @@ local function select_compiler_args(repo, compiler)
     if test_cc_arg(compiler, arg) then
       args[#args + 1] = arg
     end
-  end
-
-  if
-    #vim.iter.filter(
-      --- @param file string
-      --- @return boolean
-      function(file)
-        local ext = fn.fnamemodify(file, ':e')
-        return ext == 'cc' or ext == 'cpp' or ext == 'cxx'
-      end,
-      repo.files
-    ) > 0
-  then
-    add_cc_arg('-lstdc++')
   end
 
   if not iswin then
