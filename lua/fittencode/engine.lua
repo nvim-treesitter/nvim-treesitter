@@ -92,11 +92,10 @@ end
 
 ---@param row integer
 ---@param col integer
----@param force boolean|nil
----@param task_id integer|nil
----@param on_suggestions_ready function|nil
----@param on_error function|nil
-function M.generate_one_stage(row, col, force, task_id, on_suggestions_ready, on_error)
+---@param force? boolean
+---@param on_suggestions_ready? function
+---@param on_error? function
+function M.generate_one_stage(row, col, force, on_suggestions_ready, on_error)
   if not Sessions.ready_for_generate() then
     Log.debug('Not ready for generate')
     if on_error then
@@ -132,7 +131,7 @@ function M.generate_one_stage(row, col, force, task_id, on_suggestions_ready, on
     end
   end
 
-  task_id = task_id or tasks:create(row, col)
+  local task_id = tasks:create(row, col)
   cache:flush()
   Sessions.request_generate_one_stage(task_id, function(id, suggestions, generated_text)
     if on_suggestions(id, suggestions, generated_text) then
@@ -349,13 +348,6 @@ function M.preflight()
 end
 
 ---@alias lsp.CompletionResponse lsp.CompletionList|lsp.CompletionItem[]
-
----@param row integer
----@param col integer
----@return integer
-function M.create_task(row, col)
-  return tasks:create(row, col)
-end
 
 ---@param suggestions string
 ---@return lsp.CompletionResponse|nil
