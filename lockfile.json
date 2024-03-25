@@ -377,6 +377,9 @@
   "linkerscript": {
     "revision": "f99011a3554213b654985a4b0a65b3b032ec4621"
   },
+  "liquid": {
+    "revision": "0dee9904aaa4c824333cc4f44698b972950e44d8"
+  },
   "liquidsoap": {
     "revision": "09a9e31e2af734a8974dad6ed349648f601eee8c"
   },

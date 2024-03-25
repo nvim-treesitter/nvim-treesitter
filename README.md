@@ -299,6 +299,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [ledger](https://github.com/cbarrete/tree-sitter-ledger) (maintained by @cbarrete)
 - [x] [leo](https://github.com/r001/tree-sitter-leo) (maintained by @r001)
 - [x] [linkerscript](https://github.com/amaanq/tree-sitter-linkerscript) (maintained by @amaanq)
+- [x] [liquid](https://github.com/hankthetank27/tree-sitter-liquid) (experimental, maintained by @hankthetank27)
 - [x] [liquidsoap](https://github.com/savonet/tree-sitter-liquidsoap) (maintained by @toots)
 - [x] [llvm](https://github.com/benwilliamgraham/tree-sitter-llvm) (maintained by @benwilliamgraham)
 - [x] [lua](https://github.com/MunifTanjim/tree-sitter-lua) (maintained by @muniftanjim)
