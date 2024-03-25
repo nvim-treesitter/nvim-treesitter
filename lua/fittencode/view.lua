@@ -106,29 +106,6 @@ function M.render_virt_text(suggestions)
   api.nvim_command('redraw!')
 end
 
-local autoindent = nil
-local smartindent = nil
-local formatoptions = nil
-local textwidth = nil
-
-local function local_fmt_clear()
-  autoindent = vim.bo.autoindent
-  smartindent = vim.bo.smartindent
-  formatoptions = vim.bo.formatoptions
-  textwidth = vim.bo.textwidth
-  vim.bo.autoindent = false
-  vim.bo.smartindent = false
-  vim.bo.formatoptions = ''
-  vim.bo.textwidth = 0
-end
-
-local function local_fmt_recovery()
-  vim.bo.autoindent = autoindent
-  vim.bo.smartindent = smartindent
-  vim.bo.formatoptions = formatoptions
-  vim.bo.textwidth = textwidth
-end
-
 ---@param row integer
 ---@param col integer
 ---@param count integer @The count of the lines
@@ -177,20 +154,41 @@ local function undojoin()
   Base.feedkeys('<C-g>u')
 end
 
+---@param fx? function
+---@return any
+local function format_wrap(fx)
+  local autoindent = vim.bo.autoindent
+  local smartindent = vim.bo.smartindent
+  local formatoptions = vim.bo.formatoptions
+  local textwidth = vim.bo.textwidth
+
+  vim.bo.autoindent = false
+  vim.bo.smartindent = false
+  vim.bo.formatoptions = ''
+  vim.bo.textwidth = 0
+
+  local ret = nil
+  if fx then
+    ret = fx()
+  end
+
+  vim.bo.autoindent = autoindent
+  vim.bo.smartindent = smartindent
+  vim.bo.formatoptions = formatoptions
+  vim.bo.textwidth = textwidth
+  return ret
+end
+
 ---@param lines string[]
 function M.set_text(lines)
-  local_fmt_clear()
-
-  local row, col = Base.get_cursor()
-  local count = vim.tbl_count(lines)
-
-  undojoin()
-
-  -- Emit events `CursorMovedI` `CursorHoldI`
-  append_text_at_pos(row, col, count, lines)
-  move_cursor_to_text_end(row, col, count, lines)
-
-  local_fmt_recovery()
+  format_wrap(function ()
+    local row, col = Base.get_cursor()
+    local count = vim.tbl_count(lines)
+    undojoin()
+    -- Emit events `CursorMovedI` `CursorHoldI`
+    append_text_at_pos(row, col, count, lines)
+    move_cursor_to_text_end(row, col, count, lines)
+  end)
 end
 
 function M.feed_tab()
