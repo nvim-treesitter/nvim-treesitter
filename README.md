@@ -379,7 +379,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [scss](https://github.com/serenadeai/tree-sitter-scss) (maintained by @elianiva)
 - [x] [slang](https://github.com/theHamsta/tree-sitter-slang) (experimental, maintained by @theHamsta)
 - [x] [slint](https://github.com/slint-ui/tree-sitter-slint) (maintained by @hunger)
-- [x] [smali](https://git.sr.ht/~yotam/tree-sitter-smali) (maintained by @amaanq)
+- [x] [smali](https://github.com/tree-sitter-grammars/tree-sitter-smali) (maintained by @amaanq)
 - [x] [smithy](https://github.com/indoorvivants/tree-sitter-smithy) (maintained by @amaanq, @keynmol)
 - [ ] [snakemake](https://github.com/osthomas/tree-sitter-snakemake) (experimental)
 - [x] [solidity](https://github.com/JoranHonig/tree-sitter-solidity) (maintained by @amaanq)
