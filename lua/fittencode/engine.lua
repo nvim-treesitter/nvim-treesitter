@@ -106,7 +106,7 @@ function M.generate_one_stage(row, col, force, on_suggestions_ready, on_error)
 
   local cur_row, cur_col = Base.get_cursor()
   if cur_row ~= row or cur_col ~= col then
-    Log.debug('Cursor position changed, skip request generate one stage')
+    Log.debug('Cursor changed; requested cursor row: {}, col: {}; current cursor row: {}, col: {}', row, col, cur_row, cur_col)
     if on_error then
       on_error()
     end
@@ -114,11 +114,13 @@ function M.generate_one_stage(row, col, force, on_suggestions_ready, on_error)
   end
 
   if not force and cache:equal_pos(row, col) then
-    Log.debug('Equal cached position, skip request generate one stage')
+    Log.debug('Cached cursor is equal to requested cursor; cached cursor row: {}, col: {}', cache:get_pos())
     if on_error then
       on_error()
     end
     return
+  else
+    Log.debug('Cached cursor is outdated, requested cursor row: {}, col: {}; cached cursor row: {}, col: {}', row, col, cache:get_pos())
   end
 
   if inline_mode then

@@ -4,7 +4,7 @@
 
 ---@class SuggestionsCache
 ---@field private task_id? integer
----@field private generated_text? string[]
+---@field private generated_text? string
 ---@field private lines? string[]
 ---@field private pos? SuggestionsPos
 ---@field private count? integer
@@ -13,7 +13,7 @@ local SuggestionsCache = {}
 function SuggestionsCache.new()
   local self = setmetatable({}, { __index = SuggestionsCache })
   self.task_id = nil
-  self.generated_text = {}
+  self.generated_text = ''
   self.lines = {}
   self.pos = {}
   self.count = 0
@@ -28,14 +28,14 @@ end
 ---@param row? integer
 ---@param col? integer
 ---@param lines? string[]
----@param generated_text? string[]
+---@param generated_text? string
 function SuggestionsCache:update(task_id, row, col, lines, generated_text)
   self.task_id = task_id
   self:update_pos(row, col)
   lines = lines or {}
   self.lines = lines
   self.count = vim.tbl_count(lines)
-  self.generated_text = generated_text or {}
+  self.generated_text = generated_text or ''
 end
 
 ---@param index integer
@@ -64,7 +64,7 @@ function SuggestionsCache:get_count()
   return self.count
 end
 
----@return string[]?
+---@return string?
 function SuggestionsCache:get_generated_text()
   return self.generated_text
 end
