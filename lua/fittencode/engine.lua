@@ -188,6 +188,7 @@ function M.accept_all_suggestions()
 end
 
 ---@param fx? function
+---@return any
 local function ignoreevent_wrap(fx)
   -- Out-of-order execution about eventignore and CursorMoved.
   -- https://github.com/vim/vim/issues/8641
@@ -283,6 +284,10 @@ function M.accept_word()
     Log.debug('Pretreatment cached lines: {}', cache:get_lines())
 
     local line = cache:get_line(1)
+    if not line then
+      Log.debug('No line cached')
+      return
+    end
     local next_index = next_indices(line)
     local word = string.sub(line, 1, next_index)
     line = string.sub(line, string.len(word) + 1)
