@@ -11,8 +11,6 @@ local Log = require('fittencode.log')
 ---@class KeyStorageOptions
 ---@field path string
 
--- API Key Storage Service
--- Currently only support single user and single API key
 ---@class KeyStorage
 ---@field keys Key
 ---@field path string
@@ -29,9 +27,6 @@ function KeyStorage:new(o)
   return setmetatable(obj, self)
 end
 
--- Load API key file
--- * if load successful, call `on_success` with API key name
--- * if load failed, call `on_error`
 ---@param on_success function|nil
 ---@param on_error function|nil
 function KeyStorage:load(on_success, on_error)
@@ -65,9 +60,6 @@ function KeyStorage:load(on_success, on_error)
   end)
 end
 
--- Save API key file
--- * if save successful, call `on_success`
--- * if save failed, call `on_error`
 ---@param on_success function|nil
 ---@param on_error function|nil
 function KeyStorage:save(on_success, on_error)
@@ -85,9 +77,6 @@ function KeyStorage:save(on_success, on_error)
   end)
 end
 
--- Delete API key file and clear keys
--- * if successful, call `on_success`
--- * if failed, call `on_error`
 ---@param on_success function|nil
 ---@param on_error function|nil
 function KeyStorage:clear(on_success, on_error)
@@ -107,9 +96,6 @@ function KeyStorage:clear(on_success, on_error)
   end)
 end
 
--- Get API key by name
--- * if `name == nil`, return `nil`
--- * if name not found, return `nil`
 ---@param name string|nil
 ---@return string|nil
 ---@nodiscard
@@ -120,8 +106,6 @@ function KeyStorage:get_key_by_name(name)
   return nil
 end
 
--- Set API key by name
--- * if `name == nil` or `key == nil`, do nothing
 ---@param name string|nil
 ---@param key string
 function KeyStorage:set_key_by_name(name, key)

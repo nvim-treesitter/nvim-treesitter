@@ -39,6 +39,10 @@ function SuggestionsCache:update_lines(lines, generated_text)
   self.generated_text = generated_text or {}
 end
 
+function SuggestionsCache:update_line(index, line)
+  self.lines[index] = line
+end
+
 ---@param row integer|nil
 ---@param col integer|nil
 function SuggestionsCache:update_pos(row, col)
@@ -55,6 +59,10 @@ end
 
 function SuggestionsCache:is_advance_pos(row, col)
   return self.pos.row == row and self.pos.col + 1 == col
+end
+
+function SuggestionsCache:get_pos()
+  return self.pos.row, self.pos.col
 end
 
 return SuggestionsCache

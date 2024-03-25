@@ -35,6 +35,7 @@ local function on_suggestions(task_id, suggestions, generated_text)
     Log.debug('No suggestions received; task_id: {}, suggestions: {}', task_id, suggestions)
     return false
   end
+
   local row, col = Base.get_cursor()
   if not tasks:match_clean(task_id, row, col) then
     Log.debug('Completion request is outdated, discarding; task_id: {}, row: {}, col: {}', task_id, row, col)
@@ -63,16 +64,11 @@ local function on_suggestions(task_id, suggestions, generated_text)
 end
 
 local function lazy_inline_completion()
+  Log.debug('Lazy inline completion')
   local row, col = Base.get_cursor()
-  if cache.pos.row == nil or cache.pos.col == nil then
-    return false
-  end
-  local pre_pos = cache.pos
-  ---@diagnostic disable-next-line: need-check-nil
-  Log.debug('Previous position, row: {}, col: {}', pre_pos.row, pre_pos.col)
-  Log.debug('Current position, row: {}, col: {}', row, col)
-  ---@diagnostic disable-next-line: need-check-nil
-  if pre_pos.row == row and pre_pos.col + 1 == col then
+  Log.debug('Current position: row: {}, col: {}', row, col)
+  Log.debug('Cached position: row: {}, col: {}', cache:get_pos())
+  if cache:is_advance_pos(row, col) then
     local cur_line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
     local cache_line = cache.lines[1]
     local cur_char = string.sub(cur_line, col, col)
@@ -80,8 +76,8 @@ local function lazy_inline_completion()
     if cur_char == cache_char then
       Lsp.silence()
       cache_line = string.sub(cache_line, 2)
-      cache.lines[1] = cache_line
-      cache.pos.col = col
+      cache:update_line(1, cache_line)
+      cache:update_pos(row, col)
       View.render_virt_text(cache.lines)
       return true
     end
@@ -114,7 +110,7 @@ function M.generate_one_stage(row, col, force, task_id, on_suggestions_ready, on
   end
 
   if not force and cache:equal_pos(row, col) then
-    Log.debug('Equal position, skip request generate one stage')
+    Log.debug('Equal cached position, skip request generate one stage')
     if on_error then
       on_error()
     end
@@ -390,9 +386,7 @@ end
 
 function M.on_text_changed()
   if inline_mode then
-    if lazy_inline_completion() then
-      return
-    end
+    lazy_inline_completion()
   end
 end
 
