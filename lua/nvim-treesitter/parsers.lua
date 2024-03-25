@@ -1131,6 +1131,16 @@ list.linkerscript = {
   maintainers = { "@amaanq" },
 }
 
+list.liquid = {
+  install_info = {
+    url = "https://github.com/hankthetank27/tree-sitter-liquid",
+    files = { "src/parser.c", "src/scanner.c" },
+    branch = "main",
+  },
+  maintainers = { "@hankthetank27" },
+  experimental = true,
+}
+
 list.liquidsoap = {
   install_info = {
     url = "https://github.com/savonet/tree-sitter-liquidsoap",
