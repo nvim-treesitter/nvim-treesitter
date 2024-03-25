@@ -12,7 +12,7 @@
     "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
   },
   "arduino": {
-    "revision": "94219a5ac207a0fadd680b285378d08669d5bbc8"
+    "revision": "e3d0dea39dbb8032e754bafe5aec3ed5a234d986"
   },
   "asm": {
     "revision": "62e49328113ff318128c640bf0cf6dd3d3d51553"
@@ -117,7 +117,7 @@
     "revision": "0229c0211dba909c5d45129ac784a3f4d49c243a"
   },
   "djot": {
-    "revision": "4dd87f88df82c3a77bab3929ec0b37d11e2721b7"
+    "revision": "d5d4a8409688a6ebb545cee3203e1449bc0c5856"
   },
   "dockerfile": {
     "revision": "33e22c33bcdbfc33d42806ee84cfd0b1248cc392"
@@ -267,7 +267,7 @@
     "revision": "3d4af179414525a35dd069ba0208c9b71093d8b3"
   },
   "haskell": {
-    "revision": "6b5ec205c9d4f23eb36a163f1edc4f2db8c98e4a"
+    "revision": "95a4f0023741b3bee0cc500f3dab9c5bab2dc2be"
   },
   "haskell_persistent": {
     "revision": "577259b4068b2c281c9ebf94c109bd50a74d5857"
@@ -420,7 +420,7 @@
     "revision": "3ebd060b1a2eec450ff46b73428c63f9148a07ff"
   },
   "mlir": {
-    "revision": "3da76a44a6a5db05aef03966a2045c7c73571d77"
+    "revision": "d9a79cf19da13812e1a4fe1f816b68750ac65cb3"
   },
   "muttrc": {
     "revision": "67d9e23ca7aa22d9bce9d16c53d2c927dff5159a"
@@ -444,7 +444,7 @@
     "revision": "763168fa916a333a459434f1424b5d30645f015d"
   },
   "norg": {
-    "revision": "014073fe8016d1ac440c51d22c77e3765d8f6855"
+    "revision": "9766442985fd546e2d33f8d1c7e7619ed07860cf"
   },
   "nqc": {
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
@@ -753,7 +753,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "b21db154e8be920277c494b1cb81367d4da40a98"
+    "revision": "e1f14c4b92f571bb1063ca5260c9172256844540"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -783,7 +783,7 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "f11359345a2475b434a8e1dd3cfa02f2bc9b7e21"
+    "revision": "ea40325cea1af68d3433fd5d08e43d2a18b87851"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
