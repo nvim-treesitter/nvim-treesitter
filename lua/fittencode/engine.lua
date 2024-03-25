@@ -104,6 +104,15 @@ function M.generate_one_stage(row, col, force, task_id, on_suggestions_ready, on
     return
   end
 
+  local cur_row, cur_col = Base.get_cursor()
+  if cur_row ~= row or cur_col ~= col then
+    Log.debug('Cursor position changed, skip request generate one stage')
+    if on_error then
+      on_error()
+    end
+    return
+  end
+
   if not force and cache:equal_pos(row, col) then
     Log.debug('Equal position, skip request generate one stage')
     if on_error then
