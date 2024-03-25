@@ -114,7 +114,7 @@
 ([
   (plus_metadata)
   (minus_metadata)
-] @string.special
+] @keyword.directive
   (#set! "priority" 90))
 
 [
