@@ -3,7 +3,7 @@
 ---@field col? integer
 
 ---@class SuggestionsCache
----@field private task_id integer|nil
+---@field private task_id? integer
 ---@field private generated_text? string[]
 ---@field private lines? string[]
 ---@field private pos? SuggestionsPos
@@ -21,50 +21,56 @@ function SuggestionsCache.new()
 end
 
 function SuggestionsCache:flush()
-  self:update_lines()
-  self:update_pos()
-  self.task_id = nil
+  self:update()
 end
 
----@param task_id integer
-function SuggestionsCache:update_task_id(task_id)
+---@param task_id? integer
+---@param row? integer
+---@param col? integer
+---@param lines? string[]
+---@param generated_text? string[]
+function SuggestionsCache:update(task_id, row, col, lines, generated_text)
   self.task_id = task_id
-end
-
----@param lines string[]|nil
-function SuggestionsCache:update_lines(lines, generated_text)
+  self:update_pos(row, col)
   lines = lines or {}
   self.lines = lines
   self.count = vim.tbl_count(lines)
   self.generated_text = generated_text or {}
 end
 
+---@param index integer
+---@param line string
 function SuggestionsCache:update_line(index, line)
   self.lines[index] = line
 end
 
+---@return string[]
 function SuggestionsCache:get_lines()
   return self.lines
 end
 
+---@return string?
 function SuggestionsCache:get_line(index)
   return self.lines[index]
 end
 
+---@return string?
 function SuggestionsCache:remove_line(index)
   return table.remove(self.lines, index)
 end
 
+---@return integer
 function SuggestionsCache:get_count()
   return self.count
 end
 
+---@return string[]?
 function SuggestionsCache:get_generated_text()
   return self.generated_text
 end
 
----@param row integer|nil
----@param col integer|nil
+---@param row? integer
+---@param col? integer
 function SuggestionsCache:update_pos(row, col)
   self.pos.row = row
   self.pos.col = col
@@ -77,10 +83,7 @@ function SuggestionsCache:equal_pos(row, col)
   return self.pos.row == row and self.pos.col == col
 end
 
-function SuggestionsCache:is_advance_pos(row, col)
-  return self.pos.row == row and self.pos.col + 1 == col
-end
-
+---@return integer?, integer?
 function SuggestionsCache:get_pos()
   return self.pos.row, self.pos.col
 end

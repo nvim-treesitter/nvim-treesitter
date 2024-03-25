@@ -44,9 +44,7 @@ local function on_suggestions(task_id, suggestions, generated_text)
 
   Log.debug('Suggestions received; task_id: {}, suggestions: {}', task_id, suggestions)
 
-  cache:update_task_id(task_id)
-  cache:update_pos(row, col)
-  cache:update_lines(suggestions, generated_text)
+  cache:update(task_id, row, col, suggestions, generated_text)
 
   if inline_mode then
     if Lsp.is_active() then
@@ -65,12 +63,19 @@ end
 
 local function lazy_inline_completion()
   Log.debug('Lazy inline completion')
+  local is_advance_pos = function(row, col)
+    local cached_row, cached_col = cache:get_pos()
+    return cached_row == row and cached_col + 1 == col
+  end
   local row, col = Base.get_cursor()
   Log.debug('Current position: row: {}, col: {}', row, col)
   Log.debug('Cached position: row: {}, col: {}', cache:get_pos())
-  if cache:is_advance_pos(row, col) then
+  if is_advance_pos(row, col) then
     local cur_line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
     local cache_line = cache:get_line(1)
+    if not cache_line then
+      return false
+    end
     local cur_char = string.sub(cur_line, col, col)
     local cache_char = string.sub(cache_line, 1, 1)
     if cur_char == cache_char then
