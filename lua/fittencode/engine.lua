@@ -187,6 +187,22 @@ function M.accept_all_suggestions()
   M.reset()
 end
 
+---@param fx? function
+local function ignoreevent_wrap(fx)
+  -- Out-of-order execution about eventignore and CursorMoved.
+  -- https://github.com/vim/vim/issues/8641
+  local eventignore = vim.o.eventignore
+  vim.o.eventignore = 'all'
+
+  local ret = nil
+  if fx then
+    ret = fx()
+  end
+
+  vim.o.eventignore = eventignore
+  return ret
+end
+
 function M.accept_line()
   Log.debug('Accept line')
 
@@ -196,47 +212,41 @@ function M.accept_line()
   end
 
   Lsp.silence()
-
   View.clear_virt_text()
 
-  -- Out-of-order execution about eventignore and CursorMoved.
-  -- https://github.com/vim/vim/issues/8641
-  local eventignore = vim.o.eventignore
-  vim.o.eventignore = 'all'
+  ignoreevent_wrap(function()
+    Log.debug('Pretreatment cached lines: {}', cache:get_lines())
 
-  Log.debug('Pretreatment cached lines: {}', cache:get_lines())
+    local line = cache:remove_line(1)
+    local cur = vim.tbl_count(cache:get_lines())
+    local stage = cache:get_count() - 1
 
-  local line = cache:remove_line(1)
-  local cur = vim.tbl_count(cache:get_lines())
-  local stage = cache:get_count() - 1
-
-  if cur == stage then
-    View.set_text({ line })
-    Log.debug('Set line; line: {}', line)
-    View.set_text({ '', '' })
-    Log.debug('Set empty new line')
-  else
-    if cur == 0 then
+    if cur == stage then
       View.set_text({ line })
       Log.debug('Set line; line: {}', line)
+      View.set_text({ '', '' })
+      Log.debug('Set empty new line')
     else
-      View.set_text({ line, '' })
-      Log.debug('Set line and empty new line; line: {}', line)
+      if cur == 0 then
+        View.set_text({ line })
+        Log.debug('Set line; line: {}', line)
+      else
+        View.set_text({ line, '' })
+        Log.debug('Set line and empty new line; line: {}', line)
+      end
     end
-  end
 
-  Log.debug('Remaining cached lines: {}', cache:get_lines())
+    Log.debug('Remaining cached lines: {}', cache:get_lines())
 
-  if vim.tbl_count(cache:get_lines()) > 0 then
-    View.render_virt_text(cache:get_lines())
-    local row, col = Base.get_cursor()
-    cache:update_pos(row, col)
-  else
-    Log.debug('No more suggestions, generate one stage')
-    generate_one_stage_at_cursor()
-  end
-
-  vim.o.eventignore = eventignore
+    if vim.tbl_count(cache:get_lines()) > 0 then
+      View.render_virt_text(cache:get_lines())
+      local row, col = Base.get_cursor()
+      cache:update_pos(row, col)
+    else
+      Log.debug('No more suggestions, generate one stage')
+      generate_one_stage_at_cursor()
+    end
+  end)
 end
 
 -- Calculate the next word index, split by word boundary
@@ -269,42 +279,39 @@ function M.accept_word()
   Lsp.silence()
   View.clear_virt_text()
 
-  local eventignore = vim.o.eventignore
-  vim.o.eventignore = 'all'
+  ignoreevent_wrap(function()
+    Log.debug('Pretreatment cached lines: {}', cache:get_lines())
 
-  Log.debug('Pretreatment cached lines: {}', cache:get_lines())
-
-  local line = cache:get_line(1)
-  local next_index = next_indices(line)
-  local word = string.sub(line, 1, next_index)
-  line = string.sub(line, string.len(word) + 1)
-  if string.len(line) == 0 then
-    cache:remove_line(1)
-    if M.has_suggestions() then
-      View.set_text({ word, '' })
-      Log.debug('Set word and empty new line; word: {}', word)
+    local line = cache:get_line(1)
+    local next_index = next_indices(line)
+    local word = string.sub(line, 1, next_index)
+    line = string.sub(line, string.len(word) + 1)
+    if string.len(line) == 0 then
+      cache:remove_line(1)
+      if M.has_suggestions() then
+        View.set_text({ word, '' })
+        Log.debug('Set word and empty new line; word: {}', word)
+      else
+        View.set_text({ word })
+        Log.debug('Set word; word: {}', word)
+      end
     else
+      cache:update_line(1, line)
       View.set_text({ word })
       Log.debug('Set word; word: {}', word)
     end
-  else
-    cache:update_line(1, line)
-    View.set_text({ word })
-    Log.debug('Set word; word: {}', word)
-  end
 
-  Log.debug('Remaining cached lines: {}', cache:get_lines())
+    Log.debug('Remaining cached lines: {}', cache:get_lines())
 
-  if vim.tbl_count(cache:get_lines()) > 0 then
-    View.render_virt_text(cache:get_lines())
-    local row, col = Base.get_cursor()
-    cache:update_pos(row, col)
-  else
-    Log.debug('No more suggestions, generate one stage')
-    generate_one_stage_at_cursor()
-  end
-
-  vim.o.eventignore = eventignore
+    if vim.tbl_count(cache:get_lines()) > 0 then
+      View.render_virt_text(cache:get_lines())
+      local row, col = Base.get_cursor()
+      cache:update_pos(row, col)
+    else
+      Log.debug('No more suggestions, generate one stage')
+      generate_one_stage_at_cursor()
+    end
+  end)
 end
 
 function M.reset(reset_lsp)
