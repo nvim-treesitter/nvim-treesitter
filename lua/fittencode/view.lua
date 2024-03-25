@@ -157,31 +157,31 @@ end
 ---@param fx? function
 ---@return any
 local function format_wrap(fx)
-  local autoindent = vim.bo.autoindent
-  local smartindent = vim.bo.smartindent
-  local formatoptions = vim.bo.formatoptions
-  local textwidth = vim.bo.textwidth
-
-  vim.bo.autoindent = false
-  vim.bo.smartindent = false
-  vim.bo.formatoptions = ''
-  vim.bo.textwidth = 0
+  local fmts = {
+    { 'autoindent', false },
+    { 'smartindent', false },
+    { 'formatoptions', '' },
+    { 'textwidth', 0 },
+  }
+  for _, fmt in ipairs(fmts) do
+    fmt[3] = vim.bo[fmt[1]]
+    vim.bo[fmt[1]] = fmt[2]
+  end
 
   local ret = nil
   if fx then
     ret = fx()
   end
 
-  vim.bo.autoindent = autoindent
-  vim.bo.smartindent = smartindent
-  vim.bo.formatoptions = formatoptions
-  vim.bo.textwidth = textwidth
+  for _, fmt in ipairs(fmts) do
+    vim.bo[fmt[1]] = fmt[3]
+  end
   return ret
 end
 
 ---@param lines string[]
 function M.set_text(lines)
-  format_wrap(function ()
+  format_wrap(function()
     local row, col = Base.get_cursor()
     local count = vim.tbl_count(lines)
     undojoin()
