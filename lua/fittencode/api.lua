@@ -22,7 +22,7 @@ M.api = {
     if Engine.has_suggestions() then
       Engine.accept_all_suggestions()
     else
-      View.feed_tab()
+      View.tab()
     end
   end,
   accept_line = function()

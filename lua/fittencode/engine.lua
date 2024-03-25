@@ -96,6 +96,8 @@ end
 ---@param on_suggestions_ready? function
 ---@param on_error? function
 function M.generate_one_stage(row, col, force, on_suggestions_ready, on_error)
+  Log.debug('Start generate one stage...')
+
   if not Sessions.ready_for_generate() then
     Log.debug('Not ready for generate')
     if on_error then

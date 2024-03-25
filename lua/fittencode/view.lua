@@ -11,7 +11,7 @@ local M = {}
 ---@type integer
 local namespace = api.nvim_create_namespace('FittenCode/InlineCompletion')
 
-local cached_virt_text = nil
+local committed_virt_text = nil
 
 ---@class VirtLine
 ---@field text string
@@ -23,6 +23,20 @@ local cached_virt_text = nil
 ---@return boolean
 local function is_whitespace_line(line)
   return string.len(line) == 0 or line:match('^%s*$') ~= nil
+end
+
+---@param chars string
+local function feedkeys(chars)
+  local keys = api.nvim_replace_termcodes(chars, true, false, true)
+  api.nvim_feedkeys(keys, 'in', true)
+end
+
+local function undojoin()
+  feedkeys('<C-g>u')
+end
+
+function M.tab()
+  feedkeys('<Tab>')
 end
 
 ---@param suggestions? Suggestions
@@ -44,7 +58,7 @@ local function generate_virt_text(suggestions)
 end
 
 ---@param suggestions? Suggestions
-local function draw_virt_text(suggestions)
+local function set_extmark(suggestions)
   ---@type VirtText?
   local virt_text = generate_virt_text(suggestions)
   if virt_text == nil or vim.tbl_count(virt_text) == 0 then
@@ -80,10 +94,6 @@ local function draw_virt_text(suggestions)
   end
 end
 
-function M.clear_virt_text()
-  M.render_virt_text()
-end
-
 ---@param virt_height integer
 local function move_to_center_vertical(virt_height)
   if virt_height == 0 then
@@ -103,34 +113,11 @@ local function move_to_center_vertical(virt_height)
   end
 end
 
----@param suggestions? Suggestions
-function M.render_virt_text(suggestions)
-  cached_virt_text = suggestions
-  move_to_center_vertical(vim.tbl_count(suggestions or {}))
-  api.nvim_command('redraw!')
-end
-
 ---@param row integer
 ---@param col integer
----@param count integer @The count of the lines
----@param lines string[] @The lines have been appended
-local function move_cursor_to_text_end(row, col, count, lines)
-  if count == 1 then
-    local first_len = string.len(lines[1])
-    if first_len ~= 0 then
-      api.nvim_win_set_cursor(0, { row + 1, col + first_len })
-    end
-  else
-    local last_len = string.len(lines[count])
-    api.nvim_win_set_cursor(0, { row + count, last_len })
-  end
-end
-
----@param row integer
----@param col integer
----@param count integer @The count of the lines
----@param lines string[] @The lines to be appended
-local function append_text_at_pos(row, col, count, lines)
+---@param lines string[]
+local function append_text_at_pos(row, col, lines)
+  local count = vim.tbl_count(lines)
   for i = 1, count, 1 do
     local line = lines[i]
     local len = string.len(line)
@@ -154,8 +141,20 @@ local function append_text_at_pos(row, col, count, lines)
   end
 end
 
-local function undojoin()
-  Base.feedkeys('<C-g>u')
+---@param row integer
+---@param col integer
+---@param lines string[]
+local function move_cursor_to_text_end(row, col, lines)
+  local count = vim.tbl_count(lines)
+  if count == 1 then
+    local first_len = string.len(lines[1])
+    if first_len ~= 0 then
+      api.nvim_win_set_cursor(0, { row + 1, col + first_len })
+    end
+  else
+    local last_len = string.len(lines[count])
+    api.nvim_win_set_cursor(0, { row + count, last_len })
+  end
 end
 
 ---@param fx? function
@@ -187,22 +186,28 @@ end
 function M.set_text(lines)
   format_wrap(function()
     local row, col = Base.get_cursor()
-    local count = vim.tbl_count(lines)
     undojoin()
     -- Emit events `CursorMovedI` `CursorHoldI`
-    append_text_at_pos(row, col, count, lines)
-    move_cursor_to_text_end(row, col, count, lines)
+    append_text_at_pos(row, col, lines)
+    move_cursor_to_text_end(row, col, lines)
   end)
 end
 
-function M.feed_tab()
-  Base.feedkeys('<Tab>')
+---@param suggestions? Suggestions
+function M.render_virt_text(suggestions)
+  committed_virt_text = suggestions
+  move_to_center_vertical(vim.tbl_count(suggestions or {}))
+  api.nvim_command('redraw!')
+end
+
+function M.clear_virt_text()
+  M.render_virt_text()
 end
 
 api.nvim_set_decoration_provider(namespace, {
   on_win = function()
     api.nvim_buf_clear_namespace(0, namespace, 0, -1)
-    draw_virt_text(cached_virt_text)
+    set_extmark(committed_virt_text)
   end,
 })
 
