@@ -8,7 +8,7 @@
   "{%-"
   "-%}"
 ] @tag.delimiter
-  (#set! priority 101))
+  (#set! priority 110))
 
 ([
   "]"
@@ -16,13 +16,13 @@
   ")"
   "("
 ] @punctuation.bracket
-  (#set! priority 101))
+  (#set! priority 110))
 
 ([
   ","
   "."
 ] @punctuation.delimiter
-  (#set! priority 101))
+  (#set! priority 110))
 
 ([
   "as"
@@ -69,7 +69,7 @@
   "when"
   "with"
 ] @keyword
-  (#set! priority 101))
+  (#set! priority 110))
 
 ([
   "and"
@@ -77,7 +77,7 @@
   "in"
   "or"
 ] @keyword.operator
-  (#set! priority 101))
+  (#set! priority 110))
 
 ([
   "|"
@@ -85,27 +85,28 @@
   "="
   (predicate)
 ] @operator
-  (#set! priority 101))
+  (#set! priority 110))
 
 ((identifier) @variable
-  (#set! priority 101))
+  (#set! priority 110))
 
 ((string) @string
-  (#set! priority 101))
+  (#set! priority 110))
 
 ((boolean) @boolean
-  (#set! priority 101))
+  (#set! priority 110))
 
 ((number) @number
-  (#set! priority 101))
+  (#set! priority 110))
 
 (filter
   name: (identifier) @function.call
-  (#set! priority 101))
+  (#set! priority 110))
 
 (raw_statement
   (raw_content) @spell
-  (#set! priority 102))
+  (#set! priority 111))
 
 ((comment) @comment
-  (#set! priority 102))
+  (#set! priority 111))
+
