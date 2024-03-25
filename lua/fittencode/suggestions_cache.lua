@@ -3,11 +3,11 @@
 ---@field col? integer
 
 ---@class SuggestionsCache
----@field task_id integer|nil
----@field generated_text? string[]
----@field lines? string[]
----@field pos? SuggestionsPos
----@field count? integer
+---@field private task_id integer|nil
+---@field private generated_text? string[]
+---@field private lines? string[]
+---@field private pos? SuggestionsPos
+---@field private count? integer
 local SuggestionsCache = {}
 
 function SuggestionsCache.new()
@@ -41,6 +41,26 @@ end
 
 function SuggestionsCache:update_line(index, line)
   self.lines[index] = line
+end
+
+function SuggestionsCache:get_lines()
+  return self.lines
+end
+
+function SuggestionsCache:get_line(index)
+  return self.lines[index]
+end
+
+function SuggestionsCache:remove_line(index)
+  return table.remove(self.lines, index)
+end
+
+function SuggestionsCache:get_count()
+  return self.count
+end
+
+function SuggestionsCache:get_generated_text()
+  return self.generated_text
 end
 
 ---@param row integer|nil

@@ -70,7 +70,7 @@ local function lazy_inline_completion()
   Log.debug('Cached position: row: {}, col: {}', cache:get_pos())
   if cache:is_advance_pos(row, col) then
     local cur_line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
-    local cache_line = cache.lines[1]
+    local cache_line = cache:get_line(1)
     local cur_char = string.sub(cur_line, col, col)
     local cache_char = string.sub(cache_line, 1, 1)
     if cur_char == cache_char then
@@ -78,7 +78,7 @@ local function lazy_inline_completion()
       cache_line = string.sub(cache_line, 2)
       cache:update_line(1, cache_line)
       cache:update_pos(row, col)
-      View.render_virt_text(cache.lines)
+      View.render_virt_text(cache:get_lines())
       return true
     end
   end
@@ -148,7 +148,7 @@ end
 
 ---@return boolean
 function M.has_suggestions()
-  return vim.tbl_count(cache.lines or {}) ~= 0
+  return vim.tbl_count(cache:get_lines() or {}) ~= 0
 end
 
 ---@return SuggestionsCache
@@ -173,12 +173,12 @@ function M.accept_all_suggestions()
 
   Lsp.silence()
 
-  Log.debug('Pretreatment cache.lines: {}', cache.lines)
+  Log.debug('Pretreatment cached lines: {}', cache:get_lines())
 
   View.clear_virt_text()
-  View.set_text(cache.lines)
+  View.set_text(cache:get_lines())
 
-  Log.debug('Remaining cache.lines: {}', cache.lines)
+  Log.debug('Remaining cached lines: {}', cache:get_lines())
 
   M.reset()
 end
@@ -200,11 +200,11 @@ function M.accept_line()
   local eventignore = vim.o.eventignore
   vim.o.eventignore = 'all'
 
-  Log.debug('Pretreatment cache.lines: {}', cache.lines)
+  Log.debug('Pretreatment cached lines: {}', cache:get_lines())
 
-  local line = table.remove(cache.lines, 1)
-  local cur = vim.tbl_count(cache.lines)
-  local stage = cache.count - 1
+  local line = cache:remove_line(1)
+  local cur = vim.tbl_count(cache:get_lines())
+  local stage = cache:get_count() - 1
 
   if cur == stage then
     View.set_text({ line })
@@ -221,10 +221,10 @@ function M.accept_line()
     end
   end
 
-  Log.debug('Remaining cache.lines: {}', cache.lines)
+  Log.debug('Remaining cached lines: {}', cache:get_lines())
 
-  if vim.tbl_count(cache.lines) > 0 then
-    View.render_virt_text(cache.lines)
+  if vim.tbl_count(cache:get_lines()) > 0 then
+    View.render_virt_text(cache:get_lines())
     local row, col = Base.get_cursor()
     cache:update_pos(row, col)
   else
@@ -268,14 +268,14 @@ function M.accept_word()
   local eventignore = vim.o.eventignore
   vim.o.eventignore = 'all'
 
-  Log.debug('Pretreatment cache.lines: {}', cache.lines)
+  Log.debug('Pretreatment cached lines: {}', cache:get_lines())
 
-  local line = cache.lines[1]
+  local line = cache:get_line(1)
   local next_index = next_indices(line)
   local word = string.sub(line, 1, next_index)
   line = string.sub(line, string.len(word) + 1)
   if string.len(line) == 0 then
-    table.remove(cache.lines, 1)
+    cache:remove_line(1)
     if M.has_suggestions() then
       View.set_text({ word, '' })
       Log.debug('Set word and empty new line; word: {}', word)
@@ -284,15 +284,15 @@ function M.accept_word()
       Log.debug('Set word; word: {}', word)
     end
   else
-    cache.lines[1] = line
+    cache:update_line(1, line)
     View.set_text({ word })
     Log.debug('Set word; word: {}', word)
   end
 
-  Log.debug('Remaining cache.lines: {}', cache.lines)
+  Log.debug('Remaining cached lines: {}', cache:get_lines())
 
-  if vim.tbl_count(cache.lines) > 0 then
-    View.render_virt_text(cache.lines)
+  if vim.tbl_count(cache:get_lines()) > 0 then
+    View.render_virt_text(cache:get_lines())
     local row, col = Base.get_cursor()
     cache:update_pos(row, col)
   else
@@ -324,7 +324,7 @@ function M.advance()
 
   local row, col = Base.get_cursor()
   if cache:equal_pos(row, col) then
-    View.render_virt_text(cache.lines)
+    View.render_virt_text(cache:get_lines())
   else
     View.clear_virt_text()
     cache:flush()
@@ -356,7 +356,7 @@ end
 ---@return lsp.CompletionResponse|nil
 function M.convert_to_lsp_completion_response(line, character, cursor_before_line, suggestions)
   Log.debug('Suggestions: {}', suggestions)
-  suggestions = suggestions or cache.generated_text or ''
+  suggestions = suggestions or cache:get_generated_text() or ''
   cursor_before_line = cursor_before_line or ''
   local LABEL_LIMIT = 30
   local label = cursor_before_line .. suggestions
