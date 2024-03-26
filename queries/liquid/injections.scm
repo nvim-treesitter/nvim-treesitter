@@ -2,7 +2,7 @@
   (#set! injection.language "html")
   (#set! injection.combined))
 
-;;TODO we can switch to quantifiers once neovim 0.10 becomes stable
+;TODO we can switch to quantifiers once neovim 0.10 becomes stable
 (javascript_statement
   (js_content) @injection.content
   (#set! injection.language "javascript")
