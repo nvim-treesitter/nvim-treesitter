@@ -2,16 +2,20 @@
   (#set! injection.language "html")
   (#set! injection.combined))
 
-((json_content) @injection.content
+;;TODO we can switch to quantifiers once neovim 0.10 becomes stable
+(javascript_statement
+  (js_content) @injection.content
+  (#set! injection.language "javascript")
+  (#set! injection.combined))
+
+(schema_statement
+  (json_content) @injection.content
   (#set! injection.language "json")
   (#set! injection.combined))
 
-((style_content) @injection.content
+(style_statement
+  (style_content) @injection.content
   (#set! injection.language "css")
-  (#set! injection.combined))
-
-((js_content) @injection.content
-  (#set! injection.language "javascript")
   (#set! injection.combined))
 
 ((comment) @injection.content

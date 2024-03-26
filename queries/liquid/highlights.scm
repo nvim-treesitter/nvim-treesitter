@@ -107,5 +107,5 @@
   (raw_content) @spell
   (#set! priority 111))
 
-((comment) @comment
+((comment) @comment @spell
   (#set! priority 111))
