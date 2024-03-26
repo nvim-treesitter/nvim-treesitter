@@ -62,14 +62,14 @@ end
 
 local function lazy_inline_completion()
   Log.debug('Lazy inline completion')
-  local is_advance_pos = function(row, col)
-    local cached_row, cached_col = cache:get_pos()
+  local is_advance = function(row, col)
+    local cached_row, cached_col = cache:get_cursor()
     return cached_row == row and cached_col + 1 == col
   end
   local row, col = Base.get_cursor()
   Log.debug('Current position; row: {}, col: {}', row, col)
-  Log.debug('Cached position; row: {}, col: {}', cache:get_pos())
-  if is_advance_pos(row, col) then
+  Log.debug('Cached position; row: {}, col: {}', cache:get_cursor())
+  if is_advance(row, col) then
     local cur_line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
     local cache_line = cache:get_line(1)
     if not cache_line then
@@ -81,7 +81,7 @@ local function lazy_inline_completion()
       Lsp.silence()
       cache_line = string.sub(cache_line, 2)
       cache:update_line(1, cache_line)
-      cache:update_pos(row, col)
+      cache:update_cursor(row, col)
       View.render_virt_text(cache:get_lines())
       return true
     end
@@ -114,14 +114,14 @@ function M.generate_one_stage(row, col, force, on_suggestions_ready, on_error)
     return
   end
 
-  if not force and cache:equal_pos(row, col) then
-    Log.debug('Cached cursor is equal to requested cursor; cached cursor row: {}, col: {}', cache:get_pos())
+  if not force and cache:equal_cursor(row, col) then
+    Log.debug('Cached cursor is equal to requested cursor; cached cursor row: {}, col: {}', cache:get_cursor())
     if on_error then
       on_error()
     end
     return
   else
-    Log.debug('Cached cursor is outdated, requested cursor row: {}, col: {}; cached cursor row: {}, col: {}', row, col, cache:get_pos())
+    Log.debug('Cached cursor is outdated, requested cursor row: {}, col: {}; cached cursor row: {}, col: {}', row, col, cache:get_cursor())
   end
 
   if inline_mode then
@@ -245,7 +245,7 @@ function M.accept_line()
     if vim.tbl_count(cache:get_lines()) > 0 then
       View.render_virt_text(cache:get_lines())
       local row, col = Base.get_cursor()
-      cache:update_pos(row, col)
+      cache:update_cursor(row, col)
     else
       Log.debug('No more suggestions, generate new one stage')
       generate_one_stage_at_cursor()
@@ -314,7 +314,7 @@ function M.accept_word()
     if vim.tbl_count(cache:get_lines()) > 0 then
       View.render_virt_text(cache:get_lines())
       local row, col = Base.get_cursor()
-      cache:update_pos(row, col)
+      cache:update_cursor(row, col)
     else
       Log.debug('No more suggestions, generate new one stage')
       generate_one_stage_at_cursor()
@@ -342,7 +342,7 @@ function M.advance()
   end
 
   local row, col = Base.get_cursor()
-  if cache:equal_pos(row, col) then
+  if cache:equal_cursor(row, col) then
     View.render_virt_text(cache:get_lines())
   else
     View.clear_virt_text()

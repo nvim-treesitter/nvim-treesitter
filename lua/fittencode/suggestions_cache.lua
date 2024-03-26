@@ -1,4 +1,4 @@
----@class SuggestionsPos
+---@class SuggestionsCursor
 ---@field row? integer
 ---@field col? integer
 
@@ -6,7 +6,7 @@
 ---@field private task_id? integer
 ---@field private generated_text? string
 ---@field private lines? string[]
----@field private pos? SuggestionsPos
+---@field private cursor? SuggestionsCursor
 ---@field private count? integer
 local SuggestionsCache = {}
 
@@ -15,7 +15,7 @@ function SuggestionsCache.new()
   self.task_id = nil
   self.generated_text = ''
   self.lines = {}
-  self.pos = {}
+  self.cursor = {}
   self.count = 0
   return self
 end
@@ -30,7 +30,7 @@ end
 ---@param lines? string[]
 function SuggestionsCache:update(task_id, row, col, lines)
   self.task_id = task_id
-  self:update_pos(row, col)
+  self:update_cursor(row, col)
   lines = lines or {}
   self.lines = lines
   self.count = vim.tbl_count(lines)
@@ -64,21 +64,21 @@ end
 
 ---@param row? integer
 ---@param col? integer
-function SuggestionsCache:update_pos(row, col)
-  self.pos.row = row
-  self.pos.col = col
+function SuggestionsCache:update_cursor(row, col)
+  self.cursor.row = row
+  self.cursor.col = col
 end
 
 ---@param row integer
 ---@param col integer
 ---@return boolean
-function SuggestionsCache:equal_pos(row, col)
-  return self.pos.row == row and self.pos.col == col
+function SuggestionsCache:equal_cursor(row, col)
+  return self.cursor.row == row and self.cursor.col == col
 end
 
 ---@return integer?, integer?
-function SuggestionsCache:get_pos()
-  return self.pos.row, self.pos.col
+function SuggestionsCache:get_cursor()
+  return self.cursor.row, self.cursor.col
 end
 
 return SuggestionsCache
