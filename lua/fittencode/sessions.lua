@@ -224,7 +224,7 @@ end
 ---@alias Suggestions string[] Formated suggesion
 
 ---@param generated_text string
----@return Suggestions?, string?
+---@return Suggestions?
 local function generate_suggestions(generated_text)
   local generated_text = fn.substitute(generated_text, '<.endoftext.>', '', 'g') or ''
   local lines = vim.split(generated_text, '\r')
@@ -244,16 +244,15 @@ local function generate_suggestions(generated_text)
       table.insert(suggestions, part)
     end
   end
-  return suggestions, generated_text
+  return suggestions
 end
 
 ---@class OnGenerateOneStageData User data for GenerateOneStage request
----@field path string|nil Temporary file path for HTTP request data
+---@field path? string Temporary file path for HTTP request data
 ---@field task_id integer Task ID
----@field on_suggestions function|nil Callback when suggestions is generated
----@field on_error function|nil Callback when request is failed
+---@field on_suggestions? function Callback when suggestions is generated
+---@field on_error? function Callback when request is failed
 
--- Callback for request_generate_one_stage when CMD is successful
 ---@param exit_code integer
 ---@param response string
 ---@param data OnGenerateOneStageData
@@ -292,14 +291,10 @@ local function on_generate_one_stage(exit_code, response, error, data)
     return
   end
 
-  local suggestions, generated_text = generate_suggestions(completion_data.generated_text)
-
-  if not suggestions then
-    Log.debug('No more suggestions')
-  end
+  local suggestions = generate_suggestions(completion_data.generated_text)
 
   if data.on_suggestions then
-    data.on_suggestions(data.task_id, suggestions, generated_text)
+    data.on_suggestions(data.task_id, suggestions)
   end
 end
 

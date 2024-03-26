@@ -28,14 +28,12 @@ end
 ---@param row? integer
 ---@param col? integer
 ---@param lines? string[]
----@param generated_text? string
-function SuggestionsCache:update(task_id, row, col, lines, generated_text)
+function SuggestionsCache:update(task_id, row, col, lines)
   self.task_id = task_id
   self:update_pos(row, col)
   lines = lines or {}
   self.lines = lines
   self.count = vim.tbl_count(lines)
-  self.generated_text = generated_text or ''
 end
 
 ---@param index integer
@@ -62,11 +60,6 @@ end
 ---@return integer
 function SuggestionsCache:get_count()
   return self.count
-end
-
----@return string?
-function SuggestionsCache:get_generated_text()
-  return self.generated_text
 end
 
 ---@param row? integer

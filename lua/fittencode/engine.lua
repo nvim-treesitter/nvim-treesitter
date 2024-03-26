@@ -28,11 +28,10 @@ end
 
 ---@param task_id integer
 ---@param suggestions? Suggestions
----@param generated_text? string
 ---@return boolean
-local function on_suggestions(task_id, suggestions, generated_text)
-  if not suggestions then
-    Log.debug('No suggestions received; task_id: {}, suggestions: {}', task_id, suggestions)
+local function on_suggestions(task_id, suggestions)
+  if not suggestions or #suggestions == 0 then
+    Log.debug('No more suggestions')
     return false
   end
 
@@ -44,7 +43,7 @@ local function on_suggestions(task_id, suggestions, generated_text)
 
   Log.debug('Suggestions received; task_id: {}, suggestions: {}', task_id, suggestions)
 
-  cache:update(task_id, row, col, suggestions, generated_text)
+  cache:update(task_id, row, col, suggestions)
 
   if inline_mode then
     if Lsp.is_active() then
@@ -137,10 +136,10 @@ function M.generate_one_stage(row, col, force, on_suggestions_ready, on_error)
 
   local task_id = tasks:create(row, col)
   cache:flush()
-  Sessions.request_generate_one_stage(task_id, function(id, suggestions, generated_text)
-    if on_suggestions(id, suggestions, generated_text) then
+  Sessions.request_generate_one_stage(task_id, function(id, suggestions)
+    if on_suggestions(id, suggestions) then
       if on_suggestions_ready then
-        on_suggestions_ready(generated_text)
+        on_suggestions_ready(suggestions)
       end
     else
       if on_error then
@@ -368,7 +367,6 @@ end
 ---@param suggestions string
 ---@return lsp.CompletionResponse|nil
 function M.convert_to_lsp_completion_response(line, character, cursor_before_line, suggestions)
-  suggestions = suggestions or cache:get_generated_text() or ''
   cursor_before_line = cursor_before_line or ''
   local LABEL_LIMIT = 30
   local label = cursor_before_line .. suggestions
