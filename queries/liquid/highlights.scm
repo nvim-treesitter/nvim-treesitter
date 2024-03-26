@@ -53,8 +53,8 @@
   "render"
   "section"
   "sections"
-  ]@keyword.import
-   (#set! priority 110))
+] @keyword.import
+  (#set! priority 110))
 
 ([
   "case"
@@ -66,8 +66,8 @@
   "if"
   "unless"
   "when"
-  ] @keyword.conditional
-   (#set! priority 110))
+] @keyword.conditional
+  (#set! priority 110))
 
 ([
   "break"
@@ -80,7 +80,7 @@
   "for"
   "paginate"
   "tablerow"
-  ] @keyword.repeat
+] @keyword.repeat
   (#set! priority 110))
 
 ([
