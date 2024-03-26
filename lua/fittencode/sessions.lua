@@ -300,15 +300,18 @@ end
 
 ---@param data OnGenerateOneStageData
 local function on_generate_one_stage_exit(data)
+  Log.debug('Clearing HTTP temporary file: {}', data.path)
   local path = data.path
   if path then
     uv.fs_unlink(path, function(err)
       if err then
-        Log.error('Failed to delete HTTP temporary file; path: {}, error: {}', path, err)
+        Log.error('Failed to delete HTTP temporary file; error: {}', err)
+      else
+        Log.debug('HTTP temporary file deleted successfully')
       end
     end)
   else
-    Log.error('HTTP temporary file not found; path: {}', path)
+    Log.error('HTTP temporary file not found')
   end
 end
 
