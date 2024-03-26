@@ -1,5 +1,12 @@
 ; temporarily removed the ecma inherit due to it breaking
-"pragma" @keyword.import
+[
+  "pragma"
+  "import"
+] @keyword.import
+
+(function_declaration
+  "function" @keyword.function
+  name: (identifier) @property)
 
 ; Annotations
 (ui_annotation
@@ -146,4 +153,85 @@
   "namespace"
   "type"
   "override"
+  "var"
 ] @keyword
+
+[
+  "if"
+  "else"
+  "switch"
+  "case"
+] @keyword.conditional
+
+[
+  "return"
+  "yield"
+] @keyword.return
+
+"while" @keyword.repeat
+
+((identifier) @number
+  (#any-of? @number "NaN" "Infinity"))
+
+; Punctuation
+;------------
+[
+  ";"
+  "."
+  ","
+  ":"
+] @punctuation.delimiter
+
+[
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+] @punctuation.bracket
+
+[
+  "--"
+  "-"
+  "-="
+  "&&"
+  "+"
+  "++"
+  "+="
+  "&="
+  "/="
+  "**="
+  "<<="
+  "<"
+  "<="
+  "<<"
+  "="
+  "=="
+  "==="
+  "!="
+  "!=="
+  "=>"
+  ">"
+  ">="
+  ">>"
+  "||"
+  "%"
+  "%="
+  "*"
+  "**"
+  ">>>"
+  "&"
+  "|"
+  "^"
+  "??"
+  "*="
+  ">>="
+  ">>>="
+  "^="
+  "|="
+  "&&="
+  "||="
+  "??="
+  "..."
+] @operator
