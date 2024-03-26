@@ -42,29 +42,40 @@ local function on_cmd_signal(signal, _)
 end
 
 ---@param response string
-local function on_fico(_, response)
+---@param on_success? function
+---@param on_error? function
+local function on_fico(_, response, on_success, on_error)
   if response == nil or response == '' then
-    Log.e('Server response without data')
+    Log.error('Server response without data')
+    if on_error then
+      on_error()
+    end
     return
   end
 
   local success, result = pcall(fn.json_decode, response)
   if success == false then
-    Log.e('Server response is not a valid JSON')
-    Log.error('Server response: {}, error: {}', response, result)
+    Log.error('Server response is not a valid JSON; response: {}, error: {}', response, result)
+    if on_error then
+      on_error()
+    end
     return
   end
 
   local fico_data = result
   if fico_data.data == nil or fico_data.data.fico_token == nil then
-    Log.e('Server response without fico_token field; decoded response: {}', fico_data)
+    Log.error('Server response without fico_token field; decoded response: {}', fico_data)
+    if on_error then
+      on_error()
+    end
     return
   end
 
   ---@type string
-  local api_key = fico_data.data.fico_token
-  key_storage:set_key_by_name(username, api_key)
-  Log.i('Login successful')
+  key_storage:set_key_by_name(username, fico_data.data.fico_token)
+  if on_success then
+    on_success()
+  end
 end
 
 ---@param token string
@@ -85,7 +96,13 @@ local function request_fico(token)
   Rest.send({
     cmd = CMD,
     args = args,
-  }, on_fico, on_cmd_signal)
+  }, function(_, response)
+    on_fico(nil, response, function()
+      Log.i('Login successful')
+    end, function()
+      Log.e('Login failed')
+    end)
+  end, on_cmd_signal)
 end
 
 ---@param response string
