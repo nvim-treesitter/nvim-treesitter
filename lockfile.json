@@ -117,7 +117,7 @@
     "revision": "0229c0211dba909c5d45129ac784a3f4d49c243a"
   },
   "djot": {
-    "revision": "d5d4a8409688a6ebb545cee3203e1449bc0c5856"
+    "revision": "c4a269d55b02a8d9afccc3445b9ccbed65d4cf27"
   },
   "dockerfile": {
     "revision": "33e22c33bcdbfc33d42806ee84cfd0b1248cc392"
@@ -129,7 +129,7 @@
     "revision": "a750758da90955c86fcc22fcbb6fa44a7d009865"
   },
   "dtd": {
-    "revision": "ab85469fedbf4f32da9310dd76dcedba059fc482"
+    "revision": "24b662eb61e369757d13c4b5f0624284dc3fe7e8"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -309,7 +309,7 @@
     "revision": "ad705af8c44c737bdb965fc081329c50716d2d03"
   },
   "hyprlang": {
-    "revision": "27af9b74acf89fa6bed4fb8cb8631994fcb2e6f3"
+    "revision": "e5da7d0aa44403153e0394d87d9edea4e5bd6609"
   },
   "ini": {
     "revision": "bcb84a2d4bcd6f55b911c42deade75c8f90cb0c5"
@@ -480,7 +480,7 @@
     "revision": "217ff2af3f2db15a79ab7e3d21ea1e0c17e71a1a"
   },
   "perl": {
-    "revision": "fd7b2fe5b967d5eee8ce17938052886e2d5987ed"
+    "revision": "96a17c4c2dd345dc61f330d040684538d634bbc2"
   },
   "php": {
     "revision": "29838ad107f50b1f5f51a0beefa9c9d834fce2b3"
@@ -705,7 +705,7 @@
     "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
   },
   "tlaplus": {
-    "revision": "7455f17038d551ecd2b082c39e4a63bcb403e158"
+    "revision": "b2ffee62569b78719de352178f5332ecab5dac90"
   },
   "tmux": {
     "revision": "10737f5dc4d8e68c9667f11a6996688a1185755f"
@@ -753,7 +753,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "e1f14c4b92f571bb1063ca5260c9172256844540"
+    "revision": "3165e0487fea1b7727089a7d2ac5b96fc7c48956"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -783,13 +783,13 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "ea40325cea1af68d3433fd5d08e43d2a18b87851"
+    "revision": "388ca5520d336bdf5e117824d27379ad11569e54"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
   },
   "xml": {
-    "revision": "ab85469fedbf4f32da9310dd76dcedba059fc482"
+    "revision": "24b662eb61e369757d13c4b5f0624284dc3fe7e8"
   },
   "yaml": {
     "revision": "9e59b9bbf839ba231fbcb953617d8b9b9a059e38"
