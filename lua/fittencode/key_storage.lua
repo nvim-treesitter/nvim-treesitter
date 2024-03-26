@@ -30,6 +30,7 @@ end
 ---@param on_success function|nil
 ---@param on_error function|nil
 function KeyStorage:load(on_success, on_error)
+  Log.debug('Loading key file: {}', self.path)
   if not Base.exists(self.path) then
     Log.error('Key file not found')
     if on_error then
@@ -47,12 +48,12 @@ function KeyStorage:load(on_success, on_error)
       return
     end
     self.keys = result
-    Log.debug('Key file read successful')
+    Log.debug('Key file loaded successful')
     if on_success ~= nil then
       on_success(self.keys.name)
     end
   end, function(err)
-    Log.error('Failed to read Key file; error: {}', err)
+    Log.error('Failed to load Key file; error: {}', err)
     if on_error then
       on_error()
     end
@@ -62,6 +63,7 @@ end
 ---@param on_success function|nil
 ---@param on_error function|nil
 function KeyStorage:save(on_success, on_error)
+  Log.debug('Saving key file: {}', self.path)
   local encode_keys = fn.json_encode(self.keys)
   Base.write_mkdir(encode_keys, self.path, function()
     Log.info('Key file saved successful')
@@ -79,6 +81,7 @@ end
 ---@param on_success function|nil
 ---@param on_error function|nil
 function KeyStorage:clear(on_success, on_error)
+  Log.debug('Clearing key file: {}', self.path)
   self.keys = {}
   uv.fs_unlink(self.path, function(err)
     if err then

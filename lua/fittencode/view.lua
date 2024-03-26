@@ -61,11 +61,11 @@ end
 local function set_extmark(suggestions)
   ---@type VirtText?
   local virt_text = generate_virt_text(suggestions)
-  Log.debug('Setting extmark; virt_text: {}', virt_text)
-
   if virt_text == nil or vim.tbl_count(virt_text) == 0 then
     return
   end
+
+  Log.debug('Setting extmark; virt_text: {}', virt_text)
 
   local row, col = Base.get_cursor()
 
