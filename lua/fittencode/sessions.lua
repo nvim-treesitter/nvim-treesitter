@@ -32,7 +32,7 @@ local key_storage = KeyStorage:new({
 })
 
 -- Current user name, used for mapping to API key
----@type string|nil
+---@type string?
 local username = nil
 
 ---@param signal integer
@@ -71,7 +71,6 @@ local function on_fico(_, response, on_success, on_error)
     return
   end
 
-  ---@type string
   key_storage:set_key_by_name(username, fico_data.data.fico_token)
   if on_success then
     on_success()
@@ -79,12 +78,9 @@ local function on_fico(_, response, on_success, on_error)
 end
 
 ---@param token string
-local function request_fico(token)
-  if token == nil or token == '' then
-    Log.e('Invalid user token')
-    return
-  end
-
+---@param on_success? function
+---@param on_error? function
+local function request_fico(token, on_success, on_error)
   local fico_url = URL_GET_FT_TOKEN
   local args = {
     '-s',
@@ -98,49 +94,61 @@ local function request_fico(token)
     args = args,
   }, function(_, response)
     on_fico(nil, response, function()
-      Log.i('Login successful')
+      if on_success then
+        on_success()
+      end
     end, function()
-      Log.e('Login failed')
+      if on_error then
+        on_error()
+      end
     end)
-  end, on_cmd_signal)
+  end, function(signal, ...)
+    on_cmd_signal(signal, ...)
+    if on_error then
+      on_error()
+    end
+  end)
 end
 
 ---@param response string
 ---@return string|nil
 local function decode_token(response)
   if response == nil or response == '' then
-    Log.e('Server response without data')
+    Log.error('Server response without data')
     return
   end
 
   local success, result = pcall(fn.json_decode, response)
   if success == false then
-    Log.e('Server response is not a valid JSON')
-    Log.error('Server response: {}; error: {}', response, result)
+    Log.error('Server response is not a valid JSON: {}; error: {}', response, result)
     return
   end
 
   local login_data = result
   if login_data.code ~= 200 then
     if login_data.code == nil then
-      Log.e('Server status code: {}; response: {}', login_data.status_code, login_data)
+      Log.error('Server status code: {}; response: {}', login_data.status_code, login_data)
       return
     else
-      Log.e('HTTP code: {}; response: {}', login_data.code, login_data)
+      Log.error('HTTP code: {}; response: {}', login_data.code, login_data)
     end
     return
   end
 
-  ---@type string
-  local token = login_data.data.token
-  return token
+  return login_data.data.token
 end
 
 ---@param response string
-local function on_login(_, response)
+---@param on_success? function
+---@param on_error? function
+local function on_login(_, response, on_success, on_error)
   local token = decode_token(response)
   if token ~= nil then
-    request_fico(token)
+    request_fico(token, on_success, on_error)
+  else
+    if on_error then
+      on_error()
+    end
   end
 end
 
@@ -180,7 +188,16 @@ function M.request_login(name, password)
   Rest.send({
     cmd = CMD,
     args = args,
-  }, on_login, on_cmd_signal)
+  }, function(_, response)
+    on_login(nil, response, function()
+      Log.i('Login successful')
+    end, function()
+      Log.e('Login failed')
+    end)
+  end, function(signal, ...)
+    on_cmd_signal(signal, ...)
+    Log.e('Login failed')
+  end)
 end
 
 function M.request_logout()
