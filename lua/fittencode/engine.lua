@@ -47,14 +47,14 @@ end
 ---@param suggestions? Suggestions
 ---@return boolean
 local function on_suggestions(task_id, suggestions)
-  if not suggestions or #suggestions == 0 then
-    Log.debug('No more suggestions')
-    return false
-  end
-
   local row, col = Base.get_cursor()
   if not tasks:match_clean(task_id, row, col) then
     Log.debug('Completion request is outdated, discarding; task_id: {}, row: {}, col: {}', task_id, row, col)
+    return false
+  end
+
+  if not suggestions or #suggestions == 0 then
+    Log.debug('No more suggestions')
     return false
   end
 
