@@ -35,10 +35,8 @@ local function condense_nl(suggestions)
     prev_line = vim.api.nvim_buf_get_lines(0, row - 1, row, false)[1]
   end
   if (not prev_line or #prev_line == 0) and (#cur_line == 0) then
-    local i = 1
-    while i <= #suggestions and #suggestions[i] == 0 do
-      i = i + 1
-      table.remove(suggestions)
+    while suggestions[1] and #suggestions[1] == 0 do
+      table.remove(suggestions, 1)
     end
   end
 end
@@ -63,6 +61,10 @@ local function on_suggestions(task_id, suggestions)
   condense_nl(suggestions)
 
   Log.debug('Condensed suggestions: {}', suggestions)
+
+  if #suggestions == 0 then
+    return false
+  end
 
   cache:update(task_id, row, col, suggestions)
 
