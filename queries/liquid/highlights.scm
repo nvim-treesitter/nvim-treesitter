@@ -27,48 +27,60 @@
 ([
   "as"
   "assign"
-  "break"
-  "by"
   "capture"
-  "case"
-  "continue"
-  "cycle"
   "decrement"
   "echo"
-  "else"
-  "elsif"
   "endcapture"
-  "endcase"
-  "endfor"
   "endform"
-  "endif"
   "endjavascript"
-  "endpaginate"
   "endraw"
   "endschema"
   "endstyle"
-  "endtablerow"
-  "endunless"
-  "for"
   "form"
-  "if"
-  "include"
   "increment"
   "javascript"
   "layout"
   "liquid"
-  "paginate"
   "raw"
-  "render"
   "schema"
-  "section"
-  "sections"
   "style"
-  "tablerow"
-  "unless"
-  "when"
   "with"
 ] @keyword
+  (#set! priority 110))
+
+([
+  "include"
+  "render"
+  "section"
+  "sections"
+  ]@keyword.import
+   (#set! priority 110))
+
+([
+  "case"
+  "else"
+  "elsif"
+  "endcase"
+  "endif"
+  "endunless"
+  "if"
+  "unless"
+  "when"
+  ] @keyword.conditional
+   (#set! priority 110))
+
+([
+  "break"
+  "by"
+  "continue"
+  "cycle"
+  "endfor"
+  "endpaginate"
+  "endtablerow"
+  "for"
+  "paginate"
+  "tablerow"
+  ] @keyword.repeat
   (#set! priority 110))
 
 ([
