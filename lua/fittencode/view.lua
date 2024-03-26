@@ -61,13 +61,13 @@ end
 local function set_extmark(suggestions)
   ---@type VirtText?
   local virt_text = generate_virt_text(suggestions)
+  Log.debug('Setting extmark; virt_text: {}', virt_text)
+
   if virt_text == nil or vim.tbl_count(virt_text) == 0 then
     return
   end
 
   local row, col = Base.get_cursor()
-
-  Log.debug('Draw virtual text on buffer, text: {}', virt_text)
 
   if Config.internal.virtual_text.inline then
     api.nvim_buf_set_extmark(0, namespace, row, col, {

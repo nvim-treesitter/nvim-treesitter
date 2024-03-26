@@ -34,7 +34,7 @@ function M.send(params, on_success, on_error, on_exit)
     args = args,
   }, function(exit_code, signal)
     if handle == nil then
-      Log.error('RESTAPI uv.spawn handle is nil; cmd: {}; args: {}', cmd, args)
+      Log.error('RESTAPI uv.spawn handle is nil; cmd: {}, args: {}', cmd, args)
       return
     end
     handle:close()
@@ -47,7 +47,7 @@ function M.send(params, on_success, on_error, on_exit)
       end
       check:stop()
       if signal ~= 0 then
-        Log.error('RESTAPI uv.spawn signal; cmd: {}; args: {}; signal: {}; error: {}', cmd, args, signal, error)
+        Log.error('RESTAPI uv.spawn signal; cmd: {}, args: {}, signal: {}, error: {}', cmd, args, signal, error)
         if on_error then
           vim.schedule(function()
             on_error(signal, error, data)

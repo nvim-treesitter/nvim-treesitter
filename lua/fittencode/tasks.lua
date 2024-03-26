@@ -67,7 +67,7 @@ function TaskScheduler:match_clean(task_id, row, col)
     local task = self.list[i]
     if task.timestamp == task_id and task.row == row and task.col == col then
       local ms = string.format('%3d', math.floor((uv.hrtime() - task.timestamp) / MS_TO_NS))
-      Log.debug('Task matched; time elapsed: [ ' .. ms .. ' ms ]' .. '; row: ' .. row .. '; col: ' .. col)
+      Log.debug('Task matched; time elapsed: [ ' .. ms .. ' ms ]' .. ', row: ' .. row .. ', col: ' .. col)
       match_found = true
       break
     end
@@ -86,7 +86,7 @@ function TaskScheduler:timeout_recycling()
   for i, task in ipairs(self.list) do
     if is_timeout(task.timestamp) or (self.threshold and task.timestamp <= self.threshold) then
       table.remove(self.list, i)
-      -- Log.debug('Task removed; row: ' .. task.row .. '; col: ' .. task.col)
+      -- Log.debug('Task removed; row: ' .. task.row .. ', col: ' .. task.col)
     end
   end
   self.threshold = nil

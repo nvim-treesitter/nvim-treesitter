@@ -92,7 +92,7 @@ function M.setup_commands()
       table.remove(actions, 1)
       return cmd(unpack(actions))
     end
-    Log.error('Invalid command; fargs: {}', line.fargs)
+    Log.debug('Invalid command; fargs: {}', line.fargs)
   end, {
     complete = function(_, line)
       local args = vim.split(vim.trim(line), '%s+')

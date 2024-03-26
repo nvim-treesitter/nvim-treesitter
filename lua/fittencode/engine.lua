@@ -68,8 +68,8 @@ local function lazy_inline_completion()
     return cached_row == row and cached_col + 1 == col
   end
   local row, col = Base.get_cursor()
-  Log.debug('Current position: row: {}, col: {}', row, col)
-  Log.debug('Cached position: row: {}, col: {}', cache:get_pos())
+  Log.debug('Current position; row: {}, col: {}', row, col)
+  Log.debug('Cached position; row: {}, col: {}', cache:get_pos())
   if is_advance_pos(row, col) then
     local cur_line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
     local cache_line = cache:get_line(1)
@@ -186,9 +186,9 @@ function M.accept_all_suggestions()
   View.clear_virt_text()
   View.set_text(cache:get_lines())
 
-  Log.debug('Remaining cached lines: {}', cache:get_lines())
-
   M.reset()
+
+  Log.debug('Remaining cached lines: {}', cache:get_lines())
 end
 
 ---@param fx? function
@@ -228,13 +228,13 @@ function M.accept_line()
 
     if cur == stage then
       View.set_text({ line })
-      Log.debug('Set line; line: {}', line)
+      Log.debug('Set line: {}', line)
       View.set_text({ '', '' })
       Log.debug('Set empty new line')
     else
       if cur == 0 then
         View.set_text({ line })
-        Log.debug('Set line; line: {}', line)
+        Log.debug('Set line: {}', line)
       else
         View.set_text({ line, '' })
         Log.debug('Set line and empty new line; line: {}', line)
@@ -248,7 +248,7 @@ function M.accept_line()
       local row, col = Base.get_cursor()
       cache:update_pos(row, col)
     else
-      Log.debug('No more suggestions, generate one stage')
+      Log.debug('No more suggestions, generate new one stage')
       generate_one_stage_at_cursor()
     end
   end)
@@ -302,12 +302,12 @@ function M.accept_word()
         Log.debug('Set word and empty new line; word: {}', word)
       else
         View.set_text({ word })
-        Log.debug('Set word; word: {}', word)
+        Log.debug('Set word: {}', word)
       end
     else
       cache:update_line(1, line)
       View.set_text({ word })
-      Log.debug('Set word; word: {}', word)
+      Log.debug('Set word: {}', word)
     end
 
     Log.debug('Remaining cached lines: {}', cache:get_lines())
@@ -317,7 +317,7 @@ function M.accept_word()
       local row, col = Base.get_cursor()
       cache:update_pos(row, col)
     else
-      Log.debug('No more suggestions, generate one stage')
+      Log.debug('No more suggestions, generate new one stage')
       generate_one_stage_at_cursor()
     end
   end)
@@ -368,7 +368,6 @@ end
 ---@param suggestions string
 ---@return lsp.CompletionResponse|nil
 function M.convert_to_lsp_completion_response(line, character, cursor_before_line, suggestions)
-  Log.debug('Suggestions: {}', suggestions)
   suggestions = suggestions or cache:get_generated_text() or ''
   cursor_before_line = cursor_before_line or ''
   local LABEL_LIMIT = 30

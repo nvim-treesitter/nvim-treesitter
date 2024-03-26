@@ -37,27 +37,27 @@ local username = nil
 
 ---@param signal integer
 ---@param _ string
-local function on_curl_signal(signal, _)
-  Log.error('curl throwed signal: {}', signal)
+local function on_cmd_signal(signal, _)
+  Log.error('CMD: {}, throwed signal: {}', CMD, signal)
 end
 
 ---@param response string
 local function on_fico(_, response)
   if response == nil or response == '' then
-    Log.e('Login failed: Server response without data')
+    Log.e('Server response without data')
     return
   end
 
   local success, result = pcall(fn.json_decode, response)
   if success == false then
-    Log.e('Login failed: Server response is not a valid JSON')
-    Log.error('Server response: {}; error: {}', response, result)
+    Log.e('Server response is not a valid JSON')
+    Log.error('Server response: {}, error: {}', response, result)
     return
   end
 
   local fico_data = result
   if fico_data.data == nil or fico_data.data.fico_token == nil then
-    Log.e('Login failed: Server response without fico_token field; decoded response: {}', fico_data)
+    Log.e('Server response without fico_token field; decoded response: {}', fico_data)
     return
   end
 
@@ -70,7 +70,7 @@ end
 ---@param token string
 local function request_fico(token)
   if token == nil or token == '' then
-    Log.e('Login failed: Invalid user token')
+    Log.e('Invalid user token')
     return
   end
 
@@ -85,20 +85,20 @@ local function request_fico(token)
   Rest.send({
     cmd = CMD,
     args = args,
-  }, on_fico, on_curl_signal)
+  }, on_fico, on_cmd_signal)
 end
 
 ---@param response string
 ---@return string|nil
 local function decode_token(response)
   if response == nil or response == '' then
-    Log.e('Login failed: Server response without data')
+    Log.e('Server response without data')
     return
   end
 
   local success, result = pcall(fn.json_decode, response)
   if success == false then
-    Log.e('Login failed: Server response is not a valid JSON')
+    Log.e('Server response is not a valid JSON')
     Log.error('Server response: {}; error: {}', response, result)
     return
   end
@@ -106,10 +106,10 @@ local function decode_token(response)
   local login_data = result
   if login_data.code ~= 200 then
     if login_data.code == nil then
-      Log.e('Login failed: Server status code: {}; response: {}', login_data.status_code, login_data)
+      Log.e('Server status code: {}; response: {}', login_data.status_code, login_data)
       return
     else
-      Log.e('Login failed: HTTP code: {}; response: {}', login_data.code, login_data)
+      Log.e('HTTP code: {}; response: {}', login_data.code, login_data)
     end
     return
   end
@@ -163,7 +163,7 @@ function M.request_login(name, password)
   Rest.send({
     cmd = CMD,
     args = args,
-  }, on_login, on_curl_signal)
+  }, on_login, on_cmd_signal)
 end
 
 function M.request_logout()
@@ -181,9 +181,9 @@ function M.request_load_last_session()
   Log.info('Loading last session')
   key_storage:load(function(name)
     username = name
-    Log.i('Last session for user {} loaded successful', name)
+    Log.info('Last session for user {} loaded successful', name)
   end, function()
-    Log.i('Last session not found or invalid, please login again')
+    Log.info('Last session not found or invalid')
   end)
 end
 
@@ -195,11 +195,8 @@ local function generate_suggestions(generated_text)
   local generated_text = fn.substitute(generated_text, '<.endoftext.>', '', 'g') or ''
   local lines = vim.split(generated_text, '\r')
   if vim.tbl_count(lines) == 0 or (vim.tbl_count(lines) == 1 and string.len(lines[1]) == 0) then
-    Log.debug('No more suggestions')
     return
   end
-
-  Log.debug('Generated text: {}', generated_text)
 
   if string.len(lines[#lines]) == 0 then
     table.remove(lines, #lines)
@@ -228,7 +225,7 @@ end
 ---@param data OnGenerateOneStageData
 local function on_generate_one_stage(exit_code, response, error, data)
   if exit_code ~= CMD_EXIT_CODE_SUCCESS then
-    Log.error('Generate one stage: request failed; exit_code: {}; error: {}', exit_code, vim.split(error, '\n'))
+    Log.error('Request failed; exit_code: {}, error: {}', exit_code, vim.split(error, '\n'))
     if data.on_error then
       data.on_error()
     end
@@ -236,7 +233,7 @@ local function on_generate_one_stage(exit_code, response, error, data)
   end
 
   if response == nil or response == '' then
-    Log.error('Generate one stage: Server response without data')
+    Log.error('Server response without data')
     if data.on_error then
       data.on_error()
     end
@@ -245,7 +242,7 @@ local function on_generate_one_stage(exit_code, response, error, data)
 
   local success, result = pcall(fn.json_decode, response)
   if success == false then
-    Log.error('Generate one stage: Server response is not a valid JSON; response: {}; error: {}', response, result)
+    Log.error('Server response is not a valid JSON; response: {}, error: {}', response, result)
     if data.on_error then
       data.on_error()
     end
@@ -254,7 +251,7 @@ local function on_generate_one_stage(exit_code, response, error, data)
 
   local completion_data = result
   if completion_data.generated_text == nil then
-    Log.error('Generate one stage: Server response without generated_text field; decoded response: {}', completion_data)
+    Log.error('Server response without generated_text field; decoded response: {}', completion_data)
     if data.on_error then
       data.on_error()
     end
@@ -263,23 +260,26 @@ local function on_generate_one_stage(exit_code, response, error, data)
 
   local suggestions, generated_text = generate_suggestions(completion_data.generated_text)
 
+  if not suggestions then
+    Log.debug('No more suggestions')
+  end
+
   if data.on_suggestions then
     data.on_suggestions(data.task_id, suggestions, generated_text)
   end
 end
 
--- Callback for request_generate_one_stage when CMD is exited
 ---@param data OnGenerateOneStageData
 local function on_generate_one_stage_exit(data)
   local path = data.path
   if path then
     uv.fs_unlink(path, function(err)
       if err then
-        Log.error('Failed to delete HTTP temporary file; path: {}; error: {}', path, err)
+        Log.error('Failed to delete HTTP temporary file; path: {}, error: {}', path, err)
       end
     end)
   else
-    Log.error('Failed to delete HTTP temporary file; path is nil')
+    Log.error('HTTP temporary file not found; path: {}', path)
   end
 end
 
@@ -295,7 +295,7 @@ local function make_generate_one_stage_params()
   if not Config.internal.virtual_text.inline then
     local line = api.nvim_buf_get_lines(0, row, row + 1, false)[1]
     local len = string.len(line)
-    Log.debug('Inline mode is disabled; col: {}; line: {}; length of line: {}', col, line, len)
+    Log.debug('Inline mode is disabled; col: {}, line: {}, length of line: {}', col, line, len)
     if col ~= len then
       Log.debug('Cursor is not at the end of the line, aborting')
       return
@@ -325,18 +325,18 @@ end
 ---@param on_suggestions function|nil
 ---@param on_error function|nil
 function M.request_generate_one_stage(task_id, on_suggestions, on_error)
+  Log.debug('Request generate one stage...')
   local api_key = key_storage:get_key_by_name(username)
   if api_key == nil then
-    Log.debug('API key is nil, skip request')
+    Log.debug('Key is not found')
     if on_error then
       on_error()
     end
     return
   end
   local params = make_generate_one_stage_params()
-  Log.debug('Request generate one stage params: {}', params)
+  Log.debug('Params: {}', params)
   if params == nil then
-    Log.debug('Invalid params, skip request')
     if on_error then
       on_error()
     end
@@ -369,7 +369,7 @@ function M.request_generate_one_stage(task_id, on_suggestions, on_error)
       },
       on_generate_one_stage,
       function(signal, ...)
-        on_curl_signal(signal, ...)
+        on_cmd_signal(signal, ...)
         if on_error then
           on_error()
         end
