@@ -65,7 +65,7 @@ local function set_extmark(suggestions)
     return
   end
 
-  Log.debug('Setting extmark; virt_text: {}', virt_text)
+  Log.debug('Setting extmark: {}', virt_text)
 
   local row, col = Base.get_cursor()
 

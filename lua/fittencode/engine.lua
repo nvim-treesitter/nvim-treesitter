@@ -82,14 +82,11 @@ local function on_suggestions(task_id, suggestions)
 end
 
 local function lazy_inline_completion()
-  Log.debug('Lazy inline completion')
   local is_advance = function(row, col)
     local cached_row, cached_col = cache:get_cursor()
     return cached_row == row and cached_col + 1 == col
   end
   local row, col = Base.get_cursor()
-  Log.debug('Current position; row: {}, col: {}', row, col)
-  Log.debug('Cached position; row: {}, col: {}', cache:get_cursor())
   if is_advance(row, col) then
     local cur_line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
     local cache_line = cache:get_line(1)
