@@ -13,7 +13,6 @@
 ] @keyword.function
 
 [
-  "break"
   "class"
   "clone"
   "declare"
@@ -70,6 +69,7 @@
 ] @keyword.conditional
 
 [
+  "break"
   "continue"
   "do"
   "endfor"
