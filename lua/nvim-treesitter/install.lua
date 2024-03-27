@@ -632,6 +632,7 @@ function M.uninstall(...)
         )
       end
 
+      install_dir = install_dir:gsub("/", utils.get_path_sep()) -- fix path separator for windows
       local parser_lib = utils.join_path(install_dir, lang) .. ".so"
       local all_parsers = vim.api.nvim_get_runtime_file("parser/" .. lang .. ".so", true)
       if vim.fn.filereadable(parser_lib) == 1 then
