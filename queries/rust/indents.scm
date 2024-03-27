@@ -6,6 +6,7 @@
   (for_expression)
   (struct_expression)
   (struct_pattern)
+  (tuple_struct_pattern)
   (tuple_expression)
   (match_block)
   (call_expression)
@@ -80,6 +81,9 @@
 
 (struct_pattern
   "}" @indent.end)
+
+(tuple_struct_pattern
+  ")" @indent.end)
 
 (trait_item
   body: (declaration_list
