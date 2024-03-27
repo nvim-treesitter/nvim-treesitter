@@ -4,7 +4,6 @@
 
 ---@class SuggestionsCache
 ---@field private task_id? integer
----@field private generated_text? string
 ---@field private lines? string[]
 ---@field private cursor? SuggestionsCursor
 ---@field private count? integer
@@ -13,7 +12,6 @@ local SuggestionsCache = {}
 function SuggestionsCache.new()
   local self = setmetatable({}, { __index = SuggestionsCache })
   self.task_id = nil
-  self.generated_text = ''
   self.lines = {}
   self.cursor = {}
   self.count = 0

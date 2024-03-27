@@ -361,10 +361,7 @@ function M.advance()
     return
   end
 
-  local row, col = Base.get_cursor()
-  if cache:equal_cursor(row, col) then
-    View.render_virt_text(cache:get_lines())
-  else
+  if not cache:equal_cursor(Base.get_cursor()) then
     View.clear_virt_text()
     cache:flush()
   end

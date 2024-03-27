@@ -11,8 +11,8 @@ local M = {}
 ---@type integer
 local namespace = api.nvim_create_namespace('FittenCode/InlineCompletion')
 
----@type Suggestions?
-local committed_suggestions = nil
+---@type VirtText?
+local committed_virt_text = nil
 
 ---@class VirtLine
 ---@field text string
@@ -58,10 +58,7 @@ local function generate_virt_text(suggestions)
   return virt_text
 end
 
----@param suggestions? Suggestions
-local function set_extmark(suggestions)
-  ---@type VirtText?
-  local virt_text = generate_virt_text(suggestions)
+local function set_extmark(virt_text)
   if virt_text == nil or vim.tbl_count(virt_text) == 0 then
     return
   end
@@ -196,8 +193,8 @@ end
 
 ---@param suggestions? Suggestions
 function M.render_virt_text(suggestions)
-  committed_suggestions = suggestions
-  move_to_center_vertical(vim.tbl_count(suggestions or {}))
+  committed_virt_text = generate_virt_text(suggestions)
+  move_to_center_vertical(vim.tbl_count(committed_virt_text or {}))
   api.nvim_command('redraw!')
 end
 
@@ -208,7 +205,7 @@ end
 api.nvim_set_decoration_provider(namespace, {
   on_win = function()
     api.nvim_buf_clear_namespace(0, namespace, 0, -1)
-    set_extmark(committed_suggestions)
+    set_extmark(committed_virt_text)
   end,
 })
 

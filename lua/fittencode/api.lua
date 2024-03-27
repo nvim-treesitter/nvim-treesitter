@@ -26,14 +26,10 @@ M.api = {
     end
   end,
   accept_line = function()
-    if Engine.has_suggestions() then
-      Engine.accept_line()
-    end
+    Engine.accept_line()
   end,
   accept_word = function()
-    if Engine.has_suggestions() then
-      Engine.accept_word()
-    end
+    Engine.accept_word()
   end,
 }
 
