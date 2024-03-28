@@ -195,18 +195,21 @@ end
 function M.render_virt_text(suggestions)
   committed_virt_text = generate_virt_text(suggestions)
   move_to_center_vertical(vim.tbl_count(committed_virt_text or {}))
-  api.nvim_command('redraw!')
+  -- api.nvim_command('redraw!')
+  api.nvim_buf_clear_namespace(0, namespace, 0, -1)
+  set_extmark(committed_virt_text)
 end
 
 function M.clear_virt_text()
   M.render_virt_text()
 end
 
-api.nvim_set_decoration_provider(namespace, {
-  on_win = function()
-    api.nvim_buf_clear_namespace(0, namespace, 0, -1)
-    set_extmark(committed_virt_text)
-  end,
-})
+-- When we edit some complex documents, extmark will not be able to draw correctly.
+-- api.nvim_set_decoration_provider(namespace, {
+--   on_win = function()
+--     api.nvim_buf_clear_namespace(0, namespace, 0, -1)
+--     set_extmark(committed_virt_text)
+--   end,
+-- })
 
 return M

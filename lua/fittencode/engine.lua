@@ -405,6 +405,8 @@ end
 
 ---@alias lsp.CompletionResponse lsp.CompletionList|lsp.CompletionItem[]
 
+-- Use `get_word` so that the word is the same as in `core.confirm`
+-- https://github.com/hrsh7th/nvim-cmp/pull/1860
 ---@param suggestions string
 ---@return lsp.CompletionResponse|nil
 function M.convert_to_lsp_completion_response(line, character, cursor_before_line, suggestions)
