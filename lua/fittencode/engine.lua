@@ -54,11 +54,11 @@ local function normalize_indent(suggestions)
   end
   local nor = {}
   for i, suggestion in ipairs(suggestions) do
-    -- replace `\t` with `    `
+    -- replace `\t` with space
     suggestion = suggestion:gsub('\t', string.rep(' ', vim.bo.tabstop))
     nor[i] = suggestion
   end
-  suggestions = nor
+  return nor
 end
 
 ---@param task_id integer
@@ -82,8 +82,10 @@ local function on_suggestions(task_id, suggestions)
 
   Log.debug('Condensed suggestions: {}', suggestions)
 
-  normalize_indent(suggestions)
-
+  local nor = normalize_indent(suggestions)
+  if nor then
+    suggestions = nor
+  end
   Log.debug('Indent normalized suggestions: {}', suggestions)
 
   if #suggestions == 0 then
