@@ -28,6 +28,9 @@ end
 
 ---@param suggestions string[]
 local function condense_nl(suggestions)
+  if not suggestions or #suggestions == 0 then
+    return
+  end
   local row = Base.get_cursor()
   local prev_line = nil
   local cur_line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
@@ -39,6 +42,23 @@ local function condense_nl(suggestions)
       table.remove(suggestions, 1)
     end
   end
+end
+
+---@param suggestions string[]
+local function normalize_indent(suggestions)
+  if not suggestions or #suggestions == 0 then
+    return
+  end
+  if not vim.bo.expandtab then
+    return
+  end
+  local nor = {}
+  for i, suggestion in ipairs(suggestions) do
+    -- replace `\t` with `    `
+    suggestion = suggestion:gsub('\t', string.rep(' ', vim.bo.tabstop))
+    nor[i] = suggestion
+  end
+  suggestions = nor
 end
 
 ---@param task_id integer
@@ -61,6 +81,10 @@ local function on_suggestions(task_id, suggestions)
   condense_nl(suggestions)
 
   Log.debug('Condensed suggestions: {}', suggestions)
+
+  normalize_indent(suggestions)
+
+  Log.debug('Indent normalized suggestions: {}', suggestions)
 
   if #suggestions == 0 then
     return false
