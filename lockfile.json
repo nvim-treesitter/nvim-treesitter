@@ -141,7 +141,7 @@
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
   "elixir": {
-    "revision": "511ea5e0088779e4bdd76e12963ab9a5fe99983a"
+    "revision": "868620e19f070a5e6b0b685dc6069a611a86259a"
   },
   "elm": {
     "revision": "09dbf221d7491dc8d8839616b27c21b9c025c457"
@@ -255,7 +255,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "groovy": {
-    "revision": "3c25d1ce6c1eb9da34215060372792dc9f439b0c"
+    "revision": "b398a5a243c67f0b4d54728c983fa586bd5cd52e"
   },
   "gstlaunch": {
     "revision": "2c0d9c94d35e37aa63fa5002163c8480985b3e5b"
@@ -708,7 +708,7 @@
     "revision": "496322c1f78647ae0cc1ec96e7b2523656d34846"
   },
   "tmux": {
-    "revision": "7cb35fc925cad06992e57672a027d4971ee935a7"
+    "revision": "7499587642a46ee156e1bb58851904ac750dcc7c"
   },
   "todotxt": {
     "revision": "3937c5cd105ec4127448651a21aef45f52d19609"
@@ -783,7 +783,7 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "9473b8d7547b3075cc9c68a086155f643a1d7b45"
+    "revision": "35b8e3a4f320355eaa60da7b035b487b90aa47a8"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
@@ -792,7 +792,7 @@
     "revision": "24b662eb61e369757d13c4b5f0624284dc3fe7e8"
   },
   "yaml": {
-    "revision": "9e59b9bbf839ba231fbcb953617d8b9b9a059e38"
+    "revision": "10c6c7a69dde767ad229e1510e0c1c7aacd8c83a"
   },
   "yang": {
     "revision": "2c0e6be8dd4dcb961c345fa35c309ad4f5bd3502"
