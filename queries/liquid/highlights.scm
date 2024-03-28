@@ -1,27 +1,24 @@
-([
-  "{{"
-  "}}"
-  "{{-"
-  "-}}"
-  "{%"
-  "%}"
-  "{%-"
-  "-%}"
-] @tag.delimiter
+((comment) @comment @spell
   (#set! priority 110))
 
-([
-  "]"
-  "["
-  ")"
-  "("
-] @punctuation.bracket
+(raw_statement
+  (raw_content) @spell
   (#set! priority 110))
 
-([
-  ","
-  "."
-] @punctuation.delimiter
+((identifier) @variable
+  (#set! priority 110))
+
+((string) @string
+  (#set! priority 110))
+
+((boolean) @boolean
+  (#set! priority 110))
+
+((number) @number
+  (#set! priority 110))
+
+(filter
+  name: (identifier) @function.call
   (#set! priority 110))
 
 ([
@@ -46,14 +43,6 @@
   "style"
   "with"
 ] @keyword
-  (#set! priority 110))
-
-([
-  "include"
-  "render"
-  "section"
-  "sections"
-] @keyword.import
   (#set! priority 110))
 
 ([
@@ -92,32 +81,50 @@
   (#set! priority 110))
 
 ([
+  "{{"
+  "}}"
+  "{{-"
+  "-}}"
+  "{%"
+  "%}"
+  "{%-"
+  "-%}"
+] @tag.delimiter
+  (#set! priority 110))
+
+[
+  "include"
+  "render"
+  "section"
+  "sections"
+] @keyword.import
+
+[
   "|"
   ":"
   "="
-  (predicate)
+  "+"
+  "-"
+  "*"
+  "/"
+  "%"
+  "^"
+  "=="
+  "<"
+  "<="
+  "!="
+  ">="
+  ">"
 ] @operator
-  (#set! priority 110))
 
-((identifier) @variable
-  (#set! priority 110))
+[
+  "]"
+  "["
+  ")"
+  "("
+] @punctuation.bracket
 
-((string) @string
-  (#set! priority 110))
-
-((boolean) @boolean
-  (#set! priority 110))
-
-((number) @number
-  (#set! priority 110))
-
-(filter
-  name: (identifier) @function.call
-  (#set! priority 110))
-
-(raw_statement
-  (raw_content) @spell
-  (#set! priority 110))
-
-((comment) @comment @spell
-  (#set! priority 110))
+[
+  ","
+  "."
+] @punctuation.delimiter
