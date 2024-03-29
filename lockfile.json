@@ -420,7 +420,7 @@
     "revision": "bd17c824196ce70800f64ad39cfddd1b17acc13f"
   },
   "mlir": {
-    "revision": "d9a79cf19da13812e1a4fe1f816b68750ac65cb3"
+    "revision": "a89a5f2bbcf7e82e46b106138977c99d6a644db2"
   },
   "muttrc": {
     "revision": "2f918f9c887109fdf1419f98158a0cfff644af75"
@@ -753,7 +753,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "180b5d3ebbedd197821d1364ddd83489faa71489"
+    "revision": "fdf58fdf2c4feb6d056128a58b7f4a7996fb922c"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -783,7 +783,7 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "35b8e3a4f320355eaa60da7b035b487b90aa47a8"
+    "revision": "4e7b0d296eb259b985766fe35da60e8aaec8daa1"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
