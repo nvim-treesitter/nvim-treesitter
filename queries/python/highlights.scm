@@ -79,7 +79,7 @@
 
 ((decorator
   (identifier) @attribute.builtin)
-  (#any-of? @attribute.builtin "classmethod" "property"))
+  (#any-of? @attribute.builtin "classmethod" "property" "staticmethod"))
 
 ; Builtin functions
 ((call
