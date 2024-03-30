@@ -47,7 +47,12 @@ local folds_levels = tsutils.memoize_by_buf_tick(function(bufnr)
     if match.metadata and match.metadata.range then
       start, _, stop, stop_col = unpack(match.metadata.range) ---@type integer, integer, integer, integer
     else
-      start, _, stop, stop_col = match.node:range() ---@type integer, integer, integer, integer
+      if match.node[1] ~= nil then
+        start, _, _, _ = match.node[1]:range() ---@type integer, integer, integer, integer
+        _, _, stop, stop_col = match.node[#match.node]:range() ---@type integer, integer, integer, integer
+      else
+        start, _, stop, stop_col = match.node:range() ---@type integer, integer, integer, integer
+      end
     end
 
     if stop_col == 0 then
