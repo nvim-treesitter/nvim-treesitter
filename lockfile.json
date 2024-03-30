@@ -33,7 +33,7 @@
     "revision": "c9ba4568af24cd3403029730687c0a43d1350a43"
   },
   "beancount": {
-    "revision": "6c665e7cf15d76a1687959643868a78fb381458d"
+    "revision": "c25f8034c977681653a8acd541c8b4877a58f474"
   },
   "bibtex": {
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
@@ -378,7 +378,7 @@
     "revision": "f99011a3554213b654985a4b0a65b3b032ec4621"
   },
   "liquid": {
-    "revision": "06a18b68eaa5665c6eeef30e355878835e473d15"
+    "revision": "293369818da219d97327908aab33707b04b63fd9"
   },
   "liquidsoap": {
     "revision": "09a9e31e2af734a8974dad6ed349648f601eee8c"
@@ -459,10 +459,10 @@
     "revision": "28d3b2e25a0b1881d1b47ed1924ca276c7003d45"
   },
   "ocaml": {
-    "revision": "f7e63111ed1bc1908eacafe6af1ee8d01bfcf7ae"
+    "revision": "0b12614ded3ec7ed7ab7933a9ba4f695ba4c342e"
   },
   "ocaml_interface": {
-    "revision": "f7e63111ed1bc1908eacafe6af1ee8d01bfcf7ae"
+    "revision": "0b12614ded3ec7ed7ab7933a9ba4f695ba4c342e"
   },
   "ocamllex": {
     "revision": "4b9898ccbf198602bb0dec9cd67cc1d2c0a4fad2"
@@ -756,13 +756,13 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "fdf58fdf2c4feb6d056128a58b7f4a7996fb922c"
+    "revision": "0077997267edee446315b69acac7464e5f8e52ae"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
   },
   "vento": {
-    "revision": "c1eb14b130c37267be7c6bb38ce949c3077dd4b3"
+    "revision": "3321077d7446c1b3b017c294fd56ce028ed817fe"
   },
   "verilog": {
     "revision": "2dfddfcb891f74a1cdb9d8ce480a997d11846e17"
@@ -786,7 +786,7 @@
     "revision": "cbd58ee33e24f46d16b9882b001eefb25a958ee2"
   },
   "wing": {
-    "revision": "4e7b0d296eb259b985766fe35da60e8aaec8daa1"
+    "revision": "4c03dd8eebbbaf350a61e3c2227bc8a5d9dbdb3f"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"

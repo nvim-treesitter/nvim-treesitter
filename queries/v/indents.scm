@@ -14,4 +14,7 @@
 (parameter_list
   ")" @indent.branch)
 
-(comment) @indent.ignore
+[
+  (line_comment)
+  (block_comment)
+] @indent.ignore
