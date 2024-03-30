@@ -280,10 +280,13 @@
 (none) @variable.builtin
 
 ; Comments
-(comment) @comment @spell
+[
+  (line_comment)
+  (block_comment)
+] @comment @spell
 
 (_
-  (comment)+ @comment.documentation
+  (line_comment)+ @comment.documentation
   [
     (function_declaration)
     (type_declaration)
