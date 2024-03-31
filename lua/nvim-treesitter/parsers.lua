@@ -1730,6 +1730,14 @@ list.robot = {
   maintainers = { "@Hubro" },
 }
 
+list.roc = {
+  install_info = {
+    url = "https://github.com/nat-418/tree-sitter-roc",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@nat-418" },
+}
+
 list.ron = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-ron",
