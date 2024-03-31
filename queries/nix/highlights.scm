@@ -75,7 +75,7 @@
   "?"? @operator)
 
 ; `...` in `{ ... }`, used to ignore unknown named function arguments (see above)
-(ellipses) @punctuation.special
+(ellipses) @variable.parameter.builtin
 
 ; universal is the parameter of the function expression
 ; `:` in `x: y`, used to separate function argument from body (see above)
