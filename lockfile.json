@@ -117,7 +117,7 @@
     "revision": "0229c0211dba909c5d45129ac784a3f4d49c243a"
   },
   "djot": {
-    "revision": "b8ff9a0a07c1d53bae27875958b6be14f7593736"
+    "revision": "63f176e7db5fca073b55b98b7e5e95afd1587fcb"
   },
   "dockerfile": {
     "revision": "33e22c33bcdbfc33d42806ee84cfd0b1248cc392"
@@ -627,7 +627,7 @@
     "revision": "8327eb84d55639ffbe08c9dc82da7fff72a1ad07"
   },
   "snakemake": {
-    "revision": "65a6c3b4671877821082164da0a310851b211953"
+    "revision": "ba1b3868eaa960b945593404af9a7c2f296d3643"
   },
   "solidity": {
     "revision": "b239a95f94cfcc6e7b3e961bc73a28d55e214f02"
@@ -756,7 +756,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "0077997267edee446315b69acac7464e5f8e52ae"
+    "revision": "bb6ca96b1b205fd2f2504fb7d0e19cf0e4888cd6"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"

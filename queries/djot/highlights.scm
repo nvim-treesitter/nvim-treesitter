@@ -94,7 +94,7 @@
   (ellipsis)
   (en_dash)
   (em_dash)
-  (straight_quote)
+  (quotation_marks)
 ] @string.special
 
 (frontmatter_marker) @punctuation.delimiter
