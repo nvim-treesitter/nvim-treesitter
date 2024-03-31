@@ -7,15 +7,7 @@ local API = require('fittencode.api').api
 
 local M = {}
 
--- 1. Reduce the emitting of events
--- 2. Wait for the LSP to provide the completion response
-local GENERATEONESTAGE_DEBOUNCE_TIME = 80
-
-local ADVANCE_DEBOUNCE_TIME = 80
-
----@type uv_timer_t
-local generate_one_stage_timer = nil
-
+local ADVANCE_DEBOUNCE_TIME = 120
 ---@type uv_timer_t
 local advance_timer = nil
 
@@ -28,9 +20,7 @@ function M.setup_autocmds()
         return
       end
       local row, col = Base.get_cursor()
-      Base.debounce(generate_one_stage_timer, function()
-        Engine.generate_one_stage(row, col)
-      end, GENERATEONESTAGE_DEBOUNCE_TIME)
+      Engine.generate_one_stage(row, col)
     end,
     desc = 'Generate one stage',
   })
