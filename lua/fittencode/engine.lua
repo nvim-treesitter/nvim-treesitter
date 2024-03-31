@@ -151,28 +151,22 @@ function M.generate_one_stage(row, col, force, on_suggestions_ready, on_error)
     return
   end
 
-  local cur_row, cur_col = Base.get_cursor()
-  if cur_row ~= row or cur_col ~= col then
-    Log.debug('Cursor changed; requested cursor row: {}, col: {}; current cursor row: {}, col: {}', row, col, cur_row, cur_col)
-    if on_error then
-      on_error()
-    end
-    return
-  end
+  Log.debug('Requested row: {}, col: {}', row, col)
+  Log.debug('Cached row: {}, col: {}', cache:get_cursor())
 
   if not force and cache:equal_cursor(row, col) then
-    Log.debug('Cached cursor is equal to requested cursor; cached cursor row: {}, col: {}', cache:get_cursor())
+    Log.debug('Cached cursor matches requested cursor')
     if on_error then
       on_error()
     end
     return
   else
-    Log.debug('Cached cursor is outdated, requested cursor row: {}, col: {}; cached cursor row: {}, col: {}', row, col, cache:get_cursor())
+    Log.debug('Cached cursor is outdated')
   end
 
   if inline_mode then
     if Lsp.is_active() then
-      Log.debug('LSP is active, cancel request generate one stage')
+      Log.debug('LSP is active')
       if on_error then
         on_error()
       end
