@@ -55,6 +55,7 @@
 [
   "."
   ";"
+  ":"
   ","
 ] @punctuation.delimiter
 
@@ -186,6 +187,12 @@
 ; binary operators
 (binary_expression
   operator: _ @operator)
+
+[
+  "="
+  "@"
+  "?"
+] @operator
 
 ; integers, also highlight a unary -
 [
