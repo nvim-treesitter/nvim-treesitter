@@ -526,6 +526,7 @@ local function install(options)
     if err then
       return api.nvim_err_writeln(err)
     end
+    install_folder = install_folder and clean_path(install_folder)
     assert(install_folder)
 
     local languages ---@type string[]
@@ -621,6 +622,7 @@ function M.uninstall(...)
       if err then
         return api.nvim_err_writeln(err)
       end
+      install_dir = install_dir and clean_path(install_dir)
 
       if vim.tbl_contains(ensure_installed_parsers, lang) then
         vim.notify(
@@ -632,7 +634,6 @@ function M.uninstall(...)
         )
       end
 
-      install_dir = install_dir:gsub("/", utils.get_path_sep()) -- fix path separator for windows
       local parser_lib = utils.join_path(install_dir, lang) .. ".so"
       local all_parsers = vim.api.nvim_get_runtime_file("parser/" .. lang .. ".so", true)
       if vim.fn.filereadable(parser_lib) == 1 then
