@@ -93,7 +93,7 @@
     "revision": "cda48a5e890b30619da5bc3ff55be1b1d3d08c8d"
   },
   "cuda": {
-    "revision": "221179d4287a2c24c08e4c67ff383ef67dc32156"
+    "revision": "a18550206a205a0b056437652cf4802f377c4a92"
   },
   "cue": {
     "revision": "8a5f273bfa281c66354da562f2307c2d394b6c81"
@@ -285,7 +285,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "ee24be127560f0de0c4741e382416f45ab47eb76"
+    "revision": "2c2732db3ac55028af9456f89ab12683e02822bf"
   },
   "hlsplaylist": {
     "revision": "5305c061efce2841942dbbac6f9a5b21e3e4eb35"
@@ -366,7 +366,7 @@
     "revision": "123d8b472e949b59f348c32e245107a34a3d8945"
   },
   "latex": {
-    "revision": "a834712c5e04029a451a262456bf6290b8ef6f37"
+    "revision": "eb552c7022cbd1379138bdc1b2fe464a99d25640"
   },
   "ledger": {
     "revision": "8a841fb20ce683bfbb3469e6ba67f2851cfdf94a"
@@ -591,7 +591,7 @@
     "revision": "322e4cc65754d2b3fdef4f2f8a71e0762e3d13af"
   },
   "roc": {
-    "revision": "14c66eeceb7db2d5c98616036d861863b273bab8"
+    "revision": "f2547612cc1cc93450dd4d27da6160b1fab87c80"
   },
   "ron": {
     "revision": "ce6086b2c9e8e71065b8129d6c2289c5f66d1879"
