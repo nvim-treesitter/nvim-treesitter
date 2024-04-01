@@ -21,7 +21,7 @@
   (code_block)
   (raw_block)
   (frontmatter)
-] @markup.raw
+] @markup.raw.block
   (#set! "priority" 90))
 
 ; Remove @markup.raw for code with a language spec
@@ -29,7 +29,8 @@
   .
   (code_block_marker_begin)
   (language)
-  (code) @none)
+  (code) @none
+  (#set! "priority" 90))
 
 [
   (code_block_marker_begin)
@@ -38,7 +39,11 @@
   (raw_block_marker_end)
 ] @punctuation.delimiter
 
-(language) @label
+(language) @attribute
+
+(inline_attribute
+  _ @conceal
+  (#set! conceal ""))
 
 ((language_marker) @punctuation.delimiter
   (#set! conceal ""))
@@ -60,7 +65,7 @@
 (table_caption
   (marker) @punctuation.special)
 
-(table_caption) @markup.heading
+(table_caption) @markup.italic
 
 [
   (list_marker_dash)
@@ -85,10 +90,14 @@
 ] @markup.list
 
 (list_marker_task
-  (unchecked) @constant.builtin) @markup.list.unchecked
+  (unchecked)) @markup.list.unchecked
 
 (list_marker_task
-  (checked) @constant.builtin) @markup.list.checked
+  (checked)) @markup.list.checked
+
+; Colorize `x` in `[x]`
+((checked) @constant.builtin
+  (#offset! @constant.builtin 0 1 0 -1))
 
 [
   (ellipsis)
@@ -97,94 +106,137 @@
   (quotation_marks)
 ] @string.special
 
+(list_item
+  (term) @type.definition)
+
+; Conceal { and } but leave " and '
+((quotation_marks) @string.special
+  (#any-of? @string.special "\"}" "'}")
+  (#offset! @string.special 0 1 0 0)
+  (#set! conceal ""))
+
+((quotation_marks) @string.special
+  (#any-of? @string.special "\\\"" "\\'" "{'" "{\"")
+  (#offset! @string.special 0 0 0 -1)
+  (#set! conceal ""))
+
+[
+  (hard_line_break)
+  (backslash_escape)
+] @string.escape
+
+; Only conceal \ but leave escaped character.
+((backslash_escape) @string.escape
+  (#offset! @string.escape 0 0 0 -1)
+  (#set! conceal ""))
+
 (frontmatter_marker) @punctuation.delimiter
 
 (emphasis) @markup.italic
 
 (strong) @markup.strong
 
-(emphasis
-  (emphasis_begin) @punctuation.delimiter)
+(symbol) @string.special.symbol
 
-(emphasis
-  (emphasis_end) @punctuation.delimiter)
+(insert) @markup.underline
 
-(strong
-  (strong_begin) @punctuation.delimiter)
+(delete) @markup.strikethrough
 
-(strong
-  (strong_end) @punctuation.delimiter)
+[
+  (highlighted)
+  (superscript)
+  (subscript)
+] @string.special
 
+; We need to target tokens specifically because `{=` etc can exist as fallback symbols in
+; regular text, which we don't want to highlight or conceal.
 (highlighted
   [
     "{="
     "=}"
-  ] @punctuation.delimiter)
+  ] @punctuation.delimiter
+  (#set! conceal ""))
 
 (insert
   [
     "{+"
     "+}"
-  ] @punctuation.delimiter)
+  ] @punctuation.delimiter
+  (#set! conceal ""))
 
 (delete
   [
     "{-"
     "-}"
-  ] @punctuation.delimiter)
+  ] @punctuation.delimiter
+  (#set! conceal ""))
 
 (superscript
   [
     "^"
     "{^"
     "^}"
-  ] @punctuation.delimiter)
+  ] @punctuation.delimiter
+  (#set! conceal ""))
 
 (subscript
   [
     "~"
     "{~"
     "~}"
-  ] @punctuation.delimiter)
+  ] @punctuation.delimiter
+  (#set! conceal ""))
 
-(verbatim) @markup.raw
-
-[
+([
+  (emphasis_begin)
+  (emphasis_end)
+  (strong_begin)
+  (strong_end)
   (verbatim_marker_begin)
   (verbatim_marker_end)
-] @punctuation.delimiter
-
-(math) @markup.math
-
-[
   (math_marker)
   (math_marker_begin)
   (math_marker_end)
-] @punctuation.delimiter
-
-(raw_inline) @markup.raw
-
-[
   (raw_inline_attribute)
   (raw_inline_marker_begin)
   (raw_inline_marker_end)
 ] @punctuation.delimiter
+  (#set! conceal ""))
+
+((math) @markup.math
+  (#set! "priority" 90))
+
+(verbatim) @markup.raw
+
+((raw_inline) @markup.raw
+  (#set! "priority" 90))
+
+(comment
+  "%" @comment
+  (#set! conceal ""))
+
+(span
+  [
+    "["
+    "]"
+  ] @punctuation.bracket)
+
+(inline_attribute
+  [
+    "{"
+    "}"
+  ] @punctuation.bracket)
+
+(block_attribute
+  [
+    "{"
+    "}"
+  ] @punctuation.bracket)
 
 [
-  "{"
-  "}"
-  "!["
-  "["
-  "]"
-  "("
-  ")"
-  "<"
-  ">"
-] @punctuation.bracket
-
-(comment) @comment
-
-(class) @type
+  (class)
+  (class_name)
+] @type
 
 (identifier) @tag
 
@@ -197,10 +249,23 @@
 (key_value
   (value) @string)
 
-[
-  (backslash_escape)
-  (hard_line_break)
-] @string.escape
+(link_text
+  [
+    "["
+    "]"
+  ] @punctuation.bracket
+  (#set! conceal ""))
+
+(autolink
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket
+  (#set! conceal ""))
+
+(inline_link
+  (inline_link_destination) @markup.link.url
+  (#set! conceal ""))
 
 (link_reference_definition
   ":" @punctuation.special)
@@ -209,7 +274,19 @@
   (link_text) @markup.link)
 
 (full_reference_link
-  (link_label) @markup.link.label)
+  (link_label) @markup.link.label
+  (#set! conceal ""))
+
+(collapsed_reference_link
+  "[]" @punctuation.bracket
+  (#set! conceal ""))
+
+(full_reference_link
+  [
+    "["
+    "]"
+  ] @punctuation.bracket
+  (#set! conceal ""))
 
 (collapsed_reference_link
   (link_text) @markup.link)
@@ -223,10 +300,47 @@
 (full_reference_image
   (link_label) @markup.link.label)
 
-(image_description) @markup.link.label
+(full_reference_image
+  [
+    "!["
+    "["
+    "]"
+  ] @punctuation.bracket)
+
+(collapsed_reference_image
+  [
+    "!["
+    "]"
+  ] @punctuation.bracket)
+
+(inline_image
+  [
+    "!["
+    "]"
+  ] @punctuation.bracket)
+
+(image_description) @markup.italic
+
+(image_description
+  [
+    "["
+    "]"
+  ] @punctuation.bracket)
+
+(link_reference_definition
+  [
+    "["
+    "]"
+  ] @punctuation.bracket)
 
 (link_reference_definition
   (link_label) @markup.link.label)
+
+(inline_link_destination
+  [
+    "("
+    ")"
+  ] @punctuation.bracket)
 
 [
   (autolink)
@@ -236,15 +350,21 @@
 ] @markup.link.url
 
 (footnote
-  (reference_label) @markup.link)
+  (reference_label) @markup.link.label)
 
 (footnote_reference
-  (reference_label) @markup.link)
+  (reference_label) @markup.link.label)
 
 [
   (footnote_marker_begin)
   (footnote_marker_end)
 ] @punctuation.bracket
+
+(todo) @comment.todo
+
+(note) @comment.note
+
+(fixme) @comment.error
 
 [
   (paragraph)
