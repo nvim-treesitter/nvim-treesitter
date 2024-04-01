@@ -61,6 +61,18 @@ local function normalize_indent(suggestions)
   return nor
 end
 
+local function replace_slash(suggestions)
+  if not suggestions or #suggestions == 0 then
+    return
+  end
+  local slash = {}
+  for i, suggestion in ipairs(suggestions) do
+    suggestion = suggestion:gsub('\\"', '"')
+    slash[i] = suggestion
+  end
+  return slash
+end
+
 ---@param task_id integer
 ---@param suggestions? Suggestions
 ---@return boolean
@@ -87,6 +99,12 @@ local function on_suggestions(task_id, suggestions)
     suggestions = nor
   end
   Log.debug('Indent normalized suggestions: {}', suggestions)
+
+  local slash = replace_slash(suggestions)
+  if slash then
+    suggestions = slash
+  end
+  Log.debug('Slash replaced suggestions: {}', suggestions)
 
   if #suggestions == 0 then
     return false
