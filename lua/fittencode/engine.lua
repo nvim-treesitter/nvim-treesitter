@@ -92,23 +92,21 @@ local function on_suggestions(task_id, suggestions)
 
   condense_nl(suggestions)
 
-  Log.debug('Condensed suggestions: {}', suggestions)
-
   local nor = normalize_indent(suggestions)
   if nor then
     suggestions = nor
   end
-  Log.debug('Indent normalized suggestions: {}', suggestions)
 
   local slash = replace_slash(suggestions)
   if slash then
     suggestions = slash
   end
-  Log.debug('Slash replaced suggestions: {}', suggestions)
 
   if #suggestions == 0 then
     return false
   end
+
+  Log.debug('Processed suggestions: {}', suggestions)
 
   cache:update(task_id, row, col, suggestions)
 

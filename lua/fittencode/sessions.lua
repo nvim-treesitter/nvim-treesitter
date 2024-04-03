@@ -335,9 +335,9 @@ local function make_generate_one_stage_params()
   end
 
   local prefix = table.concat(api.nvim_buf_get_text(0, 0, 0, row, col, {}), '\n')
-  Log.debug('Prefix: {}', prefix)
+  -- Log.debug('Prefix: {}', prefix)
   local suffix = table.concat(api.nvim_buf_get_text(0, row, col, -1, -1, {}), '\n')
-  Log.debug('Suffix: {}', suffix)
+  -- Log.debug('Suffix: {}', suffix)
   local prompt = '!FCPREFIX!' .. prefix .. '!FCSUFFIX!' .. suffix .. '!FCMIDDLE!'
   local escaped_prompt = string.gsub(prompt, '"', '\\"')
   local params = {
@@ -367,7 +367,7 @@ function M.request_generate_one_stage(task_id, on_suggestions, on_error)
     return
   end
   local params = make_generate_one_stage_params()
-  Log.debug('Params: {}', params)
+  -- Log.debug('Params: {}', params)
   if params == nil then
     if on_error then
       on_error()
