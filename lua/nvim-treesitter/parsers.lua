@@ -443,6 +443,14 @@ list.dtd = {
   maintainers = { "@ObserverOfTime" },
 }
 
+list.earthfile = {
+  install_info = {
+    url = "https://github.com/glehmann/tree-sitter-earthfile",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@glehmann" },
+}
+
 list.ebnf = {
   install_info = {
     url = "https://github.com/RubixDev/ebnf",
