@@ -8,6 +8,7 @@
   (struct_pattern)
   (tuple_struct_pattern)
   (tuple_expression)
+  (tuple_type)
   (match_block)
   (call_expression)
   (assignment_expression)
@@ -83,6 +84,9 @@
   "}" @indent.end)
 
 (tuple_struct_pattern
+  ")" @indent.end)
+
+(tuple_type
   ")" @indent.end)
 
 (trait_item
