@@ -93,7 +93,7 @@
     "revision": "cda48a5e890b30619da5bc3ff55be1b1d3d08c8d"
   },
   "cuda": {
-    "revision": "a18550206a205a0b056437652cf4802f377c4a92"
+    "revision": "4ec5afdf98041d137c25b555958a1f825c7c1272"
   },
   "cue": {
     "revision": "8a5f273bfa281c66354da562f2307c2d394b6c81"
@@ -129,7 +129,7 @@
     "revision": "a750758da90955c86fcc22fcbb6fa44a7d009865"
   },
   "dtd": {
-    "revision": "24b662eb61e369757d13c4b5f0624284dc3fe7e8"
+    "revision": "2282ad5cb8e815523e70d5c82404620bd9a1494c"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -174,7 +174,7 @@
     "revision": "2b5adae629c8cba528c7b1e4aa67a8ae28934ea5"
   },
   "fish": {
-    "revision": "f9176908c9eb2e11eb684d79e1d00f3b29bd65c9"
+    "revision": "a78aef9abc395c600c38a037ac779afc7e3cc9e0"
   },
   "foam": {
     "revision": "04664b40c0dadb7ef37028acf3422c63271d377b"
@@ -222,7 +222,7 @@
     "revision": "6b25d265c990139353e1f7f97baf84987ebb7bf0"
   },
   "glsl": {
-    "revision": "339fe659aed7618b822d27120c1ec5b5cd83c61c"
+    "revision": "f7040966a97c6c5a644a230df7fe74623f963d2f"
   },
   "gn": {
     "revision": "bc06955bc1e3c9ff8e9b2b2a55b38b94da923c05"
@@ -285,7 +285,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "2c2732db3ac55028af9456f89ab12683e02822bf"
+    "revision": "ef428a36b2faa20450ee979a618f802228b38318"
   },
   "hlsplaylist": {
     "revision": "5305c061efce2841942dbbac6f9a5b21e3e4eb35"
@@ -405,10 +405,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "44017499c51cb6431635ed51d5080e1fd05c2c21"
+    "revision": "7fe453beacecf02c86f7736439f238f5bb8b5c9b"
   },
   "markdown_inline": {
-    "revision": "44017499c51cb6431635ed51d5080e1fd05c2c21"
+    "revision": "7fe453beacecf02c86f7736439f238f5bb8b5c9b"
   },
   "matlab": {
     "revision": "79d8b25f57b48f83ae1333aff6723b83c9532e37"
@@ -618,7 +618,7 @@
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
   },
   "slang": {
-    "revision": "6015bdc81e5e447a2bb8b342da27048a031b2713"
+    "revision": "13fdd899bfa62527cc39887abd74ec24cd626dec"
   },
   "slint": {
     "revision": "acc77c93ef4b73ba8c3a581b8c99d95b55f7178b"
@@ -633,7 +633,7 @@
     "revision": "ba1b3868eaa960b945593404af9a7c2f296d3643"
   },
   "solidity": {
-    "revision": "b239a95f94cfcc6e7b3e961bc73a28d55e214f02"
+    "revision": "a8ed2f5d600fed77f8ed3084d1479998c649bca1"
   },
   "soql": {
     "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
@@ -696,7 +696,7 @@
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
   },
   "templ": {
-    "revision": "592faa3186ef857c92e4bd1c31d73c07a4a334db"
+    "revision": "db662414ccd6f7c78b1e834e7abe11c224b04759"
   },
   "terraform": {
     "revision": "e936d3fef8bac884661472dce71ad82284761eb1"
@@ -711,7 +711,7 @@
     "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
   },
   "tlaplus": {
-    "revision": "496322c1f78647ae0cc1ec96e7b2523656d34846"
+    "revision": "439dad01355e4db335fe9cd12eb177b4f2563dd6"
   },
   "tmux": {
     "revision": "7499587642a46ee156e1bb58851904ac750dcc7c"
@@ -789,16 +789,16 @@
     "revision": "4d7b4697dd2598c60a6ccbc51db8b768cd8700b8"
   },
   "wing": {
-    "revision": "5151f4a33d81ff68f94ff451a3404c581705eb96"
+    "revision": "0cdff2bc50e3664049905e952746cadf4ac62f15"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
   },
   "xml": {
-    "revision": "24b662eb61e369757d13c4b5f0624284dc3fe7e8"
+    "revision": "2282ad5cb8e815523e70d5c82404620bd9a1494c"
   },
   "yaml": {
-    "revision": "10c6c7a69dde767ad229e1510e0c1c7aacd8c83a"
+    "revision": "c9ee63b15c92656a89f7007f38a98f21c3eca81d"
   },
   "yang": {
     "revision": "2c0e6be8dd4dcb961c345fa35c309ad4f5bd3502"
