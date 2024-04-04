@@ -132,7 +132,7 @@
 [
   (comment)
   (line_continuation_comment)
-] @comment
+] @comment @spell
 
 (line_continuation) @operator
 
