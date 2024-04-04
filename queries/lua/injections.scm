@@ -43,6 +43,15 @@
   (#eq? @_method "nvim_exec_lua")
   (#set! injection.language "lua"))
 
+; exec_lua [[ ... ]] in functionaltests
+((function_call
+  name: (identifier) @_function
+  arguments: (arguments
+    (string
+      content: (string_content) @injection.content)))
+  (#eq? @_function "exec_lua")
+  (#set! injection.language "lua"))
+
 ; vim.api.nvim_create_autocmd("FileType", { command = "injected here" })
 (function_call
   name: (_) @_vimcmd_identifier
