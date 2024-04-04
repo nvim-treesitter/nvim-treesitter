@@ -6,7 +6,7 @@
     "revision": "d3dc807692e6bca671d4491b3bf5c67eeca8c016"
   },
   "angular": {
-    "revision": "62179d7bbfb5fd8a8f7298495ac654d252a1bd52"
+    "revision": "b7a7167762e3863b3d6247c708b7f9bca1ca7bea"
   },
   "apex": {
     "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
@@ -210,7 +210,7 @@
     "revision": "41940e199ba5763abea1d21b4f717014b45f01ea"
   },
   "gitcommit": {
-    "revision": "a427a79653b6829aa5b663b5b9a6b39e954858b7"
+    "revision": "edd817e0532f179b7f7f371dc180629070945f0c"
   },
   "gitignore": {
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
@@ -444,7 +444,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "763168fa916a333a459434f1424b5d30645f015d"
+    "revision": "b3cda619248e7dd0f216088bd152f59ce0bbe488"
   },
   "norg": {
     "revision": "9766442985fd546e2d33f8d1c7e7619ed07860cf"
@@ -591,13 +591,13 @@
     "revision": "322e4cc65754d2b3fdef4f2f8a71e0762e3d13af"
   },
   "roc": {
-    "revision": "649c3b68eb863f350f0aafeb68f4a8ca4f13081a"
+    "revision": "65ec48bf818967ce71680da2afc6db9fa3a03937"
   },
   "ron": {
     "revision": "ce6086b2c9e8e71065b8129d6c2289c5f66d1879"
   },
   "rst": {
-    "revision": "c6f7444fd77271862730af49e757c60405fba991"
+    "revision": "5120f6e59284cb8b85b450bd2db0bd352635ba9f"
   },
   "ruby": {
     "revision": "9d86f3761bb30e8dcc81e754b81d3ce91848477e"
@@ -696,7 +696,7 @@
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
   },
   "templ": {
-    "revision": "db662414ccd6f7c78b1e834e7abe11c224b04759"
+    "revision": "044ad200092170727650fa6d368df66a8da98f9d"
   },
   "terraform": {
     "revision": "e936d3fef8bac884661472dce71ad82284761eb1"
@@ -711,7 +711,7 @@
     "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
   },
   "tlaplus": {
-    "revision": "439dad01355e4db335fe9cd12eb177b4f2563dd6"
+    "revision": "c10ad7e82aa4d77fcb5c4aaec193c9f2dfd3afcb"
   },
   "tmux": {
     "revision": "7499587642a46ee156e1bb58851904ac750dcc7c"
@@ -759,7 +759,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "95869fa2058fbc9098f640b87399971c6d7552c0"
+    "revision": "12f5f6a073f9c48fd8733f3102fe4162dcf1c514"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -789,7 +789,7 @@
     "revision": "4d7b4697dd2598c60a6ccbc51db8b768cd8700b8"
   },
   "wing": {
-    "revision": "0cdff2bc50e3664049905e952746cadf4ac62f15"
+    "revision": "8a88d30ea4f4ace694c18b0c54a8c38e5fa8351c"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
