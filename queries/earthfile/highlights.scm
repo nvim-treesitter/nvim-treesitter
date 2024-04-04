@@ -116,10 +116,10 @@
   ] @punctuation.special)
 
 (build_arg
-  (variable) @property) @property
+  (variable) @variable.parameter) @variable.parameter
 
 (options
-  (_) @variable.parameter)
+  (_) @property)
 
 "=" @operator
 
