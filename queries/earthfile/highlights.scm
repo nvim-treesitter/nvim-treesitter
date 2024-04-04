@@ -165,7 +165,8 @@
     ")"
   ] @punctuation.special)
 
-(build_arg) @variable
+(build_arg
+  (variable) @property) @property
 
 (options
   (_) @variable.parameter)
