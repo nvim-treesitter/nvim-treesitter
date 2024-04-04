@@ -3,7 +3,6 @@
   (struct_item)
   (enum_item)
   (impl_item)
-  (for_expression)
   (struct_expression)
   (struct_pattern)
   (tuple_struct_pattern)
