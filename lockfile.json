@@ -48,7 +48,7 @@
     "revision": "863cea9f83ad5637300478e0559262f1e791684b"
   },
   "c": {
-    "revision": "72084f447c2051e01a7cd6c6e0477ec71a9297ed"
+    "revision": "ff7f769c2d7aa3f954ce4ae98311e09f6e863c9c"
   },
   "c_sharp": {
     "revision": "92c0a9431400cd8b6b6ee7503f81da3ae83fc830"
@@ -84,7 +84,7 @@
     "revision": "f4b3cbc8b0bd4e13035d39940fef09f1392e8739"
   },
   "cpp": {
-    "revision": "e0c1678a78731e78655b7d953efb4daecf58be46"
+    "revision": "d0b4e006ca3c4466f834d9a4bf709bfede13d359"
   },
   "css": {
     "revision": "02b4ee757654b7d54fe35352fd8e53a8a4385d42"
@@ -366,7 +366,7 @@
     "revision": "123d8b472e949b59f348c32e245107a34a3d8945"
   },
   "latex": {
-    "revision": "eb552c7022cbd1379138bdc1b2fe464a99d25640"
+    "revision": "ae2134af67f6c5e45587ace9ec748dd6e7b356a2"
   },
   "ledger": {
     "revision": "8a841fb20ce683bfbb3469e6ba67f2851cfdf94a"
@@ -603,7 +603,7 @@
     "revision": "9d86f3761bb30e8dcc81e754b81d3ce91848477e"
   },
   "rust": {
-    "revision": "3a56481f8d13b6874a28752502a58520b9139dc7"
+    "revision": "b0cd98e1c60cb55dc358c6b6781346886b980e86"
   },
   "scala": {
     "revision": "70b4fe63c4973b04cc7bd40c6b7646d9c2430db8"
@@ -789,7 +789,7 @@
     "revision": "4d7b4697dd2598c60a6ccbc51db8b768cd8700b8"
   },
   "wing": {
-    "revision": "8a88d30ea4f4ace694c18b0c54a8c38e5fa8351c"
+    "revision": "33211e61248d933f5c81d2d111931ce34eb319be"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
