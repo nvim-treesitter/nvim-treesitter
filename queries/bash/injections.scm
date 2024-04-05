@@ -67,6 +67,6 @@
   (#set! injection.language "printf"))
 
 ((command
-   name: (command_name) @command_name (#eq? @command_name "awk")
+   name: (command_name) @_command (#eq? @_command "awk")
    argument: (raw_string) @injection.content)
  (#set! injection.language "awk"))
