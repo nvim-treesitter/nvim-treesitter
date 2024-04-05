@@ -116,7 +116,10 @@
   ] @punctuation.special)
 
 (build_arg
-  (variable) @variable.parameter) @variable.parameter
+  [
+    "--"
+    (variable)
+  ] @variable.parameter)
 
 (options
   (_) @property)
