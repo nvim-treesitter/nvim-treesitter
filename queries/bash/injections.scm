@@ -14,13 +14,15 @@
   name: (command_name) @_command
   .
   argument: [
-    (string)
+    (string
+      (string_content) @injection.content)
     (concatenation
-      (string) @injection.content)
-    (raw_string)
+      (string
+        (string_content) @injection.content))
+    (raw_string) @injection.content
     (concatenation
       (raw_string) @injection.content)
-  ] @injection.content)
+  ])
   (#eq? @_command "printf")
   (#set! injection.language "printf")
   (#set! injection.include-children))
@@ -33,13 +35,15 @@
   (_)
   .
   argument: [
-    (string)
+    (string
+      (string_content) @injection.content)
     (concatenation
-      (string) @injection.content)
-    (raw_string)
+      (string
+        (string_content) @injection.content))
+    (raw_string) @injection.content
     (concatenation
       (raw_string) @injection.content)
-  ] @injection.content)
+  ])
   (#eq? @_command "printf")
   (#eq? @_arg "-v")
   (#set! injection.language "printf")
@@ -51,13 +55,15 @@
   argument: (word) @_arg
   .
   argument: [
-    (string)
+    (string
+      (string_content) @injection.content)
     (concatenation
-      (string) @injection.content)
-    (raw_string)
+      (string
+        (string_content) @injection.content))
+    (raw_string) @injection.content
     (concatenation
       (raw_string) @injection.content)
-  ] @injection.content)
+  ])
   (#eq? @_command "printf")
   (#eq? @_arg "--")
   (#set! injection.language "printf")
