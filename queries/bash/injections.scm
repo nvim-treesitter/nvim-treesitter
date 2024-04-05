@@ -24,8 +24,7 @@
       (raw_string) @injection.content)
   ])
   (#eq? @_command "printf")
-  (#set! injection.language "printf")
-  (#set! injection.include-children))
+  (#set! injection.language "printf"))
 
 ; printf -v var 'format'
 ((command
@@ -46,8 +45,7 @@
   ])
   (#eq? @_command "printf")
   (#eq? @_arg "-v")
-  (#set! injection.language "printf")
-  (#set! injection.include-children))
+  (#set! injection.language "printf"))
 
 ; printf -- 'format'
 ((command
@@ -66,5 +64,4 @@
   ])
   (#eq? @_command "printf")
   (#eq? @_arg "--")
-  (#set! injection.language "printf")
-  (#set! injection.include-children))
+  (#set! injection.language "printf"))
