@@ -432,7 +432,7 @@
 (macro_invocation
   "!" @function.macro)
 
-(empty_type
+(never_type
   "!" @type.builtin)
 
 (macro_invocation
