@@ -231,7 +231,7 @@
     "revision": "3c895f5d9c0b3a3c7e02383766b462c21913c000"
   },
   "go": {
-    "revision": "fd577c4358c28cbcb6748bbf65354cc85f1cf7a4"
+    "revision": "5c0024cfbb10f0a6b54ed4b14dc5acadacd19b61"
   },
   "godot_resource": {
     "revision": "2ffb90de47417018651fc3b970e5f6b67214dc9d"
@@ -696,7 +696,7 @@
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
   },
   "templ": {
-    "revision": "044ad200092170727650fa6d368df66a8da98f9d"
+    "revision": "65fae2cb1d92c746d06d38df37f5ec148e2269b1"
   },
   "terraform": {
     "revision": "e936d3fef8bac884661472dce71ad82284761eb1"
