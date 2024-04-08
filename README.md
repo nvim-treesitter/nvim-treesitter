@@ -717,7 +717,7 @@ Try updating the parser that you suspect has changed (`:TSUpdate {language}`) or
 If the error persists after updating all parsers,
 please [open an issue](https://github.com/nvim-treesitter/nvim-treesitter/issues/new/choose).
 
-#### I get `query error: invalid node type at position`
+#### I get `query error: invalid node type at position` or `query: invalid structure at position xxx for language xxx`
 
 This could be due a query file outside this plugin using outdated nodes,
 or due to an outdated parser.
@@ -727,6 +727,10 @@ or due to an outdated parser.
   You can execute this command `:echo nvim_get_runtime_file('parser', v:true)` to find all runtime directories.
   If you get more than one path, remove the ones that are outside this plugin (`nvim-treesitter` directory),
   so the correct version of the parser is used.
+    - assuming that you have an "extra" path `/usr/local/Cellar/neovim/0.9.5/lib/nvim/parser`, you can get rid of that by
+      removing the `/usr/local/Cellar/neovim/0.9.5/lib/nvim` (note no `/parser` at the end)  from the `runtimepath`:
+    - ie. adding `set rtp-=/usr/local/Cellar/neovim/0.9.5/lib/nvim` at the end of your init.vim, 
+    - ie. `vim.opt.rtp:remove("/usr/local/Cellar/neovim/0.9.5/lib/nvim")` at the end of your init.lua 
 
 #### I experience weird highlighting issues similar to [#78](https://github.com/nvim-treesitter/nvim-treesitter/issues/78)
 
