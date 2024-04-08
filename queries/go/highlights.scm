@@ -39,7 +39,7 @@
 (method_declaration
   name: (field_identifier) @function.method)
 
-(method_spec
+(method_elem
   name: (field_identifier) @function.method)
 
 ; Constructors
