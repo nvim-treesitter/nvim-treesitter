@@ -717,16 +717,19 @@ Try updating the parser that you suspect has changed (`:TSUpdate {language}`) or
 If the error persists after updating all parsers,
 please [open an issue](https://github.com/nvim-treesitter/nvim-treesitter/issues/new/choose).
 
-#### I get `query error: invalid node type at position`
+#### I get `query error: invalid node type at position` or `query: invalid structure at position xxx for language yyy`
 
 This could be due a query file outside this plugin using outdated nodes,
 or due to an outdated parser.
 
 - Make sure you have the parsers up to date with `:TSUpdate`
+- Make sure that you don't lazy load `nvim-treesitter`
 - Make sure you don't have more than one `parser` runtime directory.
   You can execute this command `:echo nvim_get_runtime_file('parser', v:true)` to find all runtime directories.
   If you get more than one path, remove the ones that are outside this plugin (`nvim-treesitter` directory),
   so the correct version of the parser is used.
+
+
 
 #### I experience weird highlighting issues similar to [#78](https://github.com/nvim-treesitter/nvim-treesitter/issues/78)
 
