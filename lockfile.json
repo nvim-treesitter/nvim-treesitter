@@ -12,7 +12,7 @@
     "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
   },
   "arduino": {
-    "revision": "e3d0dea39dbb8032e754bafe5aec3ed5a234d986"
+    "revision": "f491d929f5af4e6ede4067095c7a649716b23ee8"
   },
   "asm": {
     "revision": "62e49328113ff318128c640bf0cf6dd3d3d51553"
@@ -51,7 +51,7 @@
     "revision": "1aafaff4d26dac5a36dd3495be33e1c20161d761"
   },
   "c_sharp": {
-    "revision": "92c0a9431400cd8b6b6ee7503f81da3ae83fc830"
+    "revision": "9de565257ada70ac441c640e3b5d6850e2df5ab8"
   },
   "cairo": {
     "revision": "6216c6ee5e9fc0649c4bd7b1aedd884a55bdd9ef"
@@ -102,7 +102,7 @@
     "revision": "750dde90ed9cdbd82493bc28478d8ab1976b0e9f"
   },
   "dart": {
-    "revision": "923fbe0d3e62340ea78422551166ce946bc05222"
+    "revision": "6da46473ab8accb13da48113f4634e729a71d335"
   },
   "devicetree": {
     "revision": "fb07e6044ffd36932c57a5be01ba5d6b8a9337bb"
@@ -141,7 +141,7 @@
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
   "elixir": {
-    "revision": "868620e19f070a5e6b0b685dc6069a611a86259a"
+    "revision": "de690fa8a028f122af46d9d2685679fe5f2d7d60"
   },
   "elm": {
     "revision": "09dbf221d7491dc8d8839616b27c21b9c025c457"
@@ -222,7 +222,7 @@
     "revision": "6b25d265c990139353e1f7f97baf84987ebb7bf0"
   },
   "glsl": {
-    "revision": "4d01f7bed6fb7abab795656db11785864e167737"
+    "revision": "31064ce53385150f894a6c72d61b94076adf640a"
   },
   "gn": {
     "revision": "bc06955bc1e3c9ff8e9b2b2a55b38b94da923c05"
@@ -321,7 +321,7 @@
     "revision": "51271e260346878e1a1aa6c506ce6a797b7c25e2"
   },
   "java": {
-    "revision": "2aae502017d3aed587ba85e3c7e0cbc138f3e07a"
+    "revision": "953abfc8bb3eb2f578e1f461edba4a9885f974b8"
   },
   "javascript": {
     "revision": "ac10a11e0c8db512f70e6b798260d2516d22454c"
@@ -333,7 +333,7 @@
     "revision": "6a6cf9e7341af32d8e2b2e24a37fbfebefc3dc55"
   },
   "json": {
-    "revision": "3b129203f4b72d532f58e72c5310c0a7db3b8e6d"
+    "revision": "80e623c2165887f9829357acfa9c0a0bab34a3cd"
   },
   "json5": {
     "revision": "c23f7a9b1ee7d45f516496b1e0e4be067264fa0d"
@@ -423,7 +423,7 @@
     "revision": "bd17c824196ce70800f64ad39cfddd1b17acc13f"
   },
   "mlir": {
-    "revision": "a89a5f2bbcf7e82e46b106138977c99d6a644db2"
+    "revision": "c2845c1c0b23e2faf6febfa72a042e5346374ebf"
   },
   "muttrc": {
     "revision": "2f918f9c887109fdf1419f98158a0cfff644af75"
@@ -603,7 +603,7 @@
     "revision": "9d86f3761bb30e8dcc81e754b81d3ce91848477e"
   },
   "rust": {
-    "revision": "886e8df3c6ac02723c05fc431a61eb8c27dc118d"
+    "revision": "b77c0d8ac28a7c143224e6ed9b4f9e4bd044ff5b"
   },
   "scala": {
     "revision": "70b4fe63c4973b04cc7bd40c6b7646d9c2430db8"
@@ -675,7 +675,7 @@
     "revision": "6909efa7179cd655f9b48123357d65ce8fc661fd"
   },
   "swift": {
-    "revision": "67ea4e9ea7302b731d392cd8b1aad7b8e79a5547"
+    "revision": "e15e9676d5fa35848cb6021c105702b2fd86bc54"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -759,7 +759,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "395d22e718b6211d05b72fe10bfb371cb7a7aff3"
+    "revision": "3cb964b9023388d2dd261070ccf772863afc3ea6"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -789,7 +789,7 @@
     "revision": "f5980f534ee64256b1e64b0a42e2864d91154a5d"
   },
   "wing": {
-    "revision": "1bfc04707486cf19476ce046960810b553659a1a"
+    "revision": "5e2b8b23b922ad525c2d9ecf546bba4d4173c7fd"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
