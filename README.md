@@ -627,7 +627,7 @@ If you want to completely override a query, you can use `:h vim.treesitter.query
 For example, to override the `injections` queries from `c` with your own:
 
 ```lua
-require("vim.treesitter.query").set("c", "injections", "(comment) @comment")
+vim.treesitter.query.set("c", "injections", "(comment) @comment")
 ```
 
 Note: when using `set`, all queries in the runtime directories will be ignored.
