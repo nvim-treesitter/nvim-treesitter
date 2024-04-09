@@ -221,6 +221,7 @@
   "else"
   "switch"
   "case"
+  "when"
 ] @keyword.conditional
 
 (ternary_expression
