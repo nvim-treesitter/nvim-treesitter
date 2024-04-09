@@ -8,17 +8,6 @@
   "with"
 ] @keyword
 
-(variable_expression
-  name: (identifier) @keyword
-  (#eq? @keyword "derivation")
-  (#set! "priority" 101))
-
-; exceptions
-(variable_expression
-  name: (identifier) @keyword.exception
-  (#any-of? @keyword.exception "abort" "throw")
-  (#set! "priority" 101))
-
 ; if/then/else
 [
   "if"
@@ -113,16 +102,16 @@
 (variable_expression
   name: (identifier) @function.builtin
   (#any-of? @function.builtin
-    ; nix eval --impure --expr 'with builtins; filter (x: !(elem x [ "abort" "derivation" "import" "throw" ]) && isFunction builtins.${x}) (attrNames builtins)'
+    ; nix eval --impure --expr 'with builtins; filter (x: !(elem x [ "abort" "import" "throw" ]) && isFunction builtins.${x}) (attrNames builtins)'
     "add" "addErrorContext" "all" "any" "appendContext" "attrNames" "attrValues" "baseNameOf"
     "bitAnd" "bitOr" "bitXor" "break" "catAttrs" "ceil" "compareVersions" "concatLists" "concatMap"
-    "concatStringsSep" "deepSeq" "derivationStrict" "dirOf" "div" "elem" "elemAt" "fetchGit"
-    "fetchMercurial" "fetchTarball" "fetchTree" "fetchurl" "filter" "filterSource" "findFile"
-    "floor" "foldl'" "fromJSON" "fromTOML" "functionArgs" "genList" "genericClosure" "getAttr"
-    "getContext" "getEnv" "getFlake" "groupBy" "hasAttr" "hasContext" "hashFile" "hashString" "head"
-    "intersectAttrs" "isAttrs" "isBool" "isFloat" "isFunction" "isInt" "isList" "isNull" "isPath"
-    "isString" "length" "lessThan" "listToAttrs" "map" "mapAttrs" "match" "mul" "parseDrvName"
-    "partition" "path" "pathExists" "placeholder" "readDir" "readFile" "removeAttrs"
+    "concatStringsSep" "deepSeq" "derivation" "derivationStrict" "dirOf" "div" "elem" "elemAt"
+    "fetchGit" "fetchMercurial" "fetchTarball" "fetchTree" "fetchurl" "filter" "filterSource"
+    "findFile" "floor" "foldl'" "fromJSON" "fromTOML" "functionArgs" "genList" "genericClosure"
+    "getAttr" "getContext" "getEnv" "getFlake" "groupBy" "hasAttr" "hasContext" "hashFile"
+    "hashString" "head" "intersectAttrs" "isAttrs" "isBool" "isFloat" "isFunction" "isInt" "isList"
+    "isNull" "isPath" "isString" "length" "lessThan" "listToAttrs" "map" "mapAttrs" "match" "mul"
+    "parseDrvName" "partition" "path" "pathExists" "placeholder" "readDir" "readFile" "removeAttrs"
     "replaceStrings" "scopedImport" "seq" "sort" "split" "splitVersion" "storePath" "stringLength"
     "sub" "substring" "tail" "toFile" "toJSON" "toPath" "toString" "toXML" "trace" "traceVerbose"
     "tryEval" "typeOf" "unsafeDiscardOutputDependency" "unsafeDiscardStringContext"
@@ -211,3 +200,8 @@
     (float_expression))
   (float_expression)
 ] @number.float
+
+; exceptions
+(variable_expression
+  name: (identifier) @keyword.exception
+  (#any-of? @keyword.exception "abort" "throw"))
