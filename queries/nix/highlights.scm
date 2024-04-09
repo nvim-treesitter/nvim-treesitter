@@ -33,11 +33,13 @@
 (comment) @comment @spell
 
 ; strings
-([
-  (string_expression)
-  (indented_string_expression)
-]
-  (#set! "priority" 99)) @string
+(string_fragment) @string
+
+(string_expression
+  "\"" @string)
+
+(indented_string_expression
+  "''" @string)
 
 ; paths and URLs
 [
