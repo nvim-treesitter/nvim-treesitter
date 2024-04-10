@@ -12,10 +12,10 @@
     "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
   },
   "arduino": {
-    "revision": "f491d929f5af4e6ede4067095c7a649716b23ee8"
+    "revision": "0dc863c1bba5413284d73372c103476a014e4c4b"
   },
   "asm": {
-    "revision": "62e49328113ff318128c640bf0cf6dd3d3d51553"
+    "revision": "afdc3d5da18d42cbb471c0f40527dbed9cace7ad"
   },
   "astro": {
     "revision": "dfa0893bdc4bdfada102043404758c66e3580568"
@@ -231,7 +231,7 @@
     "revision": "3c895f5d9c0b3a3c7e02383766b462c21913c000"
   },
   "go": {
-    "revision": "5c0024cfbb10f0a6b54ed4b14dc5acadacd19b61"
+    "revision": "eb68645662a3f7bf7fdd4bcb9531585f54c8570e"
   },
   "godot_resource": {
     "revision": "2ffb90de47417018651fc3b970e5f6b67214dc9d"
@@ -468,7 +468,7 @@
     "revision": "4b9898ccbf198602bb0dec9cd67cc1d2c0a4fad2"
   },
   "odin": {
-    "revision": "f94c590ed5263e11f1e492d1b53356f8c8459b66"
+    "revision": "b5f668ef8918aab13812ce73acd89fe191fb8c5e"
   },
   "org": {
     "revision": "64cfbc213f5a83da17632c95382a5a0a2f3357c1"
@@ -663,7 +663,7 @@
     "revision": "d819cdd5dbe455bd3c859193633c8d91c0df7c36"
   },
   "styled": {
-    "revision": "5e52758b32e02adca16bb93f95b3f9c050c72b56"
+    "revision": "c68a4572e2d6403b6e99066c9a113b43f4a07a27"
   },
   "supercollider": {
     "revision": "3b35bd0fded4423c8fb30e9585c7bacbcd0e8095"
@@ -741,7 +741,7 @@
     "revision": "43b221c0b76e77244efdaa9963e402a17c930fbc"
   },
   "typst": {
-    "revision": "1ad9724e4e4ea5ab81192e843e74cf664eacc59b"
+    "revision": "13863ddcbaa7b68ee6221cea2e3143415e64aea4"
   },
   "udev": {
     "revision": "8f58696e79092b4ad6bf197415bbd0970acf15cd"
@@ -759,7 +759,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "3cb964b9023388d2dd261070ccf772863afc3ea6"
+    "revision": "42798b5108fbc9aed968adfc7407f22a68174ad7"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -789,7 +789,7 @@
     "revision": "f5980f534ee64256b1e64b0a42e2864d91154a5d"
   },
   "wing": {
-    "revision": "5e2b8b23b922ad525c2d9ecf546bba4d4173c7fd"
+    "revision": "6bd05c6672da132d9a330b708197f2965a3f1e89"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
@@ -798,7 +798,7 @@
     "revision": "2282ad5cb8e815523e70d5c82404620bd9a1494c"
   },
   "yaml": {
-    "revision": "c9ee63b15c92656a89f7007f38a98f21c3eca81d"
+    "revision": "3975596d84650e8d8ab8ef3128b1b7f0fec324f8"
   },
   "yang": {
     "revision": "2c0e6be8dd4dcb961c345fa35c309ad4f5bd3502"
