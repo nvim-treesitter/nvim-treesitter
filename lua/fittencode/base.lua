@@ -39,7 +39,9 @@ end
 ---@param hi table
 function M.set_hi(name, hi)
   if vim.fn.has('nvim-0.10') == 1 then
-    hi.force = true
+    -- https://github.com/neovim/neovim/pull/25229
+    -- https://github.com/luozhiya/fittencode.nvim/issues/20
+    -- hi.force = true
   end
   hi.cterm = hi.cterm or {}
   vim.api.nvim_set_hl(0, name, hi)
