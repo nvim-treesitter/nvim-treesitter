@@ -106,7 +106,7 @@
   (identifier) @function.call)
 
 ; Function parameters
-(event_paramater
+(event_parameter
   name: (identifier) @variable.parameter)
 
 (parameter
@@ -160,7 +160,7 @@
 
 ; FIXME: update grammar
 ; (block_statement "unchecked" @keyword)
-(event_paramater
+(event_parameter
   "indexed" @keyword)
 
 [
