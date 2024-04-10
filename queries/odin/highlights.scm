@@ -24,6 +24,7 @@
   "map"
   "bit_set"
   "matrix"
+  "bit_field"
 ] @keyword
 
 "proc" @keyword.function
@@ -148,6 +149,10 @@
   "::")
 
 (union_declaration
+  (identifier) @type
+  "::")
+
+(bit_field_declaration
   (identifier) @type
   "::")
 

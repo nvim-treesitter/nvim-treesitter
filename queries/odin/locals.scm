@@ -30,6 +30,10 @@
   (identifier) @local.definition.type
   "::")
 
+(bit_field_declaration
+  (identifier) @local.definition.type
+  "::")
+
 (variable_declaration
   (identifier) @local.definition.var
   ":=")
