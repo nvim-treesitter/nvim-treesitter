@@ -47,10 +47,6 @@
   (#set! indent.open_delimiter "(")
   (#set! indent.close_delimiter ")"))
 
-((parameter_list) @indent.align
-  (#set! indent.open_delimiter "(")
-  (#set! indent.close_delimiter ")"))
-
 ((curly_expression) @indent.align
   (#set! indent.open_delimiter "{")
   (#set! indent.close_delimiter "}"))
