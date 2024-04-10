@@ -438,6 +438,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [wgsl](https://github.com/szebniok/tree-sitter-wgsl) (maintained by @szebniok)
 - [x] [wgsl_bevy](https://github.com/theHamsta/tree-sitter-wgsl-bevy) (maintained by @theHamsta)
 - [x] [wing](https://github.com/winglang/tree-sitter-wing) (maintained by @gshpychka, @MarkMcCulloh)
+- [x] [wit](https://github.com/liamwh/tree-sitter-wit) (maintained by @liamwh)
 - [x] [xcompose](https://github.com/ObserverOfTime/tree-sitter-xcompose) (maintained by @ObserverOfTime)
 - [x] [xml](https://github.com/tree-sitter-grammars/tree-sitter-xml) (maintained by @ObserverOfTime)
 - [x] [yaml](https://github.com/tree-sitter-grammars/tree-sitter-yaml) (maintained by @amaanq)
