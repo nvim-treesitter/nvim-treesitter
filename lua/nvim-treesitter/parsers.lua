@@ -2038,6 +2038,7 @@ list.textproto = {
     url = "https://github.com/PorterAtGoogle/tree-sitter-textproto",
     files = { "src/parser.c" },
   },
+  filetype = "pbtxt",
   maintainers = { "@Porter" },
 }
 
