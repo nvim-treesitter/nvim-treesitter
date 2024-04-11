@@ -672,7 +672,7 @@
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
   },
   "svelte": {
-    "revision": "6909efa7179cd655f9b48123357d65ce8fc661fd"
+    "revision": "2c97326cd96b7c3016c3d249e8dc244c89b4abeb"
   },
   "swift": {
     "revision": "e15e9676d5fa35848cb6021c105702b2fd86bc54"
@@ -759,7 +759,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "42798b5108fbc9aed968adfc7407f22a68174ad7"
+    "revision": "9ba1aa8c46e11f2239ab6fac3c61522362b05c9f"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -789,7 +789,7 @@
     "revision": "f5980f534ee64256b1e64b0a42e2864d91154a5d"
   },
   "wing": {
-    "revision": "6bd05c6672da132d9a330b708197f2965a3f1e89"
+    "revision": "a9cacfc7b877267aa006b3d436feae253f54ed29"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
