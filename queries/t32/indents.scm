@@ -6,6 +6,8 @@
 (if_block
   (block)) @indent.dedent
 
+(elif_block) @indent.branch
+
 (else_block) @indent.branch
 
 (else_block
