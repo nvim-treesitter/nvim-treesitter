@@ -131,6 +131,9 @@
   "dtd": {
     "revision": "2282ad5cb8e815523e70d5c82404620bd9a1494c"
   },
+  "earthfile": {
+    "revision": "2a6ab191f5f962562e495a818aa4e7f45f8a556a"
+  },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
   },
