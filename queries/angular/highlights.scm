@@ -4,7 +4,10 @@
 
 (pipe_operator) @operator
 
-(string) @string
+[
+  (string)
+  (static_member_expression)
+] @string
 
 (number) @number
 
