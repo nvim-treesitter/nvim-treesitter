@@ -2004,6 +2004,7 @@ list.t32 = {
     url = "https://gitlab.com/xasc/tree-sitter-t32.git",
     files = { "src/parser.c", "src/scanner.c" },
   },
+  filetype = "trace32",
   maintainers = { "@xasc" },
 }
 
