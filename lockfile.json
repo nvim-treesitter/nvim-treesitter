@@ -27,7 +27,7 @@
     "revision": "ba7472152d79a8c916550c80fdbfd5724d07a0c9"
   },
   "bash": {
-    "revision": "f3f26f47a126797c011c311cec9d449d855c3eab"
+    "revision": "f8fb3274f72a30896075585b32b0c54cad65c086"
   },
   "bass": {
     "revision": "c9ba4568af24cd3403029730687c0a43d1350a43"
@@ -84,7 +84,7 @@
     "revision": "f4b3cbc8b0bd4e13035d39940fef09f1392e8739"
   },
   "cpp": {
-    "revision": "d0b4e006ca3c4466f834d9a4bf709bfede13d359"
+    "revision": "f79b9d98592bcc307ace9c9a2441b04eb175a1c2"
   },
   "css": {
     "revision": "02b4ee757654b7d54fe35352fd8e53a8a4385d42"
@@ -132,7 +132,7 @@
     "revision": "2282ad5cb8e815523e70d5c82404620bd9a1494c"
   },
   "earthfile": {
-    "revision": "2a6ab191f5f962562e495a818aa4e7f45f8a556a"
+    "revision": "fda374bd4e908b3a34be097b94857e08c22b1ec3"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -420,7 +420,7 @@
     "revision": "be8866a6bcc2b563ab0de895af69daeffa88fe70"
   },
   "mermaid": {
-    "revision": "e8dac87a9f789b23a2c7ab8e55b485a2f5927b98"
+    "revision": "49442bd087901c60f019b4e34dcb6ecdc8849067"
   },
   "meson": {
     "revision": "bd17c824196ce70800f64ad39cfddd1b17acc13f"
@@ -429,7 +429,7 @@
     "revision": "c2845c1c0b23e2faf6febfa72a042e5346374ebf"
   },
   "muttrc": {
-    "revision": "2f918f9c887109fdf1419f98158a0cfff644af75"
+    "revision": "ce5b31451b3c0f90be884571b2ff4f569182f1d8"
   },
   "nasm": {
     "revision": "3bc691d2cfba44bea339a775ad496c8bc552c60d"
@@ -477,7 +477,7 @@
     "revision": "64cfbc213f5a83da17632c95382a5a0a2f3357c1"
   },
   "pascal": {
-    "revision": "9e995404ddff8319631d72d4b46552e737206912"
+    "revision": "a9ee969dec5b2e3b2ccccc5954fec04100c7619e"
   },
   "passwd": {
     "revision": "20239395eacdc2e0923a7e5683ad3605aee7b716"
@@ -564,7 +564,7 @@
     "revision": "c55f8b4dfaa32c80ddef6c0ac0e79b05cb0cbf57"
   },
   "racket": {
-    "revision": "d9858a0f607578814f2d34662ad4bc21aa37a455"
+    "revision": "171f52a8c0ed635b85cd42d1e36d82f1066a03b4"
   },
   "rasi": {
     "revision": "43196d934a9a6ab3c7093a8683efd0111bb03db1"
@@ -615,7 +615,7 @@
     "revision": "6deae0cbb458c849a4d1e2985093e9c9c32d7fd0"
   },
   "scheme": {
-    "revision": "184e7596ee0cbaef79230cae1b4ee5bb4fbad314"
+    "revision": "8f9dff3d038f09934db5ea113cebc59c74447743"
   },
   "scss": {
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
@@ -693,7 +693,7 @@
     "revision": "300f6a490e71f895e644ed2deec6920860a2e107"
   },
   "tcl": {
-    "revision": "56ad1fa6a34ba800e5495d1025a9b0fda338d5b8"
+    "revision": "8784024358c233efd0f3a6fd9e7a3c5852e628bc"
   },
   "teal": {
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
@@ -762,7 +762,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "9ba1aa8c46e11f2239ab6fac3c61522362b05c9f"
+    "revision": "78282918559ab0d8981d6366f2f1100f3102e540"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -792,7 +792,7 @@
     "revision": "f5980f534ee64256b1e64b0a42e2864d91154a5d"
   },
   "wing": {
-    "revision": "a9cacfc7b877267aa006b3d436feae253f54ed29"
+    "revision": "4e5335ae03cbf7f3914eab5bf6ffae533c2acb1d"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
