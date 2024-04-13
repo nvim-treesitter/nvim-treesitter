@@ -1303,6 +1303,14 @@ list.mlir = {
   maintainers = { "@artagnon" },
 }
 
+list.mojo = {
+  install_info = {
+    url = "https://github.com/austincummings/tree-sitter-mojo",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@austincummings" },
+}
+
 list.muttrc = {
   install_info = {
     url = "https://github.com/neomutt/tree-sitter-muttrc",

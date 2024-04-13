@@ -437,6 +437,9 @@
   "mlir": {
     "revision": "2812b6c6aa03f1ca8dba2fb1c33d14abb87809e7"
   },
+  "mojo": {
+    "revision": "414514a0f63848e835fa6517ddfd27bf55e3608e"
+  },
   "muttrc": {
     "revision": "90ef60852c410bd964cd3b954366e4c403c17314"
   },
