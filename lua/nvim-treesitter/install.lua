@@ -25,12 +25,6 @@ local uv_unlink = a.wrap(uv.fs_unlink, 2)
 
 local M = {}
 
----@class LockfileInfo
----@field revision string
-
----@type table<string, LockfileInfo>
-local lockfile = {}
-
 local max_jobs = 10
 
 local iswin = uv.os_uname().sysname == 'Windows_NT'
@@ -63,7 +57,7 @@ end
 ---@param lang string
 ---@return InstallInfo?
 local function get_parser_install_info(lang)
-  local parser_config = parsers.configs[lang]
+  local parser_config = parsers[lang]
 
   if not parser_config then
     log.error('Parser not available for language "' .. lang .. '"')
@@ -80,24 +74,6 @@ end
 
 ---@param lang string
 ---@return string?
-local function get_target_revision(lang)
-  local info = get_parser_install_info(lang)
-  if info and info.revision then
-    return info.revision
-  end
-
-  if #lockfile == 0 then
-    local filename = M.get_package_path('lockfile.json')
-    lockfile = vim.json.decode(util.read_file(filename)) --[[@as table<string, LockfileInfo>]]
-  end
-
-  if lockfile[lang] then
-    return lockfile[lang].revision
-  end
-end
-
----@param lang string
----@return string?
 local function get_installed_revision(lang)
   local lang_file = fs.joinpath(config.get_install_dir('parser-info'), lang .. '.revision')
   return util.read_file(lang_file)
@@ -106,9 +82,9 @@ end
 ---@param lang string
 ---@return boolean
 local function needs_update(lang)
-  local revision = get_target_revision(lang)
-  if revision then
-    return revision ~= get_installed_revision(lang)
+  local info = get_parser_install_info(lang)
+  if info and info.revision then
+    return info.revision ~= get_installed_revision(lang)
   end
 
   -- No revision. Check the queries link to the same place
@@ -415,7 +391,7 @@ local function install_lang0(lang, cache_dir, install_dir, generate)
 
     local project_name = 'tree-sitter-' .. lang
 
-    local revision = get_target_revision(lang)
+    local revision = repo.revision
 
     local compile_location ---@type string
     if repo.path then
@@ -525,40 +501,33 @@ local function install_lang(lang, cache_dir, install_dir, force, generate)
   return status
 end
 
+--- Reload the parser table and user modifications in case of update
+local function reload_parsers()
+  package.loaded['nvim-treesitter.parsers'] = nil
+  parsers = require('nvim-treesitter.parsers')
+  vim.api.nvim_exec_autocmds('User', { pattern = 'TSUpdate' })
+end
+
 ---@class InstallOptions
 ---@field force? boolean
 ---@field generate? boolean
----@field skip? table
 
 --- Install a parser
---- @param languages? string[]|string
+--- @param languages string[]
 --- @param options? InstallOptions
 --- @param _callback? fun()
 local function install(languages, options, _callback)
   options = options or {}
-  local force = options.force
-  local generate = options.generate
-  local skip = options.skip
 
   local cache_dir = vim.fs.normalize(fn.stdpath('cache'))
   local install_dir = config.get_install_dir('parser')
-
-  if not languages or type(languages) == 'string' then
-    languages = { languages }
-  end
-
-  if languages[1] == 'all' then
-    force = true
-  end
-
-  languages = config.norm_languages(languages, skip)
 
   local tasks = {} --- @type fun()[]
   local done = 0
   for _, lang in ipairs(languages) do
     tasks[#tasks + 1] = a.sync(function()
       a.main()
-      local status = install_lang(lang, cache_dir, install_dir, force, generate)
+      local status = install_lang(lang, cache_dir, install_dir, options.force, options.generate)
       if status ~= 'failed' then
         done = done + 1
       end
@@ -572,7 +541,20 @@ local function install(languages, options, _callback)
   end
 end
 
-M.install = a.sync(install, 2)
+M.install = a.sync(function(languages, options, _callback)
+  reload_parsers()
+  if not languages or #languages == 0 then
+    languages = 'all'
+  end
+
+  languages = config.norm_languages(languages, options and options.skip)
+
+  if languages[1] == 'all' then
+    options.force = true
+  end
+
+  install(languages, options)
+end, 2)
 
 ---@class UpdateOptions
 
@@ -580,8 +562,7 @@ M.install = a.sync(install, 2)
 ---@param _options? UpdateOptions
 ---@param _callback function
 M.update = a.sync(function(languages, _options, _callback)
-  M.lockfile = {}
-
+  reload_parsers()
   if not languages or #languages == 0 then
     languages = 'all'
   end
