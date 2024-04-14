@@ -3,7 +3,7 @@ bring cloud;
 
 class Foo {
 // <- @keyword
-//    ^   @variable
+//    ^   @type
 //        ^ @punctuation.bracket
   name: str;
 //^    @variable.member

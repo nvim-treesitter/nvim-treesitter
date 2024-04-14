@@ -95,4 +95,10 @@
   "else"
 ] @keyword.conditional
 
+[
+  "pub"
+  "protected"
+  "internal"
+] @keyword.modifier
+
 "return" @keyword.return
