@@ -1,13 +1,16 @@
-name: Update lockfile
+name: Update parsers
 
 on:
   schedule:
     - cron: "30 6 * * *"
   workflow_dispatch:
 
+env:
+  BIN_DIR: ${{ github.workspace }}/bin
+
 jobs:
-  update-lockfile:
-    name: Update lockfile
+  update-parsers:
+    name: Update parsers
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,36 +23,33 @@ jobs:
           app-id: ${{ vars.TOKEN_ID }}
           private-key: ${{ secrets.TOKEN_PRIVATE_KEY }}
 
+      - name: Add $BIN_DIR to PATH
+        run: echo "$BIN_DIR" >> $GITHUB_PATH
+
       - name: Prepare
         env:
           NVIM_TAG: nightly
         run: |
-          wget https://github.com/josephburnett/jd/releases/download/v1.7.1/jd-amd64-linux
-          mv jd-amd64-linux /tmp/jd
-          chmod +x /tmp/jd
           bash scripts/ci-install.sh
+          wget --directory-prefix="$BIN_DIR" https://github.com/JohnnyMorganz/StyLua/releases/latest/download/stylua-linux-x86_64.zip
+          (cd "$BIN_DIR"; unzip stylua*.zip)
 
       - name: Update parsers
-        env:
-          SKIP_LOCKFILE_UPDATE_FOR_LANGS: ""
-        run: |
-          cp lockfile.json /tmp/old_lockfile.json
-          nvim -l ./scripts/update-lockfile.lua
-          UPDATED_PARSERS=$(/tmp/jd -f merge /tmp/old_lockfile.json lockfile.json | jq -r 'keys | join(", ")')
-          echo "UPDATED_PARSERS=$UPDATED_PARSERS" >> $GITHUB_ENV
+        run: ./scripts/update-parsers.lua
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
+          add-paths: lua/nvim-treesitter/parsers.lua
           token: ${{ steps.app-token.outputs.token }}
           author: "nvim-treesitter-bot[bot] <157957100+nvim-treesitter-bot[bot]@users.noreply.github.com>"
-          commit-message: "bot(lockfile): update ${{ env.UPDATED_PARSERS }}"
-          title: "Update lockfile.json: ${{ env.UPDATED_PARSERS }}"
+          commit-message: "bot(parsers): update ${{ env.UPDATED_PARSERS }}"
+          title: "Update parsers: ${{ env.UPDATED_PARSERS }}"
           body: "[beep boop](https://github.com/peter-evans/create-pull-request)"
-          branch: update-lockfile-pr
+          branch: update-parsers-pr
           base: ${{ github.head_ref }}
 
       - name: Enable Pull Request Automerge
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
-        run: gh pr merge --rebase --auto update-lockfile-pr
+        run: gh pr merge --rebase --auto update-parsers-pr
