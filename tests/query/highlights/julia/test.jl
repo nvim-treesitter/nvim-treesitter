@@ -1,6 +1,6 @@
 function load_data(::Symbol; ::Int) :: Tuple
 # <- @keyword.function
-#        ^ @function
+#        ^ @function.call
 #                 ^ @punctuation.bracket
 #                  ^^ @punctuation.delimiter
 #                    ^ @type.builtin

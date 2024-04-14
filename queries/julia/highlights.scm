@@ -4,14 +4,6 @@
 ; ;; If you want type highlighting based on Julia naming conventions (this might collide with mathematical notation)
 ; ((identifier) @type
 ;   (match? @type "^[A-Z][^_]"))  ; exception: Highlight `A_foo` sort of identifiers as variables
-(macro_identifier) @function.macro
-
-(macro_identifier
-  (identifier) @function.macro) ; for any one using the variable highlight
-
-(macro_definition
-  name: (identifier) @function.macro)
-
 (quote_expression
   ":" @string.special.symbol
   [
@@ -21,22 +13,6 @@
 
 (field_expression
   (identifier) @variable.member .)
-
-; Function names
-; Definitions
-(function_definition
-  name: (identifier) @function)
-
-(short_function_definition
-  name: (identifier) @function)
-
-(function_definition
-  name: (field_expression
-    (identifier) @function .))
-
-(short_function_definition
-  name: (field_expression
-    (identifier) @function .))
 
 ; calls
 (call_expression
@@ -59,6 +35,17 @@
   (identifier) @function.call
   (#any-of? @_pipe "|>" ".|>"))
 
+(macro_identifier) @function.macro
+
+(macro_identifier
+  (identifier) @function.macro) ; for any one using the variable highlight
+
+(macro_definition
+  (signature
+    (call_expression
+      .
+      (identifier) @function.macro)))
+
 ; Builtins
 ((identifier) @function.builtin
   (#any-of? @function.builtin
@@ -68,25 +55,6 @@
     "donotdelete" "fieldtype" "get_binding_type" "getfield" "ifelse" "invoke" "isa" "isdefined"
     "modifyfield!" "nfields" "replacefield!" "set_binding_type!" "setfield!" "sizeof" "svec"
     "swapfield!" "throw" "tuple" "typeassert" "typeof"))
-
-; Parameters
-(parameter_list
-  (identifier) @variable.parameter)
-
-(optional_parameter
-  .
-  (identifier) @variable.parameter)
-
-(slurp_parameter
-  (identifier) @variable.parameter)
-
-(typed_parameter
-  parameter: (identifier)? @variable.parameter
-  type: (_) @type)
-
-(function_expression
-  .
-  (identifier) @variable.parameter) ; Single parameter arrow functions
 
 ; Types
 ; Definitions
@@ -118,11 +86,8 @@
 (typed_expression
   (identifier) @type .)
 
-(function_definition
-  return_type: (identifier) @type)
-
-(short_function_definition
-  return_type: (identifier) @type)
+(unary_typed_expression
+  (identifier) @type .)
 
 (where_clause
   (identifier) @type)
@@ -387,7 +352,6 @@
     (abstract_definition)
     (struct_definition)
     (function_definition)
-    (short_function_definition)
     (assignment)
     (const_statement)
   ])

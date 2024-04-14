@@ -39,35 +39,18 @@
 (import_statement
   (identifier) @local.definition.import)
 
-; Parameters
-(parameter_list
-  (identifier) @local.definition.parameter)
-
-(optional_parameter
-  .
-  (identifier) @local.definition.parameter)
-
-(slurp_parameter
-  (identifier) @local.definition.parameter)
-
-(typed_parameter
-  parameter: (identifier) @local.definition.parameter
-  (_))
-
-; Single parameter arrow function
-(function_expression
-  .
-  (identifier) @local.definition.parameter)
-
 ; Function/macro definitions
 (function_definition
-  name: (identifier) @local.definition.function) @local.scope
-
-(short_function_definition
-  name: (identifier) @local.definition.function) @local.scope
+  (signature
+    (call_expression
+      .
+      (identifier) @local.definition.function))) @local.scope
 
 (macro_definition
-  name: (identifier) @local.definition.macro) @local.scope
+  (signature
+    (call_expression
+      .
+      (identifier) @local.definition.function))) @local.scope
 
 (identifier) @local.reference
 
