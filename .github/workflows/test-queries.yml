@@ -41,7 +41,7 @@ jobs:
         include:
           - os: windows-latest
             cc: cl
-            nvim_tag: stable
+            nvim_tag: nightly
 
           - os: ubuntu-latest
             cc: gcc
