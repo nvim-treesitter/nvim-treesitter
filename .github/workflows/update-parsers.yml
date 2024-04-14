@@ -1,0 +1,55 @@
+name: Update parsers
+
+on:
+  schedule:
+    - cron: "30 6 * * *"
+  workflow_dispatch:
+
+env:
+  BIN_DIR: ${{ github.workspace }}/bin
+
+jobs:
+  update-parsers:
+    name: Update parsers
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/create-github-app-token@v2
+        id: app-token
+        with:
+          app-id: ${{ vars.TOKEN_ID }}
+          private-key: ${{ secrets.TOKEN_PRIVATE_KEY }}
+
+      - name: Add $BIN_DIR to PATH
+        run: echo "$BIN_DIR" >> $GITHUB_PATH
+
+      - name: Prepare
+        env:
+          NVIM_TAG: nightly
+        run: |
+          bash scripts/ci-install.sh
+          wget --directory-prefix="$BIN_DIR" https://github.com/JohnnyMorganz/StyLua/releases/latest/download/stylua-linux-x86_64.zip
+          (cd "$BIN_DIR"; unzip stylua*.zip)
+
+      - name: Update parsers
+        run: ./scripts/update-parsers.lua
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          add-paths: lua/nvim-treesitter/parsers.lua
+          token: ${{ steps.app-token.outputs.token }}
+          sign-commits: true
+          commit-message: "bot(parsers): update ${{ env.UPDATED_PARSERS }}"
+          title: "Update parsers: ${{ env.UPDATED_PARSERS }}"
+          body: "[beep boop](https://github.com/peter-evans/create-pull-request)"
+          branch: update-parsers-pr
+          base: ${{ github.head_ref }}
+
+      - name: Enable Pull Request Automerge
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: gh pr merge --rebase --auto update-parsers-pr
