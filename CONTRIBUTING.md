@@ -13,17 +13,17 @@ Depending on which part of the plugin you want to contribute to, please read the
 
 To add a new parser, edit the following files:
 
-1. In `lua/parsers.lua`, add an entry to the `M.configs` table of the following form:
+1. In `lua/parsers.lua`, add an entry to the returned table of the following form:
 
 ```lua
 zimbu = {
   install_info = {
-    url = 'https://github.com/zimbulang/tree-sitter-zimbu', -- local path or git repo
+    url = 'https://github.com/zimbulang/tree-sitter-zimbu', -- git repo; use `path` for local path
     files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c
     -- optional entries:
     branch = 'develop', -- only needed if different from default branch
     location = 'parser', -- only needed if the parser is in subdirectory of a "monorepo"
-    revision = 'v2.1', -- tag or commit hash; bypasses automated updates
+    revision = 'v2.1', -- tag or commit hash, will be updated automatically
     generate = true, -- only needed if repo does not contain pre-generated src/parser.c
     generate_from_json = true, -- only needed if grammar.js has npm-installed dependencies
   },
@@ -31,21 +31,13 @@ zimbu = {
   tier = 3, -- community-contributed parser
   -- optional entries:
   requires = { 'vim' }, -- if the queries inherit from another language
-  readme_note = "an example language", -- if the 
+  readme_note = "an example language",
 }
 ```
 
 **Note:** The "maintainers" here refers to the person maintaining the **queries** in `nvim-treesitter`, not the parser maintainers (who likely don't use Neovim). The maintainers' duty is to review issues and PRs related to the query and to keep them updated with respect to parser changes.
 
-2. In `lockfile.json`, add an entry for the current commit your queries are compatible with:
-
-```json
-  "zimbu": {
-    "revision": "0d08703e4c3f426ec61695d7617415fff97029bd"
-  },
-```
-
-3. If the parser name is not the same as the Vim filetype, add an entry to the `filetypes` table in `plugin/filetypes.lua`:
+2. If the parser name is not the same as the Vim filetype, add an entry to the `filetypes` table in `plugin/filetypes.lua`:
 
 ```lua
   zimbu = { 'zu' },
