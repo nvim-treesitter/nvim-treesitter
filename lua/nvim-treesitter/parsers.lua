@@ -2297,10 +2297,8 @@ list.wgsl_bevy = {
 
 list.wing = {
   install_info = {
-    url = "https://github.com/winglang/wing",
+    url = "https://github.com/winglang/tree-sitter-wing",
     files = { "src/parser.c", "src/scanner.c" },
-    location = "libs/tree-sitter-wing",
-    requires_generate_from_grammar = true,
   },
   maintainers = { "@gshpychka", "@MarkMcCulloh" },
   experimental = true,
