@@ -4,13 +4,16 @@ This document lists the planned and finished changes in this rewrite towards [Nv
 
 ## TODO
 
-- [ ] **`locals.lua`:** move to `nvim-treesitter-refactor`?
-- [ ] **`parsers.lua`:** include revision? (<https://stackoverflow.com/questions/64260981>)
-- [ ] **update-lockfile:** allow specifying version in addition to commit hash (for Tier 1)
+- [ ] **`parsers.lua`:** include revision (serialization at home: `vim.inspect`)
+  - rename `parsers` to `languages`
+  - rename `install_info` to `parser`
+
+- [ ] **`parsers.lua`:** allow specifying version in addition to commit hash (for Tier 1)
 - [ ] **update-lockfile:** one commit per parser/tier?
 - [ ] **tests:** fix, update, extend (cover all Tier 1 languages)
 - [ ] **documentation:** consolidate, autogenerate?
 - [ ] **documentation:** migration guide
+- [ ] **`locals.lua`:** move to `nvim-treesitter-refactor`?
 - [ ] **textobjects:** include simple(!) function, queries? (check Helix)
 - [ ] **downstream:** adapt to breaking changes (`nvim-treesitter-refactor`)
 
