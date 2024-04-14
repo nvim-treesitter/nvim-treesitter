@@ -64,7 +64,7 @@
   mod1 = {
     type = "lua";
     config = ''
-      require('nvim-treesitter.configs').setup()
+      require('nvim-treesitter.config').setup()
     '';
   };
 }
