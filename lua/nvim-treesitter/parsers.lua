@@ -2301,7 +2301,6 @@ list.wing = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@gshpychka", "@MarkMcCulloh" },
-  experimental = true,
 }
 
 list.xcompose = {
