@@ -55,11 +55,8 @@ jobs:
       ALLOWED_INSTALLATION_FAILURES: ${{ matrix.os == 'windows-latest' && 'rnoweb' }}
     steps:
       - uses: actions/checkout@v4
+      - uses: tree-sitter/setup-action/cli@v1
       - uses: ilammy/msvc-dev-cmd@v1
-      - uses: actions/setup-node@v4
-
-      - name: Install tree-sitter CLI
-        run: npm i -g tree-sitter-cli
 
       - name: Install and prepare Neovim
         env:

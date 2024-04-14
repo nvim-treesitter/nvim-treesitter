@@ -27,10 +27,7 @@ jobs:
       CC: ${{ matrix.cc }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-
-      - name: Install tree-sitter CLI
-        run: npm i -g tree-sitter-cli
+      - uses: tree-sitter/setup-action/cli@v1
 
       - name: Test Dependencies
         run: |
