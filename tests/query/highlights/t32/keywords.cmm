@@ -41,7 +41,9 @@ ELSE
     IF !&pass
         GOTO fail
 ;            ^ @label
-    ELSE
+    ELSE IF &debug
+;   ^ @keyword.conditional
+;        ^ @keyword.conditional
     (
         GOSUB start_debug
 ;             ^ @function.call

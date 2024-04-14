@@ -208,6 +208,9 @@
 (if_block
   command: (identifier) @keyword.conditional)
 
+(elif_block
+  command: (identifier) @keyword.conditional)
+
 (else_block
   command: (identifier) @keyword.conditional)
 
