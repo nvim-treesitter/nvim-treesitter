@@ -91,6 +91,7 @@ function M.select_compiler_args(repo, compiler)
       "/Isrc",
       repo.files,
       "-Os",
+      "/utf-8",
       "/LD",
     }
   elseif string.match(compiler, "zig$") or string.match(compiler, "zig.exe$") then
