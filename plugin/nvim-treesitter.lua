@@ -11,7 +11,7 @@ local function complete_available_parsers(arglead)
     function(v)
       return v:find(arglead) ~= nil
     end,
-    require('nvim-treesitter.parsers').get_available()
+    require('nvim-treesitter.config').get_available()
   )
 end
 
