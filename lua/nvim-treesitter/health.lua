@@ -134,7 +134,7 @@ function M.check()
   health.start('Installed languages' .. string.rep(' ', 5) .. 'H L F I J')
   local languages = config.installed_parsers()
   for _, lang in pairs(languages) do
-    local parser = parsers.configs[lang]
+    local parser = parsers[lang]
     local out = lang .. string.rep(' ', 22 - #lang)
     if parser.install_info then
       for _, query_group in pairs(M.bundled_queries) do
