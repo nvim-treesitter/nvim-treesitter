@@ -6,7 +6,7 @@ vim.opt.runtimepath:append('.')
 vim.fn.mkdir(vim.fn.stdpath('cache'), 'p')
 
 local done = false
-require('nvim-treesitter.install').install('all', {}, function()
+require('nvim-treesitter.install').install('all', { force = true }, function()
   done = true
 end)
 
