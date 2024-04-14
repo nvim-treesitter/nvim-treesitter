@@ -2,12 +2,13 @@
 vim.opt.runtimepath:append('.')
 local util = require('nvim-treesitter.util')
 local parsers = require('nvim-treesitter.parsers')
+local tiers = require('nvim-treesitter.config').tiers
 ---@class Parser
 ---@field name string
 ---@field parser ParserInfo
 
 local sorted_parsers = {}
-for k, v in pairs(parsers.configs) do
+for k, v in pairs(parsers) do
   table.insert(sorted_parsers, { name = k, parser = v })
 end
 table.sort(sorted_parsers, function(a, b)
@@ -45,7 +46,7 @@ for _, v in ipairs(sorted_parsers) do
   end
 
   -- tier
-  generated_text = generated_text .. (p.tier and parsers.tiers[p.tier] or '') .. ' | '
+  generated_text = generated_text .. (p.tier and tiers[p.tier] or '') .. ' | '
 
   -- queries
   generated_text = generated_text
