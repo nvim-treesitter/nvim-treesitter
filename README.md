@@ -126,28 +126,40 @@ These queries can be used to look up definitions and references to identifiers i
 
 If you have a parser that is not on the list of supported languages (either as a repository on Github or in a local directory), you can add it manually for use by `nvim-treesitter` as follows:
 
-1. Clone the repository or [create a new project](https://tree-sitter.github.io/tree-sitter/creating-parsers#project-setup) in, say, `~/projects/tree-sitter-zimbu`. Make sure that the `tree-sitter-cli` executable is installed and in your path; see <https://tree-sitter.github.io/tree-sitter/creating-parsers#installation> for installation instructions.
-2. Run `tree-sitter generate` in this directory (followed by `tree-sitter test` for good measure).
-3. Add the following snippet to your `init.lua`:
+1. Add the following snippet in a `User TSUpdate` autocommand:
 
 ```lua
-local parser_config = require('nvim-treesitter.parsers').configs
-parser_config.zimbu = {
-  install_info = {
-    url = '~/projects/tree-sitter-zimbu', -- local path or git repo
-    files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c
-    -- optional entries:
-    branch = 'develop', -- only needed if different from default branch
-    location= 'parser', -- only needed if the parser is in subdirectory of a "monorepo"
-    generate = true, -- only needed if repo does not contain pre-generated src/parser.c
-    generate_from_json = true, -- only needed if parser has npm dependencies
-  },
-}
+vim.api.nvim_create_autocmd('User', { pattern = 'TSUpdate',
+callback = function()
+  require('nvim-treesitter.parsers').zimbu = {
+    install_info = {
+      url = 'https://github.com/zimbulang/tree-sitter-zimbu',
+      files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c
+      revision = <sha>, -- commit hash for revision to check out; HEAD if missing
+      -- optional entries:
+      branch = 'develop', -- only needed if different from default branch
+      location = 'parser', -- only needed if the parser is in subdirectory of a "monorepo"
+      generate = true, -- only needed if repo does not contain pre-generated src/parser.c
+      generate_from_json = true, -- only needed if parser has npm dependencies
+    },
+  }
+end})
 ```
-If you use a git repository for your parser and want to use a specific version, you can set the `revision` key
-in the `install_info` table for you parser config.
 
-4. If the parser name differs from the filetype(s) used by Neovim, you need to register the parser via
+Alternatively, if you have a local checkout, you can instead use
+```lua
+    install_info = {
+      path = '~/parsers/tree-sitter-zimbu',
+      files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c
+      -- optional entries
+      location = 'parser', -- only needed if the parser is in subdirectory of a "monorepo"
+      generate = true, -- only needed if repo does not contain pre-generated src/parser.c
+      generate_from_json = true, -- only needed if parser has npm dependencies
+    },
+```
+This will always use the state of the directory as-is (i.e., `branch` and `revision` will be ignored).
+
+2. If the parser name differs from the filetype(s) used by Neovim, you need to register the parser via
 
 ```lua
 vim.treesitter.language.register('zimbu', { 'zu' })
@@ -155,12 +167,19 @@ vim.treesitter.language.register('zimbu', { 'zu' })
 
 If Neovim does not detect your language's filetype by default, you can use [Neovim's `vim.filetype.add()`](<https://neovim.io/doc/user/lua.html#vim.filetype.add()>) to add a custom detection rule.
 
-5. Start `nvim` and `:TSInstall zimbu`.
-
-You can also skip step 2 and use `:TSInstallFromGrammar zimbu` to install directly from a `grammar.js` in the top-level directory specified by `url`.
-Once the parser is installed, you can update it (from the latest revision of the `main` branch if `url` is a Github repository) with `:TSUpdate zimbu`.
+3. Start `nvim` and `:TSInstall zimbu`.
 
 **Note:** Parsers using external scanner need to be written in C. C++ scanners are no longer supported.
+
+### Modifying parsers
+
+You can use the same approach for overriding parser information. E.g., if you always want to generate the `lua` parser from grammar, add
+```lua
+vim.api.nvim_create_autocmd('User', { pattern = 'TSUpdate',
+callback = function()
+  require('nvim-treesitter.parsers').lua.install_info.generate = true
+end})
+```
 
 ## Adding queries
 
@@ -231,7 +250,7 @@ require("nvim-treesitter.install").prefer_git = true
 In your Lua config:
 
 ```lua
-for _, config in pairs(require("nvim-treesitter.parsers").configs) do
+for _, config in pairs(require("nvim-treesitter.parsers")) do
   config.install_info.url = config.install_info.url:gsub("https://github.com/", "something else")
 end
 
