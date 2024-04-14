@@ -37,7 +37,7 @@ To get a list of supported languages
 To install supported parsers and queries, put this in your `init.lua` file:
 
 >lua
-  require'nvim-treesitter.configs'.setup {
+  require'nvim-treesitter.config'.setup {
     -- A directory to install the parsers and queries to.
     -- Defaults to the `stdpath('data')/site` dir.
     install_dir = "/some/path/to/store/parsers",
