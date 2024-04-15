@@ -2303,6 +2303,14 @@ list.wing = {
   maintainers = { "@gshpychka", "@MarkMcCulloh" },
 }
 
+list.wit = {
+  install_info = {
+    url = "https://github.com/liamwh/tree-sitter-wit",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@liamwh" },
+}
+
 list.xcompose = {
   install_info = {
     url = "https://github.com/ObserverOfTime/tree-sitter-xcompose",
