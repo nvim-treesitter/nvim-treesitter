@@ -84,7 +84,7 @@
     "revision": "f4b3cbc8b0bd4e13035d39940fef09f1392e8739"
   },
   "cpp": {
-    "revision": "f79b9d98592bcc307ace9c9a2441b04eb175a1c2"
+    "revision": "72fd00128f1c38319670cbf4bcedbba0dc849d96"
   },
   "css": {
     "revision": "02b4ee757654b7d54fe35352fd8e53a8a4385d42"
@@ -93,7 +93,7 @@
     "revision": "cda48a5e890b30619da5bc3ff55be1b1d3d08c8d"
   },
   "cuda": {
-    "revision": "322f288884a035eded1fbbdcb19829eb3abf6d1d"
+    "revision": "50a28f4600c559e3d19a1825e854dfe6dcac1d49"
   },
   "cue": {
     "revision": "8a5f273bfa281c66354da562f2307c2d394b6c81"
@@ -225,7 +225,7 @@
     "revision": "6b25d265c990139353e1f7f97baf84987ebb7bf0"
   },
   "glsl": {
-    "revision": "7bc5d2decba04ca787cb5305f5ede066d77ac82f"
+    "revision": "e7817c982e0e921c5ee89a1e0283121bb5cc5e01"
   },
   "gn": {
     "revision": "bc06955bc1e3c9ff8e9b2b2a55b38b94da923c05"
@@ -288,7 +288,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "4d1e3f4a1515c257ad5cc2553347d2dc23537b09"
+    "revision": "d200375a29b24764b78d7051df0024ed7c2f1ab0"
   },
   "hlsplaylist": {
     "revision": "5305c061efce2841942dbbac6f9a5b21e3e4eb35"
@@ -306,7 +306,7 @@
     "revision": "ea71012d3fe14dd0b69f36be4f96bdfe9155ebae"
   },
   "http": {
-    "revision": "a71c919cef9431cf0786d70bc69bd8b0f86208f4"
+    "revision": "a10b13eb63ab978969585d9c0fa80e77a9e82872"
   },
   "hurl": {
     "revision": "ad705af8c44c737bdb965fc081329c50716d2d03"
@@ -348,7 +348,7 @@
     "revision": "d34615fa12cc1d1cfc1f1f1a80acc9db80ee4596"
   },
   "julia": {
-    "revision": "c0acda09c0c70d4515402f9ebb1ad369fa0afabf"
+    "revision": "0a80d33aca49dd257625ab25ef3a506e2b99a554"
   },
   "just": {
     "revision": "6c2f018ab1d90946c0ce029bb2f7d57f56895dff"
@@ -450,7 +450,7 @@
     "revision": "b3cda619248e7dd0f216088bd152f59ce0bbe488"
   },
   "norg": {
-    "revision": "a53313574fdc34bf336101c94ef2ed7fe98d4991"
+    "revision": "ceb44e4cdb58fbeea52301835bdd461817ddb57e"
   },
   "nqc": {
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
@@ -621,7 +621,7 @@
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
   },
   "slang": {
-    "revision": "6d2e955ee54084896461a307c1fdba0bb2024c86"
+    "revision": "b950ddf54c564fec0efead602268b6e0d3e5f26e"
   },
   "slint": {
     "revision": "f42fa5a44e8477f0443fcd3312a828ccba4f481e"
@@ -753,7 +753,7 @@
     "revision": "debd26fed283d80456ebafa33a06957b0c52e451"
   },
   "unison": {
-    "revision": "feaae3e630e7f0208bba6fc60857a45457cc99e8"
+    "revision": "d2c875ad758885429a4d91f471a9590ab7c47aee"
   },
   "usd": {
     "revision": "ab8c30bde2df0e58c4b3f01f220fb0125ecb57a7"
@@ -762,7 +762,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "78282918559ab0d8981d6366f2f1100f3102e540"
+    "revision": "e8cbd4d61606186061967a80a30f2f3b5b1b5025"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
