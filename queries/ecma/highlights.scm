@@ -333,11 +333,9 @@
 ] @keyword.repeat
 
 [
-  "break"
   "class"
   "const"
   "debugger"
-  "export"
   "extends"
   "get"
   "let"
@@ -345,8 +343,14 @@
   "static"
   "target"
   "var"
-  "with"
 ] @keyword
+
+[
+  "break"
+  "with"
+] @keyword.control
+
+"export" @keyword.control.module
 
 [
   "async"
