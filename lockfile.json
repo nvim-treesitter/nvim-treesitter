@@ -111,7 +111,7 @@
     "revision": "affb6ee38d629c9296749767ab832d69bb0d9ea8"
   },
   "diff": {
-    "revision": "c165725c28e69b36c5799ff0e458713a844f1aaf"
+    "revision": "710e881127512bda8157096e26c1f3e91702823a"
   },
   "disassembly": {
     "revision": "0229c0211dba909c5d45129ac784a3f4d49c243a"
@@ -129,7 +129,7 @@
     "revision": "a750758da90955c86fcc22fcbb6fa44a7d009865"
   },
   "dtd": {
-    "revision": "00363c3d8279adc7c729ac25f68179d1f8e91c60"
+    "revision": "96beba9f3e4156aaae64bb86997503b1ceb1283d"
   },
   "earthfile": {
     "revision": "fda374bd4e908b3a34be097b94857e08c22b1ec3"
@@ -609,7 +609,7 @@
     "revision": "b77c0d8ac28a7c143224e6ed9b4f9e4bd044ff5b"
   },
   "scala": {
-    "revision": "70b4fe63c4973b04cc7bd40c6b7646d9c2430db8"
+    "revision": "d3eb6b2382f3051cca164f4cc41cdb5bf0876e10"
   },
   "scfg": {
     "revision": "6deae0cbb458c849a4d1e2985093e9c9c32d7fd0"
@@ -624,7 +624,7 @@
     "revision": "b950ddf54c564fec0efead602268b6e0d3e5f26e"
   },
   "slint": {
-    "revision": "f42fa5a44e8477f0443fcd3312a828ccba4f481e"
+    "revision": "cce8df0a04e2db04ba7b5896a99139e4aac212a5"
   },
   "smali": {
     "revision": "5ae51e15c4d1ac93cba6127caf3d1f0a072c140c"
@@ -780,7 +780,7 @@
     "revision": "052279cd5e1d73b075640c64cef97e7bdcd32611"
   },
   "vimdoc": {
-    "revision": "a75a932449675bbd260213a95f4cd8b3193286f0"
+    "revision": "0b36856db88680f662cc67545c82af4ce83bf158"
   },
   "vue": {
     "revision": "22bdfa6c9fc0f5ffa44c6e938ec46869ac8a99ff"
@@ -792,16 +792,16 @@
     "revision": "f5980f534ee64256b1e64b0a42e2864d91154a5d"
   },
   "wing": {
-    "revision": "5b6c2a5818a602557778d1bfc265d016cafa0712"
+    "revision": "d66dd90031f96ae05abec9cf8248cd7f70650f5f"
   },
   "wit": {
-    "revision": "39e81d6b4b0d811a62bcde46c876bf32e1475b5b"
+    "revision": "08c217866df739855d1cb16c3f62dad1fdfbb897"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
   },
   "xml": {
-    "revision": "00363c3d8279adc7c729ac25f68179d1f8e91c60"
+    "revision": "96beba9f3e4156aaae64bb86997503b1ceb1283d"
   },
   "yaml": {
     "revision": "ee093118211be521742b9866a8ed8ce6d87c7a94"
