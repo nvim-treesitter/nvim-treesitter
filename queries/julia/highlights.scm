@@ -215,6 +215,9 @@
 (for_clause
   "for" @keyword.repeat)
 
+(for_binding
+  "outer" @keyword.repeat)
+
 [
   (break_statement)
   (continue_statement)
