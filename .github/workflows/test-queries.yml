@@ -83,6 +83,12 @@ jobs:
       - name: Post compile Windows
         if: runner.os == 'Windows'
         run: cp -r ~/AppData/Local/nvim/pack/nvim-treesitter/start/nvim-treesitter/parser/* parser
-
+        
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: parsers-${{ matrix.os }}-${{ matrix.cc }}-${{ matrix.nvim_tag }}-x86_64
+          path: parser/*
+       
       - name: Check query files
         run: $NVIM -l scripts/check-queries.lua
