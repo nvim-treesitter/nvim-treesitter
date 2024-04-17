@@ -9,6 +9,7 @@ jobs:
   update-lockfile:
     name: Update lockfile
     runs-on: ubuntu-latest
+    if: github.repository == 'nvim-treesitter/nvim-treesitter'
     steps:
       - uses: actions/checkout@v4
         with:
