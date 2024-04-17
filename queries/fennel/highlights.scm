@@ -91,6 +91,16 @@
       member: (symbol_fragment) @function .)
   ])
 
+; NOTE: The macro name is highlighted as @variable because it
+; gives a nicer contrast instead of everything being the same
+; color. Rust queries use this workaround too for `macro_rules!`.
+(macro_form
+  name: [
+    (symbol) @variable
+    (multi_symbol
+      member: (symbol_fragment) @variable .)
+  ])
+
 ((symbol) @variable.parameter
   (#any-of? @variable.parameter "$" "$..."))
 
@@ -148,13 +158,10 @@
 (case_catch
   call: (symbol) @keyword)
 
-(list
-  call: (symbol) @keyword.import
-  (#eq? @keyword.import "import-macros")
-  .
-  (table
-    (table_pair
-      value: (symbol) @function.macro)))
+(import_macros_form
+  imports: (table_binding
+    (table_binding_pair
+      value: (symbol_binding) @function.macro)))
 
 ; TODO: Highlight builtin methods (`table.unpack`, etc) as @function.builtin
 ([

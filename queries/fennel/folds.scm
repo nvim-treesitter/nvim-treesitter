@@ -39,6 +39,8 @@
   (faccumulate_form)
   (case_form)
   (match_form)
+  (case_try_form)
+  (match_try_form)
 ] @fold
 
 ; reader macros
