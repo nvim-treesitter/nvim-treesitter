@@ -24,8 +24,8 @@ zimbu = {
     branch = 'develop', -- only needed if different from default branch
     location = 'parser', -- only needed if the parser is in subdirectory of a "monorepo"
     revision = 'v2.1', -- tag or commit hash; bypasses automated updates
-    requires_generate_from_grammar = true, -- only needed if repo does not contain pre-generated src/parser.c
-    generate_requires_npm = true, -- only needed if parser has npm dependencies
+    generate = true, -- only needed if repo does not contain pre-generated src/parser.c
+    generate_from_json = true, -- only needed if grammar.js has npm-installed dependencies
   },
   maintainers = { '@me' }, -- the _query_ maintainers
   tier = 3, -- community-contributed parser
