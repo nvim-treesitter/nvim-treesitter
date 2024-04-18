@@ -132,7 +132,7 @@
     "revision": "96beba9f3e4156aaae64bb86997503b1ceb1283d"
   },
   "earthfile": {
-    "revision": "a079e6c472eeedd6b9a1e03ca0b6c82cd6a112a4"
+    "revision": "cc888b4b02a29013db3a7183f5e33190c1435493"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -291,7 +291,7 @@
     "revision": "d200375a29b24764b78d7051df0024ed7c2f1ab0"
   },
   "hlsplaylist": {
-    "revision": "5305c061efce2841942dbbac6f9a5b21e3e4eb35"
+    "revision": "3e65f652b9dea8d38f9a44b5b0898a51c9247eb8"
   },
   "hocon": {
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
@@ -429,7 +429,7 @@
     "revision": "c2845c1c0b23e2faf6febfa72a042e5346374ebf"
   },
   "muttrc": {
-    "revision": "ce5b31451b3c0f90be884571b2ff4f569182f1d8"
+    "revision": "1a3d3c98de86689f2bb1e59c8db8067c6784aaed"
   },
   "nasm": {
     "revision": "3bc691d2cfba44bea339a775ad496c8bc552c60d"
@@ -438,7 +438,7 @@
     "revision": "58baf89db8fdae54a84bcf22c80ff10ee3f929ed"
   },
   "nim": {
-    "revision": "f5cec6a841b585e4e7388a120ded07e60ae19c43"
+    "revision": "961c2798cec9250c44f7d7225ddb33d47d25856a"
   },
   "nim_format_string": {
     "revision": "d45f75022d147cda056e98bfba68222c9c8eca3a"
@@ -450,7 +450,7 @@
     "revision": "b3cda619248e7dd0f216088bd152f59ce0bbe488"
   },
   "norg": {
-    "revision": "dbe0bf559b379564bf63ffc139524fea0a983a95"
+    "revision": "8ef790631cba8110c17361b3d0080326a7c86dd5"
   },
   "nqc": {
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
@@ -717,7 +717,7 @@
     "revision": "3c8ce503563ea04ba1cc07c468ed064b1974c3ba"
   },
   "tmux": {
-    "revision": "7499587642a46ee156e1bb58851904ac750dcc7c"
+    "revision": "1415bd8b5bb69c230947663deceb62c2a0ae4155"
   },
   "todotxt": {
     "revision": "3937c5cd105ec4127448651a21aef45f52d19609"
@@ -753,7 +753,7 @@
     "revision": "debd26fed283d80456ebafa33a06957b0c52e451"
   },
   "unison": {
-    "revision": "d2c875ad758885429a4d91f471a9590ab7c47aee"
+    "revision": "f34fbf337d4c8658e9a7d890d352b79ba2548a86"
   },
   "usd": {
     "revision": "ab8c30bde2df0e58c4b3f01f220fb0125ecb57a7"
@@ -762,7 +762,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "80b4a87c3b2f2ce572ce87cbe74dbb8de38ab8b1"
+    "revision": "0f97daa1395e0b7ec91b3411c976c8a04d04f483"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -813,7 +813,7 @@
     "revision": "c348825d3f86dec71dee0e1223c6bd73114e3579"
   },
   "zathurarc": {
-    "revision": "aad4302fb5a5176004b688fcab4ae7dcf36bf49a"
+    "revision": "09b837dc8f7445fd86e1245c23b1a7804229edd4"
   },
   "zig": {
     "revision": "0d08703e4c3f426ec61695d7617415fff97029bd"
