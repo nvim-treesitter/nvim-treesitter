@@ -37,16 +37,8 @@ local function install_health()
     )
   end
 
-  if vim.fn.executable('node') == 0 then
-    health.warn('`node` executable not found (only needed for `:TSInstallFromGrammar`.')
-  else
-    local result = assert(vim.system({ 'node', '--version' }):wait().stdout)
-    local version = vim.split(result, '\n')[1]
-    health.ok('`node` found ' .. version .. ' (only needed for `:TSInstallFromGrammar`)')
-  end
-
   if vim.fn.executable('git') == 0 then
-    health.error(
+    health.warn(
       '`git` executable not found.',
       'Install it with your package manager and check that your `$PATH` is set correctly.'
     )
