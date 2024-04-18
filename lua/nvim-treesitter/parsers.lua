@@ -4,8 +4,8 @@
 ---@field branch? string
 ---@field revision? string
 ---@field files string[]
----@field generate_requires_npm? boolean
 ---@field generate? boolean
+---@field generate_from_json? boolean
 ---@field location? string
 
 ---@class ParserInfo
@@ -36,18 +36,18 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@Decodetalkers' },
-    tier = 3,
+    tier = 2,
   },
 
   angular = {
     install_info = {
       url = 'https://github.com/dlvandenberg/tree-sitter-angular',
       files = { 'src/parser.c', 'src/scanner.c' },
-      generate_requires_npm = true,
+      generate_from_json = true,
     },
     maintainers = { '@dlvandenberg' },
     requires = { 'html', 'html_tags' },
-    tier = 4,
+    tier = 3,
   },
 
   apex = {
@@ -62,8 +62,9 @@ M.configs = {
 
   arduino = {
     install_info = {
-      url = 'https://github.com/ObserverOfTime/tree-sitter-arduino',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-arduino',
       files = { 'src/parser.c', 'src/scanner.c' },
+      generate_from_json = true,
     },
     maintainers = { '@ObserverOfTime' },
     requires = { 'cpp' },
@@ -83,6 +84,7 @@ M.configs = {
     install_info = {
       url = 'https://github.com/virchau13/tree-sitter-astro',
       files = { 'src/parser.c', 'src/scanner.c' },
+      generate_from_json = true,
     },
     maintainers = { '@virchau13' },
     requires = { 'html', 'html_tags' },
@@ -112,7 +114,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@TravonteD' },
-    tier = 3,
+    tier = 1,
   },
 
   bass = {
@@ -121,7 +123,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
-    tier = 2,
+    tier = 3,
   },
 
   beancount = {
@@ -139,12 +141,12 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@theHamsta', '@clason' },
-    tier = 2,
+    tier = 3,
   },
 
   bicep = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-bicep',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-bicep',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
@@ -153,7 +155,7 @@ M.configs = {
 
   bitbake = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-bitbake',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-bitbake',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
@@ -193,12 +195,12 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
-    tier = 3,
+    tier = 2,
   },
 
   cairo = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-cairo',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-cairo',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
@@ -207,7 +209,7 @@ M.configs = {
 
   capnp = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-capnp',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-capnp',
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
@@ -216,7 +218,7 @@ M.configs = {
 
   chatito = {
     install_info = {
-      url = 'https://github.com/ObserverOfTime/tree-sitter-chatito',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-chatito',
       files = { 'src/parser.c' },
     },
     maintainers = { '@ObserverOfTime' },
@@ -247,7 +249,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@uyha' },
-    tier = 4,
+    tier = 3,
   },
 
   comment = {
@@ -256,14 +258,14 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@stsewd' },
-    tier = 2,
+    tier = 3,
   },
 
   commonlisp = {
     install_info = {
-      url = 'https://github.com/theHamsta/tree-sitter-commonlisp',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-commonlisp',
       files = { 'src/parser.c' },
-      generate_requires_npm = true,
+      generate_from_json = true,
     },
     maintainers = { '@theHamsta' },
     tier = 2,
@@ -289,7 +291,7 @@ M.configs = {
 
   cpon = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-cpon',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-cpon',
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
@@ -300,11 +302,11 @@ M.configs = {
     install_info = {
       url = 'https://github.com/tree-sitter/tree-sitter-cpp',
       files = { 'src/parser.c', 'src/scanner.c' },
-      generate_requires_npm = true,
+      generate_from_json = true,
     },
     maintainers = { '@theHamsta' },
     requires = { 'c' },
-    tier = 1,
+    tier = 2,
   },
 
   css = {
@@ -313,12 +315,12 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@TravonteD' },
-    tier = 3,
+    tier = 2,
   },
 
   csv = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-csv',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-csv',
       files = { 'src/parser.c' },
       location = 'csv',
     },
@@ -329,9 +331,9 @@ M.configs = {
 
   cuda = {
     install_info = {
-      url = 'https://github.com/theHamsta/tree-sitter-cuda',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-cuda',
       files = { 'src/parser.c', 'src/scanner.c' },
-      generate_requires_npm = true,
+      generate_from_json = true,
     },
     maintainers = { '@theHamsta' },
     requires = { 'cpp' },
@@ -344,7 +346,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
-    tier = 2,
+    tier = 3,
   },
 
   cylc = {
@@ -361,7 +363,7 @@ M.configs = {
       url = 'https://github.com/gdamore/tree-sitter-d',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
-    tier = 2,
+    tier = 3,
     maintainers = { '@amaanq' },
   },
 
@@ -371,7 +373,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@akinsho' },
-    tier = 4,
+    tier = 3,
   },
 
   desktop = {
@@ -398,7 +400,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
-    tier = 2,
+    tier = 3,
   },
 
   diff = {
@@ -448,7 +450,7 @@ M.configs = {
 
   doxygen = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-doxygen',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-doxygen',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
@@ -473,6 +475,7 @@ M.configs = {
     maintainers = { '@glehmann' },
     tier = 3,
   },
+
   ebnf = {
     install_info = {
       url = 'https://github.com/RubixDev/ebnf',
@@ -480,13 +483,13 @@ M.configs = {
       location = 'crates/tree-sitter-ebnf',
     },
     maintainers = { '@RubixDev' },
-    tier = 4,
+    tier = 3,
   },
 
   ecma = {
     maintainers = { '@steelsojka' },
     readme_note = 'queries required by javascript, typescript, tsx, qmljs',
-    tier = 2,
+    tier = 3,
   },
 
   editorconfig = {
@@ -531,7 +534,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@zweimach' },
-    tier = 4,
+    tier = 3,
   },
 
   elsa = {
@@ -540,7 +543,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@glapa-grossklag', '@amaanq' },
-    tier = 2,
+    tier = 3,
   },
 
   elvish = {
@@ -591,7 +594,7 @@ M.configs = {
     install_info = {
       url = 'https://github.com/alexmozaidze/tree-sitter-fennel',
       files = { 'src/parser.c', 'src/scanner.c' },
-      generate_requires_npm = true,
+      generate_from_json = true,
     },
     maintainers = { '@alexmozaidze' },
     tier = 3,
@@ -608,7 +611,7 @@ M.configs = {
 
   firrtl = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-firrtl',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-firrtl',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
@@ -639,7 +642,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
-    tier = 2,
+    tier = 3,
   },
 
   fortran = {
@@ -648,7 +651,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
-    tier = 2,
+    tier = 3,
   },
 
   fsh = {
@@ -672,7 +675,7 @@ M.configs = {
 
   func = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-func',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-func',
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
@@ -739,7 +742,7 @@ M.configs = {
 
   gitattributes = {
     install_info = {
-      url = 'https://github.com/ObserverOfTime/tree-sitter-gitattributes',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-gitattributes',
       files = { 'src/parser.c' },
     },
     maintainers = { '@ObserverOfTime' },
@@ -761,7 +764,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
-    tier = 2,
+    tier = 3,
   },
 
   gitignore = {
@@ -770,7 +773,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@theHamsta' },
-    tier = 2,
+    tier = 3,
   },
 
   gleam = {
@@ -779,7 +782,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
-    tier = 2,
+    tier = 3,
   },
 
   glimmer = {
@@ -816,9 +819,9 @@ M.configs = {
 
   glsl = {
     install_info = {
-      url = 'https://github.com/theHamsta/tree-sitter-glsl',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-glsl',
       files = { 'src/parser.c' },
-      generate_requires_npm = true,
+      generate_from_json = true,
     },
     maintainers = { '@theHamsta' },
     requires = { 'c' },
@@ -827,7 +830,7 @@ M.configs = {
 
   gn = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-gn',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-gn',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
@@ -850,7 +853,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@theHamsta', '@WinWisely268' },
-    tier = 1,
+    tier = 2,
   },
 
   goctl = {
@@ -883,7 +886,7 @@ M.configs = {
 
   gosum = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-go-sum',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-go-sum',
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
@@ -919,7 +922,7 @@ M.configs = {
 
   gpg = {
     install_info = {
-      url = 'https://github.com/ObserverOfTime/tree-sitter-gpg-config',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-gpg-config',
       files = { 'src/parser.c' },
     },
     maintainers = { '@ObserverOfTime' },
@@ -946,7 +949,7 @@ M.configs = {
 
   gstlaunch = {
     install_info = {
-      url = 'https://github.com/theHamsta/tree-sitter-gstlaunch',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-gstlaunch',
       files = { 'src/parser.c' },
     },
     maintainers = { '@theHamsta' },
@@ -963,7 +966,7 @@ M.configs = {
 
   hare = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-hare',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-hare',
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
@@ -976,7 +979,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@mrcjkb' },
-    tier = 3,
+    tier = 2,
   },
 
   haskell_persistent = {
@@ -990,11 +993,11 @@ M.configs = {
 
   hcl = {
     install_info = {
-      url = 'https://github.com/MichaHoffmann/tree-sitter-hcl',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-hcl',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@MichaHoffmann' },
-    tier = 3,
+    tier = 2,
   },
 
   heex = {
@@ -1020,7 +1023,7 @@ M.configs = {
     install_info = {
       url = 'https://github.com/winston0410/tree-sitter-hjson',
       files = { 'src/parser.c' },
-      generate_requires_npm = true,
+      generate_from_json = true,
     },
     maintainers = { '@winston0410' },
     requires = { 'json' },
@@ -1029,9 +1032,9 @@ M.configs = {
 
   hlsl = {
     install_info = {
-      url = 'https://github.com/theHamsta/tree-sitter-hlsl',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-hlsl',
       files = { 'src/parser.c', 'src/scanner.c' },
-      generate_requires_npm = true,
+      generate_from_json = true,
     },
     maintainers = { '@theHamsta' },
     requires = { 'cpp' },
@@ -1051,7 +1054,7 @@ M.configs = {
     install_info = {
       url = 'https://github.com/antosha417/tree-sitter-hocon',
       files = { 'src/parser.c' },
-      generate_requires_npm = true,
+      generate_from_json = true,
     },
     maintainers = { '@antosha417' },
     tier = 4,
@@ -1063,7 +1066,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@urbit-pilled' },
-    tier = 4,
+    tier = 3,
   },
 
   html_tags = {
@@ -1079,7 +1082,7 @@ M.configs = {
     },
     maintainers = { '@TravonteD' },
     requires = { 'html_tags' },
-    tier = 3,
+    tier = 2,
   },
 
   htmldjango = {
@@ -1088,7 +1091,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@ObserverOfTime' },
-    tier = 4,
+    tier = 3,
   },
 
   http = {
@@ -1097,7 +1100,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq', '@NTBBloodbath' },
-    tier = 2,
+    tier = 3,
   },
 
   hurl = {
@@ -1111,11 +1114,11 @@ M.configs = {
 
   hyprlang = {
     install_info = {
-      url = 'https://github.com/luckasRanarison/tree-sitter-hyprlang',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-hyprlang',
       files = { 'src/parser.c' },
     },
     maintainers = { '@luckasRanarison' },
-    tier = 3,
+    tier = 2,
   },
 
   idl = {
@@ -1133,7 +1136,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@theHamsta' },
-    tier = 4,
+    tier = 3,
   },
 
   inko = {
@@ -1147,13 +1150,13 @@ M.configs = {
 
   ispc = {
     install_info = {
-      url = 'https://github.com/fab4100/tree-sitter-ispc',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-ispc',
       files = { 'src/parser.c' },
-      generate_requires_npm = true,
+      generate_from_json = true,
     },
     maintainers = { '@fab4100' },
     requires = { 'c' },
-    tier = 3,
+    tier = 2,
   },
 
   janet_simple = {
@@ -1171,7 +1174,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@p00f' },
-    tier = 3,
+    tier = 2,
   },
 
   javascript = {
@@ -1190,7 +1193,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@ObserverOfTime' },
-    tier = 2,
+    tier = 3,
   },
 
   jsdoc = {
@@ -1224,7 +1227,7 @@ M.configs = {
     install_info = {
       url = 'https://gitlab.com/WhyNotHugo/tree-sitter-jsonc.git',
       files = { 'src/parser.c' },
-      generate_requires_npm = true,
+      generate_from_json = true,
     },
     maintainers = { '@WhyNotHugo' },
     requires = { 'json' },
@@ -1243,7 +1246,7 @@ M.configs = {
   jsx = {
     maintainers = { '@steelsojka' },
     readme_note = 'queries required by javascript, tsx',
-    tier = 2,
+    tier = 3,
   },
 
   julia = {
@@ -1266,7 +1269,7 @@ M.configs = {
 
   kconfig = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-kconfig',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-kconfig',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
@@ -1275,7 +1278,7 @@ M.configs = {
 
   kdl = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-kdl',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-kdl',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
@@ -1325,7 +1328,7 @@ M.configs = {
       generate = true,
     },
     maintainers = { '@theHamsta', '@clason' },
-    tier = 2,
+    tier = 3,
   },
 
   ledger = {
@@ -1357,7 +1360,7 @@ M.configs = {
 
   linkerscript = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-linkerscript',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-linkerscript',
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
@@ -1384,7 +1387,7 @@ M.configs = {
 
   lua = {
     install_info = {
-      url = 'https://github.com/MunifTanjim/tree-sitter-lua',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-lua',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@muniftanjim' },
@@ -1393,7 +1396,7 @@ M.configs = {
 
   luadoc = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-luadoc',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-luadoc',
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
@@ -1402,7 +1405,7 @@ M.configs = {
 
   luap = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-luap',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-luap',
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
@@ -1412,8 +1415,9 @@ M.configs = {
 
   luau = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-luau',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-luau',
       files = { 'src/parser.c', 'src/scanner.c' },
+      generate_from_json = true,
     },
     maintainers = { '@amaanq' },
     requires = { 'lua' },
@@ -1435,12 +1439,12 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@lewis6991' },
-    tier = 2,
+    tier = 3,
   },
 
   markdown = {
     install_info = {
-      url = 'https://github.com/MDeiml/tree-sitter-markdown',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-markdown',
       location = 'tree-sitter-markdown',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
@@ -1452,7 +1456,7 @@ M.configs = {
 
   markdown_inline = {
     install_info = {
-      url = 'https://github.com/MDeiml/tree-sitter-markdown',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-markdown',
       location = 'tree-sitter-markdown-inline',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
@@ -1489,11 +1493,11 @@ M.configs = {
 
   meson = {
     install_info = {
-      url = 'https://github.com/Decodetalkers/tree-sitter-meson',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-meson',
       files = { 'src/parser.c' },
     },
     maintainers = { '@Decodetalkers' },
-    tier = 3,
+    tier = 2,
   },
 
   mlir = {
@@ -1503,7 +1507,7 @@ M.configs = {
       generate = true,
     },
     maintainers = { '@artagnon' },
-    tier = 4,
+    tier = 3,
   },
 
   muttrc = {
@@ -1521,7 +1525,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@ObserverOfTime' },
-    tier = 2,
+    tier = 3,
   },
 
   nginx = {
@@ -1580,8 +1584,9 @@ M.configs = {
 
   nqc = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-nqc',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-nqc',
       files = { 'src/parser.c' },
+      generate_from_json = true,
     },
     maintainers = { '@amaanq' },
     tier = 2,
@@ -1598,8 +1603,9 @@ M.configs = {
 
   objc = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-objc',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-objc',
       files = { 'src/parser.c' },
+      generate_from_json = true,
     },
     maintainers = { '@amaanq' },
     requires = { 'c' },
@@ -1622,7 +1628,7 @@ M.configs = {
       location = 'grammars/ocaml',
     },
     maintainers = { '@undu' },
-    tier = 3,
+    tier = 2,
   },
 
   ocaml_interface = {
@@ -1633,7 +1639,7 @@ M.configs = {
     },
     maintainers = { '@undu' },
     requires = { 'ocaml' },
-    tier = 3,
+    tier = 2,
   },
 
   ocamllex = {
@@ -1648,7 +1654,7 @@ M.configs = {
 
   odin = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-odin',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-odin',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
@@ -1683,7 +1689,7 @@ M.configs = {
 
   pem = {
     install_info = {
-      url = 'https://github.com/ObserverOfTime/tree-sitter-pem',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-pem',
       files = { 'src/parser.c' },
     },
     maintainers = { '@ObserverOfTime' },
@@ -1695,6 +1701,7 @@ M.configs = {
       url = 'https://github.com/tree-sitter-perl/tree-sitter-perl',
       branch = 'release',
       files = { 'src/parser.c', 'src/scanner.c' },
+      generate_from_json = true,
     },
     maintainers = { '@RabbiVeesh', '@LeoNerd' },
     tier = 3,
@@ -1709,7 +1716,7 @@ M.configs = {
     maintainers = { '@tk-shirasaka', '@calebdw' },
     requires = { 'php_only' },
     readme_note = 'PHP with embedded HTML',
-    tier = 3,
+    tier = 2,
   },
 
   php_only = {
@@ -1720,17 +1727,17 @@ M.configs = {
     },
     maintainers = { '@tk-shirasaka', '@calebdw' },
     readme_note = 'PHP without embedded HTML',
-    tier = 3,
+    tier = 2,
   },
 
   phpdoc = {
     install_info = {
       url = 'https://github.com/claytonrcarter/tree-sitter-phpdoc',
       files = { 'src/parser.c', 'src/scanner.c' },
-      generate_requires_npm = true,
+      generate_from_json = true,
     },
     maintainers = { '@mikehaertl' },
-    tier = 4,
+    tier = 3,
   },
 
   pioasm = {
@@ -1744,7 +1751,7 @@ M.configs = {
 
   po = {
     install_info = {
-      url = 'https://github.com/erasin/tree-sitter-po',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-po',
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
@@ -1756,6 +1763,7 @@ M.configs = {
       url = 'https://github.com/tree-sitter-perl/tree-sitter-pod',
       files = { 'src/parser.c', 'src/scanner.c' },
       branch = 'release',
+      generate_from_json = true,
     },
     maintainers = { '@RabbiVeesh', '@LeoNerd' },
     tier = 3,
@@ -1763,17 +1771,17 @@ M.configs = {
 
   poe_filter = {
     install_info = {
-      url = 'https://github.com/ObserverOfTime/tree-sitter-poe-filter',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-poe-filter',
       files = { 'src/parser.c' },
     },
     maintainers = { '@ObserverOfTime' },
     readme_note = 'Path of Exile item filter',
-    tier = 4,
+    tier = 2,
   },
 
   pony = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-pony',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-pony',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq', '@mfelsche' },
@@ -1792,7 +1800,7 @@ M.configs = {
 
   printf = {
     install_info = {
-      url = 'https://github.com/ObserverOfTime/tree-sitter-printf',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-printf',
       files = { 'src/parser.c' },
     },
     maintainers = { '@ObserverOfTime' },
@@ -1831,7 +1839,7 @@ M.configs = {
 
   properties = {
     install_info = {
-      url = 'https://github.com/ObserverOfTime/tree-sitter-properties',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-properties',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@ObserverOfTime' },
@@ -1854,7 +1862,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@MichaHoffmann' },
-    tier = 4,
+    tier = 3,
   },
 
   prql = {
@@ -1863,12 +1871,12 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@matthias-Q' },
-    tier = 2,
+    tier = 3,
   },
 
   psv = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-csv',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-csv',
       files = { 'src/parser.c' },
       location = 'psv',
     },
@@ -1883,12 +1891,12 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@zealot128' },
-    tier = 4,
+    tier = 3,
   },
 
   puppet = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-puppet',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-puppet',
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
@@ -1906,7 +1914,7 @@ M.configs = {
 
   pymanifest = {
     install_info = {
-      url = 'https://github.com/ObserverOfTime/tree-sitter-pymanifest',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-pymanifest',
       files = { 'src/parser.c' },
     },
     maintainers = { '@ObserverOfTime' },
@@ -1929,12 +1937,12 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@pwntester' },
-    tier = 3,
+    tier = 2,
   },
 
   qmldir = {
     install_info = {
-      url = 'https://github.com/Decodetalkers/tree-sitter-qmldir',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-qmldir',
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
@@ -1945,6 +1953,7 @@ M.configs = {
     install_info = {
       url = 'https://github.com/yuja/tree-sitter-qmljs',
       files = { 'src/parser.c', 'src/scanner.c' },
+      generate_from_json = true,
     },
     maintainers = { '@Decodetalkers' },
     requires = { 'ecma' },
@@ -1953,7 +1962,7 @@ M.configs = {
 
   query = {
     install_info = {
-      url = 'https://github.com/nvim-treesitter/tree-sitter-query',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-query',
       files = { 'src/parser.c' },
     },
     maintainers = { '@steelsojka' },
@@ -2007,7 +2016,7 @@ M.configs = {
 
   re2c = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-re2c',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-re2c',
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
@@ -2016,11 +2025,11 @@ M.configs = {
 
   readline = {
     install_info = {
-      url = 'https://github.com/ribru17/tree-sitter-readline',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-readline',
       files = { 'src/parser.c' },
     },
     maintainers = { '@ribru17' },
-    tier = 3,
+    tier = 2,
   },
 
   regex = {
@@ -2029,7 +2038,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@theHamsta' },
-    tier = 1,
+    tier = 2,
   },
 
   rego = {
@@ -2043,7 +2052,7 @@ M.configs = {
 
   requirements = {
     install_info = {
-      url = 'https://github.com/ObserverOfTime/tree-sitter-requirements',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-requirements',
       files = { 'src/parser.c' },
     },
     maintainers = { '@ObserverOfTime' },
@@ -2098,7 +2107,7 @@ M.configs = {
 
   ron = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-ron',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-ron',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
@@ -2111,7 +2120,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@stsewd' },
-    tier = 2,
+    tier = 3,
   },
 
   ruby = {
@@ -2120,7 +2129,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@TravonteD' },
-    tier = 3,
+    tier = 2,
   },
 
   runescript = {
@@ -2147,7 +2156,7 @@ M.configs = {
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@stevanmilic' },
-    tier = 3,
+    tier = 2,
   },
 
   scfg = {
@@ -2190,13 +2199,13 @@ M.configs = {
   },
   slang = {
     install_info = {
-      url = 'https://github.com/theHamsta/tree-sitter-slang',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-slang',
       files = { 'src/parser.c', 'src/scanner.c' },
-      generate_requires_npm = true,
+      generate_from_json = true,
     },
     readme_note = 'Shader Slang',
     maintainers = { '@theHamsta' },
-    tier = 4,
+    tier = 2,
   },
 
   slint = {
@@ -2221,9 +2230,10 @@ M.configs = {
     install_info = {
       url = 'https://github.com/osthomas/tree-sitter-snakemake',
       files = { 'src/parser.c', 'src/scanner.c' },
+      generate_from_json = true,
     },
-    maintainer = { '@osthomas' },
-    tier = 4,
+    maintainers = { '@osthomas' },
+    tier = 3,
   },
 
   smithy = {
@@ -2232,7 +2242,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq', '@keynmol' },
-    tier = 2,
+    tier = 3,
   },
 
   solidity = {
@@ -2241,7 +2251,7 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
-    tier = 2,
+    tier = 3,
   },
 
   soql = {
@@ -2277,6 +2287,7 @@ M.configs = {
     install_info = {
       url = 'https://github.com/GordianDziwis/tree-sitter-sparql',
       files = { 'src/parser.c' },
+      generate_from_json = true,
     },
     maintainers = { '@GordianDziwis' },
     tier = 3,
@@ -2287,6 +2298,7 @@ M.configs = {
       url = 'https://github.com/derekstride/tree-sitter-sql',
       files = { 'src/parser.c', 'src/scanner.c' },
       branch = 'gh-pages',
+      generate_from_json = true,
     },
     maintainers = { '@derekstride' },
     tier = 3,
@@ -2294,7 +2306,7 @@ M.configs = {
 
   squirrel = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-squirrel',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-squirrel',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
@@ -2303,7 +2315,7 @@ M.configs = {
 
   ssh_config = {
     install_info = {
-      url = 'https://github.com/ObserverOfTime/tree-sitter-ssh-config',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-ssh-config',
       files = { 'src/parser.c' },
     },
     maintainers = { '@ObserverOfTime' },
@@ -2312,8 +2324,9 @@ M.configs = {
 
   starlark = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-starlark',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-starlark',
       files = { 'src/parser.c', 'src/scanner.c' },
+      generate_from_json = true,
     },
     maintainers = { '@amaanq' },
     tier = 2,
@@ -2325,13 +2338,14 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq' },
-    tier = 2,
+    tier = 3,
   },
 
   styled = {
     install_info = {
       url = 'https://github.com/mskelton/tree-sitter-styled',
       files = { 'src/parser.c', 'src/scanner.c' },
+      generate_from_json = true,
     },
     maintainers = { '@mskelton' },
     tier = 3,
@@ -2369,6 +2383,7 @@ M.configs = {
     install_info = {
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-svelte',
       files = { 'src/parser.c', 'src/scanner.c' },
+      generate_from_json = true,
     },
     maintainers = { '@amaanq' },
     requires = { 'html_tags' },
@@ -2423,7 +2438,7 @@ M.configs = {
 
   tablegen = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-tablegen',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-tablegen',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
@@ -2453,6 +2468,7 @@ M.configs = {
     install_info = {
       url = 'https://github.com/vrischmann/tree-sitter-templ',
       files = { 'src/parser.c', 'src/scanner.c' },
+      generate_from_json = true,
     },
     maintainers = { '@vrischmann' },
     tier = 3,
@@ -2489,7 +2505,7 @@ M.configs = {
 
   thrift = {
     install_info = {
-      url = 'https://github.com/duskmoon314/tree-sitter-thrift',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-thrift',
       files = { 'src/parser.c' },
     },
     maintainers = { '@amaanq', '@duskmoon314' },
@@ -2529,22 +2545,22 @@ M.configs = {
       files = { 'src/parser.c' },
     },
     maintainers = { '@arnarg' },
-    tier = 4,
+    tier = 3,
   },
 
   toml = {
     install_info = {
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-toml',
       files = { 'src/parser.c', 'src/scanner.c' },
-      generate_requires_npm = true,
+      generate_from_json = true,
     },
     maintainers = { '@tk-shirasaka' },
-    tier = 3,
+    tier = 2,
   },
 
   tsv = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-csv',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-csv',
       files = { 'src/parser.c' },
       location = 'tsv',
     },
@@ -2557,7 +2573,7 @@ M.configs = {
       url = 'https://github.com/tree-sitter/tree-sitter-typescript',
       files = { 'src/parser.c', 'src/scanner.c' },
       location = 'tsx',
-      generate_requires_npm = true,
+      generate_from_json = true,
     },
     maintainers = { '@steelsojka' },
     requires = { 'ecma', 'jsx', 'typescript' },
@@ -2587,7 +2603,7 @@ M.configs = {
       url = 'https://github.com/tree-sitter/tree-sitter-typescript',
       files = { 'src/parser.c', 'src/scanner.c' },
       location = 'typescript',
-      generate_requires_npm = true,
+      generate_from_json = true,
     },
     maintainers = { '@steelsojka' },
     requires = { 'ecma' },
@@ -2623,7 +2639,7 @@ M.configs = {
 
   udev = {
     install_info = {
-      url = 'https://github.com/ObserverOfTime/tree-sitter-udev',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-udev',
       files = { 'src/parser.c' },
     },
     maintainers = { '@ObserverOfTime' },
@@ -2632,11 +2648,11 @@ M.configs = {
 
   ungrammar = {
     install_info = {
-      url = 'https://github.com/Philipp-M/tree-sitter-ungrammar',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-ungrammar',
       files = { 'src/parser.c' },
     },
     maintainers = { '@Philipp-M', '@amaanq' },
-    tier = 3,
+    tier = 2,
   },
 
   unison = {
@@ -2646,7 +2662,7 @@ M.configs = {
       generate = true,
     },
     maintainers = { '@tapegram' },
-    tier = 4,
+    tier = 3,
   },
 
   usd = {
@@ -2660,7 +2676,7 @@ M.configs = {
 
   uxntal = {
     install_info = {
-      url = 'https://github.com/amaanq/tree-sitter-uxntal',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-uxntal',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@amaanq' },
@@ -2724,7 +2740,7 @@ M.configs = {
 
   vim = {
     install_info = {
-      url = 'https://github.com/neovim/tree-sitter-vim',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-vim',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@clason' },
@@ -2754,6 +2770,7 @@ M.configs = {
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-vue',
       files = { 'src/parser.c', 'src/scanner.c' },
       branch = 'main',
+      generate_from_json = true,
     },
     maintainers = { '@WhyNotHugo', '@lucario387' },
     requires = { 'html_tags' },
@@ -2780,9 +2797,9 @@ M.configs = {
 
   wgsl_bevy = {
     install_info = {
-      url = 'https://github.com/theHamsta/tree-sitter-wgsl-bevy',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-wgsl-bevy',
       files = { 'src/parser.c', 'src/scanner.c' },
-      generate_requires_npm = true,
+      generate_from_json = true,
     },
     maintainers = { '@theHamsta' },
     tier = 2,
@@ -2796,9 +2813,10 @@ M.configs = {
     maintainers = { '@liamwh' },
     tier = 3,
   },
+
   xcompose = {
     install_info = {
-      url = 'https://github.com/ObserverOfTime/tree-sitter-xcompose',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-xcompose',
       files = { 'src/parser.c' },
     },
     maintainers = { '@ObserverOfTime' },
@@ -2846,11 +2864,11 @@ M.configs = {
 
   yuck = {
     install_info = {
-      url = 'https://github.com/Philipp-M/tree-sitter-yuck',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-yuck',
       files = { 'src/parser.c', 'src/scanner.c' },
     },
     maintainers = { '@Philipp-M', '@amaanq' },
-    tier = 3,
+    tier = 2,
   },
 
   zathurarc = {
@@ -2908,12 +2926,11 @@ function M.get_available(tier)
       parsers
     )
   end
-  if vim.fn.executable('tree-sitter') == 0 or vim.fn.executable('node') == 0 then
+  if vim.fn.executable('tree-sitter') == 0 then
     parsers = vim.tbl_filter(
       --- @param p string
       function(p)
-        return M.configs[p].install_info ~= nil
-          and not M.configs[p].install_info.requires_generate_from_grammar
+        return M.configs[p].install_info ~= nil and not M.configs[p].install_info.generate
       end,
       parsers
     )
