@@ -40,12 +40,13 @@ jobs:
       NVIM_TAG: stable
     steps:
       - uses: actions/checkout@v4
+      - uses: tree-sitter/setup-action/cli@v1
       - name: Prepare
         run: |
           bash ./scripts/ci-install.sh
 
       - name: Lint
         run: |
-          nvim --headless -c "TSInstallSync query" -c "q"
+          nvim -l scripts/install-parsers.lua query
           nvim -l scripts/format-queries.lua
           git diff --exit-code
