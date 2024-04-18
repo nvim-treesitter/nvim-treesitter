@@ -15,8 +15,8 @@ table.sort(sorted_parsers, function(a, b)
 end)
 
 local generated_text = [[
-Language | Tier | Queries | CLI | NPM | Maintainer
--------- |:----:|:-------:|:---:|:---:| ----------
+Language | Tier | Queries | CLI | Maintainer
+-------- |:----:|:-------:|:---:| ----------
 ]]
 local footnotes = ''
 
@@ -60,11 +60,6 @@ for _, v in ipairs(sorted_parsers) do
   -- CLI
   generated_text = generated_text
     .. (p.install_info and p.install_info.requires_generate_from_grammar and '✓' or '')
-    .. ' | '
-
-  -- NPM
-  generated_text = generated_text
-    .. (p.install_info and p.install_info.generate_requires_npm and '✓' or '')
     .. ' | '
 
   -- Maintainer

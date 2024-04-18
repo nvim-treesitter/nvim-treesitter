@@ -31,7 +31,7 @@ local M = {}
 ---@type table<string, LockfileInfo>
 local lockfile = {}
 
-local max_jobs = 50
+local max_jobs = 10
 
 local iswin = uv.os_uname().sysname == 'Windows_NT'
 local ismac = uv.os_uname().sysname == 'Darwin'
@@ -145,24 +145,17 @@ end
 --- @param repo InstallInfo
 --- @param compile_location string
 --- @return string? err
-local function do_generate_from_grammar(logger, repo, compile_location)
+local function do_generate(logger, repo, compile_location)
   if not executable('tree-sitter') then
     return logger:error('tree-sitter CLI not found: `tree-sitter` is not executable')
   end
 
-  if repo.generate_requires_npm then
-    if not executable('npm') then
-      return logger:error('NPM requires to be installed from grammar.js')
-    end
-
-    logger:info('Installing NPM dependencies')
-    local r = system({ 'npm', 'install' }, { cwd = compile_location })
-    if r.code > 0 then
-      return logger:error('Error during `npm install`: %s', r.stderr)
-    end
-  end
-
-  logger:info('Generating source files from grammar.js...')
+  logger:info(
+    string.format(
+      'Generating source files from %s...',
+      repo.generate_from_json and 'grammar.json' or 'grammar.js'
+    )
+  )
 
   local r = system({
     fn.exepath('tree-sitter'),
@@ -170,6 +163,7 @@ local function do_generate_from_grammar(logger, repo, compile_location)
     '--no-bindings',
     '--abi',
     tostring(vim.treesitter.language_version),
+    repo.generate_from_json and 'src/grammar.json',
   }, { cwd = compile_location })
   if r.code > 0 then
     return logger:error('Error during "tree-sitter generate": %s', r.stderr)
@@ -264,6 +258,10 @@ end
 ---@param project_dir string
 ---@return string? err
 local function do_download_git(logger, repo, project_name, cache_dir, revision, project_dir)
+  if not executable('git') then
+    return logger:error('git not found!')
+  end
+
   logger:info('Downloading ' .. project_name .. '...')
 
   local r = system({
@@ -388,7 +386,7 @@ end
 ---@param repo InstallInfo
 ---@param cc string
 ---@param compile_location string
---- @return string? err
+---@return string? err
 local function do_compile(logger, repo, cc, compile_location)
   local args = vim.tbl_flatten(select_compiler_args(repo, cc))
   local cmd = vim.list_extend({ cc }, args)
@@ -444,7 +442,7 @@ local function install_lang0(lang, cache_dir, install_dir, generate)
 
     do
       if repo.generate or generate then
-        local err = do_generate_from_grammar(logger, repo, compile_location)
+        local err = do_generate(logger, repo, compile_location)
         if err then
           return err
         end
