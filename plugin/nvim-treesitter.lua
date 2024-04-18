@@ -38,7 +38,7 @@ end, {
 
 api.nvim_create_user_command('TSInstallFromGrammar', function(args)
   require('nvim-treesitter.install').install(args.fargs, {
-    generate_from_grammar = true,
+    generate = true,
     force = args.bang,
   })
 end, {
