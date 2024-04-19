@@ -152,7 +152,7 @@ end
 local function cc_err()
   log.error(
     'No C compiler found! "'
-      .. table.concat(vim.iter.filter(istring, M.compilers), '", "')
+      .. table.concat(vim.tbl_filter(istring, M.compilers), '", "')
       .. '" are not executable.'
   )
 end
@@ -230,7 +230,7 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
     cwd = cache_dir,
   })
   if r.code > 0 then
-    return logger:error('Error during download, please verify your internet connection: %s', r.stderr)
+    return logger:error('Error during download: %s', r.stderr)
   end
 
   logger:debug('Creating temporary directory: ' .. temp_dir)
@@ -328,7 +328,7 @@ end
 ---@param executables string[]
 ---@return string?
 function M.select_executable(executables)
-  return vim.iter.filter(executable, executables)[1]
+  return vim.tbl_filter(executable, executables)[1]
 end
 
 -- Returns the compiler arguments based on the compiler and OS
@@ -520,8 +520,7 @@ local INSTALL_TIMEOUT = 60000
 ---@return InstallStatus status
 local function install_lang(lang, cache_dir, install_dir, force, generate_from_grammar)
   if not force and vim.list_contains(config.installed_parsers(), lang) then
-    local yesno =
-      fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
+    local yesno = fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
     print('\n ')
     if yesno:sub(1, 1) ~= 'y' then
       install_status[lang] = 'installed'
@@ -613,7 +612,7 @@ M.update = a.sync(function(languages, _options, _callback)
     languages = 'all'
   end
   languages = config.norm_languages(languages, { ignored = true, missing = true })
-  languages = vim.iter.filter(needs_update, languages) --- @type string[]
+  languages = vim.tbl_filter(needs_update, languages) --- @type string[]
 
   if #languages > 0 then
     install(languages, { force = true })
