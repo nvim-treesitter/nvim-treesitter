@@ -6,15 +6,23 @@ vim.g.loaded_nvim_treesitter = true
 local api = vim.api
 
 local function complete_available_parsers(arglead)
-  return vim.iter.filter(function(v)
-    return v:find(arglead)
-  end, require('nvim-treesitter.parsers').get_available())
+  return vim.tbl_filter(
+    --- @param v string
+    function(v)
+      return v:find(arglead) ~= nil
+    end,
+    require('nvim-treesitter.parsers').get_available()
+  )
 end
 
 local function complete_installed_parsers(arglead)
-  return vim.iter.filter(function(v)
-    return v:find(arglead)
-  end, require('nvim-treesitter.config').installed_parsers())
+  return vim.tbl_filter(
+    --- @param v string
+    function(v)
+      return v:find(arglead) ~= nil
+    end,
+    require('nvim-treesitter.config').installed_parsers()
+  )
 end
 
 -- create user commands
