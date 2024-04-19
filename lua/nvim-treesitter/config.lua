@@ -106,12 +106,17 @@ function M.norm_languages(languages, skip)
   end
 
   -- keep local to avoid leaking parsers module
+  --- @param list string[]
   local function expand_tiers(list)
     for i, tier in ipairs(parsers.tiers) do
       if vim.list_contains(list, tier) then
-        list = vim.iter.filter(function(l)
-          return l ~= tier
-        end, list) --[[@as string[] ]]
+        list = vim.tbl_filter(
+          --- @param l string
+          function(l)
+            return l ~= tier
+          end,
+          list
+        )
         vim.list_extend(list, parsers.get_available(i))
       end
     end
@@ -123,29 +128,45 @@ function M.norm_languages(languages, skip)
 
   if skip and skip.ignored then
     local ignored = expand_tiers(config.ignore_install)
-    languages = vim.iter.filter(function(v)
-      return not vim.list_contains(ignored, v)
-    end, languages) --[[@as string[] ]]
+    languages = vim.tbl_filter(
+      --- @param v string
+      function(v)
+        return not vim.list_contains(ignored, v)
+      end,
+      languages
+    )
   end
 
   if skip and skip.installed then
     local installed = M.installed_parsers()
-    languages = vim.iter.filter(function(v)
-      return not vim.list_contains(installed, v)
-    end, languages) --[[@as string[] ]]
+    languages = vim.tbl_filter(
+      --- @param v string
+      function(v)
+        return not vim.list_contains(installed, v)
+      end,
+      languages
+    )
   end
 
   if skip and skip.missing then
     local installed = M.installed_parsers()
-    languages = vim.iter.filter(function(v)
-      return vim.list_contains(installed, v)
-    end, languages) --[[@as string[] ]]
+    languages = vim.tbl_filter(
+      --- @param v string
+      function(v)
+        return vim.list_contains(installed, v)
+      end,
+      languages
+    )
   end
 
-  languages = vim.iter.filter(function(v)
-    -- TODO(lewis6991): warn of any unknown parsers?
-    return parsers.configs[v] ~= nil
-  end, languages) --[[@as string[] ]]
+  languages = vim.tbl_filter(
+    --- @param v string
+    function(v)
+      -- TODO(lewis6991): warn of any unknown parsers?
+      return parsers.configs[v] ~= nil
+    end,
+    languages
+  )
 
   if not (skip and skip.dependencies) then
     for _, lang in pairs(languages) do
