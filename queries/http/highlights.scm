@@ -4,9 +4,6 @@
 ; Methods
 (method) @function.method
 
-; Constants
-(const_spec) @constant
-
 ; Headers
 (header
   name: (name) @constant)
