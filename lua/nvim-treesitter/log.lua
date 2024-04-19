@@ -12,50 +12,9 @@ local sev_to_hl = {
 }
 
 ---@param ctx string?
----@param m string
----@param ... any
-local function trace(ctx, m, ...)
-  messages[#messages + 1] = { 'trace', ctx, string.format(m, ...) }
-end
-
----@param ctx string?
----@param m string
----@param ... any
-local function debug(ctx, m, ...)
-  messages[#messages + 1] = { 'debug', ctx, string.format(m, ...) }
-end
-
----@param ctx string?
 ---@return string
 local function mkpfx(ctx)
   return ctx and string.format('[nvim-treesitter/%s]', ctx) or '[nvim-treesitter]'
-end
-
----@param ctx string?
----@param m string
----@param ... any
-local function info(ctx, m, ...)
-  local m1 = string.format(m, ...)
-  messages[#messages + 1] = { 'info', ctx, m1 }
-  api.nvim_echo({ { mkpfx(ctx) .. ': ' .. m1, sev_to_hl.info } }, true, {})
-end
-
----@param ctx string?
----@param m string
----@param ... any
-local function warn(ctx, m, ...)
-  local m1 = string.format(m, ...)
-  messages[#messages + 1] = { 'warn', ctx, m1 }
-  api.nvim_echo({ { mkpfx(ctx) .. ' warning: ' .. m1, sev_to_hl.warn } }, true, {})
-end
-
----@param ctx string?
----@param m string
----@param ... any
-local function lerror(ctx, m, ...)
-  local m1 = string.format(m, ...)
-  messages[#messages + 1] = { 'error', ctx, m1 }
-  error(mkpfx(ctx) .. ' error: ' .. m1)
 end
 
 --- @class NTSLogModule
@@ -81,31 +40,39 @@ end
 ---@param m string
 ---@param ... any
 function Logger:trace(m, ...)
-  trace(self.ctx, m, ...)
+  messages[#messages + 1] = { 'trace', self.ctx, string.format(m, ...) }
 end
 
 ---@param m string
 ---@param ... any
 function Logger:debug(m, ...)
-  debug(self.ctx, m, ...)
+  messages[#messages + 1] = { 'debug', self.ctx, string.format(m, ...) }
 end
 
 ---@param m string
 ---@param ... any
 function Logger:info(m, ...)
-  info(self.ctx, m, ...)
+  local m1 = string.format(m, ...)
+  messages[#messages + 1] = { 'info', self.ctx, m1 }
+  api.nvim_echo({ { mkpfx(self.ctx) .. ': ' .. m1, sev_to_hl.info } }, true, {})
 end
 
 ---@param m string
 ---@param ... any
 function Logger:warn(m, ...)
-  warn(self.ctx, m, ...)
+  local m1 = string.format(m, ...)
+  messages[#messages + 1] = { 'warn', self.ctx, m1 }
+  api.nvim_echo({ { mkpfx(self.ctx) .. ' warning: ' .. m1, sev_to_hl.warn } }, true, {})
 end
 
 ---@param m string
 ---@param ... any
+---@return string
 function Logger:error(m, ...)
-  lerror(self.ctx, m, ...)
+  local m1 = string.format(m, ...)
+  messages[#messages + 1] = { 'error', self.ctx, m1 }
+  api.nvim_echo({ { mkpfx(self.ctx) .. ' error: ' .. m1, sev_to_hl.error } }, true, {})
+  return m1
 end
 
 local noctx_logger = M.new()
