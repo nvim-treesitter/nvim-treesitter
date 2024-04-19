@@ -166,16 +166,17 @@ end
 --- @param logger Logger
 --- @param repo InstallInfo
 --- @param compile_location string
+--- @return string? err
 local function do_generate_from_grammar(logger, repo, compile_location)
   if repo.generate_requires_npm then
     if not executable('npm') then
-      logger:error('NPM requires to be installed from grammar.js')
+      return logger:error('NPM requires to be installed from grammar.js')
     end
 
     logger:info('Installing NPM dependencies')
     local r = system({ 'npm', 'install' }, { cwd = compile_location })
     if r.code > 0 then
-      logger:error('Error during `npm install`')
+      return logger:error('Error during `npm install`: %s', r.stderr)
     end
   end
 
@@ -189,7 +190,7 @@ local function do_generate_from_grammar(logger, repo, compile_location)
     tostring(vim.treesitter.language_version),
   }, { cwd = compile_location })
   if r.code > 0 then
-    logger:error('Error during "tree-sitter generate"')
+    return logger:error('Error during "tree-sitter generate": %s', r.stderr)
   end
 end
 
@@ -199,6 +200,7 @@ end
 ---@param cache_dir string
 ---@param revision string
 ---@param project_dir string
+---@return string? err
 local function do_download_tar(logger, repo, project_name, cache_dir, revision, project_dir)
   local is_github = repo.url:find('github.com', 1, true)
   local url = repo.url:gsub('.git$', '')
@@ -228,7 +230,7 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
     cwd = cache_dir,
   })
   if r.code > 0 then
-    logger:error('Error during download, please verify your internet connection: %s', r.stderr)
+    return logger:error('Error during download, please verify your internet connection: %s', r.stderr)
   end
 
   logger:debug('Creating temporary directory: ' .. temp_dir)
@@ -236,7 +238,7 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
   local err = uv_mkdir(temp_dir, 493)
   a.main()
   if err then
-    logger:error('Could not create %s-tmp: %s', project_name, err)
+    return logger:error('Could not create %s-tmp: %s', project_name, err)
   end
 
   logger:info('Extracting ' .. project_name .. '...')
@@ -251,12 +253,12 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
   })
 
   if r.code > 0 then
-    logger:error('Error during tarball extraction: %s', r.stderr)
+    return logger:error('Error during tarball extraction: %s', r.stderr)
   end
 
   err = uv_unlink(project_dir .. '.tar.gz')
   if err then
-    logger:error('Could not remove tarball: %s', err)
+    return logger:error('Could not remove tarball: %s', err)
   end
   a.main()
 
@@ -264,7 +266,7 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
   a.main()
 
   if err then
-    logger:error('Could not rename temp: %s', err)
+    return logger:error('Could not rename temp: %s', err)
   end
 
   util.delete(temp_dir)
@@ -276,6 +278,7 @@ end
 ---@param cache_dir string
 ---@param revision string
 ---@param project_dir string
+---@return string? err
 local function do_download_git(logger, repo, project_name, cache_dir, revision, project_dir)
   logger:info('Downloading ' .. project_name .. '...')
 
@@ -290,7 +293,7 @@ local function do_download_git(logger, repo, project_name, cache_dir, revision, 
   })
 
   if r.code > 0 then
-    logger:error('Error during download, please verify your internet connection: ' .. r.stderr)
+    return logger:error('Error during download, please verify your internet connection: ', r.stderr)
   end
 
   logger:info('Checking out locked revision')
@@ -303,7 +306,7 @@ local function do_download_git(logger, repo, project_name, cache_dir, revision, 
   })
 
   if r.code > 0 then
-    logger:error('Error while checking out revision: %s', r.stderr)
+    return logger:error('Error while checking out revision: %s', r.stderr)
   end
 end
 
@@ -411,20 +414,9 @@ end
 ---@param lang string
 ---@param cache_dir string
 ---@param install_dir string
----@param force? boolean
 ---@param generate_from_grammar? boolean
-local function install_lang(lang, cache_dir, install_dir, force, generate_from_grammar)
-  if vim.list_contains(config.installed_parsers(), lang) then
-    if not force then
-      local yesno =
-        fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
-      print('\n ')
-      if yesno:sub(1, 1) ~= 'y' then
-        return
-      end
-    end
-  end
-
+---@return string? err
+local function install_lang0(lang, cache_dir, install_dir, generate_from_grammar)
   local logger = log.new('install/' .. lang)
 
   local repo = get_parser_install_info(lang)
@@ -440,11 +432,11 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
     generate_from_grammar = repo.requires_generate_from_grammar or generate_from_grammar
 
     if generate_from_grammar and not executable('tree-sitter') then
-      logger:error('tree-sitter CLI not found: `tree-sitter` is not executable')
+      return logger:error('tree-sitter CLI not found: `tree-sitter` is not executable')
     end
 
     if generate_from_grammar and not executable('node') then
-      logger:error('Node JS not found: `node` is not executable')
+      return logger:error('Node JS not found: `node` is not executable')
     end
 
     local revision = get_target_revision(lang)
@@ -461,23 +453,26 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
 
       revision = revision or repo.branch or 'master'
 
-      if can_download_tar(repo) then
-        do_download_tar(logger, repo, project_name, cache_dir, revision, project_dir)
-      else
-        do_download_git(logger, repo, project_name, cache_dir, revision, project_dir)
+      local do_download = can_download_tar(repo) and do_download_tar or do_download_git
+      local err = do_download(logger, repo, project_name, cache_dir, revision, project_dir)
+      if err then
+        return err
       end
     end
 
     local compile_location = get_compile_location(repo, cache_dir, project_name, from_local_path)
 
     if generate_from_grammar then
-      do_generate_from_grammar(logger, repo, compile_location)
+      local err = do_generate_from_grammar(logger, repo, compile_location)
+      if err then
+        return err
+      end
     end
 
     logger:info('Compiling parser')
     local r = do_compile(repo, cc, compile_location)
     if r.code > 0 then
-      logger:error('Error during compilation: %s', r.stderr)
+      return logger:error('Error during compilation: %s', r.stderr)
     end
 
     local parser_lib_name = fs.joinpath(install_dir, lang) .. '.so'
@@ -485,7 +480,7 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
     local err = uv_copyfile(fs.joinpath(compile_location, 'parser.so'), parser_lib_name)
     a.main()
     if err then
-      logger:error(err)
+      return logger:error(err)
     end
 
     local revfile = fs.joinpath(config.get_install_dir('parser-info') or '', lang .. '.revision')
@@ -502,51 +497,55 @@ local function install_lang(lang, cache_dir, install_dir, force, generate_from_g
   local err = uv_symlink(queries_src, queries, { dir = true, junction = true })
   a.main()
   if err then
-    logger:error(err)
+    return logger:error(err)
   end
   logger:info('Language installed')
 end
 
---- Throttles a function using the first argument as an ID
----
---- If function is already running then the function will be scheduled to run
---- again once the running call has finished.
----
----   fn#1        _/‾\__/‾\_/‾\_____________________________
----   throttled#1 _/‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾\/‾‾‾‾‾‾‾‾‾‾\____________
---
----   fn#2        ______/‾\___________/‾\___________________
----   throttled#2 ______/‾‾‾‾‾‾‾‾‾‾\__/‾‾‾‾‾‾‾‾‾‾\__________
----
----
---- @generic F: function
---- @param f F Function to throttle
---- @return F throttled function.
-local function throttle_by_id(f)
-  local scheduled = {} --- @type table<any,boolean>
-  local running = {} --- @type table<any,boolean>
-  return function(id, ...)
-    if scheduled[id] then
-      -- If f is already scheduled, then drop
-      return
-    end
-    if not running[id] then
-      scheduled[id] = true
-    end
-    if running[id] then
-      return
-    end
-    while scheduled[id] do
-      scheduled[id] = nil
-      running[id] = true
-      f(id, ...)
-      running[id] = nil
+--- @alias InstallStatus
+--- | 'installing'
+--- | 'installed'
+--- | 'failed'
+--- | 'timeout'
+
+local install_status = {} --- @type table<string,InstallStatus?>
+
+local INSTALL_TIMEOUT = 60000
+
+---@param lang string
+---@param cache_dir string
+---@param install_dir string
+---@param force? boolean
+---@param generate_from_grammar? boolean
+---@return InstallStatus status
+local function install_lang(lang, cache_dir, install_dir, force, generate_from_grammar)
+  if not force and vim.list_contains(config.installed_parsers(), lang) then
+    local yesno =
+      fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
+    print('\n ')
+    if yesno:sub(1, 1) ~= 'y' then
+      install_status[lang] = 'installed'
+      return 'installed'
     end
   end
-end
 
--- Async functions must not be interleaved
-local install_lang_throttled = throttle_by_id(install_lang)
+  if install_status[lang] then
+    if install_status[lang] == 'installing' then
+      vim.wait(INSTALL_TIMEOUT, function()
+        return install_status[lang] ~= 'installing'
+      end)
+      install_status[lang] = 'timeout'
+    end
+  else
+    install_status[lang] = 'installing'
+    local err = install_lang0(lang, cache_dir, install_dir, generate_from_grammar)
+    install_status[lang] = err and 'failed' or 'installed'
+  end
+
+  local status = install_status[lang]
+  assert(status and status ~= 'installing')
+  return status
+end
 
 ---@class InstallOptions
 ---@field force? boolean
@@ -586,8 +585,10 @@ local function install(languages, options, _callback)
   for _, lang in ipairs(languages) do
     tasks[#tasks + 1] = a.sync(function()
       a.main()
-      install_lang_throttled(lang, cache_dir, install_dir, force, generate_from_grammar)
-      done = done + 1
+      local status = install_lang(lang, cache_dir, install_dir, force, generate_from_grammar)
+      if status ~= 'failed' then
+        done = done + 1
+      end
     end)
   end
 
@@ -621,12 +622,14 @@ M.update = a.sync(function(languages, _options, _callback)
   end
 end, 2)
 
+--- @param logger Logger
 --- @param lang string
 --- @param parser string
 --- @param queries string
-local function uninstall_lang(lang, parser, queries)
-  local logger = log.new('uninstall/' .. lang)
+--- @return string? err
+local function uninstall_lang(logger, lang, parser, queries)
   logger:debug('Uninstalling ' .. lang)
+  install_status[lang] = nil
 
   if vim.fn.filereadable(parser) == 1 then
     logger:debug('Unlinking ' .. parser)
@@ -634,7 +637,7 @@ local function uninstall_lang(lang, parser, queries)
     a.main()
 
     if perr then
-      log.error(perr)
+      return logger:error(perr)
     end
   end
 
@@ -644,7 +647,7 @@ local function uninstall_lang(lang, parser, queries)
     a.main()
 
     if qerr then
-      logger:error(qerr)
+      return logger:error(qerr)
     end
   end
 
@@ -664,14 +667,17 @@ M.uninstall = a.sync(function(languages, _options, _callback)
   local tasks = {} --- @type fun()[]
   local done = 0
   for _, lang in ipairs(languages) do
+    local logger = log.new('uninstall/' .. lang)
     if not vim.list_contains(installed, lang) then
       log.warn('Parser for ' .. lang .. ' is is not managed by nvim-treesitter')
     else
       local parser = fs.joinpath(parser_dir, lang) .. '.so'
       local queries = fs.joinpath(query_dir, lang)
       tasks[#tasks + 1] = a.sync(function()
-        uninstall_lang(lang, parser, queries)
-        done = done + 1
+        local err = uninstall_lang(logger, lang, parser, queries)
+        if not err then
+          done = done + 1
+        end
       end)
     end
   end
