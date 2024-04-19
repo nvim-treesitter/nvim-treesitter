@@ -36,6 +36,15 @@
 
 (double_quoted_string) @string
 
+[
+  (heredoc_marker)
+  (heredoc_end)
+] @label
+
+((heredoc_block
+  (heredoc_line) @string)
+  (#set! "priority" 90))
+
 (expansion
   [
     "$"
