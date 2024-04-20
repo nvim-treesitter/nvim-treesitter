@@ -91,6 +91,7 @@
 
 (tuple_struct_pattern
   ")" @indent.end)
+
 ; Typing in "(" inside macro definitions breaks the tree entirely
 ; Making macro_definition becoming errors
 ; Offset this by adding back one indent for start of macro rules
