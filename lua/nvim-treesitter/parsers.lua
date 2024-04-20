@@ -1,18 +1,19 @@
 ---@class InstallInfo
+---@field path? string
 ---@field url string
----@field branch string|nil
----@field revision string|nil Used to override lockfile revision
+---@field branch? string
+---@field revision? string
 ---@field files string[]
----@field generate_requires_npm boolean|nil
----@field requires_generate_from_grammar boolean|nil
----@field location string|nil
+---@field generate_requires_npm? boolean
+---@field generate? boolean
+---@field location? string
 
 ---@class ParserInfo
----@field install_info InstallInfo?
----@field maintainers string[]?
----@field requires string[]?
+---@field install_info? InstallInfo
+---@field maintainers? string[]
+---@field requires? string[]
 ---@field tier integer
----@field readme_note string|nil?
+---@field readme_note? string
 
 local M = {}
 
@@ -1214,7 +1215,7 @@ M.configs = {
     install_info = {
       url = 'https://github.com/latex-lsp/tree-sitter-latex',
       files = { 'src/parser.c', 'src/scanner.c' },
-      requires_generate_from_grammar = true,
+      generate = true,
     },
     maintainers = { '@theHamsta', '@clason' },
     tier = 2,
@@ -1392,7 +1393,7 @@ M.configs = {
     install_info = {
       url = 'https://github.com/artagnon/tree-sitter-mlir',
       files = { 'src/parser.c' },
-      requires_generate_from_grammar = true,
+      generate = true,
     },
     maintainers = { '@artagnon' },
     tier = 4,
@@ -1514,7 +1515,7 @@ M.configs = {
     install_info = {
       url = 'https://github.com/atom-ocaml/tree-sitter-ocamllex',
       files = { 'src/parser.c', 'src/scanner.c' },
-      requires_generate_from_grammar = true,
+      generate = true,
     },
     maintainers = { '@undu' },
     tier = 3,
@@ -1970,7 +1971,7 @@ M.configs = {
     install_info = {
       url = 'https://git.sr.ht/~rockorager/tree-sitter-scfg',
       files = { 'src/parser.c' },
-      requires_generate_from_grammar = true,
+      generate = true,
     },
     maintainers = { '@WhyNotHugo' },
     tier = 3,
@@ -2175,7 +2176,7 @@ M.configs = {
     install_info = {
       url = 'https://github.com/alex-pinkus/tree-sitter-swift',
       files = { 'src/parser.c', 'src/scanner.c' },
-      requires_generate_from_grammar = true,
+      generate = true,
     },
     maintainers = { '@alex-pinkus' },
     tier = 3,
@@ -2238,7 +2239,7 @@ M.configs = {
     install_info = {
       url = 'https://github.com/euclidianAce/tree-sitter-teal',
       files = { 'src/parser.c', 'src/scanner.c' },
-      requires_generate_from_grammar = true,
+      generate = true,
     },
     maintainers = { '@euclidianAce' },
     tier = 3,
@@ -2438,7 +2439,7 @@ M.configs = {
     install_info = {
       url = 'https://github.com/kylegoetz/tree-sitter-unison',
       files = { 'src/parser.c', 'src/scanner.c' },
-      requires_generate_from_grammar = true,
+      generate = true,
     },
     maintainers = { '@tapegram' },
     tier = 4,
