@@ -43,6 +43,9 @@
 
 (statement_identifier) @label
 
+(glimmer_opening_tag) @tag.builtin
+(glimmer_closing_tag) @tag.builtin
+
 ; Function and method definitions
 ;--------------------------------
 (function_expression
