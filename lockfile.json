@@ -18,7 +18,7 @@
     "revision": "afdc3d5da18d42cbb471c0f40527dbed9cace7ad"
   },
   "astro": {
-    "revision": "dfa0893bdc4bdfada102043404758c66e3580568"
+    "revision": "4e766a11148e174a109851d746e8ab8fc43ef419"
   },
   "authzed": {
     "revision": "1dec7e1af96c56924e3322cd85fdce15d0a31d00"
@@ -132,7 +132,7 @@
     "revision": "96beba9f3e4156aaae64bb86997503b1ceb1283d"
   },
   "earthfile": {
-    "revision": "b05876f7c206fdaa57c5cefeaefdb2623927c77e"
+    "revision": "7d5cc9e27e3e340c8b521d11c8da84047494fe30"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -327,7 +327,7 @@
     "revision": "953abfc8bb3eb2f578e1f461edba4a9885f974b8"
   },
   "javascript": {
-    "revision": "aa08ce31d9ddcb1ada668ef1fc58fe0cd277efd1"
+    "revision": "fff4560044bdc51d9f6995f1edc797b7cd72b9dc"
   },
   "jq": {
     "revision": "13990f530e8e6709b7978503da9bc8701d366791"
@@ -450,7 +450,7 @@
     "revision": "b3cda619248e7dd0f216088bd152f59ce0bbe488"
   },
   "norg": {
-    "revision": "8ef790631cba8110c17361b3d0080326a7c86dd5"
+    "revision": "aa1a1a7ded81a094cc3d5cb14bea6f34b86d8688"
   },
   "nqc": {
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
@@ -657,7 +657,7 @@
     "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
   },
   "ssh_config": {
-    "revision": "514695df4985f56455b8f139a319453a2325cdcf"
+    "revision": "77450e8bce8853921512348f83c73c168c71fdfb"
   },
   "starlark": {
     "revision": "b31a616aac5d05f927f3f9dd809789db7805b632"
@@ -792,7 +792,7 @@
     "revision": "f5980f534ee64256b1e64b0a42e2864d91154a5d"
   },
   "wing": {
-    "revision": "d66dd90031f96ae05abec9cf8248cd7f70650f5f"
+    "revision": "bd1d35cf3e013dc7e189b46a593bdc2b281b0dd7"
   },
   "wit": {
     "revision": "6f511f9c6676e597c2f0930e4d2629595319882d"
