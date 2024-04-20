@@ -123,28 +123,6 @@ end
 --- PARSER MANAGEMENT FUNCTIONS
 ---
 
---- @param repo InstallInfo
---- @param project_name string
---- @param cache_dir string
---- @param from_local_path boolean
---- @return string
-local function get_compile_location(repo, cache_dir, project_name, from_local_path)
-  ---@type string compile_location only needed for typescript installs.
-  if from_local_path then
-    local compile_location = repo.url
-    if repo.location then
-      compile_location = fs.joinpath(compile_location, repo.location)
-    end
-    return compile_location
-  end
-
-  local repo_location = project_name
-  if repo.location then
-    repo_location = fs.joinpath(repo_location, repo.location)
-  end
-  return fs.joinpath(cache_dir, repo_location)
-end
-
 local function istring(c)
   return type(c) == 'string'
 end
@@ -168,6 +146,10 @@ end
 --- @param compile_location string
 --- @return string? err
 local function do_generate_from_grammar(logger, repo, compile_location)
+  if not executable('tree-sitter') then
+    return logger:error('tree-sitter CLI not found: `tree-sitter` is not executable')
+  end
+
   if repo.generate_requires_npm then
     if not executable('npm') then
       return logger:error('NPM requires to be installed from grammar.js')
@@ -400,23 +382,29 @@ local function can_download_tar(repo)
 end
 
 -- Returns the compile command based on the OS and user options
+---@param logger Logger
 ---@param repo InstallInfo
 ---@param cc string
 ---@param compile_location string
----@return vim.SystemCompleted
-local function do_compile(repo, cc, compile_location)
+--- @return string? err
+local function do_compile(logger, repo, cc, compile_location)
   local args = vim.tbl_flatten(select_compiler_args(repo, cc))
   local cmd = vim.list_extend({ cc }, args)
 
-  return system(cmd, { cwd = compile_location })
+  logger:info('Compiling parser')
+
+  local r = system(cmd, { cwd = compile_location })
+  if r.code > 0 then
+    return logger:error('Error during compilation: %s', r.stderr)
+  end
 end
 
 ---@param lang string
 ---@param cache_dir string
 ---@param install_dir string
----@param generate_from_grammar? boolean
+---@param generate? boolean
 ---@return string? err
-local function install_lang0(lang, cache_dir, install_dir, generate_from_grammar)
+local function install_lang0(lang, cache_dir, install_dir, generate)
   local logger = log.new('install/' .. lang)
 
   local repo = get_parser_install_info(lang)
@@ -429,50 +417,43 @@ local function install_lang0(lang, cache_dir, install_dir, generate_from_grammar
 
     local project_name = 'tree-sitter-' .. lang
 
-    generate_from_grammar = repo.requires_generate_from_grammar or generate_from_grammar
-
-    if generate_from_grammar and not executable('tree-sitter') then
-      return logger:error('tree-sitter CLI not found: `tree-sitter` is not executable')
-    end
-
-    if generate_from_grammar and not executable('node') then
-      return logger:error('Node JS not found: `node` is not executable')
-    end
-
     local revision = get_target_revision(lang)
 
-    local maybe_local_path = fs.normalize(repo.url)
-    local from_local_path = fn.isdirectory(maybe_local_path) == 1
-    if from_local_path then
-      repo.url = maybe_local_path
-    end
-
-    if not from_local_path then
-      util.delete(fs.joinpath(cache_dir, project_name))
+    local compile_location ---@type string
+    if repo.path then
+      compile_location = fs.normalize(repo.path)
+    else
       local project_dir = fs.joinpath(cache_dir, project_name)
+      util.delete(project_dir)
 
-      revision = revision or repo.branch or 'master'
+      revision = revision or repo.branch or 'main'
 
       local do_download = can_download_tar(repo) and do_download_tar or do_download_git
       local err = do_download(logger, repo, project_name, cache_dir, revision, project_dir)
       if err then
         return err
       end
+      compile_location = fs.joinpath(cache_dir, project_name)
     end
 
-    local compile_location = get_compile_location(repo, cache_dir, project_name, from_local_path)
+    if repo.location then
+      compile_location = fs.joinpath(compile_location, repo.location)
+    end
 
-    if generate_from_grammar then
-      local err = do_generate_from_grammar(logger, repo, compile_location)
-      if err then
-        return err
+    do
+      if repo.generate or generate then
+        local err = do_generate_from_grammar(logger, repo, compile_location)
+        if err then
+          return err
+        end
       end
     end
 
-    logger:info('Compiling parser')
-    local r = do_compile(repo, cc, compile_location)
-    if r.code > 0 then
-      return logger:error('Error during compilation: %s', r.stderr)
+    do
+      local err = do_compile(logger, repo, cc, compile_location)
+      if err then
+        return err
+      end
     end
 
     local parser_lib_name = fs.joinpath(install_dir, lang) .. '.so'
@@ -486,7 +467,7 @@ local function install_lang0(lang, cache_dir, install_dir, generate_from_grammar
     local revfile = fs.joinpath(config.get_install_dir('parser-info') or '', lang .. '.revision')
     util.write_file(revfile, revision or '')
 
-    if not from_local_path then
+    if not repo.path then
       util.delete(fs.joinpath(cache_dir, project_name))
     end
   end
@@ -560,11 +541,6 @@ local function install(languages, options, _callback)
   local force = options.force
   local generate_from_grammar = options.generate_from_grammar
   local skip = options.skip
-
-  if not executable('git') then
-    log.error('Git is required on your system to run this command')
-    return
-  end
 
   local cache_dir = vim.fs.normalize(fn.stdpath('cache'))
   local install_dir = config.get_install_dir('parser')
