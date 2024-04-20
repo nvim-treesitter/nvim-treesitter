@@ -13,7 +13,7 @@
 ---@field maintainers? string[]
 ---@field requires? string[]
 ---@field tier integer
----@field readme_note? string|nil
+---@field readme_note? string
 
 local M = {}
 
