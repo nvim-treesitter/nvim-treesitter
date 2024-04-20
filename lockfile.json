@@ -39,7 +39,7 @@
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
   },
   "bicep": {
-    "revision": "c3451d1049c80074b18078ba50007b7c00e063f8"
+    "revision": "0092c7d1bd6bb22ce0a6f78497d50ea2b87f19c0"
   },
   "bitbake": {
     "revision": "7e0e2ac6f1d0da1a91ab84f35edddfdfece54f1a"
@@ -57,7 +57,7 @@
     "revision": "6216c6ee5e9fc0649c4bd7b1aedd884a55bdd9ef"
   },
   "capnp": {
-    "revision": "dc28c9f4212809eab74d10996086297853eb34e5"
+    "revision": "7b0883c03e5edd34ef7bcf703194204299d7099f"
   },
   "chatito": {
     "revision": "fe7a2a75d3d74c1215141b7a7ebebb57ae17a370"
@@ -81,7 +81,7 @@
     "revision": "604d73c38d4c28ca68e9e441ffd405d68cb63051"
   },
   "cpon": {
-    "revision": "f4b3cbc8b0bd4e13035d39940fef09f1392e8739"
+    "revision": "594289eadfec719198e560f9d7fd243c4db678d5"
   },
   "cpp": {
     "revision": "72fd00128f1c38319670cbf4bcedbba0dc849d96"
@@ -174,7 +174,7 @@
     "revision": "0a8910f293268e27ff554357c229ba172b0eaed2"
   },
   "firrtl": {
-    "revision": "2b5adae629c8cba528c7b1e4aa67a8ae28934ea5"
+    "revision": "8503d3a0fe0f9e427863cb0055699ff2d29ae5f5"
   },
   "fish": {
     "revision": "a78aef9abc395c600c38a037ac779afc7e3cc9e0"
@@ -267,7 +267,7 @@
     "revision": "fca1e294f6dce8ec5659233a6a21f5bd0ed5b4f2"
   },
   "hare": {
-    "revision": "3d4af179414525a35dd069ba0208c9b71093d8b3"
+    "revision": "070524937539eb8bb4f10debd9c83b66c434f3a2"
   },
   "haskell": {
     "revision": "95a4f0023741b3bee0cc500f3dab9c5bab2dc2be"
@@ -399,7 +399,7 @@
     "revision": "31461ae9bd0866cb5117cfe5de71189854fd0f3e"
   },
   "luau": {
-    "revision": "e5f7a020967407f73959592decdb147bb5fc30bb"
+    "revision": "5b088fac748f2666a315cafd1638a214388eb23e"
   },
   "m68k": {
     "revision": "d097b123f19c6eaba2bf181c05420d88b9fc489d"
@@ -501,7 +501,7 @@
     "revision": "924aadaf5dea2a6074d72027b064f939acf32e20"
   },
   "po": {
-    "revision": "d6aed225290bc71a15ab6f06305cb11419360c56"
+    "revision": "bd860a0f57f697162bf28e576674be9c1500db5e"
   },
   "pod": {
     "revision": "39da859947b94abdee43e431368e1ae975c0a424"
@@ -510,7 +510,7 @@
     "revision": "592476d81f95d2451f2ca107dc872224c76fecdf"
   },
   "pony": {
-    "revision": "16f930b250433cfcd4fb4144df92bb98ad344c20"
+    "revision": "73ff874ae4c9e9b45462673cbc0a1e350e2522a7"
   },
   "printf": {
     "revision": "0e0aceabbf607ea09e03562f5d8a56f048ddea3d"
@@ -537,7 +537,7 @@
     "revision": "a7ff31a38908df9b9f34828d21d6ca5e12413e18"
   },
   "puppet": {
-    "revision": "5849f9694197a6e822872945b415429c285fdd54"
+    "revision": "584522f32495d648b18a53ccb52d988e60de127d"
   },
   "purescript": {
     "revision": "daf9b3e2be18b0b2996a1281f7783e0d041d8b80"
@@ -597,7 +597,7 @@
     "revision": "7df2c0892e62efb81a7504d9799d4e0d0443d241"
   },
   "ron": {
-    "revision": "ce6086b2c9e8e71065b8129d6c2289c5f66d1879"
+    "revision": "f0ddc95a4b7bb21a7308642255a80f5496e69c5b"
   },
   "rst": {
     "revision": "5120f6e59284cb8b85b450bd2db0bd352635ba9f"
@@ -627,7 +627,7 @@
     "revision": "d5fbeaf0c26683f1417d00b6a5ab1cca445031f2"
   },
   "smali": {
-    "revision": "5ae51e15c4d1ac93cba6127caf3d1f0a072c140c"
+    "revision": "3f6517855898ef23023e5d64a8b175d4ee8d646e"
   },
   "smithy": {
     "revision": "8327eb84d55639ffbe08c9dc82da7fff72a1ad07"
@@ -654,7 +654,7 @@
     "revision": "25f94f998de79bae9df28add9782f9ea6ea0e2b8"
   },
   "squirrel": {
-    "revision": "e8b5835296f931bcaa1477d3c5a68a0c5c2ba034"
+    "revision": "f93fd2864dd05cc39b0490145fd86a1a93bfa3a3"
   },
   "ssh_config": {
     "revision": "77450e8bce8853921512348f83c73c168c71fdfb"
@@ -690,7 +690,7 @@
     "revision": "6182836f4128725f1e74ce986840d7317021a015"
   },
   "tablegen": {
-    "revision": "300f6a490e71f895e644ed2deec6920860a2e107"
+    "revision": "6b7eb096621443627cc5e29c8c34ff1fde482cf3"
   },
   "tcl": {
     "revision": "8784024358c233efd0f3a6fd9e7a3c5852e628bc"
@@ -699,7 +699,7 @@
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
   },
   "templ": {
-    "revision": "ba859a973d3e9a901c425134f4477e083a305ed5"
+    "revision": "e2218a2376e3ff18c9963b21aa567770baab0462"
   },
   "terraform": {
     "revision": "e936d3fef8bac884661472dce71ad82284761eb1"
@@ -708,7 +708,7 @@
     "revision": "8dacf02aa402892c91079f8577998ed5148c0496"
   },
   "thrift": {
-    "revision": "d4deb1bd9e848f2dbe81103a151d99e8546de480"
+    "revision": "68fd0d80943a828d9e6f49c58a74be1e9ca142cf"
   },
   "tiger": {
     "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
@@ -762,7 +762,7 @@
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
   },
   "v": {
-    "revision": "0f97daa1395e0b7ec91b3411c976c8a04d04f483"
+    "revision": "7e11a6f8f369df935664fadd2f0c99d90fe3226f"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
@@ -810,7 +810,7 @@
     "revision": "2c0e6be8dd4dcb961c345fa35c309ad4f5bd3502"
   },
   "yuck": {
-    "revision": "c348825d3f86dec71dee0e1223c6bd73114e3579"
+    "revision": "a513732feb813426b51d1ead8397a9c285c411be"
   },
   "zathurarc": {
     "revision": "09b837dc8f7445fd86e1245c23b1a7804229edd4"
