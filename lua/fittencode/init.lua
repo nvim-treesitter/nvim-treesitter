@@ -28,11 +28,7 @@ function M.setup(opts)
     require('fittencode.lsp').register_source()
   end
 
-  -- Defer loading last session to avoid blocking initialization
-  local DEFER_LOAD_TIME = 100
-  vim.defer_fn(function()
-    require('fittencode.sessions').request_load_last_session()
-  end, DEFER_LOAD_TIME)
+  require('fittencode.sessions').request_load_last_session()
 end
 
 setmetatable(M, {
