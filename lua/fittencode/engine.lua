@@ -180,15 +180,15 @@ function M.generate_one_stage(row, col, force, on_suggestions_ready, on_error)
     Log.debug('Cached cursor is outdated')
   end
 
-  if inline_mode then
-    if Lsp.is_active() then
-      Log.debug('LSP is active')
-      if on_error then
-        on_error()
-      end
-      return
-    end
-  end
+  -- if inline_mode then
+  --   if Lsp.is_active() then
+  --     Log.debug('LSP is active')
+  --     if on_error then
+  --       on_error()
+  --     end
+  --     return
+  --   end
+  -- end
 
   local task_id = tasks:create(row, col)
   cache:flush()
