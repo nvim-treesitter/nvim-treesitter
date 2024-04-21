@@ -4,6 +4,7 @@ local Base = require('fittencode.base')
 local Engine = require('fittencode.engine')
 local Log = require('fittencode.log')
 local API = require('fittencode.api').api
+local View = require('fittencode.view')
 
 local M = {}
 
@@ -115,7 +116,7 @@ function M.setup_keymaps()
     if API.has_suggestions() then
       API.accept_all_suggestions()
     else
-      API.feedkey_tab()
+      View.tab()
     end
   end)
   Base.map('i', '<C-Down>', API.accept_line)
