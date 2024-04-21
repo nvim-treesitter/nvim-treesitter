@@ -18,7 +18,7 @@
     "revision": "afdc3d5da18d42cbb471c0f40527dbed9cace7ad"
   },
   "astro": {
-    "revision": "b422ccd41f0b433260a3d28df7e39fa2ff63ef9c"
+    "revision": "1aab99ed2af477fe4283365226589908809a696d"
   },
   "authzed": {
     "revision": "1dec7e1af96c56924e3322cd85fdce15d0a31d00"
@@ -117,7 +117,7 @@
     "revision": "0229c0211dba909c5d45129ac784a3f4d49c243a"
   },
   "djot": {
-    "revision": "63f176e7db5fca073b55b98b7e5e95afd1587fcb"
+    "revision": "cd47aa66e7cf7645c7feb35d5e73dfe8617c679e"
   },
   "dockerfile": {
     "revision": "439c3e7b8a9bfdbf1f7d7c2beaae4173dc484cbf"
@@ -132,7 +132,7 @@
     "revision": "96beba9f3e4156aaae64bb86997503b1ceb1283d"
   },
   "earthfile": {
-    "revision": "7d5cc9e27e3e340c8b521d11c8da84047494fe30"
+    "revision": "513598b175928b6989e02bfc7ff73332955dcbf9"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
