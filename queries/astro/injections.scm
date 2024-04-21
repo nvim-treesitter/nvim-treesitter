@@ -8,6 +8,10 @@
   (attribute_js_expr) @injection.content
   (#set! injection.language "typescript"))
 
+(attribute
+  (attribute_backtick_string) @injection.content
+  (#set! injection.language "typescript"))
+
 (html_interpolation
   (permissible_text) @injection.content
   (#set! injection.language "typescript"))
