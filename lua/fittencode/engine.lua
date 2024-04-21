@@ -31,17 +31,50 @@ local function condense_nl(suggestions)
   if not suggestions or #suggestions == 0 then
     return
   end
-  local row = Base.get_cursor()
+  local row, col = Base.get_cursor()
   local prev_line = nil
   local cur_line = api.nvim_buf_get_lines(0, row, row + 1, false)[1]
   if row > 1 then
     prev_line = api.nvim_buf_get_lines(0, row - 1, row, false)[1]
   end
-  if (not prev_line or #prev_line == 0) and (#cur_line == 0) then
-    while suggestions[1] and #suggestions[1] == 0 do
-      table.remove(suggestions, 1)
+
+  local nls = {}
+  local remove_all = false
+  local keep_first = false
+
+  if #cur_line == 0 then
+    if not prev_line or #prev_line == 0 then
+      remove_all = true
+    end
+  else
+    if col == #cur_line then
+      keep_first = true
     end
   end
+
+  if not remove_all and not keep_first then
+    return suggestions
+  end
+
+  Log.debug('remove_all: {}, keep_first: {}', remove_all, keep_first)
+
+  local is_processed = false
+  for i, suggestion in ipairs(suggestions) do
+    if #suggestion == 0 and not is_processed then
+      if remove_all then
+        -- ignore
+      elseif keep_first and i == 1 then
+        -- ignore
+      else
+        table.insert(nls, suggestion)
+      end
+    else
+      is_processed = true
+      table.insert(nls, suggestion)
+    end
+  end
+
+  return nls
 end
 
 ---@param suggestions string[]
@@ -90,7 +123,10 @@ local function on_suggestions(task_id, suggestions)
 
   Log.debug('Suggestions received; task_id: {}, suggestions: {}', task_id, suggestions)
 
-  condense_nl(suggestions)
+  local nls = condense_nl(suggestions)
+  if nls then
+    suggestions = nls
+  end
 
   local nor = normalize_indent(suggestions)
   if nor then
