@@ -1,13 +1,13 @@
 local api = vim.api
 
 local Base = require('fittencode.base')
+local Config = require('fittencode.config')
 local Log = require('fittencode.log')
 local Lsp = require('fittencode.lsp')
-local View = require('fittencode.view')
-local TaskScheduler = require('fittencode.tasks')
 local Sessions = require('fittencode.sessions')
 local SuggestionsCache = require('fittencode.suggestions_cache')
-local Config = require('fittencode.config')
+local TaskScheduler = require('fittencode.tasks')
+local View = require('fittencode.view')
 
 local M = {}
 
@@ -33,9 +33,9 @@ local function condense_nl(suggestions)
   end
   local row = Base.get_cursor()
   local prev_line = nil
-  local cur_line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
+  local cur_line = api.nvim_buf_get_lines(0, row, row + 1, false)[1]
   if row > 1 then
-    prev_line = vim.api.nvim_buf_get_lines(0, row - 1, row, false)[1]
+    prev_line = api.nvim_buf_get_lines(0, row - 1, row, false)[1]
   end
   if (not prev_line or #prev_line == 0) and (#cur_line == 0) then
     while suggestions[1] and #suggestions[1] == 0 do
@@ -118,7 +118,7 @@ local function lazy_inline_completion()
   end
   local row, col = Base.get_cursor()
   if is_advance(row, col) then
-    local cur_line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
+    local cur_line = api.nvim_buf_get_lines(0, row, row + 1, false)[1]
     local cache_line = cache:get_line(1)
     if not cache_line then
       return false

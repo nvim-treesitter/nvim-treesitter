@@ -1,9 +1,9 @@
 local api = vim.api
 
+local API = require('fittencode.api').api
 local Base = require('fittencode.base')
 local Engine = require('fittencode.engine')
 local Log = require('fittencode.log')
-local API = require('fittencode.api').api
 local View = require('fittencode.view')
 
 local M = {}

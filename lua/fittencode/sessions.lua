@@ -1,12 +1,12 @@
-local fn = vim.fn
 local api = vim.api
+local fn = vim.fn
 local uv = vim.uv or vim.loop
 
 local Base = require('fittencode.base')
-local Rest = require('fittencode.rest')
-local Log = require('fittencode.log')
-local KeyStorage = require('fittencode.key_storage')
 local Config = require('fittencode.config')
+local KeyStorage = require('fittencode.key_storage')
+local Log = require('fittencode.log')
+local Rest = require('fittencode.rest')
 
 local M = {}
 

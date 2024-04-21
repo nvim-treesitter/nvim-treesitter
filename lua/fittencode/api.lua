@@ -1,6 +1,6 @@
-local Sessions = require('fittencode.sessions')
-local Log = require('fittencode.log')
 local Engine = require('fittencode.engine')
+local Log = require('fittencode.log')
+local Sessions = require('fittencode.sessions')
 
 local M = {}
 

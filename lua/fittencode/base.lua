@@ -1,5 +1,5 @@
-local fn = vim.fn
 local api = vim.api
+local fn = vim.fn
 local uv = vim.uv or vim.loop
 
 local M = {}
@@ -44,7 +44,7 @@ function M.set_hi(name, hi)
     -- hi.force = true
   end
   hi.cterm = hi.cterm or {}
-  vim.api.nvim_set_hl(0, name, hi)
+  api.nvim_set_hl(0, name, hi)
 end
 
 -- Get current cursor position.
