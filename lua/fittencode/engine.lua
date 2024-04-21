@@ -445,6 +445,9 @@ function M.convert_to_lsp_completion_response(line, character, cursor_before_lin
       value = '```' .. vim.bo.ft .. '\n' .. cursor_before_line .. suggestions .. '\n```',
     },
     insertTextMode = 1,
+    cmp = {
+      kind_text = 'FittenCode',
+    },
   })
   return { items = items, isIncomplete = false }
 end
