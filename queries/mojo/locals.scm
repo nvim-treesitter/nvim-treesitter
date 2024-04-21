@@ -14,12 +14,14 @@
         left: (_
           (identifier) @local.definition.field))))) @local.scope
 
+; from mojo
 (struct_definition
   body: (block
     (expression_statement
       (assignment
         left: (identifier) @local.definition.field)))) @local.scope
 
+; from mojo
 (struct_definition
   body: (block
     (expression_statement
@@ -76,10 +78,12 @@
     (function_definition
       name: (identifier) @local.definition.method)))
 
+; from mojo
 ((struct_definition
   name: (identifier) @local.definition.type) @local.scope
   (#set! definition.type.scope "parent"))
 
+; from mojo
 (struct_definition
   body: (block
     (function_definition

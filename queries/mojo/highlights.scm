@@ -273,15 +273,15 @@
 
 [
   "def"
-  "fn"
+  "fn" ; from mojo
   "lambda"
 ] @keyword.function
 
 [
   "assert"
   "class"
-  "struct"
-  "trait"
+  "struct" ; from mojo
+  "trait" ; from mojo
   "exec"
   "global"
   "nonlocal"
@@ -290,11 +290,11 @@
   "with"
   "as"
   "type"
-  "var"
-  "alias"
-  "borrowed"
-  "inout"
-  "owned"
+  "var" ; from mojo
+  "alias" ; from mojo
+  "borrowed" ; from mojo
+  "inout" ; from mojo
+  "owned" ; from mojo
 ] @keyword
 
 [
@@ -342,7 +342,7 @@
   "except"
   "except*"
   "raise"
-  "raises"
+  "raises" ; from mojo
   "finally"
 ] @keyword.exception
 
@@ -411,9 +411,11 @@
   (#any-of? @constructor "__new__" "__init__"))
 
 ; Struct definitions
+; from mojo
 (struct_definition
   name: (identifier) @type)
 
+; from mojo
 (struct_definition
   body: (block
     (function_definition
@@ -423,7 +425,7 @@
 ; (struct_definition
 ;   superclasses: (argument_list
 ;     (identifier) @type))
-;
+; from mojo
 ((struct_definition
   body: (block
     (expression_statement
@@ -431,6 +433,7 @@
         left: (identifier) @variable.member))))
   (#lua-match? @variable.member "^[%l_].*$"))
 
+; from mojo
 ((struct_definition
   body: (block
     (expression_statement
@@ -439,6 +442,7 @@
           (identifier) @variable.member)))))
   (#lua-match? @variable.member "^[%l_].*$"))
 
+; from mojo
 ((struct_definition
   (block
     (function_definition
