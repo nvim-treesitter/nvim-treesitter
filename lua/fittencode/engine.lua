@@ -75,17 +75,17 @@ end
 
 ---@param task_id integer
 ---@param suggestions? Suggestions
----@return boolean
+---@return Suggestions?
 local function on_suggestions(task_id, suggestions)
   local row, col = Base.get_cursor()
   if not tasks:match_clean(task_id, row, col) then
     Log.debug('Completion request is outdated, discarding; task_id: {}, row: {}, col: {}', task_id, row, col)
-    return false
+    return
   end
 
   if not suggestions or #suggestions == 0 then
     Log.debug('No more suggestions')
-    return false
+    return
   end
 
   Log.debug('Suggestions received; task_id: {}, suggestions: {}', task_id, suggestions)
@@ -103,7 +103,7 @@ local function on_suggestions(task_id, suggestions)
   end
 
   if #suggestions == 0 then
-    return false
+    return
   end
 
   Log.debug('Processed suggestions: {}', suggestions)
@@ -124,7 +124,7 @@ local function on_suggestions(task_id, suggestions)
     -- end
   end
 
-  return true
+  return suggestions
 end
 
 local function lazy_inline_completion()
@@ -195,9 +195,10 @@ function M.generate_one_stage(row, col, force, on_suggestions_ready, on_error)
   local task_id = tasks:create(row, col)
   cache:flush()
   Sessions.request_generate_one_stage(task_id, function(id, suggestions)
-    if on_suggestions(id, suggestions) then
+    local processed_suggestions = on_suggestions(id, suggestions)
+    if processed_suggestions then
       if on_suggestions_ready then
-        on_suggestions_ready(suggestions)
+        on_suggestions_ready(processed_suggestions)
       end
     else
       if on_error then
