@@ -40,11 +40,6 @@ function source:get_trigger_characters()
   return self.trigger_characters
 end
 
-local SOURCE_GENERATEONESTAGE_DEBOUNCE_TIME = 80
-
----@type uv_timer_t
-local source_generate_one_stage_timer = nil
-
 -- Invoke completion (required).
 -- The `callback` function must always be called.
 ---@param request cmp.SourceCompletionApiParams
@@ -56,20 +51,18 @@ function source:complete(request, callback)
   end
 
   local row, col = Base.get_cursor()
-  Base.debounce(source_generate_one_stage_timer, function()
-    Engine.generate_one_stage(row, col, true, function(suggestions)
-      suggestions = table.concat(suggestions, '\n')
-      local cursor_before_line = request.context.cursor_before_line:sub(request.offset)
-      local line = request.context.cursor.line
-      local character = request.context.cursor.character
-      Log.debug('Source request: {}', request)
-      local response = Engine.convert_to_lsp_completion_response(line, character, cursor_before_line, suggestions)
-      Log.debug('LSP CompletionResponse: {}', response)
-      callback(response)
-    end, function()
-      callback()
-    end)
-  end, SOURCE_GENERATEONESTAGE_DEBOUNCE_TIME)
+  Engine.generate_one_stage(row, col, true, function(suggestions)
+    suggestions = table.concat(suggestions, '\n')
+    local cursor_before_line = request.context.cursor_before_line:sub(request.offset)
+    local line = request.context.cursor.line
+    local character = request.context.cursor.character
+    Log.debug('Source request: {}', request)
+    local response = Engine.convert_to_lsp_completion_response(line, character, cursor_before_line, suggestions)
+    Log.debug('LSP CompletionResponse: {}', response)
+    callback(response)
+  end, function()
+    callback()
+  end)
 end
 
 return source
