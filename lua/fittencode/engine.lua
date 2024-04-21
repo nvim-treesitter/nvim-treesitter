@@ -110,16 +110,18 @@ local function on_suggestions(task_id, suggestions)
 
   cache:update(task_id, row, col, suggestions)
 
+  -- Show inline suggestions even if LSP is already activated
   if inline_mode then
-    if Lsp.is_active() then
-      Log.debug('LSP is active, discarding completion suggestions')
-      cache:flush()
-      return false
-    else
-      -- TODO: Silence LSP temporarily to avoid completion conflicts
-      -- Lsp.silence()
-      View.render_virt_text(suggestions)
-    end
+    View.render_virt_text(suggestions)
+    -- if Lsp.is_active() then
+    --   Log.debug('LSP is active, discarding completion suggestions')
+    --   cache:flush()
+    --   return false
+    -- else
+    --   -- TODO: Silence LSP temporarily to avoid completion conflicts
+    --   -- Lsp.silence()
+    --   View.render_virt_text(suggestions)
+    -- end
   end
 
   return true
