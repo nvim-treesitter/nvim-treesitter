@@ -13,5 +13,5 @@
   (enum_declaration)
   (function_static_declaration)
   (method_declaration)
-  (namespace_use_declaration)+
+  ((comment)* (namespace_use_declaration))+
 ] @fold
