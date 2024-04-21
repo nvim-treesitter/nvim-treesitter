@@ -423,7 +423,7 @@ end
 ---@return lsp.CompletionResponse|nil
 function M.convert_to_lsp_completion_response(line, character, cursor_before_line, suggestions)
   cursor_before_line = cursor_before_line or ''
-  local LABEL_LIMIT = 30
+  local LABEL_LIMIT = 80
   local label = cursor_before_line .. suggestions
   if #label > LABEL_LIMIT then
     label = string.sub(label, 1, LABEL_LIMIT)
