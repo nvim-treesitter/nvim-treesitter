@@ -18,12 +18,15 @@ M.api = {
   set_log_level = function(level)
     Log.set_level(level)
   end,
+  feedkey_tab = function()
+    View.tab()
+  end,
+  ---@return boolean
+  has_suggestions = function()
+    return Engine.has_suggestions()
+  end,
   accept_all_suggestions = function()
-    if Engine.has_suggestions() then
-      Engine.accept_all_suggestions()
-    else
-      View.tab()
-    end
+    Engine.accept_all_suggestions()
   end,
   accept_line = function()
     Engine.accept_line()
