@@ -56,7 +56,14 @@ function source:complete(request, callback)
     local cursor_before_line = request.context.cursor_before_line:sub(request.offset)
     local line = request.context.cursor.line
     local character = request.context.cursor.character
-    Log.debug('Source request: {}', request)
+    local info = {
+      triggerCharacter = request.completion_context.triggerCharacter,
+      cursor_before_line = cursor_before_line,
+      line = line,
+      character = character,
+      reason = request.option.reason,
+    }
+    Log.debug('Source request: {}', info)
     local response = Engine.convert_to_lsp_completion_response(line, character, cursor_before_line, suggestions)
     Log.debug('LSP CompletionResponse: {}', response)
     callback(response)
