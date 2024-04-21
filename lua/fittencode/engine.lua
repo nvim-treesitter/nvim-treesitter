@@ -108,22 +108,6 @@ local function on_suggestions(task_id, suggestions)
 
   Log.debug('Processed suggestions: {}', suggestions)
 
-  cache:update(task_id, row, col, suggestions)
-
-  -- Show inline suggestions even if LSP is already activated
-  if inline_mode then
-    View.render_virt_text(suggestions)
-    -- if Lsp.is_active() then
-    --   Log.debug('LSP is active, discarding completion suggestions')
-    --   cache:flush()
-    --   return false
-    -- else
-    --   -- TODO: Silence LSP temporarily to avoid completion conflicts
-    --   -- Lsp.silence()
-    --   View.render_virt_text(suggestions)
-    -- end
-  end
-
   return suggestions
 end
 
@@ -197,6 +181,20 @@ function M.generate_one_stage(row, col, force, on_suggestions_ready, on_error)
   Sessions.request_generate_one_stage(task_id, function(id, suggestions)
     local processed_suggestions = on_suggestions(id, suggestions)
     if processed_suggestions then
+      cache:update(task_id, row, col, processed_suggestions)
+      -- Show inline suggestions even if LSP is already activated
+      if inline_mode then
+        View.render_virt_text(processed_suggestions)
+        -- if Lsp.is_active() then
+        --   Log.debug('LSP is active, discarding completion suggestions')
+        --   cache:flush()
+        --   return false
+        -- else
+        --   -- TODO: Silence LSP temporarily to avoid completion conflicts
+        --   -- Lsp.silence()
+        --   View.render_virt_text(suggestions)
+        -- end
+      end      
       if on_suggestions_ready then
         on_suggestions_ready(processed_suggestions)
       end
