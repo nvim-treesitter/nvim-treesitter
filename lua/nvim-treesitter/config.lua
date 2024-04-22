@@ -104,15 +104,6 @@ function M.get_available(tier)
       languages
     )
   end
-  if vim.fn.executable('tree-sitter') == 0 then
-    languages = vim.tbl_filter(
-      --- @param p string
-      function(p)
-        return parsers[p].install_info ~= nil and not parsers[p].install_info.generate
-      end,
-      languages
-    )
-  end
   return languages
 end
 
