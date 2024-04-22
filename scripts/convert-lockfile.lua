@@ -9,6 +9,7 @@ local lockfile = vim.json.decode(util.read_file(filename)) --[[@as table<string,
 for k, p in pairs(parsers) do
   if p.install_info then
     p.install_info.revision = lockfile[k].revision
+    p.install_info.files = nil
   end
 end
 
