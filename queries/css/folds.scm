@@ -1,1 +1,4 @@
-(rule_set) @fold
+[
+  (rule_set)
+  (import_statement)+
+] @fold
