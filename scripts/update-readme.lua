@@ -16,8 +16,8 @@ table.sort(sorted_parsers, function(a, b)
 end)
 
 local generated_text = [[
-Language | Tier | Queries | CLI | Maintainer
--------- |:----:|:-------:|:---:| ----------
+Language | Tier | Queries | Maintainer
+-------- |:----:|:-------:| ----------
 ]]
 local footnotes = ''
 
@@ -57,11 +57,6 @@ for _, v in ipairs(sorted_parsers) do
     .. (vim.uv.fs_stat('runtime/queries/' .. v.name .. '/injections.scm') and 'J' or ' ')
     .. (vim.uv.fs_stat('runtime/queries/' .. v.name .. '/locals.scm') and 'L' or ' ')
     .. '` | '
-
-  -- CLI
-  generated_text = generated_text
-    .. (p.install_info and p.install_info.generate and '✓' or '')
-    .. ' | '
 
   -- Maintainer
   generated_text = generated_text
