@@ -1,11 +1,8 @@
----@class SuggestionsCursor
----@field row? integer
----@field col? integer
-
 ---@class SuggestionsCache
 ---@field private task_id? integer
 ---@field private lines? string[]
----@field private cursor? SuggestionsCursor
+---@field private row? integer
+---@field private col? integer
 ---@field private count? integer
 local SuggestionsCache = {}
 
@@ -13,7 +10,8 @@ function SuggestionsCache.new()
   local self = setmetatable({}, { __index = SuggestionsCache })
   self.task_id = nil
   self.lines = {}
-  self.cursor = {}
+  self.row = nil
+  self.col = nil
   self.count = 0
   return self
 end
@@ -63,20 +61,20 @@ end
 ---@param row? integer
 ---@param col? integer
 function SuggestionsCache:update_cursor(row, col)
-  self.cursor.row = row
-  self.cursor.col = col
+  self.row = row
+  self.col = col
 end
 
 ---@param row integer
 ---@param col integer
 ---@return boolean
 function SuggestionsCache:equal_cursor(row, col)
-  return self.cursor.row == row and self.cursor.col == col
+  return self.row == row and self.col == col
 end
 
 ---@return integer?, integer?
 function SuggestionsCache:get_cursor()
-  return self.cursor.row, self.cursor.col
+  return self.row, self.col
 end
 
 return SuggestionsCache
