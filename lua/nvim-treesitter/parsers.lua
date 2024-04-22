@@ -2,7 +2,6 @@
 return {
   ada = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'ba0894efa03beb70780156b91e28c716b7a4764d',
       url = 'https://github.com/briot/tree-sitter-ada',
     },
@@ -11,7 +10,6 @@ return {
   },
   agda = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'd3dc807692e6bca671d4491b3bf5c67eeca8c016',
       url = 'https://github.com/tree-sitter/tree-sitter-agda',
     },
@@ -20,7 +18,6 @@ return {
   },
   angular = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = '10f21f3f1b10584e62ecc113ab3cda1196d0ceb8',
       url = 'https://github.com/dlvandenberg/tree-sitter-angular',
@@ -31,7 +28,6 @@ return {
   },
   apex = {
     install_info = {
-      files = { 'src/parser.c' },
       location = 'apex',
       revision = 'c99ad4b16d112fea91745e3f1b769754239fdaba',
       url = 'https://github.com/aheber/tree-sitter-sfapex',
@@ -41,7 +37,6 @@ return {
   },
   arduino = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = 'babb6d4da69b359bbb80adbf1fe39c0da9175210',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-arduino',
@@ -52,7 +47,6 @@ return {
   },
   asm = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'b0306e9bb2ebe01c6562f1aef265cc42ccc53070',
       url = 'https://github.com/RubixDev/tree-sitter-asm',
     },
@@ -61,7 +55,6 @@ return {
   },
   astro = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = '4be180759ec13651f72bacee65fa477c64222a1a',
       url = 'https://github.com/virchau13/tree-sitter-astro',
@@ -72,7 +65,6 @@ return {
   },
   authzed = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '1dec7e1af96c56924e3322cd85fdce15d0a31d00',
       url = 'https://github.com/mleonidas/tree-sitter-authzed',
     },
@@ -81,7 +73,6 @@ return {
   },
   awk = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'ba7472152d79a8c916550c80fdbfd5724d07a0c9',
       url = 'https://github.com/Beaglefoot/tree-sitter-awk',
     },
@@ -89,7 +80,6 @@ return {
   },
   bash = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '2fbd860f802802ca76a6661ce025b3a3bca2d3ed',
       url = 'https://github.com/tree-sitter/tree-sitter-bash',
     },
@@ -98,7 +88,6 @@ return {
   },
   bass = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '28dc7059722be090d04cd751aed915b2fee2f89a',
       url = 'https://github.com/vito/tree-sitter-bass',
     },
@@ -107,7 +96,6 @@ return {
   },
   beancount = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'c25f8034c977681653a8acd541c8b4877a58f474',
       url = 'https://github.com/polarmutex/tree-sitter-beancount',
     },
@@ -116,7 +104,6 @@ return {
   },
   bibtex = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'ccfd77db0ed799b6c22c214fe9d2937f47bc8b34',
       url = 'https://github.com/latex-lsp/tree-sitter-bibtex',
     },
@@ -125,7 +112,6 @@ return {
   },
   bicep = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '0092c7d1bd6bb22ce0a6f78497d50ea2b87f19c0',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-bicep',
     },
@@ -134,7 +120,6 @@ return {
   },
   bitbake = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'a5d04fdb5a69a02b8fa8eb5525a60dfb5309b73b',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-bitbake',
     },
@@ -143,7 +128,6 @@ return {
   },
   blueprint = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '60ba73739c6083c693d86a1a7cf039c07eb4ed59',
       url = 'https://gitlab.com/gabmus/tree-sitter-blueprint',
     },
@@ -152,7 +136,6 @@ return {
   },
   c = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '82fb86aa544843bd17a9f0f3dc16edf645a34349',
       url = 'https://github.com/tree-sitter/tree-sitter-c',
     },
@@ -161,7 +144,6 @@ return {
   },
   c_sharp = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '82fa8f05f41a33e9bc830f85d74a9548f0291738',
       url = 'https://github.com/tree-sitter/tree-sitter-c-sharp',
     },
@@ -170,7 +152,6 @@ return {
   },
   cairo = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '6238f609bea233040fe927858156dee5515a0745',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-cairo',
     },
@@ -179,7 +160,6 @@ return {
   },
   capnp = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '7b0883c03e5edd34ef7bcf703194204299d7099f',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-capnp',
     },
@@ -188,7 +168,6 @@ return {
   },
   chatito = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'a461f20dedb43905febb12c1635bc7d2e43e96f0',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-chatito',
     },
@@ -197,7 +176,6 @@ return {
   },
   clojure = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '3a1ace906c151dd631cf6f149b5083f2b60e6a9e',
       url = 'https://github.com/sogaiu/tree-sitter-clojure',
     },
@@ -206,7 +184,6 @@ return {
   },
   cmake = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '20ffd6d3b4da1acdbf2d08204b2130a5b2f7c4b3',
       url = 'https://github.com/uyha/tree-sitter-cmake',
     },
@@ -215,7 +192,6 @@ return {
   },
   comment = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '5d8b29f6ef3bf64d59430dcfe76b31cc44b5abfd',
       url = 'https://github.com/stsewd/tree-sitter-comment',
     },
@@ -224,7 +200,6 @@ return {
   },
   commonlisp = {
     install_info = {
-      files = { 'src/parser.c' },
       generate_from_json = true,
       revision = 'bf2a65b1c119898a1a17389e07f2a399c05cdc0c',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-commonlisp',
@@ -234,7 +209,6 @@ return {
   },
   cooklang = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '4ebe237c1cf64cf3826fc249e9ec0988fe07e58e',
       url = 'https://github.com/addcninblue/tree-sitter-cooklang',
     },
@@ -243,7 +217,6 @@ return {
   },
   corn = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '604d73c38d4c28ca68e9e441ffd405d68cb63051',
       url = 'https://github.com/jakestanger/tree-sitter-corn',
     },
@@ -252,7 +225,6 @@ return {
   },
   cpon = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '594289eadfec719198e560f9d7fd243c4db678d5',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-cpon',
     },
@@ -261,7 +233,6 @@ return {
   },
   cpp = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = '2369fa991eba294e9238e28280ffcd58132f94bc',
       url = 'https://github.com/tree-sitter/tree-sitter-cpp',
@@ -272,7 +243,6 @@ return {
   },
   css = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'f6be52c3d1cdb1c5e4dd7d8bce0a57497f55d6af',
       url = 'https://github.com/tree-sitter/tree-sitter-css',
     },
@@ -281,7 +251,6 @@ return {
   },
   csv = {
     install_info = {
-      files = { 'src/parser.c' },
       location = 'csv',
       revision = '7eb7297823605392d2bbcc4c09b1cd18d6fa9529',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-csv',
@@ -292,7 +261,6 @@ return {
   },
   cuda = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = 'e7878a9cf4157e9d6c8013ff5605c9f26d62894d',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-cuda',
@@ -303,7 +271,6 @@ return {
   },
   cue = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '8a5f273bfa281c66354da562f2307c2d394b6c81',
       url = 'https://github.com/eonpatapon/tree-sitter-cue',
     },
@@ -312,7 +279,6 @@ return {
   },
   d = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '750dde90ed9cdbd82493bc28478d8ab1976b0e9f',
       url = 'https://github.com/gdamore/tree-sitter-d',
     },
@@ -321,7 +287,6 @@ return {
   },
   dart = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'ac0bb849ccd1a923963af47573b5e396736ff582',
       url = 'https://github.com/UserNobody14/tree-sitter-dart',
     },
@@ -330,7 +295,6 @@ return {
   },
   devicetree = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'fb07e6044ffd36932c57a5be01ba5d6b8a9337bb',
       url = 'https://github.com/joelspadin/tree-sitter-devicetree',
     },
@@ -339,7 +303,6 @@ return {
   },
   dhall = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'affb6ee38d629c9296749767ab832d69bb0d9ea8',
       url = 'https://github.com/jbellerb/tree-sitter-dhall',
     },
@@ -348,7 +311,6 @@ return {
   },
   diff = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '629676fc3919606964231b2c7b9677d6998a2cb4',
       url = 'https://github.com/the-mikedavis/tree-sitter-diff',
     },
@@ -357,7 +319,6 @@ return {
   },
   disassembly = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '0229c0211dba909c5d45129ac784a3f4d49c243a',
       url = 'https://github.com/ColinKennedy/tree-sitter-disassembly',
     },
@@ -366,7 +327,6 @@ return {
   },
   djot = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '0e9a836ec47612ade15645fb1680adb549894a6c',
       url = 'https://github.com/treeman/tree-sitter-djot',
     },
@@ -375,7 +335,6 @@ return {
   },
   dockerfile = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '087daa20438a6cc01fa5e6fe6906d77c869d19fe',
       url = 'https://github.com/camdencheek/tree-sitter-dockerfile',
     },
@@ -384,7 +343,6 @@ return {
   },
   dot = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '9ab85550c896d8b294d9b9ca1e30698736f08cea',
       url = 'https://github.com/rydesun/tree-sitter-dot',
     },
@@ -393,7 +351,6 @@ return {
   },
   doxygen = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '4a30eba5d047d6a8c5b005202b4848c0b33d76ca',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-doxygen',
     },
@@ -402,7 +359,6 @@ return {
   },
   dtd = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       location = 'dtd',
       revision = '648183d86f6f8ffb240ea11b4c6873f6f45d8b67',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-xml',
@@ -412,7 +368,6 @@ return {
   },
   earthfile = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'cc99a3f5e4281b63fdd63dca4750e808fd52628f',
       url = 'https://github.com/glehmann/tree-sitter-earthfile',
     },
@@ -421,7 +376,6 @@ return {
   },
   ebnf = {
     install_info = {
-      files = { 'src/parser.c' },
       location = 'crates/tree-sitter-ebnf',
       revision = '8e635b0b723c620774dfb8abf382a7f531894b40',
       url = 'https://github.com/RubixDev/ebnf',
@@ -436,7 +390,6 @@ return {
   },
   eds = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'fde62029d4c715562230070b9af51a9500c2ce10',
       url = 'https://github.com/uyha/tree-sitter-eds',
     },
@@ -445,7 +398,6 @@ return {
   },
   eex = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'f742f2fe327463335e8671a87c0b9b396905d1d1',
       url = 'https://github.com/connorlay/tree-sitter-eex',
     },
@@ -454,7 +406,6 @@ return {
   },
   elixir = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'de690fa8a028f122af46d9d2685679fe5f2d7d60',
       url = 'https://github.com/elixir-lang/tree-sitter-elixir',
     },
@@ -463,7 +414,6 @@ return {
   },
   elm = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '09dbf221d7491dc8d8839616b27c21b9c025c457',
       url = 'https://github.com/elm-tooling/tree-sitter-elm',
     },
@@ -472,7 +422,6 @@ return {
   },
   elsa = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '0a66b2b3f3c1915e67ad2ef9f7dbd2a84820d9d7',
       url = 'https://github.com/glapa-grossklag/tree-sitter-elsa',
     },
@@ -481,7 +430,6 @@ return {
   },
   elvish = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '5e7210d945425b77f82cbaebc5af4dd3e1ad40f5',
       url = 'https://github.com/elves/tree-sitter-elvish',
     },
@@ -490,7 +438,6 @@ return {
   },
   embedded_template = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '38d5004a797298dc42c85e7706c5ceac46a3f29f',
       url = 'https://github.com/tree-sitter/tree-sitter-embedded-template',
     },
@@ -498,7 +445,6 @@ return {
   },
   erlang = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '868306b033f5163658e8777940da68d61afad5cb',
       url = 'https://github.com/WhatsApp/tree-sitter-erlang',
     },
@@ -507,7 +453,6 @@ return {
   },
   facility = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'a52579670e2b14ec03d410c3c980fafaf6d659c4',
       url = 'https://github.com/FacilityApi/tree-sitter-facility',
     },
@@ -516,7 +461,6 @@ return {
   },
   faust = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'f3b9274514b5f9bf6b0dd4a01c30f9cc15c58bc4',
       url = 'https://github.com/khiner/tree-sitter-faust',
     },
@@ -525,7 +469,6 @@ return {
   },
   fennel = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = '8ad17704b3c2469155947d4e8fcb618cf1328459',
       url = 'https://github.com/alexmozaidze/tree-sitter-fennel',
@@ -535,7 +478,6 @@ return {
   },
   fidl = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '0a8910f293268e27ff554357c229ba172b0eaed2',
       url = 'https://github.com/google/tree-sitter-fidl',
     },
@@ -544,7 +486,6 @@ return {
   },
   firrtl = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '8503d3a0fe0f9e427863cb0055699ff2d29ae5f5',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-firrtl',
     },
@@ -553,7 +494,6 @@ return {
   },
   fish = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'a78aef9abc395c600c38a037ac779afc7e3cc9e0',
       url = 'https://github.com/ram02z/tree-sitter-fish',
     },
@@ -562,7 +502,6 @@ return {
   },
   foam = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '04664b40c0dadb7ef37028acf3422c63271d377b',
       url = 'https://github.com/FoamScience/tree-sitter-foam',
     },
@@ -571,7 +510,6 @@ return {
   },
   forth = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '90189238385cf636b9ee99ce548b9e5b5e569d48',
       url = 'https://github.com/AlexanderBrevig/tree-sitter-forth',
     },
@@ -580,7 +518,6 @@ return {
   },
   fortran = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'f73d473e3530862dee7cbb38520f28824e7804f6',
       url = 'https://github.com/stadelmanma/tree-sitter-fortran',
     },
@@ -589,7 +526,6 @@ return {
   },
   fsh = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'fad2e175099a45efbc98f000cc196d3674cc45e0',
       url = 'https://github.com/mgramigna/tree-sitter-fsh',
     },
@@ -598,7 +534,6 @@ return {
   },
   func = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'f780ca55e65e7d7360d0229331763e16c452fc98',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-func',
     },
@@ -607,7 +542,6 @@ return {
   },
   fusion = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '19db2f47ba4c3a0f6238d4ae0e2abfca16e61dd6',
       url = 'https://gitlab.com/jirgn/tree-sitter-fusion',
     },
@@ -616,7 +550,6 @@ return {
   },
   gdscript = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '1f1e782fe2600f50ae57b53876505b8282388d77',
       url = 'https://github.com/PrestonKnopp/tree-sitter-gdscript',
     },
@@ -626,7 +559,6 @@ return {
   },
   gdshader = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'ffd9f958df13cae04593781d7d2562295a872455',
       url = 'https://github.com/GodOfAvacyn/tree-sitter-gdshader',
     },
@@ -635,7 +567,6 @@ return {
   },
   git_config = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '9c2a1b7894e6d9eedfe99805b829b4ecd871375e',
       url = 'https://github.com/the-mikedavis/tree-sitter-git-config',
     },
@@ -644,7 +575,6 @@ return {
   },
   git_rebase = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'd8a4207ebbc47bd78bacdf48f883db58283f9fd8',
       url = 'https://github.com/the-mikedavis/tree-sitter-git-rebase',
     },
@@ -653,7 +583,6 @@ return {
   },
   gitattributes = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '41940e199ba5763abea1d21b4f717014b45f01ea',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-gitattributes',
     },
@@ -662,7 +591,6 @@ return {
   },
   gitcommit = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'edd817e0532f179b7f7f371dc180629070945f0c',
       url = 'https://github.com/gbprod/tree-sitter-gitcommit',
     },
@@ -671,7 +599,6 @@ return {
   },
   gitignore = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'f4685bf11ac466dd278449bcfe5fd014e94aa504',
       url = 'https://github.com/shunsambongi/tree-sitter-gitignore',
     },
@@ -680,7 +607,6 @@ return {
   },
   gleam = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '8432ffe32ccd360534837256747beb5b1c82fca1',
       url = 'https://github.com/gleam-lang/tree-sitter-gleam',
     },
@@ -689,7 +615,6 @@ return {
   },
   glimmer = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '6b25d265c990139353e1f7f97baf84987ebb7bf0',
       url = 'https://github.com/alexlafroscia/tree-sitter-glimmer',
     },
@@ -699,7 +624,6 @@ return {
   },
   glsl = {
     install_info = {
-      files = { 'src/parser.c' },
       generate_from_json = true,
       revision = '8c9fb41836dc202bbbcf0e2369f256055786dedb',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-glsl',
@@ -710,7 +634,6 @@ return {
   },
   gn = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'bc06955bc1e3c9ff8e9b2b2a55b38b94da923c05',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-gn',
     },
@@ -720,7 +643,6 @@ return {
   },
   gnuplot = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '3c895f5d9c0b3a3c7e02383766b462c21913c000',
       url = 'https://github.com/dpezto/tree-sitter-gnuplot',
     },
@@ -729,7 +651,6 @@ return {
   },
   go = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '7ee8d928db5202f6831a78f8112fd693bf69f98b',
       url = 'https://github.com/tree-sitter/tree-sitter-go',
     },
@@ -738,7 +659,6 @@ return {
   },
   godot_resource = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '2ffb90de47417018651fc3b970e5f6b67214dc9d',
       url = 'https://github.com/PrestonKnopp/tree-sitter-godot-resource',
     },
@@ -748,7 +668,6 @@ return {
   },
   gomod = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'bbe2fe3be4b87e06a613e685250f473d2267f430',
       url = 'https://github.com/camdencheek/tree-sitter-go-mod',
     },
@@ -757,7 +676,6 @@ return {
   },
   gosum = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'e2ac513b2240c7ff1069ae33b2df29ce90777c11',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-go-sum',
     },
@@ -766,7 +684,6 @@ return {
   },
   gotmpl = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '17144a77be0acdecebd9d557398883569fed41de',
       url = 'https://github.com/ngalaiko/tree-sitter-go-template',
     },
@@ -775,7 +692,6 @@ return {
   },
   gowork = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '949a8a470559543857a62102c84700d291fc984c',
       url = 'https://github.com/omertuc/tree-sitter-go-work',
     },
@@ -784,7 +700,6 @@ return {
   },
   gpg = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'f99323fb8f3f10b6c69db0c2f6d0a14bd7330675',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-gpg-config',
     },
@@ -793,7 +708,6 @@ return {
   },
   graphql = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '5e66e961eee421786bdda8495ed1db045e06b5fe',
       url = 'https://github.com/bkegley/tree-sitter-graphql',
     },
@@ -802,7 +716,6 @@ return {
   },
   groovy = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '6c5c8813233fe326e24c5ef032858d13f8006a8d',
       url = 'https://github.com/murtaza64/tree-sitter-groovy',
     },
@@ -811,7 +724,6 @@ return {
   },
   gstlaunch = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '549aef253fd38a53995cda1bf55c501174372bf7',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-gstlaunch',
     },
@@ -820,7 +732,6 @@ return {
   },
   hack = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'fca1e294f6dce8ec5659233a6a21f5bd0ed5b4f2',
       url = 'https://github.com/slackhq/tree-sitter-hack',
     },
@@ -828,7 +739,6 @@ return {
   },
   hare = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '070524937539eb8bb4f10debd9c83b66c434f3a2',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-hare',
     },
@@ -837,7 +747,6 @@ return {
   },
   haskell = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'a50070d5bb5bd5c1281740a6102ecf1f4b0c4f19',
       url = 'https://github.com/tree-sitter/tree-sitter-haskell',
     },
@@ -846,7 +755,6 @@ return {
   },
   haskell_persistent = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '577259b4068b2c281c9ebf94c109bd50a74d5857',
       url = 'https://github.com/MercuryTechnologies/tree-sitter-haskell-persistent',
     },
@@ -855,7 +763,6 @@ return {
   },
   hcl = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'e936d3fef8bac884661472dce71ad82284761eb1',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-hcl',
     },
@@ -864,7 +771,6 @@ return {
   },
   heex = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'b5ad6e34eea18a15bbd1466ca707a17f9bff7b93',
       url = 'https://github.com/connorlay/tree-sitter-heex',
     },
@@ -873,7 +779,6 @@ return {
   },
   helm = {
     install_info = {
-      files = { 'src/parser.c' },
       location = 'dialects/helm',
       revision = '17144a77be0acdecebd9d557398883569fed41de',
       url = 'https://github.com/ngalaiko/tree-sitter-go-template',
@@ -883,7 +788,6 @@ return {
   },
   hjson = {
     install_info = {
-      files = { 'src/parser.c' },
       generate_from_json = true,
       revision = '02fa3b79b3ff9a296066da6277adfc3f26cbc9e0',
       url = 'https://github.com/winston0410/tree-sitter-hjson',
@@ -894,7 +798,6 @@ return {
   },
   hlsl = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = 'feea0ff6eccda8be958c133985dca8977db3d887',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-hlsl',
@@ -905,7 +808,6 @@ return {
   },
   hlsplaylist = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '64f19029339e75d6762feae39e7878595860c980',
       url = 'https://github.com/Freed-Wu/tree-sitter-hlsplaylist',
     },
@@ -914,7 +816,6 @@ return {
   },
   hocon = {
     install_info = {
-      files = { 'src/parser.c' },
       generate_from_json = true,
       revision = 'c390f10519ae69fdb03b3e5764f5592fb6924bcc',
       url = 'https://github.com/antosha417/tree-sitter-hocon',
@@ -924,7 +825,6 @@ return {
   },
   hoon = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'a24c5a39d1d7e993a8bee913c8e8b6a652ca5ae8',
       url = 'https://github.com/urbit-pilled/tree-sitter-hoon',
     },
@@ -933,7 +833,6 @@ return {
   },
   html = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'e4d834eb4918df01dcad5c27d1b15d56e3bd94cd',
       url = 'https://github.com/tree-sitter/tree-sitter-html',
     },
@@ -948,7 +847,6 @@ return {
   },
   htmldjango = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'ea71012d3fe14dd0b69f36be4f96bdfe9155ebae',
       url = 'https://github.com/interdependence/tree-sitter-htmldjango',
     },
@@ -957,7 +855,6 @@ return {
   },
   http = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '8d22f33faa5aa95c6526606fb656ada342e59e40',
       url = 'https://github.com/rest-nvim/tree-sitter-http',
     },
@@ -966,7 +863,6 @@ return {
   },
   hurl = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'ad705af8c44c737bdb965fc081329c50716d2d03',
       url = 'https://github.com/pfeiferj/tree-sitter-hurl',
     },
@@ -975,7 +871,6 @@ return {
   },
   hyprlang = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'e5da7d0aa44403153e0394d87d9edea4e5bd6609',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-hyprlang',
     },
@@ -984,7 +879,6 @@ return {
   },
   idl = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '006a5266d771cab57da58a6ade483ebd3075638d',
       url = 'https://github.com/cathaysia/tree-sitter-idl',
     },
@@ -993,7 +887,6 @@ return {
   },
   ini = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'bcb84a2d4bcd6f55b911c42deade75c8f90cb0c5',
       url = 'https://github.com/justinmk/tree-sitter-ini',
     },
@@ -1002,7 +895,6 @@ return {
   },
   inko = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '4cef9aa4980606311b906b2f2b8c6cf791c60396',
       url = 'https://github.com/inko-lang/tree-sitter-inko',
     },
@@ -1011,7 +903,6 @@ return {
   },
   ispc = {
     install_info = {
-      files = { 'src/parser.c' },
       generate_from_json = true,
       revision = '9b2f9aec2106b94b4e099fe75e73ebd8ae707c04',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-ispc',
@@ -1022,7 +913,6 @@ return {
   },
   janet_simple = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '51271e260346878e1a1aa6c506ce6a797b7c25e2',
       url = 'https://github.com/sogaiu/tree-sitter-janet-simple',
     },
@@ -1031,7 +921,6 @@ return {
   },
   java = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '953abfc8bb3eb2f578e1f461edba4a9885f974b8',
       url = 'https://github.com/tree-sitter/tree-sitter-java',
     },
@@ -1040,7 +929,6 @@ return {
   },
   javascript = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'e88537c2703546f3f0887dd3f16898e1749cdba5',
       url = 'https://github.com/tree-sitter/tree-sitter-javascript',
     },
@@ -1050,7 +938,6 @@ return {
   },
   jq = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '13990f530e8e6709b7978503da9bc8701d366791',
       url = 'https://github.com/flurie/tree-sitter-jq',
     },
@@ -1059,7 +946,6 @@ return {
   },
   jsdoc = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '49fde205b59a1d9792efc21ee0b6d50bbd35ff14',
       url = 'https://github.com/tree-sitter/tree-sitter-jsdoc',
     },
@@ -1068,7 +954,6 @@ return {
   },
   json = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '94f5c527b2965465956c2000ed6134dd24daf2a7',
       url = 'https://github.com/tree-sitter/tree-sitter-json',
     },
@@ -1077,7 +962,6 @@ return {
   },
   json5 = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'ab0ba8229d639ec4f3fa5f674c9133477f4b77bd',
       url = 'https://github.com/Joakker/tree-sitter-json5',
     },
@@ -1086,7 +970,6 @@ return {
   },
   jsonc = {
     install_info = {
-      files = { 'src/parser.c' },
       generate_from_json = true,
       revision = '02b01653c8a1c198ae7287d566efa86a135b30d5',
       url = 'https://gitlab.com/WhyNotHugo/tree-sitter-jsonc',
@@ -1097,7 +980,6 @@ return {
   },
   jsonnet = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'd34615fa12cc1d1cfc1f1f1a80acc9db80ee4596',
       url = 'https://github.com/sourcegraph/tree-sitter-jsonnet',
     },
@@ -1111,7 +993,6 @@ return {
   },
   julia = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'acd5ca12cc278df7960629c2429a096c7ac4bbea',
       url = 'https://github.com/tree-sitter/tree-sitter-julia',
     },
@@ -1120,7 +1001,6 @@ return {
   },
   just = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'fd814fc6c579f68c2a642f5e0268cf69daae92d7',
       url = 'https://github.com/IndianBoy42/tree-sitter-just',
     },
@@ -1129,7 +1009,6 @@ return {
   },
   kconfig = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '486fea71f61ad9f3fd4072a118402e97fe88d26c',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-kconfig',
     },
@@ -1138,7 +1017,6 @@ return {
   },
   kdl = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '49fb89a854d93b58a65a19724ac307195ca11941',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-kdl',
     },
@@ -1147,7 +1025,6 @@ return {
   },
   kotlin = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'c9cb8504b81684375e7beb8907517dbd6947a1be',
       url = 'https://github.com/fwcd/tree-sitter-kotlin',
     },
@@ -1156,7 +1033,6 @@ return {
   },
   koto = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '919440e1376109bab4edac52594c17c02ae0be5a',
       url = 'https://github.com/koto-lang/tree-sitter-koto',
     },
@@ -1165,7 +1041,6 @@ return {
   },
   kusto = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '8353a1296607d6ba33db7c7e312226e5fc83e8ce',
       url = 'https://github.com/Willem-J-an/tree-sitter-kusto',
     },
@@ -1174,7 +1049,6 @@ return {
   },
   lalrpop = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '854a40e99f7c70258e522bdb8ab584ede6196e2e',
       url = 'https://github.com/traxys/tree-sitter-lalrpop',
     },
@@ -1183,7 +1057,6 @@ return {
   },
   latex = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate = true,
       revision = 'cd82eb40d31bdfe65f846f4e06292d6c804b5e0e',
       url = 'https://github.com/latex-lsp/tree-sitter-latex',
@@ -1193,7 +1066,6 @@ return {
   },
   ledger = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '8a841fb20ce683bfbb3469e6ba67f2851cfdf94a',
       url = 'https://github.com/cbarrete/tree-sitter-ledger',
     },
@@ -1202,7 +1074,6 @@ return {
   },
   leo = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '304611b5eaf53aca07459a0a03803b83b6dfd3b3',
       url = 'https://github.com/r001/tree-sitter-leo',
     },
@@ -1211,7 +1082,6 @@ return {
   },
   linkerscript = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'f99011a3554213b654985a4b0a65b3b032ec4621',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-linkerscript',
     },
@@ -1220,7 +1090,6 @@ return {
   },
   liquid = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '293369818da219d97327908aab33707b04b63fd9',
       url = 'https://github.com/hankthetank27/tree-sitter-liquid',
     },
@@ -1229,7 +1098,6 @@ return {
   },
   liquidsoap = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'a9b8012366eab7d0c28bbda5f75a847be931008f',
       url = 'https://github.com/savonet/tree-sitter-liquidsoap',
     },
@@ -1238,7 +1106,6 @@ return {
   },
   llvm = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '1b96e58faf558ce057d4dc664b904528aee743cb',
       url = 'https://github.com/benwilliamgraham/tree-sitter-llvm',
     },
@@ -1247,7 +1114,6 @@ return {
   },
   lua = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'a24dab177e58c9c6832f96b9a73102a0cfbced4a',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-lua',
     },
@@ -1256,7 +1122,6 @@ return {
   },
   luadoc = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '873612aadd3f684dd4e631bdf42ea8990c57634e',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-luadoc',
     },
@@ -1265,7 +1130,6 @@ return {
   },
   luap = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '31461ae9bd0866cb5117cfe5de71189854fd0f3e',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-luap',
     },
@@ -1275,7 +1139,6 @@ return {
   },
   luau = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = '5b088fac748f2666a315cafd1638a214388eb23e',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-luau',
@@ -1286,7 +1149,6 @@ return {
   },
   m68k = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'd097b123f19c6eaba2bf181c05420d88b9fc489d',
       url = 'https://github.com/grahambates/tree-sitter-m68k',
     },
@@ -1295,7 +1157,6 @@ return {
   },
   make = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'a4b9187417d6be349ee5fd4b6e77b4172c6827dd',
       url = 'https://github.com/alemuller/tree-sitter-make',
     },
@@ -1304,7 +1165,6 @@ return {
   },
   markdown = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       location = 'tree-sitter-markdown',
       revision = '7fe453beacecf02c86f7736439f238f5bb8b5c9b',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-markdown',
@@ -1316,7 +1176,6 @@ return {
   },
   markdown_inline = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       location = 'tree-sitter-markdown-inline',
       revision = '7fe453beacecf02c86f7736439f238f5bb8b5c9b',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-markdown',
@@ -1327,7 +1186,6 @@ return {
   },
   matlab = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '79d8b25f57b48f83ae1333aff6723b83c9532e37',
       url = 'https://github.com/acristoffers/tree-sitter-matlab',
     },
@@ -1336,7 +1194,6 @@ return {
   },
   menhir = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'be8866a6bcc2b563ab0de895af69daeffa88fe70',
       url = 'https://github.com/Kerl13/tree-sitter-menhir',
     },
@@ -1345,7 +1202,6 @@ return {
   },
   mermaid = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '90ae195b31933ceb9d079abfa8a3ad0a36fee4cc',
       url = 'https://github.com/monaqa/tree-sitter-mermaid',
     },
@@ -1353,7 +1209,6 @@ return {
   },
   meson = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'bd17c824196ce70800f64ad39cfddd1b17acc13f',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-meson',
     },
@@ -1362,7 +1217,6 @@ return {
   },
   mlir = {
     install_info = {
-      files = { 'src/parser.c' },
       generate = true,
       revision = 'a708e9b3f3d7f2fc85ac3fd1d4317c51b101eab0',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
@@ -1372,7 +1226,6 @@ return {
   },
   muttrc = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '90ef60852c410bd964cd3b954366e4c403c17314',
       url = 'https://github.com/neomutt/tree-sitter-muttrc',
     },
@@ -1381,7 +1234,6 @@ return {
   },
   nasm = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '570f3d7be01fffc751237f4cfcf52d04e20532d1',
       url = 'https://github.com/naclsn/tree-sitter-nasm',
     },
@@ -1390,7 +1242,6 @@ return {
   },
   nickel = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '58baf89db8fdae54a84bcf22c80ff10ee3f929ed',
       url = 'https://github.com/nickel-lang/tree-sitter-nickel',
     },
@@ -1398,7 +1249,6 @@ return {
   },
   nim = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '961c2798cec9250c44f7d7225ddb33d47d25856a',
       url = 'https://github.com/alaviss/tree-sitter-nim',
     },
@@ -1408,7 +1258,6 @@ return {
   },
   nim_format_string = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'd45f75022d147cda056e98bfba68222c9c8eca3a',
       url = 'https://github.com/aMOPel/tree-sitter-nim-format-string',
     },
@@ -1417,7 +1266,6 @@ return {
   },
   ninja = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '0a95cfdc0745b6ae82f60d3a339b37f19b7b9267',
       url = 'https://github.com/alemuller/tree-sitter-ninja',
     },
@@ -1426,7 +1274,6 @@ return {
   },
   nix = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'b3cda619248e7dd0f216088bd152f59ce0bbe488',
       url = 'https://github.com/cstrahan/tree-sitter-nix',
     },
@@ -1435,7 +1282,6 @@ return {
   },
   nqc = {
     install_info = {
-      files = { 'src/parser.c' },
       generate_from_json = true,
       revision = '14e6da1627aaef21d2b2aa0c37d04269766dcc1d',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-nqc',
@@ -1445,7 +1291,6 @@ return {
   },
   objc = {
     install_info = {
-      files = { 'src/parser.c' },
       generate_from_json = true,
       revision = '62e61b6f5c0289c376d61a8c91faf6435cde9012',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-objc',
@@ -1456,7 +1301,6 @@ return {
   },
   objdump = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '28d3b2e25a0b1881d1b47ed1924ca276c7003d45',
       url = 'https://github.com/ColinKennedy/tree-sitter-objdump',
     },
@@ -1465,7 +1309,6 @@ return {
   },
   ocaml = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       location = 'grammars/ocaml',
       revision = '0b12614ded3ec7ed7ab7933a9ba4f695ba4c342e',
       url = 'https://github.com/tree-sitter/tree-sitter-ocaml',
@@ -1475,7 +1318,6 @@ return {
   },
   ocaml_interface = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       location = 'grammars/interface',
       revision = '0b12614ded3ec7ed7ab7933a9ba4f695ba4c342e',
       url = 'https://github.com/tree-sitter/tree-sitter-ocaml',
@@ -1486,7 +1328,6 @@ return {
   },
   ocamllex = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate = true,
       revision = '4b9898ccbf198602bb0dec9cd67cc1d2c0a4fad2',
       url = 'https://github.com/atom-ocaml/tree-sitter-ocamllex',
@@ -1496,7 +1337,6 @@ return {
   },
   odin = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'f25b8c5201c1480dc0c8c4155a059a79a5a40719',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-odin',
     },
@@ -1505,7 +1345,6 @@ return {
   },
   org = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '64cfbc213f5a83da17632c95382a5a0a2f3357c1',
       url = 'https://github.com/milisims/tree-sitter-org',
     },
@@ -1513,7 +1352,6 @@ return {
   },
   pascal = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'a9ee969dec5b2e3b2ccccc5954fec04100c7619e',
       url = 'https://github.com/Isopod/tree-sitter-pascal',
     },
@@ -1522,7 +1360,6 @@ return {
   },
   passwd = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '20239395eacdc2e0923a7e5683ad3605aee7b716',
       url = 'https://github.com/ath3/tree-sitter-passwd',
     },
@@ -1531,7 +1368,6 @@ return {
   },
   pem = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '217ff2af3f2db15a79ab7e3d21ea1e0c17e71a1a',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-pem',
     },
@@ -1541,7 +1377,6 @@ return {
   perl = {
     install_info = {
       branch = 'release',
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = 'd4ebabd45bcb053fcc7f6688b5c8ed80c7ae7a32',
       url = 'https://github.com/tree-sitter-perl/tree-sitter-perl',
@@ -1551,7 +1386,6 @@ return {
   },
   php = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       location = 'php',
       revision = '27afeb02e49ff30acd17b67897b1c0114561a38c',
       url = 'https://github.com/tree-sitter/tree-sitter-php',
@@ -1563,7 +1397,6 @@ return {
   },
   php_only = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       location = 'php_only',
       revision = '27afeb02e49ff30acd17b67897b1c0114561a38c',
       url = 'https://github.com/tree-sitter/tree-sitter-php',
@@ -1574,7 +1407,6 @@ return {
   },
   phpdoc = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = '1d0e255b37477d0ca46f1c9e9268c8fa76c0b3fc',
       url = 'https://github.com/claytonrcarter/tree-sitter-phpdoc',
@@ -1584,7 +1416,6 @@ return {
   },
   pioasm = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '924aadaf5dea2a6074d72027b064f939acf32e20',
       url = 'https://github.com/leo60228/tree-sitter-pioasm',
     },
@@ -1593,7 +1424,6 @@ return {
   },
   po = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'bd860a0f57f697162bf28e576674be9c1500db5e',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-po',
     },
@@ -1603,7 +1433,6 @@ return {
   pod = {
     install_info = {
       branch = 'release',
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = '39da859947b94abdee43e431368e1ae975c0a424',
       url = 'https://github.com/tree-sitter-perl/tree-sitter-pod',
@@ -1613,7 +1442,6 @@ return {
   },
   poe_filter = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '592476d81f95d2451f2ca107dc872224c76fecdf',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-poe-filter',
     },
@@ -1623,7 +1451,6 @@ return {
   },
   pony = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '73ff874ae4c9e9b45462673cbc0a1e350e2522a7',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-pony',
     },
@@ -1632,7 +1459,6 @@ return {
   },
   printf = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '0e0aceabbf607ea09e03562f5d8a56f048ddea3d',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-printf',
     },
@@ -1641,7 +1467,6 @@ return {
   },
   prisma = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'eca2596a355b1a9952b4f80f8f9caed300a272b5',
       url = 'https://github.com/victorhqc/tree-sitter-prisma',
     },
@@ -1650,7 +1475,6 @@ return {
   },
   promql = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '77625d78eebc3ffc44d114a07b2f348dff3061b0',
       url = 'https://github.com/MichaHoffmann/tree-sitter-promql',
     },
@@ -1659,7 +1483,6 @@ return {
   },
   properties = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '9d09f5f200c356c50c4103d36441309fd61b48d1',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-properties',
     },
@@ -1669,7 +1492,6 @@ return {
   },
   proto = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'e9f6b43f6844bd2189b50a422d4e2094313f6aa3',
       url = 'https://github.com/treywood/tree-sitter-proto',
     },
@@ -1678,7 +1500,6 @@ return {
   },
   prql = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '09e158cd3650581c0af4c49c2e5b10c4834c8646',
       url = 'https://github.com/PRQL/tree-sitter-prql',
     },
@@ -1687,7 +1508,6 @@ return {
   },
   psv = {
     install_info = {
-      files = { 'src/parser.c' },
       location = 'psv',
       revision = '7eb7297823605392d2bbcc4c09b1cd18d6fa9529',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-csv',
@@ -1698,7 +1518,6 @@ return {
   },
   pug = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'a7ff31a38908df9b9f34828d21d6ca5e12413e18',
       url = 'https://github.com/zealot128/tree-sitter-pug',
     },
@@ -1707,7 +1526,6 @@ return {
   },
   puppet = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '584522f32495d648b18a53ccb52d988e60de127d',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-puppet',
     },
@@ -1716,7 +1534,6 @@ return {
   },
   purescript = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'daf9b3e2be18b0b2996a1281f7783e0d041d8b80',
       url = 'https://github.com/postsolar/tree-sitter-purescript',
     },
@@ -1725,7 +1542,6 @@ return {
   },
   pymanifest = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'e3b82b78721aee07f676dac8473ae69db51debcf',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-pymanifest',
     },
@@ -1735,7 +1551,6 @@ return {
   },
   python = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '71778c2a472ed00a64abf4219544edbf8e4b86d7',
       url = 'https://github.com/tree-sitter/tree-sitter-python',
     },
@@ -1744,7 +1559,6 @@ return {
   },
   ql = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '42becd6f8f7bae82c818fa3abb1b6ff34b552310',
       url = 'https://github.com/tree-sitter/tree-sitter-ql',
     },
@@ -1753,7 +1567,6 @@ return {
   },
   qmldir = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '6b2b5e41734bd6f07ea4c36ac20fb6f14061c841',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-qmldir',
     },
@@ -1762,7 +1575,6 @@ return {
   },
   qmljs = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = '2c57cac27e207425f8df15327884434cb12365a3',
       url = 'https://github.com/yuja/tree-sitter-qmljs',
@@ -1773,7 +1585,6 @@ return {
   },
   query = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'd25e8d183f319497b8b22a2a1585975b020da722',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-query',
     },
@@ -1783,7 +1594,6 @@ return {
   },
   r = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '391400572538ff9854341a175ed8ab4b1e45f44b',
       url = 'https://github.com/r-lib/tree-sitter-r',
     },
@@ -1792,7 +1602,6 @@ return {
   },
   racket = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '171f52a8c0ed635b85cd42d1e36d82f1066a03b4',
       url = 'https://github.com/6cdh/tree-sitter-racket',
     },
@@ -1800,7 +1609,6 @@ return {
   },
   rasi = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '43196d934a9a6ab3c7093a8683efd0111bb03db1',
       url = 'https://github.com/Fymyte/tree-sitter-rasi',
     },
@@ -1809,7 +1617,6 @@ return {
   },
   rbs = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'e5e807a50fcd104a2d740d354632fc671700a0bf',
       url = 'https://github.com/joker1007/tree-sitter-rbs',
     },
@@ -1818,7 +1625,6 @@ return {
   },
   re2c = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '47aa19cf5f7aba2ed30e2b377f7172df76e819a6',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-re2c',
     },
@@ -1827,7 +1633,6 @@ return {
   },
   readline = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '3d4768b04d7cfaf40533e12b28672603428b8f31',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-readline',
     },
@@ -1836,7 +1641,6 @@ return {
   },
   regex = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '47007f195752d8e57bda80b0b6cdb2d173a9f7d7',
       url = 'https://github.com/tree-sitter/tree-sitter-regex',
     },
@@ -1845,7 +1649,6 @@ return {
   },
   rego = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '9ac75e71b2d791e0aadeef68098319d86a2a14cf',
       url = 'https://github.com/FallenAngel97/tree-sitter-rego',
     },
@@ -1854,7 +1657,6 @@ return {
   },
   requirements = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '8666a4dfeb3107144398158bc3dd7a3f59d89ccb',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-requirements',
     },
@@ -1864,7 +1666,6 @@ return {
   },
   rnoweb = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '1a74dc0ed731ad07db39f063e2c5a6fe528cae7f',
       url = 'https://github.com/bamonroe/tree-sitter-rnoweb',
     },
@@ -1873,7 +1674,6 @@ return {
   },
   robot = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '322e4cc65754d2b3fdef4f2f8a71e0762e3d13af',
       url = 'https://github.com/Hubro/tree-sitter-robot',
     },
@@ -1882,7 +1682,6 @@ return {
   },
   roc = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '7df2c0892e62efb81a7504d9799d4e0d0443d241',
       url = 'https://github.com/nat-418/tree-sitter-roc',
     },
@@ -1891,7 +1690,6 @@ return {
   },
   ron = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '78938553b93075e638035f624973083451b29055',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-ron',
     },
@@ -1900,7 +1698,6 @@ return {
   },
   rst = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '5120f6e59284cb8b85b450bd2db0bd352635ba9f',
       url = 'https://github.com/stsewd/tree-sitter-rst',
     },
@@ -1909,7 +1706,6 @@ return {
   },
   ruby = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '788a63ca1b7619288980aaafd37d890ee2469421',
       url = 'https://github.com/tree-sitter/tree-sitter-ruby',
     },
@@ -1918,7 +1714,6 @@ return {
   },
   rust = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '9c84af007b0f144954adb26b3f336495cbb320a7',
       url = 'https://github.com/tree-sitter/tree-sitter-rust',
     },
@@ -1927,7 +1722,6 @@ return {
   },
   scala = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'b76db435a7f876cf1ede837d66054c534783c72f',
       url = 'https://github.com/tree-sitter/tree-sitter-scala',
     },
@@ -1936,7 +1730,6 @@ return {
   },
   scfg = {
     install_info = {
-      files = { 'src/parser.c' },
       generate = true,
       revision = '6deae0cbb458c849a4d1e2985093e9c9c32d7fd0',
       url = 'https://git.sr.ht/~rockorager/tree-sitter-scfg',
@@ -1946,7 +1739,6 @@ return {
   },
   scheme = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '8f9dff3d038f09934db5ea113cebc59c74447743',
       url = 'https://github.com/6cdh/tree-sitter-scheme',
     },
@@ -1954,7 +1746,6 @@ return {
   },
   scss = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'c478c6868648eff49eb04a4df90d703dc45b312a',
       url = 'https://github.com/serenadeai/tree-sitter-scss',
     },
@@ -1964,7 +1755,6 @@ return {
   },
   slang = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = '68587530d86aaeb1f1cb17fdada795281cdd0556',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-slang',
@@ -1975,7 +1765,6 @@ return {
   },
   slint = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '0701312b74b87fe20e61aa662ba41c5815b5d428',
       url = 'https://github.com/slint-ui/tree-sitter-slint',
     },
@@ -1984,7 +1773,6 @@ return {
   },
   smali = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'fdfa6a1febc43c7467aa7e937b87b607956f2346',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-smali',
     },
@@ -1993,7 +1781,6 @@ return {
   },
   smithy = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'fa898ac0885d1da9a253695c3e0e91f5efc587cd',
       url = 'https://github.com/indoorvivants/tree-sitter-smithy',
     },
@@ -2002,7 +1789,6 @@ return {
   },
   snakemake = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = 'ba1b3868eaa960b945593404af9a7c2f296d3643',
       url = 'https://github.com/osthomas/tree-sitter-snakemake',
@@ -2012,7 +1798,6 @@ return {
   },
   solidity = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'b5a23ead0f69d38b5c9a630f52f5c129132c16ed',
       url = 'https://github.com/JoranHonig/tree-sitter-solidity',
     },
@@ -2021,7 +1806,6 @@ return {
   },
   soql = {
     install_info = {
-      files = { 'src/parser.c' },
       location = 'soql',
       revision = 'c99ad4b16d112fea91745e3f1b769754239fdaba',
       url = 'https://github.com/aheber/tree-sitter-sfapex',
@@ -2031,7 +1815,6 @@ return {
   },
   sosl = {
     install_info = {
-      files = { 'src/parser.c' },
       location = 'sosl',
       revision = 'c99ad4b16d112fea91745e3f1b769754239fdaba',
       url = 'https://github.com/aheber/tree-sitter-sfapex',
@@ -2041,7 +1824,6 @@ return {
   },
   sourcepawn = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '4c62065c4136873ef42a9efe128380cbe7ae4f64',
       url = 'https://github.com/nilshelmig/tree-sitter-sourcepawn',
     },
@@ -2050,7 +1832,6 @@ return {
   },
   sparql = {
     install_info = {
-      files = { 'src/parser.c' },
       generate_from_json = true,
       revision = '05f949d3c1c15e3261473a244d3ce87777374dec',
       url = 'https://github.com/BonaBeavis/tree-sitter-sparql',
@@ -2061,7 +1842,6 @@ return {
   sql = {
     install_info = {
       branch = 'gh-pages',
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = '25f94f998de79bae9df28add9782f9ea6ea0e2b8',
       url = 'https://github.com/derekstride/tree-sitter-sql',
@@ -2071,7 +1851,6 @@ return {
   },
   squirrel = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '0a50d31098e83c668d34d1160a0f6c7d23b571cc',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-squirrel',
     },
@@ -2080,7 +1859,6 @@ return {
   },
   ssh_config = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '77450e8bce8853921512348f83c73c168c71fdfb',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-ssh-config',
     },
@@ -2089,7 +1867,6 @@ return {
   },
   starlark = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = 'b31a616aac5d05f927f3f9dd809789db7805b632',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-starlark',
@@ -2099,7 +1876,6 @@ return {
   },
   strace = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'd819cdd5dbe455bd3c859193633c8d91c0df7c36',
       url = 'https://github.com/sigmaSd/tree-sitter-strace',
     },
@@ -2108,7 +1884,6 @@ return {
   },
   styled = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = 'c68a4572e2d6403b6e99066c9a113b43f4a07a27',
       url = 'https://github.com/mskelton/tree-sitter-styled',
@@ -2118,7 +1893,6 @@ return {
   },
   supercollider = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'affa4389186b6939d89673e1e9d2b28364f5ca6f',
       url = 'https://github.com/madskjeldgaard/tree-sitter-supercollider',
     },
@@ -2127,7 +1901,6 @@ return {
   },
   surface = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'f4586b35ac8548667a9aaa4eae44456c1f43d032',
       url = 'https://github.com/connorlay/tree-sitter-surface',
     },
@@ -2136,7 +1909,6 @@ return {
   },
   svelte = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = '2c97326cd96b7c3016c3d249e8dc244c89b4abeb',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-svelte',
@@ -2147,7 +1919,6 @@ return {
   },
   swift = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate = true,
       revision = 'c9c669b4513479e07a0ff44cf14f72351959ac21',
       url = 'https://github.com/alex-pinkus/tree-sitter-swift',
@@ -2157,7 +1928,6 @@ return {
   },
   sxhkdrc = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '440d5f913d9465c9c776a1bd92334d32febcf065',
       url = 'https://github.com/RaafatTurki/tree-sitter-sxhkdrc',
     },
@@ -2166,7 +1936,6 @@ return {
   },
   systemtap = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '1af543a96d060b1f808982037bfc54cc02218edd',
       url = 'https://github.com/ok-ryoko/tree-sitter-systemtap',
     },
@@ -2175,7 +1944,6 @@ return {
   },
   t32 = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '6182836f4128725f1e74ce986840d7317021a015',
       url = 'https://gitlab.com/xasc/tree-sitter-t32',
     },
@@ -2184,7 +1952,6 @@ return {
   },
   tablegen = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'b1170880c61355aaf38fc06f4af7d3c55abdabc4',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-tablegen',
     },
@@ -2193,7 +1960,6 @@ return {
   },
   tact = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '034df2162ed7b654efd999942e266be713c7cde0',
       url = 'https://github.com/tact-lang/tree-sitter-tact',
     },
@@ -2202,7 +1968,6 @@ return {
   },
   tcl = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '8784024358c233efd0f3a6fd9e7a3c5852e628bc',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-tcl',
     },
@@ -2211,7 +1976,6 @@ return {
   },
   teal = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate = true,
       revision = '33482c92a0dfa694491d34e167a1d2f52b0dccb1',
       url = 'https://github.com/euclidianAce/tree-sitter-teal',
@@ -2221,7 +1985,6 @@ return {
   },
   templ = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = 'd631f60287c0904770bc41aa865e249594b52422',
       url = 'https://github.com/vrischmann/tree-sitter-templ',
@@ -2231,7 +1994,6 @@ return {
   },
   terraform = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       location = 'dialects/terraform',
       revision = 'e936d3fef8bac884661472dce71ad82284761eb1',
       url = 'https://github.com/MichaHoffmann/tree-sitter-hcl',
@@ -2242,7 +2004,6 @@ return {
   },
   textproto = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '8dacf02aa402892c91079f8577998ed5148c0496',
       url = 'https://github.com/PorterAtGoogle/tree-sitter-textproto',
     },
@@ -2251,7 +2012,6 @@ return {
   },
   thrift = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '68fd0d80943a828d9e6f49c58a74be1e9ca142cf',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-thrift',
     },
@@ -2260,7 +2020,6 @@ return {
   },
   tiger = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'a7f11d946b44244f71df41d2a78af0665d618dae',
       url = 'https://github.com/ambroisie/tree-sitter-tiger',
     },
@@ -2269,7 +2028,6 @@ return {
   },
   tlaplus = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'ef18145e7f985f592ad41b04004b24a590f58b71',
       url = 'https://github.com/tlaplus-community/tree-sitter-tlaplus',
     },
@@ -2278,7 +2036,6 @@ return {
   },
   tmux = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '9138ea508410e0f34da2666609f600f65e944f22',
       url = 'https://github.com/Freed-Wu/tree-sitter-tmux',
     },
@@ -2287,7 +2044,6 @@ return {
   },
   todotxt = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '3937c5cd105ec4127448651a21aef45f52d19609',
       url = 'https://github.com/arnarg/tree-sitter-todotxt',
     },
@@ -2296,7 +2052,6 @@ return {
   },
   toml = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = '16a30c83ce427385b8d14939c45c137fcfca6c42',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-toml',
@@ -2306,7 +2061,6 @@ return {
   },
   tsv = {
     install_info = {
-      files = { 'src/parser.c' },
       location = 'tsv',
       revision = '7eb7297823605392d2bbcc4c09b1cd18d6fa9529',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-csv',
@@ -2316,7 +2070,6 @@ return {
   },
   tsx = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       location = 'tsx',
       revision = '4ad3010c91d700026d036b5230e2d99ba94ae8a4',
@@ -2328,7 +2081,6 @@ return {
   },
   turtle = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '085437f5cb117703b7f520dd92161140a684f092',
       url = 'https://github.com/BonaBeavis/tree-sitter-turtle',
     },
@@ -2337,7 +2089,6 @@ return {
   },
   twig = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'eaf80e6af969e25993576477a9dbdba3e48c1305',
       url = 'https://github.com/gbprod/tree-sitter-twig',
     },
@@ -2346,7 +2097,6 @@ return {
   },
   typescript = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       location = 'typescript',
       revision = '4ad3010c91d700026d036b5230e2d99ba94ae8a4',
@@ -2358,7 +2108,6 @@ return {
   },
   typespec = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'fd9a83c6c0aaaff4b1354454b5b9f130f59dd553',
       url = 'https://github.com/happenslol/tree-sitter-typespec',
     },
@@ -2367,7 +2116,6 @@ return {
   },
   typoscript = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '43b221c0b76e77244efdaa9963e402a17c930fbc',
       url = 'https://github.com/Teddytrombone/tree-sitter-typoscript',
     },
@@ -2376,7 +2124,6 @@ return {
   },
   typst = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '3924cb9ed9e0e62ce7df9c4fe0faa4c234795999',
       url = 'https://github.com/uben0/tree-sitter-typst',
     },
@@ -2385,7 +2132,6 @@ return {
   },
   udev = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '8f58696e79092b4ad6bf197415bbd0970acf15cd',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-udev',
     },
@@ -2394,7 +2140,6 @@ return {
   },
   ungrammar = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'debd26fed283d80456ebafa33a06957b0c52e451',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-ungrammar',
     },
@@ -2403,7 +2148,6 @@ return {
   },
   unison = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate = true,
       revision = '59d36a09282be7e4d3374854126590f3dcebee6e',
       url = 'https://github.com/kylegoetz/tree-sitter-unison',
@@ -2413,7 +2157,6 @@ return {
   },
   usd = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '4e0875f724d94d0c2ff36f9b8cb0b12f8b20d216',
       url = 'https://github.com/ColinKennedy/tree-sitter-usd',
     },
@@ -2422,7 +2165,6 @@ return {
   },
   uxntal = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'ad9b638b914095320de85d59c49ab271603af048',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-uxntal',
     },
@@ -2431,7 +2173,6 @@ return {
   },
   v = {
     install_info = {
-      files = { 'src/parser.c' },
       location = 'tree_sitter_v',
       revision = '7e11a6f8f369df935664fadd2f0c99d90fe3226f',
       url = 'https://github.com/vlang/v-analyzer',
@@ -2441,7 +2182,6 @@ return {
   },
   vala = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b',
       url = 'https://github.com/vala-lang/tree-sitter-vala',
     },
@@ -2450,7 +2190,6 @@ return {
   },
   vento = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '3321077d7446c1b3b017c294fd56ce028ed817fe',
       url = 'https://github.com/ventojs/tree-sitter-vento',
     },
@@ -2459,7 +2198,6 @@ return {
   },
   verilog = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '075ebfc84543675f12e79a955f79d717772dcef3',
       url = 'https://github.com/tree-sitter/tree-sitter-verilog',
     },
@@ -2468,7 +2206,6 @@ return {
   },
   vhs = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '90028bbadb267ead5b87830380f6a825147f0c0f',
       url = 'https://github.com/charmbracelet/tree-sitter-vhs',
     },
@@ -2477,7 +2214,6 @@ return {
   },
   vim = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'b448ca63f972ade12c373c808acdd2bf972937db',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-vim',
     },
@@ -2486,7 +2222,6 @@ return {
   },
   vimdoc = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'b711df784dd43d0a8ed8ddbfca0ddcc3239d94b4',
       url = 'https://github.com/neovim/tree-sitter-vimdoc',
     },
@@ -2496,7 +2231,6 @@ return {
   vue = {
     install_info = {
       branch = 'main',
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = '22bdfa6c9fc0f5ffa44c6e938ec46869ac8a99ff',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-vue',
@@ -2507,7 +2241,6 @@ return {
   },
   wgsl = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '40259f3c77ea856841a4e0c4c807705f3e4a2b65',
       url = 'https://github.com/szebniok/tree-sitter-wgsl',
     },
@@ -2516,7 +2249,6 @@ return {
   },
   wgsl_bevy = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
       revision = '59d5fbd562c0e17c45312f49485098cce467f5ac',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-wgsl-bevy',
@@ -2526,7 +2258,6 @@ return {
   },
   wing = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'bd1d35cf3e013dc7e189b46a593bdc2b281b0dd7',
       url = 'https://github.com/winglang/tree-sitter-wing',
     },
@@ -2535,7 +2266,6 @@ return {
   },
   wit = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'cab94791450524a542324d8cbe8017d69c516d8e',
       url = 'https://github.com/liamwh/tree-sitter-wit',
     },
@@ -2544,7 +2274,6 @@ return {
   },
   xcompose = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '2383cc69a2c42cfade41c7cb971fb3862bec6df1',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-xcompose',
     },
@@ -2553,7 +2282,6 @@ return {
   },
   xml = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       location = 'xml',
       revision = '648183d86f6f8ffb240ea11b4c6873f6f45d8b67',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-xml',
@@ -2564,7 +2292,6 @@ return {
   },
   yaml = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = '7b03feefd36b5f155465ca736c6304aca983b267',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-yaml',
     },
@@ -2573,7 +2300,6 @@ return {
   },
   yang = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '2c0e6be8dd4dcb961c345fa35c309ad4f5bd3502',
       url = 'https://github.com/Hubro/tree-sitter-yang',
     },
@@ -2582,7 +2308,6 @@ return {
   },
   yuck = {
     install_info = {
-      files = { 'src/parser.c', 'src/scanner.c' },
       revision = 'e877f6ade4b77d5ef8787075141053631ba12318',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-yuck',
     },
@@ -2591,7 +2316,6 @@ return {
   },
   zathurarc = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = 'e9e8de071ab79ed1f6e3365f05fcf890b6d85a2f',
       url = 'https://github.com/Freed-Wu/tree-sitter-zathurarc',
     },
@@ -2600,7 +2324,6 @@ return {
   },
   zig = {
     install_info = {
-      files = { 'src/parser.c' },
       revision = '0d08703e4c3f426ec61695d7617415fff97029bd',
       url = 'https://github.com/maxxnino/tree-sitter-zig',
     },
