@@ -117,7 +117,7 @@
     "revision": "0229c0211dba909c5d45129ac784a3f4d49c243a"
   },
   "djot": {
-    "revision": "66e1b8a51e297971795b7a8c9d3d271237174538"
+    "revision": "9d3fddf9ba8e9bd45c999d769a08d2515608ed5e"
   },
   "dockerfile": {
     "revision": "439c3e7b8a9bfdbf1f7d7c2beaae4173dc484cbf"
@@ -168,7 +168,7 @@
     "revision": "f3b9274514b5f9bf6b0dd4a01c30f9cc15c58bc4"
   },
   "fennel": {
-    "revision": "ea4a536bca8997e30b22709f210f44f97e75bf7d"
+    "revision": "e9e3e3f75e80e602b0d42fa3f713f2531fff16fd"
   },
   "fidl": {
     "revision": "0a8910f293268e27ff554357c229ba172b0eaed2"
@@ -291,7 +291,7 @@
     "revision": "d200375a29b24764b78d7051df0024ed7c2f1ab0"
   },
   "hlsplaylist": {
-    "revision": "936d399ed501c12636cf6d3a417063e49c98cee5"
+    "revision": "64f19029339e75d6762feae39e7878595860c980"
   },
   "hocon": {
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
@@ -429,7 +429,7 @@
     "revision": "c2845c1c0b23e2faf6febfa72a042e5346374ebf"
   },
   "muttrc": {
-    "revision": "394e4e88ada3bad05054193e204c5cb592f6630d"
+    "revision": "90ef60852c410bd964cd3b954366e4c403c17314"
   },
   "nasm": {
     "revision": "3bc691d2cfba44bea339a775ad496c8bc552c60d"
@@ -678,7 +678,7 @@
     "revision": "2c97326cd96b7c3016c3d249e8dc244c89b4abeb"
   },
   "swift": {
-    "revision": "c982633802f3c099663addff29e56d27800965d8"
+    "revision": "ee04ee19910bb9ea6daf14be7d1e5362a208207d"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -714,10 +714,10 @@
     "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
   },
   "tlaplus": {
-    "revision": "410122a012abb06fbacc8c0b8f288b684f8113e1"
+    "revision": "932d41c0f5b1884a84560718ab063af9259f126b"
   },
   "tmux": {
-    "revision": "d3cacd0821b90d42ac57ec1388a55987ea30cc03"
+    "revision": "9138ea508410e0f34da2666609f600f65e944f22"
   },
   "todotxt": {
     "revision": "3937c5cd105ec4127448651a21aef45f52d19609"
@@ -744,7 +744,7 @@
     "revision": "43b221c0b76e77244efdaa9963e402a17c930fbc"
   },
   "typst": {
-    "revision": "13863ddcbaa7b68ee6221cea2e3143415e64aea4"
+    "revision": "4610172f312e8ce5184e6882be5ad1a1cd800fbe"
   },
   "udev": {
     "revision": "8f58696e79092b4ad6bf197415bbd0970acf15cd"
@@ -795,7 +795,7 @@
     "revision": "bd1d35cf3e013dc7e189b46a593bdc2b281b0dd7"
   },
   "wit": {
-    "revision": "6f511f9c6676e597c2f0930e4d2629595319882d"
+    "revision": "ed13e0a3ee77833900a095d57d2685a1f7f91237"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
@@ -813,7 +813,7 @@
     "revision": "a513732feb813426b51d1ead8397a9c285c411be"
   },
   "zathurarc": {
-    "revision": "2266ac3315e873e37edd24d7e6b6513b8798dab3"
+    "revision": "e9e8de071ab79ed1f6e3365f05fcf890b6d85a2f"
   },
   "zig": {
     "revision": "0d08703e4c3f426ec61695d7617415fff97029bd"
