@@ -9,9 +9,6 @@ error('Cannot require a meta file')
 ---Commit hash of parser to download (compatible with queries)
 ---@field revision string
 ---
----Files to include when compiling (`src/parser.c` and optionally `src/scanner.c')
----@field files string[]
----
 ---Branch of parser repo to download (if not default branch)
 ---@field branch? string
 ---
