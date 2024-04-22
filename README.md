@@ -17,7 +17,7 @@
 
 # WARNING
 
-**This branch is a [full, incompatible, rewrite of `nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter/issues/4767) and [work in progress](TODO.md). This branch REQUIRES (the latest commit on) Neovim `master`.**
+**This branch is a [full, incompatible, rewrite of `nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter/issues/4767) and [work in progress](TODO.md).** The **stable** branch is [`master`](https://github.com/nvim-treesitter/nvim-treesitter/tree/master).
 
 The `nvim-treesitter` plugin provides
 1. functions for installing, updating, and removing [**tree-sitter parsers**](SUPPORTED_LANGUAGES.md);
@@ -29,14 +29,14 @@ The `nvim-treesitter` plugin provides
 
 - Neovim 0.10.0 or later (nightly)
 - `tar` and `curl` in your path (or alternatively `git`)
-- a C compiler in your path and libstdc++ installed ([Windows users please read this!](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support))
-- optional: `tree-sitter` CLI and `node`
+- [`tree-sitter`](https://github.com/tree-sitter/tree-sitter) CLI (0.22.6 or later)
+- a C compiler in your path (see <https://docs.rs/cc/latest/cc/#compile-time-requirements>)
 
 ## Installation
 
 You can install `nvim-treesitter` with your favorite package manager (or using the native `package` feature of vim, see `:h packages`).
 
-**NOTE: This plugin is only guaranteed to work with specific versions of language parsers** (as specified in the `lockfile.json`). **When upgrading the plugin, you must make sure that all installed parsers are updated to the latest version** via `:TSUpdate`.
+**NOTE: This plugin is only guaranteed to work with specific versions of language parsers** (as specified in the `parser.lua` table). **When upgrading the plugin, you must make sure that all installed parsers are updated to the latest version** via `:TSUpdate`.
 It is strongly recommended to automate this; e.g., using [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ```lua
@@ -195,14 +195,6 @@ vim.fn.stdpath('data') .. 'site/queries/zimbu'
 Before doing anything, make sure you have the latest version of this plugin and run `:checkhealth nvim-treesitter`.
 It can also help to update the parsers via `:TSUpdate`.
 
-#### Feature `{X}` does not work for `{language}`...
-
-1. Check the `nvim-treesitter` section of `:checkhealth` for any warning, and make sure that the query for `{X}` is listed for `{language}`.
-
-2. Ensure that the feature is enabled as explained above.
-
-3. Ensure Neovim is correctly identifying your language's filetype using the `:echo &filetype` command while one of your language's files is open in Neovim.
-
 #### I get `Error detected while processing .../plugin/nvim-treesitter.vim` every time I open Neovim
 
 This is probably due to a change in a parser's grammar or its queries.
@@ -220,30 +212,6 @@ or due to an outdated parser.
   You can execute this command `:= vim.api.nvim_get_runtime_file('parser', true)` to find all runtime directories.
   If you get more than one path, remove the ones that are outside this plugin (`nvim-treesitter` directory),
   so the correct version of the parser is used.
-
-#### I want to use Git instead of curl for downloading the parsers
-
-In your Lua config:
-
-```lua
-require("nvim-treesitter.install").prefer_git = true
-```
-
-#### I want to use a HTTP proxy for downloading the parsers
-
-You can either configure curl to use additional CLI arguments in your Lua config:
-
-```lua
-require("nvim-treesitter.install").command_extra_args = {
-    curl = { "--proxy", "<proxy url>" },
-}
-```
-
-or you can configure git via `.gitconfig` and use git instead of curl
-
-```lua
-require("nvim-treesitter.install").prefer_git = true
-```
 
 #### I want to use a mirror instead of "https://github.com/"
 
