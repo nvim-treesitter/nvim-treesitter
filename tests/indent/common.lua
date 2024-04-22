@@ -183,7 +183,7 @@ function Runner:whole_file(dirs, opts)
     assert.is.same(1, vim.fn.isdirectory(dir.filename))
     return dir.filename
   end, dirs)
-  local files = require('nvim-treesitter.compat').flatten(vim.tbl_map(scan_dir, dirs))
+  local files = vim.iter(vim.tbl_map(scan_dir, dirs)):flatten():totable()
   for _, file in ipairs(files) do
     local relpath = Path:new(file):make_relative(self.base_dir.filename)
     self.it(relpath, function()
