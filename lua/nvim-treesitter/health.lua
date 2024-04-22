@@ -1,4 +1,3 @@
-local install = require('nvim-treesitter.install')
 local parsers = require('nvim-treesitter.parsers')
 local config = require('nvim-treesitter.config')
 local util = require('nvim-treesitter.util')
@@ -8,82 +7,80 @@ local health = vim.health
 local M = {}
 
 local NVIM_TREESITTER_MINIMUM_ABI = 13
+local TREE_SITTER_MIN_VER = { 0, 22, 6 }
 
----@return string|nil
-local function ts_cli_version()
-  if vim.fn.executable('tree-sitter') == 1 then
-    local result = assert(vim.system({ 'tree-sitter', '-V' }):wait().stdout)
-    return vim.split(result, '\n')[1]:match('[^tree%psitter ].*')
+---@param name string
+---@return table?
+local function check_exe(name)
+  if vim.fn.executable(name) then
+    local path = vim.fn.exepath(name)
+    local out = vim.trim(vim.fn.system({ name, '--version' }))
+    local version = vim.version.parse(out)
+    return { path = path, version = version, out = out }
   end
 end
 
 local function install_health()
   health.start('Requirements')
 
-  if vim.fn.has('nvim-0.10') ~= 1 then
-    health.error('Nvim-treesitter requires Neovim Nightly')
+  do -- nvim check
+    if vim.fn.has('nvim-0.10') ~= 1 then
+      health.error('Nvim-treesitter requires the latest Neovim nightly')
+    end
+
+    if vim.treesitter.language_version then
+      if vim.treesitter.language_version >= NVIM_TREESITTER_MINIMUM_ABI then
+        health.ok(
+          'Neovim was compiled with tree-sitter runtime ABI version '
+            .. vim.treesitter.language_version
+            .. ' (required >='
+            .. NVIM_TREESITTER_MINIMUM_ABI
+            .. ').'
+        )
+      else
+        health.error(
+          'Neovim was compiled with tree-sitter runtime ABI version '
+            .. vim.treesitter.language_version
+            .. '.\n'
+            .. 'nvim-treesitter expects at least ABI version '
+            .. NVIM_TREESITTER_MINIMUM_ABI
+            .. '\n'
+            .. 'Please make sure that Neovim is linked against a recent tree-sitter library when building'
+            .. ' or raise an issue at your Neovim packager. Parsers must be compatible with runtime ABI.'
+        )
+      end
+    end
   end
 
-  if vim.fn.executable('tree-sitter') == 0 then
-    health.warn(
-      '`tree-sitter` executable not found (parser generator, only needed for :TSInstallFromGrammar,'
-        .. ' not required for :TSInstall)'
-    )
-  else
-    health.ok(
-      '`tree-sitter` found '
-        .. (ts_cli_version() or '(unknown version)')
-        .. ' (only needed for `:TSInstallFromGrammar`)'
-    )
-  end
-
-  if vim.fn.executable('git') == 0 then
-    health.warn(
-      '`git` executable not found.',
-      'Install it with your package manager and check that your `$PATH` is set correctly.'
-    )
-  else
-    health.ok('`git` executable found.')
-  end
-
-  local cc = install.select_executable(install.compilers)
-  if not cc then
-    health.error('`cc` executable not found.', {
-      'Check that any of '
-        .. table.concat(install.compilers, ', ')
-        .. ' is in your $PATH'
-        .. ' or set `$CC` or `require"nvim-treesitter.install".compilers` explicitly.',
-    })
-  else
-    local version = assert(vim.system({ cc, cc == 'cl' and '' or '--version' }):wait().stdout)
-    health.ok(
-      '`'
-        .. cc
-        .. '` executable found, selected from:  '
-        .. table.concat(install.compilers, ', ')
-        .. (version and ('\nVersion: ' .. version) or '')
-    )
-  end
-  if vim.treesitter.language_version then
-    if vim.treesitter.language_version >= NVIM_TREESITTER_MINIMUM_ABI then
-      health.ok(
-        'Neovim was compiled with tree-sitter runtime ABI version '
-          .. vim.treesitter.language_version
-          .. ' (required >='
-          .. NVIM_TREESITTER_MINIMUM_ABI
-          .. ').'
-      )
+  do -- treesitter check
+    local ts = check_exe('tree-sitter')
+    if ts then
+      if vim.version.ge(ts.version, TREE_SITTER_MIN_VER) then
+        health.ok(string.format('tree-sitter %s (%s)', ts.version, ts.path))
+      else
+        health.error(
+          string.format('tree-sitter CLI v%d.%d.%d is required', unpack(TREE_SITTER_MIN_VER))
+        )
+      end
     else
-      health.error(
-        'Neovim was compiled with tree-sitter runtime ABI version '
-          .. vim.treesitter.language_version
-          .. '.\n'
-          .. 'nvim-treesitter expects at least ABI version '
-          .. NVIM_TREESITTER_MINIMUM_ABI
-          .. '\n'
-          .. 'Please make sure that Neovim is linked against a recent tree-sitter library when building'
-          .. ' or raise an issue at your Neovim packager. Parsers must be compatible with runtime ABI.'
-      )
+      health.error('tree-sitter CLI not found')
+    end
+  end
+
+  do -- curl+tar or git check
+    local curl = check_exe('curl')
+    local tar = check_exe('tar')
+
+    if curl and tar and vim.uv.os_uname().sysname ~= 'Windows_NT' then
+      health.ok(string.format('tar %s (%s)', tar.version, tar.path))
+      health.ok(string.format('curl %s (%s)\n%s', curl.version, curl.path, curl.out))
+    else
+      local git = check_exe('git')
+      if git then
+        health.ok(string.format('git %s (%s)', git.version, git.path))
+      else
+        health.error('Either curl and tar or git must be installed and on `$PATH`')
+      end
     end
   end
 
