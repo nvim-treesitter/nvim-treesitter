@@ -8,4 +8,7 @@ accessors: (accessor_list) @fold
 
 initializer: (initializer_expression) @fold
 
-(block) @fold
+[
+  (block)
+  (using_directive)+
+] @fold
