@@ -63,7 +63,7 @@ local function condense_nl(suggestions)
     if #suggestion == 0 and not is_processed then
       if remove_all then
         -- ignore
-      elseif keep_first and i == 1 then
+      elseif keep_first and i ~= 1 then
         -- ignore
       else
         table.insert(nls, suggestion)
