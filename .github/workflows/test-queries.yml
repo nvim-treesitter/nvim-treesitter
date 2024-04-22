@@ -23,34 +23,11 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-14]
-        cc: [gcc, clang]
         nvim_tag: [nightly]
-        exclude:
-          - os: ubuntu-latest
-            cc: clang
-            nvim_tag: nightly
-
-          - os: macos-14
-            cc: gcc
-            nvim_tag: nightly
-
-          - os: windows-latest
-            cc: gcc
-            nvim_tag: nightly
-
-        # include:
-          # - os: windows-latest
-          #   cc: cl
-          #   nvim_tag: nightly
-
-          # - os: ubuntu-latest
-          #   cc: gcc
-          #   nvim_tag: nightly
 
     name: Parser compilation
     runs-on: ${{ matrix.os }}
     env:
-      CC: ${{ matrix.cc }}
       NVIM: ${{ matrix.os == 'windows-latest' && 'nvim-win64\\bin\\nvim.exe' || 'nvim' }}
     steps:
       - uses: actions/checkout@v4
@@ -71,10 +48,8 @@ jobs:
             ~/.local/share/nvim/site/parser/
             ~/AppData/Local/nvim-data/site/parser/
           key: parsers-${{ join(matrix.*, '-') }}-${{ hashFiles(
-            './lockfile.json',
             './lua/nvim-treesitter/install.lua',
-            './lua/nvim-treesitter/parsers.lua',
-            './lua/nvim-treesitter/shell_command_selectors.lua') }}
+            './lua/nvim-treesitter/parsers.lua') }}
 
       - name: Compile parsers
         run: $NVIM -l ./scripts/install-parsers.lua
