@@ -1,34 +1,51 @@
+; compounds
 [
   (list)
   (table)
   (sequence)
 ] @fold
 
-(list
-  .
-  (symbol) @_let
-  (#eq? @_let "let")
-  .
-  (sequence) @fold) @fold
+; sub-forms / special compounds
+[
+  (list_binding)
+  (table_binding)
+  (sequence_binding)
+  (table_metadata)
+  (sequence_arguments)
+  (let_vars)
+  (case_guard_or_special)
+  (case_guard)
+  (case_catch)
+] @fold
 
-(list
-  .
-  (symbol) @_local
-  (#eq? @_local "local")) @fold
+; forms
+[
+  (quote_form)
+  (unquote_form)
+  (local_form)
+  (var_form)
+  (set_form)
+  (global_form)
+  (let_form)
+  (fn_form)
+  (lambda_form)
+  (hashfn_form)
+  (each_form)
+  (collect_form)
+  (icollect_form)
+  (accumulate_form)
+  (for_form)
+  (fcollect_form)
+  (faccumulate_form)
+  (case_form)
+  (match_form)
+  (case_try_form)
+  (match_try_form)
+] @fold
 
-(list
-  .
-  (symbol) @_global
-  (#eq? @_global "global")) @fold
+; reader macros
+(quote_reader_macro
+  expression: (_) @fold)
 
-(list
-  .
-  (symbol) @_fn
-  (#any-of? @_fn "fn" "lambda" "λ" "hashfn")) @fold
-
-(reader_macro
-  macro: [
-    "'"
-    "`"
-  ]
+(quasi_quote_reader_macro
   expression: (_) @fold)
