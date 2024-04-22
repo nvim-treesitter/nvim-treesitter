@@ -20,12 +20,9 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        cc: [gcc]
 
     name: Run tests
     runs-on: ${{ matrix.os }}
-    env:
-      CC: ${{ matrix.cc }}
     steps:
       - uses: actions/checkout@v4
       - uses: tree-sitter/setup-action/cli@v1
@@ -50,16 +47,13 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            ./parser/
-            ~/AppData/Local/nvim/pack/nvim-treesitter/start/nvim-treesitter/parser/
+            ~/.local/share/nvim/site/parser/
+            ~/AppData/Local/nvim-data/site/parser/
           key: parsers-${{ join(matrix.*, '-') }}-${{ hashFiles(
-            './lockfile.json',
             './lua/nvim-treesitter/install.lua',
-            './lua/nvim-treesitter/parsers.lua',
-            './lua/nvim-treesitter/shell_selectors.lua') }}
+            './lua/nvim-treesitter/parsers.lua') }}
 
-      - name: Compile parsers Unix like
-        if: ${{ runner.os != 'Windows' && steps.parsers-cache.outputs.cache-hit != 'true' }}
+      - name: Compile parsers
         run: nvim -l ./scripts/install-parsers.lua
 
       - name: Tests
