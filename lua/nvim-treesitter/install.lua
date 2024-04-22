@@ -386,7 +386,7 @@ end
 ---@param compile_location string
 ---@return string? err
 local function do_compile(logger, repo, cc, compile_location)
-  local args = vim.tbl_flatten(select_compiler_args(repo, cc))
+  local args = vim.iter(select_compiler_args(repo, cc)):flatten():totable()
   local cmd = vim.list_extend({ cc }, args)
 
   logger:info('Compiling parser')
