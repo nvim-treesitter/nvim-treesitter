@@ -4,12 +4,7 @@ This document lists the planned and finished changes in this rewrite towards [Nv
 
 ## TODO
 
-- [ ] **`parsers.lua`:** include revision (serialization at home: `vim.inspect`)
-  - rename `parsers` to `languages`
-  - rename `install_info` to `parser`
-
 - [ ] **`parsers.lua`:** allow specifying version in addition to commit hash (for Tier 1)
-- [ ] **update-lockfile:** one commit per parser/tier?
 - [ ] **tests:** fix, update, extend (cover all Tier 1 languages)
 - [ ] **documentation:** consolidate, autogenerate?
 - [ ] **documentation:** migration guide
