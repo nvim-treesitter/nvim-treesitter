@@ -2393,10 +2393,17 @@ function M.ft_to_lang(ft)
   local result = get_lang(ft)
   if result then
     return result
-  else
-    ft = vim.split(ft, ".", { plain = true })[1]
-    return get_lang(ft) or ft
   end
+
+  local parts = vim.split(ft, ".", { plain = true })
+  local i = 1
+  local lang = nil
+  while lang == nil and parts[i] do
+    lang = get_lang(parts[i])
+    i = i + 1
+  end
+
+  return lang or parts[1]
 end
 
 -- Get a list of all available parsers
