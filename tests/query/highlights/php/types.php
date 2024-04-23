@@ -2,7 +2,7 @@
 
 function b(int $a, string $b): Foo\Dog {}
 //         ^^^ @type.builtin
-//             ^^ @variable
+//             ^^ @variable.parameter
 //                 ^^^^^^ @type.builtin
 //                             ^^^ @module
 //                                 ^^^ @type

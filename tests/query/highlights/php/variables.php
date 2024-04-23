@@ -2,7 +2,7 @@
 
 class A {
   public function foo(self $a): self {
-//                          ^ @variable
+//                          ^ @variable.parameter
     new self();
 //      ^^^^ @constructor
     new static();
