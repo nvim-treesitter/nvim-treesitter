@@ -39,10 +39,11 @@
   (identifier) @module)
 
 [
-  "class"
   "def"
   "over"
 ] @keyword.function
+
+"class" @keyword.type
 
 [
   "("

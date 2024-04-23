@@ -242,12 +242,15 @@
 [
   "val"
   "var"
+  ;	"typeof" ; NOTE: It is reserved for future use
+] @keyword
+
+[
   "enum"
   "class"
   "object"
   "interface"
-  ;	"typeof" ; NOTE: It is reserved for future use
-] @keyword
+] @keyword.type
 
 [
   "return"

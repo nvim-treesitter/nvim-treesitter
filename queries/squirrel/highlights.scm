@@ -1,14 +1,17 @@
 ; Keywords
 [
-  "class"
   "clone"
   "delete"
-  "enum"
   "extends"
   "rawcall"
   "resume"
   "var"
 ] @keyword
+
+[
+  "class"
+  "enum"
+] @keyword.type
 
 "function" @keyword.function
 

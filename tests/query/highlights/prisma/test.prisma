@@ -47,7 +47,7 @@ model Reaction {
 }
 
 enum ReactionType {
-// ^ keyword
+// ^ keyword.type
   LIKE
   HAHA
   SAD

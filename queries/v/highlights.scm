@@ -10,15 +10,18 @@
   "assert"
   "const"
   "defer"
-  "enum"
   "goto"
-  "interface"
-  "struct"
   "sql"
-  "type"
-  "union"
   "unsafe"
 ] @keyword
+
+[
+  "enum"
+  "union"
+  "struct"
+  "interface"
+  "type"
+] @keyword.type
 
 [
   "as"

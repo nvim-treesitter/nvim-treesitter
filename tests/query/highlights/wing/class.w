@@ -2,7 +2,7 @@ bring cloud;
 // <- @keyword
 
 class Foo {
-// <- @keyword
+// <- @keyword.type
 //    ^   @type
 //        ^ @punctuation.bracket
   name: str;

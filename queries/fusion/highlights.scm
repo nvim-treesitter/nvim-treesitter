@@ -46,7 +46,7 @@
   (source_file) @string.special.url)
 
 (namespace_declaration
-  "namespace" @keyword
+  "namespace" @keyword.type
   (alias_namespace) @module)
 
 (type

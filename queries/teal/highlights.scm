@@ -153,24 +153,24 @@
 ; Types
 (record_declaration
   .
-  "record" @keyword
+  "record" @keyword.type
   name: (identifier) @type)
 
 (anon_record
   .
-  "record" @keyword)
+  "record" @keyword.type)
 
 (record_body
   (record_declaration
     .
-    "record" @keyword
+    "record" @keyword.type
     .
     name: (identifier) @type))
 
 (record_body
   (enum_declaration
     .
-    "enum" @keyword
+    "enum" @keyword.type
     .
     name: (identifier) @type))
 
@@ -191,7 +191,7 @@
   (userdata) @keyword)
 
 (enum_declaration
-  "enum" @keyword
+  "enum" @keyword.type
   name: (identifier) @type)
 
 (type_declaration

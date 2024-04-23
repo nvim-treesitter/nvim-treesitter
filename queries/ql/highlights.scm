@@ -1,13 +1,11 @@
 [
   "as"
   "by"
-  "class"
   "extends"
   "from"
   "implies"
   "in"
   "module"
-  "newtype"
   "order"
   "select"
   "where"
@@ -15,6 +13,11 @@
   (result)
   (specialId)
 ] @keyword
+
+[
+  "newtype"
+  "class"
+] @keyword.type
 
 [
   "and"

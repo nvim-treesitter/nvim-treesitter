@@ -44,17 +44,17 @@ Var.Assign padd = (CAddition const * volatile)&d
 ;                                              ^ @variable
 Var.Assign e1 = (enum e2)&e
 ;          ^ @variable
-;                ^ @keyword
+;                ^ @keyword.type
 ;                     ^ @type
 ;                         ^ @variable
 Var.Assign *vector = (struct Vector3d*)&acceleration
 ;           ^ @variable
-;                     ^ @keyword
+;                     ^ @keyword.type
 ;                            ^ @type
 ;                                       ^ @variable
 Var.Assign z = (union foo)x
 ;          ^ @variable
-;               ^ @keyword
+;               ^ @keyword.type
 ;                     ^ @type
 ;                         ^ @variable
 Var.Assign b = -a

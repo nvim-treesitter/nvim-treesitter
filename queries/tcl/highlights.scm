@@ -37,11 +37,12 @@
 
 [
   "error"
-  "namespace"
   "on"
   "set"
   "try"
 ] @keyword
+
+"namespace" @keyword.type
 
 (unpack) @operator
 

@@ -227,17 +227,14 @@
 
 [
   "abstract"
-  "class"
   "continue"
   "default"
-  "enum"
   "extends"
   "final"
   "get"
   "global"
   "implements"
   "instanceof"
-  "interface"
   "on"
   "private"
   "protected"
@@ -253,5 +250,11 @@
   "without_sharing"
   "inherited_sharing"
 ] @keyword
+
+[
+  "interface"
+  "class"
+  "enum"
+] @keyword.type
 
 "System.runAs" @function.builtin

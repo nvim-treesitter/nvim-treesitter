@@ -168,7 +168,7 @@ As languages differ quite a lot, here is a set of captures available to you when
 @keyword.function          ; keywords that define a function (e.g. `func` in Go, `def` in Python)
 @keyword.operator          ; operators that are English words (e.g. `and` / `or`)
 @keyword.import            ; keywords for including modules (e.g. `import` / `from` in Python)
-@keyword.type              ; keywords describing composite types (e.g. `struct`, `enum`)
+@keyword.type              ; keywords describing namespaces and composite types (e.g. `struct`, `enum`)
 @keyword.modifier          ; keywords modifying other constructs (e.g. `const`, `static`, `public`)
 @keyword.repeat            ; keywords related to loops (e.g. `for` / `while`)
 @keyword.return            ; keywords like `return` and `yield`

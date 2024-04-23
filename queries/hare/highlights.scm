@@ -41,13 +41,16 @@
 ; Keywords
 [
   "def"
-  "enum"
   "export"
   "let"
-  "struct"
-  "type"
-  "union"
 ] @keyword
+
+[
+  "enum"
+  "struct"
+  "union"
+  "type"
+] @keyword.type
 
 "fn" @keyword.function
 

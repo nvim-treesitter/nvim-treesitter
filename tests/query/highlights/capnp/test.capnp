@@ -35,7 +35,7 @@ using Cxx = import "c++.capnp";
 $Cxx.namespace("capnproto_test::capnp::test");
 
 enum TestEnum {
-# <- @keyword
+# <- @keyword.type
 #    ^^^^^^^^ @type
   foo @0;
 # ^^^ @constant
@@ -51,7 +51,7 @@ enum TestEnum {
 # <- @punctuation.bracket
 
 struct TestAllTypes {
-# <- @keyword
+# <- @keyword.type
   voidField      @0  : Void;
 # ^^^^^^^^^ @variable.member
 #                    ^ @punctuation.special
@@ -97,7 +97,7 @@ struct TestInterleavedGroups {
     foo @0 :UInt32;
     bar @2 :UInt64;
     union {
-#   ^^^^^ @keyword
+#   ^^^^^ @keyword.type
       qux @4 :UInt16;
       corge :group {
 #     ^^^^^ @type
@@ -114,7 +114,7 @@ struct TestInterleavedGroups {
   }
 
   group2 :group {
-#         ^^^^^ @keyword
+#         ^^^^^ @keyword.type
     foo @1 :UInt32;
     bar @3 :UInt64;
     union {
@@ -214,7 +214,7 @@ struct TestGenerics(Foo, Bar) {
       qux @3 :Qux;
 
       interface DeepNestInterface(Quux) {
-#     ^^^^^^^^^ @keyword
+#     ^^^^^^^^^ @keyword.type
         # At one time this failed to compile.
         call @0 () -> ();
 #       ^^^^ @function.method
@@ -230,7 +230,7 @@ struct TestGenerics(Foo, Bar) {
   }
 
   annotation ann(struct) :Foo;
-# ^^^^^^^^^^ @keyword
+# ^^^^^^^^^^ @keyword.type
 #            ^^^ @function.method
 #                ^^^^^^ @variable.parameter.builtin
 

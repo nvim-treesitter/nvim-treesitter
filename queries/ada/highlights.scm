@@ -38,7 +38,6 @@
   "private"
   "protected"
   "range"
-  "record"
   "separate"
   "subtype"
   "synchronized"
@@ -49,6 +48,8 @@
   "until"
   "when"
 ] @keyword
+
+"record" @keyword.type
 
 [
   "aliased"

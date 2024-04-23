@@ -338,7 +338,6 @@
 
 [
   "break"
-  "class"
   "const"
   "debugger"
   "export"
@@ -351,6 +350,8 @@
   "var"
   "with"
 ] @keyword
+
+"class" @keyword.type
 
 [
   "async"

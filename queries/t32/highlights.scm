@@ -61,7 +61,7 @@
   "enum"
   "struct"
   "union"
-] @keyword
+] @keyword.type
 
 "sizeof" @keyword.operator
 

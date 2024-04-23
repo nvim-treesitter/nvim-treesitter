@@ -120,7 +120,6 @@
   "as"
   "assert"
   "begin"
-  "class"
   "constraint"
   "end"
   "external"
@@ -132,15 +131,19 @@
   "method"
   "module"
   "new"
-  "object"
   "of"
   "sig"
-  "struct"
-  "type"
   "val"
   "when"
   "with"
 ] @keyword
+
+[
+  "object"
+  "class"
+  "struct"
+  "type"
+] @keyword.type
 
 [
   "lazy"

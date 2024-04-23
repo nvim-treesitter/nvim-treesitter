@@ -12,11 +12,14 @@
   "let"
   "mapping"
   "program"
-  "record"
   "self"
-  "struct"
   "then"
 ] @keyword
+
+[
+  "record"
+  "struct"
+] @keyword.type
 
 "in" @keyword.operator
 

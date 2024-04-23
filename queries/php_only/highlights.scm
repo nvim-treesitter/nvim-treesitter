@@ -13,25 +13,28 @@
 ] @keyword.function
 
 [
-  "class"
   "clone"
   "declare"
   "default"
   "echo"
   "enddeclare"
-  "enum"
   "extends"
   "global"
   "goto"
   "implements"
   "insteadof"
-  "interface"
   "print"
-  "namespace"
   "new"
-  "trait"
   "unset"
 ] @keyword
+
+[
+  "enum"
+  "class"
+  "interface"
+  "namespace"
+  "trait"
+] @keyword.type
 
 [
   "abstract"

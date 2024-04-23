@@ -249,7 +249,7 @@
   [
     "struct"
     "end"
-  ] @keyword)
+  ] @keyword.type)
 
 (macro_definition
   [

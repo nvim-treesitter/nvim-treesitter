@@ -214,7 +214,7 @@
   ] @keyword)
 
 (enum_definition
-  "enum" @keyword)
+  "enum" @keyword.type)
 
 (for_loop
   [
@@ -250,7 +250,7 @@
   ] @keyword)
 
 (struct_definition
-  "struct" @keyword)
+  "struct" @keyword.type)
 
 (transitions_definition
   [

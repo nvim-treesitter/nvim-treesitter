@@ -1,11 +1,12 @@
 [
   "!instanceof"
   "assert"
-  "class"
   "extends"
   "instanceof"
   "package"
 ] @keyword
+
+"class" @keyword.type
 
 [
   "!in"

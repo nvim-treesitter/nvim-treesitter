@@ -168,19 +168,22 @@
 ; Keywords
 [
   "assert"
-  "class"
-  "record"
   "default"
-  "enum"
   "extends"
   "implements"
   "instanceof"
-  "interface"
   "@interface"
   "permits"
   "to"
   "with"
 ] @keyword
+
+[
+  "record"
+  "class"
+  "enum"
+  "interface"
+] @keyword.type
 
 (synchronized_statement
   "synchronized" @keyword)
