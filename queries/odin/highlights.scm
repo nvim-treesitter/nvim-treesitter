@@ -14,9 +14,6 @@
 [
   "foreign"
   "using"
-  "struct"
-  "enum"
-  "union"
   "defer"
   "cast"
   "transmute"
@@ -24,8 +21,14 @@
   "map"
   "bit_set"
   "matrix"
-  "bit_field"
 ] @keyword
+
+[
+  "struct"
+  "enum"
+  "union"
+  "bit_field"
+] @keyword.type
 
 "proc" @keyword.function
 

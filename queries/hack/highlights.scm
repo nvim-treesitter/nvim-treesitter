@@ -22,17 +22,20 @@
 "function" @keyword.function
 
 [
-  "type"
-  "interface"
   "implements"
-  "class"
   "using"
-  "namespace"
   "attribute"
   "const"
   "extends"
   "insteadof"
 ] @keyword
+
+[
+  "class"
+  "type"
+  "interface"
+  "namespace"
+] @keyword.type
 
 [
   "async"

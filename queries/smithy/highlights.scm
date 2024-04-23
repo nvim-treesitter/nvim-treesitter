@@ -16,7 +16,13 @@
   "list"
   "map"
   "set"
-] @type.builtin
+  "structure"
+  "union"
+  "namespace"
+  "service"
+  "operation"
+  "resource"
+] @keyword.type
 
 ; Fields (Members)
 ; (field) @variable.member
@@ -57,12 +63,6 @@
 
 ; Keywords
 [
-  "namespace"
-  "service"
-  "structure"
-  "operation"
-  "union"
-  "resource"
   "metadata"
   "apply"
   "for"

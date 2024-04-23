@@ -141,12 +141,8 @@
 
 ; Keywords
 [
-  "contract"
-  "interface"
   "library"
   "is"
-  "struct"
-  "enum"
   "event"
   "assembly"
   "emit"
@@ -160,6 +156,13 @@
   "receive"
   (virtual)
 ] @keyword
+
+[
+  "enum"
+  "struct"
+  "contract"
+  "interface"
+] @keyword.type
 
 ; FIXME: update grammar
 ; (block_statement "unchecked" @keyword)

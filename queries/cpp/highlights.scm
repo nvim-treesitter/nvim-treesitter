@@ -202,19 +202,22 @@
 ] @keyword.exception
 
 [
-  "class"
   "decltype"
   "explicit"
   "friend"
-  "namespace"
   "override"
-  "template"
-  "typename"
   "using"
-  "concept"
   "requires"
   "constexpr"
 ] @keyword
+
+[
+  "class"
+  "namespace"
+  "template"
+  "typename"
+  "concept"
+] @keyword.type
 
 [
   "co_await"

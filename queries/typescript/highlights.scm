@@ -7,12 +7,9 @@
 
 [
   "declare"
-  "enum"
   "export"
   "implements"
-  "interface"
   "type"
-  "namespace"
   "override"
   "module"
   "asserts"
@@ -20,6 +17,12 @@
   "is"
   "using"
 ] @keyword
+
+[
+  "namespace"
+  "interface"
+  "enum"
+] @keyword.type
 
 [
   "keyof"

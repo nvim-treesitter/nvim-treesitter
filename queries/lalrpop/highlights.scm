@@ -1,11 +1,14 @@
+"grammar" @keyword
+
 [
-  "enum"
-  "extern"
-  "grammar"
-  "match"
   "type"
+  "enum"
+] @keyword.type
+
+[
   "pub"
-] @keyword
+  "extern"
+] @keyword.modifier
 
 [
   "match"

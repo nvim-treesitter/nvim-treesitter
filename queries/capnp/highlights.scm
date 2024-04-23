@@ -15,16 +15,17 @@
 (import_path) @string.special.path
 
 ; Keywords
+"extends" @keyword
+
 [
-  "annotation"
-  "enum"
-  "group"
-  "interface"
   "struct"
+  "interface"
   "union"
-  "extends"
+  "enum"
+  "annotation"
+  "group"
   "namespace"
-] @keyword
+] @keyword.type
 
 ; Builtins
 "const" @keyword.modifier

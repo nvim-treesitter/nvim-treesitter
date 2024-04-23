@@ -120,18 +120,21 @@
 
 ; Keywords
 [
-  "enum"
   "exception"
   "extends"
-  "interaction"
-  "namespace"
-  "senum"
-  "service"
-  "struct"
   "typedef"
-  "union"
   "uri"
 ] @keyword
+
+[
+  "enum"
+  "struct"
+  "union"
+  "senum"
+  "interaction"
+  "namespace"
+  "service"
+] @keyword.type
 
 ; Deprecated Keywords
 [

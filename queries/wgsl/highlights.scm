@@ -27,7 +27,6 @@
   (type_declaration) @function.call)
 
 [
-  "struct"
   "bitcast"
   "discard"
   "enable"
@@ -38,6 +37,8 @@
   "override"
   (texel_format)
 ] @keyword
+
+"struct" @keyword.type
 
 [
   "private"

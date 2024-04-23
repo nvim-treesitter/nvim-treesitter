@@ -196,10 +196,7 @@
   (case_builtin)
   "late"
   "required"
-  "extension"
   "on"
-  "class"
-  "enum"
   "extends"
   "in"
   "is"
@@ -207,6 +204,12 @@
   "super"
   "with"
 ] @keyword
+
+[
+  "class"
+  "enum"
+  "extension"
+] @keyword.type
 
 "return" @keyword.return
 

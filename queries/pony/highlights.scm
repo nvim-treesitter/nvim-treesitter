@@ -3,13 +3,7 @@
 
 ; Keywords
 [
-  "type"
-  "actor"
-  "class"
   "primitive"
-  "interface"
-  "trait"
-  "struct"
   "embed"
   "let"
   "var"
@@ -20,6 +14,15 @@
   "object"
   "where"
 ] @keyword
+
+[
+  "class"
+  "struct"
+  "type"
+  "interface"
+  "trait"
+  "actor"
+] @keyword.type
 
 "fun" @keyword.function
 

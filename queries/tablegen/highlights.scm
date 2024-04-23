@@ -7,8 +7,6 @@
 ; Keywords
 [
   "assert"
-  "class"
-  "multiclass"
   "field"
   "let"
   "def"
@@ -16,6 +14,11 @@
   "defset"
   "defvar"
 ] @keyword
+
+[
+  "multiclass"
+  "class"
+] @keyword.type
 
 "in" @keyword.operator
 

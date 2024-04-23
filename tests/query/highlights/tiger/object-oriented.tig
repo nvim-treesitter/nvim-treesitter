@@ -1,11 +1,11 @@
 let
   class A extends Object {}
-  /* <- @keyword */
+  /* <- @keyword.type */
   /*      ^ @keyword */
   /*              ^ @type.builtin */
 
   type B = class extends A {
-  /*       ^ @keyword */
+  /*       ^ @keyword.type */
   /*             ^ @keyword */
   /*                     ^ @type */
 

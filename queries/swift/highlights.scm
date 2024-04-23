@@ -67,11 +67,6 @@
   bound_identifier: (simple_identifier)) @variable
 
 [
-  "typealias"
-  "struct"
-  "class"
-  "actor"
-  "enum"
   "protocol"
   "extension"
   "indirect"
@@ -86,6 +81,13 @@
   "didSet"
   "willSet"
 ] @keyword
+
+[
+  "enum"
+  "struct"
+  "class"
+  "typealias"
+] @keyword.type
 
 [
   "async"

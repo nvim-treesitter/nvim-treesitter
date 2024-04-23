@@ -243,17 +243,20 @@
 
 [
   "default"
-  "enum"
   "impl"
   "let"
   "move"
-  "struct"
-  "trait"
-  "type"
-  "union"
   "unsafe"
   "where"
 ] @keyword
+
+[
+  "enum"
+  "struct"
+  "union"
+  "trait"
+  "type"
+] @keyword.type
 
 [
   "async"

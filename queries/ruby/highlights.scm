@@ -8,7 +8,6 @@
 [
   "alias"
   "begin"
-  "class"
   "do"
   "end"
   "ensure"
@@ -16,6 +15,8 @@
   "rescue"
   "then"
 ] @keyword
+
+"class" @keyword.type
 
 [
   "return"

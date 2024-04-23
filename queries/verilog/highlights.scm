@@ -6,10 +6,6 @@
   "endmodule"
   "program"
   "endprogram"
-  "class"
-  "endclass"
-  "interface"
-  "endinterface"
   "package"
   "endpackage"
   "checker"
@@ -39,6 +35,16 @@
   "extern"
   (unique_priority)
 ] @keyword
+
+[
+  "class"
+  "endclass"
+  "interface"
+  "endinterface"
+  "enum"
+  "struct"
+  "union"
+] @keyword.type
 
 [
   "function"
@@ -264,10 +270,6 @@
 (type_declaration
   (data_type
     "packed" @keyword.modifier))
-
-(struct_union) @type
-
-"enum" @type
 
 (enum_name_declaration
   (enum_identifier

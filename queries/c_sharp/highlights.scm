@@ -403,18 +403,10 @@
   "implicit"
   "explicit"
   "override"
-  "class"
-  "delegate"
-  "enum"
-  "interface"
-  "namespace"
-  "struct"
   "get"
   "set"
   "init"
   "where"
-  "record"
-  "event"
   "add"
   "remove"
   "checked"
@@ -422,6 +414,17 @@
   "fixed"
   "alias"
 ] @keyword
+
+[
+  "enum"
+  "record"
+  "class"
+  "struct"
+  "interface"
+  "namespace"
+  "event"
+  "delegate"
+] @keyword.type
 
 [
   "async"

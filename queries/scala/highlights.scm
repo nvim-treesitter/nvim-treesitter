@@ -170,8 +170,6 @@
 
 [
   "case"
-  "class"
-  "enum"
   "extends"
   "derives"
   "finally"
@@ -180,8 +178,6 @@
   "object"
   "override"
   "package"
-  "trait"
-  "type"
   "val"
   "var"
   "with"
@@ -192,6 +188,13 @@
   "extension"
   "with"
 ] @keyword
+
+[
+  "enum"
+  "class"
+  "trait"
+  "type"
+] @keyword.type
 
 [
   "abstract"

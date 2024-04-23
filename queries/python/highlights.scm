@@ -300,7 +300,6 @@
 
 [
   "assert"
-  "class"
   "exec"
   "global"
   "nonlocal"
@@ -308,8 +307,12 @@
   "print"
   "with"
   "as"
-  "type"
 ] @keyword
+
+[
+  "type"
+  "class"
+] @keyword.type
 
 [
   "async"

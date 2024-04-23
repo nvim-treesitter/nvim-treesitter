@@ -12,7 +12,7 @@ import * as something from "anotherFile";
 /// @title Voting with delegation.
 // <- @comment
 contract Ballot {
-// ^keyword
+// ^keyword.type
 //       ^ @type
     // This declares a new complex type which will
     // be used for variables later.

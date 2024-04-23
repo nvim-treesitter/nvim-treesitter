@@ -94,8 +94,6 @@
 [
   ; 0.x
   "using"
-  "namespace"
-  "struct"
   "let"
   "const"
   "local"
@@ -109,15 +107,20 @@
   "call"
   "nondet"
   ; 1.0
-  "type"
   "impl"
   "implicits"
   "of"
   "ref"
   "mut"
-  "trait"
-  "enum"
 ] @keyword
+
+[
+  "struct"
+  "enum"
+  "namespace"
+  "type"
+  "trait"
+] @keyword.type
 
 [
   "func"

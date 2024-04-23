@@ -6,7 +6,6 @@
   "closed"
   "compose"
   "const"
-  "enum"
   "error"
   "flexible"
   "library"
@@ -15,15 +14,19 @@
   "overlay"
   "protocol"
   "reserved"
-  "resource"
-  "service"
   "strict"
-  "struct"
-  "table"
-  "type"
-  "union"
   "using"
 ] @keyword
+
+[
+  "enum"
+  "struct"
+  "table"
+  "union"
+  "resource"
+  "service"
+  "type"
+] @keyword.type
 
 (primitives_type) @type.builtin
 

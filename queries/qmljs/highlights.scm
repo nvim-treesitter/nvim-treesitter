@@ -102,13 +102,16 @@
   "property"
   "signal"
   "declare"
-  "enum"
   "export"
   "implements"
-  "interface"
-  "namespace"
-  "type"
   "override"
 ] @keyword
+
+[
+  "interface"
+  "type"
+  "enum"
+  "namespace"
+] @keyword.type
 
 "keyof" @keyword.operator

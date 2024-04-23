@@ -5,9 +5,9 @@ use function Space\Func\F as E;
 //                           ^ @function
 //                      ^ @function
 use type Space\Type\T;
-//  ^ @keyword
+//  ^ @keyword.type
 use namespace Space\Name\N as M;
-//  ^ @keyword
+//  ^ @keyword.type
 //             ^ @module
 
 use namespace Space\Name2\N2, Space\Nothing\N3 as N8, type Space\Type2\N4,;

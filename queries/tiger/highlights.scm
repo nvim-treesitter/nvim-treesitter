@@ -42,7 +42,6 @@
   "then"
   "type"
   "var"
-  "class"
   "extends"
   "_cast"
   "_chunks"
@@ -50,6 +49,8 @@
   "_lvalue"
   "_namety"
 ] @keyword
+
+"class" @keyword.type
 
 ; }}}
 ; Operators {{{

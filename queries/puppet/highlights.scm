@@ -13,13 +13,16 @@
 
 ; Keywords
 [
-  "class"
   "inherits"
   "node"
-  "type"
   "tag"
   "require"
 ] @keyword
+
+[
+  "type"
+  "class"
+] @keyword.type
 
 [
   "define"

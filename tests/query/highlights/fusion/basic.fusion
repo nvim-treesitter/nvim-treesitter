@@ -3,7 +3,7 @@ include: SomeFile.fusion
 //       ^ @string.special.url
 
 namespace: ns = Neos.Fusion.Space
-//<- @keyword
+//<- @keyword.type
 //         ^ @module
 //            ^ @operator
 //              ^ @module
