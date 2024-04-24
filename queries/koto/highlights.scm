@@ -77,19 +77,19 @@
 (identifier) @variable
 
 (import_module
-  (identifier) @namespace)
+  (identifier) @module)
 
 (import_item
-  (identifier) @namespace)
+  (identifier) @module)
 
 (export
-  (identifier) @namespace)
+  (identifier) @module)
 
 (chain
-  lookup: (identifier) @field)
+  lookup: (identifier) @variable.member)
 
 (chain
-  start: (identifier) @function)
+  start: (identifier) @function.call)
 
 [
   (true)
@@ -112,20 +112,20 @@
 
 (number) @number
 
-(meta) @tag
+(meta) @keyword.directive
 
 (meta
-  name: (identifier) @field)
+  name: (identifier) @variable.member)
+
+(entry_inline
+  key: (identifier) @variable.member)
+
+(entry_block
+  key: (identifier) @variable.member)
 
 (self) @variable.builtin
 
 (arg
-  (identifier) @parameter)
+  (identifier) @variable.parameter)
 
-(ellipsis) @parameter
-
-(entry_inline
-  key: (identifier) @field)
-
-(entry_block
-  key: (identifier) @field)
+(ellipsis) @variable.parameter
