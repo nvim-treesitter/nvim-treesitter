@@ -1,4 +1,5 @@
-; temporarily removed the ecma inherit due to it breaking
+; inherits: ecma
+
 "pragma" @keyword.import
 
 ; Annotations
@@ -67,40 +68,6 @@
   (nested_identifier
     (identifier) @module))
 
-; Properties
-;-----------
-(property_identifier) @property
-
-; function
-(call_expression
-  function: (member_expression
-    object: (identifier) @variable
-    property: (property_identifier) @function))
-
-; js
-; Literals
-;---------
-[
-  (true)
-  (false)
-] @boolean
-
-[
-  (null)
-  (undefined)
-] @constant.builtin
-
-(comment) @comment @spell
-
-[
-  (string)
-  (template_string)
-] @string
-
-(regex) @string.regexp
-
-(number) @number
-
 ; Tokens
 ;-------
 [
@@ -117,9 +84,6 @@
 (type_identifier) @type
 
 (predefined_type) @type.builtin
-
-((identifier) @type
-  (#lua-match? @type "^%u"))
 
 (type_arguments
   "<" @punctuation.bracket
@@ -142,8 +106,9 @@
   "export"
   "implements"
   "interface"
-  "keyof"
   "namespace"
   "type"
   "override"
 ] @keyword
+
+"keyof" @keyword.operator
