@@ -362,6 +362,9 @@
   "kotlin": {
     "revision": "260afd9a92bac51b3a4546303103c3d40a430639"
   },
+  "koto": {
+    "revision": "85e689c17abab691e033080da726a792b3711df0"
+  },
   "kusto": {
     "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
   },

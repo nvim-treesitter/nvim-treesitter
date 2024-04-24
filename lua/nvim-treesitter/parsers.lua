@@ -1082,6 +1082,14 @@ list.kotlin = {
   maintainers = { "@SalBakraa" },
 }
 
+list.koto = {
+  install_info = {
+    url = "https://github.com/koto-lang/tree-sitter-koto",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@irh" },
+}
+
 list.kusto = {
   install_info = {
     url = "https://github.com/Willem-J-an/tree-sitter-kusto",
