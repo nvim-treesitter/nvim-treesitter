@@ -18,7 +18,7 @@
     "revision": "afdc3d5da18d42cbb471c0f40527dbed9cace7ad"
   },
   "astro": {
-    "revision": "506515c1dce4220fc9db278ce9eae2ad4e239cff"
+    "revision": "4be180759ec13651f72bacee65fa477c64222a1a"
   },
   "authzed": {
     "revision": "1dec7e1af96c56924e3322cd85fdce15d0a31d00"
@@ -102,7 +102,7 @@
     "revision": "750dde90ed9cdbd82493bc28478d8ab1976b0e9f"
   },
   "dart": {
-    "revision": "6da46473ab8accb13da48113f4634e729a71d335"
+    "revision": "4e101058b4ec7ce4ba92496311a7dd10a4c9c66a"
   },
   "devicetree": {
     "revision": "fb07e6044ffd36932c57a5be01ba5d6b8a9337bb"
@@ -219,7 +219,7 @@
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
   },
   "gleam": {
-    "revision": "bcf9c45b56cbe46e9dac5eee0aee75df270000ac"
+    "revision": "a0b11a15935b95848176c747a8b5776752d90d7c"
   },
   "glimmer": {
     "revision": "6b25d265c990139353e1f7f97baf84987ebb7bf0"
@@ -384,7 +384,7 @@
     "revision": "293369818da219d97327908aab33707b04b63fd9"
   },
   "liquidsoap": {
-    "revision": "09a9e31e2af734a8974dad6ed349648f601eee8c"
+    "revision": "ea97fa1f7d6665a018353cb4483d07c8b121e374"
   },
   "llvm": {
     "revision": "1b96e58faf558ce057d4dc664b904528aee743cb"
@@ -714,7 +714,7 @@
     "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
   },
   "tlaplus": {
-    "revision": "c842127c4385190c3326d5477c92d0816260b547"
+    "revision": "763f9a4edcb1747595842164614aa143eec084dd"
   },
   "tmux": {
     "revision": "9138ea508410e0f34da2666609f600f65e944f22"
