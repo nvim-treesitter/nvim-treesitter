@@ -26,9 +26,10 @@
   "or"
 ] @keyword.operator
 
-"return" @keyword.return
-
-"yield" @keyword.coroutine
+[
+  "return"
+  "yield"
+] @keyword.return
 
 [
   "if"
