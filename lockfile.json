@@ -15,7 +15,7 @@
     "revision": "8518c3fa6b8562af545a496d55c9abd78f53e732"
   },
   "asm": {
-    "revision": "afdc3d5da18d42cbb471c0f40527dbed9cace7ad"
+    "revision": "b0306e9bb2ebe01c6562f1aef265cc42ccc53070"
   },
   "astro": {
     "revision": "4be180759ec13651f72bacee65fa477c64222a1a"
@@ -117,7 +117,7 @@
     "revision": "0229c0211dba909c5d45129ac784a3f4d49c243a"
   },
   "djot": {
-    "revision": "7be89f13c3a5e3c2ed34d29310259158ebe2e493"
+    "revision": "bc94a2867f7a1040c416212207e7e28e79ef0339"
   },
   "dockerfile": {
     "revision": "439c3e7b8a9bfdbf1f7d7c2beaae4173dc484cbf"
@@ -426,7 +426,7 @@
     "revision": "bd17c824196ce70800f64ad39cfddd1b17acc13f"
   },
   "mlir": {
-    "revision": "c2845c1c0b23e2faf6febfa72a042e5346374ebf"
+    "revision": "c930b5f4a1fceec146b9074b8eb54bedcc266e56"
   },
   "muttrc": {
     "revision": "90ef60852c410bd964cd3b954366e4c403c17314"
@@ -753,7 +753,7 @@
     "revision": "debd26fed283d80456ebafa33a06957b0c52e451"
   },
   "unison": {
-    "revision": "056a926d8998e24eaa687755767b83217901a1cc"
+    "revision": "5d1af86e954be775fc338396d27cd5858d0286be"
   },
   "usd": {
     "revision": "ab8c30bde2df0e58c4b3f01f220fb0125ecb57a7"
@@ -774,7 +774,7 @@
     "revision": "2dfddfcb891f74a1cdb9d8ce480a997d11846e17"
   },
   "vhs": {
-    "revision": "9534865e614c95eb9418e5e73f061c32fa4d9540"
+    "revision": "90028bbadb267ead5b87830380f6a825147f0c0f"
   },
   "vim": {
     "revision": "b448ca63f972ade12c373c808acdd2bf972937db"
