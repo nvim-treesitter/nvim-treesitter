@@ -102,7 +102,7 @@
 
 (string) @string
 
-(fill_char) @string
+(fill_char) @punctuation.delimiter
 
 (alignment) @operator
 
