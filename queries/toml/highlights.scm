@@ -19,6 +19,8 @@
 
 (string) @string
 
+(escape_sequence) @string.escape
+
 (integer) @number
 
 (float) @number.float
