@@ -80,17 +80,16 @@
   (angle_unit)
   (integer_distance_unit)
   (float_distance_unit)
-] @type
+] @string
 
 (percentage) @number
 
 (percentage
-  "%" @type)
+  "%" @string)
 
-[
-  (global_selector)
-  (id_selector)
-] @module
+(global_selector) @character.special
+
+(id_selector) @constant
 
 (id_selector_view
   [
@@ -136,4 +135,4 @@
   "env" @function.builtin
   (identifier) @variable)
 
-(property_name) @variable
+(property_name) @property
