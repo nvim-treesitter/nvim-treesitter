@@ -1,5 +1,2 @@
-((line_comment) @comment
-  (#set! injection.language "comment"))
-
-((block_comment) @comment
+((comment) @comment
   (#set! injection.language "comment"))
