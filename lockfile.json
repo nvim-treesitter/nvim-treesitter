@@ -132,7 +132,7 @@
     "revision": "96beba9f3e4156aaae64bb86997503b1ceb1283d"
   },
   "earthfile": {
-    "revision": "513598b175928b6989e02bfc7ff73332955dcbf9"
+    "revision": "41e7d7fb61dc072cdddcf68af9919ab0a9c6d10e"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -429,7 +429,7 @@
     "revision": "bd17c824196ce70800f64ad39cfddd1b17acc13f"
   },
   "mlir": {
-    "revision": "c930b5f4a1fceec146b9074b8eb54bedcc266e56"
+    "revision": "f92e2e11a34a3b9e64252164ffdf5fc857628ad9"
   },
   "muttrc": {
     "revision": "90ef60852c410bd964cd3b954366e4c403c17314"
@@ -609,7 +609,7 @@
     "revision": "9d86f3761bb30e8dcc81e754b81d3ce91848477e"
   },
   "rust": {
-    "revision": "b77c0d8ac28a7c143224e6ed9b4f9e4bd044ff5b"
+    "revision": "04352146022062c101b8ddd853adf17eadd8cf56"
   },
   "scala": {
     "revision": "b76db435a7f876cf1ede837d66054c534783c72f"
@@ -756,7 +756,7 @@
     "revision": "debd26fed283d80456ebafa33a06957b0c52e451"
   },
   "unison": {
-    "revision": "5d1af86e954be775fc338396d27cd5858d0286be"
+    "revision": "59d36a09282be7e4d3374854126590f3dcebee6e"
   },
   "usd": {
     "revision": "ab8c30bde2df0e58c4b3f01f220fb0125ecb57a7"
