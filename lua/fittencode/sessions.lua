@@ -19,6 +19,7 @@ local CMD_TIMEOUT = 5 -- 5 seconds
 local CMD_DEFAULT_ARGS = {
   '--connect-timeout',
   CMD_TIMEOUT,
+  '--show-error',
   -- For debug purposes only, `-v, Make the operation more talkative`
   -- '-v',
 }
@@ -255,10 +256,15 @@ end
 
 ---@param exit_code integer
 ---@param response string
+---@param error string
 ---@param data OnGenerateOneStageData
 local function on_generate_one_stage(exit_code, response, error, data)
   if exit_code ~= CMD_EXIT_CODE_SUCCESS then
-    Log.error('Request failed; exit_code: {}, error: {}', exit_code, vim.split(error, '\n'))
+    ---@type string[]
+    local formatted_error = vim.tbl_filter(function(s)
+      return #s > 0
+    end, vim.split(error, '\n'))
+    Log.error('Request failed; exit_code: {}, error: {}', exit_code, formatted_error)
     if data.on_error then
       data.on_error()
     end
