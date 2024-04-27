@@ -48,7 +48,7 @@ if #updates > 0 then
   local header = '---@type nvim-ts.parsers\nreturn '
   local parser_file = header .. vim.inspect(parsers)
   if vim.fn.executable('stylua') == 1 then
-    parser_file = vim.system({ 'stylua', '-' }, { stdin = parser_file }):wait().stdout --[[@as string]]
+    parser_file = vim.system({ 'stylua', '-' }, { stdin = parser_file, cwd = '.' }):wait().stdout --[[@as string]]
   end
   util.write_file('lua/nvim-treesitter/parsers.lua', parser_file)
 
