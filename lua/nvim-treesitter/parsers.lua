@@ -43,7 +43,7 @@ return {
     install_info = {
       files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
-      revision = '8518c3fa6b8562af545a496d55c9abd78f53e732',
+      revision = '',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-arduino',
     },
     maintainers = { '@ObserverOfTime' },
@@ -273,7 +273,7 @@ return {
   css = {
     install_info = {
       files = { 'src/parser.c', 'src/scanner.c' },
-      revision = '02b4ee757654b7d54fe35352fd8e53a8a4385d42',
+      revision = '',
       url = 'https://github.com/tree-sitter/tree-sitter-css',
     },
     maintainers = { '@TravonteD' },
@@ -1948,7 +1948,7 @@ return {
     install_info = {
       files = { 'src/parser.c', 'src/scanner.c' },
       generate_from_json = true,
-      revision = 'a9ca9d9a8c56d43cf5265779a482b4fd67d004ee',
+      revision = 'cc76205100e147a31477bc6beb06b10b52a6bb3f',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-slang',
     },
     maintainers = { '@theHamsta' },
@@ -2500,7 +2500,7 @@ return {
   wit = {
     install_info = {
       files = { 'src/parser.c' },
-      revision = 'ed13e0a3ee77833900a095d57d2685a1f7f91237',
+      revision = '16e263143e230b79a00f6cc353f6fd860c4e5de5',
       url = 'https://github.com/liamwh/tree-sitter-wit',
     },
     maintainers = { '@liamwh' },
