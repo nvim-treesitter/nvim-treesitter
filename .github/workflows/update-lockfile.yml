@@ -48,7 +48,7 @@ jobs:
           branch: update-parsers-pr
           base: ${{ github.head_ref }}
 
-      - name: Enable Pull Request Automerge
-        env:
-          GH_TOKEN: ${{ steps.app-token.outputs.token }}
-        run: gh pr merge --rebase --auto update-parsers-pr
+      # - name: Enable Pull Request Automerge
+      #   env:
+      #     GH_TOKEN: ${{ steps.app-token.outputs.token }}
+      #   run: gh pr merge --rebase --auto update-parsers-pr
