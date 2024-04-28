@@ -278,6 +278,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [http](https://github.com/rest-nvim/tree-sitter-http) (maintained by @amaanq, @NTBBloodbath)
 - [x] [hurl](https://github.com/pfeiferj/tree-sitter-hurl) (maintained by @pfeiferj)
 - [x] [hyprlang](https://github.com/luckasRanarison/tree-sitter-hyprlang) (maintained by @luckasRanarison)
+- [x] [idl](https://github.com/cathaysia/tree-sitter-idl) (maintained by @cathaysa)
 - [x] [ini](https://github.com/justinmk/tree-sitter-ini) (experimental, maintained by @theHamsta)
 - [x] [ispc](https://github.com/fab4100/tree-sitter-ispc) (maintained by @fab4100)
 - [x] [janet_simple](https://github.com/sogaiu/tree-sitter-janet-simple) (maintained by @sogaiu)
