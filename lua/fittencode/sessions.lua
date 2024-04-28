@@ -251,7 +251,7 @@ end
 ---@class OnGenerateOneStageData User data for GenerateOneStage request
 ---@field path? string Temporary file path for HTTP request data
 ---@field task_id integer Task ID
----@field on_suggestions? function Callback when suggestions is generated
+---@field on_success? function Callback when suggestions is generated
 ---@field on_error? function Callback when request is failed
 
 ---@param exit_code integer
@@ -299,8 +299,8 @@ local function on_generate_one_stage(exit_code, response, error, data)
 
   local suggestions = generate_suggestions(completion_data.generated_text)
 
-  if data.on_suggestions then
-    data.on_suggestions(data.task_id, suggestions)
+  if data.on_success then
+    data.on_success(data.task_id, suggestions)
   end
 end
 
@@ -360,9 +360,9 @@ function M.ready_for_generate()
 end
 
 ---@param task_id integer
----@param on_suggestions function|nil
+---@param on_success function|nil
 ---@param on_error function|nil
-function M.request_generate_one_stage(task_id, on_suggestions, on_error)
+function M.request_generate_one_stage(task_id, on_success, on_error)
   Log.debug('Request generate one stage...')
   local api_key = key_storage:get_key_by_name(username)
   if api_key == nil then
@@ -401,7 +401,7 @@ function M.request_generate_one_stage(task_id, on_suggestions, on_error)
         data = {
           path = path,
           task_id = task_id,
-          on_suggestions = on_suggestions,
+          on_success = on_success,
           on_error = on_error,
         },
       },

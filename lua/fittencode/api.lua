@@ -1,6 +1,7 @@
 local Engine = require('fittencode.engine')
 local Log = require('fittencode.log')
 local Sessions = require('fittencode.sessions')
+local Status = require('fittencode.status')
 
 local M = {}
 
@@ -16,6 +17,10 @@ M.api = {
   ---@param level integer @one of the `vim.log.levels` values
   set_log_level = function(level)
     Log.set_level(level)
+  end,
+  ---@return integer
+  get_current_status = function()
+    return Status.get_current()
   end,
   ---@return boolean
   has_suggestions = function()
