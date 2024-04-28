@@ -9,7 +9,7 @@
     "revision": "b7a7167762e3863b3d6247c708b7f9bca1ca7bea"
   },
   "apex": {
-    "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
+    "revision": "74368c27537a932539904394df8e6beae8990c7f"
   },
   "arduino": {
     "revision": "8518c3fa6b8562af545a496d55c9abd78f53e732"
@@ -42,7 +42,7 @@
     "revision": "0092c7d1bd6bb22ce0a6f78497d50ea2b87f19c0"
   },
   "bitbake": {
-    "revision": "7e0e2ac6f1d0da1a91ab84f35edddfdfece54f1a"
+    "revision": "a5d04fdb5a69a02b8fa8eb5525a60dfb5309b73b"
   },
   "blueprint": {
     "revision": "863cea9f83ad5637300478e0559262f1e791684b"
@@ -54,13 +54,13 @@
     "revision": "9de565257ada70ac441c640e3b5d6850e2df5ab8"
   },
   "cairo": {
-    "revision": "6216c6ee5e9fc0649c4bd7b1aedd884a55bdd9ef"
+    "revision": "6238f609bea233040fe927858156dee5515a0745"
   },
   "capnp": {
     "revision": "7b0883c03e5edd34ef7bcf703194204299d7099f"
   },
   "chatito": {
-    "revision": "fe7a2a75d3d74c1215141b7a7ebebb57ae17a370"
+    "revision": "a461f20dedb43905febb12c1635bc7d2e43e96f0"
   },
   "clojure": {
     "revision": "6e41628e9d18b19caea1cb1d72aae4ccff5bdfe9"
@@ -72,7 +72,7 @@
     "revision": "aefcc2813392eb6ffe509aa0fc8b4e9b57413ee1"
   },
   "commonlisp": {
-    "revision": "83ae738bed7e914cee9090c3fe4c80a32ab45905"
+    "revision": "bf2a65b1c119898a1a17389e07f2a399c05cdc0c"
   },
   "cooklang": {
     "revision": "81c2a8667846b1e60db68b5601d864fe00fd1d3a"
@@ -90,7 +90,7 @@
     "revision": "02b4ee757654b7d54fe35352fd8e53a8a4385d42"
   },
   "csv": {
-    "revision": "cda48a5e890b30619da5bc3ff55be1b1d3d08c8d"
+    "revision": "7eb7297823605392d2bbcc4c09b1cd18d6fa9529"
   },
   "cuda": {
     "revision": "c794560823013fc4cc29944d862b7158d9585408"
@@ -126,7 +126,7 @@
     "revision": "9ab85550c896d8b294d9b9ca1e30698736f08cea"
   },
   "doxygen": {
-    "revision": "a750758da90955c86fcc22fcbb6fa44a7d009865"
+    "revision": "4a30eba5d047d6a8c5b005202b4848c0b33d76ca"
   },
   "dtd": {
     "revision": "5910ee285378e07ff1e63a9f5d21898f62310aed"
@@ -189,10 +189,10 @@
     "revision": "f73d473e3530862dee7cbb38520f28824e7804f6"
   },
   "fsh": {
-    "revision": "fa3347712f7a59ed02ccf508284554689c6cde28"
+    "revision": "fad2e175099a45efbc98f000cc196d3674cc45e0"
   },
   "func": {
-    "revision": "0834e35ecf8b23fbf9ad15b088af6a897e19d4a8"
+    "revision": "f780ca55e65e7d7360d0229331763e16c452fc98"
   },
   "fusion": {
     "revision": "19db2f47ba4c3a0f6238d4ae0e2abfca16e61dd6"
@@ -534,7 +534,7 @@
     "revision": "09e158cd3650581c0af4c49c2e5b10c4834c8646"
   },
   "psv": {
-    "revision": "cda48a5e890b30619da5bc3ff55be1b1d3d08c8d"
+    "revision": "7eb7297823605392d2bbcc4c09b1cd18d6fa9529"
   },
   "pug": {
     "revision": "a7ff31a38908df9b9f34828d21d6ca5e12413e18"
@@ -624,7 +624,7 @@
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
   },
   "slang": {
-    "revision": "a9ca9d9a8c56d43cf5265779a482b4fd67d004ee"
+    "revision": "c4b7c53e5de64d73b04017da9ce4ec1bc221cfba"
   },
   "slint": {
     "revision": "d5fbeaf0c26683f1417d00b6a5ab1cca445031f2"
@@ -633,7 +633,7 @@
     "revision": "3f6517855898ef23023e5d64a8b175d4ee8d646e"
   },
   "smithy": {
-    "revision": "8327eb84d55639ffbe08c9dc82da7fff72a1ad07"
+    "revision": "fa898ac0885d1da9a253695c3e0e91f5efc587cd"
   },
   "snakemake": {
     "revision": "ba1b3868eaa960b945593404af9a7c2f296d3643"
@@ -642,10 +642,10 @@
     "revision": "1653da09ccd183f4312fba819056a13af22a65f6"
   },
   "soql": {
-    "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
+    "revision": "74368c27537a932539904394df8e6beae8990c7f"
   },
   "sosl": {
-    "revision": "857077f9e6bb04df0f769c18d32bfe036911adc8"
+    "revision": "74368c27537a932539904394df8e6beae8990c7f"
   },
   "sourcepawn": {
     "revision": "3ca89fdf998340a7973e276b39516d8902950f86"
@@ -729,7 +729,7 @@
     "revision": "8bd2056818b21860e3d756b5a58c4f6e05fb744e"
   },
   "tsv": {
-    "revision": "cda48a5e890b30619da5bc3ff55be1b1d3d08c8d"
+    "revision": "7eb7297823605392d2bbcc4c09b1cd18d6fa9529"
   },
   "tsx": {
     "revision": "b00b8eb44f0b9f02556da0b1a4e2f71faed7e61b"
@@ -774,7 +774,7 @@
     "revision": "3321077d7446c1b3b017c294fd56ce028ed817fe"
   },
   "verilog": {
-    "revision": "2dfddfcb891f74a1cdb9d8ce480a997d11846e17"
+    "revision": "075ebfc84543675f12e79a955f79d717772dcef3"
   },
   "vhs": {
     "revision": "90028bbadb267ead5b87830380f6a825147f0c0f"
