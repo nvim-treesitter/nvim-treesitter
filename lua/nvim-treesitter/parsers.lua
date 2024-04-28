@@ -949,6 +949,14 @@ list.hyprlang = {
   maintainers = { "@luckasRanarison" },
 }
 
+list.idl = {
+  install_info = {
+    url = "https://github.com/cathaysia/tree-sitter-idl",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@cathaysa" },
+}
+
 list.ini = {
   install_info = {
     url = "https://github.com/justinmk/tree-sitter-ini",
