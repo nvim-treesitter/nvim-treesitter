@@ -10,9 +10,9 @@ local Rest = require('fittencode.rest')
 
 local M = {}
 
-local URL_LOGIN = 'https://codeuser.fittentech.cn:14443/login'
-local URL_GET_FT_TOKEN = 'https://codeuser.fittentech.cn:14443/get_ft_token'
-local URL_GENERATE_ONE_STAGE = 'https://codeapi.fittentech.cn:13443/generate_one_stage/'
+local URL_LOGIN = 'https://fc.fittenlab.cn/codeuser/login'
+local URL_GET_FT_TOKEN = 'https://fc.fittenlab.cn/codeuser/get_ft_token'
+local URL_GENERATE_ONE_STAGE = 'https://fc.fittenlab.cn/codeapi/completion/generate_one_stage/'
 
 local CMD = 'curl'
 local CMD_TIMEOUT = 5 -- 5 seconds
