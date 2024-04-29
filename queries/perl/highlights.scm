@@ -252,7 +252,7 @@
 (keyval_expression
   hash: (_) @variable)
 
-(comment) @comment
+(comment) @comment @spell
 
 [
   "=>"
