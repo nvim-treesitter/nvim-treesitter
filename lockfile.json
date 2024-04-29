@@ -102,7 +102,7 @@
     "revision": "750dde90ed9cdbd82493bc28478d8ab1976b0e9f"
   },
   "dart": {
-    "revision": "4e101058b4ec7ce4ba92496311a7dd10a4c9c66a"
+    "revision": "ac0bb849ccd1a923963af47573b5e396736ff582"
   },
   "devicetree": {
     "revision": "fb07e6044ffd36932c57a5be01ba5d6b8a9337bb"
@@ -315,7 +315,7 @@
     "revision": "e5da7d0aa44403153e0394d87d9edea4e5bd6609"
   },
   "idl": {
-    "revision": "150d24bff72501640e8b6126c94b282450c4c479"
+    "revision": "d9a260eda455deaa36d2edf398963b0736ed0845"
   },
   "ini": {
     "revision": "bcb84a2d4bcd6f55b911c42deade75c8f90cb0c5"
@@ -684,7 +684,7 @@
     "revision": "2c97326cd96b7c3016c3d249e8dc244c89b4abeb"
   },
   "swift": {
-    "revision": "ee04ee19910bb9ea6daf14be7d1e5362a208207d"
+    "revision": "ae648bc42aac4473122918bf792bc3b50158deef"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -762,7 +762,7 @@
     "revision": "59d36a09282be7e4d3374854126590f3dcebee6e"
   },
   "usd": {
-    "revision": "ab8c30bde2df0e58c4b3f01f220fb0125ecb57a7"
+    "revision": "4e0875f724d94d0c2ff36f9b8cb0b12f8b20d216"
   },
   "uxntal": {
     "revision": "4c5ecd6326ebd61f6f9a22a370cbd100e0d601da"
