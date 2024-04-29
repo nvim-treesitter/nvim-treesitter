@@ -1,6 +1,6 @@
 ((source_file
   .
-  (comment) @keyword.directive)
+  (comment) @keyword.directive @nospell)
   (#lua-match? @keyword.directive "^#!/"))
 
 [
