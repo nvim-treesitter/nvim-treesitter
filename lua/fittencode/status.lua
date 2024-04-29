@@ -1,5 +1,3 @@
-local uv = vim.uv or vim.loop
-
 local Base = require('fittencode.base')
 local Log = require('fittencode.log')
 
