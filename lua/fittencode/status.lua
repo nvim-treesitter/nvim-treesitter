@@ -5,6 +5,9 @@ local Log = require('fittencode.log')
 
 local M = {}
 
+---@alias StatusCodes table<string, integer>
+
+---@type StatusCodes
 local C = {
   IDLE = 0,
   REQUESTING = 1,
@@ -17,9 +20,13 @@ M.C = C
 
 local current = C.IDLE
 
+---@type uv_timer_t
 local idle_timer = nil
+
+---@type integer
 local IDLE_CYCLE = 5000 -- ms
 
+---@param status integer
 local get_status_message = function(status)
   for k, v in pairs(C) do
     if v == status then
@@ -29,6 +36,7 @@ local get_status_message = function(status)
   return 'UNKNOWN'
 end
 
+---@param status integer
 M.update = function(status)
   if status ~= current then
     current = status

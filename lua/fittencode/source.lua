@@ -30,6 +30,12 @@ function source:new(o)
   return o
 end
 
+---Return whether this source is available in the current context or not (optional).
+---@return boolean
+function source:is_available()
+  return Engine.preflight()
+end
+
 ---@return string
 function source:get_position_encoding_kind()
   return 'utf-8'
@@ -74,6 +80,13 @@ function source:complete(request, callback)
   end, function()
     callback()
   end)
+end
+
+---Executed after the item was selected.
+---@param completion_item lsp.CompletionItem
+---@param callback fun(completion_item: lsp.CompletionItem|nil)
+function source:execute(completion_item, callback)
+  Engine.reset()
 end
 
 return source
