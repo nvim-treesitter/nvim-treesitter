@@ -68,6 +68,12 @@ end
 ---@param wait integer
 ---@param on_error function|nil
 function M.debounce(timer, callback, wait, on_error)
+  if type(wait) ~= 'number' or wait < 0 then
+    return
+  elseif wait == 0 then
+    callback()
+    return
+  end
   local function destroy_timer()
     if timer then
       if timer:has_ref() then

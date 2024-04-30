@@ -190,7 +190,7 @@ end
 ---@param force? boolean
 ---@param on_success? function
 ---@param on_error? function
-function M.generate_one_stage(row, col, force, on_success, on_error)
+local function generate_one_stage_impl(row, col, force, on_success, on_error)
   Log.debug('Start generate one stage...')
 
   Status.update(SC.REQUESTING)
@@ -236,6 +236,20 @@ function M.generate_one_stage(row, col, force, on_success, on_error)
       on_error()
     end
   end)
+end
+
+---@type uv_timer_t
+local generate_one_stage_timer = nil
+
+---@param row integer
+---@param col integer
+---@param force? boolean
+---@param on_success? function
+---@param on_error? function
+function M.generate_one_stage(row, col, force, on_success, on_error)
+  Base.debounce(generate_one_stage_timer, function()
+    generate_one_stage_impl(row, col, force, on_success, on_error)
+  end, Config.options.delay_completion.delaytime)
 end
 
 ---@return boolean
