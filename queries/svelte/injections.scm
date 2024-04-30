@@ -22,7 +22,7 @@
         (attribute_value) @_lang)))
   (raw_text) @injection.content)
   (#eq? @_attr "lang")
-  (#any-of? @_lang "ts" "typescript")
+  (#any-of? @_lang "ts" "typescript" "js" "javascript")
   (#set! injection.language "typescript"))
 
 ((element
