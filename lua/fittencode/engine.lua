@@ -190,9 +190,7 @@ end
 ---@param force? boolean
 ---@param on_success? function
 ---@param on_error? function
-function M.generate_one_stage(row, col, force, on_success, on_error)
-  Log.debug('Start generate one stage...')
-
+local function generate_one_stage_impl(row, col, force, on_success, on_error)
   Status.update(SC.REQUESTING)
 
   if not Sessions.ready_for_generate() then
@@ -236,6 +234,25 @@ function M.generate_one_stage(row, col, force, on_success, on_error)
       on_error()
     end
   end)
+end
+
+---@type uv_timer_t
+local generate_one_stage_timer = nil
+
+---@param row integer
+---@param col integer
+---@param force? boolean
+---@param on_success? function
+---@param on_error? function
+function M.generate_one_stage(row, col, force, on_success, on_error)
+  Log.debug('Start generate one stage...')
+
+  local delaytime = Config.options.delay_completion.delaytime
+  Log.debug('Delay completion request; delaytime: {} ms', delaytime)
+
+  Base.debounce(generate_one_stage_timer, function()
+    generate_one_stage_impl(row, col, force, on_success, on_error)
+  end, delaytime)
 end
 
 ---@return boolean

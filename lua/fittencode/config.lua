@@ -38,6 +38,11 @@ M.options = {
     -- Enable inline code completion.
     enable = true,
   },
+  delay_completion = {
+    -- Delay time for inline completion (in milliseconds).
+    ---@type integer
+    delaytime = 0,
+  },
   syntax_highlighting = {
     -- Use the Neovim Theme colors for syntax highlighting in the diff viewer.
     use_neovim_colors = false,
