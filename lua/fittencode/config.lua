@@ -40,6 +40,7 @@ M.options = {
   },
   delay_completion = {
     -- Delay time for inline completion (in milliseconds).
+    ---@type integer
     delaytime = 0,
   },
   syntax_highlighting = {
