@@ -5,9 +5,12 @@ local Config = require('fittencode.config')
 local Log = require('fittencode.log')
 local Lsp = require('fittencode.lsp')
 local Sessions = require('fittencode.sessions')
+local Status = require('fittencode.status')
 local SuggestionsCache = require('fittencode.suggestions_cache')
 local TaskScheduler = require('fittencode.tasks')
 local View = require('fittencode.view')
+
+local SC = Status.C
 
 local M = {}
 
@@ -109,7 +112,7 @@ end
 ---@param task_id integer
 ---@param suggestions? Suggestions
 ---@return Suggestions?
-local function on_suggestions(task_id, suggestions)
+local function process_suggestions(task_id, suggestions)
   local row, col = Base.get_cursor()
   if not tasks:match_clean(task_id, row, col) then
     Log.debug('Completion request is outdated, discarding; task_id: {}, row: {}, col: {}', task_id, row, col)
@@ -147,6 +150,15 @@ local function on_suggestions(task_id, suggestions)
   return suggestions
 end
 
+local function apply_suggestion(task_id, row, col, suggestion)
+  if suggestion then
+    cache:update(task_id, row, col, suggestion)
+    if inline_mode then
+      View.render_virt_text(suggestion)
+    end
+  end
+end
+
 local function lazy_inline_completion()
   local is_advance = function(row, col)
     local cached_row, cached_col = cache:get_cursor()
@@ -176,10 +188,12 @@ end
 ---@param row integer
 ---@param col integer
 ---@param force? boolean
----@param on_suggestions_ready? function
+---@param on_success? function
 ---@param on_error? function
-function M.generate_one_stage(row, col, force, on_suggestions_ready, on_error)
+function M.generate_one_stage(row, col, force, on_success, on_error)
   Log.debug('Start generate one stage...')
+
+  Status.update(SC.REQUESTING)
 
   if not Sessions.ready_for_generate() then
     Log.debug('Not ready for generate')
@@ -194,6 +208,7 @@ function M.generate_one_stage(row, col, force, on_suggestions_ready, on_error)
 
   if not force and cache:equal_cursor(row, col) then
     Log.debug('Cached cursor matches requested cursor')
+    Status.update(SC.SUGGESTIONS_READY)
     if on_error then
       on_error()
     end
@@ -205,21 +220,18 @@ function M.generate_one_stage(row, col, force, on_suggestions_ready, on_error)
   local task_id = tasks:create(row, col)
   cache:flush()
   Sessions.request_generate_one_stage(task_id, function(id, suggestions)
-    local processed_suggestions = on_suggestions(id, suggestions)
-    if processed_suggestions then
-      cache:update(task_id, row, col, processed_suggestions)
-      if inline_mode then
-        View.render_virt_text(processed_suggestions)
-      end
-      if on_suggestions_ready then
-        on_suggestions_ready(processed_suggestions)
-      end
+    local processed = process_suggestions(id, suggestions)
+    if processed then
+      apply_suggestion(task_id, row, col, processed)
+      Status.update(SC.SUGGESTIONS_READY)
     else
-      if on_error then
-        on_error()
-      end
+      Status.update(SC.NO_MORE_SUGGESTIONS)
+    end
+    if on_success then
+      on_success(processed)
     end
   end, function()
+    Status.update(SC.REQUEST_ERROR)
     if on_error then
       on_error()
     end
@@ -403,6 +415,7 @@ function M.reset(reset_lsp)
   if inline_mode and reset_lsp then
     Lsp.silence(false)
   end
+  Status.update(SC.IDLE)
 end
 
 function M.advance()
