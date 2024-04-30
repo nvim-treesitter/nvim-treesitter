@@ -6,10 +6,10 @@
     "revision": "d3dc807692e6bca671d4491b3bf5c67eeca8c016"
   },
   "angular": {
-    "revision": "b7a7167762e3863b3d6247c708b7f9bca1ca7bea"
+    "revision": "a9ec402bf8e0509f389dba64a6dba037ad199233"
   },
   "apex": {
-    "revision": "74368c27537a932539904394df8e6beae8990c7f"
+    "revision": "c99ad4b16d112fea91745e3f1b769754239fdaba"
   },
   "arduino": {
     "revision": "8518c3fa6b8562af545a496d55c9abd78f53e732"
@@ -132,7 +132,7 @@
     "revision": "5910ee285378e07ff1e63a9f5d21898f62310aed"
   },
   "earthfile": {
-    "revision": "41e7d7fb61dc072cdddcf68af9919ab0a9c6d10e"
+    "revision": "3ded1cba9eab14b07377b700b1132d259480abae"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -168,7 +168,7 @@
     "revision": "f3b9274514b5f9bf6b0dd4a01c30f9cc15c58bc4"
   },
   "fennel": {
-    "revision": "325a3315be968b3d8ecdc5c414159be3c8bab212"
+    "revision": "8ad17704b3c2469155947d4e8fcb618cf1328459"
   },
   "fidl": {
     "revision": "0a8910f293268e27ff554357c229ba172b0eaed2"
@@ -645,10 +645,10 @@
     "revision": "1653da09ccd183f4312fba819056a13af22a65f6"
   },
   "soql": {
-    "revision": "74368c27537a932539904394df8e6beae8990c7f"
+    "revision": "c99ad4b16d112fea91745e3f1b769754239fdaba"
   },
   "sosl": {
-    "revision": "74368c27537a932539904394df8e6beae8990c7f"
+    "revision": "c99ad4b16d112fea91745e3f1b769754239fdaba"
   },
   "sourcepawn": {
     "revision": "3ca89fdf998340a7973e276b39516d8902950f86"
@@ -675,7 +675,7 @@
     "revision": "c68a4572e2d6403b6e99066c9a113b43f4a07a27"
   },
   "supercollider": {
-    "revision": "3b35bd0fded4423c8fb30e9585c7bacbcd0e8095"
+    "revision": "f8ccdc2bb4013d314c59c56079d9c2c8cbb2b624"
   },
   "surface": {
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
@@ -801,7 +801,7 @@
     "revision": "bd1d35cf3e013dc7e189b46a593bdc2b281b0dd7"
   },
   "wit": {
-    "revision": "16e263143e230b79a00f6cc353f6fd860c4e5de5"
+    "revision": "3d6124cfe88555ecee1ba97d6d76c70d13af927a"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
@@ -810,7 +810,7 @@
     "revision": "5910ee285378e07ff1e63a9f5d21898f62310aed"
   },
   "yaml": {
-    "revision": "ee093118211be521742b9866a8ed8ce6d87c7a94"
+    "revision": "49db816e6a644ea5914daad801514d9f830e4c88"
   },
   "yang": {
     "revision": "2c0e6be8dd4dcb961c345fa35c309ad4f5bd3502"
