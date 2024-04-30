@@ -208,6 +208,7 @@ function M.generate_one_stage(row, col, force, on_success, on_error)
 
   if not force and cache:equal_cursor(row, col) then
     Log.debug('Cached cursor matches requested cursor')
+    Status.update(SC.SUGGESTIONS_READY)
     if on_error then
       on_error()
     end
