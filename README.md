@@ -63,6 +63,10 @@ use {
     -- Enable inline code completion.
     enable = true,
   },
+  delay_completion = {
+    -- Delay time for inline completion (in milliseconds).
+    delaytime = 0,
+  },
   -- Set the mode of the completion.
   -- Available options:
   -- - 'inline' (default)
