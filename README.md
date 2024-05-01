@@ -63,7 +63,9 @@ use {
     -- Enable inline code completion.
     enable = true,
     -- Disable auto completion when the cursor is within the line.
-    disable_completion_within_the_line = false,    
+    disable_completion_within_the_line = false,
+    -- Disable auto completion when pressing Backspace or Delete.
+    disable_completion_when_delete = false,
   },
   delay_completion = {
     -- Delay time for inline completion (in milliseconds).
