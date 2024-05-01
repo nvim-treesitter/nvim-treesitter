@@ -152,5 +152,5 @@
   (multiline_comment)
 ] @comment @spell
 
-((comment) @keyword.directive
+((comment) @keyword.directive @nospell
   (#lua-match? @keyword.directive "^.*RUN"))

@@ -332,8 +332,8 @@
   (comment_environment)
 ] @comment @spell
 
-((line_comment) @keyword.directive
+((line_comment) @keyword.directive @nospell
   (#lua-match? @keyword.directive "^%% !TeX"))
 
-((line_comment) @keyword.directive
+((line_comment) @keyword.directive @nospell
   (#lua-match? @keyword.directive "^%%&"))

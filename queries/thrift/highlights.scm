@@ -238,5 +238,5 @@
 ((comment) @comment.documentation
   (#lua-match? @comment.documentation "^///$"))
 
-((comment) @keyword.directive
+((comment) @keyword.directive @nospell
   (#lua-match? @keyword.directive "#!.*"))
