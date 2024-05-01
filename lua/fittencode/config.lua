@@ -36,7 +36,11 @@ M.options = {
   },
   inline_completion = {
     -- Enable inline code completion.
+    ---@type boolean
     enable = true,
+    -- Disable auto completion when the cursor is within the line.
+    ---@type boolean
+    disable_completion_within_the_line = false,
   },
   delay_completion = {
     -- Delay time for inline completion (in milliseconds).
