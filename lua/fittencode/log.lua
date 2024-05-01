@@ -51,7 +51,7 @@ local function log_file(msg)
   local f = io.open(LOG_PATH, 'a')
   if f then
     if first_log then
-      local EDGE = '================================================================================\n'
+      local EDGE = string.rep('=', 80) .. '\n'
       f:write(EDGE)
       ---@type table<string,any>
       local mat = {}

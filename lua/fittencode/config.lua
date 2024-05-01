@@ -41,6 +41,9 @@ M.options = {
     -- Disable auto completion when the cursor is within the line.
     ---@type boolean
     disable_completion_within_the_line = false,
+    -- Disable auto completion when pressing Backspace or Delete.
+    ---@type boolean
+    disable_completion_when_delete = false,
   },
   delay_completion = {
     -- Delay time for inline completion (in milliseconds).

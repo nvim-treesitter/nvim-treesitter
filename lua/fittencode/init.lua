@@ -28,6 +28,10 @@ function M.setup(opts)
     require('fittencode.lsp').register_source()
   end
 
+  if Config.options.inline_completion.disable_completion_when_delete then
+    Bindings.setup_onkey()
+  end
+
   require('fittencode.sessions').request_load_last_session()
 end
 
