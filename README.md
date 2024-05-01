@@ -62,6 +62,8 @@ use {
   inline_completion = {
     -- Enable inline code completion.
     enable = true,
+    -- Disable auto completion when the cursor is within the line.
+    disable_completion_within_the_line = false,    
   },
   delay_completion = {
     -- Delay time for inline completion (in milliseconds).

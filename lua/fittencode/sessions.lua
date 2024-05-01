@@ -330,7 +330,7 @@ local function make_generate_one_stage_params()
 
   local row, col = Base.get_cursor()
 
-  if not Config.internal.virtual_text.inline then
+  if not Config.internal.virtual_text.inline or Config.options.inline_completion.disable_completion_within_the_line then
     local line = api.nvim_buf_get_lines(0, row, row + 1, false)[1]
     local len = string.len(line)
     Log.debug('Inline mode is disabled; col: {}, line: {}, length of line: {}', col, line, len)
