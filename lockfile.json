@@ -6,7 +6,7 @@
     "revision": "d3dc807692e6bca671d4491b3bf5c67eeca8c016"
   },
   "angular": {
-    "revision": "a9ec402bf8e0509f389dba64a6dba037ad199233"
+    "revision": "f12fc56469d778285fb35b5bdb943edcfe77c48a"
   },
   "apex": {
     "revision": "c99ad4b16d112fea91745e3f1b769754239fdaba"
@@ -84,7 +84,7 @@
     "revision": "594289eadfec719198e560f9d7fd243c4db678d5"
   },
   "cpp": {
-    "revision": "72fd00128f1c38319670cbf4bcedbba0dc849d96"
+    "revision": "2369fa991eba294e9238e28280ffcd58132f94bc"
   },
   "css": {
     "revision": "02b4ee757654b7d54fe35352fd8e53a8a4385d42"
@@ -117,7 +117,7 @@
     "revision": "0229c0211dba909c5d45129ac784a3f4d49c243a"
   },
   "djot": {
-    "revision": "bc94a2867f7a1040c416212207e7e28e79ef0339"
+    "revision": "0e9a836ec47612ade15645fb1680adb549894a6c"
   },
   "dockerfile": {
     "revision": "439c3e7b8a9bfdbf1f7d7c2beaae4173dc484cbf"
@@ -300,7 +300,7 @@
     "revision": "a24c5a39d1d7e993a8bee913c8e8b6a652ca5ae8"
   },
   "html": {
-    "revision": "bfa075d83c6b97cd48440b3829ab8d24a2319809"
+    "revision": "eee29ca0ce287b699d9d52118f9c1cd9094c48f9"
   },
   "htmldjango": {
     "revision": "ea71012d3fe14dd0b69f36be4f96bdfe9155ebae"
@@ -342,7 +342,7 @@
     "revision": "80e623c2165887f9829357acfa9c0a0bab34a3cd"
   },
   "json5": {
-    "revision": "c23f7a9b1ee7d45f516496b1e0e4be067264fa0d"
+    "revision": "ab0ba8229d639ec4f3fa5f674c9133477f4b77bd"
   },
   "jsonc": {
     "revision": "02b01653c8a1c198ae7287d566efa86a135b30d5"
@@ -432,7 +432,7 @@
     "revision": "bd17c824196ce70800f64ad39cfddd1b17acc13f"
   },
   "mlir": {
-    "revision": "f92e2e11a34a3b9e64252164ffdf5fc857628ad9"
+    "revision": "d04201a28c9f93656634ca1c1d6ba775149522a0"
   },
   "muttrc": {
     "revision": "90ef60852c410bd964cd3b954366e4c403c17314"
@@ -552,7 +552,7 @@
     "revision": "e3b82b78721aee07f676dac8473ae69db51debcf"
   },
   "python": {
-    "revision": "b466ffb4d7ce0a833754429ad8d3a02e950ed74c"
+    "revision": "71778c2a472ed00a64abf4219544edbf8e4b86d7"
   },
   "ql": {
     "revision": "ff04ba61857ba05b80221e71b423b2728dbebe1e"
@@ -642,7 +642,7 @@
     "revision": "ba1b3868eaa960b945593404af9a7c2f296d3643"
   },
   "solidity": {
-    "revision": "1653da09ccd183f4312fba819056a13af22a65f6"
+    "revision": "fa5c61c7c5a2d9e8e99439e2cec90225f4acb86b"
   },
   "soql": {
     "revision": "c99ad4b16d112fea91745e3f1b769754239fdaba"
@@ -675,7 +675,7 @@
     "revision": "c68a4572e2d6403b6e99066c9a113b43f4a07a27"
   },
   "supercollider": {
-    "revision": "f8ccdc2bb4013d314c59c56079d9c2c8cbb2b624"
+    "revision": "affa4389186b6939d89673e1e9d2b28364f5ca6f"
   },
   "surface": {
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
@@ -810,7 +810,7 @@
     "revision": "5910ee285378e07ff1e63a9f5d21898f62310aed"
   },
   "yaml": {
-    "revision": "49db816e6a644ea5914daad801514d9f830e4c88"
+    "revision": "08ab1fbc18beac06b2938495a2c6ab17b5a6abc5"
   },
   "yang": {
     "revision": "2c0e6be8dd4dcb961c345fa35c309ad4f5bd3502"
