@@ -1,17 +1,19 @@
 [
   ((element
     (start_tag
-      (tag_name) @_not_special))
-    (#not-any-of? @_not_special "meta" "link"))
+      (tag_name) @_not_void_element))
+    (#not-any-of? @_not_void_element
+      "area" "base" "basefont" "bgsound" "br" "col" "command" "embed" "frame" "hr" "image" "img"
+      "input" "isindex" "keygen" "link" "menuitem" "meta" "nextid" "param" "source" "track" "wbr"))
   (element
     (self_closing_tag))
 ] @indent.begin
 
-; These tags are usually written one-lined and doesn't use self-closing tags so special-cased them
-; but add indent to the tag to make sure attributes inside them are still indented if written multi-lined
 ((start_tag
-  (tag_name) @_special)
-  (#any-of? @_special "meta" "link")) @indent.begin
+  (tag_name) @_void_element)
+  (#any-of? @_void_element
+    "area" "base" "basefont" "bgsound" "br" "col" "command" "embed" "frame" "hr" "image" "img"
+    "input" "isindex" "keygen" "link" "menuitem" "meta" "nextid" "param" "source" "track" "wbr")) @indent.begin
 
 ; These are the nodes that will be captured when we do `normal o`
 ; But last element has already been ended, so capturing this
