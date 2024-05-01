@@ -61,22 +61,35 @@ use {
   },
   inline_completion = {
     -- Enable inline code completion.
+    ---@type boolean
     enable = true,
     -- Disable auto completion when the cursor is within the line.
+    ---@type boolean
     disable_completion_within_the_line = false,
     -- Disable auto completion when pressing Backspace or Delete.
+    ---@type boolean
     disable_completion_when_delete = false,
   },
   delay_completion = {
     -- Delay time for inline completion (in milliseconds).
+    ---@type integer
     delaytime = 0,
+  },
+  -- Enable/Disable the default keymaps in inline completion.
+  use_default_keymaps = true,
+  -- Setting for source completion.
+  source_completion = {
+    -- Enable source completion.
+    enable = true,
+    -- Use `disable_specific_inline_completion.suffixes` to disable completion for specific file suffixes.
+    use_inline_suffixes_filter = true,
   },
   -- Set the mode of the completion.
   -- Available options:
   -- - 'inline' (default)
   -- - 'source'
   completion_mode = 'inline',
-  use_default_keymaps = true,
+  ---@class LogOptions
   log = {
     level = vim.log.levels.WARN,
   },
