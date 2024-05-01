@@ -8,6 +8,8 @@ local View = require('fittencode.view')
 
 local M = {}
 
+local ignore = false
+
 local ADVANCE_DEBOUNCE_TIME = 120
 ---@type uv_timer_t
 local advance_timer = nil
@@ -17,7 +19,11 @@ function M.setup_autocmds()
     group = Base.augroup('GenerateOneStage'),
     pattern = '*',
     callback = function()
+      -- Log.debug('CursorHoldI')
       if not Engine.preflight() then
+        return
+      end
+      if ignore then
         return
       end
       local row, col = Base.get_cursor()
@@ -30,7 +36,11 @@ function M.setup_autocmds()
     group = Base.augroup('Advance'),
     pattern = '*',
     callback = function()
+      -- Log.debug('CursorMovedI')
       if not Engine.preflight() then
+        return
+      end
+      if ignore then
         return
       end
       Base.debounce(advance_timer, function()
@@ -44,12 +54,16 @@ function M.setup_autocmds()
     group = Base.augroup('TextChanged'),
     pattern = '*',
     callback = function()
+      -- Log.debug('TextChangedI')
       if not Engine.preflight() then
+        return
+      end
+      if ignore then
         return
       end
       Engine.on_text_changed()
     end,
-    desc = 'TextChanged',
+    desc = 'Text changed',
   })
 
   api.nvim_create_autocmd({ 'BufLeave', 'InsertLeave', 'CursorMoved' }, {
@@ -121,6 +135,32 @@ function M.setup_keymaps()
   end)
   Base.map('i', '<C-Down>', API.accept_line)
   Base.map('i', '<C-Right>', API.accept_word)
+end
+
+function M.setup_onkey()
+  -- '<80>kd', '<80>kD' in Lua
+  local keycodes = {
+    '<Backspace>',
+    '<Delete>',
+  }
+  local internal_keys = {}
+  vim.tbl_map(function(trigger)
+    internal_keys[#internal_keys + 1] = api.nvim_replace_termcodes(trigger, true, true, true)
+  end, keycodes)
+
+  vim.on_key(function(key)
+    vim.schedule(function()
+      if api.nvim_get_mode().mode == 'i' then
+        if vim.tbl_contains(internal_keys, key) then
+          -- Log.debug('Ignore key: {}', key)
+          ignore = true
+        else
+          -- Log.debug('Accept key: {}', key)
+          ignore = false
+        end
+      end
+    end)
+  end)
 end
 
 return M
