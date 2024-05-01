@@ -462,6 +462,19 @@ function M.is_inline_enabled()
   return true
 end
 
+---@return boolean
+function M.is_source_enabled()
+  if not Config.options.source_completion.enable then
+    return false
+  end
+  local filetype = vim.bo.filetype
+  local use_filter = Config.options.source_completion.use_inline_suffixes_filter
+  if use_filter and vim.tbl_contains(Config.options.disable_specific_inline_completion.suffixes, filetype) then
+    return false
+  end
+  return true
+end
+
 ---@alias lsp.CompletionResponse lsp.CompletionList|lsp.CompletionItem[]
 
 -- Use `get_word` so that the word is the same as in `core.confirm`
