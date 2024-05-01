@@ -25,6 +25,8 @@
 
 (string) @string
 
+(escape_sequence) @string.escape
+
 ((string) @string.special.path
   (#lua-match? @string.special.path "^[.]?[.]?[/]"))
 
