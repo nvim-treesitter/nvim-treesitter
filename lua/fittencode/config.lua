@@ -50,16 +50,24 @@ M.options = {
     ---@type integer
     delaytime = 0,
   },
-  syntax_highlighting = {
-    -- Use the Neovim Theme colors for syntax highlighting in the diff viewer.
-    use_neovim_colors = false,
+  -- Enable/Disable the default keymaps in inline completion.
+  use_default_keymaps = true,
+  -- Setting for source completion.
+  source_completion = {
+    -- Enable source completion.
+    enable = true,
+    -- Use `disable_specific_inline_completion.suffixes` to disable completion for specific file suffixes.
+    use_inline_suffixes_filter = true,
   },
   -- Set the mode of the completion.
   -- Available options:
   -- - 'inline' (default)
   -- - 'source'
   completion_mode = 'inline',
-  use_default_keymaps = true,
+  syntax_highlighting = {
+    -- Use the Neovim Theme colors for syntax highlighting in the diff viewer.
+    use_neovim_colors = false,
+  },
   ---@class LogOptions
   log = {
     level = vim.log.levels.WARN,
