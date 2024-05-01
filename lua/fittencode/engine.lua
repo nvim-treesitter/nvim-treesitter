@@ -190,7 +190,7 @@ end
 ---@param force? boolean
 ---@param on_success? function
 ---@param on_error? function
-local function generate_one_stage_impl(row, col, force, on_success, on_error)
+local function _generate_one_stage(row, col, force, on_success, on_error)
   Status.update(SC.REQUESTING)
 
   if not Sessions.ready_for_generate() then
@@ -254,7 +254,7 @@ function M.generate_one_stage(row, col, force, delaytime, on_success, on_error)
   Log.debug('Delay completion request; delaytime: {} ms', delaytime)
 
   Base.debounce(generate_one_stage_timer, function()
-    generate_one_stage_impl(row, col, force, on_success, on_error)
+    _generate_one_stage(row, col, force, on_success, on_error)
   end, delaytime)
 end
 
