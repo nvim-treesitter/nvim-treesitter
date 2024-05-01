@@ -451,7 +451,7 @@ function M.advance()
 end
 
 ---@return boolean
-function M.preflight()
+function M.is_inline_enabled()
   if not Config.options.inline_completion.enable then
     return false
   end

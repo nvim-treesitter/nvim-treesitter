@@ -20,7 +20,7 @@ function M.setup_autocmds()
     pattern = '*',
     callback = function()
       -- Log.debug('CursorHoldI')
-      if not Engine.preflight() then
+      if not Engine.is_inline_enabled() then
         return
       end
       if ignore then
@@ -37,7 +37,7 @@ function M.setup_autocmds()
     pattern = '*',
     callback = function()
       -- Log.debug('CursorMovedI')
-      if not Engine.preflight() then
+      if not Engine.is_inline_enabled() then
         return
       end
       if ignore then
@@ -55,7 +55,7 @@ function M.setup_autocmds()
     pattern = '*',
     callback = function()
       -- Log.debug('TextChangedI')
-      if not Engine.preflight() then
+      if not Engine.is_inline_enabled() then
         return
       end
       if ignore then
@@ -70,7 +70,7 @@ function M.setup_autocmds()
     group = Base.augroup('Reset'),
     pattern = '*',
     callback = function()
-      if not Engine.preflight() then
+      if not Engine.is_inline_enabled() then
         return
       end
       Engine.reset(true)

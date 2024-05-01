@@ -33,7 +33,7 @@ end
 ---Return whether this source is available in the current context or not (optional).
 ---@return boolean
 function source:is_available()
-  return Engine.preflight()
+  return Engine.is_inline_enabled()
 end
 
 ---@return string
@@ -51,7 +51,7 @@ end
 ---@param request cmp.SourceCompletionApiParams
 ---@param callback fun(response:lsp.CompletionResponse|nil)
 function source:complete(request, callback)
-  if not Engine.preflight() then
+  if not Engine.is_inline_enabled() then
     callback()
     return
   end
