@@ -34,6 +34,19 @@ local function condense_nl(suggestions)
   if not suggestions or #suggestions == 0 then
     return
   end
+
+  local is_all_empty = true
+  for _, suggestion in ipairs(suggestions) do
+    if #suggestion ~= 0 then
+      is_all_empty = false
+      break
+    end
+  end
+
+  if is_all_empty then
+    return {}
+  end
+
   local row, col = Base.get_cursor()
   local prev_line = nil
   local cur_line = api.nvim_buf_get_lines(0, row, row + 1, false)[1]
