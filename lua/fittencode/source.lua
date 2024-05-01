@@ -82,6 +82,8 @@ end
 ---@param callback fun(completion_item: lsp.CompletionItem|nil)
 function source:execute(completion_item, callback)
   Engine.reset()
+  -- Log.debug('Execute completion item: {}', completion_item)
+  callback(completion_item)
 end
 
 return source
