@@ -190,7 +190,7 @@ end
 ---@param force? boolean
 ---@param on_success? function
 ---@param on_error? function
-local function generate_one_stage_impl(row, col, force, on_success, on_error)
+local function _generate_one_stage(row, col, force, on_success, on_error)
   Status.update(SC.REQUESTING)
 
   if not Sessions.ready_for_generate() then
@@ -242,16 +242,19 @@ local generate_one_stage_timer = nil
 ---@param row integer
 ---@param col integer
 ---@param force? boolean
+---@param delaytime? integer
 ---@param on_success? function
 ---@param on_error? function
-function M.generate_one_stage(row, col, force, on_success, on_error)
+function M.generate_one_stage(row, col, force, delaytime, on_success, on_error)
   Log.debug('Start generate one stage...')
 
-  local delaytime = Config.options.delay_completion.delaytime
+  if delaytime == nil then
+    delaytime = Config.options.delay_completion.delaytime
+  end
   Log.debug('Delay completion request; delaytime: {} ms', delaytime)
 
   Base.debounce(generate_one_stage_timer, function()
-    generate_one_stage_impl(row, col, force, on_success, on_error)
+    _generate_one_stage(row, col, force, on_success, on_error)
   end, delaytime)
 end
 
@@ -451,12 +454,25 @@ function M.advance()
 end
 
 ---@return boolean
-function M.preflight()
+function M.is_inline_enabled()
   if not Config.options.inline_completion.enable then
     return false
   end
   local filetype = vim.bo.filetype
   if vim.tbl_contains(Config.options.disable_specific_inline_completion.suffixes, filetype) then
+    return false
+  end
+  return true
+end
+
+---@return boolean
+function M.is_source_enabled()
+  if not Config.options.source_completion.enable then
+    return false
+  end
+  local filetype = vim.bo.filetype
+  local use_filter = Config.options.source_completion.use_inline_suffixes_filter
+  if use_filter and vim.tbl_contains(Config.options.disable_specific_inline_completion.suffixes, filetype) then
     return false
   end
   return true

@@ -33,7 +33,7 @@ end
 ---Return whether this source is available in the current context or not (optional).
 ---@return boolean
 function source:is_available()
-  return Engine.preflight()
+  return Engine.is_source_enabled()
 end
 
 ---@return string
@@ -51,13 +51,8 @@ end
 ---@param request cmp.SourceCompletionApiParams
 ---@param callback fun(response:lsp.CompletionResponse|nil)
 function source:complete(request, callback)
-  if not Engine.preflight() then
-    callback()
-    return
-  end
-
   local row, col = Base.get_cursor()
-  Engine.generate_one_stage(row, col, true, function(suggestions)
+  Engine.generate_one_stage(row, col, true, 0, function(suggestions)
     if not suggestions then
       callback()
       return
