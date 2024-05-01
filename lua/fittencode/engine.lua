@@ -242,12 +242,15 @@ local generate_one_stage_timer = nil
 ---@param row integer
 ---@param col integer
 ---@param force? boolean
+---@param delaytime? integer
 ---@param on_success? function
 ---@param on_error? function
-function M.generate_one_stage(row, col, force, on_success, on_error)
+function M.generate_one_stage(row, col, force, delaytime, on_success, on_error)
   Log.debug('Start generate one stage...')
 
-  local delaytime = Config.options.delay_completion.delaytime
+  if delaytime == nil then
+    delaytime = Config.options.delay_completion.delaytime
+  end
   Log.debug('Delay completion request; delaytime: {} ms', delaytime)
 
   Base.debounce(generate_one_stage_timer, function()

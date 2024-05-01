@@ -52,7 +52,7 @@ end
 ---@param callback fun(response:lsp.CompletionResponse|nil)
 function source:complete(request, callback)
   local row, col = Base.get_cursor()
-  Engine.generate_one_stage(row, col, true, function(suggestions)
+  Engine.generate_one_stage(row, col, true, 0, function(suggestions)
     if not suggestions then
       callback()
       return
