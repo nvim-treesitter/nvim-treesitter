@@ -966,6 +966,14 @@ list.ini = {
   experimental = true,
 }
 
+list.inko = {
+  install_info = {
+    url = "https://github.com/inko-lang/tree-sitter-inko",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@yorickpeterse" },
+}
+
 list.ispc = {
   install_info = {
     url = "https://github.com/fab4100/tree-sitter-ispc",
