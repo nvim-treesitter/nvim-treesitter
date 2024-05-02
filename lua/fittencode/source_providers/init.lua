@@ -37,7 +37,7 @@ local providers = {}
 function M.register_source_provider(provider)
   providers[#providers + 1] = provider
   table.sort(providers, function(a, b)
-    return a.get_priority() > b.get_priority()
+    return a:get_priority() > b:get_priority()
   end)
 end
 

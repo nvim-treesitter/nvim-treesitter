@@ -6,7 +6,7 @@ local M = {}
 
 function M:new(o)
   o = o or {}
-  o.name = 'default'
+  o.name = 'Default'
   o.priority = 1
   setmetatable(o, self)
   self.__index = self
