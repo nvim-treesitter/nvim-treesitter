@@ -70,10 +70,10 @@ function M.setup_autocmds()
     group = Base.augroup('Reset'),
     pattern = '*',
     callback = function()
-      if not Engine.is_inline_enabled() then
+      if not Engine.is_inline_enabled() and not Engine.is_source_enabled() then
         return
       end
-      Engine.reset(true)
+      Engine.reset()
     end,
     desc = 'Reset',
   })

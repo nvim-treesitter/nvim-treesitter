@@ -187,7 +187,6 @@ local function lazy_inline_completion()
     local cur_char = string.sub(cur_line, col, col)
     local cache_char = string.sub(cache_line, 1, 1)
     if cur_char == cache_char then
-      Cmp.silence()
       cache_line = string.sub(cache_line, 2)
       cache:update_line(1, cache_line)
       cache:update_cursor(row, col)
@@ -296,8 +295,6 @@ function M.accept_all_suggestions()
     return
   end
 
-  Cmp.silence()
-
   Log.debug('Pretreatment cached lines: {}', cache:get_lines())
 
   View.clear_virt_text()
@@ -333,7 +330,6 @@ function M.accept_line()
     return
   end
 
-  Cmp.silence()
   View.clear_virt_text()
 
   ignoreevent_wrap(function()
@@ -398,7 +394,6 @@ function M.accept_word()
     return
   end
 
-  Cmp.silence()
   View.clear_virt_text()
 
   ignoreevent_wrap(function()
@@ -440,14 +435,11 @@ function M.accept_word()
   end)
 end
 
-function M.reset(reset_cmp)
+function M.reset()
   if inline_mode then
     View.clear_virt_text()
   end
   cache:flush()
-  if inline_mode and reset_cmp then
-    Cmp.silence(false)
-  end
   Status.update(SC.IDLE)
 end
 
