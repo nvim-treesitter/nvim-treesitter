@@ -2,7 +2,7 @@ local Base = require('fittencode.base')
 local Engine = require('fittencode.engine')
 local Log = require('fittencode.log')
 
----@class FittenSource
+---@class CmpSource
 ---@field trigger_characters string[]
 local source = {}
 
@@ -20,8 +20,8 @@ local function get_trigger_characters()
   return chars
 end
 
----@param o? FittenSource
----@return FittenSource
+---@param o? CmpSource
+---@return CmpSource
 function source:new(o)
   o = o or {}
   o.trigger_characters = get_trigger_characters()
