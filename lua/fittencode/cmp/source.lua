@@ -20,7 +20,7 @@ local function get_trigger_characters()
   return chars
 end
 
----@param o FittenSource
+---@param o? FittenSource
 ---@return FittenSource
 function source:new(o)
   o = o or {}

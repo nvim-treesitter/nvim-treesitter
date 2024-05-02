@@ -12,7 +12,7 @@ function M.setup(opts)
   local Config = require('fittencode.config')
   Config.setup(opts)
 
-  -- Initialize modules
+  -- Initialize common modules
   require('fittencode.log').setup(Config.options.log)
   require('fittencode.engine').setup()
   require('fittencode.color').setup_highlight()
@@ -24,12 +24,11 @@ function M.setup(opts)
     if Config.options.use_default_keymaps then
       Bindings.setup_keymaps()
     end
-  else
-    require('fittencode.lsp').register_source()
-  end
-
-  if Config.options.inline_completion.disable_completion_when_delete then
-    Bindings.setup_onkey()
+    if Config.options.inline_completion.disable_completion_when_delete then
+      Bindings.setup_onkey()
+    end
+  elseif Config.options.completion_mode == 'source' then
+    require('fittencode.cmp').register_source()
   end
 
   require('fittencode.sessions').request_load_last_session()
