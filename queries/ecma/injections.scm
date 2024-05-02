@@ -5,9 +5,13 @@
 ((comment) @injection.content
   (#set! injection.language "comment"))
 
-; html(`...`), html`...`, sql(...) etc
+; html(`...`), html`...`, sql(`...`), etc.
 (call_expression
-  function: (identifier) @injection.language
+  function: [
+    (await_expression
+      (identifier)) @injection.language
+    (identifier) @injection.language
+  ]
   arguments: [
     (arguments
       (template_string) @injection.content)
@@ -23,8 +27,13 @@
 
 ; svg`...` or svg(`...`)
 (call_expression
-  function: ((identifier) @_name
-    (#eq? @_name "svg"))
+  function: [
+    (await_expression
+      (identifier) @_name
+      (#eq? @_name "svg"))
+    (identifier) @_name
+    (#eq? @_name "svg")
+  ]
   arguments: [
     (arguments
       (template_string) @injection.content)
@@ -35,16 +44,26 @@
   (#set! injection.language "html"))
 
 (call_expression
-  function: ((identifier) @_name
-    (#eq? @_name "gql"))
+  function: [
+    (await_expression
+      (identifier) @_name
+      (#eq? @_name "gql"))
+    (identifier) @_name
+    (#eq? @_name "gql")
+  ]
   arguments: ((template_string) @injection.content
     (#offset! @injection.content 0 1 0 -1)
     (#set! injection.include-children)
     (#set! injection.language "graphql")))
 
 (call_expression
-  function: ((identifier) @_name
-    (#eq? @_name "hbs"))
+  function: [
+    (await_expression
+      (identifier) @_name
+      (#eq? @_name "hbs"))
+    (identifier) @_name
+    (#eq? @_name "hbs")
+  ]
   arguments: ((template_string) @injection.content
     (#offset! @injection.content 0 1 0 -1)
     (#set! injection.include-children)
@@ -55,8 +74,13 @@
 
 ; css`<css>`, keyframes`<css>`
 (call_expression
-  function: (identifier) @_name
-  (#any-of? @_name "css" "keyframes")
+  function: [
+    (await_expression
+      (identifier) @_name
+      (#any-of? @_name "css" "keyframes"))
+    (identifier) @_name
+    (#any-of? @_name "css" "keyframes")
+  ]
   arguments: ((template_string) @injection.content
     (#offset! @injection.content 0 1 0 -1)
     (#set! injection.include-children)
