@@ -249,6 +249,16 @@
   ]
   (name) @constant)
 
+(scoped_property_access_expression
+  scope: [
+    (name) @type
+    (qualified_name
+      (name) @type)
+  ])
+
+(scoped_property_access_expression
+  name: (variable_name) @variable.member)
+
 (trait_declaration
   name: (name) @type)
 

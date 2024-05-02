@@ -23,5 +23,8 @@ class A {
 //         ^^^ @variable.member
     $this->foo(a: 5);
 //             ^ @variable.parameter
+    A::$foo::$bar;
+//      ^^^ @variable.member
+//            ^^^ @variable.member
   }
 }
