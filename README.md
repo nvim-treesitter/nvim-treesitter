@@ -280,6 +280,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [hyprlang](https://github.com/luckasRanarison/tree-sitter-hyprlang) (maintained by @luckasRanarison)
 - [x] [idl](https://github.com/cathaysia/tree-sitter-idl) (maintained by @cathaysa)
 - [x] [ini](https://github.com/justinmk/tree-sitter-ini) (experimental, maintained by @theHamsta)
+- [x] [inko](https://github.com/inko-lang/tree-sitter-inko) (maintained by @yorickpeterse)
 - [x] [ispc](https://github.com/fab4100/tree-sitter-ispc) (maintained by @fab4100)
 - [x] [janet_simple](https://github.com/sogaiu/tree-sitter-janet-simple) (maintained by @sogaiu)
 - [x] [java](https://github.com/tree-sitter/tree-sitter-java) (maintained by @p00f)
