@@ -406,6 +406,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [systemtap](https://github.com/ok-ryoko/tree-sitter-systemtap) (maintained by @ok-ryoko)
 - [x] [t32](https://gitlab.com/xasc/tree-sitter-t32.git) (maintained by @xasc)
 - [x] [tablegen](https://github.com/amaanq/tree-sitter-tablegen) (maintained by @amaanq)
+- [x] [tact](https://github.com/tact-lang/tree-sitter-tact) (maintained by @novusnota)
 - [x] [tcl](https://github.com/tree-sitter-grammars/tree-sitter-tcl) (maintained by @lewis6991)
 - [x] [teal](https://github.com/euclidianAce/tree-sitter-teal) (maintained by @euclidianAce)
 - [x] [templ](https://github.com/vrischmann/tree-sitter-templ) (maintained by @vrischmann)

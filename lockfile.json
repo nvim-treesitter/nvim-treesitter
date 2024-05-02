@@ -698,6 +698,9 @@
   "tablegen": {
     "revision": "6b7eb096621443627cc5e29c8c34ff1fde482cf3"
   },
+  "tact": {
+    "revision": "83d5de4c0566ce4415c30cd4633e4ebb09a1d6b8"
+  },
   "tcl": {
     "revision": "8784024358c233efd0f3a6fd9e7a3c5852e628bc"
   },
