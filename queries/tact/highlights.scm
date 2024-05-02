@@ -96,7 +96,7 @@
   (#any-of? @type.builtin "Address" "Bool" "Builder" "Cell" "Int" "Slice" "String" "StringBuilder"))
 
 (tlb_serialization
-  "as" @keyword.storage
+  "as" @keyword.type
   type: (identifier) @type.builtin
   (#any-of? @type.builtin
     "int8" "int16" "int32" "int64" "int128" "int256" "int257" "uint8" "uint16" "uint32" "uint64"
