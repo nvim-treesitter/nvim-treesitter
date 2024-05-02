@@ -43,6 +43,7 @@ end
 
 local function register_builtin_source_providers()
   M.register_source_provider(require('fittencode.source_providers.default'):new())
+  M.register_source_provider(require('fittencode.source_providers.telescope'):new())
 end
 
 function M.setup()
