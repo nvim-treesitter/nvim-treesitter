@@ -50,9 +50,11 @@ end
 -- Get current cursor position.
 -- * Returns a tuple of row and column.
 -- * Row and column are 0-based.
+---@param window number|nil
 ---@return integer, integer
-function M.get_cursor()
-  local cursor = api.nvim_win_get_cursor(0)
+function M.get_cursor(window)
+  window = window or api.nvim_get_current_win()
+  local cursor = api.nvim_win_get_cursor(window)
   local row = cursor[1] - 1
   local col = cursor[2]
   return row, col
