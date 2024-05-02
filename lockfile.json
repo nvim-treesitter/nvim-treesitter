@@ -51,7 +51,7 @@
     "revision": "1aafaff4d26dac5a36dd3495be33e1c20161d761"
   },
   "c_sharp": {
-    "revision": "9de565257ada70ac441c640e3b5d6850e2df5ab8"
+    "revision": "e1384e2f132936019b43aaaae154cd780fb497ce"
   },
   "cairo": {
     "revision": "6238f609bea233040fe927858156dee5515a0745"
@@ -354,7 +354,7 @@
     "revision": "acd5ca12cc278df7960629c2429a096c7ac4bbea"
   },
   "just": {
-    "revision": "6c2f018ab1d90946c0ce029bb2f7d57f56895dff"
+    "revision": "72937dde3be430468796d4b91c0f0f104962b132"
   },
   "kconfig": {
     "revision": "486fea71f61ad9f3fd4072a118402e97fe88d26c"
@@ -390,7 +390,7 @@
     "revision": "293369818da219d97327908aab33707b04b63fd9"
   },
   "liquidsoap": {
-    "revision": "ea97fa1f7d6665a018353cb4483d07c8b121e374"
+    "revision": "a9b8012366eab7d0c28bbda5f75a847be931008f"
   },
   "llvm": {
     "revision": "1b96e58faf558ce057d4dc664b904528aee743cb"
@@ -705,7 +705,7 @@
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
   },
   "templ": {
-    "revision": "4bedd882d47c55f22226307fe6bc6a7a87a94f43"
+    "revision": "85a0bb071e9d7405915220bcca82d0b62c39167b"
   },
   "terraform": {
     "revision": "e936d3fef8bac884661472dce71ad82284761eb1"
