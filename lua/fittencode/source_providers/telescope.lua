@@ -35,6 +35,8 @@ function M:execute(ctx)
     return
   end
 
+  local filename = 'Telescope.csv'
+
   local row = ctx.row
   local col = ctx.col
   ---@diagnostic disable-next-line: param-type-mismatch
@@ -61,11 +63,6 @@ function M:execute(ctx)
   end
 
   local suffix = ''
-
-  local filename = api.nvim_buf_get_name(ctx.buffer)
-  if filename == nil or filename == '' then
-    filename = 'Telescope.csv'
-  end
 
   return {
     name = self.name,

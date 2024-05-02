@@ -31,10 +31,12 @@ function M:execute(ctx)
   if not api.nvim_buf_is_valid(ctx.buffer) or ctx.row == nil or ctx.col == nil then
     return
   end
+
   local filename = api.nvim_buf_get_name(ctx.buffer)
   if filename == nil or filename == '' then
     filename = 'NONAME'
   end
+
   local row = ctx.row
   local col = ctx.col
   ---@diagnostic disable-next-line: param-type-mismatch
@@ -44,6 +46,7 @@ function M:execute(ctx)
   local prefix = table.concat(api.nvim_buf_get_text(ctx.buffer, 0, 0, row, col, {}), '\n')
   ---@diagnostic disable-next-line: param-type-mismatch
   local suffix = table.concat(api.nvim_buf_get_text(ctx.buffer, row, col, -1, -1, {}), '\n')
+
   return {
     name = self.name,
     priority = self.priority,
