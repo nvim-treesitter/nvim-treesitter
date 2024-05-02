@@ -99,7 +99,8 @@
   "as" @keyword.storage
   type: (identifier) @type.builtin
   (#any-of? @type.builtin
-    "int8" "int16" "int32" "int64" "int128" "int256" "int257" "uint8" "uint16" "uint32" "uint64" "uint128" "uint256" "coins" "remaining" "bytes32" "bytes64"))
+    "int8" "int16" "int32" "int64" "int128" "int256" "int257" "uint8" "uint16" "uint32" "uint64"
+    "uint128" "uint256" "coins" "remaining" "bytes32" "bytes64"))
 
 ; string
 ; ------
@@ -129,7 +130,9 @@
 
 ((identifier) @constant.builtin
   (#any-of? @constant.builtin
-    "SendBounceIfActionFail" "SendPayGasSeparately" "SendIgnoreErrors" "SendDestroyIfZero" "SendRemainingValue" "SendRemainingBalance" "ReserveExact" "ReserveAllExcept" "ReserveAtMost" "ReserveAddOriginalBalance" "ReserveInvertSign" "ReserveBounceIfActionFail"))
+    "SendBounceIfActionFail" "SendPayGasSeparately" "SendIgnoreErrors" "SendDestroyIfZero"
+    "SendRemainingValue" "SendRemainingBalance" "ReserveExact" "ReserveAllExcept" "ReserveAtMost"
+    "ReserveAddOriginalBalance" "ReserveInvertSign" "ReserveBounceIfActionFail"))
 
 ; property
 ; --------
@@ -161,16 +164,21 @@
 ; keyword
 ; -------
 [
-  "contract"
-  "trait"
-  "struct"
-  "message"
   "with"
   "const"
   "let"
   ; "public" ; -- not used, but declared in grammar.ohm
   ; "extend" ; -- not used, but declared in grammar.ohm
 ] @keyword
+
+; keyword.type
+; ------------
+[
+  "contract"
+  "trait"
+  "struct"
+  "message"
+] @keyword.type
 
 ; keyword.function
 ; ----------------
@@ -187,7 +195,7 @@
 ; --------------
 "import" @keyword.import
 
-; keyword.storage
+; keyword.modifier
 ; ---------------
 [
   "get"
@@ -281,7 +289,12 @@
 (static_call_expression
   name: (identifier) @function.builtin
   (#any-of? @function.builtin
-    "log" "log2" "send" "sender" "require" "now" "myBalance" "myAddress" "newAddress" "contractAddress" "contractAddressExt" "emit" "cell" "ton" "dump" "dumpStack" "beginString" "beginComment" "beginTailString" "beginStringFromBuilder" "beginCell" "emptyCell" "randomInt" "random" "checkSignature" "checkDataSignature" "sha256" "min" "max" "abs" "pow" "pow2" "throw" "nativeThrowWhen" "nativeThrowUnless" "getConfigParam" "nativeRandomize" "nativeRandomizeLt" "nativePrepareRandom" "nativeRandom" "nativeRandomInterval" "nativeReserve"))
+    "log" "log2" "send" "sender" "require" "now" "myBalance" "myAddress" "newAddress"
+    "contractAddress" "contractAddressExt" "emit" "cell" "ton" "dump" "dumpStack" "beginString"
+    "beginComment" "beginTailString" "beginStringFromBuilder" "beginCell" "emptyCell" "randomInt"
+    "random" "checkSignature" "checkDataSignature" "sha256" "min" "max" "abs" "pow" "pow2" "throw"
+    "nativeThrowWhen" "nativeThrowUnless" "getConfigParam" "nativeRandomize" "nativeRandomizeLt"
+    "nativePrepareRandom" "nativeRandom" "nativeRandomInterval" "nativeReserve"))
 
 ; comment
 ; -------
