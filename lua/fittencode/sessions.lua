@@ -6,6 +6,7 @@ local Base = require('fittencode.base')
 local Config = require('fittencode.config')
 local KeyStorage = require('fittencode.key_storage')
 local Log = require('fittencode.log')
+local SourceProviders = require('fittencode.source_providers')
 local Rest = require('fittencode.rest')
 
 local M = {}
@@ -323,33 +324,19 @@ end
 
 ---@return table|nil
 local function make_generate_one_stage_params()
-  local filename = api.nvim_buf_get_name(0)
-  if filename == nil or filename == '' then
-    filename = 'NONAME'
+  local source = SourceProviders.get_current_source()
+  if source == nil then
+    return
   end
-
-  local row, col = Base.get_cursor()
-
-  if not Config.internal.virtual_text.inline or Config.options.inline_completion.disable_completion_within_the_line then
-    local line = api.nvim_buf_get_lines(0, row, row + 1, false)[1]
-    local len = string.len(line)
-    Log.debug('Inline mode is disabled; col: {}, line: {}, length of line: {}', col, line, len)
-    if col ~= len then
-      Log.debug('Cursor is not at the end of the line, aborting')
-      return
-    end
+  if source.within_the_line and (not Config.internal.virtual_text.inline or Config.options.inline_completion.disable_completion_within_the_line) then
+    return
   end
-
-  local prefix = table.concat(api.nvim_buf_get_text(0, 0, 0, row, col, {}), '\n')
-  -- Log.debug('Prefix: {}', prefix)
-  local suffix = table.concat(api.nvim_buf_get_text(0, row, col, -1, -1, {}), '\n')
-  -- Log.debug('Suffix: {}', suffix)
-  local prompt = '!FCPREFIX!' .. prefix .. '!FCSUFFIX!' .. suffix .. '!FCMIDDLE!'
+  local prompt = '!FCPREFIX!' .. source.prefix .. '!FCSUFFIX!' .. source.suffix .. '!FCMIDDLE!'
   local escaped_prompt = string.gsub(prompt, '"', '\\"')
   local params = {
     inputs = escaped_prompt,
     meta_datas = {
-      filename = filename,
+      filename = source.filename,
     },
   }
   return params

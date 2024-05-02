@@ -58,6 +58,10 @@ local function condense_nl(suggestions)
   local remove_all = false
   local keep_first = false
 
+  if vim.bo.filetype == 'TelescopePrompt' then
+    remove_all = true
+  end
+
   if #cur_line == 0 then
     if not prev_line or #prev_line == 0 then
       remove_all = true
@@ -88,6 +92,10 @@ local function condense_nl(suggestions)
       is_processed = true
       table.insert(nls, suggestion)
     end
+  end
+
+  if vim.bo.filetype == 'TelescopePrompt' then
+    nls = { nls[1] }
   end
 
   return nls
