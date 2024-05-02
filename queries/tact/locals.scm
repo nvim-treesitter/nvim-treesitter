@@ -1,6 +1,3 @@
-; NOTE: The following queries are NOT used for highlighting, unlike in Tree-sitter or Helix. These are more like tags.scm.
-; See: https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md#locals
-; ------------------------------------------------------------------------------------------
 ; Scopes       @local.scope
 ; -------------------------
 [

@@ -1,4 +1,3 @@
-; See: https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md#indents
 ; indent.begin       ; indent children when matching this node
 ; ------------
 [
