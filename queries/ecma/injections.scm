@@ -9,8 +9,14 @@
 (call_expression
   function: [
     (await_expression
-      (identifier)) @injection.language
+      [
+        (identifier) @injection.language
+        (member_expression
+          property: (property_identifier) @injection.language)
+      ])
     (identifier) @injection.language
+    (member_expression
+      property: (property_identifier) @injection.language)
   ]
   arguments: [
     (arguments
@@ -29,16 +35,21 @@
 (call_expression
   function: [
     (await_expression
-      (identifier) @_name
-      (#eq? @_name "svg"))
+      [
+        (identifier) @_name
+        (member_expression
+          property: (property_identifier) @_name)
+      ])
     (identifier) @_name
-    (#eq? @_name "svg")
+    (member_expression
+      property: (property_identifier) @_name)
   ]
   arguments: [
     (arguments
       (template_string) @injection.content)
     (template_string) @injection.content
   ]
+  (#eq? @_name "svg")
   (#offset! @injection.content 0 1 0 -1)
   (#set! injection.include-children)
   (#set! injection.language "html"))
@@ -46,28 +57,38 @@
 (call_expression
   function: [
     (await_expression
-      (identifier) @_name
-      (#eq? @_name "gql"))
+      [
+        (identifier) @_name
+        (member_expression
+          property: (property_identifier) @_name)
+      ])
     (identifier) @_name
-    (#eq? @_name "gql")
+    (member_expression
+      property: (property_identifier) @_name)
   ]
-  arguments: ((template_string) @injection.content
-    (#offset! @injection.content 0 1 0 -1)
-    (#set! injection.include-children)
-    (#set! injection.language "graphql")))
+  arguments: (template_string) @injection.content
+  (#eq? @_name "gql")
+  (#offset! @injection.content 0 1 0 -1)
+  (#set! injection.include-children)
+  (#set! injection.language "graphql"))
 
 (call_expression
   function: [
     (await_expression
-      (identifier) @_name
-      (#eq? @_name "hbs"))
+      [
+        (identifier) @_name
+        (member_expression
+          property: (property_identifier) @_name)
+      ])
     (identifier) @_name
-    (#eq? @_name "hbs")
+    (member_expression
+      property: (property_identifier) @_name)
   ]
-  arguments: ((template_string) @injection.content
-    (#offset! @injection.content 0 1 0 -1)
-    (#set! injection.include-children)
-    (#set! injection.language "glimmer")))
+  arguments: (template_string) @injection.content
+  (#eq? @_name "hbs")
+  (#offset! @injection.content 0 1 0 -1)
+  (#set! injection.include-children)
+  (#set! injection.language "glimmer"))
 
 ((glimmer_template) @injection.content
   (#set! injection.language "glimmer"))
@@ -76,15 +97,20 @@
 (call_expression
   function: [
     (await_expression
-      (identifier) @_name
-      (#any-of? @_name "css" "keyframes"))
+      [
+        (identifier) @_name
+        (member_expression
+          property: (property_identifier) @_name)
+      ])
     (identifier) @_name
-    (#any-of? @_name "css" "keyframes")
+    (member_expression
+      property: (property_identifier) @_name)
   ]
-  arguments: ((template_string) @injection.content
-    (#offset! @injection.content 0 1 0 -1)
-    (#set! injection.include-children)
-    (#set! injection.language "styled")))
+  arguments: (template_string) @injection.content
+  (#eq? @_name "css" "keyframes")
+  (#offset! @injection.content 0 1 0 -1)
+  (#set! injection.include-children)
+  (#set! injection.language "styled"))
 
 ; styled.div`<css>`
 (call_expression
