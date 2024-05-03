@@ -190,6 +190,9 @@
   name: _ @variable.parameter)
 
 (call
-  name: _ @function)
+  name: [
+    (name)
+    (constant)
+  ] @function)
 
 (field) @variable.member
