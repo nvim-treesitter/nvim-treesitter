@@ -6,7 +6,7 @@ local Base = require('fittencode.base')
 local Config = require('fittencode.config')
 local KeyStorage = require('fittencode.key_storage')
 local Log = require('fittencode.log')
-local SourceProviders = require('fittencode.source_providers')
+local PromptProviders = require('fittencode.prompt_providers')
 local Rest = require('fittencode.rest')
 
 local M = {}
@@ -324,19 +324,19 @@ end
 
 ---@return table|nil
 local function make_generate_one_stage_params()
-  local source = SourceProviders.get_current_source()
-  if source == nil then
+  local result = PromptProviders.get_current_prompt()
+  if result == nil then
     return
   end
-  if source.within_the_line and (not Config.internal.virtual_text.inline or Config.options.inline_completion.disable_completion_within_the_line) then
+  if result.within_the_line and (not Config.internal.virtual_text.inline or Config.options.inline_completion.disable_completion_within_the_line) then
     return
   end
-  local prompt = '!FCPREFIX!' .. source.prefix .. '!FCSUFFIX!' .. source.suffix .. '!FCMIDDLE!'
+  local prompt = '!FCPREFIX!' .. result.prefix .. '!FCSUFFIX!' .. result.suffix .. '!FCMIDDLE!'
   local escaped_prompt = string.gsub(prompt, '"', '\\"')
   local params = {
     inputs = escaped_prompt,
     meta_datas = {
-      filename = source.filename,
+      filename = result.filename,
     },
   }
   return params

@@ -5,7 +5,7 @@ local Log = require('fittencode.log')
 
 local M = {}
 
----@class Source
+---@class Prompt
 ---@field name string
 ---@field priority integer
 ---@field filename string
@@ -13,81 +13,81 @@ local M = {}
 ---@field suffix string
 ---@field within_the_line boolean
 
----@class SourceContext
+---@class PromptContext
 ---@field window? integer
 ---@field buffer? integer
 ---@field filetype? string
 ---@field row? integer
 ---@field col? integer
 
----@class SourceProvider
+---@class PromptProvider
 ---@field is_available fun(self, string?): boolean
 ---@field get_name fun(self): string
 ---@field get_priority fun(self): integer
----@field execute fun(self, SourceContext): Source?
+---@field execute fun(self, PromptContext): Prompt?
 
----@class SourceFilter
+---@class PromptFilter
 ---@field count integer
----@field sort? fun(a: Source, b: Source): boolean
+---@field sort? fun(a: Prompt, b: Prompt): boolean
 
----@type SourceProvider[]
+---@type PromptProvider[]
 local providers = {}
 
----@param provider SourceProvider
-function M.register_source_provider(provider)
+---@param provider PromptProvider
+function M.register_prompt_provider(provider)
   providers[#providers + 1] = provider
   table.sort(providers, function(a, b)
     return a:get_priority() > b:get_priority()
   end)
 end
 
-local function register_builtin_source_providers()
-  M.register_source_provider(require('fittencode.source_providers.default'):new())
-  M.register_source_provider(require('fittencode.source_providers.telescope'):new())
+local function register_builtin_prompt_providers()
+  M.register_prompt_provider(require('fittencode.prompt_providers.default'):new())
+  M.register_prompt_provider(require('fittencode.prompt_providers.telescope'):new())
 end
 
 function M.setup()
-  register_builtin_source_providers()
+  register_builtin_prompt_providers()
 end
 
----@param ctx SourceContext
----@param filter? SourceFilter
----@return Source[]?
-function M.get_sources(ctx, filter)
+---@param ctx PromptContext
+---@param filter? PromptFilter
+---@return Prompt[]?
+function M.get_prompts(ctx, filter)
   if not ctx.filetype then
     return
   end
   filter = filter or {}
-  local sources = {}
+  local prompts = {}
   for _, provider in ipairs(providers) do
     if provider:is_available(ctx.filetype) then
-      sources[#sources + 1] = provider:execute(ctx)
+      prompts[#prompts + 1] = provider:execute(ctx)
       if filter.count == 1 then
         break
       end
     end
   end
   if filter.sort then
-    table.sort(sources, function(a, b)
+    table.sort(prompts, function(a, b)
       return filter.sort(a, b)
     end)
   end
-  return sources
+  return prompts
 end
 
----@return Source?
-function M.get_current_source()
+---@return Prompt?
+function M.get_current_prompt()
   local window = api.nvim_get_current_win()
   local buffer = api.nvim_win_get_buf(window)
   local row, col = Base.get_cursor(window)
-  local sources = M.get_sources({
+  local prompts = M.get_prompts({
     window = window,
     buffer = buffer,
     filetype = vim.bo.filetype,
     row = row,
     col = col,
   }, { count = 1 })
-  return sources and sources[1]
+  return prompts and prompts[1]
 end
 
 return M

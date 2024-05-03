@@ -25,12 +25,12 @@ function M:get_priority()
   return self.priority
 end
 
----@class SourceContextTelescope : SourceContext
+---@class PromptContextTelescope : PromptContext
 ---@field telescope_policy string
 ---@field max_results number
 
----@param ctx SourceContextTelescope
----@return Source?
+---@param ctx PromptContextTelescope
+---@return Prompt?
 function M:execute(ctx)
   if not api.nvim_buf_is_valid(ctx.buffer) or ctx.row == nil or ctx.col == nil then
     return
