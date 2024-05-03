@@ -27,6 +27,7 @@ end
 
 ---@class SourceContextTelescope : SourceContext
 ---@field telescope_policy string
+---@field max_results number
 
 ---@param ctx SourceContextTelescope
 ---@return Source?
@@ -35,7 +36,7 @@ function M:execute(ctx)
     return
   end
 
-  local filename = 'Telescope.csv'
+  local filename = 'Telescope.md'
 
   local row = ctx.row
   local col = ctx.col
@@ -45,15 +46,25 @@ function M:execute(ctx)
   local prefix = ''
 
   local action_state = require('telescope.actions.state')
-  ctx.telescope_policy = ctx.telescope_policy or 'selected'
+  ctx.telescope_policy = ctx.telescope_policy or 'results'
+  ctx.max_results = ctx.max_results or 1000
+
   if ctx.telescope_policy == 'results' then
     local selection = action_state.get_current_picker(ctx.buffer)
     if selection ~= nil then
-      local results = {}
-      vim.tbl_map(function(item)
-        results[#results + 1] = item.ordinal
-      end, selection.finder.results)
-      prefix = table.concat(results, '\n') .. '\n' .. content
+      local results = selection.finder.results
+      local count = 1
+      local ordinals = {}
+      for k, v in pairs(results) do
+        if count >= ctx.max_results then
+          break
+        end
+        ordinals[#ordinals + 1] = v.ordinal
+        count = count + 1
+      end
+      local list = '# List\n```\n' .. table.concat(ordinals, '\n') .. '\n```\n'
+      local query = 'Search from the list above and strictly match\n' .. content
+      prefix = list .. query
     end
   elseif ctx.telescope_policy == 'selected' then
     local selection = action_state.get_selected_entry()
