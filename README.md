@@ -417,7 +417,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [tlaplus](https://github.com/tlaplus-community/tree-sitter-tlaplus) (maintained by @ahelwer, @susliko)
 - [x] [tmux](https://github.com/Freed-Wu/tree-sitter-tmux) (maintained by @Freed-Wu)
 - [x] [todotxt](https://github.com/arnarg/tree-sitter-todotxt.git) (experimental, maintained by @arnarg)
-- [x] [toml](https://github.com/ikatyang/tree-sitter-toml) (maintained by @tk-shirasaka)
+- [x] [toml](https://github.com/tree-sitter-grammars/tree-sitter-toml) (maintained by @tk-shirasaka)
 - [x] [tsv](https://github.com/amaanq/tree-sitter-csv) (maintained by @amaanq)
 - [x] [tsx](https://github.com/tree-sitter/tree-sitter-typescript) (maintained by @steelsojka)
 - [x] [turtle](https://github.com/BonaBeavis/tree-sitter-turtle) (maintained by @BonaBeavis)
