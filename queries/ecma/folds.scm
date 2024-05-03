@@ -17,6 +17,7 @@
   (if_statement)
   (try_statement)
   (catch_clause)
+  (array)
   (object)
   (generator_function)
   (generator_function_declaration)
