@@ -2041,6 +2041,14 @@ list.tablegen = {
   maintainers = { "@amaanq" },
 }
 
+list.tact = {
+  install_info = {
+    url = "https://github.com/tact-lang/tree-sitter-tact",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@novusnota" },
+}
+
 list.teal = {
   install_info = {
     url = "https://github.com/euclidianAce/tree-sitter-teal",
