@@ -10,7 +10,11 @@ env:
 
 jobs:
   update-parsers:
-    name: Update parsers
+    strategy:
+      fail-fast: false
+      matrix:
+        tier: [1, 2]
+    name: Update parsers tier ${{ matrix.tier }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,7 +39,7 @@ jobs:
           (cd "$BIN_DIR"; unzip stylua*.zip)
 
       - name: Update parsers
-        run: ./scripts/update-parsers.lua
+        run: ./scripts/update-parsers.lua --tier=${{ matrix.tier }}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
@@ -44,12 +48,13 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
           sign-commits: true
           commit-message: "bot(parsers): update ${{ env.UPDATED_PARSERS }}"
-          title: "Update parsers: ${{ env.UPDATED_PARSERS }}"
+          title: "Update parsers (tier ${{ matrix.tier }}): ${{ env.UPDATED_PARSERS }}"
           body: "[beep boop](https://github.com/peter-evans/create-pull-request)"
-          branch: update-parsers-pr
+          branch: update-parsers-tier-${{ matrix.tier }}
           base: ${{ github.head_ref }}
 
       - name: Enable Pull Request Automerge
+        if: ${{ matrix.tier == 2 }}
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
-        run: gh pr merge --rebase --auto update-parsers-pr
+        run: gh pr merge --rebase --auto update-parsers-tier-2
