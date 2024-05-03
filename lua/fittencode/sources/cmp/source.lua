@@ -1,6 +1,7 @@
 local Base = require('fittencode.base')
 local Engine = require('fittencode.engine')
 local Log = require('fittencode.log')
+local Sources = require('fittencode.sources')
 
 ---@class CmpSource
 ---@field trigger_characters string[]
@@ -33,7 +34,7 @@ end
 ---Return whether this source is available in the current context or not (optional).
 ---@return boolean
 function source:is_available()
-  return Engine.is_source_enabled()
+  return Sources.is_available()
 end
 
 ---@return string
