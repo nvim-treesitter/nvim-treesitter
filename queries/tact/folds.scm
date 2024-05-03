@@ -1,4 +1,6 @@
 [
+  ; import …
+  (import_statement)+
   ; (…, …)
   (parameter_list)
   (argument_list)
