@@ -490,43 +490,6 @@ function M.is_source_enabled()
   return true
 end
 
----@alias lsp.CompletionResponse lsp.CompletionList|lsp.CompletionItem[]
-
--- Use `get_word` so that the word is the same as in `core.confirm`
--- https://github.com/hrsh7th/nvim-cmp/pull/1860
----@param suggestions string
----@return lsp.CompletionResponse|nil
-function M.convert_to_lsp_completion_response(line, character, cursor_before_line, suggestions)
-  cursor_before_line = cursor_before_line or ''
-  local LABEL_LIMIT = 80
-  local label = cursor_before_line .. suggestions
-  if #label > LABEL_LIMIT then
-    label = string.sub(label, 1, LABEL_LIMIT)
-  end
-  label = label:gsub('\n', '<\\n>')
-  local items = {}
-  table.insert(items, {
-    label = label,
-    word = label,
-    textEdit = {
-      range = {
-        start = { line = line, character = character },
-        ['end'] = { line = line, character = character },
-      },
-      newText = suggestions,
-    },
-    documentation = {
-      kind = 'markdown',
-      value = '```' .. vim.bo.ft .. '\n' .. cursor_before_line .. suggestions .. '\n```',
-    },
-    insertTextMode = 1,
-    cmp = {
-      kind_text = 'FittenCode',
-    },
-  })
-  return { items = items, isIncomplete = false }
-end
-
 function M.on_text_changed()
   if inline_mode then
     lazy_inline_completion()

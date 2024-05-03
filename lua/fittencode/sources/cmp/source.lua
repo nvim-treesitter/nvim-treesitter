@@ -46,6 +46,43 @@ function source:get_trigger_characters()
   return self.trigger_characters
 end
 
+---@alias lsp.CompletionResponse lsp.CompletionList|lsp.CompletionItem[]
+
+-- Use `get_word` so that the word is the same as in `core.confirm`
+-- https://github.com/hrsh7th/nvim-cmp/pull/1860
+---@param suggestions string
+---@return lsp.CompletionResponse?
+local function convert_to_lsp_completion_response(line, character, cursor_before_line, suggestions)
+  cursor_before_line = cursor_before_line or ''
+  local LABEL_LIMIT = 80
+  local label = cursor_before_line .. suggestions
+  if #label > LABEL_LIMIT then
+    label = string.sub(label, 1, LABEL_LIMIT)
+  end
+  label = label:gsub('\n', '<\\n>')
+  local items = {}
+  table.insert(items, {
+    label = label,
+    word = label,
+    textEdit = {
+      range = {
+        start = { line = line, character = character },
+        ['end'] = { line = line, character = character },
+      },
+      newText = suggestions,
+    },
+    documentation = {
+      kind = 'markdown',
+      value = '```' .. vim.bo.ft .. '\n' .. cursor_before_line .. suggestions .. '\n```',
+    },
+    insertTextMode = 1,
+    cmp = {
+      kind_text = 'FittenCode',
+    },
+  })
+  return { items = items, isIncomplete = false }
+end
+
 -- Invoke completion (required).
 -- The `callback` function must always be called.
 ---@param request cmp.SourceCompletionApiParams
@@ -68,8 +105,8 @@ function source:complete(request, callback)
       character = character,
       reason = request.option.reason,
     }
-    Log.debug('Source request: {}', info)
-    local response = Engine.convert_to_lsp_completion_response(line, character, cursor_before_line, suggestions)
+    Log.debug('Source(cmp) request: {}', info)
+    local response = convert_to_lsp_completion_response(line, character, cursor_before_line, suggestions)
     Log.debug('LSP CompletionResponse: {}', response)
     callback(response)
   end, function()
