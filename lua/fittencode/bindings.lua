@@ -37,9 +37,6 @@ function M.setup_autocmds()
     pattern = '*',
     callback = function()
       -- Log.debug('CursorMovedI')
-      if not Engine.is_inline_enabled() then
-        return
-      end
       if ignore then
         return
       end
@@ -55,9 +52,6 @@ function M.setup_autocmds()
     pattern = '*',
     callback = function()
       -- Log.debug('TextChangedI')
-      if not Engine.is_inline_enabled() then
-        return
-      end
       if ignore then
         return
       end
@@ -70,9 +64,6 @@ function M.setup_autocmds()
     group = Base.augroup('Reset'),
     pattern = '*',
     callback = function()
-      if not Engine.is_inline_enabled() and not Engine.is_source_enabled() then
-        return
-      end
       Engine.reset()
     end,
     desc = 'Reset',
