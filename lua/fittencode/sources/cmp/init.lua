@@ -18,8 +18,7 @@ function M.register_source()
   if not ok then
     return
   end
-  local source = require('fittencode.cmp.source')
-  cmp.register_source('fittencode', source:new())
+  cmp.register_source('fittencode', require('fittencode.sources.cmp.source'):new())
 end
 
 ---@param value? boolean

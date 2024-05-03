@@ -56,13 +56,19 @@ M.options = {
   source_completion = {
     -- Enable source completion.
     enable = true,
+    -- Completion engines available:
+    -- - 'cmp' > https://github.com/hrsh7th/nvim-cmp
+    -- - 'coc' > https://github.com/neoclide/coc.nvim
+    -- - 'ycm' > https://github.com/ycm-core/YouCompleteMe
+    -- - 'omni' > Neovim builtin ommifunc
+    engine = 'cmp',
     -- Use `disable_specific_inline_completion.suffixes` to disable completion for specific file suffixes.
     use_inline_suffixes_filter = true,
   },
   -- Set the mode of the completion.
   -- Available options:
-  -- - 'inline' (default)
-  -- - 'source'
+  -- - 'inline' (VSCode style inline completion)
+  -- - 'source' (integrates into other completion plugins)
   completion_mode = 'inline',
   syntax_highlighting = {
     -- Use the Neovim Theme colors for syntax highlighting in the diff viewer.

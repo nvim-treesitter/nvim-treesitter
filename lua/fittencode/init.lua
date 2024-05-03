@@ -29,7 +29,7 @@ function M.setup(opts)
       Bindings.setup_onkey()
     end
   elseif Config.options.completion_mode == 'source' then
-    require('fittencode.cmp').register_source()
+    require('fittencode.sources.cmp').register_source()
   end
 
   require('fittencode.sessions').request_load_last_session()

@@ -1,7 +1,6 @@
 local api = vim.api
 
 local Base = require('fittencode.base')
-local Cmp = require('fittencode.cmp')
 local Config = require('fittencode.config')
 local Log = require('fittencode.log')
 local Sessions = require('fittencode.sessions')
