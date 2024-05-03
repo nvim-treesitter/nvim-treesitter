@@ -53,6 +53,7 @@ M.options = {
   -- Enable/Disable the default keymaps in inline completion.
   use_default_keymaps = true,
   -- Setting for source completion.
+  ---@class SourceCompletionOptions
   source_completion = {
     -- Enable source completion.
     enable = true,
@@ -62,8 +63,11 @@ M.options = {
     -- - 'ycm' > https://github.com/ycm-core/YouCompleteMe
     -- - 'omni' > Neovim builtin ommifunc
     engine = 'cmp',
-    -- Use `disable_specific_inline_completion.suffixes` to disable completion for specific file suffixes.
-    use_inline_suffixes_filter = true,
+    disable_specific_source_completion = {
+      -- Disable completion for some specific file suffixes by entering them below
+      -- For example, `suffixes = {'lua', 'cpp'}`
+      suffixes = {},
+    },
   },
   -- Set the mode of the completion.
   -- Available options:

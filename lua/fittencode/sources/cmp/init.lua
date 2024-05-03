@@ -1,7 +1,7 @@
 local M = {}
 
 ---@return boolean
-function M.is_active()
+local function is_active()
   ---@type boolean, any
   local ok, cmp = pcall(require, 'cmp')
   if not ok then
@@ -12,7 +12,7 @@ function M.is_active()
   return vim.tbl_count(entries) > 0
 end
 
-function M.register_source()
+local function register_source()
   ---@type boolean, any
   local ok, cmp = pcall(require, 'cmp')
   if not ok then
@@ -22,7 +22,7 @@ function M.register_source()
 end
 
 ---@param value? boolean
-function M.silence(value)
+local function silence(value)
   local ok, config = pcall(require, 'cmp.config')
   if not ok then
     return
@@ -32,6 +32,10 @@ function M.silence(value)
     opts = { enabled = false }
   end
   config.set_onetime(opts)
+end
+
+function M.setup(_)
+  register_source()
 end
 
 return M

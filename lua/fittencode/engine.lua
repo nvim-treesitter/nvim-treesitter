@@ -19,13 +19,10 @@ local cache = nil
 ---@class TaskScheduler
 local tasks = nil
 
-local inline_mode = true
-
 function M.setup()
   cache = SuggestionsCache:new()
   tasks = TaskScheduler:new()
   tasks:setup()
-  inline_mode = Config.options.completion_mode == 'inline'
 end
 
 ---@param suggestions string[]
@@ -173,7 +170,7 @@ end
 local function apply_suggestion(task_id, row, col, suggestion)
   if suggestion then
     cache:update(task_id, row, col, suggestion)
-    if inline_mode then
+    if M.is_inline_enabled() then
       View.render_virt_text(suggestion)
     end
   end
@@ -443,7 +440,7 @@ function M.accept_word()
 end
 
 function M.reset()
-  if inline_mode then
+  if M.is_inline_enabled() then
     View.clear_virt_text()
   end
   cache:flush()
@@ -455,7 +452,7 @@ function M.advance()
     return
   end
 
-  if not inline_mode then
+  if not M.is_inline_enabled() then
     return
   end
 
@@ -467,6 +464,9 @@ end
 
 ---@return boolean
 function M.is_inline_enabled()
+  if Config.options.completion_mode ~= 'inline' then
+    return false
+  end
   if not Config.options.inline_completion.enable then
     return false
   end
@@ -477,21 +477,8 @@ function M.is_inline_enabled()
   return true
 end
 
----@return boolean
-function M.is_source_enabled()
-  if not Config.options.source_completion.enable then
-    return false
-  end
-  local filetype = vim.bo.filetype
-  local use_filter = Config.options.source_completion.use_inline_suffixes_filter
-  if use_filter and vim.tbl_contains(Config.options.disable_specific_inline_completion.suffixes, filetype) then
-    return false
-  end
-  return true
-end
-
 function M.on_text_changed()
-  if inline_mode then
+  if M.is_inline_enabled() then
     lazy_inline_completion()
   end
 end
