@@ -81,8 +81,6 @@ use {
   source_completion = {
     -- Enable source completion.
     enable = true,
-    -- Use `disable_specific_inline_completion.suffixes` to disable completion for specific file suffixes.
-    use_inline_suffixes_filter = true,
   },
   -- Set the mode of the completion.
   -- Available options:
