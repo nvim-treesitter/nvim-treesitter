@@ -1,4 +1,18 @@
 #!/usr/bin/env -S nvim -l
+-- Update parsers to latest version (tier 1, stable) or commit (tier 2, unstable)
+--
+-- Usage:
+-- nvim -l update-parsers.lua            # update all (stable and unstable) parsers
+-- nvim -l update-parsers.lua --tier=1   # update stable parsers to latest version
+-- nvim -l update-parsers.lua --tier=2   # update unstable parsers to latest commit
+
+local tier = nil ---@type integer?
+for i = 1, #_G.arg do
+  if _G.arg[i]:find('^%-%-tier=') then
+    tier = tonumber(_G.arg[i]:match('=(%d+)'))
+  end
+end
+
 vim.opt.runtimepath:append('.')
 local util = require('nvim-treesitter.util')
 local parsers = require('nvim-treesitter.parsers')
@@ -8,9 +22,21 @@ local updates = {} ---@type string[]
 
 -- check for new revisions
 for k, p in pairs(parsers) do
-  if p.tier <= 2 and p.install_info then
+  if p.tier <= 2 and (tier == nil or p.tier == tier) and p.install_info then
     print('Updating ' .. k)
-    jobs[k] = vim.system({ 'git', 'ls-remote', p.install_info.url })
+    local cmd = p.tier == 1
+        and {
+          'git',
+          '-c',
+          'versionsort.suffix=-',
+          'ls-remote',
+          '--tags',
+          '--refs',
+          '--sort=v:refname',
+          p.install_info.url,
+        }
+      or { 'git', 'ls-remote', p.install_info.url }
+    jobs[k] = vim.system(cmd)
   end
 
   if #vim.tbl_keys(jobs) % 100 == 0 or next(parsers, k) == nil then
@@ -21,18 +47,23 @@ for k, p in pairs(parsers) do
       local info = parsers[name].install_info
       assert(info)
 
-      local branch = info.branch
-      local line = 1
-      if branch then
-        for j, l in ipairs(stdout) do
-          if l:find(vim.pesc(branch)) then
-            line = j
-            break
+      local sha ---@type string
+      if parsers[name].tier == 1 then
+        sha = stdout[#stdout - 1]:match('v[%d%.]+$')
+      else
+        local branch = info.branch
+        local line = 1
+        if branch then
+          for j, l in ipairs(stdout) do
+            if l:find(vim.pesc(branch)) then
+              line = j
+              break
+            end
           end
         end
+        sha = vim.split(stdout[line], '\t')[1]
       end
 
-      local sha = vim.split(stdout[line], '\t')[1]
       if info.revision ~= sha then
         info.revision = sha
         updates[#updates + 1] = name

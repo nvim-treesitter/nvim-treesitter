@@ -2,7 +2,7 @@
 
 local generate = false
 local update = false
-local max_jobs = nil ---@as integer
+local max_jobs = nil ---@type integer?
 local parsers = {}
 for i = 1, #_G.arg do
   if _G.arg[i] == '--generate' then

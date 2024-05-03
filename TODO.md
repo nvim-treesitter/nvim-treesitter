@@ -4,8 +4,6 @@ This document lists the planned and finished changes in this rewrite towards [Nv
 
 ## TODO
 
-- [ ] **`parsers.lua`:** track versioned releases for tier 1
-- [ ] **`parsers.lua`:** add WASM support (tier 1)
 - [ ] **`install.lua`:** migrate to async v2
 - [ ] **tests:** remove custom crate, plenary dependency
 - [ ] **documentation:** consolidate, autogenerate?
@@ -29,3 +27,4 @@ This document lists the planned and finished changes in this rewrite towards [Nv
 - [X] remove locals from highlighting (cf. https://github.com/nvim-treesitter/nvim-treesitter/issues/3944#issuecomment-1458782497)
 - [X] drop ensure_install (replace with install)
 - [X] **CI:** switch to ts_query_ls, add update readme as check (remove update job)
+- [X] **CI:** track versioned releases for tier 1

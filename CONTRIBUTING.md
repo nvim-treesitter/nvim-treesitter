@@ -36,6 +36,11 @@ zimbu = {
 
 **Note:** The "maintainers" here refers to the person maintaining the **queries** in `nvim-treesitter`, not the parser maintainers (who likely don't use Neovim). The maintainers' duty is to review issues and PRs related to the query and to keep them updated with respect to parser changes.
 
+**Note:** To qualify for Tier 1 ("stable"), a parser needs to
+ * make releases following semver (_patch_ for fixes not affecting queries; _minor_ for changes introducing new nodes or patterns; _major_ for changes removing nodes or previously valid patterns);
+ * provide WASM release artifacts;
+ * include and maintain reference queries.
+
 2. If the parser name is not the same as the Vim filetype, add an entry to the `filetypes` table in `plugin/filetypes.lua`:
 
 ```lua
