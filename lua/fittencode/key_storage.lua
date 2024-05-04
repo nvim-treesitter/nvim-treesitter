@@ -1,7 +1,7 @@
 local fn = vim.fn
 local uv = vim.uv or vim.loop
 
-local Base = require('fittencode.base')
+local FS = require('fittencode.fs')
 local Log = require('fittencode.log')
 
 ---@class Key
@@ -31,14 +31,14 @@ end
 ---@param on_error function|nil
 function KeyStorage:load(on_success, on_error)
   Log.debug('Loading key file: {}', self.path)
-  if not Base.exists(self.path) then
+  if not FS.exists(self.path) then
     Log.error('Key file not found')
     if on_error then
       on_error()
     end
     return
   end
-  Base.read(self.path, function(data)
+  FS.read(self.path, function(data)
     local success, result = pcall(fn.json_decode, data)
     if success == false then
       Log.error('Failed to parse key file; error: {}', result)
@@ -65,7 +65,7 @@ end
 function KeyStorage:save(on_success, on_error)
   Log.debug('Saving key file: {}', self.path)
   local encode_keys = fn.json_encode(self.keys)
-  Base.write_mkdir(encode_keys, self.path, function()
+  FS.write_mkdir(encode_keys, self.path, function()
     Log.info('Key file saved successful')
     if on_success ~= nil then
       on_success()
