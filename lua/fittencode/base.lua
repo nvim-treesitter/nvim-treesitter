@@ -118,16 +118,6 @@ function M.debounce(timer, callback, wait, on_error)
   end
 end
 
----@return string
-function M.nt_sep()
-  return '\\'
-end
-
----@return string
-function M.kernel_sep()
-  return '/'
-end
-
 ---@return boolean
 function M.is_windows()
   return uv.os_uname().sysname == 'Windows_NT'
@@ -136,26 +126,6 @@ end
 ---@return boolean
 function M.is_kernel()
   return uv.os_uname().sysname == 'Linux'
-end
-
----@param s string
----@return string
-function M.to_nt(s)
-  local nt, _ = s:gsub(M.kernel_sep(), M.nt_sep())
-  return nt
-end
-
----@param s string
----@return string
-function M.to_kernel(s)
-  local kernel, _ = s:gsub(M.nt_sep(), M.kernel_sep())
-  return kernel
-end
-
----@param s string
----@return string
-function M.to_native(s)
-  return M.is_windows() and M.to_nt(s) or M.to_kernel(s)
 end
 
 ---@param char string

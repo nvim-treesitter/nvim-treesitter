@@ -7,6 +7,7 @@ local Config = require('fittencode.config')
 local FS = require('fittencode.fs')
 local KeyStorage = require('fittencode.key_storage')
 local Log = require('fittencode.log')
+local Path = require('fittencode.fs.path')
 local PromptProviders = require('fittencode.prompt_providers')
 local Rest = require('fittencode.rest')
 
@@ -27,7 +28,7 @@ local CMD_DEFAULT_ARGS = {
 }
 local CMD_EXIT_CODE_SUCCESS = 0
 
-local KEY_STORE_PATH = Base.to_native(fn.stdpath('data') .. '/fittencode' .. '/api_key.json')
+local KEY_STORE_PATH = Path.to_native(fn.stdpath('data') .. '/fittencode' .. '/api_key.json')
 
 ---@type KeyStorage
 local key_storage = KeyStorage:new({
