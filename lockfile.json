@@ -498,10 +498,10 @@
     "revision": "96a17c4c2dd345dc61f330d040684538d634bbc2"
   },
   "php": {
-    "revision": "29838ad107f50b1f5f51a0beefa9c9d834fce2b3"
+    "revision": "58054be104db0809ea6f119514a4d904f95e5b5c"
   },
   "php_only": {
-    "revision": "29838ad107f50b1f5f51a0beefa9c9d834fce2b3"
+    "revision": "58054be104db0809ea6f119514a4d904f95e5b5c"
   },
   "phpdoc": {
     "revision": "f285e338d328a03920a9bfd8dda78585c7ddcca3"
