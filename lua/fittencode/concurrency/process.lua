@@ -10,20 +10,15 @@ local M = {}
 ---@class SpawnParams
 ---@field cmd string
 ---@field args table
----@field data any
 
 -- Spawn a new process
--- * If success, call on_success with exit_code, output, and data
--- * If error, call on_error with signal, output, and data
--- * If exit, call on_exit with data
 ---@param params SpawnParams
----@param on_success function|nil
----@param on_error function|nil
----@param on_exit function|nil
+---@param on_success? function
+---@param on_error? function
+---@param on_exit? function
 function M.spawn(params, on_success, on_error, on_exit)
   local cmd = params.cmd
   local args = params.args
-  local data = params.data
 
   local output = ''
   local error = ''
@@ -51,12 +46,12 @@ function M.spawn(params, on_success, on_error, on_exit)
       check:stop()
       if signal ~= 0 then
         Log.error('uv.spawn signal; cmd: {}, args: {}, signal: {}, error: {}', cmd, args, signal, error)
-        schedule(on_error, signal, error, data)
+        schedule(on_error, signal, error)
       else
         Log.debug('uv.spawn exit; code: {}', exit_code)
-        schedule(on_success, exit_code, output, error, data)
+        schedule(on_success, exit_code, output, error)
       end
-      schedule(on_exit, data)
+      schedule(on_exit)
     end)
   end)
 

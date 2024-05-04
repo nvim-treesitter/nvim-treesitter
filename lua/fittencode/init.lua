@@ -15,6 +15,7 @@ function M.setup(opts)
   -- Initialize common modules
   require('fittencode.log').setup(Config.options.log)
   require('fittencode.engine').setup()
+  require('fittencode.rest').setup()
   require('fittencode.prompt_providers').setup()
   require('fittencode.color').setup_highlight()
   local Bindings = require('fittencode.bindings')
