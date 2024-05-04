@@ -30,7 +30,7 @@
     "revision": "f8fb3274f72a30896075585b32b0c54cad65c086"
   },
   "bass": {
-    "revision": "c9ba4568af24cd3403029730687c0a43d1350a43"
+    "revision": "28dc7059722be090d04cd751aed915b2fee2f89a"
   },
   "beancount": {
     "revision": "c25f8034c977681653a8acd541c8b4877a58f474"
@@ -75,7 +75,7 @@
     "revision": "bf2a65b1c119898a1a17389e07f2a399c05cdc0c"
   },
   "cooklang": {
-    "revision": "81c2a8667846b1e60db68b5601d864fe00fd1d3a"
+    "revision": "4ebe237c1cf64cf3826fc249e9ec0988fe07e58e"
   },
   "corn": {
     "revision": "604d73c38d4c28ca68e9e441ffd405d68cb63051"
@@ -270,7 +270,7 @@
     "revision": "070524937539eb8bb4f10debd9c83b66c434f3a2"
   },
   "haskell": {
-    "revision": "95a4f0023741b3bee0cc500f3dab9c5bab2dc2be"
+    "revision": "af32d884088ce7b74541b5e51820baa7e305caae"
   },
   "haskell_persistent": {
     "revision": "577259b4068b2c281c9ebf94c109bd50a74d5857"
@@ -558,7 +558,7 @@
     "revision": "71778c2a472ed00a64abf4219544edbf8e4b86d7"
   },
   "ql": {
-    "revision": "ff04ba61857ba05b80221e71b423b2728dbebe1e"
+    "revision": "fa5c3821dd2161f5c8528a8cbdb258daa6dc4de6"
   },
   "qmldir": {
     "revision": "6b2b5e41734bd6f07ea4c36ac20fb6f14061c841"
@@ -570,7 +570,7 @@
     "revision": "608c01187fb9f525a1e4cf585bb63d73dea280b7"
   },
   "r": {
-    "revision": "c55f8b4dfaa32c80ddef6c0ac0e79b05cb0cbf57"
+    "revision": "391400572538ff9854341a175ed8ab4b1e45f44b"
   },
   "racket": {
     "revision": "171f52a8c0ed635b85cd42d1e36d82f1066a03b4"
@@ -702,7 +702,7 @@
     "revision": "6b7eb096621443627cc5e29c8c34ff1fde482cf3"
   },
   "tact": {
-    "revision": "83d5de4c0566ce4415c30cd4633e4ebb09a1d6b8"
+    "revision": "68c48c51a9b9ef5280a172acfa3c73b35078e8a7"
   },
   "tcl": {
     "revision": "8784024358c233efd0f3a6fd9e7a3c5852e628bc"
@@ -735,7 +735,7 @@
     "revision": "3937c5cd105ec4127448651a21aef45f52d19609"
   },
   "toml": {
-    "revision": "221526cb106e4f0e26d715922e573c2903ecc72a"
+    "revision": "16a30c83ce427385b8d14939c45c137fcfca6c42"
   },
   "tsv": {
     "revision": "7eb7297823605392d2bbcc4c09b1cd18d6fa9529"
