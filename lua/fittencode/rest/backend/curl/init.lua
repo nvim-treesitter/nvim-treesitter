@@ -8,10 +8,10 @@ local Process = require('fittencode.concurrency.process')
 local Promise = require('fittencode.concurrency.promise')
 local URL = require('fittencode.rest.url')
 
+local schedule = Base.schedule
+
 ---@class FittenClientCurlBackend : FittenClient
 local M = FittenClient:new('FittenClientCurlBackend')
-
-local schedule = Base.schedule
 
 local CMD = 'curl'
 local CMD_TIMEOUT = 5 -- 5 seconds

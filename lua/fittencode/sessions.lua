@@ -8,9 +8,9 @@ local Path = require('fittencode.fs.path')
 local PromptProviders = require('fittencode.prompt_providers')
 local Rest = require('fittencode.rest')
 
-local M = {}
-
 local schedule = Base.schedule
+
+local M = {}
 
 local KEY_STORE_PATH = Path.to_native(fn.stdpath('data') .. '/fittencode' .. '/api_key.json')
 
