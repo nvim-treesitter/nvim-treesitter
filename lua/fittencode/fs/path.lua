@@ -15,13 +15,13 @@ end
 ---@param s string
 ---@return string
 function M.to_nt(s)
-  return s:gsub(M.kernel_sep(), M.nt_sep())[1]
+  return (s:gsub(M.kernel_sep(), M.nt_sep()))
 end
 
 ---@param s string
 ---@return string
 function M.to_kernel(s)
-  return s:gsub(M.nt_sep(), M.kernel_sep())[1]
+  return (s:gsub(M.nt_sep(), M.kernel_sep()))
 end
 
 ---@param s string
