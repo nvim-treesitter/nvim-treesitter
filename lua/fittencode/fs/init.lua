@@ -136,11 +136,7 @@ function M.write_mkdir(data, path, on_success, on_error)
       end)
     end)
   end, function()
-    if on_error ~= nil then
-      vim.schedule(function()
-        on_error({ name = 'fn.fnamemodify', message = 'Failed to get the head of the file name' })
-      end)
-    end
+    schedule_wrap(on_error, { name = 'fn.fnamemodify', message = 'Failed to get the head of the file name' })
   end):forward(function(h)
     return Promise:new(function(resolve, reject)
       M.write(data, path, function(d, p)
@@ -150,23 +146,11 @@ function M.write_mkdir(data, path, on_success, on_error)
       end)
     end)
   end, function(e_mkdir)
-    if on_error then
-      vim.schedule(function()
-        on_error(e_mkdir)
-      end)
-    end
+    schedule_wrap(on_error, e_mkdir)
   end):forward(function(dph)
-    if on_success then
-      vim.schedule(function()
-        on_success(dph[1], dph[2], dph[3])
-      end)
-    end
+    schedule_wrap(on_success, dph[1], dph[2], dph[3])
   end, function(e_write)
-    if on_error then
-      vim.schedule(function()
-        on_error(e_write)
-      end)
-    end
+    schedule_wrap(on_error, e_write)
   end)
 end
 
