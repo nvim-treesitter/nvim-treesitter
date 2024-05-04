@@ -7,20 +7,20 @@ local schedule = Base.schedule
 
 local M = {}
 
----@class RestParams
+---@class SpawnParams
 ---@field cmd string
 ---@field args table
 ---@field data any
 
--- Rest API, send request to server and get response
+-- Spawn a new process
 -- * If success, call on_success with exit_code, output, and data
 -- * If error, call on_error with signal, output, and data
 -- * If exit, call on_exit with data
----@param params RestParams
+---@param params SpawnParams
 ---@param on_success function|nil
 ---@param on_error function|nil
 ---@param on_exit function|nil
-function M.send(params, on_success, on_error, on_exit)
+function M.spawn(params, on_success, on_error, on_exit)
   local cmd = params.cmd
   local args = params.args
   local data = params.data
@@ -37,7 +37,7 @@ function M.send(params, on_success, on_error, on_exit)
     args = args,
   }, function(exit_code, signal)
     if handle == nil then
-      Log.error('RESTAPI uv.spawn handle is nil; cmd: {}, args: {}', cmd, args)
+      Log.error('uv.spawn handle is nil; cmd: {}, args: {}', cmd, args)
       return
     end
     handle:close()
@@ -50,10 +50,10 @@ function M.send(params, on_success, on_error, on_exit)
       end
       check:stop()
       if signal ~= 0 then
-        Log.error('RESTAPI uv.spawn signal; cmd: {}, args: {}, signal: {}, error: {}', cmd, args, signal, error)
+        Log.error('uv.spawn signal; cmd: {}, args: {}, signal: {}, error: {}', cmd, args, signal, error)
         schedule(on_error, signal, error, data)
       else
-        Log.debug('RESTAPI uv.spawn exit; code: {}', exit_code)
+        Log.debug('uv.spawn exit; code: {}', exit_code)
         schedule(on_success, exit_code, output, error, data)
       end
       schedule(on_exit, data)

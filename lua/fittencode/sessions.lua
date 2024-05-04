@@ -9,7 +9,7 @@ local KeyStorage = require('fittencode.key_storage')
 local Log = require('fittencode.log')
 local Path = require('fittencode.fs.path')
 local PromptProviders = require('fittencode.prompt_providers')
-local Rest = require('fittencode.rest')
+local Process = require('fittencode.concurrency.process')
 
 local M = {}
 
@@ -93,7 +93,7 @@ local function request_fico(token, on_success, on_error)
     fico_url,
   }
   vim.list_extend(args, CMD_DEFAULT_ARGS)
-  Rest.send({
+  Process.spawn({
     cmd = CMD,
     args = args,
   }, function(_, response)
@@ -189,7 +189,7 @@ function M.request_login(name, password)
     login_url,
   }
   vim.list_extend(args, CMD_DEFAULT_ARGS)
-  Rest.send({
+  Process.spawn({
     cmd = CMD,
     args = args,
   }, function(_, response)
@@ -382,7 +382,7 @@ function M.request_generate_one_stage(task_id, on_success, on_error)
       server .. api_key .. '?ide=neovim&v=0.1.0',
     }
     vim.list_extend(args, CMD_DEFAULT_ARGS)
-    Rest.send(
+    Process.spawn(
       {
         cmd = CMD,
         args = args,
