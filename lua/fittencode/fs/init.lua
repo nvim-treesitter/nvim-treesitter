@@ -3,6 +3,7 @@ local fn = vim.fn
 local uv = vim.uv or vim.loop
 
 local Base = require('fittencode.base')
+local Promise = require('fittencode.concurrency.promise')
 
 local M = {}
 
@@ -34,30 +35,34 @@ end
 ---@param on_success function|nil
 ---@param on_error function|nil
 function M.mkdir(dir, on_success, on_error)
-  uv.fs_mkdir(
-    dir,
-    448, -- decimal 448 = octal 0700
-    ---@param err string|nil
-    ---@param success boolean|nil
-    function(err, success)
-      if err then
-        local parsed = parse_err(err)
-        if parsed.name ~= 'EEXIST' then
-          if on_error then
-            vim.schedule(function()
-              on_error(parsed)
-            end)
-          end
-          return
+  Promise:new(function(resolve, reject)
+    uv.fs_mkdir(
+      dir,
+      448, -- decimal 448 = octal 0700
+      function(err, success)
+        if err then
+          reject(err)
+        else
+          resolve(success)
         end
-      end
-      if on_success then
+      end)
+  end):forward(function(success)
+    if on_success then
+      vim.schedule(function()
+        on_success(dir)
+      end)
+    end
+  end, function(err)
+    local parsed = parse_err(err)
+    if parsed.name ~= 'EEXIST' then
+      if on_error then
         vim.schedule(function()
-          on_success(dir)
+          on_error(parsed)
         end)
       end
+      return
     end
-  )
+  end)
 end
 
 -- Write data to a file. Assumes the directory already exists.
