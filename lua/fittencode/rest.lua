@@ -1,6 +1,9 @@
 local uv = vim.uv or vim.loop
 
+local Base = require('fittencode.base')
 local Log = require('fittencode.log')
+
+local schedule = Base.schedule
 
 local M = {}
 
@@ -48,24 +51,12 @@ function M.send(params, on_success, on_error, on_exit)
       check:stop()
       if signal ~= 0 then
         Log.error('RESTAPI uv.spawn signal; cmd: {}, args: {}, signal: {}, error: {}', cmd, args, signal, error)
-        if on_error then
-          vim.schedule(function()
-            on_error(signal, error, data)
-          end)
-        end
+        schedule(on_error, signal, error, data)
       else
-        if on_success then
-          Log.debug('RESTAPI uv.spawn exit; code: {}', exit_code)
-          vim.schedule(function()
-            on_success(exit_code, output, error, data)
-          end)
-        end
+        Log.debug('RESTAPI uv.spawn exit; code: {}', exit_code)
+        schedule(on_success, exit_code, output, error, data)
       end
-      if on_exit then
-        vim.schedule(function()
-          on_exit(data)
-        end)
-      end
+      schedule(on_exit, data)
     end)
   end)
 
