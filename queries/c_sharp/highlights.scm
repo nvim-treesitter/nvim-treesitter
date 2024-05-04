@@ -1,11 +1,14 @@
-(identifier) @variable
+[
+  (identifier)
+  (preproc_arg)
+] @variable
+
+((preproc_arg) @constant.macro
+  (#lua-match? @constant.macro "^[_A-Z][_A-Z0-9]*$"))
 
 ((identifier) @keyword
   (#eq? @keyword "value")
   (#has-ancestor? @keyword accessor_declaration))
-
-((identifier) @variable.builtin
-  (#eq? @variable.builtin "_"))
 
 (method_declaration
   name: (identifier) @function.method)
@@ -14,7 +17,22 @@
   name: (identifier) @function.method)
 
 (method_declaration
+  returns: [
+    (identifier) @type
+    (generic_name
+      (identifier) @type)
+  ])
+
+(event_declaration
   type: (identifier) @type)
+
+(event_declaration
+  name: (identifier) @variable.member)
+
+(event_field_declaration
+  (variable_declaration
+    (variable_declarator
+      name: (identifier) @variable.member)))
 
 (declaration_pattern
   type: (identifier) @type)
@@ -46,11 +64,16 @@
   (identifier) @type)
 
 (namespace_declaration
-  name: [
-    (qualified_name
-      (identifier) @module)
-    (identifier) @module
-  ])
+  name: (identifier) @module)
+
+(file_scoped_namespace_declaration
+  name: (identifier) @module)
+
+(qualified_name
+  (identifier) @module
+  (#not-has-ancestor? @module method_declaration)
+  (#not-has-ancestor? @module record_declaration)
+  (#has-ancestor? @module namespace_declaration file_scoped_namespace_declaration))
 
 (invocation_expression
   (identifier) @function.method.call)
@@ -64,13 +87,16 @@
   (assignment_expression
     left: (identifier) @variable.member))
 
-(parameter_list
-  (parameter
-    name: (identifier) @variable.parameter))
+(parameter
+  name: (identifier) @variable.parameter)
 
-(implicit_parameter_list
-  (parameter
-    name: (identifier) @variable.parameter))
+(parameter_list
+  name: (identifier) @variable.parameter)
+
+(bracketed_parameter_list
+  name: (identifier) @variable.parameter)
+
+(implicit_parameter) @variable.parameter
 
 (parameter_list
   (parameter
@@ -81,6 +107,15 @@
 (real_literal) @number.float
 
 (null_literal) @constant.builtin
+
+(calling_convention
+  [
+    (identifier)
+    "Cdecl"
+    "Stdcall"
+    "Thiscall"
+    "Fastcall"
+  ] @attribute.builtin)
 
 (character_literal) @character
 
@@ -93,7 +128,10 @@
 
 (escape_sequence) @string.escape
 
-(boolean_literal) @boolean
+[
+  "true"
+  "false"
+] @boolean
 
 (predefined_type) @type.builtin
 
@@ -114,8 +152,7 @@
   (identifier) @type)
 
 (using_directive
-  (name_equals
-    (identifier) @type.definition))
+  (type) @type.definition)
 
 (property_declaration
   name: (identifier) @property)
@@ -124,7 +161,16 @@
   type: (identifier) @type)
 
 (nullable_type
-  (identifier) @type)
+  type: (identifier) @type)
+
+(array_type
+  type: (identifier) @type)
+
+(ref_type
+  type: (identifier) @type)
+
+(pointer_type
+  type: (identifier) @type)
 
 (catch_declaration
   type: (identifier) @type)
@@ -138,13 +184,46 @@
 (record_declaration
   name: (identifier) @type)
 
+(struct_declaration
+  name: (identifier) @type)
+
 (enum_declaration
   name: (identifier) @type)
 
 (enum_member_declaration
   name: (identifier) @variable.member)
 
+(operator_declaration
+  type: (identifier) @type)
+
+(conversion_operator_declaration
+  type: (identifier) @type)
+
+(explicit_interface_specifier
+  [
+    (identifier) @type
+    (generic_name
+      (identifier) @type)
+  ])
+
+(explicit_interface_specifier
+  (identifier) @type)
+
+(primary_constructor_base_type
+  type: (identifier) @type)
+
+[
+  "assembly"
+  "module"
+  "this"
+  "base"
+  (discard)
+] @variable.builtin
+
 (constructor_declaration
+  name: (identifier) @constructor)
+
+(destructor_declaration
   name: (identifier) @constructor)
 
 (constructor_initializer
@@ -157,7 +236,7 @@
   (identifier) @type)
 
 ; Generic Types.
-(type_of_expression
+(typeof_expression
   (generic_name
     (identifier) @type))
 
@@ -169,9 +248,13 @@
   (generic_name
     (identifier) @type))
 
-(type_constraint
-  (generic_name
-    (identifier) @type))
+(type_parameter_constraint
+  [
+    (identifier) @type
+    (type
+      (generic_name
+        (identifier) @type))
+  ])
 
 (object_creation_expression
   (generic_name
@@ -205,14 +288,25 @@
 (type_parameter_list
   (type_parameter) @type)
 
+(type_parameter
+  name: (identifier) @type)
+
 (type_parameter_constraints_clause
-  target: (identifier) @type)
+  "where"
+  .
+  (identifier) @type)
 
 (attribute
   name: (identifier) @attribute)
 
-(for_each_statement
+(foreach_statement
   type: (identifier) @type)
+
+(goto_statement
+  (identifier) @label)
+
+(labeled_statement
+  (identifier) @label)
 
 (tuple_element
   type: (identifier) @type)
@@ -222,42 +316,47 @@
     (declaration_expression
       type: (identifier) @type)))
 
+(cast_expression
+  type: (identifier) @type)
+
+(lambda_expression
+  type: (identifier) @type)
+
 (as_expression
   right: (identifier) @type)
 
-(type_of_expression
+(typeof_expression
   (identifier) @type)
 
-(name_colon
-  (identifier) @variable.parameter)
-
-(warning_directive) @comment.warning
-
-(error_directive) @keyword.exception
-
-(define_directive
-  (identifier) @constant) @constant.macro
-
-(undef_directive
-  (identifier) @constant) @constant.macro
-
-(line_directive) @constant.macro
-
-(line_directive
-  (preproc_integer_literal) @constant
-  (preproc_string_literal)? @string)
-
-(pragma_directive
-  (identifier) @constant) @constant.macro
-
-(pragma_directive
-  (preproc_string_literal) @string) @constant.macro
+(preproc_error) @keyword.exception
 
 [
-  (nullable_directive)
-  (region_directive)
-  (endregion_directive)
+  "#define"
+  "#undef"
+] @keyword.directive.define
+
+[
+  "#if"
+  "#elif"
+  "#else"
+  "#endif"
+  "#region"
+  "#endregion"
+  "#line"
+  "#pragma"
+  "#nullable"
+  "#error"
+  (shebang_directive)
+] @keyword.directive
+
+[
+  (preproc_line)
+  (preproc_pragma)
+  (preproc_nullable)
 ] @constant.macro
+
+(preproc_pragma
+  (identifier) @constant)
 
 [
   "if"
@@ -266,16 +365,15 @@
   "break"
   "case"
   "when"
-  (if_directive)
-  (elif_directive)
-  (else_directive)
-  (endif_directive)
 ] @keyword.conditional
 
-(if_directive
+(preproc_pragma
   (identifier) @constant)
 
-(elif_directive
+(preproc_if
+  (identifier) @constant)
+
+(preproc_if
   (identifier) @constant)
 
 [
@@ -335,6 +433,7 @@
   "=>"
   "??"
   "??="
+  ".."
 ] @operator
 
 [
@@ -359,17 +458,13 @@
   ")"
 ] @punctuation.bracket
 
+(interpolation_brace) @punctuation.special
+
 (type_argument_list
   [
     "<"
     ">"
   ] @punctuation.bracket)
-
-[
-  (this_expression)
-  (base_expression)
-  "this"
-] @variable.builtin
 
 [
   "using"
@@ -390,6 +485,9 @@
   "or"
   "not"
   "stackalloc"
+  "__makeref"
+  "__reftype"
+  "__refvalue"
   "in"
   "out"
   "ref"
@@ -413,7 +511,13 @@
   "unchecked"
   "fixed"
   "alias"
+  "file"
+  "unsafe"
 ] @keyword
+
+(attribute_target_specifier
+  .
+  _ @keyword)
 
 [
   "enum"
@@ -438,9 +542,9 @@
   "static"
   "volatile"
   "required"
-] @keyword.modifier
-
-[
+  "managed"
+  "unmanaged"
+  "notnull"
   "abstract"
   "private"
   "protected"
@@ -449,9 +553,11 @@
   "partial"
   "sealed"
   "virtual"
+  "global"
 ] @keyword.modifier
 
-(parameter_modifier) @operator
+(scoped_type
+  "scoped" @keyword.modifier)
 
 (query_expression
   (_
