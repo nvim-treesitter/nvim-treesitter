@@ -102,8 +102,6 @@ function M.setup_commands()
         return
       end
       return vim.tbl_filter(
-        ---@param key string
-        ---@return boolean
         function(key)
           return not prefix or key:find(prefix, 1, true) == 1
         end,
