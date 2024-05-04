@@ -232,54 +232,70 @@ end
 ---@param on_success function|nil
 ---@param on_error function|nil
 function M.read(path, on_success, on_error)
-  uv.fs_open(
-    path,
-    'r',
-    438, -- decimal 438 = octal 0666
-    ---@param e_open string|nil
-    function(e_open, fd)
-      if e_open then
-        if on_error then
-          vim.schedule(function()
-            on_error(parse_err(e_open))
-          end)
+  Promise:new(function(resolve, reject)
+    uv.fs_open(
+      path,
+      'r',
+      438, -- decimal 438 = octal 0666
+      function(e_open, fd)
+        if e_open then
+          reject(e_open)
+        else
+          assert(fd ~= nil)
+          resolve(fd)
         end
-        return
-      end
-      if fd ~= nil then
-        ---@param e_stat string|nil
-        uv.fs_fstat(fd, function(e_stat, stat)
-          if e_stat then
-            if on_error then
-              vim.schedule(function()
-                on_error(parse_err(e_stat))
-              end)
-            end
-            return
-          end
-          if stat ~= nil then
-            ---@param e_read string|nil
-            uv.fs_read(fd, stat.size, -1, function(e_read, data)
-              if e_read then
-                if on_error then
-                  vim.schedule(function()
-                    on_error(parse_err(e_read))
-                  end)
-                end
-                return
-              end
-              uv.fs_close(fd, function(_, _) end)
-              if on_success then
-                vim.schedule(function()
-                  on_success(data, path)
-                end)
-              end
-            end)
+      end)
+  end):forward(function(fd)
+    return Promise:new(function(resolve, reject)
+      uv.fs_fstat(fd, function(e_stat, stat)
+        if e_stat then
+          reject(e_stat)
+        else
+          assert(stat ~= nil)
+          resolve({ fd, stat.size })
+        end
+      end)
+    end)
+  end, function(e_open)
+    if on_error then
+      vim.schedule(function()
+        on_error(parse_err(e_open))
+      end)
+    end
+  end):forward(function(fdssz)
+    return Promise:new(function(resolve, reject)
+      uv.fs_read(
+        fdssz[1],
+        fdssz[2],
+        -1,
+        function(e_read, data)
+          if e_read then
+            reject(e_read)
+          else
+            uv.fs_close(fdssz[1], function(_, _) end)
+            resolve(data)
           end
         end)
-      end
+    end)
+  end, function(e_stat)
+    if on_error then
+      vim.schedule(function()
+        on_error(parse_err(e_stat))
+      end)
     end
-  )
+  end):forward(function(data)
+    if on_success then
+      vim.schedule(function()
+        on_success(data, path)
+      end)
+    end
+  end, function(e_read)
+    if on_error then
+      vim.schedule(function()
+        on_error(parse_err(e_read))
+      end)
+    end
+  end)
 end
 
 ---@param file string
