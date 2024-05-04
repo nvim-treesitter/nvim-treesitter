@@ -31,30 +31,25 @@ local function on_cmd_signal(signal, _)
 end
 
 ---@param response string
----@param on_success? function
----@param on_error? function
-local function on_fico_response(_, response, on_success, on_error)
+local function on_fico_response(_, response)
   if response == nil or response == '' then
     Log.error('Server response without data')
-    schedule(on_error)
     return
   end
 
   local success, result = pcall(fn.json_decode, response)
   if success == false then
     Log.error('Server response is not a valid JSON; response: {}, error: {}', response, result)
-    schedule(on_error)
     return
   end
 
   local fico_data = result
   if fico_data.data == nil or fico_data.data.fico_token == nil then
     Log.error('Server response without fico_token field; decoded response: {}', fico_data)
-    schedule(on_error)
     return
   end
 
-  schedule(on_success, fico_data.data.fico_token)
+  return fico_data.data.fico_token
 end
 
 ---@param token string
@@ -81,19 +76,14 @@ local function request_fico(token, on_success, on_error)
       reject(signal)
     end)
   end):forward(function(response)
-    return Promise:new(function(resolve, reject)
-      on_fico_response(nil, response, function(key)
-        resolve(key)
-      end, function(fico_error)
-        reject(fico_error)
-      end)
-    end)
+    local fico_token = on_fico_response(nil, response)
+    if fico_token == nil then
+      schedule(on_error)
+    else
+      schedule(on_success, fico_token)
+    end
   end, function(signal)
     schedule(on_error, signal)
-  end):forward(function(key)
-    schedule(on_success, key)
-  end, function(fico_error)
-    schedule(on_error, fico_error)
   end)
 end
 
@@ -184,7 +174,7 @@ end
 ---@param exit_code integer
 ---@param response string
 ---@param error string
-local function process_response(exit_code, response, error)
+local function on_stage_response(exit_code, response, error)
   if exit_code ~= CMD_EXIT_CODE_SUCCESS then
     ---@type string[]
     local formatted_error = vim.tbl_filter(function(s)
@@ -251,7 +241,7 @@ function M:generate_one_stage(api_key, params, on_success, on_error)
   end, function(e_tmpfile)
     schedule(on_error, e_tmpfile)
   end):forward(function(ere)
-    local generated_text = process_response(ere[1], ere[2], ere[3])
+    local generated_text = on_stage_response(ere[1], ere[2], ere[3])
     if generated_text == nil then
       schedule(on_error)
     else
