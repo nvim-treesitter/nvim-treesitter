@@ -185,38 +185,34 @@ end
 ---@param exit_code integer
 ---@param response string
 ---@param error string
-local function on_generate_one_stage(exit_code, response, error, on_success, on_error)
+local function process_response(exit_code, response, error)
   if exit_code ~= CMD_EXIT_CODE_SUCCESS then
     ---@type string[]
     local formatted_error = vim.tbl_filter(function(s)
       return #s > 0
     end, vim.split(error, '\n'))
     Log.error('Request failed; exit_code: {}, error: {}', exit_code, formatted_error)
-    schedule(on_error)
     return
   end
 
   if response == nil or response == '' then
     Log.error('Server response without data')
-    schedule(on_error)
     return
   end
 
   local success, result = pcall(fn.json_decode, response)
   if success == false then
     Log.error('Server response is not a valid JSON; response: {}, error: {}', response, result)
-    schedule(on_error)
     return
   end
 
   local completion_data = result
   if completion_data.generated_text == nil then
     Log.error('Server response without generated_text field; decoded response: {}', completion_data)
-    schedule(on_error)
     return
   end
 
-  schedule(on_success, completion_data.generated_text)
+  return completion_data.generated_text
 end
 
 function M:generate_one_stage(api_key, params, on_success, on_error)
@@ -256,7 +252,12 @@ function M:generate_one_stage(api_key, params, on_success, on_error)
   end, function(e_tmpfile)
     schedule(on_error, e_tmpfile)
   end):forward(function(ere)
-    on_generate_one_stage(ere[1], ere[2], ere[3], on_success, on_error)
+    local generated_text = process_response(ere[1], ere[2], ere[3])
+    if generated_text == nil then
+      schedule(on_error)
+    else
+      schedule(on_success, generated_text)
+    end
   end, function(signal)
     schedule(on_error, signal)
   end)
