@@ -182,21 +182,6 @@ function M:login(username, password, on_success, on_error)
   end)
 end
 
-local function on_generate_one_stage_exit(path)
-  Log.debug('Clearing HTTP temporary file: {}', path)
-  if path then
-    uv.fs_unlink(path, function(err)
-      if err then
-        Log.error('Failed to delete HTTP temporary file; error: {}', err)
-      else
-        Log.debug('HTTP temporary file deleted successfully')
-      end
-    end)
-  else
-    Log.error('HTTP temporary file not found')
-  end
-end
-
 ---@param exit_code integer
 ---@param response string
 ---@param error string
@@ -265,7 +250,7 @@ function M:generate_one_stage(api_key, params, on_success, on_error)
         on_cmd_signal(signal, ...)
         reject(signal)
       end, function()
-        on_generate_one_stage_exit(path)
+        FS.delete(path)
       end)
     end)
   end, function(e_tmpfile)

@@ -243,4 +243,22 @@ function M.exists(file)
   return uv.fs_stat(file) ~= nil
 end
 
+function M.delete(path, on_success, on_error)
+  Promise:new(function(resolve, reject)
+    uv.fs_unlink(
+      path,
+      function(err)
+        if err then
+          reject(err)
+        else
+          resolve()
+        end
+      end)
+  end):forward(function()
+    schedule(on_success)
+  end, function(err)
+    schedule(on_error, uv_err(err))
+  end)
+end
+
 return M
