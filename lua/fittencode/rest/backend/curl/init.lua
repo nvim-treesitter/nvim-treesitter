@@ -1,12 +1,16 @@
 local fn = vim.fn
 
+local Base = require('fittencode.base')
 local FittenClient = require('fittencode.rest.fitten_client')
 local Log = require('fittencode.log')
 local Process = require('fittencode.concurrency.process')
+local Promise = require('fittencode.concurrency.promise')
 local URL = require('fittencode.rest.url')
 
 ---@class FittenClientCurlBackend : FittenClient
 local M = FittenClient:new('FittenClientCurlBackend')
+
+local schedule = Base.schedule
 
 local CMD = 'curl'
 local CMD_TIMEOUT = 5 -- 5 seconds
@@ -28,36 +32,28 @@ end
 ---@param response string
 ---@param on_success? function
 ---@param on_error? function
-local function on_fico(_, response, on_success, on_error)
+local function on_fico_response(_, response, on_success, on_error)
   if response == nil or response == '' then
     Log.error('Server response without data')
-    if on_error then
-      on_error()
-    end
+    schedule(on_error)
     return
   end
 
   local success, result = pcall(fn.json_decode, response)
   if success == false then
     Log.error('Server response is not a valid JSON; response: {}, error: {}', response, result)
-    if on_error then
-      on_error()
-    end
+    schedule(on_error)
     return
   end
 
   local fico_data = result
   if fico_data.data == nil or fico_data.data.fico_token == nil then
     Log.error('Server response without fico_token field; decoded response: {}', fico_data)
-    if on_error then
-      on_error()
-    end
+    schedule(on_error)
     return
   end
 
-  if on_success then
-    on_success(fico_data.data.fico_token)
-  end
+  schedule(on_success, fico_data.data.fico_token)
 end
 
 ---@param token string
@@ -72,24 +68,31 @@ local function request_fico(token, on_success, on_error)
     ,
   }
   vim.list_extend(args, CMD_DEFAULT_ARGS)
-  Process.spawn({
-    cmd = CMD,
-    args = args,
-  }, function(_, response)
-    on_fico(nil, response, function(key)
-      if on_success then
-        on_success(key)
-      end
-    end, function()
-      if on_error then
-        on_error()
-      end
+
+  Promise:new(function(resolve, reject)
+    Process.spawn({
+      cmd = CMD,
+      args = args,
+    }, function(_, response)
+      resolve(response)
+    end, function(signal, ...)
+      on_cmd_signal(signal, ...)
+      reject(signal)
     end)
-  end, function(signal, ...)
-    on_cmd_signal(signal, ...)
-    if on_error then
-      on_error()
-    end
+  end):forward(function(response)
+    return Promise:new(function(resolve, reject)
+      on_fico_response(nil, response, function(key)
+        resolve(key)
+      end, function(fico_error)
+        reject(fico_error)
+      end)
+    end)
+  end, function(signal)
+    schedule(on_error, signal)
+  end):forward(function(key)
+    schedule(on_success, key)
+  end, function(fico_error)
+    schedule(on_error, fico_error)
   end)
 end
 
@@ -121,20 +124,6 @@ local function decode_token(response)
   return login_data.data.token
 end
 
----@param response string
----@param on_success? function
----@param on_error? function
-local function on_login(_, response, on_success, on_error)
-  local token = decode_token(response)
-  if token ~= nil then
-    request_fico(token, on_success, on_error)
-  else
-    if on_error then
-      on_error()
-    end
-  end
-end
-
 function M:login(username, password, on_success, on_error)
   local data = {
     username = username,
@@ -152,20 +141,42 @@ function M:login(username, password, on_success, on_error)
     URL.LOGIN,
   }
   vim.list_extend(args, CMD_DEFAULT_ARGS)
-  Process.spawn({
-    cmd = CMD,
-    args = args,
-  }, function(_, response)
-    on_login(nil, response, function(key)
-      if on_success then
-        on_success(key)
-      end
-    end, function()
-      Log.e('Login failed')
+
+  Promise:new(function(resolve, reject)
+    Process.spawn({
+      cmd = CMD,
+      args = args,
+    }, function(_, response)
+      resolve(response)
+    end, function(signal, ...)
+      on_cmd_signal(signal, ...)
+      reject(signal)
     end)
-  end, function(signal, ...)
-    on_cmd_signal(signal, ...)
-    Log.e('Login failed')
+  end):forward(function(response)
+    return Promise:new(function(resolve, reject)
+      local token = decode_token(response)
+      if token ~= nil then
+        resolve(token)
+      else
+        reject()
+      end
+    end)
+  end, function(signal)
+    schedule(on_error, signal)
+  end):forward(function(token)
+    return Promise:new(function(resolve, reject)
+      request_fico(token, function(key)
+        resolve(key)
+      end, function(fico_error)
+        reject(fico_error)
+      end)
+    end)
+  end, function()
+    schedule(on_error)
+  end):forward(function(key)
+    schedule(on_success, key)
+  end, function(fico_error)
+    schedule(on_error, fico_error)
   end)
 end
 
