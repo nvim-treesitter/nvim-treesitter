@@ -28,6 +28,15 @@ local function uv_err(err)
   return { name = name, message = message }
 end
 
+local function schedule_wrap(fx, ...)
+  if fx then
+    local args = { ... }
+    vim.schedule(function()
+      fx(unpack(args))
+    end)
+  end
+end
+
 -- Create a directory if it doesn't exist.
 -- * If successful, call `on_success` with the directory path.
 -- * If an error occurs, call `on_error` with the error message.
