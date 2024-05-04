@@ -118,79 +118,6 @@ local function generate_suggestions(generated_text)
   return suggestions
 end
 
----@class OnGenerateOneStageData User data for GenerateOneStage request
----@field path? string Temporary file path for HTTP request data
----@field task_id integer Task ID
----@field on_success? function Callback when suggestions is generated
----@field on_error? function Callback when request is failed
-
----@param exit_code integer
----@param response string
----@param error string
----@param data OnGenerateOneStageData
-local function on_generate_one_stage(exit_code, response, error, data)
-  if exit_code ~= CMD_EXIT_CODE_SUCCESS then
-    ---@type string[]
-    local formatted_error = vim.tbl_filter(function(s)
-      return #s > 0
-    end, vim.split(error, '\n'))
-    Log.error('Request failed; exit_code: {}, error: {}', exit_code, formatted_error)
-    if data.on_error then
-      data.on_error()
-    end
-    return
-  end
-
-  if response == nil or response == '' then
-    Log.error('Server response without data')
-    if data.on_error then
-      data.on_error()
-    end
-    return
-  end
-
-  local success, result = pcall(fn.json_decode, response)
-  if success == false then
-    Log.error('Server response is not a valid JSON; response: {}, error: {}', response, result)
-    if data.on_error then
-      data.on_error()
-    end
-    return
-  end
-
-  local completion_data = result
-  if completion_data.generated_text == nil then
-    Log.error('Server response without generated_text field; decoded response: {}', completion_data)
-    if data.on_error then
-      data.on_error()
-    end
-    return
-  end
-
-  local suggestions = generate_suggestions(completion_data.generated_text)
-
-  if data.on_success then
-    data.on_success(data.task_id, suggestions)
-  end
-end
-
----@param data OnGenerateOneStageData
-local function on_generate_one_stage_exit(data)
-  Log.debug('Clearing HTTP temporary file: {}', data.path)
-  local path = data.path
-  if path then
-    uv.fs_unlink(path, function(err)
-      if err then
-        Log.error('Failed to delete HTTP temporary file; error: {}', err)
-      else
-        Log.debug('HTTP temporary file deleted successfully')
-      end
-    end)
-  else
-    Log.error('HTTP temporary file not found')
-  end
-end
-
 ---@return table|nil
 local function make_generate_one_stage_params()
   local result = PromptProviders.get_current_prompt()
@@ -229,52 +156,26 @@ function M.request_generate_one_stage(task_id, on_success, on_error)
     return
   end
   local params = make_generate_one_stage_params()
-  -- Log.debug('Params: {}', params)
   if params == nil then
     if on_error then
       on_error()
     end
     return
   end
-  FS.write_temp_file(fn.json_encode(params), function(_, path)
-    local server = URL_GENERATE_ONE_STAGE
-    local args = {
-      '-s',
-      '-X',
-      'POST',
-      '-H',
-      'Content-Type: application/json',
-      '-d',
-      '@' .. path,
-      server .. api_key .. '?ide=neovim&v=0.1.0',
-    }
-    vim.list_extend(args, CMD_DEFAULT_ARGS)
-    Process.spawn(
-      {
-        cmd = CMD,
-        args = args,
-        ---@type OnGenerateOneStageData
-        data = {
-          path = path,
-          task_id = task_id,
-          on_success = on_success,
-          on_error = on_error,
-        },
-      },
-      on_generate_one_stage,
-      function(signal, ...)
-        on_cmd_signal(signal, ...)
-        if on_error then
-          on_error()
-        end
-      end,
-      on_generate_one_stage_exit
-    )
-  end, function()
+
+  local client = Rest:make_client()
+  if client == nil then
     if on_error then
       on_error()
     end
-  end)
+    return
+  end
+  client:generate_one_stage(api_key, params, function(generated_text)
+    local suggestions = generate_suggestions(generated_text)
+    if on_success then
+      on_success(task_id, suggestions)
+    end
+  end, on_error)
 end
 
 return M

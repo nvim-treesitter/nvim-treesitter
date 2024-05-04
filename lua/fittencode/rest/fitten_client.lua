@@ -18,7 +18,7 @@ end
 function M:login(username, password, on_success, on_error)
 end
 
-function M:generate_one_stage()
+function M:generate_one_stage(api_key, params, on_success, on_error)
 end
 
 return M

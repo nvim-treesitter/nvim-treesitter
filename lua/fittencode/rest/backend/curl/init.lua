@@ -1,7 +1,9 @@
 local fn = vim.fn
+local uv = vim.uv or vim.loop
 
 local Base = require('fittencode.base')
 local FittenClient = require('fittencode.rest.fitten_client')
+local FS = require('fittencode.fs')
 local Log = require('fittencode.log')
 local Process = require('fittencode.concurrency.process')
 local Promise = require('fittencode.concurrency.promise')
@@ -180,7 +182,99 @@ function M:login(username, password, on_success, on_error)
   end)
 end
 
-function M:generate_one_stage()
+local function on_generate_one_stage_exit(path)
+  Log.debug('Clearing HTTP temporary file: {}', path)
+  if path then
+    uv.fs_unlink(path, function(err)
+      if err then
+        Log.error('Failed to delete HTTP temporary file; error: {}', err)
+      else
+        Log.debug('HTTP temporary file deleted successfully')
+      end
+    end)
+  else
+    Log.error('HTTP temporary file not found')
+  end
+end
+
+---@param exit_code integer
+---@param response string
+---@param error string
+local function on_generate_one_stage(exit_code, response, error, on_success, on_error)
+  if exit_code ~= CMD_EXIT_CODE_SUCCESS then
+    ---@type string[]
+    local formatted_error = vim.tbl_filter(function(s)
+      return #s > 0
+    end, vim.split(error, '\n'))
+    Log.error('Request failed; exit_code: {}, error: {}', exit_code, formatted_error)
+    schedule(on_error)
+    return
+  end
+
+  if response == nil or response == '' then
+    Log.error('Server response without data')
+    schedule(on_error)
+    return
+  end
+
+  local success, result = pcall(fn.json_decode, response)
+  if success == false then
+    Log.error('Server response is not a valid JSON; response: {}, error: {}', response, result)
+    schedule(on_error)
+    return
+  end
+
+  local completion_data = result
+  if completion_data.generated_text == nil then
+    Log.error('Server response without generated_text field; decoded response: {}', completion_data)
+    schedule(on_error)
+    return
+  end
+
+  schedule(on_success, completion_data.generated_text)
+end
+
+function M:generate_one_stage(api_key, params, on_success, on_error)
+  Promise:new(function(resolve, reject)
+    FS.write_temp_file(fn.json_encode(params), function(_, path)
+      resolve(path)
+    end, function(e_tmpfile)
+      reject(e_tmpfile)
+    end)
+  end):forward(function(path)
+    return Promise:new(function(resolve, reject)
+      local server = URL.GENERATE_ONE_STAGE
+      local args = {
+        '-s',
+        '-X',
+        'POST',
+        '-H',
+        'Content-Type: application/json',
+        '-d',
+        '@' .. path,
+        server .. api_key .. '?ide=neovim&v=0.1.0',
+      }
+      vim.list_extend(args, CMD_DEFAULT_ARGS)
+
+      Process.spawn({
+        cmd = CMD,
+        args = args,
+      }, function(exit_code, response, error)
+        resolve({ exit_code, response, error })
+      end, function(signal, ...)
+        on_cmd_signal(signal, ...)
+        reject(signal)
+      end, function()
+        on_generate_one_stage_exit(path)
+      end)
+    end)
+  end, function(e_tmpfile)
+    schedule(on_error, e_tmpfile)
+  end):forward(function(ere)
+    on_generate_one_stage(ere[1], ere[2], ere[3], on_success, on_error)
+  end, function(signal)
+    schedule(on_error, signal)
+  end)
 end
 
 return M
