@@ -179,23 +179,11 @@ function M.write_temp_file(data, on_success, on_error)
       end)
     end)
   end, function(e_tempname)
-    if on_error then
-      vim.schedule(function()
-        on_error(e_tempname)
-      end)
-    end
+    schedule_wrap(on_error, e_tempname)
   end):forward(function(dp)
-    if on_success then
-      vim.schedule(function()
-        on_success(dp[1], dp[2])
-      end)
-    end
+    schedule_wrap(on_success, dp[1], dp[2])
   end, function(e_write)
-    if on_error then
-      vim.schedule(function()
-        on_error(e_write)
-      end)
-    end
+    schedule_wrap(on_error, e_write)
   end)
 end
 
