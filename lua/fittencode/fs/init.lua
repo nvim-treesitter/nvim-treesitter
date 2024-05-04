@@ -104,23 +104,11 @@ function M.write(data, path, on_success, on_error)
         end)
     end)
   end, function(e_open)
-    if on_error then
-      vim.schedule(function()
-        on_error(uv_err(e_open))
-      end)
-    end
+    schedule_wrap(on_error, uv_err(e_open))
   end):forward(function()
-    if on_success then
-      vim.schedule(function()
-        on_success(data, path)
-      end)
-    end
+    schedule_wrap(on_success, data, path)
   end, function(e_write)
-    if on_error then
-      vim.schedule(function()
-        on_error(uv_err(e_write))
-      end)
-    end
+    schedule_wrap(on_error, uv_err(e_write))
   end)
 end
 
