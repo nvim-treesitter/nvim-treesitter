@@ -15,15 +15,13 @@ end
 ---@param s string
 ---@return string
 function M.to_nt(s)
-  local nt, _ = s:gsub(M.kernel_sep(), M.nt_sep())
-  return nt
+  return s:gsub(M.kernel_sep(), M.nt_sep())[1]
 end
 
 ---@param s string
 ---@return string
 function M.to_kernel(s)
-  local kernel, _ = s:gsub(M.nt_sep(), M.kernel_sep())
-  return kernel
+  return s:gsub(M.nt_sep(), M.kernel_sep())[1]
 end
 
 ---@param s string
