@@ -14,10 +14,11 @@ local M = {}
 
 local KEY_STORE_PATH = Path.to_native(fn.stdpath('data') .. '/fittencode' .. '/api_key.json')
 
+---@type FittenClient
+local client = nil
+
 ---@type KeyStorage
-local key_storage = KeyStorage:new({
-  path = KEY_STORE_PATH,
-})
+local key_storage = nil
 
 -- Current user name, used for mapping to API key
 ---@type string?
@@ -39,7 +40,6 @@ function M.request_login(name, password)
     return
   end
 
-  local client = Rest:make_client()
   client:login(username, password, function(key)
     key_storage:set_key_by_name(username, key)
     Log.i('Login successful')
@@ -136,16 +136,18 @@ function M.request_generate_one_stage(task_id, on_success, on_error)
     return
   end
 
-  local client = Rest:make_client()
-  if client == nil then
-    schedule(on_error)
-    return
-  end
-  Log.debug('Client name is: {}', client:get_implementation_name())
   client:generate_one_stage(api_key, params, function(generated_text)
     local suggestions = generate_suggestions(generated_text)
     schedule(on_success, task_id, suggestions)
   end, on_error)
+end
+
+function M.setup()
+  client = Rest:make_client()
+  Log.debug('FittenClient implementation is: {}', client:get_implementation_name())
+  key_storage = KeyStorage:new({
+    path = KEY_STORE_PATH,
+  })
 end
 
 return M
