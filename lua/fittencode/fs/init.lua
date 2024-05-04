@@ -18,9 +18,9 @@ local M = {}
 
 ---@param err string
 ---@return UvError
-local function parse_err(err)
+local function uv_err(err)
   if not err then
-    return { name = 'parse_err', message = 'Error is nil' }
+    return { name = 'uv_err', message = 'Error is nil' }
   end
   local pos = err:find(':', 1, true)
   local name = err:sub(1, pos - 1)
@@ -53,7 +53,7 @@ function M.mkdir(dir, on_success, on_error)
       end)
     end
   end, function(err)
-    local parsed = parse_err(err)
+    local parsed = uv_err(err)
     if parsed.name ~= 'EEXIST' then
       if on_error then
         vim.schedule(function()
@@ -104,7 +104,7 @@ function M.write(data, path, on_success, on_error)
   end, function(e_open)
     if on_error then
       vim.schedule(function()
-        on_error(parse_err(e_open))
+        on_error(uv_err(e_open))
       end)
     end
   end):forward(function()
@@ -116,7 +116,7 @@ function M.write(data, path, on_success, on_error)
   end, function(e_write)
     if on_error then
       vim.schedule(function()
-        on_error(parse_err(e_write))
+        on_error(uv_err(e_write))
       end)
     end
   end)
@@ -259,7 +259,7 @@ function M.read(path, on_success, on_error)
   end, function(e_open)
     if on_error then
       vim.schedule(function()
-        on_error(parse_err(e_open))
+        on_error(uv_err(e_open))
       end)
     end
   end):forward(function(fdssz)
@@ -280,7 +280,7 @@ function M.read(path, on_success, on_error)
   end, function(e_stat)
     if on_error then
       vim.schedule(function()
-        on_error(parse_err(e_stat))
+        on_error(uv_err(e_stat))
       end)
     end
   end):forward(function(data)
@@ -292,7 +292,7 @@ function M.read(path, on_success, on_error)
   end, function(e_read)
     if on_error then
       vim.schedule(function()
-        on_error(parse_err(e_read))
+        on_error(uv_err(e_read))
       end)
     end
   end)
