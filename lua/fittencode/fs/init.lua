@@ -187,23 +187,42 @@ end
 ---@param on_success function|nil
 ---@param on_error function|nil
 function M.write_temp_file(data, on_success, on_error)
-  local path = fn.tempname()
-  if not path then
+  Promise:new(function(resolve, reject)
+    local path = fn.tempname()
+    if not path then
+      local e_tempname = { name = 'fn.tempname', message = 'Failed to generate temporary file name' }
+      reject(e_tempname)
+    else
+      resolve(path)
+    end
+  end):forward(function(path)
+    return Promise:new(function(resolve, reject)
+      path = Base.to_native(path)
+      M.write(data, path, function(d, p)
+        resolve({ d, p })
+      end, function(e_write)
+        reject(e_write)
+      end)
+    end)
+  end, function(e_tempname)
     if on_error then
       vim.schedule(function()
-        on_error({ name = 'fn.tempname', message = 'Failed to generate temporary file name' })
+        on_error(e_tempname)
       end)
     end
-    return
-  end
-  path = Base.to_native(path)
-  M.write(data, path, function(d, p)
+  end):forward(function(dp)
     if on_success then
       vim.schedule(function()
-        on_success(d, p)
+        on_success(dp[1], dp[2])
       end)
     end
-  end, on_error)
+  end, function(e_write)
+    if on_error then
+      vim.schedule(function()
+        on_error(e_write)
+      end)
+    end
+  end)
 end
 
 -- Read data from a file.
