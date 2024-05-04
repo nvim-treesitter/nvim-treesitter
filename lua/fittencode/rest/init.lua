@@ -26,7 +26,7 @@ function M.make_client()
   end
 end
 
----@param opts RestOptions
+---@param opts? RestOptions
 function M.setup(opts)
   opts = opts or {
     backend = 'curl',

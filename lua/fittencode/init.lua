@@ -33,7 +33,7 @@ function M.setup(opts)
     require('fittencode.sources').setup(Config.options.source_completion)
   end
 
-  require('fittencode.sessions').request_load_last_session()
+  require('fittencode.sessions').load_last_session()
 end
 
 setmetatable(M, {

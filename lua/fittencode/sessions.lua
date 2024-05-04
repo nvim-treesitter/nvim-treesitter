@@ -59,7 +59,7 @@ function M.request_logout()
   Log.i('Logout successful')
 end
 
-function M.request_load_last_session()
+function M.load_last_session()
   Log.info('Loading last session')
   key_storage:load(function(name)
     username = name
