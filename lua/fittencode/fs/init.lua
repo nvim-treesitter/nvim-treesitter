@@ -2,6 +2,7 @@ local fn = vim.fn
 local uv = vim.uv or vim.loop
 
 local Base = require('fittencode.base')
+local Path = require('fittencode.fs.path')
 local Promise = require('fittencode.concurrency.promise')
 
 local schedule = Base.schedule
@@ -163,7 +164,7 @@ function M.write_temp_file(data, on_success, on_error)
     end
   end):forward(function(path)
     return Promise:new(function(resolve, reject)
-      path = Base.to_native(path)
+      path = Path.to_native(path)
       M.write(data, path, function(d, p)
         resolve({ d, p })
       end, function(e_write)

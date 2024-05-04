@@ -2,6 +2,7 @@ local fn = vim.fn
 local uv = vim.uv or vim.loop
 
 local Base = require('fittencode.base')
+local Path = require('fittencode.fs.path')
 
 local M = {}
 
@@ -9,7 +10,7 @@ local M = {}
 ---@field level? integer @one of the `vim.log.levels` values
 
 local MODULE_NAME = 'fittencode.nvim'
-local LOG_PATH = Base.to_native(fn.stdpath('log') .. '/fittencode' .. '/fittencode.log')
+local LOG_PATH = Path.to_native(fn.stdpath('log') .. '/fittencode' .. '/fittencode.log')
 
 -- See `help vim.log.levels`
 -- Refs: `neovim/runtime/lua/vim/_editor.lua`
