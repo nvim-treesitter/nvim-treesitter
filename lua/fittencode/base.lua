@@ -4,6 +4,16 @@ local uv = vim.uv or vim.loop
 
 local M = {}
 
+---@param fx? function
+function M.schedule(fx, ...)
+  if fx then
+    local args = { ... }
+    vim.schedule(function()
+      fx(unpack(args))
+    end)
+  end
+end
+
 ---@param name string
 ---@param func function
 ---@param opts table|nil

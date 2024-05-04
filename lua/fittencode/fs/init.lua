@@ -1,9 +1,10 @@
-local api = vim.api
 local fn = vim.fn
 local uv = vim.uv or vim.loop
 
 local Base = require('fittencode.base')
 local Promise = require('fittencode.concurrency.promise')
+
+local schedule = Base.schedule
 
 local M = {}
 
@@ -26,15 +27,6 @@ local function uv_err(err)
   local name = err:sub(1, pos - 1)
   local message = err:sub(pos + 2)
   return { name = name, message = message }
-end
-
-local function schedule(fx, ...)
-  if fx then
-    local args = { ... }
-    vim.schedule(function()
-      fx(unpack(args))
-    end)
-  end
 end
 
 -- Create a directory if it doesn't exist.
