@@ -1,3 +1,7 @@
+# The language server has a built-in code formatter, courtesy of CppCXY/EmmyLuaCodeStyle 
+# https://luals.github.io/wiki/formatter/
+# https://github.com/CppCXY/EmmyLuaCodeStyle/blob/master/lua.template.editorconfig
+
 [*]
 end_of_line = lf
 charset = utf-8
@@ -5,3 +9,4 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 indent_style = space
 indent_size = 2
+quote_style = single

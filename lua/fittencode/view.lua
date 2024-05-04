@@ -159,10 +159,10 @@ end
 ---@return any
 local function format_wrap(fx)
   local fmts = {
-    { 'autoindent', false },
-    { 'smartindent', false },
+    { 'autoindent',    false },
+    { 'smartindent',   false },
     { 'formatoptions', '' },
-    { 'textwidth', 0 },
+    { 'textwidth',     0 },
   }
   for _, fmt in ipairs(fmts) do
     fmt[3] = vim.bo[fmt[1]]

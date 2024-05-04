@@ -1,6 +1,10 @@
-.PHONY: fmt
-fmt:
+.PHONY: sl
+sl:
 	stylua --config-path .stylua.toml -g '*.lua' -g '!lua/fittencode/fs/*.lua' -g '!lua/fittencode/concurrency/*.lua' -- lua
+
+.PHONY: cf
+cf:
+	CodeFormat format -c .editorconfig -w lua/
 
 .PHONY: lint
 lint:
