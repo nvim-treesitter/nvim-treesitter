@@ -73,41 +73,53 @@ end
 ---@param on_success function|nil
 ---@param on_error function|nil
 function M.write(data, path, on_success, on_error)
-  uv.fs_open(
-    path,
-    'w',
-    438, -- decimal 438 = octal 0666
-    ---@param e_open string|nil
-    function(e_open, fd)
-      if e_open then
-        if on_error then
-          vim.schedule(function()
-            on_error(parse_err(e_open))
-          end)
+  Promise:new(function(resolve, reject)
+    uv.fs_open(
+      path,
+      'w',
+      438, -- decimal 438 = octal 0666
+      function(e_open, fd)
+        if e_open then
+          reject(e_open)
+        else
+          assert(fd ~= nil)
+          resolve(fd)
         end
-        return
-      end
-      if fd ~= nil then
-        ---@param e_write string|nil
-        uv.fs_write(fd, data, -1, function(e_write, _)
+      end)
+  end):forward(function(fd)
+    return Promise:new(function(resolve, reject)
+      uv.fs_write(
+        fd,
+        data,
+        -1,
+        function(e_write, _)
           if e_write then
-            if on_error then
-              vim.schedule(function()
-                on_error(parse_err(e_write))
-              end)
-            end
-            return
-          end
-          uv.fs_close(fd, function(_, _) end)
-          if on_success then
-            vim.schedule(function()
-              on_success(data, path)
-            end)
+            reject(e_write)
+          else
+            uv.fs_close(fd, function(_, _) end)
+            resolve()
           end
         end)
-      end
+    end)
+  end, function(e_open)
+    if on_error then
+      vim.schedule(function()
+        on_error(parse_err(e_open))
+      end)
     end
-  )
+  end):forward(function()
+    if on_success then
+      vim.schedule(function()
+        on_success(data, path)
+      end)
+    end
+  end, function(e_write)
+    if on_error then
+      vim.schedule(function()
+        on_error(parse_err(e_write))
+      end)
+    end
+  end)
 end
 
 -- Write data to a file, creating the directory if it doesn't exist.
