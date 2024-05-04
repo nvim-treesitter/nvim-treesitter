@@ -4,6 +4,7 @@ local uv = vim.uv or vim.loop
 
 local Base = require('fittencode.base')
 local Config = require('fittencode.config')
+local FS = require('fittencode.fs')
 local KeyStorage = require('fittencode.key_storage')
 local Log = require('fittencode.log')
 local PromptProviders = require('fittencode.prompt_providers')
@@ -367,7 +368,7 @@ function M.request_generate_one_stage(task_id, on_success, on_error)
     end
     return
   end
-  Base.write_temp_file(fn.json_encode(params), function(_, path)
+  FS.write_temp_file(fn.json_encode(params), function(_, path)
     local server = URL_GENERATE_ONE_STAGE
     local args = {
       '-s',
