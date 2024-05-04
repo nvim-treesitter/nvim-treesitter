@@ -50,27 +50,20 @@ function M.mkdir(dir, on_success, on_error)
       448, -- decimal 448 = octal 0700
       function(err, success)
         if err then
-          reject(err)
+          local parsed = uv_err(err)
+          if parsed.name ~= 'EEXIST' then
+            reject(parsed)
+          else
+            resolve(success)
+          end
         else
           resolve(success)
         end
       end)
-  end):forward(function(success)
-    if on_success then
-      vim.schedule(function()
-        on_success(dir)
-      end)
-    end
-  end, function(err)
-    local parsed = uv_err(err)
-    if parsed.name ~= 'EEXIST' then
-      if on_error then
-        vim.schedule(function()
-          on_error(parsed)
-        end)
-      end
-      return
-    end
+  end):forward(function(_)
+    schedule_wrap(on_success, dir)
+  end, function(parsed)
+    schedule_wrap(on_error, parsed)
   end)
 end
 
