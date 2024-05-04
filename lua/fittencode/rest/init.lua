@@ -19,6 +19,7 @@ local builtin_backends = {
 ---@type RestOptions
 local ctx = nil
 
+---@return FittenClient?
 function M.make_client()
   if ctx then
     return builtin_backends[ctx.backend]()

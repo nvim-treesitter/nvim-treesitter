@@ -1,5 +1,4 @@
 local fn = vim.fn
-local uv = vim.uv or vim.loop
 
 local Base = require('fittencode.base')
 local FittenClient = require('fittencode.rest.fitten_client')
@@ -200,8 +199,8 @@ local function process_response(exit_code, response, error)
     return
   end
 
-  local success, result = pcall(fn.json_decode, response)
-  if success == false then
+  local decode_ok, result = pcall(fn.json_decode, response)
+  if decode_ok == false then
     Log.error('Server response is not a valid JSON; response: {}, error: {}', response, result)
     return
   end

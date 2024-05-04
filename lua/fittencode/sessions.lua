@@ -1,33 +1,16 @@
-local api = vim.api
 local fn = vim.fn
-local uv = vim.uv or vim.loop
 
 local Base = require('fittencode.base')
 local Config = require('fittencode.config')
-local FS = require('fittencode.fs')
 local KeyStorage = require('fittencode.key_storage')
 local Log = require('fittencode.log')
 local Path = require('fittencode.fs.path')
 local PromptProviders = require('fittencode.prompt_providers')
-local Process = require('fittencode.concurrency.process')
 local Rest = require('fittencode.rest')
 
 local M = {}
 
-local URL_LOGIN = 'https://fc.fittenlab.cn/codeuser/login'
-local URL_GET_FT_TOKEN = 'https://fc.fittenlab.cn/codeuser/get_ft_token'
-local URL_GENERATE_ONE_STAGE = 'https://fc.fittenlab.cn/codeapi/completion/generate_one_stage/'
-
-local CMD = 'curl'
-local CMD_TIMEOUT = 5 -- 5 seconds
-local CMD_DEFAULT_ARGS = {
-  '--connect-timeout',
-  CMD_TIMEOUT,
-  '--show-error',
-  -- For debug purposes only, `-v, Make the operation more talkative`
-  -- '-v',
-}
-local CMD_EXIT_CODE_SUCCESS = 0
+local schedule = Base.schedule
 
 local KEY_STORE_PATH = Path.to_native(fn.stdpath('data') .. '/fittencode' .. '/api_key.json')
 
@@ -39,12 +22,6 @@ local key_storage = KeyStorage:new({
 -- Current user name, used for mapping to API key
 ---@type string?
 local username = nil
-
----@param signal integer
----@param _ string
-local function on_cmd_signal(signal, _)
-  Log.error('CMD: {}, throwed signal: {}', CMD, signal)
-end
 
 ---@param name string
 ---@param password string
@@ -150,31 +127,24 @@ function M.request_generate_one_stage(task_id, on_success, on_error)
   local api_key = key_storage:get_key_by_name(username)
   if api_key == nil then
     Log.debug('Key is not found')
-    if on_error then
-      on_error()
-    end
+    schedule(on_error)
     return
   end
   local params = make_generate_one_stage_params()
   if params == nil then
-    if on_error then
-      on_error()
-    end
+    schedule(on_error)
     return
   end
 
   local client = Rest:make_client()
   if client == nil then
-    if on_error then
-      on_error()
-    end
+    schedule(on_error)
     return
   end
+  Log.debug('Client name is: {}', client:get_implementation_name())
   client:generate_one_stage(api_key, params, function(generated_text)
     local suggestions = generate_suggestions(generated_text)
-    if on_success then
-      on_success(task_id, suggestions)
-    end
+    schedule(on_success, task_id, suggestions)
   end, on_error)
 end
 

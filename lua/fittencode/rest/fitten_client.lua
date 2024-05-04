@@ -1,8 +1,8 @@
 ---@class FittenClient
+---@field impl_name string
 local M = {}
 
----@class FittenClientOption
-
+---@param impl_name? string
 function M:new(impl_name)
   local obj = {
     impl_name = impl_name,
