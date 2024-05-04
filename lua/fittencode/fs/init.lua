@@ -130,24 +130,54 @@ end
 ---@param on_success function|nil
 ---@param on_error function|nil
 function M.write_mkdir(data, path, on_success, on_error)
-  local head = fn.fnamemodify(path, ':h')
-  if head == nil or head == '' then
+  Promise:new(function(resolve, reject)
+    local head = fn.fnamemodify(path, ':h')
+    if head == nil or head == '' then
+      reject()
+    else
+      resolve(head)
+    end
+  end):forward(function(head)
+    return Promise:new(function(resolve, reject)
+      M.mkdir(head, function(h)
+        resolve(h)
+      end, function(e_mkdir)
+        reject(e_mkdir)
+      end)
+    end)
+  end, function()
     if on_error ~= nil then
       vim.schedule(function()
         on_error({ name = 'fn.fnamemodify', message = 'Failed to get the head of the file name' })
       end)
     end
-    return
-  end
-  M.mkdir(head, function(h)
-    M.write(data, path, function(d, p)
-      if on_success then
-        vim.schedule(function()
-          on_success(d, p, h)
-        end)
-      end
-    end, on_error)
-  end, on_error)
+  end):forward(function(h)
+    return Promise:new(function(resolve, reject)
+      M.write(data, path, function(d, p)
+        resolve({ d, p, h })
+      end, function(e_write)
+        reject(e_write)
+      end)
+    end)
+  end, function(e_mkdir)
+    if on_error then
+      vim.schedule(function()
+        on_error(e_mkdir)
+      end)
+    end
+  end):forward(function(dph)
+    if on_success then
+      vim.schedule(function()
+        on_success(dph[1], dph[2], dph[3])
+      end)
+    end
+  end, function(e_write)
+    if on_error then
+      vim.schedule(function()
+        on_error(e_write)
+      end)
+    end
+  end)
 end
 
 -- Write data to a temporary file.
