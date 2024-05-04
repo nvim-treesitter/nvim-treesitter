@@ -10,5 +10,8 @@ initializer: (initializer_expression) @fold
 
 [
   (block)
+  (preproc_if)
+  (preproc_elif)
+  (preproc_else)
   (using_directive)+
 ] @fold
