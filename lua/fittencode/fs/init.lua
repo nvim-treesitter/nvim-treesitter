@@ -219,11 +219,7 @@ function M.read(path, on_success, on_error)
       end)
     end)
   end, function(e_open)
-    if on_error then
-      vim.schedule(function()
-        on_error(uv_err(e_open))
-      end)
-    end
+    schedule_wrap(on_error, uv_err(e_open))
   end):forward(function(fdssz)
     return Promise:new(function(resolve, reject)
       uv.fs_read(
@@ -240,23 +236,11 @@ function M.read(path, on_success, on_error)
         end)
     end)
   end, function(e_stat)
-    if on_error then
-      vim.schedule(function()
-        on_error(uv_err(e_stat))
-      end)
-    end
+    schedule_wrap(on_error, uv_err(e_stat))
   end):forward(function(data)
-    if on_success then
-      vim.schedule(function()
-        on_success(data, path)
-      end)
-    end
+    schedule_wrap(on_success, data, path)
   end, function(e_read)
-    if on_error then
-      vim.schedule(function()
-        on_error(uv_err(e_read))
-      end)
-    end
+    schedule_wrap(on_error, uv_err(e_read))
   end)
 end
 
