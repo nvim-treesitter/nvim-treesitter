@@ -24,7 +24,7 @@ local Promise = {}
 ---@param executor? function
 ---@return Promise?
 function Promise:new(executor)
-  if type(executor) ~= "function" then
+  if type(executor) ~= 'function' then
     return
   end
   local obj = {
@@ -67,7 +67,7 @@ function Promise:forward(on_fulfilled, on_rejected)
     if self.state == PromiseState.PENDING then
       table.insert(self.promise_reactions[PromiseState.FULFILLED], function(promise)
         local last_promise = on_fulfilled and on_fulfilled(promise.value)
-        if type(last_promise) == "table" and getmetatable(last_promise) == Promise then
+        if type(last_promise) == 'table' and getmetatable(last_promise) == Promise then
           last_promise:forward(resolve, reject)
         else
           resolve(last_promise)
@@ -75,7 +75,7 @@ function Promise:forward(on_fulfilled, on_rejected)
       end)
       table.insert(self.promise_reactions[PromiseState.REJECTED], function(promise)
         local last_promise = on_rejected and on_rejected(promise.reason)
-        if type(last_promise) == "table" and getmetatable(last_promise) == Promise then
+        if type(last_promise) == 'table' and getmetatable(last_promise) == Promise then
           last_promise:forward(resolve, reject)
         else
           reject(last_promise)
@@ -83,14 +83,14 @@ function Promise:forward(on_fulfilled, on_rejected)
       end)
     elseif self.state == PromiseState.FULFILLED then
       local last_promise = on_fulfilled and on_fulfilled(self.value)
-      if type(last_promise) == "table" and getmetatable(last_promise) == Promise then
+      if type(last_promise) == 'table' and getmetatable(last_promise) == Promise then
         last_promise:forward(resolve, reject)
       else
         resolve(last_promise)
       end
     elseif self.state == PromiseState.REJECTED then
       local last_promise = on_rejected and on_rejected(self.reason)
-      if type(last_promise) == "table" and getmetatable(last_promise) == Promise then
+      if type(last_promise) == 'table' and getmetatable(last_promise) == Promise then
         last_promise:forward(resolve, reject)
       else
         reject(last_promise)

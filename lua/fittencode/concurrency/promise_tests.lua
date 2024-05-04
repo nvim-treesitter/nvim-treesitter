@@ -13,7 +13,7 @@ local function print_state(promise)
   local strings = {
     'Pending',
     'Fulfilled',
-    'Rejected'
+    'Rejected',
   }
   print(strings[promise.state + 1])
 end
@@ -39,11 +39,13 @@ run_case(function()
   local promise = Promise:new(function(resolve, reject)
     print(1)
     resolve(2)
-  end):forward(function(value)
-    print(value)
-  end):forward(function(value)
-    print(value)
   end)
+    :forward(function(value)
+      print(value)
+    end)
+    :forward(function(value)
+      print(value)
+    end)
   -- Expected output: Fulfilled
   print_state(promise)
 end)
