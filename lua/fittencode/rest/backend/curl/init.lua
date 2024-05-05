@@ -149,28 +149,6 @@ function M:login(username, password, on_success, on_error)
   end)
 end
 
----@param response string?
-local function on_stage_response(response)
-  if response == nil or response == '' then
-    Log.error('Server response without data')
-    return
-  end
-
-  local decode_ok, result = pcall(fn.json_decode, response)
-  if decode_ok == false then
-    Log.error('Server response is not a valid JSON; response: {}, error: {}', response, result)
-    return
-  end
-
-  local completion_data = result
-  if completion_data.generated_text == nil then
-    Log.error('Server response without generated_text field; decoded response: {}', completion_data)
-    return
-  end
-
-  return completion_data.generated_text
-end
-
 function M:generate_one_stage(api_key, params, on_success, on_error)
   Promise:new(function(resolve, reject)
     FS.write_temp_file(fn.json_encode(params), function(_, path)
@@ -217,7 +195,7 @@ function M:generate_one_stage(api_key, params, on_success, on_error)
       Log.error('Request failed; exit_code: {}, error: {}', exit_code, formatted_error)
       schedule(on_error)
     else
-      local generated_text = on_stage_response(ere[2])
+      local generated_text = M:_on_stage_response(ere[2])
       if generated_text == nil then
         schedule(on_error)
       else
