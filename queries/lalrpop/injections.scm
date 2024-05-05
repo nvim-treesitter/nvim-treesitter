@@ -1,3 +1,6 @@
+((comment) @injection.content
+  (#set! injection.language "comment"))
+
 ([
   (normal_action)
   (failible_action)

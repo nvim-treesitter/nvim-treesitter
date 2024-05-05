@@ -1,3 +1,5 @@
+(comment) @comment @spell
+
 "grammar" @keyword
 
 [
@@ -8,6 +10,7 @@
 [
   "pub"
   "extern"
+  (mut)
 ] @keyword.modifier
 
 [
@@ -23,28 +26,25 @@
   ; =>
   "=>@L"
   "=>@R"
+  "="
+  "&"
 ] @operator
-
-(grammar_type_params
-  [
-    "<"
-    ">"
-  ] @punctuation.bracket)
-
-(symbol
-  [
-    "<"
-    ">"
-  ] @punctuation.bracket)
-
-(binding_symbol
-  [
-    "<"
-    ">"
-  ] @punctuation.bracket)
 
 (binding_symbol
   name: (identifier) @variable.parameter)
+
+(annotation
+  "#" @punctuation.special)
+
+(grammar_parameter
+  (identifier) @variable.parameter)
+
+(associated_type
+  (identifier) @type)
+
+(parametrized_type
+  (path
+    (identifier) @type))
 
 (bare_symbol
   (macro
@@ -67,11 +67,17 @@
   ")"
   "["
   "]"
+  "}"
+  "{"
+  ">"
+  "<"
 ] @punctuation.bracket
 
 [
   ";"
   ":"
+  "::"
+  ","
 ] @punctuation.delimiter
 
 (lifetime
