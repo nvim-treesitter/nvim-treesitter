@@ -6,6 +6,7 @@ local FS = require('fittencode.fs')
 local Log = require('fittencode.log')
 local Process = require('fittencode.concurrency.process')
 local Promise = require('fittencode.concurrency.promise')
+local Resopnse = require('fittencode.rest.response')
 local URL = require('fittencode.rest.url')
 
 local schedule = Base.schedule
@@ -54,7 +55,7 @@ local function request_fico(token, on_success, on_error)
       reject(signal)
     end)
   end):forward(function(response)
-    local fico_token = M:_on_get_ft_token_response(response)
+    local fico_token = Resopnse._on_get_ft_token_response(response)
     if fico_token == nil then
       schedule(on_error)
     else
@@ -95,7 +96,7 @@ function M:login(username, password, on_success, on_error)
     end)
   end):forward(function(response)
     return Promise:new(function(resolve, reject)
-      local token = M:_on_login_response(response)
+      local token = Resopnse._on_login_response(response)
       if token ~= nil then
         resolve(token)
       else
@@ -158,7 +159,7 @@ function M:generate_one_stage(api_key, params, on_success, on_error)
   end, function(e_tmpfile)
     schedule(on_error, e_tmpfile)
   end):forward(function(ere)
-    local exit_code, error = ere[1], ere[3]
+    local exit_code, response, error = unpack(ere)
     if exit_code ~= CMD_EXIT_CODE_SUCCESS then
       ---@type string[]
       local formatted_error = vim.tbl_filter(function(s)
@@ -167,7 +168,7 @@ function M:generate_one_stage(api_key, params, on_success, on_error)
       Log.error('Request failed; exit_code: {}, error: {}', exit_code, formatted_error)
       schedule(on_error)
     else
-      local generated_text = M:_on_stage_response(ere[2])
+      local generated_text = Resopnse._on_stage_response(response)
       if generated_text == nil then
         schedule(on_error)
       else
