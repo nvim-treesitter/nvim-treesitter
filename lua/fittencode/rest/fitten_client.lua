@@ -1,3 +1,7 @@
+local fn = vim.fn
+
+local Log = require('fittencode.log')
+
 ---@class FittenClient
 ---@field impl_name string
 local M = {}
@@ -19,6 +23,29 @@ function M:login(username, password, on_success, on_error)
 end
 
 function M:generate_one_stage(api_key, params, on_success, on_error)
+end
+
+---@param response string
+---@return string?
+function M:_on_get_ft_token_response(response)
+  if response == nil or response == '' then
+    Log.error('Server response without data')
+    return
+  end
+
+  local success, result = pcall(fn.json_decode, response)
+  if success == false then
+    Log.error('Server response is not a valid JSON; response: {}, error: {}', response, result)
+    return
+  end
+
+  local fico_data = result
+  if fico_data.data == nil or fico_data.data.fico_token == nil then
+    Log.error('Server response without fico_token field; decoded response: {}', fico_data)
+    return
+  end
+
+  return fico_data.data.fico_token
 end
 
 return M

@@ -30,28 +30,6 @@ local function on_cmd_signal(signal, _)
   Log.error('CMD: {}, throwed signal: {}', CMD, signal)
 end
 
----@param response string
-local function on_fico_response(_, response)
-  if response == nil or response == '' then
-    Log.error('Server response without data')
-    return
-  end
-
-  local success, result = pcall(fn.json_decode, response)
-  if success == false then
-    Log.error('Server response is not a valid JSON; response: {}, error: {}', response, result)
-    return
-  end
-
-  local fico_data = result
-  if fico_data.data == nil or fico_data.data.fico_token == nil then
-    Log.error('Server response without fico_token field; decoded response: {}', fico_data)
-    return
-  end
-
-  return fico_data.data.fico_token
-end
-
 ---@param token string
 ---@param on_success? function
 ---@param on_error? function
@@ -76,7 +54,7 @@ local function request_fico(token, on_success, on_error)
       reject(signal)
     end)
   end):forward(function(response)
-    local fico_token = on_fico_response(nil, response)
+    local fico_token = M:_on_get_ft_token_response(response)
     if fico_token == nil then
       schedule(on_error)
     else
