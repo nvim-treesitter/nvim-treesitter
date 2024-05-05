@@ -67,7 +67,7 @@ end
 
 ---@param response string
 ---@return string|nil
-local function decode_token(response)
+local function on_login_response(response)
   if response == nil or response == '' then
     Log.error('Server response without data')
     return
@@ -123,7 +123,7 @@ function M:login(username, password, on_success, on_error)
     end)
   end):forward(function(response)
     return Promise:new(function(resolve, reject)
-      local token = decode_token(response)
+      local token = on_login_response(response)
       if token ~= nil then
         resolve(token)
       else
