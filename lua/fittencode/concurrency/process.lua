@@ -32,7 +32,6 @@ function M.spawn(params, on_success, on_error, on_exit)
     args = args,
   }, function(exit_code, signal)
     if handle == nil then
-      Log.error('uv.spawn handle is nil; cmd: {}, args: {}', cmd, args)
       return
     end
     handle:close()
@@ -45,10 +44,8 @@ function M.spawn(params, on_success, on_error, on_exit)
       end
       check:stop()
       if signal ~= 0 then
-        Log.error('uv.spawn signal; cmd: {}, args: {}, signal: {}, error: {}', cmd, args, signal, error)
-        schedule(on_error, signal, error)
+        schedule(on_error, signal)
       else
-        Log.debug('uv.spawn exit; code: {}', exit_code)
         schedule(on_success, exit_code, output, error)
       end
       schedule(on_exit)

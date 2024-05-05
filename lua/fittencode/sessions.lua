@@ -43,8 +43,8 @@ function M.request_login(name, password)
   client:login(username, password, function(key)
     key_storage:set_key_by_name(username, key)
     Log.i('Login successful')
-  end, function(err)
-    Log.e('Failed to login with error: {}', err)
+  end, function()
+    Log.e('Failed to login with provided credentials')
   end)
 end
 
@@ -60,7 +60,7 @@ function M.request_logout()
 end
 
 function M.load_last_session()
-  Log.info('Loading last session')
+  Log.info('Loading last session...')
   key_storage:load(function(name)
     username = name
     Log.info('Last session for user {} loaded successful', name)
@@ -137,8 +137,7 @@ function M.request_generate_one_stage(task_id, on_success, on_error)
   end
 
   client:generate_one_stage(api_key, params, function(generated_text)
-    local suggestions = generate_suggestions(generated_text)
-    schedule(on_success, task_id, suggestions)
+    schedule(on_success, task_id, generate_suggestions(generated_text))
   end, on_error)
 end
 

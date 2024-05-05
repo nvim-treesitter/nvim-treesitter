@@ -18,22 +18,25 @@ local DEFAULT_ARGS = {
   '--connect-timeout',
   TIMEOUT,
   '--show-error',
-  -- For debug purposes only, `-v, Make the operation more talkative`
-  -- '-v',
+  -- '-v', -- For debug purposes only
 }
 local EXIT_CODE_SUCCESS = 0
 
-local function on_cmd_exitcode(exit_code, response, error, on_success, on_error)
+local function on_curl_exitcode(exit_code, response, error, on_success, on_error)
   if exit_code ~= EXIT_CODE_SUCCESS then
     ---@type string[]
     local formatted_error = vim.tbl_filter(function(s)
       return #s > 0
     end, vim.split(error, '\n'))
-    Log.error('Request failed; exit_code: {}, error: {}', exit_code, formatted_error)
+    Log.error('cURL failed with exit code: {}, error: {}', exit_code, formatted_error)
     schedule(on_error)
   else
     schedule(on_success, response)
   end
+end
+
+local function on_curl_signal(signal)
+  Log.error('cURL failed due to signal: {}', signal)
 end
 
 function M:authorize(url, token, on_success, on_error)
@@ -48,9 +51,10 @@ function M:authorize(url, token, on_success, on_error)
     cmd = CURL,
     args = args,
   }, function(exit_code, response, error)
-    on_cmd_exitcode(exit_code, response, error, on_success, on_error)
-  end, function(signal, ...)
-    schedule(on_error, signal)
+    on_curl_exitcode(exit_code, response, error, on_success, on_error)
+  end, function(signal)
+    on_curl_signal(signal)
+    schedule(on_error)
   end)
 end
 
@@ -78,9 +82,10 @@ local function post_largedata(url, encoded_data, on_success, on_error)
         cmd = CURL,
         args = args,
       }, function(exit_code, response, error)
-        on_cmd_exitcode(exit_code, response, error, on_success, on_error)
-      end, function(signal, ...)
-        schedule(on_error, signal)
+        on_curl_exitcode(exit_code, response, error, on_success, on_error)
+      end, function(signal)
+        on_curl_signal(signal)
+        schedule(on_error)
       end, function()
         FS.delete(path)
       end)
@@ -108,9 +113,10 @@ function M:post(url, data, on_success, on_error)
     cmd = CURL,
     args = args,
   }, function(exit_code, response, error)
-    on_cmd_exitcode(exit_code, response, error, on_success, on_error)
-  end, function(signal, ...)
-    schedule(on_error, signal)
+    on_curl_exitcode(exit_code, response, error, on_success, on_error)
+  end, function(signal)
+    on_curl_signal(signal)
+    schedule(on_error)
   end)
 end
 
