@@ -23,6 +23,19 @@ local CMD_DEFAULT_ARGS = {
 }
 local CMD_EXIT_CODE_SUCCESS = 0
 
+local function on_cmd_exitcode(exit_code, response, error, on_success, on_error)
+  if exit_code ~= CMD_EXIT_CODE_SUCCESS then
+    ---@type string[]
+    local formatted_error = vim.tbl_filter(function(s)
+      return #s > 0
+    end, vim.split(error, '\n'))
+    Log.error('Request failed; exit_code: {}, error: {}', exit_code, formatted_error)
+    schedule(on_error)
+  else
+    schedule(on_success, response)
+  end
+end
+
 function M:authorize(url, token, on_success, on_error)
   local args = {
     '-s',
@@ -31,12 +44,11 @@ function M:authorize(url, token, on_success, on_error)
     url,
   }
   vim.list_extend(args, CMD_DEFAULT_ARGS)
-
   Process.spawn({
     cmd = CMD,
     args = args,
-  }, function(_, response)
-    schedule(on_success, response)
+  }, function(exit_code, response, error)
+    on_cmd_exitcode(exit_code, response, error, on_success, on_error)
   end, function(signal, ...)
     schedule(on_error, signal)
   end)
@@ -62,30 +74,17 @@ local function post_largedata(url, data, on_success, on_error)
         url,
       }
       vim.list_extend(args, CMD_DEFAULT_ARGS)
-
       Process.spawn({
         cmd = CMD,
         args = args,
       }, function(exit_code, response, error)
-        resolve({ exit_code, response, error })
+        on_cmd_exitcode(exit_code, response, error, on_success, on_error)
       end, function(signal, ...)
         schedule(on_error, signal)
       end, function()
         FS.delete(path)
       end)
     end)
-  end):forward(function(ere)
-    local exit_code, response, error = unpack(ere)
-    if exit_code ~= CMD_EXIT_CODE_SUCCESS then
-      ---@type string[]
-      local formatted_error = vim.tbl_filter(function(s)
-        return #s > 0
-      end, vim.split(error, '\n'))
-      Log.error('Request failed; exit_code: {}, error: {}', exit_code, formatted_error)
-      schedule(on_error)
-    else
-      schedule(on_success, response)
-    end
   end)
 end
 
@@ -105,12 +104,11 @@ function M:post(url, data, on_success, on_error)
     url,
   }
   vim.list_extend(args, CMD_DEFAULT_ARGS)
-
   Process.spawn({
     cmd = CMD,
     args = args,
-  }, function(_, response)
-    schedule(on_success, response)
+  }, function(exit_code, response, error)
+    on_cmd_exitcode(exit_code, response, error, on_success, on_error)
   end, function(signal, ...)
     schedule(on_error, signal)
   end)
