@@ -8,6 +8,9 @@ local schedule = Base.schedule
 
 ---@class FittenClient
 ---@field rest Rest
+---@field get_implementation_name function
+---@field login function
+---@field generate_one_stage function
 local M = {}
 
 function M:new()
