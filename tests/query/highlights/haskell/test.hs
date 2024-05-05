@@ -1,10 +1,13 @@
 {-# LANGUAGE QuasiQuotes #-}
 -- ^ @keyword.directive
 
+{-| Main module -}
+-- ^ @comment.documetation
 module Main 
 -- ^ @keyword.import
      -- ^ @module
   ( main
+   -- ^ @variable
   ) where
    -- ^ @keyword
 
@@ -16,12 +19,12 @@ import Prelude hiding (show)
 import Data.Map (fromList)
       -- ^ @module
 import qualified Data.Map as Map
-                -- ^ @constructor
+                -- ^ @module
                            -- ^ @module
 import qualified Chronos
                 -- ^ @module
 import qualified Chronos as C
-                -- ^ @constructor
+                -- ^ @module
                          -- ^ @module
 import FooMod (BarTy (barField))
                       -- ^ @variable.member
@@ -29,6 +32,8 @@ import FooMod (BarTy (barField))
 x = mempty { field = 5 }
            -- ^ @variable.member
 
+-- | Some haddock
+-- ^ @comment.documetation
 data ADT
 -- ^ @keyword
   = A Int
@@ -47,9 +52,9 @@ mkAQualified x = SomeModule.A x
 
 class Ord a => PartialOrd a
     -- ^ @type
-       -- ^ @type
+       -- ^ @variable
                 -- ^ @type
-                       -- ^ @type
+                       -- ^ @variable
 
 instance Ord ADT where
       -- ^ @type
@@ -78,7 +83,7 @@ main :: IO ()
 -- ^ @function
   -- ^ @operator
      -- ^ @type
-         -- ^ @string.special.symbol
+        -- ^ @type
 main = undefined
 -- ^ @function
       -- ^ @keyword.exception
@@ -95,14 +100,20 @@ someFunc0 x = someFunc1 x
                -- ^ @number
 scopedTypeParam (x :: Int) = someFunc x
               -- ^ @variable.parameter
+                   -- ^ @type
 scopedTypeParam (Just x :: Int) = someFunc x
+              -- ^ @constructor
                    -- ^ @variable.parameter
+                         -- ^ @type
+scopedTypeParam (f :: Int -> Int) = someFunc x
+              -- ^ @function
 
 someInfix :: Integral a => a -> Double
             -- ^ @type
-                   -- ^ @type
+                   -- ^ @variable
                       -- ^ @operator
-                        -- ^ @type
+                        -- ^ @variable
+                              -- ^ @type
 someInfix x = fromIntegral x `myAdd` floatVal
                 -- ^ @function.call
                         -- ^ @variable
@@ -149,7 +160,9 @@ someInfix x = fromIntegral x `myAdd` floatVal
 
 someIOaction :: IO ()
 -- ^ @function
-someIOaction = do
+anotherIOaction :: IO ()
+anotherIOaction = do
+-- ^ @function
             -- ^ @keyword
   foo <- SomeModule.someFun <$> getArgs
 -- ^ @variable

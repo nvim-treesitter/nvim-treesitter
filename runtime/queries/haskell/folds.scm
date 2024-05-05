@@ -1,6 +1,6 @@
 [
-  (exp_apply)
-  (exp_do)
+  (apply)
+  (do)
   (function)
   (import)+
 ] @fold
