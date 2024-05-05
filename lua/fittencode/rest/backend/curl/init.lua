@@ -149,19 +149,8 @@ function M:login(username, password, on_success, on_error)
   end)
 end
 
----@param exit_code integer
----@param response string
----@param error string
-local function on_stage_response(exit_code, response, error)
-  if exit_code ~= CMD_EXIT_CODE_SUCCESS then
-    ---@type string[]
-    local formatted_error = vim.tbl_filter(function(s)
-      return #s > 0
-    end, vim.split(error, '\n'))
-    Log.error('Request failed; exit_code: {}, error: {}', exit_code, formatted_error)
-    return
-  end
-
+---@param response string?
+local function on_stage_response(response)
   if response == nil or response == '' then
     Log.error('Server response without data')
     return
@@ -219,11 +208,21 @@ function M:generate_one_stage(api_key, params, on_success, on_error)
   end, function(e_tmpfile)
     schedule(on_error, e_tmpfile)
   end):forward(function(ere)
-    local generated_text = on_stage_response(ere[1], ere[2], ere[3])
-    if generated_text == nil then
+    local exit_code, error = ere[1], ere[3]
+    if exit_code ~= CMD_EXIT_CODE_SUCCESS then
+      ---@type string[]
+      local formatted_error = vim.tbl_filter(function(s)
+        return #s > 0
+      end, vim.split(error, '\n'))
+      Log.error('Request failed; exit_code: {}, error: {}', exit_code, formatted_error)
       schedule(on_error)
     else
-      schedule(on_success, generated_text)
+      local generated_text = on_stage_response(ere[2])
+      if generated_text == nil then
+        schedule(on_error)
+      else
+        schedule(on_success, generated_text)
+      end
     end
   end, function(signal)
     schedule(on_error, signal)
