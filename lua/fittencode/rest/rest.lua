@@ -1,4 +1,4 @@
----@class FittenClient
+---@class Rest
 ---@field impl_name string
 local M = {}
 
@@ -15,10 +15,10 @@ function M:get_implementation_name()
   return self.impl_name
 end
 
-function M:login(username, password, on_success, on_error)
+function M:authorize(url, token, on_success, on_error)
 end
 
-function M:generate_one_stage(api_key, params, on_success, on_error)
+function M:post(url, data, on_success, on_error)
 end
 
 return M

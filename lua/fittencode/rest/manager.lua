@@ -23,8 +23,7 @@ local fallback_backend = 'curl'
 ---@type RestOptions
 local ctx = {}
 
----@return FittenClient
-function M.make_client()
+function M.make_rest()
   assert(ctx.backend, 'Run setup() to initialize the rest service')
   return builtin_backends[ctx.backend]()
 end
