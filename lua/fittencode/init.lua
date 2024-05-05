@@ -14,7 +14,7 @@ function M.setup(opts)
 
   -- Initialize common modules
   require('fittencode.log').setup(Config.options.log)
-  require('fittencode.rest').setup()
+  require('fittencode.rest.manager').setup()
   require('fittencode.engine').setup()
   require('fittencode.sessions').setup()
   require('fittencode.prompt_providers').setup()

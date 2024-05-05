@@ -6,7 +6,7 @@ local KeyStorage = require('fittencode.key_storage')
 local Log = require('fittencode.log')
 local Path = require('fittencode.fs.path')
 local PromptProviders = require('fittencode.prompt_providers')
-local Rest = require('fittencode.rest')
+local Client = require('fittencode.client.fitten_client')
 
 local schedule = Base.schedule
 
@@ -143,7 +143,7 @@ function M.request_generate_one_stage(task_id, on_success, on_error)
 end
 
 function M.setup()
-  client = Rest:make_client()
+  client = Client:new()
   Log.debug('FittenClient implementation is: {}', client:get_implementation_name())
   key_storage = KeyStorage:new({
     path = KEY_STORE_PATH,
