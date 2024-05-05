@@ -87,7 +87,7 @@
     "revision": "2369fa991eba294e9238e28280ffcd58132f94bc"
   },
   "css": {
-    "revision": "02b4ee757654b7d54fe35352fd8e53a8a4385d42"
+    "revision": "2e868a75a518531656b493cba36ef60d8c61cc89"
   },
   "csv": {
     "revision": "7eb7297823605392d2bbcc4c09b1cd18d6fa9529"
@@ -300,7 +300,7 @@
     "revision": "a24c5a39d1d7e993a8bee913c8e8b6a652ca5ae8"
   },
   "html": {
-    "revision": "eee29ca0ce287b699d9d52118f9c1cd9094c48f9"
+    "revision": "e4d834eb4918df01dcad5c27d1b15d56e3bd94cd"
   },
   "htmldjango": {
     "revision": "ea71012d3fe14dd0b69f36be4f96bdfe9155ebae"
@@ -321,7 +321,7 @@
     "revision": "bcb84a2d4bcd6f55b911c42deade75c8f90cb0c5"
   },
   "inko": {
-    "revision": "6983354c13a14bc621d7a3619f1790149e901187"
+    "revision": "4cef9aa4980606311b906b2f2b8c6cf791c60396"
   },
   "ispc": {
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
@@ -366,7 +366,7 @@
     "revision": "49fb89a854d93b58a65a19724ac307195ca11941"
   },
   "kotlin": {
-    "revision": "260afd9a92bac51b3a4546303103c3d40a430639"
+    "revision": "eca05edbab1918d7d36a0d30d086ba7b6b1e8803"
   },
   "koto": {
     "revision": "919440e1376109bab4edac52594c17c02ae0be5a"
@@ -687,7 +687,7 @@
     "revision": "2c97326cd96b7c3016c3d249e8dc244c89b4abeb"
   },
   "swift": {
-    "revision": "ae648bc42aac4473122918bf792bc3b50158deef"
+    "revision": "5f5d7a2a04f2d367a010ed908cc956e7b05fde4f"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -702,7 +702,7 @@
     "revision": "6b7eb096621443627cc5e29c8c34ff1fde482cf3"
   },
   "tact": {
-    "revision": "68c48c51a9b9ef5280a172acfa3c73b35078e8a7"
+    "revision": "f65460eb0746037bc15913e2737afcf87745b66b"
   },
   "tcl": {
     "revision": "8784024358c233efd0f3a6fd9e7a3c5852e628bc"
