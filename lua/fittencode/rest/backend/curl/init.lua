@@ -12,19 +12,19 @@ local schedule = Base.schedule
 ---@class RestCurlBackend : Rest
 local M = Rest:new('RestCurlBackend')
 
-local CMD = 'curl'
-local CMD_TIMEOUT = 5 -- 5 seconds
-local CMD_DEFAULT_ARGS = {
+local CURL = 'curl'
+local TIMEOUT = 5 -- 5 seconds
+local DEFAULT_ARGS = {
   '--connect-timeout',
-  CMD_TIMEOUT,
+  TIMEOUT,
   '--show-error',
   -- For debug purposes only, `-v, Make the operation more talkative`
   -- '-v',
 }
-local CMD_EXIT_CODE_SUCCESS = 0
+local EXIT_CODE_SUCCESS = 0
 
 local function on_cmd_exitcode(exit_code, response, error, on_success, on_error)
-  if exit_code ~= CMD_EXIT_CODE_SUCCESS then
+  if exit_code ~= EXIT_CODE_SUCCESS then
     ---@type string[]
     local formatted_error = vim.tbl_filter(function(s)
       return #s > 0
@@ -43,9 +43,9 @@ function M:authorize(url, token, on_success, on_error)
     'Authorization: Bearer ' .. token,
     url,
   }
-  vim.list_extend(args, CMD_DEFAULT_ARGS)
+  vim.list_extend(args, DEFAULT_ARGS)
   Process.spawn({
-    cmd = CMD,
+    cmd = CURL,
     args = args,
   }, function(exit_code, response, error)
     on_cmd_exitcode(exit_code, response, error, on_success, on_error)
@@ -54,9 +54,9 @@ function M:authorize(url, token, on_success, on_error)
   end)
 end
 
-local function post_largedata(url, data, on_success, on_error)
+local function post_largedata(url, encoded_data, on_success, on_error)
   Promise:new(function(resolve, reject)
-    FS.write_temp_file(data, function(_, path)
+    FS.write_temp_file(encoded_data, function(_, path)
       resolve(path)
     end, function(e_tmpfile)
       schedule(on_error, e_tmpfile)
@@ -73,9 +73,9 @@ local function post_largedata(url, data, on_success, on_error)
         '@' .. path,
         url,
       }
-      vim.list_extend(args, CMD_DEFAULT_ARGS)
+      vim.list_extend(args, DEFAULT_ARGS)
       Process.spawn({
-        cmd = CMD,
+        cmd = CURL,
         args = args,
       }, function(exit_code, response, error)
         on_cmd_exitcode(exit_code, response, error, on_success, on_error)
@@ -103,9 +103,9 @@ function M:post(url, data, on_success, on_error)
     encoded_data,
     url,
   }
-  vim.list_extend(args, CMD_DEFAULT_ARGS)
+  vim.list_extend(args, DEFAULT_ARGS)
   Process.spawn({
-    cmd = CMD,
+    cmd = CURL,
     args = args,
   }, function(exit_code, response, error)
     on_cmd_exitcode(exit_code, response, error, on_success, on_error)
