@@ -51,19 +51,21 @@ function M:execute(ctx)
 
   if ctx.telescope_policy == 'results' then
     local selection = action_state.get_current_picker(ctx.buffer)
-    if selection ~= nil then
+    if selection ~= nil and selection.finder ~= nil and selection.finder.results ~= nil then
       local results = selection.finder.results
       local count = 1
       local ordinals = {}
-      for k, v in pairs(results) do
+      for _, v in pairs(results) do
         if count >= ctx.max_results then
           break
         end
-        ordinals[#ordinals + 1] = v.ordinal
-        count = count + 1
+        if v.ordinal ~= nil then
+          ordinals[#ordinals + 1] = v.ordinal
+          count = count + 1
+        end
       end
       local list = '# List\n```\n' .. table.concat(ordinals, '\n') .. '\n```\n'
-      local query = 'Search from the list above and strictly match\n' .. content
+      local query = 'Search from the list above\n' .. content
       prefix = list .. query
     end
   elseif ctx.telescope_policy == 'selected' then
