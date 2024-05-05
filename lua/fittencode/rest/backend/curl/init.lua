@@ -65,34 +65,6 @@ local function request_fico(token, on_success, on_error)
   end)
 end
 
----@param response string
----@return string|nil
-local function on_login_response(response)
-  if response == nil or response == '' then
-    Log.error('Server response without data')
-    return
-  end
-
-  local success, result = pcall(fn.json_decode, response)
-  if success == false then
-    Log.error('Server response is not a valid JSON: {}; error: {}', response, result)
-    return
-  end
-
-  local login_data = result
-  if login_data.code ~= 200 then
-    if login_data.code == nil then
-      Log.error('Server status code: {}; response: {}', login_data.status_code, login_data)
-      return
-    else
-      Log.error('HTTP code: {}; response: {}', login_data.code, login_data)
-    end
-    return
-  end
-
-  return login_data.data.token
-end
-
 function M:login(username, password, on_success, on_error)
   local data = {
     username = username,
@@ -123,7 +95,7 @@ function M:login(username, password, on_success, on_error)
     end)
   end):forward(function(response)
     return Promise:new(function(resolve, reject)
-      local token = on_login_response(response)
+      local token = M:_on_login_response(response)
       if token ~= nil then
         resolve(token)
       else
