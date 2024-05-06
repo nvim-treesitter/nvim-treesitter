@@ -152,6 +152,22 @@ local format_queries = [[
     (anonymous_node)
     "."
   ])
+(named_node
+  name: (identifier)
+  .
+  (ERROR) @format.indent.begin
+  .
+  [
+    (list)              ; (foo [...])
+    (grouping)          ; (foo ((foo)))
+    (negated_field)     ; (foo !field)
+    (field_definition)  ; (foo field: (...))
+    (named_node)        ; (foo (bar))
+    (predicate)         ; (named_node (#set!))
+    (anonymous_node)
+    "."
+  ]
+  (#lua-match? @format.indent.begin "^/")) ; supertype nodes
 ;; Honoring comment's position within a node
 (named_node
   [
