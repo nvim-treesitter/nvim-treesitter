@@ -139,7 +139,7 @@ jsx (queries only)[^jsx] | community | `HFIJ ` |  | @steelsojka
 [kotlin](https://github.com/fwcd/tree-sitter-kotlin) | community | `HF JL` |  | @SalBakraa
 [koto](https://github.com/koto-lang/tree-sitter-koto) | community | `HF JL` |  | @irh
 [kusto](https://github.com/Willem-J-an/tree-sitter-kusto) | community | `H  J ` |  | @Willem-J-an
-[lalrpop](https://github.com/traxys/tree-sitter-lalrpop) | community | `H  JL` |  | @traxys
+[lalrpop](https://github.com/traxys/tree-sitter-lalrpop) | community | `HF JL` |  | @traxys
 [latex](https://github.com/latex-lsp/tree-sitter-latex) | community | `HF J ` | ✓ | @theHamsta, @clason
 [ledger](https://github.com/cbarrete/tree-sitter-ledger) | community | `HFIJ ` |  | @cbarrete
 [leo](https://github.com/r001/tree-sitter-leo) | community | `H IJ ` |  | @r001
