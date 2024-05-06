@@ -93,7 +93,8 @@
 (type_identifier) @type
 
 ((type_identifier) @type.builtin
-  (#eq? @type.builtin "var"))
+  (#eq? @type.builtin "var")
+  (#set! "priority" 155))
 
 ((method_invocation
   object: (identifier) @type)
