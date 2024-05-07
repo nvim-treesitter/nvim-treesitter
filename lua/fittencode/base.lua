@@ -143,6 +143,24 @@ function M.is_space(char)
   return byte == 32 or byte == 9
 end
 
+function M.tbl_keys_by_value(tbl, value)
+  local keys = {}
+  vim.tbl_map(function(k, v)
+    if v == value then
+      keys[#keys + 1] = k
+    end
+  end, tbl)
+  return keys
+end
+
+function M.tbl_key_by_value(tbl, value, default)
+  local key = M.tbl_keys_by_value(tbl, value)
+  if #key > 0 then
+    return key[1]
+  end
+  return default
+end
+
 ---@class NeovimVersion
 ---@field nvim string
 ---@field buildtype string

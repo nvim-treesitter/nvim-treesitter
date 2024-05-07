@@ -37,12 +37,7 @@ local environ = 0
 local print_module = false
 
 local function level_name(x)
-  for k, v in pairs(levels) do
-    if v == x then
-      return k
-    end
-  end
-  return '????'
+  return Base.tbl_key_by_value(levels, x, '????')
 end
 
 -- Log a message to a file.

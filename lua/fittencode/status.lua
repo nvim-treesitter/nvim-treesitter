@@ -26,12 +26,7 @@ local IDLE_CYCLE = 5000 -- ms
 
 ---@param status integer
 local get_status_message = function(status)
-  for k, v in pairs(C) do
-    if v == status then
-      return k
-    end
-  end
-  return 'UNKNOWN'
+  return Base.tbl_key_by_value(C, status, 'UNKNOWN')
 end
 
 ---@param status integer
