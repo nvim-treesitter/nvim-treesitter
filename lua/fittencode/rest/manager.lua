@@ -1,3 +1,4 @@
+local Config = require('fittencode.config')
 local Log = require('fittencode.log')
 
 local M = {}
@@ -14,31 +15,19 @@ local builtin_backends = {
   end,
 }
 
-local fallback_backend = 'curl'
-
 ---@class RestOptions
----@field backend string|nil The backend to use for making HTTP requests. Defaults to 'curl'.
----@field timeout number|nil The timeout in seconds for each request. Defaults to 10.
-
----@type RestOptions
-local ctx = {}
+---@field backend string The backend to use for making HTTP requests.
+---@field timeout number The timeout in seconds for each request.
 
 function M.make_rest()
-  assert(ctx.backend, 'Run setup() to initialize the rest service')
-  return builtin_backends[ctx.backend]()
+  return builtin_backends[Config.options.rest.backend]()
 end
 
----@param opts? RestOptions
-function M.setup(opts)
-  opts = opts or {
-    backend = 'curl',
-    timeout = 10,
-  }
-  if not vim.tbl_contains(vim.tbl_keys(builtin_backends), opts.backend) then
-    Log.error('Invalid backend: {}, fallback to {}', opts.backend, fallback_backend)
-    opts.backend = fallback_backend
+function M.setup()
+  if not vim.tbl_contains(vim.tbl_keys(builtin_backends), Config.options.rest.backend) then
+    local msg = 'Invalid rest backend: ' .. Config.options.rest.backend
+    vim.api.nvim_err_writeln(msg)
   end
-  ctx = opts
 end
 
 return M

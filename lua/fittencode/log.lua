@@ -2,6 +2,7 @@ local fn = vim.fn
 local uv = vim.uv or vim.loop
 
 local Base = require('fittencode.base')
+local Config = require('fittencode.config')
 local Path = require('fittencode.fs.path')
 
 local M = {}
@@ -29,13 +30,11 @@ local LOG_PATH = Path.to_native(fn.stdpath('log') .. '/fittencode' .. '/fittenco
   ```
 ]]
 local levels = vim.deepcopy(vim.log.levels)
--- Default log level is WARN.
--- If you want to change it, use `require('fittencode').set_log_level(level)`
-local current = levels.WARN
 
 local first_log = true
 local cpu = 0
 local environ = 0
+local print_module = false
 
 local function level_name(x)
   for k, v in pairs(levels) do
@@ -57,7 +56,7 @@ local function log_file(msg)
       ---@type table<string,any>
       local mat = {}
       table.insert(mat, { 'Verbose logging started', os.date('%Y-%m-%d %H:%M:%S') })
-      table.insert(mat, { 'Log level', level_name(current) })
+      table.insert(mat, { 'Log level', level_name(Config.options.log.level) })
       table.insert(mat, { 'Calling process', uv.exepath() })
       table.insert(mat, { 'Neovim version', vim.inspect(Base.get_version()) })
       table.insert(mat, { 'Process ID', uv.os_getpid() })
@@ -111,7 +110,9 @@ local function do_log(level, msg)
   local ms = string.format('%03d', math.floor((uv.hrtime() / 1e6) % 1000))
   table.insert(mat, string.format('%5s', level_name(level)))
   table.insert(mat, os.date('%Y-%m-%d %H:%M:%S') .. '.' .. ms)
-  table.insert(mat, MODULE_NAME)
+  if print_module then
+    table.insert(mat, MODULE_NAME)
+  end
   local tags = ''
   for i in ipairs(mat) do
     tags = tags .. string.format('[%s]', mat[i]) .. ' '
@@ -120,26 +121,20 @@ local function do_log(level, msg)
   log_file(msg)
 end
 
----@param opts LogOptions
-function M.setup(opts)
-  -- Parse options.
-  if opts and type(opts.level) == 'number' then
-    current = opts.level
-  end
-
+function M.setup()
   local LOG_HOME = fn.fnamemodify(LOG_PATH, ':h')
   fn.mkdir(LOG_HOME, 'p')
 end
 
 ---@param level integer @one of the `vim.log.levels` values
 function M.set_level(level)
-  current = level
+  Config.options.log.level = level
 end
 
 ---@param level integer @one of the `vim.log.levels` values
 ---@param msg string|nil @can be a format string with {} placeholders
 function M.log(level, msg, ...)
-  if level < current or current == levels.OFF then
+  if level < Config.options.log.level or Config.options.log.level == levels.OFF then
     return
   end
   msg = expand_msg(msg, ...)

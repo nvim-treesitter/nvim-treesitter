@@ -2,7 +2,6 @@ local M = {}
 
 ---@param opts? FittenCodeOptions
 function M.setup(opts)
-  -- Check if Neovim >= 0.8.0 is installed
   if vim.fn.has('nvim-0.8.0') == 0 then
     local msg = 'fittencode.nvim requires Neovim >= 0.8.0.'
     vim.api.nvim_err_writeln(msg)
@@ -12,8 +11,7 @@ function M.setup(opts)
   local Config = require('fittencode.config')
   Config.setup(opts)
 
-  -- Initialize common modules
-  require('fittencode.log').setup(Config.options.log)
+  require('fittencode.log').setup()
   require('fittencode.rest.manager').setup()
   require('fittencode.engine').setup()
   require('fittencode.sessions').setup()
@@ -31,7 +29,7 @@ function M.setup(opts)
       Bindings.setup_onkey()
     end
   elseif Config.options.completion_mode == 'source' then
-    require('fittencode.sources').setup(Config.options.source_completion)
+    require('fittencode.sources').setup()
   end
 
   require('fittencode.sessions').load_last_session()

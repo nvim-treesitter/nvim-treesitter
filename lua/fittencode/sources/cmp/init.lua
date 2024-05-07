@@ -34,7 +34,7 @@ local function silence(value)
   config.set_onetime(opts)
 end
 
-function M.setup(_)
+function M.setup()
   register_source()
 end
 
