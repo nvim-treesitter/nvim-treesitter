@@ -1,12 +1,14 @@
 local fn = vim.fn
 
 local Base = require('fittencode.base')
+local Client = require('fittencode.client.fitten_client')
 local Config = require('fittencode.config')
 local KeyStorage = require('fittencode.key_storage')
 local Log = require('fittencode.log')
 local Path = require('fittencode.fs.path')
+local Process = require('fittencode.concurrency.process')
 local PromptProviders = require('fittencode.prompt_providers')
-local Client = require('fittencode.client.fitten_client')
+local URL = require('fittencode.client.url')
 
 local schedule = Base.schedule
 
@@ -23,6 +25,10 @@ local key_storage = nil
 -- Current user name, used for mapping to API key
 ---@type string?
 local username = nil
+
+function M.register()
+  Process.open(URL.REGISTER)
+end
 
 ---@param name string
 ---@param password string

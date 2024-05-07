@@ -14,6 +14,9 @@ M.api = {
   logout = function()
     Sessions.request_logout()
   end,
+  register = function()
+    Sessions.register()
+  end,
   ---@param level integer @one of the `vim.log.levels` values
   set_log_level = function(level)
     Log.set_level(level)

@@ -1,3 +1,4 @@
+local fn = vim.fn
 local uv = vim.uv or vim.loop
 
 local Base = require('fittencode.base')
@@ -75,6 +76,26 @@ function M.spawn(params, on_success, on_error, on_exit)
   uv.read_start(stderr, function(err, chunk)
     on_chunk(err, chunk, true)
   end)
+end
+
+M.open = function(uri)
+  if uri == nil then
+    return
+  end
+  local cmd = nil
+  local args = {}
+  if Base.is_windows() then
+    cmd = 'explorer '
+    args = { uri }
+  elseif Base.is_kernel() then
+    if fn.executable('xdg-open') == 1 then
+      cmd = 'xdg-open'
+      args = { uri }
+    end
+  end
+  if cmd ~= nil then
+    M.spawn({ cmd = cmd, args = args })
+  end
 end
 
 return M

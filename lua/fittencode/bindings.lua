@@ -77,6 +77,7 @@ end
 function M.setup_commands()
   ---@type FittenCommands
   local commands = {
+    register = API.register,
     login = API.login,
     logout = API.logout,
   }

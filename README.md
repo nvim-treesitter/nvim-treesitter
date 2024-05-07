@@ -121,10 +121,11 @@ require('cmp').setup({
 
 ### Default Command
 
-| Command         | Description                                                |
-|-----------------|------------------------------------------------------------|
-| `Fitten login`  | Try the command `Fitten login <user> <password>` to login. |
-| `Fitten logout` | Logout account                                             |
+| Command           | Description                                                        |
+|-------------------|--------------------------------------------------------------------|
+| `Fitten register` | If you haven't registered yet, please run the command to register. |
+| `Fitten login`    | Try the command `Fitten login <user> <password>` to login.         |
+| `Fitten logout`   | Logout account                                                     |
 
 ### Default Mappings
 
