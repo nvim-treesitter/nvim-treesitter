@@ -2,7 +2,7 @@
   name: (identifier) @_name
   parameters: (parameters
     (string) @injection.content))
-  (#any-of? @_name "match" "not-match" "vim-match" "not-vim-match")
+  (#any-of? @_name "match" "not-match" "any-match" "vim-match" "not-vim-match" "any-vim-match")
   (#set! injection.language "regex")
   (#offset! @injection.content 0 1 0 -1))
 
@@ -10,7 +10,7 @@
   name: (identifier) @_name
   parameters: (parameters
     (string) @injection.content))
-  (#any-of? @_name "lua-match" "not-lua-match")
+  (#any-of? @_name "lua-match" "not-lua-match" "any-lua-match")
   (#set! injection.language "luap")
   (#offset! @injection.content 0 1 0 -1))
 
