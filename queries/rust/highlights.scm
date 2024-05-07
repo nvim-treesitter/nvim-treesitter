@@ -29,7 +29,10 @@
 (mod_item
   name: (identifier) @module)
 
-(self) @variable.builtin
+[
+  (self)
+  "_"
+] @variable.builtin
 
 (label
   [
@@ -45,7 +48,10 @@
   (identifier) @function)
 
 (parameter
-  (identifier) @variable.parameter)
+  [
+    (identifier)
+    "_"
+  ] @variable.parameter)
 
 (closure_parameters
   (_) @variable.parameter)
