@@ -456,29 +456,49 @@ function M.lazy_inline_completion()
   if not M.is_inline_enabled() then
     return
   end
+  Log.debug('Lazy inline completion...')
   local is_advance = function(row, col)
     local cached_row, cached_col = cache:get_cursor()
-    return cached_row == row and cached_col + 1 == col
+    if cached_row == row and cached_col + 1 == col then
+      return 1
+    elseif cached_row and cached_col and row == cached_row + 1 and col == 0 then
+      return 2
+    end
+    return 0
   end
   local row, col = Base.get_cursor()
-  if is_advance(row, col) then
+  Log.debug('Lazy inline completion row: {}, col: {}', row, col)
+  Log.debug('Cached row: {}, col: {}', cache:get_cursor())
+  local adv_type = is_advance(row, col)
+  if adv_type > 0 then
     local cur_line = api.nvim_buf_get_lines(0, row, row + 1, false)[1]
     local cache_line = cache:get_line(1)
     if not cache_line then
       return false
     end
-    local cur_char = string.sub(cur_line, col, col)
-    local cache_char = string.sub(cache_line, 1, 1)
-    if cur_char == cache_char then
-      if #cache_line > 1 then
-        cache_line = string.sub(cache_line, 2)
-      else
-        cache_line = nil
+    if adv_type == 1 then
+      Log.debug('Advance type 1')
+      local cur_char = string.sub(cur_line, col, col)
+      local cache_char = string.sub(cache_line, 1, 1)
+      if cur_char == cache_char then
+        Log.debug('Current char matches cached char: {}', cur_char)
+        if #cache_line > 1 then
+          cache_line = string.sub(cache_line, 2)
+        else
+          cache_line = nil
+        end
+        cache:update_line(1, cache_line)
+        cache:update_cursor(row, col)
+        View.render_virt_text(cache:get_lines())
+        return true
       end
-      cache:update_line(1, cache_line)
-      cache:update_cursor(row, col)
-      View.render_virt_text(cache:get_lines())
-      return true
+    elseif adv_type == 2 then
+      Log.debug('Advance type 2')
+      -- Neovim will auto indent the new line, so the cached line that contains spaces will be invalid, we can't reusing it.
+      -- cache:update_line(1, nil)
+      -- cache:update_cursor(row, col)
+      -- View.render_virt_text(cache:get_lines())
+      -- return true
     end
   end
   return false
