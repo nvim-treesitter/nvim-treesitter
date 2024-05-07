@@ -27,7 +27,7 @@
     "revision": "ba7472152d79a8c916550c80fdbfd5724d07a0c9"
   },
   "bash": {
-    "revision": "f8fb3274f72a30896075585b32b0c54cad65c086"
+    "revision": "2fbd860f802802ca76a6661ce025b3a3bca2d3ed"
   },
   "bass": {
     "revision": "28dc7059722be090d04cd751aed915b2fee2f89a"
@@ -342,7 +342,7 @@
     "revision": "49fde205b59a1d9792efc21ee0b6d50bbd35ff14"
   },
   "json": {
-    "revision": "80e623c2165887f9829357acfa9c0a0bab34a3cd"
+    "revision": "94f5c527b2965465956c2000ed6134dd24daf2a7"
   },
   "json5": {
     "revision": "ab0ba8229d639ec4f3fa5f674c9133477f4b77bd"
@@ -375,7 +375,7 @@
     "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
   },
   "lalrpop": {
-    "revision": "123d8b472e949b59f348c32e245107a34a3d8945"
+    "revision": "854a40e99f7c70258e522bdb8ab584ede6196e2e"
   },
   "latex": {
     "revision": "cd82eb40d31bdfe65f846f4e06292d6c804b5e0e"
@@ -504,7 +504,7 @@
     "revision": "d5aea05a70c5d021fa746516391f156d35658875"
   },
   "phpdoc": {
-    "revision": "f285e338d328a03920a9bfd8dda78585c7ddcca3"
+    "revision": "1d0e255b37477d0ca46f1c9e9268c8fa76c0b3fc"
   },
   "pioasm": {
     "revision": "924aadaf5dea2a6074d72027b064f939acf32e20"
@@ -564,10 +564,10 @@
     "revision": "6b2b5e41734bd6f07ea4c36ac20fb6f14061c841"
   },
   "qmljs": {
-    "revision": "239f2627b4c7859fd9adc53609cb40fa0a5431ce"
+    "revision": "2c57cac27e207425f8df15327884434cb12365a3"
   },
   "query": {
-    "revision": "0c0ed8eaa9eb8c694348a018d95921d006ba7dfc"
+    "revision": "d25e8d183f319497b8b22a2a1585975b020da722"
   },
   "r": {
     "revision": "391400572538ff9854341a175ed8ab4b1e45f44b"
@@ -741,7 +741,7 @@
     "revision": "7eb7297823605392d2bbcc4c09b1cd18d6fa9529"
   },
   "tsx": {
-    "revision": "dcbbd9406a63fd1e0a42c90ab9451c6127ebd4b3"
+    "revision": "7b4275d077ae196fc0ce42ab3ad091574e3ec519"
   },
   "turtle": {
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
@@ -750,7 +750,7 @@
     "revision": "eaf80e6af969e25993576477a9dbdba3e48c1305"
   },
   "typescript": {
-    "revision": "dcbbd9406a63fd1e0a42c90ab9451c6127ebd4b3"
+    "revision": "7b4275d077ae196fc0ce42ab3ad091574e3ec519"
   },
   "typoscript": {
     "revision": "43b221c0b76e77244efdaa9963e402a17c930fbc"
