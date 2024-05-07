@@ -6,14 +6,17 @@
 
 (pattern/wildcard) @variable
 
-(decl/function patterns: (patterns
-  (_) @variable.parameter))
+(decl/function
+  patterns: (patterns
+    (_) @variable.parameter))
 
-(expression/lambda (_)+ @variable.parameter
-"->")
+(expression/lambda
+  (_)+ @variable.parameter
+  "->")
 
-(decl/function (infix
-  (pattern) @variable.parameter))
+(decl/function
+  (infix
+    (pattern) @variable.parameter))
 
 ; ----------------------------------------------------------------------------
 ; Literals and comments
@@ -21,7 +24,8 @@
 
 (negation) @number
 
-(expression/literal (float)) @number.float
+(expression/literal
+  (float)) @number.float
 
 (char) @character
 
@@ -125,28 +129,35 @@
       (variable) @function)
   ])
 
-(decl/bind name: (variable) @variable)
+(decl/bind
+  name: (variable) @variable)
 
 ; Consider signatures (and accompanying functions)
 ; with only one value on the rhs as variables
-(decl/signature name: (variable) @variable
-type: (type))
+(decl/signature
+  name: (variable) @variable
+  type: (type))
 
-((decl/signature name: (variable) @_name
-type: (type))
+((decl/signature
+  name: (variable) @_name
+  type: (type))
   .
   (decl
     name: (variable) @variable)
   match: (_)(#eq? @_name @variable))
 
 ; but consider a type that involves 'IO' a decl/function
-(decl/signature name: (variable) @function
-type: (type/apply constructor: (name) @_type)
-(#eq? @_type "IO"))
+(decl/signature
+  name: (variable) @function
+  type: (type/apply
+    constructor: (name) @_type)
+  (#eq? @_type "IO"))
 
-((decl/signature name: (variable) @_name
-type: (type/apply constructor: (name) @_type)
-(#eq? @_type "IO"))
+((decl/signature
+  name: (variable) @_name
+  type: (type/apply
+    constructor: (name) @_type)
+  (#eq? @_type "IO"))
   .
   (decl
     name: (variable) @function)
@@ -154,17 +165,20 @@ type: (type/apply constructor: (name) @_type)
 
 ((decl/signature) @function
   .
-  (decl/function name: (variable) @function))
+  (decl/function
+    name: (variable) @function))
 
-(decl/bind name: (variable) @function
-(match
-  expression: (expression/lambda)))
+(decl/bind
+  name: (variable) @function
+  (match
+    expression: (expression/lambda)))
 
 ; view patterns
 (view_pattern
   [
     (expression/variable) @function.call
-    (expression/qualified (variable) @function.call)
+    (expression/qualified
+      (variable) @function.call)
   ])
 
 ; consider infix functions as operators
@@ -194,7 +208,8 @@ type: (type/apply constructor: (name) @_type)
   .
   [
     (expression/variable) @variable
-    (expression/qualified (variable) @variable)
+    (expression/qualified
+      (variable) @variable)
   ])
 
 ; infix operator function definitions
@@ -211,7 +226,8 @@ type: (type/apply constructor: (name) @_type)
 ; decl/function calls with infix operators
 ([
   (expression/variable) @function.call
-  (expression/qualified (variable) @function.call)
+  (expression/qualified
+    (variable) @function.call)
 ]
   .
   (operator) @_op
@@ -237,7 +253,8 @@ type: (type/apply constructor: (name) @_type)
 ; decl/function composition, arrows, monadic composition (lhs)
 ([
   (expression/variable) @function
-  (expression/qualified (variable) @function)
+  (expression/qualified
+    (variable) @function)
 ]
   .
   (operator) @_op
@@ -265,47 +282,52 @@ type: (type/apply constructor: (name) @_type)
   .
   [
     (expression/variable) @function
-    (expression/qualified (variable) @function)
+    (expression/qualified
+      (variable) @function)
   ]
   (#any-of? @_op "." ">>>" "***" ">=>" "<=<"))
 
 ; function defined in terms of a function composition
-(decl/function name: (variable) @function
-(match
-  expression: (infix
-    operator: (operator) @_op
-    (#any-of? @_op "." ">>>" "***" ">=>" "<=<"))))
+(decl/function
+  name: (variable) @function
+  (match
+    expression: (infix
+      operator: (operator) @_op
+      (#any-of? @_op "." ">>>" "***" ">=>" "<=<"))))
 
 (apply
   [
     (expression/variable) @function.call
-    (expression/qualified (variable) @function.call)
+    (expression/qualified
+      (variable) @function.call)
   ])
 
 ; function compositions, in parentheses, applied
 ; lhs
 (apply
   .
-  (expression/parens (infix
-    [
-      (variable) @function.call
-      (qualified
-        (variable) @function.call)
-    ]
-    .
-    (operator))))
+  (expression/parens
+    (infix
+      [
+        (variable) @function.call
+        (qualified
+          (variable) @function.call)
+      ]
+      .
+      (operator))))
 
 ; rhs
 (apply
   .
-  (expression/parens (infix
-    (operator)
-    .
-    [
-      (variable) @function.call
-      (qualified
-        (variable) @function.call)
-    ])))
+  (expression/parens
+    (infix
+      (operator)
+      .
+      [
+        (variable) @function.call
+        (qualified
+          (variable) @function.call)
+      ])))
 
 ; variables being passed to a function call
 (apply
@@ -313,13 +335,15 @@ type: (type/apply constructor: (name) @_type)
   .
   [
     (expression/variable) @variable
-    (expression/qualified (variable) @variable)
+    (expression/qualified
+      (variable) @variable)
   ])
 
 ; main is always a function
 ; (this prevents `main = undefined` from being highlighted as a variable)
-(decl/bind name: (variable) @function
-(#eq? @function "main"))
+(decl/bind
+  name: (variable) @function
+  (#eq? @function "main"))
 
 ; scoped function types (func :: a -> b)
 (signature
@@ -328,13 +352,16 @@ type: (type/apply constructor: (name) @_type)
 
 ; signatures that have a function type
 ; + binds that follow them
-(decl/signature name: (variable) @function
-type: (function))
+(decl/signature
+  name: (variable) @function
+  type: (function))
 
-((decl/signature name: (variable) @_name
-type: (quantified_type))
+((decl/signature
+  name: (variable) @_name
+  type: (quantified_type))
   .
-  (decl/bind (variable) @function)
+  (decl/bind
+    (variable) @function)
   (#eq? @function @_name))
 
 ; Treat constructor assignments (smart constructors) as functions, e.g. mkJust = Just
@@ -357,15 +384,17 @@ type: (quantified_type))
 
 (type/unit) @type
 
-(type/unit [
-  "("
-  ")"
-] @type)
+(type/unit
+  [
+    "("
+    ")"
+  ] @type)
 
-(type/list [
-  "["
-  "]"
-] @type)
+(type/list
+  [
+    "["
+    "]"
+  ] @type)
 
 (type/star) @type
 
