@@ -55,9 +55,9 @@ function M.setup_autocmds()
       if ignore then
         return
       end
-      Engine.on_text_changed()
+      Engine.lazy_inline_completion()
     end,
-    desc = 'Text changed',
+    desc = 'Lazy inline completion',
   })
 
   api.nvim_create_autocmd({ 'BufLeave', 'InsertLeave', 'CursorMoved' }, {

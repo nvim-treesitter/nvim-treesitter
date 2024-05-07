@@ -33,8 +33,12 @@ function SuggestionsCache:update(task_id, row, col, lines)
 end
 
 ---@param index integer
----@param line string
+---@param line? string
 function SuggestionsCache:update_line(index, line)
+  if line == nil then
+    self:remove_line(index)
+    return
+  end
   self.lines[index] = line
 end
 

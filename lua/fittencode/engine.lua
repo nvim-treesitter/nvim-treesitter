@@ -176,31 +176,6 @@ local function apply_suggestion(task_id, row, col, suggestion)
   end
 end
 
-local function lazy_inline_completion()
-  local is_advance = function(row, col)
-    local cached_row, cached_col = cache:get_cursor()
-    return cached_row == row and cached_col + 1 == col
-  end
-  local row, col = Base.get_cursor()
-  if is_advance(row, col) then
-    local cur_line = api.nvim_buf_get_lines(0, row, row + 1, false)[1]
-    local cache_line = cache:get_line(1)
-    if not cache_line then
-      return false
-    end
-    local cur_char = string.sub(cur_line, col, col)
-    local cache_char = string.sub(cache_line, 1, 1)
-    if cur_char == cache_char then
-      cache_line = string.sub(cache_line, 2)
-      cache:update_line(1, cache_line)
-      cache:update_cursor(row, col)
-      View.render_virt_text(cache:get_lines())
-      return true
-    end
-  end
-  return false
-end
-
 ---@param row integer
 ---@param col integer
 ---@param force? boolean
@@ -220,7 +195,7 @@ local function _generate_one_stage(row, col, force, on_success, on_error)
   Log.debug('Requested row: {}, col: {}', row, col)
   Log.debug('Cached row: {}, col: {}', cache:get_cursor())
 
-  if not force and cache:equal_cursor(row, col) then
+  if not force and cache:equal_cursor(row, col) and M.has_suggestions() then
     Log.debug('Cached cursor matches requested cursor')
     Status.update(SC.SUGGESTIONS_READY)
     if on_error then
@@ -477,10 +452,36 @@ function M.is_inline_enabled()
   return true
 end
 
-function M.on_text_changed()
-  if M.is_inline_enabled() then
-    lazy_inline_completion()
+function M.lazy_inline_completion()
+  if not M.is_inline_enabled() then
+    return
   end
+  local is_advance = function(row, col)
+    local cached_row, cached_col = cache:get_cursor()
+    return cached_row == row and cached_col + 1 == col
+  end
+  local row, col = Base.get_cursor()
+  if is_advance(row, col) then
+    local cur_line = api.nvim_buf_get_lines(0, row, row + 1, false)[1]
+    local cache_line = cache:get_line(1)
+    if not cache_line then
+      return false
+    end
+    local cur_char = string.sub(cur_line, col, col)
+    local cache_char = string.sub(cache_line, 1, 1)
+    if cur_char == cache_char then
+      if #cache_line > 1 then
+        cache_line = string.sub(cache_line, 2)
+      else
+        cache_line = nil
+      end
+      cache:update_line(1, cache_line)
+      cache:update_cursor(row, col)
+      View.render_virt_text(cache:get_lines())
+      return true
+    end
+  end
+  return false
 end
 
 return M
