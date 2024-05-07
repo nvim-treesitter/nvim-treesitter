@@ -4,6 +4,7 @@ local ts = vim.treesitter
 
 local COMMENT_NODES = {
   markdown = "html_block",
+  haskell = "haddock",
 }
 
 local function check_assertions(file)
