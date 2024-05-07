@@ -102,7 +102,7 @@ ecma (queries only)[^ecma] | community | `HFIJL` |  | @steelsojka
 [gstlaunch](https://github.com/tree-sitter-grammars/tree-sitter-gstlaunch) | core | `H    ` |  | @theHamsta
 [hack](https://github.com/slackhq/tree-sitter-hack) | unsupported | `H    ` |  | 
 [hare](https://github.com/tree-sitter-grammars/tree-sitter-hare) | core | `HFIJL` |  | @amaanq
-[haskell](https://github.com/tree-sitter/tree-sitter-haskell) | core | `HF J ` |  | @mrcjkb
+[haskell](https://github.com/tree-sitter/tree-sitter-haskell) | core | `HF JL` |  | @mrcjkb
 [haskell_persistent](https://github.com/MercuryTechnologies/tree-sitter-haskell-persistent) | community | `HF   ` |  | @lykahb
 [hcl](https://github.com/tree-sitter-grammars/tree-sitter-hcl) | core | `HFIJ ` |  | @MichaHoffmann
 [heex](https://github.com/connorlay/tree-sitter-heex) | community | `HFIJL` |  | @connorlay
