@@ -118,14 +118,41 @@ function M.debounce(timer, callback, wait, on_error)
   end
 end
 
+local function sysname()
+  return uv.os_uname().sysname:lower()
+end
+
 ---@return boolean
 function M.is_windows()
-  return uv.os_uname().sysname == 'Windows_NT'
+  return sysname():find('windows') ~= nil
+end
+
+---@return boolean
+function M.is_mingw()
+  return sysname():find('mingw') ~= nil
+end
+
+---@return boolean
+function M.is_wsl()
+  return fn.has('wsl') == 1
 end
 
 ---@return boolean
 function M.is_kernel()
-  return uv.os_uname().sysname == 'Linux'
+  return sysname():find('linux') ~= nil
+end
+
+---@return boolean
+function M.is_macos()
+  return sysname():find('darwin') ~= nil
+end
+
+---@return boolean
+function M.is_bsd()
+  local sys = { 'bsd', 'dragonfly', 'freebsd', 'netbsd', 'openbsd' }
+  return #vim.tbl_filter(function(s)
+    return sysname():find(s) ~= nil
+  end, sys) > 0
 end
 
 ---@param char string
@@ -145,11 +172,11 @@ end
 
 function M.tbl_keys_by_value(tbl, value)
   local keys = {}
-  vim.tbl_map(function(k, v)
+  for k, v in pairs(tbl) do
     if v == value then
       keys[#keys + 1] = k
     end
-  end, tbl)
+  end
   return keys
 end
 
