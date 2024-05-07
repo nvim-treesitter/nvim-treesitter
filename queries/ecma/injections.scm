@@ -9,7 +9,7 @@
 (call_expression
   function: [
     (await_expression
-      (identifier)) @injection.language
+      (identifier) @injection.language)
     (identifier) @injection.language
   ]
   arguments: [
@@ -31,8 +31,8 @@
     (await_expression
       (identifier) @_name
       (#eq? @_name "svg"))
-    (identifier) @_name
-    (#eq? @_name "svg")
+    ((identifier) @_name
+      (#eq? @_name "svg"))
   ]
   arguments: [
     (arguments
@@ -48,8 +48,8 @@
     (await_expression
       (identifier) @_name
       (#eq? @_name "gql"))
-    (identifier) @_name
-    (#eq? @_name "gql")
+    ((identifier) @_name
+      (#eq? @_name "gql"))
   ]
   arguments: ((template_string) @injection.content
     (#offset! @injection.content 0 1 0 -1)
@@ -61,8 +61,8 @@
     (await_expression
       (identifier) @_name
       (#eq? @_name "hbs"))
-    (identifier) @_name
-    (#eq? @_name "hbs")
+    ((identifier) @_name
+      (#eq? @_name "hbs"))
   ]
   arguments: ((template_string) @injection.content
     (#offset! @injection.content 0 1 0 -1)
@@ -78,8 +78,8 @@
     (await_expression
       (identifier) @_name
       (#any-of? @_name "css" "keyframes"))
-    (identifier) @_name
-    (#any-of? @_name "css" "keyframes")
+    ((identifier) @_name
+      (#any-of? @_name "css" "keyframes"))
   ]
   arguments: ((template_string) @injection.content
     (#offset! @injection.content 0 1 0 -1)
