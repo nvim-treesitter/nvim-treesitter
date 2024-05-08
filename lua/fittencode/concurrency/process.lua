@@ -85,8 +85,18 @@ M.open = function(uri)
   local cmd = nil
   local args = {}
   if Base.is_windows() then
-    cmd = 'rundll32'
-    args = { 'url,OpenURL', uri }
+    if uri:match('^https?://') then
+      cmd = 'cmd.exe'
+      args = { '/c', 'start', uri }
+      -- cmd = 'rundll32'
+      -- args = { 'url,OpenURL', uri }
+    elseif uri:match('^file://') then
+      cmd = 'explorer.exe'
+      args = { uri:sub(8) }
+    else
+      cmd = 'explorer.exe'
+      args = { uri }
+    end
   elseif Base.is_kernel() then
     if fn.executable('xdg-open') == 1 then
       cmd = 'xdg-open'
