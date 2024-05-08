@@ -7,6 +7,7 @@
   (binary)
   (block)
   (bounds)
+  (call)
   (cast)
   (class)
   (class_pattern)
