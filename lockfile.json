@@ -6,7 +6,7 @@
     "revision": "d3dc807692e6bca671d4491b3bf5c67eeca8c016"
   },
   "angular": {
-    "revision": "f12fc56469d778285fb35b5bdb943edcfe77c48a"
+    "revision": "10f21f3f1b10584e62ecc113ab3cda1196d0ceb8"
   },
   "apex": {
     "revision": "c99ad4b16d112fea91745e3f1b769754239fdaba"
@@ -219,7 +219,7 @@
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
   },
   "gleam": {
-    "revision": "a0b11a15935b95848176c747a8b5776752d90d7c"
+    "revision": "8432ffe32ccd360534837256747beb5b1c82fca1"
   },
   "glimmer": {
     "revision": "6b25d265c990139353e1f7f97baf84987ebb7bf0"
@@ -270,7 +270,7 @@
     "revision": "070524937539eb8bb4f10debd9c83b66c434f3a2"
   },
   "haskell": {
-    "revision": "e29c59236283198d93740a796c50d1394bccbef5"
+    "revision": "a50070d5bb5bd5c1281740a6102ecf1f4b0c4f19"
   },
   "haskell_persistent": {
     "revision": "577259b4068b2c281c9ebf94c109bd50a74d5857"
@@ -315,7 +315,7 @@
     "revision": "e5da7d0aa44403153e0394d87d9edea4e5bd6609"
   },
   "idl": {
-    "revision": "3bb3c69a050c68c24482e45465b41652628044b7"
+    "revision": "9d7380151583d43a333add8a5a6918aec8c3f275"
   },
   "ini": {
     "revision": "bcb84a2d4bcd6f55b911c42deade75c8f90cb0c5"
@@ -333,7 +333,7 @@
     "revision": "953abfc8bb3eb2f578e1f461edba4a9885f974b8"
   },
   "javascript": {
-    "revision": "c67e8556d09bfdc21919839486d03e37ee44a6ce"
+    "revision": "4928d3d18019a848906855476fde2dc8be030217"
   },
   "jq": {
     "revision": "13990f530e8e6709b7978503da9bc8701d366791"
@@ -366,7 +366,7 @@
     "revision": "49fb89a854d93b58a65a19724ac307195ca11941"
   },
   "kotlin": {
-    "revision": "eca05edbab1918d7d36a0d30d086ba7b6b1e8803"
+    "revision": "c9cb8504b81684375e7beb8907517dbd6947a1be"
   },
   "koto": {
     "revision": "919440e1376109bab4edac52594c17c02ae0be5a"
@@ -480,7 +480,7 @@
     "revision": "4b9898ccbf198602bb0dec9cd67cc1d2c0a4fad2"
   },
   "odin": {
-    "revision": "b5f668ef8918aab13812ce73acd89fe191fb8c5e"
+    "revision": "f25b8c5201c1480dc0c8c4155a059a79a5a40719"
   },
   "org": {
     "revision": "64cfbc213f5a83da17632c95382a5a0a2f3357c1"
@@ -558,7 +558,7 @@
     "revision": "71778c2a472ed00a64abf4219544edbf8e4b86d7"
   },
   "ql": {
-    "revision": "fa5c3821dd2161f5c8528a8cbdb258daa6dc4de6"
+    "revision": "42becd6f8f7bae82c818fa3abb1b6ff34b552310"
   },
   "qmldir": {
     "revision": "6b2b5e41734bd6f07ea4c36ac20fb6f14061c841"
@@ -726,7 +726,7 @@
     "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
   },
   "tlaplus": {
-    "revision": "763f9a4edcb1747595842164614aa143eec084dd"
+    "revision": "08d915655d360bb0b7592d38a533dcc17dcb8dfb"
   },
   "tmux": {
     "revision": "9138ea508410e0f34da2666609f600f65e944f22"
