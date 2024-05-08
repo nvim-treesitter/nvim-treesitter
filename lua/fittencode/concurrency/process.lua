@@ -85,13 +85,16 @@ M.open = function(uri)
   local cmd = nil
   local args = {}
   if Base.is_windows() then
-    cmd = 'explorer '
-    args = { uri }
+    cmd = 'rundll32'
+    args = { 'url,OpenURL', uri }
   elseif Base.is_kernel() then
     if fn.executable('xdg-open') == 1 then
       cmd = 'xdg-open'
       args = { uri }
     end
+  elseif Base.is_macos() then
+    cmd = 'open'
+    args = { uri }
   end
   if cmd ~= nil then
     M.spawn({ cmd = cmd, args = args })
