@@ -16,7 +16,7 @@ local M = {}
 ---@class PromptContext
 ---@field window? integer
 ---@field buffer? integer
----@field type? string
+---@field prompt_ty? string
 ---@field row? integer
 ---@field col? integer
 ---@field range? table
@@ -59,14 +59,14 @@ end
 ---@param filter? PromptFilter
 ---@return Prompt[]?
 function M.get_prompts(ctx, filter)
-  if not ctx or not ctx.type then
+  if not ctx or not ctx.prompt_ty then
     Log.error('Invalid prompt context')
     return
   end
   filter = filter or {}
   local prompts = {}
   for _, provider in ipairs(providers) do
-    if provider:is_available(ctx.type) then
+    if provider:is_available(ctx.prompt_ty) then
       prompts[#prompts + 1] = provider:execute(ctx)
       if filter.count == 1 then
         break
@@ -90,10 +90,11 @@ function M.get_current_prompt_ctx()
   local window = api.nvim_get_current_win()
   local buffer = api.nvim_win_get_buf(window)
   local row, col = Base.get_cursor(window)
+  ---@type PromptContext
   return {
     window = window,
     buffer = buffer,
-    type = vim.bo.filetype,
+    prompt_ty = vim.bo.filetype,
     row = row,
     col = col,
     range = nil

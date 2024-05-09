@@ -43,7 +43,7 @@ function ActionsEngine.start_action(action, opts)
     window = window,
     buffer = buffer,
     range = { sln[1] - 1, eln[1] - 1 },
-    type = get_action_type(action),
+    prompt_ty = get_action_type(action),
     solved_content = nil,
     solved_prefix = nil,
     prompt = opts and opts.prompt,

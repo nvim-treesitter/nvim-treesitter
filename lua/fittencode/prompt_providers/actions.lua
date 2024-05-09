@@ -16,7 +16,6 @@ function M:new(o)
 end
 
 function M:is_available(type)
-  self.type = type
   return type:match('^' .. NAME)
 end
 
@@ -59,8 +58,8 @@ function M:execute(ctx)
       FindBugs = 'Find bugs in the code above',
       GenerateUnitTest = 'Generate a unit test for the code above',
     }
-    local ty = self.type:sub(#NAME + 2)
-    local prompt = ctx.prompt or map_action_prompt[ty]
+    local key = ctx.prompt_ty:sub(#NAME + 2)
+    local prompt = ctx.prompt or map_action_prompt[key]
     prefix = '```\n' .. content .. '\n```\n' .. prompt .. ':\n'
   end
   local suffix = ''
