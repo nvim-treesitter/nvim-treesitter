@@ -22,6 +22,7 @@ local M = {}
 ---@field range? table
 ---@field prompt? string
 ---@field solved_prefix? string
+---@field solved_content? string
 
 ---@class PromptProvider
 ---@field is_available fun(self, string?): boolean

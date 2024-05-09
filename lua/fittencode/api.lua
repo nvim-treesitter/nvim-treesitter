@@ -39,23 +39,23 @@ M.api = {
   accept_word = function()
     InlineEngine.accept_word()
   end,
-  document_code = function()
-    return ActionsEngine.document_code()
+  document_code = function(opts)
+    return ActionsEngine.document_code(opts)
   end,
-  edit_code = function()
-    return ActionsEngine.edit_code()
+  edit_code = function(opts)
+    return ActionsEngine.edit_code(opts)
   end,
-  explain_code = function()
-    return ActionsEngine.explain_code()
+  explain_code = function(opts)
+    return ActionsEngine.explain_code(opts)
   end,
-  find_bugs = function()
-    return ActionsEngine.find_bugs()
+  find_bugs = function(opts)
+    return ActionsEngine.find_bugs(opts)
   end,
-  generate_unit_test = function()
-    return ActionsEngine.generate_unit_test()
+  generate_unit_test = function(opts)
+    return ActionsEngine.generate_unit_test(opts)
   end,
-  -- start_chat = function ()
-  --   return ActionsEngine.start_chat()
+  -- start_chat = function (opts)
+  --   return ActionsEngine.start_chat(opts)
   -- end,
 }
 

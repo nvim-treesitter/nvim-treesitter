@@ -44,7 +44,12 @@ function M:execute(ctx)
   else
     -- FIXME: Improve prompt construction! full content with line:col info?
     ---@diagnostic disable-next-line: param-type-mismatch
-    local content = table.concat(api.nvim_buf_get_text(ctx.buffer, ctx.range[1], 0, ctx.range[2], 0, {}), '\n')
+    local content = ''
+    if ctx.solved_content then
+      content = ctx.solved_content
+    else
+      content = table.concat(api.nvim_buf_get_text(ctx.buffer, ctx.range[1], 0, ctx.range[2], 0, {}), '\n')
+    end
     local map_action_prompt = {
       DocumentCode = 'Document the code above',
       EditCode = ctx.prompt,
