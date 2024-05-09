@@ -1,5 +1,6 @@
 local api = vim.api
 
+local ActionsEngine = require('fittencode.engines.actions')
 local API = require('fittencode.api').api
 local Base = require('fittencode.base')
 local InlineEngine = require('fittencode.engines.inline')
@@ -80,6 +81,12 @@ function M.setup_commands()
     register = API.register,
     login = API.login,
     logout = API.logout,
+    document_code = API.document_code,
+    edit_code = API.edit_code,
+    explain_code = API.explain_code,
+    find_bugs = API.find_bugs,
+    generate_unit_test = API.generate_unit_test,
+    -- start_chat = API.start_chat,
   }
   Base.command('Fitten', function(line)
     ---@type string[]
@@ -109,6 +116,7 @@ function M.setup_commands()
         vim.tbl_keys(commands)
       )
     end,
+    range = true,
     bang = true,
     nargs = '*',
     desc = 'Fitten Command',
