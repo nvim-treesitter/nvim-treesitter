@@ -19,6 +19,8 @@ local M = {}
 ---@field filetype? string
 ---@field row? integer
 ---@field col? integer
+---@field range? table
+---@field prompt? string
 
 ---@class PromptProvider
 ---@field is_available fun(self, string?): boolean
@@ -44,6 +46,7 @@ end
 local function register_builtin_prompt_providers()
   M.register_prompt_provider(require('fittencode.prompt_providers.default'):new())
   M.register_prompt_provider(require('fittencode.prompt_providers.telescope'):new())
+  M.register_prompt_provider(require('fittencode.prompt_providers.actions'):new())
 end
 
 function M.setup()
@@ -54,7 +57,8 @@ end
 ---@param filter? PromptFilter
 ---@return Prompt[]?
 function M.get_prompts(ctx, filter)
-  if not ctx.filetype then
+  if not ctx or not ctx.filetype then
+    Log.error('Invalid prompt context')
     return
   end
   filter = filter or {}
@@ -75,19 +79,23 @@ function M.get_prompts(ctx, filter)
   return prompts
 end
 
----@return Prompt?
-function M.get_current_prompt()
+function M.get_prompt_one(opts)
+  return M.get_prompts(opts, { count = 1 })[1]
+end
+
+---@return PromptContext
+function M.get_current_prompt_ctx()
   local window = api.nvim_get_current_win()
   local buffer = api.nvim_win_get_buf(window)
   local row, col = Base.get_cursor(window)
-  local prompts = M.get_prompts({
+  return {
     window = window,
     buffer = buffer,
     filetype = vim.bo.filetype,
     row = row,
     col = col,
-  }, { count = 1 })
-  return prompts and prompts[1]
+    range = nil
+  }
 end
 
 return M
