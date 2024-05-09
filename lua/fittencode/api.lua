@@ -1,4 +1,4 @@
-local Engine = require('fittencode.engine')
+local InlineEngine = require('fittencode.engines.inline')
 local Log = require('fittencode.log')
 local Sessions = require('fittencode.sessions')
 local Status = require('fittencode.status')
@@ -27,16 +27,16 @@ M.api = {
   end,
   ---@return boolean
   has_suggestions = function()
-    return Engine.has_suggestions()
+    return InlineEngine.has_suggestions()
   end,
   accept_all_suggestions = function()
-    Engine.accept_all_suggestions()
+    InlineEngine.accept_all_suggestions()
   end,
   accept_line = function()
-    Engine.accept_line()
+    InlineEngine.accept_line()
   end,
   accept_word = function()
-    Engine.accept_word()
+    InlineEngine.accept_word()
   end,
 }
 

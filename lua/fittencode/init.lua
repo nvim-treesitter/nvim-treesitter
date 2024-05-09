@@ -13,7 +13,7 @@ function M.setup(opts)
 
   require('fittencode.log').setup()
   require('fittencode.rest.manager').setup()
-  require('fittencode.engine').setup()
+  require('fittencode.engines').setup()
   require('fittencode.sessions').setup()
   require('fittencode.prompt_providers').setup()
   require('fittencode.color').setup_highlight()

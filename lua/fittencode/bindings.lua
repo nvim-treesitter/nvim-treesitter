@@ -2,7 +2,7 @@ local api = vim.api
 
 local API = require('fittencode.api').api
 local Base = require('fittencode.base')
-local Engine = require('fittencode.engine')
+local InlineEngine = require('fittencode.engines.inline')
 local Log = require('fittencode.log')
 local View = require('fittencode.view')
 
@@ -20,14 +20,14 @@ function M.setup_autocmds()
     pattern = '*',
     callback = function()
       -- Log.debug('CursorHoldI')
-      if not Engine.is_inline_enabled() then
+      if not InlineEngine.is_inline_enabled() then
         return
       end
       if ignore then
         return
       end
       local row, col = Base.get_cursor()
-      Engine.generate_one_stage(row, col)
+      InlineEngine.generate_one_stage(row, col)
     end,
     desc = 'Generate one stage',
   })
@@ -41,7 +41,7 @@ function M.setup_autocmds()
         return
       end
       Base.debounce(advance_timer, function()
-        Engine.advance()
+        InlineEngine.advance()
       end, ADVANCE_DEBOUNCE_TIME)
     end,
     desc = 'Advance',
@@ -55,7 +55,7 @@ function M.setup_autocmds()
       if ignore then
         return
       end
-      Engine.lazy_inline_completion()
+      InlineEngine.lazy_inline_completion()
     end,
     desc = 'Lazy inline completion',
   })
@@ -64,7 +64,7 @@ function M.setup_autocmds()
     group = Base.augroup('Reset'),
     pattern = '*',
     callback = function()
-      Engine.reset()
+      InlineEngine.reset()
     end,
     desc = 'Reset',
   })
