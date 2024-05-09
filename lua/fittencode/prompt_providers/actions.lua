@@ -30,12 +30,14 @@ end
 ---@param ctx PromptContext
 ---@return Prompt?
 function M:execute(ctx)
-  if not api.nvim_buf_is_valid(ctx.buffer) or ctx.range == nil then
+  if (not ctx.solved_prefix and not ctx.solved_content) and (not api.nvim_buf_is_valid(ctx.buffer) or ctx.range == nil) then
     return
   end
 
-  local filename = api.nvim_buf_get_name(ctx.buffer)
-  filename = filename or ''
+  local filename = ''
+  if ctx.buffer then
+    api.nvim_buf_get_name(ctx.buffer)
+  end
 
   local within_the_line = false
 
