@@ -9,6 +9,7 @@ local schedule = Base.schedule
 
 ---@class FittenClient
 ---@field rest Rest
+---@field register function
 ---@field get_restimpl_name function
 ---@field login function
 ---@field generate_one_stage function

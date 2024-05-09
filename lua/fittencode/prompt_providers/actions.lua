@@ -4,18 +4,20 @@ local Log = require('fittencode.log')
 
 local M = {}
 
+local NAME = 'FittenCodePrompt/Actions'
+
 function M:new(o)
   o = o or {}
-  o.name = 'FittenCodeAction'
+  o.name = NAME
   o.priority = 100
   setmetatable(o, self)
   self.__index = self
   return o
 end
 
-function M:is_available(ft)
-  self.ft = ft
-  return ft:match('^FittenCodeAction')
+function M:is_available(type)
+  self.type = type
+  return type:match('^' .. NAME)
 end
 
 function M:get_name()
@@ -54,11 +56,11 @@ function M:execute(ctx)
       DocumentCode = 'Document the code above',
       EditCode = ctx.prompt,
       ExplainCode = 'Explain the code above',
-      FindBugs = 'Find all bugs in the code above',
+      FindBugs = 'Find bugs in the code above',
       GenerateUnitTest = 'Generate a unit test for the code above',
     }
-    local ftkey = self.ft:sub(#'FittenCodeAction' + 1)
-    local prompt = ctx.prompt or map_action_prompt[ftkey]
+    local ty = self.type:sub(#NAME + 2)
+    local prompt = ctx.prompt or map_action_prompt[ty]
     prefix = '```\n' .. content .. '\n```\n' .. prompt .. ':\n'
   end
   local suffix = ''

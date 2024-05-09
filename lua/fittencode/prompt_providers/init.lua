@@ -16,7 +16,7 @@ local M = {}
 ---@class PromptContext
 ---@field window? integer
 ---@field buffer? integer
----@field filetype? string
+---@field type? string
 ---@field row? integer
 ---@field col? integer
 ---@field range? table
@@ -59,14 +59,14 @@ end
 ---@param filter? PromptFilter
 ---@return Prompt[]?
 function M.get_prompts(ctx, filter)
-  if not ctx or not ctx.filetype then
+  if not ctx or not ctx.type then
     Log.error('Invalid prompt context')
     return
   end
   filter = filter or {}
   local prompts = {}
   for _, provider in ipairs(providers) do
-    if provider:is_available(ctx.filetype) then
+    if provider:is_available(ctx.type) then
       prompts[#prompts + 1] = provider:execute(ctx)
       if filter.count == 1 then
         break
@@ -93,7 +93,7 @@ function M.get_current_prompt_ctx()
   return {
     window = window,
     buffer = buffer,
-    filetype = vim.bo.filetype,
+    type = vim.bo.filetype,
     row = row,
     col = col,
     range = nil

@@ -24,8 +24,8 @@ local function get_action_name(action)
   return Base.tbl_key_by_value(Actions, action, '????')
 end
 
-local function get_action_ft(action)
-  return 'FittenCodeAction' .. get_action_name(action)
+local function get_action_type(action)
+  return 'FittenCodePrompt/Actions/' .. get_action_name(action)
 end
 
 ---@param action number
@@ -35,11 +35,7 @@ function ActionsEngine.start_action(action, opts)
     Log.error('No support for StartChat action yet')
     return
   end
-  -- Log.debug('< {}', fn.getpos('<'))
-  -- Log.debug('> {}', fn.getpos('>'))
   local sln, eln = api.nvim_buf_get_mark(0, '<'), api.nvim_buf_get_mark(0, '>')
-  -- Log.debug('sln {} eln {}', sln, eln)
-  -- Log.debug('visualmode {}', vim.fn.visualmode())
   local window = api.nvim_get_current_win()
   local buffer = api.nvim_win_get_buf(window)
 
@@ -47,11 +43,12 @@ function ActionsEngine.start_action(action, opts)
     window = window,
     buffer = buffer,
     range = { sln[1] - 1, eln[1] - 1 },
-    filetype = get_action_ft(action),
+    type = get_action_type(action),
     solved_content = nil,
     solved_prefix = nil,
     prompt = opts and opts.prompt,
   }, function(_, prompt, suggestions)
+    Log.debug('Suggestions for Actions: {}', suggestions)
   end, function()
   end)
 end
