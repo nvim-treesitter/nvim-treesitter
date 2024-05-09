@@ -69,7 +69,7 @@
     "revision": "20ffd6d3b4da1acdbf2d08204b2130a5b2f7c4b3"
   },
   "comment": {
-    "revision": "aefcc2813392eb6ffe509aa0fc8b4e9b57413ee1"
+    "revision": "5d8b29f6ef3bf64d59430dcfe76b31cc44b5abfd"
   },
   "commonlisp": {
     "revision": "bf2a65b1c119898a1a17389e07f2a399c05cdc0c"
@@ -816,7 +816,7 @@
     "revision": "5910ee285378e07ff1e63a9f5d21898f62310aed"
   },
   "yaml": {
-    "revision": "08ab1fbc18beac06b2938495a2c6ab17b5a6abc5"
+    "revision": "7b03feefd36b5f155465ca736c6304aca983b267"
   },
   "yang": {
     "revision": "2c0e6be8dd4dcb961c345fa35c309ad4f5bd3502"
