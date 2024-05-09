@@ -1,4 +1,5 @@
 local Base = require('fittencode.base')
+local Process = require('fittencode.concurrency.process')
 local Promise = require('fittencode.concurrency.promise')
 local RestManager = require('fittencode.rest.manager')
 local Resopnse = require('fittencode.client.response')
@@ -8,7 +9,7 @@ local schedule = Base.schedule
 
 ---@class FittenClient
 ---@field rest Rest
----@field get_implementation_name function
+---@field get_restimpl_name function
 ---@field login function
 ---@field generate_one_stage function
 local M = {}
@@ -21,8 +22,12 @@ function M:new()
   return setmetatable(obj, self)
 end
 
-function M:get_implementation_name()
+function M:get_restimpl_name()
   return self.rest:get_implementation_name()
+end
+
+function M:register()
+  Process.open(URL.REGISTER)
 end
 
 function M:login(username, password, on_success, on_error)

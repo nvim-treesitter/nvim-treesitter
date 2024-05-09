@@ -6,9 +6,7 @@ local Config = require('fittencode.config')
 local KeyStorage = require('fittencode.key_storage')
 local Log = require('fittencode.log')
 local Path = require('fittencode.fs.path')
-local Process = require('fittencode.concurrency.process')
 local PromptProviders = require('fittencode.prompt_providers')
-local URL = require('fittencode.client.url')
 
 local schedule = Base.schedule
 
@@ -27,12 +25,12 @@ local key_storage = nil
 local username = nil
 
 function M.register()
-  Process.open(URL.REGISTER)
+  client:register()
 end
 
 ---@param name string
 ---@param password string
-function M.request_login(name, password)
+function M.login(name, password)
   if name == nil or name == '' or password == nil or password == '' then
     Log.e('Invalid username or password')
     return
@@ -54,7 +52,7 @@ function M.request_login(name, password)
   end)
 end
 
-function M.request_logout()
+function M.logout()
   local api_key = key_storage:get_key_by_name(username)
   if api_key == nil then
     Log.i('You are already logged out')
@@ -149,7 +147,7 @@ end
 
 function M.setup()
   client = Client:new()
-  Log.debug('FittenClient implementation is: {}', client:get_implementation_name())
+  Log.debug('FittenClient rest implementation is: {}', client:get_restimpl_name())
   key_storage = KeyStorage:new({
     path = KEY_STORE_PATH,
   })

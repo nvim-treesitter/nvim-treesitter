@@ -9,10 +9,10 @@ M.api = {
   ---@param username string
   ---@param password string
   login = function(username, password)
-    Sessions.request_login(username, password)
+    Sessions.login(username, password)
   end,
   logout = function()
-    Sessions.request_logout()
+    Sessions.logout()
   end,
   register = function()
     Sessions.register()
