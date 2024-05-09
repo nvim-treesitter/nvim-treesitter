@@ -100,8 +100,8 @@ local function generate_suggestions(generated_text)
 end
 
 ---@return table|nil
-local function make_generate_one_stage_params()
-  local result = PromptProviders.get_current_prompt()
+local function make_generate_one_stage_params(opts)
+  local result = PromptProviders.get_prompt_one(opts)
   if result == nil then
     return
   end
@@ -126,7 +126,7 @@ end
 ---@param task_id integer
 ---@param on_success function|nil
 ---@param on_error function|nil
-function M.request_generate_one_stage(task_id, on_success, on_error)
+function M.request_generate_one_stage(task_id, opts, on_success, on_error)
   Log.debug('Request generate one stage...')
   local api_key = key_storage:get_key_by_name(username)
   if api_key == nil then
@@ -134,7 +134,7 @@ function M.request_generate_one_stage(task_id, on_success, on_error)
     schedule(on_error)
     return
   end
-  local params = make_generate_one_stage_params()
+  local params = make_generate_one_stage_params(opts)
   if params == nil then
     schedule(on_error)
     return

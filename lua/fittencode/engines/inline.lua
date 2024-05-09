@@ -8,6 +8,7 @@ local Status = require('fittencode.status')
 local SuggestionsCache = require('fittencode.suggestions_cache')
 local TaskScheduler = require('fittencode.tasks')
 local View = require('fittencode.view')
+local PromptProviders = require('fittencode.prompt_providers')
 
 local SC = Status.C
 
@@ -208,7 +209,7 @@ local function _generate_one_stage(row, col, force, on_success, on_error)
 
   local task_id = tasks:create(row, col)
   cache:flush()
-  Sessions.request_generate_one_stage(task_id, function(id, suggestions)
+  Sessions.request_generate_one_stage(task_id, PromptProviders.get_current_prompt_ctx(), function(id, suggestions)
     local processed = process_suggestions(id, suggestions)
     if processed then
       apply_suggestion(task_id, row, col, processed)
