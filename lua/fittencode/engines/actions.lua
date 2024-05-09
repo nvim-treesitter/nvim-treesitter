@@ -36,14 +36,15 @@ function ActionsEngine.start_action(action, opts)
   -- Log.debug('visualmode {}', vim.fn.visualmode())
   local window = api.nvim_get_current_win()
   local buffer = api.nvim_win_get_buf(window)
+
   Sessions.request_generate_one_stage(0, {
     window = window,
     buffer = buffer,
     range = { sln[1] - 1, eln[1] - 1 },
     filetype = get_action_ft(action),
+    solved_prefix = nil,
     prompt = opts and opts.prompt,
-  }, function(_, suggestions)
-    Log.debug('Suggestions: {}', suggestions)
+  }, function(_, prompt, suggestions)
   end, function()
   end)
 end

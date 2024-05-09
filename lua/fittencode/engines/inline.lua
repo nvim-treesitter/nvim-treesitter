@@ -209,7 +209,7 @@ local function _generate_one_stage(row, col, force, on_success, on_error)
 
   local task_id = tasks:create(row, col)
   cache:flush()
-  Sessions.request_generate_one_stage(task_id, PromptProviders.get_current_prompt_ctx(), function(id, suggestions)
+  Sessions.request_generate_one_stage(task_id, PromptProviders.get_current_prompt_ctx(), function(id, _, suggestions)
     local processed = process_suggestions(id, suggestions)
     if processed then
       apply_suggestion(task_id, row, col, processed)

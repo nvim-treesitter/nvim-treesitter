@@ -99,24 +99,24 @@ local function generate_suggestions(generated_text)
   return suggestions
 end
 
----@return table|nil
+---@return table?, table?
 local function make_generate_one_stage_params(opts)
-  local result = PromptProviders.get_prompt_one(opts)
-  if result == nil then
+  local prompt = PromptProviders.get_prompt_one(opts)
+  if prompt == nil then
     return
   end
-  if result.within_the_line and (not Config.internal.virtual_text.inline or Config.options.inline_completion.disable_completion_within_the_line) then
+  if prompt.within_the_line and (not Config.internal.virtual_text.inline or Config.options.inline_completion.disable_completion_within_the_line) then
     return
   end
-  local prompt = '!FCPREFIX!' .. result.prefix .. '!FCSUFFIX!' .. result.suffix .. '!FCMIDDLE!'
-  local escaped_prompt = string.gsub(prompt, '"', '\\"')
+  local fc_prompt = '!FCPREFIX!' .. prompt.prefix .. '!FCSUFFIX!' .. prompt.suffix .. '!FCMIDDLE!'
+  local escaped_fc_prompt = string.gsub(fc_prompt, '"', '\\"')
   local params = {
-    inputs = escaped_prompt,
+    inputs = escaped_fc_prompt,
     meta_datas = {
-      filename = result.filename,
+      filename = prompt.filename,
     },
   }
-  return params
+  return params, prompt
 end
 
 function M.ready_for_generate()
@@ -134,14 +134,14 @@ function M.request_generate_one_stage(task_id, opts, on_success, on_error)
     schedule(on_error)
     return
   end
-  local params = make_generate_one_stage_params(opts)
+  local params, prompt = make_generate_one_stage_params(opts)
   if params == nil then
     schedule(on_error)
     return
   end
 
   client:generate_one_stage(api_key, params, function(generated_text)
-    schedule(on_success, task_id, generate_suggestions(generated_text))
+    schedule(on_success, task_id, prompt, generate_suggestions(generated_text))
   end, on_error)
 end
 

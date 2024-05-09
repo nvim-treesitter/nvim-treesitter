@@ -37,19 +37,25 @@ function M:execute(ctx)
   filename = filename or ''
 
   local within_the_line = false
-  -- FIXME: Improve prompt construction!
-  ---@diagnostic disable-next-line: param-type-mismatch
-  local content = table.concat(api.nvim_buf_get_text(ctx.buffer, ctx.range[1], 0, ctx.range[2], 0, {}), '\n')
-  local map_action_prompt = {
-    DocumentCode = 'Document the code above',
-    EditCode = ctx.prompt,
-    ExplainCode = 'Explain the code above',
-    FindBugs = 'Find all bugs in the code above',
-    GenerateUnitTest = 'Generate a unit test for the code above',
-  }
-  local ftkey = self.ft:sub(#'FittenCodeAction' + 1)
-  local prompt = ctx.prompt or map_action_prompt[ftkey]
-  local prefix = '```\n' .. content .. '\n```\n' .. prompt .. ':\n'
+
+  local prefix = ''
+  if ctx.solved_prefix then
+    prefix = ctx.solved_prefix
+  else
+    -- FIXME: Improve prompt construction! full content with line:col info?
+    ---@diagnostic disable-next-line: param-type-mismatch
+    local content = table.concat(api.nvim_buf_get_text(ctx.buffer, ctx.range[1], 0, ctx.range[2], 0, {}), '\n')
+    local map_action_prompt = {
+      DocumentCode = 'Document the code above',
+      EditCode = ctx.prompt,
+      ExplainCode = 'Explain the code above',
+      FindBugs = 'Find all bugs in the code above',
+      GenerateUnitTest = 'Generate a unit test for the code above',
+    }
+    local ftkey = self.ft:sub(#'FittenCodeAction' + 1)
+    local prompt = ctx.prompt or map_action_prompt[ftkey]
+    prefix = '```\n' .. content .. '\n```\n' .. prompt .. ':\n'
+  end
   local suffix = ''
 
   Log.debug('Action prompt: {}', prefix)
