@@ -61,10 +61,6 @@ end
 ---@param action number
 ---@param opts? ActionOptions
 function ActionsEngine.start_action(action, opts)
-  if action == Actions.StartChat then
-    Log.error('No support for StartChat action yet')
-    return
-  end
   local sln, eln = api.nvim_buf_get_mark(0, '<'), api.nvim_buf_get_mark(0, '>')
   local window = api.nvim_get_current_win()
   local buffer = api.nvim_win_get_buf(window)

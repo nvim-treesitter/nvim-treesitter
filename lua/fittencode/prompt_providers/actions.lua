@@ -59,6 +59,7 @@ function M:execute(ctx)
       ExplainCode = 'Explain the code above',
       FindBugs = 'Find bugs in the code above',
       GenerateUnitTest = 'Generate a unit test for the code above',
+      StartChat = 'Please answers the question above'
     }
     local key = ctx.prompt_ty:sub(#NAME + 2)
     local prompt = ctx.prompt or map_action_prompt[key]
