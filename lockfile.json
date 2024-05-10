@@ -48,7 +48,7 @@
     "revision": "60ba73739c6083c693d86a1a7cf039c07eb4ed59"
   },
   "c": {
-    "revision": "1aafaff4d26dac5a36dd3495be33e1c20161d761"
+    "revision": "82fb86aa544843bd17a9f0f3dc16edf645a34349"
   },
   "c_sharp": {
     "revision": "e1384e2f132936019b43aaaae154cd780fb497ce"
@@ -120,7 +120,7 @@
     "revision": "0e9a836ec47612ade15645fb1680adb549894a6c"
   },
   "dockerfile": {
-    "revision": "439c3e7b8a9bfdbf1f7d7c2beaae4173dc484cbf"
+    "revision": "087daa20438a6cc01fa5e6fe6906d77c869d19fe"
   },
   "dot": {
     "revision": "9ab85550c896d8b294d9b9ca1e30698736f08cea"
@@ -129,7 +129,7 @@
     "revision": "4a30eba5d047d6a8c5b005202b4848c0b33d76ca"
   },
   "dtd": {
-    "revision": "5910ee285378e07ff1e63a9f5d21898f62310aed"
+    "revision": "7c467645e7ab77c57ba9d293e2e28d563829cbdc"
   },
   "earthfile": {
     "revision": "3ded1cba9eab14b07377b700b1132d259480abae"
@@ -435,7 +435,7 @@
     "revision": "bd17c824196ce70800f64ad39cfddd1b17acc13f"
   },
   "mlir": {
-    "revision": "ab7708c4aed1ff0919d6f6fd3e463fe75ba645be"
+    "revision": "2812b6c6aa03f1ca8dba2fb1c33d14abb87809e7"
   },
   "muttrc": {
     "revision": "90ef60852c410bd964cd3b954366e4c403c17314"
@@ -711,7 +711,7 @@
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
   },
   "templ": {
-    "revision": "81e16d4ca796407361dad83ffee472715015339c"
+    "revision": "d631f60287c0904770bc41aa865e249594b52422"
   },
   "terraform": {
     "revision": "e936d3fef8bac884661472dce71ad82284761eb1"
@@ -756,7 +756,7 @@
     "revision": "43b221c0b76e77244efdaa9963e402a17c930fbc"
   },
   "typst": {
-    "revision": "b19e64087a426fe059fc6103ff0766c607f41888"
+    "revision": "3924cb9ed9e0e62ce7df9c4fe0faa4c234795999"
   },
   "udev": {
     "revision": "8f58696e79092b4ad6bf197415bbd0970acf15cd"
@@ -813,7 +813,7 @@
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
   },
   "xml": {
-    "revision": "5910ee285378e07ff1e63a9f5d21898f62310aed"
+    "revision": "7c467645e7ab77c57ba9d293e2e28d563829cbdc"
   },
   "yaml": {
     "revision": "7b03feefd36b5f155465ca736c6304aca983b267"
