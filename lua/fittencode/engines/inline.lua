@@ -2,8 +2,8 @@ local api = vim.api
 
 local Base = require('fittencode.base')
 local Config = require('fittencode.config')
-local Error = require('fittencode.error')
 local Log = require('fittencode.log')
+local NetworkError = require('fittencode.client.network_error')
 local Sessions = require('fittencode.sessions')
 local Status = require('fittencode.status')
 local SuggestionsCache = require('fittencode.suggestions_cache')
@@ -222,7 +222,7 @@ local function _generate_one_stage(row, col, force, on_success, on_error)
       on_success(processed)
     end
   end, function(err)
-    if err == Error.ERR_NETWORK then
+    if type(err) == 'table' and getmetatable(err) == NetworkError then
       Status.update(SC.NETWORK_ERROR)
     end
     if on_error then
