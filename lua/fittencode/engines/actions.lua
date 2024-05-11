@@ -47,7 +47,7 @@ local function process_suggestions(suggestions)
   end
   suggestions = vim.tbl_filter(function(s) return #s > 0 end, suggestions)
   if #suggestions ~= 0 then
-    return table.concat(suggestions, '\n') .. '\n'
+    return table.concat(suggestions, '\n')
   end
 end
 
@@ -80,16 +80,17 @@ function ActionsEngine.start_action(action, opts)
 
   Log.debug('Start Action({})...', action_name)
 
-  chat:show()
-
   local sln, eln = api.nvim_buf_get_mark(0, '<'), api.nvim_buf_get_mark(0, '>')
   local window = api.nvim_get_current_win()
   local buffer = api.nvim_win_get_buf(window)
 
+  chat:show()
+  vim.fn.win_gotoid(window)
+
   local on_error = function()
     Log.debug('Action: No more suggestions')
-    chat:append_text('\nQ.E.D.\n')
-    Log.debug('chat text: {}', chat.text)
+    chat:append_text('Q.E.D.\n', true)
+    Log.debug('Chat text: {}', chat.text)
     current_eval = current_eval + 1
   end
 
@@ -106,8 +107,13 @@ function ActionsEngine.start_action(action, opts)
     prompt = opts and opts.prompt,
   }
   local prompt_preview = PromptProviders.get_prompt_one(prompt_opts)
-  local c_in = 'In[' .. current_eval .. ']:= ' .. action_name .. '\n'
-  chat:append_text(c_in .. prompt_preview.content .. '\n\n')
+  if #prompt_preview.filename == 0 then
+    prompt_preview.filename = 'unnamed'
+  end
+  local source_info = ' (' .. prompt_preview.filename .. ' ' .. sln[1] .. ':' .. eln[1] .. ')'
+  local c_in = '# In`[' .. current_eval .. ']`:= ' .. action_name .. source_info
+  chat:append_text(c_in)
+  chat:append_text(prompt_preview.content)
 
   Promise:new(function(resolve, reject)
     Sessions.request_generate_one_stage(0, prompt_opts, function(_, prompt, suggestions)
@@ -116,8 +122,9 @@ function ActionsEngine.start_action(action, opts)
       if not lines then
         reject()
       else
-        local c_out = 'Out[' .. current_eval .. ']=\n'
-        chat:append_text(c_out .. lines)
+        local c_out = '# Out`[' .. current_eval .. ']`='
+        chat:append_text(c_out)
+        chat:append_text(lines, true)
         local solved_prefix = prompt.prefix .. lines
         resolve(solved_prefix)
       end

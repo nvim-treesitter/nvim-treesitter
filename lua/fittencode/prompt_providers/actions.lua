@@ -36,7 +36,7 @@ function M:execute(ctx)
 
   local filename = ''
   if ctx.buffer then
-    api.nvim_buf_get_name(ctx.buffer)
+    filename = api.nvim_buf_get_name(ctx.buffer) or ''
   end
 
   local within_the_line = false
