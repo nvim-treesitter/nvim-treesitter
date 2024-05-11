@@ -4,6 +4,7 @@ local fn = vim.fn
 local Base = require('fittencode.base')
 local Chat = require('fittencode.views.chat')
 local Log = require('fittencode.log')
+local NetworkError = require('fittencode.client.network_error')
 local Promise = require('fittencode.concurrency.promise')
 local PromptProviders = require('fittencode.prompt_providers')
 local Sessions = require('fittencode.sessions')
@@ -68,8 +69,8 @@ local function chain_actions(action, solved_prefix, on_error)
       local new_solved_prefix = prompt.prefix .. lines
       chain_actions(action, new_solved_prefix, on_error)
     end
-  end, function()
-    schedule(on_error)
+  end, function(err)
+    schedule(on_error, err)
   end)
 end
 
@@ -92,12 +93,18 @@ function ActionsEngine.start_action(action, opts)
   chat:show()
   vim.fn.win_gotoid(window)
 
-  local on_error = function()
+  local on_error = function(err)
+    Log.error('Error in Action: {}', err)
+    if type(err) == 'table' and getmetatable(err) == NetworkError then
+      Status.update(SC.NETWORK_ERROR)
+      return
+    end
     Log.debug('Action: No more suggestions')
     chat:commit('Q.E.D.\n', true)
     current_eval = current_eval + 1
     Log.debug('Chat text: {}', chat.text)
     if #chat.text > 0 then
+      -- FIXME: A better status update is needed
       Status.update(SC.SUGGESTIONS_READY)
     else
       Status.update(SC.NO_MORE_SUGGESTIONS)
@@ -138,13 +145,13 @@ function ActionsEngine.start_action(action, opts)
         local solved_prefix = prompt.prefix .. lines
         resolve(solved_prefix)
       end
-    end, function()
-      reject()
+    end, function(err)
+      reject(err)
     end)
   end):forward(function(solved_prefix)
     chain_actions(action, solved_prefix, on_error)
-  end, function()
-    schedule(on_error)
+  end, function(err)
+    schedule(on_error, err)
   end
   )
 end
