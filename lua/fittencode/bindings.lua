@@ -86,6 +86,7 @@ function M.setup_commands()
     explain_code = API.explain_code,
     find_bugs = API.find_bugs,
     generate_unit_test = API.generate_unit_test,
+    implement_features = API.implement_features,
     start_chat = API.start_chat,
   }
   Base.command('Fitten', function(line)

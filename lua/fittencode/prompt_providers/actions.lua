@@ -53,6 +53,7 @@ function M:execute(ctx)
     else
       -- if ctx.range[1] == ctx.range[2] then
       -- content = api.nvim_buf_get_lines(ctx.buffer, ctx.range[1], ctx.range[1] + 1, false)[1]
+      -- content = table.concat(api.nvim_buf_get_text(ctx.buffer, 0, 0, -1, -1, {}), '\n')
       content = table.concat(api.nvim_buf_get_text(ctx.buffer, ctx.range[1], 0, ctx.range[2], -1, {}), '\n')
     end
     Log.debug('Action Content: {}', content)
@@ -62,11 +63,12 @@ function M:execute(ctx)
       ExplainCode = 'Explain the code above',
       FindBugs = 'Find bugs in the code above',
       GenerateUnitTest = 'Generate a unit test for the code above',
-      StartChat = 'Please answers the question above'
+      ImplementFeatures = 'Implement the features mentioned in the code above',
+      StartChat = 'Answers the question above'
     }
     local key = ctx.prompt_ty:sub(#NAME + 2)
     local prompt = ctx.prompt or map_action_prompt[key]
-    prefix = '```\n' .. content .. '\n```\n' .. prompt .. ':\n'
+    prefix = '```\n' .. content .. '\n```\n' .. 'Dear FittenCode, Please ' .. prompt .. ':\n'
   end
   local suffix = ''
 

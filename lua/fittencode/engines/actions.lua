@@ -16,7 +16,8 @@ local Actions = {
   ExplainCode = 2,
   FindBugs = 3,
   GenerateUnitTest = 4,
-  StartChat = 5
+  ImplementFeatures = 5,
+  StartChat = 6
 }
 
 ---@class ActionOptions
@@ -125,6 +126,10 @@ end
 
 function ActionsEngine.generate_unit_test(opts)
   return ActionsEngine.start_action(Actions.GenerateUnitTest, opts)
+end
+
+function ActionsEngine.implement_features(opts)
+  return ActionsEngine.start_action(Actions.ImplementFeatures, opts)
 end
 
 function ActionsEngine.start_chat(opts)

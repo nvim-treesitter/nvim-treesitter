@@ -54,6 +54,9 @@ M.api = {
   generate_unit_test = function(opts)
     return ActionsEngine.generate_unit_test(opts)
   end,
+  implement_features = function(opts)
+    return ActionsEngine.implement_features(opts)
+  end,
   start_chat = function(opts)
     return ActionsEngine.start_chat(opts)
   end,
