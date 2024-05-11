@@ -129,7 +129,7 @@
     "revision": "4a30eba5d047d6a8c5b005202b4848c0b33d76ca"
   },
   "dtd": {
-    "revision": "7c467645e7ab77c57ba9d293e2e28d563829cbdc"
+    "revision": "648183d86f6f8ffb240ea11b4c6873f6f45d8b67"
   },
   "earthfile": {
     "revision": "3ded1cba9eab14b07377b700b1132d259480abae"
@@ -234,7 +234,7 @@
     "revision": "3c895f5d9c0b3a3c7e02383766b462c21913c000"
   },
   "go": {
-    "revision": "eb68645662a3f7bf7fdd4bcb9531585f54c8570e"
+    "revision": "7ee8d928db5202f6831a78f8112fd693bf69f98b"
   },
   "godot_resource": {
     "revision": "2ffb90de47417018651fc3b970e5f6b67214dc9d"
@@ -315,7 +315,7 @@
     "revision": "e5da7d0aa44403153e0394d87d9edea4e5bd6609"
   },
   "idl": {
-    "revision": "9d7380151583d43a333add8a5a6918aec8c3f275"
+    "revision": "e885d7fd66c2549b7a28172400d645d27656f5cb"
   },
   "ini": {
     "revision": "bcb84a2d4bcd6f55b911c42deade75c8f90cb0c5"
@@ -333,7 +333,7 @@
     "revision": "953abfc8bb3eb2f578e1f461edba4a9885f974b8"
   },
   "javascript": {
-    "revision": "4928d3d18019a848906855476fde2dc8be030217"
+    "revision": "e88537c2703546f3f0887dd3f16898e1749cdba5"
   },
   "jq": {
     "revision": "13990f530e8e6709b7978503da9bc8701d366791"
@@ -702,7 +702,7 @@
     "revision": "b1170880c61355aaf38fc06f4af7d3c55abdabc4"
   },
   "tact": {
-    "revision": "f65460eb0746037bc15913e2737afcf87745b66b"
+    "revision": "034df2162ed7b654efd999942e266be713c7cde0"
   },
   "tcl": {
     "revision": "8784024358c233efd0f3a6fd9e7a3c5852e628bc"
@@ -813,7 +813,7 @@
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
   },
   "xml": {
-    "revision": "7c467645e7ab77c57ba9d293e2e28d563829cbdc"
+    "revision": "648183d86f6f8ffb240ea11b4c6873f6f45d8b67"
   },
   "yaml": {
     "revision": "7b03feefd36b5f155465ca736c6304aca983b267"
