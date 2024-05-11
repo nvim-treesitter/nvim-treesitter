@@ -12,6 +12,7 @@
   (switch_block)
   (match_block)
   (case_statement)
+  (default_statement)
 ] @indent.begin
 
 (return_statement
