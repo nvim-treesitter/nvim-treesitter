@@ -7,7 +7,7 @@ local Sessions = require('fittencode.sessions')
 local Status = require('fittencode.status')
 local SuggestionsCache = require('fittencode.suggestions_cache')
 local TaskScheduler = require('fittencode.tasks')
-local View = require('fittencode.view')
+local Lines = require('fittencode.views.lines')
 local PromptProviders = require('fittencode.prompt_providers')
 
 local SC = Status.C
@@ -172,7 +172,7 @@ local function apply_suggestion(task_id, row, col, suggestion)
   if suggestion then
     cache:update(task_id, row, col, suggestion)
     if M.is_inline_enabled() then
-      View.render_virt_text(suggestion)
+      Lines.render_virt_text(suggestion)
     end
   end
 end
@@ -277,8 +277,8 @@ function M.accept_all_suggestions()
 
   Log.debug('Pretreatment cached lines: {}', cache:get_lines())
 
-  View.clear_virt_text()
-  View.set_text(cache:get_lines())
+  Lines.clear_virt_text()
+  Lines.set_text(cache:get_lines())
 
   M.reset()
 
@@ -310,7 +310,7 @@ function M.accept_line()
     return
   end
 
-  View.clear_virt_text()
+  Lines.clear_virt_text()
 
   ignoreevent_wrap(function()
     Log.debug('Pretreatment cached lines: {}', cache:get_lines())
@@ -320,16 +320,16 @@ function M.accept_line()
     local stage = cache:get_count() - 1
 
     if cur == stage then
-      View.set_text({ line })
+      Lines.set_text({ line })
       Log.debug('Set line: {}', line)
-      View.set_text({ '', '' })
+      Lines.set_text({ '', '' })
       Log.debug('Set empty new line')
     else
       if cur == 0 then
-        View.set_text({ line })
+        Lines.set_text({ line })
         Log.debug('Set line: {}', line)
       else
-        View.set_text({ line, '' })
+        Lines.set_text({ line, '' })
         Log.debug('Set line and empty new line; line: {}', line)
       end
     end
@@ -337,7 +337,7 @@ function M.accept_line()
     Log.debug('Remaining cached lines: {}', cache:get_lines())
 
     if vim.tbl_count(cache:get_lines()) > 0 then
-      View.render_virt_text(cache:get_lines())
+      Lines.render_virt_text(cache:get_lines())
       local row, col = Base.get_cursor()
       cache:update_cursor(row, col)
     else
@@ -374,7 +374,7 @@ function M.accept_word()
     return
   end
 
-  View.clear_virt_text()
+  Lines.clear_virt_text()
 
   ignoreevent_wrap(function()
     Log.debug('Pretreatment cached lines: {}', cache:get_lines())
@@ -390,22 +390,22 @@ function M.accept_word()
     if string.len(line) == 0 then
       cache:remove_line(1)
       if M.has_suggestions() then
-        View.set_text({ word, '' })
+        Lines.set_text({ word, '' })
         Log.debug('Set word and empty new line; word: {}', word)
       else
-        View.set_text({ word })
+        Lines.set_text({ word })
         Log.debug('Set word: {}', word)
       end
     else
       cache:update_line(1, line)
-      View.set_text({ word })
+      Lines.set_text({ word })
       Log.debug('Set word: {}', word)
     end
 
     Log.debug('Remaining cached lines: {}', cache:get_lines())
 
     if vim.tbl_count(cache:get_lines()) > 0 then
-      View.render_virt_text(cache:get_lines())
+      Lines.render_virt_text(cache:get_lines())
       local row, col = Base.get_cursor()
       cache:update_cursor(row, col)
     else
@@ -417,7 +417,7 @@ end
 
 function M.reset()
   if M.is_inline_enabled() then
-    View.clear_virt_text()
+    Lines.clear_virt_text()
   end
   cache:flush()
   Status.update(SC.IDLE)
@@ -433,7 +433,7 @@ function M.advance()
   end
 
   if not cache:equal_cursor(Base.get_cursor()) then
-    View.clear_virt_text()
+    Lines.clear_virt_text()
     cache:flush()
   end
 end
@@ -490,7 +490,7 @@ function M.lazy_inline_completion()
         end
         cache:update_line(1, cache_line)
         cache:update_cursor(row, col)
-        View.render_virt_text(cache:get_lines())
+        Lines.render_virt_text(cache:get_lines())
         return true
       end
     elseif adv_type == 2 then
