@@ -61,6 +61,8 @@ end
 ---@param action number
 ---@param opts? ActionOptions
 function ActionsEngine.start_action(action, opts)
+  Log.debug('Start Action({})...', get_action_name(action))
+
   local sln, eln = api.nvim_buf_get_mark(0, '<'), api.nvim_buf_get_mark(0, '>')
   local window = api.nvim_get_current_win()
   local buffer = api.nvim_win_get_buf(window)
@@ -69,13 +71,15 @@ function ActionsEngine.start_action(action, opts)
     Log.debug('Action: No more suggestions')
   end
 
+  Log.debug('sln: {}, eln: {}', sln, eln)
+
   Promise:new(function(resolve, reject)
     Sessions.request_generate_one_stage(0, {
       window = window,
       buffer = buffer,
       range = { sln[1] - 1, eln[1] - 1 },
       prompt_ty = get_action_type(action),
-      solved_content = nil,
+      solved_content = opts and opts.content,
       solved_prefix = nil,
       prompt = opts and opts.prompt,
     }, function(_, prompt, suggestions)
@@ -102,9 +106,9 @@ function ActionsEngine.document_code(opts)
 end
 
 function ActionsEngine.edit_code(opts)
-  local input_opts = { prompt = 'Prompt for FittenCode: ', default = '', }
+  local input_opts = { prompt = 'Prompt for FittenCode EditCode: ', default = '', }
   vim.ui.input(input_opts, function(prompt)
-    Log.debug('Prompt for FittenCode: ' .. prompt)
+    Log.debug('Prompt for FittenCode EditCode: ' .. prompt)
     ActionsEngine.start_action(Actions.EditCode, {
       prompt = prompt }
     )
@@ -124,7 +128,13 @@ function ActionsEngine.generate_unit_test(opts)
 end
 
 function ActionsEngine.start_chat(opts)
-  return ActionsEngine.start_action(Actions.StartChat, opts)
+  local input_opts = { prompt = 'Ask... (Fitten Code Fast): ', default = '', }
+  vim.ui.input(input_opts, function(content)
+    Log.debug('Ask... (Fitten Code Fast): ' .. content)
+    ActionsEngine.start_action(Actions.StartChat, {
+      content = content }
+    )
+  end)
 end
 
 function ActionsEngine.setup()
