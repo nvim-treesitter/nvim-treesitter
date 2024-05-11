@@ -51,8 +51,11 @@ function M:execute(ctx)
     if ctx.solved_content then
       content = ctx.solved_content
     else
-      content = table.concat(api.nvim_buf_get_text(ctx.buffer, ctx.range[1], 0, ctx.range[2], 0, {}), '\n')
+      -- if ctx.range[1] == ctx.range[2] then
+      -- content = api.nvim_buf_get_lines(ctx.buffer, ctx.range[1], ctx.range[1] + 1, false)[1]
+      content = table.concat(api.nvim_buf_get_text(ctx.buffer, ctx.range[1], 0, ctx.range[2], -1, {}), '\n')
     end
+    Log.debug('Action Content: {}', content)
     local map_action_prompt = {
       DocumentCode = 'Document the code above',
       EditCode = ctx.prompt,
