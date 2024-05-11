@@ -2,6 +2,7 @@ local api = vim.api
 
 local Base = require('fittencode.base')
 local Config = require('fittencode.config')
+local Error = require('fittencode.error')
 local Log = require('fittencode.log')
 local Sessions = require('fittencode.sessions')
 local Status = require('fittencode.status')
@@ -220,8 +221,10 @@ local function _generate_one_stage(row, col, force, on_success, on_error)
     if on_success then
       on_success(processed)
     end
-  end, function()
-    Status.update(SC.NETWORK_ERROR)
+  end, function(err)
+    if err == Error.ERR_NETWORK then
+      Status.update(SC.NETWORK_ERROR)
+    end
     if on_error then
       on_error()
     end
