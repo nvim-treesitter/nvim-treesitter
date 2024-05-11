@@ -57,6 +57,12 @@ M.api = {
   implement_features = function(opts)
     return ActionsEngine.implement_features(opts)
   end,
+  improve_code = function(opts)
+    return ActionsEngine.improve_code(opts)
+  end,
+  refactor_code = function(opts)
+    return ActionsEngine.refactor_code(opts)
+  end,
   start_chat = function(opts)
     return ActionsEngine.start_chat(opts)
   end,

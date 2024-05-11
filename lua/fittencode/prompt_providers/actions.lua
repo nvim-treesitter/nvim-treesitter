@@ -58,13 +58,15 @@ function M:execute(ctx)
     end
     Log.debug('Action Content: {}', content)
     local map_action_prompt = {
+      StartChat = 'Answers the question above',
       DocumentCode = 'Document the code above',
       EditCode = ctx.prompt,
       ExplainCode = 'Explain the code above',
       FindBugs = 'Find bugs in the code above',
       GenerateUnitTest = 'Generate a unit test for the code above',
       ImplementFeatures = 'Implement the features mentioned in the code above',
-      StartChat = 'Answers the question above'
+      ImproveCode = 'Improve the code above',
+      RefactorCode = 'Refactor the code above',
     }
     local key = ctx.prompt_ty:sub(#NAME + 2)
     local prompt = ctx.prompt or map_action_prompt[key]

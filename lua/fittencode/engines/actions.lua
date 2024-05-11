@@ -11,13 +11,15 @@ local schedule = Base.schedule
 local ActionsEngine = {}
 
 local Actions = {
-  DocumentCode = 0,
-  EditCode = 1,
-  ExplainCode = 2,
-  FindBugs = 3,
-  GenerateUnitTest = 4,
-  ImplementFeatures = 5,
-  StartChat = 6
+  StartChat = 0,
+  DocumentCode = 1,
+  EditCode = 2,
+  ExplainCode = 3,
+  FindBugs = 4,
+  GenerateUnitTest = 5,
+  ImplementFeatures = 6,
+  ImproveCode = 7,
+  RefactorCode = 8,
 }
 
 ---@class ActionOptions
@@ -130,6 +132,14 @@ end
 
 function ActionsEngine.implement_features(opts)
   return ActionsEngine.start_action(Actions.ImplementFeatures, opts)
+end
+
+function ActionsEngine.improve_code(opts)
+  return ActionsEngine.start_action(Actions.ImproveCode, opts)
+end
+
+function ActionsEngine.refactor_code(opts)
+  return ActionsEngine.start_action(Actions.RefactorCode, opts)
 end
 
 function ActionsEngine.start_chat(opts)
