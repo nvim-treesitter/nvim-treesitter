@@ -7,8 +7,11 @@ local Log = require('fittencode.log')
 local Promise = require('fittencode.concurrency.promise')
 local PromptProviders = require('fittencode.prompt_providers')
 local Sessions = require('fittencode.sessions')
+local Status = require('fittencode.status')
 
 local schedule = Base.schedule
+
+local SC = Status.C
 
 local ActionsEngine = {}
 
@@ -61,7 +64,7 @@ local function chain_actions(action, solved_prefix, on_error)
     if not lines then
       schedule(on_error)
     else
-      chat:append_text(lines)
+      chat:commit(lines)
       local new_solved_prefix = prompt.prefix .. lines
       chain_actions(action, new_solved_prefix, on_error)
     end
@@ -80,6 +83,8 @@ function ActionsEngine.start_action(action, opts)
 
   Log.debug('Start Action({})...', action_name)
 
+  Status.update(SC.GENERATING)
+
   local sln, eln = api.nvim_buf_get_mark(0, '<'), api.nvim_buf_get_mark(0, '>')
   local window = api.nvim_get_current_win()
   local buffer = api.nvim_win_get_buf(window)
@@ -89,9 +94,14 @@ function ActionsEngine.start_action(action, opts)
 
   local on_error = function()
     Log.debug('Action: No more suggestions')
-    chat:append_text('Q.E.D.\n', true)
-    Log.debug('Chat text: {}', chat.text)
+    chat:commit('Q.E.D.\n', true)
     current_eval = current_eval + 1
+    Log.debug('Chat text: {}', chat.text)
+    if #chat.text > 0 then
+      Status.update(SC.SUGGESTIONS_READY)
+    else
+      Status.update(SC.NO_MORE_SUGGESTIONS)
+    end
   end
 
   Log.debug('sln: {}, eln: {}', sln, eln)
@@ -112,8 +122,8 @@ function ActionsEngine.start_action(action, opts)
   end
   local source_info = ' (' .. prompt_preview.filename .. ' ' .. sln[1] .. ':' .. eln[1] .. ')'
   local c_in = '# In`[' .. current_eval .. ']`:= ' .. action_name .. source_info
-  chat:append_text(c_in)
-  chat:append_text(prompt_preview.content)
+  chat:commit(c_in)
+  chat:commit(prompt_preview.content)
 
   Promise:new(function(resolve, reject)
     Sessions.request_generate_one_stage(0, prompt_opts, function(_, prompt, suggestions)
@@ -123,8 +133,8 @@ function ActionsEngine.start_action(action, opts)
         reject()
       else
         local c_out = '# Out`[' .. current_eval .. ']`='
-        chat:append_text(c_out)
-        chat:append_text(lines, true)
+        chat:commit(c_out)
+        chat:commit(lines, true)
         local solved_prefix = prompt.prefix .. lines
         resolve(solved_prefix)
       end

@@ -5,7 +5,7 @@ local Base = require('fittencode.base')
 ---@field buffer? integer
 ---@field text? string
 ---@field show function
----@field append_text function
+---@field commit function
 
 local M = {}
 
@@ -55,7 +55,7 @@ function M:close()
   self.buffer = nil
 end
 
-function M:append_text(text, linebreak)
+function M:commit(text, linebreak)
   local lines = vim.split(text, '\n')
   if linebreak and #self.text > 0 and #lines > 0 then
     if lines[1] ~= '' and not string.match(lines[1], '^```') and self.text[#self.text] ~= '' and not string.match(self.text[#self.text], '^```') then
