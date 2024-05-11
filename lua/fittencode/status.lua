@@ -8,8 +8,8 @@ local M = {}
 ---@type StatusCodes
 local C = {
   IDLE = 0,
-  REQUESTING = 1,
-  REQUEST_ERROR = 2,
+  GENERATING = 1,
+  NETWORK_ERROR = 2,
   NO_MORE_SUGGESTIONS = 3,
   SUGGESTIONS_READY = 4,
 }
@@ -36,7 +36,7 @@ M.update = function(status)
     Log.debug('STATUS updated to {}', get_status_message(status))
   end
   Base.debounce(idle_timer, function()
-    if vim.tbl_contains({ C.REQUEST_ERROR, C.NO_MORE_SUGGESTIONS }, current) then
+    if vim.tbl_contains({ C.NETWORK_ERROR, C.NO_MORE_SUGGESTIONS }, current) then
       M.update(C.IDLE)
     end
   end, IDLE_CYCLE)

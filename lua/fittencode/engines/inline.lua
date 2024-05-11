@@ -183,7 +183,7 @@ end
 ---@param on_success? function
 ---@param on_error? function
 local function _generate_one_stage(row, col, force, on_success, on_error)
-  Status.update(SC.REQUESTING)
+  Status.update(SC.GENERATING)
 
   if not Sessions.ready_for_generate() then
     Log.debug('Not ready for generate')
@@ -221,7 +221,7 @@ local function _generate_one_stage(row, col, force, on_success, on_error)
       on_success(processed)
     end
   end, function()
-    Status.update(SC.REQUEST_ERROR)
+    Status.update(SC.NETWORK_ERROR)
     if on_error then
       on_error()
     end
