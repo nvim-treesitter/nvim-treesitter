@@ -2,8 +2,10 @@ local api = vim.api
 local fn = vim.fn
 
 local Base = require('fittencode.base')
+local Chat = require('fittencode.views.chat')
 local Log = require('fittencode.log')
 local Promise = require('fittencode.concurrency.promise')
+local PromptProviders = require('fittencode.prompt_providers')
 local Sessions = require('fittencode.sessions')
 
 local schedule = Base.schedule
@@ -22,39 +24,46 @@ local Actions = {
   RefactorCode = 8,
 }
 
+local current_eval = 1
+
+---@type Chat
+local chat = nil
+
 ---@class ActionOptions
 ---@field prompt? string
 ---@field content? string
 
 local function get_action_name(action)
-  return Base.tbl_key_by_value(Actions, action, '????')
+  return Base.tbl_key_by_value(Actions, action)
 end
 
 local function get_action_type(action)
   return 'FittenCodePrompt/Actions/' .. get_action_name(action)
 end
 
-local function make_solved_prefix(prefix, suggestions)
+local function process_suggestions(suggestions)
   if not suggestions then
     return
   end
   suggestions = vim.tbl_filter(function(s) return #s > 0 end, suggestions)
   if #suggestions ~= 0 then
-    return prefix .. table.concat(suggestions, '\n') .. '\n'
+    return table.concat(suggestions, '\n') .. '\n'
   end
 end
 
-local function chian_action(action, solved_prefix, on_error)
+local function chain_actions(action, solved_prefix, on_error)
   Sessions.request_generate_one_stage(0, {
     prompt_ty = get_action_type(action),
     solved_prefix = solved_prefix,
   }, function(_, prompt, suggestions)
     Log.debug('Suggestions for Actions: {}', suggestions)
-    local new_solved_prefix = make_solved_prefix(prompt.prefix, suggestions)
-    if not new_solved_prefix then
+    local lines = process_suggestions(suggestions)
+    if not lines then
       schedule(on_error)
     else
-      chian_action(action, new_solved_prefix, on_error)
+      chat:append_text(lines)
+      local new_solved_prefix = prompt.prefix .. lines
+      chain_actions(action, new_solved_prefix, on_error)
     end
   end, function()
     schedule(on_error)
@@ -64,7 +73,14 @@ end
 ---@param action number
 ---@param opts? ActionOptions
 function ActionsEngine.start_action(action, opts)
-  Log.debug('Start Action({})...', get_action_name(action))
+  local action_name = get_action_name(action)
+  if not action_name then
+    return
+  end
+
+  Log.debug('Start Action({})...', action_name)
+
+  chat:show()
 
   local sln, eln = api.nvim_buf_get_mark(0, '<'), api.nvim_buf_get_mark(0, '>')
   local window = api.nvim_get_current_win()
@@ -72,32 +88,44 @@ function ActionsEngine.start_action(action, opts)
 
   local on_error = function()
     Log.debug('Action: No more suggestions')
+    chat:append_text('\nQ.E.D.\n')
+    Log.debug('chat text: {}', chat.text)
+    current_eval = current_eval + 1
   end
 
   Log.debug('sln: {}, eln: {}', sln, eln)
 
+  local prompt_opts = {
+    window = window,
+    buffer = buffer,
+    range = { sln[1] - 1, eln[1] - 1 },
+    filetype = vim.bo.filetype,
+    prompt_ty = get_action_type(action),
+    solved_content = opts and opts.content,
+    solved_prefix = nil,
+    prompt = opts and opts.prompt,
+  }
+  local prompt_preview = PromptProviders.get_prompt_one(prompt_opts)
+  local c_in = 'In[' .. current_eval .. ']:= ' .. action_name .. '\n'
+  chat:append_text(c_in .. prompt_preview.content .. '\n\n')
+
   Promise:new(function(resolve, reject)
-    Sessions.request_generate_one_stage(0, {
-      window = window,
-      buffer = buffer,
-      range = { sln[1] - 1, eln[1] - 1 },
-      prompt_ty = get_action_type(action),
-      solved_content = opts and opts.content,
-      solved_prefix = nil,
-      prompt = opts and opts.prompt,
-    }, function(_, prompt, suggestions)
+    Sessions.request_generate_one_stage(0, prompt_opts, function(_, prompt, suggestions)
       Log.debug('Suggestions for Actions: {}', suggestions)
-      local solved_prefix = make_solved_prefix(prompt.prefix, suggestions)
-      if not solved_prefix then
+      local lines = process_suggestions(suggestions)
+      if not lines then
         reject()
       else
+        local c_out = 'Out[' .. current_eval .. ']=\n'
+        chat:append_text(c_out .. lines)
+        local solved_prefix = prompt.prefix .. lines
         resolve(solved_prefix)
       end
     end, function()
       reject()
     end)
   end):forward(function(solved_prefix)
-    chian_action(action, solved_prefix, on_error)
+    chain_actions(action, solved_prefix, on_error)
   end, function()
     schedule(on_error)
   end
@@ -153,6 +181,7 @@ function ActionsEngine.start_chat(opts)
 end
 
 function ActionsEngine.setup()
+  chat = Chat:new()
 end
 
 return ActionsEngine

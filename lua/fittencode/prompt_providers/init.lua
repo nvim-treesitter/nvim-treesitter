@@ -11,11 +11,13 @@ local M = {}
 ---@field filename string
 ---@field prefix string
 ---@field suffix string
+---@field content string
 ---@field within_the_line boolean
 
 ---@class PromptContext
 ---@field window? integer
 ---@field buffer? integer
+---@field filetype? string
 ---@field prompt_ty? string
 ---@field row? integer
 ---@field col? integer
@@ -94,6 +96,7 @@ function M.get_current_prompt_ctx()
   return {
     window = window,
     buffer = buffer,
+    filetype = vim.bo.filetype,
     prompt_ty = vim.bo.filetype,
     row = row,
     col = col,

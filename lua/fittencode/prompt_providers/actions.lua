@@ -40,6 +40,7 @@ function M:execute(ctx)
   end
 
   local within_the_line = false
+  local content = ''
 
   local prefix = ''
   if ctx.solved_prefix then
@@ -47,7 +48,6 @@ function M:execute(ctx)
   else
     -- FIXME: Improve prompt construction! full content with line:col info?
     ---@diagnostic disable-next-line: param-type-mismatch
-    local content = ''
     if ctx.solved_content then
       content = ctx.solved_content
     else
@@ -56,6 +56,8 @@ function M:execute(ctx)
       -- content = table.concat(api.nvim_buf_get_text(ctx.buffer, 0, 0, -1, -1, {}), '\n')
       content = table.concat(api.nvim_buf_get_text(ctx.buffer, ctx.range[1], 0, ctx.range[2], -1, {}), '\n')
     end
+    local filetype = ctx.filetype or ''
+    content = '```' .. filetype .. '\n' .. content .. '\n```'
     Log.debug('Action Content: {}', content)
     local map_action_prompt = {
       StartChat = 'Answers the question above',
@@ -70,7 +72,7 @@ function M:execute(ctx)
     }
     local key = ctx.prompt_ty:sub(#NAME + 2)
     local prompt = ctx.prompt or map_action_prompt[key]
-    prefix = '```\n' .. content .. '\n```\n' .. 'Dear FittenCode, Please ' .. prompt .. ':\n'
+    prefix = content .. '\n`' .. 'Dear FittenCode, Please ' .. prompt .. ':\n'
   end
   local suffix = ''
 
@@ -80,6 +82,7 @@ function M:execute(ctx)
     name = self.name,
     priority = self.priority,
     filename = filename,
+    content = content,
     prefix = prefix,
     suffix = suffix,
     within_the_line = within_the_line,
