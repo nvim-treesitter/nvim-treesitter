@@ -93,76 +93,48 @@ local function _implement_features(...)
   return API.implement_features(opts)
 end
 
-local function _implement_functions(...)
+local function _action_apis_wrap(fx, ...)
   local args = { ... }
   local opts = {
     language = args[1],
   }
-  return API.implement_functions(opts)
+  return fx(opts)
+end
+
+local function _implement_functions(...)
+  return _action_apis_wrap(API.implement_functions, ...)
 end
 
 local function _implement_class(...)
-  local args = { ... }
-  local opts = {
-    language = args[1],
-  }
-  return API.implement_class(opts)
+  return _action_apis_wrap(API.implement_class, ...)
 end
 
 local function _document_code(...)
-  local args = { ... }
-  local opts = {
-    language = args[1],
-  }
-  return API.document_code(opts)
+  return _action_apis_wrap(API.document_code, ...)
 end
 
 local function _edit_code(...)
-  local args = { ... }
-  local opts = {
-    language = args[1],
-  }
-  return API.edit_code(opts)
+  return _action_apis_wrap(API.edit_code, ...)
 end
 
 local function _explain_code(...)
-  local args = { ... }
-  local opts = {
-    language = args[1],
-  }
-  return API.explain_code(opts)
+  return _action_apis_wrap(API.explain_code, ...)
 end
 
 local function _find_bugs(...)
-  local args = { ... }
-  local opts = {
-    language = args[1],
-  }
-  return API.find_bugs(opts)
+  return _action_apis_wrap(API.find_bugs, ...)
 end
 
 local function _improve_code(...)
-  local args = { ... }
-  local opts = {
-    language = args[1],
-  }
-  return API.improve_code(opts)
+  return _action_apis_wrap(API.improve_code, ...)
 end
 
 local function _refactor_code(...)
-  local args = { ... }
-  local opts = {
-    language = args[1],
-  }
-  return API.refactor_code(opts)
+  return _action_apis_wrap(API.refactor_code, ...)
 end
 
 local function _start_chat(...)
-  local args = { ... }
-  local opts = {
-    language = args[1],
-  }
-  return API.start_chat(opts)
+  return _action_apis_wrap(API.start_chat, ...)
 end
 
 function M.setup_commands()

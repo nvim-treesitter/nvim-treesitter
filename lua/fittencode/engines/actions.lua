@@ -138,6 +138,7 @@ function ActionsEngine.start_action(action, opts)
 
   local action_name = get_action_name(action)
   if not action_name then
+    Log.error('Invalid action: {}', action)
     return
   end
 
@@ -181,7 +182,7 @@ function ActionsEngine.start_action(action, opts)
     Log.debug('Action: No more suggestions')
     Log.debug('Action elapsed time: {}', elapsed_time)
     Log.debug('Action depth: {}', depth)
-    chat:commit('> Q.E.D. ' .. '(' .. elapsed_time .. ' ms)' .. '\n', true)
+    chat:commit('> Q.E.D.' .. '(' .. elapsed_time .. ' ms)' .. '\n', true)
     current_eval = current_eval + 1
     -- Log.debug('Full chat text: {}', chat.text)
     if #chat.text > 0 then
