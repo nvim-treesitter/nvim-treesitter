@@ -62,13 +62,15 @@ function M:commit(text, linebreak)
       table.insert(lines, 1, '')
     end
   end
-  vim.api.nvim_set_option_value('modifiable', true, { buf = self.buffer })
-  if #self.text == 0 then
-    vim.api.nvim_buf_set_lines(self.buffer, 0, -1, false, lines)
-  else
-    vim.api.nvim_buf_set_lines(self.buffer, -1, -1, false, lines)
+  if self.buffer then
+    vim.api.nvim_set_option_value('modifiable', true, { buf = self.buffer })
+    if #self.text == 0 then
+      vim.api.nvim_buf_set_lines(self.buffer, 0, -1, false, lines)
+    else
+      vim.api.nvim_buf_set_lines(self.buffer, -1, -1, false, lines)
+    end
+    vim.api.nvim_set_option_value('modifiable', false, { buf = self.buffer })
   end
-  vim.api.nvim_set_option_value('modifiable', false, { buf = self.buffer })
   table.move(lines, 1, #lines, #self.text + 1, self.text)
 end
 
