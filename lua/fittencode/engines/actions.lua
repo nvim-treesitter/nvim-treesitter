@@ -66,7 +66,7 @@ local function chain_actions(action, solved_prefix, on_error)
       schedule(on_error)
     else
       chat:commit(lines)
-      local new_solved_prefix = prompt.prefix .. lines
+      local new_solved_prefix = prompt.prefix .. lines .. '\n'
       chain_actions(action, new_solved_prefix, on_error)
     end
   end, function(err)
@@ -142,7 +142,7 @@ function ActionsEngine.start_action(action, opts)
         local c_out = '# Out`[' .. current_eval .. ']`='
         chat:commit(c_out)
         chat:commit(lines, true)
-        local solved_prefix = prompt.prefix .. lines
+        local solved_prefix = prompt.prefix .. lines .. '\n'
         resolve(solved_prefix)
       end
     end, function(err)

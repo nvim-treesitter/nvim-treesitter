@@ -1,6 +1,7 @@
 local api = vim.api
 
 local Log = require('fittencode.log')
+local Path = require('fittencode.fs.path')
 
 local M = {}
 
@@ -36,7 +37,7 @@ function M:execute(ctx)
 
   local filename = ''
   if ctx.buffer then
-    filename = api.nvim_buf_get_name(ctx.buffer) or ''
+    filename = Path.name(ctx.buffer)
   end
 
   local within_the_line = false
