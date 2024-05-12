@@ -3,6 +3,7 @@ local fn = vim.fn
 
 local Base = require('fittencode.base')
 local Chat = require('fittencode.views.chat')
+local Config = require('fittencode.config')
 local Log = require('fittencode.log')
 local NetworkError = require('fittencode.client.network_error')
 local Promise = require('fittencode.concurrency.promise')
@@ -143,9 +144,17 @@ function ActionsEngine.start_action(action, opts)
 
   local window = api.nvim_get_current_win()
   local buffer = api.nvim_win_get_buf(window)
-  local sln, eln = api.nvim_buf_get_mark(buffer, '<'), api.nvim_buf_get_mark(buffer, '>')
+  local sln, eln = api.nvim_buf_get_mark(buffer, '<')[1], api.nvim_buf_get_mark(buffer, '>')[1]
 
   Log.debug('sln: {}, eln: {}', sln, eln)
+
+  local vmode = { 'v', 'V', '<C-V>' }
+  Log.debug('mode: {}', api.nvim_get_mode().mode)
+  if vim.tbl_contains(vmode, api.nvim_get_mode().mode) then
+    sln = vim.fn.getpos("'<")[2]
+    eln = vim.fn.getpos("'>")[2]
+    Log.debug('v mode sln: {}, eln: {}', sln, eln)
+  end
 
   chat:show()
   vim.fn.win_gotoid(window)
@@ -174,7 +183,7 @@ function ActionsEngine.start_action(action, opts)
   local prompt_opts = {
     window = window,
     buffer = buffer,
-    range = { sln[1] - 1, eln[1] - 1 },
+    range = { sln - 1, eln - 1 },
     filetype = vim.bo.filetype,
     prompt_ty = get_action_type(action),
     solved_content = opts and opts.content,
@@ -186,7 +195,7 @@ function ActionsEngine.start_action(action, opts)
   if #prompt_preview.filename == 0 then
     prompt_preview.filename = 'unnamed'
   end
-  local source_info = ' (' .. prompt_preview.filename .. ' ' .. sln[1] .. ':' .. eln[1] .. ')'
+  local source_info = ' (' .. prompt_preview.filename .. ' ' .. sln .. ':' .. eln .. ')'
   local c_in = '# In`[' .. current_eval .. ']`:= ' .. action_name .. source_info
   chat:commit(c_in)
   chat:commit(prompt_preview.content)
@@ -275,6 +284,50 @@ function ActionsEngine.setup()
     tag = 'ActionsEngine',
     ready_idle = true,
   })
+  vim.cmd([[
+    anoremenu PopUp.-1- <Nop>
+  ]])
+  if Config.options.action.document_code.show_in_editor_context_menu then
+    vim.cmd([[
+      vnoremenu PopUp.DocumentCode  <Cmd>Fitten document_code<CR>
+    ]])
+  end
+  if Config.options.action.edit_code.show_in_editor_context_menu then
+    vim.cmd([[
+      vnoremenu PopUp.EditCode  <Cmd>Fitten edit_code<CR>
+    ]])
+  end
+  if Config.options.action.explain_code.show_in_editor_context_menu then
+    vim.cmd([[
+      vnoremenu PopUp.ExplainCode  <Cmd>Fitten explain_code<CR>
+    ]])
+  end
+  if Config.options.action.find_bugs.show_in_editor_context_menu then
+    vim.cmd([[
+      vnoremenu PopUp.FindBugs  <Cmd>Fitten find_bugs<CR>
+    ]])
+  end
+  if Config.options.action.generate_unit_test.show_in_editor_context_menu then
+    vim.cmd([[
+      vnoremenu PopUp.GenerateUnitTest  <Cmd>Fitten generate_unit_test<CR>
+    ]])
+  end
+  if Config.options.action.start_chat.show_in_editor_context_menu then
+    vim.cmd([[
+      vnoremenu PopUp.StartChat  <Cmd>Fitten start_chat<CR>
+    ]])
+  end
+  -- vim.cmd([[
+  --   vnoremenu PopUp.DocumentCode  <Cmd>Fitten document_code<CR>
+  --   vnoremenu PopUp.EditCode  <Cmd>Fitten edit_code<CR>
+  --   vnoremenu PopUp.ExplainCode  <Cmd>Fitten explain_code<CR>
+  --   vnoremenu PopUp.FindBugs  <Cmd>Fitten find_bugs<CR>
+  --   vnoremenu PopUp.GenerateUnitTest  <Cmd>Fitten generate_unit_test<CR>
+  --   vnoremenu PopUp.ImplementFeatures  <Cmd>Fitten implement_features<CR>
+  --   vnoremenu PopUp.ImproveCode  <Cmd>Fitten improve_code<CR>
+  --   vnoremenu PopUp.RefactorCode  <Cmd>Fitten refactor_code<CR>
+  --   vnoremenu PopUp.StartChat  <Cmd>Fitten start_chat<CR>
+  -- ]])
 end
 
 function ActionsEngine.get_status()
