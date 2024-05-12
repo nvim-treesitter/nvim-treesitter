@@ -49,14 +49,11 @@ local function get_action_type(action)
   return 'FittenCodePrompt/Actions/' .. get_action_name(action)
 end
 
-local function process_suggestions(suggestions)
+local function filter_suggestions(suggestions)
   if not suggestions then
     return
   end
-  suggestions = vim.tbl_filter(function(s) return #s > 0 end, suggestions)
-  if #suggestions ~= 0 then
-    return table.concat(suggestions, '\n')
-  end
+  return vim.tbl_filter(function(s) return #s > 0 end, suggestions)
 end
 
 local function chain_actions(action, solved_prefix, on_error)
@@ -65,12 +62,12 @@ local function chain_actions(action, solved_prefix, on_error)
     solved_prefix = solved_prefix,
   }, function(_, prompt, suggestions)
     Log.debug('Suggestions for Actions: {}', suggestions)
-    local lines = process_suggestions(suggestions)
-    if not lines then
+    local lines = filter_suggestions(suggestions)
+    if not lines or #lines == 0 then
       schedule(on_error)
     else
       chat:commit(lines)
-      local new_solved_prefix = prompt.prefix .. lines .. '\n'
+      local new_solved_prefix = prompt.prefix .. table.concat(lines, '\n') .. '\n'
       chain_actions(action, new_solved_prefix, on_error)
     end
   end, function(err)
@@ -140,14 +137,14 @@ function ActionsEngine.start_action(action, opts)
   Promise:new(function(resolve, reject)
     Sessions.request_generate_one_stage(0, prompt_opts, function(_, prompt, suggestions)
       Log.debug('Suggestions for Actions: {}', suggestions)
-      local lines = process_suggestions(suggestions)
-      if not lines then
+      local lines = filter_suggestions(suggestions)
+      if not lines or #lines == 0 then
         reject()
       else
         local c_out = '# Out`[' .. current_eval .. ']`='
         chat:commit(c_out)
         chat:commit(lines, true)
-        local solved_prefix = prompt.prefix .. lines .. '\n'
+        local solved_prefix = prompt.prefix .. table.concat(lines, '\n') .. '\n'
         resolve(solved_prefix)
       end
     end, function(err)

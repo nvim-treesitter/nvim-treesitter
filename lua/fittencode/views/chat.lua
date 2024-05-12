@@ -57,7 +57,14 @@ function M:close()
 end
 
 function M:commit(text, linebreak)
-  local lines = vim.split(text, '\n')
+  local lines = nil
+  if type(text) == 'string' then
+    lines = vim.split(text, '\n')
+  elseif type(text) == 'table' then
+    lines = text
+  else
+    return
+  end
   if linebreak and #self.text > 0 and #lines > 0 then
     if lines[1] ~= '' and not string.match(lines[1], '^```') and self.text[#self.text] ~= '' and not string.match(self.text[#self.text], '^```') then
       table.insert(lines, 1, '')
