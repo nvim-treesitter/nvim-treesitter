@@ -99,6 +99,7 @@ function M.setup_commands()
     improve_code = API.improve_code,
     refactor_code = API.refactor_code,
     start_chat = API.start_chat,
+    stop_eval = API.stop_eval,
   }
   Base.command('Fitten', function(line)
     ---@type string[]

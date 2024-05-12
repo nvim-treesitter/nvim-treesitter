@@ -61,6 +61,8 @@ local lock = false
 local elapsed_time = 0
 local depth = 0
 
+local stop_eval = false
+
 ---@type Status
 local status = nil
 
@@ -93,6 +95,13 @@ local function filter_suggestions(task_id, suggestions)
 end
 
 local function chain_actions(action, solved_prefix, on_error)
+  Log.debug('Chain Action({})...', get_action_name(action))
+  if stop_eval then
+    stop_eval = false
+    schedule(on_error)
+    Log.debug('Stop evaluation')
+    return
+  end
   local task_id = tasks:create(0, 0)
   Sessions.request_generate_one_stage(task_id, {
     prompt_ty = get_action_type(action),
@@ -332,6 +341,10 @@ end
 
 function ActionsEngine.get_status()
   return status:get_current()
+end
+
+function ActionsEngine.stop_eval()
+  stop_eval = true
 end
 
 return ActionsEngine
