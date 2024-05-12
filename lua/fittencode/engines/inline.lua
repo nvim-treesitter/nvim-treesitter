@@ -21,10 +21,14 @@ local cache = nil
 ---@class TaskScheduler
 local tasks = nil
 
+---@type Status
+local status = nil
+
 function M.setup()
   cache = SuggestionsCache:new()
   tasks = TaskScheduler:new()
   tasks:setup()
+  status = Status:new({ tag = 'InlineEngine' })
 end
 
 ---@param suggestions string[]
@@ -184,7 +188,7 @@ end
 ---@param on_success? function
 ---@param on_error? function
 local function _generate_one_stage(row, col, force, on_success, on_error)
-  Status.update(SC.GENERATING)
+  status:update(SC.GENERATING)
 
   if not Sessions.ready_for_generate() then
     Log.debug('Not ready for generate')
@@ -199,7 +203,7 @@ local function _generate_one_stage(row, col, force, on_success, on_error)
 
   if not force and cache:equal_cursor(row, col) and M.has_suggestions() then
     Log.debug('Cached cursor matches requested cursor')
-    Status.update(SC.SUGGESTIONS_READY)
+    status:update(SC.SUGGESTIONS_READY)
     if on_error then
       on_error()
     end
@@ -214,16 +218,16 @@ local function _generate_one_stage(row, col, force, on_success, on_error)
     local processed = process_suggestions(id, suggestions)
     if processed then
       apply_suggestion(task_id, row, col, processed)
-      Status.update(SC.SUGGESTIONS_READY)
+      status:update(SC.SUGGESTIONS_READY)
     else
-      Status.update(SC.NO_MORE_SUGGESTIONS)
+      status:update(SC.NO_MORE_SUGGESTIONS)
     end
     if on_success then
       on_success(processed)
     end
   end, function(err)
     if type(err) == 'table' and getmetatable(err) == NetworkError then
-      Status.update(SC.NETWORK_ERROR)
+      status:update(SC.NETWORK_ERROR)
     end
     if on_error then
       on_error()
@@ -423,7 +427,7 @@ function M.reset()
     Lines.clear_virt_text()
   end
   cache:flush()
-  Status.update(SC.IDLE)
+  status:update(SC.IDLE)
 end
 
 function M.advance()
@@ -506,6 +510,10 @@ function M.lazy_inline_completion()
     end
   end
   return false
+end
+
+function M.get_status()
+  return status:get_current()
 end
 
 return M

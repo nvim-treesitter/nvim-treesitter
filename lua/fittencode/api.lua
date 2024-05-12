@@ -1,8 +1,8 @@
 local ActionsEngine = require('fittencode.engines.actions')
 local InlineEngine = require('fittencode.engines.inline')
+local Engines = require('fittencode.engines')
 local Log = require('fittencode.log')
 local Sessions = require('fittencode.sessions')
-local Status = require('fittencode.status')
 
 local M = {}
 
@@ -24,7 +24,7 @@ M.api = {
   end,
   ---@return integer
   get_current_status = function()
-    return Status.get_current()
+    return Engines.get_status()
   end,
   ---@return boolean
   has_suggestions = function()

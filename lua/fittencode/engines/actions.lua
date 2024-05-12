@@ -15,6 +15,23 @@ local schedule = Base.schedule
 
 local SC = Status.C
 
+---@class ActionsEngine
+---@field chat Chat
+---@field tasks TaskScheduler
+---@field status Status
+---@field lock boolean
+---@field elapsed_time number
+---@field depth number
+---@field current_eval number
+---@field start_chat function
+---@field document_code function
+---@field edit_code function
+---@field explain_code function
+---@field find_bugs function
+---@field generate_unit_test function
+---@field implement_features function
+---@field improve_code function
+---@field refactor_code function
 local ActionsEngine = {}
 
 local Actions = {
@@ -42,6 +59,9 @@ local lock = false
 
 local elapsed_time = 0
 local depth = 0
+
+---@type Status
+local status = nil
 
 ---@class ActionOptions
 ---@field prompt? string
@@ -119,7 +139,7 @@ function ActionsEngine.start_action(action, opts)
   elapsed_time = 0
   depth = 0
 
-  Status.update(SC.GENERATING)
+  status:update(SC.GENERATING)
 
   local window = api.nvim_get_current_win()
   local buffer = api.nvim_win_get_buf(window)
@@ -134,7 +154,7 @@ function ActionsEngine.start_action(action, opts)
     lock = false
     if type(err) == 'table' and getmetatable(err) == NetworkError then
       Log.error('Error in Action: {}', err)
-      Status.update(SC.NETWORK_ERROR)
+      status:update(SC.NETWORK_ERROR)
       return
     end
     Log.debug('Action: No more suggestions')
@@ -145,9 +165,9 @@ function ActionsEngine.start_action(action, opts)
     Log.debug('Full chat text: {}', chat.text)
     if #chat.text > 0 then
       -- FIXME: A better status update is needed
-      Status.update(SC.SUGGESTIONS_READY)
+      status:update(SC.SUGGESTIONS_READY)
     else
-      Status.update(SC.NO_MORE_SUGGESTIONS)
+      status:update(SC.NO_MORE_SUGGESTIONS)
     end
   end
 
@@ -251,6 +271,14 @@ function ActionsEngine.setup()
   chat = Chat:new()
   tasks = TaskScheduler:new()
   tasks:setup()
+  status = Status:new({
+    tag = 'ActionsEngine',
+    ready_idle = true,
+  })
+end
+
+function ActionsEngine.get_status()
+  return status:get_current()
 end
 
 return ActionsEngine
