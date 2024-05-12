@@ -51,7 +51,7 @@
     "revision": "82fb86aa544843bd17a9f0f3dc16edf645a34349"
   },
   "c_sharp": {
-    "revision": "f47328563999efb9d6438d8ea28999711fbe473f"
+    "revision": "82fa8f05f41a33e9bc830f85d74a9548f0291738"
   },
   "cairo": {
     "revision": "6238f609bea233040fe927858156dee5515a0745"
@@ -93,7 +93,7 @@
     "revision": "7eb7297823605392d2bbcc4c09b1cd18d6fa9529"
   },
   "cuda": {
-    "revision": "c794560823013fc4cc29944d862b7158d9585408"
+    "revision": "e7878a9cf4157e9d6c8013ff5605c9f26d62894d"
   },
   "cue": {
     "revision": "8a5f273bfa281c66354da562f2307c2d394b6c81"
@@ -225,7 +225,7 @@
     "revision": "6b25d265c990139353e1f7f97baf84987ebb7bf0"
   },
   "glsl": {
-    "revision": "9f611774fb5b95993e31e03f137b4a689c63f827"
+    "revision": "8c9fb41836dc202bbbcf0e2369f256055786dedb"
   },
   "gn": {
     "revision": "bc06955bc1e3c9ff8e9b2b2a55b38b94da923c05"
@@ -288,7 +288,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "de5d490e52aa7be2a877df7022f93dff05f03eb9"
+    "revision": "feea0ff6eccda8be958c133985dca8977db3d887"
   },
   "hlsplaylist": {
     "revision": "64f19029339e75d6762feae39e7878595860c980"
@@ -435,7 +435,7 @@
     "revision": "bd17c824196ce70800f64ad39cfddd1b17acc13f"
   },
   "mlir": {
-    "revision": "2812b6c6aa03f1ca8dba2fb1c33d14abb87809e7"
+    "revision": "a708e9b3f3d7f2fc85ac3fd1d4317c51b101eab0"
   },
   "muttrc": {
     "revision": "90ef60852c410bd964cd3b954366e4c403c17314"
@@ -645,7 +645,7 @@
     "revision": "ba1b3868eaa960b945593404af9a7c2f296d3643"
   },
   "solidity": {
-    "revision": "fa5c61c7c5a2d9e8e99439e2cec90225f4acb86b"
+    "revision": "b5a23ead0f69d38b5c9a630f52f5c129132c16ed"
   },
   "soql": {
     "revision": "c99ad4b16d112fea91745e3f1b769754239fdaba"
@@ -654,7 +654,7 @@
     "revision": "c99ad4b16d112fea91745e3f1b769754239fdaba"
   },
   "sourcepawn": {
-    "revision": "3ca89fdf998340a7973e276b39516d8902950f86"
+    "revision": "6a67772eed866cd6d247cc478a28c6a9272fc0ef"
   },
   "sparql": {
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
