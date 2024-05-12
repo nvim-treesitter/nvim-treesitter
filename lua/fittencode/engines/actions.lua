@@ -37,6 +37,7 @@ local chat = nil
 ---@class TaskScheduler
 local tasks = nil
 
+-- One by one evaluation
 local lock = false
 
 local elapsed_time = 0
@@ -109,6 +110,12 @@ function ActionsEngine.start_action(action, opts)
 
   Log.debug('Start Action({})...', action_name)
 
+  if lock then
+    Log.debug('Action is locked, skipping')
+    return
+  end
+
+  lock = true
   elapsed_time = 0
   depth = 0
 
@@ -124,6 +131,7 @@ function ActionsEngine.start_action(action, opts)
   vim.fn.win_gotoid(window)
 
   local on_error = function(err)
+    lock = false
     if type(err) == 'table' and getmetatable(err) == NetworkError then
       Log.error('Error in Action: {}', err)
       Status.update(SC.NETWORK_ERROR)
