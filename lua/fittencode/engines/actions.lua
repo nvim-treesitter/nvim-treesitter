@@ -40,6 +40,7 @@ local tasks = nil
 local lock = false
 
 local elapsed_time = 0
+local depth = 0
 
 ---@class ActionOptions
 ---@field prompt? string
@@ -85,6 +86,7 @@ local function chain_actions(action, solved_prefix, on_error)
         schedule(on_error)
       else
         elapsed_time = elapsed_time + ms
+        depth = depth + 1
         chat:commit(lines)
         local new_solved_prefix = prompt.prefix .. table.concat(lines, '\n') .. '\n'
         chain_actions(action, new_solved_prefix, on_error)
@@ -108,6 +110,7 @@ function ActionsEngine.start_action(action, opts)
   Log.debug('Start Action({})...', action_name)
 
   elapsed_time = 0
+  depth = 0
 
   Status.update(SC.GENERATING)
 
@@ -128,6 +131,7 @@ function ActionsEngine.start_action(action, opts)
     end
     Log.debug('Action: No more suggestions')
     Log.debug('Action elapsed time: {}', elapsed_time)
+    Log.debug('Action depth: {}', depth)
     chat:commit('> Q.E.D.' .. '(' .. elapsed_time .. ' ms)' .. '\n', true)
     current_eval = current_eval + 1
     Log.debug('Full chat text: {}', chat.text)
@@ -167,6 +171,7 @@ function ActionsEngine.start_action(action, opts)
       if not lines or #lines == 0 then
         reject()
       else
+        depth = depth + 1
         elapsed_time = elapsed_time + ms
         local c_out = '# Out`[' .. current_eval .. ']`='
         chat:commit(c_out)
