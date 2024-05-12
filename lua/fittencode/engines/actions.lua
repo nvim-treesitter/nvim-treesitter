@@ -293,37 +293,37 @@ function ActionsEngine.setup()
     tag = 'ActionsEngine',
     ready_idle = true,
   })
-  vim.cmd([[
-    anoremenu PopUp.-1- <Nop>
-  ]])
+  -- vim.cmd([[
+  --   anoremenu PopUp.-1- <Nop>
+  -- ]])
   if Config.options.action.document_code.show_in_editor_context_menu then
     vim.cmd([[
-      vnoremenu PopUp.DocumentCode  <Cmd>Fitten document_code<CR>
+      vnoremenu PopUp.Fitten\ Code\ -\ Document\ Code  <Cmd>Fitten document_code<CR>
     ]])
   end
   if Config.options.action.edit_code.show_in_editor_context_menu then
     vim.cmd([[
-      vnoremenu PopUp.EditCode  <Cmd>Fitten edit_code<CR>
+      vnoremenu PopUp.Fitten\ Code\ -\ Edit\ Code  <Cmd>Fitten edit_code<CR>
     ]])
   end
   if Config.options.action.explain_code.show_in_editor_context_menu then
     vim.cmd([[
-      vnoremenu PopUp.ExplainCode  <Cmd>Fitten explain_code<CR>
+      vnoremenu PopUp.Fitten\ Code\ -\ Explain\ Code  <Cmd>Fitten explain_code<CR>
     ]])
   end
   if Config.options.action.find_bugs.show_in_editor_context_menu then
     vim.cmd([[
-      vnoremenu PopUp.FindBugs  <Cmd>Fitten find_bugs<CR>
+      vnoremenu PopUp.Fitten\ Code\ -\ Find\ Bugs  <Cmd>Fitten find_bugs<CR>
     ]])
   end
   if Config.options.action.generate_unit_test.show_in_editor_context_menu then
     vim.cmd([[
-      vnoremenu PopUp.GenerateUnitTest  <Cmd>Fitten generate_unit_test<CR>
+      vnoremenu PopUp.Fitten\ Code\ -\ Generate\ UnitTest  <Cmd>Fitten generate_unit_test<CR>
     ]])
   end
   if Config.options.action.start_chat.show_in_editor_context_menu then
     vim.cmd([[
-      vnoremenu PopUp.StartChat  <Cmd>Fitten start_chat<CR>
+      vnoremenu PopUp.Fitten\ Code\ -\ Start\ Chat  <Cmd>Fitten start_chat<CR>
     ]])
   end
   -- vim.cmd([[
