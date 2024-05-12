@@ -88,7 +88,7 @@ local function filter_suggestions(task_id, suggestions)
   end
   local matched, ms = tasks:match_clean(task_id, 0, 0)
   if not matched then
-    Log.debug('Completion request is outdated, discarding; task_id: {}', task_id)
+    Log.debug('Action request is outdated, discarding task: {}', task_id)
     return
   end
   return vim.tbl_filter(function(s) return #s > 0 end, suggestions), ms
@@ -107,7 +107,7 @@ local function chain_actions(action, solved_prefix, on_error)
     prompt_ty = get_action_type(action),
     solved_prefix = solved_prefix,
   }, function(_, prompt, suggestions)
-    Log.debug('Suggestions for Actions: {}', suggestions)
+    -- Log.debug('Suggestions for Actions: {}', suggestions)
     local lines, ms = filter_suggestions(task_id, suggestions)
     if not lines or #lines == 0 then
       schedule(on_error)
@@ -180,7 +180,7 @@ function ActionsEngine.start_action(action, opts)
     Log.debug('Action depth: {}', depth)
     chat:commit('> Q.E.D.' .. '(' .. elapsed_time .. ' ms)' .. '\n', true)
     current_eval = current_eval + 1
-    Log.debug('Full chat text: {}', chat.text)
+    -- Log.debug('Full chat text: {}', chat.text)
     if #chat.text > 0 then
       -- FIXME: A better status update is needed
       status:update(SC.SUGGESTIONS_READY)
@@ -212,7 +212,7 @@ function ActionsEngine.start_action(action, opts)
   Promise:new(function(resolve, reject)
     local task_id = tasks:create(0, 0)
     Sessions.request_generate_one_stage(task_id, prompt_opts, function(_, prompt, suggestions)
-      Log.debug('Suggestions for Actions: {}', suggestions)
+      -- Log.debug('Suggestions for Actions: {}', suggestions)
       local lines, ms = filter_suggestions(task_id, suggestions)
       if not lines or #lines == 0 then
         reject()
