@@ -36,9 +36,9 @@ local chat = nil
 ---@class ActionOptions
 ---@field prompt? string
 ---@field content? string
+---@class language? string
 
 ---@class GenerateUnitTestOptions : ActionOptions
----@class language string
 ---@field test_framework string
 
 local function get_action_name(action)

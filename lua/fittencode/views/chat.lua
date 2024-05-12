@@ -42,6 +42,7 @@ function M:show()
 
     if #self.text > 0 then
       vim.api.nvim_buf_set_lines(self.buffer, 0, -1, false, self.text)
+      vim.api.nvim_win_set_cursor(self.win, { #self.text, 0 })
     end
   end
 end
@@ -72,6 +73,7 @@ function M:commit(text, linebreak)
     vim.api.nvim_set_option_value('modifiable', false, { buf = self.buffer })
   end
   table.move(lines, 1, #lines, #self.text + 1, self.text)
+  vim.api.nvim_win_set_cursor(self.win, { #self.text, 0 })
 end
 
 return M
