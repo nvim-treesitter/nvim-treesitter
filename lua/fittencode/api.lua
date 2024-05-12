@@ -57,6 +57,12 @@ M.api = {
   implement_features = function(opts)
     return ActionsEngine.implement_features(opts)
   end,
+  implement_functions = function(opts)
+    return ActionsEngine.implement_functions(opts)
+  end,
+  implement_classes = function(opts)
+    return ActionsEngine.implement_classes(opts)
+  end,
   improve_code = function(opts)
     return ActionsEngine.improve_code(opts)
   end,

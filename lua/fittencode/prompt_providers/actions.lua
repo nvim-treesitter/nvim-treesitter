@@ -77,7 +77,15 @@ function M:execute(ctx)
         end
         return 'Generate a unit test for the code above'
       end,
-      ImplementFeatures = 'Implement the features mentioned in the code above',
+      ImplementFeatures = function(opts)
+        opts = opts or {}
+        local ft = opts.language or filetype
+        local feature_type = opts.feature_type or 'features'
+        if #ft ~= 0 then
+          return 'Implement the ' .. feature_type .. ' mentioned in the code above in ' .. ft
+        end
+        return 'Implement the ' .. feature_type .. ' mentioned in the code above'
+      end,
       ImproveCode = 'Improve the code above',
       RefactorCode = 'Refactor the code above',
     }

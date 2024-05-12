@@ -23,7 +23,7 @@ Fitten Code AI Programming Assistant for Neovim, helps you to use AI for automat
 - 🔎 Accept word with `Ctrl + ➡️`
 - ❄️ Undo accepted text
 - 🧨 Automatic scrolling when previewing or completing code
-- 🍭 Multi rest backends such as `curl`, `libcurl` (WIP)
+- 🍭 Multiple HTTP/REST backends such as `curl`, `libcurl` (WIP)
 - 🛰️ Run as a `coc.nvim` (WIP) source or `nvim-cmp` source
 
 ## ⚡️ Requirements
@@ -172,7 +172,7 @@ require('cmp').setup({
 | `Fitten edit_code`          | Edit code                                                                                                                                                    |
 | `Fitten explain_code`       | Explain code                                                                                                                                                 |
 | `Fitten find_bugs`          | Find bugs                                                                                                                                                    |
-| `Fitten generate_unit_test` | Generate unit test. Try the command `Fitten generate_unit_test <test_framework> <language>` to generate unit test with specific test framework and language. |
+| `Fitten generate_unit_test` | Generate unit test. Try the command `Fitten generate_unit_test <language> <test_framework>` to generate unit test with specific test framework and language. |
 | `Fitten implement_features` | Implement features                                                                                                                                           |
 | `Fitten improve_code`       | Improve code                                                                                                                                                 |
 | `Fitten refactor_code`      | Refactor code                                                                                                                                                |

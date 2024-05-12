@@ -69,10 +69,13 @@ local status = nil
 ---@class ActionOptions
 ---@field prompt? string
 ---@field content? string
----@class language? string
+---@field language? string
 
 ---@class GenerateUnitTestOptions : ActionOptions
 ---@field test_framework string
+
+---@class ImplementFeaturesOptions : ActionOptions
+---@field feature_type string
 
 local function get_action_name(action)
   return Base.tbl_key_by_value(Actions, action)
@@ -178,7 +181,7 @@ function ActionsEngine.start_action(action, opts)
     Log.debug('Action: No more suggestions')
     Log.debug('Action elapsed time: {}', elapsed_time)
     Log.debug('Action depth: {}', depth)
-    chat:commit('> Q.E.D.' .. '(' .. elapsed_time .. ' ms)' .. '\n', true)
+    chat:commit('> Q.E.D. ' .. '(' .. elapsed_time .. ' ms)' .. '\n', true)
     current_eval = current_eval + 1
     -- Log.debug('Full chat text: {}', chat.text)
     if #chat.text > 0 then
@@ -236,53 +239,116 @@ function ActionsEngine.start_action(action, opts)
   )
 end
 
+---@param opts ActionOptions
 function ActionsEngine.document_code(opts)
-  return ActionsEngine.start_action(Actions.DocumentCode, opts)
+  local defaults = {
+  }
+  local merged = vim.tbl_deep_extend('force', defaults, opts or {})
+  return ActionsEngine.start_action(Actions.DocumentCode, merged)
 end
 
+---@param opts ActionOptions
 function ActionsEngine.edit_code(opts)
-  local input_opts = { prompt = 'Prompt for FittenCode EditCode: ', default = '', }
-  vim.ui.input(input_opts, function(prompt)
-    Log.debug('Prompt for FittenCode EditCode: ' .. prompt)
-    ActionsEngine.start_action(Actions.EditCode, {
-      prompt = prompt }
-    )
-  end)
+  local defaults = {
+  }
+  local merged = vim.tbl_deep_extend('force', defaults, opts or {})
+  if merged.prompt == nil or #merged.prompt == 0 then
+    local input_opts = { prompt = 'Prompt for FittenCode EditCode: ', default = '', }
+    vim.ui.input(input_opts, function(prompt)
+      Log.debug('Prompt for FittenCode EditCode: ' .. prompt)
+      ActionsEngine.start_action(Actions.EditCode, {
+        prompt = prompt,
+        content = merged.content
+      })
+    end)
+  else
+    return ActionsEngine.start_action(Actions.EditCode, merged)
+  end
 end
 
+---@param opts ActionOptions
 function ActionsEngine.explain_code(opts)
-  return ActionsEngine.start_action(Actions.ExplainCode, opts)
+  local defaults = {
+  }
+  local merged = vim.tbl_deep_extend('force', defaults, opts or {})
+  return ActionsEngine.start_action(Actions.ExplainCode, merged)
 end
 
+---@param opts ActionOptions
 function ActionsEngine.find_bugs(opts)
-  return ActionsEngine.start_action(Actions.FindBugs, opts)
+  local defaults = {
+  }
+  local merged = vim.tbl_deep_extend('force', defaults, opts or {})
+  return ActionsEngine.start_action(Actions.FindBugs, merged)
 end
 
 ---@param opts GenerateUnitTestOptions
 function ActionsEngine.generate_unit_test(opts)
-  return ActionsEngine.start_action(Actions.GenerateUnitTest, opts)
+  local defaults = {
+  }
+  local merged = vim.tbl_deep_extend('force', defaults, opts or {})
+  return ActionsEngine.start_action(Actions.GenerateUnitTest, merged)
 end
 
+---@param opts ImplementFeaturesOptions
 function ActionsEngine.implement_features(opts)
-  return ActionsEngine.start_action(Actions.ImplementFeatures, opts)
+  local defaults = {
+  }
+  local merged = vim.tbl_deep_extend('force', defaults, opts or {})
+  return ActionsEngine.start_action(Actions.ImplementFeatures, merged)
 end
 
+---@param opts ImplementFeaturesOptions
+function ActionsEngine.implement_functions(opts)
+  local defaults = {
+    feature_type = 'functions'
+  }
+  local merged = vim.tbl_deep_extend('force', defaults, opts or {})
+  return ActionsEngine.implement_features(merged)
+end
+
+---@param opts ImplementFeaturesOptions
+function ActionsEngine.implement_classes(opts)
+  local defaults = {
+    feature_type = 'classes'
+  }
+  local merged = vim.tbl_deep_extend('force', defaults, opts or {})
+  return ActionsEngine.implement_features(merged)
+end
+
+---@param opts ActionOptions
 function ActionsEngine.improve_code(opts)
-  return ActionsEngine.start_action(Actions.ImproveCode, opts)
+  local defaults = {
+  }
+  local merged = vim.tbl_deep_extend('force', defaults, opts or {})
+  return ActionsEngine.start_action(Actions.ImproveCode, merged)
 end
 
+---@param opts ActionOptions
 function ActionsEngine.refactor_code(opts)
-  return ActionsEngine.start_action(Actions.RefactorCode, opts)
+  local defaults = {
+  }
+  local merged = vim.tbl_deep_extend('force', defaults, opts or {})
+  return ActionsEngine.start_action(Actions.RefactorCode, merged)
 end
 
+-- API: ActionOptions.content
+---@param opts ActionOptions
 function ActionsEngine.start_chat(opts)
-  local input_opts = { prompt = 'Ask... (Fitten Code Fast): ', default = '', }
-  vim.ui.input(input_opts, function(content)
-    Log.debug('Ask... (Fitten Code Fast): ' .. content)
-    ActionsEngine.start_action(Actions.StartChat, {
-      content = content }
-    )
-  end)
+  local defaults = {
+  }
+  local merged = vim.tbl_deep_extend('force', defaults, opts or {})
+  if merged.content == nil or #merged.content == 0 then
+    local input_opts = { prompt = 'Ask... (Fitten Code Fast): ', default = '', }
+    vim.ui.input(input_opts, function(content)
+      Log.debug('Ask... (Fitten Code Fast): ' .. content)
+      ActionsEngine.start_action(Actions.StartChat, {
+        content = content }
+      )
+    end)
+  else
+    return ActionsEngine.start_action(Actions.StartChat, merged)
+  end
 end
 
 function ActionsEngine.setup()

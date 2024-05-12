@@ -75,7 +75,7 @@ end
 ---@field login function
 ---@field logout function
 
-local function generate_unit_test(...)
+local function _generate_unit_test(...)
   local args = { ... }
   local opts = {
     test_framework = args[1],
@@ -84,21 +84,119 @@ local function generate_unit_test(...)
   return API.generate_unit_test(opts)
 end
 
+local function _implement_features(...)
+  local args = { ... }
+  local opts = {
+    feature_type = args[1],
+    language = args[2],
+  }
+  return API.implement_features(opts)
+end
+
+local function _implement_functions(...)
+  local args = { ... }
+  local opts = {
+    language = args[1],
+  }
+  return API.implement_functions(opts)
+end
+
+local function _implement_class(...)
+  local args = { ... }
+  local opts = {
+    language = args[1],
+  }
+  return API.implement_class(opts)
+end
+
+local function _document_code(...)
+  local args = { ... }
+  local opts = {
+    language = args[1],
+  }
+  return API.document_code(opts)
+end
+
+local function _edit_code(...)
+  local args = { ... }
+  local opts = {
+    language = args[1],
+  }
+  return API.edit_code(opts)
+end
+
+local function _explain_code(...)
+  local args = { ... }
+  local opts = {
+    language = args[1],
+  }
+  return API.explain_code(opts)
+end
+
+local function _find_bugs(...)
+  local args = { ... }
+  local opts = {
+    language = args[1],
+  }
+  return API.find_bugs(opts)
+end
+
+local function _improve_code(...)
+  local args = { ... }
+  local opts = {
+    language = args[1],
+  }
+  return API.improve_code(opts)
+end
+
+local function _refactor_code(...)
+  local args = { ... }
+  local opts = {
+    language = args[1],
+  }
+  return API.refactor_code(opts)
+end
+
+local function _start_chat(...)
+  local args = { ... }
+  local opts = {
+    language = args[1],
+  }
+  return API.start_chat(opts)
+end
+
 function M.setup_commands()
   ---@type FittenCommands
   local commands = {
+    -- Arguments: Nop
     register = API.register,
+    -- Arguments: username, password
     login = API.login,
+    -- Arguments: Nop
     logout = API.logout,
-    document_code = API.document_code,
-    edit_code = API.edit_code,
-    explain_code = API.explain_code,
-    find_bugs = API.find_bugs,
-    generate_unit_test = generate_unit_test,
-    implement_features = API.implement_features,
-    improve_code = API.improve_code,
-    refactor_code = API.refactor_code,
-    start_chat = API.start_chat,
+    -- Arguments: language
+    document_code = _document_code,
+    -- Arguments: language
+    edit_code = _edit_code,
+    -- Arguments: language
+    explain_code = _explain_code,
+    -- Arguments: language
+    find_bugs = _find_bugs,
+    -- Arguments: test_framework, language
+    generate_unit_test = _generate_unit_test,
+    -- Arguments: feauture_type, language
+    implement_features = _implement_features,
+    -- Arguments: language
+    implement_function = _implement_functions,
+    -- Arguments: language
+    implement_class = _implement_class,
+    -- Arguments: language
+    improve_code = _improve_code,
+    -- Arguments: language
+    refactor_code = _refactor_code,
+    -- Arguments: language
+    start_chat = _start_chat,
+    -- Arguments: Nop
     stop_eval = API.stop_eval,
   }
   Base.command('Fitten', function(line)
