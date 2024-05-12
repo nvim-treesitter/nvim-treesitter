@@ -119,13 +119,27 @@ require('cmp').setup({
 
 ## 🚀 Usage
 
-### Default Command
+### Account Commands
 
 | Command           | Description                                                        |
 |-------------------|--------------------------------------------------------------------|
 | `Fitten register` | If you haven't registered yet, please run the command to register. |
 | `Fitten login`    | Try the command `Fitten login <user> <password>` to login.         |
 | `Fitten logout`   | Logout account                                                     |
+
+### Action Commands
+
+| Command                     | Description        |
+|-----------------------------|--------------------|
+| `Fitten document_code`      | Document code      |
+| `Fitten edit_code`          | Edit code          |
+| `Fitten explain_code`       | Explain code       |
+| `Fitten find_bugs`          | Find bugs          |
+| `Fitten generate_unit_test` | Generate unit test |
+| `Fitten implement_features` | Implement features |
+| `Fitten improve_code`       | Improve code       |
+| `Fitten refactor_code`      | Refactor code      |
+| `Fitten start_chat`         | Start chat         |
 
 ### Default Mappings
 
