@@ -6,14 +6,25 @@ Fitten Code AI Programming Assistant for Neovim, helps you to use AI for automat
 
 ## ✨ Features
 
-- 🚀 Fast completion thanks to `Fitten Code` and `curl`
+- 🚀 Fast completion thanks to `Fitten Code`
 - 🐛 Asynchronous I/O for improved performance
+- 🐣 Support for `Actions`
+  - 1️⃣ Document code
+  - 2️⃣ Edit code
+  - 3️⃣ Explain code
+  - 4️⃣ Find bugs
+  - 5️⃣ Generate unit test
+  - 6️⃣ Implement features
+  - 7️⃣ Improve code
+  - 8️⃣ Refactor code
+  - 9️⃣ Start chat
 - ⭐️ Accept all suggestions with `Tab`
 - 🧪 Accept line with `Ctrl + ⬇️`
 - 🔎 Accept word with `Ctrl + ➡️`
 - ❄️ Undo accepted text
 - 🧨 Automatic scrolling when previewing or completing code
-- 🛰️ Run as a `nvim-cmp` source
+- 🍭 Multi rest backends such as `curl`, `libcurl` (WIP)
+- 🛰️ Run as a `coc.nvim` (WIP) source or `nvim-cmp` source
 
 ## ⚡️ Requirements
 
@@ -155,17 +166,17 @@ require('cmp').setup({
 
 ### Action Commands
 
-| Command                     | Description        |
-|-----------------------------|--------------------|
-| `Fitten document_code`      | Document code      |
-| `Fitten edit_code`          | Edit code          |
-| `Fitten explain_code`       | Explain code       |
-| `Fitten find_bugs`          | Find bugs          |
-| `Fitten generate_unit_test` | Generate unit test |
-| `Fitten implement_features` | Implement features |
-| `Fitten improve_code`       | Improve code       |
-| `Fitten refactor_code`      | Refactor code      |
-| `Fitten start_chat`         | Start chat         |
+| Command                     | Description                                                                                                                                                  |
+|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Fitten document_code`      | Document code                                                                                                                                                |
+| `Fitten edit_code`          | Edit code                                                                                                                                                    |
+| `Fitten explain_code`       | Explain code                                                                                                                                                 |
+| `Fitten find_bugs`          | Find bugs                                                                                                                                                    |
+| `Fitten generate_unit_test` | Generate unit test. Try the command `Fitten generate_unit_test <test_framework> <language>` to generate unit test with specific test framework and language. |
+| `Fitten implement_features` | Implement features                                                                                                                                           |
+| `Fitten improve_code`       | Improve code                                                                                                                                                 |
+| `Fitten refactor_code`      | Refactor code                                                                                                                                                |
+| `Fitten start_chat`         | Start chat                                                                                                                                                   |
 
 ### Default Mappings
 
@@ -174,6 +185,32 @@ require('cmp').setup({
 | `Tab`       | Accept all suggestions |
 | `Ctrl + ⬇️` | Accept line            |
 | `Ctrl + ➡️` | Accept word            |
+
+## ✏️ APIs
+
+`fittencode.nvim` provides a set of APIs to help you integrate it with other plugins or scripts.
+
+| API                      | Description                            |
+|--------------------------|----------------------------------------|
+| `login`                  | Login to Fitten                        |
+| `logout`                 | Logout from Fitten                     |
+| `register`               | Register to Fitten                     |
+| `set_log_level`          | Set the log level                      |
+| `get_current_status`     | Get the current status of the `Engine` |
+| `has_suggestion`         | Check if there is a suggestion         |
+| `accept_all_suggestions` | Accept all suggestions                 |
+| `accept_line`            | Accept line                            |
+| `accept_word`            | Accept word                            |
+| `document_code`          | Document code                          |
+| `edit_code`              | Edit code                              |
+| `explain_code`           | Explain code                           |
+| `find_bugs`              | Find bugs                              |
+| `generate_unit_test`     | Generate unit test                     |
+| `implement_features`     | Implement features                     |
+| `improve_code`           | Improve code                           |
+| `refactor_code`          | Refactor code                          |
+| `start_chat`             | Start chat                             |
+| `stop_eval`              | Stop the evaluation                    |
 
 ## 🎉 Special Thanks
 
