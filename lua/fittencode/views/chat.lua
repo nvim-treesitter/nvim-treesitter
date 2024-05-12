@@ -105,7 +105,9 @@ local function _sub_match(s, pattern)
 end
 
 function M:is_repeated(lines)
-  return _sub_match(self.text[#self.text], lines[1])
+  -- TODO: improve this
+  -- return _sub_match(self.text[#self.text], lines[1])
+  return false
 end
 
 return M

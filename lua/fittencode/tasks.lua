@@ -16,6 +16,7 @@ local Log = require('fittencode.log')
 local TaskScheduler = {}
 
 local MS_TO_NS = 1000000
+-- TODO: make this configurable
 local TASK_TIMEOUT = 6000 * MS_TO_NS
 local RECYCLING_CYCLE = 1000
 
@@ -60,20 +61,22 @@ end
 ---@param task_id integer
 ---@param row integer
 ---@param col integer
----@return boolean
+---@return boolean, integer
 function TaskScheduler:match_clean(task_id, row, col)
   local match_found = false
+  local ms = 0
   for i = #self.list, 1, -1 do
     local task = self.list[i]
     if task.timestamp == task_id and task.row == row and task.col == col then
-      local ms = string.format('%3d', math.floor((uv.hrtime() - task.timestamp) / MS_TO_NS))
-      Log.debug('Task matched; time elapsed: [ {} ms ], task_id: {}, row: {}, col: {}', ms, task_id, row, col)
+      ms = math.floor((uv.hrtime() - task.timestamp) / MS_TO_NS)
+      local mss = string.format('%3d', ms)
+      Log.debug('Task matched; time elapsed: [ {} ms ], task_id: {}, row: {}, col: {}', mss, task_id, row, col)
       match_found = true
       break
     end
   end
   self:schedule_clean(task_id)
-  return match_found
+  return match_found, ms
 end
 
 ---@param timestamp integer

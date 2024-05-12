@@ -9,6 +9,7 @@ local Promise = require('fittencode.concurrency.promise')
 local PromptProviders = require('fittencode.prompt_providers')
 local Sessions = require('fittencode.sessions')
 local Status = require('fittencode.status')
+local TaskScheduler = require('fittencode.tasks')
 
 local schedule = Base.schedule
 
@@ -33,6 +34,13 @@ local current_eval = 1
 ---@type Chat
 local chat = nil
 
+---@class TaskScheduler
+local tasks = nil
+
+local lock = false
+
+local elapsed_time = 0
+
 ---@class ActionOptions
 ---@field prompt? string
 ---@field content? string
@@ -49,20 +57,26 @@ local function get_action_type(action)
   return 'FittenCodePrompt/Actions/' .. get_action_name(action)
 end
 
-local function filter_suggestions(suggestions)
+local function filter_suggestions(task_id, suggestions)
   if not suggestions then
     return
   end
-  return vim.tbl_filter(function(s) return #s > 0 end, suggestions)
+  local matched, ms = tasks:match_clean(task_id, 0, 0)
+  if not matched then
+    Log.debug('Completion request is outdated, discarding; task_id: {}', task_id)
+    return
+  end
+  return vim.tbl_filter(function(s) return #s > 0 end, suggestions), ms
 end
 
 local function chain_actions(action, solved_prefix, on_error)
-  Sessions.request_generate_one_stage(0, {
+  local task_id = tasks:create(0, 0)
+  Sessions.request_generate_one_stage(task_id, {
     prompt_ty = get_action_type(action),
     solved_prefix = solved_prefix,
   }, function(_, prompt, suggestions)
     Log.debug('Suggestions for Actions: {}', suggestions)
-    local lines = filter_suggestions(suggestions)
+    local lines, ms = filter_suggestions(task_id, suggestions)
     if not lines or #lines == 0 then
       schedule(on_error)
     else
@@ -70,6 +84,7 @@ local function chain_actions(action, solved_prefix, on_error)
         Log.debug('Repeated suggestions')
         schedule(on_error)
       else
+        elapsed_time = elapsed_time + ms
         chat:commit(lines)
         local new_solved_prefix = prompt.prefix .. table.concat(lines, '\n') .. '\n'
         chain_actions(action, new_solved_prefix, on_error)
@@ -92,6 +107,8 @@ function ActionsEngine.start_action(action, opts)
 
   Log.debug('Start Action({})...', action_name)
 
+  elapsed_time = 0
+
   Status.update(SC.GENERATING)
 
   local window = api.nvim_get_current_win()
@@ -104,15 +121,16 @@ function ActionsEngine.start_action(action, opts)
   vim.fn.win_gotoid(window)
 
   local on_error = function(err)
-    Log.error('Error in Action: {}', err)
     if type(err) == 'table' and getmetatable(err) == NetworkError then
+      Log.error('Error in Action: {}', err)
       Status.update(SC.NETWORK_ERROR)
       return
     end
     Log.debug('Action: No more suggestions')
-    chat:commit('Q.E.D.\n', true)
+    Log.debug('Action elapsed time: {}', elapsed_time)
+    chat:commit('> Q.E.D.' .. '(' .. elapsed_time .. ' ms)' .. '\n', true)
     current_eval = current_eval + 1
-    Log.debug('Chat text: {}', chat.text)
+    Log.debug('Full chat text: {}', chat.text)
     if #chat.text > 0 then
       -- FIXME: A better status update is needed
       Status.update(SC.SUGGESTIONS_READY)
@@ -142,12 +160,14 @@ function ActionsEngine.start_action(action, opts)
   chat:commit(prompt_preview.content)
 
   Promise:new(function(resolve, reject)
-    Sessions.request_generate_one_stage(0, prompt_opts, function(_, prompt, suggestions)
+    local task_id = tasks:create(0, 0)
+    Sessions.request_generate_one_stage(task_id, prompt_opts, function(_, prompt, suggestions)
       Log.debug('Suggestions for Actions: {}', suggestions)
-      local lines = filter_suggestions(suggestions)
+      local lines, ms = filter_suggestions(task_id, suggestions)
       if not lines or #lines == 0 then
         reject()
       else
+        elapsed_time = elapsed_time + ms
         local c_out = '# Out`[' .. current_eval .. ']`='
         chat:commit(c_out)
         chat:commit(lines, true)
@@ -216,6 +236,8 @@ end
 
 function ActionsEngine.setup()
   chat = Chat:new()
+  tasks = TaskScheduler:new()
+  tasks:setup()
 end
 
 return ActionsEngine
