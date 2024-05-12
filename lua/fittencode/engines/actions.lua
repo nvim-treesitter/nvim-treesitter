@@ -240,7 +240,7 @@ function ActionsEngine.start_action(action, opts)
   )
 end
 
----@param opts ActionOptions
+---@param opts? ActionOptions
 function ActionsEngine.document_code(opts)
   local defaults = {
   }
@@ -248,7 +248,7 @@ function ActionsEngine.document_code(opts)
   return ActionsEngine.start_action(Actions.DocumentCode, merged)
 end
 
----@param opts ActionOptions
+---@param opts? ActionOptions
 function ActionsEngine.edit_code(opts)
   local defaults = {
   }
@@ -267,7 +267,7 @@ function ActionsEngine.edit_code(opts)
   end
 end
 
----@param opts ActionOptions
+---@param opts? ActionOptions
 function ActionsEngine.explain_code(opts)
   local defaults = {
   }
@@ -275,7 +275,7 @@ function ActionsEngine.explain_code(opts)
   return ActionsEngine.start_action(Actions.ExplainCode, merged)
 end
 
----@param opts ActionOptions
+---@param opts? ActionOptions
 function ActionsEngine.find_bugs(opts)
   local defaults = {
   }
@@ -283,7 +283,7 @@ function ActionsEngine.find_bugs(opts)
   return ActionsEngine.start_action(Actions.FindBugs, merged)
 end
 
----@param opts GenerateUnitTestOptions
+---@param opts? GenerateUnitTestOptions
 function ActionsEngine.generate_unit_test(opts)
   local defaults = {
   }
@@ -291,7 +291,7 @@ function ActionsEngine.generate_unit_test(opts)
   return ActionsEngine.start_action(Actions.GenerateUnitTest, merged)
 end
 
----@param opts ImplementFeaturesOptions
+---@param opts? ImplementFeaturesOptions
 function ActionsEngine.implement_features(opts)
   local defaults = {
   }
@@ -299,7 +299,7 @@ function ActionsEngine.implement_features(opts)
   return ActionsEngine.start_action(Actions.ImplementFeatures, merged)
 end
 
----@param opts ImplementFeaturesOptions
+---@param opts? ImplementFeaturesOptions
 function ActionsEngine.implement_functions(opts)
   local defaults = {
     feature_type = 'functions'
@@ -308,7 +308,7 @@ function ActionsEngine.implement_functions(opts)
   return ActionsEngine.implement_features(merged)
 end
 
----@param opts ImplementFeaturesOptions
+---@param opts? ImplementFeaturesOptions
 function ActionsEngine.implement_classes(opts)
   local defaults = {
     feature_type = 'classes'
@@ -317,7 +317,7 @@ function ActionsEngine.implement_classes(opts)
   return ActionsEngine.implement_features(merged)
 end
 
----@param opts ActionOptions
+---@param opts? ActionOptions
 function ActionsEngine.improve_code(opts)
   local defaults = {
   }
@@ -325,7 +325,7 @@ function ActionsEngine.improve_code(opts)
   return ActionsEngine.start_action(Actions.ImproveCode, merged)
 end
 
----@param opts ActionOptions
+---@param opts? ActionOptions
 function ActionsEngine.refactor_code(opts)
   local defaults = {
   }
@@ -334,7 +334,7 @@ function ActionsEngine.refactor_code(opts)
 end
 
 -- API: ActionOptions.content
----@param opts ActionOptions
+---@param opts? ActionOptions
 function ActionsEngine.start_chat(opts)
   local defaults = {
   }
@@ -352,14 +352,7 @@ function ActionsEngine.start_chat(opts)
   end
 end
 
-function ActionsEngine.setup()
-  chat = Chat:new()
-  tasks = TaskScheduler:new()
-  tasks:setup()
-  status = Status:new({
-    tag = 'ActionsEngine',
-    ready_idle = true,
-  })
+local function setup_actions_menu()
   -- vim.cmd([[
   --   anoremenu PopUp.-1- <Nop>
   -- ]])
@@ -404,6 +397,17 @@ function ActionsEngine.setup()
   --   vnoremenu PopUp.RefactorCode  <Cmd>Fitten refactor_code<CR>
   --   vnoremenu PopUp.StartChat  <Cmd>Fitten start_chat<CR>
   -- ]])
+end
+
+function ActionsEngine.setup()
+  chat = Chat:new()
+  tasks = TaskScheduler:new()
+  tasks:setup()
+  status = Status:new({
+    tag = 'ActionsEngine',
+    ready_idle = true,
+  })
+  setup_actions_menu()
 end
 
 function ActionsEngine.get_status()

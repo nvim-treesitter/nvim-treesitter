@@ -39,36 +39,47 @@ M.api = {
   accept_word = function()
     InlineEngine.accept_word()
   end,
+  ---@param opts? ActionOptions
   document_code = function(opts)
     return ActionsEngine.document_code(opts)
   end,
+  ---@param opts? ActionOptions
   edit_code = function(opts)
     return ActionsEngine.edit_code(opts)
   end,
+  ---@param opts? ActionOptions
   explain_code = function(opts)
     return ActionsEngine.explain_code(opts)
   end,
+  ---@param opts? ActionOptions
   find_bugs = function(opts)
     return ActionsEngine.find_bugs(opts)
   end,
+  ---@param opts? ActionOptions
   generate_unit_test = function(opts)
     return ActionsEngine.generate_unit_test(opts)
   end,
+  ---@param opts? ActionOptions
   implement_features = function(opts)
     return ActionsEngine.implement_features(opts)
   end,
+  ---@param opts? ActionOptions
   implement_functions = function(opts)
     return ActionsEngine.implement_functions(opts)
   end,
+  ---@param opts? ActionOptions
   implement_classes = function(opts)
     return ActionsEngine.implement_classes(opts)
   end,
+  ---@param opts? ActionOptions
   improve_code = function(opts)
     return ActionsEngine.improve_code(opts)
   end,
+  ---@param opts? ActionOptions
   refactor_code = function(opts)
     return ActionsEngine.refactor_code(opts)
   end,
+  ---@param opts? ActionOptions
   start_chat = function(opts)
     return ActionsEngine.start_chat(opts)
   end,
