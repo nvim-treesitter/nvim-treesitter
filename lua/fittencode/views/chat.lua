@@ -1,4 +1,5 @@
 local Base = require('fittencode.base')
+local Log = require('fittencode.log')
 
 ---@class Chat
 ---@field win? integer
@@ -6,6 +7,7 @@ local Base = require('fittencode.base')
 ---@field text? string
 ---@field show function
 ---@field commit function
+---@field is_repeated function
 
 local M = {}
 
@@ -81,6 +83,29 @@ function M:commit(text, linebreak)
   end
   table.move(lines, 1, #lines, #self.text + 1, self.text)
   vim.api.nvim_win_set_cursor(self.win, { #self.text, 0 })
+end
+
+local function _sub_match(s, pattern)
+  if s == pattern then
+    return true
+  end
+  local rs = string.reverse(s)
+  local rp = string.reverse(pattern)
+  local i = 1
+  while i <= #rs and i <= #rp do
+    if rs:sub(i, i) ~= rp:sub(i, i) then
+      break
+    end
+    i = i + 1
+  end
+  if i > #rs * 0.8 or i > #rp * 0.8 then
+    return true
+  end
+  return false
+end
+
+function M:is_repeated(lines)
+  return _sub_match(self.text[#self.text], lines[1])
 end
 
 return M

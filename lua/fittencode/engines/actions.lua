@@ -66,9 +66,14 @@ local function chain_actions(action, solved_prefix, on_error)
     if not lines or #lines == 0 then
       schedule(on_error)
     else
-      chat:commit(lines)
-      local new_solved_prefix = prompt.prefix .. table.concat(lines, '\n') .. '\n'
-      chain_actions(action, new_solved_prefix, on_error)
+      if chat:is_repeated(lines) then
+        Log.debug('Repeated suggestions')
+        schedule(on_error)
+      else
+        chat:commit(lines)
+        local new_solved_prefix = prompt.prefix .. table.concat(lines, '\n') .. '\n'
+        chain_actions(action, new_solved_prefix, on_error)
+      end
     end
   end, function(err)
     schedule(on_error, err)
