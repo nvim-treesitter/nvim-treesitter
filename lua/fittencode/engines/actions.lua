@@ -83,6 +83,8 @@ end
 ---@param action number
 ---@param opts? ActionOptions
 function ActionsEngine.start_action(action, opts)
+  opts = opts or {}
+
   local action_name = get_action_name(action)
   if not action_name then
     return
@@ -92,9 +94,11 @@ function ActionsEngine.start_action(action, opts)
 
   Status.update(SC.GENERATING)
 
-  local sln, eln = api.nvim_buf_get_mark(0, '<'), api.nvim_buf_get_mark(0, '>')
   local window = api.nvim_get_current_win()
   local buffer = api.nvim_win_get_buf(window)
+  local sln, eln = api.nvim_buf_get_mark(buffer, '<'), api.nvim_buf_get_mark(buffer, '>')
+
+  Log.debug('sln: {}, eln: {}', sln, eln)
 
   chat:show()
   vim.fn.win_gotoid(window)
@@ -116,8 +120,6 @@ function ActionsEngine.start_action(action, opts)
       Status.update(SC.NO_MORE_SUGGESTIONS)
     end
   end
-
-  Log.debug('sln: {}, eln: {}', sln, eln)
 
   local prompt_opts = {
     window = window,
