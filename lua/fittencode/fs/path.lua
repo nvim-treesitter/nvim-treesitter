@@ -1,3 +1,5 @@
+local api = vim.api
+
 local Base = require('fittencode.base')
 
 local M = {}
@@ -28,6 +30,19 @@ end
 ---@return string
 function M.to_native(s)
   return Base.is_windows() and M.to_nt(s) or M.to_kernel(s)
+end
+
+function M.nvim_sep()
+  if Base.is_kernel() or (Base.is_windows() and vim.opt.shellslash._value == true) then
+    return M.kernel_sep()
+  end
+  return M.nt_sep()
+end
+
+function M.name(buffer)
+  local path = api.nvim_buf_get_name(buffer)
+  local i = Base.rfind(path, M.nvim_sep())
+  return i and string.sub(path, -i + 1, -1) or path
 end
 
 return M

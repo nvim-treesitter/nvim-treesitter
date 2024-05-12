@@ -1,10 +1,11 @@
 local api = vim.api
 
+local ActionsEngine = require('fittencode.engines.actions')
 local API = require('fittencode.api').api
 local Base = require('fittencode.base')
-local Engine = require('fittencode.engine')
+local InlineEngine = require('fittencode.engines.inline')
 local Log = require('fittencode.log')
-local View = require('fittencode.view')
+local Lines = require('fittencode.views.lines')
 
 local M = {}
 
@@ -20,14 +21,14 @@ function M.setup_autocmds()
     pattern = '*',
     callback = function()
       -- Log.debug('CursorHoldI')
-      if not Engine.is_inline_enabled() then
+      if not InlineEngine.is_inline_enabled() then
         return
       end
       if ignore then
         return
       end
       local row, col = Base.get_cursor()
-      Engine.generate_one_stage(row, col)
+      InlineEngine.generate_one_stage(row, col)
     end,
     desc = 'Generate one stage',
   })
@@ -41,7 +42,7 @@ function M.setup_autocmds()
         return
       end
       Base.debounce(advance_timer, function()
-        Engine.advance()
+        InlineEngine.advance()
       end, ADVANCE_DEBOUNCE_TIME)
     end,
     desc = 'Advance',
@@ -55,7 +56,7 @@ function M.setup_autocmds()
       if ignore then
         return
       end
-      Engine.lazy_inline_completion()
+      InlineEngine.lazy_inline_completion()
     end,
     desc = 'Lazy inline completion',
   })
@@ -64,7 +65,7 @@ function M.setup_autocmds()
     group = Base.augroup('Reset'),
     pattern = '*',
     callback = function()
-      Engine.reset()
+      InlineEngine.reset()
     end,
     desc = 'Reset',
   })
@@ -74,12 +75,31 @@ end
 ---@field login function
 ---@field logout function
 
+local function generate_unit_test(...)
+  local args = { ... }
+  local opts = {
+    test_framework = args[1],
+    language = args[2],
+  }
+  return API.generate_unit_test(opts)
+end
+
 function M.setup_commands()
   ---@type FittenCommands
   local commands = {
     register = API.register,
     login = API.login,
     logout = API.logout,
+    document_code = API.document_code,
+    edit_code = API.edit_code,
+    explain_code = API.explain_code,
+    find_bugs = API.find_bugs,
+    generate_unit_test = generate_unit_test,
+    implement_features = API.implement_features,
+    improve_code = API.improve_code,
+    refactor_code = API.refactor_code,
+    start_chat = API.start_chat,
+    stop_eval = API.stop_eval,
   }
   Base.command('Fitten', function(line)
     ---@type string[]
@@ -109,6 +129,7 @@ function M.setup_commands()
         vim.tbl_keys(commands)
       )
     end,
+    range = true,
     bang = true,
     nargs = '*',
     desc = 'Fitten Command',
@@ -120,7 +141,7 @@ function M.setup_keymaps()
     if API.has_suggestions() then
       API.accept_all_suggestions()
     else
-      View.tab()
+      Lines.tab()
     end
   end)
   Base.map('i', '<C-Down>', API.accept_line)

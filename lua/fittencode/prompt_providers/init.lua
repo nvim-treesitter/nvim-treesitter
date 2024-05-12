@@ -11,14 +11,21 @@ local M = {}
 ---@field filename string
 ---@field prefix string
 ---@field suffix string
+---@field content string
 ---@field within_the_line boolean
 
 ---@class PromptContext
 ---@field window? integer
 ---@field buffer? integer
 ---@field filetype? string
+---@field prompt_ty? string
 ---@field row? integer
 ---@field col? integer
+---@field range? table
+---@field prompt? string
+---@field solved_prefix? string
+---@field solved_content? string
+---@field action_opts? ActionOptions
 
 ---@class PromptProvider
 ---@field is_available fun(self, string?): boolean
@@ -44,6 +51,7 @@ end
 local function register_builtin_prompt_providers()
   M.register_prompt_provider(require('fittencode.prompt_providers.default'):new())
   M.register_prompt_provider(require('fittencode.prompt_providers.telescope'):new())
+  M.register_prompt_provider(require('fittencode.prompt_providers.actions'):new())
 end
 
 function M.setup()
@@ -54,13 +62,14 @@ end
 ---@param filter? PromptFilter
 ---@return Prompt[]?
 function M.get_prompts(ctx, filter)
-  if not ctx.filetype then
+  if not ctx or not ctx.prompt_ty then
+    Log.error('Invalid prompt context')
     return
   end
   filter = filter or {}
   local prompts = {}
   for _, provider in ipairs(providers) do
-    if provider:is_available(ctx.filetype) then
+    if provider:is_available(ctx.prompt_ty) then
       prompts[#prompts + 1] = provider:execute(ctx)
       if filter.count == 1 then
         break
@@ -75,19 +84,25 @@ function M.get_prompts(ctx, filter)
   return prompts
 end
 
----@return Prompt?
-function M.get_current_prompt()
+function M.get_prompt_one(opts)
+  return M.get_prompts(opts, { count = 1 })[1]
+end
+
+---@return PromptContext
+function M.get_current_prompt_ctx()
   local window = api.nvim_get_current_win()
   local buffer = api.nvim_win_get_buf(window)
   local row, col = Base.get_cursor(window)
-  local prompts = M.get_prompts({
+  ---@type PromptContext
+  return {
     window = window,
     buffer = buffer,
     filetype = vim.bo.filetype,
+    prompt_ty = vim.bo.filetype,
     row = row,
     col = col,
-  }, { count = 1 })
-  return prompts and prompts[1]
+    range = nil
+  }
 end
 
 return M

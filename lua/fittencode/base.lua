@@ -188,6 +188,18 @@ function M.tbl_key_by_value(tbl, value, default)
   return default
 end
 
+function M.copy_to_clipboard(content)
+  fn.setreg('+', content)
+  fn.setreg('"', content)
+end
+
+function M.rfind(s, sub)
+  return (function()
+    local r = { string.find(string.reverse(s), sub, 1, true) }
+    return r[2]
+  end)()
+end
+
 ---@class NeovimVersion
 ---@field nvim string
 ---@field buildtype string

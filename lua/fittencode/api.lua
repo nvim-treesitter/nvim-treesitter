@@ -1,7 +1,8 @@
-local Engine = require('fittencode.engine')
+local ActionsEngine = require('fittencode.engines.actions')
+local InlineEngine = require('fittencode.engines.inline')
+local Engines = require('fittencode.engines')
 local Log = require('fittencode.log')
 local Sessions = require('fittencode.sessions')
-local Status = require('fittencode.status')
 
 local M = {}
 
@@ -23,20 +24,50 @@ M.api = {
   end,
   ---@return integer
   get_current_status = function()
-    return Status.get_current()
+    return Engines.get_status()
   end,
   ---@return boolean
   has_suggestions = function()
-    return Engine.has_suggestions()
+    return InlineEngine.has_suggestions()
   end,
   accept_all_suggestions = function()
-    Engine.accept_all_suggestions()
+    InlineEngine.accept_all_suggestions()
   end,
   accept_line = function()
-    Engine.accept_line()
+    InlineEngine.accept_line()
   end,
   accept_word = function()
-    Engine.accept_word()
+    InlineEngine.accept_word()
+  end,
+  document_code = function(opts)
+    return ActionsEngine.document_code(opts)
+  end,
+  edit_code = function(opts)
+    return ActionsEngine.edit_code(opts)
+  end,
+  explain_code = function(opts)
+    return ActionsEngine.explain_code(opts)
+  end,
+  find_bugs = function(opts)
+    return ActionsEngine.find_bugs(opts)
+  end,
+  generate_unit_test = function(opts)
+    return ActionsEngine.generate_unit_test(opts)
+  end,
+  implement_features = function(opts)
+    return ActionsEngine.implement_features(opts)
+  end,
+  improve_code = function(opts)
+    return ActionsEngine.improve_code(opts)
+  end,
+  refactor_code = function(opts)
+    return ActionsEngine.refactor_code(opts)
+  end,
+  start_chat = function(opts)
+    return ActionsEngine.start_chat(opts)
+  end,
+  stop_eval = function()
+    return ActionsEngine.stop_eval()
   end,
 }
 

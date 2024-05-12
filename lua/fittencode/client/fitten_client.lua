@@ -1,4 +1,5 @@
 local Base = require('fittencode.base')
+local NetworkError = require('fittencode.client.network_error')
 local Process = require('fittencode.concurrency.process')
 local Promise = require('fittencode.concurrency.promise')
 local RestManager = require('fittencode.rest.manager')
@@ -9,6 +10,7 @@ local schedule = Base.schedule
 
 ---@class FittenClient
 ---@field rest Rest
+---@field register function
 ---@field get_restimpl_name function
 ---@field login function
 ---@field generate_one_stage function
@@ -76,7 +78,7 @@ function M:generate_one_stage(api_key, params, on_success, on_error)
     self.rest:post(url, data, function(response)
       resolve(response)
     end, function()
-      schedule(on_error)
+      schedule(on_error, NetworkError:new())
     end)
   end):forward(function(response)
     local generated_text = Resopnse._on_stage_response(response)

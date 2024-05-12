@@ -6,7 +6,7 @@ local M = {}
 
 function M:new(o)
   o = o or {}
-  o.name = 'Telescope'
+  o.name = 'FittenCodePrompt/Telescope'
   o.priority = 100
   setmetatable(o, self)
   self.__index = self
