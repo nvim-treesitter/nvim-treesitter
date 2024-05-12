@@ -75,6 +75,15 @@ end
 ---@field login function
 ---@field logout function
 
+local function generate_unit_test(...)
+  local args = { ... }
+  local opts = {
+    test_framework = args[1],
+    language = args[2],
+  }
+  return API.generate_unit_test(opts)
+end
+
 function M.setup_commands()
   ---@type FittenCommands
   local commands = {
@@ -85,7 +94,7 @@ function M.setup_commands()
     edit_code = API.edit_code,
     explain_code = API.explain_code,
     find_bugs = API.find_bugs,
-    generate_unit_test = API.generate_unit_test,
+    generate_unit_test = generate_unit_test,
     implement_features = API.implement_features,
     improve_code = API.improve_code,
     refactor_code = API.refactor_code,

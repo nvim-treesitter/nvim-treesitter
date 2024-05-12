@@ -66,13 +66,23 @@ function M:execute(ctx)
       EditCode = ctx.prompt,
       ExplainCode = 'Explain the code above',
       FindBugs = 'Find bugs in the code above',
-      GenerateUnitTest = 'Generate a unit test for the code above',
+      GenerateUnitTest = function(opts)
+        opts = opts or {}
+        if opts.test_framework and opts.language then
+          return 'Generate a unit test for the code above with ' .. opts.test_framework .. ' in ' .. opts.language
+        elseif opts.test_framework then
+          return 'Generate a unit test for the code above with ' .. opts.test_framework
+        elseif opts.language then
+          return 'Generate a unit test for the code above in ' .. opts.language
+        end
+        return 'Generate a unit test for the code above'
+      end,
       ImplementFeatures = 'Implement the features mentioned in the code above',
       ImproveCode = 'Improve the code above',
       RefactorCode = 'Refactor the code above',
     }
-    local key = ctx.prompt_ty:sub(#NAME + 2)
-    local prompt = ctx.prompt or map_action_prompt[key]
+    local key = map_action_prompt[ctx.prompt_ty:sub(#NAME + 2)]
+    local prompt = ctx.prompt or (type(key) == 'function' and key(ctx.action_opts) or key)
     prefix = content .. '\n`' .. 'Dear FittenCode, Please ' .. prompt .. ':\n'
   end
   local suffix = ''

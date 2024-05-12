@@ -25,6 +25,7 @@ local M = {}
 ---@field prompt? string
 ---@field solved_prefix? string
 ---@field solved_content? string
+---@field action_opts? ActionOptions
 
 ---@class PromptProvider
 ---@field is_available fun(self, string?): boolean

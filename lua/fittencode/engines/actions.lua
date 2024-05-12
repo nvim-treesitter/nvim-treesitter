@@ -37,6 +37,10 @@ local chat = nil
 ---@field prompt? string
 ---@field content? string
 
+---@class GenerateUnitTestOptions : ActionOptions
+---@class language string
+---@field test_framework string
+
 local function get_action_name(action)
   return Base.tbl_key_by_value(Actions, action)
 end
@@ -122,6 +126,7 @@ function ActionsEngine.start_action(action, opts)
     solved_content = opts and opts.content,
     solved_prefix = nil,
     prompt = opts and opts.prompt,
+    action_opts = opts,
   }
   local prompt_preview = PromptProviders.get_prompt_one(prompt_opts)
   if #prompt_preview.filename == 0 then
@@ -178,6 +183,7 @@ function ActionsEngine.find_bugs(opts)
   return ActionsEngine.start_action(Actions.FindBugs, opts)
 end
 
+---@param opts GenerateUnitTestOptions
 function ActionsEngine.generate_unit_test(opts)
   return ActionsEngine.start_action(Actions.GenerateUnitTest, opts)
 end
