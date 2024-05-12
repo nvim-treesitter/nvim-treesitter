@@ -77,6 +77,7 @@ end
 
 local function _generate_unit_test(...)
   local args = { ... }
+  ---@type GenerateUnitTestOptions
   local opts = {
     test_framework = args[1],
     language = args[2],
@@ -86,6 +87,7 @@ end
 
 local function _implement_features(...)
   local args = { ... }
+  ---@type ImplementFeaturesOptions
   local opts = {
     feature_type = args[1],
     language = args[2],
@@ -95,6 +97,7 @@ end
 
 local function _action_apis_wrap(fx, ...)
   local args = { ... }
+  ---@type ActionOptions
   local opts = {
     language = args[1],
   }

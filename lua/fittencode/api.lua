@@ -55,19 +55,19 @@ M.api = {
   find_bugs = function(opts)
     return ActionsEngine.find_bugs(opts)
   end,
-  ---@param opts? ActionOptions
+  ---@param opts? GenerateUnitTestOptions
   generate_unit_test = function(opts)
     return ActionsEngine.generate_unit_test(opts)
   end,
-  ---@param opts? ActionOptions
+  ---@param opts? ImplementFeaturesOptions
   implement_features = function(opts)
     return ActionsEngine.implement_features(opts)
   end,
-  ---@param opts? ActionOptions
+  ---@param opts? ImplementFeaturesOptions
   implement_functions = function(opts)
     return ActionsEngine.implement_functions(opts)
   end,
-  ---@param opts? ActionOptions
+  ---@param opts? ImplementFeaturesOptions
   implement_classes = function(opts)
     return ActionsEngine.implement_classes(opts)
   end,

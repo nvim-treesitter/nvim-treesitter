@@ -151,8 +151,7 @@ local function on_error(err)
   Log.debug('Action depth: {}', depth)
   chat:commit('> Q.E.D.' .. '(' .. elapsed_time .. ' ms)' .. '\n', true)
   current_eval = current_eval + 1
-  -- Log.debug('Full chat text: {}', chat.text)
-  if #chat.text > 0 then
+  if depth > 0 then
     -- FIXME: A better status update is needed
     status:update(SC.SUGGESTIONS_READY)
   else
