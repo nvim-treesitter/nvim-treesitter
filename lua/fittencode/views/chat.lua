@@ -1,3 +1,5 @@
+local api = vim.api
+
 local Base = require('fittencode.base')
 local Log = require('fittencode.log')
 
@@ -21,30 +23,30 @@ end
 
 function M:show()
   if self.win == nil then
-    self.buffer = vim.api.nvim_create_buf(false, true)
+    self.buffer = api.nvim_create_buf(false, true)
     vim.cmd('topleft vsplit')
     vim.cmd('vertical resize ' .. 40)
-    self.win = vim.api.nvim_get_current_win()
-    vim.api.nvim_win_set_buf(self.win, self.buffer)
-    vim.api.nvim_buf_set_name(self.buffer, 'FittenCodeChat')
+    self.win = api.nvim_get_current_win()
+    api.nvim_win_set_buf(self.win, self.buffer)
+    api.nvim_buf_set_name(self.buffer, 'FittenCodeChat')
 
-    vim.api.nvim_set_option_value('filetype', 'markdown', { buf = self.buffer })
-    vim.api.nvim_set_option_value('modifiable', false, { buf = self.buffer })
-    vim.api.nvim_set_option_value('wrap', true, { win = self.win })
-    vim.api.nvim_set_option_value('linebreak', true, { win = self.win })
-    vim.api.nvim_set_option_value('cursorline', true, { win = self.win })
-    vim.api.nvim_set_option_value('spell', false, { win = self.win })
-    vim.api.nvim_set_option_value('number', false, { win = self.win })
-    vim.api.nvim_set_option_value('relativenumber', false, { win = self.win })
-    vim.api.nvim_set_option_value('conceallevel', 3, { win = self.win })
+    api.nvim_set_option_value('filetype', 'markdown', { buf = self.buffer })
+    api.nvim_set_option_value('modifiable', false, { buf = self.buffer })
+    api.nvim_set_option_value('wrap', true, { win = self.win })
+    api.nvim_set_option_value('linebreak', true, { win = self.win })
+    api.nvim_set_option_value('cursorline', true, { win = self.win })
+    api.nvim_set_option_value('spell', false, { win = self.win })
+    api.nvim_set_option_value('number', false, { win = self.win })
+    api.nvim_set_option_value('relativenumber', false, { win = self.win })
+    api.nvim_set_option_value('conceallevel', 3, { win = self.win })
 
     Base.map('n', 'q', function()
       self:close()
     end, { buffer = self.buffer })
 
     if #self.text > 0 then
-      vim.api.nvim_buf_set_lines(self.buffer, 0, -1, false, self.text)
-      vim.api.nvim_win_set_cursor(self.win, { #self.text, 0 })
+      api.nvim_buf_set_lines(self.buffer, 0, -1, false, self.text)
+      api.nvim_win_set_cursor(self.win, { #self.text, 0 })
     end
   end
 end
@@ -53,7 +55,7 @@ function M:close()
   if self.win == nil then
     return
   end
-  vim.api.nvim_win_close(self.win, true)
+  api.nvim_win_close(self.win, true)
   self.win = nil
   self.buffer = nil
 end
@@ -75,16 +77,16 @@ function M:commit(text, linebreak)
     end
   end
   if self.buffer then
-    vim.api.nvim_set_option_value('modifiable', true, { buf = self.buffer })
+    api.nvim_set_option_value('modifiable', true, { buf = self.buffer })
     if #self.text == 0 then
-      vim.api.nvim_buf_set_lines(self.buffer, 0, -1, false, lines)
+      api.nvim_buf_set_lines(self.buffer, 0, -1, false, lines)
     else
-      vim.api.nvim_buf_set_lines(self.buffer, -1, -1, false, lines)
+      api.nvim_buf_set_lines(self.buffer, -1, -1, false, lines)
     end
-    vim.api.nvim_set_option_value('modifiable', false, { buf = self.buffer })
+    api.nvim_set_option_value('modifiable', false, { buf = self.buffer })
   end
   table.move(lines, 1, #lines, #self.text + 1, self.text)
-  vim.api.nvim_win_set_cursor(self.win, { #self.text, 0 })
+  api.nvim_win_set_cursor(self.win, { #self.text, 0 })
 end
 
 local function _sub_match(s, pattern)

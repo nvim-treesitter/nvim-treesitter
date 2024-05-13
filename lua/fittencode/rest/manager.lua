@@ -1,3 +1,5 @@
+local api = vim.api
+
 local Config = require('fittencode.config')
 local Log = require('fittencode.log')
 
@@ -26,7 +28,7 @@ end
 function M.setup()
   if not vim.tbl_contains(vim.tbl_keys(builtin_backends), Config.options.rest.backend) then
     local msg = 'Invalid rest backend: ' .. Config.options.rest.backend
-    vim.api.nvim_err_writeln(msg)
+    api.nvim_err_writeln(msg)
   end
 end
 

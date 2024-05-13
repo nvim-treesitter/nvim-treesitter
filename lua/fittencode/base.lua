@@ -48,7 +48,7 @@ end
 ---@param name string
 ---@param hi table
 function M.set_hi(name, hi)
-  if vim.fn.has('nvim-0.10') == 1 then
+  if fn.has('nvim-0.10') == 1 then
     -- https://github.com/neovim/neovim/pull/25229
     -- https://github.com/luozhiya/fittencode.nvim/issues/20
     -- hi.force = true
