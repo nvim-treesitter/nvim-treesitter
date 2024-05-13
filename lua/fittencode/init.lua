@@ -26,7 +26,7 @@ function M.setup(opts)
       Bindings.setup_keymaps()
     end
     if Config.options.inline_completion.disable_completion_when_delete then
-      Bindings.setup_onkey()
+      Bindings.setup_keyfilters()
     end
   elseif Config.options.completion_mode == 'source' then
     require('fittencode.sources').setup()

@@ -221,7 +221,7 @@ function M.setup_keymaps()
   Base.map('i', '<C-Right>', API.accept_word)
 end
 
-function M.setup_onkey()
+function M.setup_keyfilters()
   -- '<80>kd', '<80>kD' in Lua
   local keycodes = {
     '<Backspace>',
