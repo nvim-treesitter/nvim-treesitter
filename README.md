@@ -19,8 +19,8 @@ Fitten Code AI Programming Assistant for Neovim, helps you to use AI for automat
   - 8️⃣ Refactor code
   - 9️⃣ Start chat
 - ⭐️ Accept all suggestions with `Tab`
-- 🧪 Accept line with `Ctrl + ⬇️`
-- 🔎 Accept word with `Ctrl + ➡️`
+- 🧪 Accept line with `Ctrl + 🡫`
+- 🔎 Accept word with `Ctrl + 🡪`
 - ❄️ Undo accepted text
 - 🧨 Automatic scrolling when previewing or completing code
 - 🍭 Multiple HTTP/REST backends such as `curl`, `libcurl` (WIP)
@@ -183,8 +183,8 @@ require('cmp').setup({
 | Mappings    | Action                 |
 |-------------|------------------------|
 | `Tab`       | Accept all suggestions |
-| `Ctrl + ⬇️` | Accept line            |
-| `Ctrl + ➡️` | Accept word            |
+| `Ctrl + 🡫` | Accept line            |
+| `Ctrl + 🡪` | Accept word            |
 
 ## ✏️ APIs
 
