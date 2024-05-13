@@ -284,7 +284,11 @@ local function generate_one_stage_at_cursor()
 end
 
 function M.accept_all_suggestions()
-  Log.debug('Accept all suggestions')
+  Log.debug('Accept all suggestions...')
+
+  if not M.is_inline_enabled() then
+    return
+  end
 
   if not M.has_suggestions() then
     Log.debug('No suggestions')
@@ -319,7 +323,11 @@ local function ignoreevent_wrap(fx)
 end
 
 function M.accept_line()
-  Log.debug('Accept line')
+  Log.debug('Accept line...')
+
+  if not M.is_inline_enabled() then
+    return
+  end
 
   if not M.has_suggestions() then
     Log.debug('No suggestions')
@@ -399,7 +407,11 @@ local function calculate_next_word_index(line, utf8_index)
 end
 
 function M.accept_word()
-  Log.debug('Accept word')
+  Log.debug('Accept word...')
+
+  if not M.is_inline_enabled() then
+    return
+  end
 
   if not M.has_suggestions() then
     Log.debug('No suggestions')
@@ -464,11 +476,13 @@ function M.reset()
 end
 
 function M.advance()
-  if not M.has_suggestions() then
+  Log.debug('Advance...')
+
+  if not M.is_inline_enabled() then
     return
   end
 
-  if not M.is_inline_enabled() then
+  if not M.has_suggestions() then
     return
   end
 
@@ -496,10 +510,12 @@ end
 -- TODO: Support for Chinese input
 ---@return boolean?
 function M.lazy_inline_completion()
+  Log.debug('Lazy inline completion...')
+
   if not M.is_inline_enabled() then
     return
   end
-  Log.debug('Lazy inline completion...')
+
   local is_advance = function(row, col)
     local cached_row, cached_col = cache:get_cursor()
     if cached_row == row and cached_col + 1 == col then
@@ -509,9 +525,11 @@ function M.lazy_inline_completion()
     end
     return 0
   end
+
   local row, col = Base.get_cursor()
   Log.debug('Lazy inline completion row: {}, col: {}', row, col)
   Log.debug('Cached row: {}, col: {}', cache:get_cursor())
+
   local adv_type = is_advance(row, col)
   if adv_type > 0 then
     local cur_line = api.nvim_buf_get_lines(0, row, row + 1, false)[1]
