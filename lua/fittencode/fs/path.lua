@@ -41,7 +41,7 @@ end
 
 function M.name(buffer)
   local path = api.nvim_buf_get_name(buffer)
-  return vim.fn.fnamemodify(path, ":t")
+  return vim.fn.fnamemodify(path, ':t')
 end
 
 return M

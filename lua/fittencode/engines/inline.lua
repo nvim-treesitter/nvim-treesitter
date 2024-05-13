@@ -2,14 +2,15 @@ local api = vim.api
 
 local Base = require('fittencode.base')
 local Config = require('fittencode.config')
+local Lines = require('fittencode.views.lines')
 local Log = require('fittencode.log')
 local NetworkError = require('fittencode.client.network_error')
 local Sessions = require('fittencode.sessions')
 local Status = require('fittencode.status')
 local SuggestionsCache = require('fittencode.suggestions_cache')
 local TaskScheduler = require('fittencode.tasks')
-local Lines = require('fittencode.views.lines')
 local PromptProviders = require('fittencode.prompt_providers')
+local Unicode = require('fittencode.unicode')
 
 local SC = Status.C
 
@@ -358,19 +359,35 @@ end
 
 -- Calculate the next word index, split by word boundary
 ---@param line string
-local function next_indices(line)
-  local pa = nil
+local function next_indices(line, utf8_index)
+  local prev_ctype = nil
   for i = 1, string.len(line) do
-    local char = string.sub(line, i, i)
-    local a = Base.is_alpha(char)
-    local s = Base.is_space(char)
-    if i == 1 and not a and not s then
-      return i
+    local char, pos = Unicode.find_first_character(line, utf8_index, i)
+    if not pos or not char then
+      break
     end
-    if pa ~= nil and ((not pa and a) or (pa and s) or (not a and not s)) then
-      return i - 1
+    if pos[1] ~= pos[2] then
+      if not prev_ctype then
+        return pos[2]
+      else
+        return pos[1] - 1
+      end
     end
-    pa = a
+
+    local is_alpha = Base.is_alpha(char)
+    local is_space = Base.is_space(char)
+
+    if not is_alpha and not is_space then
+      return prev_ctype and i - 1 or 1
+    end
+    if prev_ctype then
+      if is_alpha and prev_ctype ~= 'alpha' then
+        return i - 1
+      elseif is_space and prev_ctype ~= 'space' then
+        return i - 1
+      end
+    end
+    prev_ctype = is_alpha and 'alpha' or is_space and 'space'
   end
   return string.len(line)
 end
@@ -393,7 +410,8 @@ function M.accept_word()
       Log.debug('No line cached')
       return
     end
-    local next_index = next_indices(line)
+    local utf8_index = Unicode.calculate_utf8_index(line)
+    local next_index = next_indices(line, utf8_index)
     local word = ''
     if next_index > 0 then
       word = string.sub(line, 1, next_index)
@@ -469,6 +487,7 @@ function M.is_inline_enabled()
   return true
 end
 
+-- TODO: Support for Chinese input
 ---@return boolean?
 function M.lazy_inline_completion()
   if not M.is_inline_enabled() then
