@@ -359,7 +359,7 @@ end
 
 -- Calculate the next word index, split by word boundary
 ---@param line string
-local function next_indices(line, utf8_index)
+local function calculate_next_word_index(line, utf8_index)
   local prev_ctype = nil
   for i = 1, string.len(line) do
     local char, pos = Unicode.find_first_character(line, utf8_index, i)
@@ -411,10 +411,10 @@ function M.accept_word()
       return
     end
     local utf8_index = Unicode.calculate_utf8_index(line)
-    local next_index = next_indices(line, utf8_index)
+    local next_word_index = calculate_next_word_index(line, utf8_index)
     local word = ''
-    if next_index > 0 then
-      word = string.sub(line, 1, next_index)
+    if next_word_index > 0 then
+      word = string.sub(line, 1, next_word_index)
     end
     if #word < #line then
       line = string.sub(line, string.len(word) + 1)
@@ -425,7 +425,7 @@ function M.accept_word()
       cache:remove_line(1)
       if M.has_suggestions() then
         Lines.set_text({ word, '' })
-        Log.debug('Set word and empty new line; word: {}', word)
+        Log.debug('Set word and empty new line, word: {}', word)
       else
         Lines.set_text({ word })
         Log.debug('Set word: {}', word)
