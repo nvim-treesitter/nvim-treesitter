@@ -37,8 +37,10 @@
     "|"
   ] @operator)
 
-(export_directive
-  "export" @keyword)
+[
+  "export"
+  "unexport"
+] @keyword.import
 
 (override_directive
   "override" @keyword)

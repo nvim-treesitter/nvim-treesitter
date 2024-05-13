@@ -102,7 +102,6 @@
   "property"
   "signal"
   "declare"
-  "export"
   "implements"
   "override"
 ] @keyword

@@ -7,7 +7,6 @@
 
 [
   "declare"
-  "export"
   "implements"
   "type"
   "override"
@@ -30,9 +29,6 @@
 ] @keyword.operator
 
 (as_expression
-  "as" @keyword.operator)
-
-(export_statement
   "as" @keyword.operator)
 
 (mapped_type_clause
