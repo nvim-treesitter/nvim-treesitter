@@ -165,7 +165,9 @@ local function on_error(err)
   end
 end
 
-local function _find_nospace(line)
+---@param line string
+---@return number?
+local function find_nospace(line)
   for i = 1, #line do
     if line:sub(i, i) ~= ' ' then
       return i
@@ -173,13 +175,17 @@ local function _find_nospace(line)
   end
 end
 
-local function _get_tslangs(buffer, start_row, end_row)
+---@param buffer number
+---@param start_row number
+---@param end_row number
+---@return string[]
+local function get_tslangs(buffer, start_row, end_row)
   local row = start_row
   local col = 0
 
   for i = start_row, end_row do
     local line = api.nvim_buf_get_lines(buffer, i, i + 1, false)[1]
-    local pos = _find_nospace(line)
+    local pos = find_nospace(line)
     if pos then
       row = i
       col = pos
@@ -242,7 +248,7 @@ function ActionsEngine.start_action(action, opts)
 
   local filetype = api.nvim_get_option_value('filetype', { buf = buffer })
   Log.debug('Action filetype: {}', filetype)
-  local langs = _get_tslangs(buffer, sln, eln)
+  local langs = get_tslangs(buffer, sln - 1, eln - 1)
   Log.debug('Action langs: {}', langs)
   if filetype == 'markdown' and #langs >= 2 then
     filetype = vim.tbl_filter(function(lang) return lang ~= 'markdown' end, langs)[1]
