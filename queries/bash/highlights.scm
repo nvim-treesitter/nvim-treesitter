@@ -93,12 +93,13 @@
 [
   "declare"
   "typeset"
-  "export"
   "readonly"
   "local"
   "unset"
   "unsetenv"
 ] @keyword
+
+"export" @keyword.import
 
 "function" @keyword.function
 

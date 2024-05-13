@@ -7,8 +7,9 @@
 [
   "local"
   "type"
-  "export"
 ] @keyword
+
+"export" @keyword.import
 
 (do_statement
   [

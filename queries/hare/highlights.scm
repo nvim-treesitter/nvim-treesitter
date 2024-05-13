@@ -20,7 +20,10 @@
   (#lua-match? @constant "^[A-Z_]+$"))
 
 ; Includes
-"use" @keyword.import
+[
+  "use"
+  "export"
+] @keyword.import
 
 (use_statement
   (scoped_type_identifier
@@ -41,7 +44,6 @@
 ; Keywords
 [
   "def"
-  "export"
   "let"
 ] @keyword
 

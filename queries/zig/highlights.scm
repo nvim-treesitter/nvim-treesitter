@@ -139,7 +139,10 @@ field_constant: (IDENTIFIER) @constant
   "continue"
 ] @keyword.repeat
 
-"usingnamespace" @keyword.import
+[
+  "usingnamespace"
+  "export"
+] @keyword.import
 
 [
   "try"
@@ -168,7 +171,6 @@ field_constant: (IDENTIFIER) @constant
 
 [
   "comptime"
-  "export"
   "extern"
   "inline"
   "noinline"

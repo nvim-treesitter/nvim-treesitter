@@ -215,7 +215,6 @@
   "signal"
   "var"
   "onready"
-  "export"
   "setget"
   "remote"
   "master"
@@ -224,6 +223,8 @@
   "mastersync"
   "puppetsync"
 ] @keyword
+
+"export" @keyword.import
 
 [
   "enum"
