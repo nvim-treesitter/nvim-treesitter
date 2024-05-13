@@ -2,14 +2,15 @@ local api = vim.api
 
 local Base = require('fittencode.base')
 local Config = require('fittencode.config')
+local Lines = require('fittencode.views.lines')
 local Log = require('fittencode.log')
 local NetworkError = require('fittencode.client.network_error')
 local Sessions = require('fittencode.sessions')
 local Status = require('fittencode.status')
 local SuggestionsCache = require('fittencode.suggestions_cache')
 local TaskScheduler = require('fittencode.tasks')
-local Lines = require('fittencode.views.lines')
 local PromptProviders = require('fittencode.prompt_providers')
+local Unicode = require('fittencode.unicode')
 
 local SC = Status.C
 
@@ -203,6 +204,9 @@ local function _generate_one_stage(row, col, force, on_success, on_error)
 
   if not force and cache:equal_cursor(row, col) and M.has_suggestions() then
     Log.debug('Cached cursor matches requested cursor')
+    if M.is_inline_enabled() then
+      Lines.render_virt_text(cache:get_lines())
+    end
     status:update(SC.SUGGESTIONS_READY)
     if on_error then
       on_error()
@@ -212,8 +216,9 @@ local function _generate_one_stage(row, col, force, on_success, on_error)
     Log.debug('Cached cursor is outdated')
   end
 
-  local task_id = tasks:create(row, col)
   cache:flush()
+
+  local task_id = tasks:create(row, col)
   Sessions.request_generate_one_stage(task_id, PromptProviders.get_current_prompt_ctx(), function(id, _, suggestions)
     local processed = process_suggestions(id, suggestions)
     if processed then
@@ -247,6 +252,10 @@ local generate_one_stage_timer = nil
 function M.generate_one_stage(row, col, force, delaytime, on_success, on_error)
   Log.debug('Start generate one stage...')
 
+  if M.is_inline_enabled() then
+    Lines.clear_virt_text()
+  end
+
   if delaytime == nil then
     delaytime = Config.options.delay_completion.delaytime
   end
@@ -275,7 +284,11 @@ local function generate_one_stage_at_cursor()
 end
 
 function M.accept_all_suggestions()
-  Log.debug('Accept all suggestions')
+  Log.debug('Accept all suggestions...')
+
+  if not M.is_inline_enabled() then
+    return
+  end
 
   if not M.has_suggestions() then
     Log.debug('No suggestions')
@@ -310,7 +323,11 @@ local function ignoreevent_wrap(fx)
 end
 
 function M.accept_line()
-  Log.debug('Accept line')
+  Log.debug('Accept line...')
+
+  if not M.is_inline_enabled() then
+    return
+  end
 
   if not M.has_suggestions() then
     Log.debug('No suggestions')
@@ -356,25 +373,45 @@ end
 
 -- Calculate the next word index, split by word boundary
 ---@param line string
-local function next_indices(line)
-  local pa = nil
+local function calculate_next_word_index(line, utf8_index)
+  local prev_ctype = nil
   for i = 1, string.len(line) do
-    local char = string.sub(line, i, i)
-    local a = Base.is_alpha(char)
-    local s = Base.is_space(char)
-    if i == 1 and not a and not s then
-      return i
+    local char, pos = Unicode.find_first_character(line, utf8_index, i)
+    if not pos or not char then
+      break
     end
-    if pa ~= nil and ((not pa and a) or (pa and s) or (not a and not s)) then
-      return i - 1
+    if pos[1] ~= pos[2] then
+      if not prev_ctype then
+        return pos[2]
+      else
+        return pos[1] - 1
+      end
     end
-    pa = a
+
+    local is_alpha = Base.is_alpha(char)
+    local is_space = Base.is_space(char)
+
+    if not is_alpha and not is_space then
+      return prev_ctype and i - 1 or 1
+    end
+    if prev_ctype then
+      if is_alpha and prev_ctype ~= 'alpha' then
+        return i - 1
+      elseif is_space and prev_ctype ~= 'space' then
+        return i - 1
+      end
+    end
+    prev_ctype = is_alpha and 'alpha' or is_space and 'space'
   end
   return string.len(line)
 end
 
 function M.accept_word()
-  Log.debug('Accept word')
+  Log.debug('Accept word...')
+
+  if not M.is_inline_enabled() then
+    return
+  end
 
   if not M.has_suggestions() then
     Log.debug('No suggestions')
@@ -391,10 +428,11 @@ function M.accept_word()
       Log.debug('No line cached')
       return
     end
-    local next_index = next_indices(line)
+    local utf8_index = Unicode.calculate_utf8_index(line)
+    local next_word_index = calculate_next_word_index(line, utf8_index)
     local word = ''
-    if next_index > 0 then
-      word = string.sub(line, 1, next_index)
+    if next_word_index > 0 then
+      word = string.sub(line, 1, next_word_index)
     end
     if #word < #line then
       line = string.sub(line, string.len(word) + 1)
@@ -405,7 +443,7 @@ function M.accept_word()
       cache:remove_line(1)
       if M.has_suggestions() then
         Lines.set_text({ word, '' })
-        Log.debug('Set word and empty new line; word: {}', word)
+        Log.debug('Set word and empty new line, word: {}', word)
       else
         Lines.set_text({ word })
         Log.debug('Set word: {}', word)
@@ -438,11 +476,13 @@ function M.reset()
 end
 
 function M.advance()
-  if not M.has_suggestions() then
+  Log.debug('Advance...')
+
+  if not M.is_inline_enabled() then
     return
   end
 
-  if not M.is_inline_enabled() then
+  if not M.has_suggestions() then
     return
   end
 
@@ -467,12 +507,15 @@ function M.is_inline_enabled()
   return true
 end
 
+-- TODO: Support for Chinese input
 ---@return boolean?
 function M.lazy_inline_completion()
+  Log.debug('Lazy inline completion...')
+
   if not M.is_inline_enabled() then
     return
   end
-  Log.debug('Lazy inline completion...')
+
   local is_advance = function(row, col)
     local cached_row, cached_col = cache:get_cursor()
     if cached_row == row and cached_col + 1 == col then
@@ -482,9 +525,11 @@ function M.lazy_inline_completion()
     end
     return 0
   end
+
   local row, col = Base.get_cursor()
   Log.debug('Lazy inline completion row: {}, col: {}', row, col)
   Log.debug('Cached row: {}, col: {}', cache:get_cursor())
+
   local adv_type = is_advance(row, col)
   if adv_type > 0 then
     local cur_line = api.nvim_buf_get_lines(0, row, row + 1, false)[1]

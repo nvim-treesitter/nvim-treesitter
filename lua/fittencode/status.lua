@@ -57,6 +57,8 @@ function M:update(status)
   end
   if status ~= self.current then
     self.current = status
+    -- Force `lualine` to update statusline
+    -- vim.cmd('redrawstatus')
     Log.debug('{} status updated to {}', self.tag, name)
   end
   Base.debounce(self.idle_timer, function()
