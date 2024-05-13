@@ -41,8 +41,7 @@ end
 
 function M.name(buffer)
   local path = api.nvim_buf_get_name(buffer)
-  local i = Base.rfind(path, M.nvim_sep())
-  return i and string.sub(path, -i + 1, -1) or path
+  return vim.fn.fnamemodify(path, ":t")
 end
 
 return M

@@ -392,8 +392,15 @@ function M.accept_word()
       return
     end
     local next_index = next_indices(line)
-    local word = string.sub(line, 1, next_index)
-    line = string.sub(line, string.len(word) + 1)
+    local word = ''
+    if next_index > 0 then
+      word = string.sub(line, 1, next_index)
+    end
+    if #word < #line then
+      line = string.sub(line, string.len(word) + 1)
+    else
+      line = ''
+    end
     if string.len(line) == 0 then
       cache:remove_line(1)
       if M.has_suggestions() then
@@ -482,7 +489,7 @@ function M.lazy_inline_completion()
   if adv_type > 0 then
     local cur_line = api.nvim_buf_get_lines(0, row, row + 1, false)[1]
     local cache_line = cache:get_line(1)
-    if not cache_line then
+    if not cache_line or #cache_line == 0 then
       return false
     end
     if adv_type == 1 then
