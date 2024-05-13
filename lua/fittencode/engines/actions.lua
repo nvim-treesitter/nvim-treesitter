@@ -165,6 +165,39 @@ local function on_error(err)
   end
 end
 
+local function _find_nospace(line)
+  for i = 1, #line do
+    if line:sub(i, i) ~= ' ' then
+      return i
+    end
+  end
+end
+
+local function _get_tslangs(buffer, start_row, end_row)
+  local row = start_row
+  local col = 0
+
+  for i = start_row, end_row do
+    local line = api.nvim_buf_get_lines(buffer, i, i + 1, false)[1]
+    local pos = _find_nospace(line)
+    if pos then
+      row = i
+      col = pos
+      break
+    end
+  end
+
+  local info = vim.inspect_pos(buffer, row, col)
+  local ts = info.treesitter
+  local langs = {}
+  for _, node in ipairs(ts) do
+    if not vim.tbl_contains(langs, node.lang) then
+      langs[#langs + 1] = node.lang
+    end
+  end
+  return langs
+end
+
 ---@param action number
 ---@param opts? ActionOptions
 ---@return nil
@@ -207,11 +240,20 @@ function ActionsEngine.start_action(action, opts)
   chat:show()
   vim.fn.win_gotoid(window)
 
+  local filetype = api.nvim_get_option_value('filetype', { buf = buffer })
+  Log.debug('Action filetype: {}', filetype)
+  local langs = _get_tslangs(buffer, sln, eln)
+  Log.debug('Action langs: {}', langs)
+  if filetype == 'markdown' and #langs >= 2 then
+    filetype = vim.tbl_filter(function(lang) return lang ~= 'markdown' end, langs)[1]
+  end
+  Log.debug('Action filetype: {}', filetype)
+
   local prompt_opts = {
     window = window,
     buffer = buffer,
     range = { sln - 1, eln - 1 },
-    filetype = vim.bo.filetype,
+    filetype = filetype,
     prompt_ty = get_action_type(action),
     solved_content = opts and opts.content,
     solved_prefix = nil,
