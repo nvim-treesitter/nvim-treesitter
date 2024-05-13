@@ -47,6 +47,9 @@
 
 (user_type_identifier) @type
 
+(enum_block
+  (user_type_identifier) @constant)
+
 ; Functions and callbacks
 (argument) @variable.parameter
 
