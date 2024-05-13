@@ -1,0 +1,28 @@
+name: CI
+on:
+  push:
+  pull_request:
+
+jobs:
+  docs: # https://github.com/kdheepak/panvimdoc
+    name: docs
+    if: ${{ github.ref == 'refs/heads/master' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: panvimdoc
+        uses: kdheepak/panvimdoc@main
+        with:
+          vimdoc: fittencode.nvim
+          pandoc: "README.md" # Input pandoc file
+          version: "Neovim >= 0.8.0"
+          toc: true # Table of contents
+          demojify: false # Strip emojis from the vimdoc
+          treesitter: true # Use treesitter for highlighting codeblocks
+      - name: commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Auto generate vim syntax docs"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"
+          commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
