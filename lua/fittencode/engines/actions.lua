@@ -232,13 +232,13 @@ function ActionsEngine.start_action(action, opts)
   local vmode = { 'v', 'V', '<C-V>' }
   Log.debug('mode: {}', api.nvim_get_mode().mode)
   if vim.tbl_contains(vmode, api.nvim_get_mode().mode) then
-    sln = vim.fn.getpos("'<")[2]
-    eln = vim.fn.getpos("'>")[2]
+    sln = fn.getpos("'<")[2]
+    eln = fn.getpos("'>")[2]
     Log.debug('v mode sln: {}, eln: {}', sln, eln)
   end
 
   chat:show()
-  vim.fn.win_gotoid(window)
+  fn.win_gotoid(window)
 
   local filetype = api.nvim_get_option_value('filetype', { buf = buffer })
   Log.debug('Action filetype: {}', filetype)

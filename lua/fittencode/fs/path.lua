@@ -1,4 +1,5 @@
 local api = vim.api
+local fn = vim.fn
 
 local Base = require('fittencode.base')
 
@@ -41,7 +42,7 @@ end
 
 function M.name(buffer)
   local path = api.nvim_buf_get_name(buffer)
-  return vim.fn.fnamemodify(path, ':t')
+  return fn.fnamemodify(path, ':t')
 end
 
 return M
