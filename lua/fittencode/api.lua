@@ -22,7 +22,7 @@ M.api = {
   set_log_level = function(level)
     Log.set_level(level)
   end,
-  ---@return integer
+  ---@return integer, integer
   get_current_status = function()
     return Engines.get_status()
   end,

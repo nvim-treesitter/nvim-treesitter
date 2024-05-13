@@ -89,7 +89,7 @@ end
 
 ---@param task_id integer
 ---@param suggestions Suggestions
----@return Suggestions?
+---@return Suggestions?, integer?
 local function filter_suggestions(task_id, suggestions)
   if not suggestions then
     return
@@ -418,7 +418,7 @@ function ActionsEngine.setup()
   setup_actions_menu()
 end
 
----@return Status
+---@return integer
 function ActionsEngine.get_status()
   return status:get_current()
 end

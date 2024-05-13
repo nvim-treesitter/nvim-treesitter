@@ -460,6 +460,7 @@ function M.is_inline_enabled()
   return true
 end
 
+---@return boolean?
 function M.lazy_inline_completion()
   if not M.is_inline_enabled() then
     return
@@ -485,7 +486,7 @@ function M.lazy_inline_completion()
       return false
     end
     if adv_type == 1 then
-      Log.debug('Advance type 1')
+      Log.debug('Lazy advance type 1')
       local cur_char = string.sub(cur_line, col, col)
       local cache_char = string.sub(cache_line, 1, 1)
       if cur_char == cache_char then
@@ -501,7 +502,7 @@ function M.lazy_inline_completion()
         return true
       end
     elseif adv_type == 2 then
-      Log.debug('Advance type 2')
+      Log.debug('Lazy advance type 2')
       -- Neovim will auto indent the new line, so the cached line that contains spaces will be invalid, we can't reusing it.
       -- cache:update_line(1, nil)
       -- cache:update_cursor(row, col)
@@ -512,6 +513,7 @@ function M.lazy_inline_completion()
   return false
 end
 
+---@return integer
 function M.get_status()
   return status:get_current()
 end
