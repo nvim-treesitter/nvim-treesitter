@@ -361,9 +361,6 @@ function ActionsEngine.start_chat(opts)
 end
 
 local function setup_actions_menu()
-  -- vim.cmd([[
-  --   anoremenu PopUp.-1- <Nop>
-  -- ]])
   if Config.options.action.document_code.show_in_editor_context_menu then
     vim.cmd([[
       vnoremenu PopUp.Fitten\ Code\ -\ Document\ Code  <Cmd>Fitten document_code<CR>
@@ -394,17 +391,6 @@ local function setup_actions_menu()
       vnoremenu PopUp.Fitten\ Code\ -\ Start\ Chat  <Cmd>Fitten start_chat<CR>
     ]])
   end
-  -- vim.cmd([[
-  --   vnoremenu PopUp.DocumentCode  <Cmd>Fitten document_code<CR>
-  --   vnoremenu PopUp.EditCode  <Cmd>Fitten edit_code<CR>
-  --   vnoremenu PopUp.ExplainCode  <Cmd>Fitten explain_code<CR>
-  --   vnoremenu PopUp.FindBugs  <Cmd>Fitten find_bugs<CR>
-  --   vnoremenu PopUp.GenerateUnitTest  <Cmd>Fitten generate_unit_test<CR>
-  --   vnoremenu PopUp.ImplementFeatures  <Cmd>Fitten implement_features<CR>
-  --   vnoremenu PopUp.ImproveCode  <Cmd>Fitten improve_code<CR>
-  --   vnoremenu PopUp.RefactorCode  <Cmd>Fitten refactor_code<CR>
-  --   vnoremenu PopUp.StartChat  <Cmd>Fitten start_chat<CR>
-  -- ]])
 end
 
 function ActionsEngine.setup()
