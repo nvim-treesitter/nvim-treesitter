@@ -1,5 +1,5 @@
 local Base = require('fittencode.base')
-local Engine = require('fittencode.engine')
+local Engine = require('fittencode.engines.inline')
 local Log = require('fittencode.log')
 local Sources = require('fittencode.sources')
 
