@@ -109,7 +109,7 @@ local function _implement_functions(...)
 end
 
 local function _implement_class(...)
-  return _action_apis_wrap(API.implement_class, ...)
+  return _action_apis_wrap(API.implement_classes, ...)
 end
 
 local function _document_code(...)

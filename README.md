@@ -90,7 +90,7 @@ use {
       -- Show "Fitten Code - Start Chat" in the editor context menu, when you right-click on the code.
       show_in_editor_context_menu = true,
     },
-  },  
+  },
   disable_specific_inline_completion = {
     -- Disable auto-completion for some specific file suffixes by entering them below
     -- For example, `suffixes = {'lua', 'cpp'}`
@@ -172,7 +172,7 @@ require('cmp').setup({
 | `Fitten edit_code`          | Edit code                                                                                                                                                    |
 | `Fitten explain_code`       | Explain code                                                                                                                                                 |
 | `Fitten find_bugs`          | Find bugs                                                                                                                                                    |
-| `Fitten generate_unit_test` | Generate unit test. Try the command `Fitten generate_unit_test <language> <test_framework>` to generate unit test with specific test framework and language. |
+| `Fitten generate_unit_test` | Generate unit test. Try the command `Fitten generate_unit_test <test_framework> <language>` to generate unit test with specific test framework and language. |
 | `Fitten implement_features` | Implement features                                                                                                                                           |
 | `Fitten improve_code`       | Improve code                                                                                                                                                 |
 | `Fitten refactor_code`      | Refactor code                                                                                                                                                |
