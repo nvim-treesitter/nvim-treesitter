@@ -8,6 +8,7 @@ function M.setup()
   InlineEngine.setup()
 end
 
+---@return integer, integer
 function M.get_status()
   return InlineEngine.get_status(), ActionsEngine.get_status()
 end

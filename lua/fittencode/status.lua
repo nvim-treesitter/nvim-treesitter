@@ -1,6 +1,16 @@
 local Base = require('fittencode.base')
 local Log = require('fittencode.log')
 
+---@class Status
+---@field C StatusCodes
+---@field filters table<integer, boolean>
+---@field ready_idle boolean
+---@field tag string
+---@field current integer
+---@field idle_timer uv_timer_t
+---@field IDLE_CYCLE integer
+---@field update function
+---@field get_current function
 local M = {}
 
 ---@alias StatusCodes table<string, integer>
@@ -15,14 +25,6 @@ local C = {
 }
 
 M.C = C
-
----@class Status
----@field tag string
----@field current integer
----@field idle_timer uv_timer_t
----@field IDLE_CYCLE integer
----@field update function
----@field get_current function
 
 function M:new(opts)
   local obj = {

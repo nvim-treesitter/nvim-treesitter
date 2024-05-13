@@ -58,6 +58,8 @@ function M:close()
   self.buffer = nil
 end
 
+---@param text? string|string[]
+---@param linebreak? boolean
 function M:commit(text, linebreak)
   local lines = nil
   if type(text) == 'string' then
@@ -108,6 +110,16 @@ function M:is_repeated(lines)
   -- TODO: improve this
   -- return _sub_match(self.text[#self.text], lines[1])
   return false
+end
+
+---@return string[]
+function M:get_text()
+  return self.text
+end
+
+---@return boolean
+function M:has_text()
+  return #self.text > 0
 end
 
 return M

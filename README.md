@@ -23,7 +23,7 @@ Fitten Code AI Programming Assistant for Neovim, helps you to use AI for automat
 - 🔎 Accept word with `Ctrl + ➡️`
 - ❄️ Undo accepted text
 - 🧨 Automatic scrolling when previewing or completing code
-- 🍭 Multi rest backends such as `curl`, `libcurl` (WIP)
+- 🍭 Multiple HTTP/REST backends such as `curl`, `libcurl` (WIP)
 - 🛰️ Run as a `coc.nvim` (WIP) source or `nvim-cmp` source
 
 ## ⚡️ Requirements
@@ -90,7 +90,7 @@ use {
       -- Show "Fitten Code - Start Chat" in the editor context menu, when you right-click on the code.
       show_in_editor_context_menu = true,
     },
-  },  
+  },
   disable_specific_inline_completion = {
     -- Disable auto-completion for some specific file suffixes by entering them below
     -- For example, `suffixes = {'lua', 'cpp'}`
