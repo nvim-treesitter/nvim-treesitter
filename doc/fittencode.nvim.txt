@@ -4,13 +4,13 @@
 Table of Contents                          *fittencode.nvim-table-of-contents*
 
 1. fittencode.nvim                           |fittencode.nvim-fittencode.nvim|
-  - ✨ Features                |fittencode.nvim-fittencode.nvim-✨-features|
-  - ⚡️ Requirements  |fittencode.nvim-fittencode.nvim-⚡️-requirements|
-  - 📦 Installation      |fittencode.nvim-fittencode.nvim-📦-installation|
-  - ⚙️ Configuration|fittencode.nvim-fittencode.nvim-⚙️-configuration|
-  - 🚀 Usage                    |fittencode.nvim-fittencode.nvim-🚀-usage|
-  - ✏️ APIs                  |fittencode.nvim-fittencode.nvim-✏️-apis|
-  - 🎉 Special Thanks  |fittencode.nvim-fittencode.nvim-🎉-special-thanks|
+  - Features                        |fittencode.nvim-fittencode.nvim-features|
+  - Requirements                |fittencode.nvim-fittencode.nvim-requirements|
+  - Installation                |fittencode.nvim-fittencode.nvim-installation|
+  - Configuration              |fittencode.nvim-fittencode.nvim-configuration|
+  - Usage                              |fittencode.nvim-fittencode.nvim-usage|
+  - APIs                                |fittencode.nvim-fittencode.nvim-apis|
+  - Special Thanks            |fittencode.nvim-fittencode.nvim-special-thanks|
 2. Links                                               |fittencode.nvim-links|
 
 ==============================================================================
@@ -21,41 +21,41 @@ automatic completion in Neovim, with support for functions like login, logout,
 shortcut key completion.
 
 
-✨ FEATURES                    *fittencode.nvim-fittencode.nvim-✨-features*
+FEATURES                            *fittencode.nvim-fittencode.nvim-features*
 
-- 🚀 Fast completion thanks to `Fitten Code`
-- 🐛 Asynchronous I/O for improved performance
-- 🐣 Support for `Actions`
-    - 1️⃣ Document code
-    - 2️⃣ Edit code
-    - 3️⃣ Explain code
-    - 4️⃣ Find bugs
-    - 5️⃣ Generate unit test
-    - 6️⃣ Implement features
-    - 7️⃣ Improve code
-    - 8️⃣ Refactor code
-    - 9️⃣ Start chat
-- ⭐️ Accept all suggestions with `Tab`
-- 🧪 Accept line with `Ctrl + ⬇️`
-- 🔎 Accept word with `Ctrl + ➡️`
-- ❄️ Undo accepted text
-- 🧨 Automatic scrolling when previewing or completing code
-- 🍭 Multiple HTTP/REST backends such as `curl`, `libcurl` (WIP)
-- 🛰️ Run as a `coc.nvim` (WIP) source or `nvim-cmp` source
+- Fast completion thanks to `Fitten Code`
+- Asynchronous I/O for improved performance
+- Support for `Actions`
+    - 1 Document code
+    - 2 Edit code
+    - 3 Explain code
+    - 4 Find bugs
+    - 5 Generate unit test
+    - 6 Implement features
+    - 7 Improve code
+    - 8 Refactor code
+    - 9 Start chat
+- Accept all suggestions with `Tab`
+- Accept line with `Ctrl + 🡫`
+- Accept word with `Ctrl + 🡪`
+- Undo accepted text
+- Automatic scrolling when previewing or completing code
+- Multiple HTTP/REST backends such as `curl`, `libcurl` (WIP)
+- Run as a `coc.nvim` (WIP) source or `nvim-cmp` source
 
 
-⚡️ REQUIREMENTS      *fittencode.nvim-fittencode.nvim-⚡️-requirements*
+REQUIREMENTS                    *fittencode.nvim-fittencode.nvim-requirements*
 
 - Neovim >= 0.8.0
 - curl
 
 
-📦 INSTALLATION          *fittencode.nvim-fittencode.nvim-📦-installation*
+INSTALLATION                    *fittencode.nvim-fittencode.nvim-installation*
 
 Install the plugin with your preferred package manager:
 
 
-FOR EXAMPLE WITH LAZY.NVIM:
+FOR EXAMPLE WITH LAZY.NVIM
 
 >lua
     {
@@ -67,7 +67,7 @@ FOR EXAMPLE WITH LAZY.NVIM:
 <
 
 
-FOR EXAMPLE WITH PACKER.NVIM:
+FOREXAMPLE WITH PACKER.NVIM
 
 >lua
     use {
@@ -79,7 +79,7 @@ FOR EXAMPLE WITH PACKER.NVIM:
 <
 
 
-⚙️ CONFIGURATION    *fittencode.nvim-fittencode.nvim-⚙️-configuration*
+CONFIGURATION                  *fittencode.nvim-fittencode.nvim-configuration*
 
 
 DEFAULTS ~
@@ -180,7 +180,7 @@ SOURCE MODE ~
 <
 
 
-🚀 USAGE                        *fittencode.nvim-fittencode.nvim-🚀-usage*
+USAGE                                  *fittencode.nvim-fittencode.nvim-usage*
 
 
 ACCOUNT COMMANDS ~
@@ -226,13 +226,13 @@ ACTION COMMANDS ~
 
 DEFAULT MAPPINGS ~
 
-  Mappings    Action
-  ----------- ------------------------
-  Tab         Accept all suggestions
-  Ctrl + ⬇️   Accept line
-  Ctrl + ➡️   Accept word
+  Mappings   Action
+  ---------- ------------------------
+  Tab        Accept all suggestions
+  Ctrl + 🡫   Accept line
+  Ctrl + 🡪   Accept word
 
-✏️ APIS                      *fittencode.nvim-fittencode.nvim-✏️-apis*
+APIS                                    *fittencode.nvim-fittencode.nvim-apis*
 
 `fittencode.nvim` provides a set of APIs to help you integrate it with other
 plugins or scripts.
@@ -259,7 +259,7 @@ plugins or scripts.
   start_chat               Start chat
   stop_eval                Stop the evaluation
 
-🎉 SPECIAL THANKS      *fittencode.nvim-fittencode.nvim-🎉-special-thanks*
+SPECIAL THANKS                *fittencode.nvim-fittencode.nvim-special-thanks*
 
 - https://github.com/FittenTech/fittencode.vim
 
