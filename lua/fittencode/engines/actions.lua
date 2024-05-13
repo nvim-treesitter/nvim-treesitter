@@ -60,6 +60,7 @@ local lock = false
 
 local elapsed_time = 0
 local depth = 0
+local MAX_DEPTH = 10
 
 local stop_eval = false
 
@@ -107,6 +108,11 @@ end
 ---@param on_error function
 local function chain_actions(action, solved_prefix, on_error)
   Log.debug('Chain Action({})...', get_action_name(action))
+  if depth >= MAX_DEPTH then
+    Log.debug('Max depth reached, stopping evaluation')
+    schedule(on_error)
+    return
+  end
   if stop_eval then
     stop_eval = false
     schedule(on_error)
