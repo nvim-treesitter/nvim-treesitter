@@ -212,8 +212,10 @@ local function _generate_one_stage(row, col, force, on_success, on_error)
     Log.debug('Cached cursor is outdated')
   end
 
-  local task_id = tasks:create(row, col)
+  Lines.clear_virt_text()
   cache:flush()
+
+  local task_id = tasks:create(row, col)
   Sessions.request_generate_one_stage(task_id, PromptProviders.get_current_prompt_ctx(), function(id, _, suggestions)
     local processed = process_suggestions(id, suggestions)
     if processed then
