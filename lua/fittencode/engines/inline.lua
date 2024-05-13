@@ -204,6 +204,9 @@ local function _generate_one_stage(row, col, force, on_success, on_error)
 
   if not force and cache:equal_cursor(row, col) and M.has_suggestions() then
     Log.debug('Cached cursor matches requested cursor')
+    if M.is_inline_enabled() then
+      Lines.render_virt_text(cache:get_lines())
+    end
     status:update(SC.SUGGESTIONS_READY)
     if on_error then
       on_error()
@@ -213,7 +216,6 @@ local function _generate_one_stage(row, col, force, on_success, on_error)
     Log.debug('Cached cursor is outdated')
   end
 
-  Lines.clear_virt_text()
   cache:flush()
 
   local task_id = tasks:create(row, col)
@@ -249,6 +251,10 @@ local generate_one_stage_timer = nil
 ---@param on_error? function
 function M.generate_one_stage(row, col, force, delaytime, on_success, on_error)
   Log.debug('Start generate one stage...')
+
+  if M.is_inline_enabled() then
+    Lines.clear_virt_text()
+  end
 
   if delaytime == nil then
     delaytime = Config.options.delay_completion.delaytime
