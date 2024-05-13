@@ -2181,6 +2181,14 @@ list.typescript = {
   maintainers = { "@steelsojka" },
 }
 
+list.typespec = {
+  install_info = {
+    url = "https://github.com/happenslol/tree-sitter-typespec",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@happenslol" },
+}
+
 list.typoscript = {
   install_info = {
     url = "https://github.com/Teddytrombone/tree-sitter-typoscript",

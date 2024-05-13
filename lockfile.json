@@ -752,6 +752,9 @@
   "typescript": {
     "revision": "7b4275d077ae196fc0ce42ab3ad091574e3ec519"
   },
+  "typespec": {
+    "revision": "fd9a83c6c0aaaff4b1354454b5b9f130f59dd553"
+  },
   "typoscript": {
     "revision": "43b221c0b76e77244efdaa9963e402a17c930fbc"
   },
