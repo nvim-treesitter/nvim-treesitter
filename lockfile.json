@@ -315,7 +315,7 @@
     "revision": "e5da7d0aa44403153e0394d87d9edea4e5bd6609"
   },
   "idl": {
-    "revision": "e885d7fd66c2549b7a28172400d645d27656f5cb"
+    "revision": "d1ee47cbe7fbe3c68a491e5e50236f009f618faa"
   },
   "ini": {
     "revision": "bcb84a2d4bcd6f55b911c42deade75c8f90cb0c5"
@@ -498,10 +498,10 @@
     "revision": "d4ebabd45bcb053fcc7f6688b5c8ed80c7ae7a32"
   },
   "php": {
-    "revision": "d5aea05a70c5d021fa746516391f156d35658875"
+    "revision": "27afeb02e49ff30acd17b67897b1c0114561a38c"
   },
   "php_only": {
-    "revision": "d5aea05a70c5d021fa746516391f156d35658875"
+    "revision": "27afeb02e49ff30acd17b67897b1c0114561a38c"
   },
   "phpdoc": {
     "revision": "1d0e255b37477d0ca46f1c9e9268c8fa76c0b3fc"
@@ -807,7 +807,7 @@
     "revision": "bd1d35cf3e013dc7e189b46a593bdc2b281b0dd7"
   },
   "wit": {
-    "revision": "3d6124cfe88555ecee1ba97d6d76c70d13af927a"
+    "revision": "cab94791450524a542324d8cbe8017d69c516d8e"
   },
   "xcompose": {
     "revision": "2383cc69a2c42cfade41c7cb971fb3862bec6df1"
