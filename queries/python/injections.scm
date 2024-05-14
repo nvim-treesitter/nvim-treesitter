@@ -3,8 +3,13 @@
     object: (identifier) @_re)
   arguments: (argument_list
     .
-    (string
-      (string_content) @injection.content))
+    [
+      (string
+        (string_content) @injection.content)
+      (concatenated_string
+        (string
+          (string_content) @injection.content))
+    ])
   (#eq? @_re "re")
   (#set! injection.language "regex"))
 
