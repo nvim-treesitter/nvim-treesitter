@@ -97,7 +97,9 @@ function M:execute(ctx)
     end
     local prompt = ctx.prompt or ((type(key) == 'function' and key(ctx.action_opts) or key) .. lang_suffix)
     -- Log.debug('Action Prompt: {}', prompt)
-    prefix = content .. '\n`' .. 'Dear FittenCode, Please ' .. prompt .. ':\n'
+    local start_question = '# Question:\n'
+    local start_answer = '# Answer:\n'
+    prefix = start_question .. content .. '\n' .. start_answer .. 'Dear FittenCode, Please ' .. prompt .. ':\n'
   end
   local suffix = ''
 
