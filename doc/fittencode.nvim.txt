@@ -1,4 +1,4 @@
-*fittencode.nvim.txt*       For Neovim >= 0.8.0       Last change: 2024 May 13
+*fittencode.nvim.txt*       For Neovim >= 0.8.0       Last change: 2024 May 15
 
 ==============================================================================
 Table of Contents                          *fittencode.nvim-table-of-contents*
