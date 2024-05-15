@@ -185,38 +185,10 @@ end
 
 ---@param row integer
 ---@param col integer
----@param force? boolean
 ---@param on_success? function
 ---@param on_error? function
-local function _generate_one_stage(row, col, force, on_success, on_error)
+local function _generate_one_stage(row, col, on_success, on_error)
   status:update(SC.GENERATING)
-
-  if not Sessions.ready_for_generate() then
-    Log.debug('Not ready for generate')
-    if on_error then
-      on_error()
-    end
-    return
-  end
-
-  Log.debug('Requested row: {}, col: {}', row, col)
-  Log.debug('Cached row: {}, col: {}', cache:get_cursor())
-
-  if not force and cache:equal_cursor(row, col) and M.has_suggestions() then
-    Log.debug('Cached cursor matches requested cursor')
-    if M.is_inline_enabled() then
-      Lines.render_virt_text(cache:get_lines())
-    end
-    status:update(SC.SUGGESTIONS_READY)
-    if on_error then
-      on_error()
-    end
-    return
-  else
-    Log.debug('Cached cursor is outdated')
-  end
-
-  cache:flush()
 
   local task_id = tasks:create(row, col)
   Sessions.request_generate_one_stage(task_id, PromptProviders.get_current_prompt_ctx(), function(id, _, suggestions)
@@ -252,8 +224,34 @@ local generate_one_stage_timer = nil
 function M.generate_one_stage(row, col, force, delaytime, on_success, on_error)
   Log.debug('Start generate one stage...')
 
+  Log.debug('Requested row: {}, col: {}', row, col)
+  Log.debug('Cached row: {}, col: {}', cache:get_cursor())
+
+  if not force and cache:equal_cursor(row, col) and M.has_suggestions() then
+    Log.debug('Cached cursor matches requested cursor')
+    if M.is_inline_enabled() then
+      Lines.render_virt_text(cache:get_lines())
+    end
+    status:update(SC.SUGGESTIONS_READY)
+    if on_error then
+      on_error()
+    end
+    return
+  else
+    Log.debug('Cached cursor is outdated')
+  end
+
   if M.is_inline_enabled() then
     Lines.clear_virt_text()
+  end
+  cache:flush()
+
+  if not Sessions.ready_for_generate() then
+    Log.debug('Not ready for generate')
+    if on_error then
+      on_error()
+    end
+    return
   end
 
   if delaytime == nil then
@@ -262,7 +260,7 @@ function M.generate_one_stage(row, col, force, delaytime, on_success, on_error)
   Log.debug('Delay completion request; delaytime: {} ms', delaytime)
 
   Base.debounce(generate_one_stage_timer, function()
-    _generate_one_stage(row, col, force, on_success, on_error)
+    _generate_one_stage(row, col, on_success, on_error)
   end, delaytime)
 end
 
