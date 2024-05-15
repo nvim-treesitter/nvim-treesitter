@@ -57,12 +57,18 @@ function M:execute(ctx)
       -- content = table.concat(api.nvim_buf_get_text(ctx.buffer, 0, 0, -1, -1, {}), '\n')
       content = table.concat(api.nvim_buf_get_text(ctx.buffer, ctx.range[1], 0, ctx.range[2], -1, {}), '\n')
     end
+    local name = ctx.prompt_ty:sub(#NAME + 2)
+    Log.debug('Action Name: {}', name)
     local filetype = ctx.filetype or ''
-    -- Log.debug('Action Filetype: {}', filetype)
-    content = '```' .. filetype .. '\n' .. content .. '\n```'
-    -- Log.debug('Action Content: {}', content)
+    Log.debug('Action Filetype: {}', filetype)
     local language = ctx.action_opts.language or filetype
-    -- Log.debug('Action Language: {}', language)
+    Log.debug('Action Language: {}', language)
+    local content_prefix = '```'
+    local content_suffix = '```'
+    if name ~= 'StartChat' then
+      content_prefix = '```' .. language
+    end
+    content = content_prefix .. '\n' .. content .. '\n' .. content_suffix
     local map_action_prompt = {
       StartChat = 'Answers the question above',
       DocumentCode = 'Document the code above',
@@ -84,8 +90,11 @@ function M:execute(ctx)
       ImproveCode = 'Improve the code above',
       RefactorCode = 'Refactor the code above',
     }
-    local key = map_action_prompt[ctx.prompt_ty:sub(#NAME + 2)]
-    local lang_suffix = #language > 0 and ' in ' .. language or ''
+    local key = map_action_prompt[name]
+    local lang_suffix = ''
+    if name ~= 'StartChat' then
+      lang_suffix = #language > 0 and ' in ' .. language or ''
+    end
     local prompt = ctx.prompt or ((type(key) == 'function' and key(ctx.action_opts) or key) .. lang_suffix)
     -- Log.debug('Action Prompt: {}', prompt)
     prefix = content .. '\n`' .. 'Dear FittenCode, Please ' .. prompt .. ':\n'
