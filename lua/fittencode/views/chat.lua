@@ -23,12 +23,15 @@ end
 
 function M:show()
   if self.win == nil then
-    self.buffer = api.nvim_create_buf(false, true)
+    if not self.buffer then
+      self.buffer = api.nvim_create_buf(false, true)
+      api.nvim_buf_set_name(self.buffer, 'FittenCodeChat')
+    end
+
     vim.cmd('topleft vsplit')
     vim.cmd('vertical resize ' .. 40)
     self.win = api.nvim_get_current_win()
     api.nvim_win_set_buf(self.win, self.buffer)
-    api.nvim_buf_set_name(self.buffer, 'FittenCodeChat')
 
     api.nvim_set_option_value('filetype', 'markdown', { buf = self.buffer })
     api.nvim_set_option_value('modifiable', false, { buf = self.buffer })
@@ -45,8 +48,10 @@ function M:show()
     end, { buffer = self.buffer })
 
     if #self.text > 0 then
-      api.nvim_buf_set_lines(self.buffer, 0, -1, false, self.text)
+      -- api.nvim_set_option_value('modifiable', true, { buf = self.buffer })
+      -- api.nvim_buf_set_lines(self.buffer, 0, -1, false, self.text)
       api.nvim_win_set_cursor(self.win, { #self.text, 0 })
+      -- api.nvim_set_option_value('modifiable', false, { buf = self.buffer })
     end
   end
 end
@@ -57,7 +62,8 @@ function M:close()
   end
   api.nvim_win_close(self.win, true)
   self.win = nil
-  self.buffer = nil
+  -- api.nvim_buf_delete(self.buffer, { force = true })
+  -- self.buffer = nil
 end
 
 ---@param text? string|string[]

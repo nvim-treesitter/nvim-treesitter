@@ -165,9 +165,12 @@ local function on_error(err)
   end
 end
 
----@param line string
+---@param line? string
 ---@return number?
 local function find_nospace(line)
+  if not line then
+    return
+  end
   for i = 1, #line do
     if line:sub(i, i) ~= ' ' then
       return i
