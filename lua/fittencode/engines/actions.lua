@@ -149,13 +149,13 @@ local function on_error(err)
   lock = false
   if type(err) == 'table' and getmetatable(err) == NetworkError then
     Log.error('Error in Action: {}', err)
-    chat:commit('```log\nError: fetch failed.\n```')
+    chat:commit('```\nError: fetch failed.\n```')
     status:update(SC.NETWORK_ERROR)
   end
   if depth > 0 then
     status:update(SC.SUGGESTIONS_READY)
   else
-    chat:commit('```log\nNo more suggestions.\n```')
+    chat:commit('```\nNo more suggestions.\n```')
     status:update(SC.NO_MORE_SUGGESTIONS)
   end
   Log.debug('Action: No more suggestions')
