@@ -149,20 +149,20 @@ local function on_error(err)
   lock = false
   if type(err) == 'table' and getmetatable(err) == NetworkError then
     Log.error('Error in Action: {}', err)
+    chat:commit('```log\nError: fetch failed.\n```')
     status:update(SC.NETWORK_ERROR)
-    return
+  end
+  if depth > 0 then
+    status:update(SC.SUGGESTIONS_READY)
+  else
+    chat:commit('```log\nNo more suggestions.\n```')
+    status:update(SC.NO_MORE_SUGGESTIONS)
   end
   Log.debug('Action: No more suggestions')
   Log.debug('Action elapsed time: {}', elapsed_time)
   Log.debug('Action depth: {}', depth)
   chat:commit('> Q.E.D.' .. '(' .. elapsed_time .. ' ms)' .. '\n', true)
   current_eval = current_eval + 1
-  if depth > 0 then
-    -- FIXME: A better status update is needed
-    status:update(SC.SUGGESTIONS_READY)
-  else
-    status:update(SC.NO_MORE_SUGGESTIONS)
-  end
 end
 
 ---@param line? string
@@ -274,9 +274,12 @@ function ActionsEngine.start_action(action, opts)
     prompt_preview.filename = 'unnamed'
   end
   local source_info = ' (' .. prompt_preview.filename .. ' ' .. sln .. ':' .. eln .. ')'
+
   local c_in = '# In`[' .. current_eval .. ']`:= ' .. action_name .. source_info
   chat:commit(c_in)
   chat:commit(prompt_preview.content)
+  local c_out = '# Out`[' .. current_eval .. ']`='
+  chat:commit(c_out)
 
   Promise:new(function(resolve, reject)
     local task_id = tasks:create(0, 0)
@@ -288,8 +291,6 @@ function ActionsEngine.start_action(action, opts)
       else
         depth = depth + 1
         elapsed_time = elapsed_time + ms
-        local c_out = '# Out`[' .. current_eval .. ']`='
-        chat:commit(c_out)
         chat:commit(lines, true)
         local solved_prefix = prompt.prefix .. table.concat(lines, '\n') .. '\n'
         resolve(solved_prefix)
