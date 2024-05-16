@@ -287,11 +287,11 @@ function ActionsEngine.start_action(action, opts)
     Sessions.request_generate_one_stage(task_id, prompt_opts, function(_, prompt, suggestions)
       -- Log.debug('Suggestions for Actions: {}', suggestions)
       local lines, ms = filter_suggestions(task_id, suggestions)
+      elapsed_time = elapsed_time + ms
       if not lines or #lines == 0 then
         reject()
       else
         depth = depth + 1
-        elapsed_time = elapsed_time + ms
         chat:commit(lines, true)
         local solved_prefix = prompt.prefix .. table.concat(lines, '\n') .. '\n'
         resolve(solved_prefix)
