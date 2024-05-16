@@ -208,6 +208,8 @@ local function get_tslangs(buffer, start_row, end_row)
   return langs
 end
 
+local vmode = { ['v']=true, ['V']=true, ['<C-V>']=true }
+
 ---@param action number
 ---@param opts? ActionOptions
 ---@return nil
@@ -237,15 +239,18 @@ function ActionsEngine.start_action(action, opts)
   local buffer = api.nvim_win_get_buf(window)
   local sln, eln = api.nvim_buf_get_mark(buffer, '<')[1], api.nvim_buf_get_mark(buffer, '>')[1]
 
-  Log.debug('sln: {}, eln: {}', sln, eln)
-
-  local vmode = { 'v', 'V', '<C-V>' }
   Log.debug('mode: {}', api.nvim_get_mode().mode)
-  if vim.tbl_contains(vmode, api.nvim_get_mode().mode) then
-    sln = fn.getpos("'<")[2]
-    eln = fn.getpos("'>")[2]
-    Log.debug('v mode sln: {}, eln: {}', sln, eln)
+  if vmode[api.nvim_get_mode().mode] then
+    --- Save and restore marks for visual mode
+    local m1, m2 = api.nvim_buf_get_mark(buffer, '<'), api.nvim_buf_get_mark(buffer, '>')
+    api.feedkeys('', 'nx', false)
+    sln, eln = api.nvim_buf_get_mark(buffer, '<')[1], api.nvim_buf_get_mark(buffer, '>')[1]
+    api.nvim_buf_set_mark(buffer, '<', m1[1], m1[2], {})
+    api.nvim_buf_set_mark(buffer, '>', m2[1], m2[2], {})
+  else
+    sln, eln = api.nvim_buf_get_mark(buffer, '<')[1], api.nvim_buf_get_mark(buffer, '>')[1]
   end
+  Log.debug('sln: {}, eln: {}', sln, eln)
 
   chat:show()
   fn.win_gotoid(window)
