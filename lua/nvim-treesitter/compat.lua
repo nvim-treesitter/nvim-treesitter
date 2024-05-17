@@ -29,7 +29,7 @@ function M.require_language(lang, opts)
 end
 
 function M.flatten(t)
-  if vim.fn.has "nvim-0.10" then
+  if vim.fn.has "nvim-0.10" == 1 then
     return vim.iter(t):flatten():totable()
   else
     return vim.tbl_flatten(t)
