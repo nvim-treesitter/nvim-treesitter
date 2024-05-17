@@ -152,7 +152,7 @@ function M.select_compile_command(repo, cc, compile_location)
       info = "Compiling...",
       err = "Error during compilation",
       opts = {
-        args = vim.tbl_flatten(M.select_compiler_args(repo, cc)),
+        args = require("nvim-treesitter.compat").flatten(M.select_compiler_args(repo, cc)),
         cwd = compile_location,
       },
     }

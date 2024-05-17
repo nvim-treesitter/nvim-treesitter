@@ -24,4 +24,16 @@ function M.get_node_text(node, bufnr)
   return (ts.get_node_text or tsq.get_node_text)(node, bufnr)
 end
 
+function M.require_language(lang, opts)
+  return (ts.language.add or ts.language.require_language)(lang, opts)
+end
+
+function M.flatten(t)
+  if vim.fn.has "nvim-0.10" then
+    return vim.iter(t):flatten():totable()
+  else
+    return vim.tbl_flatten(t)
+  end
+end
+
 return M
