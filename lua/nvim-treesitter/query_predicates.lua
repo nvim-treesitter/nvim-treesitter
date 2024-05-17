@@ -171,7 +171,7 @@ query.add_directive("set-lang-from-info-string!", function(match, _, bufnr, pred
   if not node then
     return
   end
-  local injection_alias = vim.treesitter.get_node_text(node, bufnr)
+  local injection_alias = vim.treesitter.get_node_text(node, bufnr):lower()
   metadata["injection.language"] = get_parser_from_markdown_info_string(injection_alias)
 end, true)
 
