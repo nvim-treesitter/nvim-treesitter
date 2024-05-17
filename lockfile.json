@@ -132,7 +132,7 @@
     "revision": "648183d86f6f8ffb240ea11b4c6873f6f45d8b67"
   },
   "earthfile": {
-    "revision": "cc99a3f5e4281b63fdd63dca4750e808fd52628f"
+    "revision": "450546b6db9a37a178fd87aeda93a287301e9570"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -159,7 +159,7 @@
     "revision": "38d5004a797298dc42c85e7706c5ceac46a3f29f"
   },
   "erlang": {
-    "revision": "868306b033f5163658e8777940da68d61afad5cb"
+    "revision": "b2ab8f2ef8f4a8aba3e44f7007d1793a9ee5bb70"
   },
   "facility": {
     "revision": "a52579670e2b14ec03d410c3c980fafaf6d659c4"
@@ -327,7 +327,7 @@
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
   },
   "janet_simple": {
-    "revision": "51271e260346878e1a1aa6c506ce6a797b7c25e2"
+    "revision": "25d0687433ed0ed8e320861c2c625711ce1716f9"
   },
   "java": {
     "revision": "953abfc8bb3eb2f578e1f461edba4a9885f974b8"
