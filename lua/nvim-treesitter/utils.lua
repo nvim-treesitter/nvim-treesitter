@@ -83,7 +83,7 @@ function M.setup_commands(mod, commands)
     local f_args = def.f_args or "<f-args>"
     local call_fn =
       string.format("lua require'nvim-treesitter.%s'.commands.%s['run<bang>'](%s)", mod, command_name, f_args)
-    local parts = vim.tbl_flatten {
+    local parts = require("nvim-treesitter.compat").flatten {
       "command!",
       "-bar",
       def.args,

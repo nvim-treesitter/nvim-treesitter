@@ -7,6 +7,7 @@ local parsers = require "nvim-treesitter.parsers"
 local info = require "nvim-treesitter.info"
 local configs = require "nvim-treesitter.configs"
 local shell = require "nvim-treesitter.shell_command_selectors"
+local compat = require "nvim-treesitter.compat"
 
 local M = {}
 
@@ -59,7 +60,7 @@ local function reattach_if_possible_fn(lang, error_on_fail)
           local ft = vim.bo[buf].filetype
           ok, err = pcall(vim.treesitter.language.add, lang, { filetype = ft })
         else
-          ok, err = pcall(vim.treesitter.language.require_language, lang)
+          ok, err = pcall(compat.require_language, lang)
         end
         if not ok and error_on_fail then
           vim.notify("Could not load parser for " .. lang .. ": " .. vim.inspect(err))
@@ -535,7 +536,7 @@ local function install(options)
       languages = parsers.available_parsers()
       ask = false
     else
-      languages = vim.tbl_flatten { ... }
+      languages = compat.flatten { ... }
       ask = ask_reinstall
     end
 
@@ -573,7 +574,7 @@ function M.update(options)
     reset_progress_counter()
     if ... and ... ~= "all" then
       ---@type string[]
-      local languages = vim.tbl_flatten { ... }
+      local languages = compat.flatten { ... }
       local installed = 0
       for _, lang in ipairs(languages) do
         if (not is_installed(lang)) or (needs_update(lang)) then
@@ -616,7 +617,7 @@ function M.uninstall(...)
     ensure_installed_parsers = utils.difference(ensure_installed_parsers, configs.get_ignored_parser_installs())
 
     ---@type string[]
-    local languages = vim.tbl_flatten { ... }
+    local languages = compat.flatten { ... }
     for _, lang in ipairs(languages) do
       local install_dir, err = configs.get_parser_install_dir()
       if err then
