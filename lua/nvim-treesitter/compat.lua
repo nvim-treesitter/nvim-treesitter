@@ -28,12 +28,24 @@ function M.require_language(lang, opts)
   return (ts.language.add or ts.language.require_language)(lang, opts)
 end
 
-function M.flatten(t)
-  if vim.fn.has "nvim-0.11" == 1 then
-    return vim.iter(t):flatten():totable()
-  else
-    return vim.tbl_flatten(t)
+local insert = table.insert
+---@param list any[]
+---@return table Flattened
+local function flatten(list, l)
+  -- lua std does not using ipairs
+  for i = 1, #l do
+    local v = l[i]
+    if type(v) == "table" then
+      flatten(list, v)
+    else
+      insert(list, v)
+    end
   end
+  return list
+end
+
+function M.flatten(t)
+  return flatten({}, t)
 end
 
 return M
