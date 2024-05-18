@@ -132,7 +132,7 @@
     "revision": "648183d86f6f8ffb240ea11b4c6873f6f45d8b67"
   },
   "earthfile": {
-    "revision": "450546b6db9a37a178fd87aeda93a287301e9570"
+    "revision": "875d81149e3130f843503f157b3f41732e29ce0b"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -246,7 +246,7 @@
     "revision": "e2ac513b2240c7ff1069ae33b2df29ce90777c11"
   },
   "gotmpl": {
-    "revision": "17144a77be0acdecebd9d557398883569fed41de"
+    "revision": "9d3f6e526dd074b9edae9070b7bb778f00e87a5b"
   },
   "gowork": {
     "revision": "949a8a470559543857a62102c84700d291fc984c"
@@ -282,13 +282,13 @@
     "revision": "b5ad6e34eea18a15bbd1466ca707a17f9bff7b93"
   },
   "helm": {
-    "revision": "17144a77be0acdecebd9d557398883569fed41de"
+    "revision": "9d3f6e526dd074b9edae9070b7bb778f00e87a5b"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "feea0ff6eccda8be958c133985dca8977db3d887"
+    "revision": "a84e8d4f675d0006f7c07f6c7bcea2fca04cdb6e"
   },
   "hlsplaylist": {
     "revision": "64f19029339e75d6762feae39e7878595860c980"
@@ -630,7 +630,7 @@
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
   },
   "slang": {
-    "revision": "68587530d86aaeb1f1cb17fdada795281cdd0556"
+    "revision": "35684819cec627bc32955600ee9a093ed29c3375"
   },
   "slint": {
     "revision": "0701312b74b87fe20e61aa662ba41c5815b5d428"
@@ -654,7 +654,7 @@
     "revision": "c99ad4b16d112fea91745e3f1b769754239fdaba"
   },
   "sourcepawn": {
-    "revision": "4c62065c4136873ef42a9efe128380cbe7ae4f64"
+    "revision": "227656e72a5f0d430bb82a467bc8078f078bba84"
   },
   "sparql": {
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
@@ -726,7 +726,7 @@
     "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
   },
   "tlaplus": {
-    "revision": "ef18145e7f985f592ad41b04004b24a590f58b71"
+    "revision": "200f9dab6b23f3b9bb8f67fc811221517f56c373"
   },
   "tmux": {
     "revision": "9138ea508410e0f34da2666609f600f65e944f22"
