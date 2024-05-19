@@ -22,6 +22,15 @@
 
 (variable_name) @variable
 
+(unpaired_statement
+  (tag_name)
+  (variable
+    (variable_name) @variable.parameter)
+  .
+  "="
+  .
+  (_))
+
 (filter_name) @function.method
 
 (filter_argument) @variable.parameter
