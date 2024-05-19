@@ -498,10 +498,10 @@
     "revision": "d4ebabd45bcb053fcc7f6688b5c8ed80c7ae7a32"
   },
   "php": {
-    "revision": "27afeb02e49ff30acd17b67897b1c0114561a38c"
+    "revision": "b38c53537769df05871643c9688c264074fb6076"
   },
   "php_only": {
-    "revision": "27afeb02e49ff30acd17b67897b1c0114561a38c"
+    "revision": "b38c53537769df05871643c9688c264074fb6076"
   },
   "phpdoc": {
     "revision": "1d0e255b37477d0ca46f1c9e9268c8fa76c0b3fc"
@@ -687,7 +687,7 @@
     "revision": "2c97326cd96b7c3016c3d249e8dc244c89b4abeb"
   },
   "swift": {
-    "revision": "c9c669b4513479e07a0ff44cf14f72351959ac21"
+    "revision": "03af4d057afc56edf6a703e6606b86f782353f22"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
