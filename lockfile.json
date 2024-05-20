@@ -333,7 +333,7 @@
     "revision": "953abfc8bb3eb2f578e1f461edba4a9885f974b8"
   },
   "javascript": {
-    "revision": "e88537c2703546f3f0887dd3f16898e1749cdba5"
+    "revision": "ce29c27450810249dde98ca9d0d95b6ae25fe154"
   },
   "jq": {
     "revision": "13990f530e8e6709b7978503da9bc8701d366791"
@@ -393,7 +393,7 @@
     "revision": "293369818da219d97327908aab33707b04b63fd9"
   },
   "liquidsoap": {
-    "revision": "a9b8012366eab7d0c28bbda5f75a847be931008f"
+    "revision": "14feafa91630afb1ab9988cf9b738b7ea29f3f89"
   },
   "llvm": {
     "revision": "1b96e58faf558ce057d4dc664b904528aee743cb"
@@ -480,7 +480,7 @@
     "revision": "4b9898ccbf198602bb0dec9cd67cc1d2c0a4fad2"
   },
   "odin": {
-    "revision": "f25b8c5201c1480dc0c8c4155a059a79a5a40719"
+    "revision": "edfc92802b0df40c1dcf7f6e624714c21121ac44"
   },
   "org": {
     "revision": "64cfbc213f5a83da17632c95382a5a0a2f3357c1"
