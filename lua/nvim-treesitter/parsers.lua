@@ -1748,6 +1748,15 @@ list.requirements = {
   readme_name = "pip requirements",
 }
 
+list.rescript = {
+  install_info = {
+    url = "https://github.com/rescript-lang/tree-sitter-rescript",
+    files = { "src/parser.c", "src/scanner.c" },
+    requires_generate_from_grammar = true,
+  },
+  maintainers = { "@ribru17" },
+}
+
 list.rnoweb = {
   install_info = {
     url = "https://github.com/bamonroe/tree-sitter-rnoweb",

@@ -596,6 +596,9 @@
   "requirements": {
     "revision": "360c6a6b31076a482663806f7a8241de9cad6b4e"
   },
+  "rescript": {
+    "revision": "17b0805c9eef8e9fc451a33cddc7156dcf20a409"
+  },
   "rnoweb": {
     "revision": "1a74dc0ed731ad07db39f063e2c5a6fe528cae7f"
   },
