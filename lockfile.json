@@ -132,7 +132,7 @@
     "revision": "648183d86f6f8ffb240ea11b4c6873f6f45d8b67"
   },
   "earthfile": {
-    "revision": "875d81149e3130f843503f157b3f41732e29ce0b"
+    "revision": "b556c9f4cf1c6a4a8ebbca47e520653801fcf535"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -315,19 +315,19 @@
     "revision": "e5da7d0aa44403153e0394d87d9edea4e5bd6609"
   },
   "idl": {
-    "revision": "006a5266d771cab57da58a6ade483ebd3075638d"
+    "revision": "32eade147a3714c768049ba0ddabd3f3ecbe5e99"
   },
   "ini": {
     "revision": "bcb84a2d4bcd6f55b911c42deade75c8f90cb0c5"
   },
   "inko": {
-    "revision": "4cef9aa4980606311b906b2f2b8c6cf791c60396"
+    "revision": "7860637ce1b43f5f79cfb7cc3311bf3234e9479f"
   },
   "ispc": {
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
   },
   "janet_simple": {
-    "revision": "25d0687433ed0ed8e320861c2c625711ce1716f9"
+    "revision": "f3d6e09cc47e76833f23f83b2c59ea0878660953"
   },
   "java": {
     "revision": "953abfc8bb3eb2f578e1f461edba4a9885f974b8"
@@ -408,7 +408,7 @@
     "revision": "31461ae9bd0866cb5117cfe5de71189854fd0f3e"
   },
   "luau": {
-    "revision": "5b088fac748f2666a315cafd1638a214388eb23e"
+    "revision": "09df1696adefcee8a4422dea85990a56e668547e"
   },
   "m68k": {
     "revision": "d097b123f19c6eaba2bf181c05420d88b9fc489d"
@@ -480,7 +480,7 @@
     "revision": "4b9898ccbf198602bb0dec9cd67cc1d2c0a4fad2"
   },
   "odin": {
-    "revision": "edfc92802b0df40c1dcf7f6e624714c21121ac44"
+    "revision": "d37b8f24f653378b268ec18404e9c14ad355b128"
   },
   "org": {
     "revision": "64cfbc213f5a83da17632c95382a5a0a2f3357c1"
@@ -495,7 +495,7 @@
     "revision": "217ff2af3f2db15a79ab7e3d21ea1e0c17e71a1a"
   },
   "perl": {
-    "revision": "d4ebabd45bcb053fcc7f6688b5c8ed80c7ae7a32"
+    "revision": "b5b65720fa1a8640ea36602a0ac8287284fb4e42"
   },
   "php": {
     "revision": "b38c53537769df05871643c9688c264074fb6076"
@@ -594,7 +594,7 @@
     "revision": "9ac75e71b2d791e0aadeef68098319d86a2a14cf"
   },
   "requirements": {
-    "revision": "8666a4dfeb3107144398158bc3dd7a3f59d89ccb"
+    "revision": "360c6a6b31076a482663806f7a8241de9cad6b4e"
   },
   "rnoweb": {
     "revision": "1a74dc0ed731ad07db39f063e2c5a6fe528cae7f"
