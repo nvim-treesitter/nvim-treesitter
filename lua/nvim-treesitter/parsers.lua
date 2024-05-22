@@ -1804,6 +1804,14 @@ list.rust = {
   maintainers = { "@amaanq" },
 }
 
+list.ralph = {
+  install_info = {
+    url = "https://github.com/alephium/tree-sitter-ralph",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@tdroxler" },
+}
+
 list.scala = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-scala",
