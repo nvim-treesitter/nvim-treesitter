@@ -1203,7 +1203,7 @@ list.luap = {
     files = { "src/parser.c" },
   },
   maintainers = { "@amaanq" },
-  readme_name = "lua patterns",
+  readme_name = "lua patterns (luap)",
 }
 
 list.luau = {
