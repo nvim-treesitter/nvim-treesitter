@@ -1,6 +1,6 @@
 {
   "ada": {
-    "revision": "ba0894efa03beb70780156b91e28c716b7a4764d"
+    "revision": "5417b9ffc790d2b2aff61db5113d6d89b0d17a25"
   },
   "agda": {
     "revision": "d3dc807692e6bca671d4491b3bf5c67eeca8c016"
@@ -63,7 +63,7 @@
     "revision": "a461f20dedb43905febb12c1635bc7d2e43e96f0"
   },
   "clojure": {
-    "revision": "3a1ace906c151dd631cf6f149b5083f2b60e6a9e"
+    "revision": "f4236d4da8aa92bc105d9c118746474c608e6af7"
   },
   "cmake": {
     "revision": "20ffd6d3b4da1acdbf2d08204b2130a5b2f7c4b3"
@@ -435,7 +435,7 @@
     "revision": "bd17c824196ce70800f64ad39cfddd1b17acc13f"
   },
   "mlir": {
-    "revision": "a708e9b3f3d7f2fc85ac3fd1d4317c51b101eab0"
+    "revision": "c31894561aa7f747ef84a8fb4f6e37689b086f85"
   },
   "muttrc": {
     "revision": "90ef60852c410bd964cd3b954366e4c403c17314"
@@ -711,7 +711,7 @@
     "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
   },
   "templ": {
-    "revision": "33d261ad46bd66f5f1fa12d41d0c78e55e97e48b"
+    "revision": "cf84ea53e2e2531f23009d676ac206090c1e2392"
   },
   "terraform": {
     "revision": "e936d3fef8bac884661472dce71ad82284761eb1"
