@@ -210,6 +210,14 @@ list.blueprint = {
   experimental = true,
 }
 
+list.bp = {
+  install_info = {
+    url = "https://github.com/ambroisie/tree-sitter-bp",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@ambroisie" },
+}
+
 list.c = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-c",

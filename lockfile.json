@@ -47,6 +47,9 @@
   "blueprint": {
     "revision": "60ba73739c6083c693d86a1a7cf039c07eb4ed59"
   },
+  "bp": {
+    "revision": "2326d709fb9cf73cf124fdbc803c267f851721a4"
+  },
   "c": {
     "revision": "82fb86aa544843bd17a9f0f3dc16edf645a34349"
   },
