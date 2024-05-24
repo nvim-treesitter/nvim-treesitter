@@ -1,17 +1,22 @@
 (type_identifier) @type
 
+(identifier) @variable
+
 [
   (primitive_type)
   (alph_token_id)
 ] @type.builtin
 
-[
-  (var_declaration)
-  (struct_field)
-] @variable
+(var_declaration) @variable
+
+(struct_field
+  (identifier) @variable.member)
 
 (arg_def
-  (identifier) @variable)
+  (identifier) @variable.parameter)
+
+(event_field
+  (identifier) @variable.parameter)
 
 (struct_constructor_field
   (identifier) @variable)
@@ -30,22 +35,20 @@
 
 (func_id) @function
 
-[
-  (mutable)
-  (annotation)
-] @keyword
+(func_id
+  (identifier) @function)
 
 (annotation
-  (identifier) @keyword)
-
-(annotation_field
-  (identifier) @variable)
+  [
+    "@"
+    (identifier)
+  ] @attribute)
 
 (annotation_field
   (identifier) @variable)
 
 (map_def
-  (identifier) @variable)
+  (identifier) @variable.parameter)
 
 "fn" @keyword.function
 
@@ -61,9 +64,9 @@
 ] @keyword.type
 
 [
-  "const"
   "pub"
   "Abstract"
+  (mutable)
 ] @keyword.modifier
 
 [
@@ -79,6 +82,7 @@
 ] @keyword.conditional
 
 [
+  "const"
   "let"
   "emit"
   "extends"
@@ -100,11 +104,11 @@
   ","
   ":"
   ";"
-  "="
-  "->"
 ] @punctuation.delimiter
 
 [
+  "="
+  "->"
   (op_byte_vec_add)
   (op_add)
   (op_sub)
