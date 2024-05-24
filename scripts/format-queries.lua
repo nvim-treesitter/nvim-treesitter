@@ -200,7 +200,7 @@ local format_queries = [[
 (capture) @format.prepend-space
 
 ;; Workaround to just use the string's content
-(anonymous_node (identifier) @format.keep)
+(anonymous_node (string) @format.keep)
 
 ; ( (_) ) handler
 (grouping
@@ -248,7 +248,7 @@ local format_queries = [[
   .
   [
     (anonymous_node
-      name: (identifier) .)
+      name: (string) .)
     (named_node
       [
         "_"
