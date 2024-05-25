@@ -135,7 +135,7 @@
     "revision": "648183d86f6f8ffb240ea11b4c6873f6f45d8b67"
   },
   "earthfile": {
-    "revision": "b556c9f4cf1c6a4a8ebbca47e520653801fcf535"
+    "revision": "91fc9434283aec06139e37fc007ad00922f278b4"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -336,7 +336,7 @@
     "revision": "953abfc8bb3eb2f578e1f461edba4a9885f974b8"
   },
   "javascript": {
-    "revision": "ce29c27450810249dde98ca9d0d95b6ae25fe154"
+    "revision": "a5de24dc7939cb07a758f8d89c089cfdb6f479aa"
   },
   "jq": {
     "revision": "13990f530e8e6709b7978503da9bc8701d366791"
@@ -411,7 +411,7 @@
     "revision": "31461ae9bd0866cb5117cfe5de71189854fd0f3e"
   },
   "luau": {
-    "revision": "09df1696adefcee8a4422dea85990a56e668547e"
+    "revision": "5aa9b88a8e3327276ec6e72de997f04ac80b1ae4"
   },
   "m68k": {
     "revision": "d097b123f19c6eaba2bf181c05420d88b9fc489d"
@@ -438,7 +438,7 @@
     "revision": "bd17c824196ce70800f64ad39cfddd1b17acc13f"
   },
   "mlir": {
-    "revision": "640c1ed624364dbdd3e4e2b36c9efe7075c44f64"
+    "revision": "00c32d8562dc957b187da110a3443307962b8da8"
   },
   "muttrc": {
     "revision": "90ef60852c410bd964cd3b954366e4c403c17314"
@@ -498,7 +498,7 @@
     "revision": "217ff2af3f2db15a79ab7e3d21ea1e0c17e71a1a"
   },
   "perl": {
-    "revision": "b5b65720fa1a8640ea36602a0ac8287284fb4e42"
+    "revision": "309cb8d33bcfd0a81050b21be08f9eb3f2fe2138"
   },
   "php": {
     "revision": "b38c53537769df05871643c9688c264074fb6076"
@@ -570,7 +570,7 @@
     "revision": "2c57cac27e207425f8df15327884434cb12365a3"
   },
   "query": {
-    "revision": "d25e8d183f319497b8b22a2a1585975b020da722"
+    "revision": "a12c4a1cd8aa6e0340ecb7089a05cd345a12bae3"
   },
   "r": {
     "revision": "391400572538ff9854341a175ed8ab4b1e45f44b"
@@ -672,7 +672,7 @@
     "revision": "77450e8bce8853921512348f83c73c168c71fdfb"
   },
   "starlark": {
-    "revision": "b31a616aac5d05f927f3f9dd809789db7805b632"
+    "revision": "018d0e09d9d0f0dd6740a37682b8ee4512e8b2ac"
   },
   "strace": {
     "revision": "d819cdd5dbe455bd3c859193633c8d91c0df7c36"
