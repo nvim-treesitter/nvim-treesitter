@@ -36,15 +36,16 @@ jobs:
   format-queries:
     name: Lint queries
     runs-on: ubuntu-latest
+    env:
+      NVIM_TAG: stable
     steps:
       - uses: actions/checkout@v4
       - name: Prepare
         run: |
-          wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
-          tar -zxf nvim-linux64.tar.gz
-          sudo ln -s "$PWD"/nvim-linux64/bin/nvim /usr/local/bin
+          bash ./scripts/ci-install.sh
 
       - name: Lint
         run: |
+          nvim --headless -c "TSInstallSync query" -c "q"
           nvim -l scripts/format-queries.lua
           git diff --exit-code
