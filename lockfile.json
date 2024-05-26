@@ -51,7 +51,7 @@
     "revision": "2326d709fb9cf73cf124fdbc803c267f851721a4"
   },
   "c": {
-    "revision": "82fb86aa544843bd17a9f0f3dc16edf645a34349"
+    "revision": "00ed08f1a6c18141bfd7a81638e4d239a0bb55cc"
   },
   "c_sharp": {
     "revision": "82fa8f05f41a33e9bc830f85d74a9548f0291738"
@@ -135,7 +135,7 @@
     "revision": "648183d86f6f8ffb240ea11b4c6873f6f45d8b67"
   },
   "earthfile": {
-    "revision": "91fc9434283aec06139e37fc007ad00922f278b4"
+    "revision": "336001d79dd62668088bc6fe6d72a774a449fa2d"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -570,7 +570,7 @@
     "revision": "2c57cac27e207425f8df15327884434cb12365a3"
   },
   "query": {
-    "revision": "e6a775551f6e32cc0efd5b822b2987138c338d9b"
+    "revision": "f767fb0ac5e711b6d44c5e0c8d1f349687a86ce0"
   },
   "r": {
     "revision": "391400572538ff9854341a175ed8ab4b1e45f44b"
@@ -648,7 +648,7 @@
     "revision": "ba1b3868eaa960b945593404af9a7c2f296d3643"
   },
   "solidity": {
-    "revision": "e8bd851a3c95ff277e49be07d0e20dfa9ac3700c"
+    "revision": "520f04a9579f9d2a7079b0c81a4439e5d5c9156f"
   },
   "soql": {
     "revision": "c99ad4b16d112fea91745e3f1b769754239fdaba"
