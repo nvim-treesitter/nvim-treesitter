@@ -229,8 +229,8 @@
   "public"
   "private"
   "protected"
-  "virtual"
   "final"
+  (virtual)
 ] @keyword.modifier
 
 [
