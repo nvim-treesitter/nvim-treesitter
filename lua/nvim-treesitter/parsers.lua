@@ -469,9 +469,9 @@ list.ebnf = {
   experimental = true,
 }
 
-list.eds = {
+list.edd = {
   install_info = {
-    url = "https://github.com/uyha/tree-sitter-eds",
+    url = "https://github.com/uyha/tree-sitter-edd",
     files = { "src/parser.c" },
   },
   maintainers = { "@uyha" },
