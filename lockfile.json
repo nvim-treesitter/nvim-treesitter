@@ -575,6 +575,9 @@
   "racket": {
     "revision": "171f52a8c0ed635b85cd42d1e36d82f1066a03b4"
   },
+  "ralph": {
+    "revision": "48b9d9d6e2b55ce8f9eb09ceb0d952e4b1cc87a0"
+  },
   "rasi": {
     "revision": "6c9bbcfdf5f0f553d9ebc01750a3aa247a37b8aa"
   },
@@ -616,9 +619,6 @@
   },
   "rust": {
     "revision": "9c84af007b0f144954adb26b3f336495cbb320a7"
-  },
-  "ralph": {
-    "revision": "48b9d9d6e2b55ce8f9eb09ceb0d952e4b1cc87a0"
   },
   "scala": {
     "revision": "b76db435a7f876cf1ede837d66054c534783c72f"
