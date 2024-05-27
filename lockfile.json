@@ -141,7 +141,7 @@
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
   },
   "eds": {
-    "revision": "fde62029d4c715562230070b9af51a9500c2ce10"
+    "revision": "5517bdb90c90703df49579a4b04689a614780be2"
   },
   "eex": {
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
@@ -648,7 +648,7 @@
     "revision": "ba1b3868eaa960b945593404af9a7c2f296d3643"
   },
   "solidity": {
-    "revision": "520f04a9579f9d2a7079b0c81a4439e5d5c9156f"
+    "revision": "2c5f1e7318fe7d9c8eb38d7d64ebe558d9f41ebc"
   },
   "soql": {
     "revision": "c99ad4b16d112fea91745e3f1b769754239fdaba"
