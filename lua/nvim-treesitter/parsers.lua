@@ -1691,6 +1691,14 @@ list.racket = {
   },
 }
 
+list.ralph = {
+  install_info = {
+    url = "https://github.com/alephium/tree-sitter-ralph",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@tdroxler" },
+}
+
 list.rasi = {
   install_info = {
     url = "https://github.com/Fymyte/tree-sitter-rasi",
@@ -1802,14 +1810,6 @@ list.rust = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@amaanq" },
-}
-
-list.ralph = {
-  install_info = {
-    url = "https://github.com/alephium/tree-sitter-ralph",
-    files = { "src/parser.c" },
-  },
-  maintainers = { "@tdroxler" },
 }
 
 list.scala = {
