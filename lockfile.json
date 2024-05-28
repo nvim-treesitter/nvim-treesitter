@@ -324,7 +324,7 @@
     "revision": "bcb84a2d4bcd6f55b911c42deade75c8f90cb0c5"
   },
   "inko": {
-    "revision": "7860637ce1b43f5f79cfb7cc3311bf3234e9479f"
+    "revision": "234c87be1dac20f766ddf6f486a7bde2a4bc5594"
   },
   "ispc": {
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
@@ -447,7 +447,7 @@
     "revision": "570f3d7be01fffc751237f4cfcf52d04e20532d1"
   },
   "nickel": {
-    "revision": "58baf89db8fdae54a84bcf22c80ff10ee3f929ed"
+    "revision": "52478738c5a072ab3ad62c74db5d0902dab064cd"
   },
   "nim": {
     "revision": "961c2798cec9250c44f7d7225ddb33d47d25856a"
@@ -648,7 +648,7 @@
     "revision": "ba1b3868eaa960b945593404af9a7c2f296d3643"
   },
   "solidity": {
-    "revision": "2c5f1e7318fe7d9c8eb38d7d64ebe558d9f41ebc"
+    "revision": "1c94fe3d5351dfcff3551ec1f49614cbf758e444"
   },
   "soql": {
     "revision": "c99ad4b16d112fea91745e3f1b769754239fdaba"
@@ -690,7 +690,7 @@
     "revision": "2c97326cd96b7c3016c3d249e8dc244c89b4abeb"
   },
   "swift": {
-    "revision": "03af4d057afc56edf6a703e6606b86f782353f22"
+    "revision": "26354ddec08c7efde4fa16bd29429f3310d2e2c5"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -831,7 +831,7 @@
     "revision": "e877f6ade4b77d5ef8787075141053631ba12318"
   },
   "zathurarc": {
-    "revision": "e9e8de071ab79ed1f6e3365f05fcf890b6d85a2f"
+    "revision": "5918bf1785662c43a841b0b6a27a129337ec3a23"
   },
   "zig": {
     "revision": "0d08703e4c3f426ec61695d7617415fff97029bd"
