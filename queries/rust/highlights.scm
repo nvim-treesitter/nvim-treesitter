@@ -293,10 +293,11 @@
 
 "fn" @keyword.function
 
-[
+([
   "return"
   "yield"
 ] @keyword.return
+  (#set! "priority" 130))
 
 (type_cast_expression
   "as" @keyword.operator)
