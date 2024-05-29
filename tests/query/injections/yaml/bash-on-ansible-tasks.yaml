@@ -1,0 +1,19 @@
+- name: Test1
+  command: echo "hello world!"
+  #        ^ @bash
+
+- name: Test2
+  ansible.builtin.shell: echo "hello world!" | cut -f1 -d" "
+  #                      ^ @bash
+
+- name: Test3
+  ansible.builtin.command:
+    cmd: echo 'Hello World'
+  #      ^ @bash
+
+- name: Test4
+  shell: |
+    echo Hello
+    echo World
+  # ^ @bash
+
