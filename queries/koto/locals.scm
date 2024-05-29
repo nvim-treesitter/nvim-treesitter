@@ -4,16 +4,16 @@
 
 ; Definitions
 (arg
-  (identifier) @local.definition.parameter)
+  (variable) @local.definition.parameter)
 
 (assign
   (identifier) @local.definition.var)
 
 (for_args
-  (identifier) @local.definition.var)
+  (variable) @local.definition.var)
 
 (match_patterns
-  (identifier) @local.definition.var)
+  (variable) @local.definition.var)
 
 (import_item
   (identifier) @local.definition.import)
