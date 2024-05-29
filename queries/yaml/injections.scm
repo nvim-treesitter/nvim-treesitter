@@ -88,8 +88,8 @@
           key: (flow_node
             (plain_scalar
               (string_scalar) @_command
-              (#any-of? @_command "command" "shell" "ansible.builtin.command"
-                "ansible.builtin.shell")))
+              (#any-of? @_command
+                "command" "shell" "ansible.builtin.command" "ansible.builtin.shell")))
           value: (flow_node
             (plain_scalar
               (string_scalar) @injection.content
@@ -103,8 +103,8 @@
           key: (flow_node
             (plain_scalar
               (string_scalar) @_command
-              (#any-of? @_command "command" "shell" "ansible.builtin.command"
-                "ansible.builtin.shell")))
+              (#any-of? @_command
+                "command" "shell" "ansible.builtin.command" "ansible.builtin.shell")))
           value: (block_node
             (block_scalar) @injection.content
             (#set! injection.language "bash")
@@ -118,8 +118,8 @@
           key: (flow_node
             (plain_scalar
               (string_scalar) @_command
-              (#any-of? @_command "command" "shell" "ansible.builtin.command"
-                "ansible.builtin.shell")))
+              (#any-of? @_command
+                "command" "shell" "ansible.builtin.command" "ansible.builtin.shell")))
           value: (block_node
             (block_mapping
               (block_mapping_pair
