@@ -318,7 +318,7 @@
     "revision": "e5da7d0aa44403153e0394d87d9edea4e5bd6609"
   },
   "idl": {
-    "revision": "b5b53e2ca0521b98277d5e4b109f0b0e362e850e"
+    "revision": "66709df69626b5f1f139a868ad8480179e60481d"
   },
   "ini": {
     "revision": "87176e524f0a98f5be75fa44f4f0ff5c6eac069c"
@@ -357,7 +357,7 @@
     "revision": "d34615fa12cc1d1cfc1f1f1a80acc9db80ee4596"
   },
   "julia": {
-    "revision": "acd5ca12cc278df7960629c2429a096c7ac4bbea"
+    "revision": "f1baa5f8e271109d01cc8ff7473c11df2d8a9aee"
   },
   "just": {
     "revision": "fd814fc6c579f68c2a642f5e0268cf69daae92d7"
@@ -447,7 +447,7 @@
     "revision": "570f3d7be01fffc751237f4cfcf52d04e20532d1"
   },
   "nickel": {
-    "revision": "52478738c5a072ab3ad62c74db5d0902dab064cd"
+    "revision": "0a796f3a312917724c1d9f486a201f7402a8acfd"
   },
   "nim": {
     "revision": "961c2798cec9250c44f7d7225ddb33d47d25856a"
@@ -657,7 +657,7 @@
     "revision": "c99ad4b16d112fea91745e3f1b769754239fdaba"
   },
   "sourcepawn": {
-    "revision": "227656e72a5f0d430bb82a467bc8078f078bba84"
+    "revision": "64ad670dd59e88c5d32bc3d759ae8562b522cad9"
   },
   "sparql": {
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
