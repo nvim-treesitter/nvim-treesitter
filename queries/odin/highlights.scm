@@ -192,7 +192,7 @@
   (identifier) @type)
 
 ((identifier) @type
-  (#lua-match? @type "^[A-Z][a-zA-Z0-9]*$")
+  (#lua-match? @type "^[_A-Z][_a-zA-Z0-9]*$")
   (#not-has-parent? @type parameter procedure_declaration call_expression))
 
 ; Fields
