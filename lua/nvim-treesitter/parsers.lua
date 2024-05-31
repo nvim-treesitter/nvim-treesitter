@@ -120,6 +120,24 @@ list.arduino = {
   maintainers = { "@ObserverOfTime" },
 }
 
+list.asciidoc = {
+  install_info = {
+    url = "https://github.com/cathaysia/tree-sitter-asciidoc",
+    location = "tree-sitter-asciidoc",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@cathaysa" },
+}
+
+list.asciidoc_inline = {
+  install_info = {
+    url = "https://github.com/cathaysia/tree-sitter-asciidoc",
+    location = "tree-sitter-asciidoc_inline",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@cathaysa" },
+}
+
 list.asm = {
   install_info = {
     url = "https://github.com/RubixDev/tree-sitter-asm",

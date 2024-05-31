@@ -14,6 +14,12 @@
   "arduino": {
     "revision": "babb6d4da69b359bbb80adbf1fe39c0da9175210"
   },
+  "asciidoc": {
+    "revision": "7238db72ea47afdda2eb26e03190d602685937af"
+  },
+  "asciidoc_inline": {
+    "revision": "7238db72ea47afdda2eb26e03190d602685937af"
+  },
   "asm": {
     "revision": "b0306e9bb2ebe01c6562f1aef265cc42ccc53070"
   },
