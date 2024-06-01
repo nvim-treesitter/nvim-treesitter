@@ -1,13 +1,12 @@
-[
-  ((element
-    (start_tag
-      (tag_name) @_not_void_element))
-    (#not-any-of? @_not_void_element
-      "area" "base" "basefont" "bgsound" "br" "col" "command" "embed" "frame" "hr" "image" "img"
-      "input" "isindex" "keygen" "link" "menuitem" "meta" "nextid" "param" "source" "track" "wbr"))
-  (element
-    (self_closing_tag))
-] @indent.begin
+((element
+  (start_tag
+    (tag_name) @_not_void_element))
+  (#not-any-of? @_not_void_element
+    "area" "base" "basefont" "bgsound" "br" "col" "command" "embed" "frame" "hr" "image" "img"
+    "input" "isindex" "keygen" "link" "menuitem" "meta" "nextid" "param" "source" "track" "wbr")) @indent.begin
+
+(element
+  (self_closing_tag)) @indent.begin
 
 ((start_tag
   (tag_name) @_void_element)

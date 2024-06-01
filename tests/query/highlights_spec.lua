@@ -29,6 +29,7 @@ local function check_assertions(file)
     )
   )
   local parser = parsers.get_parser(buf, lang)
+  parser:parse(true)
 
   local self = highlighter.new(parser, {})
 
@@ -39,12 +40,13 @@ local function check_assertions(file)
 
     local captures = {}
     local highlights = {}
-    self.tree:for_each_tree(function(tstree, tree)
-      if not tstree then
+    self:prepare_highlight_states(row, row + 1)
+    self:for_each_highlight_state(function(state)
+      if not state.tstree then
         return
       end
 
-      local root = tstree:root()
+      local root = state.tstree:root()
       local root_start_row, _, root_end_row, _ = root:range()
 
       -- Only worry about trees within the line range
@@ -52,7 +54,7 @@ local function check_assertions(file)
         return
       end
 
-      local query = self:get_query(tree:lang())
+      local query = state.highlighter_query
 
       -- Some injected languages may not have highlight queries.
       if not query:query() then
@@ -62,7 +64,7 @@ local function check_assertions(file)
       local iter = query:query():iter_captures(root, self.bufnr, row, row + 1)
 
       for capture, node, _ in iter do
-        local hl = query.hl_cache[capture]
+        local hl = query:get_hl_from_capture(capture)
         assert.is.truthy(hl)
 
         assert.Truthy(node)
