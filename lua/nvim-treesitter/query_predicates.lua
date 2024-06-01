@@ -124,7 +124,7 @@ end, true)
 ---@param _bufnr integer
 ---@param pred string[]
 ---@return boolean|nil
-query.add_predicate("has-type?", function(match, _pattern, _bufnr, pred)
+query.add_predicate("kind-eq?", function(match, _pattern, _bufnr, pred)
   if not valid_args(pred[1], pred, 2) then
     return
   end

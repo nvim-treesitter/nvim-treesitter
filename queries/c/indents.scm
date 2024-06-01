@@ -24,14 +24,14 @@
 
 ((for_statement
   body: (_) @_body) @indent.begin
-  (#not-has-type? @_body compound_statement))
+  (#not-kind-eq? @_body "compound_statement"))
 
 (while_statement
   condition: (_) @indent.begin)
 
 ((while_statement
   body: (_) @_body) @indent.begin
-  (#not-has-type? @_body compound_statement))
+  (#not-kind-eq? @_body "compound_statement"))
 
 ((if_statement)
   .
@@ -45,7 +45,7 @@
 (if_statement
   consequence: (_
     ";" @indent.end) @_consequence
-  (#not-has-type? @_consequence compound_statement)
+  (#not-kind-eq? @_consequence "compound_statement")
   alternative: (else_clause
     "else" @indent.branch
     [

@@ -66,7 +66,7 @@
     (_)* @indent.branch)
   .
   _ @indent.branch
-  (#not-has-type? @indent.branch type_parameters parameter))
+  (#not-kind-eq? @indent.branch "type_parameters" "parameter"))
 
 (ERROR
   [
