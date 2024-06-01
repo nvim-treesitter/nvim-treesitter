@@ -13,7 +13,7 @@ else
   files = vim.fn.split(vim.fn.glob(arg .. "/**/*.scm"))
 end
 
-ts.query.add_predicate("has-type?", function(match, _, _, pred)
+ts.query.add_predicate("kind-eq?", function(match, _, _, pred)
   local node = match[pred[2]]
   if not node then
     return true
@@ -132,7 +132,7 @@ local format_queries = [[
 ;; Append newlines for nodes inside the list
 (list
   (_) @format.append-newline
-  (#not-has-type? @format.append-newline capture quantifier))
+  (#not-kind-eq? @format.append-newline "capture" "quantifier"))
 
 ;; (_), "_" and _ handler
 ;; Start indents if it's one of these patterns
@@ -194,7 +194,7 @@ local format_queries = [[
   ] @format.cancel-append
   .
   ")"
-  (#not-has-type? @format.cancel-append comment))
+  (#not-kind-eq? @format.cancel-append "comment"))
 
 ;; All captures should be separated with a space
 (capture) @format.prepend-space
@@ -233,7 +233,7 @@ local format_queries = [[
 ;; Collapsing closing parens
 (grouping
   (_) @format.cancel-append . ")"
-  (#not-has-type? @format.cancel-append comment))
+  (#not-kind-eq? @format.cancel-append "comment"))
 (grouping
   (capture) @format.prepend-space)
 ;; Remove unnecessary parens
