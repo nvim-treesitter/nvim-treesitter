@@ -51,7 +51,7 @@
     "revision": "2326d709fb9cf73cf124fdbc803c267f851721a4"
   },
   "c": {
-    "revision": "00ed08f1a6c18141bfd7a81638e4d239a0bb55cc"
+    "revision": "deca017a554045b4c203e7ddff39ae64ff05e071"
   },
   "c_sharp": {
     "revision": "82fa8f05f41a33e9bc830f85d74a9548f0291738"
@@ -171,7 +171,7 @@
     "revision": "f3b9274514b5f9bf6b0dd4a01c30f9cc15c58bc4"
   },
   "fennel": {
-    "revision": "8ad17704b3c2469155947d4e8fcb618cf1328459"
+    "revision": "cfbfa478dc2dbef267ee94ae4323d9c886f45e94"
   },
   "fidl": {
     "revision": "0a8910f293268e27ff554357c229ba172b0eaed2"
@@ -330,7 +330,7 @@
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
   },
   "janet_simple": {
-    "revision": "f3d6e09cc47e76833f23f83b2c59ea0878660953"
+    "revision": "6bfbaadac2ba0da21087041eff85d26129c4c920"
   },
   "java": {
     "revision": "953abfc8bb3eb2f578e1f461edba4a9885f974b8"
@@ -594,7 +594,7 @@
     "revision": "47007f195752d8e57bda80b0b6cdb2d173a9f7d7"
   },
   "rego": {
-    "revision": "9ac75e71b2d791e0aadeef68098319d86a2a14cf"
+    "revision": "39771ed2d7eec293543c81afe705617f39d607f5"
   },
   "requirements": {
     "revision": "360c6a6b31076a482663806f7a8241de9cad6b4e"
@@ -636,7 +636,7 @@
     "revision": "865d79e236c7f0e04276c969453d021d1da4b15f"
   },
   "slint": {
-    "revision": "0701312b74b87fe20e61aa662ba41c5815b5d428"
+    "revision": "59ace2390848e8ab17b47e0b9fa1e5fde8077316"
   },
   "smali": {
     "revision": "fdfa6a1febc43c7467aa7e937b87b607956f2346"
