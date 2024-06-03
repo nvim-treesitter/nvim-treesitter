@@ -19,7 +19,7 @@
   (identifier) @variable.parameter)
 
 (struct_constructor_field
-  (identifier) @variable)
+  (identifier) @variable.parameter)
 
 [
   (hex_num)
@@ -43,9 +43,6 @@
     "@"
     (identifier)
   ] @attribute)
-
-(annotation_field
-  (identifier) @variable)
 
 (map_def
   (identifier) @variable.parameter)
