@@ -33,7 +33,8 @@
 ; ('...'):format()
 ((function_call
   (method_index
-    (string) @printf
+    (parenthesized_expression
+      (string) @printf)
     key: (identifier) @_func))
   (#eq? @_func "format")
   (#set! injection.language "printf"))

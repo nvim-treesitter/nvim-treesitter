@@ -12,7 +12,7 @@
     "revision": "c99ad4b16d112fea91745e3f1b769754239fdaba"
   },
   "arduino": {
-    "revision": "babb6d4da69b359bbb80adbf1fe39c0da9175210"
+    "revision": "afb34b2c65f507932c5c6ddbf0d5a9ca6a772f2f"
   },
   "asm": {
     "revision": "b0306e9bb2ebe01c6562f1aef265cc42ccc53070"
@@ -135,7 +135,7 @@
     "revision": "648183d86f6f8ffb240ea11b4c6873f6f45d8b67"
   },
   "earthfile": {
-    "revision": "934d3c5e2e7ce94031fa9a55c73c5344e1eaae17"
+    "revision": "6de809419cdfb23e3a8383b6575fa3634900f276"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -372,7 +372,7 @@
     "revision": "c9cb8504b81684375e7beb8907517dbd6947a1be"
   },
   "koto": {
-    "revision": "2ff158a3c7c8ac8e50c1aefe8a3162a9156a73e7"
+    "revision": "eb8d866cff5751c0a7650623d244280618b0a378"
   },
   "kusto": {
     "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
@@ -594,7 +594,7 @@
     "revision": "47007f195752d8e57bda80b0b6cdb2d173a9f7d7"
   },
   "rego": {
-    "revision": "39771ed2d7eec293543c81afe705617f39d607f5"
+    "revision": "23b1da8de9766d766c4f01531e8be14b5c00c493"
   },
   "requirements": {
     "revision": "360c6a6b31076a482663806f7a8241de9cad6b4e"
@@ -636,7 +636,7 @@
     "revision": "865d79e236c7f0e04276c969453d021d1da4b15f"
   },
   "slint": {
-    "revision": "59ace2390848e8ab17b47e0b9fa1e5fde8077316"
+    "revision": "d82ab8c19ea1b60ff570256eaef7d137cc5ecb63"
   },
   "smali": {
     "revision": "fdfa6a1febc43c7467aa7e937b87b607956f2346"
@@ -663,7 +663,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "25f94f998de79bae9df28add9782f9ea6ea0e2b8"
+    "revision": "6a99f4aff780f98bc119c7f034406e41d7e0b80d"
   },
   "squirrel": {
     "revision": "0a50d31098e83c668d34d1160a0f6c7d23b571cc"
@@ -711,7 +711,7 @@
     "revision": "8784024358c233efd0f3a6fd9e7a3c5852e628bc"
   },
   "teal": {
-    "revision": "33482c92a0dfa694491d34e167a1d2f52b0dccb1"
+    "revision": "19b02da829d1721a521bf7b802eb80a50bd53aab"
   },
   "templ": {
     "revision": "cf84ea53e2e2531f23009d676ac206090c1e2392"
@@ -756,7 +756,7 @@
     "revision": "4ad3010c91d700026d036b5230e2d99ba94ae8a4"
   },
   "typespec": {
-    "revision": "fd9a83c6c0aaaff4b1354454b5b9f130f59dd553"
+    "revision": "28821d0d6da5f0a6b5eb02b9bad953fecafd7248"
   },
   "typoscript": {
     "revision": "43b221c0b76e77244efdaa9963e402a17c930fbc"
