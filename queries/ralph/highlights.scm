@@ -35,9 +35,6 @@
 
 (func_id) @function
 
-(func_id
-  (identifier) @function)
-
 (annotation
   [
     "@"
