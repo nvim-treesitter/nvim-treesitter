@@ -135,7 +135,7 @@
     "revision": "648183d86f6f8ffb240ea11b4c6873f6f45d8b67"
   },
   "earthfile": {
-    "revision": "6de809419cdfb23e3a8383b6575fa3634900f276"
+    "revision": "b2672286174c078eb80cdffc61375d0364e7fafb"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -447,7 +447,7 @@
     "revision": "570f3d7be01fffc751237f4cfcf52d04e20532d1"
   },
   "nickel": {
-    "revision": "0a796f3a312917724c1d9f486a201f7402a8acfd"
+    "revision": "43433d8477b24cd13acaac20a66deda49b7e2547"
   },
   "nim": {
     "revision": "961c2798cec9250c44f7d7225ddb33d47d25856a"
