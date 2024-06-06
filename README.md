@@ -137,6 +137,10 @@ require'nvim-treesitter.configs'.setup {
             return true
         end
     end,
+    -- Or to disable all except specific buffers, e.g. disable all except C++
+    disable = function(lang)
+        return lang ~= "cpp"
+    end,
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
