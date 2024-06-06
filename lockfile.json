@@ -69,7 +69,7 @@
     "revision": "f4236d4da8aa92bc105d9c118746474c608e6af7"
   },
   "cmake": {
-    "revision": "20ffd6d3b4da1acdbf2d08204b2130a5b2f7c4b3"
+    "revision": "4864abb95a1f6e54d6b362677beef9fb674b41e9"
   },
   "comment": {
     "revision": "5d8b29f6ef3bf64d59430dcfe76b31cc44b5abfd"
@@ -147,7 +147,7 @@
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
   "elixir": {
-    "revision": "de690fa8a028f122af46d9d2685679fe5f2d7d60"
+    "revision": "c7ae8b77e2749826dcf23df6514f08fdd68c66a3"
   },
   "elm": {
     "revision": "09dbf221d7491dc8d8839616b27c21b9c025c457"
@@ -555,7 +555,7 @@
     "revision": "daf9b3e2be18b0b2996a1281f7783e0d041d8b80"
   },
   "pymanifest": {
-    "revision": "e3b82b78721aee07f676dac8473ae69db51debcf"
+    "revision": "be062582956165019d3253794b4d712f66dfeaaa"
   },
   "python": {
     "revision": "71778c2a472ed00a64abf4219544edbf8e4b86d7"
@@ -600,7 +600,7 @@
     "revision": "23b1da8de9766d766c4f01531e8be14b5c00c493"
   },
   "requirements": {
-    "revision": "360c6a6b31076a482663806f7a8241de9cad6b4e"
+    "revision": "5ad9b7581b3334f6ad492847d007f2fac6e6e5f2"
   },
   "rnoweb": {
     "revision": "1a74dc0ed731ad07db39f063e2c5a6fe528cae7f"
@@ -666,7 +666,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "6a99f4aff780f98bc119c7f034406e41d7e0b80d"
+    "revision": "504a551555393e6771d2aad06f1166b7a5248fab"
   },
   "squirrel": {
     "revision": "0a50d31098e83c668d34d1160a0f6c7d23b571cc"
