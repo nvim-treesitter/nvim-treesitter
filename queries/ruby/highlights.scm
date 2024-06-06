@@ -125,7 +125,9 @@
     "__callee__" "__dir__" "__id__" "__method__" "__send__" "__ENCODING__" "__FILE__" "__LINE__"))
 
 ((identifier) @keyword.function
-  (#any-of? @keyword.function "include"  "extend" "prepend" "attr_reader" "attr_writer" "attr_accessor" "module_function" "refine" "using"))
+  (#any-of? @keyword.function
+    "include" "extend" "prepend" "attr_reader" "attr_writer" "attr_accessor" "module_function"
+    "refine" "using")))
 
 ((identifier) @keyword.exception
   (#any-of? @keyword.exception "raise" "fail" "catch" "throw"))
