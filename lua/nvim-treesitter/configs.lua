@@ -34,7 +34,7 @@ local is_initialized = false
 
 ---@class TSModule
 ---@field module_path string
----@field enable boolean|string[]|function(string): boolean
+---@field enable boolean
 ---@field disable boolean|string[]|function(string): boolean
 ---@field keymaps table<string, string>
 ---@field is_supported function(string): boolean
