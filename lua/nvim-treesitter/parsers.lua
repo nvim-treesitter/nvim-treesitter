@@ -675,6 +675,7 @@ list.gitcommit = {
   install_info = {
     url = "https://github.com/gbprod/tree-sitter-gitcommit",
     files = { "src/parser.c", "src/scanner.c" },
+    branch = "main",
   },
   maintainers = { "@gbprod" },
 }
@@ -1194,6 +1195,7 @@ list.lua = {
   install_info = {
     url = "https://github.com/MunifTanjim/tree-sitter-lua",
     files = { "src/parser.c", "src/scanner.c" },
+    branch = {"main"},
   },
   maintainers = { "@muniftanjim" },
 }
@@ -1373,6 +1375,7 @@ list.norg = {
     files = { "src/parser.c", "src/scanner.cc" },
     cxx_standard = "c++14",
     use_makefile = true,
+    branch = "main",
   },
   maintainers = { "@JoeyGrajciar", "@vhyrro" },
 }
@@ -1689,6 +1692,7 @@ list.r = {
   install_info = {
     url = "https://github.com/r-lib/tree-sitter-r",
     files = { "src/parser.c", "src/scanner.c" },
+    branch = "main",
   },
   maintainers = { "@echasnovski" },
 }
