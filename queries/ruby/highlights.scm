@@ -127,7 +127,7 @@
 ((identifier) @keyword.function
   (#any-of? @keyword.function
     "include" "extend" "prepend" "attr_reader" "attr_writer" "attr_accessor" "module_function"
-    "refine" "using")))
+    "refine" "using"))
 
 ((identifier) @keyword.exception
   (#any-of? @keyword.exception "raise" "fail" "catch" "throw"))
