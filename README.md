@@ -548,11 +548,13 @@ If you want to install the parsers to a custom directory you can specify this
 directory with `parser_install_dir` option in that is passed to `setup`.
 `nvim-treesitter` will then install the parser files into this directory.
 
-This directory must be writeable and must be explicitly added to the
+This directory must be writeable and must be explicitly prepended to the
 `runtimepath`. For example:
 
 ```lua
-  vim.opt.runtimepath:append("/some/path/to/store/parsers")
+  -- It MUST be at the beginning of runtimepath. Otherwise the parsers from Neovim itself
+  -- is loaded that may not be compatible with the queries from the 'nvim-treesitter' plugin.
+  vim.opt.runtimepath:prepend("/some/path/to/store/parsers")
 
   require'nvim-treesitter.configs'.setup {
     parser_install_dir = "/some/path/to/store/parsers",
