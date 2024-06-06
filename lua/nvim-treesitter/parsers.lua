@@ -693,6 +693,7 @@ list.gitignore = {
   install_info = {
     url = "https://github.com/shunsambongi/tree-sitter-gitignore",
     files = { "src/parser.c" },
+    branch = {"main"},
   },
   maintainers = { "@theHamsta" },
 }
