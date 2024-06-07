@@ -13,6 +13,7 @@
   (match_block)
   (case_statement)
   (default_statement)
+  (property_hook_list)
 ] @indent.begin
 
 (return_statement
@@ -48,6 +49,9 @@
 
 (return_statement
   ";" @indent.end)
+
+(property_hook_list
+  "}" @indent.end)
 
 (ERROR
   "(" @indent.align
