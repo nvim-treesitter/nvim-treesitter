@@ -12,7 +12,7 @@
   name: (name) @local.definition.function) @local.scope
   (#set! definition.function.scope "parent"))
 
-(anonymous_function_creation_expression
+(anonymous_function
   (anonymous_function_use_clause
     (variable_name
       (name) @local.definition.var))) @local.scope
