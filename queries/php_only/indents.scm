@@ -18,7 +18,7 @@
 (return_statement
   [
     (object_creation_expression)
-    (anonymous_function_creation_expression)
+    (anonymous_function)
     (arrow_function)
     (match_expression)
   ]) @indent.dedent
