@@ -1,3 +1,6 @@
+((comment) @injection.content
+  (#set! injection.language "comment"))
+
 ; injections.scm
 ((json_value) @injection.content
   (#set! injection.language "json"))

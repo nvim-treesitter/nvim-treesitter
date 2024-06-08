@@ -2,7 +2,7 @@
 
 (field_name) @variable.member
 
-(comment) @comment
+(comment) @comment @spell
 
 (number) @number
 

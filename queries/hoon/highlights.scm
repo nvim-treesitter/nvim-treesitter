@@ -20,7 +20,7 @@
 
 (aura) @constant.builtin
 
-(Gap) @comment
+(lineComment) @comment
 
 (boolean) @constant.builtin
 

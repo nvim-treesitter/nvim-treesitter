@@ -1,3 +1,6 @@
+((comment) @injection.content
+  (#set! injection.language "comment"))
+
 (code_block
   (language) @injection.language
   (code) @injection.content)
