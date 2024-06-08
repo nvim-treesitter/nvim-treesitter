@@ -162,7 +162,7 @@
     "revision": "38d5004a797298dc42c85e7706c5ceac46a3f29f"
   },
   "erlang": {
-    "revision": "98ea1f9c957b2ad520415eecb5a5b406e931101e"
+    "revision": "b8e44bc0a3b2ce6bceea47c0b1c0f303a6b322b8"
   },
   "facility": {
     "revision": "a52579670e2b14ec03d410c3c980fafaf6d659c4"
@@ -501,10 +501,10 @@
     "revision": "309cb8d33bcfd0a81050b21be08f9eb3f2fe2138"
   },
   "php": {
-    "revision": "1d01c6184c7c7daf3bd63b4be2255ba1b2a3ac96"
+    "revision": "4f124bc6075e1c3333e80190c1c170933ed72c95"
   },
   "php_only": {
-    "revision": "1d01c6184c7c7daf3bd63b4be2255ba1b2a3ac96"
+    "revision": "4f124bc6075e1c3333e80190c1c170933ed72c95"
   },
   "phpdoc": {
     "revision": "1d0e255b37477d0ca46f1c9e9268c8fa76c0b3fc"
@@ -666,7 +666,7 @@
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
   },
   "sql": {
-    "revision": "504a551555393e6771d2aad06f1166b7a5248fab"
+    "revision": "89fd00d0aff3bc9985ac37caf362ec4fd9b2ba1d"
   },
   "squirrel": {
     "revision": "0a50d31098e83c668d34d1160a0f6c7d23b571cc"
@@ -693,7 +693,7 @@
     "revision": "2c97326cd96b7c3016c3d249e8dc244c89b4abeb"
   },
   "swift": {
-    "revision": "26354ddec08c7efde4fa16bd29429f3310d2e2c5"
+    "revision": "a9e6289ee526b0bb3b805c4313f12470b96cf1e9"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
