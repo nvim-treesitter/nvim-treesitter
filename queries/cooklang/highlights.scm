@@ -1,5 +1,7 @@
 (metadata) @comment
 
+(comment) @comment @spell
+
 (ingredient
   "@" @punctuation.delimiter
   (name)? @string.special.symbol

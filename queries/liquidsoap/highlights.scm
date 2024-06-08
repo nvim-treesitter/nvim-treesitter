@@ -104,7 +104,7 @@
 
 (bool) @boolean
 
-(comment) @comment
+(comment) @comment @spell
 
 (regexp) @string.regexp
 

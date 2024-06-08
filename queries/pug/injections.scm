@@ -1,3 +1,6 @@
+((comment) @injection.content
+  (#set! injection.language "comment"))
+
 ((javascript) @injection.content
   (#set! injection.language "javascript"))
 

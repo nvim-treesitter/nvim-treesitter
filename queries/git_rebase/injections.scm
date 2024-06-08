@@ -1,3 +1,6 @@
+((comment) @injection.content
+  (#set! injection.language "comment"))
+
 ((operation
   (command) @_command
   (message) @injection.content)
