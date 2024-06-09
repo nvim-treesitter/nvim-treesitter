@@ -366,7 +366,7 @@
     "revision": "486fea71f61ad9f3fd4072a118402e97fe88d26c"
   },
   "kdl": {
-    "revision": "49fb89a854d93b58a65a19724ac307195ca11941"
+    "revision": "b37e3d58e5c5cf8d739b315d6114e02d42e66664"
   },
   "kotlin": {
     "revision": "c9cb8504b81684375e7beb8907517dbd6947a1be"
@@ -408,7 +408,7 @@
     "revision": "873612aadd3f684dd4e631bdf42ea8990c57634e"
   },
   "luap": {
-    "revision": "31461ae9bd0866cb5117cfe5de71189854fd0f3e"
+    "revision": "c134aaec6acf4fa95fe4aa0dc9aba3eacdbbe55a"
   },
   "luau": {
     "revision": "5aa9b88a8e3327276ec6e72de997f04ac80b1ae4"
@@ -660,7 +660,7 @@
     "revision": "c99ad4b16d112fea91745e3f1b769754239fdaba"
   },
   "sourcepawn": {
-    "revision": "64ad670dd59e88c5d32bc3d759ae8562b522cad9"
+    "revision": "645d093763bcaaf7535edbdf6575a5c978b16491"
   },
   "sparql": {
     "revision": "05f949d3c1c15e3261473a244d3ce87777374dec"
@@ -693,7 +693,7 @@
     "revision": "2c97326cd96b7c3016c3d249e8dc244c89b4abeb"
   },
   "swift": {
-    "revision": "a9e6289ee526b0bb3b805c4313f12470b96cf1e9"
+    "revision": "13ffaec4068facfff608e3afbdb7a581c185f6a6"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -801,7 +801,7 @@
     "revision": "b448ca63f972ade12c373c808acdd2bf972937db"
   },
   "vimdoc": {
-    "revision": "1b177bd9f53995dac83616e84b552a8d4f6c5f7e"
+    "revision": "2249c44ecd3f5cf22da3dcccfb74f816ddb29245"
   },
   "vue": {
     "revision": "22bdfa6c9fc0f5ffa44c6e938ec46869ac8a99ff"
