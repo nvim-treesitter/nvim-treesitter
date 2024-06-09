@@ -23,9 +23,6 @@
     (match_expression)
   ]) @indent.dedent
 
-(member_call_expression
-  object: (member_call_expression) @indent.branch)
-
 [
   ")"
   "}"
