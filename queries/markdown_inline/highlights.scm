@@ -87,6 +87,11 @@
   (uri_autolink)
 ] @markup.link.url @nospell
 
+; Hide '\' for escaped characters
+((backslash_escape) @string.escape
+  (#offset! @string.escape 0 0 0 -1)
+  (#set! conceal ""))
+
 ; Replace common HTML entities.
 ((entity_reference) @character.special
   (#eq? @character.special "&nbsp;")
