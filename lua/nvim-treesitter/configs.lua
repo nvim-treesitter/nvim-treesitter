@@ -9,11 +9,11 @@ local caching = require "nvim-treesitter.caching"
 local M = {}
 
 ---@class TSConfig
----@field modules {[string]:TSModule}
----@field sync_install boolean
----@field ensure_installed string[]|string
----@field ignore_install string[]
----@field auto_install boolean
+---@field modules {[string]:TSModule}?
+---@field sync_install boolean?
+---@field ensure_installed string[]|string|nil
+---@field ignore_install string[]?
+---@field auto_install boolean?
 ---@field parser_install_dir string|nil
 
 ---@type TSConfig
