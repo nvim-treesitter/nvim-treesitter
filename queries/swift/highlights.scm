@@ -100,6 +100,8 @@
   (modify_specifier)
 ] @keyword
 
+(shebang_line) @keyword.directive
+
 (class_body
   (property_declaration
     (pattern
