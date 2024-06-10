@@ -21,4 +21,5 @@
   (macro_definition)
   (macro_invocation)
   (attribute_item)
+  (block)
 ] @fold
