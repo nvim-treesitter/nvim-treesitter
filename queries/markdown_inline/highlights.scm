@@ -85,7 +85,10 @@
 [
   (link_destination)
   (uri_autolink)
+  (email_autolink)
 ] @markup.link.url @nospell
+
+(entity_reference) @nospell
 
 ; Replace common HTML entities.
 ((entity_reference) @character.special
