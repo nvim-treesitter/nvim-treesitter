@@ -5,14 +5,14 @@ pub fn add(x: Int, y: Int) -> Int {
 //        ^ @punctuation.bracket
 //         ^ @variable.parameter
 //          ^ @punctuation.delimiter
-//            ^^^ @type.builtin
+//            ^^^ @type
 //               ^ @punctuation.delimiter
 //                 ^ @variable.parameter
 //                  ^ @punctuation.delimiter
-//                    ^^^ @type.builtin
+//                    ^^^ @type
 //                       ^ @punctuation.bracket
 //                         ^ @punctuation.delimiter
-//                            ^^^ @type.builtin
+//                            ^^^ @type
 //                                ^ @punctuation.bracket
 }
 // <- @punctuation.bracket
@@ -50,7 +50,7 @@ fn list_of_two(my_value: a) -> List(a) {
 //                       ^ @type
 //                        ^ @punctuation.bracket
 //                          ^ @punctuation.delimiter
-//                             ^^^^ @type.builtin
+//                             ^^^^ @type
 //                                 ^ @punctuation.bracket
 //                                  ^ @type
 //                                   ^ @punctuation.bracket
@@ -66,19 +66,19 @@ fn replace(
   // <- @label
   // ^^^^^^ @variable.parameter
   //       ^ @punctuation.delimiter
-  //         ^^^^^^ @type.builtin
+  //         ^^^^^^ @type
   //               ^ @punctuation.delimiter
   each pattern: String,
   // <- @label
   //   ^^^^^^^ @variable.parameter
   //          ^ @punctuation.delimiter
-  //            ^^^^^^ @type.builtin
+  //            ^^^^^^ @type
   //                  ^ @punctuation.delimiter
   with replacement: String,
   // <- @label
   //   ^^^^^^^^^^^ @variable.parameter
   //              ^ @punctuation.delimiter
-  //                ^^^^^^ @type.builtin
+  //                ^^^^^^ @type
   //                      ^ @punctuation.delimiter
 ) {
   replace(in: "A,B,C", each: ",", with: " ")
@@ -107,7 +107,7 @@ pub external fn random_float() -> Float = "rand" "uniform"
 //                          ^ @punctuation.bracket
 //                           ^ @punctuation.bracket
 //                             ^^ @punctuation.delimiter
-//                                ^^^^^ @type.builtin
+//                                ^^^^^ @type
 //                                      ^ @operator
 //                                        ^^^^^^ @module
 //                                               ^^^^^^^^^ @function
