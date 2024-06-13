@@ -120,7 +120,7 @@ html_tags (queries only)[^html_tags] | community | `H IJ ` | @TravonteD
 [hurl](https://github.com/pfeiferj/tree-sitter-hurl) | community | `HFIJ ` | @pfeiferj
 [hyprlang](https://github.com/tree-sitter-grammars/tree-sitter-hyprlang) | core | `HFIJ ` | @luckasRanarison
 [idl](https://github.com/cathaysia/tree-sitter-idl) | community | `H  J ` | @cathaysa
-[ini](https://github.com/justinmk/tree-sitter-ini) | community | `HF   ` | @theHamsta
+[ini](https://github.com/justinmk/tree-sitter-ini) | community | `HF J ` | @theHamsta
 [inko](https://github.com/inko-lang/tree-sitter-inko) | community | `HFIJL` | @yorickpeterse
 [ispc](https://github.com/tree-sitter-grammars/tree-sitter-ispc) | core | `HFIJL` | @fab4100
 [janet_simple](https://github.com/sogaiu/tree-sitter-janet-simple) | community | `HF JL` | @sogaiu
@@ -204,7 +204,7 @@ jsx (queries only)[^jsx] | community | `HFIJ ` | @steelsojka
 [qmldir](https://github.com/tree-sitter-grammars/tree-sitter-qmldir) | core | `H  J ` | @amaanq
 [qmljs](https://github.com/yuja/tree-sitter-qmljs) | community | `HF J ` | @Decodetalkers
 [query](https://github.com/tree-sitter-grammars/tree-sitter-query)[^query] | stable | `HFIJL` | @steelsojka
-[r](https://github.com/r-lib/tree-sitter-r) | community | `H IJL` | @echasnovski
+[r](https://github.com/r-lib/tree-sitter-r) | unsupported | `H IJL` | 
 [racket](https://github.com/6cdh/tree-sitter-racket) | unsupported | `HF J ` | 
 [ralph](https://github.com/alephium/tree-sitter-ralph) | community | `H  J ` | @tdroxler
 [rasi](https://github.com/Fymyte/tree-sitter-rasi) | community | `HFIJL` | @Fymyte
@@ -247,6 +247,7 @@ jsx (queries only)[^jsx] | community | `HFIJ ` | @steelsojka
 [swift](https://github.com/alex-pinkus/tree-sitter-swift) | community | `H IJL` | @alex-pinkus
 [sxhkdrc](https://github.com/RaafatTurki/tree-sitter-sxhkdrc) | community | `HF J ` | @RaafatTurki
 [systemtap](https://github.com/ok-ryoko/tree-sitter-systemtap) | community | `HF JL` | @ok-ryoko
+[systemverilog](https://github.com/zhangwwpeng/tree-sitter-systemverilog) | community | `HF J ` | @zhangwwpeng
 [t32](https://gitlab.com/xasc/tree-sitter-t32) | community | `HFIJL` | @xasc
 [tablegen](https://github.com/tree-sitter-grammars/tree-sitter-tablegen) | core | `HFIJL` | @amaanq
 [tact](https://github.com/tact-lang/tree-sitter-tact) | community | `HFIJL` | @novusnota
