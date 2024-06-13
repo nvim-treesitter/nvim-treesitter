@@ -8,25 +8,31 @@ local log = require('nvim-treesitter.log')
 local parsers = require('nvim-treesitter.parsers')
 local util = require('nvim-treesitter.util')
 
---- @type fun(path: string, new_path: string, flags?: table): string?
+---@type fun(path: string, new_path: string, flags?: table): string?
 local uv_copyfile = a.wrap(uv.fs_copyfile, 4)
 
---- @type fun(path: string, mode: integer): string?
+---@type fun(path: string, mode: integer): string?
 local uv_mkdir = a.wrap(uv.fs_mkdir, 3)
 
---- @type fun(path: string, new_path: string): string?
+---@type fun(path: string, new_path: string): string?
 local uv_rename = a.wrap(uv.fs_rename, 3)
 
---- @type fun(path: string, new_path: string, flags?: table): string?
+---@type fun(path: string, new_path: string, flags?: table): string?
 local uv_symlink = a.wrap(uv.fs_symlink, 4)
 
---- @type fun(path: string): string?
+---@type fun(path: string): string?
 local uv_unlink = a.wrap(uv.fs_unlink, 2)
 
-local max_jobs = 10
+local MAX_JOBS = 10
+local INSTALL_TIMEOUT = 60000
 
+---@async
+---@param cmd string[]
+---@param opts? vim.SystemOpts
+---@return vim.SystemCompleted
 local function system(cmd, opts)
-  log.trace('running job: (cwd=%s) %s', opts.cwd, table.concat(cmd, ' '))
+  local cwd = opts and opts.cwd or uv.cwd()
+  log.trace('running job: (cwd=%s) %s', cwd, table.concat(cmd, ' '))
   local r = a.wrap(vim.system, 3)(cmd, opts) --[[@as vim.SystemCompleted]]
   a.main()
   if r.stdout and r.stdout ~= '' then
@@ -39,7 +45,37 @@ local function system(cmd, opts)
   return r
 end
 
-local iswin = uv.os_uname().sysname == 'Windows_NT'
+---@async
+---@param url string
+---@param output string
+---@return string? err
+local function download_file(url, output)
+  local r = system({
+    'curl',
+    '--silent',
+    '--show-error',
+    '-L', -- follow redirects
+    url,
+    '--output',
+    output,
+  })
+  if r.code > 0 then
+    return r.stderr
+  end
+end
+
+---@async
+---@param path string
+---@param mode? string
+---@return string? err
+local function mkpath(path, mode)
+  local parent = fs.dirname(path)
+  if not parent:match('^[./]$') and not uv.fs_stat(parent) then
+    mkpath(parent, mode)
+  end
+
+  return uv_mkdir(path, tonumber(mode or '755', 8))
+end
 
 local M = {}
 
@@ -59,8 +95,8 @@ local function get_parser_install_info(lang)
   return parser_config.install_info
 end
 
---- @param ... string
---- @return string
+---@param ... string
+---@return string
 function M.get_package_path(...)
   return fs.joinpath(fn.fnamemodify(debug.getinfo(1, 'S').source:sub(2), ':p:h:h:h'), ...)
 end
@@ -92,16 +128,11 @@ end
 --- PARSER MANAGEMENT FUNCTIONS
 ---
 
---- @param x string
---- @return boolean
-local function executable(x)
-  return fn.executable(x) == 1
-end
-
---- @param logger Logger
---- @param repo InstallInfo
---- @param compile_location string
---- @return string? err
+---@async
+---@param logger Logger
+---@param repo InstallInfo
+---@param compile_location string
+---@return string? err
 local function do_generate(logger, repo, compile_location)
   logger:info(
     string.format(
@@ -123,131 +154,82 @@ local function do_generate(logger, repo, compile_location)
   end
 end
 
+---@async
 ---@param logger Logger
----@param repo InstallInfo
+---@param url string
 ---@param project_name string
 ---@param cache_dir string
 ---@param revision string
----@param project_dir string
+---@param output_dir string
 ---@return string? err
-local function do_download_tar(logger, repo, project_name, cache_dir, revision, project_dir)
-  local is_github = repo.url:find('github.com', 1, true)
-  local url = repo.url:gsub('.git$', '')
+local function do_download(logger, url, project_name, cache_dir, revision, output_dir)
+  local is_gitlab = url:find('gitlab.com', 1, true)
 
-  local dir_rev = revision
-  if is_github and revision:find('^v%d') then
-    dir_rev = revision:sub(2)
+  local tmp = output_dir .. '-tmp'
+
+  util.delete(tmp)
+
+  url = url:gsub('.git$', '')
+  local target = is_gitlab
+      and string.format('%s/-/archive/%s/%s-%s.tar.gz', url, revision, project_name, revision)
+    or string.format('%s/archive/%s.tar.gz', url, revision)
+
+  local tarball_path = fs.joinpath(cache_dir, project_name .. '.tar.gz')
+
+  do -- Download tarball
+    logger:info('Downloading %s...', project_name)
+    local err = download_file(target, tarball_path)
+    if err then
+      return logger:error('Error during download: %s', err)
+    end
   end
 
-  local temp_dir = project_dir .. '-tmp'
-
-  util.delete(temp_dir)
-
-  logger:info('Downloading ' .. project_name .. '...')
-  local target = is_github and url .. '/archive/' .. revision .. '.tar.gz'
-    or url .. '/-/archive/' .. revision .. '/' .. project_name .. '-' .. revision .. '.tar.gz'
-
-  local r = system({
-    'curl',
-    '--silent',
-    '--show-error',
-    '-L', -- follow redirects
-    target,
-    '--output',
-    project_name .. '.tar.gz',
-  }, {
-    cwd = cache_dir,
-  })
-  if r.code > 0 then
-    return logger:error('Error during download: %s', r.stderr)
+  do -- Create tmp dir
+    logger:debug('Creating temporary directory: %s', tmp)
+    local err = mkpath(tmp)
+    a.main()
+    if err then
+      return logger:error('Could not create %s-tmp: %s', project_name, err)
+    end
   end
 
-  logger:debug('Creating temporary directory: ' .. temp_dir)
-  --TODO(clason): use fn.mkdir(temp_dir, 'p') in case stdpath('cache') is not created
-  local err = uv_mkdir(temp_dir, 493)
-  a.main()
-  if err then
-    return logger:error('Could not create %s-tmp: %s', project_name, err)
+  do -- Extract tarball
+    logger:debug('Extracting %s into %s...', tarball_path, project_name)
+    -- Windows tar can't handle drive letters
+    local r = system(
+      { 'tar', '-xzf', project_name .. '.tar.gz', '-C', project_name .. '-tmp' },
+      { cwd = cache_dir }
+    )
+    if r.code > 0 then
+      return logger:error('Error during tarball extraction: %s', r.stderr)
+    end
   end
 
-  logger:info('Extracting ' .. project_name .. '...')
-  r = system({
-    'tar',
-    '-xzf',
-    project_name .. '.tar.gz',
-    '-C',
-    project_name .. '-tmp',
-  }, {
-    cwd = cache_dir,
-  })
-
-  if r.code > 0 then
-    return logger:error('Error during tarball extraction: %s', r.stderr)
+  do -- Remove tarball
+    logger:debug('Removing %s...', tarball_path)
+    local err = uv_unlink(tarball_path)
+    a.main()
+    if err then
+      return logger:error('Could not remove tarball: %s', err)
+    end
   end
 
-  err = uv_unlink(project_dir .. '.tar.gz')
-  if err then
-    return logger:error('Could not remove tarball: %s', err)
+  do -- Move tmp dir to output dir
+    local dir_rev = revision:find('^v%d') and revision:sub(2) or revision
+    local repo_project_name = url:match('[^/]-$')
+    local extracted = fs.joinpath(tmp, repo_project_name .. '-' .. dir_rev)
+    logger:debug('Moving %s to %s/...', extracted, output_dir)
+    local err = uv_rename(extracted, output_dir)
+    a.main()
+    if err then
+      return logger:error('Could not rename temp: %s', err)
+    end
   end
-  a.main()
 
-  err = uv_rename(fs.joinpath(temp_dir, url:match('[^/]-$') .. '-' .. dir_rev), project_dir)
-  a.main()
-
-  if err then
-    return logger:error('Could not rename temp: %s', err)
-  end
-
-  util.delete(temp_dir)
+  util.delete(tmp)
 end
 
----@param logger Logger
----@param repo InstallInfo
----@param project_name string
----@param cache_dir string
----@param revision string
----@param project_dir string
----@return string? err
-local function do_download_git(logger, repo, project_name, cache_dir, revision, project_dir)
-  logger:info('Downloading ' .. project_name .. '...')
-
-  local r = system({
-    'git',
-    'clone',
-    '--filter=blob:none',
-    repo.url,
-    project_name,
-  }, {
-    cwd = cache_dir,
-  })
-
-  if r.code > 0 then
-    return logger:error('Error during download, please verify your internet connection: ', r.stderr)
-  end
-
-  logger:info('Checking out locked revision')
-  r = system({
-    'git',
-    'checkout',
-    revision,
-  }, {
-    cwd = project_dir,
-  })
-
-  if r.code > 0 then
-    return logger:error('Error while checking out revision: %s', r.stderr)
-  end
-end
-
----@param repo InstallInfo
----@return boolean
-local function can_download_tar(repo)
-  local can_use_tar = executable('tar') and executable('curl')
-  local is_github = repo.url:find('github.com', 1, true) ~= nil
-  local is_gitlab = repo.url:find('gitlab.com', 1, true) ~= nil
-  return can_use_tar and (is_github or is_gitlab) and not iswin
-end
-
+---@async
 ---@param logger Logger
 ---@param compile_location string
 ---@return string? err
@@ -265,6 +247,7 @@ local function do_compile(logger, compile_location)
   end
 end
 
+---@async
 ---@param logger Logger
 ---@param compile_location string
 ---@param target_location string
@@ -272,7 +255,7 @@ end
 local function do_install(logger, compile_location, target_location)
   logger:info(string.format('Installing parser'))
 
-  if iswin then -- why can't you just be normal?!
+  if uv.os_uname().sysname == 'Windows_NT' then -- why can't you just be normal?!
     local tempfile = target_location .. tostring(uv.hrtime())
     uv_rename(target_location, tempfile) -- parser may be in use: rename...
     uv_unlink(tempfile) -- ...and mark for garbage collection
@@ -285,12 +268,13 @@ local function do_install(logger, compile_location, target_location)
   end
 end
 
+---@async
 ---@param lang string
 ---@param cache_dir string
 ---@param install_dir string
 ---@param generate? boolean
 ---@return string? err
-local function install_lang0(lang, cache_dir, install_dir, generate)
+local function try_install_lang(lang, cache_dir, install_dir, generate)
   local logger = log.new('install/' .. lang)
 
   local repo = get_parser_install_info(lang)
@@ -308,8 +292,7 @@ local function install_lang0(lang, cache_dir, install_dir, generate)
 
       revision = revision or repo.branch or 'main'
 
-      local do_download = can_download_tar(repo) and do_download_tar or do_download_git
-      local err = do_download(logger, repo, project_name, cache_dir, revision, project_dir)
+      local err = do_download(logger, repo.url, project_name, cache_dir, revision, project_dir)
       if err then
         return err
       end
@@ -364,16 +347,15 @@ local function install_lang0(lang, cache_dir, install_dir, generate)
   logger:info('Language installed')
 end
 
---- @alias InstallStatus
+---@alias InstallStatus
 --- | 'installing'
 --- | 'installed'
 --- | 'failed'
 --- | 'timeout'
 
-local install_status = {} --- @type table<string,InstallStatus?>
+local install_status = {} ---@type table<string,InstallStatus?>
 
-local INSTALL_TIMEOUT = 60000
-
+---@async
 ---@param lang string
 ---@param cache_dir string
 ---@param install_dir string
@@ -399,7 +381,7 @@ local function install_lang(lang, cache_dir, install_dir, force, generate)
     end
   else
     install_status[lang] = 'installing'
-    local err = install_lang0(lang, cache_dir, install_dir, generate)
+    local err = try_install_lang(lang, cache_dir, install_dir, generate)
     install_status[lang] = err and 'failed' or 'installed'
   end
 
@@ -410,6 +392,7 @@ end
 
 --- Reload the parser table and user modifications in case of update
 local function reload_parsers()
+  ---@diagnostic disable-next-line:no-unknown
   package.loaded['nvim-treesitter.parsers'] = nil
   parsers = require('nvim-treesitter.parsers')
   vim.api.nvim_exec_autocmds('User', { pattern = 'TSUpdate' })
@@ -420,16 +403,16 @@ end
 ---@field generate? boolean
 
 --- Install a parser
---- @param languages string[]
---- @param options? InstallOptions
---- @param _callback? fun()
+---@param languages string[]
+---@param options? InstallOptions
+---@param _callback? fun()
 local function install(languages, options, _callback)
   options = options or {}
 
-  local cache_dir = vim.fs.normalize(fn.stdpath('cache'))
+  local cache_dir = fs.normalize(fn.stdpath('cache'))
   local install_dir = config.get_install_dir('parser')
 
-  local tasks = {} --- @type fun()[]
+  local tasks = {} ---@type fun()[]
   local done = 0
   for _, lang in ipairs(languages) do
     tasks[#tasks + 1] = a.sync(function()
@@ -441,7 +424,7 @@ local function install(languages, options, _callback)
     end)
   end
 
-  a.join(max_jobs, nil, tasks)
+  a.join(MAX_JOBS, nil, tasks)
   if #tasks > 1 then
     a.main()
     log.info('Installed %d/%d languages', done, #tasks)
@@ -474,7 +457,7 @@ M.update = a.sync(function(languages, _options, _callback)
     languages = 'all'
   end
   languages = config.norm_languages(languages, { ignored = true, missing = true })
-  languages = vim.tbl_filter(needs_update, languages) --- @type string[]
+  languages = vim.tbl_filter(needs_update, languages) ---@type string[]
 
   if #languages > 0 then
     install(languages, { force = true })
@@ -483,16 +466,17 @@ M.update = a.sync(function(languages, _options, _callback)
   end
 end, 2)
 
---- @param logger Logger
---- @param lang string
---- @param parser string
---- @param queries string
---- @return string? err
+---@async
+---@param logger Logger
+---@param lang string
+---@param parser string
+---@param queries string
+---@return string? err
 local function uninstall_lang(logger, lang, parser, queries)
   logger:debug('Uninstalling ' .. lang)
   install_status[lang] = nil
 
-  if vim.fn.filereadable(parser) == 1 then
+  if fn.filereadable(parser) == 1 then
     logger:debug('Unlinking ' .. parser)
     local perr = uv_unlink(parser)
     a.main()
@@ -502,7 +486,7 @@ local function uninstall_lang(logger, lang, parser, queries)
     end
   end
 
-  if vim.fn.isdirectory(queries) == 1 then
+  if fn.isdirectory(queries) == 1 then
     logger:debug('Unlinking ' .. queries)
     local qerr = uv_unlink(queries)
     a.main()
@@ -515,9 +499,9 @@ local function uninstall_lang(logger, lang, parser, queries)
   logger:info('Language uninstalled')
 end
 
---- @param languages string[]|string
---- @param _options? UpdateOptions
---- @param _callback fun()
+---@param languages string[]|string
+---@param _options? UpdateOptions
+---@param _callback fun()
 M.uninstall = a.sync(function(languages, _options, _callback)
   languages = config.norm_languages(languages or 'all', { missing = true, dependencies = true })
 
@@ -525,7 +509,7 @@ M.uninstall = a.sync(function(languages, _options, _callback)
   local query_dir = config.get_install_dir('queries')
   local installed = config.installed_parsers()
 
-  local tasks = {} --- @type fun()[]
+  local tasks = {} ---@type fun()[]
   local done = 0
   for _, lang in ipairs(languages) do
     local logger = log.new('uninstall/' .. lang)
@@ -543,7 +527,7 @@ M.uninstall = a.sync(function(languages, _options, _callback)
     end
   end
 
-  a.join(max_jobs, nil, tasks)
+  a.join(MAX_JOBS, nil, tasks)
   if #tasks > 1 then
     a.main()
     log.info('Uninstalled %d/%d languages', done, #tasks)
