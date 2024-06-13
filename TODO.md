@@ -5,11 +5,13 @@ This document lists the planned and finished changes in this rewrite towards [Nv
 ## TODO
 
 - [ ] **`parsers.lua`:** allow specifying version in addition to commit hash (for Tier 1)
-- [ ] **tests:** fix, update, extend (cover all Tier 1 languages)
+- [ ] **`parsers.lua`:** add WASM support (tier 1)
+- [ ] **`parsers.lua`:** update tiers (stable, dev, unmaintained, broken)
+- [ ] **tests:** fix, update (remove custom crate, plenary dependency)
 - [ ] **documentation:** consolidate, autogenerate?
 - [ ] **documentation:** migration guide
-- [ ] **`locals.lua`:** move to `nvim-treesitter-refactor`?
-- [ ] **textobjects:** include simple(!) function, queries? (check Helix)
+- [ ] **indents:** rewrite (Helix compatible)
+- [ ] **textobjects:** include simple(!) `node`, `scope` (using `locals`) objects
 - [ ] **downstream:** adapt to breaking changes (`nvim-treesitter-refactor`)
 
 ## DONE
