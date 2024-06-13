@@ -67,20 +67,19 @@ local function install_health()
     end
   end
 
-  do -- curl+tar or git check
+  do -- curl+tar check
     local curl = check_exe('curl')
-    local tar = check_exe('tar')
-
-    if curl and tar and vim.uv.os_uname().sysname ~= 'Windows_NT' then
-      health.ok(string.format('tar %s (%s)', tar.version, tar.path))
+    if curl then
       health.ok(string.format('curl %s (%s)\n%s', curl.version, curl.path, curl.out))
     else
-      local git = check_exe('git')
-      if git then
-        health.ok(string.format('git %s (%s)', git.version, git.path))
-      else
-        health.error('Either curl and tar or git must be installed and on `$PATH`')
-      end
+      health.error('curl not found')
+    end
+
+    local tar = check_exe('tar')
+    if tar then
+      health.ok(string.format('tar %s (%s)', tar.version, tar.path))
+    else
+      health.error('tar not found')
     end
   end
 
