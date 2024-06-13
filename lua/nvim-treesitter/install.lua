@@ -39,8 +39,6 @@ local function system(cmd, opts)
   return r
 end
 
-local iswin = uv.os_uname().sysname == 'Windows_NT'
-
 local M = {}
 
 ---
@@ -92,12 +90,6 @@ end
 --- PARSER MANAGEMENT FUNCTIONS
 ---
 
---- @param x string
---- @return boolean
-local function executable(x)
-  return fn.executable(x) == 1
-end
-
 --- @param logger Logger
 --- @param repo InstallInfo
 --- @param compile_location string
@@ -130,12 +122,12 @@ end
 ---@param revision string
 ---@param project_dir string
 ---@return string? err
-local function do_download_tar(logger, repo, project_name, cache_dir, revision, project_dir)
-  local is_github = repo.url:find('github.com', 1, true)
+local function do_download(logger, repo, project_name, cache_dir, revision, project_dir)
+  local is_gitlab = repo.url:find('gitlab.com', 1, true)
   local url = repo.url:gsub('.git$', '')
 
   local dir_rev = revision
-  if is_github and revision:find('^v%d') then
+  if revision:find('^v%d') then
     dir_rev = revision:sub(2)
   end
 
@@ -144,8 +136,9 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
   util.delete(temp_dir)
 
   logger:info('Downloading ' .. project_name .. '...')
-  local target = is_github and url .. '/archive/' .. revision .. '.tar.gz'
-    or url .. '/-/archive/' .. revision .. '/' .. project_name .. '-' .. revision .. '.tar.gz'
+  local target = is_gitlab
+      and url .. '/-/archive/' .. revision .. '/' .. project_name .. '-' .. revision .. '.tar.gz'
+    or url .. '/archive/' .. revision .. '.tar.gz'
 
   local r = system({
     'curl',
@@ -202,53 +195,6 @@ local function do_download_tar(logger, repo, project_name, cache_dir, revision, 
 end
 
 ---@param logger Logger
----@param repo InstallInfo
----@param project_name string
----@param cache_dir string
----@param revision string
----@param project_dir string
----@return string? err
-local function do_download_git(logger, repo, project_name, cache_dir, revision, project_dir)
-  logger:info('Downloading ' .. project_name .. '...')
-
-  local r = system({
-    'git',
-    'clone',
-    '--filter=blob:none',
-    repo.url,
-    project_name,
-  }, {
-    cwd = cache_dir,
-  })
-
-  if r.code > 0 then
-    return logger:error('Error during download, please verify your internet connection: ', r.stderr)
-  end
-
-  logger:info('Checking out locked revision')
-  r = system({
-    'git',
-    'checkout',
-    revision,
-  }, {
-    cwd = project_dir,
-  })
-
-  if r.code > 0 then
-    return logger:error('Error while checking out revision: %s', r.stderr)
-  end
-end
-
----@param repo InstallInfo
----@return boolean
-local function can_download_tar(repo)
-  local can_use_tar = executable('tar') and executable('curl')
-  local is_github = repo.url:find('github.com', 1, true) ~= nil
-  local is_gitlab = repo.url:find('gitlab.com', 1, true) ~= nil
-  return can_use_tar and (is_github or is_gitlab) and not iswin
-end
-
----@param logger Logger
 ---@param compile_location string
 ---@return string? err
 local function do_compile(logger, compile_location)
@@ -272,7 +218,7 @@ end
 local function do_install(logger, compile_location, target_location)
   logger:info(string.format('Installing parser'))
 
-  if iswin then -- why can't you just be normal?!
+  if uv.os_uname().sysname == 'Windows_NT' then -- why can't you just be normal?!
     local tempfile = target_location .. tostring(uv.hrtime())
     uv_rename(target_location, tempfile) -- parser may be in use: rename...
     uv_unlink(tempfile) -- ...and mark for garbage collection
@@ -308,7 +254,6 @@ local function install_lang0(lang, cache_dir, install_dir, generate)
 
       revision = revision or repo.branch or 'main'
 
-      local do_download = can_download_tar(repo) and do_download_tar or do_download_git
       local err = do_download(logger, repo, project_name, cache_dir, revision, project_dir)
       if err then
         return err
