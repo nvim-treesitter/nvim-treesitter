@@ -597,7 +597,7 @@
     "revision": "47007f195752d8e57bda80b0b6cdb2d173a9f7d7"
   },
   "rego": {
-    "revision": "23b1da8de9766d766c4f01531e8be14b5c00c493"
+    "revision": "20b5a5958c837bc9f74b231022a68a594a313f6d"
   },
   "requirements": {
     "revision": "5ad9b7581b3334f6ad492847d007f2fac6e6e5f2"
@@ -651,7 +651,7 @@
     "revision": "ba1b3868eaa960b945593404af9a7c2f296d3643"
   },
   "solidity": {
-    "revision": "1c94fe3d5351dfcff3551ec1f49614cbf758e444"
+    "revision": "ee5a2d2ba30b487c4bbf613d2ef310a454c09c7c"
   },
   "soql": {
     "revision": "c99ad4b16d112fea91745e3f1b769754239fdaba"
