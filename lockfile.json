@@ -648,7 +648,7 @@
     "revision": "fa898ac0885d1da9a253695c3e0e91f5efc587cd"
   },
   "snakemake": {
-    "revision": "ba1b3868eaa960b945593404af9a7c2f296d3643"
+    "revision": "5a7b14074bca95b25935e865ca8f1efad32317e4"
   },
   "solidity": {
     "revision": "ee5a2d2ba30b487c4bbf613d2ef310a454c09c7c"
@@ -837,6 +837,6 @@
     "revision": "6e7c8edfcd6f5f7c12b2fa9ffc6d042f1b6d7068"
   },
   "zig": {
-    "revision": "0d08703e4c3f426ec61695d7617415fff97029bd"
+    "revision": "7c5a29b721d409be8842017351bf007d7e384401"
   }
 }
