@@ -701,6 +701,9 @@
   "systemtap": {
     "revision": "1af543a96d060b1f808982037bfc54cc02218edd"
   },
+  "systemverilog": {
+    "revision": "7dc4904578a29315c64f0f6500920baff41cc3af"
+  },
   "t32": {
     "revision": "6182836f4128725f1e74ce986840d7317021a015"
   },
