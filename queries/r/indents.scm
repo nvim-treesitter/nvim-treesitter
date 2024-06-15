@@ -1,9 +1,8 @@
 [
-  (brace_list)
-  (paren_list)
-  (special)
-  (pipe)
+  (braced_expression)
+  (parenthesized_expression)
   (call)
+  "special"
   "|>"
   "if"
   "else"
@@ -12,16 +11,17 @@
   "for"
 ] @indent.begin
 
-(binary
-  operator: (special)) @indent.begin
+(binary_operator
+  operator: (_)) @indent.begin
 
 [
   "}"
   ")"
 ] @indent.branch
 
-((formal_parameters
-  (identifier)) @indent.align
+((parameters
+  (parameter
+    name: (identifier))) @indent.align
   (#set! indent.open_delimiter "(")
   (#set! indent.close_delimiter ")"))
 

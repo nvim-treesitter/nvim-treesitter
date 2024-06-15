@@ -57,7 +57,6 @@ jobs:
             './lua/nvim-treesitter/shell_selectors.lua') }}
 
       - name: Compile parsers Unix like
-        if: ${{ runner.os != 'Windows' && steps.parsers-cache.outputs.cache-hit != 'true' }}
         run: |
           nvim --headless -c "TSInstallSync all" -c "q"
 

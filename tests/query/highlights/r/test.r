@@ -5,7 +5,6 @@ init <- 1
 
 r"{(\1\2)}" -> `%r%`
 #  ^ @string
-#    ^ @string.escape
 #           ^ @operator
 #               ^ @variable
 
@@ -24,21 +23,21 @@ b <- list(name = "r", version = R.version$major)
 #          ^ @variable.parameter
 #                 ^ @string
 #                                        ^ @operator
-#                                           ^ @variable.member
+#                                           ^ @variable
 
 Lang$new(name = "r")$print()
-#     ^ @function.method.call
+#     ^ @variable
 
 for(i in 1:10) {
 # <- @keyword.repeat
-#      ^ @keyword.repeat
+#      ^ @keyword
 }
 
 add <- function(a, b = 1, ...) {
 #        ^ @keyword.function
 #               ^ @variable.parameter
 #                  ^ @variable.parameter
-#                         ^ @keyword
+#                         ^ @constant.builtin
   return(a + b)
 }
 
