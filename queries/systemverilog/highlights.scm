@@ -115,9 +115,9 @@
 ] @keyword.conditional
 
 [
- "?"
- ":"
- "#"
+  "?"
+  ":"
+  "#"
 ] @keyword.conditional.ternary
 
 [
@@ -201,8 +201,8 @@
 ] @keyword.modifier
 
 [
- "include"
- "import"
+  "include"
+  "import"
 ] @keyword.import
 
 (comment) @comment @spell
@@ -247,7 +247,6 @@ port_name: (simple_identifier) @variable
   (integer_vector_type)
   (integer_atom_type)
 ] @type.builtin
-
 
 (list_of_variable_decl_assignments
   (variable_decl_assignment
@@ -311,16 +310,16 @@ port_name: (simple_identifier) @variable
   name: (simple_identifier) @constructor)
 
 (module_ansi_header
-   name: (simple_identifier) @constructor)
+  name: (simple_identifier) @constructor)
 
 (module_nonansi_header
-   name: (simple_identifier) @constructor)
+  name: (simple_identifier) @constructor)
 
 (module_instantiation
   instance_type: (simple_identifier) @constructor)
 
 (name_of_instance
- instance_name: (simple_identifier) @label)
+  instance_name: (simple_identifier) @label)
 
 (bind_directive
   (bind_target_scope
