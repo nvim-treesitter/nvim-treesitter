@@ -36,6 +36,8 @@
   (legacy_hex)
   (angle)
   (hex)
+  (display)
+  (position)
 ] @number
 
 "deg" @type
