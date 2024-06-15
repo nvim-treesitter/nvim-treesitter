@@ -271,14 +271,14 @@ port_name: (simple_identifier) @variable
   (quoted_string) @string.special.path)
 
 (seq_block
-  (simple_identifier) @labal)
+  (simple_identifier) @label)
 
 (hierarchical_identifier
   (simple_identifier)
   (simple_identifier) @variable.member)
 
 (statement
-  block_name: (simple_identifier) @labal)
+  block_name: (simple_identifier) @label)
 
 (clocking_declaration
   name: (simple_identifier) @constructor)
@@ -295,7 +295,7 @@ port_name: (simple_identifier) @variable
   name: (simple_identifier) @function)
 
 (task_body_declaration
-  (simple_identifier) @labal)
+  (simple_identifier) @label)
 
 (tf_port_item
   (simple_identifier) @variable)
@@ -304,7 +304,7 @@ port_name: (simple_identifier) @variable
   name: (simple_identifier) @function)
 
 (function_body_declaration
-  (simple_identifier) @labal)
+  (simple_identifier) @label)
 
 ; module
 (module_declaration
@@ -320,7 +320,7 @@ port_name: (simple_identifier) @variable
   instance_type: (simple_identifier) @constructor)
 
 (name_of_instance
- instance_name: (simple_identifier) @labal)
+ instance_name: (simple_identifier) @label)
 
 (bind_directive
   (bind_target_scope
@@ -328,7 +328,7 @@ port_name: (simple_identifier) @variable
 
 (bind_target_instance
   (hierarchical_identifier
-    (simple_identifier) @labal))
+    (simple_identifier) @label))
 
 (named_port_connection
   port_name: (simple_identifier) @variable.member)
@@ -343,7 +343,7 @@ port_name: (simple_identifier) @variable
   (simple_identifier) @variable.parameter)
 
 (module_declaration
-  (simple_identifier) @labal)
+  (simple_identifier) @label)
 
 (udp_instantiation
   (simple_identifier) @constructor)
@@ -362,7 +362,7 @@ port_name: (simple_identifier) @variable
   (simple_identifier) @variable)
 
 (concurrent_assertion_item
-  (simple_identifier) @labal)
+  (simple_identifier) @label)
 
 (sequence_instance
   (hierarchical_identifier
@@ -373,13 +373,13 @@ port_name: (simple_identifier) @variable
   name: (simple_identifier) @type)
 
 (class_declaration
-  (simple_identifier) @labal)
+  (simple_identifier) @label)
 
 (interface_class_declaration
   name: (simple_identifier) @type)
 
 (interface_class_declaration
-  (simple_identifier) @labal)
+  (simple_identifier) @label)
 
 (implicit_class_handle) @variable.builtin
 
@@ -426,7 +426,7 @@ port_name: (simple_identifier) @variable
   name: (simple_identifier) @constructor)
 
 (package_declaration
-  (simple_identifier) @labal)
+  (simple_identifier) @label)
 
 ;interface
 (interface_ansi_header
@@ -436,7 +436,7 @@ port_name: (simple_identifier) @variable
   name: (simple_identifier) @constructor)
 
 (interface_ansi_header
-  (simple_identifier) @labal)
+  (simple_identifier) @label)
 
 (package_import_item
   (simple_identifier) @keyword.import)
@@ -445,7 +445,7 @@ port_name: (simple_identifier) @variable
   name: (simple_identifier) @constructor)
 
 (interface_declaration
-  (simple_identifier) @labal)
+  (simple_identifier) @label)
 
 ; define
 (default_nettype_compiler_directive) @keyword
@@ -507,7 +507,7 @@ c_name: (c_identifier) @function
   name: (simple_identifier) @constructor)
 
 (program_declaration
-  (simple_identifier) @labal)
+  (simple_identifier) @label)
 
 (method_call_body) @function.call
 
