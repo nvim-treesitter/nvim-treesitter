@@ -1782,7 +1782,7 @@ list.robot = {
 
 list.roc = {
   install_info = {
-    url = "https://github.com/nat-418/tree-sitter-roc",
+    url = "https://github.com/faldor20/tree-sitter-roc",
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@nat-418" },
