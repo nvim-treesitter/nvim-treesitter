@@ -55,7 +55,6 @@
   "endproperty"
   "clocking"
   "endclocking"
-  "iff"
   "covergroup"
   "endgroup"
   "specify"
@@ -71,11 +70,14 @@
   "genvar"
   "inside"
   "rand"
-  "new"
   "continue"
   "randc"
+  "event"
+  "global"
+  "ref"
   (unique_priority)
   (bins_keyword)
+  (always_keyword)
 ] @keyword
 
 [
@@ -98,7 +100,6 @@
 "return" @keyword.return
 
 [
-  (always_keyword)
   "for"
   "foreach"
   "repeat"
@@ -110,15 +111,10 @@
 [
   "if"
   "else"
+  "iff"
   (case_keyword)
   "endcase"
 ] @keyword.conditional
-
-[
-  "?"
-  ":"
-  "#"
-] @keyword.conditional.ternary
 
 [
   "="
@@ -131,9 +127,6 @@
   "|"
   "&&"
   "||"
-  "{"
-  "}"
-  "'{"
   "<="
   "=="
   "!="
@@ -153,6 +146,12 @@
   "<<<"
   "->>"
   "->"
+  "=>"
+  "*>"
+  ".*"
+  "?"
+  ":"
+  "#"
   (unary_operator)
   (inc_or_dec_operator)
   (queue_dimension)
@@ -170,19 +169,15 @@
   "]"
   "("
   ")"
+  "{"
+  "}"
+  "'{"
 ] @punctuation.bracket
 
 [
   "or"
   "and"
 ] @keyword.operator
-
-(cast
-  [
-    "'"
-    "("
-    ")"
-  ] @operator)
 
 [
   "input"
@@ -207,6 +202,45 @@
 
 (comment) @comment @spell
 
+[
+  "@"
+  (cycle_delay_range)
+  (delay_control)
+  (cycle_delay)
+  (timescale_compiler_directive)
+  (time_literal)
+  (attribute_instance)
+] @attribute
+
+(attribute_instance
+  (attr_spec
+    (simple_identifier) @property))
+
+[
+  (integral_number)
+  (unbased_unsized_literal)
+  (fixed_point_number)
+  (unsigned_number)
+] @number
+
+[
+  (net_type)
+  (data_type)
+  (timescale_compiler_directive)
+  (time_literal)
+] @type.builtin
+
+; variable
+(list_of_variable_decl_assignments
+  (variable_decl_assignment
+    name: (simple_identifier) @variable))
+
+(hierarchical_identifier
+  (simple_identifier) @variable)
+
+(tf_port_item
+  (simple_identifier) @variable)
+
 port_name: (simple_identifier) @variable
 
 (port
@@ -218,116 +252,22 @@ port_name: (simple_identifier) @variable
 (net_lvalue
   (simple_identifier) @variable)
 
-(clocking_event) @attribute
-
-(cycle_delay_range) @attribute
-
-(delay_control) @attribute
-
-(cycle_delay) @attribute
-
-(timescale_compiler_directive) @attribute
-
-(time_literal) @attribute
-
-(attribute_instance) @attribute
-
-(attribute_instance
-  (attr_spec
-    (simple_identifier) @property))
-
-[
-  (integral_number)
-  (unbased_unsized_literal)
-  (fixed_point_number)
-] @number
-
-[
-  (net_type)
-  (integer_vector_type)
-  (integer_atom_type)
-] @type.builtin
-
-(list_of_variable_decl_assignments
-  (variable_decl_assignment
-    name: (simple_identifier) @variable))
-
-(hierarchical_identifier
+(sequence_port_item
   (simple_identifier) @variable)
 
-(simulation_control_task) @function.builtin
+(property_port_item
+  (simple_identifier) @variable)
 
-(system_tf_identifier) @function.builtin
+(net_decl_assignment
+  (simple_identifier) @variable)
 
-(severity_system_task) @function.builtin
-
-(string_literal
-  (quoted_string) @string)
-
-(include_compiler_directive) @keyword.import
-
-(include_compiler_directive
-  (quoted_string) @string.special.path)
-
-(seq_block
-  (simple_identifier) @label)
-
+; variable.member
 (hierarchical_identifier
   (simple_identifier)
   (simple_identifier) @variable.member)
 
-(statement
-  block_name: (simple_identifier) @label)
-
-(clocking_declaration
-  name: (simple_identifier) @constructor)
-
 (select
   (simple_identifier) @variable.member)
-
-; task and function
-(tf_call
-  (hierarchical_identifier
-    (simple_identifier) @function.call))
-
-(task_body_declaration
-  name: (simple_identifier) @function)
-
-(task_body_declaration
-  (simple_identifier) @label)
-
-(tf_port_item
-  (simple_identifier) @variable)
-
-(function_body_declaration
-  name: (simple_identifier) @function)
-
-(function_body_declaration
-  (simple_identifier) @label)
-
-; module
-(module_declaration
-  name: (simple_identifier) @constructor)
-
-(module_ansi_header
-  name: (simple_identifier) @constructor)
-
-(module_nonansi_header
-  name: (simple_identifier) @constructor)
-
-(module_instantiation
-  instance_type: (simple_identifier) @constructor)
-
-(name_of_instance
-  instance_name: (simple_identifier) @label)
-
-(bind_directive
-  (bind_target_scope
-    (simple_identifier) @constructor))
-
-(bind_target_instance
-  (hierarchical_identifier
-    (simple_identifier) @label))
 
 (named_port_connection
   port_name: (simple_identifier) @variable.member)
@@ -338,153 +278,21 @@ port_name: (simple_identifier) @variable
       (hierarchical_identifier
         (simple_identifier) @variable.member))))
 
-(named_parameter_assignment
-  (simple_identifier) @variable.parameter)
-
-(module_declaration
-  (simple_identifier) @label)
-
-(udp_instantiation
-  (simple_identifier) @constructor)
-
-; assertion
-(sequence_declaration
-  name: (simple_identifier) @constructor)
-
-(sequence_port_item
-  (simple_identifier) @variable)
-
-(property_declaration
-  name: (simple_identifier) @constructor)
-
-(property_port_item
-  (simple_identifier) @variable)
-
-(concurrent_assertion_item
-  (simple_identifier) @label)
-
-(sequence_instance
-  (hierarchical_identifier
-    (simple_identifier) @constructor))
-
-; class
-(class_declaration
-  name: (simple_identifier) @type)
-
-(class_declaration
-  (simple_identifier) @label)
-
-(interface_class_declaration
-  name: (simple_identifier) @type)
-
-(interface_class_declaration
-  (simple_identifier) @label)
-
-(implicit_class_handle) @variable.builtin
-
-(class_type
-  (simple_identifier) @type)
-
-(task_prototype
-  name: (simple_identifier) @function)
-
-(function_prototype
-  name: (simple_identifier) @function)
-
-(type_assignment
-  name: (simple_identifier) @type.definition)
-
-(data_type) @type.definition
-
-(interface_class_type
-  (simple_identifier) @type.definition)
-
-(method_call_body
-  name: (simple_identifier) @function.call)
-
-(class_new) @function.call
-
-; converge
-(covergroup_declaration
-  name: (simple_identifier) @constructor)
-
-(cover_point
-  name: (simple_identifier) @constructor)
-
-(list_of_cross_items
-  (simple_identifier) @constructor)
-
 (coverage_option
   (simple_identifier) @variable.member)
 
-(cover_cross
-  name: (simple_identifier) @constructor)
+; variable.builtin
+(method_call_body
+  arguments: (list_of_arguments
+    (expression) @variable.builtin
+    (#any-of? @variable.builtin "this")))
 
-;package
-(package_declaration
-  name: (simple_identifier) @constructor)
+(implicit_class_handle) @variable.builtin
 
-(package_declaration
-  (simple_identifier) @label)
+; variable.parameter
+(named_parameter_assignment
+  (simple_identifier) @variable.parameter)
 
-;interface
-(interface_ansi_header
-  name: (simple_identifier) @constructor)
-
-(interface_nonansi_header
-  name: (simple_identifier) @constructor)
-
-(interface_ansi_header
-  (simple_identifier) @label)
-
-(package_import_item
-  (simple_identifier) @keyword.import)
-
-(interface_declaration
-  name: (simple_identifier) @constructor)
-
-(interface_declaration
-  (simple_identifier) @label)
-
-; define
-(default_nettype_compiler_directive) @keyword
-
-(default_nettype_compiler_directive
-  (default_nettype_value) @keyword.directive)
-
-(text_macro_definition) @keyword
-
-(text_macro_definition
-  (text_macro_name
-    (simple_identifier) @keyword.directive))
-
-(text_macro_definition
-  (macro_text) @keyword.directive)
-
-(text_macro_usage) @keyword.directive
-
-(resetall_compiler_directive) @keyword
-
-(conditional_compilation_directive) @keyword
-
-(conditional_compilation_directive
-  (ifdef_condition
-    (simple_identifier) @keyword.directive))
-
-(undefine_compiler_directive) @keyword
-
-(undefine_compiler_directive
-  (simple_identifier) @keyword.directive)
-
-; dpi
-(dpi_spec_string) @string
-
-c_name: (c_identifier) @function
-
-(dpi_import_export
-  name: (simple_identifier) @function)
-
-; parameter
 (parameter_declaration
   (list_of_param_assignments
     (param_assignment
@@ -495,20 +303,203 @@ c_name: (c_identifier) @function
     (param_assignment
       (simple_identifier) @variable.parameter)))
 
-; program
-(program_nonansi_header
-  name: (simple_identifier) @constructor)
+; function builtin
+[
+  (simulation_control_task)
+  (system_tf_identifier)
+  (severity_system_task)
+  (randomize_call)
+  (array_or_queue_method_name)
+  "new"
+] @function.builtin
 
-(program_ansi_header
-  name: (simple_identifier) @constructor)
+; declaration
+(task_body_declaration
+  .
+  name: (simple_identifier) @function
+  (simple_identifier)? @label)
+
+(function_body_declaration
+  .
+  name: (simple_identifier) @function
+  (simple_identifier)? @label)
+
+(function_body_declaration
+  .
+  (data_type_or_void)
+  name: (simple_identifier) @function
+  (simple_identifier)? @label)
+
+(clocking_declaration
+  .
+  name: (simple_identifier) @constructor
+  (simple_identifier)? @label)
+
+(sequence_declaration
+  .
+  name: (simple_identifier) @constructor
+  (simple_identifier)? @label)
+
+(property_declaration
+  .
+  name: (simple_identifier) @constructor
+  (simple_identifier)? @label)
+
+(class_declaration
+  .
+  name: (simple_identifier) @constructor
+  (simple_identifier)? @label)
+
+(interface_class_declaration
+  .
+  name: (simple_identifier) @constructor
+  (simple_identifier)? @label)
+
+(covergroup_declaration
+  .
+  name: (simple_identifier) @constructor
+  (simple_identifier)? @label)
+
+(package_declaration
+  .
+  name: (simple_identifier) @constructor
+  (simple_identifier)? @label)
+
+(checker_declaration
+  .
+  name: (simple_identifier) @constructor
+  (simple_identifier)? @label)
+
+(interface_declaration
+  .
+  [
+    (simple_identifier) @constructor
+    (interface_nonansi_header
+      (simple_identifier) @constructor)
+    (interface_ansi_header
+      (simple_identifier) @constructor)
+  ]
+  (simple_identifier)? @label)
+
+(module_declaration
+  .
+  [
+    (simple_identifier) @constructor
+    (module_nonansi_header
+      (simple_identifier) @constructor)
+    (module_ansi_header
+      (simple_identifier) @constructor)
+  ]
+  (simple_identifier)? @label)
 
 (program_declaration
-  name: (simple_identifier) @constructor)
+  .
+  [
+    (simple_identifier) @constructor
+    (program_nonansi_header
+      (simple_identifier) @constructor)
+    (program_ansi_header
+      (simple_identifier) @constructor)
+  ]
+  (simple_identifier)? @label)
 
-(program_declaration
+; function.call
+(method_call_body
+  name: (simple_identifier) @function.call)
+
+(tf_call
+  (hierarchical_identifier
+    (simple_identifier) @function.call))
+
+; instance
+(module_instantiation
+  instance_type: (simple_identifier) @constructor)
+
+(name_of_instance
+  instance_name: (simple_identifier) @module)
+
+(sequence_instance
+  (hierarchical_identifier
+    (simple_identifier) @module))
+
+(udp_instantiation
+  (simple_identifier) @constructor)
+
+(ansi_port_declaration
+  (interface_port_header
+    interface_name: (simple_identifier) @variable
+    modport_name: (simple_identifier) @variable.member)
+  port_name: (simple_identifier) @variable)
+
+; bind
+(bind_directive
+  (bind_target_scope
+    (simple_identifier) @constructor))
+
+(bind_target_instance
+  (hierarchical_identifier
+    (simple_identifier) @module))
+
+; assertion
+(concurrent_assertion_item
   (simple_identifier) @label)
 
-(method_call_body) @function.call
+; converge
+(cover_point
+  name: (simple_identifier) @label)
+
+(cover_cross
+  name: (simple_identifier) @module)
+
+(list_of_cross_items
+  (simple_identifier) @constructor)
+
+;package
+(package_import_item
+  (simple_identifier) @constructor)
+
+; label
+(seq_block
+  (simple_identifier) @label)
+
+(statement
+  block_name: (simple_identifier) @label)
+
+; dpi
+(dpi_spec_string) @string
+
+c_name: (c_identifier) @function
+
+(dpi_import_export
+  name: (simple_identifier) @function)
+
+; type def
+(class_type
+  (simple_identifier) @constructor)
+
+(class_type
+  (simple_identifier)
+  (simple_identifier) @type)
+
+(data_type
+  (class_scope
+    (class_type
+      (simple_identifier) @constructor)))
+
+(task_prototype
+  name: (simple_identifier) @function)
+
+(function_prototype
+  name: (simple_identifier) @function)
+
+(type_assignment
+  name: (simple_identifier) @type.definition)
+
+(enum_name_declaration
+  (simple_identifier) @type.parameter)
+
+(interface_class_type
+  (simple_identifier) @type.definition)
 
 (package_scope
   (simple_identifier) @constructor)
@@ -520,8 +511,55 @@ c_name: (c_identifier) @function
 (net_declaration
   (simple_identifier) @type)
 
-(net_decl_assignment
-  (simple_identifier) @variable)
-
 (constraint_declaration
   (simple_identifier) @constructor)
+
+(method_call
+  (primary
+    (hierarchical_identifier
+      (simple_identifier) @constructor)))
+
+(string_literal
+  (quoted_string) @string)
+
+; include
+(include_statement
+  (file_path_spec) @string.special.path)
+
+; directive
+; TODO:
+; Parse cannot distinguish `define `include etc,
+; so use overlay color to temporarily handle
+[
+  (include_compiler_directive)
+  (default_nettype_compiler_directive)
+  (text_macro_definition)
+  (resetall_compiler_directive)
+  (conditional_compilation_directive)
+  (undefine_compiler_directive)
+  (undefineall_compiler_directive)
+  (text_macro_usage)
+] @keyword.directive
+
+(include_compiler_directive
+  [
+    (quoted_string)
+    (system_lib_string)
+  ] @string.special.path)
+
+(default_nettype_compiler_directive
+  (default_nettype_value) @keyword.directive.define)
+
+(text_macro_definition
+  (text_macro_name
+    (simple_identifier) @keyword.directive.define))
+
+(text_macro_definition
+  (macro_text) @keyword.directive.define)
+
+(conditional_compilation_directive
+  (ifdef_condition
+    (simple_identifier) @keyword.directive.define))
+
+(undefine_compiler_directive
+  (simple_identifier) @keyword.directive.define)

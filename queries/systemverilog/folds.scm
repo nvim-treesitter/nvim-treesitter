@@ -17,4 +17,7 @@
   (program_declaration)
   (specify_block)
   (generate_region)
+  (package_import_declaration)
+  (text_macro_definition)
+  (include_compiler_directive)
 ] @fold
