@@ -495,9 +495,6 @@ c_name: (c_identifier) @function
 (type_assignment
   name: (simple_identifier) @type.definition)
 
-(enum_name_declaration
-  (simple_identifier) @type.parameter)
-
 (interface_class_type
   (simple_identifier) @type.definition)
 
