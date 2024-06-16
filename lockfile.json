@@ -135,7 +135,7 @@
     "revision": "648183d86f6f8ffb240ea11b4c6873f6f45d8b67"
   },
   "earthfile": {
-    "revision": "b2672286174c078eb80cdffc61375d0364e7fafb"
+    "revision": "1a4ec8431bf6c8d77dc00f75f57eacde3ed6826f"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -315,7 +315,7 @@
     "revision": "ad705af8c44c737bdb965fc081329c50716d2d03"
   },
   "hyprlang": {
-    "revision": "088bcd4052de1b9b5d051dffc3d76e658f295a50"
+    "revision": "c9012d6dcaaa939f17c21e1fdb17b013d139e6b9"
   },
   "idl": {
     "revision": "9f56001f8ed29b0ea9fa4f02813f3e83ab0a2aaa"
@@ -330,7 +330,7 @@
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
   },
   "janet_simple": {
-    "revision": "6bfbaadac2ba0da21087041eff85d26129c4c920"
+    "revision": "b5ce47537b47c408d83440efed44a10c9ba28c34"
   },
   "java": {
     "revision": "953abfc8bb3eb2f578e1f461edba4a9885f974b8"
@@ -690,7 +690,7 @@
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
   },
   "svelte": {
-    "revision": "2c97326cd96b7c3016c3d249e8dc244c89b4abeb"
+    "revision": "7218cf622b057ae9c530e1f0a7a3ce49806ca55e"
   },
   "swift": {
     "revision": "13ffaec4068facfff608e3afbdb7a581c185f6a6"
@@ -753,7 +753,7 @@
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
   },
   "twig": {
-    "revision": "eaf80e6af969e25993576477a9dbdba3e48c1305"
+    "revision": "085648e01d1422163a1702a44e72303b4e2a0bd1"
   },
   "typescript": {
     "revision": "4ad3010c91d700026d036b5230e2d99ba94ae8a4"
@@ -783,7 +783,7 @@
     "revision": "ad9b638b914095320de85d59c49ab271603af048"
   },
   "v": {
-    "revision": "c5bb1659385a9a82af63f07d3a1bb321e1de75e4"
+    "revision": "e91f8a42de7842f24f4ce600754f2b6651985fd4"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
