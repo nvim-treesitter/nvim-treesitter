@@ -81,7 +81,7 @@
     "revision": "4ebe237c1cf64cf3826fc249e9ec0988fe07e58e"
   },
   "corn": {
-    "revision": "604d73c38d4c28ca68e9e441ffd405d68cb63051"
+    "revision": "464654742cbfd3a3de560aba120998f1d5dfa844"
   },
   "cpon": {
     "revision": "594289eadfec719198e560f9d7fd243c4db678d5"
@@ -135,7 +135,7 @@
     "revision": "648183d86f6f8ffb240ea11b4c6873f6f45d8b67"
   },
   "earthfile": {
-    "revision": "1a4ec8431bf6c8d77dc00f75f57eacde3ed6826f"
+    "revision": "b5bdcb5813ce0e582fbd8e03eb42c80d3cc8984e"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -279,7 +279,7 @@
     "revision": "577259b4068b2c281c9ebf94c109bd50a74d5857"
   },
   "hcl": {
-    "revision": "e936d3fef8bac884661472dce71ad82284761eb1"
+    "revision": "e2d416afeba80e8cf711ed6792e089ed5c8e184e"
   },
   "heex": {
     "revision": "b5ad6e34eea18a15bbd1466ca707a17f9bff7b93"
@@ -330,7 +330,7 @@
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
   },
   "janet_simple": {
-    "revision": "b5ce47537b47c408d83440efed44a10c9ba28c34"
+    "revision": "2a05cab838dfec52daa76f10920917d2e69a85bc"
   },
   "java": {
     "revision": "953abfc8bb3eb2f578e1f461edba4a9885f974b8"
@@ -585,7 +585,7 @@
     "revision": "6c9bbcfdf5f0f553d9ebc01750a3aa247a37b8aa"
   },
   "rbs": {
-    "revision": "e5e807a50fcd104a2d740d354632fc671700a0bf"
+    "revision": "88d8ed487b5449ddda2fc0c4fe23b71cba29ca24"
   },
   "re2c": {
     "revision": "47aa19cf5f7aba2ed30e2b377f7172df76e819a6"
