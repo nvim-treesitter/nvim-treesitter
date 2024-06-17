@@ -147,9 +147,6 @@
   (type_var)
 ] @type
 
-((type_identifier) @type.builtin
-  (#any-of? @type.builtin "Int" "Float" "String" "List"))
-
 ; Type Qualifiers
 [
   "const"

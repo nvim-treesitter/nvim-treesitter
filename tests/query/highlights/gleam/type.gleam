@@ -8,11 +8,11 @@ pub type Cat {
   // ^ @punctuation.bracket
   //  ^^^^ @variable.member
   //      ^ @punctuation.delimiter
-  //        ^^^^^^ @type.builtin
+  //        ^^^^^^ @type
   //              ^ @punctuation.delimiter
   //                ^^^^^^^^ @variable.member
   //                        ^ @punctuation.delimiter
-  //                          ^^^ @type.builtin
+  //                          ^^^ @type
   //                             ^ @punctuation.bracket
 }
 
