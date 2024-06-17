@@ -93,7 +93,7 @@
 ; Replace common HTML entities.
 ((entity_reference) @character.special
   (#eq? @character.special "&nbsp;")
-  (#set! conceal ""))
+  (#set! conceal " "))
 
 ((entity_reference) @character.special
   (#eq? @character.special "&lt;")
