@@ -22,7 +22,6 @@
   "localparam"
   "defparam"
   "assign"
-  "typedef"
   "modport"
   "fork"
   "join"
@@ -44,6 +43,7 @@
   "enum"
   "struct"
   "union"
+  "typedef"
 ] @keyword.type
 
 [
@@ -96,9 +96,6 @@
   (package_identifier
     (simple_identifier) @constant))
 
-(parameter_port_list
-  "#" @constructor)
-
 [
   "="
   "-"
@@ -110,12 +107,9 @@
   "|"
   "&&"
   "||"
-  ":"
-  "{"
-  "}"
-  "'{"
   "<="
   "@"
+  "@*"
   "=="
   "!="
   "==="
@@ -130,7 +124,11 @@
   "|="
   (unary_operator)
   (inc_or_dec_operator)
+  "#"
 ] @operator
+
+(parameter_port_list
+  "#" @constructor)
 
 [
   "or"
@@ -160,6 +158,8 @@
 [
   "signed"
   "unsigned"
+  "input"
+  "output"
 ] @keyword.modifier
 
 (data_type
@@ -197,9 +197,16 @@
 [
   ";"
   "::"
+  ":"
   ","
   "."
 ] @punctuation.delimiter
+
+(conditional_expression
+  [
+    "?"
+    ":"
+  ] @keyword.conditional.ternary)
 
 (default_nettype_compiler_directive
   (default_nettype_value) @string)
@@ -223,7 +230,7 @@
   (unbased_unsized_literal)
 ] @number
 
-(time_unit) @attribute
+(time_unit) @type.builtin
 
 (checker_instantiation
   (checker_identifier
@@ -307,4 +314,7 @@
   "]"
   "("
   ")"
+  "{"
+  "}"
+  "'{"
 ] @punctuation.bracket
