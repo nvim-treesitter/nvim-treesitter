@@ -16,7 +16,7 @@
     (_) @none @spell))
 
 (key_value_pair
-  key: (_) @variable.parameter
+  key: (_) @variable.parameter @nospell
   value: (_))
 
 [
@@ -46,42 +46,42 @@
 (begin
   command: _ @module
   name: (curly_group_text
-    (text) @label))
+    (text) @label @nospell))
 
 (end
   command: _ @module
   name: (curly_group_text
-    (text) @label))
+    (text) @label @nospell))
 
 ; Definitions and references
 (new_command_definition
-  command: _ @function.macro)
+  command: _ @function.macro @nospell)
 
 (old_command_definition
-  command: _ @function.macro)
+  command: _ @function.macro @nospell)
 
 (let_command_definition
-  command: _ @function.macro)
+  command: _ @function.macro @nospell)
 
 (environment_definition
-  command: _ @function.macro
+  command: _ @function.macro @nospell
   name: (curly_group_text
     (_) @markup.link))
 
 (theorem_definition
-  command: _ @function.macro
+  command: _ @function.macro @nospell
   name: (curly_group_text_list
-    (_) @label))
+    (_) @label @nospell))
 
 (paired_delimiter_definition
-  command: _ @function.macro
+  command: _ @function.macro @nospell
   declaration: (curly_group_command_name
     (_) @function))
 
 (label_definition
   command: _ @function.macro
   name: (curly_group_text
-    (_) @markup.link))
+    (_) @markup.link @nospell))
 
 (label_reference_range
   command: _ @function.macro
@@ -102,8 +102,8 @@
   number: (_) @markup.link)
 
 (citation
-  command: _ @function.macro
-  keys: (curly_group_text_list) @markup.link)
+  command: _ @function.macro @nospell
+  keys: (curly_group_text_list) @markup.link @nospell)
 
 (hyperlink
   command: _ @function @nospell
@@ -111,9 +111,9 @@
     (_) @markup.link.url @nospell))
 
 (glossary_entry_definition
-  command: _ @function.macro
+  command: _ @function.macro @nospell
   name: (curly_group_text
-    (_) @markup.link))
+    (_) @markup.link @nospell))
 
 (glossary_entry_reference
   command: _ @function.macro
@@ -121,9 +121,9 @@
     (_) @markup.link))
 
 (acronym_definition
-  command: _ @function.macro
+  command: _ @function.macro @nospell
   name: (curly_group_text
-    (_) @markup.link))
+    (_) @markup.link @nospell))
 
 (acronym_reference
   command: _ @function.macro
@@ -280,20 +280,28 @@
   command: _ @keyword.import
   paths: (curly_group_path_list) @string)
 
-(key_value_pair) @nospell
-
-(generic_environment
-  begin: _ @nospell
-  end: _ @nospell)
-
-(citation
-  keys: _ @nospell)
-
-(label_definition) @nospell
-
-(label_reference) @nospell
-
-(label_reference_range) @nospell
+; Turn spelling off for whole nodes
+[
+  (label_reference)
+  (label_reference_range)
+  (label_number)
+  (glossary_entry_reference)
+  (acronym_reference)
+  (color_definition)
+  (color_reference)
+  (class_include)
+  (package_include)
+  (latex_include)
+  (verbatim_include)
+  (import_include)
+  (bibstyle_include)
+  (bibtex_include)
+  (biblatex_include)
+  (graphics_include)
+  (svg_include)
+  (inkscape_include)
+  (tikz_library_import)
+] @nospell
 
 ; Math
 [
