@@ -87,7 +87,7 @@
     "revision": "594289eadfec719198e560f9d7fd243c4db678d5"
   },
   "cpp": {
-    "revision": "9d412ba7e597fe158f209da33e60f31b1f0df967"
+    "revision": "7ce8946cae4bb25adebe5b50394f702beb007026"
   },
   "css": {
     "revision": "f6be52c3d1cdb1c5e4dd7d8bce0a57497f55d6af"
@@ -279,7 +279,7 @@
     "revision": "577259b4068b2c281c9ebf94c109bd50a74d5857"
   },
   "hcl": {
-    "revision": "e2d416afeba80e8cf711ed6792e089ed5c8e184e"
+    "revision": "422cbe1d93a8ae3847744b664041fc76876babcd"
   },
   "heex": {
     "revision": "b5ad6e34eea18a15bbd1466ca707a17f9bff7b93"
@@ -693,7 +693,7 @@
     "revision": "7218cf622b057ae9c530e1f0a7a3ce49806ca55e"
   },
   "swift": {
-    "revision": "13ffaec4068facfff608e3afbdb7a581c185f6a6"
+    "revision": "d657f98dd6bbc34cb48438c9e5956f15a6d89f1d"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -720,7 +720,7 @@
     "revision": "cf84ea53e2e2531f23009d676ac206090c1e2392"
   },
   "terraform": {
-    "revision": "e936d3fef8bac884661472dce71ad82284761eb1"
+    "revision": "422cbe1d93a8ae3847744b664041fc76876babcd"
   },
   "textproto": {
     "revision": "8dacf02aa402892c91079f8577998ed5148c0496"
