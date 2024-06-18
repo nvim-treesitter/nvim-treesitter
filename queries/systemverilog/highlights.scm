@@ -24,7 +24,6 @@
   "localparam"
   "defparam"
   "assign"
-  "typedef"
   "modport"
   "fork"
   "join"
@@ -75,6 +74,7 @@
   "event"
   "global"
   "ref"
+  "initial"
   (unique_priority)
   (bins_keyword)
   (always_keyword)
@@ -88,6 +88,7 @@
   "enum"
   "struct"
   "union"
+  "typedef"
 ] @keyword.type
 
 [
@@ -104,9 +105,37 @@
   "foreach"
   "repeat"
   "forever"
-  "initial"
   "while"
 ] @keyword.repeat
+
+; for
+(loop_generate_construct
+  (generate_block
+    [
+      "begin"
+      "end"
+    ] @keyword.conditional))
+
+; foreach
+(loop_statement
+  (statement
+    (statement_item
+      (seq_block
+        [
+          "begin"
+          "end"
+        ] @keyword.conditional))))
+
+; repeat forever while
+(loop_statement
+  (statement_or_null
+    (statement
+      (statement_item
+        (seq_block
+          [
+            "begin"
+            "end"
+          ] @keyword.conditional)))))
 
 [
   "if"
@@ -149,20 +178,26 @@
   "=>"
   "*>"
   ".*"
-  "?"
-  ":"
-  "#"
   (unary_operator)
   (inc_or_dec_operator)
   (queue_dimension)
 ] @operator
+
+"#" @constructor
 
 [
   ";"
   "::"
   ","
   "."
+  ":"
 ] @punctuation.delimiter
+
+(conditional_expression
+  [
+    "?"
+    ":"
+  ] @keyword.conditional.ternary)
 
 [
   "["
@@ -198,6 +233,7 @@
 [
   "include"
   "import"
+  "directive_include"
 ] @keyword.import
 
 (comment) @comment @spell
@@ -207,8 +243,6 @@
   (cycle_delay_range)
   (delay_control)
   (cycle_delay)
-  (timescale_compiler_directive)
-  (time_literal)
   (attribute_instance)
 ] @attribute
 
@@ -226,8 +260,7 @@
 [
   (net_type)
   (data_type)
-  (timescale_compiler_directive)
-  (time_literal)
+  (time_unit)
 ] @type.builtin
 
 ; variable
@@ -259,6 +292,9 @@ port_name: (simple_identifier) @variable
   (simple_identifier) @variable)
 
 (net_decl_assignment
+  (simple_identifier) @variable)
+
+(ERROR
   (simple_identifier) @variable)
 
 ; variable.member
@@ -524,39 +560,36 @@ c_name: (c_identifier) @function
   (file_path_spec) @string.special.path)
 
 ; directive
-; TODO:
-; Parse cannot distinguish `define `include etc,
-; so use overlay color to temporarily handle
 [
-  (include_compiler_directive)
-  (default_nettype_compiler_directive)
-  (text_macro_definition)
-  (resetall_compiler_directive)
-  (conditional_compilation_directive)
-  (undefine_compiler_directive)
-  (undefineall_compiler_directive)
-  (text_macro_usage)
-] @keyword.directive
+  "directive_define"
+  "directive_default_nettype"
+  "directive_resetall"
+  "directive_timescale"
+  "directive_undef"
+  "directive_undefineall"
+  "directive_ifdef"
+  "directive_elsif"
+  "directive_endif"
+  "directive_else"
+] @keyword.directive.define
 
 (include_compiler_directive
-  [
-    (quoted_string)
-    (system_lib_string)
-  ] @string.special.path)
+  (quoted_string) @string.special.path)
+
+(include_compiler_directive
+  (system_lib_string) @string)
 
 (default_nettype_compiler_directive
-  (default_nettype_value) @keyword.directive.define)
+  (default_nettype_value) @type.builtin)
 
 (text_macro_definition
   (text_macro_name
-    (simple_identifier) @keyword.directive.define))
+    (simple_identifier) @keyword.directive))
 
-(text_macro_definition
-  (macro_text) @keyword.directive.define)
+(text_macro_usage) @keyword.directive
 
-(conditional_compilation_directive
-  (ifdef_condition
-    (simple_identifier) @keyword.directive.define))
+(ifdef_condition
+  (simple_identifier) @keyword.directive)
 
 (undefine_compiler_directive
-  (simple_identifier) @keyword.directive.define)
+  (simple_identifier) @keyword.directive)
