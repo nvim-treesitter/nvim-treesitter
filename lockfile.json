@@ -120,7 +120,7 @@
     "revision": "0229c0211dba909c5d45129ac784a3f4d49c243a"
   },
   "djot": {
-    "revision": "ea851b9cf1a71e475f4e2ac4dc03609a1b9ca56d"
+    "revision": "87bf82874c86dcf563f5521069d603ed50e5f0cc"
   },
   "dockerfile": {
     "revision": "087daa20438a6cc01fa5e6fe6906d77c869d19fe"
@@ -747,7 +747,7 @@
     "revision": "7eb7297823605392d2bbcc4c09b1cd18d6fa9529"
   },
   "tsx": {
-    "revision": "4ad3010c91d700026d036b5230e2d99ba94ae8a4"
+    "revision": "4f3eb6655a1cd1a1f87ef10201f8e22886dcd76e"
   },
   "turtle": {
     "revision": "085437f5cb117703b7f520dd92161140a684f092"
@@ -756,7 +756,7 @@
     "revision": "085648e01d1422163a1702a44e72303b4e2a0bd1"
   },
   "typescript": {
-    "revision": "4ad3010c91d700026d036b5230e2d99ba94ae8a4"
+    "revision": "4f3eb6655a1cd1a1f87ef10201f8e22886dcd76e"
   },
   "typespec": {
     "revision": "28821d0d6da5f0a6b5eb02b9bad953fecafd7248"
