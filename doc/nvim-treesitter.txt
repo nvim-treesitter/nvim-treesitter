@@ -549,8 +549,9 @@ Default options (lua syntax):
 >
   {
     indicator_size = 100,
-    type_patterns = {'class', 'function', 'method'},
-    transform_fn = function(line, _node) return line:gsub('%s*[%[%(%{]*%s*$', '') end,
+    type_patterns = {'namespace', 'class', 'struct', 'function', 'method'},
+    ignore_fields = {'body'}
+    transform_fn = function(line, _node) return line:gsub('%s*[%[%(%{]*%s*$', ''):gsub('%s+', ' ') end,
     separator = ' -> ',
     allow_duplicates = false
   }
@@ -558,8 +559,11 @@ Default options (lua syntax):
 - `indicator_size` - How long should the string be. If longer, it is cut from
   the beginning.
 - `type_patterns` - Which node type patterns to match.
+- `ignore_fields` - for a node that matches the type pattern, which fields to
+  ignore to extract a signature
 - `transform_fn` - Function used to transform the single item in line. By
-  default it removes opening brackets and spaces from end. Takes two arguments:
+  default it removes opening brackets and spaces from end, and replace
+  consecutive whitespaces with a single space. Takes two arguments:
   the text of the line in question, and the corresponding treesitter node.
 - `separator` - Separator between nodes.
 - `allow_duplicates` - Whether or not to remove duplicate components.

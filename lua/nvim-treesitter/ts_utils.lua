@@ -33,29 +33,6 @@ local function get_node_text(node, bufnr)
   end
 end
 
----@private
----@param node TSNode
----@param type_patterns string[]
----@param transform_fn fun(line: string): string
----@param bufnr integer
----@return string
-function M._get_line_for_node(node, type_patterns, transform_fn, bufnr)
-  local node_type = node:type()
-  local is_valid = false
-  for _, rgx in ipairs(type_patterns) do
-    if node_type:find(rgx) then
-      is_valid = true
-      break
-    end
-  end
-  if not is_valid then
-    return ""
-  end
-  local line = transform_fn(vim.trim(get_node_text(node, bufnr)[1] or ""), node)
-  -- Escape % to avoid statusline to evaluate content as expression
-  return line:gsub("%%", "%%%%")
-end
-
 -- Gets the actual text content of a node
 -- @deprecated Use vim.treesitter.query.get_node_text
 -- @param node the node to get the text from
