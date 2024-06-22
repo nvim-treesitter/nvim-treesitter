@@ -162,7 +162,7 @@
     "revision": "38d5004a797298dc42c85e7706c5ceac46a3f29f"
   },
   "erlang": {
-    "revision": "b8e44bc0a3b2ce6bceea47c0b1c0f303a6b322b8"
+    "revision": "54cecce7454bab1e1c92d6fdeeb2e34625684397"
   },
   "facility": {
     "revision": "a52579670e2b14ec03d410c3c980fafaf6d659c4"
@@ -330,7 +330,7 @@
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
   },
   "janet_simple": {
-    "revision": "2a05cab838dfec52daa76f10920917d2e69a85bc"
+    "revision": "4e23a9ef6ec8769bc4063f0fdb049b4d564ea6bc"
   },
   "java": {
     "revision": "953abfc8bb3eb2f578e1f461edba4a9885f974b8"
@@ -459,7 +459,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "b3cda619248e7dd0f216088bd152f59ce0bbe488"
+    "revision": "0fdada10f1f845ca9116e279ad8f5d0ca93e9949"
   },
   "norg": {
     "revision": "aa1a1a7ded81a094cc3d5cb14bea6f34b86d8688"
