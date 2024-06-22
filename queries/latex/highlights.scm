@@ -39,6 +39,8 @@
   "}"
 ] @punctuation.bracket ; "(" ")" has no syntactical meaning in LaTeX
 
+(hyperlink) @string.special.url @nospell
+
 ; General environments
 (begin
   command: _ @module
