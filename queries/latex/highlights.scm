@@ -39,8 +39,6 @@
   "}"
 ] @punctuation.bracket ; "(" ")" has no syntactical meaning in LaTeX
 
-(hyperlink) @string.special.url @nospell
-
 ; General environments
 (begin
   command: _ @module
@@ -254,12 +252,10 @@
     (_) @markup.strong))
   (#any-of? @_name "\\textbf" "\\mathbf"))
 
-((generic_command
-  command: (command_name) @_name
-  .
-  arg: (curly_group
-    (_) @markup.link.url))
-  (#any-of? @_name "\\url" "\\href"))
+(hyperlink
+  command: _ @function @nospell
+  uri: (curly_group_uri
+    (_) @markup.link.url @nospell))
 
 ; File inclusion commands
 (class_include
