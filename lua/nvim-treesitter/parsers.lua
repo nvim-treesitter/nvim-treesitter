@@ -34,7 +34,6 @@ for ft, lang in pairs {
   html_tags = "html",
   ["typescript.tsx"] = "tsx",
   ["html.handlebars"] = "glimmer",
-  systemverilog = "verilog",
   pandoc = "markdown",
   rmd = "markdown",
   quarto = "markdown",
@@ -2038,6 +2037,14 @@ list.systemtap = {
     files = { "src/parser.c" },
   },
   maintainers = { "@ok-ryoko" },
+}
+
+list.systemverilog = {
+  install_info = {
+    url = "https://github.com/zhangwwpeng/tree-sitter-systemverilog",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@zhangwwpeng" },
 }
 
 list.t32 = {
