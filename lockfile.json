@@ -360,7 +360,7 @@
     "revision": "f1baa5f8e271109d01cc8ff7473c11df2d8a9aee"
   },
   "just": {
-    "revision": "fd814fc6c579f68c2a642f5e0268cf69daae92d7"
+    "revision": "379fbe36d1e441bc9414ea050ad0c85c9d6935ea"
   },
   "kconfig": {
     "revision": "486fea71f61ad9f3fd4072a118402e97fe88d26c"
@@ -447,7 +447,7 @@
     "revision": "570f3d7be01fffc751237f4cfcf52d04e20532d1"
   },
   "nickel": {
-    "revision": "43433d8477b24cd13acaac20a66deda49b7e2547"
+    "revision": "3039ad9e9af3c1ffe049a04ee83a2b489915b0b9"
   },
   "nim": {
     "revision": "961c2798cec9250c44f7d7225ddb33d47d25856a"
@@ -579,7 +579,7 @@
     "revision": "171f52a8c0ed635b85cd42d1e36d82f1066a03b4"
   },
   "ralph": {
-    "revision": "48b9d9d6e2b55ce8f9eb09ceb0d952e4b1cc87a0"
+    "revision": "f6d81bf7a4599c77388035439cf5801cd461ff77"
   },
   "rasi": {
     "revision": "6c9bbcfdf5f0f553d9ebc01750a3aa247a37b8aa"
