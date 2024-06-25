@@ -30,7 +30,7 @@
 "\\item" @punctuation.special
 
 ((word) @punctuation.delimiter
-  (#eq? @punctuation.delimiter "&"))
+  (#lua-match? @punctuation.delimiter "^&+$"))
 
 [
   "["
