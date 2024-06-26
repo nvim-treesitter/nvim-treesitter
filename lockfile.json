@@ -330,7 +330,7 @@
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
   },
   "janet_simple": {
-    "revision": "6eb1525872013f58c64b0526ac9d64174f7136f1"
+    "revision": "74f054bfe916a8f5fd5e5f90bda5549000eaaa56"
   },
   "java": {
     "revision": "953abfc8bb3eb2f578e1f461edba4a9885f974b8"
@@ -609,7 +609,7 @@
     "revision": "322e4cc65754d2b3fdef4f2f8a71e0762e3d13af"
   },
   "roc": {
-    "revision": "a662513450e163dc2056603b1f426b4787aac0fd"
+    "revision": "6ea64b6434a45472bd87b0772fd84a017de0a557"
   },
   "ron": {
     "revision": "78938553b93075e638035f624973083451b29055"
@@ -693,7 +693,7 @@
     "revision": "7218cf622b057ae9c530e1f0a7a3ce49806ca55e"
   },
   "swift": {
-    "revision": "d657f98dd6bbc34cb48438c9e5956f15a6d89f1d"
+    "revision": "631f1e66bfbf55791b7a9ed23fa6dc90ee55550a"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
