@@ -1,3 +1,5 @@
+(shebang) @keyword.directive
+
 ; Includes
 [
   "import"
