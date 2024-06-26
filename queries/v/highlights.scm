@@ -288,8 +288,9 @@
   (block_comment)
 ] @comment @spell
 
-(source_file
+(_
   (line_comment)+ @comment.documentation
+  .
   [
     (function_declaration)
     (type_declaration)
