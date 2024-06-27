@@ -162,7 +162,7 @@
     "revision": "38d5004a797298dc42c85e7706c5ceac46a3f29f"
   },
   "erlang": {
-    "revision": "54cecce7454bab1e1c92d6fdeeb2e34625684397"
+    "revision": "da275db3ae46bbd00f97d11f888d8c58c14faa6d"
   },
   "facility": {
     "revision": "a52579670e2b14ec03d410c3c980fafaf6d659c4"
@@ -330,7 +330,7 @@
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
   },
   "janet_simple": {
-    "revision": "74f054bfe916a8f5fd5e5f90bda5549000eaaa56"
+    "revision": "3b08641373cb3e37bc531e6e3cdb85d02b454702"
   },
   "java": {
     "revision": "953abfc8bb3eb2f578e1f461edba4a9885f974b8"
@@ -414,7 +414,7 @@
     "revision": "fbadc96272f718dba267628ba7b0e694c368cef3"
   },
   "m68k": {
-    "revision": "fe7cde600d3d4f6f67a9766f58690431b5a1c9f4"
+    "revision": "9e082a2253c50eb3d80e84bbd635e57cfb1476a2"
   },
   "make": {
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
