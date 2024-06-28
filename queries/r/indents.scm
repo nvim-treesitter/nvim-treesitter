@@ -12,7 +12,8 @@
 ] @indent.begin
 
 (binary_operator
-  operator: (_)) @indent.begin
+  rhs: (_) @_no_indent
+  (#not-kind-eq? @_no_indent function_definition)) @indent.begin
 
 [
   "}"
@@ -20,6 +21,7 @@
 ] @indent.branch
 
 ((parameters
+  .
   (parameter
     name: (identifier))) @indent.align
   (#set! indent.open_delimiter "(")
