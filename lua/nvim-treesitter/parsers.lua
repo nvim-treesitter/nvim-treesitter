@@ -33,6 +33,7 @@ for ft, lang in pairs {
   sh = "bash",
   html_tags = "html",
   ["typescript.tsx"] = "tsx",
+  ["terraform-vars"] = "terraform",
   ["html.handlebars"] = "glimmer",
   pandoc = "markdown",
   rmd = "markdown",
