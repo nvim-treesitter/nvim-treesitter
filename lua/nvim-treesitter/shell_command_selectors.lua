@@ -1,5 +1,6 @@
 local fn = vim.fn
 local utils = require "nvim-treesitter.utils"
+local luv = vim.loop
 
 -- Convert path for cmd.exe on Windows.
 -- This is needed when vim.opt.shellslash is in use.
@@ -288,6 +289,27 @@ function M.select_download_commands(repo, project_name, cache_folder, revision, 
     local git_folder = utils.join_path(cache_folder, project_name)
     local clone_error = "Error during download, please verify your internet connection"
 
+    -- If neovim was started by a git operation (ex. git commit), git will have set environment
+    -- variables that point to the repository location. Any commands we run here will inherit them
+    -- by default which can cause corruption. We are resetting all location environment variables
+    -- here since they are guaranteed to be invalid for the plugin directory we are checking out.
+    -- Other environment variables are left in case users need those configured to fetch.
+    -- See also: https://git-scm.com/book/en/v2/Git-Internals-Environment-Variables#_repository_locations
+    local env = vim
+      .iter(luv.os_environ())
+      :filter(function(key, _value)
+        return key ~= "GIT_DIR"
+          and key ~= "GIT_WORK_TREE"
+          and key ~= "GIT_INDEX_FILE"
+          and key ~= "GIT_OBJECT_DIRECTORY"
+          and key ~= "GIT_ALTERNATE_OBJECT_DIRECTORIES"
+      end)
+      :map(function(key, value)
+        -- libuv expects a list of `<key>=<value>` strings
+        return key .. "=" .. value
+      end)
+      :totable()
+
     return {
       {
         cmd = "git",
@@ -301,6 +323,7 @@ function M.select_download_commands(repo, project_name, cache_folder, revision, 
             "--filter=blob:none",
           },
           cwd = cache_folder,
+          env = env,
         },
       },
       {
@@ -313,6 +336,7 @@ function M.select_download_commands(repo, project_name, cache_folder, revision, 
             revision,
           },
           cwd = git_folder,
+          env = env,
         },
       },
     }
