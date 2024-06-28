@@ -292,6 +292,7 @@
 
 (_
   (line_comment)+ @comment.documentation
+  .
   [
     (function_declaration)
     (type_declaration)
