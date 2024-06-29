@@ -23,14 +23,14 @@ b <- list(name = "r", version = R.version$major)
 #          ^ @variable.parameter
 #                 ^ @string
 #                                        ^ @operator
-#                                           ^ @variable
+#                                           ^ @variable.member
 
 Lang$new(name = "r")$print()
-#     ^ @variable
+#     ^ @function.method.call
 
 for(i in 1:10) {
 # <- @keyword.repeat
-#      ^ @keyword
+#      ^ @keyword.repeat
 }
 
 add <- function(a, b = 1, ...) {
@@ -39,6 +39,7 @@ add <- function(a, b = 1, ...) {
 #                  ^ @variable.parameter
 #                         ^ @constant.builtin
   return(a + b)
+# ^ @keyword.return
 }
 
 base::letters

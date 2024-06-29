@@ -51,6 +51,7 @@
   "$"
   "@"
   ":"
+  "!"
   "special"
 ] @operator
 
@@ -86,6 +87,12 @@
 (call
   function: (identifier) @function.call)
 
+(extract_operator
+  rhs: (identifier) @variable.member)
+
+function: (extract_operator
+  rhs: (identifier) @function.method.call)
+
 ; Parameters
 (parameters
   (parameter
@@ -110,12 +117,7 @@
 (function_definition
   name: "\\" @operator)
 
-[
-  "in"
-  (return)
-  (next)
-  (break)
-] @keyword
+(return) @keyword.return
 
 [
   "if"
@@ -126,6 +128,9 @@
   "while"
   "repeat"
   "for"
+  "in"
+  (break)
+  (next)
 ] @keyword.repeat
 
 [
