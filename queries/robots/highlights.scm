@@ -1,8 +1,6 @@
 (comment) @comment @spell
 
-(directive) @constant
-
-(unknownDirective) @attribute
+(directive) @property
 
 (value) @string
 
