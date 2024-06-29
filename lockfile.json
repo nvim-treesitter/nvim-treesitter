@@ -720,7 +720,7 @@
     "revision": "19b02da829d1721a521bf7b802eb80a50bd53aab"
   },
   "templ": {
-    "revision": "cf84ea53e2e2531f23009d676ac206090c1e2392"
+    "revision": "a4f14aa248b84df73cc1c00bf06edac8d7c96acd"
   },
   "terraform": {
     "revision": "9e3ec9848f28d26845ba300fd73c740459b83e9b"
@@ -840,6 +840,6 @@
     "revision": "6e7c8edfcd6f5f7c12b2fa9ffc6d042f1b6d7068"
   },
   "zig": {
-    "revision": "7c5a29b721d409be8842017351bf007d7e384401"
+    "revision": "2bac4cc6c697d46a193905fef6d003bfa0bfabfd"
   }
 }
