@@ -1689,6 +1689,7 @@ list.r = {
     url = "https://github.com/r-lib/tree-sitter-r",
     files = { "src/parser.c", "src/scanner.c" },
   },
+  maintainers = { "@ribru17" },
 }
 
 list.racket = {
