@@ -1780,6 +1780,14 @@ list.robot = {
   maintainers = { "@Hubro" },
 }
 
+list.robots = {
+  install_info = {
+    url = "https://github.com/opa-oz/tree-sitter-robots-txt",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@opa-oz" },
+}
+
 list.roc = {
   install_info = {
     url = "https://github.com/faldor20/tree-sitter-roc",

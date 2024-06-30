@@ -608,6 +608,9 @@
   "robot": {
     "revision": "322e4cc65754d2b3fdef4f2f8a71e0762e3d13af"
   },
+  "robots": {
+    "revision": "8e3a4205b76236bb6dbebdbee5afc262ce38bb62"
+  },
   "roc": {
     "revision": "6ea64b6434a45472bd87b0772fd84a017de0a557"
   },
