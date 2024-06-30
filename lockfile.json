@@ -309,7 +309,7 @@
     "revision": "ea71012d3fe14dd0b69f36be4f96bdfe9155ebae"
   },
   "http": {
-    "revision": "8d22f33faa5aa95c6526606fb656ada342e59e40"
+    "revision": "2dacda923bafcfeae487e457df0fc1c95f6d1848"
   },
   "hurl": {
     "revision": "ad705af8c44c737bdb965fc081329c50716d2d03"
@@ -426,7 +426,7 @@
     "revision": "7fe453beacecf02c86f7736439f238f5bb8b5c9b"
   },
   "matlab": {
-    "revision": "79d8b25f57b48f83ae1333aff6723b83c9532e37"
+    "revision": "2825fb578325ac308945318881445a89ea06e0f6"
   },
   "menhir": {
     "revision": "be8866a6bcc2b563ab0de895af69daeffa88fe70"
@@ -624,7 +624,7 @@
     "revision": "9c84af007b0f144954adb26b3f336495cbb320a7"
   },
   "scala": {
-    "revision": "5bce09bdd9d3dda5af5f4c67ca5e9bcbc7c44be2"
+    "revision": "de465b0fd6149bf30721ae565689f323c006c676"
   },
   "scfg": {
     "revision": "6deae0cbb458c849a4d1e2985093e9c9c32d7fd0"
