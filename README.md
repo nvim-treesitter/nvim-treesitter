@@ -364,7 +364,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [qmldir](https://github.com/Decodetalkers/tree-sitter-qmldir) (maintained by @amaanq)
 - [x] [qmljs](https://github.com/yuja/tree-sitter-qmljs) (maintained by @Decodetalkers)
 - [x] [Tree-Sitter query language](https://github.com/nvim-treesitter/tree-sitter-query) (maintained by @steelsojka)
-- [ ] [r](https://github.com/r-lib/tree-sitter-r)
+- [x] [r](https://github.com/r-lib/tree-sitter-r) (maintained by @ribru17)
 - [ ] [racket](https://github.com/6cdh/tree-sitter-racket)
 - [x] [ralph](https://github.com/alephium/tree-sitter-ralph) (maintained by @tdroxler)
 - [x] [rasi](https://github.com/Fymyte/tree-sitter-rasi) (maintained by @Fymyte)
