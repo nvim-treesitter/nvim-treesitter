@@ -16,6 +16,7 @@
   (switch_statement)
   (template_substitution)
   (ternary_expression)
+  (glimmer_opening_tag)
 ] @indent.begin
 
 (arguments
@@ -68,6 +69,8 @@
   "}"
   "]"
 ] @indent.end
+
+(glimmer_closing_tag) @indent.end
 
 (template_string) @indent.ignore
 
