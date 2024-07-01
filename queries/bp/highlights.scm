@@ -42,6 +42,7 @@
 [
   (unset)
   (default)
+  (any)
 ] @variable.builtin
 
 (condition
