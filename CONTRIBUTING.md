@@ -22,7 +22,7 @@ every push:
 ```bash
 luarocks install luacheck
 cargo install stylua
-ln -s ../../scripts/pre-push .git/hooks/pre-push
+ln -s scripts/pre-push .git/hooks/pre-push
 ```
 
 ## Adding new modules
