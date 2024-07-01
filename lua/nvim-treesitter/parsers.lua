@@ -962,7 +962,7 @@ list.idl = {
     url = "https://github.com/cathaysia/tree-sitter-idl",
     files = { "src/parser.c" },
   },
-  maintainers = { "@cathaysa" },
+  maintainers = { "@cathaysia" },
 }
 
 list.ini = {
