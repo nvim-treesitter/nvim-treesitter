@@ -1,8 +1,11 @@
 ; inherits: gotmpl
 
+; For the reasoning concerning the priorities, see gotmpl highlights.
+;
 ; Builtin functions
 (function_call
   function: (identifier) @function.builtin
+  (#set! priority 110)
   (#any-of? @function.builtin
     "and" "or" "not" "eq" "ne" "lt" "le" "gt" "ge" "default" "required" "empty" "fail" "coalesce"
     "ternary" "print" "println" "printf" "trim" "trimAll" "trimPrefix" "trimSuffix" "lower" "upper"
@@ -33,6 +36,7 @@
 (selector_expression
   operand: (field
     name: (identifier) @constant.builtin
+    (#set! priority 110)
     (#any-of? @constant.builtin
       "Values" "Chart" "Release" "Capabilities" "Files" "Subcharts" "Template"))
   (field_identifier))
@@ -41,5 +45,6 @@
 (selector_expression
   operand: (variable)
   field: (field_identifier) @constant.builtin
+  (#set! priority 110)
   (#any-of? @constant.builtin
     "Values" "Chart" "Release" "Capabilities" "Files" "Subcharts" "Template"))
