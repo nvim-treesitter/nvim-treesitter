@@ -1,3 +1,5 @@
+(comment) @comment @spell
+
 [
   (addition)
   (new_file)
