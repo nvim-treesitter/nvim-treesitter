@@ -177,6 +177,8 @@ Note: The api is not stable yet.
 INCREMENTAL SELECTION              *nvim-treesitter-incremental-selection-mod*
 
 Incremental selection based on the named nodes from the grammar.
+This supports a count beforehand, e.g. `4grn` to increment to the 4th. 
+upper named parent.
 
 Query files: `locals.scm`.
 Supported options:

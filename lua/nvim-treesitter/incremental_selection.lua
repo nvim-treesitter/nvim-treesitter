@@ -140,7 +140,11 @@ function M.attach(bufnr)
   for funcname, mapping in pairs(config.keymaps) do
     if mapping then
       local mode = funcname == "init_selection" and "n" or "x"
-      local rhs = M[funcname] ---@type function
+      local rhs = function()
+        for _ = 1, math.max(vim.v.count, 1) do
+          M[funcname]()
+        end
+      end
 
       if not rhs then
         utils.notify("Unknown keybinding: " .. funcname .. debug.traceback(), vim.log.levels.ERROR)
