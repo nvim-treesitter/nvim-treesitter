@@ -13,6 +13,7 @@ local non_filetype_match_injection_language_aliases = {
   sh = "bash",
   uxn = "uxntal",
   ts = "typescript",
+  chart = "json",
 }
 
 local function get_parser_from_markdown_info_string(injection_alias)
