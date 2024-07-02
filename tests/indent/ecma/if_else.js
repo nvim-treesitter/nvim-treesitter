@@ -11,3 +11,7 @@ if (cond1) {
 } else {
   do_fallback()
 }
+
+if (true)
+  console.log('hi')
+console.log('hi')
