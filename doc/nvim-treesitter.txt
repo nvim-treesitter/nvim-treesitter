@@ -123,6 +123,18 @@ language and buffer number as arguments:
     },
   }
 <
+Similarly, it can enable the module for specific buffers only by returning
+`false` to enable and `true` to disable the rest:
+>
+  require'nvim-treesitter.configs'.setup {
+    highlight = {
+      enable = true,
+      disable = function(lang) -- Disable all except C++
+        return lang ~= "cpp"
+      end,
+    },
+  }
+<
 
 Options that define or accept a keymap use the same format you use to define
 keymaps in Neovim, so you can write keymaps as  `gd`, `<space>a`, `<leader>a`
