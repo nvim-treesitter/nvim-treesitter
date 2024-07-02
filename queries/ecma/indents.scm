@@ -75,3 +75,7 @@
   (comment)
   (ERROR)
 ] @indent.auto
+
+(if_statement
+  consequence: (_) @_cons
+  (#not-kind-eq? @_cons statement_block)) @indent.begin
