@@ -124,6 +124,7 @@ end
 ---@return string? err
 local function do_download(logger, repo, project_name, cache_dir, revision, project_dir)
   local is_gitlab = repo.url:find('gitlab.com', 1, true)
+  local is_forgejo = repo.url:find('codeberg.org', 1, true)
   local url = repo.url:gsub('.git$', '')
 
   local dir_rev = revision
@@ -186,7 +187,11 @@ local function do_download(logger, repo, project_name, cache_dir, revision, proj
   end
   a.main()
 
-  err = uv_rename(fs.joinpath(temp_dir, url:match('[^/]-$') .. '-' .. dir_rev), project_dir)
+  local repo_dir = url:match('[^/]-$') ---@type string
+  if not is_forgejo then
+    repo_dir = repo_dir .. '-' .. dir_rev
+  end
+  err = uv_rename(fs.joinpath(temp_dir, repo_dir), project_dir)
   a.main()
 
   if err then
