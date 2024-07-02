@@ -530,6 +530,12 @@
   "prisma": {
     "revision": "eca2596a355b1a9952b4f80f8f9caed300a272b5"
   },
+  "problog": {
+    "revision": "d8bc22c007825d3af3d62b4326f9d8f9ca529974"
+  },
+  "prolog": {
+    "revision": "d8bc22c007825d3af3d62b4326f9d8f9ca529974"
+  },
   "promql": {
     "revision": "77625d78eebc3ffc44d114a07b2f348dff3061b0"
   },
