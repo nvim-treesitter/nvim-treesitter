@@ -75,6 +75,8 @@ describe("indent JavaScript:", function()
       { 9, 2 },
       { 12, 2 },
       { 13, 0 },
+      { 16, 0 },
+      { 19, 2 },
     } do
       run:new_line("ecma/if_else.js", { on_line = info[1], text = "hello()", indent = info[2] }, info[3], info[4])
     end
