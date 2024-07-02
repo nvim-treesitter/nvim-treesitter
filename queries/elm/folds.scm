@@ -10,4 +10,5 @@
   (list_expr)
   (record_expr)
   (parenthesized_expr)
+  (import_clause)+
 ] @fold
