@@ -469,6 +469,14 @@ list.ebnf = {
   experimental = true,
 }
 
+list.editorconfig = {
+  install_info = {
+    url = "https://github.com/ValdezFOmar/tree-sitter-editorconfig",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@ValdezFOmar" },
+}
+
 list.eds = {
   install_info = {
     url = "https://github.com/uyha/tree-sitter-eds",
