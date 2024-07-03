@@ -94,6 +94,23 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 ```
 
+You may also want to enable treesitter highlighting for all languages. But removing the `pattern` option or using `pattern = '*'` will cause issues when opening buffers that cannot be parsed by treesitter (such as Telescope windows). To enable highlighting for all languages that nvim-treesitter can parse, you can use the following auto command anywhere **after** nvim-treesitter's `setup` function:
+
+```lua
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(opts)
+    local language = vim.treesitter.language.get_lang(opts.match)
+    if language == nil then
+      return
+    end
+    local parsers = vim.tbl_keys(require("nvim-treesitter.parsers"))
+    if vim.list_contains(parsers, language) then
+      vim.treesitter.start()
+    end
+  end,
+})
+```
+
 ## Folds
 
 Treesitter-based folding is provided by Neovim. To enable it, put the following in your `ftplugin` or `FileType` autocommand:
