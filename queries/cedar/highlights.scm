@@ -65,3 +65,5 @@
 ] @boolean
 
 (comment) @comment @spell
+
+"::" @punctuation.delimiter
