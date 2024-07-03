@@ -1,6 +1,5 @@
 [
   (import_from_statement)
-  (parenthesized_expression)
   (generator_expression)
   (list_comprehension)
   (set_comprehension)
@@ -9,7 +8,6 @@
   (list_pattern)
   (binary_operator)
   (lambda)
-  (concatenated_string)
 ] @indent.begin
 
 ((list) @indent.align
@@ -69,12 +67,14 @@
 
 (if_statement
   condition: (parenthesized_expression) @indent.align
+  (#match? @indent.align "^\\([^\n]")
   (#set! indent.open_delimiter "(")
   (#set! indent.close_delimiter ")")
   (#set! indent.avoid_last_matching_next 1))
 
 (while_statement
   condition: (parenthesized_expression) @indent.align
+  (#match? @indent.align "^\\([^\n]")
   (#set! indent.open_delimiter "(")
   (#set! indent.close_delimiter ")")
   (#set! indent.avoid_last_matching_next 1))
@@ -92,8 +92,7 @@
 
 ((parameters) @indent.align
   (#set! indent.open_delimiter "(")
-  (#set! indent.close_delimiter ")")
-  (#set! indent.avoid_last_matching_next 1))
+  (#set! indent.close_delimiter ")"))
 
 ((tuple) @indent.align
   (#set! indent.open_delimiter "(")
