@@ -4,4 +4,7 @@
 
 (definition) @indent.begin
 
-(predefine) @indent.ignore
+[
+  (preproc_define)
+  (preproc_include)
+] @indent.ignore
