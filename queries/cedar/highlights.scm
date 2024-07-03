@@ -14,12 +14,15 @@
 ; Identifiers
 [
   (entity)
+  (identifier)
+] @variable
+
+[
   (principal)
   (action)
   (resource)
   (context)
-  (identifier)
-] @variable
+] @variable.builtin
 
 (path) @type
 
