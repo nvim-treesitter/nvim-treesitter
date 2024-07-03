@@ -22,6 +22,10 @@
   (#set! indent.open_delimiter "{")
   (#set! indent.close_delimiter "}"))
 
+((parenthesized_expression) @indent.align
+  (#set! indent.open_delimiter "(")
+  (#set! indent.close_delimiter ")"))
+
 ((for_statement) @indent.begin
   (#set! indent.immediate 1))
 
@@ -65,19 +69,47 @@
 ((case_clause) @indent.begin
   (#set! indent.immediate 1))
 
+;; if (cond1
+;;     or cond2
+;;         or cond3):
+;;     pass
+;;
+
 (if_statement
   condition: (parenthesized_expression) @indent.align
-  (#match? @indent.align "^\\([^\n]")
+  (#lua-match? @indent.align "^%([^\n]")
   (#set! indent.open_delimiter "(")
   (#set! indent.close_delimiter ")")
   (#set! indent.avoid_last_matching_next 1))
 
+;; while (
+;;     cond1
+;;     or cond2
+;;         or cond3):
+;;     pass
+;;
+
 (while_statement
   condition: (parenthesized_expression) @indent.align
-  (#match? @indent.align "^\\([^\n]")
+  (#lua-match? @indent.align "[^\n ]%)$")
   (#set! indent.open_delimiter "(")
   (#set! indent.close_delimiter ")")
   (#set! indent.avoid_last_matching_next 1))
+
+;; if (
+;;     cond1
+;;     or cond2
+;;         or cond3):
+;;     pass
+;;
+
+(if_statement
+  condition: (parenthesized_expression) @indent.align
+  (#lua-match? @indent.align "[^\n ]%)$")
+  (#set! indent.open_delimiter "(")
+  (#set! indent.close_delimiter ")")
+  (#set! indent.avoid_last_matching_next 1))
+
 
 (ERROR
   "(" @indent.align
@@ -128,9 +160,6 @@
   ":"
   .
   (#lua-match? @indent.branch "^elif"))
-
-(parenthesized_expression
-  ")" @indent.end)
 
 (generator_expression
   ")" @indent.end)
