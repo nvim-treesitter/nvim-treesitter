@@ -1,4 +1,4 @@
-(turtle_doc) @local.scope
+(document) @local.scope
 
 (subject
   [
