@@ -125,6 +125,8 @@
 
 ((parameters) @indent.align
   (#lua-match? @indent.align "[^\n ]%)$")
+  (#set! indent.open_delimiter "(")
+  (#set! indent.close_delimiter ")")
   (#set! indent.avoid_last_matching_next 1))
 
 ((tuple) @indent.align
