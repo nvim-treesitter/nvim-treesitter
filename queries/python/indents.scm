@@ -8,6 +8,7 @@
   (list_pattern)
   (binary_operator)
   (lambda)
+  (concatenated_string)
 ] @indent.begin
 
 ((list) @indent.align
@@ -125,6 +126,10 @@
 ((parameters) @indent.align
   (#set! indent.open_delimiter "(")
   (#set! indent.close_delimiter ")"))
+
+((parameters) @indent.align
+  (#lua-match? @indent.align "[^\n ]%)$")
+  (#set! indent.avoid_last_matching_next 1))
 
 ((tuple) @indent.align
   (#set! indent.open_delimiter "(")
