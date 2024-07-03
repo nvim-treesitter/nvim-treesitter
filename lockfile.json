@@ -59,6 +59,9 @@
   "cairo": {
     "revision": "6238f609bea233040fe927858156dee5515a0745"
   },
+  "cedar": {
+    "revision": "3b0b9ed16afc64d3ae9ac955294182d85ddee0d1"
+  },
   "capnp": {
     "revision": "7b0883c03e5edd34ef7bcf703194204299d7099f"
   },

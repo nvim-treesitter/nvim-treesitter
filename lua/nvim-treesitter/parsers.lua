@@ -251,6 +251,14 @@ list.capnp = {
   maintainers = { "@amaanq" },
 }
 
+list.cedar = {
+  install_info = {
+    url = "https://github.com/chrnorm/tree-sitter-cedar",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@chrnorm" },
+}
+
 list.chatito = {
   install_info = {
     url = "https://github.com/ObserverOfTime/tree-sitter-chatito",

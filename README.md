@@ -194,6 +194,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [c_sharp](https://github.com/tree-sitter/tree-sitter-c-sharp) (maintained by @amaanq)
 - [x] [cairo](https://github.com/amaanq/tree-sitter-cairo) (maintained by @amaanq)
 - [x] [capnp](https://github.com/amaanq/tree-sitter-capnp) (maintained by @amaanq)
+- [x] [cedar](https://github.com/chrnorm/tree-sitter-cedar) (maintained by @chrnorm)
 - [x] [chatito](https://github.com/ObserverOfTime/tree-sitter-chatito) (maintained by @ObserverOfTime)
 - [x] [clojure](https://github.com/sogaiu/tree-sitter-clojure) (maintained by @NoahTheDuke)
 - [x] [cmake](https://github.com/uyha/tree-sitter-cmake) (maintained by @uyha)
