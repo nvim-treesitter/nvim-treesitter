@@ -1567,7 +1567,7 @@ list.prisma = {
 
 list.problog = {
   install_info = {
-    url = "https://codeberg.org/foxy/tree-sitter-prolog",
+    url = "https://github.com/foxyseta/tree-sitter-prolog",
     files = { "src/parser.c" },
     location = "grammars/problog",
   },
@@ -1576,7 +1576,7 @@ list.problog = {
 
 list.prolog = {
   install_info = {
-    url = "https://codeberg.org/foxy/tree-sitter-prolog",
+    url = "https://github.com/foxyseta/tree-sitter-prolog",
     files = { "src/parser.c" },
     location = "grammars/prolog",
   },
