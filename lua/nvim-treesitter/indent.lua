@@ -17,12 +17,19 @@ local function getline(lnum)
   return vim.api.nvim_buf_get_lines(0, lnum - 1, lnum, false)[1] or ""
 end
 
+---@param lnum integer
+---@return integer
+local function get_indentcols_at_line(lnum)
+  local _, indentcols = getline(lnum):find "^%s*"
+  return indentcols or 0
+end
+
 ---@param root TSNode
 ---@param lnum integer
 ---@param col? integer
 ---@return TSNode
 local function get_first_node_at_line(root, lnum, col)
-  col = col or vim.fn.indent(lnum)
+  col = col or get_indentcols_at_line(lnum)
   return root:descendant_for_range(lnum - 1, col, lnum - 1, col + 1)
 end
 
@@ -152,20 +159,20 @@ function M.get_indent(lnum)
   local node ---@type TSNode
   if is_empty_line then
     local prevlnum = vim.fn.prevnonblank(lnum)
-    local indent = vim.fn.indent(prevlnum)
+    local indentcols = get_indentcols_at_line(prevlnum)
     local prevline = vim.trim(getline(prevlnum))
     -- The final position can be trailing spaces, which should not affect indentation
-    node = get_last_node_at_line(root, prevlnum, indent + #prevline - 1)
+    node = get_last_node_at_line(root, prevlnum, indentcols + #prevline - 1)
     if node:type():match "comment" then
       -- The final node we capture of the previous line can be a comment node, which should also be ignored
       -- Unless the last line is an entire line of comment, ignore the comment range and find the last node again
-      local first_node = get_first_node_at_line(root, prevlnum, indent)
+      local first_node = get_first_node_at_line(root, prevlnum, indentcols)
       local _, scol, _, _ = node:range()
       if first_node:id() ~= node:id() then
         -- In case the last captured node is a trailing comment node, re-trim the string
-        prevline = vim.trim(prevline:sub(1, scol - indent))
+        prevline = vim.trim(prevline:sub(1, scol - indentcols))
         -- Add back indent as indent of prevline was trimmed away
-        local col = indent + #prevline - 1
+        local col = indentcols + #prevline - 1
         node = get_last_node_at_line(root, prevlnum, col)
       end
     end
