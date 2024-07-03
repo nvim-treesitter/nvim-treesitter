@@ -70,12 +70,11 @@
 ((case_clause) @indent.begin
   (#set! indent.immediate 1))
 
-;; if (cond1
-;;     or cond2
-;;         or cond3):
-;;     pass
-;;
-
+; if (cond1
+;     or cond2
+;         or cond3):
+;     pass
+;
 (if_statement
   condition: (parenthesized_expression) @indent.align
   (#lua-match? @indent.align "^%([^\n]")
@@ -83,13 +82,12 @@
   (#set! indent.close_delimiter ")")
   (#set! indent.avoid_last_matching_next 1))
 
-;; while (
-;;     cond1
-;;     or cond2
-;;         or cond3):
-;;     pass
-;;
-
+; while (
+;     cond1
+;     or cond2
+;         or cond3):
+;     pass
+;
 (while_statement
   condition: (parenthesized_expression) @indent.align
   (#lua-match? @indent.align "[^\n ]%)$")
@@ -97,20 +95,18 @@
   (#set! indent.close_delimiter ")")
   (#set! indent.avoid_last_matching_next 1))
 
-;; if (
-;;     cond1
-;;     or cond2
-;;         or cond3):
-;;     pass
-;;
-
+; if (
+;     cond1
+;     or cond2
+;         or cond3):
+;     pass
+;
 (if_statement
   condition: (parenthesized_expression) @indent.align
   (#lua-match? @indent.align "[^\n ]%)$")
   (#set! indent.open_delimiter "(")
   (#set! indent.close_delimiter ")")
   (#set! indent.avoid_last_matching_next 1))
-
 
 (ERROR
   "(" @indent.align
