@@ -318,7 +318,7 @@
     "revision": "6858695eba0e63b9e0fceef081d291eb352abce8"
   },
   "idl": {
-    "revision": "1121e5cf044ecab7202695174c74cfa89a18b6a0"
+    "revision": "dd5ce556451e51d6f67a8f53f103193e39ee49aa"
   },
   "ini": {
     "revision": "87176e524f0a98f5be75fa44f4f0ff5c6eac069c"
@@ -591,7 +591,7 @@
     "revision": "6c9bbcfdf5f0f553d9ebc01750a3aa247a37b8aa"
   },
   "rbs": {
-    "revision": "88d8ed487b5449ddda2fc0c4fe23b71cba29ca24"
+    "revision": "8d8e65ac3f77fbc9e15b1cdb9f980a3e0ac3ab99"
   },
   "re2c": {
     "revision": "47aa19cf5f7aba2ed30e2b377f7172df76e819a6"
@@ -795,7 +795,7 @@
     "revision": "ad9b638b914095320de85d59c49ab271603af048"
   },
   "v": {
-    "revision": "e91f8a42de7842f24f4ce600754f2b6651985fd4"
+    "revision": "7f80a0441ff2ca6aa8ced8e1ee87cead9dd26515"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
