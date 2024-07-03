@@ -50,6 +50,27 @@
 ] @keyword.modifier
 
 [
+  "SEQUENTIAL"
+  "HASH"
+  "FINAL"
+  "APPENDABLE"
+  "MUTABLE"
+  "c"
+  "c++"
+  "java"
+  "idl"
+  "*"
+  "BEGIN_FILE"
+  "BEFORE_DECLARATION"
+  "BEGIN_DECLARATION"
+  "END_DECLARATION"
+  "AFTER_DECLARATION"
+  "END_FILE"
+  "CORBA"
+  "DDS"
+] @constant
+
+[
   "switch"
   "case"
   "default"
@@ -132,11 +153,43 @@
 (annotation_appl
   "@" @attribute)
 
-(annotation_appl
+(annotation_appl_custom_body
   (scoped_name) @attribute)
 
-(annotation_appl
-  (annotation_built_name) @attribute.builtin)
+(annotation_appl_builtin_body
+  (_
+    [
+      "id"
+      "autoid"
+      "optional"
+      "position"
+      "value"
+      "extensibility"
+      "final"
+      "appendable"
+      "mutable"
+      "key"
+      "must_understand"
+      "default_literal"
+      "default"
+      "range"
+      "min"
+      "max"
+      "unit"
+      "bit_bound"
+      "external"
+      "nested"
+      "verbatim"
+      "service"
+      "oneway"
+      "ami"
+    ] @attribute.builtin))
+
+(min_expr
+  "min" @attribute.builtin)
+
+(max_expr
+  "max" @attribute.builtin)
 
 (op_dcl
   (identifier) @function.method)
@@ -339,3 +392,11 @@
 
 (element_spec
   (declarator) @variable.member)
+
+(preproc_include
+  (keyword_include) @type
+  path: (_) @string)
+
+(system_lib_string
+  "<" @string
+  ">" @string)
