@@ -8,6 +8,9 @@
   "containsAll"
 ] @function
 
+; Annotations
+(annotation) @attribute
+
 ; Identifiers
 [
   (entity)
@@ -16,7 +19,6 @@
   (resource)
   (context)
   (identifier)
-  (annotation)
 ] @variable
 
 (path) @type
