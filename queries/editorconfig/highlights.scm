@@ -20,13 +20,13 @@
 
 [
   ","
+  ".."
   (path_separator)
 ] @punctuation.delimiter
 
 [
   "-"
   "="
-  ".."
   (negation)
 ] @operator
 
@@ -39,7 +39,8 @@
 (escaped_character) @string.escape
 
 (pair
-  key: (identifier) @property)
+  key: (identifier) @property
+  value: (_) @string)
 
 (boolean) @boolean
 
