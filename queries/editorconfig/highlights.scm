@@ -28,10 +28,13 @@
   "="
   ".."
   (negation)
+] @operator
+
+[
   (wildcard_characters)
   (wildcard_any_characters)
   (wildcard_single_character)
-] @operator
+] @character.special
 
 (escaped_character) @string.escape
 
@@ -42,10 +45,11 @@
 
 (integer) @number
 
+(unset) @constant.builtin
+
 [
-  (unset)
   (spelling_language)
   (indent_style)
   (end_of_line)
   (charset)
-] @constant.builtin
+] @string.special
