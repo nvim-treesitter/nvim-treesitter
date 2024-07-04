@@ -140,6 +140,9 @@
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
   },
+  "editorconfig": {
+    "revision": "aec8400b9554eae784125054ac4af7b767804844"
+  },
   "eds": {
     "revision": "0ad62cb635c2f4353359a88dec9e3a57bbf9f66d"
   },
