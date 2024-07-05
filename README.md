@@ -105,8 +105,8 @@ All modules are disabled by default and need to be activated explicitly in your 
 
 ```lua
 require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
+  -- A list of parser names, or "all" (the listed parsers MUST always be installed)
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -635,18 +635,18 @@ like the `queries` folder of this plugin, e.g. `queries/{language}/{locals,highl
 Other modules may require additional queries such as `folding.scm`. You can find a
 list of all supported capture names in [CONTRIBUTING.md](https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md#parser-configurations).
 
-All queries found in the runtime directories will be combined.
-By convention, if you want to write a query, use the `queries/` directory,
-but if you want to extend a query use the `after/queries/` directory.
+The first query file on `runtimepath` will be used (see `:h treesitter-query`).
+If you want to make a query on the user config extend other queries instead of
+replacing them, see `:h treesitter-query-modeline-extends`.
 
-If you want to completely override a query, you can use `:h set_query()`.
+If you want to completely override a query, you can use `:h vim.treesitter.query.set()`.
 For example, to override the `injections` queries from `c` with your own:
 
 ```lua
-require("vim.treesitter.query").set_query("c", "injections", "(comment) @comment")
+vim.treesitter.query.set("c", "injections", "(comment) @comment")
 ```
 
-Note: when using `set_query`, all queries in the runtime directories will be ignored.
+Note: when using `query.set()`, all queries in the runtime directories will be ignored.
 
 ## Adding modules
 
