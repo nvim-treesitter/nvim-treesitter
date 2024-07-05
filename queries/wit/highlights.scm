@@ -67,8 +67,8 @@
 (enum_items
   name: (id) @type)
 
-(enum_body
-  enum_cases: (id) @constant)
+(enum_case
+  name: (id) @constant)
 
 (resource_item
   name: (id) @type)
