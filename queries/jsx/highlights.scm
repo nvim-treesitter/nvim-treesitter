@@ -65,3 +65,87 @@
 (jsx_text) @none @spell
 
 (html_character_reference) @character.special
+
+((jsx_element
+  (jsx_opening_element
+    name: (identifier) @_tag)
+  (jsx_text) @markup.heading)
+  (#eq? @_tag "title"))
+
+((jsx_element
+  (jsx_opening_element
+    name: (identifier) @_tag)
+  (jsx_text) @markup.heading.1)
+  (#eq? @_tag "h1"))
+
+((jsx_element
+  (jsx_opening_element
+    name: (identifier) @_tag)
+  (jsx_text) @markup.heading.2)
+  (#eq? @_tag "h2"))
+
+((jsx_element
+  (jsx_opening_element
+    name: (identifier) @_tag)
+  (jsx_text) @markup.heading.3)
+  (#eq? @_tag "h3"))
+
+((jsx_element
+  (jsx_opening_element
+    name: (identifier) @_tag)
+  (jsx_text) @markup.heading.4)
+  (#eq? @_tag "h4"))
+
+((jsx_element
+  (jsx_opening_element
+    name: (identifier) @_tag)
+  (jsx_text) @markup.heading.5)
+  (#eq? @_tag "h5"))
+
+((jsx_element
+  (jsx_opening_element
+    name: (identifier) @_tag)
+  (jsx_text) @markup.heading.6)
+  (#eq? @_tag "h6"))
+
+((jsx_element
+  (jsx_opening_element
+    name: (identifier) @_tag)
+  (jsx_text) @markup.strong)
+  (#any-of? @_tag "strong" "b"))
+
+((jsx_element
+  (jsx_opening_element
+    name: (identifier) @_tag)
+  (jsx_text) @markup.italic)
+  (#any-of? @_tag "em" "i"))
+
+((jsx_element
+  (jsx_opening_element
+    name: (identifier) @_tag)
+  (jsx_text) @markup.strikethrough)
+  (#any-of? @_tag "s" "del"))
+
+((jsx_element
+  (jsx_opening_element
+    name: (identifier) @_tag)
+  (jsx_text) @markup.underline)
+  (#eq? @_tag "u"))
+
+((jsx_element
+  (jsx_opening_element
+    name: (identifier) @_tag)
+  (jsx_text) @markup.raw)
+  (#any-of? @_tag "code" "kbd"))
+
+((jsx_element
+  (jsx_opening_element
+    name: (identifier) @_tag)
+  (jsx_text) @markup.link.label)
+  (#eq? @_tag "a"))
+
+((jsx_attribute
+  (property_identifier) @_attr
+  (string
+    (string_fragment) @string.special.url))
+  (#any-of? @_attr "href" "src"))
