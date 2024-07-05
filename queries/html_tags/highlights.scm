@@ -86,7 +86,7 @@
 ((element
   (start_tag
     (tag_name) @_tag)
-  (text) @string.special.url)
+  (text) @markup.link.label)
   (#eq? @_tag "a"))
 
 ((attribute
