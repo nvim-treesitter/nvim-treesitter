@@ -221,10 +221,26 @@
     (name) @type
     (qualified_name
       (name) @type)
+    alias: (name) @type.definition
   ])
 
-(namespace_aliasing_clause
-  (name) @type.definition)
+(namespace_use_clause
+  type: "function"
+  [
+    (name) @function
+    (qualified_name
+      (name) @function)
+    alias: (name) @function
+  ])
+
+(namespace_use_clause
+  type: "const"
+  [
+    (name) @constant
+    (qualified_name
+      (name) @constant)
+    alias: (name) @constant
+  ])
 
 (class_interface_clause
   [
@@ -369,9 +385,8 @@
   name: (namespace_name
     (name) @module))
 
-(namespace_name_as_prefix
-  (namespace_name
-    (name) @module))
+(namespace_name
+  (name) @module)
 
 ; Attributes
 (attribute_list) @attribute
