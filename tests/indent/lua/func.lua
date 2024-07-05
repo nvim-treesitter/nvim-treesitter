@@ -7,3 +7,5 @@ function foo(x)
     1,
     2)
 end
+
+function hi()
