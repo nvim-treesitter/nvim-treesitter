@@ -49,3 +49,11 @@ function prepare_list_fetcher(filter) {
     { key: ['/list', filter] }
   )
 }
+
+console.log({
+  key: 'value',
+}, {
+  key: 'value',
+},
+  hi
+);

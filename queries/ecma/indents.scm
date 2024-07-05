@@ -6,7 +6,6 @@
   (export_clause)
   (formal_parameters)
   (named_imports)
-  (object)
   (object_pattern)
   (parenthesized_expression)
   (return_statement)
@@ -17,6 +16,9 @@
   (template_substitution)
   (ternary_expression)
 ] @indent.begin
+
+((object) @indent.begin
+  (#not-has-parent? @indent.begin arguments))
 
 (arguments
   (call_expression) @indent.begin)
