@@ -141,7 +141,7 @@
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
   },
   "editorconfig": {
-    "revision": "aec8400b9554eae784125054ac4af7b767804844"
+    "revision": "a1f293faf993209cbbc324c4d73cd907a6aee205"
   },
   "eds": {
     "revision": "0ad62cb635c2f4353359a88dec9e3a57bbf9f66d"
@@ -339,7 +339,7 @@
     "revision": "953abfc8bb3eb2f578e1f461edba4a9885f974b8"
   },
   "javascript": {
-    "revision": "391a8fcc48a11f63bf18ec9885f6f069e760949a"
+    "revision": "12e45374422f6051648717be62f0ffc40a279ee2"
   },
   "jq": {
     "revision": "13990f530e8e6709b7978503da9bc8701d366791"
@@ -831,7 +831,7 @@
     "revision": "bd1d35cf3e013dc7e189b46a593bdc2b281b0dd7"
   },
   "wit": {
-    "revision": "cab94791450524a542324d8cbe8017d69c516d8e"
+    "revision": "7351db0da11900e7f0c754b3483d39fc6a9d53e8"
   },
   "xcompose": {
     "revision": "fff3e72242aa110ebba6441946ea4d12d200fa68"
