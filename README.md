@@ -254,6 +254,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [GN (Generate Ninja)](https://github.com/amaanq/tree-sitter-gn) (maintained by @amaanq)
 - [x] [gnuplot](https://github.com/dpezto/tree-sitter-gnuplot) (maintained by @dpezto)
 - [x] [go](https://github.com/tree-sitter/tree-sitter-go) (maintained by @theHamsta, @WinWisely268)
+- [x] [goctl](https://github.com/chaozwn/tree-sitter-goctl) (maintained by @chaozwn)
 - [x] [Godot Resources (gdresource)](https://github.com/PrestonKnopp/tree-sitter-godot-resource) (maintained by @pierpo)
 - [x] [gomod](https://github.com/camdencheek/tree-sitter-go-mod) (maintained by @camdencheek)
 - [x] [gosum](https://github.com/amaanq/tree-sitter-go-sum) (maintained by @amaanq)
