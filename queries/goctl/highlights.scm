@@ -34,23 +34,23 @@
 
 ; Field
 (fieldType) @type.builtin
-(fieldName) @field
+(fieldName) @variable
 
 ; Functions
-(serviceHandlerNew) @namespace
-(handlerValue) @method
+(serviceHandlerNew) @keyword.directive
+(handlerValue) @function.method
 
 ; Strings
 (VALUE) @string
-(tag) @string
-(PATH) @string
+(tag) @string.documentation
+(PATH) @string.special.path
 
 ; Comments
 (comment) @comment @spell
 
 
 (key) @string
-(identValue) @parameter
+(identValue) @string
 (DURATION) @number
 (NUMBER) @number
 
