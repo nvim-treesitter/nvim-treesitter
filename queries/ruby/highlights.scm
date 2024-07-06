@@ -124,8 +124,8 @@
   (#any-of? @constant.builtin
     "__callee__" "__dir__" "__id__" "__method__" "__send__" "__ENCODING__" "__FILE__" "__LINE__"))
 
-((identifier) @keyword.function
-  (#any-of? @keyword.function
+((identifier) @function.builtin
+  (#any-of? @function.builtin
     "include" "extend" "prepend" "attr_reader" "attr_writer" "attr_accessor" "module_function"
     "refine" "using"))
 
