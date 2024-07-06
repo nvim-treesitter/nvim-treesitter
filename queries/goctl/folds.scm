@@ -15,8 +15,7 @@
 
 ; Fold service info struct
 [
- (serviceServerSpec)
- (infoStatement)
- (structType)
+  (serviceServerSpec)
+  (infoStatement)
+  (structType)
 ] @fold
-
