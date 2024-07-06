@@ -26,24 +26,27 @@
 
 "returns" @keyword.return
 
-"type" @keyword.type
+[
+  "type"
+  "struct"
+] @keyword.type
 
 [
   "@doc"
   "@handler"
   "@server"
-] @keyword.directive
+] @attribute
 
 ; Service
 (serviceName) @type
 
 ; Httpmethod
-(HTTPMETHOD) @operator
+(HTTPMETHOD) @keyword.operator
 
 ; Field
 (fieldType) @type.builtin
 
-(fieldName) @variable
+(fieldName) @variable.member
 
 ; Functions
 (handlerValue) @function.method
@@ -58,7 +61,7 @@
 ; Comments
 (comment) @comment @spell
 
-(key) @string
+(key) @variable.member
 
 (identValue) @string
 

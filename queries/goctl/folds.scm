@@ -1,4 +1,3 @@
-; Fold rules for goctl
 ; Fold types
 (typeGroupSpec) @fold
 
@@ -12,15 +11,12 @@
 (serviceBody) @fold
 
 ; Fold import groups
-(importGroup) @fold
+(importStatement) @fold
 
-(importSpec) @fold
+; Fold service info struct
+[
+ (serviceServerSpec)
+ (infoStatement)
+ (structType)
+] @fold
 
-; Fold info
-(infoStatement) @fold
-
-; Fold server
-(serviceServerSpec) @fold
-
-; Fold struct
-(structType) @fold
