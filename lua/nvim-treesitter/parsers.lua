@@ -47,7 +47,6 @@ for ft, lang in pairs {
   mysql = "sql",
   sbt = "scala",
   neomuttrc = "muttrc",
-  api = "goctl",
 } do
   register_lang(lang, ft)
 end
@@ -650,7 +649,6 @@ list.goctl = {
     url = "https://github.com/chaozwn/tree-sitter-goctl.git",
     files = { "src/parser.c" },
   },
-  filetype = "api",
   maintainers = { "@chaozwn" },
 }
 

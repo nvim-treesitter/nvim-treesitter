@@ -1,3 +1,24 @@
+; Key Symbol
+"." @punctuation.delimiter
+
+"," @punctuation.delimiter
+
+":" @punctuation.delimiter
+
+";" @punctuation.delimiter
+
+"(" @punctuation.bracket
+
+")" @punctuation.bracket
+
+"{" @punctuation.bracket
+
+"}" @punctuation.bracket
+
+"[" @punctuation.bracket
+
+"]" @punctuation.bracket
+
 ; Keywords
 [
   "syntax"
@@ -29,27 +50,8 @@
 (PATH) @string
 
 ; Comments
-(comment) @comment
+(comment) @comment @spell
 
-"." @punctuation.delimiter
-
-"," @punctuation.delimiter
-
-":" @punctuation.delimiter
-
-";" @punctuation.delimiter
-
-"(" @punctuation.bracket
-
-")" @punctuation.bracket
-
-"{" @punctuation.bracket
-
-"}" @punctuation.bracket
-
-"[" @punctuation.bracket
-
-"]" @punctuation.bracket
 
 (key) @string
 (identValue) @parameter
