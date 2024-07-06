@@ -18,16 +18,24 @@
 ; Keywords
 [
   "syntax"
-  "import"
   "info"
-  "type"
-  "@server"
   "service"
-  "returns"
 ] @keyword
 
+"import" @keyword.import
+
+"returns" @keyword.return
+
+"type" @keyword.type
+
+[
+  "@doc"
+  "@handler"
+  "@server"
+] @keyword.directive
+
 ; Service
-(serviceName) @type.definition
+(serviceName) @type
 
 ; Httpmethod
 (HTTPMETHOD) @operator
@@ -38,8 +46,6 @@
 (fieldName) @variable
 
 ; Functions
-(serviceHandlerNew) @keyword.directive
-
 (handlerValue) @function.method
 
 ; Strings
@@ -61,6 +67,6 @@
 (NUMBER) @number
 
 ; Struct
-(structNameId) @type.definition
+(structNameId) @type
 
-(body) @type.definition
+(body) @type
