@@ -644,14 +644,6 @@ list.fusion = {
   maintainers = { "@jirgn" },
 }
 
-list.goctl = {
-  install_info = {
-    url = "https://github.com/chaozwn/tree-sitter-goctl.git",
-    files = { "src/parser.c" },
-  },
-  maintainers = { "@chaozwn" },
-}
-
 list.gdscript = {
   install_info = {
     url = "https://github.com/PrestonKnopp/tree-sitter-gdscript",
@@ -763,6 +755,14 @@ list.go = {
     files = { "src/parser.c" },
   },
   maintainers = { "@theHamsta", "@WinWisely268" },
+}
+
+list.goctl = {
+  install_info = {
+    url = "https://github.com/chaozwn/tree-sitter-goctl.git",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@chaozwn" },
 }
 
 list.godot_resource = {
