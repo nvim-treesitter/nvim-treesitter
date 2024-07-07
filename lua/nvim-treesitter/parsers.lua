@@ -203,7 +203,7 @@ list.bitbake = {
 
 list.blueprint = {
   install_info = {
-    url = "https://gitlab.com/gabmus/tree-sitter-blueprint.git",
+    url = "https://gitlab.com/gabmus/tree-sitter-blueprint",
     files = { "src/parser.c" },
   },
   maintainers = { "@gabmus" },
@@ -638,7 +638,7 @@ list.func = {
 
 list.fusion = {
   install_info = {
-    url = "https://gitlab.com/jirgn/tree-sitter-fusion.git",
+    url = "https://gitlab.com/jirgn/tree-sitter-fusion",
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@jirgn" },
@@ -759,7 +759,7 @@ list.go = {
 
 list.goctl = {
   install_info = {
-    url = "https://github.com/chaozwn/tree-sitter-goctl.git",
+    url = "https://github.com/chaozwn/tree-sitter-goctl",
     files = { "src/parser.c" },
   },
   maintainers = { "@chaozwn" },
@@ -1066,7 +1066,7 @@ list.json5 = {
 
 list.jsonc = {
   install_info = {
-    url = "https://gitlab.com/WhyNotHugo/tree-sitter-jsonc.git",
+    url = "https://gitlab.com/WhyNotHugo/tree-sitter-jsonc",
     files = { "src/parser.c" },
     generate_requires_npm = true,
   },
@@ -1461,7 +1461,7 @@ list.org = {
 
 list.pascal = {
   install_info = {
-    url = "https://github.com/Isopod/tree-sitter-pascal.git",
+    url = "https://github.com/Isopod/tree-sitter-pascal",
     files = { "src/parser.c" },
   },
   maintainers = { "@Isopod" },
@@ -2092,7 +2092,7 @@ list.systemverilog = {
 
 list.t32 = {
   install_info = {
-    url = "https://gitlab.com/xasc/tree-sitter-t32.git",
+    url = "https://gitlab.com/xasc/tree-sitter-t32",
     files = { "src/parser.c", "src/scanner.c" },
   },
   filetype = "trace32",
@@ -2185,7 +2185,7 @@ list.tmux = {
 
 list.todotxt = {
   install_info = {
-    url = "https://github.com/arnarg/tree-sitter-todotxt.git",
+    url = "https://github.com/arnarg/tree-sitter-todotxt",
     files = { "src/parser.c" },
   },
   maintainers = { "@arnarg" },
