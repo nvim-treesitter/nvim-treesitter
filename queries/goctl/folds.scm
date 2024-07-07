@@ -1,16 +1,10 @@
-(typeGroupSpec) @fold
-
-(typeSingleSpec) @fold
-
-(typeStruct) @fold
-
-(serviceSpec) @fold
-
-(serviceBody) @fold
-
-(importStatement) @fold
-
 [
+  (typeGroupSpec)
+  (typeSingleSpec)
+  (typeStruct)
+  (serviceSpec)
+  (serviceBody)
+  (importStatement)
   (serviceServerSpec)
   (infoStatement)
   (structType)
