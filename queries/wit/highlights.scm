@@ -4,7 +4,7 @@
   (id)) @type
 
 (package_decl
-  (id)) @module
+  (id) @module)
 
 (valid_semver) @string.special
 
@@ -38,7 +38,7 @@
   alias: (id) @type.definition)
 
 (func_item
-  name: (id) @function)
+  name: (id) @function.method)
 
 (handle
   (id) @type)
@@ -62,7 +62,7 @@
   name: (id) @type)
 
 (variant_case
-  name: (id) @type)
+  name: (id) @constant)
 
 (enum_items
   name: (id) @type)
@@ -74,15 +74,24 @@
   name: (id) @type)
 
 (resource_method
+  (id) @function.method)
+
+(resource_method
   "constructor" @constructor)
 
 (toplevel_use_item
   "use" @keyword.import)
 
+(toplevel_use_item
+  alias: (id) @module)
+
 (use_item
   "use" @keyword.import)
 
 (use_path
+  (id) @module)
+
+(use_names_item
   (id) @module)
 
 "func" @keyword.function
@@ -105,6 +114,7 @@
   "include"
   "import"
   "export"
+  "as"
 ] @keyword.import
 
 [
@@ -118,6 +128,8 @@
   "s64"
   "f32"
   "f64"
+  "float32" ; deprecated
+  "float64" ; deprecated
   "char"
   "bool"
   "string"
@@ -130,7 +142,7 @@
 
 [
   "@"
-  "->"
+  "_"
 ] @punctuation.special
 
 [
@@ -138,6 +150,8 @@
   ";"
   ":"
   ","
+  "."
+  "->"
 ] @punctuation.delimiter
 
 [
