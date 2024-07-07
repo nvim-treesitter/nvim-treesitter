@@ -1335,6 +1335,14 @@ list.nasm = {
   maintainers = { "@ObserverOfTime" },
 }
 
+list.nginx = {
+  install_info = {
+    url = "https://github.com/opa-oz/tree-sitter-nginx",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@opa-oz" },
+}
+
 list.nickel = {
   install_info = {
     url = "https://github.com/nickel-lang/tree-sitter-nickel",
@@ -1372,14 +1380,6 @@ list.nix = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@leo60228" },
-}
-
-list.nginx = {
-  install_info = {
-    url = "https://github.com/opa-oz/tree-sitter-nginx",
-    files = { "src/parser.c", "src/scanner.c" },
-  },
-  maintainers = { "@opa-oz" },
 }
 
 list.norg = {

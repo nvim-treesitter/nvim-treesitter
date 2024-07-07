@@ -2,8 +2,8 @@
 
 (value) @variable
 
-(attribute 
-  (keyword) @attribute) 
+(attribute
+  (keyword) @attribute)
 
 [
   (location_modifier)
@@ -19,9 +19,6 @@
   "if"
   "map"
 ] @keyword.conditional
-
-(directive 
-  (keyword) @constant) 
 
 (boolean) @boolean
 
@@ -40,11 +37,11 @@
   (mask)
 ] @string
 
-(directive 
+(directive
   (variable) @variable.parameter)
 
-(directive 
-  (variable 
+(directive
+  (variable
     (keyword) @variable.parameter))
 
 (location_route) @string.special
