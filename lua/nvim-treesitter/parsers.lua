@@ -1374,6 +1374,14 @@ list.nix = {
   maintainers = { "@leo60228" },
 }
 
+list.nginx = {
+  install_info = {
+    url = "https://github.com/opa-oz/tree-sitter-nginx",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@opa-oz" },
+}
+
 list.norg = {
   install_info = {
     url = "https://github.com/nvim-neorg/tree-sitter-norg",
