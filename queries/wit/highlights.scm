@@ -145,6 +145,8 @@
   "}"
   "("
   ")"
+  ">"
+  "<"
 ] @punctuation.bracket
 
 "=" @operator
