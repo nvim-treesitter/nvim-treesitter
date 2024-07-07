@@ -757,6 +757,14 @@ list.go = {
   maintainers = { "@theHamsta", "@WinWisely268" },
 }
 
+list.goctl = {
+  install_info = {
+    url = "https://github.com/chaozwn/tree-sitter-goctl.git",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@chaozwn" },
+}
+
 list.godot_resource = {
   install_info = {
     url = "https://github.com/PrestonKnopp/tree-sitter-godot-resource",
