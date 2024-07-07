@@ -1,4 +1,6 @@
 ; Key Symbol
+"=" @operator
+
 [
   "."
   ","
@@ -47,6 +49,8 @@
 (fieldType) @type.builtin
 
 (fieldName) @variable.member
+
+(anonymousField) @variable.member
 
 ; Functions
 (handlerValue) @function.method
