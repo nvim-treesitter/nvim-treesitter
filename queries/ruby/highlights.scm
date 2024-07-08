@@ -275,6 +275,7 @@
   ","
   ";"
   "."
+  "&."
 ] @punctuation.delimiter
 
 [
