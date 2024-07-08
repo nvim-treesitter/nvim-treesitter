@@ -2,9 +2,6 @@
 
 (value) @variable
 
-(attribute
-  (keyword) @attribute)
-
 [
   (location_modifier)
   "="
@@ -28,7 +25,7 @@
   (level)
   (connection_method)
   (var)
-  condition: (condition)
+  (condition)
 ] @variable.builtin
 
 [
@@ -40,9 +37,6 @@
   (string_literal)
   (quoted_string_literal)
 ] @string
-
-(directive
-  (variable) @variable.parameter)
 
 (directive
   (variable
