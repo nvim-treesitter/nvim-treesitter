@@ -141,7 +141,7 @@
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
   },
   "editorconfig": {
-    "revision": "a1f293faf993209cbbc324c4d73cd907a6aee205"
+    "revision": "c5f83685a64117872ae750ce14333a7a1dddcf0b"
   },
   "eds": {
     "revision": "0ad62cb635c2f4353359a88dec9e3a57bbf9f66d"
@@ -192,7 +192,7 @@
     "revision": "90189238385cf636b9ee99ce548b9e5b5e569d48"
   },
   "fortran": {
-    "revision": "f73d473e3530862dee7cbb38520f28824e7804f6"
+    "revision": "dde9829554b831cf6cbf927294f22dfb9a8f0419"
   },
   "fsh": {
     "revision": "fad2e175099a45efbc98f000cc196d3674cc45e0"
@@ -276,7 +276,7 @@
     "revision": "fca1e294f6dce8ec5659233a6a21f5bd0ed5b4f2"
   },
   "hare": {
-    "revision": "070524937539eb8bb4f10debd9c83b66c434f3a2"
+    "revision": "4af5d82cf9ec39f67cb1db5b7a9269d337406592"
   },
   "haskell": {
     "revision": "a50070d5bb5bd5c1281740a6102ecf1f4b0c4f19"
@@ -324,7 +324,7 @@
     "revision": "6858695eba0e63b9e0fceef081d291eb352abce8"
   },
   "idl": {
-    "revision": "dd5ce556451e51d6f67a8f53f103193e39ee49aa"
+    "revision": "443308c0f32af6681e5b0a09bb7071f3c0c85d74"
   },
   "ini": {
     "revision": "87176e524f0a98f5be75fa44f4f0ff5c6eac069c"
@@ -444,7 +444,7 @@
     "revision": "bd17c824196ce70800f64ad39cfddd1b17acc13f"
   },
   "mlir": {
-    "revision": "268bc99020f7ba7a219f839e3a6a31c36ad0826b"
+    "revision": "935a551f76fb07f66d0ce6f1f6e955d22cd44f15"
   },
   "muttrc": {
     "revision": "90ef60852c410bd964cd3b954366e4c403c17314"
@@ -456,7 +456,7 @@
     "revision": "3039ad9e9af3c1ffe049a04ee83a2b489915b0b9"
   },
   "nim": {
-    "revision": "961c2798cec9250c44f7d7225ddb33d47d25856a"
+    "revision": "bb2f809b65c5c943d16c45dd17e631bf3d5d4f07"
   },
   "nim_format_string": {
     "revision": "d45f75022d147cda056e98bfba68222c9c8eca3a"
@@ -507,10 +507,10 @@
     "revision": "309cb8d33bcfd0a81050b21be08f9eb3f2fe2138"
   },
   "php": {
-    "revision": "4f124bc6075e1c3333e80190c1c170933ed72c95"
+    "revision": "575a0801f430c8672db70b73493c033a9dcfc328"
   },
   "php_only": {
-    "revision": "4f124bc6075e1c3333e80190c1c170933ed72c95"
+    "revision": "575a0801f430c8672db70b73493c033a9dcfc328"
   },
   "phpdoc": {
     "revision": "1d0e255b37477d0ca46f1c9e9268c8fa76c0b3fc"
@@ -570,7 +570,7 @@
     "revision": "be062582956165019d3253794b4d712f66dfeaaa"
   },
   "python": {
-    "revision": "71778c2a472ed00a64abf4219544edbf8e4b86d7"
+    "revision": "ccc2408e558029ad82b0dea63ff55ada495965da"
   },
   "ql": {
     "revision": "42becd6f8f7bae82c818fa3abb1b6ff34b552310"
@@ -684,7 +684,7 @@
     "revision": "89fd00d0aff3bc9985ac37caf362ec4fd9b2ba1d"
   },
   "squirrel": {
-    "revision": "0a50d31098e83c668d34d1160a0f6c7d23b571cc"
+    "revision": "072c969749e66f000dba35a33c387650e203e96e"
   },
   "ssh_config": {
     "revision": "77450e8bce8853921512348f83c73c168c71fdfb"
@@ -750,7 +750,7 @@
     "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
   },
   "tlaplus": {
-    "revision": "200f9dab6b23f3b9bb8f67fc811221517f56c373"
+    "revision": "bba02e79f85e335f310fc95e21c677e49f2c4439"
   },
   "tmux": {
     "revision": "9138ea508410e0f34da2666609f600f65e944f22"

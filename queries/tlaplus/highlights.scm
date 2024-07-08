@@ -86,7 +86,7 @@
   "or"
   "procedure"
   "process"
-  "skip"
+  (pcal_skip)
   "variable"
   "variables"
   "when"
@@ -119,7 +119,7 @@
   (pcal_end_with)
 ] @keyword.repeat
 
-"return" @keyword.return
+(pcal_return) @keyword.return
 
 "print" @function.macro
 
