@@ -203,7 +203,7 @@ list.bitbake = {
 
 list.blueprint = {
   install_info = {
-    url = "https://gitlab.com/gabmus/tree-sitter-blueprint",
+    url = "https://gitlab.com/gabmus/tree-sitter-blueprint.git",
     files = { "src/parser.c" },
   },
   maintainers = { "@gabmus" },
@@ -638,7 +638,7 @@ list.func = {
 
 list.fusion = {
   install_info = {
-    url = "https://gitlab.com/jirgn/tree-sitter-fusion",
+    url = "https://gitlab.com/jirgn/tree-sitter-fusion.git",
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@jirgn" },
@@ -1066,7 +1066,7 @@ list.json5 = {
 
 list.jsonc = {
   install_info = {
-    url = "https://gitlab.com/WhyNotHugo/tree-sitter-jsonc",
+    url = "https://gitlab.com/WhyNotHugo/tree-sitter-jsonc.git",
     files = { "src/parser.c" },
     generate_requires_npm = true,
   },
@@ -2092,7 +2092,7 @@ list.systemverilog = {
 
 list.t32 = {
   install_info = {
-    url = "https://gitlab.com/xasc/tree-sitter-t32",
+    url = "https://gitlab.com/xasc/tree-sitter-t32.git",
     files = { "src/parser.c", "src/scanner.c" },
   },
   filetype = "trace32",
