@@ -32,9 +32,13 @@
 ] @variable.builtin
 
 [
-  (string_literal)
   (file)
   (mask)
+] @string.special.path
+
+[
+  (string_literal)
+  (quoted_string_literal)
 ] @string
 
 (directive
