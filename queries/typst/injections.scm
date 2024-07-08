@@ -2,5 +2,6 @@
   (#set! injection.language "comment"))
 
 (raw_blck
-  (ident) @injection.language
-  (blob) @injection.content)
+  lang: (ident) @_lang
+  (blob) @injection.content
+  (#set-lang-from-info-string! @_lang))
