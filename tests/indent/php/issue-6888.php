@@ -1,3 +1,4 @@
+<?php
 enum DaysOfWeek: int
 {
     case Sunday = 0;
@@ -8,3 +9,4 @@ class Foo {
     public int $id;
     public string $brand;
 }
+?>
