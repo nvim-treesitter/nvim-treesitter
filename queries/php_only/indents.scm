@@ -40,6 +40,12 @@
 (compound_statement
   "}" @indent.end)
 
+(declaration_list
+  "}" @indent.end)
+
+(enum_declaration_list
+  "}" @indent.end)
+
 (return_statement
   ";" @indent.end)
 
