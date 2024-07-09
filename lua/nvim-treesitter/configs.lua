@@ -406,9 +406,9 @@ function M.is_enabled(mod, lang, bufnr)
 end
 
 ---Setup call for users to override module configurations.
----@param user_data TSConfig module overrides
+---@param user_data TSConfig General options and module overrides
 function M.setup(user_data)
-  config.modules = vim.tbl_deep_extend("force", config.modules, user_data)
+  config.modules = vim.tbl_deep_extend("force", config.modules, user_data.modules)
   config.ignore_install = user_data.ignore_install or {}
   config.parser_install_dir = user_data.parser_install_dir or nil
   if config.parser_install_dir then
