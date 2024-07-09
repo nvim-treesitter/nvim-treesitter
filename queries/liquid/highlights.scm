@@ -59,9 +59,9 @@
   (#set! priority 110))
 
 ([
-  "break"
+  (break_statement)
+  (continue_statement)
   "by"
-  "continue"
   "cycle"
   "endfor"
   "endpaginate"
