@@ -1,36 +1,11 @@
 local api = vim.api
 local ts = vim.treesitter
 
-local new_lang_api = ts.language.register ~= nil
-
-local filetype_to_parsername = {}
-
-if new_lang_api then
-  filetype_to_parsername = setmetatable({}, {
-    __newindex = function(_, k, v)
-      require("nvim-treesitter.utils").notify(
-        "filetype_to_parsername is deprecated, please use 'vim.treesitter.language.register'",
-        vim.log.levels.WARN
-      )
-      ts.language.register(v, k)
-    end,
-  })
-end
-
-local function register_lang(lang, ft)
-  if new_lang_api then
-    ts.language.register(lang, ft)
-    return
-  end
-  filetype_to_parsername[ft] = lang
-end
-
 for ft, lang in pairs {
   automake = "make",
   javascriptreact = "javascript",
   ecma = "javascript",
   jsx = "javascript",
-  sh = "bash",
   html_tags = "html",
   ["typescript.tsx"] = "tsx",
   ["terraform-vars"] = "terraform",
@@ -47,8 +22,18 @@ for ft, lang in pairs {
   mysql = "sql",
   sbt = "scala",
   neomuttrc = "muttrc",
+  --- short-hand list from https://github.com/helix-editor/helix/blob/master/languages.toml
+  rs = "rust",
+  ex = "elixir",
+  js = "javascript",
+  ts = "typescript",
+  ["c-sharp"] = "csharp",
+  hs = "haskell",
+  py = "python",
+  erl = "erlang",
+  typ = "typst",
 } do
-  register_lang(lang, ft)
+  ts.language.register(lang, ft)
 end
 
 ---@class InstallInfo
@@ -73,7 +58,7 @@ end
 local list = setmetatable({}, {
   __newindex = function(table, parsername, parserconfig)
     rawset(table, parsername, parserconfig)
-    register_lang(parsername, parserconfig.filetype or parsername)
+    ts.language.register(parsername, parserconfig.filetype or parsername)
   end,
 })
 
@@ -2485,23 +2470,15 @@ list.templ = {
 
 local M = {
   list = list,
-  filetype_to_parsername = filetype_to_parsername,
 }
 
-local function get_lang(ft)
-  if new_lang_api then
-    return ts.language.get_lang(ft)
-  end
-  return filetype_to_parsername[ft]
-end
-
 function M.ft_to_lang(ft)
-  local result = get_lang(ft)
+  local result = ts.language.get_lang(ft)
   if result then
     return result
   else
     ft = vim.split(ft, ".", { plain = true })[1]
-    return get_lang(ft) or ft
+    return ts.language.get_lang(ft) or ft
   end
 end
 
