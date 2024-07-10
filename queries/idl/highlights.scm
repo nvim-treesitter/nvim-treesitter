@@ -106,7 +106,12 @@
 
 (boolean_literal) @boolean
 
-(number_literal) @number
+(integer_literal) @number
+
+[
+  (floating_pt_literal)
+  (fixed_pt_literal)
+] @number.float
 
 (char_literal) @character
 
@@ -400,3 +405,11 @@
 (system_lib_string
   "<" @string
   ">" @string)
+
+(extend_annotation_appl
+  "//@" @attribute
+  (annotation_appl_custom_body))
+
+(extend_annotation_appl
+  "//@" @attribute.builtin
+  (annotation_appl_builtin_body))
