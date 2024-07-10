@@ -160,12 +160,12 @@ function M.get_named_children(node)
   return nodes
 end
 
-function M.get_node_at_cursor(winnr, ignore_injected_langs)
+function M.get_node_at_cursor(winnr, ignore_injected_langs, bufnr)
   winnr = winnr or 0
   local cursor = api.nvim_win_get_cursor(winnr)
   local cursor_range = { cursor[1] - 1, cursor[2] }
 
-  local buf = vim.api.nvim_win_get_buf(winnr)
+  local buf = bufnr or vim.api.nvim_win_get_buf(winnr)
   local root_lang_tree = parsers.get_parser(buf)
   if not root_lang_tree then
     return
