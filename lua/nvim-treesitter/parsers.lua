@@ -1857,7 +1857,7 @@ list.scala = {
 
 list.scfg = {
   install_info = {
-    url = "https://git.sr.ht/~rockorager/tree-sitter-scfg",
+    url = "https://github.com/rockorager/tree-sitter-scfg",
     files = { "src/parser.c" },
     requires_generate_from_grammar = true,
   },
