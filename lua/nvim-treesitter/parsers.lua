@@ -32,6 +32,7 @@ for ft, lang in pairs {
   py = "python",
   erl = "erlang",
   typ = "typst",
+  ab = "amber",
 } do
   ts.language.register(lang, ft)
 end
@@ -76,6 +77,16 @@ list.agda = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@Decodetalkers" },
+}
+
+list.amber = {
+  install_info = {
+    url = "https://github.com/amber-lang/tree-sitter-amber",
+    files = { "src/parser.c" },
+    generate_requires_npm = true,
+  },
+  filetype = "ab",
+  maintainers = { "@amber-lang" },
 }
 
 list.angular = {
