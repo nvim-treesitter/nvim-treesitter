@@ -165,7 +165,7 @@
     "revision": "38d5004a797298dc42c85e7706c5ceac46a3f29f"
   },
   "erlang": {
-    "revision": "9a04980accfe29a708e738376af50b96d8b562b7"
+    "revision": "19ca500fa5a17ab58dc18aa03b50e2db305e7a8a"
   },
   "facility": {
     "revision": "a52579670e2b14ec03d410c3c980fafaf6d659c4"
@@ -267,7 +267,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "groovy": {
-    "revision": "6c5c8813233fe326e24c5ef032858d13f8006a8d"
+    "revision": "f3615006429251a966d7452bd46a0171364bcb7b"
   },
   "gstlaunch": {
     "revision": "549aef253fd38a53995cda1bf55c501174372bf7"
@@ -783,7 +783,7 @@
     "revision": "43b221c0b76e77244efdaa9963e402a17c930fbc"
   },
   "typst": {
-    "revision": "3924cb9ed9e0e62ce7df9c4fe0faa4c234795999"
+    "revision": "90f6af21271dee246a9cafe109e2b456c5bc10a6"
   },
   "udev": {
     "revision": "8f58696e79092b4ad6bf197415bbd0970acf15cd"
