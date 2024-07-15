@@ -135,7 +135,7 @@
     "revision": "809266ed1694d64dedc168a18893cc254e3edf7e"
   },
   "earthfile": {
-    "revision": "5a864159ff728b6d4f7d0aab3723f85a467d180f"
+    "revision": "b0a9bc5737340a9b80b489fe9ae93d7b2fe78cd7"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -570,7 +570,7 @@
     "revision": "be062582956165019d3253794b4d712f66dfeaaa"
   },
   "python": {
-    "revision": "ccc2408e558029ad82b0dea63ff55ada495965da"
+    "revision": "0dee05ef958ba2eae88d1e65f24b33cad70d4367"
   },
   "ql": {
     "revision": "42becd6f8f7bae82c818fa3abb1b6ff34b552310"
@@ -708,7 +708,7 @@
     "revision": "7218cf622b057ae9c530e1f0a7a3ce49806ca55e"
   },
   "swift": {
-    "revision": "6248145bd1c221f75feb3460e59de57f81fda58f"
+    "revision": "9653f291ab2179185dc3703672d9fbbd29e80cfb"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
