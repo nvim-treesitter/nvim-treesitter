@@ -1,0 +1,9 @@
+@defer (on viewport) {
+  <calendar-cmp />
+} @placeholder (minimum 100ms) {
+  <small-component />
+} @loading (after 100s; minimum 200ms){
+  <loading-spinner />
+} @error {
+  <error-message />
+}

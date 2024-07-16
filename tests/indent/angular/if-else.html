@@ -1,0 +1,15 @@
+@if (someCondition) {
+  <p>someCondition is true</p>
+} @else {
+  <p>someCondition is false</p>
+}
+
+<div>
+  @if (someOther) {
+    <span>True</span>
+
+    @if (nestedCondition) {
+      <span>Nested</span>
+    }
+  }
+</div>
