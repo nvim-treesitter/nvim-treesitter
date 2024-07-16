@@ -22,7 +22,10 @@
   "errors"
 ] @keyword
 
-"method" @keyword.function
+[
+  "method"
+  "event"
+] @keyword.function
 
 [
   "enum"
