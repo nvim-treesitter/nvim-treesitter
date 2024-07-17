@@ -452,6 +452,9 @@
   "nasm": {
     "revision": "570f3d7be01fffc751237f4cfcf52d04e20532d1"
   },
+  "nginx": {
+    "revision": "281d184b8240b2b22670b8907b57b6d6842db6f3"
+  },
   "nickel": {
     "revision": "3039ad9e9af3c1ffe049a04ee83a2b489915b0b9"
   },
