@@ -252,6 +252,7 @@ function M.select_download_commands(repo, project_name, cache_folder, revision, 
         opts = {
           args = {
             "--silent",
+            "--show-error",
             "-L", -- follow redirects
             is_github and url .. "/archive/" .. revision .. ".tar.gz"
               or url .. "/-/archive/" .. revision .. "/" .. project_name .. "-" .. revision .. ".tar.gz",
