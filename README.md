@@ -537,12 +537,11 @@ require'nvim-treesitter.configs'.setup {
 
 #### Folding
 
-Tree-sitter based folding. _(Technically not a module because it's per windows and not per buffer.)_
+Tree-sitter based folding (implemented in Neovim itself, see `:h vim.treesitter.foldexpr()`). To enable it for the current window, set
 
-```vim
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-set nofoldenable                     " Disable folding at startup.
+```lua
+vim.wo.foldmethod = 'expr'
+vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 ```
 
 This will respect your `foldminlines` and `foldnestmax` settings.
