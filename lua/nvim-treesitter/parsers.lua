@@ -2347,6 +2347,14 @@ list.verilog = {
   maintainers = { "@zegervdv" },
 }
 
+list.vhdl = {
+  install_info = {
+    url = "https://github.com/jpt13653903/tree-sitter-vhdl",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@jpt13653903" },
+}
+
 list.vhs = {
   install_info = {
     url = "https://github.com/charmbracelet/tree-sitter-vhs",

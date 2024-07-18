@@ -445,6 +445,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [vala](https://github.com/vala-lang/tree-sitter-vala) (maintained by @Prince781)
 - [x] [vento](https://github.com/ventojs/tree-sitter-vento) (maintained by @wrapperup, @oscarotero)
 - [x] [verilog](https://github.com/tree-sitter/tree-sitter-verilog) (maintained by @zegervdv)
+- [x] [vhdl](https://github.com/jpt13653903/tree-sitter-vhdl) (maintained by @jpt13653903)
 - [x] [vhs](https://github.com/charmbracelet/tree-sitter-vhs) (maintained by @caarlos0)
 - [x] [vim](https://github.com/neovim/tree-sitter-vim) (maintained by @clason)
 - [x] [vimdoc](https://github.com/neovim/tree-sitter-vimdoc) (maintained by @clason)

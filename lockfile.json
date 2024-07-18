@@ -815,6 +815,9 @@
   "verilog": {
     "revision": "075ebfc84543675f12e79a955f79d717772dcef3"
   },
+  "vhdl": {
+    "revision": "f4c492accff02b5c85517ff5dd4720e2229feb75"
+  },
   "vhs": {
     "revision": "90028bbadb267ead5b87830380f6a825147f0c0f"
   },
