@@ -6,7 +6,7 @@
     "revision": "d3dc807692e6bca671d4491b3bf5c67eeca8c016"
   },
   "angular": {
-    "revision": "b96a0d1605da3492f6474245098b6f0c503e596d"
+    "revision": "31182d43b062a350d4bd2449f2fc0d5654972be9"
   },
   "apex": {
     "revision": "c99ad4b16d112fea91745e3f1b769754239fdaba"
@@ -120,7 +120,7 @@
     "revision": "0229c0211dba909c5d45129ac784a3f4d49c243a"
   },
   "djot": {
-    "revision": "1aacaf472117fb855e2f80f744b7704ef4dc75dc"
+    "revision": "886601b67d1f4690173a4925c214343c30704d32"
   },
   "dockerfile": {
     "revision": "087daa20438a6cc01fa5e6fe6906d77c869d19fe"
@@ -657,7 +657,7 @@
     "revision": "ea77a4d91dd93f4483965efcc41f3faebb9131c8"
   },
   "slint": {
-    "revision": "d82ab8c19ea1b60ff570256eaef7d137cc5ecb63"
+    "revision": "4a0558cc0fcd7a6110815b9bbd7cc12d7ab31e74"
   },
   "smali": {
     "revision": "fdfa6a1febc43c7467aa7e937b87b607956f2346"
@@ -816,7 +816,7 @@
     "revision": "075ebfc84543675f12e79a955f79d717772dcef3"
   },
   "vhdl": {
-    "revision": "f4c492accff02b5c85517ff5dd4720e2229feb75"
+    "revision": "4ab3e251eae8890a020d083d00acd1b8c2653c07"
   },
   "vhs": {
     "revision": "90028bbadb267ead5b87830380f6a825147f0c0f"
