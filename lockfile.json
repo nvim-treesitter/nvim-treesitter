@@ -120,7 +120,7 @@
     "revision": "0229c0211dba909c5d45129ac784a3f4d49c243a"
   },
   "djot": {
-    "revision": "87bf82874c86dcf563f5521069d603ed50e5f0cc"
+    "revision": "1aacaf472117fb855e2f80f744b7704ef4dc75dc"
   },
   "dockerfile": {
     "revision": "087daa20438a6cc01fa5e6fe6906d77c869d19fe"
@@ -192,7 +192,7 @@
     "revision": "90189238385cf636b9ee99ce548b9e5b5e569d48"
   },
   "fortran": {
-    "revision": "dde9829554b831cf6cbf927294f22dfb9a8f0419"
+    "revision": "6b633433fb3f132f21250cf8e8be76d5a6389b7e"
   },
   "fsh": {
     "revision": "fad2e175099a45efbc98f000cc196d3674cc45e0"
@@ -642,7 +642,7 @@
     "revision": "9c84af007b0f144954adb26b3f336495cbb320a7"
   },
   "scala": {
-    "revision": "599d12b59fed092f5a3d4a7019fd85d90cb39ec1"
+    "revision": "a13f2d1ee9609cc5c4c8ffce9640c353b77a24d8"
   },
   "scfg": {
     "revision": "a5512800ea0220da4abbae61b8aea8423d1549aa"
