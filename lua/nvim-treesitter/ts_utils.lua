@@ -57,13 +57,13 @@ function M._get_line_for_node(node, type_patterns, transform_fn, bufnr)
 end
 
 -- Gets the actual text content of a node
--- @deprecated Use vim.treesitter.query.get_node_text
+-- @deprecated Use vim.treesitter.get_node_text
 -- @param node the node to get the text from
 -- @param bufnr the buffer containing the node
 -- @return list of lines of text of the node
 function M.get_node_text(node, bufnr)
   vim.notify_once(
-    "nvim-treesitter.ts_utils.get_node_text is deprecated: use vim.treesitter.query.get_node_text",
+    "nvim-treesitter.ts_utils.get_node_text is deprecated: use vim.treesitter.get_node_text",
     vim.log.levels.WARN
   )
   return get_node_text(node, bufnr)
