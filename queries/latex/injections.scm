@@ -17,15 +17,20 @@
   code: (source_code) @injection.content
   (#set! injection.language "python"))
 
+(luacode_environment
+  code: (source_code) @injection.content
+  (#set! injection.language "lua"))
+
+(asy_environment
+  code: (source_code) @injection.content
+  (#set! injection.language "c"))
+
+(asydef_environment
+  code: (source_code) @injection.content
+  (#set! injection.language "c"))
+
 (minted_environment
   (begin
     language: (curly_group_text
       (text) @injection.language))
   (source_code) @injection.content)
-
-((generic_environment
-  (begin
-    name: (curly_group_text
-      (text) @_env))) @injection.content
-  (#set! injection.language "c")
-  (#any-of? @_env "asy" "asydef"))
