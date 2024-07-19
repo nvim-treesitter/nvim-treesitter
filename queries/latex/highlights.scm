@@ -1,6 +1,8 @@
 ; General syntax
 (command_name) @function
 
+(placeholder) @variable
+
 (text_mode
   [
     "\\text"
