@@ -96,7 +96,7 @@
     "revision": "7eb7297823605392d2bbcc4c09b1cd18d6fa9529"
   },
   "cuda": {
-    "revision": "b93070b5a91ee9537d45e59d741737b1289c5dcc"
+    "revision": "30c29607aba8e23cf4f77ceaa0a19a34f93b3ae0"
   },
   "cue": {
     "revision": "8a5f273bfa281c66354da562f2307c2d394b6c81"
@@ -324,7 +324,7 @@
     "revision": "6858695eba0e63b9e0fceef081d291eb352abce8"
   },
   "idl": {
-    "revision": "556f2878db1c26da33a921df8226f3268fadef75"
+    "revision": "92bb2f3bb0514d56be61f2131e950da1c913c7f2"
   },
   "ini": {
     "revision": "87176e524f0a98f5be75fa44f4f0ff5c6eac069c"
