@@ -268,12 +268,16 @@
 
 (latex_include
   command: _ @keyword.import
-  path: (curly_group_path) @string)
+  path: (curly_group_path) @string.special.path)
+
+(verbatim_include
+  command: _ @keyword.import
+  path: (curly_group_path) @string.special.path)
 
 (import_include
   command: _ @keyword.import
-  directory: (curly_group_path) @string
-  file: (curly_group_path) @string)
+  directory: (curly_group_path) @string.special.path
+  file: (curly_group_path) @string.special.path)
 
 (bibstyle_include
   command: _ @keyword.import
@@ -281,7 +285,7 @@
 
 (bibtex_include
   command: _ @keyword.import
-  paths: (curly_group_path_list) @string)
+  paths: (curly_group_path_list) @string.special.path)
 
 (biblatex_include
   "\\addbibresource" @keyword.import
@@ -289,7 +293,15 @@
 
 (graphics_include
   command: _ @keyword.import
-  path: (curly_group_path) @string)
+  path: (curly_group_path) @string.special.path)
+
+(svg_include
+  command: _ @keyword.import
+  path: (curly_group_path) @string.special.path)
+
+(inkscape_include
+  command: _ @keyword.import
+  path: (curly_group_path) @string.special.path)
 
 (tikz_library_import
   command: _ @keyword.import
