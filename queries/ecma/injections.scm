@@ -49,10 +49,9 @@
   function: [
     (await_expression
       (member_expression
-        property: ((property_identifier) @injection.language)))
+        property: (property_identifier) @injection.language))
     (member_expression
-      property: ((property_identifier) @injection.language)
-    )
+      property: (property_identifier) @injection.language)
   ]
   arguments: [
     (arguments
