@@ -25,11 +25,3 @@
   (#set! injection.language "regex")
   (#offset! @injection.content 0 1 0 -1)
   (#set! injection.include-children))
-
-; Multiline strings
-([
-  (verbatim_here_string_characters)
-  (expandable_here_string_literal)
-] @injection.content
-  (#offset! @injection.content 0 2 0 -2)
-  (#set! injection.language "comment"))
