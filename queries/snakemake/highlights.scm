@@ -44,7 +44,8 @@
 
 ; Wildcard names
 (wildcard
-  (identifier) @variable)
+  (identifier) @variable
+  (flag) @variable.parameter.builtin)
 
 ; builtin variables
 ((identifier) @variable.builtin
