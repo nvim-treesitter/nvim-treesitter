@@ -69,15 +69,11 @@
 ((command
   name: (command_name) @_command
   .
-  argument: (string
-    (string_content) @injection.content))
-  (#eq? @_command "bind")
-  (#set! injection.language "readline"))
-
-((command
-  name: (command_name) @_command
-  .
-  argument: (raw_string) @injection.content)
+  argument: [
+    (string)
+    (raw_string)
+  ] @injection.content)
   (#eq? @_command "bind")
   (#offset! @injection.content 0 1 0 -1)
+  (#set! injection.include-children)
   (#set! injection.language "readline"))
