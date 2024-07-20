@@ -304,7 +304,8 @@
 
 ; Parameters and call arguments
 ;------------------------------
-(command_elements) @variable.parameter
+(command_elements
+  (generic_token)) @variable.parameter
 
 (switch_parameter) @variable.parameter.builtin
 
