@@ -21,13 +21,9 @@
     ")"
   ] @punctuation.special)
 
-(member_access
-  "." @punctuation.special)
-
-(pipeline
-  "|" @punctuation.special)
-
 [
+  "."
+  "::"
   ","
   ";"
   (empty_statement)
@@ -113,6 +109,9 @@
   ".."
   "-not"
   "-bnot"
+  "!"
+  "="
+  "|"
   (pre_increment_expression)
   (pre_decrement_expression)
   (post_increment_expression)
@@ -252,6 +251,8 @@
   (class_method_definition
     (simple_name) @constructor)
   (#eq? @constructor @_class_name))
+
+(key_expression) @property
 
 ; Functions, methods calls and properties access
 ;--------------------------
