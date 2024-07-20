@@ -52,10 +52,14 @@
     (text) @label))
 
 ; Definitions and references
+; Capture both \newcommand{\foo}{bar} and \newcommand\foo{bar}
 (new_command_definition
   command: _ @function.macro
-  declaration: (curly_group_command_name
-    (_) @function))
+  declaration: [
+    (curly_group_command_name
+      (_) @function)
+    (command_name) @function
+  ])
 
 (old_command_definition
   command: _ @function.macro
