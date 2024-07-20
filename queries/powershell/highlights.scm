@@ -144,8 +144,7 @@
 ((variable) @variable.builtin
   (#lua-match? @variable.builtin "^\$env:"))
 
-(comment
-  (#set! priority 90)) @comment @spell
+(comment) @comment @spell
 
 ; Booleans
 ;---------
@@ -270,7 +269,7 @@
     [
       (simple_name)
       (variable)
-    ] @variable.property))
+    ] @variable.member))
 
 ; Commands execution
 ;-------------------
