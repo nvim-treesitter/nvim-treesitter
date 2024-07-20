@@ -533,6 +533,9 @@
   "pony": {
     "revision": "73ff874ae4c9e9b45462673cbc0a1e350e2522a7"
   },
+  "powershell": {
+    "revision": "804d86fd4ad286bd0cc1c1f0f7b28bd7af6755ad"
+  },
   "printf": {
     "revision": "0e0aceabbf607ea09e03562f5d8a56f048ddea3d"
   },

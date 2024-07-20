@@ -30,6 +30,7 @@ for ft, lang in pairs {
   ts = "typescript",
   ["c-sharp"] = "csharp",
   hs = "haskell",
+  ps1 = "powershell",
   py = "python",
   erl = "erlang",
   typ = "typst",
@@ -1560,6 +1561,15 @@ list.pony = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@amaanq", "@mfelsche" },
+}
+
+list.powershell = {
+  install_info = {
+    url = "https://github.com/airbus-cert/tree-sitter-powershell",
+    files = { "src/parser.c", "src/scanner.c" },
+    branch = "main",
+  },
+  maintainers = { "citronneur" },
 }
 
 list.printf = {
