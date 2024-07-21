@@ -239,13 +239,7 @@
   command: (command_name) @_name
   arg: (curly_group
     (_) @markup.italic))
-  (#eq? @_name "\\emph"))
-
-((generic_command
-  command: (command_name) @_name
-  arg: (curly_group
-    (_) @markup.italic))
-  (#any-of? @_name "\\textit" "\\mathit"))
+  (#any-of? @_name "\\emph" "\\textit" "\\mathit"))
 
 ((generic_command
   command: (command_name) @_name
