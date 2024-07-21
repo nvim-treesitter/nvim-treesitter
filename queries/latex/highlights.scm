@@ -31,8 +31,7 @@
 
 "\\item" @punctuation.special
 
-((word) @punctuation.delimiter
-  (#eq? @punctuation.delimiter "&"))
+(delimiter) @punctuation.delimiter
 
 [
   "["
