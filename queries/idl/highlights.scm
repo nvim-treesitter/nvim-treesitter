@@ -50,27 +50,6 @@
 ] @keyword.modifier
 
 [
-  "SEQUENTIAL"
-  "HASH"
-  "FINAL"
-  "APPENDABLE"
-  "MUTABLE"
-  "c"
-  "c++"
-  "java"
-  "idl"
-  "*"
-  "BEGIN_FILE"
-  "BEFORE_DECLARATION"
-  "BEGIN_DECLARATION"
-  "END_DECLARATION"
-  "AFTER_DECLARATION"
-  "END_FILE"
-  "CORBA"
-  "DDS"
-] @constant
-
-[
   "switch"
   "case"
   "default"
@@ -98,6 +77,8 @@
   (map_type)
   (object_type)
   (value_base_type)
+  (wide_string_type)
+  (wide_char_type)
 ] @type.builtin
 
 (escape_sequence) @string.escape
@@ -115,7 +96,11 @@
 
 (char_literal) @character
 
+(wide_character_literal) @character
+
 (string_literal) @string
+
+(wide_string_literal) @string
 
 [
   "("
@@ -160,41 +145,6 @@
 
 (annotation_appl_custom_body
   (scoped_name) @attribute)
-
-(annotation_appl_builtin_body
-  (_
-    [
-      "id"
-      "autoid"
-      "optional"
-      "position"
-      "value"
-      "extensibility"
-      "final"
-      "appendable"
-      "mutable"
-      "key"
-      "must_understand"
-      "default_literal"
-      "default"
-      "range"
-      "min"
-      "max"
-      "unit"
-      "bit_bound"
-      "external"
-      "nested"
-      "verbatim"
-      "service"
-      "oneway"
-      "ami"
-    ] @attribute.builtin))
-
-(min_expr
-  "min" @attribute.builtin)
-
-(max_expr
-  "max" @attribute.builtin)
 
 (op_dcl
   (identifier) @function.method)
@@ -413,3 +363,17 @@
 (extend_annotation_appl
   "//@" @attribute.builtin
   (annotation_appl_builtin_body))
+
+[
+  (autoid_kind)
+  (extensibility_kind)
+  (verbatim_language)
+  (placement_kind)
+  (service_platform)
+  (try_construct_fail_action)
+  (data_representation_mask)
+] @constant
+
+(anno_name) @attribute.builtin
+
+(range_kind) @attribute.builtin
