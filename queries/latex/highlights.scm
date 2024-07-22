@@ -1,17 +1,19 @@
 ; General syntax
-(command_name) @function
-
-(placeholder) @variable
-
-(text_mode
-  [
-    "\\text"
-    "\\intertext"
-    "\\shortintertext"
-  ] @function)
+(command_name) @function @nospell
 
 (caption
   command: _ @function)
+
+(placeholder) @variable
+
+; Turn spelling on for text
+(text) @spell
+
+; \text, \intertext, \shortintertext, ...
+(text_mode
+  command: _ @function @nospell
+  content: (curly_group
+    (_) @none @spell))
 
 (key_value_pair
   key: (_) @variable.parameter
@@ -53,17 +55,13 @@
 
 ; Definitions and references
 (new_command_definition
-  command: _ @function.macro
-  declaration: (curly_group_command_name
-    (_) @function))
+  command: _ @function.macro)
 
 (old_command_definition
-  command: _ @function.macro
-  declaration: (_) @function)
+  command: _ @function.macro)
 
 (let_command_definition
-  command: _ @function.macro
-  declaration: (_) @function)
+  command: _ @function.macro)
 
 (environment_definition
   command: _ @function.macro
@@ -107,6 +105,11 @@
   command: _ @function.macro
   keys: (curly_group_text_list) @markup.link)
 
+(hyperlink
+  command: _ @function @nospell
+  uri: (curly_group_uri
+    (_) @markup.link.url @nospell))
+
 (glossary_entry_definition
   command: _ @function.macro
   name: (curly_group_text
@@ -136,26 +139,6 @@
   command: _ @function.macro
   name: (curly_group_text
     (_) @markup.link))
-
-; Formatting
-(text_mode
-  content: (curly_group
-    (_) @none @spell))
-
-(math_environment
-  (begin
-    command: _ @markup.math
-    name: (curly_group_text
-      (_) @markup.math)))
-
-(math_environment
-  (_) @markup.math)
-
-(math_environment
-  (end
-    command: _ @markup.math
-    name: (curly_group_text
-      (_) @markup.math)))
 
 ; Sectioning
 (title_declaration
@@ -232,7 +215,7 @@
 ((generic_command
   command: (command_name) @_name
   arg: (curly_group
-    (text) @markup.heading))
+    (_) @markup.heading))
   (#eq? @_name "\\frametitle"))
 
 ((generic_command
@@ -246,11 +229,6 @@
   arg: (curly_group
     (_) @markup.strong))
   (#any-of? @_name "\\textbf" "\\mathbf"))
-
-(hyperlink
-  command: _ @function @nospell
-  uri: (curly_group_uri
-    (_) @markup.link.url @nospell))
 
 ; File inclusion commands
 (class_include
@@ -302,12 +280,6 @@
   command: _ @keyword.import
   paths: (curly_group_path_list) @string)
 
-(text) @spell
-
-(inline_formula) @nospell
-
-(displayed_equation) @nospell
-
 (key_value_pair) @nospell
 
 (generic_environment
@@ -316,8 +288,6 @@
 
 (citation
   keys: _ @nospell)
-
-(command_name) @nospell
 
 (label_definition) @nospell
 
@@ -329,8 +299,12 @@
 [
   (displayed_equation)
   (inline_formula)
-] @markup.math
+] @markup.math @nospell
 
+(math_environment
+  (_) @markup.math)
+
+; Comments
 [
   (line_comment)
   (block_comment)
