@@ -289,6 +289,31 @@ function M.select_download_commands(repo, project_name, cache_folder, revision, 
     local git_folder = utils.join_path(cache_folder, project_name)
     local clone_error = "Error during download, please verify your internet connection"
 
+    -- Running `git clone` or `git checkout` while running under Git (such as
+    -- editing a `git commit` message) will likely fail to install parsers
+    -- (such as 'gitcommit') and can also corrupt the index file of the current
+    -- Git repository. Check for typical git environemnt variables and abort if found.
+    for _, k in pairs {
+      "GIT_ALTERNATE_OBJECT_DIRECTORIES",
+      "GIT_CEILING_DIRECTORIES",
+      "GIT_DIR",
+      "GIT_INDEX",
+      "GIT_INDEX_FILE",
+      "GIT_OBJECT_DIRECTORY",
+      "GIT_PREFIX",
+      "GIT_WORK_TREE",
+    } do
+      if vim.uv.os_getenv(k) then
+        vim.api.nvim_err_writeln(
+          string.format(
+            "Cannot install %s with git in an active git session. Exit the session and run ':TSInstall %s' manually",
+            project_name
+          )
+        )
+        return {}
+      end
+    end
+
     return {
       {
         cmd = "git",
