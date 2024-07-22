@@ -1562,6 +1562,15 @@ list.pony = {
   maintainers = { "@amaanq", "@mfelsche" },
 }
 
+list.powershell = {
+  install_info = {
+    url = "https://github.com/airbus-cert/tree-sitter-powershell",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  filetype = "ps1",
+  maintainers = { "L2jLiga" },
+}
+
 list.printf = {
   install_info = {
     url = "https://github.com/ObserverOfTime/tree-sitter-printf",
