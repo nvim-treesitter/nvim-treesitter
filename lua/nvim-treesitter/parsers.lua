@@ -1568,7 +1568,7 @@ list.powershell = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   filetype = "ps1",
-  maintainers = { "L2jLiga" },
+  maintainers = { "@L2jLiga" },
 }
 
 list.printf = {
