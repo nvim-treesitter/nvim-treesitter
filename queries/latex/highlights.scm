@@ -4,8 +4,6 @@
 (caption
   command: _ @function)
 
-(placeholder) @variable
-
 ; Turn spelling on for text
 (text) @spell
 
@@ -15,14 +13,17 @@
   content: (curly_group
     (_) @none @spell))
 
+; Variables, parameters
+(placeholder) @variable
+
 (key_value_pair
   key: (_) @variable.parameter @nospell
   value: (_))
 
-[
-  (brack_group)
-  (brack_group_argc)
-] @variable.parameter
+(curly_group_spec
+  (text) @variable.parameter)
+
+(brack_group_argc) @variable.parameter
 
 [
   (operator)
