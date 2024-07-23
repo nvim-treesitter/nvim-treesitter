@@ -52,13 +52,13 @@ exception: "!" @keyword.exception
 (PtrTypeStart
   "c" @variable.builtin)
 
-((ContainerDeclType
-  [
-    (ErrorUnionExpr)
-    "enum"
-  ])
+(ContainerDecl
+  (ContainerDeclType
+    "enum")
   (ContainerField
-    (IDENTIFIER) @constant))
+    (ErrorUnionExpr
+      (SuffixExpr
+        (IDENTIFIER) @constant))))
 
 field_constant: (IDENTIFIER) @constant
 
@@ -190,6 +190,7 @@ field_constant: (IDENTIFIER) @constant
   (AssignOp)
   (MultiplyOp)
   (PrefixOp)
+  "="
   "*"
   "**"
   "->"
@@ -227,6 +228,9 @@ field_constant: (IDENTIFIER) @constant
   "|" @punctuation.bracket)
 
 (PtrIndexPayload
+  "|" @punctuation.bracket)
+
+(PtrListPayload
   "|" @punctuation.bracket)
 
 (ParamType
