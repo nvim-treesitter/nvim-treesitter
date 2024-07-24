@@ -288,7 +288,7 @@
     "revision": "9e3ec9848f28d26845ba300fd73c740459b83e9b"
   },
   "heex": {
-    "revision": "b5ad6e34eea18a15bbd1466ca707a17f9bff7b93"
+    "revision": "6dd0303acf7138dd2b9b432a229e16539581c701"
   },
   "helm": {
     "revision": "9d3f6e526dd074b9edae9070b7bb778f00e87a5b"
@@ -507,7 +507,7 @@
     "revision": "217ff2af3f2db15a79ab7e3d21ea1e0c17e71a1a"
   },
   "perl": {
-    "revision": "7384aa0903f55b9a2247775b29f09df6c093cd1a"
+    "revision": "7581cbf8fb793bce94d0241c89fe49b01b1477f9"
   },
   "php": {
     "revision": "575a0801f430c8672db70b73493c033a9dcfc328"
@@ -687,7 +687,7 @@
     "revision": "d853661ca680d8ff7f8d800182d5782b61d0dd58"
   },
   "sql": {
-    "revision": "91c5ce054925728109f90d5c057cbf5b47f93fda"
+    "revision": "bd0a2de0ae5e1dd5ded77b26f8a3e67367e90560"
   },
   "squirrel": {
     "revision": "072c969749e66f000dba35a33c387650e203e96e"
