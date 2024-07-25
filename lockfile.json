@@ -165,7 +165,7 @@
     "revision": "38d5004a797298dc42c85e7706c5ceac46a3f29f"
   },
   "erlang": {
-    "revision": "19ca500fa5a17ab58dc18aa03b50e2db305e7a8a"
+    "revision": "8f41b588fe38b981156651ef56b192ed3d158efd"
   },
   "facility": {
     "revision": "2d037f2f2bf668737f72e6be6eda4b7918b68d86"
@@ -336,7 +336,7 @@
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
   },
   "janet_simple": {
-    "revision": "3b08641373cb3e37bc531e6e3cdb85d02b454702"
+    "revision": "ea842cb57a90865c8f50bcb4499de1a94860f3a4"
   },
   "java": {
     "revision": "953abfc8bb3eb2f578e1f461edba4a9885f974b8"
@@ -387,7 +387,7 @@
     "revision": "854a40e99f7c70258e522bdb8ab584ede6196e2e"
   },
   "latex": {
-    "revision": "6706f88d5b563ed8aaf7babb45e5f85dab001db1"
+    "revision": "f567ce7863533f81b043e91801064f790645cb27"
   },
   "ledger": {
     "revision": "8a841fb20ce683bfbb3469e6ba67f2851cfdf94a"
@@ -420,7 +420,7 @@
     "revision": "fbadc96272f718dba267628ba7b0e694c368cef3"
   },
   "m68k": {
-    "revision": "9e082a2253c50eb3d80e84bbd635e57cfb1476a2"
+    "revision": "e128454c2210c0e0c10b68fe45ddb8fee80182a3"
   },
   "make": {
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
@@ -432,7 +432,7 @@
     "revision": "7fe453beacecf02c86f7736439f238f5bb8b5c9b"
   },
   "matlab": {
-    "revision": "2825fb578325ac308945318881445a89ea06e0f6"
+    "revision": "821f7bdf9d922822302a0170c2f157e36ffb7a94"
   },
   "menhir": {
     "revision": "be8866a6bcc2b563ab0de895af69daeffa88fe70"
