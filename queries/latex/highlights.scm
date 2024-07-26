@@ -67,7 +67,7 @@
 (environment_definition
   command: _ @function.macro @nospell
   name: (curly_group_text
-    (_) @markup.link))
+    (_) @label @nospell))
 
 (theorem_definition
   command: _ @function.macro @nospell
