@@ -213,7 +213,11 @@
 
 (wildcard) @variable.parameter
 
-(namespace_wildcard) @punctuation.special
+(namespace_wildcard
+  [
+    "*"
+    "_"
+  ] @character.special)
 
 (annotation) @attribute
 

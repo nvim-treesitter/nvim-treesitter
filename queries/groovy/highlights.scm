@@ -148,6 +148,8 @@
   "!"
 ] @operator
 
+(wildcard_import) @character.special
+
 (string
   "/" @string)
 
