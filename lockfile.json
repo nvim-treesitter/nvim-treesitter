@@ -620,6 +620,9 @@
   "requirements": {
     "revision": "5ad9b7581b3334f6ad492847d007f2fac6e6e5f2"
   },
+  "rescript": {
+    "revision": "444c127686714b2358622427c3bdba7eb09021c6"
+  },
   "rnoweb": {
     "revision": "1a74dc0ed731ad07db39f063e2c5a6fe528cae7f"
   },
