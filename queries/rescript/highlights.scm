@@ -101,8 +101,6 @@
 (function
   parameter: (value_identifier) @variable.parameter)
 
-; first-level descructuring (required for nvim-tree-sitter as it only matches direct
-; children and the above patterns do not match destructuring patterns in NeoVim)
 (parameter
   (tuple_pattern
     (tuple_item_pattern
@@ -124,21 +122,18 @@
 ; function calls
 (call_expression
   function: (value_identifier_path
-    _
-    (value_identifier) @function.call))
+    (value_identifier) @function.method.call .))
 
 (call_expression
   function: (value_identifier) @function.call)
 
 ; highlight the right-hand side of a pipe operator as a function call
 (pipe_expression
-  _
-  [
-    (value_identifier_path
-      _
-      (value_identifier) @function.call)
-    (value_identifier) @function.call
-  ])
+  (value_identifier) @function.call .)
+
+(pipe_expression
+  (value_identifier_path
+    (value_identifier) @function.method.call .) .)
 
 ; Meta
 ;-----
