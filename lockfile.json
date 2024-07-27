@@ -267,7 +267,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "groovy": {
-    "revision": "f3615006429251a966d7452bd46a0171364bcb7b"
+    "revision": "391229139d9f79879ccc84cb271889c9240c28a1"
   },
   "gstlaunch": {
     "revision": "549aef253fd38a53995cda1bf55c501174372bf7"
@@ -324,7 +324,7 @@
     "revision": "6858695eba0e63b9e0fceef081d291eb352abce8"
   },
   "idl": {
-    "revision": "be58a725cccee2e9e555500d97a543940bded18a"
+    "revision": "1a6683f6809f7bc630f10fcad7d9ac6471deb706"
   },
   "ini": {
     "revision": "87176e524f0a98f5be75fa44f4f0ff5c6eac069c"
@@ -387,7 +387,7 @@
     "revision": "854a40e99f7c70258e522bdb8ab584ede6196e2e"
   },
   "latex": {
-    "revision": "f567ce7863533f81b043e91801064f790645cb27"
+    "revision": "f074e142ade9cdc292346d0484be27f9ebdbc4ea"
   },
   "ledger": {
     "revision": "8a841fb20ce683bfbb3469e6ba67f2851cfdf94a"
@@ -510,10 +510,10 @@
     "revision": "7581cbf8fb793bce94d0241c89fe49b01b1477f9"
   },
   "php": {
-    "revision": "575a0801f430c8672db70b73493c033a9dcfc328"
+    "revision": "c07d69739ba71b5a449bdbb7735991f8aabf8546"
   },
   "php_only": {
-    "revision": "575a0801f430c8672db70b73493c033a9dcfc328"
+    "revision": "c07d69739ba71b5a449bdbb7735991f8aabf8546"
   },
   "phpdoc": {
     "revision": "1d0e255b37477d0ca46f1c9e9268c8fa76c0b3fc"
@@ -687,7 +687,7 @@
     "revision": "d853661ca680d8ff7f8d800182d5782b61d0dd58"
   },
   "sql": {
-    "revision": "431233e5720cd356aaccb4db7fab00093d7b80ba"
+    "revision": "a9664463580473e92d8f5e29fa06fb1be88752af"
   },
   "squirrel": {
     "revision": "072c969749e66f000dba35a33c387650e203e96e"
@@ -723,7 +723,7 @@
     "revision": "1af543a96d060b1f808982037bfc54cc02218edd"
   },
   "systemverilog": {
-    "revision": "a478beb76be72fa8f305f5fe9cc6141ac91b91a4"
+    "revision": "4f897d5e3f0e38bf8fbb55e8f39dc97d2bc2229e"
   },
   "t32": {
     "revision": "6182836f4128725f1e74ce986840d7317021a015"
