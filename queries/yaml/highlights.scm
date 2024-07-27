@@ -7,7 +7,7 @@
 (single_quote_scalar) @string
 
 ((block_scalar) @string
-  (#set! "priority" 99))
+  (#set! priority 99))
 
 (string_scalar) @string
 

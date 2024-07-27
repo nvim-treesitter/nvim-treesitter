@@ -101,7 +101,7 @@
 ; Fallback highlighting for recipe bodies
 (recipe
   (recipe_body) @string
-  (#set! "priority" 90))
+  (#set! priority 90))
 
 ; Ref: https://just.systems/man/en/chapter_26.html
 ;(setting (identifier) @error)

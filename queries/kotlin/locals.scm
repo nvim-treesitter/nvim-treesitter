@@ -13,13 +13,13 @@
 (function_declaration
   .
   (simple_identifier) @local.definition.function
-  (#set! "definition.function.scope" "parent"))
+  (#set! definition.function.scope "parent"))
 
 (class_body
   (function_declaration
     .
     (simple_identifier) @local.definition.method)
-  (#set! "definition.method.scope" "parent"))
+  (#set! definition.method.scope "parent"))
 
 ; Variables
 (function_declaration
@@ -52,11 +52,11 @@
 ; Types
 (class_declaration
   (type_identifier) @local.definition.type
-  (#set! "definition.type.scope" "parent"))
+  (#set! definition.type.scope "parent"))
 
 (type_alias
   (type_identifier) @local.definition.type
-  (#set! "definition.type.scope" "parent"))
+  (#set! definition.type.scope "parent"))
 
 ; Scopes
 [

@@ -270,4 +270,4 @@
   ")"
 ] @punctuation.bracket
   ; priority hack so nvim + ts-cli behave the same
-  (#set! "priority" 90))
+  (#set! priority 90))

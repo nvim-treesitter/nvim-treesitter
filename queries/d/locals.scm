@@ -12,7 +12,7 @@
 (module_def
   (module_declaration
     (module_fqn) @local.definition.namespace)
-  (#set! "definition.namespace.scope" "global"))
+  (#set! definition.namespace.scope "global"))
 
 (enum_declaration
   (enum_member

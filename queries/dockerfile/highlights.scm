@@ -43,7 +43,7 @@
 
 ((heredoc_block
   (heredoc_line) @string)
-  (#set! "priority" 90))
+  (#set! priority 90))
 
 (expansion
   [

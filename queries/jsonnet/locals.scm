@@ -11,7 +11,7 @@
 (field
   function: (fieldname
     (id) @local.definition.function)
-  (#set! "definition.function.scope" "parent"))
+  (#set! definition.function.scope "parent"))
 
 (bind
   (id) @local.definition.var)

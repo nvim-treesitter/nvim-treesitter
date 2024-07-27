@@ -48,7 +48,7 @@
 ; Function Definition
 ((function_definition
   (name) @local.definition.function)
-  (#set! "definition.function.scope" "parent"))
+  (#set! definition.function.scope "parent"))
 
 ; Lambda
 ; lambda names are not accessible and are only for debugging.
@@ -74,7 +74,7 @@
 ; Class
 ((class_definition
   (name) @local.definition.type)
-  (#set! "definition.type.scope" "parent"))
+  (#set! definition.type.scope "parent"))
 
 (class_definition
   (body
@@ -102,7 +102,7 @@
   (body
     (function_definition
       (name) @local.definition.method)))
-  (#set! "definition.method.scope" "parent"))
+  (#set! definition.method.scope "parent"))
 
 ; Enum
 (enum_definition

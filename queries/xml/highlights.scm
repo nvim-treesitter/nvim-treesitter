@@ -54,7 +54,7 @@
   (CDStart) @module
   (CData) @markup.raw
   "]]>" @module)
-  (#set! "priority" 105))
+  (#set! priority 105))
 
 ; Delimiters & punctuation
 [

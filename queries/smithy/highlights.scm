@@ -51,7 +51,7 @@
 
 (trait_statement
   (shape_id
-    (#set! "priority" 105)) @attribute)
+    (#set! priority 105)) @attribute)
 
 ; Operators
 [

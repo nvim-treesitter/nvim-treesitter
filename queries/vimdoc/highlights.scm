@@ -41,7 +41,7 @@
   text: (_) @markup.raw)
 
 ((codeblock) @markup.raw.block
-  (#set! "priority" 90))
+  (#set! priority 90))
 
 (codeblock
   ">" @markup.raw
@@ -60,7 +60,7 @@
 (keycode) @string.special
 
 ((url) @string.special.url
-  (#set! @string.special.url "url" @string.special.url))
+  (#set! @string.special.url url @string.special.url))
 
 (modeline) @keyword.directive
 
