@@ -69,7 +69,7 @@
   (ExternalID
     (SystemLiteral
       (URI) @string.special.url))
-  (#set! "priority" 105))
+  (#set! priority 105))
 
 ; Attlist declaration
 (AttlistDecl

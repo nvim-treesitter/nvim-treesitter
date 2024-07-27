@@ -22,7 +22,7 @@
   (raw_block)
   (frontmatter)
 ] @markup.raw.block
-  (#set! "priority" 90))
+  (#set! priority 90))
 
 ; Remove @markup.raw for code with a language spec
 (code_block
@@ -30,7 +30,7 @@
   (code_block_marker_begin)
   (language)
   (code) @none
-  (#set! "priority" 90))
+  (#set! priority 90))
 
 [
   (code_block_marker_begin)
@@ -204,12 +204,12 @@
   (#set! conceal ""))
 
 ((math) @markup.math
-  (#set! "priority" 90))
+  (#set! priority 90))
 
 (verbatim) @markup.raw
 
 ((raw_inline) @markup.raw
-  (#set! "priority" 90))
+  (#set! priority 90))
 
 (comment
   "%" @comment

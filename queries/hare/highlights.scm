@@ -39,7 +39,7 @@
 
 ((scoped_type_identifier
   path: (_) @module)
-  (#set! "priority" 105))
+  (#set! priority 105))
 
 ; Keywords
 [
@@ -93,7 +93,7 @@
 
 ; Labels
 ((label) @label
-  (#set! "priority" 105))
+  (#set! priority 105))
 
 ; Functions
 (function_declaration
@@ -144,7 +144,7 @@
 ((member_expression
   "."
   (_) @variable.member)
-  (#set! "priority" 105))
+  (#set! priority 105))
 
 (field
   .

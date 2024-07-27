@@ -11,7 +11,7 @@
 ; have multiple highlight groups applied to them.
 ; >> Literals
 ((dis_expr) @comment
-  (#set! "priority" 105)
+  (#set! priority 105)
   ; Higher priority to mark the whole sexpr as a comment
   )
 

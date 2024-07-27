@@ -1,5 +1,5 @@
 ((atom) @constant
-  (#set! "priority" "90"))
+  (#set! priority "90"))
 
 (var) @variable
 
@@ -86,15 +86,15 @@
 
 ; Macros
 ((macro_call_expr) @constant.macro
-  (#set! "priority" 101))
+  (#set! priority 101))
 
 ; Preprocessor
 (pp_define
   lhs: _ @constant.macro
-  (#set! "priority" 101))
+  (#set! priority 101))
 
 (_preprocessor_directive) @keyword.directive
-(#set! "priority" 99)
+(#set! priority 99)
 
 ; Attributes
 (pp_include) @keyword.import
@@ -108,7 +108,7 @@
 (export_type_attribute
   types: (fa
     fun: _ @type
-    (#set! "priority" 101)))
+    (#set! priority 101)))
 
 (behaviour_attribute) @keyword.import
 

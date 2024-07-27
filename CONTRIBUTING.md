@@ -287,7 +287,7 @@ A conceal can be restricted to part of the capture via the [`#offset!` directive
 #### Priority
 
 Captures can be assigned a priority to control precedence of highlights via the
-`#set! "priority" <number>` directive (see `:h treesitter-highlight-priority`).
+`#set! priority <number>` directive (see `:h treesitter-highlight-priority`).
 The default priority for treesitter highlights is `100`; queries should only
 set priorities between `90` and `120`, to avoid conflict with other sources of
 highlighting (such as diagnostics or LSP semantic tokens).
@@ -336,7 +336,7 @@ doSomething(); // Should point to the declaration as the definition
 ```query
 (function_declaration
   ((identifier) @local.definition.var)
-   (#set! "definition.var.scope" "parent"))
+   (#set! definition.var.scope "parent"))
 ```
 
 Possible scope values are:

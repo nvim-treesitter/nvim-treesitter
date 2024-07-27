@@ -1,5 +1,5 @@
 ((tag_name) @keyword
-  (#set! "priority" 105))
+  (#set! priority 105))
 
 [
   "@code"

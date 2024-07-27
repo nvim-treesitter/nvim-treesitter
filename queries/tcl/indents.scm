@@ -16,8 +16,8 @@
   (expr)
   (arguments)
 ] @indent.align
-  (#set! "indent.open_delimiter" "{")
-  (#set! "indent.close_delimiter" "}"))
+  (#set! indent.open_delimiter "{")
+  (#set! indent.close_delimiter "}"))
 
 [
   "}"

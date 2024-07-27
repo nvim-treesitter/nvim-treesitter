@@ -14,22 +14,22 @@
 ; Definitions {{{
 (type_declaration
   name: (identifier) @local.definition.type
-  (#set! "definition.var.scope" "parent"))
+  (#set! definition.var.scope "parent"))
 
 (parameters
   name: (identifier) @local.definition.parameter)
 
 (function_declaration
   name: (identifier) @local.definition.function
-  (#set! "definition.var.scope" "parent"))
+  (#set! definition.var.scope "parent"))
 
 (primitive_declaration
   name: (identifier) @local.definition.function
-  (#set! "definition.var.scope" "parent"))
+  (#set! definition.var.scope "parent"))
 
 (variable_declaration
   name: (identifier) @local.definition.var
-  (#set! "definition.var.scope" "parent"))
+  (#set! definition.var.scope "parent"))
 
 ; }}}
 ; References {{{

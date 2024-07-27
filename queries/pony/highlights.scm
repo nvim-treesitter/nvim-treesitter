@@ -133,7 +133,7 @@
 
 ((ffi_method
   (string) @string.special)
-  (#set! "priority" 105))
+  (#set! priority 105))
 
 (call_expression
   callee: [

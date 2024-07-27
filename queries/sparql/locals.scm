@@ -4,11 +4,11 @@
 ((sub_select
   (select_clause
     (var) @local.definition.var))
-  (#set! "definition.var.scope" "parent"))
+  (#set! definition.var.scope "parent"))
 
 ((select_query
   (select_clause
     (var) @local.definition.var))
-  (#set! "definition.var.scope" "parent"))
+  (#set! definition.var.scope "parent"))
 
 (var) @local.reference

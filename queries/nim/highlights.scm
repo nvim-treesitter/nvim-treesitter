@@ -4,7 +4,7 @@
 ; =============================================================================
 ; catch all rules
 ((identifier) @variable
-  (#set! "priority" 99))
+  (#set! priority 99))
 
 ; NOTE: we need priority, since (identifier) is most specific and we have to
 ; capture nodes containing (identifier) as a whole, while overruling the
@@ -12,7 +12,7 @@
 (type_expression) @type
 
 ; NOTE: has to be after
-; ((identifier) @variable (#set! "priority" 99))
+; ((identifier) @variable (#set! priority 99))
 ; overrule identifiers in pragmas in (proc_type)s and (pragma_expression)s
 (proc_type
   pragmas: (pragma_list) @variable)

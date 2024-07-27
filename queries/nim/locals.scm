@@ -33,7 +33,7 @@
     (exported_symbol
       (accent_quoted) @local.definition.function)
   ]
-  (#set! "definition.function.scope" "parent"))
+  (#set! definition.function.scope "parent"))
 
 (func_declaration
   name: [
@@ -44,7 +44,7 @@
     (exported_symbol
       (accent_quoted) @local.definition.function)
   ]
-  (#set! "definition.function.scope" "parent"))
+  (#set! definition.function.scope "parent"))
 
 (iterator_declaration
   name: [
@@ -55,7 +55,7 @@
     (exported_symbol
       (accent_quoted) @local.definition.function)
   ]
-  (#set! "definition.function.scope" "parent"))
+  (#set! definition.function.scope "parent"))
 
 (converter_declaration
   name: [
@@ -66,7 +66,7 @@
     (exported_symbol
       (accent_quoted) @local.definition.function)
   ]
-  (#set! "definition.function.scope" "parent"))
+  (#set! definition.function.scope "parent"))
 
 ; ==============================================================================
 ; @local.definition.method     ; methods
@@ -79,7 +79,7 @@
     (exported_symbol
       (accent_quoted) @local.definition.method)
   ]
-  (#set! "definition.method.scope" "parent"))
+  (#set! definition.method.scope "parent"))
 
 ; ==============================================================================
 ; @local.definition.var        ; variables
@@ -193,7 +193,7 @@
     (exported_symbol
       (accent_quoted) @local.definition.macro)
   ]
-  (#set! "definition.macro.scope" "parent"))
+  (#set! definition.macro.scope "parent"))
 
 (macro_declaration
   name: [
@@ -204,7 +204,7 @@
     (exported_symbol
       (accent_quoted) @local.definition.macro)
   ]
-  (#set! "definition.macro.scope" "parent"))
+  (#set! definition.macro.scope "parent"))
 
 ; ==============================================================================
 ; @local.definition.type       ; types or classes

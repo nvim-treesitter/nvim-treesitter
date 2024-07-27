@@ -181,7 +181,7 @@
   (address_literal)
   (signature_literal)
   ((affine_group_literal)
-    (#set! "priority" 101))
+    (#set! priority 101))
   (field_literal)
   (product_group_literal)
   (scalar_literal)
