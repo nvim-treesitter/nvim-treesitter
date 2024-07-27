@@ -21,11 +21,8 @@
 ] @indent.branch @indent.end
 
 (jsx_self_closing_element
-  "/" @indent.branch)
-
-(jsx_self_closing_element
-  "/"
-  ">" @indent.end)
+  "/" @indent.branch
+  ">"? @indent.end)
 
 ; </> is captured as 3 different anonymous nodes
 (jsx_fragment
