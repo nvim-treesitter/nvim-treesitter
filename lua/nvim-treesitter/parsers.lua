@@ -2398,6 +2398,14 @@ list.vimdoc = {
   maintainers = { "@clason" },
 }
 
+list.vrl = {
+  install_info = {
+    url = "https://github.com/belltoy/tree-sitter-vrl",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@belltoy" },
+}
+
 list.vue = {
   install_info = {
     url = "https://github.com/tree-sitter-grammars/tree-sitter-vue",

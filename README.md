@@ -451,6 +451,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [vhs](https://github.com/charmbracelet/tree-sitter-vhs) (maintained by @caarlos0)
 - [x] [vim](https://github.com/neovim/tree-sitter-vim) (maintained by @clason)
 - [x] [vimdoc](https://github.com/neovim/tree-sitter-vimdoc) (maintained by @clason)
+- [x] [vrl](https://github.com/belltoy/tree-sitter-vrl) (maintained by @belltoy)
 - [x] [vue](https://github.com/tree-sitter-grammars/tree-sitter-vue) (maintained by @WhyNotHugo, @lucario387)
 - [x] [wgsl](https://github.com/szebniok/tree-sitter-wgsl) (maintained by @szebniok)
 - [x] [wgsl_bevy](https://github.com/theHamsta/tree-sitter-wgsl-bevy) (maintained by @theHamsta)
