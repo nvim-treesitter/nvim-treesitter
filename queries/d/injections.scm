@@ -3,11 +3,12 @@
 
 ((call_expression
   (type) @_printf
-  (arguments
+  (named_arguments
     "("
     .
-    (expression
-      (string_literal) @injection.content)))
+    (named_argument
+      (expression
+        (string_literal) @injection.content))))
   (#eq? @_printf "printf")
   (#offset! @injection.content 0 1 0 -1)
   (#set! injection.language "printf"))
