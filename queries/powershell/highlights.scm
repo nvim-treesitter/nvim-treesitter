@@ -145,6 +145,11 @@
 
 (comment) @comment @spell
 
+((program
+  .
+  (comment) @keyword.directive)
+  (#lua-match? @keyword.directive "^#!/"))
+
 ; Booleans
 ;---------
 ([
