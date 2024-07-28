@@ -833,6 +833,9 @@
   "vimdoc": {
     "revision": "2249c44ecd3f5cf22da3dcccfb74f816ddb29245"
   },
+  "vrl": {
+    "revision": "274b3ce63f72aa8ffea18e7fc280d3062d28f0ba"
+  },
   "vue": {
     "revision": "22bdfa6c9fc0f5ffa44c6e938ec46869ac8a99ff"
   },
