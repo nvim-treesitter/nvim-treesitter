@@ -102,7 +102,7 @@
     "revision": "8a5f273bfa281c66354da562f2307c2d394b6c81"
   },
   "d": {
-    "revision": "f0fb364270b1a5a086b2b6b8cb7eb1a3fb9d9a8e"
+    "revision": "c067ff38b84d860c993d8b8906124e96694593e4"
   },
   "dart": {
     "revision": "ac0bb849ccd1a923963af47573b5e396736ff582"
@@ -375,7 +375,7 @@
     "revision": "b37e3d58e5c5cf8d739b315d6114e02d42e66664"
   },
   "kotlin": {
-    "revision": "c9cb8504b81684375e7beb8907517dbd6947a1be"
+    "revision": "3d81f4dcb382be4a3ae9c807f00c722212474432"
   },
   "koto": {
     "revision": "d4109879ba1387d19095269a7473bd7d274ab848"
@@ -543,10 +543,10 @@
     "revision": "eca2596a355b1a9952b4f80f8f9caed300a272b5"
   },
   "problog": {
-    "revision": "d8bc22c007825d3af3d62b4326f9d8f9ca529974"
+    "revision": "93c69d2f84d8a167c0a3f4a8d51ccefe365a4dc8"
   },
   "prolog": {
-    "revision": "d8bc22c007825d3af3d62b4326f9d8f9ca529974"
+    "revision": "93c69d2f84d8a167c0a3f4a8d51ccefe365a4dc8"
   },
   "promql": {
     "revision": "77625d78eebc3ffc44d114a07b2f348dff3061b0"
@@ -621,7 +621,7 @@
     "revision": "5ad9b7581b3334f6ad492847d007f2fac6e6e5f2"
   },
   "rescript": {
-    "revision": "444c127686714b2358622427c3bdba7eb09021c6"
+    "revision": "4606cd81c4c31d1d02390fee530858323410a74c"
   },
   "rnoweb": {
     "revision": "1a74dc0ed731ad07db39f063e2c5a6fe528cae7f"
