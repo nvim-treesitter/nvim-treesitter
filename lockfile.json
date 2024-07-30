@@ -102,7 +102,7 @@
     "revision": "8a5f273bfa281c66354da562f2307c2d394b6c81"
   },
   "d": {
-    "revision": "c067ff38b84d860c993d8b8906124e96694593e4"
+    "revision": "ac584585a15c4cacd6cda8e6bfe7cb1ca7b3898e"
   },
   "dart": {
     "revision": "ac0bb849ccd1a923963af47573b5e396736ff582"
@@ -366,7 +366,7 @@
     "revision": "f1baa5f8e271109d01cc8ff7473c11df2d8a9aee"
   },
   "just": {
-    "revision": "379fbe36d1e441bc9414ea050ad0c85c9d6935ea"
+    "revision": "6648ac1c0cdadaec8ee8bcf9a4ca6ace5102cf21"
   },
   "kconfig": {
     "revision": "486fea71f61ad9f3fd4072a118402e97fe88d26c"
@@ -375,7 +375,7 @@
     "revision": "b37e3d58e5c5cf8d739b315d6114e02d42e66664"
   },
   "kotlin": {
-    "revision": "3d81f4dcb382be4a3ae9c807f00c722212474432"
+    "revision": "fe73604cca8cac5c8756b286e7eeb1821852b7dc"
   },
   "koto": {
     "revision": "d4109879ba1387d19095269a7473bd7d274ab848"
@@ -846,7 +846,7 @@
     "revision": "bd1d35cf3e013dc7e189b46a593bdc2b281b0dd7"
   },
   "wit": {
-    "revision": "cd7e6534fd9a22e3e9a7a85feecf4e35461e47cb"
+    "revision": "c52f0b07786603df17ad0197f6cef680f312eb2c"
   },
   "xcompose": {
     "revision": "fff3e72242aa110ebba6441946ea4d12d200fa68"
