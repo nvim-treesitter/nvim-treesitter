@@ -67,7 +67,10 @@
   "enum"
 ] @keyword.type
 
-(class_attribute) @keyword.modifier
+[
+  "data"
+  (class_attribute)
+] @keyword.modifier
 
 [
   "throw"
@@ -87,8 +90,6 @@
   "begin"
   "process"
   "end"
-  ; TODO: not supported by parser yet, can be used to declare constants
-  "data"
 ] @keyword
 
 ; Operators
