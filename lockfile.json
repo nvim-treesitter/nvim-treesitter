@@ -315,10 +315,10 @@
     "revision": "ea71012d3fe14dd0b69f36be4f96bdfe9155ebae"
   },
   "http": {
-    "revision": "e061995f0caf2fa30f68fa1fdf2c08bcbd4629a8"
+    "revision": "5ae6c7cfa62a7d7325c26171a1de4f6b866702b5"
   },
   "hurl": {
-    "revision": "ad705af8c44c737bdb965fc081329c50716d2d03"
+    "revision": "fba6ed8db3a009b9e7d656511931b181a3ee5b08"
   },
   "hyprlang": {
     "revision": "6858695eba0e63b9e0fceef081d291eb352abce8"
@@ -432,7 +432,7 @@
     "revision": "7fe453beacecf02c86f7736439f238f5bb8b5c9b"
   },
   "matlab": {
-    "revision": "821f7bdf9d922822302a0170c2f157e36ffb7a94"
+    "revision": "0d5a05e543af2de60cdb5e71f0f5888c95ab936f"
   },
   "menhir": {
     "revision": "be8866a6bcc2b563ab0de895af69daeffa88fe70"
@@ -690,7 +690,7 @@
     "revision": "d853661ca680d8ff7f8d800182d5782b61d0dd58"
   },
   "sql": {
-    "revision": "a9664463580473e92d8f5e29fa06fb1be88752af"
+    "revision": "b8175006d9c8120d41cf40a4ef3711bbbbc08973"
   },
   "squirrel": {
     "revision": "072c969749e66f000dba35a33c387650e203e96e"
@@ -717,7 +717,7 @@
     "revision": "7ab8221e3f378a3b04b4b488f07c1f408c5bd0d8"
   },
   "swift": {
-    "revision": "b3dc8cc5c266effd7bcfde01aa086b83927f2eda"
+    "revision": "769bb834feb2947f2c706d82830b0a05958727de"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
