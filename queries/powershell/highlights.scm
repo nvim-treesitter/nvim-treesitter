@@ -143,6 +143,9 @@
 ((variable) @variable.builtin
   (#lua-match? @variable.builtin "^\$env:"))
 
+(data_name
+  (simple_name) @constant)
+
 (comment) @comment @spell
 
 ((program
