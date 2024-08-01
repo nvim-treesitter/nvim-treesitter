@@ -144,7 +144,8 @@
   .
   (decl
     name: (variable) @variable)
-  match: (_)(#eq? @_name @variable))
+  match: (_)
+  (#eq? @_name @variable))
 
 ; but consider a type that involves 'IO' a decl/function
 (decl/signature
@@ -161,7 +162,8 @@
   .
   (decl
     name: (variable) @function)
-  match: (_)(#eq? @_name @function))
+  match: (_)
+  (#eq? @_name @function))
 
 ((decl/signature) @function
   .
