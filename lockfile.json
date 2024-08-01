@@ -249,7 +249,7 @@
     "revision": "2ffb90de47417018651fc3b970e5f6b67214dc9d"
   },
   "gomod": {
-    "revision": "bbe2fe3be4b87e06a613e685250f473d2267f430"
+    "revision": "1f55029bacd0a6a11f6eb894c4312d429dcf735c"
   },
   "gosum": {
     "revision": "e2ac513b2240c7ff1069ae33b2df29ce90777c11"
@@ -267,7 +267,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "groovy": {
-    "revision": "391229139d9f79879ccc84cb271889c9240c28a1"
+    "revision": "105ee343682b7eee86b38ec6858a269e16474a72"
   },
   "gstlaunch": {
     "revision": "549aef253fd38a53995cda1bf55c501174372bf7"
@@ -534,7 +534,7 @@
     "revision": "73ff874ae4c9e9b45462673cbc0a1e350e2522a7"
   },
   "powershell": {
-    "revision": "804d86fd4ad286bd0cc1c1f0f7b28bd7af6755ad"
+    "revision": "fc15514b2f1dbba9c58528d15a3708f89eda6a01"
   },
   "printf": {
     "revision": "0e0aceabbf607ea09e03562f5d8a56f048ddea3d"
@@ -633,7 +633,7 @@
     "revision": "8e3a4205b76236bb6dbebdbee5afc262ce38bb62"
   },
   "roc": {
-    "revision": "6ea64b6434a45472bd87b0772fd84a017de0a557"
+    "revision": "ef46edd0c03ea30a22f7e92bc68628fb7231dc8a"
   },
   "ron": {
     "revision": "78938553b93075e638035f624973083451b29055"
