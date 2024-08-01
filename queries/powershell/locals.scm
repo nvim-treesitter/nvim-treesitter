@@ -68,6 +68,10 @@
                           (unary_expression
                             (variable) @local.definition.var))))))))))))))
 
+; data sections
+(data_name
+  (simple_name) @local.definition.var)
+
 ; References
 ;-----------
 (variable) @local.reference
