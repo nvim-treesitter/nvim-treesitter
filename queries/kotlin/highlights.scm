@@ -73,6 +73,8 @@
 (import_header
   "import" @keyword.import)
 
+(wildcard_import) @character.special
+
 ; The last `simple_identifier` in a `import_header` will always either be a function
 ; or a type. Classes can appear anywhere in the import path, unlike functions
 (import_header
