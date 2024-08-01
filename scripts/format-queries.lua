@@ -227,6 +227,7 @@ local format_queries = [[
     (list)
     (predicate)
     (grouping . (_))
+    (field_definition)
     "."
   ] @format.append-newline
   (_) .)

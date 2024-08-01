@@ -14,7 +14,8 @@
 
 (if_statement
   ("("
-    condition: (_)")") @indent.begin)
+    condition: (_)
+    ")") @indent.begin)
 
 [
   "}"
