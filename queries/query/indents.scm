@@ -1,12 +1,10 @@
 [
   (list)
   (named_node)
+  (grouping)
   (predicate)
   "["
 ] @indent.begin
-
-((grouping) @indent.begin
-  (#set! indent.immediate))
 
 ; ERROR node indents
 (ERROR
