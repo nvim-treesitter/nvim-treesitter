@@ -375,7 +375,7 @@
     "revision": "b37e3d58e5c5cf8d739b315d6114e02d42e66664"
   },
   "kotlin": {
-    "revision": "fe73604cca8cac5c8756b286e7eeb1821852b7dc"
+    "revision": "754394c69811e5b586f16c462855d66dfc747a03"
   },
   "koto": {
     "revision": "d4109879ba1387d19095269a7473bd7d274ab848"
@@ -468,7 +468,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "0fdada10f1f845ca9116e279ad8f5d0ca93e9949"
+    "revision": "68d3b7999ad89d31690461884270e5658e0a22c4"
   },
   "norg": {
     "revision": "aa1a1a7ded81a094cc3d5cb14bea6f34b86d8688"
@@ -507,7 +507,7 @@
     "revision": "217ff2af3f2db15a79ab7e3d21ea1e0c17e71a1a"
   },
   "perl": {
-    "revision": "7581cbf8fb793bce94d0241c89fe49b01b1477f9"
+    "revision": "ccd3070e557516bf27c72d898d2bd3419356e51b"
   },
   "php": {
     "revision": "c07d69739ba71b5a449bdbb7735991f8aabf8546"
