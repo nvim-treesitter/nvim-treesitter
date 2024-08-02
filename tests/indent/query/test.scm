@@ -38,4 +38,13 @@
   "toplevel"
   "list"
 ] @variable
+
+[
+  (parent
+    (child))+
+  (parent
+    (child))*
+  (parent
+    (child))?
+] @cap
 ((
