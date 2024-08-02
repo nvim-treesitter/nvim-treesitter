@@ -43,6 +43,25 @@
   (#set! injection.include-children)
   (#set! injection.language "html"))
 
+; Vercel PostgreSQL
+; foo.sql`...` or foo.sql(`...`)
+(call_expression
+  function: [
+    (await_expression
+      (member_expression
+        property: (property_identifier) @injection.language))
+    (member_expression
+      property: (property_identifier) @injection.language)
+  ]
+  arguments: [
+    (arguments
+      (template_string) @injection.content)
+    (template_string) @injection.content
+  ]
+  (#eq? @injection.language "sql")
+  (#offset! @injection.content 0 1 0 -1)
+  (#set! injection.include-children))
+
 (call_expression
   function: [
     (await_expression
