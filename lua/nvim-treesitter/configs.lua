@@ -409,18 +409,28 @@ end
 ---@param user_data TSConfig module overrides
 function M.setup(user_data)
   config.modules = vim.tbl_deep_extend("force", config.modules, user_data)
-  config.ignore_install = user_data.ignore_install or {}
-  config.parser_install_dir = user_data.parser_install_dir or nil
+  config.ignore_install = vim.tbl_deep_extend("force", config.ignore_install, user_data.ignore_install or {})
+  config.parser_install_dir = user_data.parser_install_dir or config.parser_install_dir
   if config.parser_install_dir then
     config.parser_install_dir = vim.fn.expand(config.parser_install_dir, ":p")
   end
 
-  config.auto_install = user_data.auto_install or false
+  config.auto_install = user_data.auto_install or config.auto_install
   if config.auto_install then
     require("nvim-treesitter.install").setup_auto_install()
   end
 
-  local ensure_installed = user_data.ensure_installed or {}
+  local ensure_installed = config.ensure_installed
+
+  if type(config.ensure_installed) == "string" or type(user_data.ensure_installed) == "string" then
+    -- there's no need to extend existing config
+    ensure_installed = user_data.ensure_installed or config.ensure_installed
+  elseif type(config.ensure_installed) == "table" and type(user_data.ensure_installed) == "table" then
+    -- extend existing config
+    ---@diagnostic disable-next-line: param-type-mismatch
+    ensure_installed = vim.tbl_extend("force", config.ensure_installed, user_data.ensure_installed or {})
+  end
+
   if #ensure_installed > 0 then
     if user_data.sync_install then
       require("nvim-treesitter.install").ensure_installed_sync(ensure_installed)
