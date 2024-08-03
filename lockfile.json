@@ -96,7 +96,7 @@
     "revision": "7eb7297823605392d2bbcc4c09b1cd18d6fa9529"
   },
   "cuda": {
-    "revision": "07f2f157d484a27dc91c04cc116f94f6fd4fc654"
+    "revision": "7c97acb8398734d790c86210c53c320df61ff66b"
   },
   "cue": {
     "revision": "8a5f273bfa281c66354da562f2307c2d394b6c81"
@@ -297,7 +297,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "80517ca13317fb8591503c0d99f2ad76e8979a72"
+    "revision": "81dbfa44a2e0f9e36d16f449fc792020e2f38426"
   },
   "hlsplaylist": {
     "revision": "64f19029339e75d6762feae39e7878595860c980"
@@ -375,7 +375,7 @@
     "revision": "b37e3d58e5c5cf8d739b315d6114e02d42e66664"
   },
   "kotlin": {
-    "revision": "754394c69811e5b586f16c462855d66dfc747a03"
+    "revision": "8d9d372b09fa4c3735657c5fc2ad03e53a5f05f5"
   },
   "koto": {
     "revision": "d4109879ba1387d19095269a7473bd7d274ab848"
@@ -660,7 +660,7 @@
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
   },
   "slang": {
-    "revision": "ea77a4d91dd93f4483965efcc41f3faebb9131c8"
+    "revision": "d84b43d75d65bbc4ba57166ce17555f32c0b8983"
   },
   "slint": {
     "revision": "4a0558cc0fcd7a6110815b9bbd7cc12d7ab31e74"
@@ -786,7 +786,7 @@
     "revision": "198d03553f43a45b92ac5d0ee167db3fec6a6fd6"
   },
   "typespec": {
-    "revision": "28821d0d6da5f0a6b5eb02b9bad953fecafd7248"
+    "revision": "af7a97eea5d4c62473b29655a238d4f4e055798b"
   },
   "typoscript": {
     "revision": "43b221c0b76e77244efdaa9963e402a17c930fbc"
@@ -828,7 +828,7 @@
     "revision": "90028bbadb267ead5b87830380f6a825147f0c0f"
   },
   "vim": {
-    "revision": "b448ca63f972ade12c373c808acdd2bf972937db"
+    "revision": "f3cd62d8bd043ef20507e84bb6b4b53731ccf3a7"
   },
   "vimdoc": {
     "revision": "2249c44ecd3f5cf22da3dcccfb74f816ddb29245"
