@@ -507,7 +507,7 @@
     "revision": "217ff2af3f2db15a79ab7e3d21ea1e0c17e71a1a"
   },
   "perl": {
-    "revision": "ccd3070e557516bf27c72d898d2bd3419356e51b"
+    "revision": "3a21d9cb2a20a062c17f8f53d5983fd473c4673c"
   },
   "php": {
     "revision": "c07d69739ba71b5a449bdbb7735991f8aabf8546"
@@ -786,7 +786,7 @@
     "revision": "198d03553f43a45b92ac5d0ee167db3fec6a6fd6"
   },
   "typespec": {
-    "revision": "af7a97eea5d4c62473b29655a238d4f4e055798b"
+    "revision": "0ee05546d73d8eb64635ed8125de6f35c77759fe"
   },
   "typoscript": {
     "revision": "43b221c0b76e77244efdaa9963e402a17c930fbc"
