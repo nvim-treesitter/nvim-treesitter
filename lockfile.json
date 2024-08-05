@@ -9,7 +9,7 @@
     "revision": "31182d43b062a350d4bd2449f2fc0d5654972be9"
   },
   "apex": {
-    "revision": "c99ad4b16d112fea91745e3f1b769754239fdaba"
+    "revision": "c7518e9289241d7e9f3d522da994b9bdbea99b33"
   },
   "arduino": {
     "revision": "afb34b2c65f507932c5c6ddbf0d5a9ca6a772f2f"
@@ -300,7 +300,7 @@
     "revision": "81dbfa44a2e0f9e36d16f449fc792020e2f38426"
   },
   "hlsplaylist": {
-    "revision": "64f19029339e75d6762feae39e7878595860c980"
+    "revision": "3bfda9271e3adb08d35f47a2102fe957009e1c55"
   },
   "hocon": {
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
@@ -447,7 +447,7 @@
     "revision": "affbd6f3b08155826a22cfa8373147acbf60f1f1"
   },
   "muttrc": {
-    "revision": "90ef60852c410bd964cd3b954366e4c403c17314"
+    "revision": "173b0ab53a9c07962c9777189c4c70e90f1c1837"
   },
   "nasm": {
     "revision": "570f3d7be01fffc751237f4cfcf52d04e20532d1"
@@ -468,7 +468,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "68d3b7999ad89d31690461884270e5658e0a22c4"
+    "revision": "919613dcff7bdc38b946ea5f767dec25ee1ed129"
   },
   "norg": {
     "revision": "aa1a1a7ded81a094cc3d5cb14bea6f34b86d8688"
@@ -678,10 +678,10 @@
     "revision": "ee5a2d2ba30b487c4bbf613d2ef310a454c09c7c"
   },
   "soql": {
-    "revision": "c99ad4b16d112fea91745e3f1b769754239fdaba"
+    "revision": "c7518e9289241d7e9f3d522da994b9bdbea99b33"
   },
   "sosl": {
-    "revision": "c99ad4b16d112fea91745e3f1b769754239fdaba"
+    "revision": "c7518e9289241d7e9f3d522da994b9bdbea99b33"
   },
   "sourcepawn": {
     "revision": "6b9bf9cbab91443380d2ca8a2f6c491cc7fac5bf"
@@ -762,7 +762,7 @@
     "revision": "bba02e79f85e335f310fc95e21c677e49f2c4439"
   },
   "tmux": {
-    "revision": "9138ea508410e0f34da2666609f600f65e944f22"
+    "revision": "0252ecd080016e45e6305ef1a943388f5ae2f4b4"
   },
   "todotxt": {
     "revision": "3937c5cd105ec4127448651a21aef45f52d19609"
@@ -867,7 +867,7 @@
     "revision": "e877f6ade4b77d5ef8787075141053631ba12318"
   },
   "zathurarc": {
-    "revision": "6e7c8edfcd6f5f7c12b2fa9ffc6d042f1b6d7068"
+    "revision": "0554b4a5d313244b7fc000cbb41c04afae4f4e31"
   },
   "zig": {
     "revision": "2bac4cc6c697d46a193905fef6d003bfa0bfabfd"
