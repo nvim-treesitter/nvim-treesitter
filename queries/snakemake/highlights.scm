@@ -13,10 +13,9 @@
     name: _ @keyword))
 
 ; Subordinate directives (eg. input, output)
-(_
-  body: (_
-    (directive
-      name: _ @label)))
+body: (_
+  (directive
+    name: _ @label))
 
 ; rule/module/checkpoint names
 (rule_definition
@@ -30,11 +29,14 @@
 
 ; Rule imports
 (rule_import
-  "use" @keyword.import
-  "rule" @keyword.import
-  "from" @keyword.import
-  "as"? @keyword.import
-  "with"? @keyword.import)
+  [
+    "use"
+    "rule"
+    "from"
+    "exclude"
+    "as"
+    "with"
+  ] @keyword.import)
 
 ; Rule inheritance
 (rule_inheritance
@@ -44,7 +46,9 @@
 
 ; Wildcard names
 (wildcard
-  (identifier) @variable
+  (identifier) @variable)
+
+(wildcard
   (flag) @variable.parameter.builtin)
 
 ; builtin variables
