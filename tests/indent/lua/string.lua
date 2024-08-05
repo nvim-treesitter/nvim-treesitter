@@ -3,3 +3,7 @@ a
   multiline
     string
 ]]
+
+print [[
+test
+]]
