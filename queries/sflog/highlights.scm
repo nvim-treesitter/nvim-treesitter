@@ -3,7 +3,7 @@
 
 (identifier) @variable
 
-(version) @number.readonly
+(version) @number
 
 (namespace) @variable
 
@@ -16,10 +16,10 @@
   (number) @number)
 
 (duration
-  (number) @number.readonly) @string
+  (number) @number) @string
 
 (location
-  (number) @number.readonly) @string
+  (number) @number) @string
 
 (event_detail
   (event_detail_value) @string)
