@@ -9,7 +9,7 @@
     "revision": "31182d43b062a350d4bd2449f2fc0d5654972be9"
   },
   "apex": {
-    "revision": "c7518e9289241d7e9f3d522da994b9bdbea99b33"
+    "revision": "caffc6ebd1ab16ba4d4dec367cebb03ca2411872"
   },
   "arduino": {
     "revision": "afb34b2c65f507932c5c6ddbf0d5a9ca6a772f2f"
@@ -33,7 +33,7 @@
     "revision": "28dc7059722be090d04cd751aed915b2fee2f89a"
   },
   "beancount": {
-    "revision": "384c55ede2a1f13e83d8e18dbef8f11304c379c2"
+    "revision": "01c0da29e0fc7130420a09d939ecc524e09b6ba6"
   },
   "bibtex": {
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
@@ -324,7 +324,7 @@
     "revision": "6858695eba0e63b9e0fceef081d291eb352abce8"
   },
   "idl": {
-    "revision": "1a6683f6809f7bc630f10fcad7d9ac6471deb706"
+    "revision": "4eb0e642c02420ba32e9435c1038080a6b5b6877"
   },
   "ini": {
     "revision": "87176e524f0a98f5be75fa44f4f0ff5c6eac069c"
@@ -672,16 +672,16 @@
     "revision": "fa898ac0885d1da9a253695c3e0e91f5efc587cd"
   },
   "snakemake": {
-    "revision": "46d4de8e6cfca8a97c0489aea936bb15beeaf666"
+    "revision": "e909815acdbe37e69440261ebb1091ed52e1dec6"
   },
   "solidity": {
     "revision": "ee5a2d2ba30b487c4bbf613d2ef310a454c09c7c"
   },
   "soql": {
-    "revision": "c7518e9289241d7e9f3d522da994b9bdbea99b33"
+    "revision": "caffc6ebd1ab16ba4d4dec367cebb03ca2411872"
   },
   "sosl": {
-    "revision": "c7518e9289241d7e9f3d522da994b9bdbea99b33"
+    "revision": "caffc6ebd1ab16ba4d4dec367cebb03ca2411872"
   },
   "sourcepawn": {
     "revision": "6b9bf9cbab91443380d2ca8a2f6c491cc7fac5bf"
