@@ -1908,6 +1908,15 @@ list.scss = {
   maintainers = { "@elianiva" },
 }
 
+list.sflog = {
+  install_info = {
+    url = "https://github.com/aheber/tree-sitter-sfapex",
+    files = { "src/parser.c" },
+    location = "sflog",
+  },
+  maintainers = { "@aheber" },
+}
+
 list.slang = {
   install_info = {
     url = "https://github.com/theHamsta/tree-sitter-slang",
