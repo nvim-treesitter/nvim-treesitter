@@ -3,7 +3,7 @@
 
 (identifier) @variable
 
-(version) @number
+(version) @string.special
 
 (namespace) @variable
 
