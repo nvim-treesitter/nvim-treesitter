@@ -32,9 +32,18 @@
 ("continue" @keyword.repeat
   (block))
 
+[
+  "try"
+  "catch"
+  "finally"
+] @keyword.exception
+
 "return" @keyword.return
 
-"sub" @keyword.function
+[
+  "sub"
+  "method"
+] @keyword.function
 
 [
   "map"
@@ -42,14 +51,20 @@
   "sort"
 ] @function.builtin
 
-"package" @keyword.import
+[
+  "package"
+  "class"
+] @keyword.import
 
 [
+  "defer"
   "do"
+  "eval"
   "my"
   "our"
   "local"
   "state"
+  "field"
   "last"
   "next"
   "redo"
@@ -129,10 +144,16 @@
 (package_statement
   (package) @type)
 
+(class_statement
+  (package) @type)
+
 (require_expression
   (bareword) @type)
 
 (subroutine_declaration_statement
+  name: (bareword) @function)
+
+(method_declaration_statement
   name: (bareword) @function)
 
 (attribute_name) @attribute
