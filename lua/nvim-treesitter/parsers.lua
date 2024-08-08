@@ -98,7 +98,7 @@ list.apex = {
     files = { "src/parser.c" },
     location = "apex",
   },
-  maintainers = { "@xixiaofinland" },
+  maintainers = { "@aheber", "@xixiaofinland" },
 }
 
 list.arduino = {
@@ -1914,7 +1914,7 @@ list.sflog = {
     files = { "src/parser.c" },
     location = "sflog",
   },
-  maintainers = { "@xixiaofinland" },
+  maintainers = { "@aheber", "@xixiaofinland" },
 }
 
 list.slang = {
@@ -1975,7 +1975,7 @@ list.soql = {
     files = { "src/parser.c" },
     location = "soql",
   },
-  maintainers = { "@xixiaofinland" },
+  maintainers = { "@aheber", "@xixiaofinland" },
 }
 
 list.sosl = {
@@ -1984,7 +1984,7 @@ list.sosl = {
     files = { "src/parser.c" },
     location = "sosl",
   },
-  maintainers = { "@xixiaofinland" },
+  maintainers = { "@aheber", "@xixiaofinland" },
 }
 
 list.sourcepawn = {
