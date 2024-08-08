@@ -297,7 +297,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "81dbfa44a2e0f9e36d16f449fc792020e2f38426"
+    "revision": "5d788a46727c8199a7c63a3c849092e0364375b6"
   },
   "hlsplaylist": {
     "revision": "3bfda9271e3adb08d35f47a2102fe957009e1c55"
@@ -324,7 +324,7 @@
     "revision": "6858695eba0e63b9e0fceef081d291eb352abce8"
   },
   "idl": {
-    "revision": "1ad1289813e237cb98cf8e5c3e792c8d2353acc6"
+    "revision": "e2fa5d23a3f1854d5608454ac8773feb181aa0e7"
   },
   "ini": {
     "revision": "87176e524f0a98f5be75fa44f4f0ff5c6eac069c"
@@ -468,7 +468,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "919613dcff7bdc38b946ea5f767dec25ee1ed129"
+    "revision": "486bb0337ee94575f53367b53bffeaea99063f2c"
   },
   "norg": {
     "revision": "aa1a1a7ded81a094cc3d5cb14bea6f34b86d8688"
@@ -498,7 +498,7 @@
     "revision": "64cfbc213f5a83da17632c95382a5a0a2f3357c1"
   },
   "pascal": {
-    "revision": "a9ee969dec5b2e3b2ccccc5954fec04100c7619e"
+    "revision": "d0ebabefaea9ac3f6fc3004cf08cd121b66da9e4"
   },
   "passwd": {
     "revision": "20239395eacdc2e0923a7e5683ad3605aee7b716"
@@ -648,7 +648,7 @@
     "revision": "9c84af007b0f144954adb26b3f336495cbb320a7"
   },
   "scala": {
-    "revision": "c694c1b623fa11a6b4f901b4ec713cc2265bebcc"
+    "revision": "999f21869645d2b19465adc912caf83d95f82be0"
   },
   "scfg": {
     "revision": "a5512800ea0220da4abbae61b8aea8423d1549aa"
@@ -690,7 +690,7 @@
     "revision": "d853661ca680d8ff7f8d800182d5782b61d0dd58"
   },
   "sql": {
-    "revision": "b8175006d9c8120d41cf40a4ef3711bbbbc08973"
+    "revision": "3f51da54347f4561541c71b0d384ca3ef3b38d9d"
   },
   "squirrel": {
     "revision": "072c969749e66f000dba35a33c387650e203e96e"
@@ -723,7 +723,7 @@
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
   },
   "systemtap": {
-    "revision": "1af543a96d060b1f808982037bfc54cc02218edd"
+    "revision": "f2b378a9af0b7e1192cff67a5fb45508c927205d"
   },
   "systemverilog": {
     "revision": "4f897d5e3f0e38bf8fbb55e8f39dc97d2bc2229e"
