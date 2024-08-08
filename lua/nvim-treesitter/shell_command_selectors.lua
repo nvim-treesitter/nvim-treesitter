@@ -307,6 +307,7 @@ function M.select_download_commands(repo, project_name, cache_folder, revision, 
         vim.api.nvim_err_writeln(
           string.format(
             "Cannot install %s with git in an active git session. Exit the session and run ':TSInstall %s' manually",
+            project_name,
             project_name
           )
         )
