@@ -59,9 +59,6 @@ require'nvim-treesitter'.setup {
   -- List of parsers to ignore installing
   ignore_install = { 'unsupported' },
 
-  -- Automatically install missing parsers when entering buffer
-  auto_install = false,
-
   -- Directory to install parsers and queries to
   install_dir = vim.fn.stdpath('data') .. '/site'
 }
