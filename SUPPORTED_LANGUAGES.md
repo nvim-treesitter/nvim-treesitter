@@ -183,8 +183,8 @@ jsx (queries only)[^jsx] | community | `HFIJ ` | @steelsojka
 [passwd](https://github.com/ath3/tree-sitter-passwd) | community | `H    ` | @amaanq
 [pem](https://github.com/tree-sitter-grammars/tree-sitter-pem) | core | `HF J ` | @ObserverOfTime
 [perl](https://github.com/tree-sitter-perl/tree-sitter-perl) | community | `HF J ` | @RabbiVeesh, @LeoNerd
-[php](https://github.com/tree-sitter/tree-sitter-php)[^php] | core | `HFIJL` | @tk-shirasaka
-[php_only](https://github.com/tree-sitter/tree-sitter-php)[^php_only] | core | `HFIJL` | @tk-shirasaka
+[php](https://github.com/tree-sitter/tree-sitter-php)[^php] | core | `HFIJL` | @tk-shirasaka, @calebdw
+[php_only](https://github.com/tree-sitter/tree-sitter-php)[^php_only] | core | `HFIJL` | @tk-shirasaka, @calebdw
 [phpdoc](https://github.com/claytonrcarter/tree-sitter-phpdoc) | community | `H    ` | @mikehaertl
 [pioasm](https://github.com/leo60228/tree-sitter-pioasm) | community | `H  J ` | @leo60228
 [po](https://github.com/tree-sitter-grammars/tree-sitter-po) | core | `HF J ` | @amaanq
@@ -198,7 +198,7 @@ jsx (queries only)[^jsx] | community | `HFIJ ` | @steelsojka
 [prolog](https://github.com/foxyseta/tree-sitter-prolog) | community | `HFIJ ` | @foxyseta
 [promql](https://github.com/MichaHoffmann/tree-sitter-promql) | community | `H  J ` | @MichaHoffmann
 [properties](https://github.com/tree-sitter-grammars/tree-sitter-properties)[^properties] | core | `H  JL` | @ObserverOfTime
-[proto](https://github.com/treywood/tree-sitter-proto) | community | `HF J ` | @treywood
+[proto](https://github.com/treywood/tree-sitter-proto) | community | `HFIJ ` | @treywood
 [prql](https://github.com/PRQL/tree-sitter-prql) | community | `H  J ` | @matthias-Q
 [psv](https://github.com/tree-sitter-grammars/tree-sitter-csv) | core | `H    ` | @amaanq
 [pug](https://github.com/zealot128/tree-sitter-pug) | community | `H  J ` | @zealot128
