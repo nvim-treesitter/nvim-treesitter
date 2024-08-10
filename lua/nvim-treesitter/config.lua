@@ -3,14 +3,12 @@ local M = {}
 M.tiers = { 'stable', 'core', 'community', 'unsupported' }
 
 ---@class TSConfig
----@field auto_install boolean
 ---@field ensure_install string[]
 ---@field ignore_install string[]
 ---@field install_dir string
 
 ---@type TSConfig
 local config = {
-  auto_install = false,
   ensure_install = {},
   ignore_install = { 'unsupported' },
   install_dir = vim.fs.joinpath(vim.fn.stdpath('data'), 'site'),
@@ -26,27 +24,6 @@ function M.setup(user_data)
       vim.opt.runtimepath:append(user_data.install_dir)
     end
     config = vim.tbl_deep_extend('force', config, user_data)
-  end
-
-  if config.auto_install then
-    vim.api.nvim_create_autocmd('FileType', {
-      callback = function(args)
-        local buf = args.buf --- @type integer
-        local ft = vim.bo[buf].filetype
-        local lang = vim.treesitter.language.get_lang(ft) or ft
-        if
-          require('nvim-treesitter.parsers')[lang]
-          and not vim.list_contains(M.installed_parsers(), lang)
-          and not vim.list_contains(config.ignore_install, lang)
-        then
-          require('nvim-treesitter.install').install(lang, nil, function()
-            -- Need to pcall since 'FileType' can be triggered multiple times
-            -- per buffer
-            pcall(vim.treesitter.start, buf, lang)
-          end)
-        end
-      end,
-    })
   end
 
   if #config.ensure_install > 0 then
