@@ -45,9 +45,6 @@ To install supported parsers and queries, put this in your `init.lua` file:
     -- A list of parser names, or "core", "stable", "community", "unstable"
     ensure_install = { "core", "rust" },
 
-    -- Automatically install missing parsers when entering buffer
-    auto_install = false,
-
     -- List of parsers to ignore installing (for "core" etc.)
     ignore_install = { "javascript" },
   }
