@@ -95,6 +95,7 @@
 
 [
   "include"
+  "include_relative"
   "render"
   "section"
   "sections"
