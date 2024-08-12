@@ -25,6 +25,7 @@
   "as"
   "assign"
   "capture"
+  (custom_unpaired_statement)
   "decrement"
   "echo"
   "endcapture"
