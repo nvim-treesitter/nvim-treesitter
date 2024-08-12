@@ -98,7 +98,7 @@ list.apex = {
     files = { "src/parser.c" },
     location = "apex",
   },
-  maintainers = { "@aheber" },
+  maintainers = { "@aheber", "@xixiaofinland" },
 }
 
 list.arduino = {
@@ -1908,6 +1908,15 @@ list.scss = {
   maintainers = { "@elianiva" },
 }
 
+list.sflog = {
+  install_info = {
+    url = "https://github.com/aheber/tree-sitter-sfapex",
+    files = { "src/parser.c" },
+    location = "sflog",
+  },
+  maintainers = { "@aheber", "@xixiaofinland" },
+}
+
 list.slang = {
   install_info = {
     url = "https://github.com/theHamsta/tree-sitter-slang",
@@ -1966,7 +1975,7 @@ list.soql = {
     files = { "src/parser.c" },
     location = "soql",
   },
-  maintainers = { "@aheber" },
+  maintainers = { "@aheber", "@xixiaofinland" },
 }
 
 list.sosl = {
@@ -1975,7 +1984,7 @@ list.sosl = {
     files = { "src/parser.c" },
     location = "sosl",
   },
-  maintainers = { "@aheber" },
+  maintainers = { "@aheber", "@xixiaofinland" },
 }
 
 list.sourcepawn = {

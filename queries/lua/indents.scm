@@ -17,6 +17,7 @@
 [
   "end"
   "}"
+  "]]"
 ] @indent.end
 
 (")" @indent.end

@@ -168,7 +168,7 @@
 
 (preproc_call
   directive: (preproc_directive) @keyword.directive
-  argument: (_) @constant)
+  argument: (_)? @constant)
 
 (module_dcl
   (identifier) @module)
