@@ -267,7 +267,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "groovy": {
-    "revision": "105ee343682b7eee86b38ec6858a269e16474a72"
+    "revision": "6b91d508bee2e7679fcdac5312644fc5e5cfacb8"
   },
   "gstlaunch": {
     "revision": "549aef253fd38a53995cda1bf55c501174372bf7"
@@ -399,7 +399,7 @@
     "revision": "f99011a3554213b654985a4b0a65b3b032ec4621"
   },
   "liquid": {
-    "revision": "7862a3424832c3a9d45eb21143b375837bd6573b"
+    "revision": "f84c94a4c0e93fe1231f6cda9c3a14df9c839ab2"
   },
   "liquidsoap": {
     "revision": "14feafa91630afb1ab9988cf9b738b7ea29f3f89"
@@ -648,7 +648,7 @@
     "revision": "9c84af007b0f144954adb26b3f336495cbb320a7"
   },
   "scala": {
-    "revision": "be7184df70dd3b5790becfb2c93ba796b2797781"
+    "revision": "ae9db4bdea5f90751718f4f9a90551c809d180f7"
   },
   "scfg": {
     "revision": "a5512800ea0220da4abbae61b8aea8423d1549aa"
@@ -747,7 +747,7 @@
     "revision": "19b02da829d1721a521bf7b802eb80a50bd53aab"
   },
   "templ": {
-    "revision": "de0d0ee129cf643872e8e0d5c4a6589b5a3aae23"
+    "revision": "4dc2c5e2b5469dc35afc3cfae4c3783d971fd51b"
   },
   "terraform": {
     "revision": "9e3ec9848f28d26845ba300fd73c740459b83e9b"
