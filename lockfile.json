@@ -344,6 +344,9 @@
   "javascript": {
     "revision": "12e45374422f6051648717be62f0ffc40a279ee2"
   },
+  "jinja": {
+    "revision": "975e23f5731c66dbbabce1c55845fcb545331143"
+  },
   "jq": {
     "revision": "13990f530e8e6709b7978503da9bc8701d366791"
   },
