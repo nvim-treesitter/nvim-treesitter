@@ -165,7 +165,7 @@
     "revision": "38d5004a797298dc42c85e7706c5ceac46a3f29f"
   },
   "erlang": {
-    "revision": "8f41b588fe38b981156651ef56b192ed3d158efd"
+    "revision": "0b5a0dcfcedd9b397252cb5568cc55ab1905b1a9"
   },
   "facility": {
     "revision": "2d037f2f2bf668737f72e6be6eda4b7918b68d86"
@@ -243,7 +243,7 @@
     "revision": "7ee8d928db5202f6831a78f8112fd693bf69f98b"
   },
   "goctl": {
-    "revision": "f107937259c7ec4bb05f7e3d2c24b89ac36d4cc3"
+    "revision": "49c43532689fe1f53e8b9e009d0521cab02c432b"
   },
   "godot_resource": {
     "revision": "2ffb90de47417018651fc3b970e5f6b67214dc9d"
@@ -399,7 +399,7 @@
     "revision": "f99011a3554213b654985a4b0a65b3b032ec4621"
   },
   "liquid": {
-    "revision": "f84c94a4c0e93fe1231f6cda9c3a14df9c839ab2"
+    "revision": "5be130ef4308d65bdd3d323dbb8a93e2bd16d623"
   },
   "liquidsoap": {
     "revision": "14feafa91630afb1ab9988cf9b738b7ea29f3f89"
@@ -468,7 +468,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "80b9318aa0e05d9539c7adb74f4aee5cf650a25e"
+    "revision": "c00de3108b4f868e83ba67e78550e4829b3de27e"
   },
   "norg": {
     "revision": "aa1a1a7ded81a094cc3d5cb14bea6f34b86d8688"
