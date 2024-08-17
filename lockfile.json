@@ -510,10 +510,10 @@
     "revision": "3a21d9cb2a20a062c17f8f53d5983fd473c4673c"
   },
   "php": {
-    "revision": "c07d69739ba71b5a449bdbb7735991f8aabf8546"
+    "revision": "71605bf96303144c2ecfc2c0b69d95c716ed9e13"
   },
   "php_only": {
-    "revision": "c07d69739ba71b5a449bdbb7735991f8aabf8546"
+    "revision": "71605bf96303144c2ecfc2c0b69d95c716ed9e13"
   },
   "phpdoc": {
     "revision": "1d0e255b37477d0ca46f1c9e9268c8fa76c0b3fc"
