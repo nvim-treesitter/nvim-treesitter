@@ -2072,6 +2072,16 @@ list.surface = {
   maintainers = { "@connorlay" },
 }
 
+list.surrealql = {
+  install_info = {
+    url = "https://github.com/Ce11an/tree-sitter-surrealql",
+    files = { "src/parser.c" },
+  },
+  filetype = "surql",
+  maintainers = { "@Ce11an" },
+  experimental = true,
+}
+
 list.svelte = {
   install_info = {
     url = "https://github.com/tree-sitter-grammars/tree-sitter-svelte",
