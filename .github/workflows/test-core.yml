@@ -1,0 +1,55 @@
+on:
+  workflow_call:
+    inputs:
+      type:
+        type: string
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  check_compilation:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        nvim_tag: [nightly]
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    env:
+      NVIM: ${{ matrix.os == 'windows-latest' && 'nvim-win64\\bin\\nvim.exe' || 'nvim' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: tree-sitter/setup-action/cli@v1
+      - uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Install and prepare Neovim
+        env:
+          NVIM_TAG: ${{ matrix.nvim_tag }}
+        run: |
+          bash ./scripts/ci-install.sh
+
+      - if: inputs.type == 'generate'
+        name: Generate and compile parsers
+        run: $NVIM -l ./scripts/install-parsers.lua --generate --max-jobs=2
+
+      - if: inputs.type == 'queries'
+        name: Setup Parsers Cache
+        id: parsers-cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.local/share/nvim/site/parser/
+            ~/AppData/Local/nvim-data/site/parser/
+          key: parsers-${{ join(matrix.*, '-') }}-${{ hashFiles(
+            './lua/nvim-treesitter/install.lua',
+            './lua/nvim-treesitter/parsers.lua') }}
+
+      - if: inputs.type == 'queries'
+        name: Compile parsers
+        run: $NVIM -l ./scripts/install-parsers.lua
+
+      - name: Check query files
+        run: $NVIM -l ./scripts/check-queries.lua
