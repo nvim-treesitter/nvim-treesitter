@@ -86,6 +86,9 @@
     (_) @function))
 
 (label_definition
+  name: (curly_group_text) @label)
+
+(label_definition
   command: _ @function.macro
   name: (curly_group_text
     (_) @markup.link @nospell))
