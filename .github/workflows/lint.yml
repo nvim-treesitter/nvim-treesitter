@@ -1,4 +1,4 @@
-name: Linting and style checking
+name: Lint
 
 on:
   pull_request:
@@ -34,7 +34,7 @@ jobs:
           args: --check .
 
   format-queries:
-    name: Lint queries
+    name: Format queries
     runs-on: ubuntu-latest
     env:
       NVIM_TAG: stable
