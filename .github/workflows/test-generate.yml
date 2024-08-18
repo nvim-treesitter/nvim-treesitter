@@ -1,9 +1,11 @@
-name: Check queries
+name: Generate from grammar
 
 on:
   pull_request:
+    types: [unlabeled, labeled, opened, synchronize, reopened]
     branches:
       - "main"
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -12,6 +14,7 @@ concurrency:
 jobs:
   check_compilation:
     name: Build
+    if: contains(github.event.pull_request.labels.*.name, 'ci:generate') || github.event_name == 'workflow_dispatch'
     uses: ./.github/workflows/test-core.yml
     with:
-      type: "queries"
+      type: "generate"
