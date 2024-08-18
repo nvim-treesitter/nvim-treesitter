@@ -13,12 +13,13 @@
   (match_block)
   (case_statement)
   (default_statement)
+  (property_hook_list)
 ] @indent.begin
 
 (return_statement
   [
     (object_creation_expression)
-    (anonymous_function_creation_expression)
+    (anonymous_function)
     (arrow_function)
     (match_expression)
   ]) @indent.dedent
@@ -48,6 +49,9 @@
 
 (return_statement
   ";" @indent.end)
+
+(property_hook_list
+  "}" @indent.end)
 
 (ERROR
   "(" @indent.align
