@@ -49,7 +49,7 @@ Language | Tier | Queries | Maintainer
 [dart](https://github.com/UserNobody14/tree-sitter-dart) | community | `HFIJL` | @akinsho
 [devicetree](https://github.com/joelspadin/tree-sitter-devicetree) | community | `HFIJL` | @jedrzejboczar
 [dhall](https://github.com/jbellerb/tree-sitter-dhall) | community | `HF J ` | @amaanq
-[diff](https://github.com/the-mikedavis/tree-sitter-diff) | community | `H  J ` | @gbprod
+[diff](https://github.com/the-mikedavis/tree-sitter-diff) | community | `HF J ` | @gbprod
 [disassembly](https://github.com/ColinKennedy/tree-sitter-disassembly) | community | `H  J ` | @ColinKennedy
 [djot](https://github.com/treeman/tree-sitter-djot) | community | `HFIJL` | @NoahTheDuke
 [dockerfile](https://github.com/camdencheek/tree-sitter-dockerfile) | community | `H  J ` | @camdencheek
@@ -80,6 +80,8 @@ ecma (queries only)[^ecma] | community | `HFIJL` | @steelsojka
 [fsh](https://github.com/mgramigna/tree-sitter-fsh) | community | `H  J ` | @mgramigna
 [func](https://github.com/tree-sitter-grammars/tree-sitter-func) | core | `H  J ` | @amaanq
 [fusion](https://gitlab.com/jirgn/tree-sitter-fusion) | community | `HFIJL` | @jirgn
+[gap](https://github.com/gap-system/tree-sitter-gap)[^gap] | community | `HF JL` | @reiniscirpons
+[gaptst](https://github.com/gap-system/tree-sitter-gaptst)[^gaptst] | community | `HF J ` | @reiniscirpons
 [gdscript](https://github.com/PrestonKnopp/tree-sitter-gdscript)[^gdscript] | community | `HFIJL` | @PrestonKnopp
 [gdshader](https://github.com/GodOfAvacyn/tree-sitter-gdshader) | community | `H  J ` | @godofavacyn
 [git_config](https://github.com/the-mikedavis/tree-sitter-git-config) | community | `HF J ` | @amaanq
@@ -88,7 +90,9 @@ ecma (queries only)[^ecma] | community | `HFIJL` | @steelsojka
 [gitcommit](https://github.com/gbprod/tree-sitter-gitcommit) | community | `H  J ` | @gbprod
 [gitignore](https://github.com/shunsambongi/tree-sitter-gitignore) | community | `H  J ` | @theHamsta
 [gleam](https://github.com/gleam-lang/tree-sitter-gleam) | community | `HFIJL` | @amaanq
-[glimmer](https://github.com/alexlafroscia/tree-sitter-glimmer)[^glimmer] | community | `HFIJL` | @NullVoxPopuli
+[glimmer](https://github.com/ember-tooling/tree-sitter-glimmer)[^glimmer] | community | `HFIJL` | @NullVoxPopuli
+[glimmer_javascript](https://github.com/NullVoxPopuli/tree-sitter-glimmer-javascript) | community | `H IJL` | @NullVoxPopuli
+[glimmer_typescript](https://github.com/NullVoxPopuli/tree-sitter-glimmer-typescript) | community | `H IJ ` | @NullVoxPopuli
 [glsl](https://github.com/tree-sitter-grammars/tree-sitter-glsl) | core | `HFIJL` | @theHamsta
 [gn](https://github.com/tree-sitter-grammars/tree-sitter-gn) | core | `HFIJL` | @amaanq
 [gnuplot](https://github.com/dpezto/tree-sitter-gnuplot) | community | `H  J ` | @dpezto
@@ -160,7 +164,7 @@ jsx (queries only)[^jsx] | community | `HFIJ ` | @steelsojka
 [markdown_inline](https://github.com/tree-sitter-grammars/tree-sitter-markdown)[^markdown_inline] | stable | `H  J ` | @MDeiml
 [matlab](https://github.com/acristoffers/tree-sitter-matlab) | community | `HFIJL` | @acristoffers
 [menhir](https://github.com/Kerl13/tree-sitter-menhir) | community | `H  J ` | @Kerl13
-[mermaid](https://github.com/monaqa/tree-sitter-mermaid) | unsupported | `H  J ` | 
+[mermaid](https://github.com/monaqa/tree-sitter-mermaid) | unsupported | `HFIJ ` | 
 [meson](https://github.com/tree-sitter-grammars/tree-sitter-meson) | core | `HFIJ ` | @Decodetalkers
 [mlir](https://github.com/artagnon/tree-sitter-mlir) | community | `H  JL` | @artagnon
 [muttrc](https://github.com/neomutt/tree-sitter-muttrc) | community | `H  J ` | @Freed-Wu
@@ -304,9 +308,11 @@ jsx (queries only)[^jsx] | community | `HFIJ ` | @steelsojka
 [yang](https://github.com/Hubro/tree-sitter-yang) | community | `HFIJ ` | @Hubro
 [yuck](https://github.com/tree-sitter-grammars/tree-sitter-yuck) | core | `HFIJL` | @Philipp-M, @amaanq
 [zathurarc](https://github.com/Freed-Wu/tree-sitter-zathurarc) | community | `H  J ` | @Freed-Wu
-[zig](https://github.com/maxxnino/tree-sitter-zig) | community | `HFIJL` | @maxxnino
+[zig](https://github.com/tree-sitter-grammars/tree-sitter-zig) | stable | `HFIJL` | @amaanq
 [^bp]: Android Blueprint
 [^ecma]: queries required by javascript, typescript, tsx, qmljs
+[^gap]: GAP system
+[^gaptst]: GAP system test files
 [^gdscript]: Godot
 [^glimmer]: Glimmer and Ember
 [^godot_resource]: Godot Resources
