@@ -240,7 +240,7 @@
     "revision": "3c895f5d9c0b3a3c7e02383766b462c21913c000"
   },
   "go": {
-    "revision": "f3904998a3cbe7bffb1dead89542b91509b4a53a"
+    "revision": "8c0f0e7a6012283d9f0dd650feb8075ad1ffad5e"
   },
   "goctl": {
     "revision": "49c43532689fe1f53e8b9e009d0521cab02c432b"
@@ -309,7 +309,7 @@
     "revision": "a24c5a39d1d7e993a8bee913c8e8b6a652ca5ae8"
   },
   "html": {
-    "revision": "e4d834eb4918df01dcad5c27d1b15d56e3bd94cd"
+    "revision": "d11201a263d02169d303db903ba0bb13dc59e068"
   },
   "htmldjango": {
     "revision": "ea71012d3fe14dd0b69f36be4f96bdfe9155ebae"
@@ -351,7 +351,7 @@
     "revision": "49fde205b59a1d9792efc21ee0b6d50bbd35ff14"
   },
   "json": {
-    "revision": "94f5c527b2965465956c2000ed6134dd24daf2a7"
+    "revision": "bdd69eb8c8a58a9f54df03de0488d9990179be46"
   },
   "json5": {
     "revision": "ab0ba8229d639ec4f3fa5f674c9133477f4b77bd"
@@ -576,7 +576,7 @@
     "revision": "be062582956165019d3253794b4d712f66dfeaaa"
   },
   "python": {
-    "revision": "62165d7fd1d6288456c6bb81872bdfc42656e71b"
+    "revision": "55a9b8a4fbfbaf0d10cdd47dd4a9d02606c4c218"
   },
   "ql": {
     "revision": "42becd6f8f7bae82c818fa3abb1b6ff34b552310"
@@ -645,7 +645,7 @@
     "revision": "390a15b17648ad6311d1c9f76c5086a918739c1a"
   },
   "rust": {
-    "revision": "9c84af007b0f144954adb26b3f336495cbb320a7"
+    "revision": "2b43eafe64470846cdaa0eaae1e287c120ee5f03"
   },
   "scala": {
     "revision": "ae9db4bdea5f90751718f4f9a90551c809d180f7"
@@ -720,7 +720,7 @@
     "revision": "7ab8221e3f378a3b04b4b488f07c1f408c5bd0d8"
   },
   "swift": {
-    "revision": "769bb834feb2947f2c706d82830b0a05958727de"
+    "revision": "bad2e675c58c1f5403bf0914a0f30ac045e9f15b"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -828,7 +828,7 @@
     "revision": "4ab3e251eae8890a020d083d00acd1b8c2653c07"
   },
   "vhs": {
-    "revision": "90028bbadb267ead5b87830380f6a825147f0c0f"
+    "revision": "780a8a21e8e8d85bf2f33f1fef06951b47ccd8ca"
   },
   "vim": {
     "revision": "f3cd62d8bd043ef20507e84bb6b4b53731ccf3a7"
