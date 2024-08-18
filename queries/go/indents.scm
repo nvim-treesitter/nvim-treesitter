@@ -34,7 +34,7 @@
 (import_spec_list
   ")" @indent.branch)
 
-(var_declaration
+(var_spec_list
   ")" @indent.branch)
 
 [

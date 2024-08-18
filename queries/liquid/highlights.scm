@@ -25,6 +25,7 @@
   "as"
   "assign"
   "capture"
+  (custom_unpaired_statement)
   "decrement"
   "echo"
   "endcapture"
@@ -94,6 +95,7 @@
 
 [
   "include"
+  "include_relative"
   "render"
   "section"
   "sections"
