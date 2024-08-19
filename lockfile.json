@@ -51,7 +51,7 @@
     "revision": "4e60cf3c2e613625c06f6f85540b3631e2d06cd3"
   },
   "c": {
-    "revision": "fd3e67ac628c45bdec322c8fcfb65393df0e5307"
+    "revision": "927da1f210ebb24b7f109230a61a55b428875985"
   },
   "c_sharp": {
     "revision": "31a64b28292aac6adf44071e449fa03fb80eaf4e"
@@ -72,7 +72,7 @@
     "revision": "69d7a8b0f7493b0dbb07d54e8fea96c5421e8a71"
   },
   "comment": {
-    "revision": "5d8b29f6ef3bf64d59430dcfe76b31cc44b5abfd"
+    "revision": "ca6ef6c8ae0f1970d7e691d47f75ccca884a6060"
   },
   "commonlisp": {
     "revision": "bf2a65b1c119898a1a17389e07f2a399c05cdc0c"
@@ -87,7 +87,7 @@
     "revision": "594289eadfec719198e560f9d7fd243c4db678d5"
   },
   "cpp": {
-    "revision": "6a0007a2ea50be65a682ed726cdeb2ec4d16e76c"
+    "revision": "b1a4e2b25148f3cfcb5f241cbc4c49f001a6fb35"
   },
   "css": {
     "revision": "9af0bdd9d225edee12f489cfa8284e248321959b"
@@ -162,7 +162,7 @@
     "revision": "5e7210d945425b77f82cbaebc5af4dd3e1ad40f5"
   },
   "embedded_template": {
-    "revision": "38d5004a797298dc42c85e7706c5ceac46a3f29f"
+    "revision": "ffbf64942c334933ee7982e144557b6efb76d0b9"
   },
   "erlang": {
     "revision": "0b5a0dcfcedd9b397252cb5568cc55ab1905b1a9"
@@ -375,7 +375,7 @@
     "revision": "b37e3d58e5c5cf8d739b315d6114e02d42e66664"
   },
   "kotlin": {
-    "revision": "8d9d372b09fa4c3735657c5fc2ad03e53a5f05f5"
+    "revision": "dc5e8a14cb1f45582a8c221a270a199a5f8bdb63"
   },
   "koto": {
     "revision": "d4109879ba1387d19095269a7473bd7d274ab848"
@@ -387,7 +387,7 @@
     "revision": "854a40e99f7c70258e522bdb8ab584ede6196e2e"
   },
   "latex": {
-    "revision": "efe5afdbb59b70214e6d70db5197dc945d5b213e"
+    "revision": "90fd9894bebddce79f5b8041e7f82523364a619b"
   },
   "ledger": {
     "revision": "8a841fb20ce683bfbb3469e6ba67f2851cfdf94a"
@@ -510,10 +510,10 @@
     "revision": "3a21d9cb2a20a062c17f8f53d5983fd473c4673c"
   },
   "php": {
-    "revision": "71605bf96303144c2ecfc2c0b69d95c716ed9e13"
+    "revision": "a552625b56c19006932cff1f207ebc07b55ed12d"
   },
   "php_only": {
-    "revision": "71605bf96303144c2ecfc2c0b69d95c716ed9e13"
+    "revision": "a552625b56c19006932cff1f207ebc07b55ed12d"
   },
   "phpdoc": {
     "revision": "1d0e255b37477d0ca46f1c9e9268c8fa76c0b3fc"
@@ -642,13 +642,13 @@
     "revision": "5120f6e59284cb8b85b450bd2db0bd352635ba9f"
   },
   "ruby": {
-    "revision": "390a15b17648ad6311d1c9f76c5086a918739c1a"
+    "revision": "7dbc1e2d0e2d752577655881f73b4573f3fe85d4"
   },
   "rust": {
     "revision": "2b43eafe64470846cdaa0eaae1e287c120ee5f03"
   },
   "scala": {
-    "revision": "ae9db4bdea5f90751718f4f9a90551c809d180f7"
+    "revision": "dd7fe4d7838ca751f5259718658dd309d999855b"
   },
   "scfg": {
     "revision": "a5512800ea0220da4abbae61b8aea8423d1549aa"
@@ -747,7 +747,7 @@
     "revision": "19b02da829d1721a521bf7b802eb80a50bd53aab"
   },
   "templ": {
-    "revision": "4dc2c5e2b5469dc35afc3cfae4c3783d971fd51b"
+    "revision": "7e878d63a25c27c9c151303129b0b8c04b075890"
   },
   "terraform": {
     "revision": "9e3ec9848f28d26845ba300fd73c740459b83e9b"
