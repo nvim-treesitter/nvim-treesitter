@@ -19,10 +19,10 @@
 
 ; Script with other languages
 ((comment
-   name: (_) @_name
-   (#eq? @_name "lang")
-   value: (_) @injection.language)
- .
- (_
-   (script) @injection.content
-   (#offset! @injection.content 0 2 0 -2)))
+  name: (_) @_name
+  (#eq? @_name "lang")
+  value: (_) @injection.language)
+  .
+  (_
+    (script) @injection.content
+    (#offset! @injection.content 0 2 0 -2)))
