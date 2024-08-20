@@ -1,2 +1,3 @@
-;; inherits: javascript
-;; extends
+; inherits: javascript
+
+; extends
