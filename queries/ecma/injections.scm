@@ -88,9 +88,6 @@
     (#set! injection.include-children)
     (#set! injection.language "glimmer")))
 
-((glimmer_template) @injection.content
-  (#set! injection.language "glimmer"))
-
 ; css`<css>`, keyframes`<css>`
 (call_expression
   function: [
