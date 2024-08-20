@@ -267,7 +267,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "groovy": {
-    "revision": "6b91d508bee2e7679fcdac5312644fc5e5cfacb8"
+    "revision": "171b3b7412bc93284fc0dad0a7a7bbbbd1b51289"
   },
   "gstlaunch": {
     "revision": "549aef253fd38a53995cda1bf55c501174372bf7"
@@ -432,7 +432,7 @@
     "revision": "7fe453beacecf02c86f7736439f238f5bb8b5c9b"
   },
   "matlab": {
-    "revision": "ad1c471f30ba754578d4b2e27a4c4ec662a10e6f"
+    "revision": "e770bddc7bfc938f24d06dd98dcbfe3469fcece4"
   },
   "menhir": {
     "revision": "be8866a6bcc2b563ab0de895af69daeffa88fe70"
