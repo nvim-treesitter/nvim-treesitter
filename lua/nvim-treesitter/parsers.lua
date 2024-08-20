@@ -11,8 +11,6 @@ for ft, lang in pairs {
   ["typescript.tsx"] = "tsx",
   ["terraform-vars"] = "terraform",
   ["html.handlebars"] = "glimmer",
-  ["javascript.glimmer"] = "glimmer_javascript",
-  ["typescript.glimmer"] = "glimmer_typescript",
   pandoc = "markdown",
   rmd = "markdown",
   quarto = "markdown",
