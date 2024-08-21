@@ -705,6 +705,7 @@ list.gleam = {
 list.glimmer = {
   install_info = {
     url = "https://github.com/ember-tooling/tree-sitter-glimmer",
+    branch = "main",
     files = { "src/parser.c", "src/scanner.c" },
   },
   filetype = "handlebars",
@@ -715,6 +716,7 @@ list.glimmer = {
 list.glimmer_javascript = {
   install_info = {
     url = "https://github.com/NullVoxPopuli/tree-sitter-glimmer-javascript",
+    branch = "main",
     files = { "src/parser.c", "src/scanner.c" },
   },
   filetype = "javascript.glimmer",
@@ -725,6 +727,7 @@ list.glimmer_javascript = {
 list.glimmer_typescript = {
   install_info = {
     url = "https://github.com/NullVoxPopuli/tree-sitter-glimmer-typescript",
+    branch = "main",
     files = { "src/parser.c", "src/scanner.c" },
   },
   filetype = "typescript.glimmer",
