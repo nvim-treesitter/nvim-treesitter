@@ -720,7 +720,6 @@ list.glimmer_javascript = {
   },
   filetype = "javascript.glimmer",
   maintainers = { "@NullVoxPopuli" },
-  readme_name = "Glimmer-flavored JavaScript",
 }
 
 list.glimmer_typescript = {
@@ -731,7 +730,6 @@ list.glimmer_typescript = {
   },
   filetype = "typescript.glimmer",
   maintainers = { "@NullVoxPopuli" },
-  readme_name = "Glimmer-flavored TypeScript",
 }
 
 list.glsl = {
