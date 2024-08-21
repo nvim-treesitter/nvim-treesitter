@@ -1,7 +1,5 @@
 ; inherits: typescript
 
-; extends
-
 ;
 ;
 ; Glimmer injections are here
