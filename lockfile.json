@@ -230,6 +230,12 @@
   "glimmer": {
     "revision": "da605af8c5999b43e6839b575eae5e6cafabb06f"
   },
+  "glimmer_javascript": {
+    "revision": "a260911201684f80cf815418b3771e6c39309f81"
+  },
+  "glimmer_typescript": {
+    "revision": "9d018a0f93417e6951264a26093b89ee63df7315"
+  },
   "glsl": {
     "revision": "ddc3137a2d775aca93084ff997fa13cc1691058a"
   },
