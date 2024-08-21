@@ -718,6 +718,7 @@ list.glimmer_javascript = {
     url = "https://github.com/NullVoxPopuli/tree-sitter-glimmer-javascript",
     branch = "main",
     files = { "src/parser.c", "src/scanner.c" },
+    generate_requires_npm = true,
   },
   filetype = "javascript.glimmer",
   maintainers = { "@NullVoxPopuli" },
@@ -728,7 +729,8 @@ list.glimmer_typescript = {
   install_info = {
     url = "https://github.com/NullVoxPopuli/tree-sitter-glimmer-typescript",
     branch = "main",
-    files = { "src/parser.c", "src/scanner.c" },
+    files = { "src/parser.c", "src/scanner.c", "src/tree-sitter-typescript/scanner.h" },
+    generate_requires_npm = true,
   },
   filetype = "typescript.glimmer",
   maintainers = { "@NullVoxPopuli" },
