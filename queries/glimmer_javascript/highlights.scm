@@ -1,3 +1,12 @@
+(glimmer_opening_tag) @tag.builtin
+
+(glimmer_closing_tag) @tag.builtin
+
+;
+;
+; Copied from tree-sitter-javascript @ 0.21.4
+;
+;
 ; Variables
 ;----------
 (identifier) @variable
@@ -169,8 +178,8 @@
 ] @punctuation.bracket
 
 (template_substitution
-  "${" @punctuation.special
-  "}" @punctuation.special) @embedded
+  "${" @punctuation.bracket
+  "}" @punctuation.bracket) @punctuation.bracket
 
 [
   "as"
