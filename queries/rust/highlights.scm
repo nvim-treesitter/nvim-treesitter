@@ -23,6 +23,8 @@
 
 (field_identifier) @variable.member
 
+(shorthand_field_identifier) @variable.member
+
 (shorthand_field_initializer
   (identifier) @variable.member)
 
