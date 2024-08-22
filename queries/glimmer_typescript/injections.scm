@@ -1,10 +1,5 @@
 ; inherits: typescript
 
-;
-;
-; Glimmer injections are here
-;
-;
 ; Parse Ember/Glimmer/Handlebars/HTMLBars/etc. template literals
 ; e.g.: await render(hbs`<SomeComponent />`)
 (call_expression
