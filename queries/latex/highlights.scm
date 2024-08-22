@@ -52,13 +52,13 @@
 ; General environments
 (begin
   command: _ @module
-  name: (curly_group_text
-    (text) @label @nospell))
+  name: (curly_group_text (text) @label @nospell)
+  (#not-has-ancestor? @label math_environment))
 
 (end
   command: _ @module
-  name: (curly_group_text
-    (text) @label @nospell))
+  name: (curly_group_text (text) @label @nospell)
+  (#not-has-ancestor? @label math_environment))
 
 ; Definitions and references
 (new_command_definition
