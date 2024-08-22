@@ -4,11 +4,7 @@
 
 (glimmer_closing_tag) @tag.builtin
 
-;
-;
-; Copied from the javascript queries
-;
-;
+; Copied from javascript
 ; Parameters
 (formal_parameters
   (identifier) @variable.parameter)
