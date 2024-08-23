@@ -6,10 +6,10 @@
     "revision": "d3dc807692e6bca671d4491b3bf5c67eeca8c016"
   },
   "angular": {
-    "revision": "660e6c4d0d533da8a1d4faa1bb0870f8ccbdbf92"
+    "revision": "c2d1f6d4c5f1993afce7f984ca2675af8d67457c"
   },
   "apex": {
-    "revision": "9fe5d1fbfd75c11ba48a32db27ac0ed5da57ec78"
+    "revision": "602cc4b050ef1e14a69acc2ea094968bf928fa59"
   },
   "arduino": {
     "revision": "afb34b2c65f507932c5c6ddbf0d5a9ca6a772f2f"
@@ -96,7 +96,7 @@
     "revision": "7eb7297823605392d2bbcc4c09b1cd18d6fa9529"
   },
   "cuda": {
-    "revision": "22ad3429b839d5ab23b74ce3d77b61b3b5395abb"
+    "revision": "8812343a1f8496fc219f3d07a270f9c1d6ba3391"
   },
   "cue": {
     "revision": "8a5f273bfa281c66354da562f2307c2d394b6c81"
@@ -315,7 +315,7 @@
     "revision": "ea71012d3fe14dd0b69f36be4f96bdfe9155ebae"
   },
   "http": {
-    "revision": "b88cd0c7dba0128b8f28fcb25cca13eea0d193b3"
+    "revision": "bbcd67642e5749b90277c353b72e762f3be16993"
   },
   "hurl": {
     "revision": "fba6ed8db3a009b9e7d656511931b181a3ee5b08"
@@ -471,7 +471,7 @@
     "revision": "c8a24d3ce7fc773eafe7d30f3c7131f33f110c50"
   },
   "norg": {
-    "revision": "aa1a1a7ded81a094cc3d5cb14bea6f34b86d8688"
+    "revision": "1aab69c95bd9d5e7c0e172ecbe5d29bcf5834612"
   },
   "nqc": {
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
@@ -660,7 +660,7 @@
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
   },
   "sflog": {
-    "revision": "9fe5d1fbfd75c11ba48a32db27ac0ed5da57ec78"
+    "revision": "602cc4b050ef1e14a69acc2ea094968bf928fa59"
   },
   "slang": {
     "revision": "d84b43d75d65bbc4ba57166ce17555f32c0b8983"
@@ -681,10 +681,10 @@
     "revision": "ee5a2d2ba30b487c4bbf613d2ef310a454c09c7c"
   },
   "soql": {
-    "revision": "9fe5d1fbfd75c11ba48a32db27ac0ed5da57ec78"
+    "revision": "602cc4b050ef1e14a69acc2ea094968bf928fa59"
   },
   "sosl": {
-    "revision": "9fe5d1fbfd75c11ba48a32db27ac0ed5da57ec78"
+    "revision": "602cc4b050ef1e14a69acc2ea094968bf928fa59"
   },
   "sourcepawn": {
     "revision": "6b9bf9cbab91443380d2ca8a2f6c491cc7fac5bf"
@@ -720,7 +720,7 @@
     "revision": "7ab8221e3f378a3b04b4b488f07c1f408c5bd0d8"
   },
   "swift": {
-    "revision": "bad2e675c58c1f5403bf0914a0f30ac045e9f15b"
+    "revision": "261d880b081def748da113262a96279ff4fffeb1"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
