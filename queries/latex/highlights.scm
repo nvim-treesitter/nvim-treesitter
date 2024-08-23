@@ -53,14 +53,12 @@
 (begin
   command: _ @module
   name: (curly_group_text
-    (text) @label @nospell)
-  (#not-has-ancestor? @label math_environment))
+    (text) @label @nospell))
 
 (end
   command: _ @module
   name: (curly_group_text
-    (text) @label @nospell)
-  (#not-has-ancestor? @label math_environment))
+    (text) @label @nospell))
 
 ; Definitions and references
 (new_command_definition
@@ -320,6 +318,14 @@
 
 (math_environment
   (_) @markup.math)
+
+(math_environment
+  begin: (begin
+    name: (curly_group_text
+      text: (text) @markup.math))
+  end: (end
+    name: (curly_group_text
+      text: (text) @markup.math)))
 
 ; Comments
 [
