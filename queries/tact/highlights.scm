@@ -138,10 +138,6 @@
 (instance_argument
   name: (identifier) @variable.member)
 
-(lvalue
-  (_)
-  (_) @variable.member)
-
 (field_access_expression
   name: (identifier) @variable.member)
 
