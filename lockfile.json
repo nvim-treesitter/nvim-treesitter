@@ -339,7 +339,7 @@
     "revision": "ea842cb57a90865c8f50bcb4499de1a94860f3a4"
   },
   "java": {
-    "revision": "953abfc8bb3eb2f578e1f461edba4a9885f974b8"
+    "revision": "576d8097e495b411f31daaee28cb34c1752ac702"
   },
   "javascript": {
     "revision": "15887341e5b57ffdb423aff840aef142b8f53d6d"
@@ -468,7 +468,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "c8a24d3ce7fc773eafe7d30f3c7131f33f110c50"
+    "revision": "0553955c53f564e5205f4f187d94973078c05ee7"
   },
   "norg": {
     "revision": "1aab69c95bd9d5e7c0e172ecbe5d29bcf5834612"
@@ -507,7 +507,7 @@
     "revision": "217ff2af3f2db15a79ab7e3d21ea1e0c17e71a1a"
   },
   "perl": {
-    "revision": "18f855fcac9a2aa055ffb9f1a0b29d2db3e2f514"
+    "revision": "e78a161d5b1f3d0c7ebe439bfc6b2dff6f530ea8"
   },
   "php": {
     "revision": "a552625b56c19006932cff1f207ebc07b55ed12d"
@@ -525,7 +525,7 @@
     "revision": "bd860a0f57f697162bf28e576674be9c1500db5e"
   },
   "pod": {
-    "revision": "39da859947b94abdee43e431368e1ae975c0a424"
+    "revision": "0bf8387987c21bf2f8ed41d2575a8f22b139687f"
   },
   "poe_filter": {
     "revision": "592476d81f95d2451f2ca107dc872224c76fecdf"
