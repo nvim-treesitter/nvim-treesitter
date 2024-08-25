@@ -211,3 +211,6 @@
   (comment)
   (line_continuation)
 ] @comment @spell
+
+((comment) @keyword.directive
+  (#lua-match? @keyword.directive "^%%%% "))
