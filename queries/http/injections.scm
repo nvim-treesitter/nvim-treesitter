@@ -26,3 +26,15 @@
   (_
     (script) @injection.content
     (#offset! @injection.content 0 2 0 -2)))
+
+; post-request scripts for requests without body
+((request
+  !body
+  (comment
+    name: (_) @_name
+    (#eq? @_name "lang")
+    value: (_) @injection.language) .)
+  .
+  (res_handler_script
+    (script) @injection.content
+    (#offset! @injection.content 0 2 0 -2)))
