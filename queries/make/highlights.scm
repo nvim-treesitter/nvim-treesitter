@@ -114,6 +114,22 @@
     ")"
   ] @operator)
 
+(automatic_variable
+  "$"
+  _ @character.special
+  (#set! priority 105))
+
+(automatic_variable
+  [
+    "$"
+    "("
+    ")"
+  ] @operator
+  (#set! priority 105))
+
+(recipe_line
+  "@" @character.special)
+
 (function_call
   [
     "subst"
