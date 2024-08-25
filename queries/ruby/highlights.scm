@@ -172,10 +172,10 @@
 ;  (#is-not? local))
 ; Literals
 [
-  (string)
-  (bare_string)
-  (subshell)
-  (heredoc_body)
+  (string_content)
+  (heredoc_content)
+  "\""
+  "`"
 ] @string
 
 [
@@ -190,11 +190,8 @@
   (hash_key_symbol)
 ] @string.special.symbol
 
-(pair
-  key: (hash_key_symbol)
-  ":" @constant)
-
-(regex) @string.regexp
+(regex
+  (string_content) @string.regexp)
 
 (escape_sequence) @string.escape
 
@@ -276,7 +273,14 @@
   ";"
   "."
   "&."
+  "::"
 ] @punctuation.delimiter
+
+(regex
+  "/" @punctuation.bracket)
+
+(pair
+  ":" @punctuation.delimiter)
 
 [
   "("
@@ -289,6 +293,9 @@
   "%i("
 ] @punctuation.bracket
 
+(block_parameters
+  "|" @punctuation.bracket)
+
 (interpolation
   "#{" @punctuation.special
-  "}" @punctuation.special) @none
+  "}" @punctuation.special)
