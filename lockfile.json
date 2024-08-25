@@ -72,7 +72,7 @@
     "revision": "69d7a8b0f7493b0dbb07d54e8fea96c5421e8a71"
   },
   "comment": {
-    "revision": "ca6ef6c8ae0f1970d7e691d47f75ccca884a6060"
+    "revision": "3555706cef8b98d3e4c7379d7260548ff03ad363"
   },
   "commonlisp": {
     "revision": "bf2a65b1c119898a1a17389e07f2a399c05cdc0c"
@@ -507,7 +507,7 @@
     "revision": "217ff2af3f2db15a79ab7e3d21ea1e0c17e71a1a"
   },
   "perl": {
-    "revision": "e78a161d5b1f3d0c7ebe439bfc6b2dff6f530ea8"
+    "revision": "ad69b44c32dc099e8dc90322fe52fe1d0206ce5f"
   },
   "php": {
     "revision": "a552625b56c19006932cff1f207ebc07b55ed12d"
@@ -585,7 +585,7 @@
     "revision": "6b2b5e41734bd6f07ea4c36ac20fb6f14061c841"
   },
   "qmljs": {
-    "revision": "febf48a5b6928600cd8fb2a01254743af550780d"
+    "revision": "cc4186f15e2829385be33440561fdd17b1c40cf7"
   },
   "query": {
     "revision": "f767fb0ac5e711b6d44c5e0c8d1f349687a86ce0"
@@ -720,7 +720,7 @@
     "revision": "7ab8221e3f378a3b04b4b488f07c1f408c5bd0d8"
   },
   "swift": {
-    "revision": "261d880b081def748da113262a96279ff4fffeb1"
+    "revision": "d627a54d7266f0a8ee61b447b34d0ad07dadf1d6"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -738,7 +738,7 @@
     "revision": "b1170880c61355aaf38fc06f4af7d3c55abdabc4"
   },
   "tact": {
-    "revision": "f264041de35b9e89393169dc464cfd9d3a5c750b"
+    "revision": "b3710fe2723bd9b285de7f3d0c0717bebf3f17bd"
   },
   "tcl": {
     "revision": "8784024358c233efd0f3a6fd9e7a3c5852e628bc"
@@ -828,7 +828,7 @@
     "revision": "4ab3e251eae8890a020d083d00acd1b8c2653c07"
   },
   "vhs": {
-    "revision": "780a8a21e8e8d85bf2f33f1fef06951b47ccd8ca"
+    "revision": "09f8fbfe40a3a699b200daca7d92e65fbbe9f9e6"
   },
   "vim": {
     "revision": "f3cd62d8bd043ef20507e84bb6b4b53731ccf3a7"
