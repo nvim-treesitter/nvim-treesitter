@@ -176,7 +176,7 @@
   name: (identifier) @type.definition)
 
 (variable_declaration
-    (identifier) @variable)
+  (identifier) @variable)
 
 [
   (address_literal)
