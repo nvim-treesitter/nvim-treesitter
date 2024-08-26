@@ -1,4 +1,4 @@
-(variable_identifier) @variable
+(variable) @variable
 
 (constant_identifier) @constant
 
@@ -124,7 +124,7 @@
 
 ;record declaration
 (record_declaration
-  (identifier) @variable.member)
+  (identifier) @type.definition)
 
 ;struct component
 (struct_component_declaration
@@ -173,11 +173,10 @@
   (identifier) @variable.parameter)
 
 (struct_declaration
-  name: (identifier) @variable.member)
+  name: (identifier) @type.definition)
 
 (variable_declaration
-  (identifier_or_identifiers
-    (identifier) @variable))
+    (identifier) @variable)
 
 [
   (address_literal)
