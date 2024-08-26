@@ -15,7 +15,7 @@
     "revision": "afb34b2c65f507932c5c6ddbf0d5a9ca6a772f2f"
   },
   "asm": {
-    "revision": "2a35fccebcc08aa8b6c7bb3cff1f07cf0f8cff83"
+    "revision": "55b2b913f1e71136027d6fce8212e760c64f3532"
   },
   "astro": {
     "revision": "4be180759ec13651f72bacee65fa477c64222a1a"
@@ -255,7 +255,7 @@
     "revision": "e2ac513b2240c7ff1069ae33b2df29ce90777c11"
   },
   "gotmpl": {
-    "revision": "9d3f6e526dd074b9edae9070b7bb778f00e87a5b"
+    "revision": "fd9e1c6647e5e9b23918d00d1e48710d0f703e19"
   },
   "gowork": {
     "revision": "949a8a470559543857a62102c84700d291fc984c"
@@ -291,7 +291,7 @@
     "revision": "6dd0303acf7138dd2b9b432a229e16539581c701"
   },
   "helm": {
-    "revision": "9d3f6e526dd074b9edae9070b7bb778f00e87a5b"
+    "revision": "fd9e1c6647e5e9b23918d00d1e48710d0f703e19"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
@@ -393,7 +393,7 @@
     "revision": "8a841fb20ce683bfbb3469e6ba67f2851cfdf94a"
   },
   "leo": {
-    "revision": "2ce5d9c7a66430aeb1c500275fae7a32f60913a2"
+    "revision": "f5ecaaa869a845e689399092cb9a61feca66cf12"
   },
   "linkerscript": {
     "revision": "f99011a3554213b654985a4b0a65b3b032ec4621"
@@ -507,7 +507,7 @@
     "revision": "217ff2af3f2db15a79ab7e3d21ea1e0c17e71a1a"
   },
   "perl": {
-    "revision": "ad69b44c32dc099e8dc90322fe52fe1d0206ce5f"
+    "revision": "55fb764e6a94512ceeaa1b9e4d53f6103e0610b2"
   },
   "php": {
     "revision": "a552625b56c19006932cff1f207ebc07b55ed12d"
