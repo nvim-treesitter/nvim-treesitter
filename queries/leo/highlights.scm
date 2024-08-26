@@ -191,4 +191,6 @@
   (unsigned_literal)
 ] @number
 
+(string_literal) @string
+
 (annotation) @attribute
