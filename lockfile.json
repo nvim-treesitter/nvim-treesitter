@@ -240,7 +240,7 @@
     "revision": "3c895f5d9c0b3a3c7e02383766b462c21913c000"
   },
   "go": {
-    "revision": "8c0f0e7a6012283d9f0dd650feb8075ad1ffad5e"
+    "revision": "6204b7308a32e991a8daed2e9895a90be55a510a"
   },
   "goctl": {
     "revision": "49c43532689fe1f53e8b9e009d0521cab02c432b"
@@ -336,7 +336,7 @@
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
   },
   "janet_simple": {
-    "revision": "ea842cb57a90865c8f50bcb4499de1a94860f3a4"
+    "revision": "12bfab7db8a5f5b1d774ef84b5831acd34936071"
   },
   "java": {
     "revision": "576d8097e495b411f31daaee28cb34c1752ac702"
@@ -444,7 +444,7 @@
     "revision": "bd17c824196ce70800f64ad39cfddd1b17acc13f"
   },
   "mlir": {
-    "revision": "affbd6f3b08155826a22cfa8373147acbf60f1f1"
+    "revision": "fd8cbd544bdff4acdfe1da63b403b5c591059aeb"
   },
   "muttrc": {
     "revision": "173b0ab53a9c07962c9777189c4c70e90f1c1837"
@@ -468,7 +468,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "0553955c53f564e5205f4f187d94973078c05ee7"
+    "revision": "537095ddc80cf610fa75a2a0149fe9799b011014"
   },
   "norg": {
     "revision": "1aab69c95bd9d5e7c0e172ecbe5d29bcf5834612"
@@ -576,7 +576,7 @@
     "revision": "be062582956165019d3253794b4d712f66dfeaaa"
   },
   "python": {
-    "revision": "55a9b8a4fbfbaf0d10cdd47dd4a9d02606c4c218"
+    "revision": "346fa42dc2990d2a2736cc60891369d0d3d8e65c"
   },
   "ql": {
     "revision": "42becd6f8f7bae82c818fa3abb1b6ff34b552310"
@@ -666,7 +666,7 @@
     "revision": "d84b43d75d65bbc4ba57166ce17555f32c0b8983"
   },
   "slint": {
-    "revision": "4a0558cc0fcd7a6110815b9bbd7cc12d7ab31e74"
+    "revision": "34ccfd58d3baee7636f62d9326f32092264e8407"
   },
   "smali": {
     "revision": "fdfa6a1febc43c7467aa7e937b87b607956f2346"
@@ -693,7 +693,7 @@
     "revision": "d853661ca680d8ff7f8d800182d5782b61d0dd58"
   },
   "sql": {
-    "revision": "c67ecbd37d8d12f22e4cc7138afd14bc20253e10"
+    "revision": "a8b10c76759a372d0f92bb070b4f5c993e0ce5f9"
   },
   "squirrel": {
     "revision": "072c969749e66f000dba35a33c387650e203e96e"
@@ -813,7 +813,7 @@
     "revision": "ad9b638b914095320de85d59c49ab271603af048"
   },
   "v": {
-    "revision": "7f80a0441ff2ca6aa8ced8e1ee87cead9dd26515"
+    "revision": "a18d695ec105f0cda1903d1974f493207e122b35"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
