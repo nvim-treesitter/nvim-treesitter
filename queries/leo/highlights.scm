@@ -1,7 +1,3 @@
-(variable) @variable
-
-(constant_identifier) @constant
-
 [
   "assert"
   "assert_eq"
@@ -30,6 +26,8 @@
 ] @keyword.modifier
 
 "self" @variable.builtin
+
+"network" @variable.builtin
 
 "async" @keyword.coroutine
 
@@ -115,7 +113,15 @@
 (boolean_literal) @boolean
 
 (constant_declaration
-  (identifier) @constant)
+  (identifier
+    (constant_identifier) @constant))
+
+(variable
+  (constant_identifier) @constant)
+
+(associated_constant) @constant
+
+(variable) @variable
 
 [
   (program_id)
@@ -132,12 +138,12 @@
 
 (type) @type
 
-(associated_constant) @constant
-
 [
   (block_height)
+  (self_address)
   (self_caller)
   (self_signer)
+  (network_id)
 ] @constant.builtin
 
 (free_function_call
