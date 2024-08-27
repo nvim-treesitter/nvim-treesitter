@@ -150,6 +150,14 @@
   (locator
     (identifier) @function))
 
+(associated_function_call
+  (named_type
+    (identifier
+      (constant_identifier) @function)))
+
+(associated_function_call
+    (identifier) @function.call)
+
 (record_type
   (locator
     (identifier) @variable.member))
