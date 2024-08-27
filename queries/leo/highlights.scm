@@ -156,7 +156,7 @@
       (constant_identifier) @function)))
 
 (associated_function_call
-    (identifier) @function.call)
+  (identifier) @function.call)
 
 (record_type
   (locator
