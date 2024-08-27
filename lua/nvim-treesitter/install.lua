@@ -401,6 +401,7 @@ end
 ---@class InstallOptions
 ---@field force? boolean
 ---@field generate? boolean
+---@field max_jobs? integer
 
 --- Install a parser
 ---@param languages string[]
@@ -424,7 +425,7 @@ local function install(languages, options, _callback)
     end)
   end
 
-  a.join(MAX_JOBS, nil, tasks)
+  a.join(options and options.max_jobs or MAX_JOBS, nil, tasks)
   if #tasks > 1 then
     a.main()
     log.info('Installed %d/%d languages', done, #tasks)
