@@ -141,7 +141,7 @@
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
   },
   "editorconfig": {
-    "revision": "fd0d64d2fc91eab903bed4c11ce280b62e46f16e"
+    "revision": "faf014c607f912ff666b20183d32a03dcfc3111d"
   },
   "eds": {
     "revision": "0ad62cb635c2f4353359a88dec9e3a57bbf9f66d"
@@ -192,7 +192,7 @@
     "revision": "90189238385cf636b9ee99ce548b9e5b5e569d48"
   },
   "fortran": {
-    "revision": "6b633433fb3f132f21250cf8e8be76d5a6389b7e"
+    "revision": "8f842945abefb76b9a68c0835619b37060b8f098"
   },
   "fsh": {
     "revision": "fad2e175099a45efbc98f000cc196d3674cc45e0"
@@ -510,10 +510,10 @@
     "revision": "55fb764e6a94512ceeaa1b9e4d53f6103e0610b2"
   },
   "php": {
-    "revision": "a552625b56c19006932cff1f207ebc07b55ed12d"
+    "revision": "d13c91bc48aedf7db8240c52503eee694134ec53"
   },
   "php_only": {
-    "revision": "a552625b56c19006932cff1f207ebc07b55ed12d"
+    "revision": "d13c91bc48aedf7db8240c52503eee694134ec53"
   },
   "phpdoc": {
     "revision": "1d0e255b37477d0ca46f1c9e9268c8fa76c0b3fc"
