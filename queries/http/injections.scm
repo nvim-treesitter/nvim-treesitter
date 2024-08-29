@@ -13,28 +13,12 @@
   (#set! injection.language "graphql"))
 
 ; Script (default to javascript)
-((script) @injection.content
-  (#offset! @injection.content 0 2 0 -2)
-  (#set! injection.language "javascript"))
-
-; Script with other languages
-((comment
+((#set! injection.language "javascript")
+(comment
   name: (_) @_name
   (#eq? @_name "lang")
-  value: (_) @injection.language)
-  .
-  (_
-    (script) @injection.content
-    (#offset! @injection.content 0 2 0 -2)))
-
-; post-request scripts for requests without body
-((request
-  !body
-  (comment
-    name: (_) @_name
-    (#eq? @_name "lang")
-    value: (_) @injection.language) .)
-  .
-  (res_handler_script
-    (script) @injection.content
-    (#offset! @injection.content 0 2 0 -2)))
+  value: (_) @injection.language)?
+.
+(_
+  (script) @injection.content
+  (#offset! @injection.content 0 2 0 -2)))
