@@ -125,7 +125,6 @@
 
 [
   (program_id)
-  (this_program_id)
 ] @string.special
 
 ;record declaration
