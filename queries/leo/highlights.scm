@@ -123,9 +123,7 @@
 
 (variable) @variable
 
-[
-  (program_id)
-] @string.special
+(program_id) @string.special
 
 ;record declaration
 (record_declaration
