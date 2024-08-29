@@ -6,7 +6,7 @@
     "revision": "d3dc807692e6bca671d4491b3bf5c67eeca8c016"
   },
   "angular": {
-    "revision": "c2d1f6d4c5f1993afce7f984ca2675af8d67457c"
+    "revision": "c473dbc54ca27f95d8928cfdb2a1a79300e16951"
   },
   "apex": {
     "revision": "602cc4b050ef1e14a69acc2ea094968bf928fa59"
@@ -444,7 +444,7 @@
     "revision": "bd17c824196ce70800f64ad39cfddd1b17acc13f"
   },
   "mlir": {
-    "revision": "fd8cbd544bdff4acdfe1da63b403b5c591059aeb"
+    "revision": "02af5a1a1cfa69a094e3136b10dfb602f968232e"
   },
   "muttrc": {
     "revision": "173b0ab53a9c07962c9777189c4c70e90f1c1837"
