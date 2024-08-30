@@ -248,7 +248,7 @@ function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
     return t
   end
 
-  local matches = query:iter_matches(qnode, bufnr, start_row, end_row)
+  local matches = query:iter_matches(qnode, bufnr, start_row, end_row, { all = false })
 
   local function iterator()
     local pattern, match, metadata = matches()
