@@ -2508,10 +2508,10 @@ list.zathurarc = {
 
 list.zig = {
   install_info = {
-    url = "https://github.com/maxxnino/tree-sitter-zig",
+    url = "https://github.com/tree-sitter-grammars/tree-sitter-zig",
     files = { "src/parser.c" },
   },
-  maintainers = { "@maxxnino" },
+  maintainers = { "@amaanq" },
 }
 
 list.templ = {
