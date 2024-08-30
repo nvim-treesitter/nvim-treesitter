@@ -470,7 +470,6 @@ list.edl {
   install_info = {
     url = "https://github.com/Andrade/tree-sitter-edl",
     files = { "src/parser.c" },
-    branch = "master",
   },
   maintainers = { "@mrdgo" },
 }
