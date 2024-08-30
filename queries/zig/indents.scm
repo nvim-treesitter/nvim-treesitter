@@ -1,11 +1,10 @@
 [
-  (Block)
-  (ContainerDecl)
-  (SwitchExpr)
-  (InitList)
+  (block)
+  (switch_expression)
+  (initializer_list)
 ] @indent.begin
 
-(Block
+(block
   "}" @indent.end)
 
 [
@@ -18,8 +17,6 @@
 ] @indent.branch
 
 [
-  (line_comment)
-  (container_doc_comment)
-  (doc_comment)
-  (LINESTRING)
+  (comment)
+  (multiline_string)
 ] @indent.ignore
