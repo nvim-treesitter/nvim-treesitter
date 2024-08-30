@@ -43,7 +43,7 @@
   "trusted"
   "untrusted"
   "allow"
- ] @keyword
+] @keyword
 
 (untrusted_suffix_allow
   (identifier) @variable.parameter)
