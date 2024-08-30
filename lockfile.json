@@ -315,7 +315,7 @@
     "revision": "ea71012d3fe14dd0b69f36be4f96bdfe9155ebae"
   },
   "http": {
-    "revision": "bbcd67642e5749b90277c353b72e762f3be16993"
+    "revision": "f762623c6a52a96898db325574de1ba18580cc2d"
   },
   "hurl": {
     "revision": "fba6ed8db3a009b9e7d656511931b181a3ee5b08"
@@ -327,7 +327,7 @@
     "revision": "5573b295410201ed22771776b34d636900eba368"
   },
   "ini": {
-    "revision": "87176e524f0a98f5be75fa44f4f0ff5c6eac069c"
+    "revision": "fc37e95b8d9651c60d81cccbcbbc55867dbb0afd"
   },
   "inko": {
     "revision": "234c87be1dac20f766ddf6f486a7bde2a4bc5594"
@@ -393,7 +393,7 @@
     "revision": "8a841fb20ce683bfbb3469e6ba67f2851cfdf94a"
   },
   "leo": {
-    "revision": "07fbb1d1dd193cf9995945e5412aff61c95c67e0"
+    "revision": "6ca11a96fc2cab51217e0cf4a2f9ed3ea63e28fb"
   },
   "linkerscript": {
     "revision": "f99011a3554213b654985a4b0a65b3b032ec4621"
