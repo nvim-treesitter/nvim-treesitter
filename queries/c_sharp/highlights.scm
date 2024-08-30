@@ -358,6 +358,9 @@
 (preproc_pragma
   (identifier) @constant)
 
+(preproc_if
+  (identifier) @constant)
+
 [
   "if"
   "else"
@@ -366,15 +369,6 @@
   "case"
   "when"
 ] @keyword.conditional
-
-(preproc_pragma
-  (identifier) @constant)
-
-(preproc_if
-  (identifier) @constant)
-
-(preproc_if
-  (identifier) @constant)
 
 [
   "while"
