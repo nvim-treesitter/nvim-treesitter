@@ -13,4 +13,4 @@
 (setting
   (setting_name) @property)
 
-(setting_value) @string ; grammar does not support subtypes
+(setting_value) @string
