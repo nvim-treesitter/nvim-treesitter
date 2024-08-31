@@ -343,8 +343,8 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [passwd](https://github.com/ath3/tree-sitter-passwd) (maintained by @amaanq)
 - [x] [pem](https://github.com/ObserverOfTime/tree-sitter-pem) (maintained by @ObserverOfTime)
 - [x] [perl](https://github.com/tree-sitter-perl/tree-sitter-perl) (maintained by @RabbiVeesh, @LeoNerd)
-- [x] [php](https://github.com/tree-sitter/tree-sitter-php) (maintained by @tk-shirasaka)
-- [x] [php_only](https://github.com/tree-sitter/tree-sitter-php) (maintained by @tk-shirasaka)
+- [x] [php](https://github.com/tree-sitter/tree-sitter-php) (maintained by @tk-shirasaka, @calebdw)
+- [x] [php_only](https://github.com/tree-sitter/tree-sitter-php) (maintained by @tk-shirasaka, @calebdw)
 - [x] [phpdoc](https://github.com/claytonrcarter/tree-sitter-phpdoc) (experimental, maintained by @mikehaertl)
 - [x] [pioasm](https://github.com/leo60228/tree-sitter-pioasm) (maintained by @leo60228)
 - [x] [po](https://github.com/erasin/tree-sitter-po) (maintained by @amaanq)
@@ -464,7 +464,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [yang](https://github.com/Hubro/tree-sitter-yang) (maintained by @Hubro)
 - [x] [yuck](https://github.com/Philipp-M/tree-sitter-yuck) (maintained by @Philipp-M, @amaanq)
 - [x] [zathurarc](https://github.com/Freed-Wu/tree-sitter-zathurarc) (maintained by @Freed-Wu)
-- [x] [zig](https://github.com/maxxnino/tree-sitter-zig) (maintained by @maxxnino)
+- [x] [zig](https://github.com/tree-sitter-grammars/tree-sitter-zig) (maintained by @amaanq)
 <!--parserinfo-->
 
 For related information on the supported languages, including related plugins, see [this wiki page](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Supported-Languages-Information).

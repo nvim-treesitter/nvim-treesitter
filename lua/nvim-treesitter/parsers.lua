@@ -1495,7 +1495,7 @@ list.php = {
     location = "php",
     files = { "src/parser.c", "src/scanner.c" },
   },
-  maintainers = { "@tk-shirasaka" },
+  maintainers = { "@tk-shirasaka", "@calebdw" },
 }
 
 list.php_only = {
@@ -1504,7 +1504,7 @@ list.php_only = {
     location = "php_only",
     files = { "src/parser.c", "src/scanner.c" },
   },
-  maintainers = { "@tk-shirasaka" },
+  maintainers = { "@tk-shirasaka", "@calebdw" },
 }
 
 -- Parsers for injections
@@ -2508,10 +2508,10 @@ list.zathurarc = {
 
 list.zig = {
   install_info = {
-    url = "https://github.com/maxxnino/tree-sitter-zig",
+    url = "https://github.com/tree-sitter-grammars/tree-sitter-zig",
     files = { "src/parser.c" },
   },
-  maintainers = { "@maxxnino" },
+  maintainers = { "@amaanq" },
 }
 
 list.templ = {

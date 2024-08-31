@@ -1,104 +1,116 @@
-(line_comment) @comment @spell
+; Variables
+(identifier) @variable
+
+; Parameters
+(parameter
+  name: (identifier) @variable.parameter)
+
+(payload
+  (identifier) @variable.parameter)
+
+; Types
+(parameter
+  type: (identifier) @type)
+
+((identifier) @type
+  (#lua-match? @type "^[A-Z_][a-zA-Z0-9_]*"))
+
+(variable_declaration
+  (identifier) @type
+  "="
+  [
+    (struct_declaration)
+    (enum_declaration)
+    (union_declaration)
+    (opaque_declaration)
+  ])
 
 [
-  (container_doc_comment)
-  (doc_comment)
-] @comment.documentation @spell
+  (builtin_type)
+  "anyframe"
+] @type.builtin
+
+; Constants
+((identifier) @constant
+  (#lua-match? @constant "^[A-Z][A-Z_0-9]+$"))
 
 [
-  variable: (IDENTIFIER)
-  variable_type_function: (IDENTIFIER)
-] @variable
+  "null"
+  "unreachable"
+  "undefined"
+] @constant.builtin
 
-parameter: (IDENTIFIER) @variable.parameter
+(field_expression
+  .
+  member: (identifier) @constant)
 
+(enum_declaration
+  (container_field
+    type: (identifier) @constant))
+
+; Labels
+(block_label
+  (identifier) @label)
+
+(break_label
+  (identifier) @label)
+
+; Fields
+(field_initializer
+  .
+  (identifier) @variable.member)
+
+(field_expression
+  (_)
+  member: (identifier) @variable.member)
+
+(container_field
+  name: (identifier) @variable.member)
+
+(initializer_list
+  (assignment_expression
+    left: (field_expression
+      .
+      member: (identifier) @variable.member)))
+
+; Functions
+(builtin_identifier) @function.builtin
+
+(call_expression
+  function: (identifier) @function.call)
+
+(call_expression
+  function: (field_expression
+    member: (identifier) @function.call))
+
+(function_declaration
+  name: (identifier) @function)
+
+; Modules
+(variable_declaration
+  (identifier) @module
+  (builtin_function
+    (builtin_identifier) @keyword.import
+    (#any-of? @keyword.import "@import" "@cImport")))
+
+; Builtins
 [
-  field_member: (IDENTIFIER)
-  field_access: (IDENTIFIER)
-] @variable.member
+  "c"
+  "..."
+] @variable.builtin
 
-; assume TitleCase is a type
-([
-  variable_type_function: (IDENTIFIER)
-  field_access: (IDENTIFIER)
-  parameter: (IDENTIFIER)
-] @type
-  (#lua-match? @type "^%u([%l]+[%u%l%d]*)*$"))
-
-; assume camelCase is a function
-([
-  variable_type_function: (IDENTIFIER)
-  field_access: (IDENTIFIER)
-  parameter: (IDENTIFIER)
-] @function
-  (#lua-match? @function "^%l+([%u][%l%d]*)+$"))
-
-; assume all CAPS_1 is a constant
-([
-  variable_type_function: (IDENTIFIER)
-  field_access: (IDENTIFIER)
-] @constant
-  (#lua-match? @constant "^%u[%u%d_]+$"))
-
-function: (IDENTIFIER) @function
-
-function_call: (IDENTIFIER) @function.call
-
-exception: "!" @keyword.exception
-
-((IDENTIFIER) @variable.builtin
+((identifier) @variable.builtin
   (#eq? @variable.builtin "_"))
 
-(PtrTypeStart
-  "c" @variable.builtin)
+(calling_convention
+  (identifier) @variable.builtin)
 
-(ContainerDecl
-  (ContainerDeclType
-    "enum")
-  (ContainerField
-    (ErrorUnionExpr
-      (SuffixExpr
-        (IDENTIFIER) @constant))))
-
-field_constant: (IDENTIFIER) @constant
-
-(BUILTINIDENTIFIER) @function.builtin
-
-((BUILTINIDENTIFIER) @keyword.import
-  (#any-of? @keyword.import "@import" "@cImport"))
-
-(INTEGER) @number
-
-(FLOAT) @number.float
-
-[
-  "true"
-  "false"
-] @boolean
-
-[
-  (LINESTRING)
-  (STRINGLITERALSINGLE)
-] @string @spell
-
-(CHAR_LITERAL) @character
-
-(EscapeSequence) @string.escape
-
-(FormatSequence) @string.special
-
-(BreakLabel
-  (IDENTIFIER) @label)
-
-(BlockLabel
-  (IDENTIFIER) @label)
-
+; Keywords
 [
   "asm"
   "defer"
   "errdefer"
   "test"
-  "opaque"
   "error"
   "const"
   "var"
@@ -108,6 +120,7 @@ field_constant: (IDENTIFIER) @constant
   "struct"
   "union"
   "enum"
+  "opaque"
 ] @keyword.type
 
 [
@@ -152,11 +165,6 @@ field_constant: (IDENTIFIER) @constant
 ] @keyword.exception
 
 [
-  "anytype"
-  (BuildinTypeExpr)
-] @type.builtin
-
-[
   "volatile"
   "allowzero"
   "noalias"
@@ -168,50 +176,85 @@ field_constant: (IDENTIFIER) @constant
   "inline"
   "noinline"
   "extern"
-] @keyword.modifier
-
-[
   "comptime"
   "packed"
   "threadlocal"
-] @attribute
+] @keyword.modifier
 
+; Operator
 [
-  "null"
-  "unreachable"
-  "undefined"
-] @constant.builtin
-
-[
-  (CompareOp)
-  (BitwiseOp)
-  (BitShiftOp)
-  (AdditionOp)
-  (AssignOp)
-  (MultiplyOp)
-  (PrefixOp)
   "="
+  "*="
+  "*%="
+  "*|="
+  "/="
+  "%="
+  "+="
+  "+%="
+  "+|="
+  "-="
+  "-%="
+  "-|="
+  "<<="
+  "<<|="
+  ">>="
+  "&="
+  "^="
+  "|="
+  "!"
+  "~"
+  "-"
+  "-%"
+  "&"
+  "=="
+  "!="
+  ">"
+  ">="
+  "<="
+  "<"
+  "&"
+  "^"
+  "|"
+  "<<"
+  ">>"
+  "<<|"
+  "+"
+  "++"
+  "+%"
+  "-%"
+  "+|"
+  "-|"
   "*"
+  "/"
+  "%"
   "**"
-  "->"
-  ".?"
+  "*%"
+  "*|"
+  "||"
   ".*"
+  ".?"
   "?"
+  ".."
 ] @operator
 
-[
-  ";"
-  "."
-  ","
-  ":"
-  "=>"
-] @punctuation.delimiter
+; Literals
+(character) @character
 
-[
-  ".."
-  "..."
-] @punctuation.special
+([
+  (string)
+  (multiline_string)
+] @string
+  (#set! "priority" 95))
 
+(integer) @number
+
+(float) @number.float
+
+(boolean) @boolean
+
+(escape_sequence) @string.escape
+
+; Punctuation
 [
   "["
   "]"
@@ -221,19 +264,20 @@ field_constant: (IDENTIFIER) @constant
   "}"
 ] @punctuation.bracket
 
-(Payload
+[
+  ";"
+  "."
+  ","
+  ":"
+  "=>"
+  "->"
+] @punctuation.delimiter
+
+(payload
   "|" @punctuation.bracket)
 
-(PtrPayload
-  "|" @punctuation.bracket)
+; Comments
+(comment) @comment @spell
 
-(PtrIndexPayload
-  "|" @punctuation.bracket)
-
-(PtrListPayload
-  "|" @punctuation.bracket)
-
-(ParamType
-  (ErrorUnionExpr
-    (SuffixExpr
-      variable_type_function: (IDENTIFIER) @type)))
+((comment) @comment.documentation
+  (#lua-match? @comment.documentation "^//!"))
