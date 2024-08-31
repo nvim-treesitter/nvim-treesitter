@@ -315,7 +315,7 @@
     "revision": "ea71012d3fe14dd0b69f36be4f96bdfe9155ebae"
   },
   "http": {
-    "revision": "f762623c6a52a96898db325574de1ba18580cc2d"
+    "revision": "827efb386ad4b393e19193c0627809d0ba69e0cb"
   },
   "hurl": {
     "revision": "fba6ed8db3a009b9e7d656511931b181a3ee5b08"
@@ -375,7 +375,7 @@
     "revision": "b37e3d58e5c5cf8d739b315d6114e02d42e66664"
   },
   "kotlin": {
-    "revision": "dc5e8a14cb1f45582a8c221a270a199a5f8bdb63"
+    "revision": "7276b93ca6754c21f9630757e753f1b6aec500c1"
   },
   "koto": {
     "revision": "d4109879ba1387d19095269a7473bd7d274ab848"
@@ -507,7 +507,7 @@
     "revision": "217ff2af3f2db15a79ab7e3d21ea1e0c17e71a1a"
   },
   "perl": {
-    "revision": "55fb764e6a94512ceeaa1b9e4d53f6103e0610b2"
+    "revision": "05d6a22c903ab7d12e93a039332ad6687c8c7b7d"
   },
   "php": {
     "revision": "d13c91bc48aedf7db8240c52503eee694134ec53"
@@ -747,7 +747,7 @@
     "revision": "19b02da829d1721a521bf7b802eb80a50bd53aab"
   },
   "templ": {
-    "revision": "58aed18580c476d7bc211f187e7b07a6cd12bb1f"
+    "revision": "5c19fba6dc99315d02160ed928bbc5cd8ac9ffe1"
   },
   "terraform": {
     "revision": "9e3ec9848f28d26845ba300fd73c740459b83e9b"
