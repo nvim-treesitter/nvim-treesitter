@@ -241,6 +241,8 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [fsh](https://github.com/mgramigna/tree-sitter-fsh) (maintained by @mgramigna)
 - [x] [func](https://github.com/amaanq/tree-sitter-func) (maintained by @amaanq)
 - [x] [fusion](https://gitlab.com/jirgn/tree-sitter-fusion.git) (maintained by @jirgn)
+- [x] [GAP system](https://github.com/gap-system/tree-sitter-gap) (maintained by @reiniscirpons)
+- [x] [GAP system test files](https://github.com/gap-system/tree-sitter-gaptst) (maintained by @reiniscirpons)
 - [x] [Godot (gdscript)](https://github.com/PrestonKnopp/tree-sitter-gdscript) (maintained by @PrestonKnopp)
 - [x] [gdshader](https://github.com/GodOfAvacyn/tree-sitter-gdshader) (maintained by @godofavacyn)
 - [x] [git_config](https://github.com/the-mikedavis/tree-sitter-git-config) (maintained by @amaanq)
