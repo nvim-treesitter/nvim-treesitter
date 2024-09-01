@@ -1,7 +1,7 @@
 (comment) @comment @spell
 
 (section
-  (section_name) @markup.heading)
+  (section_name) @string.special.path)
 
 (character_choice
   (character) @constant)
