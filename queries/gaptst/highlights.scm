@@ -15,3 +15,5 @@
   "#@else"
   "#@fi"
 ] @keyword.conditional
+
+(comment) @comment @spell
