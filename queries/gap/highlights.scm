@@ -55,9 +55,6 @@
   (identifier) @variable.parameter.builtin .)
   (#eq? @variable.parameter.builtin "arg"))
 
-(locals
-  (identifier) @variable.parameter)
-
 ; Literals
 (bool) @constant.builtin
 

@@ -1,4 +1,4 @@
-(output_line) @string.documentation
+(output_line) @markup.raw.block
 
 [
   "#@local"
