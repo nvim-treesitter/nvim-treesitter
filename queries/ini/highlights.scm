@@ -1,5 +1,5 @@
 (section_name
-  (text) @type) ; consistency with toml
+  (text) @markup.heading)
 
 (comment) @comment @spell
 

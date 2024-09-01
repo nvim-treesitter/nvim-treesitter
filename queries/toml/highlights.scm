@@ -1,6 +1,6 @@
 ; Properties
 ;-----------
-(bare_key) @type
+(bare_key) @markup.heading
 
 (quoted_key) @string
 
