@@ -321,7 +321,7 @@
     "revision": "ea71012d3fe14dd0b69f36be4f96bdfe9155ebae"
   },
   "http": {
-    "revision": "827efb386ad4b393e19193c0627809d0ba69e0cb"
+    "revision": "49e1ceefcdcf89abfd4d8f013359cf90c615b1cd"
   },
   "hurl": {
     "revision": "fba6ed8db3a009b9e7d656511931b181a3ee5b08"
@@ -714,7 +714,7 @@
     "revision": "d819cdd5dbe455bd3c859193633c8d91c0df7c36"
   },
   "styled": {
-    "revision": "e8bf912db4996b32515639d42fe2b258517f135e"
+    "revision": "b729198642b3058d4ea0f864d86efb271d594595"
   },
   "supercollider": {
     "revision": "affa4389186b6939d89673e1e9d2b28364f5ca6f"
@@ -726,7 +726,7 @@
     "revision": "7ab8221e3f378a3b04b4b488f07c1f408c5bd0d8"
   },
   "swift": {
-    "revision": "d627a54d7266f0a8ee61b447b34d0ad07dadf1d6"
+    "revision": "5254a12fae5ddcb62ca8cbf57eca83c1c41cd884"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
