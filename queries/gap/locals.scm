@@ -1,5 +1,3 @@
-; The only other scopes apart from the global scope occur in function
-; definitions.
 [
   (lambda)
   (function)

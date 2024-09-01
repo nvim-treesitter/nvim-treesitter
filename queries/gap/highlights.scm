@@ -1,12 +1,4 @@
-; NOTE: (reiniscirpons) in case multiple queries match, last query wins. So
-; queries should go from least specific to most specific. (This is the default
-; behaviour since tree-sitter 0.22.2)
 (identifier) @variable
-
-; Constants
-; convention: constants are of the form ALL_CAPS_AND_UNDERSCORES and have length at least 2
-((identifier) @constant
-  (#match? @constant "^[A-Z_][A-Z_]+$"))
 
 ; Functions
 (assignment_statement
