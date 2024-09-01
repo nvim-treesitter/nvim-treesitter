@@ -112,10 +112,11 @@
   command: _ @function.macro @nospell
   keys: (curly_group_text_list) @markup.link @nospell)
 
-(hyperlink
+((hyperlink
   command: _ @function @nospell
   uri: (curly_group_uri
-    (_) @markup.link.url @nospell))
+    (_) @markup.link.url @nospell)) @_hyperlink
+  (#set! @_hyperlink url @markup.link.url))
 
 (glossary_entry_definition
   command: _ @function.macro @nospell
