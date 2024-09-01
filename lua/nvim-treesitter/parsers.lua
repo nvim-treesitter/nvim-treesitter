@@ -633,6 +633,24 @@ list.fusion = {
   maintainers = { "@jirgn" },
 }
 
+list.gap = {
+  install_info = {
+    url = "https://github.com/gap-system/tree-sitter-gap",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@reiniscirpons" },
+  readme_name = "GAP system",
+}
+
+list.gaptst = {
+  install_info = {
+    url = "https://github.com/gap-system/tree-sitter-gaptst",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@reiniscirpons" },
+  readme_name = "GAP system test files",
+}
+
 list.gdscript = {
   install_info = {
     url = "https://github.com/PrestonKnopp/tree-sitter-gdscript",
