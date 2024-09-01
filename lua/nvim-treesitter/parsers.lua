@@ -646,6 +646,7 @@ list.gaptst = {
   install_info = {
     url = "https://github.com/gap-system/tree-sitter-gaptst",
     files = { "src/parser.c", "src/scanner.c" },
+    branch = "main",
   },
   maintainers = { "@reiniscirpons" },
   readme_name = "GAP system test files",
