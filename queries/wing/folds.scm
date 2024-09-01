@@ -12,4 +12,6 @@
   (enum_definition)
   (try_catch_statement)
   (method_definition)
+  (import_statement)+
+  (initializer)
 ] @fold

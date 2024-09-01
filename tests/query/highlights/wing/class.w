@@ -1,12 +1,13 @@
 bring cloud;
-// <- @keyword
+// <- @keyword.import
+//    ^ @module
 
 class Foo {
 // <- @keyword.type
 //    ^   @type
 //        ^ @punctuation.bracket
   name: str;
-//^    @variable.member
+//^    @property
 //      ^   @type.builtin
 //         ^ @punctuation.delimiter
   new(name:  str) {
@@ -14,6 +15,7 @@ class Foo {
 //    ^    @variable
     this.name = name;
 //      ^ @punctuation.delimiter
+//       ^ @variable.member
 //            ^ @operator
   }
 }
