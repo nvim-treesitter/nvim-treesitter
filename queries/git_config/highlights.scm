@@ -1,5 +1,5 @@
 ; Sections
-(section_name) @type
+(section_name) @markup.heading
 
 ((section_name) @keyword.import
   (#eq? @keyword.import "include"))
