@@ -203,6 +203,12 @@
   "fusion": {
     "revision": "19db2f47ba4c3a0f6238d4ae0e2abfca16e61dd6"
   },
+  "gap": {
+    "revision": "141b063335e85299bde3f61b4888d02d674a1abc"
+  },
+  "gaptst": {
+    "revision": "e0723dc6136309b3d5904dad2c73ef71267428c1"
+  },
   "gdscript": {
     "revision": "1f1e782fe2600f50ae57b53876505b8282388d77"
   },
