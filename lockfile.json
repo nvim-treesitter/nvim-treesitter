@@ -12,7 +12,7 @@
     "revision": "602cc4b050ef1e14a69acc2ea094968bf928fa59"
   },
   "arduino": {
-    "revision": "afb34b2c65f507932c5c6ddbf0d5a9ca6a772f2f"
+    "revision": "1db90b2b54c995ee8ff8e64dabeb4a5971287c16"
   },
   "asm": {
     "revision": "55b2b913f1e71136027d6fce8212e760c64f3532"
@@ -54,7 +54,7 @@
     "revision": "927da1f210ebb24b7f109230a61a55b428875985"
   },
   "c_sharp": {
-    "revision": "31a64b28292aac6adf44071e449fa03fb80eaf4e"
+    "revision": "fd7f7402db6e66afd70b402fb2e367b2d71c10d6"
   },
   "cairo": {
     "revision": "6238f609bea233040fe927858156dee5515a0745"
@@ -105,7 +105,7 @@
     "revision": "ac584585a15c4cacd6cda8e6bfe7cb1ca7b3898e"
   },
   "dart": {
-    "revision": "cf72df5d4a623ca705e81bf9e9d264e1fe9d5da0"
+    "revision": "9ac03bb2154316624fb4c41fe0f372a5f1597b43"
   },
   "devicetree": {
     "revision": "296b3c294a8bcfca6673296d99f9cd37049b8026"
@@ -162,7 +162,7 @@
     "revision": "5e7210d945425b77f82cbaebc5af4dd3e1ad40f5"
   },
   "embedded_template": {
-    "revision": "ffbf64942c334933ee7982e144557b6efb76d0b9"
+    "revision": "62b0a6e45900a7dff7c37da95fec20a09968ba52"
   },
   "erlang": {
     "revision": "0b5a0dcfcedd9b397252cb5568cc55ab1905b1a9"
@@ -231,7 +231,7 @@
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
   },
   "gleam": {
-    "revision": "426e67087fd62be5f4533581b5916b2cf010fb5b"
+    "revision": "0d38bfdc04cc90d7541c21e39089e35e40c429d3"
   },
   "glimmer": {
     "revision": "da605af8c5999b43e6839b575eae5e6cafabb06f"
@@ -339,7 +339,7 @@
     "revision": "5573b295410201ed22771776b34d636900eba368"
   },
   "ini": {
-    "revision": "fc37e95b8d9651c60d81cccbcbbc55867dbb0afd"
+    "revision": "962568c9efa71d25720ab42c5d36e222626ef3a6"
   },
   "inko": {
     "revision": "234c87be1dac20f766ddf6f486a7bde2a4bc5594"
@@ -351,7 +351,7 @@
     "revision": "12bfab7db8a5f5b1d774ef84b5831acd34936071"
   },
   "java": {
-    "revision": "576d8097e495b411f31daaee28cb34c1752ac702"
+    "revision": "245b05c6ba900fa708242835f6168ef76f9d951e"
   },
   "javascript": {
     "revision": "15887341e5b57ffdb423aff840aef142b8f53d6d"
@@ -606,7 +606,7 @@
     "revision": "b1e211f52ad8f8e1e182bbbcc16dcd5e3688eb7d"
   },
   "racket": {
-    "revision": "171f52a8c0ed635b85cd42d1e36d82f1066a03b4"
+    "revision": "24dbb1dfc08e0f99dfbd0eddc5e73ef307f538dc"
   },
   "ralph": {
     "revision": "f6d81bf7a4599c77388035439cf5801cd461ff77"
@@ -666,7 +666,7 @@
     "revision": "a5512800ea0220da4abbae61b8aea8423d1549aa"
   },
   "scheme": {
-    "revision": "8f9dff3d038f09934db5ea113cebc59c74447743"
+    "revision": "432c338093c69222efbeb124feb90715da306cc7"
   },
   "scss": {
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
@@ -837,7 +837,7 @@
     "revision": "075ebfc84543675f12e79a955f79d717772dcef3"
   },
   "vhdl": {
-    "revision": "4ab3e251eae8890a020d083d00acd1b8c2653c07"
+    "revision": "3f13cd14952b39ccf6817f58880834b84565ca54"
   },
   "vhs": {
     "revision": "09f8fbfe40a3a699b200daca7d92e65fbbe9f9e6"
