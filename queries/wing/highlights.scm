@@ -127,7 +127,7 @@
   "as"
   "let"
   "new"
-  (inflight_specifier)
+  (phase_specifier)
   "impl"
   "test"
 ] @keyword

@@ -230,7 +230,7 @@
   "private"
   "protected"
   "final"
-  (virtual)
+  "virtual"
 ] @keyword.modifier
 
 [
