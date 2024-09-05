@@ -7,7 +7,7 @@
   (while_statement)
   (if_statement)
   (if_let_statement)
-  (elif_block)
+  (else_if_block)
   (struct_definition)
   (enum_definition)
   (try_catch_statement)
