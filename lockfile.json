@@ -375,7 +375,7 @@
     "revision": "ddd075f1939aed8147b7aa67f042eda3fce22790"
   },
   "julia": {
-    "revision": "78b05f3506ecbb0cef10b228a2edeb73bf966e5f"
+    "revision": "3520b57e418f734f582215181ecd926a6178c90f"
   },
   "just": {
     "revision": "6648ac1c0cdadaec8ee8bcf9a4ca6ace5102cf21"
@@ -387,7 +387,7 @@
     "revision": "b37e3d58e5c5cf8d739b315d6114e02d42e66664"
   },
   "kotlin": {
-    "revision": "7276b93ca6754c21f9630757e753f1b6aec500c1"
+    "revision": "ec985672ff21f7fd7f835869d8021e8f87304bb4"
   },
   "koto": {
     "revision": "d4109879ba1387d19095269a7473bd7d274ab848"
@@ -753,7 +753,7 @@
     "revision": "b3710fe2723bd9b285de7f3d0c0717bebf3f17bd"
   },
   "tcl": {
-    "revision": "46e6acd5c5376047338dd64d955b743f90d8e772"
+    "revision": "cdba4ab96a9896492d0d5219b70300c8783ca4e7"
   },
   "teal": {
     "revision": "19b02da829d1721a521bf7b802eb80a50bd53aab"
