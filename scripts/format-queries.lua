@@ -14,7 +14,8 @@ else
 end
 
 ts.query.add_predicate("kind-eq?", function(match, _, _, pred)
-  local node = match[pred[2]]
+  local cap = match[pred[2]]
+  local node = type(cap) == "table" and cap[1] or cap
   if not node then
     return true
   end
@@ -24,7 +25,8 @@ ts.query.add_predicate("kind-eq?", function(match, _, _, pred)
 end, true)
 
 ts.query.add_predicate("is-start-of-line?", function(match, _, _, pred)
-  local node = match[pred[2]]
+  local cap = match[pred[2]]
+  local node = type(cap) == "table" and cap[1] or cap
   if not node then
     return true
   end
