@@ -135,7 +135,7 @@
     "revision": "809266ed1694d64dedc168a18893cc254e3edf7e"
   },
   "earthfile": {
-    "revision": "b0a9bc5737340a9b80b489fe9ae93d7b2fe78cd7"
+    "revision": "1d637f2002bb8b22d4c08d26ad2bfbc22916f3ce"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -606,7 +606,7 @@
     "revision": "c8b6e5f3f3c055cfc76471ebc912286e9e73d7d2"
   },
   "racket": {
-    "revision": "24dbb1dfc08e0f99dfbd0eddc5e73ef307f538dc"
+    "revision": "5b211bf93021d1c45f39aa96898be9f794f087e4"
   },
   "ralph": {
     "revision": "f6d81bf7a4599c77388035439cf5801cd461ff77"
@@ -666,7 +666,7 @@
     "revision": "a5512800ea0220da4abbae61b8aea8423d1549aa"
   },
   "scheme": {
-    "revision": "432c338093c69222efbeb124feb90715da306cc7"
+    "revision": "63e25a4a84142ae7ee0ee01fe3a32c985ca16745"
   },
   "scss": {
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
@@ -729,7 +729,7 @@
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
   },
   "svelte": {
-    "revision": "6fe714f0c9026a986b916bf39c1021ffcb1e995b"
+    "revision": "774a65aea563accc35f5d45fafa4d96ec5761f57"
   },
   "swift": {
     "revision": "caa953d26c9479d18a373873125733f01342c40a"
