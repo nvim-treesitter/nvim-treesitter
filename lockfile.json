@@ -886,5 +886,8 @@
   },
   "zig": {
     "revision": "21e2218e0ec7f4e3c0640d16bf8c67e6f0a61e18"
+  },
+  "ziggy": {
+    "revision": "c66f47bc632c66668d61fa06eda112b41d6e5130"
   }
 }
