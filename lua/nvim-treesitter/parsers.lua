@@ -2101,6 +2101,30 @@ list.supercollider = {
   maintainers = { "@madskjeldgaard" },
 }
 
+list.supermd = {
+  install_info = {
+    url = "https://github.com/kristoff-it/supermd",
+    files = {
+      "src/parser.c",
+      "src/scanner.c",
+    },
+    location = "tree-sitter/supermd",
+  },
+  maintainers = { "@rockorager" },
+}
+
+list.supermd_inline = {
+  install_info = {
+    url = "https://github.com/kristoff-it/supermd",
+    files = {
+      "src/parser.c",
+      "src/scanner.c",
+    },
+    location = "tree-sitter/supermd-inline",
+  },
+  maintainers = { "@rockorager" },
+}
+
 list.surface = {
   install_info = {
     url = "https://github.com/connorlay/tree-sitter-surface",
