@@ -2113,6 +2113,18 @@ list.supercollider = {
   maintainers = { "@madskjeldgaard" },
 }
 
+list.superhtml = {
+  install_info = {
+    url = "https://github.com/kristoff-it/superhtml",
+    files = {
+      "src/parser.c",
+      "src/scanner.c",
+    },
+    location = "tree-sitter-superhtml",
+  },
+  maintainers = { "@rockorager" },
+}
+
 list.surface = {
   install_info = {
     url = "https://github.com/connorlay/tree-sitter-surface",
