@@ -2573,6 +2573,15 @@ list.ziggy = {
   maintainers = { "@rockorager" },
 }
 
+list.ziggy_schema = {
+  install_info = {
+    url = "https://github.com/kristoff-it/ziggy",
+    files = { "src/parser.c" },
+    location = "tree-sitter-ziggy-schema",
+  },
+  maintainers = { "@rockorager" },
+}
+
 list.templ = {
   install_info = {
     url = "https://github.com/vrischmann/tree-sitter-templ",
