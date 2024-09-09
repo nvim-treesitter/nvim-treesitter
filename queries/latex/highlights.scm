@@ -238,6 +238,14 @@
     (_) @markup.strong))
   (#any-of? @_name "\\textbf" "\\mathbf"))
 
+(generic_command
+  (command_name) @keyword.conditional
+  (#lua-match? @keyword.conditional "^\\if[a-zA-Z@]+$"))
+
+(generic_command
+  (command_name) @keyword.conditional
+  (#any-of? @keyword.conditional "\\fi" "\\else"))
+
 ; File inclusion commands
 (class_include
   command: _ @keyword.import
