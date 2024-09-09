@@ -725,6 +725,9 @@
   "supercollider": {
     "revision": "affa4389186b6939d89673e1e9d2b28364f5ca6f"
   },
+  "superhtml": {
+    "revision": "3edb67236291d45ba97a79cdac3b91692487a352"
+  },
   "supermd": {
     "revision": "df79b57df18a985b5e524d465361da9de39b1863"
   },
