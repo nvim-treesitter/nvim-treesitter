@@ -13,16 +13,12 @@
   (#set! injection.language "graphql"))
 
 ; Script (default to javascript)
-((script) @injection.content
-  (#offset! @injection.content 0 2 0 -2)
-  (#set! injection.language "javascript"))
-
-; Script with other languages
 ((comment
   name: (_) @_name
   (#eq? @_name "lang")
-  value: (_) @injection.language)
+  value: (_) @injection.language)?
   .
   (_
     (script) @injection.content
-    (#offset! @injection.content 0 2 0 -2)))
+    (#offset! @injection.content 0 2 0 -2))
+  (#set! injection.language "javascript"))

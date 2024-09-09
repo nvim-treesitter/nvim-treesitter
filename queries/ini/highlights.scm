@@ -1,5 +1,5 @@
 (section_name
-  (text) @type) ; consistency with toml
+  (text) @markup.heading)
 
 (comment) @comment @spell
 
@@ -13,4 +13,4 @@
 (setting
   (setting_name) @property)
 
-; (setting_value) @none ; grammar does not support subtypes
+(setting_value) @string
