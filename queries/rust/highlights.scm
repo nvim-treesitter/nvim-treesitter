@@ -214,7 +214,6 @@
     (identifier) @function.macro .))
 
 ; Literals
-
 (boolean_literal) @boolean
 
 (integer_literal) @number
