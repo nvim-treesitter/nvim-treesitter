@@ -81,10 +81,10 @@
     (constant)
   ] @function.call)
 
-(program
-  (call
-    (identifier) @keyword.import)
-  (#any-of? @keyword.import "require" "require_relative" "load"))
+((call
+  !receiver
+  method: (identifier) @keyword.import)
+  (#any-of? @keyword.import "require" "require_relative" "load" "autoload" "gem"))
 
 ; Function definitions
 (alias
