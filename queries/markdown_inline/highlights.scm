@@ -10,16 +10,19 @@
 (shortcut_link
   (link_text) @nospell)
 
-[
-  (backslash_escape)
-  (hard_line_break)
-] @string.escape
+(hard_line_break) @string.escape
+
+; Conceal backslashes in escape sequences
+(_
+  (backslash_escape) @string.escape
+  (#offset! @string.escape 0 0 0 -1)
+  (#set! conceal ""))
 
 ; Conceal codeblock and text style markers
 ([
   (code_span_delimiter)
   (emphasis_delimiter)
-] @conceal
+] @punctuation.delimiter
   (#set! conceal ""))
 
 ; Conceal inline links
