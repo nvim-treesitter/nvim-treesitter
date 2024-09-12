@@ -150,7 +150,7 @@
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
   "elixir": {
-    "revision": "27efab52e7c955ccd68e0fd82a1c6d83002bc7c8"
+    "revision": "2c6e93171477973b38de4b1d2be427cc99f990a6"
   },
   "elm": {
     "revision": "09dbf221d7491dc8d8839616b27c21b9c025c457"
@@ -231,7 +231,7 @@
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
   },
   "gleam": {
-    "revision": "0d38bfdc04cc90d7541c21e39089e35e40c429d3"
+    "revision": "9586f38658da115c90e2d01099c83479eb0eea99"
   },
   "glimmer": {
     "revision": "da605af8c5999b43e6839b575eae5e6cafabb06f"
@@ -261,7 +261,7 @@
     "revision": "2ffb90de47417018651fc3b970e5f6b67214dc9d"
   },
   "gomod": {
-    "revision": "1f55029bacd0a6a11f6eb894c4312d429dcf735c"
+    "revision": "3b01edce2b9ea6766ca19328d1850e456fde3103"
   },
   "gosum": {
     "revision": "e2ac513b2240c7ff1069ae33b2df29ce90777c11"
@@ -399,7 +399,7 @@
     "revision": "854a40e99f7c70258e522bdb8ab584ede6196e2e"
   },
   "latex": {
-    "revision": "90fd9894bebddce79f5b8041e7f82523364a619b"
+    "revision": "1e4e30342b7a3b3a24886a632fbac53035d98871"
   },
   "ledger": {
     "revision": "8a841fb20ce683bfbb3469e6ba67f2851cfdf94a"
@@ -420,7 +420,7 @@
     "revision": "1b96e58faf558ce057d4dc664b904528aee743cb"
   },
   "lua": {
-    "revision": "a24dab177e58c9c6832f96b9a73102a0cfbced4a"
+    "revision": "99fc677e6971c425e8d407f59c77ab897e585c92"
   },
   "luadoc": {
     "revision": "873612aadd3f684dd4e631bdf42ea8990c57634e"
@@ -438,10 +438,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "7fe453beacecf02c86f7736439f238f5bb8b5c9b"
+    "revision": "d9287a6f36347064e55c36858e9e522eb652c1ad"
   },
   "markdown_inline": {
-    "revision": "7fe453beacecf02c86f7736439f238f5bb8b5c9b"
+    "revision": "d9287a6f36347064e55c36858e9e522eb652c1ad"
   },
   "matlab": {
     "revision": "306c43ab28b7b8a4976e40ff0a7c26b019ad52df"
@@ -519,7 +519,7 @@
     "revision": "217ff2af3f2db15a79ab7e3d21ea1e0c17e71a1a"
   },
   "perl": {
-    "revision": "05d6a22c903ab7d12e93a039332ad6687c8c7b7d"
+    "revision": "465983954cae2d2f984eae82de5ed5f11ca291dc"
   },
   "php": {
     "revision": "74c6b0d560c2660db4d9e8c76b681f538d494160"
@@ -660,7 +660,7 @@
     "revision": "6b7d1fc73ded57f73b1619bcf4371618212208b1"
   },
   "scala": {
-    "revision": "a366c0d52485b84d2d9ba66dee530398526acb01"
+    "revision": "42c065ca40760884301b887c56e344ca4d6feab3"
   },
   "scfg": {
     "revision": "a5512800ea0220da4abbae61b8aea8423d1549aa"
@@ -732,7 +732,7 @@
     "revision": "774a65aea563accc35f5d45fafa4d96ec5761f57"
   },
   "swift": {
-    "revision": "caa953d26c9479d18a373873125733f01342c40a"
+    "revision": "7d303df70012edb7385a6a3b3938e0e7b89ecfbd"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"

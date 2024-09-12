@@ -24,6 +24,9 @@
 ; References
 (identifier) @local.reference
 
+; Block Scope
+(block) @local.scope
+
 ; Function Body Scope
 (function_body) @local.scope
 
