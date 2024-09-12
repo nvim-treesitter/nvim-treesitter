@@ -14,6 +14,8 @@
   "module"
   "rescue"
   "then"
+  "BEGIN"
+  "END"
 ] @keyword
 
 "class" @keyword.type
@@ -125,7 +127,10 @@
     "__callee__" "__dir__" "__id__" "__method__" "__send__" "__ENCODING__" "__FILE__" "__LINE__"))
 
 ((identifier) @function.builtin
-  (#any-of? @function.builtin "attr_reader" "attr_writer" "attr_accessor" "module_function"))
+  (#any-of? @function.builtin
+    "attr_reader" "attr_writer" "attr_accessor" "module_function" "proc" "lambda" "caller" "callcc"
+    "abort" "at_exit" "exit" "fork" "loop" "trap" "alias_method" "define_method"
+    "define_singleton_method" "remove_method" "undef_method"))
 
 ((call
   !receiver
