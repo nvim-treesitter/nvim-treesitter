@@ -243,7 +243,7 @@
     "revision": "9d018a0f93417e6951264a26093b89ee63df7315"
   },
   "glsl": {
-    "revision": "ddc3137a2d775aca93084ff997fa13cc1691058a"
+    "revision": "66aec57f7119c7e8e40665b723cd7af5594f15ee"
   },
   "gn": {
     "revision": "bc06955bc1e3c9ff8e9b2b2a55b38b94da923c05"
@@ -309,7 +309,7 @@
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
   },
   "hlsl": {
-    "revision": "cf432a7420eb71e9b40954aa829dcb8a9bf6b546"
+    "revision": "543930235970a04c2f0d549c9e88815847c7a74a"
   },
   "hlsplaylist": {
     "revision": "3bfda9271e3adb08d35f47a2102fe957009e1c55"
@@ -660,7 +660,7 @@
     "revision": "6b7d1fc73ded57f73b1619bcf4371618212208b1"
   },
   "scala": {
-    "revision": "42c065ca40760884301b887c56e344ca4d6feab3"
+    "revision": "ec13dd674bb8dd89213e0d6b1fe45efb68d5878f"
   },
   "scfg": {
     "revision": "a5512800ea0220da4abbae61b8aea8423d1549aa"
@@ -675,7 +675,7 @@
     "revision": "602cc4b050ef1e14a69acc2ea094968bf928fa59"
   },
   "slang": {
-    "revision": "4a3fabd26b09efd7431ea4899e5f2d81b568a4b9"
+    "revision": "dd991eb3b6957a33d9044e0f5914588f7f449a78"
   },
   "slint": {
     "revision": "34ccfd58d3baee7636f62d9326f32092264e8407"
