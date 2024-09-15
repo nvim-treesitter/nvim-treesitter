@@ -159,13 +159,13 @@
   (modifiers
     (modifier
       [
-        "final"
-        "static"
+        (final)
+        (static)
       ])
     (modifier
       [
-        "final"
-        "static"
+        (final)
+        (static)
       ]))
   (variable_declarator
     name: (identifier) @constant))
