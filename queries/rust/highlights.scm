@@ -31,10 +31,9 @@
 (mod_item
   name: (identifier) @module)
 
-[
-  (self)
-  "_"
-] @variable.builtin
+(self) @variable.builtin
+
+"_" @character.special
 
 (label
   [

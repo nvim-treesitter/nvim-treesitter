@@ -21,7 +21,7 @@
     ; https://docs.python.org/3/library/constants.html
     "NotImplemented" "Ellipsis" "quit" "exit" "copyright" "credits" "license"))
 
-"_" @constant.builtin ; match wildcard
+"_" @character.special ; match wildcard
 
 ((attribute
   attribute: (identifier) @variable.member)

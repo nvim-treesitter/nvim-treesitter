@@ -129,7 +129,7 @@
   (#eq? @keyword.operator "new"))
 
 ; Match Pattern
-(underscore) @constant ; The "_" pattern.
+(underscore) @character.special ; The "_" pattern.
 
 (pattern_open_ending) @operator ; The ".." pattern.
 
