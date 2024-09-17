@@ -375,6 +375,12 @@
 (use_wildcard
   "*" @character.special)
 
+(remaining_field_pattern
+  ".." @character.special)
+
+(range_pattern
+  ".." @character.special)
+
 ; Punctuation
 [
   "("
