@@ -102,7 +102,7 @@
     "revision": "8a5f273bfa281c66354da562f2307c2d394b6c81"
   },
   "d": {
-    "revision": "ac584585a15c4cacd6cda8e6bfe7cb1ca7b3898e"
+    "revision": "c0dc93c0268c61567a1c9325137c5f107f12e3fb"
   },
   "dart": {
     "revision": "9ac03bb2154316624fb4c41fe0f372a5f1597b43"
@@ -327,7 +327,7 @@
     "revision": "ea71012d3fe14dd0b69f36be4f96bdfe9155ebae"
   },
   "http": {
-    "revision": "7c68e1c8ce6eeef6bc4b749330c540dbbda5ba44"
+    "revision": "a2865ebbe419da8ecb0f42cc4d3c53b14d9ea039"
   },
   "hurl": {
     "revision": "ff07a42d9ec95443b5c1b57ed793414bf7b79be5"
@@ -480,7 +480,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "537095ddc80cf610fa75a2a0149fe9799b011014"
+    "revision": "ceaf10eb2ae877175d58e6304f83ec6f4d704295"
   },
   "norg": {
     "revision": "d89d95af13d409f30a6c7676387bde311ec4a2c8"
