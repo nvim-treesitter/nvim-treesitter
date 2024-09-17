@@ -32,6 +32,9 @@
 
 (value_pattern) @variable.parameter
 
+((value_pattern) @character.special
+  (#eq? @character.special "_"))
+
 ; Functions
 ;----------
 (let_binding
