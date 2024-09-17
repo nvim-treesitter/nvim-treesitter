@@ -89,11 +89,7 @@
   "@"
 ] @operator
 
-(wildcard
-  [
-    ".."
-    "_"
-  ] @character.special)
+(wildcard) @character.special
 
 (module
   (module_id) @module)
