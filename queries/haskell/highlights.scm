@@ -91,8 +91,8 @@
 
 (wildcard
   [
-   ".."
-   "_"
+    ".."
+    "_"
   ] @character.special)
 
 (module
