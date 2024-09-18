@@ -233,7 +233,7 @@
 ; String literals
 (line_str_text) @string
 
-(str_escaped_char) @string
+(str_escaped_char) @string.escape
 
 (multi_line_str_text) @string
 
