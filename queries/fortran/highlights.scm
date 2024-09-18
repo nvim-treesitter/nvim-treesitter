@@ -1,5 +1,5 @@
 ; Preprocs
-(preproc_file_line) @keyword.directive
+(preproc_directive) @keyword.directive
 
 ; Namespaces
 (program_statement

@@ -102,7 +102,7 @@
     "revision": "8a5f273bfa281c66354da562f2307c2d394b6c81"
   },
   "d": {
-    "revision": "c0dc93c0268c61567a1c9325137c5f107f12e3fb"
+    "revision": "b0edd520697f7ea849fae0514490f5e094cfb680"
   },
   "dart": {
     "revision": "9ac03bb2154316624fb4c41fe0f372a5f1597b43"
@@ -192,7 +192,7 @@
     "revision": "90189238385cf636b9ee99ce548b9e5b5e569d48"
   },
   "fortran": {
-    "revision": "8f842945abefb76b9a68c0835619b37060b8f098"
+    "revision": "7cdd245093c92fc9c5c80fa62d08ed46bcd98d04"
   },
   "fsh": {
     "revision": "fad2e175099a45efbc98f000cc196d3674cc45e0"
@@ -252,7 +252,7 @@
     "revision": "3c895f5d9c0b3a3c7e02383766b462c21913c000"
   },
   "go": {
-    "revision": "81a11f8252998ee6b98d59e6da91fc307491e53d"
+    "revision": "ecc20866d1bd4d80f3aef06456ed3014d4d598e6"
   },
   "goctl": {
     "revision": "49c43532689fe1f53e8b9e009d0521cab02c432b"
@@ -342,7 +342,7 @@
     "revision": "962568c9efa71d25720ab42c5d36e222626ef3a6"
   },
   "inko": {
-    "revision": "234c87be1dac20f766ddf6f486a7bde2a4bc5594"
+    "revision": "3a8887ca16dd8add3905216ce63796d4097c7a6f"
   },
   "ispc": {
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
@@ -480,7 +480,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "ceaf10eb2ae877175d58e6304f83ec6f4d704295"
+    "revision": "637ea4b4748bd4dae62976cccbff031198e688fc"
   },
   "norg": {
     "revision": "d89d95af13d409f30a6c7676387bde311ec4a2c8"
@@ -603,7 +603,7 @@
     "revision": "f767fb0ac5e711b6d44c5e0c8d1f349687a86ce0"
   },
   "r": {
-    "revision": "4279b699c47fa87956045980c46c7d30f8c0121b"
+    "revision": "2097fa502efa21349d26af0ffee55d773015e481"
   },
   "racket": {
     "revision": "5b211bf93021d1c45f39aa96898be9f794f087e4"
@@ -774,7 +774,7 @@
     "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
   },
   "tlaplus": {
-    "revision": "bba02e79f85e335f310fc95e21c677e49f2c4439"
+    "revision": "a9f9c136baa9b73c63850be92301fb5f1fc9b2fd"
   },
   "tmux": {
     "revision": "0252ecd080016e45e6305ef1a943388f5ae2f4b4"
