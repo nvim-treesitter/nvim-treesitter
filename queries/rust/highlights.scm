@@ -379,7 +379,11 @@
   ".." @character.special)
 
 (range_pattern
-  ".." @character.special)
+  [
+    ".."
+    "..="
+    "..."
+  ] @character.special)
 
 ; Punctuation
 [
