@@ -4,7 +4,7 @@
 ] @comment @spell
 
 ((line_comment) @comment.documentation @spell
-  (#match? @comment.documentation "^///"))
+  (#lua-match? @comment.documentation "^///"))
 
 (const
   [
@@ -21,7 +21,7 @@
 ((argument_patterns
   (long_identifier
     (identifier) @character.special))
-  (#match? @character.special "^\_.*"))
+  (#lua-match? @character.special "^\_.*"))
 
 (wildcard_pattern) @character.special
 
