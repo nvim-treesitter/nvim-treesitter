@@ -2,6 +2,8 @@
 ; Variables
 (identifier) @variable
 
+(underscore_pattern) @character.special
+
 ; Methods
 (method_declaration
   name: (identifier) @function.method)

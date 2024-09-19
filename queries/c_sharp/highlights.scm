@@ -217,8 +217,9 @@
   "module"
   "this"
   "base"
-  (discard)
 ] @variable.builtin
+
+(discard) @character.special
 
 (constructor_declaration
   name: (identifier) @constructor)
