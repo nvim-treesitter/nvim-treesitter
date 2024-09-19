@@ -621,7 +621,6 @@ list.fsharp = {
   install_info = {
     url = "https://github.com/ionide/tree-sitter-fsharp",
     files = { "src/parser.c", "src/scanner.c" },
-    branch = "main",
     location = "fsharp",
   },
   maintainers = { "@nsidorenco" },
