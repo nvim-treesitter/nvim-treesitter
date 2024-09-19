@@ -10,7 +10,7 @@
   "{%"
   "%}"
   (end_paired_statement)
-] @punctuation.bracket
+] @punctuation.special
 
 (tag_name) @function
 
@@ -69,6 +69,5 @@
 
 [
   ":"
-  "'"
-  "\""
+  ","
 ] @punctuation.delimiter
