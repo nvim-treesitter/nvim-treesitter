@@ -219,8 +219,6 @@
   "base"
 ] @variable.builtin
 
-(discard) @character.special
-
 (constructor_declaration
   name: (identifier) @constructor)
 
@@ -430,6 +428,11 @@
   "??="
   ".."
 ] @operator
+
+(list_pattern
+  ".." @character.special)
+
+(discard) @character.special
 
 [
   ";"
