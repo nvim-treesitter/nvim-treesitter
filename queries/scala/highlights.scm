@@ -211,7 +211,8 @@
 
 (null_literal) @constant.builtin
 
-(wildcard) @variable.parameter
+(wildcard
+  "_") @character.special
 
 (namespace_wildcard
   [

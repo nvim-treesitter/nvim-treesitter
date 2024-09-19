@@ -118,11 +118,12 @@
   "role" @keyword
   role: (type_role) @keyword.modifier)
 
-(hole) @character.special
-
 ; `_` wildcards in if-then-else and case-of expressions,
 ; as well as record updates and operator sections
-(wildcard) @variable.parameter
+[
+  "_"
+  (hole)
+] @character.special
 
 ; ----------------------------------------------------------------------------
 ; Functions and variables
