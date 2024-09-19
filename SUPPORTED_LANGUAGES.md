@@ -257,7 +257,7 @@ jsx (queries only)[^jsx] | community | `HFIJ ` | @steelsojka
 [supercollider](https://github.com/madskjeldgaard/tree-sitter-supercollider) | community | `HFIJL` | @madskjeldgaard
 [surface](https://github.com/connorlay/tree-sitter-surface) | community | `HFIJ ` | @connorlay
 [svelte](https://github.com/tree-sitter-grammars/tree-sitter-svelte) | core | `HFIJL` | @amaanq
-[swift](https://github.com/alex-pinkus/tree-sitter-swift) | community | `H IJL` | @alex-pinkus
+[swift](https://github.com/alex-pinkus/tree-sitter-swift) | community | `HFIJL` | @alex-pinkus
 [sxhkdrc](https://github.com/RaafatTurki/tree-sitter-sxhkdrc) | community | `HF J ` | @RaafatTurki
 [systemtap](https://github.com/ok-ryoko/tree-sitter-systemtap) | community | `HF JL` | @ok-ryoko
 [systemverilog](https://github.com/zhangwwpeng/tree-sitter-systemverilog) | community | `HF J ` | @zhangwwpeng
