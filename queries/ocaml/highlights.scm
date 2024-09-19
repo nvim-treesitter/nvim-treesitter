@@ -275,6 +275,9 @@
   ".."
 ] @punctuation.delimiter
 
+(range_pattern
+  ".." @character.special)
+
 ; Operators
 ;----------
 [
