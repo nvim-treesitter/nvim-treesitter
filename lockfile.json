@@ -141,7 +141,7 @@
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
   },
   "editorconfig": {
-    "revision": "faf014c607f912ff666b20183d32a03dcfc3111d"
+    "revision": "a761198025448c77ea11bcf22505b395a77fc0d0"
   },
   "eds": {
     "revision": "0ad62cb635c2f4353359a88dec9e3a57bbf9f66d"
@@ -192,7 +192,7 @@
     "revision": "90189238385cf636b9ee99ce548b9e5b5e569d48"
   },
   "fortran": {
-    "revision": "7cdd245093c92fc9c5c80fa62d08ed46bcd98d04"
+    "revision": "c52e978afadf3faed52bb3c8082cc472c915f4e7"
   },
   "fsh": {
     "revision": "fad2e175099a45efbc98f000cc196d3674cc45e0"
@@ -480,7 +480,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "637ea4b4748bd4dae62976cccbff031198e688fc"
+    "revision": "01bc5b18693055aab7a863d7608f4b3f85843cf8"
   },
   "norg": {
     "revision": "d89d95af13d409f30a6c7676387bde311ec4a2c8"
@@ -519,7 +519,7 @@
     "revision": "217ff2af3f2db15a79ab7e3d21ea1e0c17e71a1a"
   },
   "perl": {
-    "revision": "465983954cae2d2f984eae82de5ed5f11ca291dc"
+    "revision": "458e694f63d59edc72a9fb321443f70f740e04e8"
   },
   "php": {
     "revision": "74c6b0d560c2660db4d9e8c76b681f538d494160"
