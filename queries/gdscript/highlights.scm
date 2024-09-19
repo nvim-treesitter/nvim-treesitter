@@ -134,7 +134,6 @@
   (pattern_open_ending)
 ] @character.special
 
-
 ; Alternations
 [
   "("
