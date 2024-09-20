@@ -27,10 +27,11 @@
 [
   "="
   "~"
-  "_"
 ] @operator
 
 (modifier) @operator
+
+"_" @character.special
 
 [
   "<"
