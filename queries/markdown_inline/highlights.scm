@@ -40,14 +40,12 @@
   (image_description)
 ] @markup.link.label
 
-(inline_link
-  (link_text) @_label
-  (link_destination) @_url
+((inline_link
+  (link_destination) @_url) @_label
   (#set! @_label url @_url))
 
-(image
-  (image_description) @_label
-  (link_destination) @_url
+((image
+  (link_destination) @_url) @_label
   (#set! @_label url @_url))
 
 ; Conceal image links
