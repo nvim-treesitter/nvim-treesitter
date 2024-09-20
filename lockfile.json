@@ -153,7 +153,7 @@
     "revision": "2c6e93171477973b38de4b1d2be427cc99f990a6"
   },
   "elm": {
-    "revision": "09dbf221d7491dc8d8839616b27c21b9c025c457"
+    "revision": "27f502ed0a1cbd3c5912d284cc7934ee0d4cdddc"
   },
   "elsa": {
     "revision": "0a66b2b3f3c1915e67ad2ef9f7dbd2a84820d9d7"
@@ -396,7 +396,7 @@
     "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
   },
   "lalrpop": {
-    "revision": "854a40e99f7c70258e522bdb8ab584ede6196e2e"
+    "revision": "194c25539f435de415ee0551a5f07058833da915"
   },
   "latex": {
     "revision": "1e4e30342b7a3b3a24886a632fbac53035d98871"
@@ -825,7 +825,7 @@
     "revision": "ad9b638b914095320de85d59c49ab271603af048"
   },
   "v": {
-    "revision": "83b7286d8f4f33c88dff102bad22149d8e29d9eb"
+    "revision": "60f2bc0e6ffae43e96a45f26db80c27196e079d3"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
