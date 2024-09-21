@@ -87,7 +87,7 @@
     "revision": "594289eadfec719198e560f9d7fd243c4db678d5"
   },
   "cpp": {
-    "revision": "30f973c2244f0bff444186185f475c3bd76bc3a5"
+    "revision": "b53713a1194daf625fca185d1e54e6988d97ea1e"
   },
   "css": {
     "revision": "a68fcd1e6b03118d1e92ffa45e7ab7a39d52d3f7"
@@ -102,7 +102,7 @@
     "revision": "8a5f273bfa281c66354da562f2307c2d394b6c81"
   },
   "d": {
-    "revision": "b0edd520697f7ea849fae0514490f5e094cfb680"
+    "revision": "345206d1c4eb0ec70903d025d8bbb9e97379ccd1"
   },
   "dart": {
     "revision": "9ac03bb2154316624fb4c41fe0f372a5f1597b43"
@@ -327,7 +327,7 @@
     "revision": "ea71012d3fe14dd0b69f36be4f96bdfe9155ebae"
   },
   "http": {
-    "revision": "a2865ebbe419da8ecb0f42cc4d3c53b14d9ea039"
+    "revision": "231f1b1bafd12e46c8ed8c21dbbdd940d9f15e94"
   },
   "hurl": {
     "revision": "ff07a42d9ec95443b5c1b57ed793414bf7b79be5"
@@ -825,7 +825,7 @@
     "revision": "ad9b638b914095320de85d59c49ab271603af048"
   },
   "v": {
-    "revision": "60f2bc0e6ffae43e96a45f26db80c27196e079d3"
+    "revision": "4f93826aeb31066eb241f4ccbca61f052239803f"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
