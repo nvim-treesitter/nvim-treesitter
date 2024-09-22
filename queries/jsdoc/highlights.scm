@@ -20,6 +20,13 @@
 (identifier) @variable
 
 (tag
+  (identifier) @nospell)
+
+(tag
+  (optional_identifier
+    (identifier) @nospell))
+
+(tag
   (tag_name) @_name
   (identifier) @function
   (#any-of? @_name "@callback" "@function" "@func" "@method"))
