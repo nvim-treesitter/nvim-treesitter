@@ -102,7 +102,7 @@
     "revision": "8a5f273bfa281c66354da562f2307c2d394b6c81"
   },
   "d": {
-    "revision": "345206d1c4eb0ec70903d025d8bbb9e97379ccd1"
+    "revision": "45e5f1e9d6de2c68591bc8e5ec662cf18e950b4a"
   },
   "dart": {
     "revision": "9ac03bb2154316624fb4c41fe0f372a5f1597b43"
@@ -495,10 +495,10 @@
     "revision": "28d3b2e25a0b1881d1b47ed1924ca276c7003d45"
   },
   "ocaml": {
-    "revision": "14beb5ef0e7488bf1d93b8c67f69942324fee557"
+    "revision": "19639e5dcd68a34f7704ea2e39a5730308c2234c"
   },
   "ocaml_interface": {
-    "revision": "14beb5ef0e7488bf1d93b8c67f69942324fee557"
+    "revision": "19639e5dcd68a34f7704ea2e39a5730308c2234c"
   },
   "ocamllex": {
     "revision": "4b9898ccbf198602bb0dec9cd67cc1d2c0a4fad2"
@@ -723,7 +723,7 @@
     "revision": "b729198642b3058d4ea0f864d86efb271d594595"
   },
   "supercollider": {
-    "revision": "affa4389186b6939d89673e1e9d2b28364f5ca6f"
+    "revision": "1a8ee0da9a4f2df5a8a22f4d637ac863623a78a7"
   },
   "surface": {
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
