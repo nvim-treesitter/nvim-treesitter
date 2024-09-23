@@ -9,7 +9,7 @@
     "revision": "c473dbc54ca27f95d8928cfdb2a1a79300e16951"
   },
   "apex": {
-    "revision": "45994a30c6e421995ebc61f8c4c61cf75d249e27"
+    "revision": "69330ef89fb6b7b2dd16b639d86811e9262c7369"
   },
   "arduino": {
     "revision": "ce02903e3ae74c729e9415dc32c276447b1c8afd"
@@ -51,7 +51,7 @@
     "revision": "4e60cf3c2e613625c06f6f85540b3631e2d06cd3"
   },
   "c": {
-    "revision": "bc85948c0bec746ebe921f72d2296d47e17d4ea7"
+    "revision": "f4c21152f1952a99f4744e8c41d3ffb8038ae78c"
   },
   "c_sharp": {
     "revision": "fd7f7402db6e66afd70b402fb2e367b2d71c10d6"
@@ -87,7 +87,7 @@
     "revision": "594289eadfec719198e560f9d7fd243c4db678d5"
   },
   "cpp": {
-    "revision": "b53713a1194daf625fca185d1e54e6988d97ea1e"
+    "revision": "30d2fa385735378388a55917e2910965fce19748"
   },
   "css": {
     "revision": "a68fcd1e6b03118d1e92ffa45e7ab7a39d52d3f7"
@@ -495,10 +495,10 @@
     "revision": "28d3b2e25a0b1881d1b47ed1924ca276c7003d45"
   },
   "ocaml": {
-    "revision": "19639e5dcd68a34f7704ea2e39a5730308c2234c"
+    "revision": "45ddc92d18fa11b2ca1a18cd94de4e63feea0806"
   },
   "ocaml_interface": {
-    "revision": "19639e5dcd68a34f7704ea2e39a5730308c2234c"
+    "revision": "45ddc92d18fa11b2ca1a18cd94de4e63feea0806"
   },
   "ocamllex": {
     "revision": "4b9898ccbf198602bb0dec9cd67cc1d2c0a4fad2"
@@ -672,7 +672,7 @@
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
   },
   "sflog": {
-    "revision": "45994a30c6e421995ebc61f8c4c61cf75d249e27"
+    "revision": "69330ef89fb6b7b2dd16b639d86811e9262c7369"
   },
   "slang": {
     "revision": "dd991eb3b6957a33d9044e0f5914588f7f449a78"
@@ -693,10 +693,10 @@
     "revision": "ee5a2d2ba30b487c4bbf613d2ef310a454c09c7c"
   },
   "soql": {
-    "revision": "45994a30c6e421995ebc61f8c4c61cf75d249e27"
+    "revision": "69330ef89fb6b7b2dd16b639d86811e9262c7369"
   },
   "sosl": {
-    "revision": "45994a30c6e421995ebc61f8c4c61cf75d249e27"
+    "revision": "69330ef89fb6b7b2dd16b639d86811e9262c7369"
   },
   "sourcepawn": {
     "revision": "6b9bf9cbab91443380d2ca8a2f6c491cc7fac5bf"
@@ -885,6 +885,6 @@
     "revision": "0554b4a5d313244b7fc000cbb41c04afae4f4e31"
   },
   "zig": {
-    "revision": "21e2218e0ec7f4e3c0640d16bf8c67e6f0a61e18"
+    "revision": "eb7d58c2dc4fbeea4745019dee8df013034ae66b"
   }
 }
