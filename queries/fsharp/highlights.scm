@@ -18,13 +18,6 @@
 (class_as_reference
   (_) @variable.parameter.builtin)
 
-((argument_patterns
-  (long_identifier
-    (identifier) @character.special))
-  (#lua-match? @character.special "^\_.*"))
-
-(wildcard_pattern) @character.special
-
 (type_name
   type_name: (_) @type.definition)
 
@@ -35,7 +28,9 @@
 
 (member_signature
   .
-  (identifier) @function.method
+  (identifier) @function.member)
+
+(member_signature
   (curried_spec
     (arguments_spec
       "*"* @operator
@@ -44,12 +39,15 @@
           "?"? @character.special
           name: (_) @variable.parameter)))))
 
-(union_type_case) @constant
+(union_type_case
+  (identifier) @constant)
 
 (rules
   (rule
     pattern: (_) @constant
     block: (_)))
+
+(wildcard_pattern) @character.special
 
 (identifier_pattern
   .
@@ -75,8 +73,7 @@
   name: (_) @module)
 
 (module_defn
-  .
-  (_) @module)
+  (identifier) @module)
 
 (ce_expression
   .
@@ -90,18 +87,44 @@
     .
     (identifier) @property))
 
-(dot_expression
-  base: (_)? @module)
-
 (value_declaration_left
   .
   (_) @variable)
 
 (function_declaration_left
   .
-  (_) @function
-  .
-  (_)* @variable.parameter)
+  (_) @function)
+
+(argument_patterns
+  [
+    (const)
+    (long_identifier)
+    (_pattern)
+  ] @variable.parameter)
+
+(argument_patterns
+  (typed_pattern
+    (_pattern) @variable.parameter
+    (_type) @type))
+
+(argument_patterns
+  (record_pattern
+    (field_pattern
+      .
+      (long_identifier) @variable.parameter)))
+
+(argument_patterns
+  (array_pattern
+    (_pattern)? @variable.parameter))
+
+(argument_patterns
+  (list_pattern
+    (_pattern)? @variable.parameter))
+
+((argument_patterns
+  (long_identifier
+    (identifier) @character.special))
+  (#lua-match? @character.special "^\_.*"))
 
 (member_defn
   (method_or_prop_defn
@@ -112,6 +135,12 @@
         method: (identifier) @function.method)
     ]
     args: (_)* @variable.parameter))
+
+(dot_expression
+  .
+  (_) @variable.member
+  .
+  (_))
 
 (application_expression
   .
@@ -171,13 +200,16 @@
 (preproc_line
   "#line" @keyword.directive)
 
-(attribute) @attribute
+(attribute
+  target: (identifier)? @keyword
+  (_type) @attribute)
 
 [
   "("
   ")"
   "{"
   "}"
+  ".["
   "["
   "]"
   "[|"
@@ -200,6 +232,8 @@
 [
   ","
   ";"
+  ":"
+  "."
 ] @punctuation.delimiter
 
 [
@@ -211,13 +245,23 @@
   "~"
   "->"
   "<-"
+  "&"
   "&&"
+  "|"
   "||"
   ":>"
   ":?>"
+  ".."
   (infix_op)
   (prefix_op)
+  (op_identifier)
 ] @operator
+
+(generic_type
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
 
 [
   "if"
@@ -300,8 +344,6 @@
   "in"
   "do"
   "do!"
-  "event"
-  "field"
   "fun"
   "function"
   "get"
@@ -309,8 +351,6 @@
   "lazy"
   "new"
   "of"
-  "param"
-  "property"
   "struct"
   "val"
   "module"
@@ -318,7 +358,10 @@
   "with"
 ] @keyword
 
-"null" @constant.builtin
+[
+  "null"
+  (unit)
+] @constant.builtin
 
 (match_expression
   "with" @keyword.conditional)
@@ -329,6 +372,9 @@
     "with"
     "finally"
   ] @keyword.exception)
+
+(application_expression
+  (unit) @function.call)
 
 ((_type
   (long_identifier
@@ -346,13 +392,6 @@
 
 (preproc_else
   "#else" @keyword.directive)
-
-(long_identifier
-  (identifier)+ @module
-  .
-  (identifier))
-
-(op_identifier) @operator
 
 ((identifier) @module.builtin
   (#any-of? @module.builtin
