@@ -28,7 +28,7 @@
 
 (member_signature
   .
-  (identifier) @function.member)
+  (identifier) @function.method)
 
 (member_signature
   (curried_spec
