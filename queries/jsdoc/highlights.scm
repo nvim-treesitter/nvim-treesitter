@@ -17,14 +17,7 @@
   "~"
 ] @punctuation.delimiter
 
-(identifier) @variable
-
-(tag
-  (identifier) @nospell)
-
-(tag
-  (optional_identifier
-    (identifier) @nospell))
+(identifier) @variable @nospell
 
 (tag
   (tag_name) @_name
