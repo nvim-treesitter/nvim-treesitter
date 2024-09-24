@@ -6,7 +6,7 @@
     "revision": "d3dc807692e6bca671d4491b3bf5c67eeca8c016"
   },
   "angular": {
-    "revision": "c473dbc54ca27f95d8928cfdb2a1a79300e16951"
+    "revision": "745d3c65c2294aca1110b6b6ad6805124be605c9"
   },
   "apex": {
     "revision": "69330ef89fb6b7b2dd16b639d86811e9262c7369"
@@ -546,7 +546,7 @@
     "revision": "73ff874ae4c9e9b45462673cbc0a1e350e2522a7"
   },
   "powershell": {
-    "revision": "fc15514b2f1dbba9c58528d15a3708f89eda6a01"
+    "revision": "ebe2ab2f642eda2072c68c8de02e83973c26f33c"
   },
   "printf": {
     "revision": "0e0aceabbf607ea09e03562f5d8a56f048ddea3d"
