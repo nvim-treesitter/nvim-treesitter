@@ -1,6 +1,6 @@
 pub type Cat {
 // <- @keyword.modifier
-//  ^^^^ @keyword
+//  ^^^^ @keyword.type
 //       ^^^ @type
 //           ^ @punctuation.bracket
   Cat(name: String, cuteness: Int)
@@ -38,7 +38,7 @@ fn cats() {
 }
 
 type Box(inner_type) {
-// <- @keyword
+// <- @keyword.type
 //   ^^^ @type
 //      ^ @punctuation.bracket
 //       ^^^^^^^^^^ @type
@@ -56,7 +56,7 @@ type Box(inner_type) {
 pub opaque type Counter {
 // <- @keyword.modifier
 //  ^^^^^^ @keyword.modifier
-//         ^^^^ @keyword
+//         ^^^^ @keyword.type
 //              ^^^^^^^ @type
 //                      ^ @punctuation.bracket
   Counter(value: Int)
