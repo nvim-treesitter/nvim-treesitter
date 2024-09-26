@@ -33,7 +33,6 @@
 (member_signature
   (curried_spec
     (arguments_spec
-      "*"* @operator
       (argument_spec
         (argument_name_spec
           "?"? @character.special
@@ -252,6 +251,7 @@
   ":>"
   ":?>"
   ".."
+  "*"
   (infix_op)
   (prefix_op)
   (op_identifier)
