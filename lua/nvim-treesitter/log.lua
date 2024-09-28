@@ -1,4 +1,5 @@
 local echo = vim.api.nvim_echo
+local notify = vim.notify
 
 -- TODO(lewis6991): write these out to a file
 local messages = {} --- @type {[1]: string, [2]: string?, [3]: string}[]
@@ -54,7 +55,7 @@ end
 function Logger:info(m, ...)
   local m1 = m:format(...)
   messages[#messages + 1] = { 'info', self.ctx, m1 }
-  echo({ { mkpfx(self.ctx) .. ': ' .. m1, sev_to_hl.info } }, true, {})
+  notify(mkpfx(self.ctx) .. ': ' .. m1, vim.log.levels.INFO)
 end
 
 ---@param m string
@@ -62,7 +63,7 @@ end
 function Logger:warn(m, ...)
   local m1 = m:format(...)
   messages[#messages + 1] = { 'warn', self.ctx, m1 }
-  echo({ { mkpfx(self.ctx) .. ' warning: ' .. m1, sev_to_hl.warn } }, true, {})
+  notify(mkpfx(self.ctx) .. ' warning: ' .. m1, vim.log.levels.WARN)
 end
 
 ---@param m string
@@ -71,7 +72,7 @@ end
 function Logger:error(m, ...)
   local m1 = m:format(...)
   messages[#messages + 1] = { 'error', self.ctx, m1 }
-  echo({ { mkpfx(self.ctx) .. ' error: ' .. m1, sev_to_hl.error } }, true, {})
+  notify(mkpfx(self.ctx) .. ' error: ' .. m1, vim.log.levels.ERROR)
   return m1
 end
 
