@@ -390,7 +390,7 @@
     "revision": "ec985672ff21f7fd7f835869d8021e8f87304bb4"
   },
   "koto": {
-    "revision": "d4109879ba1387d19095269a7473bd7d274ab848"
+    "revision": "cbf637e5163065934c827d254b293f4d2f08f523"
   },
   "kusto": {
     "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
@@ -480,7 +480,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "e68105245140008bd83ef4c28299f018fa876194"
+    "revision": "fcf1857e254ab654e0fb73fe9706e33c52e79a5c"
   },
   "norg": {
     "revision": "d89d95af13d409f30a6c7676387bde311ec4a2c8"
