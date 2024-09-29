@@ -12,7 +12,7 @@
     "revision": "69330ef89fb6b7b2dd16b639d86811e9262c7369"
   },
   "arduino": {
-    "revision": "ce02903e3ae74c729e9415dc32c276447b1c8afd"
+    "revision": "415ebc8f75eb02a748faa03f5af199f08ced120f"
   },
   "asm": {
     "revision": "55b2b913f1e71136027d6fce8212e760c64f3532"
@@ -150,7 +150,7 @@
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
   "elixir": {
-    "revision": "2c6e93171477973b38de4b1d2be427cc99f990a6"
+    "revision": "ef124b83a3f3572b0af23db4efae3f8de06a15e1"
   },
   "elm": {
     "revision": "27f502ed0a1cbd3c5912d284cc7934ee0d4cdddc"
@@ -759,7 +759,7 @@
     "revision": "19b02da829d1721a521bf7b802eb80a50bd53aab"
   },
   "templ": {
-    "revision": "2b0c7b5848309567693fc6c86f654003e820ca1d"
+    "revision": "80d1a04e6bf3ced1c924bcb05527aa2eaf3f6239"
   },
   "terraform": {
     "revision": "9e3ec9848f28d26845ba300fd73c740459b83e9b"
@@ -774,7 +774,7 @@
     "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
   },
   "tlaplus": {
-    "revision": "a9f9c136baa9b73c63850be92301fb5f1fc9b2fd"
+    "revision": "b9e3978f363b3f8884c886a01d15e41bd14d30bd"
   },
   "tmux": {
     "revision": "0252ecd080016e45e6305ef1a943388f5ae2f4b4"
