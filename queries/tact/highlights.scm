@@ -95,8 +95,10 @@
 (tlb_serialization
   "as" @keyword
   type: (identifier) @type.builtin
-  (#match? @type.builtin
-    "^(coins|remaining|bytes32|bytes64|int257|u?int(?:2[0-5][0-6]|1[0-9][0-9]|[1-9][0-9]?))$"))
+  (#any-of? @type.builtin "int257" "coins" "remaining" "bytes32" "bytes64")
+  (#lua-match? @type.builtin "^u?int2[0-5][0-6]$")
+  (#lua-match? @type.builtin "^u?int1[0-9][0-9]$")
+  (#lua-match? @type.builtin "^u?int[1-9][0-9]?$"))
 
 ; string
 ; ------
