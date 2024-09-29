@@ -617,6 +617,15 @@ list.fsh = {
   maintainers = { "@mgramigna" },
 }
 
+list.fsharp = {
+  install_info = {
+    url = "https://github.com/ionide/tree-sitter-fsharp",
+    files = { "src/parser.c", "src/scanner.c" },
+    location = "fsharp",
+  },
+  maintainers = { "@nsidorenco" },
+}
+
 list.func = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-func",
