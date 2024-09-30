@@ -67,7 +67,7 @@
   (lower_case_identifier) @variable)
 
 (anything_pattern
-  (underscore) @variable)
+  (underscore) @character.special)
 
 (record_base_identifier
   (lower_case_identifier) @variable)
@@ -88,7 +88,7 @@
 
 (function_declaration_left
   (anything_pattern
-    (underscore) @variable.parameter))
+    (underscore) @character.special))
 
 (function_declaration_left
   (lower_pattern

@@ -31,10 +31,9 @@
 (mod_item
   name: (identifier) @module)
 
-[
-  (self)
-  "_"
-] @variable.builtin
+(self) @variable.builtin
+
+"_" @character.special
 
 (label
   [
@@ -375,6 +374,16 @@
 
 (use_wildcard
   "*" @character.special)
+
+(remaining_field_pattern
+  ".." @character.special)
+
+(range_pattern
+  [
+    ".."
+    "..="
+    "..."
+  ] @character.special)
 
 ; Punctuation
 [

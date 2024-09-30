@@ -211,6 +211,11 @@
 
 (comment) @comment @spell
 
+((program
+  .
+  (comment) @keyword.directive @nospell)
+  (#lua-match? @keyword.directive "^#!/"))
+
 (program
   (comment)+ @comment.documentation
   (class))

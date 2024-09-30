@@ -4,8 +4,6 @@
 ; and don't override destructured parameters
 (variable) @variable
 
-(pattern/wildcard) @variable
-
 (decl/function
   patterns: (patterns
     (_) @variable.parameter))
@@ -78,7 +76,6 @@
   (operator)
   (constructor_operator)
   (all_names)
-  (wildcard)
   "."
   ".."
   "="
@@ -91,6 +88,8 @@
   "`"
   "@"
 ] @operator
+
+(wildcard) @character.special
 
 (module
   (module_id) @module)

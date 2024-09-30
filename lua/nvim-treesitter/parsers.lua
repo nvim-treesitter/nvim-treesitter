@@ -58,12 +58,15 @@ end
 ---@field readme_name string|nil
 
 ---@type ParserInfo[]
-local list = setmetatable({}, {
-  __newindex = function(table, parsername, parserconfig)
-    rawset(table, parsername, parserconfig)
-    ts.language.register(parsername, parserconfig.filetype or parsername)
-  end,
-})
+local list = {}
+if vim.fn.has "nvim-0.11" == 0 then
+  setmetatable(list, {
+    __newindex = function(table, parsername, parserconfig)
+      rawset(table, parsername, parserconfig)
+      ts.language.register(parsername, parserconfig.filetype or parsername)
+    end,
+  })
+end
 
 list.ada = {
   install_info = {
@@ -615,6 +618,15 @@ list.fsh = {
     files = { "src/parser.c" },
   },
   maintainers = { "@mgramigna" },
+}
+
+list.fsharp = {
+  install_info = {
+    url = "https://github.com/ionide/tree-sitter-fsharp",
+    files = { "src/parser.c", "src/scanner.c" },
+    location = "fsharp",
+  },
+  maintainers = { "@nsidorenco" },
 }
 
 list.func = {

@@ -62,7 +62,7 @@
   (operator)
 ] @operator
 
-(wildcard_pattern) @constant.builtin
+(wildcard_pattern) @character.special
 
 [
   "if"

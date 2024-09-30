@@ -4,9 +4,10 @@
   "let"
   "panic"
   "todo"
-  "type"
   "use"
 ] @keyword
+
+"type" @keyword.type
 
 ; Function Keywords
 "fn" @keyword.function
