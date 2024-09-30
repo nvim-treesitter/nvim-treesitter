@@ -735,7 +735,7 @@
     "revision": "774a65aea563accc35f5d45fafa4d96ec5761f57"
   },
   "swift": {
-    "revision": "032930d6218d8ae23bde074cf29ce8d276b87533"
+    "revision": "4bff50b78b4d3c0517e4d0f0a344aca165f00146"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -753,7 +753,7 @@
     "revision": "b1170880c61355aaf38fc06f4af7d3c55abdabc4"
   },
   "tact": {
-    "revision": "d16804029968f53f26f5afc695166a55bb0b68b2"
+    "revision": "09c57b6b9759560b4d067e0546c9953ee0e065da"
   },
   "tcl": {
     "revision": "cdba4ab96a9896492d0d5219b70300c8783ca4e7"
@@ -777,7 +777,7 @@
     "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
   },
   "tlaplus": {
-    "revision": "b9e3978f363b3f8884c886a01d15e41bd14d30bd"
+    "revision": "da9cf9793686e236327aadfbad449414c895bf84"
   },
   "tmux": {
     "revision": "0252ecd080016e45e6305ef1a943388f5ae2f4b4"
@@ -828,7 +828,7 @@
     "revision": "ad9b638b914095320de85d59c49ab271603af048"
   },
   "v": {
-    "revision": "4f93826aeb31066eb241f4ccbca61f052239803f"
+    "revision": "bc5b3caa85f7a8d4597f51aeaf92b83162ed6b33"
   },
   "vala": {
     "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
