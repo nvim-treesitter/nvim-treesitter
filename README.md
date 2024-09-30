@@ -470,6 +470,8 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [yuck](https://github.com/Philipp-M/tree-sitter-yuck) (maintained by @Philipp-M, @amaanq)
 - [x] [zathurarc](https://github.com/Freed-Wu/tree-sitter-zathurarc) (maintained by @Freed-Wu)
 - [x] [zig](https://github.com/tree-sitter-grammars/tree-sitter-zig) (maintained by @amaanq)
+- [x] [ziggy](https://github.com/kristoff-it/ziggy) (maintained by @rockorager)
+- [x] [ziggy_schema](https://github.com/kristoff-it/ziggy) (maintained by @rockorager)
 <!--parserinfo-->
 
 For related information on the supported languages, including related plugins, see [this wiki page](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Supported-Languages-Information).
