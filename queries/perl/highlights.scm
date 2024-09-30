@@ -46,6 +46,11 @@
 ] @keyword.function
 
 [
+  "async"
+  "await"
+] @keyword.coroutine
+
+[
   "map"
   "grep"
   "sort"
@@ -54,6 +59,7 @@
 [
   "package"
   "class"
+  "role"
 ] @keyword.import
 
 [
@@ -63,6 +69,7 @@
   "my"
   "our"
   "local"
+  "dynamically"
   "state"
   "field"
   "last"
@@ -82,10 +89,16 @@
 (phaser_statement
   phase: _ @keyword)
 
+(class_phaser_statement
+  phase: _ @keyword)
+
 [
   "or"
+  "xor"
   "and"
   "eq"
+  "equ"
+  "eqr"
   "ne"
   "cmp"
   "lt"
@@ -105,6 +118,8 @@
   (number)
   (version)
 ] @number
+
+(boolean) @boolean
 
 [
   (string_literal)

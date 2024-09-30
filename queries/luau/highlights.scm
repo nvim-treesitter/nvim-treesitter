@@ -4,10 +4,9 @@
 ; Keywords
 "return" @keyword.return
 
-[
-  "local"
-  "type"
-] @keyword
+"local" @keyword
+
+"type" @keyword.type
 
 "export" @keyword.import
 
