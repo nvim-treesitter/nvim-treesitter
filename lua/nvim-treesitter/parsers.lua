@@ -61,7 +61,9 @@ end
 local list = setmetatable({}, {
   __newindex = function(table, parsername, parserconfig)
     rawset(table, parsername, parserconfig)
-    ts.language.register(parsername, parserconfig.filetype or (vim.fn.has "nvim-0.11" == 0 and parsername))
+    if parserconfig.filetype or vim.fn.has "nvim-0.11" == 0 then
+      ts.language.register(parsername, parserconfig.filetype or parsername)
+    end
   end,
 })
 
