@@ -56,6 +56,11 @@
   key: ((identifier) @variable.builtin
     (#eq? @variable.builtin "$implicit")))
 
+[
+  (control_keyword)
+  (special_keyword)
+] @keyword
+
 ((control_keyword) @keyword.repeat
   (#any-of? @keyword.repeat "for" "empty"))
 
@@ -67,8 +72,6 @@
 
 ((control_keyword) @keyword.exception
   (#eq? @keyword.exception "error"))
-
-(special_keyword) @keyword
 
 ((identifier) @boolean
   (#any-of? @boolean "true" "false"))
