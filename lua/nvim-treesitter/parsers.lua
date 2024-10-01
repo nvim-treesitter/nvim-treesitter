@@ -11,6 +11,7 @@ for ft, lang in pairs {
   ["typescript.tsx"] = "tsx",
   ["terraform-vars"] = "terraform",
   ["html.handlebars"] = "glimmer",
+  systemverilog = "verilog",
   pandoc = "markdown",
   rmd = "markdown",
   quarto = "markdown",
@@ -2154,14 +2155,6 @@ list.systemtap = {
   maintainers = { "@ok-ryoko" },
 }
 
-list.systemverilog = {
-  install_info = {
-    url = "https://github.com/zhangwwpeng/tree-sitter-systemverilog",
-    files = { "src/parser.c" },
-  },
-  maintainers = { "@zhangwwpeng" },
-}
-
 list.t32 = {
   install_info = {
     url = "https://gitlab.com/xasc/tree-sitter-t32.git",
@@ -2416,10 +2409,10 @@ list.vento = {
 
 list.verilog = {
   install_info = {
-    url = "https://github.com/tree-sitter/tree-sitter-verilog",
+    url = "https://github.com/gmlarumbe/tree-sitter-systemverilog",
     files = { "src/parser.c" },
   },
-  maintainers = { "@zegervdv" },
+  maintainers = { "@zhangwwpeng" },
 }
 
 list.vhdl = {
