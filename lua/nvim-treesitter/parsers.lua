@@ -58,15 +58,14 @@ end
 ---@field readme_name string|nil
 
 ---@type ParserInfo[]
-local list = {}
-if vim.fn.has "nvim-0.11" == 0 then
-  setmetatable(list, {
-    __newindex = function(table, parsername, parserconfig)
-      rawset(table, parsername, parserconfig)
+local list = setmetatable({}, {
+  __newindex = function(table, parsername, parserconfig)
+    rawset(table, parsername, parserconfig)
+    if parserconfig.filetype or vim.fn.has "nvim-0.11" == 0 then
       ts.language.register(parsername, parserconfig.filetype or parsername)
-    end,
-  })
-end
+    end
+  end,
+})
 
 list.ada = {
   install_info = {
