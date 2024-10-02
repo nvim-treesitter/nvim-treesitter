@@ -68,6 +68,9 @@
 ((control_keyword) @keyword.exception
   (#eq? @keyword.exception "error"))
 
+((control_keyword) @keyword.operator
+  (#eq? @keyword.operator "let"))
+
 (special_keyword) @keyword
 
 ((identifier) @boolean
