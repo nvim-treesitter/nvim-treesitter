@@ -483,7 +483,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "49adb0f7656fe1737bb11aff593692157905d1b1"
+    "revision": "588539bf3ff2560c57b4ee847f95688bc701eaad"
   },
   "norg": {
     "revision": "d89d95af13d409f30a6c7676387bde311ec4a2c8"
@@ -525,10 +525,10 @@
     "revision": "81c57e274c541c30d6c204c8dbceb90ec647ed8d"
   },
   "php": {
-    "revision": "a342f7c0ad1db48afc6d2420cdd87b55b51a0644"
+    "revision": "07a04599ed9ac97f82c6383a24ae139a807930f3"
   },
   "php_only": {
-    "revision": "a342f7c0ad1db48afc6d2420cdd87b55b51a0644"
+    "revision": "07a04599ed9ac97f82c6383a24ae139a807930f3"
   },
   "phpdoc": {
     "revision": "df5e7da4b83da072f99135079ac3436550b8d67d"
@@ -681,7 +681,7 @@
     "revision": "dd991eb3b6957a33d9044e0f5914588f7f449a78"
   },
   "slint": {
-    "revision": "37c8e12ee1198f41d4eb5cc58d21a9c21196224f"
+    "revision": "4e2765d4cac1f03ada6f635eeb6008d1d0aff5a3"
   },
   "smali": {
     "revision": "fdfa6a1febc43c7467aa7e937b87b607956f2346"
@@ -819,7 +819,7 @@
     "revision": "debd26fed283d80456ebafa33a06957b0c52e451"
   },
   "unison": {
-    "revision": "59d36a09282be7e4d3374854126590f3dcebee6e"
+    "revision": "985aaf5857a61fad3aeb262e64816105b746ad30"
   },
   "usd": {
     "revision": "4e0875f724d94d0c2ff36f9b8cb0b12f8b20d216"
