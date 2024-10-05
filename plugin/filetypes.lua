@@ -31,6 +31,7 @@ local filetypes = {
   ocaml_interface = { 'ocamlinterface' },
   perl = { 'pl' },
   poe_filter = { 'poefilter' },
+  powershell = { 'ps1', 'psd1', 'psm1' },
   properties = { 'jproperties' },
   python = { 'py', 'gyp' },
   qmljs = { 'qml' },
@@ -53,7 +54,7 @@ local filetypes = {
   uxntal = { 'tal', 'uxn' },
   v = { 'vlang' },
   vhs = { 'tape' },
-  xml = { 'xsd', 'xslt', 'svg' },
+  xml = { 'xsd', 'xslt', 'svg', 'ps1xml' },
 }
 
 for lang, ft in pairs(filetypes) do
