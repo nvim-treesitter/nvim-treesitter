@@ -165,7 +165,7 @@
     "revision": "62b0a6e45900a7dff7c37da95fec20a09968ba52"
   },
   "erlang": {
-    "revision": "b079ba57a7918a85e0780df29e7f45f51d622200"
+    "revision": "f1919a34af3a9c79402c4a3d6c52986e9c2ea949"
   },
   "facility": {
     "revision": "2d037f2f2bf668737f72e6be6eda4b7918b68d86"
@@ -459,7 +459,7 @@
     "revision": "bd17c824196ce70800f64ad39cfddd1b17acc13f"
   },
   "mlir": {
-    "revision": "612a71d978d9d3e8edaece497845ce8708b44b2d"
+    "revision": "5da32586f41659cc566d6f8145f9aaff3b842c96"
   },
   "muttrc": {
     "revision": "173b0ab53a9c07962c9777189c4c70e90f1c1837"
@@ -483,7 +483,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "588539bf3ff2560c57b4ee847f95688bc701eaad"
+    "revision": "42b5c693e7cd8f2309661438e956d947de30080e"
   },
   "norg": {
     "revision": "d89d95af13d409f30a6c7676387bde311ec4a2c8"
@@ -819,7 +819,7 @@
     "revision": "debd26fed283d80456ebafa33a06957b0c52e451"
   },
   "unison": {
-    "revision": "985aaf5857a61fad3aeb262e64816105b746ad30"
+    "revision": "bc06e1eb100e1c0fab9bd89a9ca55d646ac80fc4"
   },
   "usd": {
     "revision": "4e0875f724d94d0c2ff36f9b8cb0b12f8b20d216"
