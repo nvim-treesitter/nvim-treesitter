@@ -402,7 +402,7 @@
     "revision": "194c25539f435de415ee0551a5f07058833da915"
   },
   "latex": {
-    "revision": "1e4e30342b7a3b3a24886a632fbac53035d98871"
+    "revision": "87e4059f01bed363230dc349f794ce4cc580e862"
   },
   "ledger": {
     "revision": "8a841fb20ce683bfbb3469e6ba67f2851cfdf94a"
@@ -483,7 +483,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "42b5c693e7cd8f2309661438e956d947de30080e"
+    "revision": "8be0e516904650a868639aa8d3923ebe84f62627"
   },
   "norg": {
     "revision": "d89d95af13d409f30a6c7676387bde311ec4a2c8"
@@ -657,7 +657,7 @@
     "revision": "5120f6e59284cb8b85b450bd2db0bd352635ba9f"
   },
   "ruby": {
-    "revision": "a66579f70d6f50ffd81a16fc3d3358e2ac173c88"
+    "revision": "0b4729672f9aec4810c01a0f971541dcb433fef5"
   },
   "rust": {
     "revision": "6b7d1fc73ded57f73b1619bcf4371618212208b1"
