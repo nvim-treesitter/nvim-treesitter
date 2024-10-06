@@ -29,7 +29,7 @@ The `nvim-treesitter` plugin provides
 
 - Neovim 0.10.0 or later (nightly)
 - `tar` and `curl` in your path (or alternatively `git`)
-- [`tree-sitter`](https://github.com/tree-sitter/tree-sitter) CLI (0.22.6 or later)
+- [`tree-sitter`](https://github.com/tree-sitter/tree-sitter) CLI (0.24.0 or later)
 - a C compiler in your path (see <https://docs.rs/cc/latest/cc/#compile-time-requirements>)
 
 ## Installation
