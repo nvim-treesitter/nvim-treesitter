@@ -7,7 +7,7 @@ local health = vim.health
 local M = {}
 
 local NVIM_TREESITTER_MINIMUM_ABI = 13
-local TREE_SITTER_MIN_VER = { 0, 22, 6 }
+local TREE_SITTER_MIN_VER = { 0, 25, 1 }
 
 ---@param name string
 ---@return table?
@@ -24,7 +24,7 @@ local function install_health()
   health.start('Requirements')
 
   do -- nvim check
-    if vim.fn.has('nvim-0.10') ~= 1 then
+    if vim.fn.has('nvim-0.11') ~= 1 then
       health.error('Nvim-treesitter requires the latest Neovim nightly')
     end
 
