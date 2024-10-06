@@ -416,6 +416,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [strace](https://github.com/sigmaSd/tree-sitter-strace) (maintained by @amaanq)
 - [x] [styled](https://github.com/mskelton/tree-sitter-styled) (maintained by @mskelton)
 - [x] [supercollider](https://github.com/madskjeldgaard/tree-sitter-supercollider) (maintained by @madskjeldgaard)
+- [x] [superhtml](https://github.com/kristoff-it/superhtml) (maintained by @rockorager)
 - [x] [surface](https://github.com/connorlay/tree-sitter-surface) (maintained by @connorlay)
 - [x] [svelte](https://github.com/tree-sitter-grammars/tree-sitter-svelte) (maintained by @amaanq)
 - [x] [swift](https://github.com/alex-pinkus/tree-sitter-swift) (maintained by @alex-pinkus)
