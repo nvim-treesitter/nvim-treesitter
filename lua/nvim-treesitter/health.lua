@@ -7,7 +7,7 @@ local health = vim.health
 local M = {}
 
 local NVIM_TREESITTER_MINIMUM_ABI = 13
-local TREE_SITTER_MIN_VER = { 0, 22, 6 }
+local TREE_SITTER_MIN_VER = { 0, 24, 0 }
 
 ---@param name string
 ---@return table?

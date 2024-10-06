@@ -144,7 +144,6 @@ local function do_generate(logger, repo, compile_location)
   local r = system({
     'tree-sitter',
     'generate',
-    '--no-bindings',
     '--abi',
     tostring(vim.treesitter.language_version),
     repo.generate_from_json and 'src/grammar.json',
