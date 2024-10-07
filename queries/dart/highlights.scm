@@ -1,27 +1,28 @@
+(identifier) @variable
+
 (dotted_identifier_list) @string
 
 ; Methods
 ; --------------------
-(super) @function
-
 ; TODO: add method/call_expression to grammar and
 ; distinguish method call from variable access
 (function_expression_body
-  (identifier) @function)
+  (identifier) @function.call)
 
 ; ((identifier)(selector (argument_part)) @function)
 ; NOTE: This query is a bit of a work around for the fact that the dart grammar doesn't
 ; specifically identify a node as a function call
-(((identifier) @function
-  (#lua-match? @function "^_?[%l]"))
+(((identifier) @function.call
+  (#lua-match? @function.call "^_?[%l]"))
   .
   (selector
     .
-    (argument_part))) @function
+    (argument_part))) @function.call
 
 ; Annotations
 ; --------------------
 (annotation
+  "@" @attribute
   name: (identifier) @attribute)
 
 ; Operators and Tokens
@@ -38,13 +39,12 @@
 (escape_sequence) @string.escape
 
 [
-  "@"
   "=>"
   ".."
   "??"
   "=="
+  "!"
   "?"
-  ":"
   "&&"
   "%"
   "<"
@@ -53,6 +53,20 @@
   ">="
   "<="
   "||"
+  ">>>="
+  ">>="
+  "<<="
+  "&="
+  "|="
+  "??="
+  "%="
+  "+="
+  "-="
+  "*="
+  "/="
+  "^="
+  "~/="
+  (shift_operator)
   (multiplicative_operator)
   (increment_operator)
   (is_operator)
@@ -76,6 +90,9 @@
   ";"
   "."
   ","
+  ":"
+  "?."
+  "?"
 ] @punctuation.delimiter
 
 ; Types
@@ -116,6 +133,12 @@
 (type_alias
   (type_identifier) @type.definition)
 
+(type_arguments
+  [
+    "<"
+    ">"
+  ] @punctuation.bracket)
+
 ; Variables
 ; --------------------
 ; var keyword
@@ -133,16 +156,12 @@
 (conditional_assignable_selector
   (identifier) @property)
 
-; assignments
-(assignment_expression
-  left: (assignable_expression) @variable)
-
 (this) @variable.builtin
 
 ; Parameters
 ; --------------------
 (formal_parameter
-  name: (identifier) @variable.parameter)
+  (identifier) @variable.parameter)
 
 (named_argument
   (label
@@ -262,6 +281,12 @@
   "switch"
   "default"
 ] @keyword.conditional
+
+(conditional_expression
+  [
+    "?"
+    ":"
+  ] @keyword.conditional.ternary)
 
 [
   "try"
