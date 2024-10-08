@@ -101,6 +101,9 @@
   "cue": {
     "revision": "8a5f273bfa281c66354da562f2307c2d394b6c81"
   },
+  "cylc": {
+    "revision": "30dd40d9bf23912e4aefa93eeb4c7090bda3d0f6"
+  },
   "d": {
     "revision": "45e5f1e9d6de2c68591bc8e5ec662cf18e950b4a"
   },

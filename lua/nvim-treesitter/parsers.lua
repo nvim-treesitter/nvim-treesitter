@@ -348,6 +348,15 @@ list.cue = {
   maintainers = { "@amaanq" },
 }
 
+list.cylc = {
+  install_info = {
+    url = "https://github.com/elliotfontaine/tree-sitter-cylc",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  maintainers = { "@elliotfontaine" },
+}
+
 list.d = {
   install_info = {
     url = "https://github.com/gdamore/tree-sitter-d",
