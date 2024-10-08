@@ -69,7 +69,7 @@
     "revision": "f4236d4da8aa92bc105d9c118746474c608e6af7"
   },
   "cmake": {
-    "revision": "69d7a8b0f7493b0dbb07d54e8fea96c5421e8a71"
+    "revision": "f2569dd1fce0f252097a25bcbcb9ed8898840310"
   },
   "comment": {
     "revision": "3555706cef8b98d3e4c7379d7260548ff03ad363"
@@ -420,7 +420,7 @@
     "revision": "14feafa91630afb1ab9988cf9b738b7ea29f3f89"
   },
   "llvm": {
-    "revision": "1b96e58faf558ce057d4dc664b904528aee743cb"
+    "revision": "c14cb839003348692158b845db9edda201374548"
   },
   "lua": {
     "revision": "99fc677e6971c425e8d407f59c77ab897e585c92"
@@ -522,7 +522,7 @@
     "revision": "217ff2af3f2db15a79ab7e3d21ea1e0c17e71a1a"
   },
   "perl": {
-    "revision": "81c57e274c541c30d6c204c8dbceb90ec647ed8d"
+    "revision": "72a08a496a23212f23802490ef6f4700d68cfd0e"
   },
   "php": {
     "revision": "07a04599ed9ac97f82c6383a24ae139a807930f3"
@@ -843,7 +843,7 @@
     "revision": "075ebfc84543675f12e79a955f79d717772dcef3"
   },
   "vhdl": {
-    "revision": "3f13cd14952b39ccf6817f58880834b84565ca54"
+    "revision": "d6e8301999336b47d663052d43f983c3edeb01dd"
   },
   "vhs": {
     "revision": "09f8fbfe40a3a699b200daca7d92e65fbbe9f9e6"
