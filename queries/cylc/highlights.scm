@@ -5,35 +5,35 @@
 (comment) @comment
 
 (graph_section
-  brackets_open: _ @ponctuation.bracket
+  brackets_open: _ @punctuation.bracket
   name: _? @label
-  brackets_close: _ @ponctuation.bracket)
+  brackets_close: _ @punctuation.bracket)
 
 (task_section
-  brackets_open: _ @ponctuation.bracket
+  brackets_open: _ @punctuation.bracket
   name: (_
     (task_name) @function)
-  brackets_close: _ @ponctuation.bracket)
+  brackets_close: _ @punctuation.bracket)
 
 (top_section
-  brackets_open: _ @ponctuation.bracket
+  brackets_open: _ @punctuation.bracket
   name: _? @label
-  brackets_close: _ @ponctuation.bracket)
+  brackets_close: _ @punctuation.bracket)
 
 (sub_section_1
-  brackets_open: _ @ponctuation.bracket
+  brackets_open: _ @punctuation.bracket
   name: _? @label
-  brackets_close: _ @ponctuation.bracket)
+  brackets_close: _ @punctuation.bracket)
 
 (sub_section_2
-  brackets_open: _ @ponctuation.bracket
+  brackets_open: _ @punctuation.bracket
   name: _? @label
-  brackets_close: _ @ponctuation.bracket)
+  brackets_close: _ @punctuation.bracket)
 
 (runtime_section
-  brackets_open: _ @ponctuation.bracket
+  brackets_open: _ @punctuation.bracket
   name: _? @label
-  brackets_close: _ @ponctuation.bracket)
+  brackets_close: _ @punctuation.bracket)
 
 (graph_setting
   key: (_) @number
@@ -48,7 +48,7 @@
   quotes_close: _ @string)
 
 [
-  (graph_logical) 
+  (graph_logical)
   (graph_arrow)
   (graph_parenthesis)
 ] @keyword.operator
@@ -71,15 +71,15 @@
 
 (intercycle_annotation
   "[" @punctuation.bracket
-  (recurrence)? @constant.numeric.integer
+  (recurrence)? @number
   "]" @punctuation.bracket)
 
 (task_output
-    ":" @tag
-    (nametag) @variable.builtin)
+  ":" @tag
+  (nametag) @variable.builtin)
 
 (task_output
-    "?"? @tag)
+  "?"? @tag)
 
 (setting
   key: (key) @variable

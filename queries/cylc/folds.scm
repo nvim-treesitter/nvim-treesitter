@@ -1,7 +1,7 @@
 [
-  (multiline_string) 
+  (multiline_string)
   (multiline_graph_string)
-] @fold 
+] @fold
 
 ; any section
 (_
