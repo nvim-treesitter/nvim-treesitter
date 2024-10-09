@@ -1,23 +1,32 @@
-; Properties
-;-----------
-(bare_key) @type
+(table
+  [
+    (bare_key) @markup.heading
+    (dotted_key
+      (bare_key) @markup.heading)
+  ])
 
-(quoted_key) @string
+(table_array_element
+  [
+    (bare_key) @markup.heading
+    (dotted_key
+      (bare_key) @markup.heading)
+  ])
 
 (pair
-  (bare_key)) @property
+  [
+    (bare_key) @property
+    (dotted_key
+      (bare_key) @property)
+  ])
 
-(pair
-  (dotted_key
-    (bare_key) @property))
+[
+  (string)
+  (quoted_key)
+] @string
 
-; Literals
-;---------
 (boolean) @boolean
 
 (comment) @comment @spell
-
-(string) @string
 
 (escape_sequence) @string.escape
 
@@ -25,30 +34,25 @@
 
 (float) @number.float
 
-(offset_date_time) @string.special
-
-(local_date_time) @string.special
-
-(local_date) @string.special
-
-(local_time) @string.special
-
-; Punctuation
-;------------
-"." @punctuation.delimiter
-
-"," @punctuation.delimiter
+[
+  (local_date)
+  (local_date_time)
+  (local_time)
+  (offset_date_time)
+] @string.special
 
 "=" @operator
 
-"[" @punctuation.bracket
+[
+  "."
+  ","
+] @punctuation.delimiter
 
-"]" @punctuation.bracket
-
-"[[" @punctuation.bracket
-
-"]]" @punctuation.bracket
-
-"{" @punctuation.bracket
-
-"}" @punctuation.bracket
+[
+  "["
+  "]"
+  "[["
+  "]]"
+  "{"
+  "}"
+] @punctuation.bracket
