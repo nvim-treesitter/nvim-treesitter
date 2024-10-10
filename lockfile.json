@@ -9,7 +9,7 @@
     "revision": "745d3c65c2294aca1110b6b6ad6805124be605c9"
   },
   "apex": {
-    "revision": "943a3eb7f55733929ccafe06841087c3004cb4e0"
+    "revision": "46d4a12e4e90b10a575b7b16ea3b6ead50322074"
   },
   "arduino": {
     "revision": "415ebc8f75eb02a748faa03f5af199f08ced120f"
@@ -675,7 +675,7 @@
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
   },
   "sflog": {
-    "revision": "943a3eb7f55733929ccafe06841087c3004cb4e0"
+    "revision": "46d4a12e4e90b10a575b7b16ea3b6ead50322074"
   },
   "slang": {
     "revision": "dd991eb3b6957a33d9044e0f5914588f7f449a78"
@@ -696,10 +696,10 @@
     "revision": "ee5a2d2ba30b487c4bbf613d2ef310a454c09c7c"
   },
   "soql": {
-    "revision": "943a3eb7f55733929ccafe06841087c3004cb4e0"
+    "revision": "46d4a12e4e90b10a575b7b16ea3b6ead50322074"
   },
   "sosl": {
-    "revision": "943a3eb7f55733929ccafe06841087c3004cb4e0"
+    "revision": "46d4a12e4e90b10a575b7b16ea3b6ead50322074"
   },
   "sourcepawn": {
     "revision": "6b9bf9cbab91443380d2ca8a2f6c491cc7fac5bf"
