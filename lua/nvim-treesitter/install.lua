@@ -555,15 +555,19 @@ local function install(options)
 end
 
 function M.setup_auto_install()
+  local function try_install_curr_lang()
+    local lang = parsers.get_buf_lang()
+    if parsers.get_parser_configs()[lang] and not is_installed(lang) and not is_ignored_parser(lang) then
+      install() { lang }
+    end
+  end
+
+  try_install_curr_lang()
+
   vim.api.nvim_create_autocmd("FileType", {
     pattern = { "*" },
     group = vim.api.nvim_create_augroup("NvimTreesitter-auto_install", { clear = true }),
-    callback = function()
-      local lang = parsers.get_buf_lang()
-      if parsers.get_parser_configs()[lang] and not is_installed(lang) and not is_ignored_parser(lang) then
-        install() { lang }
-      end
-    end,
+    callback = try_install_curr_lang,
   })
 end
 
