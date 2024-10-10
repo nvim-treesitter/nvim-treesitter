@@ -131,8 +131,7 @@
     "~"
   ]) @operator
 
-(map_initializer
-  "=>" @operator)
+"=>" @operator
 
 [
   (boolean_type)
