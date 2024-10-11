@@ -141,7 +141,7 @@
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
   },
   "editorconfig": {
-    "revision": "d710520b712afa2c74d57cc3cb6093a77916c08b"
+    "revision": "efbe0b2f2eaa248e8c657a80a8c2305056bda477"
   },
   "eds": {
     "revision": "0ad62cb635c2f4353359a88dec9e3a57bbf9f66d"
@@ -456,7 +456,7 @@
     "revision": "90ae195b31933ceb9d079abfa8a3ad0a36fee4cc"
   },
   "meson": {
-    "revision": "bd17c824196ce70800f64ad39cfddd1b17acc13f"
+    "revision": "c5fffb8edd39f22644084ab3f73a924a75721ee3"
   },
   "mlir": {
     "revision": "a6727f883344079383faaf768065d2f5fea285a5"
@@ -483,7 +483,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "d240e9a525aa5963eda0704c899037c0ea305e7e"
+    "revision": "924b2dcb12fe77c90f0253e446677faf4e9c38ac"
   },
   "norg": {
     "revision": "d89d95af13d409f30a6c7676387bde311ec4a2c8"
@@ -531,7 +531,7 @@
     "revision": "07a04599ed9ac97f82c6383a24ae139a807930f3"
   },
   "phpdoc": {
-    "revision": "df5e7da4b83da072f99135079ac3436550b8d67d"
+    "revision": "fe3202e468bc17332bec8969f2b50ff1f1da3a46"
   },
   "pioasm": {
     "revision": "924aadaf5dea2a6074d72027b064f939acf32e20"
@@ -762,7 +762,7 @@
     "revision": "cdba4ab96a9896492d0d5219b70300c8783ca4e7"
   },
   "teal": {
-    "revision": "19b02da829d1721a521bf7b802eb80a50bd53aab"
+    "revision": "485fbdc00d811b01b2090dff4d0469fd1d0350f5"
   },
   "templ": {
     "revision": "e3e894ef9e490c3d36d94a51458ec55480991730"
