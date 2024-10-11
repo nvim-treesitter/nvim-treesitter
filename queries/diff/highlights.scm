@@ -1,6 +1,18 @@
 (comment) @comment @spell
 
 [
+  ".."
+  "+"
+  "++"
+  "+++"
+  "++++"
+  "-"
+  "--"
+  "---"
+  "----"
+] @punctuation.special
+
+[
   (addition)
   (new_file)
 ] @diff.plus
@@ -21,18 +33,6 @@
 (filename) @string.special.path
 
 (mode) @number
-
-[
-  ".."
-  "+"
-  "++"
-  "+++"
-  "++++"
-  "-"
-  "--"
-  "---"
-  "----"
-] @punctuation.special
 
 [
   (binary_change)
