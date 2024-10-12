@@ -406,7 +406,7 @@ end
 --- Install a parser
 ---@param languages string[]
 ---@param options? InstallOptions
----@param _callback? fun()
+---@param _callback? fun(boolean)
 local function install(languages, options, _callback)
   options = options or {}
 
@@ -430,6 +430,9 @@ local function install(languages, options, _callback)
     a.main()
     log.info('Installed %d/%d languages', done, #tasks)
   end
+  if _callback then
+    _callback(done == #tasks)
+  end
 end
 
 M.install = a.sync(function(languages, options, _callback)
@@ -444,8 +447,8 @@ M.install = a.sync(function(languages, options, _callback)
     options.force = true
   end
 
-  install(languages, options)
-end, 2)
+  install(languages, options, _callback)
+end, 3)
 
 ---@class UpdateOptions
 
