@@ -1,5 +1,3 @@
-local uv = vim.uv
-
 local M = {}
 
 --- @param filename string
