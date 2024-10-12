@@ -459,7 +459,7 @@
     "revision": "c5fffb8edd39f22644084ab3f73a924a75721ee3"
   },
   "mlir": {
-    "revision": "a6727f883344079383faaf768065d2f5fea285a5"
+    "revision": "0238b7fb6a630f77b3fc8b8a48285ef6ed45cbcc"
   },
   "muttrc": {
     "revision": "173b0ab53a9c07962c9777189c4c70e90f1c1837"
@@ -483,7 +483,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "924b2dcb12fe77c90f0253e446677faf4e9c38ac"
+    "revision": "456b14a2fa6315abc7e02fcffaf4a1f35d4955d3"
   },
   "norg": {
     "revision": "d89d95af13d409f30a6c7676387bde311ec4a2c8"
@@ -522,7 +522,7 @@
     "revision": "217ff2af3f2db15a79ab7e3d21ea1e0c17e71a1a"
   },
   "perl": {
-    "revision": "72a08a496a23212f23802490ef6f4700d68cfd0e"
+    "revision": "76ab9a52b9dd2a1758aae3da8286519d995037e9"
   },
   "php": {
     "revision": "07a04599ed9ac97f82c6383a24ae139a807930f3"
@@ -534,7 +534,7 @@
     "revision": "fe3202e468bc17332bec8969f2b50ff1f1da3a46"
   },
   "pioasm": {
-    "revision": "924aadaf5dea2a6074d72027b064f939acf32e20"
+    "revision": "afece58efdb30440bddd151ef1347fa8d6f744a9"
   },
   "po": {
     "revision": "bd860a0f57f697162bf28e576674be9c1500db5e"
