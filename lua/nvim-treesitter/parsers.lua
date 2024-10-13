@@ -852,7 +852,6 @@ list.gpg = {
 
 list.gren = {
   install_info = {
-    branch = "main",
     files = { "src/parser.c", "src/scanner.c" },
     url = "https://github.com/MaeBrooks/tree-sitter-gren",
   },

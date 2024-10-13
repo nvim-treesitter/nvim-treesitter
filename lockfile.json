@@ -278,6 +278,9 @@
   "gpg": {
     "revision": "f99323fb8f3f10b6c69db0c2f6d0a14bd7330675"
   },
+  "gren": {
+    "revision": "19cd4c08ef86afb6fa7566fee9ac642e53b996d5"
+  },
   "graphql": {
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
