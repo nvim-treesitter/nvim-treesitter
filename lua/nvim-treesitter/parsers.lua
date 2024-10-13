@@ -2599,7 +2599,6 @@ list.templ = {
 }
 
 list.gren = {
-  filetype = "gren",
   install_info = {
     branch = "main",
     files = { "src/parser.c", "src/scanner.c" },
