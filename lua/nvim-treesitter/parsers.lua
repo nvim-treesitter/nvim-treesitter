@@ -2598,6 +2598,17 @@ list.templ = {
   maintainers = { "@vrischmann" },
 }
 
+list.gren = {
+  filetype = "gren",
+  install_info = {
+    branch = "main",
+    files = { "src/parser.c", "src/scanner.c" },
+    url = "https://github.com/MaeBrooks/tree-sitter-gren",
+  },
+  experimental = true,
+  maintainers = { "@MaeBrooks" },
+}
+
 local M = {
   list = list,
 }
