@@ -850,6 +850,15 @@ list.gpg = {
   maintainers = { "@ObserverOfTime" },
 }
 
+list.gren = {
+  install_info = {
+    branch = "main",
+    files = { "src/parser.c", "src/scanner.c" },
+    url = "https://github.com/MaeBrooks/tree-sitter-gren",
+  },
+  maintainers = { "@MaeBrooks" },
+}
+
 list.groovy = {
   install_info = {
     url = "https://github.com/murtaza64/tree-sitter-groovy",
@@ -2596,16 +2605,6 @@ list.templ = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@vrischmann" },
-}
-
-list.gren = {
-  install_info = {
-    branch = "main",
-    files = { "src/parser.c", "src/scanner.c" },
-    url = "https://github.com/MaeBrooks/tree-sitter-gren",
-  },
-  experimental = true,
-  maintainers = { "@MaeBrooks" },
 }
 
 local M = {
