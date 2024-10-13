@@ -5,29 +5,27 @@
   "else"
   "let"
   "in"
-] @keyword.control
+] @keyword.conditional
 
-(case) @keyword.control
+(case) @keyword.conditional
 
-(of) @keyword.control
+(of) @keyword.conditional
 
-(colon) @keyword.other
+(colon) @operator
 
-(backslash) @keyword.other
+(backslash) @operator
 
-(as) @keyword.other
+(as) @keyword
 
-(port) @keyword.other
+(port) @keyword
 
-(exposing) @keyword.other
+(exposing) @keyword
 
-(alias) @keyword.other
+(alias) @keyword
 
-(infix) @keyword.other
+(infix) @keyword
 
-(arrow) @keyword.operator.arrow
-
-(port) @keyword.other.port
+(arrow) @operator
 
 (type_annotation
   (lower_case_identifier) @function)
@@ -43,39 +41,46 @@
 
 (field_access_expr
   (value_expr
-    (value_qid)) @local.function)
+    (value_qid) @variable.member))
 
-(lower_pattern) @local.function
+(lower_pattern) @variable.parameter
 
-(record_base_identifier) @local.function
+(record_base_identifier) @variable
 
-(operator_identifier) @keyword.operator
+(operator_identifier) @operator
 
-(eq) @keyword.operator.assignment
+(eq) @operator
 
-"(" @punctuation.section.braces
+[
+  "("
+  ")"
+  "{"
+  "}"
+  "["
+  "]"
+] @punctuation.bracket
 
-")" @punctuation.section.braces
-
-"|" @keyword.other
-
-"," @punctuation.separator.comma
+[
+  ","
+  "|"
+  (dot)
+] @punctuation.delimiter
 
 (import) @keyword.import
 
 (module) @keyword.import
 
-(number_constant_expr) @constant.numeric
+(number_constant_expr) @number
 
 (type) @keyword.type
 
 (type_declaration
-  (upper_case_identifier) @storage.type)
+  (upper_case_identifier) @type)
 
-(type_ref) @storage.type
+(type_ref) @type
 
 (type_alias_declaration
-  name: (upper_case_identifier) @storage.type)
+  name: (upper_case_identifier) @type)
 
 (union_variant
   (upper_case_identifier) @type)
