@@ -1,23 +1,4 @@
-(table
-  [
-    (bare_key) @markup.heading
-    (dotted_key
-      (bare_key) @markup.heading)
-  ])
-
-(table_array_element
-  [
-    (bare_key) @markup.heading
-    (dotted_key
-      (bare_key) @markup.heading)
-  ])
-
-(pair
-  [
-    (bare_key) @property
-    (dotted_key
-      (bare_key) @property)
-  ])
+(bare_key) @property
 
 [
   (string)
