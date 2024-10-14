@@ -1,3 +1,4 @@
+local fn = vim.fn
 local ts = vim.treesitter
 local parsers = require "nvim-treesitter.parsers"
 
@@ -131,7 +132,7 @@ function M.get_indent(lnum)
   -- some languages like Python will actually have worse results when re-parsing at opened new line
   if not M.avoid_force_reparsing[root_lang] then
     -- Reparse in case we got triggered by ":h indentkeys"
-    parser:parse { vim.fn.line "w0" - 1, vim.fn.line "w$" }
+    parser:parse { fn.line "w0" - 1, fn.line "w$" }
   end
 
   -- Get language tree with smallest range around node that's not a comment parser
@@ -158,7 +159,7 @@ function M.get_indent(lnum)
   local is_empty_line = string.match(getline(lnum), "^%s*$") ~= nil
   local node ---@type TSNode
   if is_empty_line then
-    local prevlnum = vim.fn.prevnonblank(lnum)
+    local prevlnum = fn.prevnonblank(lnum)
     local indentcols = get_indentcols_at_line(prevlnum)
     local prevline = vim.trim(getline(prevlnum))
     -- The final position can be trailing spaces, which should not affect indentation
@@ -183,12 +184,12 @@ function M.get_indent(lnum)
     node = get_first_node_at_line(root, lnum)
   end
 
-  local indent_size = vim.fn.shiftwidth()
+  local indent_size = fn.shiftwidth()
   local indent = 0
   local _, _, root_start = root:start()
   if root_start ~= 0 then
     -- injected tree
-    indent = vim.fn.indent(root:start() + 1)
+    indent = fn.indent(root:start() + 1)
   end
 
   -- tracks to ensure multiple indent levels are not applied for same line
@@ -328,7 +329,7 @@ function M.get_indent(lnum)
           -- it would be same indent as next line (we determine this as one
           -- width more than the open indent to avoid confusing with any
           -- hanging indents)
-          if indent <= vim.fn.indent(o_srow + 1) + indent_size then
+          if indent <= fn.indent(o_srow + 1) + indent_size then
             indent = indent + indent_size * 1
           else
             indent = indent

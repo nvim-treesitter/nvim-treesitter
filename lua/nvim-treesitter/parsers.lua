@@ -1,4 +1,5 @@
 local api = vim.api
+local fn = vim.fn
 local ts = vim.treesitter
 
 for ft, lang in pairs {
@@ -58,7 +59,7 @@ end
 local list = setmetatable({}, {
   __newindex = function(table, parsername, parserconfig)
     rawset(table, parsername, parserconfig)
-    if parserconfig.filetype or vim.fn.has "nvim-0.11" == 0 then
+    if parserconfig.filetype or fn.has "nvim-0.11" == 0 then
       ts.language.register(parsername, parserconfig.filetype or parsername)
     end
   end,
@@ -2617,7 +2618,7 @@ end
 function M.available_parsers()
   local parsers = vim.tbl_keys(M.list)
   table.sort(parsers)
-  if vim.fn.executable "tree-sitter" == 1 and vim.fn.executable "node" == 1 then
+  if fn.executable "tree-sitter" == 1 and fn.executable "node" == 1 then
     return parsers
   else
     return vim.tbl_filter(function(p) ---@param p string

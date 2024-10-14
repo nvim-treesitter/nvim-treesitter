@@ -17,7 +17,7 @@ local M = {}
 ---@type table<string, LockfileInfo>
 local lockfile = {}
 
-M.compilers = { vim.fn.getenv "CC", "cc", "gcc", "clang", "cl", "zig" }
+M.compilers = { fn.getenv "CC", "cc", "gcc", "clang", "cl", "zig" }
 M.prefer_git = fn.has "win32" == 1
 M.command_extra_args = {}
 M.ts_generate_args = nil
@@ -101,7 +101,7 @@ end
 
 local function load_lockfile()
   local filename = utils.join_path(utils.get_package_path(), "lockfile.json")
-  lockfile = vim.fn.filereadable(filename) == 1 and vim.fn.json_decode(vim.fn.readfile(filename)) or {}
+  lockfile = fn.filereadable(filename) == 1 and fn.json_decode(fn.readfile(filename)) or {}
 end
 
 local function is_ignored_parser(lang)
@@ -129,8 +129,8 @@ end
 ---@return string|nil
 local function get_installed_revision(lang)
   local lang_file = utils.join_path(configs.get_parser_info_dir(), lang .. ".revision")
-  if vim.fn.filereadable(lang_file) == 1 then
-    return vim.fn.readfile(lang_file)[1]
+  if fn.filereadable(lang_file) == 1 then
+    return fn.readfile(lang_file)[1]
   end
 end
 
@@ -138,7 +138,7 @@ end
 ---@param input string
 ---@return string
 local function clean_path(input)
-  local pth = vim.fn.fnamemodify(input, ":p")
+  local pth = fn.fnamemodify(input, ":p")
   if fn.has "win32" == 1 then
     pth = pth:gsub("/", "\\")
   end
@@ -295,7 +295,7 @@ local function iter_cmd_sync(cmd_list)
     if type(cmd.cmd) == "function" then
       cmd.cmd()
     else
-      local ret = vim.fn.system(get_command(cmd))
+      local ret = fn.system(get_command(cmd))
       if vim.v.shell_error ~= 0 then
         print(ret)
         api.nvim_err_writeln(
@@ -321,8 +321,8 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   local path_sep = utils.get_path_sep()
 
   local project_name = "tree-sitter-" .. lang
-  local maybe_local_path = vim.fn.expand(repo.url)
-  local from_local_path = vim.fn.isdirectory(maybe_local_path) == 1
+  local maybe_local_path = fn.expand(repo.url)
+  local from_local_path = fn.isdirectory(maybe_local_path) == 1
   if from_local_path then
     repo.url = maybe_local_path
   end
@@ -346,7 +346,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
 
   generate_from_grammar = repo.requires_generate_from_grammar or generate_from_grammar
 
-  if generate_from_grammar and vim.fn.executable "tree-sitter" ~= 1 then
+  if generate_from_grammar and fn.executable "tree-sitter" ~= 1 then
     api.nvim_err_writeln "tree-sitter CLI not found: `tree-sitter` is not executable!"
     if repo.requires_generate_from_grammar then
       api.nvim_err_writeln(
@@ -367,7 +367,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
       end
     end
   end
-  if generate_from_grammar and vim.fn.executable "node" ~= 1 then
+  if generate_from_grammar and fn.executable "node" ~= 1 then
     api.nvim_err_writeln "Node JS not found: `node` is not executable!"
     return
   end
@@ -408,7 +408,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   end
   if generate_from_grammar then
     if repo.generate_requires_npm then
-      if vim.fn.executable "npm" ~= 1 then
+      if fn.executable "npm" ~= 1 then
         api.nvim_err_writeln("`" .. lang .. "` requires NPM to be installed from grammar.js")
         return
       end
@@ -426,7 +426,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
     end
     vim.list_extend(command_list, {
       {
-        cmd = vim.fn.exepath "tree-sitter",
+        cmd = fn.exepath "tree-sitter",
         info = "Generating source files from grammar.js...",
         err = 'Error during "tree-sitter generate"',
         opts = {
@@ -441,7 +441,7 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
     shell.select_mv_cmd("parser.so", parser_lib_name, compile_location),
     {
       cmd = function()
-        vim.fn.writefile({ revision or "" }, utils.join_path(configs.get_parser_info_dir() or "", lang .. ".revision"))
+        fn.writefile({ revision or "" }, utils.join_path(configs.get_parser_info_dir() or "", lang .. ".revision"))
       end,
     },
     { -- auto-attach modules after installation
@@ -637,7 +637,7 @@ function M.uninstall(...)
 
       local parser_lib = utils.join_path(install_dir, lang) .. ".so"
       local all_parsers = vim.api.nvim_get_runtime_file("parser/" .. lang .. ".so", true)
-      if vim.fn.filereadable(parser_lib) == 1 then
+      if fn.filereadable(parser_lib) == 1 then
         local command_list = {
           shell.select_rm_file_cmd(parser_lib, "Uninstalling parser for " .. lang),
           {
@@ -694,13 +694,13 @@ function M.write_lockfile(verbose, skip_langs)
       local sha ---@type string
       if v.parser.install_info.branch then
         sha = vim.split(
-          vim.fn.systemlist(
+          fn.systemlist(
             "git ls-remote " .. v.parser.install_info.url .. " | grep refs/heads/" .. v.parser.install_info.branch
           )[1],
           "\t"
         )[1]
       else
-        sha = vim.split(vim.fn.systemlist("git ls-remote " .. v.parser.install_info.url)[1], "\t")[1]
+        sha = vim.split(fn.systemlist("git ls-remote " .. v.parser.install_info.url)[1], "\t")[1]
       end
       lockfile[v.name] = { revision = sha }
       if verbose then
@@ -714,8 +714,8 @@ function M.write_lockfile(verbose, skip_langs)
   if verbose then
     print(vim.inspect(lockfile))
   end
-  vim.fn.writefile(
-    vim.fn.split(vim.fn.json_encode(lockfile), "\n"),
+  fn.writefile(
+    fn.split(fn.json_encode(lockfile), "\n"),
     utils.join_path(utils.get_package_path(), "lockfile.json")
   )
 end

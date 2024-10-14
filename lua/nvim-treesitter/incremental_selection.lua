@@ -1,4 +1,5 @@
 local api = vim.api
+local fn = vim.fn
 
 local configs = require "nvim-treesitter.configs"
 local ts_utils = require "nvim-treesitter.ts_utils"
@@ -24,8 +25,8 @@ end
 -- The range starts with 1 and the ending is inclusive.
 ---@return integer, integer, integer, integer
 local function visual_selection_range()
-  local _, csrow, cscol, _ = unpack(vim.fn.getpos "v") ---@type integer, integer, integer, integer
-  local _, cerow, cecol, _ = unpack(vim.fn.getpos ".") ---@type integer, integer, integer, integer
+  local _, csrow, cscol, _ = unpack(fn.getpos "v") ---@type integer, integer, integer, integer
+  local _, cerow, cecol, _ = unpack(fn.getpos ".") ---@type integer, integer, integer, integer
 
   local start_row, start_col, end_row, end_col ---@type integer, integer, integer, integer
 

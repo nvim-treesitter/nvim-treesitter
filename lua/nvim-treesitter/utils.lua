@@ -103,7 +103,7 @@ function M.create_or_reuse_writable_dir(dir, create_err, writeable_err)
   writeable_err = writeable_err or M.join_space("Invalid rights, '", dir, "' should be read/write")
   -- Try creating and using parser_dir if it doesn't exist
   if not luv.fs_stat(dir) then
-    local ok, error = pcall(vim.fn.mkdir, dir, "p", "0755")
+    local ok, error = pcall(fn.mkdir, dir, "p", "0755")
     if not ok then
       return nil, M.join_space(create_err, error)
     end

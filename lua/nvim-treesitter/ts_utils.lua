@@ -1,4 +1,5 @@
 local api = vim.api
+local fn = vim.fn
 
 local parsers = require "nvim-treesitter.parsers"
 local utils = require "nvim-treesitter.utils"
@@ -256,7 +257,7 @@ function M.get_vim_range(range, buf)
     -- Use the value of the last col of the previous row instead.
     erow = erow - 1
     if not buf or buf == 0 then
-      ecol = vim.fn.col { erow, "$" } - 1
+      ecol = fn.col { erow, "$" } - 1
     else
       ecol = #api.nvim_buf_get_lines(buf, erow - 1, erow, false)[1]
     end

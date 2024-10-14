@@ -1,4 +1,5 @@
 local api = vim.api
+local fn = vim.fn
 
 local queries = require "nvim-treesitter.query"
 local ts = require "nvim-treesitter.compat"
@@ -290,12 +291,12 @@ end
 ---@param lang string
 function M.edit_query_file_user_after(query_group, lang)
   lang = lang or parsers.get_buf_lang()
-  local folder = utils.join_path(vim.fn.stdpath "config", "after", "queries", lang)
+  local folder = utils.join_path(fn.stdpath "config", "after", "queries", lang)
   local file = utils.join_path(folder, query_group .. ".scm")
-  if vim.fn.isdirectory(folder) ~= 1 then
+  if fn.isdirectory(folder) ~= 1 then
     vim.ui.select({ "Yes", "No" }, { prompt = '"' .. folder .. '" does not exist. Create it?' }, function(choice)
       if choice == "Yes" then
-        vim.fn.mkdir(folder, "p", "0755")
+        fn.mkdir(folder, "p", "0755")
         vim.cmd(":edit " .. file)
       end
     end)
@@ -412,7 +413,7 @@ function M.setup(user_data)
   config.ignore_install = user_data.ignore_install or {}
   config.parser_install_dir = user_data.parser_install_dir or nil
   if config.parser_install_dir then
-    config.parser_install_dir = vim.fn.expand(config.parser_install_dir, ":p")
+    config.parser_install_dir = fn.expand(config.parser_install_dir, ":p")
   end
 
   config.auto_install = user_data.auto_install or false

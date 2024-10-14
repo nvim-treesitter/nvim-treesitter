@@ -68,7 +68,7 @@ local function install_health()
         .. ' or set the environment variable CC or `require"nvim-treesitter.install".compilers` explicitly!',
     })
   else
-    local version = vim.fn.systemlist(cc .. (cc == "cl" and "" or " --version"))[1]
+    local version = fn.systemlist(cc .. (cc == "cl" and "" or " --version"))[1]
     _ok(
       "`"
         .. cc
@@ -135,7 +135,7 @@ function M.check()
           table.insert(error_collection, { parser_name, query_group, err })
         end
       end
-      table.insert(parser_installation, vim.fn.trim(out, " ", 2))
+      table.insert(parser_installation, fn.trim(out, " ", 2))
     end
   end
   local legend = [[

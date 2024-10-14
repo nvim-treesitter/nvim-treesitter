@@ -1,4 +1,5 @@
 local api = vim.api
+local fnamemodify = vim.fn.fnamemodify
 local ts = require "nvim-treesitter.compat"
 local tsrange = require "nvim-treesitter.tsrange"
 local utils = require "nvim-treesitter.utils"
@@ -30,7 +31,7 @@ function M.available_query_groups()
   local query_files = api.nvim_get_runtime_file("queries/*/*.scm", true)
   local groups = {}
   for _, f in ipairs(query_files) do
-    groups[vim.fn.fnamemodify(f, ":t:r")] = true
+    groups[fnamemodify(f, ":t:r")] = true
   end
   local list = {}
   for k, _ in pairs(groups) do
@@ -145,7 +146,6 @@ end
 -- This function is meant for an autocommand and not to be used. Only use if file is a query file.
 ---@param fname string
 function M.invalidate_query_file(fname)
-  local fnamemodify = vim.fn.fnamemodify
   M.invalidate_query_cache(fnamemodify(fname, ":p:h:t"), fnamemodify(fname, ":t:r"))
 end
 
