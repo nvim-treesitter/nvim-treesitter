@@ -10,8 +10,6 @@
   "endpackage"
   "checker"
   "endchecker"
-  "config"
-  "endconfig"
   "pure"
   "virtual"
   "extends"
