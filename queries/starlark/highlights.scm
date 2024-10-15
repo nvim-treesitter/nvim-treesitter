@@ -250,19 +250,14 @@
 
 [
   "async"
-  "await"
   "exec"
-  "nonlocal"
   "pass"
   "print"
   "with"
   "as"
 ] @keyword
 
-[
-  "async"
-  "await"
-] @keyword.coroutine
+"async" @keyword.coroutine
 
 "return" @keyword.return
 
