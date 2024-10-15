@@ -31,7 +31,6 @@
   "sentinel"
   "condprefix"
   "condenumprefix"
-  "labelprefix"
   "startlabel"
   "posix-captures"
   "max"
