@@ -43,7 +43,6 @@
   ","
   "."
   ":"
-  "?"
   "("
   ")"
 ] @punctuation.delimiter
