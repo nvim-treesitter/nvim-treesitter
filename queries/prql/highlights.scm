@@ -69,7 +69,6 @@ alias: (identifier) @variable.member
 [
   ","
   "."
-  (pipe)
   "->"
 ] @punctuation.delimiter
 
@@ -87,15 +86,7 @@ alias: (identifier) @variable.member
   (keyword_sum)
   (keyword_stddev)
   (keyword_count)
-  (keyword_lag)
-  (keyword_lead)
-  (keyword_first)
-  (keyword_last)
   (keyword_rank)
-  (keyword_row_number)
-  (keyword_round)
-  (keyword_all)
-  (keyword_map)
 ] @function
 
 [
@@ -129,8 +120,6 @@ alias: (identifier) @variable.member
   (keyword_true)
   (keyword_false)
 ] @boolean
-
-(keyword_in) @keyword.operator
 
 (function_definition
   (keyword_let)
