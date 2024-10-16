@@ -150,7 +150,7 @@
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
   "elixir": {
-    "revision": "827d15deada6ca2f40eece82d1bbe65df07af954"
+    "revision": "2ac7a0f81f0731d83068b2872c4a8fee39263a85"
   },
   "elm": {
     "revision": "27f502ed0a1cbd3c5912d284cc7934ee0d4cdddc"
@@ -198,7 +198,7 @@
     "revision": "fad2e175099a45efbc98f000cc196d3674cc45e0"
   },
   "fsharp": {
-    "revision": "5202637c203fcf8876affbd18b04ff43256d4c4a"
+    "revision": "971da5ff0266bfe4a6ecfb94616548032d6d1ba0"
   },
   "func": {
     "revision": "f780ca55e65e7d7360d0229331763e16c452fc98"
@@ -240,10 +240,10 @@
     "revision": "da605af8c5999b43e6839b575eae5e6cafabb06f"
   },
   "glimmer_javascript": {
-    "revision": "a260911201684f80cf815418b3771e6c39309f81"
+    "revision": "7e8ea8cf39fc360cb97bd253442cd48e4f7a9ce3"
   },
   "glimmer_typescript": {
-    "revision": "9d018a0f93417e6951264a26093b89ee63df7315"
+    "revision": "4006128790efb58ca82a4492d8ef0983b260fc6a"
   },
   "glsl": {
     "revision": "66aec57f7119c7e8e40665b723cd7af5594f15ee"
@@ -278,11 +278,11 @@
   "gpg": {
     "revision": "f99323fb8f3f10b6c69db0c2f6d0a14bd7330675"
   },
-  "gren": {
-    "revision": "19cd4c08ef86afb6fa7566fee9ac642e53b996d5"
-  },
   "graphql": {
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
+  },
+  "gren": {
+    "revision": "c06e272341363c5d8e19ac34bc7c56258a37e71b"
   },
   "groovy": {
     "revision": "0d8884514fe10c4fa47527d9a0284d207f38ddea"
@@ -357,7 +357,7 @@
     "revision": "12bfab7db8a5f5b1d774ef84b5831acd34936071"
   },
   "java": {
-    "revision": "3f8679368cf00ed10ec086975fa87f697b91b7bc"
+    "revision": "b864ed97b9675e86de7c15a70c12e4c1ca85fbf9"
   },
   "javascript": {
     "revision": "c4ce9dc8e7e98ea25757ea26bfe9a022043ccd77"
@@ -528,10 +528,10 @@
     "revision": "76ab9a52b9dd2a1758aae3da8286519d995037e9"
   },
   "php": {
-    "revision": "69af07eedf60bc1992c59a8fd6b5e41f25442715"
+    "revision": "2bce5a6588ad6d53ffe5effaf9708682f0fbfc9b"
   },
   "php_only": {
-    "revision": "69af07eedf60bc1992c59a8fd6b5e41f25442715"
+    "revision": "2bce5a6588ad6d53ffe5effaf9708682f0fbfc9b"
   },
   "phpdoc": {
     "revision": "fe3202e468bc17332bec8969f2b50ff1f1da3a46"
@@ -666,7 +666,7 @@
     "revision": "2ace7a922a755960f44d73a7bb1efffeb4cc5501"
   },
   "scala": {
-    "revision": "2cfbb6e3fcdfd51e0d477a43cc37ae8c6f87dc2e"
+    "revision": "18ee845787b040d56e9c03408deda296da23163d"
   },
   "scfg": {
     "revision": "a5512800ea0220da4abbae61b8aea8423d1549aa"
@@ -750,7 +750,7 @@
     "revision": "f2b378a9af0b7e1192cff67a5fb45508c927205d"
   },
   "t32": {
-    "revision": "6182836f4128725f1e74ce986840d7317021a015"
+    "revision": "0f6a5b1e031c97ebf58d3c76eadb2c6bf1e4f780"
   },
   "tablegen": {
     "revision": "b1170880c61355aaf38fc06f4af7d3c55abdabc4"
