@@ -850,6 +850,14 @@ list.gpg = {
   maintainers = { "@ObserverOfTime" },
 }
 
+list.gren = {
+  install_info = {
+    files = { "src/parser.c", "src/scanner.c" },
+    url = "https://github.com/MaeBrooks/tree-sitter-gren",
+  },
+  maintainers = { "@MaeBrooks" },
+}
+
 list.groovy = {
   install_info = {
     url = "https://github.com/murtaza64/tree-sitter-groovy",
