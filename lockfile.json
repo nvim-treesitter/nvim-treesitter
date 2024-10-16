@@ -749,9 +749,6 @@
   "systemtap": {
     "revision": "f2b378a9af0b7e1192cff67a5fb45508c927205d"
   },
-  "systemverilog": {
-    "revision": "4f897d5e3f0e38bf8fbb55e8f39dc97d2bc2229e"
-  },
   "t32": {
     "revision": "6182836f4128725f1e74ce986840d7317021a015"
   },
@@ -843,7 +840,7 @@
     "revision": "3321077d7446c1b3b017c294fd56ce028ed817fe"
   },
   "verilog": {
-    "revision": "5a01c57fa8e3d8801953a67ae7c6b240e2284ee8"
+    "revision": "0dacb911daa9614a7c7e79a594d4cb9f478e6554"
   },
   "vhdl": {
     "revision": "d6e8301999336b47d663052d43f983c3edeb01dd"
