@@ -9,4 +9,5 @@
   (list_literal)
   (set_or_map_literal)
   (string_literal)
+  (import_or_export)+
 ] @fold

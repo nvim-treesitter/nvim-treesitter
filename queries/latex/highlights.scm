@@ -146,7 +146,7 @@
 (color_reference
   command: _ @function.macro
   name: (curly_group_text
-    (_) @markup.link))
+    (_) @markup.link)?)
 
 ; Sectioning
 (title_declaration

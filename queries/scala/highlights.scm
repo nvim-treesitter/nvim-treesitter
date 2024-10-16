@@ -157,8 +157,6 @@
 
 (character_literal) @character
 
-(symbol_literal) @string.special.symbol
-
 (interpolation
   "$" @punctuation.special)
 
