@@ -1,31 +1,75 @@
 ; Keywords
 [
+  (as)
+  (port)
+  (exposing)
+  (alias)
+  (infix)
+] @keyword
+
+; Keywords - Conditionals
+[
   "if"
   "then"
   "else"
   "let"
   "in"
+  (case)
+  (of)
 ] @keyword.conditional
 
-(case) @keyword.conditional
+; Keywords - Imports
+[
+  (import)
+  (module)
+] @keyword.import
 
-(of) @keyword.conditional
+; Operators
+[
+  (arrow)
+  (backslash)
+  (colon)
+  (operator_identifier)
+  (eq)
+] @operator
 
-(colon) @operator
+; Punctuation
+[
+  "("
+  ")"
+  "{"
+  "}"
+  "["
+  "]"
+] @punctuation.bracket
 
-(backslash) @operator
+[
+  ","
+  "|"
+  (dot)
+] @punctuation.delimiter
 
-(as) @keyword
+; Comments
+[
+  (block_comment)
+  (line_comment)
+] @comment
 
-(port) @keyword
+; Strings
+[
+  (close_quote)
+  (open_quote)
+  (regular_string_part)
+] @string
 
-(exposing) @keyword
+; Strings - Escape
+(string_escape) @string.escape
 
-(alias) @keyword
-
-(infix) @keyword
-
-(arrow) @operator
+; Characters
+[
+  (open_char)
+  (close_char)
+] @character
 
 (type_annotation
   (lower_case_identifier) @function)
@@ -46,29 +90,6 @@
 (lower_pattern) @variable.parameter
 
 (record_base_identifier) @variable
-
-(operator_identifier) @operator
-
-(eq) @operator
-
-[
-  "("
-  ")"
-  "{"
-  "}"
-  "["
-  "]"
-] @punctuation.bracket
-
-[
-  ","
-  "|"
-  (dot)
-] @punctuation.delimiter
-
-(import) @keyword.import
-
-(module) @keyword.import
 
 (number_constant_expr) @number
 
@@ -98,21 +119,3 @@
 (value_expr
   (upper_case_qid
     (upper_case_identifier)) @type)
-
-; comments
-(line_comment) @comment
-
-(block_comment) @comment
-
-; strings
-(string_escape) @string.escape
-
-(open_quote) @string
-
-(close_quote) @string
-
-(regular_string_part) @string
-
-(open_char) @character
-
-(close_char) @character
