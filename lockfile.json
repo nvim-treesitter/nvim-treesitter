@@ -228,7 +228,7 @@
     "revision": "41940e199ba5763abea1d21b4f717014b45f01ea"
   },
   "gitcommit": {
-    "revision": "79fdc5de52d0e2c6854db924525196af22100dad"
+    "revision": "66e2585f4a3e73e768d42ef1223a5fb0a447bae6"
   },
   "gitignore": {
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
@@ -666,7 +666,7 @@
     "revision": "2ace7a922a755960f44d73a7bb1efffeb4cc5501"
   },
   "scala": {
-    "revision": "18ee845787b040d56e9c03408deda296da23163d"
+    "revision": "a9af6356f8e31f04e870587bca79bc2b15808ff5"
   },
   "scfg": {
     "revision": "a5512800ea0220da4abbae61b8aea8423d1549aa"
@@ -732,7 +732,7 @@
     "revision": "1a8ee0da9a4f2df5a8a22f4d637ac863623a78a7"
   },
   "superhtml": {
-    "revision": "36f37aa5aa440805f27d4a9f5203e616a303c6a1"
+    "revision": "3325bbb2dda260131a8db0cae1f1f557d17ebced"
   },
   "surface": {
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
@@ -771,7 +771,7 @@
     "revision": "9e3ec9848f28d26845ba300fd73c740459b83e9b"
   },
   "textproto": {
-    "revision": "d900077aef9f5dcb0d47c86be33585013ed5db9a"
+    "revision": "568471b80fd8793d37ed01865d8c2208a9fefd1b"
   },
   "thrift": {
     "revision": "68fd0d80943a828d9e6f49c58a74be1e9ca142cf"
