@@ -353,7 +353,6 @@ list.cylc = {
   install_info = {
     url = "https://github.com/elliotfontaine/tree-sitter-cylc",
     files = { "src/parser.c" },
-    branch = "main",
   },
   maintainers = { "@elliotfontaine" },
 }

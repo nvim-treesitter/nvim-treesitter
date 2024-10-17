@@ -2,7 +2,7 @@
   directive: _ @keyword.directive
   path: _ @string.special.path)
 
-(comment) @comment
+(comment) @comment @spell
 
 (graph_section
   brackets_open: _ @punctuation.bracket
@@ -101,4 +101,3 @@
   (jinja2_shebang)
 ] @keyword.directive
 
-(ERROR) @comment.error
