@@ -131,8 +131,7 @@
     "~"
   ]) @operator
 
-(map_initializer
-  "=>" @operator)
+"=>" @operator
 
 [
   (boolean_type)
@@ -225,7 +224,6 @@
   (abstract)
   (all_rows_clause)
   "continue"
-  "default"
   "extends"
   (final)
   "get"

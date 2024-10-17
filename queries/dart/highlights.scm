@@ -261,7 +261,6 @@
   (final_builtin)
   "abstract"
   "covariant"
-  "dynamic"
   "external"
   "static"
   "final"

@@ -22,7 +22,7 @@
 
 (mode) @number
 
-[
+([
   ".."
   "+"
   "++"
@@ -33,6 +33,7 @@
   "---"
   "----"
 ] @punctuation.special
+  (#set! priority 95))
 
 [
   (binary_change)
