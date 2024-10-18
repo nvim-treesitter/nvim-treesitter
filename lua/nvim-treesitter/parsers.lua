@@ -2533,6 +2533,15 @@ list.xml = {
   maintainers = { "@ObserverOfTime" },
 }
 
+list.xresources = {
+  install_info = {
+    url = "https://github.com/ValdezFOmar/tree-sitter-xresources",
+    files = { "src/parser.c" },
+  },
+  filetype = "xdefaults",
+  maintainers = { "@ValdezFOmar" },
+}
+
 list.yaml = {
   install_info = {
     url = "https://github.com/tree-sitter-grammars/tree-sitter-yaml",

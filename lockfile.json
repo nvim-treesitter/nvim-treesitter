@@ -878,6 +878,9 @@
   "xml": {
     "revision": "809266ed1694d64dedc168a18893cc254e3edf7e"
   },
+  "xresources": {
+    "revision": "702e1e64ae14635346ffeb945d16f42d009c147a"
+  },
   "yaml": {
     "revision": "7b03feefd36b5f155465ca736c6304aca983b267"
   },
