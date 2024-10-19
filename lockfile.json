@@ -228,7 +228,7 @@
     "revision": "41940e199ba5763abea1d21b4f717014b45f01ea"
   },
   "gitcommit": {
-    "revision": "66e2585f4a3e73e768d42ef1223a5fb0a447bae6"
+    "revision": "67ab180883ba5ce3f5b0a5f4288cc6d9f9d83a5d"
   },
   "gitignore": {
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
@@ -630,7 +630,7 @@
     "revision": "74addc90fc539d31d413c0c7cf7581997a7fa46e"
   },
   "regex": {
-    "revision": "123552e5849fae9a7c536eac84d471579c7f3328"
+    "revision": "58f4caf9db12db3b38b81c77d274aa73c9e85aca"
   },
   "rego": {
     "revision": "20b5a5958c837bc9f74b231022a68a594a313f6d"
