@@ -1,12 +1,6 @@
 ; ---
 ; keywords
 [
-  "def"
-  "alias"
-  "export-env"
-  "export"
-  "extern"
-  "module"
   "let"
   "let-env"
   "mut"
@@ -16,45 +10,68 @@
   "source-env"
   "overlay"
   "register"
-  "loop"
-  "while"
-  "error"
-  "do"
+] @keyword
+
+[
   "if"
   "else"
-  "try"
-  "catch"
   "match"
+] @keyword.conditional
+
+[
+  "loop"
+  "while"
   "break"
   "continue"
-  "return"
-] @keyword
+] @keyword.repeat
+
+[
+  "def"
+  "do"
+] @keyword.function
+
+"return" @keyword.return
+
+[
+  "try"
+  "catch"
+  "error"
+] @keyword.exception
+
+"module" @keyword.import
+
+[
+  "alias"
+  "export-env"
+  "export"
+  "extern"
+] @keyword.modifier
 
 (hide_mod
   "hide" @keyword)
 
 (decl_use
-  "use" @keyword)
+  module: (unquoted) @module)
 
 (ctrl_for
   "for" @keyword
   "in" @keyword)
 
 (overlay_list
-  "list" @keyword.storage.modifier)
+  "list" @keyword.import)
 
 (overlay_hide
-  "hide" @keyword.storage.modifier)
+  "hide" @keyword.import)
 
 (overlay_new
-  "new" @keyword.storage.modifier)
+  "new" @keyword.import)
 
 (overlay_use
-  "use" @keyword.storage.modifier
+  "use" @keyword.import
   "as" @keyword)
 
 (ctrl_error
-  "make" @keyword.storage.modifier)
+  "make" @keyword.import)
 
 ; ---
 ; literals
@@ -72,12 +89,10 @@
     "0o"
     "0x"
   ] @number
-  "[" @punctuation.bracket
   digit: [
     "," @punctuation.delimiter
     (hex_digit) @number
-  ]
-  "]" @punctuation.bracket) @number
+  ]) @number
 
 (val_bool) @constant.builtin
 
@@ -91,16 +106,16 @@ file_path: (val_string) @variable.parameter
 
 (val_date) @number
 
-(inter_escape_sequence) @constant.character.escape
+(inter_escape_sequence) @string.escape
 
-(escape_sequence) @constant.character.escape
+(escape_sequence) @string.escape
 
 (val_interpolated
   [
     "$\""
-    "$\'"
+    "$'"
     "\""
-    "\'"
+    "'"
   ] @string)
 
 (unescaped_interpolated_content) @string
@@ -115,100 +130,35 @@ file_path: (val_string) @variable.parameter
 
 ; ---
 ; operators
-(expr_binary
-  [
-    "+"
-    "-"
-    "*"
-    "/"
-    "mod"
-    "//"
-    "++"
-    "**"
-    "=="
-    "!="
-    "<"
-    "<="
-    ">"
-    ">="
-    "=~"
-    "!~"
-    "and"
-    "or"
-    "xor"
-    "bit-or"
-    "bit-xor"
-    "bit-and"
-    "bit-shl"
-    "bit-shr"
-    "in"
-    "not-in"
-    "starts-with"
-    "ends-with"
-  ] @operator)
-
-(where_command
-  [
-    "+"
-    "-"
-    "*"
-    "/"
-    "mod"
-    "//"
-    "++"
-    "**"
-    "=="
-    "!="
-    "<"
-    "<="
-    ">"
-    ">="
-    "=~"
-    "!~"
-    "and"
-    "or"
-    "xor"
-    "bit-or"
-    "bit-xor"
-    "bit-and"
-    "bit-shl"
-    "bit-shr"
-    "in"
-    "not-in"
-    "starts-with"
-    "ends-with"
-  ] @operator)
-
-(assignment
-  [
-    "="
-    "+="
-    "-="
-    "*="
-    "/="
-    "++="
-  ] @operator)
-
-(expr_unary
-  [
-    "not"
-    "-"
-  ] @operator)
-
-(val_range
-  [
-    ".."
-    "..="
-    "..<"
-  ] @operator)
-
 [
+  "+"
+  "-"
+  "*"
+  "/"
+  "//"
+  "++"
+  "**"
+  "=="
+  "!="
+  "<"
+  "<="
+  ">"
+  ">="
+  "=~"
+  "!~"
+  "="
+  "+="
+  "-="
+  "*="
+  "/="
+  "++="
+  "-"
+  ".."
+  "..="
+  "..<"
   "=>"
   "="
   "|"
-] @operator
-
-[
   "o>"
   "out>"
   "e>"
@@ -219,12 +169,30 @@ file_path: (val_string) @variable.parameter
   "out+err>"
 ] @operator
 
+[
+  "mod"
+  "and"
+  "or"
+  "xor"
+  "bit-or"
+  "bit-xor"
+  "bit-and"
+  "bit-shl"
+  "bit-shr"
+  "in"
+  "not-in"
+  "starts-with"
+  "ends-with"
+  "not"
+] @keyword.operator
+
 ; ---
 ; punctuation
 [
   ","
   ";"
-] @punctuation.special
+  ":"
+] @punctuation.delimiter
 
 (param_long_flag
   "--" @punctuation.delimiter)
@@ -239,7 +207,7 @@ file_path: (val_string) @variable.parameter
   "-" @punctuation.delimiter)
 
 (long_flag_equals_value
-  "=" @punctuation.special)
+  "=" @punctuation.delimiter)
 
 (param_short_flag
   "-" @punctuation.delimiter)
@@ -247,20 +215,17 @@ file_path: (val_string) @variable.parameter
 (param_rest
   "..." @punctuation.delimiter)
 
-(param_type
-  ":" @punctuation.special)
-
 (param_value
-  "=" @punctuation.special)
+  "=" @punctuation.delimiter)
 
 (param_cmd
-  "@" @punctuation.special)
+  "@" @punctuation.delimiter)
 
 (param_opt
-  "?" @punctuation.special)
+  "?" @punctuation.delimiter)
 
 (returns
-  "->" @punctuation.special)
+  "->" @punctuation.delimiter)
 
 [
   "("
@@ -271,9 +236,8 @@ file_path: (val_string) @variable.parameter
   "]"
 ] @punctuation.bracket
 
-(val_record
-  (record_entry
-    ":" @punctuation.delimiter))
+(parameter_pipes
+  "|" @punctuation.bracket)
 
 key: (identifier) @property
 
@@ -331,8 +295,7 @@ key: (identifier) @property
       "term" "timeit" "to" "touch" "transpose" "tutor" "ulimit" "uname" "uniq" "uniq-by" "update"
       "upsert" "url" "values" "view" "watch" "where" "which" "whoami" "window" "with-env" "wrap"
       "zip")
-  ]
-  )
+  ])
 
 (command
   "^" @punctuation.delimiter
@@ -353,20 +316,17 @@ key: (identifier) @property
   "$" @punctuation.special
   [
     (identifier) @variable
-    "in" @special
-    "nu" @namespace
+    "in" @variable.parameter.builtin
+    "nu" @module
     "env" @constant
   ]) @none
-
-(record_entry
-  ":" @punctuation.special)
 
 ; ---
 ; types
 (flat_type) @type
 
 (list_type
-  "list" @type.enum
+  "list" @type.builtin
   [
     "<"
     ">"
@@ -376,21 +336,21 @@ key: (identifier) @property
   [
     "record"
     "table"
-  ] @type.enum
+  ] @type.builtin
   "<" @punctuation.bracket
   key: (_) @variable.parameter
   [
     ","
     ":"
-  ] @punctuation.special
+  ] @punctuation.delimiter
   ">" @punctuation.bracket)
 
 (shebang) @keyword.directive
 
-(comment) @comment
+(comment) @comment @spell
 
-((comment) @comment.documentation
+((comment) @comment.documentation @spell
   (decl_def))
 
 ((parameter)
-  (comment) @comment.documentation)
+  (comment) @comment.documentation @spell)
