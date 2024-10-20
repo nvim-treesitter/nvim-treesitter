@@ -108,7 +108,7 @@
     "revision": "9ac03bb2154316624fb4c41fe0f372a5f1597b43"
   },
   "devicetree": {
-    "revision": "07a647c8fb70e6b06379a60526721e3141aa2fd2"
+    "revision": "16c9cb959675bc9bc4f4e5bebe473d511a12a06d"
   },
   "dhall": {
     "revision": "affb6ee38d629c9296749767ab832d69bb0d9ea8"
@@ -141,7 +141,7 @@
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
   },
   "editorconfig": {
-    "revision": "79bb1dc197d0eb7499843b19d3dd0f9a2ee34d3c"
+    "revision": "f5b5ac3f718523fe9d5ee926f64eb177306afdb6"
   },
   "eds": {
     "revision": "26d529e6cfecde391a03c21d1474eb51e0285805"
@@ -369,7 +369,7 @@
     "revision": "b2237872e528b8372ed008068f717db66c16a725"
   },
   "json": {
-    "revision": "8bfdb43f47ad805bb1ce093203cfcbaa8ed2c571"
+    "revision": "f2503f1c437fe24560876557868ac94c9cfd3216"
   },
   "json5": {
     "revision": "ab0ba8229d639ec4f3fa5f674c9133477f4b77bd"
@@ -444,10 +444,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "b7eba93e6a3e588e259e831416ac11abdaa8616a"
+    "revision": "be81c59efc552bd875650fe078bf6b78d57330ca"
   },
   "markdown_inline": {
-    "revision": "b7eba93e6a3e588e259e831416ac11abdaa8616a"
+    "revision": "be81c59efc552bd875650fe078bf6b78d57330ca"
   },
   "matlab": {
     "revision": "306c43ab28b7b8a4976e40ff0a7c26b019ad52df"
@@ -738,7 +738,7 @@
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
   },
   "svelte": {
-    "revision": "774a65aea563accc35f5d45fafa4d96ec5761f57"
+    "revision": "ae5199db47757f785e43a14b332118a5474de1a2"
   },
   "swift": {
     "revision": "a6ec57ad4d12c68d952ba1f869bd373a7ac95832"
