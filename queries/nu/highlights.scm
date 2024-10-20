@@ -41,20 +41,20 @@
   "in" @keyword)
 
 (overlay_list
-  "list" @keyword.storage.modifier)
+  "list" @keyword.import)
 
 (overlay_hide
-  "hide" @keyword.storage.modifier)
+  "hide" @keyword.import)
 
 (overlay_new
-  "new" @keyword.storage.modifier)
+  "new" @keyword.import)
 
 (overlay_use
-  "use" @keyword.storage.modifier
+  "use" @keyword.import
   "as" @keyword)
 
 (ctrl_error
-  "make" @keyword.storage.modifier)
+  "make" @keyword.import)
 
 ; ---
 ; literals
@@ -91,9 +91,9 @@ file_path: (val_string) @variable.parameter
 
 (val_date) @number
 
-(inter_escape_sequence) @constant.character.escape
+(inter_escape_sequence) @string.escape
 
-(escape_sequence) @constant.character.escape
+(escape_sequence) @string.escape
 
 (val_interpolated
   [
@@ -353,8 +353,8 @@ key: (identifier) @property
   "$" @punctuation.special
   [
     (identifier) @variable
-    "in" @special
-    "nu" @namespace
+    "in" @variable.parameter.builtin
+    "nu" @module
     "env" @constant
   ]) @none
 
@@ -366,7 +366,7 @@ key: (identifier) @property
 (flat_type) @type
 
 (list_type
-  "list" @type.enum
+  "list" @type.builtin
   [
     "<"
     ">"
@@ -376,7 +376,7 @@ key: (identifier) @property
   [
     "record"
     "table"
-  ] @type.enum
+  ] @type.builtin
   "<" @punctuation.bracket
   key: (_) @variable.parameter
   [
