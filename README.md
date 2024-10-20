@@ -466,6 +466,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [wit](https://github.com/liamwh/tree-sitter-wit) (maintained by @liamwh)
 - [x] [xcompose](https://github.com/ObserverOfTime/tree-sitter-xcompose) (maintained by @ObserverOfTime)
 - [x] [xml](https://github.com/tree-sitter-grammars/tree-sitter-xml) (maintained by @ObserverOfTime)
+- [x] [xresources](https://github.com/ValdezFOmar/tree-sitter-xresources) (maintained by @ValdezFOmar)
 - [x] [yaml](https://github.com/tree-sitter-grammars/tree-sitter-yaml) (maintained by @amaanq)
 - [x] [yang](https://github.com/Hubro/tree-sitter-yang) (maintained by @Hubro)
 - [x] [yuck](https://github.com/Philipp-M/tree-sitter-yuck) (maintained by @Philipp-M, @amaanq)
