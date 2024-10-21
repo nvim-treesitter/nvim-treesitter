@@ -741,7 +741,7 @@
     "revision": "ae5199db47757f785e43a14b332118a5474de1a2"
   },
   "swift": {
-    "revision": "a6ec57ad4d12c68d952ba1f869bd373a7ac95832"
+    "revision": "d351cb321c28f0a3e66242ef2f61b1f890ec4b44"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -780,7 +780,7 @@
     "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
   },
   "tlaplus": {
-    "revision": "da9cf9793686e236327aadfbad449414c895bf84"
+    "revision": "8a8413f1d08e7ee40b347206d26eac4324db9fd9"
   },
   "tmux": {
     "revision": "0252ecd080016e45e6305ef1a943388f5ae2f4b4"
@@ -852,7 +852,7 @@
     "revision": "f3cd62d8bd043ef20507e84bb6b4b53731ccf3a7"
   },
   "vimdoc": {
-    "revision": "2249c44ecd3f5cf22da3dcccfb74f816ddb29245"
+    "revision": "59c539286e7487b267bc7808b16833f9e3ad6793"
   },
   "vrl": {
     "revision": "274b3ce63f72aa8ffea18e7fc280d3062d28f0ba"
@@ -879,7 +879,7 @@
     "revision": "809266ed1694d64dedc168a18893cc254e3edf7e"
   },
   "xresources": {
-    "revision": "702e1e64ae14635346ffeb945d16f42d009c147a"
+    "revision": "630af80f563ede09a652a808277950c36306e3a3"
   },
   "yaml": {
     "revision": "7b03feefd36b5f155465ca736c6304aca983b267"
