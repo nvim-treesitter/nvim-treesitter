@@ -165,7 +165,7 @@
     "revision": "7e319b065c5864bac2fb68f7e14a338b919e8bb3"
   },
   "erlang": {
-    "revision": "f1919a34af3a9c79402c4a3d6c52986e9c2ea949"
+    "revision": "b4ddbbd277532b2df50d4c87242d650789a5e124"
   },
   "facility": {
     "revision": "2d037f2f2bf668737f72e6be6eda4b7918b68d86"
@@ -228,7 +228,7 @@
     "revision": "41940e199ba5763abea1d21b4f717014b45f01ea"
   },
   "gitcommit": {
-    "revision": "67ab180883ba5ce3f5b0a5f4288cc6d9f9d83a5d"
+    "revision": "db0e0c4fb9095fdc42a7af34019c0616c071e9eb"
   },
   "gitignore": {
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
@@ -426,7 +426,7 @@
     "revision": "c14cb839003348692158b845db9edda201374548"
   },
   "lua": {
-    "revision": "99fc677e6971c425e8d407f59c77ab897e585c92"
+    "revision": "34e60e7f45fc313463c68090d88d742a55d1bd7a"
   },
   "luadoc": {
     "revision": "873612aadd3f684dd4e631bdf42ea8990c57634e"
@@ -444,10 +444,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "be81c59efc552bd875650fe078bf6b78d57330ca"
+    "revision": "5cdc549ab8f461aff876c5be9741027189299cec"
   },
   "markdown_inline": {
-    "revision": "be81c59efc552bd875650fe078bf6b78d57330ca"
+    "revision": "5cdc549ab8f461aff876c5be9741027189299cec"
   },
   "matlab": {
     "revision": "306c43ab28b7b8a4976e40ff0a7c26b019ad52df"
