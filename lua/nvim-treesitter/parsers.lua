@@ -215,6 +215,14 @@ list.c = {
   maintainers = { "@amaanq" },
 }
 
+list.c3 = {
+  install_info = {
+    url = "https://github.com/c3lang/tree-sitter-c3",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@cbuttner" },
+}
+
 list.c_sharp = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-c-sharp",
