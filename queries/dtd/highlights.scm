@@ -1,17 +1,17 @@
-; XML declaration
-(XMLDecl
+; Text declaration
+(TextDecl
   "xml" @keyword.directive)
 
-(XMLDecl
+(TextDecl
   [
     "version"
     "encoding"
   ] @tag.attribute)
 
-(XMLDecl
+(TextDecl
   (EncName) @string.special)
 
-(XMLDecl
+(TextDecl
   (VersionNum) @number)
 
 ; Processing instructions
@@ -64,12 +64,6 @@
 (NotationDecl
   "NOTATION" @keyword.directive
   (Name) @label)
-
-(NotationDecl
-  (ExternalID
-    (SystemLiteral
-      (URI) @string.special.url))
-  (#set! priority 105))
 
 ; Attlist declaration
 (AttlistDecl
@@ -124,6 +118,7 @@
   "?>"
   "<!"
   ">"
+  "<!["
   "]]>"
 ] @tag.delimiter
 
