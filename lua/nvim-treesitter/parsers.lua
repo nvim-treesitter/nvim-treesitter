@@ -1042,6 +1042,14 @@ list.inko = {
   maintainers = { "@yorickpeterse" },
 }
 
+list.ipkg = {
+  install_info = {
+    url = "https://github.com/srghma/tree-sitter-ipkg",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@srghma" },
+}
+
 list.ispc = {
   install_info = {
     url = "https://github.com/fab4100/tree-sitter-ispc",
