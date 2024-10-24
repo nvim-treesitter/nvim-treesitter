@@ -9,6 +9,7 @@
 
 [
   (string)
+  (pat_string)
   (triple_quote_string)
 ] @string
 
