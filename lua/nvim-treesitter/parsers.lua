@@ -21,7 +21,6 @@ for ft, lang in pairs {
   mysql = "sql",
   sbt = "scala",
   neomuttrc = "muttrc",
-  idr = "idris",
   --- short-hand list from https://github.com/helix-editor/helix/blob/master/languages.toml
   rs = "rust",
   ex = "elixir",
@@ -1018,6 +1017,14 @@ list.hyprlang = {
   maintainers = { "@luckasRanarison" },
 }
 
+list.idl = {
+  install_info = {
+    url = "https://github.com/cathaysia/tree-sitter-idl",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@cathaysia" },
+}
+
 list.idris = {
   install_info = {
     -- TODO: change to
@@ -1027,14 +1034,6 @@ list.idris = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@srghma" },
-}
-
-list.idl = {
-  install_info = {
-    url = "https://github.com/cathaysia/tree-sitter-idl",
-    files = { "src/parser.c" },
-  },
-  maintainers = { "@cathaysia" },
 }
 
 list.ini = {
