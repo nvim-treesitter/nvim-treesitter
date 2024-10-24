@@ -49,7 +49,8 @@
     name: (identifier) @_new
     (#eq? @_new "new"))
   arguments: (arguments
-    (raw_string_literal) @injection.content)
+    (raw_string_literal
+      (string_content) @injection.content))
   (#set! injection.language "regex"))
 
 (call_expression
@@ -60,7 +61,8 @@
     name: (identifier) @_new
     (#eq? @_new "new"))
   arguments: (arguments
-    (raw_string_literal) @injection.content)
+    (raw_string_literal
+      (string_content) @injection.content))
   (#set! injection.language "regex"))
 
 (call_expression
@@ -71,7 +73,8 @@
     (#eq? @_new "new"))
   arguments: (arguments
     (array_expression
-      (raw_string_literal) @injection.content))
+      (raw_string_literal
+        (string_content) @injection.content)))
   (#set! injection.language "regex"))
 
 (call_expression
@@ -83,7 +86,8 @@
     (#eq? @_new "new"))
   arguments: (arguments
     (array_expression
-      (raw_string_literal) @injection.content))
+      (raw_string_literal
+        (string_content) @injection.content)))
   (#set! injection.language "regex"))
 
 ((block_comment) @injection.content
