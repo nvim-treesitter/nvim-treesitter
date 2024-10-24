@@ -1,11 +1,11 @@
 ; ------------------------------------------------------------------------------
 ; Literals and comments
-(integer) @constant.numeric.integer
+(integer) @number
 
 (literal
-  (number)) @constant.numeric.float
+  (number)) @number.float
 
-(char) @constant.character
+(char) @character
 
 [
   (string)
@@ -47,16 +47,16 @@
   "else"
   "case"
   "of"
-] @keyword.control.conditional
+] @keyword.conditional
 
-(module) @namespace
+(module) @module
 
 [
   "import"
   "module"
   "namespace"
   "parameters"
-] @keyword.control.import
+] @keyword.import
 
 [
   (operator)
@@ -77,16 +77,16 @@
 ] @operator
 
 (qualified_loname
-  (caname) @namespace)
+  (caname) @module)
 
 (qualified_caname
-  (caname) @namespace)
+  (caname) @constructor)
 
 (qualified_operator
-  (caname) @namespace)
+  (caname) @module)
 
 (import
-  (caname) @namespace)
+  (caname) @module)
 
 [
   (where)
@@ -173,7 +173,7 @@
   (caname) @constructor)
 
 (exp_record_access
-  field: (_) @variable.other.member)
+  field: (_) @variable.member)
 
 (signature
   name: [
