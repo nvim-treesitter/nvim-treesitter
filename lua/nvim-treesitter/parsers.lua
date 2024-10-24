@@ -21,6 +21,7 @@ for ft, lang in pairs {
   mysql = "sql",
   sbt = "scala",
   neomuttrc = "muttrc",
+  idr = "idris",
   --- short-hand list from https://github.com/helix-editor/helix/blob/master/languages.toml
   rs = "rust",
   ex = "elixir",
@@ -1015,6 +1016,17 @@ list.hyprlang = {
     files = { "src/parser.c" },
   },
   maintainers = { "@luckasRanarison" },
+}
+
+list.idris = {
+  install_info = {
+    -- TODO: change to
+    -- url = "https://github.com/kayhide/tree-sitter-idris",
+    -- after merge https://github.com/kayhide/tree-sitter-idris/pull/3
+    url = "https://github.com/srghma/tree-sitter-idris",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@srghma" },
 }
 
 list.idl = {
