@@ -150,7 +150,7 @@
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
   "elixir": {
-    "revision": "2ac7a0f81f0731d83068b2872c4a8fee39263a85"
+    "revision": "53458546e3bb717beee1d15df30724c81eb41d1c"
   },
   "elm": {
     "revision": "27f502ed0a1cbd3c5912d284cc7934ee0d4cdddc"
@@ -192,7 +192,7 @@
     "revision": "90189238385cf636b9ee99ce548b9e5b5e569d48"
   },
   "fortran": {
-    "revision": "4a593dda9cbc050a6686187249f8350ceea292ce"
+    "revision": "cb4cb11ca2dced205fb54005684a44e2ceb813c1"
   },
   "fsh": {
     "revision": "fad2e175099a45efbc98f000cc196d3674cc45e0"
@@ -396,7 +396,7 @@
     "revision": "76f53c48d29e8588934fb55b0240d7bdfe00bfe5"
   },
   "koto": {
-    "revision": "cbf637e5163065934c827d254b293f4d2f08f523"
+    "revision": "adf8fabfffc13a51a105be38c9776744291c9eeb"
   },
   "kusto": {
     "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
@@ -852,7 +852,7 @@
     "revision": "f3cd62d8bd043ef20507e84bb6b4b53731ccf3a7"
   },
   "vimdoc": {
-    "revision": "59c539286e7487b267bc7808b16833f9e3ad6793"
+    "revision": "d2e4b5c172a109966c2ce0378f73df6cede39400"
   },
   "vrl": {
     "revision": "274b3ce63f72aa8ffea18e7fc280d3062d28f0ba"
