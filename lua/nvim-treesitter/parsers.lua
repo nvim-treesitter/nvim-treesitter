@@ -365,6 +365,14 @@ list.dart = {
   maintainers = { "@akinsho" },
 }
 
+list.desktop = {
+  install_info = {
+    url = "https://github.com/ValdezFOmar/tree-sitter-desktop",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@ValdezFOmar" },
+}
+
 list.devicetree = {
   install_info = {
     url = "https://github.com/joelspadin/tree-sitter-devicetree",

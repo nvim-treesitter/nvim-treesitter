@@ -107,6 +107,9 @@
   "dart": {
     "revision": "9ac03bb2154316624fb4c41fe0f372a5f1597b43"
   },
+  "desktop": {
+    "revision": "0d8b8cf7c9311fe3f1730df8e193d836f6dd9d1b"
+  },
   "devicetree": {
     "revision": "16c9cb959675bc9bc4f4e5bebe473d511a12a06d"
   },
