@@ -30,6 +30,9 @@
 
 (comma) @punctuation.delimiter
 
+(pat_name
+  (loname) @variable.parameter)
+
 ; ------------------------------------------------------------------------------
 ; Types
 (signature
