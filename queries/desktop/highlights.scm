@@ -66,9 +66,9 @@
 ((entry
   key: (identifier) @_key
   value: (list
-    (string) @string.special))
+    (string) @constant.builtin))
   (#eq? @_key "Categories")
-  (#any-of? @string.special
+  (#any-of? @constant.builtin
     ; Main categories
     "AudioVideo" "Audio" "Video" "Development" "Education" "Game" "Graphics" "Network" "Office"
     "Science" "Settings" "System" "Utility"
