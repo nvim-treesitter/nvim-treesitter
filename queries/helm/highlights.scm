@@ -29,8 +29,7 @@
     "mod" "mul" "max" "min" "len" "addf" "add1f" "subf" "divf" "mulf" "maxf" "minf" "floor" "ceil"
     "round" "getHostByName" "base" "dir" "clean" "ext" "isAbs" "kindOf" "kindIs" "typeOf" "typeIs"
     "typeIsLike" "deepequal" "semver" "semverCompare" "urlParse" "urlJoin" "urlquery" "lookup"
-    "include")
-  )
+    "include"))
 
 ; {{ .Values.test }}
 (selector_expression

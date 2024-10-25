@@ -239,8 +239,7 @@
     "System.Management.Automation.PSScriptCmdlet" "Management.Automation.ErrorRecord"
     "System.Management.Automation.ErrorRecord" "Management.Automation.PSCredential"
     "System.Management.Automation.PSCredential" "Management.Automation.PSMethod"
-    "System.Management.Automation.PSMethod")
-  )
+    "System.Management.Automation.PSMethod"))
 
 ; Function definitions
 ;---------------------

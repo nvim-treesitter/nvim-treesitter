@@ -107,5 +107,4 @@
     "reduce_max" "reduce_min" "rotate" "round" "rsqrt" "rsqrt_fast" "saturating_add"
     "saturating_div" "saturating_mul" "saturating_sub" "seed_rng" "select" "shift" "shuffle"
     "signbits" "sign_extend" "sin" "sincos" "soa_to_aos2" "soa_to_aos3" "soa_to_aos4" "sqrt"
-    "streaming_load" "streaming_load_uniform" "streaming_store" "tan" "trunc")
-  )
+    "streaming_load" "streaming_load_uniform" "streaming_store" "tan" "trunc"))
