@@ -6,11 +6,11 @@
 
 (boolean) @boolean
 
-(datetime) @number.float
+(datetime) @string.special
 
 (task_name) @function
 
-(include_directive) @keyword.directive
+(include_directive) @keyword.import
 
 [
   (integer)
@@ -40,7 +40,7 @@
 [
   (xtrigger_annotation)
   (suicide_annotation)
-] @keyword.modifier
+] @attribute
 
 [
   "="
