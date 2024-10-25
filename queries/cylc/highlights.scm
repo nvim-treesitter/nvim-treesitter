@@ -1,7 +1,5 @@
 (comment) @comment @spell
 
-(section_name) @label
-
 (key) @property
 
 (boolean) @boolean
@@ -11,6 +9,11 @@
 (task_name) @function
 
 (include_directive) @keyword.import
+
+[
+  (section_name)
+  (namespace)
+] @markup.heading
 
 [
   (integer)
