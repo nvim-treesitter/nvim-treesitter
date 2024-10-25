@@ -396,7 +396,7 @@
     "revision": "76f53c48d29e8588934fb55b0240d7bdfe00bfe5"
   },
   "koto": {
-    "revision": "adf8fabfffc13a51a105be38c9776744291c9eeb"
+    "revision": "9e5ab09710b9f035efdcef1eecaadbf261af7ec3"
   },
   "kusto": {
     "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
@@ -750,7 +750,7 @@
     "revision": "f2b378a9af0b7e1192cff67a5fb45508c927205d"
   },
   "t32": {
-    "revision": "0f6a5b1e031c97ebf58d3c76eadb2c6bf1e4f780"
+    "revision": "e455373021812abf4a0b5170caa0d882a9578bab"
   },
   "tablegen": {
     "revision": "b1170880c61355aaf38fc06f4af7d3c55abdabc4"
