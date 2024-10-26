@@ -1,3 +1,4 @@
+; Indentation rules for Idris .ipkg files
 [
   (package_declaration)
   (field_declaration)

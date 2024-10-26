@@ -28,11 +28,6 @@
 ] @keyword
 
 [
-  (package_name)
-  (module_name)
-] @type
-
-[
   "="
   ","
 ] @punctuation.delimiter
@@ -45,7 +40,7 @@
 ; Version numbers and ranges
 (version_number) @number
 
-(version_range_op) @operator
+(version_range_op) @keyword.operator
 
 ; Comments
 (comment) @comment
