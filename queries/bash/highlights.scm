@@ -169,11 +169,11 @@
 (command_name
   (word) @function.builtin
   (#any-of? @function.builtin
-    "alias" "bg" "bind" "break" "builtin" "caller" "cd" "command" "compgen" "complete" "compopt"
-    "continue" "coproc" "dirs" "disown" "echo" "enable" "eval" "exec" "exit" "fc" "fg" "getopts"
-    "hash" "help" "history" "jobs" "kill" "let" "logout" "mapfile" "popd" "printf" "pushd" "pwd"
-    "read" "readarray" "return" "set" "shift" "shopt" "source" "suspend" "test" "time" "times"
-    "trap" "type" "typeset" "ulimit" "umask" "unalias" "wait"))
+    "." ":" "alias" "bg" "bind" "break" "builtin" "caller" "cd" "command" "compgen" "complete"
+    "compopt" "continue" "coproc" "dirs" "disown" "echo" "enable" "eval" "exec" "exit" "false" "fc"
+    "fg" "getopts" "hash" "help" "history" "jobs" "kill" "let" "logout" "mapfile" "popd" "printf"
+    "pushd" "pwd" "read" "readarray" "return" "set" "shift" "shopt" "source" "suspend" "test" "time"
+    "times" "trap" "true" "type" "typeset" "ulimit" "umask" "unalias" "wait"))
 
 (command
   argument: [
