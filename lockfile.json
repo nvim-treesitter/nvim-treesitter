@@ -363,7 +363,7 @@
     "revision": "b864ed97b9675e86de7c15a70c12e4c1ca85fbf9"
   },
   "javascript": {
-    "revision": "c4ce9dc8e7e98ea25757ea26bfe9a022043ccd77"
+    "revision": "a2ef0796e8b9db9107c9ad210b3121b8ad918d5e"
   },
   "jq": {
     "revision": "13990f530e8e6709b7978503da9bc8701d366791"
@@ -465,7 +465,7 @@
     "revision": "c5fffb8edd39f22644084ab3f73a924a75721ee3"
   },
   "mlir": {
-    "revision": "0238b7fb6a630f77b3fc8b8a48285ef6ed45cbcc"
+    "revision": "8cde51ac0484fdf59a90641fefb92a0e846dcc7c"
   },
   "muttrc": {
     "revision": "173b0ab53a9c07962c9777189c4c70e90f1c1837"
@@ -768,7 +768,7 @@
     "revision": "485fbdc00d811b01b2090dff4d0469fd1d0350f5"
   },
   "templ": {
-    "revision": "4519e3ec9ca92754ca25659bb1fd410d5e0f8d88"
+    "revision": "1dcd7db19c047bc0327907a544df3207ba814ea4"
   },
   "terraform": {
     "revision": "9e3ec9848f28d26845ba300fd73c740459b83e9b"
@@ -783,7 +783,7 @@
     "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
   },
   "tlaplus": {
-    "revision": "8a8413f1d08e7ee40b347206d26eac4324db9fd9"
+    "revision": "ffb6c4b91862a03af767d6b0e627d3d20539b79a"
   },
   "tmux": {
     "revision": "0252ecd080016e45e6305ef1a943388f5ae2f4b4"
