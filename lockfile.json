@@ -144,7 +144,7 @@
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
   },
   "editorconfig": {
-    "revision": "777f774d6381f1bb84adffa02a4e476fb61486ae"
+    "revision": "38cf8d0af6049025de0e5486a40881dac06285b4"
   },
   "eds": {
     "revision": "26d529e6cfecde391a03c21d1474eb51e0285805"
@@ -387,7 +387,7 @@
     "revision": "19f62656dc7f2ff3756a8ef3dcf9ab1c01a9eb58"
   },
   "just": {
-    "revision": "6aee3d2f5b3a47286bae0916daaa6c7a217f6fa4"
+    "revision": "1014d2fd6396856c312054d6c30df4d78b62966c"
   },
   "kconfig": {
     "revision": "486fea71f61ad9f3fd4072a118402e97fe88d26c"
@@ -744,7 +744,7 @@
     "revision": "ae5199db47757f785e43a14b332118a5474de1a2"
   },
   "swift": {
-    "revision": "d351cb321c28f0a3e66242ef2f61b1f890ec4b44"
+    "revision": "5098007f58f4663a5613b2fecb6b866e3d41e37b"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
