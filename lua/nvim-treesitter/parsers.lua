@@ -1379,6 +1379,14 @@ list.mlir = {
   maintainers = { "@artagnon" },
 }
 
+list.mustache = {
+  install_info = {
+    url = "https://github.com/TheLeoP/tree-sitter-mustache",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@TheLeoP" },
+}
+
 list.muttrc = {
   install_info = {
     url = "https://github.com/neomutt/tree-sitter-muttrc",

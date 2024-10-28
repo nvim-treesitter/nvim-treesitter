@@ -467,6 +467,9 @@
   "mlir": {
     "revision": "8cde51ac0484fdf59a90641fefb92a0e846dcc7c"
   },
+  "mustache": {
+    "revision": "fb210f379b510629d65ff22ace3a955f4b28b856"
+  },
   "muttrc": {
     "revision": "173b0ab53a9c07962c9777189c4c70e90f1c1837"
   },
