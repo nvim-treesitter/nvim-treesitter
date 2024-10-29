@@ -1,9 +1,13 @@
 [
   (start_delimiter)
   (end_delimiter)
-] @tag.delimiter
+  "{"
+  "}"
+] @punctuation.bracket
 
-(identifier) @tag.attribute
+(identifier) @constant
+
+(partial_content) @constant.macro
 
 "." @punctuation.delimiter
 
