@@ -51,7 +51,7 @@
     "revision": "4e60cf3c2e613625c06f6f85540b3631e2d06cd3"
   },
   "c": {
-    "revision": "79284a14a0d7e4495b095b38acdd8a27acbe870e"
+    "revision": "6c7f459ddc0bcf78b615d3a3f4e8fed87b8b3b1b"
   },
   "c_sharp": {
     "revision": "3a85187e0a9e8db01dec6b3eb2f4e7cdfecc9d88"
@@ -195,7 +195,7 @@
     "revision": "90189238385cf636b9ee99ce548b9e5b5e569d48"
   },
   "fortran": {
-    "revision": "cb4cb11ca2dced205fb54005684a44e2ceb813c1"
+    "revision": "e9fbb3acbfc62b051616e53b17ab97b9823e8617"
   },
   "fsh": {
     "revision": "fad2e175099a45efbc98f000cc196d3674cc45e0"
@@ -399,7 +399,7 @@
     "revision": "76f53c48d29e8588934fb55b0240d7bdfe00bfe5"
   },
   "koto": {
-    "revision": "9e5ab09710b9f035efdcef1eecaadbf261af7ec3"
+    "revision": "0017388765b8b9d89febfe08b5f82805b4e173a5"
   },
   "kusto": {
     "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
