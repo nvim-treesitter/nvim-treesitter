@@ -310,7 +310,7 @@
 
 (future_import_statement
   "from" @keyword.import
-  "__future__" @constant.builtin)
+  "__future__" @module.builtin)
 
 (import_from_statement
   "from" @keyword.import)
@@ -322,6 +322,25 @@
 
 (wildcard_import
   "*" @character.special)
+
+(import_statement
+  name: (dotted_name
+    (identifier) @module))
+
+(import_statement
+  name: (aliased_import
+    name: (dotted_name
+      (identifier) @module)
+    alias: (identifier) @module))
+
+(import_from_statement
+  module_name: (dotted_name
+    (identifier) @module))
+
+(import_from_statement
+  module_name: (relative_import
+    (dotted_name
+      (identifier) @module)))
 
 [
   "if"
