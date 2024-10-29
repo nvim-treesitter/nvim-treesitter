@@ -8,4 +8,5 @@
   (struct_definition)
   (union_definition)
   (comment)
+  (include_statement)+
 ] @fold
