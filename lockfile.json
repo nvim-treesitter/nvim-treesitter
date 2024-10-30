@@ -33,7 +33,7 @@
     "revision": "28dc7059722be090d04cd751aed915b2fee2f89a"
   },
   "beancount": {
-    "revision": "01c0da29e0fc7130420a09d939ecc524e09b6ba6"
+    "revision": "9bc460a05b5f096d69568b5fb36105032ff4ff97"
   },
   "bibtex": {
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
@@ -108,7 +108,7 @@
     "revision": "9ac03bb2154316624fb4c41fe0f372a5f1597b43"
   },
   "desktop": {
-    "revision": "0d8b8cf7c9311fe3f1730df8e193d836f6dd9d1b"
+    "revision": "f3985c2695998ec98c1df50d5567ccdecaa97755"
   },
   "devicetree": {
     "revision": "16c9cb959675bc9bc4f4e5bebe473d511a12a06d"
@@ -783,7 +783,7 @@
     "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
   },
   "tlaplus": {
-    "revision": "ffb6c4b91862a03af767d6b0e627d3d20539b79a"
+    "revision": "d711f24c93221cdfc9a9b4dbb0998f528fc982ac"
   },
   "tmux": {
     "revision": "0252ecd080016e45e6305ef1a943388f5ae2f4b4"
@@ -837,7 +837,7 @@
     "revision": "ea538758a1273b59774dc9179cde460d9c73fd89"
   },
   "vala": {
-    "revision": "8f690bfa639f2b83d1fb938ed3dd98a7ba453e8b"
+    "revision": "97e6db3c8c73b15a9541a458d8e797a07f588ef4"
   },
   "vento": {
     "revision": "3321077d7446c1b3b017c294fd56ce028ed817fe"
