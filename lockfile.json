@@ -144,7 +144,7 @@
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
   },
   "editorconfig": {
-    "revision": "38cf8d0af6049025de0e5486a40881dac06285b4"
+    "revision": "5eca41a689dc03534e9c459b066d116f8befb4ef"
   },
   "eds": {
     "revision": "26d529e6cfecde391a03c21d1474eb51e0285805"
@@ -237,7 +237,7 @@
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
   },
   "gleam": {
-    "revision": "57c9951b290c8084d7c60b0aee7a2b30986ea031"
+    "revision": "2702fe84b986e4403a071bcb112d48e3dcde0ca4"
   },
   "glimmer": {
     "revision": "da605af8c5999b43e6839b575eae5e6cafabb06f"
@@ -309,7 +309,7 @@
     "revision": "9e3ec9848f28d26845ba300fd73c740459b83e9b"
   },
   "heex": {
-    "revision": "6dd0303acf7138dd2b9b432a229e16539581c701"
+    "revision": "9359017bd0dc6b023044713aa215544885663637"
   },
   "helm": {
     "revision": "ca52fbfc98366c585b84f4cb3745df49f33cd140"
@@ -735,7 +735,7 @@
     "revision": "1a8ee0da9a4f2df5a8a22f4d637ac863623a78a7"
   },
   "superhtml": {
-    "revision": "e561df3b5ce94e598a4c3d0ee4abd9635bad63b3"
+    "revision": "6db4b3359d01fc9feead856953e76be6f5e61a1e"
   },
   "surface": {
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
