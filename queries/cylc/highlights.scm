@@ -56,8 +56,8 @@
   path: (_)? @string.special.path)
 
 (task_parameter
-  name: (_)? @variable.directive
-  selection: (_)? @variable.directive)
+  name: (_)? @variable.parameter
+  selection: (_)? @variable.parameter)
 
 (task_output
   ":" @tag
