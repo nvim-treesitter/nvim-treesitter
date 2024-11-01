@@ -2164,6 +2164,14 @@ list.svelte = {
   maintainers = { "@amaanq" },
 }
 
+list.sway = {
+  install_info = {
+    url = "https://github.com/FuelLabs/tree-sitter-sway.git",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@ribru17" },
+}
+
 list.swift = {
   install_info = {
     url = "https://github.com/alex-pinkus/tree-sitter-swift",
