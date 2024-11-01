@@ -1,0 +1,20 @@
+[
+  (mod_item)
+  (function_item)
+  (struct_item)
+  (trait_item)
+  (enum_item)
+  (impl_item)
+  (type_item)
+  (const_item)
+  (let_declaration)
+  (for_expression)
+  (while_expression)
+  (if_expression)
+  (match_expression)
+  (call_expression)
+  (array_expression)
+  (attribute_item)
+  (block)
+  (use_declaration)+
+] @fold
