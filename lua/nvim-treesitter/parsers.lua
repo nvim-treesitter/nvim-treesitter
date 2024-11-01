@@ -1027,10 +1027,7 @@ list.idl = {
 
 list.idris = {
   install_info = {
-    -- TODO: change to
-    -- url = "https://github.com/kayhide/tree-sitter-idris",
-    -- after merge https://github.com/kayhide/tree-sitter-idris/pull/3
-    url = "https://github.com/srghma/tree-sitter-idris",
+    url = "https://github.com/kayhide/tree-sitter-idris",
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@srghma" },

@@ -28,7 +28,12 @@
   "]"
 ] @punctuation.bracket
 
-(comma) @punctuation.delimiter
+[
+  (comma)
+  (colon)
+  (pat_op)
+  (tuple_operator)
+] @punctuation.delimiter
 
 (pat_name
   (loname) @variable.parameter)
