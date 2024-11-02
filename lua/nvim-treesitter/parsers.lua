@@ -39,23 +39,23 @@ end
 
 ---@class InstallInfo
 ---@field url string
----@field branch string|nil
----@field revision string|nil
+---@field branch string?
+---@field revision string?
 ---@field files string[]
----@field generate_requires_npm boolean|nil
----@field requires_generate_from_grammar boolean|nil
----@field location string|nil
----@field use_makefile boolean|nil
----@field cxx_standard string|nil
+---@field generate_requires_npm boolean?
+---@field requires_generate_from_grammar boolean?
+---@field location string?
+---@field use_makefile boolean?
+---@field cxx_standard string?
 
 ---@class ParserInfo
 ---@field install_info InstallInfo
----@field filetype string
----@field maintainers string[]
----@field experimental boolean|nil
----@field readme_name string|nil
+---@field filetype string?
+---@field maintainers string[]?
+---@field experimental boolean?
+---@field readme_name string?
 
----@type ParserInfo[]
+---@type table<string, ParserInfo>
 local list = setmetatable({}, {
   __newindex = function(table, parsername, parserconfig)
     rawset(table, parsername, parserconfig)
@@ -2656,6 +2656,7 @@ function M.get_parser_configs()
   return M.list
 end
 
+---@type table
 local parser_files
 
 function M.reset_cache()
