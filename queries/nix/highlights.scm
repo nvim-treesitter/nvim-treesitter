@@ -129,8 +129,7 @@
     "__currentSystem" "__hashFile" "__path" "__unsafeDiscardOutputDependency" "__currentTime"
     "__hashString" "__pathExists" "__unsafeDiscardStringContext" "__deepSeq" "__head" "__readDir"
     "__unsafeGetAttrPos" "__div" "__intersectAttrs" "__readFile" "__zipAttrsWith" "__elem"
-    "__isAttrs" "__replaceStrings" "__elemAt" "__isBool" "__seq" "__fetchurl" "__isFloat" "__sort")
-  )
+    "__isAttrs" "__replaceStrings" "__elemAt" "__isBool" "__seq" "__fetchurl" "__isFloat" "__sort"))
 
 ; constants
 (variable_expression

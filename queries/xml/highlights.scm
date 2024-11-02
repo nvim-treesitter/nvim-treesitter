@@ -6,6 +6,7 @@
   [
     "version"
     "encoding"
+    "standalone"
   ] @tag.attribute)
 
 (XMLDecl
@@ -13,6 +14,12 @@
 
 (XMLDecl
   (VersionNum) @number)
+
+(XMLDecl
+  [
+    "yes"
+    "no"
+  ] @boolean)
 
 ; Processing instructions
 (PI) @keyword.directive
@@ -65,12 +72,6 @@
   "NOTATION" @keyword.directive
   (Name) @label)
 
-(NotationDecl
-  (ExternalID
-    (SystemLiteral
-      (URI) @string.special.url))
-  (#set! priority 105))
-
 ; Attlist declaration
 (AttlistDecl
   "ATTLIST" @keyword.directive.define
@@ -118,45 +119,6 @@
 (SystemLiteral
   (URI) @string.special.url)
 
-; Delimiters & punctuation
-[
-  "<?"
-  "?>"
-  "<!"
-  ">"
-  "]]>"
-] @tag.delimiter
-
-[
-  "("
-  ")"
-  "["
-] @punctuation.bracket
-
-[
-  "\""
-  "'"
-] @punctuation.delimiter
-
-[
-  ","
-  "|"
-  "="
-] @operator
-
-; Misc
-(Comment) @comment @spell
-
-; XML declaration
-(XMLDecl
-  "standalone" @tag.attribute)
-
-(XMLDecl
-  [
-    "yes"
-    "no"
-  ] @boolean)
-
 ; Processing instructions
 (XmlModelPI
   "xml-model" @keyword.directive)
@@ -194,6 +156,36 @@
 (Attribute
   (AttValue) @string)
 
+; Delimiters & punctuation
+[
+  "<?"
+  "?>"
+  "<"
+  ">"
+  "</"
+  "/>"
+  "<!"
+  "]]>"
+] @tag.delimiter
+
+[
+  "("
+  ")"
+  "["
+  "]"
+] @punctuation.bracket
+
+[
+  "\""
+  "'"
+] @punctuation.delimiter
+
+[
+  ","
+  "|"
+  "="
+] @operator
+
 ; Text
 (CharData) @none @spell
 
@@ -203,11 +195,5 @@
   "]]>" @module)
   (#set! priority 105))
 
-; Delimiters & punctuation
-[
-  "<"
-  "</"
-  "/>"
-] @tag.delimiter
-
-"]" @punctuation.bracket
+; Misc
+(Comment) @comment @spell

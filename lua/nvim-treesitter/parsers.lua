@@ -349,6 +349,14 @@ list.cue = {
   maintainers = { "@amaanq" },
 }
 
+list.cylc = {
+  install_info = {
+    url = "https://github.com/elliotfontaine/tree-sitter-cylc",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@elliotfontaine" },
+}
+
 list.d = {
   install_info = {
     url = "https://github.com/gdamore/tree-sitter-d",
@@ -363,6 +371,14 @@ list.dart = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@akinsho" },
+}
+
+list.desktop = {
+  install_info = {
+    url = "https://github.com/ValdezFOmar/tree-sitter-desktop",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@ValdezFOmar" },
 }
 
 list.devicetree = {

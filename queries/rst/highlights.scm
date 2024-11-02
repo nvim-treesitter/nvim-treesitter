@@ -9,10 +9,7 @@
   (transition)
 ] @punctuation.special
 
-[
-  "bullet"
-  "adornment"
-] @markup.list
+"bullet" @markup.list
 
 ; Resets for injection
 (doctest_block) @none
@@ -133,7 +130,10 @@
 ] @markup.link @nospell
 
 ; Others
-(title) @markup.heading
+[
+  (title)
+  "adornment"
+] @markup.heading
 
 (comment) @comment @spell
 

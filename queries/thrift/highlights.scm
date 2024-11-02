@@ -14,7 +14,7 @@
 
 ; Fields
 (field
-  (identifier) @variable.member)
+  (identifier) @property)
 
 ; Parameters
 (function_definition
@@ -67,17 +67,15 @@
   (#lua-match? @constant "^[_A-Z][A-Z0-9_]*$"))
 
 (enum_definition
-  "enum"
-  .
-  (identifier) @type
+  type: (identifier) @type)
+
+(enum_definition
   "{"
-  (identifier) @constant
-  "}")
+  (identifier) @constant)
 
 ; Builtin Types
-(primitive) @type.builtin
-
 [
+  (primitive)
   "list"
   "map"
   "set"
@@ -88,9 +86,12 @@
 
 ; Namespace
 (namespace_declaration
-  (namespace_scope) @string.special
+  (namespace_scope) @string.special)
+
+(namespace_declaration
+  (namespace_scope)
   [
-    (namespace) @module
+    type: (namespace) @module
     (_
       (identifier) @module)
   ])
@@ -205,19 +206,10 @@
 [
   "{"
   "}"
-] @punctuation.bracket
-
-[
   "("
   ")"
-] @punctuation.bracket
-
-[
   "["
   "]"
-] @punctuation.bracket
-
-[
   "<"
   ">"
 ] @punctuation.bracket
