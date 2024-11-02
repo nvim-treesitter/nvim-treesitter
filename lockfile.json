@@ -24,7 +24,7 @@
     "revision": "1dec7e1af96c56924e3322cd85fdce15d0a31d00"
   },
   "awk": {
-    "revision": "553fdc4afb3b603332c3f4baf50c711506f4e797"
+    "revision": "d99440affd7f5e1d433b1753fe02a58cd0e7f635"
   },
   "bash": {
     "revision": "597a5ed6ed4d932fd44697feec988f977081ae59"
@@ -111,7 +111,7 @@
     "revision": "9ac03bb2154316624fb4c41fe0f372a5f1597b43"
   },
   "desktop": {
-    "revision": "f3985c2695998ec98c1df50d5567ccdecaa97755"
+    "revision": "de93cdbd1cba965c102ce8b659d79f5759b933bd"
   },
   "devicetree": {
     "revision": "16c9cb959675bc9bc4f4e5bebe473d511a12a06d"
@@ -291,7 +291,7 @@
     "revision": "c06e272341363c5d8e19ac34bc7c56258a37e71b"
   },
   "groovy": {
-    "revision": "0d8884514fe10c4fa47527d9a0284d207f38ddea"
+    "revision": "b53a8cc1075e056b8223b86f3bb392e0d57ae101"
   },
   "gstlaunch": {
     "revision": "549aef253fd38a53995cda1bf55c501174372bf7"
@@ -492,7 +492,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "456b14a2fa6315abc7e02fcffaf4a1f35d4955d3"
+    "revision": "ae2e097040ce36864b70aeb0a7c924ba696c3848"
   },
   "norg": {
     "revision": "d89d95af13d409f30a6c7676387bde311ec4a2c8"
@@ -666,7 +666,7 @@
     "revision": "5120f6e59284cb8b85b450bd2db0bd352635ba9f"
   },
   "ruby": {
-    "revision": "83aec5f7d1659aaa79e6f24b406a9cd49b87e8e8"
+    "revision": "557ec01403bd1fcfea50f1805641ca773cbaaa42"
   },
   "rust": {
     "revision": "2ace7a922a755960f44d73a7bb1efffeb4cc5501"
@@ -885,7 +885,7 @@
     "revision": "cd1316e476ec40da6ce1fb5749c9d7e6b4f1090c"
   },
   "xresources": {
-    "revision": "630af80f563ede09a652a808277950c36306e3a3"
+    "revision": "37751efa38512535e6dbc840dccf35c6779f69b7"
   },
   "yaml": {
     "revision": "7b03feefd36b5f155465ca736c6304aca983b267"
