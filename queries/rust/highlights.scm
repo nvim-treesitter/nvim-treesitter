@@ -54,6 +54,14 @@
     "_"
   ] @variable.parameter)
 
+(parameter
+  (ref_pattern
+    [
+      (mut_pattern
+        (identifier) @variable.parameter)
+      (identifier) @variable.parameter
+    ]))
+
 (closure_parameters
   (_) @variable.parameter)
 
