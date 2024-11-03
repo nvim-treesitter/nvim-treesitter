@@ -27,10 +27,9 @@
   "depends"
 ] @keyword
 
-[
-  "="
-  ","
-] @punctuation.delimiter
+"=" @operator
+
+"," @punctuation.delimiter
 
 ; Field values
 (string_value) @string
