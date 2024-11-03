@@ -5,9 +5,17 @@
 (header
   name: (_) @constant)
 
+(header
+  value: (_) @string)
+
 ; Variables
+(identifier) @variable
+
 (variable_declaration
-  name: (identifier) @variable)
+  "@" @character.special)
+
+(variable_declaration
+  (value) @string)
 
 ; Operators
 (comment
@@ -25,7 +33,7 @@
 (request
   url: (_) @string.special.url)
 
-(http_version) @constant
+(http_version) @string.special
 
 ; Response
 (status_code) @number
@@ -36,7 +44,11 @@
 [
   "{{"
   "}}"
+  "{%"
+  "%}"
 ] @punctuation.bracket
+
+">" @punctuation.special
 
 (header
   ":" @punctuation.delimiter)
