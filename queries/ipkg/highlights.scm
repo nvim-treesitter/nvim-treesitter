@@ -34,7 +34,7 @@
 ; Field values
 (string_value) @string
 
-(boolean_value) @constant.builtin
+(boolean_value) @boolean
 
 ; Version numbers and ranges
 (version_number) @number
