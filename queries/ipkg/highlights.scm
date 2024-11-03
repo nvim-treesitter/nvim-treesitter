@@ -1,6 +1,7 @@
 ; Keywords
+"package" @keyword.import
+
 [
-  "package"
   "authors"
   "maintainers"
   "license"
@@ -27,7 +28,10 @@
   "depends"
 ] @keyword
 
-"=" @operator
+[
+  "="
+  (version_range_op)
+] @operator
 
 "," @punctuation.delimiter
 
@@ -38,8 +42,6 @@
 
 ; Version numbers and ranges
 (version_number) @number
-
-(version_range_op) @operator
 
 ; Comments
 (comment) @comment @spell
