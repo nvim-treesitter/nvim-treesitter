@@ -39,6 +39,8 @@
   "="
   "!"
   "-"
+  (backreference_escape)
+  (lazy)
 ] @operator
 
 [
