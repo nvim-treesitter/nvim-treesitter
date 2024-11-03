@@ -1,0 +1,33 @@
+@ENDPOINT=http://localhost:8080/api
+# <- @character.special
+# ^^^^^^^ @variable
+#        ^ @operator
+#         ^^^^^^^^^^^^^^^^^^^^^^^^^ @string
+
+### GET USERS
+GET {{ENDPOINT}}/users HTTP/1.1
+#   ^^ @punctuation.bracket
+#     ^^^^^^^^ @variable
+#             ^^ @punctuation.bracket
+#               ^^^^^^ @string.special.url
+#                      ^^^^^^^^ @string.special
+
+### GET USERS by Offset
+GET {{ENDPOINT}}/users?offset=30 HTTP/1.1
+# <- @function.method
+
+### POST login
+POST {{ENDPOINT}}/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "password"
+}
+
+### Log Out
+POST {{ENDPOINT}}/auth/logout HTTP/1.1
+Content-Type: application/json
+# ^^^^^^^^^^ @constant
+#           ^ @punctuation.delimiter
+# vim: ft=http

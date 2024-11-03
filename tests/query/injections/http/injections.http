@@ -1,0 +1,21 @@
+### post-request script
+GET https://jsonplaceholder.typicode.com/posts/3
+
+# @lang=lua
+> {%
+local body = vim.json.decode(response.body)
+client.global.set("postId", body.id)
+-- ^ @lua
+%}
+
+
+### run request with variable
+
+GET https://jsonplaceholder.typicode.com/posts/{{postId}}
+
+> {%
+  client.global.set("auth_token", response.body.jwt);
+  // ^ @javascript
+%}
+
+### vim: ft=http
