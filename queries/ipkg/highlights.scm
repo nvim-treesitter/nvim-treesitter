@@ -42,4 +42,4 @@
 (version_range_op) @operator
 
 ; Comments
-(comment) @comment
+(comment) @comment @spell
