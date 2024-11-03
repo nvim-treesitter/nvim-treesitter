@@ -39,7 +39,7 @@
 ; Version numbers and ranges
 (version_number) @number
 
-(version_range_op) @keyword.operator
+(version_range_op) @operator
 
 ; Comments
 (comment) @comment
