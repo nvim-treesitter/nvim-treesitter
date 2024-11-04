@@ -108,16 +108,16 @@
     "revision": "45e5f1e9d6de2c68591bc8e5ec662cf18e950b4a"
   },
   "dart": {
-    "revision": "9ac03bb2154316624fb4c41fe0f372a5f1597b43"
+    "revision": "a7496b9d562be91e6588eecd5d7045832f575cd0"
   },
   "desktop": {
     "revision": "de93cdbd1cba965c102ce8b659d79f5759b933bd"
   },
   "devicetree": {
-    "revision": "16c9cb959675bc9bc4f4e5bebe473d511a12a06d"
+    "revision": "16f640f3c59117c9e749d581634afdb00e004f4c"
   },
   "dhall": {
-    "revision": "affb6ee38d629c9296749767ab832d69bb0d9ea8"
+    "revision": "ffd37395cbb5d576b1df51b28b38f5ab6575a20c"
   },
   "diff": {
     "revision": "63439b5e6e35750aff1e53d9eecc663d369c54bc"
@@ -348,7 +348,7 @@
     "revision": "6858695eba0e63b9e0fceef081d291eb352abce8"
   },
   "idl": {
-    "revision": "5573b295410201ed22771776b34d636900eba368"
+    "revision": "9ac6fdd7840b5c0f271fe11b4ab656634dc2074a"
   },
   "ini": {
     "revision": "962568c9efa71d25720ab42c5d36e222626ef3a6"
@@ -723,7 +723,7 @@
     "revision": "072c969749e66f000dba35a33c387650e203e96e"
   },
   "ssh_config": {
-    "revision": "77450e8bce8853921512348f83c73c168c71fdfb"
+    "revision": "dd32616275c6e9d7800c58f40c16a09ad1c7c238"
   },
   "starlark": {
     "revision": "018d0e09d9d0f0dd6740a37682b8ee4512e8b2ac"
@@ -885,7 +885,7 @@
     "revision": "cd1316e476ec40da6ce1fb5749c9d7e6b4f1090c"
   },
   "xresources": {
-    "revision": "37751efa38512535e6dbc840dccf35c6779f69b7"
+    "revision": "d36d356624af4b46d3fc815d0701ebf72654473c"
   },
   "yaml": {
     "revision": "7b03feefd36b5f155465ca736c6304aca983b267"
