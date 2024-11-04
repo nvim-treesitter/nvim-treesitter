@@ -1,9 +1,22 @@
 [
-  (parameter_list)
   (compound_statement)
   (loop_statement)
   (struct_declaration)
 ] @indent.begin
+
+((parameter_list) @indent.begin
+  (#set! indent.immediate)
+  (#set! indent.start_at_same_line))
+
+(function_declaration
+  "(" @indent.begin
+  (#set! indent.immediate))
+
+(ERROR
+  "fn"
+  (identifier)
+  "(" @indent.begin
+  (#set! indent.immediate))
 
 (compound_statement
   "}" @indent.end)
