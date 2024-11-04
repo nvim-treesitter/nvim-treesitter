@@ -41,3 +41,20 @@ fn vertex(vertex: Vertex,
   out.b = 2;
   return out;
 }
+
+fn foo(
+  a: u32,
+  b: u32,
+) {
+  return a;
+}
+
+fn bar(
+) {}
+
+fn baz(
+  a: u32,
+) {}
+
+fn qux(
+)
