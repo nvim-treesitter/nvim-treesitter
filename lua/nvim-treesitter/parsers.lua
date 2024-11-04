@@ -288,6 +288,7 @@ list.cooklang = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@addcninblue" },
+  filetype = "cook",
 }
 
 list.corn = {
