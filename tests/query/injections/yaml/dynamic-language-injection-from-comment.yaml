@@ -1,0 +1,20 @@
+foo: bar
+# language=yaml
+top_yaml: |
+  aaa: qqq
+# ^ yaml
+top_text: |
+  key: value
+# language=python
+python: |
+  foo = 'asdafsaa'
+  print(f'{foo}')
+# ^ python
+level1:
+  foo: bar
+  # language=yaml
+  levlel2_yaml: |
+    key: value
+  # ^ yaml
+  level2_text: |
+    key: value
