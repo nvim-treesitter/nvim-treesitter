@@ -117,7 +117,7 @@
     "revision": "16f640f3c59117c9e749d581634afdb00e004f4c"
   },
   "dhall": {
-    "revision": "ffd37395cbb5d576b1df51b28b38f5ab6575a20c"
+    "revision": "4a6c08abfb54827db4e722d6cdca81b093898988"
   },
   "diff": {
     "revision": "63439b5e6e35750aff1e53d9eecc663d369c54bc"
@@ -561,7 +561,7 @@
     "revision": "ebe2ab2f642eda2072c68c8de02e83973c26f33c"
   },
   "printf": {
-    "revision": "0e0aceabbf607ea09e03562f5d8a56f048ddea3d"
+    "revision": "94b84fbc4768a7cbdeadfe5e489a45a6a8af400e"
   },
   "prisma": {
     "revision": "eca2596a355b1a9952b4f80f8f9caed300a272b5"
@@ -636,7 +636,7 @@
     "revision": "74addc90fc539d31d413c0c7cf7581997a7fa46e"
   },
   "regex": {
-    "revision": "58f4caf9db12db3b38b81c77d274aa73c9e85aca"
+    "revision": "b518ad4bbee3ad59672b1826ca4dc62825983533"
   },
   "rego": {
     "revision": "20b5a5958c837bc9f74b231022a68a594a313f6d"
@@ -906,9 +906,9 @@
     "revision": "eb7d58c2dc4fbeea4745019dee8df013034ae66b"
   },
   "ziggy": {
-    "revision": "42b6f5d7320340bc5903c4c29d34065e8517a549"
+    "revision": "fe73beef9f52f04048d8b19016fc4fbc66b4596f"
   },
   "ziggy_schema": {
-    "revision": "42b6f5d7320340bc5903c4c29d34065e8517a549"
+    "revision": "fe73beef9f52f04048d8b19016fc4fbc66b4596f"
   }
 }
