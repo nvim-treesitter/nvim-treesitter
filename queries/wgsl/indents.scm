@@ -2,6 +2,7 @@
   (compound_statement)
   (loop_statement)
   (struct_declaration)
+  (type_constructor_or_function_call_expression)
 ] @indent.begin
 
 ((parameter_list) @indent.begin
