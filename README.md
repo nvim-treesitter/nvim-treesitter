@@ -397,6 +397,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [ron](https://github.com/amaanq/tree-sitter-ron) (maintained by @amaanq)
 - [x] [rst](https://github.com/stsewd/tree-sitter-rst) (maintained by @stsewd)
 - [x] [ruby](https://github.com/tree-sitter/tree-sitter-ruby) (maintained by @TravonteD)
+- [x] [runescript](https://github.com/2004Scape/tree-sitter-runescript) (maintained by @2004Scape)
 - [x] [rust](https://github.com/tree-sitter/tree-sitter-rust) (maintained by @amaanq)
 - [x] [scala](https://github.com/tree-sitter/tree-sitter-scala) (maintained by @stevanmilic)
 - [x] [scfg](https://github.com/rockorager/tree-sitter-scfg) (maintained by @WhyNotHugo)
