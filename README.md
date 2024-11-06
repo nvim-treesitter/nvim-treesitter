@@ -302,7 +302,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [json5](https://github.com/Joakker/tree-sitter-json5) (maintained by @Joakker)
 - [x] [JSON with comments](https://gitlab.com/WhyNotHugo/tree-sitter-jsonc.git) (maintained by @WhyNotHugo)
 - [x] [jsonnet](https://github.com/sourcegraph/tree-sitter-jsonnet) (maintained by @nawordar)
-- [x] [julia](https://github.com/tree-sitter/tree-sitter-julia) (maintained by @theHamsta)
+- [ ] [julia](https://github.com/tree-sitter/tree-sitter-julia)
 - [x] [just](https://github.com/IndianBoy42/tree-sitter-just) (maintained by @Hubro)
 - [x] [kconfig](https://github.com/amaanq/tree-sitter-kconfig) (maintained by @amaanq)
 - [x] [kdl](https://github.com/amaanq/tree-sitter-kdl) (maintained by @amaanq)
