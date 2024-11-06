@@ -671,6 +671,9 @@
   "ruby": {
     "revision": "557ec01403bd1fcfea50f1805641ca773cbaaa42"
   },
+  "runescript": {
+    "revision": "e0568a271a1901b8ef87367bbf282b5c639cd742"
+  },
   "rust": {
     "revision": "2ace7a922a755960f44d73a7bb1efffeb4cc5501"
   },

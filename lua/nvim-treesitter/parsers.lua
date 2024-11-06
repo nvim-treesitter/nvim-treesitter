@@ -21,6 +21,7 @@ for ft, lang in pairs {
   mysql = "sql",
   sbt = "scala",
   neomuttrc = "muttrc",
+  clientscript = "runescript",
   --- short-hand list from https://github.com/helix-editor/helix/blob/master/languages.toml
   rs = "rust",
   ex = "elixir",
@@ -1946,6 +1947,14 @@ list.ruby = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@TravonteD" },
+}
+
+list.runescript = {
+  install_info = {
+    url = "https://github.com/2004Scape/tree-sitter-runescript",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@2004Scape" },
 }
 
 list.rust = {
