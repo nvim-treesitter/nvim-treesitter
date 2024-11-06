@@ -143,7 +143,7 @@ html_tags (queries only)[^html_tags] | community | `H IJ ` | @TravonteD
 [jsonc](https://gitlab.com/WhyNotHugo/tree-sitter-jsonc) | community | `HFIJL` | @WhyNotHugo
 [jsonnet](https://github.com/sourcegraph/tree-sitter-jsonnet) | community | `HF JL` | @nawordar
 jsx (queries only)[^jsx] | community | `HFIJ ` | @steelsojka
-[julia](https://github.com/tree-sitter/tree-sitter-julia) | core | `HFIJL` | @theHamsta
+[julia](https://github.com/tree-sitter/tree-sitter-julia) | unsupported | `HFIJL` | @theHamsta
 [just](https://github.com/IndianBoy42/tree-sitter-just) | community | `HFIJL` | @Hubro
 [kconfig](https://github.com/tree-sitter-grammars/tree-sitter-kconfig) | core | `HFIJL` | @amaanq
 [kdl](https://github.com/tree-sitter-grammars/tree-sitter-kdl) | core | `HFIJL` | @amaanq
