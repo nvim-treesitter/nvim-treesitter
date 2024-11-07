@@ -501,7 +501,7 @@
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
   },
   "nu": {
-    "revision": "2142e883c5edfd7fc99b6d933a3d80ea84ac278f"
+    "revision": "d8b33566737f849353d08a9f8fdc86ce78d411c2"
   },
   "objc": {
     "revision": "62e61b6f5c0289c376d61a8c91faf6435cde9012"
@@ -672,7 +672,7 @@
     "revision": "557ec01403bd1fcfea50f1805641ca773cbaaa42"
   },
   "runescript": {
-    "revision": "e0568a271a1901b8ef87367bbf282b5c639cd742"
+    "revision": "cf85bbd5da0c5ad243301d889c7f84d790a4cae4"
   },
   "rust": {
     "revision": "2ace7a922a755960f44d73a7bb1efffeb4cc5501"
@@ -744,7 +744,7 @@
     "revision": "1a8ee0da9a4f2df5a8a22f4d637ac863623a78a7"
   },
   "superhtml": {
-    "revision": "7d61cccdb865b2028301a0597b55ac8b225af6cf"
+    "revision": "dbb0d1fc54f8525f41289a413ea6c0722e92bf9c"
   },
   "surface": {
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
@@ -756,7 +756,7 @@
     "revision": "03d97aad336ecc6b302f23bdd9b695ddc937160b"
   },
   "swift": {
-    "revision": "5098007f58f4663a5613b2fecb6b866e3d41e37b"
+    "revision": "042041d0ff8986f0e58818eb35770349b50e949f"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
