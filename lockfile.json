@@ -354,7 +354,7 @@
     "revision": "962568c9efa71d25720ab42c5d36e222626ef3a6"
   },
   "inko": {
-    "revision": "6f9c072d023c3886aabcd8012274461b35d2d0a9"
+    "revision": "aecabede39b0db05678e2d4686258d4f71b00a51"
   },
   "ispc": {
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
@@ -501,7 +501,7 @@
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
   },
   "nu": {
-    "revision": "d8b33566737f849353d08a9f8fdc86ce78d411c2"
+    "revision": "24f9e4103dd70c2a3a27b20bba9255065353f782"
   },
   "objc": {
     "revision": "62e61b6f5c0289c376d61a8c91faf6435cde9012"
@@ -831,7 +831,7 @@
     "revision": "8b8b16ef1b40cbecbe3f754b1c1c966b5a0904fe"
   },
   "udev": {
-    "revision": "8f58696e79092b4ad6bf197415bbd0970acf15cd"
+    "revision": "18a1d183c4c0cc40438bae2ebf8191aaf2dee8dc"
   },
   "ungrammar": {
     "revision": "debd26fed283d80456ebafa33a06957b0c52e451"
