@@ -12,17 +12,15 @@
 (literal_boolean) @boolean
 
 ; Keywords
+(type_kw) @keyword.type
+
 [
   (kw_forall)
-  (unique)
-  (type_kw)
   (do)
   (kw_let)
   (ability)
   (where)
 ] @keyword
-
-(kw_equals) @keyword.operator
 
 (structural) @keyword.modifier
 
@@ -30,15 +28,16 @@
 
 (type_constructor) @constructor
 
-(doc_block) @comment.documentation
+((doc_block) @comment.documentation @spell
+  (#set! priority 90))
 
 [
   (operator)
   (pipe)
   (arrow_symbol)
-  ">"
   (or)
-] @keyword.operator
+  (kw_equals)
+] @operator
 
 [
   "if"
@@ -53,23 +52,34 @@
 
 (pattern) @variable
 
-(constructor_or_variable_pattern) @type
-
 (use_clause) @keyword.import
 
 ; Types
 (record_field
-  name: (wordy_id) @variable
-  type: (wordy_id) @type)
+  (field_name) @variable.member
+  type: (regular_identifier) @type)
 
 (type_name) @type
+
+(type_declaration
+  (regular_identifier) @type)
+
+(ability_name
+  (path)? @module
+  (regular_identifier) @type)
 
 (ability_declaration
   (ability_name) @type
   (type_argument) @variable.parameter)
 
+(constructor
+  (constructor_name) @constructor)
+
+(constructor
+  type: (regular_identifier) @type)
+
 (effect
-  (wordy_id) @attribute) ; NOTE: an effect is a special type
+  (regular_identifier) @attribute) ; NOTE: an effect is a special type
 
 ; Namespaces
 (path) @module
@@ -79,22 +89,21 @@
 ; Terms
 (type_signature
   term_name: (path) @module
-  term_name: (wordy_id) @variable)
+  term_name: (regular_identifier) @variable)
 
 (type_signature
-  term_name: (wordy_id) @variable)
+  term_name: (regular_identifier) @variable)
 
 (term_type) @type
 
-(function_application
-  function_name: (path)
-  function_name: (wordy_id) @function)
+(term_definition
+  name: (path) @module)
 
 (term_definition
-  name: (wordy_id) @variable)
+  name: (regular_identifier) @variable)
 
 (term_definition
-  param: (wordy_id) @variable.parameter)
+  param: (regular_identifier) @variable.parameter)
 
 ; Punctuation
 [
@@ -111,5 +120,6 @@
   "]"
 ] @punctuation.bracket
 
-(test_watch_expression
-  (wordy_id) @keyword.directive)
+(watch_expression) @keyword.directive
+
+(test_watch_expression) @keyword.directive
