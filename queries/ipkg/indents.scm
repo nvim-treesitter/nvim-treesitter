@@ -25,6 +25,9 @@
 
 (string_value) @indent.begin
 
-(comment) @indent.ignore
+[
+  (line_comment)
+  (block_comment)
+] @indent.ignore
 
 (ERROR) @indent.auto

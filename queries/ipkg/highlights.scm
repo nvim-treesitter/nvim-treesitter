@@ -43,6 +43,12 @@
 ; Version numbers and ranges
 (version_number) @string.special
 
+[
+  (dependency_item)
+  (package_name)
+  (module_name)
+] @module
+
 ; Comments
 [
   (line_comment)
