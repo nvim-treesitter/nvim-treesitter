@@ -1045,7 +1045,7 @@ list.inko = {
 list.ipkg = {
   install_info = {
     url = "https://github.com/srghma/tree-sitter-ipkg",
-    files = { "src/parser.c" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@srghma" },
 }
