@@ -248,6 +248,7 @@ local format_queries = [[
   "(" @format.remove
   .
   [
+    (grouping)
     (anonymous_node
       name: (string) .)
     (named_node
