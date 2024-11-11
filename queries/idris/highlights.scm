@@ -186,7 +186,6 @@
 (signature
   name: [
     (loname)
-    (caname)
   ] @function)
 
 (function
