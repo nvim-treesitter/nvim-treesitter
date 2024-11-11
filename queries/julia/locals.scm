@@ -1,3 +1,6 @@
+; References
+(identifier) @local.reference
+
 ; Variables
 (assignment
   (identifier) @local.definition.var)
@@ -23,23 +26,31 @@
     (identifier) @local.definition.var))
 
 ; Types
-(struct_definition
-  name: (identifier) @local.definition.type)
-
-(abstract_definition
-  name: (identifier) @local.definition.type)
-
-(abstract_definition
-  name: (identifier) @local.definition.type)
-
-(type_parameter_list
+(module_definition
   (identifier) @local.definition.type)
+
+(struct_definition
+  (identifier) @local.definition.type)
+
+(type_head
+  (identifier) @local.definition.type)
+
+(type_head
+  (binary_expression
+    .
+    (identifier) @local.definition.type))
 
 ; Module imports
 (import_statement
   (identifier) @local.definition.import)
 
-; Function/macro definitions
+(using_statement
+  (identifier) @local.definition.import)
+
+(selected_import
+  (identifier) @local.definition.import)
+
+; Scopes
 (function_definition
   (signature
     (call_expression
@@ -52,15 +63,13 @@
       .
       (identifier) @local.definition.function))) @local.scope
 
-(identifier) @local.reference
-
 [
+  (quote_statement)
+  (let_statement)
   (for_statement)
   (while_statement)
   (try_statement)
   (catch_clause)
   (finally_clause)
-  (let_statement)
-  (quote_statement)
   (do_clause)
 ] @local.scope
