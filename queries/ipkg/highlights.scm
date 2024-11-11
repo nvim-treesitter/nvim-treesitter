@@ -41,7 +41,7 @@
 (boolean_value) @boolean
 
 ; Version numbers and ranges
-(version_number) @number
+(version_number) @string.special
 
 ; Comments
 (comment) @comment @spell
