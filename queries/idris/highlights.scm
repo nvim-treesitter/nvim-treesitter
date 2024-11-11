@@ -1,6 +1,9 @@
 ; ------------------------------------------------------------------------------
 ; Literals and comments
-(integer) @number
+[
+  (integer)
+  (quantity)
+] @number
 
 (literal
   (number)) @number.float
@@ -98,25 +101,31 @@
 
 [
   (where)
-  "let"
-  "in"
   "rewrite"
   "interface"
   "implementation"
   "using"
-  "data"
   "record"
   "as"
   "do"
   (forall)
   (fixity)
-  (visibility)
-  (totality)
-  (quantity)
   (impossible)
   (with)
   (proof)
+] @keyword.operator
+
+[
+  "data"
+  "let"
+  "in"
+  (visibility)
+  (totality)
+] @keyword.modifier
+
+[
   "="
+  "$="
   ":="
 ] @keyword
 
@@ -184,9 +193,7 @@
   field: (_) @variable.member)
 
 (signature
-  name: [
-    (loname)
-  ] @function)
+  name: (loname) @function)
 
 (function
   (lhs
