@@ -15,6 +15,10 @@
 
 (comment) @comment
 
+; more general captures are moved to the top
+; before overwritten later by more specific captures
+(caname) @constructor
+
 ; ------------------------------------------------------------------------------
 ; Punctuation
 [
@@ -42,11 +46,6 @@
 ; Types
 (signature
   (loname) @type)
-
-(signature
-  (caname) @constructor)
-
-(caname) @constructor
 
 ; ------------------------------------------------------------------------------
 ; Keywords, operators, imports
