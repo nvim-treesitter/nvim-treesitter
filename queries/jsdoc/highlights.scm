@@ -9,14 +9,6 @@
   "]"
 ] @punctuation.bracket
 
-[
-  ":"
-  "/"
-  "."
-  "#"
-  "~"
-] @punctuation.delimiter
-
 (identifier) @variable @nospell
 
 (tag
