@@ -288,7 +288,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "gren": {
-    "revision": "c06e272341363c5d8e19ac34bc7c56258a37e71b"
+    "revision": "df7992dbc1e57e055ba1cbfdbe9f961750940553"
   },
   "groovy": {
     "revision": "b53a8cc1075e056b8223b86f3bb392e0d57ae101"
@@ -828,7 +828,7 @@
     "revision": "43b221c0b76e77244efdaa9963e402a17c930fbc"
   },
   "typst": {
-    "revision": "8b8b16ef1b40cbecbe3f754b1c1c966b5a0904fe"
+    "revision": "26dfb4b94a99cc9d6044342b7ad0ba761da77d60"
   },
   "udev": {
     "revision": "18a1d183c4c0cc40438bae2ebf8191aaf2dee8dc"
@@ -846,7 +846,7 @@
     "revision": "ad9b638b914095320de85d59c49ab271603af048"
   },
   "v": {
-    "revision": "8f1a06b488e65aeeb340d5e2ae3e703a104bd5c4"
+    "revision": "bb0a1bd4c2a56f6b191b7d051ea3f2976c3bcb11"
   },
   "vala": {
     "revision": "97e6db3c8c73b15a9541a458d8e797a07f588ef4"
