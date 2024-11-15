@@ -1,5 +1,6 @@
 [
   (block)
+  (struct_declaration)
   (switch_expression)
   (initializer_list)
 ] @indent.begin
