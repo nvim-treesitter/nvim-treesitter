@@ -492,7 +492,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "0240bbfce72d155823c3b7edec622dedd580bf02"
+    "revision": "0eca4c5cb06196cca6d9e81a64cb4b73bdab1c87"
   },
   "norg": {
     "revision": "d89d95af13d409f30a6c7676387bde311ec4a2c8"
@@ -501,7 +501,7 @@
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
   },
   "nu": {
-    "revision": "7e0f16f608a9e804fae61430ade734f9f849fb80"
+    "revision": "86aabeeaf4d3fc544d132904ef9981a888314ec0"
   },
   "objc": {
     "revision": "62e61b6f5c0289c376d61a8c91faf6435cde9012"
@@ -618,7 +618,7 @@
     "revision": "a6674e279b14958625d7a530cabe06119c7a1532"
   },
   "r": {
-    "revision": "2097fa502efa21349d26af0ffee55d773015e481"
+    "revision": "c094bd57652f8a08edc31d79a31222268fe798ee"
   },
   "racket": {
     "revision": "5b211bf93021d1c45f39aa96898be9f794f087e4"
@@ -777,7 +777,7 @@
     "revision": "98015ebe182d94e5a4439e32ffd91beaac32fcb9"
   },
   "teal": {
-    "revision": "485fbdc00d811b01b2090dff4d0469fd1d0350f5"
+    "revision": "a8901ac8a60a11784e73542ed7a7887e206764e5"
   },
   "templ": {
     "revision": "73a558744fff7c4560f4801e14a467811f608556"
