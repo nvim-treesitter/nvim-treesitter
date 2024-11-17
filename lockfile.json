@@ -108,7 +108,7 @@
     "revision": "45e5f1e9d6de2c68591bc8e5ec662cf18e950b4a"
   },
   "dart": {
-    "revision": "a7496b9d562be91e6588eecd5d7045832f575cd0"
+    "revision": "e81af6ab94a728ed99c30083be72d88e6d56cf9e"
   },
   "desktop": {
     "revision": "d52964c67d98eaedabca6ed1ec21ae54a522e8f8"
@@ -387,7 +387,7 @@
     "revision": "ddd075f1939aed8147b7aa67f042eda3fce22790"
   },
   "julia": {
-    "revision": "fe553797479a8f58abc713330b640af0f569f915"
+    "revision": "e01c928d11375513138a175a68485c4d53e55ea9"
   },
   "just": {
     "revision": "1014d2fd6396856c312054d6c30df4d78b62966c"
@@ -501,7 +501,7 @@
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
   },
   "nu": {
-    "revision": "86aabeeaf4d3fc544d132904ef9981a888314ec0"
+    "revision": "59baf26c9d19a21b18e3a4d83a3c2ced41ac0a8f"
   },
   "objc": {
     "revision": "62e61b6f5c0289c376d61a8c91faf6435cde9012"
@@ -510,10 +510,10 @@
     "revision": "28d3b2e25a0b1881d1b47ed1924ca276c7003d45"
   },
   "ocaml": {
-    "revision": "26bc61c206e7820f9f804b206f7765ffc55cd039"
+    "revision": "98c2130c59ca7553b47086f91c5d22180151ad55"
   },
   "ocaml_interface": {
-    "revision": "26bc61c206e7820f9f804b206f7765ffc55cd039"
+    "revision": "98c2130c59ca7553b47086f91c5d22180151ad55"
   },
   "ocamllex": {
     "revision": "4b9898ccbf198602bb0dec9cd67cc1d2c0a4fad2"
@@ -534,7 +534,7 @@
     "revision": "217ff2af3f2db15a79ab7e3d21ea1e0c17e71a1a"
   },
   "perl": {
-    "revision": "76ab9a52b9dd2a1758aae3da8286519d995037e9"
+    "revision": "089c124d3c0c406cc01e0936c0b3941618a1f45d"
   },
   "php": {
     "revision": "6918e6908d78780ddd996b9fcbaa835b42782d5b"
@@ -723,7 +723,7 @@
     "revision": "d853661ca680d8ff7f8d800182d5782b61d0dd58"
   },
   "sql": {
-    "revision": "8048c5095fea3f585488c8315d5755f9bb54ca73"
+    "revision": "cf6e016eef607e909761d2c5170cc58b4da2bc6a"
   },
   "squirrel": {
     "revision": "072c969749e66f000dba35a33c387650e203e96e"
@@ -894,7 +894,7 @@
     "revision": "4b64dd3a03ec002258d6268d712fd93716d6ab57"
   },
   "xresources": {
-    "revision": "a75056c2e1bed83c338ff394dbb7c653db210432"
+    "revision": "a068b33304a122bf9bd8d5d11916ec61cde64d36"
   },
   "yaml": {
     "revision": "7b03feefd36b5f155465ca736c6304aca983b267"
