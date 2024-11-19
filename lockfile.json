@@ -111,7 +111,7 @@
     "revision": "e81af6ab94a728ed99c30083be72d88e6d56cf9e"
   },
   "desktop": {
-    "revision": "d52964c67d98eaedabca6ed1ec21ae54a522e8f8"
+    "revision": "54133af61b2a9a75fd42c49ce0c771115f81f50b"
   },
   "devicetree": {
     "revision": "16f640f3c59117c9e749d581634afdb00e004f4c"
@@ -147,7 +147,7 @@
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
   },
   "editorconfig": {
-    "revision": "e47638f125a4d8256f4c45f0570c8918d3a1b237"
+    "revision": "511d5f387426ba555d7fb33e726ab6770f477a49"
   },
   "eds": {
     "revision": "26d529e6cfecde391a03c21d1474eb51e0285805"
@@ -390,7 +390,7 @@
     "revision": "e01c928d11375513138a175a68485c4d53e55ea9"
   },
   "just": {
-    "revision": "11b8c436bfcadaa22aa6299d9635685045ad97f3"
+    "revision": "ca17d4fdd920254219c769c5ecbde1118956dcc7"
   },
   "kconfig": {
     "revision": "486fea71f61ad9f3fd4072a118402e97fe88d26c"
@@ -501,7 +501,7 @@
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
   },
   "nu": {
-    "revision": "45f9e51e5ee296dc0965a80f3d00178d985dffbd"
+    "revision": "e8bdcb9d4d57d999ad6d7c797f9f1808623df1b9"
   },
   "objc": {
     "revision": "62e61b6f5c0289c376d61a8c91faf6435cde9012"
@@ -846,7 +846,7 @@
     "revision": "ad9b638b914095320de85d59c49ab271603af048"
   },
   "v": {
-    "revision": "bb0a1bd4c2a56f6b191b7d051ea3f2976c3bcb11"
+    "revision": "bbba20d654a764c2d2de272fd5f45a2433870640"
   },
   "vala": {
     "revision": "97e6db3c8c73b15a9541a458d8e797a07f588ef4"
@@ -894,7 +894,7 @@
     "revision": "4b64dd3a03ec002258d6268d712fd93716d6ab57"
   },
   "xresources": {
-    "revision": "0e315b84aaf018533bbf3fb15360cf74eaa0305b"
+    "revision": "2fb18b8ca7d3717a0475f35c5c7e8142a82f3200"
   },
   "yaml": {
     "revision": "7b03feefd36b5f155465ca736c6304aca983b267"

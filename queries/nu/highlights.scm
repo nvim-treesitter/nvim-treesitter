@@ -200,13 +200,13 @@ file_path: (val_string) @variable.parameter
 (long_flag
   "--" @punctuation.delimiter)
 
-(long_flag_equals_value
-  "--" @punctuation.delimiter)
+(long_flag
+  "=" @punctuation.delimiter)
 
 (short_flag
   "-" @punctuation.delimiter)
 
-(long_flag_equals_value
+(short_flag
   "=" @punctuation.delimiter)
 
 (param_short_flag
@@ -234,6 +234,9 @@ file_path: (val_string) @variable.parameter
   "}"
   "["
   "]"
+  "...["
+  "...("
+  "...{"
 ] @punctuation.bracket
 
 (parameter_pipes
@@ -313,7 +316,8 @@ key: (identifier) @property
   (identifier) @variable)
 
 (val_variable
-  "$" @punctuation.special
+  "$"? @punctuation.special
+  "...$"? @punctuation.special
   [
     (identifier) @variable
     "in" @variable.parameter.builtin
