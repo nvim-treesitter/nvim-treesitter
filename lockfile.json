@@ -12,7 +12,7 @@
     "revision": "46d4a12e4e90b10a575b7b16ea3b6ead50322074"
   },
   "arduino": {
-    "revision": "415ebc8f75eb02a748faa03f5af199f08ced120f"
+    "revision": "017696bdf47ca2b10948c5a511f9ab387722d0f3"
   },
   "asm": {
     "revision": "55b2b913f1e71136027d6fce8212e760c64f3532"
@@ -390,7 +390,7 @@
     "revision": "e01c928d11375513138a175a68485c4d53e55ea9"
   },
   "just": {
-    "revision": "ca17d4fdd920254219c769c5ecbde1118956dcc7"
+    "revision": "f6d29300f9fee15dcd8c2b25ab762001d38da731"
   },
   "kconfig": {
     "revision": "486fea71f61ad9f3fd4072a118402e97fe88d26c"
@@ -414,7 +414,7 @@
     "revision": "7b06f6ed394308e7407a1703d2724128c45fc9d7"
   },
   "ledger": {
-    "revision": "a2eff7fee59ee6adfc4a3646e2f41ba3b340a97d"
+    "revision": "f00dcc4039082d1c253c81f23f9242bb143d41e6"
   },
   "leo": {
     "revision": "6ca11a96fc2cab51217e0cf4a2f9ed3ea63e28fb"
@@ -468,7 +468,7 @@
     "revision": "c5fffb8edd39f22644084ab3f73a924a75721ee3"
   },
   "mlir": {
-    "revision": "5b8867f59954c9cae76f2aa1ac88ae513de412bd"
+    "revision": "3362ba5caab4de11f42b4a736a0e2bcdc9343480"
   },
   "muttrc": {
     "revision": "173b0ab53a9c07962c9777189c4c70e90f1c1837"
@@ -501,7 +501,7 @@
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
   },
   "nu": {
-    "revision": "e8bdcb9d4d57d999ad6d7c797f9f1808623df1b9"
+    "revision": "f7b3d2870da1c04e796aa8116f7ce3f83c52b54c"
   },
   "objc": {
     "revision": "62e61b6f5c0289c376d61a8c91faf6435cde9012"
@@ -537,10 +537,10 @@
     "revision": "089c124d3c0c406cc01e0936c0b3941618a1f45d"
   },
   "php": {
-    "revision": "6918e6908d78780ddd996b9fcbaa835b42782d5b"
+    "revision": "43aad2b9a98aa8e603ea0cf5bb630728a5591ad8"
   },
   "php_only": {
-    "revision": "6918e6908d78780ddd996b9fcbaa835b42782d5b"
+    "revision": "43aad2b9a98aa8e603ea0cf5bb630728a5591ad8"
   },
   "phpdoc": {
     "revision": "fe3202e468bc17332bec8969f2b50ff1f1da3a46"
@@ -618,7 +618,7 @@
     "revision": "a6674e279b14958625d7a530cabe06119c7a1532"
   },
   "r": {
-    "revision": "c094bd57652f8a08edc31d79a31222268fe798ee"
+    "revision": "4a89de35a9e81af0a33a4a02d17554e42ad3c609"
   },
   "racket": {
     "revision": "5b211bf93021d1c45f39aa96898be9f794f087e4"
@@ -723,7 +723,7 @@
     "revision": "d853661ca680d8ff7f8d800182d5782b61d0dd58"
   },
   "sql": {
-    "revision": "cf6e016eef607e909761d2c5170cc58b4da2bc6a"
+    "revision": "5c2329e593fbb74ddb481597837a358e68492ba0"
   },
   "squirrel": {
     "revision": "072c969749e66f000dba35a33c387650e203e96e"
