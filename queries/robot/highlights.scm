@@ -65,6 +65,10 @@
   (else_statement
     "ELSE" @keyword.conditional))
 
+(inline_if_statement
+  (inline_else_statement
+    "ELSE" @keyword.conditional))
+
 [
   "TRY"
   "EXCEPT"
@@ -77,3 +81,49 @@
 (try_statement
   (else_statement
     "ELSE" @keyword.exception))
+
+; Extra captures for "Documentation" settings
+(setting_statement
+  name: (setting_name) @_name
+  (arguments
+    (argument
+      (text_chunk) @spell @string.documentation))
+  (#any-of? @_name "Documentation" "documentation" "DOCUMENTATION"))
+
+(setting_statement
+  name: (setting_name) @_name
+  (arguments
+    (continuation
+      (argument
+        (text_chunk) @spell @string.documentation)))
+  (#any-of? @_name "Documentation" "documentation" "DOCUMENTATION"))
+
+(keyword_setting
+  name: (keyword_setting_name) @_name
+  (arguments
+    (argument
+      (text_chunk) @spell @string.documentation))
+  (#any-of? @_name "Documentation" "documentation" "DOCUMENTATION"))
+
+(keyword_setting
+  name: (keyword_setting_name) @_name
+  (arguments
+    (continuation
+      (argument
+        (text_chunk) @spell @string.documentation)))
+  (#any-of? @_name "Documentation" "documentation" "DOCUMENTATION"))
+
+(test_case_setting
+  name: (test_case_setting_name) @_name
+  (arguments
+    (argument
+      (text_chunk) @spell @string.documentation))
+  (#any-of? @_name "Documentation" "documentation" "DOCUMENTATION"))
+
+(test_case_setting
+  name: (test_case_setting_name) @_name
+  (arguments
+    (continuation
+      (argument
+        (text_chunk) @spell @string.documentation)))
+  (#any-of? @_name "Documentation" "documentation" "DOCUMENTATION"))
