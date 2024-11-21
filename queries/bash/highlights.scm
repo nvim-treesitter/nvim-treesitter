@@ -194,7 +194,10 @@
   (#lua-match? @number "^[0-9]+$"))
 
 (file_redirect
-  destination: (word) @variable.parameter)
+  (word) @string.special.path)
+
+(herestring_redirect
+  (word) @string)
 
 (file_descriptor) @operator
 
