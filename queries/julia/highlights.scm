@@ -34,7 +34,9 @@
   (#any-of? @_pipe "|>" ".|>"))
 
 ; Macros
-(macro_identifier) @function.macro
+(macro_identifier
+  "@" @function.macro
+  (identifier) @function.macro)
 
 (macro_definition
   (signature
