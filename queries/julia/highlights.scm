@@ -328,6 +328,8 @@
     (macro_definition)
     (module_definition)
     (struct_definition)
+    (call_expression)
+    (identifier)
   ])
 
 [
