@@ -10,6 +10,8 @@
     (macro_definition)
     (assignment)
     (const_statement)
+    (call_expression)
+    (identifier)
   ]
   (#set! injection.language "markdown"))
 
