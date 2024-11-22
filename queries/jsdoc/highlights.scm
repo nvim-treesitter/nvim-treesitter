@@ -11,11 +11,13 @@
 
 [
   ":"
-  "/"
   "."
   "#"
   "~"
 ] @punctuation.delimiter
+
+(path_expression
+  "/" @punctuation.delimiter)
 
 (identifier) @variable @nospell
 
