@@ -501,7 +501,7 @@
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
   },
   "nu": {
-    "revision": "28eba5e41f57e621d63c2d74c90f942190cb5e4d"
+    "revision": "fa2f2d0ce15998e70bed3546e55cefa5ac4fb4df"
   },
   "objc": {
     "revision": "62e61b6f5c0289c376d61a8c91faf6435cde9012"
@@ -534,7 +534,7 @@
     "revision": "217ff2af3f2db15a79ab7e3d21ea1e0c17e71a1a"
   },
   "perl": {
-    "revision": "089c124d3c0c406cc01e0936c0b3941618a1f45d"
+    "revision": "71206326a8bcbdc2032f852bab8698e315bf5910"
   },
   "php": {
     "revision": "43aad2b9a98aa8e603ea0cf5bb630728a5591ad8"
@@ -654,7 +654,7 @@
     "revision": "1a74dc0ed731ad07db39f063e2c5a6fe528cae7f"
   },
   "robot": {
-    "revision": "db697cee6ea87ddaf5aa940b0688d8c7f93cd425"
+    "revision": "17c2300e91fc9da4ba14c16558bf4292941dc074"
   },
   "robots": {
     "revision": "8e3a4205b76236bb6dbebdbee5afc262ce38bb62"
@@ -678,7 +678,7 @@
     "revision": "32c17ce5463818032a9c252a849b910315b6e485"
   },
   "scala": {
-    "revision": "28c3be045afe1e293b5ba1a74e759601e74050c3"
+    "revision": "c33925aa8aabaa5b61f1db860b2628c41ce84684"
   },
   "scfg": {
     "revision": "a5512800ea0220da4abbae61b8aea8423d1549aa"
@@ -723,7 +723,7 @@
     "revision": "d853661ca680d8ff7f8d800182d5782b61d0dd58"
   },
   "sql": {
-    "revision": "5c2329e593fbb74ddb481597837a358e68492ba0"
+    "revision": "3d516e6ae778bd41f9d5178823798ff6af96da60"
   },
   "squirrel": {
     "revision": "072c969749e66f000dba35a33c387650e203e96e"
@@ -777,7 +777,7 @@
     "revision": "98015ebe182d94e5a4439e32ffd91beaac32fcb9"
   },
   "teal": {
-    "revision": "a8901ac8a60a11784e73542ed7a7887e206764e5"
+    "revision": "635e61625949a0711f63b52cfaaac1c75769885c"
   },
   "templ": {
     "revision": "c926ed73e101bbdef3f54eaa05b8fa30d2676dfe"
