@@ -281,6 +281,14 @@
   "::"
 ] @punctuation.delimiter
 
+; Treat `::` as operator in type contexts, see
+; https://github.com/nvim-treesitter/nvim-treesitter/pull/7392
+(typed_expression
+  "::" @operator)
+
+(unary_typed_expression
+  "::" @operator)
+
 [
   "("
   ")"
