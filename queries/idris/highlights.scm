@@ -184,7 +184,7 @@
 ; ------------------------------------------------------------------------------
 ; Functions and variables
 (exp_name
-  (loname) @function)
+  (loname) @function.call)
 
 (exp_name
   (caname) @constructor)
