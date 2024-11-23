@@ -1472,7 +1472,7 @@ list.nqc = {
 list.nu = {
   install_info = {
     url = "https://github.com/nushell/tree-sitter-nu",
-    files = { "src/parser.c" },
+    files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@abhisheksingh0x558" },
 }
