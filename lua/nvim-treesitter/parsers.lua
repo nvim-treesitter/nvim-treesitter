@@ -1149,6 +1149,7 @@ list.julia = {
     url = "https://github.com/tree-sitter/tree-sitter-julia",
     files = { "src/parser.c", "src/scanner.c" },
   },
+  maintainers = { "@fredrikekre" },
 }
 
 list.just = {
