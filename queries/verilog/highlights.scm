@@ -75,6 +75,7 @@
   "global"
   "ref"
   "initial"
+  "string"
   (unique_priority)
   (bins_keyword)
   (always_keyword)
@@ -259,9 +260,13 @@
 
 [
   (net_type)
-  (data_type)
+  (integer_vector_type)
   (time_unit)
+  (integer_atom_type)
 ] @type.builtin
+
+(data_type
+  (simple_identifier) @type.builtin)
 
 ; variable
 (list_of_variable_decl_assignments
@@ -438,6 +443,9 @@ port_name: (simple_identifier) @variable
       (simple_identifier) @constructor)
   ]
   (simple_identifier)? @label)
+
+(generate_block
+  name: (simple_identifier) @label)
 
 ; function.call
 (method_call_body
