@@ -26,7 +26,6 @@
 (ContainerField
   field_member: (IDENTIFIER) @local.definition.field)
 
-
 (FieldInit
   field_member: (IDENTIFIER) @local.definition.field)
 
@@ -45,7 +44,6 @@
 (SuffixExpr
   variable_type_function: (IDENTIFIER) @local.reference)
 
-
 (LabeledStatement
   (BlockLabel
     (IDENTIFIER) @local.definition))
@@ -60,5 +58,5 @@
   (FnProto)
   (Block)
   (source_file)
-  (ContainerDecl )
+  (ContainerDecl)
 ] @local.scope
