@@ -33,6 +33,103 @@
   (identifier) @function.call
   (#any-of? @_pipe "|>" ".|>"))
 
+; Function definitions
+; function f()
+(function_definition
+  (signature
+    (call_expression
+      [
+        (identifier) @function
+        (field_expression
+          (identifier) @function .)
+      ])))
+
+; function f() where A
+(function_definition
+  (signature
+    (where_expression
+      .
+      (call_expression
+        [
+          (identifier) @function
+          (field_expression
+            (identifier) @function .)
+        ]))))
+
+; function f() where A where B
+(function_definition
+  (signature
+    (where_expression
+      .
+      (where_expression
+        .
+        (call_expression
+          [
+            (identifier) @function
+            (field_expression
+              (identifier) @function .)
+          ])))))
+
+; function f()::A
+(function_definition
+  (signature
+    (typed_expression
+      .
+      (call_expression
+        [
+          (identifier) @function
+          (field_expression
+            (identifier) @function .)
+        ]))))
+
+; function f(::A)::B where A
+(function_definition
+  (signature
+    (where_expression
+      .
+      (typed_expression
+        .
+        (call_expression
+          [
+            (identifier) @function
+            (field_expression
+              (identifier) @function .)
+          ])))))
+
+; f() = ...
+(assignment
+  .
+  (call_expression
+    [
+      (identifier) @function
+      (field_expression
+        (identifier) @function .)
+    ]))
+
+; f(::A) where A = ...
+(assignment
+  .
+  (where_expression
+    .
+    (call_expression
+      [
+        (identifier) @function
+        (field_expression
+          (identifier) @function .)
+      ])))
+
+; f()::A = ...
+(assignment
+  .
+  (typed_expression
+    .
+    (call_expression
+      [
+        (identifier) @function
+        (field_expression
+          (identifier) @function .)
+      ])))
+
 ; Macros
 (macro_identifier
   "@" @function.macro
