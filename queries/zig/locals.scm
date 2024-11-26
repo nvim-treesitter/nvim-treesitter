@@ -1,62 +1,96 @@
-(FnProto
-  function: (IDENTIFIER) @local.definition.function)
+; Definitions
+(function_declaration
+  name: (identifier) @local.definition.function)
 
-(ParamDecl
-  parameter: (IDENTIFIER) @local.definition.parameter
-  (ParamType
-    (ErrorUnionExpr
-      (SuffixExpr
-        variable_type_function: (IDENTIFIER) @local.reference
-        (#set! reference.kind "type")))))
+(parameter
+  name: (identifier) @local.definition.parameter)
 
-(VarDecl
-  variable_type_function: (IDENTIFIER) @local.definition.var)
+(variable_declaration
+  (identifier) @local.definition.var)
 
-(VarDecl
-  variable_type_function: (IDENTIFIER) @local.definition.type
-  (ErrorUnionExpr
-    (SuffixExpr
-      (ContainerDecl))))
+(variable_declaration
+  (identifier) @local.definition.type
+  (enum_declaration))
 
-(ContainerField
-  (ErrorUnionExpr
-    (SuffixExpr
-      variable_type_function: (IDENTIFIER) @local.definition.var)))
+(container_field
+  type: (identifier) @local.definition.field)
 
-(ContainerField
-  field_member: (IDENTIFIER) @local.definition.field)
+(enum_declaration
+  (function_declaration
+    name: (identifier) @local.definition.method))
 
-(FieldInit
-  field_member: (IDENTIFIER) @local.definition.field)
+(variable_declaration
+  (identifier) @local.definition.type
+  (struct_declaration))
 
-(FieldOrFnCall
-  function_call: (IDENTIFIER) @local.reference
-  (#set! reference.kind "function"))
+(struct_declaration
+  (function_declaration
+    name: (identifier) @local.definition.method))
 
-(FieldOrFnCall
-  field_access: (IDENTIFIER) @local.reference
+(container_field
+  name: (identifier) @local.definition.field)
+
+(variable_declaration
+  (identifier) @local.definition.type
+  (union_declaration))
+
+(union_declaration
+  (function_declaration
+    name: (identifier) @local.definition.method))
+
+(payload
+  (identifier) @local.definition.var)
+
+(block_label
+  (identifier) @local.definition)
+
+; References
+(identifier) @local.reference
+
+(parameter
+  type: (identifier) @local.reference
+  (#set! reference.kind "type"))
+
+(pointer_type
+  (identifier) @local.reference
+  (#set! reference.kind "type"))
+
+(nullable_type
+  (identifier) @local.reference
+  (#set! reference.kind "type"))
+
+(struct_initializer
+  (identifier) @local.reference
+  (#set! reference.kind "type"))
+
+(array_type
+  (_)
+  (identifier) @local.reference
+  (#set! reference.kind "type"))
+
+(slice_type
+  (identifier) @local.reference
+  (#set! reference.kind "type"))
+
+(field_expression
+  member: (identifier) @local.reference
   (#set! reference.kind "field"))
 
-(SuffixExpr
-  field_constant: (IDENTIFIER) @local.reference
-  (#set! reference.kind "field"))
+(call_expression
+  function: (field_expression
+    member: (identifier) @local.reference
+    (#set! reference.kind "function")))
 
-(SuffixExpr
-  variable_type_function: (IDENTIFIER) @local.reference)
-
-(LabeledStatement
-  (BlockLabel
-    (IDENTIFIER) @local.definition))
-
-(BreakLabel
-  (IDENTIFIER) @local.reference)
+(break_label
+  (identifier) @local.reference)
 
 [
-  (ForStatement)
-  (IfStatement)
-  (WhileStatement)
-  (FnProto)
-  (Block)
+  (for_statement)
+  (if_statement)
+  (while_statement)
+  (function_declaration)
+  (block)
   (source_file)
-  (ContainerDecl)
+  (enum_declaration)
+  (struct_declaration)
 ] @local.scope
