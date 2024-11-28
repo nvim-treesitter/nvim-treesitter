@@ -55,12 +55,13 @@
   "as"
   "for"
   "impl"
+  "inline"
   "let"
+  "move"
   "mut"
+  "recover"
   "ref"
   "uni"
-  "move"
-  "recover"
 ] @keyword
 
 "fn" @keyword.function
