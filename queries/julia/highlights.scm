@@ -298,6 +298,15 @@
   "}"
 ] @punctuation.bracket
 
+; Interpolation
+(string_interpolation
+  .
+  "$" @punctuation.special)
+
+(interpolation_expression
+  .
+  "$" @punctuation.special)
+
 ; Keyword operators
 ((operator) @keyword.operator
   (#any-of? @keyword.operator "in" "isa"))
