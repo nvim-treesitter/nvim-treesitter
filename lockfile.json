@@ -708,7 +708,7 @@
     "revision": "e909815acdbe37e69440261ebb1091ed52e1dec6"
   },
   "solidity": {
-    "revision": "ee5a2d2ba30b487c4bbf613d2ef310a454c09c7c"
+    "revision": "bf268722bc6406429776f71f012e6d1a88801931"
   },
   "soql": {
     "revision": "46d4a12e4e90b10a575b7b16ea3b6ead50322074"
@@ -723,7 +723,7 @@
     "revision": "d853661ca680d8ff7f8d800182d5782b61d0dd58"
   },
   "sql": {
-    "revision": "3d516e6ae778bd41f9d5178823798ff6af96da60"
+    "revision": "f58f33955ea0a3e6a0aa2ef4b90a133ebee02173"
   },
   "squirrel": {
     "revision": "072c969749e66f000dba35a33c387650e203e96e"
