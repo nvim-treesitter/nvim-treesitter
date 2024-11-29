@@ -274,6 +274,7 @@
 [
   "ref"
   "pub"
+  "raw"
   (mutable_specifier)
   "const"
   "static"
