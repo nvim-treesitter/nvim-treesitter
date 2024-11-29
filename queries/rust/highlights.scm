@@ -265,6 +265,7 @@
 [
   "async"
   "await"
+  "gen"
 ] @keyword.coroutine
 
 "try" @keyword.exception
@@ -272,6 +273,7 @@
 [
   "ref"
   "pub"
+  "raw"
   (mutable_specifier)
   "const"
   "static"
