@@ -501,7 +501,7 @@
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
   },
   "nu": {
-    "revision": "74e6037383ce3a77ed6fdb8281bbd69316c723a4"
+    "revision": "7c0628f578904d918afefe62dd639b3ac457ce51"
   },
   "objc": {
     "revision": "62e61b6f5c0289c376d61a8c91faf6435cde9012"
@@ -723,7 +723,7 @@
     "revision": "d853661ca680d8ff7f8d800182d5782b61d0dd58"
   },
   "sql": {
-    "revision": "f58f33955ea0a3e6a0aa2ef4b90a133ebee02173"
+    "revision": "035354ea51c835cfe8fc9abf81bb081965a42b4c"
   },
   "squirrel": {
     "revision": "072c969749e66f000dba35a33c387650e203e96e"
@@ -822,7 +822,7 @@
     "revision": "45af49560396d67a710b21a3ce315fcaa09006ff"
   },
   "typespec": {
-    "revision": "0ee05546d73d8eb64635ed8125de6f35c77759fe"
+    "revision": "0acb668f04cf12ff5a96a09ce915e0b2d6797e9b"
   },
   "typoscript": {
     "revision": "43b221c0b76e77244efdaa9963e402a17c930fbc"
