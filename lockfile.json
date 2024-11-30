@@ -198,7 +198,7 @@
     "revision": "90189238385cf636b9ee99ce548b9e5b5e569d48"
   },
   "fortran": {
-    "revision": "4c96c4d00b5c17b109028e8627407971085034ce"
+    "revision": "6f16bab7455cd2906a86679a1be83dd4f378db81"
   },
   "fsh": {
     "revision": "fad2e175099a45efbc98f000cc196d3674cc45e0"
@@ -468,7 +468,7 @@
     "revision": "c5fffb8edd39f22644084ab3f73a924a75721ee3"
   },
   "mlir": {
-    "revision": "3362ba5caab4de11f42b4a736a0e2bcdc9343480"
+    "revision": "72929ac13d7e1c46010114202262b7102a821293"
   },
   "muttrc": {
     "revision": "173b0ab53a9c07962c9777189c4c70e90f1c1837"
@@ -492,7 +492,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "0eca4c5cb06196cca6d9e81a64cb4b73bdab1c87"
+    "revision": "21897cc3dcd15325303e46b85295b743742af6ab"
   },
   "norg": {
     "revision": "d89d95af13d409f30a6c7676387bde311ec4a2c8"
@@ -501,7 +501,7 @@
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
   },
   "nu": {
-    "revision": "7c0628f578904d918afefe62dd639b3ac457ce51"
+    "revision": "41a1c570b57987386ed9a928fc214928f8ddc669"
   },
   "objc": {
     "revision": "62e61b6f5c0289c376d61a8c91faf6435cde9012"
@@ -822,7 +822,7 @@
     "revision": "45af49560396d67a710b21a3ce315fcaa09006ff"
   },
   "typespec": {
-    "revision": "0acb668f04cf12ff5a96a09ce915e0b2d6797e9b"
+    "revision": "53d892fd975da3f81374f7732af3cd3abb6b85d9"
   },
   "typoscript": {
     "revision": "43b221c0b76e77244efdaa9963e402a17c930fbc"
