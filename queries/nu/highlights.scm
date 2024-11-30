@@ -38,7 +38,10 @@
   "error"
 ] @keyword.exception
 
-"module" @keyword.import
+[
+  "module"
+  "use"
+] @keyword.import
 
 [
   "alias"
@@ -67,7 +70,6 @@
   "new" @keyword.import)
 
 (overlay_use
-  "use" @keyword.import
   "as" @keyword)
 
 (ctrl_error
