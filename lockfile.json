@@ -147,7 +147,7 @@
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
   },
   "editorconfig": {
-    "revision": "5f4f84f0e79049e4526c0a1db669378092ecb256"
+    "revision": "a84ab6361d3df04bd1566d3b0657a4f6dc5aade4"
   },
   "eds": {
     "revision": "26d529e6cfecde391a03c21d1474eb51e0285805"
@@ -756,7 +756,7 @@
     "revision": "395006713db3bbb90d267ebdfcbf1881b399b05c"
   },
   "swift": {
-    "revision": "6accc2f720c7ff8573f6956a34ea22f50c44d839"
+    "revision": "ba1b982fc45a049f0e40a8c7a796d1c802be349c"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -765,7 +765,7 @@
     "revision": "f2b378a9af0b7e1192cff67a5fb45508c927205d"
   },
   "t32": {
-    "revision": "6f8509f7d310386544fa8855f3486759f6e04c08"
+    "revision": "f82ee0035b6553f6771d5bb51b0798602c7b54ab"
   },
   "tablegen": {
     "revision": "b1170880c61355aaf38fc06f4af7d3c55abdabc4"
