@@ -17,4 +17,14 @@
 [
   (version)
   (go_version)
-] @string
+  (toolchain_name)
+] @string.special
+
+[
+  "("
+  ")"
+  "["
+  "]"
+] @punctuation.bracket
+
+"," @punctuation.delimiter
