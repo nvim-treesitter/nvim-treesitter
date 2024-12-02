@@ -17,9 +17,6 @@
 (formal_parameter
   name: (identifier) @variable.parameter)
 
-(catch_formal_parameter
-  name: (identifier) @variable.parameter)
-
 (spread_parameter
   (variable_declarator
     name: (identifier) @variable.parameter)) ; int... foo

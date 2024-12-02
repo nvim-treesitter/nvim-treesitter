@@ -57,9 +57,6 @@
 (formal_parameter
   name: (identifier) @local.definition.parameter)
 
-(catch_formal_parameter
-  name: (identifier) @local.definition.parameter)
-
 (field_declaration
   declarator: (variable_declarator
     name: (identifier) @local.definition.field))

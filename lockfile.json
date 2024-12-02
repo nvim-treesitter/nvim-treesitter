@@ -9,7 +9,7 @@
     "revision": "745d3c65c2294aca1110b6b6ad6805124be605c9"
   },
   "apex": {
-    "revision": "46d4a12e4e90b10a575b7b16ea3b6ead50322074"
+    "revision": "0dc9e80dfeee2330a4793eb379515dac1607b4a9"
   },
   "arduino": {
     "revision": "017696bdf47ca2b10948c5a511f9ab387722d0f3"
@@ -147,7 +147,7 @@
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
   },
   "editorconfig": {
-    "revision": "a84ab6361d3df04bd1566d3b0657a4f6dc5aade4"
+    "revision": "3288aa46e30e1295133bd6f303c00ac71b4f61ad"
   },
   "eds": {
     "revision": "26d529e6cfecde391a03c21d1474eb51e0285805"
@@ -156,7 +156,7 @@
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
   "elixir": {
-    "revision": "53458546e3bb717beee1d15df30724c81eb41d1c"
+    "revision": "d30189581a8b2802f237884287fdb7c40f32a041"
   },
   "elm": {
     "revision": "27f502ed0a1cbd3c5912d284cc7934ee0d4cdddc"
@@ -414,7 +414,7 @@
     "revision": "7b06f6ed394308e7407a1703d2724128c45fc9d7"
   },
   "ledger": {
-    "revision": "19699bd9fe0bacf90d464747aab9b6179fc7b1c0"
+    "revision": "d313153eef68c557ba4538b20de2d0e92f3ef6f8"
   },
   "leo": {
     "revision": "6ca11a96fc2cab51217e0cf4a2f9ed3ea63e28fb"
@@ -450,10 +450,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "5cdc549ab8f461aff876c5be9741027189299cec"
+    "revision": "c89a30ce556a5ea5552e816e5dc2f2c0de96237d"
   },
   "markdown_inline": {
-    "revision": "5cdc549ab8f461aff876c5be9741027189299cec"
+    "revision": "c89a30ce556a5ea5552e816e5dc2f2c0de96237d"
   },
   "matlab": {
     "revision": "306c43ab28b7b8a4976e40ff0a7c26b019ad52df"
@@ -690,7 +690,7 @@
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
   },
   "sflog": {
-    "revision": "46d4a12e4e90b10a575b7b16ea3b6ead50322074"
+    "revision": "0dc9e80dfeee2330a4793eb379515dac1607b4a9"
   },
   "slang": {
     "revision": "3ed23c04a412a0559162d9cadf96dfff7cb36079"
@@ -711,10 +711,10 @@
     "revision": "bf268722bc6406429776f71f012e6d1a88801931"
   },
   "soql": {
-    "revision": "46d4a12e4e90b10a575b7b16ea3b6ead50322074"
+    "revision": "0dc9e80dfeee2330a4793eb379515dac1607b4a9"
   },
   "sosl": {
-    "revision": "46d4a12e4e90b10a575b7b16ea3b6ead50322074"
+    "revision": "0dc9e80dfeee2330a4793eb379515dac1607b4a9"
   },
   "sourcepawn": {
     "revision": "6b9bf9cbab91443380d2ca8a2f6c491cc7fac5bf"
@@ -738,7 +738,7 @@
     "revision": "d819cdd5dbe455bd3c859193633c8d91c0df7c36"
   },
   "styled": {
-    "revision": "2e0e6231348d8cb0a82406490771825b8ac80422"
+    "revision": "75d3ad20818c30c49b445ca2cb35999c278b3453"
   },
   "supercollider": {
     "revision": "1a8ee0da9a4f2df5a8a22f4d637ac863623a78a7"
@@ -756,7 +756,7 @@
     "revision": "395006713db3bbb90d267ebdfcbf1881b399b05c"
   },
   "swift": {
-    "revision": "ba1b982fc45a049f0e40a8c7a796d1c802be349c"
+    "revision": "247d159ea87d2653ad0e669f69b638cd476fe699"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -894,7 +894,7 @@
     "revision": "4b64dd3a03ec002258d6268d712fd93716d6ab57"
   },
   "xresources": {
-    "revision": "ce8129b03f03413f18f8cd989f88c05c59151bb5"
+    "revision": "1fffefe05bb7f37016f2ada74b50a29e9820b52f"
   },
   "yaml": {
     "revision": "7b03feefd36b5f155465ca736c6304aca983b267"
