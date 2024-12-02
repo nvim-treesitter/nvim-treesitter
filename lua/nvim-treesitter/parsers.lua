@@ -2042,6 +2042,14 @@ list.slang = {
   experimental = true,
 }
 
+list.slim = {
+  install_info = {
+    url = "https://gitlab.com/theoreichel/tree-sitter-slim",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@theoo", "@theoreichel" },
+}
+
 list.slint = {
   install_info = {
     url = "https://github.com/slint-ui/tree-sitter-slint",

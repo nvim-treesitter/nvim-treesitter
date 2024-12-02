@@ -704,6 +704,9 @@
   "slang": {
     "revision": "3ed23c04a412a0559162d9cadf96dfff7cb36079"
   },
+  "slim": {
+    "revision": "23c9917c649659ae8ddf6d88fb9e9c6cfd80b8e0"
+  },
   "slint": {
     "revision": "f11da7e62051ba8b9d4faa299c26de8aeedfc1cd"
   },
