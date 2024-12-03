@@ -9,7 +9,7 @@
     "revision": "745d3c65c2294aca1110b6b6ad6805124be605c9"
   },
   "apex": {
-    "revision": "0dc9e80dfeee2330a4793eb379515dac1607b4a9"
+    "revision": "f5a1d2188ff711a06c6a8daa65bbf2f17c8378a5"
   },
   "arduino": {
     "revision": "017696bdf47ca2b10948c5a511f9ab387722d0f3"
@@ -690,7 +690,7 @@
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
   },
   "sflog": {
-    "revision": "0dc9e80dfeee2330a4793eb379515dac1607b4a9"
+    "revision": "f5a1d2188ff711a06c6a8daa65bbf2f17c8378a5"
   },
   "slang": {
     "revision": "3ed23c04a412a0559162d9cadf96dfff7cb36079"
@@ -711,10 +711,10 @@
     "revision": "bf268722bc6406429776f71f012e6d1a88801931"
   },
   "soql": {
-    "revision": "0dc9e80dfeee2330a4793eb379515dac1607b4a9"
+    "revision": "f5a1d2188ff711a06c6a8daa65bbf2f17c8378a5"
   },
   "sosl": {
-    "revision": "0dc9e80dfeee2330a4793eb379515dac1607b4a9"
+    "revision": "f5a1d2188ff711a06c6a8daa65bbf2f17c8378a5"
   },
   "sourcepawn": {
     "revision": "6b9bf9cbab91443380d2ca8a2f6c491cc7fac5bf"
@@ -744,7 +744,7 @@
     "revision": "1a8ee0da9a4f2df5a8a22f4d637ac863623a78a7"
   },
   "superhtml": {
-    "revision": "dbb0d1fc54f8525f41289a413ea6c0722e92bf9c"
+    "revision": "1fda813bd9dc108e962e018e6a327434767ad616"
   },
   "surface": {
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
@@ -756,7 +756,7 @@
     "revision": "395006713db3bbb90d267ebdfcbf1881b399b05c"
   },
   "swift": {
-    "revision": "247d159ea87d2653ad0e669f69b638cd476fe699"
+    "revision": "77fbac9b574105a12d08dde1ed8d6273331e7d13"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -765,7 +765,7 @@
     "revision": "f2b378a9af0b7e1192cff67a5fb45508c927205d"
   },
   "t32": {
-    "revision": "f82ee0035b6553f6771d5bb51b0798602c7b54ab"
+    "revision": "7c8579685e34116c61971240780b316c54be698b"
   },
   "tablegen": {
     "revision": "b1170880c61355aaf38fc06f4af7d3c55abdabc4"
@@ -804,7 +804,7 @@
     "revision": "3937c5cd105ec4127448651a21aef45f52d19609"
   },
   "toml": {
-    "revision": "16a30c83ce427385b8d14939c45c137fcfca6c42"
+    "revision": "64b56832c2cffe41758f28e05c756a3a98d16f41"
   },
   "tsv": {
     "revision": "7eb7297823605392d2bbcc4c09b1cd18d6fa9529"
@@ -858,7 +858,7 @@
     "revision": "0dacb911daa9614a7c7e79a594d4cb9f478e6554"
   },
   "vhdl": {
-    "revision": "0703da905ba3b7331f4431790951bd347539e6f1"
+    "revision": "c438173a3cbb92b349c994f2acf822a0f3b961a0"
   },
   "vhs": {
     "revision": "09f8fbfe40a3a699b200daca7d92e65fbbe9f9e6"
