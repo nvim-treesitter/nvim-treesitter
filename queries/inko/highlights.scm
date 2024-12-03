@@ -53,6 +53,7 @@
 ; Keywords
 [
   "as"
+  "copy"
   "for"
   "impl"
   "inline"
