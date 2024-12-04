@@ -16,8 +16,6 @@
 
 (int_literal) @number
 
-(comment) @comment
-
 ; Definitions
 ; -----------
 (function_definition
@@ -121,3 +119,9 @@
   "-->"
   "==="
 ] @operator
+
+; Comments
+(comment) @comment @spell
+
+((comment) @comment.documentation
+  (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
