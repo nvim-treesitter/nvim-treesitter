@@ -138,7 +138,7 @@
     "revision": "ccd998f378c3f9345ea4eeb223f56d7b84d16687"
   },
   "dtd": {
-    "revision": "4b64dd3a03ec002258d6268d712fd93716d6ab57"
+    "revision": "ce150c5be7f617e18ffa2064213e5d9c4cb5d69e"
   },
   "earthfile": {
     "revision": "059fb087247bef8789e938629388c3e7af32c986"
@@ -354,7 +354,7 @@
     "revision": "962568c9efa71d25720ab42c5d36e222626ef3a6"
   },
   "inko": {
-    "revision": "a6fb0b0bfee5dede688968fd91282da799e5aa8e"
+    "revision": "1419efb8e7e140c30632cb0a2bef84e0d48a6fc5"
   },
   "ispc": {
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
@@ -561,7 +561,7 @@
     "revision": "73ff874ae4c9e9b45462673cbc0a1e350e2522a7"
   },
   "powershell": {
-    "revision": "ebe2ab2f642eda2072c68c8de02e83973c26f33c"
+    "revision": "efbefa2fcf61ddbecb0af48df4a8bde1d2cab446"
   },
   "printf": {
     "revision": "60d50a2247b0c1fb72b967562c64711d65c6a060"
@@ -891,13 +891,13 @@
     "revision": "fff3e72242aa110ebba6441946ea4d12d200fa68"
   },
   "xml": {
-    "revision": "4b64dd3a03ec002258d6268d712fd93716d6ab57"
+    "revision": "ce150c5be7f617e18ffa2064213e5d9c4cb5d69e"
   },
   "xresources": {
     "revision": "1fffefe05bb7f37016f2ada74b50a29e9820b52f"
   },
   "yaml": {
-    "revision": "7b03feefd36b5f155465ca736c6304aca983b267"
+    "revision": "b733d3f5f5005890f324333dd57e1f0badec5c87"
   },
   "yang": {
     "revision": "2c0e6be8dd4dcb961c345fa35c309ad4f5bd3502"
