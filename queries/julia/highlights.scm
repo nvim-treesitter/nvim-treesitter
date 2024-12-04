@@ -357,8 +357,12 @@
     (module_definition)
     (struct_definition)
     (call_expression)
-    (identifier)
   ])
+
+(source_file
+  (string_literal) @string.documentation
+  .
+  (identifier))
 
 [
   (line_comment)
