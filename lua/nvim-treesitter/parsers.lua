@@ -2654,6 +2654,7 @@ list.circom = {
   install_info = {
     url = "https://github.com/Decurity/tree-sitter-circom.git",
     files = { "src/parser.c" },
+    branch = "main",
   },
   maintainers = { "@alexandr-martirosyan" },
 }
