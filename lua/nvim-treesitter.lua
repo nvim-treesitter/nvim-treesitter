@@ -5,11 +5,10 @@ local configs = require "nvim-treesitter.configs"
 local statusline = require "nvim-treesitter.statusline"
 
 -- Ensure Neovim treats .circom files as the "circom" filetype
-vim.cmd("autocmd BufRead,BufNewFile *.circom set filetype=circom")
+vim.cmd "autocmd BufRead,BufNewFile *.circom set filetype=circom"
 
 -- Registers all query predicates
 require "nvim-treesitter.query_predicates"
-
 
 local M = {}
 
