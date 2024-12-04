@@ -8,7 +8,7 @@
 
 ; Include
 ; -----------
-(include_directive) @include
+(include_directive) @keyword.import
 
 ; Literals
 ; --------
@@ -26,7 +26,7 @@
 (template_definition
   name:  (identifier) @function)
 
-; Use constructor coloring for special functions
+; Use contructor coloring for special functions
 (main_component_definition) @constructor
 
 ; Invocations
@@ -60,12 +60,12 @@
 [
  "for"
  "while"
-] @repeat
+] @keyword.repeat
 
 [
  "if"
  "else"
-] @conditional
+] @keyword.conditional
 
 [
  "return"
@@ -123,12 +123,11 @@
   "+"
   "++"
   "--"
-] @operator
-
-[
   "<=="
   "==>"
   "<--"
   "-->"
   "==="
-] @assignment
+] @operator
+
+
