@@ -2650,6 +2650,14 @@ list.templ = {
   maintainers = { "@vrischmann" },
 }
 
+list.circom = {
+  install_info = {
+    url = "https://github.com/Decurity/tree-sitter-circom.git",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@alexandr-martirosyan" },
+}
+
 local M = {
   list = list,
 }
