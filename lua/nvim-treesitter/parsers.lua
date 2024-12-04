@@ -1043,6 +1043,14 @@ list.idl = {
   maintainers = { "@cathaysia" },
 }
 
+list.idris = {
+  install_info = {
+    url = "https://github.com/kayhide/tree-sitter-idris",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@srghma" },
+}
+
 list.ini = {
   install_info = {
     url = "https://github.com/justinmk/tree-sitter-ini",
