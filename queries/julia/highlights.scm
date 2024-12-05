@@ -356,13 +356,15 @@
     (macro_definition)
     (module_definition)
     (struct_definition)
-    (call_expression)
   ])
 
 (source_file
   (string_literal) @string.documentation
   .
-  (identifier))
+  [
+    (identifier)
+    (call_expression)
+  ])
 
 [
   (line_comment)
