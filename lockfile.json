@@ -603,7 +603,7 @@
     "revision": "be062582956165019d3253794b4d712f66dfeaaa"
   },
   "python": {
-    "revision": "6d14e44ea217bc5bb1c1804180e9818d7d1b8d91"
+    "revision": "1ee3e775477f913ae3a46cde7a6a512deb06052c"
   },
   "ql": {
     "revision": "1fd627a4e8bff8c24c11987474bd33112bead857"
@@ -732,7 +732,7 @@
     "revision": "dd32616275c6e9d7800c58f40c16a09ad1c7c238"
   },
   "starlark": {
-    "revision": "018d0e09d9d0f0dd6740a37682b8ee4512e8b2ac"
+    "revision": "a453dbf3ba433db0e5ec621a38a7e59d72e4dc69"
   },
   "strace": {
     "revision": "d819cdd5dbe455bd3c859193633c8d91c0df7c36"
@@ -777,7 +777,7 @@
     "revision": "98015ebe182d94e5a4439e32ffd91beaac32fcb9"
   },
   "teal": {
-    "revision": "635e61625949a0711f63b52cfaaac1c75769885c"
+    "revision": "3db655924b2ff1c54fdf6371b5425ea6b5dccefe"
   },
   "templ": {
     "revision": "dc41c080783c6305d66471672a9c9147561126e4"
