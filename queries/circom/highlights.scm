@@ -35,7 +35,7 @@
   name: (identifier) @function)
 
 ; Use constructor coloring for special functions
-(main_component_definition) @main
+"main" @constructor
 
 ; Invocations
 (call_expression
