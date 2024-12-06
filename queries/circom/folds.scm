@@ -1,4 +1,5 @@
 [
+  (include_directive)
   (template_body)
   (block_statement)
   (if_statement)

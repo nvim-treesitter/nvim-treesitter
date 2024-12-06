@@ -4,11 +4,21 @@
 
 ; Pragma
 ; -----------
-(pragma_directive) @tag
+[
+  "pragma"
+  "circom"
+] @keyword.directive
+
+(circom_version) @string.special
 
 ; Include
 ; -----------
-(include_directive) @keyword.import
+[
+  "public"
+  "signal"
+  "var"
+  "include"
+] @keyword.import
 
 ; Literals
 ; --------
@@ -24,13 +34,13 @@
 (template_definition
   name: (identifier) @function)
 
-; Use contructor coloring for special functions
-(main_component_definition) @constructor
+; Use constructor coloring for special functions
+(main_component_definition) @main
 
 ; Invocations
 (call_expression
   .
-  (identifier) @function)
+  (identifier) @function.call)
 
 ; Function parameters
 (parameter
@@ -44,10 +54,6 @@
 ; -------
 ; Keywords
 [
-  "public"
-  "signal"
-  "var"
-  "include"
   "input"
   "output"
   "public"
@@ -84,6 +90,7 @@
 [
   "."
   ","
+  ";"
 ] @punctuation.delimiter
 
 ; Operators
@@ -103,8 +110,11 @@
   "**"
   "<"
   "<="
+  "="
   "=="
   "!="
+  "+="
+  "-="
   ">="
   ">"
   "!"
