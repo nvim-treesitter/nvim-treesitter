@@ -1,5 +1,4 @@
 [
-  (include_directive)
   (template_body)
   (block_statement)
   (if_statement)
@@ -10,4 +9,5 @@
   (array_expression)
   (tuple_expression)
   (comment)
+  (include_directive)+
 ] @fold
