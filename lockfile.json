@@ -54,7 +54,7 @@
     "revision": "e8841a6a9431b7365ac9055688429e1deb8db90f"
   },
   "c_sharp": {
-    "revision": "285c993f01d9955932b45a6192055003aa70a570"
+    "revision": "4bf615f8d688f50d69fc5677187dc35f22e03ad6"
   },
   "cairo": {
     "revision": "6238f609bea233040fe927858156dee5515a0745"
@@ -561,7 +561,7 @@
     "revision": "73ff874ae4c9e9b45462673cbc0a1e350e2522a7"
   },
   "powershell": {
-    "revision": "efbefa2fcf61ddbecb0af48df4a8bde1d2cab446"
+    "revision": "7e6ccf19774a098bb3c996690c65cc1a6f439dc0"
   },
   "printf": {
     "revision": "60d50a2247b0c1fb72b967562c64711d65c6a060"
@@ -765,7 +765,7 @@
     "revision": "f2b378a9af0b7e1192cff67a5fb45508c927205d"
   },
   "t32": {
-    "revision": "7c8579685e34116c61971240780b316c54be698b"
+    "revision": "8b367f7ce2b2e4cbc0adea033edd94a8e2282969"
   },
   "tablegen": {
     "revision": "b1170880c61355aaf38fc06f4af7d3c55abdabc4"
