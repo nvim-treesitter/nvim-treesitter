@@ -249,6 +249,14 @@ list.chatito = {
   maintainers = { "@ObserverOfTime" },
 }
 
+list.circom = {
+  install_info = {
+    url = "https://github.com/Decurity/tree-sitter-circom",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@alexandr-martirosyan" },
+}
+
 list.clojure = {
   install_info = {
     url = "https://github.com/sogaiu/tree-sitter-clojure",
