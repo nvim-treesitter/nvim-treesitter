@@ -504,7 +504,7 @@
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
   },
   "nu": {
-    "revision": "41a1c570b57987386ed9a928fc214928f8ddc669"
+    "revision": "a94fdf1df5deba1aa1a3fff23e1276333b5ab666"
   },
   "objc": {
     "revision": "62e61b6f5c0289c376d61a8c91faf6435cde9012"
@@ -768,7 +768,7 @@
     "revision": "f2b378a9af0b7e1192cff67a5fb45508c927205d"
   },
   "t32": {
-    "revision": "8b367f7ce2b2e4cbc0adea033edd94a8e2282969"
+    "revision": "e9e334539a07ca044128592c41946daa68d626dd"
   },
   "tablegen": {
     "revision": "b1170880c61355aaf38fc06f4af7d3c55abdabc4"
@@ -825,7 +825,7 @@
     "revision": "45af49560396d67a710b21a3ce315fcaa09006ff"
   },
   "typespec": {
-    "revision": "53d892fd975da3f81374f7732af3cd3abb6b85d9"
+    "revision": "8455e6601de80c9641b6e6f54c7320573eec0300"
   },
   "typoscript": {
     "revision": "43b221c0b76e77244efdaa9963e402a17c930fbc"
