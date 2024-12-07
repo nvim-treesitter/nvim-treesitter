@@ -24,20 +24,20 @@ QUICK START                                       *nvim-treesitter-quickstart*
 
 Install the parser for your language
 
->
+>vim
   :TSInstall {language}
 <
 
 To get a list of supported languages
 
->
+>vim
   :TSInstallInfo
 <
 
 By default, everything is disabled.
 To enable supported features, put this in your `init.lua` file:
 
->
+>lua
   require'nvim-treesitter.configs'.setup {
     -- A directory to install the parsers into.
     -- If this is excluded or nil parsers are installed
@@ -86,7 +86,7 @@ All modules are disabled by default, and some provide default keymaps.
 Each module corresponds to an entry in the dictionary passed to the
 `nvim-treesitter.configs.setup` function, this should be in your `init.lua` file.
 
->
+>lua
   require'nvim-treesitter.configs'.setup {
     -- Modules and its options go here
     highlight = { enable = true },
@@ -99,7 +99,7 @@ All modules share some common options, like `enable` and `disable`.
 When `enable` is `true` this will enable the module for all supported languages,
 if you want to disable the module for some languages you can pass a list to the `disable` option.
 
->
+>lua
   require'nvim-treesitter.configs'.setup {
     highlight = {
       enable = true,
@@ -113,7 +113,7 @@ whenever it returns `true`, the module is disabled for that buffer.
 The function is called once when a module starts in a buffer and receives the
 language and buffer number as arguments:
 
->
+>lua
   require'nvim-treesitter.configs'.setup {
     highlight = {
       enable = true,
@@ -148,7 +148,7 @@ Supported options:
   and you may see some duplicate highlights.
   Defaults to `false`.
 
->
+>lua
   require'nvim-treesitter.configs'.setup {
     highlight = {
       enable = true,
@@ -163,7 +163,7 @@ Supported options:
 <
 
 You can also set custom highlight captures
->
+>lua
   lua <<EOF
     require"nvim-treesitter.highlight".set_custom_captures {
       -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
@@ -192,7 +192,7 @@ Supported options:
   - node_decremental: in visual mode, decrement to the previous named node.
     Defaults to `grm`.
 
->
+>lua
   require'nvim-treesitter.configs'.setup {
     incremental_selection = {
       enable = true,
@@ -233,7 +233,7 @@ the indentation to 0.
 The `@indent.begin` specifies that the next line should be indented.  Multiple
 indents on the same line get collapsed. Eg.
 
->
+>query
   (
    (if_statement)
    (ERROR "else") @indent.begin
@@ -244,13 +244,13 @@ permits the next line to indent even when the block intended to be indented
 has no content yet, improving interactive typing.
 
 eg for python:
->
+>query
  ((if_statement) @indent.begin
    (#set! indent.immediate 1))
 <
 
 Will allow:
->
+>python
   if True:<CR>
       # Auto indent to here
 
@@ -269,20 +269,20 @@ A `@indent.dedent` capture specifies dedenting starting on the next line.
 Aligned indent blocks may be specified with the `@indent.align` capture.
 This permits
 
->
+>python
   foo(a,
       b,
       c)
 <
 As well as
->
+>python
   foo(
     a,
     b,
     c)
 <
 and finally
->
+>python
   foo(
     a,
     b,
@@ -291,7 +291,7 @@ and finally
 <
 To specify the delimiters to use `indent.open_delimiter` and
 `indent.close_delimiter` should be used.  Eg.
->
+>query
  ((argument_list) @indent.align
   (#set! indent.open_delimiter "(")
   (#set! indent.close_delimiter ")"))
@@ -302,13 +302,13 @@ the same indent as the natural next line.
 
 For example in python:
 
->
+>python
   if (a > b and
       c < d):
       pass
 
 Is not correct, whereas
->
+>python
   if (a > b and
 	c < d):
       pass
@@ -316,7 +316,7 @@ Is not correct, whereas
 Would be correctly indented.  This behavior may be chosen using
 `indent.avoid_last_matching_next`.  Eg.
 
->
+>query
  (if_statement
   condition: (parenthesized_expression) @indent.align
   (#set! indent.open_delimiter "(")
@@ -418,7 +418,7 @@ List the state for the given module or all modules for the current session in
 a new buffer.
 
 These highlight groups are used by default:
->
+>vim
     highlight default TSModuleInfoGood guifg=LightGreen gui=bold
     highlight default TSModuleInfoBad  guifg=Crimson
     highlight default link TSModuleInfoHeader    Type
@@ -446,7 +446,7 @@ provided by a plugin.
 UTILS                                                  *nvim-treesitter-utils*
 
 Nvim treesitter has some wrapper functions that you can retrieve with:
->
+>lua
     local ts_utils = require 'nvim-treesitter.ts_utils'
 <
 Methods
@@ -546,7 +546,7 @@ nvim_treesitter#statusline(opts)~
 Returns a string describing the current position in the file. This
 could be used as a statusline indicator.
 Default options (lua syntax):
->
+>lua
   {
     indicator_size = 100,
     type_patterns = {'class', 'function', 'method'},
@@ -568,7 +568,7 @@ Default options (lua syntax):
 nvim_treesitter#foldexpr()~
 
 Functions to be used to determine the fold level at a given line number.
-To use it: >
+To use it: >vim
   set foldmethod=expr
   set foldexpr=nvim_treesitter#foldexpr()
 <
