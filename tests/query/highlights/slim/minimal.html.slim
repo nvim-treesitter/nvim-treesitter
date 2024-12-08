@@ -1,0 +1,93 @@
+doctype html
+/ <- tag.builtin
+/       ^ markup.raw
+html
+/ <- tag.builtin
+  head
+  / <- tag.builtin
+    title A Page
+    / <- tag.builtin
+    /     ^ markup.raw
+
+unknow_tag
+/ ^ tag
+
+div class=classes
+/ ^ tag.builtin
+/   ^ variable.parameter
+/        ^ tag.delimiter
+/         ^ tag.attribute
+
+section with = "open parameters"
+/ <- tag.builtin
+/       ^ variable.parameter
+/            ^ tag.delimiter
+/              ^ string
+/               ^ string
+  article(with = "enclosed parameters") and content
+  / <- tag.builtin
+  /      ^ punctuation.bracket
+  /       ^ variable.parameter
+  /              ^ string
+  /               ^ string
+  /                                     ^ markup.raw
+
+section(with = "wrapped parameters")
+/ <- tag.builtin
+/      ^ punctuation.bracket
+/       ^ variable.parameter
+/            ^ tag.delimiter
+/              ^ string
+/               ^ string
+/                                 ^ string
+/                                  ^ punctuation.bracket
+  article(with = "enclosed parameters") and content
+  / <- tag.builtin
+  /      ^ punctuation.bracket
+  /       ^ variable.parameter
+  /            ^ tag.delimiter
+  /              ^ string
+  /               ^ string
+  /                                  ^ string
+  /                                   ^ punctuation.bracket
+  /                                     ^ markup.raw
+
+/ comment
+/ ^ comment
+/   ^ comment
+/      :-)
+
+div#content.is-fixed= t('sentense')
+/ ^ tag.builtin
+/  ^ keyword.function
+/           ^ keyword.type
+/                   ^ keyword.directive
+
+span
+  b: strong
+/ ^ markup.strong
+/    ^ markup.strong
+
+span
+  i: em
+/ ^ markup.italic
+/    ^ markup.italic
+
+span
+  a
+/ ^ markup.link
+
+span
+  h1: h2: h3
+/ ^ markup.heading
+/     ^ markup.heading
+/         ^ markup.heading
+
+span
+  ul: ol: li: dl: dt: dd
+/ ^ markup.list
+/     ^ markup.list
+/         ^ markup.list
+/             ^ markup.list
+/                 ^ markup.list
+/                     ^ markup.list
