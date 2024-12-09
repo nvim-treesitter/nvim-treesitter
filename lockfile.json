@@ -18,7 +18,7 @@
     "revision": "55b2b913f1e71136027d6fce8212e760c64f3532"
   },
   "astro": {
-    "revision": "4be180759ec13651f72bacee65fa477c64222a1a"
+    "revision": "6e3bad36a8c12d579e73ed4f05676141a4ccf68d"
   },
   "authzed": {
     "revision": "1dec7e1af96c56924e3322cd85fdce15d0a31d00"
@@ -759,7 +759,7 @@
     "revision": "395006713db3bbb90d267ebdfcbf1881b399b05c"
   },
   "swift": {
-    "revision": "77fbac9b574105a12d08dde1ed8d6273331e7d13"
+    "revision": "7ca0504e6d1a3e1e2f5fa725dafecf5e5bd2b202"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -897,7 +897,7 @@
     "revision": "ce150c5be7f617e18ffa2064213e5d9c4cb5d69e"
   },
   "xresources": {
-    "revision": "1fffefe05bb7f37016f2ada74b50a29e9820b52f"
+    "revision": "724ce1e841f2b9097625756a67f5847ff00178db"
   },
   "yaml": {
     "revision": "b733d3f5f5005890f324333dd57e1f0badec5c87"
