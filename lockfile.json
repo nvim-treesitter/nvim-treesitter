@@ -159,7 +159,7 @@
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
   "elixir": {
-    "revision": "d30189581a8b2802f237884287fdb7c40f32a041"
+    "revision": "02a6f7fd4be28dd94ee4dd2ca19cb777053ea74e"
   },
   "elm": {
     "revision": "27f502ed0a1cbd3c5912d284cc7934ee0d4cdddc"
@@ -564,7 +564,7 @@
     "revision": "73ff874ae4c9e9b45462673cbc0a1e350e2522a7"
   },
   "powershell": {
-    "revision": "7e6ccf19774a098bb3c996690c65cc1a6f439dc0"
+    "revision": "b3fe65637fca35e426dc8c889d86c8724aaa73d5"
   },
   "printf": {
     "revision": "60d50a2247b0c1fb72b967562c64711d65c6a060"
