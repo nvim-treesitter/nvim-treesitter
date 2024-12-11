@@ -333,7 +333,7 @@
     "revision": "c390f10519ae69fdb03b3e5764f5592fb6924bcc"
   },
   "hoon": {
-    "revision": "2ac017d168aca1e75b3df94dbbb6b3083f79cdfe"
+    "revision": "16d4a5fd4a52069fcc6491f0ec6a5bad21f1d705"
   },
   "html": {
     "revision": "d9219ada6e1a2c8f0ab0304a8bd9ca4285ae0468"
@@ -453,10 +453,10 @@
     "revision": "a4b9187417d6be349ee5fd4b6e77b4172c6827dd"
   },
   "markdown": {
-    "revision": "c89a30ce556a5ea5552e816e5dc2f2c0de96237d"
+    "revision": "192407ab5a24bfc24f13332979b5e7967518754a"
   },
   "markdown_inline": {
-    "revision": "c89a30ce556a5ea5552e816e5dc2f2c0de96237d"
+    "revision": "192407ab5a24bfc24f13332979b5e7967518754a"
   },
   "matlab": {
     "revision": "306c43ab28b7b8a4976e40ff0a7c26b019ad52df"
@@ -504,7 +504,7 @@
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
   },
   "nu": {
-    "revision": "a94fdf1df5deba1aa1a3fff23e1276333b5ab666"
+    "revision": "ac878320cd624b3402a50fa875ad5f90bf6dd6d7"
   },
   "objc": {
     "revision": "62e61b6f5c0289c376d61a8c91faf6435cde9012"
@@ -663,7 +663,7 @@
     "revision": "8e3a4205b76236bb6dbebdbee5afc262ce38bb62"
   },
   "roc": {
-    "revision": "ef46edd0c03ea30a22f7e92bc68628fb7231dc8a"
+    "revision": "7d29fc24b36119494b4dc3f3d967075e261706c1"
   },
   "ron": {
     "revision": "78938553b93075e638035f624973083451b29055"
@@ -825,7 +825,7 @@
     "revision": "45af49560396d67a710b21a3ce315fcaa09006ff"
   },
   "typespec": {
-    "revision": "8455e6601de80c9641b6e6f54c7320573eec0300"
+    "revision": "42fb163442ef2691b9b720fb4e4e846809415d18"
   },
   "typoscript": {
     "revision": "43b221c0b76e77244efdaa9963e402a17c930fbc"
