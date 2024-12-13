@@ -92,6 +92,9 @@
   "cpp": {
     "revision": "f41b4f66a42100be405f96bdc4ebc4a61095d3e8"
   },
+  "crystal": {
+    "revision": "42b71ce6f9cf8b34f92aa322479714835beb7156"
+  },
   "css": {
     "revision": "6a442a3cf461b0ce275339e5afa178693484c927"
   },

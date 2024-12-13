@@ -258,6 +258,13 @@ return {
     requires = { 'c' },
     tier = 2,
   },
+  crystal = {
+    install_info = {
+      revision = '42b71ce6f9cf8b34f92aa322479714835beb7156',
+      url = 'https://github.com/crystal-lang-tools/tree-sitter-crystal',
+    },
+    maintainers = { '@hugopl' },
+  },
   css = {
     install_info = {
       revision = '6a442a3cf461b0ce275339e5afa178693484c927',
