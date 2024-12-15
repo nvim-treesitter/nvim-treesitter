@@ -9,10 +9,11 @@
   (argument_list
     .
     [
-      (raw_string_literal)
-      (interpreted_string_literal)
-    ] @injection.content
-    (#offset! @injection.content 0 1 0 -1)
+      (raw_string_literal
+        (raw_string_literal_content) @injection.content)
+      (interpreted_string_literal
+        (interpreted_string_literal_content) @injection.content)
+    ]
     (#set! injection.language "regex")))
 
 ((comment) @injection.content
@@ -24,7 +25,8 @@
     field: (field_identifier) @_method)
   arguments: (argument_list
     .
-    (interpreted_string_literal) @injection.content))
+    (interpreted_string_literal
+      (interpreted_string_literal_content) @injection.content)))
   (#any-of? @_method "Printf" "Sprintf" "Fatalf" "Scanf" "Errorf" "Skipf" "Logf")
   (#set! injection.language "printf"))
 
@@ -34,6 +36,7 @@
   arguments: (argument_list
     (_)
     .
-    (interpreted_string_literal) @injection.content))
+    (interpreted_string_literal
+      (interpreted_string_literal_content) @injection.content)))
   (#any-of? @_method "Fprintf" "Fscanf" "Appendf" "Sscanf")
   (#set! injection.language "printf"))
