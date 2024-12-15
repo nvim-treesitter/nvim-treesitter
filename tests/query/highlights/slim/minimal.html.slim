@@ -1,13 +1,13 @@
 doctype html
 / <- tag.builtin
-/       ^ markup.raw
+/       ^ markup.raw.block
 html
 / <- tag.builtin
   head
   / <- tag.builtin
     title A Page
     / <- tag.builtin
-    /     ^ markup.raw
+    /     ^ markup.raw.block
 
 unknow_tag
 / ^ tag
@@ -30,7 +30,7 @@ section with = "open parameters"
   /       ^ variable.parameter
   /              ^ string
   /               ^ string
-  /                                     ^ markup.raw
+  /                                     ^ markup.raw.block
 
 section(with = "wrapped parameters")
 / <- tag.builtin
@@ -50,11 +50,11 @@ section(with = "wrapped parameters")
   /               ^ string
   /                                  ^ string
   /                                   ^ punctuation.bracket
-  /                                     ^ markup.raw
+  /                                     ^ markup.raw.block
 
 / comment
-/ ^ comment
-/   ^ comment
+/ ^ spell
+/   ^ spell
 /      :-)
 
 div#content.is-fixed= t('sentense')
@@ -79,9 +79,9 @@ span
 
 span
   h1: h2: h3
-/ ^ markup.heading
-/     ^ markup.heading
-/         ^ markup.heading
+/ ^ markup.heading.1
+/     ^ markup.heading.2
+/         ^ markup.heading.3
 
 span
   ul: ol: li: dl: dt: dd
