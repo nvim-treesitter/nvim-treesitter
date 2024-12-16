@@ -14,8 +14,8 @@
   "else"
   "let"
   "in"
-  (case)
-  (of)
+  (when)
+  (is)
 ] @keyword.conditional
 
 ; Keywords - Imports
