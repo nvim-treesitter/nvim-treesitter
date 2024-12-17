@@ -9,7 +9,7 @@
     "revision": "745d3c65c2294aca1110b6b6ad6805124be605c9"
   },
   "apex": {
-    "revision": "9635826416aea11e214b65abd73686d4e9b262dc"
+    "revision": "bb2faa992f6915079c2731632fba74874b85d188"
   },
   "arduino": {
     "revision": "017696bdf47ca2b10948c5a511f9ab387722d0f3"
@@ -201,7 +201,7 @@
     "revision": "90189238385cf636b9ee99ce548b9e5b5e569d48"
   },
   "fortran": {
-    "revision": "6f16bab7455cd2906a86679a1be83dd4f378db81"
+    "revision": "c979a86414d3c5bfabee72356bb22bd5f87d0942"
   },
   "fsh": {
     "revision": "fad2e175099a45efbc98f000cc196d3674cc45e0"
@@ -504,7 +504,7 @@
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
   },
   "nu": {
-    "revision": "f85d2481616537d1d54894bc278d64b24581ea5c"
+    "revision": "e36dde8d98549da7c9ef9e8f8698a3e77d4015ac"
   },
   "objc": {
     "revision": "18802acf31d0b5c1c1d50bdbc9eb0e1636cab9ed"
@@ -681,7 +681,7 @@
     "revision": "cad8a206f2e4194676b9699f26f6560d07130d3f"
   },
   "scala": {
-    "revision": "fb9aa828ddf6284234de8e62f2d3312fdb98f68e"
+    "revision": "fb999c77139f6bd972f014b728e2f0bd32b4d602"
   },
   "scfg": {
     "revision": "a5512800ea0220da4abbae61b8aea8423d1549aa"
@@ -693,7 +693,7 @@
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
   },
   "sflog": {
-    "revision": "9635826416aea11e214b65abd73686d4e9b262dc"
+    "revision": "bb2faa992f6915079c2731632fba74874b85d188"
   },
   "slang": {
     "revision": "3ed23c04a412a0559162d9cadf96dfff7cb36079"
@@ -714,10 +714,10 @@
     "revision": "f7f5251a3f5b1d04f0799b3571b12918af177fc8"
   },
   "soql": {
-    "revision": "9635826416aea11e214b65abd73686d4e9b262dc"
+    "revision": "bb2faa992f6915079c2731632fba74874b85d188"
   },
   "sosl": {
-    "revision": "9635826416aea11e214b65abd73686d4e9b262dc"
+    "revision": "bb2faa992f6915079c2731632fba74874b85d188"
   },
   "sourcepawn": {
     "revision": "6b9bf9cbab91443380d2ca8a2f6c491cc7fac5bf"
@@ -783,7 +783,7 @@
     "revision": "3db655924b2ff1c54fdf6371b5425ea6b5dccefe"
   },
   "templ": {
-    "revision": "940de168186ba782b9fab22971055bfb5fc1967d"
+    "revision": "9269b5a65e79be8fb6b6669935823263343b7ba0"
   },
   "terraform": {
     "revision": "9e3ec9848f28d26845ba300fd73c740459b83e9b"
