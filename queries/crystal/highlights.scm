@@ -74,7 +74,7 @@
   (heredoc_end)
 ] @label
 
-(string_escape_sequence) @escape
+(string_escape_sequence) @string.escape
 
 (integer) @number
 
