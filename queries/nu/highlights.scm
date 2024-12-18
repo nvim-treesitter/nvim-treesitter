@@ -355,8 +355,9 @@ key: (identifier) @property
 
 (comment) @comment @spell
 
-((comment) @comment.documentation @spell
+((comment)+ @comment.documentation @spell
+  .
   (decl_def))
 
-((parameter)
+(parameter
   (comment) @comment.documentation @spell)
