@@ -16,14 +16,47 @@
   "then"
   "when"
 ] @keyword
-["def" "fun"] @keyword.function
-["class" "enum" "module" "struct" "type" "union"] @keyword.type
-["require"] @keyword.import
-["return" "yield"] @keyword.return
-["if" "else" "elsif" "unless"] @keyword.conditional
-["while" "until"] @keyword.repeat
-["rescue"] @keyword.exception
-[(private) (protected) "abstract"] @keyword.modifier
+
+[
+  "def"
+  "fun"
+] @keyword.function
+
+[
+  "class"
+  "enum"
+  "module"
+  "struct"
+  "type"
+  "union"
+] @keyword.type
+
+"require" @keyword.import
+
+[
+  "return"
+  "yield"
+] @keyword.return
+
+[
+  "if"
+  "else"
+  "elsif"
+  "unless"
+] @keyword.conditional
+
+[
+  "while"
+  "until"
+] @keyword.repeat
+
+"rescue" @keyword.exception
+
+[
+  (private)
+  (protected)
+  "abstract"
+] @keyword.modifier
 
 (pseudo_constant) @constant.builtin
 
@@ -35,14 +68,22 @@
 (regex) @string.regex
 
 (heredoc_content) @string
-[(heredoc_start) (heredoc_end)] @label
+
+[
+  (heredoc_start)
+  (heredoc_end)
+] @label
 
 (string_escape_sequence) @escape
 
 (integer) @number
+
 (float) @number.float
 
-[(true) (false)] @boolean
+[
+  (true)
+  (false)
+] @boolean
 
 (nil) @constant.builtin
 
@@ -53,11 +94,10 @@
 (comment) @comment
 
 ; Operators
-
 [
-"="
-"=>"
-"->"
+  "="
+  "=>"
+  "->"
 ] @operator
 
 [
@@ -76,13 +116,23 @@
 ] @punctuation.bracket
 
 ; Types
-[(constant) (generic_instance_type) (generic_type)] @type
+[
+  (constant)
+  (generic_instance_type)
+  (generic_type)
+] @type
 
-(annotation (constant) @attribute)
+(annotation
+  (constant) @attribute)
 
-(method_def name: [(identifier) (constant)] @function.method)
+(method_def
+  name: [
+    (identifier)
+    (constant)
+  ] @function.method)
 
-(param name: [(identifier)] @variable.parameter)
+(param
+  name: (identifier) @variable.parameter)
 
 [
   (class_var)
@@ -90,4 +140,5 @@
 ] @variable.member
 
 ; function calls
-(call method: (identifier) @function.call)
+(call
+  method: (identifier) @function.call)
