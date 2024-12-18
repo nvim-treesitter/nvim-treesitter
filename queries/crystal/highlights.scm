@@ -65,7 +65,7 @@
 
 (symbol) @string.special.symbol
 
-(regex) @string.regex
+(regex) @string.regexp
 
 (heredoc_content) @string
 
@@ -89,7 +89,7 @@
 
 (interpolation
   "#{" @punctuation.special
-  "}" @punctuation.special) @embedded
+  "}" @punctuation.special)
 
 (comment) @comment
 
