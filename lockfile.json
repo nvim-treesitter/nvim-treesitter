@@ -402,7 +402,7 @@
     "revision": "b37e3d58e5c5cf8d739b315d6114e02d42e66664"
   },
   "kotlin": {
-    "revision": "76f53c48d29e8588934fb55b0240d7bdfe00bfe5"
+    "revision": "0662afbd2ce19b17c603acf67ae707b4d69ab8f4"
   },
   "koto": {
     "revision": "0017388765b8b9d89febfe08b5f82805b4e173a5"
@@ -558,7 +558,7 @@
     "revision": "0bf8387987c21bf2f8ed41d2575a8f22b139687f"
   },
   "poe_filter": {
-    "revision": "908ba6accbd9cd3fdf0a208fdc186b9ca3db123c"
+    "revision": "2902dc45439125b9386812c1089a8e9b5f71c4ab"
   },
   "pony": {
     "revision": "73ff874ae4c9e9b45462673cbc0a1e350e2522a7"
@@ -678,7 +678,7 @@
     "revision": "cf85bbd5da0c5ad243301d889c7f84d790a4cae4"
   },
   "rust": {
-    "revision": "cad8a206f2e4194676b9699f26f6560d07130d3f"
+    "revision": "1f63b33efee17e833e0ea29266dd3d713e27e321"
   },
   "scala": {
     "revision": "fb999c77139f6bd972f014b728e2f0bd32b4d602"
@@ -699,7 +699,7 @@
     "revision": "3ed23c04a412a0559162d9cadf96dfff7cb36079"
   },
   "slint": {
-    "revision": "baf0eea12535caaab5e2b0e532299bb239409bad"
+    "revision": "f11da7e62051ba8b9d4faa299c26de8aeedfc1cd"
   },
   "smali": {
     "revision": "fdfa6a1febc43c7467aa7e937b87b607956f2346"
