@@ -325,6 +325,15 @@ list.cpp = {
   maintainers = { "@theHamsta" },
 }
 
+list.crystal = {
+  install_info = {
+    url = "https://github.com/crystal-lang-tools/tree-sitter-crystal",
+    files = { "src/parser.c", "src/scanner.c", "src/unicode.c" },
+  },
+  maintainers = { "@hugopl" },
+  experimental = true,
+}
+
 list.css = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-css",
