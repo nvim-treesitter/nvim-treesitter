@@ -405,7 +405,7 @@
     "revision": "0662afbd2ce19b17c603acf67ae707b4d69ab8f4"
   },
   "koto": {
-    "revision": "0017388765b8b9d89febfe08b5f82805b4e173a5"
+    "revision": "b420f7922d0d74905fd0d771e5b83be9ee8a8a9a"
   },
   "kusto": {
     "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
@@ -504,7 +504,7 @@
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
   },
   "nu": {
-    "revision": "dc22e2577eb09d1d0de50802c59da2eca98a0e7b"
+    "revision": "755efd545d39e23418ce6f96f2a8600ff1a7e74d"
   },
   "objc": {
     "revision": "18802acf31d0b5c1c1d50bdbc9eb0e1636cab9ed"
@@ -564,7 +564,7 @@
     "revision": "73ff874ae4c9e9b45462673cbc0a1e350e2522a7"
   },
   "powershell": {
-    "revision": "ff0ac42e742f3c4be3b55fd14f910d5dc204e323"
+    "revision": "32fe49cc5d4a2d5a976dacafc0da16d98787866b"
   },
   "printf": {
     "revision": "60d50a2247b0c1fb72b967562c64711d65c6a060"
