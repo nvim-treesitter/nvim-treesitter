@@ -1,6 +1,6 @@
 [
   (symbol)
-  (prompt)
+  (string)
 ] @local.reference
 
 [
@@ -13,12 +13,12 @@
 ] @local.scope
 
 (type_definition
-  (prompt) @local.definition.var)
+  (string) @local.definition.var)
 
 (type_definition
   (input_prompt
-    (prompt) @local.definition.var))
+    (string) @local.definition.var))
 
 (type_definition_default
   (expression
-    (prompt) @local.definition.var))
+    (string) @local.definition.var))
