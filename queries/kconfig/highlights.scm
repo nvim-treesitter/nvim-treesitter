@@ -70,33 +70,36 @@
 (symbol) @variable
 
 [
-  (prompt)
+  (string)
   (macro_content)
   (text)
 ] @string
 
 (config
-  name: (symbol) @constant)
+  name: (name
+    (symbol) @constant))
 
 (menuconfig
-  name: (symbol) @constant)
+  name: (name
+    (symbol) @constant))
 
 (choice
-  name: (symbol) @constant)
+  name: (name
+    (symbol) @constant))
 
 ((symbol) @constant
   (#lua-match? @constant "[A-Z0-9]+"))
 
 (mainmenu
-  name: (prompt) @markup.heading)
+  name: (string) @markup.heading)
 
 (comment_entry
-  name: (prompt) @markup.heading)
+  name: (string) @markup.heading)
 
 (menu
-  name: (prompt) @markup.heading)
+  name: (string) @markup.heading)
 
 (source
-  (prompt) @string.special.url)
+  (string) @string.special.url)
 
 (comment) @comment @spell
