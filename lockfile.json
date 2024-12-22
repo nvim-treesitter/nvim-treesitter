@@ -39,7 +39,7 @@
     "revision": "ccfd77db0ed799b6c22c214fe9d2937f47bc8b34"
   },
   "bicep": {
-    "revision": "0092c7d1bd6bb22ce0a6f78497d50ea2b87f19c0"
+    "revision": "bff59884307c0ab009bd5e81afd9324b46a6c0f9"
   },
   "bitbake": {
     "revision": "a5d04fdb5a69a02b8fa8eb5525a60dfb5309b73b"
@@ -366,7 +366,7 @@
     "revision": "12bfab7db8a5f5b1d774ef84b5831acd34936071"
   },
   "java": {
-    "revision": "04a649d1a0c40e53f946677463d7d8c4e8d6d0db"
+    "revision": "94703d5a6bed02b98e438d7cad1136c01a60ba2c"
   },
   "javascript": {
     "revision": "108b2d4d17a04356a340aea809e4dd5b801eb40d"
@@ -597,7 +597,7 @@
     "revision": "13e9195370172c86a8b88184cc358b23b677cc46"
   },
   "puppet": {
-    "revision": "584522f32495d648b18a53ccb52d988e60de127d"
+    "revision": "15f192929b7d317f5914de2b4accd37b349182a6"
   },
   "purescript": {
     "revision": "daf9b3e2be18b0b2996a1281f7783e0d041d8b80"
@@ -606,7 +606,7 @@
     "revision": "be062582956165019d3253794b4d712f66dfeaaa"
   },
   "python": {
-    "revision": "1ee3e775477f913ae3a46cde7a6a512deb06052c"
+    "revision": "65ca0d5a8a9badca68513a44cf8a802e6af61322"
   },
   "ql": {
     "revision": "1fd627a4e8bff8c24c11987474bd33112bead857"
@@ -858,7 +858,7 @@
     "revision": "3321077d7446c1b3b017c294fd56ce028ed817fe"
   },
   "verilog": {
-    "revision": "0dacb911daa9614a7c7e79a594d4cb9f478e6554"
+    "revision": "4344f7e6c7fd8a9ccaf4cb93da17a37a544b492c"
   },
   "vhdl": {
     "revision": "eb1532861767a46fc336102bd4ebc938da8773f5"
@@ -912,7 +912,7 @@
     "revision": "0554b4a5d313244b7fc000cbb41c04afae4f4e31"
   },
   "zig": {
-    "revision": "eb7d58c2dc4fbeea4745019dee8df013034ae66b"
+    "revision": "b670c8df85a1568f498aa5c8cae42f51a90473c0"
   },
   "ziggy": {
     "revision": "fe73beef9f52f04048d8b19016fc4fbc66b4596f"
