@@ -31,7 +31,7 @@
 [
   "="
   (version_range_op)
-] @operator
+] @keyword.operator
 
 "," @punctuation.delimiter
 
