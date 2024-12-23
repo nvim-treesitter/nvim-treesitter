@@ -24,6 +24,7 @@
 ; more general captures are moved to the top
 ; before overwritten later by more specific captures
 (caname) @constructor
+(loname) @variable
 
 ; ------------------------------------------------------------------------------
 ; Punctuation
