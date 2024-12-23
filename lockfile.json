@@ -396,7 +396,7 @@
     "revision": "f6d29300f9fee15dcd8c2b25ab762001d38da731"
   },
   "kconfig": {
-    "revision": "9934ff456d867d0d0f98ef365a0de410ff4e6705"
+    "revision": "9ac99fe4c0c27a35dc6f757cef534c646e944881"
   },
   "kdl": {
     "revision": "b37e3d58e5c5cf8d739b315d6114e02d42e66664"
@@ -444,7 +444,7 @@
     "revision": "c134aaec6acf4fa95fe4aa0dc9aba3eacdbbe55a"
   },
   "luau": {
-    "revision": "fbadc96272f718dba267628ba7b0e694c368cef3"
+    "revision": "a8914d6c1fc5131f8e1c13f769fa704c9f5eb02f"
   },
   "m68k": {
     "revision": "e128454c2210c0e0c10b68fe45ddb8fee80182a3"
@@ -522,7 +522,7 @@
     "revision": "4b9898ccbf198602bb0dec9cd67cc1d2c0a4fad2"
   },
   "odin": {
-    "revision": "3fee7964bbfb2554deef12c224344f3870d15375"
+    "revision": "e8adc739b78409a99f8c31313f0bb54cc538cf73"
   },
   "org": {
     "revision": "64cfbc213f5a83da17632c95382a5a0a2f3357c1"
@@ -606,7 +606,7 @@
     "revision": "be062582956165019d3253794b4d712f66dfeaaa"
   },
   "python": {
-    "revision": "65ca0d5a8a9badca68513a44cf8a802e6af61322"
+    "revision": "bffb65a8cfe4e46290331dfef0dbf0ef3679de11"
   },
   "ql": {
     "revision": "1fd627a4e8bff8c24c11987474bd33112bead857"
@@ -642,7 +642,7 @@
     "revision": "74addc90fc539d31d413c0c7cf7581997a7fa46e"
   },
   "regex": {
-    "revision": "4470c59041416e8a2a9fa343595ca28ed91f38b8"
+    "revision": "d329907611abe46d26ab5908e5922e7400212cb9"
   },
   "rego": {
     "revision": "20b5a5958c837bc9f74b231022a68a594a313f6d"
@@ -849,7 +849,7 @@
     "revision": "ad9b638b914095320de85d59c49ab271603af048"
   },
   "v": {
-    "revision": "bc2aa2993851ed5ad10caf4571aa2aaee3c80a7f"
+    "revision": "b9644a24bf0be5bf41de61bda681b28492dd3112"
   },
   "vala": {
     "revision": "97e6db3c8c73b15a9541a458d8e797a07f588ef4"
