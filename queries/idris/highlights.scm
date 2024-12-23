@@ -132,7 +132,7 @@
   "="
   "$="
   ":="
-] @keyword
+] @operator
 
 (hole) @label
 
