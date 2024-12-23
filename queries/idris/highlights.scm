@@ -21,6 +21,8 @@
 ((comment) @comment.documentation
   (#lua-match? @comment.documentation "^|||"))
 
+(unit) @constant
+
 ; more general captures are moved to the top
 ; before overwritten later by more specific captures
 (caname) @constructor
