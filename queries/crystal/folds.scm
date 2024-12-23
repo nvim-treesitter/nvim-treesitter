@@ -1,6 +1,6 @@
 [
   (annotation_def)
-  (begin_block)
+  (begin)
   (block)
   (c_struct_def)
   (case)
@@ -12,7 +12,7 @@
   (lib_def)
   (method_def)
   (module_def)
-  (rescue_block)
+  (rescue)
   (select)
   (struct_def)
   (union_def)
