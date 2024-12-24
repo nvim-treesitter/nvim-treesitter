@@ -77,6 +77,7 @@
 [
   "class"
   "trait"
+  "type"
 ] @keyword.type
 
 [
