@@ -48,7 +48,7 @@
     "revision": "60ba73739c6083c693d86a1a7cf039c07eb4ed59"
   },
   "bp": {
-    "revision": "4e60cf3c2e613625c06f6f85540b3631e2d06cd3"
+    "revision": "16c43068ec30828c5aed11e87262c56f36782595"
   },
   "c": {
     "revision": "3efee11f784605d44623d7dadd6cd12a0f73ea92"
@@ -261,7 +261,7 @@
     "revision": "bc06955bc1e3c9ff8e9b2b2a55b38b94da923c05"
   },
   "gnuplot": {
-    "revision": "3c895f5d9c0b3a3c7e02383766b462c21913c000"
+    "revision": "8923c1e38b9634a688a6c0dce7c18c8ffb823e79"
   },
   "go": {
     "revision": "12fe553fdaaa7449f764bc876fd777704d4fb752"
@@ -393,7 +393,7 @@
     "revision": "e01c928d11375513138a175a68485c4d53e55ea9"
   },
   "just": {
-    "revision": "f6d29300f9fee15dcd8c2b25ab762001d38da731"
+    "revision": "4f4e566fe47c30b14cfe388a28f70b79009609e5"
   },
   "kconfig": {
     "revision": "9ac99fe4c0c27a35dc6f757cef534c646e944881"
@@ -897,7 +897,7 @@
     "revision": "ce150c5be7f617e18ffa2064213e5d9c4cb5d69e"
   },
   "xresources": {
-    "revision": "3b9f6a8ecaeae71f4419f31d4975234242eaf867"
+    "revision": "5fd347f0b950b2d2563d41176373c610a0a5468c"
   },
   "yaml": {
     "revision": "b733d3f5f5005890f324333dd57e1f0badec5c87"
