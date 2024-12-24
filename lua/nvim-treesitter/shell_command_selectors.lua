@@ -353,9 +353,9 @@ end
 function M.make_directory_change_for_command(dir, command)
   if fn.has "win32" == 1 then
     if string.find(vim.o.shell, "cmd") ~= nil then
-      return string.format("pushd %s & %s & popd", cmdpath(dir), command)
+      return string.format("pushd %s & %s", cmdpath(dir), command)
     else
-      return string.format("pushd %s ; %s ; popd", cmdpath(dir), command)
+      return string.format("pushd %s ; %s", cmdpath(dir), command)
     end
   else
     return string.format("cd %s;\n%s", dir, command)
