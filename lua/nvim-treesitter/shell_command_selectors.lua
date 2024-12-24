@@ -92,6 +92,7 @@ function M.select_compiler_args(repo, compiler)
       "/Isrc",
       repo.files,
       "-Os",
+      "/std:c11",
       "/utf-8",
       "/LD",
     }
@@ -105,6 +106,7 @@ function M.select_compiler_args(repo, compiler)
       "-Isrc",
       "-shared",
       "-Os",
+      "-std=c11",
     }
   else
     local args = {
@@ -113,6 +115,7 @@ function M.select_compiler_args(repo, compiler)
       "-I./src",
       repo.files,
       "-Os",
+      "-std=c11",
     }
     if fn.has "mac" == 1 then
       table.insert(args, "-bundle")
