@@ -315,7 +315,7 @@
     "revision": "9e3ec9848f28d26845ba300fd73c740459b83e9b"
   },
   "heex": {
-    "revision": "9359017bd0dc6b023044713aa215544885663637"
+    "revision": "f6b83f305a755cd49cf5f6a66b2b789be93dc7b9"
   },
   "helm": {
     "revision": "ca52fbfc98366c585b84f4cb3745df49f33cd140"
@@ -858,7 +858,7 @@
     "revision": "3321077d7446c1b3b017c294fd56ce028ed817fe"
   },
   "verilog": {
-    "revision": "4344f7e6c7fd8a9ccaf4cb93da17a37a544b492c"
+    "revision": "15fbf73dafaffc89050d247857beb27500ea30e8"
   },
   "vhdl": {
     "revision": "eb1532861767a46fc336102bd4ebc938da8773f5"
