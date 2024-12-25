@@ -19,7 +19,7 @@ local lockfile = {}
 
 if fn.has "win32" == 1 then
   M.compilers = { vim.fn.getenv "CC", "cl", "clang", "cc", "gcc", "zig" }
-else 
+else
   M.compilers = { vim.fn.getenv "CC", "cc", "gcc", "clang", "cl", "zig" }
 end
 
