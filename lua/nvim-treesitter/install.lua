@@ -17,7 +17,12 @@ local M = {}
 ---@type table<string, LockfileInfo>
 local lockfile = {}
 
-M.compilers = { vim.fn.getenv "CC", "cc", "gcc", "clang", "cl", "zig" }
+if fn.has "win32" == 1 then
+  M.compilers = { vim.fn.getenv "CC", "cl", "clang", "cc", "gcc", "zig" }
+else 
+  M.compilers = { vim.fn.getenv "CC", "cc", "gcc", "clang", "cl", "zig" }
+end
+
 M.prefer_git = fn.has "win32" == 1
 M.command_extra_args = {}
 M.ts_generate_args = nil
