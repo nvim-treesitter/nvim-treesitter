@@ -707,7 +707,8 @@ list.gdshader = {
 list.ghostty = {
   install_info = {
     url = "https://github.com/bezhermoso/tree-sitter-ghostty",
-    files = { "src/parser.c" }
+    files = { "src/parser.c" },
+    branch = "main",
   },
   maintainers = { "@bezhermoso" },
   readme_name = "Ghostty config files",
