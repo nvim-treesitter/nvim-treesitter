@@ -704,6 +704,16 @@ list.gdshader = {
   maintainers = { "@godofavacyn" },
 }
 
+list.ghostty = {
+  install_info = {
+    url = "https://github.com/bezhermoso/tree-sitter-ghostty",
+    files = { "src/parser.c" }
+  },
+  maintainers = { "@bezhermoso" },
+  readme_name = "Ghostty config files",
+  experimental = true
+}
+
 list.git_rebase = {
   install_info = {
     url = "https://github.com/the-mikedavis/tree-sitter-git-rebase",
