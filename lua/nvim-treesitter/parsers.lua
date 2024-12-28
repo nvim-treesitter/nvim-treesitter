@@ -1046,7 +1046,7 @@ list.idris = {
     url = "https://github.com/kayhide/tree-sitter-idris",
     files = { "src/parser.c", "src/scanner.c" },
   },
-  filetype = "idris3",
+  filetype = "idris2",
   maintainers = { "@srghma" },
 }
 
