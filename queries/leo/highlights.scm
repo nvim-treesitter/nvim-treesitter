@@ -142,23 +142,17 @@
 (struct_component_initializer
   (identifier) @variable.member)
 
-(type) @type
-
-(boolean_type) @type
-
-(integer_type) @type
-
-(field_type) @type
-
-(group_type) @type
-
-(scalar_type) @type
-
-(address_type) @type
-
-(signature_type) @type
-
-(string_type) @type
+[
+  (type)
+  (boolean_type)
+  (integer_type)
+  (field_type)
+  (group_type)
+  (scalar_type)
+  (address_type)
+  (signature_type)
+  (string_type)
+] @type
 
 [
   (block_height)
