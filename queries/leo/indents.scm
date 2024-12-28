@@ -17,19 +17,30 @@
   (variable_declaration)
 ] @indent.begin
 
-
 ((function_parameters) @indent.align
   (#set! indent.open_delimiter "(")
   (#set! indent.close_delimiter ")"))
 
+(record_declaration
+  "}" @indent.branch)
 
-(record_declaration "}" @indent.branch)
-(struct_declaration "}" @indent.branch)
-(struct_expression "}" @indent.branch)
-(array_expression "}" @indent.branch)
-(tuple_expression "}" @indent.branch)
-(items_block "}" @indent.branch)
-(block "}" @indent.branch)
+(struct_declaration
+  "}" @indent.branch)
+
+(struct_expression
+  "}" @indent.branch)
+
+(array_expression
+  "}" @indent.branch)
+
+(tuple_expression
+  "}" @indent.branch)
+
+(items_block
+  "}" @indent.branch)
+
+(block
+  "}" @indent.branch)
 
 [
   (comment)

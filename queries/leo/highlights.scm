@@ -18,8 +18,8 @@
 ] @keyword.type
 
 [
- "in"
- "as"
+  "in"
+  "as"
 ] @keyword.operator
 
 [
@@ -112,11 +112,18 @@
 ] @operator
 
 (comment) @comment @spell
-((comment) @comment.todo (#match? @comment.todo "TODO"))
-((comment) @comment.error (#match? @comment.error "FIXME"))
-((comment) @comment.warning (#match? @comment.warning "WARNING"))
-((comment) @comment.note (#match? @comment.note "NOTE"))
 
+((comment) @comment.todo
+  (#match? @comment.todo "TODO"))
+
+((comment) @comment.error
+  (#match? @comment.error "FIXME"))
+
+((comment) @comment.warning
+  (#match? @comment.warning "WARNING"))
+
+((comment) @comment.note
+  (#match? @comment.note "NOTE"))
 
 (boolean_literal) @boolean
 
@@ -143,18 +150,27 @@
 
 (struct_expression
   (identifier) @type.definition)
+
 (struct_component_initializer
   (identifier) @variable.member)
 
 (type) @type
-(boolean_type) @type 
-(integer_type) @type 
-(field_type) @type 
-(group_type) @type 
-(scalar_type) @type 
-(address_type) @type 
-(signature_type) @type 
-(string_type) @type 
+
+(boolean_type) @type
+
+(integer_type) @type
+
+(field_type) @type
+
+(group_type) @type
+
+(scalar_type) @type
+
+(address_type) @type
+
+(signature_type) @type
+
+(string_type) @type
 
 [
   (block_height)
