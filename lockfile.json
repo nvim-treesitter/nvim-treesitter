@@ -732,7 +732,7 @@
     "revision": "072c969749e66f000dba35a33c387650e203e96e"
   },
   "ssh_config": {
-    "revision": "dd32616275c6e9d7800c58f40c16a09ad1c7c238"
+    "revision": "0dd3c7e9f301758f6c69a6efde43d3048deb4d8a"
   },
   "starlark": {
     "revision": "a453dbf3ba433db0e5ec621a38a7e59d72e4dc69"

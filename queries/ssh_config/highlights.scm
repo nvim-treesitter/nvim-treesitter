@@ -26,6 +26,8 @@
   "auto"
   "none"
   "any"
+  ; CanonicalizeHostname
+  "always"
   ; ControlMaster
   "autoask"
   ; FingerprintHash
