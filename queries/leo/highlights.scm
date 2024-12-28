@@ -113,18 +113,6 @@
 
 (comment) @comment @spell
 
-((comment) @comment.todo
-  (#match? @comment.todo "TODO"))
-
-((comment) @comment.error
-  (#match? @comment.error "FIXME"))
-
-((comment) @comment.warning
-  (#match? @comment.warning "WARNING"))
-
-((comment) @comment.note
-  (#match? @comment.note "NOTE"))
-
 (boolean_literal) @boolean
 
 (constant_declaration
