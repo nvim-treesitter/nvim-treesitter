@@ -1,32 +1,46 @@
 [
-  (record_declaration)
-  (struct_declaration)
-  (mapping_declaration)
-  (constant_declaration)
-  (return_statement)
-  (expression_statement)
-  (variable_declaration)
-  (loop_statement)
-  (assignment_statement)
-  (assert_statement)
-  (struct_expression)
   (array_expression)
-  (tuple_expression)
-  (parenthesized_expression)
-  (items_block)
+  (assert_statement)
+  (assignment_statement)
   (block)
+  (constant_declaration)
+  (expression_statement)
+  (items_block)
+  (loop_statement)
+  (mapping_declaration)
+  (parenthesized_expression)
+  (record_declaration)
+  (return_statement)
+  (struct_declaration)
+  (struct_expression)
+  (tuple_expression)
+  (variable_declaration)
 ] @indent.begin
-
-; if "if" statement and conditional statement are in separate lines
-; conditional should be indented and when the conditional block
-; starts dedented
-(branch
-  (block
-    "{" @indent.end)) @indent.begin
 
 ((function_parameters) @indent.align
   (#set! indent.open_delimiter "(")
   (#set! indent.close_delimiter ")"))
+
+(record_declaration
+  "}" @indent.branch)
+
+(struct_declaration
+  "}" @indent.branch)
+
+(struct_expression
+  "}" @indent.branch)
+
+(array_expression
+  "}" @indent.branch)
+
+(tuple_expression
+  "}" @indent.branch)
+
+(items_block
+  "}" @indent.branch)
+
+(block
+  "}" @indent.branch)
 
 [
   (comment)
