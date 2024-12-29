@@ -17,7 +17,10 @@
   "struct"
 ] @keyword.type
 
-"in" @keyword.operator
+[
+  "in"
+  "as"
+] @keyword.operator
 
 [
   "constant"
@@ -133,7 +136,23 @@
 (struct_component_declaration
   (identifier) @variable.member)
 
-(type) @type
+(struct_expression
+  (identifier) @type.definition)
+
+(struct_component_initializer
+  (identifier) @variable.member)
+
+[
+  (type)
+  (boolean_type)
+  (integer_type)
+  (field_type)
+  (group_type)
+  (scalar_type)
+  (address_type)
+  (signature_type)
+  (string_type)
+] @type
 
 [
   (block_height)
