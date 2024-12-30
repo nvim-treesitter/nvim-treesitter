@@ -359,6 +359,9 @@
   "inko": {
     "revision": "0b08a8f976456a9271f70d4682143328d7224115"
   },
+  "ipkg": {
+    "revision": "8d3e9782f2d091d0cd39c13bfb3068db0c675960"
+  },
   "ispc": {
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
   },
