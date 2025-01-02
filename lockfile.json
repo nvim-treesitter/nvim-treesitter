@@ -222,7 +222,7 @@
     "revision": "69086d7627c03e1f4baf766bcef14c60d9e92331"
   },
   "gdscript": {
-    "revision": "75ce61d196717b8c183fa6066676540c81e24dca"
+    "revision": "48b49330888a4669b48619b211cc8da573827725"
   },
   "gdshader": {
     "revision": "ffd9f958df13cae04593781d7d2562295a872455"
@@ -618,7 +618,7 @@
     "revision": "6b2b5e41734bd6f07ea4c36ac20fb6f14061c841"
   },
   "qmljs": {
-    "revision": "6d4db242185721e1f5ef21fde613ca90c743ec47"
+    "revision": "8fef30e231d74b65c713bcbac21956156d8963da"
   },
   "query": {
     "revision": "a6674e279b14958625d7a530cabe06119c7a1532"
