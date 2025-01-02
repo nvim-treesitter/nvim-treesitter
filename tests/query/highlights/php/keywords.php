@@ -12,15 +12,27 @@ use Foo\Baz as Baaz;
 //          ^^ @keyword.operator
 //             ^^^^ @type.definition
 
+use Foo\Baz\{Foo, Bar};
+//           ^^^ @type
+//                ^^^ @type
+
 use function Foo\foo as fooo;
 //  ^^^^^^^^ @keyword.function
 //               ^^^ @function
 //                      ^^^^ @function
 
+use function Foo\{bar, baz};
+//                ^^^ @function
+//                     ^^^ @function
+
 use const Foo\FOO as FOOO;
 //  ^^^^^ @keyword.modifier
 //            ^^^ @constant
 //                   ^^^^ @constant
+
+use const Foo\{FOO, BAR};
+//             ^^^ @constant
+//                  ^^^ @constant
 
 use Foo\Baz\{
 //  ^^^ @module
