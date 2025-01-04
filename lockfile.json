@@ -393,7 +393,7 @@
     "revision": "ddd075f1939aed8147b7aa67f042eda3fce22790"
   },
   "julia": {
-    "revision": "e01c928d11375513138a175a68485c4d53e55ea9"
+    "revision": "ffdd9fe4dccdc26d62ce1654fceac52c394f0cf3"
   },
   "just": {
     "revision": "4f4e566fe47c30b14cfe388a28f70b79009609e5"
@@ -408,7 +408,7 @@
     "revision": "0662afbd2ce19b17c603acf67ae707b4d69ab8f4"
   },
   "koto": {
-    "revision": "b420f7922d0d74905fd0d771e5b83be9ee8a8a9a"
+    "revision": "7258681498ac92f24b2d7ebb844b5e79dc3cf9ac"
   },
   "kusto": {
     "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
@@ -852,7 +852,7 @@
     "revision": "ad9b638b914095320de85d59c49ab271603af048"
   },
   "v": {
-    "revision": "b9644a24bf0be5bf41de61bda681b28492dd3112"
+    "revision": "535103910159887a41d019635c1cdbec910d1a31"
   },
   "vala": {
     "revision": "97e6db3c8c73b15a9541a458d8e797a07f588ef4"
