@@ -68,8 +68,6 @@
   "of"
 ] @keyword.conditional
 
-(module) @module
-
 [
   "import"
   "module"
@@ -107,6 +105,9 @@
 (import
   (caname) @module)
 
+(module
+  (caname) @module)
+
 [
   (where)
   "rewrite"
@@ -129,7 +130,7 @@
   "in"
   (visibility)
   (totality)
-] @keyword.modifier
+] @keyword.type
 
 [
   "="
@@ -194,7 +195,9 @@
 (exp_name
   (loname) @function.call)
 
-(exp_name
+(constructor
+  "constructor" @keyword.function
+  .
   (caname) @constructor)
 
 (exp_record_access
