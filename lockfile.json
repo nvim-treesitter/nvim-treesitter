@@ -474,7 +474,7 @@
     "revision": "c5fffb8edd39f22644084ab3f73a924a75721ee3"
   },
   "mlir": {
-    "revision": "72929ac13d7e1c46010114202262b7102a821293"
+    "revision": "01065decfd6877fe3c4bae05782b8892544cb73e"
   },
   "muttrc": {
     "revision": "173b0ab53a9c07962c9777189c4c70e90f1c1837"
@@ -636,7 +636,7 @@
     "revision": "6c9bbcfdf5f0f553d9ebc01750a3aa247a37b8aa"
   },
   "rbs": {
-    "revision": "8d8e65ac3f77fbc9e15b1cdb9f980a3e0ac3ab99"
+    "revision": "de893b166476205b09e79cd3689f95831269579a"
   },
   "re2c": {
     "revision": "c18a3c2f4b6665e35b7e50d6048ea3cff770c572"
@@ -711,7 +711,7 @@
     "revision": "fa898ac0885d1da9a253695c3e0e91f5efc587cd"
   },
   "snakemake": {
-    "revision": "29a82ddde86c0d428acf971b04794c13525c4bc5"
+    "revision": "f36c1587624d6d84376c82a357c20fc319cbf02c"
   },
   "solidity": {
     "revision": "f7f5251a3f5b1d04f0799b3571b12918af177fc8"
