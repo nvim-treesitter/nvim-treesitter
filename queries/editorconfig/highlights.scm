@@ -41,6 +41,13 @@
   key: (identifier) @property
   value: (_) @string)
 
+(pair
+  key: ((identifier) @property.builtin
+    (#any-of? @property.builtin
+      ; :=vim.tbl_keys(require('editorconfig').properties)
+      "insert_final_newline" "trim_trailing_whitespace" "root" "end_of_line" "charset" "tab_width"
+      "indent_size" "indent_style" "max_line_length" "spelling_language")))
+
 (boolean) @boolean
 
 (integer) @number
