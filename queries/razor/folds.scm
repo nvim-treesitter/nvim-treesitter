@@ -5,4 +5,5 @@
   (razor_foreach)
   (razor_while)
   (razor_do_while)
+  (razor_block)
 ] @fold
