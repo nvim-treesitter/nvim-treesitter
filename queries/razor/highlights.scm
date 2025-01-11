@@ -1,12 +1,12 @@
 (razor_comment) @comment @spell
 
-(razor_page_directive) @constant.macro
-
-(razor_rendermode_directive) @constant.macro
+[
+  (razor_page_directive)
+  (razor_rendermode_directive)
+  (razor_inject_directive)
+] @constant.macro
 
 (razor_rendermode) @property
-
-(razor_inject_directive) @constant.macro
 
 (razor_implicit_expression) @variable
 
