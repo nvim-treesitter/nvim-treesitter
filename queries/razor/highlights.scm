@@ -1,5 +1,3 @@
-; inherits: html_tags
-
 (razor_comment) @comment @spell
 
 (razor_page_directive) @constant.macro
@@ -20,7 +18,6 @@
 ; HTML RULES
 (tag_name) @tag
 
-; (erroneous_end_tag_name) @error ; we do not lint syntax errors
 (comment) @comment @spell
 
 (html_attribute_name) @tag.attribute
