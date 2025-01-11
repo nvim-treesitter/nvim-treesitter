@@ -21,7 +21,7 @@
 (sigil
   (sigil_name) @_sigil_name
   (quoted_content) @injection.content
-  (#match? @_sigil_name "^(H|LVN)$")
+  (#any-of? @_sigil_name "H" "LVN")
   (#set! injection.language "heex"))
 
 ; Surface
