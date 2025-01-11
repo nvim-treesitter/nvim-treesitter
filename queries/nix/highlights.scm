@@ -79,6 +79,18 @@
   function: (variable_expression
     name: (identifier) @function.call))
 
+(apply_expression
+  function: [
+    (select_expression
+      attrpath: (attrpath
+        .
+        attr: (identifier) @function.call .))
+    (select_expression
+      attrpath: (attrpath
+        (_)
+        attr: (identifier) @function.call))
+  ])
+
 ; basic identifiers
 (variable_expression) @variable
 
