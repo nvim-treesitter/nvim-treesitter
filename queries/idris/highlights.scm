@@ -130,7 +130,7 @@
   "in"
   (visibility)
   (totality)
-] @keyword.type
+] @keyword.modifier
 
 [
   "="
