@@ -93,7 +93,7 @@
     "revision": "f41b4f66a42100be405f96bdc4ebc4a61095d3e8"
   },
   "css": {
-    "revision": "6a442a3cf461b0ce275339e5afa178693484c927"
+    "revision": "5c89b88a37a2e1e36c031469462d6ee85ff2c13c"
   },
   "csv": {
     "revision": "7eb7297823605392d2bbcc4c09b1cd18d6fa9529"
@@ -201,7 +201,7 @@
     "revision": "90189238385cf636b9ee99ce548b9e5b5e569d48"
   },
   "fortran": {
-    "revision": "c979a86414d3c5bfabee72356bb22bd5f87d0942"
+    "revision": "7ee481d7061563cac880bcde7e6b55128c3babd1"
   },
   "fsh": {
     "revision": "fad2e175099a45efbc98f000cc196d3674cc45e0"
@@ -273,7 +273,7 @@
     "revision": "941955d027f1d8530501e77ce5e1d6035f5f99c1"
   },
   "gomod": {
-    "revision": "3b01edce2b9ea6766ca19328d1850e456fde3103"
+    "revision": "bcac24601006160cdb16775967e380e685bf0481"
   },
   "gosum": {
     "revision": "e2ac513b2240c7ff1069ae33b2df29ce90777c11"
@@ -516,10 +516,10 @@
     "revision": "28d3b2e25a0b1881d1b47ed1924ca276c7003d45"
   },
   "ocaml": {
-    "revision": "57644edfbba0edb38ac17dba2add4c243fa3539b"
+    "revision": "103dec4e70c1041c56a3f8ed91435084244a00cd"
   },
   "ocaml_interface": {
-    "revision": "57644edfbba0edb38ac17dba2add4c243fa3539b"
+    "revision": "103dec4e70c1041c56a3f8ed91435084244a00cd"
   },
   "ocamllex": {
     "revision": "4b9898ccbf198602bb0dec9cd67cc1d2c0a4fad2"
@@ -666,7 +666,7 @@
     "revision": "8e3a4205b76236bb6dbebdbee5afc262ce38bb62"
   },
   "roc": {
-    "revision": "7d29fc24b36119494b4dc3f3d967075e261706c1"
+    "revision": "de0839d6c7db2405e827435cf3ac62d22f4bd5e9"
   },
   "ron": {
     "revision": "78938553b93075e638035f624973083451b29055"
