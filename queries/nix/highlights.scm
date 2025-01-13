@@ -88,7 +88,7 @@
     (select_expression
       attrpath: (attrpath
         (_)
-        attr: (identifier) @function.call))
+        attr: (identifier) @function.call .))
   ])
 
 ; basic identifiers
