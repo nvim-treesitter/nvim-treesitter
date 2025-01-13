@@ -9,7 +9,7 @@
     "revision": "745d3c65c2294aca1110b6b6ad6805124be605c9"
   },
   "apex": {
-    "revision": "440a718101bc7207c936bc1284b388347e97b045"
+    "revision": "129eaf01a15437110846b28cb8d8bb6df29968d9"
   },
   "arduino": {
     "revision": "017696bdf47ca2b10948c5a511f9ab387722d0f3"
@@ -132,7 +132,7 @@
     "revision": "886601b67d1f4690173a4925c214343c30704d32"
   },
   "dockerfile": {
-    "revision": "087daa20438a6cc01fa5e6fe6906d77c869d19fe"
+    "revision": "971acdd908568b4531b0ba28a445bf0bb720aba5"
   },
   "dot": {
     "revision": "9ab85550c896d8b294d9b9ca1e30698736f08cea"
@@ -150,7 +150,7 @@
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
   },
   "editorconfig": {
-    "revision": "ad9d7b84453426c40717c2b2c6b13d0a955d0662"
+    "revision": "02f562e71dc28d573187809eecdffaee7c82321c"
   },
   "eds": {
     "revision": "26d529e6cfecde391a03c21d1474eb51e0285805"
@@ -273,7 +273,7 @@
     "revision": "941955d027f1d8530501e77ce5e1d6035f5f99c1"
   },
   "gomod": {
-    "revision": "bcac24601006160cdb16775967e380e685bf0481"
+    "revision": "6efb59652d30e0e9cd5f3b3a669afd6f1a926d3c"
   },
   "gosum": {
     "revision": "e2ac513b2240c7ff1069ae33b2df29ce90777c11"
@@ -474,7 +474,7 @@
     "revision": "c5fffb8edd39f22644084ab3f73a924a75721ee3"
   },
   "mlir": {
-    "revision": "fb24a74b4e1c675b91e34fbacaf08673dd4263a0"
+    "revision": "b5d5f238b371b7c9b764f6a053b045dda92bc836"
   },
   "muttrc": {
     "revision": "173b0ab53a9c07962c9777189c4c70e90f1c1837"
@@ -525,7 +525,7 @@
     "revision": "4b9898ccbf198602bb0dec9cd67cc1d2c0a4fad2"
   },
   "odin": {
-    "revision": "e8adc739b78409a99f8c31313f0bb54cc538cf73"
+    "revision": "d2ca8efb4487e156a60d5bd6db2598b872629403"
   },
   "org": {
     "revision": "64cfbc213f5a83da17632c95382a5a0a2f3357c1"
@@ -696,7 +696,7 @@
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
   },
   "sflog": {
-    "revision": "440a718101bc7207c936bc1284b388347e97b045"
+    "revision": "129eaf01a15437110846b28cb8d8bb6df29968d9"
   },
   "slang": {
     "revision": "3ed23c04a412a0559162d9cadf96dfff7cb36079"
@@ -717,10 +717,10 @@
     "revision": "f7f5251a3f5b1d04f0799b3571b12918af177fc8"
   },
   "soql": {
-    "revision": "440a718101bc7207c936bc1284b388347e97b045"
+    "revision": "129eaf01a15437110846b28cb8d8bb6df29968d9"
   },
   "sosl": {
-    "revision": "440a718101bc7207c936bc1284b388347e97b045"
+    "revision": "129eaf01a15437110846b28cb8d8bb6df29968d9"
   },
   "sourcepawn": {
     "revision": "6b9bf9cbab91443380d2ca8a2f6c491cc7fac5bf"
@@ -900,7 +900,7 @@
     "revision": "ce150c5be7f617e18ffa2064213e5d9c4cb5d69e"
   },
   "xresources": {
-    "revision": "8117b0ab58df8afb902c0862b7f6eb3bbb06c7ab"
+    "revision": "983f13acef542aef431a845fef084ddda8d9d666"
   },
   "yaml": {
     "revision": "b733d3f5f5005890f324333dd57e1f0badec5c87"
