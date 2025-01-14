@@ -9,7 +9,7 @@
     "revision": "745d3c65c2294aca1110b6b6ad6805124be605c9"
   },
   "apex": {
-    "revision": "129eaf01a15437110846b28cb8d8bb6df29968d9"
+    "revision": "eade4054efc897f4bb18a5b7bf4b5a824dbffa74"
   },
   "arduino": {
     "revision": "017696bdf47ca2b10948c5a511f9ab387722d0f3"
@@ -216,7 +216,7 @@
     "revision": "19db2f47ba4c3a0f6238d4ae0e2abfca16e61dd6"
   },
   "gap": {
-    "revision": "ea70c228dd1d3875aeb264bf99903dc9a696894f"
+    "revision": "7db79590d2f8b0e0246008ecfd569b4bfca587a9"
   },
   "gaptst": {
     "revision": "69086d7627c03e1f4baf766bcef14c60d9e92331"
@@ -294,7 +294,7 @@
     "revision": "76554f4f2339f5a24eed19c58f2079b51c694152"
   },
   "groovy": {
-    "revision": "1f30c3398495dfeba24c7aa3b12a2bc68c0bd419"
+    "revision": "d1556e77d49df1a28cd564af5766fdaea8ab7063"
   },
   "gstlaunch": {
     "revision": "549aef253fd38a53995cda1bf55c501174372bf7"
@@ -462,7 +462,7 @@
     "revision": "192407ab5a24bfc24f13332979b5e7967518754a"
   },
   "matlab": {
-    "revision": "306c43ab28b7b8a4976e40ff0a7c26b019ad52df"
+    "revision": "b0a0198b182574cd3ca0447264c83331901b9338"
   },
   "menhir": {
     "revision": "be8866a6bcc2b563ab0de895af69daeffa88fe70"
@@ -498,7 +498,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "21897cc3dcd15325303e46b85295b743742af6ab"
+    "revision": "4b952d99ce6fc795ff3cfa48b05637f2b1751d3b"
   },
   "norg": {
     "revision": "d89d95af13d409f30a6c7676387bde311ec4a2c8"
@@ -696,7 +696,7 @@
     "revision": "c478c6868648eff49eb04a4df90d703dc45b312a"
   },
   "sflog": {
-    "revision": "129eaf01a15437110846b28cb8d8bb6df29968d9"
+    "revision": "eade4054efc897f4bb18a5b7bf4b5a824dbffa74"
   },
   "slang": {
     "revision": "3ed23c04a412a0559162d9cadf96dfff7cb36079"
@@ -717,10 +717,10 @@
     "revision": "f7f5251a3f5b1d04f0799b3571b12918af177fc8"
   },
   "soql": {
-    "revision": "129eaf01a15437110846b28cb8d8bb6df29968d9"
+    "revision": "eade4054efc897f4bb18a5b7bf4b5a824dbffa74"
   },
   "sosl": {
-    "revision": "129eaf01a15437110846b28cb8d8bb6df29968d9"
+    "revision": "eade4054efc897f4bb18a5b7bf4b5a824dbffa74"
   },
   "sourcepawn": {
     "revision": "6b9bf9cbab91443380d2ca8a2f6c491cc7fac5bf"
