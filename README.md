@@ -291,6 +291,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [hurl](https://github.com/pfeiferj/tree-sitter-hurl) (maintained by @pfeiferj)
 - [x] [hyprlang](https://github.com/luckasRanarison/tree-sitter-hyprlang) (maintained by @luckasRanarison)
 - [x] [idl](https://github.com/cathaysia/tree-sitter-idl) (maintained by @cathaysia)
+- [x] [idris](https://github.com/kayhide/tree-sitter-idris) (maintained by @srghma)
 - [x] [ini](https://github.com/justinmk/tree-sitter-ini) (experimental, maintained by @theHamsta)
 - [x] [inko](https://github.com/inko-lang/tree-sitter-inko) (maintained by @yorickpeterse)
 - [x] [ipkg](https://github.com/srghma/tree-sitter-ipkg) (maintained by @srghma)
