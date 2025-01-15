@@ -1405,6 +1405,15 @@ list.mlir = {
   maintainers = { "@artagnon" },
 }
 
+list.moonbit = {
+  install_info = {
+    url = "https://github.com/moonbitlang/tree-sitter-moonbit",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  experimental = true,
+  maintainers = { "@tonyfettes" },
+}
+
 list.muttrc = {
   install_info = {
     url = "https://github.com/neomutt/tree-sitter-muttrc",

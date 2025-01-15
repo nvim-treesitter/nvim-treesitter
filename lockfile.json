@@ -476,6 +476,9 @@
   "mlir": {
     "revision": "b5d5f238b371b7c9b764f6a053b045dda92bc836"
   },
+  "moonbit": {
+    "revision": "de40c86923fc456419085a70e1dc8aa92d20a3a1"
+  },
   "muttrc": {
     "revision": "173b0ab53a9c07962c9777189c4c70e90f1c1837"
   },

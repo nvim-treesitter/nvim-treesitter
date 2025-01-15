@@ -332,6 +332,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [ ] [mermaid](https://github.com/monaqa/tree-sitter-mermaid) (experimental)
 - [x] [meson](https://github.com/Decodetalkers/tree-sitter-meson) (maintained by @Decodetalkers)
 - [x] [mlir](https://github.com/artagnon/tree-sitter-mlir) (experimental, maintained by @artagnon)
+- [x] [moonbit](https://github.com/moonbitlang/tree-sitter-moonbit) (experimental, maintained by @tonyfettes)
 - [x] [muttrc](https://github.com/neomutt/tree-sitter-muttrc) (maintained by @Freed-Wu)
 - [x] [nasm](https://github.com/naclsn/tree-sitter-nasm) (maintained by @ObserverOfTime)
 - [x] [nginx](https://github.com/opa-oz/tree-sitter-nginx) (maintained by @opa-oz)
