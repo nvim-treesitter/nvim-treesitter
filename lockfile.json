@@ -144,7 +144,7 @@
     "revision": "ce150c5be7f617e18ffa2064213e5d9c4cb5d69e"
   },
   "earthfile": {
-    "revision": "059fb087247bef8789e938629388c3e7af32c986"
+    "revision": "a44f6f6d22ea4fe16fa37ababd90240ab87a9e0d"
   },
   "ebnf": {
     "revision": "8e635b0b723c620774dfb8abf382a7f531894b40"
@@ -279,7 +279,7 @@
     "revision": "e2ac513b2240c7ff1069ae33b2df29ce90777c11"
   },
   "gotmpl": {
-    "revision": "161e38cf9ec47109edefe99aa127e5b111e2e189"
+    "revision": "ab4a8c4a51f271f320f2bad6a5d499415bf541b1"
   },
   "gowork": {
     "revision": "949a8a470559543857a62102c84700d291fc984c"
@@ -315,10 +315,10 @@
     "revision": "9e3ec9848f28d26845ba300fd73c740459b83e9b"
   },
   "heex": {
-    "revision": "f6b83f305a755cd49cf5f6a66b2b789be93dc7b9"
+    "revision": "76d4b3e42f6b363245ba4df566c29fc4150154d1"
   },
   "helm": {
-    "revision": "161e38cf9ec47109edefe99aa127e5b111e2e189"
+    "revision": "ab4a8c4a51f271f320f2bad6a5d499415bf541b1"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
@@ -867,7 +867,7 @@
     "revision": "63d0360d42c43b4902b8470c7ddcf323432e2dde"
   },
   "vhs": {
-    "revision": "09f8fbfe40a3a699b200daca7d92e65fbbe9f9e6"
+    "revision": "037e675d547b18bbf3fdeb222e242ae5dccc39d7"
   },
   "vim": {
     "revision": "f3cd62d8bd043ef20507e84bb6b4b53731ccf3a7"
