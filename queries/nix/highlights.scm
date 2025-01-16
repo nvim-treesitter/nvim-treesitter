@@ -79,6 +79,43 @@
   function: (variable_expression
     name: (identifier) @function.call))
 
+; basic identifiers
+(variable_expression) @variable
+
+(variable_expression
+  name: (identifier) @keyword.import
+  (#eq? @keyword.import "import"))
+
+(variable_expression
+  name: (identifier) @boolean
+  (#any-of? @boolean "true" "false"))
+
+; string interpolation (this was very annoying to get working properly)
+(interpolation
+  "${" @punctuation.special
+  (_)
+  "}" @punctuation.special) @none
+
+(select_expression
+  expression: (_) @_expr
+  attrpath: (attrpath
+    attr: (identifier) @variable.member)
+  (#not-eq? @_expr "builtins"))
+
+(attrset_expression
+  (binding_set
+    (binding
+      .
+      (attrpath
+        (identifier) @variable.member))))
+
+(rec_attrset_expression
+  (binding_set
+    (binding
+      .
+      (attrpath
+        (identifier) @variable.member))))
+
 (apply_expression
   function: [
     (select_expression
@@ -90,17 +127,6 @@
         (_)
         attr: (identifier) @function.call .))
   ])
-
-; basic identifiers
-(variable_expression) @variable
-
-(variable_expression
-  name: (identifier) @keyword.import
-  (#eq? @keyword.import "import"))
-
-(variable_expression
-  name: (identifier) @boolean
-  (#any-of? @boolean "true" "false"))
 
 ; builtin functions (with builtins prefix)
 (select_expression
@@ -149,32 +175,6 @@
   (#any-of? @constant.builtin
     ; nix eval --impure --expr 'with builtins; filter (x: !(isFunction builtins.${x} || isBool builtins.${x})) (attrNames builtins)'
     "builtins" "currentSystem" "currentTime" "langVersion" "nixPath" "nixVersion" "null" "storeDir"))
-
-; string interpolation (this was very annoying to get working properly)
-(interpolation
-  "${" @punctuation.special
-  (_)
-  "}" @punctuation.special) @none
-
-(select_expression
-  expression: (_) @_expr
-  attrpath: (attrpath
-    attr: (identifier) @variable.member)
-  (#not-eq? @_expr "builtins"))
-
-(attrset_expression
-  (binding_set
-    (binding
-      .
-      (attrpath
-        (identifier) @variable.member))))
-
-(rec_attrset_expression
-  (binding_set
-    (binding
-      .
-      (attrpath
-        (identifier) @variable.member))))
 
 ; function definition
 (binding
