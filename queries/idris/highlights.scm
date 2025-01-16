@@ -109,6 +109,11 @@
   (caname) @module)
 
 [
+  "let"
+  "in"
+] @keyword
+
+[
   (where)
   "rewrite"
   "interface"
@@ -125,12 +130,11 @@
 ] @keyword.operator
 
 [
-  "data"
-  "let"
-  "in"
   (visibility)
   (totality)
 ] @keyword.modifier
+
+"data" @keyword.type
 
 [
   "="
