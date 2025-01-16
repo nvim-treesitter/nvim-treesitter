@@ -353,6 +353,9 @@
   "idl": {
     "revision": "86ff7f19747a761dc8ba72f4045fd64aed94ba4c"
   },
+  "idris": {
+    "revision": "c56a25cf57c68ff929356db25505c1cc4c7820f6"
+  },
   "ini": {
     "revision": "962568c9efa71d25720ab42c5d36e222626ef3a6"
   },
