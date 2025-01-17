@@ -174,7 +174,7 @@
     "revision": "332262529bc51abf5746317b2255ccc2fff778f8"
   },
   "erlang": {
-    "revision": "4095e9993acc89cb311ab1be8614c21b1cf768a4"
+    "revision": "d2281ab060093290045941a865a3834eec862a3f"
   },
   "facility": {
     "revision": "e4bfd3e960de9f4b4648acb1c92e9b95b47d8cfb"
@@ -315,7 +315,7 @@
     "revision": "9e3ec9848f28d26845ba300fd73c740459b83e9b"
   },
   "heex": {
-    "revision": "76d4b3e42f6b363245ba4df566c29fc4150154d1"
+    "revision": "a63c69c20fd88d1e5614a02b4a6b48cfb7e54a45"
   },
   "helm": {
     "revision": "ab4a8c4a51f271f320f2bad6a5d499415bf541b1"
@@ -369,7 +369,7 @@
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
   },
   "janet_simple": {
-    "revision": "12bfab7db8a5f5b1d774ef84b5831acd34936071"
+    "revision": "b4aa56fd0a2ea2708fc93062683ae5eaa4e973e6"
   },
   "java": {
     "revision": "94703d5a6bed02b98e438d7cad1136c01a60ba2c"
@@ -417,7 +417,7 @@
     "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
   },
   "lalrpop": {
-    "revision": "194c25539f435de415ee0551a5f07058833da915"
+    "revision": "a7f5ea297bd621d072ed4cb2cc8ba5ae64ae3c4b"
   },
   "latex": {
     "revision": "7b06f6ed394308e7407a1703d2724128c45fc9d7"
