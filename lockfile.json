@@ -377,6 +377,9 @@
   "javascript": {
     "revision": "108b2d4d17a04356a340aea809e4dd5b801eb40d"
   },
+  "jinja": {
+    "revision": "f101bfbdbc8125ab19e26ff59a5e92a5d857326a"
+  },
   "jq": {
     "revision": "13990f530e8e6709b7978503da9bc8701d366791"
   },

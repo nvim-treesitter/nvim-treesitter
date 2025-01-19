@@ -1119,6 +1119,24 @@ list.javascript = {
   maintainers = { "@steelsojka" },
 }
 
+list.jinja = {
+  install_info = {
+    url = "https://github.com/cathaysia/tree-sitter-jinja",
+    location = "tree-sitter-jinja",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@cathaysia" },
+}
+
+list.jinja_inline = {
+  install_info = {
+    url = "https://github.com/cathaysia/tree-sitter-jinja",
+    location = "tree-sitter-jinja_inline",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@cathaysia" },
+}
+
 list.jq = {
   install_info = {
     url = "https://github.com/flurie/tree-sitter-jq",
