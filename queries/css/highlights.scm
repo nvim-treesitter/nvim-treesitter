@@ -72,6 +72,8 @@
 
 (namespace_name) @module
 
+(keyframes_name) @variable
+
 ((property_name) @variable
   (#lua-match? @variable "^[-][-]"))
 
