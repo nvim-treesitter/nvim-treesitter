@@ -202,12 +202,26 @@ function M.get_root_for_position(line, col, root_lang_tree)
 
   local lang_tree = root_lang_tree:language_for_range { line, col, line, col }
 
-  for _, tree in pairs(lang_tree:trees()) do
-    local root = tree:root()
+  while true do
+    for _, tree in pairs(lang_tree:trees()) do
+      local root = tree:root()
 
-    if root and ts.is_in_node_range(root, line, col) then
-      return root, tree, lang_tree
+      if root and ts.is_in_node_range(root, line, col) then
+        return root, tree, lang_tree
+      end
     end
+
+    if lang_tree == root_lang_tree then
+      break
+    end
+
+    -- This case can happen when the cursor is at the start of a line that ends a injected region,
+    -- e.g., the first `]` in the following lua code:
+    -- ```
+    -- vim.cmd[[
+    -- ]]
+    -- ```
+    lang_tree = lang_tree:parent() -- NOTE: parent() method is private
   end
 
   -- This isn't a likely scenario, since the position must belong to a tree somewhere.
