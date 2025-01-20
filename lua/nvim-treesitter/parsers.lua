@@ -2048,7 +2048,6 @@ list.slim = {
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@theoo" },
-  experimental = true,
 }
 
 list.slint = {
