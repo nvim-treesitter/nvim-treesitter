@@ -2044,10 +2044,11 @@ list.slang = {
 
 list.slim = {
   install_info = {
-    url = "https://gitlab.com/theoreichel/tree-sitter-slim",
+    url = "https://github.com/theoo/tree-sitter-slim",
     files = { "src/parser.c", "src/scanner.c" },
   },
-  maintainers = { "@theoo", "@theoreichel" },
+  maintainers = { "@theoo" },
+  experimental = true,
 }
 
 list.slint = {
