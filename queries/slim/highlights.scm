@@ -1,5 +1,3 @@
-; Inspired by https://github.com/tree-sitter/tree-sitter/discussions/2025
-; and https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md#highlights
 (comment) @comment @spell
 
 (tag_id) @keyword.function
@@ -17,6 +15,11 @@
 ] @string
 
 (bracket) @punctuation.bracket
+
+[
+  "#{"
+  "}"
+] @punctuation.special
 
 (delimiter) @tag.delimiter
 
