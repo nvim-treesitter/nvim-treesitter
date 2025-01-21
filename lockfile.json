@@ -174,7 +174,7 @@
     "revision": "332262529bc51abf5746317b2255ccc2fff778f8"
   },
   "erlang": {
-    "revision": "d2281ab060093290045941a865a3834eec862a3f"
+    "revision": "5fc0a536009391b01a90df9e59833c847c8cf72b"
   },
   "facility": {
     "revision": "e4bfd3e960de9f4b4648acb1c92e9b95b47d8cfb"
@@ -348,7 +348,7 @@
     "revision": "ff07a42d9ec95443b5c1b57ed793414bf7b79be5"
   },
   "hyprlang": {
-    "revision": "af796443b66d7ab00184992daa3bdaede0955c87"
+    "revision": "d719158abe537b1916daaea6fa03287089f0b601"
   },
   "idl": {
     "revision": "86ff7f19747a761dc8ba72f4045fd64aed94ba4c"
@@ -717,7 +717,7 @@
     "revision": "f36c1587624d6d84376c82a357c20fc319cbf02c"
   },
   "solidity": {
-    "revision": "f7f5251a3f5b1d04f0799b3571b12918af177fc8"
+    "revision": "727087514eff57d92e273a24303142308bce3381"
   },
   "soql": {
     "revision": "eade4054efc897f4bb18a5b7bf4b5a824dbffa74"
@@ -774,7 +774,7 @@
     "revision": "f2b378a9af0b7e1192cff67a5fb45508c927205d"
   },
   "t32": {
-    "revision": "ad23ed0325658adbb1dfb397d4dfbea8872585c6"
+    "revision": "e5a12f798f056049642aa03fbb83786e3a5b95d4"
   },
   "tablegen": {
     "revision": "b1170880c61355aaf38fc06f4af7d3c55abdabc4"
