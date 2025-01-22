@@ -174,7 +174,7 @@
     "revision": "332262529bc51abf5746317b2255ccc2fff778f8"
   },
   "erlang": {
-    "revision": "5fc0a536009391b01a90df9e59833c847c8cf72b"
+    "revision": "981fda038d2eb182a88a9374ccb1c14b840cba0b"
   },
   "facility": {
     "revision": "e4bfd3e960de9f4b4648acb1c92e9b95b47d8cfb"
@@ -294,7 +294,7 @@
     "revision": "76554f4f2339f5a24eed19c58f2079b51c694152"
   },
   "groovy": {
-    "revision": "d1556e77d49df1a28cd564af5766fdaea8ab7063"
+    "revision": "86911590a8e46d71301c66468e5620d9faa5b6af"
   },
   "gstlaunch": {
     "revision": "549aef253fd38a53995cda1bf55c501174372bf7"
@@ -369,7 +369,7 @@
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
   },
   "janet_simple": {
-    "revision": "b4aa56fd0a2ea2708fc93062683ae5eaa4e973e6"
+    "revision": "81f17db9a8ab0a97ff20986ef9065eb628db7408"
   },
   "java": {
     "revision": "94703d5a6bed02b98e438d7cad1136c01a60ba2c"
@@ -408,7 +408,7 @@
     "revision": "b37e3d58e5c5cf8d739b315d6114e02d42e66664"
   },
   "kotlin": {
-    "revision": "0662afbd2ce19b17c603acf67ae707b4d69ab8f4"
+    "revision": "c4ddea359a7ff4d92360b2efcd6cfce5dc25afe6"
   },
   "koto": {
     "revision": "329b0e84ef6cc6950665de4accd0bdda1601a2f1"
@@ -675,7 +675,7 @@
     "revision": "78938553b93075e638035f624973083451b29055"
   },
   "rst": {
-    "revision": "5120f6e59284cb8b85b450bd2db0bd352635ba9f"
+    "revision": "dd5971ef7759583aadd5aa5e3a3a0905eb5734d5"
   },
   "ruby": {
     "revision": "71bd32fb7607035768799732addba884a37a6210"
@@ -705,7 +705,7 @@
     "revision": "3ed23c04a412a0559162d9cadf96dfff7cb36079"
   },
   "slim": {
-    "revision": "23c9917c649659ae8ddf6d88fb9e9c6cfd80b8e0"
+    "revision": "a0f08e85b787248219ea645423c5916c8d620ef6"
   },
   "slint": {
     "revision": "f11da7e62051ba8b9d4faa299c26de8aeedfc1cd"
