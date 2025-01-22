@@ -25,7 +25,7 @@
 
 "defined" @constant
 
-(comment) @comment
+(comment) @comment @spell
 
 [
   ","
