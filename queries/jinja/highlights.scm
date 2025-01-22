@@ -17,7 +17,7 @@
 
 (number_literal) @number
 
-(float_literal) @number
+(float_literal) @number.float
 
 (boolean_literal) @boolean
 
