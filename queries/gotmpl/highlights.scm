@@ -32,6 +32,7 @@
 ; Operators
 ([
   "|"
+  "="
   ":="
 ] @operator
   (#set! priority 110))

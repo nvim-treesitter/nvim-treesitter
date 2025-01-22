@@ -1051,6 +1051,15 @@ list.idl = {
   maintainers = { "@cathaysia" },
 }
 
+list.idris = {
+  install_info = {
+    url = "https://github.com/kayhide/tree-sitter-idris",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  filetype = "idris2",
+  maintainers = { "@srghma" },
+}
+
 list.ini = {
   install_info = {
     url = "https://github.com/justinmk/tree-sitter-ini",
@@ -2031,6 +2040,14 @@ list.slang = {
   filetype = "shaderslang",
   maintainers = { "@theHamsta" },
   experimental = true,
+}
+
+list.slim = {
+  install_info = {
+    url = "https://github.com/theoo/tree-sitter-slim",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@theoo" },
 }
 
 list.slint = {

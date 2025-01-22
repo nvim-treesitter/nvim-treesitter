@@ -16,7 +16,7 @@
   (name) @module)
 
 (section
-  device: (device_name) @type)
+  device: (device_name) @string.special)
 
 (variable) @variable
 
@@ -24,7 +24,13 @@
 
 (boolean) @boolean
 
-(mod) @constant
+[
+  "deg"
+  (string)
+  (string_literal)
+] @string
+
+(mod) @constant.builtin
 
 [
   "rgb"
@@ -36,13 +42,14 @@
   (legacy_hex)
   (angle)
   (hex)
-  (display)
-  (position)
 ] @number
 
-"deg" @type
-
-"," @punctuation.delimiter
+[
+  ","
+  ":"
+  "x"
+  "@"
+] @punctuation.delimiter
 
 [
   "("

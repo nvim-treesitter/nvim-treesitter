@@ -92,6 +92,7 @@ function M.select_compiler_args(repo, compiler)
       "/Isrc",
       repo.files,
       "-Os",
+      "/std:c11",
       "/utf-8",
       "/LD",
     }
@@ -105,6 +106,7 @@ function M.select_compiler_args(repo, compiler)
       "-Isrc",
       "-shared",
       "-Os",
+      "-std=c11",
     }
   else
     local args = {
@@ -113,6 +115,7 @@ function M.select_compiler_args(repo, compiler)
       "-I./src",
       repo.files,
       "-Os",
+      "-std=c11",
     }
     if fn.has "mac" == 1 then
       table.insert(args, "-bundle")
@@ -353,9 +356,9 @@ end
 function M.make_directory_change_for_command(dir, command)
   if fn.has "win32" == 1 then
     if string.find(vim.o.shell, "cmd") ~= nil then
-      return string.format("pushd %s & %s & popd", cmdpath(dir), command)
+      return string.format("pushd %s & %s", cmdpath(dir), command)
     else
-      return string.format("pushd %s ; %s ; popd", cmdpath(dir), command)
+      return string.format("pushd %s ; %s", cmdpath(dir), command)
     end
   else
     return string.format("cd %s;\n%s", dir, command)

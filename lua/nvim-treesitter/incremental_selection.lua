@@ -14,6 +14,7 @@ local selections = {}
 
 function M.init_selection()
   local buf = api.nvim_get_current_buf()
+  parsers.get_parser():parse { vim.fn.line "w0" - 1, vim.fn.line "w$" }
   local node = ts_utils.get_node_at_cursor()
   selections[buf] = { [1] = node }
   ts_utils.update_selection(buf, node)
@@ -62,8 +63,12 @@ local function select_incremental(get_parent)
     local csrow, cscol, cerow, cecol = visual_selection_range()
     -- Initialize incremental selection with current selection
     if not nodes or #nodes == 0 or not range_matches(nodes[#nodes]) then
-      local root = parsers.get_parser():parse()[1]:root()
-      local node = root:named_descendant_for_range(csrow - 1, cscol - 1, cerow - 1, cecol)
+      local parser = parsers.get_parser()
+      parser:parse { vim.fn.line "w0" - 1, vim.fn.line "w$" }
+      local node = parser:named_node_for_range(
+        { csrow - 1, cscol - 1, cerow - 1, cecol },
+        { ignore_injections = false }
+      )
       ts_utils.update_selection(buf, node)
       if nodes and #nodes > 0 then
         table.insert(selections[buf], node)
@@ -78,14 +83,18 @@ local function select_incremental(get_parent)
     while true do
       local parent = get_parent(node)
       if not parent or parent == node then
-        -- Keep searching in the main tree
-        -- TODO: we should search on the parent tree of the current node.
-        local root = parsers.get_parser():parse()[1]:root()
-        parent = root:named_descendant_for_range(csrow - 1, cscol - 1, cerow - 1, cecol)
-        if not parent or root == node or parent == node then
+        -- Keep searching in the parent tree
+        local root_parser = parsers.get_parser()
+        root_parser:parse { vim.fn.line "w0" - 1, vim.fn.line "w$" }
+        local current_parser = root_parser:language_for_range { csrow - 1, cscol - 1, cerow - 1, cecol }
+        if root_parser == current_parser then
+          node = root_parser:named_node_for_range { csrow - 1, cscol - 1, cerow - 1, cecol }
           ts_utils.update_selection(buf, node)
           return
         end
+        -- NOTE: parent() method is private
+        local parent_parser = current_parser:parent()
+        parent = parent_parser:named_node_for_range { csrow - 1, cscol - 1, cerow - 1, cecol }
       end
       node = parent
       local srow, scol, erow, ecol = ts_utils.get_vim_range { node:range() }
