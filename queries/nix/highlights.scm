@@ -116,17 +116,9 @@
       (attrpath
         (identifier) @variable.member))))
 
-(apply_expression
-  function: [
-    (select_expression
-      attrpath: (attrpath
-        .
-        attr: (identifier) @function.call .))
-    (select_expression
-      attrpath: (attrpath
-        (_)
-        attr: (identifier) @function.call .))
-  ])
+function: (select_expression
+  attrpath: (attrpath
+    attr: (identifier) @function.call .))
 
 ; builtin functions (with builtins prefix)
 (select_expression
