@@ -4,7 +4,7 @@
 
 (number_literal) @number
 
-(float_literal) @number
+(float_literal) @number.float
 
 (boolean_literal) @boolean
 
@@ -12,7 +12,7 @@
 
 "defined" @constant
 
-(comment) @comment
+(comment) @comment @spell
 
 [
   ","
@@ -36,12 +36,6 @@
 ] @punctuation.bracket
 
 (binary_operator) @operator
-
-[
-  "is"
-  "not"
-  "and"
-] @keyword.operator
 
 [
   "block"
@@ -106,13 +100,18 @@
 (arg
   (identifier) @variable.parameter)
 
+(arg
+  (expression
+    (binary_expression
+      (unary_expression
+        (primary_expression
+          (identifier) @variable.parameter)))))
+
 (expression
-  (expression) @variable.member
   "."
   (expression)+ @variable.member)
 
 (assignment_expression
-  (identifier) @variable.member
   "."
   (identifier)+ @variable.member)
 
@@ -124,8 +123,6 @@
 (raw_end) @keyword
 
 (raw_body) @markup.raw.block @nospell
-
-(identifier) @variable.parameter
 
 (builtin_test
   [

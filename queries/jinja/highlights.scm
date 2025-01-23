@@ -51,12 +51,6 @@
 (binary_operator) @operator
 
 [
-  "is"
-  "not"
-  "and"
-] @keyword.operator
-
-[
   "block"
   "with"
   "filter"
@@ -119,13 +113,18 @@
 (arg
   (identifier) @variable.parameter)
 
+(arg
+  (expression
+    (binary_expression
+      (unary_expression
+        (primary_expression
+          (identifier) @variable.parameter)))))
+
 (expression
-  (expression) @variable.member
   "."
   (expression)+ @variable.member)
 
 (assignment_expression
-  (identifier) @variable.member
   "."
   (identifier)+ @variable.member)
 
@@ -140,8 +139,6 @@
 (raw_end) @keyword
 
 (raw_body) @markup.raw.block @nospell
-
-(identifier) @variable.parameter
 
 (builtin_test
   [
