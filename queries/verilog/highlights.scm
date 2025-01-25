@@ -263,6 +263,7 @@
   (integer_vector_type)
   (time_unit)
   (integer_atom_type)
+  (non_integer_type)
 ] @type.builtin
 
 (data_type
