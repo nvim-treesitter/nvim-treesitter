@@ -1,14 +1,60 @@
-(razor_comment) @comment @spell
+[
+  (razor_comment)
+  (html_comment)
+] @comment @spell
 
 [
   (razor_page_directive)
+  (razor_using_directive)
+  (razor_model_directive)
   (razor_rendermode_directive)
   (razor_inject_directive)
+  (razor_implements_directive)
+  (razor_layout_directive)
+  (razor_inherits_directive)
+  (razor_attribute_directive)
+  (razor_typeparam_directive)
+  (razor_namespace_directive)
+  (razor_preservewhitespace_directive)
+  (razor_block)
+  (explicit_line_transition)
+  (razor_compound_using)
+  (razor_escape)
 ] @constant.macro
+
+[
+  (razor_lock)
+  (razor_section)
+] @keyword
+
+[
+  (razor_if)
+  (razor_else)
+  (razor_else_if)
+  (razor_switch)
+] @keyword.conditional
+
+[
+  (razor_for)
+  (razor_foreach)
+  (razor_while)
+  (razor_do_while)
+] @keyword.repeat
+
+[
+  (razor_try)
+  (razor_catch)
+  (razor_finally)
+] @keyword.exception
+
+(razor_await_expression) @keyword.coroutine
 
 (razor_rendermode) @property
 
-(razor_implicit_expression) @variable
+[
+  (razor_implicit_expression)
+  (razor_explicit_expression)
+] @variable
 
 (razor_html_attribute) @function
 
@@ -106,16 +152,11 @@
   (html_text) @markup.link.label)
   (#eq? @_tag "a"))
 
-; ((attribute
-;   (html_attribute_name) @_attr
-;   (quoted_attribute_value
-;     (attribute_value) @string.special.url))
-;   (#any-of? @_attr "href" "src")
-;   (#set! @string.special.url url @string.special.url))
 [
   "<"
   ">"
   "</"
+  "/>"
 ] @tag.delimiter
 
 "=" @operator
