@@ -1,65 +1,60 @@
+(html_text) @none @spell
+
 [
   (razor_comment)
   (html_comment)
 ] @comment @spell
 
 [
-  (razor_page_directive)
-  (razor_using_directive)
-  (razor_model_directive)
-  (razor_rendermode_directive)
-  (razor_inject_directive)
-  (razor_implements_directive)
-  (razor_layout_directive)
-  (razor_inherits_directive)
-  (razor_attribute_directive)
-  (razor_typeparam_directive)
-  (razor_namespace_directive)
-  (razor_preservewhitespace_directive)
-  (razor_block)
-  (explicit_line_transition)
-  (razor_compound_using)
-  (razor_escape)
+  "at_page"
+  "at_using"
+  "at_model"
+  "at_rendermode"
+  "at_inject"
+  "at_implements"
+  "at_layout"
+  "at_inherits"
+  "at_attribute"
+  "at_typeparam"
+  "at_namespace"
+  "at_preservewhitespace"
+  "at_block"
+  "at_at_escape"
+  "at_colon_transition"
 ] @constant.macro
 
 [
-  (razor_lock)
-  (razor_section)
+  "at_lock"
+  "at_section"
 ] @keyword
 
-[
-  (razor_if)
-  (razor_else)
-  (razor_else_if)
-  (razor_switch)
+([
+  "at_if"
+  "at_switch"
 ] @keyword.conditional
+  (#set! priority 90))
 
-[
-  (razor_for)
-  (razor_foreach)
-  (razor_while)
-  (razor_do_while)
+([
+  "at_for"
+  "at_foreach"
+  "at_while"
+  "at_do"
 ] @keyword.repeat
+  (#set! priority 90))
 
-[
-  (razor_try)
-  (razor_catch)
-  (razor_finally)
+([
+  "at_try"
+  "catch"
+  "finally"
 ] @keyword.exception
+  (#set! priority 90))
 
-(razor_await_expression) @keyword.coroutine
+("at_await"
+  (#set! priority 90)) @keyword.coroutine
 
 (razor_rendermode) @property
 
-[
-  (razor_implicit_expression)
-  (razor_explicit_expression)
-] @variable
-
-(razor_html_attribute) @function
-
-(razor_attribute_value
-  (identifier) @function)
+"razor_attribute_name" @function
 
 ; HTML RULES
 (tag_name) @tag
@@ -71,8 +66,6 @@
 ((html_attribute
   (html_attribute_value) @string)
   (#set! priority 99))
-
-(html_text) @none @spell
 
 ((element
   (start_tag
