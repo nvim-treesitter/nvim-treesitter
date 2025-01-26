@@ -28,29 +28,25 @@
   "at_section"
 ] @keyword
 
-([
+[
   "at_if"
   "at_switch"
 ] @keyword.conditional
-  (#set! priority 90))
 
-([
+[
   "at_for"
   "at_foreach"
   "at_while"
   "at_do"
 ] @keyword.repeat
-  (#set! priority 90))
 
-([
+[
   "at_try"
   "catch"
   "finally"
 ] @keyword.exception
-  (#set! priority 90))
 
-("at_await"
-  (#set! priority 90)) @keyword.coroutine
+"at_await" @keyword.coroutine
 
 (razor_rendermode) @property
 
