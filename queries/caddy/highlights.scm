@@ -1,6 +1,6 @@
 (comment) @comment @spell
 
-[ 
+[
   (env)
   (argv)
   (block_variable)
@@ -8,8 +8,13 @@
 ] @constant
 
 (value) @variable
-(directive (keyword) @attribute)
-(global_options (option (keyword) @attribute))
+
+(directive
+  (keyword) @attribute)
+
+(global_options
+  (option
+    (keyword) @attribute))
 
 (keyword) @keyword
 
@@ -21,10 +26,7 @@
     "}"
   ] @punctuation.special)
 
-
-[
-  (auto)
-] @variable.builtin
+(auto) @variable.builtin
 
 [
   (string_literal)
@@ -32,8 +34,8 @@
   (address)
 ] @string
 
-[ 
-  (matcher) 
+[
+  (matcher)
   (route)
   (snippet_name)
 ] @string.special
@@ -49,4 +51,3 @@
   "{"
   "}"
 ] @punctuation.bracket
-
