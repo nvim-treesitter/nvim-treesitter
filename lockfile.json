@@ -99,7 +99,7 @@
     "revision": "7eb7297823605392d2bbcc4c09b1cd18d6fa9529"
   },
   "cuda": {
-    "revision": "635e8aa3747823a0c4e9660c07cef76fe8d3ef93"
+    "revision": "757e0a61f9d38b3d9eaa299e8d866e8283ffc284"
   },
   "cue": {
     "revision": "8a5f273bfa281c66354da562f2307c2d394b6c81"
@@ -369,7 +369,7 @@
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
   },
   "janet_simple": {
-    "revision": "81f17db9a8ab0a97ff20986ef9065eb628db7408"
+    "revision": "ca4785b47a4ff15653f0408a49c764dec533e0d3"
   },
   "java": {
     "revision": "677da92875756e31b3a42505d822cc8be7c5ab5e"
