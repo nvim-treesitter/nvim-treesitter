@@ -70,6 +70,7 @@ ecma (queries only)[^ecma] | community | `HFIJL` | @steelsojka
 [elsa](https://github.com/glapa-grossklag/tree-sitter-elsa) | community | `HFIJL` | @glapa-grossklag, @amaanq
 [elvish](https://github.com/elves/tree-sitter-elvish) | community | `H  J ` | @elves
 [embedded_template](https://github.com/tree-sitter/tree-sitter-embedded-template) | unsupported | `H  J ` | 
+[enforce](https://github.com/simonvic/tree-sitter-enforce) | community | `HFIJL` | @simonvic
 [erlang](https://github.com/WhatsApp/tree-sitter-erlang) | community | `HF J ` | @filmor
 [facility](https://github.com/FacilityApi/tree-sitter-facility) | community | `HFIJ ` | @bryankenote
 [faust](https://github.com/khiner/tree-sitter-faust) | community | `H  J ` | @khiner
@@ -131,7 +132,7 @@ html_tags (queries only)[^html_tags] | community | `H IJ ` | @TravonteD
 [hurl](https://github.com/pfeiferj/tree-sitter-hurl) | community | `HFIJ ` | @pfeiferj
 [hyprlang](https://github.com/tree-sitter-grammars/tree-sitter-hyprlang) | core | `HFIJ ` | @luckasRanarison
 [idl](https://github.com/cathaysia/tree-sitter-idl) | community | `H IJ ` | @cathaysia
-[idris](https://github.com/kayhide/tree-sitter-idris) | community | `     ` | @srghma
+[idris](https://github.com/kayhide/tree-sitter-idris) | community | `HF JL` | @srghma
 [ini](https://github.com/justinmk/tree-sitter-ini) | community | `HF J ` | @theHamsta
 [inko](https://github.com/inko-lang/tree-sitter-inko) | community | `HFIJL` | @yorickpeterse
 [ipkg](https://github.com/srghma/tree-sitter-ipkg) | community | `HFIJL` | @srghma
@@ -139,6 +140,8 @@ html_tags (queries only)[^html_tags] | community | `H IJ ` | @TravonteD
 [janet_simple](https://github.com/sogaiu/tree-sitter-janet-simple) | community | `HF JL` | @sogaiu
 [java](https://github.com/tree-sitter/tree-sitter-java) | core | `HFIJL` | @p00f
 [javascript](https://github.com/tree-sitter/tree-sitter-javascript) | core | `HFIJL` | @steelsojka
+[jinja](https://github.com/cathaysia/tree-sitter-jinja)[^jinja] | community | `H  J ` | @cathaysia
+[jinja_inline](https://github.com/cathaysia/tree-sitter-jinja)[^jinja_inline] | community | `H  J ` | @cathaysia
 [jq](https://github.com/flurie/tree-sitter-jq) | community | `H  JL` | @ObserverOfTime
 [jsdoc](https://github.com/tree-sitter/tree-sitter-jsdoc) | core | `H    ` | @steelsojka
 [json](https://github.com/tree-sitter/tree-sitter-json) | core | `HFI L` | @steelsojka
@@ -226,6 +229,7 @@ jsx (queries only)[^jsx] | community | `HFIJ ` | @steelsojka
 [racket](https://github.com/6cdh/tree-sitter-racket) | unsupported | `HF J ` | 
 [ralph](https://github.com/alephium/tree-sitter-ralph) | community | `H  J ` | @tdroxler
 [rasi](https://github.com/Fymyte/tree-sitter-rasi) | community | `HFIJL` | @Fymyte
+[razor](https://github.com/tris203/tree-sitter-razor) | community | `HF J ` | @tris203
 [rbs](https://github.com/joker1007/tree-sitter-rbs) | community | `HFIJ ` | @joker1007
 [re2c](https://github.com/tree-sitter-grammars/tree-sitter-re2c) | core | `HFIJL` | @amaanq
 [readline](https://github.com/tree-sitter-grammars/tree-sitter-readline) | core | `HFIJ ` | @ribru17
@@ -248,7 +252,7 @@ jsx (queries only)[^jsx] | community | `HFIJ ` | @steelsojka
 [scss](https://github.com/serenadeai/tree-sitter-scss) | community | `HFIJ ` | @elianiva
 [sflog](https://github.com/aheber/tree-sitter-sfapex)[^sflog] | community | `H    ` | @aheber, @xixiaofinland
 [slang](https://github.com/tree-sitter-grammars/tree-sitter-slang)[^slang] | core | `HFIJL` | @theHamsta
-[slim](https://github.com/theoo/tree-sitter-slim) | community | `     ` | @theoo
+[slim](https://github.com/theoo/tree-sitter-slim) | community | `HFIJL` | @theoo
 [slint](https://github.com/slint-ui/tree-sitter-slint) | community | `HFIJL` | @hunger
 [smali](https://github.com/tree-sitter-grammars/tree-sitter-smali) | core | `HFIJL` | @amaanq
 [smithy](https://github.com/indoorvivants/tree-sitter-smithy) | community | `H  J ` | @amaanq, @keynmol
@@ -331,6 +335,8 @@ jsx (queries only)[^jsx] | community | `HFIJ ` | @steelsojka
 [^glimmer]: Glimmer and Ember
 [^godot_resource]: Godot Resources
 [^html_tags]: queries required by html, astro, vue, svelte
+[^jinja]: basic highlighting
+[^jinja_inline]: needed for full highlighting
 [^jsx]: queries required by javascript, tsx
 [^luap]: Lua patterns
 [^markdown]: basic highlighting
