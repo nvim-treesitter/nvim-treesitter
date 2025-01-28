@@ -1,14 +1,28 @@
-(heading1) @markup.heading.1
+(heading) @markup.heading
 
-(heading2) @markup.heading.2
+((heading
+  (marker) @_heading.marker) @markup.heading.1
+  (#eq? @_heading.marker "# "))
 
-(heading3) @markup.heading.3
+((heading
+  (marker) @_heading.marker) @markup.heading.2
+  (#eq? @_heading.marker "## "))
 
-(heading4) @markup.heading.4
+((heading
+  (marker) @_heading.marker) @markup.heading.3
+  (#eq? @_heading.marker "### "))
 
-(heading5) @markup.heading.5
+((heading
+  (marker) @_heading.marker) @markup.heading.4
+  (#eq? @_heading.marker "##### "))
 
-(heading6) @markup.heading.6
+((heading
+  (marker) @_heading.marker) @markup.heading.5
+  (#eq? @_heading.marker "###### "))
+
+((heading
+  (marker) @_heading.marker) @markup.heading.6
+  (#eq? @_heading.marker "####### "))
 
 (thematic_break) @string.special
 
@@ -148,50 +162,21 @@
   (subscript)
 ] @string.special
 
-; We need to target tokens specifically because `{=` etc can exist as fallback symbols in
-; regular text, which we don't want to highlight or conceal.
-(highlighted
-  [
-    "{="
-    "=}"
-  ] @punctuation.delimiter
-  (#set! conceal ""))
-
-(insert
-  [
-    "{+"
-    "+}"
-  ] @punctuation.delimiter
-  (#set! conceal ""))
-
-(delete
-  [
-    "{-"
-    "-}"
-  ] @punctuation.delimiter
-  (#set! conceal ""))
-
-(superscript
-  [
-    "^"
-    "{^"
-    "^}"
-  ] @punctuation.delimiter
-  (#set! conceal ""))
-
-(subscript
-  [
-    "~"
-    "{~"
-    "~}"
-  ] @punctuation.delimiter
-  (#set! conceal ""))
-
 ([
   (emphasis_begin)
   (emphasis_end)
   (strong_begin)
   (strong_end)
+  (superscript_begin)
+  (superscript_end)
+  (subscript_begin)
+  (subscript_end)
+  (highlighted_begin)
+  (highlighted_end)
+  (insert_begin)
+  (insert_end)
+  (delete_begin)
+  (delete_end)
   (verbatim_marker_begin)
   (verbatim_marker_end)
   (math_marker)
@@ -211,9 +196,10 @@
 ((raw_inline) @markup.raw
   (#set! priority 90))
 
-(comment
-  "%" @comment
-  (#set! conceal ""))
+[
+  (comment)
+  (inline_comment)
+] @comment
 
 (span
   [
@@ -302,30 +288,20 @@
 
 (full_reference_image
   [
-    "!["
     "["
     "]"
   ] @punctuation.bracket)
 
 (collapsed_reference_image
-  [
-    "!["
-    "]"
-  ] @punctuation.bracket)
+  "[]" @punctuation.bracket)
 
-(inline_image
+(image_description
   [
     "!["
     "]"
   ] @punctuation.bracket)
 
 (image_description) @markup.italic
-
-(image_description
-  [
-    "["
-    "]"
-  ] @punctuation.bracket)
 
 (link_reference_definition
   [
