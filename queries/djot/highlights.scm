@@ -1,28 +1,28 @@
 (heading) @markup.heading
 
 ((heading
-  (marker) @heading.marker) @markup.heading.1
-  (#eq? @heading.marker "# "))
+  (marker) @_heading.marker) @markup.heading.1
+  (#eq? @_heading.marker "# "))
 
 ((heading
-  (marker) @heading.marker) @markup.heading.2
-  (#eq? @heading.marker "## "))
+  (marker) @_heading.marker) @markup.heading.2
+  (#eq? @_heading.marker "## "))
 
 ((heading
-  (marker) @heading.marker) @markup.heading.3
-  (#eq? @heading.marker "### "))
+  (marker) @_heading.marker) @markup.heading.3
+  (#eq? @_heading.marker "### "))
 
 ((heading
-  (marker) @heading.marker) @markup.heading.4
-  (#eq? @heading.marker "##### "))
+  (marker) @_heading.marker) @markup.heading.4
+  (#eq? @_heading.marker "##### "))
 
 ((heading
-  (marker) @heading.marker) @markup.heading.5
-  (#eq? @heading.marker "###### "))
+  (marker) @_heading.marker) @markup.heading.5
+  (#eq? @_heading.marker "###### "))
 
 ((heading
-  (marker) @heading.marker) @markup.heading.6
-  (#eq? @heading.marker "####### "))
+  (marker) @_heading.marker) @markup.heading.6
+  (#eq? @_heading.marker "####### "))
 
 (thematic_break) @string.special
 
