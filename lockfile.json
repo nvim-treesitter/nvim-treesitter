@@ -279,7 +279,7 @@
     "revision": "e2ac513b2240c7ff1069ae33b2df29ce90777c11"
   },
   "gotmpl": {
-    "revision": "ab4a8c4a51f271f320f2bad6a5d499415bf541b1"
+    "revision": "845c471f153c83c6106e1179e38094b2f16a0d20"
   },
   "gowork": {
     "revision": "949a8a470559543857a62102c84700d291fc984c"
@@ -291,7 +291,7 @@
     "revision": "5e66e961eee421786bdda8495ed1db045e06b5fe"
   },
   "gren": {
-    "revision": "76554f4f2339f5a24eed19c58f2079b51c694152"
+    "revision": "06389ece5bc7344ed3931dc516bb609d8864dd2a"
   },
   "groovy": {
     "revision": "86911590a8e46d71301c66468e5620d9faa5b6af"
@@ -318,7 +318,7 @@
     "revision": "a63c69c20fd88d1e5614a02b4a6b48cfb7e54a45"
   },
   "helm": {
-    "revision": "ab4a8c4a51f271f320f2bad6a5d499415bf541b1"
+    "revision": "845c471f153c83c6106e1179e38094b2f16a0d20"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
@@ -510,7 +510,7 @@
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
   },
   "nu": {
-    "revision": "9822fc63a62ff87939c88ead9f381f951f092dee"
+    "revision": "b51db01e154fac33eda5b289a6c7751c09568f6d"
   },
   "objc": {
     "revision": "18802acf31d0b5c1c1d50bdbc9eb0e1636cab9ed"
