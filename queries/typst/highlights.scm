@@ -84,8 +84,23 @@
 ; text
 (text) @spell
 
-; TODO: use multi level headings
-(heading) @markup.heading
+(heading
+  "=" @markup.heading.1) @markup.heading.1
+
+(heading
+  "==" @markup.heading.2) @markup.heading.2
+
+(heading
+  "===" @markup.heading.3) @markup.heading.3
+
+(heading
+  "====" @markup.heading.4) @markup.heading.4
+
+(heading
+  "=====" @markup.heading.5) @markup.heading.5
+
+(heading
+  "======" @markup.heading.6) @markup.heading.6
 
 (strong) @markup.strong
 
