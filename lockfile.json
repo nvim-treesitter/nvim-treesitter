@@ -90,7 +90,7 @@
     "revision": "594289eadfec719198e560f9d7fd243c4db678d5"
   },
   "cpp": {
-    "revision": "a352ed85f733f9c6cc458fe5a82bcd4c00f70eab"
+    "revision": "950b4fc9b3a7a59d351853acddde65a422481bc5"
   },
   "css": {
     "revision": "6731f030693d3698ad94865ed0228fe45df07e30"
@@ -270,7 +270,7 @@
     "revision": "49c43532689fe1f53e8b9e009d0521cab02c432b"
   },
   "godot_resource": {
-    "revision": "941955d027f1d8530501e77ce5e1d6035f5f99c1"
+    "revision": "91c55fdf325a832659e59cdf4a02bfe8a423f14c"
   },
   "gomod": {
     "revision": "6efb59652d30e0e9cd5f3b3a669afd6f1a926d3c"
@@ -426,7 +426,7 @@
     "revision": "d313153eef68c557ba4538b20de2d0e92f3ef6f8"
   },
   "leo": {
-    "revision": "44a061bac4d9443d75f2700c62a71cd4dcf16f05"
+    "revision": "6bc5564917edacd070afc4d33cf5e2e677831ea9"
   },
   "linkerscript": {
     "revision": "f99011a3554213b654985a4b0a65b3b032ec4621"
