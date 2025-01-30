@@ -1,13 +1,11 @@
-((html_comment) @injection.content
-  (#set! injection.language "comment"))
+; inherits: c_sharp
 
-((razor_comment) @injection.content
-  (#set! injection.language "comment"))
-
-((comment) @injection.content
+([
+  (html_comment)
+  (razor_comment)
+] @comment
   (#set! injection.language "comment"))
 
 ((element) @injection.content
   (#set! injection.language "html")
-  (#set! injection.include-children)
   (#set! injection.combined))
