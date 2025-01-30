@@ -145,10 +145,10 @@
 
 ; Parameters
 (required_parameter
-  (identifier) @variable.parameter)
+  pattern: (identifier) @variable.parameter)
 
 (optional_parameter
-  (identifier) @variable.parameter)
+  pattern: (identifier) @variable.parameter)
 
 (required_parameter
   (rest_pattern
