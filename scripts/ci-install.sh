@@ -3,7 +3,7 @@
 set -e
 
 os=$(uname -s)
-if [[ $os == Linux ]] then
+if [[ $os == Linux ]]; then
   wget https://github.com/neovim/neovim/releases/download/${NVIM_TAG}/nvim-linux-x86_64.tar.gz
   tar -zxf nvim-linux-x86_64.tar.gz
   sudo ln -s "$PWD"/nvim-linux-x86_64/bin/nvim /usr/local/bin
