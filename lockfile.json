@@ -90,7 +90,7 @@
     "revision": "594289eadfec719198e560f9d7fd243c4db678d5"
   },
   "cpp": {
-    "revision": "950b4fc9b3a7a59d351853acddde65a422481bc5"
+    "revision": "0a4623a93fc7ca072903eb68cd2ca26fc5f41d2e"
   },
   "css": {
     "revision": "6731f030693d3698ad94865ed0228fe45df07e30"
@@ -129,7 +129,7 @@
     "revision": "0229c0211dba909c5d45129ac784a3f4d49c243a"
   },
   "djot": {
-    "revision": "639c2dd7f53ee7755c9bdb560598c56ad128ef30"
+    "revision": "ac748d11ce2ede8b1b0a82a280d1f5af7a98bf82"
   },
   "dockerfile": {
     "revision": "971acdd908568b4531b0ba28a445bf0bb720aba5"
@@ -279,7 +279,7 @@
     "revision": "e2ac513b2240c7ff1069ae33b2df29ce90777c11"
   },
   "gotmpl": {
-    "revision": "845c471f153c83c6106e1179e38094b2f16a0d20"
+    "revision": "5f19a36bb1eebb30454e277b222b278ceafed0dd"
   },
   "gowork": {
     "revision": "949a8a470559543857a62102c84700d291fc984c"
@@ -315,10 +315,10 @@
     "revision": "9e3ec9848f28d26845ba300fd73c740459b83e9b"
   },
   "heex": {
-    "revision": "a63c69c20fd88d1e5614a02b4a6b48cfb7e54a45"
+    "revision": "008626a3fad379d17c81d5ed576edd9bd7a4fbf7"
   },
   "helm": {
-    "revision": "845c471f153c83c6106e1179e38094b2f16a0d20"
+    "revision": "5f19a36bb1eebb30454e277b222b278ceafed0dd"
   },
   "hjson": {
     "revision": "02fa3b79b3ff9a296066da6277adfc3f26cbc9e0"
@@ -720,7 +720,7 @@
     "revision": "f36c1587624d6d84376c82a357c20fc319cbf02c"
   },
   "solidity": {
-    "revision": "727087514eff57d92e273a24303142308bce3381"
+    "revision": "d38dcd0b58b223c43e3f9265914fb3167dc624c6"
   },
   "soql": {
     "revision": "eade4054efc897f4bb18a5b7bf4b5a824dbffa74"
