@@ -1,6 +1,10 @@
 ((comment) @injection.content
   (#set! injection.language "comment"))
 
+(math
+  (content) @injection.content
+  (#set! injection.language "latex"))
+
 (code_block
   (language) @injection.language
   (code) @injection.content)
