@@ -386,6 +386,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [ ] [racket](https://github.com/6cdh/tree-sitter-racket)
 - [x] [ralph](https://github.com/alephium/tree-sitter-ralph) (maintained by @tdroxler)
 - [x] [rasi](https://github.com/Fymyte/tree-sitter-rasi) (maintained by @Fymyte)
+- [x] [razor](https://github.com/tris203/tree-sitter-razor) (maintained by @tris203)
 - [x] [rbs](https://github.com/joker1007/tree-sitter-rbs) (maintained by @joker1007)
 - [x] [re2c](https://github.com/amaanq/tree-sitter-re2c) (maintained by @amaanq)
 - [x] [readline](https://github.com/ribru17/tree-sitter-readline) (maintained by @ribru17)

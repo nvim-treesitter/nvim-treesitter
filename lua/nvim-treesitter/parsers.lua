@@ -1861,6 +1861,14 @@ list.rasi = {
   maintainers = { "@Fymyte" },
 }
 
+list.razor = {
+  install_info = {
+    url = "https://github.com/tris203/tree-sitter-razor",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@tris203" },
+}
+
 list.rbs = {
   install_info = {
     url = "https://github.com/joker1007/tree-sitter-rbs",
