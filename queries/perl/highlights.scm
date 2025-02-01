@@ -278,13 +278,15 @@
 
 (amper_deref_expression
   [
-   "&"
-   "*"
-   ] @variable)
+    "&"
+    "*"
+  ] @variable)
 
 (glob) @variable
+
 (glob_deref_expression
   "*" @variable)
+
 (glob_slot_expression
   "*" @variable)
 
