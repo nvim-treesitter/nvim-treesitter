@@ -11,4 +11,5 @@
   ; match if there's a single `e` in the modifiers list
   (#lua-match? @_modifiers "e")
   (#not-lua-match? @_modifiers "e.*e")
-  (#set! injection.language "perl"))
+  (#set! injection.language "perl")
+  (#set! injection.include-children))
