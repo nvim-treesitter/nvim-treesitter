@@ -262,6 +262,12 @@
     "*"
   ] @variable)
 
+(arraylen_deref_expression
+  [
+    "$#"
+    "*"
+  ] @variable)
+
 (hash) @variable
 
 (hash_deref_expression
@@ -269,6 +275,18 @@
     "%"
     "*"
   ] @variable)
+
+(amper_deref_expression
+  [
+   "&"
+   "*"
+   ] @variable)
+
+(glob) @variable
+(glob_deref_expression
+  "*" @variable)
+(glob_slot_expression
+  "*" @variable)
 
 (array_element_expression
   array: (_) @variable)
