@@ -27,7 +27,7 @@
     "revision": "34bbdc7cce8e803096f47b625979e34c1be38127"
   },
   "bash": {
-    "revision": "a985bd2d14d249b8f583343ad21aeb13c50c85e8"
+    "revision": "0c46d792d54c536be5ff7eb18eb95c70fccdb232"
   },
   "bass": {
     "revision": "28dc7059722be090d04cd751aed915b2fee2f89a"
@@ -114,7 +114,7 @@
     "revision": "e81af6ab94a728ed99c30083be72d88e6d56cf9e"
   },
   "desktop": {
-    "revision": "54133af61b2a9a75fd42c49ce0c771115f81f50b"
+    "revision": "5d5e8659cc0d511e8f2860483c3c1d7ebb7b893e"
   },
   "devicetree": {
     "revision": "16f640f3c59117c9e749d581634afdb00e004f4c"
@@ -306,7 +306,7 @@
     "revision": "4af5d82cf9ec39f67cb1db5b7a9269d337406592"
   },
   "haskell": {
-    "revision": "2c2fcb22e3b939ed59ae8d6f10500c3213c68670"
+    "revision": "0975ef72fc3c47b530309ca93937d7d143523628"
   },
   "haskell_persistent": {
     "revision": "577259b4068b2c281c9ebf94c109bd50a74d5857"
@@ -396,7 +396,7 @@
     "revision": "ddd075f1939aed8147b7aa67f042eda3fce22790"
   },
   "julia": {
-    "revision": "ffdd9fe4dccdc26d62ce1654fceac52c394f0cf3"
+    "revision": "3f9870ca1f419e480f39fc181fcfb6dad480969a"
   },
   "just": {
     "revision": "bb0c898a80644de438e6efe5d88d30bf092935cd"
@@ -501,7 +501,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "0f561100bfe7a185ce191ac5fdc9fc9dacc3b69e"
+    "revision": "b3a88cf3e597d48c33657deca4fda7a75c0069c1"
   },
   "norg": {
     "revision": "d89d95af13d409f30a6c7676387bde311ec4a2c8"
@@ -513,7 +513,7 @@
     "revision": "b51db01e154fac33eda5b289a6c7751c09568f6d"
   },
   "objc": {
-    "revision": "18802acf31d0b5c1c1d50bdbc9eb0e1636cab9ed"
+    "revision": "181a81b8f23a2d593e7ab4259981f50122909fda"
   },
   "objdump": {
     "revision": "28d3b2e25a0b1881d1b47ed1924ca276c7003d45"
@@ -840,7 +840,7 @@
     "revision": "43b221c0b76e77244efdaa9963e402a17c930fbc"
   },
   "typst": {
-    "revision": "26dfb4b94a99cc9d6044342b7ad0ba761da77d60"
+    "revision": "cb0ffe14259f7f63ee6f05b57ceb24a35bedef75"
   },
   "udev": {
     "revision": "18a1d183c4c0cc40438bae2ebf8191aaf2dee8dc"
