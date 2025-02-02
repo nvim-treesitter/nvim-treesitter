@@ -13,6 +13,8 @@
     .
     (_)
     .
+    (_)?
+    .
     (string) @_exec
     .
     (string) @injection.content))
