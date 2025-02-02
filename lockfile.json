@@ -114,7 +114,7 @@
     "revision": "e81af6ab94a728ed99c30083be72d88e6d56cf9e"
   },
   "desktop": {
-    "revision": "5d5e8659cc0d511e8f2860483c3c1d7ebb7b893e"
+    "revision": "6d66eea37afa1d6bc1e25ef457113743df42416d"
   },
   "devicetree": {
     "revision": "16f640f3c59117c9e749d581634afdb00e004f4c"
@@ -465,7 +465,7 @@
     "revision": "192407ab5a24bfc24f13332979b5e7967518754a"
   },
   "matlab": {
-    "revision": "b0a0198b182574cd3ca0447264c83331901b9338"
+    "revision": "bbf1b3f0bd7417c1efb8958fe95be3d0d540207a"
   },
   "menhir": {
     "revision": "be8866a6bcc2b563ab0de895af69daeffa88fe70"
@@ -543,7 +543,7 @@
     "revision": "1d16b8e063fdf4385e389096c4bc4999eaaef05f"
   },
   "perl": {
-    "revision": "6f280c52662dc254eb7a5abc0889f7a9e1154ffd"
+    "revision": "db79ba96ba13e2e89ce9da07c1cc1dfbe6e2e0f6"
   },
   "php": {
     "revision": "f3a19ab3217a6e838870fc7142fa492d1fd7a7c9"
@@ -624,7 +624,7 @@
     "revision": "8fef30e231d74b65c713bcbac21956156d8963da"
   },
   "query": {
-    "revision": "5c2d02747250bc326bc33687b3319b7db8554e24"
+    "revision": "9bf4d5cad5ecf51d9102cd50765e8d6119616a9a"
   },
   "r": {
     "revision": "a0d3e3307489c3ca54da8c7b5b4e0c5f5fd6953a"
@@ -690,7 +690,7 @@
     "revision": "2eaf126458a4d6a69401089b6ba78c5e5d6c1ced"
   },
   "scala": {
-    "revision": "851f6a6856363dd03e911290105c5cc878bcc9c6"
+    "revision": "d67fe3ba3879bd7ba74bd7f56c9a38fed241ba25"
   },
   "scfg": {
     "revision": "2f3709e7656fa2c443f92041c91a9f843f8cd625"
