@@ -114,6 +114,9 @@ local format_queries = [[
   ":"
   "."
 ] @format.append-space
+(predicate
+  "." @format.cancel-append @format.replace
+  (#gsub! @format.replace "%." "#"))
 (
   "." @format.prepend-space @format.cancel-append
   .
