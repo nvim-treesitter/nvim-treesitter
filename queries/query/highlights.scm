@@ -46,6 +46,9 @@
   "#"
 ] @punctuation.special
 
+(predicate
+  "." @punctuation.special)
+
 "_" @character.special
 
 "MISSING" @keyword
