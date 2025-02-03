@@ -51,7 +51,7 @@
     "revision": "16c43068ec30828c5aed11e87262c56f36782595"
   },
   "c": {
-    "revision": "f10e84f382a4e53144af0c958be3017064478262"
+    "revision": "cf36b0354a2d75a42f87191cbd3166ad8af348e4"
   },
   "c_sharp": {
     "revision": "b27b091bfdc5f16d0ef76421ea5609c82a57dff0"
@@ -624,7 +624,7 @@
     "revision": "8fef30e231d74b65c713bcbac21956156d8963da"
   },
   "query": {
-    "revision": "9bf4d5cad5ecf51d9102cd50765e8d6119616a9a"
+    "revision": "0555ac0da902abff06076e40501102cee3ba68bd"
   },
   "r": {
     "revision": "a0d3e3307489c3ca54da8c7b5b4e0c5f5fd6953a"
@@ -678,7 +678,7 @@
     "revision": "78938553b93075e638035f624973083451b29055"
   },
   "rst": {
-    "revision": "dd5971ef7759583aadd5aa5e3a3a0905eb5734d5"
+    "revision": "899e073a10012b8028b643d676c30bbf9c64a45d"
   },
   "ruby": {
     "revision": "89bd7a8e5450cb6a942418a619d30469f259e5d6"
@@ -771,7 +771,7 @@
     "revision": "395006713db3bbb90d267ebdfcbf1881b399b05c"
   },
   "swift": {
-    "revision": "f4be8072f18fb9704fd35d4b8154ae2b19e314c0"
+    "revision": "1ebc09c38f41d6aab7dd65ca0f8ea032ced0364f"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -873,7 +873,7 @@
     "revision": "15fbf73dafaffc89050d247857beb27500ea30e8"
   },
   "vhdl": {
-    "revision": "da8ea8afa7899a99e43a7d61afef9f77b7a675eb"
+    "revision": "cfc522af3e49c1a00ae74e01aa14e19818dab8f2"
   },
   "vhs": {
     "revision": "037e675d547b18bbf3fdeb222e242ae5dccc39d7"
