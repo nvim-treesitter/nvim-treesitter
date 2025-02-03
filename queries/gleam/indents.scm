@@ -7,7 +7,6 @@
   (constant)
   (external_function)
   (function)
-  (import)
   (let)
   (list)
   (constant)
@@ -16,6 +15,7 @@
   (type_alias)
   (todo)
   (tuple)
+  (unqualified_imports)
 ] @indent.begin
 
 [
