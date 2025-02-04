@@ -102,7 +102,7 @@
     "revision": "757e0a61f9d38b3d9eaa299e8d866e8283ffc284"
   },
   "cue": {
-    "revision": "8a5f273bfa281c66354da562f2307c2d394b6c81"
+    "revision": "770737bcff2c4aa3f624d439e32b07dbb07102d3"
   },
   "cylc": {
     "revision": "8b895c278f98d05e67997f5e3a43fb5531933023"
@@ -174,7 +174,7 @@
     "revision": "8495d106154741e6d35d37064f864758ece75de6"
   },
   "erlang": {
-    "revision": "981fda038d2eb182a88a9374ccb1c14b840cba0b"
+    "revision": "cd1679d6e0ab03159001a39dc599523ed4fc5971"
   },
   "facility": {
     "revision": "e4bfd3e960de9f4b4648acb1c92e9b95b47d8cfb"
@@ -369,7 +369,7 @@
     "revision": "9b2f9aec2106b94b4e099fe75e73ebd8ae707c04"
   },
   "janet_simple": {
-    "revision": "ca4785b47a4ff15653f0408a49c764dec533e0d3"
+    "revision": "b08b402207fba0037d5152ce7c521351147f4388"
   },
   "java": {
     "revision": "a7db5227ec40fcfe94489559d8c9bc7c8181e25a"
