@@ -458,19 +458,19 @@
   "!" @type.builtin)
 
 (macro_invocation
-  macro: (identifier) @keyword.exception
+  macro: (identifier) @_identifier @keyword.exception
   "!" @keyword.exception
-  (#eq? @keyword.exception "panic"))
+  (#eq? @_identifier "panic"))
 
 (macro_invocation
-  macro: (identifier) @keyword.exception
+  macro: (identifier) @_identifier @keyword.exception
   "!" @keyword.exception
-  (#contains? @keyword.exception "assert"))
+  (#contains? @_identifier "assert"))
 
 (macro_invocation
-  macro: (identifier) @keyword.debug
+  macro: (identifier) @_identifier @keyword.debug
   "!" @keyword.debug
-  (#eq? @keyword.debug "dbg"))
+  (#eq? @_identifier "dbg"))
 
 ; Comments
 [
