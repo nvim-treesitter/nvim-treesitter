@@ -7,7 +7,7 @@ local uv = vim.uv or vim.loop
 ---@param p string
 ---@return string
 local function cmdpath(p)
-  p = "\"" .. p .. "\""
+  p = '\"' .. p .. '\"'
   if vim.opt.shellslash:get() then
     local r = p:gsub("/", "\\")
     return r
