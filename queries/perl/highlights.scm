@@ -320,7 +320,15 @@
 
 ; mark stringies on the LHS of a fat comma as a hash key, b/c that's usually what it
 ; denotes somewhat
-(_ [(autoquoted_bareword) (_ (string_content))] @variable.member . "=>" (_))
+(_
+  [
+    (autoquoted_bareword)
+    (_
+      (string_content))
+  ] @variable.member
+  .
+  "=>"
+  (_))
 
 (comment) @comment @spell
 
