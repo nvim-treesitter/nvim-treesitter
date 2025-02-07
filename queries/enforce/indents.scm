@@ -8,15 +8,18 @@
 ] @indent.begin
 
 [
-  "(" ")"
-  "[" "]"
-  "{" "}"
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
 ] @indent.branch
 
 [
- ")"
- "]"
- "}"
+  ")"
+  "]"
+  "}"
 ] @indent.end
 
 (comment_line) @indent.ignore
