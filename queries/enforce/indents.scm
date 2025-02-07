@@ -1,8 +1,9 @@
 [
   (block)
-  (decl_class)
-  (decl_enum)
-  (switch)
+  (class_body)
+  (enum_body)
+  (switch_body)
+  (array_creation)
   (formal_parameters)
   (actual_parameters)
 ] @indent.begin
@@ -12,7 +13,6 @@
   ")"
   "["
   "]"
-  "{"
   "}"
 ] @indent.branch
 
