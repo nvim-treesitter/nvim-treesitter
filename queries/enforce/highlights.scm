@@ -20,6 +20,9 @@
 
 (identifier) @variable
 
+(formal_parameter
+  name: (identifier) @variable.parameter)
+
 ((identifier) @constant
   (#lua-match? @constant "^[A-Z_][A-Z%d_]+$"))
 
@@ -104,41 +107,37 @@
   ";"
 ] @punctuation.delimiter
 
-(literal_string
-  [
-    "\""
-    "\""
-  ] @punctuation.delimiter)
-
 [
-  "continue"
-  "break"
-  "switch"
-  "case"
-  "typedef"
-  "delete"
   "default"
   "extends"
-  "new" ; TODO: is it operator?
-  "auto" ; TODO: is it type?
 ] @keyword
+
+[
+ "new"
+ "delete"
+ ] @keyword.operator
 
 "return" @keyword.return
 
 [
   "if"
   "else"
+  "switch"
+  "case"
 ] @keyword.conditional
 
 [
   "while"
   "for"
   "foreach"
+  "continue"
+  "break"
 ] @keyword.repeat
 
 [
   "enum"
   "class"
+  "typedef"
 ] @keyword.type
 
 [
@@ -154,19 +153,27 @@
 (decl_class
   typename: (identifier) @type)
 
+(decl_class
+  superclass: (superclass
+    typename: (identifier) @type))
+
 (decl_enum
   typename: (identifier) @type)
 
 (type_identifier
   (identifier) @type)
 
-(type_primitive) @type.builtin
+[
+  "auto"
+  (type_primitive)
+] @type.builtin
 
 [
   (super)
   (this)
-  (literal_null)
 ] @variable.builtin
+
+(literal_null) @constant.builtin
 
 (decl_method
   name: (identifier) @function.method)
