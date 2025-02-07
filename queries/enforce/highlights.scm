@@ -1,27 +1,18 @@
-(comment_line) @comment @spell
-(comment_block) @comment.block @spell
+[
+ (comment_line)
+ (comment_block)
+ ] @comment @spell
 
-(doc_line) @comment.documentation @spell
-(doc_block) @comment.documentation.block @spell
+[
+ (doc_line)
+ (doc_block)
+ ] @comment.documentation @spell
 
 (literal_bool) @boolean
 (literal_int) @number
 (literal_float) @number.float
 (literal_string) @string
 (escape_sequence) @string.escape
-
-
-; vectors
-; TODO: what about arrays of vectors?
-(decl_variable
-  (type_vector)
-  (literal_string) @vector
-  )
-
-(formal_parameter
-  type: (type_vector)
-  default: (literal_string) @vector
-  )
 
 (identifier) @variable
 
@@ -118,34 +109,11 @@
 
 ; Constructor and deconstructor (function with same name of the class)
 (decl_class
-  typename: (identifier) @foo
+  typename: (identifier) @_classname
   body: (class_body
     (decl_method
-	    name: (identifier) @constructor
-	    (#eq? @constructor @foo)
+      name: (identifier) @constructor
+      (#eq? @constructor @_classname)
       )
     )
   )
-
-; TODO: mark invalid deconstructor as error?
-(decl_class
-  typename: (identifier) @foo
-  body: (class_body
-    (decl_method
-      "~"
-	    name: (identifier) @constructor.deconstructor
-	    (#eq? @constructor.deconstructor @foo)
-      )
-    )
-  )
-
-; Dead code
-(block
-  (_)*
-  (return)
-  (_)* @deadcode (#set! "priority" 110)
-  )
-
-(ERROR) @error
-
-; TODO: string and print format injection
