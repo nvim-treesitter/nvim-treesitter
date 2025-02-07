@@ -231,6 +231,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [elsa](https://github.com/glapa-grossklag/tree-sitter-elsa) (maintained by @glapa-grossklag, @amaanq)
 - [x] [elvish](https://github.com/elves/tree-sitter-elvish) (maintained by @elves)
 - [ ] [embedded_template](https://github.com/tree-sitter/tree-sitter-embedded-template)
+- [x] [enforce](https://github.com/simonvic/tree-sitter-enforce) (maintained by @simonvic)
 - [x] [erlang](https://github.com/WhatsApp/tree-sitter-erlang) (maintained by @filmor)
 - [x] [facility](https://github.com/FacilityApi/tree-sitter-facility) (maintained by @bryankenote)
 - [x] [faust](https://github.com/khiner/tree-sitter-faust) (maintained by @khiner)

@@ -549,6 +549,14 @@ list.embedded_template = {
   filetype = "eruby",
 }
 
+list.enforce = {
+  install_info = {
+    url = "https://github.com/simonvic/tree-sitter-enforce",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@simonvic" },
+}
+
 list.erlang = {
   install_info = {
     url = "https://github.com/WhatsApp/tree-sitter-erlang",
