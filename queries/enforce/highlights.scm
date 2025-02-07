@@ -113,9 +113,9 @@
 ] @keyword
 
 [
- "new"
- "delete"
- ] @keyword.operator
+  "new"
+  "delete"
+] @keyword.operator
 
 "return" @keyword.return
 
