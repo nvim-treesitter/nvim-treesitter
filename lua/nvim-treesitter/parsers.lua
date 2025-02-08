@@ -1891,6 +1891,7 @@ list.razor = {
   install_info = {
     url = "https://github.com/tris203/tree-sitter-razor",
     files = { "src/parser.c", "src/scanner.c" },
+    generate_requires_npm = true,
   },
   maintainers = { "@tris203" },
 }
