@@ -42,6 +42,8 @@
 ((namespace_identifier) @type
   (#lua-match? @type "^[%u]"))
 
+(module_name) @module
+
 (case_statement
   value: (qualified_identifier
     (identifier) @constant))
@@ -209,6 +211,9 @@
   "using"
   "requires"
   "constexpr"
+  "module"
+  "import"
+  "export"
 ] @keyword
 
 [
