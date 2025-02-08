@@ -173,6 +173,9 @@
   "embedded_template": {
     "revision": "8495d106154741e6d35d37064f864758ece75de6"
   },
+  "enforce": {
+    "revision": "9db7a49f3d73222c05b75dcfa8892f5e93542d1e"
+  },
   "erlang": {
     "revision": "90f1fcb7a9c9fff2442c00d087368d5bc2c94407"
   },
