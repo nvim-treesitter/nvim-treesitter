@@ -286,7 +286,8 @@ end
 
 ---@param cmd_list Command[]
 ---@return boolean
-local function iter_cmd_sync(cmd_list)
+local function iter_cmd_sync(cmd_list, hide_errors)
+  hide_errors = hide_errors or false
   for _, cmd in ipairs(cmd_list) do
     if cmd.info then
       print(cmd.info)
@@ -297,10 +298,12 @@ local function iter_cmd_sync(cmd_list)
     else
       local ret = vim.fn.system(get_command(cmd))
       if vim.v.shell_error ~= 0 then
-        print(ret)
-        api.nvim_err_writeln(
-          (cmd.err and cmd.err .. "\n" or "") .. "Failed to execute the following command:\n" .. vim.inspect(cmd)
-        )
+        if not hide_errors then
+          print(ret)
+          api.nvim_err_writeln(
+            (cmd.err and cmd.err .. "\n" or "") .. "Failed to execute the following command:\n" .. vim.inspect(cmd)
+          )
+        end
         return false
       end
     end
@@ -450,6 +453,18 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   })
   if not from_local_path then
     vim.list_extend(command_list, { shell.select_install_rm_cmd(cache_folder, project_name) })
+  end
+
+  if not from_local_path and fn.has "win32" == 1 then
+    local test_for_lock_cmd = shell.select_install_test_lock(cache_folder, project_name)
+    if not iter_cmd_sync(test_for_lock_cmd, true) then
+      vim.notify(
+        "Tree sitter parser for " .. lang .. " is ccurrently locked. Will continue using currently installed version.",
+        vim.log.levels.WARN,
+        {}
+      )
+      return
+    end
   end
 
   if with_sync then

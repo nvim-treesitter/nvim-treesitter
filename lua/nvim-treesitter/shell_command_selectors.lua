@@ -200,6 +200,34 @@ function M.select_install_rm_cmd(cache_folder, project_name)
   end
 end
 
+-- Returns a table of commands to test if a folder is locked
+---@param cache_folder string
+---@param project_name string
+---@return Command
+function M.select_install_test_lock(cache_folder, project_name)
+  if fn.has "win32" == 1 then
+    local project_name_test = project_name .. "-tmp"
+    local dir = cache_folder .. "\\" .. project_name
+    local dir_test = cache_folder .. "\\" .. project_name_test
+    return {
+      {
+        cmd = "cmd",
+        opts = {
+          args = { "/C", "if", "exist", cmdpath(dir), "ren", cmdpath(dir), project_name_test },
+        },
+      },
+      {
+        cmd = "cmd",
+        opts = {
+          args = { "/C", "if", "exist", cmdpath(dir_test), "ren", cmdpath(dir_test), project_name },
+        },
+      },
+    }
+  else
+    return {}
+  end
+end
+
 -- Returns the move command based on the OS
 ---@param from string
 ---@param to string
