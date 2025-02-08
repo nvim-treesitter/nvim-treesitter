@@ -27,8 +27,5 @@
 ; Block Scope
 (block) @local.scope
 
-; Function Body Scope
-(function_body) @local.scope
-
 ; Case Scope
 (case_clause) @local.scope

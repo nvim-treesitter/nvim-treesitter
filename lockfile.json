@@ -177,7 +177,7 @@
     "revision": "9db7a49f3d73222c05b75dcfa8892f5e93542d1e"
   },
   "erlang": {
-    "revision": "90f1fcb7a9c9fff2442c00d087368d5bc2c94407"
+    "revision": "9cea919877741b2ed87cf215c0a06feb9a1930bf"
   },
   "facility": {
     "revision": "e4bfd3e960de9f4b4648acb1c92e9b95b47d8cfb"
@@ -246,7 +246,7 @@
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
   },
   "gleam": {
-    "revision": "066704e4826699e754d351e3bbe12bf2e51de9d8"
+    "revision": "af6043419f5aa0f8b6c2a26db0187aefa46c7f5f"
   },
   "glimmer": {
     "revision": "da605af8c5999b43e6839b575eae5e6cafabb06f"
@@ -381,7 +381,10 @@
     "revision": "6fbef40512dcd9f0a61ce03a4c9ae7597b36ab5c"
   },
   "jinja": {
-    "revision": "cea7dd379d343e84a6e42793d9055a807957f40f"
+    "revision": "41b17a33f335130ce9861fd21bffeb88fd768ef4"
+  },
+  "jinja_inline": {
+    "revision": "41b17a33f335130ce9861fd21bffeb88fd768ef4"
   },
   "jq": {
     "revision": "13990f530e8e6709b7978503da9bc8701d366791"
@@ -933,9 +936,9 @@
     "revision": "b670c8df85a1568f498aa5c8cae42f51a90473c0"
   },
   "ziggy": {
-    "revision": "3518133e9ebea7c372eff4def368eda8488fad18"
+    "revision": "acf2b6b5aa8b9ce93f4a1ef1adf4e95c06db7831"
   },
   "ziggy_schema": {
-    "revision": "3518133e9ebea7c372eff4def368eda8488fad18"
+    "revision": "acf2b6b5aa8b9ce93f4a1ef1adf4e95c06db7831"
   }
 }
