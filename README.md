@@ -300,6 +300,8 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [janet_simple](https://github.com/sogaiu/tree-sitter-janet-simple) (maintained by @sogaiu)
 - [x] [java](https://github.com/tree-sitter/tree-sitter-java) (maintained by @p00f)
 - [x] [javascript](https://github.com/tree-sitter/tree-sitter-javascript) (maintained by @steelsojka)
+- [x] [jinja](https://github.com/cathaysia/tree-sitter-jinja) (maintained by @cathaysia)
+- [x] [jinja_inline](https://github.com/cathaysia/tree-sitter-jinja) (maintained by @cathaysia)
 - [x] [jq](https://github.com/flurie/tree-sitter-jq) (maintained by @ObserverOfTime)
 - [x] [jsdoc](https://github.com/tree-sitter/tree-sitter-jsdoc) (maintained by @steelsojka)
 - [x] [json](https://github.com/tree-sitter/tree-sitter-json) (maintained by @steelsojka)
