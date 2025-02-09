@@ -1,6 +1,6 @@
 local M = {}
 
-M.tiers = { 'stable', 'core', 'community', 'unsupported' }
+M.tiers = { 'stable', 'unstable', 'unmaintained', 'unsupported' }
 
 ---@class TSConfig
 ---@field ensure_install string[]
@@ -72,15 +72,13 @@ function M.get_available(tier)
   --- @type string[]
   local languages = vim.tbl_keys(parsers)
   table.sort(languages)
-  if tier then
-    languages = vim.tbl_filter(
-      --- @param p string
-      function(p)
-        return parsers[p].tier == tier
-      end,
-      languages
-    )
-  end
+  languages = vim.tbl_filter(
+    --- @param p string
+    function(p)
+      return (tier and parsers[p].tier == tier) or parsers[p].tier < 4
+    end,
+    languages
+  )
   return languages
 end
 
@@ -159,7 +157,7 @@ function M.norm_languages(languages, skip)
     --- @param v string
     function(v)
       -- TODO(lewis6991): warn of any unknown parsers?
-      return parsers[v] ~= nil
+      return parsers[v] ~= nil and parsers[v].tier < 4
     end,
     languages
   )
