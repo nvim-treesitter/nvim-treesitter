@@ -6,7 +6,7 @@ return {
       url = 'https://github.com/briot/tree-sitter-ada',
     },
     maintainers = { '@briot' },
-    tier = 3,
+    tier = 2,
   },
   agda = {
     install_info = {
@@ -24,16 +24,16 @@ return {
     },
     maintainers = { '@dlvandenberg' },
     requires = { 'html', 'html_tags' },
-    tier = 3,
+    tier = 2,
   },
   apex = {
     install_info = {
       location = 'apex',
-      revision = 'eade4054efc897f4bb18a5b7bf4b5a824dbffa74',
+      revision = '3597575a429766dd7ecce9f5bb97f6fec4419d5d',
       url = 'https://github.com/aheber/tree-sitter-sfapex',
     },
     maintainers = { '@aheber', '@xixiafinland' },
-    tier = 3,
+    tier = 2,
   },
   arduino = {
     install_info = {
@@ -51,7 +51,7 @@ return {
       url = 'https://github.com/RubixDev/tree-sitter-asm',
     },
     maintainers = { '@RubixDev' },
-    tier = 3,
+    tier = 2,
   },
   astro = {
     install_info = {
@@ -61,7 +61,7 @@ return {
     },
     maintainers = { '@virchau13' },
     requires = { 'html', 'html_tags' },
-    tier = 3,
+    tier = 2,
   },
   authzed = {
     install_info = {
@@ -69,14 +69,14 @@ return {
       url = 'https://github.com/mleonidas/tree-sitter-authzed',
     },
     maintainers = { '@mattpolzin' },
-    tier = 3,
+    tier = 2,
   },
   awk = {
     install_info = {
       revision = '34bbdc7cce8e803096f47b625979e34c1be38127',
       url = 'https://github.com/Beaglefoot/tree-sitter-awk',
     },
-    tier = 4,
+    tier = 2,
   },
   bash = {
     install_info = {
@@ -84,7 +84,7 @@ return {
       url = 'https://github.com/tree-sitter/tree-sitter-bash',
     },
     maintainers = { '@TravonteD' },
-    tier = 1,
+    tier = 2,
   },
   bass = {
     install_info = {
@@ -92,7 +92,7 @@ return {
       url = 'https://github.com/vito/tree-sitter-bass',
     },
     maintainers = { '@amaanq' },
-    tier = 3,
+    tier = 2,
   },
   beancount = {
     install_info = {
@@ -100,7 +100,7 @@ return {
       url = 'https://github.com/polarmutex/tree-sitter-beancount',
     },
     maintainers = { '@polarmutex' },
-    tier = 3,
+    tier = 2,
   },
   bibtex = {
     install_info = {
@@ -108,7 +108,7 @@ return {
       url = 'https://github.com/latex-lsp/tree-sitter-bibtex',
     },
     maintainers = { '@theHamsta', '@clason' },
-    tier = 3,
+    tier = 2,
   },
   bicep = {
     install_info = {
@@ -132,7 +132,7 @@ return {
       url = 'https://gitlab.com/gabmus/tree-sitter-blueprint',
     },
     maintainers = { '@gabmus' },
-    tier = 4,
+    tier = 2,
   },
   bp = {
     install_info = {
@@ -141,7 +141,7 @@ return {
     },
     maintainers = { '@ambroisie' },
     readme_note = 'Android Blueprint',
-    tier = 3,
+    tier = 2,
   },
   c = {
     install_info = {
@@ -149,11 +149,11 @@ return {
       url = 'https://github.com/tree-sitter/tree-sitter-c',
     },
     maintainers = { '@amaanq' },
-    tier = 1,
+    tier = 2,
   },
   c_sharp = {
     install_info = {
-      revision = 'b27b091bfdc5f16d0ef76421ea5609c82a57dff0',
+      revision = 'b5eb5742f6a7e9438bee22ce8026d6b927be2cd7',
       url = 'https://github.com/tree-sitter/tree-sitter-c-sharp',
     },
     maintainers = { '@amaanq' },
@@ -189,7 +189,7 @@ return {
       url = 'https://github.com/Decurity/tree-sitter-circom',
     },
     maintainers = { '@alexandr-martirosyan' },
-    tier = 3,
+    tier = 2,
   },
   clojure = {
     install_info = {
@@ -197,7 +197,7 @@ return {
       url = 'https://github.com/sogaiu/tree-sitter-clojure',
     },
     maintainers = { '@NoahTheDuke' },
-    tier = 3,
+    tier = 2,
   },
   cmake = {
     install_info = {
@@ -205,7 +205,7 @@ return {
       url = 'https://github.com/uyha/tree-sitter-cmake',
     },
     maintainers = { '@uyha' },
-    tier = 3,
+    tier = 2,
   },
   comment = {
     install_info = {
@@ -213,7 +213,7 @@ return {
       url = 'https://github.com/stsewd/tree-sitter-comment',
     },
     maintainers = { '@stsewd' },
-    tier = 3,
+    tier = 2,
   },
   commonlisp = {
     install_info = {
@@ -230,7 +230,7 @@ return {
       url = 'https://github.com/addcninblue/tree-sitter-cooklang',
     },
     maintainers = { '@addcninblue' },
-    tier = 3,
+    tier = 2,
   },
   corn = {
     install_info = {
@@ -238,7 +238,7 @@ return {
       url = 'https://github.com/jakestanger/tree-sitter-corn',
     },
     maintainers = { '@jakestanger' },
-    tier = 3,
+    tier = 2,
   },
   cpon = {
     install_info = {
@@ -292,7 +292,7 @@ return {
       url = 'https://github.com/eonpatapon/tree-sitter-cue',
     },
     maintainers = { '@amaanq' },
-    tier = 3,
+    tier = 2,
   },
   cylc = {
     install_info = {
@@ -300,7 +300,7 @@ return {
       url = 'https://github.com/elliotfontaine/tree-sitter-cylc',
     },
     maintainers = { '@elliotfontaine' },
-    tier = 3,
+    tier = 2,
   },
   d = {
     install_info = {
@@ -308,7 +308,7 @@ return {
       url = 'https://github.com/gdamore/tree-sitter-d',
     },
     maintainers = { '@amaanq' },
-    tier = 3,
+    tier = 2,
   },
   dart = {
     install_info = {
@@ -316,7 +316,7 @@ return {
       url = 'https://github.com/UserNobody14/tree-sitter-dart',
     },
     maintainers = { '@akinsho' },
-    tier = 3,
+    tier = 2,
   },
   desktop = {
     install_info = {
@@ -324,7 +324,7 @@ return {
       url = 'https://github.com/ValdezFOmar/tree-sitter-desktop',
     },
     maintainers = { '@ValdezFOmar' },
-    tier = 3,
+    tier = 2,
   },
   devicetree = {
     install_info = {
@@ -332,7 +332,7 @@ return {
       url = 'https://github.com/joelspadin/tree-sitter-devicetree',
     },
     maintainers = { '@jedrzejboczar' },
-    tier = 3,
+    tier = 2,
   },
   dhall = {
     install_info = {
@@ -340,7 +340,7 @@ return {
       url = 'https://github.com/jbellerb/tree-sitter-dhall',
     },
     maintainers = { '@amaanq' },
-    tier = 3,
+    tier = 2,
   },
   diff = {
     install_info = {
@@ -348,7 +348,7 @@ return {
       url = 'https://github.com/the-mikedavis/tree-sitter-diff',
     },
     maintainers = { '@gbprod' },
-    tier = 3,
+    tier = 2,
   },
   disassembly = {
     install_info = {
@@ -356,7 +356,7 @@ return {
       url = 'https://github.com/ColinKennedy/tree-sitter-disassembly',
     },
     maintainers = { '@ColinKennedy' },
-    tier = 3,
+    tier = 2,
   },
   djot = {
     install_info = {
@@ -364,7 +364,7 @@ return {
       url = 'https://github.com/treeman/tree-sitter-djot',
     },
     maintainers = { '@NoahTheDuke' },
-    tier = 3,
+    tier = 2,
   },
   dockerfile = {
     install_info = {
@@ -372,7 +372,7 @@ return {
       url = 'https://github.com/camdencheek/tree-sitter-dockerfile',
     },
     maintainers = { '@camdencheek' },
-    tier = 3,
+    tier = 2,
   },
   dot = {
     install_info = {
@@ -380,7 +380,7 @@ return {
       url = 'https://github.com/rydesun/tree-sitter-dot',
     },
     maintainers = { '@rydesun' },
-    tier = 3,
+    tier = 2,
   },
   doxygen = {
     install_info = {
@@ -405,7 +405,7 @@ return {
       url = 'https://github.com/glehmann/tree-sitter-earthfile',
     },
     maintainers = { '@glehmann' },
-    tier = 3,
+    tier = 2,
   },
   ebnf = {
     install_info = {
@@ -414,12 +414,12 @@ return {
       url = 'https://github.com/RubixDev/ebnf',
     },
     maintainers = { '@RubixDev' },
-    tier = 3,
+    tier = 2,
   },
   ecma = {
     maintainers = { '@steelsojka' },
     readme_note = 'queries required by javascript, typescript, tsx, qmljs',
-    tier = 3,
+    tier = 2,
   },
   editorconfig = {
     install_info = {
@@ -427,7 +427,7 @@ return {
       url = 'https://github.com/ValdezFOmar/tree-sitter-editorconfig',
     },
     maintainers = { '@ValdezFOmar' },
-    tier = 3,
+    tier = 2,
   },
   eds = {
     install_info = {
@@ -435,7 +435,7 @@ return {
       url = 'https://github.com/uyha/tree-sitter-eds',
     },
     maintainers = { '@uyha' },
-    tier = 3,
+    tier = 2,
   },
   eex = {
     install_info = {
@@ -443,7 +443,7 @@ return {
       url = 'https://github.com/connorlay/tree-sitter-eex',
     },
     maintainers = { '@connorlay' },
-    tier = 3,
+    tier = 2,
   },
   elixir = {
     install_info = {
@@ -451,7 +451,7 @@ return {
       url = 'https://github.com/elixir-lang/tree-sitter-elixir',
     },
     maintainers = { '@connorlay' },
-    tier = 3,
+    tier = 2,
   },
   elm = {
     install_info = {
@@ -459,7 +459,7 @@ return {
       url = 'https://github.com/elm-tooling/tree-sitter-elm',
     },
     maintainers = { '@zweimach' },
-    tier = 3,
+    tier = 2,
   },
   elsa = {
     install_info = {
@@ -467,7 +467,7 @@ return {
       url = 'https://github.com/glapa-grossklag/tree-sitter-elsa',
     },
     maintainers = { '@glapa-grossklag', '@amaanq' },
-    tier = 3,
+    tier = 2,
   },
   elvish = {
     install_info = {
@@ -475,30 +475,30 @@ return {
       url = 'https://github.com/elves/tree-sitter-elvish',
     },
     maintainers = { '@elves' },
-    tier = 3,
+    tier = 2,
   },
   embedded_template = {
     install_info = {
       revision = '8495d106154741e6d35d37064f864758ece75de6',
       url = 'https://github.com/tree-sitter/tree-sitter-embedded-template',
     },
-    tier = 4,
+    tier = 2,
   },
   enforce = {
     install_info = {
-      revision = '9db7a49f3d73222c05b75dcfa8892f5e93542d1e',
+      revision = 'cf853e5f56f1babe5ec573e356f6fbb4784bf5c1',
       url = 'https://github.com/simonvic/tree-sitter-enforce',
     },
     maintainers = { '@simonvic' },
-    tier = 3,
+    tier = 2,
   },
   erlang = {
     install_info = {
-      revision = '9cea919877741b2ed87cf215c0a06feb9a1930bf',
+      revision = '370cea629eb62a8686504b9fb3252a5e1ae55313',
       url = 'https://github.com/WhatsApp/tree-sitter-erlang',
     },
     maintainers = { '@filmor' },
-    tier = 3,
+    tier = 2,
   },
   facility = {
     install_info = {
@@ -506,7 +506,7 @@ return {
       url = 'https://github.com/FacilityApi/tree-sitter-facility',
     },
     maintainers = { '@bryankenote' },
-    tier = 3,
+    tier = 2,
   },
   faust = {
     install_info = {
@@ -514,7 +514,7 @@ return {
       url = 'https://github.com/khiner/tree-sitter-faust',
     },
     maintainers = { '@khiner' },
-    tier = 3,
+    tier = 2,
   },
   fennel = {
     install_info = {
@@ -523,7 +523,7 @@ return {
       url = 'https://github.com/alexmozaidze/tree-sitter-fennel',
     },
     maintainers = { '@alexmozaidze' },
-    tier = 3,
+    tier = 2,
   },
   fidl = {
     install_info = {
@@ -531,7 +531,7 @@ return {
       url = 'https://github.com/google/tree-sitter-fidl',
     },
     maintainers = { '@chaopeng' },
-    tier = 3,
+    tier = 2,
   },
   firrtl = {
     install_info = {
@@ -547,7 +547,7 @@ return {
       url = 'https://github.com/ram02z/tree-sitter-fish',
     },
     maintainers = { '@ram02z' },
-    tier = 3,
+    tier = 2,
   },
   foam = {
     install_info = {
@@ -555,7 +555,7 @@ return {
       url = 'https://github.com/FoamScience/tree-sitter-foam',
     },
     maintainers = { '@FoamScience' },
-    tier = 3,
+    tier = 2,
   },
   forth = {
     install_info = {
@@ -563,7 +563,7 @@ return {
       url = 'https://github.com/AlexanderBrevig/tree-sitter-forth',
     },
     maintainers = { '@amaanq' },
-    tier = 3,
+    tier = 2,
   },
   fortran = {
     install_info = {
@@ -571,7 +571,7 @@ return {
       url = 'https://github.com/stadelmanma/tree-sitter-fortran',
     },
     maintainers = { '@amaanq' },
-    tier = 3,
+    tier = 2,
   },
   fsh = {
     install_info = {
@@ -579,7 +579,7 @@ return {
       url = 'https://github.com/mgramigna/tree-sitter-fsh',
     },
     maintainers = { '@mgramigna' },
-    tier = 3,
+    tier = 2,
   },
   fsharp = {
     install_info = {
@@ -588,7 +588,7 @@ return {
       url = 'https://github.com/ionide/tree-sitter-fsharp',
     },
     maintainers = { '@nsidorenco' },
-    tier = 3,
+    tier = 2,
   },
   func = {
     install_info = {
@@ -604,7 +604,7 @@ return {
       url = 'https://gitlab.com/jirgn/tree-sitter-fusion',
     },
     maintainers = { '@jirgn' },
-    tier = 3,
+    tier = 2,
   },
   gap = {
     install_info = {
@@ -613,7 +613,7 @@ return {
     },
     maintainers = { '@reiniscirpons' },
     readme_note = 'GAP system',
-    tier = 3,
+    tier = 2,
   },
   gaptst = {
     install_info = {
@@ -623,7 +623,7 @@ return {
     maintainers = { '@reiniscirpons' },
     readme_note = 'GAP system test files',
     requires = { 'gap' },
-    tier = 3,
+    tier = 2,
   },
   gdscript = {
     install_info = {
@@ -632,7 +632,7 @@ return {
     },
     maintainers = { '@PrestonKnopp' },
     readme_note = 'Godot',
-    tier = 3,
+    tier = 2,
   },
   gdshader = {
     install_info = {
@@ -640,7 +640,7 @@ return {
       url = 'https://github.com/GodOfAvacyn/tree-sitter-gdshader',
     },
     maintainers = { '@godofavacyn' },
-    tier = 3,
+    tier = 2,
   },
   git_config = {
     install_info = {
@@ -648,7 +648,7 @@ return {
       url = 'https://github.com/the-mikedavis/tree-sitter-git-config',
     },
     maintainers = { '@amaanq' },
-    tier = 3,
+    tier = 2,
   },
   git_rebase = {
     install_info = {
@@ -656,7 +656,7 @@ return {
       url = 'https://github.com/the-mikedavis/tree-sitter-git-rebase',
     },
     maintainers = { '@gbprod' },
-    tier = 3,
+    tier = 2,
   },
   gitattributes = {
     install_info = {
@@ -672,7 +672,7 @@ return {
       url = 'https://github.com/gbprod/tree-sitter-gitcommit',
     },
     maintainers = { '@gbprod' },
-    tier = 3,
+    tier = 2,
   },
   gitignore = {
     install_info = {
@@ -680,7 +680,7 @@ return {
       url = 'https://github.com/shunsambongi/tree-sitter-gitignore',
     },
     maintainers = { '@theHamsta' },
-    tier = 3,
+    tier = 2,
   },
   gleam = {
     install_info = {
@@ -688,7 +688,7 @@ return {
       url = 'https://github.com/gleam-lang/tree-sitter-gleam',
     },
     maintainers = { '@amaanq' },
-    tier = 3,
+    tier = 2,
   },
   glimmer = {
     install_info = {
@@ -697,7 +697,7 @@ return {
     },
     maintainers = { '@NullVoxPopuli' },
     readme_note = 'Glimmer and Ember',
-    tier = 3,
+    tier = 2,
   },
   glimmer_javascript = {
     install_info = {
@@ -707,7 +707,7 @@ return {
     },
     maintainers = { '@NullVoxPopuli' },
     requires = { 'ecma' },
-    tier = 3,
+    tier = 2,
   },
   glimmer_typescript = {
     install_info = {
@@ -717,7 +717,7 @@ return {
     },
     maintainers = { '@NullVoxPopuli' },
     requires = { 'typescript' },
-    tier = 3,
+    tier = 2,
   },
   glsl = {
     install_info = {
@@ -744,7 +744,7 @@ return {
       url = 'https://github.com/dpezto/tree-sitter-gnuplot',
     },
     maintainers = { '@dpezto' },
-    tier = 3,
+    tier = 2,
   },
   go = {
     install_info = {
@@ -760,7 +760,7 @@ return {
       url = 'https://github.com/chaozwn/tree-sitter-goctl',
     },
     maintainers = { '@chaozwn' },
-    tier = 3,
+    tier = 2,
   },
   godot_resource = {
     install_info = {
@@ -769,7 +769,7 @@ return {
     },
     maintainers = { '@pierpo' },
     readme_note = 'Godot Resources',
-    tier = 3,
+    tier = 2,
   },
   gomod = {
     install_info = {
@@ -777,7 +777,7 @@ return {
       url = 'https://github.com/camdencheek/tree-sitter-go-mod',
     },
     maintainers = { '@camdencheek' },
-    tier = 3,
+    tier = 2,
   },
   gosum = {
     install_info = {
@@ -793,7 +793,7 @@ return {
       url = 'https://github.com/ngalaiko/tree-sitter-go-template',
     },
     maintainers = { '@qvalentin' },
-    tier = 3,
+    tier = 2,
   },
   gowork = {
     install_info = {
@@ -801,7 +801,7 @@ return {
       url = 'https://github.com/omertuc/tree-sitter-go-work',
     },
     maintainers = { '@omertuc' },
-    tier = 3,
+    tier = 2,
   },
   gpg = {
     install_info = {
@@ -817,7 +817,7 @@ return {
       url = 'https://github.com/bkegley/tree-sitter-graphql',
     },
     maintainers = { '@bkegley' },
-    tier = 3,
+    tier = 2,
   },
   gren = {
     install_info = {
@@ -825,7 +825,7 @@ return {
       url = 'https://github.com/MaeBrooks/tree-sitter-gren',
     },
     maintainers = { '@MaeBrooks' },
-    tier = 3,
+    tier = 2,
   },
   groovy = {
     install_info = {
@@ -833,7 +833,7 @@ return {
       url = 'https://github.com/murtaza64/tree-sitter-groovy',
     },
     maintainers = { '@murtaza64' },
-    tier = 3,
+    tier = 2,
   },
   gstlaunch = {
     install_info = {
@@ -848,7 +848,7 @@ return {
       revision = 'bc5b3a10d6d27e8220a113a9a7fe9bec0a1574b0',
       url = 'https://github.com/slackhq/tree-sitter-hack',
     },
-    tier = 4,
+    tier = 2,
   },
   hare = {
     install_info = {
@@ -872,7 +872,7 @@ return {
       url = 'https://github.com/MercuryTechnologies/tree-sitter-haskell-persistent',
     },
     maintainers = { '@lykahb' },
-    tier = 3,
+    tier = 2,
   },
   hcl = {
     install_info = {
@@ -888,7 +888,7 @@ return {
       url = 'https://github.com/connorlay/tree-sitter-heex',
     },
     maintainers = { '@connorlay' },
-    tier = 3,
+    tier = 2,
   },
   helm = {
     install_info = {
@@ -897,7 +897,7 @@ return {
       url = 'https://github.com/ngalaiko/tree-sitter-go-template',
     },
     maintainers = { '@qvalentin' },
-    tier = 3,
+    tier = 2,
   },
   hjson = {
     install_info = {
@@ -907,7 +907,7 @@ return {
     },
     maintainers = { '@winston0410' },
     requires = { 'json' },
-    tier = 3,
+    tier = 2,
   },
   hlsl = {
     install_info = {
@@ -925,7 +925,7 @@ return {
       url = 'https://github.com/Freed-Wu/tree-sitter-hlsplaylist',
     },
     maintainers = { '@Freed-Wu' },
-    tier = 3,
+    tier = 2,
   },
   hocon = {
     install_info = {
@@ -934,7 +934,7 @@ return {
       url = 'https://github.com/antosha417/tree-sitter-hocon',
     },
     maintainers = { '@antosha417' },
-    tier = 4,
+    tier = 2,
   },
   hoon = {
     install_info = {
@@ -942,7 +942,7 @@ return {
       url = 'https://github.com/urbit-pilled/tree-sitter-hoon',
     },
     maintainers = { '@urbit-pilled' },
-    tier = 3,
+    tier = 2,
   },
   html = {
     install_info = {
@@ -956,7 +956,7 @@ return {
   html_tags = {
     maintainers = { '@TravonteD' },
     readme_note = 'queries required by html, astro, vue, svelte',
-    tier = 3,
+    tier = 2,
   },
   htmldjango = {
     install_info = {
@@ -964,15 +964,15 @@ return {
       url = 'https://github.com/interdependence/tree-sitter-htmldjango',
     },
     maintainers = { '@ObserverOfTime' },
-    tier = 3,
+    tier = 2,
   },
   http = {
     install_info = {
-      revision = 'd2e4e4c7d03f70e0465d436f2b5f67497cd544ca',
+      revision = '77ecf6385f1b5d422e0bbd12204374d287d61ad2',
       url = 'https://github.com/rest-nvim/tree-sitter-http',
     },
     maintainers = { '@amaanq', '@NTBBloodbath' },
-    tier = 3,
+    tier = 2,
   },
   hurl = {
     install_info = {
@@ -980,7 +980,7 @@ return {
       url = 'https://github.com/pfeiferj/tree-sitter-hurl',
     },
     maintainers = { '@pfeiferj' },
-    tier = 3,
+    tier = 2,
   },
   hyprlang = {
     install_info = {
@@ -992,11 +992,11 @@ return {
   },
   idl = {
     install_info = {
-      revision = '86ff7f19747a761dc8ba72f4045fd64aed94ba4c',
+      revision = 'b14e7971cfbd64fa0ebcdeaa4dfbb3cb0bfabd7c',
       url = 'https://github.com/cathaysia/tree-sitter-idl',
     },
     maintainers = { '@cathaysia' },
-    tier = 3,
+    tier = 2,
   },
   idris = {
     install_info = {
@@ -1004,7 +1004,7 @@ return {
       url = 'https://github.com/kayhide/tree-sitter-idris',
     },
     maintainers = { '@srghma' },
-    tier = 3,
+    tier = 2,
   },
   ini = {
     install_info = {
@@ -1012,7 +1012,7 @@ return {
       url = 'https://github.com/justinmk/tree-sitter-ini',
     },
     maintainers = { '@theHamsta' },
-    tier = 3,
+    tier = 2,
   },
   inko = {
     install_info = {
@@ -1020,7 +1020,7 @@ return {
       url = 'https://github.com/inko-lang/tree-sitter-inko',
     },
     maintainers = { '@yorickpeterse' },
-    tier = 3,
+    tier = 2,
   },
   ipkg = {
     install_info = {
@@ -1028,7 +1028,7 @@ return {
       url = 'https://github.com/srghma/tree-sitter-ipkg',
     },
     maintainers = { '@srghma' },
-    tier = 3,
+    tier = 2,
   },
   ispc = {
     install_info = {
@@ -1046,7 +1046,7 @@ return {
       url = 'https://github.com/sogaiu/tree-sitter-janet-simple',
     },
     maintainers = { '@sogaiu' },
-    tier = 3,
+    tier = 2,
   },
   java = {
     install_info = {
@@ -1074,7 +1074,7 @@ return {
     maintainers = { '@cathaysia' },
     readme_note = 'basic highlighting',
     requires = { 'jinja_inline' },
-    tier = 3,
+    tier = 2,
   },
   jinja_inline = {
     install_info = {
@@ -1084,7 +1084,7 @@ return {
     },
     maintainers = { '@cathaysia' },
     readme_note = 'needed for full highlighting',
-    tier = 3,
+    tier = 2,
   },
   jq = {
     install_info = {
@@ -1092,7 +1092,7 @@ return {
       url = 'https://github.com/flurie/tree-sitter-jq',
     },
     maintainers = { '@ObserverOfTime' },
-    tier = 3,
+    tier = 2,
   },
   jsdoc = {
     install_info = {
@@ -1116,7 +1116,7 @@ return {
       url = 'https://github.com/Joakker/tree-sitter-json5',
     },
     maintainers = { '@Joakker' },
-    tier = 3,
+    tier = 2,
   },
   jsonc = {
     install_info = {
@@ -1126,7 +1126,7 @@ return {
     },
     maintainers = { '@WhyNotHugo' },
     requires = { 'json' },
-    tier = 3,
+    tier = 2,
   },
   jsonnet = {
     install_info = {
@@ -1134,20 +1134,20 @@ return {
       url = 'https://github.com/sourcegraph/tree-sitter-jsonnet',
     },
     maintainers = { '@nawordar' },
-    tier = 3,
+    tier = 2,
   },
   jsx = {
     maintainers = { '@steelsojka' },
     readme_note = 'queries required by javascript, tsx',
-    tier = 3,
+    tier = 2,
   },
   julia = {
     install_info = {
-      revision = '3f9870ca1f419e480f39fc181fcfb6dad480969a',
+      revision = '12a3aede757bc7fbdfb1909507c7a6fddd31df37',
       url = 'https://github.com/tree-sitter/tree-sitter-julia',
     },
     maintainers = { '@fredrikekre' },
-    tier = 3,
+    tier = 2,
   },
   just = {
     install_info = {
@@ -1155,7 +1155,7 @@ return {
       url = 'https://github.com/IndianBoy42/tree-sitter-just',
     },
     maintainers = { '@Hubro' },
-    tier = 3,
+    tier = 2,
   },
   kconfig = {
     install_info = {
@@ -1179,7 +1179,7 @@ return {
       url = 'https://github.com/fwcd/tree-sitter-kotlin',
     },
     maintainers = { '@SalBakraa' },
-    tier = 3,
+    tier = 2,
   },
   koto = {
     install_info = {
@@ -1187,7 +1187,7 @@ return {
       url = 'https://github.com/koto-lang/tree-sitter-koto',
     },
     maintainers = { '@irh' },
-    tier = 3,
+    tier = 2,
   },
   kusto = {
     install_info = {
@@ -1195,7 +1195,7 @@ return {
       url = 'https://github.com/Willem-J-an/tree-sitter-kusto',
     },
     maintainers = { '@Willem-J-an' },
-    tier = 3,
+    tier = 2,
   },
   lalrpop = {
     install_info = {
@@ -1203,7 +1203,7 @@ return {
       url = 'https://github.com/traxys/tree-sitter-lalrpop',
     },
     maintainers = { '@traxys' },
-    tier = 3,
+    tier = 2,
   },
   latex = {
     install_info = {
@@ -1212,7 +1212,7 @@ return {
       url = 'https://github.com/latex-lsp/tree-sitter-latex',
     },
     maintainers = { '@theHamsta', '@clason' },
-    tier = 3,
+    tier = 2,
   },
   ledger = {
     install_info = {
@@ -1220,7 +1220,7 @@ return {
       url = 'https://github.com/cbarrete/tree-sitter-ledger',
     },
     maintainers = { '@cbarrete' },
-    tier = 3,
+    tier = 2,
   },
   leo = {
     install_info = {
@@ -1228,7 +1228,7 @@ return {
       url = 'https://github.com/r001/tree-sitter-leo',
     },
     maintainers = { '@r001' },
-    tier = 3,
+    tier = 2,
   },
   linkerscript = {
     install_info = {
@@ -1244,7 +1244,7 @@ return {
       url = 'https://github.com/hankthetank27/tree-sitter-liquid',
     },
     maintainers = { '@hankthetank27' },
-    tier = 3,
+    tier = 2,
   },
   liquidsoap = {
     install_info = {
@@ -1252,7 +1252,7 @@ return {
       url = 'https://github.com/savonet/tree-sitter-liquidsoap',
     },
     maintainers = { '@toots' },
-    tier = 3,
+    tier = 2,
   },
   llvm = {
     install_info = {
@@ -1260,7 +1260,7 @@ return {
       url = 'https://github.com/benwilliamgraham/tree-sitter-llvm',
     },
     maintainers = { '@benwilliamgraham' },
-    tier = 3,
+    tier = 2,
   },
   lua = {
     install_info = {
@@ -1268,7 +1268,7 @@ return {
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-lua',
     },
     maintainers = { '@muniftanjim' },
-    tier = 1,
+    tier = 2,
   },
   luadoc = {
     install_info = {
@@ -1303,7 +1303,7 @@ return {
       url = 'https://github.com/grahambates/tree-sitter-m68k',
     },
     maintainers = { '@grahambates' },
-    tier = 3,
+    tier = 2,
   },
   make = {
     install_info = {
@@ -1311,7 +1311,7 @@ return {
       url = 'https://github.com/alemuller/tree-sitter-make',
     },
     maintainers = { '@lewis6991' },
-    tier = 3,
+    tier = 2,
   },
   markdown = {
     install_info = {
@@ -1322,7 +1322,7 @@ return {
     maintainers = { '@MDeiml' },
     readme_note = 'basic highlighting',
     requires = { 'markdown_inline' },
-    tier = 1,
+    tier = 2,
   },
   markdown_inline = {
     install_info = {
@@ -1332,7 +1332,7 @@ return {
     },
     maintainers = { '@MDeiml' },
     readme_note = 'needed for full highlighting',
-    tier = 1,
+    tier = 2,
   },
   matlab = {
     install_info = {
@@ -1340,7 +1340,7 @@ return {
       url = 'https://github.com/acristoffers/tree-sitter-matlab',
     },
     maintainers = { '@acristoffers' },
-    tier = 3,
+    tier = 2,
   },
   menhir = {
     install_info = {
@@ -1348,14 +1348,14 @@ return {
       url = 'https://github.com/Kerl13/tree-sitter-menhir',
     },
     maintainers = { '@Kerl13' },
-    tier = 3,
+    tier = 2,
   },
   mermaid = {
     install_info = {
       revision = '90ae195b31933ceb9d079abfa8a3ad0a36fee4cc',
       url = 'https://github.com/monaqa/tree-sitter-mermaid',
     },
-    tier = 4,
+    tier = 2,
   },
   meson = {
     install_info = {
@@ -1368,11 +1368,11 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = '65bca19232744b920859ce682cd830b5006b8ccd',
+      revision = '9d83ca263fa7ec8ac7a5fd8ad14891b2dc583a32',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     maintainers = { '@artagnon' },
-    tier = 3,
+    tier = 2,
   },
   muttrc = {
     install_info = {
@@ -1380,7 +1380,7 @@ return {
       url = 'https://github.com/neomutt/tree-sitter-muttrc',
     },
     maintainers = { '@Freed-Wu' },
-    tier = 3,
+    tier = 2,
   },
   nasm = {
     install_info = {
@@ -1388,7 +1388,7 @@ return {
       url = 'https://github.com/naclsn/tree-sitter-nasm',
     },
     maintainers = { '@ObserverOfTime' },
-    tier = 3,
+    tier = 2,
   },
   nginx = {
     install_info = {
@@ -1396,14 +1396,14 @@ return {
       url = 'https://github.com/opa-oz/tree-sitter-nginx',
     },
     maintainers = { '@opa-oz' },
-    tier = 3,
+    tier = 2,
   },
   nickel = {
     install_info = {
       revision = '25464b33522c3f609fa512aa9651707c0b66d48b',
       url = 'https://github.com/nickel-lang/tree-sitter-nickel',
     },
-    tier = 4,
+    tier = 2,
   },
   nim = {
     install_info = {
@@ -1412,7 +1412,7 @@ return {
     },
     maintainers = { '@aMOPel' },
     requires = { 'nim_format_string' },
-    tier = 3,
+    tier = 2,
   },
   nim_format_string = {
     install_info = {
@@ -1420,7 +1420,7 @@ return {
       url = 'https://github.com/aMOPel/tree-sitter-nim-format-string',
     },
     maintainers = { '@aMOPel' },
-    tier = 3,
+    tier = 2,
   },
   ninja = {
     install_info = {
@@ -1428,7 +1428,7 @@ return {
       url = 'https://github.com/alemuller/tree-sitter-ninja',
     },
     maintainers = { '@alemuller' },
-    tier = 3,
+    tier = 2,
   },
   nix = {
     install_info = {
@@ -1436,7 +1436,7 @@ return {
       url = 'https://github.com/cstrahan/tree-sitter-nix',
     },
     maintainers = { '@leo60228' },
-    tier = 3,
+    tier = 2,
   },
   nqc = {
     install_info = {
@@ -1449,11 +1449,11 @@ return {
   },
   nu = {
     install_info = {
-      revision = 'd0b26e45525016ef8e6f2ced05852437c06a00ca',
+      revision = '2a153c88d5d44d96653057c7cc14292f4e641bef',
       url = 'https://github.com/nushell/tree-sitter-nu',
     },
     maintainers = { '@abhisheksingh0x558' },
-    tier = 3,
+    tier = 2,
   },
   objc = {
     install_info = {
@@ -1471,7 +1471,7 @@ return {
       url = 'https://github.com/ColinKennedy/tree-sitter-objdump',
     },
     maintainers = { '@ColinKennedy' },
-    tier = 3,
+    tier = 2,
   },
   ocaml = {
     install_info = {
@@ -1499,7 +1499,7 @@ return {
       url = 'https://github.com/atom-ocaml/tree-sitter-ocamllex',
     },
     maintainers = { '@undu' },
-    tier = 3,
+    tier = 2,
   },
   odin = {
     install_info = {
@@ -1515,7 +1515,7 @@ return {
       url = 'https://github.com/Isopod/tree-sitter-pascal',
     },
     maintainers = { '@Isopod' },
-    tier = 3,
+    tier = 2,
   },
   passwd = {
     install_info = {
@@ -1523,7 +1523,7 @@ return {
       url = 'https://github.com/ath3/tree-sitter-passwd',
     },
     maintainers = { '@amaanq' },
-    tier = 3,
+    tier = 2,
   },
   pem = {
     install_info = {
@@ -1537,11 +1537,11 @@ return {
     install_info = {
       branch = 'release',
       generate_from_json = true,
-      revision = 'db79ba96ba13e2e89ce9da07c1cc1dfbe6e2e0f6',
+      revision = 'bb53f204aa3e7507960014642965c9f9a9e84b1d',
       url = 'https://github.com/tree-sitter-perl/tree-sitter-perl',
     },
     maintainers = { '@RabbiVeesh', '@LeoNerd' },
-    tier = 3,
+    tier = 2,
   },
   php = {
     install_info = {
@@ -1571,7 +1571,7 @@ return {
       url = 'https://github.com/claytonrcarter/tree-sitter-phpdoc',
     },
     maintainers = { '@mikehaertl' },
-    tier = 3,
+    tier = 2,
   },
   pioasm = {
     install_info = {
@@ -1579,7 +1579,7 @@ return {
       url = 'https://github.com/leo60228/tree-sitter-pioasm',
     },
     maintainers = { '@leo60228' },
-    tier = 3,
+    tier = 2,
   },
   po = {
     install_info = {
@@ -1597,7 +1597,7 @@ return {
       url = 'https://github.com/tree-sitter-perl/tree-sitter-pod',
     },
     maintainers = { '@RabbiVeesh', '@LeoNerd' },
-    tier = 3,
+    tier = 2,
   },
   poe_filter = {
     install_info = {
@@ -1623,7 +1623,7 @@ return {
       url = 'https://github.com/airbus-cert/tree-sitter-powershell',
     },
     maintainers = { '@L2jLiga' },
-    tier = 3,
+    tier = 2,
   },
   printf = {
     install_info = {
@@ -1639,7 +1639,7 @@ return {
       url = 'https://github.com/victorhqc/tree-sitter-prisma',
     },
     maintainers = { '@elianiva' },
-    tier = 3,
+    tier = 2,
   },
   problog = {
     install_info = {
@@ -1649,7 +1649,7 @@ return {
     },
     maintainers = { '@foxyseta' },
     requires = { 'prolog' },
-    tier = 3,
+    tier = 2,
   },
   prolog = {
     install_info = {
@@ -1658,7 +1658,7 @@ return {
       url = 'https://github.com/foxyseta/tree-sitter-prolog',
     },
     maintainers = { '@foxyseta' },
-    tier = 3,
+    tier = 2,
   },
   promql = {
     install_info = {
@@ -1666,7 +1666,7 @@ return {
       url = 'https://github.com/MichaHoffmann/tree-sitter-promql',
     },
     maintainers = { '@MichaHoffmann' },
-    tier = 3,
+    tier = 2,
   },
   properties = {
     install_info = {
@@ -1683,7 +1683,7 @@ return {
       url = 'https://github.com/treywood/tree-sitter-proto',
     },
     maintainers = { '@treywood' },
-    tier = 3,
+    tier = 2,
   },
   prql = {
     install_info = {
@@ -1691,7 +1691,7 @@ return {
       url = 'https://github.com/PRQL/tree-sitter-prql',
     },
     maintainers = { '@matthias-Q' },
-    tier = 3,
+    tier = 2,
   },
   psv = {
     install_info = {
@@ -1709,7 +1709,7 @@ return {
       url = 'https://github.com/zealot128/tree-sitter-pug',
     },
     maintainers = { '@zealot128' },
-    tier = 3,
+    tier = 2,
   },
   puppet = {
     install_info = {
@@ -1725,7 +1725,7 @@ return {
       url = 'https://github.com/postsolar/tree-sitter-purescript',
     },
     maintainers = { '@postsolar' },
-    tier = 3,
+    tier = 2,
   },
   pymanifest = {
     install_info = {
@@ -1742,7 +1742,7 @@ return {
       url = 'https://github.com/tree-sitter/tree-sitter-python',
     },
     maintainers = { '@stsewd', '@theHamsta' },
-    tier = 1,
+    tier = 2,
   },
   ql = {
     install_info = {
@@ -1768,7 +1768,7 @@ return {
     },
     maintainers = { '@Decodetalkers' },
     requires = { 'ecma' },
-    tier = 3,
+    tier = 2,
   },
   query = {
     install_info = {
@@ -1777,7 +1777,7 @@ return {
     },
     maintainers = { '@steelsojka' },
     readme_note = 'Tree-sitter query language',
-    tier = 1,
+    tier = 2,
   },
   r = {
     install_info = {
@@ -1785,14 +1785,14 @@ return {
       url = 'https://github.com/r-lib/tree-sitter-r',
     },
     maintainers = { '@ribru17' },
-    tier = 3,
+    tier = 2,
   },
   racket = {
     install_info = {
       revision = '5b211bf93021d1c45f39aa96898be9f794f087e4',
       url = 'https://github.com/6cdh/tree-sitter-racket',
     },
-    tier = 4,
+    tier = 2,
   },
   ralph = {
     install_info = {
@@ -1800,7 +1800,7 @@ return {
       url = 'https://github.com/alephium/tree-sitter-ralph',
     },
     maintainers = { '@tdroxler' },
-    tier = 3,
+    tier = 2,
   },
   rasi = {
     install_info = {
@@ -1808,7 +1808,7 @@ return {
       url = 'https://github.com/Fymyte/tree-sitter-rasi',
     },
     maintainers = { '@Fymyte' },
-    tier = 3,
+    tier = 2,
   },
   razor = {
     install_info = {
@@ -1817,7 +1817,7 @@ return {
       url = 'https://github.com/tris203/tree-sitter-razor',
     },
     maintainers = { '@tris203' },
-    tier = 3,
+    tier = 2,
   },
   rbs = {
     install_info = {
@@ -1825,7 +1825,7 @@ return {
       url = 'https://github.com/joker1007/tree-sitter-rbs',
     },
     maintainers = { '@joker1007' },
-    tier = 3,
+    tier = 2,
   },
   re2c = {
     install_info = {
@@ -1857,7 +1857,7 @@ return {
       url = 'https://github.com/FallenAngel97/tree-sitter-rego',
     },
     maintainers = { '@FallenAngel97' },
-    tier = 3,
+    tier = 2,
   },
   requirements = {
     install_info = {
@@ -1882,7 +1882,7 @@ return {
       url = 'https://github.com/bamonroe/tree-sitter-rnoweb',
     },
     maintainers = { '@bamonroe' },
-    tier = 3,
+    tier = 2,
   },
   robot = {
     install_info = {
@@ -1890,7 +1890,7 @@ return {
       url = 'https://github.com/Hubro/tree-sitter-robot',
     },
     maintainers = { '@Hubro' },
-    tier = 3,
+    tier = 2,
   },
   robots = {
     install_info = {
@@ -1898,7 +1898,7 @@ return {
       url = 'https://github.com/opa-oz/tree-sitter-robots-txt',
     },
     maintainers = { '@opa-oz' },
-    tier = 3,
+    tier = 2,
   },
   roc = {
     install_info = {
@@ -1906,7 +1906,7 @@ return {
       url = 'https://github.com/faldor20/tree-sitter-roc',
     },
     maintainers = { '@nat-418' },
-    tier = 3,
+    tier = 2,
   },
   ron = {
     install_info = {
@@ -1922,7 +1922,7 @@ return {
       url = 'https://github.com/stsewd/tree-sitter-rst',
     },
     maintainers = { '@stsewd' },
-    tier = 3,
+    tier = 2,
   },
   ruby = {
     install_info = {
@@ -1938,7 +1938,7 @@ return {
       url = 'https://github.com/2004Scape/tree-sitter-runescript',
     },
     maintainers = { '@2004Scape' },
-    tier = 3,
+    tier = 2,
   },
   rust = {
     install_info = {
@@ -1963,14 +1963,14 @@ return {
       url = 'https://github.com/rockorager/tree-sitter-scfg',
     },
     maintainers = { '@WhyNotHugo' },
-    tier = 4,
+    tier = 2,
   },
   scheme = {
     install_info = {
       revision = '63e25a4a84142ae7ee0ee01fe3a32c985ca16745',
       url = 'https://github.com/6cdh/tree-sitter-scheme',
     },
-    tier = 4,
+    tier = 2,
   },
   scss = {
     install_info = {
@@ -1979,17 +1979,17 @@ return {
     },
     maintainers = { '@elianiva' },
     requires = { 'css' },
-    tier = 3,
+    tier = 2,
   },
   sflog = {
     install_info = {
       location = 'sflog',
-      revision = 'eade4054efc897f4bb18a5b7bf4b5a824dbffa74',
+      revision = '3597575a429766dd7ecce9f5bb97f6fec4419d5d',
       url = 'https://github.com/aheber/tree-sitter-sfapex',
     },
     maintainers = { '@aheber', '@xixiaofinland' },
     readme_note = 'Salesforce debug log',
-    tier = 3,
+    tier = 2,
   },
   slang = {
     install_info = {
@@ -2007,7 +2007,7 @@ return {
       url = 'https://github.com/theoo/tree-sitter-slim',
     },
     maintainers = { '@theoo' },
-    tier = 3,
+    tier = 2,
   },
   slint = {
     install_info = {
@@ -2015,7 +2015,7 @@ return {
       url = 'https://github.com/slint-ui/tree-sitter-slint',
     },
     maintainers = { '@hunger' },
-    tier = 3,
+    tier = 2,
   },
   smali = {
     install_info = {
@@ -2031,7 +2031,7 @@ return {
       url = 'https://github.com/indoorvivants/tree-sitter-smithy',
     },
     maintainers = { '@amaanq', '@keynmol' },
-    tier = 3,
+    tier = 2,
   },
   snakemake = {
     install_info = {
@@ -2040,7 +2040,7 @@ return {
       url = 'https://github.com/osthomas/tree-sitter-snakemake',
     },
     maintainers = { '@osthomas' },
-    tier = 3,
+    tier = 2,
   },
   solidity = {
     install_info = {
@@ -2048,25 +2048,25 @@ return {
       url = 'https://github.com/JoranHonig/tree-sitter-solidity',
     },
     maintainers = { '@amaanq' },
-    tier = 3,
+    tier = 2,
   },
   soql = {
     install_info = {
       location = 'soql',
-      revision = 'eade4054efc897f4bb18a5b7bf4b5a824dbffa74',
+      revision = '3597575a429766dd7ecce9f5bb97f6fec4419d5d',
       url = 'https://github.com/aheber/tree-sitter-sfapex',
     },
     maintainers = { '@aheber', '@xixiafinland' },
-    tier = 3,
+    tier = 2,
   },
   sosl = {
     install_info = {
       location = 'sosl',
-      revision = 'eade4054efc897f4bb18a5b7bf4b5a824dbffa74',
+      revision = '3597575a429766dd7ecce9f5bb97f6fec4419d5d',
       url = 'https://github.com/aheber/tree-sitter-sfapex',
     },
     maintainers = { '@aheber', '@xixiafinland' },
-    tier = 3,
+    tier = 2,
   },
   sourcepawn = {
     install_info = {
@@ -2074,7 +2074,7 @@ return {
       url = 'https://github.com/nilshelmig/tree-sitter-sourcepawn',
     },
     maintainers = { '@Sarrus1' },
-    tier = 3,
+    tier = 2,
   },
   sparql = {
     install_info = {
@@ -2083,7 +2083,7 @@ return {
       url = 'https://github.com/GordianDziwis/tree-sitter-sparql',
     },
     maintainers = { '@GordianDziwis' },
-    tier = 3,
+    tier = 2,
   },
   sql = {
     install_info = {
@@ -2093,7 +2093,7 @@ return {
       url = 'https://github.com/derekstride/tree-sitter-sql',
     },
     maintainers = { '@derekstride' },
-    tier = 3,
+    tier = 2,
   },
   squirrel = {
     install_info = {
@@ -2126,7 +2126,7 @@ return {
       url = 'https://github.com/sigmaSd/tree-sitter-strace',
     },
     maintainers = { '@amaanq' },
-    tier = 3,
+    tier = 2,
   },
   styled = {
     install_info = {
@@ -2135,7 +2135,7 @@ return {
       url = 'https://github.com/mskelton/tree-sitter-styled',
     },
     maintainers = { '@mskelton' },
-    tier = 3,
+    tier = 2,
   },
   supercollider = {
     install_info = {
@@ -2143,16 +2143,16 @@ return {
       url = 'https://github.com/madskjeldgaard/tree-sitter-supercollider',
     },
     maintainers = { '@madskjeldgaard' },
-    tier = 3,
+    tier = 2,
   },
   superhtml = {
     install_info = {
       location = 'tree-sitter-superhtml',
-      revision = 'e6eba40bf54dd94d842154be0389c53a37be8dc8',
+      revision = '9266b3131bbcc0705b3b752bcb7478871a143740',
       url = 'https://github.com/kristoff-it/superhtml',
     },
     maintainers = { '@rockorager' },
-    tier = 3,
+    tier = 2,
   },
   surface = {
     install_info = {
@@ -2160,7 +2160,7 @@ return {
       url = 'https://github.com/connorlay/tree-sitter-surface',
     },
     maintainers = { '@connorlay' },
-    tier = 3,
+    tier = 2,
   },
   svelte = {
     install_info = {
@@ -2187,7 +2187,7 @@ return {
       url = 'https://github.com/alex-pinkus/tree-sitter-swift',
     },
     maintainers = { '@alex-pinkus' },
-    tier = 3,
+    tier = 2,
   },
   sxhkdrc = {
     install_info = {
@@ -2195,7 +2195,7 @@ return {
       url = 'https://github.com/RaafatTurki/tree-sitter-sxhkdrc',
     },
     maintainers = { '@RaafatTurki' },
-    tier = 3,
+    tier = 2,
   },
   systemtap = {
     install_info = {
@@ -2203,7 +2203,7 @@ return {
       url = 'https://github.com/ok-ryoko/tree-sitter-systemtap',
     },
     maintainers = { '@ok-ryoko' },
-    tier = 3,
+    tier = 2,
   },
   t32 = {
     install_info = {
@@ -2211,7 +2211,7 @@ return {
       url = 'https://gitlab.com/xasc/tree-sitter-t32',
     },
     maintainers = { '@xasc' },
-    tier = 3,
+    tier = 2,
   },
   tablegen = {
     install_info = {
@@ -2227,7 +2227,7 @@ return {
       url = 'https://github.com/tact-lang/tree-sitter-tact',
     },
     maintainers = { '@novusnota' },
-    tier = 3,
+    tier = 2,
   },
   tcl = {
     install_info = {
@@ -2244,7 +2244,7 @@ return {
       url = 'https://github.com/euclidianAce/tree-sitter-teal',
     },
     maintainers = { '@euclidianAce' },
-    tier = 3,
+    tier = 2,
   },
   templ = {
     install_info = {
@@ -2253,7 +2253,7 @@ return {
       url = 'https://github.com/vrischmann/tree-sitter-templ',
     },
     maintainers = { '@vrischmann' },
-    tier = 3,
+    tier = 2,
   },
   terraform = {
     install_info = {
@@ -2263,7 +2263,7 @@ return {
     },
     maintainers = { '@MichaHoffmann' },
     requires = { 'hcl' },
-    tier = 3,
+    tier = 2,
   },
   textproto = {
     install_info = {
@@ -2271,7 +2271,7 @@ return {
       url = 'https://github.com/PorterAtGoogle/tree-sitter-textproto',
     },
     maintainers = { '@Porter' },
-    tier = 3,
+    tier = 2,
   },
   thrift = {
     install_info = {
@@ -2287,7 +2287,7 @@ return {
       url = 'https://github.com/ambroisie/tree-sitter-tiger',
     },
     maintainers = { '@ambroisie' },
-    tier = 3,
+    tier = 2,
   },
   tlaplus = {
     install_info = {
@@ -2295,7 +2295,7 @@ return {
       url = 'https://github.com/tlaplus-community/tree-sitter-tlaplus',
     },
     maintainers = { '@ahelwer', '@susliko' },
-    tier = 3,
+    tier = 2,
   },
   tmux = {
     install_info = {
@@ -2303,7 +2303,7 @@ return {
       url = 'https://github.com/Freed-Wu/tree-sitter-tmux',
     },
     maintainers = { '@Freed-Wu' },
-    tier = 3,
+    tier = 2,
   },
   todotxt = {
     install_info = {
@@ -2311,7 +2311,7 @@ return {
       url = 'https://github.com/arnarg/tree-sitter-todotxt',
     },
     maintainers = { '@arnarg' },
-    tier = 3,
+    tier = 2,
   },
   toml = {
     install_info = {
@@ -2348,7 +2348,7 @@ return {
       url = 'https://github.com/GordianDziwis/tree-sitter-turtle',
     },
     maintainers = { '@GordianDziwis' },
-    tier = 3,
+    tier = 2,
   },
   twig = {
     install_info = {
@@ -2356,7 +2356,7 @@ return {
       url = 'https://github.com/gbprod/tree-sitter-twig',
     },
     maintainers = { '@gbprod' },
-    tier = 3,
+    tier = 2,
   },
   typescript = {
     install_info = {
@@ -2375,7 +2375,7 @@ return {
       url = 'https://github.com/happenslol/tree-sitter-typespec',
     },
     maintainers = { '@happenslol' },
-    tier = 3,
+    tier = 2,
   },
   typoscript = {
     install_info = {
@@ -2383,15 +2383,15 @@ return {
       url = 'https://github.com/Teddytrombone/tree-sitter-typoscript',
     },
     maintainers = { '@Teddytrombone' },
-    tier = 3,
+    tier = 2,
   },
   typst = {
     install_info = {
-      revision = 'cb0ffe14259f7f63ee6f05b57ceb24a35bedef75',
+      revision = '46cf4ded12ee974a70bf8457263b67ad7ee0379d',
       url = 'https://github.com/uben0/tree-sitter-typst',
     },
     maintainers = { '@uben0', '@RaafatTurki' },
-    tier = 3,
+    tier = 2,
   },
   udev = {
     install_info = {
@@ -2416,7 +2416,7 @@ return {
       url = 'https://github.com/kylegoetz/tree-sitter-unison',
     },
     maintainers = { '@tapegram' },
-    tier = 3,
+    tier = 2,
   },
   usd = {
     install_info = {
@@ -2424,7 +2424,7 @@ return {
       url = 'https://github.com/ColinKennedy/tree-sitter-usd',
     },
     maintainers = { '@ColinKennedy' },
-    tier = 3,
+    tier = 2,
   },
   uxntal = {
     install_info = {
@@ -2437,11 +2437,11 @@ return {
   v = {
     install_info = {
       location = 'tree_sitter_v',
-      revision = '0461bf8addccb4df566827f1601f415d07b1ffbc',
+      revision = '1047c9d876451c3fcf78343fff26cdfff3855b8c',
       url = 'https://github.com/vlang/v-analyzer',
     },
     maintainers = { '@kkharji', '@amaanq' },
-    tier = 3,
+    tier = 2,
   },
   vala = {
     install_info = {
@@ -2449,7 +2449,7 @@ return {
       url = 'https://github.com/vala-lang/tree-sitter-vala',
     },
     maintainers = { '@Prince781' },
-    tier = 3,
+    tier = 2,
   },
   vento = {
     install_info = {
@@ -2457,7 +2457,7 @@ return {
       url = 'https://github.com/ventojs/tree-sitter-vento',
     },
     maintainers = { '@wrapperup', '@oscarotero' },
-    tier = 3,
+    tier = 2,
   },
   verilog = {
     install_info = {
@@ -2465,7 +2465,7 @@ return {
       url = 'https://github.com/gmlarumbe/tree-sitter-systemverilog',
     },
     maintainers = { '@zhangwwpeng' },
-    tier = 3,
+    tier = 2,
   },
   vhdl = {
     install_info = {
@@ -2473,15 +2473,15 @@ return {
       url = 'https://github.com/jpt13653903/tree-sitter-vhdl',
     },
     maintainers = { '@jpt13653903' },
-    tier = 3,
+    tier = 2,
   },
   vhs = {
     install_info = {
-      revision = '966067fe81d78071805d8e55ec836b3926c4ece4',
+      revision = '3f202326c06f1c4d47aa82b9013a6b71aea70611',
       url = 'https://github.com/charmbracelet/tree-sitter-vhs',
     },
     maintainers = { '@caarlos0' },
-    tier = 3,
+    tier = 2,
   },
   vim = {
     install_info = {
@@ -2489,7 +2489,7 @@ return {
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-vim',
     },
     maintainers = { '@clason' },
-    tier = 1,
+    tier = 2,
   },
   vimdoc = {
     install_info = {
@@ -2497,7 +2497,7 @@ return {
       url = 'https://github.com/neovim/tree-sitter-vimdoc',
     },
     maintainers = { '@clason' },
-    tier = 1,
+    tier = 2,
   },
   vrl = {
     install_info = {
@@ -2505,7 +2505,7 @@ return {
       url = 'https://github.com/belltoy/tree-sitter-vrl',
     },
     maintainers = { '@belltoy' },
-    tier = 3,
+    tier = 2,
   },
   vue = {
     install_info = {
@@ -2524,7 +2524,7 @@ return {
       url = 'https://github.com/szebniok/tree-sitter-wgsl',
     },
     maintainers = { '@szebniok' },
-    tier = 3,
+    tier = 2,
   },
   wgsl_bevy = {
     install_info = {
@@ -2541,7 +2541,7 @@ return {
       url = 'https://github.com/winglang/tree-sitter-wing',
     },
     maintainers = { '@gshpychka', '@MarkMcCulloh' },
-    tier = 3,
+    tier = 2,
   },
   wit = {
     install_info = {
@@ -2549,7 +2549,7 @@ return {
       url = 'https://github.com/liamwh/tree-sitter-wit',
     },
     maintainers = { '@liamwh' },
-    tier = 3,
+    tier = 2,
   },
   xcompose = {
     install_info = {
@@ -2575,7 +2575,7 @@ return {
       url = 'https://github.com/ValdezFOmar/tree-sitter-xresources',
     },
     maintainers = { '@ValdezFOmar' },
-    tier = 3,
+    tier = 2,
   },
   yaml = {
     install_info = {
@@ -2591,7 +2591,7 @@ return {
       url = 'https://github.com/Hubro/tree-sitter-yang',
     },
     maintainers = { '@Hubro' },
-    tier = 3,
+    tier = 2,
   },
   yuck = {
     install_info = {
@@ -2607,7 +2607,7 @@ return {
       url = 'https://github.com/Freed-Wu/tree-sitter-zathurarc',
     },
     maintainers = { '@Freed-Wu' },
-    tier = 3,
+    tier = 2,
   },
   zig = {
     install_info = {
@@ -2615,7 +2615,7 @@ return {
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-zig',
     },
     maintainers = { '@amaanq' },
-    tier = 1,
+    tier = 2,
   },
   ziggy = {
     install_info = {
@@ -2624,7 +2624,7 @@ return {
       url = 'https://github.com/kristoff-it/ziggy',
     },
     maintainers = { '@rockorager' },
-    tier = 3,
+    tier = 2,
   },
   ziggy_schema = {
     install_info = {
@@ -2633,6 +2633,6 @@ return {
       url = 'https://github.com/kristoff-it/ziggy',
     },
     maintainers = { '@rockorager' },
-    tier = 3,
+    tier = 2,
   },
 }
