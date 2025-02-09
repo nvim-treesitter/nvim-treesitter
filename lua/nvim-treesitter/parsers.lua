@@ -1581,13 +1581,6 @@ list.odin = {
   maintainers = { "@amaanq" },
 }
 
-list.org = {
-  install_info = {
-    url = "https://github.com/milisims/tree-sitter-org",
-    files = { "src/parser.c", "src/scanner.c" },
-  },
-}
-
 list.pascal = {
   install_info = {
     url = "https://github.com/Isopod/tree-sitter-pascal",
