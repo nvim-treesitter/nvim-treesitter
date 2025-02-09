@@ -262,6 +262,12 @@
     "*"
   ] @variable)
 
+(arraylen_deref_expression
+  [
+    "$#"
+    "*"
+  ] @variable)
+
 (hash) @variable
 
 (hash_deref_expression
@@ -269,6 +275,20 @@
     "%"
     "*"
   ] @variable)
+
+(amper_deref_expression
+  [
+    "&"
+    "*"
+  ] @variable)
+
+(glob) @variable
+
+(glob_deref_expression
+  "*" @variable)
+
+(glob_slot_expression
+  "*" @variable)
 
 (array_element_expression
   array: (_) @variable)
@@ -287,6 +307,28 @@
 
 (keyval_expression
   hash: (_) @variable)
+
+; mark hash or glob keys that are any form of string in any form of access
+(_
+  "{"
+  [
+    (autoquoted_bareword)
+    (_
+      (string_content))
+  ] @variable.member
+  "}")
+
+; mark stringies on the LHS of a fat comma as a hash key, b/c that's usually what it
+; denotes somewhat
+(_
+  [
+    (autoquoted_bareword)
+    (_
+      (string_content))
+  ] @variable.member
+  .
+  "=>"
+  (_))
 
 (comment) @comment @spell
 
