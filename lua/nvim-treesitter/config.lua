@@ -1,6 +1,6 @@
 local M = {}
 
-M.tiers = { 'stable', 'core', 'community', 'unsupported' }
+M.tiers = { 'stable', 'unstable', 'unmaintained', 'unsupported' }
 
 ---@class TSConfig
 ---@field ensure_install string[]
@@ -10,7 +10,7 @@ M.tiers = { 'stable', 'core', 'community', 'unsupported' }
 ---@type TSConfig
 local config = {
   ensure_install = {},
-  ignore_install = { 'unsupported' },
+  ignore_install = {},
   install_dir = vim.fs.joinpath(vim.fn.stdpath('data'), 'site'),
 }
 
