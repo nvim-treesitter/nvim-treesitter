@@ -8,7 +8,7 @@ local updates = {} ---@type string[]
 
 -- check for new revisions
 for k, p in pairs(parsers) do
-  if p.tier < 5 and p.install_info then
+  if p.tier <= 2 and p.install_info then
     print('Updating ' .. k)
     jobs[k] = vim.system({ 'git', 'ls-remote', p.install_info.url })
   end
