@@ -35,7 +35,7 @@ error('Cannot require a meta file')
 ---List of other languages to install (e.g., if queries inherit from them)
 ---@field requires? string[]
 ---
----Language support tier, maps to "core", "stable", "community", "unmaintained"
+---Language support tier, maps to "stable", "unstable", "unmaintained", "unsupported"
 ---@field tier integer
 ---
 ---Explanatory footnote text to add in SUPPORTED_LANGUAGES.md
