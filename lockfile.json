@@ -54,7 +54,7 @@
     "revision": "2a265d69a4caf57108a73ad2ed1e6922dd2f998c"
   },
   "c_sharp": {
-    "revision": "b27b091bfdc5f16d0ef76421ea5609c82a57dff0"
+    "revision": "71011c87dc75ab996063eec72644bba7c3edbef5"
   },
   "cairo": {
     "revision": "6238f609bea233040fe927858156dee5515a0745"
@@ -345,7 +345,7 @@
     "revision": "ea71012d3fe14dd0b69f36be4f96bdfe9155ebae"
   },
   "http": {
-    "revision": "d2e4e4c7d03f70e0465d436f2b5f67497cd544ca"
+    "revision": "77ecf6385f1b5d422e0bbd12204374d287d61ad2"
   },
   "hurl": {
     "revision": "ff07a42d9ec95443b5c1b57ed793414bf7b79be5"
@@ -354,7 +354,7 @@
     "revision": "d719158abe537b1916daaea6fa03287089f0b601"
   },
   "idl": {
-    "revision": "86ff7f19747a761dc8ba72f4045fd64aed94ba4c"
+    "revision": "b14e7971cfbd64fa0ebcdeaa4dfbb3cb0bfabd7c"
   },
   "idris": {
     "revision": "c56a25cf57c68ff929356db25505c1cc4c7820f6"
@@ -552,7 +552,7 @@
     "revision": "1d16b8e063fdf4385e389096c4bc4999eaaef05f"
   },
   "perl": {
-    "revision": "db79ba96ba13e2e89ce9da07c1cc1dfbe6e2e0f6"
+    "revision": "4a6272ad32b8d9d41996644190b2b2874cbe7882"
   },
   "php": {
     "revision": "f3a19ab3217a6e838870fc7142fa492d1fd7a7c9"
