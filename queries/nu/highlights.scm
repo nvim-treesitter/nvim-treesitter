@@ -244,6 +244,9 @@ file_path: (val_string) @variable.parameter
 (returns
   "->" @punctuation.delimiter)
 
+(attribute
+  "@" @punctuation.special)
+
 [
   "("
   ")"
@@ -285,6 +288,9 @@ key: (identifier) @property
   (short_flag_identifier) @attribute)
 
 (long_flag_identifier) @attribute
+
+(attribute
+  (attribute_identifier) @attribute)
 
 (scope_pattern
   (wild_card) @function)
