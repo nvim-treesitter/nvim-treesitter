@@ -1,8 +1,5 @@
 (identifier) @variable
 
-; Reset highlighting in string interpolations
-(interpolation) @none
-
 (import_stmt
   (dotted_name
     (identifier) @module))
