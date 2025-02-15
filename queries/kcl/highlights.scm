@@ -30,13 +30,14 @@
   (identifier) @type)
 
 (rule_stmt
-    (identifier) @type)
+  (identifier) @type)
 
 (schema_stmt
   (identifier) @type)
 
 (lambda_expr
-  (typed_parameter (identifier) @variable.parameter))
+  (typed_parameter
+    (identifier) @variable.parameter))
 
 (lambda_expr
   (identifier) @variable.parameter)
@@ -46,7 +47,9 @@
     (identifier) @property))
 
 (comment) @comment
+
 (string) @string
+
 (escape_sequence) @string.escape
 
 (schema_stmt
@@ -159,7 +162,8 @@
   function: (selector_expr
     (identifier) @_regex
     (select_suffix
-      (identifier) @_fn (#eq? @_fn "compile")))
+      (identifier) @_fn
+      (#eq? @_fn "compile")))
   arguments: (argument_list
     (string
       (string_content) @string.regexp))

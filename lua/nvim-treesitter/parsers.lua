@@ -1216,7 +1216,7 @@ list.kcl = {
     url = "https://github.com/kcl-lang/tree-sitter-kcl",
     files = { "src/parser.c", "src/scanner.c" },
   },
-  maintainers = { "@bertbaron"},
+  maintainers = { "@bertbaron" },
 }
 
 list.kconfig = {
