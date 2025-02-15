@@ -54,7 +54,7 @@
     "revision": "2a265d69a4caf57108a73ad2ed1e6922dd2f998c"
   },
   "c_sharp": {
-    "revision": "71011c87dc75ab996063eec72644bba7c3edbef5"
+    "revision": "b5eb5742f6a7e9438bee22ce8026d6b927be2cd7"
   },
   "cairo": {
     "revision": "6238f609bea233040fe927858156dee5515a0745"
@@ -174,10 +174,10 @@
     "revision": "8495d106154741e6d35d37064f864758ece75de6"
   },
   "enforce": {
-    "revision": "9db7a49f3d73222c05b75dcfa8892f5e93542d1e"
+    "revision": "cf853e5f56f1babe5ec573e356f6fbb4784bf5c1"
   },
   "erlang": {
-    "revision": "9cea919877741b2ed87cf215c0a06feb9a1930bf"
+    "revision": "370cea629eb62a8686504b9fb3252a5e1ae55313"
   },
   "facility": {
     "revision": "e4bfd3e960de9f4b4648acb1c92e9b95b47d8cfb"
@@ -486,7 +486,7 @@
     "revision": "c5fffb8edd39f22644084ab3f73a924a75721ee3"
   },
   "mlir": {
-    "revision": "65bca19232744b920859ce682cd830b5006b8ccd"
+    "revision": "9d83ca263fa7ec8ac7a5fd8ad14891b2dc583a32"
   },
   "muttrc": {
     "revision": "173b0ab53a9c07962c9777189c4c70e90f1c1837"
@@ -519,7 +519,7 @@
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
   },
   "nu": {
-    "revision": "d0b26e45525016ef8e6f2ced05852437c06a00ca"
+    "revision": "2a153c88d5d44d96653057c7cc14292f4e641bef"
   },
   "objc": {
     "revision": "181a81b8f23a2d593e7ab4259981f50122909fda"
