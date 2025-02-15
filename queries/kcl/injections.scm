@@ -13,7 +13,8 @@
   function: (selector_expr
     (identifier) @_regex
     (select_suffix
-      (identifier) @_fn (#eq? @_fn "compile")))
+      (identifier) @_fn
+      (#eq? @_fn "compile")))
   arguments: (argument_list
     .
     (string
