@@ -24,11 +24,3 @@
 
 ((comment) @injection.content
   (#set! injection.language "comment"))
-
-; Unfortunately, rst doesn't work with the indented docstrings, markdown_inline at least provides some highlighting
-(schema_stmt
-  body: (block
-    .
-    (string
-      (string_content) @injection.content))
-  (#set! injection.language "markdown_inline"))
