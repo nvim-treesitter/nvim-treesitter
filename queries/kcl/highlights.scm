@@ -5,12 +5,12 @@
 
 (import_stmt
   (dotted_name
-    (identifier) @namespace))
+    (identifier) @module))
 
 (import_stmt
   (dotted_name
-    (identifier) @namespace)
-  (identifier) @namespace)
+    (identifier) @module)
+  (identifier) @module)
 
 (basic_type) @type
 
@@ -20,7 +20,7 @@
 
 (schema_type
   (dotted_name
-    (identifier) @namespace
+    (identifier) @module
     (identifier) @type))
 
 (schema_expr
@@ -36,10 +36,10 @@
   (identifier) @type)
 
 (lambda_expr
-  (typed_parameter (identifier) @parameter))
+  (typed_parameter (identifier) @variable.parameter))
 
 (lambda_expr
-  (identifier) @parameter)
+  (identifier) @variable.parameter)
 
 (selector_expr
   (select_suffix

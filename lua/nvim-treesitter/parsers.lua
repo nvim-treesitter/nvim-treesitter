@@ -1215,7 +1215,6 @@ list.kcl = {
   install_info = {
     url = "https://github.com/kcl-lang/tree-sitter-kcl",
     files = { "src/parser.c", "src/scanner.c" },
-    branch = "main",
   },
   maintainers = { "@bertbaron"},
 }

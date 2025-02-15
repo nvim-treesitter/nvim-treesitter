@@ -410,6 +410,9 @@
   "just": {
     "revision": "bb0c898a80644de438e6efe5d88d30bf092935cd"
   },
+  "kcl": {
+    "revision": "b0b2eb38009e04035a6e266c7e11e541f3caab7c"
+  },
   "kconfig": {
     "revision": "9ac99fe4c0c27a35dc6f757cef534c646e944881"
   },
