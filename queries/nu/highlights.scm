@@ -245,7 +245,7 @@ file_path: (val_string) @variable.parameter
   "->" @punctuation.delimiter)
 
 (attribute
-  "@" @punctuation.special)
+  "@" @attribute)
 
 [
   "("
