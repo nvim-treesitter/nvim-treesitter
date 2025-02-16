@@ -275,16 +275,15 @@ key: (identifier) @property
 (param_cmd
   (cmd_identifier) @string)
 
-(param_long_flag
-  (long_flag_identifier) @attribute)
+(attribute
+  "@" @attribute)
 
-(param_short_flag
-  (param_short_flag_identifier) @attribute)
-
-(short_flag
-  (short_flag_identifier) @attribute)
-
-(long_flag_identifier) @attribute
+[
+  (attribute_identifier)
+  (long_flag_identifier)
+  (param_short_flag_identifier)
+  (short_flag_identifier)
+] @attribute
 
 (scope_pattern
   (wild_card) @function)
