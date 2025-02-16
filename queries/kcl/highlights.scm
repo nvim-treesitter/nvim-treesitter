@@ -66,10 +66,8 @@
     (select_suffix
       (identifier) @function)))
 
-[
-  (integer)
-  (float)
-] @number
+(integer) @number
+(float) @number.float
 
 [
   (true)
