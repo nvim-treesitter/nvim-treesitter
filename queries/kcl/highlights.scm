@@ -9,7 +9,7 @@
     (identifier) @module)
   (identifier) @module)
 
-(basic_type) @type
+(basic_type) @type.builtin
 
 (schema_type
   (dotted_name
@@ -67,35 +67,47 @@
       (identifier) @function)))
 
 (integer) @number
+
 (float) @number.float
 
 [
   (true)
   (false)
+] @boolean
+
+[
   (none)
   (undefined)
 ] @constant.builtin
 
+"for" @keyword.repeat
+
 [
-  "all"
-  "any"
-  "assert"
-  "as"
-  "check"
   "elif"
   "else"
-  "filter"
-  "for"
   "if"
-  "import"
-  "lambda"
-  "map"
-  "mixin"
+] @keyword.conditional
+
+"lambda" @keyword.function
+
+(quant_op) @keyword.operator
+
+[
   "protocol"
   "rule"
   "schema"
   "type"
-] @keyword
+  "mixin"
+] @keyword.type
+
+"assert" @keyword.debug
+
+[
+  "as"
+  "import"
+] @keyword.import
+
+"check" @keyword
 
 [
   "("
@@ -131,14 +143,17 @@
   "=="
   "!="
   "@"
+  "="
+  ":"
+] @operator
+
+[
   "and"
   "or"
   "not"
   "in"
   "is"
-  "="
-  ":"
-] @operator
+] @keyword.operator
 
 ; second argument is a regex in all regex functions with at least two arguments
 (call_expr
