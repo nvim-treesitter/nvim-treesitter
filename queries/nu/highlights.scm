@@ -244,9 +244,6 @@ file_path: (val_string) @variable.parameter
 (returns
   "->" @punctuation.delimiter)
 
-(attribute
-  "@" @attribute)
-
 [
   "("
   ")"
@@ -277,6 +274,9 @@ key: (identifier) @property
 
 (param_cmd
   (cmd_identifier) @string)
+
+(attribute
+  "@" @attribute)
 
 [
   (attribute_identifier)
