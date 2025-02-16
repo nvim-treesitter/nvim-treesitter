@@ -43,7 +43,7 @@
   (select_suffix
     (identifier) @property))
 
-(comment) @comment
+(comment) @comment @spell
 
 (string) @string
 
