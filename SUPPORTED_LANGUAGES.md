@@ -151,6 +151,7 @@ html_tags (queries only)[^html_tags] | unstable | `H IJ ` | @TravonteD
 jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [julia](https://github.com/tree-sitter/tree-sitter-julia) | unstable | `HFIJL` | @fredrikekre
 [just](https://github.com/IndianBoy42/tree-sitter-just) | unstable | `HFIJL` | @Hubro
+[kcl](https://github.com/kcl-lang/tree-sitter-kcl) | unstable | `HF J ` | @bertbaron
 [kconfig](https://github.com/tree-sitter-grammars/tree-sitter-kconfig) | unstable | `HFIJL` | @amaanq
 [kdl](https://github.com/tree-sitter-grammars/tree-sitter-kdl) | unstable | `HFIJL` | @amaanq
 [kotlin](https://github.com/fwcd/tree-sitter-kotlin) | unstable | `HF JL` | @SalBakraa
@@ -261,7 +262,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [sosl](https://github.com/aheber/tree-sitter-sfapex) | unstable | `H    ` | @aheber, @xixiafinland
 [sourcepawn](https://github.com/nilshelmig/tree-sitter-sourcepawn) | unstable | `H  JL` | @Sarrus1
 [sparql](https://github.com/GordianDziwis/tree-sitter-sparql) | unstable | `HFIJL` | @GordianDziwis
-[sql](https://github.com/derekstride/tree-sitter-sql) | unstable | `H IJ ` | @derekstride
+[sql](https://github.com/derekstride/tree-sitter-sql) | unstable | `HFIJ ` | @derekstride
 [squirrel](https://github.com/tree-sitter-grammars/tree-sitter-squirrel) | unstable | `HFIJL` | @amaanq
 [ssh_config](https://github.com/tree-sitter-grammars/tree-sitter-ssh-config) | unstable | `HFIJL` | @ObserverOfTime
 [starlark](https://github.com/tree-sitter-grammars/tree-sitter-starlark) | unstable | `HFIJL` | @amaanq
