@@ -91,6 +91,7 @@ local function get_parser_install_info(lang)
 
   if not parser_config then
     log.error('Parser not available for language "' .. lang .. '"')
+    return
   end
 
   return parser_config.install_info
