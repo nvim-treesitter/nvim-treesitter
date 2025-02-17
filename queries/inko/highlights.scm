@@ -75,7 +75,6 @@
 ] @keyword.operator
 
 [
-  "class"
   "trait"
   "type"
 ] @keyword.type
