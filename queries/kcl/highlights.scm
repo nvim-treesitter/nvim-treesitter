@@ -168,13 +168,13 @@
 
 ; first argument is a regex in 'regex.compile' function
 (call_expr
-  .
   function: (selector_expr
     (identifier) @_regex
     (select_suffix
       (identifier) @_fn
       (#eq? @_fn "compile")))
   arguments: (argument_list
+    .
     (string
       (string_content) @string.regexp))
   (#eq? @_regex "regex"))
