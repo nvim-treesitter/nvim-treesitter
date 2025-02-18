@@ -14,7 +14,7 @@
 
 (module_path) @string.special.url
 
-(tool_directive) @keyword
+(tool_directive) @keyword.directive
 
 (tool) @string.special.url
 
