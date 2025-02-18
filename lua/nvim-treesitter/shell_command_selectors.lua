@@ -129,6 +129,7 @@ function M.select_compiler_args(repo, compiler)
       end, repo.files) > 0
     then
       table.insert(args, "-lstdc++")
+      table.insert(args, "-std=c++11")
     end
     if fn.has "win32" == 0 then
       table.insert(args, "-fPIC")
