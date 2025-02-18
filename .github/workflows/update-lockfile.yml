@@ -31,7 +31,7 @@ jobs:
 
       - name: Update parsers
         env:
-          SKIP_LOCKFILE_UPDATE_FOR_LANGS: "slint,sql,t32"
+          SKIP_LOCKFILE_UPDATE_FOR_LANGS: "nickel,slint,sql,t32"
         run: |
           cp lockfile.json /tmp/old_lockfile.json
           nvim -l scripts/write-lockfile.lua
