@@ -13,7 +13,6 @@ vim.filetype.add {
     usda = "usd",
     wgsl = "wgsl",
     w = "wing",
-    promql = "promql",
   },
 }
 
