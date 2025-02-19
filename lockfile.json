@@ -486,7 +486,7 @@
     "revision": "c5fffb8edd39f22644084ab3f73a924a75721ee3"
   },
   "mlir": {
-    "revision": "9d83ca263fa7ec8ac7a5fd8ad14891b2dc583a32"
+    "revision": "2a8476371ff4f8b9e451d702033fdf9410fc1a16"
   },
   "muttrc": {
     "revision": "173b0ab53a9c07962c9777189c4c70e90f1c1837"
@@ -777,7 +777,7 @@
     "revision": "395006713db3bbb90d267ebdfcbf1881b399b05c"
   },
   "swift": {
-    "revision": "1ebc09c38f41d6aab7dd65ca0f8ea032ced0364f"
+    "revision": "48fcda87af1bed7d7a328dcd257fe8ee75933b04"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
