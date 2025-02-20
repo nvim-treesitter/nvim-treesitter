@@ -1,0 +1,10 @@
+foo{path=~"^foo$"}[5m] or
+#          ^ @regex
+foo{path!~"[a-zA-Z0-9]{1,3}"}[5m] or
+#          ^ @regex
+foo{path="/api/users/{userId}"}[5m] or
+#         ^ @!regex
+foo{path!="/api/users/{userId}"}[5m]
+#          ^ @!regex
+
+# vim: ft=promql

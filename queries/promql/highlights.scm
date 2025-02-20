@@ -36,7 +36,19 @@
 
 (label_name) @variable.member
 
-(label_value) @string.regexp
+((label_name)
+  [
+    "=~"
+    "!~"
+  ]
+  (label_value) @string.regexp)
+
+((label_name)
+  [
+    "="
+    "!="
+  ]
+  (label_value) @string)
 
 (function_name) @function.call
 
