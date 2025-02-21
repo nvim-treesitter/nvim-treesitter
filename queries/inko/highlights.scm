@@ -56,6 +56,7 @@
   "copy"
   "for"
   "impl"
+  "in"
   "inline"
   "let"
   "move"
