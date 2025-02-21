@@ -130,3 +130,5 @@
   ","
   "."
 ] @punctuation.delimiter
+
+(front_matter) @keyword.directive

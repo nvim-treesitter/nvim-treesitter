@@ -18,5 +18,10 @@
   (#set! injection.language "css")
   (#set! injection.combined))
 
+((front_matter) @injection.content
+  (#set! injection.language "yaml")
+  (#offset! @injection.content 1 0 -1 0)
+  (#set! injection.include-children))
+
 ((comment) @injection.content
   (#set! injection.language "comment"))
