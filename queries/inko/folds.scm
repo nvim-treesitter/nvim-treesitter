@@ -7,6 +7,7 @@
   (define_field)
   (define_variable)
   (external_function)
+  (for)
   (if)
   (import)+
   (loop)
