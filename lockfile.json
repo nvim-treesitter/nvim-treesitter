@@ -174,7 +174,7 @@
     "revision": "8495d106154741e6d35d37064f864758ece75de6"
   },
   "enforce": {
-    "revision": "cf853e5f56f1babe5ec573e356f6fbb4784bf5c1"
+    "revision": "8201c3c354c34b96d5a531c8e63d262209ee06cb"
   },
   "erlang": {
     "revision": "370cea629eb62a8686504b9fb3252a5e1ae55313"
@@ -441,7 +441,7 @@
     "revision": "f99011a3554213b654985a4b0a65b3b032ec4621"
   },
   "liquid": {
-    "revision": "d68a255c393cfefa9d3185023e2f1684a52907ed"
+    "revision": "6e03a054a71cd419d9702725243137641e97ba51"
   },
   "liquidsoap": {
     "revision": "8e51fa63ddb93ac179d4e34a311d3d3f03780b42"
@@ -486,7 +486,7 @@
     "revision": "c5fffb8edd39f22644084ab3f73a924a75721ee3"
   },
   "mlir": {
-    "revision": "2a8476371ff4f8b9e451d702033fdf9410fc1a16"
+    "revision": "ad381783044e107ce144af3c36342cc34183d5b4"
   },
   "muttrc": {
     "revision": "173b0ab53a9c07962c9777189c4c70e90f1c1837"
@@ -510,7 +510,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "b3a88cf3e597d48c33657deca4fda7a75c0069c1"
+    "revision": "97263793aff88c824d15dc3595d61a63ca6ccc21"
   },
   "norg": {
     "revision": "d89d95af13d409f30a6c7676387bde311ec4a2c8"
@@ -519,7 +519,7 @@
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
   },
   "nu": {
-    "revision": "2a153c88d5d44d96653057c7cc14292f4e641bef"
+    "revision": "ba6db53a20f6e8d5394d316cc8fe8a44690db82a"
   },
   "objc": {
     "revision": "181a81b8f23a2d593e7ab4259981f50122909fda"
