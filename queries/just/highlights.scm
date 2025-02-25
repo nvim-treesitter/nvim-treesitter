@@ -111,13 +111,29 @@
     "allow-duplicate-recipes" "dotenv-filename" "dotenv-load" "dotenv-path" "export" "fallback"
     "ignore-comments" "positional-arguments" "tempdir" "windows-powershell" "windows-shell"))
 
-; Ref: https://just.systems/man/en/chapter_32.html
-;(recipe (attribute (identifier) @error))
 (recipe
   (attribute
-    (identifier) @attribute)
-  (#any-of? @attribute
-    "confirm" "linux" "macos" "no-cd" "no-exit-message" "no-quiet" "private" "unix" "windows"))
+    (identifier) @attribute))
+
+; https://just.systems/man/en/attributes.html
+((recipe
+  (attribute
+    (identifier) @attribute.builtin))
+  (#any-of? @attribute.builtin
+    "confirm" "doc" "extension" "group" "linux" "macos" "no-cd" "no-exit-message" "no-quiet"
+    "openbsd" "positional-arguments" "private" "script" "unix" "windows" "working-directory"))
+
+((recipe
+  (attribute
+    (identifier) @_doc
+    argument: (string) @string.documentation))
+  (#eq? @_doc "doc"))
+
+((recipe
+  (attribute
+    (identifier) @_dir
+    argument: (string) @string.special.path))
+  (#eq? @_dir "working-directory"))
 
 ; Ref: https://just.systems/man/en/chapter_31.html
 ;(function_call (identifier) @error)
