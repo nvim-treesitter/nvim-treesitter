@@ -118,6 +118,15 @@
   "}"
 ] @punctuation.bracket
 
+[
+  ","
+  ":"
+  "."
+  "?."
+  "?:"
+  "?"
+] @punctuation.delimiter
+
 (interpolation
   "${" @punctuation.special
   "}" @punctuation.special)
@@ -142,9 +151,20 @@
   ">="
   "=="
   "!="
-  "@"
   "="
-  ":"
+  "+="
+  "-="
+  "*="
+  "**="
+  "/="
+  "//="
+  "%="
+  "<<="
+  ">>="
+  "&="
+  "^="
+  "->"
+  "@"
 ] @operator
 
 [
