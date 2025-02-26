@@ -1,17 +1,18 @@
 ; Types
+; Variables
+(identifier) @variable
+
+; Nodes
 (node
+  (identifier) @tag)
+
+; Type annotation
+(type
   (identifier) @type)
-
-(type) @type
-
-(annotation_type) @type.builtin
 
 ; Properties
 (prop
   (identifier) @property)
-
-; Variables
-(identifier) @variable
 
 ; Operators
 [
