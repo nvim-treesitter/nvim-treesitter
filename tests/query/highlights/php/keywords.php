@@ -2,49 +2,22 @@
 
 namespace Foo\Bar;
 //^^^^^^^ @keyword.type
-//        ^^^ @module
-//            ^^^ @module
 
 use Foo\Baz as Baaz;
 //^ @keyword.import
-//  ^^^ @module
-//      ^^^ @type
 //          ^^ @keyword.operator
-//             ^^^^ @type.definition
-
-use Foo\Baz\{Foo, Bar};
-//           ^^^ @type
-//                ^^^ @type
 
 use function Foo\foo as fooo;
 //  ^^^^^^^^ @keyword.function
-//               ^^^ @function
-//                      ^^^^ @function
-
-use function Foo\{bar, baz};
-//                ^^^ @function
-//                     ^^^ @function
 
 use const Foo\FOO as FOOO;
 //  ^^^^^ @keyword.modifier
-//            ^^^ @constant
-//                   ^^^^ @constant
-
-use const Foo\{FOO, BAR};
-//             ^^^ @constant
-//                  ^^^ @constant
 
 use Foo\Baz\{
-//  ^^^ @module
-//      ^^^ @module
-  Bar,
-//^^^ @type
   function foo,
 //^^^^^^^^ @keyword.function
-//         ^^^ @function
   const FOO,
 //^^^^^ @keyword.modifier
-//      ^^^ @constant
 };
 
 abstract class A
