@@ -1,3 +1,1 @@
-[
-  (statement)
-] @fold
+(statement) @fold
