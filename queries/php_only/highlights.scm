@@ -194,6 +194,8 @@
     (name) @type
     (qualified_name
       (name) @type)
+    (relative_name
+      (name) @type)
   ])
 
 (named_type
@@ -207,6 +209,8 @@
   [
     (name) @type
     (qualified_name
+      (name) @type)
+    (relative_name
       (name) @type)
   ])
 
@@ -269,12 +273,16 @@
     (name) @type
     (qualified_name
       (name) @type)
+    (relative_name
+      (name) @type)
   ])
 
 (scoped_call_expression
   scope: [
     (name) @type
     (qualified_name
+      (name) @type)
+    (relative_name
       (name) @type)
   ])
 
@@ -284,6 +292,8 @@
     (name) @type
     (qualified_name
       (name) @type)
+    (relative_name
+      (name) @type)
   ]
   (name) @constant)
 
@@ -291,6 +301,8 @@
   scope: [
     (name) @type
     (qualified_name
+      (name) @type)
+    (relative_name
       (name) @type)
   ])
 
@@ -309,6 +321,8 @@
     (name) @type
     (qualified_name
       (name) @type)
+    (relative_name
+      (name) @type)
   ])
 
 ; Functions, methods, constructors
@@ -326,11 +340,13 @@
   name: (name) @function.method)
 
 (function_call_expression
-  function: (qualified_name
-    (name) @function.call))
-
-(function_call_expression
-  (name) @function.call)
+  function: [
+    (name) @function.call
+    (qualified_name
+      (name) @function.call)
+    (relative_name
+      (name) @function.call)
+  ])
 
 (scoped_call_expression
   name: (name) @function.call)
@@ -364,6 +380,8 @@
   [
     (name) @constructor
     (qualified_name
+      (name) @constructor)
+    (relative_name
       (name) @constructor)
   ])
 
@@ -409,6 +427,9 @@
 
 (namespace_name
   (name) @module)
+
+(relative_name
+  "namespace" @module.builtin)
 
 ; Attributes
 (attribute_list) @attribute

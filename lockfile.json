@@ -552,10 +552,10 @@
     "revision": "bb53f204aa3e7507960014642965c9f9a9e84b1d"
   },
   "php": {
-    "revision": "f3a19ab3217a6e838870fc7142fa492d1fd7a7c9"
+    "revision": "b22484c92180e6e30c14477f00e1c7f9d2e39304"
   },
   "php_only": {
-    "revision": "f3a19ab3217a6e838870fc7142fa492d1fd7a7c9"
+    "revision": "b22484c92180e6e30c14477f00e1c7f9d2e39304"
   },
   "phpdoc": {
     "revision": "fe3202e468bc17332bec8969f2b50ff1f1da3a46"
