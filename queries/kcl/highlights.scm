@@ -164,8 +164,9 @@
   "&="
   "^="
   "->"
-  "@"
 ] @operator
+
+"@" @attribute
 
 [
   "and"
