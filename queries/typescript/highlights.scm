@@ -193,6 +193,9 @@
 (method_signature
   name: (_) @function.method)
 
+(abstract_method_signature
+  name: (property_identifier) @function.method)
+
 ; property signatures
 (property_signature
   name: (property_identifier) @function.method
