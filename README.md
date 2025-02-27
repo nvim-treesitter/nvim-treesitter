@@ -188,6 +188,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [bibtex](https://github.com/latex-lsp/tree-sitter-bibtex) (maintained by @theHamsta, @clason)
 - [x] [bicep](https://github.com/amaanq/tree-sitter-bicep) (maintained by @amaanq)
 - [x] [bitbake](https://github.com/amaanq/tree-sitter-bitbake) (maintained by @amaanq)
+- [x] [blade](https://github.com/EmranMR/tree-sitter-blade) (maintained by @calebdw)
 - [x] [blueprint](https://gitlab.com/gabmus/tree-sitter-blueprint.git) (experimental, maintained by @gabmus)
 - [x] [bp](https://github.com/ambroisie/tree-sitter-bp) (maintained by @ambroisie)
 - [x] [c](https://github.com/tree-sitter/tree-sitter-c) (maintained by @amaanq)
