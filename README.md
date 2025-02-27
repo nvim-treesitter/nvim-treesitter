@@ -310,6 +310,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [jsonnet](https://github.com/sourcegraph/tree-sitter-jsonnet) (maintained by @nawordar)
 - [x] [julia](https://github.com/tree-sitter/tree-sitter-julia) (maintained by @fredrikekre)
 - [x] [just](https://github.com/IndianBoy42/tree-sitter-just) (maintained by @Hubro)
+- [x] [kcl](https://github.com/kcl-lang/tree-sitter-kcl) (maintained by @bertbaron)
 - [x] [kconfig](https://github.com/amaanq/tree-sitter-kconfig) (maintained by @amaanq)
 - [x] [kdl](https://github.com/amaanq/tree-sitter-kdl) (maintained by @amaanq)
 - [x] [kotlin](https://github.com/fwcd/tree-sitter-kotlin) (maintained by @SalBakraa)
