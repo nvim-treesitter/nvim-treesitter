@@ -204,7 +204,7 @@
     "revision": "90189238385cf636b9ee99ce548b9e5b5e569d48"
   },
   "fortran": {
-    "revision": "022b032d31299c5d8336cdfd0ece97de20a609c0"
+    "revision": "765d82ad913e75abfffdd57837217e96f4774fba"
   },
   "fsh": {
     "revision": "fad2e175099a45efbc98f000cc196d3674cc45e0"
@@ -510,7 +510,7 @@
     "revision": "0a95cfdc0745b6ae82f60d3a339b37f19b7b9267"
   },
   "nix": {
-    "revision": "97263793aff88c824d15dc3595d61a63ca6ccc21"
+    "revision": "48057cf966641e7a49b09700550751195c34bcb5"
   },
   "norg": {
     "revision": "d89d95af13d409f30a6c7676387bde311ec4a2c8"
@@ -816,7 +816,7 @@
     "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
   },
   "tlaplus": {
-    "revision": "d711f24c93221cdfc9a9b4dbb0998f528fc982ac"
+    "revision": "4ba91b07b97741a67f61221d0d50e6d962e4987e"
   },
   "tmux": {
     "revision": "0252ecd080016e45e6305ef1a943388f5ae2f4b4"
