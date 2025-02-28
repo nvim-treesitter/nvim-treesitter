@@ -555,10 +555,10 @@
     "revision": "bb53f204aa3e7507960014642965c9f9a9e84b1d"
   },
   "php": {
-    "revision": "b22484c92180e6e30c14477f00e1c7f9d2e39304"
+    "revision": "f7cf7348737d8cff1b13407a0bfedce02ee7b046"
   },
   "php_only": {
-    "revision": "b22484c92180e6e30c14477f00e1c7f9d2e39304"
+    "revision": "f7cf7348737d8cff1b13407a0bfedce02ee7b046"
   },
   "phpdoc": {
     "revision": "fe3202e468bc17332bec8969f2b50ff1f1da3a46"
@@ -696,7 +696,7 @@
     "revision": "cf85bbd5da0c5ad243301d889c7f84d790a4cae4"
   },
   "rust": {
-    "revision": "2eaf126458a4d6a69401089b6ba78c5e5d6c1ced"
+    "revision": "6e883a2adea9414799300699e78c0d2f032b5c46"
   },
   "scala": {
     "revision": "d67fe3ba3879bd7ba74bd7f56c9a38fed241ba25"
@@ -870,7 +870,7 @@
     "revision": "ad9b638b914095320de85d59c49ab271603af048"
   },
   "v": {
-    "revision": "154017bdd3a0eb0130a989823f5c1da263b239f3"
+    "revision": "532bebd50742ef15949bdd67c36d46697c847628"
   },
   "vala": {
     "revision": "97e6db3c8c73b15a9541a458d8e797a07f588ef4"
