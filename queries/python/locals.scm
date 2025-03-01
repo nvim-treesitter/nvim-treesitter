@@ -16,15 +16,15 @@
 
 ; Imports
 (aliased_import
-  alias: (identifier) @local.definition.import)
+  alias: (identifier) @local.definition.import) @local.scope
 
 (import_statement
   name: (dotted_name
-    (identifier) @local.definition.import))
+    (identifier) @local.definition.import)) @local.scope
 
 (import_from_statement
   name: (dotted_name
-    (identifier) @local.definition.import))
+    (identifier) @local.definition.import)) @local.scope
 
 ; Function with parameters, defines parameters
 (parameters
