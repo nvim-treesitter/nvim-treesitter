@@ -111,7 +111,7 @@
     "revision": "45e5f1e9d6de2c68591bc8e5ec662cf18e950b4a"
   },
   "dart": {
-    "revision": "e81af6ab94a728ed99c30083be72d88e6d56cf9e"
+    "revision": "80e23c07b64494f7e21090bb3450223ef0b192f4"
   },
   "desktop": {
     "revision": "6d66eea37afa1d6bc1e25ef457113743df42416d"
@@ -129,7 +129,7 @@
     "revision": "0229c0211dba909c5d45129ac784a3f4d49c243a"
   },
   "djot": {
-    "revision": "67e6e23ba7be81a4373e0f49e21207bdc32d12a5"
+    "revision": "eb31845d59b9ee8c1b2098e78e9ca72004bd1579"
   },
   "dockerfile": {
     "revision": "971acdd908568b4531b0ba28a445bf0bb720aba5"
@@ -486,10 +486,10 @@
     "revision": "90ae195b31933ceb9d079abfa8a3ad0a36fee4cc"
   },
   "meson": {
-    "revision": "c5fffb8edd39f22644084ab3f73a924a75721ee3"
+    "revision": "12edaf0dfef0a43bc74336a4432b2db1c65788d6"
   },
   "mlir": {
-    "revision": "ad381783044e107ce144af3c36342cc34183d5b4"
+    "revision": "855130574db8f33521be163368973c4e2e6dda55"
   },
   "muttrc": {
     "revision": "173b0ab53a9c07962c9777189c4c70e90f1c1837"
