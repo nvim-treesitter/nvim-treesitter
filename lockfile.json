@@ -72,7 +72,7 @@
     "revision": "f4236d4da8aa92bc105d9c118746474c608e6af7"
   },
   "cmake": {
-    "revision": "def189b2d9395d8ebfe946ff7b1765dc8899a971"
+    "revision": "e5d2133f2a750238c8a64d55e461d4a0ce01f861"
   },
   "comment": {
     "revision": "3555706cef8b98d3e4c7379d7260548ff03ad363"
@@ -159,7 +159,7 @@
     "revision": "f742f2fe327463335e8671a87c0b9b396905d1d1"
   },
   "elixir": {
-    "revision": "86ec2ed45d6d9433b4e0b88cd3d96796bd45625f"
+    "revision": "c35154687de847d977858f9fad1049a1e9420f44"
   },
   "elm": {
     "revision": "e34bdc5c512918628b05b48e633f711123204e45"
@@ -204,13 +204,13 @@
     "revision": "90189238385cf636b9ee99ce548b9e5b5e569d48"
   },
   "fortran": {
-    "revision": "765d82ad913e75abfffdd57837217e96f4774fba"
+    "revision": "21b740801794b6570a0380f8aef22bb67214ea65"
   },
   "fsh": {
     "revision": "fad2e175099a45efbc98f000cc196d3674cc45e0"
   },
   "fsharp": {
-    "revision": "9308e58bec0394232a8d4abdd92eeaa387aefc89"
+    "revision": "02929f084726db969e5b916d144436f248146824"
   },
   "func": {
     "revision": "f780ca55e65e7d7360d0229331763e16c452fc98"
@@ -696,7 +696,7 @@
     "revision": "cf85bbd5da0c5ad243301d889c7f84d790a4cae4"
   },
   "rust": {
-    "revision": "6e883a2adea9414799300699e78c0d2f032b5c46"
+    "revision": "02da1b25f6dfc7341ddb80f37f708cdd9301be2d"
   },
   "scala": {
     "revision": "d67fe3ba3879bd7ba74bd7f56c9a38fed241ba25"
@@ -882,7 +882,7 @@
     "revision": "15fbf73dafaffc89050d247857beb27500ea30e8"
   },
   "vhdl": {
-    "revision": "f3a8d69a96656bb81d803f7e6ec24fbe1aa2c313"
+    "revision": "db1d7446bd07d811981734cd501fe1994cbad99d"
   },
   "vhs": {
     "revision": "3f202326c06f1c4d47aa82b9013a6b71aea70611"
