@@ -149,3 +149,9 @@
   (string
     (string_fragment) @string.special.url))
   (#any-of? @_attr "href" "src"))
+
+((jsx_element) @_jsx_element
+  (#set! @_jsx_element bo.commentstring "{/* %s */}"))
+
+((jsx_attribute) @_jsx_attribute
+  (#set! @_jsx_attribute bo.commentstring "// %s"))
