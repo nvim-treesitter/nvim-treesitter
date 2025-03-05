@@ -14,7 +14,7 @@
 ;-----------
 (string) @string
 
-(bool) @constant.builtin
+(bool) @boolean
 
 (number) @number
 
