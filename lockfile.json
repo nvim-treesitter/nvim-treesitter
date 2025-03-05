@@ -141,7 +141,7 @@
     "revision": "ccd998f378c3f9345ea4eeb223f56d7b84d16687"
   },
   "dtd": {
-    "revision": "26e95de449d772bc2dd4f0382580f84e2a0754d6"
+    "revision": "2128a0b249263e238d88cb894dad00c3168fea37"
   },
   "earthfile": {
     "revision": "ae378d9d1306e9a967698516041f6f8803db5592"
@@ -489,7 +489,7 @@
     "revision": "12edaf0dfef0a43bc74336a4432b2db1c65788d6"
   },
   "mlir": {
-    "revision": "855130574db8f33521be163368973c4e2e6dda55"
+    "revision": "af14b427119a7428b461277bfc43abe5864d995d"
   },
   "muttrc": {
     "revision": "173b0ab53a9c07962c9777189c4c70e90f1c1837"
@@ -717,7 +717,7 @@
     "revision": "3ed23c04a412a0559162d9cadf96dfff7cb36079"
   },
   "slim": {
-    "revision": "a0f08e85b787248219ea645423c5916c8d620ef6"
+    "revision": "546e3aa1af8a3b355c7734efccd9a759ffc0b43a"
   },
   "slint": {
     "revision": "f11da7e62051ba8b9d4faa299c26de8aeedfc1cd"
@@ -915,7 +915,7 @@
     "revision": "fff3e72242aa110ebba6441946ea4d12d200fa68"
   },
   "xml": {
-    "revision": "26e95de449d772bc2dd4f0382580f84e2a0754d6"
+    "revision": "2128a0b249263e238d88cb894dad00c3168fea37"
   },
   "xresources": {
     "revision": "d0f9dc7cec4dc15fc6f9d556bb4e9dd5050328a6"
