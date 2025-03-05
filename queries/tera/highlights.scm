@@ -139,18 +139,7 @@
     "starting_with" "ending_with" "containing" "matching"))
 
 (filter_expression
-  filter: (identifier) @function.method)
-
-(filter_expression
-  filter: (identifier) @function.builtin
-  (#any-of? @function.builtin
-    ; Filters - https://keats.github.io/tera/docs/#built-in-filters
-    "lower" "upper" "wordcount" "capitalize" "replace" "addslashes" "slugify" "title" "trim"
-    "trim_start" "trim_end" "trim_start_matches" "trim_end_matches" "truncate" "linebreaksbr"
-    "spaceless" "indent" "striptags" "first" "last" "nth" "join" "length" "reverse" "sort" "unique"
-    "slice" "group_by" "filter" "map" "concat" "urlencode" "urlencode_strict" "abs" "pluralize"
-    "round" "filesizeformat" "date" "escape" "escape_xml" "safe" "get" "split" "int" "float"
-    "json_encode" "as_str" "default"))
+  filter: (identifier) @function.method.call)
 
 ; Namespaces
 ;-----------
