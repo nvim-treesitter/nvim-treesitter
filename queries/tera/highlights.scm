@@ -119,7 +119,7 @@
       name: (identifier) @variable.parameter)))
 
 (call_expression
-  scope: (identifier)? @namespace
+  scope: (identifier)? @module
   name: (identifier) @function.call)
 
 (call_expression
@@ -155,4 +155,4 @@
 ; Namespaces
 ;-----------
 (import_statement
-  scope: (identifier) @namespace)
+  scope: (identifier) @module)
