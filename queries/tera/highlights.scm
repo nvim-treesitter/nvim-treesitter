@@ -123,6 +123,11 @@
   name: (identifier) @function.call)
 
 (call_expression
+  scope: (identifier) @module.builtin
+  name: (identifier) @function.call
+  (#eq? @module.builtin "self"))
+
+(call_expression
   name: (identifier) @function.builtin
   (#any-of? @function.builtin
     ; Functions - https://keats.github.io/tera/docs/#built-in-functions
