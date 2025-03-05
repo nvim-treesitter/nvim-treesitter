@@ -60,7 +60,7 @@
 
 ; Tags
 ;-----------
-(comment_tag) @comment
+(comment_tag) @comment @spell
 
 ; Keywords
 ;-----------
