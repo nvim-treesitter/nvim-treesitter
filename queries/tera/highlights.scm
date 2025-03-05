@@ -8,7 +8,7 @@
 ; Properties
 ;-----------
 (member_expression
-  property: (identifier)? @variable.other.member)
+  property: (identifier)? @variable.member)
 
 ; Literals
 ;-----------
