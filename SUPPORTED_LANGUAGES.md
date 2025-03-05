@@ -240,7 +240,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [rnoweb](https://github.com/bamonroe/tree-sitter-rnoweb) | unstable | `HF J ` | @bamonroe
 [robot](https://github.com/Hubro/tree-sitter-robot) | unstable | `HFIJ ` | @Hubro
 [robots](https://github.com/opa-oz/tree-sitter-robots-txt) | unstable | `H  J ` | @opa-oz
-[roc](https://github.com/faldor20/tree-sitter-roc) | unstable | `H  JL` | @nat-418
+[roc](https://github.com/faldor20/tree-sitter-roc) | unstable | `H IJL` | @nat-418
 [ron](https://github.com/tree-sitter-grammars/tree-sitter-ron) | unstable | `HFIJL` | @amaanq
 [rst](https://github.com/stsewd/tree-sitter-rst) | unstable | `H  JL` | @stsewd
 [ruby](https://github.com/tree-sitter/tree-sitter-ruby) | unstable | `HFIJL` | @TravonteD
@@ -282,6 +282,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [tcl](https://github.com/tree-sitter-grammars/tree-sitter-tcl) | unstable | `HFIJ ` | @lewis6991
 [teal](https://github.com/euclidianAce/tree-sitter-teal) | unstable | `HFIJL` | @euclidianAce
 [templ](https://github.com/vrischmann/tree-sitter-templ) | unstable | `HF J ` | @vrischmann
+[tera](https://github.com/uncenter/tree-sitter-tera) | unstable | `H  J ` | @uncenter
 [terraform](https://github.com/MichaHoffmann/tree-sitter-hcl) | unstable | `HFIJ ` | @MichaHoffmann
 [textproto](https://github.com/PorterAtGoogle/tree-sitter-textproto) | unstable | `HFIJ ` | @Porter
 [thrift](https://github.com/tree-sitter-grammars/tree-sitter-thrift) | unstable | `HFIJL` | @amaanq, @duskmoon314
