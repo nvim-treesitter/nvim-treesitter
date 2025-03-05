@@ -455,8 +455,8 @@ end, 3)
 
 ---@param languages? string[]|string
 ---@param _options? UpdateOptions
----@param _callback function
-M.update = a.sync(function(languages, _options, _callback)
+---@param callback function
+M.update = a.sync(function(languages, _options, callback)
   reload_parsers()
   if not languages or #languages == 0 then
     languages = 'all'
@@ -465,11 +465,14 @@ M.update = a.sync(function(languages, _options, _callback)
   languages = vim.tbl_filter(needs_update, languages) ---@type string[]
 
   if #languages > 0 then
-    install(languages, { force = true })
+    install(languages, { force = true }, callback)
   else
     log.info('All parsers are up-to-date')
+    if callback then
+      callback(true)
+    end
   end
-end, 2)
+end, 3)
 
 ---@async
 ---@param logger Logger
