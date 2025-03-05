@@ -69,18 +69,18 @@
   "elif"
   "else"
   "endif"
-] @keyword.control.conditional
+] @keyword.conditional
 
 [
   "for"
   "endfor"
-] @keyword.control.repeat
+] @keyword.repeat
 
 [
   "include"
   "import"
   "extends"
-] @keyword.control.import
+] @keyword.import
 
 [
   "in"
@@ -93,7 +93,7 @@
 [
   "break"
   "continue"
-] @keyword.control.return
+] @keyword.return
 
 [
   "set"
@@ -120,7 +120,7 @@
 
 (call_expression
   scope: (identifier)? @namespace
-  name: (identifier) @function)
+  name: (identifier) @function.call)
 
 (call_expression
   name: (identifier) @function.builtin
@@ -129,7 +129,7 @@
     "range" "now" "throw" "get_random" "get_env"))
 
 (test_expression
-  test: (identifier) @function)
+  test: (identifier) @function.call)
 
 (test_expression
   test: (identifier) @function.builtin
