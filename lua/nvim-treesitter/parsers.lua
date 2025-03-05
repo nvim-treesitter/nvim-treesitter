@@ -19,7 +19,7 @@ return {
   angular = {
     install_info = {
       generate_from_json = true,
-      revision = '745d3c65c2294aca1110b6b6ad6805124be605c9',
+      revision = 'cba288924f4832abb619c627539f111004ff22e5',
       url = 'https://github.com/dlvandenberg/tree-sitter-angular',
     },
     maintainers = { '@dlvandenberg' },
@@ -684,7 +684,7 @@ return {
   },
   gleam = {
     install_info = {
-      revision = 'af6043419f5aa0f8b6c2a26db0187aefa46c7f5f',
+      revision = 'e01c88449b53e2ee5dad222d4020cc7006c5b700',
       url = 'https://github.com/gleam-lang/tree-sitter-gleam',
     },
     maintainers = { '@amaanq' },
@@ -1367,7 +1367,7 @@ return {
   },
   meson = {
     install_info = {
-      revision = '12edaf0dfef0a43bc74336a4432b2db1c65788d6',
+      revision = '742a21e11e914096e0172dad2f0b85e7554c95ff',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-meson',
     },
     maintainers = { '@Decodetalkers' },
@@ -1376,7 +1376,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = 'af14b427119a7428b461277bfc43abe5864d995d',
+      revision = 'c7c62f37a8612a897d25906d93363fec36c1591c',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     maintainers = { '@artagnon' },
@@ -1484,7 +1484,7 @@ return {
   ocaml = {
     install_info = {
       location = 'grammars/ocaml',
-      revision = 'db52ba3f7f33c9949bba115a813d7c30a359cd87',
+      revision = '91708deb10cb4fe68ab3c50891426b9967dbf35a',
       url = 'https://github.com/tree-sitter/tree-sitter-ocaml',
     },
     maintainers = { '@undu' },
@@ -1493,7 +1493,7 @@ return {
   ocaml_interface = {
     install_info = {
       location = 'grammars/interface',
-      revision = 'db52ba3f7f33c9949bba115a813d7c30a359cd87',
+      revision = '91708deb10cb4fe68ab3c50891426b9967dbf35a',
       url = 'https://github.com/tree-sitter/tree-sitter-ocaml',
     },
     maintainers = { '@undu' },
@@ -1503,7 +1503,7 @@ return {
   ocamllex = {
     install_info = {
       generate = true,
-      revision = '5da5bb7508ac9fd3317561670ef18c126a0fe2aa',
+      revision = 'c5cf996c23e38a1537069fbe2d4bb83a75fc7b2f',
       url = 'https://github.com/atom-ocaml/tree-sitter-ocamllex',
     },
     maintainers = { '@undu' },
@@ -1950,7 +1950,7 @@ return {
   },
   rust = {
     install_info = {
-      revision = '02da1b25f6dfc7341ddb80f37f708cdd9301be2d',
+      revision = 'e86119bdb4968b9799f6a014ca2401c178d54b5f',
       url = 'https://github.com/tree-sitter/tree-sitter-rust',
     },
     maintainers = { '@amaanq' },
@@ -1958,7 +1958,7 @@ return {
   },
   scala = {
     install_info = {
-      revision = 'd67fe3ba3879bd7ba74bd7f56c9a38fed241ba25',
+      revision = 'ed939ed550ebff7d4ad8aafb4d5aad44de69965d',
       url = 'https://github.com/tree-sitter/tree-sitter-scala',
     },
     maintainers = { '@stevanmilic' },
@@ -2420,7 +2420,7 @@ return {
   unison = {
     install_info = {
       generate = true,
-      revision = '3c97db76d3cdbd002dfba493620c2d5df2fd6fa9',
+      revision = '169e7f748a540ec360c0cb086b448faad012caa4',
       url = 'https://github.com/kylegoetz/tree-sitter-unison',
     },
     maintainers = { '@tapegram' },
