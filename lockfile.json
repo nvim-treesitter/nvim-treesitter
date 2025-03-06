@@ -6,7 +6,7 @@
     "revision": "b9b32fa042c2952a7bfca86847ea325e44ccc897"
   },
   "angular": {
-    "revision": "745d3c65c2294aca1110b6b6ad6805124be605c9"
+    "revision": "cba288924f4832abb619c627539f111004ff22e5"
   },
   "apex": {
     "revision": "3597575a429766dd7ecce9f5bb97f6fec4419d5d"
@@ -486,10 +486,10 @@
     "revision": "90ae195b31933ceb9d079abfa8a3ad0a36fee4cc"
   },
   "meson": {
-    "revision": "12edaf0dfef0a43bc74336a4432b2db1c65788d6"
+    "revision": "742a21e11e914096e0172dad2f0b85e7554c95ff"
   },
   "mlir": {
-    "revision": "af14b427119a7428b461277bfc43abe5864d995d"
+    "revision": "c7c62f37a8612a897d25906d93363fec36c1591c"
   },
   "muttrc": {
     "revision": "173b0ab53a9c07962c9777189c4c70e90f1c1837"
@@ -696,10 +696,10 @@
     "revision": "cf85bbd5da0c5ad243301d889c7f84d790a4cae4"
   },
   "rust": {
-    "revision": "02da1b25f6dfc7341ddb80f37f708cdd9301be2d"
+    "revision": "5edb201282b79aba611c763d11a84dcde15fcae6"
   },
   "scala": {
-    "revision": "d67fe3ba3879bd7ba74bd7f56c9a38fed241ba25"
+    "revision": "ed939ed550ebff7d4ad8aafb4d5aad44de69965d"
   },
   "scfg": {
     "revision": "2f3709e7656fa2c443f92041c91a9f843f8cd625"
@@ -861,7 +861,7 @@
     "revision": "debd26fed283d80456ebafa33a06957b0c52e451"
   },
   "unison": {
-    "revision": "3c97db76d3cdbd002dfba493620c2d5df2fd6fa9"
+    "revision": "169e7f748a540ec360c0cb086b448faad012caa4"
   },
   "usd": {
     "revision": "4e0875f724d94d0c2ff36f9b8cb0b12f8b20d216"
