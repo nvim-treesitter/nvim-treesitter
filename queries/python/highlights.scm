@@ -410,7 +410,7 @@
     (identifier) @type))
 
 ; Assign higher priority to @variable.member than @type.builtin
-; Otherwise reserved builtins (such as `type`) are valid as attribute name
+; Reserved builtins (such as `type`) are valid as attribute name
 ((class_definition
   body: (block
     (expression_statement
