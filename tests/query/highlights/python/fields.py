@@ -1,4 +1,7 @@
 class Fields:
+    type: str
+#   ^^^^ @variable.member
+
     def __init__(self, fields: list[int]) -> None:
 #                                   ^^^ @type.builtin
 #                                            ^^^^ @constant.builtin
