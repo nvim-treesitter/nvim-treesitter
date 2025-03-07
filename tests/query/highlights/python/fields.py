@@ -4,6 +4,8 @@ class Fields:
 #                                            ^^^^ @constant.builtin
         self.fields = fields
 #            ^^^^^^ @variable.member
+        self.type = "foo"
+#            ^^^^ @variable.member
         self.__dunderfield__ = None
 #            ^^^^^^^^^^^^^^^ @variable.member
         self._FunKyFielD = 0
