@@ -246,7 +246,7 @@
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
   },
   "gleam": {
-    "revision": "af6043419f5aa0f8b6c2a26db0187aefa46c7f5f"
+    "revision": "e01c88449b53e2ee5dad222d4020cc7006c5b700"
   },
   "glimmer": {
     "revision": "da605af8c5999b43e6839b575eae5e6cafabb06f"
@@ -696,7 +696,7 @@
     "revision": "cf85bbd5da0c5ad243301d889c7f84d790a4cae4"
   },
   "rust": {
-    "revision": "5edb201282b79aba611c763d11a84dcde15fcae6"
+    "revision": "e86119bdb4968b9799f6a014ca2401c178d54b5f"
   },
   "scala": {
     "revision": "ed939ed550ebff7d4ad8aafb4d5aad44de69965d"
