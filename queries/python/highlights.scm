@@ -25,7 +25,8 @@
 
 ((attribute
   attribute: (identifier) @variable.member)
-  (#lua-match? @variable.member "^[%l_].*$"))
+  (#lua-match? @variable.member "^[%l_].*$")
+  (#set! "priority" 101))
 
 ((assignment
   left: (identifier) @type.definition
