@@ -3,9 +3,25 @@ local runner = Runner:new(it, "tests/indent/html", {
   tabstop = 2,
   shiftwidth = 2,
   expandtab = true,
+  softtabstop = 0,
 })
 
 describe("indent HTML:", function()
+  local css_indent = vim.api.nvim_create_autocmd("FileType", {
+    pattern = "css",
+    callback = function()
+      vim.bo.tabstop = 2
+      vim.bo.shiftwidth = 2
+    end,
+  })
+  local js_indent = vim.api.nvim_create_autocmd("FileType", {
+    pattern = "javascript",
+    callback = function()
+      vim.bo.tabstop = 4
+      vim.bo.shiftwidth = 4
+    end,
+  })
+
   describe("whole file:", function()
     runner:whole_file "."
   end)
@@ -24,5 +40,9 @@ describe("indent HTML:", function()
     runner:new_line("script_style.html", { on_line = 6, text = "<div></div>", indent = 2 })
     runner:new_line("script_style.html", { on_line = 9, text = "const x = 1", indent = 2 })
     runner:new_line("script_style.html", { on_line = 11, text = "Text", indent = 2 })
+    runner:new_line("mixed_indent.html", { on_line = 3, text = "const x = 1;", indent = 6 })
   end)
+
+  vim.api.nvim_del_autocmd(js_indent)
+  vim.api.nvim_del_autocmd(css_indent)
 end)
