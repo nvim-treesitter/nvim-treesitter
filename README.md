@@ -192,6 +192,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [bp](https://github.com/ambroisie/tree-sitter-bp) (maintained by @ambroisie)
 - [x] [c](https://github.com/tree-sitter/tree-sitter-c) (maintained by @amaanq)
 - [x] [c_sharp](https://github.com/tree-sitter/tree-sitter-c-sharp) (maintained by @amaanq)
+- [x] [caddy](https://github.com/opa-oz/tree-sitter-caddy) (maintained by @opa-oz)
 - [x] [cairo](https://github.com/amaanq/tree-sitter-cairo) (maintained by @amaanq)
 - [x] [capnp](https://github.com/amaanq/tree-sitter-capnp) (maintained by @amaanq)
 - [x] [chatito](https://github.com/ObserverOfTime/tree-sitter-chatito) (maintained by @ObserverOfTime)
