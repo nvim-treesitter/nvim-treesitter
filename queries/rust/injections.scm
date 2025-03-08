@@ -5,20 +5,19 @@
     (identifier) @_macro_name
   ]
   (token_tree) @injection.content
-  (#not-eq? @_macro_name "slint")
+  (#not-any-of? @_macro_name "slint" "html" "json")
   (#set! injection.language "rust")
   (#set! injection.include-children))
 
 (macro_invocation
   macro: [
     (scoped_identifier
-      name: (_) @_macro_name)
-    (identifier) @_macro_name
+      name: (_) @injection.language)
+    (identifier) @injection.language
   ]
   (token_tree) @injection.content
-  (#eq? @_macro_name "slint")
+  (#any-of? @injection.language "slint" "html" "json")
   (#offset! @injection.content 0 1 0 -1)
-  (#set! injection.language "slint")
   (#set! injection.include-children))
 
 (macro_definition
@@ -36,11 +35,6 @@
   (block_comment)
 ] @injection.content
   (#set! injection.language "comment"))
-
-((macro_invocation
-  macro: (identifier) @injection.language
-  (token_tree) @injection.content)
-  (#any-of? @injection.language "html" "json"))
 
 (call_expression
   function: (scoped_identifier
