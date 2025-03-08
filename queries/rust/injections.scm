@@ -12,23 +12,11 @@
 (macro_invocation
   macro: [
     (scoped_identifier
-      name: (_) @_macro_name)
-    (identifier) @_macro_name
-  ]
-  (token_tree) @injection.content
-  (#eq? @_macro_name "slint")
-  (#offset! @injection.content 0 1 0 -1)
-  (#set! injection.language "slint")
-  (#set! injection.include-children))
-
-(macro_invocation
-  macro: [
-    (scoped_identifier
       name: (_) @injection.language)
     (identifier) @injection.language
   ]
   (token_tree) @injection.content
-  (#any-of? @injection.language "html" "json")
+  (#any-of? @injection.language "slint" "html" "json")
   (#offset! @injection.content 0 1 0 -1)
   (#set! injection.include-children))
 
