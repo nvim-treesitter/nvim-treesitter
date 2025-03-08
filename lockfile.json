@@ -531,10 +531,10 @@
     "revision": "28d3b2e25a0b1881d1b47ed1924ca276c7003d45"
   },
   "ocaml": {
-    "revision": "db52ba3f7f33c9949bba115a813d7c30a359cd87"
+    "revision": "6921a831d79d515d64400a9e022cf30e68a2a3dd"
   },
   "ocaml_interface": {
-    "revision": "db52ba3f7f33c9949bba115a813d7c30a359cd87"
+    "revision": "6921a831d79d515d64400a9e022cf30e68a2a3dd"
   },
   "ocamllex": {
     "revision": "5da5bb7508ac9fd3317561670ef18c126a0fe2aa"
