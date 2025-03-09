@@ -23,6 +23,7 @@
 [
   "."
   ","
+  "::"
 ] @punctuation.delimiter
 
 [
@@ -55,7 +56,6 @@
   "{{"
   "-}}"
   "{{-"
-  "::"
 ] @punctuation.bracket
 
 ; Tags
