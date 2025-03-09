@@ -2325,6 +2325,14 @@ list.tcl = {
   maintainers = { "@lewis6991" },
 }
 
+list.tera = {
+  install_info = {
+    url = "https://github.com/uncenter/tree-sitter-tera",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@uncenter" },
+}
+
 list.terraform = {
   install_info = {
     url = "https://github.com/MichaHoffmann/tree-sitter-hcl",
