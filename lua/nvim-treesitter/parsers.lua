@@ -191,6 +191,14 @@ list.bitbake = {
   maintainers = { "@amaanq" },
 }
 
+list.blade = {
+  install_info = {
+    url = "https://github.com/EmranMR/tree-sitter-blade",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@calebdw" },
+}
+
 list.blueprint = {
   install_info = {
     url = "https://gitlab.com/gabmus/tree-sitter-blueprint.git",
