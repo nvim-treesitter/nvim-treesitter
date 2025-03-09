@@ -22,7 +22,7 @@
 (number) @number
 
 (field
-  name: (identifier) @variable.member)
+  name: (identifier) @property)
 
 (token
   (identifier) @variable.parameter)
@@ -35,7 +35,7 @@
 [
   (key_brace)
   (key_paren)
-] @string.special.symbol
+] @markup.link.label
 
 (string
   name: (identifier) @constant)
