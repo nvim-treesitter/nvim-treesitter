@@ -25,7 +25,8 @@
 
 ((attribute
   attribute: (identifier) @variable.member)
-  (#lua-match? @variable.member "^[%l_].*$"))
+  (#lua-match? @variable.member "^[%l_].*$")
+  (#set! "priority" 101))
 
 ((assignment
   left: (identifier) @type.definition
@@ -408,12 +409,15 @@
   superclasses: (argument_list
     (identifier) @type))
 
+; Assign higher priority to @variable.member than @type.builtin
+; Reserved builtins (such as `type`) are valid as attribute name
 ((class_definition
   body: (block
     (expression_statement
       (assignment
         left: (identifier) @variable.member))))
-  (#lua-match? @variable.member "^[%l_].*$"))
+  (#lua-match? @variable.member "^[%l_].*$")
+  (#set! "priority" 101))
 
 ((class_definition
   body: (block
@@ -421,7 +425,8 @@
       (assignment
         left: (_
           (identifier) @variable.member)))))
-  (#lua-match? @variable.member "^[%l_].*$"))
+  (#lua-match? @variable.member "^[%l_].*$")
+  (#set! "priority" 101))
 
 ((class_definition
   (block
