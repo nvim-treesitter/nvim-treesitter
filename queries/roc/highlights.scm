@@ -32,6 +32,12 @@
 (field_access_expr
   (identifier) @variable.member)
 
+;highlight module members as records instead of free variables
+; avoids highlighting them as out-of-scope vars
+(variable_expr
+  (module)
+  (identifier) @variable.member)
+
 ;----comments----
 (line_comment) @comment @spell
 
@@ -41,8 +47,8 @@
 [
   "?"
   (arrow)
-  (back_arrow)
-  (backslash)
+  (fat_arrow)
+  "|"
   ","
   ":"
 ] @punctuation.delimiter
@@ -59,6 +65,8 @@
 [
   "|"
   "&"
+  "<-"
+  ".."
   (operator)
 ] @operator
 
@@ -92,10 +100,6 @@
   "imports"
 ] @keyword.import
 
-(backpassing_expr
-  assignee: (identifier_pattern
-    (identifier) @variable.parameter))
-
 (value_declaration
   (decl_left
     (identifier_pattern
@@ -105,8 +109,7 @@
 
 ;----tags----
 (tags_type
-  (apply_type
-    (concrete_type) @constructor))
+  (tag_type) @constructor)
 
 [
   (tag)
@@ -123,11 +126,11 @@
 "dbg" @keyword.debug
 
 ;----function invocations ----
-(function_call_expr
+(function_call_pnc_expr
   caller: (variable_expr
     (identifier) @function.call))
 
-(function_call_expr
+(function_call_pnc_expr
   caller: (field_access_expr
     (identifier) @function.call .))
 
