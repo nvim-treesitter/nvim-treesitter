@@ -24,6 +24,7 @@
   "."
   ","
   "::"
+  (frontmatter_delimiter)
 ] @punctuation.delimiter
 
 [
