@@ -450,7 +450,6 @@
       name: (identifier) @constructor)))
   (#any-of? @constructor "__new__" "__init__"))
 
-
 ; Regex from the `re` module
 (call
   function: (attribute
