@@ -23,11 +23,6 @@
 
 "_" @character.special ; match wildcard
 
-((attribute
-  attribute: (identifier) @variable.member)
-  (#lua-match? @variable.member "^[%l_].*$")
-  (#set! "priority" 101))
-
 ((assignment
   left: (identifier) @type.definition
   (type
@@ -396,44 +391,6 @@
   (ellipsis)
 ] @punctuation.delimiter
 
-; Class definitions
-(class_definition
-  name: (identifier) @type)
-
-(class_definition
-  body: (block
-    (function_definition
-      name: (identifier) @function.method)))
-
-(class_definition
-  superclasses: (argument_list
-    (identifier) @type))
-
-; Assign higher priority to @variable.member than @type.builtin
-; Reserved builtins (such as `type`) are valid as attribute name
-((class_definition
-  body: (block
-    (expression_statement
-      (assignment
-        left: (identifier) @variable.member))))
-  (#lua-match? @variable.member "^[%l_].*$")
-  (#set! "priority" 101))
-
-((class_definition
-  body: (block
-    (expression_statement
-      (assignment
-        left: (_
-          (identifier) @variable.member)))))
-  (#lua-match? @variable.member "^[%l_].*$")
-  (#set! "priority" 101))
-
-((class_definition
-  (block
-    (function_definition
-      name: (identifier) @constructor)))
-  (#any-of? @constructor "__new__" "__init__"))
-
 ((identifier) @type.builtin
   (#any-of? @type.builtin
     ; https://docs.python.org/3/library/exceptions.html
@@ -453,6 +410,46 @@
     ; https://docs.python.org/3/library/stdtypes.html
     "bool" "int" "float" "complex" "list" "tuple" "range" "str" "bytes" "bytearray" "memoryview"
     "set" "frozenset" "dict" "type" "object"))
+
+; After @type.builtin bacause builtins (such as `type`) are valid as attribute name
+((attribute
+  attribute: (identifier) @variable.member)
+  (#lua-match? @variable.member "^[%l_].*$"))
+
+; Class definitions
+(class_definition
+  name: (identifier) @type)
+
+(class_definition
+  body: (block
+    (function_definition
+      name: (identifier) @function.method)))
+
+(class_definition
+  superclasses: (argument_list
+    (identifier) @type))
+
+((class_definition
+  body: (block
+    (expression_statement
+      (assignment
+        left: (identifier) @variable.member))))
+  (#lua-match? @variable.member "^[%l_].*$"))
+
+((class_definition
+  body: (block
+    (expression_statement
+      (assignment
+        left: (_
+          (identifier) @variable.member)))))
+  (#lua-match? @variable.member "^[%l_].*$"))
+
+((class_definition
+  (block
+    (function_definition
+      name: (identifier) @constructor)))
+  (#any-of? @constructor "__new__" "__init__"))
+
 
 ; Regex from the `re` module
 (call
