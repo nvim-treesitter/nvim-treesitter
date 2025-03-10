@@ -44,6 +44,9 @@
   "bitbake": {
     "revision": "a5d04fdb5a69a02b8fa8eb5525a60dfb5309b73b"
   },
+  "blade": {
+    "revision": "bcdc4b01827cac21205f7453e9be02f906943128"
+  },
   "blueprint": {
     "revision": "60ba73739c6083c693d86a1a7cf039c07eb4ed59"
   },
