@@ -35,23 +35,6 @@
     function: (identifier) @_func))
   (#any-of? @_func "TypeVar" "NewType"))
 
-; Function calls
-(call
-  function: (identifier) @function.call)
-
-(call
-  function: (attribute
-    attribute: (identifier) @function.method.call))
-
-((call
-  function: (identifier) @constructor)
-  (#lua-match? @constructor "^%u"))
-
-((call
-  function: (attribute
-    attribute: (identifier) @constructor))
-  (#lua-match? @constructor "^%u"))
-
 ; Decorators
 ((decorator
   "@" @attribute)
@@ -449,6 +432,23 @@
     (function_definition
       name: (identifier) @constructor)))
   (#any-of? @constructor "__new__" "__init__"))
+
+; Function calls
+(call
+  function: (identifier) @function.call)
+
+(call
+  function: (attribute
+    attribute: (identifier) @function.method.call))
+
+((call
+  function: (identifier) @constructor)
+  (#lua-match? @constructor "^%u"))
+
+((call
+  function: (attribute
+    attribute: (identifier) @constructor))
+  (#lua-match? @constructor "^%u"))
 
 ; Regex from the `re` module
 (call
