@@ -4,7 +4,7 @@ _ = func()
 #   ^^^^ @function.call
 
 "{}".format(1)
-#    ^^^^^^ @function.call
+#    ^^^^^^ @function.method.call
 
 class Foo:
     def method(self) -> None: ...
