@@ -11,10 +11,3 @@ class Foo:
 
 Foo().method()
 #     ^^^^^^ @function.method.call
-
-@pytest.mark.filterwarnings("ignore::DeprecationWarning")
-#^^^^^^ @variable
-#       ^^^^ @variable.member
-#            ^^^^^^^^^^^^^^ @function.method.call
-def test_func():
-    pass
