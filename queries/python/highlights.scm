@@ -35,31 +35,6 @@
     function: (identifier) @_func))
   (#any-of? @_func "TypeVar" "NewType"))
 
-; Decorators
-((decorator
-  "@" @attribute)
-  (#set! priority 101))
-
-(decorator
-  (identifier) @attribute)
-
-(decorator
-  (attribute
-    attribute: (identifier) @attribute))
-
-(decorator
-  (call
-    (identifier) @attribute))
-
-(decorator
-  (call
-    (attribute
-      attribute: (identifier) @attribute)))
-
-((decorator
-  (identifier) @attribute.builtin)
-  (#any-of? @attribute.builtin "classmethod" "property" "staticmethod"))
-
 ; Builtin functions
 ((call
   function: (identifier) @function.builtin)
@@ -459,3 +434,28 @@
     (string
       (string_content) @string.regexp))
   (#eq? @_re "re"))
+
+; Decorators
+((decorator
+  "@" @attribute)
+  (#set! priority 101))
+
+(decorator
+  (identifier) @attribute)
+
+(decorator
+  (attribute
+    attribute: (identifier) @attribute))
+
+(decorator
+  (call
+    (identifier) @attribute))
+
+(decorator
+  (call
+    (attribute
+      attribute: (identifier) @attribute)))
+
+((decorator
+  (identifier) @attribute.builtin)
+  (#any-of? @attribute.builtin "classmethod" "property" "staticmethod"))
