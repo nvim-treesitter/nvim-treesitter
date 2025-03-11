@@ -3,6 +3,9 @@ def func() -> None: ...
 _ = func()
 #   ^^^^ @function.call
 
+"{}".format(1)
+#    ^^^^^^ @function.call
+
 class Foo:
     def method(self) -> None: ...
 
