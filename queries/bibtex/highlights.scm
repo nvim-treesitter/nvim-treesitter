@@ -32,6 +32,13 @@
   (quote_word)
 ] @string
 
+((field
+  name: (identifier) @_url
+  value: (value
+    (token
+      (brace_word) @string.special.url)))
+  (#any-of? @_url "url" "doi"))
+
 [
   (key_brace)
   (key_paren)
