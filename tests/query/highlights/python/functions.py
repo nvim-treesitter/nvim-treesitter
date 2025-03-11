@@ -1,7 +1,7 @@
 def func() -> None: ...
 
 _ = func()
-#   ^^^^ @function.method.call
+#   ^^^^ @function.call
 
 class Foo:
     def method(self) -> None: ...
