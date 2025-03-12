@@ -140,8 +140,7 @@
     "unit/c" "unit/new-import-export" "unit/s" "unless" "unquote" "unquote-splicing" "unsyntax"
     "unsyntax-splicing" "values/drop" "when" "with-continuation-mark" "with-contract"
     "with-contract-continuation-mark" "with-handlers" "with-handlers*" "with-method" "with-syntax"
-    "~?" "~@" "λ")
-  )
+    "~?" "~@" "λ"))
 
 ; builtin procedures
 ((symbol) @function.builtin

@@ -446,7 +446,7 @@ local function format(bufnr, queries)
   }
   local root = ts.get_parser(bufnr, 'query'):parse(true)[1]:root()
   local query = ts.query.parse('query', queries)
-  for id, node, metadata in query:iter_captures(root, bufnr) do
+  for id, node, metadata in query:iter_captures(root, bufnr, nil, nil, { match_limit = 1024 }) do
     if query.captures[id]:sub(1, 1) ~= '_' then
       map[query.captures[id]][node:id()] = metadata and (metadata[id] and metadata[id] or metadata)
         or {}
