@@ -3,6 +3,7 @@ class Fields:
 #   ^^^^ @variable.member
 
     def __init__(self, type: str, fields: list[int]) -> None:
+#                ^^^^ @variable.builtin
 #                      ^^^^ @variable.parameter
 #                                 ^^^^^^ @variable.parameter
 #                                              ^^^ @type.builtin
