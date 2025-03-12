@@ -72,7 +72,7 @@
     "revision": "f4236d4da8aa92bc105d9c118746474c608e6af7"
   },
   "cmake": {
-    "revision": "cd00bbcb77fe31283ca79b0038387ec7411759ae"
+    "revision": "c70336e8db6d3842721d9be40610580908ff45ba"
   },
   "comment": {
     "revision": "3555706cef8b98d3e4c7379d7260548ff03ad363"
@@ -177,7 +177,7 @@
     "revision": "8201c3c354c34b96d5a531c8e63d262209ee06cb"
   },
   "erlang": {
-    "revision": "e772975f9af564e65ccc4ffcb3891eb1b9abd897"
+    "revision": "364e323b32d098ad0e7b29e7adb4005c2bb5cf34"
   },
   "facility": {
     "revision": "e4bfd3e960de9f4b4648acb1c92e9b95b47d8cfb"
@@ -360,7 +360,7 @@
     "revision": "c56a25cf57c68ff929356db25505c1cc4c7820f6"
   },
   "ini": {
-    "revision": "962568c9efa71d25720ab42c5d36e222626ef3a6"
+    "revision": "32b31863f222bf22eb43b07d4e9be8017e36fb31"
   },
   "inko": {
     "revision": "f58a87ac4dc6a7955c64c9e4408fbd693e804686"
@@ -381,10 +381,10 @@
     "revision": "6fbef40512dcd9f0a61ce03a4c9ae7597b36ab5c"
   },
   "jinja": {
-    "revision": "dd2c42ea360b7e4b6c6fb809494203ae251e1c87"
+    "revision": "9af6ce9380fabd3d5b19d0254b8c8936e879c471"
   },
   "jinja_inline": {
-    "revision": "dd2c42ea360b7e4b6c6fb809494203ae251e1c87"
+    "revision": "9af6ce9380fabd3d5b19d0254b8c8936e879c471"
   },
   "jq": {
     "revision": "13990f530e8e6709b7978503da9bc8701d366791"
@@ -522,7 +522,7 @@
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
   },
   "nu": {
-    "revision": "c9f04276e6b5bbbcdba7aa1810ea621ced5bed97"
+    "revision": "c10340b5bb3789f69182acf8f34c3d4fc24d2fe1"
   },
   "objc": {
     "revision": "181a81b8f23a2d593e7ab4259981f50122909fda"
@@ -780,7 +780,7 @@
     "revision": "395006713db3bbb90d267ebdfcbf1881b399b05c"
   },
   "swift": {
-    "revision": "42ad8f6b4dc9b46285893cc37b460323b54932d4"
+    "revision": "02db52e14bc303322d22019fff7823d72904dfe5"
   },
   "sxhkdrc": {
     "revision": "440d5f913d9465c9c776a1bd92334d32febcf065"
@@ -939,9 +939,9 @@
     "revision": "b670c8df85a1568f498aa5c8cae42f51a90473c0"
   },
   "ziggy": {
-    "revision": "cefc572046d16f071d6d01f73af215c9dd2a5927"
+    "revision": "00958faeaeb97d9b7beb76f128a5401441182204"
   },
   "ziggy_schema": {
-    "revision": "cefc572046d16f071d6d01f73af215c9dd2a5927"
+    "revision": "00958faeaeb97d9b7beb76f128a5401441182204"
   }
 }
