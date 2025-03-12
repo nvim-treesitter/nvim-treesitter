@@ -26,6 +26,7 @@ Language | Tier | Queries | Maintainer
 [bibtex](https://github.com/latex-lsp/tree-sitter-bibtex) | unstable | `HFIJ ` | @theHamsta, @clason
 [bicep](https://github.com/tree-sitter-grammars/tree-sitter-bicep) | unstable | `HFIJL` | @amaanq
 [bitbake](https://github.com/tree-sitter-grammars/tree-sitter-bitbake) | unstable | `HFIJL` | @amaanq
+[blade](https://github.com/EmranMR/tree-sitter-blade) | unstable | `HFIJ ` | @calebdw
 [blueprint](https://gitlab.com/gabmus/tree-sitter-blueprint) | unstable | `H  J ` | @gabmus
 [bp](https://github.com/ambroisie/tree-sitter-bp)[^bp] | unstable | `HFIJL` | @ambroisie
 [c](https://github.com/tree-sitter/tree-sitter-c) | unstable | `HFIJL` | @amaanq

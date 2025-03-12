@@ -128,8 +128,8 @@ return {
   },
   blade = {
     install_info = {
+      revision = 'bcdc4b01827cac21205f7453e9be02f906943128',
       url = 'https://github.com/EmranMR/tree-sitter-blade',
-      files = { 'src/parser.c' },
     },
     maintainers = { '@calebdw' },
     tier = 2,
@@ -209,7 +209,7 @@ return {
   },
   cmake = {
     install_info = {
-      revision = 'c70336e8db6d3842721d9be40610580908ff45ba',
+      revision = 'fe48221d4d9842d916d66b5e71ab3c6307ec28b3',
       url = 'https://github.com/uyha/tree-sitter-cmake',
     },
     maintainers = { '@uyha' },
@@ -676,7 +676,7 @@ return {
   },
   gitcommit = {
     install_info = {
-      revision = 'db0e0c4fb9095fdc42a7af34019c0616c071e9eb',
+      revision = 'a716678c0f00645fed1e6f1d0eb221481dbd6f6d',
       url = 'https://github.com/gbprod/tree-sitter-gitcommit',
     },
     maintainers = { '@gbprod' },
@@ -1256,7 +1256,7 @@ return {
   },
   liquid = {
     install_info = {
-      revision = '6e03a054a71cd419d9702725243137641e97ba51',
+      revision = 'd269f4d52cd08f6cbc6636ee23cc30a9f6c32e42',
       url = 'https://github.com/hankthetank27/tree-sitter-liquid',
     },
     maintainers = { '@hankthetank27' },
@@ -1375,7 +1375,7 @@ return {
   },
   meson = {
     install_info = {
-      revision = '742a21e11e914096e0172dad2f0b85e7554c95ff',
+      revision = '03fd2216bc52976c9b92ca64b5ec2e1f06408f7e',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-meson',
     },
     maintainers = { '@Decodetalkers' },
@@ -2199,7 +2199,7 @@ return {
   swift = {
     install_info = {
       generate = true,
-      revision = '02db52e14bc303322d22019fff7823d72904dfe5',
+      revision = '6b1ebb86c97fca00835e7fce4a95c5069172145e',
       url = 'https://github.com/alex-pinkus/tree-sitter-swift',
     },
     maintainers = { '@alex-pinkus' },
@@ -2239,7 +2239,7 @@ return {
   },
   tact = {
     install_info = {
-      revision = '83e264928fa194b7283428527259e88e54205264',
+      revision = 'a19be2d4c1956e12facfc717e28f13a6ad0860e0',
       url = 'https://github.com/tact-lang/tree-sitter-tact',
     },
     maintainers = { '@novusnota' },
@@ -2273,7 +2273,7 @@ return {
   },
   tera = {
     install_info = {
-      revision = '588f14ce363904bebd926492bbd1d2c53f8d5f14',
+      revision = '482b475b32e6bae67f9d57abc60545399fd9b0a3',
       url = 'https://github.com/uncenter/tree-sitter-tera',
     },
     maintainers = { '@uncenter' },
@@ -2307,7 +2307,7 @@ return {
   },
   tiger = {
     install_info = {
-      revision = 'a7f11d946b44244f71df41d2a78af0665d618dae',
+      revision = '4a77b2d7a004587646bddc4e854779044b6db459',
       url = 'https://github.com/ambroisie/tree-sitter-tiger',
     },
     maintainers = { '@ambroisie' },
@@ -2403,7 +2403,7 @@ return {
   },
   typoscript = {
     install_info = {
-      revision = '43b221c0b76e77244efdaa9963e402a17c930fbc',
+      revision = '5d8fde870b0ded1f429ba5bb249a9d9f8589ff5f',
       url = 'https://github.com/Teddytrombone/tree-sitter-typoscript',
     },
     maintainers = { '@Teddytrombone' },
@@ -2461,7 +2461,7 @@ return {
   v = {
     install_info = {
       location = 'tree_sitter_v',
-      revision = '532bebd50742ef15949bdd67c36d46697c847628',
+      revision = '26c2c4c2b3fb4f7a07ae78d298b36998b7ffa956',
       url = 'https://github.com/vlang/v-analyzer',
     },
     maintainers = { '@kkharji', '@amaanq' },
@@ -2493,7 +2493,7 @@ return {
   },
   vhdl = {
     install_info = {
-      revision = '32d3e3daa745bf9f1665676f323be968444619e1',
+      revision = '35ed277d3e98836796bc764010dc3fb800d14ee4',
       url = 'https://github.com/jpt13653903/tree-sitter-vhdl',
     },
     maintainers = { '@jpt13653903' },
