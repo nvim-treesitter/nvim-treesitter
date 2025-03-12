@@ -2,6 +2,10 @@
 ; --------
 (identifier) @variable
 
+(destruct_bind
+  name: (identifier) @variable.member
+  bind: (identifier) @variable)
+
 ; variable.builtin
 ; ----------------
 (self) @variable.builtin
@@ -51,15 +55,23 @@
   "<"
   "<="
   "<<"
+  "<<="
   ">"
   ">="
   ">>"
+  ">>="
   "&"
+  "&="
   "|"
+  "|="
   "^"
+  "^="
   "&&"
+  "&&="
   "||"
+  "||="
   "->"
+  ".."
 ] @operator
 
 ; constructor
@@ -70,6 +82,9 @@
 (initOf
   name: (identifier) @constructor)
 
+(codeOf
+  name: (identifier) @constructor)
+
 ; type
 ; ----
 (type_identifier) @type
@@ -78,6 +93,10 @@
 ; ------------
 ((identifier) @type.builtin
   (#any-of? @type.builtin "Context" "SendParameters" "StateInit" "StdAddress" "VarAddress"))
+
+(generic_parameter_list
+  "<" @punctuation.bracket
+  ">" @punctuation.bracket)
 
 (bounced_type
   "bounced" @type.builtin
@@ -94,7 +113,7 @@
 
 (tlb_serialization
   "as" @keyword
-  type: (identifier) @type.builtin)
+  type: (identifier) @type)
 
 ; string
 ; ------
@@ -107,7 +126,7 @@
 ; string.special.path
 ; -------------------
 (import
-  library: (string) @string.special.path)
+  name: (string) @string.special.path)
 
 ; boolean
 ; -------
@@ -127,10 +146,10 @@
 
 ((identifier) @constant.builtin
   (#any-of? @constant.builtin
-    "SendBounceIfActionFail" "SendPayGasSeparately" "SendIgnoreErrors" "SendDestroyIfZero"
-    "SendRemainingValue" "SendRemainingBalance" "SendOnlyEstimateFee" "ReserveExact"
-    "ReserveAllExcept" "ReserveAtMost" "ReserveAddOriginalBalance" "ReserveInvertSign"
-    "ReserveBounceIfActionFail"))
+    "SendDefaultMode" "SendBounceIfActionFail" "SendPayGasSeparately" "SendIgnoreErrors"
+    "SendDestroyIfZero" "SendRemainingValue" "SendRemainingBalance" "SendOnlyEstimateFee"
+    "ReserveExact" "ReserveAllExcept" "ReserveAtMost" "ReserveAddOriginalBalance"
+    "ReserveInvertSign" "ReserveBounceIfActionFail"))
 
 ; property
 ; --------
@@ -180,6 +199,8 @@
 ; keyword.operator
 ; ----------------
 "initOf" @keyword.operator
+
+"codeOf" @keyword.operator
 
 ; keyword.import
 ; --------------
@@ -276,6 +297,35 @@
 ; ---------------
 (method_call_expression
   name: (identifier) @function.method.call)
+
+; asm-specific
+; ------------
+(tvm_instruction) @function.call
+
+(asm_integer) @number
+
+(asm_string) @string
+
+(asm_control_register) @string.special.symbol
+
+(asm_stack_register) @string.special.symbol
+
+(asm_hex_bitstring) @function.macro
+
+(asm_bin_bitstring) @function.macro
+
+(asm_boc_hex) @function.macro
+
+(asm_cont_name) @variable
+
+; within asm_sequence
+[
+  "<{"
+  "}>"
+  "}>c"
+  "}>s"
+  "}>CONT"
+] @punctuation.bracket
 
 ; attribute
 ; ---------
