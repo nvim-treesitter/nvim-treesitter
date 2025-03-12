@@ -73,7 +73,6 @@
   (false)
 ] @boolean
 
-
 (integer) @number
 
 (float) @number.float
