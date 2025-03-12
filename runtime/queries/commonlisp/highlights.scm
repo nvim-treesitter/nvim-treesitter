@@ -295,8 +295,7 @@
     "clear-output" "assoc-if" "string/=" "princ" "directory-namestring" "stream-error-stream"
     "array-element-type" "setq" "copy-seq" "time" "restart-case" "prog*" "shared-initialize"
     "array-total-size" "simple-bit-vector-p" "define-method-combination" "write-byte" "constantly"
-    "caddar" "print-object" "vector" "throw" "reverse" ">=" "upper-case-p" "nbutlast")
-  )
+    "caddar" "print-object" "vector" "throw" "reverse" ">=" "upper-case-p" "nbutlast"))
 
 (list_lit
   .
