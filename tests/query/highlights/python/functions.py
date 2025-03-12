@@ -12,7 +12,7 @@ class Foo:
 
     @classmethod
     def clsmethod(cls) -> None: ...
-#              ^^^ @variable.builtin
+#                 ^^^ @variable.builtin
 
 Foo().method()
 #     ^^^^^^ @function.method.call
