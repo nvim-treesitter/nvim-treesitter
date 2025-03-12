@@ -15,3 +15,7 @@ class Fields:
 #            ^^^^^^^^^^^ @variable.member
         self.NOT_A_FIELD = "IM NOT A FIELD"
 #            ^^^^^^^^^^^ @constant
+
+Fields(type="schema", fields=["foo", "bar"])
+#      ^^^^ @variable.parameter
+#                     ^^^^^^ @variable.parameter
