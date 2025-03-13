@@ -75,7 +75,7 @@
     "revision": "f4236d4da8aa92bc105d9c118746474c608e6af7"
   },
   "cmake": {
-    "revision": "c70336e8db6d3842721d9be40610580908ff45ba"
+    "revision": "fe48221d4d9842d916d66b5e71ab3c6307ec28b3"
   },
   "comment": {
     "revision": "3555706cef8b98d3e4c7379d7260548ff03ad363"
@@ -447,7 +447,7 @@
     "revision": "f99011a3554213b654985a4b0a65b3b032ec4621"
   },
   "liquid": {
-    "revision": "6e03a054a71cd419d9702725243137641e97ba51"
+    "revision": "d269f4d52cd08f6cbc6636ee23cc30a9f6c32e42"
   },
   "liquidsoap": {
     "revision": "8e51fa63ddb93ac179d4e34a311d3d3f03780b42"
@@ -489,7 +489,7 @@
     "revision": "90ae195b31933ceb9d079abfa8a3ad0a36fee4cc"
   },
   "meson": {
-    "revision": "742a21e11e914096e0172dad2f0b85e7554c95ff"
+    "revision": "03fd2216bc52976c9b92ca64b5ec2e1f06408f7e"
   },
   "mlir": {
     "revision": "c7c62f37a8612a897d25906d93363fec36c1591c"
@@ -810,7 +810,7 @@
     "revision": "def9849184de71a797c4e2b2837df85abeccf92c"
   },
   "tera": {
-    "revision": "588f14ce363904bebd926492bbd1d2c53f8d5f14"
+    "revision": "482b475b32e6bae67f9d57abc60545399fd9b0a3"
   },
   "terraform": {
     "revision": "9e3ec9848f28d26845ba300fd73c740459b83e9b"
@@ -876,7 +876,7 @@
     "revision": "ad9b638b914095320de85d59c49ab271603af048"
   },
   "v": {
-    "revision": "532bebd50742ef15949bdd67c36d46697c847628"
+    "revision": "26c2c4c2b3fb4f7a07ae78d298b36998b7ffa956"
   },
   "vala": {
     "revision": "97e6db3c8c73b15a9541a458d8e797a07f588ef4"
@@ -888,7 +888,7 @@
     "revision": "15fbf73dafaffc89050d247857beb27500ea30e8"
   },
   "vhdl": {
-    "revision": "32d3e3daa745bf9f1665676f323be968444619e1"
+    "revision": "35ed277d3e98836796bc764010dc3fb800d14ee4"
   },
   "vhs": {
     "revision": "3f202326c06f1c4d47aa82b9013a6b71aea70611"
