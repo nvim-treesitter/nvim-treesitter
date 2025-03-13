@@ -38,6 +38,12 @@ for ft, lang in pairs {
   ts.language.register(lang, ft)
 end
 
+vim.filetype.add {
+  filename = {
+    ["Caddyfile"] = "caddy",
+  },
+}
+
 ---@class InstallInfo
 ---@field url string
 ---@field branch string|nil
@@ -231,6 +237,14 @@ list.c_sharp = {
   },
   filetype = "cs",
   maintainers = { "@amaanq" },
+}
+
+list.caddy = {
+  install_info = {
+    url = "https://github.com/opa-oz/tree-sitter-caddy",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@opa-oz" },
 }
 
 list.cairo = {
