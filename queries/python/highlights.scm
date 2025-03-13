@@ -65,61 +65,6 @@
     (identifier) @type))
   (#eq? @_isinstance "isinstance"))
 
-; Normal parameters
-(parameters
-  (identifier) @variable.parameter)
-
-; Lambda parameters
-(lambda_parameters
-  (identifier) @variable.parameter)
-
-(lambda_parameters
-  (tuple_pattern
-    (identifier) @variable.parameter))
-
-; Default parameters
-(keyword_argument
-  name: (identifier) @variable.parameter)
-
-; Naming parameters on call-site
-(default_parameter
-  name: (identifier) @variable.parameter)
-
-(typed_parameter
-  (identifier) @variable.parameter)
-
-(typed_default_parameter
-  name: (identifier) @variable.parameter)
-
-; Variadic parameters *args, **kwargs
-(parameters
-  (list_splat_pattern ; *args
-    (identifier) @variable.parameter))
-
-(parameters
-  (dictionary_splat_pattern ; **kwargs
-    (identifier) @variable.parameter))
-
-; Typed variadic parameters
-(parameters
-  (typed_parameter
-    (list_splat_pattern ; *args: type
-      (identifier) @variable.parameter)))
-
-(parameters
-  (typed_parameter
-    (dictionary_splat_pattern ; *kwargs: type
-      (identifier) @variable.parameter)))
-
-; Lambda parameters
-(lambda_parameters
-  (list_splat_pattern
-    (identifier) @variable.parameter))
-
-(lambda_parameters
-  (dictionary_splat_pattern
-    (identifier) @variable.parameter))
-
 ; Literals
 (none) @constant.builtin
 
@@ -127,12 +72,6 @@
   (true)
   (false)
 ] @boolean
-
-((identifier) @variable.builtin
-  (#eq? @variable.builtin "self"))
-
-((identifier) @variable.builtin
-  (#eq? @variable.builtin "cls"))
 
 (integer) @number
 
@@ -368,6 +307,67 @@
     ; https://docs.python.org/3/library/stdtypes.html
     "bool" "int" "float" "complex" "list" "tuple" "range" "str" "bytes" "bytearray" "memoryview"
     "set" "frozenset" "dict" "type" "object"))
+
+; Normal parameters
+(parameters
+  (identifier) @variable.parameter)
+
+; Lambda parameters
+(lambda_parameters
+  (identifier) @variable.parameter)
+
+(lambda_parameters
+  (tuple_pattern
+    (identifier) @variable.parameter))
+
+; Default parameters
+(keyword_argument
+  name: (identifier) @variable.parameter)
+
+; Naming parameters on call-site
+(default_parameter
+  name: (identifier) @variable.parameter)
+
+(typed_parameter
+  (identifier) @variable.parameter)
+
+(typed_default_parameter
+  name: (identifier) @variable.parameter)
+
+; Variadic parameters *args, **kwargs
+(parameters
+  (list_splat_pattern ; *args
+    (identifier) @variable.parameter))
+
+(parameters
+  (dictionary_splat_pattern ; **kwargs
+    (identifier) @variable.parameter))
+
+; Typed variadic parameters
+(parameters
+  (typed_parameter
+    (list_splat_pattern ; *args: type
+      (identifier) @variable.parameter)))
+
+(parameters
+  (typed_parameter
+    (dictionary_splat_pattern ; *kwargs: type
+      (identifier) @variable.parameter)))
+
+; Lambda parameters
+(lambda_parameters
+  (list_splat_pattern
+    (identifier) @variable.parameter))
+
+(lambda_parameters
+  (dictionary_splat_pattern
+    (identifier) @variable.parameter))
+
+((identifier) @variable.builtin
+  (#eq? @variable.builtin "self"))
+
+((identifier) @variable.builtin
+  (#eq? @variable.builtin "cls"))
 
 ; After @type.builtin bacause builtins (such as `type`) are valid as attribute name
 ((attribute

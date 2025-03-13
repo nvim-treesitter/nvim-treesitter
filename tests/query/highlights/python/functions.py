@@ -8,6 +8,11 @@ _ = func()
 
 class Foo:
     def method(self) -> None: ...
+#              ^^^^ @variable.builtin
+
+    @classmethod
+    def clsmethod(cls) -> None: ...
+#                 ^^^ @variable.builtin
 
 Foo().method()
 #     ^^^^^^ @function.method.call
