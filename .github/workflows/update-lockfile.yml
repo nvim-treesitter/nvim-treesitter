@@ -31,7 +31,7 @@ jobs:
 
       - name: Update parsers
         env:
-          SKIP_LOCKFILE_UPDATE_FOR_LANGS: "devicetree,git_config,nickel,rescript,slint,sql,t32,templ,typespec,verilog"
+          SKIP_LOCKFILE_UPDATE_FOR_LANGS: "bp,devicetree,git_config,nickel,rescript,slint,sql,t32,templ,typespec,verilog"
         run: |
           cp lockfile.json /tmp/old_lockfile.json
           nvim -l scripts/write-lockfile.lua
