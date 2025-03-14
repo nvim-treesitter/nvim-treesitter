@@ -243,7 +243,7 @@
     "revision": "5425944fd61bf2b3bad2c17c2dc9f53172b0f01d"
   },
   "gitcommit": {
-    "revision": "db0e0c4fb9095fdc42a7af34019c0616c071e9eb"
+    "revision": "a716678c0f00645fed1e6f1d0eb221481dbd6f6d"
   },
   "gitignore": {
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
@@ -822,7 +822,7 @@
     "revision": "68fd0d80943a828d9e6f49c58a74be1e9ca142cf"
   },
   "tiger": {
-    "revision": "a7f11d946b44244f71df41d2a78af0665d618dae"
+    "revision": "4a77b2d7a004587646bddc4e854779044b6db459"
   },
   "tlaplus": {
     "revision": "4ba91b07b97741a67f61221d0d50e6d962e4987e"
@@ -855,7 +855,7 @@
     "revision": "42fb163442ef2691b9b720fb4e4e846809415d18"
   },
   "typoscript": {
-    "revision": "43b221c0b76e77244efdaa9963e402a17c930fbc"
+    "revision": "5d8fde870b0ded1f429ba5bb249a9d9f8589ff5f"
   },
   "typst": {
     "revision": "46cf4ded12ee974a70bf8457263b67ad7ee0379d"
