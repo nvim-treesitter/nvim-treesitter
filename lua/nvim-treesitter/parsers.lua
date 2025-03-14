@@ -1338,6 +1338,7 @@ list.lua = {
   install_info = {
     url = "https://github.com/MunifTanjim/tree-sitter-lua",
     files = { "src/parser.c", "src/scanner.c" },
+    branch = "main",
   },
   maintainers = { "@muniftanjim" },
 }
