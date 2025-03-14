@@ -114,6 +114,9 @@
 (raw_blck) @markup.raw
 
 (raw_blck
+  lang: (ident) @label)
+
+(raw_blck
   (blob) @markup.raw.block)
 
 ; refs and labels
