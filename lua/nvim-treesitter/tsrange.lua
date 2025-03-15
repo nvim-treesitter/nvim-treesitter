@@ -22,10 +22,21 @@ function TSRange.new(buf, start_row, start_col, end_row, end_col)
   }, TSRange)
 end
 
-function TSRange.from_nodes(buf, start_node, end_node)
+---@class TSRangeFromNodesOpts
+---@field exclude_start? boolean
+---@field exclude_end? boolean
+
+---@param buf integer
+---@param start_node TSNode|nil
+---@param end_node TSNode|nil
+---@param opts? TSRangeFromNodesOpts
+function TSRange.from_nodes(buf, start_node, end_node, opts)
   TSRange.__index = TSRange
-  local start_pos = start_node and { start_node:start() } or { end_node:start() }
-  local end_pos = end_node and { end_node:end_() } or { start_node:end_() }
+  opts = opts or {}
+  local start_pos = start_node and (opts.exclude_start and { start_node:end_() } or { start_node:start() })
+    or { end_node:start() }
+  local end_pos = end_node and (opts.exclude_end and { end_node:start() } or { end_node:end_() })
+    or { start_node:end_() }
   return setmetatable({
     start_pos = { start_pos[1], start_pos[2], start_pos[3] },
     end_pos = { end_pos[1], end_pos[2], end_pos[3] },

@@ -142,8 +142,15 @@ query.add_directive("set-lang-from-info-string!", function(match, _, bufnr, pred
   metadata["injection.language"] = get_parser_from_markdown_info_string(injection_alias)
 end, opts)
 
--- Just avoid some annoying warnings for this directive
-query.add_directive("make-range!", function() end, opts)
+-- Just avoid some annoying warnings for these directives
+for _, name in ipairs {
+  "make-range!",
+  "make-range-exclude-end!",
+  "make-range-exclude-start!",
+  "make-range-exclusive!",
+} do
+  query.add_directive(name, function() end, opts)
+end
 
 --- transform node text to lower case (e.g., to make @injection.language case insensitive)
 ---

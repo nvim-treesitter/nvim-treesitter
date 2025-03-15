@@ -231,6 +231,14 @@ function M.insert_to_path(object, path, value)
   curr_obj[path[#path]] = value
 end
 
+---@type table<string, TSRangeFromNodesOpts>
+local range_directives = {
+  ["make-range!"] = {},
+  ["make-range-exclude-end!"] = { exclude_end = true },
+  ["make-range-exclude-start!"] = { exclude_start = true },
+  ["make-range-exclusive!"] = { exclude_start = true, exclude_end = true },
+}
+
 ---@param query Query
 ---@param bufnr integer
 ---@param start_row integer
@@ -275,11 +283,12 @@ function M.iter_prepared_matches(query, qnode, bufnr, start_row, end_row)
           if pred[1] == "set!" and type(pred[2]) == "string" then
             M.insert_to_path(prepared_match, split(pred[2]), pred[3])
           end
-          if pred[1] == "make-range!" and type(pred[2]) == "string" and #pred == 4 then
+          local range_opts = range_directives[pred[1]]
+          if range_opts and type(pred[2]) == "string" and #pred == 4 then
             M.insert_to_path(
               prepared_match,
               split(pred[2] .. ".node"),
-              tsrange.TSRange.from_nodes(bufnr, match[pred[3]], match[pred[4]])
+              tsrange.TSRange.from_nodes(bufnr, match[pred[3]], match[pred[4]], range_opts)
             )
           end
         end
