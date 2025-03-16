@@ -144,7 +144,7 @@
     "revision": "ccd998f378c3f9345ea4eeb223f56d7b84d16687"
   },
   "dtd": {
-    "revision": "2128a0b249263e238d88cb894dad00c3168fea37"
+    "revision": "0d9a8099c963ed53e183425c1b47fa2622c8eaf7"
   },
   "earthfile": {
     "revision": "ae378d9d1306e9a967698516041f6f8803db5592"
@@ -921,7 +921,7 @@
     "revision": "fff3e72242aa110ebba6441946ea4d12d200fa68"
   },
   "xml": {
-    "revision": "2128a0b249263e238d88cb894dad00c3168fea37"
+    "revision": "0d9a8099c963ed53e183425c1b47fa2622c8eaf7"
   },
   "xresources": {
     "revision": "d0f9dc7cec4dc15fc6f9d556bb4e9dd5050328a6"
@@ -942,9 +942,9 @@
     "revision": "b670c8df85a1568f498aa5c8cae42f51a90473c0"
   },
   "ziggy": {
-    "revision": "00958faeaeb97d9b7beb76f128a5401441182204"
+    "revision": "cfc661821e387f7b48b1db0408fe8219d1ca611d"
   },
   "ziggy_schema": {
-    "revision": "00958faeaeb97d9b7beb76f128a5401441182204"
+    "revision": "cfc661821e387f7b48b1db0408fe8219d1ca611d"
   }
 }
