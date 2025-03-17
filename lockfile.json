@@ -81,7 +81,7 @@
     "revision": "3555706cef8b98d3e4c7379d7260548ff03ad363"
   },
   "commonlisp": {
-    "revision": "bf2a65b1c119898a1a17389e07f2a399c05cdc0c"
+    "revision": "32323509b3d9fe96607d151c2da2c9009eb13a2f"
   },
   "cooklang": {
     "revision": "4ebe237c1cf64cf3826fc249e9ec0988fe07e58e"
@@ -102,7 +102,7 @@
     "revision": "7eb7297823605392d2bbcc4c09b1cd18d6fa9529"
   },
   "cuda": {
-    "revision": "757e0a61f9d38b3d9eaa299e8d866e8283ffc284"
+    "revision": "014628ae8d2df391b88ddb9fa0260fd97f770829"
   },
   "cue": {
     "revision": "770737bcff2c4aa3f624d439e32b07dbb07102d3"
@@ -261,7 +261,7 @@
     "revision": "4006128790efb58ca82a4492d8ef0983b260fc6a"
   },
   "glsl": {
-    "revision": "66aec57f7119c7e8e40665b723cd7af5594f15ee"
+    "revision": "24a6c8ef698e4480fecf8340d771fbcb5de8fbb4"
   },
   "gn": {
     "revision": "bc06955bc1e3c9ff8e9b2b2a55b38b94da923c05"
@@ -771,7 +771,7 @@
     "revision": "1a8ee0da9a4f2df5a8a22f4d637ac863623a78a7"
   },
   "superhtml": {
-    "revision": "91d92846e8baaafc8854d2b9d0ac436bc16234db"
+    "revision": "240cc44b5fcd8e9e01180f1cbdcdd0f909a27275"
   },
   "surface": {
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
@@ -942,9 +942,9 @@
     "revision": "b670c8df85a1568f498aa5c8cae42f51a90473c0"
   },
   "ziggy": {
-    "revision": "cfc661821e387f7b48b1db0408fe8219d1ca611d"
+    "revision": "8a29017169f43dc2c3526817e98142eb9a335087"
   },
   "ziggy_schema": {
-    "revision": "cfc661821e387f7b48b1db0408fe8219d1ca611d"
+    "revision": "8a29017169f43dc2c3526817e98142eb9a335087"
   }
 }
