@@ -243,70 +243,43 @@
   ; highlights punc vars and also numeric only like $11
   (#lua-match? @variable.builtin "^%A+$"))
 
-(scalar) @variable
-
-(scalar_deref_expression
-  [
-    "$"
-    "*"
-  ] @variable)
-
 [
+  (scalar)
   (array)
-  (arraylen)
+  (hash)
+  (glob)
+  ; arraylen's sigil is kinda special b/c it's not a data type
+  (arraylen
+    "$#" @operator)
 ] @variable
 
-(array_deref_expression
+; all post deref sigils highlighted as operators, and the unrolly star is a special char
+(postfix_deref
   [
+    "$"
     "@"
-    "*"
-  ] @variable)
-
-(arraylen_deref_expression
-  [
-    "$#"
-    "*"
-  ] @variable)
-
-(hash) @variable
-
-(hash_deref_expression
-  [
     "%"
     "*"
-  ] @variable)
+    "$#"
+  ] @operator
+  "*" @character.special)
 
+(slices
+  [
+    arrayref: _
+    hashref: _
+  ]
+  [
+    "@"
+    "%"
+  ] @operator)
+
+; except for subref deref, b/c that's actually a function call
 (amper_deref_expression
   [
     "&"
     "*"
-  ] @variable)
-
-(glob) @variable
-
-(glob_deref_expression
-  "*" @variable)
-
-(glob_slot_expression
-  "*" @variable)
-
-(array_element_expression
-  array: (_) @variable)
-
-(slice_expression
-  array: (_) @variable)
-
-(keyval_expression
-  array: (_) @variable)
-
-(hash_element_expression
-  hash: (_) @variable)
-
-(slice_expression
-  hash: (_) @variable)
-
-(keyval_expression
-  hash: (_) @variable)
+  ] @function.call)
 
 ; mark hash or glob keys that are any form of string in any form of access
 (_
