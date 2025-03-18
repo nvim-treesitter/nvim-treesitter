@@ -207,7 +207,7 @@
     "revision": "90189238385cf636b9ee99ce548b9e5b5e569d48"
   },
   "fortran": {
-    "revision": "21b740801794b6570a0380f8aef22bb67214ea65"
+    "revision": "64e11001d7ef3e8ac18e55a3a2d811fe36430923"
   },
   "fsh": {
     "revision": "fad2e175099a45efbc98f000cc196d3674cc45e0"
@@ -255,10 +255,10 @@
     "revision": "da605af8c5999b43e6839b575eae5e6cafabb06f"
   },
   "glimmer_javascript": {
-    "revision": "7e8ea8cf39fc360cb97bd253442cd48e4f7a9ce3"
+    "revision": "4801ac4d0a611502001035f45d1cba5cb57d272f"
   },
   "glimmer_typescript": {
-    "revision": "4006128790efb58ca82a4492d8ef0983b260fc6a"
+    "revision": "c011b053626f27a0fe5cc99eeae4185399a572f9"
   },
   "glsl": {
     "revision": "24a6c8ef698e4480fecf8340d771fbcb5de8fbb4"
@@ -582,7 +582,7 @@
     "revision": "73ff874ae4c9e9b45462673cbc0a1e350e2522a7"
   },
   "powershell": {
-    "revision": "e904962e25858b7e8e19c653e737ad3b7d1c55bd"
+    "revision": "66d5e61126989c0aca57ff77d19b2064919b51e1"
   },
   "printf": {
     "revision": "df6b69967db7d74ab338a86a9ab45c0966c5ee3c"
