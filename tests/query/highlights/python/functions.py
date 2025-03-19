@@ -16,3 +16,6 @@ class Foo:
 
 Foo().method()
 #     ^^^^^^ @function.method.call
+
+print()
+# ^ @function.builtin
