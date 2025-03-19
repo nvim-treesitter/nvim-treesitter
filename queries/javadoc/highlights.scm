@@ -1,7 +1,7 @@
 [
- (tag_name)
- "include"
- "exclude"
+  (tag_name)
+  "include"
+  "exclude"
 ] @nospell @keyword
 
 (identifier) @nospell @variable
@@ -15,9 +15,9 @@
   parameter_name: (identifier) @variable.parameter)
 
 [
- (boolean_type)
- (integral_type)
- (floating_point_type)
+  (boolean_type)
+  (integral_type)
+  (floating_point_type)
 ] @nospell @type.builtin
 
 (module
@@ -32,9 +32,9 @@
 (method
   (identifier) @function)
 
-(((method
-    (identifier) @constructor)
-    (#match? @constructor "^[A-Z]")))
+((method
+  (identifier) @constructor)
+  (#match? @constructor "^[A-Z]"))
 
 (member
   (identifier) @variable.member)
@@ -93,6 +93,6 @@
 
 (param_tag
   [
-   "<"
-   ">"
+    "<"
+    ">"
   ] @punctuation.bracket)
