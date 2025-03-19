@@ -243,50 +243,65 @@
   ; highlights punc vars and also numeric only like $11
   (#lua-match? @variable.builtin "^%A+$"))
 
-(scalar) @variable
-
-(scalar_deref_expression
-  [
-    "$"
-    "*"
-  ] @variable)
-
 [
+  (scalar)
   (array)
-  (arraylen)
+  (hash)
+  (glob)
+  ; arraylen's sigil is kinda special b/c it's not a data type
+  (arraylen
+    "$#" @operator)
 ] @variable
 
-(array_deref_expression
+; all post deref sigils highlighted as operators, and the unrolly star is a special char
+(postfix_deref
   [
+    "$"
     "@"
-    "*"
-  ] @variable)
-
-(hash) @variable
-
-(hash_deref_expression
-  [
     "%"
     "*"
-  ] @variable)
+    "$#"
+  ] @operator
+  "*" @character.special)
 
-(array_element_expression
-  array: (_) @variable)
+(slices
+  [
+    arrayref: _
+    hashref: _
+  ]
+  [
+    "@"
+    "%"
+  ] @operator)
 
-(slice_expression
-  array: (_) @variable)
+; except for subref deref, b/c that's actually a function call
+(amper_deref_expression
+  [
+    "&"
+    "*"
+  ] @function.call)
 
-(keyval_expression
-  array: (_) @variable)
+; mark hash or glob keys that are any form of string in any form of access
+(_
+  "{"
+  [
+    (autoquoted_bareword)
+    (_
+      (string_content))
+  ] @variable.member
+  "}")
 
-(hash_element_expression
-  hash: (_) @variable)
-
-(slice_expression
-  hash: (_) @variable)
-
-(keyval_expression
-  hash: (_) @variable)
+; mark stringies on the LHS of a fat comma as a hash key, b/c that's usually what it
+; denotes somewhat
+(_
+  [
+    (autoquoted_bareword)
+    (_
+      (string_content))
+  ] @variable.member
+  .
+  "=>"
+  (_))
 
 (comment) @comment @spell
 
