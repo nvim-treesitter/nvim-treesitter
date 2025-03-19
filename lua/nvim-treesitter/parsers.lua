@@ -38,12 +38,6 @@ for ft, lang in pairs {
   ts.language.register(lang, ft)
 end
 
-vim.filetype.add {
-  filename = {
-    ["Caddyfile"] = "caddy",
-  },
-}
-
 ---@class InstallInfo
 ---@field url string
 ---@field branch string|nil
