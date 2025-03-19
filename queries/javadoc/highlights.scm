@@ -32,20 +32,8 @@
 (method
   (identifier) @function)
 
-((method
-  (identifier) @constructor)
-  (#match? @constructor "^[A-Z]"))
-
 (member
   (identifier) @variable.member)
-
-((member
-  (identifier) @constant)
-  (#match? @constant "^[A-Z_][A-Z0-9_]+$"))
-
-((member
-  (identifier) @type)
-  (#match? @type "^[A-Z].*[a-z]"))
 
 [
   (string_literal)
