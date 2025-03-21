@@ -694,7 +694,7 @@ function M.write_lockfile(verbose, skip_langs)
 
   for _, v in ipairs(sorted_parsers) do
     if not vim.tbl_contains(skip_langs, v.name) then
-      -- I'm sure this can be done in aync way with iter_cmd
+      -- I'm sure this can be done in async way with iter_cmd
       local sha ---@type string
       if v.parser.install_info.branch then
         sha = vim.split(

@@ -357,7 +357,7 @@
 ((identifier) @variable.builtin
   (#eq? @variable.builtin "cls"))
 
-; After @type.builtin bacause builtins (such as `type`) are valid as attribute name
+; After @type.builtin because builtins (such as `type`) are valid as attribute name
 ((attribute
   attribute: (identifier) @variable.member)
   (#lua-match? @variable.member "^[%l_].*$"))
