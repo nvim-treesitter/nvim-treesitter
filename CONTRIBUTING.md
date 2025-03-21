@@ -57,7 +57,7 @@ For now these are the types of queries used by `nvim-treesitter`:
 - `injections.scm`: used to define injections.
 
 For these types there is a _norm_ you will have to follow so that features work fine.
-Here are some global advices:
+Here is some global advice:
 
 - If your language is listed [here](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages),
   you can install the [playground plugin](https://github.com/nvim-treesitter/playground).
