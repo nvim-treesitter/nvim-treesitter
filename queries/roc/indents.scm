@@ -8,7 +8,7 @@
   (parenthesized_expr)
   (function_call_pnc_expr)
   (tuple_expr)
-  (imports)
+  "import"
   (exposes)
   (exposes_list)
   (exposing)

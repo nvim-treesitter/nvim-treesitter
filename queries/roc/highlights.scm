@@ -82,6 +82,7 @@
   (implements)
   (when)
   (is)
+  (as)
   "as"
   (to)
 ] @keyword
@@ -92,13 +93,9 @@
   "expect"
   "module"
   "package"
-  "import"
 ] @keyword
 
-[
-  (import_as)
-  "imports"
-] @keyword.import
+"import" @keyword.import
 
 (value_declaration
   (decl_left
