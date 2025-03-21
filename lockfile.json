@@ -249,16 +249,16 @@
     "revision": "f4685bf11ac466dd278449bcfe5fd014e94aa504"
   },
   "gleam": {
-    "revision": "e01c88449b53e2ee5dad222d4020cc7006c5b700"
+    "revision": "99ec4101504452c488b7c835fb65cfef75b090b7"
   },
   "glimmer": {
     "revision": "da605af8c5999b43e6839b575eae5e6cafabb06f"
   },
   "glimmer_javascript": {
-    "revision": "4801ac4d0a611502001035f45d1cba5cb57d272f"
+    "revision": "babba3fc0c822a633261ce9e96a4d7986050eb0c"
   },
   "glimmer_typescript": {
-    "revision": "c011b053626f27a0fe5cc99eeae4185399a572f9"
+    "revision": "48c60295f1ee34ea4ed6e5177102be6d24bfc9d0"
   },
   "glsl": {
     "revision": "24a6c8ef698e4480fecf8340d771fbcb5de8fbb4"
@@ -432,7 +432,7 @@
     "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
   },
   "lalrpop": {
-    "revision": "a7f5ea297bd621d072ed4cb2cc8ba5ae64ae3c4b"
+    "revision": "8d38e9755c05d37df8a24dadb0fc64f6588ac188"
   },
   "latex": {
     "revision": "7b06f6ed394308e7407a1703d2724128c45fc9d7"
@@ -591,10 +591,10 @@
     "revision": "73f39a6d5401cfdcd143951e499336cf5ab2ffaa"
   },
   "problog": {
-    "revision": "93c69d2f84d8a167c0a3f4a8d51ccefe365a4dc8"
+    "revision": "986a50d27e1bbf4fabce7e650c26e1e0da5535fc"
   },
   "prolog": {
-    "revision": "93c69d2f84d8a167c0a3f4a8d51ccefe365a4dc8"
+    "revision": "986a50d27e1bbf4fabce7e650c26e1e0da5535fc"
   },
   "promql": {
     "revision": "77625d78eebc3ffc44d114a07b2f348dff3061b0"
@@ -684,7 +684,7 @@
     "revision": "8e3a4205b76236bb6dbebdbee5afc262ce38bb62"
   },
   "roc": {
-    "revision": "32e20cb1133a5a189f986c3b5df47ac730fbee3d"
+    "revision": "0b1afe88161cbd81f5ddea1bb4fa786314ed49a7"
   },
   "ron": {
     "revision": "78938553b93075e638035f624973083451b29055"
