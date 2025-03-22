@@ -1127,6 +1127,14 @@ list.java = {
   maintainers = { "@p00f" },
 }
 
+list.javadoc = {
+  install_info = {
+    url = "https://github.com/rmuir/tree-sitter-javadoc",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@rmuir" },
+}
+
 list.javascript = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-javascript",

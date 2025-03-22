@@ -5,20 +5,13 @@
   (#set! injection.language "comment"))
 
 ((block_comment) @injection.content
-  (#lua-match? @injection.content "/[*][!<*][^a-zA-Z]")
-  (#set! injection.language "doxygen"))
+  (#lua-match? @injection.content "/[*][*][%s]")
+  (#set! injection.language "javadoc"))
 
-; markdown-style javadocs: https://openjdk.org/jeps/467
+; markdown-style javadocs https://openjdk.org/jeps/467
 ((line_comment) @injection.content
   (#lua-match? @injection.content "^///%s")
-  (#offset! @injection.content 0 4 0 0)
-  (#set! injection.language "markdown_inline"))
-
-; markdown-style javadocs: https://openjdk.org/jeps/467
-((line_comment) @injection.content
-  (#lua-match? @injection.content "^///%s+[@]")
-  (#offset! @injection.content 0 4 0 0)
-  (#set! injection.language "doxygen"))
+  (#set! injection.language "javadoc"))
 
 ((method_invocation
   name: (identifier) @_method
