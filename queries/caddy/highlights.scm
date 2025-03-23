@@ -51,3 +51,5 @@
   "{"
   "}"
 ] @punctuation.bracket
+
+"," @punctuation.delimiter
