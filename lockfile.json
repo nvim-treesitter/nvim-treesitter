@@ -59,6 +59,9 @@
   "c_sharp": {
     "revision": "b5eb5742f6a7e9438bee22ce8026d6b927be2cd7"
   },
+  "caddy": {
+    "revision": "2686186edb61be47960431c93a204fb249681360"
+  },
   "cairo": {
     "revision": "6238f609bea233040fe927858156dee5515a0745"
   },
