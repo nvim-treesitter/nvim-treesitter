@@ -380,6 +380,9 @@
   "java": {
     "revision": "a7db5227ec40fcfe94489559d8c9bc7c8181e25a"
   },
+  "javadoc": {
+    "revision": "8089a905454cbb7eac4ba6ec5495338169c60a56"
+  },
   "javascript": {
     "revision": "6fbef40512dcd9f0a61ce03a4c9ae7597b36ab5c"
   },
