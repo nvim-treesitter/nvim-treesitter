@@ -148,7 +148,7 @@ local function do_generate(logger, repo, compile_location)
     'generate',
     '--abi',
     tostring(vim.treesitter.language_version),
-    repo.generate_from_json and 'src/grammar.json',
+    repo.generate_from_json and 'src/grammar.json' or nil,
   }, { cwd = compile_location })
   if r.code > 0 then
     return logger:error('Error during "tree-sitter generate": %s', r.stderr)
@@ -432,14 +432,12 @@ local function install(languages, options, callback)
   end
 end
 
+---@param languages string[]
+---@param options? InstallOptions
+---@param callback? fun(boolean)
 M.install = a.sync(function(languages, options, callback)
   reload_parsers()
-  if not languages or #languages == 0 then
-    languages = 'all'
-  end
-
-  languages = config.norm_languages(languages, options and options.skip)
-
+  languages = config.norm_languages(languages, { ignored = true, unsupported = true })
   install(languages, options, callback)
 end, 3)
 
@@ -447,13 +445,14 @@ end, 3)
 
 ---@param languages? string[]|string
 ---@param _options? UpdateOptions
----@param callback function
+---@param callback? function
 M.update = a.sync(function(languages, _options, callback)
   reload_parsers()
   if not languages or #languages == 0 then
     languages = 'all'
   end
-  languages = config.norm_languages(languages, { ignored = true, missing = true })
+  languages =
+    config.norm_languages(languages, { ignored = true, missing = true, unsupported = true })
   languages = vim.tbl_filter(needs_update, languages) ---@type string[]
 
   if #languages > 0 then
@@ -501,7 +500,7 @@ end
 
 ---@param languages string[]|string
 ---@param _options? UpdateOptions
----@param _callback fun()
+---@param _callback? fun()
 M.uninstall = a.sync(function(languages, _options, _callback)
   languages = config.norm_languages(languages or 'all', { missing = true, dependencies = true })
 
