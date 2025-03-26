@@ -434,12 +434,7 @@ end
 
 M.install = a.sync(function(languages, options, callback)
   reload_parsers()
-  if not languages or #languages == 0 then
-    languages = 'all'
-  end
-
-  languages = config.norm_languages(languages, options and options.skip)
-
+  languages = config.norm_languages(languages, { ignored = true, unsupported = true })
   install(languages, options, callback)
 end, 3)
 
@@ -453,7 +448,8 @@ M.update = a.sync(function(languages, _options, callback)
   if not languages or #languages == 0 then
     languages = 'all'
   end
-  languages = config.norm_languages(languages, { ignored = true, missing = true })
+  languages =
+    config.norm_languages(languages, { ignored = true, missing = true, unsupported = true })
   languages = vim.tbl_filter(needs_update, languages) ---@type string[]
 
   if #languages > 0 then
