@@ -134,7 +134,7 @@ function M.get_indent(lnum)
   end
 
   -- Get language tree with smallest range around node that's not a comment parser
-  local root, lang_tree ---@type TSNode, LanguageTree
+  local root, lang_tree ---@type TSNode, vim.treesitter.LanguageTree
   parser:for_each_tree(function(tstree, tree)
     if not tstree or M.comment_parsers[tree:lang()] then
       return
