@@ -365,12 +365,8 @@ local install_status = {} ---@type table<string,InstallStatus?>
 ---@return InstallStatus status
 local function install_lang(lang, cache_dir, install_dir, force, generate)
   if not force and vim.list_contains(config.installed_parsers(), lang) then
-    local yesno = fn.input(lang .. ' parser already available: would you like to reinstall ? y/n: ')
-    print('\n ')
-    if yesno:sub(1, 1) ~= 'y' then
-      install_status[lang] = 'installed'
-      return 'installed'
-    end
+    install_status[lang] = 'installed'
+    return 'installed'
   end
 
   if install_status[lang] then
@@ -443,10 +439,6 @@ M.install = a.sync(function(languages, options, callback)
   end
 
   languages = config.norm_languages(languages, options and options.skip)
-
-  if languages[1] == 'all' then
-    options.force = true
-  end
 
   install(languages, options, callback)
 end, 3)

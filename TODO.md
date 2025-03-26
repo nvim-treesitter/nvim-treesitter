@@ -4,6 +4,8 @@ This document lists the planned and finished changes in this rewrite towards [Nv
 
 ## TODO
 
+- [ ] **`config.lua`:** drop ensure_install (replace with install), ignore_install
+- [ ] **`install.lua`:** simply skip Tier 4 parsers (`get_install_info`)
 - [ ] **`parsers.lua`:** allow specifying version in addition to commit hash (for Tier 1)
 - [ ] **`parsers.lua`:** add WASM support (tier 1)
 - [ ] **`install.lua`:** migrate to async v2
