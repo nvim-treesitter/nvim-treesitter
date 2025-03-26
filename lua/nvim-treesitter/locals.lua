@@ -159,7 +159,7 @@ local function get_root(bufnr)
 end
 
 ---@param bufnr integer: the buffer
----@return Query|nil query: `locals` query
+---@return vim.treesitter.Query|nil query: `locals` query
 ---@return TSNode|nil root: root node of the bufferocal function get_query(bufnr)
 local function get_query(bufnr)
   local root = get_root(bufnr)
