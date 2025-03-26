@@ -20,7 +20,7 @@ function M.setup(user_data)
   if user_data then
     if user_data.install_dir then
       user_data.install_dir = vim.fs.normalize(user_data.install_dir)
-      --TODO(clason): insert after/before site, or leave to user?
+      --TODO(clason): leave to user!
       vim.opt.runtimepath:append(user_data.install_dir)
     end
     config = vim.tbl_deep_extend('force', config, user_data)
