@@ -19,7 +19,7 @@ return {
   angular = {
     install_info = {
       generate_from_json = true,
-      revision = 'be53f2597dded40c90b5f53ed9f4521422f6b6b3',
+      revision = '843525141575e397541e119698f0532755e959f6',
       url = 'https://github.com/dlvandenberg/tree-sitter-angular',
     },
     maintainers = { '@dlvandenberg' },
@@ -892,7 +892,7 @@ return {
   },
   hcl = {
     install_info = {
-      revision = '9e3ec9848f28d26845ba300fd73c740459b83e9b',
+      revision = 'de10d494dbd6b71cdf07a678fecbf404dbfe4398',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-hcl',
     },
     maintainers = { '@MichaHoffmann' },
@@ -1215,7 +1215,7 @@ return {
   },
   koto = {
     install_info = {
-      revision = '673511402dfef07b25cfa43991693b8442695fc7',
+      revision = '46770abba021e2ddd2c51d9fa3087fd1ab6b2aea',
       url = 'https://github.com/koto-lang/tree-sitter-koto',
     },
     maintainers = { '@irh' },
@@ -1391,7 +1391,7 @@ return {
   },
   meson = {
     install_info = {
-      revision = '9c74e8e8917b83d90e38ac040949079437ec0043',
+      revision = 'a56af662e8540412fed5e40cc20435b2b9a20502',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-meson',
     },
     maintainers = { '@Decodetalkers' },
@@ -1569,7 +1569,7 @@ return {
     install_info = {
       branch = 'release',
       generate_from_json = true,
-      revision = 'bb53f204aa3e7507960014642965c9f9a9e84b1d',
+      revision = 'ecd90bd8b381bcc7219fed4fe351903630e761c6',
       url = 'https://github.com/tree-sitter-perl/tree-sitter-perl',
     },
     maintainers = { '@RabbiVeesh', '@LeoNerd' },
@@ -1982,7 +1982,7 @@ return {
   },
   scala = {
     install_info = {
-      revision = '42a1542248ff611ba2091fe76c6dbf42551ebef8',
+      revision = '160e35520577d91576b08fb677aaee840c591dc2',
       url = 'https://github.com/tree-sitter/tree-sitter-scala',
     },
     maintainers = { '@stevanmilic' },
@@ -2180,7 +2180,7 @@ return {
   superhtml = {
     install_info = {
       location = 'tree-sitter-superhtml',
-      revision = 'fc7c594f52528e4a4a08671137850143d55a5bf2',
+      revision = '28dcf0edf98d491d47bacb65dc49b6fb979b444c',
       url = 'https://github.com/kristoff-it/superhtml',
     },
     maintainers = { '@rockorager' },
@@ -2255,7 +2255,7 @@ return {
   },
   tact = {
     install_info = {
-      revision = 'a19be2d4c1956e12facfc717e28f13a6ad0860e0',
+      revision = '47af20264abbd24ea282ded0f8ee9cad3cf3bf2f',
       url = 'https://github.com/tact-lang/tree-sitter-tact',
     },
     maintainers = { '@novusnota' },
@@ -2298,7 +2298,7 @@ return {
   terraform = {
     install_info = {
       location = 'dialects/terraform',
-      revision = '9e3ec9848f28d26845ba300fd73c740459b83e9b',
+      revision = 'de10d494dbd6b71cdf07a678fecbf404dbfe4398',
       url = 'https://github.com/MichaHoffmann/tree-sitter-hcl',
     },
     maintainers = { '@MichaHoffmann' },
@@ -2517,7 +2517,7 @@ return {
   },
   vhs = {
     install_info = {
-      revision = '3f202326c06f1c4d47aa82b9013a6b71aea70611',
+      revision = '0c6fae9d2cfc5b217bfd1fe84a7678f5917116db',
       url = 'https://github.com/charmbracelet/tree-sitter-vhs',
     },
     maintainers = { '@caarlos0' },

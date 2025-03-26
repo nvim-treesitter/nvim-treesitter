@@ -27,8 +27,10 @@ function M.setup(user_data)
   end
 
   if #config.ensure_install > 0 then
-    local to_install = M.norm_languages(config.ensure_install, { ignored = true, installed = true })
-
+    local to_install = M.norm_languages(
+      config.ensure_install,
+      { ignored = true, installed = true, unsupported = true }
+    )
     if #to_install > 0 then
       require('nvim-treesitter.install').install(to_install, { force = true })
     end
@@ -103,7 +105,7 @@ end
 
 ---Normalize languages
 ---@param languages? string[]|string
----@param skip? { ignored: boolean, missing: boolean, installed: boolean, dependencies: boolean }
+---@param skip? { ignored: boolean, missing: boolean, unsupported: boolean, installed: boolean, dependencies: boolean }
 ---@return string[]
 function M.norm_languages(languages, skip)
   if not languages then
@@ -163,6 +165,16 @@ function M.norm_languages(languages, skip)
     end,
     languages
   )
+
+  if skip and skip.unsupported then
+    languages = vim.tbl_filter(
+      --- @param v string
+      function(v)
+        return parsers[v].tier < 4
+      end,
+      languages
+    )
+  end
 
   if not (skip and skip.dependencies) then
     for _, lang in pairs(languages) do
