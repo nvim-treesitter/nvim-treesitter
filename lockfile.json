@@ -6,7 +6,7 @@
     "revision": "b9b32fa042c2952a7bfca86847ea325e44ccc897"
   },
   "angular": {
-    "revision": "be53f2597dded40c90b5f53ed9f4521422f6b6b3"
+    "revision": "634cfc54f802dd4fb54caa2d42dd38b7f9d39df3"
   },
   "apex": {
     "revision": "3597575a429766dd7ecce9f5bb97f6fec4419d5d"
@@ -321,7 +321,7 @@
     "revision": "577259b4068b2c281c9ebf94c109bd50a74d5857"
   },
   "hcl": {
-    "revision": "9e3ec9848f28d26845ba300fd73c740459b83e9b"
+    "revision": "de10d494dbd6b71cdf07a678fecbf404dbfe4398"
   },
   "heex": {
     "revision": "008626a3fad379d17c81d5ed576edd9bd7a4fbf7"
@@ -432,7 +432,7 @@
     "revision": "c4ddea359a7ff4d92360b2efcd6cfce5dc25afe6"
   },
   "koto": {
-    "revision": "673511402dfef07b25cfa43991693b8442695fc7"
+    "revision": "25e4eed7ecd8a071798529de966fa72f7ea7bda5"
   },
   "kusto": {
     "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
@@ -495,7 +495,7 @@
     "revision": "90ae195b31933ceb9d079abfa8a3ad0a36fee4cc"
   },
   "meson": {
-    "revision": "9c74e8e8917b83d90e38ac040949079437ec0043"
+    "revision": "a56af662e8540412fed5e40cc20435b2b9a20502"
   },
   "mlir": {
     "revision": "922cbb97f3d20044e6b4362b3d7af5e530ed8f34"
@@ -561,7 +561,7 @@
     "revision": "1d16b8e063fdf4385e389096c4bc4999eaaef05f"
   },
   "perl": {
-    "revision": "bb53f204aa3e7507960014642965c9f9a9e84b1d"
+    "revision": "ecd90bd8b381bcc7219fed4fe351903630e761c6"
   },
   "php": {
     "revision": "f7cf7348737d8cff1b13407a0bfedce02ee7b046"
@@ -777,7 +777,7 @@
     "revision": "1a8ee0da9a4f2df5a8a22f4d637ac863623a78a7"
   },
   "superhtml": {
-    "revision": "fc7c594f52528e4a4a08671137850143d55a5bf2"
+    "revision": "f8cfcf64d01c17516ad1cfd7b17ecd05b68a4d6b"
   },
   "surface": {
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
@@ -804,7 +804,7 @@
     "revision": "b1170880c61355aaf38fc06f4af7d3c55abdabc4"
   },
   "tact": {
-    "revision": "a19be2d4c1956e12facfc717e28f13a6ad0860e0"
+    "revision": "47af20264abbd24ea282ded0f8ee9cad3cf3bf2f"
   },
   "tcl": {
     "revision": "98015ebe182d94e5a4439e32ffd91beaac32fcb9"
@@ -819,7 +819,7 @@
     "revision": "482b475b32e6bae67f9d57abc60545399fd9b0a3"
   },
   "terraform": {
-    "revision": "9e3ec9848f28d26845ba300fd73c740459b83e9b"
+    "revision": "de10d494dbd6b71cdf07a678fecbf404dbfe4398"
   },
   "textproto": {
     "revision": "568471b80fd8793d37ed01865d8c2208a9fefd1b"
@@ -897,7 +897,7 @@
     "revision": "35ed277d3e98836796bc764010dc3fb800d14ee4"
   },
   "vhs": {
-    "revision": "3f202326c06f1c4d47aa82b9013a6b71aea70611"
+    "revision": "0c6fae9d2cfc5b217bfd1fe84a7678f5917116db"
   },
   "vim": {
     "revision": "11b688a1f0e97c0c4e3dbabf4a38016335f4d237"
