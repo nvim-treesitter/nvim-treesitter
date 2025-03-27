@@ -20,6 +20,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         cc: [gcc]
+        nvim_tag: [stable, nightly]
 
     name: Run tests
     runs-on: ${{ matrix.os }}
@@ -39,7 +40,7 @@ jobs:
 
       - name: Install and prepare Neovim
         env:
-          NVIM_TAG: stable
+          NVIM_TAG: ${{ matrix.nvim_tag }}
         run: |
           bash ./scripts/ci-install.sh
 
