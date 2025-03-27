@@ -108,6 +108,14 @@
   "}}"
 ] @punctuation.special
 
+(template_substitution
+  [
+    "${"
+    "}"
+  ] @punctuation.special)
+
+(template_chars) @string
+
 [
   ";"
   "."
