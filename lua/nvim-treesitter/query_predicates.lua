@@ -13,6 +13,7 @@ local non_filetype_match_injection_language_aliases = {
   sh = "bash",
   uxn = "uxntal",
   ts = "typescript",
+  csharp = "c_sharp",
 }
 
 -- compatibility shim for breaking change on nightly/0.11
