@@ -6,7 +6,7 @@
     "revision": "b9b32fa042c2952a7bfca86847ea325e44ccc897"
   },
   "angular": {
-    "revision": "634cfc54f802dd4fb54caa2d42dd38b7f9d39df3"
+    "revision": "843525141575e397541e119698f0532755e959f6"
   },
   "apex": {
     "revision": "3597575a429766dd7ecce9f5bb97f6fec4419d5d"
@@ -432,7 +432,7 @@
     "revision": "c4ddea359a7ff4d92360b2efcd6cfce5dc25afe6"
   },
   "koto": {
-    "revision": "25e4eed7ecd8a071798529de966fa72f7ea7bda5"
+    "revision": "46770abba021e2ddd2c51d9fa3087fd1ab6b2aea"
   },
   "kusto": {
     "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
@@ -777,7 +777,7 @@
     "revision": "1a8ee0da9a4f2df5a8a22f4d637ac863623a78a7"
   },
   "superhtml": {
-    "revision": "f8cfcf64d01c17516ad1cfd7b17ecd05b68a4d6b"
+    "revision": "28dcf0edf98d491d47bacb65dc49b6fb979b444c"
   },
   "surface": {
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
