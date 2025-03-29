@@ -1,4 +1,3 @@
-; Text
 ; Imports
 (missing_import) @keyword.import
 
@@ -12,6 +11,7 @@
 ] @string.special
 
 [
+  (import_as_bytes)
   (import_as_location)
   (import_as_text)
 ] @type
@@ -92,6 +92,7 @@
 
 (builtin
   [
+    "Bool"
     "Natural"
     "Natural/build"
     "Natural/fold"
@@ -121,8 +122,11 @@
     "Text/replace"
     "Optional"
     "Date"
+    "Date/show"
     "Time"
+    "Time/show"
     "TimeZone"
+    "TimeZone/show"
     "Type"
     "Kind"
     "Sort"
@@ -164,7 +168,10 @@
 ] @keyword.conditional
 
 ; Literals
-(text_literal) @string
+[
+  (text_literal)
+  (bytes_literal)
+] @string
 
 (interpolation
   "}" @string)
