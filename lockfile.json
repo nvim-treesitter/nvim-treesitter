@@ -126,7 +126,7 @@
     "revision": "16f640f3c59117c9e749d581634afdb00e004f4c"
   },
   "dhall": {
-    "revision": "4a6c08abfb54827db4e722d6cdca81b093898988"
+    "revision": "0d4fdd401b22d3f2f23ad2128a5307a4d927434f"
   },
   "diff": {
     "revision": "e42b8def4f75633568f1aecfe01817bf15164928"
@@ -180,7 +180,7 @@
     "revision": "8495d106154741e6d35d37064f864758ece75de6"
   },
   "enforce": {
-    "revision": "8201c3c354c34b96d5a531c8e63d262209ee06cb"
+    "revision": "36064bd71ce22e9a8c73b64b1a3448cc600a4312"
   },
   "erlang": {
     "revision": "364e323b32d098ad0e7b29e7adb4005c2bb5cf34"
@@ -351,7 +351,7 @@
     "revision": "ea71012d3fe14dd0b69f36be4f96bdfe9155ebae"
   },
   "http": {
-    "revision": "77ecf6385f1b5d422e0bbd12204374d287d61ad2"
+    "revision": "db8b4398de90b6d0b6c780aba96aaa2cd8e9202c"
   },
   "hurl": {
     "revision": "ff07a42d9ec95443b5c1b57ed793414bf7b79be5"
@@ -384,7 +384,7 @@
     "revision": "a7db5227ec40fcfe94489559d8c9bc7c8181e25a"
   },
   "javadoc": {
-    "revision": "db9589e9c61cff7d7fcc207744c711b10b60a7a3"
+    "revision": "330cc9cb4f33545f7bfce6c3b6aa77fe6db1b537"
   },
   "javascript": {
     "revision": "6fbef40512dcd9f0a61ce03a4c9ae7597b36ab5c"
@@ -531,7 +531,7 @@
     "revision": "14e6da1627aaef21d2b2aa0c37d04269766dcc1d"
   },
   "nu": {
-    "revision": "c10340b5bb3789f69182acf8f34c3d4fc24d2fe1"
+    "revision": "d5c71a10b4d1b02e38967b05f8de70e847448dd1"
   },
   "objc": {
     "revision": "181a81b8f23a2d593e7ab4259981f50122909fda"
@@ -777,7 +777,7 @@
     "revision": "1a8ee0da9a4f2df5a8a22f4d637ac863623a78a7"
   },
   "superhtml": {
-    "revision": "28dcf0edf98d491d47bacb65dc49b6fb979b444c"
+    "revision": "16887e9fa3122c36a3d4942470e33c1c282fe859"
   },
   "surface": {
     "revision": "f4586b35ac8548667a9aaa4eae44456c1f43d032"
@@ -807,7 +807,7 @@
     "revision": "47af20264abbd24ea282ded0f8ee9cad3cf3bf2f"
   },
   "tcl": {
-    "revision": "98015ebe182d94e5a4439e32ffd91beaac32fcb9"
+    "revision": "3755c8c18c039ca4125797fd0212f7e59974e58e"
   },
   "teal": {
     "revision": "3db655924b2ff1c54fdf6371b5425ea6b5dccefe"
@@ -816,7 +816,7 @@
     "revision": "def9849184de71a797c4e2b2837df85abeccf92c"
   },
   "tera": {
-    "revision": "482b475b32e6bae67f9d57abc60545399fd9b0a3"
+    "revision": "25a7c617192253bddfa65e378975d8c476419010"
   },
   "terraform": {
     "revision": "de10d494dbd6b71cdf07a678fecbf404dbfe4398"
