@@ -1,9 +1,11 @@
 ; Identifiers
 (identifier) @variable
 
-; Function and sub declarations
+; Function declaration
 (function_statement
   name: (identifier) @function)
+
+; Sub declaration
 (sub_statement
   name: (identifier) @function)
 
@@ -39,14 +41,23 @@
 
 ; Statements
 (if_statement) @keyword.conditional
+
 (conditional_compl) @keyword.conditional
+
 (for_statement) @keyword.repeat
+
 (while_statement) @keyword.repeat
+
 (try_statement) @keyword.exception
+
 (return_statement) @keyword.return
+
 (throw_statement) @keyword.exception
+
 (assignment_statement) @operator
+
 (print_statement) @function.builtin
+
 (constant) @constant
 
 ; Keywords
@@ -83,24 +94,41 @@
 
 ; Literals
 (boolean) @boolean
+
 (number) @number
+
 (string) @string
+
 (invalid) @constant.builtin
 
 ; Comments
 (comment) @comment
 
 ; Punctuation
-["(" ")" "[" "]" "{" "}" "." "," "?." "?["] @punctuation.delimiter
+[
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+  "."
+  ","
+  "?."
+  "?["
+] @punctuation.delimiter
 
 ; Special highlights for library statements
 (library_statement) @keyword.import
+
 (library_statement
   path: (string) @module)
 
 ; Array and associative array literals
 (array) @constructor
+
 (assoc_array) @constructor
+
 (assoc_array_element
   key: (identifier) @property)
 
@@ -135,7 +163,13 @@
 ] @keyword
 
 ; Special keywords (these might still need to be strings if not defined as separate nodes)
-["then" "else" "else if" "#else" "#else if"] @keyword
+[
+  "then"
+  "else"
+  "else if"
+  "#else"
+  "#else if"
+] @keyword
 
 ; Exit statements
 [
