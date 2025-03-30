@@ -38,13 +38,13 @@
   (identifier) @property)
 
 ; Statements
-(if_statement) @conditional
-(conditional_compl) @conditional
-(for_statement) @repeat
-(while_statement) @repeat
-(try_statement) @exception
+(if_statement) @keyword.conditional
+(conditional_compl) @keyword.conditional
+(for_statement) @keyword.repeat
+(while_statement) @keyword.repeat
+(try_statement) @keyword.exception
 (return_statement) @keyword.return
-(throw_statement) @keyword.throw
+(throw_statement) @keyword.exception
 (assignment_statement) @operator
 (print_statement) @function.builtin
 (constant) @constant
@@ -94,9 +94,9 @@
 ["(" ")" "[" "]" "{" "}" "." "," "?." "?["] @punctuation.delimiter
 
 ; Special highlights for library statements
-(library_statement) @include
+(library_statement) @keyword.import
 (library_statement
-  path: (string) @string.special)
+  path: (string) @module)
 
 ; Array and associative array literals
 (array) @constructor
