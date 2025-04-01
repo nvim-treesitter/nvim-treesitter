@@ -210,7 +210,7 @@
     "revision": "90189238385cf636b9ee99ce548b9e5b5e569d48"
   },
   "fortran": {
-    "revision": "64e11001d7ef3e8ac18e55a3a2d811fe36430923"
+    "revision": "d738334e4a21866a1ab81fb3f27f9b0b2ad2e515"
   },
   "fsh": {
     "revision": "fad2e175099a45efbc98f000cc196d3674cc45e0"
@@ -708,7 +708,7 @@
     "revision": "e86119bdb4968b9799f6a014ca2401c178d54b5f"
   },
   "scala": {
-    "revision": "160e35520577d91576b08fb677aaee840c591dc2"
+    "revision": "c1189954df854977c3a52003ca8a247c5f4729ba"
   },
   "scfg": {
     "revision": "2f3709e7656fa2c443f92041c91a9f843f8cd625"
@@ -807,7 +807,7 @@
     "revision": "47af20264abbd24ea282ded0f8ee9cad3cf3bf2f"
   },
   "tcl": {
-    "revision": "9d6ac0661686e0da8b622571d06d1c1471a437fc"
+    "revision": "f15e711167661d1ba541d4f62b9dbfc4ce61ec56"
   },
   "teal": {
     "revision": "3db655924b2ff1c54fdf6371b5425ea6b5dccefe"
