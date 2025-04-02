@@ -102,7 +102,7 @@
 (invalid) @constant.builtin
 
 ; Comments
-(comment) @comment
+(comment) @comment @spell
 
 ; Punctuation
 [
