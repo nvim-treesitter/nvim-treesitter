@@ -38,7 +38,12 @@ looks_like_implicit_string_concatenation = "abc"
 "def"
 # <- @string.documentation
 
-real_implicit_string_concatenation = (
+single_line_implicit_string_concatenation = "abc" "def"
+#                                           ^^^^^ @string 
+#                                                 ^^^^^ @string 
+#                                                 ^^^^^ !@string.documentation 
+
+multiline_implicit_string_concatenation = (
     "not "
     # <- @string
     # <- !@string.documentation
