@@ -84,7 +84,6 @@
   (string
     (string_content) @spell) @string.documentation)
 
-
 ; Tokens
 [
   "-"
