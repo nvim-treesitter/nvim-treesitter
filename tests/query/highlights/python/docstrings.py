@@ -33,7 +33,12 @@ multiline_string_assignment = """
 #                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ @string
 #                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ !@string.documentation
 
-multiline_string_in_brackets = (
+looks_like_implicit_string_concatenation = "abc"
+#                                          ^^^^^ @string 
+"def"
+# <- @string.documentation
+
+real_implicit_string_concatenation = (
     "not "
     # <- @string
     # <- !@string.documentation
