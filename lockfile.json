@@ -126,7 +126,7 @@
     "revision": "16f640f3c59117c9e749d581634afdb00e004f4c"
   },
   "dhall": {
-    "revision": "0d4fdd401b22d3f2f23ad2128a5307a4d927434f"
+    "revision": "4a6c08abfb54827db4e722d6cdca81b093898988"
   },
   "diff": {
     "revision": "e42b8def4f75633568f1aecfe01817bf15164928"
@@ -168,7 +168,7 @@
     "revision": "450a8194f5a66561135962cfc8d7545a27b61c4c"
   },
   "elm": {
-    "revision": "3b373a3ccb48f31aa4b7ddc9092e2f5e24ab7aed"
+    "revision": "e34bdc5c512918628b05b48e633f711123204e45"
   },
   "elsa": {
     "revision": "0a66b2b3f3c1915e67ad2ef9f7dbd2a84820d9d7"
@@ -180,7 +180,7 @@
     "revision": "8495d106154741e6d35d37064f864758ece75de6"
   },
   "enforce": {
-    "revision": "36064bd71ce22e9a8c73b64b1a3448cc600a4312"
+    "revision": "aedd0bbab9dcc9caec9cc4e32bd303e86509522b"
   },
   "erlang": {
     "revision": "416ca60d7d2a824c0d346163541153e230710780"
@@ -705,7 +705,7 @@
     "revision": "cf85bbd5da0c5ad243301d889c7f84d790a4cae4"
   },
   "rust": {
-    "revision": "3691201b01cacb2f96ffca4c632c4e938bfacd88"
+    "revision": "e86119bdb4968b9799f6a014ca2401c178d54b5f"
   },
   "scala": {
     "revision": "c1189954df854977c3a52003ca8a247c5f4729ba"
