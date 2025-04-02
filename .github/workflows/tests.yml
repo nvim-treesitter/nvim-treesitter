@@ -39,7 +39,7 @@ jobs:
 
       - name: Install and prepare Neovim
         env:
-          NVIM_TAG: stable
+          NVIM_TAG: v0.10.4
         run: |
           bash ./scripts/ci-install.sh
 
