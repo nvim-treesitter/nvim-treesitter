@@ -80,27 +80,9 @@
 ] @string.escape
 
 ; doc-strings
-(module
-  .
-  (comment)*
-  .
-  (expression_statement
-    (string
-      (string_content) @spell) @string.documentation))
-
-(class_definition
-  body: (block
-    .
-    (expression_statement
-      (string
-        (string_content) @spell) @string.documentation)))
-
-(function_definition
-  body: (block
-    .
-    (expression_statement
-      (string
-        (string_content) @spell) @string.documentation)))
+(expression_statement
+  (string
+    (string_content) @spell) @string.documentation)
 
 ; Tokens
 [
