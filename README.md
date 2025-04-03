@@ -619,7 +619,7 @@ The default paths are:
 
 If you have a parser that is not on the list of supported languages (either as a repository on Github or in a local directory), you can add it manually for use by `nvim-treesitter` as follows:
 
-1. Clone the repository or [create a new project](https://tree-sitter.github.io/tree-sitter/creating-parsers#project-setup) in, say, `~/projects/tree-sitter-zimbu`. Make sure that the `tree-sitter-cli` executable is installed and in your path; see <https://tree-sitter.github.io/tree-sitter/creating-parsers#installation> for installation instructions.
+1. Clone the repository or [create a new project](https://tree-sitter.github.io/tree-sitter/creating-parsers#project-setup) in, say, `~/projects/tree-sitter-zimbu`. Make sure that the `tree-sitter-cli` executable is installed and in your path; see [tree-sitter documentation](https://tree-sitter.github.io/tree-sitter/creating-parsers/1-getting-started.html#installation) for installation instructions.
 2. Run `tree-sitter generate` in this directory (followed by `tree-sitter test` for good measure).
 3. Add the following snippet to your `init.lua`:
 
