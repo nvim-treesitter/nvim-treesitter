@@ -14,6 +14,7 @@
 
 [
   "if"
+  "else if"
   "else"
   "then"
 ] @keyword.conditional
