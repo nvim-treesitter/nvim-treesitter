@@ -39,30 +39,3 @@ end, { force = true })
 query.add_predicate('any-kind-eq?', function(match, _, _, pred)
   return predicates['kind-eq'](match, pred, true)
 end, { force = true })
-
--- register custom directives
-
-local mimetype_aliases = {
-  ['importmap'] = 'json',
-  ['module'] = 'javascript',
-  ['application/ecmascript'] = 'javascript',
-  ['text/ecmascript'] = 'javascript',
-}
-
----@param match TSQueryMatch
----@param _ string
----@param bufnr integer
----@param pred string[]
----@return boolean|nil
-query.add_directive('set-lang-from-mimetype!', function(match, _, bufnr, pred, metadata)
-  local id = pred[2]
-  local node = match[id]
-  local type_attr_value = vim.treesitter.get_node_text(node, bufnr, { metadata = metadata[id] })
-  local configured = mimetype_aliases[type_attr_value]
-  if configured then
-    metadata['injection.language'] = configured
-  else
-    local parts = vim.split(type_attr_value, '/', {})
-    metadata['injection.language'] = parts[#parts]
-  end
-end, { force = true })
