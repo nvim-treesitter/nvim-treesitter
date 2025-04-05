@@ -33,13 +33,16 @@
   (#any-of? @keyword
     "append" "break" "catch" "continue" "default" "dict" "error" "eval" "global" "lappend" "lassign"
     "lindex" "linsert" "list" "llength" "lmap" "lrange" "lrepeat" "lreplace" "lreverse" "lsearch"
-    "lset" "lsort" "package" "return" "switch" "throw" "unset" "variable"))
+    "lset" "lsort" "package" "return" "switch" "throw" "trap" "unset" "variable"))
 
 [
+  "catch"
   "error"
+  "global"
   "on"
   "set"
   "try"
+  "finally"
 ] @keyword
 
 "namespace" @keyword.type

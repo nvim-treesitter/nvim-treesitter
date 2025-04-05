@@ -183,7 +183,7 @@
     "revision": "aedd0bbab9dcc9caec9cc4e32bd303e86509522b"
   },
   "erlang": {
-    "revision": "416ca60d7d2a824c0d346163541153e230710780"
+    "revision": "0438de84e0d3b58d0c66664bcc49dc4f1cdff483"
   },
   "facility": {
     "revision": "e4bfd3e960de9f4b4648acb1c92e9b95b47d8cfb"
@@ -432,7 +432,7 @@
     "revision": "c4ddea359a7ff4d92360b2efcd6cfce5dc25afe6"
   },
   "koto": {
-    "revision": "46770abba021e2ddd2c51d9fa3087fd1ab6b2aea"
+    "revision": "4d1b37bd19f27b797dbc1d5544db193feabd24ed"
   },
   "kusto": {
     "revision": "8353a1296607d6ba33db7c7e312226e5fc83e8ce"
@@ -495,10 +495,10 @@
     "revision": "90ae195b31933ceb9d079abfa8a3ad0a36fee4cc"
   },
   "meson": {
-    "revision": "a56af662e8540412fed5e40cc20435b2b9a20502"
+    "revision": "e39eeb2b1d8bcedb85c1a7f83ac6de6012a5f22b"
   },
   "mlir": {
-    "revision": "922cbb97f3d20044e6b4362b3d7af5e530ed8f34"
+    "revision": "7b588bf28e78f84190588a733bfe838e10520ef6"
   },
   "muttrc": {
     "revision": "173b0ab53a9c07962c9777189c4c70e90f1c1837"
@@ -570,7 +570,7 @@
     "revision": "576a56fa7f8b68c91524cdd211eb2ffc43e7bb11"
   },
   "phpdoc": {
-    "revision": "fe3202e468bc17332bec8969f2b50ff1f1da3a46"
+    "revision": "03bb10330704b0b371b044e937d5cc7cd40b4999"
   },
   "pioasm": {
     "revision": "afece58efdb30440bddd151ef1347fa8d6f744a9"
@@ -807,7 +807,7 @@
     "revision": "47af20264abbd24ea282ded0f8ee9cad3cf3bf2f"
   },
   "tcl": {
-    "revision": "f15e711167661d1ba541d4f62b9dbfc4ce61ec56"
+    "revision": "85a6e11649ae86a28153de8b672333b2cda79e53"
   },
   "teal": {
     "revision": "3db655924b2ff1c54fdf6371b5425ea6b5dccefe"
