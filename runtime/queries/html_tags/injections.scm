@@ -32,16 +32,40 @@
   (#not-lua-match? @_no_type_lang "%stype%s*=")
   (#set! injection.language "javascript"))
 
-; <script type="mimetype-or-well-known-script-type">
+; <script type="foo/bar">
 (script_element
   (start_tag
     (attribute
       (attribute_name) @_attr
       (#eq? @_attr "type")
       (quoted_attribute_value
-        (attribute_value) @_type)))
+        (attribute_value) @injection.language)))
   (raw_text) @injection.content
-  (#set-lang-from-mimetype! @_type))
+  (#gsub! @injection.language "(.+)/(.+)" "%2"))
+
+; <script type="importmap">
+((script_element
+  (start_tag
+    (attribute
+      (attribute_name) @_attr
+      (#eq? @_attr "type")
+      (quoted_attribute_value
+        (attribute_value) @_type)))
+  (raw_text) @injection.content)
+  (#eq? @_type "importmap")
+  (#set! injection.language "json"))
+
+; <script type="module">
+((script_element
+  (start_tag
+    (attribute
+      (attribute_name) @_attr
+      (#eq? @_attr "type")
+      (quoted_attribute_value
+        (attribute_value) @_type)))
+  (raw_text) @injection.content)
+  (#eq? @_type "module")
+  (#set! injection.language "javascript"))
 
 ; <a style="/* css */">
 ((attribute
