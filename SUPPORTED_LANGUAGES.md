@@ -29,6 +29,7 @@ Language | Tier | Queries | Maintainer
 [blade](https://github.com/EmranMR/tree-sitter-blade) | unstable | `HFIJ ` | @calebdw
 [blueprint](https://gitlab.com/gabmus/tree-sitter-blueprint) | unstable | `H  J ` | @gabmus
 [bp](https://github.com/ambroisie/tree-sitter-bp)[^bp] | unstable | `HFIJL` | @ambroisie
+[brightscript](https://github.com/ajdelcimmuto/tree-sitter-brightscript) | unstable | `HFIJ ` | @ajdelcimmuto
 [c](https://github.com/tree-sitter/tree-sitter-c) | unstable | `HFIJL` | @amaanq
 [c_sharp](https://github.com/tree-sitter/tree-sitter-c-sharp) | unstable | `HF JL` | @amaanq
 [caddy](https://github.com/opa-oz/tree-sitter-caddy) | unmaintained | `HFIJ ` | @opa-oz
