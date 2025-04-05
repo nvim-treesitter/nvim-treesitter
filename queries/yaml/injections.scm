@@ -2,9 +2,10 @@
   (#set! injection.language "comment"))
 
 ; Github actions ("run") / Gitlab CI ("scripts")
+; Taskfile scripts ("cmds", "sh")
 (block_mapping_pair
   key: (flow_node) @_run
-  (#any-of? @_run "run" "script" "before_script" "after_script")
+  (#any-of? @_run "run" "script" "before_script" "after_script" "cmds" "sh")
   value: (flow_node
     (plain_scalar
       (string_scalar) @injection.content)
@@ -12,7 +13,7 @@
 
 (block_mapping_pair
   key: (flow_node) @_run
-  (#any-of? @_run "run" "script" "before_script" "after_script")
+  (#any-of? @_run "run" "script" "before_script" "after_script" "cmds" "sh")
   value: (block_node
     (block_scalar) @injection.content
     (#set! injection.language "bash")
@@ -20,7 +21,7 @@
 
 (block_mapping_pair
   key: (flow_node) @_run
-  (#any-of? @_run "run" "script" "before_script" "after_script")
+  (#any-of? @_run "run" "script" "before_script" "after_script" "cmds" "sh")
   value: (block_node
     (block_sequence
       (block_sequence_item
@@ -31,7 +32,7 @@
 
 (block_mapping_pair
   key: (flow_node) @_run
-  (#any-of? @_run "script" "before_script" "after_script")
+  (#any-of? @_run "script" "before_script" "after_script" "cmds" "sh")
   value: (block_node
     (block_sequence
       (block_sequence_item
