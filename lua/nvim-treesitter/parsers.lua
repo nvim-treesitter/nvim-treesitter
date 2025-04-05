@@ -153,8 +153,8 @@ return {
   },
   brightscript = {
     install_info = {
+      revision = '48ce1687125c6dfefcc7a1bef19fa0f0f00426cc',
       url = 'https://github.com/ajdelcimmuto/tree-sitter-brightscript',
-      files = { 'src/parser.c' },
     },
     maintainers = { '@ajdelcimmuto' },
     tier = 2,
