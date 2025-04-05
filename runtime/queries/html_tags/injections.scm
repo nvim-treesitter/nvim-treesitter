@@ -39,9 +39,9 @@
       (attribute_name) @_attr
       (#eq? @_attr "type")
       (quoted_attribute_value
-        (attribute_value) @_type)))
+        (attribute_value) @injection.language)))
   (raw_text) @injection.content
-  (#set-lang-from-mimetype! @_type))
+  (#gsub! @injection.language "(.-)/(.+)" "%2"))
 
 ; <a style="/* css */">
 ((attribute
