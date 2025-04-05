@@ -19,6 +19,8 @@
                   <!--  ^ @javascript -->
     <script async defer> const x = 1 </script>
                      <!--  ^ @javascript -->
+    <script type="module"> import { foo } from "bar" </script>
+                                  <!--  ^ @javascript -->
     <script type="text/javascript"> const x = 1 </script>
                                   <!--  ^ @javascript -->
     <script type="text/ecmascript"> const x = 1 </script>
@@ -27,8 +29,6 @@
                                        <!--  ^ @javascript -->
     <script type="application/javascript"> const x = 1 </script>
                                        <!--  ^ @javascript -->
-    <script type="module"> import { foo } from "bar" </script>
-                                 <!--  ^ @javascript -->
     <script defer type="text/javascript"> const x = 1 </script>
                                         <!--  ^ @javascript -->
     <script type="text/markdown">## Hello *World*!</script>
@@ -40,7 +40,7 @@
     <script type="application/json">{ "true": false }</script>
                                       <!--  ^ @json -->
     <script type="importmap">{ "true": false }</script>
-                                  <!--  ^ @json -->
+                                   <!--  ^ @json -->
     <div style="height: 100%">
                <!--  ^ @css -->
       Test div to test css injections for style attributes
