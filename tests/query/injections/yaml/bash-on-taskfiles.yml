@@ -1,0 +1,15 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING:
+    sh: echo "Hello, World!"
+    #   ^ @bash
+
+tasks:
+  default:
+    cmds:
+      - echo "{{.GREETING}}"
+    #   ^ @bash
+    silent: true
