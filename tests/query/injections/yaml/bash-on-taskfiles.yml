@@ -13,3 +13,12 @@ tasks:
       - echo "{{.GREETING}}"
     #   ^ @bash
     silent: true
+  cmd:
+    cmd: echo "{{.GREETING}}"
+    #    ^ @bash
+    silent: true
+  cmd-block:
+    cmd: |
+      echo "{{.GREETING}}"
+    # ^ @bash
+    silent: true
