@@ -74,13 +74,14 @@ To enable supported features, put this in your `init.lua` file:
   vim.opt.runtimepath:append("/some/path/to/store/parsers")
 <
 
-See |nvim-treesitter-modules| for a list of all available modules and its options.
+See |nvim-treesitter-modules| for a list of all available modules and its
+options.
 
 ==============================================================================
 MODULES                                              *nvim-treesitter-modules*
 
 |nvim-treesitter| provides several functionalities via modules (and submodules),
-each module makes use of the query files defined for each language,
+each module makes use of the query files defined for each language.
 
 All modules are disabled by default, and some provide default keymaps.
 Each module corresponds to an entry in the dictionary passed to the
@@ -97,7 +98,8 @@ Each module corresponds to an entry in the dictionary passed to the
 
 All modules share some common options, like `enable` and `disable`.
 When `enable` is `true` this will enable the module for all supported languages,
-if you want to disable the module for some languages you can pass a list to the `disable` option.
+if you want to disable the module for some languages you can pass a list to
+the `disable` option.
 
 >
   require'nvim-treesitter.configs'.setup {
@@ -216,6 +218,7 @@ Query files: `indents.scm`.
 Supported options:
 - enable: `true` or `false`.
 - disable: list of languages.
+
 >
   require'nvim-treesitter.configs'.setup {
     indent = {
@@ -256,7 +259,7 @@ Will allow:
 
 `@indent.end`				*nvim-treesitter-indentation-indent.end*
 An `@indent.end` capture is used to specify that the indented region ends and
-any text subsequent to the capture should be dedented.  
+any text subsequent to the capture should be dedented.
 
 `@indent.branch`		    *nvim-treesitter-indentation-indent.branch*
 An `@indent.branch` capture is used to specify that a dedented region starts
@@ -264,7 +267,7 @@ at the line including the captured nodes.
 
 `@indent.dedent`		    *nvim-treesitter-indentation-indent.dedent*
 A `@indent.dedent` capture specifies dedenting starting on the next line.
->
+
 `@indent.align`		    *nvim-treesitter-indentation-aligned_indent.align*
 Aligned indent blocks may be specified with the `@indent.align` capture.
 This permits
@@ -332,35 +335,35 @@ line of the block inside an if.
 COMMANDS                                            *nvim-treesitter-commands*
 
 								  *:TSInstall*
-:TSInstall {language} ...~
+:TSInstall {language} ... ~
 
 Install one or more treesitter parsers.
 You can use |:TSInstall| `all` to install all parsers. Use |:TSInstall!| to
 force the reinstallation of already installed parsers.
 							      *:TSInstallSync*
-:TSInstallSync {language} ...~
+:TSInstallSync {language} ... ~
 
 Perform the |:TSInstall| operation synchronously.
 
 							      *:TSInstallInfo*
-:TSInstallInfo~
+:TSInstallInfo ~
 
 List information about currently installed parsers
 
 								   *:TSUpdate*
-:TSUpdate {language} ...~
+:TSUpdate {language} ... ~
 
 Update the installed parser for one more {language} or all installed parsers
-if {language} is omitted. The specified parser is installed if it is not already
-installed.
+if {language} is omitted. The specified parser is installed if it is not
+already installed.
 
 							       *:TSUpdateSync*
-:TSUpdateSync {language} ...~
+:TSUpdateSync {language} ... ~
 
 Perform the |:TSUpdate| operation synchronously.
 
 								*:TSUninstall*
-:TSUninstall {language} ...~
+:TSUninstall {language} ... ~
 
 Deletes the parser for one or more {language}. You can use 'all' for language
 to uninstall all parsers.
@@ -385,7 +388,7 @@ buffer.
 A list of modules can be found at |:TSModuleInfo|
 
 								*:TSEnable*
-:TSEnable {module} [{language}]~
+:TSEnable {module} [{language}] ~
 
 Enable {module} for the session.
 If {language} is specified, enable module for the session only for this
@@ -394,7 +397,7 @@ A list of modules can be found at |:TSModuleInfo|
 A list of languages can be found at |:TSInstallInfo|
 
 							       *:TSDisable*
-:TSDisable {module} [{language}]~
+:TSDisable {module} [{language}] ~
 
 Disable {module} for the session.
 If {language} is specified, disable module for the session only for this
@@ -403,7 +406,7 @@ A list of modules can be found at |:TSModuleInfo|
 A list of languages can be found at |:TSInstallInfo|
 
 								*:TSToggle*
-:TSToggle {module} [{language}]~
+:TSToggle {module} [{language}] ~
 
 Toggle (enable if disabled, disable if enabled) {module} for the session.
 If {language} is specified, toggle module for the session only for this
@@ -412,7 +415,7 @@ A list of modules can be found at |:TSModuleInfo|
 A list of languages can be found at |:TSInstallInfo|
 
 							       *:TSModuleInfo*
-:TSModuleInfo [{module}]~
+:TSModuleInfo [{module}] ~
 
 List the state for the given module or all modules for the current session in
 a new buffer.
@@ -427,7 +430,7 @@ These highlight groups are used by default:
 <
 
 								*:TSEditQuery*
-:TSEditQuery {query-group} [{lang}]~
+:TSEditQuery {query-group} [{lang}] ~
 
 Edit the query file for a {query-group} (e.g. highlights, locals) for given
 {lang}. If there are multiple files, the user is prompted to select one of them.
@@ -436,7 +439,7 @@ is created. If {lang} is not specified, the language of the current buffer
 is used.
 
 						       *:TSEditQueryUserAfter*
-:TSEditQueryUserAfter {query-group} [{lang}]~
+:TSEditQueryUserAfter {query-group} [{lang}] ~
 
 Same as |:TSEditQuery| but edits a file in the `after` directory of the
 user's config directory. Useful to add custom extensions for the queries
@@ -451,24 +454,24 @@ Nvim treesitter has some wrapper functions that you can retrieve with:
 <
 Methods
 						 *ts_utils.get_node_at_cursor*
-get_node_at_cursor(winnr)~
+get_node_at_cursor(winnr) ~
 
 `winnr` will be 0 if nil.
 Returns the node under the cursor.
 
 							  *ts_utils.is_parent*
-is_parent(dest, source)~
+is_parent(dest, source) ~
 
 Determines whether `dest` is a parent of `source`.
 Returns a boolean.
 
 						 *ts_utils.get_named_children*
-get_named_children(node)~
+get_named_children(node) ~
 
 Returns a table of named children of `node`.
 
 						      *ts_utils.get_next_node*
-get_next_node(node, allow_switch_parent, allow_next_parent)~
+get_next_node(node, allow_switch_parent, allow_next_parent) ~
 
 Returns the next node within the same parent.
 If no node is found, returns `nil`.
@@ -478,14 +481,14 @@ If `allow_next_parent` is true, it will allow next parent if
 the node is the last node and the next parent doesn't have children.
 
 						  *ts_utils.get_previous_node*
-get_previous_node(node, allow_switch_parents, allow_prev_parent)~
+get_previous_node(node, allow_switch_parents, allow_prev_parent) ~
 
 Returns the previous node within the same parent.
 `allow_switch_parent` and `allow_prev_parent` follow the same rule
 as |ts_utils.get_next_node| but if the node is the first node.
 
 							  *ts_utils.goto_node*
-goto_node(node, goto_end, avoid_set_jump)~
+goto_node(node, goto_end, avoid_set_jump) ~
 
 Sets cursor to the position of `node` in the current windows.
 If `goto_end` is truthy, the cursor is set to the end the node range.
@@ -493,13 +496,13 @@ Setting `avoid_set_jump` to `true`, avoids setting the current cursor position
 to the jump list.
 
 							 *ts_utils.swap_nodes*
-swap_nodes(node_or_range1, node_or_range2, bufnr, cursor_to_second)~
+swap_nodes(node_or_range1, node_or_range2, bufnr, cursor_to_second) ~
 
 Swaps the nodes or ranges.
 set `cursor_to_second`  to true to move the cursor to the second node
 
 						*ts_utils.memoize_by_buf_tick*
-memoize_by_buf_tick(fn, options)~
+memoize_by_buf_tick(fn, options) ~
 
 Caches the return value for a function and returns the cache value if the tick
 of the buffer has not changed from the previous.
@@ -513,27 +516,27 @@ of the buffer has not changed from the previous.
 		retrieve the value from the cache
 
 						  *ts_utils.node_to_lsp_range*
-node_to_lsp_range(node)~
+node_to_lsp_range(node) ~
 
 Get an lsp formatted range from a node range
 
 							*ts_utils.node_length*
-node_length(node)~
+node_length(node) ~
 
 Get the byte length of node range
 
 						   *ts_utils.update_selection*
-update_selection(buf, node)~
+update_selection(buf, node) ~
 
 Set the selection to the node range
 
 						    *ts_utils.highlight_range*
-highlight_range(range, buf, hl_namespace, hl_group)~
+highlight_range(range, buf, hl_namespace, hl_group) ~
 
 Set a highlight that spans the given range
 
 						     *ts_utils.highlight_node*
-highlight_node(node, buf, hl_namespace, hl_group)~
+highlight_node(node, buf, hl_namespace, hl_group) ~
 
 Set a highlight that spans the given node's range
 
@@ -541,7 +544,7 @@ Set a highlight that spans the given node's range
 FUNCTIONS                                          *nvim-treesitter-functions*
 
 						*nvim_treesitter#statusline()*
-nvim_treesitter#statusline(opts)~
+nvim_treesitter#statusline(opts) ~
 
 Returns a string describing the current position in the file. This
 could be used as a statusline indicator.
@@ -565,7 +568,7 @@ Default options (lua syntax):
 - `allow_duplicates` - Whether or not to remove duplicate components.
 
 						  *nvim_treesitter#foldexpr()*
-nvim_treesitter#foldexpr()~
+nvim_treesitter#foldexpr() ~
 
 Functions to be used to determine the fold level at a given line number.
 To use it: >
