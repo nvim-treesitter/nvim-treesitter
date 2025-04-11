@@ -174,4 +174,4 @@
     ">="
   ] @operator)
 
-(as) @keyword
+(as) @keyword.operator
