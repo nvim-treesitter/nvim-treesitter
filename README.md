@@ -98,7 +98,7 @@ To make sure a parser is at the latest compatible version (as specified in `nvim
 
 ## Modules
 
-Each module provides a distinct tree-sitter-based feature such as [highlighting](#highlight), [indentation](#indentation), or [folding](#folding); see [`:h nvim-treesitter-modules`](doc/nvim-treesitter.txt) or ["Available modules"](#available-modules) below for a list of modules and their options.
+Each module provides a distinct tree-sitter-based feature such as [highlighting](#highlight), [indentation](#indentation), [textobjects](#text-objects), or [folding](#folding); see [`:h nvim-treesitter-modules`](doc/nvim-treesitter.txt) or ["Available modules"](#available-modules) below for a list of modules and their options.
 
 Following examples assume that you are configuring neovim with lua. If you are using vimscript, see `:h lua-heredoc`.
 All modules are disabled by default and need to be activated explicitly in your `init.lua`, e.g., via
@@ -565,6 +565,27 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 ```
+
+#### Text objects
+
+Neovim `:text-objects` integration. This is provided by <https://github.com/nvim-treesitter/nvim-treesitter-textobjects>.
+
+```lua
+require'nvim-treesitter.configs'.setup {
+  textobjects = {
+    select = {
+      enable = true,
+        keymaps = {
+          ["af"] = "@function.outer",
+          ["if"] = "@function.inner",
+        }
+      }
+    }
+}
+```
+
+See <https://github.com/nvim-treesitter/nvim-treesitter-textobjects#built-in-textobjects> for a complete list of possible textobjects.
+
 
 #### Folding
 
