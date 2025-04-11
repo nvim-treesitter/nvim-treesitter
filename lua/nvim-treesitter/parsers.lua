@@ -216,6 +216,14 @@ list.bp = {
   maintainers = { "@ambroisie" },
 }
 
+list.brightscript = {
+  install_info = {
+    url = "https://github.com/ajdelcimmuto/tree-sitter-brightscript",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@ajdelcimmuto" },
+}
+
 list.c = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-c",

@@ -53,6 +53,9 @@
   "bp": {
     "revision": "16c43068ec30828c5aed11e87262c56f36782595"
   },
+  "brightscript": {
+    "revision": "48ce1687125c6dfefcc7a1bef19fa0f0f00426cc"
+  },
   "c": {
     "revision": "2a265d69a4caf57108a73ad2ed1e6922dd2f998c"
   },
