@@ -328,10 +328,10 @@
     attribute: (identifier) @function.method.call))
 
 ((call
-  function: (identifier) @constructor)
-  (#lua-match? @constructor "^[A-Z]"))
+  function: (identifier) @constructor.call)
+  (#lua-match? @constructor.call "^[A-Z]"))
 
 ((call
   function: (attribute
-    attribute: (identifier) @constructor))
-  (#lua-match? @constructor "^[A-Z]"))
+    attribute: (identifier) @constructor.call))
+  (#lua-match? @constructor.call "^[A-Z]"))

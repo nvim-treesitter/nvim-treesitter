@@ -44,12 +44,12 @@
 
 ; Constructors
 ((call_expression
-  (identifier) @constructor)
-  (#lua-match? @constructor "^[nN]ew.+$"))
+  (identifier) @constructor.call)
+  (#lua-match? @constructor.call "^[nN]ew.+$"))
 
 ((call_expression
-  (identifier) @constructor)
-  (#lua-match? @constructor "^[mM]ake.+$"))
+  (identifier) @constructor.call)
+  (#lua-match? @constructor.call "^[mM]ake.+$"))
 
 ; Operators
 [

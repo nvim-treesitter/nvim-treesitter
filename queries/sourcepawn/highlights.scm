@@ -109,7 +109,7 @@
 ; Constructors
 (new_expression
   class: (identifier) @type
-  arguments: (call_arguments) @constructor)
+  arguments: (call_arguments) @constructor.call)
 
 ; Methodmaps
 (methodmap
@@ -119,7 +119,7 @@
   inherits: (identifier) @type)
 
 (methodmap_method_constructor
-  name: (identifier) @constructor)
+  name: (identifier) @constructor.call)
 
 (methodmap_method
   name: (identifier) @function.method)

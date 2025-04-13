@@ -101,8 +101,8 @@
     field: (identifier) @function.method.call))
 
 ((call_expression
-  function: (identifier) @constructor)
-  (#lua-match? @constructor "^[A-Z]"))
+  function: (identifier) @constructor.call)
+  (#lua-match? @constructor.call "^[A-Z]"))
 
 (generic_function
   function: (identifier) @function.call)

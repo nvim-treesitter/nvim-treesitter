@@ -161,24 +161,24 @@
   (#lua-match? @constructor "^%u"))
 
 ((call_expression
-  function: (identifier) @constructor)
-  (#lua-match? @constructor "^%u"))
+  function: (identifier) @constructor.call)
+  (#lua-match? @constructor.call "^%u"))
 
 ((call_expression
   function: (qualified_identifier
-    name: (identifier) @constructor))
-  (#lua-match? @constructor "^%u"))
+    name: (identifier) @constructor.call))
+  (#lua-match? @constructor.call "^%u"))
 
 ((call_expression
   function: (field_expression
-    field: (field_identifier) @constructor))
-  (#lua-match? @constructor "^%u"))
+    field: (field_identifier) @constructor.call))
+  (#lua-match? @constructor.call "^%u"))
 
 ; constructing a type in an initializer list: Constructor ():  **SuperType (1)**
 ((field_initializer
-  (field_identifier) @constructor
+  (field_identifier) @constructor.call
   (argument_list))
-  (#lua-match? @constructor "^%u"))
+  (#lua-match? @constructor.call "^%u"))
 
 ; Constants
 (this) @variable.builtin

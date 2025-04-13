@@ -364,29 +364,29 @@
 ; @constructor      ; constructor calls and definitions
 (call
   function: [
-    (identifier) @constructor
+    (identifier) @constructor.call
     (accent_quoted
-      (identifier) @constructor)
+      (identifier) @constructor.call)
     ; generic types
     (bracket_expression
-      left: (identifier) @constructor)
+      left: (identifier) @constructor.call)
     (bracket_expression
       left: (accent_quoted
-        (identifier) @constructor))
+        (identifier) @constructor.call))
     ; dot accessor
     (dot_expression
-      right: (identifier) @constructor)
+      right: (identifier) @constructor.call)
     (dot_expression
       right: (accent_quoted
-        (identifier) @constructor))
+        (identifier) @constructor.call))
     ; both
     (bracket_expression
       left: (dot_expression
-        right: (identifier) @constructor))
+        right: (identifier) @constructor.call))
     (bracket_expression
       left: (dot_expression
         right: (accent_quoted
-          (identifier) @constructor)))
+          (identifier) @constructor.call)))
   ]
   (argument_list
     (colon_expression)+))

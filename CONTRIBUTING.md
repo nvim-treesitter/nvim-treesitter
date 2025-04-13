@@ -156,7 +156,8 @@ As languages differ quite a lot, here is a set of captures available to you when
 @function.method      ; method definitions
 @function.method.call ; method calls
 
-@constructor          ; constructor calls and definitions
+@constructor          ; constructor definitions
+@constructor.call     ; constructor calls
 @operator             ; symbolic operators (e.g. `+` / `*`)
 ```
 

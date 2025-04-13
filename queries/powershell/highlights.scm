@@ -270,8 +270,8 @@
   (member_name) @function.call)
 
 (invokation_expression
-  (member_name) @constructor
-  (#eq? @constructor "new"))
+  (member_name) @constructor.call
+  (#eq? @constructor.call "new"))
 
 (member_access
   (member_name

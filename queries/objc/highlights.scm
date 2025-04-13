@@ -113,8 +113,8 @@
 
 ; Constructors
 ((message_expression
-  method: (identifier) @constructor)
-  (#eq? @constructor "init"))
+  method: (identifier) @constructor.call)
+  (#eq? @constructor.call "init"))
 
 ; Attributes
 (availability_attribute_specifier
