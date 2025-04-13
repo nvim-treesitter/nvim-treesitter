@@ -98,9 +98,6 @@
 
 (constant) @constant
 
-; Keywords
-(as) @keyword
-
 ; Operators
 [
   "="
@@ -125,7 +122,7 @@
 (invalid) @constant.builtin
 
 ; Comments
-(comment) @comment
+(comment) @comment @spell
 
 ; Punctuation
 [
@@ -135,10 +132,13 @@
   "]"
   "{"
   "}"
+  "?["
+] @punctuation.bracket
+
+[
   "."
   ","
   "?."
-  "?["
 ] @punctuation.delimiter
 
 ; Special highlights for library statements
