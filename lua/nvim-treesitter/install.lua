@@ -360,10 +360,17 @@ local function run_install(cache_folder, install_folder, lang, repo, with_sync, 
   else
     if not M.ts_generate_args then
       local ts_cli_version = utils.ts_cli_version()
-      if ts_cli_version and vim.split(ts_cli_version, " ")[1] > "0.20.2" then
-        M.ts_generate_args = { "generate", "--no-bindings", "--abi", vim.treesitter.language_version }
+      if ts_cli_version then
+        local version_str = vim.split(ts_cli_version, " ")[1]
+        if version_str > "0.24.7" then
+          M.ts_generate_args = { "generate", "--abi", vim.treesitter.language_version }
+        elseif version_str > "0.20.2" then
+          M.ts_generate_args = { "generate", "--no-bindings", "--abi", vim.treesitter.language_version }
+        else
+          M.ts_generate_args = { "generate", "--no-bindings" }
+        end
       else
-        M.ts_generate_args = { "generate", "--no-bindings" }
+        M.ts_generate_args = { "generate", "--no-bindings" }  -- Fallback
       end
     end
   end
