@@ -221,6 +221,7 @@ list.brightscript = {
     url = "https://github.com/ajdelcimmuto/tree-sitter-brightscript",
     files = { "src/parser.c" },
   },
+  filetype = "brs",
   maintainers = { "@ajdelcimmuto" },
 }
 
