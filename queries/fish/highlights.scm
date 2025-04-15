@@ -106,7 +106,7 @@
   ])
 
 (command_substitution
-  "$" @punctuation.bracket)
+  "$" @punctuation.special)
 
 ; non-builtin command names
 (command
@@ -156,6 +156,9 @@
 (variable_name) @variable
 
 (variable_expansion) @constant
+
+(variable_expansion
+  "$" @punctuation.special) @none
 
 ; Reference: https://fishshell.com/docs/current/language.html#special-variables
 ((variable_name) @variable.builtin
