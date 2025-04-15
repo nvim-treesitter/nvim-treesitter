@@ -186,6 +186,8 @@ function: (select_expression
   "="
   "@"
   "?"
+  "<|"
+  "|>"
 ] @operator
 
 ; integers, also highlight a unary -
