@@ -157,6 +157,31 @@
 
 (variable_expansion) @constant
 
+; Reference: https://fishshell.com/docs/current/language.html#special-variables
+((variable_name) @variable.builtin
+  (#any-of? @variable.builtin
+    "PATH" "CDPATH" "LANG" "LC_ALL" "LC_COLLATE" "LC_CTYPE" "LC_MESSAGES" "LC_MONETARY" "LC_NUMERIC"
+    "LC_TIME" "fish_color_normal" "fish_color_command" "fish_color_keyword" "fish_color_keyword"
+    "fish_color_redirection" "fish_color_end" "fish_color_error" "fish_color_param"
+    "fish_color_valid_path" "fish_color_option" "fish_color_comment" "fish_color_selection"
+    "fish_color_operator" "fish_color_escape" "fish_color_autosuggestion" "fish_color_cwd"
+    "fish_color_cwd_root" "fish_color_user" "fish_color_host" "fish_color_host_remote"
+    "fish_color_status" "fish_color_cancel" "fish_color_search_match" "fish_color_history_current"
+    "fish_pager_color_progress" "fish_pager_color_background" "fish_pager_color_prefix"
+    "fish_pager_color_completion" "fish_pager_color_description"
+    "fish_pager_color_selected_background" "fish_pager_color_selected_prefix"
+    "fish_pager_color_selected_completion" "fish_pager_color_selected_description"
+    "fish_pager_color_secondary_background" "fish_pager_color_secondary_prefix"
+    "fish_pager_color_secondary_completion" "fish_pager_color_secondary_description"
+    "fish_term24bit" "fish_term256" "fish_ambiguous_width" "fish_emoji_width"
+    "fish_autosuggestion_enabled" "fish_handle_reflow" "fish_key_bindings" "fish_escape_delay_ms"
+    "fish_sequence_key_delay_ms" "fish_complete_path" "fish_cursor_selection_mode"
+    "fish_function_path" "fish_greeting" "fish_history" "fish_trace" "FISH_DEBUG"
+    "FISH_DEBUG_OUTPUT" "fish_user_paths" "umask" "BROWSER" "_" "argv" "CMD_DURATION" "COLUMNS"
+    "LINES" "fish_kill_signal" "fish_killring" "fish_read_limit" "fish_pid" "history" "HOME"
+    "hostname" "IFS" "last_pid" "PWD" "pipestatus" "SHLVL" "status" "status_generation" "TERM"
+    "USER" "EUID" "version" "FISH_VERSION"))
+
 ; Nodes
 [
   (integer)
