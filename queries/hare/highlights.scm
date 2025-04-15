@@ -131,8 +131,8 @@
 
 ((call_expression
   .
-  (identifier) @constructor)
-  (#eq? @constructor "init"))
+  (identifier) @constructor.call)
+  (#eq? @constructor.call "init"))
 
 ; Parameters
 (parameter
