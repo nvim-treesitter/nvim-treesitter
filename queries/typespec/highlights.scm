@@ -4,6 +4,7 @@
   "is"
   "extends"
   "valueof"
+  "typeof"
 ] @keyword.operator
 
 [
@@ -29,6 +30,8 @@
   "using"
 ] @keyword.import
 
+"const" @keyword
+
 [
   "("
   ")"
@@ -38,6 +41,8 @@
   ">"
   "["
   "]"
+  "#{"
+  "#["
 ] @punctuation.bracket
 
 [
@@ -109,6 +114,9 @@
 (interface_statement
   name: (identifier) @type)
 
+(interface_member
+  name: (identifier) @function.method)
+
 (enum_statement
   name: (identifier) @type)
 
@@ -133,3 +141,9 @@
 (operation_arguments
   (model_property
     name: (identifier) @variable.parameter))
+
+(const_statement
+  name: (identifier) @variable)
+
+(object_member
+  key: (identifier) @variable.member)
