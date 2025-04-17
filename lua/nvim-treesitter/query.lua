@@ -105,7 +105,12 @@ do
   ---@param query_name string
   function M.get_query(lang, query_name)
     if cache[lang][query_name] == nil then
-      cache[lang][query_name] = ts.get_query(lang, query_name)
+      local ok, err = pcall(function()
+        cache[lang][query_name] = ts.get_query(lang, query_name)
+      end)
+      if not ok then
+        error("Failed when loading query " .. query_name .. " for language " .. lang .. " error: \n" .. err)
+      end
     end
 
     return cache[lang][query_name]
