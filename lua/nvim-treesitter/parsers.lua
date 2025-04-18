@@ -1175,7 +1175,7 @@ return {
   },
   julia = {
     install_info = {
-      revision = '12a3aede757bc7fbdfb1909507c7a6fddd31df37',
+      revision = '18b739c1563c83fc816170a4241adfa4b69e5c47',
       url = 'https://github.com/tree-sitter/tree-sitter-julia',
     },
     maintainers = { '@fredrikekre' },
