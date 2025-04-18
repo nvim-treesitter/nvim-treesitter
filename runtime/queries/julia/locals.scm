@@ -9,14 +9,6 @@
   (tuple_expression
     (identifier) @local.definition.var))
 
-; let/const bindings
-(let_binding
-  (identifier) @local.definition.var)
-
-(let_binding
-  (tuple_expression
-    (identifier) @local.definition.var))
-
 ; For bindings
 (for_binding
   (identifier) @local.definition.var)
