@@ -2271,7 +2271,7 @@ return {
   },
   tcl = {
     install_info = {
-      revision = 'f15e711167661d1ba541d4f62b9dbfc4ce61ec56',
+      revision = '7b582f8b113bd8a014a44e07d103f70205ac983d',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-tcl',
     },
     maintainers = { '@lewis6991' },
