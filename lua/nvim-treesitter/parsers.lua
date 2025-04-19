@@ -104,7 +104,7 @@ return {
   },
   bibtex = {
     install_info = {
-      revision = 'ccfd77db0ed799b6c22c214fe9d2937f47bc8b34',
+      revision = '8d04ed27b3bc7929f14b7df9236797dab9f3fa66',
       url = 'https://github.com/latex-lsp/tree-sitter-bibtex',
     },
     maintainers = { '@theHamsta', '@clason' },
@@ -1248,7 +1248,7 @@ return {
   latex = {
     install_info = {
       generate = true,
-      revision = '7b06f6ed394308e7407a1703d2724128c45fc9d7',
+      revision = 'f736d24d89acbd90092d92089e5171e6a449db40',
       url = 'https://github.com/latex-lsp/tree-sitter-latex',
     },
     maintainers = { '@theHamsta', '@clason' },
@@ -2668,7 +2668,7 @@ return {
   ziggy = {
     install_info = {
       location = 'tree-sitter-ziggy',
-      revision = '8a29017169f43dc2c3526817e98142eb9a335087',
+      revision = 'fe3bf9389e7ff213cf3548caaf9c6f3d4bb38647',
       url = 'https://github.com/kristoff-it/ziggy',
     },
     maintainers = { '@rockorager' },
@@ -2677,7 +2677,7 @@ return {
   ziggy_schema = {
     install_info = {
       location = 'tree-sitter-ziggy-schema',
-      revision = '8a29017169f43dc2c3526817e98142eb9a335087',
+      revision = 'fe3bf9389e7ff213cf3548caaf9c6f3d4bb38647',
       url = 'https://github.com/kristoff-it/ziggy',
     },
     maintainers = { '@rockorager' },
