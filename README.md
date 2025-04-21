@@ -201,6 +201,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [circom](https://github.com/Decurity/tree-sitter-circom) (maintained by @alexandr-martirosyan)
 - [x] [clojure](https://github.com/sogaiu/tree-sitter-clojure) (maintained by @NoahTheDuke)
 - [x] [cmake](https://github.com/uyha/tree-sitter-cmake) (maintained by @uyha)
+- [x] [cobweb](https://github.com/FabricSoul/tree-sitter-cobweb) (maintained by @FabricSoul)
 - [x] [comment](https://github.com/stsewd/tree-sitter-comment) (maintained by @stsewd)
 - [x] [commonlisp](https://github.com/theHamsta/tree-sitter-commonlisp) (maintained by @theHamsta)
 - [x] [cooklang](https://github.com/addcninblue/tree-sitter-cooklang) (maintained by @addcninblue)

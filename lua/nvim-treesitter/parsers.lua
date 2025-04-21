@@ -297,6 +297,15 @@ list.cmake = {
   maintainers = { "@uyha" },
 }
 
+list.cobweb = {
+  install_info = {
+    url = "https://github.com/FabricSoul/tree-sitter-cobweb",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@FabricSoul" },
+}
+
+
 list.comment = {
   install_info = {
     url = "https://github.com/stsewd/tree-sitter-comment",
