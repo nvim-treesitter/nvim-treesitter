@@ -364,6 +364,7 @@ the node describing the language and `@injection.content` to describe the inject
 ```query
 @injection.language ; dynamic detection of the injection language (i.e. the text of the captured node describes the language)
 @injection.content  ; region for the dynamically detected language
+@injection.filename ; indicates that the captured node’s text may contain a filename; the corresponding filetype is then looked-up up via vim.filetype.match() and treated as the name of a language that should be used to re-parse the `@injection.content`
 ```
 
 For example, to inject javascript into HTML's `<script>` tag
