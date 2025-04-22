@@ -10,6 +10,7 @@ This document lists the planned and finished changes in this rewrite towards [Nv
 - [ ] **`parsers.lua`:** add WASM support (tier 1)
 - [ ] **`install.lua`:** migrate to async v2
 - [ ] **tests:** fix, update (remove custom crate, plenary dependency)
+- [ ] **CI:** switch to ts_query_ls, add update readme as check (remove update job)
 - [ ] **documentation:** consolidate, autogenerate?
 - [ ] **documentation:** migration guide
 - [ ] **indents:** rewrite (Helix compatible)
