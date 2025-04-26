@@ -7,7 +7,7 @@
       (multiline_string)
       (string)
     ] @injection.content)
-  (#any-eq? @injection.language
+  (#any-of? @injection.language
     "json" "toml" "yaml" "xml" "sql" "lua" "js" "html" "css" "http" "jq" "latex" "md" "nix" "regex"))
 
 ;injection from piping function calls
@@ -20,7 +20,7 @@
   part: (operator)
   part: (variable_expr
     (identifier) @injection.language)
-  (#any-eq? @injection.language
+  (#any-of? @injection.language
     "json" "toml" "yaml" "xml" "sql" "lua" "js" "html" "css" "http" "jq" "latex" "md" "nix" "regex"))
 
 ([
