@@ -2,6 +2,7 @@
 ; Copyright (c) 2019 - 2022 The Nushell Project Developers
 ; Licensed under the MIT license.
 [
+  (ctrl_match)
   (expr_parenthesized)
   (parameter_bracks)
   (val_record)
