@@ -18,7 +18,7 @@ error('Cannot require a meta file')
 ---Repo does not contain a `parser.c`; must be generated from grammar first
 ---@field generate? boolean
 ---
----Parser needs to be generated from `grammar.json` (generating from `grammar.js` requires npm)
+---Generate parser from `grammar.json` instead of `grammar.js` (default true)
 ---@field generate_from_json? boolean
 ---
 ---Parser repo is a local directory; overrides `url`, `revision`, and `branch`

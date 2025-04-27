@@ -18,7 +18,6 @@ return {
   },
   angular = {
     install_info = {
-      generate_from_json = true,
       revision = '843525141575e397541e119698f0532755e959f6',
       url = 'https://github.com/dlvandenberg/tree-sitter-angular',
     },
@@ -37,7 +36,6 @@ return {
   },
   arduino = {
     install_info = {
-      generate_from_json = true,
       revision = '017696bdf47ca2b10948c5a511f9ab387722d0f3',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-arduino',
     },
@@ -55,7 +53,6 @@ return {
   },
   astro = {
     install_info = {
-      generate_from_json = true,
       revision = '213f6e6973d9b456c6e50e86f19f66877e7ef0ee',
       url = 'https://github.com/virchau13/tree-sitter-astro',
     },
@@ -241,7 +238,6 @@ return {
   },
   commonlisp = {
     install_info = {
-      generate_from_json = true,
       revision = '32323509b3d9fe96607d151c2da2c9009eb13a2f',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-commonlisp',
     },
@@ -274,7 +270,6 @@ return {
   },
   cpp = {
     install_info = {
-      generate_from_json = true,
       revision = 'e5cea0ec884c5c3d2d1e41a741a66ce13da4d945',
       url = 'https://github.com/tree-sitter/tree-sitter-cpp',
     },
@@ -302,7 +297,6 @@ return {
   },
   cuda = {
     install_info = {
-      generate_from_json = true,
       revision = '014628ae8d2df391b88ddb9fa0260fd97f770829',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-cuda',
     },
@@ -542,7 +536,6 @@ return {
   },
   fennel = {
     install_info = {
-      generate_from_json = true,
       revision = 'de06b9ad366f0186080056109a8c3be980129538',
       url = 'https://github.com/alexmozaidze/tree-sitter-fennel',
     },
@@ -725,7 +718,6 @@ return {
   },
   glimmer_javascript = {
     install_info = {
-      generate_from_json = true,
       revision = '5cc865a2a0a77cbfaf5062c8fcf2a9919bd54f87',
       url = 'https://github.com/NullVoxPopuli/tree-sitter-glimmer-javascript',
     },
@@ -735,7 +727,6 @@ return {
   },
   glimmer_typescript = {
     install_info = {
-      generate_from_json = true,
       revision = '12d98944c1d5077b957cbdb90d663a7c4d50118c',
       url = 'https://github.com/NullVoxPopuli/tree-sitter-glimmer-typescript',
     },
@@ -745,7 +736,6 @@ return {
   },
   glsl = {
     install_info = {
-      generate_from_json = true,
       revision = '24a6c8ef698e4480fecf8340d771fbcb5de8fbb4',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-glsl',
     },
@@ -925,7 +915,6 @@ return {
   },
   hjson = {
     install_info = {
-      generate_from_json = true,
       revision = '02fa3b79b3ff9a296066da6277adfc3f26cbc9e0',
       url = 'https://github.com/winston0410/tree-sitter-hjson',
     },
@@ -935,7 +924,6 @@ return {
   },
   hlsl = {
     install_info = {
-      generate_from_json = true,
       revision = 'bab9111922d53d43668fabb61869bec51bbcb915',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-hlsl',
     },
@@ -953,7 +941,6 @@ return {
   },
   hocon = {
     install_info = {
-      generate_from_json = true,
       revision = 'c390f10519ae69fdb03b3e5764f5592fb6924bcc',
       url = 'https://github.com/antosha417/tree-sitter-hocon',
     },
@@ -1056,7 +1043,6 @@ return {
   },
   ispc = {
     install_info = {
-      generate_from_json = true,
       revision = '9b2f9aec2106b94b4e099fe75e73ebd8ae707c04',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-ispc',
     },
@@ -1152,7 +1138,6 @@ return {
   },
   jsonc = {
     install_info = {
-      generate_from_json = true,
       revision = '02b01653c8a1c198ae7287d566efa86a135b30d5',
       url = 'https://gitlab.com/WhyNotHugo/tree-sitter-jsonc',
     },
@@ -1329,7 +1314,6 @@ return {
   },
   luau = {
     install_info = {
-      generate_from_json = true,
       revision = 'a8914d6c1fc5131f8e1c13f769fa704c9f5eb02f',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-luau',
     },
@@ -1480,7 +1464,6 @@ return {
   },
   nqc = {
     install_info = {
-      generate_from_json = true,
       revision = '14e6da1627aaef21d2b2aa0c37d04269766dcc1d',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-nqc',
     },
@@ -1497,7 +1480,6 @@ return {
   },
   objc = {
     install_info = {
-      generate_from_json = true,
       revision = '181a81b8f23a2d593e7ab4259981f50122909fda',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-objc',
     },
@@ -1576,7 +1558,6 @@ return {
   perl = {
     install_info = {
       branch = 'release',
-      generate_from_json = true,
       revision = 'ecd90bd8b381bcc7219fed4fe351903630e761c6',
       url = 'https://github.com/tree-sitter-perl/tree-sitter-perl',
     },
@@ -1606,7 +1587,6 @@ return {
   },
   phpdoc = {
     install_info = {
-      generate_from_json = true,
       revision = '03bb10330704b0b371b044e937d5cc7cd40b4999',
       url = 'https://github.com/claytonrcarter/tree-sitter-phpdoc',
     },
@@ -1632,7 +1612,6 @@ return {
   pod = {
     install_info = {
       branch = 'release',
-      generate_from_json = true,
       revision = '0bf8387987c21bf2f8ed41d2575a8f22b139687f',
       url = 'https://github.com/tree-sitter-perl/tree-sitter-pod',
     },
@@ -1802,7 +1781,6 @@ return {
   },
   qmljs = {
     install_info = {
-      generate_from_json = true,
       revision = '0889da4632bba3ec6f39ef4102625654890c15c1',
       url = 'https://github.com/yuja/tree-sitter-qmljs',
     },
@@ -1829,7 +1807,7 @@ return {
   },
   racket = {
     install_info = {
-      revision = '5b211bf93021d1c45f39aa96898be9f794f087e4',
+      revision = 'e5096d233a7e9ceef78d7fe1a6d30ae39b3a731f',
       url = 'https://github.com/6cdh/tree-sitter-racket',
     },
     tier = 2,
@@ -1852,7 +1830,6 @@ return {
   },
   razor = {
     install_info = {
-      generate_from_json = true,
       revision = 'fe46ce5ea7d844e53d59bc96f2175d33691c61c5',
       url = 'https://github.com/tris203/tree-sitter-razor',
     },
@@ -1999,6 +1976,7 @@ return {
   scfg = {
     install_info = {
       generate = true,
+      generate_from_json = false,
       revision = '2f3709e7656fa2c443f92041c91a9f843f8cd625',
       url = 'https://github.com/rockorager/tree-sitter-scfg',
     },
@@ -2007,7 +1985,7 @@ return {
   },
   scheme = {
     install_info = {
-      revision = '63e25a4a84142ae7ee0ee01fe3a32c985ca16745',
+      revision = '8af654581a1c957b634321c46df7c2298f1561d9',
       url = 'https://github.com/6cdh/tree-sitter-scheme',
     },
     tier = 2,
@@ -2033,7 +2011,6 @@ return {
   },
   slang = {
     install_info = {
-      generate_from_json = true,
       revision = '327b1b821c255867a4fb724c8eee48887e3d014b',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-slang',
     },
@@ -2075,7 +2052,6 @@ return {
   },
   snakemake = {
     install_info = {
-      generate_from_json = true,
       revision = 'f36c1587624d6d84376c82a357c20fc319cbf02c',
       url = 'https://github.com/osthomas/tree-sitter-snakemake',
     },
@@ -2118,7 +2094,6 @@ return {
   },
   sparql = {
     install_info = {
-      generate_from_json = true,
       revision = 'd853661ca680d8ff7f8d800182d5782b61d0dd58',
       url = 'https://github.com/GordianDziwis/tree-sitter-sparql',
     },
@@ -2128,7 +2103,6 @@ return {
   sql = {
     install_info = {
       branch = 'gh-pages',
-      generate_from_json = true,
       revision = 'b1ec2aa5091624e4729f0a771a6d631afebf1ed4',
       url = 'https://github.com/derekstride/tree-sitter-sql',
     },
@@ -2153,7 +2127,6 @@ return {
   },
   starlark = {
     install_info = {
-      generate_from_json = true,
       revision = 'a453dbf3ba433db0e5ec621a38a7e59d72e4dc69',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-starlark',
     },
@@ -2170,7 +2143,6 @@ return {
   },
   styled = {
     install_info = {
-      generate_from_json = true,
       revision = '319cdcaa0346ba6db668a222d938e5c3569e2a51',
       url = 'https://github.com/mskelton/tree-sitter-styled',
     },
@@ -2204,7 +2176,6 @@ return {
   },
   svelte = {
     install_info = {
-      generate_from_json = true,
       revision = 'ae5199db47757f785e43a14b332118a5474de1a2',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-svelte',
     },
@@ -2223,6 +2194,7 @@ return {
   swift = {
     install_info = {
       generate = true,
+      generate_from_json = false,
       revision = '99a5241ceac351a4af57bcc3571cef5064bde0a3',
       url = 'https://github.com/alex-pinkus/tree-sitter-swift',
     },
@@ -2288,7 +2260,6 @@ return {
   },
   templ = {
     install_info = {
-      generate_from_json = true,
       revision = 'bd52132b4ef7a028189f0e52d7c89e36a083c6fa',
       url = 'https://github.com/vrischmann/tree-sitter-templ',
     },
@@ -2363,7 +2334,6 @@ return {
   },
   toml = {
     install_info = {
-      generate_from_json = true,
       revision = '64b56832c2cffe41758f28e05c756a3a98d16f41',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-toml',
     },
@@ -2381,7 +2351,6 @@ return {
   },
   tsx = {
     install_info = {
-      generate_from_json = true,
       location = 'tsx',
       revision = '75b3874edb2dc714fb1fd77a32013d0f8699989f',
       url = 'https://github.com/tree-sitter/tree-sitter-typescript',
@@ -2408,7 +2377,6 @@ return {
   },
   typescript = {
     install_info = {
-      generate_from_json = true,
       location = 'typescript',
       revision = '75b3874edb2dc714fb1fd77a32013d0f8699989f',
       url = 'https://github.com/tree-sitter/tree-sitter-typescript',
@@ -2558,7 +2526,6 @@ return {
   vue = {
     install_info = {
       branch = 'main',
-      generate_from_json = true,
       revision = '22bdfa6c9fc0f5ffa44c6e938ec46869ac8a99ff',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-vue',
     },
@@ -2576,7 +2543,6 @@ return {
   },
   wgsl_bevy = {
     install_info = {
-      generate_from_json = true,
       revision = '47c1818d245a6156a488c4c4d06e9336714bae9b',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-wgsl-bevy',
     },

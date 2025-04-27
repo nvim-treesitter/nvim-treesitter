@@ -28,9 +28,10 @@ The `nvim-treesitter` plugin provides
 ## Requirements
 
 - Neovim 0.11.0 or later (nightly)
-- `tar` and `curl` in your path (or alternatively `git`)
-- [`tree-sitter`](https://github.com/tree-sitter/tree-sitter) CLI (0.24.0 or later)
+- `tar` and `curl` in your path
+- [`tree-sitter`](https://github.com/tree-sitter/tree-sitter) CLI (0.25.0 or later)
 - a C compiler in your path (see <https://docs.rs/cc/latest/cc/#compile-time-requirements>)
+- `Node` (23.0.0 or later) for some parsers (see the [list of supported languages](SUPPORTED_LANGUAGES.md))
 
 ## Installation
 
@@ -74,9 +75,7 @@ Check [`:h nvim-treesitter-commands`](doc/nvim-treesitter.txt) for a list of all
 
 For `nvim-treesitter` to support a specific feature for a specific language requires both a parser for that language and an appropriate language-specific query file for that feature.
 
-A list of the currently supported languages can be found [on this page](SUPPORTED_LANGUAGES.md).
-
-We are looking for maintainers to add more parsers and to write query files for their languages. Check our [tracking issue](https://github.com/nvim-treesitter/nvim-treesitter/issues/2282) for open language requests.
+A list of the currently supported languages can be found [on this page](SUPPORTED_LANGUAGES.md). If you wish to add a new language or improve the queries for the an existing one, please see our [contributing guide](CONTRIBUTING.md).
 
 For related information on the supported languages, including related plugins, see [this wiki page](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Supported-Languages-Information).
 
