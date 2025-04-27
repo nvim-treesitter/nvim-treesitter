@@ -12,7 +12,7 @@ for i = 1, #_G.arg do
   elseif _G.arg[i]:find('^%-%-max%-jobs') then
     max_jobs = _G.arg[i]:match('=(%d+)')
   else
-    parsers[#parsers + 1] = _G.arg[i]
+    parsers[#parsers + 1] = _G.arg[i] ---@type string
   end
 end
 

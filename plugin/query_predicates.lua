@@ -1,8 +1,8 @@
 local query = vim.treesitter.query
 
 local predicates = {
-  ---@param match TSQueryMatch
-  ---@param pred string[]
+  ---@param match table<integer,TSNode[]>
+  ---@param pred any[]
   ---@param any boolean
   ---@return boolean
   ['kind-eq'] = function(match, pred, any)
@@ -26,16 +26,16 @@ local predicates = {
 
 -- register custom predicates (overwrite existing; needed for CI)
 
----@param match TSQueryMatch
----@param pred string[]
----@return boolean|nil
+---@param match table<integer,TSNode[]>
+---@param pred any[]
+---@return boolean
 query.add_predicate('kind-eq?', function(match, _, _, pred)
   return predicates['kind-eq'](match, pred, false)
 end, { force = true })
 
----@param match TSQueryMatch
----@param pred string[]
----@return boolean|nil
+---@param match table<integer,TSNode[]>
+---@param pred any[]
+---@return boolean
 query.add_predicate('any-kind-eq?', function(match, _, _, pred)
   return predicates['kind-eq'](match, pred, true)
 end, { force = true })

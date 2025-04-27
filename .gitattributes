@@ -1,0 +1,3 @@
+runtime/queries/**/*.scm linguist-language=Tree-sitter-Query
+doc/*.txt linguist-documentation
+SUPPORTED_LANGUAGES.md linguist-generated

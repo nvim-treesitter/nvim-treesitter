@@ -7,13 +7,13 @@ local parsers = #_G.arg > 0 and { unpack(_G.arg) }
   or require('nvim-treesitter.config').installed_parsers()
 
 -- Extract captures from documentation for validation
-local captures = {}
+local captures = {} ---@type table[]
 do
   local current_query ---@type string
 
   for line in io.lines('CONTRIBUTING.md') do
     if vim.startswith(line, '### ') then
-      current_query = line:sub(5):lower()
+      current_query = line:sub(5):lower() ---@type string
     elseif vim.startswith(line, '@') and current_query then
       if not captures[current_query] then
         captures[current_query] = {}
@@ -24,14 +24,14 @@ do
   end
 
   -- Complete captures for injections.
-  for _, lang in pairs(vim.tbl_keys(configs)) do
+  for lang, _ in pairs(configs) do
     table.insert(captures['injections'], lang)
   end
 end
 
 -- Check queries for each installed parser in parsers
 local errors = {} ---@type string[]
-local timings = {} ---@type number[][]
+local timings = {} ---@type { duration: number, lang: string, query_type: string }[]
 do
   print('::group::Check parsers')
 

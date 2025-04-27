@@ -434,7 +434,7 @@ local function install(languages, options, callback)
   end
 end
 
----@param languages string[]
+---@param languages string[]|string
 ---@param options? InstallOptions
 ---@param callback? fun(boolean)
 M.install = a.sync(function(languages, options, callback)
@@ -443,10 +443,8 @@ M.install = a.sync(function(languages, options, callback)
   install(languages, options, callback)
 end, 3)
 
----@class UpdateOptions
-
 ---@param languages? string[]|string
----@param _options? UpdateOptions
+---@param _options? table
 ---@param callback? function
 M.update = a.sync(function(languages, _options, callback)
   reload_parsers()
@@ -501,7 +499,7 @@ local function uninstall_lang(logger, lang, parser, queries)
 end
 
 ---@param languages string[]|string
----@param _options? UpdateOptions
+---@param _options? table
 ---@param _callback? fun()
 M.uninstall = a.sync(function(languages, _options, _callback)
   languages = config.norm_languages(languages or 'all', { missing = true, dependencies = true })

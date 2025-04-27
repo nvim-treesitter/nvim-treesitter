@@ -13,7 +13,7 @@ local config = {
 }
 
 ---Setup call for users to override configuration configurations.
----@param user_data TSConfig|nil user configuration table
+---@param user_data TSConfig? user configuration table
 function M.setup(user_data)
   if user_data then
     if user_data.install_dir then

@@ -18,7 +18,7 @@ end
 ---@param node TSNode
 ---@return TSNode result
 local function get_root_for_node(node)
-  local parent = node
+  local parent = node ---@type TSNode?
   local result = node
 
   while parent ~= nil do
@@ -56,9 +56,9 @@ end
 -- Iterates over a nodes scopes moving from the bottom up
 ---@param node TSNode
 ---@param bufnr integer
----@return fun(): TSNode|nil
+---@return fun(): TSNode?
 function M.iter_scope_tree(node, bufnr)
-  local last_node = node
+  local last_node = node ---@type TSNode?
   return function()
     if not last_node then
       return
@@ -247,7 +247,7 @@ M.get_definitions_lookup_table = memoize(function(bufnr)
     return {}
   end
 
-  local result = {}
+  local result = {} ---@type TSLocal[]
   for _, definition in ipairs(definitions) do
     for _, node_entry in ipairs(M.get_local_nodes(definition)) do
       local scopes = M.get_definition_scopes(node_entry.node, bufnr, node_entry.scope)
@@ -279,9 +279,10 @@ end)
 ---@param node TSNode: the definition node
 ---@param bufnr integer: the buffer
 ---@param scope_type TSScope: the scope type
+---@return TSNode[]
 function M.get_definition_scopes(node, bufnr, scope_type)
   local scopes = {}
-  local scope_count = 1 ---@type integer|nil
+  local scope_count = 1 ---@type integer?
 
   -- Definition is valid for the containing scope
   -- and the containing scope of that scope
@@ -365,7 +366,7 @@ end
 ---@param node TSNode
 ---@param bufnr? integer
 ---@param allow_scope? boolean
----@return TSNode|nil
+---@return TSNode?
 function M.containing_scope(node, bufnr, allow_scope)
   bufnr = bufnr or api.nvim_get_current_buf()
   allow_scope = allow_scope == nil or allow_scope == true
@@ -375,7 +376,7 @@ function M.containing_scope(node, bufnr, allow_scope)
     return
   end
 
-  local iter_node = node
+  local iter_node = node ---@type TSNode?
 
   while iter_node ~= nil and not vim.tbl_contains(scopes, iter_node) do
     iter_node = iter_node:parent()

@@ -26,7 +26,7 @@ end
 ---@param root TSNode
 ---@param lnum integer
 ---@param col? integer
----@return TSNode
+---@return TSNode?
 local function get_first_node_at_line(root, lnum, col)
   col = col or get_indentcols_at_line(lnum)
   return root:descendant_for_range(lnum - 1, col, lnum - 1, col + 1)
@@ -35,7 +35,7 @@ end
 ---@param root TSNode
 ---@param lnum integer
 ---@param col? integer
----@return TSNode
+---@return TSNode?
 local function get_last_node_at_line(root, lnum, col)
   col = col or (#getline(lnum) - 1)
   return root:descendant_for_range(lnum - 1, col, lnum - 1, col + 1)
@@ -52,8 +52,8 @@ end
 ---@param bufnr integer
 ---@param node TSNode
 ---@param delimiter string
----@return TSNode|nil child
----@return boolean|nil is_end
+---@return TSNode? child
+---@return boolean? is_end
 local function find_delimiter(bufnr, node, delimiter)
   for child, _ in node:iter_children() do
     if child:type() == delimiter then
@@ -89,6 +89,7 @@ local function memoize(fn, hash_fn)
 end
 
 local get_indents = memoize(function(bufnr, root, lang)
+  ---@type table<string,table<string,table>>
   local map = {
     ['indent.auto'] = {},
     ['indent.begin'] = {},
@@ -154,19 +155,19 @@ function M.get_indent(lnum)
   end
 
   local q = get_indents(vim.api.nvim_get_current_buf(), root, lang_tree:lang())
-  local node ---@type TSNode
+  local node ---@type TSNode?
   if getline(lnum):find('^%s*$') then
     local prevlnum = vim.fn.prevnonblank(lnum)
     local indentcols = get_indentcols_at_line(prevlnum)
     local prevline = vim.trim(getline(prevlnum))
     -- The final position can be trailing spaces, which should not affect indentation
     node = get_last_node_at_line(root, prevlnum, indentcols + #prevline - 1)
-    if node:type():match('comment') then
+    if node and node:type():match('comment') then
       -- The final node we capture of the previous line can be a comment node, which should also be ignored
       -- Unless the last line is an entire line of comment, ignore the comment range and find the last node again
       local first_node = get_first_node_at_line(root, prevlnum, indentcols)
       local _, scol, _, _ = node:range()
-      if first_node:id() ~= node:id() then
+      if first_node and first_node:id() ~= node:id() then
         -- In case the last captured node is a trailing comment node, re-trim the string
         prevline = vim.trim(prevline:sub(1, scol - indentcols))
         -- Add back indent as indent of prevline was trimmed away
@@ -174,7 +175,7 @@ function M.get_indent(lnum)
         node = get_last_node_at_line(root, prevlnum, col)
       end
     end
-    if q['indent.end'][node:id()] then
+    if node and q['indent.end'][node:id()] then
       node = get_first_node_at_line(root, lnum)
     end
   else
@@ -192,7 +193,7 @@ function M.get_indent(lnum)
   -- tracks to ensure multiple indent levels are not applied for same line
   local is_processed_by_row = {} --- @type table<integer,boolean>
 
-  if q['indent.zero'][node:id()] then
+  if node and q['indent.zero'][node:id()] then
     return 0
   end
 
@@ -240,7 +241,7 @@ function M.get_indent(lnum)
     local is_in_err = false
     if should_process then
       local parent = node:parent()
-      is_in_err = parent and parent:has_error()
+      is_in_err = parent and parent:has_error() or false
     end
     if
       should_process
@@ -276,8 +277,8 @@ function M.get_indent(lnum)
       and (srow ~= lnum - 1)
     then
       local metadata = q['indent.align'][node:id()]
-      local o_delim_node, o_is_last_in_line ---@type TSNode|nil, boolean|nil
-      local c_delim_node, c_is_last_in_line ---@type TSNode|nil, boolean|nil, boolean|nil
+      local o_delim_node, o_is_last_in_line ---@type TSNode?, boolean?
+      local c_delim_node, c_is_last_in_line ---@type TSNode?, boolean?, boolean?
       local indent_is_absolute = false
       if metadata['indent.open_delimiter'] then
         o_delim_node, o_is_last_in_line =
