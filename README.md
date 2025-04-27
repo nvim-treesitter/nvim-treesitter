@@ -53,16 +53,20 @@ require('lazy').setup(
 
 ```lua
 require'nvim-treesitter'.setup {
-  -- A list of parser names or tiers ('stable', 'unstable')
-  ensure_install = { 'stable' },
-
-  -- List of parsers to ignore when installing tiers
-  ignore_install = { 'rust' },
-
   -- Directory to install parsers and queries to
   install_dir = vim.fn.stdpath('data') .. '/site'
+  -- List of parsers to ignore when installing tiers
+  ignore_install = { },
 }
 ```
+
+Parsers and queries can then be installed with
+
+```lua
+require'nvim-treesitter'.install { 'rust', 'javascript', 'zig' }
+```
+
+(This is a no-op if the parsers are already installed.) Note that this function runs asynchronously; for synchronous installation in a script context ("bootstrapping"), adapt [this script](scripts/install-parsers.lua) to your needs.
 
 Check [`:h nvim-treesitter-commands`](doc/nvim-treesitter.txt) for a list of all available commands.
 
