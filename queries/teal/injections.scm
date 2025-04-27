@@ -34,7 +34,7 @@
 ((function_call
   (method_index
     (parenthesized_expression
-      (string) @printf)
+      (string) @injection.content)
     key: (identifier) @_func))
   (#eq? @_func "format")
   (#set! injection.language "printf"))

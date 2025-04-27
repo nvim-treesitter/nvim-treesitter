@@ -6,4 +6,4 @@
   (comment) @injection.content)
   (#lua-match? @injection.content "^.*RUN")
   (#set! injection.language "bash")
-  (#offset! @injection.content 0 8))
+  (#offset! @injection.content 0 8 0 0))

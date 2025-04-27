@@ -3,7 +3,7 @@
 ([
   (html_comment)
   (razor_comment)
-] @comment
+] @injection.content
   (#set! injection.language "comment"))
 
 ((element) @injection.content
