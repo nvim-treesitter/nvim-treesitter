@@ -74,6 +74,10 @@
   ; for (var item : items) {
   name: (identifier) @local.definition.var)
 
+(instanceof_expression
+	; sup instanceof Sub sub
+  name: (identifier) @local.definition.var)
+
 (formal_parameter
   name: (identifier) @local.definition.parameter)
 
