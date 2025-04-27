@@ -93,7 +93,8 @@ local function install_health()
   end
 
   health.start('OS Info')
-  for k, v in pairs(vim.uv.os_uname()) do
+  local osinfo = vim.uv.os_uname() ---@type table<string,string>
+  for k, v in pairs(osinfo) do
     health.info(k .. ': ' .. v)
   end
 
@@ -107,9 +108,7 @@ local function install_health()
   end
   if
     vim.iter(vim.api.nvim_list_runtime_paths()):any(function(p)
-      if installdir == vim.fs.normalize(p) .. '/' then
-        return true
-      end
+      return installdir == vim.fs.normalize(p) .. '/'
     end)
   then
     health.ok('is in runtimepath.')

@@ -351,7 +351,7 @@ end
 ---@param bufnr integer
 ---@param node TSNode
 ---@param lines string[]
----@param q table<string, vim.treesitter.query.TSMetadata>
+---@param q table<string, table[]>
 ---@param level integer
 local function iter(bufnr, node, lines, q, level)
   --- Sometimes 2 queries apply append twice. This is to prevent the case from happening
@@ -430,19 +430,19 @@ end
 ---@param queries string
 local function format(bufnr, queries)
   local lines = { '' }
-  -- stylua: ignore
+  ---@type table<string,table<string,table>>
   local map = {
-    ['format.ignore'] = {},           -- Ignore the node and its children
-    ['format.indent.begin'] = {},     -- +1 shiftwidth for all nodes after this
-    ['format.indent.dedent'] = {},    -- -1 shiftwidth for this line only
-    ['format.prepend-space'] = {},    -- Prepend a space before inserting the node
-    ['format.prepend-newline'] = {},  -- Prepend a \n before inserting the node
-    ['format.append-space'] = {},     -- Append a space after inserting the node
-    ['format.append-newline'] = {},   -- Append a newline after inserting the node
-    ['format.cancel-append'] = {},    -- Cancel any `@format.append-*` applied to the node
-    ['format.cancel-prepend'] = {},   -- Cancel any `@format.prepend-*` applied to the node
-    ['format.replace'] = {},          -- Dedicated capture used to store results of `(#gsub!)`
-    ['format.remove'] = {},           -- Do not add the syntax node to the result, i.e. brackets [], parens ()
+    ['format.ignore'] = {}, -- Ignore the node and its children
+    ['format.indent.begin'] = {}, -- +1 shiftwidth for all nodes after this
+    ['format.indent.dedent'] = {}, -- -1 shiftwidth for this line only
+    ['format.prepend-space'] = {}, -- Prepend a space before inserting the node
+    ['format.prepend-newline'] = {}, -- Prepend a \n before inserting the node
+    ['format.append-space'] = {}, -- Append a space after inserting the node
+    ['format.append-newline'] = {}, -- Append a newline after inserting the node
+    ['format.cancel-append'] = {}, -- Cancel any `@format.append-*` applied to the node
+    ['format.cancel-prepend'] = {}, -- Cancel any `@format.prepend-*` applied to the node
+    ['format.replace'] = {}, -- Dedicated capture used to store results of `(#gsub!)`
+    ['format.remove'] = {}, -- Do not add the syntax node to the result, i.e. brackets [], parens ()
   }
   local root = ts.get_parser(bufnr, 'query'):parse(true)[1]:root()
   local query = ts.query.parse('query', queries)
