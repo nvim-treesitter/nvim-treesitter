@@ -75,7 +75,7 @@
   name: (identifier) @local.definition.var)
 
 (instanceof_expression
-	; sup instanceof Sub sub
+  ; sup instanceof Sub sub
   name: (identifier) @local.definition.var)
 
 (formal_parameter
