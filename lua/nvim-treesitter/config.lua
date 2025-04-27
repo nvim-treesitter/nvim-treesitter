@@ -3,13 +3,11 @@ local M = {}
 M.tiers = { 'stable', 'unstable', 'unmaintained', 'unsupported' }
 
 ---@class TSConfig
----@field ensure_install string[]
 ---@field ignore_install string[]
 ---@field install_dir string
 
 ---@type TSConfig
 local config = {
-  ensure_install = {},
   ignore_install = {},
   install_dir = vim.fs.joinpath(vim.fn.stdpath('data'), 'site'),
 }
@@ -20,20 +18,9 @@ function M.setup(user_data)
   if user_data then
     if user_data.install_dir then
       user_data.install_dir = vim.fs.normalize(user_data.install_dir)
-      --TODO(clason): leave to user!
       vim.opt.runtimepath:append(user_data.install_dir)
     end
     config = vim.tbl_deep_extend('force', config, user_data)
-  end
-
-  if #config.ensure_install > 0 then
-    local to_install = M.norm_languages(
-      config.ensure_install,
-      { ignored = true, installed = true, unsupported = true }
-    )
-    if #to_install > 0 then
-      require('nvim-treesitter.install').install(to_install, { force = true })
-    end
   end
 end
 

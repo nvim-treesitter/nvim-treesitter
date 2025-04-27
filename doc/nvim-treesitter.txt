@@ -22,34 +22,24 @@ WARNING: This is work in progress and requires the latest commit on Neovim
 ==============================================================================
 QUICK START                                       *nvim-treesitter-quickstart*
 
-Install the parser for your language
-
->vim
-  :TSInstall {language}
-<
-
-To get a list of supported languages
-
->vim
-  :TSInstall <tab>
-<
-
-To install supported parsers and queries, put this in your `init.lua` file:
-
+To configure `nvim-treesitter`, put this in your `init.lua` file:
 >lua
-  require'nvim-treesitter.config'.setup {
+  require'nvim-treesitter'.setup {
     -- A directory to install the parsers and queries to.
     -- Defaults to the `stdpath('data')/site` dir.
     install_dir = "/some/path/to/store/parsers",
-
-    -- A list of parser names, or "stable", "unstable", "unmaintained", "unsupported"
-    ensure_install = { "stable", "rust" },
-
     -- List of parsers to ignore installing (for "stable" etc.)
-    ignore_install = { "javascript" },
+    ignore_install = { "some_parser" },
   }
 
+NOTE: You do not need to call `setup` to use this plugin with the default
+settings!
+
+Parsers and queries can then be installed with >lua
+    require'nvim-treesitter'.install { 'rust', 'javascript', 'zig' }
 <
+(This is a no-op if the parsers are already installed.)
+
 To check installed parsers and queries, use `:checkhealth nvim-treesitter`.
 
 ==============================================================================
