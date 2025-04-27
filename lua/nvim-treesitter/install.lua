@@ -136,11 +136,13 @@ end
 ---@param compile_location string
 ---@return string? err
 local function do_generate(logger, repo, compile_location)
+  local from_json = true
+  if repo.generate_from_json == false then
+    from_json = false
+  end
+
   logger:info(
-    string.format(
-      'Generating parser.c from %s...',
-      repo.generate_from_json and 'grammar.json' or 'grammar.js'
-    )
+    string.format('Generating parser.c from %s...', from_json and 'grammar.json' or 'grammar.js')
   )
 
   local r = system({
@@ -148,7 +150,7 @@ local function do_generate(logger, repo, compile_location)
     'generate',
     '--abi',
     tostring(vim.treesitter.language_version),
-    repo.generate_from_json and 'src/grammar.json' or nil,
+    from_json and 'src/grammar.json' or nil,
   }, { cwd = compile_location })
   if r.code > 0 then
     return logger:error('Error during "tree-sitter generate": %s', r.stderr)
