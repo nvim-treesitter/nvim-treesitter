@@ -55,8 +55,9 @@ if #updates > 0 then
   local update_list = table.concat(updates, ', ')
   print(string.format('\nUpdated parsers: %s', update_list))
   -- pass list to workflow
-  if os.getenv('GITHUB_ENV') then
-    local env = io.open(os.getenv('GITHUB_ENV'), 'a')
+  local gh_env = os.getenv('GITHUB_ENV')
+  if gh_env then
+    local env = assert(io.open(gh_env, 'a'))
     env:write(string.format('UPDATED_PARSERS=%s\n', update_list))
     env:close()
   end

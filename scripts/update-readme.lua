@@ -3,11 +3,8 @@ vim.opt.runtimepath:append('.')
 local util = require('nvim-treesitter.util')
 local parsers = require('nvim-treesitter.parsers')
 local tiers = require('nvim-treesitter.config').tiers
----@class Parser
----@field name string
----@field parser ParserInfo
 
-local sorted_parsers = {}
+local sorted_parsers = {} ---@type { name: string, parser: ParserInfo }[]
 for k, v in pairs(parsers) do
   table.insert(sorted_parsers, { name = k, parser = v })
 end
