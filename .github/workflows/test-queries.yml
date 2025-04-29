@@ -1,4 +1,4 @@
-name: Check queries
+name: Tests
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - "main"
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-build-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
@@ -14,4 +14,4 @@ jobs:
     name: Build
     uses: ./.github/workflows/test-core.yml
     with:
-      type: "queries"
+      type: "build"
