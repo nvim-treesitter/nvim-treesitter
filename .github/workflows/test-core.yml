@@ -35,7 +35,7 @@ jobs:
         name: Generate and compile parsers
         run: $NVIM -l ./scripts/install-parsers.lua --generate --max-jobs=2
 
-      - if: inputs.type == 'queries'
+      - if: inputs.type == 'build'
         name: Setup Parsers Cache
         id: parsers-cache
         uses: actions/cache@v4
@@ -47,9 +47,25 @@ jobs:
             './lua/nvim-treesitter/install.lua',
             './lua/nvim-treesitter/parsers.lua') }}
 
-      - if: inputs.type == 'queries'
+      - if: inputs.type == 'build'
         name: Compile parsers
         run: $NVIM -l ./scripts/install-parsers.lua
 
-      - name: Check query files
+      - name: Check parsers
+        run: $NVIM -l ./scripts/check-parsers.lua
+
+      - name: Check queries (nvim)
+        if: ${{ matrix.os == 'windows-latest' }}
         run: $NVIM -l ./scripts/check-queries.lua
+
+      - name: Check queries (tsqueryls)
+        if: ${{ matrix.os != 'windows-latest' }}
+        run: make checkquery
+
+      - name: Run highlight tests
+        if: ${{ matrix.os != 'windows-latest' }}
+        run: make tests TESTS=query NVIM_BIN=$NVIM
+
+      - name: Run indents tests
+        if: ${{ matrix.os != 'windows-latest' }}
+        run: make tests TESTS=indent NVIM_BIN=$NVIM
