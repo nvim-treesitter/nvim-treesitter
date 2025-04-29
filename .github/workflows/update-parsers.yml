@@ -2,7 +2,7 @@ name: Update parsers
 
 on:
   schedule:
-    - cron: "30 6 * * *"
+    - cron: "30 6 * * 6"
   workflow_dispatch:
 
 env:

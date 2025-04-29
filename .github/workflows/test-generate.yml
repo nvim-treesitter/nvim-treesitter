@@ -1,4 +1,4 @@
-name: Generate from grammar
+name: Tests
 
 on:
   pull_request:
@@ -8,12 +8,12 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-generate-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   check_compilation:
-    name: Build
+    name: Generate
     if: contains(github.event.pull_request.labels.*.name, 'ci:generate') || github.event_name == 'workflow_dispatch'
     uses: ./.github/workflows/test-core.yml
     with:
