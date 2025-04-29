@@ -1,12 +1,16 @@
-name: Check queries
+name: Tests
 
 on:
+  push:
+    branches:
+      - "main"
   pull_request:
     branches:
       - "main"
+  workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-build-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
@@ -14,4 +18,4 @@ jobs:
     name: Build
     uses: ./.github/workflows/test-core.yml
     with:
-      type: "queries"
+      type: "build"

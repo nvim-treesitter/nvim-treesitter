@@ -4,17 +4,14 @@ This document lists the planned and finished changes in this rewrite towards [Nv
 
 ## TODO
 
-- [ ] **`install.lua`:** simply skip Tier 4 parsers (`get_install_info`)
-- [ ] **`parsers.lua`:** allow specifying version in addition to commit hash (for Tier 1)
+- [ ] **`parsers.lua`:** track versioned releases for tier 1
 - [ ] **`parsers.lua`:** add WASM support (tier 1)
 - [ ] **`install.lua`:** migrate to async v2
-- [ ] **tests:** fix, update (remove custom crate, plenary dependency)
-- [ ] **CI:** switch to ts_query_ls, add update readme as check (remove update job)
+- [ ] **tests:** remove custom crate, plenary dependency
 - [ ] **documentation:** consolidate, autogenerate?
 - [ ] **documentation:** migration guide
-- [ ] **indents:** rewrite (Helix compatible)
+- [ ] **indents:** rewrite (Helix or Zed compatible)
 - [ ] **textobjects:** include simple(!) `node`, `scope` (using `locals`) objects
-- [ ] **downstream:** adapt to breaking changes (`nvim-treesitter-refactor`)
 
 ## DONE
 
@@ -31,3 +28,4 @@ This document lists the planned and finished changes in this rewrite towards [Nv
 - [X] switch to upstream injection format
 - [X] remove locals from highlighting (cf. https://github.com/nvim-treesitter/nvim-treesitter/issues/3944#issuecomment-1458782497)
 - [X] drop ensure_install (replace with install)
+- [X] **CI:** switch to ts_query_ls, add update readme as check (remove update job)
