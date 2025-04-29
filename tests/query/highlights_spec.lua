@@ -1,3 +1,4 @@
+local config = require('nvim-treesitter.config')
 local ts = vim.treesitter
 
 local COMMENT_NODES = {
@@ -6,27 +7,20 @@ local COMMENT_NODES = {
 }
 
 local function check_assertions(file)
-  assert.same(
-    1,
-    vim.fn.executable('highlight-assertions'),
-    '"highlight-assertions" not executable!'
-      .. ' Get it via "cargo install --git https://github.com/theHamsta/highlight-assertions"'
-  )
   local buf = vim.fn.bufadd(file)
   vim.fn.bufload(file)
   local ft = vim.bo[buf].filetype
   local lang = vim.treesitter.language.get_lang(ft) or ft
   local comment_node = COMMENT_NODES[lang] or 'comment'
-  local assertions = vim.fn.json_decode(
-    vim.fn.system(
-      "highlight-assertions -p '"
-        .. vim.api.nvim_get_runtime_file('parser/' .. lang .. '.so', false)[1]
-        .. "' -s '"
-        .. file
-        .. "' -c "
-        .. comment_node
-    )
-  )
+  local assertions = vim.fn.json_decode(vim.fn.system({
+    os.getenv('HLASSERT'),
+    '-p',
+    config.get_install_dir('parser') .. '/' .. lang .. '.so',
+    '-s',
+    file,
+    '-c',
+    comment_node,
+  }))
   assert.True(#assertions > 0, 'No assertions detected!')
 
   local parser = ts.get_parser(buf)

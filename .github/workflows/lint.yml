@@ -6,47 +6,41 @@ on:
       - "main"
 
 jobs:
-  luacheck:
-    name: Luacheck
+  lua:
+    name: Lint Lua files
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Prepare
+      - name: Format
         run: |
-          sudo apt-get update
-          sudo apt-get install luarocks -y
-          sudo luarocks install luacheck
-
-      - name: Run Luacheck
-        run: luacheck .
-
-  stylua:
-    name: StyLua
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Lint with stylua
-        uses: JohnnyMorganz/stylua-action@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          version: latest
-          args: --check .
-
-  format-queries:
-    name: Format queries
-    runs-on: ubuntu-latest
-    env:
-      NVIM_TAG: nightly
-    steps:
-      - uses: actions/checkout@v4
-      - uses: tree-sitter/setup-action/cli@v1
-      - name: Prepare
-        run: |
-          bash ./scripts/ci-install.sh
+          make formatlua
+          git diff --exit-code
 
       - name: Lint
+        run: make checklua
+
+  queries:
+    name: Lint query files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Format
         run: |
-          nvim -l scripts/install-parsers.lua query
-          nvim -l scripts/format-queries.lua
+          make formatquery
+          git diff --exit-code
+
+      - name: Lint
+        run: make lintquery
+
+  readme:
+    name: Lint docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check SUPPORTED_LANGUAGES
+        run: |
+          make docs
           git diff --exit-code
