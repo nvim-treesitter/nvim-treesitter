@@ -74,3 +74,11 @@
   (#any-of? @_name "persistUpperCase" "persistLowerCase" "persistWith")
   (quasiquote_body) @injection.content
   (#set! injection.language "haskell_persistent"))
+
+; -----------------------------------------------------------------------------
+; Python
+; inline-python
+(quasiquote
+  (quoter) @injection.language
+  (#any-of? @injection.language "pymain" "pye" "py_" "pyf")
+  (quasiquote_body) @injection.content)
