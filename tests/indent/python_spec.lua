@@ -56,13 +56,13 @@ describe('indent Python:', function()
     run:new_line(
       'join_lines.py',
       { on_line = 1, text = '+ 1 \\', indent = 4 },
-      'fails due two not working query at python/indent.scm:30',
+      'expected failure',
       XFAIL
     )
     run:new_line(
       'join_lines.py',
       { on_line = 4, text = '+ 1 \\', indent = 4 },
-      'fails due two not working query at python/indent.scm:30',
+      'expected failure',
       XFAIL
     )
     run:new_line('join_lines.py', { on_line = 7, text = '+ 1 \\', indent = 4 })
