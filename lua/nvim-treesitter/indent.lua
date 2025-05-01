@@ -2,10 +2,6 @@ local ts = vim.treesitter
 
 local M = {}
 
-M.avoid_force_reparsing = {
-  yaml = true,
-}
-
 M.comment_parsers = {
   comment = true,
   jsdoc = true,
@@ -125,14 +121,8 @@ function M.get_indent(lnum)
     return -1
   end
 
-  local ft = vim.bo[bufnr].filetype
-  local root_lang = vim.treesitter.language.get_lang(ft) or ft
-
-  -- some languages like Python will actually have worse results when re-parsing at opened new line
-  if not M.avoid_force_reparsing[root_lang] then
-    -- Reparse in case we got triggered by ":h indentkeys"
-    parser:parse({ vim.fn.line('w0') - 1, vim.fn.line('w$') })
-  end
+  -- Reparse in case we got triggered by ":h indentkeys"
+  parser:parse({ vim.fn.line('w0') - 1, vim.fn.line('w$') })
 
   -- Get language tree with smallest range around node that's not a comment parser
   local root, lang_tree ---@type TSNode, vim.treesitter.LanguageTree
