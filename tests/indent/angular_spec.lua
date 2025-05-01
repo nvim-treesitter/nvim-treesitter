@@ -3,7 +3,6 @@ local runner = Runner:new(it, 'tests/indent/angular', {
   tabstop = 2,
   shiftwidth = 2,
   expandtab = true,
-  filetype = 'htmlangular',
 })
 
 describe('indent HTML Angular:', function()
