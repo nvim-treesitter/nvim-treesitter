@@ -1,4 +1,4 @@
 pub fn main() {
-  assert Ok(i) = 
+  assert Ok(i) == 
     parse_int("123")
 }

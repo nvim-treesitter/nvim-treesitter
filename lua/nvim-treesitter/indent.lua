@@ -4,6 +4,8 @@ local M = {}
 
 M.comment_parsers = {
   comment = true,
+  luadoc = true,
+  javadoc = true,
   jsdoc = true,
   phpdoc = true,
 }
@@ -121,7 +123,6 @@ function M.get_indent(lnum)
     return -1
   end
 
-  -- Reparse in case we got triggered by ":h indentkeys"
   parser:parse({ vim.fn.line('w0') - 1, vim.fn.line('w$') })
 
   -- Get language tree with smallest range around node that's not a comment parser
