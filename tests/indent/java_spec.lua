@@ -26,7 +26,7 @@ describe('indent Java:', function()
     run:new_line(
       'issue_2583.java',
       { on_line = 3, text = 'int x = 1;', indent = 4 },
-      'fails because tree is in a broken state',
+      'broken tree',
       XFAIL
     )
     run:new_line('issue_2583.java', { on_line = 4, text = 'int x = 1;', indent = 4 })
