@@ -129,10 +129,10 @@
   (#eq? @keyword.operator "new"))
 
 ; Match Pattern
-[
-  (underscore)
-  (pattern_open_ending)
-] @character.special
+(pattern_open_ending) @character.special
+
+((identifier) @character.special
+  (#eq? @character.special "_"))
 
 ; Alternations
 [
