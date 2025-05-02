@@ -644,7 +644,7 @@ return {
   },
   gdscript = {
     install_info = {
-      revision = '48b49330888a4669b48619b211cc8da573827725',
+      revision = '25dadb2beaa2bb0f53d5fe97d2588a01e9b0f0b5',
       url = 'https://github.com/PrestonKnopp/tree-sitter-gdscript',
     },
     maintainers = { '@PrestonKnopp' },
