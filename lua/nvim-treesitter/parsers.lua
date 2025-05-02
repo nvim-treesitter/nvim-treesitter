@@ -2501,7 +2501,7 @@ return {
   },
   vim = {
     install_info = {
-      revision = '0f31cb98e5c0cb3707e097bf95a04c0c2aac573d',
+      revision = '054c4beaf7b95b52cb20b138bfd8b6fd6ba561a7',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-vim',
     },
     maintainers = { '@clason' },
