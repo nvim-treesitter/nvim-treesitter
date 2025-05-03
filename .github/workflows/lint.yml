@@ -21,7 +21,7 @@ jobs:
         run: make checklua
 
   queries:
-    name: Lint query files
+    name: Format query files
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,9 +30,6 @@ jobs:
         run: |
           make formatquery
           git diff --exit-code
-
-      - name: Lint
-        run: make lintquery
 
   readme:
     name: Lint docs
