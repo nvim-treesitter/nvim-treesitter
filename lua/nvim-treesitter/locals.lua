@@ -15,20 +15,6 @@ local function get_named_children(node)
   return nodes
 end
 
----@param node TSNode
----@return TSNode result
-local function get_root_for_node(node)
-  local parent = node ---@type TSNode?
-  local result = node
-
-  while parent ~= nil do
-    result = parent
-    parent = result:parent()
-  end
-
-  return result
-end
-
 -- Creates unique id for a node based on text and range
 ---@param scope TSNode: the scope node of the definition
 ---@param node_text string: the node text to use
@@ -64,7 +50,7 @@ function M.iter_scope_tree(node, bufnr)
       return
     end
 
-    local scope = M.containing_scope(last_node, bufnr, false) or get_root_for_node(node)
+    local scope = M.containing_scope(last_node, bufnr, false) or node:tree():root()
 
     last_node = scope:parent()
 
@@ -103,7 +89,9 @@ function M.recurse_local_nodes(local_def, accumulator, full_match, last_match)
   if local_def.node then
     accumulator(local_def, local_def.node, full_match, last_match)
   else
-    for match_key, def in pairs(local_def) do
+    for match_key, def in
+      pairs(local_def --[[@as {[string]: TSLocal}]])
+    do
       M.recurse_local_nodes(
         def,
         accumulator,
@@ -120,16 +108,16 @@ end
 ---@param hash_fn fun(...): any
 ---@return F
 local function memoize(fn, hash_fn)
-  local cache = setmetatable({}, { __mode = 'kv' }) ---@type table<any,any>
+  local cache = setmetatable({}, { __mode = 'kv' }) ---@type table<any,any[]>
 
   return function(...)
     local key = hash_fn(...)
     if cache[key] == nil then
-      local v = { fn(...) } ---@type any
+      local v = { fn(...) } ---@type any[]
 
       for k, value in pairs(v) do
         if value == nil then
-          value[k] = vim.NIL
+          value[k] = vim.NIL ---@type table
         end
       end
 
@@ -138,9 +126,9 @@ local function memoize(fn, hash_fn)
 
     local v = cache[key]
 
-    for k, value in pairs(v) do
+    for k, value in ipairs(v) do
       if value == vim.NIL then
-        value[k] = nil
+        value[k] = nil ---@type table
       end
     end
 
@@ -200,7 +188,9 @@ M.get = memoize(function(bufnr)
     local kind = query.captures[id]
 
     local scope = 'local' ---@type string
-    for k, v in pairs(metadata) do
+    for k, v in
+      pairs(metadata --[[@as {[integer|string]: string}]])
+    do
       if type(k) == 'string' and vim.endswith(k, 'local.scope') then
         scope = v
       end
@@ -325,7 +315,7 @@ function M.find_definition(node, bufnr)
     end
   end
 
-  return node, get_root_for_node(node), nil
+  return node, node:tree():root(), nil
 end
 
 -- Finds usages of a node in a given scope.
@@ -341,7 +331,7 @@ function M.find_usages(node, scope_node, bufnr)
     return {}
   end
 
-  scope_node = scope_node or get_root_for_node(node)
+  scope_node = scope_node or node:tree():root()
   local usages = {}
 
   local query, _ = get_query(bufnr)
@@ -379,7 +369,7 @@ function M.containing_scope(node, bufnr, allow_scope)
   local iter_node = node ---@type TSNode?
 
   while iter_node ~= nil and not vim.tbl_contains(scopes, iter_node) do
-    iter_node = iter_node:parent()
+    iter_node = iter_node:parent() ---@type TSNode?
   end
 
   return iter_node or (allow_scope and node or nil)
