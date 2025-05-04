@@ -51,10 +51,10 @@ Each of these `scheme` files contains a _tree-sitter query_ for a given purpose.
 Before going any further, we highly suggest that you [read more about tree-sitter queries](https://tree-sitter.github.io/tree-sitter/using-parsers#pattern-matching-with-queries).
 
 Each query has an appropriate name, which is then used by modules to extract data from the syntax tree.
-For now these are the types of queries used by `nvim-treesitter`:
+For now these are the types of queries provided by `nvim-treesitter`:
 
 - `highlights.scm`: used for syntax highlighting, using the `highlight` module.
-- `locals.scm`: used to extract keyword definitions, scopes, references, etc, using the `locals` module.
+- `locals.scm`: used to extract keyword definitions, scopes, references, etc. (not used in this plugin).
 - `textobjects.scm`: used to define text objects.
 - `folds.scm`: used to define folds.
 - `injections.scm`: used to define injections.
@@ -296,7 +296,8 @@ Locals are used to keep track of definitions and references in local or global
 scopes, see [upstream
 documentation](https://tree-sitter.github.io/tree-sitter/syntax-highlighting#local-variables).
 Note that nvim-treesitter uses more specific subcaptures for definitions and
-**does not use locals for highlighting**.
+**does not use locals** (for highlighting or any other purpose). These queries
+are only provided for (limited) backwards compatibility.
 
 ```query
 @local.definition            ; various definitions
