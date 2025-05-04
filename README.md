@@ -118,7 +118,7 @@ Injections are used for multi-language documents, see `:h treesitter-language-in
 
 ## Locals
 
-These queries can be used to look up definitions and references to identifiers in a given scope. They are used, e.g., by the `nvim-treesitter-refactor` plugin.
+These queries can be used to look up definitions and references to identifiers in a given scope. They are not used in this plugin and are provided for (limited) backward compatibility.
 
 # Advanced setup
 
