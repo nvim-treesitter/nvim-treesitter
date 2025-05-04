@@ -230,7 +230,7 @@ return {
   },
   comment = {
     install_info = {
-      revision = '85eae6644d25bcbdd19f4a35c9946abc71c2d6fe',
+      revision = '689be73775bd2dd57b938b8e12bf50fec35a6ca3',
       url = 'https://github.com/stsewd/tree-sitter-comment',
     },
     maintainers = { '@stsewd' },
@@ -473,7 +473,7 @@ return {
   },
   elm = {
     install_info = {
-      revision = '3b373a3ccb48f31aa4b7ddc9092e2f5e24ab7aed',
+      revision = '6e3c6d51f13168f9d7794c8e8add7dfdd07d20b8',
       url = 'https://github.com/elm-tooling/tree-sitter-elm',
     },
     maintainers = { '@zweimach' },
@@ -778,7 +778,7 @@ return {
   },
   godot_resource = {
     install_info = {
-      revision = '91c55fdf325a832659e59cdf4a02bfe8a423f14c',
+      revision = '99417ca9f4eccbf49e4ce5a69d89228811593bf5',
       url = 'https://github.com/PrestonKnopp/tree-sitter-godot-resource',
     },
     maintainers = { '@pierpo' },
@@ -835,7 +835,7 @@ return {
   },
   gren = {
     install_info = {
-      revision = '06389ece5bc7344ed3931dc516bb609d8864dd2a',
+      revision = 'c36aac51a915fdfcaf178128ba1e9c2205b25930',
       url = 'https://github.com/MaeBrooks/tree-sitter-gren',
     },
     maintainers = { '@MaeBrooks' },
@@ -1360,7 +1360,7 @@ return {
   },
   matlab = {
     install_info = {
-      revision = 'bbf1b3f0bd7417c1efb8958fe95be3d0d540207a',
+      revision = '88ccb5ee90711e9961582d421c42bc8c6bd53f59',
       url = 'https://github.com/acristoffers/tree-sitter-matlab',
     },
     maintainers = { '@acristoffers' },
@@ -1790,7 +1790,7 @@ return {
   },
   query = {
     install_info = {
-      revision = '930202c2a80965a7a9ca018b5b2a08b25dfa7f12',
+      revision = 'dbab9b69f954167fb88785450dab32e5283b758d',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-query',
     },
     maintainers = { '@steelsojka' },
@@ -2501,7 +2501,7 @@ return {
   },
   vim = {
     install_info = {
-      revision = '054c4beaf7b95b52cb20b138bfd8b6fd6ba561a7',
+      revision = 'ccc312e878aa84f32d180b8528a3585c7b86a545',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-vim',
     },
     maintainers = { '@clason' },
@@ -2509,7 +2509,7 @@ return {
   },
   vimdoc = {
     install_info = {
-      revision = '2694c3d27e2ca98a0ccde72f33887394300d524e',
+      revision = '6dab95ab84a006e8adfd6966c5fd9dde48224725',
       url = 'https://github.com/neovim/tree-sitter-vimdoc',
     },
     maintainers = { '@clason' },
