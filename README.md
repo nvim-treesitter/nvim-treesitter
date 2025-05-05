@@ -15,13 +15,15 @@
   </p>
 </div>
 
-# WARNING
 
-**This branch is a [full, incompatible, rewrite of `nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter/issues/4767) and [work in progress](TODO.md).** The **stable** branch is [`master`](https://github.com/nvim-treesitter/nvim-treesitter/tree/master).
+>[!WARNING]
+> This branch is a [full, incompatible, rewrite of `nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter/issues/4767) and [work in progress](TODO.md). The **stable** branch is [`master`](https://github.com/nvim-treesitter/nvim-treesitter/tree/master).
 
 The `nvim-treesitter` plugin provides
 1. functions for installing, updating, and removing [**tree-sitter parsers**](SUPPORTED_LANGUAGES.md);
 2. a collection of **queries** for enabling tree-sitter features built into Neovim for these languages.
+
+For details on these and how to help improving them, see [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 # Quickstart
 
@@ -37,7 +39,7 @@ The `nvim-treesitter` plugin provides
 
 You can install `nvim-treesitter` with your favorite package manager (or using the native `package` feature of vim, see `:h packages`).
 
-**NOTE: This plugin is only guaranteed to work with specific versions of language parsers** (as specified in the `parser.lua` table). **When upgrading the plugin, you must make sure that all installed parsers are updated to the latest version** via `:TSUpdate`.
+This plugin is only guaranteed to work with specific versions of language parsers** (as specified in the `parser.lua` table). **When upgrading the plugin, you must make sure that all installed parsers are updated to the latest version** via `:TSUpdate`.
 It is strongly recommended to automate this; e.g., using [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ```lua
@@ -46,7 +48,8 @@ require('lazy').setup(
 )
 ```
 
-**NOTE: This plugin does not support lazy-loading.**
+>[!IMPORTANT]
+> This plugin does not support lazy-loading.
 
 ## Setup
 
@@ -67,7 +70,14 @@ Parsers and queries can then be installed with
 require'nvim-treesitter'.install { 'rust', 'javascript', 'zig' }
 ```
 
-(This is a no-op if the parsers are already installed.) Note that this function runs asynchronously; for synchronous installation in a script context ("bootstrapping"), adapt [this script](scripts/install-parsers.lua) to your needs.
+(This is a no-op if the parsers are already installed.) Note that this function runs asynchronously; for synchronous installation in a script context ("bootstrapping"), use something like
+```lua
+local done = nil
+require('nvim-treesitter').install({ 'rust', 'javascript', 'zig' }, function(success)
+  done = success
+end)
+vim.wait(3000000, function() return done ~= nil end)
+```
 
 Check [`:h nvim-treesitter-commands`](doc/nvim-treesitter.txt) for a list of all available commands.
 
@@ -75,7 +85,7 @@ Check [`:h nvim-treesitter-commands`](doc/nvim-treesitter.txt) for a list of all
 
 For `nvim-treesitter` to support a specific feature for a specific language requires both a parser for that language and an appropriate language-specific query file for that feature.
 
-A list of the currently supported languages can be found [on this page](SUPPORTED_LANGUAGES.md). If you wish to add a new language or improve the queries for the an existing one, please see our [contributing guide](CONTRIBUTING.md).
+A list of the currently supported languages can be found [on this page](SUPPORTED_LANGUAGES.md). If you wish to add a new language or improve the queries for an existing one, please see our [contributing guide](CONTRIBUTING.md).
 
 For related information on the supported languages, including related plugins, see [this wiki page](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Supported-Languages-Information).
 
@@ -134,13 +144,12 @@ callback = function()
   require('nvim-treesitter.parsers').zimbu = {
     install_info = {
       url = 'https://github.com/zimbulang/tree-sitter-zimbu',
-      files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c
       revision = <sha>, -- commit hash for revision to check out; HEAD if missing
       -- optional entries:
       branch = 'develop', -- only needed if different from default branch
       location = 'parser', -- only needed if the parser is in subdirectory of a "monorepo"
-      generate = true, -- only needed if repo does not contain pre-generated src/parser.c
-      generate_from_json = true, -- only needed if parser has npm dependencies
+      generate = true, -- only needed if repo does not contain pre-generated `src/parser.c`
+      generate_from_json = false, -- only needed if repo does not contain `src/grammar.json`
     },
   }
 end})
@@ -150,11 +159,10 @@ Alternatively, if you have a local checkout, you can instead use
 ```lua
     install_info = {
       path = '~/parsers/tree-sitter-zimbu',
-      files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c
       -- optional entries
-      location = 'parser', -- only needed if the parser is in subdirectory of a "monorepo"
-      generate = true, -- only needed if repo does not contain pre-generated src/parser.c
-      generate_from_json = true, -- only needed if parser has npm dependencies
+      location = 'parser',
+      generate = true,
+      generate_from_json = false,
     },
 ```
 This will always use the state of the directory as-is (i.e., `branch` and `revision` will be ignored).
@@ -169,7 +177,8 @@ If Neovim does not detect your language's filetype by default, you can use [Neov
 
 3. Start `nvim` and `:TSInstall zimbu`.
 
-**Note:** Parsers using external scanner need to be written in C. C++ scanners are no longer supported.
+>[!IMPORTANT]
+> Parsers using external scanner need to be written in C.
 
 ### Modifying parsers
 
@@ -183,47 +192,9 @@ end})
 
 ## Adding queries
 
-Queries can be placed anywhere in your `runtimepath` under `queries/<language>`, with earlier directories taking precedence unless the queries are marked with `; extends`; see `:h treesitter-query`.
+Queries can be placed anywhere in your `runtimepath` under `queries/<language>`, with earlier directories taking precedence unless the queries are marked with `; extends`; see [`:h treesitter-query-modelines`](https://neovim.io/doc/user/treesitter.html#treesitter-query-modeline).
 
 E.g., to add queries for `zimbu`, put `highlights.scm` etc. under
 ```lua
 vim.fn.stdpath('data') .. 'site/queries/zimbu'
-```
-
-# Troubleshooting
-
-Before doing anything, make sure you have the latest version of this plugin and run `:checkhealth nvim-treesitter`.
-It can also help to update the parsers via `:TSUpdate`.
-
-#### I get `Error detected while processing .../plugin/nvim-treesitter.vim` every time I open Neovim
-
-This is probably due to a change in a parser's grammar or its queries.
-Try updating the parser that you suspect has changed (`:TSUpdate {language}`) or all of them (`:TSUpdate`).
-If the error persists after updating all parsers,
-please [open an issue](https://github.com/nvim-treesitter/nvim-treesitter/issues/new/choose).
-
-#### I get `query error: invalid node type at position`
-
-This could be due a query file outside this plugin using outdated nodes,
-or due to an outdated parser.
-
-- Make sure you have the parsers up to date with `:TSUpdate`
-- Make sure you don't have more than one `parser` runtime directory.
-  You can execute this command `:= vim.api.nvim_get_runtime_file('parser', true)` to find all runtime directories.
-  If you get more than one path, remove the ones that are outside this plugin (`nvim-treesitter` directory),
-  so the correct version of the parser is used.
-
-#### I want to use a mirror instead of "https://github.com/"
-
-In your Lua config:
-
-```lua
-for _, config in pairs(require("nvim-treesitter.parsers")) do
-  config.install_info.url = config.install_info.url:gsub("https://github.com/", "something else")
-end
-
-require'nvim-treesitter'.setup {
-    --
-    --
-}
 ```

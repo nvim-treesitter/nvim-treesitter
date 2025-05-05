@@ -129,14 +129,14 @@
       "fold": "fold this node"
     },
     "indents": {
-      "indent.begin": "indent children when matching this node",
-      "indent.end": "marks the end of indented block",
-      "indent.align": "behaves like python aligned/hanging indent",
-      "indent.dedent": "dedent children when matching this node",
-      "indent.branch": "dedent itself when matching this node",
-      "indent.ignore": "do not indent in this node",
-      "indent.auto": "behaves like 'autoindent' buffer option",
-      "indent.zero": "sets this node at position 0 (no indent)"
+      "indent.begin": "Specifies that the next line should be indented.  Multiple indents on the same line get collapsed. Indent can also have `indent.immediate` set using a `#set!` directive, which permits the next line to indent even when the block intended to be indented has no content yet, improving interactive typing.",
+      "indent.end": "Used to specify that the indented region ends and any text subsequent to the capture should be dedented.",
+      "indent.align": "Specifies aligned indent blocks (like python aligned/hanging indent). Specify the delimiters with `indent.open_delimiter` and `indent.close_delimiter` metadata. For some languages, the last line of an `indent.align` block must not be the same indent as the natural next line, which can be controlled by setting `indent.avoid_last_matching_next`.",
+      "indent.dedent": "Specifies dedenting starting on the next line.",
+      "indent.branch": "Used to specify that a dedented region starts at the line including the captured nodes.",
+      "indent.ignore": "Specifies that indentation should be ignored for this node.",
+      "indent.auto": "Behaves like 'autoindent' buffer option.",
+      "indent.zero": "Sets indentation for this node to zero (no indentation)."
     },
     "locals": {
       "local.definition": "various definitions",
