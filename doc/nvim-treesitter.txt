@@ -11,16 +11,14 @@ Authors:
                                        Type |gO| to see the table of contents.
 
 ==============================================================================
-INTRODUCTION                                           *nvim-treesitter-intro*
+INTRODUCTION                                             *nvim-treesitter-intro*
 
 Nvim-treesitter provides functionalities for managing treesitter parsers and
-compatible queries for core features (highlighting, injections, fold, indent).
-
-WARNING: This is work in progress and requires the latest commit on Neovim
-`master`.
+compatible queries for core features (highlighting, injections, folds,
+indents).
 
 ==============================================================================
-QUICK START                                       *nvim-treesitter-quickstart*
+QUICK START                                         *nvim-treesitter-quickstart*
 
 To configure `nvim-treesitter`, put this in your `init.lua` file:
 >lua
@@ -36,156 +34,141 @@ NOTE: You do not need to call `setup` to use this plugin with the default
 settings!
 
 Parsers and queries can then be installed with >lua
-    require'nvim-treesitter'.install { 'rust', 'javascript', 'zig' }
+  require'nvim-treesitter'.install { 'rust', 'javascript', 'zig' }
 <
-(This is a no-op if the parsers are already installed.)
-
 To check installed parsers and queries, use `:checkhealth nvim-treesitter`.
 
+Treesitter features for installed languages need to be enabled manually in a
+|FileType| autocommand or |ftplugin|, e.g. >lua
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'rust', 'javascript', 'zig' },
+    callback = function()
+      -- syntax highlighting, provided by Neovim
+      vim.treesitter.start()
+      -- folds, provided by Neovim
+      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+      -- indentation, provided by nvim-treesitter
+      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end,
+  })
+<
 ==============================================================================
-COMMANDS                                            *nvim-treesitter-commands*
+COMMANDS                                              *nvim-treesitter-commands*
 
-								  *:TSInstall*
-:TSInstall {language} ... ~
+:TSInstall {language}                                               *:TSInstall*
 
-Install one or more treesitter parsers.
-You can use |:TSInstall| `all` to install all parsers. Use |:TSInstall!| to
-force the reinstallation of already installed parsers.
+Install one or more treesitter parsers. {language} can be one or multiple
+parsers or tiers (`stable`, `unstable`, or `all` (not recommended)). This is a
+no-op of the parser(s) are already installed. Installation is performed
+asynchronously. Use *:TSInstall!* to force installation even if a parser is
+already installed.
 
-								   *:TSUpdate*
-:TSUpdate {language} ... ~
+:TSInstallFromGrammar {language}                         *:TSInstallFromGrammar*
 
-Update the installed parser for one more {language} or all installed parsers
-if {language} is omitted. The specified parser is installed if it is not already
-installed.
+Like |:TSInstall| but also regenerates the `parser.c` from the original
+grammar. Useful for languages where the provided `parser.c` is outdated (e.g.,
+uses a no longer supported ABI).
 
-								*:TSUninstall*
-:TSUninstall {language} ... ~
+:TSUpdate [{language}]                                              *:TSUpdate*
 
-Deletes the parser for one or more {language}. You can use 'all' for language
-to uninstall all parsers.
+Update parsers to the `revision` specified in the manifest if this is newer
+than the installed version. If {language} is specified, update the
+corresponding parser or tier; otherwise update all installed parsers. This is
+a no-op if all (specified) parsers are up to date.
+
+Note: It is recommended to add this command as a build step in your plugin
+manager.
+
+:TSUninstall {language}                                           *:TSUninstall*
+
+Deletes the parser for one or more {language}, or all parsers with `all`.
+
+:TSLog                                                                  *:TSLog*
+
+Shows all messages from previous install, update, or uninstall operations.
 
 ==============================================================================
-INDENTATION                                        *nvim-treesitter-indentation*
+API                                                        *nvim-treesitter-api*
 
-Indentation based on treesitter for the |=| operator.
-NOTE: this is an experimental feature and will be upstreamed to Neovim when
-stable.
+setup({opts})                                          *nvim-treesitter.setup()*
 
-To enable it for a supported parser, add the following to a corresponding
-`FileType` autocommand or `ftplugin/<lang>.lua`:  >lua
+    Configure installation options. Needs to be specified before any
+    installation operation.
 
-  vim.bo.indentexpr = 'v.lua:require'nvim-treesitter'.indentexpr()'
+    Note: You only need to call `setup` if you want to set non-default
+    options!
 
+    Parameters: ~
+    • {opts}  `(table?)` Optional parameters:
+              • {install_dir} (`string?`, default `stdpath('data')/site/`)
+                directory to install parsers and queries to. Note: will be
+                appended to |runtimepath|.
+              • {ignore_install} (`string[]?`) list of languages to never
+                install even if specified for an installation operation.
+                (Useful when specifying tiers instead of individual
+                languages.)
+
+install({languages}, {opts}, {callback})             *nvim-treesitter.install()*
+
+    Download, compile, and install the specified treesitter parsers and copy
+    the corresponding queries to a directory on |runtimepath|, enabling their
+    use in Neovim.
+
+    Note: This operation is performed asynchronously by default. For
+    synchronous operation (e.g., in a bootstrapping script), you need to
+    provide a suitable {callback}: >lua
+        local done = nil
+        require('nvim-treesitter').install({ 'rust', 'javascript', 'zig' },
+          function(success)
+            done = success
+          end)
+        vim.wait(3000000, function() return done ~= nil end)
 <
+    Parameters: ~
+    • {languages}  `(string[]|string)` (List of) languages or tiers (`stable`,
+                   `unstable`) to install.
+    • {opts}       `(table?)` Optional parameters:
+                   • {force} (`boolean?`, default `false`) force installation
+                     of already installed parsers
+                   • {generate} (`boolean?`, default `false`) generate
+                     `parser.c` from `grammar.json` or `grammar.js` before
+                     compiling.
+                   • {max_jobs} (`integer?`) limit parallel tasks (useful in
+                     combination with {generate} on memory-limited systems).
+    • {callback}   `(function?`) Callback for synchronous execution.
 
-Indentation for a language is controlled by `indents.scm` queries. The
-following captures are supported:
+uninstall({languages})                              *nvim-treesitter.uninstall()*
 
+    Remove the parser and queries for the specified language(s).
 
-`@indent`				    *nvim-treesitter-indentation-queries*
-Queries can use the following captures: `@indent.begin` and `@indent.dedent`,
-`@indent.branch`, `@indent.end` or `@indent.align`. An `@indent.ignore` capture tells
-treesitter to ignore indentation and a `@indent.zero` capture sets
-the indentation to 0.
+    Parameters: ~
+    • {languages}  `(string[]|string)` (List of) languages or tiers (`stable`,
+                   `unstable`) to update.
 
-`@indent.begin`			    *nvim-treesitter-indentation-indent.begin*
-The `@indent.begin` specifies that the next line should be indented.  Multiple
-indents on the same line get collapsed. Eg.
+update({languages}, {callback})                       *nvim-treesitter.update()*
 
->query
-  (
-   (if_statement)
-   (ERROR "else") @indent.begin
-  )
+    Update the parsers and queries if older than the revision specified in the
+    manifest.
+
+    Note: This operation is performed asynchronously by default. For
+    synchronous operation (e.g., in a bootstrapping script), you need to
+    provide a suitable {callback}: >lua
+        local done = nil
+        require('nvim-treesitter').update(), 
+          function(success)
+            done = success
+          end)
+        vim.wait(3000000, function() return done ~= nil end)
 <
-Indent can also have `indent.immediate` set using a `#set!` directive, which
-permits the next line to indent even when the block intended to be indented
-has no content yet, improving interactive typing.
+    Parameters: ~
+    • {languages}  `(string[]|string)` (List of) languages or tiers to
+                   uninstall.
+    • {callback}   `(function?`) Callback for synchronous execution.
 
-eg for python:
->query
- ((if_statement) @indent.begin
-   (#set! indent.immediate 1))
+indentexpr()                                      *nvim-treesitter.indentexpr()*
+
+    Used to enable treesitter indentation for a language via >lua
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 <
-
-Will allow:
->python
-  if True:<CR>
-      # Auto indent to here
-
-`@indent.end`				*nvim-treesitter-indentation-indent.end*
-An `@indent.end` capture is used to specify that the indented region ends and
-any text subsequent to the capture should be dedented.  
-
-`@indent.branch`		    *nvim-treesitter-indentation-indent.branch*
-An `@indent.branch` capture is used to specify that a dedented region starts
-at the line including the captured nodes.
-
-`@indent.dedent`		    *nvim-treesitter-indentation-indent.dedent*
-A `@indent.dedent` capture specifies dedenting starting on the next line.
->
-`@indent.align`		    *nvim-treesitter-indentation-aligned_indent.align*
-Aligned indent blocks may be specified with the `@indent.align` capture.
-This permits
-
->
-  foo(a,
-      b,
-      c)
-<
-As well as
->
-  foo(
-    a,
-    b,
-    c)
-<
-and finally
->
-  foo(
-    a,
-    b,
-    c
-  )
-<
-To specify the delimiters to use `indent.open_delimiter` and
-`indent.close_delimiter` should be used.  Eg.
->query
- ((argument_list) @indent.align
-  (#set! indent.open_delimiter "(")
-  (#set! indent.close_delimiter ")"))
-<
-
-For some languages the last line of an `indent.align` block must not be
-the same indent as the natural next line.
-
-For example in python:
-
->python
-  if (a > b and
-      c < d):
-      pass
-
-Is not correct, whereas
->python
-  if (a > b and
-	c < d):
-      pass
-
-Would be correctly indented.  This behavior may be chosen using
-`indent.avoid_last_matching_next`.  Eg.
-
->query
- (if_statement
-  condition: (parenthesized_expression) @indent.align
-  (#set! indent.open_delimiter "(")
-  (#set! indent.close_delimiter ")")
-  (#set! indent.avoid_last_matching_next 1)
- )
-<
-Could be used to specify that the last line of an `@indent.align` capture
-should be additionally indented to avoid clashing with the indent of the first
-line of the block inside an if.
 
 vim:tw=78:ts=8:expandtab:noet:ft=help:norl:
