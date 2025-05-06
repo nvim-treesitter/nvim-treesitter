@@ -1,6 +1,6 @@
 ((text) @injection.content
   (#set! injection.combined)
-  (#set! injection.language php))
+  (#set! injection.language html))
 
 ((text) @injection.content
   (#has-ancestor? @injection.content "envoy")
