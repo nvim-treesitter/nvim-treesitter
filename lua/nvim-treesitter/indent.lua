@@ -335,7 +335,9 @@ function M.get_indent(lnum)
             indent = indent
           end
         end
-        is_processed = true
+        if not metadata["indent.propagate"] then
+          is_processed = true
+        end
         if indent_is_absolute then
           -- don't allow further indenting by parent nodes, this is an absolute position
           return indent
