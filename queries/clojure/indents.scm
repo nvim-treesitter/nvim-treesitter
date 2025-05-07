@@ -21,3 +21,6 @@
   (anon_fn_lit . (sym_lit))]
  @indent.align 
  (#set! indent.increment 2))
+
+; Indent form on line following #_
+((dis_expr) @indent.begin @indent.end)

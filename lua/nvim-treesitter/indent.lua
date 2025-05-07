@@ -177,7 +177,10 @@ function M.get_indent(lnum)
         node = get_last_node_at_line(root, prevlnum, col)
       end
     end
-    if q["indent.end"][node:id()] then
+    -- Recursively search upwards for any @indent.end nodes
+    local tmp = node
+    while tmp and not q["indent.end"][tmp:id()] do tmp = tmp:parent() end
+    if tmp then
       node = get_first_node_at_line(root, lnum)
     end
   else
