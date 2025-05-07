@@ -50,21 +50,24 @@ local function node_length(node)
   return end_byte - start_byte
 end
 
+---Find opening/closing delimiter node inside indent.align node based on either:
+---  metadata string: (#set! indent.{open,close}_delimiter "{")
+---  node capture: @indent.{open,close}
+---@param edge string "open" or "close"
 ---@param bufnr integer
+---@param q table
 ---@param node TSNode
----@param delimiter string
 ---@return TSNode|nil child
----@return boolean|nil is_end
-local function find_delimiter(bufnr, node, delimiter)
+---@return boolean|nil is_last_in_line
+local function find_delimiter(edge, bufnr, q, node)
+  local delimiter = q["indent.align"][node:id()]["indent." .. edge .. "_delimiter"]
   for child, _ in node:iter_children() do
-    if child:type() == delimiter then
+    if child:type() == delimiter or q["indent." .. edge][child:id()] ~= nil then
+      delimiter = delimiter or child:type()
       local linenr = child:start()
       local line = vim.api.nvim_buf_get_lines(bufnr, linenr, linenr + 1, false)[1]
-      local end_char = { child:end_() }
-      local trimmed_after_delim
-      local escaped_delimiter = delimiter:gsub("[%-%.%+%[%]%(%)%$%^%%%?%*]", "%%%1")
-      trimmed_after_delim, _ = line:sub(end_char[2] + 1):gsub("[%s" .. escaped_delimiter .. "]*", "")
-      return child, #trimmed_after_delim == 0
+      local is_last_in_line = line:match(vim.pesc(delimiter) .. "%s*$") ~= nil
+      return child, is_last_in_line
     end
   end
 end
@@ -99,6 +102,8 @@ local get_indents = memoize(function(bufnr, root, lang)
     ["indent.ignore"] = {},
     ["indent.align"] = {},
     ["indent.zero"] = {},
+    ["indent.open"] = {},
+    ["indent.close"] = {},
   }
 
   --TODO(clason): remove when dropping Nvim 0.8 compat
@@ -274,21 +279,11 @@ function M.get_indent(lnum)
       end
     end
     -- do not indent for nodes that starts-and-ends on same line and starts on target line (lnum)
-    if should_process and q["indent.align"][node:id()] and (srow ~= erow or is_in_err) and (srow ~= lnum - 1) then
-      local metadata = q["indent.align"][node:id()]
-      local o_delim_node, o_is_last_in_line ---@type TSNode|nil, boolean|nil
-      local c_delim_node, c_is_last_in_line ---@type TSNode|nil, boolean|nil, boolean|nil
+    local align_metadata = q["indent.align"][node:id()]
+    if should_process and align_metadata and (srow ~= erow or is_in_err) and (srow ~= lnum - 1) then
+      local o_delim_node, o_is_last_in_line = find_delimiter("open", bufnr, q, node)
+      local c_delim_node, c_is_last_in_line = find_delimiter("close", bufnr, q, node)
       local indent_is_absolute = false
-      if metadata["indent.open_delimiter"] then
-        o_delim_node, o_is_last_in_line = find_delimiter(bufnr, node, metadata["indent.open_delimiter"])
-      else
-        o_delim_node = node
-      end
-      if metadata["indent.close_delimiter"] then
-        c_delim_node, c_is_last_in_line = find_delimiter(bufnr, node, metadata["indent.close_delimiter"])
-      else
-        c_delim_node = node
-      end
 
       if o_delim_node then
         local o_srow, o_scol = o_delim_node:start()
@@ -296,7 +291,7 @@ function M.get_indent(lnum)
         if c_delim_node then
           c_srow, _ = c_delim_node:start()
         end
-        if o_is_last_in_line and not metadata["indent.align_hanging"] then
+        if o_is_last_in_line and not align_metadata["indent.align_hanging"] then
           -- hanging indent (previous line ended with starting delimiter)
           -- should be processed like indent
           if should_process then
@@ -316,7 +311,7 @@ function M.get_indent(lnum)
             -- Then its indent level shouldn't be affected by `@aligned_indent` node
             indent = math.max(indent - indent_size, 0)
           else
-            indent = o_scol + (metadata["indent.increment"] or 1)
+            indent = o_scol + (align_metadata["indent.increment"] or 1)
             indent_is_absolute = true
           end
         end
@@ -327,7 +322,7 @@ function M.get_indent(lnum)
           -- then this last line may need additional indent to avoid clashes
           -- with the next. `indent.avoid_last_matching_next` controls this behavior,
           -- for example this is needed for function parameters.
-          avoid_last_matching_next = metadata["indent.avoid_last_matching_next"] or false
+          avoid_last_matching_next = align_metadata["indent.avoid_last_matching_next"] or false
         end
         if avoid_last_matching_next then
           -- last line must be indented more in cases where
@@ -340,7 +335,7 @@ function M.get_indent(lnum)
             indent = indent
           end
         end
-        if not metadata["indent.propagate"] then
+        if not align_metadata["indent.propagate"] then
           is_processed = true
         end
         if indent_is_absolute then

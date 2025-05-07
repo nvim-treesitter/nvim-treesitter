@@ -1,13 +1,13 @@
 ; https://tonsky.me/blog/clojurefmt/
 
 ; Align lines within forms
-((list_lit)               @indent.align (#set! indent.open_delimiter "(") (#set! indent.close_delimiter ")"))
-((vec_lit)                @indent.align (#set! indent.open_delimiter "[") (#set! indent.close_delimiter "]"))
-((map_lit)                @indent.align (#set! indent.open_delimiter "{") (#set! indent.close_delimiter "}"))
-((set_lit)                @indent.align (#set! indent.open_delimiter "{") (#set! indent.close_delimiter "}"))
-((anon_fn_lit)            @indent.align (#set! indent.open_delimiter "(") (#set! indent.close_delimiter ")"))
-((read_cond_lit)          @indent.align (#set! indent.open_delimiter "(") (#set! indent.close_delimiter ")"))
-((splicing_read_cond_lit) @indent.align (#set! indent.open_delimiter "(") (#set! indent.close_delimiter ")"))
+((list_lit               open: _ @indent.open close: _ @indent.close) @indent.align)
+((vec_lit                open: _ @indent.open close: _ @indent.close) @indent.align)
+((map_lit                open: _ @indent.open close: _ @indent.close) @indent.align)
+((set_lit                open: _ @indent.open close: _ @indent.close) @indent.align)
+((anon_fn_lit            open: _ @indent.open close: _ @indent.close) @indent.align)
+((read_cond_lit          open: _ @indent.open close: _ @indent.close) @indent.align)
+((splicing_read_cond_lit open: _ @indent.open close: _ @indent.close) @indent.align)
 
 ([(map_lit) (set_lit) (vec_lit) (list_lit) (anon_fn_lit) (read_cond_lit) (splicing_read_cond_lit)]
  @indent.align
