@@ -294,7 +294,7 @@ function M.get_indent(lnum)
         if c_delim_node then
           c_srow, _ = c_delim_node:start()
         end
-        if o_is_last_in_line and not metadata['indent.align_hanging'] then
+        if o_is_last_in_line and not metadata["indent.align_hanging"] then
           -- hanging indent (previous line ended with starting delimiter)
           -- should be processed like indent
           if should_process then
