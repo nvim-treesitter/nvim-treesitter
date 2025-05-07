@@ -107,8 +107,9 @@ local get_indents = memoize(function(bufnr, root, lang)
     return map
   end
   for id, node, metadata in query:iter_captures(root, bufnr) do
-    if query.captures[id]:sub(1, 1) ~= "_" then
-      map[query.captures[id]][node:id()] = metadata or {}
+    local cap, nid = query.captures[id], node:id()
+    if cap:sub(1, 1) ~= "_" then
+      map[cap][nid] = vim.tbl_extend("force", map[cap][nid] or {}, metadata or {})
     end
   end
 
