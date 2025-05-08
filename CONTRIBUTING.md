@@ -388,14 +388,16 @@ To combine all matches of a pattern as one single block of content, add `(#set! 
 ### Indents
 
 ```query
-@indent.begin       ; indent children when matching this node
-@indent.end         ; marks the end of indented block
-@indent.align       ; behaves like python aligned/hanging indent
-@indent.dedent      ; dedent children when matching this node
-@indent.branch      ; dedent itself when matching this node
-@indent.ignore      ; do not indent in this node
-@indent.auto        ; behaves like 'autoindent' buffer option
-@indent.zero        ; sets this node at position 0 (no indent)
+@indent.begin           ; indent children when matching this node
+@indent.end             ; marks the end of indented block
+@indent.align           ; behaves like python aligned/hanging indent
+@indent.dedent          ; dedent children when matching this node
+@indent.branch          ; dedent itself when matching this node
+@indent.ignore          ; do not indent in this node
+@indent.auto            ; behaves like 'autoindent' buffer option
+@indent.zero            ; sets this node at position 0 (no indent)
+@indent.open_delimiter  ; opening delimiter within @indent.align node
+@indent.close_delimiter ; closing delimiter within @indent.align node
 ```
 
 [Matrix channel]: https://matrix.to/#/#nvim-treesitter:matrix.org
