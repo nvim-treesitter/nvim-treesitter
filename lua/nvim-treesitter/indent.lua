@@ -309,13 +309,15 @@ function M.get_indent(lnum)
           end
         else
           -- aligned indent
-          if lnum - 1 <= o_srow or (c_is_last_in_line and c_srow and o_srow ~= c_srow and c_srow < lnum - 1) then
-            -- If current line is outside the range of a node marked with `@aligned_indent`
-            -- Then its indent level shouldn't be affected by `@aligned_indent` node
-            indent = math.max(indent - indent_size, 0)
-          else
-            indent = o_scol + (align_metadata["indent.increment"] or 1)
-            indent_is_absolute = true
+          if lnum - 1 > o_srow then
+            if c_is_last_in_line and c_srow and o_srow ~= c_srow and c_srow < lnum - 1 then
+              -- If current line is outside the range of a node marked with `@aligned_indent`
+              -- Then its indent level shouldn't be affected by `@aligned_indent` node
+              indent = math.max(indent - indent_size, 0)
+            else
+              indent = o_scol + (align_metadata["indent.increment"] or 1)
+              indent_is_absolute = true
+            end
           end
         end
         -- deal with the final line
