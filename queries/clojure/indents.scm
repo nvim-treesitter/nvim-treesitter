@@ -23,14 +23,15 @@
  @indent.align 
  (#set! indent.increment 2))
 
-; Indent 1 space for forms: ', `, ~, #, @
-([(quoting_lit) (syn_quoting_lit) (unquoting_lit) (tagged_or_ctor_lit) (derefing_lit) ] 
+; Indent 1 space for forms: ', `, ~, #, @, #:
+([(quoting_lit) (syn_quoting_lit) (unquoting_lit) (tagged_or_ctor_lit) (derefing_lit) (ns_map_lit)] 
  @indent.begin @indent.end
  (#set! indent.increment 1)
  (#set! indent.propagate 1))
 
-; Indent 2 space for forms: ~@, #', #_, #=, #^, ##
-([(unquote_splicing_lit) (var_quoting_lit) (dis_expr) (evaling_lit) (old_meta_lit) (sym_val_lit)]
+; Indent 2 space for forms: ~@, #', #_, #=
+; Note: old_meta_lit (#^), and sym_val_lit (##) are not supported
+([(unquote_splicing_lit) (var_quoting_lit) (dis_expr) (evaling_lit)]
  @indent.begin @indent.end
  (#set! indent.increment 2)
  (#set! indent.propagate 1))
