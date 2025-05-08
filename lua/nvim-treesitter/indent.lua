@@ -252,16 +252,19 @@ function M.get_indent(lnum)
       local parent = node:parent()
       is_in_err = parent and parent:has_error()
     end
+    local begin_metadata = q["indent.begin"][node:id()]
     if
       should_process
       and (
-        q["indent.begin"][node:id()]
-        and (srow ~= erow or is_in_err or q["indent.begin"][node:id()]["indent.immediate"])
-        and (srow ~= lnum - 1 or q["indent.begin"][node:id()]["indent.start_at_same_line"])
+        begin_metadata
+        and (srow ~= erow or is_in_err or begin_metadata["indent.immediate"])
+        and (srow ~= lnum - 1 or begin_metadata["indent.start_at_same_line"])
       )
     then
-      indent = indent + indent_size
-      is_processed = true
+      indent = indent + (begin_metadata["indent.increment"] or indent_size)
+      if not begin_metadata["indent.propagate"] then
+        is_processed = true
+      end
     end
 
     if is_in_err and not q["indent.align"][node:id()] then
