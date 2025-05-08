@@ -2,29 +2,29 @@
 ; Align lines within forms
 [
   (list_lit
-    open: _ @indent.open
-    close: _ @indent.close)
+    open: _ @indent.open_delimiter
+    close: _ @indent.close_delimiter)
   (vec_lit
-    open: _ @indent.open
-    close: _ @indent.close)
+    open: _ @indent.open_delimiter
+    close: _ @indent.close_delimiter)
   (map_lit
-    open: _ @indent.open
-    close: _ @indent.close)
+    open: _ @indent.open_delimiter
+    close: _ @indent.close_delimiter)
   (ns_map_lit
-    open: _ @indent.open
-    close: _ @indent.close)
+    open: _ @indent.open_delimiter
+    close: _ @indent.close_delimiter)
   (set_lit
-    open: _ @indent.open
-    close: _ @indent.close)
+    open: _ @indent.open_delimiter
+    close: _ @indent.close_delimiter)
   (anon_fn_lit
-    open: _ @indent.open
-    close: _ @indent.close)
+    open: _ @indent.open_delimiter
+    close: _ @indent.close_delimiter)
   (read_cond_lit
-    open: _ @indent.open
-    close: _ @indent.close)
+    open: _ @indent.open_delimiter
+    close: _ @indent.close_delimiter)
   (splicing_read_cond_lit
-    open: _ @indent.open
-    close: _ @indent.close)
+    open: _ @indent.open_delimiter
+    close: _ @indent.close_delimiter)
 ] @indent.align
 
 ([

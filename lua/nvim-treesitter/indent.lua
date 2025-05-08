@@ -52,7 +52,7 @@ end
 
 ---Find opening/closing delimiter node inside indent.align node based on either:
 ---  metadata string: (#set! indent.{open,close}_delimiter "{")
----  node capture: @indent.{open,close}
+---  node capture: @indent.{open,close}_delimiter
 ---@param edge string "open" or "close"
 ---@param bufnr integer
 ---@param q table
@@ -62,7 +62,7 @@ end
 local function find_delimiter(edge, bufnr, q, node)
   local delimiter = q["indent.align"][node:id()]["indent." .. edge .. "_delimiter"]
   for child, _ in node:iter_children() do
-    if child:type() == delimiter or q["indent." .. edge][child:id()] ~= nil then
+    if child:type() == delimiter or q["indent." .. edge .. "_delimiter"][child:id()] ~= nil then
       delimiter = delimiter or child:type()
       local linenr = child:start()
       local line = vim.api.nvim_buf_get_lines(bufnr, linenr, linenr + 1, false)[1]
@@ -102,8 +102,8 @@ local get_indents = memoize(function(bufnr, root, lang)
     ["indent.ignore"] = {},
     ["indent.align"] = {},
     ["indent.zero"] = {},
-    ["indent.open"] = {},
-    ["indent.close"] = {},
+    ["indent.open_delimiter"] = {},
+    ["indent.close_delimiter"] = {},
   }
 
   --TODO(clason): remove when dropping Nvim 0.8 compat
