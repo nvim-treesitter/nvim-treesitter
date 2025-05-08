@@ -130,7 +130,7 @@ struct TestDefaults {
     dataList      = ["garply", "waldo", "fred"],
     structList    = [
       (textField = "x " "structlist"
-                    " 1"),
+       " 1"),
       (textField = "x structlist 2"),
       (textField = "x structlist 3")],
     enumList      = [qux, bar, grault]
@@ -717,7 +717,7 @@ struct TestConstants {
     dataList      = ["garply", "waldo", "fred"],
     structList    = [
       (textField = "x " "structlist"
-                    " 1"),
+       " 1"),
       (textField = "x structlist 2"),
       (textField = "x structlist 3")],
     enumList      = [qux, bar, grault]
