@@ -17,8 +17,8 @@
  (#set! indent.propagate 1))
 
 ; Indent lists starting with a symbol by 2 spaces
-([(list_lit    . (sym_lit))
-  (anon_fn_lit . (sym_lit))]
+([(list_lit    ((meta_lit)* . (sym_lit)))
+  (anon_fn_lit ((meta_lit)* . (sym_lit)))]
  @indent.align 
  (#set! indent.increment 2))
 
