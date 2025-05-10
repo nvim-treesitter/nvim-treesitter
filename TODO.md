@@ -6,8 +6,6 @@ This document lists the planned and finished changes in this rewrite towards [Nv
 
 - [ ] **`install.lua`:** migrate to async v2
 - [ ] **tests:** remove custom crate, plenary dependency
-- [ ] **documentation:** consolidate, autogenerate?
-- [ ] **documentation:** migration guide
 - [ ] **indents:** rewrite (Helix or Zed compatible)
 - [ ] **textobjects:** include simple(!) `node`, `scope` (using `locals`) objects
 
