@@ -141,6 +141,7 @@
 
 ; Keywords
 [
+  "abstract"
   "library"
   "is"
   "event"
