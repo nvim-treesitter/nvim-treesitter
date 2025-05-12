@@ -387,13 +387,13 @@
     attribute: (identifier) @function.method.call))
 
 ((call
-  function: (identifier) @constructor)
-  (#lua-match? @constructor "^%u"))
+  function: (identifier) @constructor.call)
+  (#lua-match? @constructor.call "^%u"))
 
 ((call
   function: (attribute
-    attribute: (identifier) @constructor))
-  (#lua-match? @constructor "^%u"))
+    attribute: (identifier) @constructor.call))
+  (#lua-match? @constructor.call "^%u"))
 
 ; Builtin functions
 ((call

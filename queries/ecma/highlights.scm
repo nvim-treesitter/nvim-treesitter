@@ -138,7 +138,7 @@
 ; Constructor
 ;------------
 (new_expression
-  constructor: (identifier) @constructor)
+  constructor: (identifier) @constructor.call)
 
 ; Decorators
 ;----------
