@@ -43,7 +43,7 @@
     "sprintln"))
 
 ((identifier) @variable.builtin
-  (#lua-match? @variable.builtin "^\$+[0-9A-Z_a-z]+\$*$"))
+  (#lua-match? @variable.builtin "^$+[0-9A-Z_a-z]+$*$"))
 
 (shebang_line) @keyword.directive
 
