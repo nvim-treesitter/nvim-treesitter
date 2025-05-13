@@ -1,10 +1,10 @@
 ; highlights.scm
 [
   "!"
-  "\*"
+  "*"
   "/"
   "%"
-  "\+"
+  "+"
   "-"
   ">"
   ">="
@@ -34,7 +34,7 @@
 
 [
   (ellipsis)
-  "\?"
+  "?"
   "=>"
 ] @punctuation.special
 
