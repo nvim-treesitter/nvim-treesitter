@@ -59,8 +59,6 @@ require('lazy').setup(
 require'nvim-treesitter'.setup {
   -- Directory to install parsers and queries to
   install_dir = vim.fn.stdpath('data') .. '/site'
-  -- List of parsers to ignore when installing tiers
-  ignore_install = { },
 }
 ```
 
