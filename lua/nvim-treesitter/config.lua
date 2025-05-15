@@ -3,12 +3,10 @@ local M = {}
 M.tiers = { 'stable', 'unstable', 'unmaintained', 'unsupported' }
 
 ---@class TSConfig
----@field ignore_install string[]
 ---@field install_dir string
 
 ---@type TSConfig
 local config = {
-  ignore_install = {},
   install_dir = vim.fs.joinpath(vim.fn.stdpath('data'), 'site'),
 }
 
@@ -92,7 +90,7 @@ end
 
 ---Normalize languages
 ---@param languages? string[]|string
----@param skip? { ignored: boolean, missing: boolean, unsupported: boolean, installed: boolean, dependencies: boolean }
+---@param skip? { missing: boolean, unsupported: boolean, installed: boolean, dependencies: boolean }
 ---@return string[]
 function M.norm_languages(languages, skip)
   if not languages then
@@ -109,17 +107,6 @@ function M.norm_languages(languages, skip)
   end
 
   languages = expand_tiers(languages)
-
-  if skip and skip.ignored then
-    local ignored = expand_tiers(config.ignore_install)
-    languages = vim.tbl_filter(
-      --- @param v string
-      function(v)
-        return not vim.list_contains(ignored, v)
-      end,
-      languages
-    )
-  end
 
   if skip and skip.installed then
     local installed = M.installed_parsers()

@@ -26,8 +26,6 @@ To configure `nvim-treesitter`, put this in your `init.lua` file:
     -- A directory to install the parsers and queries to.
     -- Defaults to the `stdpath('data')/site` dir.
     install_dir = "/some/path/to/store/parsers",
-    -- List of parsers to ignore installing (for "stable" etc.)
-    ignore_install = { "some_parser" },
   }
 
 NOTE: You do not need to call `setup` to use this plugin with the default
@@ -103,10 +101,6 @@ setup({opts})                                          *nvim-treesitter.setup()*
               • {install_dir} (`string?`, default `stdpath('data')/site/`)
                 directory to install parsers and queries to. Note: will be
                 appended to |runtimepath|.
-              • {ignore_install} (`string[]?`) list of languages to never
-                install even if specified for an installation operation.
-                (Useful when specifying tiers instead of individual
-                languages.)
 
 install({languages}, {opts}, {callback})             *nvim-treesitter.install()*
 
