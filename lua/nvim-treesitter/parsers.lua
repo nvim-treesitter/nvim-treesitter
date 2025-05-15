@@ -2139,7 +2139,7 @@ list.snakemake = {
     url = "https://github.com/osthomas/tree-sitter-snakemake",
     files = { "src/parser.c", "src/scanner.c" },
   },
-  maintainer = { "@osthomas" },
+  maintainers = { "@osthomas" },
   experimental = true,
 }
 
