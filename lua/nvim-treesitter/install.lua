@@ -9,22 +9,39 @@ local parsers = require('nvim-treesitter.parsers')
 local util = require('nvim-treesitter.util')
 
 ---@type fun(path: string, new_path: string, flags?: table): string?
-local uv_copyfile = a.wrap(uv.fs_copyfile, 4)
+local uv_copyfile = a.awrap(4, uv.fs_copyfile)
 
 ---@type fun(path: string, mode: integer): string?
-local uv_mkdir = a.wrap(uv.fs_mkdir, 3)
+local uv_mkdir = a.awrap(3, uv.fs_mkdir)
 
 ---@type fun(path: string, new_path: string): string?
-local uv_rename = a.wrap(uv.fs_rename, 3)
+local uv_rename = a.awrap(3, uv.fs_rename)
 
 ---@type fun(path: string, new_path: string, flags?: table): string?
-local uv_symlink = a.wrap(uv.fs_symlink, 4)
+local uv_symlink = a.awrap(4, uv.fs_symlink)
 
 ---@type fun(path: string): string?
-local uv_unlink = a.wrap(uv.fs_unlink, 2)
+local uv_unlink = a.awrap(2, uv.fs_unlink)
 
 local MAX_JOBS = 100
 local INSTALL_TIMEOUT = 60000
+
+--- @async
+--- @param max_jobs integer
+--- @param tasks nvim-treesitter.async.TaskFun
+local function join(max_jobs, tasks)
+  while #tasks > 0 do
+    local tasks_to_run = {} --- @type nvim-treesitter.async.TaskFun[]
+    for i = 1, max_jobs do
+      if #tasks == 0 then
+        break
+      end
+      local task = table.remove(tasks, 1)
+      tasks_to_run[i] = task()
+    end
+    a.join(tasks_to_run)
+  end
+end
 
 ---@async
 ---@param cmd string[]
@@ -33,8 +50,8 @@ local INSTALL_TIMEOUT = 60000
 local function system(cmd, opts)
   local cwd = opts and opts.cwd or uv.cwd()
   log.trace('running job: (cwd=%s) %s', cwd, table.concat(cmd, ' '))
-  local r = a.wrap(vim.system, 3)(cmd, opts) --[[@as vim.SystemCompleted]]
-  a.main()
+  local r = a.await(3, vim.system, cmd, opts) --[[@as vim.SystemCompleted]]
+  a.schedule()
   if r.stdout and r.stdout ~= '' then
     log.trace('stdout -> %s', r.stdout)
   end
@@ -190,7 +207,7 @@ local function do_download(logger, url, project_name, cache_dir, revision, outpu
   do -- Create tmp dir
     logger:debug('Creating temporary directory: %s', tmp)
     local err = mkpath(tmp)
-    a.main()
+    a.schedule()
     if err then
       return logger:error('Could not create %s-tmp: %s', project_name, err)
     end
@@ -211,7 +228,7 @@ local function do_download(logger, url, project_name, cache_dir, revision, outpu
   do -- Remove tarball
     logger:debug('Removing %s...', tarball_path)
     local err = uv_unlink(tarball_path)
-    a.main()
+    a.schedule()
     if err then
       return logger:error('Could not remove tarball: %s', err)
     end
@@ -223,7 +240,7 @@ local function do_download(logger, url, project_name, cache_dir, revision, outpu
     local extracted = fs.joinpath(tmp, repo_project_name .. '-' .. dir_rev)
     logger:debug('Moving %s to %s/...', extracted, output_dir)
     local err = uv_rename(extracted, output_dir)
-    a.main()
+    a.schedule()
     if err then
       return logger:error('Could not rename temp: %s', err)
     end
@@ -265,7 +282,7 @@ local function do_install(logger, compile_location, target_location)
   end
 
   local err = uv_copyfile(compile_location, target_location)
-  a.main()
+  a.schedule()
   if err then
     return logger:error('Error during parser installation: %s', err)
   end
@@ -343,7 +360,7 @@ local function try_install_lang(lang, cache_dir, install_dir, generate)
   local queries_src = M.get_package_path('runtime', 'queries', lang)
   uv_unlink(queries)
   local err = uv_symlink(queries_src, queries, { dir = true, junction = true })
-  a.main()
+  a.schedule()
   if err then
     return logger:error(err)
   end
@@ -403,20 +420,20 @@ end
 ---@field max_jobs? integer
 
 --- Install a parser
+---@async
 ---@param languages string[]
 ---@param options? InstallOptions
----@param callback? fun(boolean)
-local function install(languages, options, callback)
+local function install(languages, options)
   options = options or {}
 
   local cache_dir = fs.normalize(fn.stdpath('cache'))
   local install_dir = config.get_install_dir('parser')
 
-  local tasks = {} ---@type fun()[]
+  local tasks = {} ---@type nvim-treesitter.async.TaskFun[]
   local done = 0
   for _, lang in ipairs(languages) do
-    tasks[#tasks + 1] = a.sync(function()
-      a.main()
+    tasks[#tasks + 1] = a.async(function()
+      a.schedule()
       local status = install_lang(lang, cache_dir, install_dir, options.force, options.generate)
       if status ~= 'failed' then
         done = done + 1
@@ -424,29 +441,25 @@ local function install(languages, options, callback)
     end)
   end
 
-  a.join(options and options.max_jobs or MAX_JOBS, nil, tasks)
+  join(options and options.max_jobs or MAX_JOBS, tasks)
   if #tasks > 1 then
-    a.main()
+    a.schedule()
     log.info('Installed %d/%d languages', done, #tasks)
   end
-  if callback then
-    callback(done == #tasks)
-  end
+  return done == #tasks
 end
 
 ---@param languages string[]|string
 ---@param options? InstallOptions
----@param callback? fun(boolean)
-M.install = a.sync(function(languages, options, callback)
+M.install = a.create(2, function(languages, options)
   reload_parsers()
   languages = config.norm_languages(languages, { unsupported = true })
-  install(languages, options, callback)
-end, 3)
+  return install(languages, options)
+end)
 
 ---@param languages? string[]|string
 ---@param _options? table
----@param callback? function
-M.update = a.sync(function(languages, _options, callback)
+M.update = a.create(2, function(languages, _options)
   reload_parsers()
   if not languages or #languages == 0 then
     languages = 'all'
@@ -455,14 +468,12 @@ M.update = a.sync(function(languages, _options, callback)
   languages = vim.tbl_filter(needs_update, languages) ---@type string[]
 
   if #languages > 0 then
-    install(languages, { force = true }, callback)
+    return install(languages, { force = true })
   else
     log.info('All parsers are up-to-date')
-    if callback then
-      callback(true)
-    end
+    return true
   end
-end, 3)
+end)
 
 ---@async
 ---@param logger Logger
@@ -477,7 +488,7 @@ local function uninstall_lang(logger, lang, parser, queries)
   if fn.filereadable(parser) == 1 then
     logger:debug('Unlinking ' .. parser)
     local perr = uv_unlink(parser)
-    a.main()
+    a.schedule()
 
     if perr then
       return logger:error(perr)
@@ -487,7 +498,7 @@ local function uninstall_lang(logger, lang, parser, queries)
   if fn.isdirectory(queries) == 1 then
     logger:debug('Unlinking ' .. queries)
     local qerr = uv_unlink(queries)
-    a.main()
+    a.schedule()
 
     if qerr then
       return logger:error(qerr)
@@ -498,16 +509,14 @@ local function uninstall_lang(logger, lang, parser, queries)
 end
 
 ---@param languages string[]|string
----@param _options? table
----@param _callback? fun()
-M.uninstall = a.sync(function(languages, _options, _callback)
+M.uninstall = a.create(1, function(languages)
   languages = config.norm_languages(languages or 'all', { missing = true, dependencies = true })
 
   local parser_dir = config.get_install_dir('parser')
   local query_dir = config.get_install_dir('queries')
   local installed = config.installed_parsers()
 
-  local tasks = {} ---@type fun()[]
+  local tasks = {} ---@type nvim-treesitter.async.TaskFun[]
   local done = 0
   for _, lang in ipairs(languages) do
     local logger = log.new('uninstall/' .. lang)
@@ -516,7 +525,7 @@ M.uninstall = a.sync(function(languages, _options, _callback)
     else
       local parser = fs.joinpath(parser_dir, lang) .. '.so'
       local queries = fs.joinpath(query_dir, lang)
-      tasks[#tasks + 1] = a.sync(function()
+      tasks[#tasks + 1] = a.async(function()
         local err = uninstall_lang(logger, lang, parser, queries)
         if not err then
           done = done + 1
@@ -525,11 +534,11 @@ M.uninstall = a.sync(function(languages, _options, _callback)
     end
   end
 
-  a.join(MAX_JOBS, nil, tasks)
+  join(MAX_JOBS, tasks)
   if #tasks > 1 then
-    a.main()
+    a.schedule()
     log.info('Uninstalled %d/%d languages', done, #tasks)
   end
-end, 2)
+end)
 
 return M
