@@ -440,13 +440,14 @@ local function install(languages, options)
       end
     end)
   end
+  local numtasks = #tasks
 
   join(options and options.max_jobs or MAX_JOBS, tasks)
-  if #tasks > 1 then
+  if numtasks > 1 then
     a.schedule()
-    log.info('Installed %d/%d languages', done, #tasks)
+    log.info('Installed %d/%d languages', done, numtasks)
   end
-  return done == #tasks
+  return done == numtasks
 end
 
 ---@param languages string[]|string
