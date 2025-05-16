@@ -419,7 +419,7 @@ return {
   },
   earthfile = {
     install_info = {
-      revision = '8c93d89e262d9892ad692b3be05cfbcffbb9614f',
+      revision = 'a37c5ee95ce401ca311c0ae1369d9cfb953e151d',
       url = 'https://github.com/glehmann/tree-sitter-earthfile',
     },
     maintainers = { '@glehmann' },
@@ -644,7 +644,7 @@ return {
   },
   gdscript = {
     install_info = {
-      revision = '25dadb2beaa2bb0f53d5fe97d2588a01e9b0f0b5',
+      revision = 'e964ce912b5b835f1caedb600df9d5be77e803a8',
       url = 'https://github.com/PrestonKnopp/tree-sitter-gdscript',
     },
     maintainers = { '@PrestonKnopp' },
@@ -661,7 +661,7 @@ return {
   },
   git_config = {
     install_info = {
-      revision = 'edc973f498482529ff2a319249d0f43a22860321',
+      revision = '0fbc9f99d5a28865f9de8427fb0672d66f9d83a5',
       url = 'https://github.com/the-mikedavis/tree-sitter-git-config',
     },
     maintainers = { '@amaanq' },
@@ -778,7 +778,7 @@ return {
   },
   godot_resource = {
     install_info = {
-      revision = '99417ca9f4eccbf49e4ce5a69d89228811593bf5',
+      revision = 'a1a7295b376fbd2531601f4ffff191b031ffc795',
       url = 'https://github.com/PrestonKnopp/tree-sitter-godot-resource',
     },
     maintainers = { '@pierpo' },
@@ -890,7 +890,7 @@ return {
   },
   hcl = {
     install_info = {
-      revision = '41a2e702413a53f2614533b2aa9c187816116cbc',
+      revision = '009def4ae38ec30e5b40beeae26efe93484ab286',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-hcl',
     },
     maintainers = { '@MichaHoffmann' },
@@ -1068,7 +1068,7 @@ return {
   },
   javadoc = {
     install_info = {
-      revision = 'e49c8f0e26dc79afc999f377121ecceb30ffcc74',
+      revision = '001a8e4f8e839b640201c49046fbf5957fe1ee2c',
       url = 'https://github.com/rmuir/tree-sitter-javadoc',
     },
     maintainers = { '@rmuir' },
@@ -1106,7 +1106,7 @@ return {
   },
   jq = {
     install_info = {
-      revision = '13990f530e8e6709b7978503da9bc8701d366791',
+      revision = 'c204e36d2c3c6fce1f57950b12cabcc24e5cc4d9',
       url = 'https://github.com/flurie/tree-sitter-jq',
     },
     maintainers = { '@ObserverOfTime' },
@@ -1281,7 +1281,7 @@ return {
   },
   llvm = {
     install_info = {
-      revision = 'c14cb839003348692158b845db9edda201374548',
+      revision = '1ac83114e71839fa67f4cce2f864ebbbdf6e2a4f',
       url = 'https://github.com/benwilliamgraham/tree-sitter-llvm',
     },
     maintainers = { '@benwilliamgraham' },
@@ -1392,7 +1392,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = 'fdaa92565f5902afe81d958a48049f56721fd928',
+      revision = '3b2ae4ce9a8abca997ed3b34625d462248d1bbac',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     maintainers = { '@artagnon' },
@@ -1790,7 +1790,7 @@ return {
   },
   query = {
     install_info = {
-      revision = 'eba45dd965e119cb7cd3d5eea584e5d04bbef9a4',
+      revision = 'b5d39eab2cf3172d81352e5ef9df4639267c5813',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-query',
     },
     maintainers = { '@steelsojka' },
@@ -2044,7 +2044,7 @@ return {
   },
   smithy = {
     install_info = {
-      revision = 'fa898ac0885d1da9a253695c3e0e91f5efc587cd',
+      revision = 'ec4fe14586f2b0a1bc65d6db17f8d8acd8a90433',
       url = 'https://github.com/indoorvivants/tree-sitter-smithy',
     },
     maintainers = { '@amaanq', '@keynmol' },
@@ -2243,7 +2243,7 @@ return {
   },
   tcl = {
     install_info = {
-      revision = '93ad361b77faa39af410052e1ece22b9e6b8136c',
+      revision = '8f11ac7206a54ed11210491cee1e0657e2962c47',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-tcl',
     },
     maintainers = { '@lewis6991' },
@@ -2252,7 +2252,7 @@ return {
   teal = {
     install_info = {
       generate = true,
-      revision = '3db655924b2ff1c54fdf6371b5425ea6b5dccefe',
+      revision = '05d276e737055e6f77a21335b7573c9d3c091e2f',
       url = 'https://github.com/euclidianAce/tree-sitter-teal',
     },
     maintainers = { '@euclidianAce' },
@@ -2277,7 +2277,7 @@ return {
   terraform = {
     install_info = {
       location = 'dialects/terraform',
-      revision = '41a2e702413a53f2614533b2aa9c187816116cbc',
+      revision = '009def4ae38ec30e5b40beeae26efe93484ab286',
       url = 'https://github.com/MichaHoffmann/tree-sitter-hcl',
     },
     maintainers = { '@MichaHoffmann' },
