@@ -21,15 +21,13 @@ vim.opt.runtimepath:append('.')
 -- needed on CI
 vim.fn.mkdir(vim.fn.stdpath('cache'), 'p')
 
-local nvts_install = require('nvim-treesitter.install')
-
 local task = nil
 if update then
   --- @type async.Task
-  task = nvts_install.update('all')
+  task = require('nvim-treesitter.install').update('all')
 else
   --- @type async.Task
-  task = nvts_install.install(
+  task = require('nvim-treesitter.install').install(
     #parsers > 0 and parsers or 'all',
     { force = true, generate = generate, max_jobs = max_jobs }
   )
@@ -40,6 +38,5 @@ if not ok then
   print('ERROR: ', err_or_ok)
   vim.cmd.cq()
 elseif not err_or_ok then
-  print('Did not install all parsers')
   vim.cmd.cq()
 end

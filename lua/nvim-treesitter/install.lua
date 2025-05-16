@@ -466,8 +466,7 @@ M.install = a.async(function(languages, options)
 end)
 
 ---@param languages? string[]|string
----@param _options? table
-M.update = a.async(function(languages, _options)
+M.update = a.async(function(languages)
   reload_parsers()
   if not languages or #languages == 0 then
     languages = 'all'
