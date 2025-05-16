@@ -42,7 +42,7 @@ local function join(max_jobs, task_funs)
 
   -- As tasks finish, add new ones
   for _, task in ipairs(task_funs) do
-    local finished = a.iter(running)()
+    local finished = a.joinany(running)
     table.remove(running, finished)
     table.insert(running, task())
   end

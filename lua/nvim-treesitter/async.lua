@@ -704,6 +704,12 @@ do -- join()
     assert(running(), 'Not in async context')
     return drain_iter(M.iter(tasks))
   end
+
+  --- @param tasks async.Task[]
+  --- @return integer?, any?, ...?
+  function M.joinany(tasks)
+    return M.iter(tasks)()
+  end
 end
 
 return M
