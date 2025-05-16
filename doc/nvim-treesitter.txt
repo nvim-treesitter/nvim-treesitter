@@ -102,7 +102,7 @@ setup({opts})                                          *nvim-treesitter.setup()*
                 directory to install parsers and queries to. Note: will be
                 appended to |runtimepath|.
 
-install({languages}, {opts}, {callback})             *nvim-treesitter.install()*
+install({languages} [, {opts}])                    *nvim-treesitter.install()*
 
     Download, compile, and install the specified treesitter parsers and copy
     the corresponding queries to a directory on |runtimepath|, enabling their
@@ -110,12 +110,10 @@ install({languages}, {opts}, {callback})             *nvim-treesitter.install()*
 
     Note: This operation is performed asynchronously by default. For
     synchronous operation (e.g., in a bootstrapping script), you need to
-    provide a suitable {callback}: >lua
+    `await()` it: >lua
         local done = nil
-        require('nvim-treesitter').install({ 'rust', 'javascript', 'zig' },
-          function(success)
-            done = success
-          end)
+        require('nvim-treesitter').install({ 'rust', 'javascript', 'zig' })
+                                  :await(function(_, ok) done = ok end)
         vim.wait(3000000, function() return done ~= nil end)
 <
     Parameters: ~
@@ -129,7 +127,6 @@ install({languages}, {opts}, {callback})             *nvim-treesitter.install()*
                      compiling.
                    • {max_jobs} (`integer?`) limit parallel tasks (useful in
                      combination with {generate} on memory-limited systems).
-    • {callback}   `(function?`) Callback for synchronous execution.
 
 uninstall({languages})                              *nvim-treesitter.uninstall()*
 
@@ -139,25 +136,21 @@ uninstall({languages})                              *nvim-treesitter.uninstall()
     • {languages}  `(string[]|string)` (List of) languages or tiers (`stable`,
                    `unstable`) to update.
 
-update({languages}, {callback})                       *nvim-treesitter.update()*
+update([{languages}])                                  *nvim-treesitter.update()*
 
     Update the parsers and queries if older than the revision specified in the
     manifest.
 
     Note: This operation is performed asynchronously by default. For
     synchronous operation (e.g., in a bootstrapping script), you need to
-    provide a suitable {callback}: >lua
+    `await()` it: >lua
         local done = nil
-        require('nvim-treesitter').update(), 
-          function(success)
-            done = success
-          end)
+        require('nvim-treesitter').update():await(function(_, ok) done = ok end)
         vim.wait(3000000, function() return done ~= nil end)
 <
     Parameters: ~
-    • {languages}  `(string[]|string)` (List of) languages or tiers to
-                   uninstall.
-    • {callback}   `(function?`) Callback for synchronous execution.
+    • {languages}  `(string[]|string)?` (List of) languages or tiers to update
+                   (default: all installed).
 
 indentexpr()                                      *nvim-treesitter.indentexpr()*
 

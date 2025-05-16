@@ -71,8 +71,8 @@ require'nvim-treesitter'.install { 'rust', 'javascript', 'zig' }
 (This is a no-op if the parsers are already installed.) Note that this function runs asynchronously; for synchronous installation in a script context ("bootstrapping"), use something like
 ```lua
 local done = nil
-require('nvim-treesitter').install({ 'rust', 'javascript', 'zig' }, function(success)
-  done = success
+require('nvim-treesitter').install({ 'rust', 'javascript', 'zig' }):await(function(_, ok)
+  done = ok
 end)
 vim.wait(3000000, function() return done ~= nil end)
 ```

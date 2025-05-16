@@ -4,7 +4,6 @@ This document lists the planned and finished changes in this rewrite towards [Nv
 
 ## TODO
 
-- [ ] **`install.lua`:** migrate to async v2
 - [ ] **tests:** remove custom crate, plenary dependency
 - [ ] **indents:** rewrite (Helix or Zed compatible)
 - [ ] **textobjects:** include simple(!) `node`, `scope` (using `locals`) objects
@@ -26,3 +25,4 @@ This document lists the planned and finished changes in this rewrite towards [Nv
 - [X] drop ensure_install (replace with install)
 - [X] **CI:** switch to ts_query_ls, add update readme as check (remove update job)
 - [X] **CI:** track versioned releases for tier 1
+- [X] **`install.lua`:** migrate to async v2
