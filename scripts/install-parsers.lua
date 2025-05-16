@@ -21,22 +21,11 @@ vim.opt.runtimepath:append('.')
 -- needed on CI
 vim.fn.mkdir(vim.fn.stdpath('cache'), 'p')
 
-local done = nil
-if update then
-  require('nvim-treesitter.install').update('all'):await(function(_err, ok)
-    done = ok
-  end)
-else
-  require('nvim-treesitter.install')
+local ok = update and require('nvim-treesitter.install').update('all'):wait(6000000)
+  or require('nvim-treesitter.install')
     .install(#parsers > 0 and parsers or 'all', { force = true, generate = generate, max_jobs = max_jobs })
-    :await(function(_err, ok)
-      done = ok
-    end)
-end
+    :wait(6000000)
 
-vim.wait(6000000, function()
-  return done ~= nil
-end)
-if not done then
+if not ok then
   vim.cmd.cq()
 end
