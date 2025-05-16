@@ -459,8 +459,7 @@ end
 
 ---@param languages string[]|string
 ---@param options? InstallOptions
----@param _callback? fun(success: boolean)
-M.install = a.async(function(languages, options, _callback)
+M.install = a.async(function(languages, options)
   reload_parsers()
   languages = config.norm_languages(languages, { unsupported = true })
   return install(languages, options)
