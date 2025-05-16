@@ -28,19 +28,27 @@ local INSTALL_TIMEOUT = 60000
 
 --- @async
 --- @param max_jobs integer
---- @param tasks nvim-treesitter.async.TaskFun
-local function join(max_jobs, tasks)
-  while #tasks > 0 do
-    local tasks_to_run = {} --- @type nvim-treesitter.async.TaskFun[]
-    for i = 1, max_jobs do
-      if #tasks == 0 then
-        break
-      end
-      local task = table.remove(tasks, 1)
-      tasks_to_run[i] = task()
-    end
-    a.join(tasks_to_run)
+--- @param task_funs async.TaskFun[]
+local function join(max_jobs, task_funs)
+  task_funs = vim.deepcopy(task_funs)
+  max_jobs = math.min(max_jobs, #task_funs)
+
+  local running = {} --- @type async.TaskFun[]
+
+  -- Start the first batch of tasks
+  for i = 1, max_jobs do
+    running[i] = table.remove(task_funs, 1)()
   end
+
+  -- As tasks finish, add new ones
+  for _, task in ipairs(task_funs) do
+    local finished = a.iter(running)()
+    table.remove(running, finished)
+    table.insert(running, task())
+  end
+
+  -- Wait for all tasks to finish
+  a.join(running)
 end
 
 ---@async
@@ -429,10 +437,10 @@ local function install(languages, options)
   local cache_dir = fs.normalize(fn.stdpath('cache'))
   local install_dir = config.get_install_dir('parser')
 
-  local tasks = {} ---@type nvim-treesitter.async.TaskFun[]
+  local task_funs = {} ---@type async.TaskFun[]
   local done = 0
   for _, lang in ipairs(languages) do
-    tasks[#tasks + 1] = a.async(function()
+    task_funs[#task_funs + 1] = a.async(function()
       a.schedule()
       local status = install_lang(lang, cache_dir, install_dir, options.force, options.generate)
       if status ~= 'failed' then
@@ -440,19 +448,19 @@ local function install(languages, options)
       end
     end)
   end
-  local numtasks = #tasks
 
-  join(options and options.max_jobs or MAX_JOBS, tasks)
-  if numtasks > 1 then
+  join(options and options.max_jobs or MAX_JOBS, task_funs)
+  if #task_funs > 1 then
     a.schedule()
-    log.info('Installed %d/%d languages', done, numtasks)
+    log.info('Installed %d/%d languages', done, #task_funs)
   end
-  return done == numtasks
+  return done == #task_funs
 end
 
 ---@param languages string[]|string
 ---@param options? InstallOptions
-M.install = a.create(2, function(languages, options)
+---@param _callback? fun(success: boolean)
+M.install = a.async(function(languages, options, _callback)
   reload_parsers()
   languages = config.norm_languages(languages, { unsupported = true })
   return install(languages, options)
@@ -460,7 +468,7 @@ end)
 
 ---@param languages? string[]|string
 ---@param _options? table
-M.update = a.create(2, function(languages, _options)
+M.update = a.async(function(languages, _options)
   reload_parsers()
   if not languages or #languages == 0 then
     languages = 'all'
@@ -510,14 +518,14 @@ local function uninstall_lang(logger, lang, parser, queries)
 end
 
 ---@param languages string[]|string
-M.uninstall = a.create(1, function(languages)
+M.uninstall = a.async(function(languages)
   languages = config.norm_languages(languages or 'all', { missing = true, dependencies = true })
 
   local parser_dir = config.get_install_dir('parser')
   local query_dir = config.get_install_dir('queries')
   local installed = config.installed_parsers()
 
-  local tasks = {} ---@type nvim-treesitter.async.TaskFun[]
+  local task_funs = {} ---@type async.TaskFun[]
   local done = 0
   for _, lang in ipairs(languages) do
     local logger = log.new('uninstall/' .. lang)
@@ -526,7 +534,7 @@ M.uninstall = a.create(1, function(languages)
     else
       local parser = fs.joinpath(parser_dir, lang) .. '.so'
       local queries = fs.joinpath(query_dir, lang)
-      tasks[#tasks + 1] = a.async(function()
+      task_funs[#task_funs + 1] = a.async(function()
         local err = uninstall_lang(logger, lang, parser, queries)
         if not err then
           done = done + 1
@@ -535,10 +543,10 @@ M.uninstall = a.create(1, function(languages)
     end
   end
 
-  join(MAX_JOBS, tasks)
-  if #tasks > 1 then
+  join(MAX_JOBS, task_funs)
+  if #task_funs > 1 then
     a.schedule()
-    log.info('Uninstalled %d/%d languages', done, #tasks)
+    log.info('Uninstalled %d/%d languages', done, #task_funs)
   end
 end)
 
