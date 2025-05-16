@@ -30,25 +30,30 @@ local INSTALL_TIMEOUT = 60000
 --- @param max_jobs integer
 --- @param task_funs async.TaskFun[]
 local function join(max_jobs, task_funs)
-  task_funs = vim.deepcopy(task_funs)
+  if #task_funs == 0 then
+    return
+  end
+
   max_jobs = math.min(max_jobs, #task_funs)
 
-  local running = {} --- @type async.TaskFun[]
+  local remaining = { select(max_jobs + 1, unpack(task_funs)) }
+  local to_go = #task_funs
 
-  -- Start the first batch of tasks
-  for i = 1, max_jobs do
-    running[i] = table.remove(task_funs, 1)()
-  end
+  a.await(1, function(finish)
+    local function cb()
+      to_go = to_go - 1
+      if to_go == 0 then
+        finish()
+      elseif #remaining > 0 then
+        local next_task = table.remove(remaining)
+        next_task():await(cb)
+      end
+    end
 
-  -- As tasks finish, add new ones
-  for _, task in ipairs(task_funs) do
-    local finished = a.joinany(running)
-    table.remove(running, finished)
-    table.insert(running, task())
-  end
-
-  -- Wait for all tasks to finish
-  a.join(running)
+    for i = 1, max_jobs do
+      task_funs[i]():await(cb)
+    end
+  end)
 end
 
 ---@async
