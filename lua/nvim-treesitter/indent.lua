@@ -39,14 +39,6 @@ local function get_last_node_at_line(root, lnum, col)
   return root:descendant_for_range(lnum - 1, col, lnum - 1, col + 1)
 end
 
----@param node TSNode
----@return number
-local function node_length(node)
-  local _, _, start_byte = node:start()
-  local _, _, end_byte = node:end_()
-  return end_byte - start_byte
-end
-
 ---@param bufnr integer
 ---@param node TSNode
 ---@param delimiter string
@@ -133,7 +125,7 @@ function M.get_indent(lnum)
     end
     local local_root = tstree:root()
     if ts.is_in_node_range(local_root, lnum - 1, 0) then
-      if not root or node_length(root) >= node_length(local_root) then
+      if not root or root:byte_length() >= local_root:byte_length() then
         root = local_root
         lang_tree = tree
       end
