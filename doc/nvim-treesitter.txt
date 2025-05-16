@@ -112,7 +112,7 @@ install({languages} [, {opts}])                    *nvim-treesitter.install()*
     synchronous operation (e.g., in a bootstrapping script), you need to
     `wait()` for it: >lua
         require('nvim-treesitter').install({ 'rust', 'javascript', 'zig' })
-                                  :wait(3000000)
+                                  :wait(300000) -- max. 5 minutes
 <
     Parameters: ~
     • {languages}  `(string[]|string)` (List of) languages or tiers (`stable`,
@@ -142,7 +142,7 @@ update([{languages}])                                  *nvim-treesitter.update()
     Note: This operation is performed asynchronously by default. For
     synchronous operation (e.g., in a bootstrapping script), you need to
     `wait()` for it: >lua
-        require('nvim-treesitter').update():wait(3000000)
+        require('nvim-treesitter').update():wait(300000) -- max. 5 minutes
 <
     Parameters: ~
     • {languages}  `(string[]|string)?` (List of) languages or tiers to update
