@@ -22,15 +22,15 @@ To add a new parser, edit the following files:
 zimbu = {
   install_info = {
     url = 'https://github.com/zimbulang/tree-sitter-zimbu', -- git repo; use `path` for local path
-    revision = 'v2.1', -- tag or commit hash, will be updated automatically
+    revision = 'v2.1', -- tag or commit hash
     -- optional entries:
     branch = 'develop', -- only needed if different from default branch
     location = 'parser', -- only needed if the parser is in subdirectory of a "monorepo"
     generate = true, -- only needed if repo does not contain pre-generated src/parser.c
-    generate_from_json = true, -- only needed if grammar.js has npm-installed dependencies
+    generate_from_json = false, -- only needed if repo does not contain `src/grammar.json` either
   },
   maintainers = { '@me' }, -- the _query_ maintainers
-  tier = 1, -- stable: track versioned releases
+  tier = 1, -- stable: track versioned releases instead of latest commit
   -- optional entries:
   requires = { 'vim' }, -- if the queries inherit from another language
   readme_note = "an example language",
