@@ -93,8 +93,8 @@
   lhs: _ @constant.macro
   (#set! priority 101))
 
-(_preprocessor_directive) @keyword.directive
-(#set! priority 99)
+((_preprocessor_directive) @keyword.directive
+  (#set! priority 99))
 
 ; Attributes
 (pp_include) @keyword.import

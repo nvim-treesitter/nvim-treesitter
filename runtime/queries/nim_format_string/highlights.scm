@@ -1,5 +1,3 @@
-(string_literal)
-
 (matching_curlies
   opening_curly: (opening_curly) @punctuation.special
   equals: (equals)? @punctuation.special
