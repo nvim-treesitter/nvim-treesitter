@@ -601,7 +601,7 @@ return {
   fsharp = {
     install_info = {
       location = 'fsharp',
-      revision = '02929f084726db969e5b916d144436f248146824',
+      revision = 'f29605148f24199cf4d9c4a203a5debc0cbcc648',
       url = 'https://github.com/ionide/tree-sitter-fsharp',
     },
     maintainers = { '@nsidorenco' },
@@ -701,7 +701,7 @@ return {
   },
   gleam = {
     install_info = {
-      revision = '5efbe4fdf199f30a90393196bfbf842d866753c2',
+      revision = '6ece453acf8b14568c10f629f8cd25d3dde3794f',
       url = 'https://github.com/gleam-lang/tree-sitter-gleam',
     },
     maintainers = { '@amaanq' },
@@ -1289,7 +1289,7 @@ return {
   },
   lua = {
     install_info = {
-      revision = 'db16e76558122e834ee214c8dc755b4a3edc82a9',
+      revision = 'e5e406935ff3e36529545955e2972646ed97f9e2',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-lua',
     },
     maintainers = { '@muniftanjim' },
@@ -1340,7 +1340,7 @@ return {
   markdown = {
     install_info = {
       location = 'tree-sitter-markdown',
-      revision = '071b3b70baad138aa28832cf02d16ca48f2e6f4d',
+      revision = 'efb075cbd57ce33f694c2bb264b99cdba0f31789',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-markdown',
     },
     maintainers = { '@MDeiml' },
@@ -1351,7 +1351,7 @@ return {
   markdown_inline = {
     install_info = {
       location = 'tree-sitter-markdown-inline',
-      revision = '071b3b70baad138aa28832cf02d16ca48f2e6f4d',
+      revision = 'efb075cbd57ce33f694c2bb264b99cdba0f31789',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-markdown',
     },
     maintainers = { '@MDeiml' },
@@ -1517,7 +1517,7 @@ return {
   ocamllex = {
     install_info = {
       generate = true,
-      revision = 'c5cf996c23e38a1537069fbe2d4bb83a75fc7b2f',
+      revision = 'ed488aa334d1b4e3235e1efaaf96f00815ebc0e0',
       url = 'https://github.com/atom-ocaml/tree-sitter-ocamllex',
     },
     maintainers = { '@undu' },
@@ -1533,7 +1533,7 @@ return {
   },
   pascal = {
     install_info = {
-      revision = '78426d96bde7114af979e314283e45d087603428',
+      revision = '5054931bcd022860dd5936864f981e359fb63aef',
       url = 'https://github.com/Isopod/tree-sitter-pascal',
     },
     maintainers = { '@Isopod' },
@@ -1790,7 +1790,7 @@ return {
   },
   query = {
     install_info = {
-      revision = 'b5d39eab2cf3172d81352e5ef9df4639267c5813',
+      revision = '8bf3112db43bdba3002bb1f88b7cda5f6278fc88',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-query',
     },
     maintainers = { '@steelsojka' },
@@ -1807,7 +1807,7 @@ return {
   },
   racket = {
     install_info = {
-      revision = '78e147ac9be60e8e752fffaafa22293a785ac3dc',
+      revision = '6d63a202602eb350e726b5e7814127ba22ed25fc',
       url = 'https://github.com/6cdh/tree-sitter-racket',
     },
     tier = 2,
@@ -1985,7 +1985,7 @@ return {
   },
   scheme = {
     install_info = {
-      revision = 'd5b7655bea905f902d099abd539e1b66e1f4bf27',
+      revision = '1e4d38d650bf6b53930ec9d41a7000775c134039',
       url = 'https://github.com/6cdh/tree-sitter-scheme',
     },
     tier = 2,
@@ -2509,7 +2509,7 @@ return {
   },
   vimdoc = {
     install_info = {
-      revision = '6dab95ab84a006e8adfd6966c5fd9dde48224725',
+      revision = '9f6191a98702edc1084245abd5523279d4b681fb',
       url = 'https://github.com/neovim/tree-sitter-vimdoc',
     },
     maintainers = { '@clason' },
