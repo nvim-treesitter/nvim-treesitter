@@ -29,6 +29,9 @@
   </p>
 </div>
 
+>[!CAUTION]
+> The `master` branch is frozen and provided for backward compatibility only. All future updates happen on the [`main` branch](https://github.com/nvim-treesitter/nvim-treesitter/blob/main/README.md), which will become the default branch in the future.
+
 The goal of `nvim-treesitter` is both to provide a simple and easy way to use the interface for [tree-sitter](https://github.com/tree-sitter/tree-sitter) in Neovim and to provide some basic functionality such as highlighting based on it:
 
 ![example-cpp](https://user-images.githubusercontent.com/2361214/202753610-e923bf4e-e88f-494b-bb1e-d22a7688446f.png)
@@ -63,20 +66,26 @@ For more detailed information on setting these up, see ["Advanced setup"](#advan
 
 ## Requirements
 
-- **Neovim 0.10** or later  ([nightly](https://github.com/neovim/neovim#install-from-source) recommended)
-- `tar` and `curl` in your path (or alternatively `git`)
-- A C compiler in your path and libstdc++ installed ([Windows users please read this!](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support)).
+- **Neovim 0.10** or later (supported up to Neovim 0.12);
+- `tar` and `curl` in your path (or alternatively `git`);
+- a C compiler in your path and libstdc++ installed ([Windows users please read this!](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support)).
 
 ## Installation
 
 You can install `nvim-treesitter` with your favorite package manager (or using the native `package` feature of vim, see `:h packages`).
 
 **NOTE: This plugin is only guaranteed to work with specific versions of language parsers** (as specified in the `lockfile.json`). **When upgrading the plugin, you must make sure that all installed parsers are updated to the latest version** via `:TSUpdate`.
-It is strongly recommended to automate this; e.g., if you are using [vim-plug](https://github.com/junegunn/vim-plug), put this in your `init.vim` file:
+It is strongly recommended to automate this; e.g., if you are using `lazy.nvim`, put this in your `init.lua` file:
 
-```vim
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+```lua
+require("lazy").setup({
+  {"nvim-treesitter/nvim-treesitter", branch = 'master', lazy = false, build = ":TSUpdate"}
+})
 ```
+
+>[!CAUTION]
+> * This plugin does not support lazy-loading.
+> * Make sure to specify the `master` branch, as the default branch will switch to `main` in the future.
 
 For other plugin managers such as `packer.nvim`, see this [Installation page from the wiki](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Installation) (Note that this page is community maintained).
 
