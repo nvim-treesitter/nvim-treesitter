@@ -3,8 +3,9 @@
   (block)
 ] @local.scope
 
-(method
-  name: _ @local.definition.method)
+((method
+  name: _ @local.definition.method) @local.scope
+  (#set! definition.function.scope "parent"))
 
 (external_function
   name: _ @local.definition.function)
@@ -24,10 +25,11 @@
 (named_argument
   name: _ @local.definition.parameter)
 
-(class
+((class
   modifier: (modifier
     "enum")
-  name: _ @local.definition.enum)
+  name: _ @local.definition.enum) @local.scope
+  (#set! definition.type.scope "parent"))
 
 (class
   modifier: (modifier
@@ -36,11 +38,13 @@
     (define_case
       name: _ @local.definition.field)))
 
-(class
-  name: _ @local.definition.type)
+((class
+  name: _ @local.definition.type) @local.scope
+  (#set! definition.type.scope "parent"))
 
-(trait
-  name: _ @local.definition.type)
+((trait
+  name: _ @local.definition.type) @local.scope
+  (#set! definition.type.scope "parent"))
 
 (import
   (symbols
