@@ -5,15 +5,15 @@ function M.setup(...)
 end
 
 function M.install(...)
-  require('nvim-treesitter.install').install(...)
+  return require('nvim-treesitter.install').install(...)
 end
 
 function M.uninstall(...)
-  require('nvim-treesitter.install').uninstall(...)
+  return require('nvim-treesitter.install').uninstall(...)
 end
 
 function M.update(...)
-  require('nvim-treesitter.install').update(...)
+  return require('nvim-treesitter.install').update(...)
 end
 
 function M.indentexpr()

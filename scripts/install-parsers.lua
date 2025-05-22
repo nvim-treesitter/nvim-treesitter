@@ -22,8 +22,8 @@ vim.opt.runtimepath:append('.')
 vim.fn.mkdir(vim.fn.stdpath('cache'), 'p')
 
 ---@type async.Task
-local task = update and require('nvim-treesitter.install').update('all')
-  or require('nvim-treesitter.install').install(
+local task = update and require('nvim-treesitter').update('all')
+  or require('nvim-treesitter').install(
     #parsers > 0 and parsers or 'all',
     { force = true, generate = generate, max_jobs = max_jobs }
   )
