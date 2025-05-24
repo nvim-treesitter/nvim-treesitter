@@ -39,8 +39,8 @@
       (symbol
         (symbol)? @keyword.import
         (identifier) @type)
-      (identifier) @constructor)))
-  (#lua-match? @constructor "^[%l][%l%d_]*$"))
+      (identifier) @constructor.call)))
+  (#lua-match? @constructor.call "^[%l][%l%d_]*$"))
 
 (unqualified_type
   (symbol

@@ -290,12 +290,12 @@
   "new"
   (call_expression
     .
-    (identifier) @constructor))
+    (identifier) @constructor.call))
 
 ((call_expression
   .
-  (identifier) @constructor)
-  (#lua-match? @constructor "^%u"))
+  (identifier) @constructor.call)
+  (#lua-match? @constructor.call "^%u"))
 
 ; Attributes
 (decorator
