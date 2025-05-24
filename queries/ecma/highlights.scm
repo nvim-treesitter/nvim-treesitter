@@ -22,7 +22,7 @@
 ; Special identifiers
 ;--------------------
 ((identifier) @type
-  (#lua-match? @type "^[A-Z]"))
+  (#lua-match? @type "^[A-Z].+?[a-z]"))
 
 ((identifier) @constant
   (#lua-match? @constant "^_*[A-Z][A-Z%d_]*$"))
