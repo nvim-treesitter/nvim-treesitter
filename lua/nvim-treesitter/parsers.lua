@@ -164,6 +164,14 @@ return {
     maintainers = { '@amaanq' },
     tier = 2,
   },
+  c3 = {
+    install_info = {
+      revision = '02d80569f0b713c8059e00e1719658950493cd35',
+      url = 'https://github.com/c3lang/tree-sitter-c3',
+    },
+    maintainers = { '@cbuttner' },
+    tier = 2,
+  },
   c_sharp = {
     install_info = {
       revision = 'b5eb5742f6a7e9438bee22ce8026d6b927be2cd7',
