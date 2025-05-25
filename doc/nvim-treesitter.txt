@@ -100,7 +100,7 @@ setup({opts})                                          *nvim-treesitter.setup()*
     • {opts}  `(table?)` Optional parameters:
               • {install_dir} (`string?`, default `stdpath('data')/site/`)
                 directory to install parsers and queries to. Note: will be
-                appended to |runtimepath|.
+                prepended to |runtimepath|.
 
 install({languages} [, {opts}])                    *nvim-treesitter.install()*
 
