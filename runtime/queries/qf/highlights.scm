@@ -1,6 +1,6 @@
 "|" @punctuation.delimiter
 
-" col " @keyword
+"col" @keyword
 
 [
   (row)
