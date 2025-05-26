@@ -278,7 +278,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` |   | @steelsojka
 [surface](https://github.com/connorlay/tree-sitter-surface) | unstable | `HFIJ ` |   | @connorlay
 [svelte](https://github.com/tree-sitter-grammars/tree-sitter-svelte) | unstable | `HFIJL` |   | @amaanq
 [sway](https://github.com/FuelLabs/tree-sitter-sway.git) | unstable | `HFIJL` |   | @ribru17
-[swift](https://github.com/alex-pinkus/tree-sitter-swift) | unstable | `HFIJL` | X | @alex-pinkus
+[swift](https://github.com/alex-pinkus/tree-sitter-swift) | unmaintained | `HFIJL` | X | @alex-pinkus
 [sxhkdrc](https://github.com/RaafatTurki/tree-sitter-sxhkdrc) | unstable | `HF J ` |   | @RaafatTurki
 [systemtap](https://github.com/ok-ryoko/tree-sitter-systemtap) | unstable | `HF JL` |   | @ok-ryoko
 [t32](https://gitlab.com/xasc/tree-sitter-t32) | unstable | `HFIJL` |   | @xasc
