@@ -2199,7 +2199,7 @@ return {
       url = 'https://github.com/alex-pinkus/tree-sitter-swift',
     },
     maintainers = { '@alex-pinkus' },
-    tier = 2,
+    tier = 3,
   },
   sxhkdrc = {
     install_info = {
