@@ -226,7 +226,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` |   | @steelsojka
 [purescript](https://github.com/postsolar/tree-sitter-purescript) | unstable | `H  JL` |   | @postsolar
 [pymanifest](https://github.com/tree-sitter-grammars/tree-sitter-pymanifest) | unstable | `H  J ` |   | @ObserverOfTime
 [python](https://github.com/tree-sitter/tree-sitter-python) | unstable | `HFIJL` |   | @stsewd, @theHamsta
-[qf](https://github.com/OXY2DEV/tree-sitter-qf) | stable | `H  J ` |   | @OXY2DEV
+[qf](https://github.com/OXY2DEV/tree-sitter-qf)[^qf] | stable | `H  J ` |   | @OXY2DEV
 [ql](https://github.com/tree-sitter/tree-sitter-ql) | unstable | `HFIJL` |   | @pwntester
 [qmldir](https://github.com/tree-sitter-grammars/tree-sitter-qmldir) | unstable | `H  J ` |   | @amaanq
 [qmljs](https://github.com/yuja/tree-sitter-qmljs) | unstable | `HF J ` |   | @Decodetalkers
@@ -352,6 +352,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` |   | @steelsojka
 [^php_only]: PHP without embedded HTML
 [^poe_filter]: Path of Exile item filter
 [^properties]: Java properties files
+[^qf]: Vim quickfix list
 [^query]: Tree-sitter query language
 [^sflog]: Salesforce debug log
 [^slang]: Shader Slang

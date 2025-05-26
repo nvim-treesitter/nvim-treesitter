@@ -1771,7 +1771,7 @@ return {
     maintainers = { '@OXY2DEV' },
     tier = 1,
 
-    readme_note = 'Vim quickfix',
+    readme_note = 'Vim quickfix list',
   },
   ql = {
     install_info = {
