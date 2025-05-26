@@ -1766,10 +1766,10 @@ return {
   qf = {
     install_info = {
       revision = 'v1.0.0',
-      url = 'https://github.com/OXY2DEV/tree-sitter-qf'
+      url = 'https://github.com/OXY2DEV/tree-sitter-qf',
     },
     maintainers = { '@OXY2DEV' },
-    tier = 1
+    tier = 1,
   },
   ql = {
     install_info = {
