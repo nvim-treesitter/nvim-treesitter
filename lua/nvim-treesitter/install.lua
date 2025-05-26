@@ -440,6 +440,10 @@ local function install(languages, options)
   options = options or {}
 
   local cache_dir = fs.normalize(fn.stdpath('cache'))
+  if not vim.uv.fs_stat(cache_dir) then
+    vim.fn.mkdir(cache_dir, 'p')
+  end
+
   local install_dir = config.get_install_dir('parser')
 
   local task_funs = {} ---@type async.TaskFun[]
