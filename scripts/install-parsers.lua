@@ -18,9 +18,6 @@ end
 
 vim.opt.runtimepath:append('.')
 
--- needed on CI
-vim.fn.mkdir(vim.fn.stdpath('cache'), 'p')
-
 ---@type async.Task
 local task = update and require('nvim-treesitter').update('all')
   or require('nvim-treesitter').install(
