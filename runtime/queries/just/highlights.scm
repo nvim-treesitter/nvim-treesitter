@@ -135,15 +135,5 @@
     argument: (string) @string.special.path))
   (#eq? @_dir "working-directory"))
 
-; Ref: https://just.systems/man/en/chapter_31.html
-;(function_call (identifier) @error)
 (function_call
-  (identifier) @function.call
-  (#any-of? @function.call
-    "arch" "num_cpus" "os" "os_family" "env_var" "env_var_or_default" "env" "invocation_directory"
-    "invocation_directory_native" "justfile" "justfile_directory" "just_executable" "quote"
-    "replace" "replace_regex" "trim" "trim_end" "trim_end_match" "trim_end_matches" "trim_start"
-    "trim_start_match" "trim_start_matches" "capitalize" "kebabcase" "lowercamelcase" "lowercase"
-    "shoutykebabcase" "shoutysnakecase" "snakecase" "titlecase" "uppercamelcase" "uppercase"
-    "absolute_path" "extension" "file_name" "file_stem" "parent_directory" "without_extension"
-    "clean" "join" "path_exists" "error" "sha256" "sha256_file" "uuid" "semver_matches"))
+  (identifier) @function.call)
