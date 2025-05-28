@@ -130,9 +130,10 @@
 
 "return" @keyword.return
 
-"import" @keyword.import
-
-"module" @keyword
+[
+  "import"
+  "module"
+] @keyword.import
 
 [
   "bitstruct"
