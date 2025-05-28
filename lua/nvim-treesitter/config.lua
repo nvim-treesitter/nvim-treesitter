@@ -39,22 +39,28 @@ function M.get_install_dir(dir_name)
   return dir
 end
 
+---@param type 'queries'|'parsers'?
 ---@return string[]
-function M.installed_parsers()
-  local install_dir = M.get_install_dir('queries')
-
-  local installed = {} --- @type string[]
-  for f in vim.fs.dir(install_dir) do
-    installed[#installed + 1] = f
+function M.installed_languages(type)
+  local installed = {} --- @type table<string, boolean>
+  if not (type and type == 'parsers') then
+    for f in vim.fs.dir(M.get_install_dir('queries')) do
+      installed[f] = true
+    end
   end
-
-  return installed
+  if not (type and type == 'queries') then
+    for f in vim.fs.dir(M.get_install_dir('parser')) do
+      installed[vim.fn.fnamemodify(f, ':r')] = true
+    end
+  end
+  return vim.tbl_keys(installed)
 end
 
 -- Get a list of all available parsers
 ---@param tier integer? only get parsers of specified tier
 ---@return string[]
 function M.get_available(tier)
+  vim.api.nvim_exec_autocmds('User', { pattern = 'TSUpdate' })
   local parsers = require('nvim-treesitter.parsers')
   --- @type string[]
   local languages = vim.tbl_keys(parsers)
@@ -101,7 +107,7 @@ function M.norm_languages(languages, skip)
 
   if vim.list_contains(languages, 'all') then
     if skip and skip.missing then
-      return M.installed_parsers()
+      return M.installed_languages()
     end
     languages = M.get_available()
   end
@@ -109,7 +115,7 @@ function M.norm_languages(languages, skip)
   languages = expand_tiers(languages)
 
   if skip and skip.installed then
-    local installed = M.installed_parsers()
+    local installed = M.installed_languages()
     languages = vim.tbl_filter(
       --- @param v string
       function(v)
@@ -120,7 +126,7 @@ function M.norm_languages(languages, skip)
   end
 
   if skip and skip.missing then
-    local installed = M.installed_parsers()
+    local installed = M.installed_languages()
     languages = vim.tbl_filter(
       --- @param v string
       function(v)
