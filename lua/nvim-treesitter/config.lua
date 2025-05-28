@@ -144,7 +144,7 @@ function M.norm_languages(languages, skip)
     languages = vim.tbl_filter(
       --- @param v string
       function(v)
-        return parsers[v].tier < 4
+        return not (parsers[v].tier and parsers[v].tier == 4)
       end,
       languages
     )
