@@ -369,14 +369,20 @@ local function try_install_lang(lang, cache_dir, install_dir, generate)
     end
   end
 
-  local queries = fs.joinpath(config.get_install_dir('queries'), lang)
-  local queries_src = M.get_package_path('runtime', 'queries', lang)
-  uv_unlink(queries)
-  local err = uv_symlink(queries_src, queries, { dir = true, junction = true })
-  a.schedule()
-  if err then
-    return logger:error(err)
+  do -- install queries
+    local queries_src = M.get_package_path('runtime', 'queries', lang)
+    if uv.fs_stat(queries_src) then
+      local queries = fs.joinpath(config.get_install_dir('queries'), lang)
+
+      uv_unlink(queries)
+      local err = uv_symlink(queries_src, queries, { dir = true, junction = true })
+      a.schedule()
+      if err then
+        return logger:error(err)
+      end
+    end
   end
+
   logger:info('Language installed')
 end
 
@@ -440,8 +446,8 @@ local function install(languages, options)
   options = options or {}
 
   local cache_dir = fs.normalize(fn.stdpath('cache'))
-  if not vim.uv.fs_stat(cache_dir) then
-    vim.fn.mkdir(cache_dir, 'p')
+  if not uv.fs_stat(cache_dir) then
+    fn.mkdir(cache_dir, 'p')
   end
 
   local install_dir = config.get_install_dir('parser')
@@ -526,6 +532,7 @@ end
 
 ---@param languages string[]|string
 M.uninstall = a.async(function(languages)
+  reload_parsers()
   languages = config.norm_languages(languages or 'all', { missing = true, dependencies = true })
 
   local parser_dir = config.get_install_dir('parser')
@@ -537,7 +544,7 @@ M.uninstall = a.async(function(languages)
   for _, lang in ipairs(languages) do
     local logger = log.new('uninstall/' .. lang)
     if not vim.list_contains(installed, lang) then
-      log.warn('Parser for ' .. lang .. ' is is not managed by nvim-treesitter')
+      log.warn('Parser for ' .. lang .. ' is not managed by nvim-treesitter')
     else
       local parser = fs.joinpath(parser_dir, lang) .. '.so'
       local queries = fs.joinpath(query_dir, lang)
