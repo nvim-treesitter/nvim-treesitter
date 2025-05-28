@@ -431,6 +431,7 @@ end
 ---@field force? boolean
 ---@field generate? boolean
 ---@field max_jobs? integer
+---@field quiet? boolean
 
 --- Install a parser
 ---@async
@@ -461,7 +462,9 @@ local function install(languages, options)
   join(options and options.max_jobs or MAX_JOBS, task_funs)
   if #task_funs > 1 then
     a.schedule()
-    log.info('Installed %d/%d languages', done, #task_funs)
+    if not options.quiet then
+      log.info('Installing %d/%d languages', done, #task_funs)
+    end
   end
   return done == #task_funs
 end
