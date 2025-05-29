@@ -102,7 +102,7 @@ setup({opts})                                          *nvim-treesitter.setup()*
                 directory to install parsers and queries to. Note: will be
                 prepended to |runtimepath|.
 
-install({languages} [, {opts}])                    *nvim-treesitter.install()*
+install({languages} [, {opts}])                      *nvim-treesitter.install()*
 
     Download, compile, and install the specified treesitter parsers and copy
     the corresponding queries to a directory on |runtimepath|, enabling their
@@ -126,7 +126,7 @@ install({languages} [, {opts}])                    *nvim-treesitter.install()*
                    • {max_jobs} (`integer?`) limit parallel tasks (useful in
                      combination with {generate} on memory-limited systems).
 
-uninstall({languages})                              *nvim-treesitter.uninstall()*
+uninstall({languages})                             *nvim-treesitter.uninstall()*
 
     Remove the parser and queries for the specified language(s).
 
@@ -134,7 +134,7 @@ uninstall({languages})                              *nvim-treesitter.uninstall()
     • {languages}  `(string[]|string)` (List of) languages or tiers (`stable`,
                    `unstable`) to update.
 
-update([{languages}])                                  *nvim-treesitter.update()*
+update([{languages}])                                 *nvim-treesitter.update()*
 
     Update the parsers and queries if older than the revision specified in the
     manifest.
@@ -153,5 +153,20 @@ indentexpr()                                      *nvim-treesitter.indentexpr()*
     Used to enable treesitter indentation for a language via >lua
         vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 <
+get_available([{tier}])                        *nvim-treesitter.get_available()*
+
+    Return list of languages available for installation.
+
+    Parameters: ~
+    • {tier}  `(integer?)` Only return languages of specified {tier} (`1`:
+              stable, `2`: unstable, `3`: unmaintained, `4`: unsupported)
+
+get_installed([{type}])                        *nvim-treesitter.get_installed()*
+
+    Return list of languages installed via `nvim-treesitter`.
+
+    Parameters: ~
+    • {type}  `('queries'|parsers'?)` If specified, only show languages with
+              installed queries or parsers, respectively.
 
 vim:tw=78:ts=8:expandtab:noet:ft=help:norl:

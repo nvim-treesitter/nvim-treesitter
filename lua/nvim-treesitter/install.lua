@@ -402,7 +402,7 @@ local install_status = {} ---@type table<string,InstallStatus?>
 ---@param generate? boolean
 ---@return InstallStatus status
 local function install_lang(lang, cache_dir, install_dir, force, generate)
-  if not force and vim.list_contains(config.installed_languages(), lang) then
+  if not force and vim.list_contains(config.get_installed(), lang) then
     install_status[lang] = 'installed'
     return 'installed'
   end
@@ -537,7 +537,7 @@ M.uninstall = a.async(function(languages)
 
   local parser_dir = config.get_install_dir('parser')
   local query_dir = config.get_install_dir('queries')
-  local installed = config.installed_languages()
+  local installed = config.get_installed()
 
   local task_funs = {} ---@type async.TaskFun[]
   local done = 0
