@@ -41,7 +41,7 @@ end
 
 ---@param type 'queries'|'parsers'?
 ---@return string[]
-function M.installed_languages(type)
+function M.get_installed(type)
   local installed = {} --- @type table<string, boolean>
   if not (type and type == 'parsers') then
     for f in vim.fs.dir(M.get_install_dir('queries')) do
@@ -107,7 +107,7 @@ function M.norm_languages(languages, skip)
 
   if vim.list_contains(languages, 'all') then
     if skip and skip.missing then
-      return M.installed_languages()
+      return M.get_installed()
     end
     languages = M.get_available()
   end
@@ -115,7 +115,7 @@ function M.norm_languages(languages, skip)
   languages = expand_tiers(languages)
 
   if skip and skip.installed then
-    local installed = M.installed_languages()
+    local installed = M.get_installed()
     languages = vim.tbl_filter(
       --- @param v string
       function(v)
@@ -126,7 +126,7 @@ function M.norm_languages(languages, skip)
   end
 
   if skip and skip.missing then
-    local installed = M.installed_languages()
+    local installed = M.get_installed()
     languages = vim.tbl_filter(
       --- @param v string
       function(v)

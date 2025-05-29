@@ -21,7 +21,7 @@ local function complete_installed_parsers(arglead)
     function(v)
       return v:find(arglead) ~= nil
     end,
-    require('nvim-treesitter.config').installed_languages()
+    require('nvim-treesitter.config').get_installed()
   )
 end
 

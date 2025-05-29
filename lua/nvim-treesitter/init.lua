@@ -4,6 +4,14 @@ function M.setup(...)
   require('nvim-treesitter.config').setup(...)
 end
 
+function M.get_available(...)
+  return require('nvim-treesitter.config').get_available(...)
+end
+
+function M.get_installed(...)
+  return require('nvim-treesitter.config').get_installed(...)
+end
+
 function M.install(...)
   return require('nvim-treesitter.install').install(...)
 end

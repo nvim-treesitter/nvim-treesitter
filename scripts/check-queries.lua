@@ -4,7 +4,7 @@ vim.opt.runtimepath:append('.')
 local query_types = require('nvim-treesitter.health').bundled_queries
 local configs = require('nvim-treesitter.parsers')
 local parsers = #_G.arg > 0 and { unpack(_G.arg) }
-  or require('nvim-treesitter.config').installed_languages('queries')
+  or require('nvim-treesitter.config').get_installed('queries')
 
 -- Check queries for each installed parser in parsers
 local errors = {} ---@type string[]
