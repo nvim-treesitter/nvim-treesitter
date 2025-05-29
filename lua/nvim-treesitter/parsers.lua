@@ -1769,7 +1769,7 @@ return {
       url = 'https://github.com/OXY2DEV/tree-sitter-qf',
     },
     maintainers = { '@OXY2DEV' },
-    tier = 1,
+    tier = 2,
     readme_note = 'Vim quickfix list',
   },
   ql = {
