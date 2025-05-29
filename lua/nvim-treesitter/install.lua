@@ -23,6 +23,12 @@ local uv_symlink = a.awrap(4, uv.fs_symlink)
 ---@type fun(path: string): string?
 local uv_unlink = a.awrap(2, uv.fs_unlink)
 
+-- TODO(clason): make async?
+---@param name string
+local function rmdir(name)
+  vim.fs.rm(name, { recursive = true, force = true })
+end
+
 local MAX_JOBS = 100
 local INSTALL_TIMEOUT = 60000
 
@@ -199,7 +205,7 @@ local function do_download(logger, url, project_name, cache_dir, revision, outpu
 
   local tmp = output_dir .. '-tmp'
 
-  util.delete(tmp)
+  rmdir(tmp)
 
   url = url:gsub('.git$', '')
   local target = is_gitlab
@@ -258,7 +264,7 @@ local function do_download(logger, url, project_name, cache_dir, revision, outpu
     end
   end
 
-  util.delete(tmp)
+  rmdir(tmp)
 end
 
 ---@async
@@ -301,6 +307,42 @@ local function do_install(logger, compile_location, target_location)
 end
 
 ---@async
+---@param logger Logger
+---@param query_src string
+---@param query_dir string
+---@return string? err
+local function do_link_queries(logger, query_src, query_dir)
+  uv_unlink(query_dir)
+  local err = uv_symlink(query_src, query_dir, { dir = true, junction = true })
+  a.schedule()
+  if err then
+    return logger:error(err)
+  end
+end
+
+---@async
+---@param logger Logger
+---@param query_src string
+---@param query_dir string
+---@return string? err
+local function do_copy_queries(logger, query_src, query_dir)
+  rmdir(query_dir)
+  local err = uv_mkdir(query_dir, 493) -- tonumber('755', 8)
+  a.schedule()
+  if err then
+    return logger:error(err)
+  end
+
+  for f in vim.fs.dir(query_src) do
+    err = uv_copyfile(vim.fs.joinpath(query_src, f), vim.fs.joinpath(query_dir, f))
+    a.schedule()
+    if err then
+      return logger:error(err)
+    end
+  end
+end
+
+---@async
 ---@param lang string
 ---@param cache_dir string
 ---@param install_dir string
@@ -310,9 +352,8 @@ local function try_install_lang(lang, cache_dir, install_dir, generate)
   local logger = log.new('install/' .. lang)
 
   local repo = get_parser_install_info(lang)
+  local project_name = 'tree-sitter-' .. lang
   if repo then
-    local project_name = 'tree-sitter-' .. lang
-
     local revision = repo.revision
 
     local compile_location ---@type string
@@ -320,7 +361,7 @@ local function try_install_lang(lang, cache_dir, install_dir, generate)
       compile_location = fs.normalize(repo.path)
     else
       local project_dir = fs.joinpath(cache_dir, project_name)
-      util.delete(project_dir)
+      rmdir(project_dir)
 
       revision = revision or repo.branch or 'main'
 
@@ -362,24 +403,34 @@ local function try_install_lang(lang, cache_dir, install_dir, generate)
       local revfile = fs.joinpath(config.get_install_dir('parser-info') or '', lang .. '.revision')
       util.write_file(revfile, revision or '')
     end
-
-    if not repo.path then
-      util.delete(fs.joinpath(cache_dir, project_name))
-    end
   end
 
   do -- install queries
-    local queries_src = M.get_package_path('runtime', 'queries', lang)
-    if uv.fs_stat(queries_src) then
-      local queries = fs.joinpath(config.get_install_dir('queries'), lang)
+    local query_src = M.get_package_path('runtime', 'queries', lang)
+    local query_dir = fs.joinpath(config.get_install_dir('queries'), lang)
+    local task ---@type function
 
-      uv_unlink(queries)
-      local err = uv_symlink(queries_src, queries, { dir = true, junction = true })
-      a.schedule()
+    if repo and repo.queries and repo.path then -- link queries from local repo
+      query_src = fs.joinpath(fs.normalize(repo.path), repo.queries)
+      task = do_link_queries
+    elseif repo and repo.queries then -- copy queries from tarball
+      query_src = fs.joinpath(cache_dir, project_name, repo.queries)
+      task = do_copy_queries
+    elseif uv.fs_stat(query_src) then -- link queries from runtime
+      task = do_link_queries
+    end
+
+    if task then
+      local err = task(logger, query_src, query_dir)
       if err then
-        return logger:error(err)
+        return err
       end
     end
+  end
+
+  -- clean up
+  if repo and not repo.path then
+    rmdir(fs.joinpath(cache_dir, project_name))
   end
 
   logger:info('Language installed')
@@ -526,9 +577,10 @@ local function uninstall_lang(logger, lang, parser, queries)
     end
   end
 
-  if fn.isdirectory(queries) == 1 then
+  if uv.fs_lstat(queries) then
     logger:debug('Unlinking ' .. queries)
-    local qerr = uv_unlink(queries)
+
+    local qerr = uv.fs_lstat(queries).type == 'link' and uv_unlink(queries) or rmdir(queries)
     a.schedule()
 
     if qerr then

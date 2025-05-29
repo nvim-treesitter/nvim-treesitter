@@ -23,6 +23,9 @@ error('Cannot require a meta file')
 ---
 ---Parser repo is a local directory; overrides `url`, `revision`, and `branch`
 ---@field path? string
+---
+---Directory with queries to be installed
+---@field queries? string
 
 ---@class ParserInfo
 ---
