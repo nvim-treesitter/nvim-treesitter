@@ -1765,7 +1765,7 @@ return {
   },
   qf = {
     install_info = {
-      revision = 'v1.2.0',
+      revision = '6a9d1deb934749720aa3bc525f1506f7d2ae4d0a',
       url = 'https://github.com/OXY2DEV/tree-sitter-qf',
     },
     maintainers = { '@OXY2DEV' },
