@@ -17,10 +17,4 @@ function M.write_file(filename, content)
   file:close()
 end
 
---- Recursively delete a directory
---- @param name string
-function M.delete(name)
-  vim.fs.rm(name, { recursive = true, force = true })
-end
-
 return M
