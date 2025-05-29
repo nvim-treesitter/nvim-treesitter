@@ -437,6 +437,7 @@ end
 ---@field force? boolean
 ---@field generate? boolean
 ---@field max_jobs? integer
+---@field summary? boolean
 
 --- Install a parser
 ---@async
@@ -467,7 +468,9 @@ local function install(languages, options)
   join(options and options.max_jobs or MAX_JOBS, task_funs)
   if #task_funs > 1 then
     a.schedule()
-    log.info('Installed %d/%d languages', done, #task_funs)
+    if options and options.summary then
+      log.info('Installed %d/%d languages', done, #task_funs)
+    end
   end
   return done == #task_funs
 end
@@ -481,7 +484,8 @@ M.install = a.async(function(languages, options)
 end)
 
 ---@param languages? string[]|string
-M.update = a.async(function(languages)
+---@param options? InstallOptions
+M.update = a.async(function(languages, options)
   reload_parsers()
   if not languages or #languages == 0 then
     languages = 'all'
@@ -489,10 +493,16 @@ M.update = a.async(function(languages)
   languages = config.norm_languages(languages, { missing = true, unsupported = true })
   languages = vim.tbl_filter(needs_update, languages) ---@type string[]
 
+  local summary = options and options.summary
   if #languages > 0 then
-    return install(languages, { force = true })
+    return install(
+      languages,
+      { force = true, summary = summary, max_jobs = options and options.max_jobs }
+    )
   else
-    log.info('All parsers are up-to-date')
+    if summary then
+      log.info('All parsers are up-to-date')
+    end
     return true
   end
 end)
@@ -531,7 +541,8 @@ local function uninstall_lang(logger, lang, parser, queries)
 end
 
 ---@param languages string[]|string
-M.uninstall = a.async(function(languages)
+---@param options? InstallOptions
+M.uninstall = a.async(function(languages, options)
   vim.api.nvim_exec_autocmds('User', { pattern = 'TSUpdate' })
   languages = config.norm_languages(languages or 'all', { missing = true, dependencies = true })
 
@@ -560,7 +571,9 @@ M.uninstall = a.async(function(languages)
   join(MAX_JOBS, task_funs)
   if #task_funs > 1 then
     a.schedule()
-    log.info('Uninstalled %d/%d languages', done, #task_funs)
+    if options and options.summary then
+      log.info('Uninstalled %d/%d languages', done, #task_funs)
+    end
   end
 end)
 

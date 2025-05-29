@@ -27,7 +27,7 @@ end
 
 -- create user commands
 api.nvim_create_user_command('TSInstall', function(args)
-  require('nvim-treesitter.install').install(args.fargs, { force = args.bang })
+  require('nvim-treesitter.install').install(args.fargs, { force = args.bang, summary = true })
 end, {
   nargs = '+',
   bang = true,
@@ -39,6 +39,7 @@ end, {
 api.nvim_create_user_command('TSInstallFromGrammar', function(args)
   require('nvim-treesitter.install').install(args.fargs, {
     generate = true,
+    summary = true,
     force = args.bang,
   })
 end, {
@@ -50,7 +51,7 @@ end, {
 })
 
 api.nvim_create_user_command('TSUpdate', function(args)
-  require('nvim-treesitter.install').update(args.fargs)
+  require('nvim-treesitter.install').update(args.fargs, { summary = true })
 end, {
   nargs = '*',
   bar = true,
@@ -59,7 +60,7 @@ end, {
 })
 
 api.nvim_create_user_command('TSUninstall', function(args)
-  require('nvim-treesitter.install').uninstall(args.fargs)
+  require('nvim-treesitter.install').uninstall(args.fargs, { summary = true })
 end, {
   nargs = '+',
   bar = true,
