@@ -82,3 +82,18 @@
   (quoter) @injection.language
   (#any-of? @injection.language "pymain" "pye" "py_" "pyf")
   (quasiquote_body) @injection.content)
+
+; -----------------------------------------------------------------------------
+; CPP
+; inline-c-cpp
+((quasiquote
+  (quoter
+    (qualified
+      module: (module (module_id) @_module)
+      id: (variable) @_id))
+  body: (quasiquote_body) @injection.content)
+ (#eq? @_module "C")
+ (#any-of? @_id "exp" "block")
+ (#set! injection.language "cpp")
+ (#set! injection.include-children)
+ (#set! injection.pattern "^\\$[a-zA-Z_][a-zA-Z0-9_]*:[a-zA-Z_][a-zA-Z0-9_]*$"))
