@@ -19,8 +19,10 @@ do
         local before = vim.uv.hrtime()
         local ok, query = pcall(vim.treesitter.query.get, lang, query_type)
         local duration = vim.uv.hrtime() - before
-        table.insert(timings, { duration = duration, lang = lang, query_type = query_type })
-        print(string.format('Checking %s %s (%.02fms)', lang, query_type, duration * 1e-6))
+        if query then
+          table.insert(timings, { duration = duration, lang = lang, query_type = query_type })
+          print(string.format('Checking %s %s (%.02fms)', lang, query_type, duration * 1e-6))
+        end
         if not ok then
           errors[#errors + 1] = string.format('%s (%s): %s', lang, query_type, query)
         end
