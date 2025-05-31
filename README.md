@@ -126,7 +126,7 @@ These queries can be used to look up definitions and references to identifiers i
 
 # Advanced setup
 
-## Adding parsers
+## Adding custom languages
 
 If you have a parser that is not on the list of supported languages (either as a repository on Github or in a local directory), you can add it manually for use by `nvim-treesitter` as follows:
 
@@ -144,6 +144,7 @@ callback = function()
       location = 'parser', -- only needed if the parser is in subdirectory of a "monorepo"
       generate = true, -- only needed if repo does not contain pre-generated `src/parser.c`
       generate_from_json = false, -- only needed if repo does not contain `src/grammar.json` either
+      queries = 'queries/neovim', -- also install queries from given directory
     },
   }
 end})
@@ -158,6 +159,7 @@ Alternatively, if you have a local checkout, you can instead use
       location = 'parser',
       generate = true,
       generate_from_json = false,
+      queries = 'queries/neovim', -- symlink queries from given directory
     },
 ```
 This will always use the state of the directory as-is (i.e., `branch` and `revision` will be ignored).
@@ -189,9 +191,3 @@ end})
 ## Adding queries
 
 Queries can be placed anywhere in your `runtimepath` under `queries/<language>`, with earlier directories taking precedence unless the queries are marked with `; extends`; see [`:h treesitter-query-modelines`](https://neovim.io/doc/user/treesitter.html#treesitter-query-modeline).
-
-E.g., to add queries for `zimbu`, put `highlights.scm` etc. under
-
-```lua
-vim.fn.stdpath('data') .. 'site/queries/zimbu'
-```
