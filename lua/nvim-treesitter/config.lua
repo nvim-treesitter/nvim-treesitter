@@ -96,7 +96,7 @@ end
 
 ---Normalize languages
 ---@param languages? string[]|string
----@param skip? { missing: boolean, unsupported: boolean, installed: boolean, dependencies: boolean }
+---@param skip? { missing: boolean?, unsupported: boolean?, installed: boolean?, dependencies: boolean? }
 ---@return string[]
 function M.norm_languages(languages, skip)
   if not languages then
@@ -150,7 +150,7 @@ function M.norm_languages(languages, skip)
     languages = vim.tbl_filter(
       --- @param v string
       function(v)
-        return not (parsers[v].tier and parsers[v].tier == 4)
+        return not (parsers[v] and parsers[v].tier and parsers[v].tier == 4)
       end,
       languages
     )
@@ -158,7 +158,7 @@ function M.norm_languages(languages, skip)
 
   if not (skip and skip.dependencies) then
     for _, lang in pairs(languages) do
-      if parsers[lang].requires then
+      if parsers[lang] and parsers[lang].requires then
         vim.list_extend(languages, parsers[lang].requires)
       end
     end
