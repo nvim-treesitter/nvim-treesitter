@@ -14,6 +14,9 @@ local uv_copyfile = a.awrap(4, uv.fs_copyfile)
 ---@type fun(path: string, mode: integer): string?
 local uv_mkdir = a.awrap(3, uv.fs_mkdir)
 
+---@type fun(path: string): string?
+local uv_rmdir = a.awrap(2, uv.fs_rmdir)
+
 ---@type fun(path: string, new_path: string): string?
 local uv_rename = a.awrap(3, uv.fs_rename)
 
@@ -23,10 +26,34 @@ local uv_symlink = a.awrap(4, uv.fs_symlink)
 ---@type fun(path: string): string?
 local uv_unlink = a.awrap(2, uv.fs_unlink)
 
--- TODO(clason): make async?
----@param name string
-local function rmdir(name)
-  vim.fs.rm(name, { recursive = true, force = true })
+---@async
+---@param path string
+---@return string? err
+local function mkpath(path)
+  local parent = fs.dirname(path)
+  if not parent:match('^[./]$') and not uv.fs_stat(parent) then
+    mkpath(parent)
+  end
+
+  return uv_mkdir(path, 493) -- tonumber('755', 8)
+end
+
+---@async
+---@param path string
+local function rmdir(path)
+  local stat = uv.fs_lstat(path)
+  if not stat then
+    return
+  end
+
+  if stat.type == 'directory' then
+    for file in fs.dir(path) do
+      rmdir(fs.joinpath(path, file))
+    end
+    return uv_rmdir(path)
+  else
+    return uv_unlink(path)
+  end
 end
 
 local MAX_JOBS = 100
@@ -99,18 +126,6 @@ local function download_file(url, output)
   if r.code > 0 then
     return r.stderr
   end
-end
-
----@async
----@param path string
----@return string? err
-local function mkpath(path)
-  local parent = fs.dirname(path)
-  if not parent:match('^[./]$') and not uv.fs_stat(parent) then
-    mkpath(parent)
-  end
-
-  return uv_mkdir(path, 493) -- tonumber('755', 8)
 end
 
 local M = {}
@@ -206,6 +221,7 @@ local function do_download(logger, url, project_name, cache_dir, revision, outpu
   local tmp = output_dir .. '-tmp'
 
   rmdir(tmp)
+  a.schedule()
 
   url = url:gsub('.git$', '')
   local target = is_gitlab
@@ -265,6 +281,7 @@ local function do_download(logger, url, project_name, cache_dir, revision, outpu
   end
 
   rmdir(tmp)
+  a.schedule()
 end
 
 ---@async
@@ -328,17 +345,13 @@ end
 local function do_copy_queries(logger, query_src, query_dir)
   rmdir(query_dir)
   local err = uv_mkdir(query_dir, 493) -- tonumber('755', 8)
+
+  for f in fs.dir(query_src) do
+    err = uv_copyfile(fs.joinpath(query_src, f), fs.joinpath(query_dir, f))
+  end
   a.schedule()
   if err then
     return logger:error(err)
-  end
-
-  for f in vim.fs.dir(query_src) do
-    err = uv_copyfile(vim.fs.joinpath(query_src, f), vim.fs.joinpath(query_dir, f))
-    a.schedule()
-    if err then
-      return logger:error(err)
-    end
   end
 end
 
@@ -431,6 +444,7 @@ local function try_install_lang(lang, cache_dir, install_dir, generate)
   -- clean up
   if repo and not repo.path then
     rmdir(fs.joinpath(cache_dir, project_name))
+    a.schedule()
   end
 
   logger:info('Language installed')
@@ -571,18 +585,21 @@ local function uninstall_lang(logger, lang, parser, queries)
     logger:debug('Unlinking ' .. parser)
     local perr = uv_unlink(parser)
     a.schedule()
-
     if perr then
       return logger:error(perr)
     end
   end
 
-  if uv.fs_lstat(queries) then
+  local stat = uv.fs_lstat(queries)
+  if stat then
     logger:debug('Unlinking ' .. queries)
-
-    local qerr = uv.fs_lstat(queries).type == 'link' and uv_unlink(queries) or rmdir(queries)
+    local qerr ---@type string?
+    if stat.type == 'link' then
+      qerr = uv_unlink(queries)
+    else
+      qerr = rmdir(queries)
+    end
     a.schedule()
-
     if qerr then
       return logger:error(qerr)
     end
