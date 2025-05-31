@@ -4,7 +4,7 @@
 ((variable
   (name) @_name
   value: (string) @injection.content)
-  (#any-of? @_name "cmd" "command" "textconv" "sendmailCmd")
+  (#any-of? @_name "cmd" "command" "textconv" "sendmailCmd" "sendmailcmd")
   (#set! injection.language "bash"))
 
 (section
@@ -29,7 +29,7 @@
     (name) @_name
     value: (string) @injection.content)
   (#eq? @_interactive "interactive")
-  (#eq? @_name "diffFilter")
+  (#any-of? @_name "diffFilter" "difffilter")
   (#set! injection.language "bash"))
 
 ; https://github.com/git-lfs/git-lfs

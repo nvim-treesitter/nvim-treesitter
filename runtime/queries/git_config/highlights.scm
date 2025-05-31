@@ -7,7 +7,7 @@
 ((section_header
   (section_name) @keyword.import
   (subsection_name))
-  (#eq? @keyword.import "includeIf"))
+  (#any-of? @keyword.import "includeIf" "includeif"))
 
 (variable
   (name) @property)
@@ -47,7 +47,7 @@
 ((variable
   (name) @_name
   value: (string) @string.special.url)
-  (#eq? @_name "insteadOf"))
+  (#any-of? @_name "insteadOf" "insteadof"))
 
 ; Punctuation
 [
