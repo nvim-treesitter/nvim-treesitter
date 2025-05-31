@@ -97,15 +97,14 @@ end
 
 ---@async
 ---@param path string
----@param mode? string
 ---@return string? err
-local function mkpath(path, mode)
+local function mkpath(path)
   local parent = fs.dirname(path)
   if not parent:match('^[./]$') and not uv.fs_stat(parent) then
-    mkpath(parent, mode)
+    mkpath(parent)
   end
 
-  return uv_mkdir(path, tonumber(mode or '755', 8))
+  return uv_mkdir(path, 493) -- tonumber('755', 8)
 end
 
 local M = {}

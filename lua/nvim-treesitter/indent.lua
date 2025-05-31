@@ -106,7 +106,7 @@ end, function(bufnr, root, lang)
   return tostring(bufnr) .. root:id() .. '_' .. lang
 end)
 
----@param lnum number (1-indexed)
+---@param lnum integer (1-indexed)
 ---@return integer
 function M.get_indent(lnum)
   local bufnr = vim.api.nvim_get_current_buf()

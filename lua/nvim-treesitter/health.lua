@@ -28,27 +28,25 @@ local function install_health()
       health.error('Nvim-treesitter requires Neovim 0.11.0 or later.')
     end
 
-    if vim.treesitter.language_version then
-      if vim.treesitter.language_version >= NVIM_TREESITTER_MINIMUM_ABI then
-        health.ok(
-          'Neovim was compiled with tree-sitter runtime ABI version '
-            .. vim.treesitter.language_version
-            .. ' (required >='
-            .. NVIM_TREESITTER_MINIMUM_ABI
-            .. ').'
-        )
-      else
-        health.error(
-          'Neovim was compiled with tree-sitter runtime ABI version '
-            .. vim.treesitter.language_version
-            .. '.\n'
-            .. 'nvim-treesitter expects at least ABI version '
-            .. NVIM_TREESITTER_MINIMUM_ABI
-            .. '\n'
-            .. 'Please make sure that Neovim is linked against a recent tree-sitter library when building'
-            .. ' or raise an issue at your Neovim packager. Parsers must be compatible with runtime ABI.'
-        )
-      end
+    if vim.treesitter.language_version >= NVIM_TREESITTER_MINIMUM_ABI then
+      health.ok(
+        'Neovim was compiled with tree-sitter runtime ABI version '
+          .. vim.treesitter.language_version
+          .. ' (required >='
+          .. NVIM_TREESITTER_MINIMUM_ABI
+          .. ').'
+      )
+    else
+      health.error(
+        'Neovim was compiled with tree-sitter runtime ABI version '
+          .. vim.treesitter.language_version
+          .. '.\n'
+          .. 'nvim-treesitter expects at least ABI version '
+          .. NVIM_TREESITTER_MINIMUM_ABI
+          .. '\n'
+          .. 'Please make sure that Neovim is linked against a recent tree-sitter library when building'
+          .. ' or raise an issue at your Neovim packager. Parsers must be compatible with runtime ABI.'
+      )
     end
   end
 
@@ -140,7 +138,7 @@ function M.check()
   for _, lang in pairs(languages) do
     local parser = parsers[lang]
     local out = lang .. string.rep(' ', 22 - #lang)
-    if parser.install_info then
+    if parser and parser.install_info then
       for _, query_group in pairs(M.bundled_queries) do
         local status, err = query_status(lang, query_group)
         out = out .. status .. ' '
@@ -149,7 +147,7 @@ function M.check()
         end
       end
     end
-    if parser.requires then
+    if parser and parser.requires then
       for _, p in pairs(parser.requires) do
         if not vim.list_contains(languages, p) then
           table.insert(error_collection, { lang, 'queries', 'dependency ' .. p .. ' missing' })
