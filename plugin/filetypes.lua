@@ -59,6 +59,7 @@ local filetypes = {
   vhs = { 'tape' },
   xml = { 'xsd', 'xslt', 'svg' },
   xresources = { 'xdefaults' },
+  b = { 'b' },
 }
 
 for lang, ft in pairs(filetypes) do

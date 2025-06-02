@@ -75,6 +75,13 @@ return {
     },
     tier = 2,
   },
+  b = {
+    install_info = {
+      revision = '353237b4e3325f73c4eb1f745048c6bcac763953',
+      url = 'https://github.com/VoxelPrismatic/tree-sitter-b',
+    },
+    tier = 2,
+  },
   bash = {
     install_info = {
       revision = '0c46d792d54c536be5ff7eb18eb95c70fccdb232',
