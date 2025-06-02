@@ -61,7 +61,7 @@
 
 (interpolation_end) @punctuation.bracket
 
-(record_field) @variable.member
+(field_decl) @variable.member
 
 (builtin) @function.builtin
 
