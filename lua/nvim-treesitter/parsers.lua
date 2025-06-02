@@ -346,7 +346,7 @@ return {
   },
   desktop = {
     install_info = {
-      revision = '752bab671c3a4ad0e566fa2c680af895f7fd1b77',
+      revision = '6eb323a20db2f1e8736c3a05915afe1687283965',
       url = 'https://github.com/ValdezFOmar/tree-sitter-desktop',
     },
     maintainers = { '@ValdezFOmar' },
@@ -449,7 +449,7 @@ return {
   },
   editorconfig = {
     install_info = {
-      revision = '301edd3fff4486acca5ca9991ba76ba372059451',
+      revision = '4a00eb4b0e8fbf8f1594efa9b5b15386fbd7d563',
       url = 'https://github.com/ValdezFOmar/tree-sitter-editorconfig',
     },
     maintainers = { '@ValdezFOmar' },
@@ -592,7 +592,7 @@ return {
   },
   fortran = {
     install_info = {
-      revision = 'c687ba7b469cc22e22db6c90396ff2c98ba00d3b',
+      revision = 'ab9aa007a8d982a5a7926663a8ab989cea0f5d9e',
       url = 'https://github.com/stadelmanma/tree-sitter-fortran',
     },
     maintainers = { '@amaanq' },
@@ -1076,7 +1076,7 @@ return {
   },
   javadoc = {
     install_info = {
-      revision = '001a8e4f8e839b640201c49046fbf5957fe1ee2c',
+      revision = 'c1bc2b76d8ff9fbc5aed7f823421bd5661f96828',
       url = 'https://github.com/rmuir/tree-sitter-javadoc',
     },
     maintainers = { '@rmuir' },
@@ -1400,7 +1400,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = '56753db408dbcc098e514c73cbb2351d344039e0',
+      revision = '0f77bc710f61ec6be658ddf51851b2ed2cdaa20d',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     maintainers = { '@artagnon' },
@@ -1506,7 +1506,7 @@ return {
   ocaml = {
     install_info = {
       location = 'grammars/ocaml',
-      revision = '029b1b6a87a8f1e8a9a7913a8a5bdecd36720789',
+      revision = '3ef7c00b29e41e3a0c1d18e82ea37c64d72b93fc',
       url = 'https://github.com/tree-sitter/tree-sitter-ocaml',
     },
     maintainers = { '@undu' },
@@ -1515,7 +1515,7 @@ return {
   ocaml_interface = {
     install_info = {
       location = 'grammars/interface',
-      revision = '029b1b6a87a8f1e8a9a7913a8a5bdecd36720789',
+      revision = '3ef7c00b29e41e3a0c1d18e82ea37c64d72b93fc',
       url = 'https://github.com/tree-sitter/tree-sitter-ocaml',
     },
     maintainers = { '@undu' },
@@ -1807,7 +1807,7 @@ return {
   },
   r = {
     install_info = {
-      revision = '7a7d4e04a325b336d53dbfef508918edba5ba240',
+      revision = '29c816328a086ef056799e3924ef6e09e6a9a8cb',
       url = 'https://github.com/r-lib/tree-sitter-r',
     },
     maintainers = { '@ribru17' },
@@ -2227,7 +2227,7 @@ return {
   },
   t32 = {
     install_info = {
-      revision = '61607b32915fdeda275b2346e6a76a7c9b363251',
+      revision = '15f0032f3eadf95988293338e883c095fd5936f6',
       url = 'https://gitlab.com/xasc/tree-sitter-t32',
     },
     maintainers = { '@xasc' },
@@ -2268,7 +2268,7 @@ return {
   },
   templ = {
     install_info = {
-      revision = '5504cc96fbf5c9a029add2dfcb6e585e8fdaad75',
+      revision = 'de35706f89beed5087670a9c4421b7794ef02411',
       url = 'https://github.com/vrischmann/tree-sitter-templ',
     },
     maintainers = { '@vrischmann' },
@@ -2593,7 +2593,7 @@ return {
   },
   xresources = {
     install_info = {
-      revision = 'd09b560bb78a3304211db5110f9bd6b053becba4',
+      revision = '7e9f6fa9a6e9e4e5ced1683afc89a0d5b32a4ebc',
       url = 'https://github.com/ValdezFOmar/tree-sitter-xresources',
     },
     maintainers = { '@ValdezFOmar' },
