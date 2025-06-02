@@ -9,9 +9,9 @@
   "__asm__"
 ] @keyword
 
-"auto" @keyword.type
+(type_identifier) @keyword.type
 
-"extrn" @keyword.type
+"auto" @keyword.type
 
 (alignof_expression
   .
@@ -27,8 +27,6 @@
   "case"
   "switch"
 ] @keyword.conditional
-
-"extrn" @keyword.import
 
 [
   ";"
@@ -133,11 +131,6 @@
   type: (type_identifier) @_type
   declarator: (identifier) @label
   (#eq? @_type "__label__"))
-
-[
-  (type_identifier)
-  (type_descriptor)
-] @type
 
 (storage_class_specifier) @keyword.modifier
 
