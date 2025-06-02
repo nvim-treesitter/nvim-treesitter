@@ -1432,7 +1432,7 @@ return {
   },
   nickel = {
     install_info = {
-      revision = 'f77c02df6dd0845594846beeeedf3715d4b68758',
+      revision = '9a05ab045c000cf37f02cff5c4de32b081444244',
       url = 'https://github.com/nickel-lang/tree-sitter-nickel',
     },
     tier = 2,
