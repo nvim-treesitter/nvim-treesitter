@@ -18,7 +18,7 @@ return {
   },
   angular = {
     install_info = {
-      revision = '843525141575e397541e119698f0532755e959f6',
+      revision = '820566bb4eb3d288822dbfee42417a5a9491aea6',
       url = 'https://github.com/dlvandenberg/tree-sitter-angular',
     },
     maintainers = { '@dlvandenberg' },
@@ -77,7 +77,7 @@ return {
   },
   bash = {
     install_info = {
-      revision = '0c46d792d54c536be5ff7eb18eb95c70fccdb232',
+      revision = '8509e3229b863c255ab6b61f3bf74ad0bf14e8bc',
       url = 'https://github.com/tree-sitter/tree-sitter-bash',
     },
     maintainers = { '@TravonteD' },
@@ -419,7 +419,7 @@ return {
   dtd = {
     install_info = {
       location = 'dtd',
-      revision = '291b02018c525abe70fec41559cfe8f2f1cc84b2',
+      revision = '87be254e12169240a0e0214dbee5e208df96fa75',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-xml',
     },
     maintainers = { '@ObserverOfTime' },
@@ -1003,7 +1003,7 @@ return {
   },
   hyprlang = {
     install_info = {
-      revision = 'd0441fd4b883ecc0e70140723a1cf5907992639a',
+      revision = 'd626ec06e4d876fc41200a30b3e6f2b4714c7367',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-hyprlang',
     },
     maintainers = { '@luckasRanarison' },
@@ -1027,7 +1027,7 @@ return {
   },
   ini = {
     install_info = {
-      revision = '0e152b17fc0e929dd71f4bc4e317b3421ed39029',
+      revision = '31899dfa3b91622ea39e5c0bcddc88f45a9a3cfe',
       url = 'https://github.com/justinmk/tree-sitter-ini',
     },
     maintainers = { '@theHamsta' },
@@ -1076,7 +1076,7 @@ return {
   },
   javadoc = {
     install_info = {
-      revision = 'c1bc2b76d8ff9fbc5aed7f823421bd5661f96828',
+      revision = 'ddf03959c0152bb61ed567f301ad6ecdab72f6ab',
       url = 'https://github.com/rmuir/tree-sitter-javadoc',
     },
     maintainers = { '@rmuir' },
@@ -1480,7 +1480,7 @@ return {
   },
   nu = {
     install_info = {
-      revision = 'd5c71a10b4d1b02e38967b05f8de70e847448dd1',
+      revision = '100d06e29d13a8ebfc3f29173c07a5c4f2050586',
       url = 'https://github.com/nushell/tree-sitter-nu',
     },
     maintainers = { '@abhisheksingh0x558' },
@@ -1575,7 +1575,7 @@ return {
   php = {
     install_info = {
       location = 'php',
-      revision = 'eb289f127fc341ae7129902a2dd1c6c197a4c1e7',
+      revision = 'e771eb9fb5ccc65af35879487b66751568d10e48',
       url = 'https://github.com/tree-sitter/tree-sitter-php',
     },
     maintainers = { '@tk-shirasaka', '@calebdw' },
@@ -1586,7 +1586,7 @@ return {
   php_only = {
     install_info = {
       location = 'php_only',
-      revision = 'eb289f127fc341ae7129902a2dd1c6c197a4c1e7',
+      revision = 'e771eb9fb5ccc65af35879487b66751568d10e48',
       url = 'https://github.com/tree-sitter/tree-sitter-php',
     },
     maintainers = { '@tk-shirasaka', '@calebdw' },
@@ -1798,7 +1798,7 @@ return {
   },
   query = {
     install_info = {
-      revision = '8bf3112db43bdba3002bb1f88b7cda5f6278fc88',
+      revision = '55baffbdc6bd00bf177b796950497a01bb496241',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-query',
     },
     maintainers = { '@steelsojka' },
@@ -1975,7 +1975,7 @@ return {
   },
   scala = {
     install_info = {
-      revision = 'c1189954df854977c3a52003ca8a247c5f4729ba',
+      revision = 'a2e91c845064bb4031e31b103e32bcdaefeea139',
       url = 'https://github.com/tree-sitter/tree-sitter-scala',
     },
     maintainers = { '@stevanmilic' },
@@ -2019,7 +2019,7 @@ return {
   },
   slang = {
     install_info = {
-      revision = '327b1b821c255867a4fb724c8eee48887e3d014b',
+      revision = 'a4454e3004a9e8fea2df7fd2535fbaa05500da21',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-slang',
     },
     maintainers = { '@theHamsta' },
@@ -2584,7 +2584,7 @@ return {
   xml = {
     install_info = {
       location = 'xml',
-      revision = '291b02018c525abe70fec41559cfe8f2f1cc84b2',
+      revision = '87be254e12169240a0e0214dbee5e208df96fa75',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-xml',
     },
     maintainers = { '@ObserverOfTime' },
