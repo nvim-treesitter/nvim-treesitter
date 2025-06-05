@@ -5,9 +5,6 @@
 (entry
   key: (identifier) @property)
 
-(localized_key
-  name: (identifier) @property)
-
 [
   (language)
   (country)

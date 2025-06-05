@@ -346,7 +346,7 @@ return {
   },
   desktop = {
     install_info = {
-      revision = '6eb323a20db2f1e8736c3a05915afe1687283965',
+      revision = 'b2cad1212116f23b3e8d0607b628bc6f72224c51',
       url = 'https://github.com/ValdezFOmar/tree-sitter-desktop',
     },
     maintainers = { '@ValdezFOmar' },
