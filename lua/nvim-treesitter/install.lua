@@ -416,7 +416,9 @@ local function try_install_lang(lang, cache_dir, install_dir, generate)
       query_src = fs.joinpath(fs.normalize(repo.path), repo.queries)
       task = do_link_queries
     elseif repo and repo.queries then -- copy queries from tarball
-      query_src = fs.joinpath(cache_dir, project_name, repo.queries)
+      -- Allow for absolute paths.
+      query_src = vim.startswith(repo.queries, '/') and repo.queries
+        or fs.joinpath(cache_dir, project_name, repo.queries)
       task = do_copy_queries
     elseif uv.fs_stat(query_src) then -- link queries from runtime
       task = do_link_queries
