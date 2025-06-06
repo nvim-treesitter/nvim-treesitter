@@ -1022,7 +1022,6 @@ return {
       revision = 'c56a25cf57c68ff929356db25505c1cc4c7820f6',
       url = 'https://github.com/kayhide/tree-sitter-idris',
     },
-    maintainers = { '@srghma' },
     tier = 2,
   },
   ini = {
@@ -1039,14 +1038,6 @@ return {
       url = 'https://github.com/inko-lang/tree-sitter-inko',
     },
     maintainers = { '@yorickpeterse' },
-    tier = 2,
-  },
-  ipkg = {
-    install_info = {
-      revision = '8d3e9782f2d091d0cd39c13bfb3068db0c675960',
-      url = 'https://github.com/srghma/tree-sitter-ipkg',
-    },
-    maintainers = { '@srghma' },
     tier = 2,
   },
   ispc = {
