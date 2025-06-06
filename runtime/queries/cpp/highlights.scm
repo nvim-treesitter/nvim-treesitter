@@ -154,6 +154,11 @@
   (field_expression
     (field_identifier) @function.method.call))
 
+(call_expression
+  (field_expression
+    (template_method
+      (field_identifier) @function.method.call)))
+
 ; constructors
 ((function_declarator
   (qualified_identifier
