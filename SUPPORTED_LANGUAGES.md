@@ -61,7 +61,7 @@ Language | Tier | Queries | Node | Maintainer
 [disassembly](https://github.com/ColinKennedy/tree-sitter-disassembly) | unstable | `H  J ` |   | @ColinKennedy
 [djot](https://github.com/treeman/tree-sitter-djot) | unstable | `HFIJL` |   | @NoahTheDuke
 [dockerfile](https://github.com/camdencheek/tree-sitter-dockerfile) | unstable | `H  J ` |   | @camdencheek
-[dot](https://github.com/rydesun/tree-sitter-dot) | unstable | `H IJ ` |   | @rydesun
+[dot](https://github.com/rydesun/tree-sitter-dot) | unstable | `HFIJ ` |   | @rydesun
 [doxygen](https://github.com/tree-sitter-grammars/tree-sitter-doxygen) | unstable | `H IJ ` |   | @amaanq
 [dtd](https://github.com/tree-sitter-grammars/tree-sitter-xml) | unstable | `HF JL` |   | @ObserverOfTime
 [earthfile](https://github.com/glehmann/tree-sitter-earthfile) | unstable | `H  J ` |   | @glehmann
