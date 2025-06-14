@@ -27,11 +27,6 @@
   (feature_name)
 ] @property
 
-[
-  (nesting_selector)
-  (universal_selector)
-] @character.special
-
 (function_name) @function
 
 [
@@ -57,6 +52,11 @@
 ] @keyword.operator
 
 (important) @keyword.modifier
+
+[
+  (nesting_selector)
+  (universal_selector)
+] @character.special
 
 (attribute_selector
   (plain_value) @string)
