@@ -44,11 +44,8 @@
   "protected"
   "public"
   "readonly"
-  (static_modifier)
+  "static"
 ] @keyword.modifier
-
-(function_static_declaration
-  "static" @keyword.modifier)
 
 [
   "return"
@@ -107,7 +104,7 @@
 
 [
   (php_tag)
-  "?>"
+  (php_end_tag)
   "("
   ")"
   "["
@@ -477,3 +474,9 @@
 (comment) @comment @spell
 
 (named_label_statement) @label
+
+(property_hook
+  (name) @label)
+
+(visibility_modifier
+  (operation) @label)
