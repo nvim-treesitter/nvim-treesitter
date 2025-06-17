@@ -1574,7 +1574,7 @@ return {
   php = {
     install_info = {
       location = 'php',
-      revision = 'b2278dbac9d58b02653fe6a8530ccebc492e4ed4',
+      revision = '182f034cd19a2f41f751eee0d57378fbfc96ab3a',
       url = 'https://github.com/tree-sitter/tree-sitter-php',
     },
     maintainers = { '@tk-shirasaka', '@calebdw' },
@@ -1585,7 +1585,7 @@ return {
   php_only = {
     install_info = {
       location = 'php_only',
-      revision = 'b2278dbac9d58b02653fe6a8530ccebc492e4ed4',
+      revision = '182f034cd19a2f41f751eee0d57378fbfc96ab3a',
       url = 'https://github.com/tree-sitter/tree-sitter-php',
     },
     maintainers = { '@tk-shirasaka', '@calebdw' },
