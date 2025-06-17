@@ -1739,7 +1739,7 @@ return {
   },
   purescript = {
     install_info = {
-      revision = '603daa9178bcef3386b3040d86435794965fc6f2',
+      revision = '03bafc129e390d65178caaa72d8a1b91439d170e',
       url = 'https://github.com/postsolar/tree-sitter-purescript',
     },
     maintainers = { '@postsolar' },
