@@ -346,7 +346,7 @@ return {
   },
   desktop = {
     install_info = {
-      revision = '35db988d318c0ddfb8445adec1fd006095e73d89',
+      revision = '5fc42b211b261d7c10f97f2c7fa9665cd0d3c8a0',
       url = 'https://github.com/ValdezFOmar/tree-sitter-desktop',
     },
     maintainers = { '@ValdezFOmar' },
@@ -449,7 +449,7 @@ return {
   },
   editorconfig = {
     install_info = {
-      revision = 'cbe0d13e8d67d3a97856f29e5b1d4233cbf32577',
+      revision = '9281e7d8522cc0d06b61f97920e27936fa12be11',
       url = 'https://github.com/ValdezFOmar/tree-sitter-editorconfig',
     },
     maintainers = { '@ValdezFOmar' },
@@ -898,7 +898,7 @@ return {
   },
   hcl = {
     install_info = {
-      revision = '28e327cd3f5be4816020b1230c0602a6deb40290',
+      revision = 'fad991865fee927dd1de5e172fb3f08ac674d914',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-hcl',
     },
     maintainers = { '@MichaHoffmann' },
@@ -1067,7 +1067,7 @@ return {
   },
   javadoc = {
     install_info = {
-      revision = '573ff1f5e909daade4fba984fc5e8b14afe278ef',
+      revision = '3f2ed5575909874927489d2d47a3a2fda36959ee',
       url = 'https://github.com/rmuir/tree-sitter-javadoc',
     },
     maintainers = { '@rmuir' },
@@ -1339,7 +1339,7 @@ return {
   markdown = {
     install_info = {
       location = 'tree-sitter-markdown',
-      revision = '9dca2b6834df9be17bed2ec0fc05c215fa10acf3',
+      revision = '7462bb66ac7e90312082269007fac2772fe5efd1',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-markdown',
     },
     maintainers = { '@MDeiml' },
@@ -1350,7 +1350,7 @@ return {
   markdown_inline = {
     install_info = {
       location = 'tree-sitter-markdown-inline',
-      revision = '9dca2b6834df9be17bed2ec0fc05c215fa10acf3',
+      revision = '7462bb66ac7e90312082269007fac2772fe5efd1',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-markdown',
     },
     maintainers = { '@MDeiml' },
@@ -1359,7 +1359,7 @@ return {
   },
   matlab = {
     install_info = {
-      revision = 'a419361e4a6f2ec435dac4465fb0c0e5b2446b08',
+      revision = 'd5fd97c7aec0881d3429642a240ad536c74582b9',
       url = 'https://github.com/acristoffers/tree-sitter-matlab',
     },
     maintainers = { '@acristoffers' },
@@ -1471,7 +1471,7 @@ return {
   },
   nu = {
     install_info = {
-      revision = '100d06e29d13a8ebfc3f29173c07a5c4f2050586',
+      revision = '7983592fe54750b750f2ee9dc8e89449257855d4',
       url = 'https://github.com/nushell/tree-sitter-nu',
     },
     maintainers = { '@abhisheksingh0x558' },
@@ -1789,7 +1789,7 @@ return {
   },
   query = {
     install_info = {
-      revision = '2b3669919b22f1a6e5bfcf3753caaa63fd14e8ec',
+      revision = '8a43889f89fd0667289936341bff3a77bafade17',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-query',
     },
     maintainers = { '@steelsojka' },
@@ -2027,7 +2027,7 @@ return {
   },
   slint = {
     install_info = {
-      revision = 'cd04d91ff4eaff3467a6a0968e29fa9e4ac8f024',
+      revision = '03f24aa22d6712f79004286df6dd416ca6d2a91d',
       url = 'https://github.com/slint-ui/tree-sitter-slint',
     },
     maintainers = { '@hunger' },
@@ -2259,7 +2259,7 @@ return {
   },
   templ = {
     install_info = {
-      revision = 'de35706f89beed5087670a9c4421b7794ef02411',
+      revision = 'a35a02cb608291ac8c12082dcbd2b5f34a7ad45f',
       url = 'https://github.com/vrischmann/tree-sitter-templ',
     },
     maintainers = { '@vrischmann' },
@@ -2267,7 +2267,7 @@ return {
   },
   tera = {
     install_info = {
-      revision = 'd006172998fa8b81f96b0f2fc7fa2bf25207c46b',
+      revision = '53ca9100f231b72474225d98c9e53d1a4275046d',
       url = 'https://github.com/uncenter/tree-sitter-tera',
     },
     maintainers = { '@uncenter' },
@@ -2276,7 +2276,7 @@ return {
   terraform = {
     install_info = {
       location = 'dialects/terraform',
-      revision = '28e327cd3f5be4816020b1230c0602a6deb40290',
+      revision = 'fad991865fee927dd1de5e172fb3f08ac674d914',
       url = 'https://github.com/MichaHoffmann/tree-sitter-hcl',
     },
     maintainers = { '@MichaHoffmann' },
@@ -2484,7 +2484,7 @@ return {
   },
   vhdl = {
     install_info = {
-      revision = '5840549516f2faf8c45cae5a3b16c1b81a2498a1',
+      revision = 'eacafa5d612fdea1d12332fe0f83e089e5571cf3',
       url = 'https://github.com/jpt13653903/tree-sitter-vhdl',
     },
     maintainers = { '@jpt13653903' },
@@ -2584,7 +2584,7 @@ return {
   },
   xresources = {
     install_info = {
-      revision = '45c020e74e924d8e3a0656a0dbe18688c063f5f0',
+      revision = '65d52b286af0b2dd7153e045869a566b33a28f44',
       url = 'https://github.com/ValdezFOmar/tree-sitter-xresources',
     },
     maintainers = { '@ValdezFOmar' },
