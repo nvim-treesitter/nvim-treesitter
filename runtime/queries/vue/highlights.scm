@@ -41,3 +41,6 @@
     (attribute_value) @none))
 
 (directive_modifier) @function.method
+
+((template_element) @_template
+  (#set! @_template bo.commentstring "<!-- %s -->"))
