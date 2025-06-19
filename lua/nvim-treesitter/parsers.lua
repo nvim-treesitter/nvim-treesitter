@@ -2090,6 +2090,16 @@ list.scss = {
   maintainers = { "@elianiva" },
 }
 
+list.seed7 = {
+  install_info = {
+    url = "https://github.com/Aliqyan-21/tree-sitter-seed7",
+    branch = "main",
+    files = { "src/parser.c" },
+  },
+  filetype = "sd7",
+  maintainers = { "@aliqyan-21" },
+}
+
 list.sflog = {
   install_info = {
     url = "https://github.com/aheber/tree-sitter-sfapex",
