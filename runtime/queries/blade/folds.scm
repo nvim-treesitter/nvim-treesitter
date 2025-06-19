@@ -1,5 +1,6 @@
+; inherits: html
+
 [
-  (authorization)
   (conditional)
   (envoy)
   (fragment)

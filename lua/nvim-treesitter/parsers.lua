@@ -125,7 +125,7 @@ return {
   },
   blade = {
     install_info = {
-      revision = 'fbe5f81b54f0f6153961824ce306ffc805134980',
+      revision = '5dd29dd50fa6c3de0bb5a2d24ec03f99ddb960bf',
       url = 'https://github.com/EmranMR/tree-sitter-blade',
     },
     maintainers = { '@calebdw' },

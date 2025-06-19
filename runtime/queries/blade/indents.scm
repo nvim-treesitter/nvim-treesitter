@@ -1,3 +1,15 @@
-(directive_start) @indent.begin
+; inherits: html
 
-(directive_end) @indent.end
+[
+  (conditional)
+  (envoy)
+  (fragment)
+  (livewire)
+  (loop)
+  (once)
+  (php_statement)
+  (section)
+  (stack)
+  (switch)
+  (verbatim)
+] @indent.begin
