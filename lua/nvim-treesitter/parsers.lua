@@ -709,7 +709,7 @@ return {
   },
   gleam = {
     install_info = {
-      revision = '6ece453acf8b14568c10f629f8cd25d3dde3794f',
+      revision = 'ee93c639dc82148d716919df336ad612fd33538e',
       url = 'https://github.com/gleam-lang/tree-sitter-gleam',
     },
     maintainers = { '@amaanq' },
@@ -906,7 +906,7 @@ return {
   },
   heex = {
     install_info = {
-      revision = '008626a3fad379d17c81d5ed576edd9bd7a4fbf7',
+      revision = '6603380caf806b3e6c7f0bf61627bb47023d79f1',
       url = 'https://github.com/connorlay/tree-sitter-heex',
     },
     maintainers = { '@connorlay' },
@@ -1232,7 +1232,7 @@ return {
   latex = {
     install_info = {
       generate = true,
-      revision = '8e130cd5394487f5b686fbbb547f4ad7dbe811db',
+      revision = '73c9b8992f72203386092ffd2a05f2dcba02d2cb',
       url = 'https://github.com/latex-lsp/tree-sitter-latex',
     },
     maintainers = { '@theHamsta', '@clason' },
@@ -1471,7 +1471,7 @@ return {
   },
   nu = {
     install_info = {
-      revision = '7983592fe54750b750f2ee9dc8e89449257855d4',
+      revision = 'b64f0d1c93a76d167fabb01271905f0d18c5f10c',
       url = 'https://github.com/nushell/tree-sitter-nu',
     },
     maintainers = { '@abhisheksingh0x558' },
@@ -1739,7 +1739,7 @@ return {
   },
   purescript = {
     install_info = {
-      revision = '03bafc129e390d65178caaa72d8a1b91439d170e',
+      revision = 'f541f95ffd6852fbbe88636317c613285bc105af',
       url = 'https://github.com/postsolar/tree-sitter-purescript',
     },
     maintainers = { '@postsolar' },
@@ -2386,7 +2386,7 @@ return {
   },
   typespec = {
     install_info = {
-      revision = 'b6b6a66a18e98f44cc2f2cdbfd2e1df845b59852',
+      revision = '814c98283fd92a248ba9d49ebfe61bc672a35875',
       url = 'https://github.com/happenslol/tree-sitter-typespec',
     },
     maintainers = { '@happenslol' },
