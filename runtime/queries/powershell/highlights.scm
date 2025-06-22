@@ -63,11 +63,6 @@
 "return" @keyword.return
 
 [
-  "class"
-  "enum"
-] @keyword.type
-
-[
   "data"
   (class_attribute)
 ] @keyword.modifier

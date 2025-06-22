@@ -1637,7 +1637,7 @@ return {
   powershell = {
     filetype = 'ps1',
     install_info = {
-      revision = '66d5e61126989c0aca57ff77d19b2064919b51e1',
+      revision = '01b67e81917482fb714409a40a8fea8fe21c42f6',
       url = 'https://github.com/airbus-cert/tree-sitter-powershell',
     },
     maintainers = { '@L2jLiga' },
