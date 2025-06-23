@@ -158,25 +158,14 @@
 ; See https://docs.swift.org/swift-book/documentation/the-swift-programming-language/lexicalstructure/#Keywords-and-Punctuation
 [
   (diagnostic)
-  "#available"
-  "#unavailable"
-  "#fileLiteral"
-  "#colorLiteral"
-  "#imageLiteral"
-  "#keyPath"
-  "#selector"
-  "#externalMacro"
+  (availability_condition)
+  (playground_literal)
+  (key_path_string_expression)
+  (selector_expression)
+  (external_macro_definition)
 ] @function.macro
 
-[
-  "#column"
-  "#dsohandle"
-  "#fileID"
-  "#filePath"
-  "#file"
-  "#function"
-  "#line"
-] @constant.macro
+(special_literal) @constant.macro
 
 ; Statements
 (for_statement
