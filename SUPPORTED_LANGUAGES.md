@@ -281,6 +281,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` |   | @steelsojka
 [swift](https://github.com/alex-pinkus/tree-sitter-swift) | unstable | `HFIJL` |   | @alex-pinkus
 [sxhkdrc](https://github.com/RaafatTurki/tree-sitter-sxhkdrc) | unstable | `HF J ` |   | @RaafatTurki
 [systemtap](https://github.com/ok-ryoko/tree-sitter-systemtap) | unstable | `HF JL` |   | @ok-ryoko
+[systemverilog](https://github.com/gmlarumbe/tree-sitter-systemverilog) | unstable | `HF J ` |   | @zhangwwpeng
 [t32](https://gitlab.com/xasc/tree-sitter-t32) | unstable | `HFIJL` |   | @xasc
 [tablegen](https://github.com/tree-sitter-grammars/tree-sitter-tablegen) | unstable | `HFIJL` |   | @amaanq
 [tact](https://github.com/tact-lang/tree-sitter-tact) | unstable | `HFIJL` |   | @novusnota
@@ -312,7 +313,6 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` |   | @steelsojka
 [v](https://github.com/vlang/v-analyzer) | unstable | `HFIJL` |   | @kkharji, @amaanq
 [vala](https://github.com/vala-lang/tree-sitter-vala) | unstable | `HF J ` |   | @Prince781
 [vento](https://github.com/ventojs/tree-sitter-vento) | unstable | `H  J ` |   | @wrapperup, @oscarotero
-[verilog](https://github.com/gmlarumbe/tree-sitter-systemverilog) | unstable | `HF J ` |   | @zhangwwpeng
 [vhdl](https://github.com/jpt13653903/tree-sitter-vhdl) | unstable | `HF J ` |   | @jpt13653903
 [vhs](https://github.com/charmbracelet/tree-sitter-vhs) | unstable | `H  J ` |   | @caarlos0
 [vim](https://github.com/tree-sitter-grammars/tree-sitter-vim) | unstable | `HF JL` |   | @clason

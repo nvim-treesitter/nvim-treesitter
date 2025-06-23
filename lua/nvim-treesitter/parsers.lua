@@ -2215,6 +2215,14 @@ return {
     maintainers = { '@ok-ryoko' },
     tier = 2,
   },
+  systemverilog = {
+    install_info = {
+      revision = 'a412f4a00a6e56c65f519117969c926c35e80ce4',
+      url = 'https://github.com/gmlarumbe/tree-sitter-systemverilog',
+    },
+    maintainers = { '@zhangwwpeng' },
+    tier = 2,
+  },
   t32 = {
     install_info = {
       revision = '15f0032f3eadf95988293338e883c095fd5936f6',
@@ -2471,14 +2479,6 @@ return {
       url = 'https://github.com/ventojs/tree-sitter-vento',
     },
     maintainers = { '@wrapperup', '@oscarotero' },
-    tier = 2,
-  },
-  verilog = {
-    install_info = {
-      revision = 'ba3c1e305caf948f718293c86c6018a82ed5043e',
-      url = 'https://github.com/gmlarumbe/tree-sitter-systemverilog',
-    },
-    maintainers = { '@zhangwwpeng' },
     tier = 2,
   },
   vhdl = {
