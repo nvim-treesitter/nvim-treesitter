@@ -33,6 +33,7 @@ local filetypes = {
   ocaml_interface = { 'ocamlinterface' },
   perl = { 'pl' },
   poe_filter = { 'poefilter' },
+  powershell = { 'ps1' },
   properties = { 'jproperties' },
   python = { 'py', 'gyp' },
   qmljs = { 'qml' },
