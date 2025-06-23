@@ -2562,7 +2562,7 @@ return {
       url = 'https://github.com/liamwh/tree-sitter-wit',
     },
     maintainers = { '@liamwh' },
-    tier = 2,
+    tier = 3,
   },
   xcompose = {
     install_info = {
