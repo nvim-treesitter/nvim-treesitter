@@ -135,7 +135,8 @@ function M.check()
   -- Parser installation checks
   health.start('Installed languages' .. string.rep(' ', 5) .. 'H L F I J')
   local languages = config.get_installed()
-  for _, lang in pairs(languages) do
+  table.sort(languages)
+  for _, lang in ipairs(languages) do
     local parser = parsers[lang]
     local out = lang .. string.rep(' ', 22 - #lang)
     if parser and parser.install_info then
