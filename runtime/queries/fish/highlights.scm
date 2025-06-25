@@ -117,10 +117,10 @@
   name: [
     (word) @function.builtin
     (#any-of? @function.builtin
-      "." ":" "_" "alias" "argparse" "bg" "bind" "block" "breakpoint" "builtin" "cd" "command"
-      "commandline" "complete" "contains" "count" "disown" "echo" "emit" "eval" "exec" "exit" "fg"
-      "functions" "history" "isatty" "jobs" "math" "printf" "pwd" "random" "read" "realpath" "set"
-      "set_color" "source" "status" "string" "test" "time" "type" "ulimit" "wait")
+      "." ":" "_" "abbr" "alias" "argparse" "bg" "bind" "block" "breakpoint" "builtin" "cd"
+      "command" "commandline" "complete" "contains" "count" "disown" "echo" "emit" "eval" "exec"
+      "exit" "fg" "functions" "history" "isatty" "jobs" "math" "path" "printf" "pwd" "random" "read"
+      "realpath" "set" "set_color" "source" "status" "string" "test" "time" "type" "ulimit" "wait")
   ])
 
 ; Functions
@@ -179,11 +179,12 @@
     "fish_term24bit" "fish_term256" "fish_ambiguous_width" "fish_emoji_width"
     "fish_autosuggestion_enabled" "fish_handle_reflow" "fish_key_bindings" "fish_escape_delay_ms"
     "fish_sequence_key_delay_ms" "fish_complete_path" "fish_cursor_selection_mode"
-    "fish_function_path" "fish_greeting" "fish_history" "fish_trace" "FISH_DEBUG"
-    "FISH_DEBUG_OUTPUT" "fish_user_paths" "umask" "BROWSER" "_" "argv" "CMD_DURATION" "COLUMNS"
-    "LINES" "fish_kill_signal" "fish_killring" "fish_read_limit" "fish_pid" "history" "HOME"
-    "hostname" "IFS" "last_pid" "PWD" "pipestatus" "SHLVL" "status" "status_generation" "TERM"
-    "USER" "EUID" "version" "FISH_VERSION"))
+    "fish_cursor_default" "fish_cursor_insert" "fish_cursor_replace" "fish_cursor_replace_one"
+    "fish_cursor_visual" "fish_cursor_external" "fish_function_path" "fish_greeting" "fish_history"
+    "fish_trace" "FISH_DEBUG" "FISH_DEBUG_OUTPUT" "fish_user_paths" "umask" "BROWSER" "_" "argv"
+    "CMD_DURATION" "COLUMNS" "LINES" "fish_kill_signal" "fish_killring" "fish_read_limit" "fish_pid"
+    "history" "HOME" "hostname" "IFS" "last_pid" "PWD" "pipestatus" "SHLVL" "status"
+    "status_generation" "TERM" "USER" "EUID" "version" "FISH_VERSION"))
 
 ; Nodes
 [
