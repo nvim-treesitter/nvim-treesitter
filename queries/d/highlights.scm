@@ -265,6 +265,9 @@
   (creal)
   (double)
   (cfloat)
+  (string)
+  (dstring)
+  (wstring)
 ] @type.builtin
 
 ; Functions
