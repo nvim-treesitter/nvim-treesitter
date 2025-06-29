@@ -14,4 +14,5 @@
   (function_static_declaration)
   (method_declaration)
   (namespace_use_declaration)+
+  (array_creation_expression)
 ] @fold
