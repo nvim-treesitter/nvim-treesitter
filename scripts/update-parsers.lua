@@ -83,6 +83,7 @@ if #updates > 0 then
   end
   util.write_file('lua/nvim-treesitter/parsers.lua', parser_file)
 
+  table.sort(updates)
   local update_list = table.concat(updates, ', ')
   print(string.format('\nUpdated parsers: %s', update_list))
   -- pass list to workflow
