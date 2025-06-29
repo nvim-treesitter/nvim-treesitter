@@ -345,11 +345,34 @@ The valid captures are:
 
 ### Folds
 
-You can define folds for a given language by adding a `folds.scm` query. This is implemented in Neovim. The only valid capture is
+You can define folds for a given language by adding a `folds.scm` query. This is implemented in Neovim. The only valid capture is `@fold`:
 
 ```query
-@fold ; fold this node
+(function_definition) @fold ; fold this node
 ```
+
+Folds should be given to nodes with defined start and end delimiters/patterns, or to consecutive nodes which are part of the same conceptual "grouping", such as consecutive line comments or import statements. The following items are valid fold candidates:
+
+- Function/method definitions
+- Class/interface/trait definitions
+- Switch/match statements, and individual match arms
+- Execution blocks (such as those found in conditional statements or loops)
+- Parameter/argument lists
+- Array/object/string expressions
+- Consecutive import statements, consecutive line comments
+
+The following items would *not* be valid fold candidates:
+
+- Multiline assignment statements
+- Multiline property access expressions
+
+As a rule of thumb, these highlight captures usually reside in or around objects which should be folded:
+
+- `@function`, `@function.method`
+- `@keyword.import`, `@keyword.conditional`, `@keyword.repeat`
+- `@comment`, `@comment.documentation`
+- `@string`, `@string.documentation`
+- `@markup.heading.x`, `@markup.list`
 
 ### Indents
 
