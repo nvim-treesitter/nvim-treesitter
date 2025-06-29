@@ -15,4 +15,5 @@
   (method_declaration)
   (namespace_use_declaration)+
   (array_creation_expression)
+  (match_expression)
 ] @fold
