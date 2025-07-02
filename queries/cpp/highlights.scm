@@ -226,6 +226,12 @@
 ] @keyword.coroutine
 
 [
+  "export"
+  "import"
+  "module"
+] @keyword.import
+
+[
   "public"
   "private"
   "protected"
