@@ -225,6 +225,12 @@
 ] @keyword.type
 
 [
+  "export"
+  "import"
+  "module"
+] @keyword.import
+
+[
   "co_await"
   "co_yield"
   "co_return"
