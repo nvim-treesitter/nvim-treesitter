@@ -1,4 +1,4 @@
-; inherits: ecma,jsx
+; inherits: ecma
 
 ; Both properties are matched here.
 ;
