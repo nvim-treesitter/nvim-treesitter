@@ -87,7 +87,7 @@
 
 (label_definition
   command: _ @function.macro
-  name: (curly_group_text
+  name: (curly_group_label
     (_) @markup.link @nospell))
 
 (label_reference_range
@@ -99,7 +99,7 @@
 
 (label_reference
   command: _ @function.macro
-  names: (curly_group_text_list
+  names: (curly_group_label_list
     (_) @markup.link))
 
 (label_number
