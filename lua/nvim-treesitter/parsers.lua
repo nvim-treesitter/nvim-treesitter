@@ -2499,7 +2499,7 @@ return {
   },
   vim = {
     install_info = {
-      revision = 'ccc312e878aa84f32d180b8528a3585c7b86a545',
+      revision = 'a93e834bea0975ec0ccb3f6d18540e9bd8170a4d',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-vim',
     },
     maintainers = { '@clason' },
