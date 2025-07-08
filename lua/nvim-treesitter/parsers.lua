@@ -2632,7 +2632,7 @@ return {
   ziggy = {
     install_info = {
       location = 'tree-sitter-ziggy',
-      revision = 'fe3bf9389e7ff213cf3548caaf9c6f3d4bb38647',
+      revision = 'eeb21acc0a369dca503167fe963f4f5a7eda2659',
       url = 'https://github.com/kristoff-it/ziggy',
     },
     maintainers = { '@rockorager' },
@@ -2641,7 +2641,7 @@ return {
   ziggy_schema = {
     install_info = {
       location = 'tree-sitter-ziggy-schema',
-      revision = 'fe3bf9389e7ff213cf3548caaf9c6f3d4bb38647',
+      revision = 'eeb21acc0a369dca503167fe963f4f5a7eda2659',
       url = 'https://github.com/kristoff-it/ziggy',
     },
     maintainers = { '@rockorager' },
