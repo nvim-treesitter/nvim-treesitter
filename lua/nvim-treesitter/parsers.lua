@@ -550,6 +550,14 @@ return {
     maintainers = { '@alexmozaidze' },
     tier = 2,
   },
+  fga = {
+    install_info = {
+      revision = '44bfe4e15dc11969f1a23e5f0fa9d8e961268721',
+      url = 'https://github.com/matoous/tree-sitter-fga',
+    },
+    maintainers = { '@matoous' },
+    tier = 2,
+  },
   fidl = {
     install_info = {
       revision = '0a8910f293268e27ff554357c229ba172b0eaed2',
