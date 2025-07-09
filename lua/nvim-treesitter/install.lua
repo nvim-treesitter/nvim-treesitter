@@ -456,7 +456,6 @@ local install_status = {} ---@type table<string,InstallStatus?>
 ---@return InstallStatus status
 local function install_lang(lang, cache_dir, install_dir, force, generate)
   if not force and vim.list_contains(config.get_installed(), lang) then
-    install_status[lang] = 'installed'
     return 'installed'
   end
 
@@ -475,6 +474,7 @@ local function install_lang(lang, cache_dir, install_dir, force, generate)
 
   local status = install_status[lang]
   assert(status and status ~= 'installing')
+  install_status[lang] = nil
   return status
 end
 
@@ -570,7 +570,6 @@ end)
 ---@return string? err
 local function uninstall_lang(logger, lang, parser, queries)
   logger:debug('Uninstalling ' .. lang)
-  install_status[lang] = nil
 
   if fn.filereadable(parser) == 1 then
     logger:debug('Unlinking ' .. parser)
