@@ -80,7 +80,7 @@ ecma (queries only)[^ecma] | unstable | `HFIJL` |   | @steelsojka
 [facility](https://github.com/FacilityApi/tree-sitter-facility) | unstable | `HFIJ ` |   | @bryankenote
 [faust](https://github.com/khiner/tree-sitter-faust) | unstable | `H  J ` |   | @khiner
 [fennel](https://github.com/alexmozaidze/tree-sitter-fennel) | unstable | `HF JL` |   | @alexmozaidze
-[fga](https://github.com/matoous/tree-sitter-fga) | unstable | `H    ` |   | @matoous
+[fga](https://github.com/matoous/tree-sitter-fga) | unstable | `H  J ` |   | @matoous
 [fidl](https://github.com/google/tree-sitter-fidl) | unstable | `HF J ` |   | @chaopeng
 [firrtl](https://github.com/tree-sitter-grammars/tree-sitter-firrtl) | unstable | `HFIJL` |   | @amaanq
 [fish](https://github.com/ram02z/tree-sitter-fish) | unstable | `HFIJL` |   | @ram02z
