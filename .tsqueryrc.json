@@ -1,6 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/ribru17/ts_query_ls/refs/heads/master/schemas/config.json",
   "parser_install_directories": ["${HOME}/.local/share/nvim/site/parser"],
+  "supported_abi_versions": {
+    "start": 13,
+    "end": 15
+  },
   "parser_aliases": {
     "html_tags": "html",
     "ecma": "javascript",
