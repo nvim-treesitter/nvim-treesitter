@@ -439,6 +439,7 @@
   "."
   ","
   ":"
+  "::"
 ] @punctuation.delimiter
 
 (conditional_expression
