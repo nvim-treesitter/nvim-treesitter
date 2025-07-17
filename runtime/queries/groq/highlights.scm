@@ -1,75 +1,111 @@
-;; Tree-sitter highlights for GROQ language
-;; This file defines syntax highlighting for GROQ in Neovim
-
-;; Keywords
+; Tree-sitter highlights for GROQ language
+; This file defines syntax highlighting for GROQ in Neovim
+; Keywords
 "select" @keyword
+
 "asc" @keyword
+
 "desc" @keyword
+
 "in" @keyword.operator
+
 "match" @keyword.operator
 
-;; Operators
+; Operators
 "==" @operator
+
 "!=" @operator
+
 ">" @operator
+
 ">=" @operator
+
 "<" @operator
+
 "<=" @operator
+
 "&&" @operator
+
 "||" @operator
+
 "!" @operator
+
 "+" @operator
+
 "-" @operator
+
 "*" @operator
+
 "/" @operator
+
 "%" @operator
+
 "**" @operator
+
 ".." @operator
+
 "..." @operator
+
 "=>" @operator
+
 "->" @operator
+
 "|" @operator
 
-;; Punctuation
+; Punctuation
 "(" @punctuation.bracket
+
 ")" @punctuation.bracket
+
 "[" @punctuation.bracket
+
 "]" @punctuation.bracket
+
 "{" @punctuation.bracket
+
 "}" @punctuation.bracket
+
 "," @punctuation.delimiter
+
 ":" @punctuation.delimiter
+
 "." @punctuation.delimiter
 
-;; Literals
+; Literals
 (string) @string
+
 (number) @number
+
 (true) @boolean
+
 (false) @boolean
+
 (null) @constant.builtin
 
-;; Special references
+; Special references
 (star) @constant.builtin
+
 (parent) @constant.builtin
+
 (this) @constant.builtin
 
-;; Identifiers
+; Identifiers
 (identifier) @variable
 
-;; Parameters
+; Parameters
 (parameter) @variable.parameter
 
-;; Function calls
+; Function calls
 (function_call
   (identifier) @function)
 
 (order_function
   "order" @function.builtin)
 
-;; Comments
+; Comments
 (comment) @comment
 
-;; Projections and objects
+; Projections and objects
 (projection
   "{" @punctuation.bracket
   "}" @punctuation.bracket)
@@ -78,32 +114,34 @@
   "{" @punctuation.bracket
   "}" @punctuation.bracket)
 
-;; Conditional projections
+; Conditional projections
 (conditional_projection
   "=>" @operator)
 
-;; Select statements
+; Select statements
 (select_statement
   "..." @operator
   "select" @keyword
   "=>" @operator)
 
-;; Spread operators
+; Spread operators
 (spread_operator
   "..." @operator)
 
-;; Array access
+; Array access
 (attribute_access
   "." @punctuation.delimiter)
 
-;; String keys in projections/objects
+; String keys in projections/objects
 (pair
-  (literal (string) @property))
+  (literal
+    (string) @property))
 
-;; Highlight field names in projections
-(projection (identifier) @property)
+; Highlight field names in projections
+(projection
+  (identifier) @property)
 
-;; Built-in functions (essential GROQ functions)
+; Built-in functions (essential GROQ functions)
 (function_call
   (identifier) @function.builtin
   (#eq? @function.builtin "count"))
