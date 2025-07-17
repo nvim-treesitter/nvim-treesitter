@@ -857,6 +857,18 @@ return {
     maintainers = { '@murtaza64' },
     tier = 2,
   },
+  groq = {
+    install_info = {
+      path = '~/Documents/open-source/tree-sitter-groq',
+      revision = 'HEAD', -- commit hash for revision to check out; HEAD if missing
+      -- optional entries:
+      branch = 'main', -- only needed if different from default branch
+      generate = false, -- only needed if repo does not contain pre-generated `src/parser.c`
+      generate_from_json = false, -- only needed if repo does not contain `src/grammar.json` either
+    },
+    maintainers = { '@ajrussellaudio' },
+    tier = 2,
+  },
   gstlaunch = {
     install_info = {
       revision = '549aef253fd38a53995cda1bf55c501174372bf7',
