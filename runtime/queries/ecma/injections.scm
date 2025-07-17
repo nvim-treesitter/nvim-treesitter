@@ -48,6 +48,17 @@
   (#offset! @injection.content 0 1 0 -1)
   (#set! injection.include-children))
 
+; Sanity CMS GROQ query
+; defineQuery(`...`)
+(call_expression
+  function: (identifier) @_name
+  (#eq? @_name "defineQuery")
+  arguments: (arguments
+    (template_string) @injection.content)
+  (#offset! @injection.content 0 1 0 -1)
+  (#set! injection.include-children)
+  (#set! injection.language "groq"))
+
 (call_expression
   function: (identifier) @_name
   (#eq? @_name "gql")
