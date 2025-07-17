@@ -859,12 +859,8 @@ return {
   },
   groq = {
     install_info = {
-      path = '~/Documents/open-source/tree-sitter-groq',
-      revision = 'HEAD', -- commit hash for revision to check out; HEAD if missing
-      -- optional entries:
-      branch = 'main', -- only needed if different from default branch
-      generate = false, -- only needed if repo does not contain pre-generated `src/parser.c`
-      generate_from_json = false, -- only needed if repo does not contain `src/grammar.json` either
+      revision = '9959049ddeb4416101653a071ee923ba9f7a5cb1',
+      url = 'https://github.com/ajrussellaudio/tree-sitter-groq',
     },
     maintainers = { '@ajrussellaudio' },
     tier = 2,
