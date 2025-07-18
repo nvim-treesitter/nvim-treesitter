@@ -84,15 +84,6 @@
 ; Comments
 (comment) @comment @spell
 
-; Projections and objects
-(projection
-  "{" @punctuation.bracket
-  "}" @punctuation.bracket)
-
-(object
-  "{" @punctuation.bracket
-  "}" @punctuation.bracket)
-
 ; Conditional projections
 (conditional_projection
   "=>" @operator)
