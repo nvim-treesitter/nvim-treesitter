@@ -125,35 +125,7 @@
 ; Built-in functions (essential GROQ functions)
 (function_call
   (identifier) @function.builtin
-  (#any-of? @function.builtin 
-      "count"
-      "length"
-      "defined"
-      "references"
-      "now"
-      "dateTime"
-      "coalesce"
-      "unique"
-      "max"
-      "min"
-      "sum"
-      "avg"
-      "round"
-      "floor"
-      "ceil"
-      "abs"
-      "sqrt"
-      "upper"
-      "lower"
-      "string"
-      "number"
-      "boolean"
-      "array"
-      "object"
-      "type"
-      "global"
-      "sanity"
-      "path"
-      "delta"
-      "after"
-      "before"))
+  (#any-of? @function.builtin
+    "count" "length" "defined" "references" "now" "dateTime" "coalesce" "unique" "max" "min" "sum"
+    "avg" "round" "floor" "ceil" "abs" "sqrt" "upper" "lower" "string" "number" "boolean" "array"
+    "object" "type" "global" "sanity" "path" "delta" "after" "before"))
