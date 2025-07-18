@@ -18,7 +18,6 @@ local filetypes = {
   git_rebase = { 'gitrebase' },
   glimmer = { 'handlebars', 'html.handlebars' },
   godot_resource = { 'gdresource' },
-  groq = { 'groq' },
   haskell = { 'hs' },
   haskell_persistent = { 'haskellpersistent' },
   idris = { 'idris2' },
