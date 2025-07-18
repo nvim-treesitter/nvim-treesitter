@@ -207,6 +207,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` |   | @steelsojka
 [php_only](https://github.com/tree-sitter/tree-sitter-php)[^php_only] | unstable | `HFIJL` |   | @tk-shirasaka, @calebdw
 [phpdoc](https://github.com/claytonrcarter/tree-sitter-phpdoc) | unstable | `H    ` |   | @mikehaertl
 [pioasm](https://github.com/leo60228/tree-sitter-pioasm) | unstable | `H  J ` |   | @leo60228
+[pkl](https://github.com/apple/tree-sitter-pkl) | unstable | `HF J ` |   | @ribru17
 [po](https://github.com/tree-sitter-grammars/tree-sitter-po) | unstable | `HF J ` |   | @amaanq
 [pod](https://github.com/tree-sitter-perl/tree-sitter-pod) | unstable | `H    ` |   | @RabbiVeesh, @LeoNerd
 [poe_filter](https://github.com/tree-sitter-grammars/tree-sitter-poe-filter)[^poe_filter] | unstable | `HFIJ ` |   | @ObserverOfTime

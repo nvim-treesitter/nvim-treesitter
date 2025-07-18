@@ -1600,6 +1600,14 @@ return {
     maintainers = { '@leo60228' },
     tier = 2,
   },
+  pkl = {
+    install_info = {
+      revision = '4fc94a102c25ea383d70397dac7e677ca3731f1e',
+      url = 'https://github.com/apple/tree-sitter-pkl',
+    },
+    maintainers = { '@ribru17' },
+    tier = 2,
+  },
   po = {
     install_info = {
       revision = 'bd860a0f57f697162bf28e576674be9c1500db5e',
