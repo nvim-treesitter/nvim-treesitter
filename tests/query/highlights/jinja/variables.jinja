@@ -1,0 +1,21 @@
+{{ foo }}
+{# ^^^ @variable #}
+
+{{ foo.bar }}
+{# ^^^ @variable #}
+{#     ^^^ @variable.member #}
+
+{{ foo['bar'] }}
+{# ^^^ @variable #}
+{#     ^^^^^ @string #}
+
+{{ foo.bar.baz }}
+{# ^^^ @variable #}
+{#     ^^^ @variable.member #}
+{#         ^^^ @variable.member #}
+
+{{ foo.bar + baz.qux }}
+{# ^^^ @variable #}
+{#     ^^^ @variable.member #}
+{#           ^^^ @variable #}
+{#               ^^^ @variable.member #}

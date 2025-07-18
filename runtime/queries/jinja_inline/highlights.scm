@@ -71,11 +71,7 @@
   "as"
 ] @keyword.import
 
-(import_statement
-  (identifier) @variable)
-
-(import_as
-  (identifier) @variable)
+(identifier) @variable
 
 [
   "if"
@@ -109,11 +105,33 @@
 
 (expression
   "."
-  (expression)+ @variable.member)
+  (expression
+    (binary_expression
+      .
+      (unary_expression
+        (primary_expression
+          (identifier) @variable.member)))))
+
+(expression
+  "."
+  (expression
+    (binary_expression
+      (binary_expression
+        (unary_expression
+          (primary_expression
+            (identifier) @variable.member))))))
 
 (assignment_expression
   "."
   (identifier)+ @variable.member)
+
+; jinja filters
+(binary_expression
+  (binary_operator
+    "|")
+  (unary_expression
+    (primary_expression
+      (identifier) @function.call)))
 
 (inline_trans
   "_" @function.builtin)
