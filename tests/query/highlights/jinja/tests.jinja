@@ -1,0 +1,13 @@
+{% if loop.index is divisibleby 3 %}
+{#    ^^^^ @variable #}
+{#         ^^^^^ @variable.member #}
+{#                  ^^^^^^^^^^ @keyword.operator #}
+
+{% if loop.index is divisibleby(3) %}
+{#    ^^^^ @variable #}
+{#         ^^^^^ @variable.member #}
+
+{% if foo.bar.baz is divisibleby 3 %}
+{#    ^^^ @variable #}
+{#        ^^^ @variable.member #}
+{#            ^^^ @variable.member #}
