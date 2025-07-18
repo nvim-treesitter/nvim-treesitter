@@ -125,124 +125,35 @@
 ; Built-in functions (essential GROQ functions)
 (function_call
   (identifier) @function.builtin
-  (#eq? @function.builtin "count"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "length"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "defined"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "references"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "now"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "dateTime"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "coalesce"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "unique"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "max"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "min"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "sum"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "avg"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "round"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "floor"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "ceil"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "abs"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "sqrt"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "upper"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "lower"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "string"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "number"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "boolean"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "array"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "object"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "type"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "global"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "sanity"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "path"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "delta"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "after"))
-
-(function_call
-  (identifier) @function.builtin
-  (#eq? @function.builtin "before"))
+  (#any-of? @function.builtin 
+      "count"
+      "length"
+      "defined"
+      "references"
+      "now"
+      "dateTime"
+      "coalesce"
+      "unique"
+      "max"
+      "min"
+      "sum"
+      "avg"
+      "round"
+      "floor"
+      "ceil"
+      "abs"
+      "sqrt"
+      "upper"
+      "lower"
+      "string"
+      "number"
+      "boolean"
+      "array"
+      "object"
+      "type"
+      "global"
+      "sanity"
+      "path"
+      "delta"
+      "after"
+      "before"))
