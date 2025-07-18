@@ -55,18 +55,18 @@
 
 (number) @number
 
-(true) @boolean
-
-(false) @boolean
-
-(null) @constant.builtin
+[
+  (true)
+  (false)
+] @boolean
 
 ; Special references
-(star) @constant.builtin
-
-(parent) @constant.builtin
-
-(this) @constant.builtin
+[
+  (null)
+  (star)
+  (parent)
+  (this)
+] @constant.builtin
 
 ; Identifiers
 (identifier) @variable
