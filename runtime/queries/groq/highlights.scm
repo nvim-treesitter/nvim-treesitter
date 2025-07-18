@@ -84,24 +84,6 @@
 ; Comments
 (comment) @comment @spell
 
-; Conditional projections
-(conditional_projection
-  "=>" @operator)
-
-; Select statements
-(select_statement
-  "..." @operator
-  "select" @keyword
-  "=>" @operator)
-
-; Spread operators
-(spread_operator
-  "..." @operator)
-
-; Array access
-(attribute_access
-  "." @punctuation.delimiter)
-
 ; String keys in projections/objects
 (pair
   (literal
