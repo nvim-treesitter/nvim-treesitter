@@ -72,7 +72,9 @@
 (identifier) @variable
 
 ; Parameters
-(parameter) @variable.parameter
+(parameter 
+  "$" @variable.parameter
+  (identifier) @variable.parameter)
 
 ; Function calls
 (function_call
