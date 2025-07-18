@@ -1,5 +1,3 @@
-; Tree-sitter highlights for GROQ language
-; This file defines syntax highlighting for GROQ in Neovim
 ; Keywords
 [
   "select"
