@@ -117,7 +117,7 @@ ecma (queries only)[^ecma] | unstable | `HFIJL` |   | @steelsojka
 [graphql](https://github.com/bkegley/tree-sitter-graphql) | unstable | `H IJ ` |   | @bkegley
 [gren](https://github.com/MaeBrooks/tree-sitter-gren) | unstable | `H  J ` |   | @MaeBrooks
 [groovy](https://github.com/murtaza64/tree-sitter-groovy) | unstable | `HFIJL` |   | @murtaza64
-[groq](https://github.com/ajrussellaudio/tree-sitter-groq) | unstable | `H    ` |   | @ajrussellaudio
+[groq](https://github.com/ajrussellaudio/tree-sitter-groq) | unstable | `H IJ ` |   | @ajrussellaudio
 [gstlaunch](https://github.com/tree-sitter-grammars/tree-sitter-gstlaunch) | unstable | `H    ` |   | @theHamsta
 [hack](https://github.com/slackhq/tree-sitter-hack) | unstable | `H  J ` |   | 
 [hare](https://github.com/tree-sitter-grammars/tree-sitter-hare) | unstable | `HFIJL` |   | @amaanq
