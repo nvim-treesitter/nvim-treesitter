@@ -1,75 +1,56 @@
 ; Tree-sitter highlights for GROQ language
 ; This file defines syntax highlighting for GROQ in Neovim
 ; Keywords
-"select" @keyword
+[
+  "select"
+  "asc"
+  "desc"
+] @keyword
 
-"asc" @keyword
-
-"desc" @keyword
-
-"in" @keyword.operator
-
-"match" @keyword.operator
+[
+  "in"
+  "match"
+] @keyword.operator
 
 ; Operators
-"==" @operator
-
-"!=" @operator
-
-">" @operator
-
-">=" @operator
-
-"<" @operator
-
-"<=" @operator
-
-"&&" @operator
-
-"||" @operator
-
-"!" @operator
-
-"+" @operator
-
-"-" @operator
-
-"*" @operator
-
-"/" @operator
-
-"%" @operator
-
-"**" @operator
-
-".." @operator
-
-"..." @operator
-
-"=>" @operator
-
-"->" @operator
-
-"|" @operator
+[
+  "=="
+  "!="
+  ">"
+  ">="
+  "<"
+  "<="
+  "&&"
+  "||"
+  "!"
+  "+"
+  "-"
+  "*"
+  "/"
+  "%"
+  "**"
+  ".."
+  "..."
+  "=>"
+  "->"
+  "|"
+] @operator
 
 ; Punctuation
-"(" @punctuation.bracket
+[
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+] @punctuation.bracket
 
-")" @punctuation.bracket
-
-"[" @punctuation.bracket
-
-"]" @punctuation.bracket
-
-"{" @punctuation.bracket
-
-"}" @punctuation.bracket
-
-"," @punctuation.delimiter
-
-":" @punctuation.delimiter
-
-"." @punctuation.delimiter
+[
+  ","
+  ":"
+  "."
+] @punctuation.delimiter
 
 ; Literals
 (string) @string
