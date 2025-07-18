@@ -72,7 +72,7 @@
 (identifier) @variable
 
 ; Parameters
-(parameter 
+(parameter
   "$" @variable.parameter
   (identifier) @variable.parameter)
 
