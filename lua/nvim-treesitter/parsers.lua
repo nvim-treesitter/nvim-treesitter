@@ -857,6 +857,14 @@ return {
     maintainers = { '@murtaza64' },
     tier = 2,
   },
+  groq = {
+    install_info = {
+      revision = '9959049ddeb4416101653a071ee923ba9f7a5cb1',
+      url = 'https://github.com/ajrussellaudio/tree-sitter-groq',
+    },
+    maintainers = { '@ajrussellaudio' },
+    tier = 2,
+  },
   gstlaunch = {
     install_info = {
       revision = '549aef253fd38a53995cda1bf55c501174372bf7',
