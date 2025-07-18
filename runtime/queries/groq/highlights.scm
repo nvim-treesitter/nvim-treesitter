@@ -84,7 +84,7 @@
   "order" @function.builtin)
 
 ; Comments
-(comment) @comment
+(comment) @comment @spell
 
 ; Projections and objects
 (projection
