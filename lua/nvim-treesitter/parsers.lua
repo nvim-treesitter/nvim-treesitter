@@ -2573,10 +2573,10 @@ return {
   },
   wit = {
     install_info = {
-      revision = '37bf43c7f11d2b4af7a78d98a19e6d5c2cf04ad2',
+      revision = 'a0fd28afe24511160f0601ab45044690c1cb7d92',
       url = 'https://github.com/bytecodealliance/tree-sitter-wit',
     },
-    maintainers = { '@liamwh' },
+    maintainers = { '@mkatychev' },
     tier = 2,
   },
   xcompose = {
