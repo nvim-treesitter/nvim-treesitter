@@ -1,12 +1,10 @@
-(comment) @comment @spell
-
 (ty
   (id)) @type
 
 (package_decl
   (id) @module)
 
-(valid_semver) @string.special
+(version) @string.special
 
 (world_item
   name: (id) @module)
@@ -17,7 +15,7 @@
 (import_item
   name: (id) @module
   (extern_type
-    (interface_body)))
+    (body)))
 
 (import_item
   name: (id) @function
@@ -27,7 +25,7 @@
 (export_item
   name: (id) @module
   (extern_type
-    (interface_body)))
+    (body)))
 
 (export_item
   name: (id) @function
@@ -55,7 +53,7 @@
 (flags_items
   name: (id) @type)
 
-(flags_body
+(body
   (id) @variable.member)
 
 (variant_items
@@ -128,8 +126,6 @@
   "s64"
   "f32"
   "f64"
-  "float32" ; deprecated
-  "float64" ; deprecated
   "char"
   "bool"
   "string"
@@ -163,4 +159,13 @@
   "<"
 ] @punctuation.bracket
 
-"=" @operator
+[
+  (line_comment)
+  (block_comment)
+] @comment @spell
+
+(line_comment
+  (doc_comment)) @comment.documentation
+
+(block_comment
+  (doc_comment)) @comment.documentation
