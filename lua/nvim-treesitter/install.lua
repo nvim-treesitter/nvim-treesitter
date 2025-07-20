@@ -439,13 +439,7 @@ local function try_install_lang(lang, cache_dir, install_dir, generate)
   logger:info('Language installed')
 end
 
----@alias InstallStatus
---- | 'installing'
---- | 'installed'
---- | 'failed'
---- | 'timeout'
-
-local install_status = {} ---@type table<string,InstallStatus?>
+local installing = {} ---@type table<string,boolean?>
 
 ---@async
 ---@param lang string
@@ -453,29 +447,21 @@ local install_status = {} ---@type table<string,InstallStatus?>
 ---@param install_dir string
 ---@param force? boolean
 ---@param generate? boolean
----@return InstallStatus status
+---@return boolean success
 local function install_lang(lang, cache_dir, install_dir, force, generate)
   if not force and vim.list_contains(config.get_installed(), lang) then
-    return 'installed'
-  end
-
-  if install_status[lang] then
-    if install_status[lang] == 'installing' then
-      vim.wait(INSTALL_TIMEOUT, function()
-        return install_status[lang] ~= 'installing'
-      end)
-      install_status[lang] = 'timeout'
-    end
+    return true
+  elseif installing[lang] then
+    local success = vim.wait(INSTALL_TIMEOUT, function()
+      return not installing[lang]
+    end)
+    return success
   else
-    install_status[lang] = 'installing'
+    installing[lang] = true
     local err = try_install_lang(lang, cache_dir, install_dir, generate)
-    install_status[lang] = err and 'failed' or 'installed'
+    installing[lang] = nil
+    return not err
   end
-
-  local status = install_status[lang]
-  assert(status and status ~= 'installing')
-  install_status[lang] = nil
-  return status
 end
 
 --- Reload the parser table and user modifications in case of update
@@ -511,8 +497,8 @@ local function install(languages, options)
   for _, lang in ipairs(languages) do
     tasks[#tasks + 1] = a.async(--[[@async]] function()
       a.schedule()
-      local status = install_lang(lang, cache_dir, install_dir, options.force, options.generate)
-      if status ~= 'failed' then
+      local success = install_lang(lang, cache_dir, install_dir, options.force, options.generate)
+      if success then
         done = done + 1
       end
     end)
