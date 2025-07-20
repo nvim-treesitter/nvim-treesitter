@@ -11,7 +11,7 @@
 
 "," @punctuation.delimiter
 
-(eq) @operator
+eq: _ @operator
 
 ([
   "\""
