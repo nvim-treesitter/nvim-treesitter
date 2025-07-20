@@ -206,7 +206,7 @@ return {
   },
   chatito = {
     install_info = {
-      revision = 'b4cbe9ab7672d5106e9550d8413835395a1be362',
+      revision = '433a7a150da013f380d2bd435e0c4373f7f4481c',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-chatito',
     },
     maintainers = { '@ObserverOfTime' },
