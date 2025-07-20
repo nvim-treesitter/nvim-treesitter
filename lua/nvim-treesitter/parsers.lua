@@ -1464,9 +1464,9 @@ return {
   nix = {
     install_info = {
       revision = 'ea1d87f7996be1329ef6555dcacfa63a69bd55c6',
-      url = 'https://github.com/cstrahan/tree-sitter-nix',
+      url = 'https://github.com/nix-community/tree-sitter-nix',
     },
-    maintainers = { '@leo60228' },
+    maintainers = { '@leo60228', '@zimbatm' },
     tier = 2,
   },
   nqc = {

@@ -191,7 +191,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` |   | @steelsojka
 [nim](https://github.com/alaviss/tree-sitter-nim) | unstable | `HF JL` |   | @aMOPel
 [nim_format_string](https://github.com/aMOPel/tree-sitter-nim-format-string) | unstable | `H  J ` |   | @aMOPel
 [ninja](https://github.com/alemuller/tree-sitter-ninja) | unstable | `HFIJ ` |   | @alemuller
-[nix](https://github.com/cstrahan/tree-sitter-nix) | unstable | `HFIJL` |   | @leo60228
+[nix](https://github.com/nix-community/tree-sitter-nix) | unstable | `HFIJL` |   | @leo60228, @zimbatm
 [nqc](https://github.com/tree-sitter-grammars/tree-sitter-nqc) | unstable | `HFIJL` |   | @amaanq
 [nu](https://github.com/nushell/tree-sitter-nu) | unstable | `HFIJ ` |   | @abhisheksingh0x558
 [objc](https://github.com/tree-sitter-grammars/tree-sitter-objc) | unstable | `HFIJL` |   | @amaanq
