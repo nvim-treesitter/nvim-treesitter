@@ -101,8 +101,8 @@ ecma (queries only)[^ecma] | unstable | `HFIJL` |   | @steelsojka
 [gitignore](https://github.com/shunsambongi/tree-sitter-gitignore) | unstable | `H  J ` |   | @theHamsta
 [gleam](https://github.com/gleam-lang/tree-sitter-gleam) | unstable | `HFIJL` |   | @amaanq
 [glimmer](https://github.com/ember-tooling/tree-sitter-glimmer)[^glimmer] | unstable | `HFIJL` |   | @NullVoxPopuli
-[glimmer_javascript](https://github.com/NullVoxPopuli/tree-sitter-glimmer-javascript) | unstable | `H IJL` |   | @NullVoxPopuli
-[glimmer_typescript](https://github.com/NullVoxPopuli/tree-sitter-glimmer-typescript) | unstable | `H IJ ` |   | @NullVoxPopuli
+[glimmer_javascript](https://github.com/NullVoxPopuli/tree-sitter-glimmer-javascript) | unstable | `HFIJL` |   | @NullVoxPopuli
+[glimmer_typescript](https://github.com/NullVoxPopuli/tree-sitter-glimmer-typescript) | unstable | `HFIJ ` |   | @NullVoxPopuli
 [glsl](https://github.com/tree-sitter-grammars/tree-sitter-glsl) | unstable | `HFIJL` |   | @theHamsta
 [gn](https://github.com/tree-sitter-grammars/tree-sitter-gn) | unstable | `HFIJL` |   | @amaanq
 [gnuplot](https://github.com/dpezto/tree-sitter-gnuplot) | unstable | `H  J ` |   | @dpezto
