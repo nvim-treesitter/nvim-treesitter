@@ -1537,7 +1537,7 @@ list.ninja = {
 
 list.nix = {
   install_info = {
-    url = "https://github.com/cstrahan/tree-sitter-nix",
+    url = "https://github.com/nix-community/tree-sitter-nix",
     files = { "src/parser.c", "src/scanner.c" },
   },
   maintainers = { "@leo60228" },
