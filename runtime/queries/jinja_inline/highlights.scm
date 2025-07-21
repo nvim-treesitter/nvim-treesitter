@@ -127,11 +127,11 @@
 
 ; jinja filters
 (binary_expression
-  (binary_operator
-    "|")
+  (binary_operator) @_operator
   (unary_expression
     (primary_expression
-      (identifier) @function.call)))
+      (identifier) @function.call))
+  (#eq? @_operator "|"))
 
 (inline_trans
   "_" @function.builtin)
