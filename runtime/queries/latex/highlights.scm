@@ -92,9 +92,9 @@
 
 (label_reference_range
   command: _ @function.macro
-  from: (curly_group_text
+  from: (curly_group_label
     (_) @markup.link)
-  to: (curly_group_text
+  to: (curly_group_label
     (_) @markup.link))
 
 (label_reference
@@ -104,7 +104,7 @@
 
 (label_number
   command: _ @function.macro
-  name: (curly_group_text
+  name: (curly_group_label
     (_) @markup.link)
   number: (_) @markup.link)
 
