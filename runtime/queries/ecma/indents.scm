@@ -33,11 +33,11 @@
 
 (assignment_expression
   right: (_) @_right
-  (#not-kind-eq? @_right "arrow_function" "function")) @indent.begin
+  (#not-kind-eq? @_right "arrow_function")) @indent.begin
 
 (variable_declarator
   value: (_) @_value
-  (#not-kind-eq? @_value "arrow_function" "call_expression" "function")) @indent.begin
+  (#not-kind-eq? @_value "arrow_function" "call_expression")) @indent.begin
 
 (arguments
   ")" @indent.end)
