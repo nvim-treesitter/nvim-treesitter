@@ -246,11 +246,13 @@
         },
         {
           "type": "string",
-          "arity": "required"
+          "arity": "required",
+          "constraint": "named_node"
         },
         {
           "type": "string",
-          "arity": "variadic"
+          "arity": "variadic",
+          "constraint": "named_node"
         }
       ],
       "description": "match any of the given node types against all ancestors of a node"
@@ -262,12 +264,14 @@
           "arity": "required"
         },
         {
-          "type": "any",
-          "arity": "required"
+          "type": "string",
+          "arity": "required",
+          "constraint": "named_node"
         },
         {
-          "type": "any",
-          "arity": "variadic"
+          "type": "string",
+          "arity": "variadic",
+          "constraint": "named_node"
         }
       ],
       "description": "match any of the given node types against the direct ancestor of a node"
@@ -280,11 +284,13 @@
         },
         {
           "type": "string",
-          "arity": "required"
+          "arity": "required",
+          "constraint": "named_node"
         },
         {
           "type": "string",
-          "arity": "variadic"
+          "arity": "variadic",
+          "constraint": "named_node"
         }
       ],
       "description": "checks whether a capture corresponds to a given set of nodes"
@@ -316,19 +322,23 @@
         },
         {
           "type": "string",
-          "arity": "required"
+          "arity": "required",
+          "constraint": "integer"
         },
         {
           "type": "string",
-          "arity": "required"
+          "arity": "required",
+          "constraint": "integer"
         },
         {
           "type": "string",
-          "arity": "required"
+          "arity": "required",
+          "constraint": "integer"
         },
         {
           "type": "string",
-          "arity": "required"
+          "arity": "required",
+          "constraint": "integer"
         }
       ],
       "description": "Takes the range of the captured node and applies an offset. This will set a new range in the form of a list like { {start_row}, {start_col}, {end_row}, {end_col} } for the captured node with `capture_id` as `metadata[capture_id].range`."
@@ -358,19 +368,31 @@
         },
         {
           "type": "string",
-          "arity": "optional"
+          "arity": "optional",
+          "constraint": {
+            "enum": ["0", "1"]
+          }
         },
         {
           "type": "string",
-          "arity": "optional"
+          "arity": "optional",
+          "constraint": {
+            "enum": ["0", "1"]
+          }
         },
         {
           "type": "string",
-          "arity": "optional"
+          "arity": "optional",
+          "constraint": {
+            "enum": ["0", "1"]
+          }
         },
         {
           "type": "string",
-          "arity": "optional"
+          "arity": "optional",
+          "constraint": {
+            "enum": ["0", "1"]
+          }
         }
       ],
       "description": "Trims whitespace from the node. Sets a new `metadata[capture_id].range`. Takes a capture ID and, optionally, four integers to customize trimming behavior (`1` meaning trim, `0` meaning don't trim). When only given a capture ID, trims blank lines (lines that contain only whitespace, or are empty) from the end of the node (for backwards compatibility). Can trim all whitespace from both sides of the node if parameters are given."
