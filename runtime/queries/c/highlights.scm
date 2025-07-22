@@ -149,7 +149,7 @@
 
 ((field_expression
   (field_identifier) @property) @_parent
-  (#not-has-parent? @_parent template_method function_declarator call_expression))
+  (#not-has-parent? @_parent function_declarator call_expression))
 
 (field_designator) @property
 
