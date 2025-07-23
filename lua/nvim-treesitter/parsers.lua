@@ -18,7 +18,7 @@ return {
   },
   angular = {
     install_info = {
-      revision = '93bb92f1289b7fe765da6cc747c82ccdc0afeb8d',
+      revision = 'd1f24a8890462cb740909ff62a3a079cded288bc',
       url = 'https://github.com/dlvandenberg/tree-sitter-angular',
     },
     maintainers = { '@dlvandenberg' },
@@ -93,7 +93,7 @@ return {
   },
   beancount = {
     install_info = {
-      revision = 'b8309e6856fe207f0425efa4f7a1d1f27890f8e8',
+      revision = 'b7a2557e6c8cf1dc70a52cece1861522ad3903fc',
       url = 'https://github.com/polarmutex/tree-sitter-beancount',
     },
     maintainers = { '@polarmutex' },
@@ -544,7 +544,7 @@ return {
   },
   fennel = {
     install_info = {
-      revision = 'de06b9ad366f0186080056109a8c3be980129538',
+      revision = 'cf7c000d934f2ff0a282a2c276b1f72e7fb2a099',
       url = 'https://github.com/alexmozaidze/tree-sitter-fennel',
     },
     maintainers = { '@alexmozaidze' },
@@ -709,7 +709,7 @@ return {
   },
   gleam = {
     install_info = {
-      revision = '21e0e7ba6f4f60ee80934cb368aa13c00d370734',
+      revision = 'dae1551a9911b24f41d876c23f2ab05ece0a9d4c',
       url = 'https://github.com/gleam-lang/tree-sitter-gleam',
     },
     maintainers = { '@amaanq' },
@@ -1019,7 +1019,7 @@ return {
   },
   idl = {
     install_info = {
-      revision = 'd5d7f57dd303b35169bd38c3a2268a24d3d76e38',
+      revision = 'fb1bd480b84a5b75a0c7a44a8fed45c4fe2d9247',
       url = 'https://github.com/cathaysia/tree-sitter-idl',
     },
     maintainers = { '@cathaysia' },
@@ -1075,7 +1075,7 @@ return {
   },
   javadoc = {
     install_info = {
-      revision = '51cbb3daa9b8a5ba9d6467db40ef45682a06811f',
+      revision = 'de50fbed2cc4c83e5fa2ec2d4231496e06d55e32',
       url = 'https://github.com/rmuir/tree-sitter-javadoc',
     },
     maintainers = { '@rmuir' },
@@ -1093,7 +1093,7 @@ return {
   jinja = {
     install_info = {
       location = 'tree-sitter-jinja',
-      revision = '251101981d86ccb2901741eddf3e7cf21567a66d',
+      revision = '129184fb7bbc2d3e29967002432a869ac3758f2e',
       url = 'https://github.com/cathaysia/tree-sitter-jinja',
     },
     maintainers = { '@cathaysia' },
@@ -1104,7 +1104,7 @@ return {
   jinja_inline = {
     install_info = {
       location = 'tree-sitter-jinja_inline',
-      revision = '251101981d86ccb2901741eddf3e7cf21567a66d',
+      revision = '129184fb7bbc2d3e29967002432a869ac3758f2e',
       url = 'https://github.com/cathaysia/tree-sitter-jinja',
     },
     maintainers = { '@cathaysia' },
@@ -1215,7 +1215,7 @@ return {
   },
   koto = {
     install_info = {
-      revision = 'c379c2c0fdc68e56bb1efe0d933b8fcdf9ff203c',
+      revision = '2ffc77c14f0ac1674384ff629bfc207b9c57ed89',
       url = 'https://github.com/koto-lang/tree-sitter-koto',
     },
     maintainers = { '@irh' },
@@ -1288,7 +1288,7 @@ return {
   },
   llvm = {
     install_info = {
-      revision = 'badf46daedc7b469f5e849b53f2fb34e881962f1',
+      revision = '00c5389a4598e1dce66fbc3b3d34733d308f2751',
       url = 'https://github.com/benwilliamgraham/tree-sitter-llvm',
     },
     maintainers = { '@benwilliamgraham' },
@@ -2209,7 +2209,7 @@ return {
   swift = {
     install_info = {
       generate = true,
-      revision = '370a4261d702c51d5d830b06bd4c25e44677d01b',
+      revision = 'fc65dc2cc87047c3a45f1d26cce79ab9062a4881',
       url = 'https://github.com/alex-pinkus/tree-sitter-swift',
     },
     maintainers = { '@alex-pinkus' },
@@ -2233,7 +2233,7 @@ return {
   },
   systemverilog = {
     install_info = {
-      revision = 'e5a589a76ce480db5a939ad4a4393c398eed35e9',
+      revision = '140a6d96aa753f550d01c0d6c95dbf7c0cfae3fb',
       url = 'https://github.com/gmlarumbe/tree-sitter-systemverilog',
     },
     maintainers = { '@zhangwwpeng' },
@@ -2290,7 +2290,7 @@ return {
   },
   tera = {
     install_info = {
-      revision = 'c0a0ebcd70a0e6a9f9ec1157308e4e0ea18b446e',
+      revision = '692937d52c8dfd91ce0dde722b9b4febbc9bc712',
       url = 'https://github.com/uncenter/tree-sitter-tera',
     },
     maintainers = { '@uncenter' },
@@ -2499,7 +2499,7 @@ return {
   },
   vhdl = {
     install_info = {
-      revision = 'edf824ba11b445b7e43827587e83716b34b30fe5',
+      revision = '73ff9d3e7bc42b8cc123bf5f0b2db12a900ee9b7',
       url = 'https://github.com/jpt13653903/tree-sitter-vhdl',
     },
     maintainers = { '@jpt13653903' },
