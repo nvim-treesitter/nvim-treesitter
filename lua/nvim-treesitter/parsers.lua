@@ -1219,6 +1219,15 @@ list.jsonc = {
   readme_name = "JSON with comments",
 }
 
+list.jsonl = {
+  install_info = {
+    url = "https://github.com/AJamesyD/tree-sitter-jsonl",
+    files = { "src/parser.c" },
+    branch = "mainline",
+  },
+  maintainers = { "@AJamesyD" },
+}
+
 list.jsonnet = {
   install_info = {
     url = "https://github.com/sourcegraph/tree-sitter-jsonnet",
