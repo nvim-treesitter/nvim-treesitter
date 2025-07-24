@@ -164,7 +164,8 @@ function M.norm_languages(languages, skip)
     end
   end
 
-  return languages
+  table.sort(languages)
+  return vim.fn.uniq(languages) --[=[@as string[]]=]
 end
 
 return M
