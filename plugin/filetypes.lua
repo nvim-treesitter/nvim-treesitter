@@ -21,6 +21,7 @@ local filetypes = {
   haskell = { 'hs' },
   haskell_persistent = { 'haskellpersistent' },
   idris = { 'idris2' },
+  ini = { 'confini', 'dosini' },
   janet_simple = { 'janet' },
   javascript = { 'javascriptreact', 'ecma', 'ecmascript', 'jsx', 'js' },
   javascript_glimmer = { 'javascript.glimmer' },
