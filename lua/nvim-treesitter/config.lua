@@ -157,9 +157,12 @@ function M.norm_languages(languages, skip)
   end
 
   if not (skip and skip.dependencies) then
-    for _, lang in pairs(languages) do
-      if parsers[lang] and parsers[lang].requires then
-        vim.list_extend(languages, parsers[lang].requires)
+    for _, lang in ipairs(languages) do
+      local dependencies = parsers[lang] and parsers[lang].requires or {}
+      for _, dependency in ipairs(dependencies) do
+        if not vim.list_contains(languages, dependency) then
+          languages[#languages + 1] = dependency
+        end
       end
     end
   end
