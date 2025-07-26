@@ -652,7 +652,7 @@ return {
   },
   gdscript = {
     install_info = {
-      revision = 'c370d711dc9ead679d40bb7e9364ceed0b3bfc28',
+      revision = '8d30b8dbb84a5f786b93726dca158ae8ea3c413f',
       url = 'https://github.com/PrestonKnopp/tree-sitter-gdscript',
     },
     maintainers = { '@PrestonKnopp' },
@@ -1075,7 +1075,7 @@ return {
   },
   javadoc = {
     install_info = {
-      revision = 'de50fbed2cc4c83e5fa2ec2d4231496e06d55e32',
+      revision = 'c0d918967afc2f4d3e2276a75722e1b268730855',
       url = 'https://github.com/rmuir/tree-sitter-javadoc',
     },
     maintainers = { '@rmuir' },
@@ -1296,7 +1296,7 @@ return {
   },
   lua = {
     install_info = {
-      revision = 'e5e406935ff3e36529545955e2972646ed97f9e2',
+      revision = 'd76023017f7485eae629cb60d406c7a1ca0f40c9',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-lua',
     },
     maintainers = { '@muniftanjim' },
@@ -2075,7 +2075,7 @@ return {
   },
   solidity = {
     install_info = {
-      revision = 'd38dcd0b58b223c43e3f9265914fb3167dc624c6',
+      revision = '322a3ddffca3ed96e559003fd03fa9881d7b4e20',
       url = 'https://github.com/JoranHonig/tree-sitter-solidity',
     },
     maintainers = { '@amaanq' },
@@ -2175,7 +2175,7 @@ return {
   superhtml = {
     install_info = {
       location = 'tree-sitter-superhtml',
-      revision = 'a67317fb81afe76cc04e6d92124cfc20a903cee7',
+      revision = '8bb212b1044b4740c14bc73b649adab58a0cb481',
       url = 'https://github.com/kristoff-it/superhtml',
     },
     maintainers = { '@rockorager' },
@@ -2233,7 +2233,7 @@ return {
   },
   systemverilog = {
     install_info = {
-      revision = '140a6d96aa753f550d01c0d6c95dbf7c0cfae3fb',
+      revision = 'b2c95d30954fbd3cf9be6d96a3ad82e023c2fa12',
       url = 'https://github.com/gmlarumbe/tree-sitter-systemverilog',
     },
     maintainers = { '@zhangwwpeng' },
@@ -2639,7 +2639,7 @@ return {
   },
   zig = {
     install_info = {
-      revision = 'b670c8df85a1568f498aa5c8cae42f51a90473c0',
+      revision = 'b71affffdb4222ff2d2dea6e164f76603b0be6bc',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-zig',
     },
     maintainers = { '@amaanq' },
@@ -2648,7 +2648,7 @@ return {
   ziggy = {
     install_info = {
       location = 'tree-sitter-ziggy',
-      revision = 'de703372b2da6fd2c25a8a3c424663ff6bece4ac',
+      revision = 'e95c85cb58773c43e9d94c0b9422ae84697e68a1',
       url = 'https://github.com/kristoff-it/ziggy',
     },
     maintainers = { '@rockorager' },
@@ -2657,7 +2657,7 @@ return {
   ziggy_schema = {
     install_info = {
       location = 'tree-sitter-ziggy-schema',
-      revision = 'de703372b2da6fd2c25a8a3c424663ff6bece4ac',
+      revision = 'e95c85cb58773c43e9d94c0b9422ae84697e68a1',
       url = 'https://github.com/kristoff-it/ziggy',
     },
     maintainers = { '@rockorager' },
