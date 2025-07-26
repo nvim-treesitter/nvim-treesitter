@@ -125,14 +125,14 @@
   "."
   (identifier)+ @variable.member)
 
-; crashes parser: https://github.com/cathaysia/tree-sitter-jinja/issues/37
-; ; jinja filters
-; (binary_expression
-;   (binary_operator
-;     "|")
-;   (unary_expression
-;     (primary_expression
-;       (identifier) @function.call)))
+; jinja filters
+(binary_expression
+  (binary_operator) @_operator
+  (unary_expression
+    (primary_expression
+      (identifier) @function.call))
+  (#eq? @_operator "|"))
+
 (inline_trans
   "_" @function.builtin)
 
