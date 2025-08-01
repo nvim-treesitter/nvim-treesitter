@@ -234,10 +234,13 @@
 [
   "include"
   "import"
-  "directive_include"
+  "`include"
 ] @keyword.import
 
-(comment) @comment @spell
+[
+  (one_line_comment)
+  (block_comment)
+] @comment @spell
 
 [
   "@"
@@ -298,9 +301,6 @@ port_name: (simple_identifier) @variable
   (simple_identifier) @variable)
 
 (net_decl_assignment
-  (simple_identifier) @variable)
-
-(ERROR
   (simple_identifier) @variable)
 
 ; variable.member
@@ -570,17 +570,17 @@ c_name: (c_identifier) @function
 
 ; directive
 [
-  "directive_define"
-  "directive_default_nettype"
-  "directive_resetall"
-  "directive_timescale"
-  "directive_undef"
-  "directive_undefineall"
-  "directive_ifdef"
-  "directive_ifndef"
-  "directive_elsif"
-  "directive_endif"
-  "directive_else"
+  "`define"
+  "`default_nettype"
+  (resetall_compiler_directive)
+  "`timescale"
+  "`undef"
+  (undefineall_compiler_directive)
+  "`ifdef"
+  "`ifndef"
+  "`elsif"
+  "`endif"
+  "`else"
 ] @keyword.directive.define
 
 (include_compiler_directive
