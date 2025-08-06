@@ -69,7 +69,7 @@ function M.get_available(tier)
     languages = vim.tbl_filter(
       --- @param p string
       function(p)
-        return parsers[p].tier == tier
+        return parsers[p] ~= nil and parsers[p].tier == tier
       end,
       languages
     )
@@ -164,8 +164,13 @@ function M.norm_languages(languages, skip)
     end
   end
 
-  table.sort(languages)
-  return vim.fn.uniq(languages) --[=[@as string[]]=]
+  -- TODO(clason): remove Nvim 0.11 compat
+  if vim.list then
+    return vim.list.unique(languages)
+  else
+    table.sort(languages)
+    return vim.fn.uniq(languages) --[=[@as string[] ]=]
+  end
 end
 
 return M
