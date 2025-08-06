@@ -40,6 +40,7 @@ end
 
 ---@async
 ---@param path string
+---@return string? err
 local function rmpath(path)
   local stat = uv.fs_lstat(path)
   if not stat then
@@ -482,6 +483,7 @@ end
 ---@async
 ---@param languages string[]
 ---@param options? InstallOptions
+---@return boolean true if installation successful
 local function install(languages, options)
   options = options or {}
 

@@ -52,7 +52,8 @@ local function find_delimiter(bufnr, node, delimiter)
       local end_char = { child:end_() }
       local trimmed_after_delim
       local escaped_delimiter = delimiter:gsub('[%-%.%+%[%]%(%)%$%^%%%?%*]', '%%%1')
-      trimmed_after_delim = line:sub(end_char[2] + 1):gsub('[%s' .. escaped_delimiter .. ']*', '')
+      trimmed_after_delim =
+        assert(line):sub(end_char[2] + 1):gsub('[%s' .. escaped_delimiter .. ']*', '')
       return child, #trimmed_after_delim == 0
     end
   end
