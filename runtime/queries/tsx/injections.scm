@@ -1,1 +1,1 @@
-; inherits: ecma,jsx
+; inherits: typescript,jsx
