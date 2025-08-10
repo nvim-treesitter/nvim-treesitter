@@ -1622,19 +1622,19 @@ list.odin = {
 }
 
 -- Define filetype for ORCA input files
-vim.filetype.add({
-	extension = {
-		inp = "inp",
-	},
-})
+vim.filetype.add {
+  extension = {
+    inp = "inp",
+  },
+}
 
 list.orca = {
   install_info = {
     url = "https://github.com/kszenes/tree-sitter-orca.git",
-    files = { "src/parser.c" }
+    files = { "src/parser.c" },
   },
   filetype = "inp",
-  maintainers = { "@kszenes" }
+  maintainers = { "@kszenes" },
 }
 
 list.pascal = {

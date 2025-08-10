@@ -1,6 +1,6 @@
 [
   (input_block)
-  (geom_block) 
+  (geom_block)
   (subblock)
   (compound_script)
   (compound_step_block)
