@@ -104,6 +104,9 @@
 ((symbol) @variable.parameter
   (#any-of? @variable.parameter "$" "$..."))
 
+((symbol_fragment) @variable.parameter
+  (#eq? @variable.parameter "$"))
+
 ((symbol) @variable.parameter
   (#lua-match? @variable.parameter "^%$[1-9]$"))
 
