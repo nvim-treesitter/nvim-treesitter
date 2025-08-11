@@ -269,6 +269,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` |   | @steelsojka
 [sosl](https://github.com/aheber/tree-sitter-sfapex) | unstable | `H    ` |   | @aheber, @xixiafinland
 [sourcepawn](https://github.com/nilshelmig/tree-sitter-sourcepawn) | unstable | `H  JL` |   | @Sarrus1
 [sparql](https://github.com/GordianDziwis/tree-sitter-sparql) | unstable | `HFIJL` |   | @GordianDziwis
+[sproto](https://github.com/hanxi/tree-sitter-sproto) | unstable | `HFIJ ` |   | @hanxi
 [sql](https://github.com/derekstride/tree-sitter-sql) | unstable | `HFIJ ` |   | @derekstride
 [squirrel](https://github.com/tree-sitter-grammars/tree-sitter-squirrel) | unstable | `HFIJL` |   | @amaanq
 [ssh_config](https://github.com/tree-sitter-grammars/tree-sitter-ssh-config) | unstable | `HFIJL` |   | @ObserverOfTime
