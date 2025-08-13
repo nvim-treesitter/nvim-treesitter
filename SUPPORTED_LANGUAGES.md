@@ -200,6 +200,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` |   | @steelsojka
 [ocaml_interface](https://github.com/tree-sitter/tree-sitter-ocaml) | unstable | `HFIJL` |   | @undu
 [ocamllex](https://github.com/atom-ocaml/tree-sitter-ocamllex) | unstable | `H  J ` |   | @undu
 [odin](https://github.com/tree-sitter-grammars/tree-sitter-odin) | unstable | `HFIJL` |   | @amaanq
+[orca](https://github.com/kszenes/tree-sitter-orca) | unstable | `HFI  ` |   | @kszenes
 [pascal](https://github.com/Isopod/tree-sitter-pascal) | unstable | `HFIJL` |   | @Isopod
 [passwd](https://github.com/ath3/tree-sitter-passwd) | unstable | `H    ` |   | @amaanq
 [pem](https://github.com/tree-sitter-grammars/tree-sitter-pem) | unstable | `HF J ` |   | @ObserverOfTime
