@@ -1541,7 +1541,7 @@ return {
   orca = {
     install_info = {
       revision = '224b472b0d53c4d056dc1c1cc4506a93b67f7a26',
-      url = "https://github.com/kszenes/tree-sitter-orca",
+      url = 'https://github.com/kszenes/tree-sitter-orca',
     },
     maintainers = { '@kszenes' },
     tier = 2,
