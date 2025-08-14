@@ -4,17 +4,34 @@
 
 (float) @number.float
 
-(element) @string
+(element) @character
 
-(simple_line) @variable.parameter
+(simple_line) @variable.builtin
 
 (input_title) @keyword
 
-(input_key) @property
+(input_key) @variable
 
 (quoted_string) @string
 
-(geom_line_types) @type
+(string) @string
+
+(constraint_content) @string
+
+[
+  "*"
+  "/"
+  "+"
+  "-"
+  "="
+] @operator
+
+(geom_block
+  "*" @keyword)
+
+(geom_line
+  "*" @keyword
+  (file) @string.special.path)
 
 [
   (geom_line_types)
@@ -23,22 +40,12 @@
   "gzmt"
 ] @type
 
-"*" @keyword
-
-(string) @number
-
 ; Variables (FIRST - higher priority than general rules) - using @function for prominence
 (variable_ref
-  (variable_name) @operator) ; {r} in geometry blocks
-
-(variable_ref
-  "{" @punctuation.bracket)
-
-(variable_ref
-  "}" @punctuation.bracket)
+  (variable_name) @variable) ; {r} in geometry blocks
 
 (variable_def
-  (variable_name) @operator) ; r in variable definitions
+  (variable_name) @variable) ; r in variable definitions
 
 (variable_range
   (float) @number.float)
@@ -46,56 +53,14 @@
 (variable_array
   (float) @number.float)
 
-; Variable definitions in %paras blocks (when parsed as regular kv_pair)
-(input_block
-  (input_title
-    (word) @_paras)
-  (input_body
-    (kv_pair
-      (input_key
-        (word) @operator)))
-  (#eq? @_paras "paras"))
-
-; Variable definitions in pardef subblocks
-(subblock
-  (word) @_pardef
-  (input_body
-    (kv_pair
-      (input_key
-        (word) @operator)))
-  (#eq? @_pardef "pardef"))
-
-";" @punctuation.delimiter
-
-; Brace blocks
-(brace_block
-  "{" @property)
-
-(brace_block
-  "}" @property)
-
-(brace_value
-  (float) @number.float)
-
-(brace_value
-  (integer) @number)
-
-(constraint_content) @string
-
-"," @punctuation.delimiter
-
 ; General word values (LAST - lower priority)
 (value_atom
   (word) @number) ; Words used as values get same color as other values
 
 ; Internal coordinate highlighting
 (int_line
-  connect1: (integer) @operator)
-
-(int_line
-  connect2: (integer) @operator)
-
-(int_line
+  connect1: (integer) @operator
+  connect2: (integer) @operator
   connect3: (integer) @operator)
 
 (int_line
@@ -119,9 +84,7 @@
     (variable_ref) @operator))
 
 (zmat_line3
-  zmat_atom1: (integer) @operator)
-
-(zmat_line3
+  zmat_atom1: (integer) @operator
   zmat_atom2: (integer) @operator)
 
 (zmat_line3
@@ -133,15 +96,9 @@
     (variable_ref) @operator))
 
 (zmat_line4
-  zmat_atom1: (integer) @operator)
-
-(zmat_line4
-  zmat_atom2: (integer) @operator)
-
-(zmat_line4
-  zmat_atom3: (integer) @operator)
-
-(zmat_line4
+  zmat_atom1: (integer) @operator
+  zmat_atom2: (integer) @operator
+  zmat_atom3: (integer) @operator
   (coord_value
     (float) @number.float))
 
@@ -151,48 +108,31 @@
 
 ; Subblocks
 (subblock
-  name: (word) @character)
+  name: (word) @module)
 
 (subblock
-  "end" @character)
+  "end" @module)
 
 ; Compound script highlighting - use node types instead of regexes
-(compound_script) @keyword
-
-(compound_variable_declaration) @keyword
-
-(compound_step_block) @keyword
-
-(compound_end) @keyword
+[
+  (compound_script)
+  (compound_variable_declaration)
+  (compound_step_block)
+  (compound_end)
+  (compound_for_loop)
+  (compound_if_block)
+] @keyword
 
 (compound_variable_declaration
-  (variable_name) @function)
+  (variable_name) @variable)
 
 (compound_variable_reference
-  (variable_name) @function)
-
-(compound_variable_reference
-  "&{" @punctuation.bracket)
-
-(compound_variable_reference
-  "}" @punctuation.bracket)
+  (variable_name) @variable)
 
 (compound_boolean) @boolean
 
 (compound_assignment
-  (variable_name) @function)
-
-(coord_value
-  (compound_variable_reference) @function)
-
-; Control flow structures
-(compound_for_loop) @keyword
-
-(compound_if_block) @keyword
-
-; For loop keywords and components
-(compound_for_loop
-  (variable_name) @function)
+  (variable_name) @variable)
 
 ; If/else condition components
 (compound_condition) @keyword.conditional
@@ -203,21 +143,28 @@
 (compound_array_access
   (variable_name) @function)
 
-(compound_array_access
-  "[" @punctuation.bracket)
+";" @punctuation.delimiter
 
-(compound_array_access
-  "]" @punctuation.bracket)
+"," @punctuation.delimiter
 
-; Function calls
-(compound_function_call
-  (variable_name) @function.call)
+[
+  "["
+  "]"
+  "{"
+  "}"
+  "&{"
+] @punctuation.bracket
 
 (compound_function_call
   "(" @punctuation.bracket)
 
 (compound_function_call
   ")" @punctuation.bracket)
+
+; Parentheses in expressions and conditions
+; Function calls
+(compound_function_call
+  (variable_name) @function.call)
 
 ; Array assignments
 (compound_array_assignment
@@ -227,26 +174,3 @@
 ; Variables in expressions - general pattern to catch all variable usage
 (compound_primary_expr
   (variable_name) @function)
-
-[
-  "*"
-  "/"
-  "+"
-  "-"
-  "="
-] @operator
-
-; Parentheses in expressions and conditions
-(compound_primary_expr
-  "(" @punctuation.bracket)
-
-(compound_primary_expr
-  ")" @punctuation.bracket)
-
-(compound_if_block
-  "(" @punctuation.bracket)
-
-(compound_if_block
-  ")" @punctuation.bracket)
-
-";" @punctuation.delimiter
