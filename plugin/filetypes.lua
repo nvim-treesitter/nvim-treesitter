@@ -32,7 +32,6 @@ local filetypes = {
   markdown = { 'pandoc' },
   muttrc = { 'neomuttrc' },
   ocaml_interface = { 'ocamlinterface' },
-  orca = { 'inp' },
   perl = { 'pl' },
   poe_filter = { 'poefilter' },
   powershell = { 'ps1' },

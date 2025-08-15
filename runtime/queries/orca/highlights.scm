@@ -27,10 +27,10 @@
 ] @operator
 
 (geom_block
-  "*" @keyword)
+  "*" @punctuation.special)
 
 (geom_line
-  "*" @keyword
+  "*" @punctuation.special
   (file) @string.special.path)
 
 [
@@ -47,12 +47,6 @@
 (variable_def
   (variable_name) @variable) ; r in variable definitions
 
-(variable_range
-  (float) @number.float)
-
-(variable_array
-  (float) @number.float)
-
 ; General word values (LAST - lower priority)
 (value_atom
   (word) @number) ; Words used as values get same color as other values
@@ -65,19 +59,11 @@
 
 (int_line
   (coord_value
-    (float) @number.float))
-
-(int_line
-  (coord_value
     (variable_ref) @operator))
 
 ; Zmatrix coordinate highlighting - alternating pattern like internal coords
 (zmat_line2
   zmat_atom1: (integer) @operator)
-
-(zmat_line2
-  (coord_value
-    (float) @number.float))
 
 (zmat_line2
   (coord_value
@@ -89,18 +75,12 @@
 
 (zmat_line3
   (coord_value
-    (float) @number.float))
-
-(zmat_line3
-  (coord_value
     (variable_ref) @operator))
 
 (zmat_line4
   zmat_atom1: (integer) @operator
   zmat_atom2: (integer) @operator
-  zmat_atom3: (integer) @operator
-  (coord_value
-    (float) @number.float))
+  zmat_atom3: (integer) @operator)
 
 (zmat_line4
   (coord_value
