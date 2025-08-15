@@ -29,6 +29,12 @@
 (function_declarator
   declarator: (field_identifier) @function.method)
 
+; lambdas
+((lambda_expression
+  captures: (lambda_capture_specifier
+        "[" @lambda.capture.bracket
+        "]" @lambda.capture.bracket)))
+
 (concept_definition
   name: (identifier) @type.definition)
 
