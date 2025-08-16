@@ -544,7 +544,7 @@ return {
   },
   fennel = {
     install_info = {
-      revision = '653c8abc72d1415cb85e032108d39022feb460be',
+      revision = 'fd4a24e349bcbac8a03a5a00d0dfa207baf53ca5',
       url = 'https://github.com/alexmozaidze/tree-sitter-fennel',
     },
     maintainers = { '@alexmozaidze' },
@@ -1075,7 +1075,7 @@ return {
   },
   javadoc = {
     install_info = {
-      revision = '76ed31dff40686b350c994ceb4da90ad7f3a7f44',
+      revision = '08f1977ad27b8d9a908193255ad0c94cc8742748',
       url = 'https://github.com/rmuir/tree-sitter-javadoc',
     },
     maintainers = { '@rmuir' },
@@ -1288,7 +1288,7 @@ return {
   },
   llvm = {
     install_info = {
-      revision = 'be4864bec38412aa2987b6dad01d1e389e9e9ca9',
+      revision = '470886ddd635e0ee48a4cb169e33d0c6d9bff32e',
       url = 'https://github.com/benwilliamgraham/tree-sitter-llvm',
     },
     maintainers = { '@benwilliamgraham' },
@@ -1367,7 +1367,7 @@ return {
   },
   matlab = {
     install_info = {
-      revision = '37941b272862ba52983f44cb6ec7b0eec6972c95',
+      revision = 'da410185c1fabf823ab92798590f9a6606e5699b',
       url = 'https://github.com/acristoffers/tree-sitter-matlab',
     },
     maintainers = { '@acristoffers' },
@@ -1399,7 +1399,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = 'e2818d616fc43cbbba316723cbd68a53c66a2704',
+      revision = '04630ec19f198c3ac2a0b98a004eeae083990c96',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     maintainers = { '@artagnon' },
@@ -1431,7 +1431,7 @@ return {
   },
   nickel = {
     install_info = {
-      revision = '9a05ab045c000cf37f02cff5c4de32b081444244',
+      revision = 'a0a5d98a6f0edb5d00a18e62e7d1d02a5607c391',
       url = 'https://github.com/nickel-lang/tree-sitter-nickel',
     },
     tier = 2,
@@ -1463,7 +1463,7 @@ return {
   },
   nix = {
     install_info = {
-      revision = '42d2e0e2996dec99ea7eb82d64a138e12a7ba006',
+      revision = 'ff4e2b4c5a3598e8be3edf16bc69f6677af32145',
       url = 'https://github.com/nix-community/tree-sitter-nix',
     },
     maintainers = { '@leo60228', '@zimbatm' },
@@ -1574,7 +1574,7 @@ return {
   php = {
     install_info = {
       location = 'php',
-      revision = '182f034cd19a2f41f751eee0d57378fbfc96ab3a',
+      revision = '1269143868747e3b8e50f221ca0a2e5a1a2f2b44',
       url = 'https://github.com/tree-sitter/tree-sitter-php',
     },
     maintainers = { '@tk-shirasaka', '@calebdw' },
@@ -1585,7 +1585,7 @@ return {
   php_only = {
     install_info = {
       location = 'php_only',
-      revision = '182f034cd19a2f41f751eee0d57378fbfc96ab3a',
+      revision = '1269143868747e3b8e50f221ca0a2e5a1a2f2b44',
       url = 'https://github.com/tree-sitter/tree-sitter-php',
     },
     maintainers = { '@tk-shirasaka', '@calebdw' },
@@ -1805,7 +1805,7 @@ return {
   },
   query = {
     install_info = {
-      revision = '8a43889f89fd0667289936341bff3a77bafade17',
+      revision = '2668cc53024953224a40b1e6546d7b8ec5a11150',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-query',
     },
     maintainers = { '@steelsojka' },
@@ -2183,7 +2183,7 @@ return {
   superhtml = {
     install_info = {
       location = 'tree-sitter-superhtml',
-      revision = '6ce62c9f0683f909de7e1601bc866f1db9cf92c9',
+      revision = '0daae5239bd9366dda0c28c7540d7503b0c104d4',
       url = 'https://github.com/kristoff-it/superhtml',
     },
     maintainers = { '@rockorager' },
@@ -2531,7 +2531,7 @@ return {
   },
   vimdoc = {
     install_info = {
-      revision = '9f6191a98702edc1084245abd5523279d4b681fb',
+      revision = 'ffa29e863738adfc1496717c4acb7aae92a80ed4',
       url = 'https://github.com/neovim/tree-sitter-vimdoc',
     },
     maintainers = { '@clason' },
@@ -2581,7 +2581,7 @@ return {
   },
   wit = {
     install_info = {
-      revision = 'a0fd28afe24511160f0601ab45044690c1cb7d92',
+      revision = '8fd7cfd90be29b363922b2e09bf6a7db50de04a8',
       url = 'https://github.com/bytecodealliance/tree-sitter-wit',
     },
     maintainers = { '@mkatychev' },
