@@ -1778,6 +1778,15 @@ return {
     maintainers = { '@stsewd', '@theHamsta' },
     tier = 2,
   },
+  qf = {
+    install_info = {
+      revision = '6a9d1deb934749720aa3bc525f1506f7d2ae4d0a',
+      url = 'https://github.com/OXY2DEV/tree-sitter-qf',
+    },
+    maintainers = { '@OXY2DEV' },
+    tier = 2,
+    readme_note = 'Vim quickfix list',
+  },
   ql = {
     install_info = {
       revision = '1fd627a4e8bff8c24c11987474bd33112bead857',
