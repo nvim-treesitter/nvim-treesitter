@@ -320,6 +320,21 @@ end
 ---@return string? err
 local function do_link_queries(logger, query_src, query_dir)
   uv_unlink(query_dir)
+
+  local install_dir = fs.dirname(query_dir)
+  if not fs.relpath(query_src, install_dir) then
+    local prefix = "../"
+    for dir in fs.parents(install_dir) do
+      local relpath = fs.relpath(dir, query_src)
+      local is_root = dir:match("^/$") or dir:match("^%a:/$")
+      if relpath and not is_root then
+        query_src = prefix .. relpath
+        break
+      end
+      prefix = "../" .. prefix
+    end
+  end
+
   local err = uv_symlink(query_src, query_dir, { dir = true, junction = true })
   a.schedule()
   if err then
