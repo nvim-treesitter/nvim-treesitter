@@ -36,7 +36,7 @@ return {
   },
   arduino = {
     install_info = {
-      revision = '1b1fd5dbd196e80342cf79f6fc5de154232c2829',
+      revision = '3b5ddcdbcac43c6084358d3d14a30e10e2d36b88',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-arduino',
     },
     maintainers = { '@ObserverOfTime' },
@@ -206,7 +206,7 @@ return {
   },
   chatito = {
     install_info = {
-      revision = '433a7a150da013f380d2bd435e0c4373f7f4481c',
+      revision = 'c0ed82c665b732395073f635c74c300f09530a7f',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-chatito',
     },
     maintainers = { '@ObserverOfTime' },
@@ -346,7 +346,7 @@ return {
   },
   desktop = {
     install_info = {
-      revision = '8d6931b05ccc70eb4f88b384524ea5dd3d795958',
+      revision = '0169df0e69bd2844e0d8bb167d030a0e4c021846',
       url = 'https://github.com/ValdezFOmar/tree-sitter-desktop',
     },
     maintainers = { '@ValdezFOmar' },
@@ -449,7 +449,7 @@ return {
   },
   editorconfig = {
     install_info = {
-      revision = '2d92f8bb8304d0b56883bb9df8f17cb351a07cc3',
+      revision = '17be0e84ac012b6731626baf6920ff24e1865a03',
       url = 'https://github.com/ValdezFOmar/tree-sitter-editorconfig',
     },
     maintainers = { '@ValdezFOmar' },
@@ -685,7 +685,7 @@ return {
   },
   gitattributes = {
     install_info = {
-      revision = 'f23072a51e1c764d6c5bf461194a775c8a5c7a95',
+      revision = '1b7af09d45b579f9f288453b95ad555f1f431645',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-gitattributes',
     },
     maintainers = { '@ObserverOfTime' },
@@ -827,7 +827,7 @@ return {
   },
   gpg = {
     install_info = {
-      revision = '50482a322cf1fa00dfe327ef8b00e4607eeeaa1d',
+      revision = '4024eb268c59204280f8ac71ef146b8ff5e737f6',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-gpg-config',
     },
     maintainers = { '@ObserverOfTime' },
@@ -1019,7 +1019,7 @@ return {
   },
   idl = {
     install_info = {
-      revision = '777b39538f9dc4ece1d891733bb4c91fc0627b16',
+      revision = '6ab5582bd47b86df75afe90cdd8dc55d2d480ce1',
       url = 'https://github.com/cathaysia/tree-sitter-idl',
     },
     maintainers = { '@cathaysia' },
@@ -1075,7 +1075,7 @@ return {
   },
   javadoc = {
     install_info = {
-      revision = '08f1977ad27b8d9a908193255ad0c94cc8742748',
+      revision = '77afe93bc6fc10f2cf4935857b8e055b2a47bb94',
       url = 'https://github.com/rmuir/tree-sitter-javadoc',
     },
     maintainers = { '@rmuir' },
@@ -1399,7 +1399,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = '04630ec19f198c3ac2a0b98a004eeae083990c96',
+      revision = 'b209a18d1a0f440acd3a85b6d633dac2660114e1',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     maintainers = { '@artagnon' },
@@ -1556,7 +1556,7 @@ return {
   },
   pem = {
     install_info = {
-      revision = '7374eab76f2caae02396721850f87af437b66c06',
+      revision = 'e525b177a229b1154fd81bc0691f943028d9e685',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-pem',
     },
     maintainers = { '@ObserverOfTime' },
@@ -1574,7 +1574,7 @@ return {
   php = {
     install_info = {
       location = 'php',
-      revision = '1269143868747e3b8e50f221ca0a2e5a1a2f2b44',
+      revision = '5b5627faaa290d89eb3d01b9bf47c3bb9e797dea',
       url = 'https://github.com/tree-sitter/tree-sitter-php',
     },
     maintainers = { '@tk-shirasaka', '@calebdw' },
@@ -1585,7 +1585,7 @@ return {
   php_only = {
     install_info = {
       location = 'php_only',
-      revision = '1269143868747e3b8e50f221ca0a2e5a1a2f2b44',
+      revision = '5b5627faaa290d89eb3d01b9bf47c3bb9e797dea',
       url = 'https://github.com/tree-sitter/tree-sitter-php',
     },
     maintainers = { '@tk-shirasaka', '@calebdw' },
@@ -1635,7 +1635,7 @@ return {
   },
   poe_filter = {
     install_info = {
-      revision = 'e449216700449f1bccaebbd3820cce794d6fd687',
+      revision = '205a7d576984feb38a9fc2d8cfe729617f9e0548',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-poe-filter',
     },
     maintainers = { '@ObserverOfTime' },
@@ -2607,7 +2607,7 @@ return {
   },
   xresources = {
     install_info = {
-      revision = '3b1445a48e5ce26b43e37b51dec5abb3bf1fb3e4',
+      revision = '6113943ab0847a307f3f3c38ff91d9cdfce9d0d9',
       url = 'https://github.com/ValdezFOmar/tree-sitter-xresources',
     },
     maintainers = { '@ValdezFOmar' },
