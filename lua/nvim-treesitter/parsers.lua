@@ -2667,6 +2667,14 @@ list.wit = {
   maintainers = { "@liamwh" },
 }
 
+list.wxml = {
+  install_info = {
+    url = "https://github.com/BlockLune/tree-sitter-wxml",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@BlockLune" },
+}
+
 list.xcompose = {
   install_info = {
     url = "https://github.com/ObserverOfTime/tree-sitter-xcompose",

@@ -926,6 +926,9 @@
   "wit": {
     "revision": "81490b4e74c792369e005f72b0d46fe082d3fed2"
   },
+  "wxml": {
+    "revision": "4487d2eab73191b93279c98ed31c8e8038c5441f"
+  },
   "xcompose": {
     "revision": "fff3e72242aa110ebba6441946ea4d12d200fa68"
   },
