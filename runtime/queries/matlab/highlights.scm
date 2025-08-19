@@ -134,7 +134,8 @@
   (identifier) @function)
 
 (validation_functions
-  (identifier) @function)
+  (property_name
+    (identifier) @function))
 
 (command
   (command_name) @function.call)
