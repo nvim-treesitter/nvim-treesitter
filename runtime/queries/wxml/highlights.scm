@@ -34,7 +34,7 @@
   (#lua-match? @keyword "^catch"))
 
 ((attribute_name) @keyword
-  (#lua-match? @keyword "^mut-bind"))
+  (#lua-match? @keyword "^mut%-bind"))
 
 ((attribute_name) @keyword
   (#lua-match? @keyword "^model:"))
