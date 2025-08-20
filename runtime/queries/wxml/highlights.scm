@@ -28,10 +28,19 @@
   (#any-of? @keyword.repeat "wx:for" "wx:for-index" "wx:for-item"))
 
 ((attribute_name) @keyword
-  (#match? @keyword "^(bind|catch|mut-bind):?"))
+  (#lua-match? @keyword "^bind"))
 
 ((attribute_name) @keyword
-  (#match? @keyword "^(model:|data-)"))
+  (#lua-match? @keyword "^catch"))
+
+((attribute_name) @keyword
+  (#lua-match? @keyword "^mut-bind"))
+
+((attribute_name) @keyword
+  (#lua-match? @keyword "^model:"))
+
+((attribute_name) @keyword
+  (#lua-match? @keyword "^data-"))
 
 ((attribute
   (attribute_name) @_attr
