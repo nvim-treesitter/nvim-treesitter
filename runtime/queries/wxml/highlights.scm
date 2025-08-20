@@ -51,13 +51,8 @@
 ; Entity references
 (entity) @string.escape
 
-; Raw text (primarily for wxs JavaScript content)
-(raw_text) @markup.raw
-
 ; Interpolation expressions
-(interpolation) @markup.strong
-
-(expression) @markup.raw
+(interpolation) @string.special
 
 ; Import and include statements
 (import_statement) @keyword.import
