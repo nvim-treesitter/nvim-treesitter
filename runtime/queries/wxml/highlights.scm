@@ -54,10 +54,6 @@
 ; Interpolation expressions
 (interpolation) @string.special
 
-; Import and include statements
-(import_statement) @keyword.import
-
-(include_statement) @keyword.import
 
 [
   "<"
