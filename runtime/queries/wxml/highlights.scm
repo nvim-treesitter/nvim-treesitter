@@ -51,9 +51,10 @@
 ; Entity references
 (entity) @string.escape
 
-; Interpolation expressions
-(interpolation) @string.special
+; Interpolation delimiters
+(interpolation_start) @punctuation.special
 
+(interpolation_end) @punctuation.special
 
 [
   "<"

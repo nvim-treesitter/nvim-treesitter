@@ -2589,7 +2589,7 @@ return {
   },
   wxml = {
     install_info = {
-      revision = '81bd97fa3bbc43516ad0e7ea5518d72651d954bf',
+      revision = '7b821c748dc410332f59496c0dea2632168c4e5a',
       url = 'https://github.com/BlockLune/tree-sitter-wxml',
     },
     maintainers = { '@BlockLune' },
