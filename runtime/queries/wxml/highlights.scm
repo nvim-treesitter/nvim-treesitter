@@ -64,11 +64,6 @@
   ">"
   "</"
   "/>"
-] @punctuation.bracket
-
-[
-  "\""
-  "'"
-] @punctuation.delimiter
+] @tag.delimiter
 
 "=" @operator
