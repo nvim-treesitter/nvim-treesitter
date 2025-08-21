@@ -46,7 +46,7 @@
   (attribute_name) @_attr
   (quoted_attribute_value) @string.special.url)
   (#any-of? @_attr "href" "src")
-  (#set! @string.special.url url @string.special.url))
+  (#offset! @string.special.url 0 1 0 -1))
 
 ; Entity references
 (entity) @string.escape
