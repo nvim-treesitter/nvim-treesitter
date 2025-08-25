@@ -2,13 +2,8 @@
 ; keywords
 [
   "let"
-  "let-env"
   "mut"
   "const"
-  "hide-env"
-  "source"
-  "source-env"
-  "overlay"
 ] @keyword
 
 [
@@ -20,16 +15,9 @@
 [
   "loop"
   "while"
-  "break"
-  "continue"
 ] @keyword.repeat
 
-[
-  "def"
-  "do"
-] @keyword.function
-
-"return" @keyword.return
+"def" @keyword.function
 
 [
   "try"
@@ -49,30 +37,12 @@
   "extern"
 ] @keyword.modifier
 
-(hide_mod
-  "hide" @keyword)
-
 (decl_use
   module: (unquoted) @module)
 
 (ctrl_for
   "for" @keyword
   "in" @keyword)
-
-(overlay_list
-  "list" @keyword.import)
-
-(overlay_hide
-  "hide" @keyword.import)
-
-(overlay_new
-  "new" @keyword.import)
-
-(overlay_use
-  "as" @keyword)
-
-(ctrl_error
-  "make" @keyword.import)
 
 ; ---
 ; literals
@@ -315,6 +285,26 @@ key: (identifier) @property
       "upsert" "url" "values" "view" "watch" "where" "which" "whoami" "window" "with-env" "wrap"
       "zip")
   ])
+
+(command
+  head: (cmd_identifier) @keyword
+  (#any-of? @keyword "do" "source" "source-env" "hide" "hide-env"))
+
+(command
+  head: (cmd_identifier) @keyword.repeat
+  (#any-of? @keyword.repeat "break" "continue" "return"))
+
+(command
+  head: (cmd_identifier) @keyword
+  .
+  arg_str: (val_string) @keyword.import
+  (#any-of? @keyword "overlay" "error"))
+
+(command
+  head: (cmd_identifier) @_cmd
+  arg_str: (val_string) @keyword
+  (#eq? @_cmd "overlay")
+  (#eq? @keyword "as"))
 
 (command
   "^" @punctuation.delimiter
