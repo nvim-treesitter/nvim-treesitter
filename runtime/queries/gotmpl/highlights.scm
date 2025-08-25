@@ -59,7 +59,6 @@
   [
     "if"
     "else"
-    "else if"
     "end"
   ] @keyword.conditional
   (#set! priority 110))
@@ -96,6 +95,14 @@
     "else"
     "end"
   ] @keyword.conditional
+  (#set! priority 110))
+
+(continue_action
+  "continue" @keyword.repeat
+  (#set! priority 110))
+
+(break_action
+  "break" @keyword.repeat
   (#set! priority 110))
 
 ; Literals

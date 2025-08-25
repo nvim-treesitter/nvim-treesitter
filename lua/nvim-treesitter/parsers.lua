@@ -811,7 +811,7 @@ return {
   },
   gotmpl = {
     install_info = {
-      revision = '5f19a36bb1eebb30454e277b222b278ceafed0dd',
+      revision = '65f4f86c3aaa9dabab36e3482584e8a111cf7db1',
       url = 'https://github.com/ngalaiko/tree-sitter-go-template',
     },
     maintainers = { '@qvalentin' },
@@ -923,7 +923,7 @@ return {
   helm = {
     install_info = {
       location = 'dialects/helm',
-      revision = '5f19a36bb1eebb30454e277b222b278ceafed0dd',
+      revision = '65f4f86c3aaa9dabab36e3482584e8a111cf7db1',
       url = 'https://github.com/ngalaiko/tree-sitter-go-template',
     },
     maintainers = { '@qvalentin' },
