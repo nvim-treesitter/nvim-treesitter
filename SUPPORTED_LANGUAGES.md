@@ -326,6 +326,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` |   | @steelsojka
 [wgsl_bevy](https://github.com/tree-sitter-grammars/tree-sitter-wgsl-bevy) | unstable | `HFI  ` |   | @theHamsta
 [wing](https://github.com/winglang/tree-sitter-wing) | unstable | `HF JL` |   | @gshpychka, @MarkMcCulloh
 [wit](https://github.com/bytecodealliance/tree-sitter-wit) | unstable | `HF J ` |   | @mkatychev
+[wxml](https://github.com/BlockLune/tree-sitter-wxml) | unstable | `HFIJ ` |   | @BlockLune
 [xcompose](https://github.com/tree-sitter-grammars/tree-sitter-xcompose) | unstable | `H  JL` |   | @ObserverOfTime
 [xml](https://github.com/tree-sitter-grammars/tree-sitter-xml) | unstable | `HFIJL` |   | @ObserverOfTime
 [xresources](https://github.com/ValdezFOmar/tree-sitter-xresources) | unstable | `HF JL` |   | @ValdezFOmar

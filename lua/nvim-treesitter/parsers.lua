@@ -2587,6 +2587,14 @@ return {
     maintainers = { '@mkatychev' },
     tier = 2,
   },
+  wxml = {
+    install_info = {
+      revision = '7b821c748dc410332f59496c0dea2632168c4e5a',
+      url = 'https://github.com/BlockLune/tree-sitter-wxml',
+    },
+    maintainers = { '@BlockLune' },
+    tier = 2,
+  },
   xcompose = {
     install_info = {
       revision = 'a51d6366f041dbefec4da39a7eb3168a9b1cbc0e',
