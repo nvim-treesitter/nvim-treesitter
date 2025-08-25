@@ -36,7 +36,7 @@ return {
   },
   arduino = {
     install_info = {
-      revision = '3b5ddcdbcac43c6084358d3d14a30e10e2d36b88',
+      revision = '2f0c1223c50aa4b754136db544204c6fc99ffc77',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-arduino',
     },
     maintainers = { '@ObserverOfTime' },
@@ -125,7 +125,7 @@ return {
   },
   blade = {
     install_info = {
-      revision = '59ce5b68e288002e3aee6cf5a379bbef21adbe6c',
+      revision = 'cc764dadcbbceb3f259396fef66f970c72e94f96',
       url = 'https://github.com/EmranMR/tree-sitter-blade',
     },
     maintainers = { '@calebdw' },
@@ -346,7 +346,7 @@ return {
   },
   desktop = {
     install_info = {
-      revision = '0169df0e69bd2844e0d8bb167d030a0e4c021846',
+      revision = 'cbf82f2b3f75c4f2367d11ef85d34fbad89a974d',
       url = 'https://github.com/ValdezFOmar/tree-sitter-desktop',
     },
     maintainers = { '@ValdezFOmar' },
@@ -473,7 +473,7 @@ return {
   },
   elixir = {
     install_info = {
-      revision = 'b848e63e9f2a68accff0332392f07582c046295a',
+      revision = 'd24cecee673c4c770f797bac6f87ae4b6d7ddec5',
       url = 'https://github.com/elixir-lang/tree-sitter-elixir',
     },
     maintainers = { '@connorlay' },
@@ -1075,7 +1075,7 @@ return {
   },
   javadoc = {
     install_info = {
-      revision = '77afe93bc6fc10f2cf4935857b8e055b2a47bb94',
+      revision = '384952d91ebc176fcf8f1933dff93b9c32430911',
       url = 'https://github.com/rmuir/tree-sitter-javadoc',
     },
     maintainers = { '@rmuir' },
@@ -1288,7 +1288,7 @@ return {
   },
   llvm = {
     install_info = {
-      revision = '470886ddd635e0ee48a4cb169e33d0c6d9bff32e',
+      revision = '2914786ae6774d4c4e25a230f4afe16aa68fe1c1',
       url = 'https://github.com/benwilliamgraham/tree-sitter-llvm',
     },
     maintainers = { '@benwilliamgraham' },
@@ -1399,7 +1399,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = 'b209a18d1a0f440acd3a85b6d633dac2660114e1',
+      revision = '09666cead2c001cbbfc82b395007f6d8158113a5',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     maintainers = { '@artagnon' },
@@ -1565,7 +1565,7 @@ return {
   perl = {
     install_info = {
       branch = 'release',
-      revision = 'e95676fa54559c71f15ad73e871c1e44db8a9b05',
+      revision = '0c24d001dd1921e418fb933d208a7bd7dd3f923a',
       url = 'https://github.com/tree-sitter-perl/tree-sitter-perl',
     },
     maintainers = { '@RabbiVeesh', '@LeoNerd' },
@@ -2183,7 +2183,7 @@ return {
   superhtml = {
     install_info = {
       location = 'tree-sitter-superhtml',
-      revision = '0daae5239bd9366dda0c28c7540d7503b0c104d4',
+      revision = '8cb16babb0c66b6512d6aeb4cbc37ed90641d980',
       url = 'https://github.com/kristoff-it/superhtml',
     },
     maintainers = { '@rockorager' },
@@ -2507,7 +2507,7 @@ return {
   },
   vhdl = {
     install_info = {
-      revision = '73ff9d3e7bc42b8cc123bf5f0b2db12a900ee9b7',
+      revision = '02523d7fb0321344c19c1f3f4ec6b83424c7d6c8',
       url = 'https://github.com/jpt13653903/tree-sitter-vhdl',
     },
     maintainers = { '@jpt13653903' },
@@ -2607,7 +2607,7 @@ return {
   },
   xresources = {
     install_info = {
-      revision = '6113943ab0847a307f3f3c38ff91d9cdfce9d0d9',
+      revision = 'f40778ff42f2119aebacd46d4b6d785a4181a9ba',
       url = 'https://github.com/ValdezFOmar/tree-sitter-xresources',
     },
     maintainers = { '@ValdezFOmar' },
@@ -2656,7 +2656,7 @@ return {
   ziggy = {
     install_info = {
       location = 'tree-sitter-ziggy',
-      revision = 'e95c85cb58773c43e9d94c0b9422ae84697e68a1',
+      revision = '4353b20ef2ac750e35c6d68e4eb2a07c2d7cf901',
       url = 'https://github.com/kristoff-it/ziggy',
     },
     maintainers = { '@rockorager' },
@@ -2665,7 +2665,7 @@ return {
   ziggy_schema = {
     install_info = {
       location = 'tree-sitter-ziggy-schema',
-      revision = 'e95c85cb58773c43e9d94c0b9422ae84697e68a1',
+      revision = '4353b20ef2ac750e35c6d68e4eb2a07c2d7cf901',
       url = 'https://github.com/kristoff-it/ziggy',
     },
     maintainers = { '@rockorager' },
