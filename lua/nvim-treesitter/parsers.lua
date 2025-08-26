@@ -208,6 +208,15 @@ list.blueprint = {
   experimental = true,
 }
 
+list.bosque = {
+  install_info = {
+    url = "https://github.com/Karidus-423/tree-sitter-bosque",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@Karidus-423" },
+  experimental = true,
+}
+
 list.bp = {
   install_info = {
     url = "https://github.com/ambroisie/tree-sitter-bp",
