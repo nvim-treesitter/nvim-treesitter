@@ -134,8 +134,7 @@
   (identifier) @function)
 
 (validation_functions
-  (property_name
-    (identifier) @function))
+  (identifier) @function)
 
 (command
   (command_name) @function.call)
@@ -205,7 +204,11 @@
 
 (number) @number
 
-(boolean) @boolean
+((identifier) @boolean
+  (#eq? @boolean "true"))
+
+((identifier) @boolean
+  (#eq? @boolean "false"))
 
 ; Comments
 [

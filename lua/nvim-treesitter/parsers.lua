@@ -1367,7 +1367,7 @@ return {
   },
   matlab = {
     install_info = {
-      revision = '93020b226bf341de02336cdf1c19a7ce0b509cf2',
+      revision = '96a3e8fb0a4ebd0db64db6b52043483937e9ca3a',
       url = 'https://github.com/acristoffers/tree-sitter-matlab',
     },
     maintainers = { '@acristoffers' },
