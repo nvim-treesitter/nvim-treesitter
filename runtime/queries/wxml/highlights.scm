@@ -49,7 +49,7 @@
   (#offset! @string.special.url 0 1 0 -1))
 
 ; Entity references
-(entity) @string.escape
+(entity) @character.special
 
 ; Interpolation delimiters
 (interpolation_start) @punctuation.special
