@@ -4,7 +4,7 @@ The following is a list of languages for which a parser can be installed through
 
 Legend:
 - **Tier:** _stable_ (updates follow semver releases), _unstable_ (updates follow HEAD), _unmaintained_ (no automatic updates), or _unsupported_ (known to be broken, cannot be installed)
-- **Queries** available for **H**ighlights, **I**ndents, **F**olds, In**J**ections, **L**ocals
+- **Queries** available for **H**ighlights, **F**olds, **I**ndents, In**J**ections, **L**ocals
 - **Node:** Parser requires `node` for installation
 - **Maintainer** of queries in nvim-treesitter (may be different from parser maintainer!)
 
