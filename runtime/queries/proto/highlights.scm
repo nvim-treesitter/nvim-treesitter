@@ -1,3 +1,19 @@
+(full_ident
+  (identifier) @variable)
+
+(full_ident
+  (identifier)
+  (identifier) @variable.member)
+
+(field
+  (identifier) @property)
+
+(field_option
+  (identifier) @property)
+
+(block_lit
+  (identifier) @property)
+
 [
   "extend"
   "extensions"
@@ -77,6 +93,8 @@
 [
   ";"
   ","
+  "."
+  ":"
 ] @punctuation.delimiter
 
 "=" @operator
