@@ -1,0 +1,62 @@
+syntax = "proto2";
+//       ^^^^^^^^ @string.special
+package sls.asfd.asfd;
+//      ^^^ @variable
+//         ^ @punctuation.delimiter
+//          ^^^^ @variable.member
+//              ^ @punctuation.delimiter
+//               ^^^^ @variable.member
+//                   ^ @punctuation.delimiter
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+//<- @keyword.import
+
+option (gogoproto.sizer_all) = true;
+option (gogoproto.marshaler_all) = true;
+option (gogoproto.unmarshaler_all.foo) = true;
+//      ^^^^^^^^^ @variable
+//                ^^^^^^^^^^^^^^^ @variable.member
+//                               ^ @punctuation.delimiter
+//                                ^^^ @variable.member
+
+message LogContent
+//<- @keyword.type
+{
+    required string Key = 1;
+//           ^^^^^^ @type
+//                  ^^^ @property
+//                      ^ @operator
+//                        ^ @number
+    required string Value = 2;
+//           ^^^^^^ @type
+//                  ^^^^^ @property
+    required CustomType Value = 2;
+//  ^^^^^^^^ @keyword.modifier
+//           ^^^^^^^^^^ @type
+
+    optional string cgroup_pids_mount = 76 [default = "/sys/fs/cgroup/pids"];
+
+    optional JsonFormat json_format = 6 [
+//  ^^^^^^^^ @keyword.modifier
+      retention = RETENTION_RUNTIME,
+//                ^^^^^^^^^^^^^^^^^ @variable
+//                                 ^ @punctuation.delimiter
+      targets = TARGET_TYPE_MESSAGE,
+//    ^^^^^^^ @property
+      targets = TARGET_TYPE_ENUM,
+      targets = TARGET_TYPE_FILE,
+      edition_defaults = { edition: "2023", value: "ALLOW" }
+//                         ^^^^^^^ @property
+//                                ^ @punctuation.delimiter
+//                                               ^ @punctuation.delimiter
+//                                                         ^ @punctuation.bracket
+    ];
+}
+
