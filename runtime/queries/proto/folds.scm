@@ -3,3 +3,5 @@
   (message)
   (service)
 ] @fold
+
+(import)+ @fold
