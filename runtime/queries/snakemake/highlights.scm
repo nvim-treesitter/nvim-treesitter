@@ -63,20 +63,20 @@ body: (_
 ; directive labels in wildcard context
 ((wildcard
   (identifier) @label)
-  (#any-of? @label "input" "log" "output" "params" "resources" "threads" "wildcards"))
+  (#any-of? @label "input" "jobid" "log" "output" "params" "resources" "rule" "threads" "wildcards"))
 
 ((wildcard
   (attribute
     object: (identifier) @label))
-  (#any-of? @label "input" "log" "output" "params" "resources" "threads" "wildcards"))
+  (#any-of? @label "input" "jobid" "log" "output" "params" "resources" "rule" "threads" "wildcards"))
 
 ((wildcard
   (subscript
     value: (identifier) @label))
-  (#any-of? @label "input" "log" "output" "params" "resources" "threads" "wildcards"))
+  (#any-of? @label "input" "jobid" "log" "output" "params" "resources" "rule" "threads" "wildcards"))
 
 ; directive labels in block context (eg. within 'run:')
 ((identifier) @label
-  (#any-of? @label "input" "log" "output" "params" "resources" "threads" "wildcards")
+  (#any-of? @label "input" "jobid" "log" "output" "params" "resources" "rule" "threads" "wildcards")
   (#has-ancestor? @label "directive")
   (#has-ancestor? @label "block"))
