@@ -1240,7 +1240,7 @@ return {
   latex = {
     install_info = {
       generate = true,
-      revision = '9410012b3eba659da5de5a655b4041593b493cb7',
+      revision = '7af2bf3addcab5ada8843cf08b857daf1799dbd4',
       url = 'https://github.com/latex-lsp/tree-sitter-latex',
     },
     maintainers = { '@theHamsta', '@clason' },

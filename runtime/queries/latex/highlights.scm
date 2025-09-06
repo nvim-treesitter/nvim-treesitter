@@ -23,6 +23,9 @@
 (curly_group_spec
   (text) @variable.parameter)
 
+(curly_group_value
+  (value_literal) @constant)
+
 (brack_group_argc) @variable.parameter
 
 [
@@ -85,6 +88,54 @@
   declaration: (curly_group_command_name
     (_) @function))
 
+(counter_declaration
+  command: _ @function.macro @nospell
+  counter: (curly_group_word
+    (word) @variable)
+  supercounter: (brack_group_word
+    (word) @variable)?)
+
+(counter_within_declaration
+  command: _ @function.macro @nospell
+  counter: (curly_group_word
+    (word) @variable)
+  supercounter: (curly_group_word
+    (word) @variable))
+
+(counter_without_declaration
+  command: _ @function.macro @nospell
+  counter: (curly_group_word
+    (word) @variable)
+  supercounter: (curly_group_word
+    (word) @variable))
+
+(counter_value
+  command: _ @function.macro @nospell
+  counter: (curly_group_word
+    (word) @variable))
+
+; The 'value' fields for the two following highlights
+; are handled by counter_value and curly_group_value.
+(counter_definition
+  command: _ @function.macro @nospell
+  counter: (curly_group_word
+    (word) @variable))
+
+(counter_addition
+  command: _ @function.macro @nospell
+  counter: (curly_group_word
+    (word) @variable))
+
+(counter_increment
+  command: _ @function.macro @nospell
+  counter: (curly_group_word
+    (word) @variable))
+
+(counter_typesetting
+  command: _ @function.macro @nospell
+  counter: (curly_group_word
+    (word) @variable))
+
 (label_definition
   command: _ @function.macro
   name: (curly_group_label
@@ -92,9 +143,9 @@
 
 (label_reference_range
   command: _ @function.macro
-  from: (curly_group_text
+  from: (curly_group_label
     (_) @markup.link)
-  to: (curly_group_text
+  to: (curly_group_label
     (_) @markup.link))
 
 (label_reference
@@ -104,7 +155,7 @@
 
 (label_number
   command: _ @function.macro
-  name: (curly_group_text
+  name: (curly_group_label
     (_) @markup.link)
   number: (_) @markup.link)
 
@@ -298,6 +349,14 @@
 
 ; Turn spelling off for whole nodes
 [
+  (counter_declaration)
+  (counter_within_declaration)
+  (counter_without_declaration)
+  (counter_value)
+  (counter_definition)
+  (counter_addition)
+  (counter_increment)
+  (counter_typesetting)
   (label_reference)
   (label_reference_range)
   (label_number)
