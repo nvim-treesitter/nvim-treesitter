@@ -36,7 +36,7 @@ return {
   },
   arduino = {
     install_info = {
-      revision = '2f0c1223c50aa4b754136db544204c6fc99ffc77',
+      revision = '53eb391da4c6c5857f8defa2c583c46c2594f565',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-arduino',
     },
     maintainers = { '@ObserverOfTime' },
@@ -346,7 +346,7 @@ return {
   },
   desktop = {
     install_info = {
-      revision = 'cbf82f2b3f75c4f2367d11ef85d34fbad89a974d',
+      revision = 'ea5cff078ebd8abb42598e006e549e5cb75d4752',
       url = 'https://github.com/ValdezFOmar/tree-sitter-desktop',
     },
     maintainers = { '@ValdezFOmar' },
@@ -1003,7 +1003,7 @@ return {
   },
   hurl = {
     install_info = {
-      revision = 'ff07a42d9ec95443b5c1b57ed793414bf7b79be5',
+      revision = '1124058cd192e80d80914652a5850a5b1887cc10',
       url = 'https://github.com/pfeiferj/tree-sitter-hurl',
     },
     maintainers = { '@pfeiferj' },
@@ -1399,7 +1399,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = '09666cead2c001cbbfc82b395007f6d8158113a5',
+      revision = '1f3bc2fd4d4e28361d1ff75cf5763e1d0c2b6348',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     maintainers = { '@artagnon' },
@@ -1805,7 +1805,7 @@ return {
   },
   query = {
     install_info = {
-      revision = '2668cc53024953224a40b1e6546d7b8ec5a11150',
+      revision = '60e253d3c9d6b1131a0f75c85e4bdcc9a48d5b42',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-query',
     },
     maintainers = { '@steelsojka' },
@@ -2043,7 +2043,7 @@ return {
   },
   slint = {
     install_info = {
-      revision = '96bc969d20ff347030519184ea2467f4046a524d',
+      revision = 'ecd60078bbd546eeb4c7fbbe02226752517b847f',
       url = 'https://github.com/slint-ui/tree-sitter-slint',
     },
     maintainers = { '@hunger' },
@@ -2067,7 +2067,7 @@ return {
   },
   snakemake = {
     install_info = {
-      revision = 'f36c1587624d6d84376c82a357c20fc319cbf02c',
+      revision = '7731408e5e8095fe242fdd423c3d3ae886fbf9fd',
       url = 'https://github.com/osthomas/tree-sitter-snakemake',
     },
     maintainers = { '@osthomas' },
@@ -2615,7 +2615,7 @@ return {
   },
   xresources = {
     install_info = {
-      revision = 'f40778ff42f2119aebacd46d4b6d785a4181a9ba',
+      revision = '423597c9ee0cd9fd98691a9f9881ff4e6f7b047a',
       url = 'https://github.com/ValdezFOmar/tree-sitter-xresources',
     },
     maintainers = { '@ValdezFOmar' },
