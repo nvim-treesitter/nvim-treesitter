@@ -15,6 +15,7 @@
   (identifier) @property)
 
 [
+  "edition"
   "extend"
   "extensions"
   "oneof"
@@ -63,6 +64,8 @@
 [
   "\"proto3\""
   "\"proto2\""
+  "\"2023\""
+  "\"2024\""
 ] @string.special
 
 (int_lit) @number
