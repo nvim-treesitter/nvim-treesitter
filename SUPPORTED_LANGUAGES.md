@@ -265,6 +265,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` |   | @steelsojka
 [smali](https://github.com/tree-sitter-grammars/tree-sitter-smali) | unstable | `HFIJL` |   | @amaanq
 [smithy](https://github.com/indoorvivants/tree-sitter-smithy) | unstable | `H  J ` |   | @amaanq, @keynmol
 [snakemake](https://github.com/osthomas/tree-sitter-snakemake) | unstable | `HFIJL` |   | @osthomas
+[snl](https://github.com/minijackson/tree-sitter-snl)[^snl] | unstable | `HFIJL` |   | @minijackson
 [solidity](https://github.com/JoranHonig/tree-sitter-solidity) | unstable | `HF J ` |   | @amaanq
 [soql](https://github.com/aheber/tree-sitter-sfapex) | unstable | `H    ` |   | @aheber, @xixiafinland
 [sosl](https://github.com/aheber/tree-sitter-sfapex) | unstable | `H    ` |   | @aheber, @xixiafinland
@@ -359,4 +360,5 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` |   | @steelsojka
 [^query]: Tree-sitter query language
 [^sflog]: Salesforce debug log
 [^slang]: Shader Slang
+[^snl]: EPICS Sequencer's SNL files
 <!--parserinfo-->
