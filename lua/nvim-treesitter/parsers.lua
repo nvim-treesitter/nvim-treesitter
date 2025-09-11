@@ -1908,6 +1908,14 @@ return {
     maintainers = { '@ribru17' },
     tier = 2,
   },
+  rifleconf = {
+    install_info = {
+      url = 'https://github.com/purarue/tree-sitter-rifleconf',
+      revision = '1ae719d850b757046799048fbc8867e555dc5463',
+    },
+    maintainers = { '@purarue' },
+    tier = 2,
+  },
   rnoweb = {
     install_info = {
       revision = '1a74dc0ed731ad07db39f063e2c5a6fe528cae7f',
