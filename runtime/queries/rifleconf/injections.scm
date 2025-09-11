@@ -11,3 +11,6 @@
   (command) @injection.content
   (#set! injection.include-children)
   (#set! injection.language "bash"))
+
+((comment) @injection.content
+  (#set! injection.language "comment"))
