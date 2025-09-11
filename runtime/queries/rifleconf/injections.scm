@@ -3,7 +3,7 @@
 (binary_condition_expression
   (binary_condition_identifier) @_keyword
   (identifier) @injection.content
-  (#any-of? @_keyword "match" "ext" "mime" "name" "path" "has" "env" "label")
+  (#any-of? @_keyword "match" "ext" "mime" "name" "path")
   (#set! injection.language "regex"))
 
 ; highlight any commands using the bash tree-sitter parser
