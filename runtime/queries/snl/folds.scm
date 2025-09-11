@@ -1,0 +1,19 @@
+[
+  (for_statement)
+  (if_statement)
+  (while_statement)
+  (funcdef)
+  (structdef)
+  (comment)
+  (preproc_if)
+  (preproc_elif)
+  (preproc_else)
+  (preproc_ifdef)
+  (preproc_function_def)
+  (init_expr)
+  (preproc_include)+
+  (entry)
+  (state_set)
+  (state)
+  (exit)
+] @fold
