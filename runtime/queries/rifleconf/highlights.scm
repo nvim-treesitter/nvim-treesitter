@@ -5,7 +5,16 @@
   ";"
 ] @punctuation.delimiter
 
-"=" @operator
+[
+  "="
+  (condition_negation)
+] @operator
+
+; mark the string values for items interpreted as regex as string.regexp
+(binary_condition_expression
+  (binary_condition_identifier) @keyword
+  (identifier) @string.regexp
+  (#any-of? @keyword "match" "ext" "mime" "name" "path"))
 
 (binary_condition_identifier) @keyword
 
