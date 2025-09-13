@@ -1772,7 +1772,7 @@ return {
   },
   python = {
     install_info = {
-      revision = '710796b8b877a970297106e5bbc8e2afa47f86ec',
+      revision = '293fdc02038ee2bf0e2e206711b69c90ac0d413f',
       url = 'https://github.com/tree-sitter/tree-sitter-python',
     },
     maintainers = { '@stsewd', '@theHamsta' },
