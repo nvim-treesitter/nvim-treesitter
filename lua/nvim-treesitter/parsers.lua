@@ -1911,7 +1911,7 @@ return {
   rifleconf = {
     install_info = {
       url = 'https://github.com/purarue/tree-sitter-rifleconf',
-      revision = '77e3d9ba708f6b6f1df36ea89a2b63ea3f000964',
+      revision = 'ff80e6df29622edfbd82df074fd898fbb0ab540b',
     },
     maintainers = { '@purarue' },
     tier = 2,
