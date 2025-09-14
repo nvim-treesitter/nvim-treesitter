@@ -261,7 +261,27 @@ local function do_download(logger, url, project_name, cache_dir, revision, outpu
   do -- Move tmp dir to output dir
     local dir_rev = revision:find('^v%d') and revision:sub(2) or revision
     local repo_project_name = url:match('[^/]-$')
-    local extracted = fs.joinpath(tmp, repo_project_name .. '-' .. dir_rev)
+
+    ---@type string?
+    local extracted = nil
+    local candidates = {
+      fs.joinpath(tmp, repo_project_name .. '-' .. dir_rev),
+      fs.joinpath(tmp, repo_project_name),
+    }
+
+    for i, path in ipairs(candidates) do
+      if uv.fs_lstat(path) then
+        extracted = path
+        break
+      elseif i < #candidates then
+        logger:debug('Could not find extracted dir %s, trying %s...', path, candidates[i + 1])
+      end
+    end
+
+    if not extracted then
+      return logger:error('Could not find extracted dir')
+    end
+
     logger:debug('Moving %s to %s/...', extracted, output_dir)
     local err = uv_rename(extracted, output_dir)
     a.schedule()
