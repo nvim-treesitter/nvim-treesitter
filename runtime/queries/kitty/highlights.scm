@@ -26,7 +26,7 @@
 
 ; Color names & `none`.
 ((color) @constant
-  (#match? @constant "^[^#]"))
+  (#lua-match? @constant "^[^#]"))
 
 ;
 (string) @string
@@ -120,7 +120,7 @@
 ; Command flags(`--flag`) should be highlighted *differently*.
 (kitten_arguments
   (string) @variable.parameter
-  (#match? @variable.parameter "^-"))
+  (#lua-match? @variable.parameter "^-"))
 
 ; Launch ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (launch
@@ -415,7 +415,7 @@
 ; Only color known option values
 (layout_option
   name: (string) @variable.parameter
-  (#match? @variable.parameter "^(bias|full_size|mirrored|split_axis)$")
+  (#lua-match? @variable.parameter "^(bias|full_size|mirrored|split_axis)$")
   "=" @punctuation.delimiter)
 
 ; Strings are mostly pre-defined keywords.
