@@ -54,14 +54,14 @@ local function install_health()
     local ts = check_exe('tree-sitter')
     if ts then
       if vim.version.ge(ts.version, TREE_SITTER_MIN_VER) then
-        health.ok(string.format('tree-sitter %s (%s)', ts.version, ts.path))
+        health.ok(string.format('tree-sitter-cli %s (%s)', ts.version, ts.path))
       else
         health.error(
-          string.format('tree-sitter CLI v%d.%d.%d is required', unpack(TREE_SITTER_MIN_VER))
+          string.format('tree-sitter-cli v%d.%d.%d is required', unpack(TREE_SITTER_MIN_VER))
         )
       end
     else
-      health.error('tree-sitter CLI not found')
+      health.error('tree-sitter-cli not found')
     end
   end
 
