@@ -1,13 +1,11 @@
 ; Extra Nodes ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (line_continuation) @comment
 
 ; Primitive data types ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 [
- (pixel)
- (percentage)
- (number)
+  (pixel)
+  (percentage)
+  (number)
 ] @number
 
 (pixel
@@ -17,13 +15,12 @@
   "%" @type)
 
 [
- (boolean)
- "enabled"
- "disabled"
+  (boolean)
+  "enabled"
+  "disabled"
 ] @boolean
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 ; Hexadecimal colors.
 (color) @constant
 
@@ -31,40 +28,36 @@
 ((color) @constant
   (#match? @constant "^[^#]"))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (string) @string
 
 (time
   duration: (number) @number
   suffix: (time_suffix) @type)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+[
+  (ctrl)
+  (alt)
+  (shift)
+  (function)
+  (super)
+  (mouse_button)
+  (left)
+  (right)
+  (middle)
+] @constant.builtin
 
 [
- (ctrl)
- (alt)
- (shift)
- (function)
- (super)
-
- (mouse_button)
-
- (left)
- (right)
- (middle)
- ] @constant.builtin
-
-[
- "+"
- ">"
+  "+"
+  ">"
 ] @punctuation.delimiter
 
 (special) @variable.builtin
+
 (key) @character
 
 ; Actions ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (generic_action) @function.call
 
 (copy_to_buffer
@@ -78,8 +71,7 @@
 (send_key
   "send_key" @function.call)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (send_text
   "send_text" @function.call)
 
@@ -94,8 +86,7 @@
     "all"
   ] @constant)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (show_kitty_doc
   "show_kitty_doc" @function.call
   topic: (string) @label)
@@ -109,21 +100,18 @@
   action: (clear_action) @constant
   target: (clear_target) @type)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (combine
   "combine" @function.call)
 
 (combine_action
   (separator) @punctuation.delimiter)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (disable_ligatures_in
   "disable_ligatures_in" @function.call
   target: (ligature_target) @type
   type: (ligature_disabled) @constant)
-
 
 (kitten
   "kitten" @function.call
@@ -134,14 +122,13 @@
   (string) @variable.parameter
   (#match? @variable.parameter "^-"))
 
-;; Launch ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+; Launch ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (launch
   "launch" @function.call)
 
 (launch_source_window
   "--source-window" @constant
-  pattern: (string) @string.regex)
+  pattern: (string) @string.regexp)
 
 (launch_window_title
   [
@@ -172,14 +159,12 @@
 
 (launch_env
   "--env" @constant
-
   variable: (string) @variable.builtin
   "=" @punctuation.delimiter
   value: (string) @string)
 
 (launch_var
   "--var" @constant
-
   variable: (string) @variable.builtin
   "=" @punctuation.delimiter
   value: (string) @string)
@@ -211,7 +196,7 @@
 
 (launch_next_to
   "--next-to" @constant
-  pattern: (string) @string.regex)
+  pattern: (string) @string.regexp)
 
 (launch_bias
   "--bias" @constant)
@@ -221,25 +206,23 @@
   "="? @punctuation.delimiter
   _? @type)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (launch_remote_password
   "--remote-control-password" @constant)
 
 (launch_remote_password
   [
-   "'"
-   "\""
+    "'"
+    "\""
   ] @punctuation.delimiter)
 
 (launch_remote_password
   password: (password) @string.special)
 
 (remote_actions
-  (string) @constant.macro) 
+  (string) @constant.macro)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (launch_stdin_source
   "--stdin-source" @constant
   "=" @punctuation.delimiter
@@ -255,8 +238,7 @@
   "="? @punctuation.delimiter
   _? @type)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (launch_marker
   "--marker" @constant)
 
@@ -265,10 +247,9 @@
 
 (marker_entry
   id: (marker_id) @label
-  pattern: (string) @string.regex)
+  pattern: (string) @string.regexp)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (launch_os_window_class
   "--os-window-class" @constant
   class: (string) @type)
@@ -306,10 +287,9 @@
   name: (string) @variable.builtin
   "=" @punctuation.delimiter)
 
-;;; OS Panel ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+; OS Panel ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; `option` may include any of the `os_panel_*` nodes.
-; The first child of these nodes are **always** the 
+; The first child of these nodes are **always** the
 ; option name.
 (launch_os_panel
   "--os-panel" @constant
@@ -317,8 +297,7 @@
     _ @variable.builtin
     "=" @punctuation.delimiter))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (launch_watcher
   [
     "--watcher"
@@ -331,8 +310,7 @@
   "="? @punctuation.delimiter
   _? @type)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (load_config_file
   "load_config_file" @function.call
   path: (string)? @string.special.path)
@@ -348,16 +326,14 @@
 (sleep
   "sleep" @function.call)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (mouse_handle_click
   "mouse_handle_click" @function.call)
 
 (handle_click_actions
   _ @type)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (mouse_selection
   "mouse_selection" @function.call
   selection: (mouse_selection_type) @type)
@@ -414,16 +390,14 @@
   "detach_window" @function.call
   into: (detach_into)? @type)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (set_background_opacity
   "set_background_opacity" @function.call)
 
 ((background_alpha) @constant
   (#eq? @constant "default"))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (nth_os_window
   "nth_os_window" @function.call
   window: (number) @label)
@@ -432,8 +406,7 @@
   "toggle_layout" @function.call
   name: (layout_name)? @type)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (goto_layout
   "goto_layout" @function.call
   name: (layout_name) @type
@@ -449,8 +422,7 @@
 (layout_option
   value: (string) @constant)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (remote_control
   "remote_control" @function.call)
 
@@ -471,7 +443,6 @@
   open_as: (kitty_shell_open_as)? @type)
 
 ; Colors ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (set_colors
   "set_colors" @function.call)
 
@@ -498,20 +469,19 @@
 
 (color_match
   [
-   "-m"
+    "-m"
     "--match"
   ] @constant
-  (string) @string.regex)
+  (string) @string.regexp)
 
 (color_match_tab
   [
-   "-t"
+    "-t"
     "--match-tab"
   ] @constant
-  (string) @string.regex)
+  (string) @string.regexp)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (color_option
   name: (color_option_name) @keyword)
 
@@ -524,14 +494,13 @@
   name: (color_option_name) @variable.builtin)
 
 ; Includes ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (include
   "include" @keyword
   path: (string) @string.special.path)
 
 (include
   "globinclude" @keyword
-  glob: (string) @string.regex)
+  glob: (string) @string.regexp)
 
 (include
   "geninclude" @keyword
@@ -542,7 +511,6 @@
   environment_variable: (string) @variable.builtin)
 
 ; Keyboard shortcut ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (keyboard_shortcut
   "map" @keyword)
 
@@ -551,7 +519,6 @@
   condition: (string) @string.special)
 
 ; Mouse shortcuts ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (mouse_shortcut
   "mouse_map" @keyword
   event_type: (mouse_event) @type)
@@ -566,7 +533,6 @@
   "," @punctuation.delimiter)
 
 ; Options ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (numeric_option
   [
     "font_size"
@@ -605,7 +571,6 @@
     "macos_thicken_font"
     "macos_menubar_title_max_length"
     "visual_bell_duration"
-
     "clipboard_max_size"
   ] @keyword)
 
@@ -636,7 +601,6 @@
     "wayland_enable_ime"
     "clear_all_shortcuts"
     "remember_window_size"
-
     "dynamic_background_opacity"
     "allow_hyperlinks"
   ] @keyword)
@@ -659,7 +623,6 @@
     "startup_session"
     "file_transfer_confirmation_bypass"
     "term"
-
     "strip_trailing_spaces"
     "pointer_options"
     "command_on_bell"
@@ -695,8 +658,7 @@
     "tab_bar_background"
   ] @keyword)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (font_option
   [
     "font_family"
@@ -711,15 +673,13 @@
 (font_value
   .
   (string) @constant
-  (#eq? @constant "auto")
-  .)
+  (#eq? @constant "auto") .)
 
 (font_property
   name: (string) @variable.parameter
   "=" @punctuation.delimiter)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (symbol_map
   "symbol_map" @keyword
   codepoints: (string) @constant
@@ -729,8 +689,7 @@
   "narrow_symbols" @keyword
   codepoints: (string) @constant)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (font_features
   "font_features" @keyword
   font: (string)? @constant)
@@ -741,8 +700,7 @@
 (feature_list
   (string) @string.special)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (modify_font
   "modify_font" @keyword
   type: (font_modification_type) @type)
@@ -759,16 +717,14 @@
     "dense"
   ] @constant)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (text_composition_strategy
   "text_composition_strategy" @keyword)
 
 ((composition_value) @constant
   (#eq? @constant "platform"))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (text_fg_override_threshold
   "text_fg_override_threshold" @keyword)
 
@@ -778,8 +734,7 @@
     "%"
   ] @type)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (cursor_shape
   "cursor_shape" @keyword)
 
@@ -788,13 +743,14 @@
 (cursor_shape_unfocused
   "cursor_shape_unfocused" @keyword)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (cursor_blink_interval
   "cursor_blink_interval" @keyword)
 
 ((ease) @type
-  (#match? @type "^\w+$"))
+  (#any-of? @type
+    "linear" "ease" "ease-in-out" "ease-in" "ease-out" "step-start" "step-end" "ease" "ease-in"
+    "ease-out" "ease-in-out"))
 
 (ease_step
   "steps" @function.call)
@@ -823,34 +779,30 @@
 (cubic_bezier
   "," @punctuation.delimiter)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (cursor_trail_decay
   "cursor_trail_decay" @keyword)
 
 (scrollback_pager
   "scrollback_pager" @keyword
-  command: (string) @string.special) 
+  command: (string) @string.special)
 
 (mouse_hide_wait
   "mouse_hide_wait" @keyword)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (url_prefixes
   "url_prefixes" @keyword)
 
 (url_prefix_list
   (string) @constant)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (url_excluded_characters
   "url_excluded_characters" @keyword
   characters: (string) @string.special)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (paste_actions
   "paste_actions" @keyword)
 
@@ -859,15 +811,13 @@
 
 (paste_action) @type
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (pointer_shape_when_dragging
   "pointer_shape_when_dragging" @keyword)
 
 (pointer) @type
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (visual_bell_color
   "visual_bell_color" @keyword)
 
@@ -879,8 +829,7 @@
 
 (layout) @type
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (window_border_width
   "window_border_width" @keyword)
 
@@ -890,16 +839,14 @@
     "pt"
   ] @type)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (box_drawing_scale
   "box_drawing_scale" @keyword)
 
 (scale_value
   "," @punctuation.delimiter)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (window_margin_width
   "window_margin_width" @keyword)
 
@@ -912,8 +859,7 @@
 (single_window_padding_width
   "single_window_padding_width" @keyword)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (resize_debounce_time
   "resize_debounce_time" @keyword)
 
@@ -923,8 +869,7 @@
 (tab_fade
   "tab_fade" @keyword)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (transparent_background_colors
   "transparent_background_colors" @keyword)
 
@@ -932,8 +877,7 @@
   "@" @punctuation.special
   (alpha) @number)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (remote_control_password
   "remote_control_password" @keyword
   password: (string) @string.special)
@@ -941,8 +885,7 @@
 (remote_actions
   (string) @type)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (env
   "env" @keyword
   variable: (string) @variable.builtin
@@ -962,22 +905,20 @@
     "body"
     "app"
     "type"
-  ] @parameter
+  ] @variable.parameter
   ":" @punctuation.delimiter
-  (string) @string.regex)
+  (string) @string.regexp)
 
 (filter_element
   "\"" @punctuation.delimiter)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (clipboard_control
   "clipboard_control" @keyword)
 
 (clipboard_action) @type
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (shell_integration
   "shell_integration" @keyword)
 
@@ -989,8 +930,7 @@
 
 (shell_feature) @type
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (clone_source_strategies
   "clone_source_strategies" @keyword)
 
@@ -999,8 +939,7 @@
 
 (source_strategy) @type
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (notify_on_cmd_finish
   "notify_on_cmd_finish" @keyword)
 
@@ -1012,14 +951,12 @@
   "command"
   command: (string) @string.special)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (menu_map
   "menu_map" @keyword
   value: (string) @string.special)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (wayland_titlebar_color
   "wayland_titlebar_color" @keyword)
 
@@ -1029,21 +966,18 @@
 ((titlebar_color) @constant
   (#eq? @constant "background"))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (window_logo_scale
   "window_logo_scale" @keyword)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (confirm_os_window_close
   "confirm_os_window_close" @keyword)
 
 (confirm_os_window_close
   count_background: (string) @constant)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;
 (kitty_mod
   "kitty_mod" @keyword)
 
@@ -1064,5 +998,4 @@
   name: (string) @string.special)
 
 ; Comment ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (comment) @comment
