@@ -90,6 +90,9 @@
 (parameter
   name: (identifier) @variable.parameter)
 
+(parameter
+  (modifier) @keyword.modifier)
+
 (parameter_list
   name: (identifier) @variable.parameter)
 
