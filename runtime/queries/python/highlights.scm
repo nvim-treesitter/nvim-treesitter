@@ -80,7 +80,11 @@
 ] @string.escape
 
 ; doc-strings
-(expression_statement
+(module
+  (string
+    (string_content) @spell) @string.documentation)
+
+(block
   (string
     (string_content) @spell) @string.documentation)
 
