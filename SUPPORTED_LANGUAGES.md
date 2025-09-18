@@ -76,6 +76,7 @@ ecma (queries only)[^ecma] | unstable | `HFIJL` |   | @steelsojka
 [elvish](https://github.com/elves/tree-sitter-elvish) | unstable | `H  J ` |   | @elves
 [embedded_template](https://github.com/tree-sitter/tree-sitter-embedded-template) | unstable | `H  J ` |   | 
 [enforce](https://github.com/simonvic/tree-sitter-enforce) | unstable | `HFIJL` |   | @simonvic
+[epics_msi_template](https://github.com/minijackson/tree-sitter-epics-msi-template)[^epics_msi_template] | unstable | `H    ` |   | @minijackson
 [erlang](https://github.com/WhatsApp/tree-sitter-erlang) | unstable | `HF J ` |   | @filmor
 [facility](https://github.com/FacilityApi/tree-sitter-facility) | unstable | `HFIJ ` |   | @bryankenote
 [faust](https://github.com/khiner/tree-sitter-faust) | unstable | `H  J ` |   | @khiner
@@ -342,6 +343,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` |   | @steelsojka
 [ziggy_schema](https://github.com/kristoff-it/ziggy) | unstable | `H I  ` |   | @rockorager
 [^bp]: Android Blueprint
 [^ecma]: queries required by javascript, typescript, tsx, qmljs
+[^epics_msi_template]: EPICS macros
 [^gap]: GAP system
 [^gaptst]: GAP system test files
 [^gdscript]: Godot
