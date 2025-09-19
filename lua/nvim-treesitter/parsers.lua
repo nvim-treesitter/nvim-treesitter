@@ -1772,11 +1772,11 @@ return {
   },
   python = {
     install_info = {
-      revision = '26855eabccb19c6abf499fbc5b8dc7cc9ab8bc64',
+      revision = 'v0.25.0',
       url = 'https://github.com/tree-sitter/tree-sitter-python',
     },
     maintainers = { '@stsewd', '@theHamsta' },
-    tier = 2,
+    tier = 1,
   },
   ql = {
     install_info = {

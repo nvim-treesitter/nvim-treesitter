@@ -358,15 +358,17 @@
 
 ((class_definition
   body: (block
-    (assignment
-      left: (identifier) @variable.member)))
+    (expression_statement
+      (assignment
+        left: (identifier) @variable.member))))
   (#lua-match? @variable.member "^[%l_].*$"))
 
 ((class_definition
   body: (block
-    (assignment
-      left: (_
-        (identifier) @variable.member))))
+    (expression_statement
+      (assignment
+        left: (_
+          (identifier) @variable.member)))))
   (#lua-match? @variable.member "^[%l_].*$"))
 
 ((class_definition
