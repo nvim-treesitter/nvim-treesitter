@@ -2081,6 +2081,15 @@ return {
     maintainers = { '@osthomas' },
     tier = 2,
   },
+  snl = {
+    install_info = {
+      url = 'https://github.com/minijackson/tree-sitter-snl',
+      revision = '846e2d6809ac5863a15b5494f20fd267c21221c8',
+    },
+    maintainers = { '@minijackson' },
+    readme_note = "EPICS Sequencer's SNL files",
+    tier = 2,
+  },
   solidity = {
     install_info = {
       revision = '4e938a46c7030dd001bc99e1ac0f0c750ac98254',
