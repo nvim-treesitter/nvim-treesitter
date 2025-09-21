@@ -72,9 +72,6 @@
 
 ;
 (keyboard_mode
-  "," @punctuation.delimiter)
-
-(keyboard_mode
   [
     "normal"
     "application"
@@ -114,6 +111,8 @@
 (flag) @constant
 
 "=" @punctuation.delimiter
+
+"," @punctuation.delimiter
 
 (launch_type
   type: _ @type)
@@ -339,9 +338,6 @@
     "ungrabbed"
   ] @variable.parameter)
 
-(mouse_mode
-  "," @punctuation.delimiter)
-
 ; Options ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (option_name) @keyword
 
@@ -407,7 +403,9 @@
 
 ;
 ((ease) @type
-  (#match? @type "^[a-z-]$"))
+  (#any-of? @type
+    "linear" "ease" "ease-in-out" "ease-in" "ease-out" "step-start" "step-end" "ease" "ease-in"
+    "ease-out" "ease-in-out"))
 
 (ease_step
   "steps" @function.call)
@@ -417,9 +415,6 @@
     "("
     ")"
   ] @punctuation.bracket)
-
-(ease_step
-  "," @punctuation.delimiter)
 
 (ease_step
   position: (ease_step_position) @type)
@@ -432,9 +427,6 @@
     "("
     ")"
   ] @punctuation.bracket)
-
-(cubic_bezier
-  "," @punctuation.delimiter)
 
 ;
 (scrollback_pager
@@ -449,18 +441,12 @@
   characters: (string) @string.special)
 
 ;
-(paste_action_list
-  "," @punctuation.delimiter)
-
 (paste_action) @type
 
 ;
 (pointer) @type
 
 ;
-(layout_list
-  "," @punctuation.delimiter)
-
 (layout) @type
 
 ;
@@ -471,9 +457,6 @@
   ] @type)
 
 ;
-(scale_value
-  "," @punctuation.delimiter)
-
 ;
 (transparent_color
   "@" @punctuation.special
@@ -522,9 +505,6 @@
 (shell_feature) @type
 
 ;
-(source_stratagies
-  "," @punctuation.delimiter)
-
 (source_strategy) @type
 
 ;
@@ -569,4 +549,4 @@
   name: (string) @string.special)
 
 ; Comment ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(comment) @comment @spell
+(comment) @comment
