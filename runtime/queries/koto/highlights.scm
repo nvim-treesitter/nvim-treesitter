@@ -90,7 +90,8 @@
   (identifier) @module)
 
 (chain
-  lookup: (identifier) @variable.member)
+  (lookup
+    (identifier)) @variable.member)
 
 (chain
   start: (identifier) @function.call)
