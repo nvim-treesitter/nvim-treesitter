@@ -569,4 +569,4 @@
   name: (string) @string.special)
 
 ; Comment ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(comment) @comment
+(comment) @comment @spell
