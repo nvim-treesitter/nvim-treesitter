@@ -126,4 +126,4 @@
 
 "=" @operator
 
-(line_continuation) @operator
+(line_continuation) @punctuation.special

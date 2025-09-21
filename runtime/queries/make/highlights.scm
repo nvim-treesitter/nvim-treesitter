@@ -168,3 +168,5 @@
     "file"
     "value"
   ] @function.builtin)
+
+"\\" @punctuation.special

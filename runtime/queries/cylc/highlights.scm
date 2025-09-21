@@ -32,6 +32,8 @@
   (graph_parenthesis)
 ] @punctuation.bracket
 
+(line_continuation) @punctuation.special
+
 [
   "\""
   "\"\"\""
