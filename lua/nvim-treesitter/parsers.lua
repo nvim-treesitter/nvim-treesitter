@@ -1207,7 +1207,7 @@ return {
   },
   kitty = {
     install_info = {
-      revision = '386651997ed651f248d128dbbedb3ccbd93f0f0b',
+      revision = '2c701bd6de4a54edfb5e2213ff8374b60061a61a',
       url = 'https://github.com/OXY2DEV/tree-sitter-kitty',
     },
     maintainers = { '@OXY2DEV' },
