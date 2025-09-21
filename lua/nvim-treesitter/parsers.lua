@@ -1215,7 +1215,7 @@ return {
   },
   koto = {
     install_info = {
-      revision = '2ffc77c14f0ac1674384ff629bfc207b9c57ed89',
+      revision = '633744bca404ae4edb961a3c2d7bc947a987afa4',
       url = 'https://github.com/koto-lang/tree-sitter-koto',
     },
     maintainers = { '@irh' },
