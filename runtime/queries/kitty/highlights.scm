@@ -1,6 +1,9 @@
 ; Extra Nodes ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (line_continuation) @comment
 
+(comment
+  (comment_content) @spell) @comment
+
 ; Primitive data types ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [
   (pixel)
@@ -8,21 +11,15 @@
   (number)
 ] @number
 
-(pixel
-  "px" @type)
-
-(percentage
-  "%" @type)
-
 [
-  (boolean)
-  "enabled"
-  "disabled"
-] @boolean
+  "px"
+  "%"
+] @type
+
+(boolean) @boolean
 
 (layout_type) @type
 
-;
 ; Hexadecimal colors.
 (color) @constant
 
@@ -30,14 +27,12 @@
 ((color) @constant
   (#match? @constant "^[^#]"))
 
-;
 (string) @string
 
 (time
   duration: (number) @number
   suffix: (time_suffix) @type)
 
-;
 [
   (ctrl)
   (alt)
@@ -70,7 +65,6 @@
 (paste_from_buffer
   buffer: (string) @character)
 
-;
 (keyboard_mode
   [
     "normal"
@@ -79,7 +73,6 @@
     "all"
   ] @constant)
 
-;
 (show_kitty_doc
   topic: (string) @label)
 
@@ -90,11 +83,9 @@
   action: (clear_action) @constant
   target: (clear_target) @type)
 
-;
 (combine_action
   (separator) @punctuation.delimiter)
 
-;
 (disable_ligatures_in
   target: (ligature_target) @type
   type: (ligature_disabled) @constant)
@@ -135,7 +126,6 @@
 (launch_next_to
   pattern: (string) @string.regexp)
 
-;
 (launch_remote_password
   [
     "'"
@@ -148,11 +138,9 @@
 (remote_actions
   (string) @constant.macro)
 
-;
 (launch_stdin_source
   source: (stdin_source) @type)
 
-;
 (markers
   type: (marker_type) @type)
 
@@ -160,7 +148,6 @@
   id: (marker_id) @label
   pattern: (string) @string.regexp)
 
-;
 (launch_os_window_class
   class: (string) @type)
 
@@ -193,11 +180,9 @@
   option: (_
     (option) @variable.builtin))
 
-;
 (launch_watcher
   path: (string) @string.special.path)
 
-;
 (load_config_file
   path: (string)? @string.special.path)
 
@@ -207,11 +192,9 @@
 (remote_control_script
   path: (string) @string.special.path)
 
-;
 (handle_click_actions
   _ @type)
 
-;
 (mouse_selection
   selection: (mouse_selection_type) @type)
 
@@ -258,7 +241,6 @@
 (nth_os_window
   window: (number) @label)
 
-;
 (goto_layout
   ":" @punctuation.delimiter)
 
@@ -266,7 +248,6 @@
 (layout_option
   value: (string) @constant)
 
-;
 (aliased_action
   name: (string) @function.call)
 
@@ -290,7 +271,6 @@
 (color_match_tab
   (string) @string.regexp)
 
-;
 (color_option
   name: (color_option_name) @keyword)
 
@@ -341,7 +321,6 @@
 ; Options ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (option_name) @keyword
 
-;
 (font_value
   (string) @string.special)
 
@@ -351,10 +330,8 @@
   (#any-of? @constant "auto" "monospace" "bold" "italic" "bold-italic") .)
 
 (font_property
-  name: (string) @variable.parameter
-  "=" @punctuation.delimiter)
+  name: (string) @variable.parameter)
 
-;
 (symbol_map
   codepoints: (string) @constant
   font_name: (string) @string.special)
@@ -362,7 +339,6 @@
 (narrow_symbols
   codepoints: (string) @constant)
 
-;
 (font_features
   font: (string)? @constant)
 
@@ -372,7 +348,6 @@
 (feature_list
   (string) @string.special)
 
-;
 (modify_font
   type: (font_modification_type) @type)
 
@@ -387,34 +362,29 @@
     "dense"
   ] @constant)
 
-;
 ((composition_value) @constant
   (#eq? @constant "platform"))
 
-;
 (fg_override_threshold
   [
     "ratio"
     "%"
   ] @type)
 
-;
 (cursor) @type
 
-;
 ((ease) @type
   (#any-of? @type
     "linear" "ease" "ease-in-out" "ease-in" "ease-out" "step-start" "step-end" "ease" "ease-in"
     "ease-out" "ease-in-out"))
 
-(ease_step
-  "steps" @function.call)
+[
+  "("
+  ")"
+] @punctuation.bracket
 
 (ease_step
-  [
-    "("
-    ")"
-  ] @punctuation.bracket)
+  "steps" @function.call)
 
 (ease_step
   position: (ease_step_position) @type)
@@ -422,62 +392,38 @@
 (cubic_bezier
   "cubic-bezier" @function.call)
 
-(cubic_bezier
-  [
-    "("
-    ")"
-  ] @punctuation.bracket)
-
-;
 (scrollback_pager
   command: (string) @string.special)
 
-;
 (url_prefix_list
   (string) @constant)
 
-;
 (url_excluded_characters
   characters: (string) @string.special)
 
-;
-(paste_action) @type
-
-;
-(pointer) @type
-
-;
-(layout) @type
-
-;
 (border_width
   [
     "px"
     "pt"
   ] @type)
 
-;
-;
 (transparent_color
   "@" @punctuation.special
   (alpha) @number)
 
-;
 (remote_control_password
   password: (string) @string.special)
 
 (remote_actions
   (string) @type)
 
-;
 (env
-  variable: (string) @variable.builtin
-  "=" @punctuation.delimiter)
+  variable: (string) @variable.builtin)
 
 ((filter_sequence) @constant
   (#eq? @constant "all"))
 
-(boolean_expression) @operator
+(boolean_operator) @keyword.operator
 
 (filter_element
   [
@@ -489,26 +435,15 @@
   ":" @punctuation.delimiter
   (string) @string.regexp)
 
-(filter_element
-  "\"" @punctuation.delimiter)
-
-;
-(clipboard_action) @type
-
-;
-((shell_features) @constant
-  (#eq? @constant "enabled"))
-
-((shell_features) @constant
-  (#eq? @constant "disabled"))
-
-(shell_feature) @type
-
-;
-(source_strategy) @type
-
-;
-(notification_time) @type
+[
+  (clipboard_action)
+  (shell_feature)
+  (source_strategy)
+  (notification_time)
+  (paste_action)
+  (pointer)
+  (layout)
+] @type
 
 (notification_action) @function.call
 
@@ -516,22 +451,15 @@
   "command"
   command: (string) @string.special)
 
-;
 (menu_map
   value: (string) @string.special)
 
-;
 ((titlebar_color) @constant
-  (#eq? @constant "system"))
+  (#any-of? @constant "system" "background"))
 
-((titlebar_color) @constant
-  (#eq? @constant "background"))
-
-;
 (confirm_os_window_close
   count_background: (string) @constant)
 
-;
 (initial_window_size
   [
     "initial_window_width"
@@ -547,6 +475,3 @@
     "kitten_alias"
   ] @keyword
   name: (string) @string.special)
-
-; Comment ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(comment) @comment
