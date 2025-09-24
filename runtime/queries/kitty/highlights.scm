@@ -461,17 +461,7 @@
   count_background: (string) @constant)
 
 (initial_window_size
-  [
-    "initial_window_width"
-    "initial_window_height"
-  ] @keyword)
-
-(initial_window_size
   "c" @type)
 
 (action_alias
-  [
-    "action_alias"
-    "kitten_alias"
-  ] @keyword
   name: (string) @string.special)
