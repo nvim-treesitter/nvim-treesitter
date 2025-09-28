@@ -27,7 +27,6 @@
   (trait)
   (tuple)
   (tuple_pattern)
-  (array_pattern)
   (type_arguments)
 ] @indent.begin
 
