@@ -71,7 +71,7 @@
 (flag) @constant
 
 ((string) @constant
-  (#match? @constant "^-"))
+  (#lua-match? @constant "^-"))
 
 (generic_action) @function.call
 
