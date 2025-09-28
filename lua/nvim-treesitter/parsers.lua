@@ -2,7 +2,7 @@
 return {
   ada = {
     install_info = {
-      revision = '364d3f4aa8b382113bdd5d3ca6d82dc9c74ac738',
+      revision = '9821c989184447f7f088f1096601eb23be35afc5',
       url = 'https://github.com/briot/tree-sitter-ada',
     },
     maintainers = { '@briot' },
@@ -278,7 +278,7 @@ return {
   },
   cpp = {
     install_info = {
-      revision = '2a682d312b09eb737a08b4900ec786415574b6bf',
+      revision = '12bd6f7e96080d2e70ec51d4068f2f66120dde35',
       url = 'https://github.com/tree-sitter/tree-sitter-cpp',
     },
     maintainers = { '@theHamsta' },
@@ -346,7 +346,7 @@ return {
   },
   desktop = {
     install_info = {
-      revision = 'b77dad972dcc96f9a7123fb08d8eb46308e31d9a',
+      revision = '73c3f1ec366061aa9b1f61d76fc3d37b86b5a9af',
       url = 'https://github.com/ValdezFOmar/tree-sitter-desktop',
     },
     maintainers = { '@ValdezFOmar' },
@@ -520,7 +520,7 @@ return {
   },
   erlang = {
     install_info = {
-      revision = '07dad1469ecb7df80f2b6d5178f79564d19d67e0',
+      revision = 'df268da05d8ed4837dd2a8e2af1906619c2f0aa0',
       url = 'https://github.com/WhatsApp/tree-sitter-erlang',
     },
     maintainers = { '@filmor' },
@@ -786,7 +786,7 @@ return {
   },
   godot_resource = {
     install_info = {
-      revision = '9bbb540e8a2734101c6857bd437f04baa974e03d',
+      revision = '302c1895f54bf74d53a08572f7b26a6614209adc',
       url = 'https://github.com/PrestonKnopp/tree-sitter-godot-resource',
     },
     maintainers = { '@pierpo' },
@@ -1034,7 +1034,7 @@ return {
   },
   ini = {
     install_info = {
-      revision = '31899dfa3b91622ea39e5c0bcddc88f45a9a3cfe',
+      revision = '0eaed8040513e62ee2e9e8db9f086cf630a524eb',
       url = 'https://github.com/justinmk/tree-sitter-ini',
     },
     maintainers = { '@theHamsta' },
@@ -1075,7 +1075,7 @@ return {
   },
   javadoc = {
     install_info = {
-      revision = '85acd4655cbfaef414de6e3f87436e63ef5cb0da',
+      revision = 'c39005f7da0218cc3ac2734bef049a8fa9ee0e72',
       url = 'https://github.com/rmuir/tree-sitter-javadoc',
     },
     maintainers = { '@rmuir' },
@@ -1399,7 +1399,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = '8f86b34b5e3dfe561e1e913df4a3d719ea1dcc5c',
+      revision = '14152c1e580043865131bca80bcd8e8cb9132df7',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     maintainers = { '@artagnon' },
@@ -1653,7 +1653,7 @@ return {
   powershell = {
     filetype = 'ps1',
     install_info = {
-      revision = 'f272e5ac9bc48d0f6df2429cab914d216e9413cd',
+      revision = '497fe9ac43bdf090efbfe28fba65b7c0c7c6a7b3',
       url = 'https://github.com/airbus-cert/tree-sitter-powershell',
     },
     maintainers = { '@L2jLiga' },
@@ -1910,7 +1910,7 @@ return {
   },
   rifleconf = {
     install_info = {
-      revision = 'b215640ba72a9a8cac6f5d95dbc3d320cb546e13',
+      revision = 'fe10eab6cacff239ec61f4456e793bed15703aaf',
       url = 'https://github.com/purarue/tree-sitter-rifleconf',
     },
     maintainers = { '@purarue' },
@@ -2051,7 +2051,7 @@ return {
   },
   slint = {
     install_info = {
-      revision = '152ec7f6a2aa29fe222f741d91bec70153c487da',
+      revision = '927f3e2f0213d0eea7f12c978c81067c3dc4289d',
       url = 'https://github.com/slint-ui/tree-sitter-slint',
     },
     maintainers = { '@hunger' },
@@ -2083,8 +2083,8 @@ return {
   },
   snl = {
     install_info = {
-      url = 'https://github.com/minijackson/tree-sitter-snl',
       revision = '846e2d6809ac5863a15b5494f20fd267c21221c8',
+      url = 'https://github.com/minijackson/tree-sitter-snl',
     },
     maintainers = { '@minijackson' },
     readme_note = "EPICS Sequencer's SNL files",
@@ -2143,7 +2143,7 @@ return {
   sql = {
     install_info = {
       branch = 'gh-pages',
-      revision = 'b1ec2aa5091624e4729f0a771a6d631afebf1ed4',
+      revision = '0a997b07c777b6504792d04357a0f655897f15a8',
       url = 'https://github.com/derekstride/tree-sitter-sql',
     },
     maintainers = { '@derekstride' },
@@ -2200,7 +2200,7 @@ return {
   superhtml = {
     install_info = {
       location = 'tree-sitter-superhtml',
-      revision = '574a7a000c6e6a8a922c11afa9da60dca84e5e1f',
+      revision = '4b60dd98f5d3e158967c9feb839ae71321a625b9',
       url = 'https://github.com/kristoff-it/superhtml',
     },
     maintainers = { '@rockorager' },
@@ -2266,7 +2266,7 @@ return {
   },
   t32 = {
     install_info = {
-      revision = '335e5533de72a4ac8c6763958df1befbdc855a30',
+      revision = '5f20682355725d840611b07b2ce9681034cff3a6',
       url = 'https://gitlab.com/xasc/tree-sitter-t32',
     },
     maintainers = { '@xasc' },
@@ -2632,7 +2632,7 @@ return {
   },
   xresources = {
     install_info = {
-      revision = '2259ae28ad0e139b726dab286f7fa9626a1c2256',
+      revision = 'c6f240ab53c75edc0b122bc26c994ceb410d5b27',
       url = 'https://github.com/ValdezFOmar/tree-sitter-xresources',
     },
     maintainers = { '@ValdezFOmar' },
