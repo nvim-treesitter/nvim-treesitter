@@ -19,7 +19,7 @@
 (color) @constant
 
 ((color) @constant
-  (#match? @constant "^[^#]"))
+  (#lua-match? @constant "^[^#]"))
 
 (string) @string
 
