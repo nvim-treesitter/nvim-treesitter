@@ -1,31 +1,36 @@
 (launch_source_window
-  pattern: (string) @injection.content
+  value: (string) @injection.content
   (#set! injection.language "regex"))
 
 (launch_next_to
-  pattern: (string) @injection.content
+  value: (string) @injection.content
   (#set! injection.language "regex"))
 
 (marker_entry
-  pattern: (string) @injection.content
+  (pattern) @injection.content
   (#set! injection.language "regex"))
 
 (color_match
-  (string) @injection.content
+  (pattern) @injection.content
   (#set! injection.language "regex"))
 
 (color_match_tab
-  (string) @injection.content
+  (pattern) @injection.content
   (#set! injection.language "regex"))
 
 (include
-  glob: (string) @injection.content
+  glob: (pattern) @injection.content
   (#set! injection.language "regex"))
 
 (filter_element
-  (string) @injection.content
+  (pattern) @injection.content
   (#set! injection.language "regex"))
 
 (comment
   (comment_content) @injection.content
   (#set! injection.language "comment"))
+
+; Integration for `doctext`.
+; (comment
+;   (comment_content) @injection.content
+;   (#set! injection.language "comment"))
