@@ -85,7 +85,6 @@ alias: (identifier) @variable.member
   (keyword_avg)
   (keyword_sum)
   (keyword_stddev)
-  (keyword_count)
   (keyword_rank)
 ] @function
 

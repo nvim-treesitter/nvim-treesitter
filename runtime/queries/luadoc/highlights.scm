@@ -20,7 +20,6 @@
   "@version"
   "@operator"
   "@nodiscard"
-  "@cast"
   "@overload"
   "@enum"
   "@language"

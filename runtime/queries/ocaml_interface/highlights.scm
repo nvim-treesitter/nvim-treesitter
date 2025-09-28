@@ -294,7 +294,6 @@
   (hash_operator)
   (indexing_operator)
   (let_operator)
-  (and_operator)
   (match_operator)
 ] @operator
 

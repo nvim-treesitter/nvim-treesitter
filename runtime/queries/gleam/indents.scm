@@ -9,8 +9,6 @@
   (function)
   (let)
   (list)
-  (constant)
-  (function)
   (type_definition)
   (type_alias)
   (todo)

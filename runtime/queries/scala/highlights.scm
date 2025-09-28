@@ -186,7 +186,6 @@
   "end"
   "implicit"
   "extension"
-  "with"
 ] @keyword
 
 [

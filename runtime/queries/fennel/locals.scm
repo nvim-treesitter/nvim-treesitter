@@ -11,7 +11,6 @@
   (collect_form)
   (icollect_form)
   (accumulate_form)
-  (for_form)
   (fcollect_form)
   (faccumulate_form)
   (case_form)
