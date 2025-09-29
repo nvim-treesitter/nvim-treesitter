@@ -18,9 +18,6 @@
 
 (color) @constant
 
-((color) @constant
-  (#lua-match? @constant "^[^#]"))
-
 (string) @string
 
 [
