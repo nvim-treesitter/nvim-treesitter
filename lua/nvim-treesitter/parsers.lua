@@ -1205,6 +1205,14 @@ return {
     maintainers = { '@amaanq' },
     tier = 2,
   },
+  kitty = {
+    install_info = {
+      revision = '49f877cff80ab613808b34bde170ea477ec182fe',
+      url = 'https://github.com/OXY2DEV/tree-sitter-kitty',
+    },
+    maintainers = { '@OXY2DEV' },
+    tier = 2,
+  },
   kotlin = {
     install_info = {
       revision = '57fb4560ba8641865bc0baa6b3f413b236112c4c',
