@@ -22,7 +22,6 @@
   ;types
   (record_type)
   (tags_type)
-  (record_expr)
   (implements_implementation)
   "{"
   "("

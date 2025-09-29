@@ -56,7 +56,6 @@
   "endmacro"
   "endcall"
   "endset"
-  "endtrans"
   "endautoescape"
 ] @keyword
 

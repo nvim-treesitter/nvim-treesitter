@@ -41,7 +41,6 @@
   (kDestructor)
   (kOperator)
   (kReference)
-  (kInterface)
   (kImplementation)
   (kInitialization)
   (kFinalization)

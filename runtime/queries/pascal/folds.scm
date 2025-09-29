@@ -19,7 +19,6 @@
   (declEnum)
   (declProcRef)
   (declExports)
-  (declProcRef)
   (declType)
   (defProc)
   (declField)

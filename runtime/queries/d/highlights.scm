@@ -263,7 +263,6 @@
   (idouble)
   (ifloat)
   (creal)
-  (double)
   (cfloat)
   (string)
   (dstring)

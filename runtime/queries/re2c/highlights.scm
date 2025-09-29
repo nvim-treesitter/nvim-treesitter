@@ -1,7 +1,6 @@
 ; Namespaces
 [
   "re2c"
-  "re2c"
   "local"
   "rules"
 ] @module
