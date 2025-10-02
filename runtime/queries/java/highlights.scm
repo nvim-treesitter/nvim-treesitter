@@ -235,6 +235,9 @@
     ":"
   ] @keyword.conditional.ternary)
 
+(wildcard
+  "?" @character.special)
+
 ; Loops
 [
   "for"
