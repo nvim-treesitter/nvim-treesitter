@@ -64,6 +64,11 @@
   "uni"
 ] @keyword
 
+[
+  "async"
+  "await"
+] @keyword.coroutine
+
 "fn" @keyword.function
 
 "import" @keyword.import
