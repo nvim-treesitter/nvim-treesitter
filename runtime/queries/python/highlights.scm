@@ -247,6 +247,10 @@
   "{" @punctuation.special
   "}" @punctuation.special)
 
+(format_expression
+  "{" @punctuation.special
+  "}" @punctuation.special)
+
 (line_continuation) @punctuation.special
 
 (type_conversion) @function.macro
