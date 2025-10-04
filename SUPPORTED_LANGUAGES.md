@@ -92,7 +92,7 @@ ecma (queries only)[^ecma] | unstable | `HFIJL` |   | @steelsojka
 [fusion](https://gitlab.com/jirgn/tree-sitter-fusion) | unstable | `HFIJL` |   | @jirgn
 [gap](https://github.com/gap-system/tree-sitter-gap)[^gap] | unstable | `HF JL` |   | @reiniscirpons
 [gaptst](https://github.com/gap-system/tree-sitter-gaptst)[^gaptst] | unstable | `HF J ` |   | @reiniscirpons
-[gdscript](https://github.com/PrestonKnopp/tree-sitter-gdscript)[^gdscript] | unstable | `HFIJL` |   | @PrestonKnopp
+[gdscript](https://github.com/PrestonKnopp/tree-sitter-gdscript)[^gdscript] | unmaintained | `HFIJL` |   | 
 [gdshader](https://github.com/GodOfAvacyn/tree-sitter-gdshader) | unstable | `H  J ` |   | @godofavacyn
 [git_config](https://github.com/the-mikedavis/tree-sitter-git-config) | unstable | `HF J ` |   | @amaanq
 [git_rebase](https://github.com/the-mikedavis/tree-sitter-git-rebase) | unstable | `H  J ` |   | @gbprod

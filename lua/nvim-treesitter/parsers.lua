@@ -655,9 +655,8 @@ return {
       revision = '9686853b696db07118ad110e440d6de0ca6498b4',
       url = 'https://github.com/PrestonKnopp/tree-sitter-gdscript',
     },
-    maintainers = { '@PrestonKnopp' },
     readme_note = 'Godot',
-    tier = 2,
+    tier = 3,
   },
   gdshader = {
     install_info = {
