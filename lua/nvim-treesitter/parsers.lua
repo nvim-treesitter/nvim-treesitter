@@ -2,7 +2,7 @@
 return {
   ada = {
     install_info = {
-      revision = '9821c989184447f7f088f1096601eb23be35afc5',
+      revision = 'b23672d313b4c994ab96fd54f1b7ff15eac68a55',
       url = 'https://github.com/briot/tree-sitter-ada',
     },
     maintainers = { '@briot' },
@@ -174,7 +174,7 @@ return {
   },
   c_sharp = {
     install_info = {
-      revision = '3431444351c871dffb32654f1299a00019280f2f',
+      revision = '6563c3af3f03ec948d08f9325e4bbd072e4c6b99',
       url = 'https://github.com/tree-sitter/tree-sitter-c-sharp',
     },
     maintainers = { '@amaanq' },
@@ -287,7 +287,7 @@ return {
   },
   css = {
     install_info = {
-      revision = '6e327db434fec0ee90f006697782e43ec855adf5',
+      revision = 'dda5cfc5722c429eaba1c910ca32c2c0c5bb1a3f',
       url = 'https://github.com/tree-sitter/tree-sitter-css',
     },
     maintainers = { '@TravonteD' },
@@ -338,7 +338,7 @@ return {
   },
   dart = {
     install_info = {
-      revision = '80e23c07b64494f7e21090bb3450223ef0b192f4',
+      revision = 'c1222f5a65aba7e0175cc0cc6f88d198d9fe2b02',
       url = 'https://github.com/UserNobody14/tree-sitter-dart',
     },
     maintainers = { '@akinsho' },
@@ -449,7 +449,7 @@ return {
   },
   editorconfig = {
     install_info = {
-      revision = '947228fb880f838c6d71e8f11dbc0bfb82cd4c78',
+      revision = '911d7017566116b15c4b2c339e1dbe11fcf03f63',
       url = 'https://github.com/ValdezFOmar/tree-sitter-editorconfig',
     },
     maintainers = { '@ValdezFOmar' },
@@ -512,7 +512,7 @@ return {
   },
   enforce = {
     install_info = {
-      revision = 'a194046e64bdec2c9e2e1a7caa35326387f78b95',
+      revision = 'b695854665e749acdd16ce4a2a2e2f38f9ea9ca3',
       url = 'https://github.com/simonvic/tree-sitter-enforce',
     },
     maintainers = { '@simonvic' },
@@ -1074,7 +1074,7 @@ return {
   },
   javadoc = {
     install_info = {
-      revision = 'c39005f7da0218cc3ac2734bef049a8fa9ee0e72',
+      revision = '7d92cf188e4a3ed1b5068dd99af129f083c47e70',
       url = 'https://github.com/rmuir/tree-sitter-javadoc',
     },
     maintainers = { '@rmuir' },
@@ -1222,7 +1222,7 @@ return {
   },
   koto = {
     install_info = {
-      revision = '633744bca404ae4edb961a3c2d7bc947a987afa4',
+      revision = '7cba915fad6121f776f59e0d1787a3e36e4cfc4e',
       url = 'https://github.com/koto-lang/tree-sitter-koto',
     },
     maintainers = { '@irh' },
@@ -1676,7 +1676,7 @@ return {
   },
   prisma = {
     install_info = {
-      revision = '73f39a6d5401cfdcd143951e499336cf5ab2ffaa',
+      revision = '3556b2c1f20ec9ac91e92d32c43d9d2a0ca3cc49',
       url = 'https://github.com/victorhqc/tree-sitter-prisma',
     },
     maintainers = { '@elianiva' },
@@ -1989,7 +1989,7 @@ return {
   },
   rust = {
     install_info = {
-      revision = '00d7cbc95f0b8ea2703129550fbd1853a13e0e29',
+      revision = '946595d164e77b705fa28385654f9420f59262ef',
       url = 'https://github.com/tree-sitter/tree-sitter-rust',
     },
     maintainers = { '@amaanq' },
@@ -2150,7 +2150,7 @@ return {
   sql = {
     install_info = {
       branch = 'gh-pages',
-      revision = '0a997b07c777b6504792d04357a0f655897f15a8',
+      revision = '4afe285bb142542cee0aa7b689fec00a71df4741',
       url = 'https://github.com/derekstride/tree-sitter-sql',
     },
     maintainers = { '@derekstride' },
@@ -2207,7 +2207,7 @@ return {
   superhtml = {
     install_info = {
       location = 'tree-sitter-superhtml',
-      revision = '4b60dd98f5d3e158967c9feb839ae71321a625b9',
+      revision = 'c52790b328b73237bcd924f3d65c5a17e794e8b1',
       url = 'https://github.com/kristoff-it/superhtml',
     },
     maintainers = { '@rockorager' },
@@ -2273,7 +2273,7 @@ return {
   },
   t32 = {
     install_info = {
-      revision = '5f20682355725d840611b07b2ce9681034cff3a6',
+      revision = 'd4e26ab7a730cfbe0cf84dba6ea3647989064839',
       url = 'https://gitlab.com/xasc/tree-sitter-t32',
     },
     maintainers = { '@xasc' },
