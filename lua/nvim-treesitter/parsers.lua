@@ -1486,7 +1486,7 @@ return {
   },
   nu = {
     install_info = {
-      revision = '0e6c59c46db3c246eaf86ce5b325da1247e971a5',
+      revision = 'e1509fc9f9aa6579430a65f167528617df56b107',
       url = 'https://github.com/nushell/tree-sitter-nu',
     },
     maintainers = { '@abhisheksingh0x558' },
