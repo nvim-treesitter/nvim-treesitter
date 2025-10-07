@@ -13,7 +13,7 @@
 (argument
   name: _ @local.definition.parameter)
 
-(define_variable
+(identifier_pattern
   name: _ @local.definition.var)
 
 (define_constant

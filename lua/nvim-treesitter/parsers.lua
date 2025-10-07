@@ -1041,7 +1041,7 @@ return {
   },
   inko = {
     install_info = {
-      revision = '080e957d94b330e3867f063b148a8050b0888f4e',
+      revision = '9d7ed4f6c0ea2a8f846f3bb00e33ab21ec9ca379',
       url = 'https://github.com/inko-lang/tree-sitter-inko',
     },
     maintainers = { '@yorickpeterse' },
