@@ -260,7 +260,7 @@ local function do_download(logger, url, project_name, cache_dir, revision, outpu
 
   do -- Move tmp dir to output dir
     local dir_rev = revision:find('^v%d') and revision:sub(2) or revision
-    local repo_project_name = url:match('[^/]-$')
+    local repo_project_name = url:match('[^/]+$')
     local extracted = fs.joinpath(tmp, repo_project_name .. '-' .. dir_rev)
     logger:debug('Moving %s to %s/...', extracted, output_dir)
     local err = uv_rename(extracted, output_dir)
