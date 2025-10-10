@@ -1545,6 +1545,14 @@ return {
     maintainers = { '@amaanq' },
     tier = 2,
   },
+  orca = {
+    install_info = {
+      revision = '224b472b0d53c4d056dc1c1cc4506a93b67f7a26',
+      url = 'https://github.com/kszenes/tree-sitter-orca',
+    },
+    maintainers = { '@kszenes' },
+    tier = 2,
+  },
   pascal = {
     install_info = {
       revision = '5054931bcd022860dd5936864f981e359fb63aef',
