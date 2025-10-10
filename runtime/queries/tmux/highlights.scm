@@ -1,19 +1,21 @@
-; Comments
 (comment) @comment @spell
 
-; General
 [
-  (string)
-  (raw_string)
+  "'"
+  (str_single_quotes)
+  (str_double_quotes)
 ] @string
 
-(int) @number
+(backslash_escape) @string.escape
 
 (path) @string.special.path
+
+(int) @number
 
 [
   (option)
   (variable_name)
+  (variable_name_short)
 ] @variable
 
 (command_line_option) @variable.builtin
@@ -21,7 +23,17 @@
 ((option) @variable.builtin
   (#not-lua-match? @variable.builtin "^@"))
 
-(command) @keyword
+[
+  (if_keyword)
+  (elif_keyword)
+  (else_keyword)
+  (endif_keyword)
+] @keyword.conditional
+
+[
+  (hidden_keyword)
+  (command)
+] @keyword
 
 (source_file_directive
   (command) @keyword.import)
@@ -33,6 +45,8 @@
 "=" @operator
 
 [
+  ";"
+  "';'"
   ","
   ":"
 ] @punctuation.delimiter
