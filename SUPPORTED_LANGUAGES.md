@@ -300,7 +300,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` |   | @steelsojka
 [thrift](https://github.com/tree-sitter-grammars/tree-sitter-thrift) | unstable | `HFIJL` |   | @amaanq, @duskmoon314
 [tiger](https://github.com/ambroisie/tree-sitter-tiger) | unstable | `HFIJL` |   | @ambroisie
 [tlaplus](https://github.com/tlaplus-community/tree-sitter-tlaplus) | unstable | `HF JL` |   | @ahelwer, @susliko
-[tmux](https://github.com/Freed-Wu/tree-sitter-tmux) | unstable | `H  J ` |   | @Freed-Wu
+[tmux](https://github.com/Freed-Wu/tree-sitter-tmux) | unstable | `H  J ` |   | @Freed-Wu, @stevenxxiu
 [todotxt](https://github.com/arnarg/tree-sitter-todotxt) | unstable | `H    ` |   | @arnarg
 [toml](https://github.com/tree-sitter-grammars/tree-sitter-toml) | unstable | `HFIJL` |   | @tk-shirasaka
 [tsv](https://github.com/tree-sitter-grammars/tree-sitter-csv) | unstable | `H    ` |   | @amaanq
