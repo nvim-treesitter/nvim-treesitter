@@ -2372,7 +2372,7 @@ return {
   },
   tmux = {
     install_info = {
-      revision = 'a2936cb2579f7723b5744563c45bcefabc42fe47',
+      revision = '72b42cd0307bdfe471fd151a0282d0d38e889944',
       url = 'https://github.com/Freed-Wu/tree-sitter-tmux',
     },
     maintainers = { '@Freed-Wu', '@stevenxxiu' },

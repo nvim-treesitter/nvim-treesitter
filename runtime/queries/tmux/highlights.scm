@@ -14,8 +14,7 @@
 
 [
   (option)
-  (variable_name)
-  (variable_name_short)
+  (name)
 ] @variable
 
 (command_line_option) @variable.builtin
