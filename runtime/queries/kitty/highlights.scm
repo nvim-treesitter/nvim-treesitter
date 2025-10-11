@@ -1,4 +1,4 @@
-(line_continuation) @comment
+(line_continuation) @punctuation.special
 
 (comment
   (comment_content) @spell) @comment
