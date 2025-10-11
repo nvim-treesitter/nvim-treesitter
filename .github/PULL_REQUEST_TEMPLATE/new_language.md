@@ -8,6 +8,8 @@
 <!-- Link to an official description of the language -->
 https://...
 
+Language file extension, if applicable: (e.g. `.zu`)
+
 <details>
 <summary>Representative code sample</summary>
 ```
