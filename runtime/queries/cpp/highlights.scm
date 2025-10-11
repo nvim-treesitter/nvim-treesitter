@@ -254,6 +254,11 @@
   "or"
 ] @keyword.operator
 
+[
+  "export"
+  "module"
+] @keyword.import
+
 "<=>" @operator
 
 "::" @punctuation.delimiter
