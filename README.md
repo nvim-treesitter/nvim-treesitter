@@ -104,6 +104,7 @@ Treesitter-based folding is provided by Neovim. To enable it, put the following 
 
 ```lua
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.wo.foldmethod = 'expr'
 ```
 
 ## Indentation
