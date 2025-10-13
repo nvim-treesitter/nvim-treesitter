@@ -437,6 +437,7 @@ function M.get_capture_matches_recursively(bufnr, capture_or_fn, query_type)
   local matches = {}
 
   if parser then
+    parser:parse(false)
     parser:for_each_tree(function(tree, lang_tree)
       local lang = lang_tree:lang()
       local capture, type_ = type_fn(lang, tree, lang_tree)
