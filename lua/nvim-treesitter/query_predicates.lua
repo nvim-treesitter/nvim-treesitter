@@ -5,6 +5,7 @@ local html_script_type_languages = {
   ["module"] = "javascript",
   ["application/ecmascript"] = "javascript",
   ["text/ecmascript"] = "javascript",
+  ["text/babel"] = "javascript",
 }
 
 local non_filetype_match_injection_language_aliases = {
