@@ -206,7 +206,7 @@ local function do_download(logger, url, project_name, cache_dir, revision, outpu
 
   url = url:gsub('.git$', '')
   local target = is_gitlab
-      and string.format('%s/-/archive/%s/%s-%s.tar.gz', url, revision, project_name, revision)
+      and string.format('https://gitlab.com/api/v4/projects/%s/repository/archive.tar.gz?sha=%s', vim.uri_encode(url:match("gitlab%.com/([^/]+/[^/]+)"), "rfc2396"), revision)
     or string.format('%s/archive/%s.tar.gz', url, revision)
 
   local tarball_path = fs.joinpath(cache_dir, project_name .. '.tar.gz')
@@ -227,6 +227,7 @@ local function do_download(logger, url, project_name, cache_dir, revision, outpu
       return logger:error('Error during download: %s', r.stderr)
     end
   end
+  vim.cmd([[!ls /home/pedro/.cache/nvim/]])
 
   do -- Create tmp dir
     logger:debug('Creating temporary directory: %s', tmp)
@@ -261,7 +262,7 @@ local function do_download(logger, url, project_name, cache_dir, revision, outpu
   do -- Move tmp dir to output dir
     local dir_rev = revision:find('^v%d') and revision:sub(2) or revision
     local repo_project_name = url:match('[^/]-$')
-    local extracted = fs.joinpath(tmp, repo_project_name .. '-' .. dir_rev)
+    local extracted = is_gitlab and  fs.joinpath(tmp, repo_project_name .. '-' .. dir_rev .. '-' .. dir_rev) or fs.joinpath(tmp, repo_project_name .. '-' .. dir_rev)
     logger:debug('Moving %s to %s/...', extracted, output_dir)
     local err = uv_rename(extracted, output_dir)
     a.schedule()
