@@ -494,6 +494,7 @@ are only provided for limited backwards compatibility.
 @local.definition.namespace  ; modules or namespaces
 @local.definition.import     ; imported names
 @local.definition.associated ; the associated type of a variable
+@local.definition.target     ; a build target (which may not be an identifier)
 
 @local.scope                 ; scope block
 @local.reference             ; identifier reference

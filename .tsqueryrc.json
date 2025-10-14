@@ -156,6 +156,7 @@
       "local.definition.namespace": "modules or namespaces",
       "local.definition.import": "imported names",
       "local.definition.associated": "the associated type of a variable",
+      "local.definition.target": "build targets",
       "local.scope": "scope block",
       "local.reference": "identifier reference"
     }
