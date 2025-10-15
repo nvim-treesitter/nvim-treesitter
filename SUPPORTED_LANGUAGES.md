@@ -288,7 +288,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` |   | @steelsojka
 [sxhkdrc](https://github.com/RaafatTurki/tree-sitter-sxhkdrc) | unstable | `HF J ` |   | @RaafatTurki
 [systemtap](https://github.com/ok-ryoko/tree-sitter-systemtap) | unstable | `HF JL` |   | @ok-ryoko
 [systemverilog](https://github.com/gmlarumbe/tree-sitter-systemverilog) | unstable | `HF J ` |   | @zhangwwpeng
-[t32](https://gitlab.com/xasc/tree-sitter-t32) | unstable | `HFIJL` |   | @xasc
+[t32](https://github.com/xasc/tree-sitter-t32) | unstable | `HFIJL` |   | @xasc
 [tablegen](https://github.com/tree-sitter-grammars/tree-sitter-tablegen) | unstable | `HFIJL` |   | @amaanq
 [tact](https://github.com/tact-lang/tree-sitter-tact) | unstable | `HFIJL` |   | @novusnota
 [tcl](https://github.com/tree-sitter-grammars/tree-sitter-tcl) | unstable | `HFIJ ` |   | @lewis6991

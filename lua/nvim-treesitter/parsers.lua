@@ -2274,7 +2274,7 @@ return {
   t32 = {
     install_info = {
       revision = 'd4e26ab7a730cfbe0cf84dba6ea3647989064839',
-      url = 'https://gitlab.com/xasc/tree-sitter-t32',
+      url = 'https://github.com/xasc/tree-sitter-t32',
     },
     maintainers = { '@xasc' },
     tier = 2,
