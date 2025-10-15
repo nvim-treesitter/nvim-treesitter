@@ -6,6 +6,32 @@
 
 (version) @string.special
 
+(use_path
+  [
+    "@"
+    "/"
+  ] @punctuation.delimiter)
+
+(package_decl
+  [
+    "@"
+    "/"
+  ] @punctuation.delimiter)
+
+; feature gates with leading `@`
+(_
+  .
+  "@" @punctuation.special
+  .
+  [
+    "since"
+    "unstable"
+    "deprecated"
+  ] @attribute.builtin)
+
+(unstable_gate
+  feature: (id) @string)
+
 (world_item
   name: (id) @module)
 
@@ -53,8 +79,7 @@
 (flags_items
   name: (id) @type)
 
-(body
-  (id) @variable.member)
+(flags_field) @variable.member
 
 (variant_items
   name: (id) @type)
@@ -65,8 +90,7 @@
 (enum_items
   name: (id) @type)
 
-(enum_case
-  name: (id) @constant)
+(enum_case) @constant
 
 (resource_item
   name: (id) @type)
@@ -89,6 +113,9 @@
 (use_path
   (id) @module)
 
+(alias_item
+  (id) @module)
+
 (use_names_item
   (id) @module)
 
@@ -108,11 +135,16 @@
 
 "static" @keyword.modifier
 
+"async" @keyword.coroutine
+
+(uint) @constant
+
 [
   "include"
   "import"
   "export"
   "as"
+  "with"
 ] @keyword.import
 
 [
@@ -129,26 +161,30 @@
   "char"
   "bool"
   "string"
+] @type.builtin
+
+[
   "tuple"
   "list"
   "option"
   "result"
   "borrow"
-] @type.builtin
+  "future"
+  "stream"
+] @type
+
+"_" @variable.parameter.builtin
 
 [
-  "@"
-  "_"
-] @punctuation.special
-
-[
-  "/"
   ";"
   ":"
   ","
   "."
   "->"
 ] @punctuation.delimiter
+
+(use_path
+  "/" @punctuation.delimiter)
 
 [
   "{"
@@ -158,6 +194,8 @@
   ">"
   "<"
 ] @punctuation.bracket
+
+"=" @operator
 
 [
   (line_comment)

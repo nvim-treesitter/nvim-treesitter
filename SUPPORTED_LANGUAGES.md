@@ -5,6 +5,7 @@ The following is a list of languages for which a parser can be installed through
 Legend:
 - **Tier:** _stable_ (updates follow semver releases), _unstable_ (updates follow HEAD), _unmaintained_ (no automatic updates), or _unsupported_ (known to be broken, cannot be installed)
 - **Queries** available for **H**ighlights, **I**ndents, **F**olds, In**J**ections, **L**ocals
+- **Node:** Parser requires `node` for installation
 - **Maintainer** of queries in nvim-treesitter (may be different from parser maintainer!)
 
 <!--This section of the README is automatically updated by a CI job-->
@@ -327,7 +328,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [wgsl](https://github.com/szebniok/tree-sitter-wgsl) | unstable | `HFIJ ` | @szebniok
 [wgsl_bevy](https://github.com/tree-sitter-grammars/tree-sitter-wgsl-bevy) | unstable | `HFI  ` | @theHamsta
 [wing](https://github.com/winglang/tree-sitter-wing) | unstable | `HF JL` | @gshpychka, @MarkMcCulloh
-[wit](https://github.com/bytecodealliance/tree-sitter-wit) | unstable | `HF J ` | @mkatychev
+[wit](https://github.com/bytecodealliance/tree-sitter-wit) | stable | `HF J ` | @mkatychev
 [wxml](https://github.com/BlockLune/tree-sitter-wxml) | unstable | `HFIJ ` | @BlockLune
 [xcompose](https://github.com/tree-sitter-grammars/tree-sitter-xcompose) | unstable | `H  JL` | @ObserverOfTime
 [xml](https://github.com/tree-sitter-grammars/tree-sitter-xml) | unstable | `HFIJL` | @ObserverOfTime
