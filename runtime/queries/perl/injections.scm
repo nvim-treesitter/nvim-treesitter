@@ -16,4 +16,3 @@
 
 (heredoc_content
   (heredoc_end) @injection.language) @injection.content
-  (#set! injection.include-children)
