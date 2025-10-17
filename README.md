@@ -81,8 +81,6 @@ For `nvim-treesitter` to support a specific feature for a specific language requ
 
 A list of the currently supported languages can be found [on this page](SUPPORTED_LANGUAGES.md). If you wish to add a new language or improve the queries for an existing one, please see our [contributing guide](CONTRIBUTING.md).
 
-For related information on the supported languages, including related plugins, see [this wiki page](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Supported-Languages-Information).
-
 # Supported features
 
 `nvim-treesitter` provides queries for the following features. **These are not automatically enabled.**
