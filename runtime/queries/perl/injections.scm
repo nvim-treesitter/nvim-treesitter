@@ -13,3 +13,7 @@
   (#not-lua-match? @_modifiers "e.*e")
   (#set! injection.language "perl")
   (#set! injection.include-children))
+
+(heredoc_content
+  (heredoc_end) @injection.language) @injection.content
+  (#set! injection.include-children)
