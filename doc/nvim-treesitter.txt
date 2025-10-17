@@ -57,7 +57,7 @@ COMMANDS                                              *nvim-treesitter-commands*
 
 Install one or more treesitter parsers. {language} can be one or multiple
 parsers or tiers (`stable`, `unstable`, or `all` (not recommended)). This is a
-no-op of the parser(s) are already installed. Installation is performed
+no-op if the parser(s) are already installed. Installation is performed
 asynchronously. Use *:TSInstall!* to force installation even if a parser is
 already installed.
 
