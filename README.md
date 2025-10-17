@@ -124,6 +124,56 @@ These queries can be used to look up definitions and references to identifiers i
 
 # Advanced setup
 
+## Automatic installation
+
+If you want to autmate installation and start of parsers this can be done:
+
+```lua
+{
+  "nvim-treesitter/nvim-treesitter",
+  branch = "main",
+  build = ":TSUpdate",
+  lazy = false, -- This plugin is not meant to be lazy-loaded
+  config = function()
+    require("nvim-treesitter").install({ -- Parsers to ensure are installed
+      "lua",
+      "vim",
+      "vimdoc",
+      "query",
+      "markdown",
+      "c",
+    })
+
+    vim.api.nvim_create_autocmd({ "FileType" }, {
+      group = vim.api.nvim_create_augroup(
+        "user_treesitter_auto_install_and_start",
+        { clear = true }
+      ),
+      callback = function(event)
+        vim.schedule(function()
+          -- Get the FileType
+          local filetype = event.match
+          -- Get BufNr
+          local bufnr = event.buf
+          -- Get associated language or filetype as fallback
+          local lang = vim.treesitter.language.get_lang(filetype)
+          -- Install. This is a non-operation if already installed
+          require("nvim-treesitter").install({ lang }):wait(120000)
+          -- Attach parser if available
+          local ok, _ = pcall(vim.treesitter.get_parser, bufnr, lang)
+          -- Start parser for buf
+          if ok then
+            vim.treesitter.start(bufnr)
+          end
+        end)
+      end,
+    })
+  end,
+}
+```
+
+This example is using lazy.nvim.
+
 ## Adding custom languages
 
 If you have a parser that is not on the list of supported languages (either as a repository on Github or in a local directory), you can add it manually for use by `nvim-treesitter` as follows:
