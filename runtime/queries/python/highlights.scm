@@ -421,7 +421,7 @@
       .
       (string
         (string_content) @string.regexp))
-  (argument_list
+    (argument_list
       .
       (concatenated_string
         (string

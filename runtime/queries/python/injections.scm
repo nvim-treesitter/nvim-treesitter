@@ -6,12 +6,13 @@
       .
       (string
         (string_content) @injection.content)
-        (#set! injection.language "regex"))
+      (#set! injection.language "regex"))
     (argument_list
       .
       (concatenated_string
         (string
-          (string_content) @injection.content)))
+          (string_content) @injection.content))
+      (#set! injection.language "regex"))
   ]
   (#eq? @_re "re")
   (#set! injection.combined))
