@@ -184,7 +184,7 @@
   "as" @keyword.import)
 
 (wildcard_import
-  "*" @character.special)
+  "*" @character.import)
 
 (import_statement
   name: (dotted_name

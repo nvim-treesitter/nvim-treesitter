@@ -261,7 +261,7 @@
 
 (import_declaration
   (asterisk
-    "*" @character.special))
+    "*" @character.import))
 
 ; Punctuation
 [

@@ -149,6 +149,7 @@ The valid captures are listed below.
 
 @character              ; character literals
 @character.special      ; special characters (e.g. wildcards)
+@character.import       ; special characters in import statements
 
 @boolean                ; boolean literals
 @number                 ; numeric literals

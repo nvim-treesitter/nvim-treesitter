@@ -145,7 +145,7 @@
   "!"
 ] @operator
 
-(wildcard_import) @character.special
+(wildcard_import) @character.import
 
 (string
   "/" @string)

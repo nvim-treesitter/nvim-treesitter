@@ -308,15 +308,15 @@
 ; Imports
 ;----------
 (namespace_import
-  "*" @character.special
+  "*" @character.import
   (identifier) @module)
 
 (namespace_export
-  "*" @character.special
+  "*" @character.import
   (identifier) @module)
 
 (export_statement
-  "*" @character.special)
+  "*" @character.import)
 
 ; Keywords
 ;----------

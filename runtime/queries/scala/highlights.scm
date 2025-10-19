@@ -209,13 +209,13 @@
 (null_literal) @constant.builtin
 
 (wildcard
-  "_") @character.special
+  "_") @character.import
 
 (namespace_wildcard
   [
     "*"
     "_"
-  ] @character.special)
+  ] @character.import)
 
 (annotation) @attribute
 
