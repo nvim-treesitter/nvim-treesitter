@@ -416,17 +416,19 @@
 (call
   function: (attribute
     object: (identifier) @_re)
-  arguments: [
-    (argument_list
-      .
+  arguments: (argument_list
+    (comment)*
+    .
+    [
       (string
-        (string_content) @string.regexp))
-    (argument_list
-      .
+        (string_content) @string.regexp)
       (concatenated_string
-        (string
-          (string_content) @string.regexp)))
-  ]
+        [
+          (string
+            (string_content) @string.regexp)
+          (comment)
+        ]+)
+    ])
   (#eq? @_re "re"))
 
 ; Decorators

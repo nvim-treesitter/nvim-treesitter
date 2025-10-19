@@ -1,21 +1,21 @@
 (call
   function: (attribute
     object: (identifier) @_re)
-  arguments: [
-    (argument_list
-      .
+  arguments: (argument_list
+    (comment)*
+    .
+    [
       (string
         (string_content) @injection.content)
-      (#set! injection.language "regex"))
-    (argument_list
-      .
       (concatenated_string
-        (string
-          (string_content) @injection.content))
-      (#set! injection.language "regex"))
-  ]
+        [
+          (string
+            (string_content) @injection.content)
+          (comment)
+        ]+)
+    ])
   (#eq? @_re "re")
-  (#set! injection.combined))
+  (#set! injection.language "regex"))
 
 ((binary_operator
   left: (string
