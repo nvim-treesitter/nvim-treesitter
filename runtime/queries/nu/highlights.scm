@@ -344,7 +344,7 @@ key: (identifier) @property
   [
     "record"
     "table"
-  ] @type.enum)
+  ] @type.builtin)
 
 (collection_type
   key: (_) @variable.parameter)
