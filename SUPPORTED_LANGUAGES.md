@@ -155,7 +155,7 @@ html_tags (queries only)[^html_tags] | unstable | `H IJ ` |   | @TravonteD
 [jsonc](https://gitlab.com/WhyNotHugo/tree-sitter-jsonc) | unstable | `HFIJL` |   | @WhyNotHugo
 [jsonnet](https://github.com/sourcegraph/tree-sitter-jsonnet) | unstable | `HF JL` |   | @nawordar
 jsx (queries only)[^jsx] | unstable | `HFIJ ` |   | @steelsojka
-[julia](https://github.com/tree-sitter/tree-sitter-julia) | unstable | `HFIJL` |   | @fredrikekre
+[julia](https://github.com/tree-sitter-grammars/tree-sitter-julia) | unstable | `HFIJL` |   | @clason
 [just](https://github.com/IndianBoy42/tree-sitter-just) | unstable | `HFIJL` |   | @Hubro
 [kcl](https://github.com/kcl-lang/tree-sitter-kcl) | unstable | `HF J ` |   | @bertbaron
 [kconfig](https://github.com/tree-sitter-grammars/tree-sitter-kconfig) | unstable | `HFIJL` |   | @amaanq
