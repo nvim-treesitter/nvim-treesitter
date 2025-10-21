@@ -2708,6 +2708,7 @@ return {
       location = 'tree-sitter-zsh',
       revision = '9340bfd8c8d556aea1d8feb41b32600ba9f3cc33',
       url = 'https://github.com/georgeharker/tree-sitter-zsh',
+      queries = 'queries'
     },
     maintainers = { '@georgeharker' },
     tier = 2,
