@@ -344,14 +344,19 @@ key: (identifier) @property
   [
     "record"
     "table"
-  ] @type.builtin
-  "<" @punctuation.bracket
-  key: (_) @variable.parameter
+  ] @type.builtin)
+
+(collection_type
+  key: (_) @variable.parameter)
+
+(collection_type
   [
-    ","
-    ":"
-  ] @punctuation.delimiter
-  ">" @punctuation.bracket)
+    "<"
+    ">"
+  ] @punctuation.bracket)
+
+(collection_type
+  ":" @punctuation.special)
 
 (shebang) @keyword.directive
 
