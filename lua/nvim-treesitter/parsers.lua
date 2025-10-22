@@ -399,6 +399,14 @@ list.d = {
   maintainers = { "@amaanq" },
 }
 
+list.dae = {
+  install_info = {
+    url = "https://github.com/aurora0x27/tree-sitter-dae",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@aurora0x27" },
+}
+
 list.dart = {
   install_info = {
     url = "https://github.com/UserNobody14/tree-sitter-dart",
