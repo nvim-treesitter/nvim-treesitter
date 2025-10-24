@@ -2026,6 +2026,14 @@ list.ron = {
   maintainers = { "@amaanq" },
 }
 
+list.rshtml = {
+  install_info = {
+    url = "https://github.com/rshtml/tree-sitter-rshtml",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@rshtml" },
+}
+
 list.rst = {
   install_info = {
     url = "https://github.com/stsewd/tree-sitter-rst",
