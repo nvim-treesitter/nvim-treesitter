@@ -417,18 +417,20 @@
   function: (attribute
     object: (identifier) @_re)
   arguments: (argument_list
-    (comment)*
-    .
-    [
-      (string
-        (string_content) @string.regexp)
-      (concatenated_string
-        [
-          (string
-            (string_content) @string.regexp)
-          (comment)
-        ]+)
-    ])
+    (string
+      (string_content) @string.regexp))
+  (#eq? @_re "re"))
+
+(call
+  function: (attribute
+    object: (identifier) @_re)
+  arguments: (argument_list
+    (concatenated_string
+      [
+        (string
+          (string_content) @string.regexp)
+        (comment)
+      ]))
   (#eq? @_re "re"))
 
 ; Decorators
