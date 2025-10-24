@@ -1,5 +1,9 @@
 ; inherits: html_tags
 
+(style_element
+  (raw_text) @injection.content
+  (#set! injection.language "css"))
+
 ((style_element
   (start_tag
     (attribute
