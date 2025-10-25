@@ -8,7 +8,7 @@
 [
   ":"
   "."
-] @punctuation.delimiter
+] @character.special
 
 [
   (interpolation)

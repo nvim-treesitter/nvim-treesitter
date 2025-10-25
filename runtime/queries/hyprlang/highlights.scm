@@ -18,6 +18,9 @@
 (section
   (name) @module)
 
+(window_rule
+  (name) @function.call)
+
 (section
   device: (device_name) @string.special)
 
@@ -49,6 +52,7 @@
 
 [
   ","
+  ";"
   ":"
   "x"
   "@"
@@ -59,6 +63,8 @@
   ")"
   "{"
   "}"
+  "["
+  "]"
 ] @punctuation.bracket
 
 [
