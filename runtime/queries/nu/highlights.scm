@@ -219,6 +219,8 @@ file_path: (val_string) @variable.parameter
   "}"
   "["
   "]"
+  "<"
+  ">"
   "...["
   "...("
   "...{"
@@ -334,11 +336,7 @@ key: (identifier) @property
 (flat_type) @type
 
 (list_type
-  "list" @type.builtin
-  [
-    "<"
-    ">"
-  ] @punctuation.bracket)
+  "list" @type.builtin)
 
 (collection_type
   [
@@ -350,20 +348,10 @@ key: (identifier) @property
   key: (_) @variable.parameter)
 
 (collection_type
-  [
-    "<"
-    ">"
-  ] @punctuation.bracket)
-
-(collection_type
   ":" @punctuation.special)
 
 (composite_type
-  "oneof" @type.builtin
-  [
-    "<"
-    ">"
-  ] @punctuation.bracket)
+  "oneof" @type.builtin)
 
 (shebang) @keyword.directive
 
