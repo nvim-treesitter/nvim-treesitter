@@ -1,4 +1,5 @@
-; inherits wgsl
+; inherits: wgsl
+
 [
   "virtual"
   "override"
