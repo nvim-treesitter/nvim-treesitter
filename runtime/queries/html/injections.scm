@@ -1,4 +1,5 @@
-; inherits html_tags
+; inherits: html_tags
+
 (element
   (start_tag
     (tag_name) @_py_script)

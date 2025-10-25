@@ -1,2 +1,3 @@
-; inherits wgsl
+; inherits: wgsl
+
 (preproc_ifdef) @fold

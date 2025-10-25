@@ -1,1 +1,1 @@
-; inherits python
+; inherits: python

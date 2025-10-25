@@ -1,4 +1,5 @@
-; inherits html_tags
+; inherits: html_tags
+
 ; <script lang="css">
 ((style_element
   (start_tag
