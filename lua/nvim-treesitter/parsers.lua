@@ -1010,7 +1010,7 @@ return {
   },
   hyprlang = {
     install_info = {
-      revision = 'd626ec06e4d876fc41200a30b3e6f2b4714c7367',
+      revision = 'b23e85dded5d150ffee0ac83c01cbeb1520aad2f',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-hyprlang',
     },
     maintainers = { '@luckasRanarison' },
