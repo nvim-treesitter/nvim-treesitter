@@ -2,9 +2,21 @@
   function: (attribute
     object: (identifier) @_re)
   arguments: (argument_list
-    .
     (string
       (string_content) @injection.content))
+  (#eq? @_re "re")
+  (#set! injection.language "regex"))
+
+(call
+  function: (attribute
+    object: (identifier) @_re)
+  arguments: (argument_list
+    (concatenated_string
+      [
+        (string
+          (string_content) @injection.content)
+        (comment)
+      ]+))
   (#eq? @_re "re")
   (#set! injection.language "regex"))
 
