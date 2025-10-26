@@ -426,11 +426,8 @@
     object: (identifier) @_re)
   arguments: (argument_list
     (concatenated_string
-      [
-        (string
-          (string_content) @string.regexp)
-        (comment)
-      ]))
+      (string
+        (string_content) @string.regexp)))
   (#eq? @_re "re"))
 
 ; Decorators
