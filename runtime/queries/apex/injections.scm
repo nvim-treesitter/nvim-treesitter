@@ -12,4 +12,3 @@
 ((line_comment) @injection.content
   (#lua-match? @injection.content "^///%s")
   (#set! injection.language "javadoc"))
-
