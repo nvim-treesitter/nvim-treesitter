@@ -4,47 +4,47 @@
 ; Definitions
 (assignment
   .
-  (identifier) @local.definition)
+  (identifier) @local.definition.var)
 
 (assignment
   .
   (tuple_expression
-    (identifier) @local.definition))
+    (identifier) @local.definition.var))
 
 (assignment
   .
   (open_tuple
-    (identifier) @local.definition))
+    (identifier) @local.definition.var))
 
 (for_binding
   .
-  (identifier) @local.definition)
+  (identifier) @local.definition.var)
 
 (for_binding
   .
   (tuple_expression
-    (identifier) @local.definition))
+    (identifier) @local.definition.var))
 
 (import_statement
-  (identifier) @local.definition)
+  (identifier) @local.definition.import)
 
 (using_statement
-  (identifier) @local.definition)
+  (identifier) @local.definition.import)
 
 (selected_import
-  (identifier) @local.definition)
+  (identifier) @local.definition.import)
 
 (module_definition
   .
-  (identifier) @local.definition)
+  (identifier) @local.definition.type)
 
 (type_head
-  (identifier) @local.definition)
+  (identifier) @local.definition.type)
 
 (type_head
   (binary_expression
     .
-    (identifier) @local.definition))
+    (identifier) @local.definition.type))
 
 (function_definition
   (signature
