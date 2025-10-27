@@ -1,48 +1,51 @@
 ; References
 (identifier) @local.reference
 
-; Variables
+; Definitions
 (assignment
-  (identifier) @local.definition.var)
+  .
+  (identifier) @local.definition)
 
 (assignment
+  .
   (tuple_expression
-    (identifier) @local.definition.var))
+    (identifier) @local.definition))
 
-; For bindings
-(for_binding
-  (identifier) @local.definition.var)
+(assignment
+  .
+  (open_tuple
+    (identifier) @local.definition))
 
 (for_binding
+  .
+  (identifier) @local.definition)
+
+(for_binding
+  .
   (tuple_expression
-    (identifier) @local.definition.var))
+    (identifier) @local.definition))
 
-; Types
+(import_statement
+  (identifier) @local.definition)
+
+(using_statement
+  (identifier) @local.definition)
+
+(selected_import
+  (identifier) @local.definition)
+
 (module_definition
-  (identifier) @local.definition.type)
-
-(struct_definition
-  (identifier) @local.definition.type)
+  .
+  (identifier) @local.definition)
 
 (type_head
-  (identifier) @local.definition.type)
+  (identifier) @local.definition)
 
 (type_head
   (binary_expression
     .
-    (identifier) @local.definition.type))
+    (identifier) @local.definition))
 
-; Module imports
-(import_statement
-  (identifier) @local.definition.import)
-
-(using_statement
-  (identifier) @local.definition.import)
-
-(selected_import
-  (identifier) @local.definition.import)
-
-; Scopes
 (function_definition
   (signature
     (call_expression
@@ -55,6 +58,7 @@
       .
       (identifier) @local.definition.function))) @local.scope
 
+; Scopes
 [
   (quote_statement)
   (let_statement)
