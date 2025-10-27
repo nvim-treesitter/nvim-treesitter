@@ -518,6 +518,24 @@ return {
     maintainers = { '@simonvic' },
     tier = 2,
   },
+  epics_db = {
+    install_info = {
+      revision = '1c20fe89eae9831c59f93184d600d371e5d33691',
+      url = 'https://github.com/minijackson/tree-sitter-epics-db',
+    },
+    maintainers = { '@minijackson' },
+    readme_note = 'EPICS database and database definitions',
+    tier = 2,
+  },
+  epics_msi_template = {
+    install_info = {
+      revision = 'c9885dbef3e99a22a8c8600200f5167cbfda4e88',
+      url = 'https://github.com/minijackson/tree-sitter-epics-msi-template',
+    },
+    maintainers = { '@minijackson' },
+    readme_note = 'EPICS macros',
+    tier = 2,
+  },
   erlang = {
     install_info = {
       revision = 'a260cb65eaa6e055289a34434f98c3aae6137ed5',
