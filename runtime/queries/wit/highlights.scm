@@ -114,7 +114,7 @@
   (id) @module)
 
 (alias_item
-  alias: (id) @module)
+  (id) @module)
 
 (use_names_item
   (id) @module)
