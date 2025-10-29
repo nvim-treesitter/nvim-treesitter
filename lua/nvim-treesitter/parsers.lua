@@ -370,8 +370,8 @@ return {
   },
   diff = {
     install_info = {
-      revision = 'e42b8def4f75633568f1aecfe01817bf15164928',
-      url = 'https://github.com/the-mikedavis/tree-sitter-diff',
+      revision = '2520c3f934b3179bb540d23e0ef45f75304b5fed',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-diff',
     },
     maintainers = { '@gbprod' },
     tier = 2,
