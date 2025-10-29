@@ -57,7 +57,7 @@ Language | Tier | Queries | Node | Maintainer
 [desktop](https://github.com/ValdezFOmar/tree-sitter-desktop) | unstable | `HF J ` |   | @ValdezFOmar
 [devicetree](https://github.com/joelspadin/tree-sitter-devicetree) | unstable | `HFIJL` |   | @jedrzejboczar
 [dhall](https://github.com/jbellerb/tree-sitter-dhall) | unstable | `HF J ` |   | @amaanq
-[diff](https://github.com/the-mikedavis/tree-sitter-diff) | unstable | `HF J ` |   | @gbprod
+[diff](https://github.com/tree-sitter-grammars/tree-sitter-diff) | unstable | `HF J ` |   | @gbprod
 [disassembly](https://github.com/ColinKennedy/tree-sitter-disassembly) | unstable | `H  J ` |   | @ColinKennedy
 [djot](https://github.com/treeman/tree-sitter-djot) | unstable | `HFIJL` |   | @NoahTheDuke
 [dockerfile](https://github.com/camdencheek/tree-sitter-dockerfile) | unstable | `H  J ` |   | @camdencheek
