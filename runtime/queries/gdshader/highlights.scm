@@ -229,7 +229,7 @@
     (declaration)
     (function_definition)
   ]
-  (#match? @comment.documentation "/\\*\\*[\\s\\S]*?\\*/"))
+  (#lua-match? @comment.documentation "^/%*%*.*%*/$"))
 
 (parameter_declaration
   declarator: [
@@ -278,7 +278,7 @@
 
 ; assume all uppercase variables as constants
 ((identifier) @constant
-  (#match? @constant "^[A-Z][A-Z_0-9]*$"))
+  (#lua-match? @constant "^[A-Z][A-Z0-9_]+$"))
 
 ((identifier) @constant.builtin
   (#any-of? @constant.builtin
