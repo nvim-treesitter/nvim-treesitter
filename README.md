@@ -20,7 +20,6 @@ For details on these and how to help improving them, see [CONTRIBUTING.md](./CON
 - `tar` and `curl` in your path
 - [`tree-sitter-cli`](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) (0.25.0 or later)
 - a C compiler in your path (see <https://docs.rs/cc/latest/cc/#compile-time-requirements>)
-- `Node` (23.0.0 or later) for some parsers (see the [list of supported languages](SUPPORTED_LANGUAGES.md))
 
 >[!IMPORTANT]
 > The **support policy** for Neovim is
@@ -141,7 +140,7 @@ callback = function()
       branch = 'develop', -- only needed if different from default branch
       location = 'parser', -- only needed if the parser is in subdirectory of a "monorepo"
       generate = true, -- only needed if repo does not contain pre-generated `src/parser.c`
-      generate_from_json = false, -- only needed if repo does not contain `src/grammar.json` either
+      generate_from_json = false, -- only needed if repo does not contain `src/grammar.json` either -- WARNING: requires `node` for tree-sitter-cli <0.26.0!
       queries = 'queries/neovim', -- also install queries from given directory
     },
   }
