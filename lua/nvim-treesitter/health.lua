@@ -65,15 +65,6 @@ local function install_health()
     end
   end
 
-  do -- node check
-    local node = check_exe('node')
-    if node then
-      health.ok(string.format('node %s (%s)', node.version, node.path))
-    else
-      health.error('node not found')
-    end
-  end
-
   do -- curl+tar check
     local tar = check_exe('tar')
     if tar then

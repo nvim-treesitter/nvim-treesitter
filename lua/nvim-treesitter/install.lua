@@ -182,7 +182,7 @@ local function do_generate(logger, repo, compile_location)
     '--abi',
     tostring(vim.treesitter.language_version),
     from_json and 'src/grammar.json' or nil,
-  }, { cwd = compile_location })
+  }, { cwd = compile_location, env = { TREE_SITTER_JS_RUNTIME = 'native' } })
   if r.code > 0 then
     return logger:error('Error during "tree-sitter generate": %s', r.stderr)
   end
