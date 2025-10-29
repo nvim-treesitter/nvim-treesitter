@@ -2005,9 +2005,7 @@ return {
   },
   scfg = {
     install_info = {
-      generate = true,
-      generate_from_json = false,
-      revision = '2f3709e7656fa2c443f92041c91a9f843f8cd625',
+      revision = 'd850fd470445d73de318a21d734d1e09e29b773c',
       url = 'https://github.com/rockorager/tree-sitter-scfg',
     },
     maintainers = { '@WhyNotHugo' },
