@@ -288,7 +288,7 @@
     ))
 
 ((identifier) @variable.builtin
-  (#any-of? @variable.builtin "TIME"))
+  (#eq? @variable.builtin "TIME"))
 
 (type_hint
   [
