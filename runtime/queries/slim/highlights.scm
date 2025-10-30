@@ -54,29 +54,29 @@
   (#any-of? @markup.italic "i" "em"))
 
 ((tag_name) @markup.link
-  (#any-of? @markup.link "a"))
+  (#eq? @markup.link "a"))
 
 ; Headings
 ((tag_name) @markup.heading
-  (#any-of? @markup.heading "header"))
+  (#eq? @markup.heading "header"))
 
 ((tag_name) @markup.heading.1
-  (#any-of? @markup.heading.1 "h1"))
+  (#eq? @markup.heading.1 "h1"))
 
 ((tag_name) @markup.heading.2
-  (#any-of? @markup.heading.2 "h2"))
+  (#eq? @markup.heading.2 "h2"))
 
 ((tag_name) @markup.heading.3
-  (#any-of? @markup.heading.3 "h3"))
+  (#eq? @markup.heading.3 "h3"))
 
 ((tag_name) @markup.heading.4
-  (#any-of? @markup.heading.4 "h4"))
+  (#eq? @markup.heading.4 "h4"))
 
 ((tag_name) @markup.heading.5
-  (#any-of? @markup.heading.5 "h5"))
+  (#eq? @markup.heading.5 "h5"))
 
 ((tag_name) @markup.heading.6
-  (#any-of? @markup.heading.6 "h6"))
+  (#eq? @markup.heading.6 "h6"))
 
 ((tag_name) @markup.list
   (#any-of? @markup.list "ul" "ol" "li" "dl" "dt" "dd"))

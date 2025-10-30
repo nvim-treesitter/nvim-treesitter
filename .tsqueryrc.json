@@ -187,6 +187,10 @@
         },
         {
           "type": "string",
+          "arity": "required"
+        },
+        {
+          "type": "string",
           "arity": "variadic"
         }
       ],

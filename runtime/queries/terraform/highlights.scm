@@ -27,7 +27,7 @@
     (#eq? @type.builtin "terraform"))
   (get_attr
     (identifier) @variable.builtin
-    (#any-of? @variable.builtin "workspace")))
+    (#eq? @variable.builtin "workspace")))
 
 ; Terraform specific keywords
 ; FIXME: ideally only for identifiers under a `variable` block to minimize false positives

@@ -327,7 +327,7 @@ port_name: (simple_identifier) @variable
 (method_call_body
   arguments: (list_of_arguments
     (expression) @variable.builtin
-    (#any-of? @variable.builtin "this")))
+    (#eq? @variable.builtin "this")))
 
 (implicit_class_handle) @variable.builtin
 
