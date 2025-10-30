@@ -53,6 +53,8 @@
 [
   ";"
   "."
+  ":"
+  ","
 ] @punctuation.delimiter
 
 [
