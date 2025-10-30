@@ -195,7 +195,7 @@
 (preproc_undef
   argument: (identifier) @constant)
 
-(comment) @comment
+(comment) @comment @spell
 
 ; technically an injection site for bbcode TODO: maybe add it?
 ((comment) @comment.documentation @spell
