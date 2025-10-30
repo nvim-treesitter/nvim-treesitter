@@ -20,8 +20,6 @@
 "struct" @keyword.type
 
 [
-  "continue"
-  "break"
   "return"
 ] @keyword.return
 
@@ -35,6 +33,8 @@
   "while"
   "for"
   "do"
+  "continue"
+  "break"
 ] @keyword.repeat
 
 [
