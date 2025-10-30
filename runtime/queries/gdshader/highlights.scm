@@ -242,9 +242,7 @@
   declarator: (identifier) @function)
 
 (call_expression
-  function: (identifier) @function.call
-  arguments: (argument_list
-    (identifier)? @variable))
+  function: (identifier) @function.call)
 
 (field_expression
   field: (_) @property)
