@@ -19,9 +19,7 @@
 
 "struct" @keyword.type
 
-[
-  "return"
-] @keyword.return
+"return" @keyword.return
 
 [
   (parameter_qualifier)
