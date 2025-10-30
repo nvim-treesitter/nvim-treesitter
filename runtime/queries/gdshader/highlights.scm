@@ -229,7 +229,7 @@
     (declaration)
     (function_definition)
   ]
-  (#lua-match? @comment.documentation "^/%*%*.*%*/$"))
+  (#lua-match? @comment.documentation "^/%*%*[^/]"))
 
 (parameter_declaration
   declarator: [
