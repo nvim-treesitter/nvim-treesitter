@@ -660,10 +660,10 @@ return {
   },
   gdshader = {
     install_info = {
-      revision = '14e834063e136fa69b6d91f711f4f1981acf424b',
-      url = 'https://github.com/GodOfAvacyn/tree-sitter-gdshader',
+      revision = '0dab84552f7d33a0084b469b7e38237302bf8e91',
+      url = 'https://github.com/airblast-dev/tree-sitter-gdshader',
     },
-    maintainers = { '@godofavacyn' },
+    maintainers = { '@airblast-dev' },
     tier = 2,
   },
   git_config = {
