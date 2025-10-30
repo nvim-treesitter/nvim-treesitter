@@ -128,17 +128,9 @@
 
 ; spatial
 (source_file
-  ; only comments and preprocessor directives are allowed before a shader type so ignore shader type
-  ; statements in any other node
-  [
-    (comment)
-    (preproc)
-  ]*
-  .
   (shader_type_statement
     (shader_type) @_shader_type)
   (#eq? @_shader_type "spatial")
-  (_)*
   (render_mode_statement
     (render_mode) @keyword)
   (#any-of? @keyword
@@ -153,15 +145,9 @@
 
 ; canvas_item
 (source_file
-  [
-    (comment)
-    (preproc)
-  ]*
-  .
   (shader_type_statement
     (shader_type) @_shader_type)
   (#eq? @_shader_type "canvas_item")
-  (_)*
   (render_mode_statement
     (render_mode) @keyword)
   (#any-of? @keyword
@@ -170,30 +156,18 @@
 
 ; particle
 (source_file
-  [
-    (comment)
-    (preproc)
-  ]*
-  .
   (shader_type_statement
     (shader_type) @_shader_type)
   (#eq? @_shader_type "particle")
-  (_)*
   (render_mode_statement
     (render_mode) @keyword)
   (#any-of? @keyword "keep_data" "disable_force" "disable_velocity" "collision_use_scale"))
 
 ; sky
 (source_file
-  [
-    (comment)
-    (preproc)
-  ]*
-  .
   (shader_type_statement
     (shader_type) @_shader_type)
   (#eq? @_shader_type "sky")
-  (_)*
   (render_mode_statement
     (render_mode) @keyword)
   (#any-of? @keyword "use_half_res_pass" "use_quarter_res_pass" "disable_fog"))
@@ -223,12 +197,6 @@
 
 ; technically an injection site for bbcode TODO: maybe add it?
 ((comment) @comment.documentation @spell
-  .
-  [
-    (struct_definition)
-    (declaration)
-    (function_definition)
-  ]
   (#lua-match? @comment.documentation "^/%*%*[^/]"))
 
 (parameter_declaration
