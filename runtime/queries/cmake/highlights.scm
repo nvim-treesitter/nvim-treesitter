@@ -137,7 +137,7 @@
     ((argument) @_cache @keyword.modifier
       .
       (argument) @_type @type
-      (#any-of? @_cache "CACHE")
+      (#eq? @_cache "CACHE")
       (#any-of? @_type "BOOL" "FILEPATH" "PATH" "STRING" "INTERNAL"))))
 
 (normal_command

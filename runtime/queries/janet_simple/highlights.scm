@@ -55,7 +55,7 @@
 
 ; Comment
 ((sym_lit) @comment
-  (#any-of? @comment "comment"))
+  (#eq? @comment "comment"))
 
 ; Special forms and builtin macros
 ;

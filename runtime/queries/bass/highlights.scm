@@ -79,7 +79,7 @@
 
 ; Repeats
 ((symbol) @keyword.repeat
-  (#any-of? @keyword.repeat "each"))
+  (#eq? @keyword.repeat "each"))
 
 ; Operators
 ((symbol) @operator

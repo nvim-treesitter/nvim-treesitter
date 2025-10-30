@@ -55,7 +55,7 @@
 ; ========
 (pool
   name: (identifier) @type.builtin
-  (#any-of? @type.builtin "console"))
+  (#eq? @type.builtin "console"))
 
 (build
   rule: (identifier) @function.builtin

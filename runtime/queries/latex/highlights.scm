@@ -266,7 +266,7 @@
   (begin
     name: (curly_group_text
       (text) @label)
-    (#any-of? @label "frame"))
+    (#eq? @label "frame"))
   .
   (curly_group
     (_) @markup.heading))
