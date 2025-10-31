@@ -339,7 +339,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [zig](https://github.com/tree-sitter-grammars/tree-sitter-zig) | unstable | `HFIJL` | @amaanq
 [ziggy](https://github.com/kristoff-it/ziggy) | unstable | `H I  ` | @rockorager
 [ziggy_schema](https://github.com/kristoff-it/ziggy) | unstable | `H I  ` | @rockorager
-[zsh](https://github.com/georgeharker/tree-sitter-zsh) | stable | `HF JL` |   | @georgeharker
+[zsh](https://github.com/georgeharker/tree-sitter-zsh) | stable | `HF JL` | @georgeharker
 [^bp]: Android Blueprint
 [^ecma]: queries required by javascript, typescript, tsx, qmljs
 [^gap]: GAP system
