@@ -18,7 +18,7 @@ return {
   },
   angular = {
     install_info = {
-      revision = 'c884ad6cce47da111584aee4b147cdf7dd3383e1',
+      revision = '513aad1a321a698b2fb1e388781a53038a672b24',
       url = 'https://github.com/dlvandenberg/tree-sitter-angular',
     },
     maintainers = { '@dlvandenberg' },
@@ -346,7 +346,7 @@ return {
   },
   desktop = {
     install_info = {
-      revision = '773d164f6f3abd9cee37be17246bcae78b2ebcbc',
+      revision = '9557f694806a2e98720346fba695014663a2e970',
       url = 'https://github.com/ValdezFOmar/tree-sitter-desktop',
     },
     maintainers = { '@ValdezFOmar' },
@@ -427,7 +427,7 @@ return {
   },
   earthfile = {
     install_info = {
-      revision = 'a37c5ee95ce401ca311c0ae1369d9cfb953e151d',
+      revision = '5baef88717ad0156fd29a8b12d0d8245bb1096a8',
       url = 'https://github.com/glehmann/tree-sitter-earthfile',
     },
     maintainers = { '@glehmann' },
@@ -449,7 +449,7 @@ return {
   },
   editorconfig = {
     install_info = {
-      revision = '911d7017566116b15c4b2c339e1dbe11fcf03f63',
+      revision = '439a3fcdbf239db35f587936a36f48b704ba8357',
       url = 'https://github.com/ValdezFOmar/tree-sitter-editorconfig',
     },
     maintainers = { '@ValdezFOmar' },
@@ -660,7 +660,7 @@ return {
   },
   gdshader = {
     install_info = {
-      revision = '0dab84552f7d33a0084b469b7e38237302bf8e91',
+      revision = 'd8b662b2bc4a266818242e6c01e3e7e9fc3301a4',
       url = 'https://github.com/airblast-dev/tree-sitter-gdshader',
     },
     maintainers = { '@airblast-dev' },
@@ -1074,7 +1074,7 @@ return {
   },
   javadoc = {
     install_info = {
-      revision = '92f9d7115598c1b012f5931a84ee5d50d46c0eb7',
+      revision = '3e9a823a02d3115d74294f04c39bd2c958ec3da6',
       url = 'https://github.com/rmuir/tree-sitter-javadoc',
     },
     maintainers = { '@rmuir' },
@@ -1374,7 +1374,7 @@ return {
   },
   matlab = {
     install_info = {
-      revision = 'd8f5728f67877d829b6ccd1b8bd1e0ad02b22217',
+      revision = '05bf45a948246fb703cb9e5096ac7d1098df8f59',
       url = 'https://github.com/acristoffers/tree-sitter-matlab',
     },
     maintainers = { '@acristoffers' },
@@ -1406,7 +1406,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = '65435795eb4132d5eff66d62347050e863e5ebe5',
+      revision = 'f1c4a9445c65fb4668a87bfb344d762d0356781d',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     maintainers = { '@artagnon' },
@@ -1617,7 +1617,7 @@ return {
   },
   pkl = {
     install_info = {
-      revision = 'd62e832b69a0aa3d4f87fc34ba62d931d6c23f55',
+      revision = '798222b4a29ba9a9715583e22242ab0f2ac6abc0',
       url = 'https://github.com/apple/tree-sitter-pkl',
     },
     maintainers = { '@ribru17' },
@@ -1660,7 +1660,7 @@ return {
   powershell = {
     filetype = 'ps1',
     install_info = {
-      revision = '497fe9ac43bdf090efbfe28fba65b7c0c7c6a7b3',
+      revision = '9379c77984af1f3d3d7e3cc5e897de3496725280',
       url = 'https://github.com/airbus-cert/tree-sitter-powershell',
     },
     maintainers = { '@L2jLiga' },
@@ -2637,7 +2637,7 @@ return {
   },
   xresources = {
     install_info = {
-      revision = '321231f99e3704f1555de14cda5dca93ee14a95b',
+      revision = 'd1c0a65348272ff235e5553fcd9171b151d251b4',
       url = 'https://github.com/ValdezFOmar/tree-sitter-xresources',
     },
     maintainers = { '@ValdezFOmar' },
