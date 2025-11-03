@@ -189,11 +189,10 @@
 ; Text
 (CharData) @none @spell
 
-((CDSect
+(CDSect
   (CDStart) @module
   (CData) @markup.raw
   "]]>" @module)
-  (#set! priority 105))
 
 ; Misc
 (Comment) @comment @spell
