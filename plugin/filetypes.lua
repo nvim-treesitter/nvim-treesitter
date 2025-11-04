@@ -31,7 +31,6 @@ local filetypes = {
   make = { 'automake' },
   markdown = { 'pandoc' },
   muttrc = { 'neomuttrc' },
-  objectscript = { 'objectscript', 'udl' },
   ocaml_interface = { 'ocamlinterface' },
   perl = { 'pl' },
   poe_filter = { 'poefilter' },
