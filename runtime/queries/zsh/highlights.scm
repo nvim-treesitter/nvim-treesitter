@@ -213,16 +213,16 @@
 
 (array_at) @variable.builtin
 
-(expansion_flags)  @attribute.builtin
+(expansion_flags) @attribute.builtin
 
-(expansion_style)  @attribute.builtin
+(expansion_style) @attribute.builtin
 
 (expansion_pattern
-  pattern: ("#" @attribute.builtin))
+  pattern: "#" @attribute.builtin)
 
 (expansion_modifier) @attribute.builtin
 
-(simple_variable_name)  @variable
+(simple_variable_name) @variable
 
 (glob_pattern) @string.regexp
 
