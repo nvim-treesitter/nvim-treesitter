@@ -248,18 +248,18 @@ cat <<< "string"
 # Special variables
 echo $0 $1 $@ $* $# $?
 #^^^ @function.call @function.builtin @number
-#    ^^ @punctuation.special @none @constant
-#     ^ @constant
-#       ^^ @punctuation.special @none @constant
-#        ^ @constant
-#          ^^ @punctuation.special @none @constant
-#           ^ @constant
-#             ^^ @punctuation.special @none @constant
-#              ^ @constant
-#                ^^ @punctuation.special @none @constant
-#                 ^ @constant
-#                   ^^ @punctuation.special @none @constant
-#                    ^ @constant
+#    ^^ @punctuation.special @none @variable.builtin
+#     ^ @variable.builtin
+#       ^^ @punctuation.special @none @variable.builtin
+#        ^ @variable.builtin
+#          ^^ @punctuation.special @none @variable.builtin
+#           ^ @variable.builtin
+#             ^^ @punctuation.special @none @variable.builtin
+#              ^ @variable.builtin
+#                ^^ @punctuation.special @none @variable.builtin
+#                 ^ @variable.builtin
+#                   ^^ @punctuation.special @none @variable.builtin
+#                    ^ @variable.builtin
 # NOTE: $$ is not captured by current query/grammar
 
 # Conditional operators
