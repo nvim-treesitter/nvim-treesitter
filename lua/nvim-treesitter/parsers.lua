@@ -1963,6 +1963,14 @@ return {
     maintainers = { '@amaanq' },
     tier = 2,
   },
+  rshtml = {
+    install_info = {
+      revision = '89ae0f3a5e221a83aad243def85e822616d3b3c2',
+      url = 'https://github.com/rshtml/tree-sitter-rshtml',
+    },
+    maintainers = { '@rshtml' },
+    tier = 2,
+  },
   rst = {
     install_info = {
       revision = '4e562e1598b95b93db4f3f64fe40ddefbc677a15',
