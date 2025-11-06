@@ -2701,4 +2701,12 @@ return {
     maintainers = { '@rockorager' },
     tier = 2,
   },
+  zsh = {
+    install_info = {
+      revision = 'v0.34.0',
+      url = 'https://github.com/georgeharker/tree-sitter-zsh',
+    },
+    maintainers = { '@georgeharker' },
+    tier = 1,
+  },
 }
