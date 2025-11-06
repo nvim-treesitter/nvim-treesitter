@@ -4,7 +4,7 @@
 (identifier) @variable
 
 ; Reset highlighting in f-string interpolations
-(interpolation) @none
+(interpolation) @none @nospell
 
 ; Identifier naming conventions
 ((identifier) @type
