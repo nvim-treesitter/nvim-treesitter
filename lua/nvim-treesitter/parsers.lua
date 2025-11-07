@@ -2271,7 +2271,7 @@ return {
   },
   t32 = {
     install_info = {
-      revision = '2f604ad17a15c09d99648199da7f173eed8250dc',
+      revision = '056123923a10e3d537914885cfbacf79cd644e40',
       url = 'https://github.com/xasc/tree-sitter-t32',
     },
     maintainers = { '@xasc' },

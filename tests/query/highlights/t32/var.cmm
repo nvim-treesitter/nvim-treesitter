@@ -1,7 +1,7 @@
 Var.NEWGLOBAL char[4][32] \myarr
 ; <- @keyword
 ;             ^ @type.builtin
-;                          ^ @variable.builtin
+;                          ^ @variable
 LOCAL &i &data
 
 &data="zero|one|two|three"
@@ -12,20 +12,20 @@ WHILE &i<4
     PRIVATE &val
     &val=STRing.SPLIT("&data","|",&i)
     Var.Assign \myarr[&i]="&val"
-;              ^ @variable.builtin
+;              ^ @variable
 ;                        ^ @operator
     &i=&i+1.
 )
 
 Var.NEWLOCAL \x
 ; <- @keyword
-;             ^ @variable.builtin
+;             ^ @variable
 Var.set \x=func3(5,3)
-;       ^ @variable.builtin
+;       ^ @variable
 ;          ^ @function.call
 ;                ^ @number
 PRINT Var.VALUE(\x)
-;               ^ @variable.builtin
+;               ^ @variable
 PRINT Var.VALUE('a')
 ;               ^ @character
 Var.Assign (*ap)[2..4] = &a

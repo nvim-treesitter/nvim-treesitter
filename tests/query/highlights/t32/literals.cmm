@@ -20,7 +20,7 @@ DATA.SET P:&HEAD+0x4 %LONG DATA.LONG(EA:&HEAD+0x4)&0xFFFFFF
 ;                                    ^ @constant.builtin
 
 List `main`
-;    ^ @string.special.symbol
+;    ^ @variable
 
 &range = 'a'--'z'||'0'--'9'
 ;        ^ @character
