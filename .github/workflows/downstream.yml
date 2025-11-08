@@ -1,0 +1,58 @@
+name: Tests
+
+on:
+  pull_request:
+    branches:
+      - "main"
+    paths:
+      - "lua/nvim-treesitter/parsers.lua"
+  workflow_dispatch:
+
+jobs:
+  test-downstream:
+    name: Check downstream queries
+    runs-on: ubuntu-latest
+    env:
+      NVIM: "nvim"
+    steps:
+      - uses: actions/checkout@v5
+      - uses: tree-sitter/setup-action/cli@v1
+
+      - name: Install and prepare Neovim
+        env:
+          NVIM_TAG: "nightly"
+        run: |
+          bash ./scripts/ci-install.sh
+
+      - name: Compile parsers
+        run: $NVIM -l ./scripts/install-parsers.lua --max-jobs=10
+
+      - name: Set up ts_query_ls
+        run: curl -fL https://github.com/ribru17/ts_query_ls/releases/latest/download/ts_query_ls-x86_64-unknown-linux-gnu.tar.gz | tar -xz
+
+      - name: Clone textobjects
+        uses: actions/checkout@v5
+        with:
+          repository: nvim-treesitter/nvim-treesitter-textobjects
+          ref: main
+          path: .tests/nvim-treesitter-textobjects
+          sparse-checkout: queries
+
+      - name: Check textobjects
+        working-directory:  .tests/nvim-treesitter-textobjects/
+        run: ../../ts_query_ls check queries/
+
+      - name: Clone context
+        if: always()
+        uses: actions/checkout@v5
+        with:
+          repository: nvim-treesitter/nvim-treesitter-context
+          ref: master
+          path: .tests/nvim-treesitter-context
+          sparse-checkout: queries
+
+      - name: Check context
+        if: always()
+        working-directory:  .tests/nvim-treesitter-context/
+        run: ../../ts_query_ls check queries/
+
