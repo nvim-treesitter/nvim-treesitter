@@ -120,7 +120,7 @@ ecma (queries only)[^ecma] | unstable | `HFIJL` | @steelsojka
 [gstlaunch](https://github.com/tree-sitter-grammars/tree-sitter-gstlaunch) | unstable | `H    ` | @theHamsta
 [hack](https://github.com/slackhq/tree-sitter-hack) | unstable | `H  J ` | 
 [hare](https://github.com/tree-sitter-grammars/tree-sitter-hare) | unstable | `HFIJL` | @amaanq
-[haskell](https://github.com/tree-sitter/tree-sitter-haskell) | unstable | `HF JL` | @mrcjkb
+[haskell](https://github.com/tree-sitter-grammars/tree-sitter-haskell) | unstable | `HF JL` | @mrcjkb
 [haskell_persistent](https://github.com/MercuryTechnologies/tree-sitter-haskell-persistent) | unstable | `HF   ` | @lykahb
 [hcl](https://github.com/tree-sitter-grammars/tree-sitter-hcl) | unstable | `HFIJ ` | @MichaHoffmann
 [heex](https://github.com/connorlay/tree-sitter-heex) | unstable | `HFIJL` | @connorlay
