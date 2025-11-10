@@ -889,8 +889,8 @@ return {
   },
   haskell = {
     install_info = {
-      revision = '0975ef72fc3c47b530309ca93937d7d143523628',
-      url = 'https://github.com/tree-sitter/tree-sitter-haskell',
+      revision = '2e51745eed8cd2ec429302b74250189467d665a4',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-haskell',
     },
     maintainers = { '@mrcjkb' },
     tier = 2,
