@@ -102,8 +102,6 @@
 
 (path) @string.special.path
 
-(symbol) @string.special.symbol
-
 [
   (character)
   (hll_char_literal)
@@ -159,7 +157,7 @@
 ; Variables, constants and labels
 (macro) @variable.builtin
 
-(trace32_hll_variable) @variable.builtin
+(symbol) @variable
 
 (argument_list
   (identifier) @constant.builtin)
@@ -167,6 +165,12 @@
 ((argument_list
   (identifier) @constant.builtin)
   (#lua-match? @constant.builtin "^[%%/][%l%u][%l%u%d.]*$"))
+
+((symbol) @constant
+  (#lua-match? @constant "^\\\\\\\\\\\\[^\\\\]*(\\\\\\\\[^\\\\]*)?(\\\\[^\\\\]*)?$"))
+
+((symbol) @constant
+  (#lua-match? @constant "^\\\\\\\\[^\\\\]*(\\\\[^\\\\]*)?$"))
 
 ((command_expression
   command: (identifier) @keyword
