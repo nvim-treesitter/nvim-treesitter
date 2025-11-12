@@ -1,6 +1,10 @@
 ((comment) @injection.content
   (#set! injection.language "comment"))
 
+((comment) @injection.content
+  (#match? @injection.content "(^#:|\\@rbs)")
+  (#set! injection.language "rbs"))
+
 (heredoc_body
   (heredoc_content) @injection.content
   (heredoc_end) @injection.language)
