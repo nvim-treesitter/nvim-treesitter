@@ -1860,7 +1860,7 @@ return {
   },
   rbs = {
     install_info = {
-      revision = 'de893b166476205b09e79cd3689f95831269579a',
+      revision = 'eb08fb0e8ea55727539e2fd77ffb93ada3a73f01',
       url = 'https://github.com/joker1007/tree-sitter-rbs',
     },
     maintainers = { '@joker1007' },
