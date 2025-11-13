@@ -163,3 +163,12 @@
 
 ; RBS Inline prefix (keep comment color)
 (inline_prefix) @comment
+
+; RBS Inline syntax
+(inline_class_annotation) @keyword
+
+(inline_doc
+  (identifier) @variable.parameter)
+
+(inline_doc
+  (inline_doc_comment) @comment)
