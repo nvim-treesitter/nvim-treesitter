@@ -2148,7 +2148,7 @@ return {
   sql = {
     install_info = {
       branch = 'gh-pages',
-      revision = 'd98aed3660ef1e9660ec6e359192bd2ab78bd78c',
+      revision = '4094309b58ccb74d041fb531ae6b7193a3ebc351',
       url = 'https://github.com/derekstride/tree-sitter-sql',
     },
     maintainers = { '@derekstride' },
