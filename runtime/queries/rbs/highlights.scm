@@ -106,9 +106,17 @@
 
 (global_name) @variable
 
+; Generics Keywords
+[
+  (generics_unchecked)
+  (generics_variance)
+] @keyword
+
 ; Standard Arguments
 (parameter
   (var_name) @variable.parameter)
+
+(unnamed_parameter) @variable.parameter
 
 ; Keyword Arguments
 (keyword) @variable.parameter
@@ -144,6 +152,10 @@
   "&"
   "|"
   "^"
+  "?"
+  (rest_operator)
+  (block_operator)
+  (optional_block_operator)
 ] @operator
 
 ; Punctuation
@@ -160,3 +172,20 @@
   ","
   "."
 ] @punctuation.delimiter
+
+; RBS Inline prefix (keep comment color)
+(inline_prefix) @comment
+
+; RBS Inline syntax
+(inline_class_annotation) @keyword
+
+(inline_doc
+  (var_name) @variable.parameter)
+
+(inline_doc_comment) @comment
+
+(inline_generic) @keyword
+
+(inline_override) @keyword
+
+(inline_skip) @keyword
