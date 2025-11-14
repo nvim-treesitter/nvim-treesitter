@@ -105,7 +105,7 @@ you can mark the language as optional (by putting it between parenthesis).
 
 #### Formatting
 
-All queries are expected to follow a standard format, with every node on a single line and indented by two spaces for each level of nesting. You can automatically format the bundled queries by running the provided formatter `./scripts/format-queries.lua` on a single file (ending in `.scm`) or directory to format.
+All queries are expected to follow a standard format, with every node on a single line and indented by two spaces for each level of nesting. You can automatically format the bundled queries by running `make formatquery`.
 
 Should you need to preserve a specific format for a node, you can exempt it (and all contained nodes) by placing before it
 ```query
