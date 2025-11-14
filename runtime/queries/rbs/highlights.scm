@@ -171,6 +171,7 @@
 [
   ","
   "."
+  ":"
 ] @punctuation.delimiter
 
 ; RBS Inline prefix (keep comment color)
