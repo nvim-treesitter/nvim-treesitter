@@ -1,6 +1,18 @@
 ((comment) @injection.content
   (#set! injection.language "comment"))
 
+((comment) @injection.content
+  (#lua-match? @injection.content "^#:")
+  (#set! injection.language "rbs"))
+
+((comment) @injection.content
+  (#lua-match? @injection.content "^#%s+@rbs")
+  (#set! injection.language "rbs"))
+
+((comment) @injection.content
+  (#lua-match? @injection.content "^#%s+|")
+  (#set! injection.language "rbs"))
+
 (heredoc_body
   (heredoc_content) @injection.content
   (heredoc_end) @injection.language)
