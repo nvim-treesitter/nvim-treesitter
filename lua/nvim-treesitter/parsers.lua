@@ -2689,8 +2689,7 @@ return {
       revision = '4353b20ef2ac750e35c6d68e4eb2a07c2d7cf901',
       url = 'https://github.com/kristoff-it/ziggy',
     },
-    maintainers = { '@rockorager' },
-    tier = 2,
+    tier = 3,
   },
   ziggy_schema = {
     install_info = {
@@ -2698,8 +2697,7 @@ return {
       revision = '4353b20ef2ac750e35c6d68e4eb2a07c2d7cf901',
       url = 'https://github.com/kristoff-it/ziggy',
     },
-    maintainers = { '@rockorager' },
-    tier = 2,
+    tier = 3,
   },
   zsh = {
     install_info = {
