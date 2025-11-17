@@ -338,8 +338,8 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [yuck](https://github.com/tree-sitter-grammars/tree-sitter-yuck) | unstable | `HFIJL` | @Philipp-M, @amaanq
 [zathurarc](https://github.com/Freed-Wu/tree-sitter-zathurarc) | unstable | `H  J ` | @Freed-Wu
 [zig](https://github.com/tree-sitter-grammars/tree-sitter-zig) | unstable | `HFIJL` | @amaanq
-[ziggy](https://github.com/kristoff-it/ziggy) | unstable | `H I  ` | @rockorager
-[ziggy_schema](https://github.com/kristoff-it/ziggy) | unstable | `H I  ` | @rockorager
+[ziggy](https://github.com/kristoff-it/ziggy) | unmaintained | `H I  ` | 
+[ziggy_schema](https://github.com/kristoff-it/ziggy) | unmaintained | `H I  ` | 
 [zsh](https://github.com/georgeharker/tree-sitter-zsh) | stable | `HF JL` | @georgeharker
 [^bp]: Android Blueprint
 [^ecma]: queries required by javascript, typescript, tsx, qmljs
