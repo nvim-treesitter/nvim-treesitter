@@ -281,6 +281,10 @@ end
 local function do_compile(logger, compile_location)
   logger:info(string.format('Compiling parser'))
 
+  if uv.os_uname().sysname == 'Windows_NT' and fn.executable('cl') == 0 then
+    vim.env.CC = 'gcc'
+  end
+
   local r = system({
     'tree-sitter',
     'build',
