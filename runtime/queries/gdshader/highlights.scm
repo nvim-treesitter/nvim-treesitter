@@ -213,6 +213,9 @@
 (call_expression
   function: (identifier) @function.call)
 
+(method_expression
+  method: (_) @function.method.call)
+
 (field_expression
   field: (_) @property)
 
