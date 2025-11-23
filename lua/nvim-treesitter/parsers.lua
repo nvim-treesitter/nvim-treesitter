@@ -18,7 +18,7 @@ return {
   },
   angular = {
     install_info = {
-      revision = '513aad1a321a698b2fb1e388781a53038a672b24',
+      revision = '8b4f7e65d22bfec2448cad935b18c9c970cc4719',
       url = 'https://github.com/dlvandenberg/tree-sitter-angular',
     },
     maintainers = { '@dlvandenberg' },
@@ -1033,7 +1033,7 @@ return {
   },
   ini = {
     install_info = {
-      revision = '0eaed8040513e62ee2e9e8db9f086cf630a524eb',
+      revision = 'bea223734aa9cea2c8793bf9098bd7fdef912f57',
       url = 'https://github.com/justinmk/tree-sitter-ini',
     },
     maintainers = { '@theHamsta' },
@@ -1136,7 +1136,7 @@ return {
   },
   json5 = {
     install_info = {
-      revision = '8cb4114a4d7e5bab75d74466422e032de31d83df',
+      revision = 'aa630ef48903ab99e406a8acd2e2933077cc34e1',
       url = 'https://github.com/Joakker/tree-sitter-json5',
     },
     maintainers = { '@Joakker' },
@@ -1222,7 +1222,7 @@ return {
   },
   koto = {
     install_info = {
-      revision = '5bdb50e0c15a513397933620b8827e0ec83bca97',
+      revision = 'f8b3f62c0eed185dca1559789e78759d4bee60e5',
       url = 'https://github.com/koto-lang/tree-sitter-koto',
     },
     maintainers = { '@irh' },
@@ -1374,7 +1374,7 @@ return {
   },
   matlab = {
     install_info = {
-      revision = '2e60b9e96774e52edd91cbef37ead8f46c6e1221',
+      revision = '1bccabdbd420a9c3c3f96f36d7f9e65b3d9c88ef',
       url = 'https://github.com/acristoffers/tree-sitter-matlab',
     },
     maintainers = { '@acristoffers' },
@@ -1406,7 +1406,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = 'f13087c89de99738217a84727dbf95339a67591f',
+      revision = '80ac665f68a5d1c6ca0443f71b6cd60e24e84157',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     maintainers = { '@artagnon' },
@@ -1470,7 +1470,7 @@ return {
   },
   nix = {
     install_info = {
-      revision = 'c5795af5a64ab8daa76bb77f30c24b5ed38976b5',
+      revision = 'bfcb03e6ddccc5a1eb84cea0176096f85a7af333',
       url = 'https://github.com/nix-community/tree-sitter-nix',
     },
     maintainers = { '@leo60228', '@zimbatm' },
@@ -1617,7 +1617,7 @@ return {
   },
   pkl = {
     install_info = {
-      revision = 'a109e0b4823d61ccd1461a1641da8119af7c0a5e',
+      revision = 'd9b3b1a48894b7e92172ec32f264ce853acf2d90',
       url = 'https://github.com/apple/tree-sitter-pkl',
     },
     maintainers = { '@ribru17' },
@@ -1812,7 +1812,7 @@ return {
   },
   query = {
     install_info = {
-      revision = '60e253d3c9d6b1131a0f75c85e4bdcc9a48d5b42',
+      revision = 'eeac2b75cf77c9c8571384d7242f89ade78f9939',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-query',
     },
     maintainers = { '@steelsojka' },
@@ -2148,7 +2148,7 @@ return {
   sql = {
     install_info = {
       branch = 'gh-pages',
-      revision = '4094309b58ccb74d041fb531ae6b7193a3ebc351',
+      revision = '0a3d963f48bf34d2765301f92ea525b4c5103696',
       url = 'https://github.com/derekstride/tree-sitter-sql',
     },
     maintainers = { '@derekstride' },
@@ -2271,7 +2271,7 @@ return {
   },
   t32 = {
     install_info = {
-      revision = '3cf141649c74f3aa018a8e24c7f3fa01bc5ecd1e',
+      revision = 'c3f72e1786b3440b98cb1b082c13c9033e1d08a9',
       url = 'https://github.com/xasc/tree-sitter-t32',
     },
     maintainers = { '@xasc' },
@@ -2553,7 +2553,7 @@ return {
   },
   vimdoc = {
     install_info = {
-      revision = 'ffa29e863738adfc1496717c4acb7aae92a80ed4',
+      revision = '0384c4156b1edffe3cc6e7136f27126c5da3f39e',
       url = 'https://github.com/neovim/tree-sitter-vimdoc',
     },
     maintainers = { '@clason' },
@@ -2701,7 +2701,7 @@ return {
   },
   zsh = {
     install_info = {
-      revision = 'v0.42.0',
+      revision = 'v0.47.0',
       url = 'https://github.com/georgeharker/tree-sitter-zsh',
     },
     maintainers = { '@georgeharker' },
