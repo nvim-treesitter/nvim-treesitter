@@ -1,6 +1,4 @@
 [
-  "global"
-  "instance"
   "group_uniforms"
   "uniform"
   "const"
@@ -9,6 +7,8 @@
   "render_mode"
   "shader_type"
 ] @keyword
+
+(scope) @keyword
 
 [
   "if"
