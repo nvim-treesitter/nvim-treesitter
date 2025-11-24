@@ -1,4 +1,4 @@
-(identifier) @variable
+((identifier) @variable (#set! priority 99))
 
 (int_literal) @number
 
@@ -116,6 +116,14 @@
   "@"
   "++"
   "--"
+  "+="
+  "-="
+  "*="
+  "/="
+  "%="
+  "&="
+  "|="
+  "^="
 ] @operator
 
 (attribute
