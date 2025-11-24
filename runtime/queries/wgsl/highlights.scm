@@ -1,4 +1,5 @@
-((identifier) @variable (#set! priority 99))
+((identifier) @variable
+  (#set! priority 99))
 
 (int_literal) @number
 
