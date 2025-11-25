@@ -121,7 +121,21 @@
 
 ; ----------------------------------------------------------------------------
 ; Functions and variables
-(decl
+(decl/signature
+  [
+    name: (variable) @function
+    names: (binding_list
+      (variable) @function)
+  ])
+
+(decl/function
+  [
+    name: (variable) @function
+    names: (binding_list
+      (variable) @function)
+  ])
+
+(decl/bind
   [
     name: (variable) @function
     names: (binding_list
@@ -142,7 +156,14 @@
   type: (type))
   .
   (decl
-    name: (variable) @variable)
+    [
+      (signature
+        name: (variable) @variable)
+      (function
+        name: (variable) @variable)
+      (bind
+        name: (variable) @variable)
+    ])
   match: (_)
   (#eq? @_name @variable))
 
@@ -160,7 +181,14 @@
   (#eq? @_type "IO"))
   .
   (decl
-    name: (variable) @function)
+    [
+      (signature
+        name: (variable) @function)
+      (function
+        name: (variable) @function)
+      (bind
+        name: (variable) @function)
+    ])
   match: (_)
   (#eq? @_name @function))
 
