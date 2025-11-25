@@ -256,15 +256,37 @@
 ; all post deref sigils highlighted as operators, and the unrolly star is a special char
 (postfix_deref
   [
-    "$"
+    (scalar_deref_expression
+      "$" @operator
+      "*" @character.special)
+    (array_deref_expression
+      "@" @operator
+      "*" @character.special)
+    (arraylen_deref_expression
+      "$#" @operator
+      "*" @character.special)
+    (hash_deref_expression
+      "%" @operator
+      "*" @character.special)
+    (amper_deref_expression
+      "&" @operator
+      "*" @character.special)
+    (glob_deref_expression
+      "*" @operator
+      "*" @character.special)
+  ])
+
+(slices/slice_expression
+  [
+    arrayref: _
+    hashref: _
+  ]
+  [
     "@"
     "%"
-    "*"
-    "$#"
-  ] @operator
-  "*" @character.special)
+  ] @operator)
 
-(slices
+(slices/keyval_expression
   [
     arrayref: _
     hashref: _
