@@ -1,6 +1,4 @@
 [
-  "global"
-  "instance"
   "group_uniforms"
   "uniform"
   "const"
@@ -9,6 +7,8 @@
   "render_mode"
   "shader_type"
 ] @keyword
+
+(scope) @keyword
 
 [
   "if"
@@ -212,6 +212,9 @@
 
 (call_expression
   function: (identifier) @function.call)
+
+(method_expression
+  method: (_) @function.method.call)
 
 (field_expression
   field: (_) @property)
