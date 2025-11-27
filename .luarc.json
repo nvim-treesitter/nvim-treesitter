@@ -4,12 +4,12 @@
     "version": "LuaJIT"
   },
   "workspace": {
-    "library": [
-      "lua",
-      "$VIMRUNTIME",
-      "${3rd}/luv/library",
-      "${3rd}/busted/library"
-    ],
+    "library": {
+      "lua": true,
+      "$VIMRUNTIME": true,
+      "${3rd}/luv/library": true,
+      "${3rd}/busted/library": true
+    },
     "checkThirdParty": false
   },
   "diagnostics": {
@@ -21,6 +21,6 @@
       "strong": "Warning",
       "strict": "Warning"
     },
-    "unusedLocalExclude": [ "_*" ]
+    "unusedLocalExclude": ["_*"]
   }
 }
