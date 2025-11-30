@@ -2434,6 +2434,15 @@ list.toml = {
   maintainers = { "@tk-shirasaka" },
 }
 
+list.toon = {
+  install_info = {
+    url = "https://github.com/DanEscher98/tree-sitter-toon",
+    files = { "src/parser.c", "src/scanner.c" },
+    branch = "main",
+  },
+  maintainers = { "@DanEscher98" },
+}
+
 list.tsv = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-csv",
