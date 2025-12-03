@@ -102,13 +102,13 @@
   ])
 
 ((symbol) @variable.parameter
-  (#any-of? @variable.parameter "$" "$..."))
+  (#lua-match? @variable.parameter "^%$[1-9]?$"))
 
 ((symbol_fragment) @variable.parameter
-  (#eq? @variable.parameter "$"))
+  (#lua-match? @variable.parameter "^%$[1-9]?$"))
 
 ((symbol) @variable.parameter
-  (#lua-match? @variable.parameter "^%$[1-9]$"))
+  (#eq? @variable.parameter "$..."))
 
 ((symbol) @operator
   (#any-of? @operator
