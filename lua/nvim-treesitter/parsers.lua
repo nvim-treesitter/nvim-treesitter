@@ -1779,8 +1779,8 @@ return {
   },
   python = {
     install_info = {
-      revision = 'v0.25.0',
-      url = 'https://github.com/tree-sitter/tree-sitter-python',
+      revision = 'v0.25.2',
+      url = 'https://github.com/tree-sitter/py-tree-sitter',
     },
     maintainers = { '@stsewd', '@theHamsta' },
     tier = 1,

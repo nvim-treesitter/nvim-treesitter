@@ -81,8 +81,10 @@
 
 ; doc-strings
 (expression_statement
-  (string
-    (string_content) @spell) @string.documentation)
+  (expression
+    (primary_expression
+      (string
+        (string_content) @spell))) @string.documentation)
 
 ; Tokens
 [
