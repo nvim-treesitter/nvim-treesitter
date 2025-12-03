@@ -228,7 +228,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [puppet](https://github.com/tree-sitter-grammars/tree-sitter-puppet) | unstable | `HFIJL` | @amaanq
 [purescript](https://github.com/postsolar/tree-sitter-purescript) | unstable | `H  JL` | @postsolar
 [pymanifest](https://github.com/tree-sitter-grammars/tree-sitter-pymanifest) | unstable | `H  J ` | @ObserverOfTime
-[python](https://github.com/tree-sitter/tree-sitter-python) | stable | `HFIJL` | @stsewd, @theHamsta
+[python](https://github.com/tree-sitter/py-tree-sitter) | stable | `HFIJL` | @stsewd, @theHamsta
 [ql](https://github.com/tree-sitter/tree-sitter-ql) | unstable | `HFIJL` | @pwntester
 [qmldir](https://github.com/tree-sitter-grammars/tree-sitter-qmldir) | unstable | `H  J ` | @amaanq
 [qmljs](https://github.com/yuja/tree-sitter-qmljs) | unstable | `HF J ` | @Decodetalkers
