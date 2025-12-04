@@ -2,6 +2,8 @@
 
 (identifier) @variable
 
+(style_unit) @variable
+
 (pipe_operator) @operator
 
 (string) @string
