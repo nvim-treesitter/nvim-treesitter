@@ -12,9 +12,6 @@
   (keyword_array)
 ] @function.call
 
-(object_reference
-  name: (identifier) @type)
-
 (relation
   alias: (identifier) @variable)
 
