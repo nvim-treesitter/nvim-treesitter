@@ -14,7 +14,6 @@ do
 
   for _, lang in pairs(parsers) do
     if configs[lang] and configs[lang].install_info then
-      timings[lang] = {}
       for _, query_type in pairs(query_types) do
         local before = vim.uv.hrtime()
         local ok, query = pcall(vim.treesitter.query.get, lang, query_type)

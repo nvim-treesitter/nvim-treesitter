@@ -2,7 +2,7 @@
 
 local generate = false
 local update = false
-local max_jobs = nil ---@type integer?
+local max_jobs = nil ---@type number?
 local parsers = {}
 for i = 1, #_G.arg do
   if _G.arg[i] == '--generate' then
@@ -10,7 +10,7 @@ for i = 1, #_G.arg do
   elseif _G.arg[i] == '--update' then
     update = true
   elseif _G.arg[i]:find('^%-%-max%-jobs') then
-    max_jobs = _G.arg[i]:match('=(%d+)')
+    max_jobs = tonumber(_G.arg[i]:match('=(%d+)'))
   else
     parsers[#parsers + 1] = _G.arg[i] ---@type string
   end
