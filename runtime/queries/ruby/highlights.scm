@@ -190,6 +190,13 @@
   (hash_key_symbol)
 ] @string.special.symbol
 
+(delimited_symbol
+  (string_content) @string.special.symbol)
+
+; Ensure "symbol" highlight has priority over "string" highlight for closing quote character.
+((delimited_symbol) @string.special.symbol
+  (#set! priority 101))
+
 (regex
   (string_content) @string.regexp)
 
