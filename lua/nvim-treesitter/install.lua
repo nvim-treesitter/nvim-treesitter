@@ -487,7 +487,7 @@ end
 local function install(languages, options)
   options = options or {}
 
-  local cache_dir = fs.normalize(fn.stdpath('cache'))
+  local cache_dir = fs.normalize(fn.stdpath('cache') --[[@as string]])
   if not uv.fs_stat(cache_dir) then
     fn.mkdir(cache_dir, 'p')
   end

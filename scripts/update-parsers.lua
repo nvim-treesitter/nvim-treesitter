@@ -6,7 +6,7 @@
 -- nvim -l update-parsers.lua --tier=1   # update stable parsers to latest version
 -- nvim -l update-parsers.lua --tier=2   # update unstable parsers to latest commit
 
-local tier = nil ---@type integer?
+local tier = nil ---@type number?
 for i = 1, #_G.arg do
   if _G.arg[i]:find('^%-%-tier=') then
     tier = tonumber(_G.arg[i]:match('=(%d+)'))
@@ -41,15 +41,15 @@ for k, p in pairs(parsers) do
 
   if #vim.tbl_keys(jobs) % 100 == 0 or next(parsers, k) == nil then
     for name, job in pairs(jobs) do
-      local stdout = vim.split(job:wait().stdout, '\n')
+      local stdout = vim.split(job:wait().stdout or '', '\n')
       jobs[name] = nil
 
-      local info = parsers[name].install_info
-      assert(info)
+      assert(parsers[name])
+      local info = assert(parsers[name].install_info)
 
-      local sha ---@type string
+      local sha ---@type string?
       if parsers[name].tier == 1 then
-        sha = stdout[#stdout - 1]:match('v[%d%.]+$')
+        sha = stdout[#stdout - 1] and stdout[#stdout - 1]:match('v[%d%.]+$')
       else
         local branch = info.branch
         local line = 1
@@ -61,10 +61,10 @@ for k, p in pairs(parsers) do
             end
           end
         end
-        sha = vim.split(stdout[line], '\t')[1]
+        sha = stdout[line] and vim.split(stdout[line], '\t')[1]
       end
 
-      if info.revision ~= sha then
+      if sha and info.revision ~= sha then
         info.revision = sha
         updates[#updates + 1] = name
       end

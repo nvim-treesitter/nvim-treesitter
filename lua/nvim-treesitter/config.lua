@@ -7,7 +7,7 @@ M.tiers = { 'stable', 'unstable', 'unmaintained', 'unsupported' }
 
 ---@type TSConfig
 local config = {
-  install_dir = vim.fs.joinpath(vim.fn.stdpath('data'), 'site'),
+  install_dir = vim.fs.joinpath(vim.fn.stdpath('data') --[[@as string]], 'site'),
 }
 
 ---Setup call for users to override configuration configurations.
