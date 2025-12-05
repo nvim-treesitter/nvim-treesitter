@@ -131,14 +131,6 @@ return {
     maintainers = { '@calebdw' },
     tier = 2,
   },
-  blueprint = {
-    install_info = {
-      revision = '355ef84ef8a958ac822117b652cf4d49bac16c79',
-      url = 'https://gitlab.com/gabmus/tree-sitter-blueprint',
-    },
-    maintainers = { '@gabmus' },
-    tier = 2,
-  },
   bp = {
     install_info = {
       revision = 'ee641d15390183d7535777947ce0f2f1fbcee69f',
@@ -621,14 +613,6 @@ return {
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-func',
     },
     maintainers = { '@amaanq' },
-    tier = 2,
-  },
-  fusion = {
-    install_info = {
-      revision = '19db2f47ba4c3a0f6238d4ae0e2abfca16e61dd6',
-      url = 'https://gitlab.com/jirgn/tree-sitter-fusion',
-    },
-    maintainers = { '@jirgn' },
     tier = 2,
   },
   gap = {
@@ -1140,15 +1124,6 @@ return {
       url = 'https://github.com/Joakker/tree-sitter-json5',
     },
     maintainers = { '@Joakker' },
-    tier = 2,
-  },
-  jsonc = {
-    install_info = {
-      revision = '02b01653c8a1c198ae7287d566efa86a135b30d5',
-      url = 'https://gitlab.com/WhyNotHugo/tree-sitter-jsonc',
-    },
-    maintainers = { '@WhyNotHugo' },
-    requires = { 'json' },
     tier = 2,
   },
   jsonnet = {

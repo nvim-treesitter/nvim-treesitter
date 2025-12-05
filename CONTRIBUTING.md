@@ -42,6 +42,9 @@ zimbu = {
 >[!IMPORTANT]
 > The "maintainers" here refers to the person maintaining the **queries** in `nvim-treesitter`, not the parser maintainers (who likely don't use Neovim). The maintainers' duty is to review issues and PRs related to the query and to keep them updated with respect to parser changes.
 
+>[!IMPORTANT]
+> Due to reliability issues with smaller codeforges, only Github-hosted parsers are currently eligible for inclusion. (The development may happen elsewhere, but there must at least exist a Github mirror to pull the source from.) We are monitoring the situation and hope to support more codeforges again in the future.
+
 >[!NOTE]
 > To qualify for Tier 1 ("stable"), a parser needs to
 > * make releases following semver (_patch_ for fixes not affecting queries; _minor_ for changes introducing new nodes or patterns; _major_ for changes removing nodes or previously valid patterns);
