@@ -31,7 +31,19 @@ jobs:
         run: |
           bash ./scripts/ci-install.sh
 
-      - if: inputs.type == 'build'
+      - name: Setup parsers cache
+        id: parsers-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/nvim/site/parser/
+          key: parsers-${{ join(matrix.*, '-') }}-${{ hashFiles(
+            './lua/nvim-treesitter/async.lua',
+            './lua/nvim-treesitter/config.lua',
+            './lua/nvim-treesitter/install.lua',
+            './lua/nvim-treesitter/parsers.lua'
+            ) }}
+
+      - if: ${{ inputs.type == 'build' && steps.parsers-cache.outputs.cache-hit != 'true' }}
         name: Compile parsers
         run: $NVIM -l ./scripts/install-parsers.lua --max-jobs=10
 
