@@ -4,10 +4,12 @@ M.tiers = { 'stable', 'unstable', 'unmaintained', 'unsupported' }
 
 ---@class TSConfig
 ---@field install_dir string
+---@field prefer_git boolean
 
 ---@type TSConfig
 local config = {
   install_dir = vim.fs.joinpath(vim.fn.stdpath('data'), 'site'),
+  prefer_git = false,
 }
 
 ---Setup call for users to override configuration configurations.
@@ -18,8 +20,18 @@ function M.setup(user_data)
       user_data.install_dir = vim.fs.normalize(user_data.install_dir)
       vim.opt.runtimepath:prepend(user_data.install_dir)
     end
+    if user_data.prefer_git then
+      local log = require('nvim-treesitter.log')
+      log.warn('nvim-treesitter will use git to install parsers, which is slower and less stable.')
+    end
     config = vim.tbl_deep_extend('force', config, user_data)
   end
+end
+
+---Returns whether git should be used to obtain the parsers
+---@return boolean prefer_git
+function M.is_git_preferred()
+  return config.prefer_git
 end
 
 -- Returns the install path for parsers, parser info, and queries.

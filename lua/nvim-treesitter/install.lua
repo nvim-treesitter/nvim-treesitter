@@ -188,22 +188,26 @@ local function do_generate(logger, repo, compile_location)
   end
 end
 
+---@param tmp_dir string
+---@param url string
+---@param revision string
+---@return string extraction_path
+local function get_extraction_path(tmp_dir, url, revision)
+  local dir_rev = revision:find('^v%d') and revision:sub(2) or revision
+  local repo_project_name = url:match('[^/]-$')
+  return fs.joinpath(tmp_dir, repo_project_name .. '-' .. dir_rev)
+end
+
 ---@async
 ---@param logger Logger
 ---@param url string
 ---@param project_name string
 ---@param cache_dir string
 ---@param revision string
----@param output_dir string
+---@param tmp_dir string
 ---@return string? err
-local function do_download(logger, url, project_name, cache_dir, revision, output_dir)
+local function curl_download(logger, url, project_name, cache_dir, revision, tmp_dir)
   local is_gitlab = url:find('gitlab.com', 1, true)
-
-  local tmp = output_dir .. '-tmp'
-
-  rmpath(tmp)
-  a.schedule()
-
   url = url:gsub('.git$', '')
   local target = is_gitlab
       and string.format('%s/-/archive/%s/%s-%s.tar.gz', url, revision, project_name, revision)
@@ -229,8 +233,8 @@ local function do_download(logger, url, project_name, cache_dir, revision, outpu
   end
 
   do -- Create tmp dir
-    logger:debug('Creating temporary directory: %s', tmp)
-    local err = mkpath(tmp)
+    logger:debug('Creating temporary directory: %s', tmp_dir)
+    local err = mkpath(tmp_dir)
     a.schedule()
     if err then
       return logger:error('Could not create %s-tmp: %s', project_name, err)
@@ -257,11 +261,119 @@ local function do_download(logger, url, project_name, cache_dir, revision, outpu
       return logger:error('Could not remove tarball: %s', err)
     end
   end
+end
+
+---@async
+---@param logger Logger
+---@param url string
+---@param project_name string
+---@param revision string
+---@param tmp_dir string
+---@return string? err
+local function git_download(logger, url, project_name, revision, tmp_dir)
+  -- Set our temp directory to match what curl + tar would have given us
+  tmp_dir = get_extraction_path(tmp_dir, url, revision)
+
+  do -- Create tmp dir
+    logger:debug('Creating temporary directory: %s', tmp_dir)
+    local err = mkpath(tmp_dir)
+    a.schedule()
+    if err then
+      return logger:error('Could not create %s-tmp: %s', project_name, err)
+    end
+  end
+
+  do -- prepare git repo
+    local r = system({
+      'git',
+      '-C',
+      tmp_dir,
+      'init',
+    })
+    if r.code > 0 then
+      return logger:error('Failed to init git repo: %s', r.stderr)
+    end
+  end
+
+  do -- Add remote repo
+    local r = system({
+      'git',
+      '-C',
+      tmp_dir,
+      'remote',
+      'add',
+      'origin',
+      url,
+    })
+    if r.code > 0 then
+      return logger:error('Failed to set git remote: %s', r.stderr)
+    end
+  end
+
+  do -- Fetch specific commit
+    logger:info('Cloning %s...', project_name)
+    local r = system({
+      'git',
+      '-C',
+      tmp_dir,
+      'fetch',
+      'origin',
+      revision,
+    })
+    if r.code > 0 then
+      return logger:error('Failed to fetch git revision: %s', r.stderr)
+    end
+  end
+
+  do -- Reset to that commit
+    local r = system({
+      'git',
+      '-C',
+      tmp_dir,
+      'reset',
+      '--hard',
+      'FETCH_HEAD',
+    })
+    if r.code > 0 then
+      return logger:error('Failed to set git head: %s', r.stderr)
+    end
+  end
+end
+
+---@async
+---@param logger Logger
+---@param url string
+---@param project_name string
+---@param cache_dir string
+---@param revision string
+---@param output_dir string
+---@return string? err
+local function do_download(logger, url, project_name, cache_dir, revision, output_dir)
+  local tmp = output_dir .. '-tmp'
+
+  rmpath(tmp)
+  a.schedule()
+
+  if config.is_git_preferred() then
+    do -- Download with git
+      local err = git_download(logger, url, project_name, revision, tmp)
+      a.schedule()
+      if err then
+        return err
+      end
+    end
+  else
+    do -- Download with curl
+      local err = curl_download(logger, url, project_name, cache_dir, revision, tmp)
+      a.schedule()
+      if err then
+        return err
+      end
+    end
+  end
 
   do -- Move tmp dir to output dir
-    local dir_rev = revision:find('^v%d') and revision:sub(2) or revision
-    local repo_project_name = url:match('[^/]-$')
-    local extracted = fs.joinpath(tmp, repo_project_name .. '-' .. dir_rev)
+    local extracted = get_extraction_path(tmp, url, revision)
     logger:debug('Moving %s to %s/...', extracted, output_dir)
     local err = uv_rename(extracted, output_dir)
     a.schedule()

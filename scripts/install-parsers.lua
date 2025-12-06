@@ -17,10 +17,12 @@ for i = 1, #_G.arg do
 end
 
 vim.opt.runtimepath:append('.')
+local ts = require('nvim-treesitter')
+ts.setup({ prefer_git = true })
 
 ---@type async.Task
-local task = update and require('nvim-treesitter').update('all', { summary = true })
-  or require('nvim-treesitter').install(
+local task = update and ts.update('all', { summary = true })
+  or ts.install(
     #parsers > 0 and parsers or 'all',
     { force = true, summary = true, generate = generate, max_jobs = max_jobs }
   )
