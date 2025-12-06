@@ -259,7 +259,7 @@
     "export_flags_2d_physics" "export_flags_2d_render" "export_flags_3d_navigation"
     "export_flags_3d_physics" "export_flags_3d_render" "export_flags_avoidance" "export_global_dir"
     "export_global_file" "export_group" "export_multiline" "export_node_path" "export_placeholder"
-    "export_range" "export_storage" "export_subgroup" "icon" "onready" "rpc" "static_unload" "tool"
+    "export_range" "export_storage" "export_subgroup" "icon" "onready" "rpc" "static_unload" "tool" "abstract"
     "warning_ignore"))
 
 ; Builtin Types
