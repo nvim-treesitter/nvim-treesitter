@@ -18,7 +18,7 @@ return {
   },
   angular = {
     install_info = {
-      revision = 'd2f388435b062fdd6b3c386db6c23db2da67e578',
+      revision = '3bd2036e710f609ea08fcfca5a1eb1169ecc114f',
       url = 'https://github.com/dlvandenberg/tree-sitter-angular',
     },
     maintainers = { '@dlvandenberg' },
@@ -166,7 +166,7 @@ return {
   },
   c3 = {
     install_info = {
-      revision = '2e852d524cdab2e857ac7fb3ad814b39ae858916',
+      revision = '3bcb189c85a15d5e47a12947fbb25cd6604025f5',
       url = 'https://github.com/c3lang/tree-sitter-c3',
     },
     maintainers = { '@cbuttner' },
@@ -346,7 +346,7 @@ return {
   },
   desktop = {
     install_info = {
-      revision = '2d93b616b0c247121dab59590b3182af1a9ecb3b',
+      revision = 'f5709fd5297676875aa6d636e52cff7039573cb0',
       url = 'https://github.com/ValdezFOmar/tree-sitter-desktop',
     },
     maintainers = { '@ValdezFOmar' },
@@ -481,7 +481,7 @@ return {
   },
   elm = {
     install_info = {
-      revision = '027728466b8115cf807517af943cbeaed34053fc',
+      revision = '3d000d37b99ac2640bf24c1a7a5c9a58485778df',
       url = 'https://github.com/elm-tooling/tree-sitter-elm',
     },
     maintainers = { '@zweimach' },
@@ -584,7 +584,7 @@ return {
   },
   forth = {
     install_info = {
-      revision = '90189238385cf636b9ee99ce548b9e5b5e569d48',
+      revision = '360ef13f8c609ec6d2e80782af69958b84e36cd0',
       url = 'https://github.com/AlexanderBrevig/tree-sitter-forth',
     },
     maintainers = { '@amaanq' },
@@ -1041,7 +1041,7 @@ return {
   },
   inko = {
     install_info = {
-      revision = '9d7ed4f6c0ea2a8f846f3bb00e33ab21ec9ca379',
+      revision = 'fc37d05c363ccf7f515354c5a47d72b2d3ff555e',
       url = 'https://github.com/inko-lang/tree-sitter-inko',
     },
     maintainers = { '@yorickpeterse' },
@@ -1406,7 +1406,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = '80ac665f68a5d1c6ca0443f71b6cd60e24e84157',
+      revision = '834a0b01e98eaf4313dfd48778e20bef1738ff8f',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     maintainers = { '@artagnon' },
@@ -1470,7 +1470,7 @@ return {
   },
   nix = {
     install_info = {
-      revision = 'bfcb03e6ddccc5a1eb84cea0176096f85a7af333',
+      revision = 'eabf96807ea4ab6d6c7f09b671a88cd483542840',
       url = 'https://github.com/nix-community/tree-sitter-nix',
     },
     maintainers = { '@leo60228', '@zimbatm' },
@@ -1617,7 +1617,7 @@ return {
   },
   pkl = {
     install_info = {
-      revision = '82f0e990b727374014371681457cc6ea5c3daa97',
+      revision = 'd50709f1b71e77844c4551c655792d100a5ca559',
       url = 'https://github.com/apple/tree-sitter-pkl',
     },
     maintainers = { '@ribru17' },
@@ -1660,7 +1660,7 @@ return {
   powershell = {
     filetype = 'ps1',
     install_info = {
-      revision = '9379c77984af1f3d3d7e3cc5e897de3496725280',
+      revision = '17f0c1a6514d3b46e64df7b88f464c0bd85078a6',
       url = 'https://github.com/airbus-cert/tree-sitter-powershell',
     },
     maintainers = { '@L2jLiga' },
@@ -2312,7 +2312,7 @@ return {
   },
   templ = {
     install_info = {
-      revision = '1975f67058325403c5412cde48b181a3fa817870',
+      revision = '3057cd485f7f23a8ad24107c6adc604f8c5ce3db',
       url = 'https://github.com/vrischmann/tree-sitter-templ',
     },
     maintainers = { '@vrischmann' },
@@ -2637,7 +2637,7 @@ return {
   },
   xresources = {
     install_info = {
-      revision = 'd466418f1c8850276bb7787a135372cb70868b1d',
+      revision = 'a96227aaa37e5f8e1a5888bfac2dcb31ad0bf1f1',
       url = 'https://github.com/ValdezFOmar/tree-sitter-xresources',
     },
     maintainers = { '@ValdezFOmar' },
