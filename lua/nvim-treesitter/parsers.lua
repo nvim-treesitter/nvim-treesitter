@@ -77,7 +77,7 @@ return {
   },
   bash = {
     install_info = {
-      revision = '20f55fb9663568f16ebceaac7673d2aa530add46',
+      revision = 'a06c2e4415e9bc0346c6b86d401879ffb44058f7',
       url = 'https://github.com/tree-sitter/tree-sitter-bash',
     },
     maintainers = { '@TravonteD' },
