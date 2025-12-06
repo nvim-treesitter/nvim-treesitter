@@ -148,7 +148,7 @@ html_tags (queries only)[^html_tags] | unstable | `H IJ ` | @TravonteD
 [jinja_inline](https://github.com/cathaysia/tree-sitter-jinja)[^jinja_inline] | unstable | `H  J ` | @cathaysia
 [jq](https://github.com/flurie/tree-sitter-jq) | unstable | `H  JL` | @ObserverOfTime
 [jsdoc](https://github.com/tree-sitter/tree-sitter-jsdoc) | unstable | `H    ` | @steelsojka
-[json](https://github.com/tree-sitter/tree-sitter-json) | unstable | `HFI L` | @steelsojka
+[json](https://github.com/tree-sitter/tree-sitter-json) | unstable | `HFIJL` | @steelsojka
 [json5](https://github.com/Joakker/tree-sitter-json5) | unstable | `H  J ` | @Joakker
 [jsonnet](https://github.com/sourcegraph/tree-sitter-jsonnet) | unstable | `HF JL` | @nawordar
 jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
