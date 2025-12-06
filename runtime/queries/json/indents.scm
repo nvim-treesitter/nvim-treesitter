@@ -7,3 +7,5 @@
   "}"
   "]"
 ] @indent.branch
+
+(comment) @indent.ignore

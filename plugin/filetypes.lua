@@ -24,6 +24,7 @@ local filetypes = {
   ini = { 'confini', 'dosini' },
   janet_simple = { 'janet' },
   javascript = { 'javascriptreact', 'ecma', 'ecmascript', 'jsx', 'js' },
+  json = { 'jsonc' },
   glimmer_javascript = { 'javascript.glimmer' },
   latex = { 'tex' },
   linkerscript = { 'ld' },
