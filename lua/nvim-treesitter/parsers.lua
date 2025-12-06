@@ -592,7 +592,7 @@ return {
   },
   fortran = {
     install_info = {
-      revision = '8334abca785db3a041292e3b3b818a82a55b238f',
+      revision = 'd0d1bc84c43870788c1b402f2e6b490b27257f9e',
       url = 'https://github.com/stadelmanma/tree-sitter-fortran',
     },
     maintainers = { '@amaanq' },
