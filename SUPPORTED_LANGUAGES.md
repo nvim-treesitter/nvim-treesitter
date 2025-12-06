@@ -140,7 +140,7 @@ html_tags (queries only)[^html_tags] | unstable | `H IJ ` | @TravonteD
 [idl](https://github.com/cathaysia/tree-sitter-idl) | unstable | `H IJ ` | @cathaysia
 [idris](https://github.com/kayhide/tree-sitter-idris) | unstable | `HF JL` | 
 [ini](https://github.com/justinmk/tree-sitter-ini) | unstable | `HF J ` | @theHamsta
-[inko](https://github.com/inko-lang/tree-sitter-inko) | unstable | `HFIJL` | @yorickpeterse
+[inko](https://github.com/inko-lang/tree-sitter-inko) | unmaintained | `HFIJL` | @yorickpeterse
 [ispc](https://github.com/tree-sitter-grammars/tree-sitter-ispc) | unstable | `HFIJL` | @fab4100
 [janet_simple](https://github.com/sogaiu/tree-sitter-janet-simple) | unstable | `HF JL` | @sogaiu
 [java](https://github.com/tree-sitter/tree-sitter-java) | unstable | `HFIJL` | @p00f
