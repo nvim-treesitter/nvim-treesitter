@@ -264,8 +264,8 @@
     "export_flags_2d_physics" "export_flags_2d_render" "export_flags_3d_navigation"
     "export_flags_3d_physics" "export_flags_3d_render" "export_flags_avoidance" "export_global_dir"
     "export_global_file" "export_group" "export_multiline" "export_node_path" "export_placeholder"
-    "export_range" "export_storage" "export_subgroup" "icon" "onready" "rpc" "static_unload" "tool"
-    "warning_ignore"))
+    "export_range" "export_storage" "export_subgroup" "export_tool_button" "icon" "onready" "rpc" "static_unload" "tool"
+    "warning_ignore" "warning_ignore_restore" "warning_ignore_start"))
 
 ; Builtin Types
 ((identifier) @type.builtin
