@@ -248,16 +248,17 @@
 
 ; Builtins
 ; generated from
-; - godot commit: fb10e67fef
-; - https://github.com/godotengine/godot/blob/fb10e67fef/doc/classes
-; - https://github.com/godotengine/godot/blob/fb10e67fef/doc/classes/@GlobalScope.xml
-; - https://github.com/godotengine/godot/blob/fb10e67fef/modules/gdscript/doc_classes/@GDScript.xml
+; - godot commit: ebc36a7225
+; - https://github.com/godotengine/godot/blob/ebc36a7225/doc/classes
+; - https://github.com/godotengine/godot/blob/ebc36a7225/doc/classes/@GlobalScope.xml
+; - https://github.com/godotengine/godot/blob/ebc36a7225/modules/gdscript/doc_classes/@GDScript.xml
 ; Built-in Annotations
 ((annotation
   "@" @attribute
   (identifier) @attribute)
   (#any-of? @attribute
     ; from modules/gdscript/doc_classes/@GDScript.xml
+    "abstract"
     "export" "export_category" "export_color_no_alpha" "export_custom" "export_dir" "export_enum"
     "export_exp_easing" "export_file" "export_flags" "export_flags_2d_navigation"
     "export_flags_2d_physics" "export_flags_2d_render" "export_flags_3d_navigation"
