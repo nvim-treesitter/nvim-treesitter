@@ -1,3 +1,4 @@
+---@meta nvim-treesitter.async vendored file, don't diagnose
 local pcall = copcall or pcall
 
 --- @param ... any
@@ -345,8 +346,9 @@ end
 --- -- Since uv functions have sync versions. You can just do:
 --- local stat = vim.fs_stat('foo.txt')
 --- ```
---- @param func function
---- @param ... any
+--- @generic T, R
+--- @param func async fun(...: T...): R...
+--- @param ... T...
 --- @return async.Task
 function M.arun(func, ...)
   local task = Task._new(func)
@@ -354,19 +356,27 @@ function M.arun(func, ...)
   return task
 end
 
---- @class async.TaskFun
---- @field package _fun fun(...: any): any
---- @operator call(...): any
+--- @alias async.TaskFun<T, R> fun(...: T...): async.Task
+
+--- @generic T, R
+--- @class async._TaskFun<T, R>
+--- @field package _fun async fun(...: T...): R...
+--- @operator call(...: T...): async.Task
 local TaskFun = {}
 TaskFun.__index = TaskFun
 
+--- @generic T, R
+--- @param self async._TaskFun<T, R>
+--- @param ... T...
+--- @return async.Task
 function TaskFun:__call(...)
   return M.arun(self._fun, ...)
 end
 
 --- Create an async function
---- @param fun function
---- @return async.TaskFun
+--- @generic T, R
+--- @param fun async fun(...: T...): R...
+--- @return async.TaskFun<T, R>
 function M.async(fun)
   return setmetatable({ _fun = fun }, TaskFun)
 end
@@ -430,9 +440,10 @@ local function await_cbfun(argc, fun, ...)
   end)
 end
 
---- @param taskfun async.TaskFun
---- @param ... any
---- @return any ...
+--- @generic T, R
+--- @param taskfun async.TaskFun<T, R>
+--- @param ... T...
+--- @return R...
 local function await_taskfun(taskfun, ...)
   return taskfun._fun(...)
 end
