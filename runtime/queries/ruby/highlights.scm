@@ -186,16 +186,13 @@
 [
   (bare_symbol)
   (simple_symbol)
-  (delimited_symbol)
   (hash_key_symbol)
 ] @string.special.symbol
 
 (delimited_symbol
-  (string_content) @string.special.symbol)
-
-; Ensure "symbol" highlight has priority over "string" highlight for closing quote character.
-((delimited_symbol) @string.special.symbol
-  (#set! priority 101))
+  ":\"" @string.special.symbol
+  (string_content) @string.special.symbol
+  "\"" @string.special.symbol)
 
 (regex
   (string_content) @string.regexp)
