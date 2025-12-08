@@ -85,6 +85,7 @@ local function join(max_jobs, tasks)
     end
 
     for i = 1, max_jobs do
+      assert(tasks[i])
       tasks[i]():await(cb)
     end
   end)
@@ -155,7 +156,8 @@ end
 ---@param ... string
 ---@return string
 function M.get_package_path(...)
-  return fs.joinpath(fn.fnamemodify(debug.getinfo(1, 'S').source:sub(2), ':p:h:h:h'), ...)
+  local info = assert(debug.getinfo(1, 'S'))
+  return fs.joinpath(fn.fnamemodify(info.source:sub(2), ':p:h:h:h'), ...)
 end
 
 ---@param lang string
@@ -487,8 +489,8 @@ end
 
 --- Reload the parser table and user modifications in case of update
 local function reload_parsers()
-  ---@diagnostic disable-next-line:no-unknown
   package.loaded['nvim-treesitter.parsers'] = nil
+  ---@diagnostic disable-next-line:duplicate-require
   parsers = require('nvim-treesitter.parsers')
   vim.api.nvim_exec_autocmds('User', { pattern = 'TSUpdate' })
 end
