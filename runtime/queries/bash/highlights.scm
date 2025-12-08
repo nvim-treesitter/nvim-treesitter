@@ -117,9 +117,6 @@
     "SIGRTMAX-12" "SIGRTMAX-11" "SIGRTMAX-10" "SIGRTMAX-9" "SIGRTMAX-8" "SIGRTMAX-7" "SIGRTMAX-6"
     "SIGRTMAX-5" "SIGRTMAX-4" "SIGRTMAX-3" "SIGRTMAX-2" "SIGRTMAX-1" "SIGRTMAX"))
 
-((word) @boolean
-  (#any-of? @boolean "true" "false"))
-
 (comment) @comment @spell
 
 (test_operator) @operator
@@ -189,9 +186,6 @@
   (word) @variable.parameter)
 
 (number) @number
-
-((word) @number
-  (#lua-match? @number "^[0-9]+$"))
 
 (file_redirect
   (word) @string.special.path)
