@@ -186,9 +186,13 @@
 [
   (bare_symbol)
   (simple_symbol)
-  (delimited_symbol)
   (hash_key_symbol)
 ] @string.special.symbol
+
+(delimited_symbol
+  ":\"" @string.special.symbol
+  (string_content) @string.special.symbol
+  "\"" @string.special.symbol)
 
 (regex
   (string_content) @string.regexp)
