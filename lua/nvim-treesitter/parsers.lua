@@ -142,7 +142,7 @@ return {
   },
   brightscript = {
     install_info = {
-      revision = '55168264ea174085d2e91377a33f216190df2f51',
+      revision = '253fdfaa23814cb46c2d5fc19049fa0f2f62c6da',
       url = 'https://github.com/ajdelcimmuto/tree-sitter-brightscript',
     },
     maintainers = { '@ajdelcimmuto' },
@@ -338,7 +338,7 @@ return {
   },
   desktop = {
     install_info = {
-      revision = 'f5709fd5297676875aa6d636e52cff7039573cb0',
+      revision = 'bbcedf9a11cb6c5f7cd8fcc041301aa0c204bfc0',
       url = 'https://github.com/ValdezFOmar/tree-sitter-desktop',
     },
     maintainers = { '@ValdezFOmar' },
@@ -794,7 +794,7 @@ return {
   },
   gotmpl = {
     install_info = {
-      revision = '9e54fa38db26c556c2669492063324ef481c9d43',
+      revision = '226692db9da6cb9939284b1ed263a0fb82d26768',
       url = 'https://github.com/ngalaiko/tree-sitter-go-template',
     },
     maintainers = { '@qvalentin' },
@@ -906,7 +906,7 @@ return {
   helm = {
     install_info = {
       location = 'dialects/helm',
-      revision = '9e54fa38db26c556c2669492063324ef481c9d43',
+      revision = '226692db9da6cb9939284b1ed263a0fb82d26768',
       url = 'https://github.com/ngalaiko/tree-sitter-go-template',
     },
     maintainers = { '@qvalentin' },
@@ -1017,7 +1017,7 @@ return {
   },
   ini = {
     install_info = {
-      revision = 'bea223734aa9cea2c8793bf9098bd7fdef912f57',
+      revision = 'e4018b5176132b4f3c5d6e61cea383f42288d0f5',
       url = 'https://github.com/justinmk/tree-sitter-ini',
     },
     maintainers = { '@theHamsta' },
@@ -1058,7 +1058,7 @@ return {
   },
   javadoc = {
     install_info = {
-      revision = '2533affe83e57df9b0dbf7350cd73a84af9811b3',
+      revision = '5c6157fe1c44e843f739e11b41c48c5918ec8709',
       url = 'https://github.com/rmuir/tree-sitter-javadoc',
     },
     maintainers = { '@rmuir' },
@@ -1381,7 +1381,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = '834a0b01e98eaf4313dfd48778e20bef1738ff8f',
+      revision = '1f76a88b79e70222968a9f8185992c9bb5ddacf0',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     maintainers = { '@artagnon' },
@@ -1461,7 +1461,7 @@ return {
   },
   nu = {
     install_info = {
-      revision = '47d4b4f5369c0cae866724758ae88ef07e10e4f1',
+      revision = '64ba3f8f5f9c8bd21a79341f0957b453303a98b8',
       url = 'https://github.com/nushell/tree-sitter-nu',
     },
     maintainers = { '@abhisheksingh0x558' },
@@ -1635,7 +1635,7 @@ return {
   powershell = {
     filetype = 'ps1',
     install_info = {
-      revision = '17f0c1a6514d3b46e64df7b88f464c0bd85078a6',
+      revision = '7212f47716ced384ac012b2cc428fd9f52f7c5d4',
       url = 'https://github.com/airbus-cert/tree-sitter-powershell',
     },
     maintainers = { '@L2jLiga' },
@@ -2031,7 +2031,7 @@ return {
   },
   slint = {
     install_info = {
-      revision = '927f3e2f0213d0eea7f12c978c81067c3dc4289d',
+      revision = 'f2e4e5a7bccb177562de8f5b4fe49a5531c9f7ca',
       url = 'https://github.com/slint-ui/tree-sitter-slint',
     },
     maintainers = { '@hunger' },
@@ -2528,7 +2528,7 @@ return {
   },
   vimdoc = {
     install_info = {
-      revision = '5cb043a38ff04cadb6b8e6688aabbf34edd0c3e3',
+      revision = '570dc10aed5963546322e6c935e1125b9fd747bf',
       url = 'https://github.com/neovim/tree-sitter-vimdoc',
     },
     maintainers = { '@clason' },
@@ -2612,7 +2612,7 @@ return {
   },
   xresources = {
     install_info = {
-      revision = 'a96227aaa37e5f8e1a5888bfac2dcb31ad0bf1f1',
+      revision = '68240ae1beef503cfe0d1bc40f25b0fab71df8f5',
       url = 'https://github.com/ValdezFOmar/tree-sitter-xresources',
     },
     maintainers = { '@ValdezFOmar' },
