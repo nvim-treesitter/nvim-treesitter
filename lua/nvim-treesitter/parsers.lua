@@ -368,6 +368,15 @@ return {
     maintainers = { '@gbprod' },
     tier = 2,
   },
+  dingo = {
+    install_info = {
+      location = 'tree-sitter-dingo',
+      revision = '34a8f249478340e8e519d89368c50f5d20f74d26',
+      url = 'https://github.com/MadAppGang/dingo.nvim',
+    },
+    maintainers = { '@erudenko' },
+    tier = 3,
+  },
   disassembly = {
     install_info = {
       revision = '0229c0211dba909c5d45129ac784a3f4d49c243a',
