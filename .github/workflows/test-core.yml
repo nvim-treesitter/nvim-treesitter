@@ -22,7 +22,7 @@ jobs:
       NVIM: ${{ matrix.os == 'windows-latest' && 'nvim-win64\\bin\\nvim.exe' || 'nvim' }}
     steps:
       - uses: actions/checkout@v5
-      - uses: tree-sitter/setup-action/cli@v1
+      - uses: tree-sitter/setup-action/cli@v2
       - uses: ilammy/msvc-dev-cmd@v1
 
       - name: Install and prepare Neovim

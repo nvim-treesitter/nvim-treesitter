@@ -16,7 +16,7 @@ jobs:
       NVIM: "nvim"
     steps:
       - uses: actions/checkout@v5
-      - uses: tree-sitter/setup-action/cli@v1
+      - uses: tree-sitter/setup-action/cli@v2
 
       - name: Install and prepare Neovim
         env:
