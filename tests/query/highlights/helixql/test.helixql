@@ -120,3 +120,5 @@ QUERY testLiterals() =>
   b <- true
 //     ^ @boolean
   RETURN NONE
+
+// vim: set filetype=helixql:
