@@ -1,10 +1,34 @@
 (identifier) @variable.member
 
+(symfony_variable) @variable
+
 (constant) @constant
 
-(modifier_function) @function
+(symfony_function) @function.call
 
-(modifier_predefined) @function.builtin
+(symfony_method) @function.method.call
+
+[
+  (modifier_function)
+  (symfony_function)
+] @function
+
+[
+  (modifier_predefined)
+  (symfony_predefined_function)
+] @function.builtin
+
+[
+  (symfony_function_parameter)
+  (symfony_method_parameter)
+  (modifier_parameter)
+] @variable.parameter
+
+(symfony_function_parameter
+  (symfony_variable) @variable.parameter)
+
+(symfony_method_parameter
+  (symfony_variable) @variable.parameter)
 
 [
   (condition)
@@ -12,12 +36,26 @@
   (condition_else)
 ] @keyword.conditional
 
-(cobject) @type.builtin
+((condition
+  "[" @keyword.conditional)
+  (#set! "priority" 110))
+
+((condition
+  "]" @keyword.conditional)
+  (#set! "priority" 110))
 
 [
   "@import"
   "INCLUDE_TYPOSCRIPT"
 ] @keyword.import
+
+(condition_attribute) @tag.attribute
+
+(cobject) @type.builtin
+
+(symfony_built_in_variable) @variable.builtin
+
+(symfony_property) @variable.member
 
 [
   (comment)
@@ -26,22 +64,48 @@
 
 [
   (string)
-  (multiline_value)
+  (multiline_value_content)
+  (symfony_string)
 ] @string
+
+(reference_line
+  "=<" @operator)
+
+(deletion_line
+  ">" @operator)
+
+(copy_line
+  "<" @operator)
+
+(modification_line
+  ":=" @operator)
 
 [
   "="
-  ">"
-  "<"
-  ":="
-  "=<"
-  (condition_bool)
+  "."
+  "?."
+  (symfony_condition_operator)
+  (condition_bool_legacy)
+  (constant_null_coalescing)
 ] @operator
+
+(symfony_ternary_operator) @keyword.conditional.ternary
+
+((symfony_condition_operator) @keyword.operator
+  (#match? @keyword.operator "and|or|xor|not|not in|in|contains|starts with|ends with|matches"))
 
 "," @punctuation.delimiter
 
 [
   "("
   ")"
+  "["
+  "]"
   (block_punctuation)
 ] @punctuation.bracket
+
+(symfony_number) @number
+
+(symfony_boolean) @boolean
+
+(symfony_null) @constant.builtin

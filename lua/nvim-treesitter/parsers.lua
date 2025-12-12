@@ -2422,7 +2422,7 @@ return {
   },
   typoscript = {
     install_info = {
-      revision = '5d8fde870b0ded1f429ba5bb249a9d9f8589ff5f',
+      revision = 'e59069a4cc08b2dacccd40827fe971ca3c6821b7',
       url = 'https://github.com/Teddytrombone/tree-sitter-typoscript',
     },
     maintainers = { '@Teddytrombone' },
