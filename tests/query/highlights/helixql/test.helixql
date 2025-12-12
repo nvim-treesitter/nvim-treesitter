@@ -5,7 +5,7 @@ N::User {
 //  ^ @type.definition
   INDEX id: ID,
 //^ @keyword
-//        ^ @type.builtin
+//          ^ @type.builtin
   name: String,
 //^ @property
 //      ^ @type.builtin
@@ -97,7 +97,7 @@ QUERY followUser(fromId: ID, toId: ID) =>
 QUERY createMultipleUsers(names: [String]) =>
   FOR name IN names {
 //^ @keyword
-//       ^ @keyword
+//         ^ @keyword
     user <- AddN<User>({name: name})
   }
   RETURN NONE
