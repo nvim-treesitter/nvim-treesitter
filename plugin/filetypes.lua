@@ -20,6 +20,7 @@ local filetypes = {
   godot_resource = { 'gdresource' },
   haskell = { 'hs' },
   haskell_persistent = { 'haskellpersistent' },
+  helixql = { 'hx' },
   idris = { 'idris2' },
   ini = { 'confini', 'dosini' },
   janet_simple = { 'janet' },
