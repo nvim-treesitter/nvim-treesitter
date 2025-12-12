@@ -914,7 +914,7 @@ return {
   },
   helixql = {
     install_info = {
-      revision = 'f6c799534d46947204f6db962d0aae7b9e46d2cb',
+      revision = '259d2b68c56ae40ef7d190919ed49e0f17d1f3ee',
       url = 'https://github.com/benwoodward/tree-sitter-helixql',
     },
     maintainers = { '@benwoodward' },
