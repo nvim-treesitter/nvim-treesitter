@@ -123,7 +123,7 @@ ecma (queries only)[^ecma] | unstable | `HFIJL` | @steelsojka
 [haskell_persistent](https://github.com/MercuryTechnologies/tree-sitter-haskell-persistent) | unstable | `HF   ` | @lykahb
 [hcl](https://github.com/tree-sitter-grammars/tree-sitter-hcl) | unstable | `HFIJ ` | @MichaHoffmann
 [heex](https://github.com/connorlay/tree-sitter-heex) | unstable | `HFIJL` | @connorlay
-[helixql](https://github.com/benwoodward/tree-sitter-helixql) | unsupported | `HF   ` | @benwoodward
+[helixql](https://github.com/benwoodward/tree-sitter-helixql) | unstable | `HF   ` | @benwoodward
 [helm](https://github.com/ngalaiko/tree-sitter-go-template) | unstable | `HF JL` | @qvalentin
 [hjson](https://github.com/winston0410/tree-sitter-hjson) | unstable | `HFIJL` | @winston0410
 [hlsl](https://github.com/tree-sitter-grammars/tree-sitter-hlsl) | unstable | `HFIJL` | @theHamsta

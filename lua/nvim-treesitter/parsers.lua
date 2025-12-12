@@ -918,7 +918,7 @@ return {
       url = 'https://github.com/benwoodward/tree-sitter-helixql',
     },
     maintainers = { '@benwoodward' },
-    tier = 4,
+    tier = 2,
   },
   hjson = {
     install_info = {
