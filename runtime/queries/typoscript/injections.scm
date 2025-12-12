@@ -3,7 +3,7 @@
   .
   (multiline_value
     (multiline_value_content) @injection.content))
-  (#match? @_id "_CSS_DEFAULT_STYLE$")
+  (#lua-match? @_id "_CSS_DEFAULT_STYLE$")
   (#set! injection.language "css")
   (#set! injection.overlay "constant"))
 

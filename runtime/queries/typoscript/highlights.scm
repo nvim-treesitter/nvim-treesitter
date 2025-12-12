@@ -36,14 +36,6 @@
   (condition_else)
 ] @keyword.conditional
 
-((condition
-  "[" @keyword.conditional)
-  (#set! "priority" 110))
-
-((condition
-  "]" @keyword.conditional)
-  (#set! "priority" 110))
-
 [
   "@import"
   "INCLUDE_TYPOSCRIPT"
@@ -103,6 +95,12 @@
   "]"
   (block_punctuation)
 ] @punctuation.bracket
+
+(condition
+  "[" @keyword.conditional)
+
+(condition
+  "]" @keyword.conditional)
 
 (symfony_number) @number
 
