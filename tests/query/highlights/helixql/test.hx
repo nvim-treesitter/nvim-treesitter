@@ -1,0 +1,122 @@
+// Schema definitions
+// <- @comment
+N::User {
+// <- @keyword.directive
+//  ^ @type.definition
+  INDEX id: ID,
+//^ @keyword
+//        ^ @type.builtin
+  name: String,
+//^ @property
+//      ^ @type.builtin
+  email: String,
+  age: I32,
+//     ^ @type.builtin
+  created_at: Date DEFAULT NOW
+//            ^ @type.builtin
+//                 ^ @keyword
+//                         ^ @constant.builtin
+}
+
+E::Follows {
+// <- @keyword.directive
+  From: User,
+//^ @keyword.modifier
+  To: User,
+//^ @keyword.modifier
+  Properties: {
+//^ @keyword.modifier
+    since: Date
+  }
+}
+
+V::UserEmbedding {
+// <- @keyword.directive
+  user_id: ID,
+  embedding: [F32]
+}
+
+// Simple query
+QUERY getUser(userId: ID) =>
+// <- @keyword
+//    ^ @function
+//            ^ @variable.parameter
+  user <- N<User>(userId)
+//^ @variable
+//     ^ @operator
+//        ^ @keyword
+//          ^ @type
+  RETURN user
+//^ @keyword
+
+// Query with traversal
+QUERY getFollowers(userId: ID) =>
+  user <- N<User>(userId)
+  followers <- user::InE<Follows>::FromN
+//                   ^ @function.method
+//                                 ^ @function.method
+  RETURN followers
+
+// Query with filtering
+QUERY getAdults(minAge: I32) =>
+  users <- N<User>::WHERE(_::age::GTE(minAge))
+//                  ^ @keyword
+//                        ^ @variable.builtin
+//                                ^ @keyword.operator
+  RETURN users
+
+// Query with object return
+QUERY getUserStats(userId: ID) =>
+  user <- N<User>(userId)
+  followCount <- user::OutE<Follows>::COUNT
+//                                    ^ @keyword
+  RETURN {
+    userId: userId,
+//  ^ @property
+    followCount: followCount
+  }
+
+// Query with AddN
+QUERY createUser(name: String, email: String) =>
+  user <- AddN<User>({
+//        ^ @function.builtin
+    name: name,
+    email: email
+  })
+  RETURN user
+
+// Query with AddE
+QUERY followUser(fromId: ID, toId: ID) =>
+  from <- N<User>(fromId)
+  to <- N<User>(toId)
+  AddE<Follows>::From(from::ID)::To(to::ID)
+//^ @function.builtin
+  RETURN from
+
+// Query with FOR loop
+QUERY createMultipleUsers(names: [String]) =>
+  FOR name IN names {
+//^ @keyword
+//       ^ @keyword
+    user <- AddN<User>({name: name})
+  }
+  RETURN NONE
+//       ^ @constant.builtin
+
+// Vector search
+QUERY findSimilar(embedding: [F32], limit: I32) =>
+  results <- SearchV<UserEmbedding>(embedding, limit)
+//           ^ @function.builtin
+  RETURN results
+
+// Literals
+QUERY testLiterals() =>
+  str <- "hello world"
+//       ^ @string
+  num <- 42
+//       ^ @number
+  flt <- 3.14
+//       ^ @number.float
+  b <- true
+//     ^ @boolean
+  RETURN NONE
