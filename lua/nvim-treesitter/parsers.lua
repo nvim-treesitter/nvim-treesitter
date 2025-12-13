@@ -692,7 +692,7 @@ return {
   },
   gleam = {
     install_info = {
-      revision = 'f4d55f3c5b690d4afe8853da892bc290d96deb34',
+      revision = '0c0c63a07998767b22f0d2655f903611eca6acd0',
       url = 'https://github.com/gleam-lang/tree-sitter-gleam',
     },
     maintainers = { '@amaanq' },
