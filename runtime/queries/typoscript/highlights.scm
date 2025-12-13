@@ -73,9 +73,11 @@
 (symfony_ternary_operator) @keyword.conditional.ternary
 
 ((symfony_condition_operator) @keyword.operator
-  (#any-of? @keyword.operator "and" "or" "xor" "not" "not in" "in" "contains" "starts with" "ends with" "matches"))
+  (#any-of? @keyword.operator
+    "and" "or" "xor" "not" "not in" "in" "contains" "starts with" "ends with" "matches"))
 
 "," @punctuation.delimiter
+
 "." @punctuation.delimiter
 
 [
@@ -86,11 +88,11 @@
   (block_punctuation)
 ] @punctuation.bracket
 
-; (condition
-;   "[" @keyword.conditional)
-;
-; (condition
-;   "]" @keyword.conditional)
+(condition
+  "[" @keyword.conditional)
+
+(condition
+  "]" @keyword.conditional)
 
 (symfony_number) @number
 

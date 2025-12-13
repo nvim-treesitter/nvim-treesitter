@@ -5,5 +5,7 @@
 ] @fold
 
 (import_legacy)+ @fold
+
 (import)+ @fold
+
 (comment)+ @fold
