@@ -16,6 +16,7 @@ Language | Tier | Queries | Maintainer
 [agda](https://github.com/tree-sitter/tree-sitter-agda) | unstable | `HF J ` | @Decodetalkers
 [angular](https://github.com/dlvandenberg/tree-sitter-angular) | unstable | `HFIJL` | @dlvandenberg
 [apex](https://github.com/aheber/tree-sitter-sfapex) | unstable | `HF JL` | @aheber, @xixiafinland
+[apx](https://github.com/StackApe/tree-sitter-apx) | unstable | `     ` | @StackApe
 [arduino](https://github.com/tree-sitter-grammars/tree-sitter-arduino) | unstable | `HFIJL` | @ObserverOfTime
 [asm](https://github.com/RubixDev/tree-sitter-asm) | unstable | `H  J ` | @RubixDev
 [astro](https://github.com/virchau13/tree-sitter-astro) | unstable | `HFIJL` | @virchau13
