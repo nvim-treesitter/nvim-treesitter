@@ -76,9 +76,16 @@
   (#any-of? @keyword.operator
     "and" "or" "xor" "not" "not in" "in" "contains" "starts with" "ends with" "matches"))
 
-"," @punctuation.delimiter
+[
+  ","
+  "."
+] @punctuation.delimiter
 
-"." @punctuation.delimiter
+(symfony_property_access
+  "." @operator)
+
+(symfony_method_call
+  "." @operator)
 
 [
   "("
@@ -89,10 +96,10 @@
 ] @punctuation.bracket
 
 (condition
-  "[" @keyword.conditional)
+  "[" @punctuation.special)
 
 (condition
-  "]" @keyword.conditional)
+  "]" @punctuation.special)
 
 (symfony_number) @number
 
