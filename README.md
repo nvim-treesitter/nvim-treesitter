@@ -10,7 +10,7 @@ The `nvim-treesitter` plugin provides
 For details on these and how to help improving them, see [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 >[!CAUTION]
-> This is a full, incompatible, rewrite. If you can't or don't want to update, check out the [`master` branch](https://github.com/nvim-treesitter/nvim-treesitter/blob/master/README.md) (which is locked but will remain available for backward compatibility).
+> This is a full, incompatible, rewrite. If you can't or don't want to update, specify the [`master` branch](https://github.com/nvim-treesitter/nvim-treesitter/blob/master/README.md) (which is locked but will remain available for backward compatibility).
 
 # Quickstart
 
@@ -18,7 +18,7 @@ For details on these and how to help improving them, see [CONTRIBUTING.md](./CON
 
 - Neovim 0.11.0 or later (nightly)
 - `tar` and `curl` in your path
-- [`tree-sitter-cli`](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) (0.25.0 or later)
+- [`tree-sitter-cli`](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) (0.26.1 or later)
 - a C compiler in your path (see <https://docs.rs/cc/latest/cc/#compile-time-requirements>)
 
 >[!IMPORTANT]
@@ -38,7 +38,6 @@ It is strongly recommended to automate this; e.g., using [lazy.nvim](https://git
 require('lazy').setup({
   'nvim-treesitter/nvim-treesitter',
   lazy = false,
-  branch = 'main',
   build = ':TSUpdate'
 })
 ```
@@ -46,16 +45,13 @@ require('lazy').setup({
 >[!IMPORTANT]
 > This plugin does not support lazy-loading.
 
->[!IMPORTANT]
-> Make sure to specify the `main` branch since (for now) the default branch is [`master`](https://github.com/nvim-treesitter/nvim-treesitter/blob/master/README.md).
-
 ## Setup
 
-`nvim-treesitter` can be configured by calling `setup`. The following snippet lists the available options and their default values. **You do not need to call `setup` for `nvim-treesitter` to work using default values.**
+`nvim-treesitter` can be configured by calling `setup`. **You do not need to call `setup` for `nvim-treesitter` to work using default values.**
 
 ```lua
 require'nvim-treesitter'.setup {
-  -- Directory to install parsers and queries to
+  -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
   install_dir = vim.fn.stdpath('data') .. '/site'
 }
 ```
@@ -100,8 +96,8 @@ vim.api.nvim_create_autocmd('FileType', {
 Treesitter-based folding is provided by Neovim. To enable it, put the following in your `ftplugin` or `FileType` autocommand:
 
 ```lua
-vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-vim.wo.foldmethod = 'expr'
+vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.wo[0][0].foldmethod = 'expr'
 ```
 
 ## Indentation
@@ -141,7 +137,7 @@ callback = function()
       branch = 'develop', -- only needed if different from default branch
       location = 'parser', -- only needed if the parser is in subdirectory of a "monorepo"
       generate = true, -- only needed if repo does not contain pre-generated `src/parser.c`
-      generate_from_json = false, -- only needed if repo does not contain `src/grammar.json` either -- WARNING: requires `node` for tree-sitter-cli <0.26.0!
+      generate_from_json = false, -- only needed if repo does not contain `src/grammar.json` either
       queries = 'queries/neovim', -- also install queries from given directory
     },
   }
@@ -173,7 +169,7 @@ If Neovim does not detect your language's filetype by default, you can use [Neov
 3. Start `nvim` and `:TSInstall zimbu`.
 
 >[!IMPORTANT]
-> Parsers using external scanner need to be written in C.
+> If the parser requires an external scanner, this must be written in C.
 
 ### Modifying parsers
 
