@@ -34,6 +34,14 @@ return {
     maintainers = { '@aheber', '@xixiafinland' },
     tier = 2,
   },
+  apx = {
+    install_info = {
+      revision = 'b4998766b748d9559a5d1752b76b2719721bd096',
+      url = 'https://github.com/StackApe/tree-sitter-apx',
+    },
+    maintainers = { '@StackApe' },
+    tier = 2,
+  },
   arduino = {
     install_info = {
       revision = '53eb391da4c6c5857f8defa2c583c46c2594f565',
