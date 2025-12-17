@@ -1372,7 +1372,7 @@ return {
   },
   meson = {
     install_info = {
-      revision = '280b6e59186f18528bab1567f5cc43b78b9cd881',
+      revision = 'd4fa3c7260d1537ac5183740b9338373a673d5c0',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-meson',
     },
     maintainers = { '@Decodetalkers' },
