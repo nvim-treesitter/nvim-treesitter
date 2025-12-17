@@ -15,7 +15,7 @@ jobs:
     env:
       NVIM: "nvim"
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: tree-sitter/setup-action/cli@v2
 
       - name: Install and prepare Neovim
@@ -31,7 +31,7 @@ jobs:
         run: curl -fL https://github.com/ribru17/ts_query_ls/releases/latest/download/ts_query_ls-x86_64-unknown-linux-gnu.tar.gz | tar -xz
 
       - name: Clone textobjects
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           repository: nvim-treesitter/nvim-treesitter-textobjects
           ref: main
@@ -44,7 +44,7 @@ jobs:
 
       - name: Clone context
         if: always()
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           repository: nvim-treesitter/nvim-treesitter-context
           ref: master
