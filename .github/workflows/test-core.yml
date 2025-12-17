@@ -21,7 +21,7 @@ jobs:
     env:
       NVIM: ${{ matrix.os == 'windows-latest' && 'nvim-win64\\bin\\nvim.exe' || 'nvim' }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: tree-sitter/setup-action/cli@v2
       - uses: ilammy/msvc-dev-cmd@v1
 

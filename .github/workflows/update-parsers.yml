@@ -17,7 +17,7 @@ jobs:
     name: Update parsers tier ${{ matrix.tier }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           ref: main
 
@@ -42,7 +42,7 @@ jobs:
         run: ./scripts/update-parsers.lua --tier=${{ matrix.tier }}
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           add-paths: lua/nvim-treesitter/parsers.lua
           token: ${{ steps.app-token.outputs.token }}
