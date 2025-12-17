@@ -1,5 +1,13 @@
 (block) @indent.begin
 
-"}" @indent.branch @indent.end
+"}" @indent.end
 
-(comment) @indent.ignore
+[
+  "{"
+  "}"
+] @indent.branch
+
+[
+  (comment)
+  (multiline_value)
+] @indent.ignore
