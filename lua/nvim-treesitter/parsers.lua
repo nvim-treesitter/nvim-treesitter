@@ -441,7 +441,7 @@ return {
   },
   editorconfig = {
     install_info = {
-      revision = '783a30a216b982a6827b2abe52a4edbd909cb26a',
+      revision = 'c571889b7c875690b78f79c4304cbf267e130818',
       url = 'https://github.com/ValdezFOmar/tree-sitter-editorconfig',
     },
     maintainers = { '@ValdezFOmar' },
@@ -1372,7 +1372,7 @@ return {
   },
   meson = {
     install_info = {
-      revision = '280b6e59186f18528bab1567f5cc43b78b9cd881',
+      revision = 'd4fa3c7260d1537ac5183740b9338373a673d5c0',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-meson',
     },
     maintainers = { '@Decodetalkers' },
@@ -1381,7 +1381,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = '837b0cc2c7b8ae20fb1b582eb507873c6e588e01',
+      revision = '6b15a0164c0aeed3009e9feff3dc38d54e91cef9',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     maintainers = { '@artagnon' },
@@ -1576,7 +1576,7 @@ return {
   },
   phpdoc = {
     install_info = {
-      revision = '488198e61f49fc74ee54069a4126b556665a57cc',
+      revision = '12d50307e6c02e5f4f876fa6cf2edea1f7808c0d',
       url = 'https://github.com/claytonrcarter/tree-sitter-phpdoc',
     },
     maintainers = { '@mikehaertl' },
@@ -2246,7 +2246,7 @@ return {
   },
   t32 = {
     install_info = {
-      revision = 'f61c5f112af4aa5cc674f0197e00fa358aab7bbb',
+      revision = '5b5e4336731bda5ea2e6b78b6a2d9e7a89032b75',
       url = 'https://github.com/xasc/tree-sitter-t32',
     },
     maintainers = { '@xasc' },
@@ -2504,7 +2504,7 @@ return {
   },
   vhdl = {
     install_info = {
-      revision = '3d8d72fd2deb27d7bcebf927c4e4bf050fbaf4ba',
+      revision = '7ae08deb5d1641aa57111342218ca1e1b3a5d539',
       url = 'https://github.com/jpt13653903/tree-sitter-vhdl',
     },
     maintainers = { '@jpt13653903' },
