@@ -2155,8 +2155,7 @@ return {
   },
   strace = {
     install_info = {
-      generate = true,
-      revision = '776e96ca962a58cd6858e2c5a2dd4e7e941dbcd4',
+      revision = 'ac874ddfcc08d689fee1f4533789e06d88388f29',
       url = 'https://github.com/sigmaSd/tree-sitter-strace',
     },
     maintainers = { '@amaanq' },
