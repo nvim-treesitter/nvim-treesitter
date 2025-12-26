@@ -1,7 +1,10 @@
-{ pkgs, stdenv }:
 # NOTE: This file is for testing queries. If evaluated with nix, this will probably error.
-{ 
+{ pkgs, stdenv }: let
+  match = builtins.match;
+in { 
   regex = builtins.match "^.*[{](.+)[}].*$" "blahblah {something} blahblah" [ "something" ];
+
+  regex2 = match "^.*[{](.+)[}].*$" "blahblah {something} blahblah" [ "something" ];
 
   drv1 = stdenv.mkDerivation {
     buildPhase = "mkdir $out";
@@ -23,38 +26,43 @@
     echo "bar" > $out/foo.txt
   '';
 
-  drv4 = pkgs.writeShellScriptBin "hello" ''
+  drv4 = pkgs.runCommandNoCC "foo-bar" {} ''
+    mkir $out
+    echo "bar" > $out/foo.txt
+  '';
+
+  drv5 = pkgs.writeShellScriptBin "hello" ''
     echo "Hello world!"
   '';
 
-  drv5 = pkgs.writeFishBin "hello" ''
+  drv6 = pkgs.writeFishBin "hello" ''
     echo "Hello world!"
   '';
 
-  drv6 = pkgs.writeHaskellBin "hello" ''
+  drv7 = pkgs.writeHaskellBin "hello" ''
     main :: IO ()
     main = putStrLn "Hello world!"
   '';
 
-  drv7 = pkgs.writeJSBin "hello" ''
+  drv8 = pkgs.writeJSBin "hello" ''
     console.log('Hello world!');
   '';
 
-  drv8 = pkgs.writePerlBin "hello" ''
+  drv9 = pkgs.writePerlBin "hello" ''
     print("Hello world!\n");
   '';
 
-  drv9 = pkgs.writePythonBin "hello" ''
+  drv10 = pkgs.writePythonBin "hello" ''
     print("Hello world!");
   '';
 
-  drv10 = pkgs.writeRustBin "hello" ''
+  drv11 = pkgs.writeRustBin "hello" ''
     fn main() {
       println!("Hello world!");
     }
   '';
 
-  drv11 = {
+  drv12 = {
     nodes = null;
     testScript = ''
       print("Hello world!");
