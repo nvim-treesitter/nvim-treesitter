@@ -85,7 +85,9 @@ local function join(max_jobs, tasks)
     end
 
     for i = 1, max_jobs do
-      tasks[i]():await(cb)
+      if tasks[i] then
+        tasks[i]():await(cb)
+      end
     end
   end)
 end
@@ -467,8 +469,8 @@ end
 
 --- Reload the parser table and user modifications in case of update
 local function reload_parsers()
-  ---@diagnostic disable-next-line:no-unknown
   package.loaded['nvim-treesitter.parsers'] = nil
+  ---@diagnostic disable-next-line:duplicate-require
   parsers = require('nvim-treesitter.parsers')
   vim.api.nvim_exec_autocmds('User', { pattern = 'TSUpdate' })
 end
