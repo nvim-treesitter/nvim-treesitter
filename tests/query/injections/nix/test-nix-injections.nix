@@ -1,7 +1,7 @@
 # NOTE: This file is for testing queries. If evaluated with nix, this will probably error.
-{ pkgs, stdenv }: let
+{ pkgs, stdenv, lib }: let
   match = builtins.match;
-in { 
+in {
   regex = builtins.match "^.*[{](.+)[}].*$" "blahblah {something} blahblah" [ "something" ];
 
   regex2 = match "^.*[{](.+)[}].*$" "blahblah {something} blahblah" [ "something" ];
@@ -12,7 +12,7 @@ in {
       echo "bar" > $out/foo.txt
     '';
   };
-  
+
   drv2 = pkgs.writeShellApplication {
     name = "shellApp";
     buildInputs = [];
@@ -62,7 +62,7 @@ in {
     }
   '';
 
-  drv12 = {
+  drv12 = lib.nixos.runTest {
     nodes = null;
     testScript = ''
       print("Hello world!");

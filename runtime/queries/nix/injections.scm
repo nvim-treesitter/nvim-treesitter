@@ -251,17 +251,35 @@
   (#lua-match? @_func "^%a*%.*writeRust%a*$")
   (#set! injection.combined))
 
-; (nixosTest) testScript
-((binding
-  attrpath: (attrpath) @_attr_name
-  (#eq? @_attr_name "nodes"))
-  (binding
-    attrpath: (attrpath) @_func_name
-    (#eq? @_func_name "testScript")
+; (runTest) testScript
+(apply_expression
+  function: (_) @_func
+  argument: (_
+    (_)*
     (_
-      (string_fragment) @injection.content
-      (#set! injection.language "python")))
-  (#set! injection.combined))
+      (binding
+        attrpath: (attrpath) @_func_name
+        expression: (_
+          (string_fragment) @injection.content
+          (#set! injection.language "python")))
+      (#eq? @_func_name "testScript")
+      (#lua-match? @_func "^.*%.*runTest$")
+      (#set! injection.combined))))
+
+; (nixosTest) testScript
+(apply_expression
+  function: (_) @_func
+  argument: (_
+    (_)*
+    (_
+      (binding
+        attrpath: (attrpath) @_func_name
+        expression: (_
+          (string_fragment) @injection.content
+          (#set! injection.language "python")))
+      (#eq? @_func_name "testScript")
+      (#lua-match? @_func "^.*%.*nixosTest$")
+      (#set! injection.combined))))
 
 ; home-manager Neovim plugin config
 (attrset_expression
