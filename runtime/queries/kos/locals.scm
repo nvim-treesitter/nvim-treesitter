@@ -20,7 +20,7 @@
   variable: (identifier) @local.definition.var)
 
 (parameter
-  parameter: (identifier) @local.definition.var)
+  parameter: (identifier) @local.definition.parameter)
 
 (import
   module: (identifier) @local.definition.import)
