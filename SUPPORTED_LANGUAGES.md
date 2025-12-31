@@ -21,7 +21,7 @@ Language | Tier | Queries | Maintainer
 [astro](https://github.com/virchau13/tree-sitter-astro) | unstable | `HFIJL` | @virchau13
 [authzed](https://github.com/mleonidas/tree-sitter-authzed) | unstable | `H  J ` | @mattpolzin
 [awk](https://github.com/Beaglefoot/tree-sitter-awk) | unstable | `H  J ` | 
-[bash](https://github.com/tree-sitter/tree-sitter-bash) | unstable | `HF JL` | @TravonteD
+[bash](https://github.com/tree-sitter/tree-sitter-bash) | unstable | `HFIJL` | @TravonteD
 [bass](https://github.com/vito/tree-sitter-bass) | unstable | `HFIJL` | @amaanq
 [beancount](https://github.com/polarmutex/tree-sitter-beancount) | unstable | `HF J ` | @polarmutex
 [bibtex](https://github.com/latex-lsp/tree-sitter-bibtex) | unstable | `HFIJ ` | @theHamsta, @clason
