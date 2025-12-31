@@ -211,6 +211,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [po](https://github.com/tree-sitter-grammars/tree-sitter-po) | unstable | `HF J ` | @amaanq
 [pod](https://github.com/tree-sitter-perl/tree-sitter-pod) | unstable | `H    ` | @RabbiVeesh, @LeoNerd
 [poe_filter](https://github.com/tree-sitter-grammars/tree-sitter-poe-filter)[^poe_filter] | unstable | `HFIJ ` | @ObserverOfTime
+[polar](https://github.com/osohq/tree-sitter-polar)[^polar] | unstable | `H    ` | @arusahni
 [pony](https://github.com/tree-sitter-grammars/tree-sitter-pony) | unstable | `HFIJL` | @amaanq, @mfelsche
 [powershell](https://github.com/airbus-cert/tree-sitter-powershell) | unstable | `HFIJL` | @L2jLiga
 [printf](https://github.com/tree-sitter-grammars/tree-sitter-printf) | unstable | `H    ` | @ObserverOfTime
@@ -356,6 +357,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [^php]: PHP with embedded HTML
 [^php_only]: PHP without embedded HTML
 [^poe_filter]: Path of Exile item filter
+[^polar]: Polar Authorization Language for Oso Cloud
 [^properties]: Java properties files
 [^query]: Tree-sitter query language
 [^sflog]: Salesforce debug log

@@ -1640,6 +1640,15 @@ return {
     readme_note = 'Path of Exile item filter',
     tier = 2,
   },
+  polar = {
+    install_info = {
+      url = 'https://github.com/osohq/tree-sitter-polar',
+      revision = 'b44da606fd7e095f2a17bfea49085635f2a6c3fb',
+    },
+    maintainers = { '@arusahni' },
+    tier = 2,
+    readme_note = 'Polar Authorization Language for Oso Cloud',
+  },
   pony = {
     install_info = {
       revision = '73ff874ae4c9e9b45462673cbc0a1e350e2522a7',
