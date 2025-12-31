@@ -76,6 +76,8 @@
 (unary_expression
   operator: _ @operator)
 
+"=" @operator
+
 [
   "and"
   "not"
