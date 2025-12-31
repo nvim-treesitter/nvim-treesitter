@@ -1187,6 +1187,14 @@ return {
     maintainers = { '@OXY2DEV' },
     tier = 2,
   },
+  kos = {
+    install_info = {
+      revision = 'e4cec3a376c051199faea0ae27d0787b93fd2b0f',
+      url = 'https://github.com/kos-lang/tree-sitter-kos',
+    },
+    maintainers = { '@cdragan' },
+    tier = 2,
+  },
   kotlin = {
     install_info = {
       revision = '57fb4560ba8641865bc0baa6b3f413b236112c4c',
