@@ -99,5 +99,29 @@ fun name(arg1,
     #                              ^ number
     #                                ^ operator
     #                                  ^ variable
+    for const elem in arg1 {
+    # ^ keyword.repeat
+    #   ^ keyword
+    #         ^ variable
+    #              ^ keyword.repeat
+    #                 ^ variable
+    #                      ^ punctuation.bracket
+        if elem {
+    #   ^ keyword.conditional
+    #      ^ variable
+    #           ^ punctuation.bracket
+            continue
+    #       ^ keyword.repeat
+        }
+    #   ^ punctuation.bracket
+        else {
+    #   ^ keyword.conditional
+    #        ^ punctuation.bracket
+            break
+    #       ^ keyword.repeat
+        }
+    #   ^ punctuation.bracket
+    }
+    # <- punctuation.bracket
 }
 # <- punctuation.bracket

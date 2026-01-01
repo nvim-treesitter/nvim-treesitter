@@ -8,13 +8,12 @@
 
 (property_identifier) @property
 
-(string_literal) @string
-
-(string_literal_begin) @string
-
-(string_literal_continuation) @string
-
-(string_literal_end) @string
+[
+  (string_literal)
+  (string_literal_begin)
+  (string_literal_continuation)
+  (string_literal_end)
+] @string
 
 [
   "case"
@@ -27,6 +26,8 @@
 "import" @keyword.import
 
 [
+  (break_statement)
+  (continue_statement)
   "for"
   "loop"
   "repeat"
@@ -61,9 +62,7 @@
   (line)
   "assert"
   ;"async"
-  (break_statement)
   "const"
-  (continue_statement)
   "do"
   "extends"
   (fallthrough_statement)
