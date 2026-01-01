@@ -1,5 +1,5 @@
 #!/usr/bin/env kos
-# ^ comment
+# ^ keyword.directive
 public var item = 1;
 # ^ keyword
 #      ^ keyword
