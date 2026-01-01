@@ -25,7 +25,6 @@ local filetypes = {
   janet_simple = { 'janet' },
   javascript = { 'javascriptreact', 'ecma', 'ecmascript', 'jsx', 'js' },
   json = { 'jsonc' },
-  kos = { 'kos' },
   glimmer_javascript = { 'javascript.glimmer' },
   latex = { 'tex' },
   linkerscript = { 'ld' },
