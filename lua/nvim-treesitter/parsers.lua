@@ -1914,9 +1914,9 @@ return {
     maintainers = { '@Hubro' },
     tier = 2,
   },
-  robots = {
+  robots_txt = {
     install_info = {
-      revision = '8e3a4205b76236bb6dbebdbee5afc262ce38bb62',
+      revision = '0c066107e3548de79316a6a4ec771e2f7cf7c468',
       url = 'https://github.com/opa-oz/tree-sitter-robots-txt',
     },
     maintainers = { '@opa-oz' },
