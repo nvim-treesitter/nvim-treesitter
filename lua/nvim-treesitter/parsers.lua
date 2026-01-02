@@ -1025,7 +1025,7 @@ return {
   },
   inko = {
     install_info = {
-      revision = 'v0.4.0',
+      revision = '20e2842680dd0d47dd2ee976bc320e4399f65fe1',
       url = 'https://github.com/inko-lang/tree-sitter-inko',
     },
     maintainers = { '@yorickpeterse' },
@@ -1754,7 +1754,7 @@ return {
   },
   python = {
     install_info = {
-      revision = 'v0.25.0',
+      revision = '293fdc02038ee2bf0e2e206711b69c90ac0d413f',
       url = 'https://github.com/tree-sitter/tree-sitter-python',
     },
     maintainers = { '@stsewd', '@theHamsta' },
@@ -2578,7 +2578,7 @@ return {
   },
   wit = {
     install_info = {
-      revision = 'v1.2.0',
+      revision = 'a80c1f47baa5bfb13e2b5f49aa5304e3dab94948',
       url = 'https://github.com/bytecodealliance/tree-sitter-wit',
     },
     maintainers = { '@mkatychev' },
@@ -2676,7 +2676,7 @@ return {
   },
   zsh = {
     install_info = {
-      revision = 'v0.52.1',
+      revision = '770c961e3c4fe94ed4538ca9cb09322fce10cb37',
       url = 'https://github.com/georgeharker/tree-sitter-zsh',
     },
     maintainers = { '@georgeharker' },
