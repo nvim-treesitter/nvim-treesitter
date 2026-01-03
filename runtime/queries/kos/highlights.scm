@@ -132,3 +132,6 @@
 
 (class_decl
   name: (identifier) @type)
+
+(invocation
+  (identifier) @function.call)
