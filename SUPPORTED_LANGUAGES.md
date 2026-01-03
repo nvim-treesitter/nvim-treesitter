@@ -28,6 +28,7 @@ Language | Tier | Queries | Maintainer
 [bitbake](https://github.com/tree-sitter-grammars/tree-sitter-bitbake) | unstable | `HFIJL` | @amaanq
 [blade](https://github.com/EmranMR/tree-sitter-blade) | unstable | `HFIJ ` | @calebdw
 [bp](https://github.com/ambroisie/tree-sitter-bp)[^bp] | unstable | `HFIJL` | @ambroisie
+[bpftrace](https://github.com/sgruszka/tree-sitter-bpftrace) | unstable | `H  J ` | @sgruszka
 [brightscript](https://github.com/ajdelcimmuto/tree-sitter-brightscript) | unstable | `HFIJ ` | @ajdelcimmuto
 [c](https://github.com/tree-sitter/tree-sitter-c) | unstable | `HFIJL` | @amaanq
 [c3](https://github.com/c3lang/tree-sitter-c3) | unstable | `HFIJ ` | @cbuttner
