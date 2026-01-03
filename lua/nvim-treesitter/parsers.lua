@@ -93,11 +93,11 @@ return {
   },
   beancount = {
     install_info = {
-      revision = '07bfb0ec6d9e255d776cdd3362128364d2b0bb2f',
+      revision = '653cce316fbff8d212a2488ae13df648efb542a4',
       url = 'https://github.com/polarmutex/tree-sitter-beancount',
     },
     maintainers = { '@polarmutex' },
-    tier = 3,
+    tier = 2,
   },
   bibtex = {
     install_info = {
