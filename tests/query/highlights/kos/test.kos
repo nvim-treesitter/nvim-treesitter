@@ -8,6 +8,15 @@ public var item = 1;
 #                 ^ number
 #                  ^ punctuation.delimiter
 
+# hash comment
+# <- spell
+
+// slash comment
+# <- spell
+
+/* block comment */
+# <- spell
+
 fun name(arg1,
 # ^ keyword.function
 #   ^ function
@@ -125,3 +134,9 @@ fun name(arg1,
     # <- punctuation.bracket
 }
 # <- punctuation.bracket
+
+name(42)
+# <- function.call
+#   ^ punctuation.bracket
+#    ^ number
+#      ^ punctuation.bracket
