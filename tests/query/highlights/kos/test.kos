@@ -9,13 +9,13 @@ public var item = 1;
 #                  ^ punctuation.delimiter
 
 # hash comment
-# <- spell
+# <- @comment @spell
 
 // slash comment
-# <- spell
+# <- @comment @spell
 
 /* block comment */
-# <- spell
+# <- @comment @spell
 
 fun name(arg1,
 # ^ keyword.function
