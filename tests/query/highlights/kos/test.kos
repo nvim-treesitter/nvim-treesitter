@@ -140,3 +140,10 @@ name(42)
 #   ^ punctuation.bracket
 #    ^ number
 #      ^ punctuation.bracket
+
+name.name()
+# <- variable
+#   ^ punctuation.delimiter
+#    ^ function.method.call
+#        ^ punctuation.bracket
+#         ^ punctuation.bracket

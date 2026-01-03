@@ -135,3 +135,7 @@
 
 (invocation
   (identifier) @function.call)
+
+(invocation
+  (refinement
+    property: (property_identifier) @function.method.call))
