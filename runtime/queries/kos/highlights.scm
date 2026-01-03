@@ -1,6 +1,6 @@
 (hash_bang) @keyword.directive
 
-(comment) @comment
+(comment) @comment @spell
 
 (number) @number
 
