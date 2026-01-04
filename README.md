@@ -32,10 +32,10 @@ For details on these and how to help improving them, see [CONTRIBUTING.md](./CON
 You can install `nvim-treesitter` with your favorite package manager (or using the native `package` feature of vim, see `:h packages`).
 
 This plugin is only guaranteed to work with specific versions of language parsers** (as specified in the `parser.lua` table). **When upgrading the plugin, you must make sure that all installed parsers are updated to the latest version** via `:TSUpdate`.
-It is strongly recommended to automate this; e.g., using [lazy.nvim](https://github.com/folke/lazy.nvim)
+It is strongly recommended to automate this; e.g., using the following spec with [lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
-require('lazy').setup({
+{
   'nvim-treesitter/nvim-treesitter',
   lazy = false,
   build = ':TSUpdate'
