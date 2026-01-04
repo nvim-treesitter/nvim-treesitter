@@ -21,15 +21,15 @@ fun name(arg1,
 # ^ keyword.function
 #   ^ function
 #       ^ punctuation.bracket
-#        ^ variable
+#        ^ variable.parameter
 #            ^ punctuation.delimiter
          arg2 = "default",
-#        ^ variable
+#        ^ variable.parameter
 #             ^ operator
 #               ^ string
 #                        ^ punctuation.delimiter
          arg3...)
-#        ^ variable
+#        ^ variable.parameter
 #            ^ operator
 #               ^ punctuation.bracket
 {
@@ -147,3 +147,37 @@ name.name()
 #    ^ function.method.call
 #        ^ punctuation.bracket
 #         ^ punctuation.bracket
+
+print("hello \(123 + var) world \(true)")
+# <- function.call
+#    ^ punctuation.bracket
+#     ^ string
+#            ^ punctuation.special
+#              ^ number
+#                  ^ operator
+#                    ^ variable
+#                       ^ punctuation.special
+#                        ^ string
+#                               ^ punctuation.special
+#                                 ^ boolean
+#                                     ^ punctuation.special
+#                                       ^ punctuation.bracket
+
+[] -> each((x,_,y) => x + y)
+# <- punctuation.bracket
+#^ punctuation.bracket
+#  ^ operator
+#     ^ function.call
+#         ^ punctuation.bracket
+#          ^ punctuation.bracket
+#           ^ variable.parameter
+#            ^ punctuation.delimiter
+#             ^ character.special
+#              ^ punctuation.delimiter
+#               ^ variable.parameter
+#                ^ punctuation.bracket
+#                  ^ keyword.function
+#                     ^ variable
+#                       ^ operator
+#                         ^ variable
+#                          ^ punctuation.bracket

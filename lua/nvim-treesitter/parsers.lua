@@ -1189,7 +1189,7 @@ return {
   },
   kos = {
     install_info = {
-      revision = '5f11d41b3150b0837e8b3964151ebb7fc4f367e9',
+      revision = '03b261c1a78b71c38cf4616497f253c4a4ce118b',
       url = 'https://github.com/kos-lang/tree-sitter-kos',
     },
     maintainers = { '@cdragan' },
