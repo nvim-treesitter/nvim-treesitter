@@ -122,7 +122,7 @@ These queries can be used to look up definitions and references to identifiers i
 
 ## Adding custom languages
 
-If you have a parser that is not on the list of supported languages (either as a repository on Github or in a local directory), you can add it manually for use by `nvim-treesitter` as follows:
+If you have a parser that is not on the list of supported languages (either as a repository on GitHub or GitLab, or in a local directory), you can add it manually for use by `nvim-treesitter` as follows:
 
 1. Add the following snippet in a `User TSUpdate` autocommand:
 
