@@ -39,7 +39,7 @@ It is strongly recommended to automate this; e.g., using the following spec with
   'nvim-treesitter/nvim-treesitter',
   lazy = false,
   build = ':TSUpdate'
-})
+}
 ```
 
 >[!IMPORTANT]
