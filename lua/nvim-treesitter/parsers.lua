@@ -2560,6 +2560,14 @@ return {
     requires = { 'html_tags' },
     tier = 2,
   },
+  wat = {
+    install_info = {
+      revision = '357bbe6053f261b205f5835a87a6ae094226cc57',
+      url = 'https://github.com/g-plane/tree-sitter-wat',
+    },
+    maintainers = { '@g-plane' },
+    tier = 2,
+  },
   wgsl = {
     install_info = {
       revision = '40259f3c77ea856841a4e0c4c807705f3e4a2b65',

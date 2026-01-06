@@ -322,6 +322,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [vimdoc](https://github.com/neovim/tree-sitter-vimdoc) | unstable | `H  J ` | @clason
 [vrl](https://github.com/belltoy/tree-sitter-vrl) | unstable | `HFIJL` | @belltoy
 [vue](https://github.com/tree-sitter-grammars/tree-sitter-vue) | unstable | `HFIJ ` | @WhyNotHugo, @lucario387
+[wat](https://github.com/g-plane/tree-sitter-wat) | unstable | `HF   ` | @g-plane
 [wgsl](https://github.com/szebniok/tree-sitter-wgsl) | unstable | `HFIJ ` | @szebniok
 [wgsl_bevy](https://github.com/tree-sitter-grammars/tree-sitter-wgsl-bevy) | unstable | `HFI  ` | @theHamsta
 [wing](https://github.com/winglang/tree-sitter-wing) | unstable | `HF JL` | @gshpychka, @MarkMcCulloh
