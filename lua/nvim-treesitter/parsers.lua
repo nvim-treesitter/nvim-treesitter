@@ -447,6 +447,14 @@ return {
     maintainers = { '@ValdezFOmar' },
     tier = 2,
   },
+  edf = {
+    install_info = {
+      revision = 'c983376fc85491d06b7c2b7fdd945bc157c414ed',
+      url = 'https://github.com/ph1losof/tree-sitter-edf',
+    },
+    maintainers = { '@ph1losof' },
+    tier = 2,
+  },
   eds = {
     install_info = {
       revision = '26d529e6cfecde391a03c21d1474eb51e0285805',
