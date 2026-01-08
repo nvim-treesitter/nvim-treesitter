@@ -140,6 +140,14 @@ return {
     readme_note = 'Android Blueprint',
     tier = 2,
   },
+  bpftrace = {
+    install_info = {
+      revision = '9cdfa285bb4fd3abc74cce6e2fb46f381feca987',
+      url = 'https://github.com/sgruszka/tree-sitter-bpftrace',
+    },
+    maintainers = { '@sgruszka' },
+    tier = 2,
+  },
   brightscript = {
     install_info = {
       revision = '253fdfaa23814cb46c2d5fc19049fa0f2f62c6da',
