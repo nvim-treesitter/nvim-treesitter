@@ -7,7 +7,6 @@ vim.cmd.runtime({ 'plugin/filetypes.lua', bang = true })
 vim.filetype.add({
   extension = {
     conf = 'hocon',
-    ncl = 'nickel',
     tig = 'tiger',
     w = 'wing',
   },
