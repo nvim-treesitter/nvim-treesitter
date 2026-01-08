@@ -3,8 +3,10 @@ def Xform "cube" (
     # <- @keyword
         asset[] payloadAssetDependencies = [@fizz.usd@, @buzz.usd@]
         # <- @type
+        #    ^ @punctuation.bracket
         #       ^ @keyword
         #                                   ^ @string.special.url
+        #                                             ^ @punctuation.delimiter
         #                                               ^ @string.special.url
     }
 )
