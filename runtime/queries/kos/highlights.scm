@@ -4,7 +4,12 @@
 
 (number) @number
 
+(float_number) @number.float
+
 (identifier) @variable
+
+(parameter
+  parameter: (identifier) @variable.parameter)
 
 (property_identifier) @property
 
@@ -57,8 +62,9 @@
   "=>"
 ] @keyword.function
 
+"_" @character.special
+
 [
-  "_"
   (line)
   "assert"
   ;"async"
@@ -95,6 +101,15 @@
   "{"
   "}"
 ] @punctuation.bracket
+
+(string_literal_begin
+  "\\(" @punctuation.special)
+
+(string_literal_continuation
+  "\\(" @punctuation.special)
+
+(formatted_string
+  ")" @punctuation.special)
 
 [
   ";"
