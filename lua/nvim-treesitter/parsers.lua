@@ -93,7 +93,7 @@ return {
   },
   beancount = {
     install_info = {
-      revision = '653cce316fbff8d212a2488ae13df648efb542a4',
+      revision = '23b21252da8b8cb0f03d1d1fc4c8f87d407e1cdf',
       url = 'https://github.com/polarmutex/tree-sitter-beancount',
     },
     maintainers = { '@polarmutex' },
@@ -142,7 +142,7 @@ return {
   },
   bpftrace = {
     install_info = {
-      revision = '9cdfa285bb4fd3abc74cce6e2fb46f381feca987',
+      revision = 'dee4269b564fdf7071ee454e873767fd334f79ae',
       url = 'https://github.com/sgruszka/tree-sitter-bpftrace',
     },
     maintainers = { '@sgruszka' },
@@ -166,7 +166,7 @@ return {
   },
   c3 = {
     install_info = {
-      revision = '805f776dcfbfef5c9baf4270ec942b3e8dc7ff16',
+      revision = '2c04e7858d63497152d42f08d3067972618aeedc',
       url = 'https://github.com/c3lang/tree-sitter-c3',
     },
     maintainers = { '@cbuttner' },
@@ -592,7 +592,7 @@ return {
   },
   fortran = {
     install_info = {
-      revision = 'e0132896b8959c09dc20b56e4a1c5d25bc341697',
+      revision = '589151aab08fdd7404678330e8abacf9b78bb595',
       url = 'https://github.com/stadelmanma/tree-sitter-fortran',
     },
     maintainers = { '@amaanq' },
@@ -700,7 +700,7 @@ return {
   },
   gleam = {
     install_info = {
-      revision = '0c0c63a07998767b22f0d2655f903611eca6acd0',
+      revision = 'dd4e328c5fd5f158d47a22339d8ce0f8be918a0b',
       url = 'https://github.com/gleam-lang/tree-sitter-gleam',
     },
     maintainers = { '@amaanq' },
@@ -1294,7 +1294,7 @@ return {
   },
   lua = {
     install_info = {
-      revision = 'e284fcec45ead0d477e326fccd2cd4a68a89dae4',
+      revision = 'de08dfd9640604763558530d2ce703cbe6a16bb6',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-lua',
     },
     maintainers = { '@muniftanjim' },
@@ -1397,7 +1397,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = 'c7eec06be8a9ddae688e1b03fca2eed79e9801c4',
+      revision = '9edc9201736c5a471314b4e28c20d0f0b4642b6f',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     maintainers = { '@artagnon' },
@@ -2139,7 +2139,7 @@ return {
   sql = {
     install_info = {
       branch = 'gh-pages',
-      revision = '2d5dcd16f9ee49cb5a6d99eabb00fd4ea298587f',
+      revision = '5129061608da71146c813e13c32a54f4b13645c8',
       url = 'https://github.com/derekstride/tree-sitter-sql',
     },
     maintainers = { '@derekstride' },
