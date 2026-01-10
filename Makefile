@@ -1,5 +1,4 @@
 NVIM_VERSION ?= nightly
-LUALS_VERSION := 3.15.0
 
 DEPDIR ?= .test-deps
 CURL ?= curl -sL --create-dirs
@@ -35,18 +34,18 @@ $(NVIM):
 	tar -xf $(NVIM_TARBALL) -C $@
 	rm -rf $(NVIM_TARBALL)
 
-LUALS := $(DEPDIR)/lua-language-server-$(LUALS_VERSION)-$(LUALS_ARCH)
-LUALS_TARBALL := $(LUALS).tar.gz
-LUALS_URL := https://github.com/LuaLS/lua-language-server/releases/download/$(LUALS_VERSION)/$(notdir $(LUALS_TARBALL))
+EMMYLUALS := $(DEPDIR)/emmylua_check-$(LUALS_ARCH)
+EMMYLUALS_TARBALL := $(EMMYLUALS).tar.gz
+EMMYLUALS_URL := https://github.com/emmyluals/emmylua-analyzer-rust/releases/latest/download/$(notdir $(EMMYLUALS_TARBALL))
 
-.PHONY: luals
-luals: $(LUALS)
+.PHONY: emmyluals
+luals: $(EMMYLUALS)
 
-$(LUALS):
-	$(CURL) $(LUALS_URL) -o $(LUALS_TARBALL)
+$(EMMYLUALS):
+	$(CURL) $(EMMYLUALS_URL) -o $(EMMYLUALS_TARBALL)
 	mkdir $@
-	tar -xf $(LUALS_TARBALL) -C $@
-	rm -rf $(LUALS_TARBALL)
+	tar -xf $(EMMYLUALS_TARBALL) -C $@
+	rm -rf $(EMMYLUALS_TARBALL)
 
 STYLUA := $(DEPDIR)/stylua-$(STYLUA_ARCH)
 STYLUA_TARBALL := $(STYLUA).zip
@@ -104,10 +103,8 @@ formatlua: $(STYLUA)
 	$(STYLUA)/stylua .
 
 .PHONY: checklua
-checklua: $(LUALS) $(NVIM)
-	VIMRUNTIME=$(NVIM_RUNTIME) $(LUALS)/bin/lua-language-server \
-		--configpath=../.luarc.json \
-		--check=./
+checklua: $(EMMYLUALS) $(NVIM)
+	VIMRUNTIME=$(NVIM_RUNTIME) $(EMMYLUALS)/emmylua_check --warnings-as-errors .
 
 .PHONY: query
 query: formatquery lintquery checkquery
