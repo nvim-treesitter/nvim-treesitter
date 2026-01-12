@@ -708,7 +708,7 @@ return {
   },
   glimmer = {
     install_info = {
-      revision = 'da605af8c5999b43e6839b575eae5e6cafabb06f',
+      revision = '384cc9b80bfd46c027b815b863f911df4286b92c',
       url = 'https://github.com/ember-tooling/tree-sitter-glimmer',
     },
     maintainers = { '@NullVoxPopuli' },
