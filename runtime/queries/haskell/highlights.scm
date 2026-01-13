@@ -9,7 +9,8 @@
     (_) @variable.parameter))
 
 (expression/lambda
-  (_)+ @variable.parameter
+  patterns: (patterns
+    (_) @variable.parameter)
   "->")
 
 (decl/function
