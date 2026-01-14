@@ -226,7 +226,9 @@
     (qualified
       ((module) @module
         (variable) @function.call))
-  ])
+  ]
+  (operator) @_op
+  (#match? @_op "^[^:].*"))
 
 ; infix operators applied to variables
 ((expression/variable) @variable
@@ -245,7 +247,7 @@
 (function
   (infix
     left_operand: [
-      (variable) @variable
+      (variable) @variable.parameter
       (qualified
         ((module) @module
           (variable) @variable))
