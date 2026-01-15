@@ -91,6 +91,20 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 ```
 
+Or if you which to automaticlly enable highlighting for filetypes that correspond to installed languages, place the following in your `init.lua`:
+
+```lua
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function(args)
+		local lang = vim.treesitter.language.get_lang(args.match)
+		if not lang or not vim.treesitter.query.get(lang, "highlights") then
+			return
+		end
+		vim.treesitter.start()
+	end,
+})
+
+```
 ## Folds
 
 Treesitter-based folding is provided by Neovim. To enable it, put the following in your `ftplugin` or `FileType` autocommand:
