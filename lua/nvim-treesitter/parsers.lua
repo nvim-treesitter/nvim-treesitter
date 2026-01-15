@@ -1883,7 +1883,7 @@ return {
   },
   rego = {
     install_info = {
-      revision = '20b5a5958c837bc9f74b231022a68a594a313f6d',
+      revision = 'ddd39af81fe8b0288102a7cb97959dfce723e0f3',
       url = 'https://github.com/FallenAngel97/tree-sitter-rego',
     },
     maintainers = { '@FallenAngel97' },
