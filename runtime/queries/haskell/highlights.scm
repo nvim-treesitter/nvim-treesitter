@@ -228,8 +228,7 @@
       ((module) @module
         (variable) @function.call))
   ]
-  (operator) @_op
-  (#match? @_op "^[^:].*"))
+  operator: (operator))
 
 ; infix operators applied to variables
 ((expression/variable) @variable
