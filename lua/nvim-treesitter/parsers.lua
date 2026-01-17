@@ -1336,8 +1336,8 @@ return {
   },
   make = {
     install_info = {
-      revision = 'a4b9187417d6be349ee5fd4b6e77b4172c6827dd',
-      url = 'https://github.com/alemuller/tree-sitter-make',
+      revision = '5e9e8f8ff3387b0edcaa90f46ddf3629f4cfeb1d',
+      url = 'https://github.com/tree-sitter-grammars/tree-sitter-make',
     },
     maintainers = { '@lewis6991' },
     tier = 2,

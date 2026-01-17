@@ -175,7 +175,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [luap](https://github.com/tree-sitter-grammars/tree-sitter-luap)[^luap] | unstable | `H    ` | @amaanq
 [luau](https://github.com/tree-sitter-grammars/tree-sitter-luau) | unstable | `HFIJL` | @amaanq
 [m68k](https://github.com/grahambates/tree-sitter-m68k) | unstable | `HF JL` | @grahambates
-[make](https://github.com/alemuller/tree-sitter-make) | unstable | `HF J ` | @lewis6991
+[make](https://github.com/tree-sitter-grammars/tree-sitter-make) | unstable | `HF J ` | @lewis6991
 [markdown](https://github.com/tree-sitter-grammars/tree-sitter-markdown)[^markdown] | unstable | `HFIJ ` | @MDeiml
 [markdown_inline](https://github.com/tree-sitter-grammars/tree-sitter-markdown)[^markdown_inline] | unstable | `H  J ` | @MDeiml
 [matlab](https://github.com/acristoffers/tree-sitter-matlab) | unstable | `HFIJL` | @acristoffers
