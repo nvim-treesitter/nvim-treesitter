@@ -249,6 +249,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [robots_txt](https://github.com/opa-oz/tree-sitter-robots-txt) | unstable | `H  J ` | @opa-oz
 [roc](https://github.com/faldor20/tree-sitter-roc) | unstable | `H IJL` | @nat-418
 [ron](https://github.com/tree-sitter-grammars/tree-sitter-ron) | unstable | `HFIJL` | @amaanq
+[roto](https://github.com/NLnetLabs/tree-sitter-roto) | unstable | `H   L` | @bsamseth
 [rst](https://github.com/stsewd/tree-sitter-rst) | unstable | `H  JL` | @stsewd
 [ruby](https://github.com/tree-sitter/tree-sitter-ruby) | unstable | `HFIJL` | @TravonteD
 [runescript](https://github.com/2004Scape/tree-sitter-runescript) | unstable | `H  J ` | @2004Scape

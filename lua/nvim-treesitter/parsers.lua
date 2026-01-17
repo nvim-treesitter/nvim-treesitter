@@ -1954,6 +1954,15 @@ return {
     maintainers = { '@amaanq' },
     tier = 2,
   },
+  roto = {
+    install_info = {
+      branch = 'main',
+      revision = '9ac03409ddee6ab8f3b74746756f12fc6adec740',
+      url = 'https://github.com/NLnetLabs/tree-sitter-roto',
+    },
+    maintainers = { '@bsamseth' },
+    tier = 2,
+  },
   rst = {
     install_info = {
       revision = '4e562e1598b95b93db4f3f64fe40ddefbc677a15',
