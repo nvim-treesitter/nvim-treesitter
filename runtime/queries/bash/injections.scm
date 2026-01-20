@@ -88,10 +88,10 @@
   (#offset! @injection.content 0 1 0 -1)
   (#set! injection.include-children)
   (#set! injection.self))
- 
+
 (command
   name: (command_name
-    (word) @_command)
+    (word)) @_command
   .
   argument: (raw_string) @injection.content
   .
@@ -102,13 +102,14 @@
 
 (command
   name: (command_name
-    (word) @_command)
+    (word)) @_command
   argument: (_)? @_param
   .
   argument: (raw_string) @injection.content
   .
   (#eq? @_command "awk")
-  (#not-match? @_param "^(--file|--field-separator|-[^-]*[fF])")
+  (#not-any-of? @_param "--file" "--field-separator")
+  (#not-lua-match? @_param "^%-[^%-]*[fF]")
   (#offset! @injection.content 0 1 0 -1)
   (#set! injection.include-children)
   (#set! injection.language "awk"))
