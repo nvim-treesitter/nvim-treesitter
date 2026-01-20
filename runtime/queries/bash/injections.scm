@@ -88,3 +88,27 @@
   (#offset! @injection.content 0 1 0 -1)
   (#set! injection.include-children)
   (#set! injection.self))
+ 
+(command
+  name: (command_name
+    (word) @_command)
+  .
+  argument: (raw_string) @injection.content
+  .
+  (#eq? @_command "awk")
+  (#offset! @injection.content 0 1 0 -1)
+  (#set! injection.include-children)
+  (#set! injection.language "awk"))
+
+(command
+  name: (command_name
+    (word) @_command)
+  argument: (_)? @_param
+  .
+  argument: (raw_string) @injection.content
+  .
+  (#eq? @_command "awk")
+  (#not-match? @_param "^(--file|--field-separator|-[^-]*[fF])")
+  (#offset! @injection.content 0 1 0 -1)
+  (#set! injection.include-children)
+  (#set! injection.language "awk"))
