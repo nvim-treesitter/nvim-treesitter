@@ -15,7 +15,7 @@ jobs:
       matrix:
         tier: [1, 2]
     name: Update parsers tier ${{ matrix.tier }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v6
         with:

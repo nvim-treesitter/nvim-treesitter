@@ -12,7 +12,7 @@ on:
 jobs:
   lua:
     name: Lint Lua files
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v6
 
@@ -26,7 +26,7 @@ jobs:
 
   queries:
     name: Lint query files
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v6
 
@@ -40,7 +40,7 @@ jobs:
 
   readme:
     name: Lint docs
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v6
 
