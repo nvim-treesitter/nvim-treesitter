@@ -1,5 +1,5 @@
 NVIM_VERSION ?= nightly
-LUALS_VERSION := 3.15.0
+LUALS_VERSION := 3.17.1
 
 DEPDIR ?= .test-deps
 CURL ?= curl -sL --create-dirs
