@@ -18,8 +18,9 @@
 
 (args_keyword) @variable.builtin
 
-((identifier) @variable.builtin
-  (#lua-match? @variable.builtin "^arg[0-9]+$"))
+(argn_identifier) @variable.builtin
+
+(retval_identifier) @variable.builtin
 
 (scratch_variable) @variable
 

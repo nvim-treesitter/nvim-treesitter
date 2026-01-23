@@ -142,7 +142,7 @@ return {
   },
   bpftrace = {
     install_info = {
-      revision = '99ad82e02067a25b2a717fc006ea74b1604f7115',
+      revision = '0978030fdcdab74d49faaee2a60eb94607a367cc',
       url = 'https://github.com/sgruszka/tree-sitter-bpftrace',
     },
     maintainers = { '@sgruszka' },
