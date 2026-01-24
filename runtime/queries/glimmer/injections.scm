@@ -3,19 +3,12 @@
   (#set! injection.language "comment"))
 
 ; <style> tags
-((element_node
-  (element_node_start
-    (tag_name) @_tag_name
-    (#eq? @_tag_name "style"))) @injection.content
-  (#offset! @injection.content 0 7 0 -8)
-  (#set! injection.language "css")
-  (#set! injection.include-children))
+((style_element
+  (raw_text) @injection.content)
+  (#set! injection.language "css"))
 
 ; <script> tags
-((element_node
-  (element_node_start
-    (tag_name) @_tag_name
-    (#eq? @_tag_name "script"))) @injection.content
-  (#offset! @injection.content 0 8 0 -9)
-  (#set! injection.language "glimmer_javascript")
+((script_element
+  (raw_text) @injection.content)
+  (#set! injection.language "javascript")
   (#set! injection.include-children))
