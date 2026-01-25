@@ -1964,7 +1964,7 @@ return {
   },
   ruby = {
     install_info = {
-      revision = '89bd7a8e5450cb6a942418a619d30469f259e5d6',
+      revision = 'ab6dca77a8184abc94af6e3e82538741b5078d63',
       url = 'https://github.com/tree-sitter/tree-sitter-ruby',
     },
     maintainers = { '@TravonteD' },
@@ -2561,7 +2561,7 @@ return {
   vue = {
     install_info = {
       branch = 'main',
-      revision = '22bdfa6c9fc0f5ffa44c6e938ec46869ac8a99ff',
+      revision = 'ce8011a414fdf8091f4e4071752efc376f4afb08',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-vue',
     },
     maintainers = { '@WhyNotHugo', '@lucario387' },
