@@ -91,6 +91,18 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 ```
 
+To enable highlighting for **all filetypes** that have a parser available, use `pcall` to safely start treesitter without specifying patterns:
+
+```lua
+vim.api.nvim_create_autocmd('FileType', {
+  callback = function()
+    pcall(vim.treesitter.start)
+  end,
+})
+```
+
+This will automatically enable highlighting for any filetype with an installed parser, while gracefully skipping filetypes without available parsers.
+
 ## Folds
 
 Treesitter-based folding is provided by Neovim. To enable it, put the following in your `ftplugin` or `FileType` autocommand:
