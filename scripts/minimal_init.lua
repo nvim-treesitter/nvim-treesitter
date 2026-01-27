@@ -1,5 +1,4 @@
-vim.opt.runtimepath:append(os.getenv('PLENARY'))
-vim.opt.runtimepath:append('.')
+vim.o.rtp = vim.o.rtp .. ',.,' .. os.getenv('PLENARY')
 vim.cmd.runtime({ 'plugin/plenary.vim', bang = true })
 vim.cmd.runtime({ 'plugin/query_predicates.lua', bang = true })
 vim.cmd.runtime({ 'plugin/filetypes.lua', bang = true })
