@@ -185,7 +185,6 @@ return {
       revision = '2686186edb61be47960431c93a204fb249681360',
       url = 'https://github.com/opa-oz/tree-sitter-caddy',
     },
-    maintainers = { '@opa-oz' },
     tier = 3,
   },
   cairo = {
@@ -1943,8 +1942,7 @@ return {
       revision = '40e52f343f1b1f270d6ecb2ca898ca9b8cba6936',
       url = 'https://github.com/faldor20/tree-sitter-roc',
     },
-    maintainers = { '@nat-418' },
-    tier = 2,
+    tier = 3,
   },
   ron = {
     install_info = {

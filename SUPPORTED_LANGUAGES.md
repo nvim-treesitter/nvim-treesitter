@@ -33,7 +33,7 @@ Language | Tier | Queries | Maintainer
 [c](https://github.com/tree-sitter/tree-sitter-c) | unstable | `HFIJL` | @amaanq
 [c3](https://github.com/c3lang/tree-sitter-c3) | unstable | `HFIJ ` | @cbuttner
 [c_sharp](https://github.com/tree-sitter/tree-sitter-c-sharp) | unstable | `HF JL` | @amaanq
-[caddy](https://github.com/opa-oz/tree-sitter-caddy) | unmaintained | `HFIJ ` | @opa-oz
+[caddy](https://github.com/opa-oz/tree-sitter-caddy) | unmaintained | `HFIJ ` | 
 [cairo](https://github.com/tree-sitter-grammars/tree-sitter-cairo) | unstable | `HFIJL` | @amaanq
 [capnp](https://github.com/tree-sitter-grammars/tree-sitter-capnp) | unstable | `HFIJL` | @amaanq
 [chatito](https://github.com/tree-sitter-grammars/tree-sitter-chatito) | unstable | `HFIJL` | @ObserverOfTime
@@ -247,7 +247,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [rnoweb](https://github.com/bamonroe/tree-sitter-rnoweb) | unstable | `HF J ` | @bamonroe
 [robot](https://github.com/Hubro/tree-sitter-robot) | unstable | `HFIJ ` | @Hubro
 [robots_txt](https://github.com/opa-oz/tree-sitter-robots-txt) | unstable | `H  J ` | @opa-oz
-[roc](https://github.com/faldor20/tree-sitter-roc) | unstable | `H IJL` | @nat-418
+[roc](https://github.com/faldor20/tree-sitter-roc) | unmaintained | `H IJL` | 
 [ron](https://github.com/tree-sitter-grammars/tree-sitter-ron) | unstable | `HFIJL` | @amaanq
 [rst](https://github.com/stsewd/tree-sitter-rst) | unstable | `H  JL` | @stsewd
 [ruby](https://github.com/tree-sitter/tree-sitter-ruby) | unstable | `HFIJL` | @TravonteD
