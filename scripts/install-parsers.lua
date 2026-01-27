@@ -1,4 +1,5 @@
 #!/usr/bin/env -S nvim -l
+vim.o.rtp = vim.o.rtp .. ',.'
 
 local generate = false
 local update = false
@@ -15,8 +16,6 @@ for i = 1, #_G.arg do
     parsers[#parsers + 1] = _G.arg[i] ---@type string
   end
 end
-
-vim.opt.runtimepath:append('.')
 
 ---@type async.Task
 local task = update and require('nvim-treesitter').update('all', { summary = true })
