@@ -9,7 +9,8 @@ in {
   drv1 = stdenv.mkDerivation {
     buildPhase = "mkdir $out";
     installPhase = ''
-      echo "bar" > $out/foo.txt
+      echo "${bar}" > $out/foo.txt
+      echo "baz"" >> $out/foo.txt
     '';
   };
 
