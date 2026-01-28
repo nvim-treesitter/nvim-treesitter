@@ -28,7 +28,7 @@ error('Cannot require a meta file')
 ---@field queries? string
 ---
 ---Envrionment variables for generating the parser
----@field env table<string, string|number>
+---@field env? table<string, string|number>
 
 ---@class ParserInfo
 ---

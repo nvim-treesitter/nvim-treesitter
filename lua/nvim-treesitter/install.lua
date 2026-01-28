@@ -167,7 +167,7 @@ end
 ---@param compile_location string
 ---@return string? err
 local function do_generate(logger, repo, compile_location)
-  local env = vim.tbl_extend('force', { TREE_SITTER_JS_RUNTIME = 'native' }, repo.env)
+  local env = vim.tbl_extend('force', { TREE_SITTER_JS_RUNTIME = 'native' }, repo.env or {})
   local from_json = true
   if repo.generate_from_json == false then
     from_json = false
