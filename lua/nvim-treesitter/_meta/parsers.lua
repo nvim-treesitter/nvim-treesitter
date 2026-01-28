@@ -26,6 +26,9 @@ error('Cannot require a meta file')
 ---
 ---Directory with queries to be installed
 ---@field queries? string
+---
+---Envrionment variables for generating the parser
+---@field env table<string, string|number>
 
 ---@class ParserInfo
 ---
