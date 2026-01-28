@@ -1401,7 +1401,7 @@ return {
     },
     maintainers = { '@kelvin-273' },
     tier = 2,
-  }
+  },
   mlir = {
     install_info = {
       generate = true,
