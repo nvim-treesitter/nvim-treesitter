@@ -1393,6 +1393,15 @@ return {
     maintainers = { '@Decodetalkers' },
     tier = 2,
   },
+  minizinc = {
+    install_info = {
+      location = 'parsers/tree-sitter-minizinc',
+      revision = '045a0aee80bcae85fa330f4c4ccf0196c091c8e6',
+      url = 'https://github.com/shackle-rs/shackle',
+    },
+    maintainers = { '@kelvin-273' },
+    tier = 2,
+  }
   mlir = {
     install_info = {
       generate = true,
