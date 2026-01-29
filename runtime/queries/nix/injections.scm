@@ -136,7 +136,7 @@
       ((string_fragment) @injection.content
         (#set! injection.language "bash")))
   ])
-  (#lua-match? @_func "^%a*%.*writeBash%a*$")
+  (#match? @_func "^([a-zA-Z]+.)*writeBash[a-zA-Z]*$")
   (#set! injection.combined))
 
 ((apply_expression
@@ -150,7 +150,7 @@
       ((string_fragment) @injection.content
         (#set! injection.language "bash")))
   ])
-  (#lua-match? @_func "^%a*%.*writeDash%a*$")
+  (#match? @_func "^([a-zA-Z]+.)*writeDash[a-zA-Z]*$")
   (#set! injection.combined))
 
 ((apply_expression
@@ -178,7 +178,7 @@
       ((string_fragment) @injection.content
         (#set! injection.language "fish")))
   ])
-  (#lua-match? @_func "^%a*%.*writeFish%a*$")
+  (#match? @_func "^([a-zA-Z]+.)*writeFish[a-zA-Z]*$")
   (#set! injection.combined))
 
 ((apply_expression
@@ -193,7 +193,7 @@
       ((string_fragment) @injection.content
         (#set! injection.language "haskell")))
   ])
-  (#lua-match? @_func "^%a*%.*writeHaskell%a*$")
+  (#match? @_func "^([a-zA-Z]+.)*writeHaskell[a-zA-Z]*$")
   (#set! injection.combined))
 
 ((apply_expression
@@ -207,7 +207,7 @@
       ((string_fragment) @injection.content
         (#set! injection.language "javascript")))
   ])
-  (#lua-match? @_func "^%a*%.*writeJS%a*$")
+  (#match? @_func "^([a-zA-Z]+.)*writeJS[a-zA-Z]*$")
   (#set! injection.combined))
 
 ((apply_expression
@@ -221,7 +221,7 @@
       ((string_fragment) @injection.content
         (#set! injection.language "perl")))
   ])
-  (#lua-match? @_func "^%a*%.*writePerl%a*$")
+  (#match? @_func "^([a-zA-Z]+.)*writePerl[a-zA-Z]*$")
   (#set! injection.combined))
 
 ((apply_expression
@@ -235,7 +235,7 @@
       ((string_fragment) @injection.content
         (#set! injection.language "python")))
   ])
-  (#lua-match? @_func "^%a*%.*writePy%a*%d*%a*$")
+  (#match? @_func "^([a-zA-Z]+.)*writePy[a-zA-Z]*[0-9]*[a-zA-Z]*$")
   (#set! injection.combined))
 
 ((apply_expression
@@ -248,7 +248,7 @@
       ((string_fragment) @injection.content
         (#set! injection.language "rust")))
   ])
-  (#lua-match? @_func "^%a*%.*writeRust%a*$")
+  (#match? @_func "^([a-zA-Z]+.)*writeRust[a-zA-Z]*$")
   (#set! injection.combined))
 
 ; (runTest) testScript
