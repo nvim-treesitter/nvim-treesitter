@@ -25,6 +25,7 @@ NVIM_TARBALL := $(NVIM).tar.gz
 NVIM_URL := https://github.com/neovim/neovim/releases/download/$(NVIM_VERSION)/$(notdir $(NVIM_TARBALL))
 NVIM_BIN := $(NVIM)/nvim-$(NVIM_ARCH)/bin/nvim
 NVIM_RUNTIME=$(NVIM)/nvim-$(NVIM_ARCH)/share/nvim/runtime
+NVIM_DATA_HOME := $(NVIM)/share
 
 .PHONY: nvim
 nvim: $(NVIM)
@@ -128,9 +129,15 @@ checkquery: $(TSQUERYLS)
 docs: $(NVIM)
 	$(NVIM_BIN) -l scripts/update-readme.lua
 
+.PHONY: parsers
+parsers: $(NVIM)
+	XDG_DATA_HOME=$(NVIM_DATA_HOME) \
+	$(NVIM_BIN) -l scripts/install-parsers.lua
+
 .PHONY: tests
 tests: $(NVIM) $(HLASSERT) $(PLENARY)
 	HLASSERT=$(HLASSERT)/highlight-assertions PLENARY=$(PLENARY) \
+	XDG_DATA_HOME=$(NVIM_DATA_HOME) \
 		$(NVIM_BIN) --headless --clean -u scripts/minimal_init.lua \
 		-c "PlenaryBustedDirectory tests/$(TESTS) { minimal_init = './scripts/minimal_init.lua' }"
 
