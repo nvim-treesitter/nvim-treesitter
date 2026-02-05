@@ -182,7 +182,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [menhir](https://github.com/Kerl13/tree-sitter-menhir) | unstable | `H  J ` | @Kerl13
 [mermaid](https://github.com/monaqa/tree-sitter-mermaid) | unstable | `HFIJ ` | 
 [meson](https://github.com/tree-sitter-grammars/tree-sitter-meson) | unstable | `HFIJ ` | @Decodetalkers
-[minizinc](https://github.com/shackle-rs/shackle) | unstable | `     ` | @kelvin-273
+[minizinc](https://github.com/shackle-rs/shackle) | unstable | `H    ` | @kelvin-273
 [mlir](https://github.com/artagnon/tree-sitter-mlir) | unstable | `H  JL` | @artagnon
 [muttrc](https://github.com/neomutt/tree-sitter-muttrc) | unstable | `H  J ` | @Freed-Wu
 [nasm](https://github.com/naclsn/tree-sitter-nasm) | unstable | `H  J ` | @ObserverOfTime
