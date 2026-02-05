@@ -64,7 +64,7 @@ for k, p in pairs(parsers) do
         sha = stdout[line] and vim.split(stdout[line], '\t')[1]
       end
 
-      if sha and info.revision ~= sha then
+      if sha and sha ~= '' and info.revision ~= sha then
         info.revision = sha
         updates[#updates + 1] = name
       end
