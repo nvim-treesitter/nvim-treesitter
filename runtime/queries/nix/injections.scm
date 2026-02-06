@@ -48,7 +48,8 @@
       ((string_fragment) @injection.content
         (#set! injection.language "bash")))
   ]
-  (#lua-match? @_path "^%a+Phase$"))
+  (#lua-match? @_path "^%a+Phase$")
+  (#set! injection.combined))
 
 (binding
   attrpath: (attrpath
@@ -61,7 +62,8 @@
       ((string_fragment) @injection.content
         (#set! injection.language "bash")))
   ]
-  (#lua-match? @_path "^pre%a+$"))
+  (#lua-match? @_path "^pre%a+$")
+  (#set! injection.combined))
 
 (binding
   attrpath: (attrpath
@@ -74,7 +76,8 @@
       ((string_fragment) @injection.content
         (#set! injection.language "bash")))
   ]
-  (#lua-match? @_path "^post%a+$"))
+  (#lua-match? @_path "^post%a+$")
+  (#set! injection.combined))
 
 (binding
   attrpath: (attrpath
@@ -87,7 +90,8 @@
       ((string_fragment) @injection.content
         (#set! injection.language "bash")))
   ]
-  (#lua-match? @_path "^script$"))
+  (#lua-match? @_path "^script$")
+  (#set! injection.combined))
 
 (apply_expression
   function: (_) @_func

@@ -197,17 +197,13 @@ end
 ---@param output_dir string
 ---@return string? err
 local function do_download(logger, url, project_name, cache_dir, revision, output_dir)
-  local is_gitlab = url:find('gitlab.com', 1, true)
-
   local tmp = output_dir .. '-tmp'
 
   rmpath(tmp)
   a.schedule()
 
   url = url:gsub('.git$', '')
-  local target = is_gitlab
-      and string.format('%s/-/archive/%s/%s-%s.tar.gz', url, revision, project_name, revision)
-    or string.format('%s/archive/%s.tar.gz', url, revision)
+  local target = string.format('%s/archive/%s.tar.gz', url, revision)
 
   local tarball_path = fs.joinpath(cache_dir, project_name .. '.tar.gz')
 
