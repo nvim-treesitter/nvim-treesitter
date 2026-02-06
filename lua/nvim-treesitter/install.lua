@@ -214,6 +214,8 @@ local function do_download(logger, url, project_name, cache_dir, revision, outpu
       '--silent',
       '--fail',
       '--show-error',
+      '--retry',
+      '3',
       '-L', -- follow redirects
       target,
       '--output',
