@@ -108,10 +108,7 @@
   (string_interpolation)
 ] @string
 
-[
-  (escape_sequence)
-  (escape_interpolation)
-] @string.escape
+(escape_sequence) @string.escape
 
 [
   (absent)
