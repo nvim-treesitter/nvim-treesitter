@@ -10,6 +10,7 @@
   (method_definition)
   (do_statement)
   (with_statement)
+  (statement_block)
   (switch_statement)
   (switch_case)
   (switch_default)
