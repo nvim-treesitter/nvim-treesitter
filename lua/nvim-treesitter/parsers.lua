@@ -1065,7 +1065,7 @@ return {
   },
   javadoc = {
     install_info = {
-      revision = '141525e73c9ad2fe7df8861047d4068ddbb6c337',
+      revision = 'd1a2efc871825ff29a1d241cdcac5713c99cfd54',
       url = 'https://github.com/rmuir/tree-sitter-javadoc',
     },
     maintainers = { '@rmuir' },
@@ -1156,7 +1156,7 @@ return {
   },
   just = {
     install_info = {
-      revision = '7333f8c150aaac5bb46decc2d225a2d4cde8c51e',
+      revision = 'fe94f5230d97ff9fc7bee8c57e650dff615ed7cc',
       url = 'https://github.com/IndianBoy42/tree-sitter-just',
     },
     maintainers = { '@Hubro' },
@@ -1204,7 +1204,7 @@ return {
   },
   kotlin = {
     install_info = {
-      revision = '57fb4560ba8641865bc0baa6b3f413b236112c4c',
+      revision = '6b9788578ae23a1bc7c87e8d564e0daf7671dee3',
       url = 'https://github.com/fwcd/tree-sitter-kotlin',
     },
     maintainers = { '@SalBakraa' },
@@ -1344,7 +1344,7 @@ return {
   markdown = {
     install_info = {
       location = 'tree-sitter-markdown',
-      revision = 'da063e1ba4303ff08781eb440cc9a7bd41e55dd8',
+      revision = 'bd2d09ecdbd36289bb7185c8751bbf14c5afe838',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-markdown',
     },
     maintainers = { '@MDeiml' },
@@ -1355,7 +1355,7 @@ return {
   markdown_inline = {
     install_info = {
       location = 'tree-sitter-markdown-inline',
-      revision = 'da063e1ba4303ff08781eb440cc9a7bd41e55dd8',
+      revision = 'bd2d09ecdbd36289bb7185c8751bbf14c5afe838',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-markdown',
     },
     maintainers = { '@MDeiml' },
@@ -1364,7 +1364,7 @@ return {
   },
   matlab = {
     install_info = {
-      revision = 'f29f784107722e237e188bec333d4779082a2db1',
+      revision = '574dde565caddf8cf44eec7df3cb89eb96053ed7',
       url = 'https://github.com/acristoffers/tree-sitter-matlab',
     },
     maintainers = { '@acristoffers' },
@@ -1396,7 +1396,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = 'd989734f56e86c4949a4e74b39d573db8528efa0',
+      revision = 'a547cb73d7c6373e77692bb7739e670b5de60f86',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     maintainers = { '@artagnon' },
@@ -1571,7 +1571,7 @@ return {
   php = {
     install_info = {
       location = 'php',
-      revision = '7d07b41ce2d442ca9a90ed85d0075eccc17ae315',
+      revision = '015ce839db5ae9ceda763bf12e071867fbe8cc89',
       url = 'https://github.com/tree-sitter/tree-sitter-php',
     },
     maintainers = { '@tk-shirasaka', '@calebdw' },
@@ -1582,7 +1582,7 @@ return {
   php_only = {
     install_info = {
       location = 'php_only',
-      revision = '7d07b41ce2d442ca9a90ed85d0075eccc17ae315',
+      revision = '015ce839db5ae9ceda763bf12e071867fbe8cc89',
       url = 'https://github.com/tree-sitter/tree-sitter-php',
     },
     maintainers = { '@tk-shirasaka', '@calebdw' },
@@ -1607,7 +1607,7 @@ return {
   },
   pkl = {
     install_info = {
-      revision = '57ed643ffd6b4f12c6f829cd3268e9ad216e2c30',
+      revision = '0be2b56dec91cf03d6b653dcbb24188dd5c44dd6',
       url = 'https://github.com/apple/tree-sitter-pkl',
     },
     maintainers = { '@ribru17' },
@@ -2045,7 +2045,7 @@ return {
   },
   slint = {
     install_info = {
-      revision = '10fb0f188d7950400773c06ba6c31075866e14bf',
+      revision = '5dafe6745dd3bb24342acebe478015b642dc7135',
       url = 'https://github.com/slint-ui/tree-sitter-slint',
     },
     maintainers = { '@hunger' },
@@ -2469,7 +2469,7 @@ return {
   unison = {
     install_info = {
       generate = true,
-      revision = 'c09e95252b4b3f5914c33d72a48af25089737afd',
+      revision = '873e599faaba40a69b8f9507f90bcfa0ae0bbe26',
       url = 'https://github.com/kylegoetz/tree-sitter-unison',
     },
     maintainers = { '@tapegram' },
