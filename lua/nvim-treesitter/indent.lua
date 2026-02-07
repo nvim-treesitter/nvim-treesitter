@@ -172,6 +172,15 @@ function M.get_indent(lnum)
   if root_start ~= 0 then
     -- injected tree
     indent = vim.fn.indent(root:start() + 1)
+    -- Inside an injected tree, we have a different language than the filetype of the current buffer,
+    -- so it doesn't make sense to use the value of 'shiftwidth' for the current buffer. That's why
+    -- we usew the default 'shiftwidth' for the injected language's filetype!
+    indent_size = vim.api.nvim_get_option_value('shiftwidth', {
+      -- Note: lang() returns the *language parser name*, which may be associated with multiple
+      -- filetypes. However, the language name is required to itself match the name of *one of
+      -- those* filetypes as well, which is why it is OK to pass as a filetype argument.
+      filetype = lang_tree:lang(),
+    })
   end
 
   -- tracks to ensure multiple indent levels are not applied for same line
