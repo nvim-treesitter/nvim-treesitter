@@ -316,7 +316,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [uxntal](https://github.com/tree-sitter-grammars/tree-sitter-uxntal) | unstable | `HFIJL` | @amaanq
 [v](https://github.com/vlang/v-analyzer) | unstable | `HFIJL` | @kkharji, @amaanq
 [vala](https://github.com/vala-lang/tree-sitter-vala) | unstable | `HF J ` | @Prince781
-[vento](https://github.com/ventojs/tree-sitter-vento) | unstable | `H  J ` | @wrapperup, @oscarotero
+[vento](https://github.com/ventojs/tree-sitter-vento) | unmaintained | `H  J ` | 
 [vhdl](https://github.com/jpt13653903/tree-sitter-vhdl) | unstable | `HF J ` | @jpt13653903
 [vhs](https://github.com/charmbracelet/tree-sitter-vhs) | unstable | `H  J ` | @caarlos0
 [vim](https://github.com/tree-sitter-grammars/tree-sitter-vim) | unstable | `HF JL` | @clason
