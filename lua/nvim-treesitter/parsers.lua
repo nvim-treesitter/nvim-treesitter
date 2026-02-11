@@ -2510,11 +2510,10 @@ return {
   },
   vento = {
     install_info = {
-      revision = '3b32474bc29584ea214e4e84b47102408263fe0e',
+      revision = 'edd6596d4b0f392b87fc345dc26d84a6c32f7059',
       url = 'https://github.com/ventojs/tree-sitter-vento',
     },
-    maintainers = { '@wrapperup', '@oscarotero' },
-    tier = 2,
+    tier = 3,
   },
   vhdl = {
     install_info = {
