@@ -337,7 +337,7 @@ return {
   },
   dart = {
     install_info = {
-      revision = '5650b09d9fc4ef9315b361c74aa811bbdbc09458',
+      revision = '81638dbbdb76a0e88ea8c31b95ec76b9625ddb84',
       url = 'https://github.com/UserNobody14/tree-sitter-dart',
     },
     maintainers = { '@akinsho' },
@@ -591,7 +591,7 @@ return {
   },
   fortran = {
     install_info = {
-      revision = '43cd127cd41ff6e57b3ececb3cc283c5af4796e7',
+      revision = '32fe27ec32b6a3bc2bc333566e6457f10fc7bbe3',
       url = 'https://github.com/stadelmanma/tree-sitter-fortran',
     },
     maintainers = { '@amaanq' },
@@ -699,7 +699,7 @@ return {
   },
   gleam = {
     install_info = {
-      revision = 'dd4e328c5fd5f158d47a22339d8ce0f8be918a0b',
+      revision = '6ea757f7eb8d391dbf24dbb9461990757946dd5e',
       url = 'https://github.com/gleam-lang/tree-sitter-gleam',
     },
     maintainers = { '@amaanq' },
@@ -1049,7 +1049,7 @@ return {
   },
   janet_simple = {
     install_info = {
-      revision = '7e28cbf1ca061887ea43591a2898001f4245fddf',
+      revision = 'd183186995204314700be3e9e0a48053ea16b350',
       url = 'https://github.com/sogaiu/tree-sitter-janet-simple',
     },
     maintainers = { '@sogaiu' },
@@ -1156,7 +1156,7 @@ return {
   },
   just = {
     install_info = {
-      revision = 'fe94f5230d97ff9fc7bee8c57e650dff615ed7cc',
+      revision = '60df3d5b3fda2a22fdb3621226cafab50b763663',
       url = 'https://github.com/IndianBoy42/tree-sitter-just',
     },
     maintainers = { '@Hubro' },
@@ -1396,7 +1396,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = 'a547cb73d7c6373e77692bb7739e670b5de60f86',
+      revision = 'd2ba26eeee7e3fd83a52236e1f143da42145ade7',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     maintainers = { '@artagnon' },
@@ -1899,7 +1899,7 @@ return {
   },
   rescript = {
     install_info = {
-      revision = '5938ae1578aa559b4fa903f7cabc31da14f71c84',
+      revision = '3159c949c15096b02b470bd4025754806fc7a17d',
       url = 'https://github.com/rescript-lang/tree-sitter-rescript',
     },
     maintainers = { '@ribru17' },
@@ -2045,7 +2045,7 @@ return {
   },
   slint = {
     install_info = {
-      revision = '5dafe6745dd3bb24342acebe478015b642dc7135',
+      revision = 'a6e4e1c656429e5df52dcfcd92da87b642f6678b',
       url = 'https://github.com/slint-ui/tree-sitter-slint',
     },
     maintainers = { '@hunger' },
@@ -2086,7 +2086,7 @@ return {
   },
   solidity = {
     install_info = {
-      revision = '4e938a46c7030dd001bc99e1ac0f0c750ac98254',
+      revision = '048fe686cb1fde267243739b8bdbec8fc3a55272',
       url = 'https://github.com/JoranHonig/tree-sitter-solidity',
     },
     maintainers = { '@amaanq' },
@@ -2137,7 +2137,7 @@ return {
   sql = {
     install_info = {
       branch = 'gh-pages',
-      revision = '86e3d03837d282544439620eb74d224586074b8b',
+      revision = 'c686d575d6ee585c404c30dd1cf2a0f42d687460',
       url = 'https://github.com/derekstride/tree-sitter-sql',
     },
     maintainers = { '@derekstride' },
@@ -2260,7 +2260,7 @@ return {
   },
   t32 = {
     install_info = {
-      revision = '5b5e4336731bda5ea2e6b78b6a2d9e7a89032b75',
+      revision = 'c4c5fa31666c66036ad3ace8179a408b8478395f',
       url = 'https://github.com/xasc/tree-sitter-t32',
     },
     maintainers = { '@xasc' },
@@ -2469,7 +2469,7 @@ return {
   unison = {
     install_info = {
       generate = true,
-      revision = '873e599faaba40a69b8f9507f90bcfa0ae0bbe26',
+      revision = '16650de9f519e41f8e88b22b4c401d50fa0ac8ca',
       url = 'https://github.com/kylegoetz/tree-sitter-unison',
     },
     maintainers = { '@tapegram' },
