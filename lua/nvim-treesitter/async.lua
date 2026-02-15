@@ -1,3 +1,4 @@
+---@meta async vendored file, don't diagnose
 local pcall = copcall or pcall
 
 --- @param ... any
