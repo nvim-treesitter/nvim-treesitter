@@ -5,9 +5,11 @@ M.tiers = { 'stable', 'unstable', 'unmaintained', 'unsupported' }
 ---@class TSConfig
 ---@field install_dir string
 
+local default_dir = vim.fs.joinpath(vim.fn.stdpath('data') --[[@as string]], 'site')
+
 ---@type TSConfig
 local config = {
-  install_dir = vim.fs.joinpath(vim.fn.stdpath('data') --[[@as string]], 'site'),
+  install_dir = default_dir,
 }
 
 ---Setup call for users to override configuration configurations.
@@ -16,7 +18,13 @@ function M.setup(user_data)
   if user_data then
     if user_data.install_dir then
       user_data.install_dir = vim.fs.normalize(user_data.install_dir)
-      vim.o.rtp = user_data.install_dir .. ',' .. vim.o.rtp
+      local rtp = vim.split(vim.o.rtp, ',')
+      local idx = vim.iter(ipairs(rtp)):find(function(_, dir)
+        return dir == default_dir
+      end)
+      -- install after default_dir, only prepend when it's not found
+      table.insert(rtp, idx or 1, user_data.install_dir)
+      vim.o.rtp = table.concat(rtp, ',')
     end
     config = vim.tbl_deep_extend('force', config, user_data)
   end
