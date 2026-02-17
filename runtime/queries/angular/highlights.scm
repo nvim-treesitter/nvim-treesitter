@@ -28,6 +28,12 @@
 (binding_name
   (identifier) @keyword)
 
+(class_binding
+  [
+    (identifier)
+    (class_name)
+  ] @keyword)
+
 (event_binding
   (binding_name
     (identifier) @keyword))
