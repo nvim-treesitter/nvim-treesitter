@@ -1,4 +1,4 @@
-; inherits: ecma
+; inherits: typescript
 
 (glimmer_opening_tag) @indent.begin
 
