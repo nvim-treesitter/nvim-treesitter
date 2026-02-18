@@ -1204,10 +1204,9 @@ return {
   },
   kotlin = {
     install_info = {
-      revision = '6b9788578ae23a1bc7c87e8d564e0daf7671dee3',
+      revision = '48c964a9ddfe4387968d1b6412d7b39106fb7f39',
       url = 'https://github.com/fwcd/tree-sitter-kotlin',
     },
-    maintainers = { '@SalBakraa' },
     tier = 2,
   },
   koto = {
