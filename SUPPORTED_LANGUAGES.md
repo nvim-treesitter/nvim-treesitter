@@ -219,7 +219,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [prolog](https://github.com/foxyseta/tree-sitter-prolog) | unstable | `HFIJ ` | @foxyseta
 [promql](https://github.com/MichaHoffmann/tree-sitter-promql) | unstable | `H  J ` | @MichaHoffmann
 [properties](https://github.com/tree-sitter-grammars/tree-sitter-properties)[^properties] | unstable | `H  JL` | @ObserverOfTime
-[proto](https://github.com/treywood/tree-sitter-proto) | unstable | `HFIJ ` | @treywood
+[proto](https://github.com/coder3101/tree-sitter-proto) | unstable | `HFIJ ` | @stefanvanburen
 [prql](https://github.com/PRQL/tree-sitter-prql) | unstable | `H  J ` | @matthias-Q
 [psv](https://github.com/tree-sitter-grammars/tree-sitter-csv) | unstable | `H    ` | @amaanq
 [pug](https://github.com/zealot128/tree-sitter-pug) | unstable | `H  J ` | @zealot128

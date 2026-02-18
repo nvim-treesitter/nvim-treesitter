@@ -1710,10 +1710,10 @@ return {
   },
   proto = {
     install_info = {
-      revision = 'e9f6b43f6844bd2189b50a422d4e2094313f6aa3',
-      url = 'https://github.com/treywood/tree-sitter-proto',
+      revision = '0e122d8444fd67cd8fb72fc927323b36807e7ace',
+      url = 'https://github.com/coder3101/tree-sitter-proto',
     },
-    maintainers = { '@treywood' },
+    maintainers = { '@stefanvanburen' },
     tier = 2,
   },
   prql = {
