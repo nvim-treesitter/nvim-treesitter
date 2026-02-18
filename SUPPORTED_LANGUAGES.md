@@ -159,7 +159,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [kdl](https://github.com/tree-sitter-grammars/tree-sitter-kdl) | unstable | `HFIJL` | @amaanq
 [kitty](https://github.com/OXY2DEV/tree-sitter-kitty) | unstable | `H  J ` | @OXY2DEV
 [kos](https://github.com/kos-lang/tree-sitter-kos) | unstable | `HF JL` | @cdragan
-[kotlin](https://github.com/fwcd/tree-sitter-kotlin) | unstable | `HF JL` | @SalBakraa
+[kotlin](https://github.com/fwcd/tree-sitter-kotlin) | unstable | `HF JL` | 
 [koto](https://github.com/koto-lang/tree-sitter-koto) | unstable | `HF JL` | @irh
 [kusto](https://github.com/Willem-J-an/tree-sitter-kusto) | unstable | `H  J ` | @Willem-J-an
 [lalrpop](https://github.com/traxys/tree-sitter-lalrpop) | unstable | `HF JL` | @traxys
