@@ -302,6 +302,8 @@ local function do_install(logger, compile_location, target_location)
     local tempfile = target_location .. tostring(uv.hrtime())
     uv_rename(target_location, tempfile) -- parser may be in use: rename...
     uv_unlink(tempfile) -- ...and mark for garbage collection
+  else
+    uv_unlink(target_location) -- don't disturb existing memory-mapped content
   end
 
   local err = uv_copyfile(compile_location, target_location)
