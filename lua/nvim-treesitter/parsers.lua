@@ -2184,11 +2184,11 @@ return {
   },
   supercollider = {
     install_info = {
-      revision = '76b3cab1773f08bb7d3a185420b0a44c6da8c294',
+      revision = 'e2d1480de0a62cd53f81645cb39bc1f3fa2dce5a',
       url = 'https://github.com/madskjeldgaard/tree-sitter-supercollider',
     },
-    maintainers = { '@madskjeldgaard' },
-    tier = 3,
+    maintainers = { '@madskjeldgaard', '@elgiano' },
+    tier = 2,
   },
   superhtml = {
     install_info = {
