@@ -2188,7 +2188,7 @@ return {
       url = 'https://github.com/madskjeldgaard/tree-sitter-supercollider',
     },
     maintainers = { '@madskjeldgaard' },
-    tier = 2,
+    tier = 3,
   },
   superhtml = {
     install_info = {

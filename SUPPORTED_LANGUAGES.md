@@ -277,7 +277,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [starlark](https://github.com/tree-sitter-grammars/tree-sitter-starlark) | unstable | `HFIJL` | @amaanq
 [strace](https://github.com/sigmaSd/tree-sitter-strace) | unstable | `H  J ` | @amaanq
 [styled](https://github.com/mskelton/tree-sitter-styled) | unstable | `HFIJ ` | @mskelton
-[supercollider](https://github.com/madskjeldgaard/tree-sitter-supercollider) | unstable | `HFIJL` | @madskjeldgaard
+[supercollider](https://github.com/madskjeldgaard/tree-sitter-supercollider) | unmaintained | `HFIJL` | @madskjeldgaard
 [superhtml](https://github.com/kristoff-it/superhtml) | unstable | `H  J ` | @rockorager
 [surface](https://github.com/connorlay/tree-sitter-surface) | unstable | `HFIJ ` | @connorlay
 [svelte](https://github.com/tree-sitter-grammars/tree-sitter-svelte) | unstable | `HFIJL` | @amaanq
