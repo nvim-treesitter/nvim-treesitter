@@ -36,6 +36,7 @@ Language | Tier | Queries | Maintainer
 [caddy](https://github.com/opa-oz/tree-sitter-caddy) | unmaintained | `HFIJ ` | 
 [cairo](https://github.com/tree-sitter-grammars/tree-sitter-cairo) | unstable | `HFIJL` | @amaanq
 [capnp](https://github.com/tree-sitter-grammars/tree-sitter-capnp) | unstable | `HFIJL` | @amaanq
+[cel](https://github.com/bufbuild/tree-sitter-cel) | unstable | `HFIJL` | @stefanvanburen
 [chatito](https://github.com/tree-sitter-grammars/tree-sitter-chatito) | unstable | `HFIJL` | @ObserverOfTime
 [circom](https://github.com/Decurity/tree-sitter-circom) | unstable | `HF JL` | @alexandr-martirosyan
 [clojure](https://github.com/sogaiu/tree-sitter-clojure) | unstable | `HF JL` | @NoahTheDuke
