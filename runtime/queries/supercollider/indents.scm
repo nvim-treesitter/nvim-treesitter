@@ -12,20 +12,29 @@
   (variable_definition)
   (variable_definition_sequence
     (variable_definition))
-  (control_structure)
   (return_statement)
 ] @indent.begin
 
 [
   (parameter_call_list
-    (argument_calls))
-  "("
+    (_))
   ")"
-  "{"
   "}"
-  "["
   "]"
 ] @indent.branch
+
+; for auto-indent while typing
+(ERROR
+  "{") @indent.begin
+
+(ERROR
+  "}") @indent.branch
+
+(ERROR
+  "[") @indent.begin
+
+(ERROR
+  "]") @indent.branch
 
 [
   (block_comment)
