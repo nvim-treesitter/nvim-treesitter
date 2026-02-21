@@ -2174,6 +2174,15 @@ return {
     maintainers = { '@amaanq' },
     tier = 2,
   },
+  streamdevice_proto = {
+    install_info = {
+      revision = 'b638715ae8deb91c8bfedd7ff1fb27650f6e0309',
+      url = 'https://github.com/minijackson/tree-sitter-streamdevice-proto',
+    },
+    maintainers = { '@minijackson' },
+    readme_note = 'EPICS StreamDevice .proto files',
+    tier = 2,
+  },
   styled = {
     install_info = {
       revision = '319cdcaa0346ba6db668a222d938e5c3569e2a51',

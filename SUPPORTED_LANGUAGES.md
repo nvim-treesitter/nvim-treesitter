@@ -276,6 +276,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [ssh_config](https://github.com/tree-sitter-grammars/tree-sitter-ssh-config) | unstable | `HFIJL` | @ObserverOfTime
 [starlark](https://github.com/tree-sitter-grammars/tree-sitter-starlark) | unstable | `HFIJL` | @amaanq
 [strace](https://github.com/sigmaSd/tree-sitter-strace) | unstable | `H  J ` | @amaanq
+[streamdevice_proto](https://github.com/minijackson/tree-sitter-streamdevice-proto)[^streamdevice_proto] | unstable | `H IJL` | @minijackson
 [styled](https://github.com/mskelton/tree-sitter-styled) | unstable | `HFIJ ` | @mskelton
 [supercollider](https://github.com/madskjeldgaard/tree-sitter-supercollider) | unmaintained | `HFIJL` | @madskjeldgaard
 [superhtml](https://github.com/kristoff-it/superhtml) | unstable | `H  J ` | @rockorager
@@ -361,4 +362,5 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [^sflog]: Salesforce debug log
 [^slang]: Shader Slang
 [^snl]: EPICS Sequencer's SNL files
+[^streamdevice_proto]: EPICS StreamDevice .proto files
 <!--parserinfo-->
