@@ -174,7 +174,7 @@ return {
   },
   c_sharp = {
     install_info = {
-      revision = 'f1bf9a9b8410b1ebea900e2e5fc000007d5ef99d',
+      revision = '88366631d598ce6595ec655ce1591b315cffb14c',
       url = 'https://github.com/tree-sitter/tree-sitter-c-sharp',
     },
     maintainers = { '@amaanq' },
@@ -345,7 +345,7 @@ return {
   },
   desktop = {
     install_info = {
-      revision = '27c713cd097f85d3024569adf34e069cade84905',
+      revision = '4a99354f8e9bb7270586f6f539130c74e59cafdd',
       url = 'https://github.com/ValdezFOmar/tree-sitter-desktop',
     },
     maintainers = { '@ValdezFOmar' },
@@ -448,7 +448,7 @@ return {
   },
   editorconfig = {
     install_info = {
-      revision = 'b58de0ce2c52990c8913e39a8c14ce4a40e29a39',
+      revision = '406ab80f7dc4f3aac252ad3d106737a621dde47d',
       url = 'https://github.com/ValdezFOmar/tree-sitter-editorconfig',
     },
     maintainers = { '@ValdezFOmar' },
@@ -567,7 +567,7 @@ return {
   },
   fish = {
     install_info = {
-      revision = 'aa074a0bacde8b5823c592574d7138f156a95776',
+      revision = '5248e7c375183b83f70cc6d8a7b2f5438234d395',
       url = 'https://github.com/ram02z/tree-sitter-fish',
     },
     maintainers = { '@ram02z' },
@@ -1188,7 +1188,7 @@ return {
   },
   kitty = {
     install_info = {
-      revision = 'f821c16397ffab5b776d8781245215811438a624',
+      revision = 'fa6ab3fd32d890a0217495c96b35761e6d2dcb5b',
       url = 'https://github.com/OXY2DEV/tree-sitter-kitty',
     },
     maintainers = { '@OXY2DEV' },
@@ -1204,7 +1204,7 @@ return {
   },
   kotlin = {
     install_info = {
-      revision = '48c964a9ddfe4387968d1b6412d7b39106fb7f39',
+      revision = 'c10ad83a66c76855e006496db3bdb002afc49203',
       url = 'https://github.com/fwcd/tree-sitter-kotlin',
     },
     tier = 2,
@@ -1395,7 +1395,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = 'e4d15660e9984f742aa4bde95012d7e809ddb4d4',
+      revision = 'fe703bcb17ee58a3029df8a35099be1415877633',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     maintainers = { '@artagnon' },
@@ -1709,7 +1709,7 @@ return {
   },
   proto = {
     install_info = {
-      revision = '0e122d8444fd67cd8fb72fc927323b36807e7ace',
+      revision = '213175b7aa595fab7eba7d4eadeb62d9c7e0879e',
       url = 'https://github.com/coder3101/tree-sitter-proto',
     },
     maintainers = { '@stefanvanburen' },
@@ -1898,7 +1898,7 @@ return {
   },
   rescript = {
     install_info = {
-      revision = '3159c949c15096b02b470bd4025754806fc7a17d',
+      revision = '43c2f1f35024918d415dc933d4cc534d6419fedf',
       url = 'https://github.com/rescript-lang/tree-sitter-rescript',
     },
     maintainers = { '@ribru17' },
@@ -2136,7 +2136,7 @@ return {
   sql = {
     install_info = {
       branch = 'gh-pages',
-      revision = 'c686d575d6ee585c404c30dd1cf2a0f42d687460',
+      revision = '71f3c41ff9c99505b2bda30361baaefdc3fed2b2',
       url = 'https://github.com/derekstride/tree-sitter-sql',
     },
     maintainers = { '@derekstride' },
@@ -2227,7 +2227,7 @@ return {
   swift = {
     install_info = {
       generate = true,
-      revision = '12bacf3ee30f6c39e7cfa6ca6625cac012589236',
+      revision = 'ae604674719764ce26f18017afa4a98949077075',
       url = 'https://github.com/alex-pinkus/tree-sitter-swift',
     },
     maintainers = { '@alex-pinkus' },
@@ -2624,7 +2624,7 @@ return {
   },
   xresources = {
     install_info = {
-      revision = '8ec70e2171025d09146afd2cce9712affe9ff3dd',
+      revision = '30c59f2f095910509a8379f5de71db3acfef15d6',
       url = 'https://github.com/ValdezFOmar/tree-sitter-xresources',
     },
     maintainers = { '@ValdezFOmar' },
