@@ -1,4 +1,5 @@
 [
+  (comment)
   (arguments)
   (for_in_statement)
   (for_statement)
