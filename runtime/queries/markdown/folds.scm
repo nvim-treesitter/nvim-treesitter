@@ -3,9 +3,10 @@
   (indented_code_block)
   (list_item
     (list))
-  (section)
 ] @fold
   (#trim! @fold))
+
+(section) @fold
 
 (section
   (list) @fold
