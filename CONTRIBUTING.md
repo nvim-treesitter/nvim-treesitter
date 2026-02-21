@@ -14,6 +14,21 @@ Before describing these in detail, some general advice:
 
 ## Parsers
 
+>[!IMPORTANT]
+> To qualify for inclusion, a parser must meet the following criteria:
+> * correspond to a filetype detected by Neovim (nightly)
+> * feature complete, tested by users, and actively maintained (according to maintainer discretion)
+> * hosted or mirrored on Github (other codeforges are not reliable enough for CI)
+> * covered by CI using [upstream workflows](https://github.com/tree-sitter/workflows)
+> * provide reference queries covered by a [`ts_query_ls` workflow](https://github.com/tree-sitter-grammars/template/blob/9c46d09d688d27c7aef31c2b32f50260de4e7906/.github/workflows/ci.yml#L69-L86)
+> * if the repo contains a `src/parser.c`, it must support the latest ABI
+> * if the repo does _not_ contain a `src/parser.c`, it must contain an up-to-date `src/grammar.json`
+> * if the repo contains an external scanner, it must be written in C99
+>
+> Tier 1 parsers (preferred) in addition need to
+> * make regular releases following semver (_patch_ for fixes not affecting queries; _minor_ for changes introducing new nodes or patterns; _major_ for changes removing nodes or previously valid patterns)
+> * provide WASM release artifacts
+
 To add a new parser, edit the following files:
 
 1. In `lua/parsers.lua`, add an entry to the returned table of the following form:
@@ -37,28 +52,13 @@ zimbu = {
 ```
 
 >[!IMPORTANT]
-> If the repo does not contain a pre-generated `src/parser.c`, it **must** at least contain `src/grammar.json` so that the parser can be generated without having `node` installed.
-
->[!IMPORTANT]
 > The "maintainers" here refers to the person maintaining the **queries** in `nvim-treesitter`, not the parser maintainers (who likely don't use Neovim). The maintainers' duty is to review issues and PRs related to the query and to keep them updated with respect to parser changes.
-
->[!IMPORTANT]
-> Due to reliability issues with smaller codeforges, only Github-hosted parsers are currently eligible for inclusion. (The development may happen elsewhere, but there must at least exist a Github mirror to pull the source from.) We are monitoring the situation and hope to support more codeforges again in the future.
-
->[!NOTE]
-> To qualify for Tier 1 ("stable"), a parser needs to
-> * make releases following semver (_patch_ for fixes not affecting queries; _minor_ for changes introducing new nodes or patterns; _major_ for changes removing nodes or previously valid patterns);
-> * provide WASM release artifacts;
-> * include and maintain reference queries.
 
 2. If the parser name is not the same as the Vim filetype, add an entry to the `filetypes` table in `plugin/filetypes.lua`:
 
 ```lua
   zimbu = { 'zu' },
 ```
-
->[!IMPORTANT]
-> Only external scanners written in C are supported for portability reasons.
 
 3. Update the list of [supported languages] by running `make docs` (or `./scripts/update-readme.lua` if on Windows).
 

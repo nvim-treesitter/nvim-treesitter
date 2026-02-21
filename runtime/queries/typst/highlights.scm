@@ -106,7 +106,17 @@
 
 (emph) @markup.italic
 
-(url) @markup.link.url
+((url) @markup.link.url
+  (#set! @markup.link.url url @markup.link.url))
+
+(call
+  item: (ident) @_link
+  (#eq? @_link "link")
+  (group
+    .
+    (string) @markup.link.url
+    (#offset! @markup.link.url 0 1 0 -1)
+    (#set! @markup.link.url url @markup.link.url)))
 
 ; code blocks
 (raw_span) @markup.raw

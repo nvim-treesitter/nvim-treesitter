@@ -1,5 +1,5 @@
 #!/usr/bin/env -S nvim -l
-vim.opt.runtimepath:append('.')
+vim.o.rtp = vim.o.rtp .. ',.'
 
 local configs = require('nvim-treesitter.parsers')
 local parsers = #_G.arg > 0 and { unpack(_G.arg) }

@@ -197,17 +197,13 @@ end
 ---@param output_dir string
 ---@return string? err
 local function do_download(logger, url, project_name, cache_dir, revision, output_dir)
-  local is_gitlab = url:find('gitlab.com', 1, true)
-
   local tmp = output_dir .. '-tmp'
 
   rmpath(tmp)
   a.schedule()
 
   url = url:gsub('.git$', '')
-  local target = is_gitlab
-      and string.format('%s/-/archive/%s/%s-%s.tar.gz', url, revision, project_name, revision)
-    or string.format('%s/archive/%s.tar.gz', url, revision)
+  local target = string.format('%s/archive/%s.tar.gz', url, revision)
 
   local tarball_path = fs.joinpath(cache_dir, project_name .. '.tar.gz')
 
@@ -218,6 +214,8 @@ local function do_download(logger, url, project_name, cache_dir, revision, outpu
       '--silent',
       '--fail',
       '--show-error',
+      '--retry',
+      '7',
       '-L', -- follow redirects
       target,
       '--output',
@@ -304,6 +302,8 @@ local function do_install(logger, compile_location, target_location)
     local tempfile = target_location .. tostring(uv.hrtime())
     uv_rename(target_location, tempfile) -- parser may be in use: rename...
     uv_unlink(tempfile) -- ...and mark for garbage collection
+  else
+    uv_unlink(target_location) -- don't disturb existing memory-mapped content
   end
 
   local err = uv_copyfile(compile_location, target_location)
