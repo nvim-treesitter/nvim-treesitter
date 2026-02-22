@@ -448,11 +448,11 @@ return {
   },
   editorconfig = {
     install_info = {
-      revision = '406ab80f7dc4f3aac252ad3d106737a621dde47d',
+      revision = 'v2.0.0',
       url = 'https://github.com/ValdezFOmar/tree-sitter-editorconfig',
     },
     maintainers = { '@ValdezFOmar' },
-    tier = 2,
+    tier = 1,
   },
   eds = {
     install_info = {

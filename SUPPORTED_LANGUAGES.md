@@ -66,7 +66,7 @@ Language | Tier | Queries | Maintainer
 [earthfile](https://github.com/glehmann/tree-sitter-earthfile) | unstable | `H  J ` | @glehmann
 [ebnf](https://github.com/RubixDev/ebnf) | unstable | `H  J ` | @RubixDev
 ecma (queries only)[^ecma] | unstable | `HFIJL` | @steelsojka
-[editorconfig](https://github.com/ValdezFOmar/tree-sitter-editorconfig) | unstable | `HF J ` | @ValdezFOmar
+[editorconfig](https://github.com/ValdezFOmar/tree-sitter-editorconfig) | stable | `HF J ` | @ValdezFOmar
 [eds](https://github.com/uyha/tree-sitter-eds) | unstable | `HF   ` | @uyha
 [eex](https://github.com/connorlay/tree-sitter-eex) | unstable | `H  J ` | @connorlay
 [elixir](https://github.com/elixir-lang/tree-sitter-elixir) | unstable | `HFIJL` | @connorlay
