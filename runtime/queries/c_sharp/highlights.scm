@@ -327,6 +327,9 @@
 (lambda_expression
   type: (identifier) @type)
 
+(lambda_expression
+  (modifier) @keyword.modifier)
+
 (as_expression
   right: (identifier) @type)
 
