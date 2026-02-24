@@ -345,11 +345,11 @@ return {
   },
   desktop = {
     install_info = {
-      revision = '4a99354f8e9bb7270586f6f539130c74e59cafdd',
+      revision = 'v1.1.1',
       url = 'https://github.com/ValdezFOmar/tree-sitter-desktop',
     },
     maintainers = { '@ValdezFOmar' },
-    tier = 2,
+    tier = 1,
   },
   devicetree = {
     install_info = {
@@ -2624,11 +2624,11 @@ return {
   },
   xresources = {
     install_info = {
-      revision = '30c59f2f095910509a8379f5de71db3acfef15d6',
+      revision = 'v1.0.0',
       url = 'https://github.com/ValdezFOmar/tree-sitter-xresources',
     },
     maintainers = { '@ValdezFOmar' },
-    tier = 2,
+    tier = 1,
   },
   yaml = {
     install_info = {
