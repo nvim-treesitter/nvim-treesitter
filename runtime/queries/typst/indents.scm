@@ -11,4 +11,4 @@
   "]"
   "}"
   ")"
-]  @indent.end @indent.branch
+] @indent.end @indent.branch
