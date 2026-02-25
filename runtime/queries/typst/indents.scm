@@ -3,7 +3,8 @@
   (let)
   (show)
   (call)
-  (block)
+  (for)
+  (branch)
 ] @indent.begin
 
 [
