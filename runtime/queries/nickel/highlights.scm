@@ -51,9 +51,13 @@
   "!="
   "<"
   ">"
+  "@"
+  ".."
 ] @operator
 
 (type_atom) @type
+
+(static_string) @string
 
 (chunk_literal_single) @string
 
@@ -83,9 +87,9 @@
   "*"
 ] @punctuation.delimiter
 
-(multstr_start) @punctuation.bracket
+(multstr_start) @string
 
-(multstr_end) @punctuation.bracket
+(multstr_end) @string
 
 (interpolation_start) @punctuation.bracket
 
