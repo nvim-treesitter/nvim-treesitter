@@ -113,6 +113,8 @@ end)
 local get_language_shiftwidth = memoize(function(bufnr, lang)
   ---@type integer
   local global_shiftwidth = vim.go.shiftwidth
+  ---@type integer
+  local buffer_shiftwidth = vim.bo.shiftwidth
   -- See :h 'shiftwidth': If set to 0, should use tabstop (0 is not the default value,
   -- but users may rely on this behavior)
   if buffer_shiftwidth == 0 then
