@@ -107,6 +107,41 @@ end, function(bufnr, root, lang)
   return tostring(bufnr) .. root:id() .. '_' .. lang
 end)
 
+local get_language_shiftwidth = memoize(function(bufnr, lang)
+  local buffer_shiftwidth = vim.bo.shiftwidth
+  local global_shiftwidth = vim.go.shiftwidth
+  -- See :h 'shiftwidth': If set to 0, should use tabstop (0 is not the default value,
+  -- but users may rely on this behavior)
+  if buffer_shiftwidth == 0 then
+    buffer_shiftwidth = vim.bo.tabstop
+  end
+  if global_shiftwidth == 0 then
+    global_shiftwidth = vim.bo.tabstop
+  end
+
+  local lang_shiftwidth = nil
+  -- Note: get_filetypes(lang) always includes `lang` in the returned array of filetypes even if
+  -- `lang` is not a filetype
+  local filetypes = vim.treesitter.language.get_filetypes(lang)
+  for _, ft in ipairs(filetypes) do
+    -- filetype.get_option will default to the global value for the option
+    -- if (1) there is no local equivalent set, or (2) the filetype does not exist
+    local filetype_shiftwidth = vim.filetype.get_option(ft, 'shiftwidth')
+    if filetype_shiftwidth == 0 then
+      filetype_shiftwidth = vim.filetype.get_option(ft, 'tabstop')
+    end
+    if filetype_shiftwidth ~= global_shiftwidth then
+      lang_shiftwidth = filetype_shiftwidth
+    end
+  end
+
+  -- if lang_shiftwidth is nil, then it is either unset OR it is the same as
+  -- global_shiftwidth
+  return lang_shiftwidth or global_shiftwidth or buffer_shiftwidth
+end, function(bufnr, lang)
+  return tostring(bufnr) .. '_' .. lang
+end)
+
 ---@param lnum integer (1-indexed)
 ---@return integer
 function M.get_indent(lnum)
@@ -172,15 +207,7 @@ function M.get_indent(lnum)
   if root_start ~= 0 then
     -- injected tree
     indent = vim.fn.indent(root:start() + 1)
-    -- Inside an injected tree, we have a different language than the filetype of the current buffer,
-    -- so it doesn't make sense to use the value of 'shiftwidth' for the current buffer. That's why
-    -- we usew the default 'shiftwidth' for the injected language's filetype!
-    indent_size = vim.api.nvim_get_option_value('shiftwidth', {
-      -- Note: lang() returns the *language parser name*, which may be associated with multiple
-      -- filetypes. However, the language name is required to itself match the name of *one of
-      -- those* filetypes as well, which is why it is OK to pass as a filetype argument.
-      filetype = lang_tree:lang(),
-    })
+    indent_size = get_language_shiftwidth(bufnr, lang_tree:lang())
   end
 
   -- tracks to ensure multiple indent levels are not applied for same line
