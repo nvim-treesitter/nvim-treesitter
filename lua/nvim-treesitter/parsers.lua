@@ -1922,11 +1922,11 @@ return {
   },
   robot = {
     install_info = {
-      revision = 'e34def7cb0d8a66a59ec5057fe17bb4e6b17b56a',
+      revision = 'v1.2.0',
       url = 'https://github.com/Hubro/tree-sitter-robot',
     },
     maintainers = { '@Hubro' },
-    tier = 2,
+    tier = 1,
   },
   robots_txt = {
     install_info = {
