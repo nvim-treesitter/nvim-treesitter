@@ -132,7 +132,7 @@ local get_language_shiftwidth = memoize(function(bufnr, lang)
     -- filetype.get_option will default to the global value for the option
     -- if (1) there is no local equivalent set, or (2) the filetype does not exist
     ---@type integer
-    local filetype_shiftwidth = vim.filetype.get_option(ft, 'shiftwidth')
+    local filetype_shiftwidth = vim.filetype.get_option(ft, 'shiftwidth')--[[@as integer]]
     if filetype_shiftwidth == 0 then
       filetype_shiftwidth = vim.filetype.get_option(ft, 'tabstop')--[[@as integer]]
     end
