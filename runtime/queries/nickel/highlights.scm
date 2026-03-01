@@ -30,7 +30,13 @@
 
 (types) @type
 
-"Array" @type.builtin
+[
+  "Array"
+  "Number"
+  "Dyn"
+  "Bool"
+  "String"
+] @type.builtin
 
 ; BUILTIN Constants
 (bool) @boolean
@@ -46,14 +52,28 @@
   "|>"
   "="
   "&"
+  "&&"
+  "||"
   "=="
+  "+"
+  "-"
+  "*"
   "/"
+  "%"
+  "!"
+  "?"
   "!="
   "<"
+  "<="
   ">"
+  ">="
   "@"
   ".."
+  "=>"
+  "++"
 ] @operator
+
+"or" @keyword.operator
 
 (type_atom) @type
 
@@ -80,22 +100,24 @@
   ","
   "."
   ":"
+  ";"
   "|"
   "->"
-  "+"
-  "-"
-  "*"
 ] @punctuation.delimiter
 
 (multstr_start) @string
 
 (multstr_end) @string
 
-(interpolation_start) @punctuation.bracket
-
-(interpolation_end) @punctuation.bracket
+[
+  (interpolation_start)
+  (interpolation_end)
+] @punctuation.special
 
 (builtin) @function.builtin
+
+(builtin
+  "%" @function.builtin)
 
 (fun_expr
   pats: (pattern_fun
