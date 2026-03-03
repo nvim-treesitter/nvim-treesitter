@@ -97,7 +97,7 @@ local function install_health()
   end
   if
     vim.iter(vim.api.nvim_list_runtime_paths()):any(function(p)
-      return installdir == vim.fs.normalize(p) .. '/'
+      return vim.fs.normalize(installdir) == vim.fs.normalize(p)
     end)
   then
     health.ok('is in runtimepath.')
