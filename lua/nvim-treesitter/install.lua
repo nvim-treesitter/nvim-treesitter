@@ -97,7 +97,26 @@ end
 local function system(cmd, opts)
   local cwd = opts and opts.cwd or uv.cwd()
   log.trace('running job: (cwd=%s) %s', cwd, table.concat(cmd, ' '))
-  local r = a.await(3, vim.system, cmd, opts) --[[@as vim.SystemCompleted]]
+
+  ---@param _cmd string[]
+  ---@param _opts vim.SystemOpts
+  ---@param on_exit fun(result: vim.SystemCompleted)
+  ---@return vim.SystemObj?
+  local function safe_system(_cmd, _opts, on_exit)
+    local ok, ret = pcall(vim.system, _cmd, _opts, on_exit)
+    if not ok then
+      on_exit({
+        code = 125,
+        signal = 0,
+        stdout = '',
+        stderr = ret --[[@as string]],
+      })
+      return nil
+    end
+    return ret --[[@as vim.SystemObj]]
+  end
+
+  local r = a.await(3, safe_system, cmd, opts) --[[@as vim.SystemCompleted]]
   a.schedule()
   if r.stdout and r.stdout ~= '' then
     log.trace('stdout -> %s', r.stdout)
