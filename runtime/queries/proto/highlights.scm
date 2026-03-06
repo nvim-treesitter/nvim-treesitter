@@ -11,6 +11,9 @@
 (field_option
   (identifier) @property)
 
+(enum_value_option
+  (identifier) @property)
+
 (block_lit
   (identifier) @property)
 
@@ -21,13 +24,17 @@
   "option"
   "reserved"
   "syntax"
+  "edition"
   "to"
+  "max"
 ] @keyword
 
 [
   "enum"
+  "group"
   "service"
   "message"
+  "map"
 ] @keyword.type
 
 "rpc" @keyword.function
@@ -35,9 +42,14 @@
 "returns" @keyword.return
 
 [
+  "export"
+  "local"
   "optional"
   "repeated"
   "required"
+  "stream"
+  "weak"
+  "public"
 ] @keyword.modifier
 
 [
@@ -64,6 +76,8 @@
   "\"proto3\""
   "\"proto2\""
 ] @string.special
+
+(escape_sequence) @string.escape
 
 (int_lit) @number
 
@@ -97,4 +111,8 @@
   ":"
 ] @punctuation.delimiter
 
-"=" @operator
+[
+  "="
+  "-"
+  "+"
+] @operator
