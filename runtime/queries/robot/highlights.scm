@@ -10,7 +10,13 @@
   (test_case_setting)
 ] @keyword
 
-(variable_definition
+(scalar_variable
+  (variable_name) @variable)
+
+(list_variable
+  (variable_name) @variable)
+
+(dictionary_variable
   (variable_name) @variable)
 
 (keyword_definition
