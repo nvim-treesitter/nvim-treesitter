@@ -2589,7 +2589,7 @@ return {
   },
   wit = {
     install_info = {
-      revision = 'v1.2.0',
+      revision = 'v1.3.0',
       url = 'https://github.com/bytecodealliance/tree-sitter-wit',
     },
     maintainers = { '@mkatychev' },
@@ -2687,7 +2687,7 @@ return {
   },
   zsh = {
     install_info = {
-      revision = 'v0.56.0',
+      revision = 'v0.57.0',
       url = 'https://github.com/georgeharker/tree-sitter-zsh',
     },
     maintainers = { '@georgeharker' },
