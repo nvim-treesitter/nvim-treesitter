@@ -125,7 +125,7 @@ return {
   },
   blade = {
     install_info = {
-      revision = '42b3c5a06bc29fbd2c2cbd52b96113365fbed646',
+      revision = 'b9436b7b936907aff730de0dac1b99d7c632cc86',
       url = 'https://github.com/EmranMR/tree-sitter-blade',
     },
     maintainers = { '@calebdw' },
@@ -472,7 +472,7 @@ return {
   },
   elixir = {
     install_info = {
-      revision = 'd24cecee673c4c770f797bac6f87ae4b6d7ddec5',
+      revision = '5c22791c9836d436ce31de5e454fbad0e706ea96',
       url = 'https://github.com/elixir-lang/tree-sitter-elixir',
     },
     maintainers = { '@connorlay' },
@@ -683,7 +683,7 @@ return {
   },
   gitcommit = {
     install_info = {
-      revision = 'a716678c0f00645fed1e6f1d0eb221481dbd6f6d',
+      revision = 'f912e0eec7c76da79df94a3e94cb8432244cddcd',
       url = 'https://github.com/gbprod/tree-sitter-gitcommit',
     },
     maintainers = { '@gbprod' },
@@ -841,7 +841,7 @@ return {
   },
   groovy = {
     install_info = {
-      revision = 'a88865a3301a538e2060af5b401f4f431f71406e',
+      revision = '781d9cd1b482a70a6b27091e5c9e14bbcab3b768',
       url = 'https://github.com/murtaza64/tree-sitter-groovy',
     },
     maintainers = { '@murtaza64' },
@@ -1009,7 +1009,7 @@ return {
   },
   idl = {
     install_info = {
-      revision = 'e6b8b4d2ba285caacf6f9e931f1f637f5bc02b03',
+      revision = 'e07d32972b41cc4c02cfd49f9df2abaa3ae54303',
       url = 'https://github.com/cathaysia/tree-sitter-idl',
     },
     maintainers = { '@cathaysia' },
@@ -1065,7 +1065,7 @@ return {
   },
   javadoc = {
     install_info = {
-      revision = 'd1a2efc871825ff29a1d241cdcac5713c99cfd54',
+      revision = '42c9bc340c90ec15ed96eb4314269e8249376be9',
       url = 'https://github.com/rmuir/tree-sitter-javadoc',
     },
     maintainers = { '@rmuir' },
@@ -1204,7 +1204,7 @@ return {
   },
   kotlin = {
     install_info = {
-      revision = 'cbed96ab13dbc082eeeb2e8333c342a62829c29d',
+      revision = 'f3a1ea74304adad67164a0a6ffe729428748a7a7',
       url = 'https://github.com/fwcd/tree-sitter-kotlin',
     },
     tier = 2,
@@ -1276,7 +1276,7 @@ return {
   },
   liquidsoap = {
     install_info = {
-      revision = 'abd0eccddd680102064e0eca82ef954bd8d1a301',
+      revision = '0169d92b0a93e9f32289533ef23abdafca579e56',
       url = 'https://github.com/savonet/tree-sitter-liquidsoap',
     },
     maintainers = { '@toots' },
@@ -1363,7 +1363,7 @@ return {
   },
   matlab = {
     install_info = {
-      revision = '574dde565caddf8cf44eec7df3cb89eb96053ed7',
+      revision = 'c2390a59016f74e7d5f75ef09510768b4f30217e',
       url = 'https://github.com/acristoffers/tree-sitter-matlab',
     },
     maintainers = { '@acristoffers' },
@@ -1475,7 +1475,7 @@ return {
   },
   nu = {
     install_info = {
-      revision = 'bb3f533e5792260291945e1f329e1f0a779def6e',
+      revision = 'f4793e3809bb84e78dee260b47085d8203a58d88',
       url = 'https://github.com/nushell/tree-sitter-nu',
     },
     maintainers = { '@abhisheksingh0x558' },
@@ -1606,7 +1606,7 @@ return {
   },
   pkl = {
     install_info = {
-      revision = 'a02fc36f6001a22e7fdf35eaabbadb7b39c74ba5',
+      revision = 'ed032d19364318750139afbde59eeb674cda1b4c',
       url = 'https://github.com/apple/tree-sitter-pkl',
     },
     maintainers = { '@ribru17' },
@@ -1709,7 +1709,7 @@ return {
   },
   proto = {
     install_info = {
-      revision = 'f0e767689c6e9efe7ff2e4b8680db71411915588',
+      revision = '5e0d0456c4be881a3007f35957018a1eb526aed7',
       url = 'https://github.com/coder3101/tree-sitter-proto',
     },
     maintainers = { '@stefanvanburen' },
@@ -2258,7 +2258,7 @@ return {
   },
   t32 = {
     install_info = {
-      revision = 'c4c5fa31666c66036ad3ace8179a408b8478395f',
+      revision = '05d4e5469fd50b08981e6e67ea2c9011b2b76206',
       url = 'https://github.com/xasc/tree-sitter-t32',
     },
     maintainers = { '@xasc' },
@@ -2515,7 +2515,7 @@ return {
   },
   vhdl = {
     install_info = {
-      revision = '7e0d014691c1b8c25e8fe8f30cc3ac4649df3f57',
+      revision = '58114f35d0865e348692256bfc5ae661fc1efb0c',
       url = 'https://github.com/jpt13653903/tree-sitter-vhdl',
     },
     maintainers = { '@jpt13653903' },
