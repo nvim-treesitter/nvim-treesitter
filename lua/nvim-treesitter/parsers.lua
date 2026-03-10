@@ -1498,7 +1498,7 @@ return {
     maintainers = { '@ColinKennedy' },
     tier = 2,
   },
-  objectscript = {
+  objectscript_udl = {
     install_info = {
       location = 'udl',
       revision = 'e03cd14c61bda43a135b23352f7fb695c2e9567f',
@@ -1506,7 +1506,7 @@ return {
     },
     maintainers = { '@davem-intersys', '@hkimura-intersys' },
     tier = 2,
-  }
+  },
   ocaml = {
     install_info = {
       location = 'grammars/ocaml',
