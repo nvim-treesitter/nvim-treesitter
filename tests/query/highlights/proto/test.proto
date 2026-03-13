@@ -19,19 +19,27 @@ import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 //<- @keyword.import
 
 option (gogoproto.sizer_all) = true;
+//      ^^^^^^^^^ @variable
+//                ^^^^^^^^^ @variable.member
 option (gogoproto.marshaler_all) = true;
+//      ^^^^^^^^^ @variable
+//                ^^^^^^^^^^^^^ @variable.member
 option (gogoproto.unmarshaler_all.foo) = true;
+//      ^^^^^^^^^ @variable
+//                ^^^^^^^^^^^^^^^ @variable.member
+//                               ^ @punctuation.delimiter
+//                                ^^^ @variable.member
 
 message LogContent
 //<- @keyword.type
 {
     required string Key = 1;
-//           ^^^^^^ @type
+//           ^^^^^^ @type.builtin
 //                  ^^^ @property
 //                      ^ @operator
 //                        ^ @number
     required string Value = 2;
-//           ^^^^^^ @type
+//           ^^^^^^ @type.builtin
 //                  ^^^^^ @property
     required CustomType Value = 2;
 //  ^^^^^^^^ @keyword.modifier
