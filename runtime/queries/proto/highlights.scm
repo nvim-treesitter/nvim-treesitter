@@ -1,11 +1,25 @@
-(full_ident
-  (identifier) @variable)
+(package
+  (full_ident
+    (identifier) @module))
 
-(full_ident
-  (identifier)
-  (identifier) @variable.member)
+(extend
+  (full_ident
+    (identifier) @type))
+
+(constant
+  (full_ident
+    (identifier) @constant))
 
 (field
+  (identifier) @property)
+
+(map_field
+  (identifier) @property)
+
+(oneof
+  (identifier) @type)
+
+(oneof_field
   (identifier) @property)
 
 (field_option
@@ -18,23 +32,26 @@
   (identifier) @property)
 
 [
-  "extend"
-  "extensions"
-  "oneof"
   "option"
-  "reserved"
   "syntax"
   "edition"
+] @keyword.directive
+
+[
+  "reserved"
   "to"
   "max"
 ] @keyword
 
 [
   "enum"
+  "extend"
+  "extensions"
   "group"
-  "service"
   "message"
   "map"
+  "oneof"
+  "service"
 ] @keyword.type
 
 "rpc" @keyword.function
@@ -60,22 +77,29 @@
 [
   (key_type)
   (type)
+] @type.builtin
+
+[
   (message_name)
   (enum_name)
   (service_name)
-  (rpc_name)
   (message_or_enum_type)
 ] @type
+
+(rpc_name) @function.method
 
 (enum_field
   (identifier) @constant)
 
 (string) @string
 
+(import
+  path: (string) @string.special.path)
+
 [
   "\"proto3\""
   "\"proto2\""
-] @string.special
+] @string.special.symbol
 
 (escape_sequence) @string.escape
 
@@ -88,10 +112,9 @@
   (false)
 ] @boolean
 
-(comment) @comment @spell
+(comment) @spell
 
-((comment) @comment.documentation
-  (#lua-match? @comment.documentation "^/[*][*][^*].*[*]/$"))
+(comment) @comment
 
 [
   "("
