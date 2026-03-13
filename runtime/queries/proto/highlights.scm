@@ -31,6 +31,16 @@
 (block_lit
   (identifier) @property)
 
+; Extension option names, e.g. option (foo.bar) = ...
+(option
+  (full_ident
+    (identifier) @variable))
+
+(option
+  (full_ident
+    (identifier)
+    (identifier) @variable.member))
+
 [
   "option"
   "syntax"
