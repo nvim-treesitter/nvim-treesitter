@@ -221,6 +221,9 @@
   "fsharp": {
     "revision": "02929f084726db969e5b916d144436f248146824"
   },
+  "fstar": {
+    "revision": "cdb06d462e0ee727c313f3e07c71bc2d288e0f89"
+  },
   "func": {
     "revision": "f780ca55e65e7d7360d0229331763e16c452fc98"
   },

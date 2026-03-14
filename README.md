@@ -256,6 +256,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [fortran](https://github.com/stadelmanma/tree-sitter-fortran) (maintained by @amaanq)
 - [x] [fsh](https://github.com/mgramigna/tree-sitter-fsh) (maintained by @mgramigna)
 - [x] [fsharp](https://github.com/ionide/tree-sitter-fsharp) (maintained by @nsidorenco)
+- [x] [fstar](https://github.com/sei40kr/tree-sitter-fstar) (maintained by @sei40kr)
 - [x] [func](https://github.com/amaanq/tree-sitter-func) (maintained by @amaanq)
 - [x] [fusion](https://gitlab.com/jirgn/tree-sitter-fusion.git) (maintained by @jirgn)
 - [x] [GAP system](https://github.com/gap-system/tree-sitter-gap) (maintained by @reiniscirpons)

@@ -684,6 +684,14 @@ list.fsharp = {
   maintainers = { "@nsidorenco" },
 }
 
+list.fstar = {
+  install_info = {
+    url = "https://github.com/sei40kr/tree-sitter-fstar",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  maintainers = { "@sei40kr" },
+}
+
 list.func = {
   install_info = {
     url = "https://github.com/amaanq/tree-sitter-func",
