@@ -16,16 +16,15 @@ For details on these and how to help improving them, see [CONTRIBUTING.md](./CON
 
 ## Requirements
 
-- Neovim 0.11.0 or later (nightly)
+- Neovim 0.12.0 or later (nightly)
 - `tar` and `curl` in your path
-- [`tree-sitter-cli`](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) (0.26.1 or later)
+- [`tree-sitter-cli`](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) (0.26.1 or later, installed via your package manager, **not npm**)
 - a C compiler in your path (see <https://docs.rs/cc/latest/cc/#compile-time-requirements>)
 
 >[!IMPORTANT]
-> The **support policy** for Neovim is
-> 1. the _latest_ [stable release](https://github.com/neovim/neovim/releases/tag/stable);
-> 2. the _latest_ [nightly prerelease](https://github.com/neovim/neovim/releases/tag/nightly).
-> Other versions may work but are neither tested nor considered for fixes. In general, compatibility with Nvim 0.X is removed after the release of Nvim 0.(X+1).1.
+> The current **support policy** for Neovim is
+> * the _latest_ [nightly prerelease](https://github.com/neovim/neovim/releases/tag/nightly).
+> Other versions may work but are neither tested nor considered for fixes. Once this plugin is [considered stable](https://github.com/nvim-treesitter/nvim-treesitter/issues/4767), support will be added for the latest release.
 
 ## Installation
 
@@ -50,7 +49,7 @@ It is strongly recommended to automate this; e.g., using the following spec with
 `nvim-treesitter` can be configured by calling `setup`. **You do not need to call `setup` for `nvim-treesitter` to work using default values.**
 
 ```lua
-require'nvim-treesitter'.setup {
+require('nvim-treesitter').setup {
   -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
   install_dir = vim.fn.stdpath('data') .. '/site'
 }
@@ -59,7 +58,7 @@ require'nvim-treesitter'.setup {
 Parsers and queries can then be installed with
 
 ```lua
-require'nvim-treesitter'.install { 'rust', 'javascript', 'zig' }
+require('nvim-treesitter').install { 'rust', 'javascript', 'zig' }
 ```
 
 (This is a no-op if the parsers are already installed.) Note that this function runs asynchronously; for synchronous installation in a script context ("bootstrapping"), you need to `wait()` for it to finish:
