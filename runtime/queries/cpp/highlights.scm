@@ -214,10 +214,20 @@
   "using"
   "requires"
   "constexpr"
-  "import"
-  "export"
-  "module"
 ] @keyword
+
+(module_declaration
+  "module" @keyword)
+
+(module_declaration
+  "export" @keyword
+  "module" @keyword)
+
+(import_declaration
+  "import" @keyword)
+
+(export_declaration
+  "export" @keyword)
 
 [
   "class"
