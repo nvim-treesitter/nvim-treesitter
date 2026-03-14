@@ -98,11 +98,16 @@ local function system(cmd, opts)
   local cwd = opts and opts.cwd or uv.cwd()
   log.trace('running job: (cwd=%s) %s', cwd, table.concat(cmd, ' '))
 
+  ---vim.system throws an error when uv.spawn fails, in particular if cmd or cwd
+  ---does not exist. This kills the coroutine, so the async'ed call simply hangs.
+  ---Instead, we pass a wrapper that catches errors and propagates them as a proper
+  ---`SystemObj`.
+  ---TODO(clason): remove when https://github.com/neovim/neovim/issues/38257 is resolved.
   ---@param _cmd string[]
   ---@param _opts vim.SystemOpts
   ---@param on_exit fun(result: vim.SystemCompleted)
   ---@return vim.SystemObj?
-  local function safe_system(_cmd, _opts, on_exit)
+  local function system_wrap(_cmd, _opts, on_exit)
     local ok, ret = pcall(vim.system, _cmd, _opts, on_exit)
     if not ok then
       on_exit({
@@ -116,7 +121,7 @@ local function system(cmd, opts)
     return ret --[[@as vim.SystemObj]]
   end
 
-  local r = a.await(3, safe_system, cmd, opts) --[[@as vim.SystemCompleted]]
+  local r = a.await(3, system_wrap, cmd, opts) --[[@as vim.SystemCompleted]]
   a.schedule()
   if r.stdout and r.stdout ~= '' then
     log.trace('stdout -> %s', r.stdout)
