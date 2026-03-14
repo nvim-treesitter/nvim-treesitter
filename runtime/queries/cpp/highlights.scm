@@ -214,6 +214,9 @@
   "using"
   "requires"
   "constexpr"
+  "import"
+  "export"
+  "module"
 ] @keyword
 
 [
