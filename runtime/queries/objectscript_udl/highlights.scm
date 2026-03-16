@@ -103,8 +103,6 @@
 
 (bracket) @punctuation.bracket
 
-; === END EXPR ===
-; === BEGIN CORE ===
 (locktype) @variable
 
 (macro_arg) @variable
