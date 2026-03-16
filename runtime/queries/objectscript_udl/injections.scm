@@ -155,4 +155,3 @@
     (external_method_body_content) @injection.content)
   (#set! injection.language "xml")
   (#set! injection.include-children "true"))
-
