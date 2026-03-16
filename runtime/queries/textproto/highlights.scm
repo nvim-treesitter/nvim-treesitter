@@ -6,6 +6,18 @@
 
 (number) @number
 
+"-" @operator
+
+[
+  ":"
+  ";"
+  ","
+  "."
+  "/"
+] @punctuation.delimiter
+
+(string_escape) @string.escape
+
 ; For stuff like "inf" and "-inf".
 (scalar_value
   [

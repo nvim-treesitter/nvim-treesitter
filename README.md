@@ -10,52 +10,47 @@ The `nvim-treesitter` plugin provides
 For details on these and how to help improving them, see [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 >[!CAUTION]
-> This is a full, incompatible, rewrite. If you can't or don't want to update, check out the [`master` branch](https://github.com/nvim-treesitter/nvim-treesitter/blob/master/README.md) (which is locked but will remain available for backward compatibility).
+> This is a full, incompatible, rewrite. If you can't or don't want to update, specify the [`master` branch](https://github.com/nvim-treesitter/nvim-treesitter/blob/master/README.md) (which is locked but will remain available for backward compatibility).
 
 # Quickstart
 
 ## Requirements
 
-- Neovim 0.11.0 or later (nightly)
+- Neovim 0.12.0 or later (nightly)
 - `tar` and `curl` in your path
-- [`tree-sitter-cli`](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) (0.25.0 or later)
+- [`tree-sitter-cli`](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) (0.26.1 or later, installed via your package manager, **not npm**)
 - a C compiler in your path (see <https://docs.rs/cc/latest/cc/#compile-time-requirements>)
 
 >[!IMPORTANT]
-> The **support policy** for Neovim is
-> 1. the _latest_ [stable release](https://github.com/neovim/neovim/releases/tag/stable);
-> 2. the _latest_ [nightly prerelease](https://github.com/neovim/neovim/releases/tag/nightly).
-> Other versions may work but are neither tested nor considered for fixes. In general, compatibility with Nvim 0.X is removed after the release of Nvim 0.(X+1).1.
+> The current **support policy** for Neovim is
+> * the _latest_ [nightly prerelease](https://github.com/neovim/neovim/releases/tag/nightly).
+> Other versions may work but are neither tested nor considered for fixes. Once this plugin is [considered stable](https://github.com/nvim-treesitter/nvim-treesitter/issues/4767), support will be added for the latest release.
 
 ## Installation
 
 You can install `nvim-treesitter` with your favorite package manager (or using the native `package` feature of vim, see `:h packages`).
 
 This plugin is only guaranteed to work with specific versions of language parsers** (as specified in the `parser.lua` table). **When upgrading the plugin, you must make sure that all installed parsers are updated to the latest version** via `:TSUpdate`.
-It is strongly recommended to automate this; e.g., using [lazy.nvim](https://github.com/folke/lazy.nvim)
+It is strongly recommended to automate this; e.g., using the following spec with [lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
-require('lazy').setup({
+{
   'nvim-treesitter/nvim-treesitter',
   lazy = false,
-  branch = 'main',
   build = ':TSUpdate'
-})
+}
 ```
 
 >[!IMPORTANT]
 > This plugin does not support lazy-loading.
 
->[!IMPORTANT]
-> Make sure to specify the `main` branch since (for now) the default branch is [`master`](https://github.com/nvim-treesitter/nvim-treesitter/blob/master/README.md).
-
 ## Setup
 
-`nvim-treesitter` can be configured by calling `setup`. The following snippet lists the available options and their default values. **You do not need to call `setup` for `nvim-treesitter` to work using default values.**
+`nvim-treesitter` can be configured by calling `setup`. **You do not need to call `setup` for `nvim-treesitter` to work using default values.**
 
 ```lua
-require'nvim-treesitter'.setup {
-  -- Directory to install parsers and queries to
+require('nvim-treesitter').setup {
+  -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
   install_dir = vim.fn.stdpath('data') .. '/site'
 }
 ```
@@ -63,7 +58,7 @@ require'nvim-treesitter'.setup {
 Parsers and queries can then be installed with
 
 ```lua
-require'nvim-treesitter'.install { 'rust', 'javascript', 'zig' }
+require('nvim-treesitter').install { 'rust', 'javascript', 'zig' }
 ```
 
 (This is a no-op if the parsers are already installed.) Note that this function runs asynchronously; for synchronous installation in a script context ("bootstrapping"), you need to `wait()` for it to finish:
@@ -100,7 +95,8 @@ vim.api.nvim_create_autocmd('FileType', {
 Treesitter-based folding is provided by Neovim. To enable it, put the following in your `ftplugin` or `FileType` autocommand:
 
 ```lua
-vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.wo[0][0].foldmethod = 'expr'
 ```
 
 ## Indentation
@@ -140,7 +136,7 @@ callback = function()
       branch = 'develop', -- only needed if different from default branch
       location = 'parser', -- only needed if the parser is in subdirectory of a "monorepo"
       generate = true, -- only needed if repo does not contain pre-generated `src/parser.c`
-      generate_from_json = false, -- only needed if repo does not contain `src/grammar.json` either -- WARNING: requires `node` for tree-sitter-cli <0.26.0!
+      generate_from_json = false, -- only needed if repo does not contain `src/grammar.json` either
       queries = 'queries/neovim', -- also install queries from given directory
     },
   }
@@ -172,7 +168,7 @@ If Neovim does not detect your language's filetype by default, you can use [Neov
 3. Start `nvim` and `:TSInstall zimbu`.
 
 >[!IMPORTANT]
-> Parsers using external scanner need to be written in C.
+> If the parser requires an external scanner, this must be written in C.
 
 ### Modifying parsers
 

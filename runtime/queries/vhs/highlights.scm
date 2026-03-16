@@ -30,6 +30,12 @@
   "Theme"
   "LoopOffset"
   "Width"
+  "BorderRadius"
+  "Margin"
+  "MarginFill"
+  "WindowBar"
+  "WindowBarSize"
+  "CursorBlink"
 ] @type
 
 "@" @operator

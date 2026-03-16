@@ -3,7 +3,7 @@ error('Cannot require a meta file')
 
 ---@class InstallInfo
 ---
----URL of parser repo (Github/Gitlab)
+---URL of parser repo (Github)
 ---@field url string
 ---
 ---Commit hash of parser to download (compatible with queries)

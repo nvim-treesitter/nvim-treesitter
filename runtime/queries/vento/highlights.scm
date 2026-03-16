@@ -1,6 +1,26 @@
 (comment) @comment @spell
 
-(keyword) @keyword
+[
+  "if"
+  "/if"
+  "else"
+  "for"
+  "/for"
+  "layout"
+  "/layout"
+  "set"
+  "/set"
+  "import"
+  "export"
+  "/export"
+  "include"
+  "function"
+  "/function"
+  "fragment"
+  "/fragment"
+  "of"
+  "async"
+] @keyword
 
 (tag
   [

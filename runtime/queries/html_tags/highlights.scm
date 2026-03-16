@@ -1,9 +1,11 @@
-(tag_name) @tag
+(tag_name) @tag @nospell
 
 ; (erroneous_end_tag_name) @error ; we do not lint syntax errors
 (comment) @comment @spell
 
-(attribute_name) @tag.attribute
+(attribute_name) @tag.attribute @nospell
+
+(attribute_value) @nospell
 
 ((attribute
   (quoted_attribute_value) @string)

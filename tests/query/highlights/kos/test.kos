@@ -1,0 +1,183 @@
+#!/usr/bin/env kos
+# ^ keyword.directive
+public var item = 1;
+# ^ keyword
+#      ^ keyword
+#          ^ variable
+#               ^ operator
+#                 ^ number
+#                  ^ punctuation.delimiter
+
+# hash comment
+# <- @comment @spell
+
+// slash comment
+# <- @comment @spell
+
+/* block comment */
+# <- @comment @spell
+
+fun name(arg1,
+# ^ keyword.function
+#   ^ function
+#       ^ punctuation.bracket
+#        ^ variable.parameter
+#            ^ punctuation.delimiter
+         arg2 = "default",
+#        ^ variable.parameter
+#             ^ operator
+#               ^ string
+#                        ^ punctuation.delimiter
+         arg3...)
+#        ^ variable.parameter
+#            ^ operator
+#               ^ punctuation.bracket
+{
+# <- punctuation.bracket
+    arg1 += 1
+    # ^ variable
+    #    ^ operator
+    #       ^ number
+    arg1 -= 2
+    # ^ variable
+    #    ^ operator
+    #       ^ number
+    arg1 *= 3
+    # ^ variable
+    #    ^ operator
+    #       ^ number
+    arg1 /= 4
+    # ^ variable
+    #    ^ operator
+    #       ^ number
+    arg1 %= 5
+    # ^ variable
+    #    ^ operator
+    #       ^ number
+    arg1 |= 6
+    # ^ variable
+    #    ^ operator
+    #       ^ number
+    arg1 &= 7
+    # ^ variable
+    #    ^ operator
+    #       ^ number
+    arg1 ^= 8
+    # ^ variable
+    #    ^ operator
+    #       ^ number
+    arg1 <<= 9
+    # ^ variable
+    #    ^ operator
+    #        ^ number
+    arg1 >>= 10
+    # ^ variable
+    #    ^ operator
+    #        ^ number
+    arg1 >>>= 11
+    # ^ variable
+    #    ^ operator
+    #         ^ number
+    arg1.prop[arg1](arg1)[void] = true
+    # ^ variable
+    #   ^ punctuation.delimiter
+    #    ^ property
+    #        ^ punctuation.bracket
+    #         ^ variable
+    #             ^ punctuation.bracket
+    #              ^ punctuation.bracket
+    #               ^ variable
+    #                   ^ punctuation.bracket
+    #                    ^ punctuation.bracket
+    #                     ^ constant.builtin
+    #                           ^ operator
+    #                             ^ boolean
+    arg1 = 1 * (arg1 + 2) / arg1 - 3 % arg1
+    # ^ variable
+    #    ^ operator
+    #      ^ number
+    #        ^ operator
+    #          ^ punctuation.bracket
+    #           ^ variable
+    #                ^ operator
+    #                  ^ number
+    #                   ^ punctuation.bracket
+    #                     ^ operator
+    #                       ^ variable
+    #                            ^ operator
+    #                              ^ number
+    #                                ^ operator
+    #                                  ^ variable
+    for const elem in arg1 {
+    # ^ keyword.repeat
+    #   ^ keyword
+    #         ^ variable
+    #              ^ keyword.repeat
+    #                 ^ variable
+    #                      ^ punctuation.bracket
+        if elem {
+    #   ^ keyword.conditional
+    #      ^ variable
+    #           ^ punctuation.bracket
+            continue
+    #       ^ keyword.repeat
+        }
+    #   ^ punctuation.bracket
+        else {
+    #   ^ keyword.conditional
+    #        ^ punctuation.bracket
+            break
+    #       ^ keyword.repeat
+        }
+    #   ^ punctuation.bracket
+    }
+    # <- punctuation.bracket
+}
+# <- punctuation.bracket
+
+name(42)
+# <- function.call
+#   ^ punctuation.bracket
+#    ^ number
+#      ^ punctuation.bracket
+
+name.name()
+# <- variable
+#   ^ punctuation.delimiter
+#    ^ function.method.call
+#        ^ punctuation.bracket
+#         ^ punctuation.bracket
+
+print("hello \(123 + var) world \(true)")
+# <- function.call
+#    ^ punctuation.bracket
+#     ^ string
+#            ^ punctuation.special
+#              ^ number
+#                  ^ operator
+#                    ^ variable
+#                       ^ punctuation.special
+#                        ^ string
+#                               ^ punctuation.special
+#                                 ^ boolean
+#                                     ^ punctuation.special
+#                                       ^ punctuation.bracket
+
+[] -> each((x,_,y) => x + y)
+# <- punctuation.bracket
+#^ punctuation.bracket
+#  ^ operator
+#     ^ function.call
+#         ^ punctuation.bracket
+#          ^ punctuation.bracket
+#           ^ variable.parameter
+#            ^ punctuation.delimiter
+#             ^ character.special
+#              ^ punctuation.delimiter
+#               ^ variable.parameter
+#                ^ punctuation.bracket
+#                  ^ keyword.function
+#                     ^ variable
+#                       ^ operator
+#                         ^ variable
+#                          ^ punctuation.bracket

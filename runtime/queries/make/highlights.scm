@@ -167,6 +167,7 @@
     "eval"
     "file"
     "value"
+    "let"
   ] @function.builtin)
 
 "\\" @punctuation.special

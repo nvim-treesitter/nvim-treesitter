@@ -97,7 +97,31 @@ end
 local function system(cmd, opts)
   local cwd = opts and opts.cwd or uv.cwd()
   log.trace('running job: (cwd=%s) %s', cwd, table.concat(cmd, ' '))
-  local r = a.await(3, vim.system, cmd, opts) --[[@as vim.SystemCompleted]]
+
+  ---vim.system throws an error when uv.spawn fails, in particular if cmd or cwd
+  ---does not exist. This kills the coroutine, so the async'ed call simply hangs.
+  ---Instead, we pass a wrapper that catches errors and propagates them as a proper
+  ---`SystemObj`.
+  ---TODO(clason): remove when https://github.com/neovim/neovim/issues/38257 is resolved.
+  ---@param _cmd string[]
+  ---@param _opts vim.SystemOpts
+  ---@param on_exit fun(result: vim.SystemCompleted)
+  ---@return vim.SystemObj?
+  local function system_wrap(_cmd, _opts, on_exit)
+    local ok, ret = pcall(vim.system, _cmd, _opts, on_exit)
+    if not ok then
+      on_exit({
+        code = 125,
+        signal = 0,
+        stdout = '',
+        stderr = ret --[[@as string]],
+      })
+      return nil
+    end
+    return ret --[[@as vim.SystemObj]]
+  end
+
+  local r = a.await(3, system_wrap, cmd, opts) --[[@as vim.SystemCompleted]]
   a.schedule()
   if r.stdout and r.stdout ~= '' then
     log.trace('stdout -> %s', r.stdout)
@@ -197,17 +221,13 @@ end
 ---@param output_dir string
 ---@return string? err
 local function do_download(logger, url, project_name, cache_dir, revision, output_dir)
-  local is_gitlab = url:find('gitlab.com', 1, true)
-
   local tmp = output_dir .. '-tmp'
 
   rmpath(tmp)
   a.schedule()
 
   url = url:gsub('.git$', '')
-  local target = is_gitlab
-      and string.format('%s/-/archive/%s/%s-%s.tar.gz', url, revision, project_name, revision)
-    or string.format('%s/archive/%s.tar.gz', url, revision)
+  local target = string.format('%s/archive/%s.tar.gz', url, revision)
 
   local tarball_path = fs.joinpath(cache_dir, project_name .. '.tar.gz')
 
@@ -218,6 +238,8 @@ local function do_download(logger, url, project_name, cache_dir, revision, outpu
       '--silent',
       '--fail',
       '--show-error',
+      '--retry',
+      '7',
       '-L', -- follow redirects
       target,
       '--output',
@@ -304,6 +326,8 @@ local function do_install(logger, compile_location, target_location)
     local tempfile = target_location .. tostring(uv.hrtime())
     uv_rename(target_location, tempfile) -- parser may be in use: rename...
     uv_unlink(tempfile) -- ...and mark for garbage collection
+  else
+    uv_unlink(target_location) -- don't disturb existing memory-mapped content
   end
 
   local err = uv_copyfile(compile_location, target_location)
@@ -487,7 +511,7 @@ end
 local function install(languages, options)
   options = options or {}
 
-  local cache_dir = fs.normalize(fn.stdpath('cache'))
+  local cache_dir = fs.normalize(fn.stdpath('cache') --[[@as string]])
   if not uv.fs_stat(cache_dir) then
     fn.mkdir(cache_dir, 'p')
   end

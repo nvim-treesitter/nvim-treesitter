@@ -25,6 +25,11 @@
   name: (object_pattern
     (shorthand_property_identifier_pattern) @local.definition.var))
 
+(variable_declarator
+  (object_pattern
+    (pair_pattern
+      (identifier) @local.definition.var)))
+
 (import_specifier
   (identifier) @local.definition.import)
 

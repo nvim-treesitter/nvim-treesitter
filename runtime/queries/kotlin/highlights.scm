@@ -153,7 +153,7 @@
     "charArrayOf" "emptyArray" "mapOf" "setOf" "listOf" "emptyMap" "emptySet" "emptyList"
     "mutableMapOf" "mutableSetOf" "mutableListOf" "print" "println" "error" "TODO" "run"
     "runCatching" "repeat" "lazy" "lazyOf" "enumValues" "enumValueOf" "assert" "check"
-    "checkNotNull" "require" "requireNotNull" "with" "suspend" "synchronized"))
+    "checkNotNull" "require" "requireNotNull" "with" "synchronized"))
 
 ; Literals
 [
@@ -343,12 +343,11 @@
   "?:"
   "!!"
   "is"
-  "!is"
   "in"
-  "!in"
   "as"
   "as?"
   ".."
+  "..<"
   "->"
 ] @operator
 

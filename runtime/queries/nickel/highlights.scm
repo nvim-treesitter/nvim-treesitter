@@ -1,5 +1,8 @@
 (comment) @comment @spell
 
+(annot_atom
+  doc: (static_string) @spell)
+
 [
   "forall"
   "in"
@@ -7,6 +10,10 @@
   "default"
   "doc"
   "rec"
+  "optional"
+  "priority"
+  "force"
+  "not_exported"
 ] @keyword
 
 "fun" @keyword.function
@@ -23,20 +30,54 @@
 
 (types) @type
 
-"Array" @type.builtin
+[
+  "Array"
+  "Number"
+  "Dyn"
+  "Bool"
+  "String"
+] @type.builtin
 
 ; BUILTIN Constants
 (bool) @boolean
 
 "null" @constant.builtin
 
+(enum_tag) @constant
+
 (num_literal) @number
 
-(infix_op) @operator
+[
+  (infix_op)
+  "|>"
+  "="
+  "&"
+  "&&"
+  "||"
+  "=="
+  "+"
+  "-"
+  "*"
+  "/"
+  "%"
+  "!"
+  "?"
+  "!="
+  "<"
+  "<="
+  ">"
+  ">="
+  "@"
+  ".."
+  "=>"
+  "++"
+] @operator
+
+"or" @keyword.operator
 
 (type_atom) @type
 
-(enum_tag) @variable
+(static_string) @string
 
 (chunk_literal_single) @string
 
@@ -51,24 +92,60 @@
   ")"
   "[|"
   "|]"
+  "["
+  "]"
 ] @punctuation.bracket
 
-(multstr_start) @punctuation.bracket
+[
+  ","
+  "."
+  ":"
+  ";"
+  "|"
+  "->"
+] @punctuation.delimiter
 
-(multstr_end) @punctuation.bracket
+(multstr_start) @string
 
-(interpolation_start) @punctuation.bracket
+(multstr_end) @string
 
-(interpolation_end) @punctuation.bracket
-
-(field_decl) @variable.member
+[
+  (interpolation_start)
+  (interpolation_end)
+] @punctuation.special
 
 (builtin) @function.builtin
+
+(builtin
+  "%" @function.builtin)
 
 (fun_expr
   pats: (pattern_fun
     (ident) @variable.parameter))
 
+; application where the head terms is an identifier: function arg1 arg2 arg3
 (applicative
   t1: (applicative
-    (record_operand) @function))
+    .
+    (record_operand
+      (atom
+        (ident))) @function))
+
+; application where the head terms is a record field path: foo.bar.function arg1 arg2 arg3
+(applicative
+  t1: (applicative
+    .
+    (record_operand
+      (record_operation_chain)) @function))
+
+(str_chunks) @string
+
+(field_path_elem) @property
+
+(infix_expr
+  op: (infix_b_op_6)
+  t2: (infix_expr
+    (applicative
+      .
+      (record_operand
+        (record_operation_chain) @function))))

@@ -3,10 +3,12 @@
   (let)
   (show)
   (call)
+  (for)
+  (branch)
 ] @indent.begin
 
 [
   "]"
   "}"
   ")"
-] @indent.branch @indent.end
+] @indent.end @indent.branch

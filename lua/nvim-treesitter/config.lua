@@ -7,7 +7,7 @@ M.tiers = { 'stable', 'unstable', 'unmaintained', 'unsupported' }
 
 ---@type TSConfig
 local config = {
-  install_dir = vim.fs.joinpath(vim.fn.stdpath('data'), 'site'),
+  install_dir = vim.fs.joinpath(vim.fn.stdpath('data') --[[@as string]], 'site'),
 }
 
 ---Setup call for users to override configuration configurations.
@@ -16,7 +16,7 @@ function M.setup(user_data)
   if user_data then
     if user_data.install_dir then
       user_data.install_dir = vim.fs.normalize(user_data.install_dir)
-      vim.opt.runtimepath:prepend(user_data.install_dir)
+      vim.o.rtp = user_data.install_dir .. ',' .. vim.o.rtp
     end
     config = vim.tbl_deep_extend('force', config, user_data)
   end
@@ -140,8 +140,12 @@ function M.norm_languages(languages, skip)
   languages = vim.tbl_filter(
     --- @param v string
     function(v)
-      -- TODO(lewis6991): warn of any unknown parsers?
-      return parsers[v] ~= nil
+      if parsers[v] ~= nil then
+        return true
+      else
+        require('nvim-treesitter.log').warn('skipping unsupported language: ' .. v)
+        return false
+      end
     end,
     languages
   )

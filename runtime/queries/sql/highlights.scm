@@ -13,8 +13,12 @@
   (keyword_object_id)
 ] @function.call
 
-(object_reference
-  name: (identifier) @type)
+((object_reference
+  name: (identifier) @type) @_obj_ref
+  (#not-has-parent? @_obj_ref invocation))
+
+(cte
+  (identifier) @type)
 
 (relation
   alias: (identifier) @variable)

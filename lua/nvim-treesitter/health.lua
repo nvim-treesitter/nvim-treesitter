@@ -7,7 +7,7 @@ local health = vim.health
 local M = {}
 
 local NVIM_TREESITTER_MINIMUM_ABI = 13
-local TREE_SITTER_MIN_VER = { 0, 25, 0 }
+local TREE_SITTER_MIN_VER = { 0, 26, 1 }
 
 ---@param name string
 ---@return table?
@@ -95,11 +95,7 @@ local function install_health()
   else
     health.error('is not writable.')
   end
-  if
-    vim.iter(vim.api.nvim_list_runtime_paths()):any(function(p)
-      return installdir == vim.fs.normalize(p) .. '/'
-    end)
-  then
+  if vim.list_contains(vim.api.nvim_list_runtime_paths(), installdir) then
     health.ok('is in runtimepath.')
   else
     health.error('is not in runtimepath.')
@@ -148,7 +144,7 @@ function M.check()
     end
     health.info(vim.fn.trim(out, ' ', 2))
   end
-  health.start('  Legend: H[ighlights], L[ocals], F[olds], I[ndents], In[J]ections')
+  health.start('  Legend: [H]ighlights, [L]ocals, [F]olds, [I]ndents, In[J]ections')
 
   if #error_collection > 0 then
     health.start('The following errors have been detected in query files:')
