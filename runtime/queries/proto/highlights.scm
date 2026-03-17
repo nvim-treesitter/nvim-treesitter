@@ -122,9 +122,7 @@
   (false)
 ] @boolean
 
-(comment) @spell
-
-(comment) @comment
+(comment) @comment @spell
 
 [
   "("
