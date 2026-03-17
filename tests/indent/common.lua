@@ -2,7 +2,6 @@ local M = {}
 
 local assert = require('luassert')
 local say = require('say')
-local scan_dir = require('plenary.scandir').scan_dir
 
 M.XFAIL = 'xfail'
 
@@ -182,8 +181,13 @@ function Runner:whole_file(dirs, opts)
     assert.is.same(1, vim.fn.isdirectory(dir))
     return dir
   end, dirs)
-  local files = vim.iter(vim.tbl_map(scan_dir, dirs)):flatten():totable()
-  for _, file in ipairs(files) do
+  local scandir = function(dir)
+    return vim.fs.find(function()
+      return true
+    end, { path = dir, limit = math.huge })
+  end
+  local files = vim.iter(dirs):map(scandir):flatten()
+  for _, file in files:enumerate() do
     self.it(file, function()
       M.indent_whole_file(file, self.buf_opts, vim.tbl_contains(expected_failures, file))
     end)
