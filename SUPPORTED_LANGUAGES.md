@@ -42,6 +42,7 @@ Language | Tier | Queries | Maintainer
 [cmake](https://github.com/uyha/tree-sitter-cmake) | unstable | `HFIJ ` | @uyha
 [comment](https://github.com/stsewd/tree-sitter-comment) | unstable | `H    ` | @stsewd
 [commonlisp](https://github.com/tree-sitter-grammars/tree-sitter-commonlisp) | unstable | `HF JL` | @theHamsta
+[concerto](https://github.com/accordproject/concerto-tree-sitter) | unmaintained | `HFI L` | @jamieshorten
 [cooklang](https://github.com/addcninblue/tree-sitter-cooklang) | unstable | `H  J ` | @addcninblue
 [corn](https://github.com/jakestanger/tree-sitter-corn) | unstable | `HFIJL` | @jakestanger
 [cpon](https://github.com/tree-sitter-grammars/tree-sitter-cpon) | unstable | `HFIJL` | @amaanq

@@ -243,6 +243,14 @@ return {
     maintainers = { '@stsewd' },
     tier = 2,
   },
+  concerto = {
+    install_info = {
+      revision = '77ae6b9e09a58ac4c94fe36760df7e8d26ab5aca',
+      url = 'https://github.com/accordproject/concerto-tree-sitter',
+    },
+    maintainers = { '@jamieshorten' },
+    tier = 3,
+  },
   commonlisp = {
     install_info = {
       revision = '32323509b3d9fe96607d151c2da2c9009eb13a2f',
