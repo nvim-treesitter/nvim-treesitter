@@ -1560,8 +1560,8 @@ return {
   },
   perl = {
     install_info = {
-      branch = 'release',
-      revision = '0c24d001dd1921e418fb933d208a7bd7dd3f923a',
+      generate = true,
+      revision = 'ea9667dc65a816acace002a2b1b099978785ca33',
       url = 'https://github.com/tree-sitter-perl/tree-sitter-perl',
     },
     maintainers = { '@RabbiVeesh', '@LeoNerd' },
@@ -1622,8 +1622,8 @@ return {
   },
   pod = {
     install_info = {
-      branch = 'release',
-      revision = '0bf8387987c21bf2f8ed41d2575a8f22b139687f',
+      generate = true,
+      revision = '4559a9767eb15d757dce24107b840b137f673d33',
       url = 'https://github.com/tree-sitter-perl/tree-sitter-pod',
     },
     maintainers = { '@RabbiVeesh', '@LeoNerd' },
