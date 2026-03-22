@@ -2555,7 +2555,6 @@ return {
   },
   vue = {
     install_info = {
-      branch = 'main',
       revision = 'ce8011a414fdf8091f4e4071752efc376f4afb08',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-vue',
     },
