@@ -1,0 +1,49 @@
+name: Rebase patches
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows:
+      - Sync upstream
+    types:
+      - completed
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rebase-patches
+  cancel-in-progress: false
+
+jobs:
+  rebase-patches:
+    name: Rebase my-patches onto main
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: my-patches
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Fetch main and patch branches
+        run: |
+          git fetch origin \
+            +refs/heads/main:refs/remotes/origin/main \
+            +refs/heads/my-patches:refs/remotes/origin/my-patches
+
+          git show-ref --verify --quiet refs/remotes/origin/main
+          git show-ref --verify --quiet refs/remotes/origin/my-patches
+
+      - name: Rebase patch branch
+        run: |
+          git checkout my-patches
+          git rebase refs/remotes/origin/main
+
+      - name: Push my-patches
+        run: git push --force-with-lease origin my-patches

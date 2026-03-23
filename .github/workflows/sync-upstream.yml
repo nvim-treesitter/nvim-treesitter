@@ -1,0 +1,45 @@
+name: Sync upstream
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-upstream
+  cancel-in-progress: false
+
+jobs:
+  sync-main:
+    name: Sync main from upstream
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Fetch upstream main
+        run: |
+          if git remote get-url upstream >/dev/null 2>&1; then
+            git remote set-url upstream https://github.com/nvim-treesitter/nvim-treesitter.git
+          else
+            git remote add upstream https://github.com/nvim-treesitter/nvim-treesitter.git
+          fi
+          git fetch upstream +refs/heads/main:refs/remotes/upstream/main
+
+      - name: Rebase fork metadata onto upstream
+        run: |
+          git checkout main
+          git rebase refs/remotes/upstream/main
+
+      - name: Push main
+        run: git push --force-with-lease origin main
