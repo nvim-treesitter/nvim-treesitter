@@ -322,13 +322,9 @@ end
 local function do_install(logger, compile_location, target_location)
   logger:info(string.format('Installing parser'))
 
-  if uv.os_uname().sysname == 'Windows_NT' then -- why can't you just be normal?!
-    local tempfile = target_location .. tostring(uv.hrtime())
-    uv_rename(target_location, tempfile) -- parser may be in use: rename...
-    uv_unlink(tempfile) -- ...and mark for garbage collection
-  else
-    uv_unlink(target_location) -- don't disturb existing memory-mapped content
-  end
+  local tempfile = target_location .. tostring(uv.hrtime())
+  uv_rename(target_location, tempfile) -- parser may be in use: rename...
+  uv_unlink(tempfile) -- ...and mark for garbage collection
 
   local err = uv_copyfile(compile_location, target_location)
   a.schedule()
