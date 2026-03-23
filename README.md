@@ -66,9 +66,10 @@ For more detailed information on setting these up, see ["Advanced setup"](#advan
 
 ## Requirements
 
-- **Neovim 0.10** or later (supported up to Neovim 0.12);
+- **Neovim 0.10 or 0.11** (Neovim 0.12 is **not supported**);
 - `tar` and `curl` in your path (or alternatively `git`);
 - a C compiler in your path and libstdc++ installed ([Windows users please read this!](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support)).
+- `tree-sitter-cli` up to **0.25.x**.
 
 ## Installation
 
