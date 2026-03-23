@@ -8,7 +8,7 @@
         (attribute_value) @_lang)))
   (raw_text) @injection.content)
   (#eq? @_attr "lang")
-  (#any-of? @_lang "scss" "postcss" "less")
+  (#any-of? @_lang "scss" "postcss" "less" "sass")
   (#set! injection.language "scss"))
 
 ((svelte_raw_text) @injection.content
