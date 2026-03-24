@@ -113,6 +113,7 @@
   "'?"
   "!"
   "?"
+  "--"
 ] @operator
 
 (bracket) @punctuation.bracket
