@@ -25,12 +25,7 @@
   (#eq? @_tag "script")
   (#eq? @_lang "lang")
   (#not-any-of? @injection.language
-    "ts"
-    "typescript"
-    "text/typescript"
-    "js"
-    "javascript"
-    "text/javascript"))
+    "ts" "typescript" "text/typescript" "js" "javascript" "text/javascript"))
 
 ((element
   (start_tag
@@ -92,7 +87,8 @@
 
 ((attribute
   (attribute_name) @_style_name
-  (quoted_attribute_value (attribute_value) @injection.content))
+  (quoted_attribute_value
+    (attribute_value) @injection.content))
   (#eq? @_style_name "style")
   (#set! injection.language "css"))
 
@@ -117,24 +113,36 @@
     (attribute_value) @injection.content)
   (#set! injection.language "javascript"))
 
-((expression content: (js) @injection.content)
+((expression
+  content: (js) @injection.content)
   (#set! injection.language "javascript"))
-((expression content: (ts) @injection.content)
+
+((expression
+  content: (ts) @injection.content)
   (#set! injection.language "typescript"))
 
-((shorthand_attribute content: (js) @injection.content)
+((shorthand_attribute
+  content: (js) @injection.content)
   (#set! injection.language "javascript"))
-((shorthand_attribute content: (ts) @injection.content)
+
+((shorthand_attribute
+  content: (ts) @injection.content)
   (#set! injection.language "typescript"))
 
-((expression_value content: (js) @injection.content)
+((expression_value
+  content: (js) @injection.content)
   (#set! injection.language "javascript"))
-((expression_value content: (ts) @injection.content)
+
+((expression_value
+  content: (ts) @injection.content)
   (#set! injection.language "typescript"))
 
-((pattern content: (js) @injection.content)
+((pattern
+  content: (js) @injection.content)
   (#set! injection.language "javascript"))
-((pattern content: (ts) @injection.content)
+
+((pattern
+  content: (ts) @injection.content)
   (#set! injection.language "typescript"))
 
 ((snippet_type_parameters) @injection.content

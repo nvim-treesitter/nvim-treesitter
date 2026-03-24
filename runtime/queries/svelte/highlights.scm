@@ -16,15 +16,23 @@
   property: (tag_member) @tag)
 
 (attribute_directive) @keyword
-(attribute_name ":" @punctuation.delimiter)
+
+(attribute_name
+  ":" @punctuation.delimiter)
+
 (attribute_identifier) @property
+
 (attribute_modifier) @attribute
-(attribute_modifiers "|" @punctuation.delimiter)
+
+(attribute_modifiers
+  "|" @punctuation.delimiter)
 
 (expression) @embedded
+
 (expression_value) @embedded
 
-(shorthand_attribute content: (_) @variable)
+(shorthand_attribute
+  content: (_) @variable)
 
 [
   "{"
@@ -33,8 +41,11 @@
 
 "|" @punctuation.delimiter
 
-(tag_comment kind: (line_comment) @comment)
-(tag_comment kind: (block_comment) @comment)
+(tag_comment
+  kind: (line_comment) @comment)
+
+(tag_comment
+  kind: (block_comment) @comment)
 
 [
   "if"
@@ -52,29 +63,56 @@
 ] @keyword.control
 
 (block_keyword) @keyword.control
+
 (block_open) @tag.delimiter
+
 (block_close) @tag.delimiter
+
 (shorthand_kind) @keyword.control
+
 (branch_kind) @keyword.control
+
 (block_sigil) @keyword.control
 
-(if_block expression: (expression) @embedded)
-(else_if_clause expression: (expression_value) @embedded)
+(if_block
+  expression: (expression) @embedded)
 
-(each_block expression: (expression) @embedded)
-(each_block binding: (pattern) @variable)
-(each_block index: (pattern) @variable)
-(each_block key: (expression) @embedded)
+(else_if_clause
+  expression: (expression_value) @embedded)
 
-(await_block expression: (expression) @embedded)
-(await_branch (pattern) @variable)
-(await_block (pattern) @variable)
-(orphan_branch (pattern) @variable)
+(each_block
+  expression: (expression) @embedded)
 
-(key_block expression: (expression) @embedded)
+(each_block
+  binding: (pattern) @variable)
 
-(snippet_block name: (snippet_name) @function)
-(snippet_parameters parameter: (pattern) @variable)
+(each_block
+  index: (pattern) @variable)
+
+(each_block
+  key: (expression) @embedded)
+
+(await_block
+  expression: (expression) @embedded)
+
+(await_branch
+  (pattern) @variable)
+
+(await_block
+  (pattern) @variable)
+
+(orphan_branch
+  (pattern) @variable)
+
+(key_block
+  expression: (expression) @embedded)
+
+(snippet_block
+  name: (snippet_name) @function)
+
+(snippet_parameters
+  parameter: (pattern) @variable)
+
 (snippet_type_parameters) @type
 
 [
