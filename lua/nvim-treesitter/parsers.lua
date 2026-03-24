@@ -2208,8 +2208,9 @@ return {
   },
   svelte = {
     install_info = {
-      revision = 'ae5199db47757f785e43a14b332118a5474de1a2',
-      url = 'https://github.com/tree-sitter-grammars/tree-sitter-svelte',
+      location = 'crates/tree-sitter-svelte',
+      revision = '3be6db3dc94478b089a64e59e4d855fc3041a7be',
+      url = 'https://github.com/themixednuts/tree-sitter-htmlx',
     },
     maintainers = { '@amaanq' },
     requires = { 'html_tags' },

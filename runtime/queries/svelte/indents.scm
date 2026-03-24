@@ -1,34 +1,19 @@
 ; inherits: html
 
 [
-  (if_statement)
-  (each_statement)
-  (await_statement)
-  (key_statement)
-  (snippet_statement)
+  (if_block)
+  (each_block)
+  (await_block)
+  (key_block)
+  (snippet_block)
 ] @indent.begin
 
-(if_end
-  "}" @indent.end)
-
-(each_end
-  "}" @indent.end)
-
-(await_end
-  "}" @indent.end)
-
-(key_end
-  "}" @indent.end)
-
-(snippet_end
-  "}" @indent.end)
+(block_end
+  (block_close) @indent.end)
 
 [
-  (if_end)
-  (else_if_block)
-  (else_block)
-  (each_end)
-  (await_end)
-  (key_end)
-  (snippet_end)
+  (block_end)
+  (else_if_clause)
+  (else_clause)
+  (await_branch)
 ] @indent.branch

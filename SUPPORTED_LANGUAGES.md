@@ -280,7 +280,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [supercollider](https://github.com/madskjeldgaard/tree-sitter-supercollider) | unstable | `HFIJL` | @madskjeldgaard, @elgiano
 [superhtml](https://github.com/kristoff-it/superhtml) | unstable | `H  J ` | @rockorager
 [surface](https://github.com/connorlay/tree-sitter-surface) | unstable | `HFIJ ` | @connorlay
-[svelte](https://github.com/tree-sitter-grammars/tree-sitter-svelte) | unstable | `HFIJL` | @amaanq
+[svelte](https://github.com/themixednuts/tree-sitter-htmlx) | unstable | `HFIJL` | @amaanq
 [sway](https://github.com/FuelLabs/tree-sitter-sway.git) | unstable | `HFIJL` | @ribru17
 [swift](https://github.com/alex-pinkus/tree-sitter-swift) | unstable | `HFIJL` | @alex-pinkus
 [sxhkdrc](https://github.com/RaafatTurki/tree-sitter-sxhkdrc) | unstable | `HF J ` | @RaafatTurki
