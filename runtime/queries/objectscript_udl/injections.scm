@@ -29,7 +29,7 @@
 (method_definition
   (external_method_keywords
     (method_keyword_language
-      (rhs) @_lang))
+      (typename) @_lang))
   (external_method_body_content) @injection.content
   (#set! injection.include-children "true")
   (#any-of? @_lang "python" "Python" "PYTHON")
@@ -38,7 +38,7 @@
 (method_definition
   (external_method_keywords
     (method_keyword_language
-      (rhs) @_lang))
+      (typename) @_lang))
   (external_method_body_content) @injection.content
   (#set! injection.include-children "true")
   (#any-of? @_lang "tsql" "TSQL" "tSQL" "tSql" "TSql")
@@ -47,7 +47,7 @@
 (method_definition
   (external_method_keywords
     (method_keyword_language
-      (rhs) @_lang))
+      (typename) @_lang))
   (external_method_body_content) @injection.content
   (#set! injection.include-children "true")
   (#any-of? @_lang "ispl" "ISPL" "ISpl" "iSpl")
@@ -57,7 +57,7 @@
   (external_trigger
     (trigger_keywords
       (method_keyword_language
-        (rhs) @_lang))
+        (typename) @_lang))
     (external_method_body_content) @injection.content))
   (#set! injection.include-children "true")
   (#any-of? @_lang "python" "Python" "PYTHON")
@@ -67,7 +67,7 @@
   (external_trigger
     (trigger_keywords
       (method_keyword_language
-        (rhs) @_lang))
+        (typename) @_lang))
     (external_method_body_content) @injection.content))
   (#set! injection.include-children "true")
   (#any-of? @_lang "tsql" "TSQL" "tSQL" "tSql" "TSql")
@@ -87,7 +87,7 @@
   (xdata_any
     (xdata_keywords
       (xdata_keyword_mimetype
-        (rhs) @_mt))
+        (typename) @_mt))
     (external_method_body_content) @injection.content)
   (#set! injection.include-children "true")
   (#any-of? @_mt "text/markdown" "\"text/markdown\"")
@@ -97,7 +97,7 @@
   (xdata_any
     (xdata_keywords
       (xdata_keyword_mimetype
-        (rhs) @_mt))
+        (typename) @_mt))
     (external_method_body_content) @injection.content)
   (#set! injection.include-children "true")
   (#any-of? @_mt "text/xml" "\"text/xml\"" "application/xml" "\"application/xml\"")
@@ -107,7 +107,7 @@
   (xdata_any
     (xdata_keywords
       (xdata_keyword_mimetype
-        (rhs) @_mt))
+        (typename) @_mt))
     (external_method_body_content) @injection.content)
   (#set! injection.include-children "true")
   (#any-of? @_mt "text/html" "\"text/html\"")
@@ -117,7 +117,7 @@
   (xdata_any
     (xdata_keywords
       (xdata_keyword_mimetype
-        (rhs) @_mt))
+        (typename) @_mt))
     (external_method_body_content) @injection.content)
   (#set! injection.include-children "true")
   (#any-of? @_mt "application/json" "\"application/json\"")
@@ -127,7 +127,7 @@
   (xdata_any
     (xdata_keywords
       (xdata_keyword_mimetype
-        (rhs) @_mt))
+        (typename) @_mt))
     (external_method_body_content) @injection.content)
   (#set! injection.include-children "true")
   (#any-of? @_mt "text/yaml" "\"text/yaml\"" "application/yaml" "\"application/yaml\"")
@@ -137,7 +137,7 @@
   (xdata_any
     (xdata_keywords
       (xdata_keyword_mimetype
-        (rhs) @_mt))
+        (typename) @_mt))
     (external_method_body_content) @injection.content)
   (#set! injection.include-children "true")
   (#any-of? @_mt "text/css" "\"text/css\"")

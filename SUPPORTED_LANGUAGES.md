@@ -195,6 +195,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [nu](https://github.com/nushell/tree-sitter-nu) | unstable | `HFIJ ` | @abhisheksingh0x558
 [objc](https://github.com/tree-sitter-grammars/tree-sitter-objc) | unstable | `HFIJL` | @amaanq
 [objdump](https://github.com/ColinKennedy/tree-sitter-objdump) | unstable | `H  J ` | @ColinKennedy
+[objectscript_routine](https://github.com/intersystems/tree-sitter-objectscript) | unstable | `H IJ ` | @davem-intersys, @hkimura-intersys
 [objectscript_udl](https://github.com/intersystems/tree-sitter-objectscript) | unstable | `H IJ ` | @davem-intersys, @hkimura-intersys
 [ocaml](https://github.com/tree-sitter/tree-sitter-ocaml) | unstable | `HFIJL` | @undu
 [ocaml_interface](https://github.com/tree-sitter/tree-sitter-ocaml) | unstable | `HFIJL` | @undu

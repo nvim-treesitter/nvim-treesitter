@@ -1498,10 +1498,19 @@ return {
     maintainers = { '@ColinKennedy' },
     tier = 2,
   },
+  objectscript_routine = {
+    install_info = {
+      location = 'objectscript_routine',
+      revision = 'a60196ecc4e6d492510a0eb0374e74020895b917',
+      url = 'https://github.com/intersystems/tree-sitter-objectscript',
+    },
+    maintainers = { '@davem-intersys', '@hkimura-intersys' },
+    tier = 2,
+  },
   objectscript_udl = {
     install_info = {
       location = 'udl',
-      revision = '7aa01969d0fea2e75dc69f2be2244b13d8269d6f',
+      revision = 'a60196ecc4e6d492510a0eb0374e74020895b917',
       url = 'https://github.com/intersystems/tree-sitter-objectscript',
     },
     maintainers = { '@davem-intersys', '@hkimura-intersys' },
