@@ -81,13 +81,13 @@
 ((attribute
   (quoted_attribute_value
     (attribute_value) @injection.content))
-  (#lua-match? @injection.content "%${")
+  (#lua-match? @injection.content "^%${")
   (#offset! @injection.content 0 2 0 -1)
   (#set! injection.language "javascript"))
 
 ((attribute
   (attribute_value) @injection.content)
-  (#lua-match? @injection.content "%${")
+  (#lua-match? @injection.content "^%${")
   (#offset! @injection.content 0 2 0 -2)
   (#set! injection.language "javascript"))
 
