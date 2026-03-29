@@ -87,7 +87,7 @@ local function install_health()
     health.info(k .. ': ' .. v)
   end
 
-  local installdir = config.get_install_dir('')
+  local installdir = config.get_install_dir(''):gsub('/$', '')
   health.start('Install directory for parsers and queries')
   health.info(installdir)
   if vim.uv.fs_access(installdir, 'w') then
@@ -95,7 +95,11 @@ local function install_health()
   else
     health.error('is not writable.')
   end
-  if vim.list_contains(vim.api.nvim_list_runtime_paths(), installdir) then
+  if
+      vim.iter(vim.api.nvim_list_runtime_paths()):any(function(p)
+        return installdir == vim.fs.normalize(p)
+      end)
+  then
     health.ok('is in runtimepath.')
   else
     health.error('is not in runtimepath.')
