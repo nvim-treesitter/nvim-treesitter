@@ -87,7 +87,7 @@ local function install_health()
     health.info(k .. ': ' .. v)
   end
 
-  local installdir = config.get_install_dir(''):gsub('/$', '')
+  local installdir = vim.fs.normalize(config.get_install_dir(''))
   health.start('Install directory for parsers and queries')
   health.info(installdir)
   if vim.uv.fs_access(installdir, 'w') then
