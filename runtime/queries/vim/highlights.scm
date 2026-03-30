@@ -110,7 +110,6 @@
   "cnext"
   "cprevious"
   "cNext"
-  "tab"
   "vertical"
   "leftabove"
   "aboveleft"
