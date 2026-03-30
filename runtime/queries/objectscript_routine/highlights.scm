@@ -117,7 +117,6 @@
   "'?"
   "!"
   "?"
-  "--"
 ] @operator
 
 (bracket) @punctuation.bracket
@@ -192,8 +191,7 @@
   (keyword_public)
   (keyword_private)
   (keyword_methodimpl)
-  (open_keywords)
-  (use_keywords)
+  (device_keywords)
   (close_parameter_option_value)
   (keyword_clear)
   (keyword_on)
@@ -274,6 +272,8 @@
   (command_break)
 ] @comment
 
+"--" @operator
+
 ; === END CORE ===
 ; === BEGIN LOCAL ===
 (routine_type) @type.builtin
@@ -281,5 +281,7 @@
 (documatic_line) @comment.documentation @spell
 
 (routine) @keyword.type
+
+(compiled_header) @markup.heading
 
 ; === END LOCAL ===
