@@ -33,7 +33,6 @@ local filetypes = {
   markdown = { 'pandoc' },
   muttrc = { 'neomuttrc' },
   objectscript_udl = { 'objectscript' },
-  objectscript_routine = {'iris_rtn'},
   ocaml_interface = { 'ocamlinterface' },
   perl = { 'pl' },
   poe_filter = { 'poefilter' },
