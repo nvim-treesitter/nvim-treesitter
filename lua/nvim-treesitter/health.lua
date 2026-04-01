@@ -24,8 +24,8 @@ local function install_health()
   health.start('Requirements')
 
   do -- nvim check
-    if vim.fn.has('nvim-0.11') ~= 1 then
-      health.error('Nvim-treesitter requires Neovim 0.11.0 or later.')
+    if vim.fn.has('nvim-0.12') ~= 1 then
+      health.error('Nvim-treesitter requires Neovim 0.12.0 or later.')
     end
 
     if vim.treesitter.language_version >= NVIM_TREESITTER_MINIMUM_ABI then

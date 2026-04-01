@@ -168,13 +168,7 @@ function M.norm_languages(languages, skip)
     end
   end
 
-  -- TODO(clason): remove Nvim 0.11 compat
-  if vim.list then
-    return vim.list.unique(languages)
-  else
-    table.sort(languages)
-    return vim.fn.uniq(languages) --[=[@as string[] ]=]
-  end
+  return vim.list.unique(languages)
 end
 
 return M
