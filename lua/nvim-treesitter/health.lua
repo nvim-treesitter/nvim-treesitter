@@ -20,6 +20,17 @@ local function check_exe(name)
   end
 end
 
+---@param dir string
+---@return boolean
+local function check_runtimepath(dir)
+  for _, rtp in ipairs(vim.api.nvim_list_runtime_paths()) do
+    if vim.fs.normalize(rtp) == vim.fs.normalize(dir) then
+      return true
+    end
+  end
+  return false
+end
+
 local function install_health()
   health.start('Requirements')
 
@@ -95,7 +106,7 @@ local function install_health()
   else
     health.error('is not writable.')
   end
-  if vim.list_contains(vim.api.nvim_list_runtime_paths(), installdir) then
+  if check_runtimepath(installdir) then
     health.ok('is in runtimepath.')
   else
     health.error('is not in runtimepath.')
