@@ -36,7 +36,7 @@ function M.get_install_dir(dir_name)
       log.error(err --[[@as string]])
     end
   end
-  return dir
+  return vim.fs.normalize(dir)
 end
 
 ---@param type 'queries'|'parsers'?
