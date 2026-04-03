@@ -1506,6 +1506,24 @@ return {
     maintainers = { '@ColinKennedy' },
     tier = 2,
   },
+  objectscript_routine = {
+    install_info = {
+      location = 'objectscript_routine',
+      revision = '4216acea5ba1c92217f0d366c9d9c7b44b34a7b9',
+      url = 'https://github.com/intersystems/tree-sitter-objectscript',
+    },
+    maintainers = { '@davem-intersys', '@hkimura-intersys' },
+    tier = 2,
+  },
+  objectscript_udl = {
+    install_info = {
+      location = 'udl',
+      revision = '4216acea5ba1c92217f0d366c9d9c7b44b34a7b9',
+      url = 'https://github.com/intersystems/tree-sitter-objectscript',
+    },
+    maintainers = { '@davem-intersys', '@hkimura-intersys' },
+    tier = 2,
+  },
   ocaml = {
     install_info = {
       location = 'grammars/ocaml',
