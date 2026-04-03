@@ -95,7 +95,9 @@ local function install_health()
   else
     health.error('is not writable.')
   end
-  if vim.list_contains(vim.api.nvim_list_runtime_paths(), installdir) then
+  if
+    vim.list_contains(vim.tbl_map(vim.fs.normalize, vim.api.nvim_list_runtime_paths()), installdir)
+  then
     health.ok('is in runtimepath.')
   else
     health.error('is not in runtimepath.')
