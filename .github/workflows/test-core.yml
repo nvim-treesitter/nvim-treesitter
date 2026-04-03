@@ -23,7 +23,6 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: tree-sitter/setup-action/cli@v2
-      - uses: ilammy/msvc-dev-cmd@v1
 
       - name: Install and prepare Neovim
         env:
