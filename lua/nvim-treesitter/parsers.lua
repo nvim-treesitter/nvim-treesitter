@@ -1101,6 +1101,14 @@ return {
     readme_note = 'needed for full highlighting',
     tier = 2,
   },
+  jjdescription = {
+    install_info = {
+      revision = 'v1.0.3',
+      url = 'https://github.com/ribru17/tree-sitter-jjdescription',
+    },
+    maintainers = { '@ribru17' },
+    tier = 1,
+  },
   jq = {
     install_info = {
       revision = 'c204e36d2c3c6fce1f57950b12cabcc24e5cc4d9',
