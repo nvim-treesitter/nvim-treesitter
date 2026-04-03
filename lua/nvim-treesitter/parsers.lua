@@ -2654,7 +2654,7 @@ return {
   },
   yuck = {
     install_info = {
-      revision = 'e877f6ade4b77d5ef8787075141053631ba12318',
+      revision = '6c60112b3b3e739fb1ca4a8ea4bea2b6ffe11318',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-yuck',
     },
     maintainers = { '@Philipp-M', '@amaanq' },

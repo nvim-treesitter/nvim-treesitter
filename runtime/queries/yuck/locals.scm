@@ -1,8 +1,5 @@
 [
   (ast_block)
-  (list)
-  (array)
-  (expr)
   (json_array)
   (json_object)
   (parenthesized_expression)
@@ -16,6 +13,4 @@
   (simplexpr
     (ident) @local.definition.field))
 
-(ast_block
-  (symbol)
-  (ident) @local.definition.type)
+(symbol) @local.definition.type
