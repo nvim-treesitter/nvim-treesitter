@@ -1,11 +1,11 @@
 syntax = "proto2";
-//       ^^^^^^^^ @string.special
+//       ^^^^^^^^ @string.special.symbol
 package sls.asfd.asfd;
-//      ^^^ @variable
+//      ^^^ @module
 //         ^ @punctuation.delimiter
-//          ^^^^ @variable.member
+//          ^^^^ @module
 //              ^ @punctuation.delimiter
-//               ^^^^ @variable.member
+//               ^^^^ @module
 //                   ^ @punctuation.delimiter
 
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
@@ -19,7 +19,11 @@ import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 //<- @keyword.import
 
 option (gogoproto.sizer_all) = true;
+//      ^^^^^^^^^ @variable
+//                ^^^^^^^^^ @variable.member
 option (gogoproto.marshaler_all) = true;
+//      ^^^^^^^^^ @variable
+//                ^^^^^^^^^^^^^ @variable.member
 option (gogoproto.unmarshaler_all.foo) = true;
 //      ^^^^^^^^^ @variable
 //                ^^^^^^^^^^^^^^^ @variable.member
@@ -30,12 +34,12 @@ message LogContent
 //<- @keyword.type
 {
     required string Key = 1;
-//           ^^^^^^ @type
+//           ^^^^^^ @type.builtin
 //                  ^^^ @property
 //                      ^ @operator
 //                        ^ @number
     required string Value = 2;
-//           ^^^^^^ @type
+//           ^^^^^^ @type.builtin
 //                  ^^^^^ @property
     required CustomType Value = 2;
 //  ^^^^^^^^ @keyword.modifier
@@ -46,7 +50,7 @@ message LogContent
     optional JsonFormat json_format = 6 [
 //  ^^^^^^^^ @keyword.modifier
       retention = RETENTION_RUNTIME,
-//                ^^^^^^^^^^^^^^^^^ @variable
+//                ^^^^^^^^^^^^^^^^^ @constant
 //                                 ^ @punctuation.delimiter
       targets = TARGET_TYPE_MESSAGE,
 //    ^^^^^^^ @property
@@ -59,4 +63,5 @@ message LogContent
 //                                                         ^ @punctuation.bracket
     ];
 }
+
 
