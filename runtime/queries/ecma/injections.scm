@@ -5,51 +5,78 @@
 ((comment) @injection.content
   (#set! injection.language "comment"))
 
-; html(`...`), html`...`, sql(`...`), etc.
+; html(`...`), sql(`...`), etc.
 (call_expression
   function: (identifier) @injection.language
-  arguments: [
-    (arguments
-      (template_string
-        (string_fragment) @injection.content))
+  arguments: (arguments
     (template_string
-      (string_fragment) @injection.content)
-  ]
+      [
+        (string_fragment) @injection.content
+        (template_substitution)
+      ]+))
   (#lua-match? @injection.language "^[a-zA-Z][a-zA-Z0-9]*$")
-  (#set! injection.combined)
   ; Languages excluded from auto-injection due to special rules
   ; - svg uses the html parser
   ; - css uses the styled parser
   (#not-any-of? @injection.language "svg" "css"))
 
-; svg`...` or svg(`...`)
+; html`...`, sql`...`, etc.
+(call_expression
+  function: (identifier) @injection.language
+  arguments: (template_string
+    [
+      (string_fragment) @injection.content
+      (template_substitution)
+    ]+)
+  (#lua-match? @injection.language "^[a-zA-Z][a-zA-Z0-9]*$")
+  (#not-any-of? @injection.language "svg" "css"))
+
+; svg(`...`)
 (call_expression
   function: (identifier) @_name
   (#eq? @_name "svg")
-  arguments: [
-    (arguments
-      (template_string
-        (string_fragment) @injection.content))
+  arguments: (arguments
     (template_string
-      (string_fragment) @injection.content)
-  ]
-  (#set! injection.combined)
+      [
+        (string_fragment) @injection.content
+        (template_substitution)
+      ]+))
+  (#set! injection.language "html"))
+
+; svg`...`
+(call_expression
+  function: (identifier) @_name
+  (#eq? @_name "svg")
+  arguments: (template_string
+    [
+      (string_fragment) @injection.content
+      (template_substitution)
+    ]+)
   (#set! injection.language "html"))
 
 ; Vercel PostgreSQL
-; foo.sql`...` or foo.sql(`...`)
+; foo.sql(`...`)
 (call_expression
   function: (member_expression
     property: (property_identifier) @injection.language)
-  arguments: [
-    (arguments
-      (template_string
-        (string_fragment) @injection.content))
+  arguments: (arguments
     (template_string
-      (string_fragment) @injection.content)
-  ]
-  (#eq? @injection.language "sql")
-  (#set! injection.combined))
+      [
+        (string_fragment) @injection.content
+        (template_substitution)
+      ]+))
+  (#eq? @injection.language "sql"))
+
+; foo.sql`...`
+(call_expression
+  function: (member_expression
+    property: (property_identifier) @injection.language)
+  arguments: (template_string
+    [
+      (string_fragment) @injection.content
+      (template_substitution)
+    ]+)
+  (#eq? @injection.language "sql"))
 
 ; Sanity CMS GROQ query
 ; defineQuery(`...`)
@@ -58,30 +85,43 @@
   (#eq? @_name "defineQuery")
   arguments: (arguments
     (template_string
-      (string_fragment) @injection.content))
-  (#set! injection.combined)
+      [
+        (string_fragment) @injection.content
+        (template_substitution)
+      ]+))
   (#set! injection.language "groq"))
 
-; gql`...` or gql(`...`)
+; gql(`...`)
 (call_expression
   function: (identifier) @_name
   (#eq? @_name "gql")
-  arguments: [
-    (arguments
-      (template_string
-        (string_fragment) @injection.content))
+  arguments: (arguments
     (template_string
-      (string_fragment) @injection.content)
-  ]
-  (#set! injection.combined)
+      [
+        (string_fragment) @injection.content
+        (template_substitution)
+      ]+))
+  (#set! injection.language "graphql"))
+
+; gql`...`
+(call_expression
+  function: (identifier) @_name
+  (#eq? @_name "gql")
+  arguments: (template_string
+    [
+      (string_fragment) @injection.content
+      (template_substitution)
+    ]+)
   (#set! injection.language "graphql"))
 
 (call_expression
   function: (identifier) @_name
   (#eq? @_name "hbs")
   arguments: (template_string
-    (string_fragment) @injection.content)
-  (#set! injection.combined)
+    [
+      (string_fragment) @injection.content
+      (template_substitution)
+    ]+)
   (#set! injection.language "glimmer"))
 
 ; css`<css>`, keyframes`<css>`
@@ -89,8 +129,10 @@
   function: (identifier) @_name
   (#any-of? @_name "css" "keyframes")
   arguments: (template_string
-    (string_fragment) @injection.content)
-  (#set! injection.combined)
+    [
+      (string_fragment) @injection.content
+      (template_substitution)
+    ]+)
   (#set! injection.language "styled"))
 
 ; styled.div`<css>`
@@ -99,8 +141,10 @@
     object: (identifier) @_name
     (#eq? @_name "styled"))
   arguments: ((template_string
-    (string_fragment) @injection.content)
-    (#set! injection.combined)
+    [
+      (string_fragment) @injection.content
+      (template_substitution)
+    ]+)
     (#set! injection.language "styled")))
 
 ; styled(Component)`<css>`
@@ -109,8 +153,10 @@
     function: (identifier) @_name
     (#eq? @_name "styled"))
   arguments: ((template_string
-    (string_fragment) @injection.content)
-    (#set! injection.combined)
+    [
+      (string_fragment) @injection.content
+      (template_substitution)
+    ]+)
     (#set! injection.language "styled")))
 
 ; styled.div.attrs({ prop: "foo" })`<css>`
@@ -121,8 +167,10 @@
         object: (identifier) @_name
         (#eq? @_name "styled"))))
   arguments: ((template_string
-    (string_fragment) @injection.content)
-    (#set! injection.combined)
+    [
+      (string_fragment) @injection.content
+      (template_substitution)
+    ]+)
     (#set! injection.language "styled")))
 
 ; styled(Component).attrs({ prop: "foo" })`<css>`
@@ -133,8 +181,10 @@
         function: (identifier) @_name
         (#eq? @_name "styled"))))
   arguments: ((template_string
-    (string_fragment) @injection.content)
-    (#set! injection.combined)
+    [
+      (string_fragment) @injection.content
+      (template_substitution)
+    ]+)
     (#set! injection.language "styled")))
 
 ((regex_pattern) @injection.content
@@ -156,8 +206,10 @@
     property: (property_identifier) @_prop
     (#any-of? @_prop "outerHTML" "innerHTML"))
   right: (template_string
-    (string_fragment) @injection.content)
-  (#set! injection.combined)
+    [
+      (string_fragment) @injection.content
+      (template_substitution)
+    ]+)
   (#set! injection.language "html"))
 
 ; el.innerHTML = '<html>'
@@ -183,8 +235,10 @@
           key: ((property_identifier) @_prop
             (#eq? @_prop "template"))
           value: ((template_string
-            (string_fragment) @injection.content)
-            (#set! injection.combined)
+            [
+              (string_fragment) @injection.content
+              (template_substitution)
+            ]+)
             (#set! injection.language "angular")))))))
 
 ; @Component({
@@ -201,8 +255,10 @@
             (#eq? @_prop "styles"))
           value: (array
             ((template_string
-              (string_fragment) @injection.content)
-              (#set! injection.combined)
+              [
+                (string_fragment) @injection.content
+                (template_substitution)
+              ]+)
               (#set! injection.language "css"))))))))
 
 ; @Component({
@@ -218,6 +274,8 @@
           key: ((property_identifier) @_prop
             (#eq? @_prop "styles"))
           value: ((template_string
-            (string_fragment) @injection.content)
-            (#set! injection.combined)
+            [
+              (string_fragment) @injection.content
+              (template_substitution)
+            ]+)
             (#set! injection.language "css")))))))
