@@ -511,7 +511,7 @@ return {
   },
   enforce = {
     install_info = {
-      revision = 'eb2796871d966264cdb041b797416ef1757c8b4f',
+      revision = 'cb42835385ac6d4fc64fd7b3f962591b928ccc7d',
       url = 'https://github.com/simonvic/tree-sitter-enforce',
     },
     maintainers = { '@simonvic' },
