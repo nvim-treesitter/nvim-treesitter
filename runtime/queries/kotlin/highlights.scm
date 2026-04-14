@@ -388,10 +388,6 @@
 
 ; NOTE: `interpolated_identifier`s can be highlighted in any way
 (string_literal
-  "$" @punctuation.special
-  (interpolated_identifier) @none @variable)
-
-(string_literal
-  "${" @punctuation.special
+  (interpolation_expression_start) @punctuation.special
   (interpolated_expression) @none
-  "}" @punctuation.special)
+  (interpolation_expression_end) @punctuation.special)
