@@ -259,17 +259,17 @@
 ] @operator
 
 [
-  "\\.and\\."
-  "\\.or\\."
-  "\\.eqv\\."
-  "\\.neqv\\."
-  "\\.lt\\."
-  "\\.gt\\."
-  "\\.le\\."
-  "\\.ge\\."
-  "\\.eq\\."
-  "\\.ne\\."
-  "\\.not\\."
+  ".and."
+  ".or."
+  ".eqv."
+  ".neqv."
+  ".lt."
+  ".gt."
+  ".le."
+  ".ge."
+  ".eq."
+  ".ne."
+  ".not."
 ] @keyword.operator
 
 ; Punctuation
