@@ -51,7 +51,10 @@
   "at_explicit"
 ] @variable
 
-"at_await" @keyword.coroutine
+(razor_implicit_expression
+  "at_implicit" @keyword.coroutine
+  (await_expression
+    "await" @keyword.coroutine))
 
 (razor_rendermode) @property
 
