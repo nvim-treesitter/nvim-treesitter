@@ -33,4 +33,7 @@
   ">"
   ">" @indent.end)
 
-(comment) @indent.auto
+[
+  (line_comment)
+  (block_comment)
+] @indent.auto
