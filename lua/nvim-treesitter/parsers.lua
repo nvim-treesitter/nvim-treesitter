@@ -1906,7 +1906,7 @@ return {
   },
   rescript = {
     install_info = {
-      revision = '43c2f1f35024918d415dc933d4cc534d6419fedf',
+      revision = 'cafdc4ffad57bcdb8cd49f19a640d0fdfc929387',
       url = 'https://github.com/rescript-lang/tree-sitter-rescript',
     },
     maintainers = { '@ribru17' },
