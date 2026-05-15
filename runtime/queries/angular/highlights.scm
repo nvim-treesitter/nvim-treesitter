@@ -126,6 +126,7 @@
   "."
   ","
   "?."
+  "!."
 ] @punctuation.delimiter
 
 (nullish_coalescing_expression
@@ -157,3 +158,18 @@
     "||"
     "%"
   ] @operator)
+
+(arrow_function
+  "=>" @operator)
+
+(object
+  (spread
+    "..." @operator))
+
+(array
+  (spread
+    "..." @operator))
+
+(arguments
+  (spread
+    "..." @operator))
