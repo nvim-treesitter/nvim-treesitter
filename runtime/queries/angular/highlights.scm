@@ -42,7 +42,10 @@
   "\"" @punctuation.delimiter)
 
 (property_binding
-  "\"" @punctuation.delimiter)
+  [
+    "\""
+    "\"\""
+  ] @punctuation.delimiter)
 
 (structural_assignment
   operator: (identifier) @keyword)
@@ -164,12 +167,12 @@
 
 (object
   (spread
-    "..." @operator))
+    "..." @punctuation.special))
 
 (array
   (spread
-    "..." @operator))
+    "..." @punctuation.special))
 
 (arguments
   (spread
-    "..." @operator))
+    "..." @punctuation.special))
