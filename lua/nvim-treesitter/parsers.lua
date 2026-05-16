@@ -166,7 +166,7 @@ return {
   },
   c3 = {
     install_info = {
-      revision = '78e2ae9cff29ef8ca6666006abe80f1236d42996',
+      revision = '9b4eebce4e8b367acb9d5267f04358d5888b3829',
       url = 'https://github.com/c3lang/tree-sitter-c3',
     },
     maintainers = { '@cbuttner' },
