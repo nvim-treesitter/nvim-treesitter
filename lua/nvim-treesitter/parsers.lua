@@ -1818,7 +1818,7 @@ return {
   },
   r = {
     install_info = {
-      revision = '0e6ef7741712c09dc3ee6e81c42e919820cc65ef',
+      revision = '8ac99ed1e7ad319737fc11dde20c07d1e1942383',
       url = 'https://github.com/r-lib/tree-sitter-r',
     },
     maintainers = { '@ribru17' },
