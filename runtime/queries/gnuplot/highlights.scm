@@ -1,48 +1,40 @@
-; highlights.scm
 (comment) @comment @spell
+
+"variable" @variable.parameter
+
+; built-in named values (palette presets, special color names)
+[
+  "viridis"
+  "black"
+  "bgnd"
+  "background"
+] @variable.parameter.builtin
 
 (identifier) @variable
 
 [
-  "-"
-  "+"
-  "~"
-  "!"
-  "$"
-  "|"
-  "**"
-  "*"
-  "/"
-  "%"
-  "=="
-  "!="
-  "<"
-  "<="
-  ">"
-  ">="
-  "<<"
-  ">>"
-  "&"
-  "^"
-  "&&"
-  "||"
-  "="
+  "["
+  "]"
+  "("
+  ")"
+  "{"
+  "}"
+] @punctuation.bracket
+
+(operator) @operator
+
+; separators and range/assign operators (anonymous tokens)
+[
   ","
-  "."
+  ":"
 ] @operator
 
-[
-  "eq"
-  "ne"
-] @keyword.operator
+; assignment = (anonymous; eventual grammar.js refactor will make it (operator))
+"=" @operator
 
-(ternary_expression
-  [
-    "?"
-    ":"
-  ] @keyword.conditional.ternary)
+(keyword_op) @keyword.operator
 
-"sum" @function.builtin
+(ternary_op) @keyword.conditional.ternary
 
 [
   "for"
@@ -51,49 +43,26 @@
   "while"
 ] @keyword.repeat
 
+; -----------------------------------------------------------------------
+; Commands
+"cmd" @keyword
+
 [
-  (c_break)
-  (c_cd)
-  (c_clear)
-  "evaluate"
-  "fit"
-  "help"
-  "load"
-  "lower"
-  "print"
-  (c_replot)
-  (c_reread)
-  "reset"
-  "splot"
-  "cmd"
-  "test"
-  "undefine"
-  "vfill"
+  "newhistogram"
+  "newspiderplot"
+  "keyentry"
 ] @keyword
-
-(c_pause
-  "pause" @keyword
-  "mouse" @variable.member
-  _? @attribute
-  (","
-    _ @attribute)?)
-
-(c_plot
-  "plot" @keyword)
-
-(c_show
-  "show" @keyword
-  "plot"? @attribute)
-
-(c_stats
-  "stats" @keyword
-  ("name"
-    (_))? @variable.member)
 
 [
   "via"
   "inverse"
   "sample"
+  "sum"
+  "at"
+  "from"
+  "to_rto"
+  "by"
+  "smooth"
 ] @keyword.function
 
 [
@@ -101,439 +70,66 @@
   "else"
 ] @keyword.conditional
 
-(plot_element
-  "axes"? @variable.member)
-
-(cntrparam
-  "auto"? @variable.member)
-
-(colorbox
-  "origin"? @attribute)
-
-(contourfill
-  "auto"? @variable.member)
-
-(format
-  _? @attribute
-  (_)
-  _? @attribute)
-
-(key
-  "auto"? @variable.member)
-
-(style ; TODO: complete
-  [
-    "arrow"
-    "boxplot"
-    ("data"
-      [
-        (_)
-        "spiderplot" @attribute
-      ])
-    "fs"
-    "function"
-    "line"
-    "circle"
-    "rectangle"
-    "ellipse"
-    "parallelaxis"
-    ; (spiderplot) ; TODO: complete
-    "textbox"
-    ("watchpoint"
-      "labels" @attribute
-      (_)?)
-  ] @variable.member)
-
-(terminal
-  "name" @variable.member)
-
-; TODO: complete terminals in grammar and then simplify its options here
-(t_cairolatex
-  [
-    "eps"
-    "pdf"
-    "png"
-    "standalone"
-    "input"
-    "blacktext"
-    "colortext"
-    "colourtext"
-    ("header"
-      (_))
-    "mono"
-    "color"
-    "background"
-    "rounded"
-    "butt"
-  ]* @attribute)
-
-; (t_canvas)
-; (t_cgm)
-; (t_context)
-; (t_domterm)
-; (t_dumb)
-; (t_dxf)
-; (t_emf)
-; (t_epscairo)
-; (t_epslatex)
-; (t_fig)
-; (t_gif)
-; (t_hpgl)
-; (t_jpeg)
-; (t_lua)
-; (t_pc15)
-; (t_pdfcairo)
-; (t_png)
-; (t_pngcairo)
-; (t_postscript)
-; (t_pslatex)
-; (t_pstricks)
-; (t_qt)
-; (t_sixelgd)
-; (t_svg [(font_spec)]* @attribute)
-; (t_tek4xxx)
-; (t_texdraw)
-; (t_tikz)
-; (t_tkcanvas)
-(plot_style
-  [
-    "lines"
-    "points"
-    "lp"
-    "financebars"
-    "dots"
-    "impulses"
-    "labels"
-    "surface"
-    "steps"
-    "fsteps"
-    "histeps"
-    "arrows"
-    "vectors"
-    "sectors"
-    "contourfill"
-    "errorbar"
-    "errorlines"
-    "parallelaxes"
-    "boxes"
-    "boxerrorbars"
-    "boxxyerror"
-    "isosurface"
-    "boxplot"
-    "candlesticks"
-    "circles"
-    "zerrorfill"
-    "ellipses"
-    "filledcurves"
-    "fillsteps"
-    "histograms"
-    "image"
-    "spiderplot"
-    "pm3d"
-    "rgbalpha"
-    "rgbimage"
-    "polygons"
-    "table"
-    "mask"
-  ] @attribute)
-
 [
-  "tc"
+  "front"
+  "back"
+  "behind"
+  "depthorder"
+  "clip"
+  "noclip"
+  "opaque"
+  "font"
+  "filled"
+  "nofilled"
+  "parallel"
+  "reverse"
+  "invert"
+  "extend"
+] @keyword.directive
+
+; -----------------------------------------------------------------------
+; Terminal output path
+"name" @variable.member
+
+; -----------------------------------------------------------------------
+; Style attribute shorthands (K constants + datafile keywords)
+[
+  "as"
+  "dl"
+  "dt"
   "fc"
   "fs"
   "lc"
   "ls"
-  "lw"
   "lt"
-  "pt"
-  "ps"
+  "lw"
   "pi"
   "pn"
-  "dt"
-  "as"
-  "start"
-  "cycles"
-  "saturation"
-  "interval"
-  "format"
-  "keywidth"
-  "samplen"
-  "columns"
-  "title"
-  "notitle"
+  "ps"
+  "pt"
+  "tc"
+  "skip"
   "every"
   "index"
   "using"
   "with"
-  "frac"
-  "cb"
-  "arg"
-  "prefix"
-  "output"
-  "primary"
-  "specular"
-  "spec2"
-  "firstlinetype"
-  "width"
-  "height"
   "expand"
-  "array"
-  "dx"
-  "dy"
-  "dz"
-  "filetype"
-  "center"
-  "record"
 ] @variable.member
 
-; Workaround because formatter cannot handle 300 list nodes
-[
-  (angles)
-  (clip)
-  (colorsequence)
-  (contour)
-  (encoding)
-  (mapping)
-  (xdata)
-  (theta)
-  "wall"
-  "on"
-  "off"
-  "opaque"
-  "inside"
-  "outside"
-  "margin"
-  "cen"
-  "lef"
-  "rig"
-  "top"
-  "bot"
-  "lr"
-  "a"
-  "maxcols"
-  "maxrows"
-  "autojustify"
-  "overlap"
-  "spread"
-  "wrap"
-  "swarm"
-  "range"
-  "label"
-  "mixed"
-  "triangles"
-  "insidecolor"
-  "noinsidecolor"
-  "cycle"
-  "tics"
-  "ztics"
-  "cbtics"
-  "user"
-  "front"
-  "back"
-  "bdefault"
-  "time"
-  "palette"
-  "terminal"
-  "onecolor"
-  "invert"
-  "reverse"
-  "writeback"
-  "extend"
-  "restore"
-  "linear"
-  "cubicspline"
-  "bspline"
-  "points"
-  "order"
-  "levels"
-  "sorted"
-  "autofreq"
-  "add"
-  "inout"
-  "axis"
-  "mirror"
-  "type"
-  "rowsfirst"
-  "columnsfirst"
-  "downwards"
-  "upwards"
-  "prevnext"
-  "gray"
-  "color"
-  "gamma"
-  "defined"
-  "cubehelix"
-  "model"
-  "maxcolors"
-  "file"
-  "colormap"
-  "rgbformulae"
-  "viridis"
-  "positive"
-  "negative"
-  "nops_allcF"
-  "ps_allcF"
-  "quiet"
-  "full"
-  "trip"
-  "numbers"
-  "small"
-  "large"
-  "fullwidth"
-  "append"
-  "bind"
-  "errors"
-  "session"
-  "behind"
-  "polar"
-  "layerdefault"
-  "locale"
-  "axes"
-  "fix"
-  "keepfix"
-  "noextend"
-  "head"
-  "fixed"
-  "filled"
-  "nofilled"
-  "absolute"
-  "at"
-  "relative"
-  "enhanced"
-  "border"
-  "noborder"
-  "rgbcolor"
-  "empty"
-  "black"
-  "bgnd"
-  "nodraw"
-  "size"
-  "new"
-  "first"
-  "second"
-  "screen"
-  "graph"
-  "character"
-  "trianglepattern"
-  "undefined"
-  "noundefined"
-  "altdiagonal"
-  "bentover"
-  "vertical"
-  "horizontal"
-  "square"
-  "ratio"
-  "noratio"
-  "solid"
-  "transparent"
-  "pattern"
-  "from"
-  "to_rto"
-  "length"
-  "angle"
-  "columnheaders"
-  "fortran"
-  "nofpe_trap"
-  "missing"
-  "separator"
-  "commentschars"
-  "log"
-  "rangelimited"
-  "offset"
-  "nooffset"
-  "scale"
-  "font"
-  "point"
-  "nopoint"
-  "boxed"
-  "noboxed"
-  "hypertext"
-  "defaults"
-  "keyentry"
-  "splines"
-  "qnorm"
-  "gauss"
-  "cauchy"
-  "exp"
-  "box"
-  "hann"
-  "implicit"
-  "explicit"
-  "rotate"
-  "by"
-  "parallel"
-  "norotate"
-  "map"
-  "projection"
-  "equal"
-  "azimuth"
-  "nohidden3d"
-  "nocontours"
-  "nosurface"
-  "colornames"
-  "functions"
-  "variables"
-  "version"
-  "nologfile"
-  "logfile"
-  "fit_out"
-  "errorvariables"
-  "covariancevariables"
-  "errorscaling"
-  "prescale"
-  "maxiter"
-  "limit"
-  "limit_abs"
-  "start-lambda"
-  "lambda-factor"
-  "script"
-  "clip"
-  "fontscale"
-  "lighting"
-  "depthorder"
-  "interpolate"
-  "corners2color"
-  "flush"
-  "scanorder"
-  "hidden3d"
-  "clipcb"
-  "layout"
-  "margins"
-  "spacing"
-  "smooth"
-  "binary"
-  "skip"
-  "bins"
-  "binrange"
-  "binwidth"
-  "binvalue"
-  "mask"
-  "convexhull"
-  "concavehull"
-  "volatile"
-  "zsort"
-  "nonuniform"
-  "sparse"
-  "matrix"
-] @attribute
+; set/show argument keywords (all key("...", n, "arg") aliases)
+"arg" @variable.member
 
+; -----------------------------------------------------------------------
+; Option keywords
 [
-  "x1"
-  "x2"
-  "y1"
-  "y2"
-  "y"
-  "r"
-  "z"
-  "xy"
-  "xz"
-  "yz"
-  "xyz"
-  "x1y1"
-  "x2y2"
-  "x1y2"
-  "x2y1"
-  "columnheader"
+  ; coordinate systems / axes
+  "unit"
+  "units_opt"
+  "plane"
+  "viewaxis"
+  "axes_opts"
+  (columnheader)
+  ; time units (set xdata time / timefmt)
   "seconds"
   "minutes"
   "hours"
@@ -541,13 +137,9 @@
   "weeks"
   "months"
   "years"
-  "cm"
-  "in"
+  ; smooth subtypes
   "discrete"
   "incremental"
-  "default"
-  "long"
-  "nogrid"
   "unique"
   "frequency"
   "fnormal"
@@ -556,54 +148,381 @@
   "csplines"
   "acsplines"
   "mcsplines"
-  "path"
   "bezier"
   "sbezier"
-  "unwrap"
+  "path"
   "kdensity"
+  "bandwidth"
+  "period"
   "closed"
   "between"
   "above"
   "below"
-  "variable"
+  "unwrap"
+  "grid"
+  ; plot / datafile misc
   "pixels"
+  "whiskerbars"
+  "beginning"
+  "long"
+  "nogrid"
+  ; colorspace
   "RGB"
   "CMY"
   "HSV"
+  ; positioning / key
   "base"
   "begin"
   "center"
   "end"
+  "keywidth"
+  "samplen"
+  "columns"
+  ; pm3d / 3d options
   "ftriangles"
   "clip1in"
   "clip4in"
   "c2c"
   "retrace"
+  ; data separators
   "whitespace"
   "tab"
   "comma"
+  ; palette stack
   "push"
   "pop"
+  ; flip binary axes
   "flipx"
   "flipy"
   "flipz"
+  ; binary datafile modifiers
+  "binary"
+  "format"
+  "filetype"
+  "record"
+  "array"
+  "origin"
+  "dx"
+  "dy"
+  "dz"
+  "width"
+  "height"
+  "level"
+  "matrix"
+  "nonuniform"
+  "sparse"
+  "volatile"
+  "noautoscale"
+  "zsort"
+  "mask"
+  "transpose"
+  ; endian options (binary)
+  "endian"
+  "little"
+  "big"
+  "swap"
+  "swab"
+  "middle"
+  "pdp"
+  ; fit modifiers
+  "unitweights"
+  "errors"
+  ; pause endconditions
+  "mouse"
+  "keypress"
+  "button1"
+  "button2"
+  "button3"
+  "close"
+  "any"
+  ; history command options
+  "append"
+  "quiet"
+  "numbers"
+  "trim"
+  "full"
+  ; pixmap
+  "colormap"
+  ; coordinate system prefixes (position context)
+  "first"
+  "second"
+  "graph"
+  "screen"
+  "character"
+  "axis"
+  ; position direction aliases
+  "bot"
+  "cen"
+  "lef"
+  "rig"
+  "top"
+  ; geometry / arrow options
+  "angle"
+  "radius"
+  "length"
+  "head"
+  "inout"
+  "polardistance"
+  ; offset / scale
+  "offset"
+  "nooffset"
+  "scale"
+  "relative"
+  "absolute"
+  ; orientation
+  "vertical"
+  "horizontal"
+  ; angle units
+  "degrees"
+  "radians"
+  "radial"
+  ; contour / palette / axis
+  "levels"
+  "range"
+  "defined"
+  "missing"
+  "interpolate"
+  "autofreq"
+  "autojustify"
+  "overlap"
+  ; rotation
+  "rotate"
+  "norotate"
+  ; border / extend / range modifiers
+  "border"
+  "noborder"
+  "noextend"
+  "writeback"
+  "restore"
+  ; pm3d scan order
+  "scanorder"
+  ; histogram subtypes
+  "clustered"
+  "rowstacked"
+  "columnstacked"
+  "mixed"
+  "order"
+  "nokeyseparators"
+  ; smooth additions
+  "bspline"
+  "cubicspline"
+  ; key/label placement
+  "inside"
+  "outside"
+  ; fill pattern
+  "pattern"
+  ; 3d / surface
+  "triangles"
+  "surface"
+  "nosurface"
+  "s"
+  ; data / fit extras
+  "variables"
+  "logfile"
+  "nologfile"
+  "datablocks"
+  "commentschars"
+  "functions"
+  ; misc
+  "both"
+  "positive"
+  "negative"
+  "one"
+  "two"
+  "user"
+  "sorted"
+  "timedate"
+  "maxrows"
+  "maxcolors"
+  ; axes aliases / coordinate planes / walls
+  "xy"
+  "wall"
+  "version"
+  ; colorspec
+  "rgbcolor"
+  ; tics
+  "mirror"
+  ; set size
+  "equal"
+  "ratio"
+  ; set fit
+  "covariancevariables"
+  "errorvariables"
+  "maxiter"
+  "default"
+  ; label / style
+  "boxed"
+  ; set view
+  "azimuth"
+  "map"
+  "projection"
+  ; set theta direction
+  "theta_dir"
+  ; palette model / presets / cubehelix options
+  "cubehelix"
+  "model"
+  "start"
+  "gamma"
+  "cycles"
+  "saturation"
+  ; pm3d / lighting
+  "corners2color"
+  "lighting"
+  "primary"
+  "specular"
+  "spec2"
+  ; smooth / dgrid3d subtypes
+  "gauss"
+  "splines"
+  ; contour / cntrparam
+  "onecolor"
+  "interval"
+  "firstlinetype"
+  ; tics axes / modifiers
+  "ztics"
+  "cbtics"
+  "add"
+  "rangelimited"
+  ; text / font / encoding
+  "fontscale"
+  "utf8"
+  "noboxed"
+  ; fill / size style
+  "empty"
+  "square"
+  ; layout / spacing / multiplot
+  "layout"
+  "spacing"
+  "frac"
+  ; color names in style contexts
+  "cb"
+  ; filledcurves axis coordinate (x1, x2, y1, y2 etc.)
+  "coordinate"
+  ; numeric format type
+  "numeric"
+  ; watch-label / surface options
+  "point"
+  "nohidden3d"
+  ; tics keyword (grid / paxis — covers xtics, ytics, ztics contexts)
+  "tics"
+  ; histogram fill style
+  "errorbars"
+  ; jitter options
+  "spread"
+  "swarm"
+  ; key command options
+  "box"
+  "auto"
+  ; paxis label keyword (key("label",3) with default aka="label")
+  ; watchpoint style subcommand (key("labels",-1) covers singular "label" too)
+  "label"
+  "labels"
+  ; polar coordinate system and grid option
+  "polar"
+  ; polar grid axis ranges
+  "theta"
+  "r"
+  ; ellipses style
+  "units"
+  ; stats output prefix
+  "prefix"
+  ; palette formula option
+  "rgbformulae"
+  ; pm3d z-clip
+  "z"
+  ; grid mode
+  "spiderplot"
+  ; binary filetype
+  "png"
+  ; datafile option
+  "columnheaders"
+  ; textbox / multiplot margins (anonymous "margins" string)
+  "margins"
+  ; datafile lc/fc palette shorthand
+  "palette"
 ] @variable.member
 
-(colorspec
-  "palette" @attribute)
+; -----------------------------------------------------------------------
+; Presentation / style attributes
+[
+  "size"
+  "monochrome"
+  "color"
+  "transparent"
+  "enhanced"
+  "background"
+  "nobackground"
+  "separator"
+  (hull)
+  "title"
+  "notitle"
+  "rectangle"
+  "circle"
+  "ellipse"
+  "polygon"
+  ; fill / line style modes
+  "solid"
+  "dashed"
+  "rounded"
+  ; page orientation
+  "landscape"
+  "portrait"
+  "eps"
+  "pdf"
+  ; terminal options
+  "animate"
+  "noanimate"
+  "standalone"
+  "input"
+  "colortext"
+  "blacktext"
+  "duplex"
+  ; point type names (ps/tikz terminals)
+  "texpoints"
+  "normalpoints"
+  "mpoints"
+  "smallpoints"
+  "tinypoints"
+  "pspoints"
+  "nopspoints"
+  ; text formatting
+  "textnormal"
+  "defaultplex"
+  ; key alignment (capitalised)
+  "Left"
+  "Right"
+  ; layer / style misc
+  "layerdefault"
+  "st_opt"
+  "output"
+] @attribute
 
-(datafile_modifiers
-  "origin"? @variable.member)
+"plt_st" @attribute
 
-((datafile_modifiers
-  filetype: (identifier) @variable.member)
-  (#any-of? @variable.member
-    "avs" "bin" "edf" "ehf" "gif" "gpbin" "jpeg" "jpg" "png" "raw" "rgb" "auto"))
+[
+  (auto)
+  (autotitle)
+  (columnheader)
+  (maxcols)
+] @variable.member
 
+; binary filetype= value (png/jpg/gif/bin parsed as identifier in field)
+(binary_options
+  filetype: (identifier) @attribute)
+
+; -----------------------------------------------------------------------
+; Macro / datablock identifiers
 (macro) @function.macro
 
-(datablock) @function.macro
+(datablock) @module
 
+[
+  (datablock_start)
+  (datablock_end)
+] @label
+
+; -----------------------------------------------------------------------
+; Functions
 (function
   name: (identifier) @function)
 
@@ -622,6 +541,8 @@
     "tm_year" "weekday_iso" "weekday_cdc" "column" "columnhead" "exists" "hsv2rgb" "index" "palette"
     "rgbcolor" "stringcolumn" "valid" "value" "voxel"))
 
+; -----------------------------------------------------------------------
+; Built-in variables (stats output, GPVAL_*, etc.)
 ((identifier) @variable.builtin
   (#match? @variable.builtin
     "^\\w+_(records|headers|outofrange|invalid|blank|blocks|columns|column_header|index_(min|max)(_x|_y)?|(min|max)(_x|_y)?|mean(_err)?(_x|_y)?|stddev(_err)?(_x|_y)?)$"))
@@ -632,17 +553,26 @@
 
 ((identifier) @variable.builtin
   (#match? @variable.builtin
-    "^\\w+_(kurtosis(_err)?(_x|_y)?|adev(_x|_y)?|correlation|slope(_err)?|intercept(_err)?|sumxy|pos(_min|_max)_y|size(_x|_y))$"))
+    "^\\w+_(kurtosis(_err)?(_x|_y)?|adev(_x|_y)?|correlation|slope(_err)?|intercept(_err)?|sumxy|pos_(min|max)_y|size(_x|_y))$"))
 
 ((identifier) @variable.builtin
-  (#match? @variable.builtin "^((GPVAL|MOUSE|FIT)_\\w+|GNUTERM|NaN|VoxelDistance|GridDistance|pi)$"))
+  (#match? @variable.builtin
+    "^((GPVAL|MOUSE|FIT)_\\w+|GNUTERM|NaN|VoxelDistance|GridDistance|pi|ARG\\w+)$"))
 
-(array_def
+; -----------------------------------------------------------------------
+; Array definitions
+(def_array
   "array" @keyword.function)
 
 (array
   (identifier) @function)
 
+; -----------------------------------------------------------------------
+; Literals
 (number) @number
 
 (string_literal) @string
+
+(escape_sequence) @string.escape
+
+(format_specifier) @string.special

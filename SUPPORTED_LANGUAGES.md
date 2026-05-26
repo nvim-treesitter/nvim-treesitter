@@ -103,7 +103,7 @@ ecma (queries only)[^ecma] | unstable | `HFIJL` | @steelsojka
 [glimmer_typescript](https://github.com/NullVoxPopuli/tree-sitter-glimmer-typescript) | unstable | `HFIJ ` | @NullVoxPopuli
 [glsl](https://github.com/tree-sitter-grammars/tree-sitter-glsl) | unstable | `HFIJL` | @theHamsta
 [gn](https://github.com/tree-sitter-grammars/tree-sitter-gn) | unstable | `HFIJL` | @amaanq
-[gnuplot](https://github.com/dpezto/tree-sitter-gnuplot) | unstable | `H  J ` | @dpezto
+[gnuplot](https://github.com/dpezto/tree-sitter-gnuplot) | unstable | `HF J ` | @dpezto
 [go](https://github.com/tree-sitter/tree-sitter-go) | unstable | `HFIJL` | @theHamsta, @WinWisely268
 [goctl](https://github.com/chaozwn/tree-sitter-goctl) | unstable | `HFIJ ` | @chaozwn
 [godot_resource](https://github.com/PrestonKnopp/tree-sitter-godot-resource)[^godot_resource] | unstable | `HF JL` | @pierpo
