@@ -281,7 +281,7 @@
 
 (boolean_literal) @boolean
 
-"nil" @constant.builtin
+(nil_literal) @constant.builtin
 
 (wildcard_pattern) @character.special
 

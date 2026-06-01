@@ -2234,7 +2234,7 @@ return {
   swift = {
     install_info = {
       generate = true,
-      revision = '8abb3e8b33256d89127a35e87480736f74755ff9',
+      revision = 'd42e9bb24646c4dbf1f5ec476a35b96d817da448',
       url = 'https://github.com/alex-pinkus/tree-sitter-swift',
     },
     maintainers = { '@alex-pinkus' },
