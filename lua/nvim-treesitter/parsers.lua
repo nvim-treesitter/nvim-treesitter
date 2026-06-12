@@ -174,11 +174,11 @@ return {
   },
   c_sharp = {
     install_info = {
-      revision = '88366631d598ce6595ec655ce1591b315cffb14c',
+      revision = 'v0.23.5',
       url = 'https://github.com/tree-sitter/tree-sitter-c-sharp',
     },
     maintainers = { '@amaanq' },
-    tier = 2,
+    tier = 1,
   },
   caddy = {
     install_info = {
