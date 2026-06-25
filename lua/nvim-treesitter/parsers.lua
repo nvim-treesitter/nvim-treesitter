@@ -2051,11 +2051,11 @@ return {
   },
   slint = {
     install_info = {
-      revision = '4d7ad0617c30f865f051bbac04a9826bea29f987',
+      revision = '68b25244cec6eb9d7f8f790ef781c29c822d8f84',
       url = 'https://github.com/slint-ui/tree-sitter-slint',
     },
     maintainers = { '@hunger' },
-    tier = 2,
+    tier = 3,
   },
   smali = {
     install_info = {
