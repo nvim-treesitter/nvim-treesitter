@@ -32,7 +32,7 @@ Language | Tier | Queries | Maintainer
 [brightscript](https://github.com/ajdelcimmuto/tree-sitter-brightscript) | unstable | `HFIJ ` | @ajdelcimmuto
 [c](https://github.com/tree-sitter/tree-sitter-c) | unstable | `HFIJL` | @amaanq
 [c3](https://github.com/c3lang/tree-sitter-c3) | unstable | `HFIJ ` | @cbuttner
-[c_sharp](https://github.com/tree-sitter/tree-sitter-c-sharp) | unstable | `HF JL` | @amaanq
+[c_sharp](https://github.com/tree-sitter/tree-sitter-c-sharp) | stable | `HF JL` | @amaanq
 [caddy](https://github.com/opa-oz/tree-sitter-caddy) | unmaintained | `HFIJ ` | 
 [cairo](https://github.com/tree-sitter-grammars/tree-sitter-cairo) | unstable | `HFIJL` | @amaanq
 [capnp](https://github.com/tree-sitter-grammars/tree-sitter-capnp) | unstable | `HFIJL` | @amaanq
@@ -261,7 +261,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [sflog](https://github.com/aheber/tree-sitter-sfapex)[^sflog] | unstable | `H    ` | @aheber, @xixiaofinland
 [slang](https://github.com/tree-sitter-grammars/tree-sitter-slang)[^slang] | unstable | `HFIJL` | @theHamsta
 [slim](https://github.com/theoo/tree-sitter-slim) | unstable | `HFIJL` | @theoo
-[slint](https://github.com/slint-ui/tree-sitter-slint) | unstable | `HFIJL` | @hunger
+[slint](https://github.com/slint-ui/tree-sitter-slint) | unmaintained | `HFIJL` | @hunger
 [smali](https://github.com/tree-sitter-grammars/tree-sitter-smali) | unstable | `HFIJL` | @amaanq
 [smithy](https://github.com/indoorvivants/tree-sitter-smithy) | unstable | `H  J ` | @amaanq, @keynmol
 [snakemake](https://github.com/osthomas/tree-sitter-snakemake) | unstable | `HFIJL` | @osthomas
