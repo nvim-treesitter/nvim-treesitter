@@ -225,20 +225,24 @@
 
 (program
   (comment)+ @comment.documentation
+  .
   (class))
 
 (module
   (comment)+ @comment.documentation
+  .
   (body_statement
     (class)))
 
 (class
   (comment)+ @comment.documentation
+  .
   (body_statement
     (method)))
 
 (body_statement
   (comment)+ @comment.documentation
+  .
   (method))
 
 ; Operators
