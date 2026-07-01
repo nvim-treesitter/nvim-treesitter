@@ -1,4 +1,5 @@
 NVIM_VERSION ?= nightly
+EMMYLUA_VERSION ?= 0.22.0
 
 DEPDIR ?= .test-deps
 CURL ?= curl -sL --create-dirs
@@ -36,7 +37,7 @@ $(NVIM):
 
 EMMYLUALS := $(DEPDIR)/emmylua_check-$(LUALS_ARCH)
 EMMYLUALS_TARBALL := $(EMMYLUALS).tar.gz
-EMMYLUALS_URL := https://github.com/emmyluals/emmylua-analyzer-rust/releases/latest/download/$(notdir $(EMMYLUALS_TARBALL))
+EMMYLUALS_URL := https://github.com/emmyluals/emmylua-analyzer-rust/releases/download/$(EMMYLUA_VERSION)/$(notdir $(EMMYLUALS_TARBALL))
 
 .PHONY: emmyluals
 emmyluals: $(EMMYLUALS)
