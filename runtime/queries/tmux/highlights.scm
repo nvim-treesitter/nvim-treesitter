@@ -1,12 +1,6 @@
 (comment) @comment @spell
 
-[
-  "'"
-  (str_single_quotes)
-  (str_double_quotes)
-] @string
-
-(backslash_escape) @string.escape
+(string) @string
 
 (path) @string.special.path
 
@@ -37,28 +31,14 @@
 (source_file_directive
   (command) @keyword.import)
 
-(attribute) @attribute
-
-(function_name) @function.call
+(hook_name) @attribute
 
 "=" @operator
 
-[
-  ";"
-  "';'"
-  ","
-  ":"
-] @punctuation.delimiter
+";" @punctuation.delimiter
 
 [
-  "#"
-  "?"
-] @punctuation.special
-
-[
-  "#{"
   "}"
-  "#["
   "]"
   "["
   "{"
