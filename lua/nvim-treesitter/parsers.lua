@@ -937,14 +937,6 @@ return {
     requires = { 'cpp' },
     tier = 2,
   },
-  hlsplaylist = {
-    install_info = {
-      revision = '3bfda9271e3adb08d35f47a2102fe957009e1c55',
-      url = 'https://github.com/Freed-Wu/tree-sitter-hlsplaylist',
-    },
-    maintainers = { '@Freed-Wu' },
-    tier = 2,
-  },
   hocon = {
     install_info = {
       revision = 'c390f10519ae69fdb03b3e5764f5592fb6924bcc',
@@ -1407,14 +1399,6 @@ return {
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     maintainers = { '@artagnon' },
-    tier = 2,
-  },
-  muttrc = {
-    install_info = {
-      revision = '173b0ab53a9c07962c9777189c4c70e90f1c1837',
-      url = 'https://github.com/neomutt/tree-sitter-muttrc',
-    },
-    maintainers = { '@Freed-Wu' },
     tier = 2,
   },
   nasm = {
@@ -2363,14 +2347,6 @@ return {
     maintainers = { '@ahelwer', '@susliko' },
     tier = 2,
   },
-  tmux = {
-    install_info = {
-      revision = '5c4bc6815372ca6c9a0f5a1188d73c0475523cce',
-      url = 'https://github.com/Freed-Wu/tree-sitter-tmux',
-    },
-    maintainers = { '@Freed-Wu', '@stevenxxiu' },
-    tier = 2,
-  },
   todotxt = {
     install_info = {
       revision = '3937c5cd105ec4127448651a21aef45f52d19609',
@@ -2658,14 +2634,6 @@ return {
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-yuck',
     },
     maintainers = { '@Philipp-M', '@amaanq' },
-    tier = 2,
-  },
-  zathurarc = {
-    install_info = {
-      revision = '0554b4a5d313244b7fc000cbb41c04afae4f4e31',
-      url = 'https://github.com/Freed-Wu/tree-sitter-zathurarc',
-    },
-    maintainers = { '@Freed-Wu' },
     tier = 2,
   },
   zig = {
