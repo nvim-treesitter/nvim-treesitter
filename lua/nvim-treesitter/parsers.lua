@@ -369,7 +369,7 @@ return {
   },
   diff = {
     install_info = {
-      revision = '2520c3f934b3179bb540d23e0ef45f75304b5fed',
+      revision = '13d75f946a724293c654e1e2b35ac8f3c01c7731',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-diff',
     },
     maintainers = { '@gbprod' },
