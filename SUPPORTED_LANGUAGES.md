@@ -214,8 +214,6 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [powershell](https://github.com/airbus-cert/tree-sitter-powershell) | unstable | `HFIJL` | @L2jLiga
 [printf](https://github.com/tree-sitter-grammars/tree-sitter-printf) | unstable | `H    ` | @ObserverOfTime
 [prisma](https://github.com/victorhqc/tree-sitter-prisma) | unstable | `HF J ` | @elianiva
-[problog](https://github.com/foxyseta/tree-sitter-prolog) | unstable | `HFIJ ` | @foxyseta
-[prolog](https://github.com/foxyseta/tree-sitter-prolog) | unstable | `HFIJ ` | @foxyseta
 [promql](https://github.com/MichaHoffmann/tree-sitter-promql) | unstable | `H  J ` | @MichaHoffmann
 [properties](https://github.com/tree-sitter-grammars/tree-sitter-properties)[^properties] | unstable | `H  JL` | @ObserverOfTime
 [proto](https://github.com/coder3101/tree-sitter-proto) | unstable | `HFIJ ` | @stefanvanburen
