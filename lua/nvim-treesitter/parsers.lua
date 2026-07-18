@@ -1663,25 +1663,6 @@ return {
     maintainers = { '@elianiva' },
     tier = 2,
   },
-  problog = {
-    install_info = {
-      location = 'grammars/problog',
-      revision = 'd8d415f6a1cf80ca138524bcc395810b176d40fa',
-      url = 'https://github.com/foxyseta/tree-sitter-prolog',
-    },
-    maintainers = { '@foxyseta' },
-    requires = { 'prolog' },
-    tier = 2,
-  },
-  prolog = {
-    install_info = {
-      location = 'grammars/prolog',
-      revision = 'd8d415f6a1cf80ca138524bcc395810b176d40fa',
-      url = 'https://github.com/foxyseta/tree-sitter-prolog',
-    },
-    maintainers = { '@foxyseta' },
-    tier = 2,
-  },
   promql = {
     install_info = {
       revision = '77625d78eebc3ffc44d114a07b2f348dff3061b0',
