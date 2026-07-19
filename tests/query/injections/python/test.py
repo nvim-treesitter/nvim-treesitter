@@ -14,5 +14,15 @@ re_test = re.compile(
     # comment
     # ^ @comment
 )
+a.a(
+    f"<td class=\"a{a}\">{a}</td>"
+    f"<td class=\"a{a}\">{a}</td>"
+    f"<td class=\"a{a}\">{a}</td>"
+    f"<td class=\"a{a}\">{a}</td>"
+    f"<td class=\"a{a}\">{a}</td>"
+    f"<td class=\"a{a}\">{a}</td>"
+    f"<td class=\"a{a}\">{a}</td>"
+    f"<td class=\"a{a}\">{a}</td>"
+)
 print("foo %s bar %d" % ("arg1", 2))
 #          ^ @printf
