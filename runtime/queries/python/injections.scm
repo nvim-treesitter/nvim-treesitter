@@ -17,14 +17,13 @@
     object: (identifier) @_re)
   arguments: (argument_list
     (concatenated_string
-      ((string
+      (string
         (string_start)
         [
           (string_content) @injection.content
           (interpolation)
         ]+
-        (string_end))
-        (comment)?)+))
+        (string_end))))
   (#eq? @_re "re")
   (#set! injection.language "regex"))
 
