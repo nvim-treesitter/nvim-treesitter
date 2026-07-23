@@ -919,6 +919,14 @@ return {
     maintainers = { '@qvalentin' },
     tier = 2,
   },
+  helixql = {
+    install_info = {
+      revision = '259d2b68c56ae40ef7d190919ed49e0f17d1f3ee',
+      url = 'https://github.com/benwoodward/tree-sitter-helixql',
+    },
+    maintainers = { '@benwoodward' },
+    tier = 2,
+  },
   hjson = {
     install_info = {
       revision = '02fa3b79b3ff9a296066da6277adfc3f26cbc9e0',
