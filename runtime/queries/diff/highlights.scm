@@ -10,6 +10,8 @@
   (old_file)
 ] @diff.minus
 
+(change) @diff.delta
+
 (commit) @constant
 
 (location) @attribute
@@ -32,10 +34,13 @@
   "++"
   "+++"
   "++++"
+  ">"
   "-"
   "--"
   "---"
   "----"
+  "<"
+  "!"
 ] @punctuation.special
   (#set! priority 95))
 
