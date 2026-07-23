@@ -70,6 +70,19 @@ in {
     '';
   };
 
+  drv13 = pkgs.writeText "config.json" ''
+    {
+      "foo": 1,
+      "bar": 2
+    }
+  '';
+
+  drv14 = pkgs.writeTextDir "etc/ssh/ssh_config" ''
+    Host *
+    AddressFamily any
+    ForwardX11 no
+  '';
+
   mod1 = {
     type = "lua";
     config = ''
