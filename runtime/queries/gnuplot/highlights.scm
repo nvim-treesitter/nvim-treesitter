@@ -67,7 +67,6 @@
   "font"
   "filled"
   "nofilled"
-  "parallel"
   "coord"
 ] @keyword.directive
 
@@ -110,20 +109,10 @@
 ; Option keywords
 [
   ; coordinate systems / axes
-  "unit"
   "units_opt"
   "axes_opts"
   (columnheader)
-  ; time units (set xdata time / timefmt)
-  "seconds"
-  "minutes"
-  "hours"
-  "days"
-  "weeks"
-  "months"
-  "years"
   ; smooth subtypes
-  "kdensity"
   "closed"
   "between"
   "above"
@@ -163,7 +152,6 @@
   "origin"
   "dx"
   "dy"
-  "width"
   "level"
   "matrix"
   "nonuniform"
@@ -208,17 +196,13 @@
   "angle"
   "length"
   "head"
-  "inout"
   ; offset / scale
   "offset"
-  "nooffset"
   "scale"
   ; contour / palette / axis
   "range"
   "missing"
   "interpolate"
-  "autofreq"
-  "autojustify"
   ; rotation
   "rotate"
   ; border / extend / range modifiers
@@ -231,17 +215,12 @@
   "s"
   ; data / fit extras
   "variables"
-  "logfile"
-  "nologfile"
   "datablocks"
   "commentschars"
   "functions"
-  ; axes aliases / coordinate planes / walls
-  "version"
   ; colorspec
   "rgbcolor"
   ; set fit
-  "maxiter"
   "default"
   ; set view
   "map"
@@ -253,12 +232,7 @@
   "specular"
   "spec2"
   ; smooth / dgrid3d subtypes
-  "splines"
   ; tics axes / modifiers
-  "add"
-  ; text / font / encoding
-  "fontscale"
-  "utf8"
   ; fill / size style
   "empty"
   ; layout / spacing / multiplot
@@ -276,9 +250,6 @@
   ; paxis label keyword (key("label",3) with default aka="label")
   ; watchpoint style subcommand (key("labels",-1) covers singular "label" too)
   "label"
-  ; polar grid axis ranges
-  "theta"
-  "r"
   ; ellipses style
   "units"
   ; stats output prefix
@@ -289,8 +260,6 @@
   "margins"
   ; datafile lc/fc palette shorthand
   "palette"
-  ; set fit quiet / results / verbose / brief
-  "fit_out"
 ] @variable.member
 
 (columnheader) @variable.member
@@ -313,23 +282,10 @@
   "units_opt"
   ; fill / line style modes
   "solid"
-  "dashed"
-  ; page orientation
-  "landscape"
-  "portrait"
   ; terminal options
   "animate"
   "input"
-  "colortext"
-  "blacktext"
   ; point type names (ps/tikz terminals)
-  "texpoints"
-  "normalpoints"
-  "mpoints"
-  "smallpoints"
-  "tinypoints"
-  "pspoints"
-  "nopspoints"
   "st_opt"
   "plt_st"
 ] @attribute
