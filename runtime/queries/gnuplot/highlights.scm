@@ -1,3 +1,4 @@
+; highlights.scm
 (comment) @comment @spell
 
 "variable" @variable.parameter
@@ -23,7 +24,6 @@
 
 (operator) @operator
 
-; separators and range/assign operators (anonymous tokens)
 [
   "="
   ","
@@ -64,17 +64,19 @@
   "back"
   "depthorder"
   "clip"
+  "zclip"
   "font"
   "filled"
   "nofilled"
+  ; coordinate systems (first/second/graph/screen/character/polar) — alias "coord"
   "coord"
 ] @keyword.directive
 
-; on/off toggle flags ({no}X) — alias "flag"
-"flag" @keyword.modifier
+; on/off toggle flags ({no}X) — alias "flag" (@keyword.modifier)
+"flag" @keyword.directive
 
-; enumerated VALUES / modes (alias "mod")
-"mod" @keyword.modifier
+; enumerated VALUES / modes (alias "mod") — @constant
+"mod" @constant
 
 ; plot/splot ELEMENT modifiers (alias "attr") — @property
 ; (title/notitle/with/using/index/every/axes/smooth in a plot command;
@@ -82,12 +84,10 @@
 "attr" @property
 
 ; -----------------------------------------------------------------------
-; Terminal output path
-"name" @variable.member
-
-; -----------------------------------------------------------------------
-; Style attribute shorthands (K constants + datafile keywords)
 [
+  ; Terminal output path
+  "name"
+  ; Style attribute shorthands (K constants + datafile keywords)
   "sa"
   "dt"
   "fc"
@@ -100,19 +100,19 @@
   "skip"
   "expand"
   "title"
+  ; set/show/unset option heads (alias "opt") and option-body suboption
+  ; keywords (alias "arg") — distinct clause families, same visual group
+  "opt"
+  "arg"
 ] @variable.member
-
-; set/show argument keywords (all key("...", n, "arg") aliases)
-"arg" @variable.member
 
 ; -----------------------------------------------------------------------
 ; Option keywords
 [
   ; coordinate systems / axes
-  "units_opt"
   "axes_opts"
-  (columnheader)
-  ; smooth subtypes
+  ; time units (set xdata time / timefmt)
+  ; smooth subtypes still emitted as own token (value-modes csplines/bezier/… → "mod")
   "closed"
   "between"
   "above"
@@ -160,6 +160,7 @@
   "noautoscale"
   "zsort"
   "mask"
+  "sharpen"
   "transpose"
   ; endian options (binary)
   "endian"
@@ -172,7 +173,9 @@
   ; fit modifiers
   "unitweights"
   "errors"
-  ; pause endconditions
+  ; command-argument keywords (pause endconditions, exit forms)
+  "message"
+  "status"
   "mouse"
   "keypress"
   "button1"
@@ -186,7 +189,9 @@
   "numbers"
   "trim"
   "full"
-  ; coordinate system prefixes (position context)
+  ; pixmap
+  ; coordinate axis-family prefix (the coord systems first/second/graph/screen/
+  ; character/polar are aliased to (coord) -> @keyword.directive below)
   "axis"
   ; position direction aliases
   "cen"
@@ -199,6 +204,8 @@
   ; offset / scale
   "offset"
   "scale"
+  ; orientation
+  ; angle units
   ; contour / palette / axis
   "range"
   "missing"
@@ -207,8 +214,12 @@
   "rotate"
   ; border / extend / range modifiers
   "restore"
-  ; pm3d scan order
+  ; pm3d
   "scanorder"
+  "position"
+  ; histogram subtypes
+  ; smooth additions
+  ; key/label placement
   ; fill pattern
   "pattern"
   ; 3d / surface
@@ -218,12 +229,20 @@
   "datablocks"
   "commentschars"
   "functions"
+  ; save changes
+  "changes"
+  ; misc
+  ; coordinate planes / walls
   ; colorspec
   "rgbcolor"
+  ; tics
+  ; set size
   ; set fit
   "default"
+  ; label / style
   ; set view
   "map"
+  ; set theta direction
   ; palette model / presets / cubehelix options
   "model"
   ; pm3d / lighting
@@ -231,38 +250,43 @@
   "primary"
   "specular"
   "spec2"
-  ; smooth / dgrid3d subtypes
+  "rot_x"
+  "rot_z"
+  "Phong"
+  ; dgrid3d subtype (gauss/… value-modes → "mod")
+  ; contour / cntrparam
   ; tics axes / modifiers
+  ; text / font / encoding
   ; fill / size style
   "empty"
   ; layout / spacing / multiplot
   "layout"
   "spacing"
   "frac"
-  ; color names in style contexts
-  "cb"
-  ; filledcurves axis coordinate (x1, x2, y1, y2 etc.)
-  "coordinate"
   ; watch-label / surface options
   "point"
   ; tics keyword (grid / paxis — covers xtics, ytics, ztics contexts)
   "tics"
+  ; histogram fill style
+  ; jitter options
+  ; key command options
   ; paxis label keyword (key("label",3) with default aka="label")
-  ; watchpoint style subcommand (key("labels",-1) covers singular "label" too)
   "label"
+  ; polar coordinate system and grid option
+  ; polar grid axis ranges
   ; ellipses style
   "units"
   ; stats output prefix
   "prefix"
-  ; pm3d z-clip
-  "z"
+  ; palette formula option
+  ; grid mode
+  ; datafile option
   ; textbox / multiplot margins (anonymous "margins" string)
   "margins"
   ; datafile lc/fc palette shorthand
   "palette"
+  ; set fit quiet / results / verbose / brief
 ] @variable.member
-
-(columnheader) @variable.member
 
 ; -----------------------------------------------------------------------
 ; Presentation / style attributes
@@ -271,21 +295,23 @@
   "monochrome"
   "color"
   "transparent"
-  ; colorspace
+  ; palette colour models (set palette model)
   "RGB"
   "CMY"
   "HSV"
-  "background"
   "nobackground"
   "separator"
   (hull)
   "units_opt"
   ; fill / line style modes
   "solid"
+  ; page orientation
   ; terminal options
   "animate"
   "input"
   ; point type names (ps/tikz terminals)
+  ; key alignment (capitalised)
+  ; layer / style misc
   "st_opt"
   "plt_st"
 ] @attribute
@@ -341,7 +367,7 @@
 
 ((identifier) @variable.builtin
   (#match? @variable.builtin
-    "^((GPVAL|MOUSE|FIT)_\\w+|GNUTERM|NaN|VoxelDistance|GridDistance|pi|ARG\\w+)$"))
+    "^((GPVAL|MOUSE|FIT)_\\w+|GNUTERM|NaN|Inf|VoxelDistance|GridDistance|pi|ARG\\w+)$"))
 
 ; -----------------------------------------------------------------------
 ; Array definitions
@@ -353,6 +379,8 @@
 
 ; -----------------------------------------------------------------------
 ; Literals
+"NaN" @constant.builtin
+
 (number) @number
 
 (string_literal) @string
@@ -360,3 +388,7 @@
 (escape_sequence) @string.escape
 
 (format_specifier) @string.special
+
+; watchpoint target (`watch y=50`): the axis/expression name being watched
+(plot_element
+  target: (identifier) @variable.member)
