@@ -47,7 +47,7 @@
 (probe
   provider: (uprobe_uretprobe_provider) @type.builtin
   binary: (file_identifier) @string.special.path
-  function: (identifier) @property)
+  function: (wildcard_identifier) @property)
 
 ; tracepoint
 (probe
@@ -94,13 +94,13 @@
 (probe
   provider: (ustd_provider) @type.builtin
   binary: (file_identifier) @string.special.path
-  namespace: (identifier) @variable
-  function: (identifier) @property)
+  namespace: (wildcard_identifier) @variable
+  function: (wildcard_identifier) @property)
 
 (probe
   provider: (ustd_provider) @type.builtin
   binary: (file_identifier) @string.special.path
-  function: (identifier) @property)
+  function: (wildcard_identifier) @property)
 
 ; watchpoint/asyncwatchpoint
 (probe
