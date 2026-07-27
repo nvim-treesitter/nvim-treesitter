@@ -305,13 +305,86 @@
   "." @function.builtin)
 
 ; === END CORE ===
+; === BEGIN UDL ===
+(iris_username) @keyword.directive
+
+[
+  (keyword_import)
+  (keyword_include)
+  (keyword_includegenerator)
+] @keyword.import
+
+(keyword_class) @module
+
+[
+  (keyword_extends)
+  (keyword_property)
+  (keyword_relationship)
+  (keyword_foreignkey)
+  (keyword_parameter)
+  (keyword_projection)
+  (keyword_index)
+  (keyword_query)
+  (keyword_trigger)
+  (keyword_xdata)
+  (keyword_storage)
+  (keyword_method)
+  (keyword_classmethod)
+  (keyword_not)
+  (keyword_references)
+  (keyword_byref)
+  (keyword_output)
+] @keyword.type
+
+[
+  (method_keyword_codemode_expression)
+  (call_method_keyword)
+  (extent_index_keyword)
+  (method_keyword)
+  (class_keyword)
+  (query_keyword)
+  (trigger_keyword)
+  (xdata_keyword_mimetype)
+  (method_keyword_external_language)
+  (relationship_keyword)
+  (foreignkey_keyword)
+  (parameter_keyword)
+  (projection_keyword)
+  (index_keyword)
+  (xdata_keyword)
+  (property_keyword)
+] @keyword.modifier
+
+(documatic_line) @comment.documentation
+
+[
+  (query_name)
+  (trigger_name)
+  (relationship_name)
+  (foreignkey_name)
+  (parameter_name)
+  (projection_name)
+  (index_name)
+  (xdata_name)
+  (storage_name)
+  (xml_identifier)
+  (index_property)
+  (column_name)
+] @variable.member
+
+[
+  (return_type)
+  (keyword_list)
+  (parameter_type)
+  (index_type)
+  (index_property_type)
+  (typename)
+] @type.builtin
+
+; === END UDL ===
 ; === BEGIN LOCAL ===
 (routine_type) @type.builtin
 
-(documatic_line) @comment.documentation @spell
-
 (routine) @keyword.type
-
-(compiled_header) @markup.heading
 
 ; === END LOCAL ===

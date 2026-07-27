@@ -30,3 +30,26 @@
   (#set! injection.combined)
   (#set! injection.include-children)
   (#set! injection.language "sql"))
+
+(element
+  (STag
+    (Name) @_name)
+  (content
+    (CDSect
+      (CData) @injection.content))
+  (ETag
+    (Name) @_end_tag)
+  (#eq? @_name "Implementation")
+  (#eq? @_end_tag "Implementation")
+  (#set! injection.language "objectscript"))
+
+(element
+  (STag
+    (Name) @_name)
+  (content
+    (CharData) @injection.content)
+  (ETag
+    (Name) @_end_tag)
+  (#eq? @_name "Implementation")
+  (#eq? @_end_tag "Implementation")
+  (#set! injection.language "objectscript"))
