@@ -4,10 +4,7 @@
 ; === BEGIN EXPR ===
 (pattern_expression) @string.regexp
 
-[
-  (json_number_literal)
-  (numeric_literal)
-] @number
+(numeric_literal) @number
 
 [
   (json_boolean_literal)
@@ -23,19 +20,28 @@
 ] @string
 
 [
-  (keyword_pound_pound_super)
+  (keyword_super)
   (keyword_pound_pound_class)
 ] @keyword.operator
 
-(system_defined_variable) @variable.builtin
-
 (system_defined_function) @function.builtin
+
+; this is because . is grouped into system_defined_function
+; and I want the dots to be the same color
+(class_method_call
+  "." @function.builtin)
+
+(byref_arg
+  "." @function.builtin)
+
+(oref_chain_segment
+  "." @function.builtin)
 
 (sql_field_modifier) @keyword.modifier
 
 [
   (property_name)
-  (parameter_name)
+  (oref_parameter)
   (sql_field_identifier)
 ] @variable.member
 
@@ -51,16 +57,25 @@
 (macro_constant) @constant.macro
 
 [
-  (lvn)
-  (gvn)
   (ssvn)
-  (objectscript_identifier)
-] @variable
+  (system_defined_variable)
+  "$$"
+] @variable.builtin
 
-(namespace) @module
+(lvn
+  (objectscript_identifier) @variable)
+
+(lvn
+  (objectscript_identifier_special) @variable.member)
+
+(ole_object_reference
+  (objectscript_identifier) @variable)
+
+(ole_object_reference
+  (objectscript_identifier_special) @variable.member)
 
 [
-  (objectscript_identifier_special)
+  (gvn)
   (instance_variable)
 ] @variable.member
 
@@ -79,7 +94,6 @@
   "']"
   "']]"
   "\""
-  "\"\""
   "["
   "]"
   "]]"
@@ -119,8 +133,6 @@
   "?"
 ] @operator
 
-(bracket) @punctuation.bracket
-
 ; === END EXPR ===
 ; === BEGIN CORE ===
 (macro_arg) @variable.member
@@ -130,38 +142,20 @@
 (macro_def) @keyword.directive.define
 
 [
-  (keyword_for)
-  (keyword_while)
-  (keyword_continue)
-  (keyword_quit)
-] @keyword.repeat
+  "("
+  ")"
+] @punctuation.bracket
 
 [
-  (keyword_if)
-  (keyword_elseif)
-  (keyword_else)
-  (keyword_oldelse)
-] @keyword.conditional
-
-[
-  (keyword_throw)
-  (keyword_try)
-  (keyword_catch)
-] @keyword.exception
-
-(keyword_return) @keyword.return
-
-[
-  (keyword_break)
   (keyword_zbreak)
   (keyword_debug)
+  (zbreak_command_option)
   (keyword_trace)
   (keyword_step)
   (keyword_nostep)
   (keyword_stepmethod)
   (keyword_errortrap)
   (keyword_interrupt)
-  (keyword_normal)
   (keyword_zkill)
   (keyword_zn)
   (keyword_zsu)
@@ -183,6 +177,7 @@
   (keyword_pound_include)
   (keyword_pound_delay)
   (locktype)
+  (tag_end_if)
 ] @keyword.directive
 
 [
@@ -209,8 +204,7 @@
   (keyword_write)
   (keyword_zwrite)
   (keyword_do)
-  (keyword_for)
-  (keyword_while)
+  (keyword_do_old)
   (keyword_kill)
   (keyword_lock)
   (keyword_read)
@@ -229,7 +223,24 @@
   (keyword_tstart)
   (keyword_xecute)
   (keyword_view)
-] @function.builtin
+  (keyword_zremove)
+  (command_keyword)
+  (keyword_zload)
+  (keyword_for)
+  (keyword_while)
+  (keyword_continue)
+  (keyword_quit)
+  (keyword_break)
+  (keyword_return)
+  (keyword_if)
+  (keyword_old_if)
+  (keyword_elseif)
+  (keyword_else)
+  (keyword_oldelse)
+  (keyword_throw)
+  (keyword_try)
+  (keyword_catch)
+] @keyword
 
 [
   (keyword_embedded_html)
@@ -253,26 +264,44 @@
   (line_comment_3)
   (line_comment_4)
   (block_comment)
-] @comment @spell
-
-(namespace) @module
-
-(tag) @label
-
-[
-  (command_quit)
-  (command_else)
-  (command_continue)
-  (command_if)
-  (command_do)
-  (command_for)
-  (command_lock)
-  (command_return)
-  (command_halt_or_hang)
-  (command_break)
+  (inline_comment)
+  (argumentless_inline_comment)
+  (pound_if_special_case_else)
+  (pound_if_special_case)
 ] @comment
 
+(tag) @function.method
 "--" @operator
+
+(command_if_dotted_block
+  "." @punctuation.delimiter)
+
+(command_for_dotted_block
+  "." @punctuation.delimiter)
+
+(command_while_dotted_block
+  "." @punctuation.delimiter)
+
+(command_dowhile_dotted
+  "." @punctuation.delimiter)
+
+(command_trycatch_dotted
+  "." @punctuation.delimiter)
+
+(dotted_statement
+  "." @punctuation.delimiter)
+
+(else_block_dotted
+  "." @punctuation.delimiter)
+
+(variable_datatype
+  "." @function.builtin)
+
+(do_parameter
+  "." @function.builtin)
+
+(job_argument
+  "." @function.builtin)
 
 ; === END CORE ===
 ; === BEGIN LOCAL ===

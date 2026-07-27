@@ -1501,7 +1501,7 @@ return {
   objectscript_routine = {
     install_info = {
       location = 'objectscript_routine',
-      revision = '4216acea5ba1c92217f0d366c9d9c7b44b34a7b9',
+      revision = '6ee63cf01590446f4e64b6c048739bfe7d23408b',
       url = 'https://github.com/intersystems/tree-sitter-objectscript',
     },
     maintainers = { '@davem-intersys', '@hkimura-intersys' },
@@ -1510,7 +1510,7 @@ return {
   objectscript_udl = {
     install_info = {
       location = 'udl',
-      revision = '4216acea5ba1c92217f0d366c9d9c7b44b34a7b9',
+      revision = '6ee63cf01590446f4e64b6c048739bfe7d23408b',
       url = 'https://github.com/intersystems/tree-sitter-objectscript',
     },
     maintainers = { '@davem-intersys', '@hkimura-intersys' },
