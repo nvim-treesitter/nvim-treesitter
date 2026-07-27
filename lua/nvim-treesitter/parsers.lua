@@ -752,7 +752,7 @@ return {
   },
   gnuplot = {
     install_info = {
-      revision = 'v3.0.0',
+      revision = 'v4.0.1',
       url = 'https://github.com/dpezto/tree-sitter-gnuplot',
     },
     maintainers = { '@dpezto' },
