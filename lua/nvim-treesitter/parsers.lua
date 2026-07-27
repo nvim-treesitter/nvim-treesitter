@@ -1515,16 +1515,16 @@ return {
     },
     maintainers = { '@davem-intersys', '@hkimura-intersys' },
     tier = 2,
+  },
+  objectscript = {
+    install_info = {
+      location = 'objectscript',
+      revision = '6ee63cf01590446f4e64b6c048739bfe7d23408b',
+      url = 'https://github.com/intersystems/tree-sitter-objectscript',
     },
-    objectscript = {
-      install_info = {
-        location = 'objectscript',
-        revision = '6ee63cf01590446f4e64b6c048739bfe7d23408b',
-        url = 'https://github.com/intersystems/tree-sitter-objectscript',
-      },
-      maintainers = { '@davem-intersys', '@hkimura-intersys' },
-      tier = 2,
-    },
+    maintainers = { '@davem-intersys', '@hkimura-intersys' },
+    tier = 2,
+  },
   ocaml = {
     install_info = {
       location = 'grammars/ocaml',
