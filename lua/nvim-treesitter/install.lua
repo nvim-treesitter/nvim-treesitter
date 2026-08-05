@@ -85,6 +85,7 @@ local function join(max_jobs, tasks)
     end
 
     for i = 1, max_jobs do
+      assert(tasks[i])
       tasks[i]():await(cb)
     end
   end)
@@ -155,7 +156,8 @@ end
 ---@param ... string
 ---@return string
 function M.get_package_path(...)
-  return fs.joinpath(fn.fnamemodify(debug.getinfo(1, 'S').source:sub(2), ':p:h:h:h'), ...)
+  local info = assert(debug.getinfo(1, 'S'))
+  return fs.joinpath(fn.fnamemodify(info.source:sub(2), ':p:h:h:h'), ...)
 end
 
 ---@param lang string
@@ -322,13 +324,9 @@ end
 local function do_install(logger, compile_location, target_location)
   logger:info(string.format('Installing parser'))
 
-  if uv.os_uname().sysname == 'Windows_NT' then -- why can't you just be normal?!
-    local tempfile = target_location .. tostring(uv.hrtime())
-    uv_rename(target_location, tempfile) -- parser may be in use: rename...
-    uv_unlink(tempfile) -- ...and mark for garbage collection
-  else
-    uv_unlink(target_location) -- don't disturb existing memory-mapped content
-  end
+  local tempfile = target_location .. tostring(uv.hrtime())
+  uv_rename(target_location, tempfile) -- parser may be in use: rename...
+  uv_unlink(tempfile) -- ...and mark for garbage collection
 
   local err = uv_copyfile(compile_location, target_location)
   a.schedule()
@@ -491,8 +489,8 @@ end
 
 --- Reload the parser table and user modifications in case of update
 local function reload_parsers()
-  ---@diagnostic disable-next-line:no-unknown
   package.loaded['nvim-treesitter.parsers'] = nil
+  ---@diagnostic disable-next-line:duplicate-require
   parsers = require('nvim-treesitter.parsers')
   vim.api.nvim_exec_autocmds('User', { pattern = 'TSUpdate' })
 end

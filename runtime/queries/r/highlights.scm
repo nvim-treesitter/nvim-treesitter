@@ -117,7 +117,8 @@ function: (extract_operator
 (function_definition
   name: "\\" @operator)
 
-(return) @keyword.return
+((identifier) @keyword.return
+  (#eq? @keyword.return "return"))
 
 [
   "if"

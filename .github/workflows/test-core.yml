@@ -15,15 +15,14 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        nvim_tag: [nightly]
-    name: ${{ matrix.os }}
+        nvim_tag: [stable, nightly]
+    name: ${{matrix.nvim_tag}} / ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     env:
       NVIM: ${{ matrix.os == 'windows-latest' && 'nvim-win64\\bin\\nvim.exe' || 'nvim' }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: tree-sitter/setup-action/cli@v2
-      - uses: ilammy/msvc-dev-cmd@v1
 
       - name: Install and prepare Neovim
         env:

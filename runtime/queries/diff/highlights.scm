@@ -10,6 +10,8 @@
   (old_file)
 ] @diff.minus
 
+(change) @diff.delta
+
 (commit) @constant
 
 (location) @attribute
@@ -20,6 +22,10 @@
 
 (filename) @string.special.path
 
+(special) @string.special
+
+"\\" @punctuation.special
+
 (mode) @number
 
 ([
@@ -28,10 +34,13 @@
   "++"
   "+++"
   "++++"
+  ">"
   "-"
   "--"
   "---"
   "----"
+  "<"
+  "!"
 ] @punctuation.special
   (#set! priority 95))
 

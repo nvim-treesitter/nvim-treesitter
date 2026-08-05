@@ -24,8 +24,8 @@ local function install_health()
   health.start('Requirements')
 
   do -- nvim check
-    if vim.fn.has('nvim-0.11') ~= 1 then
-      health.error('Nvim-treesitter requires Neovim 0.11.0 or later.')
+    if vim.fn.has('nvim-0.12') ~= 1 then
+      health.error('Nvim-treesitter requires Neovim 0.12.0 or later.')
     end
 
     if vim.treesitter.language_version >= NVIM_TREESITTER_MINIMUM_ABI then
@@ -95,7 +95,9 @@ local function install_health()
   else
     health.error('is not writable.')
   end
-  if vim.list_contains(vim.api.nvim_list_runtime_paths(), installdir) then
+  if
+    vim.list_contains(vim.tbl_map(vim.fs.normalize, vim.api.nvim_list_runtime_paths()), installdir)
+  then
     health.ok('is in runtimepath.')
   else
     health.error('is not in runtimepath.')

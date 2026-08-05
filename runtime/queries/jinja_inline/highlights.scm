@@ -49,14 +49,15 @@
 ] @keyword
 
 [
-  "endtrans"
-  "endblock"
-  "endwith"
-  "endfilter"
-  "endmacro"
-  "endcall"
-  "endset"
-  "endautoescape"
+  (endtrans_statement)
+  (endblock_statement)
+  (endwith_statement)
+  (endfilter_statement)
+  (endmacro_statement)
+  (endcall_statement)
+  (endset_statement)
+  (endautoescape_statement)
+  "required"
 ] @keyword
 
 (do_statement
@@ -74,9 +75,9 @@
 
 [
   "if"
-  "else"
-  "endif"
-  "elif"
+  (else_statement)
+  (endif_statement)
+  (elif_block)
 ] @keyword.conditional
 
 [
@@ -84,7 +85,7 @@
   "in"
   "continue"
   "break"
-  "endfor"
+  (endfor_statement)
 ] @keyword.repeat
 
 "call" @function.call

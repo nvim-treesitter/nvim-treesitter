@@ -10,7 +10,7 @@ The `nvim-treesitter` plugin provides
 For details on these and how to help improving them, see [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 >[!CAUTION]
-> This is a full, incompatible, rewrite. If you can't or don't want to update, specify the [`master` branch](https://github.com/nvim-treesitter/nvim-treesitter/blob/master/README.md) (which is locked but will remain available for backward compatibility).
+> This is a full, incompatible, rewrite: Treat this as a different plugin you need to set up from scratch following the instructions below. If you can't or don't want to update, specify the [`master` branch](https://github.com/nvim-treesitter/nvim-treesitter/blob/master/README.md) (which is locked but will remain available for backward compatibility with Nvim 0.11).
 
 # Quickstart
 
@@ -23,8 +23,9 @@ For details on these and how to help improving them, see [CONTRIBUTING.md](./CON
 
 >[!IMPORTANT]
 > The current **support policy** for Neovim is
+> * the _latest_ [stable release](https://github.com/neovim/neovim/releases/tag/stable),
 > * the _latest_ [nightly prerelease](https://github.com/neovim/neovim/releases/tag/nightly).
-> Other versions may work but are neither tested nor considered for fixes. Once this plugin is [considered stable](https://github.com/nvim-treesitter/nvim-treesitter/issues/4767), support will be added for the latest release.
+> Other versions may work but are neither tested nor considered for fixes.
 
 ## Installation
 

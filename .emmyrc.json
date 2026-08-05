@@ -12,7 +12,13 @@
   },
   "diagnostics": {
     "disable": [
-      "unnecessary-if"
+      "unnecessary-if",
+      "incomplete-signature-doc"
+    ],
+    "enables": [
+      "iter-variable-reassign",
+      "non-literal-expressions-in-assert",
+      "missing-global-doc"
     ]
   },
   "codeAction": {

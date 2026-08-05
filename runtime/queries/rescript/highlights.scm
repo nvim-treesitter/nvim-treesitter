@@ -1,4 +1,7 @@
-(comment) @comment @spell
+[
+  (line_comment)
+  (block_comment)
+] @comment @spell
 
 ; Identifiers
 ;------------

@@ -17,11 +17,11 @@ jobs:
     name: Update parsers tier ${{ matrix.tier }}
     runs-on: ubuntu-slim
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           ref: main
 
-      - uses: actions/create-github-app-token@v2
+      - uses: actions/create-github-app-token@v3
         id: app-token
         with:
           app-id: ${{ vars.TOKEN_ID }}
