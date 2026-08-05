@@ -183,10 +183,11 @@
   "with"
   "given"
   "using"
-  "end"
   "implicit"
   "extension"
 ] @keyword
+
+(end_marker) @keyword
 
 [
   "enum"
