@@ -1957,7 +1957,7 @@ return {
   },
   scala = {
     install_info = {
-      revision = '5877eb9f55dc396da0d9a3e890df01f5c4810233',
+      revision = 'bf9ac14f8b95c8ea341d830165de5a66e0f6664b',
       url = 'https://github.com/tree-sitter/tree-sitter-scala',
     },
     maintainers = { '@stevanmilic' },
