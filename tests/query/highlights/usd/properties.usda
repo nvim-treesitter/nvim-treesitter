@@ -1,4 +1,4 @@
-dictionary foo = {}
+dictionary foo
 # <- @type
 half[] foo = [2, 1, 2]
 # <- @type
