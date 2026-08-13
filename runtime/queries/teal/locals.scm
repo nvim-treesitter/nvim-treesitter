@@ -14,7 +14,7 @@
 (anon_function) @local.scope
 
 (function_statement
-  (function_name) @local.definition.function) @local.scope
+  (table_function_name) @local.definition.function) @local.scope
 
 (program) @local.scope
 
