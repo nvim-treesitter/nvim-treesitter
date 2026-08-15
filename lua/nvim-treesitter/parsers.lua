@@ -142,7 +142,7 @@ return {
   },
   bpftrace = {
     install_info = {
-      revision = '11453f5e4be5026b2b18d4b53f893ded972011ce',
+      revision = 'ce507ff578efa222c694bb05399c76b3a8590454',
       url = 'https://github.com/sgruszka/tree-sitter-bpftrace',
     },
     maintainers = { '@sgruszka' },
@@ -150,7 +150,7 @@ return {
   },
   brightscript = {
     install_info = {
-      revision = '253fdfaa23814cb46c2d5fc19049fa0f2f62c6da',
+      revision = '0c534d56bb04778d0a3510bed5e720d1fe15cb76',
       url = 'https://github.com/ajdelcimmuto/tree-sitter-brightscript',
     },
     maintainers = { '@ajdelcimmuto' },
@@ -369,7 +369,7 @@ return {
   },
   diff = {
     install_info = {
-      revision = '0400db1417a28145bec93001f1ee1411155a7363',
+      revision = 'ada384ac7bfc1307f32de474620120add29998fb',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-diff',
     },
     maintainers = { '@gbprod' },
@@ -409,7 +409,7 @@ return {
   },
   doxygen = {
     install_info = {
-      revision = 'ccd998f378c3f9345ea4eeb223f56d7b84d16687',
+      revision = '6069b1815b139080d6c562b5ff9ae2296cbc6602',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-doxygen',
     },
     maintainers = { '@amaanq' },
@@ -1148,7 +1148,7 @@ return {
   },
   julia = {
     install_info = {
-      revision = '60fc2370605db09d9b39877c6f754ff345bcb7a5',
+      revision = 'e04970eea7b8cc1a526191b37ab2113c3ebc374f',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-julia',
     },
     maintainers = { '@clason' },
@@ -1395,7 +1395,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = '48bbc74b4f8633e844557447a82990fb5c729822',
+      revision = '50857672166f6ba1efceb05c4ec82877d72b4043',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     maintainers = { '@artagnon' },
@@ -1467,7 +1467,7 @@ return {
   },
   nu = {
     install_info = {
-      revision = '9467420d184bd2c510378f4cda624eca35dd4590',
+      revision = '64613ef22f4116862d7997939c8d1794ceb1f856',
       url = 'https://github.com/nushell/tree-sitter-nu',
     },
     maintainers = { '@abhisheksingh0x558' },
@@ -1682,7 +1682,7 @@ return {
   },
   proto = {
     install_info = {
-      revision = 'da7cbaa5c95e4ea53c36d747f53e684f0d7cc45b',
+      revision = '5a256fe3b6be3bd2ea4d03e1213d847c7093c2e1',
       url = 'https://github.com/coder3101/tree-sitter-proto',
     },
     maintainers = { '@stefanvanburen' },
@@ -1957,7 +1957,7 @@ return {
   },
   scala = {
     install_info = {
-      revision = '157fd566b298dc3ff19150557800ead17cf55709',
+      revision = '4799cfc8543145b5ad79fdb81a6e6996cca97af2',
       url = 'https://github.com/tree-sitter/tree-sitter-scala',
     },
     maintainers = { '@stevanmilic' },
@@ -2083,7 +2083,7 @@ return {
   },
   sourcepawn = {
     install_info = {
-      revision = '5a8fdd446b516c81e218245c12129c6ad4bccfa2',
+      revision = 'fdf31136774c5d182344305e7f3605d77fa4084f',
       url = 'https://github.com/nilshelmig/tree-sitter-sourcepawn',
     },
     maintainers = { '@Sarrus1' },
@@ -2165,7 +2165,7 @@ return {
   superhtml = {
     install_info = {
       location = 'tree-sitter-superhtml',
-      revision = '624a3eeadaf8f0cbe2e7d9d64ff621bc2d1c5d69',
+      revision = '23ef2f44ca0df2d2e05a0be3874370553c5b591d',
       url = 'https://github.com/kristoff-it/superhtml',
     },
     maintainers = { '@rockorager' },
@@ -2199,7 +2199,7 @@ return {
   swift = {
     install_info = {
       generate = true,
-      revision = '8d02b7ff390a17a43ce90c4e987c49315cfc4be6',
+      revision = '85d1773baf6e53de3722f2035fd3a9e7b03bf8d9',
       url = 'https://github.com/alex-pinkus/tree-sitter-swift',
     },
     maintainers = { '@alex-pinkus' },
@@ -2480,7 +2480,7 @@ return {
   },
   vhdl = {
     install_info = {
-      revision = 'ec2569db2da2129f83d486240d2fa63a353c4616',
+      revision = '68dc07f69d9571c2ebea6b32f995925905d09741',
       url = 'https://github.com/jpt13653903/tree-sitter-vhdl',
     },
     maintainers = { '@jpt13653903' },
