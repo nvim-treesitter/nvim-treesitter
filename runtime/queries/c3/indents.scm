@@ -23,13 +23,13 @@
 (expr_stmt
   ";" @indent.end) @indent.begin
 
-(declaration
-  ";" @indent.end) @indent.begin
-
-(const_declaration
+(declaration_stmt
   ";" @indent.end) @indent.begin
 
 (return_stmt
+  ";" @indent.end) @indent.begin
+
+(global_declaration
   ";" @indent.end) @indent.begin
 
 (faultdef_declaration

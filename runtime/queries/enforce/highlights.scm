@@ -28,12 +28,12 @@
 
 ; Preprocessor directives
 [
-  (include)
-  (define)
-  (ifdef)
-  (ifndef)
-  (else)
-  (endif)
+  (preproc_include)
+  (preproc_define)
+  (preproc_ifdef)
+  (preproc_ifndef)
+  (preproc_else)
+  (preproc_endif)
 ] @keyword.directive
 
 (preproc_const) @constant.macro

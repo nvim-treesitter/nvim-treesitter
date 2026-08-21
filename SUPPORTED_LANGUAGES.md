@@ -32,7 +32,7 @@ Language | Tier | Queries | Maintainer
 [brightscript](https://github.com/ajdelcimmuto/tree-sitter-brightscript) | unstable | `HFIJ ` | @ajdelcimmuto
 [c](https://github.com/tree-sitter/tree-sitter-c) | unstable | `HFIJL` | @amaanq
 [c3](https://github.com/c3lang/tree-sitter-c3) | unstable | `HFIJ ` | @cbuttner
-[c_sharp](https://github.com/tree-sitter/tree-sitter-c-sharp) | unstable | `HF JL` | @amaanq
+[c_sharp](https://github.com/tree-sitter/tree-sitter-c-sharp) | stable | `HF JL` | @amaanq
 [caddy](https://github.com/opa-oz/tree-sitter-caddy) | unmaintained | `HFIJ ` | 
 [cairo](https://github.com/tree-sitter-grammars/tree-sitter-cairo) | unstable | `HFIJL` | @amaanq
 [capnp](https://github.com/tree-sitter-grammars/tree-sitter-capnp) | unstable | `HFIJL` | @amaanq
@@ -103,7 +103,7 @@ ecma (queries only)[^ecma] | unstable | `HFIJL` | @steelsojka
 [glimmer_typescript](https://github.com/NullVoxPopuli/tree-sitter-glimmer-typescript) | unstable | `HFIJ ` | @NullVoxPopuli
 [glsl](https://github.com/tree-sitter-grammars/tree-sitter-glsl) | unstable | `HFIJL` | @theHamsta
 [gn](https://github.com/tree-sitter-grammars/tree-sitter-gn) | unstable | `HFIJL` | @amaanq
-[gnuplot](https://github.com/dpezto/tree-sitter-gnuplot) | unstable | `H  J ` | @dpezto
+[gnuplot](https://github.com/dpezto/tree-sitter-gnuplot) | stable | `HF J ` | @dpezto
 [go](https://github.com/tree-sitter/tree-sitter-go) | unstable | `HFIJL` | @theHamsta, @WinWisely268
 [goctl](https://github.com/chaozwn/tree-sitter-goctl) | unstable | `HFIJ ` | @chaozwn
 [godot_resource](https://github.com/PrestonKnopp/tree-sitter-godot-resource)[^godot_resource] | unstable | `HF JL` | @pierpo
@@ -126,7 +126,6 @@ ecma (queries only)[^ecma] | unstable | `HFIJL` | @steelsojka
 [helm](https://github.com/ngalaiko/tree-sitter-go-template) | unstable | `HF JL` | @qvalentin
 [hjson](https://github.com/winston0410/tree-sitter-hjson) | unstable | `HFIJL` | @winston0410
 [hlsl](https://github.com/tree-sitter-grammars/tree-sitter-hlsl) | unstable | `HFIJL` | @theHamsta
-[hlsplaylist](https://github.com/Freed-Wu/tree-sitter-hlsplaylist) | unstable | `H  J ` | @Freed-Wu
 [hocon](https://github.com/antosha417/tree-sitter-hocon) | unstable | `HF J ` | @antosha417
 [hoon](https://github.com/urbit-pilled/tree-sitter-hoon) | unstable | `HF JL` | @urbit-pilled
 [html](https://github.com/tree-sitter/tree-sitter-html) | unstable | `HFIJL` | @TravonteD
@@ -146,6 +145,7 @@ html_tags (queries only)[^html_tags] | unstable | `H IJ ` | @TravonteD
 [javascript](https://github.com/tree-sitter/tree-sitter-javascript) | unstable | `HFIJL` | @steelsojka
 [jinja](https://github.com/cathaysia/tree-sitter-jinja)[^jinja] | unstable | `H  J ` | @cathaysia
 [jinja_inline](https://github.com/cathaysia/tree-sitter-jinja)[^jinja_inline] | unstable | `H  J ` | @cathaysia
+[jjdescription](https://github.com/ribru17/tree-sitter-jjdescription) | stable | `H  J ` | @ribru17
 [jq](https://github.com/flurie/tree-sitter-jq) | unstable | `H  JL` | @ObserverOfTime
 [jsdoc](https://github.com/tree-sitter/tree-sitter-jsdoc) | unstable | `H    ` | @steelsojka
 [json](https://github.com/tree-sitter/tree-sitter-json) | unstable | `HFIJL` | @steelsojka
@@ -183,7 +183,6 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [mermaid](https://github.com/monaqa/tree-sitter-mermaid) | unstable | `HFIJ ` | 
 [meson](https://github.com/tree-sitter-grammars/tree-sitter-meson) | unstable | `HFIJ ` | @Decodetalkers
 [mlir](https://github.com/artagnon/tree-sitter-mlir) | unstable | `H  JL` | @artagnon
-[muttrc](https://github.com/neomutt/tree-sitter-muttrc) | unstable | `H  J ` | @Freed-Wu
 [nasm](https://github.com/naclsn/tree-sitter-nasm) | unstable | `H  J ` | @ObserverOfTime
 [nginx](https://github.com/opa-oz/tree-sitter-nginx) | unstable | `HF J ` | @opa-oz
 [nickel](https://github.com/nickel-lang/tree-sitter-nickel) | unstable | `H IJ ` | 
@@ -218,8 +217,6 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [powershell](https://github.com/airbus-cert/tree-sitter-powershell) | unstable | `HFIJL` | @L2jLiga
 [printf](https://github.com/tree-sitter-grammars/tree-sitter-printf) | unstable | `H    ` | @ObserverOfTime
 [prisma](https://github.com/victorhqc/tree-sitter-prisma) | unstable | `HF J ` | @elianiva
-[problog](https://github.com/foxyseta/tree-sitter-prolog) | unstable | `HFIJ ` | @foxyseta
-[prolog](https://github.com/foxyseta/tree-sitter-prolog) | unstable | `HFIJ ` | @foxyseta
 [promql](https://github.com/MichaHoffmann/tree-sitter-promql) | unstable | `H  J ` | @MichaHoffmann
 [properties](https://github.com/tree-sitter-grammars/tree-sitter-properties)[^properties] | unstable | `H  JL` | @ObserverOfTime
 [proto](https://github.com/coder3101/tree-sitter-proto) | unstable | `HFIJ ` | @stefanvanburen
@@ -256,14 +253,14 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [ruby](https://github.com/tree-sitter/tree-sitter-ruby) | unstable | `HFIJL` | @TravonteD
 [runescript](https://github.com/2004Scape/tree-sitter-runescript) | unstable | `H  J ` | @2004Scape
 [rust](https://github.com/tree-sitter/tree-sitter-rust) | unstable | `HFIJL` | @amaanq
-[scala](https://github.com/tree-sitter/tree-sitter-scala) | unstable | `HF JL` | @stevanmilic
+[scala](https://github.com/tree-sitter/tree-sitter-scala) | unstable | `HFIJL` | @stevanmilic
 [scfg](https://github.com/rockorager/tree-sitter-scfg) | unstable | `H  J ` | @WhyNotHugo
 [scheme](https://github.com/6cdh/tree-sitter-scheme) | unstable | `HF J ` | 
 [scss](https://github.com/serenadeai/tree-sitter-scss) | unstable | `HFIJ ` | @elianiva
 [sflog](https://github.com/aheber/tree-sitter-sfapex)[^sflog] | unstable | `H    ` | @aheber, @xixiaofinland
 [slang](https://github.com/tree-sitter-grammars/tree-sitter-slang)[^slang] | unstable | `HFIJL` | @theHamsta
 [slim](https://github.com/theoo/tree-sitter-slim) | unstable | `HFIJL` | @theoo
-[slint](https://github.com/slint-ui/tree-sitter-slint) | unstable | `HFIJL` | @hunger
+[slint](https://github.com/slint-ui/tree-sitter-slint) | unmaintained | `HFIJL` | @hunger
 [smali](https://github.com/tree-sitter-grammars/tree-sitter-smali) | unstable | `HFIJL` | @amaanq
 [smithy](https://github.com/indoorvivants/tree-sitter-smithy) | unstable | `H  J ` | @amaanq, @keynmol
 [snakemake](https://github.com/osthomas/tree-sitter-snakemake) | unstable | `HFIJL` | @osthomas
@@ -301,7 +298,6 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [thrift](https://github.com/tree-sitter-grammars/tree-sitter-thrift) | unstable | `HFIJL` | @amaanq, @duskmoon314
 [tiger](https://github.com/ambroisie/tree-sitter-tiger) | unstable | `HFIJL` | @ambroisie
 [tlaplus](https://github.com/tlaplus-community/tree-sitter-tlaplus) | unstable | `HF JL` | @ahelwer, @susliko
-[tmux](https://github.com/Freed-Wu/tree-sitter-tmux) | unstable | `H  J ` | @Freed-Wu, @stevenxxiu
 [todotxt](https://github.com/arnarg/tree-sitter-todotxt) | unstable | `H    ` | @arnarg
 [toml](https://github.com/tree-sitter-grammars/tree-sitter-toml) | unstable | `HFIJL` | @tk-shirasaka
 [tsv](https://github.com/tree-sitter-grammars/tree-sitter-csv) | unstable | `H    ` | @amaanq
@@ -337,7 +333,6 @@ jsx (queries only)[^jsx] | unstable | `HFIJ ` | @steelsojka
 [yaml](https://github.com/tree-sitter-grammars/tree-sitter-yaml) | unstable | `HFIJL` | @amaanq
 [yang](https://github.com/Hubro/tree-sitter-yang) | unstable | `HFIJ ` | @Hubro
 [yuck](https://github.com/tree-sitter-grammars/tree-sitter-yuck) | unstable | `HFIJL` | @Philipp-M, @amaanq
-[zathurarc](https://github.com/Freed-Wu/tree-sitter-zathurarc) | unstable | `H  J ` | @Freed-Wu
 [zig](https://github.com/tree-sitter-grammars/tree-sitter-zig) | unstable | `HFIJL` | @amaanq
 [ziggy](https://github.com/kristoff-it/ziggy) | unmaintained | `H I  ` | 
 [ziggy_schema](https://github.com/kristoff-it/ziggy) | unmaintained | `H I  ` | 
