@@ -1,7 +1,6 @@
 ((Comment) @injection.content
   (#set! injection.language "comment"))
 
-; SVG style
 ((element
   (STag
     (Name) @_name)
@@ -11,7 +10,6 @@
   (#set! injection.include-children)
   (#set! injection.language "css"))
 
-; SVG script
 ((element
   (STag
     (Name) @_name)
@@ -21,7 +19,6 @@
   (#set! injection.include-children)
   (#set! injection.language "javascript"))
 
-; phpMyAdmin dump
 ((element
   (STag
     (Name) @_name)
