@@ -36,7 +36,7 @@ jobs:
 
       - if: inputs.type == 'generate'
         name: Generate and compile parsers
-        run: $NVIM -l ./scripts/install-parsers.lua --generate --max-jobs=2
+        run: $NVIM -l ./scripts/install-parsers.lua --generate --max-jobs=10
 
       - name: Check parsers
         run: $NVIM -l ./scripts/check-parsers.lua
