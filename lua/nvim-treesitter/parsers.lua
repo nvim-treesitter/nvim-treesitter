@@ -1681,7 +1681,7 @@ return {
   },
   proto = {
     install_info = {
-      revision = '5a256fe3b6be3bd2ea4d03e1213d847c7093c2e1',
+      revision = '176563b253d83c4d64ae900fe0d34dfbeb735772',
       url = 'https://github.com/coder3101/tree-sitter-proto',
     },
     maintainers = { '@stefanvanburen' },
