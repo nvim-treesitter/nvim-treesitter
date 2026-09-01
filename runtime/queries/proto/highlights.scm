@@ -72,10 +72,10 @@
 
 (string) @string
 
-[
-  "\"proto3\""
-  "\"proto2\""
-] @string.special
+(reserved_identifier) @string
+
+(syntax
+  version: (string) @string.special)
 
 (escape_sequence) @string.escape
 
