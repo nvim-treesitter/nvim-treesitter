@@ -17,7 +17,6 @@ for i = 1, #_G.arg do
   end
 end
 
----@type async.Task
 local task = update and require('nvim-treesitter').update('all', { summary = true })
   or require('nvim-treesitter').install(
     #parsers > 0 and parsers or 'all',

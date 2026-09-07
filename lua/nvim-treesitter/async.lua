@@ -40,8 +40,8 @@ end
 
 --- @alias async.CallbackFn fun(...: any): async.Handle?
 
---- @class async.Task : async.Handle
---- @field package _callbacks table<integer,fun(err?: any, ...: any)>
+--- @class async.Task<R> : async.Handle
+--- @field package _callbacks table<integer,fun(err?: any, ...: R...)>
 --- @field package _callback_pos integer
 --- @field private _thread thread
 ---
@@ -56,13 +56,14 @@ end
 ---
 --- Result of the task.
 --- Must use `await` to get the result.
---- @field private _result? any[]
+--- @field private _result? R[]
 local Task = {}
 Task.__index = Task
 
 --- @private
---- @param func function
---- @return async.Task
+--- @generic T, R
+--- @param func async fun(...: T...): R...
+--- @return async.Task<R...>
 function Task._new(func)
   local thread = coroutine.create(func)
 
@@ -78,7 +79,7 @@ function Task._new(func)
   return self
 end
 
---- @param callback fun(err?: any, ...: any)
+--- @param callback fun(err?: any, ...: R...)
 function Task:await(callback)
   if self._closing then
     callback('closing')
@@ -121,7 +122,7 @@ local MAX_TIMEOUT = 2 ^ 31 - 1
 --- Can be called if a task is closing.
 --- @param timeout? integer
 --- @return boolean status
---- @return any ... result or error
+--- @return R... result or error
 function Task:pwait(timeout)
   local done = vim.wait(timeout or MAX_TIMEOUT, function()
     -- Note we use self:_completed() instead of self:await() to avoid creating a
@@ -148,7 +149,7 @@ end
 ---   local result = task:wait() -- wait indefinitely
 --- ```
 --- @param timeout? integer Timeout in milliseconds
---- @return any ... result
+--- @return R result
 function Task:wait(timeout)
   local res = pack_len(self:pwait(timeout))
   local stat = res[1]
@@ -199,6 +200,7 @@ function Task:traceback(msg)
 end
 
 --- If a task completes with an error, raise the error
+--- @return async.Task<R>
 function Task:raise_on_error()
   self:await(function(err)
     if err then
@@ -349,26 +351,26 @@ end
 --- @generic T, R
 --- @param func async fun(...: T...): R...
 --- @param ... T...
---- @return async.Task
+--- @return async.Task<R...>
 function M.arun(func, ...)
   local task = Task._new(func)
   task:_resume(...)
   return task
 end
 
---- @alias async.TaskFun<T, R> fun(...: T...): async.Task
+--- @alias async.TaskFun<T, R> fun(...: T...): async.Task<R>
 
 --- @generic T, R
 --- @class async._TaskFun<T, R>
 --- @field package _fun async fun(...: T...): R...
---- @operator call(...: T...): async.Task
+--- @operator call(...: T...): async.Task<R>
 local TaskFun = {}
 TaskFun.__index = TaskFun
 
 --- @generic T, R
 --- @param self async._TaskFun<T, R>
 --- @param ... T...
---- @return async.Task
+--- @return async.Task<R>
 function TaskFun:__call(...)
   return M.arun(self._fun, ...)
 end
@@ -376,7 +378,7 @@ end
 --- Create an async function
 --- @generic T, R
 --- @param fun async fun(...: T...): R...
---- @return async.TaskFun<T, R>
+--- @return fun(...: T...): async.Task<R...>
 function M.async(fun)
   return setmetatable({ _fun = fun }, TaskFun)
 end
@@ -403,8 +405,9 @@ local function yield(fun)
 end
 
 --- @async
---- @param task async.Task
---- @return any ...
+--- @generic R
+--- @param task async.Task<R>
+--- @return R
 local function await_task(task)
   --- @param callback fun(err?: string, ...: any)
   --- @return function
@@ -441,9 +444,9 @@ local function await_cbfun(argc, fun, ...)
 end
 
 --- @generic T, R
---- @param taskfun async.TaskFun<T, R>
+--- @param taskfun async._TaskFun<T, R>
 --- @param ... T...
---- @return R...
+--- @return R
 local function await_taskfun(taskfun, ...)
   return taskfun._fun(...)
 end
@@ -486,9 +489,10 @@ end
 --- end)
 --- ```
 --- @async
+--- @generic T, R
 --- @overload fun(argc: integer, func: async.CallbackFn, ...:any): any ...
---- @overload fun(task: async.Task): any ...
---- @overload fun(taskfun: async.TaskFun): any ...
+--- @overload fun(task: async.Task<R>): R
+--- @overload fun(taskfun: (fun(...: T...): async.Task<R>), ...: T...): R
 function M.await(...)
   assert(running(), 'Not in async context')
 
