@@ -1,5 +1,5 @@
 NVIM_VERSION ?= nightly
-EMMYLUA_VERSION ?= 0.22.0
+EMMYLUA_VERSION ?= 0.25.1
 
 DEPDIR ?= .test-deps
 CURL ?= curl -sL --create-dirs

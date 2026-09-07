@@ -62,7 +62,7 @@ local INSTALL_TIMEOUT = 60000
 
 --- @async
 --- @param max_jobs integer
---- @param tasks async.TaskFun[]
+--- @param tasks async.TaskFun<[], []>[]
 local function join(max_jobs, tasks)
   if #tasks == 0 then
     return
@@ -514,7 +514,7 @@ local function install(languages, options)
   local install_dir = config.get_install_dir('parser')
   local installed = options.force and {} or config.get_installed()
 
-  local tasks = {} ---@type async.TaskFun[]
+  local tasks = {} ---@type async.TaskFun<[], []>[]
   local done = 0
   for _, lang in ipairs(languages) do
     if options.force or not vim.list_contains(installed, lang) then
@@ -622,7 +622,7 @@ M.uninstall = a.async(function(languages, options)
   local query_dir = config.get_install_dir('queries')
   local installed = config.get_installed()
 
-  local tasks = {} ---@type async.TaskFun[]
+  local tasks = {} ---@type async.TaskFun<[], []>[]
   local done = 0
   for _, lang in ipairs(languages) do
     local logger = log.new('uninstall/' .. lang)
