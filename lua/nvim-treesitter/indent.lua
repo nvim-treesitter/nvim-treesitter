@@ -107,6 +107,49 @@ end, function(bufnr, root, lang)
   return tostring(bufnr) .. root:id() .. '_' .. lang
 end)
 
+---@param bufnr integer
+---@param lang string
+---@return integer
+local get_language_shiftwidth = memoize(function(bufnr, lang)
+  ---@type integer
+  local global_shiftwidth = vim.go.shiftwidth
+  ---@type integer
+  local buffer_shiftwidth = vim.bo.shiftwidth
+  -- See :h 'shiftwidth': If set to 0, should use tabstop (0 is not the default value,
+  -- but users may rely on this behavior)
+  if buffer_shiftwidth == 0 then
+    buffer_shiftwidth = vim.bo.tabstop
+  end
+  if global_shiftwidth == 0 then
+    global_shiftwidth = vim.bo.tabstop
+  end
+
+  ---@type integer|nil
+  local lang_shiftwidth = nil
+  -- Note: get_filetypes(lang) always includes `lang` in the returned array of filetypes even if
+  -- `lang` is not a filetype
+  ---@type string[]
+  local filetypes = vim.treesitter.language.get_filetypes(lang)
+  for _, ft in ipairs(filetypes) do
+    -- filetype.get_option will default to the global value for the option
+    -- if (1) there is no local equivalent set, or (2) the filetype does not exist
+    ---@type integer
+    local filetype_shiftwidth = vim.filetype.get_option(ft, 'shiftwidth')--[[@as integer]]
+    if filetype_shiftwidth == 0 then
+      filetype_shiftwidth = vim.filetype.get_option(ft, 'tabstop')--[[@as integer]]
+    end
+    if filetype_shiftwidth ~= global_shiftwidth then
+      lang_shiftwidth = filetype_shiftwidth
+    end
+  end
+
+  -- if lang_shiftwidth is nil, then it is either unset OR it is the same as
+  -- global_shiftwidth
+  return lang_shiftwidth or global_shiftwidth
+end, function(bufnr, lang)
+  return tostring(bufnr) .. '_' .. lang
+end)
+
 ---@param lnum integer (1-indexed)
 ---@return integer
 function M.get_indent(lnum)
@@ -172,6 +215,7 @@ function M.get_indent(lnum)
   if root_start ~= 0 then
     -- injected tree
     indent = vim.fn.indent(root:start() + 1)
+    indent_size = get_language_shiftwidth(bufnr, lang_tree:lang())
   end
 
   -- tracks to ensure multiple indent levels are not applied for same line
