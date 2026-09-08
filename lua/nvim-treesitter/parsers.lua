@@ -267,6 +267,14 @@ return {
     maintainers = { '@jakestanger' },
     tier = 2,
   },
+  cel = {
+    install_info = {
+      revision = 'e0b695e6c318babff09de7e66e0de0adaab7b8ad',
+      url = 'https://github.com/bufbuild/tree-sitter-cel',
+    },
+    maintainers = { '@stefanvanburen' },
+    tier = 2,
+  },
   cpon = {
     install_info = {
       revision = '594289eadfec719198e560f9d7fd243c4db678d5',
