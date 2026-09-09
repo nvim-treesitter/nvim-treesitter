@@ -1041,10 +1041,10 @@ return {
   },
   kdl = {
     install_info = {
-      revision = 'b37e3d58e5c5cf8d739b315d6114e02d42e66664',
+      revision = 'v2.0.0',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-kdl',
     },
-    tier = 2,
+    tier = 1,
   },
   kitty = {
     install_info = {
