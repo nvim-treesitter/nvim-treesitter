@@ -43,16 +43,12 @@ zimbu = {
     location = 'parser', -- only needed if the parser is in subdirectory of a "monorepo"
     generate = true, -- only needed if repo does not contain pre-generated src/parser.c
   },
-  maintainers = { '@me' }, -- the _query_ maintainers
   tier = 1, -- stable: track versioned releases instead of latest commit
   -- optional entries:
   requires = { 'vim' }, -- if the queries inherit from another language
   readme_note = "an example language",
 }
 ```
-
->[!IMPORTANT]
-> The "maintainers" here refers to the person maintaining the **queries** in `nvim-treesitter`, not the parser maintainers (who likely don't use Neovim). The maintainers' duty is to review issues and PRs related to the query and to keep them updated with respect to parser changes.
 
 2. If the parser name is not the same as the Vim filetype, add an entry to the `filetypes` table in `plugin/filetypes.lua`:
 
