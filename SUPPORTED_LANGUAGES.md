@@ -155,7 +155,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ `
 [just](https://github.com/IndianBoy42/tree-sitter-just) | unstable | `HFIJL`
 [kcl](https://github.com/kcl-lang/tree-sitter-kcl) | unstable | `HF J `
 [kconfig](https://github.com/tree-sitter-grammars/tree-sitter-kconfig) | unstable | `HFIJL`
-[kdl](https://github.com/tree-sitter-grammars/tree-sitter-kdl) | unstable | `HFIJL`
+[kdl](https://github.com/tree-sitter-grammars/tree-sitter-kdl) | stable | `HFIJL`
 [kitty](https://github.com/OXY2DEV/tree-sitter-kitty) | unstable | `H  J `
 [kos](https://github.com/kos-lang/tree-sitter-kos) | unstable | `HF JL`
 [kotlin](https://github.com/fwcd/tree-sitter-kotlin) | unstable | `HF JL`

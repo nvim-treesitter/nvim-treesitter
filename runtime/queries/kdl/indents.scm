@@ -1,5 +1,4 @@
-(node
-  (node_children) @indent.begin)
+(node_children) @indent.begin
 
 "}" @indent.end
 
