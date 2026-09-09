@@ -32,9 +32,6 @@ error('Cannot require a meta file')
 ---Information necessary to build and install the parser (empty for query-only language)
 ---@field install_info? InstallInfo
 ---
----List of Github users maintaining the queries for Neovim
----@field maintainers? string[]
----
 ---List of other languages to install (e.g., if queries inherit from them)
 ---@field requires? string[]
 ---
