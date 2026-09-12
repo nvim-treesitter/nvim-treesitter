@@ -269,7 +269,7 @@ return {
   },
   cuda = {
     install_info = {
-      revision = '1ebcedde2e36c4e7fecf79b3119ffeddf5e7a683',
+      revision = 'fbafd28773ef10cb498771e642575b47fb15abe9',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-cuda',
     },
     requires = { 'cpp' },
@@ -603,7 +603,7 @@ return {
   },
   gitcommit = {
     install_info = {
-      revision = 'a87878a27b78f75ba59df5bb2fbe36ce88c319ab',
+      revision = '55a265cf763ec15d6e2d96bb206e3f5e30d82bae',
       url = 'https://github.com/gbprod/tree-sitter-gitcommit',
     },
     tier = 2,
@@ -890,7 +890,7 @@ return {
   },
   idris = {
     install_info = {
-      revision = 'c56a25cf57c68ff929356db25505c1cc4c7820f6',
+      revision = '9fe334fb603fdce0e84349ed78f41ae3d2f7036b',
       url = 'https://github.com/kayhide/tree-sitter-idris',
     },
     tier = 2,
@@ -933,7 +933,7 @@ return {
   },
   javadoc = {
     install_info = {
-      revision = '2ba54a791a31a8c1ed60045a755a86eb10c602e2',
+      revision = '4e9e1db7a116244aaa248f0cf58ca058694a0de4',
       url = 'https://github.com/rmuir/tree-sitter-javadoc',
     },
     tier = 2,
@@ -1126,7 +1126,7 @@ return {
   },
   liquidsoap = {
     install_info = {
-      revision = 'fa565a337b673050ba4f1131d21a1d259153140b',
+      revision = '301f66950622949f630fef9fa758ba69f66cf97a',
       url = 'https://github.com/savonet/tree-sitter-liquidsoap',
     },
     tier = 2,
@@ -1282,7 +1282,7 @@ return {
   },
   nix = {
     install_info = {
-      revision = '3d0173d903e630b6e14d17f1cf79488791379ded',
+      revision = '5a64e75fc1ee54f9e14e3a23918e057d43b2de2b',
       url = 'https://github.com/nix-community/tree-sitter-nix',
     },
     tier = 2,
@@ -1372,7 +1372,7 @@ return {
   perl = {
     install_info = {
       generate = true,
-      revision = 'c3e17b31179bf8f658c9f37c7a3ea6a202212d5a',
+      revision = 'f678e356280566100e7eed21716d6f59abdf96b7',
       url = 'https://github.com/tree-sitter-perl/tree-sitter-perl',
     },
     tier = 2,
@@ -1864,7 +1864,7 @@ return {
   sql = {
     install_info = {
       branch = 'gh-pages',
-      revision = 'b2bd686bb5f258506be69cddf76e49aa6b9de2c3',
+      revision = '593a5ecc5dc3889890d8b24ba8fa7487ee01bfe5',
       url = 'https://github.com/derekstride/tree-sitter-sql',
     },
     tier = 2,
@@ -1944,7 +1944,7 @@ return {
   swift = {
     install_info = {
       generate = true,
-      revision = '73c7923ac17ba6b9ebc0a2688bbddd0b75b725d6',
+      revision = '00bbb0a2550f8bc0023a2a4992922d51ae045626',
       url = 'https://github.com/alex-pinkus/tree-sitter-swift',
     },
     tier = 2,
@@ -1972,7 +1972,7 @@ return {
   },
   t32 = {
     install_info = {
-      revision = 'acc92b00d8564421f9c9c05ececfd2c7c942fe47',
+      revision = '11947ac01ba681fb6f62667cb1447354833f4a5b',
       url = 'https://github.com/xasc/tree-sitter-t32',
     },
     tier = 2,
@@ -2192,7 +2192,7 @@ return {
   },
   vhdl = {
     install_info = {
-      revision = '3fd99cd6681d3f3be00d05171c0d24551073c0a6',
+      revision = 'a88fb782d4ec5ffe9303c32d6e86009e7e94a04a',
       url = 'https://github.com/jpt13653903/tree-sitter-vhdl',
     },
     tier = 2,
