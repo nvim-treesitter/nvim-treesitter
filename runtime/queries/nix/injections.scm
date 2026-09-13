@@ -255,6 +255,48 @@
   (#lua-match? @_func "^%a*%.*writeRust%a*$")
   (#set! injection.combined))
 
+((apply_expression
+  function: (apply_expression
+    function: (_) @_func
+    argument: [
+      (string_expression
+        .
+        (string_fragment) @injection.filename .)
+      (indented_string_expression
+        .
+        (string_fragment) @injection.filename .)
+    ])
+  . ; only match on adjacent text, so that we can use a comment to change the language
+  argument: [
+    (string_expression
+      (string_fragment) @injection.content)
+    (indented_string_expression
+      (string_fragment) @injection.content)
+  ])
+  (#lua-match? @_func "^%a*%.*writeText$")
+  (#set! injection.combined))
+
+((apply_expression
+  function: (apply_expression
+    function: (_) @_func
+    argument: [
+      (string_expression
+        .
+        (string_fragment) @injection.filename .)
+      (indented_string_expression
+        .
+        (string_fragment) @injection.filename .)
+    ])
+  . ; only match on adjacent text, so that we can use a comment to change the language
+  argument: [
+    (string_expression
+      (string_fragment) @injection.content)
+    (indented_string_expression
+      (string_fragment) @injection.content)
+  ])
+  (#lua-match? @_func "^%a*%.*writeTextDir$")
+  (#set! injection.combined))
+
 ; (runTest) testScript
 (apply_expression
   function: (_) @_func
