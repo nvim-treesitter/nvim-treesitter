@@ -126,7 +126,7 @@ return {
   },
   bpftrace = {
     install_info = {
-      revision = 'ce507ff578efa222c694bb05399c76b3a8590454',
+      revision = '8269e497af01ef26edea3283bc21ed71ada61f44',
       url = 'https://github.com/sgruszka/tree-sitter-bpftrace',
     },
     tier = 2,
@@ -147,7 +147,7 @@ return {
   },
   c3 = {
     install_info = {
-      revision = '56d73880751a3f442296d7042e7f0a3d21967238',
+      revision = 'e4d3418873ff9f36c71474b5b08c204289f46fb0',
       url = 'https://github.com/c3lang/tree-sitter-c3',
     },
     tier = 2,
@@ -203,7 +203,7 @@ return {
   },
   cmake = {
     install_info = {
-      revision = 'ca627bb5828616b6246aafdc3c3222789e728e37',
+      revision = '58993af75218bc99a1f5a04c832a5937e7c422cb',
       url = 'https://github.com/uyha/tree-sitter-cmake',
     },
     tier = 2,
@@ -245,7 +245,7 @@ return {
   },
   cpp = {
     install_info = {
-      revision = '8b5b49eb196bec7040441bee33b2c9a4838d6967',
+      revision = 'c009222808634c1014f82438d4883753516a2c24',
       url = 'https://github.com/tree-sitter/tree-sitter-cpp',
     },
     requires = { 'c' },
@@ -269,7 +269,7 @@ return {
   },
   cuda = {
     install_info = {
-      revision = 'fbafd28773ef10cb498771e642575b47fb15abe9',
+      revision = 'd58080a327756e4d1d16ec329ba7cb2048f6c6cd',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-cuda',
     },
     requires = { 'cpp' },
@@ -451,7 +451,7 @@ return {
   },
   enforce = {
     install_info = {
-      revision = 'd222ea5d2f047e67a16234237cfc1c8489aac2fb',
+      revision = 'f6daeccf744141c13b4a94c39d7de22307173735',
       url = 'https://github.com/simonvic/tree-sitter-enforce',
     },
     tier = 2,
@@ -521,7 +521,7 @@ return {
   },
   fortran = {
     install_info = {
-      revision = '7edacd2b21aa80057d9725384a1304a1c758e0f8',
+      revision = '2bc0220f34ca660ec9571c54ea57ed5363338de1',
       url = 'https://github.com/stadelmanma/tree-sitter-fortran',
     },
     tier = 2,
@@ -536,7 +536,7 @@ return {
   fsharp = {
     install_info = {
       location = 'fsharp',
-      revision = '0d3ccbb0573e29364cf91f7e68ed1fb2ae8a2b6f',
+      revision = 'aefd0c8741bdf3aeb827a228aa4a996a6536697e',
       url = 'https://github.com/ionide/tree-sitter-fsharp',
     },
     tier = 2,
@@ -617,7 +617,7 @@ return {
   },
   gleam = {
     install_info = {
-      revision = 'cefbd6863983b4df3214b7934bde5e9ca63d5b7f',
+      revision = 'fa6d0d94804f1b342e175865a3dbeb316ee5115e',
       url = 'https://github.com/gleam-lang/tree-sitter-gleam',
     },
     tier = 2,
@@ -1232,7 +1232,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = '08c51d88284ada36a5c2847ebeb94297f032adec',
+      revision = 'eb0541bba21c4ebb3661f02332d1f087d72dbc7c',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     tier = 2,
@@ -1282,7 +1282,7 @@ return {
   },
   nix = {
     install_info = {
-      revision = '5a64e75fc1ee54f9e14e3a23918e057d43b2de2b',
+      revision = '17f290c8b5104d9aba8a1ba7383a2ca83c3d14c4',
       url = 'https://github.com/nix-community/tree-sitter-nix',
     },
     tier = 2,
@@ -1296,7 +1296,7 @@ return {
   },
   nu = {
     install_info = {
-      revision = '64613ef22f4116862d7997939c8d1794ceb1f856',
+      revision = '4f577aaa735154f934594b598a69ed7b1b707cf6',
       url = 'https://github.com/nushell/tree-sitter-nu',
     },
     tier = 2,
@@ -1319,7 +1319,7 @@ return {
   ocaml = {
     install_info = {
       location = 'grammars/ocaml',
-      revision = 'a4ce49a6c17e88e7ca8350cfb666749d9a5c6630',
+      revision = 'e3c9cf368f68bffd2f81188229aefa7b434eda65',
       url = 'https://github.com/tree-sitter/tree-sitter-ocaml',
     },
     tier = 2,
@@ -1327,7 +1327,7 @@ return {
   ocaml_interface = {
     install_info = {
       location = 'grammars/interface',
-      revision = 'a4ce49a6c17e88e7ca8350cfb666749d9a5c6630',
+      revision = 'e3c9cf368f68bffd2f81188229aefa7b434eda65',
       url = 'https://github.com/tree-sitter/tree-sitter-ocaml',
     },
     requires = { 'ocaml' },
@@ -1412,7 +1412,7 @@ return {
   },
   pkl = {
     install_info = {
-      revision = '65f4483b9e8a5960a4d8948421ef3a8992013517',
+      revision = '9eaf196bb1cb9ce862036ed28b188ab6664a2492',
       url = 'https://github.com/apple/tree-sitter-pkl',
     },
     tier = 2,
@@ -1864,7 +1864,7 @@ return {
   sql = {
     install_info = {
       branch = 'gh-pages',
-      revision = '593a5ecc5dc3889890d8b24ba8fa7487ee01bfe5',
+      revision = '39fdb006403747241244326e8af3b3e96b85381c',
       url = 'https://github.com/derekstride/tree-sitter-sql',
     },
     tier = 2,
@@ -1965,7 +1965,7 @@ return {
   },
   systemverilog = {
     install_info = {
-      revision = '4e7525a777290e341b8a5ad880bd20bb4f291845',
+      revision = '3390da8c76a976b6f47d19667accc43e81a1483b',
       url = 'https://github.com/gmlarumbe/tree-sitter-systemverilog',
     },
     tier = 2,
@@ -2192,7 +2192,7 @@ return {
   },
   vhdl = {
     install_info = {
-      revision = 'a88fb782d4ec5ffe9303c32d6e86009e7e94a04a',
+      revision = '9be8e45c3ae7e7a4373a943a5c81ff92ce3656f8',
       url = 'https://github.com/jpt13653903/tree-sitter-vhdl',
     },
     tier = 2,
