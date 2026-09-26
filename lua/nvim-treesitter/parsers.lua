@@ -486,7 +486,7 @@ return {
   },
   fidl = {
     install_info = {
-      revision = '0a8910f293268e27ff554357c229ba172b0eaed2',
+      revision = '3faeeae0dbe66b54be0086daa0e0af4da44e7d68',
       url = 'https://github.com/google/tree-sitter-fidl',
     },
     tier = 2,
@@ -1098,7 +1098,7 @@ return {
   },
   ledger = {
     install_info = {
-      revision = '22a1ab8195c1f6e808679f803007756fe7638c6f',
+      revision = 'd5f3973cfe2d42f98819336ce6334ada75b7696f',
       url = 'https://github.com/cbarrete/tree-sitter-ledger',
     },
     tier = 2,
@@ -1126,7 +1126,7 @@ return {
   },
   liquidsoap = {
     install_info = {
-      revision = '301f66950622949f630fef9fa758ba69f66cf97a',
+      revision = 'a094345ace46277b23dbcb81a5d8cd972df32183',
       url = 'https://github.com/savonet/tree-sitter-liquidsoap',
     },
     tier = 2,
@@ -1232,7 +1232,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = 'eb0541bba21c4ebb3661f02332d1f087d72dbc7c',
+      revision = 'd93ac1b150580040d16e183ea8bf9daa7841bcc4',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     tier = 2,
@@ -1282,7 +1282,7 @@ return {
   },
   nix = {
     install_info = {
-      revision = '17f290c8b5104d9aba8a1ba7383a2ca83c3d14c4',
+      revision = 'a2cd7f4011c6e5830c0c9af5aa35441b3ddd5fba',
       url = 'https://github.com/nix-community/tree-sitter-nix',
     },
     tier = 2,
@@ -1319,7 +1319,7 @@ return {
   ocaml = {
     install_info = {
       location = 'grammars/ocaml',
-      revision = 'e3c9cf368f68bffd2f81188229aefa7b434eda65',
+      revision = '3b2e14e0697d405c9aa0beddfa09b71f45abc504',
       url = 'https://github.com/tree-sitter/tree-sitter-ocaml',
     },
     tier = 2,
@@ -1327,7 +1327,7 @@ return {
   ocaml_interface = {
     install_info = {
       location = 'grammars/interface',
-      revision = 'e3c9cf368f68bffd2f81188229aefa7b434eda65',
+      revision = '3b2e14e0697d405c9aa0beddfa09b71f45abc504',
       url = 'https://github.com/tree-sitter/tree-sitter-ocaml',
     },
     requires = { 'ocaml' },
@@ -1336,7 +1336,7 @@ return {
   ocamllex = {
     install_info = {
       generate = true,
-      revision = '33722b8be73079946a7c6dd9598e3f57956ed36d',
+      revision = '64d543e98b4092e2efe5d0c93d78ff4db9cbff39',
       url = 'https://github.com/atom-ocaml/tree-sitter-ocamllex',
     },
     tier = 2,
@@ -1380,7 +1380,7 @@ return {
   php = {
     install_info = {
       location = 'php',
-      revision = '3fda2fb9577166c6399834917f9844f30370beea',
+      revision = '92b5271b60bec77fb65b5e5bc41561e8dac81299',
       url = 'https://github.com/tree-sitter/tree-sitter-php',
     },
     readme_note = 'PHP with embedded HTML',
@@ -1390,7 +1390,7 @@ return {
   php_only = {
     install_info = {
       location = 'php_only',
-      revision = '3fda2fb9577166c6399834917f9844f30370beea',
+      revision = '92b5271b60bec77fb65b5e5bc41561e8dac81299',
       url = 'https://github.com/tree-sitter/tree-sitter-php',
     },
     readme_note = 'PHP without embedded HTML',
@@ -1412,7 +1412,7 @@ return {
   },
   pkl = {
     install_info = {
-      revision = '9eaf196bb1cb9ce862036ed28b188ab6664a2492',
+      revision = 'c95d8284940f5e1da2cd0d8f1ee45d7ef9ef75d1',
       url = 'https://github.com/apple/tree-sitter-pkl',
     },
     tier = 2,
@@ -1486,7 +1486,7 @@ return {
   },
   proto = {
     install_info = {
-      revision = '6c878d18628ebbff3474479d2fdd6d8ba1954c3e',
+      revision = 'be5691cf82ca284f83e68b9c8cdc4cac5d7fa208',
       url = 'https://github.com/coder3101/tree-sitter-proto',
     },
     tier = 2,
@@ -1653,7 +1653,7 @@ return {
   },
   rescript = {
     install_info = {
-      revision = '19ed8a8e6bcc844b71c37e9edaffc60c77f74d7c',
+      revision = '90643a6302057b969c51e1bf235b8ecf1da49232',
       url = 'https://github.com/rescript-lang/tree-sitter-rescript',
     },
     tier = 2,
@@ -1744,7 +1744,7 @@ return {
   },
   scheme = {
     install_info = {
-      revision = '1b75db256f89f3963517059db28ab2fafb65c4c7',
+      revision = '05a0dd7160f09382f9c14fd122c20f26159ddf97',
       url = 'https://github.com/6cdh/tree-sitter-scheme',
     },
     tier = 2,
@@ -1914,7 +1914,7 @@ return {
   superhtml = {
     install_info = {
       location = 'tree-sitter-superhtml',
-      revision = '23ef2f44ca0df2d2e05a0be3874370553c5b591d',
+      revision = 'f0deee80ae422938d5cdc43a5598c417670db38b',
       url = 'https://github.com/kristoff-it/superhtml',
     },
     tier = 2,
@@ -1944,7 +1944,7 @@ return {
   swift = {
     install_info = {
       generate = true,
-      revision = '00bbb0a2550f8bc0023a2a4992922d51ae045626',
+      revision = '187fd4d3e55e2088da9cb31e414a2bac866292e8',
       url = 'https://github.com/alex-pinkus/tree-sitter-swift',
     },
     tier = 2,
@@ -2015,7 +2015,7 @@ return {
   },
   tera = {
     install_info = {
-      revision = '3a38c368e806268daac9923a27e72bcafbbc16bb',
+      revision = '54b3f8b43aecdbcf12a7366920f0bc8274af1dd0',
       url = 'https://github.com/uncenter/tree-sitter-tera',
     },
     tier = 2,
