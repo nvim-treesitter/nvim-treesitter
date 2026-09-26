@@ -29,8 +29,6 @@
   ")"
   "["
   "]"
-  "{"
-  "}"
 ] @punctuation.bracket
 
 ; variables
@@ -73,6 +71,8 @@
   (#any-of? @operator "+" "-" "*" "/" "=" "<=" ">=" "<" ">"))
 
 ; keyword
+(keyword) @keyword
+
 ((symbol) @keyword
   (#any-of? @keyword
     "define" "lambda" "λ" "begin" "do" "define-syntax" "and" "or" "if" "cond" "case" "when"
