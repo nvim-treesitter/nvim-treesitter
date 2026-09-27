@@ -1744,7 +1744,7 @@ return {
   },
   scheme = {
     install_info = {
-      revision = '05a0dd7160f09382f9c14fd122c20f26159ddf97',
+      revision = '1b112d9571e4f62fb3d095d52a51f1da7756fb94',
       url = 'https://github.com/6cdh/tree-sitter-scheme',
     },
     tier = 2,
