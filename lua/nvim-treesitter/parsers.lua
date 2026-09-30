@@ -486,7 +486,7 @@ return {
   },
   fidl = {
     install_info = {
-      revision = '3faeeae0dbe66b54be0086daa0e0af4da44e7d68',
+      revision = 'bd81f6429a1539b05f52a4344bc9f6ac11d73d1f',
       url = 'https://github.com/google/tree-sitter-fidl',
     },
     tier = 2,
@@ -742,7 +742,7 @@ return {
   },
   groovy = {
     install_info = {
-      revision = 'deb0dcf8c4544f07564060f6e9b9f6e4b0bfc27d',
+      revision = '2a6ddd558b6aa39c5b77d8db9fe9baf817486b2c',
       url = 'https://github.com/murtaza64/tree-sitter-groovy',
     },
     tier = 2,
@@ -1013,7 +1013,7 @@ return {
   },
   julia = {
     install_info = {
-      revision = 'e04970eea7b8cc1a526191b37ab2113c3ebc374f',
+      revision = '9b92fddcedb55003b32601238653b121bc46f544',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-julia',
     },
     tier = 2,
@@ -1282,7 +1282,7 @@ return {
   },
   nix = {
     install_info = {
-      revision = 'a2cd7f4011c6e5830c0c9af5aa35441b3ddd5fba',
+      revision = '929f53586dcc0611d2c9406886d9d18033ed71bc',
       url = 'https://github.com/nix-community/tree-sitter-nix',
     },
     tier = 2,
@@ -1944,7 +1944,7 @@ return {
   swift = {
     install_info = {
       generate = true,
-      revision = '187fd4d3e55e2088da9cb31e414a2bac866292e8',
+      revision = '35245fbfee2fccf16273c6f4299438fb76875970',
       url = 'https://github.com/alex-pinkus/tree-sitter-swift',
     },
     tier = 2,
@@ -1965,7 +1965,7 @@ return {
   },
   systemverilog = {
     install_info = {
-      revision = '3390da8c76a976b6f47d19667accc43e81a1483b',
+      revision = 'd6be6119fe4d04c65c567e7b79625aa6280fea34',
       url = 'https://github.com/gmlarumbe/tree-sitter-systemverilog',
     },
     tier = 2,
