@@ -707,7 +707,7 @@ return {
   },
   gotmpl = {
     install_info = {
-      revision = 'aa71f63de226c5592dfbfc1f29949522d7c95fac',
+      revision = '06b2fd2ac32a7be71cdcf925eeeb868a68e2acde',
       url = 'https://github.com/ngalaiko/tree-sitter-go-template',
     },
     tier = 2,
@@ -806,7 +806,7 @@ return {
   helm = {
     install_info = {
       location = 'dialects/helm',
-      revision = 'aa71f63de226c5592dfbfc1f29949522d7c95fac',
+      revision = '06b2fd2ac32a7be71cdcf925eeeb868a68e2acde',
       url = 'https://github.com/ngalaiko/tree-sitter-go-template',
     },
     tier = 2,
@@ -1232,7 +1232,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = 'd93ac1b150580040d16e183ea8bf9daa7841bcc4',
+      revision = '15c6e3f56467c6ff215d3a15de0ef1167439c9cc',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     tier = 2,
@@ -1282,7 +1282,7 @@ return {
   },
   nix = {
     install_info = {
-      revision = '929f53586dcc0611d2c9406886d9d18033ed71bc',
+      revision = 'f5b1119859a538ad63232c41e4fe5e35b095c054',
       url = 'https://github.com/nix-community/tree-sitter-nix',
     },
     tier = 2,
@@ -1412,7 +1412,7 @@ return {
   },
   pkl = {
     install_info = {
-      revision = 'c95d8284940f5e1da2cd0d8f1ee45d7ef9ef75d1',
+      revision = 'c837eff683d62f3cb5e6309b44c257640f202d4b',
       url = 'https://github.com/apple/tree-sitter-pkl',
     },
     tier = 2,
@@ -1545,7 +1545,7 @@ return {
   },
   ql = {
     install_info = {
-      revision = '5b8ee9adaa1f2a1ea958064b61f8feb0a5a886c0',
+      revision = 'd9d6c853caf0f882e6371e4d4da5817c48c8a8d8',
       url = 'https://github.com/tree-sitter/tree-sitter-ql',
     },
     tier = 2,
@@ -1610,7 +1610,7 @@ return {
   },
   rbs = {
     install_info = {
-      revision = '5282e2f36d4109f5315c1d9486b5b0c2044622bb',
+      revision = 'ff2d91789c0edec421b5c51bad79f59a2abfa81e',
       url = 'https://github.com/joker1007/tree-sitter-rbs',
     },
     tier = 2,
