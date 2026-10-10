@@ -458,7 +458,7 @@ return {
   },
   erlang = {
     install_info = {
-      revision = '6ba4c762eb3065495e3db85697ffeecdf364ce35',
+      revision = '0386a11c835950f5e1ebfbcbf49863d8495de4e0',
       url = 'https://github.com/WhatsApp/tree-sitter-erlang',
     },
     tier = 2,
@@ -479,7 +479,7 @@ return {
   },
   fennel = {
     install_info = {
-      revision = '3f0f6b24d599e92460b969aabc4f4c5a914d15a0',
+      revision = '8c0d338cdb95285eb5d59a70b513ddaae374786c',
       url = 'https://github.com/alexmozaidze/tree-sitter-fennel',
     },
     tier = 2,
@@ -883,7 +883,7 @@ return {
   },
   idl = {
     install_info = {
-      revision = 'b5ecf511e542e43313ba4602bdb206a08cb06232',
+      revision = 'bba2a7b82ee5a6619463da9871adf4bdc7ff08c6',
       url = 'https://github.com/cathaysia/tree-sitter-idl',
     },
     tier = 2,
@@ -933,7 +933,7 @@ return {
   },
   javadoc = {
     install_info = {
-      revision = '4e9e1db7a116244aaa248f0cf58ca058694a0de4',
+      revision = 'c760949aa76745f9f6f7b023cccfe5f01679ae90',
       url = 'https://github.com/rmuir/tree-sitter-javadoc',
     },
     tier = 2,
@@ -1232,7 +1232,7 @@ return {
   mlir = {
     install_info = {
       generate = true,
-      revision = '15c6e3f56467c6ff215d3a15de0ef1167439c9cc',
+      revision = 'af7b4c17d4c6b5b94b8f46920af707189582c608',
       url = 'https://github.com/artagnon/tree-sitter-mlir',
     },
     tier = 2,
@@ -1282,7 +1282,7 @@ return {
   },
   nix = {
     install_info = {
-      revision = 'f5b1119859a538ad63232c41e4fe5e35b095c054',
+      revision = 'f9765b709987418e7526cca8b9dcf73429ddf169',
       url = 'https://github.com/nix-community/tree-sitter-nix',
     },
     tier = 2,
@@ -1372,7 +1372,7 @@ return {
   perl = {
     install_info = {
       generate = true,
-      revision = 'f678e356280566100e7eed21716d6f59abdf96b7',
+      revision = '83361c941fe6b9d02f60c0b2c77d962ed4d12915',
       url = 'https://github.com/tree-sitter-perl/tree-sitter-perl',
     },
     tier = 2,
@@ -1380,7 +1380,7 @@ return {
   php = {
     install_info = {
       location = 'php',
-      revision = '92b5271b60bec77fb65b5e5bc41561e8dac81299',
+      revision = '58d5643086ae60e93a3746cca648363ee97c8761',
       url = 'https://github.com/tree-sitter/tree-sitter-php',
     },
     readme_note = 'PHP with embedded HTML',
@@ -1390,7 +1390,7 @@ return {
   php_only = {
     install_info = {
       location = 'php_only',
-      revision = '92b5271b60bec77fb65b5e5bc41561e8dac81299',
+      revision = '58d5643086ae60e93a3746cca648363ee97c8761',
       url = 'https://github.com/tree-sitter/tree-sitter-php',
     },
     readme_note = 'PHP without embedded HTML',
@@ -1486,7 +1486,7 @@ return {
   },
   proto = {
     install_info = {
-      revision = 'be5691cf82ca284f83e68b9c8cdc4cac5d7fa208',
+      revision = 'd7d15427321da271cb1c25c12735e180ef981473',
       url = 'https://github.com/coder3101/tree-sitter-proto',
     },
     tier = 2,
@@ -1944,7 +1944,7 @@ return {
   swift = {
     install_info = {
       generate = true,
-      revision = '35245fbfee2fccf16273c6f4299438fb76875970',
+      revision = '171fa3bc343233fe07f5e17205aaada33d778825',
       url = 'https://github.com/alex-pinkus/tree-sitter-swift',
     },
     tier = 2,
@@ -2008,7 +2008,7 @@ return {
   },
   templ = {
     install_info = {
-      revision = '94d40865c15ebbaff9ed11dde5d6490b0f5de092',
+      revision = '2c0a72e907d2a95a7b6dd29703e38c95818e956a',
       url = 'https://github.com/vrischmann/tree-sitter-templ',
     },
     tier = 2,
