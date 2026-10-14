@@ -6,6 +6,7 @@
   (if)
   (else)
   (case)
+  (block)
   (do_block)
   (singleton_class)
   (lambda)
