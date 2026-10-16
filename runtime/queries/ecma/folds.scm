@@ -21,4 +21,5 @@
   (object)
   (generator_function)
   (generator_function_declaration)
+  (pair)
 ] @fold
