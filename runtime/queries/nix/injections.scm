@@ -294,6 +294,9 @@
         (string_fragment) @_ty)
       (#eq? @_ty_attr "type")
       (#eq? @_ty "lua"))
+    .
+    (comment)*
+    .
     (binding
       attrpath: (attrpath) @_cfg_attr
       (_
