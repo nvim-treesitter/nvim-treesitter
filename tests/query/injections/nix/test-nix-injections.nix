@@ -75,4 +75,10 @@ in {
     config = "require('nvim-treesitter.config').setup()";
     #          ^ @lua
   };
+
+  mod2 = {
+    config = "require('nvim-treesitter.config').setup()";
+    #          ^ @lua
+    type = "lua";
+  };
 }
