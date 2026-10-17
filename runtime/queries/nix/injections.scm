@@ -304,3 +304,23 @@
         (#set! injection.language "lua"))
       (#eq? @_cfg_attr "config")))
   (#set! injection.combined))
+
+; home-manager Neovim plugin config (attrs swapped)
+(attrset_expression
+  (binding_set
+    (binding
+      attrpath: (attrpath) @_cfg_attr
+      (_
+        (string_fragment) @injection.content
+        (#set! injection.language "lua"))
+      (#eq? @_cfg_attr "config"))
+    .
+    (comment)*
+    .
+    (binding
+      attrpath: (attrpath) @_ty_attr
+      (_
+        (string_fragment) @_ty)
+      (#eq? @_ty_attr "type")
+      (#eq? @_ty "lua")))
+  (#set! injection.combined))
