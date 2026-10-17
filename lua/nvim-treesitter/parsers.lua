@@ -664,7 +664,7 @@ return {
   },
   gnuplot = {
     install_info = {
-      revision = 'v4.1.0',
+      revision = 'v4.2.1',
       url = 'https://github.com/dpezto/tree-sitter-gnuplot',
     },
     tier = 1,
@@ -904,7 +904,7 @@ return {
   },
   inko = {
     install_info = {
-      revision = 'v0.8.0',
+      revision = 'v0.9.0',
       url = 'https://github.com/inko-lang/tree-sitter-inko',
     },
     tier = 1,
