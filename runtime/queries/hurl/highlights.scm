@@ -22,8 +22,8 @@
   (key_string_escaped_char)
   (value_string_escaped_char)
   (oneline_string_escaped_char)
-  (multiline_string_escaped_char)
   (filename_escaped_char)
+  (filename_password_escaped_char)
   (json_string_escaped_char)
 ] @string.escape
 
