@@ -869,7 +869,7 @@ return {
   },
   hurl = {
     install_info = {
-      revision = '597efbd7ce9a814bb058f48eabd055b1d1e12145',
+      revision = '3343774c9dff87570dd5d5b90d5e92405678d1d5',
       url = 'https://github.com/pfeiferj/tree-sitter-hurl',
     },
     tier = 2,
