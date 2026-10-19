@@ -306,7 +306,7 @@ jsx (queries only)[^jsx] | unstable | `HFIJ `
 [typst](https://github.com/uben0/tree-sitter-typst) | unstable | `HFIJ `
 [udev](https://github.com/tree-sitter-grammars/tree-sitter-udev) | unstable | `H  JL`
 [ungrammar](https://github.com/tree-sitter-grammars/tree-sitter-ungrammar) | unstable | `HFIJL`
-[unison](https://github.com/kylegoetz/tree-sitter-unison) | unstable | `HF J `
+[unison](https://github.com/kylegoetz/tree-sitter-unison) | unmaintained | `HF J `
 [usd](https://github.com/ColinKennedy/tree-sitter-usd) | unstable | `HFIJL`
 [uxntal](https://github.com/tree-sitter-grammars/tree-sitter-uxntal) | unstable | `HFIJL`
 [v](https://github.com/vlang/v-analyzer) | unstable | `HFIJL`
