@@ -2149,7 +2149,7 @@ return {
   unison = {
     install_info = {
       generate = true,
-      revision = '10365cc70ab2b2de85ea7ab35cf6b7636c36ce8b',
+      revision = 'f3360279ea9e788e52a725b7dec8509bc44cae45',
       url = 'https://github.com/kylegoetz/tree-sitter-unison',
     },
     tier = 3,
