@@ -103,23 +103,9 @@
         (primary_expression
           (identifier) @variable.parameter)))))
 
-(expression
+(primary_expression
   "."
-  (expression
-    (binary_expression
-      .
-      (unary_expression
-        (primary_expression
-          (identifier) @variable.member)))))
-
-(expression
-  "."
-  (expression
-    (binary_expression
-      (binary_expression
-        (unary_expression
-          (primary_expression
-            (identifier) @variable.member))))))
+  (identifier) @variable.member)
 
 (assignment_expression
   "."
