@@ -949,21 +949,21 @@ return {
   jinja = {
     install_info = {
       location = 'tree-sitter-jinja',
-      revision = 'c213d3745ccdcaaa858869181c7b1bf9557a025f',
+      revision = 'v0.13.1',
       url = 'https://github.com/cathaysia/tree-sitter-jinja',
     },
     readme_note = 'basic highlighting',
     requires = { 'jinja_inline' },
-    tier = 2,
+    tier = 1,
   },
   jinja_inline = {
     install_info = {
       location = 'tree-sitter-jinja_inline',
-      revision = 'c213d3745ccdcaaa858869181c7b1bf9557a025f',
+      revision = 'v0.13.1',
       url = 'https://github.com/cathaysia/tree-sitter-jinja',
     },
     readme_note = 'needed for full highlighting',
-    tier = 2,
+    tier = 1,
   },
   jjdescription = {
     install_info = {
