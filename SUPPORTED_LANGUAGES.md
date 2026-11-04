@@ -49,7 +49,6 @@ Language | Tier | Queries
 [csv](https://github.com/tree-sitter-grammars/tree-sitter-csv) | unstable | `H    `
 [cuda](https://github.com/tree-sitter-grammars/tree-sitter-cuda) | unstable | `HFIJL`
 [cue](https://github.com/eonpatapon/tree-sitter-cue) | unstable | `HFIJL`
-[cylc](https://github.com/elliotfontaine/tree-sitter-cylc) | unstable | `HFIJ `
 [d](https://github.com/gdamore/tree-sitter-d) | unstable | `HFIJL`
 [dart](https://github.com/UserNobody14/tree-sitter-dart) | unstable | `HFIJL`
 [desktop](https://github.com/ValdezFOmar/tree-sitter-desktop) | stable | `HF J `
