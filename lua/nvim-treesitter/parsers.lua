@@ -282,13 +282,6 @@ return {
     },
     tier = 2,
   },
-  cylc = {
-    install_info = {
-      revision = '6d1d81137112299324b526477ce1db989ab58fb8',
-      url = 'https://github.com/elliotfontaine/tree-sitter-cylc',
-    },
-    tier = 2,
-  },
   d = {
     install_info = {
       revision = '64f27931b4e6fdd75af1102c79bacbca68a8dacc',
