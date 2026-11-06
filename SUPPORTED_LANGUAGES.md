@@ -29,7 +29,7 @@ Language | Tier | Queries
 [bp](https://github.com/ambroisie/tree-sitter-bp)[^bp] | unstable | `HFIJL`
 [bpftrace](https://github.com/sgruszka/tree-sitter-bpftrace) | unstable | `H  J `
 [brightscript](https://github.com/ajdelcimmuto/tree-sitter-brightscript) | unstable | `HFIJ `
-[c](https://github.com/tree-sitter/tree-sitter-c) | unstable | `HFIJL`
+[c](https://github.com/tree-sitter-grammars/tree-sitter-c) | unstable | `HFIJL`
 [c3](https://github.com/c3lang/tree-sitter-c3) | unstable | `HFIJ `
 [c_sharp](https://github.com/tree-sitter/tree-sitter-c-sharp) | stable | `HF JL`
 [caddy](https://github.com/opa-oz/tree-sitter-caddy) | unmaintained | `HFIJ `
