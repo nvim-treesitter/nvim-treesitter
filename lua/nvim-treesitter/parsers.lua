@@ -118,7 +118,7 @@ return {
   },
   bp = {
     install_info = {
-      revision = 'ee641d15390183d7535777947ce0f2f1fbcee69f',
+      revision = '7fcdf705e70651ac4e767a88a6977f639ecad73a',
       url = 'https://github.com/ambroisie/tree-sitter-bp',
     },
     readme_note = 'Android Blueprint',
@@ -140,14 +140,14 @@ return {
   },
   c = {
     install_info = {
-      revision = 'b1564d8e2513515be1cdbbff0a634b943316a5a1',
+      revision = 'f3202ac4f1041e0b0a2b908147d5dd0e951da7b1',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-c',
     },
     tier = 2,
   },
   c3 = {
     install_info = {
-      revision = 'e4d3418873ff9f36c71474b5b08c204289f46fb0',
+      revision = '3d673a303116418866490ca2cb74551bd13f53d6',
       url = 'https://github.com/c3lang/tree-sitter-c3',
     },
     tier = 2,
@@ -926,7 +926,7 @@ return {
   },
   javadoc = {
     install_info = {
-      revision = 'c760949aa76745f9f6f7b023cccfe5f01679ae90',
+      revision = 'd2b4d375f354aa70cd61fad28c62e80dd84e3ad2',
       url = 'https://github.com/rmuir/tree-sitter-javadoc',
     },
     tier = 2,
@@ -1055,7 +1055,7 @@ return {
   },
   kotlin = {
     install_info = {
-      revision = '7719bd3b91ce55e00bfc067c8c6ec9993e2da210',
+      revision = 'd6af96d2e23ef0a8ff5ab512864378cf08fba311',
       url = 'https://github.com/fwcd/tree-sitter-kotlin',
     },
     tier = 2,
@@ -1196,7 +1196,7 @@ return {
   },
   matlab = {
     install_info = {
-      revision = 'f03d0347acd8bb05d4edd8c845ac1718729e1fad',
+      revision = 'ff2f83da49bb06128c4cfd055e7c95c05c77cded',
       url = 'https://github.com/acristoffers/tree-sitter-matlab',
     },
     tier = 2,
@@ -1275,7 +1275,7 @@ return {
   },
   nix = {
     install_info = {
-      revision = '37500eb28efff87b07af3df45e37d5726429b03a',
+      revision = 'e9f150648a7e0015b77f4c9b315648b389d6364e',
       url = 'https://github.com/nix-community/tree-sitter-nix',
     },
     tier = 2,
@@ -1365,7 +1365,7 @@ return {
   perl = {
     install_info = {
       generate = true,
-      revision = 'd0a9590e3150543032a3b1703fd082b3f4656e45',
+      revision = '80781e3dd98108199a3a1b5860f00fac22088b79',
       url = 'https://github.com/tree-sitter-perl/tree-sitter-perl',
     },
     tier = 2,
@@ -1405,7 +1405,7 @@ return {
   },
   pkl = {
     install_info = {
-      revision = 'c837eff683d62f3cb5e6309b44c257640f202d4b',
+      revision = '438dc0ddd3785ffa4d173a91fa956e193957d022',
       url = 'https://github.com/apple/tree-sitter-pkl',
     },
     tier = 2,
@@ -1646,7 +1646,7 @@ return {
   },
   rescript = {
     install_info = {
-      revision = '90643a6302057b969c51e1bf235b8ecf1da49232',
+      revision = 'cc6a15ee6297d493089134cb661a54fc7a13e376',
       url = 'https://github.com/rescript-lang/tree-sitter-rescript',
     },
     tier = 2,
@@ -1723,7 +1723,7 @@ return {
   },
   scala = {
     install_info = {
-      revision = 'c76bab0092b622e34df4916d80b117436683d16e',
+      revision = '5de5a8221654cc548eabb72fea59b1765ba917fb',
       url = 'https://github.com/tree-sitter/tree-sitter-scala',
     },
     tier = 2,
@@ -2008,7 +2008,7 @@ return {
   },
   tera = {
     install_info = {
-      revision = '54b3f8b43aecdbcf12a7366920f0bc8274af1dd0',
+      revision = '5fff1363a3e474765ee8dfd546630c2a8a7c6cc4',
       url = 'https://github.com/uncenter/tree-sitter-tera',
     },
     tier = 2,
@@ -2164,7 +2164,7 @@ return {
   v = {
     install_info = {
       location = 'tree_sitter_v',
-      revision = '925d4570d1668746762a2cdf0ecb9a25be704a67',
+      revision = '7801a67d0583371265c2b50258ee3641c14dfdaf',
       url = 'https://github.com/vlang/v-analyzer',
     },
     tier = 2,
