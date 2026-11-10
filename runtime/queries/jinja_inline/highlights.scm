@@ -75,9 +75,9 @@
 
 [
   "if"
+  "elif"
   (else_statement)
   (endif_statement)
-  (elif_block)
 ] @keyword.conditional
 
 [
