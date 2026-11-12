@@ -1,17 +1,18 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
 
-local run = Runner:new(it, 'tests/indent/gleam', {
+local run = Runner:new('tests/indent/gleam', {
   tabstop = 2,
   shiftwidth = 2,
   softtabstop = 2,
   expandtab = true,
 })
 
-describe('indent Gleam:', function()
-  describe('whole file:', function()
+t.describe('indent Gleam:', function()
+  t.describe('whole file:', function()
     run:whole_file('.')
   end)
-  describe('new line:', function()
+  t.describe('new line:', function()
     run:new_line('type.gleam', { on_line = 1, text = '//', indent = 2 })
     run:new_line('type.gleam', { on_line = 2, text = '//', indent = 2 })
     run:new_line('type.gleam', { on_line = 3, text = '//', indent = 0 })

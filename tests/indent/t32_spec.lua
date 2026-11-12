@@ -1,19 +1,20 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
 local XFAIL = require('tests.indent.common').XFAIL
 
-local runner = Runner:new(it, 'tests/indent/t32', {
+local runner = Runner:new('tests/indent/t32', {
   tabstop = 2,
   shiftwidth = 2,
   softtabstop = 0,
   expandtab = true,
 })
 
-describe('indent t32:', function()
-  describe('whole file:', function()
+t.describe('indent t32:', function()
+  t.describe('whole file:', function()
     runner:whole_file('.')
   end)
 
-  describe('new line:', function()
+  t.describe('new line:', function()
     runner:new_line(
       'if_block.cmm',
       { on_line = 2, text = 'GOTO start', indent = 0 },

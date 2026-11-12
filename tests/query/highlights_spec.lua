@@ -1,3 +1,4 @@
+local t = require('test.testutil')
 local config = require('nvim-treesitter.config')
 local ts = vim.treesitter
 
@@ -21,7 +22,7 @@ local function check_assertions(file)
     '-c',
     comment_node,
   }))
-  assert.True(#assertions > 0, 'No assertions detected!')
+  assert(#assertions > 0, 'No assertions detected!')
 
   local parser = ts.get_parser(buf)
 
@@ -30,8 +31,8 @@ local function check_assertions(file)
   for _, assertion in ipairs(assertions) do
     local row = assertion.position.row
     local col = assertion.position.column
-    assert.is.number(row)
-    assert.is.number(col)
+    t.eq('number', type(row))
+    t.eq('number', type(col))
 
     local captures = {}
     parser:for_each_tree(function(tstree, tree)
@@ -62,8 +63,8 @@ local function check_assertions(file)
       end
     end)
     if assertion.expected_capture_name:match('^!') then
-      assert.Falsy(
-        captures[assertion.expected_capture_name:sub(2)],
+      assert(
+        not captures[assertion.expected_capture_name:sub(2)],
         'Error in '
           .. file
           .. ':'
@@ -76,8 +77,8 @@ local function check_assertions(file)
           .. vim.inspect(vim.tbl_keys(captures))
       )
     else
-      assert.True(
-        captures[assertion.expected_capture_name],
+      assert(
+        captures[assertion.expected_capture_name] == true,
         'Error in '
           .. file
           .. ':'
@@ -93,10 +94,10 @@ local function check_assertions(file)
   end
 end
 
-describe('highlight queries', function()
-  local files = vim.fn.split(vim.fn.glob('tests/query/highlights/**/*.*'))
+t.describe('highlight queries', function()
+  local files = vim.fn.glob('tests/query/highlights/**/*.*', false, true)
   for _, file in ipairs(files) do
-    it(file, function()
+    t.it(file, function()
       check_assertions(file)
     end)
   end

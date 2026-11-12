@@ -1,20 +1,21 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
 
-local run = Runner:new(it, 'tests/indent/meson', {
+local run = Runner:new('tests/indent/meson', {
   tabstop = 2,
   shiftwidth = 2,
   softtabstop = 0,
   expandtab = true,
 })
 
-describe('indent Meson:', function()
-  describe('whole file:', function()
+t.describe('indent Meson:', function()
+  t.describe('whole file:', function()
     run:whole_file('.', {
       expected_failures = {},
     })
   end)
 
-  describe('new line:', function()
+  t.describe('new line:', function()
     run:new_line('cond.meson', { on_line = 3, text = 'foo()', indent = 2 })
     run:new_line('cond.meson', { on_line = 6, text = 'foo()', indent = 2 })
     run:new_line('cond.meson', { on_line = 7, text = 'foo()', indent = 2 })

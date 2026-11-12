@@ -1,83 +1,62 @@
 local M = {}
 
-local assert = require('luassert')
-local say = require('say')
+local t = require('test.testutil')
 
 M.XFAIL = 'xfail'
 
-local function same_indent(_, arguments)
-  local before = arguments[1]
-  local after = arguments[2]
-
+--- Compare the indentation of `before` (expected) and `after` (found) line by line.
+--- @return table<integer, {[1]: integer, [2]: integer}>? errors found and expected indent per line
+local function indent_errors(before, after)
+  local errors = {}
   local ok = true
-  local errors = { before = {}, after = {} }
   for line = 1, #before do
-    if #string.match(before[line], '^%s*') ~= #string.match(after[line], '^%s*') then
-      if before[line] and after[line] then
-        -- store the actual indentation length for each line
-        errors.before[line] = #string.match(before[line], '^%s*')
-        errors.after[line] = #string.match(after[line], '^%s*')
-      end
+    local expected = #string.match(before[line], '^%s*')
+    local found = #string.match(after[line] or '', '^%s*')
+    if expected ~= found then
+      errors[line] = { found, expected }
       ok = false
     end
   end
-
-  -- we will always use only a single argument, passing the other one in fmtargs
-  arguments.fmtargs = { { errors = errors, other = after } }
-  arguments.fmtargs[2] = { errors = errors, other = after }
-
-  return ok
+  return not ok and errors or nil
 end
 
-local function format_indent(arg, fmtargs)
-  if not arg or not fmtargs then
-    return
-  end
+--- Format a side-by-side diff of found and expected lines.
+local function format_indent(before, after, errors)
   -- find minimal width if any line is longer
   local width = 40
-  for _, line in ipairs(fmtargs.other) do
+  for _, line in ipairs(after) do
     width = #line > width and #line or width
   end
-
   width = width + 3
-  local header_fmt = '%8s %2s%-' .. tostring(width + 1) .. 's %s'
-  local fmt = '%8s %2s |%-' .. tostring(width) .. 's |%s'
 
-  local output = { header_fmt:format('', '', 'Found:', 'Expected:') }
-
-  for i, line in ipairs(arg) do
-    if fmtargs.errors.before[i] then
-      local indents = string.format('%d vs %d', fmtargs.errors.after[i], fmtargs.errors.before[i])
-      table.insert(output, fmt:format(indents, '=>', fmtargs.other[i], line))
-    else
-      table.insert(output, fmt:format('', '', fmtargs.other[i], line))
-    end
+  local function pad(str)
+    return str .. string.rep(' ', width - #str)
   end
 
+  local output = {
+    'Incorrect indentation',
+    string.format('%8s %2s %s %s', '', '', pad('Found:') .. ' ', 'Expected:'),
+  }
+  for i, line in ipairs(before) do
+    local indents = errors[i] and string.format('%d vs %d', errors[i][1], errors[i][2]) or ''
+    local marker = errors[i] and '=>' or ''
+    table.insert(
+      output,
+      string.format('%8s %2s |%s |%s', indents, marker, pad(after[i] or ''), line)
+    )
+  end
   return table.concat(output, '\n')
 end
 
-say:set_namespace('en')
-say:set('assertion.same_indent.positive', 'Incorrect indentation\n%s')
-say:set('assertion.same_indent.negative', 'Incorrect indentation\n%s')
-assert:register(
-  'assertion',
-  'same_indent',
-  same_indent,
-  'assertion.same_indent.positive',
-  'assert.same_indent.negative'
-)
-
 -- Custom assertion better suited for indentation diffs
 local function compare_indent(before, after, xfail)
-  assert:add_formatter(format_indent)
+  local errors = indent_errors(before, after)
   if xfail then
-    -- io.stdout:write('Warning! Known failure of this test! Please help to fix it! ')
-    assert.is_not.same_indent(before, after)
-  else
-    assert.is.same_indent(before, after)
+    -- known failure: fail if the indentation is correct, so the test gets removed from the list
+    assert(errors, 'Expected failure, but indentation is correct')
+  elseif errors then
+    error(format_indent(before, after, errors), 0)
   end
-  assert:remove_formatter(format_indent)
 end
 
 local function set_buf_indent_opts(opts)
@@ -91,14 +70,14 @@ local function set_buf_indent_opts(opts)
 end
 
 function M.run_indent_test(file, runner, opts)
-  assert.are.same(1, vim.fn.filereadable(file), string.format('File "%s" not readable', file))
+  t.eq(1, vim.fn.filereadable(file), string.format('File "%s" not readable', file))
 
   -- load reference file
   vim.cmd(string.format('edit %s', file))
   vim.bo.indentexpr = require('nvim-treesitter').indentexpr
   local before = vim.api.nvim_buf_get_lines(0, 0, -1, true)
 
-  assert.are.equal(require('nvim-treesitter').indentexpr, vim.bo.indentexpr)
+  t.eq(require('nvim-treesitter').indentexpr, vim.bo.indentexpr)
   set_buf_indent_opts(opts)
 
   -- perform the test
@@ -158,12 +137,10 @@ local Runner = {}
 Runner.__index = Runner
 
 -- Helper to avoid boilerplate when defining tests
--- @param it  the "it" function that busted defines globally in spec files
 -- @param base_dir  all other paths will be resolved relative to this directory
 -- @param buf_opts  buffer options passed to set_buf_indent_opts
-function Runner:new(it, base_dir, buf_opts)
+function Runner:new(base_dir, buf_opts)
   local runner = {}
-  runner.it = it
   runner.base_dir = base_dir
   runner.buf_opts = buf_opts
   return setmetatable(runner, self)
@@ -178,7 +155,7 @@ function Runner:whole_file(dirs, opts)
   dirs = type(dirs) == 'table' and dirs or { dirs }
   dirs = vim.tbl_map(function(dir)
     dir = vim.fs.normalize(vim.fs.joinpath(self.base_dir, dir))
-    assert.is.same(1, vim.fn.isdirectory(dir))
+    t.eq('directory', (vim.uv.fs_stat(dir) or {}).type, dir)
     return dir
   end, dirs)
   local scandir = function(dir)
@@ -188,7 +165,7 @@ function Runner:whole_file(dirs, opts)
   end
   local files = vim.iter(dirs):map(scandir):flatten()
   for _, file in files:enumerate() do
-    self.it(file, function()
+    t.it(file, function()
       M.indent_whole_file(file, self.buf_opts, vim.tbl_contains(expected_failures, file))
     end)
   end
@@ -196,7 +173,7 @@ end
 
 function Runner:new_line(file, spec, title, xfail)
   title = title and title or tostring(spec.on_line)
-  self.it(string.format('%s[%s]', file, title), function()
+  t.it(string.format('%s[%s]', file, title), function()
     local path = vim.fs.joinpath(self.base_dir, file)
     M.indent_new_line(path, spec, self.buf_opts, xfail)
   end)

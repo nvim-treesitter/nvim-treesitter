@@ -1,21 +1,22 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
 -- local XFAIL = require("tests.indent.common").XFAIL
 
-local run = Runner:new(it, 'tests/indent', {
+local run = Runner:new('tests/indent', {
   tabstop = 2,
   shiftwidth = 2,
   softtabstop = 0,
   expandtab = true,
 })
 
-describe('indent JavaScript:', function()
-  describe('whole file:', function()
+t.describe('indent JavaScript:', function()
+  t.describe('whole file:', function()
     run:whole_file({ 'ecma/' }, {
       expected_failures = {},
     })
   end)
 
-  describe('new line:', function()
+  t.describe('new line:', function()
     for _, info in ipairs({
       { 1, 2 },
       { 2, 4 },

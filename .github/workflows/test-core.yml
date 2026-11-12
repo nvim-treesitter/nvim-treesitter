@@ -51,8 +51,8 @@ jobs:
 
       - name: Run highlight tests
         if: ${{ matrix.os != 'windows-latest' }}
-        run: make tests TESTS=query NVIM_BIN=$NVIM
+        run: make tests TESTS=query NVIM_VERSION=${{ matrix.nvim_tag }}
 
       - name: Run indents tests
         if: ${{ matrix.os != 'windows-latest' }}
-        run: make tests TESTS=indent NVIM_BIN=$NVIM
+        run: make tests TESTS=indent NVIM_VERSION=${{ matrix.nvim_tag }}

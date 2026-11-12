@@ -1,21 +1,22 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
 local XFAIL = require('tests.indent.common').XFAIL
 
-local run = Runner:new(it, 'tests/indent/snakemake', {
+local run = Runner:new('tests/indent/snakemake', {
   tabstop = 4,
   shiftwidth = 4,
   softtabstop = 0,
   expandtab = true,
 })
 
-describe('indent Snakemake:', function()
-  describe('whole file:', function()
+t.describe('indent Snakemake:', function()
+  t.describe('whole file:', function()
     run:whole_file('.', {
       expected_failures = {},
     })
   end)
 
-  describe('new line:', function()
+  t.describe('new line:', function()
     run:new_line('blocks.smk', { on_line = 1, text = 'input: 1', indent = 4 })
     run:new_line('blocks.smk', { on_line = 2, text = 'input: 1', indent = 4 })
     run:new_line('blocks.smk', { on_line = 5, text = 'input: 1', indent = 8 })

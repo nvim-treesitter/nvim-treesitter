@@ -1,21 +1,22 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
 local XFAIL = require('tests.indent.common').XFAIL
 
-local run = Runner:new(it, 'tests/indent/bash', {
+local run = Runner:new('tests/indent/bash', {
   tabstop = 4,
   shiftwidth = 4,
   softtabstop = 0,
   expandtab = true,
 })
 
-describe('indent Bash:', function()
-  describe('whole file:', function()
+t.describe('indent Bash:', function()
+  t.describe('whole file:', function()
     run:whole_file('.', {
       expected_failures = {},
     })
   end)
 
-  describe('new line:', function()
+  t.describe('new line:', function()
     run:new_line('test.sh', { on_line = 1, text = 'echo test', indent = 4 }) -- in "for"
     run:new_line('test.sh', { on_line = 2, text = 'echo test', indent = 8 }) -- in "if"
     run:new_line('test.sh', { on_line = 4, text = 'echo test', indent = 8 }) -- in "elif"

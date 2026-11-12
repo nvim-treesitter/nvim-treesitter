@@ -1,18 +1,19 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
-local runner = Runner:new(it, 'tests/indent/jsx', {
+local runner = Runner:new('tests/indent/jsx', {
   tabstop = 2,
   shiftwidth = 2,
   expandtab = true,
 })
 
-describe('indent JSX Elements:', function()
-  describe('whole file:', function()
+t.describe('indent JSX Elements:', function()
+  t.describe('whole file:', function()
     runner:whole_file('.', {
       expected_failures = {},
     })
   end)
 
-  describe('new line:', function()
+  t.describe('new line:', function()
     for _, info in ipairs({
       { 5, 8 },
       { 6, 6 },

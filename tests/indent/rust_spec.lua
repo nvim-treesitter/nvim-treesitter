@@ -1,18 +1,19 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
 
-local run = Runner:new(it, 'tests/indent/rust', {
+local run = Runner:new('tests/indent/rust', {
   tabstop = 4,
   shiftwidth = 4,
   softtabstop = 0,
   expandtab = true,
 })
 
-describe('indent Rust:', function()
-  describe('whole file:', function()
+t.describe('indent Rust:', function()
+  t.describe('whole file:', function()
     run:whole_file('.')
   end)
 
-  describe('new line:', function()
+  t.describe('new line:', function()
     run:new_line('array.rs', { on_line = 2, text = '0,', indent = 4 })
     run:new_line('array.rs', { on_line = 8, text = '0,', indent = 8 })
     run:new_line('comment.rs', { on_line = 3, text = 'a', indent = '/// ' })

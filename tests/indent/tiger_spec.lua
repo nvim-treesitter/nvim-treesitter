@@ -1,18 +1,19 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
 
-local runner = Runner:new(it, 'tests/indent/tiger', {
+local runner = Runner:new('tests/indent/tiger', {
   tabstop = 2,
   shiftwidth = 2,
   softtabstop = 0,
   expandtab = true,
 })
 
-describe('indent Tiger:', function()
-  describe('whole file:', function()
+t.describe('indent Tiger:', function()
+  t.describe('whole file:', function()
     runner:whole_file('.')
   end)
 
-  describe('new line:', function()
+  t.describe('new line:', function()
     runner:new_line(
       'classes.tig',
       { on_line = 1, text = 'var a := 0', indent = 2 },

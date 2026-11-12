@@ -1,21 +1,22 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
 --local XFAIL = require("tests.indent.common").XFAIL
 
-local run = Runner:new(it, 'tests/indent/lua', {
+local run = Runner:new('tests/indent/lua', {
   tabstop = 2,
   shiftwidth = 2,
   softtabstop = 0,
   expandtab = true,
 })
 
-describe('indent Lua:', function()
-  describe('whole file:', function()
+t.describe('indent Lua:', function()
+  t.describe('whole file:', function()
     run:whole_file('.', {
       expected_failures = {},
     })
   end)
 
-  describe('new line:', function()
+  t.describe('new line:', function()
     run:new_line('comment.lua', { on_line = 1, text = 'line', indent = '-- ' })
     run:new_line('comment.lua', { on_line = 5, text = 'multiline', indent = '  ' })
     run:new_line('func.lua', { on_line = 1, text = 'x = x + 1', indent = 2 })

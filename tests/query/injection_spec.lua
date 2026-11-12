@@ -1,3 +1,4 @@
+local t = require('test.testutil')
 local config = require('nvim-treesitter.config')
 local ts = vim.treesitter
 
@@ -40,8 +41,8 @@ local function check_assertions(file)
       end
     end)
     if neg_assert then
-      assert.False(
-        found,
+      assert(
+        not found,
         'Error in '
           .. file
           .. ':'
@@ -53,7 +54,7 @@ local function check_assertions(file)
           .. '" not to be injected here!'
       )
     else
-      assert.True(
+      assert(
         found,
         'Error in '
           .. file
@@ -69,10 +70,10 @@ local function check_assertions(file)
   end
 end
 
-describe('injections', function()
-  local files = vim.fn.split(vim.fn.glob('tests/query/injections/**/*.*'))
+t.describe('injections', function()
+  local files = vim.fn.glob('tests/query/injections/**/*.*', false, true)
   for _, file in ipairs(files) do
-    it(file, function()
+    t.it(file, function()
       check_assertions(file)
     end)
   end

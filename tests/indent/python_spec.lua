@@ -1,21 +1,22 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
 local XFAIL = require('tests.indent.common').XFAIL
 
-local run = Runner:new(it, 'tests/indent/python', {
+local run = Runner:new('tests/indent/python', {
   tabstop = 4,
   shiftwidth = 4,
   softtabstop = 0,
   expandtab = true,
 })
 
-describe('indent Python:', function()
-  describe('whole file:', function()
+t.describe('indent Python:', function()
+  t.describe('whole file:', function()
     run:whole_file('.', {
       expected_failures = {},
     })
   end)
 
-  describe('new line:', function()
+  t.describe('new line:', function()
     run:new_line('aligned_indent.py', { on_line = 1, text = 'arg3,', indent = 19 })
     run:new_line('aligned_indent_2.py', { on_line = 2, text = 'x', indent = 4 })
     run:new_line('aligned_indent_2.py', { on_line = 9, text = 'x', indent = 4 })

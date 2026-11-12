@@ -5,8 +5,7 @@
   },
   "workspace": {
     "library": [
-      "$VIMRUNTIME",
-      "${3rd}/busted/library"
+      "$VIMRUNTIME"
     ],
     "ignoreDir": [
       ".test-deps",

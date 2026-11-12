@@ -1,5 +1,10 @@
-vim.o.rtp = os.getenv('PLENTEST') .. ',.,' .. vim.o.rtp
-vim.o.rtp = vim.fn.stdpath('data') .. '/site,' .. vim.o.rtp
+-- Loaded by the Nvim test harness (`--helper`, see Makefile) before running the specs.
+vim.opt.rtp:prepend('.')
+vim.opt.rtp:prepend(vim.fn.stdpath('data') .. '/site')
+vim.cmd('filetype plugin indent on')
+-- Regex syntax is not needed (and with `-l`, its FileType autocommand runs before the one below, so
+-- every buffer would load its syntax file before Treesitter takes over).
+vim.cmd('syntax off')
 vim.cmd.runtime({ 'plugin/query_predicates.lua', bang = true })
 vim.cmd.runtime({ 'plugin/filetypes.lua', bang = true })
 
@@ -11,7 +16,6 @@ vim.filetype.add({
 })
 
 vim.o.swapfile = false
-vim.bo.swapfile = false
 
 vim.api.nvim_create_autocmd('FileType', {
   callback = function(args)
