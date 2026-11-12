@@ -82,7 +82,7 @@ local function install_health()
   end
 
   health.start('OS Info')
-  local osinfo = vim.uv.os_uname() ---@type table<string,string>
+  local osinfo = assert(vim.uv.os_uname()) ---@type table<string,string>
   for k, v in pairs(osinfo) do
     health.info(k .. ': ' .. v)
   end
