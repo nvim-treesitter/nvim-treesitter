@@ -25,7 +25,7 @@ return {
   apex = {
     install_info = {
       location = 'apex',
-      revision = '218083d5ddd8d8614e9e31a6c203807f61f43348',
+      revision = '1a4baf203f0bf1b8ab8bcaed3a6ce011a9c1837f',
       url = 'https://github.com/aheber/tree-sitter-sfapex',
     },
     tier = 2,
@@ -83,7 +83,7 @@ return {
   },
   beancount = {
     install_info = {
-      revision = 'c8a9780610dbe8ade4888045b1f2caa7a0a9d8aa',
+      revision = '97e38a1f9a20ec3d34ea9381bb45f2ba988c0de0',
       url = 'https://github.com/polarmutex/tree-sitter-beancount',
     },
     tier = 2,
@@ -514,7 +514,7 @@ return {
   },
   fortran = {
     install_info = {
-      revision = '72f8759dea28ff6671e0868a9ed5ad4a18413917',
+      revision = 'd05165a6f0bd044ba1f89865927a752dd5168e66',
       url = 'https://github.com/stadelmanma/tree-sitter-fortran',
     },
     tier = 2,
@@ -1119,7 +1119,7 @@ return {
   },
   liquidsoap = {
     install_info = {
-      revision = '087fc44803a167ded3494ae2b38594dff18d4e50',
+      revision = '91ac373040bf680ece3e2eea69735b3c38a3766c',
       url = 'https://github.com/savonet/tree-sitter-liquidsoap',
     },
     tier = 2,
@@ -1275,7 +1275,7 @@ return {
   },
   nix = {
     install_info = {
-      revision = 'e9f150648a7e0015b77f4c9b315648b389d6364e',
+      revision = '64d4f7827dc1a8c7c88108ffdb47b961a729df05',
       url = 'https://github.com/nix-community/tree-sitter-nix',
     },
     tier = 2,
@@ -1289,7 +1289,7 @@ return {
   },
   nu = {
     install_info = {
-      revision = '4f577aaa735154f934594b598a69ed7b1b707cf6',
+      revision = '0c3f6dfbc30d7713dcbb15b10954f2dee86ef63c',
       url = 'https://github.com/nushell/tree-sitter-nu',
     },
     tier = 2,
@@ -1312,7 +1312,7 @@ return {
   ocaml = {
     install_info = {
       location = 'grammars/ocaml',
-      revision = '3b2e14e0697d405c9aa0beddfa09b71f45abc504',
+      revision = 'a1c562e73ab787dcc69fdc2e5510c53bbce5364f',
       url = 'https://github.com/tree-sitter/tree-sitter-ocaml',
     },
     tier = 2,
@@ -1320,7 +1320,7 @@ return {
   ocaml_interface = {
     install_info = {
       location = 'grammars/interface',
-      revision = '3b2e14e0697d405c9aa0beddfa09b71f45abc504',
+      revision = 'a1c562e73ab787dcc69fdc2e5510c53bbce5364f',
       url = 'https://github.com/tree-sitter/tree-sitter-ocaml',
     },
     requires = { 'ocaml' },
@@ -1365,7 +1365,7 @@ return {
   perl = {
     install_info = {
       generate = true,
-      revision = '80781e3dd98108199a3a1b5860f00fac22088b79',
+      revision = '5e30b919b86ea7dfbf8525537e1523af235e140d',
       url = 'https://github.com/tree-sitter-perl/tree-sitter-perl',
     },
     tier = 2,
@@ -1723,7 +1723,7 @@ return {
   },
   scala = {
     install_info = {
-      revision = '5de5a8221654cc548eabb72fea59b1765ba917fb',
+      revision = 'c1e2b1adf4fd4a2db26ffe6956548864d66a282b',
       url = 'https://github.com/tree-sitter/tree-sitter-scala',
     },
     tier = 2,
@@ -1753,7 +1753,7 @@ return {
   sflog = {
     install_info = {
       location = 'sflog',
-      revision = '218083d5ddd8d8614e9e31a6c203807f61f43348',
+      revision = '1a4baf203f0bf1b8ab8bcaed3a6ce011a9c1837f',
       url = 'https://github.com/aheber/tree-sitter-sfapex',
     },
     readme_note = 'Salesforce debug log',
@@ -1820,7 +1820,7 @@ return {
   soql = {
     install_info = {
       location = 'soql',
-      revision = '218083d5ddd8d8614e9e31a6c203807f61f43348',
+      revision = '1a4baf203f0bf1b8ab8bcaed3a6ce011a9c1837f',
       url = 'https://github.com/aheber/tree-sitter-sfapex',
     },
     tier = 2,
@@ -1828,7 +1828,7 @@ return {
   sosl = {
     install_info = {
       location = 'sosl',
-      revision = '218083d5ddd8d8614e9e31a6c203807f61f43348',
+      revision = '1a4baf203f0bf1b8ab8bcaed3a6ce011a9c1837f',
       url = 'https://github.com/aheber/tree-sitter-sfapex',
     },
     tier = 2,
@@ -1857,7 +1857,7 @@ return {
   sql = {
     install_info = {
       branch = 'gh-pages',
-      revision = '174cebb880f10bc7c5a24aa289431949d26d3c09',
+      revision = '2d088525f3f986108d969dab526a0d7129281e24',
       url = 'https://github.com/derekstride/tree-sitter-sql',
     },
     tier = 2,
@@ -1937,7 +1937,7 @@ return {
   swift = {
     install_info = {
       generate = true,
-      revision = '9e3b87f66f1fd2f3b931376fd3723ab788e337c3',
+      revision = 'a1d4a7b80260bf960f9e25198cddecbe5e6c46aa',
       url = 'https://github.com/alex-pinkus/tree-sitter-swift',
     },
     tier = 2,
@@ -1958,7 +1958,7 @@ return {
   },
   systemverilog = {
     install_info = {
-      revision = '08c5e379b9b6022d4c433a9249e6d54dedd051ba',
+      revision = '73d7620ffdc467aab3c2089be9be5cbbc1be2eaa',
       url = 'https://github.com/gmlarumbe/tree-sitter-systemverilog',
     },
     tier = 2,
@@ -1986,7 +1986,7 @@ return {
   },
   tcl = {
     install_info = {
-      revision = '850a72ab6436e06645b33b11cfa60cbdb04b1f01',
+      revision = '90e87ed495a04fd0bf18db4be12b7033cd7402f6',
       url = 'https://github.com/tree-sitter-grammars/tree-sitter-tcl',
     },
     tier = 2,
