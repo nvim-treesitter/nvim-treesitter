@@ -1958,7 +1958,7 @@ return {
   },
   systemverilog = {
     install_info = {
-      revision = '73d7620ffdc467aab3c2089be9be5cbbc1be2eaa',
+      revision = 'dd638a12f1b1e2cbc5c69cc5d04a19e834091a6d',
       url = 'https://github.com/gmlarumbe/tree-sitter-systemverilog',
     },
     tier = 2,
