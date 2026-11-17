@@ -8,6 +8,7 @@ local M = {}
 function M.check(file)
   local buf, lang = assertions.open(file)
   local list = assertions.parse(buf, lang)
+  assert(#list > 0, 'No assertions detected!')
 
   local tree = vim.treesitter.highlighter.active[buf].tree
   local top_level_root = tree:parse(true)[1]:root()

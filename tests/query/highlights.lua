@@ -3,16 +3,11 @@ local assertions = require('tests.query.assertions')
 
 local M = {}
 
-local COMMENT_NODES = {
-  markdown = 'html_block',
-  haskell = 'haddock',
-}
-
 --- Check the highlight assertions in `file` against the captures of Nvim's highlighter.
 ---@param file string
 function M.check(file)
   local buf, lang = assertions.open(file)
-  local list = assertions.parse(buf, lang, COMMENT_NODES[lang])
+  local list = assertions.parse(buf, lang)
   assert(#list > 0, 'No assertions detected!')
 
   local errors = {} ---@type string[]
