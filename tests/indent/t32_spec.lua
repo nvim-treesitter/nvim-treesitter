@@ -75,7 +75,7 @@ t.describe('indent t32:', function()
     }) do
       runner:new_line(
         'if_block.cmm',
-        { on_line = test[1], text = 'CONTinue\n', indent = test[2] },
+        { on_line = test[1], text = 'CONTinue', indent = test[2] },
         'command in IF else[' .. ii .. ']'
       )
     end
@@ -94,7 +94,7 @@ t.describe('indent t32:', function()
 
     runner:new_line(
       'while_block.cmm',
-      { on_line = 1, text = '(\n', indent = 0 },
+      { on_line = 1, text = '(', indent = 0 },
       'block in WHILE then'
     )
 
@@ -122,7 +122,7 @@ t.describe('indent t32:', function()
 
     runner:new_line(
       'repeat_block.cmm',
-      { on_line = 3, text = '(\n', indent = 0 },
+      { on_line = 3, text = '(', indent = 0 },
       'block in RePeaT then'
     )
 
@@ -140,7 +140,7 @@ t.describe('indent t32:', function()
 
     runner:new_line(
       'subroutine_block.cmm',
-      { on_line = 1, text = '(\n', indent = 0 },
+      { on_line = 1, text = '(', indent = 0 },
       'block after call label'
     )
 

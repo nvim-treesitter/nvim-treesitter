@@ -25,7 +25,11 @@ endif
 
 # Each version is downloaded once to $(DEPDIR)/nvim-<version>: the release build and the test
 # harness modules from the same git ref (cached, "make clean" to update).
-NVIM_TEST_FILES := assert.lua,harness.lua,reporter.lua,runner.lua,testutil.lua
+NVIM_TEST_FILES := assert.lua harness.lua reporter.lua runner.lua testutil.lua \
+	client/rpc_stream.lua client/session.lua client/uv_stream.lua \
+	functional/testnvim.lua functional/testnvim/exec_lua.lua
+comma := ,
+space := $(subst ,, )
 
 NVIM_BIN := $(DEPDIR)/nvim-$(NVIM_VERSION)/bin/nvim
 NVIM_RUNTIME := $(DEPDIR)/nvim-$(NVIM_VERSION)/share/nvim/runtime
@@ -42,7 +46,7 @@ $(DEPDIR)/nvim-%/bin/nvim:
 	$(CURL) --fail https://github.com/neovim/neovim/releases/download/$*/nvim-$(NVIM_ARCH).tar.gz \
 		| tar -xz --strip-components=1 -C $(DEPDIR)/nvim-$*.tmp
 	$(CURL) --fail --parallel --output "$(DEPDIR)/nvim-$*.tmp/test/#1" \
-		"https://raw.githubusercontent.com/neovim/neovim/$*/test/{$(NVIM_TEST_FILES)}"
+		"https://raw.githubusercontent.com/neovim/neovim/$*/test/{$(subst $(space),$(comma),$(strip $(NVIM_TEST_FILES)))}"
 	mv $(DEPDIR)/nvim-$*.tmp $(DEPDIR)/nvim-$*
 
 EMMYLUALS := $(DEPDIR)/emmylua_check-$(LUALS_ARCH)
@@ -129,9 +133,11 @@ docs: $(NVIM_BIN)
 	$(NVIM_BIN) -l scripts/update-readme.lua
 
 .PHONY: tests
+# The specs run their checks in $(NVIM_BIN) (see tests/sut.lua).
+# LUA_PATH: `exec_lua()` requires test modules in the Nvim under test.
 tests: $(NVIM_BIN) $(NVIM_HOST_BIN) $(HLASSERT)
 	HLASSERT=$(HLASSERT)/highlight-assertions NVIM_LOG_FILE=$(abspath $(DEPDIR))/nvim.log \
-		NVIM_PRG=$(abspath $(NVIM_BIN)) \
+		NVIM_PRG=$(abspath $(NVIM_BIN)) LUA_PATH="$(abspath $(NVIM_HOST))/?.lua;;" \
 		$(NVIM_HOST_BIN) --clean -l $(NVIM_HOST)/test/runner.lua --helper=tests/helper.lua tests/$(TESTS)
 
 .PHONY: all

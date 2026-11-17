@@ -1,6 +1,7 @@
 local M = {}
 
 local t = require('test.testutil')
+local sut = require('tests.sut')
 
 M.XFAIL = 'xfail'
 
@@ -59,78 +60,33 @@ local function compare_indent(before, after, xfail)
   end
 end
 
-local function set_buf_indent_opts(opts)
-  local optnames =
-    { 'tabstop', 'shiftwidth', 'softtabstop', 'expandtab', 'filetype', 'lispoptions' }
-  for _, opt in ipairs(optnames) do
-    if opts[opt] ~= nil then
-      vim.bo[opt] = opts[opt]
-    end
-  end
-end
-
-function M.run_indent_test(file, runner, opts)
-  t.eq(1, vim.fn.filereadable(file), string.format('File "%s" not readable', file))
-
-  -- load reference file
-  vim.cmd(string.format('edit %s', file))
-  vim.bo.indentexpr = require('nvim-treesitter').indentexpr
-  local before = vim.api.nvim_buf_get_lines(0, 0, -1, true)
-
-  t.eq(require('nvim-treesitter').indentexpr, vim.bo.indentexpr)
-  set_buf_indent_opts(opts)
-
-  -- perform the test
-  runner()
-
-  -- get file content after the test
-  local after = vim.api.nvim_buf_get_lines(0, 0, -1, true)
-
-  -- clear any changes to avoid 'No write since last change (add ! to override)'
-  vim.cmd('edit!')
-
-  return before, after
-end
-
-function M.indent_whole_file(file, opts, xfail)
-  local before, after = M.run_indent_test(file, function()
-    vim.cmd('silent normal gg=G')
-  end, opts)
+--- Reindent the whole file in the Nvim under test and compare with the original.
+local function indent_whole_file(file, opts, xfail)
+  local before, after = sut.exec_lua(function(...)
+    return require('tests.indent.run').whole_file(...)
+  end, file, opts)
 
   compare_indent(before, after, xfail)
 end
 
--- Open a file, use `normal o` to insert a new line and compare results
+-- Open a file, use `normal o` (and `a<CR>`) to insert a new line and compare results
 -- @param file path to the initial file
 -- @param spec a table with keys:
 --   on_line: line on which `normal o` is executed
 --   text: text inserted in the new line
 --   indent: expected indent before the inserted text (string or int)
 -- @param opts buffer options passed to set_buf_indent_opts
-function M.indent_new_line(file, spec, opts, xfail)
-  local before, after = M.run_indent_test(file, function()
-    -- move to the line and input the new one
-    vim.cmd(string.format('normal! %dG', spec.on_line))
-    vim.cmd(string.format('normal! o%s', spec.text))
-  end, opts)
+local function indent_new_line(file, spec, opts, xfail)
+  local results = sut.exec_lua(function(...)
+    return require('tests.indent.run').new_line(...)
+  end, file, spec.on_line, spec.text, opts)
 
   local indent = type(spec.indent) == 'string' and spec.indent or string.rep(' ', spec.indent)
-  table.insert(before, spec.on_line + 1, indent .. spec.text)
-
-  compare_indent(before, after, xfail)
-
-  before, after = M.run_indent_test(file, function()
-    -- move to the line and input the new one
-    vim.cmd(string.format('normal! %dG$', spec.on_line))
-    vim.cmd(
-      string.format(vim.api.nvim_replace_termcodes('normal! a<cr>%s', true, true, true), spec.text)
-    )
-  end, opts)
-
-  indent = type(spec.indent) == 'string' and spec.indent or string.rep(' ', spec.indent)
-  table.insert(before, spec.on_line + 1, indent .. spec.text)
-
-  compare_indent(before, after, xfail)
+  for _, r in ipairs(results) do
+    local before, after = r[1], r[2]
+    table.insert(before, spec.on_line + 1, indent .. spec.text)
+    compare_indent(before, after, xfail)
+  end
 end
 
 local Runner = {}
@@ -138,8 +94,9 @@ Runner.__index = Runner
 
 -- Helper to avoid boilerplate when defining tests
 -- @param base_dir  all other paths will be resolved relative to this directory
--- @param buf_opts  buffer options passed to set_buf_indent_opts
+-- @param buf_opts  buffer options passed to set_buf_indent_opts (tests/indent/run.lua)
 function Runner:new(base_dir, buf_opts)
+  sut.setup()
   local runner = {}
   runner.base_dir = base_dir
   runner.buf_opts = buf_opts
@@ -166,7 +123,7 @@ function Runner:whole_file(dirs, opts)
   local files = vim.iter(dirs):map(scandir):flatten()
   for _, file in files:enumerate() do
     t.it(file, function()
-      M.indent_whole_file(file, self.buf_opts, vim.tbl_contains(expected_failures, file))
+      indent_whole_file(file, self.buf_opts, vim.tbl_contains(expected_failures, file))
     end)
   end
 end
@@ -175,7 +132,7 @@ function Runner:new_line(file, spec, title, xfail)
   title = title and title or tostring(spec.on_line)
   t.it(string.format('%s[%s]', file, title), function()
     local path = vim.fs.joinpath(self.base_dir, file)
-    M.indent_new_line(path, spec, self.buf_opts, xfail)
+    indent_new_line(path, spec, self.buf_opts, xfail)
   end)
 end
 
