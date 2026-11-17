@@ -3,6 +3,7 @@
   (if_statement)
   (case_statement)
   (for_statement)
+  (foreach_statement)
   (while_statement)
   (c_style_for_statement)
   (heredoc_redirect)
