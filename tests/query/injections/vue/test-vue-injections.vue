@@ -16,14 +16,14 @@
 <!--                               ^ @javascript -->
 <script lang="ts"> const foo: number = "1" </script>
 <!--                             ^ @typescript -->
-<!--                             ^ @!javascript -->
+<!--                             ^ !@javascript -->
 <script lang="ts" defer>const foo: number = 1 </script>
 <!--                             ^ @typescript -->
-<!--                             ^ @!javascript -->
+<!--                             ^ !@javascript -->
 <script lang="tsx" defer>const foo: number = 1</script>
                               <!--   ^ @tsx -->
-                              <!--   ^ @!jsx -->
-                              <!--   ^ @!typescript -->
+                              <!--   ^ !@jsx -->
+                              <!--   ^ !@typescript -->
 <style> .bar { .foo{ } } </style>
 <!--                 ^ @css   -->
 <style scoped> .page.page--news { background: rebeccapurple; } </style>
@@ -32,8 +32,8 @@
 <!--                 ^ @css  -->
 <style lang="scss"> .bar { &-baz { } } </style>
 <!--                        ^ @scss -->
-<!--                        ^ @!css -->
+<!--                        ^ !@css -->
 <style scoped lang="scss">body{} </style>
 <!--                        ^ @scss -->
-<!--                        ^ @!css -->
+<!--                        ^ !@css -->
   // const file = files[0];

@@ -15,26 +15,29 @@ function M.check(file)
 
   local errors = {} ---@type string[]
   for _, a in ipairs(list) do
-    -- Is there an injected tree of the expected language at the position?
-    local found = false
-    tree:for_each_tree(function(tstree, ltree)
-      if not tstree then
-        return
+    -- every column of the assertion must (not) be in an injected tree of the expected language
+    for col = a.col, a.col + a.len - 1 do
+      local found = false
+      tree:for_each_tree(function(tstree, ltree)
+        if not tstree then
+          return
+        end
+        local root = tstree:root()
+        if root ~= top_level_root and vim.treesitter.is_in_node_range(root, a.row, col) then
+          found = found or ltree:lang() == a.capture
+        end
+      end)
+      if found == a.negated then
+        errors[#errors + 1] = string.format(
+          'Error in %s:%d:%d: expected "%s"%s to be injected here!',
+          file,
+          a.row + 1,
+          col + 1,
+          a.capture,
+          a.negated and ' not' or ''
+        )
+        break
       end
-      local root = tstree:root()
-      if root ~= top_level_root and vim.treesitter.is_in_node_range(root, a.row, a.col) then
-        found = found or ltree:lang() == a.capture
-      end
-    end)
-    if found == a.negated then
-      errors[#errors + 1] = string.format(
-        'Error in %s:%d:%d: expected "%s"%s to be injected here!',
-        file,
-        a.row + 1,
-        a.col + 1,
-        a.capture,
-        a.negated and ' not' or ''
-      )
     end
   end
   assert(#errors == 0, table.concat(errors, '\n'))

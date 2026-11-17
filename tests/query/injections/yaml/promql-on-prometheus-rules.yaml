@@ -23,8 +23,8 @@ groups:
     # ^ @promql
     #            ^ @regex
     #                                      ^ @regex
-    #                                                                          ^ @!regex
-    #                                                                                                                  ^ @!regex
+    #                                                                          ^ !@regex
+    #                                                                                                                  ^ !@regex
     for: 3m
     labels:
       severity: warning

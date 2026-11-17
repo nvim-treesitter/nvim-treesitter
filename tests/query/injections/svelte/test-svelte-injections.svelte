@@ -2,13 +2,13 @@
 <!--               ^ @javascript -->
 <script lang="ts"> const foo: number = 1 </script>
 <!--                            ^ @typescript -->
-<!--                            ^ @!javascript -->
+<!--                            ^ !@javascript -->
 
 <style> main { font-family: sans-serif; text-align: center; } </style>
 <!--                        ^ @css  -->
 <style lang="scss"> main { &:hover { } } </style>
 <!--                        ^ @scss -->
-<!--                        ^ @!css -->
+<!--                        ^ !@css -->
 
 <main>
 	<h1>Test file</h1>
