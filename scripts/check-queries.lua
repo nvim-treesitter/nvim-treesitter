@@ -1,5 +1,5 @@
 #!/usr/bin/env -S nvim -l
-vim.o.rtp = vim.o.rtp .. ',.'
+vim.opt.rtp:append('.')
 
 local query_types = require('nvim-treesitter.health').bundled_queries
 local configs = require('nvim-treesitter.parsers')

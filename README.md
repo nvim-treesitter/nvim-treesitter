@@ -16,7 +16,7 @@ For details on these and how to help improving them, see [CONTRIBUTING.md](./CON
 
 ## Requirements
 
-- Neovim 0.12.0 or later (nightly)
+- Neovim 0.13.0 or later (nightly)
 - `tar` and `curl` in your path
 - [`tree-sitter-cli`](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) (0.26.1 or later, installed via your package manager, **not npm**)
 - a C compiler in your path (see <https://docs.rs/cc/latest/cc/#compile-time-requirements>)
@@ -96,7 +96,7 @@ vim.api.nvim_create_autocmd('FileType', {
 Treesitter-based folding is provided by Neovim. To enable it, put the following in your `ftplugin` or `FileType` autocommand:
 
 ```lua
-vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.wo[0][0].foldexpr = vim.treesitter.foldexpr
 vim.wo[0][0].foldmethod = 'expr'
 ```
 
@@ -105,10 +105,8 @@ vim.wo[0][0].foldmethod = 'expr'
 Treesitter-based indentation is provided by this plugin but considered **experimental**. To enable it, put the following in your `ftplugin` or `FileType` autocommand:
 
 ```lua
-vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+vim.bo.indentexpr = require('nvim-treesitter').indentexpr
 ```
-
-(Note the specific quotes used.)
 
 ## Injections
 

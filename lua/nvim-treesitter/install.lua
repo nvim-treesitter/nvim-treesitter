@@ -11,9 +11,6 @@ local util = require('nvim-treesitter.util')
 ---@type fun(path: string, new_path: string, flags?: table): string?
 local uv_copyfile = a.awrap(4, uv.fs_copyfile)
 
----@type fun(path: string, mode: integer): string?
-local uv_mkdir = a.awrap(3, uv.fs_mkdir)
-
 ---@type fun(path: string): string?
 local uv_rmdir = a.awrap(2, uv.fs_rmdir)
 
@@ -25,18 +22,6 @@ local uv_symlink = a.awrap(4, uv.fs_symlink)
 
 ---@type fun(path: string): string?
 local uv_unlink = a.awrap(2, uv.fs_unlink)
-
----@async
----@param path string
----@return string? err
-local function mkpath(path)
-  local parent = fs.dirname(path)
-  if not parent:match('^[./]$') and not uv.fs_stat(parent) then
-    mkpath(parent)
-  end
-
-  return uv_mkdir(path, 493) -- tonumber('755', 8)
-end
 
 ---@async
 ---@param path string
@@ -254,9 +239,8 @@ local function do_download(logger, url, project_name, cache_dir, revision, outpu
 
   do -- Create tmp dir
     logger:debug('Creating temporary directory: %s', tmp)
-    local err = mkpath(tmp)
-    a.schedule()
-    if err then
+    local ok, err = pcall(fs.mkdir, tmp, { parents = true })
+    if not ok then
       return logger:error('Could not create %s-tmp: %s', project_name, err)
     end
   end
@@ -356,8 +340,12 @@ end
 ---@return string? err
 local function do_copy_queries(logger, query_src, query_dir)
   rmpath(query_dir)
-  local err = uv_mkdir(query_dir, 493) -- tonumber('755', 8)
+  local ok, mkdir_err = pcall(fs.mkdir, query_dir)
+  if not ok then
+    return logger:error(mkdir_err --[[@as string]])
+  end
 
+  local err ---@type string?
   for f in fs.dir(query_src) do
     err = uv_copyfile(fs.joinpath(query_src, f), fs.joinpath(query_dir, f))
   end
@@ -507,9 +495,7 @@ local function install(languages, options)
   options = options or {}
 
   local cache_dir = fs.normalize(fn.stdpath('cache') --[[@as string]])
-  if not uv.fs_stat(cache_dir) then
-    fn.mkdir(cache_dir, 'p')
-  end
+  fs.mkdir(cache_dir, { parents = true })
 
   local install_dir = config.get_install_dir('parser')
   local installed = options.force and {} or config.get_installed()
@@ -584,7 +570,7 @@ end)
 local function uninstall_lang(logger, lang, parser, queries)
   logger:debug('Uninstalling ' .. lang)
 
-  if fn.filereadable(parser) == 1 then
+  if uv.fs_stat(parser) then
     logger:debug('Unlinking ' .. parser)
     local perr = uv_unlink(parser)
     a.schedule()
