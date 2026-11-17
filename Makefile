@@ -87,19 +87,6 @@ $(TSQUERYLS):
 	tar -xf $(TSQUERYLS_TARBALL) -C $@
 	rm -rf $(TSQUERYLS_TARBALL)
 
-HLASSERT := $(DEPDIR)/highlight-assertions-$(RUST_ARCH)
-HLASSERT_TARBALL := $(HLASSERT).tar.gz
-HLASSERT_URL := https://github.com/nvim-treesitter/highlight-assertions/releases/latest/download/$(notdir $(HLASSERT_TARBALL))
-
-.PHONY: hlassert
-hlassert: $(HLASSERT)
-
-$(HLASSERT):
-	$(CURL) $(HLASSERT_URL) -o $(HLASSERT_TARBALL)
-	mkdir $@
-	tar -xf $(HLASSERT_TARBALL) -C $@
-	rm -rf $(HLASSERT_TARBALL)
-
 # actual test targets
 
 .PHONY: lua
@@ -135,8 +122,8 @@ docs: $(NVIM_BIN)
 .PHONY: tests
 # The specs run their checks in $(NVIM_BIN) (see tests/sut.lua).
 # LUA_PATH: `exec_lua()` requires test modules in the Nvim under test.
-tests: $(NVIM_BIN) $(NVIM_HOST_BIN) $(HLASSERT)
-	HLASSERT=$(HLASSERT)/highlight-assertions NVIM_LOG_FILE=$(abspath $(DEPDIR))/nvim.log \
+tests: $(NVIM_BIN) $(NVIM_HOST_BIN)
+	NVIM_LOG_FILE=$(abspath $(DEPDIR))/nvim.log \
 		NVIM_PRG=$(abspath $(NVIM_BIN)) LUA_PATH="$(abspath $(NVIM_HOST))/?.lua;;" \
 		$(NVIM_HOST_BIN) --clean -l $(NVIM_HOST)/test/runner.lua --helper=tests/helper.lua tests/$(TESTS)
 
