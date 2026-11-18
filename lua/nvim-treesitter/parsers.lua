@@ -154,7 +154,7 @@ return {
   },
   c_sharp = {
     install_info = {
-      revision = 'v0.23.5',
+      revision = 'v0.24.0',
       url = 'https://github.com/tree-sitter/tree-sitter-c-sharp',
     },
     tier = 1,

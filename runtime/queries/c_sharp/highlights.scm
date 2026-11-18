@@ -438,9 +438,6 @@
   ".."
 ] @operator
 
-(list_pattern
-  ".." @character.special)
-
 (discard) @character.special
 
 [
