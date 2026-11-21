@@ -1,103 +1,15 @@
-local config = require('nvim-treesitter.config')
-local ts = vim.treesitter
+local t = require('test.testutil')
+local sut = require('tests.sut')
 
-local COMMENT_NODES = {
-  markdown = 'html_block',
-  haskell = 'haddock',
-}
+sut.setup()
 
-local function check_assertions(file)
-  local buf = vim.fn.bufadd(file)
-  vim.fn.bufload(file)
-  local ft = vim.bo[buf].filetype
-  local lang = vim.treesitter.language.get_lang(ft) or ft
-  local comment_node = COMMENT_NODES[lang] or 'comment'
-  local assertions = vim.fn.json_decode(vim.fn.system({
-    os.getenv('HLASSERT'),
-    '-p',
-    config.get_install_dir('parser') .. '/' .. lang .. '.so',
-    '-s',
-    file,
-    '-c',
-    comment_node,
-  }))
-  assert.True(#assertions > 0, 'No assertions detected!')
-
-  local parser = ts.get_parser(buf)
-
-  parser:parse(true)
-
-  for _, assertion in ipairs(assertions) do
-    local row = assertion.position.row
-    local col = assertion.position.column
-    assert.is.number(row)
-    assert.is.number(col)
-
-    local captures = {}
-    parser:for_each_tree(function(tstree, tree)
-      if not tstree then
-        return
-      end
-
-      local root = tstree:root()
-      local root_start_row, _, root_end_row, _ = root:range()
-
-      -- Only worry about trees within the line range
-      if root_start_row > row or root_end_row < row then
-        return
-      end
-
-      local query = ts.query.get(tree:lang(), 'highlights')
-      if not query then
-        return
-      end
-
-      for id, node, _ in query:iter_captures(root, buf, row, row + 1) do
-        if ts.is_in_node_range(node, row, col) then
-          local capture = query.captures[id]
-          if capture ~= nil and capture ~= 'conceal' and capture ~= 'spell' then
-            captures[capture] = true
-          end
-        end
-      end
-    end)
-    if assertion.expected_capture_name:match('^!') then
-      assert.Falsy(
-        captures[assertion.expected_capture_name:sub(2)],
-        'Error in '
-          .. file
-          .. ':'
-          .. (row + 1)
-          .. ':'
-          .. (col + 1)
-          .. ': expected "'
-          .. assertion.expected_capture_name
-          .. '", captures: '
-          .. vim.inspect(vim.tbl_keys(captures))
-      )
-    else
-      assert.True(
-        captures[assertion.expected_capture_name],
-        'Error in '
-          .. file
-          .. ':'
-          .. (row + 1)
-          .. ':'
-          .. (col + 1)
-          .. ': expected "'
-          .. assertion.expected_capture_name
-          .. '", captures: '
-          .. vim.inspect(vim.tbl_keys(captures))
-      )
-    end
-  end
-end
-
-describe('highlight queries', function()
-  local files = vim.fn.split(vim.fn.glob('tests/query/highlights/**/*.*'))
+t.describe('highlight queries', function()
+  local files = vim.fn.glob('tests/query/highlights/**/*.*', false, true)
   for _, file in ipairs(files) do
-    it(file, function()
-      check_assertions(file)
+    t.it(file, function()
+      sut.exec_lua(function(f)
+        require('tests.query.highlights').check(f)
+      end, file)
     end)
   end
 end)

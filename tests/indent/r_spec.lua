@@ -1,19 +1,20 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
 --local XFAIL = require("tests.indent.common").XFAIL
 
-local run = Runner:new(it, 'tests/indent/r', {
+local run = Runner:new('tests/indent/r', {
   tabstop = 2,
   shiftwidth = 2,
   softtabstop = 0,
   expandtab = true,
 })
 
-describe('indent R:', function()
-  describe('whole file:', function()
+t.describe('indent R:', function()
+  t.describe('whole file:', function()
     run:whole_file('.', {})
   end)
 
-  describe('new line:', function()
+  t.describe('new line:', function()
     run:new_line('comment.R', { on_line = 1, text = '# new comment', indent = 0 })
 
     run:new_line('cond.R', { on_line = 1, text = 'x <- x + 1', indent = 0 })

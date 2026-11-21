@@ -1,15 +1,16 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
 local XFAIL = require('tests.indent.common').XFAIL
 
-local run = Runner:new(it, 'tests/indent/dart', {
+local run = Runner:new('tests/indent/dart', {
   tabstop = 2,
   shiftwidth = 2,
   softtabstop = 2,
   expandtab = true,
 })
 
-describe('indent Lua:', function()
-  describe('whole file:', function()
+t.describe('indent Lua:', function()
+  t.describe('whole file:', function()
     run:whole_file('.', {
       expected_failures = {
         './multiple_arguments.dart',
@@ -20,7 +21,7 @@ describe('indent Lua:', function()
   end)
 end)
 
-describe('new line:', function()
+t.describe('new line:', function()
   run:new_line('class.dart', { on_line = 4, text = 'int five;', indent = 2 })
   run:new_line('class.dart', { on_line = 6, text = "'100'", indent = 8 }, 'expected failure', XFAIL)
   run:new_line(

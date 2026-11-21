@@ -30,8 +30,8 @@ oneline_string_assignment = "not detected as docstring"
 multiline_string_assignment = """
                               also not detected as docstring
                               """
-#                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ @string
-#                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ !@string.documentation
+#                             ^^^ @string
+#                             ^^^ !@string.documentation
 
 looks_like_implicit_string_concatenation = "abc"
 #                                          ^^^^^ @string 

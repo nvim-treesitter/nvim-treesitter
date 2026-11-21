@@ -1,20 +1,21 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
 
-local runner = Runner:new(it, 'tests/indent/nix', {
+local runner = Runner:new('tests/indent/nix', {
   tabstop = 2,
   shiftwidth = 2,
   softtabstop = 2,
   expandtab = true,
 })
 
-describe('indent Nix:', function()
-  describe('whole file:', function()
+t.describe('indent Nix:', function()
+  t.describe('whole file:', function()
     runner:whole_file('.', {
       expected_failures = {},
     })
   end)
 
-  describe('new line:', function()
+  t.describe('new line:', function()
     for _, info in ipairs({
       { 14, 2 },
       { 16, 2 },

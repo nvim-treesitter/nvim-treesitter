@@ -1,18 +1,19 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
 
-local run = Runner:new(it, 'tests/indent/rescript', {
+local run = Runner:new('tests/indent/rescript', {
   tabstop = 2,
   shiftwidth = 2,
   softtabstop = 0,
   expandtab = true,
 })
 
-describe('indent ReScript:', function()
-  describe('whole file:', function()
+t.describe('indent ReScript:', function()
+  t.describe('whole file:', function()
     run:whole_file('.', {})
   end)
 
-  describe('new line:', function()
+  t.describe('new line:', function()
     run:new_line('basic.res', { on_line = 5, text = 'x', indent = 0 })
     run:new_line('basic.res', { on_line = 9, text = '"another": here,', indent = 2 })
     run:new_line('basic.res', { on_line = 10, text = '}', indent = 0 })

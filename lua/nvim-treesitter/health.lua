@@ -14,7 +14,7 @@ local TREE_SITTER_MIN_VER = { 0, 26, 1 }
 local function check_exe(name)
   if vim.fn.executable(name) == 1 then
     local path = vim.fn.exepath(name)
-    local out = vim.trim(vim.fn.system({ name, '--version' }))
+    local out = vim.trim(vim.system({ name, '--version' }, { text = true }):wait().stdout or '')
     local version = vim.version.parse(out)
     return { path = path, version = version, out = out }
   end
@@ -24,8 +24,8 @@ local function install_health()
   health.start('Requirements')
 
   do -- nvim check
-    if vim.fn.has('nvim-0.12') ~= 1 then
-      health.error('Nvim-treesitter requires Neovim 0.12.0 or later.')
+    if vim.fn.has('nvim-0.13') ~= 1 then
+      health.error('Nvim-treesitter requires Neovim 0.13.0 or later.')
     end
 
     if vim.treesitter.language_version >= NVIM_TREESITTER_MINIMUM_ABI then
@@ -144,7 +144,7 @@ function M.check()
         end
       end
     end
-    health.info(vim.fn.trim(out, ' ', 2))
+    health.info(vim.trim(out))
   end
   health.start('  Legend: [H]ighlights, [L]ocals, [F]olds, [I]ndents, In[J]ections')
 

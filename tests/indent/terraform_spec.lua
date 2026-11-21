@@ -1,20 +1,21 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
 --local XFAIL = require("tests.indent.common").XFAIL
 
-local run = Runner:new(it, 'tests/indent/terraform', {
+local run = Runner:new('tests/indent/terraform', {
   tabstop = 2,
   shiftwidth = 2,
   expandtab = true,
 })
 
-describe('indent Terraform:', function()
-  describe('whole file:', function()
+t.describe('indent Terraform:', function()
+  t.describe('whole file:', function()
     run:whole_file('.', {
       expected_failures = {},
     })
   end)
 
-  describe('new line:', function()
+  t.describe('new line:', function()
     run:new_line(
       'no-indent-after-brace.tf',
       { on_line = 4, text = '# Wow, no indent here please', indent = 0 }

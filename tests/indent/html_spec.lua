@@ -1,16 +1,17 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
-local runner = Runner:new(it, 'tests/indent/html', {
+local runner = Runner:new('tests/indent/html', {
   tabstop = 2,
   shiftwidth = 2,
   expandtab = true,
 })
 
-describe('indent HTML:', function()
-  describe('whole file:', function()
+t.describe('indent HTML:', function()
+  t.describe('whole file:', function()
     runner:whole_file('.')
   end)
 
-  describe('new line:', function()
+  t.describe('new line:', function()
     runner:new_line('start_tag.html', { on_line = 1, text = 'anything', indent = 0 })
     runner:new_line('start_tag.html', { on_line = 4, text = 'anything', indent = 4 })
     runner:new_line('start_tag.html', { on_line = 6, text = 'charset = utf-8', indent = 6 })

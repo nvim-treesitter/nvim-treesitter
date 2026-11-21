@@ -1,4 +1,7 @@
+# Nvim under test ("system under test")
 NVIM_VERSION ?= nightly
+# Nvim running the test harness ("host")
+NVIM_HOST_VERSION := nightly
 EMMYLUA_VERSION ?= 0.25.1
 
 DEPDIR ?= .test-deps
@@ -20,20 +23,31 @@ endif
 
 # download test dependencies
 
-NVIM := $(DEPDIR)/nvim-$(NVIM_ARCH)
-NVIM_TARBALL := $(NVIM).tar.gz
-NVIM_URL := https://github.com/neovim/neovim/releases/download/$(NVIM_VERSION)/$(notdir $(NVIM_TARBALL))
-NVIM_BIN := $(NVIM)/nvim-$(NVIM_ARCH)/bin/nvim
-NVIM_RUNTIME=$(NVIM)/nvim-$(NVIM_ARCH)/share/nvim/runtime
+# Each version is downloaded once to $(DEPDIR)/nvim-<version>: the release build and the test
+# harness modules from the same git ref (cached, "make clean" to update).
+NVIM_TEST_FILES := assert.lua harness.lua reporter.lua runner.lua testutil.lua \
+	client/rpc_stream.lua client/session.lua client/uv_stream.lua \
+	functional/testnvim.lua functional/testnvim/exec_lua.lua
+comma := ,
+space := $(subst ,, )
+
+NVIM_BIN := $(DEPDIR)/nvim-$(NVIM_VERSION)/bin/nvim
+NVIM_RUNTIME := $(DEPDIR)/nvim-$(NVIM_VERSION)/share/nvim/runtime
+NVIM_HOST := $(DEPDIR)/nvim-$(NVIM_HOST_VERSION)
+NVIM_HOST_BIN := $(NVIM_HOST)/bin/nvim
 
 .PHONY: nvim
-nvim: $(NVIM)
+nvim: $(NVIM_BIN) $(NVIM_HOST_BIN)
 
-$(NVIM):
-	$(CURL) $(NVIM_URL) -o $(NVIM_TARBALL)
-	mkdir $@
-	tar -xf $(NVIM_TARBALL) -C $@
-	rm -rf $(NVIM_TARBALL)
+# Downloads to a temp dir, renamed after all downloads succeed.
+$(DEPDIR)/nvim-%/bin/nvim:
+	rm -rf $(DEPDIR)/nvim-$* $(DEPDIR)/nvim-$*.tmp
+	mkdir -p $(DEPDIR)/nvim-$*.tmp
+	$(CURL) --fail https://github.com/neovim/neovim/releases/download/$*/nvim-$(NVIM_ARCH).tar.gz \
+		| tar -xz --strip-components=1 -C $(DEPDIR)/nvim-$*.tmp
+	$(CURL) --fail --parallel --output "$(DEPDIR)/nvim-$*.tmp/test/#1" \
+		"https://raw.githubusercontent.com/neovim/neovim/$*/test/{$(subst $(space),$(comma),$(strip $(NVIM_TEST_FILES)))}"
+	mv $(DEPDIR)/nvim-$*.tmp $(DEPDIR)/nvim-$*
 
 EMMYLUALS := $(DEPDIR)/emmylua_check-$(LUALS_ARCH)
 EMMYLUALS_TARBALL := $(EMMYLUALS).tar.gz
@@ -73,27 +87,6 @@ $(TSQUERYLS):
 	tar -xf $(TSQUERYLS_TARBALL) -C $@
 	rm -rf $(TSQUERYLS_TARBALL)
 
-HLASSERT := $(DEPDIR)/highlight-assertions-$(RUST_ARCH)
-HLASSERT_TARBALL := $(HLASSERT).tar.gz
-HLASSERT_URL := https://github.com/nvim-treesitter/highlight-assertions/releases/latest/download/$(notdir $(HLASSERT_TARBALL))
-
-.PHONY: hlassert
-hlassert: $(HLASSERT)
-
-$(HLASSERT):
-	$(CURL) $(HLASSERT_URL) -o $(HLASSERT_TARBALL)
-	mkdir $@
-	tar -xf $(HLASSERT_TARBALL) -C $@
-	rm -rf $(HLASSERT_TARBALL)
-
-PLENTEST := $(DEPDIR)/plentest.nvim
-
-.PHONY: plentest
-plentest: $(PLENTEST)
-
-$(PLENTEST):
-	git clone --filter=blob:none https://github.com/nvim-treesitter/plentest.nvim $(PLENTEST)
-
 # actual test targets
 
 .PHONY: lua
@@ -104,7 +97,7 @@ formatlua: $(STYLUA)
 	$(STYLUA)/stylua .
 
 .PHONY: checklua
-checklua: $(EMMYLUALS) $(NVIM)
+checklua: $(EMMYLUALS) $(NVIM_BIN)
 	VIMRUNTIME=$(NVIM_RUNTIME) $(EMMYLUALS)/emmylua_check --warnings-as-errors .
 
 .PHONY: query
@@ -123,14 +116,16 @@ checkquery: $(TSQUERYLS)
 	$(TSQUERYLS)/ts_query_ls check runtime/queries
 
 .PHONY: docs
-docs: $(NVIM)
+docs: $(NVIM_BIN)
 	$(NVIM_BIN) -l scripts/update-readme.lua
 
 .PHONY: tests
-tests: $(NVIM) $(HLASSERT) $(PLENTEST)
-	HLASSERT=$(HLASSERT)/highlight-assertions PLENTEST=$(PLENTEST) \
-		$(NVIM_BIN) --headless --clean -u scripts/minimal_init.lua \
-		-c "lua require('plentest').test_directory('tests/$(TESTS)', { minimal_init = './scripts/minimal_init.lua' })"
+# The specs run their checks in $(NVIM_BIN) (see tests/sut.lua).
+# LUA_PATH: `exec_lua()` requires test modules in the Nvim under test.
+tests: $(NVIM_BIN) $(NVIM_HOST_BIN)
+	NVIM_LOG_FILE=$(abspath $(DEPDIR))/nvim.log \
+		NVIM_PRG=$(abspath $(NVIM_BIN)) LUA_PATH="$(abspath $(NVIM_HOST))/?.lua;;" \
+		$(NVIM_HOST_BIN) --clean -l $(NVIM_HOST)/test/runner.lua --helper=tests/helper.lua tests/$(TESTS)
 
 .PHONY: all
 all: lua query docs tests

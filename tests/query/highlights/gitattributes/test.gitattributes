@@ -22,7 +22,7 @@ vendor/** linguist-vendored=true
 #        ^^^^^^^^^ @constant
 #                 ^ @punctuation.bracket
 #                   ^ @operator
-#                    ^^^^^^^^^^ @variable.parameter
+#                    ^^^^^^^^^ @variable.parameter
 
 "_\u4E00\t\56txt" encoding=UTF-16
 # <- @punctuation.special

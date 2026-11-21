@@ -1,19 +1,20 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
 
-local run = Runner:new(it, 'tests/indent/smali', {
+local run = Runner:new('tests/indent/smali', {
   tabstop = 4,
   shiftwidth = 4,
   expandtab = false,
 })
 
-describe('indent Smali:', function()
-  describe('whole file:', function()
+t.describe('indent Smali:', function()
+  t.describe('whole file:', function()
     run:whole_file('.', {
       expected_failures = {},
     })
   end)
 
-  describe('new line:', function()
+  t.describe('new line:', function()
     run:new_line('field.smali', { on_line = 7, text = 'value1 = "test"', indent = 1 })
     run:new_line('field.smali', { on_line = 10, text = 'value2 = Lsome/enum;', indent = 2 })
     run:new_line('array_and_switch.smali', { on_line = 43, text = '1 2 3 4 5 6 200', indent = 2 })

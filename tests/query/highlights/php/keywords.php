@@ -55,7 +55,7 @@ class B extends A implements T
     big as private tBig;
 //  ^^^ @function.method
 //      ^^ @keyword.operator
-//         ^^^^^^^^^ @keyword.modifier
+//         ^^^^^^^ @keyword.modifier
 //                 ^^^^ @function.method
   }
   public function foo(callable $call): self

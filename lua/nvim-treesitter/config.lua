@@ -16,7 +16,7 @@ function M.setup(user_data)
   if user_data then
     if user_data.install_dir then
       user_data.install_dir = vim.fs.normalize(user_data.install_dir)
-      vim.o.rtp = user_data.install_dir .. ',' .. vim.o.rtp
+      vim.opt.rtp:prepend(user_data.install_dir)
     end
     config = vim.tbl_deep_extend('force', config, user_data)
   end
@@ -30,7 +30,7 @@ function M.get_install_dir(dir_name)
   local dir = vim.fs.joinpath(config.install_dir, dir_name)
 
   if not vim.uv.fs_stat(dir) then
-    local ok, err = pcall(vim.fn.mkdir, dir, 'p', '0755')
+    local ok, err = pcall(vim.fs.mkdir, dir, { parents = true })
     if not ok then
       local log = require('nvim-treesitter.log')
       log.error(err --[[@as string]])

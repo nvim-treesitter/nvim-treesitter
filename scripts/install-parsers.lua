@@ -1,5 +1,5 @@
 #!/usr/bin/env -S nvim -l
-vim.o.rtp = vim.o.rtp .. ',.'
+vim.opt.rtp:append('.')
 
 local generate = false
 local update = false

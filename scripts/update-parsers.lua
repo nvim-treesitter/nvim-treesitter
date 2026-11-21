@@ -13,7 +13,7 @@ for i = 1, #_G.arg do
   end
 end
 
-vim.o.rtp = vim.o.rtp .. ',.'
+vim.opt.rtp:append('.')
 local util = require('nvim-treesitter.util')
 local parsers = require('nvim-treesitter.parsers')
 

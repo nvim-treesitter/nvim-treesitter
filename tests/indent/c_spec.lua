@@ -1,15 +1,16 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
 local XFAIL = require('tests.indent.common').XFAIL
 
-local runner = Runner:new(it, 'tests/indent/c', {
+local runner = Runner:new('tests/indent/c', {
   tabstop = 4,
   shiftwidth = 4,
   softtabstop = 0,
   expandtab = true,
 })
 
-describe('indent C:', function()
-  describe('whole file:', function()
+t.describe('indent C:', function()
+  t.describe('whole file:', function()
     runner:whole_file('.', {
       expected_failures = {
         './preproc_func.c',
@@ -18,7 +19,7 @@ describe('indent C:', function()
     })
   end)
 
-  describe('new line:', function()
+  t.describe('new line:', function()
     runner:new_line('array.c', { on_line = 2, text = '0,', indent = 4 })
     runner:new_line('compound_lit.c', { on_line = 7, text = '.z = 5,', indent = 8 })
     runner:new_line('cond.c', { on_line = 3, text = 'x++;', indent = 8 })

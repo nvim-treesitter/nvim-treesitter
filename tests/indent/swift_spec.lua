@@ -1,17 +1,18 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
 
-local run = Runner:new(it, 'tests/indent/swift', {
+local run = Runner:new('tests/indent/swift', {
   tabstop = 2,
   shiftwidth = 2,
   softtabstop = 2,
   expandtab = true,
 })
 
-describe('indent Swift:', function()
-  describe('whole file:', function()
+t.describe('indent Swift:', function()
+  t.describe('whole file:', function()
     run:whole_file('.', {})
   end)
-  describe('new line:', function()
+  t.describe('new line:', function()
     run:new_line('declarations.swift', { on_line = 6, text = 'var x = 1', indent = 2 })
     run:new_line(
       'declarations.swift',

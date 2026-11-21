@@ -1,16 +1,17 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
-local runner = Runner:new(it, 'tests/indent/angular', {
+local runner = Runner:new('tests/indent/angular', {
   tabstop = 2,
   shiftwidth = 2,
   expandtab = true,
 })
 
-describe('indent HTML Angular:', function()
-  describe('whole file:', function()
+t.describe('indent HTML Angular:', function()
+  t.describe('whole file:', function()
     runner:whole_file('.')
   end)
 
-  describe('new line:', function()
+  t.describe('new line:', function()
     for _, info in ipairs({
       { 1, 2 },
       { 2, 2 },

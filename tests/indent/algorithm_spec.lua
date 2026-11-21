@@ -1,15 +1,16 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
 -- local XFAIL = require("tests.indent.common").XFAIL
 
-local runner = Runner:new(it, 'tests/indent/algorithm', {
+local runner = Runner:new('tests/indent/algorithm', {
   tabstop = 4,
   shiftwidth = 4,
   softtabstop = 4,
   expandtab = true,
 })
 
-describe('test indent algorithm: ', function()
-  describe('new line:', function()
+t.describe('test indent algorithm: ', function()
+  t.describe('new line:', function()
     runner:new_line(
       'trailing.py',
       { on_line = 1, text = 'x: str', indent = 4 },

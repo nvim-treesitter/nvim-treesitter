@@ -1,6 +1,7 @@
+local t = require('test.testutil')
 local Runner = require('tests.indent.common').Runner
 
-local run = Runner:new(it, 'tests/indent/query', {
+local run = Runner:new('tests/indent/query', {
   tabstop = 2,
   shiftwidth = 2,
   softtabstop = 2,
@@ -8,11 +9,11 @@ local run = Runner:new(it, 'tests/indent/query', {
   lispoptions = 'expr:1',
 })
 
-describe('indent Query:', function()
-  describe('whole file:', function()
+t.describe('indent Query:', function()
+  t.describe('whole file:', function()
     run:whole_file('.', {})
   end)
-  describe('new line:', function()
+  t.describe('new line:', function()
     run:new_line('test.scm', { on_line = 3, text = '(node)', indent = 2 })
     run:new_line('test.scm', { on_line = 5, text = '(node)', indent = 2 })
     run:new_line('test.scm', { on_line = 12, text = '(node)', indent = 2 })
