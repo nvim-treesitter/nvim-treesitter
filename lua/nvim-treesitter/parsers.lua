@@ -657,7 +657,7 @@ return {
   },
   gnuplot = {
     install_info = {
-      revision = 'v4.2.1',
+      revision = 'v5.0.0',
       url = 'https://github.com/dpezto/tree-sitter-gnuplot',
     },
     tier = 1,
